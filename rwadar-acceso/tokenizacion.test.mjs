@@ -330,7 +330,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           maximo: dd('Máximo del periodo'), valorHoy: dd('Valor hoy (29 mayores)'), total: dd('Total de la categoría hoy'), c24: dd('Cambio en 24 h'), tokens: dd('Tokens en el gráfico'),
           tiposAbiertos: s.querySelector('.mk-tipos-det')?.open, tiposSum: s.querySelector('.mk-tipos-sum')?.textContent,
           puentes: svg.querySelectorAll('.mk-puente').length, cortesArea: (svg.querySelector('.mk-area').getAttribute('d').match(/M/g) || []).length,
-          pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label')]),
+          pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label'), b.disabled]),
           grupo: s.querySelector('.mk-pestanas').getAttribute('role'),
           trazo: getComputedStyle(svg.querySelector('.mk-linea')).stroke, grosor: getComputedStyle(svg.querySelector('.mk-linea')).strokeWidth,
           area: svg.querySelector('.mk-area').getAttribute('fill'), base: getComputedStyle(svg.querySelector('.mk-base')).strokeDasharray,
@@ -376,10 +376,12 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(plano(m.tokens), plano(`${SERIE.incluidos}86 % del total`), 'el mismo 86 % que la nota');
       assert.ok(NUM(m.maximo) >= NUM(m.cifra), `máximo ${m.maximo} ≥ cifra ${m.cifra}`);
       assert.equal(m.grupo, 'group');
-      assert.deepEqual(m.pestanas.map(p => p[0]), ['1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
-      assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
+      // «24 h» (13/11/2026), la primera: con la diaria sola (esta página aún no lee la serie fina), desactivada.
+      assert.deepEqual(m.pestanas.map(p => p[0]), ['24 h', '1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
+      assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
       assert.ok(m.pestanas.every(p => p[2] === 'BUTTON'));
-      assert.deepEqual(m.pestanas.map(p => p[3]), ['1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+      assert.deepEqual(m.pestanas.map(p => p[3]), ['24 horas', '1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+      assert.deepEqual(m.pestanas.map(p => p[4]), [true, false, false, false, false, false, false]);
       // El último valor, en su píldora a la altura del final de la línea; el suelo no tacha el eje; la cruz, solo vertical.
       assert.equal(m.pildora, '42.947');
       assert.ok(m.suelo < m.anchoSvg - 50, 'el suelo acaba donde el dibujo');
@@ -408,7 +410,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.fuera, 0, `${ancho}: nada se sale por los lados`);
       assert.equal(m.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal`);
       // Cada pestaña: su tramo y su texto; el seleccionado, marcado.
-      for (const p of modelo.PESTANAS) {
+      for (const p of modelo.PESTANAS.filter(x => modelo.pestanaDisponible(SERIE, x.clave))) {
         await pagina.click(`[data-pestana="${p.clave}"]`);
         const g = modelo.graficoPestana(SERIE, p.clave);
         await pagina.waitForFunction(t => document.querySelector('.mk-periodo').textContent === t, g.cambioFrase);
@@ -478,7 +480,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         clave: document.querySelector('.mk-clave dt').textContent }));
       assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens with a complete history\u00a0· ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
         explica: 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.',
-        pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
+        pestanas: ['24H', '1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
       await pagina.close();
     }

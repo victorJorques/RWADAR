@@ -336,8 +336,15 @@ test('serie: el archivo se valida entero, una línea por día, y se rechaza lo q
   assert.equal(mal((s) => { s.puntos[0].valor = '1'; }), false);
 });
 
-test('serie: pestañas 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (en inglés, YTD), 1 M por defecto; la del año parte del 1 de enero', () => {
-  assert.deepEqual(t.PESTANAS.map((p) => p.corto), ['1 S', '1 M', '3 M', '6 M', 'Año', '1 A']);
+test('serie: pestañas 24 h · 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (en inglés, 24H y YTD), 1 M por defecto; la del año parte del 1 de enero', () => {
+  // «24 h» (13/11/2026) solo con la serie de 5 minutos: con la diaria sería una raya de dos puntos y sale desactivada.
+  assert.deepEqual(t.PESTANAS.map((p) => p.corto), ['24 h', '1 S', '1 M', '3 M', '6 M', 'Año', '1 A']);
+  assert.deepEqual(t.etiquetaPestana('1d', 'es', SERIE), { corto: '24 h', nombre: '24 horas' });
+  assert.deepEqual(t.etiquetaPestana('1d', 'en', SERIE), { corto: '24H', nombre: '24 hours' });
+  assert.equal(t.tramo(SERIE.puntos, '1d'), null, 'con la diaria, «24 h» no tiene datos');
+  assert.equal(t.graficoPestana(SERIE, '1d'), null);
+  assert.equal(t.pestanaDisponible(SERIE, '1d'), false);
+  assert.deepEqual(t.PESTANAS.filter((p) => !t.pestanaDisponible(SERIE, p.clave)).map((p) => p.clave), ['1d'], 'las demás, con la diaria, como antes');
   assert.equal(t.PESTANA_INICIAL, '1m');
   // «YTD» no se entiende en castellano: el año de la serie, y el nombre accesible contiene lo que se ve (WCAG 2.5.3).
   assert.deepEqual(t.etiquetaPestana('ytd', 'es', SERIE), { corto: '2026', nombre: 'En 2026' });
@@ -395,8 +402,8 @@ test('serie: el eje va del mínimo al máximo con un 8 % de aire (sin bandas vac
     assert.ok([1, 2, 2.5, 5, 10].some((x) => Math.abs(f - x) < 1e-9), 'paso redondo');
     assert.ok((esc.hi - esc.lo) >= (min + max) / 2 * 0.01 - 1, 'un tramo casi plano no parece un desplome');
   }
-  // Con la serie real, 4 o 5 marcas en cada pestaña; en 1 A, de 25.000 a 40.000 (antes, de 20.000 a 50.000 con un 30 % vacío).
-  for (const p of t.PESTANAS) {
+  // Con la serie real, 4 o 5 marcas en cada pestaña (con la diaria sola, todas menos «24 h»); en 1 A, de 25.000 a 40.000 (antes, de 20.000 a 50.000 con un 30 % vacío).
+  for (const p of t.PESTANAS.filter((x) => x.clave !== '1d')) {
     const g = t.graficoPestana(SERIE, p.clave);
     assert.ok(g.marcasValores.length >= 4 && g.marcasValores.length <= 5, `${p.clave}: ${g.marcasValores.length}`);
   }
@@ -409,7 +416,8 @@ test('serie: el eje va del mínimo al máximo con un 8 % de aire (sin bandas vac
 });
 
 test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pestaña sale de la semilla real', () => {
-  for (const p of t.PESTANAS) {
+  // La semilla real es solo la diaria: todas menos «24 h» (las finas, en sus pruebas).
+  for (const p of t.PESTANAS.filter((x) => x.clave !== '1d')) {
     const g = t.graficoPestana(SERIE, p.clave);
     assert.ok(g, p.clave);
     assert.ok(g.marcasFechas.length >= 2 && g.marcasFechas.length <= 6, `${p.clave}: ${g.marcasFechas.length}`);
@@ -489,7 +497,8 @@ test('cabecera: la cifra grande es el último punto de la serie (el de la cruz e
   const c = t.cifraGrande(SERIE, vivo);
   const ultimo = SERIE.puntos[SERIE.puntos.length - 1];
   assert.deepEqual(c, { valor: ultimo.valor, fecha: ultimo.fecha, fuente: 'serie' }, 'la serie, aunque el total en vivo sea otro (49.690 M$)');
-  for (const p of t.PESTANAS) {
+  // Con la diaria sola, todas menos «24 h» (con las finas, en su prueba).
+  for (const p of t.PESTANAS.filter((x) => t.pestanaDisponible(SERIE, x.clave))) {
     const g = t.graficoPestana(SERIE, p.clave);
     assert.equal(g.puntos[g.puntos.length - 1].valor, c.valor, `${p.clave}: la línea acaba en la cifra grande`);
     assert.ok(g.estadisticas.max.valor >= c.valor, `${p.clave}: el máximo (${g.estadisticas.max.valor}) ≥ la cifra grande (${c.valor})`);
@@ -665,9 +674,11 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   assert.ok(!porId('mercado-serie-vieja'));
   assert.ok(texto.includes(`${{ sube: '▲', baja: '▼', igual: '=' }[g.direccion]} ${g.cambioTexto}`), 'flecha y signo: el color nunca va solo');
   const pestanas = nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab');
-  assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
-  assert.deepEqual(pestanas.map((n) => textoDe(n)), ['1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
-  assert.deepEqual(pestanas.map((n) => n.props.accessibilityState.selected), [false, true, false, false, false, false]);
+  // «24 h», la primera; con la diaria sola (esta pantalla aún no lee la serie fina), desactivada.
+  assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['24 horas', '1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+  assert.deepEqual(pestanas.map((n) => textoDe(n)), ['24 h', '1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
+  assert.deepEqual(pestanas.map((n) => n.props.accessibilityState.selected), [false, false, true, false, false, false, false]);
+  assert.deepEqual(pestanas.map((n) => !!n.props.accessibilityState.disabled), [true, false, false, false, false, false, false]);
   assert.ok(nodos(arbol).some((n) => n?.props?.accessibilityRole === 'tablist'));
   // Datos clave: dos cifras con su nombre; 24 h de la serie (−0,1 %, nunca el +124 % de CoinGecko).
   const claves = nodos(arbol).filter((n) => n?.props?.style?.[0]?.width === '47%').map((n) => n.props.accessibilityLabel);
@@ -722,7 +733,7 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   conAncho(arbol, 358);
   arbol = pintar(MercadoPantalla, props);
   assert.ok(nodos(arbol).some((n) => n?.props?.testID === 'mercado-puente'), 'el hueco del 29/07 se une con un trazo de puntos');
-  assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [false, false, false, false, false, true]);
+  assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [false, false, false, false, false, false, true]);
 });
 
 test('la serie vieja (más de 3 días antes del dato de hoy): la cifra grande y el cambio son de su último día, y la pantalla y la tarjeta lo dicen', async () => {

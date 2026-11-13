@@ -460,8 +460,13 @@ function construirSerie(historias, hasta, dias = SERIE.dias) {
   return puntos;
 }
 
+/* Las series finas ya validadas y unidas a su diaria (unirSerieFina): de
+   cada una, el «generado» de su diaria. Solo esas viajan dentro de la serie
+   como «fina»; el archivo publicado de la diaria nunca la lleva. */
+const FINAS = new WeakMap();
 function validarSerie(s) {
-  exigir(esObjeto(s) && Object.keys(s).sort().join() === 'categoria,cobertura,discontinuos,fuente,generado,incluidos,pedidos,puntos,tokens,version',
+  const fina = esObjeto(s) && esObjeto(s.fina) && FINAS.get(s.fina) === s.generado ? s.fina : null;
+  exigir(esObjeto(s) && Object.keys(s).filter(k => !(fina && k === 'fina')).sort().join() === 'categoria,cobertura,discontinuos,fuente,generado,incluidos,pedidos,puntos,tokens,version',
     'serie: forma no válida');
   exigir(s.version === 1 && s.fuente === FUENTE.nombre && s.categoria === SERIE.categoria, 'serie: versión, fuente o categoría no válidas');
   exigir(typeof s.generado === 'string' && ISO.test(s.generado) && Number.isFinite(Date.parse(s.generado)), 'serie: hora no válida');
@@ -480,22 +485,368 @@ function validarSerie(s) {
   });
   for (let i = 1; i < puntos.length; i++) exigir(puntos[i - 1].fecha < puntos[i].fecha, 'serie: fechas desordenadas o repetidas');
   exigir(!puntos.length || puntos[puntos.length - 1].fecha <= s.generado.slice(0, 10), 'serie: punto posterior a su hora');
-  return { version: 1, fuente: FUENTE.nombre, categoria: SERIE.categoria, generado: s.generado, pedidos: s.pedidos, incluidos: s.incluidos,
+  const r = { version: 1, fuente: FUENTE.nombre, categoria: SERIE.categoria, generado: s.generado, pedidos: s.pedidos, incluidos: s.incluidos,
     discontinuos: s.discontinuos, cobertura: s.cobertura, tokens: s.tokens.slice(), puntos };
+  if (fina) r.fina = fina;
+  return r;
 }
-/* Un punto por línea: la historia del archivo en Git se lee bien. */
+/* Un punto por línea: la historia del archivo en Git se lee bien. Sin la
+   «fina»: el archivo de la diaria es siempre el de la versión 1. */
 function serializarSerie(serie) {
   const s = validarSerie(serie);
-  const { puntos, ...cab } = s;
+  const { puntos, fina, ...cab } = s;
   return JSON.stringify(cab).slice(0, -1) + ',"puntos":[' + (puntos.length ? '\n' + puntos.map(p => JSON.stringify(p)).join(',\n') + '\n' : '') + ']}\n';
 }
 /* Lo que la web y la app aceptan de /datos/tokenizacion-serie.json. */
 function serieValida(s) { try { validarSerie(s); return true; } catch { return false; } }
 
-/* Las pestañas del gráfico. Sin «1 D»: no hay datos de cada hora. La del año
-   en curso («ytd») no se llama «YTD» en castellano, que nadie entiende: lleva
-   el año de la serie («2026», nombre accesible «En 2026»; etiquetaPestana). */
+/* =====================================================================
+   Las series finas (13/11/2026): más detalle en el tiempo
+   ---------------------------------------------------------------------
+   Con los mismos tokens que la diaria, el flujo guarda dos series más finas
+   en /datos/tokenizacion-serie-fina.json (un archivo aparte: la app ya
+   instalada y la web en caché siguen leyendo la diaria de siempre, cuya
+   forma no cambia):
+   - «5m»: un punto cada 5 minutos de las últimas 24 horas (pestaña 24 h);
+   - «1h»: un punto cada hora de los últimos 30 días (1 S y 1 M).
+   3 M, 6 M, el año y 1 A siguen con la diaria: CoinGecko gratis da cada hora
+   hasta 90 días y 3 M son 91; guardar 90 días triplicaría el archivo (que
+   leen Inicio y la app) para ninguna pestaña.
+   Cómo se suma cada instante (cada token trae sus propias marcas de hora):
+   1. El tiempo se parte en cubos de 5 minutos o de 1 hora en UTC. De cada
+      token vale su último dato dentro del cubo; si no tiene, su último dato
+      anterior, como mucho de 24 horas antes («arrastre»: 288 cubos de 5
+      minutos o 24 de una hora). CoinGecko no da datos de todos los tokens a
+      todas horas: el 13/11/2026, el mayor (figure-heloc, más de la mitad de
+      la suma) no tenía datos de 3 a 5 horas cada mañana (UTC) ni de casi 24
+      horas cada fin de semana; con media hora de margen, la serie se quedaba
+      sin la mitad del mercado o no salía ningún día. La diaria ya arrastra
+      hasta 3 días.
+   2. Si a un token le falta más (o no se pudo leer), queda fuera de ESA
+      serie entera: ni se inventa ni se pinta un hundimiento. La serie dice
+      cuáles («fuera») y cuánto suman en su último dato («valorFuera»). Si
+      pesan más del 1 % (FUERA_MAX_PCT), esa serie no se guarda ese día.
+   3. Los que pasan más de una hora sin dato en la ventana van en «largos»:
+      la nota lo dice con sus nombres.
+   4. Antes de su primer dato, un token que CoinGecko empezó a seguir el
+      primer día de la ventana o después cuenta 0, como en la diaria.
+   Si una serie fina no se guarda, sus pestañas usan la siguiente (24 h, la
+   horaria; 1 S y 1 M, la diaria; 24 h sin ninguna fina sale desactivada).
+   Las tres acaban en el último dato de cada token (el de su lectura más
+   reciente): sin tokens fuera, el último punto de cada fina es exactamente
+   el de la diaria (la cifra grande); con tokens fuera, es la cifra grande
+   menos «valorFuera», y la nota y el aviso del gráfico lo dicen. La fina se
+   une a su diaria por «generado» (la misma ejecución del flujo); si no
+   casan, el gráfico usa la diaria. La genera
+   rwadar-app/tokenizacion/serie-diaria.mjs con --fina.
+   ===================================================================== */
+const MIN_MS = 60000, HORA_MS = 3600000;
+const ARRASTRE_MAX_MS = DIA_MS;
+const LARGO_MS = HORA_MS;
+const FUERA_MAX_PCT = 1;
+const RESOLUCIONES = Object.freeze({
+  '5m': Object.freeze({ clave: '5m', pasoMs: 5 * MIN_MS, ventanaMs: DIA_MS, arrastre: ARRASTRE_MAX_MS / (5 * MIN_MS), maxPuntos: 300, diasApi: 1 }),
+  '1h': Object.freeze({ clave: '1h', pasoMs: HORA_MS, ventanaMs: 30 * DIA_MS, arrastre: ARRASTRE_MAX_MS / HORA_MS, maxPuntos: 800, diasApi: 31 }),
+});
+// De la más fina a la menos: la primera que cubre una pestaña es la suya.
+const ORDEN_FINAS = Object.freeze(['5m', '1h']);
+const ISO_MINUTO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})Z$/;
+function isoMinuto(ms) { return new Date(ms).toISOString().slice(0, 16) + 'Z'; }
+/* «2026-11-13T09:25Z» → ms, o null si no es una hora UTC exacta y válida. */
+function msMinuto(iso) {
+  const m = typeof iso === 'string' ? ISO_MINUTO.exec(iso) : null;
+  if (!m) return null;
+  const ms = Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]));
+  return Number.isFinite(ms) && isoMinuto(ms) === iso ? ms : null;
+}
+
+/* La hora de España peninsular sin Intl (Hermes no lo trae entero): UTC+1
+   en invierno y UTC+2 en verano, del último domingo de marzo al último de
+   octubre, a la 01:00 UTC (la regla de la UE). { fecha: 'AAAA-MM-DD', hora: 'HH:MM' }. */
+function ultimoDomingoUTC(anio, mes) {
+  const ultimoDia = new Date(Date.UTC(anio, mes + 1, 0));
+  return Date.UTC(anio, mes, ultimoDia.getUTCDate() - ultimoDia.getUTCDay(), 1);
+}
+function horaEspana(ms) {
+  const anio = new Date(ms).getUTCFullYear();
+  const verano = ms >= ultimoDomingoUTC(anio, 2) && ms < ultimoDomingoUTC(anio, 9);
+  const iso = new Date(ms + (verano ? 2 : 1) * HORA_MS).toISOString();
+  return { fecha: iso.slice(0, 10), hora: iso.slice(11, 16) };
+}
+
+/* Sin «interval»: con days=1 CoinGecko da un punto cada 5 minutos y de 2 a 90
+   días, uno cada hora (comprobado el 13/11/2026 sin clave: 289 y 745 puntos,
+   en punto, más el de ese momento). 31 días y no 30: así sobra para que los
+   30 días de la pestaña 1 M salgan enteros aunque las lecturas tarden. */
+function urlHistoriaFina(id, clave) {
+  const r = RESOLUCIONES[clave];
+  exigir(r, 'serie fina: resolución no válida');
+  exigir(typeof id === 'string' && ID_TOKEN.test(id), 'id de token no válido');
+  return 'https://api.coingecko.com/api/v3/coins/' + id + '/market_chart?vs_currency=usd&days=' + r.diasApi;
+}
+/* De «market_caps» ([[ms, valor], …]) a los datos válidos en orden de hora.
+   Lanza si la forma no es la esperada. */
+function observacionesToken(caps) {
+  exigir(Array.isArray(caps) && caps.length <= 5000, 'CoinGecko: market_caps no es una lista');
+  const obs = [];
+  for (const p of caps) {
+    exigir(Array.isArray(p) && p.length === 2 && typeof p[0] === 'number' && Number.isFinite(p[0]), 'CoinGecko: punto de market_caps no válido');
+    if (valorCreible(p[1])) obs.push([p[0], p[1]]);
+  }
+  return obs.sort((a, b) => a[0] - b[0]);
+}
+
+/* Una serie fina. entradas: una por token, en el orden de la diaria:
+   { id, obs: [[ms, valor], …] en orden de hora (los de la lectura fina, con
+     el último dato del token al final y, delante, los de sus otras lecturas
+     anteriores al primero de la fina, para poder arrastrar al empezar la
+     ventana), primera: 'AAAA-MM-DD' (su primer día en la diaria) }
+   o, si su lectura fina falló, { id, obs: null, valor } (su último valor:
+   queda fuera y cuenta en «valorFuera»). La ventana acaba en el cubo del
+   dato más reciente y empieza «ventanaMs» antes. Devuelve
+   { puntos: [['AAAA-MM-DDTHH:MMZ', valor, tokens], …], fuera, valorFuera,
+     largos, arrastre } o lanza si no sale (pocos puntos o los de fuera pesan
+   más del 1 %). */
+function construirSerieFina(entradas, clave) {
+  const r = RESOLUCIONES[clave];
+  exigir(r, 'serie fina: resolución no válida');
+  exigir(Array.isArray(entradas) && entradas.length > 0 && entradas.length <= 250, 'serie fina: sin tokens');
+  const tokens = entradas.map((e, i) => {
+    exigir(esObjeto(e) && typeof e.id === 'string' && ID_TOKEN.test(e.id), 'serie fina: el token ' + (i + 1) + ' no es válido');
+    if (e.obs === null) {
+      exigir(valorCreible(e.valor), 'serie fina: el token ' + e.id + ' no tiene valor');
+      return { id: e.id, datos: null, valor: e.valor, fuera: true };
+    }
+    exigir(Array.isArray(e.obs) && e.obs.length > 0, 'serie fina: el token ' + e.id + ' no tiene datos');
+    // En orden de hora: el último dato de cada cubo pisa a los anteriores.
+    const cubos = new Map();
+    let antes = -Infinity;
+    for (const p of e.obs) {
+      exigir(Array.isArray(p) && Number.isFinite(p[0]) && p[0] >= antes && valorCreible(p[1]), 'serie fina: datos del token ' + e.id + ' no válidos');
+      antes = p[0];
+      cubos.set(Math.floor(p[0] / r.pasoMs) * r.pasoMs, p[1]);
+    }
+    const datos = [...cubos];
+    return { id: e.id, datos, primero: datos[0][0], ultimo: datos[datos.length - 1][0], valor: datos[datos.length - 1][1],
+      primera: msFecha(e.primera), fuera: false };
+  });
+  const conDatos = tokens.filter(t => t.datos);
+  exigir(conDatos.length > 0, 'serie fina ' + clave + ': ningún token con datos');
+  const hasta = Math.max(...conDatos.map(t => t.ultimo)), desde = hasta - r.ventanaMs;
+  const primerDia = msFecha(fechaDe(desde)), margen = r.arrastre * r.pasoMs;
+  // De cada token, cubo a cubo, la edad del dato que vale (el del cubo o el
+  // anterior más cercano): si en algún cubo pasa del margen, queda fuera.
+  for (const t of conDatos) {
+    t.nuevo = t.primera !== null && t.primera >= primerDia;
+    const inicio = t.nuevo ? Math.max(desde, t.primero) : desde;
+    let j = -1, edadMax = 0;
+    for (let b = desde; b <= hasta; b += r.pasoMs) {
+      while (j + 1 < t.datos.length && t.datos[j + 1][0] <= b) j++;
+      if (b < inicio) continue;
+      edadMax = Math.max(edadMax, j < 0 ? Infinity : b - t.datos[j][0]);
+    }
+    t.fuera = edadMax > margen;
+    t.largo = !t.fuera && edadMax > LARGO_MS;
+  }
+  const dentro = tokens.filter(t => !t.fuera);
+  exigir(dentro.length > 0, 'serie fina ' + clave + ': todos los tokens quedan fuera');
+  const puntos = [], indice = dentro.map(() => -1);
+  for (let b = desde; b <= hasta; b += r.pasoMs) {
+    let suma = 0, n = 0;
+    dentro.forEach((t, k) => {
+      while (indice[k] + 1 < t.datos.length && t.datos[indice[k] + 1][0] <= b) indice[k]++;
+      if (indice[k] < 0 || (t.nuevo && b < t.primero)) return;
+      suma += t.datos[indice[k]][1]; n++;
+    });
+    if (n > 0) puntos.push([isoMinuto(b), Math.round(suma), n]);
+  }
+  const fuera = tokens.filter(t => t.fuera), valorFuera = Math.round(fuera.reduce((s, t) => s + t.valor, 0));
+  exigir(puntos.length >= 2, 'serie fina ' + clave + ': menos de dos puntos');
+  const ultimo = puntos[puntos.length - 1][1], pct = redondear(valorFuera / (ultimo + valorFuera) * 100, 2);
+  exigir(pct <= FUERA_MAX_PCT, 'serie fina ' + clave + ': los que quedan fuera (' + fuera.map(t => t.id).join(', ') + ') pesan el ' + pct + ' % (como mucho ' + FUERA_MAX_PCT + ' %)');
+  return { puntos, fuera: fuera.map(t => t.id), valorFuera, largos: dentro.filter(t => t.largo).map(t => t.id), arrastre: r.arrastre };
+}
+
+/* El archivo tokenizacion-serie-fina.json, entero. Una serie puede ser null
+   (ese día no se pudo hacer); las dos null es «sin serie fina» (la semilla
+   de main y lo que publica la web si la de la rama no casa con la diaria).
+   Cada serie: { paso (s), arrastre (cubos), fuera, valorFuera, largos,
+   puntos }, con un punto por cubo, seguidos y sin huecos. */
+function listaTokens(lista, tokens, donde) {
+  exigir(Array.isArray(lista) && lista.every(t => typeof t === 'string' && tokens.includes(t)) && new Set(lista).size === lista.length, donde);
+  return lista.slice();
+}
+function validarSerieFina(f) {
+  exigir(esObjeto(f) && Object.keys(f).sort().join() === 'categoria,fuente,generado,series,tokens,version', 'serie fina: forma no válida');
+  exigir(f.version === 1 && f.fuente === FUENTE.nombre && f.categoria === SERIE.categoria, 'serie fina: versión, fuente o categoría no válidas');
+  exigir(typeof f.generado === 'string' && ISO.test(f.generado) && Number.isFinite(Date.parse(f.generado)), 'serie fina: hora no válida');
+  exigir(Array.isArray(f.tokens) && f.tokens.length >= 1 && f.tokens.length <= 250 && f.tokens.every(t => typeof t === 'string' && ID_TOKEN.test(t)) &&
+    new Set(f.tokens).size === f.tokens.length, 'serie fina: tokens no válidos');
+  exigir(esObjeto(f.series) && Object.keys(f.series).sort().join() === '1h,5m', 'serie fina: series no válidas');
+  const generadoMs = Date.parse(f.generado), series = {};
+  for (const clave of ORDEN_FINAS) {
+    const x = f.series[clave], r = RESOLUCIONES[clave], donde = 'serie fina ' + clave;
+    if (x === null) { series[clave] = null; continue; }
+    exigir(esObjeto(x) && Object.keys(x).sort().join() === 'arrastre,fuera,largos,paso,puntos,valorFuera' && x.paso === r.pasoMs / 1000 &&
+      Number.isInteger(x.arrastre) && x.arrastre >= 0 && x.arrastre * r.pasoMs <= ARRASTRE_MAX_MS, donde + ': forma no válida');
+    const fuera = listaTokens(x.fuera, f.tokens, donde + ': tokens fuera no válidos');
+    const largos = listaTokens(x.largos, f.tokens, donde + ': tokens sin dato no válidos');
+    exigir(fuera.length < f.tokens.length && !largos.some(t => fuera.includes(t)), donde + ': tokens fuera no válidos');
+    exigir(Number.isInteger(x.valorFuera) && x.valorFuera >= 0 && x.valorFuera < VALOR_MAX && (x.valorFuera === 0) === (fuera.length === 0),
+      donde + ': valor de los de fuera no válido');
+    exigir(Array.isArray(x.puntos) && x.puntos.length >= 2 && x.puntos.length <= r.maxPuntos, donde + ': puntos no válidos');
+    const dentro = f.tokens.length - fuera.length;
+    let antes = null;
+    const puntos = x.puntos.map(p => {
+      const ms = Array.isArray(p) && p.length === 3 ? msMinuto(p[0]) : null;
+      // Un punto por cubo, seguidos: cada uno, justo un paso después del anterior.
+      exigir(ms !== null && ms % r.pasoMs === 0 && (antes === null || ms === antes + r.pasoMs) && Number.isInteger(p[1]) && valorCreible(p[1]) &&
+        Number.isInteger(p[2]) && p[2] >= 1 && p[2] <= dentro, donde + ': punto no válido');
+      antes = ms;
+      return [p[0], p[1], p[2]];
+    });
+    const ultimo = puntos[puntos.length - 1];
+    exigir(antes - msMinuto(puntos[0][0]) <= r.ventanaMs, donde + ': abarca más de lo previsto');
+    exigir(ultimo[2] === dentro, donde + ': el último punto no suma todos los tokens de dentro');
+    exigir(x.valorFuera / (ultimo[1] + x.valorFuera) * 100 <= FUERA_MAX_PCT + 0.005, donde + ': los de fuera pesan más del ' + FUERA_MAX_PCT + ' %');
+    exigir(antes <= generadoMs && generadoMs - antes <= 2 * HORA_MS, donde + ': su último punto no es de cuando se generó');
+    series[clave] = { paso: x.paso, arrastre: x.arrastre, fuera, valorFuera: x.valorFuera, largos, puntos };
+  }
+  return { version: 1, fuente: FUENTE.nombre, categoria: SERIE.categoria, generado: f.generado, tokens: f.tokens.slice(), series };
+}
+/* Un punto por línea, como la diaria. */
+function serializarSerieFina(fina) {
+  const f = validarSerieFina(fina);
+  const serie = clave => {
+    const x = f.series[clave];
+    return x ? '{"paso":' + x.paso + ',"arrastre":' + x.arrastre + ',"fuera":' + JSON.stringify(x.fuera) + ',"valorFuera":' + x.valorFuera +
+      ',"largos":' + JSON.stringify(x.largos) + ',"puntos":[\n' + x.puntos.map(p => JSON.stringify(p)).join(',\n') + '\n]}' : 'null';
+  };
+  return '{"version":1,"fuente":' + JSON.stringify(f.fuente) + ',"categoria":' + JSON.stringify(f.categoria) + ',"generado":' + JSON.stringify(f.generado) +
+    ',"tokens":' + JSON.stringify(f.tokens) + ',"series":{"5m":' + serie('5m') + ',"1h":' + serie('1h') + '}}\n';
+}
+function serieFinaValida(f) { try { validarSerieFina(f); return true; } catch { return false; } }
+/* «Sin serie fina» para una diaria: lo que publica la web si no hay una que case. */
+function serieFinaVacia(diaria) {
+  const s = validarSerie(diaria);
+  return { version: 1, fuente: FUENTE.nombre, categoria: SERIE.categoria, generado: s.generado, tokens: s.tokens.slice(), series: { '5m': null, '1h': null } };
+}
+/* Las series de «fina» que valen para la diaria «diaria»: de la misma
+   ejecución («generado»), con los mismos tokens y cuyo último punto, más lo
+   que suman los de fuera, es el de la diaria (con un 0,1 % de margen, y del
+   mismo día o del anterior). { '5m': …, '1h': … } solo con las que valen. */
+function seriesEnlazadas(diaria, fina) {
+  let s, f;
+  try { s = validarSerie(diaria); f = validarSerieFina(fina); } catch { return {}; }
+  const u = s.puntos[s.puntos.length - 1], salida = {};
+  if (!u || f.generado !== s.generado || f.tokens.length !== s.tokens.length || !f.tokens.every(t => s.tokens.includes(t))) return salida;
+  for (const clave of ORDEN_FINAS) {
+    const x = f.series[clave];
+    const ult = x ? x.puntos[x.puntos.length - 1] : null;
+    const dias = ult ? (msFecha(u.fecha) - msFecha(ult[0].slice(0, 10))) / DIA_MS : NaN;
+    if (ult && (dias === 0 || dias === 1) && Math.abs((ult[1] + x.valorFuera) / u.valor - 1) <= 0.001) salida[clave] = x;
+  }
+  return salida;
+}
+/* La serie diaria con sus finas dentro («fina»), lista para graficoPestana,
+   cifraGrande, cambio24h y las notas. Si la fina no vale o no casa, la
+   diaria sola, igual que antes. null si la diaria no vale. */
+function unirSerieFina(diaria, fina) {
+  let s;
+  try { s = validarSerie(diaria); } catch { return null; }
+  const { fina: _anterior, ...sola } = s;
+  const validas = seriesEnlazadas(sola, fina), series = {};
+  for (const clave of ORDEN_FINAS) {
+    const x = validas[clave];
+    if (!x) continue;
+    series[clave] = Object.freeze({ clave, pasoMs: RESOLUCIONES[clave].pasoMs, arrastre: x.arrastre,
+      fuera: Object.freeze(x.fuera.slice()), valorFuera: x.valorFuera, largos: Object.freeze(x.largos.slice()),
+      puntos: Object.freeze(x.puntos.map(([t, valor, tokens]) => Object.freeze({ t, ms: msMinuto(t), fecha: t.slice(0, 10), valor, tokens }))) });
+  }
+  if (!Object.keys(series).length) return sola;
+  const unida = Object.freeze({ generado: sola.generado, series: Object.freeze(series) });
+  FINAS.set(unida, sola.generado);
+  return { ...sola, fina: unida };
+}
+/* La serie fina «clave» de una serie unida, o null. */
+function serieFinaDe(serie, clave) {
+  const f = esObjeto(serie) && esObjeto(serie.fina) && FINAS.get(serie.fina) === serie.generado ? serie.fina : null;
+  return f ? f.series[clave] || null : null;
+}
+function ultimoFino(serie) {
+  for (const clave of ORDEN_FINAS) { const f = serieFinaDe(serie, clave); if (f) return f.puntos[f.puntos.length - 1]; }
+  return null;
+}
+/* La serie de cada pestaña: la más fina que la cubre entera (su primer punto,
+   como mucho dos pasos después del principio de la pestaña): 24 h, la de 5
+   minutos; 1 S y 1 M, la horaria; las demás, la diaria. Si una fina falta
+   ese día, la siguiente: 24 h sin la de 5 minutos, la horaria (25 puntos);
+   1 S y 1 M sin la horaria, la diaria; 24 h solo con la diaria, ninguna
+   (serían dos puntos, una raya). { resolucion: '5m' | '1h' | '1d', pasoMs,
+   puntos, arrastre, fuera, valorFuera, largos } o null. */
+function seriePestana(serie, clave) {
+  const p = PESTANAS.find(x => x.clave === clave);
+  let s;
+  try { s = validarSerie(serie); } catch { return null; }
+  if (!p) return null;
+  for (const res of ORDEN_FINAS) {
+    const f = serieFinaDe(s, res);
+    const t = f ? tramo(f.puntos, clave) : null;
+    if (t && t[0].ms <= inicioPestana(p, t[t.length - 1].ms) + 2 * f.pasoMs) {
+      return { resolucion: res, pasoMs: f.pasoMs, puntos: t, arrastre: f.arrastre, fuera: f.fuera, valorFuera: f.valorFuera, largos: f.largos };
+    }
+  }
+  if (p.soloFina) return null;
+  const t = tramo(s.puntos, clave);
+  return t ? { resolucion: '1d', pasoMs: DIA_MS, puntos: t, arrastre: SERIE.huecoMaxDias, fuera: [], valorFuera: 0, largos: [] } : null;
+}
+/* ¿Tiene datos la pestaña? (las que no, salen desactivadas). */
+function pestanaDisponible(serie, clave) { return !!seriePestana(serie, clave); }
+
+/* Lo que dice la cruz de un punto. De la diaria, su fecha («08/11/2026»). De
+   las finas, en hora de España: en 24 h («5m»), la hora («18:35»); en las
+   horarias, el día y la hora («8 nov, 18:00»; en inglés, «8 Nov, 18:00»).
+   Con «largo» (lector de pantalla, tabla): «08/11/2026, 18:00 (hora de España)». */
+function textoInstante(p, idioma = 'es', resolucion = null, { largo = false } = {}) {
+  if (!esObjeto(p) || typeof p.ms !== 'number') return fechaCorta(p?.fecha, idioma);
+  const { fecha, hora } = horaEspana(p.ms), en = idioma === 'en';
+  if (largo) return fechaCorta(fecha, idioma) + ', ' + hora + (en ? ' (Spain time)' : ' (hora de España)');
+  if (resolucion === '5m') return hora;
+  return Number(fecha.slice(8, 10)) + ' ' + mesCorto(fecha, idioma) + ', ' + hora;
+}
+/* Las marcas de abajo de una pestaña fina, en hora de España y 5 como mucho:
+   hasta 36 horas, horas en punto («06:00», «12:00», cada 1, 2, 3, 4, 6, 8 o
+   12 horas); si no, medianoches («8 nov», cada 1, 2, 3, 5, 7, 10 o 14 días).
+   Cada una con el índice del primer punto desde esa hora. */
+function marcasFinas(t, idioma = 'es') {
+  const ms0 = t[0].ms, ms1 = t[t.length - 1].ms, enHoras = ms1 - ms0 <= 36 * HORA_MS;
+  const horas = [];
+  for (let ms = Math.ceil(ms0 / HORA_MS) * HORA_MS; ms <= ms1; ms += HORA_MS) {
+    const h = horaEspana(ms);
+    if (enHoras || h.hora === '00:00') horas.push({ ms, ...h });
+  }
+  const elegir = paso => (enHoras ? horas.filter(h => Number(h.hora.slice(0, 2)) % paso === 0) : horas.filter((_, i) => i % paso === 0));
+  let elegidas = [];
+  for (const paso of enHoras ? [1, 2, 3, 4, 6, 8, 12] : [1, 2, 3, 5, 7, 10, 14]) { elegidas = elegir(paso); if (elegidas.length <= 5) break; }
+  const salida = [];
+  let i = 0;
+  for (const h of elegidas) {
+    while (i < t.length && t[i].ms < h.ms) i++;
+    if (i >= t.length || salida.some(m => m.indice === i)) continue;
+    salida.push({ fecha: t[i].fecha, t: t[i].t, indice: i,
+      texto: enHoras ? h.hora : Number(h.fecha.slice(8, 10)) + ' ' + mesCorto(h.fecha, idioma) });
+  }
+  return salida;
+}
+
+/* Las pestañas del gráfico. «24 h» (13/11/2026) solo existe con una serie
+   fina («soloFina»; la de 5 minutos o, si ese día falta, la horaria): con la
+   diaria serían dos puntos, una raya; sin ellas, la pestaña sale desactivada. La del año en curso («ytd») no se llama
+   «YTD» en castellano, que nadie entiende: lleva el año de la serie («2026»,
+   nombre accesible «En 2026»; etiquetaPestana). Qué serie usa cada una:
+   seriePestana. */
 const PESTANAS = Object.freeze([
+  Object.freeze({ clave: '1d', corto: '24 h', nombre: '24 horas', largo: 'últimas 24 horas', dias: 1, soloFina: true }),
   Object.freeze({ clave: '1s', corto: '1 S', nombre: '1 semana', largo: 'última semana', dias: 7 }),
   Object.freeze({ clave: '1m', corto: '1 M', nombre: '1 mes', largo: 'último mes', dias: 30 }),
   Object.freeze({ clave: '3m', corto: '3 M', nombre: '3 meses', largo: 'últimos 3 meses', dias: 91 }),
@@ -504,9 +855,9 @@ const PESTANAS = Object.freeze([
   Object.freeze({ clave: '1a', corto: '1 A', nombre: '1 año', largo: 'último año', dias: 365 }),
 ]);
 const PESTANA_INICIAL = '1m';
-const CORTO_EN = Object.freeze({ '1s': '1W', '1m': '1M', '3m': '3M', '6m': '6M', ytd: 'YTD', '1a': '1Y' });
+const CORTO_EN = Object.freeze({ '1d': '24H', '1s': '1W', '1m': '1M', '3m': '3M', '6m': '6M', ytd: 'YTD', '1a': '1Y' });
 // El nombre accesible contiene el texto que se ve (WCAG 2.5.3: quien usa la voz dice «YTD»).
-const NOMBRE_EN = Object.freeze({ '1s': '1 week', '1m': '1 month', '3m': '3 months', '6m': '6 months', ytd: 'YTD, year to date', '1a': '1 year' });
+const NOMBRE_EN = Object.freeze({ '1d': '24 hours', '1s': '1 week', '1m': '1 month', '3m': '3 months', '6m': '6 months', ytd: 'YTD, year to date', '1a': '1 year' });
 /* El año de la pestaña «ytd»: el del último punto de la serie (si no hay
    serie, el del reloj). */
 function anioSerie(serie, ahora = Date.now()) {
@@ -525,23 +876,41 @@ function etiquetaPestana(clave, idioma = 'es', serie = null, ahora = Date.now())
 
 /* Los puntos de una pestaña. La del año en curso parte del primer punto del
    1 de enero o posterior: el dato de las 00:00 UTC del 1 de enero es el
-   cierre del 31 de diciembre (QA del 11/11/2026). Menos de dos puntos: null. */
+   cierre del 31 de diciembre (QA del 11/11/2026). Menos de dos puntos: null.
+   Sirve para la diaria y para las finas (sus puntos llevan la hora en «ms»):
+   «24 h» con puntos diarios, null (seriePestana). */
+function inicioPestana(p, finMs) {
+  return p.dias === null ? Date.UTC(new Date(finMs).getUTCFullYear(), 0, 1) : finMs - p.dias * DIA_MS;
+}
 function tramo(puntos, clave) {
   const p = PESTANAS.find(x => x.clave === clave);
   if (!p || !Array.isArray(puntos) || puntos.length < 2) return null;
+  if (typeof puntos[0].ms === 'number') {
+    const desde = inicioPestana(p, puntos[puntos.length - 1].ms);
+    const i = puntos.findIndex(x => x.ms >= desde);
+    const t = i < 0 ? [] : puntos.slice(i);
+    return t.length >= 2 ? t : null;
+  }
+  if (p.soloFina) return null;
   const ultimo = puntos[puntos.length - 1].fecha;
   const desde = p.dias === null ? ultimo.slice(0, 4) + '-01-01' : fechaDe(msFecha(ultimo) - p.dias * DIA_MS);
   const i = puntos.findIndex(x => x.fecha >= desde);
   const t = i < 0 ? [] : puntos.slice(i);
   return t.length >= 2 ? t : null;
 }
+/* Con puntos finos, además de la fecha (UTC), su hora («t», ISO): con ella
+   textoInstante dice «8 nov, 18:00» (hora de España). */
 function estadisticasTramo(t) {
   if (!Array.isArray(t) || t.length < 2) return null;
   let max = t[0], min = t[0];
   for (const p of t) { if (p.valor > max.valor) max = p; if (p.valor < min.valor) min = p; }
   const a = t[0], b = t[t.length - 1];
-  return { desde: a.fecha, hasta: b.fecha, inicio: a.valor, fin: b.valor, cambio: cambioPct(b.valor, a.valor),
-    max: { valor: max.valor, fecha: max.fecha }, min: { valor: min.valor, fecha: min.fecha }, puntos: t.length };
+  const fino = typeof a.ms === 'number';
+  const punto = q => (fino ? { valor: q.valor, fecha: q.fecha, t: q.t, ms: q.ms } : { valor: q.valor, fecha: q.fecha });
+  const e = { desde: a.fecha, hasta: b.fecha, inicio: a.valor, fin: b.valor, cambio: cambioPct(b.valor, a.valor),
+    max: punto(max), min: punto(min), puntos: t.length };
+  if (fino) { e.desdeT = a.t; e.hastaT = b.t; }
+  return e;
 }
 
 /* El eje de valores. El dibujo va del mínimo al máximo del tramo con un 8 %
@@ -590,6 +959,7 @@ function mesCorto(fecha, idioma) { const i = Number(fecha.slice(5, 7)) - 1; retu
    tramo, para colocarla. */
 function marcasFechas(t, idioma = 'es') {
   if (!Array.isArray(t) || t.length < 2) return [];
+  if (typeof t[0].ms === 'number') return marcasFinas(t, idioma);
   const ms0 = msFecha(t[0].fecha), ms1 = msFecha(t[t.length - 1].fecha), dias = Math.round((ms1 - ms0) / DIA_MS);
   const indice = new Map(t.map((p, i) => [p.fecha, i]));
   const dia = f => (idioma === 'en' ? Number(f.slice(8, 10)) + ' ' + mesCorto(f, idioma) : Number(f.slice(8, 10)) + ' ' + mesCorto(f, idioma));
@@ -612,11 +982,14 @@ function marcasFechas(t, idioma = 'es') {
 }
 
 /* Todo lo que pinta el gráfico de una pestaña, ya calculado y en el idioma
-   elegido: la web y la app solo dibujan. null si la pestaña no tiene datos. */
+   elegido: la web y la app solo dibujan. null si la pestaña no tiene datos.
+   Sale de la serie más fina que cubre la pestaña (seriePestana): «resolucion»
+   dice cuál ('5m', '1h' o '1d') y «pasoMs», cada cuánto va un punto. */
 function graficoPestana(serie, clave, idioma = 'es') {
   let s;
   try { s = validarSerie(serie); } catch { return null; }
-  const t = tramo(s.puntos, clave), e = estadisticasTramo(t);
+  const elegida = seriePestana(s, clave);
+  const t = elegida ? elegida.puntos : null, e = estadisticasTramo(t);
   if (!e) return null;
   const escala = escalaValores(e.min.valor, e.max.valor);
   if (!escala) return null;
@@ -626,8 +999,12 @@ function graficoPestana(serie, clave, idioma = 'es') {
   const anio = s.puntos[s.puntos.length - 1].fecha.slice(0, 4);
   const largo = en ? LARGO_EN[clave] : clave === 'ytd' ? 'en ' + anio : p.largo;
   const dir = direccion(e.cambio), aviso = avisoTokens(t, dir, idioma);
+  // En una fina con tokens fuera, la línea acaba por debajo de la cifra grande: se dice cuánto y por qué.
+  const fuera = avisoFuera(elegida, s.incluidos, idioma), dentro = s.incluidos - elegida.fuera.length;
+  // En las finas, la fecha y la hora de España («08/11/2026, 18:00 (hora de España)»).
+  const cuando = q => (elegida.resolucion === '1d' ? fechaCorta(q.fecha, idioma) : textoInstante(q, idioma, elegida.resolucion, { largo: true }));
   return {
-    clave, puntos: t, estadisticas: e, escala, direccion: dir,
+    clave, resolucion: elegida.resolucion, pasoMs: elegida.pasoMs, puntos: t, estadisticas: e, escala, direccion: dir,
     marcasValores: escala.marcas.map(v => ({ valor: v, texto: marcaValor(v, escala.paso, idioma) })),
     marcasFechas: marcasFechas(t, idioma),
     cambioTexto: porcentaje(e.cambio, idioma), periodoTexto: largo,
@@ -635,16 +1012,33 @@ function graficoPestana(serie, clave, idioma = 'es') {
     // de la serie, no la cifra total de hoy), y, si en el periodo entran o
     // salen tokens, el aviso de que parte del cambio se debe a eso.
     cambioFrase: en ? LARGO_EN[clave] : clave === 'ytd' ? 'en ' + anio : FRASE_ES[clave],
-    alcance: en ? `sum of the ${s.incluidos} largest` : `suma de los ${s.incluidos} mayores`,
+    alcance: dentro === s.incluidos ? (en ? `sum of the ${s.incluidos} largest` : `suma de los ${s.incluidos} mayores`)
+      : (en ? `sum of ${dentro} of the ${s.incluidos} largest` : `suma de ${dentro} de los ${s.incluidos} mayores`),
     avisoTokens: aviso,
+    fuera: elegida.fuera.length ? { tokens: elegida.fuera.slice(), valor: elegida.valorFuera } : null,
+    avisoFuera: fuera,
     etiqueta: (en
-      ? `Sum of the ${s.incluidos} largest tokens, ${largo}: from ${millones(e.inicio, 'en')} (${fechaCorta(e.desde, 'en')}) to ${millones(e.fin, 'en')} (${fechaCorta(e.hasta, 'en')}), ${porcentaje(e.cambio, 'en')}. High ${millones(e.max.valor, 'en')}, low ${millones(e.min.valor, 'en')}.`
-      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} (${fechaCorta(e.desde)}) a ${millones(e.fin)} (${fechaCorta(e.hasta)}), ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`) +
-      (aviso ? ` ${aviso[0].toUpperCase()}${aviso.slice(1)}.` : ''),
+      ? `Sum of the ${s.incluidos} largest tokens, ${largo}: from ${millones(e.inicio, 'en')} (${cuando(t[0])}) to ${millones(e.fin, 'en')} (${cuando(t[t.length - 1])}), ${porcentaje(e.cambio, 'en')}. High ${millones(e.max.valor, 'en')}, low ${millones(e.min.valor, 'en')}.`
+      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} (${cuando(t[0])}) a ${millones(e.fin)} (${cuando(t[t.length - 1])}), ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`) +
+      (aviso ? ` ${aviso[0].toUpperCase()}${aviso.slice(1)}.` : '') + (fuera ? ` ${fuera[0].toUpperCase()}${fuera.slice(1)}.` : ''),
   };
 }
-const LARGO_EN = Object.freeze({ '1s': 'past week', '1m': 'past month', '3m': 'past 3 months', '6m': 'past 6 months', ytd: 'year to date', '1a': 'past year' });
-const FRASE_ES = Object.freeze({ '1s': 'en la última semana', '1m': 'en el último mes', '3m': 'en los últimos 3 meses', '6m': 'en los últimos 6 meses',
+/* El aviso de una pestaña fina con tokens fuera (les faltan más de 24 horas
+   de datos en la ventana o no se pudieron leer): cuántos, cuánto suman y que
+   por eso su línea acaba por debajo de la cifra grande. '' si no hay. */
+function avisoFuera(elegida, incluidos, idioma = 'es') {
+  const n = elegida?.fuera?.length || 0;
+  if (!n) return '';
+  const v = elegida.valorFuera, en = idioma === 'en';
+  if (en) {
+    return `the line adds up ${incluidos - n} of the ${incluidos}: ${n === 1 ? '1 token is' : n + ' tokens are'} left out for lack of CoinGecko data in this period (${millones(v, 'en')}), ` +
+      `so it ends ${millones(v, 'en')} below the big figure`;
+  }
+  return `la línea suma ${incluidos - n} de los ${incluidos}: ${n === 1 ? 'queda fuera 1 token' : `quedan fuera ${n} tokens`} sin datos de CoinGecko en este periodo (${millones(v)}), ` +
+    `así que acaba ${millones(v)} por debajo de la cifra grande`;
+}
+const LARGO_EN = Object.freeze({ '1d': 'past 24 hours', '1s': 'past week', '1m': 'past month', '3m': 'past 3 months', '6m': 'past 6 months', ytd: 'year to date', '1a': 'past year' });
+const FRASE_ES = Object.freeze({ '1d': 'en las últimas 24 horas', '1s': 'en la última semana', '1m': 'en el último mes', '3m': 'en los últimos 3 meses', '6m': 'en los últimos 6 meses',
   ytd: 'en lo que va de año', '1a': 'en el último año' });
 /* Si el primer y el último día del tramo no suman los mismos tokens (un token
    empezó a cotizar dentro del periodo), el cambio no es solo de precio: se
@@ -682,8 +1076,11 @@ function coberturaTexto(serie, idioma = 'es') {
 function entranAMitad(serie, clave) {
   let s;
   try { s = validarSerie(serie); } catch { return 0; }
-  const t = tramo(s.puntos, clave);
-  return t ? Math.max(0, s.incluidos - t[0].tokens) : 0;
+  const e = seriePestana(s, clave);
+  if (!e) return 0;
+  // En las finas, los que suma su último punto (sin los de fuera de esa serie).
+  const fin = e.resolucion === '1d' ? s.incluidos : e.puntos[e.puntos.length - 1].tokens;
+  return Math.max(0, fin - e.puntos[0].tokens);
 }
 /* «Cómo se calcula»: cuántos entran, su cuota del total de hoy, cuántos
    quedan fuera y por qué, los días sin pintar y, con la pestaña elegida
@@ -694,8 +1091,13 @@ function notaSerie(serie, idioma = 'es', clave = null) {
   const cob = coberturaTexto(s, idioma);
   const mitad = clave ? entranAMitad(s, clave) : 0;
   const huecos = s.discontinuos, sinLeer = s.pedidos - s.incluidos - s.discontinuos;
+  // Con una pestaña de la serie de 5 minutos o de horas, cómo se suma cada
+  // punto, quién pasa ratos sin dato y quién queda fuera; los días sin
+  // pintar son cosa de la diaria.
+  const elegida = clave ? seriePestana(s, clave) : null;
+  const fina = elegida && elegida.resolucion !== '1d' ? notaFina(elegida, s.incluidos, idioma) : '';
   // Los días que no se pintan (algún token sin dato en los 3 días anteriores).
-  const p = s.puntos, sinPintar = p.length < 2 ? 0 : Math.round((msFecha(p[p.length - 1].fecha) - msFecha(p[0].fecha)) / DIA_MS) + 1 - p.length;
+  const p = s.puntos, sinPintar = fina || p.length < 2 ? 0 : Math.round((msFecha(p[p.length - 1].fecha) - msFecha(p[0].fecha)) / DIA_MS) + 1 - p.length;
   // Hasta 3, se nombran («Falta el 29/07/2026»); si son más, se cuentan.
   const faltan = sinPintar > 0 && sinPintar <= 3 ? diasQueFaltan(p).map(f => fechaCorta(f, idioma)) : [];
   const lista = faltan.length < 2 ? faltan.join('') : faltan.slice(0, -1).join(', ') + (idioma === 'en' ? ' and ' : ' y el ') + faltan[faltan.length - 1];
@@ -705,7 +1107,7 @@ function notaSerie(serie, idioma = 'es', clave = null) {
       ` real-world-asset tokens tracked by CoinGecko (${cob} of today's category total). If a token started trading within the period, it enters on that day.` +
       (mitad > 0 ? ` In this period, ${mitad} of the ${s.incluidos} join midway (from the day CoinGecko starts tracking them).` : '') +
       (huecos > 0 ? ` ${huecos} ${huecos === 1 ? 'is' : 'are'} left out because ${huecos === 1 ? 'its' : 'their'} CoinGecko history is missing days.` : '') +
-      (sinLeer > 0 ? ` ${sinLeer} could not be read.` : '') +
+      (sinLeer > 0 ? ` ${sinLeer} could not be read.` : '') + fina +
       (faltan.length === 1 ? ` ${lista} is missing: there is no complete data for that day, so it is not drawn.`
         : faltan.length > 1 ? ` ${lista} are missing: there is no complete data for those days, so they are not drawn.`
         : sinPintar > 0 ? ` Days without complete data are not drawn (${sinPintar} in the series).` : '');
@@ -714,10 +1116,34 @@ function notaSerie(serie, idioma = 'es', clave = null) {
     ` tokens de activos reales que sigue CoinGecko (${cob} del total de la categoría hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.` +
     (mitad > 0 ? ` En este periodo, ${mitad} de los ${s.incluidos} entran a mitad (desde el día en que CoinGecko los sigue).` : '') +
     (huecos > 0 ? ` Quedan fuera ${huecos} a los que les faltan días en CoinGecko.` : '') +
-    (sinLeer > 0 ? (sinLeer === 1 ? ' No se pudo leer 1.' : ` No se pudieron leer ${sinLeer}.`) : '') +
+    (sinLeer > 0 ? (sinLeer === 1 ? ' No se pudo leer 1.' : ` No se pudieron leer ${sinLeer}.`) : '') + fina +
     (faltan.length === 1 ? ` Falta el ${lista}: ese día no hay dato completo y no se pinta.`
       : faltan.length > 1 ? ` Faltan el ${lista}: esos días no hay dato completo y no se pintan.`
       : sinPintar > 0 ? ` Los días sin dato completo no se pintan (${sinPintar} en la serie).` : '');
+}
+/* La frase de «Cómo se calcula» de una pestaña fina: cada cuánto va un
+   punto, en qué hora y qué vale de cada token (con el margen de su serie);
+   qué tokens pasan más de una hora sin dato (hasta 3, con su nombre) y, si
+   los hay, los que quedan fuera de esa serie y cuánto suman. */
+function listaNombres(nombres, idioma) {
+  return nombres.length < 2 ? nombres.join('') : nombres.slice(0, -1).join(', ') + (idioma === 'en' ? ' and ' : ' y ') + nombres[nombres.length - 1];
+}
+function notaFina(elegida, incluidos, idioma = 'es') {
+  const en = idioma === 'en', cinco = elegida.resolucion === '5m';
+  const horas = Math.round(elegida.arrastre * elegida.pasoMs / HORA_MS), nl = elegida.largos.length;
+  const quienes = nl <= 3 ? ' (' + listaNombres(elegida.largos, idioma) + ')' : '';
+  const fuera = avisoFuera(elegida, incluidos, idioma);
+  const frase = x => (x ? ' ' + x[0].toUpperCase() + x.slice(1) + '.' : '');
+  if (en) {
+    return ` In this tab, one point every ${cinco ? '5 minutes' : 'hour'}, in Spain (mainland) time: each token's latest figure in that ${cinco ? '5-minute slot' : 'hour'}` +
+      ` (if it has none, its previous one, at most ${horas} hours old).` +
+      (nl ? ` ${nl === 1 ? '1 token' : nl + ' tokens'}${quienes} ${nl === 1 ? 'goes' : 'go'} more than an hour without CoinGecko data at times: then ${nl === 1 ? 'its' : 'their'} latest figure counts.` : '') +
+      frase(fuera);
+  }
+  return ` En esta pestaña, un punto cada ${cinco ? '5 minutos' : 'hora'}, en hora de España peninsular: el último dato de cada token en ${cinco ? 'esos 5 minutos' : 'esa hora'}` +
+    ` (si no tiene, el anterior, como mucho de ${horas} horas antes).` +
+    (nl ? ` ${nl === 1 ? '1 token' : nl + ' tokens'}${quienes} ${nl === 1 ? 'pasa' : 'pasan'} ratos de más de una hora sin dato en CoinGecko: ahí cuenta su último dato.` : '') +
+    frase(fuera);
 }
 /* Las fechas que faltan entre el primer y el último punto. */
 function diasQueFaltan(puntos) {
@@ -746,18 +1172,32 @@ function notaCorta(serie, idioma = 'es') {
 /* La cifra grande (/mercado/, tarjeta de Inicio y app): el último punto de la
    serie, el final de la línea. Es la misma que la burbuja de la cruz en el
    último día y nunca supera el máximo del periodo. Sin serie, el total de la
-   categoría de CoinGecko (y quien pinta lo avisa). null si no hay nada. */
+   categoría de CoinGecko (y quien pinta lo avisa). null si no hay nada.
+   Con las series finas, el último punto de la diaria (todos sus tokens) con
+   la hora («t») del último de la más fina: las tres acaban en el último dato
+   de cada token, así que es el mismo valor que el final de cada línea; si en
+   una fina quedan tokens fuera, su línea acaba «valorFuera» por debajo y su
+   aviso lo dice (seriesEnlazadas lo comprueba). */
 function cifraGrande(serie, vivo) {
   const p = serie?.puntos;
+  const fino = ultimoFino(serie);
+  if (fino && Array.isArray(p) && p.length) return { valor: p[p.length - 1].valor, fecha: fino.fecha, t: fino.t, fuente: 'serie' };
   if (Array.isArray(p) && p.length) { const u = p[p.length - 1]; return { valor: u.valor, fecha: u.fecha, fuente: 'serie' }; }
   const v = vivo?.total?.valor;
   return typeof v === 'number' && Number.isFinite(v) && v > 0 ? { valor: v, fecha: vivo.fecha ?? null, fuente: 'total' } : null;
 }
-/* «Cambio en 24 h»: el de la serie si sus dos últimos puntos son de días
-   seguidos (el de la cifra grande); si no, el de la categoría de CoinGecko
-   si es creíble (|x| < 25 %); si tampoco, null («—»). Nunca el +124 % que
-   daba CoinGecko el 11/11/2026 con el mercado plano. */
+/* «Cambio en 24 h»: con una serie fina, del primer al último punto de la
+   pestaña «24 h» (de hace 24 horas, o 5 minutos menos, a ahora: los mismos
+   que se pintan; la de 5 minutos o, si falta, la horaria); si no, el de la serie diaria si sus dos últimos
+   puntos son de días seguidos (el de la cifra grande); si no, el de la
+   categoría de CoinGecko si es creíble (|x| < 25 %); si tampoco, null («—»).
+   Nunca el +124 % que daba CoinGecko el 11/11/2026 con el mercado plano. */
 function cambio24h(serie, vivo) {
+  const e = seriePestana(serie, '1d');
+  if (e) {
+    const a = e.puntos[0], b = e.puntos[e.puntos.length - 1];
+    return { cambio: cambioPct(b.valor, a.valor), fuente: 'serie', desde: a.fecha, hasta: b.fecha, desdeT: a.t, hastaT: b.t, resolucion: e.resolucion };
+  }
   const p = serie?.puntos;
   if (Array.isArray(p) && p.length >= 2) {
     const a = p[p.length - 2], b = p[p.length - 1];
@@ -808,28 +1248,33 @@ function subtituloCifra(serie, idioma = 'es') {
   try { s = validarSerie(serie); } catch { s = null; }
   const u = s?.puntos?.[s.puntos.length - 1];
   if (!u) return idioma === 'en' ? 'CoinGecko category total, all tokens' : 'Total de la categoría en CoinGecko, con todos sus tokens';
+  // Con las series finas, también la hora (de España) de la cifra: «13/11/2026, 10:20».
+  const fino = ultimoFino(s);
+  const cuando = fino ? fechaCorta(horaEspana(fino.ms).fecha, idioma) + ', ' + horaEspana(fino.ms).hora : fechaCorta(u.fecha, idioma);
   // Un espacio duro antes del «·»: en el móvil, si no cabe, baja «completa · 11/11/2026» entero y no un «· 11/11/2026» suelto.
-  return idioma === 'en' ? `Sum of the ${s.incluidos} largest tokens with a complete history\u00a0· ${fechaCorta(u.fecha, 'en')}`
-    : `Suma de los ${s.incluidos} mayores tokens con historia completa\u00a0· ${fechaCorta(u.fecha)}`;
+  return idioma === 'en' ? `Sum of the ${s.incluidos} largest tokens with a complete history\u00a0· ${cuando}`
+    : `Suma de los ${s.incluidos} mayores tokens con historia completa\u00a0· ${cuando}`;
 }
 /* Coordenadas de los puntos en un dibujo de ancho «ancho» y alto «alto» (sin
    márgenes: los pone quien dibuja). x por fecha; y por la escala del eje. */
+const msPunto = p => (typeof p.ms === 'number' ? p.ms : msFecha(p.fecha));
 function coordenadas(g, ancho, alto) {
   if (!g) return [];
-  const t = g.puntos, ms0 = msFecha(t[0].fecha), ms1 = msFecha(t[t.length - 1].fecha);
+  const t = g.puntos, ms0 = msPunto(t[0]), ms1 = msPunto(t[t.length - 1]);
   const { lo, hi } = g.escala;
-  return t.map(p => ({ x: ms1 > ms0 ? (msFecha(p.fecha) - ms0) / (ms1 - ms0) * ancho : 0,
+  return t.map(p => ({ x: ms1 > ms0 ? (msPunto(p) - ms0) / (ms1 - ms0) * ancho : 0,
     y: alto - (p.valor - lo) / (hi - lo) * alto }));
 }
-/* Los tramos de días seguidos de una pestaña, como pares [primero, último]
-   de índices. Donde falta un día (no se pinta), la línea se corta: el dibujo
-   no une dos días con una recta que parecería un dato. */
+/* Los tramos de días seguidos de una pestaña (o de cubos de 5 minutos o de
+   una hora seguidos, en las finas), como pares [primero, último] de índices.
+   Donde falta un punto (no se pinta), la línea se corta: el dibujo no une
+   dos puntos con una recta que parecería un dato. */
 function tramosSeguidos(g) {
   if (!g) return [];
-  const t = g.puntos, salida = [];
+  const t = g.puntos, salida = [], paso = g.pasoMs || DIA_MS;
   let ini = 0;
   for (let i = 1; i <= t.length; i++) {
-    if (i === t.length || msFecha(t[i].fecha) - msFecha(t[i - 1].fecha) > DIA_MS) { salida.push([ini, i - 1]); ini = i; }
+    if (i === t.length || msPunto(t[i]) - msPunto(t[i - 1]) > paso) { salida.push([ini, i - 1]); ini = i; }
   }
   return salida;
 }
@@ -841,18 +1286,49 @@ function tramosSeguidos(g) {
 function trazosSvg(coords, tramos, suelo) {
   const f = n => n.toFixed(1);
   if (!coords.length || !tramos.length) return { linea: '', area: '', puentes: '' };
-  const linea = tramos.map(([a, b]) => coords.slice(a, b + 1).map((c, k) => (k ? 'L' : 'M') + f(c.x) + ' ' + f(c.y)).join(' ')).join(' ');
+  const camino = (a, b) => indicesPintar(coords, a, b).map((i, k) => (k ? 'L' : 'M') + f(coords[i].x) + ' ' + f(coords[i].y)).join(' ');
+  const linea = tramos.map(([a, b]) => camino(a, b)).join(' ');
   const primero = tramos[0][0], ultimo = tramos[tramos.length - 1][1];
-  const area = coords.slice(primero, ultimo + 1).map((c, k) => (k ? 'L' : 'M') + f(c.x) + ' ' + f(c.y)).join(' ') +
+  const area = camino(primero, ultimo) +
     ` L${f(coords[ultimo].x)} ${f(suelo)} L${f(coords[primero].x)} ${f(suelo)} Z`;
   const puentes = tramos.slice(1).map(([a], i) => { const b = tramos[i][1];
     return `M${f(coords[b].x)} ${f(coords[b].y)} L${f(coords[a].x)} ${f(coords[a].y)}`; }).join(' ');
   return { linea, area, puentes };
 }
-/* El punto más cercano a una «x» (para la cruz). */
+/* Para pintar 720 puntos en un móvil sin tirones: si en un tramo hay más
+   puntos que medios píxeles a lo ancho, de cada columna de un píxel se
+   quedan el punto más alto y el más bajo (en su orden), más el primero y el
+   último del tramo. La línea se ve igual, no se pierde ningún máximo ni
+   mínimo y la cruz y la tabla siguen con todos los puntos. Con la diaria
+   (365 puntos en 300 px o más) no quita ninguno. Devuelve los índices. */
+function indicesPintar(coords, a, b) {
+  const todos = [];
+  if (b - a + 1 <= 2 * (coords[b].x - coords[a].x) + 2) { for (let i = a; i <= b; i++) todos.push(i); return todos; }
+  const salida = [a];
+  for (let i = a + 1; i < b;) {
+    const columna = Math.floor(coords[i].x);
+    let alto = i, bajo = i, j = i;
+    for (; j < b && Math.floor(coords[j].x) === columna; j++) {
+      if (coords[j].y < coords[alto].y) alto = j;
+      if (coords[j].y > coords[bajo].y) bajo = j;
+    }
+    if (alto === bajo) salida.push(alto); else salida.push(Math.min(alto, bajo), Math.max(alto, bajo));
+    i = j;
+  }
+  salida.push(b);
+  return salida;
+}
+/* El punto más cercano a una «x» (para la cruz). Búsqueda binaria: las «x»
+   van en orden; con 720 puntos, cada movimiento del dedo mira unos 10. Si
+   dos están a la misma distancia, el primero. */
 function indiceCercano(coords, x) {
-  let mejor = 0;
-  for (let i = 1; i < coords.length; i++) if (Math.abs(coords[i].x - x) < Math.abs(coords[mejor].x - x)) mejor = i;
+  if (!Array.isArray(coords) || coords.length < 2) return 0;
+  let lo = 0, hi = coords.length - 1;
+  if (x <= coords[0].x) return 0;
+  if (x >= coords[hi].x) { while (hi > 0 && coords[hi - 1].x === coords[hi].x) hi--; return hi; }
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (coords[m].x <= x) lo = m; else hi = m; }
+  let mejor = Math.abs(coords[hi].x - x) < Math.abs(coords[lo].x - x) ? hi : lo;
+  while (mejor > 0 && coords[mejor - 1].x === coords[mejor].x) mejor--;
   return mejor;
 }
 
@@ -863,6 +1339,8 @@ module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVa
   diasSinDato, tramo, estadisticasTramo, escalaValores, marcaValor, marcasFechas, graficoPestana, notaSerie, coordenadas, indiceCercano, tramosSeguidos, trazosSvg,
   avisoTokens, serieAtrasada, RETRASO_MAX_DIAS, notaCorta, diasQueFaltan,
   CAMBIO_24H_MAX, cambio24hCreible, etiquetaPestana, anioSerie, coberturaTexto, entranAMitad, cifraGrande, cambio24h, esHoy, cuandoDato,
-  lineaTotalCategoria, explicacionCambio, subtituloCifra };
+  lineaTotalCategoria, explicacionCambio, subtituloCifra,
+  RESOLUCIONES, FUERA_MAX_PCT, avisoFuera, urlHistoriaFina, observacionesToken, construirSerieFina, validarSerieFina, serializarSerieFina, serieFinaValida, serieFinaVacia,
+  seriesEnlazadas, unirSerieFina, serieFinaDe, seriePestana, pestanaDisponible, textoInstante, horaEspana, indicesPintar, isoMinuto, msMinuto };
 
 window.RWAdarTokenizacionModelo=module.exports; })();
