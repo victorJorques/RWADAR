@@ -45,8 +45,14 @@ Carpeta: `rwadar-app/data/verificaciones/2026-11-13-v2/`.
 - PR #132 (sincronización) y #133 (sello).
 - OTA n.º 28 enviada.
 - «Publicar web»: Cloudflare tuvo una avería en su API de Workers/Pages
-  desde las 15:42 UTC (publicaciones n.º 86, 87 y 88 rechazadas por
-  Cloudflare, no por nuestras compuertas). Se publica en cuanto lo resuelvan.
+  desde las 15:42 UTC (publicaciones n.º 86 a 90 rechazadas por Cloudflare,
+  no por nuestras compuertas). Se publicó en cuanto volvió: preview n.º 91 y
+  producción n.º 92 (16:07 UTC), comprobadas en vivo (Spiko 2,40 % y
+  3,98 %, Pottendorfer «Desde 80 € (13/11)», 5 noticias del 13/11, serie
+  hasta el 13/11 con 41.836 M$; novedades 8/8, sesión 6/6, avisos 6/6,
+  colabora 11/11 y radar 19/19).
+- Aviso «Ofertas y noticias al día (13/11)» enviado con avisar-novedad.yml
+  n.º 2 (tipo actualización, enlace a Inicio).
 
 ## 4. Incidencias del día
 

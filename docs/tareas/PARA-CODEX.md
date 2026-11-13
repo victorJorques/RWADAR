@@ -20,8 +20,10 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   tarde). Las pruebas de noticias de la app y de Chromium usan ahora una
   edición fija de ejemplo (`rwadar-movil/fixtures/noticias-ejemplo.json`) y
   comprueban la publicada con reglas generales.
-- **Web:** Cloudflare rechazó «Publicar web» n.º 86–88 por su avería de la API
-  de Workers/Pages (15:42 UTC); se publica cuando lo resuelvan.
+- **Web:** Cloudflare rechazó «Publicar web» n.º 86–90 por su avería de la API
+  de Workers/Pages (15:42 UTC). Publicada al volver: n.º 91 (preview) y
+  n.º 92 (producción, 16:07 UTC), comprobadas en vivo. Aviso «Ofertas y
+  noticias al día (13/11)» enviado (avisar-novedad n.º 2).
 - **Parado:** el límite de uso de 5 horas cortó a las ~10:00 UTC los cuatro
   trabajos en marcha; se retomaron a las 14:09 UTC.
 
