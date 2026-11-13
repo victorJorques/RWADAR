@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-12",
+  "actualizadoEl": "2026-11-13",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "novedades al abrir la app y la web, #125",
+  "nota": "radar de Inicio legible, #128",
   "revisionAprobada": {
-    "commit": "978d1062bd634cdd88a026f55712558bd9a90e28",
-    "contenidoSha256": "sha256:ffbca82795c9e6bb416e341e47ad83853a46af72dc7d0701a0f1d1810dd3c81c",
+    "commit": "08046a06e2c292c67a4c6f479a394dab1b2211f0",
+    "contenidoSha256": "sha256:0645c25af7904bd65ff0aeed21f6a2d7068715b33cf31310e43a8c456d386b0a",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
