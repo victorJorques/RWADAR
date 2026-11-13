@@ -267,7 +267,11 @@ const DIA_MS = 86400000;
 /* CoinGecko simulado: el total de la categoría, la lista de 45 tokens y un año y un día de market_caps de
    cada uno. Con «pesos», el valor de cada token de la lista (por defecto, (100 − i) × 1e8). */
 const TOTAL_CATEGORIA = 4000e8;
-function coingeckoSerie({ fallan = [], listaFalla = false, conHueco = [], categoriaFalla = false, pesos = i => (100 - i) * 1e8, totalCategoria = TOTAL_CATEGORIA } = {}) {
+/* Las finas (13/11/2026): con days=1, un punto cada 5 minutos en punto desde hace 24 horas y otro con la hora
+   de la lectura («ahora»); con days=31, uno cada hora. «fallanFinas»: [id, '5m' | '1h'] que responden 429;
+   «pesoFino(n)»: el valor del token n en las finas; «huecosFinos»: { id: [[desde, hasta], …] } sin datos. */
+function coingeckoSerie({ fallan = [], listaFalla = false, conHueco = [], categoriaFalla = false, pesos = i => (100 - i) * 1e8, totalCategoria = TOTAL_CATEGORIA,
+  fallanFinas = [], ahora = () => Date.parse('2026-11-11T07:03:20Z'), pesoFino = n => (100 - n) * 1e8 * 1.1, huecosFinos = {} } = {}) {
   const llamadas = [];
   const fin = Date.parse('2026-11-11T00:00:00Z');
   const fetchImpl = async (url) => {
@@ -283,6 +287,16 @@ function coingeckoSerie({ fallan = [], listaFalla = false, conHueco = [], catego
     const id = url.match(/\/coins\/([a-z0-9-]+)\/market_chart/)[1];
     if (fallan.includes(id)) return new Response('{}', { status: 429, headers: { 'retry-after': '1' } });
     const n = Number(id.split('-')[1]);
+    const fina = /days=1$/.test(url) ? '5m' : /days=31$/.test(url) ? '1h' : null;
+    if (fina) {
+      if (fallanFinas.some(([i, r]) => i === id && r === fina)) return new Response('Throttled', { status: 429, headers: { 'retry-after': '120' } });
+      const lectura = ahora(), paso = fina === '5m' ? 300000 : 3600000, desde = lectura - (fina === '5m' ? 1 : 31) * DIA_MS;
+      const valor = ms => Math.round(pesoFino(n) * (1 + Math.sin(ms / 7e6 + n) / 500));
+      const puntos = [], sin = huecosFinos[id] || [];
+      for (let ms = Math.ceil(desde / paso) * paso; ms <= lectura; ms += paso) if (!sin.some(([a, b]) => ms >= a && ms < b)) puntos.push([ms, valor(ms)]);
+      puntos.push([lectura, valor(lectura)]);
+      return new Response(JSON.stringify({ prices: puntos, market_caps: puntos, total_volumes: puntos }), { status: 200 });
+    }
     // Con hueco: CoinGecko no da 12 días seguidos de su historia (del día 200 al 211).
     // Como la API pública con days=365: del día de hace 364 a hoy (a days=366 responde 401).
     const puntos = [...Array(365)].map((_, k) => [fin - (364 - k) * DIA_MS, (100 - n) * 1e8 * (1 + k / 3650)]).filter((_, k) => !conHueco.includes(id) || k < 201 || k > 212);
@@ -351,24 +365,35 @@ test('serie diaria: si falla un token de menos del 1 % entra sin él y lo dice; 
   assert.equal(fs.readFileSync(salida, 'utf8'), 'serie=false\nserie=false\nserie=false\n');
 });
 
-test('el flujo rehace la serie sin bloquear la foto y publicar.yml la trae de la rama', () => {
-  const pasoSerie = paso(FLUJO, 'Rehacer la serie de un año (mayores tokens con historia completa)');
+test('el flujo rehace la serie y las finas sin bloquear la foto y publicar.yml las trae de la rama', () => {
+  const pasoSerie = paso(FLUJO, 'Rehacer la serie de un año y las finas (cada 5 minutos y cada hora)');
   assert.match(pasoSerie, /continue-on-error: true/);
   const limitePaso = Number(pasoSerie.match(/^\s*timeout-minutes: (\d+)\s*$/m)?.[1]);
   const limiteTrabajo = Number(FLUJO.match(/^    timeout-minutes: (\d+)\s*$/m)?.[1]);
   assert.ok(limitePaso > 0, 'el paso de la serie tiene su propio timeout-minutes');
-  assert.ok(limitePaso < limiteTrabajo, `el límite del paso (${limitePaso}) es menor que el del trabajo (${limiteTrabajo})`);
-  assert.ok(limitePaso >= 12 && limitePaso <= 14, `el paso, de 12 a 14 minutos (${limitePaso}): con 13 s entre 42 llamadas hacen falta unos 9`);
-  assert.ok(limiteTrabajo >= 25 && limiteTrabajo <= 30, `el trabajo, de 25 a 30 minutos (${limiteTrabajo})`);
-  // Las constantes del script, las del encargo: 13 s entre llamadas y un 1 % de pérdida como mucho.
+  // Las constantes del script, las del encargo: 13 s entre llamadas (con 3 s CoinGecko daba 429), un 1 % de pérdida como
+  // mucho y sus dos plazos: la diaria no empieza llamadas pasados 20 minutos ni las finas pasados 34.
   const script = leer('rwadar-app/tokenizacion/serie-diaria.mjs');
   assert.match(script, /^const PAUSA_MS = 13000;$/m);
   assert.match(script, /^const PERDIDA_MAX_PCT = 1;$/m);
-  assert.match(pasoSerie, /node rwadar-app\/tokenizacion\/serie-diaria\.mjs "\$DATOS\/tokenizacion-serie\.json"/);
-  assert.match(paso(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /steps\.foto\.outputs\.cambiado == 'true' \|\| steps\.serie\.outputs\.serie == 'true'/);
+  const plazo = nombre => Number(script.match(new RegExp(`^const ${nombre} = (\\d+) \\* 60000;$`, 'm'))?.[1]);
+  const [diaria, finas] = [plazo('PLAZO_DIARIA_MS'), plazo('PLAZO_FINA_MS')];
+  // Unas 102 llamadas (42 de la diaria y dos por cada uno de los ~30 que entran) con 13 s: unos 9 + 13 minutos.
+  assert.ok(diaria >= 14 && diaria < finas, `la diaria tiene de 14 minutos en adelante (${diaria}) y menos que las finas`);
+  assert.ok(finas >= 9 + 2 * 40 * 13 / 60, `las finas caben con 40 tokens que entren (${finas} min)`);
+  // Una llamada con sus reintentos dura como mucho 5 minutos (3 de 20 s y dos esperas de 2 minutos): cabe antes del límite del paso.
+  assert.ok(limitePaso >= finas + 5 + 1, `el paso (${limitePaso}) deja acabar la última llamada de las finas (${finas} + 5)`);
+  assert.ok(limitePaso + 5 <= limiteTrabajo, `el paso (${limitePaso}) deja tiempo a la foto y a guardar en el trabajo (${limiteTrabajo})`);
+  assert.ok(limiteTrabajo <= 60, `el trabajo, una hora como mucho (${limiteTrabajo})`);
+  assert.match(pasoSerie, /node rwadar-app\/tokenizacion\/serie-diaria\.mjs "\$DATOS\/tokenizacion-serie\.json"\n\s+--fina "\$DATOS\/tokenizacion-serie-fina\.json"/);
+  // Guardar: siempre que la foto haya ido bien (si el paso de las series se cortó, la diaria ya escrita se guarda igual).
+  assert.doesNotMatch(paso(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /^\s+if:/m);
   assert.match(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /git add tokenizacion-serie\.json/);
+  assert.match(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /if \[ -f tokenizacion-serie-fina\.json \]; then git add tokenizacion-serie-fina\.json; fi/);
   assert.match(PUBLICAR, /git show FETCH_HEAD:tokenizacion-serie\.json > "\$RUNNER_TEMP\/tokenizacion-serie\.json"/);
   assert.match(PUBLICAR, /RWADAR_TOKENIZACION_SERIE=\$RUNNER_TEMP\/tokenizacion-serie\.json/);
+  assert.match(PUBLICAR, /git show FETCH_HEAD:tokenizacion-serie-fina\.json > "\$RUNNER_TEMP\/tokenizacion-serie-fina\.json"/);
+  assert.match(PUBLICAR, /RWADAR_TOKENIZACION_SERIE_FINA=\$RUNNER_TEMP\/tokenizacion-serie-fina\.json/);
 });
 
 test('serie diaria: un token al que CoinGecko le faltan más de 3 días queda fuera de toda la serie (sin días cortados ni hundimientos) y la nota lo dice', async (t) => {
@@ -385,4 +410,236 @@ test('serie diaria: un token al que CoinGecko le faltan más de 3 días queda fu
   assert.match(modelo.notaSerie(serie), /Quedan fuera 1 a los que les faltan días en CoinGecko\.$/);
   // Sin días cortados: cada día suma los mismos 39.
   assert.ok(serie.puntos.every(p => p.tokens === 39));
+});
+
+/* ---- Las series finas (13/11/2026): cada 5 minutos (24 h) y cada hora (30 días) ---- */
+const LECTURA_FINA = Date.parse('2026-11-11T07:03:20Z');
+const ejecutarFina = async (dir, opciones = {}, { fetch: f = coingeckoSerie(opciones).fetchImpl, ahora = () => LECTURA_FINA, esperar = async () => {} } = {}) => {
+  const salida = path.join(dir, 'salida'), registro = [];
+  fs.writeFileSync(salida, '');
+  const codigo = await principalSerie([path.join(dir, 'tokenizacion-serie.json'), '--fina', path.join(dir, 'tokenizacion-serie-fina.json')],
+    { entorno: { GITHUB_OUTPUT: salida }, fetchImpl: f, esperar, ahora, log: m => registro.push(m), error: m => registro.push(m) });
+  return { codigo, registro, outputs: fs.readFileSync(salida, 'utf8') };
+};
+
+test('series finas: con --fina, 42 llamadas de la diaria y 80 más (las de cada hora y después, seguidas, las de 5 minutos), con 13 s; los mismos tokens y las tres acaban en el mismo punto', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fina-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const { fetchImpl, llamadas } = coingeckoSerie();
+  const pausas = [];
+  const r = await ejecutarFina(dir, {}, { fetch: fetchImpl, esperar: async ms => { pausas.push(ms); } });
+  assert.equal(r.codigo, 0, r.registro.join('\n'));
+  assert.equal(llamadas.length, 42 + 80);
+  assert.ok(llamadas.slice(2, 42).every(u => /days=365&interval=daily$/.test(u)));
+  assert.ok(llamadas.slice(42, 82).every(u => /\/market_chart\?vs_currency=usd&days=31$/.test(u)), 'primero, las de cada hora');
+  assert.ok(llamadas.slice(82).every(u => /\/market_chart\?vs_currency=usd&days=1$/.test(u)), 'al final y seguidas, las de 5 minutos');
+  assert.deepEqual(llamadas.slice(82).map(u => u.match(/coins\/([^/]+)/)[1]), llamadas.slice(2, 42).map(u => u.match(/coins\/([^/]+)/)[1]), 'los mismos tokens, en el mismo orden');
+  assert.equal(pausas.filter(ms => ms === 13000).length, 41 + 80, '13 s entre todas las llamadas');
+  const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8')));
+  const textoFina = fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8');
+  const fina = modelo.validarSerieFina(JSON.parse(textoFina));
+  assert.equal(textoFina, modelo.serializarSerieFina(fina));
+  assert.equal(fina.generado, serie.generado, 'de la misma ejecución');
+  assert.deepEqual(fina.tokens, serie.tokens, 'los mismos tokens que la diaria');
+  // 24 horas justas hasta el cubo de la lectura (07:03:20, cubo de las 07:00). CoinGecko con days=1 empieza a las 07:05:
+  // el cubo de las 07:00 de ayer sale del dato de esa hora de la lectura horaria.
+  assert.deepEqual([fina.series['5m'].puntos.length, fina.series['1h'].puntos.length], [289, 721]);
+  assert.deepEqual([fina.series['5m'].puntos[0][0], fina.series['5m'].puntos.at(-1)[0]], ['2026-11-10T07:00Z', '2026-11-11T07:00Z']);
+  assert.deepEqual(['5m', '1h'].map(r => [fina.series[r].fuera, fina.series[r].valorFuera, fina.series[r].largos, fina.series[r].arrastre]),
+    [[[], 0, [], 288], [[], 0, [], 72]]);
+  assert.deepEqual([fina.series['1h'].puntos[0][0], fina.series['1h'].puntos.at(-1)[0]], ['2026-10-12T07:00Z', '2026-11-11T07:00Z']);
+  // Las tres acaban en el mismo valor exacto: el último dato de cada token (el de la lectura de 5 minutos), también la diaria.
+  const fin = serie.puntos.at(-1);
+  assert.equal(fin.fecha, '2026-11-11');
+  assert.equal(fina.series['5m'].puntos.at(-1)[1], fin.valor);
+  assert.equal(fina.series['1h'].puntos.at(-1)[1], fin.valor);
+  const valorLectura = n => Math.round((100 - n) * 1e8 * 1.1 * (1 + Math.sin(LECTURA_FINA / 7e6 + n) / 500));
+  assert.equal(fin.valor, Math.round([...Array(40)].reduce((s, _, n) => s + valorLectura(n), 0)), 'la diaria, rehecha con el último dato de cada token');
+  assert.deepEqual(Object.keys(modelo.seriesEnlazadas(serie, fina)), ['5m', '1h']);
+  const unida = modelo.unirSerieFina(serie, fina);
+  assert.equal(modelo.cifraGrande(unida).valor, fin.valor);
+  for (const p of modelo.PESTANAS) assert.equal(modelo.graficoPestana(unida, p.clave).estadisticas.fin, fin.valor, `${p.clave}: acaba en la cifra grande`);
+  assert.equal(r.outputs, 'serie=true\nfina=true\n');
+  assert.match(r.registro.at(-1), /^Series finas: cada 5 minutos, 289 puntos; cada hora, 721 puntos; 40 tokens, los de la diaria; \d+\.\d kB\. Las tres acaban en /);
+  assert.ok(r.registro.includes('Serie de 5m: 289 puntos, del 2026-11-10 07:00 UTC al 2026-11-11 07:00 UTC; fuera: ninguno; más de una hora sin dato: ninguno.'), r.registro.join('\n'));
+  assert.ok(Buffer.byteLength(textoFina) < 64 * 1024, `${(Buffer.byteLength(textoFina) / 1024).toFixed(1)} kB`);
+});
+
+test('series finas: si falla una, se guarda la otra; si fallan las dos, queda la diaria nueva y la fina anterior, que ya no casa y no se usa', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fina-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  // Un token del 2,9 % sin su historia de 5 minutos: quedaría fuera y pesa más del 1 %: la de 5 minutos no se guarda; la horaria, sí.
+  let r = await ejecutarFina(dir, { fallanFinas: [['token-7', '5m']] });
+  assert.equal(r.codigo, 0, r.registro.join('\n'));
+  let fina = modelo.validarSerieFina(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8')));
+  assert.equal(fina.series['5m'], null);
+  assert.equal(fina.series['1h'].puntos.length, 721);
+  assert.ok(r.registro.some(l => /Serie de 5m: no se guarda \(serie fina 5m: los que quedan fuera \(token-7\) pesan el 2\.89 % \(como mucho 1 %\)\)\./.test(l)), r.registro.join('\n'));
+  let serie = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8')));
+  assert.deepEqual(Object.keys(modelo.seriesEnlazadas(serie, fina)), ['1h']);
+  // Sin la de 5 minutos, 24 h sale de la horaria (25 puntos), no de la diaria (que serían dos).
+  assert.deepEqual(['1d', '1s', '1m', '3m'].map(c => modelo.seriePestana(modelo.unirSerieFina(serie, fina), c).resolucion), ['1h', '1h', '1h', '1d']);
+  assert.equal(modelo.seriePestana(modelo.unirSerieFina(serie, fina), '1d').puntos.length, 25);
+  // Las dos fallan: la diaria de esta ejecución se escribe igual; la fina de antes se queda tal cual y ya no casa con ella.
+  const finaAntes = fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8');
+  r = await ejecutarFina(dir, { fallanFinas: [['token-3', '5m'], ['token-3', '1h']] }, { ahora: () => LECTURA_FINA + 3600000 });
+  assert.equal(r.codigo, 0, 'la diaria salió: el paso no falla');
+  assert.equal(r.outputs, 'serie=true\nfina=false\n');
+  assert.match(r.registro.join('\n'), /Series finas: no se pudieron rehacer \(no sale ninguna serie fina\)\. Queda la anterior; la diaria ya está guardada\./);
+  assert.equal(fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8'), finaAntes, 'nada escrito a medias');
+  serie = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8')));
+  assert.equal(serie.generado, '2026-11-11T08:03:20Z', 'la diaria nueva');
+  assert.deepEqual(modelo.seriesEnlazadas(serie, JSON.parse(finaAntes)), {});
+  assert.equal(modelo.unirSerieFina(serie, JSON.parse(finaAntes)).fina, undefined, 'el gráfico usa la diaria');
+  // Si falla la diaria, no se piden las finas ni se escribe nada (código 3, como siempre).
+  const { fetchImpl, llamadas } = coingeckoSerie({ listaFalla: true });
+  const diariaAntes = fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8');
+  r = await ejecutarFina(dir, {}, { fetch: fetchImpl });
+  assert.equal(r.codigo, 3);
+  assert.ok(!llamadas.some(u => /days=(1|31)$/.test(u)));
+  assert.equal(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8'), diariaAntes);
+  assert.equal(fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8'), finaAntes);
+  // Uso: --fina necesita su ruta .json y no puede ser la de la diaria.
+  const a = path.join(dir, 'a.json');
+  for (const argv of [[a, '--fina'], [a, '--fina', path.join(dir, 'b.txt')], [a, '--fina', a]]) {
+    assert.equal(await principalSerie(argv, { entorno: {}, error: () => {} }), 2, argv.join(' '));
+  }
+});
+
+test('series finas: con datos como los reales (el mayor, horas sin datos; uno pequeño, sin leer), salen las dos, con los mismos tokens, y casan con la diaria', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fina-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  // token-0 (el mayor, como figure-heloc el 13/11/2026): 3 h 35 min sin datos en las dos lecturas finas y 23 horas
+  // en la horaria (un fin de semana). token-39: 50 M$ (un 0,01 %) y su lectura de 5 minutos falla.
+  const huecosFinos = { 'token-0': [[Date.parse('2026-11-10T20:20:00Z'), Date.parse('2026-11-10T23:55:00Z')],
+    [Date.parse('2026-11-01T14:00:00Z'), Date.parse('2026-11-02T13:00:00Z')]] };
+  const pesoFino = n => (n === 39 ? 50e6 : (100 - n) * 1e8 * 1.1);
+  // Un reloj que avanza 13 s con cada pausa, como de verdad: la lectura horaria de cada token es unos 9 minutos
+  // anterior a la de 5 minutos, y las tres series tienen que acabar en el dato más reciente de cada uno.
+  let ms = LECTURA_FINA;
+  const reloj = { ahora: () => ms, esperar: async e => { ms += e; } };
+  const r = await ejecutarFina(dir, { huecosFinos, pesoFino, fallanFinas: [['token-39', '5m']], ahora: reloj.ahora },
+    { ...reloj, fetch: coingeckoSerie({ huecosFinos, pesoFino, fallanFinas: [['token-39', '5m']], ahora: reloj.ahora }).fetchImpl });
+  assert.equal(r.codigo, 0, r.registro.join('\n'));
+  assert.equal(r.outputs, 'serie=true\nfina=true\n');
+  const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8')));
+  const fina = modelo.validarSerieFina(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8')));
+  assert.deepEqual(fina.tokens, serie.tokens, 'los mismos 40 tokens que la diaria');
+  const f5 = fina.series['5m'], f1 = fina.series['1h'];
+  assert.deepEqual([f5.fuera, f5.largos, f1.fuera, f1.largos], [['token-39'], ['token-0'], [], ['token-0']]);
+  assert.deepEqual([f5.puntos.length, f1.puntos.length], [289, 721]);
+  assert.ok(f5.puntos.every(p => p[2] === 39) && f1.puntos.every(p => p[2] === 40), 'cada serie, siempre con los mismos');
+  // Las tres acaban en el último dato de cada token: la de 5 minutos, menos lo que vale token-39 (su dato de la horaria).
+  const fin = serie.puntos.at(-1).valor;
+  assert.equal(f1.puntos.at(-1)[1], fin);
+  assert.ok(f5.valorFuera > 49e6 && f5.valorFuera < 51e6, String(f5.valorFuera));
+  assert.ok(Math.abs(f5.puntos.at(-1)[1] + f5.valorFuera - fin) <= 1, 'la de 5 minutos más los de fuera: la diaria');
+  assert.deepEqual(Object.keys(modelo.seriesEnlazadas(serie, fina)), ['5m', '1h']);
+  const unida = modelo.unirSerieFina(serie, fina);
+  assert.equal(modelo.cifraGrande(unida).valor, fin);
+  assert.equal(modelo.graficoPestana(unida, '1d').estadisticas.fin, f5.puntos.at(-1)[1]);
+  assert.match(modelo.graficoPestana(unida, '1d').avisoFuera, /^la línea suma 39 de los 40: queda fuera 1 token/);
+  assert.ok(r.registro.some(l => /^Serie de 5m: 289 puntos, .+; fuera: token-39 \(50,\d.M\$\); más de una hora sin dato: token-0\.$/.test(l)), r.registro.join('\n'));
+  assert.ok(r.registro.includes('Serie de 1h: 721 puntos, del 2026-10-12 07:00 UTC al 2026-11-11 07:00 UTC; fuera: ninguno; más de una hora sin dato: token-0.'), r.registro.join('\n'));
+  assert.ok(r.registro.some(l => /^· token-39 \(5m\): no se pudo leer \(CoinGecko respondió 429\); queda fuera de esa serie$/.test(l)));
+});
+
+test('series finas: plazos; la diaria no empieza llamadas pasados 20 minutos (código 3, nada escrito) y las finas, pasados 34 (queda la diaria)', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fina-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  // Un reloj que avanza con cada espera: 13 s por pausa y 2 minutos por cada 429 con Retry-After.
+  const reloj = () => { let ms = LECTURA_FINA; return { ahora: () => ms, esperar: async e => { ms += e; } }; };
+  // Con todo bien: unos 26 minutos de pausas (121 × 13 s), dentro de los plazos.
+  let c = reloj();
+  let r = await ejecutarFina(dir, {}, { ...c, fetch: coingeckoSerie({ ahora: c.ahora }).fetchImpl });
+  assert.equal(r.outputs, 'serie=true\nfina=true\n', r.registro.join('\n'));
+  assert.ok(c.ahora() - LECTURA_FINA < 27 * 60000);
+  // Los de 5 minutos de 30 tokens con 429 (dos esperas de 2 minutos cada uno): las finas pasan de 34 minutos y se paran.
+  const diaria = fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8'), fina = fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8');
+  c = reloj();
+  const lentas = [...Array(30)].map((_, i) => ['token-' + i, '5m']);
+  r = await ejecutarFina(dir, {}, { ...c, fetch: coingeckoSerie({ ahora: c.ahora, fallanFinas: lentas }).fetchImpl });
+  assert.equal(r.codigo, 0);
+  assert.equal(r.outputs, 'serie=true\nfina=false\n');
+  assert.match(r.registro.join('\n'), /Series finas: no se pudieron rehacer \(se acabó el tiempo para las series finas\)/);
+  assert.notEqual(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8'), diaria, 'la diaria de esta ejecución, guardada');
+  assert.equal(fs.readFileSync(path.join(dir, 'tokenizacion-serie-fina.json'), 'utf8'), fina, 'la fina anterior, intacta');
+  // La diaria con 6 tokens lentos (también 429): pasados 20 minutos no empieza más llamadas y no escribe nada.
+  const antes = fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8');
+  c = reloj();
+  const cuenta = coingeckoSerie({ ahora: c.ahora });
+  const lenta = async url => (/coins\/token-[0-5]\/market_chart/.test(url) && /days=365/.test(url)
+    ? new Response('Throttled', { status: 429, headers: { 'retry-after': '120' } }) : cuenta.fetchImpl(url));
+  r = await ejecutarFina(dir, {}, { ...c, fetch: lenta });
+  assert.equal(r.codigo, 3);
+  assert.match(r.registro.join('\n'), /No se pudo reconstruir la serie: se acabó el tiempo para la serie diaria\. Se conserva la anterior\./);
+  assert.equal(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8'), antes);
+});
+
+test('el generador de la web: la fina de la rama solo se publica si casa con la diaria publicada; si no, «sin serie fina» y el gráfico usa la diaria', async (t) => {
+  const { serieFinaTokenizacion } = require('../rwadar-tokenizacion-historico.js');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fina-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  await ejecutarFina(dir);
+  const diaria = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dir, 'tokenizacion-serie.json'), 'utf8')));
+  const archivo = path.join(dir, 'tokenizacion-serie-fina.json'), texto = fs.readFileSync(archivo, 'utf8');
+  const dirSitio = path.join(raiz, 'rwadar-site');
+  const avisos = [];
+  const generar = (entorno = {}, extra = {}) => serieFinaTokenizacion({ dirSitio, diaria, entorno, avisar: m => avisos.push(m), leerRama: () => { throw new Error('sin rama'); }, ...extra });
+  // La de publicar.yml, que casa: tal cual.
+  let r = generar({ RWADAR_TOKENIZACION_SERIE_FINA: archivo });
+  assert.deepEqual(r.enlazadas, ['5m', '1h']);
+  assert.equal(modelo.serializarSerieFina(r.fina), texto);
+  assert.equal(r.origen, 'la rama datos-tokenizacion');
+  // Sin variable, la ref; sin ref, «sin serie fina» para esta diaria.
+  r = generar({}, { leerRama: () => texto });
+  assert.equal(r.origen, 'origin/datos-tokenizacion');
+  r = generar();
+  assert.deepEqual([r.enlazadas, r.fina.series, r.fina.generado], [[], { '5m': null, '1h': null }, diaria.generado]);
+  // La de otra ejecución (la diaria publicada es la semilla de main): «sin serie fina», con aviso.
+  const semilla = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(dirSitio, 'datos/tokenizacion-serie.json'), 'utf8')));
+  r = serieFinaTokenizacion({ dirSitio, diaria: semilla, entorno: { RWADAR_TOKENIZACION_SERIE_FINA: archivo }, avisar: m => avisos.push(m) });
+  assert.deepEqual(r.fina, modelo.serieFinaVacia(semilla));
+  assert.match(avisos.at(-1), /no casa con la diaria que se publica/);
+  // La semilla de main es «sin serie fina» de la diaria semilla, escrita con serializarSerieFina.
+  const textoSemilla = fs.readFileSync(path.join(dirSitio, 'datos/tokenizacion-serie-fina.json'), 'utf8');
+  assert.equal(textoSemilla, modelo.serializarSerieFina(modelo.serieFinaVacia(semilla)));
+  // Rota, un enlace o demasiado grande: «sin serie fina», con aviso; nunca bloquea.
+  const roto = path.join(dir, 'roto.json');
+  fs.writeFileSync(roto, '{"version":1}');
+  r = generar({ RWADAR_TOKENIZACION_SERIE_FINA: roto });
+  assert.deepEqual(r.enlazadas, []);
+  assert.match(avisos.at(-1), /no vale \(serie fina: forma no válida\); se publica sin serie fina/);
+  const enlace = path.join(dir, 'enlace.json');
+  fs.symlinkSync(archivo, enlace);
+  generar({ RWADAR_TOKENIZACION_SERIE_FINA: enlace });
+  assert.match(avisos.at(-1), /no es un archivo normal/);
+  // Solo una casa: se publica esa y la otra, null.
+  const f = JSON.parse(texto);
+  f.series['5m'].puntos.at(-1)[1] += 1e9;
+  r = generar({}, { leerRama: () => JSON.stringify(f) });
+  assert.deepEqual(r.enlazadas, ['1h']);
+  assert.equal(r.fina.series['5m'], null);
+  // rwadar-publicar.js la escribe en /datos/ junto a la diaria, y está en la lista de lo publicable.
+  const publicador = leer('rwadar-publicar.js');
+  assert.match(publicador, /serieFinaTokenizacion\(\{ dirSitio: DIR, diaria: serie\.serie \}\)[\s\S]{0,200}'tokenizacion-serie-fina\.json'\), textoFina/);
+  const { ARCHIVOS_PUBLICABLES } = require('../rwadar-publicacion-segura.js');
+  assert.ok(ARCHIVOS_PUBLICABLES.includes('datos/tokenizacion-serie-fina.json'));
+  assert.match(leer('.github/comprobar-publicado.mjs'), /\/datos\/tokenizacion-serie-fina\.json es el del build y casa con la diaria/);
+});
+
+test('guardar: con la fina en la carpeta de datos, el commit del día la lleva', async (t) => {
+  const repo = repoDePrueba();
+  t.after(() => fs.rmSync(repo.dir, { recursive: true, force: true }));
+  const { preparar } = await repo.ejecutar({ fetchImpl: coingecko(), ahora: AHORA });
+  const DATOS = preparar.entorno.match(/^DATOS=(.+)$/m)[1];
+  await ejecutarFina(DATOS);
+  const guardar = repo.bash(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), { DATOS, FECHA: '2026-11-11' });
+  assert.equal(guardar.codigo, 0, guardar.texto);
+  assert.deepEqual(repo.rama('ls-tree', '--name-only', 'datos-tokenizacion').trim().split('\n'),
+    ['tokenizacion-historico.json', 'tokenizacion-serie-fina.json', 'tokenizacion-serie.json']);
+  assert.equal(modelo.serieFinaValida(JSON.parse(repo.rama('show', 'datos-tokenizacion:tokenizacion-serie-fina.json'))), true);
+  // Otra vez sin cambios: nada que guardar.
+  const otra = repo.bash(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), { DATOS, FECHA: '2026-11-11' });
+  assert.match(otra.texto, /Nada nuevo que guardar\./);
 });
