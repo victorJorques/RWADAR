@@ -232,6 +232,60 @@ Para la imagen de cada alta o cambio visual:
   `https://rwadar.pages.dev/ofertas-editoriales/oferta-<slug>.webp`; no recibe
   URLs de imagen arbitrarias de la API. Mantener los fallback de categoría.
 
+### Entrega con el motor (procedimiento rápido, desde el 13/11/2026)
+
+Hasta el 12/11, el montador copiaba del día anterior `preparar-entrega.mjs`,
+`comprobar-entrega.mjs` y `despues-de-aplicar.mjs` (unas 1.500 líneas) y los
+adaptaba a mano: unos 25 minutos cada día. Ahora:
+
+- **Lo propio del día** va en un archivo de datos,
+  `verificaciones/<etiqueta>-v2/decisiones.json`: etiqueta, fecha, de qué
+  publicada se parte (revisión y huella), último día vigente y, por ficha, cada
+  cambio con su fuente, su literal y su hora de hoy.
+- **Las guardas** viven en el motor,
+  `.claude/skills/investigacion-catalogo/entrega/` (manual en `FORMATO.md`), y
+  son las mismas cada día: la publicada exacta y su huella, cada texto «antes»
+  exigido tal cual, PGlite con los casos de fallo, idempotencia, tarjetas,
+  transparencia y lo que no se aplicó.
+- **Demostrado:** el motor rehízo la entrega del 12/11 desde su
+  `decisiones.json` y salieron idénticos byte a byte los 8 archivos (el SQL
+  `d4d73024…`, el mismo que se aplicó) y `transparencia.json`. Lo que
+  exporta su ensayo en PGlite coincide campo a campo con lo que se leyó en
+  producción después de aplicar ese día. Lo comprueba `npm test` en cada PR.
+- **No monta altas ni retiradas.** Ese día se trabaja como antes, con los
+  guiones a mano (`motor: false` en el flujo).
+
+El flujo `entrega-catalogo` se lanza **por fases**. Cada flujo solo corre 2
+agentes a la vez en esta máquina (4 CPU), así que los tres revisores van en
+flujos aparte, lanzados en el mismo mensaje:
+
+| Fase | Quién | Tiempo esperado |
+|---|---|---|
+| `montar` | el montador (esfuerzo «high») escribe `decisiones.json` y ejecuta el motor: `preparar` dos veces (mismos SHA-256), `comprobar` en PGlite, `revisar` (escribe `DIFF-ENTREGA.md`), copia del SQL revisado y el ensayo «después de aplicar» en una copia, este en segundo plano | 10–15 min |
+| `revisar` ×3, a la vez | SQL e integridad; contenido y tarjetas; cumplimiento. Independientes, no montaron nada y empiezan por `DIFF-ENTREGA.md` (lo que cambia frente a la entrega anterior) antes de sus propias pruebas | 12–15 min |
+| `cerrar` | si nadie pide nada, aprobada. Si piden correcciones: el corrector las hace **solo en `decisiones.json`** y rehace con el motor; después, la comprobación determinista. Si el SQL cambió, sigue el auditor | 0–15 min |
+
+**La comprobación determinista** es `motor.mjs auditar`. Hace esto, en menos
+de un minuto:
+
+1. Rehace la entrega dos veces desde `decisiones.json`: tiene que salir igual
+   las dos veces e igual a lo que hay en la carpeta.
+2. Exige que la copia «de antes» sea el SQL que vieron los revisores (su
+   SHA-256).
+3. Compara el inventario de sentencias y el diff normalizado del SQL.
+4. Pasa el ensayo en PGlite y el escáner de secretos, que aquí es
+   obligatorio.
+5. Escribe `VERIFICACION-ENTREGA.md`.
+
+Qué pasa después:
+
+- **Si el SQL no cambió**, sustituye al auditor.
+- **Si cambió**, el auditor (agente, esfuerzo máximo) sigue haciendo falta.
+  Recibe el diff exacto: por ejemplo, el 12/11 habría visto una sola
+  sentencia cambiada, la frase de Hausera.
+- **Nunca aprueba** si hay hallazgos, si pedían cambiar el SQL y no cambió, o
+  si una corrección sin SQL no está aplicada.
+
 ## 4. Publicar y comprobar las imágenes antes de activar el SQL
 
 Una fila aprobada aparece inmediatamente en las vistas públicas y los clientes
@@ -361,6 +415,15 @@ Antes de aplicar:
 5. Leer después, como público, las vistas V2: revisión, fechas, cantidades,
    colecciones y cada dato crítico cambiado. El éxito local o del comando SQL
    no acredita por sí solo el estado remoto. Guardar esta comprobación.
+
+Con el motor (§3, «Entrega con el motor»), los tres revisores siguen siendo
+independientes y hacen sus propias pruebas. `DIFF-ENTREGA.md` solo les dice por
+dónde empezar. Si una corrección cambia el SQL después de la revisión, la
+compara con el SQL revisado `motor.mjs auditar`: mismo inventario de sentencias
+y solo los cambios pedidos. Si el SQL cambió, un auditor que no preparó ni
+corrigió la entrega revisa cada diferencia. Antes del PR, el coordinador repite
+`auditar` (un minuto) aunque no haya habido correcciones. Así nadie toca el SQL
+después de la revisión sin que se note.
 
 El SQL de catálogo revisado lo autoriza la orden de Víctor que abrió el ciclo. Una necesidad de ampliar el esquema o tocar otra área se presenta aparte.
 
