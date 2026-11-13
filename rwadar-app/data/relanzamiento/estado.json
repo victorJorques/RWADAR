@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "radar de Inicio legible, #128",
+  "nota": "catálogo del 13/11 (434217eb) y noticias, #131 y #132",
   "revisionAprobada": {
-    "commit": "08046a06e2c292c67a4c6f479a394dab1b2211f0",
-    "contenidoSha256": "sha256:0645c25af7904bd65ff0aeed21f6a2d7068715b33cf31310e43a8c456d386b0a",
+    "commit": "6de19f8cc3620db67067c7795a4967f5cbcfc41f",
+    "contenidoSha256": "sha256:4062f841f69f8d6ec6581d8d1b1af9ecaaa7ec4384dd562246c1dd0761f6ee10",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
