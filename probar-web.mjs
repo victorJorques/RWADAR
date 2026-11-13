@@ -3551,10 +3551,14 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
   const sinIngles = [...textosPush, ...textosActivar, 'Reintentar', 'Entrar de nuevo', ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
-  const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
+  /* Desde el 13/11/2026 los diccionarios no se piden con <script>: van, en este orden, en
+     data-idioma-en de idioma-previo (en <head>), que los carga antes del motor solo en inglés. */
+  const enDiferido = (html.match(/<script src="\/assets\/idioma-previo-20261104\.js" data-idioma-en="([^"]+)"><\/script>/) || [, ''])[1].split(' ');
+  const iComun = enDiferido.indexOf('/assets/idioma-en-20261022.js'), iAvisos = enDiferido.indexOf('/assets/idioma-en-avisos-20261112.js');
   prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
-    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
-    scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
+    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun === 0 && iAvisos === 1 && enDiferido.length === 2 &&
+    scriptsIndex.indexOf('/assets/idioma-previo-20261104.js') === 0 && scriptsIndex.includes('/assets/idioma-20261022.js') &&
+    !scriptsIndex.some(ruta => /\/assets\/idioma-en-/.test(ruta)) &&
     Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
     /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
   // 12/11/2026, Víctor en su iPhone: el bloque se quedaba en «Comprobando…». Cada llamada lleva plazo y el

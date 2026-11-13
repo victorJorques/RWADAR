@@ -288,9 +288,21 @@ if (scriptsPropios.filter(s => s[1] === rutaCatalogo).length !== 1 ||
     indiceHelper <= indiceCatalogo || indiceHelper >= scriptsPropios.length - 1 ||
     scriptsPropios.slice(indiceCatalogo).some(s => !/\bdefer\b/i.test(s[0]) || /\basync\b|\btype\s*=/i.test(s[0])) ||
     JSON.stringify(scriptsPropios.slice(indiceHelper+1,-1).map(s=>s[1]))!==JSON.stringify([
-      '/assets/idioma-en-20261022.js','/assets/idioma-en-avisos-20261112.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',
+      '/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',
       '/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js'])) {
   console.error('ERROR: el snapshot único del catálogo debe cargar con defer antes del comportamiento.');
+  process.exit(1);
+}
+/* El diccionario inglés (común y, después, el de la campana) ya no se pide con
+   <script>: va en data-idioma-en de idioma-previo, en <head>, que lo carga
+   antes del motor solo si la preferencia es inglés (o al elegir «English»).
+   Limpieza de la web, 13/11/2026. */
+if (scriptsPropios.filter(s => s[1] === '/assets/idioma-previo-20261104.js').length !== 1 ||
+    scriptsPropios.findIndex(s => s[1] === '/assets/idioma-previo-20261104.js') > indiceCatalogo ||
+    /\b(?:defer|async)\b/i.test(scriptsPropios.find(s => s[1] === '/assets/idioma-previo-20261104.js')[0]) ||
+    !scriptsPropios.find(s => s[1] === '/assets/idioma-previo-20261104.js')[0]
+      .includes('data-idioma-en="/assets/idioma-en-20261022.js /assets/idioma-en-avisos-20261112.js"')) {
+  console.error('ERROR: index.html debe apuntar los diccionarios inglés (común y avisos, en ese orden) en data-idioma-en de idioma-previo, en <head> y sin defer.');
   process.exit(1);
 }
 const scriptCatalogo = fs.readFileSync(path.join(DIR, rutaCatalogo.slice(1)), 'utf8');
