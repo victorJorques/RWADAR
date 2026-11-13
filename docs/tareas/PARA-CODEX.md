@@ -6,6 +6,90 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (21) · Claude · Gráfico con más detalle: la app
+
+- **Encargo (13/11):** «El gráfico, cuanto más detalle en el tiempo tenga,
+  mejor». Esta rama (`worktree-wf_9e649758-84d-3`) une la de datos y modelo
+  (entrada 20, sin tocar su contenido) y hace **la parte de la app**:
+  `rwadar-movil/componentes/MercadoBolsa.js` (pantalla «Mercado y noticias»
+  y tarjeta de Inicio con su minigráfico). La web va en otra rama. **Nada
+  publicado**: ni push, ni OTA, ni flujos.
+- **Qué cambia, en llano:**
+  1. La app lee la diaria **con su serie fina** (`cargarSerieConFina`) sin
+     que nadie se lo pida, en la pantalla y en la tarjeta de Inicio. Cada
+     pestaña usa la más fina que la cubre: **24 h, un punto cada 5 minutos;
+     1 S y 1 M, cada hora; 3 M, 6 M, 2026 y 1 A, cada día**. Sin la fina (la
+     web aún sin publicar, una foto antigua o una lectura que falla) todo
+     sigue con la diaria, como hoy, y «24 h» sale desactivada.
+  2. **Eje y cruz según el periodo, en hora de España**: en 24 h, horas
+     («18:00», «00:00»…) y la cruz «02:15»; el primer punto, que es del día
+     anterior, dice también el día («12 nov, 16:05»: si no, el primero y el
+     último dirían la misma hora). En 1 S y 1 M, el eje con días y la cruz
+     «día, hora» («9 nov, 15:00»). En las diarias, como antes (fecha; meses en
+     1 A). En inglés igual («24H», «12 Nov, 16:05»).
+  3. **Datos clave y fuente con la hora**: «Valor hoy … 13/11/2026, 16:05»,
+     máximo y mínimo del periodo con su hora, «Cambio en 24 h» = el de la
+     pestaña 24 h, y abajo «serie hasta el 13/11/2026, 16:05 (hora de
+     España)» (el total de la categoría sigue en UTC y lo dice).
+  4. Si una serie fina deja **tokens fuera**, el aviso del modelo
+     (`g.avisoFuera`) sale bajo la cabecera, en la tarjeta de Inicio y para
+     el lector, y «Cambio en 24 h» dice cuántos suma («29 de los 30
+     mayores» si queda uno fuera).
+  5. **Dedo fluido con 721 puntos**: el dibujo de fondo (rejilla, área,
+     línea, eje, fechas, píldora) se calcula una vez por pestaña y tamaño;
+     al arrastrar solo cambian la raya, el punto y la burbuja. El modelo de
+     cada pestaña se calcula una vez por serie e idioma (antes, abrir «Cómo
+     se calcula» lo rehacía y quitaba la cruz). Medido en Chromium con la
+     CPU 4 veces más lenta (react-native-web, no un APK), mediana de 5
+     arrastres de 150 movimientos: JavaScript por movimiento de **6,6 ms a
+     4,8 ms** con 721 puntos (8,6 ms tenía 1 A diario con el código de
+     antes); fotogramas de más de 33 ms, **de 10 a 4** (1 A: de 15 a 2).
+  6. **Lector de pantalla a saltos que se oyen**: una hora en 24 h, 6 horas
+     en 1 S, un día en 1 M y en las diarias (antes, de punto en punto: 288
+     en 24 h).
+  7. **Letra grande** (no pasaba solo con esto: con la letra al 200 %,
+     «24 h» y «3 M» se partían en dos líneas, «2026» pisaba «1 A» y la
+     burbuja se salía por los lados): las pestañas van en dos filas (4 y 3)
+     si no caben; las cifras del eje crecen con la letra hasta 1,5 veces; las
+     fechas de abajo que se pisarían se saltan; la burbuja mide su texto, no
+     se sale y, si va en dos líneas, la franja de arriba crece para no tapar
+     la línea. Con la letra normal, las medidas de siempre (270 px).
+  8. Claves de las marcas por índice: en 24 h varias son del mismo día y se
+     repetían. Las horas y fechas de abajo van centradas en su raya y, junto
+     a los bordes, solo lo justo hacia dentro (con la letra al 130 % se
+     perdía «00:00»).
+- **Sin «Histórico» en la app:** el gráfico de la app nunca lo tuvo (sus
+  pestañas son 24 h · 1 S · 1 M · 3 M · 6 M · 2026 · 1 A) y la serie diaria
+  es de un año, así que sería igual que 1 A. «Histórico» es uno de los
+  periodos del resumen (`PERIODOS`), no una pestaña.
+- **Comprobado con el archivo real** de la entrada 20 (lectura del 13/11,
+  30 tokens): 24 h acaba en la cifra grande (41.816 M$, «16:05»), −4,0 %;
+  1 M +3,9 %. Los picos de 1-2 horas que se ven en 1 S y 1 M (p. ej. el 9/11
+  de 13:00 a 15:00 UTC, unos −1.300 M$) son de figure-heloc en CoinGecko
+  (bajó a 26.780 M$ y volvió a 27.903), no del gráfico.
+- **Commits:** unión `517a627`, app `fd7f412` y `c102f06`, y este traspaso.
+- **Pruebas:** `npm --prefix rwadar-movil test` 647 (645 bien, 0 fallos, 2
+  omitidas; 41 en `tests/tokenizacion.test.cjs`, 7 nuevas y las de antes
+  actualizadas, sin borrar ninguna). `npm test` en la raíz con el primer
+  commit de la app: salida 0 (probar-web 711/711, 70 páginas y RSS,
+  `rwadar-acceso` 313/313). Guardián de OTA con `--base fa30779…`:
+  `ok:true`, 1.4.2(24). **Mutaciones: 23 de 23** (deshacer cada arreglo
+  hace fallar alguna prueba). El modelo web sigue idéntico al de la app
+  (`copiar-modelo-web.cjs --comprobar`; no lo toqué). Capturas de los
+  componentes reales con react-native-web en Chromium (no un APK), con los
+  datos reales, a 360 y 390 px, en inglés, con la letra al 130 % y al 200 %
+  y sin serie fina: en el scratchpad de la sesión, `grafico/app/`.
+- **Pendiente / para Víctor:**
+  - Publicar primero la web (con el archivo `tokenizacion-serie-fina.json`)
+    y después la OTA, cuando lo ordene. La OTA sola es segura: sin el
+    archivo, la app sigue con la diaria.
+  - Mirarlo en un Android de verdad (arrastre con 721 puntos y letra al
+    130 %): las capturas y la medida son de Chromium.
+  - Decidir si en 1 M la cruz debe decir solo el día (ahora «día, hora»,
+    porque cada punto es una hora); es una línea en `cuandoCorto`.
+
+---
+
 ## 13 de noviembre de 2026 (20) · Claude · Gráfico con más detalle: los datos y el modelo
 
 - **Encargo (13/11):** «El gráfico, cuanto más detalle en el tiempo tenga,
