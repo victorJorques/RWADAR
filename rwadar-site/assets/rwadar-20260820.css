@@ -1983,6 +1983,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 .rel .rel-radar .inicio-radar{position:absolute;inset:6px 0 2px;width:100%;height:min(calc(100% - 8px),264px);max-width:none;margin:auto 0;aspect-ratio:auto;overflow:visible}
 .rel .ir-et{font:600 var(--ir-fs,12px) var(--body);letter-spacing:0}
 .rel .ir-et-n{fill:var(--tx-2);font:500 var(--ir-fs,12px) var(--mono)}
+.rel .ir-et-n.ir-et-cero{fill:var(--tx-3)}
 .rel .inicio-hud li{gap:4px;max-width:34%}
 .rel .inicio-hud-1,.rel .inicio-hud-2{top:12px}
 .rel .inicio-hud-3,.rel .inicio-hud-4{bottom:4px}
@@ -2188,7 +2189,6 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   .rel-portada .rel-aviso{order:1}
   .rel-cta{order:2;margin-top:16px}
   .rel-portada-pie{order:3}
-  .rel .ir-et{display:none}
 }
 @media (max-width:359px){.rel{--rel-d1:1.75rem}.rel-cadena{column-gap:12px;padding:12px}}
 /* Barra de 5 botones: rótulos de 11 px con puntos suspensivos si no caben. */

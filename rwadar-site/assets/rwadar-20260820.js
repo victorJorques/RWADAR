@@ -1982,11 +1982,47 @@ function movimientoReducido(){
  try{return typeof window!=='undefined'&&typeof window.matchMedia==='function'&&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches===true}catch(e){return false}
 }
+/* Radar de Inicio (13/11/2026, encargo: «arregla el radar de inicio que se ve
+   mal»). En el móvil los rótulos iban dentro del SVG: al escalarlo crecían y
+   se montaban sobre el aro y los puntos, y en pantallas bajas se escondían y
+   quedaba una bolita de puntos. Ahora:
+   - Móvil: el radar redondo SIN texto y, a su lado, la leyenda en texto real
+     (#inicioRadarLista, la pinta pintarInicio). El SVG va recortado al aro.
+   - Tableta y escritorio (html.escritorio-relato): el radar grande con los
+     rótulos alrededor, fuera del aro y de las marcas; la leyenda queda solo
+     para el lector de pantalla (la lee una vez; el SVG sigue oculto). */
+const VISTA_RADAR_INICIO={rotulos:'-14 6 416 388',solo:'55 55 290 290'};
+function radarInicioConRotulos(){
+ try{const r=typeof document!=='undefined'&&document.documentElement;
+  return Boolean(r&&r.classList&&typeof r.classList.contains==='function'&&r.classList.contains('escritorio-relato'))}catch(e){return false}
+}
+let radarInicioModo=null;
+/* Pinta el radar en el modo que toca (con o sin rótulos) y su viewBox. */
+function pintarRadarInicio(sin){
+ const r=typeof document!=='undefined'&&document.getElementById('inicioRadar');if(!r)return;
+ const rot=radarInicioConRotulos();radarInicioModo=rot;
+ if(typeof r.setAttribute==='function')r.setAttribute('viewBox',rot?VISTA_RADAR_INICIO.rotulos:VISTA_RADAR_INICIO.solo);
+ r.innerHTML=P.length?radarInicioSvg(sin,rot):'';
+}
+/* La leyenda: las seis categorías en el orden del radar (desde arriba, en el
+   sentido de las agujas), con su punto de color, el nombre corto y cuántas
+   plataformas tiene. Una categoría sin plataformas se queda con su «0»
+   atenuado; sin cifras (revisión vencida o sin comprobar), solo los nombres.
+   El número visible va oculto al lector, que oye «3 plataformas». */
+function leyendaRadarInicio(sin){
+ return Object.keys(CATMETA).map(k=>{const n=P.filter(p=>p.cat===k).length;
+  return '<li class="ir-ley'+(!sin&&!n?' ir-ley-cero':'')+'">'+
+   '<svg class="ir-ley-punto" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><circle cx="5" cy="5" r="5" fill="'+CATMETA[k].c+'"/></svg>'+
+   '<span class="ir-ley-nombre">'+escHtml(catCorta(k))+'</span>'+
+   (sin?'':'<span class="ir-ley-n" aria-hidden="true">'+n+'</span><span class="solo-lector">'+n+(n===1?' plataforma':' plataformas')+'</span>')+'</li>';
+ }).join('');
+}
 /* El mismo reparto de puntos que el radar de Buscar (puntosRadar), más
    grande. El barrido y los ecos van con animación SVG: cada eco lleva su
    retardo como atributo, algo que la CSP no permite con style, y así se
-   encienden justo cuando el barrido pasa. Con movimiento reducido, quieto. */
-function radarInicioSvg(sin){
+   encienden justo cuando el barrido pasa. Con movimiento reducido, quieto.
+   Los rótulos solo con «rotulos» (tableta y escritorio). */
+function radarInicioSvg(sin,rotulos){
  const CX=200,CY=200,R=136,quieto=movimientoReducido(),cats=Object.keys(CATMETA);
  const pol=(a,r)=>[CX+Math.cos(a*Math.PI/180)*r,CY+Math.sin(a*Math.PI/180)*r];
  const n1=v=>v.toFixed(1);
@@ -2003,19 +2039,25 @@ function radarInicioSvg(sin){
  }
  /* Mismos nombres cortos que los chips y las casillas (Inmobiliario, Crédito,
     Tesoro, Acciones, Materias primas, Infraestructura); el número es de
-    plataformas. A los lados, pegados al borde y por encima del aro, para que
-    ningún rótulo pise el círculo ni se salga de la pantalla. */
+    plataformas. Los de los lados, en las esquinas de su sector, y los de
+    arriba y abajo, a 24 unidades del aro: medido el 13/11/2026, ninguno pisa
+    el aro, las marcas ni un punto aunque rotulos() suba la letra a 14,6
+    unidades (radar de 320 px de alto), en castellano y en inglés. Antes
+    «Materias primas» e «Infraestructura» tocaban el aro. */
  cats.forEach((c,i)=>{
-  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin||!n?'':String(n),nombre=catCorta(c);
+  /* Una categoría sin plataformas lleva su «0» atenuado, como en la leyenda del móvil. */
+  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin?'':String(n),nombre=catCorta(c),claseN='ir-et-n'+(n?'':' ir-et-cero');
   s+='<line class="radar-sector" x1="200" y1="200" x2="'+n1(x)+'" y2="'+n1(y)+'"/>';
-  if(i%3===0){const ty=i?CY+R+21:CY-R-15;
+  if(!rotulos)return;
+  if(i%3===0){const ty=i?CY+R+24:CY-R-24;
    s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
-    (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
-  /* Una sola línea por nombre (así se traduce entero) y el número debajo. */
+    (cifra?' <tspan class="'+claseN+'">'+cifra+'</tspan>':'')+'</text>';return;}
+  /* Una sola línea por nombre (así se traduce entero) y el número debajo.
+     Los de arriba se apoyan en su última línea (rotulos() la mantiene ahí). */
   const der=i<3,tx=der?385:3,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
-  const y0=arriba?CY-92-(lineas.length-1)*15:CY+102;
+  const y0=arriba?CY-124-(lineas.length-1)*15:CY+140;
   s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
-   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
+   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="'+claseN+'"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
  });
  const fin=pol(-88,R);
  s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'><path d="M200 200 L'+(CX+R)+' 200 A'+R+' '+R+' 0 0 0 '+n1(fin[0])+' '+n1(fin[1])+' Z" fill="url(#gBarridoInicio)"/>'+
@@ -2145,12 +2187,12 @@ function pintarInicio(){
  huellaInicio=huella;
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
  const ocultar=(id,si)=>{const el=document.getElementById(id);if(el)el.hidden=si;};
- pon('inicioRadar',P.length?radarInicioSvg(sin):'');
+ pintarRadarInicio(sin);
  pon('movilRadarMini',P.length?radarMiniSvg():'');
- /* Los recuentos del radar, también para el lector de pantalla (el SVG va oculto). */
- ocultar('inicioRadarLista',sin||!P.length);
- pon('inicioRadarLista',sin?'':Object.keys(CATMETA).map(k=>{const n=P.filter(p=>p.cat===k).length;
-  return n?'<li><span>'+escHtml(catCorta(k))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
+ /* La leyenda del radar: a la vista en el móvil y, en escritorio, para el
+    lector de pantalla (el SVG va oculto). Sin cifras, solo los nombres. */
+ ocultar('inicioRadarLista',!P.length);
+ pon('inicioRadarLista',P.length?leyendaRadarInicio(sin):'');
  const fecha=fechaBarras(c.revisado)||ultimaRevision();
  const t=c.revisado?'<time datetime="'+escHtml(c.revisado)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
  /* Tres cifras clave en la cabecera: ofertas, plataformas y fecha de revisión.
@@ -2196,7 +2238,13 @@ var relatoInicio=(function(){
  });
  try{const mq=typeof window!=='undefined'&&typeof window.matchMedia==='function'?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
   if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{const r=$('inicioRadar');
-   if(r&&typeof P!=='undefined'&&P.length)r.innerHTML=radarInicioSvg(inicioSinCifras());});}catch(e){}
+   if(r&&typeof P!=='undefined'&&P.length){pintarRadarInicio(inicioSinCifras());rotulos();}});}catch(e){}
+ /* Al cruzar de móvil a tableta o escritorio (o al revés), el radar cambia de
+    modo: con o sin rótulos. Lo marca html.escritorio-relato. */
+ if(typeof MutationObserver==='function'&&raiz&&raiz.classList)new MutationObserver(()=>{
+  if(radarInicioModo===null||radarInicioConRotulos()===radarInicioModo||typeof P==='undefined'||!P.length)return;
+  pintarRadarInicio(inicioSinCifras());rotulos();
+ }).observe(raiz,{attributes:true,attributeFilter:['class']});
  if(!panel||typeof panel.addEventListener!=='function'||!raiz||!raiz.classList||typeof panel.querySelectorAll!=='function')return null;
  const quieto=movimientoReducido,todos=s=>[...panel.querySelectorAll(s)];
  let io=null,origen=null;
@@ -2226,11 +2274,12 @@ var relatoInicio=(function(){
   lista.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();ir(e.key==='ArrowRight'?1:-1);}});
   if(typeof ResizeObserver==='function')new ResizeObserver(quien).observe(lista);
  }
- /* Rótulos del radar a 12 px en pantalla (11 por debajo de 380 px) aunque el SVG se escale. */
+ /* Rótulos del radar a 12 px en pantalla aunque el SVG se escale. Solo hay
+    rótulos en tableta y escritorio: en el móvil el radar va sin texto. */
  function rotulos(){
   const r=$('inicioRadar');if(!r||typeof r.getScreenCTM!=='function'||!r.style)return;
   const m=r.getScreenCTM();if(!m||!m.a)return;
-  const fs=Math.max(12,(window.innerWidth<380?11:12)/m.a);
+  const fs=Math.max(12,12/m.a);
   r.style.setProperty('--ir-fs',fs.toFixed(2)+'px');
   r.querySelectorAll('text.ir-et').forEach(t=>{const ts=t.querySelectorAll('tspan[dy]');if(!ts.length)return;
    if(!t.dataset.y0)t.dataset.y0=t.getAttribute('y');const y0=parseFloat(t.dataset.y0),salto=fs*1.2;

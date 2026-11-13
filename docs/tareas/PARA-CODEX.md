@@ -6,6 +6,94 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
+
+- **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
+  dos ramas (web y app), unido aquí y corregido con cuatro revisiones (aspecto
+  y código, de cada lado). **SIN PUBLICAR:** ni web, ni OTA, ni push. Para
+  publicarlo hace falta la orden de Víctor.
+- **Qué se veía mal (capturas de la web publicada):** en el móvil, los
+  nombres de los tipos iban dentro del dibujo del radar; al escalarlo
+  crecían y se montaban («Inmobiliario 3» encima del aro, «Materias primas»
+  sobre puntos, «Acciones 7» sobre el borde). Con pantalla baja (un iPhone
+  en Safari, 390 × 664) se escondían y quedaba una bolita de puntos sin
+  sentido. En la app pasaba lo mismo (nombres de 6-7 px pegados al aro; en
+  pantalla baja, una bolita de 84 px).
+- **Qué se ve ahora (igual en la web móvil y en la app):**
+  1. A la izquierda, el radar redondo **sin texto**: aro, anillos, marcas,
+     sectores, barrido, ecos, puntos y el hexágono en el centro. Con
+     «reducir movimiento», el barrido quieto a -38° y sin ecos.
+  2. A la derecha, la **leyenda en texto real**: 6 filas en el orden del
+     radar (Inmobiliario, Crédito, Tesoro, Acciones, Materias primas,
+     Infraestructura), con el punto del color del tipo, el nombre en gris
+     de lectura (13 px; 12 en pantalla baja) y la cifra de plataformas a la
+     derecha en monoespaciada. En inglés, con el diccionario de siempre
+     (Property, Credit, Treasury…): ninguna clave nueva.
+  3. **Sin cifras** (revisión vencida o sin comprobar): solo los nombres.
+     **Un tipo con 0 plataformas:** su fila se queda con «0» atenuado.
+  4. El lector de pantalla oye la leyenda una sola vez (el dibujo sigue
+     oculto). Tocar el radar (web) o un punto (app) sigue como antes.
+  5. Medidas: con alto normal, aro de 150 px en la web y 157 en la app,
+     bloque de 176; con pantalla baja (web: alto ≤ 700 y ancho < 768; app:
+     alto < 700), aro de 113 y 116, bloque de 128 y 124. Por debajo de 350
+     px de ancho con alto normal encoge el radar, no la leyenda (a 320, aro
+     de 127 en la web y 129 en la app). «Ver las ofertas» y el aviso de
+     riesgo siguen en la primera pantalla.
+  6. **Tableta y escritorio (web):** el radar grande con los rótulos
+     alrededor, recolocados para no pisar el aro ni las marcas (medido de 768
+     × 1024 a 1920 × 1080 y en 1000 × 650); la leyenda queda solo para el
+     lector. Un tipo a cero lleva también su «0» atenuado.
+- **Arreglado tras las revisiones (comprobado antes):**
+  - Web: la caja del radar ensanchaba la cabecera en móviles estrechos de
+    alto normal (a 320 × 720 la página se salía 24 px; a 360 × 780 los
+    márgenes quedaban 16 y 11,8). Arreglado con `min-width:0`. El dibujo
+    recortado al aro tocaba la barra de arriba: ahora deja 8 px (4 en
+    pantalla baja). En escritorio, el «0» atenuado. Fuera un resto de la
+    letra de 11 px en `rotulos()`.
+  - App: al quitar «reducir movimiento» con la app abierta, el barrido solo
+    recorría 38°: ahora arranca desde 0. Ecos añadidos (salen del mismo giro
+    del barrido, sin bucles nuevos). Con letra del sistema enorme, la
+    leyenda pasa debajo con un radar de 112 (antes 168) y el punto crece con
+    la letra. Las pruebas ya no llevan las cifras del catálogo de hoy
+    escritas a mano (un ciclo del catálogo las habría roto).
+- **Dónde:** web, `rwadar-site/index.html` (la leyenda `#inicioRadarLista`
+  dentro de `[data-inicio-radar]`), `assets/rwadar-20260820.js`
+  (`pintarRadarInicio`, `leyendaRadarInicio`, `radarInicioSvg(sin,rotulos)`),
+  `assets/secciones-20261110.css` y `assets/rwadar-20260820.css`; app,
+  `rwadar-movil/componentes/Radar.js` (`medidasPortada`,
+  `filasLeyendaPortada`, `faseEco`, `rangosEco`) e `Inicio.js`.
+- **Commits:** web `1369b1b` y `180b876`; app `09b5783` y `a1b9309`;
+  uniones `fa9f863` y `4627625`; arreglos de la revisión `6152f51` (web) y
+  `b1175c6` (app), y este traspaso.
+- **Pruebas (integrado):** `npm test` en la raíz con salida 0: `rwadar-app`
+  (32 guiones con 1348 correctas, más 11 y 103 de `node --test`),
+  `test:web` (probar-web 710/710, 70 páginas y RSS, 40 de precarga), qr,
+  `rwadar-movil` (629 pruebas: 627 bien, 0 fallos, 2 omitidas; 13 en
+  `tests/radar-portada.test.cjs`), tools y `rwadar-acceso` 313/313 (con
+  `radar-inicio-navegador.test.mjs`: 10 tamaños de móvil de 320 × 568 a 430
+  × 932, entre ellos 320 × 720, 360 × 780 y 360 × 800, y 6 de tableta y
+  escritorio, en castellano y en inglés; márgenes, aire, sin cifras, tipo a
+  cero también en escritorio, cambio de tamaño en vivo y toque). Guardián de
+  OTA con `--base fa30779…`: `ok:true`, 1.4.2(24). gitleaks sobre
+  `origin/main..HEAD`: sin hallazgos. Mutaciones (quitar cada arreglo): las
+  5 de la web y las 11 de la app hacen fallar alguna prueba; con el catálogo
+  cambiado (una plataforma de Tesoro menos) las pruebas de la app siguen en
+  verde. Capturas en el scratchpad de la sesión (`radar/final/web` y
+  `radar/final/app`; las de la app son componentes reales con
+  react-native-web, no un APK).
+- **Pendiente / para Víctor:**
+  - Publicar la web y enviar la OTA cuando lo ordene (el guardián de OTA da
+    `ok:true`; solo cambia JavaScript).
+  - Mirar la app en un Android de verdad con la letra al 130 %: las
+    capturas son de los componentes reales con react-native-web, no de un
+    APK.
+  - Ya pasaba antes y no es del radar: con la letra al 130 % a 320 px (y al
+    200 % a 412) la fila «Revisado el 12/11/2026» se sale por la derecha en
+    la app.
+  - `docs/INTERNO.md` describe lo publicado: ponerlo al día al publicar.
+
+---
+
 ## 12 de noviembre de 2026 (18) · Claude · Novedades al abrir la app y la web
 
 - **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto

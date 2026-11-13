@@ -25,7 +25,7 @@ export { enlaceCorto };
    Víctor: «mucho lío en Inicio». Inicio es ahora una portada por bloques
    cortos, cada uno con su enlace «Ver …» a su sección, donde está el
    detalle; nada se repite:
-   1. Cabecera: el radar compacto, la frase de marca, tres cifras (ofertas,
+   1. Cabecera: el radar compacto con su leyenda, la frase de marca, tres cifras (ofertas,
       plataformas y fecha de revisión), «Ver las ofertas» y un solo aviso
       de riesgo, corto, pegado al botón (si se ve el botón, se ve el aviso).
    2. Ofertas: un solo carrusel con las recién añadidas y las que pasan las
@@ -77,8 +77,9 @@ export default function Inicio({
   const t = textosInicio(idioma);
   const b = t.bloques;
   // Si se ve el botón, se ve el aviso (ESPEC-INICIO §3, juez de normas). Por
-  // debajo de 700 px de alto el radar se encoge sin rótulos. Y el aviso va
-  // antes del botón si, después, quedaría bajo la barra: se decide midiendo.
+  // debajo de 700 px de alto el radar y su leyenda se encogen (124 de alto,
+  // la leyenda sigue entera). Y el aviso va antes del botón si, después,
+  // quedaría bajo la barra: se decide midiendo.
   const { height: altoPantalla } = useWindowDimensions();
   const compacta = altoPantalla < 700;
   const [altoVisible, setAltoVisible] = useState(0);
@@ -142,8 +143,11 @@ export default function Inicio({
     >
       {/* 1 · Cabecera: cabe entera en la primera pantalla, con el botón a la vista. */}
       <View style={e.portada} onLayout={(ev) => { portadaY.current = ev.nativeEvent.layout.y; calcularFin(); }}>
+        {/* El radar sin texto dentro y, al lado, la leyenda de los seis tipos
+            con su recuento (13/11/2026: los rótulos dentro se montaban). Sin
+            catálogo vigente, la leyenda va sin cifras, como las de abajo. */}
         <View style={[e.radarCaja, compacta && e.radarCajaBaja]}>
-          <Radar datos={plataformas} portada tamano={compacta ? 120 : 176} sinRotulos={compacta}
+          <Radar datos={plataformas} portada compacta={compacta} sinCifras={!cifras.vigente}
             onAbrir={(p) => onAbrirPlataforma?.(p)} onFiltrar={() => {}} />
         </View>
         <Text noTraducir style={[e.antetitulo, compacta && e.antetituloBaja]}>{t.portada.antetitulo}</Text>
@@ -262,8 +266,9 @@ const e = StyleSheet.create({
   antetituloBaja: { marginTop: 4 },
   accionPortada: { marginTop: 18, gap: 10 },
   accionPortadaBaja: { marginTop: 12, gap: 8 },
-  radarCaja: { position: 'relative', alignItems: 'center', justifyContent: 'center', minHeight: 184, paddingVertical: 4 },
-  radarCajaBaja: { minHeight: 124, paddingVertical: 0 },
+  /* Alto del bloque: 168 + 8 = 176 (antes, 184); en pantalla baja, 124. */
+  radarCaja: { position: 'relative', alignItems: 'center', justifyContent: 'center', paddingVertical: 4 },
+  radarCajaBaja: { paddingVertical: 0 },
   titularPortada: { ...T.titular, color: C.tx, marginTop: 6 },
   cifras: { flexDirection: 'row', gap: 22, marginTop: 16, paddingTop: 14, borderTopWidth: 1, borderTopColor: C.bd },
   cifra: { gap: 2 },

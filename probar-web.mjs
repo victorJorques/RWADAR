@@ -2537,9 +2537,12 @@ for(const [nombre,alterar] of [
   prueba('/aprende/ publicada lleva las cifras del catálogo de Inicio para los mínimos del 04 y la vigencia del 06',
     ci.minimos>0&&mainAprende===`<main id="contenido" class="sec-aprende inicio-cuerpo rel" data-catalogo-ofertas="${ci.ofertas}" data-catalogo-minimos="${ci.minimos}" data-catalogo-usd="${ci.usd}" data-catalogo-revisado="${ci.revisado}" data-catalogo-hasta="${ci.hasta}">`);
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
-  const sinCifras=['inicioCifras','inicioRadar','relNuevasLista'].map(id=>p.obtiene(id).innerHTML);
+  const sinCifras=['inicioCifras','inicioRadar','relNuevasLista','inicioRadarLista'].map(id=>p.obtiene(id).innerHTML);
+  // La leyenda del radar (13/11/2026) se queda con los seis nombres, sin números.
   prueba('con el catálogo caducado Inicio no enseña cifras ni ofertas y la línea de riesgo se queda',
     !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&!sinCifras[2]&&
+    (sinCifras[3].match(/<li class="ir-ley">/g)||[]).length===6&&!/ir-ley-n"|solo-lector|plataforma/.test(sinCifras[3])&&
+    !/\d<\/span>/.test(sinCifras[3])&&p.obtiene('inicioRadarLista').hidden===false&&
     ['relEscaparate','relNuevas'].every(id=>p.obtiene(id).hidden===true)&&pl('Ver las {ofertas} ofertas',false)===null&&
     /Invertir tiene riesgos/.test(panelInicioHTML));
   // Sin cifras, cada frase vuelve a su texto en castellano del HTML (data-rel-sin), no al que hubiera en pantalla
@@ -2602,12 +2605,60 @@ for(const [nombre,alterar] of [
     /white-space\s*:\s*nowrap/.test(declaracionesCSS(cssMovil,'#movilPanelRadar .emis-filtros .f').join(';'))&&
     /Todas <span class="ct">\d+<\/span>/.test(pills)&&!/display\s*:\s*none/.test(declaracionesCSS(cssMovil,'#movilPanelRadar .fichas-f .ct').join(';'))&&
     /<span class="empresa-visual__categoria">(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span>/.test(p.obtiene('grid').innerHTML));
-  // Radar de Inicio: los mismos nombres cortos, unidades claras y movimiento reducido en vivo.
-  const radar=p.obtiene('inicioRadar').innerHTML;
+  // Radar de Inicio (13/11/2026, «el radar de inicio se ve mal»): en el móvil, el radar sin texto
+  // (recortado al aro) y la leyenda en texto real a su lado; en tableta y escritorio
+  // (html.escritorio-relato), los rótulos alrededor. Los mismos nombres cortos y movimiento reducido en vivo.
+  const radar=p.obtiene('inicioRadar').innerHTML,vistaMovil=p.obtiene('inicioRadar').getAttribute('viewBox');
+  const leyenda=p.obtiene('inicioRadarLista').innerHTML,filas=[...leyenda.matchAll(/<li class="ir-ley( ir-ley-cero)?">([\s\S]*?)<\/li>/g)];
+  const porCat=JSON.parse(vm.runInContext('JSON.stringify(Object.keys(CATMETA).map(k=>[CATMETA[k].c,P.filter(p=>p.cat===k).length]))',c));
+  prueba('Inicio en el móvil: el radar sin rótulos dentro y la leyenda de seis filas, en su orden, con su color y su cifra',
+    !/<text\b/.test(radar)&&/class="radar-borde"/.test(radar)&&vistaMovil==='55 55 290 290'&&
+    filas.length===6&&filas.every((m,i)=>{const [col,n]=porCat[i];
+      return m[2]==='<svg class="ir-ley-punto" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><circle cx="5" cy="5" r="5" fill="'+col+'"/></svg>'+
+        '<span class="ir-ley-nombre">'+cortos[i]+'</span><span class="ir-ley-n" aria-hidden="true">'+n+'</span><span class="solo-lector">'+n+(n===1?' plataforma':' plataformas')+'</span>'&&
+        Boolean(m[1])===(n===0);}));
+  // Una categoría sin plataformas no desaparece: su fila sigue, con «0» atenuado.
+  vm.runInContext("var _p=[...P];P.splice(0,P.length,..._p.filter(x=>x.cat!=='Materias primas'));huellaInicio='';pintarInicio()",c);
+  const conCero=p.obtiene('inicioRadarLista').innerHTML;
+  vm.runInContext("P.splice(0,P.length,..._p);huellaInicio='';pintarInicio()",c);
+  // En tableta y escritorio, los rótulos alrededor del radar, con su viewBox ancho.
+  vm.runInContext("document.documentElement={classList:{contains:x=>x==='escritorio-relato'}};huellaInicio='';pintarInicio()",c);
+  const radarEsc=p.obtiene('inicioRadar').innerHTML,vistaEsc=p.obtiene('inicioRadar').getAttribute('viewBox');
+  // En escritorio, la categoría sin plataformas también lleva su «0» atenuado (antes, el nombre suelto).
+  vm.runInContext("P.splice(0,P.length,..._p.filter(x=>x.cat!=='Materias primas'));huellaInicio='';pintarInicio()",c);
+  const radarEscCero=p.obtiene('inicioRadar').innerHTML;
+  vm.runInContext("P.splice(0,P.length,..._p);huellaInicio='';pintarInicio()",c);
+  const rotulosEsc=[...radarEsc.matchAll(/<text class="ir-et" x="([\d.]+)" y="([\d.]+)" text-anchor="(\w+)"[^>]*>([\s\S]*?)<\/text>/g)]
+    .map(m=>({x:+m[1],y:+m[2],ancla:m[3],lineas:Math.max(1,(m[4].match(/<tspan[^>]* x=/g)||[]).length)}));
+  vm.runInContext("delete document.documentElement;huellaInicio='';pintarInicio()",c);
   prueba('el radar de Inicio usa los nombres cortos, cuenta plataformas y atiende el cambio de movimiento reducido',
-    cortos.every(nombre=>radar.includes('>'+nombre+(nombre==='Inmobiliario'||nombre==='Acciones'?' ':'<')))&&
-    !/Inmuebles|>Infra<|>Materias</i.test(radar)&&
+    (conCero.match(/<li class="ir-ley/g)||[]).length===6&&
+    /<li class="ir-ley ir-ley-cero"><svg [^>]*><circle [^>]*\/><\/svg><span class="ir-ley-nombre">Materias primas<\/span><span class="ir-ley-n" aria-hidden="true">0<\/span><span class="solo-lector">0 plataformas<\/span><\/li>/.test(conCero)&&
+    (conCero.match(/ir-ley-cero/g)||[]).length===porCat.filter(([,n],i)=>n===0||i===4).length&&
+    vistaEsc==='-14 6 416 388'&&(radarEsc.match(/<text class="ir-et"/g)||[]).length===6&&
+    /<tspan class="ir-et-n ir-et-cero" x="3" dy="15">0<\/tspan>/.test(radarEscCero)&&(radarEscCero.match(/ir-et-cero/g)||[]).length===porCat.filter(([,n],i)=>n===0||i===4).length&&
+    (radarEsc.match(/ir-et-cero/g)||[]).length===porCat.filter(([,n])=>n===0).length&&/\.rel \.ir-et-n\.ir-et-cero\{fill:var\(--tx-3\)\}/.test(css)&&
+    // Dónde van (medido en Chromium: con la letra a 14,6 unidades ninguno pisa el aro de 136 ni sus marcas de 144):
+    // arriba y abajo, a 24 del aro; los de los lados, en las esquinas, apoyados en y = 76 (arriba) o desde y = 340 (abajo).
+    rotulosEsc.length===6&&rotulosEsc.every(({x,y,ancla,lineas})=>ancla==='middle'?(y<=200-136-24||y>=200+136+24)&&x===200:
+      (ancla==='start'?x<=3:x>=385)&&(y+15*(lineas-1)<=76||y>=340))&&
+    cortos.every(nombre=>radarEsc.includes('>'+nombre+(nombre==='Inmobiliario'||nombre==='Acciones'?' ':'<')))&&
+    !/Inmuebles|>Infra<|>Materias</i.test(radarEsc)&&p.obtiene('inicioRadar').getAttribute('viewBox')==='55 55 290 290'&&
     /matchMedia\('\(prefers-reduced-motion: reduce\)'\)[\s\S]{0,40}addEventListener==='function'\)mq\.addEventListener\('change'/.test(js));
+  // Los rótulos de escritorio, fuera del aro y de las marcas (medido en Chromium en
+  // rwadar-acceso/radar-inicio-navegador.test.mjs); sin la regla que los escondía en pantallas bajas.
+  const cssSecciones=lee('./assets/secciones-20261110.css').replace(/\/\*[\s\S]*?\*\//g,'');
+  prueba('CSS del radar de Inicio: radar y leyenda lado a lado en el móvil, leyenda solo para el lector en escritorio',
+    !/\.ir-et\{display:none\}/.test(css)&&
+    /display:flex/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .ini-cab .rel-radar').join(';'))&&
+    // Sin min-width:0 la caja del radar ensanchaba la rejilla de la cabecera (a 320 × 720 la página se salía 24 px).
+    /(^|;)min-width:0(;|$)/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .ini-cab .rel-radar').join(';'))&&
+    /aspect-ratio:1\b/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .rel .ini-cab .rel-radar .inicio-radar').join(';'))&&
+    /clip-path:inset\(50%\)/.test(declaracionesCSS(cssSecciones,'.escritorio-relato .ir-leyenda').join(';'))&&
+    /white-space:nowrap/.test(declaracionesCSS(cssSecciones,'.ir-ley-nombre').join(';'))&&
+    // 320 × 568: el titular en tres líneas y la fecha sin crecer, para que «Ver las ofertas» quede sobre la barra de abajo.
+    /@media \(max-width:340px\) and \(max-height:700px\)\{\.ini-cab \.rel-portada-tit\{font-size:1\.375rem\}\}/.test(cssSecciones)&&
+    /@media \(max-width:359px\)\{[^@]*\.ini-cifra b\{font-size:1\.375rem\}[^@]*\.ini-cifra-fecha b\{font-size:1rem;/.test(cssSecciones));
   // Corrección (03/11), con el Inicio nuevo (04/11): Selección, aviso crítico y radar para el lector.
   const dc=s=>declaracionesCSS(css,s).join(';'),stop=vm.runInContext(`(()=>{const o={...EMI.find(x=>x.slug==='${sacada}')};
     o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP'}];return {sel:enSeleccionOferta(o)}})()`,c);
@@ -2615,9 +2666,12 @@ for(const [nombre,alterar] of [
   prueba('Ofertas de Inicio: tarjetas que encogen, del mismo ancho, con su nota propia y nunca una Selección con aviso crítico',
     /min-width:0/.test(dc('.rel-tarjeta'))&&/grid-auto-columns:\d+%/.test(dc('.rel-tarjetas'))&&!stop.sel&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&
     (p.obtiene('relNuevasLista').innerHTML.match(/<p class="rel-tarjeta-nota">[^<]+</g)||[]).length===conNota);
+  // La leyenda es la lista para el lector (13/11/2026): oye «Inmobiliario, 3 plataformas» una vez
+  // (el número a la vista va oculto y el SVG también); vive dentro del radar, que lleva a Plataformas.
   prueba('radar: recuentos para el lector',
-    /<li><span>(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span> <span>\d+ plataformas?<\/span><\/li>/.test(p.obtiene('inicioRadarLista').innerHTML)&&
-    /<ul class="solo-lector" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"><\/ul>/.test(htmlInicio)&&!/data-inicio-buscar/.test(htmlInicio));
+    (p.obtiene('inicioRadarLista').innerHTML.match(/<span class="ir-ley-nombre">(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span><span class="ir-ley-n" aria-hidden="true">(\d+)<\/span><span class="solo-lector">\1 plataformas?<\/span><\/li>/g)||[]).length===6&&
+    /<div class="rel-radar inicio-radar-caja" data-inicio-radar>\s*<svg class="inicio-radar" id="inicioRadar" viewBox="55 55 290 290" aria-hidden="true" focusable="false"><\/svg>\s*<ul class="ir-leyenda" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"><\/ul>\s*<\/div>/.test(htmlInicio)&&
+    !/class="solo-lector" id="inicioRadarLista"/.test(htmlInicio)&&!/data-inicio-buscar/.test(htmlInicio));
 }
 {
   const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);
