@@ -180,9 +180,19 @@ entidades» tiene el mismo SHA-256 que el 10/11, el 11/11 y el 12/11.
 
 - **Recortados en las copias:**
   - el nombre de una persona en la portada de Hausera;
-  - tres nombres en las páginas de Prosegur Cash.
+  - tres nombres en las páginas de Prosegur Cash;
+  - en el blog de Bit2Me (`fuentes/bit2me/bit2me-blog-autorizacion-2026-11-13.txt`),
+    los nombres de sus cofundadores (líneas 65, 69 y 82);
+  - en la página de bonos de Profitus
+    (`fuentes/profitus/nav-profitus-bonds-2026-11-13.txt`), el nombre del
+    fundador de Axiology (líneas 124 y 126) y el nombre, el correo de trabajo y
+    el teléfono directo de un empleado de Profitus (líneas 240, 244 y 249). Se
+    queda el teléfono de atención al cliente de la empresa (línea 291).
+    Recorte completado el 13/11/2026 a las 14:40 UTC por el montador
+    (corrección C1 de la revisión de SQL y O2 de la de cumplimiento).
 
-  Los originales están solo en `fuentes/crudo/`.
+  Los originales están solo en `fuentes/crudo/` o en `crudo/` (las copias de
+  texto de Bit2Me y Profitus), fuera de Git.
 - **Solo en `fuentes/crudo/`:** la ficha de la EAFN nº 21, que lleva el nombre
   y la dirección de una persona física.
 - **No guardados:** los PDF de Hausera.

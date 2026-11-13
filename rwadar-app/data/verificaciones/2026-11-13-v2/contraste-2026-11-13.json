@@ -3,10 +3,10 @@
   "fecha": "2026-11-13",
   "etiqueta": "2026-11-13",
   "revisionAnterior": "a58dd22d-98a3-f94e-ba66-46898162215a",
-  "revisionNueva": "66907add-8ebf-424b-3e04-b73e47b0c537",
+  "revisionNueva": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
   "decision": "Puesta al día pedida por el responsable del proyecto el 13/11/2026 («Actualiza las noticias, las ofertas y el gráfico de la evolución de la tokenización a hoy… lo más rápido posible pero que esté bien hecho»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
-    "DECISIONES-COORDINADOR.md": "0538b65c5dd99b2e761481bd1cc21ead9bb8a8f630719fc8cd0d692a1a2f21ee",
+    "DECISIONES-COORDINADOR.md": "1572af383122fa087bbde59d608b8ee29d6ba4dc4b48da56734adbee1c18f09a",
     "radar-contraste-2026-11-13.json": "4a661171c9385ad403066b60363e070d6f70e30b2a6a8a3f0022f7e8048c31ec",
     "cambios-radar.json": "62a25fa91c8d13a5d0cac5465c729908cb23ee6a1ae7524326cbe23dca07eda3"
   },
@@ -52,7 +52,7 @@
       "randhartingergasse-9-viena": "78 € → 78 €",
       "local-de-estanco-klagenfurt": "95 € → 95 €",
       "vivienda-pluddemanngasse-101-graz": "75 € → 75 €",
-      "vivienda-pottendorfer-stra-e-62-wr-neustadt": "80 € → 73 €",
+      "vivienda-pottendorfer-stra-e-62-wr-neustadt": "80 € → 80 €",
       "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €"
     }
   },
@@ -82,7 +82,43 @@
     "bossInfoUltimaOperacion": {
       "fuente": "https://shares.bossinfo.com/",
       "porque": "la API POST getTrades da 405 a un visitante"
-    }
+    },
+    "pottendorferO1": {
+      "revision": "REVISION-ENTREGA-cumplimiento.md (O1)",
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "problema": "La orden de 1 participación a 73 € del libro de las 08:30:44 UTC ya no existe (el revisor la buscó a las 14:16:58, 14:18:36 y 14:29:09 UTC).",
+      "lectura": {
+        "archivo": "correcciones-entrega/libro-ordenes-resumen-2026-11-13-1436.json",
+        "consultadoUtc": "2026-11-13T14:36:41Z",
+        "consultas": [
+          {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "consultadoUtc": "2026-11-13T14:36:41Z",
+            "sha256": "3493ef7154650261601b851f4ba035313086253d5134e7c508cb26bc7648d29c"
+          },
+          {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "consultadoUtc": "2026-11-13T14:36:42Z",
+            "sha256": "6b1b2572dea8e79f12e27699336d40b8f712e6254e8b7f623ea43207097fa78d"
+          },
+          {
+            "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+            "consultadoUtc": "2026-11-13T14:36:41Z",
+            "sha256": "3c1ec01abc9f4682fca0e14728ccbf250975cee61230142d6a4107b7daf95c61"
+          }
+        ]
+      },
+      "textos": {
+        "minimo": "Desde 80 € la participación en reventa (13/11)",
+        "Venta más barata": "80,00 € por participación (11 a ese precio, orden del 08/02/2026)",
+        "Orden de venta de menor importe": "1 participación a 115,00 € (116,73 € con el 1,5 %)",
+        "Participaciones en venta": "106",
+        "Mejor oferta de compra": "19,00 € (3 participaciones, orden del 06/11/2025)"
+      },
+      "horaEnLosAlcances": "14:36 UTC",
+      "otras10": "el libro de las 14:36 UTC da lo mismo que el de las 08:30 UTC: se quedan con el de la mañana"
+    },
+    "datosPersonalesO2": "La copia grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-13.txt, recortada (líneas 124, 240, 244 y 249). Ningún guion de la entrega la lee."
   },
   "horasRealesSuiza": [
     {
@@ -827,7 +863,7 @@
   "condicionHora": {
     "spiko": "VL del 12/11 en las tres, válidas si la entrega se monta antes de las 18:00 UTC del 13/11 (la API anuncia la siguiente cifra de las Letras a las 18:00 UTC y la de Smart Cash a las 19:30 UTC); si no, volver a leer la API pública de Spiko. La hora del montaje está en INFORME-ENTREGA.md.",
     "mtbill": "Ronda 492 (10/11, 18:40 UTC) última a las 08:45 UTC del 13/11 (revisor); una ronda nueva cambiaría el valor por token, no la métrica de 5 semanas hasta el 10/11.",
-    "brickwise": "Pottendorfer: la orden de 1 participación a 73 € (creada el 12/11 a las 21:45 UTC) seguía abierta a las 08:48 UTC; el revisor recomienda volver a mirarla justo antes de aplicar."
+    "brickwise": "Pottendorfer: la orden de 1 participación a 73 € (creada el 12/11 a las 21:45 UTC) seguía abierta a las 08:48 UTC, pero a las 14:16 UTC ya no estaba (O1 de cumplimiento). Libro leído otra vez a las 14:36:41 UTC: 80 € × 11 (orden del 08/02/2026), 106 en venta. El libro cambia a diario: volver a mirarlo justo antes de aplicar; si la venta más barata de Pottendorfer ya no es 80 €, rehacer la entrega."
   },
   "vigencia": {
     "verificadaEl": "2026-11-13",
@@ -1263,25 +1299,25 @@
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
       "campo": "referencia de la ficha",
       "antes": "Venta más barata · 12/11/2026: 80,00 € por participación (11 a ese precio, orden del 08/02/2026)",
-      "despues": "Venta más barata · 13/11/2026: 73,00 € por participación (1 a ese precio, orden del 12/11/2026)"
+      "despues": "Venta más barata · 13/11/2026: 80,00 € por participación (11 a ese precio, orden del 08/02/2026)"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
       "campo": "referencia de la ficha",
       "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 115,00 € (116,73 € con el 1,5 %)",
-      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 73,00 € (74,10 € con el 1,5 %)"
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 115,00 € (116,73 € con el 1,5 %)"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
       "campo": "tarjeta",
       "antes": "Mínimo de inversión: Desde 80 € la participación en reventa (12/11)",
-      "despues": "Mínimo de inversión: Desde 73 € la participación en reventa (13/11)"
+      "despues": "Mínimo de inversión: Desde 80 € la participación en reventa (13/11)"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
       "campo": "referencia de la ficha",
       "antes": "Participaciones en venta · 11/11/2026: 107",
-      "despues": "Participaciones en venta · 13/11/2026: 107"
+      "despues": "Participaciones en venta · 13/11/2026: 106"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -1422,7 +1458,7 @@
       "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
-      "Mínimo de inversión": "Desde 73 € la participación en reventa (13/11)",
+      "Mínimo de inversión": "Desde 80 € la participación en reventa (13/11)",
       "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
       "Salida": "Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
     },
@@ -1457,6 +1493,11 @@
       "slug": "aktionariat, boss-info y switzerlend",
       "que": "Corregir dentro de los tres expedientes cada «consultadoUtc» copiado del 12/11 (79 de 82)",
       "porque": "El montador no edita los expedientes (prohibido en este encargo). La corrección obligatoria se aplica en la entrega: las horas reales salen del inventario del grupo y están en contraste-2026-11-13.json («horasRealesSuiza»); ninguna hora copiada llega a la entrega (se comprueba archivo a archivo) y despues-de-aplicar.mjs solo re-fecha una fuente suiza si tiene hora real de hoy."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "que": "Los textos del expediente (y de la primera versión de DECISIONES §2) con la orden de 1 participación a 73 €: mínimo «Desde 73 € la participación en reventa (13/11)», venta más barata 73 € y orden de menor importe 1 × 73 € (74,10 € con el 1,5 %), con el libro de las 08:30 UTC",
+      "porque": "Corrección O1 de la revisión de cumplimiento: esa orden ya no existe. Se usa el libro leído otra vez a las 14:36:41 UTC (correcciones-entrega/, el mismo archivo que leyó el revisor) con los textos de la corrección: 80 € (11 a ese precio), menor importe 1 × 115 € (116,73 €), 106 en venta y mejor compra 19 € sin cambios. DECISIONES §2 y §5 ya lo recogen. El montador no edita los expedientes."
     },
     {
       "slug": "varias",

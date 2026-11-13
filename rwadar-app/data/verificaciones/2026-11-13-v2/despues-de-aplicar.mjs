@@ -15,8 +15,8 @@
 //        copiadas del 12/11 (corrección obligatoria del revisor). Si no, se deja la fecha anterior y se dice;
 //      - la fecha del título de los puntos fuertes («… (12/11/2026)») con la misma regla;
 //      - los mínimos cortos de las 11 de Brickwise, que salen del texto largo del catálogo sincronizado
-//        («Desde X € la participación en reventa (13/11)» → «Desde X € la participación (13/11)»; cambia
-//        Pottendorfer 80 → 73; las otras 10, solo la fecha);
+//        («Desde X € la participación en reventa (13/11)» → «Desde X € la participación (13/11)»; las 11, solo
+//        la fecha: Pottendorfer sigue en 80 € por la corrección O1 de la revisión de cumplimiento);
 //      - el mínimo corto de Switzerlend, con la fecha de su ficha: «1 acción (68,01 CHF, 12/11)» → «… 13/11)»;
 //      - el mínimo corto de Hausera, con la fecha de su ficha (el documento de emisión se volvió a leer hoy):
 //        «Desde 100 € en Alicante 3 (12/11)» → «Desde 100 € en Alicante 3 (13/11)»;
@@ -121,11 +121,11 @@ for (const [slug, o] of Object.entries(t.ofertas)) {
 }
 
 // Mínimos cortos de reventa de Brickwise (máximo 40 caracteres): el precio del texto largo del catálogo sincronizado
-// (DECISIONES §2: Pottendorfer 73 €; las otras 10, solo la fecha).
+// (DECISIONES §2 y §5: Pottendorfer sigue en 80 € por la corrección O1; las 11, solo la fecha).
 const BRICKWISE = {
   'apartamento-vacacional-hinterstoder-50': '75', 'vivienda-schwarzer-weg-18-graz': '69,90', 'vivienda-stallhofstra-e-28-gratwein': '68,80',
   'drautalresidenz-paternion': '70', 'fotovoltaica-cohotel': '102', 'fotovoltaica-greenpoint': '102', 'randhartingergasse-9-viena': '78',
-  'local-de-estanco-klagenfurt': '95', 'vivienda-pluddemanngasse-101-graz': '75', 'vivienda-pottendorfer-stra-e-62-wr-neustadt': '73',
+  'local-de-estanco-klagenfurt': '95', 'vivienda-pluddemanngasse-101-graz': '75', 'vivienda-pottendorfer-stra-e-62-wr-neustadt': '80',
   'vivienda-sonnleithnergasse-2-viena': '75',
 };
 const LARGO_BW = /^Desde ([\d.,]+) € la participación en reventa \(13\/11\)$/;

@@ -55,9 +55,14 @@ correcciones obligatorias aplicadas. Cerrado a las 09:00 UTC.
 - **Robinhood, Kraken xStocks y Prosegur Digital Gold:** sin cambios; solo la
   fecha. (Kraken: condiciones finales nuevas 4GLDx, tampoco con España.)
 - **Brickwise (11):**
-  - **Pottendorfer:** mínimo **80 € → 73 €** («Desde 73 € la participación en
-    reventa (13/11)»); orden de menor importe 1 × 73 € (**74,10 €** con el
-    1,5 %); «Participaciones en venta» 107 con fecha 13/11.
+  - **Pottendorfer (corregido tras la revisión de la entrega, O1; ver §5):**
+    mínimo **80 €, el mismo que lo publicado** («Desde 80 € la participación
+    en reventa (13/11)»; a ese precio, 11 participaciones en una orden del
+    08/02/2026); orden de menor importe 1 × 115 € (116,73 € con el 1,5 %), sin
+    cambios; «Participaciones en venta» 107 → **106** (13/11); mejor compra
+    19 € × 3 (06/11/2025), sin cambios. Es el libro leído a las 14:36:41 UTC
+    (`correcciones-entrega/`). La orden de 1 × 73 € de las 08:30 UTC ya no
+    existe.
   - **Cohotel:** «Participaciones en venta» 65 → **59** (13/11); mínimo 102 €.
   - **GreenPoint:** 351 → **347** (13/11); mínimo 102 €.
   - **Schwarzer Weg:** 300 → **299** (13/11); mínimo 69,90 €.
@@ -91,3 +96,42 @@ estudio») y Crypto.com Tokenized Stocks (UE), sin KID público.
   https://shares.bossinfo.com/ (no la API getTrades, que da 405).
 - **Vigilancia:** recortados los nombres de personas físicas en las copias
   de Bit2Me y Profitus; los originales, solo en `crudo/` (fuera de Git).
+
+## 5. Correcciones de la revisión de la entrega
+
+Las escribe el montador el 13/11/2026 (14:36–14:45 UTC), porque las
+correcciones obligatorias de las revisiones de la entrega lo piden.
+**Confirmadas por el coordinador a las 15:25 UTC**, con la verificación final
+«conforme» (`VERIFICACION-ENTREGA.md`: el SQL final `b6f0129c…e7b4`, revisión
+`434217eb`, solo cambia la sentencia de Pottendorfer frente al revisado).
+
+- **O1 (cumplimiento) · Pottendorfer.** La orden de 1 participación a 73 € en
+  la que se basaban el mínimo y tres referencias ya no existe (el revisor de
+  cumplimiento la buscó a las 14:16:58, 14:18:36 y 14:29:09 UTC). El montador
+  volvió a leer la API pública de Brickwise justo antes de regenerar:
+  - v1 `https://api.app.brickwise.at/api/v1/assets` a las 14:36:41 UTC,
+    SHA-256 `3493ef7154650261601b851f4ba035313086253d5134e7c508cb26bc7648d29c`;
+  - v2 `https://api.app.brickwise.at/api/v2/assets` a las 14:36:42 UTC,
+    SHA-256 `6b1b2572dea8e79f12e27699336d40b8f712e6254e8b7f623ea43207097fa78d`.
+
+  Son los mismos archivos que leyó el revisor, así que valen sus textos (§2).
+  En los tres alcances del libro de Pottendorfer, la hora pasa a «(14:36
+  UTC)». Las otras 10 fichas de Brickwise dan en esta lectura exactamente lo
+  mismo que a las 08:30 UTC y se quedan con la de la mañana. El resumen sin
+  direcciones está en
+  `correcciones-entrega/libro-ordenes-resumen-2026-11-13-1436.json`. Las
+  respuestas crudas están en `correcciones-entrega/crudo/`, fuera de Git.
+- **O2 (cumplimiento) y C1 (SQL) · Datos personales en la copia de
+  Profitus.** Recortados en
+  `grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-13.txt` el
+  nombre del fundador de Axiology (línea 124) y el nombre, el correo de
+  trabajo y el teléfono directo de un empleado de Profitus (líneas 240, 244 y
+  249). Con eso queda completo lo de §4 («Vigilancia»). No cambia el SQL.
+- **R5 (SQL) · Lo que la entrega ya hacía y no estaba escrito aquí:**
+  - En Boss Info, el alcance de «Última operación · 13/11/2026» cuenta la
+    lectura en la cadena del revisor de Suiza (08:45:52 UTC: 8,2404 ZCHF para
+    quien vendió y 0,1596 ZCHF de comisión). No se la atribuye al
+    investigador.
+  - En las fichas de Brickwise, la hora del libro de la mañana, «(08:30–08:33
+    UTC)», va en los alcances de 30 referencias (tres por ficha, en 10
+    fichas). En Pottendorfer va «(14:36 UTC)».

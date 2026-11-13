@@ -387,10 +387,10 @@ const sinFechas = o => {
       assert.deepEqual(ref('boss-info', 'Última operación · 12/11/2026'), []);
       assert.ok(!JSON.stringify(ver('boss-info')).includes('api/secondarymarkets/getTrades'), 'Boss Info: sin la API que da 405');
     }
-    // Brickwise: aviso común en las 11, libro al 13/11 (Pottendorfer 73 €, orden de menor importe 74,10 €).
+    // Brickwise: aviso común en las 11, libro al 13/11 (Pottendorfer, corrección O1: 80 € y orden de menor importe 116,73 €).
     const BW = { 'vivienda-pluddemanngasse-101-graz': ['75', '100,49'], 'vivienda-sonnleithnergasse-2-viena': ['75', '81,20'], 'local-de-estanco-klagenfurt': ['95', '96,43'],
       'vivienda-stallhofstra-e-28-gratwein': ['68,80', '69,83'], 'vivienda-schwarzer-weg-18-graz': ['69,90', '70,95'], 'drautalresidenz-paternion': ['70', '85,26'],
-      'randhartingergasse-9-viena': ['78', '79,17'], 'apartamento-vacacional-hinterstoder-50': ['75', '91,35'], 'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['73', '74,10'],
+      'randhartingergasse-9-viena': ['78', '79,17'], 'apartamento-vacacional-hinterstoder-50': ['75', '91,35'], 'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['80', '116,73'],
       'fotovoltaica-greenpoint': ['102', '103,53'], 'fotovoltaica-cohotel': ['102', '103,53'] };
     const AVISO_BW = 'Cada venta se anuncia con su precio y su número de participaciones; no consta que se pueda comprar solo una parte. El comprador paga además un 1,5 % de comisión.';
     for (const [slug, [, importe]] of Object.entries(BW)) {
@@ -407,13 +407,18 @@ const sinFechas = o => {
     assert.deepEqual(valores('fotovoltaica-cohotel', `Participaciones en venta · ${FES}`), ['59']);
     assert.deepEqual(valores('fotovoltaica-greenpoint', `Participaciones en venta · ${FES}`), ['347']);
     assert.deepEqual(valores('vivienda-schwarzer-weg-18-graz', `Participaciones en venta · ${FES}`), ['299']);
-    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Participaciones en venta · ${FES}`), ['107']);
+    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Participaciones en venta · ${FES}`), ['106']);
     assert.deepEqual(valores('randhartingergasse-9-viena', `Mejor oferta de compra · ${FES}`), ['64,00 € (1 participación, orden del 12/11/2026)']);
-    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Venta más barata · ${FES}`), ['73,00 € por participación (1 a ese precio, orden del 12/11/2026)']);
-    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Orden de venta de menor importe · ${FES}`), ['1 participación a 73,00 € (74,10 € con el 1,5 %)']);
+    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Venta más barata · ${FES}`), ['80,00 € por participación (11 a ese precio, orden del 08/02/2026)']);
+    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Orden de venta de menor importe · ${FES}`), ['1 participación a 115,00 € (116,73 € con el 1,5 %)']);
+    assert.deepEqual(valores('vivienda-pottendorfer-stra-e-62-wr-neustadt', `Mejor oferta de compra · ${FES}`), ['19,00 € (3 participaciones, orden del 06/11/2025)']);
     assert.deepEqual(valores('apartamento-vacacional-hinterstoder-50', `Mejor oferta de compra · ${FES}`), ['20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)']);
     assert.deepEqual(valores('local-de-estanco-klagenfurt', `Venta más barata · ${FES}`), ['95,00 € por participación (16 a ese precio, en 3 órdenes)']);
-    assert.ok(!JSON.stringify(ver('vivienda-pottendorfer-stra-e-62-wr-neustadt')).includes('116,73 €'), 'Pottendorfer: sin la orden de 115 € de ayer');
+    // O1: ninguna huella de la orden de 1 × 73 € que desapareció; los tres alcances del libro, con la hora de la tarde.
+    assert.doesNotMatch(JSON.stringify(ver('vivienda-pottendorfer-stra-e-62-wr-neustadt')), /(?<![\d,.])73(?:,00)? €|74,10/, 'Pottendorfer: sin la orden de 73 €');
+    assert.equal(ver('vivienda-pottendorfer-stra-e-62-wr-neustadt').documentacion.referencias.filter(r => r.alcance.startsWith('Libro de órdenes de la app de Brickwise leído el 13/11/2026 (14:36 UTC)')).length, 3, 'Pottendorfer: libro de las 14:36 UTC');
+    assert.equal(JSON.stringify([...o1.values()].filter(o => o.slug !== 'vivienda-pottendorfer-stra-e-62-wr-neustadt')).split('(14:36 UTC)').length, 1, 'las otras fichas, con el libro de la mañana');
+    assert.match(ref('vivienda-pottendorfer-stra-e-62-wr-neustadt', 'Mínimo de inversión')[0].alcance, /a ese precio había 11 participaciones a la venta/);
     assert.ok(!/56,00 €/.test(JSON.stringify(ver('randhartingergasse-9-viena').documentacion.referencias.filter(r => /^Mejor oferta de compra/.test(r.etiqueta)))));
     // Hausera: re-fechado lo consultado hoy (aviso de la CNMV, mínimo del documento y portada); lo demás igual.
     assert.ok(o1.get('hausera-proximas-ofertas').avisos.some(a => a.texto === 'El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 13/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV.'));
@@ -421,13 +426,13 @@ const sinFechas = o => {
     assert.deepEqual(valores('hausera-proximas-ofertas', `Historial publicado · ${FES}`), ['42 operaciones, 24 terminadas, 128 M€ financiados']);
     assert.match(ref('hausera-proximas-ofertas', 'Mínimo de inversión')[0].alcance, /El 13\/11\/2026 aún no se podía invertir: la preventa abre el 18\/11\/2026/);
     const nAplicado = contraste.noAplicadoTalCual.map(x => x.slug);
-    assert.deepEqual(nAplicado, ['boss-info', 'aktionariat, boss-info y switzerlend', 'varias', 'spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro']);
+    assert.deepEqual(nAplicado, ['boss-info', 'aktionariat, boss-info y switzerlend', 'vivienda-pottendorfer-stra-e-62-wr-neustadt', 'varias', 'spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro']);
     // Ninguna hora copiada del 12/11 (las 00:3x UTC del 13/11 de los expedientes suizos) en lo que lee un visitante.
     assert.doesNotMatch(JSON.stringify([...v1.o, ...tabla.values()]), /2026-11-13T00:|13\/11\/2026 a las 00:/);
     informe.cifras = { 'spiko-letras-del-tesoro-euro': '2,41 % → 2,40 % (VL del 12/11)', 'spiko-letras-del-tesoro-dolar': '4,02 % → 3,98 % en USD (VL del 12/11)',
       'spiko-smart-cash-euro': '2,84 % (VL 11/11 → 12/11)', spikoAccesoEspana: 'fecha del dato 23/10 → 06/11 en las tres', mtbill: 'sin cambios: 3,45 % anual en USD (06/10 → 10/11) y 1,0777 USD por token (10/11)',
-      brickwise: 'Pottendorfer 80 → 73 € (menor importe 1 × 73 €, 74,10 € con el 1,5 %); Cohotel 65 → 59, GreenPoint 351 → 347 y Schwarzer Weg 300 → 299 participaciones en venta; Randhartingergasse mejor compra 56 → 64 €; las demás, solo la fecha' };
-    ok(`cada cambio de contraste-2026-11-13.json está en lo que lee un visitante (${contraste.cambios.length} cambios en ${informe.cambiosComprobados.fichas} fichas) y lo de antes ya no; Spiko Euro (Letras) 2,40 %, Dólar 3,98 % en USD y Smart Cash 2,84 %, con la VL del 12/11 en métrica, literal y referencia; «Acceso desde España» de las tres con la tabla del 06/11/2026; mTBILL, Robinhood, Kraken y Prosegur, iguales salvo las fechas; Aktionariat, Boss Info y Switzerlend con fechas del 13/11 y «Última operación» con la fuente del portal y la lectura en cadena del revisor; Brickwise con el libro al 13/11 (Pottendorfer 73 €, 74,10 € con el 1,5 %; participaciones 59, 347, 299 y 107; Randhartingergasse 64 €); Hausera re-fechada donde se consultó hoy; todos los avisos con fecha del 13/11; la vista sigue enmascarando el resumen y las métricas de las ${enmascaradas.length} fichas que no están «actual», igual que hoy; ninguna hora de las 00 del 13/11`);
+      brickwise: 'Pottendorfer (O1, libro de las 14:36 UTC) sigue en 80 € y 107 → 106 participaciones en venta; Cohotel 65 → 59, GreenPoint 351 → 347 y Schwarzer Weg 300 → 299 participaciones en venta; Randhartingergasse mejor compra 56 → 64 €; las demás, solo la fecha' };
+    ok(`cada cambio de contraste-2026-11-13.json está en lo que lee un visitante (${contraste.cambios.length} cambios en ${informe.cambiosComprobados.fichas} fichas) y lo de antes ya no; Spiko Euro (Letras) 2,40 %, Dólar 3,98 % en USD y Smart Cash 2,84 %, con la VL del 12/11 en métrica, literal y referencia; «Acceso desde España» de las tres con la tabla del 06/11/2026; mTBILL, Robinhood, Kraken y Prosegur, iguales salvo las fechas; Aktionariat, Boss Info y Switzerlend con fechas del 13/11 y «Última operación» con la fuente del portal y la lectura en cadena del revisor; Brickwise con el libro al 13/11 (Pottendorfer, con el libro de las 14:36 UTC por la corrección O1: 80 €, 116,73 € con el 1,5 % y 106 en venta, sin ningún rastro de la orden de 73 €; participaciones 59, 347 y 299; Randhartingergasse 64 €); Hausera re-fechada donde se consultó hoy; todos los avisos con fecha del 13/11; la vista sigue enmascarando el resumen y las métricas de las ${enmascaradas.length} fichas que no están «actual», igual que hoy; ninguna hora de las 00 del 13/11`);
 
     // Vigencia: siete días desde el 13/11.
     const lector = hoy => validarLotePublicoV2(v1.p, v1.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy, permitirAmpliacion: true });
@@ -477,7 +482,7 @@ const sinFechas = o => {
       'spiko-letras-del-tesoro-dolar', 'spiko-smart-cash-euro', 'mtbill', 'aktionariat']) assert.ok(!t[slug].antes, `${slug}: la tarjeta no cambia`);
     const cambiadas = Object.entries(t).filter(([, x]) => x.antes).map(([s]) => s);
     assert.equal(cambiadas.length, 14);
-    ok(`tarjetas (resumenOferta, 13/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en ${cambiadas.length}: ${cambiadas.join(', ')}; Brickwise «Desde X € la participación en reventa (13/11)» (Pottendorfer 80 → 73; las otras 10, solo la fecha); Boss Info, Switzerlend y Hausera con fecha del 13/11; Aktionariat y las 8 principales, igual; mTBILL «${t.mtbill.minimo}» · «${t.mtbill.espana}» · «${t.mtbill.salida}» (fuentes en conflicto)`);
+    ok(`tarjetas (resumenOferta, 13/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en ${cambiadas.length}: ${cambiadas.join(', ')}; Brickwise «Desde X € la participación en reventa (13/11)» (Pottendorfer, por la corrección O1, también solo la fecha: 80 €; las 11, solo la fecha); Boss Info, Switzerlend y Hausera con fecha del 13/11; Aktionariat y las 8 principales, igual; mTBILL «${t.mtbill.minimo}» · «${t.mtbill.espana}» · «${t.mtbill.salida}» (fuentes en conflicto)`);
 
     // El sincronizador real, contra estas vistas, en una copia temporal del catálogo de la web.
     const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-1311-'));
@@ -507,13 +512,13 @@ const sinFechas = o => {
       assert.ok(pag('spiko-letras-del-tesoro-euro').includes('2,40 %') && pag('spiko-letras-del-tesoro-dolar').includes('3,98 %') && pag('spiko-smart-cash-euro').includes('2,84 %'), 'las fichas web de Spiko: 2,40 %, 3,98 % y 2,84 %');
       assert.ok(pag('spiko-smart-cash-euro').includes('12/11/2026') && !pag('spiko-smart-cash-euro').includes('Tabla de disponibilidad de Spiko (23/10/2026)'), 'la ficha web de Smart Cash: VL del 12/11 y tabla del 06/11');
       const pottendorfer = pag('vivienda-pottendorfer-stra-e-62-wr-neustadt');
-      assert.ok(pottendorfer.includes('Desde 73 € la participación en reventa (13/11)') && pottendorfer.includes('74,10 €') && !pottendorfer.includes('116,73 €') && !pottendorfer.includes('Desde 80 €'), 'la ficha web de Pottendorfer: 73 € y 74,10 €');
+      assert.ok(pottendorfer.includes('Desde 80 € la participación en reventa (13/11)') && pottendorfer.includes('116,73 €') && !pottendorfer.includes('74,10 €') && !pottendorfer.includes('Desde 73 €') && !pottendorfer.includes('73,00 €'), 'la ficha web de Pottendorfer: 80 € y 116,73 € (O1)');
       assert.ok(pag('randhartingergasse-9-viena').includes('64,00 €'), 'la ficha web de Randhartingergasse: mejor compra 64 €');
       assert.ok(pag('boss-info').includes(`Última operación · ${FES}`) && !pag('boss-info').includes('api/secondarymarkets/getTrades'), 'la ficha web de Boss Info: «Última operación» al 13/11, sin la API');
       assert.ok(pag('hausera-proximas-ofertas').includes('El 13/11/2026 Alicante 3 aún no estaba inscrita'), 'la ficha web de Hausera: aviso al 13/11');
       for (const [n, html] of salidas) if (/^ofertas\//.test(n)) assert.doesNotMatch(html, /2026-11-13T00:|13\/11\/2026 a las 00:/, `${n}: hora de las 00 del 13/11`);
       informe.fichasQueCambian = distintas.length;
-      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas, idéntico al de la web), todas de la revisión nueva y verificadas el 13/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian ${distintas.length} (${distintas.filter(n => n.startsWith('ofertas/')).length} de oferta, ${distintas.filter(n => n.startsWith('plataformas/')).length} de plataforma y ${distintas.filter(n => n.startsWith('fuera-del-radar/')).length} de descartadas) por la revisión, las fechas y los textos; las fichas web de Spiko dicen 2,40 %, 3,98 % y 2,84 %; la de Pottendorfer «Desde 73 € la participación en reventa (13/11)» y 74,10 €; la de Randhartingergasse, 64 €; la de Boss Info, «Última operación · 13/11/2026» sin la API; la de Hausera, el aviso al 13/11`);
+      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas, idéntico al de la web), todas de la revisión nueva y verificadas el 13/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian ${distintas.length} (${distintas.filter(n => n.startsWith('ofertas/')).length} de oferta, ${distintas.filter(n => n.startsWith('plataformas/')).length} de plataforma y ${distintas.filter(n => n.startsWith('fuera-del-radar/')).length} de descartadas) por la revisión, las fechas y los textos; las fichas web de Spiko dicen 2,40 %, 3,98 % y 2,84 %; la de Pottendorfer «Desde 80 € la participación en reventa (13/11)» y 116,73 € (O1); la de Randhartingergasse, 64 €; la de Boss Info, «Última operación · 13/11/2026» sin la API; la de Hausera, el aviso al 13/11`);
       informe.lecturasDelSincronizador = leidas.map(u => u.replace(/^https:\/\/[^/]+/, ''));
     } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 

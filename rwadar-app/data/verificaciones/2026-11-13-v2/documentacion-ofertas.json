@@ -3909,11 +3909,11 @@
       },
       {
         "etiqueta": "Mínimo de inversión",
-        "valor": "Desde 73 € la participación en reventa (13/11)",
+        "valor": "Desde 80 € la participación en reventa (13/11)",
         "fechaDato": "2026-11-13",
         "fechaConsulta": "2026-11-13",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Redacción en castellano del dato comprobado en la fuente el 13/11/2026. Precio por participación de la venta más barata del mercado de la app ese día, más un 1,5 % de comisión; a ese precio había 1 participación a la venta. Brickwise no publica un mínimo en reventa ni si una orden se puede comprar en parte. El precio lo fija cada vendedor y cambia a diario. No es el precio de emisión."
+        "alcance": "Redacción en castellano del dato comprobado en la fuente el 13/11/2026. Precio por participación de la venta más barata del mercado de la app ese día, más un 1,5 % de comisión; a ese precio había 11 participaciones a la venta. Brickwise no publica un mínimo en reventa ni si una orden se puede comprar en parte. El precio lo fija cada vendedor y cambia a diario. No es el precio de emisión."
       },
       {
         "etiqueta": "Acceso desde España",
@@ -3933,23 +3933,23 @@
       },
       {
         "etiqueta": "Venta más barata · 13/11/2026",
-        "valor": "73,00 € por participación (1 a ese precio, orden del 12/11/2026)",
+        "valor": "80,00 € por participación (11 a ese precio, orden del 08/02/2026)",
         "fechaDato": "2026-11-13",
         "fechaConsulta": "2026-11-13",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
-        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (08:30–08:33 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario."
+        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (14:36 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario."
       },
       {
         "etiqueta": "Orden de venta de menor importe · 13/11/2026",
-        "valor": "1 participación a 73,00 € (74,10 € con el 1,5 %)",
+        "valor": "1 participación a 115,00 € (116,73 € con el 1,5 %)",
         "fechaDato": "2026-11-13",
         "fechaConsulta": "2026-11-13",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
-        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (08:30–08:33 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo."
+        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (14:36 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo."
       },
       {
         "etiqueta": "Participaciones en venta · 13/11/2026",
-        "valor": "107",
+        "valor": "106",
         "fechaDato": "2026-11-13",
         "fechaConsulta": "2026-11-13",
         "fuente": "https://api.app.brickwise.at/api/v2/assets",
@@ -3961,7 +3961,7 @@
         "fechaDato": "2026-11-13",
         "fechaConsulta": "2026-11-13",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
-        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (08:30–08:33 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %."
+        "alcance": "Libro de órdenes de la app de Brickwise leído el 13/11/2026 (14:36 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %."
       },
       {
         "etiqueta": "Desistimiento",

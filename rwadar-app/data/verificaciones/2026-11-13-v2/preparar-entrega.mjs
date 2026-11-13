@@ -17,6 +17,10 @@
 //    al 06/11/2026 («Last updated: November 6, 2026» en la tabla de países) y, en Smart Cash, «(23/10/2026)» pasa a
 //    «(06/11/2026)» en su alcance; en las suizas, las horas reales de consulta salen del inventario del grupo (ninguna
 //    hora copiada del 12/11 llega a la entrega); Boss Info conserva la fuente del portal en «Última operación».
+// 4. Correcciones obligatorias de la revisión de la entrega (DECISIONES §5): O1 de cumplimiento, Pottendorfer. La orden
+//    de 1 × 73 € del libro de las 08:30 UTC desapareció; el libro se volvió a leer a las 14:36:41 UTC
+//    (correcciones-entrega/, mismo archivo que leyó el revisor) y Pottendorfer vuelve a 80 € (11 a ese precio), menor
+//    importe 1 × 115 € y 106 en venta. Las otras 10 de Brickwise dan lo mismo que por la mañana y se quedan con ella.
 // Hoy NO se toca public.plataformas ni public.fuentes: el SQL solo escribe en rwadar_catalogo.
 // Sin altas ni retiradas: 22 ofertas (8/13/1) y 25 plataformas. Las noticias no son parte de esta entrega.
 //
@@ -528,19 +532,64 @@ const BRICKWISE = {
   'randhartingergasse-9-viena': ['78', '78'],
   'local-de-estanco-klagenfurt': ['95', '95'],
   'vivienda-pluddemanngasse-101-graz': ['75', '75'],
-  'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['80', '73'],
+  'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['80', '80'], // O1: 80 € otra vez (la orden de 73 € ya no existe)
   'vivienda-sonnleithnergasse-2-viena': ['75', '75'],
 };
 // Lo que DECISIONES §2 cambia en las referencias del libro (lo demás, solo la fecha 13/11).
-const PARTICIPACIONES_DECISIONES = { 'fotovoltaica-cohotel': ['65', '59'], 'fotovoltaica-greenpoint': ['351', '347'], 'vivienda-schwarzer-weg-18-graz': ['300', '299'] };
+const PARTICIPACIONES_DECISIONES = { 'fotovoltaica-cohotel': ['65', '59'], 'fotovoltaica-greenpoint': ['351', '347'], 'vivienda-schwarzer-weg-18-graz': ['300', '299'],
+  'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['107', '106'] };
 const MEJOR_COMPRA_DECISIONES = { 'randhartingergasse-9-viena': ['56,00 € (1 participación, orden del 10/11/2026)', '64,00 € (1 participación, orden del 12/11/2026)'] };
-const MENOR_IMPORTE_DECISIONES = { 'vivienda-pottendorfer-stra-e-62-wr-neustadt': ['1 participación a 115,00 € (116,73 € con el 1,5 %)', '1 participación a 73,00 € (74,10 € con el 1,5 %)'] };
+// O1: la orden de menor importe de Pottendorfer vuelve a ser la publicada (1 × 115 €): ninguna cambia.
+const MENOR_IMPORTE_DECISIONES = {};
 const AVISO_BW = 'Cada venta se anuncia con su precio y su número de participaciones; no consta que se pueda comprar solo una parte. El comprador paga además un 1,5 % de comisión.';
 const AVISO_BW_DIARIO = 'Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.';
 assert.deepEqual(Object.keys(BRICKWISE).sort(), ofertas.filter(o => o.plataformaSlug === 'brickwise').map(o => o.slug).sort(), 'las 11 de Brickwise');
 const LIBRO = `Libro de órdenes de la app de Brickwise leído el ${FES} (08:30–08:33 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario.`;
 const libro = leer(path.join(DIR, 'grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-13.json'));
 assert.equal(libro.consultadoUtc, '2026-11-13T08:30:44Z');
+// ---- Corrección O1 (revisión de cumplimiento de la entrega, DECISIONES §2 y §5): Pottendorfer, con el libro leído otra
+// vez a las 14:36:41 UTC (el mismo archivo que las tres lecturas del revisor, de 14:16:58 a 14:29:09 UTC). Sus textos
+// son los de la corrección O1, tal cual; aquí se comprueba que el libro de la tarde dice exactamente eso.
+const POTT = 'vivienda-pottendorfer-stra-e-62-wr-neustadt';
+const LIBRO_TARDE = `Libro de órdenes de la app de Brickwise leído el ${FES} (14:36 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario.`;
+const CORR = path.join(DIR, 'correcciones-entrega');
+const libroTarde = leer(path.join(CORR, 'libro-ordenes-resumen-2026-11-13-1436.json'));
+assert.equal(libroTarde.consultadoUtc, '2026-11-13T14:36:41Z');
+{
+  const inv = leer(path.join(CORR, 'inventario-consultas.json')).consultas;
+  assert.deepEqual(inv.map(c => [c.url, c.http, c.consultadoUtc, c.sha256]), [
+    [BW_V1, 200, '2026-11-13T14:36:41Z', '3493ef7154650261601b851f4ba035313086253d5134e7c508cb26bc7648d29c'],
+    [BW_V2, 200, '2026-11-13T14:36:42Z', '6b1b2572dea8e79f12e27699336d40b8f712e6254e8b7f623ea43207097fa78d'],
+    [`${BW_V1} + ${BW_V2}`, null, '2026-11-13T14:36:41Z', sha(path.join(CORR, 'libro-ordenes-resumen-2026-11-13-1436.json'))]], 'O1: inventario de la lectura de la tarde');
+  // Los crudos (fuera de Git) son los del inventario, si están en disco.
+  for (const c of inv.slice(0, 2)) if (fs.existsSync(path.join(CORR, c.archivo))) assert.equal(sha(path.join(CORR, c.archivo)), c.sha256, `O1: ${c.archivo}`);
+}
+const O1 = { minimo: `Desde 80 € la participación en reventa (${CORTA})`,
+  'Venta más barata': '80,00 € por participación (11 a ese precio, orden del 08/02/2026)',
+  'Orden de venta de menor importe': '1 participación a 115,00 € (116,73 € con el 1,5 %)',
+  'Participaciones en venta': '106', 'Mejor oferta de compra': '19,00 € (3 participaciones, orden del 06/11/2025)' };
+{
+  const CUMPLIMIENTO = plano(fs.readFileSync(path.join(DIR, 'REVISION-ENTREGA-cumplimiento.md'), 'utf8'));
+  for (const [e, v] of Object.entries(O1)) assert.ok(CUMPLIMIENTO.includes(e === 'Participaciones en venta' ? `«Participaciones en venta · 13/11/2026»: \`${v}\`` : `\`${v}\``), `O1: «${e}» = la corrección del revisor`);
+  assert.ok(CUMPLIMIENTO.includes('`a ese precio había 1 participación a la venta` pasa a `a ese precio había 11 participaciones a la venta`'), 'O1: alcance del mínimo');
+  assert.ok(CUMPLIMIENTO.includes('SHA-256 `3493ef71…d29c`') && CUMPLIMIENTO.includes('SHA-256 `6b1b2572…a78d`'), 'O1: los mismos archivos que leyó el revisor');
+  const DEC = plano(fs.readFileSync(path.join(DIR, 'DECISIONES-COORDINADOR.md'), 'utf8'));
+  assert.ok(DEC.includes('**Pottendorfer (corregido tras la revisión de la entrega, O1; ver §5):** mínimo **80 €, el mismo que lo publicado**') &&
+    DEC.includes('«Participaciones en venta» 107 → **106** (13/11)') && !DEC.includes('80 € → 73 €'), 'O1: DECISIONES §2 corregido');
+  // La mañana (08:30:44 UTC) tenía la orden de 1 × 73 €; la tarde, ninguna orden a 73 €.
+  const m = libro.activos.AT0000A324B4, t = libroTarde.activos.AT0000A324B4;
+  assert.deepEqual([m.ventaMasBarata, m.cantidadAVentaMasBarata, m.participacionesEnVenta], [73, 1, 107], 'O1: el libro de la mañana');
+  assert.ok(t.ventaMasBarata5.every(([precio]) => precio !== 73), 'O1: a las 14:36 UTC no hay ninguna orden a 73 €');
+  // Las otras 10: el libro de la tarde da exactamente lo mismo que el de la mañana (se quedan con la de la mañana).
+  const clave = a => JSON.stringify([a.stage, a.participacionesEnVenta, a.ventaMasBarata, a.cantidadAVentaMasBarata,
+    a.ordenesAVentaMasBarata.map(o => [o.precio, o.cantidad, o.creada]), [a.ordenMenorDesembolso.precio, a.ordenMenorDesembolso.cantidad, a.ordenMenorDesembolso.creada],
+    a.mejorCompra && [a.mejorCompra.precio, a.mejorCompra.cantidad, a.mejorCompra.creada], a.mejoresCompras3, a.v2_availableBricksSecondary]);
+  const otras = Object.keys(libro.activos).filter(i => i !== 'AT0000A324B4');
+  assert.equal(otras.length, 10);
+  for (const i of otras) assert.equal(clave(libroTarde.activos[i]), clave(libro.activos[i]), `O1: ${i} cambió entre las 08:30 y las 14:36 UTC`);
+}
+NO_APLICADO.push({ slug: POTT, que: 'Los textos del expediente (y de la primera versión de DECISIONES §2) con la orden de 1 participación a 73 €: mínimo «Desde 73 € la participación en reventa (13/11)», venta más barata 73 € y orden de menor importe 1 × 73 € (74,10 € con el 1,5 %), con el libro de las 08:30 UTC',
+  porque: 'Corrección O1 de la revisión de cumplimiento: esa orden ya no existe. Se usa el libro leído otra vez a las 14:36:41 UTC (correcciones-entrega/, el mismo archivo que leyó el revisor) con los textos de la corrección: 80 € (11 a ese precio), menor importe 1 × 115 € (116,73 €), 106 en venta y mejor compra 19 € sin cambios. DECISIONES §2 y §5 ya lo recogen. El montador no edita los expedientes.' });
 // El revisor calculó el libro por su cuenta (API a las 08:41:37 UTC, el mismo archivo que el investigador).
 const libroRevisor = leer(path.join(REVISOR, 'fuentes/brickwise/libro-ordenes-revisor-2026-11-13.json'));
 const BRICKWISE_REVISOR = textoRevisor('brickwise.md');
@@ -556,9 +605,14 @@ for (const [slug, [antes, ahora]] of Object.entries(BRICKWISE)) {
   const x = expedientes[slug], exp = x.propuestaTarjeta, o = oferta(slug);
   assert.equal(o.coleccion, 'secundario');
   assert.equal(x.decision, 'actualizar');
-  const isin = x.identificador.replace(/^ISIN /, ''), a = libro.activos[isin];
-  assert.ok(a && a.stage === 'secondary', `${slug}: activo en el libro`);
-  assert.equal(exp.resumenTarjeta.minimo, `Desde ${ahora} € la participación en reventa (${CORTA})`, `${slug}: mínimo del expediente = DECISIONES`);
+  // Pottendorfer (O1): el libro de las 14:36 UTC y los textos de la corrección; las otras 10, el libro de la mañana y el
+  // expediente (el libro de la tarde da lo mismo en ellas, comprobado arriba).
+  const isin = x.identificador.replace(/^ISIN /, ''), am = libro.activos[isin], a = (slug === POTT ? libroTarde : libro).activos[isin];
+  const libroTexto = slug === POTT ? LIBRO_TARDE : LIBRO;
+  assert.ok(a && a.stage === 'secondary' && am, `${slug}: activo en el libro`);
+  if (slug === POTT) assert.equal(exp.resumenTarjeta.minimo, `Desde 73 € la participación en reventa (${CORTA})`, `${slug}: el expediente (de la mañana) decía 73 €`);
+  const minimo = slug === POTT ? O1.minimo : exp.resumenTarjeta.minimo;
+  assert.equal(minimo, `Desde ${ahora} € la participación en reventa (${CORTA})`, `${slug}: mínimo = DECISIONES`);
   assert.equal(euros(a.ventaMasBarata).replace(/,00$/, ''), ahora, `${slug}: el libro da otra venta más barata`);
   // Acceso, salida, métricas, avisos y resumen: sin cambios (comprobados hoy; el aviso común ya estaba).
   const pubCarta = e => documentos[slug].referencias.find(r => r.etiqueta === e)?.valor;
@@ -570,7 +624,8 @@ for (const [slug, [antes, ahora]] of Object.entries(BRICKWISE)) {
   const iAviso = o.avisos.findIndex(y => y.texto === AVISO_BW);
   assert.ok(iAviso > 0 && o.avisos[iAviso + 1].texto === AVISO_BW_DIARIO, `${slug}: el aviso común, en su sitio`);
   assert.ok(x.revisionAvisos.length && x.revisionAvisos.every(r => r.veredicto === 'vigente'), `${slug}: avisos vigentes`);
-  const nueva = e => { const r = exp.referenciasFicha.find(y => y.etiqueta === `${e} · ${FES}`); assert.ok(r, `${slug}: «${e}» del expediente`); return r; };
+  const nueva = e => { const r = exp.referenciasFicha.find(y => y.etiqueta === `${e} · ${FES}`); assert.ok(r, `${slug}: «${e}» del expediente`);
+    return slug === POTT ? { ...r, valor: O1[e] } : r; };
   const vieja = e => { const l = documentos[slug].referencias.filter(y => y.etiqueta.startsWith(`${e} · `)); assert.equal(l.length, 1, `${slug}: «${e}» publicada`); return l[0]; };
   // Venta más barata: con su precio, cantidad y órdenes del libro de hoy.
   const venta = nueva('Venta más barata'), v0 = vieja('Venta más barata');
@@ -582,7 +637,7 @@ for (const [slug, [antes, ahora]] of Object.entries(BRICKWISE)) {
   assert.deepEqual(deLibro(venta.valor), enLibro, `${slug}: venta más barata del expediente = libro`);
   if (antes === ahora) assert.equal(venta.valor, v0.valor, `${slug}: la venta más barata publicada sigue igual en el libro de hoy`);
   else assert.notEqual(venta.valor, v0.valor);
-  refCambia(slug, v0.etiqueta, v0.valor, { etiqueta: `Venta más barata · ${FES}`, valor: venta.valor, fechaDato: FECHA, fechaConsulta: FECHA, fuente: BW_V1, alcance: LIBRO });
+  refCambia(slug, v0.etiqueta, v0.valor, { etiqueta: `Venta más barata · ${FES}`, valor: venta.valor, fechaDato: FECHA, fechaConsulta: FECHA, fuente: BW_V1, alcance: libroTexto });
   // Orden de venta de menor importe, con el 1,5 % bien redondeado.
   const menor = nueva('Orden de venta de menor importe'), m0 = vieja('Orden de venta de menor importe'), om = a.ordenMenorDesembolso;
   assert.equal(menor.fuente, BW_V1); assert.equal(om.cantidad, 1); assert.equal(m0.etiqueta, `Orden de venta de menor importe · ${FES_PREVIA}`);
@@ -590,10 +645,10 @@ for (const [slug, [antes, ahora]] of Object.entries(BRICKWISE)) {
   if (MENOR_IMPORTE_DECISIONES[slug]) assert.deepEqual([m0.valor, menor.valor], MENOR_IMPORTE_DECISIONES[slug], `${slug}: orden de menor importe de DECISIONES`);
   else assert.equal(menor.valor, m0.valor, `${slug}: la orden de menor importe no cambia`);
   refCambia(slug, m0.etiqueta, m0.valor, { etiqueta: `Orden de venta de menor importe · ${FES}`, valor: menor.valor, fechaDato: FECHA, fechaConsulta: FECHA, fuente: BW_V1,
-    alcance: `${LIBRO} Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo.` });
+    alcance: `${libroTexto} Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo.` });
   // Mínimo de la tarjeta.
   const lote = String(a.cantidadAVentaMasBarata);
-  tarjeta(slug, 'Mínimo de inversión', exp.resumenTarjeta.minimo, BW_APP, FECHA,
+  tarjeta(slug, 'Mínimo de inversión', minimo, BW_APP, FECHA,
     `Precio por participación de la venta más barata del mercado de la app ese día, más un 1,5 % de comisión; a ese precio había ${lote} ${lote === '1' ? 'participación' : 'participaciones'} a la venta. Brickwise no publica un mínimo en reventa ni si una orden se puede comprar en parte. El precio lo fija cada vendedor y cambia a diario. No es el precio de emisión.`,
     `Desde ${antes} € la participación en reventa (${CORTA_PREVIA})`);
   // Participaciones en venta: todas al 13/11 (DECISIONES §2: Cohotel 59, GreenPoint 347, Schwarzer Weg 299; las demás,
@@ -620,17 +675,18 @@ for (const [slug, [antes, ahora]] of Object.entries(BRICKWISE)) {
   if (MEJOR_COMPRA_DECISIONES[slug]) assert.deepEqual([mc0.valor, mc1.valor], MEJOR_COMPRA_DECISIONES[slug], `${slug}: mejor compra de DECISIONES`);
   else assert.equal(mc1.valor, mc0.valor, `${slug}: la mejor compra no cambia`);
   refCambia(slug, mc0.etiqueta, mc0.valor, { etiqueta: `Mejor oferta de compra · ${FES}`, valor: mc1.valor, fechaDato: FECHA, fechaConsulta: FECHA, fuente: BW_V1,
-    alcance: `${LIBRO} Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %.` });
+    alcance: `${libroTexto} Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %.` });
   // «Desistimiento»: igual que lo publicado (se queda con su fecha).
   const des = exp.referenciasFicha.find(y => y.etiqueta === 'Desistimiento');
   assert.equal(des.valor, documentos[slug].referencias.find(y => y.etiqueta === 'Desistimiento').valor, `${slug}: desistimiento sin cambios`);
   assert.equal(exp.referenciasFicha.length, 5, `${slug}: cinco referencias del libro y del desistimiento en el expediente`);
-  // El cálculo del revisor (por su cuenta, con aritmética decimal exacta) da lo mismo.
+  // El cálculo del revisor de Brickwise (por su cuenta, con aritmética decimal exacta, a las 08:41:37 UTC) da lo mismo que
+  // el libro de la mañana (en Pottendorfer, el de la mañana; el de la tarde lo confirma la revisión de cumplimiento, O1).
   const rv = Object.values(libroRevisor.fichas).filter(y => y.isin === isin);
   assert.equal(rv.length, 1, `${slug}: en el libro del revisor`);
   assert.deepEqual([rv[0].participacionesEnVenta_v1, rv[0].participacionesEnVenta_v2, rv[0].ventaMasBarata.precio, rv[0].ventaMasBarata.cantidad,
     rv[0].ordenMenorImporte[0].conComision1_5.replace('.', ','), rv[0].mejorCompra.precio],
-    [a.participacionesEnVenta, a.participacionesEnVenta, a.ventaMasBarata, a.cantidadAVentaMasBarata, con15(om.precio), a.mejorCompra.precio], `${slug}: libro del revisor`);
+    [am.participacionesEnVenta, am.participacionesEnVenta, am.ventaMasBarata, am.cantidadAVentaMasBarata, con15(am.ordenMenorDesembolso.precio), am.mejorCompra.precio], `${slug}: libro del revisor`);
 }
 assert.equal(libroRevisor.consultadoUtc.v1, '2026-11-13T08:41:37Z');
 assert.equal(Object.keys(libroRevisor.fichas).length, 11);
@@ -791,8 +847,15 @@ for (const slug of ['robinhood-classic-stock-tokens', 'kraken-xstocks', 'prosegu
   const cifrasBw = CAMBIOS.filter(c => BRICKWISE[c.slug] && c.antes.split(': ').slice(1).join(': ') !== c.despues.split(': ').slice(1).join(': ') && c.campo !== 'tarjeta')
     .map(c => `${c.slug} · ${c.despues.split(' · ')[0]}`).sort();
   assert.deepEqual(cifrasBw, ['fotovoltaica-cohotel · Participaciones en venta', 'fotovoltaica-greenpoint · Participaciones en venta',
-    'randhartingergasse-9-viena · Mejor oferta de compra', 'vivienda-pottendorfer-stra-e-62-wr-neustadt · Orden de venta de menor importe',
-    'vivienda-pottendorfer-stra-e-62-wr-neustadt · Venta más barata', 'vivienda-schwarzer-weg-18-graz · Participaciones en venta'], 'Brickwise: cifras que cambian');
+    'randhartingergasse-9-viena · Mejor oferta de compra', 'vivienda-pottendorfer-stra-e-62-wr-neustadt · Participaciones en venta',
+    'vivienda-schwarzer-weg-18-graz · Participaciones en venta'], 'Brickwise: cifras que cambian (O1: en Pottendorfer, solo las participaciones en venta)');
+  // O1: en Pottendorfer, los tres alcances del libro llevan la hora de la lectura de la tarde; en las otras 10, la de la mañana.
+  for (const slug of Object.keys(BRICKWISE)) {
+    const deLibro = documentos[slug].referencias.filter(r => r.alcance.startsWith('Libro de órdenes de la app de Brickwise leído el'));
+    assert.equal(deLibro.length, 3, `${slug}: tres alcances del libro`);
+    assert.ok(deLibro.every(r => r.alcance.startsWith(slug === POTT ? LIBRO_TARDE : LIBRO)), `${slug}: hora del libro`);
+  }
+  { const m = JSON.stringify([oferta(POTT), documentos[POTT]]).match(/.{0,80}(?:(?<![\d,.])73(?:,00)? €|74,10).{0,40}/); assert.ok(!m, `O1: Pottendorfer sin la orden de 73 € (${m && m[0]})`); }
 }
 
 // ---------------------------------------------------------------- escaparate y manifiesto
@@ -952,11 +1015,18 @@ escribir(contrasteSalida, { tipo: 'revision_integral', fecha: FECHA, etiqueta: E
     suizaHoras: { nota: 'Horas reales de consulta del 13/11 (inventario del grupo suiza, reloj del sistema), en lugar de las copiadas del 12/11 que llevan los expedientes (79 de 82 entradas). Las copiadas no se escriben en la entrega.',
       copiadas: { aktionariat: '26 de 27', 'boss-info': '26 de 27', switzerlend: '27 de 28' } },
     bossInfoUltimaOperacion: { fuente: 'https://shares.bossinfo.com/', porque: 'la API POST getTrades da 405 a un visitante' },
+    pottendorferO1: { revision: 'REVISION-ENTREGA-cumplimiento.md (O1)', slug: POTT,
+      problema: 'La orden de 1 participación a 73 € del libro de las 08:30:44 UTC ya no existe (el revisor la buscó a las 14:16:58, 14:18:36 y 14:29:09 UTC).',
+      lectura: { archivo: 'correcciones-entrega/libro-ordenes-resumen-2026-11-13-1436.json', consultadoUtc: libroTarde.consultadoUtc,
+        consultas: leer(path.join(CORR, 'inventario-consultas.json')).consultas.map(c => ({ url: c.url, consultadoUtc: c.consultadoUtc, sha256: c.sha256 })) },
+      textos: O1, horaEnLosAlcances: '14:36 UTC',
+      otras10: 'el libro de las 14:36 UTC da lo mismo que el de las 08:30 UTC: se quedan con el de la mañana' },
+    datosPersonalesO2: 'La copia grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-13.txt, recortada (líneas 124, 240, 244 y 249). Ningún guion de la entrega la lee.',
   },
   horasRealesSuiza: HORAS_SUIZA,
   condicionHora: { spiko: 'VL del 12/11 en las tres, válidas si la entrega se monta antes de las 18:00 UTC del 13/11 (la API anuncia la siguiente cifra de las Letras a las 18:00 UTC y la de Smart Cash a las 19:30 UTC); si no, volver a leer la API pública de Spiko. La hora del montaje está en INFORME-ENTREGA.md.',
     mtbill: 'Ronda 492 (10/11, 18:40 UTC) última a las 08:45 UTC del 13/11 (revisor); una ronda nueva cambiaría el valor por token, no la métrica de 5 semanas hasta el 10/11.',
-    brickwise: 'Pottendorfer: la orden de 1 participación a 73 € (creada el 12/11 a las 21:45 UTC) seguía abierta a las 08:48 UTC; el revisor recomienda volver a mirarla justo antes de aplicar.' },
+    brickwise: 'Pottendorfer: la orden de 1 participación a 73 € (creada el 12/11 a las 21:45 UTC) seguía abierta a las 08:48 UTC, pero a las 14:16 UTC ya no estaba (O1 de cumplimiento). Libro leído otra vez a las 14:36:41 UTC: 80 € × 11 (orden del 08/02/2026), 106 en venta. El libro cambia a diario: volver a mirarlo justo antes de aplicar; si la venta más barata de Pottendorfer ya no es 80 €, rehacer la entrega.' },
   vigencia: { verificadaEl: FECHA, vigenciaDias: 7, ultimoDiaVigente: ULTIMO },
   cambios: CAMBIOS, tarjetaConservadasDeMasDe120: largasConservadas, tarjetas,
   noAplicadoTalCual: NO_APLICADO,

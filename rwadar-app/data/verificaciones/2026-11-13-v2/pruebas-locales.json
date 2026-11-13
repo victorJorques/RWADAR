@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-13T09:15:57.270Z",
+  "ejecutadoEl": "2026-11-13T14:51:25.833Z",
   "etiqueta": "2026-11-13",
   "revisionAnterior": "a58dd22d-98a3-f94e-ba66-46898162215a",
-  "revisionNueva": "66907add-8ebf-424b-3e04-b73e47b0c537",
-  "sha256AplicarYAprobar": "7be64e861af7ba2895f07cedbb73a1e85a9dec055412aa27081e20a401d16961",
+  "revisionNueva": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
+  "sha256AplicarYAprobar": "b6f0129cc4e8e82033bd9b4171bfaecc790e6de84c42671e291091aef99ee7b4",
   "pruebas": [
     "inventario: 288 sentencias en una transacción serializable (begin, guarda, 284 inserts, aprobación, commit); guarda (publicada a58dd22d con su huella a58dd22d98a3…, catálogo no retirado, fecha del 13/11 al 20/11, destino sin otra identidad); solo inserts en rwadar_catalogo (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones; las mismas filas por tabla que la 2026-11-12), todos idempotentes y de la revisión nueva; la aprobación solo cambia rwadar_catalogo.revisiones; sin DDL, borrados, permisos, Auth ni funciones; nada en public.*",
     "cadena de producción (seed del 04/11 antes de ARTEX + 17 lotes, del 22/10 a la 2026-11-12): la publicada es la a58dd22d",
@@ -13,11 +13,11 @@
     "public.plataformas, public.fuentes, cambios de estado, avisos y emisiones, intactos; las 17 revisiones anteriores se conservan tal cual (historial, con la a58dd22d aprobada) y la nueva queda aprobada con su huella; rwadar_catalogo gana justo 25 plataformas, 22 ofertas y 69 fuentes",
     "publicada la revisión nueva: las mismas 25 plataformas y 22 fichas (8 principales, 13 de reventa y 1 en camino; mismos estados de revisión), fechadas el 13/11 con 7 días; las 5 descartadas, iguales",
     "plataformas: iguales salvo la revisión, la fecha del lote (13/11) y las fechas de su verificación (cada fuente del radar, consultada el 13/11); ningún texto del radar cambia",
-    "cada cambio de contraste-2026-11-13.json está en lo que lee un visitante (81 cambios en 18 fichas) y lo de antes ya no; Spiko Euro (Letras) 2,40 %, Dólar 3,98 % en USD y Smart Cash 2,84 %, con la VL del 12/11 en métrica, literal y referencia; «Acceso desde España» de las tres con la tabla del 06/11/2026; mTBILL, Robinhood, Kraken y Prosegur, iguales salvo las fechas; Aktionariat, Boss Info y Switzerlend con fechas del 13/11 y «Última operación» con la fuente del portal y la lectura en cadena del revisor; Brickwise con el libro al 13/11 (Pottendorfer 73 €, 74,10 € con el 1,5 %; participaciones 59, 347, 299 y 107; Randhartingergasse 64 €); Hausera re-fechada donde se consultó hoy; todos los avisos con fecha del 13/11; la vista sigue enmascarando el resumen y las métricas de las 15 fichas que no están «actual», igual que hoy; ninguna hora de las 00 del 13/11",
+    "cada cambio de contraste-2026-11-13.json está en lo que lee un visitante (81 cambios en 18 fichas) y lo de antes ya no; Spiko Euro (Letras) 2,40 %, Dólar 3,98 % en USD y Smart Cash 2,84 %, con la VL del 12/11 en métrica, literal y referencia; «Acceso desde España» de las tres con la tabla del 06/11/2026; mTBILL, Robinhood, Kraken y Prosegur, iguales salvo las fechas; Aktionariat, Boss Info y Switzerlend con fechas del 13/11 y «Última operación» con la fuente del portal y la lectura en cadena del revisor; Brickwise con el libro al 13/11 (Pottendorfer, con el libro de las 14:36 UTC por la corrección O1: 80 €, 116,73 € con el 1,5 % y 106 en venta, sin ningún rastro de la orden de 73 €; participaciones 59, 347 y 299; Randhartingergasse 64 €); Hausera re-fechada donde se consultó hoy; todos los avisos con fecha del 13/11; la vista sigue enmascarando el resumen y las métricas de las 15 fichas que no están «actual», igual que hoy; ninguna hora de las 00 del 13/11",
     "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 13/11 y el 20/11 y lo da por caducado el 21/11; las 22 tarjetas ocultan cifras desde el 21/11; el lector de la app (adaptarCatalogoV2) lo acepta (25/22, 1 en camino)",
-    "tarjetas (resumenOferta, 13/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en 14: boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas; Brickwise «Desde X € la participación en reventa (13/11)» (Pottendorfer 80 → 73; las otras 10, solo la fecha); Boss Info, Switzerlend y Hausera con fecha del 13/11; Aktionariat y las 8 principales, igual; mTBILL «Sin mínimo vigente en euros» · «Sin comprobar si se puede contratar desde España» · «Salida no documentada» (fuentes en conflicto)",
-    "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas, idéntico al de la web), todas de la revisión nueva y verificadas el 13/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian 52 (22 de oferta, 25 de plataforma y 5 de descartadas) por la revisión, las fechas y los textos; las fichas web de Spiko dicen 2,40 %, 3,98 % y 2,84 %; la de Pottendorfer «Desde 73 € la participación en reventa (13/11)» y 74,10 €; la de Randhartingergasse, 64 €; la de Boss Info, «Última operación · 13/11/2026» sin la API; la de Hausera, el aviso al 13/11",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-13 lo que leería un visitante después de aplicar",
+    "tarjetas (resumenOferta, 13/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en 14: boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas; Brickwise «Desde X € la participación en reventa (13/11)» (Pottendorfer, por la corrección O1, también solo la fecha: 80 €; las 11, solo la fecha); Boss Info, Switzerlend y Hausera con fecha del 13/11; Aktionariat y las 8 principales, igual; mTBILL «Sin mínimo vigente en euros» · «Sin comprobar si se puede contratar desde España» · «Salida no documentada» (fuentes en conflicto)",
+    "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas, idéntico al de la web), todas de la revisión nueva y verificadas el 13/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian 0 (0 de oferta, 0 de plataforma y 0 de descartadas) por la revisión, las fechas y los textos; las fichas web de Spiko dicen 2,40 %, 3,98 % y 2,84 %; la de Pottendorfer «Desde 80 € la participación en reventa (13/11)» y 116,73 € (O1); la de Randhartingergasse, 64 €; la de Boss Info, «Última operación · 13/11/2026» sin la API; la de Hausera, el aviso al 13/11",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-13-r2-final lo que leería un visitante después de aplicar",
     "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
     "falla y no deja nada: la publicada no es la a58dd22d (es la anterior, 24b5f7de) → Publicación distinta de la revisión anterior prevista: 24b5f7de-2834-3e15-6ae4-62a6d9565161. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
@@ -30,7 +30,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador",
       "falla": false,
-      "publicada": "66907add-8ebf-424b-3e04-b73e47b0c537"
+      "publicada": "434217eb-9b7f-1cd9-a851-fbde7bced2bf"
     },
     {
       "caso": "la publicada no es la a58dd22d (es la anterior, 24b5f7de)",
@@ -100,7 +100,7 @@
     "spiko-smart-cash-euro": "2,84 % (VL 11/11 → 12/11)",
     "spikoAccesoEspana": "fecha del dato 23/10 → 06/11 en las tres",
     "mtbill": "sin cambios: 3,45 % anual en USD (06/10 → 10/11) y 1,0777 USD por token (10/11)",
-    "brickwise": "Pottendorfer 80 → 73 € (menor importe 1 × 73 €, 74,10 € con el 1,5 %); Cohotel 65 → 59, GreenPoint 351 → 347 y Schwarzer Weg 300 → 299 participaciones en venta; Randhartingergasse mejor compra 56 → 64 €; las demás, solo la fecha"
+    "brickwise": "Pottendorfer (O1, libro de las 14:36 UTC) sigue en 80 € y 107 → 106 participaciones en venta; Cohotel 65 → 59, GreenPoint 351 → 347 y Schwarzer Weg 300 → 299 participaciones en venta; Randhartingergasse mejor compra 56 → 64 €; las demás, solo la fecha"
   },
   "tarjetas": {
     "aktionariat": {
@@ -272,7 +272,7 @@
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
       "coleccion": "secundario",
       "estado": "Referencia de reventa · disponibilidad sin confirmar",
-      "minimo": "Desde 73 € la participación en reventa (13/11)",
+      "minimo": "Desde 80 € la participación en reventa (13/11)",
       "espana": "Sin comprobar si se puede contratar desde España",
       "salida": "Salida: Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)",
       "antes": {
@@ -342,7 +342,7 @@
       "salida": "Salida no documentada"
     }
   },
-  "fichasQueCambian": 52,
+  "fichasQueCambian": 0,
   "lecturasDelSincronizador": [
     "/rest/v1/catalogo_plataformas_publicas_v2?select=*&limit=257",
     "/rest/v1/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre",

@@ -1,11 +1,13 @@
 # Entrega del catálogo 2026-11-13 · puesta al día del día
 
 Preparada el 13/11/2026 por Claude (montador de datos y SQL), entre las 09:00
-y las 09:35 UTC. **Nada aplicado en Supabase, nada publicado, sin OTA,
+y las 09:35 UTC, y **corregida tras la revisión de la entrega entre las 14:36
+y las 15:00 UTC (§9)**. **Nada aplicado en Supabase, nada publicado, sin OTA,
 ningún flujo lanzado; el montador no hizo commit ni push.** Estado:
-**preparada y probada en local** (PGlite y un ensayo completo de «después de
-aplicar» en una copia aparte). Falta la revisión de la entrega (SQL,
-contenido y cumplimiento) y el auditor.
+**preparada, revisada, corregida y probada en local** (PGlite y un ensayo
+completo de «después de aplicar» en una copia aparte). La revisaron tres
+expertos (contenido: aprobado; SQL y cumplimiento: aprobado con cambios).
+Falta el auditor.
 
 > La coordinación fue guardando copias de trabajo de estos archivos en los
 > commits `d1463ee` (09:14 UTC: datos, SQL y guiones), `cb86f77` (los de
@@ -14,8 +16,12 @@ contenido y cumplimiento) y el auditor.
 > la doble pasada de §5); después cambian solo `pruebas-locales.json` (el de
 > la pasada del ensayo), `ensayo-despues.json` (nuevo) y este informe.
 
-**La revisión nueva es la `66907add-8ebf-424b-3e04-b73e47b0c537`**
-(SHA-256 de `aplicar-y-aprobar.sql` `7be64e86…6961`).
+**La revisión vigente es la `434217eb-9b7f-1cd9-a851-fbde7bced2bf`**
+(SHA-256 de `aplicar-y-aprobar.sql` `b6f0129c…e7b4`). La `66907add` que
+revisaron los expertos queda sustituida: la corrección O1 de cumplimiento
+(Pottendorfer: la orden de 73 € ya no existe) cambia el SQL (§9). Los §1 a §8
+cuentan la versión `66907add`; la corrección, las pruebas de después y los
+pasos para aplicar la nueva están en §9.
 
 Lo que entra es la lista cerrada de `DECISIONES-COORDINADOR.md`, con las
 correcciones obligatorias de su §4. Los textos, fuentes y fechas salen de
@@ -406,6 +412,251 @@ Está en `contraste-2026-11-13.json` («noAplicadoTalCual»):
 7. Publicar la web y **enviar la OTA**: la app lleva `transparencia.json`
    empaquetado (mínimos cortos de Brickwise, Switzerlend y Hausera).
 
+## 9. Correcciones aplicadas
+
+Hechas el 13/11/2026 entre las 14:36 y las 15:00 UTC, después de las tres
+revisiones de la entrega (`REVISION-ENTREGA-sql.md`,
+`REVISION-ENTREGA-contenido.md` y `REVISION-ENTREGA-cumplimiento.md`, que no
+se tocan). Antes de tocar nada guardé una copia del SQL en
+`/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/sql-antes-correcciones-2026-11-13/`
+(los tres archivos: `aplicar-y-aprobar.sql` `7be64e86…6961`, `catalogo.sql`
+`85ad96a8…b379` y `revision.json` `a336306d…87c4`).
+
+**Una corrección cambia el SQL (O1, Pottendorfer), así que la revisión es
+otra:**
+
+| Qué | Antes (revisada) | Ahora |
+|---|---|---|
+| Revisión | `66907add-8ebf-424b-3e04-b73e47b0c537` | **`434217eb-9b7f-1cd9-a851-fbde7bced2bf`** |
+| Huella | `66907add…6e36` | `434217eb9b7f1cd9a851fbde7bced2bf001c79ac17610ad1d2a24edb8a9c1b61` |
+| `aplicar-y-aprobar.sql` | `7be64e86…6961` | **`b6f0129cc4e8e82033bd9b4171bfaecc790e6de84c42671e291091aef99ee7b4`** |
+| `catalogo.sql` | `85ad96a8…b379` | `ed917b57…bc37` |
+| `revision.json` | `a336306d…87c4` | `238a2db7…207d` |
+
+Con la revisión y la huella igualadas, el SQL nuevo y el de la copia solo se
+diferencian en **una línea**: la fila de la oferta de Pottendorfer (línea 312,
+`insert into rwadar_catalogo.ofertas`). Palabra a palabra, solo cambia lo que
+pide O1:
+
+- mínimo «Desde 73 €» → «Desde 80 € la participación en reventa (13/11)», y
+  en su alcance «había 1 participación» → «había 11 participaciones»;
+- «Venta más barata · 13/11/2026»: «73,00 € por participación (1 a ese precio,
+  orden del 12/11/2026)» → «80,00 € por participación (11 a ese precio, orden
+  del 08/02/2026)»;
+- «Orden de venta de menor importe · 13/11/2026»: «1 participación a 73,00 €
+  (74,10 € con el 1,5 %)» → «1 participación a 115,00 € (116,73 € con el
+  1,5 %)»;
+- «Participaciones en venta · 13/11/2026»: 107 → 106;
+- en los tres alcances del libro, «(08:30–08:33 UTC)» → «(14:36 UTC)».
+
+Mismas 288 sentencias (284 inserts), las mismas filas por tabla, los mismos
+81 cambios en 18 fichas, la misma guarda (la publicada `a58dd22d` exacta con
+su huella y aprobada, catálogo no retirado, destino sin otra identidad) y la
+misma vigencia (del 13/11 al 20/11). De las 8 salidas de
+`preparar-entrega.mjs`, no cambian el radar, el escaparate ni el manifiesto;
+cambian la documentación (`a6e04bbb…`), el contraste (`333b487b…`) y los tres
+archivos del SQL.
+
+### Obligatorias
+
+- **O1 (cumplimiento) · Pottendorfer: la orden de 73 € ya no existe (cambia
+  el SQL).**
+  1. **Lectura nueva justo antes de regenerar.** GET a la API pública de
+     Brickwise, sin sesión: v1 a las 14:36:41 UTC (HTTP 200, SHA-256
+     `3493ef7154650261601b851f4ba035313086253d5134e7c508cb26bc7648d29c`) y v2
+     a las 14:36:42 UTC (HTTP 200, SHA-256
+     `6b1b2572dea8e79f12e27699336d40b8f712e6254e8b7f623ea43207097fa78d`). Son
+     los mismos archivos que leyó el revisor de cumplimiento a las 14:16:58,
+     14:18:36 y 14:29:09 UTC, así que valen sus textos tal cual. Las
+     respuestas crudas (con direcciones de cartera) están en
+     `correcciones-entrega/crudo/`, fuera de Git por el `.gitignore` de esa
+     carpeta. El resumen sin direcciones es
+     `correcciones-entrega/libro-ordenes-resumen-2026-11-13-1436.json`. Lo
+     calcula el mismo guion que usó el investigador por la mañana. La hora y
+     los SHA-256 están en `correcciones-entrega/inventario-consultas.json`.
+  2. **Lo que dice.** Pottendorfer (AT0000A324B4) no tiene ninguna orden a
+     73 €: la venta más barata es 80 € × 11, en una orden del 08/02/2026; la
+     de menor importe, 1 × 115 € (116,73 € con el 1,5 %); hay 106 en venta (v2:
+     106); la mejor compra sigue en 19 € × 3 (06/11/2025). **Las otras 10
+     fichas de Brickwise dan exactamente lo mismo que a las 08:30 UTC** (venta
+     más barata, órdenes, menor importe, participaciones y mejores compras),
+     así que se quedan con la lectura de la mañana.
+  3. **DECISIONES.** La línea de Pottendorfer de §2 pasa a esta lectura y hay
+     un §5 nuevo con las correcciones. Lo escribí yo, porque la corrección lo
+     pide. Falta que el coordinador lo confirme.
+  4. **`preparar-entrega.mjs`.** Adapté las comprobaciones que esperaban 73 €:
+     - `BRICKWISE` de Pottendorfer pasa a `['80', '80']`;
+     - `MENOR_IMPORTE_DECISIONES` queda vacío (la orden de menor importe vuelve
+       a ser la publicada);
+     - «Participaciones en venta» de Pottendorfer pasa de 107 a 106;
+     - la lista de cifras que cambian y la condición de hora de Brickwise del
+       contraste se ajustan a eso.
+
+     Comprobaciones nuevas:
+     - el inventario de la tarde tiene esas horas y esos SHA-256;
+     - cada texto es, letra a letra, el de la corrección O1 del informe de
+       cumplimiento;
+     - DECISIONES §2 ya no dice «80 € → 73 €»;
+     - a las 14:36 UTC no hay ninguna orden a 73 €;
+     - las otras 10 fichas son iguales en las dos lecturas;
+     - los tres alcances de Pottendorfer llevan «(14:36 UTC)» y los de las
+       otras 10, «(08:30–08:33 UTC)»;
+     - en Pottendorfer no queda ningún «73 €», «73,00 €» ni «74,10».
+
+     «Lo no aplicado» suma una entrada, los textos del expediente con 73 €: el
+     montador no edita expedientes.
+  5. **`despues-de-aplicar.mjs`.** El mínimo de Pottendorfer pasa de `'73'` a
+     `'80'`, así que el mínimo corto queda «Desde 80 € la participación
+     (13/11)».
+  6. **`comprobar-entrega.mjs`.** Pottendorfer con 80 €, 116,73 €, 106 y
+     19 €; sin rastro de la orden de 73 €; los tres alcances con «(14:36 UTC)»;
+     la ficha web con «Desde 80 €» y 116,73 €; la lista de «no aplicado», con
+     la entrada nueva.
+  7. **Spiko.** La entrega se regeneró a las 14:42–14:47 UTC, antes de las
+     18:00 UTC, así que las tres cifras siguen siendo las de la VL del 12/11,
+     ya revisadas. No se mezcla nada.
+- **O2 (cumplimiento) y C1 (SQL) · Datos personales en la copia de Profitus
+  (no cambia el SQL).** En
+  `grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-13.txt`,
+  cambié por número de línea, sin escribir ningún dato:
+  - línea 124, el nombre entre «led by its founder, » y «, a former member» →
+    «[nombre recortado]»;
+  - línea 240 → «[nombre recortado]»;
+  - línea 244 → «[correo recortado]»;
+  - línea 249 → «[teléfono recortado]».
+
+  La 291 (atención al cliente de la empresa) se queda. `git diff --numstat`:
+  `4 4` en ese archivo. La lista «Recortados en las copias» de
+  `grupos/vigilancia/resumen-vigilancia.md` nombra ahora esta copia y la de
+  Bit2Me.
+  - **Barrido.** Un guion toma de la versión de Git los dos nombres, el correo
+    y el teléfono, sin escribirlos, y los busca enteros y por partes (también
+    solo el apellido y la parte local del correo) en los 228 archivos que
+    vería Git de la carpeta del ciclo y del SQL, fuera de `crudo/`: **0
+    restos** (repetido al final, a las 14:54 UTC). El original sigue solo en `grupos/vigilancia/crudo/`, ignorado
+    por Git (`7d2afc89…`, el SHA-256 del inventario).
+  - **gitleaks 8.30.1**, con `rwadar-app/gitleaks.toml` y las opciones de
+    `ci.yml`: «no leaks found» en los 17 archivos cambiados o nuevos y en los
+    228 que vería Git de la carpeta del ciclo y del SQL (14:54 UTC, con todo
+    lo de esta corrección). La primera pasada
+    dio 2 falsos positivos (`generic-api-key`) en el contraste: una clave
+    «crudo/api-v1-assets.json» con un SHA-256 como valor. Lo arreglé
+    guardando esas lecturas como lista, igual que el inventario.
+  - **No hecho: el paso 7 (unir a `main` con *squash* y reescribir la rama
+    remota).** El encargo prohíbe commit y push. Lo decide el responsable del
+    proyecto.
+
+### Recomendadas
+
+Las recomendadas se aplican solo si no amplían DECISIONES ni cambian cifras
+sin fuente.
+
+- **Aplicada: R5 de SQL.** DECISIONES §5 deja escritos el alcance de «Última
+  operación» de Boss Info, con la lectura en cadena del revisor de Suiza
+  (08:45:52 UTC), y la hora del libro de Brickwise: 30 referencias con
+  «(08:30–08:33 UTC)» y 3, las de Pottendorfer, con «(14:36 UTC)». No cambia
+  el SQL; solo el SHA-256 de DECISIONES que guarda el contraste.
+- **Hecha dentro de O1: R1 de SQL y R2 de contenido.** Volví a mirar la
+  orden de Pottendorfer antes de regenerar, y ya no estaba.
+- **No aplicadas:**
+  - **SQL R1 (lo de antes de aplicar), R2, R3 y R4; contenido R3.** Son pasos
+    de cuando se aplique o de lotes futuros, o cambian código de la web fuera
+    de esta carpeta. Quedan en «Pendiente».
+  - **SQL R6.** Los expedientes no se han corregido, así que no hay nada que
+    adaptar.
+  - **SQL R7** (`.gitattributes` con `-text`). Cambia la configuración de Git
+    del repositorio, fuera de la entrega.
+  - **SQL R8, contenido R1 y cumplimiento R1 (Hausera).** El texto que propone
+    contenido cambia una ficha que DECISIONES deja «sin cambios», y además se
+    tendría que revisar aparte. La solución que piden las tres es otra puesta
+    al día antes del 18/11 a las 08:00 UTC. Ver «Pendiente».
+  - **Contenido R4, R5 y R8.** Ellos mismos los dejan para la próxima entrega.
+  - **Contenido R9 (GreenPoint, «5, 2, 1» → «5, 2 y 1»).** La frase es la
+    publicada y DECISIONES no la cambia. Si se toca, también hay que adaptar
+    la regla de `preparar-entrega.mjs` que la lee.
+  - **Contenido R6 y R7; cumplimiento R3 y R4 (rentabilidades esperadas y
+    lotes de Brickwise).** Son decisiones del coordinador para el próximo
+    ciclo y cambian textos de 11 fichas.
+  - **Contenido R10, R11 y R12; cumplimiento R11.** Los expedientes no se
+    pueden editar (R10 y R11). R11 de contenido cambia la fuente de mTBILL y
+    es para el próximo ciclo. R12 de contenido es solo una nota.
+  - **Cumplimiento R2, R5, R6, R7, R9, R10 y R12.** Amplían DECISIONES: textos
+    y avisos nuevos, la frase de la Circular, «anualizada» en Smart Cash
+    (DECISIONES fija ese literal), código de la web y de la app con su OTA,
+    análisis de MiCA o un comentario de código. R6 pide además que el
+    coordinador lo acepte.
+  - **Cumplimiento R8.** Ella misma dice que no hay que corregir nada.
+
+### Pruebas después de corregir (salida real)
+
+| Prueba | Salida real |
+|---|---|
+| `preparar-entrega.mjs`, dos veces seguidas (14:42:19 y, tras el arreglo de gitleaks, 14:47:03) | exit 0 las cuatro; cada par, la misma línea y «8 de 8 salidas idénticas». La final: `{"revisionId":"434217eb-9b7f-1cd9-a851-fbde7bced2bf","sha256":"b6f0129c…e7b4","plataformas":25,"fuentesRadar":69,"ofertas":22,"cambios":81,"noAplicado":5,"horasRealesSuiza":82}`. Radar `79683038…`, escaparate `a1bebcc8…`, documentación `a6e04bbb…`, manifiesto `c2c51919…`, contraste `333b487b…`, `catalogo.sql` `ed917b57…`, `aplicar-y-aprobar.sql` `b6f0129c…`, `revision.json` `238a2db7…`. En la copia del ensayo da la misma revisión y el mismo SHA |
+| `comprobar-entrega.mjs` (PGlite, carpeta de trabajo, 14:47:08–14:47:38) | exit 0, «resultado: correcto», 18 comprobaciones y 6 casos de fallo (los mismos mensajes que en §5.2); 288 sentencias, 81 cambios en 18 fichas, 14 tarjetas que cambian solo en el mínimo |
+| `comprobar-entrega.mjs --exportar` (copia, 14:44:38–14:45:06 y otra vez 14:51:25–14:51:52) | exit 0, «resultado: correcto», 19 y 6. Su informe es `pruebas-locales.json`. Lo exportado la segunda vez solo difiere en el uuid de cada plataforma, que se genera al instalar |
+| `despues-de-aplicar.mjs` antes de sincronizar (trabajo y copia) | exit 1, se niega: «el catálogo sincronizado no es la revisión 434217eb-…: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js»; `transparencia.json` igual (`ae3ed55e…`) |
+| `sincronizar.js` con el REST simulado | exit 0, «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.», «rwadar.csv regenerado: 30 filas.» (sin diferencias) |
+| `despues-de-aplicar.mjs` | exit 0; 43 de 44 al 13/11 (se queda mTBILL «supervisada», 10/11); suizas con hora real; 11 de 11 títulos; Pottendorfer «Desde 80 € la participación (13/11)»; `transparencia.json` → `f5bb46fe…bbcf`, que frente al ensayo de la mañana solo cambia en ese mínimo corto y en la revisión. Otra vez: «Nada que cambiar: ya estaba hecho.», mismo SHA |
+| `volcar-seed.js`, `transparencia.mjs`, `rwadar-fichas.js` | exit 0: «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» (sin diferencias); «Transparencia escrita: 22 ofertas con transparencia»; «Archivos actualizados: 55» |
+| `npm test` en la copia (14:45:30–14:50:52) | **exit 1 por la misma prueba de noticias de la mañana**, que no es del catálogo. Base de datos: 32 scripts con «0 fallidas» (1.348), 30 SQL, `node --test` 11/11 y 103/103. Web: 710/0, 70 y 40. QR: correcto. Móvil: 630, 628 correctas, 0 fallos, 2 omitidas. Herramientas: «Diferencias: 0». Acceso: 312 de 313; falla `rwadar-acceso/noticias-sector.test.mjs:172` («el día de la de hoy, «Hoy» solo en ella») |
+| Control de esa prueba en otra copia limpia en HEAD (`80c6238`, sin la entrega) | exit 1, `# pass 0`, `# fail 1`, el mismo error |
+| «Lo esencial» y la tarjeta de la app | frente a lo publicado (12/11), cambian 13 y solo la fecha del mínimo; Pottendorfer «Mínimo: Desde 80 € la participación (13/11)», el mismo precio de antes. Frente al ensayo de la mañana solo cambia Pottendorfer (73 → 80 €) |
+| Barrido de O2 y gitleaks (14:54 UTC) | 0 restos en 228 archivos; «no leaks found» en 17 y en 228 (ver O2) |
+
+`ensayo-despues.json` cuenta el ensayo nuevo y sustituye al de la mañana.
+
+### Pendiente
+
+- **Revisar el SQL nuevo y pasar el auditor.** Lo pide O1: la revisión de SQL
+  sobre `b6f0129c…e7b4`; de contenido y cumplimiento basta la diferencia de
+  Pottendorfer (arriba).
+- **Antes de aplicar:**
+  - volver a leer el libro de Brickwise: si la venta más barata de
+    Pottendorfer ya no es 80 €, o cambia cualquiera de las 11, rehacer la
+    entrega (cambia el SQL);
+  - confirmar el SHA `b6f0129c…e7b4`;
+  - volver a leer como visitante que sigue publicada la `a58dd22d`.
+- **Spiko** publica VL nuevas hoy a las 18:00 y 19:30 UTC. Las cifras de la
+  entrega siguen siendo ciertas con su fecha (VL del 12/11), pero desde esas
+  horas ya no son las últimas.
+- **Hausera.** La preventa abre el 18/11 a las 09:00 y la ficha vale hasta el
+  20/11. Conviene otra puesta al día antes del 18/11 a las 08:00 UTC, o mirar
+  Hausera ese día.
+- **La prueba web `rwadar-acceso/noticias-sector.test.mjs:172`** falla
+  también sin la entrega. Hay que ajustarla antes de publicar la web.
+- **El commit `cccebe2`** (en la rama remota de trabajo, no en `main`) aún
+  lleva los datos de Profitus. Unir con *squash* o reescribir la rama lo
+  decide el responsable del proyecto.
+- **Expedientes sin corregir:** los suizos (horas), los de Spiko (claim
+  `accesoEspana`) y el de Pottendorfer (73 €). Si se quieren corregidos, lo
+  tiene que hacer quien los escribió.
+- **Falta hacer commit** de estos archivos. La anotación en
+  `docs/tareas/PARA-CODEX.md` queda para la coordinación.
+
+### Pasos para aplicarla (sustituyen a los de §8)
+
+1. Confirmar que el SHA-256 de `aplicar-y-aprobar.sql` es
+   `b6f0129cc4e8e82033bd9b4171bfaecc790e6de84c42671e291091aef99ee7b4`
+   (revisión `434217eb-9b7f-1cd9-a851-fbde7bced2bf`).
+2. Volver a leer el libro de Brickwise (las 11, y sobre todo Pottendorfer).
+   Si algo cambia, parar y rehacer.
+3. Antes del **20/11/2026**, volver a leer como visitante: tiene que seguir
+   publicada la `a58dd22d-98a3-f94e-ba66-46898162215a`. Si no, parar.
+4. Aplicar exactamente
+   `rwadar-app/data/importaciones/catalogo-2026-11-13-v2/aplicar-y-aprobar.sql`
+   con «Aplicar catálogo» (etiqueta `2026-11-13`; una transacción). Nunca
+   `catalogo.sql`.
+5. Leer como visitante las vistas v2 en `lectura-despues-de-aplicar/`:
+   revisión `434217eb-…`, 25/22 (8/13/1), `verificada_el` 13/11 y Pottendorfer
+   «Desde 80 € la participación en reventa (13/11)».
+6. Por este orden: `node rwadar-app/sincronizar.js`,
+   `node rwadar-app/data/verificaciones/2026-11-13-v2/despues-de-aplicar.mjs`,
+   `node rwadar-app/volcar-seed.js` (sin diferencias),
+   `node rwadar-editorial-source/ofertas/transparencia.mjs`,
+   `node rwadar-fichas.js` y `npm test`.
+7. Publicar la web y **enviar la OTA**: cambian los mínimos cortos de
+   `transparencia.json`.
+
 ## Archivos
 
 - `preparar-entrega.mjs`, `comprobar-entrega.mjs`, `despues-de-aplicar.mjs` y
@@ -416,4 +667,6 @@ Está en `contraste-2026-11-13.json` («noAplicadoTalCual»):
 - SQL: `rwadar-app/data/importaciones/catalogo-2026-11-13-v2/`
   (`catalogo.sql`, `aplicar-y-aprobar.sql`, `revision.json`).
 - Pruebas: `pruebas-locales.json` (PGlite) y `ensayo-despues.json` (ensayo
-  completo en la copia aparte).
+  completo en la copia aparte), los dos de la revisión `434217eb`.
+- Corrección O1: `correcciones-entrega/` (inventario, resumen del libro de las
+  14:36 UTC y `.gitignore`; los crudos, fuera de Git).
