@@ -75,14 +75,17 @@ function comprobacion(valor, donde, revisadoEl) {
 }
 
 /* Valida el archivo y devuelve lo que se publica. */
-export function cargarTransparencia({ raiz = RAIZ, datos } = {}) {
+// «catalogo»: el catálogo sincronizado contra el que se valida, si no es el de la web
+// (rwadar-site/assets/catalogo-publico-20261022.js). Lo usa el motor de la entrega en sus pruebas,
+// que rehacen un día ya pasado aunque la web lleve el catálogo de otro día.
+export function cargarTransparencia({ raiz = RAIZ, datos, catalogo: catalogoDado } = {}) {
   const fuente = datos || JSON.parse(fs.readFileSync(FUENTE, 'utf8'));
   if (fuente.versionEsquema !== 1) falla('transparencia.json', 'versionEsquema debe ser 1');
   if (!fechaValida(fuente.revisadoEl)) falla('transparencia.json', 'revisadoEl no válida');
   if (!Array.isArray(fuente.criterios) || fuente.criterios.map(c => c && c.id).join() !== CRITERIOS.join())
     falla('transparencia.json', `los criterios deben ser exactamente ${CRITERIOS.join(', ')}, en ese orden`);
   const criterios = fuente.criterios.map((c, i) => ({ id: c.id, texto: texto(c.texto, `criterios[${i}].texto`, 90) }));
-  const catalogo = leerCatalogo(raiz);
+  const catalogo = catalogoDado || leerCatalogo(raiz);
   const porSlug = new Map(catalogo.ofertas.map(o => [o.slug, o]));
   if (!fuente.ofertas || typeof fuente.ofertas !== 'object' || Array.isArray(fuente.ofertas)) falla('transparencia.json', 'faltan las ofertas');
   const ofertas = {};

@@ -6,6 +6,201 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (21) · Claude · Ciclo más rápido
+
+**Sin publicar.** Rama local `ciclo-rapido-integrado` (sobre `main` en
+`f20b01b`), sin push ni PR: subirla y unirla necesita la orden de Víctor. No se
+tocó Supabase, EAS, ningún flujo de GitHub ni el ciclo del 13/11.
+
+- **Encargo (13/11):** «Hay que encontrar una forma de optimizar más aún estos
+  procesos». Objetivo: que un día normal (re-fechas y pocas cifras) cueste
+  alrededor de 1 h desde la orden hasta la publicación (hoy, unas 2 h), sin
+  bajar el rigor: fuente primaria de hoy, revisor independiente y las mismas
+  compuertas (`rwadar-publicacion-segura.js`, sello, guardián de la OTA,
+  gitleaks).
+- **Cómo se hizo:** tres mejoras en ramas aparte, cada una revisada por un
+  revisor independiente («aprobado con cambios» las tres). Aquí se unen y se
+  aplica todo lo que los revisores confirmaron, más dos fallos que solo
+  aparecían al unir.
+
+### Qué cambia
+
+1. **CI en paralelo** (`.github/workflows/ci.yml`, `.github/partes-ci.mjs`,
+   `.github/cambios-ci.sh`).
+   - `npm test` ya no va en un solo trabajo: **«Batería 1/5» a «5/5»** y
+     **«App móvil»** corren a la vez. El reparto sale solo de los
+     `package.json`: una prueba nueva entra sola y ninguna corre dos veces.
+     Cinco partes y no cuatro para que cada una quede bajo el minuto que
+     cobra GitHub (unos 35 s estimados de pruebas por parte). Una prueba
+     falla si una parte pasa de 40 s estimados: entonces hay que añadir otra.
+   - El **PR que solo cambia el sello** (`estado.json`) no corre la batería:
+     corre el trabajo **«Sello»** (las pruebas que leen el sello y la misma
+     compuerta con la que empieza «Publicar web»). Es más estricto que antes:
+     un sello que no publicaría ya sale en rojo en el PR.
+   - La comprobación que exigen las reglas de la rama sigue llamándose
+     **«pruebas»** (y «secretos» no cambia). Ahora es el último trabajo y
+     falla si algo falla, se cancela o no corrió. También falla si el escáner
+     de secretos encuentra algo (antes solo fallaba «secretos»).
+   - Vigía en `flujos.test.mjs`: falla si otra prueba **o cualquier archivo
+     de código** empieza a nombrar el sello sin que el trabajo «Sello» lo
+     cubra.
+2. **Vigía de fuentes** (`.claude/skills/investigacion-catalogo/vigia.mjs`).
+   - En menos de 30 s y sin agentes lee Spiko, el oráculo de mTBILL, el libro
+     de Brickwise, las tres suizas, el SHA-256 de los 50 PDF citados y las
+     búsquedas de la CNMV. Escribe `<ciclo>/vigia.json` con «cambia», «no
+     cambia» o «no se pudo leer», cada dato con su hora y su SHA-256.
+   - El investigador confirma en la fuente lo que «cambia», re-fecha con la
+     hora y la huella del vigía lo que «no cambia» (`"segunVigia": true`) y
+     abre a mano lo demás. El revisor sigue reabriendo cada cambio crítico y
+     muestrea lo re-fechado. Nunca se re-fecha nada que el vigía no leyó hoy.
+   - Arreglado tras la revisión: el reparto de una venta en varias órdenes,
+     la fecha de la mejor compra y las compañías de la CNMV ya se comparan.
+     Antes salían «no cambia» y se habrían re-fechado sin releer. Hay una
+     prueba que cambia 12 cifras de Brickwise y de las suizas y exige
+     «cambia» en todas.
+3. **Motor de la entrega** (`.claude/skills/investigacion-catalogo/entrega/`,
+   manual en `FORMATO.md`) y flujo **`entrega-catalogo` por fases**.
+   - Lo del día va en `<ciclo>/decisiones.json`. Ya no se copian ni adaptan
+     a mano los tres guiones del día anterior; en la carpeta del ciclo quedan
+     tres guiones finos que llaman al motor (`node <ciclo>/despues-de-aplicar.mjs`
+     sigue igual).
+   - Fases: `montar` (esfuerzo «high»); `revisar` **tres veces en el mismo
+     mensaje**, una por lente, así los tres revisores van a la vez,
+     independientes y empezando por `DIFF-ENTREGA.md`; `cerrar`: el corrector
+     solo toca `decisiones.json`, después `motor.mjs auditar` y, si el SQL
+     cambió, el auditor (esfuerzo máximo) con el diff.
+   - Arreglado tras la revisión:
+     - un día sin motor (altas o retiradas) con correcciones ya lo verifica
+       el auditor de siempre (antes se quedaba sin verificar);
+     - una prueba con la fecha de hoy pero de antes de empezar el ciclo
+       (hora copiada de otro día, como las 79 de las suizas del 13/11) ya no
+       vale, tampoco al re-fechar `transparencia.json`;
+     - cinco guardas de `auditar` tienen ya su prueba;
+     - `pedido` exige la fórmula exacta, sin nombres;
+     - `despues --salida` ya no puede escribir fuera de la salida;
+     - cada revisión lleva una **marca** y «cerrar» para si se copió mal
+       entre fases. Se llama marca para no confundirla con el sello de
+       publicación.
+   - Arreglado al unir: `motor.test.mjs` y `pglite.test.mjs` rehacen el
+     12/11 y fallaban en cuanto la web llevaba el catálogo de otro día (ya
+     pasa con el del 13/11). Ahora se validan contra el catálogo de ese día.
+
+### Cuánto se ahorra (estimación, salvo lo marcado como medido)
+
+| Tramo | Antes (12 y 13/11) | Ahora | Ahorro |
+|---|---|---|---|
+| Investigación (reloj) | ≈ 26 min | ≈ 24–26 min (marca el ritmo el grupo de candidatas, que el vigía no cubre) | 0–2 min |
+| Investigación (agentes) | ≈ 91 min-agente | ≈ 65 | ≈ 26 min-agente y menos CPU |
+| Entrega | 60–65 min | 30–40 (35–50 si la corrección cambia el SQL) | 15–30 min |
+| CI de los 3 PR del ciclo | ≈ 12 min | ≈ 4 min | ≈ 8 min (+ 2,5–3,5 por cada repetición) |
+| Cifras que se mueven por la tarde | volver a investigar | segunda pasada del vigía (30 s) | 15–25 min esos días |
+
+- **Medido:** la pasada del vigía (24 s, 99 peticiones) encontró las mismas
+  12 cifras que los cuatro grupos a mano el 13/11. El motor rehace la entrega
+  del 12/11 idéntica byte a byte. Los tiempos de CI de antes salen de los
+  registros de GitHub.
+- **Total en un día normal: unos 25–40 min menos.** El ciclo pasa de unas
+  2 h a cerca de **1 h 20–1 h 35**. Para llegar a 1 h falta acortar lo que
+  ninguna de estas mejoras toca: el grupo de candidatas (unos 26 min) y la
+  cadena de publicación (PR, «Aplicar», sincronización, sello, preview y
+  producción).
+- **Minutos de Actions:** un PR con código pasa de unos 6 a unos 8 minutos
+  facturados (hasta 14 si un runner lento pasa trabajos del minuto). El del
+  sello, de 6 a 3. Un ciclo, de unos 18 a unos 19. Mirar Settings › Billing
+  la primera semana.
+
+### Cómo se usa mañana
+
+1. **Antes:** subir esta rama, PR y unir (orden de Víctor). Sin eso, mañana
+   todo funciona como hoy.
+2. **Arranque:** tras la lectura pública, pasa el vigía contra la publicada
+   del 13/11:
+   `node .claude/skills/investigacion-catalogo/vigia.mjs --ciclo rwadar-app/data/verificaciones/2026-11-14-v2 --base rwadar-app/data/verificaciones/2026-11-13-v2`.
+   Pon en el encargo de los investigadores lo que salga «cambia» o «no se
+   pudo leer».
+3. **Investigación:** lanza primero el grupo de candidatas y luego los otros
+   tres. El flujo toma `<ciclo>/vigia.json` solo.
+4. **Entrega:** escribe `<ciclo>/decisiones.json`. Solo existe el del 12/11
+   (el 13/11 se hizo a mano), así que cópialo y cambia la cabecera (`desde`:
+   `2026-11-13`, la publicada `434217eb`) y las ofertas. Con las entradas del
+   13/11, el motor pidió 47 declaraciones `difiere`: la primera vez costará
+   más que los 10–15 min de la tabla. Después:
+   - `entrega-catalogo` con `fase: "montar"`;
+   - `fase: "revisar"` tres veces en el mismo mensaje (`lentes: ["sql"]`,
+     `["contenido"]`, `["cumplimiento"]`);
+   - `fase: "cerrar"` con las tres revisiones **tal cual**, con su marca.
+
+   Si hay altas o retiradas, `motor: false`.
+5. **Antes de «Aplicar catálogo»:** segunda pasada del vigía contra la
+   entrega que vas a aplicar (SKILL §3, punto 2).
+6. **En el primer PR:** comprueba que salen «Batería 1/5» … «5/5», «App
+   móvil» y «pruebas», y cuánto tardan. En el PR del sello, que sale
+   «Sello». Anota los tiempos reales de cada fase en el informe del día.
+
+### Commits
+
+- Uniones: `481924b` (CI), `a4c03d8` (vigía) y `7b0dbff` (motor).
+- Arreglos: `3fd390b` (CI: cinco partes, vigía del código y minutos en
+  `INTERNO.md`), `7c213ec` (vigía) y `6e6cd3a` (motor, documentación y
+  pruebas que no dependen del día).
+- Ramas de origen: `worktree-wf_11b18fe9-ca5-1`, `-2` y `-3`. Sus entradas
+  de traspaso se recogen aquí.
+
+### Pruebas
+
+- **`npm test` en la raíz: salida 0 en 4 min 46 s** (temporales en RAM). Base
+  de datos (`rwadar-app`) entera en verde; motor y flujo de la entrega 22/22;
+  `.github` 108/108 (`flujos.test.mjs` 11/11); `probar-web` 710/710; app
+  móvil 630 (628 bien, 2 omitidas, 0 fallos); `rwadar-acceso` 324/324 (con
+  las 11 del vigía).
+- `npm --prefix rwadar-app run test:motor-entrega` (con PGlite): en verde.
+  Antes del arreglo de la integración, fallaba («revisión futura o
+  caducada»).
+- **Como una parte de la CI:** en una copia limpia solo con las dependencias
+  de `rwadar-app`, sin las de la raíz ni las de la app: motor y flujo 22/22,
+  vigía 11/11 y `flujos.test.mjs` 11/11.
+- **Mutaciones** (quitar cada arreglo; todas hacen fallar alguna prueba):
+  - CI: volver a cuatro partes; que `rwadar-publicar.js` lea el sello fuera
+    del modo remoto; un guion nuevo que nombra el sello.
+  - Vigía: no comparar el reparto de la venta, la fecha de la mejor compra ni
+    las compañías de la CNMV. Sin el arreglo entero fallan 2 pruebas.
+  - Motor: sin auditor sin motor; «cerrar» sin mirar la marca; una afirmación
+    o una prueba con hora copiada; `consultasDeHoy` sin el comienzo del ciclo
+    (en `comun.mjs` y en `despues.mjs`); `pedido` con nombre;
+    `transparencia.mjs` validando contra la web de hoy; `pglite.test.mjs`
+    sin el catálogo de antes de aplicar.
+  - Las de los autores (18 de la CI, 22 del vigía y 19 del motor) y las de
+    los revisores no se han repetido aquí una a una: las pruebas que las
+    cazaban siguen en la rama y pasan.
+- **Vigía sin red:** la pasada en vivo del revisor (19:14 UTC, contra la
+  publicada del 12/11), reproducida con el vigía arreglado, da lo mismo que
+  antes: 16 cambian, 61 no, 50 PDF y 29 búsquedas iguales. Los arreglos no
+  añaden falsos «cambia».
+- **gitleaks** 8.30.1 con `rwadar-app/gitleaks.toml` sobre
+  `origin/main..HEAD` (las ramas, las uniones, los arreglos y este
+  traspaso): sin hallazgos.
+
+### Rechazado (con motivo)
+
+- **Quitar las dos regex con un nombre de pila de `preparar.mjs`**
+  (recomendación del revisor de la entrega): siguen haciendo falta. Vigilan
+  `notaOrigen` y `aprobadaReferencia` cuando se escriben a mano en
+  `decisiones.json`, que la fórmula exacta de `pedido` no cubre.
+- **Rehacer ya con el motor la entrega del 13/11 y cronometrarla**
+  (recomendación del revisor de la entrega): queda para el primer ciclo
+  real. Escribir ese `decisiones.json` es el trabajo de un montador y el
+  ciclo del 13/11 está cerrado y publicado.
+
+### Pendiente
+
+- Medir en el primer ciclo real los tiempos de cada fase y los de la CI
+  (`partes-ci.mjs` imprime lo que tarda cada orden, para ajustar `PESOS`).
+- El disco de la máquina está casi lleno (unos 750 MB libres; el scratchpad
+  ocupa unos 24 GB). Conviene liberar espacio, con permiso, antes del
+  próximo ciclo.
+
+---
+
 ## 13 de noviembre de 2026 (20) · Claude · Ciclo del 13/11: catálogo 434217eb aplicado, noticias y tokenización
 
 - **Encargo (08:25 UTC):** «Actualiza las noticias, las ofertas y el gráfico
