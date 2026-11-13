@@ -6,6 +6,63 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · Vigía de fuentes del catálogo
+
+- **Encargo (13/11):** «Hay que encontrar una forma de optimizar más aún estos
+  procesos» (el ciclo diario del catálogo). Esta parte: un vigía determinista
+  que lee sin agentes las fuentes que más cambian y que el investigador parta
+  de él. No se publicó nada, no se tocó Supabase ni el ciclo del 13/11.
+- **Qué hay:**
+  1. `.claude/skills/investigacion-catalogo/vigia.mjs --ciclo <ciclo> --base
+     <entrega publicada>`: lee la API de Spiko (rendimiento y VL de las tres
+     fichas), el oráculo de mTBILL (eth_call de solo lectura), el libro de
+     órdenes de Brickwise (v1 y v2), el precio del emisor y la recompra en
+     cadena, el libro, los mínimos y la última operación de las tres suizas,
+     el SHA-256 de cada PDF citado en `documentacion-ofertas.json` (frente a
+     la huella del expediente o del inventario del ciclo publicado) y las
+     búsquedas de advertencias de la CNMV del ciclo publicado (con el control
+     «Trading»). Escribe `<ciclo>/vigia.json`: por ficha, cifra publicada,
+     cifra de hoy, fuente, hora UTC, SHA-256 y «cambia / no cambia / no se
+     pudo leer». El bruto va a `<ciclo>/vigia-crudo/` (en `.gitignore`).
+     Petición normal, TLS, sin reintentar un 403 ni un desafío.
+     `--grabadas <carpeta>` reproduce una pasada sin red.
+  2. El flujo `investigacion-catalogo` (args.vigia, por defecto
+     `<ciclo>/vigia.json`; `false` lo apaga): el investigador confirma en la
+     fuente lo que «cambia», re-fecha lo que «no cambia» con la hora y la
+     huella del vigía (`"segunVigia": true`) y abre a mano lo que «no se pudo
+     leer» y lo que el vigía no cubre. El revisor sigue reabriendo cada
+     cambio crítico y además muestrea lo re-fechado con el vigía.
+  3. Skill (apartado 0, punto 5; y en «Publicar», una segunda pasada contra
+     la entrega que se va a aplicar), `CICLO-DIARIO-CATALOGO.md` §2 y una
+     línea en `ACCESO-FUENTES.md`.
+- **Medido en vivo el 13/11 (09:32 UTC, contra la publicada del 12/11):**
+  24 s, 99 peticiones. 12 cifras cambian, las mismas que encontraron a mano
+  los cuatro grupos esa mañana (Spiko 2,41 → 2,40 % y 4,02 → 3,98 %, VL nueva
+  de las tres de Spiko, Pottendorfer 80 → 73 €, mejor compra de
+  Randhartingergasse 56 → 64 €, participaciones en venta de Cohotel 65 → 59,
+  GreenPoint 351 → 347 y Schwarzer Weg 300 → 299); 65 no cambian; 50 PDF con
+  la misma huella; 29 búsquedas de la CNMV iguales.
+- **Pruebas:** `rwadar-acceso/vigia-catalogo.test.mjs` (8, sin red, con las
+  respuestas del 13/11 saneadas en `pruebas-vigia/respuestas/`) y
+  `rwadar-acceso/flujo-investigacion-vigia.test.mjs` (2, el flujo con agentes
+  simulados). Entran solas en `npm test` (test:acceso). 22 mutaciones (quitar
+  o romper cada pieza) y las 22 hacen fallar alguna prueba. `npm test` en la
+  raíz con salida 0 (test:acceso 323/323). La pasada en vivo, reproducida sin
+  red con `--grabadas`, da exactamente lo mismo. gitleaks sin hallazgos en lo
+  nuevo y en un `vigia.json` real (no lleva carteras ni direcciones).
+- **Segunda pasada antes de aplicar (probada en solo lectura a las 09:42 UTC
+  contra el borrador de la entrega del 13/11):** 77 cifras, 50 PDF y 29
+  búsquedas «no cambia», es decir, el borrador cuadraba con las fuentes a esa
+  hora.
+- **Pendiente / para Víctor:**
+  - Probarlo en el próximo ciclo real: pasar el vigía en el arranque y lanzar
+    los grupos con él.
+  - El camino crítico de la investigación del 13/11 fue el grupo de
+    candidatas (`vigilancia`), que el vigía no cubre: para que el ahorro se
+    note en el reloj, lanzar ese grupo el primero.
+
+---
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en

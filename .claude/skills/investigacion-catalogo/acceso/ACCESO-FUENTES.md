@@ -13,6 +13,11 @@ node /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratc
 
 Dice qué rutas siguen vivas y guarda las respuestas en bruto, con su SHA-256 y su
 hora UTC, en `crudo/comprobar-rutas/<hora>/`. Hazlo al empezar cada ciclo.
+
+Para las cifras del día (Spiko, oráculo de mTBILL, libros de órdenes de Brickwise y
+de los portales suizos), los PDF citados y las advertencias de la CNMV está además
+`../vigia.mjs`, que las compara con lo publicado con estas mismas reglas (ver la
+skill, apartado 0, punto 5).
 Para una sola plataforma: `--solo midas` (o `spiko`, `spiko-letras`, `brickwise`,
 `crowdedhero`, `cryptocom`).
 

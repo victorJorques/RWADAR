@@ -27,13 +27,43 @@ el orden de trabajo y lo aprendido para hacerlo rápido.
    `bash .claude/skills/investigacion-catalogo/leer-publico.sh rwadar-app/data/verificaciones/<fecha>-v2/lectura-publica`.
    Anota revisión, cantidades y la entrega local que le corresponde
    (`rwadar-site/assets/catalogo-publico-20261022.js` lleva su `revisionId`).
-5. En segundo plano: `node rwadar-app/capturar-fuentes.mjs <entrega publicada> <scratchpad>/capturas-<fecha>.json`
+5. **Vigía (menos de 1 minuto, sin agentes):**
+   `node .claude/skills/investigacion-catalogo/vigia.mjs --ciclo rwadar-app/data/verificaciones/<fecha>-v2 --base rwadar-app/data/verificaciones/<entrega publicada>-v2`.
+   Lee las fuentes que más cambian (Spiko, oráculo de mTBILL, libro de órdenes
+   de Brickwise y de los portales suizos), el SHA-256 de cada PDF citado en
+   `documentacion-ofertas.json` y las búsquedas de advertencias de la CNMV del
+   ciclo publicado, y escribe `<ciclo>/vigia.json`: por ficha, cifra
+   publicada, cifra de hoy, fuente, hora UTC, SHA-256 y «cambia / no cambia /
+   no se pudo leer». En la terminal sale solo lo que cambia o no se pudo leer:
+   eso es lo que hay que mirar hoy. Las respuestas en bruto quedan en
+   `<ciclo>/vigia-crudo/`, fuera de Git. Mismas reglas que
+   `acceso/ACCESO-FUENTES.md`: petición normal, TLS, sin eludir bloqueos.
+6. En segundo plano: `node rwadar-app/capturar-fuentes.mjs <entrega publicada> <scratchpad>/capturas-<fecha>.json`
    (unos 15 min). Copia `comprobar-radar.mjs` del último ciclo y cambia la
    fecha y la carpeta base.
-6. Copia el `ENCARGO-INVESTIGADORES.md` del último ciclo, cambia fecha,
-   publicada y pendientes (salen de `INTERNO.md` y del último informe).
+7. Copia el `ENCARGO-INVESTIGADORES.md` del último ciclo, cambia fecha,
+   publicada y pendientes (salen de `INTERNO.md` y del último informe). Pon
+   en él lo que el vigía dio como «cambia» y «no se pudo leer».
 
-## 1 · Investigación en paralelo (35–45 min)
+## 1 · Investigación en paralelo (15–25 min con el vigía)
+
+**El investigador parte del vigía.** El flujo `investigacion-catalogo` busca
+`<ciclo>/vigia.json` (o la ruta de `args.vigia`; `vigia: false` lo apaga) y,
+si es de hoy y de la misma publicada, el investigador:
+- confirma en la fuente primaria cada cifra que el vigía da como «cambia»;
+- re-fecha lo que «no cambia» con la hora y el SHA-256 del vigía, sin volver
+  a leerlo, y lo marca con `"segunVigia": true`;
+- abre a mano lo que «no se pudo leer» y todo lo que el vigía no cubre
+  (`noCubre`: textos, avisos sin cifra, acceso, salida, registros, Hausera,
+  Robinhood, Kraken, Prosegur…).
+
+El revisor independiente sigue reabriendo **cada** cambio crítico y además
+muestrea lo re-fechado con el vigía. Si el vigía no se pudo pasar, el flujo
+trabaja como siempre.
+
+Con el vigía, el grupo de candidatas (`vigilancia`) pasa a ser el más largo
+(el 13/11: 15 min de investigador y 12 de revisor): lánzalo el primero, sin
+esperar al vigía, que no lo necesita.
 
 **Cada flujo de Workflow solo corre 2 agentes a la vez en esta máquina** (4
 CPU). Para que todos los grupos trabajen a la vez, lanza el flujo guardado
@@ -132,7 +162,12 @@ Trampas conocidas:
 1. `npm test` completo en verde. Commit y push de la rama; PR a `main`
    (`mcp__github__create_pull_request`), CI en verde y merge
    (`mcp__github__merge_pull_request`).
-2. Vuelve a leer como visitante (debe seguir la misma publicada).
+2. Vuelve a leer como visitante (debe seguir la misma publicada). Y pasa otra
+   vez el vigía, ahora contra la entrega que vas a aplicar (30 s):
+   `node .claude/skills/investigacion-catalogo/vigia.mjs --ciclo <scratchpad>/vigia-antes-de-aplicar --base rwadar-app/data/verificaciones/<etiqueta>-v2`.
+   Si algo sale «cambia» (por ejemplo, Spiko publicó otra VL por la tarde),
+   las cifras se movieron desde la investigación: re-fecha o corrige antes de
+   aplicar, con su revisión.
 3. «Aplicar catálogo» desde `main` con la etiqueta (`mcp__github__actions_run_trigger`,
    `aplicar-catalogo.yml`, `inputs: {fecha: "<etiqueta>"}`); espera a que
    acabe y vuelve a leer como visitante: revisión nueva, cantidades y cifras.
@@ -160,6 +195,17 @@ Informe fechado (`docs/INVESTIGACION-CATALOGO-<fecha>.md`), `docs/INTERNO.md`
 en llano, entrada arriba de `docs/tareas/PARA-CODEX.md` y, para Víctor, un
 resumen corto: qué cambió en las ofertas, qué no entró y por qué, y qué está
 publicado y comprobado.
+
+## Vigía: medido el 13/11/2026
+
+Pasada en vivo a las 09:32 UTC contra la publicada del 12/11: 24 s y 99
+peticiones (Spiko 1,3 s; mTBILL 0,6 s; Brickwise 1,4 s; suizas 1,7 s; 50 PDF
+6,3 s; CNMV 24 s, de una en una). Dio 12 cifras que cambian, las mismas que
+los cuatro grupos de agentes encontraron a mano esa mañana (Spiko 2,41 → 2,40 %
+y 4,02 → 3,98 %, VL nueva de las tres de Spiko, Pottendorfer 80 → 73 €,
+mejor compra de Randhartingergasse 56 → 64 €, participaciones en venta de
+Cohotel, GreenPoint y Schwarzer Weg), 65 que no cambian, 50 PDF con la misma
+huella y 29 búsquedas de la CNMV iguales.
 
 ## Tiempos reales del 05/11/2026
 
