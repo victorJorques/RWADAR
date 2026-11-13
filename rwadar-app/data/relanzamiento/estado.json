@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "catálogo del 13/11 (434217eb) y noticias, #131 y #132",
+  "nota": "Gráfico de la tokenización con más detalle (#136) y ciclo más rápido (#135), sobre el catálogo 434217eb",
   "revisionAprobada": {
-    "commit": "6de19f8cc3620db67067c7795a4967f5cbcfc41f",
-    "contenidoSha256": "sha256:4062f841f69f8d6ec6581d8d1b1af9ecaaa7ec4384dd562246c1dd0761f6ee10",
+    "commit": "403cda1802c1e1d6e9fc98b67a87f4fec6de366b",
+    "contenidoSha256": "sha256:32e938fccd6eb734e594ba5b69572df18c36ea0ed416b5c539903728f21d47f8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
