@@ -29,3 +29,15 @@
 2026-11-13T08:31:09Z | barrido/crudo/cnmv-rss-np.xml | 403 text/html; charset=utf-8 | 1da5e0dcd11f6f7d | https://www.cnmv.es/portal/RSS/RSSNotasPrensa.aspx
 2026-11-13T08:31:17Z | barrido/crudo/coindesk-rss.xml | 200 application/xml | 22df8bfc5eb694b2 | https://www.coindesk.com/arc/outboundfeeds/rss/
 2026-11-13T08:31:47Z | barrido/crudo/esma-casps.csv | 200 text/csv | e0a73cab442a1bed | https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+2026-11-13T14:10:29Z | barrido/tarde/cnmv-np.html | 200 text/html; charset=utf-8 | d733d993695b0f90 | https://www.cnmv.es/portal/aldia/notasprensa
+2026-11-13T14:10:29Z | barrido/tarde/cnmv-home.html | 200 text/html; charset=utf-8 | 6ae4a7a481f06916 | https://www.cnmv.es/portal/home
+2026-11-13T14:10:29Z | barrido/tarde/erir.html | 200 text/html; charset=utf-8 | 1e2da76231dd0daf | https://www.cnmv.es/portal/consultas/erir?lang=es
+2026-11-13T14:10:29Z | barrido/tarde/esma-news.html | 200 text/html; charset=utf-8 | b28ad72c6a0bf6ac | https://www.esma.europa.eu/press-news/esma-news
+2026-11-13T14:10:29Z | barrido/tarde/esma-rss.xml | 200 application/rss+xml; charset=utf-8 | cf42108834a9fba4 | https://www.esma.europa.eu/rss.xml
+2026-11-13T14:10:29Z | barrido/tarde/esma-recent.json | 200 application/json;charset=utf-8 | 5f34e426e20893af | https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=approval_filing_date:%5B2026-11-12T00:00:00Z%20TO%20*%5D%20AND%20-document_type:FTWS&rows=400&wt=json
+2026-11-13T14:10:29Z | barrido/tarde/consilium.xml | 200 text/xml; charset=utf-8 | 26508ba2f58e4375 | https://www.consilium.europa.eu/en/rss/pressreleases.ashx
+2026-11-13T14:10:29Z | barrido/tarde/fisma.html | 200 text/html; charset=utf-8 | 6607f251abfe2317 | https://finance.ec.europa.eu/news_en
+2026-11-13T14:10:29Z | barrido/tarde/ecb.xml | 200 application/rss+xml | 1a602fc5e042a4e0 | https://www.ecb.europa.eu/rss/press.html
+2026-11-13T14:10:29Z | barrido/tarde/eba.xml | 200 application/rss+xml; charset=utf-8 | cd5cbeda8bf7a60a | https://www.eba.europa.eu/rss.xml
+2026-11-13T14:10:29Z | barrido/tarde/li.xml | 200 application/rss+xml | 45e33fcc1486a630 | https://www.ledgerinsights.com/feed/
+2026-11-13T14:11:01Z | barrido/tarde/boe-20261113.xml | 200 application/xml | f78b7ea7e1f37853 | https://www.boe.es/datosabiertos/api/boe/sumario/20261113

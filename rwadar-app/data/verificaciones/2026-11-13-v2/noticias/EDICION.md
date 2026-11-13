@@ -178,3 +178,30 @@ el cambio de sección y de titular de la n.º 1 y las huellas.
 3. Ejecutar `node rwadar-app/noticias/noticias-v1.cjs` para el v1 sin
    «imagen» (ojo: escribe `rwadar-site/datos/noticias.json` incluso con
    `--help`).
+
+## Barrido de la tarde (13/11, 14:10-14:20 UTC)
+
+Repetido solo el barrido de lo nuevo del 12 y 13/11, con curl (agente por
+defecto) y WebSearch en modo estándar. Copias en `fuentes/barrido/tarde/`
+(no van a Git); hora, HTTP y huella al final de `inventario-consultas.txt`.
+
+| Dónde | Hora UTC | Resultado |
+|---|---|---|
+| CNMV, notas de prensa (`aldia/notasprensa`) | 14:10:29 | **misma huella que por la mañana** (`d733d993…`): la primera sigue siendo «11/11/2026 13:00 Advertencias de entidades no registradas en supervisores internacionales». La página no está en caché: la portada de la CNMV sí cambió (`6ae4a7a4…`, con comunicaciones de emisores del 13/11 hasta las 13:35), pero ninguna nota de prensa ni advertencia nueva |
+| CNMV, ERIR (lista) | 14:10:29 | misma huella (`1e2da762…`): ninguna inscripción nueva |
+| ESMA, noticias (web y RSS) | 14:10:29 | RSS con la misma huella; en la web solo cambian identificadores de la página. La última sigue siendo la del 09/11 (ETSG) |
+| ESMA, registro de folletos (API Solr, desde el 12/11, sin condiciones finales) | 14:10:29 | los mismos 14 documentos de la mañana; ninguno nuevo y ninguno de tokenización |
+| BOE, sumario del 13/11 (API, `Accept: application/xml`) | 14:11:01 | misma huella (`f78b7ea7…`): nada del sector |
+| Consejo de la UE (RSS) | 14:10:29 | las mismas seis primeras notas (comercio de emisiones, pesca, Comunidad Política Europea, Armenia): nada del régimen piloto ni de mercados de capitales |
+| Comisión, FISMA (noticias) | 14:10:29 | el texto de la página no cambia (solo marcas internas) |
+| BCE y EBA (RSS) | 14:10:29 | mismas huellas que por la mañana |
+| Ledger Insights (RSS, pista) | 14:10:29 | misma huella: nada nuevo |
+| WebSearch (estándar) | 14:12-14:16 | «CNMV advertencia 13 noviembre 2026»; «tokenización 13 de noviembre de 2026»; valores tokenizados para particulares en Europa el 13/11; ESMA y tokenización en noviembre; emisores del catálogo (Robinhood Stock Tokens, xStocks/Backed, Bit2Me STX y Valorix, Spiko): nada del 12 o el 13/11 con fuente primaria. Lo más reciente son cifras de xStocks del 09/11 en prensa (no del emisor) y la prensa que sigue situando la emisión de Valorix en diciembre, sin documento |
+
+**Decisión: sin cambios en `noticias-2026-11-13.json`.** A las 14:10 UTC (15:10
+en Madrid) la CNMV aún no ha publicado ninguna nota ni advertencia del 13/11,
+y ningún otro organismo ni emisor del catálogo trae un hecho del 12 o el 13/11
+con fuente primaria que cumpla los criterios. «Hoy» sigue vacío; no se fuerza.
+Si la CNMV publica más tarde (algunos días lo hace hasta las 14:00 UTC), la
+candidata natural a «Hoy» sería su advertencia, con la foto `alerta-fraude`
+(y la del 11/11 tendría que cambiar de foto o salir).
