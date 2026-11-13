@@ -20,8 +20,19 @@ name: Foto diaria de la tokenización
 # CoinGecko (hoy 29 de los 40 mayores), con unas 42 llamadas gratuitas a
 # CoinGecko y 13 s entre ellas (unos 9 minutos; con 3 s CoinGecko daba 429
 # una vez sí y otra no). Si CoinGecko falla, si los tokens que no se leen
-# pesan más del 1 % o si el paso pasa de 14 minutos, se conserva la serie
-# anterior y la foto del día se guarda igual.
+# pesan más del 1 % o si se acaba su plazo, se conserva la serie anterior y
+# la foto del día se guarda igual.
+#
+# Desde el 13/11/2026, además, las series finas del gráfico
+# (tokenizacion-serie-fina.json): un punto cada 5 minutos de las últimas 24
+# horas y uno cada hora de los últimos 30 días, de los mismos tokens que la
+# diaria. Son unas 60 llamadas más (dos por token que entra), con la misma
+# pausa de 13 s: el 13/11/2026, 103 llamadas en total y 23 minutos, sin
+# ningún 429. La diaria se guarda antes de empezar las finas; el script no
+# empieza llamadas de la diaria pasados 20 minutos ni de las finas pasados
+# 34, y el paso tiene 40 (una llamada con sus reintentos dura como mucho 5).
+# Si fallan las finas, queda la diaria nueva y la fina anterior, que ya no
+# casa con ella y no se usa: el gráfico sigue con la diaria.
 #
 # Script y pruebas: rwadar-app/tokenizacion/foto-diaria.mjs,
 # rwadar-app/tokenizacion/serie-diaria.mjs y .github/tokenizacion.test.mjs.
@@ -44,7 +55,8 @@ concurrency:
 jobs:
   foto:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    # La foto (unos 3 min como mucho), las series (40) y guardar: 50.
+    timeout-minutes: 50
     # Escribir solo hace falta para empujar la foto a «datos-tokenizacion».
     permissions:
       contents: write
@@ -97,18 +109,24 @@ jobs:
           node rwadar-app/tokenizacion/foto-diaria.mjs "$DATOS/tokenizacion-historico.json"
           --semilla rwadar-site/datos/tokenizacion-historico.json
 
-      # Si falla (código 3), no escribe nada: queda la serie anterior y el
-      # flujo sigue para guardar la foto del día. Su propio límite (14 min,
-      # menor que el del trabajo) evita que unos 429 seguidos agoten el
-      # tiempo del trabajo y se pierda también la foto.
-      - name: Rehacer la serie de un año (mayores tokens con historia completa)
+      # Si falla la diaria (código 3), no escribe nada: queda la serie
+      # anterior y el flujo sigue para guardar la foto del día. Si fallan las
+      # finas, la diaria nueva ya está escrita y la fina anterior se queda.
+      # Su propio límite (40 min, menor que el del trabajo) evita que unos
+      # 429 seguidos agoten el tiempo del trabajo y se pierda también la foto.
+      - name: Rehacer la serie de un año y las finas (cada 5 minutos y cada hora)
         id: serie
         continue-on-error: true
-        timeout-minutes: 14
-        run: node rwadar-app/tokenizacion/serie-diaria.mjs "$DATOS/tokenizacion-serie.json"
+        timeout-minutes: 40
+        run: >
+          node rwadar-app/tokenizacion/serie-diaria.mjs "$DATOS/tokenizacion-serie.json"
+          --fina "$DATOS/tokenizacion-serie-fina.json"
 
+      # Siempre que la foto haya ido bien: se guarda lo que haya en disco. Los
+      # archivos se escriben enteros (nombre temporal y cambio de nombre), así
+      # que nunca hay uno a medias; si el paso de las series se cortó por
+      # tiempo después de guardar la diaria, la diaria nueva se guarda igual.
       - name: Guardar la foto y la serie (un commit por día)
-        if: steps.foto.outputs.cambiado == 'true' || steps.serie.outputs.serie == 'true'
         env:
           FECHA: ${{ steps.foto.outputs.fecha }}
         run: |
@@ -117,6 +135,7 @@ jobs:
           cd "$DATOS"
           git add tokenizacion-historico.json
           if [ -f tokenizacion-serie.json ]; then git add tokenizacion-serie.json; fi
+          if [ -f tokenizacion-serie-fina.json ]; then git add tokenizacion-serie-fina.json; fi
           if git diff --cached --quiet; then echo "Nada nuevo que guardar."; exit 0; fi
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Foto y serie de la tokenización del $FECHA (datos: CoinGecko)"

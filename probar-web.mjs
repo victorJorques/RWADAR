@@ -1967,6 +1967,13 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   prueba('la serie de un año se publica en /datos/tokenizacion-serie.json, validada; sin la rama, la semilla de main',
     tk.serieValida(JSON.parse(seriePublicada)) && (conRamaSerie || seriePublicada === tk.serializarSerie(serieSemilla)) &&
     serieSemilla.puntos.length >= 300 && /serieTokenizacion\(\{ dirSitio: DIR \}\)/.test(publicador));
+  /* Las series finas (13/11/2026): /datos/tokenizacion-serie-fina.json, válida y de la misma ejecución que la
+     diaria publicada (si no casa, «sin serie fina» y el gráfico usa la diaria). */
+  const finaPublicada = JSON.parse(fs.readFileSync(path.join(publicado, 'datos', 'tokenizacion-serie-fina.json'), 'utf8'));
+  prueba('las series finas se publican en /datos/tokenizacion-serie-fina.json, validadas y de la misma ejecución que la diaria publicada',
+    tk.serieFinaValida(finaPublicada) && finaPublicada.generado === JSON.parse(seriePublicada).generado &&
+    Object.entries(finaPublicada.series).every(([clave, x]) => x === null || Object.keys(tk.seriesEnlazadas(JSON.parse(seriePublicada), finaPublicada)).includes(clave)) &&
+    /serieFinaTokenizacion\(\{ dirSitio: DIR, diaria: serie\.serie \}\)/.test(publicador));
   /* /noticias/ y /noticias/#<id> llevan a /mercado/, sin romper enlaces. */
   const noticiasHTML = lee('noticias/index.html');
   const paso = lee('assets/noticias-a-mercado-20261111.js');

@@ -6,6 +6,130 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · Gráfico con más detalle: los datos y el modelo
+
+- **Encargo (13/11):** «El gráfico, cuanto más detalle en el tiempo tenga,
+  mejor». Esta rama (`worktree-wf_cb8b9504-318-1`) es **solo la parte de
+  datos y modelo**; las pantallas de la web y de la app van en otra rama.
+  **Nada publicado**: ni push, ni flujos, ni la rama `datos-tokenizacion`.
+  La empezó otro agente que se cortó por el límite de uso; esta sesión
+  averiguó por qué no salía ninguna serie fina con datos reales, cambió la
+  regla y lo terminó.
+- **Qué cambia, en llano:**
+  1. Además de la serie diaria de un año, dos series con más detalle, de
+     **los mismos tokens** que la diaria: un punto **cada 5 minutos** de las
+     últimas 24 horas (289 puntos) y uno **cada hora** de los últimos 30
+     días (721). Van en un archivo aparte, `/datos/tokenizacion-serie-fina.json`
+     (unos 39 kB, 10 kB comprimido), para que la app instalada y la web en
+     caché sigan leyendo la diaria de siempre (su forma no cambia). Horaria
+     de 30 días y no de 90: ninguna pestaña la usaría (3 M son 91 días y
+     CoinGecko gratis da cada hora solo hasta 90) y el archivo, que leen
+     Inicio y la app, pasaría de unos 39 a unos 90 kB.
+  2. Pestaña nueva **«24 h»** («24H»), la primera. Cada pestaña usa la serie
+     más fina que la cubre: 24 h, la de 5 minutos; 1 S y 1 M, la horaria;
+     3 M, 6 M, el año y 1 A, la diaria. Sin la de 5 minutos, 24 h usa la
+     horaria (25 puntos); sin ninguna fina, 24 h sale desactivada y lo demás
+     va como antes. El «Cambio en 24 h» sale de la pestaña 24 h.
+  3. **Por qué no salía ninguna serie fina (la nota anterior):** con datos
+     reales, el mayor token, **figure-heloc (el 55 % del total de la
+     categoría, el 64 % de la suma)**, no tiene datos en CoinGecko de 3 a 5
+     horas cada mañana (de 07-08 a 11-12 UTC) ni de casi 24 horas cada fin
+     de semana (26 huecos en 30 días en la horaria; uno de 3 h 35 min en la
+     de 5 minutos). Con el margen de antes (media hora; 3 horas en la
+     horaria) la de 5 minutos tenía 36 puntos sin dato completo y la
+     horaria 85, y las dos se descartaban; quitar ese token habría dejado
+     fuera más de la mitad del mercado.
+  4. **La regla nueva:** cubos de 5 minutos o de 1 hora en UTC; de cada
+     token vale su último dato en el cubo y, si no tiene, el anterior, **como
+     mucho de 24 horas antes** (la diaria ya arrastra hasta 3 días). Si le
+     falta más, o su lectura falla, **ese token queda fuera de esa serie
+     entera** (no solo donde le faltan datos), y la serie guarda cuáles
+     («fuera») y cuánto suman («valorFuera»); si pesan más del 1 %, esa serie
+     no sale ese día. Los que pasan más de una hora sin dato van en
+     «largos» y «Cómo se calcula» los nombra («1 token (figure-heloc) pasa
+     ratos de más de una hora sin dato en CoinGecko: ahí cuenta su último
+     dato»). Un token que CoinGecko empezó a seguir el primer día de la
+     ventana o después cuenta 0 hasta su primer dato, como en la diaria.
+  5. **Las tres acaban en el mismo punto** (el último dato de cada token):
+     la cifra grande es el último punto de la diaria, el final de la línea
+     de cada pestaña y la cruz en el último punto. Si en una fina queda un
+     token fuera, su línea acaba «valorFuera» por debajo y el modelo da el
+     aviso (`avisoFuera`: «la línea suma 29 de los 30: queda fuera 1 token
+     sin datos de CoinGecko en este periodo (12 M$), así que acaba 12 M$ por
+     debajo de la cifra grande»). La fina se une a su diaria por «generado»
+     y por ese último punto; si no casa, el gráfico usa la diaria.
+  6. Horas en **hora de España peninsular** (sin Intl, con el cambio de hora
+     de la UE): eje de 24 h con horas («06:00», «12:00»), de 1 S y 1 M con
+     días («7 nov»), de 1 A con meses; la cruz dice «10:20» en 24 h y «8 nov,
+     18:00» en las horarias; con «largo», «13/11/2026, 10:20 (hora de
+     España)». Igual en inglés.
+  7. 720 puntos sin tirones: si hay más puntos que medios píxeles, de cada
+     columna se pintan el más alto y el más bajo (no se pierde ningún máximo
+     ni mínimo); la cruz busca entre todos con búsqueda binaria.
+  8. **Flujo diario:** 13 s entre llamadas (como antes); unas 103 llamadas y
+     23 minutos (medido el 13/11, sin ningún 429). La diaria se escribe
+     antes de empezar las finas; las finas no empiezan llamadas pasados 34
+     minutos; el paso tiene 40 y el trabajo 50. Si fallan las finas, queda
+     la diaria nueva y la fina anterior, que no casa y no se usa. Archivos
+     siempre enteros (nombre temporal y cambio de nombre).
+- **Archivo real de prueba (para las pantallas y los revisores):**
+  `/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/grafico/tokenizacion-serie-fina.json`
+  y su diaria `…/grafico/tokenizacion-serie.json` (la misma ejecución).
+  Hecho de verdad con CoinGecko (gratis, sin clave, TLS y 13 s entre
+  llamadas) y el código de esta rama, el 13/11 de 14:47 a 15:10 UTC: 102
+  llamadas, 22,5 minutos, ningún 429. **30 tokens** (los de la diaria, 30 de
+  los 40 mayores, un 85,7 % del total), **289 puntos de 5 minutos** (de las
+  15:05 UTC del 12/11 a las 15:05 del 13/11) y **721 horarios** (del 14/10
+  a las 15:00 del 13/11), ninguno fuera; «largos»: figure-heloc (en las
+  dos) y theo-short-duration-us-treasury-fund (en la horaria). **38,6 kB**
+  (9,7 kB comprimido). Las tres acaban en **41.816 M$** («13/11/2026,
+  16:05» hora de España); cambio en 24 h −4,0 % (casi todo es figure-heloc,
+  que en CoinGecko pasó de 28.320 a 26.617 M$ en esas horas). Con la regla
+  anterior, esa misma lectura no daba ninguna serie fina. Las respuestas
+  crudas están en `…/grafico/vivo/crudo/` (y otra lectura anterior en
+  `…/grafico/real2/crudo/`), y `…/grafico/reproducir-real.mjs` rehace los
+  archivos con ellas sin llamar a CoinGecko.
+- **Dónde:** `rwadar-movil/lib/tokenizacion.js` (`RESOLUCIONES`,
+  `construirSerieFina`, `validarSerieFina`, `seriesEnlazadas`,
+  `unirSerieFina`, `seriePestana`, `avisoFuera`, `textoInstante`,
+  `indicesPintar`…) y su copia `rwadar-site/assets/tokenizacion-modelo-20261110.js`;
+  `rwadar-movil/lib/tokenizacion-serie-remota.js` (`cargarSerieConFina`);
+  `rwadar-app/tokenizacion/serie-diaria.mjs --fina`;
+  `rwadar-tokenizacion-historico.js` (`serieFinaTokenizacion`),
+  `rwadar-publicar.js`, `rwadar-publicacion-segura.js`,
+  `.github/comprobar-publicado.mjs`, `.github/workflows/tokenizacion-diaria.yml`
+  y `publicar.yml`; semilla «sin serie fina» en
+  `rwadar-site/datos/tokenizacion-serie-fina.json`.
+- **Commits:** `3949e16` (modelo), `b0514f2` (generador, flujo y
+  publicación) y este traspaso.
+- **Pruebas:** `npm test` en la raíz con salida 0 (los guiones de
+  rwadar-app y 11 + 109 de `node --test`, entre ellas las 15 de
+  `.github/tokenizacion.test.mjs`;
+  probar-web 711/711, 70 páginas y RSS, 40 de precarga; `rwadar-movil` 640:
+  638 bien y 2 omitidas, con las 11 de `tests/tokenizacion-fina.test.cjs`;
+  `rwadar-acceso` 313/313). Guardián de OTA con `--base fa30779…`:
+  `ok:true`, 1.4.2(24). **Mutaciones: 47 de 47** (quitar cada regla, cada
+  comprobación del validador, la unión, la cabecera, el generador, el
+  publicador y el flujo hace fallar alguna prueba), hechas sobre una copia
+  del worktree.
+- **Pendiente / para quien una las pantallas:**
+  - La web y la app tienen que leer la fina (`cargarSerieConFina` en la app;
+    en la web, `/datos/tokenizacion-serie-fina.json` + `unirSerieFina`),
+    decidir pestaña con `pestanaDisponible`/`seriePestana` (no con
+    `tramo(serie.puntos, …)`, que con la diaria deja 24 h vacía) y enseñar
+    `g.avisoFuera` cuando no esté vacío. Hasta entonces, si se publica esta
+    rama sola, «24 h» sale desactivada y todo lo demás como hoy.
+  - Al publicar: primero la web y después la OTA (la app lee el archivo de
+    la web).
+  - La fina es tan reciente como la última ejecución del flujo (06:23 UTC)
+    **y** la última publicación de la web (manual): «24 h» son las 24 horas
+    antes de la ejecución que se publicó. El subtítulo de la cifra dice la
+    hora. Si se quiere más fresca, hay que ejecutar el flujo y publicar más
+    a menudo (cada ejecución, unos 23 minutos de Actions).
+  - `docs/INTERNO.md` describe lo publicado: ponerlo al día al publicar.
+
+---
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
