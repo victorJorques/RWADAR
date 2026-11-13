@@ -11,8 +11,12 @@ entrega a partir de `2026-11-12-v2/decisiones.json` y salieron **idénticos byte
 a byte** a los publicados, con el SQL `d4d73024…4e4d`, el mismo que aprobó la
 verificación. También `transparencia.json` salió igual que el del commit del
 12/11. El ensayo en PGlite dio lo mismo que el real: 19 comprobaciones, 6 casos
-de fallo y las 22 tarjetas iguales. Lo comprueba `motor.test.mjs` en cada
-`npm test`.
+de fallo y las 22 tarjetas iguales, y lo que exporta coincide campo a campo con
+lo que se leyó en producción después de aplicar ese día
+(`lectura-despues-de-aplicar/`). Lo comprueban `motor.test.mjs` y
+`flujo.test.mjs` en cada `npm test`. El ensayo en PGlite va aparte
+(`pglite.test.mjs`, unos 25 s): `npm --prefix rwadar-app run test:motor-entrega`
+pasa las tres. **Si cambias el motor, pásalas antes del PR.**
 
 ## Uso (desde la raíz del repositorio)
 
@@ -22,7 +26,8 @@ node $M guiones   <etiqueta>   # una vez: los 3 guiones finos y ensayo-rest-simu
 node $M preparar  <etiqueta> --repetir   # datos y SQL, dos veces, mismos SHA-256 (o el guion fino preparar-entrega.mjs)
 node $M comprobar <etiqueta> --exportar=<dir>   # PGlite, ~35 s (o comprobar-entrega.mjs)
 node $M revisar   <etiqueta>   # DIFF-ENTREGA.md para los revisores
-node $M auditar   <etiqueta> --antes=<copia del SQL> [--secretos=<gitleaks>]   # tras corregir
+node $M auditar   <etiqueta> --antes=<copia del SQL revisado> --revisado=<su SHA-256> \
+                  --secretos=<gitleaks> --exigir-secretos --escribir   # tras corregir y antes del PR
 node $M despues   <etiqueta>   # después de aplicar y sincronizar (o despues-de-aplicar.mjs)
 ```
 
@@ -39,6 +44,31 @@ Para repetir una entrega pasada:
 
 Si algo no cuadra, el motor para con `NO: <motivo>` y la salida 1. Con
 `RWADAR_MOTOR_TRAZA=1` enseña la pila.
+
+`auditar` es la comprobación determinista que sustituye al auditor cuando la
+corrección no cambia el SQL:
+
+- rehace la entrega dos veces desde `decisiones.json` en una carpeta aparte:
+  mismos SHA-256 e igual byte a byte a lo de la carpeta;
+- con `--revisado`, exige que la copia sea el SQL que vieron los revisores;
+- mismo inventario de sentencias y diff normalizado (solo se igualan la revisión
+  y la huella);
+- PGlite y, con `--exigir-secretos`, el escáner de secretos obligatorio;
+- `--escribir` deja `VERIFICACION-ENTREGA.md`.
+
+Veredictos:
+
+- `conforme_sin_cambios_en_el_sql`: basta con esto;
+- `sql_cambiado_falta_auditor`: sigue el auditor, con la lista exacta de
+  sentencias y palabras que cambian;
+- `no_conforme`: salida 1.
+
+Probado con el 12/11 real: con la copia de antes de corregir (`4815b3cb…`, la
+que aprobó el revisor de SQL) da `sql_cambiado_falta_auditor` con una sola
+sentencia cambiada, la frase de Hausera que pidió el revisor de cumplimiento.
+
+Cómo se lanza el flujo `entrega-catalogo` por fases: en la skill
+(`../SKILL.md`, §2).
 
 ## Qué hace el motor y qué no
 

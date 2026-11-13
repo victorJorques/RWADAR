@@ -77,18 +77,62 @@ PDF y HTML de las fuentes, fuera de Git.
 «Tokenización diaria» guarda una foto de CoinGecko cada día en la rama
 `datos-tokenizacion` y «Publicar web» la incluye.
 
-## 2 · Decidir y montar (60–90 min)
+## 2 · Decidir y montar con el motor (30–40 min)
 
 1. Lee los resultados (diario `journal.jsonl` de cada flujo) y escribe
    `DECISIONES-COORDINADOR.md`: lista cerrada de lo que entra. Solo lo
    `confirmado` o `confirmado_con_cambios` por el revisor, con sus
    correcciones; lo `rechazado` no entra.
-2. Lanza el flujo guardado `entrega-catalogo` (o un agente con el mismo
-   encargo): `preparar-entrega.mjs` (reproducible, con la guarda de la
-   publicada y su huella), `comprobar-entrega.mjs` (PGlite, casos de fallo,
-   idempotencia, tarjetas), `despues-de-aplicar.mjs` (`transparencia.json`
-   con la fecha nueva) y un ensayo «después de aplicar» en una copia; luego un
-   revisor independiente del SQL y los datos; luego las correcciones.
+2. La entrega la hace el **motor** (`.claude/skills/investigacion-catalogo/entrega/`,
+   manual en `entrega/FORMATO.md`):
+   - lo propio del día va en `<ciclo>/decisiones.json`;
+   - las guardas, iguales cada día: publicada y huella, PGlite, casos de
+     fallo, idempotencia, tarjetas y transparencia.
+
+   Ya no se copian ni se adaptan los guiones del día anterior. Lanza el flujo
+   guardado `entrega-catalogo` **por fases**: cada flujo solo corre 2 agentes
+   a la vez, y así ninguno espera.
+
+   Los `args` comunes a las tres fases:
+
+   ```json
+   {"etiqueta": "AAAA-MM-DD", "fecha": "AAAA-MM-DD",
+    "ciclo": "rwadar-app/data/verificaciones/AAAA-MM-DD-v2",
+    "desde": "<etiqueta publicada>",
+    "previa": {"revisionId": "…", "hash": "…"},
+    "ultimoDia": "AAAA-MM-DD", "scratch": "<scratchpad>"}
+   ```
+
+   a. **`fase: "montar"`** (10–15 min). El montador, con esfuerzo «high»:
+      - escribe `decisiones.json` (copia el del último día y cambia la
+        cabecera y las ofertas);
+      - ejecuta `preparar` dos veces y `comprobar` (PGlite);
+      - ejecuta `revisar`, que escribe `DIFF-ENTREGA.md`;
+      - guarda la copia del SQL revisado (`<scratch>/sql-revisado-<etiqueta>/`);
+      - deja el ensayo «después de aplicar» corriendo en segundo plano.
+   b. **`fase: "revisar"`, tres veces en el mismo mensaje**: una por lente
+      (`lentes: ["sql"]`, `["contenido"]` y `["cumplimiento"]`), con
+      `montaje` = lo que devolvió (a). Los tres revisan **a la vez**
+      (12–15 min). Cada uno es independiente y empieza por
+      `DIFF-ENTREGA.md`, que le dice qué cambia frente a la entrega anterior,
+      antes de hacer sus propias pruebas.
+   c. **`fase: "cerrar"`**, con `montaje` y `revisiones` (las tres). Qué pasa:
+      - Si nadie pide nada, queda aprobada.
+      - Si piden correcciones, el corrector (esfuerzo «high») las hace solo en
+        `decisiones.json` y rehace con el motor.
+      - Después, la **comprobación determinista**: un agente ejecuta
+        `motor.mjs auditar` y comprueba las correcciones que no tocan el SQL.
+        `auditar` rehace la entrega, exige que la copia sea el SQL revisado,
+        compara el inventario de sentencias y el diff normalizado, y pasa
+        PGlite y el escáner de secretos.
+      - Si el SQL no cambió, con eso basta (2–3 min).
+      - Si cambió, sigue el auditor (agente, esfuerzo máximo) con el diff en
+        la mano (8–10 min).
+
+   Si omites `fase`, corre todo seguido, pero el tercer revisor espera. **Un
+   día con un alta o una retirada** el motor no la monta: lanza con
+   `motor: false` y `modelo: "rwadar-app/data/verificaciones/2026-11-05.2-v2"`.
+   Ese día el montador trabaja como antes, con esfuerzo «xhigh».
 3. Una candidata nueva necesita además su imagen editorial y su ficha
    (`rwadar-editorial-source/ofertas/README.md`, `rwadar-fichas-manifiesto.js`):
    si no da tiempo con calidad, **no se admite hoy**, sin cola pendiente.
@@ -117,10 +161,12 @@ Trampas conocidas:
 - No reescribas historia (`--amend` + `--force`): está bloqueado. Si hace falta
   quitar algo, crea una rama limpia desde `origin/main` con
   `git merge --squash` y abre el PR desde ella.
-- Si un corrector cambia el SQL después de la revisión, otro agente (o el
-  coordinador, que no lo preparó) comprueba el diff normalizado: mismo
-  inventario de sentencias y solo los cambios pedidos; y vuelve a pasar
-  `comprobar-entrega.mjs`.
+- Antes del PR, aunque no haya habido correcciones, repite tú `node
+  .claude/skills/investigacion-catalogo/entrega/motor.mjs auditar <etiqueta>
+  --antes=<scratch>/sql-revisado-<etiqueta> --revisado=<SHA del montaje>
+  --secretos=<scratch>/gitleaks/gitleaks --exigir-secretos` (un minuto). Si
+  el SQL cambió después de la revisión, hace falta el auditor, que no preparó
+  ni corrigió la entrega.
 - En el mínimo de una tarjeta, «por participación/token/acción» hace que el
   lector lo descarte: usa «Desde X € la participación en reventa (DD/MM)».
 - Reventa y próximas no llevan rentabilidad ni precio principal.
@@ -160,6 +206,20 @@ Informe fechado (`docs/INVESTIGACION-CATALOGO-<fecha>.md`), `docs/INTERNO.md`
 en llano, entrada arriba de `docs/tareas/PARA-CODEX.md` y, para Víctor, un
 resumen corto: qué cambió en las ofertas, qué no entró y por qué, y qué está
 publicado y comprobado.
+
+## Tiempos esperados con el motor (desde el 13/11/2026)
+
+La entrega pasa de unos 60–65 min a unos 30–40 min:
+
+| Paso | Antes | Ahora |
+|---|---|---|
+| Montaje | unos 25 min (copiar y adaptar guiones; «xhigh») | 10–15 min (`decisiones.json` y el motor; «high») |
+| Revisión | 2 revisores y después el tercero: unos 25–30 min | los 3 a la vez y con el diff: 12–15 min |
+| Corrección | 7–10 min («xhigh») | unos 5 min («high», solo `decisiones.json`) |
+| Cierre | auditor (máximo) 8–10 min | 2–3 min si el SQL no cambió; si cambió, el auditor con el diff |
+
+Es una estimación sobre las medidas del 12 y el 13/11, no una medida de un
+ciclo con el motor: anota el tiempo real del primero.
 
 ## Tiempos reales del 05/11/2026
 

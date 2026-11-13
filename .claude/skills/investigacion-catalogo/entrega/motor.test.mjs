@@ -185,6 +185,22 @@ test('auditar: si la corrección no cambia el SQL basta la comprobación determi
     const r = await auditar(comunes);
     assert.deepEqual([r.veredicto, r.sqlCambia, r.reproducible, r.carpetaIgualADecisiones, r.mismoInventario, r.hallazgos],
       ['conforme_sin_cambios_en_el_sql', false, true, true, true, []]);
+    // La copia de antes tiene que ser exactamente el SQL que vieron los revisores (el SHA-256 del montador).
+    const SHA_1211 = 'd4d73024c079d447d34e01168d31401eb5f62c57a16c2ae2194dd031c2714e4d';
+    const rv = await auditar({ ...comunes, revisado: SHA_1211 });
+    assert.deepEqual([rv.veredicto, rv.copiaEsLaRevisada], ['conforme_sin_cambios_en_el_sql', true]);
+    const rx = await auditar({ ...comunes, revisado: 'ab'.repeat(32) });
+    assert.deepEqual([rx.veredicto, rx.copiaEsLaRevisada], ['no_conforme', false]);
+    assert.ok(rx.hallazgos.some(h => /no es el SQL revisado/.test(h)), rx.hallazgos.join(' | '));
+    // Cuando sustituye al auditor, sin escáner de secretos no es conforme.
+    const sinGitleaks = process.env.RWADAR_GITLEAKS; delete process.env.RWADAR_GITLEAKS;
+    try {
+      const rs = await auditar({ ...comunes, exigirSecretos: true });
+      assert.equal(rs.veredicto, 'no_conforme');
+      assert.ok(rs.hallazgos.some(h => /escáner de secretos/.test(h)), rs.hallazgos.join(' | '));
+      const rn = await auditar({ ...comunes, exigirSecretos: true, gitleaks: path.join(antes, 'no-existe') });
+      assert.equal(rn.veredicto, 'no_conforme');
+    } finally { if (sinGitleaks !== undefined) process.env.RWADAR_GITLEAKS = sinGitleaks; }
     // El SQL de antes de corregir decía «Hoy no se puede invertir» (como el 12/11): cambia una sentencia, falta el auditor.
     for (const n of ['aplicar-y-aprobar.sql', 'catalogo.sql']) {
       const p = path.join(antes, n);

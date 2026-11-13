@@ -15,7 +15,9 @@
 //   revisar     resumen para los revisores: qué cambia frente a la entrega anterior (fichas y SQL normalizado).
 //   auditar     --antes=DIR (copia de los tres archivos del SQL antes de corregir): comprobación determinista de la
 //               corrección. Rehace la entrega dos veces, compara SHA-256, inventario y diff normalizado del SQL, y dice si
-//               el SQL cambió (si cambió, hace falta el auditor; si no, basta esto).
+//               el SQL cambió (si cambió, hace falta el auditor; si no, basta esto). --revisado=SHA256: la copia tiene que
+//               ser el SQL que vieron los revisores. --secretos=RUTA (gitleaks) y --exigir-secretos: sin escáner no es
+//               conforme. --escribir: deja VERIFICACION-ENTREGA.md en la carpeta del ciclo. Salida 1 si no es conforme.
 // Opciones comunes: --raiz=DIR (repositorio; por omisión, este), --salida=DIR (escribe ahí en vez de en el repositorio:
 // para comparar o ensayar sin tocar nada), --decisiones=RUTA.
 import assert from 'node:assert/strict';
@@ -118,8 +120,12 @@ export async function principal(argv) {
   if (orden === 'auditar') {
     const { auditar } = await import('./revisar.mjs');
     assert.ok(o.antes, 'auditar: falta --antes=DIR (la copia del SQL de antes de corregir)');
-    return auditar({ ...comunes, antes: path.resolve(o.antes), web: o.web && path.resolve(o.web), hoy: o.hoy,
-      gitleaks: (o.gitleaks || o.secretos) && path.resolve(o.gitleaks || o.secretos), sinPglite: !!o['sin-pglite'] });
+    const r = await auditar({ ...comunes, antes: path.resolve(o.antes), web: o.web && path.resolve(o.web), hoy: o.hoy,
+      gitleaks: (o.gitleaks || o.secretos) && path.resolve(o.gitleaks || o.secretos), sinPglite: !!o['sin-pglite'],
+      revisado: o.revisado, exigirSecretos: !!o['exigir-secretos'], escribir: !!o.escribir });
+    // Salida 1 si no es conforme: así nadie confunde un «no» con un «sí» al leer la salida.
+    if (r.veredicto === 'no_conforme') process.exitCode = 1;
+    return r;
   }
 }
 

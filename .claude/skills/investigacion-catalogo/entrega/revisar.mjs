@@ -205,8 +205,13 @@ export async function auditar(opciones = {}) {
     r.huellas = huellas[0];
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 
-  // 2 y 3 · inventario y diff normalizado frente a la copia de antes de corregir.
+  // 2 y 3 · inventario y diff normalizado frente a la copia de antes de corregir. Con «revisado» (el SHA-256 que dio el
+  // montador y vieron los revisores), la copia tiene que ser exactamente ese SQL: si no, el diff no dice nada.
   const sqlAntes = fs.readFileSync(path.join(antes, 'aplicar-y-aprobar.sql'), 'utf8'), sqlAhora = fs.readFileSync(path.join(lote, 'aplicar-y-aprobar.sql'), 'utf8');
+  if (opciones.revisado) {
+    r.copiaEsLaRevisada = sha(path.join(antes, 'aplicar-y-aprobar.sql')) === String(opciones.revisado).toLowerCase();
+    if (!r.copiaEsLaRevisada) hallazgo(`la copia de antes de corregir no es el SQL revisado (SHA-256 ${String(opciones.revisado).slice(0, 12)}…)`);
+  }
   const revAntes = leer(path.join(antes, 'revision.json')), revAhora = leer(path.join(lote, 'revision.json'));
   const esperado = rv => ({ nueva: rv.revisionId, previa: C.PREVIA, hashPrevia: C.HASH_PREVIA, fecha: FECHA, ultimo: C.ULTIMO, colecciones: C.COLECCIONES });
   let invA, invB;
@@ -255,14 +260,50 @@ export async function auditar(opciones = {}) {
       r.secretos = { ejecutado: true, salida: g.status === 0 ? 'sin hallazgos' : (g.stdout + g.stderr).slice(-2000) };
       if (g.status !== 0) hallazgo('el escáner de secretos encuentra algo en lo que irá a Git');
     } finally { fs.rmSync(copia, { recursive: true, force: true }); }
-  } else r.secretos = { ejecutado: false, motivo: 'sin gitleaks a mano (--gitleaks=RUTA o RWADAR_GITLEAKS)' };
+  } else {
+    r.secretos = { ejecutado: false, motivo: 'sin gitleaks a mano (--gitleaks=RUTA o RWADAR_GITLEAKS)' };
+    // Cuando esto sustituye al auditor, el escáner es obligatorio (el auditor lo pasaba siempre).
+    if (opciones.exigirSecretos) hallazgo(`falta el escáner de secretos: ${gitleaks ? `no existe ${gitleaks}` : 'sin --gitleaks=RUTA'}`);
+  }
 
   // Veredicto: conforme sin auditor solo si todo lo anterior está bien y el SQL no cambió. Si cambió, hace falta el
   // auditor (agente) para ver que cada diferencia es una corrección pedida.
   r.conforme = !r.hallazgos.length;
   r.necesitaAuditor = r.sqlCambia;
   r.veredicto = !r.conforme ? 'no_conforme' : r.sqlCambia ? 'sql_cambiado_falta_auditor' : 'conforme_sin_cambios_en_el_sql';
+  if (opciones.escribir) {
+    const destino = path.join(opciones.salida ? path.resolve(opciones.salida) : raiz, path.relative(raiz, DIR), 'VERIFICACION-ENTREGA.md');
+    fs.mkdirSync(path.dirname(destino), { recursive: true });
+    fs.writeFileSync(destino, informeAuditoria(r, { ETIQUETA, FECHA, antes: opciones.revisado }));
+    r.informe = path.relative(raiz, destino);
+  }
   log(JSON.stringify(r, null, 1));
   return r;
+}
+
+// VERIFICACION-ENTREGA.md cuando la comprobación determinista sustituye al auditor (o como punto de partida del
+// auditor, si el SQL cambió). En llano y sin rutas de la máquina.
+function informeAuditoria(r, { ETIQUETA, antes }) {
+  const si = v => v ? 'sí' : 'NO';
+  const que = {
+    conforme_sin_cambios_en_el_sql: 'CONFORME. La corrección no cambió el SQL: basta esta comprobación determinista y no hace falta el auditor.',
+    sql_cambiado_falta_auditor: 'EL SQL CAMBIÓ. Hace falta el auditor (agente) para ver que cada diferencia de abajo es una corrección pedida.',
+    no_conforme: 'NO CONFORME. Hay hallazgos: no se aplica ni se publica hasta resolverlos.',
+  }[r.veredicto];
+  return [
+    `# Verificación de la entrega ${ETIQUETA} (comprobación determinista)`, '',
+    `Generado por \`motor.mjs auditar ${ETIQUETA}\`. Compara el SQL que vieron los revisores con el de después de corregir.`, '',
+    `**Veredicto:** ${que}`, '',
+    `- SQL revisado (antes de corregir): \`${r.sha256.antes}\`${antes ? ` (${r.copiaEsLaRevisada ? 'es' : 'NO es'} el que dio el montador)` : ''}.`,
+    `- SQL final: \`${r.sha256.ahora}\`.`,
+    `- Rehecho dos veces desde decisiones.json en una carpeta aparte: mismos SHA-256 las dos veces: ${si(r.reproducible)}; igual byte a byte a lo de la carpeta: ${si(r.carpetaIgualADecisiones)}.`,
+    `- Mismo inventario de sentencias antes y después: ${si(r.mismoInventario)}${r.inventario ? ` (${r.inventario.sentencias} sentencias: ${Object.entries(r.inventario.porTabla).map(([t, n]) => `${n} en ${t.split('.')[1]}`).join(', ')})` : ''}.`,
+    `- Sentencias que cambian (sin contar la revisión y la huella): ${r.diferencias.length}.`,
+    ...r.diferencias.flatMap(d => [`  - ${d.sentencia}${d.nueva ? ' (nueva)' : d.quitada ? ' (quitada)' : ''}:`,
+      ...d.palabras.slice(0, 20).map(p => `    - «${p.antes}» → «${p.despues}»`)]),
+    `- Ensayo en PGlite: ${r.comprobar ? `${r.comprobar.resultado}${r.comprobar.pruebas ? `, ${r.comprobar.pruebas} comprobaciones y ${r.comprobar.casosDeFallo} casos de fallo` : ''}` : 'no ejecutado'}.`,
+    `- Escáner de secretos sobre lo que irá a Git: ${r.secretos.ejecutado ? r.secretos.salida === 'sin hallazgos' ? 'sin hallazgos' : 'CON HALLAZGOS' : 'no ejecutado'}.`,
+    '', '## Hallazgos', '', ...(r.hallazgos.length ? r.hallazgos.map(h => `- ${h}`) : ['Ninguno.']), '',
+  ].join('\n');
 }
 void crypto; void escRx;
