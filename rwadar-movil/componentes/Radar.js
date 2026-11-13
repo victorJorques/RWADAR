@@ -78,6 +78,7 @@ const MEDIDAS_PORTADA = Object.freeze({
   compacta: Object.freeze({ ladoMax: 124, letra: 12, linea: 16, punto: 8, huecoFila: 4, hueco: 10 }),
 });
 const LADO_PORTADA_MIN = 88;       // por debajo, la leyenda pasa debajo del radar
+const LADO_PORTADA_APILADA = 112;  // con la leyenda debajo, un radar pequeño: no sobra alto
 const HUECO_PUNTO = 7, HUECO_CIFRA = 10;
 const HOLGURA_TEXTO = 1.06;        // margen sobre el ancho medido del texto
 /* Ancho de cada nombre en em (Geist Medium, medido en Chromium con la letra
@@ -109,25 +110,30 @@ export function filasLeyendaPortada(datos = [], sinCifras = false) {
    (compacta) y un tamaño de letra del sistema (fontScale). Primero cabe la
    leyenda entera, sin cortar ni partir nombres; el radar se queda con el
    resto, hasta su máximo. Si no llega al mínimo (letra muy grande en un
-   móvil estrecho), la leyenda pasa debajo: nada se sale ni se monta. */
+   móvil estrecho), la leyenda pasa debajo, con un radar pequeño (112) para
+   no gastar alto antes del titular: nada se sale ni se monta. El punto de
+   color crece con la letra del sistema (hasta 1,5 veces); el texto lo
+   escala el propio sistema. */
 export function medidasPortada({ ancho = 360, fontScale = 1, compacta = false, nombres = [], digitos = 0 } = {}) {
   const m = compacta ? MEDIDAS_PORTADA.compacta : MEDIDAS_PORTADA.normal;
   const escala = Number.isFinite(fontScale) && fontScale > 0 ? fontScale : 1;
   const letra = m.letra * escala;
   const nombreMax = Math.max(0, ...nombres.map(anchoEm)) * letra * HOLGURA_TEXTO;
   const cifra = digitos > 0 ? HUECO_CIFRA + digitos * 0.6 * letra * HOLGURA_TEXTO : 0;
-  const anchoLeyenda = Math.ceil(m.punto + HUECO_PUNTO + nombreMax + cifra);
+  const punto = Math.round(m.punto * Math.min(escala, 1.5));
+  const anchoLeyenda = Math.ceil(punto + HUECO_PUNTO + nombreMax + cifra);
   const disponible = Math.max(0, (Number.isFinite(ancho) ? ancho : 360) - 2 * UI.margen);
   const libre = Math.floor(disponible - anchoLeyenda - m.hueco);
   const apilada = libre < LADO_PORTADA_MIN;
-  const lado = Math.max(LADO_PORTADA_MIN, Math.min(m.ladoMax, apilada ? disponible : libre));
+  const lado = apilada ? Math.min(m.ladoMax, LADO_PORTADA_APILADA)
+    : Math.max(LADO_PORTADA_MIN, Math.min(m.ladoMax, libre));
   const lineaReal = m.linea * escala;
   // Las filas se reparten el alto del radar, sin pasar del hueco máximo.
   const huecoFila = Math.max(0, Math.min(m.huecoFila, (lado - 6 * lineaReal) / 5));
   const altoLeyenda = 6 * lineaReal + 5 * huecoFila;
   return {
     lado, apilada, anchoLeyenda, altoLeyenda, huecoFila,
-    letra: m.letra, linea: m.linea, punto: m.punto, hueco: m.hueco,
+    letra: m.letra, linea: m.linea, punto, hueco: m.hueco,
     diametro: (lado * 2 * RMAX) / VISTA_PORTADA.lado,
     alto: apilada ? lado + m.hueco + altoLeyenda : Math.max(lado, altoLeyenda),
     ancho: apilada ? Math.max(lado, anchoLeyenda) : lado + m.hueco + anchoLeyenda,
@@ -143,6 +149,44 @@ const HEXAGONO = (() => {
   }).join('L')}Z`;
 })();
 const GIRO_QUIETO = 1 - 38 / 360;  // con «reducir movimiento», el barrido quieto como en la web
+
+/* Los ecos de la portada, como en la web: cuando el barrido pasa por un
+   punto, un círculo de su color crece (de 4,4 a 13,1 unidades, lo mismo que
+   5 → 15 en el radar de 136 de la web) y se apaga (de 0,8 a 0) durante el
+   20 % de la vuelta. No añaden ningún bucle: cada eco sale del mismo `giro`
+   que mueve el barrido (interpolaciones por el hilo nativo). Con «reducir
+   movimiento», no se pintan. */
+const ECO_MIN = 4.4, ECO_MAX = 13.1, ECO_OPACIDAD = 0.8, ECO_TRAMO = 0.2;
+const ECO_SALTO = 0.0005;          // 4 ms: el eco se enciende de golpe
+/* Cuándo pasa el barrido por un punto, en fracción de vuelta (0 a 1). La
+   línea del barrido empieza a la derecha (0°) y gira en el sentido de las
+   agujas: pasa por el ángulo del punto en la pantalla. */
+export function faseEco(x, y) {
+  const ang = (Math.atan2(y - CY, x - CX) * 180) / Math.PI;
+  return (((ang % 360) + 360) % 360) / 360;
+}
+/* Opacidad y escala del eco en función del giro (0 a 1), como tramos
+   rectos para `interpolate`: entradas estrictamente crecientes de 0 a 1, sin
+   repetir (el driver nativo no admite tramos de ancho cero en todas las
+   plataformas). Edad del eco = cuánto ha girado el barrido desde el punto. */
+export function rangosEco(fase) {
+  const bruta = Number.isFinite(fase) ? (((fase % 1) + 1) % 1) : 0;
+  const f = bruta < 1e-6 || bruta > 1 - 1e-6 ? 0 : bruta;
+  const edad = (g) => (((g - f) % 1) + 1) % 1;
+  const opacidad = (a) => (a < ECO_TRAMO ? ECO_OPACIDAD * (1 - a / ECO_TRAMO) : 0);
+  const escala = (a) => (a < ECO_TRAMO ? (ECO_MIN + (ECO_MAX - ECO_MIN) * (a / ECO_TRAMO)) / ECO_MAX : 1);
+  // Por dentro: justo antes de que pase el barrido (apagado), cuando pasa y
+  // cuando se apaga, cada uno con su edad. Los extremos 0 y 1 van siempre.
+  const dentro = [[(f - ECO_SALTO + 1) % 1, 1 - ECO_SALTO], [f, 0], [(f + ECO_TRAMO) % 1, ECO_TRAMO]]
+    .filter(([g]) => g > 1e-6 && g < 1 - 1e-6)
+    .sort((x, y) => x[0] - y[0]);
+  const puntos = [[0, edad(0)], ...dentro, [1, edad(1)]];
+  return {
+    inputRange: puntos.map(([g]) => g),
+    opacidad: puntos.map(([, a]) => opacidad(a)),
+    escala: puntos.map(([, a]) => escala(a)),
+  };
+}
 
 const accesoLegible = (plataforma) => plataforma?.verificacionLocal
   ? etiquetaEstadoVerificacionLocal(plataforma.verificacionLocal.acceso?.estado)
@@ -244,6 +288,10 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva, port
 
   useEffect(() => {
     if (quieto) { giro.setValue(GIRO_QUIETO); return undefined; }
+    /* Desde 0: el bucle nativo repite cada vuelta desde el valor que tenía al
+       empezar. Si arrancara en el valor quieto (al quitar «reducir
+       movimiento» con la app abierta), solo recorrería 38°. */
+    giro.setValue(0);
     const bucle = Animated.loop(
       Animated.timing(giro, {
         toValue: 1, duration: VUELTA, easing: Easing.linear, useNativeDriver: true,
@@ -256,10 +304,27 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva, port
   const puntos = useMemo(() => puntosRadar(datos || []), [datos]);
 
   const rotacion = giro.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
+  const ecos = useMemo(() => (portada ? puntos.map(({ p, x, y, color }) => {
+    const r = rangosEco(faseEco(x, y));
+    return { p, x, y, color,
+      opacidad: giro.interpolate({ inputRange: r.inputRange, outputRange: r.opacidad, extrapolate: 'clamp' }),
+      escala: giro.interpolate({ inputRange: r.inputRange, outputRange: r.escala, extrapolate: 'clamp' }) };
+  }) : []), [portada, puntos, giro]);
+  const tamanoEco = 2 * ECO_MAX * k;
 
   return (
     <View style={portada ? [e.cajaPortada, med.apilada && e.cajaPortadaApilada, { gap: med.hueco }] : e.caja}>
       <View style={[e.lienzo, { width: lado, height: lado }]}>
+        {/* Los ecos, debajo del dibujo (que es transparente): así el punto
+            queda encima de su eco, como en la web. Sin toques. */}
+        {quieto ? null : ecos.map((eco) => (
+          <Animated.View key={'eco-' + eco.p.slug} pointerEvents="none"
+            style={[e.eco, {
+              left: (eco.x - vista.x) * k - tamanoEco / 2, top: (eco.y - vista.y) * k - tamanoEco / 2,
+              width: tamanoEco, height: tamanoEco, borderRadius: tamanoEco / 2, backgroundColor: eco.color,
+              opacity: eco.opacidad, transform: [{ scale: eco.escala }],
+            }]} />
+        ))}
         <Svg width={lado} height={lado} viewBox={caja}>
           {/* Anillos, uno por nivel de acceso. Sin rótulo dentro: los cuatro
               nombres caían justo encima de los puntos del sector de arriba. */}
@@ -447,6 +512,7 @@ const e = StyleSheet.create({
   /* El tamaño va inline: depende del ancho de la pantalla. Aquí solo lo
      que no cambia. */
   lienzo: {},
+  eco: { position: 'absolute' },
   diana: {
     position: 'absolute', width: TAMANO_DIANA, height: TAMANO_DIANA,
     borderRadius: TAMANO_DIANA / 2,
