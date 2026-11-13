@@ -2188,7 +2188,6 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   .rel-portada .rel-aviso{order:1}
   .rel-cta{order:2;margin-top:16px}
   .rel-portada-pie{order:3}
-  .rel .ir-et{display:none}
 }
 @media (max-width:359px){.rel{--rel-d1:1.75rem}.rel-cadena{column-gap:12px;padding:12px}}
 /* Barra de 5 botones: rótulos de 11 px con puntos suspensivos si no caben. */

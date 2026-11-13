@@ -160,10 +160,13 @@
 
     <!-- 1 · Cabecera: la frase de marca, tres cifras, el botón y el aviso. -->
     <section class="rel-portada ini-cab" id="relPortada" aria-labelledby="inicioPortadaTit">
+      <!-- El radar sin texto y su leyenda en texto real (13/11/2026). En
+           escritorio el JS le pone al radar sus rótulos alrededor y la
+           leyenda queda solo para el lector de pantalla. -->
       <div class="rel-radar inicio-radar-caja" data-inicio-radar>
-        <svg class="inicio-radar" id="inicioRadar" viewBox="-14 6 416 388" aria-hidden="true" focusable="false"></svg>
+        <svg class="inicio-radar" id="inicioRadar" viewBox="55 55 290 290" aria-hidden="true" focusable="false"></svg>
+        <ul class="ir-leyenda" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"></ul>
       </div>
-      <ul class="solo-lector" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"></ul>
       <div class="rel-portada-txt">
         <p class="rel-ante">Independiente y gratis · Tokenización en España</p>
         <h2 class="rel-portada-tit" id="inicioPortadaTit">Ofertas y plataformas tokenizadas, contrastadas con su fuente.</h2>
