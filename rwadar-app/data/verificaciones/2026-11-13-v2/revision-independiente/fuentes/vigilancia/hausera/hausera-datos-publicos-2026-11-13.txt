@@ -1,0 +1,12 @@
+URL: https://hausera.io/page-data/oportunidades/page-data.json
+HTTP: 200
+UTC: 2026-11-13T08:46:06Z
+SHA-256 crudo: af4dc677f009f13863de8aaf9421d1c0818f0589589ac005dc94ec7034f382a5
+
+Proyectos en los datos públicos: 43 · {'COMMINGSOON': 1, 'FUNDED': 14, 'CLOSED': 24, 'EXPLOTATION': 4}
+alicante_3: título=Alicante 3 · status=COMMINGSOON · presaleDate=18/11/2026 · launchDate=25/11/2026
+alicante_2: título=Alicante 2 · status=FUNDED · presaleDate=04/11/2026 · launchDate=11/11/2026
+alicante_1: título=Alicante 1 · status=FUNDED · presaleDate=19/10/2026 · launchDate=26/10/2026
+https://hausera.io/page-data/propiedad/alicante_3/page-data.json · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 8f3234135bfdac2967064f6f6d8723bedaeb70c6fb9bd2473be961c48d435cfd
+https://hausera.io/page-data/propiedad/alicante_2/page-data.json · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 2f9272ee1c44466ddb94714f962849f3258a17cf8e35543f5ed82a48c2854f48
+https://hausera.io/page-data/app-data.json · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 5c615b497c9b0e1c253e12978a9c76922979001b5a4a2fae7c9c5902c389c628

@@ -1,0 +1,16 @@
+API pública https://api.profitus.com/api/v1/landing/projects?limit=50&page=1..12 (08:46:06Z–08:48:23Z)
+Proyectos leídos: 549 (pid únicos 549)
+Por estado: {'open_for_investments': 7, 'funded': 1, 'confirmed': 541}
+Por loan_type: {'standard': 548, 'bonds': 1}
+
+Abiertos (open_for_investments):
+ - Huberto Homes, Trakai dist. X · lt · loan_type=standard
+ - Apartment building in Panevezys VI · lt · loan_type=standard
+ - Moletai Oasis XXIV · lt · loan_type=standard
+ - Geluzes Kalvos Residential,Vilnius d.III · lt · loan_type=standard
+ - Druskonis Pearls, Druskininkai XXI · lt · loan_type=standard
+ - Infinity Villas Altea, Alicante reg. II · es · loan_type=standard
+ - Spindulio Residential, Vilnius dist. VI · lt · loan_type=standard
+
+Proyectos con loan_type distinto de «standard»:
+ - "Gesons" Bonds · status=confirmed · lt · importe pedido 3443500 · invertido 3443500

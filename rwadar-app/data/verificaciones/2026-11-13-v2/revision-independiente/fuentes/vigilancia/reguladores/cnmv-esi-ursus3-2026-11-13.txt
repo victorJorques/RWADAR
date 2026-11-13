@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es
+HTTP: 200
+UTC: 2026-11-13T08:46:45Z
+SHA-256 crudo: 509cf2ce7b1bd73019375b67bcfe914ffa07649268d7377aac46da0637fb18fb
+
+URSUS-3 CAPITAL, A.V., S.A. Sociedades y Agencias de Valores Nº Registro Oficial Fecha registro oficial 251 29/08/2013

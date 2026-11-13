@@ -1,0 +1,19 @@
+https://crypto.com/document/fccy-tokenised-equities-terms · 2026-11-13T08:46:07Z · HTTP 200 · 217691 B · SHA-256 1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f 
+https://crypto.com/document/fccy-tokenised-equities-risk-statement · 2026-11-13T08:46:08Z · HTTP 200 · 99578 B · SHA-256 8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e 
+https://crypto.com/document/tokenised-equities-corporate-action-policy · 2026-11-13T08:46:08Z · HTTP 200 · 107211 B · SHA-256 06d4eac0142ce67358a7a1fd07e751a86a00f13d3ea97aeb6eea9b18494cc974 
+https://crypto.com/eea/financialservices/disclosures · 2026-11-13T08:46:08Z · HTTP 301 https://crypto.com/ · 167 B · SHA-256 446a6087825fa73eadb045e5a2e9e2adf7df241b571228187728191d961dda1f 
+https://itunes.apple.com/lookup?id=1262148500&country=es · 2026-11-13T08:46:08Z · HTTP 200 · 11907 B · SHA-256 34031fbb38ebecd173a13a43b5606fc064315c2708edd5afde26c7c56827fc91 
+https://valorix.com/ · 2026-11-13T08:46:06Z · HTTP 200 · 113715 B · SHA-256 5ae0d7ef2a0fcb590280dfa4ed3433686ab240b1630d55369114a5a00ae6f0b6 
+https://valorix.com/invertir.html · 2026-11-13T08:46:06Z · HTTP 200 · 47487 B · SHA-256 b233b45d2d97f4d8e28e7af9c1dd046ba9d4701dcbb3b8e7acba1d1e4b20ec08 
+https://valorix.com/docs/documento-de-emision.pdf · 2026-11-13T08:46:06Z · HTTP 200 · 820510 B · SHA-256 5640e21125bfaf15eda1afd828e7693c9a8c798a99e48b7d62b3f339d6e0f9e6 
+https://valorix.es/ · 2026-11-13T08:46:07Z · HTTP 000 · 0 B · SHA-256 None curl: (35) Recv failure: Connection reset by peer
+https://exchange.token-city.com/es · 2026-11-13T08:46:07Z · HTTP 200 · 97292 B · SHA-256 706b14efad4a24cea3026b84ce06383126a2ebe49b4846aa16da86497d00abdf 
+https://securitize.io/investments/stocks · 2026-11-13T08:46:08Z · HTTP 200 · 3515 B · SHA-256 d25e6804ebf23a1de3930c3f6c3732d8e26b91c4dad4ca6460a3c281752a0b85 
+https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all · 2026-11-13T08:52:30Z · HTTP 200 · 325530 B · SHA-256 e1bb810f4eaa4a32833ad05727338cbcb41c1e703956aba73e9115a889676e2c 
+https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/informacion-privilegiada?lang=all · 2026-11-13T08:52:30Z · HTTP 200 · 16022 B · SHA-256 f278734bd4eca17c5f0a5713963e3f45c4a6c1ecb7a0fe0bb6a11f7bd016f661 
+https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564 · 2026-11-13T08:46:44Z · HTTP 200 · 252489 B · SHA-256 b13dcc7b00f97b92829f3078f80a68955fc9bebeb10f4e7e98c847c7b6964ccb 
+https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564 · 2026-11-13T08:46:44Z · HTTP 200 · 227881 B · SHA-256 40ab22d545e50b9f9f60f17686c075bd8a6af8a750370b7ef91a0bf9c43eee54 
+https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es · 2026-11-13T08:46:44Z · HTTP 200 · 153725 B · SHA-256 45781d93e1a9c38a60818457b09ec951804449aa3cd8d24e48bff21d6e71b336 
+https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es · 2026-11-13T08:46:45Z · HTTP 200 · 164597 B · SHA-256 67c47da592d5fcf7ef9c6da8d6b8c41d2fce86469437b3e886684f0335be510d 
+
+App Store ES: versión 3.244.01, publicada 2026-11-11T01:49:40Z

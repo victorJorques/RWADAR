@@ -1,0 +1,21 @@
+Revisor independiente · grupo brickwise · 13/11/2026 (horas UTC)
+
+Mercado de la app (Playwright, Chromium sin opciones, sin sesión), 08:43:31–08:43:52
+https://app.brickwise.at/desktopWeb/marketplace (texto en mercado-app-revisor-2026-11-13.txt, captura .png)
+«Preis pro Anteil ab €»: Randhartingergasse 78,00 · GreenPoint 102,00 · Cohotel 102,00 · Plüddemanngasse 75,00 · Sonnleithnergasse 75,00 · Klagenfurt 95,00 · Stallhofstraße 68,80 · Schwarzer Weg 69,90 · Drautalresidenz 70,00 · Ferien-Appartement Hinterstoder 50 75,00 · Pottendorfer Straße 62 TOP 2.06 73,00 («4,16 % p.a.»; no se publica)
+Todas con «Handel aktiv». Randhartingergasse aparece en reventa («Preis pro Anteil ab»), no en «Neue Objekte».
+
+FAQ y condiciones (curl), 08:45:02–08:45:03, mismo SHA-256 que la copia del investigador de las 08:30
+- /support/kann-ich-einen-account-von-jedem-land-aus-eroffnen (d652644e…): «Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.»
+- /support/wie-funktioniert-der-handel-am-marktplatz (52d2e527…): «Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden.»
+- /support/wie-kann-ich-investieren (2d34986c…), /contracts (0218f969…), /imprint (5ee85c3b…)
+- JS público https://app.brickwise.at/js/app.85dda63a.js (b5c9c154…): es la versión que carga hoy la página del mercado.
+
+Comisiones
+- https://api.app.brickwise.at/api/v1/utils/fees, 08:41:38: {"data":{"fees":0.015},...}
+- Kosteninformationen_Brickwise.pdf (3ddf8882…, igual que el 12/11): «Vermittlungsgebühr 1,50% … jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in)»
+
+Ficha de la API de Pottendorfer (https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4), 08:44:33
+- «Das Mietverhältnis endet am 30.11.2025.» · contractEndDate 2025-11-29T00:00:00.000Z
+- landRegisterMortgageStatusText: «Grundbücherliche Besicherung noch ausstehend.»
+- Frente a la copia del 12/11 solo cambia updatedAt. Las otras 10 fichas de la API, idénticas al 12/11 campo a campo.

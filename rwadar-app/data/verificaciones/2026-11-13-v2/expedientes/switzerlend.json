@@ -1,0 +1,485 @@
+{
+  "slug": "switzerlend",
+  "tipoExpediente": "publicada",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (portal de inversores shares.lend.ch)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Switzerlend AG (vende sus propias acciones C1 en un portal con tecnología de Aktionariat AG)",
+  "emisor": "Switzerlend AG (marca LEND), Zúrich, UID CHE-456.445.646",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "LENDS (envoltorio SHA de acciones preferentes C1), ERC-20 en Ethereum, contrato 0x343324f53cbeee3ee6d171f2a20f005964c98047 (0 decimales). Contrato de venta 0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65 (Brokerbot v8). Contrato del mercado entre accionistas 0x2ba0282a2a717d97194781a73a586f0b5f928772 (código verificado en Sourcify).",
+  "derechoAdquirido": "Acciones preferentes C1 (nominal 1,00 CHF) con preferencia en liquidación, emitidas como valores registrados en DLT y envueltas en LENDS bajo el Token Shareholder Agreement (arrastre con 66⅔ %, acompañamiento). Es capital de la empresa, no los préstamos de la plataforma LEND.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-456.445.646; token LENDS 0x343324f53cbeee3ee6d171f2a20f005964c98047",
+  "moneda": "CHF (transferencia) / ZCHF (cripto y mercado entre accionistas)",
+  "documentos": [
+    {
+      "titulo": "Token Shareholder Agreement LENDS",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "versionOFecha": "PDF modificado el 19/03/2026; mismo archivo que el 12/11 (sha256 idéntico, 08:31:32Z)",
+      "paginas": 9,
+      "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18",
+      "leido": true
+    },
+    {
+      "titulo": "Registration Agreement Lend (firmado con DocuSign, escaneado)",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf",
+      "versionOFecha": "mayo de 2024; mismo archivo que el 12/11 (sha256 idéntico, 08:31:33Z). Lectura de contenido del 05/11 (páginas 1–5 como imagen) sigue valiendo.",
+      "paginas": 8,
+      "sha256": "6d0ffcee66df76ba91d09184840ec6fe406d8e99e6fc89bccbbb7945fd7b1d06",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Page Terms del portal shares.lend.ch (enlace «Terms of Service» del pie)",
+      "url": "https://shares.lend.ch/investor-page-terms",
+      "versionOFecha": "Version 1.0 • October 30, 2026. HTML idéntico al del 12/11 (mismo sha256 0764d616…, 08:31:26Z); mismo HTML en los tres portales.",
+      "paginas": null,
+      "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Relations Switzerlend AG (FAQ, alemán e inglés)",
+      "url": "https://www.lend.ch/de/investor-relations",
+      "versionOFecha": "sin fecha; texto alemán e inglés idénticos a los del 12/11 (comparados sin espacios ni etiquetas, 08:32:34Z). Hoy www.lend.ch responde 301 hacia lend.ch: se lee siguiendo la redirección; el HTML cambia de sha256.",
+      "paginas": null,
+      "sha256": "c5ee444ea870bb19f7ada1c08d41c2d72c7a866d995521467277e5e35c777735",
+      "leido": true
+    },
+    {
+      "titulo": "Código verificado del contrato de venta (Brokerbot v8)",
+      "url": "https://sourcify.dev/server/v2/contract/1/0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65?fields=sources",
+      "versionOFecha": "BUYING_ENABLED 0x1, SELLING_ENABLED 0x2; mismo sha256 que el 12/11 (08:31:34Z)",
+      "paginas": null,
+      "sha256": "baa3f1af43d72cd9eabadf50d2e4dafc2b047d7255aa8a692edec09c5dacfe15",
+      "leido": true
+    },
+    {
+      "titulo": "Código verificado del mercado entre accionistas (SecondaryMarket.sol)",
+      "url": "https://sourcify.dev/server/v2/contract/1/0x2ba0282a2a717d97194781a73a586f0b5f928772?fields=sources",
+      "versionOFecha": "exact_match; mismo sha256 que el 12/11: «default trading fee is 1.9%», «always charged to the seller», tope del 5 % (08:31:35Z)",
+      "paginas": null,
+      "sha256": "afa678e72dee1e571b33027707f203288fe94311b358a9cdab04ec8e67531759",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no existe («weder Anlageberatung noch ein Prospekt»)",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (ZefixREST)",
+      "entidad": "Switzerlend AG",
+      "numero": "CHE-456.445.646",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+      "alcance": "EXISTIEREND, sede Zúrich. Ficha idéntica a la del 12/11 (mismo sha256 f3547c24…).",
+      "consultadoUtc": "2026-11-13T00:35:00Z"
+    },
+    {
+      "regulador": "PolyReg (organismo de autorregulación contra el blanqueo reconocido por FINMA)",
+      "entidad": "Switzerlend AG",
+      "numero": null,
+      "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+      "alcance": "result=true: afiliada (respuesta idéntica a la del 12/11) (controles: «Maerki Baumann & Co. AG» y un nombre inexistente = false). Es supervisión de blanqueo como intermediaria financiera, no prudencial, y no cubre la venta de sus acciones.",
+      "consultadoUtc": "2026-11-13T00:35:02Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Switzerlend",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Búsqueda «Switzerlend»: Count 0, respuesta idéntica a la del 12/11 (controles «Maerki Baumann» = 1, «Sygnum» = 1). No tiene licencia FINMA.",
+      "consultadoUtc": "2026-11-13T00:35:04Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Switzerlend",
+      "resultado": "sin coincidencias («No hay datos disponibles»); texto igual al del 12/11 (el HTML cambia de sha256, no el texto)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+      "consultadoUtc": "2026-11-13T00:35:20Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Switzerlend AG",
+      "resultado": "sin coincidencias («No hay datos disponibles»); control «Capital» con el mismo HTML que el 12/11 (mismo sha256; 40 páginas de resultados)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG",
+      "consultadoUtc": "2026-11-13T00:35:21Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "switzerlend / lend.ch / lends",
+      "resultado": "sin coincidencias (lista completa de 2.407 entradas el 13/11, frente a 2.404 el 12/11: 3 nuevas —famma-ag.com, trade.12-ventures.online, kairosbridge-ag.com— y 1 retocada —afstrusteeswiss.com—; ninguna es de esta sociedad; búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-13T08:31:42Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "DIRECT FROM ISSUER Buy LENDS at 68.0105 CHF · bank transfer or crypto",
+      "dato": "Venta directa del emisor abierta",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade renderizado (08:34:19Z); en cadena settings()=0x5 (0x1 venta activa + 0x4; 0x2 recompra apagada) en 0x8d90…9b65 (bloque 26404862, 08:31:15Z)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "alcanceYLimites": "El contrato de venta solo tiene hoy 57 acciones LENDS para entregar al instante (balanceOf), igual que el 12/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Price per LENDS 68.01 CHF",
+      "dato": "68,0105 por acción C1; sube 0,0005 por acción vendida",
+      "fuentePrimaria": "https://shares.lend.ch/invest",
+      "localizador": "/invest renderizado (08:34:11Z) + getPrice()=68,0105e18, increment()=5e14 (bloque 26404862)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:14Z",
+      "alcanceYLimites": "Sin cambios desde el 01/11. En reventa no va como precio de la tarjeta.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "7 Oct 2026 / 13:34 Direct Investment 68.01 ZCHF 10 LENDS",
+      "dato": "Última compra al emisor 07/10/2026 (10 + 1 acciones). Ninguna operación nueva desde el 12/11 (historial de 94 operaciones idéntico, mismo sha256). Entre el 13/11/2025 y el 13/11/2026: 17 compras al emisor (63 acciones) y 2 operaciones entre accionistas (2 acciones).",
+      "fuentePrimaria": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=40880, historial completo (08:31:23Z, mismo sha256 que el 12/11); portada «Last trade • 7 Oct 2026, 13:34» (08:34:03Z)",
+      "fechaDato": "2026-10-07",
+      "consultadoUtc": "2026-11-13T00:34:39Z",
+      "alcanceYLimites": "Ninguna venta al emisor en todo el historial. Último cruce entre accionistas: 25/08/2026, 1 acción a 67,00.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit: enabled true, min 0 · Price per LENDS 68.01 CHF",
+      "dato": "Sin mínimo configurado: desde 1 acción (68,01 CHF al emisor)",
+      "fuentePrimaria": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+      "localizador": "API pública del portal (08:31:22Z); LENDS decimals()=0; orden por defecto 6 acciones = 408,07 CHF (/invest, 08:34:11Z)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:34:38Z",
+      "alcanceYLimites": "Configuración técnica; el emisor no publica un mínimo en sus documentos. La respuesta solo cambia respecto al 12/11 en los tipos de cambio (exchangeRates); los campos citados son iguales.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "9.1 Offer only valid for persons in Switzerland and the EEA — The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. … The offer for persons from the EEA is limited to a total of €100,000.",
+      "dato": "La venta directa del emisor admite a residentes en Suiza o el EEE (España incluida), con un tope conjunto de 100.000 € para el EEE",
+      "fuentePrimaria": "https://shares.lend.ch/investor-page-terms",
+      "localizador": "Investor Page Terms v1.0 (30/10/2026), §9.1; enlazadas como «Terms of Service» en el pie de shares.lend.ch. «Company» = la sociedad del pie del portal («This page is hosted by Switzerlend»). HTML idéntico al del 12/11.",
+      "fechaDato": "2026-10-30",
+      "consultadoUtc": "2026-11-13T00:34:48Z",
+      "alcanceYLimites": "Plantilla común de Aktionariat, servida en el dominio del emisor. La web de LEND no menciona países. No se publica cuánto queda del tope. El emisor puede rechazar a cualquier inversor (§3.1).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Kann ich meine Token später verkaufen? Du kannst an den Brokerbot zurückverkaufen, sofern dieser über genügend Liquidität verfügt, oder peer-to-peer auf shares.lend.ch handeln.",
+      "dato": "La página de inversores sigue diciendo que se puede revender al emisor si el contrato tiene liquidez",
+      "fuentePrimaria": "https://www.lend.ch/de/investor-relations",
+      "localizador": "FAQ de Investor Relations (igual en inglés: «You can sell back to the brokerbot when it holds sufficient liquidity»), leída en lend.ch tras la redirección 301 desde www.lend.ch (08:32:34Z y 08:32:35Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-13T00:38:09Z",
+      "alcanceYLimites": "Contradice el contrato en cadena (recompra apagada y 0,03 ZCHF) y no lo respalda el acuerdo firmado (Token SHA §1.4).",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "The Issuer is under no obligation to offer or repurchase the Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or buying only.",
+      "dato": "El acuerdo de accionistas del token no obliga al emisor a recomprar y le deja limitar el contrato a solo vender",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "localizador": "Token Shareholder Agreement, §1.4 «Open Trading & issuance of new Share Tokens»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-13T00:34:55Z",
+      "alcanceYLimites": "Mismo archivo que el 12/11 (sha256 89647998…).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "settings()=0x5 · SELLING_ENABLED = 0x2 · ZCHF.balanceOf(bot)=0,0318",
+      "dato": "Hoy el emisor no recompra: recompra desactivada en el contrato y sin fondos",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65",
+      "localizador": "settings() y ZCHF.balanceOf, bloque 26404862 (08:31:15Z); significado del bit en el código verificado (Sourcify, 08:31:34Z, mismo sha256 que el 12/11: «revert Brokerbot_SellingDisabled»)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:34:58Z",
+      "alcanceYLimites": "Es lo que manda: un contrato con el bit apagado rechaza la venta. Igual que el 03/11, el 05/11, el 10/11, el 11/11 y el 12/11 (0,031765… ZCHF).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 59.00 / 67.00 · Spread 11.94% · 59.00 4",
+      "dato": "Mejor compra entre accionistas 59,00 ZCHF por 4 acciones (única orden de compra)",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade renderizado (08:34:19Z) y API getOrderBook company=40880 (08:31:23Z)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "alcanceYLimites": "En ZCHF con monedero propio. Igual que el 12/11 (solo cambia whenUpdated).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Order Book … 68.00 150 · 67.90 25 · 67.50 10 · 67.00 15",
+      "dato": "Hay ventas entre accionistas por debajo del precio del emisor: la más barata 67,00 ZCHF (15 acciones), frente a 68,01 del emisor",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade renderizado (08:34:19Z) y API getOrderBook (08:31:23Z), lado vendedor",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "alcanceYLimites": "Ofertas en ZCHF; pueden retirarse en cualquier momento. Igual que el 12/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Sell · 67 ZCHF · Fee (1.9%): 1.27 ZCHF · Total Value: 65.73 ZCHF | API: buyerFeeRate 0, sellerFeeRate 0.0190 | tradingFeeBips() = 190",
+      "dato": "Mercado entre accionistas: el comprador paga 0 %; quien vende paga 1,9 %",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade con la pestaña «Sell» (08:34:28Z); /api/secondarymarketsettings?ticker=LENDS (08:31:22Z, mismo sha256 que el 12/11); en cadena tradingFeeBips()=190 e isOpen()=true en 0x2ba0…8772 (bloque 26404862); código verificado en Sourcify (mismo sha256)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:37Z",
+      "alcanceYLimites": "El operador puede cambiarla hasta un 5 % como máximo.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "All Share Tokens are issued as preferred C1 shares with a nominal value of CHF 1.00 and which have the Liquidation Preferences · Drag-Along Quorum 66 2/3% of all Shares",
+      "dato": "Preferentes C1 con preferencia en liquidación; arrastre con 66⅔ %",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "localizador": "Token SHA, Section A – Key terms y Section 2",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-13T00:34:55Z",
+      "alcanceYLimites": "Mismo archivo que el 12/11 (sha256 89647998…).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "supervision",
+      "literal": "Die Switzerlend AG ist eine Schweizer AG und zugelassene Finanzintermediärin (SRO Polyreg). Der Handelsplatz selbst ist keine beaufsichtigte Börse",
+      "dato": "Afiliada a PolyReg (blanqueo); sin licencia FINMA; el mercado entre accionistas no está supervisado",
+      "fuentePrimaria": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+      "localizador": "PolyReg result=true (08:31:38Z); FAQ de Investor Relations (08:32:34Z); FINMA «Switzerlend» = 0 (08:31:40Z)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:35:02Z",
+      "alcanceYLimites": "La afiliación a un organismo de autorregulación no es supervisión prudencial ni cubre la venta de acciones.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "LENDS werden auf einem nicht beaufsichtigten Handelsplatz gehandelt … Die Liquidität ist begrenzt; ein Verkauf zum angezeigten Preis oder überhaupt ist nicht garantiert. Aktien können an Wert verlieren, bis hin zum Totalverlust.",
+      "dato": "Liquidez limitada y pérdida total posible",
+      "fuentePrimaria": "https://www.lend.ch/de/investor-relations",
+      "localizador": "Recuadro «Kenne die Risiken» (08:32:34Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-13T00:38:09Z",
+      "alcanceYLimites": "La misma página enseña rentabilidades de los préstamos de la plataforma; no son la rentabilidad de la acción y no deben subir a la tarjeta.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accionistas",
+      "literal": "Total Shares 31'066 · Tokenized Shares 27'277 LENDS · Shareholders 286",
+      "dato": "286 accionistas",
+      "fuentePrimaria": "https://shares.lend.ch/",
+      "localizador": "Portada renderizada, Share Overview (08:34:03Z)",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-13T00:37:03Z",
+      "alcanceYLimites": "Dato del portal; sin cambios desde el 03/11 (texto de la portada idéntico al del 12/11).",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita; afiliada a PolyReg (blanqueo); sin licencia FINMA (13/11/2026). Sin advertencias de la CNMV ni de FINMA (2.407 entradas el 13/11; ninguna de las 3 nuevas es de esta sociedad)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta del emisor activa; última compra 07/10/2026; 17 compras al emisor en los últimos 12 meses. Nada nuevo desde el 12/11."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Las condiciones del propio portal (§9.1) admiten a residentes de Suiza y del EEE, con tope de 100.000 € para el EEE. Sin mínimo (1 acción = 68,01 CHF). Sin recompra; vender entre accionistas cuesta un 1,9 % (portal, API y contrato verificado)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgos dichos en la página de inversores. Conflicto sin resolver: la página dice que se puede revender al emisor, pero el acuerdo firmado no le obliga y el contrato tiene la recompra desactivada y sin fondos."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "notaDisponibleEs": "Confirmado con alcance por las condiciones del portal del emisor (plantilla común de Aktionariat). Mientras la ficha siga en «secundario», la base de datos exige disponibleEs = null: el acceso solo puede ir en el texto del aviso y en resumenTarjeta.",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "Mínimo de inversión (fecha)",
+      "antes": "1 acción (68,01 CHF el 12/11)",
+      "ahora": "1 acción (68,01 CHF el 13/11)",
+      "fuente": "https://shares.lend.ch/invest",
+      "critico": false
+    },
+    {
+      "campo": "metricas.Supervisor (fecha)",
+      "antes": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (12/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+      "ahora": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+      "fuente": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "critico": false
+    },
+    {
+      "campo": "aviso de la recompra (fecha)",
+      "antes": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 12/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "ahora": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 13/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "fuente": "https://shares.lend.ch/trade",
+      "critico": false
+    },
+    {
+      "campo": "aviso «vendedores por debajo del precio del emisor» (fecha)",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 12/11/2026).",
+      "ahora": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026).",
+      "fuente": "https://shares.lend.ch/trade",
+      "critico": false
+    },
+    {
+      "campo": "resumenTarjeta (acceso y salida publicados)",
+      "antes": "«Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE» · «El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador»",
+      "ahora": "sin cambios; solo pasa al 13/11 la fecha de consulta de sus referencias",
+      "fuente": "https://shares.lend.ch/investor-page-terms",
+      "critico": false
+    },
+    {
+      "campo": "resto (precio del emisor, actividad, libro de órdenes, documentos, registros)",
+      "antes": "lo publicado con datos del 12/11",
+      "ahora": "sin cambios en la consulta de hoy (08:31–08:34 UTC): historial completo de operaciones, PDF, condiciones del portal, ajustes del mercado, Zefix, PolyReg y registro de autorizados de FINMA con el mismo sha256 que el 12/11; libro de órdenes con el mismo contenido (solo cambia whenUpdated); configuración de compra igual salvo los tipos de cambio; páginas renderizadas con el mismo texto; lecturas en cadena idénticas (bloque 26404862); CNMV sin coincidencias; lista de advertencias de FINMA con 3 entradas nuevas ajenas; página de inversores de LEND con el mismo texto (sigue en conflicto con el contrato)",
+      "fuente": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "critico": false
+    }
+  ],
+  "avisosConFecha": [
+    {
+      "avisoPublicado": "Según las condiciones de su portal (§9.1, versión del 30/10/2026), la venta del emisor es solo para residentes en Suiza o el EEE, con un tope total de 100.000 € para el EEE; no se publica cuánto queda.",
+      "estadoHoy": "vigente",
+      "literal": "exclusively addressed to persons domiciled or resident in Switzerland or the EEA … limited to a total of €100,000.",
+      "fuente": "https://shares.lend.ch/investor-page-terms",
+      "consultadoUtc": "2026-11-13T00:34:48Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Es capital de la empresa, no una inversión en los préstamos de LEND.",
+      "estadoHoy": "vigente",
+      "literal": "All Share Tokens are issued as preferred C1 shares",
+      "fuente": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "consultadoUtc": "2026-11-13T00:34:55Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "La salida depende de compradores en un secundario en cripto con muy poca demanda.",
+      "estadoHoy": "vigente",
+      "literal": "Bid/Ask 59.00 / 67.00 · 59.00 4",
+      "fuente": "https://shares.lend.ch/trade",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 12/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "estadoHoy": "vigente",
+      "literal": "settings()=0x5 · ZCHF.balanceOf(bot)=0,0318 · «Du kannst an den Brokerbot zurückverkaufen, sofern dieser über genügend Liquidität verfügt»",
+      "fuente": "https://shares.lend.ch/trade",
+      "consultadoUtc": "2026-11-13T00:34:58Z",
+      "textoNuevo": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 13/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "nota": "Contrato y web iguales al 12/11; solo cambia la fecha."
+    },
+    {
+      "avisoPublicado": "Si vendes a otro accionista pagas una comisión del 1,9 %.",
+      "estadoHoy": "vigente",
+      "literal": "Fee (1.9%): 1.27 ZCHF · tradingFeeBips 190",
+      "fuente": "https://shares.lend.ch/trade",
+      "consultadoUtc": "2026-11-13T00:37:37Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 12/11/2026).",
+      "estadoHoy": "vigente",
+      "literal": "Order Book … 67.00 15 · Price per LENDS 68.01 CHF",
+      "fuente": "https://shares.lend.ch/trade",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "textoNuevo": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026).",
+      "nota": "Mismo libro que el 12/11; solo cambia la fecha."
+    },
+    {
+      "avisoPublicado": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
+      "estadoHoy": "vigente",
+      "literal": "Bid/Ask 59.00 / 67.00",
+      "fuente": "https://shares.lend.ch/trade",
+      "consultadoUtc": "2026-11-13T00:37:24Z",
+      "textoNuevo": null
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Switzerlend",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones preferentes C1 tokenizadas de Switzerlend AG, operadora de la plataforma de préstamos LEND. El emisor las vende a precio fijado por él; no las recompra.",
+    "resumenTarjeta": {
+      "minimo": "1 acción (68,01 CHF el 13/11)",
+      "accesoEspana": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE",
+      "salida": "El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador"
+    },
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Clase",
+        "valor": "Preferente C1 (preferencia en liquidación)"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+      }
+    ],
+    "avisos": [
+      "Según las condiciones de su portal (§9.1, versión del 30/10/2026), la venta del emisor es solo para residentes en Suiza o el EEE, con un tope total de 100.000 € para el EEE; no se publica cuánto queda.",
+      "Es capital de la empresa, no una inversión en los préstamos de LEND.",
+      "La salida depende de compradores en un secundario en cripto con muy poca demanda.",
+      "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 13/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "Si vendes a otro accionista pagas una comisión del 1,9 %.",
+      "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026).",
+      "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar."
+    ],
+    "url": "https://shares.lend.ch/",
+    "fuentesActuales": [
+      "https://shares.lend.ch/invest",
+      "https://shares.lend.ch/trade",
+      "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "https://shares.lend.ch/"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Registro en el portal",
+      "Compra al emisor",
+      "Venta entre accionistas"
+    ],
+    "concepto": "una acción preferente convertida en ficha digital sobre un tablero de préstamos entre particulares en Zúrich",
+    "notaResumenTarjeta": "Acceso y salida: se conservan los textos publicados (opción (a) del 11/11); el fondo no cambia. El mínimo solo cambia de fecha. Respaldo: claims «minimo» (08:31:22Z y /invest 08:34:11Z), «accesoEspana» (08:31:26Z) y «salida» (bloque 26404862 y /trade 08:34:19Z)."
+  },
+  "notaColeccion": "Igual que el 05/11: cumple lo mismo que Aktionariat (venta del emisor abierta, compras recientes, entrada baja), pero la dejo en «secundario» porque su web promete una recompra que el acuerdo y el contrato no dan, y la única fuente de acceso es la plantilla común del portal.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 acción (68,01 CHF al emisor el 13/11/2026)",
+    "supervisorVerificado": "PolyReg (organismo de autorregulación contra el blanqueo), consulta pública result=true; sin licencia FINMA",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Venta del emisor con actividad regular (17 compras en 12 meses), entrada baja (1 acción) y acceso Suiza + EEE en las condiciones del portal.",
+    "porQueNo": "La web promete una recompra que el acuerdo no obliga y el contrato tiene desactivada; vender entre accionistas cuesta un 1,9 % y la única compra visible es de 4 acciones a 59,00."
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Nada de fondo cambia desde el 12/11: mismo precio del emisor (68,0105), misma actividad (última compra al emisor 07/10/2026, ninguna operación nueva), mismo libro (compra 59,00 × 4; venta más barata 67,00 × 15), recompra apagada con 0,03 ZCHF y documentos idénticos. La recompra sigue en conflicto entre la web de LEND y el contrato. Sin advertencias nuevas de la CNMV ni de FINMA. Solo pasan al 13/11 las fechas del mínimo, de «Supervisor», del aviso de la recompra y del aviso de vendedores por debajo del emisor. Se conservan los textos publicados de acceso y salida. Sigue en «secundario».",
+  "bloqueos": [
+    "No se probó el registro ni el KYC del portal.",
+    "El acceso Suiza + EEE sale de la plantilla común de condiciones de Aktionariat servida en el portal del emisor; la web de LEND no lo menciona ni publica cuánto queda del tope EEE.",
+    "www.lend.ch responde hoy 301 hacia lend.ch; la página de inversores se leyó siguiendo la redirección (mismo texto que el 12/11)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-13T08:29:31Z",
+    "finUtc": "2026-11-13T08:38:58Z"
+  },
+  "fuentesCopia": "grupos/suiza/fuentes/ (texto y capturas) y grupos/suiza/fuentes/crudo/ (HTML, JSON, PDF y lecturas en cadena; fuera de Git)"
+}

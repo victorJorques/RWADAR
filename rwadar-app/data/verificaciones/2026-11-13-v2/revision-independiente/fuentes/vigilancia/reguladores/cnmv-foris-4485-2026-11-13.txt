@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485
+HTTP: 200
+UTC: 2026-11-13T08:46:45Z
+SHA-256 crudo: 031f36b7773b5614a69fefed4eba6a5f452e61e2eff8b3a5a28c65a4f3e9a9d5
+
+FORIS CAPITAL CY LIMITED Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación Nº Registro Oficial Fecha registro oficial 4485 19/01/2018

@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es
+HTTP: 200
+UTC: 2026-11-13T08:46:44Z
+SHA-256 crudo: 837fb5ceb130ef9ef008b0928397b35054fceccd368e3c80f80ed6a2ab34e786
+
+UAB "PROFITUS CROWDFUNDING" LITUANIA 21 28/12/2023 UAB INRENTO LITUANIA 45 23/02
