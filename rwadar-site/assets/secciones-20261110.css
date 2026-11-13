@@ -33,12 +33,16 @@
 /* Radar y leyenda (13/11/2026, encargo: «arregla el radar de inicio que se ve
    mal»). En el móvil, el radar redondo sin texto y a su lado la leyenda en
    texto real, centrados como un bloque y a la misma altura de antes (176 px;
-   120 px en pantallas bajas), para que «Ver las ofertas» siga en la primera
-   pantalla. Si no cabe a lo ancho (320 px), encoge el radar, no la leyenda.
+   128 px en pantallas bajas), para que «Ver las ofertas» siga en la primera
+   pantalla. El radar (160 px; 120 en pantallas bajas) deja 8 y 4 px de aire
+   arriba y abajo: recortado al aro, si no, la marca de arriba toca la barra.
+   Si no cabe a lo ancho (menos de 360 px con alto normal), encoge el radar,
+   no la leyenda: min-width:0 deja que la caja encoja dentro de la rejilla de
+   la cabecera; sin él, la caja la ensanchaba y la página se salía a lo ancho.
    En tableta y escritorio (html.escritorio-relato) sigue el radar grande con
    sus rótulos y la leyenda es solo para el lector de pantalla. */
-:root:not(.escritorio-relato) .ini-cab .rel-radar{display:flex;align-items:center;justify-content:center;gap:16px;margin:0}
-:root:not(.escritorio-relato) .rel .ini-cab .rel-radar .inicio-radar{position:static;flex:0 1 168px;width:168px;min-width:96px;height:auto;max-height:100%;aspect-ratio:1;margin:0}
+:root:not(.escritorio-relato) .ini-cab .rel-radar{display:flex;align-items:center;justify-content:center;gap:16px;min-width:0;margin:0}
+:root:not(.escritorio-relato) .rel .ini-cab .rel-radar .inicio-radar{position:static;flex:0 1 160px;width:160px;min-width:96px;height:auto;max-height:100%;aspect-ratio:1;margin:0}
 .ir-leyenda{display:flex;flex:none;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
 .ir-ley{display:flex;align-items:center;gap:8px;min-height:20px;color:var(--tx-2);font:500 .8125rem/1.3 var(--body)}
 .ir-ley-punto{flex:none;width:9px;height:9px}
@@ -165,9 +169,11 @@
 }
 @media (max-width:359px){.ini-cifras{gap:0 12px}.ini-cifra b{font-size:1.375rem}.ini-cab .rel-portada-tit{font-size:1.5rem}
   /* La fecha no crece por debajo de 360 px (la regla de arriba la subía a 22 px). */
-  .ini-cifra-fecha b{font-size:1rem;line-height:1.45}}
+  .ini-cifra-fecha b{font-size:1rem;line-height:1.45}
+  /* Menos hueco entre radar y leyenda: así el radar encoge menos. */
+  :root:not(.escritorio-relato) .ini-cab .rel-radar{gap:12px}}
 /* Pantallas bajas del móvil: radar más pequeño para que el botón se vea. */
-@media (max-height:700px) and (max-width:767px){.ini-cab .rel-radar{height:120px}.ini-cab .rel-portada-tit{font-size:1.5rem}
+@media (max-height:700px) and (max-width:767px){.ini-cab .rel-radar{height:128px}.ini-cab .rel-portada-tit{font-size:1.5rem}
   :root:not(.escritorio-relato) .ini-cab .rel-radar{gap:14px}
   :root:not(.escritorio-relato) .rel .ini-cab .rel-radar .inicio-radar{flex-basis:120px;width:120px}
   .ir-leyenda{gap:1px}.ir-ley{min-height:0;font-size:.75rem}.ir-ley-n{font-size:.75rem}}

@@ -2045,18 +2045,19 @@ function radarInicioSvg(sin,rotulos){
     unidades (radar de 320 px de alto), en castellano y en inglés. Antes
     «Materias primas» e «Infraestructura» tocaban el aro. */
  cats.forEach((c,i)=>{
-  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin||!n?'':String(n),nombre=catCorta(c);
+  /* Una categoría sin plataformas lleva su «0» atenuado, como en la leyenda del móvil. */
+  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin?'':String(n),nombre=catCorta(c),claseN='ir-et-n'+(n?'':' ir-et-cero');
   s+='<line class="radar-sector" x1="200" y1="200" x2="'+n1(x)+'" y2="'+n1(y)+'"/>';
   if(!rotulos)return;
   if(i%3===0){const ty=i?CY+R+24:CY-R-24;
    s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
-    (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
+    (cifra?' <tspan class="'+claseN+'">'+cifra+'</tspan>':'')+'</text>';return;}
   /* Una sola línea por nombre (así se traduce entero) y el número debajo.
      Los de arriba se apoyan en su última línea (rotulos() la mantiene ahí). */
   const der=i<3,tx=der?385:3,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
   const y0=arriba?CY-124-(lineas.length-1)*15:CY+140;
   s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
-   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
+   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="'+claseN+'"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
  });
  const fin=pol(-88,R);
  s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'><path d="M200 200 L'+(CX+R)+' 200 A'+R+' '+R+' 0 0 0 '+n1(fin[0])+' '+n1(fin[1])+' Z" fill="url(#gBarridoInicio)"/>'+
@@ -2278,7 +2279,7 @@ var relatoInicio=(function(){
  function rotulos(){
   const r=$('inicioRadar');if(!r||typeof r.getScreenCTM!=='function'||!r.style)return;
   const m=r.getScreenCTM();if(!m||!m.a)return;
-  const fs=Math.max(12,(window.innerWidth<380?11:12)/m.a);
+  const fs=Math.max(12,12/m.a);
   r.style.setProperty('--ir-fs',fs.toFixed(2)+'px');
   r.querySelectorAll('text.ir-et').forEach(t=>{const ts=t.querySelectorAll('tspan[dy]');if(!ts.length)return;
    if(!t.dataset.y0)t.dataset.y0=t.getAttribute('y');const y0=parseFloat(t.dataset.y0),salto=fs*1.2;

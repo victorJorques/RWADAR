@@ -5,14 +5,16 @@
    - Móvil (320 × 568 a 430 × 932): el radar redondo sin texto y, a su lado,
      la leyenda en texto real (6 filas en el orden del radar, punto de color,
      nombre corto y cifra). Ninguna caja de la leyenda toca el círculo, nada
-     se sale a lo ancho, el bloque no pasa de la altura de antes (176 px; 120
-     en pantallas bajas) y «Ver las ofertas» y el aviso de riesgo siguen en la
-     primera pantalla, por encima de la barra de abajo. Contraste AA.
+     se sale a lo ancho, la cabecera guarda sus márgenes, el dibujo deja aire
+     arriba y abajo, el bloque no pasa de la altura de antes (176 px; 120 en
+     pantallas bajas, +8) y «Ver las ofertas» y el aviso de riesgo siguen en
+     la primera pantalla, por encima de la barra de abajo. Contraste AA.
    - Tableta y escritorio (768 × 1024 a 1920 × 1080, y 1000 × 650): el radar grande con los
      rótulos alrededor; ninguno pisa el aro, las marcas ni un punto, ni se sale.
    - En inglés, los nombres traducidos con el diccionario de siempre.
    - Sin cifras (revisión vencida o sin comprobar), solo los nombres; una
-     categoría sin plataformas se queda con su «0» atenuado.
+     categoría sin plataformas se queda con su «0» atenuado (en la leyenda del
+     móvil y en el rótulo de escritorio).
    - Al cambiar de tamaño cambia de modo, y tocar el radar o la leyenda lleva
      a Plataformas.
    En local (127.0.0.1, modo local seguro) la web no consulta Supabase y el
@@ -45,7 +47,9 @@ const CATEGORIAS = ['Inmobiliario', 'Crédito privado', 'Tesoro y fondos', 'Acci
 const CORTOS = ['Inmobiliario', 'Crédito', 'Tesoro', 'Acciones', 'Materias primas', 'Infraestructura'];
 const CUENTAS = CATEGORIAS.map(c => P.filter(p => p.cat === c).length);
 const RELOJ = new Date(P[0].verificado_lote_el + 'T12:00:00Z');
-const MOVIL = [[320, 568], [360, 640], [375, 667], [390, 664], [390, 844], [412, 915], [430, 932]];
+/* Con móviles estrechos de alto normal (320 × 720, 360 × 780 y 360 × 800): ahí la caja
+   del radar ensanchaba la cabecera y la página se salía a lo ancho. */
+const MOVIL = [[320, 568], [320, 720], [360, 640], [360, 780], [360, 800], [375, 667], [390, 664], [390, 844], [412, 915], [430, 932]];
 // Y una tableta apaisada baja (1000 × 650): antes una regla escondía ahí los rótulos.
 const ESCRITORIO = [[768, 1024], [820, 1180], [1024, 768], [1366, 900], [1920, 1080], [1000, 650]];
 
@@ -59,11 +63,11 @@ function cargarPlaywright() {
 const playwright = cargarPlaywright();
 const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI no lo está): se omite la prueba en Chromium';
 
-/* Contraste WCAG entre el color del texto y el primer fondo opaco de debajo. */
-const CONTRASTE = `(n) => {
+/* Contraste WCAG entre el color del texto (o el relleno, en un texto SVG) y el primer fondo opaco de debajo. */
+const CONTRASTE = `(n, relleno = false) => {
   const rgb = (c) => (c.match(/[\\d.]+/g) || []).map(Number);
   const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
-  const color = rgb(getComputedStyle(n).color);
+  const color = rgb(relleno ? getComputedStyle(n).fill : getComputedStyle(n).color);
   let fondo = null;
   for (let x = n; x; x = x.parentElement) { const c = rgb(getComputedStyle(x).backgroundColor); if (c.length >= 3 && (c[3] === undefined || c[3] === 1)) { fondo = c; break; } }
   fondo = fondo || rgb(getComputedStyle(document.body).backgroundColor);
@@ -103,7 +107,7 @@ const LEER_MOVIL = `() => {
       cNombre: contraste(li.querySelector('.ir-ley-nombre')), cN: li.querySelector('.ir-ley-n') ? contraste(li.querySelector('.ir-ley-n')) : null })),
     tocaAro: aro ? cajas.filter(q => distancia(aro, q) < aro.rMarcas).length : -1,
     sobreSvg: cajas.filter(q => q.left < rs.right && q.right > rs.left && q.top < rs.bottom && q.bottom > rs.top).length,
-    cta: { top: cta.top, bottom: cta.bottom }, aviso: { top: aviso.top, bottom: aviso.bottom }, limite,
+    cta: { top: cta.top, bottom: cta.bottom, left: cta.left, right: cta.right }, aviso: { top: aviso.top, bottom: aviso.bottom, left: aviso.left, right: aviso.right }, limite,
     fecha: parseFloat(getComputedStyle(document.querySelector('#inicioCifras .ini-cifra-fecha b')).fontSize),
     fuera, anchoDoc: document.documentElement.scrollWidth, anchoVentana: innerWidth, lang: document.documentElement.lang,
   };
@@ -114,11 +118,12 @@ const LEER_ESCRITORIO = `() => {
   const aro = (${ARO})(), distancia = ${DISTANCIA};
   const svg = document.getElementById('inicioRadar'), ley = document.getElementById('inicioRadarLista');
   const puntos = [...svg.querySelectorAll('circle[r="5.6"]')].map(c => c.getBoundingClientRect());
-  const rotulos = [...svg.querySelectorAll('text.ir-et')].map(t => ({ texto: t.textContent, q: t.getBoundingClientRect() }));
+  const rotulos = [...svg.querySelectorAll('text.ir-et')].map(t => ({ texto: t.textContent, q: t.getBoundingClientRect(),
+    n: t.querySelector('.ir-et-n') ? { cero: t.querySelector('.ir-et-n').classList.contains('ir-et-cero'), fill: getComputedStyle(t.querySelector('.ir-et-n')).fill } : null }));
   const cruza = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
   return {
     vista: svg.getAttribute('viewBox'), puntos: puntos.length,
-    rotulos: rotulos.map(({ texto, q }) => ({ texto, holgura: +(distancia(aro, q) - aro.rMarcas).toFixed(1),
+    rotulos: rotulos.map(({ texto, q, n }) => ({ texto, n, holgura: +(distancia(aro, q) - aro.rMarcas).toFixed(1),
       sobrePunto: puntos.some(p => cruza(p, q)), dentro: q.left >= 0 && q.right <= innerWidth && q.top >= 0, visible: q.width > 0 && q.height > 0 })),
     entreSi: rotulos.filter((a, i) => rotulos.some((b, j) => j > i && cruza(a.q, b.q))).length,
     ley: { filas: ley.querySelectorAll('li').length, ancho: ley.getBoundingClientRect().width, clip: getComputedStyle(ley).clipPath,
@@ -178,7 +183,18 @@ function comprobarMovil(m, { ancho, alto, idioma, cifras = true }) {
   assert.equal(m.sobreSvg, 0, `${donde}: la leyenda va al lado del radar, no encima`);
   const diametro = m.aro.r * 2;
   if (baja) assert.ok(diametro >= 112 && diametro <= 120, `${donde}: aro de ${diametro.toFixed(1)} px (pantalla baja: 112–120)`);
-  else assert.ok(diametro >= 148 && diametro <= 160, `${donde}: aro de ${diametro.toFixed(1)} px (148–160)`);
+  // Por debajo de 350 px con alto normal no caben un aro de 148 y la leyenda a 13 px: encoge el radar.
+  else assert.ok(diametro >= (ancho < 350 ? 120 : 148) && diametro <= 160, `${donde}: aro de ${diametro.toFixed(1)} px (${ancho < 350 ? 120 : 148}–160)`);
+  // La caja del radar no ensancha la cabecera: los mismos márgenes a los dos lados, y el botón y el aviso dentro.
+  const margenIzq = m.caja.left, margenDer = m.anchoVentana - m.caja.right;
+  assert.ok(Math.abs(margenIzq - margenDer) <= 1, `${donde}: la cabecera guarda sus márgenes (${margenIzq.toFixed(1)} y ${margenDer.toFixed(1)})`);
+  for (const [nombre, q] of [['«Ver las ofertas»', m.cta], ['el aviso de riesgo', m.aviso]]) {
+    assert.ok(q.left >= margenIzq - 0.5 && q.right <= m.anchoVentana - margenIzq + 0.5, `${donde}: ${nombre} dentro de los márgenes (${q.left.toFixed(1)}–${q.right.toFixed(1)})`);
+  }
+  // Recortado al aro, el dibujo llenaría su caja: arriba la marca tocaría la barra. Deja aire
+  // (unos 8 px con alto normal y 4 en pantallas bajas).
+  const aireArriba = m.aro.cy - m.aro.rMarcas - m.caja.top, aireAbajo = m.caja.bottom - (m.aro.cy + m.aro.rMarcas), aire = baja ? 3 : 6;
+  assert.ok(aireArriba >= aire && aireAbajo >= aire, `${donde}: aire alrededor del radar (${aireArriba.toFixed(1)} y ${aireAbajo.toFixed(1)} px, mínimo ${aire})`);
   assert.ok(m.caja.alto <= (baja ? 128 : 184), `${donde}: el bloque mide ${m.caja.alto} px`);
   assert.ok(m.ley.top >= m.caja.top - 0.5 && m.ley.bottom <= m.caja.bottom + 0.5, `${donde}: la leyenda cabe en el bloque`);
   const izq = m.svg.left - m.caja.left, der = m.caja.right - m.ley.right;
@@ -190,14 +206,16 @@ function comprobarMovil(m, { ancho, alto, idioma, cifras = true }) {
   // La fecha de revisión no crece en las pantallas más estrechas (a 320 px llegaba a 22 px y empujaba el botón).
   assert.ok(m.fecha <= 17, `${donde}: la fecha de revisión a ${m.fecha} px`);
 }
-function comprobarEscritorio(e, { ancho, alto, idioma }) {
+function comprobarEscritorio(e, { ancho, alto, idioma, cuentas = CUENTAS }) {
   const donde = `${idioma} ${ancho}×${alto}`;
   const nombres = idioma === 'en' ? CORTOS.map(n => INGLES[n]) : CORTOS;
   assert.equal(e.vista, '-14 6 416 388', `${donde}: el radar grande con sitio para los rótulos`);
-  assert.equal(e.puntos, P.length, `${donde}: un punto por plataforma`);
+  assert.equal(e.puntos, cuentas.reduce((a, b) => a + b, 0), `${donde}: un punto por plataforma`);
   assert.equal(e.rotulos.length, 6, `${donde}: 6 rótulos`);
   assert.deepEqual(e.rotulos.map(r => r.texto.replace(/\s*\d+$/, '')), nombres, `${donde}: rótulos traducidos y en su orden`);
-  assert.deepEqual(e.rotulos.map(r => r.texto.match(/(\d+)$/)?.[1]), CUENTAS.map(String), `${donde}: la cifra de cada rótulo`);
+  // Cada rótulo lleva su cifra; una categoría sin plataformas, su «0» atenuado (no un nombre suelto, que parece «sin cifras»).
+  assert.deepEqual(e.rotulos.map(r => r.texto.match(/(\d+)$/)?.[1]), cuentas.map(String), `${donde}: la cifra de cada rótulo`);
+  assert.deepEqual(e.rotulos.map(r => r.n?.cero), cuentas.map(n => n === 0), `${donde}: el 0 va atenuado y solo el 0`);
   for (const r of e.rotulos) {
     assert.ok(r.visible, `${donde}: «${r.texto}» no se ve`);
     assert.ok(r.holgura >= 2, `${donde}: «${r.texto}» pisa el aro o las marcas (holgura ${r.holgura} px)`);
@@ -269,6 +287,18 @@ test('en Chromium: radar de Inicio con su leyenda al lado en el móvil y rótulo
     await pagina.setViewportSize({ width: 1366, height: 900 });
     await pagina.waitForFunction(() => document.querySelectorAll('#inicioRadar text.ir-et').length === 6, null, { timeout: 5000 });
     comprobarEscritorio(await pagina.evaluate(`(${LEER_ESCRITORIO})()`), { ancho: 1366, alto: 900, idioma: 'es' });
+    // En escritorio, la categoría sin plataformas también lleva su «0» atenuado y legible, sin pisar el aro.
+    await pagina.evaluate(() => { P.splice(0, P.length, ...__P.filter(p => p.cat !== 'Materias primas')); huellaInicio = ''; pintarInicio(); });
+    await pagina.waitForTimeout(200);
+    comprobarEscritorio(await pagina.evaluate(`(${LEER_ESCRITORIO})()`), { ancho: 1366, alto: 900, idioma: 'es', cuentas: CUENTAS.map((n, i) => i === 4 ? 0 : n) });
+    const ceroEsc = await pagina.evaluate(`(() => { const contraste = ${CONTRASTE}, t = [...document.querySelectorAll('#inicioRadar text.ir-et')];
+      const n = t[4].querySelector('.ir-et-n'), otro = t[0].querySelector('.ir-et-n');
+      return { fill: getComputedStyle(n).fill, otro: getComputedStyle(otro).fill, contraste: contraste(n, true) }; })()`);
+    assert.notEqual(ceroEsc.fill, ceroEsc.otro, 'escritorio: el 0 va atenuado');
+    assert.ok(ceroEsc.contraste >= 4.5, `escritorio: el 0 se lee (contraste ${ceroEsc.contraste.toFixed(2)})`);
+    if (CAPTURAS) await pagina.locator('[data-inicio-radar]').screenshot({ path: path.join(CAPTURAS, 'escritorio-es-1366x900-categoria-a-cero.png') });
+    await pagina.evaluate(() => { P.splice(0, P.length, ...__P); huellaInicio = ''; pintarInicio(); });
+    await pagina.waitForTimeout(200);
     await pagina.setViewportSize({ width: 390, height: 844 });
     await pagina.waitForFunction(() => document.querySelectorAll('#inicioRadar text').length === 0, null, { timeout: 5000 });
     await pagina.waitForTimeout(200);

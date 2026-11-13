@@ -1983,6 +1983,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 .rel .rel-radar .inicio-radar{position:absolute;inset:6px 0 2px;width:100%;height:min(calc(100% - 8px),264px);max-width:none;margin:auto 0;aspect-ratio:auto;overflow:visible}
 .rel .ir-et{font:600 var(--ir-fs,12px) var(--body);letter-spacing:0}
 .rel .ir-et-n{fill:var(--tx-2);font:500 var(--ir-fs,12px) var(--mono)}
+.rel .ir-et-n.ir-et-cero{fill:var(--tx-3)}
 .rel .inicio-hud li{gap:4px;max-width:34%}
 .rel .inicio-hud-1,.rel .inicio-hud-2{top:12px}
 .rel .inicio-hud-3,.rel .inicio-hud-4{bottom:4px}

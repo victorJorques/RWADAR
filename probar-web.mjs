@@ -2624,6 +2624,10 @@ for(const [nombre,alterar] of [
   // En tableta y escritorio, los rótulos alrededor del radar, con su viewBox ancho.
   vm.runInContext("document.documentElement={classList:{contains:x=>x==='escritorio-relato'}};huellaInicio='';pintarInicio()",c);
   const radarEsc=p.obtiene('inicioRadar').innerHTML,vistaEsc=p.obtiene('inicioRadar').getAttribute('viewBox');
+  // En escritorio, la categoría sin plataformas también lleva su «0» atenuado (antes, el nombre suelto).
+  vm.runInContext("P.splice(0,P.length,..._p.filter(x=>x.cat!=='Materias primas'));huellaInicio='';pintarInicio()",c);
+  const radarEscCero=p.obtiene('inicioRadar').innerHTML;
+  vm.runInContext("P.splice(0,P.length,..._p);huellaInicio='';pintarInicio()",c);
   const rotulosEsc=[...radarEsc.matchAll(/<text class="ir-et" x="([\d.]+)" y="([\d.]+)" text-anchor="(\w+)"[^>]*>([\s\S]*?)<\/text>/g)]
     .map(m=>({x:+m[1],y:+m[2],ancla:m[3],lineas:Math.max(1,(m[4].match(/<tspan[^>]* x=/g)||[]).length)}));
   vm.runInContext("delete document.documentElement;huellaInicio='';pintarInicio()",c);
@@ -2632,6 +2636,8 @@ for(const [nombre,alterar] of [
     /<li class="ir-ley ir-ley-cero"><svg [^>]*><circle [^>]*\/><\/svg><span class="ir-ley-nombre">Materias primas<\/span><span class="ir-ley-n" aria-hidden="true">0<\/span><span class="solo-lector">0 plataformas<\/span><\/li>/.test(conCero)&&
     (conCero.match(/ir-ley-cero/g)||[]).length===porCat.filter(([,n],i)=>n===0||i===4).length&&
     vistaEsc==='-14 6 416 388'&&(radarEsc.match(/<text class="ir-et"/g)||[]).length===6&&
+    /<tspan class="ir-et-n ir-et-cero" x="3" dy="15">0<\/tspan>/.test(radarEscCero)&&(radarEscCero.match(/ir-et-cero/g)||[]).length===porCat.filter(([,n],i)=>n===0||i===4).length&&
+    (radarEsc.match(/ir-et-cero/g)||[]).length===porCat.filter(([,n])=>n===0).length&&/\.rel \.ir-et-n\.ir-et-cero\{fill:var\(--tx-3\)\}/.test(css)&&
     // Dónde van (medido en Chromium: con la letra a 14,6 unidades ninguno pisa el aro de 136 ni sus marcas de 144):
     // arriba y abajo, a 24 del aro; los de los lados, en las esquinas, apoyados en y = 76 (arriba) o desde y = 340 (abajo).
     rotulosEsc.length===6&&rotulosEsc.every(({x,y,ancla,lineas})=>ancla==='middle'?(y<=200-136-24||y>=200+136+24)&&x===200:
@@ -2645,6 +2651,8 @@ for(const [nombre,alterar] of [
   prueba('CSS del radar de Inicio: radar y leyenda lado a lado en el móvil, leyenda solo para el lector en escritorio',
     !/\.ir-et\{display:none\}/.test(css)&&
     /display:flex/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .ini-cab .rel-radar').join(';'))&&
+    // Sin min-width:0 la caja del radar ensanchaba la rejilla de la cabecera (a 320 × 720 la página se salía 24 px).
+    /(^|;)min-width:0(;|$)/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .ini-cab .rel-radar').join(';'))&&
     /aspect-ratio:1\b/.test(declaracionesCSS(cssSecciones,':root:not(.escritorio-relato) .rel .ini-cab .rel-radar .inicio-radar').join(';'))&&
     /clip-path:inset\(50%\)/.test(declaracionesCSS(cssSecciones,'.escritorio-relato .ir-leyenda').join(';'))&&
     /white-space:nowrap/.test(declaracionesCSS(cssSecciones,'.ir-ley-nombre').join(';'))&&
