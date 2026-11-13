@@ -74,7 +74,8 @@ export function escribirGuiones(DIR) {
 // Lo llaman los guiones finos de la carpeta del ciclo (import.meta.url de ese guion).
 export async function ejecutar(orden, urlGuion, argv = []) {
   const DIR = path.dirname(fileURLToPath(urlGuion));
-  return principal([orden, DIR, ...argv]);
+  try { return await principal([orden, DIR, ...argv]); }
+  catch (e) { console.error(`\nNO: ${e.message}`); if (process.env.RWADAR_MOTOR_TRAZA) console.error(e.stack); process.exitCode = 1; }
 }
 
 export async function principal(argv) {
