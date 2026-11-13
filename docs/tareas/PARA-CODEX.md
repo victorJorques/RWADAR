@@ -6,6 +6,132 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · Gráfico de la tokenización con más detalle
+
+- **Encargo de la dirección (13/11):** «El gráfico, cuanto más detalle en el
+  tiempo tenga, mejor» (el «estilo bolsa» de /mercado/, Inicio y la app).
+  Rama **`grafico-fino-integrado`**: une las tres partes (datos y modelo,
+  web y app; sus entradas detalladas, 20 y 21, van debajo) y aplica lo que
+  confirmaron las dos revisiones. **SIN PUBLICAR**: ni push, ni flujos, ni
+  Supabase, ni EAS, ni la rama `datos-tokenizacion`.
+- **Qué cambia, en llano:**
+  1. El flujo diario guarda, además de la serie diaria de un año,
+     `tokenizacion-serie-fina.json`: un punto cada 5 minutos de las últimas
+     24 horas (289) y uno cada hora de los últimos 30 días (721), con los
+     mismos tokens que la diaria (30 de los 40 mayores el 13/11).
+  2. Pestañas: **24 h** (nueva) con la de 5 minutos; **1 S y 1 M** con la
+     horaria; 3 M, 6 M, 2026 y 1 A con la diaria, como antes. El cambio de
+     la cabecera y el «Cambio en 24 h» salen de la serie de la pestaña. Con
+     los datos reales del 13/11, todas acaban en la cifra grande (41.816 M$)
+     y 24 h dice «▼ −4,0 % en las 24 horas hasta las 16:05».
+  3. Eje y lectura al pasar el dedo o el ratón, en **hora de España**: 24 h,
+     horas en el eje («18:00 · 00:00 · 06:00 · 12:00») y en la lectura
+     («10:05»; «12 nov, 16:05» si el punto es de ayer); 1 S y 1 M, días en el
+     eje y «día, hora» en la lectura; las diarias, como antes (meses en 1 A).
+     En inglés, igual («24H», «12 Nov, 16:05», «Spain time»).
+  4. Todas las horas de la pantalla son de España y lo dicen: el subtítulo
+     de la cifra («13/11/2026, 16:05 (hora de España)»), «Valor hoy», la
+     fuente y el total de la categoría («hoy, 15:42 hora de España»; antes
+     iba en UTC y parecía 1 h 23 min más viejo).
+  5. Sin serie fina (la semilla de main, una foto antigua, un archivo roto,
+     de otra ejecución o de más de 256 kB), todo sigue con la diaria y
+     «24 h» sale desactivada, sin errores.
+  6. Rendimiento: el trazo se simplifica sin perder máximos ni mínimos (594
+     de 721 puntos a 390 px) y la cruz busca con búsqueda binaria; con la
+     CPU 4 veces más lenta, cada movimiento del dedo en la web cuesta menos
+     de 8 ms (prueba de Chromium).
+- **La regla de la suma:** cubos de 5 minutos o de 1 hora en UTC; de cada
+  token, su último dato del cubo; si no tiene, el anterior, como mucho de
+  **24 horas** antes en la de 5 minutos y de **72 horas** en la horaria (los
+  3 días que ya arrastra la diaria). Si le falta más, ese token queda fuera
+  de esa serie entera (la serie dice cuál y cuánto suma, y la pantalla lo
+  avisa); si los de fuera pesan más del 1 %, esa serie no se guarda ese día
+  y sus pestañas usan la siguiente.
+- **Arreglos de esta integración (de las revisiones, comprobados antes):**
+  - **Horaria con 72 horas de arrastre (antes 24).** El mayor token
+    (figure-heloc, el 64 % de la suma) pasa 23-24 horas sin datos cada
+    domingo y 72 en los puentes con lunes festivo en EE. UU. (19/01, 16/02,
+    25/05 y 07/09/2026). Con 24 horas, un hueco algo más largo tiraba la
+    horaria 30 días seguidos (1 S y 1 M volvían a 8 y 31 puntos). El
+    validador acepta hasta el arrastre de cada serie. El archivo de prueba
+    real, rehecho con las mismas respuestas grabadas: solo cambia ese dato
+    (24 → 72); los puntos son idénticos.
+  - **24 h ya no dice «en las últimas 24 horas»** sino «en las 24 horas
+    hasta las 16:05», y si la serie fina tiene más de 26 horas respecto al
+    dato de hoy, la web y la app avisan «Los datos cada 5 minutos y cada
+    hora llegan hasta el 13/11/2026, 16:05 (hora de España)».
+  - **Web a 320-360 px:** las 7 pestañas se reparten el ancho (a 360 «1 A»
+    salía cortada; a 320 no se veían «2026» ni «1 A»); bajo 360, letra de
+    14 px. Las fechas de abajo que se pisarían se quitan tras medirlas
+    («Dec 2025Mar» a 360 en inglés).
+  - **Web, cruz de 24 h:** los puntos de ayer llevan el día, como en la app;
+    la burbuja se mide en x = 0 (medida donde estaba, la página quedaba
+    21 px más ancha a 390 px; lo vi al probar el arreglo anterior).
+  - **App:** la tarjeta de Inicio con la letra al 130 % baja el minigráfico
+    a su fila (partía «Acti/vos/toke/niza/dos»); las fechas junto al borde
+    van ancladas a él (se perdía la «D» de «Dec 2025»); la burbuja se coloca
+    con al menos 244 px (se salía 8 px un fotograma).
+  - La etiqueta para lectores de pantalla, sin paréntesis dentro de
+    paréntesis.
+- **Rechazado:** que en 1 M la lectura diga solo el día. El encargo lista
+  «día en 30 días; mes en 1 año», pero en 1 A la lectura siempre ha dado la
+  fecha, no el mes: la lista habla del eje (que ya cumple). En 1 M cada
+  punto es una hora; con solo el día, al mover el dedo se repetiría el mismo
+  día 24 veces con valores distintos. Si la dirección lo quiere así, es una
+  línea en `textoInstante` (web) y en `cuandoCorto` (app).
+- **Datos y flujo:** la fina ocupa 38,6 kB (39.491 B; 9,2 kB con gzip); la
+  diaria, 20,8 kB. Límites: la web y la app no leen más de 256 kB; el
+  publicador, 2 MB; 300 puntos de 5 minutos y 800 horarios como mucho. Flujo
+  `tokenizacion-diaria.yml`: 13 s entre llamadas, gratis y con TLS; con las
+  finas, unas 102 llamadas y 23 minutos (medido el 13/11, sin ningún 429);
+  el paso tiene 40 minutos y el trabajo 50. Si falla la fina se conserva lo
+  anterior: la diaria nueva y la fina vieja, que ya no casa y no se usa.
+- **Archivos:** modelo `rwadar-movil/lib/tokenizacion.js` (copiado con
+  `copiar-modelo-web.cjs` a `rwadar-site/assets/tokenizacion-modelo-20261110.js`),
+  `rwadar-app/tokenizacion/serie-diaria.mjs`,
+  `.github/workflows/tokenizacion-diaria.yml`, `rwadar-tokenizacion-historico.js`,
+  `rwadar-publicar.js`, web `rwadar-site/assets/mercado-20261111.{js,css}`,
+  app `rwadar-movil/componentes/MercadoBolsa.js`, datos de prueba
+  `rwadar-app/tokenizacion/prueba-serie{,-fina}-20261113.json`. Ninguna
+  clave nueva en los diccionarios; sin tocar `package.json` de la raíz,
+  `app.json` ni `rwadar-movil/scripts/`.
+- **Commits:** datos y modelo `3949e16`, `b0514f2`, `b76c501`; web
+  `95d33ba`, `9804f6d`; app `fd7f412`, `c102f06`, `72e1533`; uniones
+  `5d05498`, `517a627`, `8551284`, `63860cd`; arreglos de la revisión
+  `d900991` (modelo y app) y `0d97b0b` (web), y este traspaso.
+- **Pruebas (en la rama integrada):** `npm test` en la raíz, salida 0 (4 min
+  33 s): `rwadar-app` 32 guiones con 1348 correctas, más 11 y 109 de
+  `node --test`; `probar-web` 711/711, 70 de páginas y RSS, 40 de precarga;
+  `rwadar-movil` 650 pruebas (648 bien, 0 fallos, 2 omitidas); `rwadar-acceso`
+  315/315, con `mercado-fino-navegador.test.mjs` en Chromium (390 × 844,
+  1366 × 900, 360 × 780 y 320 × 568, en castellano e inglés). Guardián de OTA
+  con `--base fa30779…`: `ok:true`, 1.4.2(24). gitleaks (`rwadar-app/gitleaks.toml`)
+  sobre los commits nuevos: sin hallazgos. Mutaciones de esta integración:
+  20 de 20 detectadas (quitar cada arreglo hace fallar alguna prueba). Las
+  pruebas se actualizaron, ninguna se borró.
+- **Capturas** (en el scratchpad de la sesión, `grafico/final/`): web a 390 ×
+  844 y 1366 × 900 con 24 h, 7 días y 30 días tocando un punto, y el primer
+  punto de 24 h; web a 360 en 1 A (castellano e inglés) y con la fina vieja;
+  app a 390 con 24 h (también el primer punto y en inglés) y 7 días, la
+  tarjeta de Inicio a 360 con la letra al 130 % y 1Y en inglés a 360. Las de
+  la app son los componentes reales con react-native-web, no un APK.
+- **Pendiente / para Víctor:**
+  - **Publicar**, cuando lo ordene: primero unir con main (solo choca este
+    archivo: hay que renumerar esta entrada, porque main ya tiene una «(20)»
+    del ciclo del 13/11), después la web y después la OTA. La OTA sola es
+    segura: sin el archivo de la fina, la app sigue con la diaria.
+  - La fina solo existe cuando el flujo corre desde main (GitHub solo
+    ejecuta los horarios desde main): hasta entonces la web publica «sin
+    serie fina» y «24 h» sale desactivada.
+  - Frescura: la fina se hace una vez al día (06:23 UTC) y la web se publica
+    a mano; si no se publica a diario, el aviso de «los datos llegan hasta…»
+    saldrá a menudo. Es lo cierto; para evitarlo habría que publicar más.
+  - Mirarlo en un Android de verdad (arrastre con 721 puntos y letra al
+    130 %).
+  - `docs/INTERNO.md` se pone al día al publicar.
+
+---
+
 ## 13 de noviembre de 2026 (21) · Claude · Gráfico con más detalle: la web
 
 - **Encargo (13/11):** el mismo que la entrada 20 («El gráfico, cuanto más
