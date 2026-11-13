@@ -208,6 +208,10 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/mercado-20261111.css',
   'assets/noticias-a-mercado-20261111.js',
   'datos/tokenizacion-serie.json',
+  // Las series finas del gráfico (13/11/2026: cada 5 minutos y cada hora), en
+  // un archivo aparte; la semilla es «sin serie fina» y rwadar-publicar.js la
+  // cambia por la de la rama datos-tokenizacion si casa con la diaria.
+  'datos/tokenizacion-serie-fina.json',
   // «Noticias del sector» en Inicio (10/11/2026): el motor (copia de
   // rwadar-movil/lib/noticias-sector.js), la sección, su hoja y las noticias
   // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar):

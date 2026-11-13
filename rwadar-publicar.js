@@ -34,7 +34,7 @@ const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
 const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
 const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
-const { historicoTokenizacion, serieTokenizacion } = require('./rwadar-tokenizacion-historico');
+const { historicoTokenizacion, serieTokenizacion, serieFinaTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
 // «Novedades de RWAdar» (12/11/2026): el modelo de la web valida /datos/novedades-producto.json.
@@ -597,6 +597,16 @@ function construirSalida() {
     const diasSerie = serie.serie.puntos;
     console.log(`Serie del mercado: ${diasSerie.length} día(s) de ${serie.origen}, del ${diasSerie[0].fecha} al ${diasSerie.at(-1).fecha} ` +
       `(${serie.serie.incluidos} tokens, generada el ${serie.serie.generado}).`);
+    /* Las series finas (13/11/2026): cada 5 minutos (24 h) y cada hora (30
+       días), en un archivo aparte. Solo si casan con la diaria publicada; si
+       no, «sin serie fina» para ella y el gráfico usa la diaria. */
+    const fina = serieFinaTokenizacion({ dirSitio: DIR, diaria: serie.serie });
+    const textoFina = tokenizacionModelo.serializarSerieFina(fina.fina);
+    fs.writeFileSync(path.join(temporal, 'datos', 'tokenizacion-serie-fina.json'), textoFina, 'utf8');
+    const puntosFinos = clave => fina.fina.series[clave]?.puntos.length || 0;
+    console.log(fina.enlazadas.length
+      ? `Series finas de ${fina.origen}: ${puntosFinos('5m')} punto(s) de 5 minutos y ${puntosFinos('1h')} de cada hora (${(Buffer.byteLength(textoFina) / 1024).toFixed(1)} kB).`
+      : `Series finas: ${fina.origen}; el gráfico usa la diaria.`);
     /* «Noticias del sector» (10/11/2026): /datos/noticias-v2.json se publica
        tal cual, pero solo si tiene la forma que leen la web y la app nuevas
        (rwadar-movil/lib/noticias-sector.js) y si cada noticia trae su foto

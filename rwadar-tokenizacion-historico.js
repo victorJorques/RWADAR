@@ -118,4 +118,64 @@ function serieTokenizacion({
   }
 }
 
-module.exports = { historicoTokenizacion, serieTokenizacion, REF };
+/* ---- Las series finas del gráfico (13/11/2026) ----
+   Un punto cada 5 minutos de las últimas 24 horas y uno cada hora de los
+   últimos 30 días, de los mismos tokens que la diaria. Las rehace el mismo
+   flujo en la misma rama (tokenizacion-serie-fina.json) y se publican en
+   /datos/tokenizacion-serie-fina.json, un archivo aparte: la app instalada
+   sigue leyendo la diaria, que no cambia de forma. De dónde sale:
+   RWADAR_TOKENIZACION_SERIE_FINA (publicar.yml), si no origin/datos-tokenizacion
+   y, si no, la semilla de main (rwadar-site/datos/tokenizacion-serie-fina.json,
+   «sin serie fina»). Solo se publica si casa con la diaria que se publica
+   (la misma ejecución, los mismos tokens y el mismo último punto:
+   seriesEnlazadas); si no, «sin serie fina» para esa diaria (serieFinaVacia)
+   y el gráfico usa la diaria, como hasta ahora. Nunca bloquea la web.
+   { fina, origen, enlazadas: ['5m', '1h'] o menos } */
+function leerSerieFinaRamaGit(cwd) {
+  return execFileSync('git', ['show', `${REF}:tokenizacion-serie-fina.json`], {
+    cwd, encoding: 'utf8', maxBuffer: MAX_BYTES, stdio: ['ignore', 'pipe', 'ignore'] });
+}
+function serieFinaTokenizacion({
+  dirSitio,
+  diaria,
+  entorno = process.env,
+  cwd = __dirname,
+  leerRama = leerSerieFinaRamaGit,
+  avisar = mensaje => console.warn(mensaje),
+} = {}) {
+  const publicada = modelo.validarSerie(diaria);
+  // La semilla se valida siempre: si está rota, que falle la publicación (es de main).
+  modelo.validarSerieFina(JSON.parse(fs.readFileSync(path.join(dirSitio, 'datos', 'tokenizacion-serie-fina.json'), 'utf8')));
+  const vacia = origen => ({ fina: modelo.serieFinaVacia(publicada), origen, enlazadas: [] });
+  const elegir = (texto, origen) => {
+    if (typeof texto !== 'string' || Buffer.byteLength(texto, 'utf8') > MAX_BYTES) throw new Error('ocupa más de 2 MB');
+    const fina = modelo.validarSerieFina(JSON.parse(texto));
+    const enlazadas = Object.keys(modelo.seriesEnlazadas(publicada, fina));
+    if (!enlazadas.length) {
+      avisar(`AVISO: la serie fina de ${origen} no casa con la diaria que se publica (generada el ${fina.generado}; la diaria, el ${publicada.generado}): se publica sin serie fina y el gráfico usa la diaria.`);
+      return vacia('ninguna (no casa con la diaria)');
+    }
+    // Solo las que casan; la otra, null.
+    const series = { '5m': enlazadas.includes('5m') ? fina.series['5m'] : null, '1h': enlazadas.includes('1h') ? fina.series['1h'] : null };
+    return { fina: modelo.validarSerieFina({ ...fina, series }), origen, enlazadas };
+  };
+  const ruta = entorno.RWADAR_TOKENIZACION_SERIE_FINA;
+  if (ruta) {
+    try {
+      const estado = fs.lstatSync(ruta);
+      if (!estado.isFile() || estado.size > MAX_BYTES) throw new Error('no es un archivo normal de 2 MB como mucho');
+      return elegir(fs.readFileSync(ruta, 'utf8'), 'la rama datos-tokenizacion');
+    } catch (e) {
+      avisar(`AVISO: la serie fina de la tokenización de ${ruta} no vale (${e.message}); se publica sin serie fina.`);
+      return vacia('ninguna');
+    }
+  }
+  let texto;
+  try { texto = leerRama(cwd); } catch { return vacia('ninguna (la semilla de main)'); }
+  try { return elegir(texto, REF); } catch (e) {
+    avisar(`AVISO: la serie fina de la tokenización de ${REF} no vale (${e.message}); se publica sin serie fina.`);
+    return vacia('ninguna');
+  }
+}
+
+module.exports = { historicoTokenizacion, serieTokenizacion, serieFinaTokenizacion, REF };
