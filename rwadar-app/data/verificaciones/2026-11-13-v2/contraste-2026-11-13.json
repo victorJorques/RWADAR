@@ -1,0 +1,1486 @@
+{
+  "tipo": "revision_integral",
+  "fecha": "2026-11-13",
+  "etiqueta": "2026-11-13",
+  "revisionAnterior": "a58dd22d-98a3-f94e-ba66-46898162215a",
+  "revisionNueva": "66907add-8ebf-424b-3e04-b73e47b0c537",
+  "decision": "Puesta al día pedida por el responsable del proyecto el 13/11/2026 («Actualiza las noticias, las ofertas y el gráfico de la evolución de la tokenización a hoy… lo más rápido posible pero que esté bien hecho»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
+  "archivos": {
+    "DECISIONES-COORDINADOR.md": "0538b65c5dd99b2e761481bd1cc21ead9bb8a8f630719fc8cd0d692a1a2f21ee",
+    "radar-contraste-2026-11-13.json": "4a661171c9385ad403066b60363e070d6f70e30b2a6a8a3f0022f7e8048c31ec",
+    "cambios-radar.json": "62a25fa91c8d13a5d0cac5465c729908cb23ee6a1ae7524326cbe23dca07eda3"
+  },
+  "radar": {
+    "fuentes": 69,
+    "correctas": 69,
+    "verificacionesManuales": [
+      "spiko-regafi",
+      "spiko-regafi-pasaporte-es"
+    ],
+    "cambios": {
+      "fuentes": {},
+      "plataformas": {}
+    }
+  },
+  "cifras": {
+    "spiko-letras-del-tesoro-euro": {
+      "antes": "2,41 % (VL del 11/11)",
+      "despues": "2,40 % (VL del 12/11, 1,062803 €)",
+      "calculo": "(1,062803 / 1,060664)^(365/31) − 1, del 12/10 al 12/11"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "antes": "4,02 % en USD (VL del 10/11)",
+      "despues": "3,98 % en USD (VL del 12/11, 1,102694 $)",
+      "calculo": "(1,102694 / 1,099159)^(365/30) − 1, del 13/10 al 12/11 (el 12/10 fue festivo en EE. UU.)"
+    },
+    "spiko-smart-cash-euro": {
+      "antes": "2,84 % (VL del 11/11)",
+      "despues": "2,84 % (VL del 12/11, 1,017107 €)",
+      "consulta": "2026-11-13"
+    },
+    "mtbill": {
+      "antes": "métrica 3,45 % anual en USD (rondas 468 → 492)",
+      "despues": "sin cambios: la ronda 492 (10/11, 18:40 UTC) sigue siendo la última"
+    },
+    "brickwise": {
+      "apartamento-vacacional-hinterstoder-50": "75 € → 75 €",
+      "vivienda-schwarzer-weg-18-graz": "69,90 € → 69,90 €",
+      "vivienda-stallhofstra-e-28-gratwein": "68,80 € → 68,80 €",
+      "drautalresidenz-paternion": "70 € → 70 €",
+      "fotovoltaica-cohotel": "102 € → 102 €",
+      "fotovoltaica-greenpoint": "102 € → 102 €",
+      "randhartingergasse-9-viena": "78 € → 78 €",
+      "local-de-estanco-klagenfurt": "95 € → 95 €",
+      "vivienda-pluddemanngasse-101-graz": "75 € → 75 €",
+      "vivienda-pottendorfer-stra-e-62-wr-neustadt": "80 € → 73 €",
+      "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €"
+    }
+  },
+  "correccionesRevisores": {
+    "spikoAccesoEspana": {
+      "fichas": [
+        "spiko-letras-del-tesoro-euro",
+        "spiko-letras-del-tesoro-dolar",
+        "spiko-smart-cash-euro"
+      ],
+      "fuente": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "claimCorregido": {
+        "literal": "🇪🇸 Spain ✅ ✅ ✅ ❌ (columnas Smart Cash, T-Bills Euro, T-Bills Dollar, T-Bills Pound) · Last updated: November 6, 2026.",
+        "fechaDato": "2026-11-06"
+      },
+      "notaCorregida": "España sigue marcada en tres de las cuatro columnas (Smart Cash, T-Bills Euro y T-Bills Dollar); en T-Bills Pound tiene ❌.",
+      "enLaEntrega": "referencia «Acceso desde España» con fechaDato 2026-11-06 en las tres; en Smart Cash, «Tabla de disponibilidad de Spiko (06/11/2026)»."
+    },
+    "suizaHoras": {
+      "nota": "Horas reales de consulta del 13/11 (inventario del grupo suiza, reloj del sistema), en lugar de las copiadas del 12/11 que llevan los expedientes (79 de 82 entradas). Las copiadas no se escriben en la entrega.",
+      "copiadas": {
+        "aktionariat": "26 de 27",
+        "boss-info": "26 de 27",
+        "switzerlend": "27 de 28"
+      }
+    },
+    "bossInfoUltimaOperacion": {
+      "fuente": "https://shares.bossinfo.com/",
+      "porque": "la API POST getTrades da 405 a un visitante"
+    }
+  },
+  "horasRealesSuiza": [
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 0,
+      "campo": "estado",
+      "url": "https://shares.aktionariat.com/",
+      "horaReal": "2026-11-13T08:32:51Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 1,
+      "campo": "precio",
+      "url": "https://shares.aktionariat.com/invest",
+      "horaReal": "2026-11-13T08:33:00Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 2,
+      "campo": "actividad",
+      "url": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "horaReal": "2026-11-13T08:31:18Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 3,
+      "campo": "minimo",
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "horaReal": "2026-11-13T08:31:15Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 4,
+      "campo": "accesoEspana",
+      "url": "https://www.aktionariat.com/disclaimer",
+      "horaReal": "2026-11-13T08:31:24Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 5,
+      "campo": "kyc",
+      "url": "https://shares.aktionariat.com/invest",
+      "horaReal": "2026-11-13T08:33:00Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 6,
+      "campo": "salida",
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "horaReal": "2026-11-13T08:31:15Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 7,
+      "campo": "salida",
+      "url": "https://shares.aktionariat.com/trade",
+      "horaReal": "2026-11-13T08:33:08Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 8,
+      "campo": "precio",
+      "url": "https://shares.aktionariat.com/trade",
+      "horaReal": "2026-11-13T08:33:08Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 9,
+      "campo": "comisiones",
+      "url": "https://shares.aktionariat.com/trade",
+      "horaReal": "2026-11-13T08:33:17Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 10,
+      "campo": "supervision",
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "horaReal": "2026-11-13T08:31:39Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 11,
+      "campo": "folleto",
+      "url": "https://shares.aktionariat.com/",
+      "horaReal": "2026-11-13T08:32:51Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 12,
+      "campo": "derecho",
+      "url": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+      "horaReal": "2026-11-13T08:31:30Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 13,
+      "campo": "riesgos",
+      "url": "https://www.aktionariat.com/disclaimer",
+      "horaReal": "2026-11-13T08:31:24Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "claims",
+      "indice": 14,
+      "campo": "accionistas",
+      "url": "https://shares.aktionariat.com/",
+      "horaReal": "2026-11-13T08:32:51Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 0,
+      "campo": null,
+      "url": "https://shares.aktionariat.com/trade",
+      "horaReal": "2026-11-13T08:33:08Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 1,
+      "campo": null,
+      "url": "https://www.aktionariat.com/disclaimer",
+      "horaReal": "2026-11-13T08:31:24Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 2,
+      "campo": null,
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "horaReal": "2026-11-13T08:31:15Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 3,
+      "campo": null,
+      "url": "https://shares.aktionariat.com/",
+      "horaReal": "2026-11-13T08:32:51Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 4,
+      "campo": null,
+      "url": "https://shares.aktionariat.com/",
+      "horaReal": "2026-11-13T08:32:51Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "avisosConFecha",
+      "indice": 5,
+      "campo": null,
+      "url": "https://shares.aktionariat.com/trade",
+      "horaReal": "2026-11-13T08:33:08Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "registros",
+      "indice": 0,
+      "campo": "Registro mercantil suizo (ZefixREST)",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+      "horaReal": "2026-11-13T08:31:36Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "registros",
+      "indice": 1,
+      "campo": "FINMA · registro de entidades autorizadas",
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "horaReal": "2026-11-13T08:31:39Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "registros",
+      "indice": 2,
+      "campo": "PolyReg (organismo de autorregulación contra el blanqueo reconocido por FINMA)",
+      "url": "https://api.polyreg.ch/api/membership-check?name=Aktionariat%20AG",
+      "horaReal": "2026-11-13T08:31:37Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "advertenciasReguladores",
+      "indice": 0,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+      "horaReal": "2026-11-13T08:31:50Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "advertenciasReguladores",
+      "indice": 1,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG",
+      "horaReal": "2026-11-13T08:31:55Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "aktionariat",
+      "lista": "advertenciasReguladores",
+      "indice": 2,
+      "campo": "FINMA · lista de advertencias",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "horaReal": "2026-11-13T08:31:42Z",
+      "origen": "la del expediente (no copiada del 12/11)"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 0,
+      "campo": "estado",
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:45Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 1,
+      "campo": "precio",
+      "url": "https://shares.bossinfo.com/invest",
+      "horaReal": "2026-11-13T08:33:37Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 2,
+      "campo": "actividad",
+      "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+      "horaReal": "2026-11-13T08:31:21Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 3,
+      "campo": "minimo",
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "horaReal": "2026-11-13T08:31:18Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 4,
+      "campo": "accesoEspana",
+      "url": "https://shares.bossinfo.com/investor-page-terms",
+      "horaReal": "2026-11-13T08:31:25Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 5,
+      "campo": "accesoEspana",
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "horaReal": "2026-11-13T08:31:26Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 6,
+      "campo": "salida",
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "horaReal": "2026-11-13T08:31:18Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 7,
+      "campo": "salida",
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:45Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 8,
+      "campo": "comisiones",
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:53Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 9,
+      "campo": "moneda_secundario",
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "horaReal": "2026-11-13T08:31:26Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 10,
+      "campo": "derecho",
+      "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+      "horaReal": "2026-11-13T08:31:31Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 11,
+      "campo": "supervision",
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "horaReal": "2026-11-13T08:31:40Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 12,
+      "campo": "riesgos",
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-tokens/",
+      "horaReal": "2026-11-13T08:31:27Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "claims",
+      "indice": 13,
+      "campo": "accionistas",
+      "url": "https://shares.bossinfo.com/",
+      "horaReal": "2026-11-13T08:33:29Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 0,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/investor-page-terms",
+      "horaReal": "2026-11-13T08:31:25Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 1,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "horaReal": "2026-11-13T08:31:18Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 2,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:45Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 3,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:45Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 4,
+      "campo": null,
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "horaReal": "2026-11-13T08:31:26Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 5,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/trade",
+      "horaReal": "2026-11-13T08:33:45Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "avisosConFecha",
+      "indice": 6,
+      "campo": null,
+      "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+      "horaReal": "2026-11-13T08:31:21Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "registros",
+      "indice": 0,
+      "campo": "Registro mercantil suizo (ZefixREST)",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+      "horaReal": "2026-11-13T08:31:36Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "registros",
+      "indice": 1,
+      "campo": "FINMA · registro de entidades autorizadas",
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "horaReal": "2026-11-13T08:31:40Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "registros",
+      "indice": 2,
+      "campo": "PolyReg (autorregulación contra el blanqueo)",
+      "url": "https://api.polyreg.ch/api/membership-check?name=Boss%20Info%20AG",
+      "horaReal": "2026-11-13T08:31:38Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "advertenciasReguladores",
+      "indice": 0,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+      "horaReal": "2026-11-13T08:31:59Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "advertenciasReguladores",
+      "indice": 1,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG",
+      "horaReal": "2026-11-13T08:32:03Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "boss-info",
+      "lista": "advertenciasReguladores",
+      "indice": 2,
+      "campo": "FINMA · lista de advertencias",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "horaReal": "2026-11-13T08:31:42Z",
+      "origen": "la del expediente (no copiada del 12/11)"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 0,
+      "campo": "estado",
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 1,
+      "campo": "precio",
+      "url": "https://shares.lend.ch/invest",
+      "horaReal": "2026-11-13T08:34:11Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 2,
+      "campo": "actividad",
+      "url": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "horaReal": "2026-11-13T08:31:23Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 3,
+      "campo": "minimo",
+      "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+      "horaReal": "2026-11-13T08:31:22Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 4,
+      "campo": "accesoEspana",
+      "url": "https://shares.lend.ch/investor-page-terms",
+      "horaReal": "2026-11-13T08:31:26Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 5,
+      "campo": "salida",
+      "url": "https://www.lend.ch/de/investor-relations",
+      "horaReal": "2026-11-13T08:32:34Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 6,
+      "campo": "salida",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "horaReal": "2026-11-13T08:31:32Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 7,
+      "campo": "salida",
+      "url": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65",
+      "horaReal": "2026-11-13T08:31:15Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 8,
+      "campo": "salida",
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 9,
+      "campo": "precio",
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 10,
+      "campo": "comisiones",
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:28Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 11,
+      "campo": "derecho",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "horaReal": "2026-11-13T08:31:32Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 12,
+      "campo": "supervision",
+      "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+      "horaReal": "2026-11-13T08:31:38Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 13,
+      "campo": "riesgos",
+      "url": "https://www.lend.ch/de/investor-relations",
+      "horaReal": "2026-11-13T08:32:34Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "claims",
+      "indice": 14,
+      "campo": "accionistas",
+      "url": "https://shares.lend.ch/",
+      "horaReal": "2026-11-13T08:34:03Z",
+      "origen": "citada en el expediente y en el inventario"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 0,
+      "campo": null,
+      "url": "https://shares.lend.ch/investor-page-terms",
+      "horaReal": "2026-11-13T08:31:26Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 1,
+      "campo": null,
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "horaReal": "2026-11-13T08:31:32Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 2,
+      "campo": null,
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 3,
+      "campo": null,
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 4,
+      "campo": null,
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 5,
+      "campo": null,
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "avisosConFecha",
+      "indice": 6,
+      "campo": null,
+      "url": "https://shares.lend.ch/trade",
+      "horaReal": "2026-11-13T08:34:19Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "registros",
+      "indice": 0,
+      "campo": "Registro mercantil suizo (ZefixREST)",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+      "horaReal": "2026-11-13T08:31:37Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "registros",
+      "indice": 1,
+      "campo": "PolyReg (organismo de autorregulación contra el blanqueo reconocido por FINMA)",
+      "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+      "horaReal": "2026-11-13T08:31:38Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "registros",
+      "indice": 2,
+      "campo": "FINMA · registro de entidades autorizadas",
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "horaReal": "2026-11-13T08:31:40Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "advertenciasReguladores",
+      "indice": 0,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+      "horaReal": "2026-11-13T08:32:16Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "advertenciasReguladores",
+      "indice": 1,
+      "campo": "CNMV",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG",
+      "horaReal": "2026-11-13T08:32:21Z",
+      "origen": "inventario, por la misma dirección"
+    },
+    {
+      "slug": "switzerlend",
+      "lista": "advertenciasReguladores",
+      "indice": 2,
+      "campo": "FINMA · lista de advertencias",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "horaReal": "2026-11-13T08:31:42Z",
+      "origen": "la del expediente (no copiada del 12/11)"
+    }
+  ],
+  "condicionHora": {
+    "spiko": "VL del 12/11 en las tres, válidas si la entrega se monta antes de las 18:00 UTC del 13/11 (la API anuncia la siguiente cifra de las Letras a las 18:00 UTC y la de Smart Cash a las 19:30 UTC); si no, volver a leer la API pública de Spiko. La hora del montaje está en INFORME-ENTREGA.md.",
+    "mtbill": "Ronda 492 (10/11, 18:40 UTC) última a las 08:45 UTC del 13/11 (revisor); una ronda nueva cambiaría el valor por token, no la métrica de 5 semanas hasta el 10/11.",
+    "brickwise": "Pottendorfer: la orden de 1 participación a 73 € (creada el 12/11 a las 21:45 UTC) seguía abierta a las 08:48 UTC; el revisor recomienda volver a mirarla justo antes de aplicar."
+  },
+  "vigencia": {
+    "verificadaEl": "2026-11-13",
+    "vigenciaDias": 7,
+    "ultimoDiaVigente": "2026-11-20"
+  },
+  "cambios": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "rentabilidad",
+      "antes": "2,41 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 10/11/2026 (VL fechada el 11/11/2026); consultado el 11/11/2026. Variable y no garantizado.",
+      "despues": "2,40 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 12/11/2026 (VL fechada el 12/11/2026); consultado el 13/11/2026. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · 31 días · 11/11/2026: 2,41 %",
+      "despues": "Rentabilidad publicada · 31 días · 12/11/2026: 2,40 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 2,41 %",
+      "despues": "Rentabilidad publicada · 31 días: 2,40 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "rentabilidad",
+      "antes": "4,02 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 10/11/2026 (VL del 10/11/2026); consultado el 11/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.",
+      "despues": "3,98 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 12/11/2026 (VL del 12/11/2026); consultado el 13/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · 31 días · 10/11/2026 · en USD: 4,02 %",
+      "despues": "Rentabilidad publicada · 31 días · 12/11/2026 · en USD: 3,98 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 4,02 %",
+      "despues": "Rentabilidad publicada · 31 días: 3,98 %"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "rentabilidad",
+      "antes": "2,84 % · Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 11/11/2026 (consultado el 12/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado.",
+      "despues": "2,84 % · Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 12/11/2026 (consultado el 13/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · neta y variable · 11/11/2026: 2,84 %",
+      "despues": "Rentabilidad publicada · neta y variable · 12/11/2026: 2,84 %"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rendimiento neto publicado: 2,84 %",
+      "despues": "Rendimiento neto publicado: 2,84 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "tarjeta",
+      "antes": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "despues": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "fechaDato": {
+        "antes": "2026-10-23",
+        "despues": "2026-11-06"
+      }
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "tarjeta",
+      "antes": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "despues": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "fechaDato": {
+        "antes": "2026-10-23",
+        "despues": "2026-11-06"
+      }
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "tarjeta",
+      "antes": "Acceso desde España: Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "despues": "Acceso desde España: Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "fechaDato": {
+        "antes": "2026-10-23",
+        "despues": "2026-11-06"
+      },
+      "alcance": {
+        "antes": "Comprobado de nuevo en la fuente el 13/11/2026. Tabla de disponibilidad de Spiko (23/10/2026). La CNMV no publica los compartimentos de los fondos extranjeros: no consta en ningún supervisor.",
+        "despues": "Comprobado de nuevo en la fuente el 13/11/2026. Tabla de disponibilidad de Spiko (06/11/2026). La CNMV no publica los compartimentos de los fondos extranjeros: no consta en ningún supervisor."
+      }
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Precio del emisor · 12/11/2026: 7,25 CHF por acción (fijo)",
+      "despues": "Precio del emisor · 13/11/2026: 7,25 CHF por acción (fijo)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (12/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 12/11/2026).",
+      "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 13/11/2026)."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (12/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "aviso",
+      "antes": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 12/11/2026).",
+      "despues": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 13/11/2026)."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 12/11)",
+      "despues": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 13/11)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Última operación · 12/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)",
+      "despues": "Última operación · 13/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 12/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "despues": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 13/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 12/11/2026).",
+      "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 1 acción (68,01 CHF el 12/11)",
+      "despues": "Mínimo de inversión: 1 acción (68,01 CHF el 13/11)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (12/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)",
+      "despues": "Venta más barata · 13/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 90,00 € (91,35 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 90,00 € (91,35 € con el 1,5 %)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 265",
+      "despues": "Participaciones en venta · 13/11/2026: 265"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
+      "despues": "Venta más barata · 13/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 69,90 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 69,90 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 10/11/2026: 300",
+      "despues": "Participaciones en venta · 13/11/2026: 299"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 60,00 € (1 participación, orden del 10/11/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 60,00 € (1 participación, orden del 10/11/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 68,80 € por participación (1 a ese precio, orden del 08/11/2026)",
+      "despues": "Venta más barata · 13/11/2026: 68,80 € por participación (1 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 68,80 € (69,83 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 68,80 € (69,83 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 68,80 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 68,80 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 317",
+      "despues": "Participaciones en venta · 13/11/2026: 317"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 30,00 € (1 participación, orden del 01/07/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 30,00 € (1 participación, orden del 01/07/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 70,00 € por participación (3 a ese precio, orden del 18/10/2026)",
+      "despues": "Venta más barata · 13/11/2026: 70,00 € por participación (3 a ese precio, orden del 18/10/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 84,00 € (85,26 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 84,00 € (85,26 € con el 1,5 %)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 70 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 70 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 150",
+      "despues": "Participaciones en venta · 13/11/2026: 150"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 60,00 € (1 participación, orden del 05/11/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 60,00 € (1 participación, orden del 05/11/2026)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 102,00 € por participación (1 a ese precio, orden del 11/11/2026)",
+      "despues": "Venta más barata · 13/11/2026: 102,00 € por participación (1 a ese precio, orden del 11/11/2026)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 102 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 102 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 11/11/2026: 65",
+      "despues": "Participaciones en venta · 13/11/2026: 59"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 3,00 € (1 participación, orden del 23/11/2024)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 3,00 € (1 participación, orden del 23/11/2024)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)",
+      "despues": "Venta más barata · 13/11/2026: 102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 102 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 102 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 11/11/2026: 351",
+      "despues": "Participaciones en venta · 13/11/2026: 347"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 84,00 € (1 participación, orden del 23/06/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 84,00 € (1 participación, orden del 23/06/2026)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 78,00 € por participación (21 a ese precio, en 2 órdenes)",
+      "despues": "Venta más barata · 13/11/2026: 78,00 € por participación (21 a ese precio, en 2 órdenes)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 78,00 € (79,17 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 78,00 € (79,17 € con el 1,5 %)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 78 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 78 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 189",
+      "despues": "Participaciones en venta · 13/11/2026: 189"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 56,00 € (1 participación, orden del 10/11/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 64,00 € (1 participación, orden del 12/11/2026)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 95,00 € por participación (16 a ese precio, en 3 órdenes)",
+      "despues": "Venta más barata · 13/11/2026: 95,00 € por participación (16 a ese precio, en 3 órdenes)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 95,00 € (96,43 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 95,00 € (96,43 € con el 1,5 %)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 95 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 95 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 302",
+      "despues": "Participaciones en venta · 13/11/2026: 302"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 15,00 € (1 participación, orden del 21/09/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 15,00 € (1 participación, orden del 21/09/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+      "despues": "Venta más barata · 13/11/2026: 75,00 € por participación (2 a ese precio, orden del 04/11/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 99,00 € (100,49 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 99,00 € (100,49 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 335",
+      "despues": "Participaciones en venta · 13/11/2026: 335"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 20,00 € (1 participación, orden del 23/04/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 20,00 € (1 participación, orden del 23/04/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 80,00 € por participación (11 a ese precio, orden del 08/02/2026)",
+      "despues": "Venta más barata · 13/11/2026: 73,00 € por participación (1 a ese precio, orden del 12/11/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 115,00 € (116,73 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 73,00 € (74,10 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 80 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 73 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 11/11/2026: 107",
+      "despues": "Participaciones en venta · 13/11/2026: 107"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 19,00 € (3 participaciones, orden del 06/11/2025)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 19,00 € (3 participaciones, orden del 06/11/2025)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 12/11/2026: 75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+      "despues": "Venta más barata · 13/11/2026: 75,00 € por participación (11 a ese precio, orden del 28/04/2026)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 12/11/2026: 1 participación a 80,00 € (81,20 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 13/11/2026: 1 participación a 80,00 € (81,20 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (12/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (13/11)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 12/11/2026: 97",
+      "despues": "Participaciones en venta · 13/11/2026: 97"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 12/11/2026: 65,00 € (1 participación, orden del 16/10/2026)",
+      "despues": "Mejor oferta de compra · 13/11/2026: 65,00 € (1 participación, orden del 16/10/2026)"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 12/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV.",
+      "despues": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 13/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (12/11); la preventa abre el 18/11.",
+      "despues": "Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (13/11); la preventa abre el 18/11."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Historial publicado · 12/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados",
+      "despues": "Historial publicado · 13/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados"
+    }
+  ],
+  "tarjetaConservadasDeMasDe120": [],
+  "tarjetas": {
+    "spiko-letras-del-tesoro-euro": {
+      "Mínimo de inversión (clase EUTBL)": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "Mínimo de inversión": "1 USD",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España: Robinhood Europe está inscrita en la CNMV en libre prestación (n.º 5299).",
+      "Salida": "Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse"
+    },
+    "mtbill": {},
+    "prosegur-digital-gold": {
+      "Mínimo de inversión": "1 gramo de oro",
+      "Acceso desde España": "Disponible para clientes residentes en España; las operaciones se liquidan en euros.",
+      "Reembolso": "Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "aktionariat": {
+      "Mínimo de inversión": "500 CHF por transferencia bancaria",
+      "Acceso desde España": "Disponible para residentes en Suiza y el Espacio Económico Europeo, con un tope total de 100.000 € para el EEE.",
+      "Salida": "Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "boss-info": {
+      "Mínimo de inversión": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 13/11)",
+      "Salida": "El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "switzerlend": {
+      "Mínimo de inversión": "1 acción (68,01 CHF el 13/11)",
+      "Salida": "El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "hausera-proximas-ofertas": {
+      "Mínimo de inversión": "Desde 100 € en Alicante 3, según su documento de emisión (13/11); la preventa abre el 18/11.",
+      "Acceso desde España": "Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV.",
+      "Salida": "Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado."
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "local-de-estanco-klagenfurt": {
+      "Mínimo de inversión": "Desde 95 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "Mínimo de inversión": "Desde 68,80 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "Mínimo de inversión": "Desde 69,90 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "drautalresidenz-paternion": {
+      "Mínimo de inversión": "Desde 70 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "randhartingergasse-9-viena": {
+      "Mínimo de inversión": "Desde 78 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "Mínimo de inversión": "Desde 73 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "Mínimo de inversión": "Desde 102 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "Mínimo de inversión": "Desde 102 € la participación en reventa (13/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "kraken-xstocks": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales",
+      "Salida": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "spiko-smart-cash-euro": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "Reembolso": "Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)"
+    }
+  },
+  "noAplicadoTalCual": [
+    {
+      "slug": "boss-info",
+      "que": "Fuente de la referencia «Última operación · 13/11/2026»: https://shares.bossinfo.com/api/secondarymarkets/getTrades (propuesta del expediente)",
+      "porque": "Corrección 2 del revisor de suiza y DECISIONES §4: la API POST da 405 a un visitante; se mantiene la fuente del portal (https://shares.bossinfo.com/), que enseña la última operación. El alcance no atribuye al investigador la lectura en cadena: la de hoy es la del revisor (8,2404 ZCHF al vendedor y 0,1596 de comisión)."
+    },
+    {
+      "slug": "aktionariat, boss-info y switzerlend",
+      "que": "Corregir dentro de los tres expedientes cada «consultadoUtc» copiado del 12/11 (79 de 82)",
+      "porque": "El montador no edita los expedientes (prohibido en este encargo). La corrección obligatoria se aplica en la entrega: las horas reales salen del inventario del grupo y están en contraste-2026-11-13.json («horasRealesSuiza»); ninguna hora copiada llega a la entrega (se comprueba archivo a archivo) y despues-de-aplicar.mjs solo re-fecha una fuente suiza si tiene hora real de hoy."
+    },
+    {
+      "slug": "varias",
+      "que": "Propuestas de los expedientes fuera de DECISIONES: textos nuevos de tarjeta (mínimo, acceso o salida con otras palabras) de las tres de Spiko, Robinhood, Kraken y Prosegur; datos de tarjeta de mTBILL; fuentes nuevas de las ofertas (API de Spiko, GECO, API de Brickwise, documentos y contratos de Midas); y los campos «lugar», «concepto» y «pasos» que traen los expedientes",
+      "porque": "DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados. mTBILL sigue en «fuentes_en_conflicto» y la web y la app ocultan sus datos de tarjeta."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro",
+      "que": "Corregir dentro de los expedientes el claim «accesoEspana» («Last updated: October 23, 2026», fechaDato 2026-10-23) y la nota interna «en las cuatro columnas»",
+      "porque": "El montador no edita los expedientes (prohibido en este encargo). La corrección se aplica en lo que se publica: la referencia «Acceso desde España» de las tres lleva fechaDato 2026-11-06 y, en Smart Cash, «Tabla de disponibilidad de Spiko (06/11/2026)»; el literal corregido («Last updated: November 6, 2026») y la nota corregida («en tres de las cuatro columnas: Smart Cash, T-Bills Euro y T-Bills Dollar») quedan en contraste-2026-11-13.json («correccionesRevisores»). Ningún texto publicado cita «October 23» salvo las referencias históricas «· consulta 01/11/2026», que el revisor deja como están."
+    }
+  ],
+  "sinCambios": [
+    "las 25 plataformas del radar y sus textos, salvo las fechas de consulta",
+    "public.plataformas y public.fuentes (el SQL no las toca)",
+    "colecciones 8/13/1, estados de revisión, fuentes de las ofertas e imágenes",
+    "mTBILL, Robinhood, Kraken y Prosegur Digital Gold: solo las fechas",
+    "las noticias y el gráfico de la tokenización (no son parte de esta entrega)"
+  ],
+  "altas": [],
+  "retiradas": [],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  }
+}
