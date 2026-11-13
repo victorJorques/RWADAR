@@ -263,7 +263,7 @@ elimina la identidad local. En los perfiles local y editorial no contacta al ser
 ```
 App.js                     Radar, Siguiendo, Avisos, Más y modales
 componentes/Navegacion.js  Barra inferior, iconos propios e insignias
-componentes/Radar.js       Radar animado, puntos y filtros accesibles
+componentes/Radar.js       Radar animado, puntos y filtros accesibles; en Inicio, sin texto y con su leyenda al lado
 componentes/Explicador.js  3D en WebView y fallback nativo animado
 lib/tema.js                Colores, tipografía, sombras y radios
 lib/tacto.js               Respuesta háptica
