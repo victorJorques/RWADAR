@@ -1,0 +1,433 @@
+[
+ {
+  "empresa": "ServiceHunter",
+  "lang": "LUNA",
+  "to": [
+   "luna.arnold@quitt.ch"
+  ],
+  "cc": [],
+  "bloque": "-",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://quitt.ch/wp-content/uploads/Press-Release-Leadership-Transition.pdf",
+  "evidencia": "For further information, please contact / Luna Arnold / Marketing / luna.arnold@quitt.ch / ServiceHunter AG – quitt / Birmensdorferstrasse 94"
+ },
+ {
+  "empresa": "Aktionariat",
+  "lang": "DE-CH",
+  "to": [
+   "info@aktionariat.com"
+  ],
+  "cc": [],
+  "bloque": "Auf RWAdar stellen wir die tokenisierten Aktien der Aktionariat AG (DAKS) in einem eigenen Profil vor – was Anleger mit dem Token erwerben, wie der Direktkauf bei der Aktionariat AG und der Handel unter Aktionären funktionieren und für wen das Angebot zugänglich ist, mit Links zu den offiziellen Quellen: https://rwadar.pages.dev/ofertas/aktionariat. Zwei weitere Profile betreffen Aktien anderer Unternehmen, die ebenfalls über Ihre Plattform ausgegeben werden: Boss Info AG (https://rwadar.pages.dev/ofertas/boss-info) und Switzerlend AG (https://rwadar.pages.dev/ofertas/switzerlend).",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://docs.aktionariat.com/en/for-developers/external-api/request-your-own-endpoints/",
+  "evidencia": "Get in Touch — Contact us at info@aktionariat.com to discuss your requirements. Let us know what data or actions you need, and we’ll work with you to define the right endpoints for your integration."
+ },
+ {
+  "empresa": "Boss Info",
+  "lang": "DE-CH",
+  "to": [
+   "doris.brand@bossinfo.ch"
+  ],
+  "cc": [],
+  "bloque": "Auf RWAdar stellen wir die tokenisierten Aktien der Boss Info AG in einem eigenen Profil vor – was Anleger erwerben, wie der Direktkauf bei der Boss Info AG und der Handel unter Aktionären über Ihr Aktienportal funktionieren und für wen das Angebot zugänglich ist, mit Links zu den offiziellen Quellen: https://rwadar.pages.dev/ofertas/boss-info",
+  "saludo": "Guten Tag Doris Brand",
+  "reenvio": false,
+  "fuente": "https://www.bossinfo.com/team/dbr/",
+  "evidencia": "Doris Brand / Head of Marketing & Investor Relations / +41 844 844 120 / doris.brand@bossinfo.ch (es el texto visible de la página tal como lo muestra el navegador; en el HTML de origen va en ROT13: <span class=\"__eae_r13\">qbevf.oenaq@obffvasb.pu</span>)"
+ },
+ {
+  "empresa": "Switzerlend (LEND)",
+  "lang": "DE-CH",
+  "to": [
+   "shareholder@lend.ch"
+  ],
+  "cc": [],
+  "bloque": "Auf RWAdar stellen wir die tokenisierten Aktien der Klasse C1 der Switzerlend AG (LENDS) in einem eigenen Profil vor – was Anleger erwerben, wie der Direktkauf bei der Switzerlend AG und der Handel unter Aktionären funktionieren und für wen das Angebot zugänglich ist, mit Links zu den offiziellen Quellen: https://rwadar.pages.dev/ofertas/switzerlend",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://lend.ch/de/investor-relations",
+  "evidencia": "Noch Fragen? Schreib an shareholder@lend.ch - ein Gründer liest jede Nachricht."
+ },
+ {
+  "empresa": "Brickwise",
+  "lang": "DE-AT",
+  "to": [
+   "kooperation@brickwise.at"
+  ],
+  "cc": [],
+  "bloque": "Auf RWAdar stellen wir elf Angebote von Brickwise in eigenen Profilen vor – neun Immobilien und zwei Photovoltaikanlagen in Österreich. Jedes Profil erklärt, welche tokenisierten Genussscheine Anleger erwerben, wie der Handel auf dem Marktplatz Ihrer App funktioniert und für wen das Angebot zugänglich ist, und verlinkt die offiziellen Unterlagen wie das Basisinformationsblatt. Zwei Beispiele: https://rwadar.pages.dev/ofertas/vivienda-sonnleithnergasse-2-viena und https://rwadar.pages.dev/ofertas/fotovoltaica-cohotel",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.brickwise.at/landing/eigenemission-durchfuhren",
+  "evidencia": "INTERESSIERT? Kontaktieren Sie unser Kooperationsteam unter kooperation@brickwise.at"
+ },
+ {
+  "empresa": "Hausera",
+  "lang": "ES",
+  "to": [
+   "contacto@hausera.io"
+  ],
+  "cc": [],
+  "bloque": "En RWAdar seguimos vuestras operaciones inmobiliarias en una ficha propia: qué se adquiere al invertir (obligaciones u otros valores de la sociedad de cada proyecto, según su documento de emisión), a quién se dirige la próxima emisión, cómo se recupera el dinero y dónde consultar vuestros documentos oficiales: https://rwadar.pages.dev/ofertas/hausera-proximas-ofertas",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://hausera.io/contacto/",
+  "evidencia": "Para empezar a invertir ¿Estás pensando en invertir en Hausera? Conoce Hausera, nuestras oportunidades y el proceso de inversión. Estamos aquí para resolver tus dudas. Escríbenos contacto@hausera.io"
+ },
+ {
+  "empresa": "Prosegur Digital Gold",
+  "lang": "ES",
+  "to": [
+   "info@prosegurcrypto.com"
+  ],
+  "cc": [],
+  "bloque": "En RWAdar explicamos Prosegur Digital Gold en una ficha propia: qué representan los tokens (gramos de oro físico custodiado por Prosegur en España), qué derecho se adquiere, cómo funcionan la recompra y el canje por lingote y dónde consultar vuestras fuentes oficiales: https://rwadar.pages.dev/ofertas/prosegur-digital-gold",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.prosegurcrypto.com/",
+  "evidencia": "¿Dudas? Contáctanos a info@prosegurcrypto.com"
+ },
+ {
+  "empresa": "Reental",
+  "lang": "ES",
+  "to": [
+   "soporte@reental.co"
+  ],
+  "cc": [],
+  "bloque": "En RWAdar presentamos Reental en una ficha propia: vuestros proyectos inmobiliarios en España y Latinoamérica, quién puede acceder, los pasos del alta que explican vuestras preguntas frecuentes (registro, verificación de identidad y controles contra el blanqueo, y firma del contrato) y dónde consultar vuestras fuentes oficiales: https://rwadar.pages.dev/plataformas/reental",
+  "saludo": null,
+  "reenvio": true,
+  "fuente": "https://www.reental.co/aviso-legal",
+  "evidencia": "En el HTML de la página, datos estructurados: \"email\": \"soporte@reental.co\". En el texto visible, protegido por Cloudflare (data-cfemail=\"1665796679646273566473737862777a387579\", que descodificado da soporte@reental.co): «…así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a tr"
+ },
+ {
+  "empresa": "xStocks",
+  "lang": "EN",
+  "to": [
+   "contact@xstocks.com"
+  ],
+  "cc": [
+   "contact@backed.fi"
+  ],
+  "bloque": "Your xStocks offer has its own page on RWAdar: it explains what an investor acquires (a certificate issued by Backed Assets (JE) that tracks the price of a US-listed share or ETF), how it is bought and sold on Kraken in the EU, and where to find the official documents behind it: https://rwadar.pages.dev/ofertas/kraken-xstocks Backed Finance, the issuer behind xStocks, also has its own profile on RWAdar: https://rwadar.pages.dev/plataformas/backed-finance",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://xstocks.com/us/partners",
+  "evidencia": "Visible text: \"Need something else? Talk to the partner team. Custom assets, co-marketing plans, webinar requests, or anything else. Contact Partner Team\". The button links to /cdn-cgi/l/email-protection#90f3fffee4f1f3e4d0e8e3e4fff3fbe3bef3fffd (Cloudflare obfuscation), which decodes to contact@xsto"
+ },
+ {
+  "empresa": "Spiko",
+  "lang": "EN",
+  "to": [
+   "contact@spiko.io"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar (in Spanish) explains what Spiko offers – euro and dollar funds designed for corporate treasury, with daily redemption – which public registers we checked (AMF, ACPR and CNMV) and where to find the official sources: https://rwadar.pages.dev/plataformas/spiko. It links to three pages on specific funds, each covering what an investor acquires and where its official documents are published: Spiko EU T-Bills Money Market Fund (https://rwadar.pages.dev/ofertas/spiko-letras-del-tesoro-euro), Spiko US T-Bills Money Market Fund (https://rwadar.pages.dev/ofertas/spiko-letras-del-tesoro-dolar) and Spiko Euro (Smart Cash) (https://rwadar.pages.dev/ofertas/spiko-smart-cash-euro). For the two T-bill funds, these pages note that the shares are recorded in the holder's name on a blockchain register.",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.spiko.io/blog/spiko-access-us-treasury-bills-dollar",
+  "evidencia": "Press contact: Paul-Adrien HYPPOLITE contact@spiko.io (HTML: <p>Paul-Adrien HYPPOLITE<a href=\"mailto:contact@spiko.io\"><br/>contact@spiko.io</a>)"
+ },
+ {
+  "empresa": "Midas",
+  "lang": "EN",
+  "to": [
+   "team@midas.app"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar (in Spanish) explains what Midas issues – tokenised certificates on fixed-income strategies, issued by Midas Software GmbH under a base prospectus approved by Liechtenstein's FMA – and where to find your official documents: https://rwadar.pages.dev/plataformas/midas. We also have a dedicated page on mTBILL, covering what the certificate tracks (short-term US Treasury bills), what an investor acquires and where its prospectus and Spanish-language KID are published: https://rwadar.pages.dev/ofertas/mtbill",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://docs.midas.app/llms-full.txt",
+  "evidencia": "# Support / For technical assistance, partnership inquiries, or general questions, please reach out to our team through our official support channels. … {% tab title=\"Email\" %} <i class=\"fa-envelope-open-text\">:envelope-open-text:</i> <team@midas.app>"
+ },
+ {
+  "empresa": "Robinhood",
+  "lang": "EN",
+  "to": [
+   "press@robinhood.com"
+  ],
+  "cc": [],
+  "bloque": "Your Classic Stock Tokens offer has its own page on RWAdar: it explains what an investor acquires (a contractual, cash-settled right against Robinhood Europe linked to the price of a US-listed share or ETP), how positions are closed, and where to find your official documents, including the Spanish-language KID: https://rwadar.pages.dev/ofertas/robinhood-classic-stock-tokens",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://press.robinhood.com/",
+  "evidencia": "\"Contact News Social press@robinhood.com newsroom.aboutrobinhood.com\" (href=\"mailto:press@robinhood.com\") and \"Robinhood marks and logos may be used with prior written permission. For editorial use, please email press@robinhood.com for a password to access our Press Kit that includes Robinhood marks"
+ },
+ {
+  "empresa": "Swarm",
+  "lang": "EN",
+  "to": [
+   "inbox@swarm.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar presents Swarm's tokenized stocks and bonds, the company named in your legal notice (Swarm Capital GmbH), who can access the platform according to your terms, and links to your official documentation: https://rwadar.pages.dev/plataformas/swarm",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://docs.swarm.com/about/terms/imprint",
+  "evidencia": "\"Imprint / Legal Notice Information: Swarm Capital GmbH Landstr. 37 9490 FL-Vaduz Liechtenstein Register: FL-0002.608.155-1, Amtsgericht TaxID: 2608155 Represented by: Juricon Treuhand Anstalt (Managing Director) Contact: inbox@swarm.com\""
+ },
+ {
+  "empresa": "Taurus",
+  "lang": "EN",
+  "to": [
+   "contact@taurushq.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar presents Taurus's custody, tokenization and trading infrastructure for banks and institutions, how Taurus SA and Taurus (Europe) Ltd are supervised, and where to find your official regulatory disclosures: https://rwadar.pages.dev/plataformas/taurus",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.taurushq.com/llms.txt",
+  "evidencia": "\"## Contact\" / \"- [Book a meeting](https://www.taurushq.com/book/)\" / \"- Email: contact@taurushq.com\""
+ },
+ {
+  "empresa": "ADDX",
+  "lang": "EN",
+  "to": [
+   "team@addx.co"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what ADDX offers (fractional access to private equity and venture capital funds), how it is supervised in Singapore (the Monetary Authority of Singapore lists ADDX Pte. Ltd. as a capital markets services licensee and recognised market operator) and who can sign up, with links to the official sources: https://rwadar.pages.dev/plataformas/addx",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.addx.co/en/contact-us/",
+  "evidencia": "Tarjeta de la página de contacto: \"For platform support & partnerships\" / \"For business, media, collaboration, or platform-related enquiries.\" seguida de <a class=\"iconBtn___1OF8c\" href=\"mailto:team@addx.co\"><img ... alt=\"Email\"/></a>. Pie de la misma página: \"Contact / +65 6856 3500 / +65 8138 4153"
+ },
+ {
+  "empresa": "Archax",
+  "lang": "EN",
+  "to": [
+   "media@archax.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar describes Archax as a London-based venue for digital securities that brings issuance, trading and custody together. It also explains your regulatory status (authorised by the FCA in the UK and, through Archax Markets Europe, registered with Spain's CNMV) and who your services are aimed at, with links to the official sources: https://rwadar.pages.dev/plataformas/archax",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://archax.com/insights/archax-adopts-chainlink-to-unlock-tokenised-u-s-treasuries-as-programmable-collateral",
+  "evidencia": "Texto final de la nota de prensa del 19/10/2026 (estado PUBLISHED), que sirve la API oficial https://site-api-global.production.archax.com/api/v1/blog/articles/archax-adopts-chainlink-to-unlock-tokenised-u-s-treasuries-as-programmable-collateral: \"Archax provides the global, regulated on-chain capit"
+ },
+ {
+  "empresa": "Blocksquare",
+  "lang": "EN",
+  "to": [
+   "future@blocksquare.io"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Blocksquare offers real estate companies (a tokenization protocol and a white-label platform), how each token is linked to the property's land registry record rather than only to a smart contract, and why investor access depends on the operator of each marketplace, with links to your official sources: https://rwadar.pages.dev/plataformas/blocksquare",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://blocksquare.io/",
+  "evidencia": "La web oficial es una aplicación Angular. Su bundle https://blocksquare.io/main-es2015.js (HTTP 200), que carga la portada https://blocksquare.io/, contiene literalmente el icono de correo del pie: [\"rel\", \"noopener noreferrer\", \"href\", \"mailto:future@blocksquare.io\", 1, \"icon-mail-alt\"]"
+ },
+ {
+  "empresa": "Centrifuge",
+  "lang": "EN",
+  "to": [
+   "marketing@centrifuge.io"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar describes Centrifuge as on-chain infrastructure for real-world assets, including the financing of loan and invoice portfolios backed by off-chain collateral. It also explains the senior and junior tranche structure and that availability is set fund by fund, with links to your official sources: https://rwadar.pages.dev/plataformas/centrifuge",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://centrifuge.io/llms.txt",
+  "evidencia": "Líneas 145-147 de https://centrifuge.io/llms.txt: \"- [Contact](https://centrifuge.io/contact) – Official contact page for inquiries related to partnerships, press, or general questions.\" / \"- **Email Contacts**:\" / \"  - Press: marketing@centrifuge.io\""
+ },
+ {
+  "empresa": "Courtyard",
+  "lang": "EN",
+  "to": [
+   "contact@courtyard.io"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains how Courtyard tokenizes physical collectibles such as Pokémon and sports trading cards: each item is kept in an insured vault and its token can be redeemed for it at any time, with links to your official sources: https://rwadar.pages.dev/plataformas/courtyard",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://courtyard.io/",
+  "evidencia": "Pie de la portada: \"Courtyard, Inc. | 228 Park Ave S #38294 | New York, NY 10003 | contact@courtyard.io\". En los Terms of Service oficiales (https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service) aparece también: \"For more information, please contact us at contact@"
+ },
+ {
+  "empresa": "Figure",
+  "lang": "EN",
+  "to": [
+   "press@figure.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar presents Figure as a blockchain-native capital market for private credit and tokenized assets, with home equity lines of credit (HELOCs) on its own blockchain. It covers who is behind it, how the SEC registration and ATS of Figure Securities, Inc. fit in, who can access it, and where to find your official sources: https://rwadar.pages.dev/plataformas/figure",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.figure.com/newsroom/",
+  "evidencia": "Newsroom | Figure: «Press information» · «Email for all inquiries» · press@figure.com (enlace mailto:press@figure.com)"
+ },
+ {
+  "empresa": "Fireblocks",
+  "lang": "EN",
+  "to": [
+   "info@fireblocks.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar presents Fireblocks as a custody and issuance engine used in institutional tokenization projects. It covers what the platform offers, how the NYDFS limited-purpose trust charter held by Fireblocks Trust Company, LLC fits in, who your services are aimed at, and where to find your official sources: https://rwadar.pages.dev/plataformas/fireblocks",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.fireblocks.com/solutions/partners",
+  "evidencia": "Pie de página: enlace mostrado como «[email protected]» con href /cdn-cgi/l/email-protection#553c3b333a15333c273037393a363e267b363a38, que descodificado (protección de Cloudflare, XOR con la primera pareja hex) da info@fireblocks.com"
+ },
+ {
+  "empresa": "Franklin Templeton",
+  "lang": "EN",
+  "to": [
+   "rebecca.radosevich@franklintempleton.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains the Franklin OnChain U.S. Government Money Fund (FOBXX) and Benji. It covers how the fund's shareholder register has been kept on-chain since 2021, how investors reach it through the Benji app and the institutional web portal, who the fund is available to according to its prospectus, and where to find your official documents: https://rwadar.pages.dev/plataformas/franklin-templeton",
+  "saludo": "Dear Rebecca Radosevich,",
+  "reenvio": false,
+  "fuente": "https://investors.franklintempleton.com/news-center/press-releases/press-release-details/2026/Franklin-Templeton-Agrees-to-Acquire-Liquid-Strategies-from-CoinFund-Spinoff-Launches-Franklin-Crypto/default.aspx",
+  "evidencia": "Nota del 1 de abril de 2026 (menciona FOBXX/BENJI y el pago con tokens BENJI): «Public Relations: Rebecca Radosevich (212) 632-3207 rebecca.radosevich@franklintempleton.com» (enlace mailto:rebecca.radosevich@franklintempleton.com)"
+ },
+ {
+  "empresa": "INX",
+  "lang": "EN",
+  "to": [
+   "investorrelations@inx.co"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains INX One, a regulated digital securities platform with secondary trading open to retail investors, now integrated with the Republic ecosystem. It covers how INX Securities, LLC appears in FINRA's records as a registered broker-dealer operating an ATS, what its documentation says about who can access it, and where to find your official sources: https://rwadar.pages.dev/plataformas/inx",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.inx.co/the-inx-digital-company-inc-announces-successful-closing-of-transaction-with-republic/",
+  "evidencia": "For further information, contact: The INX Digital Company, Inc., Investor Relations, +1 855 657 2314, Contact: Alan Silbert, Email: investorrelations@inx.co"
+ },
+ {
+  "empresa": "Lofty",
+  "lang": "EN",
+  "to": [
+   "support@lofty.ai"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains how Lofty works: fractional ownership of single-family rental homes, each held in its own LLC, with daily rental income distributions and investor voting on every property. It also covers who can access it and where to find your official sources: https://rwadar.pages.dev/plataformas/lofty",
+  "saludo": null,
+  "reenvio": true,
+  "fuente": "https://www.lofty.ai/team",
+  "evidencia": "Want to talk? Reach us anytime at support@lofty.ai ."
+ },
+ {
+  "empresa": "Maple Finance",
+  "lang": "EN",
+  "to": [
+   "partnerships@maple.finance"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Maple offers in tokenized private credit, both for institutions and through syrup (syrupUSDC and syrupUSDT), who can access it and where to find your official sources: https://rwadar.pages.dev/plataformas/maple-finance",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://docs.maple.finance/contact-us/get-in-touch",
+  "evidencia": "Partnerships: partnerships@maple.finance  (HTML: <span class=\"\">Partnerships: <!-- -->partnerships@maple.finance</span>, con href=\"mailto:partnerships@maple.finance\")"
+ },
+ {
+  "empresa": "Ondo Finance",
+  "lang": "EN",
+  "to": [
+   "press@ondo.finance"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Ondo Finance offers (USDY, OUSG and Ondo Stocks, giving exposure to U.S. Treasuries and tokenized ETFs), who can access USDY from the European Economic Area and where to find your official sources: https://rwadar.pages.dev/plataformas/ondo-finance",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://ondo.finance/contact",
+  "evidencia": "For media inquiries, please contact <a href=\"mailto:press@ondo.finance\">press@ondo.finance</a>."
+ },
+ {
+  "empresa": "OpenEden",
+  "lang": "EN",
+  "to": [
+   "support@openeden.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains how OpenEden's TBILL token gives professional investors exposure to U.S. Treasury bills through subscriptions and redemptions, who is eligible to access it and where to find your official documentation: https://rwadar.pages.dev/plataformas/openeden",
+  "saludo": null,
+  "reenvio": true,
+  "fuente": "https://docs.openeden.com/prism/legal/user-agreement",
+  "evidencia": "(12) Support — For any queries, assistance or feedback in relation to the PRISM the Platform or your Platform Account, please contact support at support@openeden.com.  (En el HTML va protegido por Cloudflare email-protection y lo he descodificado. En la versión Markdown oficial, https://docs.openede"
+ },
+ {
+  "empresa": "Paxos",
+  "lang": "EN",
+  "to": [
+   "press@paxos.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains how PAX Gold works (each token represents an ounce of allocated gold held in London vaults, identifiable by bar number and redeemable for physical gold), how Paxos is supervised, who PAXG is available to and where to find your official sources: https://rwadar.pages.dev/plataformas/pax-gold",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://www.paxos.com/blog/sec-registers-paxos-securities-settlement-company-as-a-clearing-agency",
+  "evidencia": "Contact: press@paxos.com  (HTML: href=\"mailto:press@paxos.com\")"
+ },
+ {
+  "empresa": "Republic",
+  "lang": "EN",
+  "to": [
+   "eur-partnerships@republic.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains how Republic opens private markets (unlisted companies, funds, film, sports and art) to investors from small amounts, which registered group entities operate it in the U.S., and where to find your official sources, including the Republic Europe Help Center: https://rwadar.pages.dev/plataformas/republic",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://help.republic.com/en/articles/6867692-referring-a-business",
+  "evidencia": "Republic Europe investors can refer businesses looking to raise funding on Republic Europe - please <a href=\"mailto:eur-partnerships@republic.com\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">contact us</a> to get the ball rolling."
+ },
+ {
+  "empresa": "Securitize",
+  "lang": "EN",
+  "to": [
+   "press@securitize.io"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Securitize does: its role as an SEC-registered transfer agent and in issuing and administering BlackRock's tokenized BUIDL fund, the broker-dealer and ATS registration of Securitize Markets, and what we were able to verify about investor access, with links to your official sources: https://rwadar.pages.dev/plataformas/securitize",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://investors.securitize.io/news/news-details/2026/Securitize-and-Ethena-Launch-100-Million-Liquidity-Facility-for-BlackRocks-BUIDL/default.aspx",
+  "evidencia": "Release dated November 12, 2026, on the official IR site, contacts section: \"Tom Murphy / press@securitize.io / Sam Ross / investor.relations@securitize.io\". The same line appears in the official Q3 2026 PDF (https://s21.q4cdn.com/825684987/files/content_files/SECZ-3Q26-Earnings-Press-Release_vF.pdf"
+ },
+ {
+  "empresa": "Superstate",
+  "lang": "EN",
+  "to": [
+   "comms@superstate.co"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Superstate offers (tokenized funds with shares recorded directly on-chain, and FundOS), how USTB is set up today, with Invesco Advisers as manager and Superstate Services as transfer agent, and who can access it, with links to your official sources: https://rwadar.pages.dev/plataformas/superstate",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://superstate.com/about",
+  "evidencia": "Press inquiries | Email | comms@superstate.co | Phone | (201) 497-4991 | Contact | Emily Coleman | Head of Marketing and Comms"
+ },
+ {
+  "empresa": "Tokeny",
+  "lang": "EN",
+  "to": [
+   "contact@tokeny.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what Tokeny offers (software to issue tokens and build compliance rules into them on-chain, as the author of the ERC-3643 standard), its role as a technology provider for professional clients, and where to find your official sources, including your general terms of service: https://rwadar.pages.dev/plataformas/tokeny",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://tokeny.com/legal-notice/",
+  "evidencia": "Legal Notice | UPDATED ON 12 May 2023 | Publisher | Legal name: Tokeny sàrl | Registration number: B218805 | VAT: LU29932821 | Email: contact@tokeny.com | Headquarters: 3, Rue Gabriel Lippmann, L-5365 Munsbach, Luxembourg"
+ },
+ {
+  "empresa": "tZERO",
+  "lang": "EN",
+  "to": [
+   "marketing@tzero.com"
+  ],
+  "cc": [],
+  "bloque": "Your profile on RWAdar explains what tZERO offers (issuance, trading and custody infrastructure for tokenized securities), how its regulated set-up works, with tZERO Securities, LLC as a FINRA-registered broker-dealer operating the ATS and other functions held by separate entities, and what we were able to verify about investor access, with links to your official sources: https://rwadar.pages.dev/plataformas/tzero",
+  "saludo": null,
+  "reenvio": false,
+  "fuente": "https://tzero.com/news/tzero-a-leader-in-tokenization-infrastructure-to-go-public-via-business-combination-with-fg",
+  "evidencia": "–END– | tZERO Media & Investor Relations Enquiries | Julie Ros, SVP, Head of Marketing & Communications, tZERO | marketing@tzero.com"
+ }
+]

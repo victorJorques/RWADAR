@@ -1,0 +1,380 @@
+[
+ {
+  "name": "Aktionariat AG",
+  "lang": "DE-CH",
+  "to": "info@aktionariat.com",
+  "cc": [],
+  "sourceUrl": "https://docs.aktionariat.com/en/for-developers/external-api/request-your-own-endpoints/",
+  "evidence": "Get in Touch — Contact us at info@aktionariat.com to discuss your requirements. Let us know what data or actions you need, and we’ll work with you to define the right endpoints for your integration.",
+  "emailVerified": true,
+  "verificationDetail": "Lo descargué yo con curl el 13/11/2026 (HTTP 200). info@aktionariat.com aparece literal en el HTML de tres páginas oficiales: 1) docs.aktionariat.com, la documentación oficial (la frase de arriba); 2) https://www.aktionariat.com/issuer-terms-and-conditions: «Notices: … To Company's attention: via email to: info@aktionariat.com»; 3) https://www.aktionariat.com/privacy-policy, «16. Contact Us … get in touch with us at: info@aktionariat.com». En el Impressum (https://www.aktionariat.com/impressum: Aktionariat AG, Weinbergstrasse 18, 8703 Erlenbach, CHE-453.438.437) no hay ningún correo. /contact-us tampoco tiene correos: es un formulario. /imprint, /press, /media y /legal-notice dan 404. No hay buzón de partnerships, prensa ni relación con inversores. En la portada salen daniel@bluequartz.group, markus@alpenledger.io, sophie@northpeaklabs.com y thomas@helveticforge.ch: son de testimonios de ejemplo, no de Aktionariat, y no valen.",
+  "notes": "El único correo publicado es info@aktionariat.com, y es correcto como destino. Si se prefiere un correo centrado solo en DAKS, basta con quitar la segunda frase. Aktionariat es también la tecnología detrás de los portales de Boss Info, LEND y quitt: servicehunter.ch dice «The Aktionariat AG platform is the official exchange for ServiceHunter AG | quitt shares»."
+ },
+ {
+  "name": "Boss Info AG",
+  "lang": "DE-CH",
+  "to": "doris.brand@bossinfo.ch",
+  "cc": [],
+  "sourceUrl": "https://www.bossinfo.com/team/dbr/",
+  "evidence": "Doris Brand / Head of Marketing & Investor Relations / +41 844 844 120 / doris.brand@bossinfo.ch (es el texto visible de la página tal como lo muestra el navegador; en el HTML de origen va en ROT13: <span class=\"__eae_r13\">qbevf.oenaq@obffvasb.pu</span>)",
+  "emailVerified": true,
+  "verificationDetail": "Con curl, el HTML solo trae «qbevf.oenaq@obffvasb.pu» dentro de <span class=\"__eae_r13\">. El propio script de la web (función __eae_decode, desplazamiento +13, aplicado a .__eae_r13 al cargar la página) lo convierte en texto legible. Para no depender de mi descodificación, abrí la página con Google Chrome en modo headless (--dump-dom), a través del proxy y con TLS verificado. El DOM ya renderizado contiene literalmente: <a class=\"email\" …><span class=\"__eae_r13\">doris.brand@bossinfo.ch</span></a>, debajo de «Doris Brand / Head of Marketing & Investor Relations». Es lo que ve cualquier visitante: no he construido nada. La página del equipo (https://www.bossinfo.com/unternehmen/team/) también la presenta como «Head of Marketing & Investor Relations». bossinfo.com es el dominio oficial. Según el Impressum (https://www.bossinfo.com/impressum/), el editor es «Boss Info (bossinfo.ch AG und bossinfo.com AG), Tannackerstrasse 3, 4539 Farnern», y los correos son @bossinfo.ch. Las páginas de Investor Relations (/unternehmen/investor-relations/, /investor-faq/, /investor-tokens/) no tienen ningún buzón IR propio: solo info@bossinfo.ch, también en ROT13.",
+  "notes": "Hay alternativas verificadas que podrían ir en copia si se quiere. 1) simon.boss@bossinfo.ch, CEO. Aparece literal, sin codificar, en el HTML de https://shares.bossinfo.com/, dentro de la configuración del portal: «disabledBuyText»: «Aktuell ist der Verkauf von Aktien aufgrund eines Wartungsfensters deaktiviert.\\nBei Fragen wenden sie sich an simon.boss@bossinfo.ch .» 2) info@bossinfo.ch, buzón general del Impressum (https://www.bossinfo.com/impressum/: «Herausgeber Boss Info … +41 32 636 61 20 info@bossinfo.ch»). Va en ROT13 en el HTML, y lo confirmé también en el DOM renderizado por Chrome. Un aviso: la página IR aún dice «Boss Info Token sind am Taurus Investor Portal platziert», pero la FAQ y la página de tokens remiten a la app de Aktionariat. Es una incoherencia de su web y no cambia el destinatario."
+ },
+ {
+  "name": "Switzerlend AG (LEND)",
+  "lang": "DE-CH",
+  "to": "shareholder@lend.ch",
+  "cc": [],
+  "sourceUrl": "https://lend.ch/de/investor-relations",
+  "evidence": "Noch Fragen? Schreib an shareholder@lend.ch - ein Gründer liest jede Nachricht.",
+  "emailVerified": true,
+  "verificationDetail": "Lo descargué yo con curl (HTTP 200, sin redirección). El correo aparece literal en el HTML y en el texto. La versión EN (https://lend.ch/en/investor-relations) dice: «Still curious? Write to shareholder@lend.ch - a founder reads every message.» www.lend.ch redirige a https://lend.ch/de, el dominio oficial. En la página de contacto (https://lend.ch/de/kontakt) se lee: «Kontaktiere uns info@lend.ch Switzerlend AG Mühlebachstrasse 38 8008 Zürich». La página IR confirma además que los LENDS son acciones de Switzerlend AG «ausgegeben als Token auf Ethereum via Aktionariat».",
+  "notes": "Alternativa verificada: info@lend.ch (https://lend.ch/de/kontakt, «Kontaktiere uns info@lend.ch»). shareholder@lend.ch es el buzón más pertinente, porque la ficha trata de sus acciones."
+ },
+ {
+  "name": "Brickwise",
+  "lang": "DE-AT",
+  "to": "kooperation@brickwise.at",
+  "cc": [
+   "press@brickwise.at"
+  ],
+  "sourceUrl": "https://www.brickwise.at/landing/eigenemission-durchfuhren",
+  "evidence": "INTERESSIERT? Kontaktieren Sie unser Kooperationsteam unter kooperation@brickwise.at",
+  "emailVerified": true,
+  "verificationDetail": "Lo descargué yo con curl (HTTP 200) y el correo aparece literal en el HTML. Justo después, la página dice: «Ihr persönlicher Ansprechpartner Johannes Schrefl schrefl@brickwise.at». El correo en copia, press@brickwise.at, también es literal en https://www.brickwise.at/imprint: «Presseanfragen E-Mail: press@brickwise.at». Ese mismo Impressum dice: «Brickwise Investment GmbH Amalienstraße 71, 2. RGB 80799 München … Geschäftsführer: Marco Neumayer E-Mail: hello@brickwise.at … HRB 269358». Comprobé también pr@brickwise.at en https://www.brickwise.at/press («Dein persönlicher Pressekontakt Elisabeth Wolfbauer-Schinnerl Press- & Media-Relations pr@brickwise.at»), pero esa página solo tiene notas hasta 2022. dataprotect@brickwise.at es de privacidad y queda descartado.",
+  "notes": "kooperation@ es lo más parecido a partnerships: la página ofrece «Gemeinsame Marketing- und Public-Relations-Aktivitäten». press@ del Impressum es el buzón de prensa vigente y va en copia. Otras alternativas verificadas: hello@brickwise.at (Impressum), pr@brickwise.at (página Presse, desactualizada) y schrefl@brickwise.at (Johannes Schrefl, persona de contacto en la misma página de cooperación). Aunque el dominio es .at, la sociedad del Impressum tiene sede en Múnich."
+ },
+ {
+  "name": "ServiceHunter AG (quitt) — SOLO buscar contacto de relación con inversores",
+  "lang": "DE-CH",
+  "to": "luna.arnold@quitt.ch",
+  "cc": [],
+  "sourceUrl": "https://quitt.ch/wp-content/uploads/Press-Release-Leadership-Transition.pdf",
+  "evidence": "For further information, please contact / Luna Arnold / Marketing / luna.arnold@quitt.ch / ServiceHunter AG – quitt / Birmensdorferstrasse 94",
+  "emailVerified": true,
+  "verificationDetail": "Descargué yo el PDF con curl (HTTP 200, application/pdf, 2 páginas) y extraje el texto con pdftotext. Las líneas 64 a 70 dicen: «For further information, please contact / Luna Arnold / Marketing / luna.arnold@quitt.ch / ServiceHunter AG – quitt / Birmensdorferstrasse 94». La nota se titula «ServiceHunter AG Announces Leadership Transition … Press release | Zurich, Switzerland | July 2026». El mismo correo aparece en https://quitt.ch/wp-content/uploads/Medienmitteilung-Sicherheitsvorfall-quitt.pdf (14/10/2026): «Kontakt für Medien / Luna Arnold / Marketing / luna.arnold@quitt.ch». Los dos PDF están enlazados desde la página oficial https://quitt.ch/presse/. No hay ningún buzón de relación con inversores. https://servicehunter.ch/en/investors/ y /de/investors solo dan mailto:support@quitt.ch («If you have any further questions regarding the purchase of ServiceHunter AG | quitt shares, please get in touch: support@quitt.ch»), y https://shares.quitt.ch/ no trae ningún correo.",
+  "notes": "Alternativas verificadas. 1) presse@quitt.ch en https://quitt.ch/presse/: «Ihre Ansprechpartnerin Luna Arnold, Marketing. Für Medien- sowie Bildanfragen …». Cloudflare lo protege en el HTML (data-cfemail), pero lo confirmé en el DOM renderizado por Chrome. 2) support@quitt.ch, el único correo de la página de inversores: es atención al cliente, no IR. En https://quitt.ch/team/, Luna Arnold figura como «Business Development & Communications Managerin». Por el tono y el momento del correo, hay que tener en cuenta el incidente de seguridad del 7/10/2026 (copia de datos de unos 29.800 trabajadores en Suiza, comunicado el 14/10/2026) y el relevo en la dirección de julio de 2026."
+ },
+ {
+  "name": "Hausera",
+  "lang": "ES",
+  "to": "contacto@hausera.io",
+  "cc": [],
+  "sourceUrl": "https://hausera.io/contacto/",
+  "evidence": "Para empezar a invertir ¿Estás pensando en invertir en Hausera? Conoce Hausera, nuestras oportunidades y el proceso de inversión. Estamos aquí para resolver tus dudas. Escríbenos contacto@hausera.io",
+  "emailVerified": true,
+  "verificationDetail": "Descargué https://hausera.io/contacto/ con curl (HTTP 200). El correo aparece literalmente en el texto («Escríbenos contacto@hausera.io») y en el pie. También lo comprobé en https://hausera.io/terms/ (HTTP 200): «HOLDTX SPAIN, S.L. Domicilio social: CEEIC – Centro Europeo de Empresas e Innovación, C/ Berlín, 3F, 30553, Murcia (España) Correo electrónico de contacto: contacto@hausera.io», y en https://hausera.io/equipo/. El dominio es el de la propia empresa. Ninguna de estas páginas publica un correo de partnerships ni de prensa: en /contacto/ solo están contacto@ y soporte@, que es para clientes. Por eso contacto@ es el destino adecuado.",
+  "notes": "Correo comprobado. soporte@hausera.io es solo para clientes. dpd@hausera.io y rgpd@hausera.io son de protección de datos y no sirven como destino. hausera.io/sitemap.xml da 404. Aviso para Víctor: el recuadro general de la ficha dice «Acceso desde España: Sin comprobar», mientras que el detalle de las fuentes sí describe a quién se dirige Alicante 3. Por eso el bloque no habla de acceso desde España. Descargas en /tmp/claude-0/-home-user-RWADAR/a48c1052-8ce7-59c0-b3bc-e699715b2bb1/scratchpad/correos/descargas/v2b/."
+ },
+ {
+  "name": "Prosegur (Prosegur Digital Gold / Prosegur Crypto)",
+  "lang": "ES",
+  "to": "info@prosegurcrypto.com",
+  "cc": [],
+  "sourceUrl": "https://www.prosegurcrypto.com/",
+  "evidence": "¿Dudas? Contáctanos a info@prosegurcrypto.com",
+  "emailVerified": true,
+  "verificationDetail": "Descargué https://www.prosegurcrypto.com/ con curl (HTTP 200) y la frase aparece literalmente: «¿Dudas? Contáctanos a info@prosegurcrypto.com». Lo confirmé en https://www.prosegurcrypto.com/aviso-legal (HTTP 200): «…PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L., en adelante PROSEGUR CRYPTO o PROSEGUR Número de Identificación Fiscal: B88610126 Inscrito en el Registro Mercantil de Madrid … Correo electrónico : info@prosegurcrypto.com». El dominio es el de la propia sociedad. En https://es.prosegurdigitalgold.com/contacto solo aparece atencion.clientes@prosegurcrypto.com, que es de atención al cliente. En https://es.prosegurdigitalgold.com/sala-prensa no hay ningún correo, y en https://www.prosegurcrypto.com/contacto tampoco: solo el formulario, que no he tocado.",
+  "notes": "Correo comprobado. No hay buzón de partnerships ni de prensa. atencion.clientes@prosegurcrypto.com es de soporte y solo sirve como último recurso. Aviso para Víctor: la ficha publicada se contradice sobre el acceso desde España («Sin comprobar» en el recuadro y «Sí» en la transparencia). Conviene corregirlo antes de que Prosegur la lea."
+ },
+ {
+  "name": "Reental",
+  "lang": "ES",
+  "to": "soporte@reental.co",
+  "cc": [],
+  "sourceUrl": "https://www.reental.co/aviso-legal",
+  "evidence": "En el HTML de la página, datos estructurados: \"email\": \"soporte@reental.co\". En el texto visible, protegido por Cloudflare (data-cfemail=\"1665796679646273566473737862777a387579\", que descodificado da soporte@reental.co): «…así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a través del correo electrónico soporte@reental.co»",
+  "emailVerified": true,
+  "verificationDetail": "Descargué https://www.reental.co/aviso-legal con curl (HTTP 200). La cadena «\"email\": \"soporte@reental.co\"» aparece literalmente en el HTML (JSON-LD). En el texto visible el correo está tapado por Cloudflare; descodifiqué el data-cfemail y sale soporte@reental.co. La portada https://www.reental.co/ lo repite dos veces en el JSON-LD, y los dos enlaces del pie «Trabaja con nosotros» descodifican también a soporte@reental.co. Además está en /contacto, /corporate y /affiliate. Es el único correo que publica el dominio oficial. https://www.reental.co/contacto tiene un formulario para propuestas («Tienes un proyecto o propuesta, esta es tu página.»), que no he tocado.",
+  "notes": "El único correo publicado es de soporte. Para una propuesta, Reental ofrece el formulario de https://www.reental.co/contacto; Víctor puede rellenarlo a mano si lo prefiere. La ficha de RWAdar no tiene ofertas concretas de Reental («Todavía no tenemos fichas de ofertas concretas de esta plataforma»)."
+ },
+ {
+  "name": "Spiko",
+  "lang": "EN",
+  "to": "contact@spiko.io",
+  "cc": [],
+  "sourceUrl": "https://www.spiko.io/blog/spiko-access-us-treasury-bills-dollar",
+  "evidence": "Press contact: Paul-Adrien HYPPOLITE contact@spiko.io (HTML: <p>Paul-Adrien HYPPOLITE<a href=\"mailto:contact@spiko.io\"><br/>contact@spiko.io</a>)",
+  "emailVerified": true,
+  "verificationDetail": "Descargué con curl la nota oficial «Spiko opens U.S. T-bills and the dollar to Europeans» (HTTP 200, sin redirección) y aparece literalmente «Press contact: Paul-Adrien HYPPOLITE contact@spiko.io». Lo confirmé en el JSON-LD de https://www.spiko.io/ («\"email\":\"contact@spiko.io\"») y en el pie de https://docs.spiko.io/ (mailto:contact@spiko.io). Todo está en el dominio oficial. api@spiko.io, en docs.spiko.io, es para integraciones («Our team reviews partnership requests and answers technical questions. Contact api@spiko.io»), no para medios. El sitemap de spiko.io no tiene página de prensa ni de partners, y /about no publica ningún correo.",
+  "notes": "Correo comprobado. Spiko tiene versión en español de su web (spiko.io/es), pero se mantiene EN como en la lista original. Aviso para Víctor: en las tres fichas de oferta, el recuadro general dice «Acceso desde España: Sin comprobar», mientras que la transparencia marca «✓ Sí Se contrata hoy desde España». Es la misma contradicción de plantilla que en otras fichas, y conviene revisarla."
+ },
+ {
+  "name": "Midas",
+  "lang": "EN",
+  "to": "team@midas.app",
+  "cc": [],
+  "sourceUrl": "https://docs.midas.app/llms-full.txt",
+  "evidence": "# Support / For technical assistance, partnership inquiries, or general questions, please reach out to our team through our official support channels. … {% tab title=\"Email\" %} <i class=\"fa-envelope-open-text\">:envelope-open-text:</i> <team@midas.app>",
+  "emailVerified": true,
+  "verificationDetail": "Descargué https://docs.midas.app/llms-full.txt con curl (HTTP 200). Es el volcado de la documentación oficial, en un subdominio de midas.app. Las líneas 2445-2452 contienen la sección «# Support» con la frase «For technical assistance, partnership inquiries, or general questions…» y la pestaña Email «<team@midas.app>». El mismo correo aparece en «Complaints» («By email: <team@midas.app> / By post: Midas Software GmbH, Pappelallee 78/79, 10437 Berlin, Germany») y en la política de privacidad. https://docs.midas.app/llms.txt (HTTP 200) enlaza esa sección como https://docs.midas.app/resources/support.md. Esa página, la versión HTML y https://midas.app/ devuelven 403 (Cloudflare) a curl, así que la comprobación literal se hace sobre llms-full.txt. https://midas.app/llms.txt (HTTP 200) cita https://midas.app/contact-us para «partnerships» sin dar ningún correo.",
+  "notes": "Correo comprobado en la documentación oficial. Es un buzón compartido: la propia documentación lo usa para partnerships, soporte, reclamaciones y protección de datos. midas.app/contact-us parece un formulario y no se pudo leer (403)."
+ },
+ {
+  "name": "Kraken (xStocks)",
+  "lang": "EN",
+  "to": "contact@xstocks.com",
+  "cc": [],
+  "sourceUrl": "https://xstocks.com/us/partners",
+  "evidence": "Visible text: \"Need something else? Talk to the partner team. Custom assets, co-marketing plans, webinar requests, or anything else. Contact Partner Team\". The button links to /cdn-cgi/l/email-protection#90f3fffee4f1f3e4d0e8e3e4fff3fbe3bef3fffd (Cloudflare obfuscation), which decodes to contact@xstocks.com. The same HTML also has it in plain text: \"contactPoint\":[{\"@type\":\"ContactPoint\",\"email\":\"contact@xstocks.com\"}]",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://xstocks.com/us/partners myself (HTTP 200). contact@xstocks.com appears in plain text in the JSON-LD, and both \"Contact Partner Team\" buttons decode to that address. The domain belongs to Kraken: the page footer says \"© 2011–2026 Payward, Inc.\", https://www.kraken.com/xstocks links to https://xstocks.fi, and https://xstocks.fi/us/partners (same site, HTTP 200) also decodes to contact@xstocks.com. https://xstocks.com/ returns 301 to /us. Alternatives I also checked myself: press@kraken.com (4 times at https://www.kraken.com/press) and marketing@kraken.com plus press@kraken.com at https://support.kraken.com/articles/4410362151828-business-inquiries. cc is empty, so there was nothing to remove. URL https://rwadar.pages.dev/ofertas/kraken-xstocks returns 200.",
+  "notes": "The partners page also shows socials@xstocks.fi, but only for \"Email the live post link to ...\" (co-marketing posts already published). It is not right as the main recipient. Confirmed on that page: the news item \"xStocks Brings 200+ of the UK and EU’s Largest Companies Onchain\", dated 2026-11-11, while the ficha only covers US shares and ETFs (\"más de 130\"). It is worth reviewing the ficha before sending. Overlap with Backed Finance (Backed announced on 02/12/2025 that it \"will become part of Kraken\", checked at backed.fi/news-updates/backed-joins-kraken): avoid two near-identical emails to the same group. Either send one to contact@xstocks.com citing both fichas, or coordinate."
+ },
+ {
+  "name": "Backed Finance",
+  "lang": "EN",
+  "to": "contact@backed.fi",
+  "cc": [],
+  "sourceUrl": "https://backed.fi/contact",
+  "evidence": "\"Interested in one of our products or have a question? Send us a message and we'll get back to you shortly. You can send us a message by filling out the form or by emailing us at [email protected]\". In the HTML the address is <a href=\"/cdn-cgi/l/email-protection\" class=\"__cf_email__\" data-cfemail=\"f2919d9c86939186b2909391999796dc949b\">, which decodes to contact@backed.fi (the browser shows it as is).",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://backed.fi/contact myself (HTTP 200). The address is obfuscated by Cloudflare. I decoded the data-cfemail of the paragraph \"emailing us at\" with the standard XOR and got contact@backed.fi. The other two obfuscated addresses on the page decode to privacy@backed.fi (newsletter unsubscribe only, not suitable). backed.fi is the company's own domain. I also confirmed at https://backed.fi/news-updates/backed-joins-kraken: \"December 2nd, 2025 – Today, we are announcing that Backed will become part of Kraken\". cc is empty. URL https://rwadar.pages.dev/plataformas/backed-finance returns 200.",
+  "notes": "Problems in the ficha to review before sending: (1) \"Cómo funciona\" calls it \"Emisor suizo\", but the ficha itself and the kraken-xstocks offer name the issuer as Backed Assets (JE) Limited, a Jersey company. (2) It says \"Todavía no tenemos fichas de ofertas concretas de esta plataforma\", but ofertas/kraken-xstocks covers exactly the xStocks from Backed Assets (JE). contact@backed.fi probably ends up with the Kraken group, like contact@xstocks.com. If only one email goes to the group, contact@xstocks.com citing both fichas is the better choice."
+ },
+ {
+  "name": "Robinhood Europe",
+  "lang": "EN",
+  "to": "press@robinhood.com",
+  "cc": [],
+  "sourceUrl": "https://press.robinhood.com/",
+  "evidence": "\"Contact News Social press@robinhood.com newsroom.aboutrobinhood.com\" (href=\"mailto:press@robinhood.com\") and \"Robinhood marks and logos may be used with prior written permission. For editorial use, please email press@robinhood.com for a password to access our Press Kit that includes Robinhood marks and logos.\"",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://press.robinhood.com/ myself (HTTP 200). press@robinhood.com appears 5 times, including a mailto link. That it is the official channel for Europe as well is confirmed: https://robinhood.com/eu/en/ (HTTP 200) contains href=\"https://press.robinhood.com\". That page has no robinhood.com email addresses, and https://robinhood.com/eu/en/support/contact-us/ returns 404. cc is empty. URL https://rwadar.pages.dev/ofertas/robinhood-classic-stock-tokens returns 200.",
+  "notes": "There is no specific press or partnerships mailbox for Robinhood Europe, UAB. press@ is the one the EU site links to, and it is also the address for asking permission to use logos (\"prior written permission\"). complaints_eu@ is not suitable."
+ },
+ {
+  "name": "Swarm",
+  "lang": "EN",
+  "to": "inbox@swarm.com",
+  "cc": [],
+  "sourceUrl": "https://docs.swarm.com/about/terms/imprint",
+  "evidence": "\"Imprint / Legal Notice Information: Swarm Capital GmbH Landstr. 37 9490 FL-Vaduz Liechtenstein Register: FL-0002.608.155-1, Amtsgericht TaxID: 2608155 Represented by: Juricon Treuhand Anstalt (Managing Director) Contact: inbox@swarm.com\"",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://docs.swarm.com/about/terms/imprint myself (HTTP 200, a GitBook on a swarm.com subdomain). inbox@swarm.com appears 6 times and complaints@swarm.com appears 6 times (complaints only, not suitable). I also saw it at https://docs-it.swarm.com/important-notice-regarding-vasp-operations (HTTP 200): \"For any questions, please contact: 📧 inbox@swarm.com\". https://swarm.com/ returns 301 to https://app.swarm.com/. cc is empty. URL https://rwadar.pages.dev/plataformas/swarm returns 200.",
+  "notes": "Confirmed on docs-it.swarm.com: Swarm Markets S.r.l. (Milan) says it \"has no active customers and has not conducted any business activities\", will not apply for MiCAR authorisation, and will cancel its VASP registration and dissolve. The ficha contradicts itself and needs fixing before sending: the subtitle says \"dentro del marco regulatorio alemán\" and \"Cómo funciona\" says \"Opera bajo licencia de intermediación financiera de BaFin\", while \"Supervisión y alcance\" says no primary source indicates a licence or regulator. partners@swarm.com exists, but for technical API access. inbox@ is the general contact in the legal notice. They may not reply."
+ },
+ {
+  "name": "Taurus",
+  "lang": "EN",
+  "to": "contact@taurushq.com",
+  "cc": [],
+  "sourceUrl": "https://www.taurushq.com/llms.txt",
+  "evidence": "\"## Contact\" / \"- [Book a meeting](https://www.taurushq.com/book/)\" / \"- Email: contact@taurushq.com\"",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://www.taurushq.com/llms.txt myself (HTTP 200). The address appears literally in the \"## Contact\" section of this official file, which is served from the company's own domain. It is the only Taurus address I found: there are no emails in the HTML of /, /about/, /company/, /book/, /partners/, /careers/, /legal/ or /stories/, and /contact/, /press/, /media/, /newsroom/ and /legal/imprint/ return 404. One caveat: it appears in llms.txt (a file for machines), not on a page meant for people. cc is empty. URL https://rwadar.pages.dev/plataformas/taurus returns 200.",
+  "notes": "Confirmed on the taurushq.com homepage: \"Taurus is a technology provider, not a custodian: clients keep full control of their assets and keys.\" The ficha says \"Custodia y emisión de valores digitales para banca\" and \"Proveedor suizo de custodia para bancos regulados\", which can be read as Taurus being the custodian. Review before sending. media@taurusgroup.ch, on the old domain, is not verified as current, so I do not use it."
+ },
+ {
+  "name": "ADDX",
+  "lang": "EN",
+  "to": "team@addx.co",
+  "cc": [],
+  "sourceUrl": "https://www.addx.co/en/contact-us/",
+  "evidence": "Tarjeta de la página de contacto: \"For platform support & partnerships\" / \"For business, media, collaboration, or platform-related enquiries.\" seguida de <a class=\"iconBtn___1OF8c\" href=\"mailto:team@addx.co\"><img ... alt=\"Email\"/></a>. Pie de la misma página: \"Contact / +65 6856 3500 / +65 8138 4153 / team@addx.co / 8 Kallang Avenue\".",
+  "emailVerified": true,
+  "verificationDetail": "He descargado yo mismo https://www.addx.co/en/contact-us/ con curl (HTTP 200, dominio oficial addx.co). El correo team@addx.co aparece literalmente como mailto en la tarjeta «For platform support & partnerships» y en el pie. También he comprobado la alternativa media@addx.co en https://www.addx.co/en/news/ (HTTP 200): \"Newsroom / Contact us at media@addx.co for press enquiries.\" No la pongo en copia porque team@ ya cubre business y media. En la página también aparecen dpo@addx.co (privacidad, no sirve como destino) y contact@istox.com (marca antigua, no usar).",
+  "notes": "Correo verificado. Coincido con el otro agente en un posible desfase de la ficha. El 12/11/2025 ADDX publicó una nota de prensa sobre el fondo Franklin OnChain U.S. Dollar Short-Term Money Market Fund en ADDX. La he leído yo en /en/news/ y dice literalmente «the first tokenised fund registered for retail investors in Singapore». La ficha dice que el alta es solo para inversores acreditados o institucionales no estadounidenses. Conviene revisarlo antes de enviar, porque pueden comentarlo."
+ },
+ {
+  "name": "Archax",
+  "lang": "EN",
+  "to": "media@archax.com",
+  "cc": [],
+  "sourceUrl": "https://archax.com/insights/archax-adopts-chainlink-to-unlock-tokenised-u-s-treasuries-as-programmable-collateral",
+  "evidence": "Texto final de la nota de prensa del 19/10/2026 (estado PUBLISHED), que sirve la API oficial https://site-api-global.production.archax.com/api/v1/blog/articles/archax-adopts-chainlink-to-unlock-tokenised-u-s-treasuries-as-programmable-collateral: \"Archax provides the global, regulated on-chain capital markets infrastructure ... For more information, visit www.archax.com or contact media@archax.com.\"",
+  "emailVerified": true,
+  "verificationDetail": "La URL de archax.com devuelve 200, pero es una aplicación que se monta en el navegador y el HTML solo trae <div id=\"root\">. Por eso he leído el texto en su API. He comprobado que la API es oficial: el bundle de archax.com (assets/api-Dc5Bi2aO.js) apunta a https://site-api-global.production.archax.com, un subdominio de archax.com, y config.js enumera los sitios archax.com, uk., eu. y us.archax.com. En la API, media@archax.com aparece en el texto final de las notas de prensa desde el 09/12/2025 hasta el 19/10/2026, entre ellas la del 15/09/2026 sobre los permisos de la CNMV. info@archax.com solo sale hasta abril de 2025 y sales@archax.com en notas de 2021-2024, así que están anticuados. No he encontrado ningún buzón de partnerships, y el chunk de la página de contacto no contiene correos de archax.com. Solo he usado el dominio oficial archax.com y sus subdominios; ningún clon.",
+  "notes": "Correo verificado (contacto de prensa; no publican buzón de partnerships). He confirmado en la API oficial dos titulares recientes: el 15/09/2026, «Archax secures additional Spanish permissions, including Advisory and Custody, to expand EU regulated services», y el 08/09/2026, «Archax adds US Digital Broker-Dealer, completing regulated coverage across UK, EU and US». La ficha dice que la web europea está en «pre-launch» y que no hemos podido confirmar actividad comercial en la UE. Eso puede estar desfasado, así que conviene revisar la ficha antes de enviar."
+ },
+ {
+  "name": "Blocksquare",
+  "lang": "EN",
+  "to": "future@blocksquare.io",
+  "cc": [],
+  "sourceUrl": "https://blocksquare.io/",
+  "evidence": "La web oficial es una aplicación Angular. Su bundle https://blocksquare.io/main-es2015.js (HTTP 200), que carga la portada https://blocksquare.io/, contiene literalmente el icono de correo del pie: [\"rel\", \"noopener noreferrer\", \"href\", \"mailto:future@blocksquare.io\", 1, \"icon-mail-alt\"]",
+  "emailVerified": true,
+  "verificationDetail": "He descargado https://blocksquare.io/ (HTTP 200). El HTML solo carga scripts, entre ellos main-es2015.js. Al descargar main-es2015.js (2,6 MB) he encontrado future@blocksquare.io dos veces, como mailto del icono de correo del bloque «social» del pie. Es el único correo de la web principal. En la documentación oficial (docs.blocksquare.io/llms-full.txt y /certified-partners/setup-instructions/new-marketplace) solo aparece support@blocksquare.io, que es soporte técnico para socios certificados, además de direcciones de ejemplo. No hay buzón de partnerships ni de prensa.",
+  "notes": "Correo verificado; es el único buzón general que publican. Hay dos puntos de la ficha que conviene revisar antes de enviar. (1) La ficha dice que Blocksquare vincula cada token a «una anotación en el registro de la propiedad». La documentación oficial (llms-full.txt) lo describe de otra forma: el contrato PropToken incluye los «land registry data (i.e. cadastral municipality, parcel number, ID number, building part...)», la resolución recoge los datos del inmueble «as reflected in the national land title recording system» y cada PropToken queda inscrito en su Property Registry en cadena. Es decir, el token remite a los datos registrales; no se hace una anotación en el registro. El bloque dice «linked to the property's land registry record», que sí es defendible, pero la frase de la ficha puede molestarles. (2) La ficha dice que no podemos confirmar que haya portales en funcionamiento, pero su documentación cita marketplaces activos (por ejemplo marketplace.oceanpoint.fi)."
+ },
+ {
+  "name": "Centrifuge",
+  "lang": "EN",
+  "to": "marketing@centrifuge.io",
+  "cc": [],
+  "sourceUrl": "https://centrifuge.io/llms.txt",
+  "evidence": "Líneas 145-147 de https://centrifuge.io/llms.txt: \"- [Contact](https://centrifuge.io/contact) – Official contact page for inquiries related to partnerships, press, or general questions.\" / \"- **Email Contacts**:\" / \"  - Press: marketing@centrifuge.io\"",
+  "emailVerified": true,
+  "verificationDetail": "He descargado https://centrifuge.io/llms.txt con curl (HTTP 200, sin redirección, dominio oficial centrifuge.io). marketing@centrifuge.io aparece literalmente como contacto de prensa. Las páginas HTML https://centrifuge.io/, /contact y /imprint devuelven 403 tanto con curl como con WebFetch, así que no he podido leerlas y no he intentado saltarme el bloqueo. Alternativa comprobada: info@centrifuge.foundation, que aparece en https://www.centrifuge.foundation/ (HTTP 200) como \"Say hello, info@centrifuge.foundation\" y también en docs.centrifuge.io/llms-full.txt. Es el contacto de la Fundación, otra entidad, así que no la pongo en copia.",
+  "notes": "Correo verificado como contacto de prensa en su llms.txt oficial, junto a la página de contacto para partnerships, prensa y consultas generales, que no he podido leer (403). La ficha empieza diciendo que Centrifuge «tuvo impagos por 5,8 M$ en 2023». Su documentación actual se centra en fondos tokenizados. Conviene revisar si ese titular de la ficha sigue siendo el adecuado antes de escribirles."
+ },
+ {
+  "name": "Courtyard",
+  "lang": "EN",
+  "to": "contact@courtyard.io",
+  "cc": [],
+  "sourceUrl": "https://courtyard.io/",
+  "evidence": "Pie de la portada: \"Courtyard, Inc. | 228 Park Ave S #38294 | New York, NY 10003 | contact@courtyard.io\". En los Terms of Service oficiales (https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service) aparece también: \"For more information, please contact us at contact@courtyard.io.\"",
+  "emailVerified": true,
+  "verificationDetail": "He descargado https://courtyard.io/ (HTTP 200) y aparece contact@courtyard.io en el pie, junto a la dirección de Courtyard, Inc. Los Terms of Service en docs.courtyard.io (HTTP 200) lo repiten 18 veces. En docs.courtyard.io/llms-full.txt aparecen además collectibles@courtyard.io (soporte a coleccionistas), copyright@ y privacy@, que no sirven como destino. No hay buzón de prensa ni de partnerships.",
+  "notes": "Correo general verificado. Para la ficha conviene saber que su documentación dice que, por ahora, solo aceptan cartas y cómics graduados enviados desde EE. UU. a su cámara. Eso no afecta al canje, que según ellos se puede hacer en todo el mundo. Las descargas de esta verificación están en /tmp/claude-0/-home-user-RWADAR/a48c1052-8ce7-59c0-b3bc-e699715b2bb1/scratchpad/correos/descargas/verif-l4/"
+ },
+ {
+  "name": "Figure",
+  "lang": "EN",
+  "to": "press@figure.com",
+  "cc": [],
+  "sourceUrl": "https://www.figure.com/newsroom/",
+  "evidence": "Newsroom | Figure: «Press information» · «Email for all inquiries» · press@figure.com (enlace mailto:press@figure.com)",
+  "emailVerified": true,
+  "verificationDetail": "figure.com e investors.figure.com devuelven 403 a curl. Intenté repetir con cabeceras de navegador, pero el sistema de permisos lo bloqueó, así que lo comprobé con WebFetch. En dos lecturas independientes de https://www.figure.com/newsroom/ sale el encabezado «Press information», la etiqueta «Email for all inquiries» y mailto:press@figure.com. También aparece como contacto («Contacts: press@figure.com») en la nota oficial del 26/02/2026 en investors.figure.com (alianza con Agora Data), que es el dominio de relación con inversores de la propia Figure. No encontré ningún buzón de partnerships: la búsqueda de partnerships@, partners@ y bd@figure.com no dio nada en páginas oficiales. La página /contact solo tiene buzones de clientes (help@, loans@, support@figuremarkets.com, etc.).",
+  "notes": "El correo propuesto se mantiene: es el buzón general de prensa y no hay ninguno de partnerships publicado. La ficha no tiene ofertas concretas, así que basta con el enlace a la plataforma. La ficha mezcla Figure Technology Solutions (cotiza en Nasdaq con el símbolo FIGR), Figure Securities, Inc. (CRD 307093) y Figure Markets (dominio propio). El bloque solo nombra a Figure y a Figure Securities, Inc., y es exacto."
+ },
+ {
+  "name": "Fireblocks",
+  "lang": "EN",
+  "to": "info@fireblocks.com",
+  "cc": [],
+  "sourceUrl": "https://www.fireblocks.com/solutions/partners",
+  "evidence": "Pie de página: enlace mostrado como «[email protected]» con href /cdn-cgi/l/email-protection#553c3b333a15333c273037393a363e267b363a38, que descodificado (protección de Cloudflare, XOR con la primera pareja hex) da info@fireblocks.com",
+  "emailVerified": true,
+  "verificationDetail": "fireblocks.com devuelve 403 a curl, así que leí la página con WebFetch. Esta vez el href ofuscado salió con otra clave (55…). Lo descodifiqué yo con el mismo algoritmo que usa Cloudflare y da info@fireblocks.com. La cadena que dio el otro agente (5d…) también da info@fireblocks.com. El buzón es oficial y está en el pie de todas las páginas. Busqué press@, media@, pr@ y partners@fireblocks.com y no aparecen en ninguna página oficial. Las notas de prensa de /press no traen correo de contacto.",
+  "notes": "El correo propuesto se mantiene, porque es el único buzón general publicado. Otras vías son el formulario «Become a partner» y el de ventas, que no he rellenado. support@fireblocks.com aparece en /regulated-entities, pero es soporte y solo serviría como último recurso. La ficha no tiene ofertas concretas."
+ },
+ {
+  "name": "Franklin Templeton (Benji / fondo monetario en cadena)",
+  "lang": "EN",
+  "to": "rebecca.radosevich@franklintempleton.com",
+  "cc": [
+   "jeaneen.terrio@franklintempleton.com"
+  ],
+  "sourceUrl": "https://investors.franklintempleton.com/news-center/press-releases/press-release-details/2026/Franklin-Templeton-Agrees-to-Acquire-Liquid-Strategies-from-CoinFund-Spinoff-Launches-Franklin-Crypto/default.aspx",
+  "evidence": "Nota del 1 de abril de 2026 (menciona FOBXX/BENJI y el pago con tokens BENJI): «Public Relations: Rebecca Radosevich (212) 632-3207 rebecca.radosevich@franklintempleton.com» (enlace mailto:rebecca.radosevich@franklintempleton.com)",
+  "emailVerified": true,
+  "verificationDetail": "investors.franklintempleton.com devuelve 403 a curl (un reto de Cloudflare), así que leí las páginas con WebFetch. (1) TO: en dos lecturas de la nota oficial del 01/04/2026 sale literalmente «Public Relations: Rebecca Radosevich (212) 632-3207 rebecca.radosevich@franklintempleton.com», y es el único mailto de la página. El otro agente dijo que el correo de Rebecca solo estaba en Business Wire, pero sí está en el dominio oficial de relación con inversores. Es la responsable de prensa de las notas de Benji y de activos digitales de 2026. (2) CC: en https://investors.franklintempleton.com/news-center/media-contacts/default.aspx sale literalmente «Global, US & Americas Jeaneen Terrio | (332) 284-9634 | jeaneen.terrio@franklintempleton.com», así que el «to» que se proponía también está verificado. No hay ningún buzón genérico de prensa, de Benji ni de activos digitales: digitalassets.franklintempleton.com, /benji/ y /about-us/digital-assets/digital-assets-technology (descargadas con curl, 200) no tienen ni un correo. www.da.franklintempleton.com da 502, y el «DigitalAssetsTechnology@» de un fragmento de búsqueda no se puede comprobar.",
+  "notes": "Cambié el «to» de Jeaneen Terrio a Rebecca Radosevich. Las dos son contactos de prensa oficiales y verificados, pero Rebecca es la de las notas de Benji y de activos digitales (enero, febrero y abril de 2026), y Jeaneen es la de la lista general y la de los resultados financieros. Puse a Jeaneen en copia para que llegue por las dos vías. Si Víctor prefiere escribir a una sola persona, que quite la copia. Las dos son direcciones personales que la empresa publica como contacto de prensa, no buzones genéricos. Antes de enviar, conviene revisar en la ficha la frase «La vía más conservadora para empezar»: suena a consejo y choca con que el folleto excluye la distribución en la UE y el EEE. Su equipo de cumplimiento la va a leer."
+ },
+ {
+  "name": "INX",
+  "lang": "EN",
+  "to": "investorrelations@inx.co",
+  "cc": [],
+  "sourceUrl": "https://www.inx.co/the-inx-digital-company-inc-announces-successful-closing-of-transaction-with-republic/",
+  "evidence": "For further information, contact: The INX Digital Company, Inc., Investor Relations, +1 855 657 2314, Contact: Alan Silbert, Email: investorrelations@inx.co",
+  "emailVerified": true,
+  "verificationDetail": "Descargué la página con curl (200). El texto literal está en el HTML. En la misma página, un bloque protegido por Cloudflare dice «For further information, and investor relations matters, please contact: +18556572314 or …», y descodificado da investorrelations@inx.co. https://inx.co/support (curl, 200) solo da «inx-support@republic.com», que es soporte. El pie de inx.co confirma «INX is a subsidiary of OpenDeal Inc. (d/b/a Republic)». No encontré ningún buzón de prensa ni de partnerships de INX que esté vigente: el único contacto de medios con @inx.co es de 2022 y es una persona. group.republic.com no es accesible desde esta sesión (habría que permitirlo en la configuración de red de la sesión), así que no pude comprobar la página de prensa de Republic.",
+  "notes": "El correo propuesto se mantiene, pero es el de relación con inversores de una empresa que ya no cotiza. La respuesta puede tardar, o la reenviarán a Republic. Antes de enviar, conviene corregir un error probable en la ficha: «su matriz cotiza en Nasdaq». INX cotizaba en Cboe Canada y OTCQB y ahora es filial privada de Republic (OpenDeal Inc.). El bloque no lo menciona."
+ },
+ {
+  "name": "Lofty",
+  "lang": "EN",
+  "to": "support@lofty.ai",
+  "cc": [],
+  "sourceUrl": "https://www.lofty.ai/team",
+  "evidence": "Want to talk? Reach us anytime at support@lofty.ai .",
+  "emailVerified": true,
+  "verificationDetail": "Descargué con curl (200) /team, la portada, /partners, /privacy y /terms. En /team sale literalmente «Want to talk? Reach us anytime at support@lofty.ai». El pie de todas las páginas dice «Contact us support@lofty.ai», así que es el buzón de contacto general que publica la empresa, no solo de soporte técnico. info@lofty.ai también es literal, pero solo aparece en /privacy («If you have any questions or concerns about this privacy notice… please contact us at info@lofty.ai») y en /terms (para disputas). Por eso no lo uso como destino principal ni lo pongo en copia: en la práctica es el contacto de privacidad y temas legales. En /partners no hay ningún correo específico.",
+  "notes": "El correo propuesto se mantiene. Antes de enviar, hay que revisar una contradicción en la ficha: «Cómo funciona» dice «Estructura de LLC por inmueble con oferta registrada», y «Supervisión» dice que según sus términos Lofty no está registrada ante la SEC en ninguna capacidad. Lofty lo va a leer. La frase «una de las pocas vías reales de entrada minorista» también suena a valoración."
+ },
+ {
+  "name": "Maple Finance",
+  "lang": "EN",
+  "to": "partnerships@maple.finance",
+  "cc": [],
+  "sourceUrl": "https://docs.maple.finance/contact-us/get-in-touch",
+  "evidence": "Partnerships: partnerships@maple.finance  (HTML: <span class=\"\">Partnerships: <!-- -->partnerships@maple.finance</span>, con href=\"mailto:partnerships@maple.finance\")",
+  "emailVerified": true,
+  "verificationDetail": "Descargado por mí con curl (HTTP 200) el 13/11/2026. docs.maple.finance es la documentación oficial de Maple, en su propio dominio maple.finance. El correo aparece 8 veces en el HTML. En el texto visible pone literalmente «Partnerships: partnerships@maple.finance», junto a «Troubleshooting & support: Intercom Chat». También lleva un enlace mailto. No hay cc que comprobar.",
+  "notes": "El buzón de partnerships está publicado en la documentación oficial, así que es el destinatario preferente y queda verificado. No he comprobado las alternativas de la propuesta (contact@ y info@), porque no hacen falta."
+ },
+ {
+  "name": "Ondo Finance",
+  "lang": "EN",
+  "to": "press@ondo.finance",
+  "cc": [],
+  "sourceUrl": "https://ondo.finance/contact",
+  "evidence": "For media inquiries, please contact <a href=\"mailto:press@ondo.finance\">press@ondo.finance</a>.",
+  "emailVerified": true,
+  "verificationDetail": "Descargado por mí con curl (HTTP 200) de ondo.finance/contact, su dominio oficial. El texto visible dice: «You can send us a message by filling out the adjacent form or by emailing us at support@ondo.finance. For media inquiries, please contact press@ondo.finance.» También hay un enlace «Media Inquiries» con mailto:press@ondo.finance. He revisado además docs.ondo.finance/llms-full.txt y la portada. Solo salen admin@ondo.foundation, legal@, noreply@, onboarding@, press@, private.client@ y support@. No hay ningún buzón de partnerships ni de BD, así que press@ es la mejor opción según el orden de preferencia.",
+  "notes": "press@ está verificado. support@ondo.finance aparece en la misma página y sirve de alternativa si se quiere. No se ha usado el formulario."
+ },
+ {
+  "name": "OpenEden",
+  "lang": "EN",
+  "to": "support@openeden.com",
+  "cc": [],
+  "sourceUrl": "https://docs.openeden.com/prism/legal/user-agreement",
+  "evidence": "(12) Support — For any queries, assistance or feedback in relation to the PRISM the Platform or your Platform Account, please contact support at support@openeden.com.  (En el HTML va protegido por Cloudflare email-protection y lo he descodificado. En la versión Markdown oficial, https://docs.openeden.com/prism/legal/user-agreement.md, línea 193, sale literal: «...please contact support [at ](mailto:at_USDOSupport@openeden.com)<support@openeden.com>.»)",
+  "emailVerified": true,
+  "verificationDetail": "El correo propuesto, marketing@openeden.com, NO lo doy por verificado. Lo he descargado yo (HTTP 200) y solo aparece en una entrada del blog del 22/10/2024, y únicamente dentro de un enlace mal formado: <a href=\"http://marketing@openeden.com/\">here</a>. No es un mailto ni se ve como texto. He descargado las 52 URL del sitemap del blog (post-sitemap y page-sitemap), la portada, /media-kit y unos 1 MB de bundles JS de la web actual. No aparece ningún otro correo, tampoco protegido por Cloudflare ni en un mailto. La web solo ofrece un formulario de Airtable. Ante la duda, lo descarto. Para «to» elijo support@openeden.com, que he verificado en la documentación oficial (docs.openeden.com): en el apartado «(12) Support» de las condiciones de PRISM, en la versión .md de esa página y repetido en docs.openeden.com/llms-full.txt (32 apariciones, también en las políticas de privacidad). Ni en la web ni en la documentación hay buzón de partnerships, prensa o info verificable.",
+  "notes": "He cambiado el destinatario de marketing@ a support@ porque marketing@ solo consta en un enlace roto de 2024. Si Víctor quiere arriesgarse a un rebote, podría añadir marketing@openeden.com en copia a mano, pero no lo he puesto porque no está verificado. Como support@ es el buzón de soporte, conviene pedir en la primera línea que lo pasen al equipo de partnerships o marketing."
+ },
+ {
+  "name": "Paxos (PAX Gold)",
+  "lang": "EN",
+  "to": "press@paxos.com",
+  "cc": [],
+  "sourceUrl": "https://www.paxos.com/blog/sec-registers-paxos-securities-settlement-company-as-a-clearing-agency",
+  "evidence": "Contact: press@paxos.com  (HTML: href=\"mailto:press@paxos.com\")",
+  "emailVerified": true,
+  "verificationDetail": "Descargado por mí con curl (HTTP 200) del blog oficial de Paxos, en su dominio paxos.com. La nota es del 28/05/2026 (<time datetime=\"2026-05-28\">). El correo aparece 4 veces y, en el texto visible, como «Contact: press@paxos.com» justo después del boilerplate «About Paxos». He revisado también /contact, /newsroom, /press y paxg.com. Solo sale subpoenas@paxos.com, que es para requerimientos legales y no sirve. No hay buzón de partnerships.",
+  "notes": "press@ está verificado. Como PAXG no está disponible en la UE, conviene un tono informativo, sin hablar de captación en España."
+ },
+ {
+  "name": "Republic",
+  "lang": "EN",
+  "to": "eur-partnerships@republic.com",
+  "cc": [],
+  "sourceUrl": "https://help.republic.com/en/articles/6867692-referring-a-business",
+  "evidence": "Republic Europe investors can refer businesses looking to raise funding on Republic Europe - please <a href=\"mailto:eur-partnerships@republic.com\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">contact us</a> to get the ball rolling.",
+  "emailVerified": true,
+  "verificationDetail": "Descargado por mí con curl (HTTP 200). help.republic.com es el centro de ayuda oficial de Republic Europe, en el dominio republic.com. El título de la página es «Referring a business | Republic Europe Help Center» y dateModified es 2025-04-16. El correo aparece literal en un mailto explícito. También he verificado eur-support@republic.com en https://help.republic.com/en/articles/6225634-how-do-i-contact-republic-europe («Writing an email to eur-support@republic.com»). republic.com (/press, /contact, /sitemap.xml) y europe.republic.com/press devuelven 403 con curl. group.republic.com, que es la página «Press Resources», no resuelve desde esta sesión ni con curl (502) ni con WebFetch (ENOTFOUND); habría que permitirlo en la red de la sesión. Busqué «press» y «partnership» en el buscador del centro de ayuda y no sale ningún otro buzón.",
+  "notes": "El buzón está verificado, pero su finalidad publicada es que los inversores de Republic Europe recomienden empresas que buscan financiación. Es el único buzón de partnerships verificable y encaja con un público europeo. Si se quiere una segunda vía, eur-support@republic.com también está verificado, aunque no lo he puesto en copia para no mezclar soporte. Para buscar un buzón de prensa de Republic (EE. UU.) habría que permitir group.republic.com en la red de la sesión."
+ },
+ {
+  "name": "Securitize",
+  "lang": "EN",
+  "to": "press@securitize.io",
+  "cc": [],
+  "sourceUrl": "https://investors.securitize.io/news/news-details/2026/Securitize-and-Ethena-Launch-100-Million-Liquidity-Facility-for-BlackRocks-BUIDL/default.aspx",
+  "evidence": "Release dated November 12, 2026, on the official IR site, contacts section: \"Tom Murphy / press@securitize.io / Sam Ross / investor.relations@securitize.io\". The same line appears in the official Q3 2026 PDF (https://s21.q4cdn.com/825684987/files/content_files/SECZ-3Q26-Earnings-Press-Release_vF.pdf, pdftotext lines 1334-1340): \"Securitize Contacts: Press: Tom Murphy press@securitize.io Investor Relations: Sam Ross investor.relations@securitize.io\".",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded the proposed PDF with curl (200, application/pdf) and found press@securitize.io literally in the 'Securitize Contacts' block. The PDF sits on Q4's IR CDN (s21.q4cdn.com), not on Securitize's own domain. Through WebFetch, I confirmed that the official IR home page, investors.securitize.io, links to it as 'Q3 2026 Press Release'. To get a source on the company's own domain, I listed releases through the official IR feed (investors.securitize.io/feed/PressRelease.svc) and read the 12/11/2026 release (Ethena / BUIDL) at investors.securitize.io. Its contacts section shows press@securitize.io literally. investors.securitize.io returns 403 to curl (bot protection) but loads with WebFetch. securitize.io: the official bundle /static/js/main.df1f8e7b.js contains info@securitize.io three times (mailto link in the footer and EMAIL_CONTACT). I found no partnerships or marketing inbox: /press-center, /press, /contact and /partners return 404.",
+  "notes": "I changed the sourceUrl from the q4cdn PDF to an HTML release on investors.securitize.io (the company's own domain), and the PDF stays as secondary evidence. Do not use investor.relations@ (IR). Also, the mailto link on the IR page points to investors.relations@ (with an s), which does not match the visible text. info@securitize.io (official footer) is the generic fallback. Securitize Corp. is listed on NYSE: SECZ."
+ },
+ {
+  "name": "Superstate",
+  "lang": "EN",
+  "to": "comms@superstate.co",
+  "cc": [],
+  "sourceUrl": "https://superstate.com/about",
+  "evidence": "Press inquiries | Email | comms@superstate.co | Phone | (201) 497-4991 | Contact | Emily Coleman | Head of Marketing and Comms",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://superstate.com/about with curl (200). comms@superstate.co appears once, in the 'Press inquiries' table, next to Emily Coleman, Head of Marketing and Comms. The superstate.co domain differs from the website's superstate.com, but the address is published on the official superstate.com site itself, so it counts as official. No other email address appears on that page.",
+  "notes": "clients@superstate.co (docs.superstate.com) and TA@superstate.co are aimed at clients and the transfer agent, so they are not suitable. I did not re-verify them because they are not used. Note: the ficha describes the USTB fund as not registered as an investment company, which does not fit its own 'Cómo funciona' line (\"Fondos estadounidenses registrados...\"). That is an internal ficha issue; the block avoids it."
+ },
+ {
+  "name": "Tokeny",
+  "lang": "EN",
+  "to": "contact@tokeny.com",
+  "cc": [],
+  "sourceUrl": "https://tokeny.com/legal-notice/",
+  "evidence": "Legal Notice | UPDATED ON 12 May 2023 | Publisher | Legal name: Tokeny sàrl | Registration number: B218805 | VAT: LU29932821 | Email: contact@tokeny.com | Headquarters: 3, Rue Gabriel Lippmann, L-5365 Munsbach, Luxembourg",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded https://tokeny.com/legal-notice/ with curl (200). contact@tokeny.com appears literally in the 'Publisher' block, and again in the footer. I also downloaded tokeny.com/, /press/, /contact/ and /partners/ (all 200). Each contains only contact@tokeny.com, with no partnerships, press or marketing address. It is the only general inbox published.",
+  "notes": "Do not use privacy@tokeny.com (privacy). The Legal Notice lists an office in Barcelona (Carrer Aribau 123), but the language set for the batch is EN. Víctor can decide whether to write in Spanish."
+ },
+ {
+  "name": "tZERO",
+  "lang": "EN",
+  "to": "marketing@tzero.com",
+  "cc": [],
+  "sourceUrl": "https://tzero.com/news/tzero-a-leader-in-tokenization-infrastructure-to-go-public-via-business-combination-with-fg",
+  "evidence": "–END– | tZERO Media & Investor Relations Enquiries | Julie Ros, SVP, Head of Marketing & Communications, tZERO | marketing@tzero.com",
+  "emailVerified": true,
+  "verificationDetail": "I downloaded the release (dated November 2, 2026) from tzero.com with curl (200). marketing@tzero.com appears literally in the 'tZERO Media & Investor Relations Enquiries' block. The only other address on the page is support@tzero.com, in the footer. On tzero.com/contact (200) the form says 'Reach out with inquiries or partnership opportunities' and the only address published is support@tzero.com, for time-sensitive, trade or account-related matters. /company and /news show only support@. I found no partnerships inbox.",
+  "notes": "support@tzero.com is support only (last resort). Do not use sales@ (IP licensing) or jros@ (personal address in older releases)."
+ }
+]

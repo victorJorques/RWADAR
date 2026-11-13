@@ -6,6 +6,20 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · Correos a las empresas
+
+- **Encargo (13/11):** contestar a Luna Arnold (ServiceHunter, correo del
+  29/10) y escribir a todas las empresas de RWAdar de parte de Víctor, con la
+  web, la app y por qué colaborar. No toca el código, la web ni Supabase.
+- **Preparado:** 33 correos revisados (32 empresas + Luna) en
+  [`comercial/CONTACTO-EMPRESAS-2026-11-13/`](../comercial/CONTACTO-EMPRESAS-2026-11-13/LEEME.md),
+  cada uno con su correo oficial comprobado en la web de la empresa. Remitente
+  vcicrack@gmail.com con victorjorquesgranero@gmail.com en copia (decisión de
+  Víctor).
+- **Pendiente:** el envío, en cuanto vuelva el conector de Gmail (cayó con el
+  reinicio de la sesión). Lista de fichas con datos desfasados o
+  contradictorios para el próximo ciclo del catálogo, en el LEEME.
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
