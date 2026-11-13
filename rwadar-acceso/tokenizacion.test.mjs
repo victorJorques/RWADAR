@@ -217,7 +217,9 @@ test('la web lleva una copia exacta del motor, la semilla del histórico y de la
   // El script no usa innerHTML ni habla con nadie más que con su propio sitio.
   const js = fs.readFileSync(path.join(RAIZ, 'rwadar-site/assets/mercado-20261111.js'), 'utf8');
   assert.doesNotMatch(js, /innerHTML|insertAdjacentHTML|coingecko\.com\/api|api\.coingecko/);
-  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/api/tokenizacion', '/datos/tokenizacion-historico.json', '/datos/tokenizacion-serie.json']);
+  // Y la serie fina (13/11/2026), de su propio sitio como las demás.
+  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/api/tokenizacion', '/datos/tokenizacion-historico.json', '/datos/tokenizacion-serie.json',
+    '/datos/tokenizacion-serie-fina.json']);
 });
 
 /* ---- Chromium: la portada con la sección, en móvil y en escritorio ---- */
@@ -376,7 +378,8 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(plano(m.tokens), plano(`${SERIE.incluidos}86 % del total`), 'el mismo 86 % que la nota');
       assert.ok(NUM(m.maximo) >= NUM(m.cifra), `máximo ${m.maximo} ≥ cifra ${m.cifra}`);
       assert.equal(m.grupo, 'group');
-      // «24 h» (13/11/2026), la primera: con la diaria sola (esta página aún no lee la serie fina), desactivada.
+      // «24 h» (13/11/2026), la primera: con las semillas de main (su serie fina no trae ninguna), desactivada. Con las
+      // series finas reales, mercado-fino-navegador.test.mjs.
       assert.deepEqual(m.pestanas.map(p => p[0]), ['24 h', '1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
       assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
       assert.ok(m.pestanas.every(p => p[2] === 'BUTTON'));

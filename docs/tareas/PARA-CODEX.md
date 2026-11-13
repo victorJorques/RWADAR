@@ -6,6 +6,104 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (21) · Claude · Gráfico con más detalle: la web
+
+- **Encargo (13/11):** el mismo que la entrada 20 («El gráfico, cuanto más
+  detalle en el tiempo tenga, mejor»). Esta rama
+  (`worktree-wf_9e649758-84d-2`) une la de datos y modelo (entrada 20, sin
+  tocar nada suyo) y hace **la parte web**: /mercado/ e Inicio. La app
+  (MercadoBolsa) va en otra rama. **Nada publicado**: ni push, ni flujos, ni
+  Supabase, ni EAS, ni la rama `datos-tokenizacion`.
+- **Qué cambia en la web, en llano:**
+  1. La página lee, a la vez que la diaria, `/datos/tokenizacion-serie-fina.json`
+     (como mucho 256 kB, igual que la app; hoy 38,6 kB, 9,7 kB comprimido).
+     Solo la usa si vale y casa con la diaria (`unirSerieFina`); si falta,
+     está rota, es de otra lectura o pesa demasiado, todo sigue con la
+     diaria como hasta hoy y «24 h» sale desactivada.
+  2. Cada pestaña usa la serie más fina que la cubre: **24 h, un punto cada
+     5 minutos (289)**; **1 S y 1 M, cada hora (169 y 721)**; 3 M, 6 M, el
+     año y 1 A, la diaria. La cabecera («▼ −4,0 % en las últimas 24 horas»)
+     y el «Cambio en 24 h» de los datos clave salen de esa misma serie.
+  3. **Abajo, el tiempo:** horas en 24 h («18:00 · 00:00 · 06:00 · 12:00»,
+     hora de España); días en 1 S y 1 M («7 nov», «15 oct»); meses en 6 M, el
+     año y 1 A. **La lectura al pasar el dedo o el ratón:** «10:05» en 24 h;
+     «11 nov, 22:00» en 1 S y 1 M; la fecha en las diarias. Igual en inglés
+     («24H», «12 Nov, 18:00», «Spain time»).
+  4. **Teclado:** las flechas van de punto en punto; Re Pág / Av Pág saltan
+     una hora (24 h), un día (1 S y 1 M) o una semana (diarias), y la ayuda
+     del gráfico lo dice. La tabla para lectores de pantalla lleva todos los
+     puntos, con su fecha y hora de España en las finas.
+  5. **De cuándo es la cifra:** «Valor hoy» y la línea de la fuente dicen la
+     hora («serie hasta el 13/11/2026, 16:05 (hora de España)»); el máximo y
+     el mínimo del periodo, con día y hora en las finas.
+  6. Si en una fina queda algún token fuera, se ve el aviso del modelo bajo
+     el cambio («La línea suma 29 de los 30: …, así que acaba 150 M$ por
+     debajo de la cifra grande.») y también en Inicio; el «Cambio en 24 h»
+     dice «29 de los 30 mayores».
+  7. **Inicio:** el minigráfico del mes sale de la serie de cada hora (721
+     puntos), con la línea más fina (1,25 px) y, en escritorio, dibujado a
+     600 de ancho para que el trazo simplificado no se note al estirarlo.
+  8. **Rendimiento** (móvil simulado, CPU 4 veces más lenta, 390 × 844, el
+     archivo real): cada movimiento del dedo sobre 1 M (721 puntos) cuesta
+     1,6-1,8 ms de media (un fotograma son 16); en 390 de ancho se pintan
+     594 de los 721 (sin perder ningún máximo ni mínimo; lo hace
+     `indicesPintar` del modelo). Cambiar de pestaña costaba el doble con las
+     finas porque cada cálculo del modelo vuelve a validar la serie (el
+     perfil lo daba como la mitad del tiempo): la web guarda lo calculado
+     por pestaña e idioma, y volver a una pestaña ya vista no recalcula
+     nada. Mediana de 7 cambios: 24 h 97 ms, 1 S 83, 1 M 159, 1 A 121 (antes
+     de este cambio, con la diaria: 1 S 79, 1 M 103, 1 A 166).
+- **Dónde:** `rwadar-site/assets/mercado-20261111.js` (`cargarSerie`,
+  `instante`, `fechaHora`, `una`, `SALTO`, `AYUDA_TECLADO`, `CAPTION`…) y
+  `mercado-20261111.css` (`.mk-aviso-fuera`, `.mk-mini-svg .mk-linea--densa`);
+  el comentario de `rwadar-site/mercado/index.html`. Prueba nueva
+  `rwadar-acceso/mercado-fino-navegador.test.mjs` con los archivos reales
+  del 13/11 como datos de prueba (`rwadar-app/tokenizacion/prueba-serie-20261113.json`
+  y `prueba-serie-fina-20261113.json`); `rwadar-acceso/tokenizacion.test.mjs`
+  actualizada (la web también pide la fina).
+- **Commits:** la unión `5d05498` de la rama de datos (sin cambiarle nada),
+  el de la web y este traspaso.
+- **Pruebas:** `npm test` en la raíz con salida 0 (los guiones de
+  `rwadar-app` y las 109 de `.github`; probar-web 711/711, 70 páginas y RSS,
+  40 de precarga; `rwadar-movil` 640: 638 bien y 2 omitidas; `rwadar-acceso`
+  315/315, con las 2 nuevas). Guardián de OTA con `--base fa30779…`:
+  `ok:true`, 1.4.2(24) (esta rama no toca la app). Copia del motor web:
+  idéntica (`copiar-modelo-web.cjs --comprobar`). La prueba nueva, en
+  Chromium con los archivos reales: en 390 × 844 (dedo) y 1366 × 900
+  (ratón), cada pestaña tiene sus puntos (289, 169, 721, 92, 182, 316 y
+  364), pinta los del modelo (594 de 721 en 1 M a 390) con el máximo y el
+  mínimo en su sitio, sus marcas («18:00», «7 nov», «jun 2026»), la cruz con
+  su instante y su valor, Fin = cifra grande, Av Pág, la tabla, los datos
+  clave, el inglés, Inicio, nada fuera de la pantalla, ningún error ni
+  bloqueo de la CSP; con la CPU 4 veces más lenta, cada movimiento del dedo
+  por debajo de 8 ms; y la diaria sola cuando la fina falta, está rota, es
+  de otra lectura, pesa más de 256 kB o es la semilla de main; y un token
+  fuera, con su aviso. **Mutaciones: 21 de 21** detectadas (sobre una copia
+  del worktree): no leer la fina, quitar el tope de 256 kB, decidir las
+  pestañas con `tramo`, la fecha en la cruz o en `aria-valuetext`, Av Pág fijo
+  en 7, la ayuda del teclado o la tabla siempre «diaria», la tabla, «Valor
+  hoy», el máximo o la fuente sin hora, el máximo de 24 h sin el día, sin el
+  aviso de fuera (en /mercado/ o en Inicio), el «Cambio en 24 h» sin los de
+  fuera, sin la memoria, el minigráfico a 112 o sin línea fina, el trazo con
+  todos los puntos y la ruta de la fina cambiada. Capturas (escala 2) en
+  `/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/grafico/web/`.
+- **Pendiente / dudas:**
+  - Publicar (con permiso de Víctor): primero la web y después la OTA de la
+    app, cuando esté su rama. `docs/INTERNO.md` se pone al día al publicar.
+  - En la misma pantalla, la cifra grande dice la hora de España sin
+    decirlo («· 13/11/2026, 16:05», texto del modelo) y el total de la
+    categoría dice «hoy, 14:42 UTC». No es un error de datos, pero mezcla
+    dos husos: lo cómodo sería que el modelo diga también «hora de España»
+    en `subtituloCifra` o pase `cuandoDato` a hora de España (lo leen la web y
+    la app, y las pruebas actuales esperan «UTC»). No lo toqué.
+  - No hay pestaña «Histórico»: la serie diaria es de un año y «1 A» es la
+    serie entera.
+  - «Día y hora en 7 días»: en el eje de 1 S van días (las marcas caen a
+    medianoche) y en la lectura, día y hora; en 1 M, igual (cada punto es
+    una hora, así que la lectura necesita la hora para distinguirlos).
+
+---
+
 ## 13 de noviembre de 2026 (20) · Claude · Gráfico con más detalle: los datos y el modelo
 
 - **Encargo (13/11):** «El gráfico, cuanto más detalle en el tiempo tenga,

@@ -9,7 +9,12 @@
      (/datos/tokenizacion-historico.json), con su fecha;
    - /datos/tokenizacion-serie.json: la serie diaria de un año, suma de los
      mayores tokens de la categoría con historia completa en CoinGecko (hoy
-     29 de los 40 mayores; rwadar-app/tokenizacion/serie-diaria.mjs).
+     30 de los 40 mayores; rwadar-app/tokenizacion/serie-diaria.mjs);
+   - /datos/tokenizacion-serie-fina.json (13/11/2026): de los mismos tokens,
+     un punto cada 5 minutos de las últimas 24 horas y uno cada hora de los
+     últimos 30 días. Solo se usa si es de la misma ejecución que la diaria y
+     acaba en su mismo punto (unirSerieFina); si falta, no vale o no casa, el
+     gráfico sigue con la diaria como antes y «24 h» sale desactivada.
    La cifra grande es el último punto de la serie (QA del 11/11/2026): la
    misma que el final de la línea, la cruz en el último día, el cambio, el
    máximo y el mínimo. El total de la categoría, con todos sus tokens, va en
@@ -18,16 +23,24 @@
    Dos modos:
    - data-mercado="completo" (/mercado/): el nombre, la cifra grande y el
      cambio del periodo (signo, flecha y texto: el color nunca va solo) con
-     lo que mide, pestañas 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (1 M por
-     defecto; en inglés, «YTD»), el gráfico de área SVG propio (eje de
-     valores a la derecha con el último valor marcado, fechas abajo, rejilla
-     suave, línea de puntos en el valor de partida y una cruz con la fecha y
-     el valor al pasar el ratón, al arrastrar el dedo o con las flechas del
-     teclado), su tabla para lectores de pantalla, los datos clave y las
-     barras por tipo. Las noticias, debajo, las pinta noticias-sector.
+     lo que mide, pestañas 24 h · 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (1 M
+     por defecto; en inglés, «24H» y «YTD»), el gráfico de área SVG propio
+     (eje de valores a la derecha con el último valor marcado, el tiempo
+     abajo, rejilla suave, línea de puntos en el valor de partida y una cruz
+     con el instante y el valor al pasar el ratón, al arrastrar el dedo o con
+     las flechas del teclado), su tabla para lectores de pantalla, los datos
+     clave y las barras por tipo. Las noticias, debajo, las pinta
+     noticias-sector. Cada pestaña usa la serie más fina que la cubre
+     (seriePestana): 24 h, un punto cada 5 minutos (abajo, horas «06:00» y en
+     la cruz «16:20», en hora de España); 1 S y 1 M, cada hora (abajo, días;
+     en la cruz, «8 nov, 18:00»); 3 M, 6 M, el año y 1 A, la diaria (abajo,
+     días o meses; en la cruz, la fecha). Con cientos de puntos, el trazo se
+     simplifica para pintar sin perder ningún máximo ni mínimo
+     (indicesPintar) y la cruz los recorre todos (indiceCercano).
    - data-mercado="inicio": la tarjeta tipo cotización de Inicio (nombre,
-     cifra, cambio del mes y un minigráfico del último mes: la misma cifra
-     que el final del minigráfico), que lleva a /mercado/.
+     cifra, cambio del mes y un minigráfico del último mes, cada hora si hay
+     serie fina: la misma cifra que el final del minigráfico), que lleva a
+     /mercado/.
    Todos los cálculos están en rwadar-movil/lib/tokenizacion.js (copiado en
    tokenizacion-modelo): aquí solo se dibuja. Ninguna cifra se inventa.
    Los textos se escriben ya en el idioma elegido (translate="no") y se
@@ -38,6 +51,8 @@
   const modelo = globalThis.RWAdarTokenizacionModelo;
   const RUTA_API = '/api/tokenizacion', RUTA_HISTORICO = '/datos/tokenizacion-historico.json';
   const RUTA_SERIE = '/datos/tokenizacion-serie.json', PLAZO_MS = 10000;
+  // Las series finas, en un archivo aparte; como en la app, nada de más de 256 kB (hoy ocupa unos 39).
+  const RUTA_SERIE_FINA = '/datos/tokenizacion-serie-fina.json', MAX_FINA = 256 * 1024;
   const SVG = 'http://www.w3.org/2000/svg';
   const FLECHA = { sube: '▲', baja: '▼', igual: '=' };
   let raiz, modo, vivo = null, serie = null, pestana = null, suscrito = false, cruz = null, quitarRedimension = null;
@@ -62,12 +77,15 @@
   }
   const finito = v => typeof v === 'number' && Number.isFinite(v);
 
-  async function pedir(url) {
+  async function pedir(url, maximo = 0) {
     const abort = new AbortController(), reloj = setTimeout(() => abort.abort(), PLAZO_MS);
     try {
       const r = await fetch(url, { credentials: 'omit', cache: 'no-cache', headers: { Accept: 'application/json' }, signal: abort.signal });
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      return await r.json();
+      if (!maximo) return await r.json();
+      const texto = await r.text();
+      if (texto.length > maximo) throw new Error('demasiado grande');
+      return JSON.parse(texto);
     } finally { clearTimeout(reloj); }
   }
   async function cargarVivo() {
@@ -78,11 +96,41 @@
     } catch { /* sin dato de hoy */ }
     return null;
   }
+  /* La diaria y, a la vez, la fina. La fina solo entra si vale y casa con la
+     diaria (unirSerieFina); si falta (la semilla de main, una web anterior),
+     no vale o no casa, la diaria sola, como antes de las series finas. */
   async function cargarSerie() {
-    try { const s = await pedir(RUTA_SERIE); return modelo.serieValida(s) ? modelo.validarSerie(s) : null; } catch { return null; }
+    const [diaria, fina] = await Promise.all([pedir(RUTA_SERIE).catch(() => null), pedir(RUTA_SERIE_FINA, MAX_FINA).catch(() => null)]);
+    if (!modelo.serieValida(diaria)) return null;
+    return (fina && modelo.unirSerieFina(diaria, fina)) || modelo.validarSerie(diaria);
   }
 
   /* ---- Piezas comunes ---- */
+  /* El instante de un punto, según la serie de la pestaña: en 24 h, la hora
+     («16:20»); en 1 S y 1 M, el día y la hora («8 nov, 18:00»); en las
+     diarias, la fecha. Las horas, de España peninsular. Con «largo» (lector
+     de pantalla), la fecha entera y «(hora de España)». */
+  const instante = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion);
+  const instanteLargo = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion, { largo: true });
+  // Un máximo o un mínimo: en 24 h también el día (la ventana cruza la medianoche).
+  const instanteDia = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion === '5m' ? '1h' : g.resolucion);
+  // «13/11/2026, 16:05» en hora de España, como el subtítulo de la cifra.
+  function fechaHora(ms) {
+    const h = modelo.horaEspana(ms);
+    return modelo.fechaCorta(h.fecha, idioma()) + ', ' + h.hora;
+  }
+  const finasUnidas = () => (serie ? ['5m', '1h'].filter(c => modelo.serieFinaDe(serie, c)) : []);
+  /* Lo que solo depende de la serie (que no cambia tras cargar), de la
+     pestaña y del idioma se calcula una vez: cada cálculo del modelo vuelve a
+     validar la serie, y con las finas cambiar de pestaña tardaba el doble en
+     un móvil lento (perfil del 13/11/2026: la mitad del tiempo, validando). */
+  const memo = new Map();
+  function una(clave, calcular) {
+    if (!memo.has(clave)) memo.set(clave, calcular());
+    return memo.get(clave);
+  }
+  const disponible = clave => una('disponible|' + clave, () => modelo.pestanaDisponible(serie, clave));
+  const graficoDe = clave => una('grafico|' + clave + '|' + idioma(), () => modelo.graficoPestana(serie, clave, idioma()));
   const nombrePestana = clave => modelo.PESTANAS.find(p => p.clave === clave);
   function cambio(g, clase) {
     const n = el('span', 'mk-cambio mk-' + g.direccion + (clase ? ' ' + clase : ''));
@@ -117,7 +165,10 @@
     const a = el('a', '', 'CoinGecko');
     a.href = modelo.FUENTE.url; a.target = '_blank'; a.rel = 'noopener nofollow';
     p.append(a);
-    if (serie) p.append(' · ', el('span', '', tx('serie diaria hasta el', 'daily series to') + ' ' + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
+    // Con la serie fina, hasta qué hora (la de la cifra grande); si no, hasta qué día.
+    const hoy = valorHoy();
+    if (serie && hoy?.t) p.append(' · ', el('span', '', tx('serie hasta el', 'series to') + ' ' + fechaHora(modelo.msMinuto(hoy.t)) + tx(' (hora de España)', ' (Spain time)')));
+    else if (serie) p.append(' · ', el('span', '', tx('serie diaria hasta el', 'daily series to') + ' ' + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
     if (vivo && conTotal) {
       const cuando = el('time', '', modelo.cuandoDato(vivo, idioma()));
       cuando.dateTime = vivo.actualizado;
@@ -168,7 +219,7 @@
     // La línea de puntos con el valor de partida del periodo, como en bolsa.
     const yBase = yDe(g.estadisticas.inicio);
     dibujo.append(svg('line', { class: 'mk-base', x1: 0, x2: PW, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }));
-    // Con muchos puntos (6 M, 2026 y 1 A), una línea algo más fina: a 2 px parecía peluda.
+    // Con muchos puntos (24 h, 1 S, 1 M, 6 M, 2026 y 1 A), una línea algo más fina: a 2 px parecía peluda.
     dibujo.append(svg('path', { class: 'mk-linea' + (g.puntos.length > 120 ? ' mk-linea--densa' : ''), d: trazo }));
     // Ejes: valores a la derecha, fechas abajo. El último valor, en una píldora a su altura
     // (es la cifra grande); las marcas que chocarían con ella no se escriben.
@@ -217,16 +268,16 @@
     punto.setAttribute('cx', c.x.toFixed(1)); punto.setAttribute('cy', c.y.toFixed(1));
     grupo.setAttribute('visibility', 'visible');
     const lengua = idioma();
-    // En una línea, encima del dibujo: fecha · valor · cambio desde el primer día del periodo.
+    // En una línea, encima del dibujo: instante · valor · cambio desde el primer punto del periodo.
     const desdeInicio = modelo.porcentaje(modelo.cambioPct(p.valor, g.estadisticas.inicio), lengua);
-    burbuja.replaceChildren(el('span', 'mk-burbuja-fecha', modelo.fechaCorta(p.fecha, lengua)), el('b', 'mk-burbuja-valor', modelo.millones(p.valor, lengua)),
+    burbuja.replaceChildren(el('span', 'mk-burbuja-fecha', instante(p, g)), el('b', 'mk-burbuja-valor', modelo.millones(p.valor, lengua)),
       el('span', 'mk-burbuja-cambio', desdeInicio));
     burbuja.hidden = false;
     // La burbuja sigue a la cruz sin salirse del gráfico (CSSOM, sin style en línea).
     const anchoB = burbuja.offsetWidth || 200;
     burbuja.style.setProperty('--mk-x', Math.max(0, Math.min(Math.max(0, ancho - anchoB), c.x - anchoB / 2)).toFixed(0) + 'px');
     caja.setAttribute('aria-valuenow', String(k));
-    caja.setAttribute('aria-valuetext', `${modelo.fechaCorta(p.fecha, lengua)}: ${modelo.millonesHablados(p.valor, lengua)}`);
+    caja.setAttribute('aria-valuetext', `${instanteLargo(p, g)}: ${modelo.millonesHablados(p.valor, lengua)}`);
     caja.dataset.indice = String(k);
   }
   function quitarCruz(caja, burbuja) {
@@ -236,6 +287,15 @@
     delete caja.dataset.indice;
   }
 
+  /* El teclado, según la serie de la pestaña: las flechas van de punto en
+     punto y Re Pág / Av Pág saltan una hora (cada 5 minutos), un día (cada
+     hora) o una semana (diaria). */
+  const SALTO = { '5m': 12, '1h': 24, '1d': 7 };
+  const AYUDA_TECLADO = {
+    '5m': ['Usa las flechas para ir de 5 en 5 minutos y Re Pág y Av Pág para saltar una hora.', 'Use the arrow keys to move 5 minutes at a time and Page Up and Page Down to jump an hour.'],
+    '1h': ['Usa las flechas para recorrer las horas y Re Pág y Av Pág para saltar un día.', 'Use the arrow keys to move through the hours and Page Up and Page Down to jump a day.'],
+    '1d': ['Usa las flechas para recorrer los días.', 'Use the arrow keys to move through the days.'],
+  };
   function graficoInteractivo(g) {
     const marco = el('div', 'mk-graf-marco mk-' + g.direccion);
     const caja = el('div', 'mk-graf');
@@ -243,11 +303,14 @@
     caja.setAttribute('role', 'slider');
     caja.setAttribute('aria-orientation', 'horizontal');
     caja.setAttribute('aria-label', tx('Gráfico del mercado', 'Market chart') + ', ' + g.periodoTexto + '. ' + g.etiqueta + ' ' +
-      tx('Usa las flechas para recorrer los días.', 'Use the arrow keys to move through the days.'));
+      tx(...(AYUDA_TECLADO[g.resolucion] || AYUDA_TECLADO['1d'])));
     caja.setAttribute('aria-valuemin', '0');
     caja.setAttribute('aria-valuemax', String(g.puntos.length - 1));
     caja.setAttribute('aria-valuenow', String(g.puntos.length - 1));
-    caja.setAttribute('aria-valuetext', `${modelo.fechaCorta(g.puntos.at(-1).fecha, idioma())}: ${modelo.millonesHablados(g.puntos.at(-1).valor, idioma())}`);
+    caja.setAttribute('aria-valuetext', `${instanteLargo(g.puntos.at(-1), g)}: ${modelo.millonesHablados(g.puntos.at(-1).valor, idioma())}`);
+    // Qué serie pinta la pestaña y cuántos puntos tiene (lo leen las pruebas).
+    caja.dataset.resolucion = g.resolucion;
+    caja.dataset.puntos = String(g.puntos.length);
     const burbuja = el('div', 'mk-burbuja');
     burbuja.hidden = true;
     burbuja.setAttribute('aria-hidden', 'true');
@@ -275,7 +338,8 @@
     caja.addEventListener('pointerleave', soltar);
     caja.addEventListener('keydown', ev => {
       const n = g.puntos.length, i = caja.dataset.indice === undefined ? n - 1 : Number(caja.dataset.indice);
-      const paso = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1, PageDown: -7, PageUp: 7 }[ev.key];
+      const salto = SALTO[g.resolucion] || 7;
+      const paso = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1, PageDown: -salto, PageUp: salto }[ev.key];
       if (paso !== undefined) { ev.preventDefault(); ponerCruz(caja, burbuja, i + paso); }
       else if (ev.key === 'Home') { ev.preventDefault(); ponerCruz(caja, burbuja, 0); }
       else if (ev.key === 'End') { ev.preventDefault(); ponerCruz(caja, burbuja, n - 1); }
@@ -295,18 +359,20 @@
     return marco;
   }
 
-  /* La misma serie en una tabla, para lectores de pantalla. */
+  /* La misma serie en una tabla, para lectores de pantalla: todos los puntos,
+     con su fecha y, en las finas, su hora de España. */
+  const CAPTION = { '5m': ['Valor cada 5 minutos, ', 'Value every 5 minutes, '], '1h': ['Valor cada hora, ', 'Hourly value, '], '1d': ['Valor diario, ', 'Daily value, '] };
   function tablaSerie(g) {
     const caja = el('div', 'solo-lector');
-    const t = el('table');
-    t.append(el('caption', '', tx('Valor diario, ', 'Daily value, ') + g.periodoTexto + ' (' + g.alcance + tx(' tokens', ' tokens') + ')'));
+    const t = el('table'), fina = g.resolucion !== '1d';
+    t.append(el('caption', '', tx(...(CAPTION[g.resolucion] || CAPTION['1d'])) + g.periodoTexto + ' (' + g.alcance + tx(' tokens', ' tokens') + ')'));
     const cab = el('tr');
-    cab.append(el('th', '', tx('Fecha', 'Date')), el('th', '', tx('Valor', 'Value')));
+    cab.append(el('th', '', fina ? tx('Fecha y hora de España', 'Date and Spain time') : tx('Fecha', 'Date')), el('th', '', tx('Valor', 'Value')));
     for (const th of cab.children) th.setAttribute('scope', 'col');
     t.append(cab);
     for (const p of g.puntos) {
       const fila = el('tr');
-      fila.append(el('th', '', modelo.fechaCorta(p.fecha, idioma())), el('td', '', modelo.millones(p.valor, idioma())));
+      fila.append(el('th', '', fina ? fechaHora(p.ms) : modelo.fechaCorta(p.fecha, idioma())), el('td', '', modelo.millones(p.valor, idioma())));
       fila.firstChild.setAttribute('scope', 'row');
       t.append(fila);
     }
@@ -327,22 +393,32 @@
     };
     const hoy = valorHoy(), lengua = idioma();
     // Dos cifras distintas, cada una con su nombre: la de la serie (la cifra grande) y la de toda la categoría.
-    if (serie && hoy?.fuente === 'serie') fila(tx(`Valor hoy (${serie.incluidos} mayores)`, `Value today (${serie.incluidos} largest)`), modelo.millones(hoy.valor, lengua), modelo.fechaCorta(hoy.fecha, lengua));
+    // Con la serie fina, de cuándo es: el día y la hora de España («13/11/2026, 16:05»).
+    if (serie && hoy?.fuente === 'serie') fila(tx(`Valor hoy (${serie.incluidos} mayores)`, `Value today (${serie.incluidos} largest)`), modelo.millones(hoy.valor, lengua),
+      hoy.t ? fechaHora(modelo.msMinuto(hoy.t)) : modelo.fechaCorta(hoy.fecha, lengua));
     fila(tx('Total de la categoría hoy', 'Category total today'), vivo ? modelo.millones(vivo.total.valor, lengua) : '—',
       vivo ? tx('todos los tokens · CoinGecko', 'all tokens · CoinGecko') : null);
-    // 24 h: el de la serie si sus dos últimos días son seguidos; si no, el de CoinGecko si es creíble; si no, «—».
-    const c24 = modelo.cambio24h(serie, vivo);
+    // 24 h: con la serie fina, el de la pestaña «24 h» (el mismo que se pinta); si no, el de la diaria si sus dos
+    // últimos días son seguidos; si no, el de CoinGecko si es creíble; si no, «—».
+    const c24 = una('cambio24h', () => modelo.cambio24h(serie, vivo));
     if (c24.cambio !== null) {
       const dir = modelo.direccion(c24.cambio);
       const c = el('span', 'mk-cambio mk-' + dir);
       const f = el('span', 'mk-flecha', FLECHA[dir] || ''); f.setAttribute('aria-hidden', 'true');
       c.append(f, el('span', '', modelo.porcentaje(c24.cambio, lengua)));
-      fila(tx('Cambio en 24 h', '24 h change'), c, c24.fuente === 'serie' ? tx(`${serie.incluidos} mayores`, `${serie.incluidos} largest`) : tx('toda la categoría', 'whole category'));
+      let quienes = tx('toda la categoría', 'whole category');
+      if (c24.fuente === 'serie') {
+        // Si en la serie de 24 h queda algún token fuera, cuántos suma.
+        const n = serie.incluidos, dentro = n - una('fuera24h', () => modelo.seriePestana(serie, '1d')?.fuera.length || 0);
+        quienes = dentro === n ? tx(`${n} mayores`, `${n} largest`) : tx(`${dentro} de los ${n} mayores`, `${dentro} of the ${n} largest`);
+      }
+      fila(tx('Cambio en 24 h', '24 h change'), c, quienes);
     } else fila(tx('Cambio en 24 h', '24 h change'), '—');
     if (g) {
+      // En las pestañas finas, también la hora del máximo y del mínimo («12 nov, 18:40»).
       const e = g.estadisticas;
-      fila(tx('Máximo del periodo', 'Period high'), modelo.millones(e.max.valor, lengua), modelo.fechaCorta(e.max.fecha, lengua));
-      fila(tx('Mínimo del periodo', 'Period low'), modelo.millones(e.min.valor, lengua), modelo.fechaCorta(e.min.fecha, lengua));
+      fila(tx('Máximo del periodo', 'Period high'), modelo.millones(e.max.valor, lengua), instanteDia(e.max, g));
+      fila(tx('Mínimo del periodo', 'Period low'), modelo.millones(e.min.valor, lengua), instanteDia(e.min, g));
     }
     // La misma cuota y con el mismo redondeo que la nota del gráfico («86 %»).
     if (serie) fila(tx('Tokens en el gráfico', 'Tokens in the chart'), `${serie.incluidos}`,
@@ -410,7 +486,7 @@
     const como = el('details', 'mk-como');
     como.open = comoAbierto;
     como.addEventListener('toggle', () => { comoAbierto = como.open; });
-    como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', modelo.notaSerie(serie, idioma(), pestana)));
+    como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', una('nota|' + pestana + '|' + idioma(), () => modelo.notaSerie(serie, idioma(), pestana))));
     // La nota corta (la misma coletilla que el subtítulo) y, en gris, el total de la categoría con su hora.
     const nota = el('p', 'mk-nota', modelo.notaCorta(serie, idioma()));
     const total = modelo.lineaTotalCategoria(serie, vivo, idioma());
@@ -431,7 +507,7 @@
       return;
     }
     raiz.dataset.mercadoEstado = vivo ? vivo.fuente + (serie ? '+serie' : '') : 'solo-serie';
-    const g = serie ? modelo.graficoPestana(serie, pestana, idioma()) : null;
+    const g = serie ? graficoDe(pestana) : null;
     const cab = el('div', 'mk-cab');
     // Qué suma la cifra grande y de qué día; la cifra es el último punto de la línea.
     cab.append(el('p', 'mk-sub', modelo.subtituloCifra(serie, idioma())), cifraGrande(hoy.valor, 'mk-cifra'));
@@ -442,6 +518,8 @@
       // Qué mide ese % (no es una rentabilidad) y, si en el periodo entran tokens, que parte de la subida es eso.
       cab.append(linea, el('p', 'mk-explica', modelo.explicacionCambio(idioma())));
       if (g.avisoTokens) cab.append(el('p', 'mk-aviso mk-aviso-tokens', g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.'));
+      // En una pestaña fina con tokens fuera, su línea acaba por debajo de la cifra grande: se dice cuánto y por qué.
+      if (g.avisoFuera) cab.append(el('p', 'mk-aviso mk-aviso-fuera', g.avisoFuera[0].toUpperCase() + g.avisoFuera.slice(1) + '.'));
     }
     if (atrasada()) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
     // El total de la categoría va bajo el gráfico (notaGrafico); sin serie, la cifra grande ya es ese total y se dice.
@@ -458,7 +536,8 @@
       b.dataset.pestana = p.clave;
       b.setAttribute('aria-pressed', String(p.clave === pestana));
       b.setAttribute('aria-label', et.nombre);
-      const sinDatos = !serie || !modelo.tramo(serie.puntos, p.clave);
+      // «24 h» solo con serie fina; las demás, con la fina o con la diaria (seriePestana).
+      const sinDatos = !serie || !disponible(p.clave);
       if (sinDatos) b.disabled = true;
       pestanas.append(b);
     }
@@ -479,18 +558,24 @@
 
   /* ---- Inicio: la tarjeta tipo cotización ---- */
   function minigrafico(g) {
-    const W = 112, H = 44, M = 3;
+    // En escritorio se estira a lo ancho de su columna (unos 600 px): se dibuja a ese ancho para que el trazo
+    // simplificado (indicesPintar, con la serie de cada hora) no se note al estirarlo.
+    const W = matchMedia('(min-width:768px)').matches ? 600 : 112, H = 44, M = 3;
     const coords = modelo.coordenadas(g, W - 2 * M, H - 2 * M).map(c => ({ x: c.x + M, y: c.y + M }));
     const { linea: d, area, puentes } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), H);
     const id = 'mkMini' + Math.random().toString(36).slice(2, 8);
     // preserveAspectRatio="none": en escritorio se estira a lo ancho de su columna sin engordar la línea.
     const s = svg('svg', { class: 'mk-mini-svg mk-' + g.direccion, width: W, height: H, viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'none', 'aria-hidden': 'true', focusable: 'false' });
+    s.dataset.resolucion = g.resolucion;
+    s.dataset.puntos = String(g.puntos.length);
     const defs = svg('defs'), deg = svg('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 });
     deg.append(svg('stop', { offset: '0', class: 'mk-stop', 'stop-opacity': '0.3' }), svg('stop', { offset: '1', class: 'mk-stop', 'stop-opacity': '0' }));
     defs.append(deg);
     const yBase = coords[0].y;
     s.append(defs, svg('path', { class: 'mk-area', d: area, fill: `url(#${id})` }),
-      svg('line', { class: 'mk-base', x1: M, x2: W - M, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }), svg('path', { class: 'mk-linea', d }));
+      svg('line', { class: 'mk-base', x1: M, x2: W - M, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }),
+      // Con la serie de cada hora (721 puntos), una línea más fina: a 1,75 px el mes se veía apelmazado.
+      svg('path', { class: 'mk-linea' + (g.puntos.length > 120 ? ' mk-linea--densa' : ''), d }));
     if (puentes) s.append(svg('path', { class: 'mk-puente', d: puentes }));
     return s;
   }
@@ -505,7 +590,7 @@
       return;
     }
     // La misma cifra que el final del minigráfico: el último punto de la serie.
-    const g = serie ? modelo.graficoPestana(serie, '1m', idioma()) : null;
+    const g = serie ? graficoDe('1m') : null;
     const a = el('a', 'mk-ct');
     a.href = '/mercado/';
     const izq = el('span', 'mk-ct-izq');
@@ -521,12 +606,15 @@
     a.setAttribute('aria-label', tx('Mercado de activos tokenizados', 'Tokenised asset market') + ', ' +
       (serie ? tx(`suma de los ${serie.incluidos} mayores tokens`, `sum of the ${serie.incluidos} largest tokens`) : tx('total de la categoría', 'category total')) + ': ' +
       modelo.millonesHablados(hoy.valor, idioma()) +
-      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + g.cambioFrase + (g.avisoTokens ? '; ' + g.avisoTokens : '') : '') +
+      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + g.cambioFrase +
+        (g.avisoTokens ? '; ' + g.avisoTokens : '') + (g.avisoFuera ? '; ' + g.avisoFuera : '') : '') +
       (atrasada() ? '; ' + tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma()) : '') +
       '. ' + tx('Ver el gráfico', 'See the chart'));
     const partes = [a];
     // El % del mes es del tamaño del mercado, no una rentabilidad: también aquí.
     if (g) partes.push(el('p', 'mk-explica mk-ct-explica', modelo.explicacionCambio(idioma())));
+    // Si en la serie del mes queda un token fuera, el minigráfico acaba algo por debajo de la cifra: se dice.
+    if (g?.avisoFuera) partes.push(el('p', 'mk-aviso mk-aviso-fuera', g.avisoFuera[0].toUpperCase() + g.avisoFuera.slice(1) + '.'));
     partes.push(lineaFuente({ conTotal: false }));
     cuerpo.replaceChildren(...partes);
   }
@@ -546,7 +634,9 @@
     pestana = modelo.PESTANA_INICIAL;
     [vivo, serie] = await Promise.all([cargarVivo(), cargarSerie()]);
     // Si 1 M no tiene datos, la primera pestaña que sí.
-    if (serie && !modelo.tramo(serie.puntos, pestana)) pestana = modelo.PESTANAS.find(p => modelo.tramo(serie.puntos, p.clave))?.clave || pestana;
+    if (serie && !disponible(pestana)) pestana = modelo.PESTANAS.find(p => disponible(p.clave))?.clave || pestana;
+    // Con qué series se pinta («5m,1h», «1h» o «diaria»; lo leen las pruebas).
+    if (serie) raiz.dataset.mercadoSeries = finasUnidas().join(',') || 'diaria';
     pintar();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar, { once: true });
