@@ -90,6 +90,13 @@ jobs:
             else
               echo "La rama aún no tiene la serie: se publica la semilla de main."
             fi
+            # Las series finas (13/11/2026: cada 5 minutos y cada hora), si ya las hay.
+            if git show FETCH_HEAD:tokenizacion-serie-fina.json > "$RUNNER_TEMP/tokenizacion-serie-fina.json" 2>/dev/null; then
+              echo "RWADAR_TOKENIZACION_SERIE_FINA=$RUNNER_TEMP/tokenizacion-serie-fina.json" >> "$GITHUB_ENV"
+              echo "Series finas de la tokenización: rama datos-tokenizacion."
+            else
+              echo "La rama aún no tiene las series finas: el gráfico usará la diaria."
+            fi
           else
             echo "Sin la rama datos-tokenizacion: se publica la semilla de main."
           fi
