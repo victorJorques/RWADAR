@@ -1,0 +1,39 @@
+# Copias binarias y HTML completos de las fuentes: se conservan en disco
+# durante el ciclo, con su SHA-256 en cada inventario-consultas. En Git van
+# los textos extraídos (.txt), los resúmenes y los expedientes.
+grupos/**/*.pdf
+grupos/**/*.html
+grupos/**/*.htm
+grupos/**/*.png
+grupos/**/*.jpg
+grupos/**/*.bin
+revision-independiente/**/*.pdf
+revision-independiente/**/*.html
+revision-independiente/**/*.htm
+revision-independiente/**/*.png
+revision-independiente/**/*.jpg
+# Respuestas crudas de API y de cadena (direcciones, tokenId, UUID) que el
+# escáner de secretos confunde con claves: en disco con su SHA-256, no en Git.
+grupos/**/crudo/
+revision-independiente/**/crudo/
+grupos/**/*.json.gz
+grupos/**/.inventario.jsonl
+
+# Copias públicas de Midas (llms-full.txt) con un identificador público que el
+# escáner de secretos confunde con una clave: en disco con su SHA-256, no en Git.
+grupos/acciones-oro-tesoro/fuentes/midas-app-llms-full.txt
+revision-independiente/fuentes/acciones-oro-tesoro/midas-app-llms-full.txt
+
+
+# Noticias del sector: los PDF y HTML originales quedan en disco con su SHA-256
+# en las notas de los analistas; en Git, el JSON, las notas y la verificación.
+noticias/**/*.pdf
+noticias/**/*.html
+noticias/**/*.htm
+noticias/**/crudo/
+
+# 13/11: los PDF de las noticias son los mismos que el 12/11 (misma SHA-256,
+# ver noticias/inventario-consultas.txt); su texto, ya sin nombres de
+# personas, está en ../2026-11-12-v2/noticias/fuentes/. Las extracciones de hoy
+# se quedan en disco.
+noticias/fuentes/
