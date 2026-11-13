@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { PanResponder, StyleSheet } from 'react-native';
+import { PanResponder, StyleSheet, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Line, LinearGradient, Path, Rect, Stop, Text as SvgText } from 'react-native-svg';
 import { Pressable, Text, View, useIdioma } from './Idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
-import { cargarSerie } from '../lib/tokenizacion-serie-remota';
+import { cargarSerieConFina } from '../lib/tokenizacion-serie-remota';
 import { FUENTE, PESTANAS, PESTANA_INICIAL, cambio24h, cambioPct, cifraGrande, coberturaTexto, colorTipo, coordenadas, cuandoDato, cuota, direccion,
-  etiquetaPestana, explicacionCambio, fechaCorta, graficoPestana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados, notaCorta,
-  notaSerie, porcentaje, serieAtrasada, subtituloCifra, tramo, tramosSeguidos, trazosSvg } from '../lib/tokenizacion';
+  etiquetaPestana, explicacionCambio, fechaCorta, graficoPestana, horaEspana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados,
+  msMinuto, notaCorta, notaSerie, pestanaDisponible, porcentaje, serieAtrasada, seriePestana, subtituloCifra, textoInstante, tramosSeguidos,
+  trazosSvg } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -23,17 +24,23 @@ import { tacto } from '../lib/tacto';
    máximo y el mínimo; el total de la categoría va debajo, en gris.
    - MercadoPantalla: el nombre, la cifra grande y el cambio del periodo
      (signo, flecha y texto: el color nunca va solo) con lo que mide, las
-     pestañas 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (1 M por defecto; en inglés,
-     «YTD»), el gráfico de área (verde si sube, rojo si baja; eje de valores
-     a la derecha con el último valor marcado, fechas abajo, rejilla suave y
-     una línea de puntos en el valor de partida) con una cruz que sigue al
-     dedo (gesto de arrastre) o a los gestos de accesibilidad (subir y
-     bajar), los datos clave, las barras por tipo y, debajo (children), las
-     noticias relacionadas.
+     pestañas 24 h · 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (1 M por defecto; en
+     inglés, «24H» y «YTD»), el gráfico de área (verde si sube, rojo si
+     baja; eje de valores a la derecha con el último valor marcado, horas o
+     fechas abajo, rejilla suave y una línea de puntos en el valor de
+     partida) con una cruz que sigue al dedo (gesto de arrastre) o a los
+     gestos de accesibilidad (subir y bajar), los datos clave, las barras
+     por tipo y, debajo (children), las noticias relacionadas.
    - MercadoCotizacion: la tarjeta de Inicio (nombre, cifra, cambio del mes
      y un minigráfico del mes: la misma cifra que su final), que abre la
      pantalla.
    Los textos van ya en el idioma elegido (noTraducir): llevan cifras.
+   Más detalle en el tiempo (13/11/2026): la app lee también las series
+   finas (/datos/tokenizacion-serie-fina.json, cargarSerieConFina) y cada
+   pestaña usa la más fina que la cubre (seriePestana): 24 h, un punto cada
+   5 minutos; 1 S y 1 M, cada hora; las demás, cada día. Sin la fina (una web
+   sin publicar o una lectura que falla), todo sigue con la diaria y «24 h»
+   sale desactivada. El eje y la cruz dicen la hora de España en las finas.
    --------------------------------------------------------------------- */
 const VERDE = C.senal;
 // Un solo rojo para la línea y las cifras: #FF6B5E pasa AA como texto sobre s0 y s1.
@@ -49,8 +56,9 @@ const CRUZ_FIJA_MS = 3000;
 const colorLinea = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO : C.tx2);
 const colorTexto = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO_TEXTO : C.tx2);
 
-/* Las dos lecturas, juntas. Un fallo de una no tumba la otra. */
-export function useMercado({ cargarVivo = cargarTokenizacion, cargarLaSerie = cargarSerie } = {}) {
+/* Las dos lecturas, juntas. Un fallo de una no tumba la otra. La serie, con
+   sus finas si las hay y casan con ella (si no, la diaria sola). */
+export function useMercado({ cargarVivo = cargarTokenizacion, cargarLaSerie = cargarSerieConFina } = {}) {
   const [estado, setEstado] = useState({ fase: 'cargando', vivo: null, serie: null });
   const vivoRef = useRef(true);
   const pedir = useCallback(() => {
@@ -81,18 +89,110 @@ function valorHoy(vivo, serie) {
   return c ? c.valor : null;
 }
 
-/* ---- El gráfico de área, con su cruz ---- */
+/* ---- Cuándo es cada punto (13/11/2026) ----
+   De la diaria, su fecha («08/11/2026»). De las finas, en hora de España
+   (textoInstante): en 24 h, la hora («16:05»), y si el punto es del día
+   anterior al último, también el día («12 nov, 16:05»: el primer y el último
+   punto de 24 h tienen la misma hora y no se distinguirían); en las horarias
+   (1 S y 1 M), el día y la hora («8 nov, 18:00»). */
+function cuandoCorto(p, g, idioma) {
+  if (g.resolucion === '1d' || typeof p.ms !== 'number') return fechaCorta(p.fecha, idioma);
+  if (g.resolucion === '5m' && horaEspana(p.ms).fecha === horaEspana(g.puntos[g.puntos.length - 1].ms).fecha) return textoInstante(p, idioma, '5m');
+  return textoInstante(p, idioma, '1h');
+}
+/* Con la fecha entera, para el lector de pantalla: «13/11/2026, 16:05 (hora de España)». */
+function cuandoLargo(p, g, idioma) {
+  return g.resolucion === '1d' || typeof p.ms !== 'number' ? fechaCorta(p.fecha, idioma) : textoInstante(p, idioma, g.resolucion, { largo: true });
+}
+/* Para los datos clave: «13/11/2026, 16:05» (hora de España) si el punto es de una fina; si no, su fecha. */
+function cuandoMedio(p, idioma) {
+  if (!p || typeof p.ms !== 'number') return fechaCorta(p?.fecha, idioma);
+  const h = horaEspana(p.ms);
+  return `${fechaCorta(h.fecha, idioma)}, ${h.hora}`;
+}
+/* El lector de pantalla recorre la línea a saltos que se pueden escuchar
+   (288 puntos de uno en uno no hay quien los oiga): de hora en hora en 24 h,
+   de 6 en 6 horas en 1 S y de día en día en 1 M y en las diarias. */
+function pasoLector(g) {
+  if (g.resolucion === '5m') return { paso: Math.max(1, Math.round(3600000 / g.pasoMs)), es: 'una hora', en: 'an hour' };
+  if (g.resolucion === '1h') return g.clave === '1s' ? { paso: 6, es: '6 horas', en: '6 hours' } : { paso: 24, es: 'un día', en: 'a day' };
+  return { paso: 1, es: 'un día', en: 'a day' };
+}
+/* Las medidas del gráfico con la letra del sistema (fontScale). Las cifras
+   del eje crecen con ella hasta 1,5 veces (más no caben a lo ancho). La
+   franja de arriba, donde va la burbuja de la cruz, crece con la letra entera
+   y con las líneas que ocupará la burbuja en ese ancho («lineas»: con la
+   letra al 200 %, la burbuja va en dos líneas y tapaba el principio de la
+   línea y la píldora). Con la letra normal, las de siempre: eje de 54 px,
+   franja de 40 y 28 abajo; el dibujo mide siempre alto − 68. */
+function medidasGrafico(fontScale = 1, lineas = 1) {
+  const fs = Number.isFinite(fontScale) && fontScale > 0 ? fontScale : 1;
+  const f = Math.min(1.5, Math.max(1, fs));
+  const letra = Math.round(12 * f);
+  return { letra, EJE: Math.round(54 * f), ARRIBA: Math.max(40, Math.ceil(lineas * 18 * Math.max(1, fs) + 22)), ABAJO: 16 + letra, HOLGURA: 8,
+    PILDORA: Math.round(18 * f) };
+}
+/* Cuántas líneas ocupará la burbuja en un gráfico de ancho «ancho»: lo que
+   miden su fecha más larga (la del primer punto), el máximo del periodo y un
+   cambio de 6 caracteres, con su letra (12, 15 en seminegrita y 12 px, por la
+   del sistema), sus 8 px entre ellas y sus 10 a cada lado. De 1 a 3. */
+function lineasBurbuja(g, idioma, ancho, fontScale = 1) {
+  if (!(ancho > 0)) return 1;
+  const fs = Number.isFinite(fontScale) && fontScale > 0 ? fontScale : 1;
+  const textos = [anchoTexto(cuandoCorto(g.puntos[0], g, idioma), 12 * fs), anchoTexto(millones(g.estadisticas.max.valor, idioma), 15 * fs) * 1.08,
+    anchoTexto('+00,0 %', 12 * fs)];
+  if (textos.reduce((s, w) => s + w, 0) + 16 + 20 <= ancho) return 1;
+  return textos[0] + textos[1] + 8 + 20 <= ancho ? 2 : 3;
+}
+/* Las fechas de abajo que caben sin pisarse: cada una ocupa lo que su texto
+   (en Geist, unos 0,58 em cada cifra, 0,28 un espacio y 0,52 lo demás; medido
+   en la captura: «15 oct» a 12 px son 34 px) y se salta la que tocaría a la
+   anterior (con la letra grande, «dic 2025» y «mar» se montaban). Con la
+   letra normal caben todas las que da el modelo. */
+const anchoTexto = (texto, letra) => [...texto].reduce((s, c) => s + (/\d/.test(c) ? 0.58 : c === ' ' ? 0.28 : 0.52), 0) * letra;
+function fechasQueCaben(marcas, coords, PW, letra) {
+  const salida = [];
+  let fin = -Infinity;
+  for (const m of marcas) {
+    const x = coords[m.indice]?.x;
+    if (typeof x !== 'number') continue;
+    const w = anchoTexto(m.texto, letra);
+    // Centrada en su raya («xt»); junto a los bordes, lo justo hacia dentro para no salirse
+    // (empezar en la raya empujaba la siguiente: con la letra al 130 % se perdía «00:00»).
+    const xt = Math.max(w / 2, Math.min(PW - w / 2, x));
+    const ini = xt - w / 2;
+    if (ini < fin + 6) continue;
+    salida.push({ ...m, x, xt });
+    fin = ini + w;
+  }
+  return salida;
+}
+
+/* ---- El gráfico de área, con su cruz ----
+   Con 721 puntos (1 M, cada hora) el dedo tiene que ir fluido: el dibujo que
+   no cambia al mover la cruz (rejilla, área, línea, eje, fechas y píldora)
+   se calcula una vez por pestaña y tamaño (useMemo) y React no lo vuelve a
+   recorrer; al arrastrar solo cambian la raya, el punto y la burbuja. La
+   línea se pinta simplificada sin perder máximos ni mínimos (trazosSvg con
+   indicesPintar) y la cruz busca el punto con búsqueda binaria
+   (indiceCercano), entre todos los puntos. */
 export function GraficoBolsa({ g, idioma, alto = 270 }) {
+  const { fontScale } = useWindowDimensions();
   const [ancho, setAncho] = useState(0);
+  const lineas = useMemo(() => lineasBurbuja(g, idioma, ancho, fontScale), [g, idioma, ancho, fontScale]);
+  const { letra, EJE, ARRIBA, ABAJO, HOLGURA, PILDORA } = useMemo(() => medidasGrafico(fontScale, lineas), [fontScale, lineas]);
   const [indice, setIndice] = useState(null);
+  // Lo que mide la burbuja (su texto cambia de largo con el idioma y la letra): así no se sale por los lados.
+  const [anchoBurbuja, setAnchoBurbuja] = useState(0);
   const reloj = useRef(null);
   const parar = () => { clearTimeout(reloj.current); reloj.current = null; };
-  // ARRIBA: una franja libre de 40 px para la burbuja de la cruz, que así no tapa la línea.
+  // ARRIBA: una franja libre para la burbuja de la cruz, que así no tapa la línea.
   // HOLGURA: la línea acaba 8 px antes del eje, así el punto de la cruz en el
-  // último día no toca la píldora del último valor (revisión del 11/11/2026).
-  const EJE = 54, ARRIBA = 40, ABAJO = 28, HOLGURA = 8;
-  const PW = Math.max(0, ancho - EJE), PH = alto - ARRIBA - ABAJO;
-  const coords = useMemo(() => (ancho > 0 ? coordenadas(g, Math.max(0, PW - HOLGURA), PH).map((c) => ({ x: c.x, y: c.y + ARRIBA })) : []), [g, ancho, PW, PH]);
+  // último punto no toca la píldora del último valor (revisión del 11/11/2026).
+  const PH = alto - 68, altoTotal = ARRIBA + PH + ABAJO;
+  const PW = Math.max(0, ancho - EJE);
+  const coords = useMemo(() => (ancho > 0 ? coordenadas(g, Math.max(0, PW - HOLGURA), PH).map((c) => ({ x: c.x, y: c.y + ARRIBA })) : []),
+    [g, ancho, PW, PH, ARRIBA, HOLGURA]);
   const ref = useRef({ coords, n: g.puntos.length });
   ref.current = { coords, n: g.puntos.length };
   const responder = useMemo(() => PanResponder.create({
@@ -101,6 +201,7 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
     onMoveShouldSetPanResponder: (_, gs) => Math.abs(gs.dx) > Math.abs(gs.dy),
     onPanResponderTerminationRequest: () => true,
     onPanResponderGrant: (ev) => { parar(); setIndice(indiceCercano(ref.current.coords, ev.nativeEvent.locationX)); tacto.eleccion?.(); },
+    // Si el dedo sigue en el mismo punto, el índice no cambia y React no vuelve a pintar.
     onPanResponderMove: (ev) => setIndice(indiceCercano(ref.current.coords, ev.nativeEvent.locationX)),
     // Un toque corto no se perdía: la cruz se queda 3 s después de soltar.
     onPanResponderRelease: () => { parar(); reloj.current = setTimeout(() => { reloj.current = null; setIndice(null); }, CRUZ_FIJA_MS); },
@@ -111,90 +212,96 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
   useEffect(() => parar, []);
 
   const dir = g.direccion, color = colorLinea(dir);
-  const yDe = (v) => ARRIBA + PH - ((v - g.escala.lo) / (g.escala.hi - g.escala.lo)) * PH;
-  // Tramo a tramo: donde falta un día, la línea se corta (no se une con una recta).
-  // El área de fondo no se corta; el hueco se une con un trazo de puntos tenue.
-  const { linea: trazo, area, puentes } = coords.length ? trazosSvg(coords, tramosSeguidos(g), ARRIBA + PH) : { linea: '', area: '', puentes: '' };
+  // Lo que no cambia al mover la cruz, una vez por pestaña, tamaño, letra e idioma.
+  const fondo = useMemo(() => {
+    if (!coords.length) return null;
+    const yDe = (v) => ARRIBA + PH - ((v - g.escala.lo) / (g.escala.hi - g.escala.lo)) * PH;
+    // Tramo a tramo: donde falta un día, la línea se corta (no se une con una recta).
+    // El área de fondo no se corta; el hueco se une con un trazo de puntos tenue.
+    const { linea: trazo, area, puentes } = trazosSvg(coords, tramosSeguidos(g), ARRIBA + PH);
+    const yUltimo = coords[coords.length - 1].y;
+    // Con muchos puntos (24 h, 1 S, 1 M, 6 M, 2026 y 1 A), algo más fina: a 2 px parecía peluda.
+    const densa = g.puntos.length > 120;
+    const fechas = fechasQueCaben(g.marcasFechas, coords, PW, letra);
+    return (
+      <>
+        <Defs>
+          <LinearGradient id="mkDeg" x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor={color} stopOpacity={0.34} />
+            <Stop offset="0.6" stopColor={color} stopOpacity={0.08} />
+            <Stop offset="1" stopColor={color} stopOpacity={0} />
+          </LinearGradient>
+        </Defs>
+        {g.marcasValores.map((m) => (
+          <Line key={'v' + m.valor} x1={0} x2={PW} y1={yDe(m.valor)} y2={yDe(m.valor)} stroke="rgba(255,255,255,0.07)" strokeWidth={1} />
+        ))}
+        {/* Por índice: en 24 h, varias marcas («06:00», «12:00») son del mismo día. */}
+        {fechas.map((m) => (
+          <Line key={'f' + m.indice} x1={m.x} x2={m.x} y1={ARRIBA} y2={ARRIBA + PH} stroke="rgba(255,255,255,0.07)" strokeWidth={1} />
+        ))}
+        {/* El suelo acaba donde el dibujo: no tacha la marca más baja del eje. */}
+        <Line x1={0} x2={PW} y1={ARRIBA + PH} y2={ARRIBA + PH} stroke="rgba(255,255,255,0.16)" strokeWidth={1} />
+        <Path d={area} fill="url(#mkDeg)" />
+        <Line x1={0} x2={PW} y1={yDe(g.estadisticas.inicio)} y2={yDe(g.estadisticas.inicio)} stroke={C.tx3} strokeWidth={1} strokeDasharray="2 4" />
+        {puentes ? <Path d={puentes} fill="none" stroke={color} strokeOpacity={0.7} strokeWidth={1.5} strokeDasharray="2 3" testID="mercado-puente" /> : null}
+        <Path d={trazo} fill="none" stroke={color} strokeWidth={densa ? 1.5 : 2} strokeLinejoin="round" strokeLinecap="round" />
+        {g.marcasValores.filter((m) => Math.abs(yDe(m.valor) - yUltimo) >= PILDORA - 3).map((m) => (
+          <SvgText key={'tv' + m.valor} x={PW + 8} y={yDe(m.valor) + letra / 3} fill={C.tx2} fontSize={letra} fontFamily={F.media}>{m.texto}</SvgText>
+        ))}
+        {/* El último valor (la cifra grande), en una píldora del color de la línea. */}
+        <Rect x={PW + 3} y={yUltimo - PILDORA / 2} width={EJE - 6} height={PILDORA} rx={PILDORA / 2} fill={color} testID="mercado-ultimo" />
+        <SvgText x={PW + 3 + (EJE - 6) / 2} y={yUltimo + letra / 3} fill={C.s0} fontSize={letra} fontFamily={F.semi} textAnchor="middle">
+          {marcaValor(g.estadisticas.fin, g.estadisticas.fin >= 1e8 ? 1e6 : 1e5, idioma)}
+        </SvgText>
+        <SvgText x={ancho - 2} y={altoTotal - 9} fill={C.tx3} fontSize={letra - 1} fontFamily={F.media} textAnchor="end">{idioma === 'en' ? '$M' : 'M$'}</SvgText>
+        {fechas.map((m) => (
+          <SvgText key={'tf' + m.indice} x={m.xt} y={altoTotal - 9} fill={C.tx2} fontSize={letra} fontFamily={F.media} textAnchor="middle">{m.texto}</SvgText>
+        ))}
+      </>
+    );
+  }, [g, coords, color, PW, PH, ARRIBA, letra, EJE, PILDORA, ancho, altoTotal, idioma]);
+
   const k = indice === null ? null : Math.max(0, Math.min(g.puntos.length - 1, indice));
-  const activo = k === null ? null : { c: coords[k], p: g.puntos[k] };
   const ultimo = g.puntos[g.puntos.length - 1];
-  const yUltimo = coords.length ? coords[coords.length - 1].y : 0;
-  const valorTexto = (p) => `${fechaCorta(p.fecha, idioma)}: ${millonesHablados(p.valor, idioma)}`;
-  // Lo que ocupa «11/11/2026 · 42.947 M$ · +82,0 %» en una línea, con su aire (sin salirse del gráfico).
-  const anchoBurbuja = Math.min(244, ancho);
-  const xBurbuja = activo ? Math.max(0, Math.min(Math.max(0, ancho - anchoBurbuja), activo.c.x - anchoBurbuja / 2)) : 0;
-  const densa = g.puntos.length > 120;
+  const pk = k === null ? null : g.puntos[k];
+  const ck = k === null ? null : coords[k] || null;
+  const lect = pasoLector(g);
+  // Hasta medirla, lo que ocupa «12 nov, 16:05 · 42.947 M$ · +82,0 %» con su aire; nunca más ancha que el gráfico.
+  const wB = Math.min(ancho, anchoBurbuja || Math.round(244 * Math.max(1, fontScale || 1)));
+  const xBurbuja = ck ? Math.max(0, Math.min(Math.max(0, ancho - wB), ck.x - wB / 2)) : 0;
   const lector = (paso) => {
     const actual = k === null ? g.puntos.length - 1 : k;
-    setIndice(Math.max(0, Math.min(g.puntos.length - 1, actual + paso)));
+    setIndice(Math.max(0, Math.min(g.puntos.length - 1, actual + paso * lect.paso)));
   };
   return (
-    <View onLayout={(ev) => setAncho(Math.round(ev.nativeEvent.layout.width))} style={{ height: alto }}
+    <View onLayout={(ev) => setAncho(Math.round(ev.nativeEvent.layout.width))} style={{ height: altoTotal }}
       accessible accessibilityRole="adjustable" noTraducir idiomaOriginal={idioma === 'en' ? 'en-US' : 'es-ES'}
       accessibilityLabel={`${idioma === 'en' ? 'Market chart' : 'Gráfico del mercado'}. ${g.etiqueta}`}
-      accessibilityHint={idioma === 'en' ? 'Swipe up or down to move through the days.' : 'Desliza arriba o abajo para recorrer los días.'}
-      accessibilityValue={{ text: valorTexto(activo ? activo.p : ultimo) }}
+      accessibilityHint={idioma === 'en' ? `Swipe up or down to move forward or back ${lect.en}.` : `Desliza arriba o abajo para avanzar o retroceder ${lect.es}.`}
+      accessibilityValue={{ text: `${cuandoLargo(pk || ultimo, g, idioma)}: ${millonesHablados((pk || ultimo).valor, idioma)}` }}
       accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
       onAccessibilityAction={(ev) => lector(ev.nativeEvent.actionName === 'increment' ? 1 : -1)}
       {...responder.panHandlers} testID="mercado-grafico">
       {ancho > 120 ? (
-        <Svg width={ancho} height={alto} accessible={false} importantForAccessibility="no-hide-descendants">
-          <Defs>
-            <LinearGradient id="mkDeg" x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor={color} stopOpacity={0.34} />
-              <Stop offset="0.6" stopColor={color} stopOpacity={0.08} />
-              <Stop offset="1" stopColor={color} stopOpacity={0} />
-            </LinearGradient>
-          </Defs>
-          {g.marcasValores.map((m) => (
-            <Line key={'v' + m.valor} x1={0} x2={PW} y1={yDe(m.valor)} y2={yDe(m.valor)} stroke="rgba(255,255,255,0.07)" strokeWidth={1} />
-          ))}
-          {g.marcasFechas.map((m) => (
-            <Line key={'f' + m.fecha} x1={coords[m.indice].x} x2={coords[m.indice].x} y1={ARRIBA} y2={ARRIBA + PH} stroke="rgba(255,255,255,0.07)" strokeWidth={1} />
-          ))}
-          {/* El suelo acaba donde el dibujo: no tacha la marca más baja del eje. */}
-          <Line x1={0} x2={PW} y1={ARRIBA + PH} y2={ARRIBA + PH} stroke="rgba(255,255,255,0.16)" strokeWidth={1} />
-          <Path d={area} fill="url(#mkDeg)" />
-          <Line x1={0} x2={PW} y1={yDe(g.estadisticas.inicio)} y2={yDe(g.estadisticas.inicio)} stroke={C.tx3} strokeWidth={1} strokeDasharray="2 4" />
-          {puentes ? <Path d={puentes} fill="none" stroke={color} strokeOpacity={0.7} strokeWidth={1.5} strokeDasharray="2 3" testID="mercado-puente" /> : null}
-          {/* Con muchos puntos (6 M, 2026 y 1 A), algo más fina: a 2 px parecía peluda. */}
-          <Path d={trazo} fill="none" stroke={color} strokeWidth={densa ? 1.5 : 2} strokeLinejoin="round" strokeLinecap="round" />
-          {g.marcasValores.filter((m) => Math.abs(yDe(m.valor) - yUltimo) >= 15).map((m) => (
-            <SvgText key={'tv' + m.valor} x={PW + 8} y={yDe(m.valor) + 4} fill={C.tx2} fontSize={12} fontFamily={F.media}>{m.texto}</SvgText>
-          ))}
-          {/* El último valor (la cifra grande), en una píldora del color de la línea. */}
-          {coords.length ? (
-            <>
-              <Rect x={PW + 3} y={yUltimo - 9} width={EJE - 6} height={18} rx={9} fill={color} testID="mercado-ultimo" />
-              <SvgText x={PW + 3 + (EJE - 6) / 2} y={yUltimo + 4} fill={C.s0} fontSize={12} fontFamily={F.semi} textAnchor="middle">
-                {marcaValor(g.estadisticas.fin, g.estadisticas.fin >= 1e8 ? 1e6 : 1e5, idioma)}
-              </SvgText>
-            </>
-          ) : null}
-          <SvgText x={ancho - 2} y={alto - 9} fill={C.tx3} fontSize={11} fontFamily={F.media} textAnchor="end">{idioma === 'en' ? '$M' : 'M$'}</SvgText>
-          {g.marcasFechas.map((m) => {
-            const x = coords[m.indice].x;
-            return (
-              <SvgText key={'tf' + m.fecha} x={x} y={alto - 9} fill={C.tx2} fontSize={12} fontFamily={F.media}
-                textAnchor={x < 24 ? 'start' : x > PW - 24 ? 'end' : 'middle'}>{m.texto}</SvgText>
-            );
-          })}
+        <Svg width={ancho} height={altoTotal} accessible={false} importantForAccessibility="no-hide-descendants">
+          {fondo}
           {/* La cruz: solo la raya vertical (dos rayas discontinuas se confundían con la línea de partida) y el punto. */}
-          {activo ? (
+          {ck ? (
             <>
-              <Line x1={activo.c.x} x2={activo.c.x} y1={ARRIBA - 10} y2={ARRIBA + PH} stroke="rgba(247,245,240,0.45)" strokeWidth={1} />
-              <Circle cx={activo.c.x} cy={activo.c.y} r={5} fill={color} stroke={C.s0} strokeWidth={2} />
+              <Line x1={ck.x} x2={ck.x} y1={ARRIBA - 10} y2={ARRIBA + PH} stroke="rgba(247,245,240,0.45)" strokeWidth={1} />
+              <Circle cx={ck.x} cy={ck.y} r={5} fill={color} stroke={C.s0} strokeWidth={2} />
             </>
           ) : null}
         </Svg>
       ) : null}
-      {/* En una línea, en la franja de arriba: fecha · valor · cambio desde el primer día del periodo. */}
-      {activo ? (
-        <View pointerEvents="none" style={[e.burbuja, { width: anchoBurbuja, transform: [{ translateX: xBurbuja }] }]} accessible={false}
-          importantForAccessibility="no-hide-descendants">
-          <Text noTraducir style={e.burbujaFecha}>{fechaCorta(activo.p.fecha, idioma)}</Text>
-          <Text noTraducir style={e.burbujaValor}>{millones(activo.p.valor, idioma)}</Text>
-          <Text noTraducir style={e.burbujaCambio}>{porcentaje(cambioPct(activo.p.valor, g.estadisticas.inicio), idioma)}</Text>
+      {/* En una línea, en la franja de arriba: cuándo (hora de España en 24 h, 1 S y 1 M) · valor · cambio desde el principio del periodo. */}
+      {ck ? (
+        <View pointerEvents="none" accessible={false} importantForAccessibility="no-hide-descendants"
+          onLayout={(ev) => { const w = Math.ceil(ev.nativeEvent.layout.width); setAnchoBurbuja((a) => (a === w ? a : w)); }}
+          style={[e.burbuja, { maxWidth: ancho, transform: [{ translateX: xBurbuja }] }]}>
+          <Text noTraducir style={e.burbujaFecha}>{cuandoCorto(pk, g, idioma)}</Text>
+          <Text noTraducir style={e.burbujaValor}>{millones(pk.valor, idioma)}</Text>
+          <Text noTraducir style={e.burbujaCambio}>{porcentaje(cambioPct(pk.valor, g.estadisticas.inicio), idioma)}</Text>
         </View>
       ) : null}
     </View>
@@ -209,13 +316,17 @@ function Cambio({ g, grande = false }) {
   );
 }
 
-/* La fuente: CoinGecko, hasta qué día llega la serie y, en la pantalla, de
+/* La fuente: CoinGecko, hasta cuándo llega la serie y, en la pantalla, de
    cuándo es el total de la categoría («hoy, …» solo si es de hoy). Los mismos
-   textos que la web. */
+   textos que la web. Con las series finas, también la hora (de España, y se
+   dice: el total de la categoría va en UTC) de su último punto. */
 function Fuente({ vivo, serie, idioma, onAbrirEnlace, conTotal = true }) {
   const en = idioma === 'en';
   const partes = [];
-  if (serie) partes.push(`${en ? 'daily series to' : 'serie diaria hasta el'} ${fechaCorta(serie.puntos[serie.puntos.length - 1].fecha, idioma)}`);
+  const fin = serie ? cifraGrande(serie, null) : null;
+  const ms = fin && fin.t ? msMinuto(fin.t) : null;
+  if (serie && ms !== null) partes.push(`${en ? 'series to' : 'serie hasta el'} ${cuandoMedio({ ms }, idioma)} ${en ? '(Spain time)' : '(hora de España)'}`);
+  else if (serie) partes.push(`${en ? 'daily series to' : 'serie diaria hasta el'} ${fechaCorta(serie.puntos[serie.puntos.length - 1].fecha, idioma)}`);
   if (vivo && conTotal) partes.push(`${en ? 'category total:' : 'total de la categoría:'} ${cuandoDato(vivo, idioma)}`);
   const antes = conTotal ? (en ? 'In millions of dollars ($M). ' : 'En millones de dólares (M$). ') : '';
   return (
@@ -228,6 +339,16 @@ function Fuente({ vivo, serie, idioma, onAbrirEnlace, conTotal = true }) {
   );
 }
 
+/* ¿Van las 7 pestañas en dos filas (4 y 3)? Cada una necesita lo que ocupa
+   «2026» (unos 2,5 em de su letra de 15 px, que crece con la del sistema)
+   y 4 px de aire. Con la letra normal caben en una fila desde 360 px; con la
+   letra grande no: «24 h» y «3 M» se partían en dos líneas y «2026» pisaba
+   «1 A» (captura con la letra al 200 %, 13/11/2026). */
+function pestanasEnDosFilas(ancho, fontScale = 1, n = PESTANAS.length) {
+  const fs = Number.isFinite(fontScale) && fontScale > 0 ? fontScale : 1;
+  return ancho > 0 && ancho / n - 2 < 2.5 * 15 * fs + 4;
+}
+
 /* ---- La pantalla «Mercado y noticias» ---- */
 export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, children = null }) {
   const idioma = useIdioma();
@@ -237,10 +358,16 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
   const [como, setComo] = useState(false);
   // Por tipo de activo, plegado (en el móvil, las noticias quedan más arriba).
   const [tiposAbiertos, setTiposAbiertos] = useState(false);
+  const { width: anchoVentana, fontScale } = useWindowDimensions();
+  const [anchoPestanas, setAnchoPestanas] = useState(0);
+  const dosFilas = pestanasEnDosFilas(anchoPestanas || anchoVentana - 2 * UI.margen, fontScale);
   const vieja = atrasada(vivo, serie);
-  const disponible = (clave) => !!(serie && tramo(serie.puntos, clave));
+  // Cada pestaña con la serie más fina que la cubre; «24 h» solo con una serie fina.
+  const disponible = (clave) => !!(serie && pestanaDisponible(serie, clave));
   const elegida = serie && !disponible(pestana) ? (PESTANAS.find((p) => disponible(p.clave))?.clave || pestana) : pestana;
-  const g = serie ? graficoPestana(serie, elegida, idioma) : null;
+  // Una vez por serie, pestaña e idioma: si no, cualquier otro cambio de la pantalla (abrir «Cómo se
+  // calcula») daría un «g» nuevo, el gráfico volvería a calcular su dibujo y la cruz se iría.
+  const g = useMemo(() => (serie ? graficoPestana(serie, elegida, idioma) : null), [serie, elegida, idioma]);
   const cifraHoy = cifraGrande(serie, vivo);
   const hoy = cifraHoy ? cifraHoy.valor : null;
   const [cifra, unidad] = hoy === null ? ['', ''] : millones(hoy, idioma).split(/\s/);
@@ -251,11 +378,20 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       {extra ? <Text noTraducir style={e.claveExtra}>{extra}</Text> : null}
     </View>
   );
+  // «Cambio en 24 h»: con una serie fina, el de la pestaña 24 h (cambio24h); si en ella queda algún token fuera, se dice cuántos suma.
   const c24 = cambio24h(serie, vivo);
   const d24 = direccion(c24.cambio);
+  const fuera24 = c24.resolucion ? seriePestana(serie, '1d')?.fuera?.length || 0 : 0;
+  const alcance24 = c24.fuente !== 'serie' ? (c24.fuente === 'coingecko' ? (en ? 'whole category' : 'toda la categoría') : null)
+    : fuera24 ? (en ? `${serie.incluidos - fuera24} of the ${serie.incluidos} largest` : `${serie.incluidos - fuera24} de los ${serie.incluidos} mayores`)
+      : (en ? `${serie.incluidos} largest` : `${serie.incluidos} mayores`);
+  // «Valor hoy»: con las finas, del día y la hora (de España) de su último punto.
+  const cuandoHoy = cifraHoy?.t ? cuandoMedio({ ms: msMinuto(cifraHoy.t), fecha: cifraHoy.fecha }, idioma) : fechaCorta(cifraHoy?.fecha, idioma);
   const mayor = vivo?.tipos?.[0];
   const total = lineaTotalCategoria(serie, vivo, idioma);
   const palabra = g ? (g.direccion === 'sube' ? (en ? 'up' : 'sube') : g.direccion === 'baja' ? (en ? 'down' : 'baja') : (en ? 'unchanged' : 'sin cambios')) : '';
+  // Los avisos del periodo, para el lector (con mayúscula y punto): tokens que entran y, en una fina, tokens que quedan fuera.
+  const avisos = g ? [g.avisoTokens, g.avisoFuera].filter(Boolean).map((a) => `. ${mayuscula(a)}`).join('') : '';
   return (
     <View style={e.pantalla}>
       <Text noTraducir style={e.ante}>{en ? 'Market and news' : 'Mercado y noticias'}</Text>
@@ -273,7 +409,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       {hoy !== null ? (
         <View style={e.cab}>
           {/* Qué suma la cifra grande y de qué día; la cifra es el último punto de la línea. */}
-          <View accessible noTraducir accessibilityLabel={`${subtituloCifra(serie, idioma)}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}${g.avisoTokens ? `. ${mayuscula(g.avisoTokens)}` : ''}` : ''}`}>
+          <View accessible noTraducir accessibilityLabel={`${subtituloCifra(serie, idioma)}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}${avisos}` : ''}`}>
             <Text noTraducir style={e.sub} testID="mercado-subtitulo">{subtituloCifra(serie, idioma)}</Text>
             <Text noTraducir style={e.cifra} numberOfLines={1} adjustsFontSizeToFit testID="mercado-cifra">
               {cifra}{unidad ? <Text noTraducir style={e.unidad}>{' ' + unidad}</Text> : null}
@@ -288,23 +424,26 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {/* Qué mide ese % (no es una rentabilidad) y, si entran tokens en el periodo, que parte de la subida es eso. */}
           {g ? <Text noTraducir style={e.explica} testID="mercado-explica">{explicacionCambio(idioma)}</Text> : null}
           {g && g.avisoTokens ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-tokens">{mayuscula(g.avisoTokens) + '.'}</Text> : null}
+          {/* En una pestaña fina con tokens sin datos, su línea acaba por debajo de la cifra grande: se dice cuánto y por qué. */}
+          {g && g.avisoFuera ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-fuera">{mayuscula(g.avisoFuera) + '.'}</Text> : null}
           {vieja ? <Text noTraducir style={e.aviso} testID="mercado-serie-vieja">{`${en ? 'The series ends on ' : 'La serie llega hasta el '}${fechaFinSerie(serie, idioma)}${en ? ': the large figure and the chart are from that day.' : ': la cifra grande y el gráfico son de ese día.'}`}</Text> : null}
           {/* El total de la categoría va bajo el gráfico, tras la nota (aquí empujaba el gráfico fuera de la primera pantalla). */}
           {!serie && vivo ? <Text noTraducir style={e.aviso}>{`${en ? "Without the daily series, the figure is CoinGecko's category total (" : 'Sin la serie diaria, la cifra es el total de la categoría en CoinGecko ('}${cuandoDato(vivo, idioma)}).`}</Text> : null}
         </View>
       ) : null}
       {hoy !== null ? (
-        <View style={e.pestanas} accessibilityRole="tablist">
+        <View style={[e.pestanas, dosFilas && e.pestanasDosFilas]} accessibilityRole="tablist"
+          onLayout={(ev) => { const w = Math.round(ev.nativeEvent.layout.width); setAnchoPestanas((a) => (a === w ? a : w)); }}>
           {PESTANAS.map((p) => {
             const sel = p.clave === elegida, ok = disponible(p.clave);
             // Lo que se ve y su nombre accesible (que lo contiene): «2026» y «En 2026»; en inglés, «YTD».
             const et = etiquetaPestana(p.clave, idioma, serie);
             return (
               <Pressable key={p.clave} disabled={!ok} onPress={() => { tacto.eleccion(); setPestana(p.clave); }}
-                style={({ pressed }) => [e.pestana, sel && e.pestanaSel, !ok && e.pestanaNo, pressed && !sel && e.pestanaPulsada]}
+                style={({ pressed }) => [e.pestana, dosFilas && e.pestanaDosFilas, sel && e.pestanaSel, !ok && e.pestanaNo, pressed && !sel && e.pestanaPulsada]}
                 accessibilityRole="tab" accessibilityState={{ selected: sel, disabled: !ok }} noTraducir accessibilityLabel={et.nombre}
                 testID={'pestana-' + p.clave}>
-                <Text noTraducir style={[e.pestanaTxt, sel && e.pestanaTxtSel]}>{et.corto}</Text>
+                <Text noTraducir numberOfLines={1} style={[e.pestanaTxt, sel && e.pestanaTxtSel]}>{et.corto}</Text>
               </Pressable>
             );
           })}
@@ -332,14 +471,15 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       {hoy !== null ? (
         <View style={e.clave}>
           {/* Dos cifras distintas, cada una con su nombre: la de la serie (la cifra grande) y la de toda la categoría. */}
-          {serie && cifraHoy.fuente === 'serie' ? clave(en ? `Value today (${serie.incluidos} largest)` : `Valor hoy (${serie.incluidos} mayores)`, millones(hoy, idioma), fechaCorta(cifraHoy.fecha, idioma)) : null}
+          {serie && cifraHoy.fuente === 'serie' ? clave(en ? `Value today (${serie.incluidos} largest)` : `Valor hoy (${serie.incluidos} mayores)`, millones(hoy, idioma), cuandoHoy) : null}
           {clave(en ? 'Category total today' : 'Total de la categoría hoy', vivo ? millones(vivo.total.valor, idioma) : '—', vivo ? (en ? 'all tokens · CoinGecko' : 'todos los tokens · CoinGecko') : null)}
-          {/* 24 h: el de la serie si sus dos últimos días son seguidos; si no, el de CoinGecko si es creíble; si no, «—». */}
+          {/* 24 h: con una serie fina, el de la pestaña 24 h; si no, el de la diaria si sus dos últimos días son seguidos;
+              si no, el de CoinGecko si es creíble; si no, «—». */}
           {clave(en ? '24 h change' : 'Cambio en 24 h', d24 === 'sin-datos' ? '—' : `${FLECHA[d24]} ${porcentaje(c24.cambio, idioma)}`,
-            c24.fuente === 'serie' ? (en ? `${serie.incluidos} largest` : `${serie.incluidos} mayores`) : c24.fuente === 'coingecko' ? (en ? 'whole category' : 'toda la categoría') : null,
-            d24 === 'sin-datos' ? null : colorTexto(d24))}
-          {g ? clave(en ? 'Period high' : 'Máximo del periodo', millones(g.estadisticas.max.valor, idioma), fechaCorta(g.estadisticas.max.fecha, idioma)) : null}
-          {g ? clave(en ? 'Period low' : 'Mínimo del periodo', millones(g.estadisticas.min.valor, idioma), fechaCorta(g.estadisticas.min.fecha, idioma)) : null}
+            alcance24, d24 === 'sin-datos' ? null : colorTexto(d24))}
+          {/* En las pestañas finas, con la hora (de España) del máximo y del mínimo. */}
+          {g ? clave(en ? 'Period high' : 'Máximo del periodo', millones(g.estadisticas.max.valor, idioma), cuandoMedio(g.estadisticas.max, idioma)) : null}
+          {g ? clave(en ? 'Period low' : 'Mínimo del periodo', millones(g.estadisticas.min.valor, idioma), cuandoMedio(g.estadisticas.min, idioma)) : null}
           {/* La misma cuota y con el mismo redondeo que la nota del gráfico. */}
           {serie ? clave(en ? 'Tokens in the chart' : 'Tokens en el gráfico', String(serie.incluidos), `${coberturaTexto(serie, idioma)} ${en ? 'of the total' : 'del total'}`) : null}
           {mayor ? clave(en ? 'Largest asset type' : 'El tipo que más pesa', en ? TIPOS_EN[mayor.nombre] || mayor.nombre : mayor.nombre, `${cuota(mayor.cuota, idioma)} ${en ? 'of the total' : 'del total'}`, null, true) : null}
@@ -426,7 +566,8 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
   // La misma cifra que el final del minigráfico: el último punto de la serie.
   const hoy = valorHoy(vivo, serie);
   const vieja = atrasada(vivo, serie);
-  const g = serie ? graficoPestana(serie, '1m', idioma) : null;
+  // El minigráfico del mes: con la serie horaria si la hay (721 puntos; se pinta simplificado, sin perder máximos ni mínimos).
+  const g = useMemo(() => (serie ? graficoPestana(serie, '1m', idioma) : null), [serie, idioma]);
   if (hoy === null) {
     if (fase === 'cargando') return <Text noTraducir style={e.estado}>{en ? 'Loading CoinGecko data…' : 'Cargando los datos de CoinGecko…'}</Text>;
     return (
@@ -444,7 +585,7 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
     <View>
       <Pressable onPress={() => { tacto.abrir(); onAbrir?.(); }} style={({ pressed }) => [e.ct, pressed && e.ctPulsada]}
         accessibilityRole="button" noTraducir
-        accessibilityLabel={`${en ? 'Tokenised asset market' : 'Mercado de activos tokenizados'}, ${serie ? (en ? `sum of the ${serie.incluidos} largest tokens` : `suma de los ${serie.incluidos} mayores tokens`) : (en ? 'category total' : 'total de la categoría')}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}${g.avisoTokens ? `; ${g.avisoTokens}` : ''}` : ''}${vieja ? `; ${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}` : ''}. ${en ? 'See the chart' : 'Ver el gráfico'}`}
+        accessibilityLabel={`${en ? 'Tokenised asset market' : 'Mercado de activos tokenizados'}, ${serie ? (en ? `sum of the ${serie.incluidos} largest tokens` : `suma de los ${serie.incluidos} mayores tokens`) : (en ? 'category total' : 'total de la categoría')}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}${g.avisoTokens ? `; ${g.avisoTokens}` : ''}${g.avisoFuera ? `; ${g.avisoFuera}` : ''}` : ''}${vieja ? `; ${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}` : ''}. ${en ? 'See the chart' : 'Ver el gráfico'}`}
         testID="mercado-cotizacion">
         <View style={e.ctIzq}>
           <Text noTraducir style={e.ctNom}>{en ? 'Tokenised assets' : 'Activos tokenizados'}</Text>
@@ -460,6 +601,8 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
       </Pressable>
       {/* El % del mes es del tamaño del mercado, no una rentabilidad: también aquí. */}
       {g ? <Text noTraducir style={[e.explica, e.ctExplica]}>{explicacionCambio(idioma)}</Text> : null}
+      {/* Con la serie horaria del mes, si queda algún token fuera, el minigráfico acaba por debajo de la cifra: se dice. */}
+      {g && g.avisoFuera ? <Text noTraducir style={e.aviso} testID="mercado-cotizacion-fuera">{mayuscula(g.avisoFuera) + '.'}</Text> : null}
       <Fuente vivo={vivo} serie={serie} idioma={idioma} onAbrirEnlace={onAbrirEnlace} conTotal={false} />
     </View>
   );
@@ -489,16 +632,20 @@ const e = StyleSheet.create({
   avisoTokens: { color: C.tx2 },
   totalCat: { color: C.tx3 },
   pestanas: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 },
+  // Con la letra grande, en dos filas de 4 y 3 (pestanasEnDosFilas).
+  pestanasDosFilas: { flexWrap: 'wrap', rowGap: 4 },
   pestana: { flex: 1, minHeight: 40, minWidth: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center', marginHorizontal: 1 },
+  pestanaDosFilas: { flexGrow: 1, flexShrink: 0, flexBasis: '24%', paddingHorizontal: 4 },
   pestanaSel: { backgroundColor: C.s3 },
   pestanaNo: { opacity: 0.45 },
   pestanaPulsada: { backgroundColor: C.ton },
   pestanaTxt: { fontFamily: F.media, fontSize: 15, lineHeight: 19, color: C.tx2 },
   pestanaTxtSel: { fontFamily: F.negrita, color: C.tx },
   grafico: { marginTop: 8 },
-  // En una línea, en la franja de arriba del gráfico (no tapa la línea).
-  burbuja: { position: 'absolute', top: 0, left: 0, flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center', gap: 8,
-    paddingHorizontal: 10, paddingVertical: 5, borderRadius: R.p, backgroundColor: C.s3 },
+  // En una línea, en la franja de arriba del gráfico (no tapa la línea). Mide lo que su texto
+  // (GraficoBolsa la coloca con ese ancho); con la letra muy grande, parte la línea antes que salirse.
+  burbuja: { position: 'absolute', top: 0, left: 0, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center',
+    columnGap: 8, paddingHorizontal: 10, paddingVertical: 5, borderRadius: R.p, backgroundColor: C.s3 },
   burbujaFecha: { fontFamily: F.media, fontSize: 12, lineHeight: 16, color: C.tx2, fontVariant: ['tabular-nums'] },
   burbujaValor: { fontFamily: F.semi, fontSize: 15, lineHeight: 18, color: C.tx, fontVariant: ['tabular-nums'] },
   burbujaCambio: { fontFamily: F.media, fontSize: 12, lineHeight: 16, color: C.tx2, fontVariant: ['tabular-nums'] },
@@ -543,4 +690,5 @@ const e = StyleSheet.create({
   ctExplica: { marginTop: 10 },
 });
 
-export const _pruebas = { valorHoy, colorLinea, colorTexto, atrasada, CRUZ_FIJA_MS, UI };
+export const _pruebas = { valorHoy, colorLinea, colorTexto, atrasada, CRUZ_FIJA_MS, UI, cuandoCorto, cuandoLargo, cuandoMedio, pasoLector, medidasGrafico,
+  lineasBurbuja, fechasQueCaben, anchoTexto, pestanasEnDosFilas };
