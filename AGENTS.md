@@ -24,6 +24,11 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   aplicar la migración 30 o sus scripts de activación, poner la plantilla de
   Auth, encender `AVISOS_NOVEDADES_REMOTOS`, lanzar el flujo «Avisar novedad»
   o publicar un anuncio retenido. Cada paso, con su orden expresa.
+  **Excepción permanente (Víctor, 14/11/2026: «pon las novedades como
+  notificación, acuérdate eso siempre»):** cada vez que se publique algo nuevo
+  para el usuario (mejoras de la web o la app, o un ciclo del catálogo con
+  cambios), se lanza «Avisar novedad» (`anunciar`, tipo `novedad`) sin pedir
+  otra orden. Las noticias diarias automáticas no avisan.
 
 **Investigación del catálogo: inicio manual.** Por indicación de Víctor del
 22/10/2026, la tarea queda preparada y **PAUSADA**. Sólo se inicia cuando Víctor
