@@ -490,12 +490,11 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   // si la batería lo corre y si el trabajo «Sello» cubre lo que mira, y añádelo aquí.
   const codigo = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', '*.js', '*.mjs', '*.cjs'], { cwd: raiz, encoding: 'utf8' })
     .split('\n').filter(f => f && !f.includes('node_modules/')).sort();
-  // Las noticias automáticas (14/11/2026) sellan solo las noticias y sin tocar «actualizadoEl»; sus pruebas
-  // van en el trabajo «Sello» (SELLO) y ensayo.mjs no lo corre la batería.
+  // Las noticias automáticas (14/11/2026) sellan solo las noticias y sin tocar «actualizadoEl»; sus pruebas (que leen
+  // el sello con RUTAS.sello) van en el trabajo «Sello» (SELLO) y ensayo.mjs no lo corre la batería.
   assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs',
     '.claude/skills/noticias-automaticas/ensayo.mjs', '.claude/skills/noticias-automaticas/lib/cerrojo.mjs',
     '.claude/skills/noticias-automaticas/lib/comun.mjs', '.claude/skills/noticias-automaticas/lib/flujo.mjs',
-    '.claude/skills/noticias-automaticas/pruebas/flujo.test.mjs', '.claude/skills/noticias-automaticas/pruebas/sello.test.mjs',
     '.github/flujos.test.mjs', '.github/partes-ci.mjs',
     'probar-web.mjs', 'rwadar-app/auditar-relanzamiento.mjs', 'rwadar-app/probar-auditoria-relanzamiento.mjs',
     'rwadar-app/probar-cobro-seguro.mjs', 'rwadar-app/probar-transparencia-comercial.mjs', 'rwadar-precargar-imagenes.js',

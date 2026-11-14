@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { decidir, corregir, antesDeUnir, comprobarEjecucion, primeraLinea, hayQueAvisar } from '../lib/flujo.mjs';
-import { Freno, sha256 } from '../lib/comun.mjs';
+import { Freno, RUTAS, sha256 } from '../lib/comun.mjs';
 import { FECHA, BASE, montarDia, verificacionDe, programa, escribir, edicionBuena, copia, tmp, RAIZ } from './ayuda.mjs';
 
 const ids = e => e.noticias.map(n => n.id);
@@ -105,7 +105,7 @@ test('encargos literales: el del verificador no nombra las notas del editor ni l
 test('antes de unir: base = main, cabeza = sello, 2 commits, solo archivos permitidos y «pruebas» en verde (mutación 6)', () => {
   const cabeza = 'b'.repeat(40), main = 'a'.repeat(40);
   const pr = { state: 'open', merged: false, base: { ref: 'main', sha: main }, head: { sha: cabeza }, commits: 2 };
-  const archivos = ['rwadar-site/datos/noticias-v2.json', 'rwadar-site/datos/noticias.json', 'rwadar-app/data/relanzamiento/estado.json',
+  const archivos = ['rwadar-site/datos/noticias-v2.json', 'rwadar-site/datos/noticias.json', RUTAS.sello,
     `rwadar-app/data/noticias-diarias/${FECHA}/noticias-${FECHA}.json`, `rwadar-app/data/noticias-diarias/${FECHA}/verificacion.json`];
   const checks = [{ name: 'pruebas', status: 'completed', conclusion: 'success', head_sha: cabeza }];
   assert.deepEqual(antesDeUnir({ fecha: FECHA, pr, mainSha: main, cabeza, archivos, checks }), { ok: true });

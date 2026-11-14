@@ -80,7 +80,8 @@ test('V-5: una fuente que responde exige consultadaEl de hoy; una caída exige l
 });
 
 test('V-12: sin el inventario del programa, o con una fuente que no abrió, no pasa', () => {
-  assert.ok(fallan(validar({ inventario: false })).includes('V-12'));
+  const sinInventario = validar({ inventario: false });
+  assert.ok(sinInventario.errores.some(e => /V-12 falta el inventario de fuentes del programa/.test(e)), sinInventario.errores.join(' | '));
   const e = edicionBuena(), inv = inventarioDe(e); inv.fuentes.pop();
   assert.ok(fallan(validar({ edicion: e, inventario: inv })).includes('V-12'));
   const inv2 = inventarioDe(e); inv2.fuentes[0].horaUtc = '2026-11-12T08:00:00Z';
