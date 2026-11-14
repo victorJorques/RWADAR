@@ -1,0 +1,52 @@
+{
+  "_nota": "Copia de partida. La tuya está en estado/config.json (se crea sola la primera vez y no va a Git). Importes en la moneda del par.",
+  "par": "BTC-EUR",
+  "fuente": "auto",
+  "papel": true,
+  "cuenta": {
+    "saldo_inicial": 5000
+  },
+  "riesgo": {
+    "perdida_max_operacion": 50,
+    "perdida_max_dia": 150,
+    "operaciones_max_dia": 3,
+    "rr_minimo": 1.5,
+    "posicion_max_pct": 50,
+    "apalancamiento": false,
+    "cortos": false,
+    "ventana_entrada_utc": null,
+    "bloqueo_noticias_min": 30,
+    "divergencia_max_pct": 0.5,
+    "distancia_max_entrada_pct": 0.6
+  },
+  "costes": {
+    "comision_pct": 0.25,
+    "deslizamiento_pct": 0.05
+  },
+  "minimo_orden_btc": 0.00001,
+  "salida": {
+    "rr_objetivo": 2,
+    "stop_atr": 1.5,
+    "stop_max_atr": 3,
+    "horas_max": 24
+  },
+  "entrada": {
+    "intervalo": "5m",
+    "volumen_minimo_rel": 1,
+    "persecucion_max_atr": 0.5,
+    "caduca_horas": 12
+  },
+  "maquina": {
+    "simulaciones": 10000,
+    "semilla": 19,
+    "dias": 60,
+    "horas": 24,
+    "franjas_vecinas": 1
+  },
+  "escaner": {
+    "intervalos": ["15m", "1h", "4h", "1d"]
+  },
+  "noticias": {
+    "horas": 24
+  }
+}
