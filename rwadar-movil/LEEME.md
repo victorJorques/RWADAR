@@ -26,8 +26,11 @@ y el historial de /cambios. Perfil › «Novedades de RWAdar» la vuelve a abrir
   nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad, una
   pantalla de Inicio como «Mercado y noticias» o una notificación
   abriéndose). La ventana respeta las barras del móvil (`useSafeAreaInsets`). Lo visto se guarda en el móvil
-  (`rwadar.editorial.novedades.vista.v1`, solo la versión) y se borra con
-  «Borrar datos del dispositivo». Si no se puede leer, no sale sola.
+  (`rwadar.editorial.novedades.vista.v2`, solo la versión; también se copia
+  en la `v1` de las versiones anteriores, y lo que una de ellas diera por
+  visto desde la `2026-11-14.2` no cuenta: sale una vez más, con el recuadro
+  «Activa los avisos») y se borra con «Borrar datos del dispositivo». Si no se
+  puede leer, no sale sola.
 - **Código:** `lib/novedades-rwadar.js` (validar, comparar, descargar),
   `componentes/NovedadesRwadar.js` (hook, ventana y detalle) y
   `lib/datos.js` (`leerNovedadesVistas`, `marcarNovedadesVistas`).

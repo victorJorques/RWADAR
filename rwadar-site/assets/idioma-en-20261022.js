@@ -2012,6 +2012,11 @@
   "Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.": "To get alerts on your phone, turn them on in Profile › Alerts.",
   "Ir a Perfil › Avisos": "Go to Profile › Alerts",
   "Todas las novedades anteriores, en la web": "All earlier news, on the website",
+  // El recuadro «Activa los avisos» de la ventana de novedades (14/11/2026), web y app.
+  "Activa los avisos": "Turn on alerts",
+  "Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.": "Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.",
+  "Activar avisos": "Turn on alerts",
+  "Cierra esta ventana y te lleva a Perfil › Avisos": "Closes this window and takes you to Profile › Alerts",
   "Novedades de RWAdar: para no enseñarte dos veces la misma ventana de novedades, este dispositivo guarda qué versión has visto (por ejemplo, 2026-11-12). No es un dato personal, no se envía a ningún sitio y se borra con «Borrar datos del dispositivo». Las novedades se descargan de la web de RWAdar sin datos de tu cuenta.": "RWAdar news: so that you are not shown the same news window twice, this device stores which version you have seen (for example, 2026-11-12). It is not personal data, it is not sent anywhere and it is deleted with «Delete device data». The news is downloaded from the RWAdar website without any data from your account.",
   // «Calcula tus números» en Inicio y el explicador sin el local fijo (11/11/2026), web y app. Las frases con cifras las escribe rwadar-movil/lib/calculadora.js en los dos idiomas.
   "Calcula tus números": "Work out your numbers",

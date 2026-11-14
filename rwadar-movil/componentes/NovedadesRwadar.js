@@ -7,7 +7,7 @@ import { Icono } from './Navegacion';
 import { C, E, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 import {
-  RESPALDO, cargarNovedadesProducto, compararVersiones, hayNovedadesSinVer, textosNovedades, versionValida,
+  RESPALDO, cargarNovedadesProducto, compararVersiones, conRecordatorioAvisos, hayNovedadesSinVer, textosNovedades, versionValida,
 } from '../lib/novedades-rwadar';
 
 /* ---------------------------------------------------------------------
@@ -30,14 +30,27 @@ import {
       «Ver en detalle», el botón atrás y abrirlas desde Perfil cuentan como
       vistas. Si no se puede leer qué se vio, no sale sola (no se repite en
       cada arranque): sigue en Perfil › «Novedades de RWAdar».
+   4. El recuadro «Activa los avisos» (14/11/2026), dentro de la ventana,
+      debajo de los puntos: «que para activar las notificaciones salga el
+      aviso al salir la notificación de novedades al entrar a la app, para
+      recordar e incitar a la gente a que las activen». Su botón «Activar
+      avisos» la cierra (cuenta como vista) y App lleva a Perfil › Avisos
+      (irAAvisosPerfil). Sale salvo que las notificaciones ya estén activas
+      en este móvil (estadoAvisosMovil de lib/novedades-rwadar.js, con lo que
+      enseña Perfil › Avisos); mientras se comprueba, la ventana espera
+      (ESPERA_AVISOS_MS como mucho). No pide ningún permiso.
    El contenido llega ya en su idioma («en» del JSON): se pinta con
    noTraducir; los botones y avisos de la interfaz, con el diccionario común.
    --------------------------------------------------------------------- */
 
 export const SECCION_AVISOS = 'avisos-movil';
 export const ESPERA_MS = 700;
+export const ESPERA_AVISOS_MS = 3000;
 
-export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, cargar = cargarNovedadesProducto, esperaMs = ESPERA_MS } = {}) {
+/* avisos: lo que dice estadoAvisosMovil ('activos', 'inactivos',
+   'comprobando' o 'desconocido') o 'apagados' sin los avisos en la app. */
+export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, cargar = cargarNovedadesProducto, esperaMs = ESPERA_MS,
+  avisos = 'desconocido', esperaAvisosMs = ESPERA_AVISOS_MS } = {}) {
   const [datos, setDatos] = useState(RESPALDO);
   const [descargadas, setDescargadas] = useState(false);
   const [vista, setVista] = useState(null); // null: leyendo; { ok, version }
@@ -57,12 +70,15 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const pendiente = descargadas && vista?.ok === true && hayNovedadesSinVer(datos, vista.version);
+  const comprobando = avisos === 'comprobando';
   useEffect(() => {
     if (!listo || !pendiente || ensenada.current || ventana || detalle) return undefined;
-    // Un momento después de verse Inicio, para no salir de golpe al cargar.
-    const reloj = setTimeout(() => { ensenada.current = true; setVentana(true); }, esperaMs);
+    // Un momento después de verse Inicio, para no salir de golpe al cargar. Si aún
+    // se comprueban las notificaciones de este móvil, se espera a saberlo (como mucho
+    // esperaAvisosMs): así el recuadro «Activa los avisos» no sale a quien ya las tiene.
+    const reloj = setTimeout(() => { ensenada.current = true; setVentana(true); }, comprobando ? esperaAvisosMs : esperaMs);
     return () => clearTimeout(reloj);
-  }, [listo, pendiente, ventana, detalle]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [listo, pendiente, ventana, detalle, comprobando]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const guardarVista = () => {
     const version = datos.version;
@@ -74,7 +90,10 @@ export function useNovedadesRwadar({ listo = false, leerVista, marcarVista, carg
   const verDetalle = () => { setVentana(false); setDetalle(true); guardarVista(); };
   return {
     datos, ventana, detalle, verDetalle,
+    recordarAvisos: conRecordatorioAvisos(avisos),
     entendido() { setVentana(false); guardarVista(); },
+    // «Activar avisos» del recuadro: la cierra y cuenta como vista, como «Entendido»; App lleva a Perfil › Avisos.
+    activarAvisos() { setVentana(false); guardarVista(); },
     cerrarDetalle() { setDetalle(false); },
   };
 }
@@ -130,8 +149,29 @@ function FondoSeguro({ children }) {
   );
 }
 
-/* 1 · La ventana: título, los puntos y dos botones. */
-export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
+/* El recuadro «Activa los avisos», debajo de los puntos (14/11/2026). Va
+   dentro de lo que se desplaza: con letra grande, «Ver en detalle» y
+   «Entendido» siguen a la vista. Vibra en irAAvisosPerfil de App.js. */
+function RecordatorioAvisos({ onActivar }) {
+  return (
+    <View style={s.recordatorio} testID="novedadesRecordatorio">
+      <View style={s.recordatorioCab}>
+        <View style={s.puntoIcono}><IconoNovedad nombre="notificacion" /></View>
+        <Text style={s.recordatorioTit} accessibilityRole="header">Activa los avisos</Text>
+      </View>
+      <Text style={s.recordatorioTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
+      <Pressable testID="novedadesActivarAvisos" onPress={() => onActivar?.()}
+        accessibilityRole="button" accessibilityLabel="Activar avisos"
+        accessibilityHint="Cierra esta ventana y te lleva a Perfil › Avisos"
+        style={({ pressed, focused }) => [s.boton, s.botonVerde, s.botonAncho, focused && s.foco, pressed && pulsado('b1')]}>
+        <Text style={s.botonVerdeTxt}>Activar avisos</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+/* 1 · La ventana: título, los puntos, el recuadro de los avisos y dos botones. */
+export function VentanaNovedades({ visible, datos, onDetalle, onEntendido, recordarAvisos = false, onActivarAvisos }) {
   const idioma = useIdioma();
   const t = textosNovedades(datos, idioma);
   return (
@@ -157,6 +197,7 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
                   </View>
                 ))}
               </View>
+              {recordarAvisos ? <RecordatorioAvisos onActivar={onActivarAvisos} /> : null}
             </ScrollView>
             <View style={s.botones}>
               <Pressable testID="novedadesVerDetalle" onPress={() => { tacto.abrir(); onDetalle?.(); }}
@@ -275,12 +316,18 @@ const s = StyleSheet.create({
   boton: { flexGrow: 1, flexBasis: 140, minHeight: UI.boton, borderRadius: R.m, paddingHorizontal: 16, paddingVertical: 10,
     alignItems: 'center', justifyContent: 'center' },
   botonSolo: { flexGrow: 0, flexBasis: 'auto', alignSelf: 'flex-start', maxWidth: '100%' },
+  botonAncho: { flexGrow: 0, flexBasis: 'auto', alignSelf: 'stretch' },
   botonFinal: { marginTop: 24 },
   botonTonal: { backgroundColor: C.ton },
   botonTonalTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.tx, textAlign: 'center' },
   botonVerde: { backgroundColor: C.senal },
   botonVerdeTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.enSenal, textAlign: 'center' },
   foco: { borderWidth: 2, borderColor: C.tx },
+  // El recuadro «Activa los avisos»: como «Ir a Perfil › Avisos» del detalle, con el tono verde de los iconos.
+  recordatorio: { marginTop: 18, padding: 14, borderRadius: R.l, backgroundColor: C.senalT, borderWidth: 1, borderColor: C.bd, gap: 10 },
+  recordatorioCab: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  recordatorioTit: { fontFamily: F.negrita, fontSize: 18, lineHeight: 23, color: C.tx, flex: 1, minWidth: 0 },
+  recordatorioTxt: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx2 },
 
   /* Detalle: como las pantallas de Inicio («Mercado y noticias»). */
   pantalla: { flex: 1, backgroundColor: C.noche },

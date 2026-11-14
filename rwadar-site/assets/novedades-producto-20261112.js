@@ -16,7 +16,12 @@
      /novedades-rwadar/) y «Entendido» (la cierra). Cerrarla de cualquier
      forma (Entendido, ×, Escape o fuera) cuenta como vista: se guarda la
      versión en el almacenamiento local (rwadar.novedades.vista) y no vuelve
-     a salir hasta la siguiente. No sale:
+     a salir hasta la siguiente. Desde el 14/11/2026, debajo de los puntos,
+     el recuadro «Activa los avisos» con un botón «Activar avisos» que la
+     cierra (cuenta como vista) y lleva a Perfil › Avisos (/#perfil-avisos):
+     sale salvo que las notificaciones ya estén activas en este navegador
+     (lo decide modelo.estadoAvisosNavegador; si no se sabe, sale). No pide
+     ningún permiso: eso se hace en Perfil › Avisos. No sale:
        · si el navegador no deja leer o guardar lo visto (se prueba a
          guardar antes: no se puede prometer «una vez»);
        · si se llega a Inicio a otra cosa concreta: una notificación
@@ -39,7 +44,7 @@
 (() => {
   const modelo = globalThis.RWAdarNovedadesProducto;
   if (!modelo || typeof document === 'undefined') return;
-  const PLAZO_MS = 10000, ESPERA_MS = 900, REVISION_MS = 1500, ESPERA_MAXIMA_MS = 10 * 60 * 1000;
+  const PLAZO_MS = 10000, ESPERA_MS = 900, REVISION_MS = 1500, ESPERA_MAXIMA_MS = 10 * 60 * 1000, PLAZO_AVISOS_MS = 2500;
   const SVG = 'http://www.w3.org/2000/svg';
   const UI = Object.freeze({
     es: Object.freeze({
@@ -50,6 +55,8 @@
       ctaTit: '¿Quieres enterarte de las próximas novedades?',
       ctaTexto: 'Activa los avisos en Perfil › Avisos. Es gratis y los puedes quitar cuando quieras.',
       ctaBoton: 'Ir a Perfil › Avisos', tituloPagina: t => t + ' · RWAdar',
+      recTit: 'Activa los avisos', recTexto: 'Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.',
+      recBoton: 'Activar avisos',
     }),
     en: Object.freeze({
       cerrar: 'Close the news', detalle: 'See details', entendido: 'Got it',
@@ -59,6 +66,8 @@
       ctaTit: 'Want to hear about what comes next?',
       ctaTexto: 'Turn on alerts in Profile › Alerts. It is free and you can turn them off whenever you like.',
       ctaBoton: 'Go to Profile › Alerts', tituloPagina: t => t + ' · RWAdar',
+      recTit: 'Turn on alerts', recTexto: 'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.',
+      recBoton: 'Turn on alerts',
     }),
   });
   const RUTA_AVISOS = '/#perfil-avisos';
@@ -109,6 +118,25 @@
     } catch { return null; } finally { if (reloj) clearTimeout(reloj); }
   }
 
+  /* ¿Notificaciones ya activas en este navegador? Solo se mira lo que el
+     navegador sabe (soporte, permiso y si hay suscripción de push), sin
+     preguntar a nadie ni pedir permiso; lo decide el modelo. Con plazo: si
+     el navegador no contesta, 'desconocido' (y el recuadro sale). */
+  async function avisosDelNavegador() {
+    let reloj = null;
+    const plazo = new Promise((_, mal) => { reloj = setTimeout(() => mal(new Error('plazo')), PLAZO_AVISOS_MS); });
+    try {
+      const nav = globalThis.navigator;
+      const soporte = !!nav && 'serviceWorker' in nav && 'PushManager' in globalThis && 'Notification' in globalThis;
+      if (!soporte) return modelo.estadoAvisosNavegador({ soporte });
+      const permiso = globalThis.Notification.permission;
+      if (permiso !== 'granted') return modelo.estadoAvisosNavegador({ soporte, permiso });
+      const registro = await Promise.race([nav.serviceWorker.getRegistration('/'), plazo]);
+      const suscripcion = registro && registro.pushManager ? await Promise.race([registro.pushManager.getSubscription(), plazo]) : null;
+      return modelo.estadoAvisosNavegador({ soporte, permiso, suscrito: !!suscripcion });
+    } catch { return 'desconocido'; } finally { clearTimeout(reloj); }
+  }
+
   /* Los puntos del resumen: icono y una línea (el título y su frase). En la
      página, cada punto lleva a su sección. */
   function puntos(lista, textos, { enlazar = false } = {}) {
@@ -137,11 +165,17 @@
       const datos = await cargar();
       if (!datos) return;
       const limite = Date.now() + ESPERA_MAXIMA_MS;
-      const mirar = () => {
+      const ahora = () => modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });
+      const mirar = async () => {
         if (Date.now() > limite) return;
-        const estado = modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });
-        if (estado === 'ensenar') mostrar(datos, almacen);
-        else if (estado === 'esperar') setTimeout(mirar, REVISION_MS);
+        let estado = ahora();
+        // Los avisos de este navegador, justo antes de enseñarla (mientras esperaba se han podido activar).
+        if (estado === 'ensenar') {
+          const avisos = await avisosDelNavegador();
+          estado = ahora();
+          if (estado === 'ensenar') { mostrar(datos, almacen, avisos); return; }
+        }
+        if (estado === 'esperar') setTimeout(mirar, REVISION_MS);
       };
       mirar();
     }, ESPERA_MS);
@@ -149,7 +183,24 @@
     else addEventListener('load', empezar, { once: true });
   }
 
-  function pintarVentana(d, datos) {
+  /* El recuadro «Activa los avisos» (14/11/2026): título, una línea y el
+     botón a Perfil › Avisos. Va en el cuerpo, que se desplaza: los botones de
+     abajo siguen a la vista. En el orden del Tab va entre × y «Ver en detalle». */
+  function recordatorio(t) {
+    const caja = propio(el('section', 'nov-rec'));
+    caja.setAttribute('aria-labelledby', 'novedadesRecTit');
+    caja.dataset.novRecordatorio = '';
+    const cab = el('div', 'nov-rec-cab');
+    const tit = propio(el('h3', 'nov-rec-tit', t.recTit));
+    tit.id = 'novedadesRecTit';
+    cab.append(icono('notificacion'), tit);
+    const boton = propio(el('a', 'b1 nov-rec-boton', t.recBoton));
+    boton.href = RUTA_AVISOS; boton.dataset.novAvisos = ''; boton.dataset.novFoco = 'avisos';
+    caja.append(cab, propio(el('p', 'nov-rec-txt', t.recTexto)), boton);
+    return caja;
+  }
+
+  function pintarVentana(d, datos, avisos) {
     const textos = modelo.enIdioma(datos, idioma()), t = ui();
     const enfocado = document.activeElement && d.contains(document.activeElement) ? document.activeElement.dataset.novFoco : '';
     propio(d);
@@ -176,6 +227,7 @@
     lista.setAttribute('role', 'list');
     puntos(lista, textos);
     cuerpo.append(lista);
+    if (modelo.conRecordatorioAvisos(avisos)) cuerpo.append(recordatorio(t));
     const acciones = el('div', 'nov-acciones');
     const ver = el('a', 'b2 nov-ver', t.detalle);
     ver.href = modelo.PAGINA; ver.dataset.novVer = ''; ver.dataset.novFoco = 'ver';
@@ -187,18 +239,21 @@
     if (enfocado) d.querySelector(`[data-nov-foco="${enfocado}"]`)?.focus({ preventScroll: true });
   }
 
-  function mostrar(datos, almacen) {
+  function mostrar(datos, almacen, avisos) {
     if (document.getElementById('novedadesDialogo')) return;
     const d = el('dialog', 'escaparate-dialogo nov-dialogo');
     d.id = 'novedadesDialogo';
     d.setAttribute('aria-labelledby', 'novedadesTit');
     d.setAttribute('aria-describedby', 'novedadesPuntos');
     d.dataset.novedadesVersion = datos.version;
+    d.dataset.novedadesAvisos = avisos;
     const origen = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
     const visto = () => modelo.marcarVista(almacen, datos.version);
-    pintarVentana(d, datos);
+    pintarVentana(d, datos, avisos);
     d.addEventListener('click', e => {
       if (e.target === d || e.target.closest?.('[data-nov-cerrar],[data-nov-entendido]')) { d.close(); return; }
+      // «Activar avisos»: cuenta como vista y se cierra antes de ir a Perfil › Avisos (el enlace sigue su camino).
+      if (e.target.closest?.('[data-nov-avisos]')) { visto(); d.close(); return; }
       // «Ver en detalle»: la página nueva; cuenta como vista antes de salir.
       if (e.target.closest?.('[data-nov-ver]')) visto();
     });
@@ -209,7 +264,7 @@
       if (origen && document.contains(origen)) origen.focus({ preventScroll: true });
     });
     let suscrito = null;
-    if (globalThis.RWAdarIdioma?.suscribirIdioma) suscrito = globalThis.RWAdarIdioma.suscribirIdioma(() => { if (d.open) pintarVentana(d, datos); });
+    if (globalThis.RWAdarIdioma?.suscribirIdioma) suscrito = globalThis.RWAdarIdioma.suscribirIdioma(() => { if (d.open) pintarVentana(d, datos, avisos); });
     d.addEventListener('close', () => { if (typeof suscrito === 'function') suscrito(); }, { once: true });
     document.body.append(d);
     document.documentElement.classList.add('nov-abierta');
