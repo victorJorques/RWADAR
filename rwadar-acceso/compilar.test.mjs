@@ -43,7 +43,7 @@ test('el worker compilado solo exporta funciones con nombre, además de default'
     const modulo = await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined, opciones)).toString('base64') + '#' + marca);
     const conNombre = Object.keys(modulo).filter(nombre => nombre !== 'default');
     assert.deepEqual(conNombre.filter(nombre => typeof modulo[nombre] !== 'function'), [], marca + ': exportaciones que no son funciones');
-    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'crearTokenizacionServidor', 'retornoSeguro'], marca);
+    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'crearTokenizacionDirectoServidor', 'crearTokenizacionServidor', 'retornoSeguro'], marca);
     assert.equal(typeof modulo.default?.fetch, 'function', marca);
   }
 });

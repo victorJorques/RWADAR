@@ -15,6 +15,14 @@
      últimos 30 días. Solo se usa si es de la misma ejecución que la diaria y
      acaba en su mismo punto (unirSerieFina); si falta, no vale o no casa, el
      gráfico sigue con la diaria como antes y «24 h» sale desactivada.
+   - /api/tokenizacion/directo (14/11/2026): el gráfico en directo. La base
+     pide a CoinGecko cada 5 minutos (migración 35) y nuestro servidor lo
+     sirve. Se pide a la vez que la diaria y, si vale y casa con ella
+     (unirDirecto), es lo que se pinta y la cifra grande; con la página a la
+     vista se vuelve a pedir en cuanto toca el dato siguiente. La edad se mide
+     con la cabecera Date de la respuesta (el reloj del servidor), no con la
+     hora del aparato. Si no vale, la fina publicada (como antes) y, si el
+     directo está encendido y falla, una línea lo dice; apagado, nada.
    La cifra grande es el último punto de la serie (QA del 11/11/2026): la
    misma que el final de la línea, la cruz en el último día, el cambio, el
    máximo y el mínimo. El total de la categoría, con todos sus tokens, va en
@@ -53,9 +61,14 @@
   const RUTA_SERIE = '/datos/tokenizacion-serie.json', PLAZO_MS = 10000;
   // Las series finas, en un archivo aparte; como en la app, nada de más de 256 kB (hoy ocupa unos 39).
   const RUTA_SERIE_FINA = '/datos/tokenizacion-serie-fina.json', MAX_FINA = 256 * 1024;
+  // El directo: unos 40 kB; nada de más de 128 kB. Se vuelve a pedir con el dato siguiente
+  // (la base lo hace cada 5 minutos); si no vale, cada 5 minutos.
+  const RUTA_DIRECTO = '/api/tokenizacion/directo', MAX_DIRECTO = 128 * 1024, SIGUIENTE_MS = 6.5 * 60000, REFRESCO_MS = 5 * 60000;
   const SVG = 'http://www.w3.org/2000/svg';
   const FLECHA = { sube: '▲', baja: '▼', igual: '=' };
   let raiz, modo, vivo = null, serie = null, pestana = null, suscrito = false, cruz = null, quitarRedimension = null;
+  // De dónde sale la serie ('directo' | 'archivo' | 'diaria'), por qué no vale el directo y cuándo se vuelve a pedir.
+  let origen = null, motivoDirecto = null, proximo = 0, temporizador = null;
   // Tras un toque, la cruz se queda 3 s (o hasta otro toque fuera del gráfico).
   const CRUZ_FIJA_MS = 3000;
   let cruzFija = null, tactil = null;
@@ -96,13 +109,73 @@
     } catch { /* sin dato de hoy */ }
     return null;
   }
-  /* La diaria y, a la vez, la fina. La fina solo entra si vale y casa con la
-     diaria (unirSerieFina); si falta (la semilla de main, una web anterior),
-     no vale o no casa, la diaria sola, como antes de las series finas. */
+  /* El directo: { cuerpo, edadMs } o { motivo } ('apagado', 'no_casa',
+     'atrasado'…, o 'red'). Nunca lanza. La edad, con la cabecera Date de la
+     respuesta más lo que ha pasado desde que llegó (el mayor de
+     performance.now() y Date.now(): el primero se para si el aparato duerme). */
+  async function pedirDirecto() {
+    const abort = new AbortController(), reloj = setTimeout(() => abort.abort(), PLAZO_MS);
+    try {
+      const r = await fetch(RUTA_DIRECTO, { credentials: 'omit', cache: 'no-cache', headers: { Accept: 'application/json' }, signal: abort.signal });
+      const perf0 = performance.now(), fecha0 = Date.now(), fechaServidor = r.headers.get('date');
+      const texto = await r.text();
+      if (texto.length > MAX_DIRECTO) return { motivo: 'red' };
+      let cuerpo = null;
+      try { cuerpo = JSON.parse(texto); } catch { cuerpo = null; }
+      if (r.status !== 200) return { motivo: modelo.motivoDirecto(r.status, cuerpo) };
+      const edadMs = modelo.edadDirecto({ generado: cuerpo?.fina?.generado, fechaServidor,
+        transcurrido: modelo.transcurridoMs({ perf0, perf1: performance.now(), fecha0, fecha1: Date.now() }) });
+      return { cuerpo, edadMs };
+    } catch { return { motivo: 'red' }; } finally { clearTimeout(reloj); }
+  }
+  /* La serie que se pinta y de dónde sale. A la vez, la diaria y el directo;
+     si el directo vale y casa (unirDirecto), «directo». Si no, la fina
+     publicada, que solo entra si vale y casa con la diaria (unirSerieFina):
+     «archivo»; si tampoco, la diaria sola, como antes de las series finas. */
   async function cargarSerie() {
-    const [diaria, fina] = await Promise.all([pedir(RUTA_SERIE).catch(() => null), pedir(RUTA_SERIE_FINA, MAX_FINA).catch(() => null)]);
-    if (!modelo.serieValida(diaria)) return null;
-    return (fina && modelo.unirSerieFina(diaria, fina)) || modelo.validarSerie(diaria);
+    const [diaria, directo] = await Promise.all([pedir(RUTA_SERIE).catch(() => null), pedirDirecto()]);
+    if (!modelo.serieValida(diaria)) return { serie: null, origen: null, motivo: null, proximo: Date.now() + REFRESCO_MS };
+    let motivo = directo.motivo || null;
+    if (!motivo) {
+      const r = modelo.unirDirecto(diaria, directo.cuerpo, { edadMs: directo.edadMs });
+      if (r.serie) return { serie: r.serie, origen: 'directo', motivo: null, proximo: Date.now() + Math.max(15000, SIGUIENTE_MS - directo.edadMs) };
+      motivo = r.motivo;
+    }
+    const fina = await pedir(RUTA_SERIE_FINA, MAX_FINA).catch(() => null);
+    const unida = fina && modelo.unirSerieFina(diaria, fina);
+    // Apagado a propósito no se vuelve a preguntar tan a menudo.
+    const despues = Date.now() + (motivo === 'apagado' ? 3 * REFRESCO_MS : REFRESCO_MS);
+    if (unida?.fina) return { serie: unida, origen: 'archivo', motivo, proximo: despues };
+    return { serie: modelo.validarSerie(diaria), origen: 'diaria', motivo, proximo: despues };
+  }
+  function aplicarSerie(r) {
+    serie = r.serie; origen = r.origen; motivoDirecto = r.motivo; proximo = r.proximo;
+    memo.clear();
+    if (!raiz) return;
+    if (origen) raiz.dataset.mercadoOrigen = origen; else delete raiz.dataset.mercadoOrigen;
+    if (serie) raiz.dataset.mercadoSeries = finasUnidas().join(',') || 'diaria';
+  }
+  // El aviso cuando el directo está encendido y no se puede usar ('' si va bien o está apagado).
+  const avisoDirecto = () => (origen === 'directo' ? '' : modelo.avisoDirecto(motivoDirecto, serie, idioma()));
+  /* Con la página a la vista, se vuelve a pedir cuando toca (el dato
+     siguiente del directo, o cada 5 minutos); oculta, nada; al volver, si ya
+     tocaba, enseguida. Se repinta sin perder la pestaña, el idioma ni los
+     desplegables; con la cruz a la vista, se espera a que se quite. */
+  function programar() {
+    clearTimeout(temporizador);
+    temporizador = null;
+    if (document.hidden || !serie) return;
+    temporizador = setTimeout(refrescar, Math.max(1000, proximo - Date.now()));
+  }
+  async function refrescar() {
+    temporizador = null;
+    if (document.hidden) return;
+    if (raiz.querySelector('.mk-graf')?.dataset.indice !== undefined) { temporizador = setTimeout(refrescar, 3000); return; }
+    const r = await cargarSerie();
+    // Si la pestaña elegida se queda sin datos (en «24 h», el directo falla y la copia publicada no trae la de 5 minutos),
+    // la primera que sí, como al empezar y como la app con «elegida» (revisión del 14/11).
+    if (r.serie) { aplicarSerie(r); pestanaConDatos(); pintar(); } else proximo = r.proximo;
+    programar();
   }
 
   /* ---- Piezas comunes ---- */
@@ -133,6 +206,10 @@
     return memo.get(clave);
   }
   const disponible = clave => una('disponible|' + clave, () => modelo.pestanaDisponible(serie, clave));
+  // Si la pestaña elegida no tiene datos con esta serie, la primera que sí.
+  function pestanaConDatos() {
+    if (serie && !disponible(pestana)) pestana = modelo.PESTANAS.find(p => disponible(p.clave))?.clave || pestana;
+  }
   const graficoDe = clave => una('grafico|' + clave + '|' + idioma(), () => modelo.graficoPestana(serie, clave, idioma()));
   const nombrePestana = clave => modelo.PESTANAS.find(p => p.clave === clave);
   function cambio(g, clase) {
@@ -535,6 +612,9 @@
       // En una pestaña fina con tokens fuera, su línea acaba por debajo de la cifra grande: se dice cuánto y por qué.
       if (g.avisoFuera) cab.append(el('p', 'mk-aviso mk-aviso-fuera', g.avisoFuera[0].toUpperCase() + g.avisoFuera.slice(1) + '.'));
     }
+    // El directo encendido que no se puede usar: el gráfico es la copia publicada, y se dice hasta cuándo llega.
+    const directo = avisoDirecto();
+    if (directo) cab.append(el('p', 'mk-aviso mk-aviso-directo', directo));
     if (atrasada()) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
     // Una pestaña fina con la serie fina de más de 26 horas antes del dato de hoy: se dice hasta cuándo llega
     // (se hace una vez al día y la web se publica a mano; sin esto, «24 h» seguía en el día de la publicación).
@@ -620,6 +700,8 @@
     der.append(el('span', 'mk-ct-cifra', modelo.millones(hoy.valor, idioma())));
     if (g) der.append(cambio(g, 'mk-ct-cambio'), el('span', 'mk-ct-periodo', g.periodoTexto));
     if (atrasada()) der.append(el('span', 'mk-ct-periodo mk-ct-hasta', tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
+    // Sin el directo (encendido y fallando): «copia de las 16:05», la de la copia publicada.
+    else if (avisoDirecto()) der.append(el('span', 'mk-ct-periodo mk-ct-copia', hoy.t ? tx('copia de las ', 'copy from ') + modelo.horaEspana(modelo.msMinuto(hoy.t)).hora : tx('copia publicada', 'published copy')));
     a.append(izq);
     if (g) a.append(minigrafico(g));
     a.append(der);
@@ -652,12 +734,18 @@
     if (!raiz || !modelo || !raiz.querySelector('#mkCuerpo')) return;
     modo = raiz.dataset.mercado === 'inicio' ? 'inicio' : 'completo';
     pestana = modelo.PESTANA_INICIAL;
-    [vivo, serie] = await Promise.all([cargarVivo(), cargarSerie()]);
+    const [v, r] = await Promise.all([cargarVivo(), cargarSerie()]);
+    vivo = v;
+    // Con qué series se pinta («5m,1h», «1h» o «diaria») y de dónde salen (directo, archivo o diaria): lo leen las pruebas.
+    aplicarSerie(r);
     // Si 1 M no tiene datos, la primera pestaña que sí.
-    if (serie && !disponible(pestana)) pestana = modelo.PESTANAS.find(p => disponible(p.clave))?.clave || pestana;
-    // Con qué series se pinta («5m,1h», «1h» o «diaria»; lo leen las pruebas).
-    if (serie) raiz.dataset.mercadoSeries = finasUnidas().join(',') || 'diaria';
+    pestanaConDatos();
     pintar();
+    programar();
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { clearTimeout(temporizador); temporizador = null; return; }
+      if (Date.now() >= proximo) refrescar(); else programar();
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar, { once: true });
   else iniciar();

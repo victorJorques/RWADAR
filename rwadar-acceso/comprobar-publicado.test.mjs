@@ -82,8 +82,9 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
   for (const linea of esperadas) assert.ok(correcta(resultado.lineas, linea), 'Falta: ' + linea);
   assert.equal(academy.lecciones.length, 9); assert.deepEqual([...academy.pendientes], []);
   assert.ok(!salida.includes('(Próximamente) no tiene página'), 'no queda ninguna lección «Próximamente» que pedir');
-  // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó).
-  assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user']);
+  // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó) y, desde el 14/11/2026, por la
+  // función pública del gráfico en directo (sin la migración 35, 404: «directo_apagado»).
+  assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user', 'POST /rest/v1/rpc/tokenizacion_directo']);
 });
 
 /* En una vista previa (revision.rwadar.pages.dev), Cloudflare Pages pone
@@ -198,5 +199,37 @@ test('el worker publicado manda /condiciones con un 301 a /privacidad#condicione
     assert.equal((await fetch(local.url + '/condiciones.html', { redirect: 'manual' })).status, 404);
     const vieja = await fetch(local.url + '/privacidad.html', { redirect: 'manual' });
     assert.equal(vieja.status, 301); assert.equal(vieja.headers.get('location'), '/privacidad');
+  } finally { await local.cerrar(); }
+});
+
+// El gráfico en directo (14/11/2026, revisión del diseño): un 503 con código
+// conocido no tumba la publicación (pasa unos minutos tras publicar otra lista
+// o con una racha de 429 en la base); un 5xx sin JSON, un 200 que no vale o un
+// código desconocido, sí.
+test('comprobar-publicado: qué vale como respuesta de /api/tokenizacion/directo', async () => {
+  const { juzgarDirecto, CODIGOS_503 } = await import('../.github/juzgar-directo.mjs');
+  const modelo = require('../rwadar-movil/lib/tokenizacion.js');
+  const fina = JSON.parse(fs.readFileSync(path.join(RAIZ, 'rwadar-app/tokenizacion/prueba-serie-fina-20261113.json'), 'utf8'));
+  const bueno = JSON.stringify({ version: 1, fina, sinLectura: { '5m': [], '1h': [] } });
+  assert.deepEqual(juzgarDirecto(200, bueno, modelo), { bien: true, aviso: null });
+  assert.deepEqual(juzgarDirecto(404, '{"error":"directo_apagado"}', modelo), { bien: true, aviso: null });
+  for (const codigo of CODIGOS_503) {
+    const j = juzgarDirecto(503, JSON.stringify({ error: codigo }), modelo);
+    assert.equal(j.bien, true, codigo);
+    assert.match(j.aviso, new RegExp(codigo));
+  }
+  for (const [estado, texto] of [[503, 'Service Unavailable'], [502, '<html>'], [503, '{"error":"otro"}'], [200, '{"version":1}'],
+    [200, JSON.stringify({ version: 1, fina: { ...fina, version: 2 }, sinLectura: { '5m': [], '1h': [] } })], [404, '{"error":"ruta_no_permitida"}'],
+    [404, '{"error":"directo_apagado","x":1}'], [500, '{"error":"directo_no_responde"}']]) {
+    assert.equal(juzgarDirecto(estado, texto, modelo).bien, false, `${estado} ${texto.slice(0, 40)}`);
+  }
+  // El comprobador lo usa, y el arnés local responde como producción sin la 35 (apagado).
+  assert.match(fs.readFileSync(path.join(RAIZ, '.github/comprobar-publicado.mjs'), 'utf8'), /juzgarDirecto\(directo\.estado, directo\.texto, tokenizacionModelo\)/);
+  exigirConstruida();
+  const local = await arrancarWorkerLocal({ raiz: PUBLICADO, puerto: 0 });
+  try {
+    const r = await fetch(local.url + '/api/tokenizacion/directo');
+    assert.equal(r.status, 404);
+    assert.deepEqual(await r.json(), { error: 'directo_apagado' });
   } finally { await local.cerrar(); }
 });

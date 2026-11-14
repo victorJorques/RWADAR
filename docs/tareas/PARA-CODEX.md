@@ -6,6 +6,178 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (25) · Claude · Gráfico en directo · LISTA PARA PUBLICAR Y ENCENDER (lo hace el coordinador)
+
+- **Entrega (14/11, rama `entrega-grafico`):** unida la rama del constructor
+  con `merge --no-ff` sobre la rama de trabajo (al día con `main`) y
+  aplicada la revisión adversarial de la construcción (7 puntos: 1 alta, 4
+  medias, 2 bajas). **Queda LISTA PARA PUBLICAR la web, ENCENDER el directo
+  y enviar la OTA**, en el orden del contrato (apartado 6); lo hace el
+  coordinador. Aquí no se ha publicado, encendido ni subido nada.
+  1. *(alta)* **La siembra para si un token de la diaria se queda sin
+     historia** (`sembrar-directo.mjs`): antes seguía y lo guardaba con un
+     solo dato; con figure-heloc (más de la mitad) no salía ninguna serie en
+     24 h ni en 30 días. Ahora sale con código 3 sin escribir nada. Pruebas
+     nuevas: el mayor sin sus dos historias y uno pequeño sin la de 5 min.
+  2. *(media)* **Un directo sin ninguna serie ya no es un 200 vacío**: el
+     servidor da 503 `directo_no_valido` y `validarDirecto` lo rechaza (así
+     lo ven la alarma diaria y `comprobar-publicado`). Con una sola serie,
+     sigue valiendo.
+  3. *(media)* **Cualquier 404 es «apagado», sin aviso** (`motivoDirecto`):
+     una web sin la ruta (OTA antes que la web, o una web anterior) ya no
+     enseña el aviso falso a todos. `comprobar-publicado` y la alarma siguen
+     exigiendo `directo_apagado`. Probado también en Chromium.
+  4. *(media)* **Web: al refrescar, si la pestaña elegida se queda sin
+     datos, la primera que sí** (como al empezar y como la app). Caso nuevo
+     en Chromium: en «24 h», el directo cae y no hay fina → pasa a «1 S» con
+     su gráfico y el aviso «día a día», sin «no disponible».
+  5. *(media)* **`probar-coingecko` también pide la diaria publicada desde
+     Supabase** (cambia `probar_pedir`/`probar_leer` en las dos copias de la
+     35, idénticas) y **falla si no da 200**: así se ve antes de encender si
+     Cloudflare no deja leerla. En el contrato, además, un segundo `estado` a
+     los 25-30 minutos de encender.
+  6. *(baja)* **No aplicado**: guardar 250 en vez de 60 cuadruplica el
+     espacio (unos 25-35 MB en vez de 8,5) y no cubre el caso probable (un
+     token recién añadido a la categoría). Lo que lo cubre: `sembrar` cuando
+     cambie la lista de la diaria. Apuntado como pendiente en el contrato
+     (apartado 7); con el punto 2, si pasa, salta la alarma.
+  7. *(baja)* **Contrato al día**: la medida directo/diaria con fecha y
+     cifras (−0,017 % a −0,027 %), y qué cambia en la fase 2 (respaldo día a
+     día, «24 h» desactivada si el directo falla, adaptar
+     `comprobar-publicado.mjs`, que exige la fina publicada).
+  - **Pruebas de la entrega:** `npm test` entero en la raíz con salida 0
+    (6 min; acceso 342/342 con Chromium, móvil 663 y las 2 omitidas de
+    antes); Chromium del directo (390 y 1366) con los dos casos nuevos; base,
+    regla y flujo del directo (21, 47 y 31 correctas); guardián de OTA con
+    `--base fa30779…` `ok:true`; gitleaks sin hallazgos en los commits
+    nuevos. **Mutaciones de los arreglos: 14 de 14 detectadas** (siembra
+    ×2, sin series en el modelo ×2 y en el servidor ×2, 404 en el modelo,
+    en la web y copia desactualizada, pestaña al refrescar, prueba de la
+    diaria en la base ×2 y en el flujo ×2). Capturas a escala 2 de la web
+    y de la app (con dos nuevas: «24 h» cuando el directo cae sin fina, y la
+    app ante una web sin la ruta, sin aviso).
+
+- **Encargo de la dirección (13/11):** «Supabase pregunta a CoinGecko cada 5
+  minutos (una sola consulta para los 250 tokens) y guarda el punto. La web y
+  la app lo leen directamente, sin publicar nada. La pestaña 24 h siempre está
+  al día.» Construido sobre el diseño revisado (el plan del diseñador y los 14
+  problemas que confirmó la revisión, todos aplicados). Rama
+  `worktree-wf_44e63947-86f-1`, desde `main` en `ccedb52`. **SIN ENCENDER y
+  SIN PUBLICAR**: ni Supabase, ni flujos, ni push, ni EAS, ni avisos.
+  Contrato completo: [`MERCADO-DIRECTO-2026-11-14.md`](MERCADO-DIRECTO-2026-11-14.md).
+- **Qué hace, en llano:**
+  1. **La base (migración 35, nueva):** Supabase pide a CoinGecko una vez por
+     ranura de 5 minutos (nunca dos a menos de 240 s), guarda el dato de cada
+     token (los 60 mayores y los de la diaria) y rehace las dos series con la
+     misma regla de hoy. Comprobado en PGlite: **idéntica** a
+     `construirSerieFina` con la ejecución real del 13/11 (30 tokens, 289 y
+     721 puntos, mismos «largos») y en 300 casos al azar con decimales.
+  2. **Un corte del propio directo no culpa a CoinGecko** (lo más grave de la
+     revisión): la edad de cada token solo cuenta en los cubos con lectura
+     buena del directo o cubiertos por la siembra. Probado con cortes de 2 h,
+     25 h y 73 h: nadie fuera ni en «largos» (la regla de hoy los habría
+     marcado o tirado la serie) y la nota dice «El directo no pudo leer del …
+     al …». Encender exige una siembra de menos de 30 minutos (la acción
+     `encender` siembra antes en la misma ejecución).
+  3. **El servidor de la web** sirve `/api/tokenizacion/directo` desde su
+     memoria (como mucho una lectura de Supabase cada 5 minutos por copia),
+     con la clave publicable y sin cookies; el formato es el de la fina
+     publicada y pasa `validarSerieFina` sin cambios.
+  4. **La web y la app** lo piden a la vez que la diaria; si vale, es lo que se
+     pinta y la cifra grande, y todas las pestañas acaban en ella (los días que
+     falten desde la diaria salen de la horaria del directo). La edad se mide
+     con la hora del servidor (cabecera Date): un móvil con la hora mal puesta
+     no lo rechaza. Si el directo está encendido y falla, la copia publicada
+     con la línea «Ahora no se puede usar el dato en directo…» (en Inicio,
+     «copia de las 16:05»); apagado, nada. Se refresca solo con la página a la
+     vista o la app activa, sin cambiar de pestaña y esperando a la cruz.
+  5. **Flujo nuevo «Mercado en directo (base)»** (ensayo, aplicar, verificar,
+     probar CoinGecko desde Supabase, sembrar, encender, apagar, deshacer,
+     estado), con DIRECTO en «confirmar». **Alarma** en el flujo diario (paso
+     final): si el directo está encendido y no responde bien dos veces, el
+     paso falla y GitHub avisa.
+- **Arreglos de la revisión del diseño, uno a uno:** (1) cortes del propio
+  directo → tabla `lecturas` y edad solo en cubos cubiertos; siembra < 30 min
+  para encender. (2) `comprobar-publicado` acepta los 503 con código conocido
+  (`.github/juzgar-directo.mjs`), con aviso. (3) «hoy» = día UTC del último
+  dato, nunca la hora del aparato (pruebas a las 23:58, 00:01 y 00:06). (4)
+  pruebas de la base en tres archivos de menos de 25 s cada uno (45 casos al
+  azar en la CI; 300 en local), sin añadir partes a la CI. (5) alarma en el
+  flujo diario y `diariaLeida` en el documento (más de 45 min → «atrasado»).
+  (6) acción `probar-coingecko` desde la red de Supabase, agente de usuario
+  fijo; la prueba del hueco de figure-heloc queda como condición obligatoria
+  antes de encender. (7) tiempo transcurrido = el mayor de `performance.now()`
+  y `Date.now()`; al volver a primer plano, se pide si pasaron más de 4 min.
+  (8) esperas contadas desde la petición (Retry-After 900 → 15 min justos).
+  (9) el freno «lista corta» solo con menos de 25 válidos o JSON roto; si
+  falta figure-heloc, se guardan los demás. (10) `comparar-directo.mjs`
+  compara el mismo instante. (11) memoria de 60 s si el dato ya pasó de su
+  siguiente hora. (12) el último punto de una diaria vieja también sale de la
+  horaria. (13) la clave Demo solo en `pedir()`; `estado` cuenta las llamadas
+  del mes. (14) ranuras de 5 minutos más el mínimo de 240 s.
+- **Dónde me aparto del plan:** la copia cifrada solo antes de `aplicar-35` y
+  `deshacer` (las demás acciones solo tocan `rwadar_mercado`, que la copia no
+  guarda): menos minutos de Actions. El archivo de prueba real lleva un trozo
+  (6 y 3 tokens, 115 kB), no los 30: con 30 pesaría 2,4 MB; la ejecución
+  entera se comprueba en local (`MERCADO_DIRECTO_REAL=…`).
+- **Medido:** documento compacto ~13 kB (la fina publicada, 38 kB); 60 tokens
+  con su retención, ~8,5 MB en PGlite; la regla, 0,1-0,3 s por serie en
+  PGlite. Las tres pruebas de la base: unos 7, 8 y 6 s en esta máquina.
+- **Archivos:** base `rwadar-app/db/35_mercado_directo{,_verificar,_encender,_apagar,_deshacer,_estado}.sql`
+  y `rwadar-app/supabase/migrations/20261114090000_mercado_directo.sql`;
+  siembra y vigilancia `rwadar-app/tokenizacion/{sembrar-directo,comparar-directo}.mjs`
+  (y `pedirJSON` exportado de `serie-diaria.mjs`); pruebas
+  `rwadar-app/probar-mercado-directo-{regla,base,flujo}.mjs`,
+  `rwadar-app/mercado-directo-soporte.mjs`,
+  `rwadar-app/tokenizacion/prueba-directo-20261113.json`; flujos
+  `.github/workflows/mercado-directo-base.yml` y el paso nuevo de
+  `tokenizacion-diaria.yml`; servidor `rwadar-acceso/{tokenizacion-servidor,servidor}.mjs`,
+  `compilar.cjs`, `probar-worker-local.mjs`; `.github/{comprobar-publicado,juzgar-directo}.mjs`;
+  modelo `rwadar-movil/lib/tokenizacion.js` (y su copia web); web
+  `rwadar-site/assets/mercado-20261111.{js,css}`; app
+  `rwadar-movil/lib/tokenizacion-serie-remota.js` y
+  `rwadar-movil/componentes/MercadoBolsa.js`. Sin tocar `app.json`,
+  `package.json` de la app, `scripts/`, `_headers`, `_routes.json`, el sello
+  ni `rwadar-publicacion-segura.js`.
+- **Pruebas:** `npm test` entero en la raíz con **salida 0** (6 min 17 s):
+  la base del directo 21/21, 47/47 y 28/28 (8,5, 7,4 y 5,9 s); acceso
+  342/342 (con el servidor, 8/8, y Chromium a 390 y 1366, es/en, con
+  capturas a escala 2); móvil 663 (2 omitidas de antes). En local, además:
+  la regla con la ejecución grabada entera (30 tokens) y 300 casos al azar,
+  23/23. Guardián de OTA con `--base fa30779…`: `ok:true`, 1.4.2(24).
+  gitleaks (`rwadar-app/gitleaks.toml`) sobre los commits nuevos: sin
+  hallazgos. **Mutaciones: 57 de 57 detectadas** (arrastres, «>=», 1 %,
+  «largos», último dato del cubo, hora de la respuesta, ranuras y 240 s,
+  esperas y Retry-After, 60 mayores, limpieza, redondeo, orden de la suma,
+  «primera», apagado, otra categoría, permisos, relojes, lista corta,
+  `generado`, cobertura del directo, siembra reciente; en el modelo, tokens,
+  20 min, 25 %, días rellenados, 23:00 del día anterior, `valorFuera`, punto
+  de hoy, `generado`, aviso con apagado, costura, reloj del servidor, «hoy»,
+  reloj que duerme, último punto de una diaria vieja; en el servidor,
+  peticiones a la vez, 60 s, parámetros, sesión, tope de bytes, tokens, 21
+  min, diaria sin leer; `comprobar-publicado`, la alarma, DIRECTO; y el
+  respaldo, el aviso y el refresco en la web y la app). Pruebas de antes
+  ajustadas (sin debilitar): la lista de exportaciones del worker
+  (`compilar.test.mjs`), las rutas que pide `mercado-20261111.js`
+  (`tokenizacion.test.mjs`), lo que el worker local pregunta a Supabase
+  (`comprobar-publicado.test.mjs`) y el cargador por defecto de la app
+  (`tokenizacion.test.cjs`: ahora el del directo).
+- **Pendiente / para la dirección y el coordinador** (orden completo en el
+  contrato, apartado 6):
+  1. Antes de encender: la prueba del hueco de figure-heloc en una mañana
+     laborable (07:00-12:30 UTC) y `probar-coingecko` 3-4 veces desde
+     Supabase. Si salen muchos 429, la clave Demo (comprobar antes su tope
+     mensual).
+  2. PR a main, publicar la web (con la 35 sin aplicar, la ruta da 404
+     «apagado» y todo sigue como hoy), `aplicar-35`, `encender`, OTA.
+  3. Una semana de vigilancia y, si pasa, la fase 2: quitar las finas del
+     flujo diario (unos 400 minutos de Actions al mes).
+  4. `docs/INTERNO.md` se pone al día al encender.
+  5. Choques con las otras dos ramas (noticias automáticas y noticias más
+     visuales): esta entrada, `.github/partes-ci.mjs`, `rwadar-app/package.json`
+     (`test`), `.github/comprobar-publicado.mjs`, `probar-worker-local.mjs`,
+     `MercadoBolsa.js` y el CSS de /mercado/ (zonas distintas). Lo une el
+     integrador.
 ## 14 de noviembre de 2026 (24) · Claude · Noticias del sector solas, con freno · unidas, SIN ENCENDER (se encienden cuando entre la guía de titulares)
 
 - **Encargo de la dirección (13/11, respuesta expresa de Víctor):** «Cada
