@@ -6,7 +6,56 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 14 de noviembre de 2026 (24) · Claude · Gráfico en directo · SIN ENCENDER / SIN PUBLICAR
+## 14 de noviembre de 2026 (24) · Claude · Gráfico en directo · LISTA PARA PUBLICAR Y ENCENDER (lo hace el coordinador)
+
+- **Entrega (14/11, rama `entrega-grafico`):** unida la rama del constructor
+  con `merge --no-ff` sobre la rama de trabajo (al día con `main`) y
+  aplicada la revisión adversarial de la construcción (7 puntos: 1 alta, 4
+  medias, 2 bajas). **Queda LISTA PARA PUBLICAR la web, ENCENDER el directo
+  y enviar la OTA**, en el orden del contrato (apartado 6); lo hace el
+  coordinador. Aquí no se ha publicado, encendido ni subido nada.
+  1. *(alta)* **La siembra para si un token de la diaria se queda sin
+     historia** (`sembrar-directo.mjs`): antes seguía y lo guardaba con un
+     solo dato; con figure-heloc (más de la mitad) no salía ninguna serie en
+     24 h ni en 30 días. Ahora sale con código 3 sin escribir nada. Pruebas
+     nuevas: el mayor sin sus dos historias y uno pequeño sin la de 5 min.
+  2. *(media)* **Un directo sin ninguna serie ya no es un 200 vacío**: el
+     servidor da 503 `directo_no_valido` y `validarDirecto` lo rechaza (así
+     lo ven la alarma diaria y `comprobar-publicado`). Con una sola serie,
+     sigue valiendo.
+  3. *(media)* **Cualquier 404 es «apagado», sin aviso** (`motivoDirecto`):
+     una web sin la ruta (OTA antes que la web, o una web anterior) ya no
+     enseña el aviso falso a todos. `comprobar-publicado` y la alarma siguen
+     exigiendo `directo_apagado`. Probado también en Chromium.
+  4. *(media)* **Web: al refrescar, si la pestaña elegida se queda sin
+     datos, la primera que sí** (como al empezar y como la app). Caso nuevo
+     en Chromium: en «24 h», el directo cae y no hay fina → pasa a «1 S» con
+     su gráfico y el aviso «día a día», sin «no disponible».
+  5. *(media)* **`probar-coingecko` también pide la diaria publicada desde
+     Supabase** (cambia `probar_pedir`/`probar_leer` en las dos copias de la
+     35, idénticas) y **falla si no da 200**: así se ve antes de encender si
+     Cloudflare no deja leerla. En el contrato, además, un segundo `estado` a
+     los 25-30 minutos de encender.
+  6. *(baja)* **No aplicado**: guardar 250 en vez de 60 cuadruplica el
+     espacio (unos 25-35 MB en vez de 8,5) y no cubre el caso probable (un
+     token recién añadido a la categoría). Lo que lo cubre: `sembrar` cuando
+     cambie la lista de la diaria. Apuntado como pendiente en el contrato
+     (apartado 7); con el punto 2, si pasa, salta la alarma.
+  7. *(baja)* **Contrato al día**: la medida directo/diaria con fecha y
+     cifras (−0,017 % a −0,027 %), y qué cambia en la fase 2 (respaldo día a
+     día, «24 h» desactivada si el directo falla, adaptar
+     `comprobar-publicado.mjs`, que exige la fina publicada).
+  - **Pruebas de la entrega:** `npm test` entero en la raíz con salida 0
+    (6 min; acceso 342/342 con Chromium, móvil 663 y las 2 omitidas de
+    antes); Chromium del directo (390 y 1366) con los dos casos nuevos; base,
+    regla y flujo del directo (21, 47 y 31 correctas); guardián de OTA con
+    `--base fa30779…` `ok:true`; gitleaks sin hallazgos en los commits
+    nuevos. **Mutaciones de los arreglos: 14 de 14 detectadas** (siembra
+    ×2, sin series en el modelo ×2 y en el servidor ×2, 404 en el modelo,
+    en la web y copia desactualizada, pestaña al refrescar, prueba de la
+    diaria en la base ×2 y en el flujo ×2). Capturas a escala 2 de la web
+    y de la app (con dos nuevas: «24 h» cuando el directo cae sin fina, y la
+    app ante una web sin la ruta, sin aviso).
 
 - **Encargo de la dirección (13/11):** «Supabase pregunta a CoinGecko cada 5
   minutos (una sola consulta para los 250 tokens) y guarda el punto. La web y

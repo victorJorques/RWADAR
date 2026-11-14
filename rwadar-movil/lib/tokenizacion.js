@@ -826,10 +826,13 @@ function directoAFina(doc) {
   return { fina, sinLectura, diaria: doc.diaria, diariaLeida: doc.diariaLeida };
 }
 /* Lo que sirve /api/tokenizacion/directo: { version: 1, fina, sinLectura }.
-   Devuelve { fina, sinLectura } validados o lanza. */
+   Devuelve { fina, sinLectura } validados o lanza. Sin ninguna serie no hay
+   nada que pintar: no vale (revisión del 14/11/2026; así el servidor da 503
+   y lo ven la alarma diaria y comprobar-publicado, no un 200 vacío). */
 function validarDirecto(r) {
   exigir(esObjeto(r) && Object.keys(r).sort().join() === 'fina,sinLectura,version' && r.version === 1, 'directo: forma no válida');
   const fina = validarSerieFina(r.fina);
+  exigir(ORDEN_FINAS.some(c => fina.series[c]), 'directo: sin ninguna serie');
   exigir(esObjeto(r.sinLectura) && Object.keys(r.sinLectura).sort().join() === '1h,5m', 'directo: cubos sin lectura no válidos');
   const sinLectura = {};
   for (const clave of ORDEN_FINAS) {
@@ -932,12 +935,16 @@ function unirDirecto(diaria, directo, { edadMs } = {}) {
   try { serie = validarSerie({ ...sola, generado: f.generado, puntos: recortados, fina: unida }); } catch { return no('no_valido'); }
   return { serie, motivo: null };
 }
-/* El motivo de una respuesta de /api/tokenizacion/directo que no es 200. */
+/* El motivo de una respuesta de /api/tokenizacion/directo que no es 200.
+   Cualquier 404 es «apagado», sin aviso (revisión del 14/11/2026): también
+   el {"error":"ruta_no_permitida"} de una web sin la ruta (la OTA antes que
+   la web, o una web anterior publicada). comprobar-publicado sigue
+   exigiendo directo_apagado. */
 const MOTIVOS_DIRECTO = Object.freeze({ directo_apagado: 'apagado', directo_sin_datos: 'sin_datos', directo_no_valido: 'no_valido',
   directo_no_casa: 'no_casa', directo_atrasado: 'atrasado', directo_no_responde: 'no_responde' });
 function motivoDirecto(estado, cuerpo) {
   const m = esObjeto(cuerpo) && typeof cuerpo.error === 'string' ? MOTIVOS_DIRECTO[cuerpo.error] : null;
-  if (estado === 404 && m === 'apagado') return 'apagado';
+  if (estado === 404) return 'apagado';
   if (estado === 503 && m && m !== 'apagado') return m;
   return 'red';
 }

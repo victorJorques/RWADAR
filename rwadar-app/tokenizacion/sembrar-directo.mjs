@@ -23,16 +23,21 @@
       puntos horarios anteriores a su primer dato (para arrastrar al
       principio de la ventana). «primera»: el día de su primer dato, solo
       si CoinGecko lo sigue desde hace menos de 30 días.
-   5. Un token que no se puede leer se avisa y se siembra con su valor de
-      /coins/markets (quedará fuera de la serie con su valor, y la regla
-      del 1 % decide si la serie sale).
+   5. Un token de la diaria sin sus dos historias (days=31 y days=1) PARA
+      la siembra (código 3, no escribe nada): quedaría «fuera» en toda la
+      ventana que cubre la siembra y, si pesa más del 1 % (figure-heloc es
+      más de la mitad), ni la de 5 minutos ni la horaria saldrían en 24 h y
+      30 días (revisión del 14/11/2026). Se vuelve a lanzar más tarde. Uno
+      de los 40 mayores que no es de la diaria se avisa y se siembra con su
+      valor de /coins/markets (no entra en la suma).
    6. Al final, cerrar_siembra(lista, generado de la diaria, hora del
       último dato): guarda la lista, apunta hasta dónde llega la historia
       completa y hace el documento.
    El JSON de cada token solo lleva ids comprobados y números, entre
    $siembra$…$siembra$. No usa claves ni la base: el flujo «Mercado en
    directo (base)» (acciones sembrar y encender) pasa el SQL a psql. Si no
-   puede leer la diaria o la lista, no escribe nada y sale con código 3.
+   puede leer la diaria, la lista o la historia de un token de la diaria, no
+   escribe nada y sale con código 3.
    ===================================================================== */
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -84,6 +89,8 @@ export async function sembrar({ fetchImpl = fetch, esperar = dormir, ahora = Dat
         avisar(`· ${id} (${clave}): no se pudo leer (${e.message})`);
       }
     }
+    // Un token de la diaria sin las dos historias quedaría «fuera» en toda la ventana que cubre la siembra (punto 5).
+    if (diaria.tokens.includes(id) && (!caps['1h'] || !caps['5m'])) throw new Error(`${id} es de la diaria y no se pudo leer su historia`);
     let { obs5, obs1h } = observacionesSiembra(caps['1h'], caps['5m']);
     if (!obs5.length && !obs1h.length) {
       const v = valorHoy.get(id);

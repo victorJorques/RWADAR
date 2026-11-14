@@ -191,6 +191,8 @@ export function crearTokenizacionDirectoServidor({ api, ahora = Date.now, respue
     if (r.estado !== 'ok') return no('directo_no_valido');
     let d;
     try { d = tokenizacionModelo.directoAFina(r.doc); } catch { return no('directo_no_valido'); }
+    // Sin ninguna serie no hay nada que pintar: 503 (lo ven la alarma diaria y comprobar-publicado), no un 200 vacío.
+    if (!d.fina.series['5m'] && !d.fina.series['1h']) return no('directo_no_valido');
     const generadoMs = Date.parse(d.fina.generado), edad = t - generadoMs;
     if (edad > DIRECTO_MAX_MS || edad < -DIRECTO_FUTURO_MS) return no('directo_atrasado');
     // La base relee la lista de la diaria publicada cada 15 minutos: si lleva

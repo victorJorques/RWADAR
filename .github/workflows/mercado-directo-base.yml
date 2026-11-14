@@ -16,8 +16,9 @@ name: Mercado en directo (base)
 #   verificar-35     solo lee.
 #   probar-coingecko con el directo apagado: UNA llamada a CoinGecko desde la
 #                    red de Supabase (las mismas reglas de ranura y espera) y
-#                    qué respondió (estado, bytes, 429). Repetirla 3-4 veces,
-#                    espaciadas, antes de encender.
+#                    qué respondió (estado, bytes, 429); y la diaria publicada,
+#                    como la leerá el reloj (sin un 200, falla: no encender).
+#                    Repetirla 3-4 veces, espaciadas, antes de encender.
 #   sembrar          la historia (unas 81 llamadas a CoinGecko desde GitHub,
 #                    13 s entre ellas, unos 18 minutos). Tras un corte del
 #                    directo de más de una hora, o para cambiar de lista.
@@ -223,6 +224,14 @@ jobs:
           (( ${#RESULTADO} <= 600 )) && [[ "$RESULTADO" =~ $RE ]] || { echo "Respuesta inesperada de la base al leer."; exit 1; }
           echo "CoinGecko desde Supabase: $RESULTADO"
           { echo "### CoinGecko desde la red de Supabase"; echo; echo "\`$RESULTADO\`"; } >> "$GITHUB_STEP_SUMMARY"
+          # La diaria publicada, como la leerá el reloj: sin un 200, no se enciende
+          # (si no, a los 45 minutos de encender la web pasa a «atrasado» con aviso para todos).
+          RE_DIARIA='"diaria": 200[,}]'
+          if ! [[ "$RESULTADO" =~ $RE_DIARIA ]]; then
+            echo "Supabase no pudo leer la diaria publicada (rwadar.pages.dev/datos/tokenizacion-serie.json): no enciendas hasta que la lea."
+            { echo; echo "**Supabase no pudo leer la diaria publicada: no enciendas hasta que la lea.**"; } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
 
       - name: Estado (solo lee)
         if: inputs.accion == 'estado'

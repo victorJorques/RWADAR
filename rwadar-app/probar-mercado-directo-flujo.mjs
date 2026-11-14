@@ -45,14 +45,15 @@ const caps = (desde, paso, n, base) => Array.from({ length: n }, (_, i) => [desd
 // 50 tokens: los 30 de la diaria y 20 más; los 40 mayores son los 30 de la diaria y tok-31..tok-40.
 const LISTA = [...DIARIA.tokens, ...Array.from({ length: 20 }, (_, i) => `otro-${i + 1}`)].map((id, i) => ({ id, market_cap: 1e10 / (i + 1), last_updated: new Date(AHORA - 70000).toISOString() }));
 const pedidas = [];
-const fetchPega = ({ falla = [], sinDiaria = false } = {}) => async (url) => {
+// falla: los ids que fallan en days=31 y days=1; falla5m: solo en days=1.
+const fetchPega = ({ falla = [], falla5m = [], sinDiaria = false } = {}) => async (url) => {
   pedidas.push(url);
   const json = (x, status = 200) => new Response(JSON.stringify(x), { status, headers: { 'content-type': 'application/json' } });
   if (url === URL_DIARIA) return sinDiaria ? json({}, 503) : json(DIARIA);
   if (url === modelo.SERIE.apiMercados) return json(LISTA);
   const m = /\/coins\/([a-z0-9-]+)\/market_chart\?vs_currency=usd&days=(31|1)$/.exec(url);
   if (!m) return json({}, 404);
-  if (falla.includes(m[1])) return json({ error: 'no' }, 500);
+  if (falla.includes(m[1]) || (m[2] === '1' && falla5m.includes(m[1]))) return json({ error: 'no' }, 500);
   const i = LISTA.findIndex((t) => t.id === m[1]);
   // Menos puntos que los de verdad (cada 3 horas y cada 30 minutos): la regla es la misma y la prueba va más deprisa.
   return json({ market_caps: m[2] === '31' ? caps(AHORA - 31 * 86400000 + (m[1] === 'otro-1' ? 20 * 86400000 : 0), 3 * 3600000, m[1] === 'otro-1' ? 88 : 249, 1e10 / (i + 1))
@@ -82,6 +83,14 @@ const fetchPega = ({ falla = [], sinDiaria = false } = {}) => async (url) => {
   const salida = [], errores = [];
   const codigo = await principalSiembra({ fetchImpl: fetchPega({ sinDiaria: true }), esperar: async () => {}, ahora: () => AHORA, salida: (t) => salida.push(t), error: (m) => errores.push(m), entorno: {} });
   paso('siembra: sin la diaria publicada no escribe nada y sale con 3', codigo === 3 && salida.length === 0 && /No se pudo sembrar/.test(errores.join('\n')));
+  // Un token de la diaria sin historia (el mayor, o uno pequeño solo en days=1) quedaría «fuera» en toda la ventana
+  // sembrada: con figure-heloc, ni 5m ni 1h en 24 h y 30 días (revisión del 14/11). Se para y no escribe nada.
+  for (const [nombre, opciones] of [['el mayor, en las dos', { falla: [DIARIA.tokens[0]] }], ['uno pequeño, solo en days=1', { falla5m: [DIARIA.tokens.at(-1)] }]]) {
+    const s = [], e = [];
+    const c = await principalSiembra({ fetchImpl: fetchPega(opciones), esperar: async () => {}, ahora: () => AHORA, salida: (t) => s.push(t), error: (m) => e.push(m), entorno: {} });
+    paso(`siembra: un token de la diaria sin su historia (${nombre}) la para: no escribe nada y sale con 3`,
+      c === 3 && s.length === 0 && new RegExp(`No se pudo sembrar: ${(opciones.falla || opciones.falla5m)[0]} es de la diaria`).test(e.join('\n')));
+  }
   paso('siembra: con TLS desactivado no lee nada', (await principalSiembra({ fetchImpl: () => { throw new Error('no'); }, entorno: { NODE_TLS_REJECT_UNAUTHORIZED: '0' }, error: () => {}, salida: () => {} })) === 1);
   fs.writeFileSync(path.join(temporal, 'siembra.sql'), r.sql);
 }
@@ -117,6 +126,7 @@ const fetchPega = ({ falla = [], sinDiaria = false } = {}) => async (url) => {
 const db = await baseDirecto({ aplicar: false });
 const llamadas = [];
 let respuestasCG = [];
+let respuestaDiaria = 200;
 const atenderPgNet = async () => {
   if (!(await valor(db, "select to_regclass('net.http_request_queue') is not null"))) return;
   const nuevas = await filas(db, 'select q.* from net.http_request_queue q left join net._http_response r on r.id = q.id where r.id is null order by q.id');
@@ -126,7 +136,8 @@ const atenderPgNet = async () => {
       await db.query("insert into net._http_response(id, status_code, headers, content, timed_out, created) values ($1, $2, $3, $4, false, now())",
         [p.id, r.status, JSON.stringify(r.headers || {}), r.contenido]);
     } else if (p.url === URL_DIARIA) {
-      await db.query("insert into net._http_response(id, status_code, headers, content, timed_out, created) values ($1, 200, '{}', $2, false, now())", [p.id, JSON.stringify(DIARIA)]);
+      await db.query("insert into net._http_response(id, status_code, headers, content, timed_out, created) values ($1, $2, '{}', $3, false, now())",
+        [p.id, respuestaDiaria, respuestaDiaria === 200 ? JSON.stringify(DIARIA) : '<html>bloqueado</html>']);
     }
   }
 };
@@ -267,12 +278,23 @@ if (hayBash) {
     && /RWAdar 35 OK: directo apagado, 0 relojes/.test(aplicar.pasos.at(-1).texto));
   respuestasCG = [{ status: 429, contenido: '{}', headers: { 'retry-after': '40' } }];
   const prueba = await accion('probar-coingecko');
-  paso(`probar-coingecko: una llamada desde la base, apagada, y dice qué respondió (${prueba.pasos[0]?.stdout.trim()})`,
-    prueba.bien && /"coingecko": 429/.test(prueba.pasos[0].stdout) && /CoinGecko desde la red de Supabase/.test(prueba.pasos[0].resumen)
-    && (await valor(db, 'select count(*) from rwadar_mercado.registro where prueba')) === 1 && (await valor(db, 'select count(*) from rwadar_mercado.obs_5m')) === 0);
+  paso(`probar-coingecko: una llamada desde la base, apagada, y dice qué respondió, también de la diaria publicada (${prueba.pasos[0]?.stdout.trim()})`,
+    prueba.bien && /"coingecko": 429/.test(prueba.pasos[0].stdout) && /"diaria": 200[,}]/.test(prueba.pasos[0].stdout) && /CoinGecko desde la red de Supabase/.test(prueba.pasos[0].resumen)
+    && (await valor(db, 'select count(*) from rwadar_mercado.registro where prueba')) === 1 && (await valor(db, 'select count(*) from rwadar_mercado.obs_5m')) === 0
+    && (await valor(db, 'select diaria_peticion is null and diaria_leida_el is null and cardinality(tokens) = 0 from rwadar_mercado.configuracion')));
   const otra = await accion('probar-coingecko');
   paso('probar-coingecko otra vez en la misma ranura: no pide (como mucho una cada 5 minutos)', otra.bien && /No toca pedir todavía \(pronto\)/.test(otra.pasos[0].texto)
     && (await valor(db, 'select count(*) from rwadar_mercado.registro')) === 1);
+  // Si Supabase no puede leer la diaria publicada (Cloudflare la bloquea), falla y lo dice: así no se enciende
+  // (a los 45 minutos la web pasaría a «atrasado» con aviso para todos; revisión del 14/11).
+  await db.query("update public._reloj set t = t + interval '5 minutes'");
+  respuestaDiaria = 403;
+  const bloqueada = await accion('probar-coingecko');
+  respuestaDiaria = 200;
+  paso(`probar-coingecko con la diaria bloqueada desde Supabase: falla y dice que no se encienda (${bloqueada.pasos[0]?.stdout.trim().split('\n')[0]})`,
+    !bloqueada.bien && bloqueada.pasos[0].estado === 1 && /"diaria": 403/.test(bloqueada.pasos[0].stdout)
+    && /Supabase no pudo leer la diaria publicada/.test(bloqueada.pasos[0].texto) && /no enciendas/.test(bloqueada.pasos[0].resumen)
+    && (await valor(db, 'select diaria_peticion is null and diaria_leida_el is null from rwadar_mercado.configuracion')));
   // La siembra del apartado 1 tiene la hora de AHORA: el reloj de la base, a esa hora.
   await db.query('update public._reloj set t = $1', [new Date(AHORA + 5 * 60000).toISOString()]);
   const sembrada = await accion('sembrar');

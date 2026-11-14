@@ -5,10 +5,11 @@
    de dónde sale la serie (data-mercado-origen), la cifra grande y su hora,
    que el final de 24 h, 1 S, 1 M, 3 M y 1 A es la cifra, que la fina
    publicada no se pide si el directo vale, el respaldo (503 → archivo con
-   aviso; 404 → archivo sin aviso; sin fina → diaria, 24 h desactivada y
-   «día a día»), la hora del móvil mal puesta, el refresco con un reloj
-   simulado sin cambiar de pestaña, nada fuera de la pantalla, ni errores
-   ni bloqueos de la CSP. Sin red. Con RWADAR_CAPTURAS=carpeta, guarda las
+   aviso; 404, también el de una web sin la ruta → archivo sin aviso; sin
+   fina → diaria, 24 h desactivada y «día a día»; en 24 h, si el directo
+   cae y no hay fina, la primera pestaña con datos), la hora del móvil mal
+   puesta, el refresco con un reloj simulado sin cambiar de pestaña, nada
+   fuera de la pantalla, ni errores ni bloqueos de la CSP. Sin red. Con RWADAR_CAPTURAS=carpeta, guarda las
    capturas a escala 2. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -155,7 +156,9 @@ test('en Chromium: /mercado/ e Inicio con el directo, sus respaldos y el refresc
     // 2 · El directo encendido y fallando (503): la copia publicada y el aviso; apagado (404): sin aviso.
     for (const [caso, directo, aviso] of [['atrasado', { estado: 503, cuerpo: '{"error":"directo_atrasado"}' }, true], ['no responde', { estado: 503, cuerpo: '{"error":"directo_no_responde"}' }, true],
       ['roto', { estado: 200, cuerpo: '{"version":1}' }, true], ['sin red', { estado: 500, cuerpo: '<html>' }, true],
-      ['apagado', { estado: 404, cuerpo: '{"error":"directo_apagado"}' }, false], ['no casa', { estado: 503, cuerpo: '{"error":"directo_no_casa"}' }, false]]) {
+      ['apagado', { estado: 404, cuerpo: '{"error":"directo_apagado"}' }, false], ['no casa', { estado: 503, cuerpo: '{"error":"directo_no_casa"}' }, false],
+      // Una web sin la ruta (la OTA antes que la web, o una web anterior publicada): 404 ruta_no_permitida es «apagado», sin aviso falso.
+      ['web sin la ruta', { estado: 404, cuerpo: '{"error":"ruta_no_permitida"}' }, false]]) {
       const { contexto, pagina, errores, pedidas } = await abrir(navegador, local.url + '/mercado/', { ancho: 390, alto: 844, tactil: true, directo });
       await pagina.waitForSelector('#tokenizacion[data-mercado-origen="archivo"] .mk-svg', { timeout: 20000 });
       const c = await leerCabecera(pagina);
@@ -220,6 +223,25 @@ test('en Chromium: /mercado/ e Inicio con el directo, sus respaldos y el refresc
       await pagina.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => true }); document.dispatchEvent(new Event('visibilitychange')); });
       await pagina.clock.runFor(20 * 60000);
       assert.equal(pedidas.directo, antes, 'oculta, no pide');
+      await contexto.close();
+    }
+    // 5 · En «24 h» con el directo, el directo falla y la copia publicada no trae la de 5 minutos (la fase 2, sin --fina):
+    //     no se queda en «no disponible» con «24 h» marcada y desactivada; pasa a la primera pestaña con datos (revisión del 14/11).
+    {
+      const primera = modelo.PESTANAS.find(p => modelo.pestanaDisponible(modelo.validarSerie(JSON.parse(DIARIA)), p.clave)).clave;
+      const { contexto, pagina, pedidas, errores } = await abrir(navegador, local.url + '/mercado/', { ancho: 390, alto: 844, tactil: true, directo: BIEN, fina: null });
+      await pagina.waitForSelector('#tokenizacion[data-mercado-origen="directo"] .mk-svg', { timeout: 20000 });
+      await elegir(pagina, '1d');
+      await pagina.unroute('**/api/tokenizacion/directo');
+      await pagina.route('**/api/tokenizacion/directo', r => { pedidas.directo++; return r.fulfill({ status: 503, contentType: 'application/json', body: '{"error":"directo_no_responde"}' }); });
+      await pagina.clock.runFor(3 * 60000 + 31000);
+      await pagina.waitForSelector('#tokenizacion[data-mercado-origen="diaria"] .mk-svg', { timeout: 20000 });
+      const c = await leerCabecera(pagina);
+      assert.deepEqual([c.pestana, c.dia, c.aviso], [primera, true, 'Ahora no se puede usar el dato en directo: el gráfico usa la última copia publicada, día a día.']);
+      assert.equal(await pagina.$('#tokenizacion .mk-estado'), null, 'sin «El gráfico no está disponible ahora»');
+      assert.ok(await pagina.$('#tokenizacion .mk-graf'), 'con su gráfico');
+      assert.deepEqual([c.fuera, c.ancho, errores], [0, 390, []]);
+      await capturar(pagina, 'web-390-mercado-directo-cae-sin-fina');
       await contexto.close();
     }
   } finally {

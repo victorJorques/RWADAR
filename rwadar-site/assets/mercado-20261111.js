@@ -172,7 +172,9 @@
     if (document.hidden) return;
     if (raiz.querySelector('.mk-graf')?.dataset.indice !== undefined) { temporizador = setTimeout(refrescar, 3000); return; }
     const r = await cargarSerie();
-    if (r.serie) { aplicarSerie(r); pintar(); } else proximo = r.proximo;
+    // Si la pestaña elegida se queda sin datos (en «24 h», el directo falla y la copia publicada no trae la de 5 minutos),
+    // la primera que sí, como al empezar y como la app con «elegida» (revisión del 14/11).
+    if (r.serie) { aplicarSerie(r); pestanaConDatos(); pintar(); } else proximo = r.proximo;
     programar();
   }
 
@@ -204,6 +206,10 @@
     return memo.get(clave);
   }
   const disponible = clave => una('disponible|' + clave, () => modelo.pestanaDisponible(serie, clave));
+  // Si la pestaña elegida no tiene datos con esta serie, la primera que sí.
+  function pestanaConDatos() {
+    if (serie && !disponible(pestana)) pestana = modelo.PESTANAS.find(p => disponible(p.clave))?.clave || pestana;
+  }
   const graficoDe = clave => una('grafico|' + clave + '|' + idioma(), () => modelo.graficoPestana(serie, clave, idioma()));
   const nombrePestana = clave => modelo.PESTANAS.find(p => p.clave === clave);
   function cambio(g, clase) {
@@ -733,7 +739,7 @@
     // Con qué series se pinta («5m,1h», «1h» o «diaria») y de dónde salen (directo, archivo o diaria): lo leen las pruebas.
     aplicarSerie(r);
     // Si 1 M no tiene datos, la primera pestaña que sí.
-    if (serie && !disponible(pestana)) pestana = modelo.PESTANAS.find(p => disponible(p.clave))?.clave || pestana;
+    pestanaConDatos();
     pintar();
     programar();
     document.addEventListener('visibilitychange', () => {

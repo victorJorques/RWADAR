@@ -872,21 +872,49 @@ $funcion$;
 -- Acción «probar-coingecko» del flujo: una sola llamada (con las mismas
 -- reglas de ranura y espera) y, en otra transacción, qué respondió. No
 -- guarda observaciones. Solo con el directo apagado (encendido, ya lo
--- hace el reloj).
+-- hace el reloj). Con la llamada, pide también la diaria publicada como la
+-- pedirá el reloj (revisión del 14/11/2026): si Cloudflare no deja leerla
+-- desde Supabase, se ve aquí, antes de encender, y no a los 45 minutos
+-- con el aviso «atrasado» para todos. Tampoco la guarda: solo su código.
 create or replace function rwadar_mercado.probar_pedir() returns text
 language plpgsql security definer set search_path = '' as $funcion$
+declare
+  v_res text;
+  v_id bigint;
 begin
   perform pg_advisory_xact_lock(20261113, 35);
   if (select encendido from rwadar_mercado.configuracion where unica) then return 'encendido'; end if;
-  return rwadar_mercado.pedir_coingecko(true);
+  v_res := rwadar_mercado.pedir_coingecko(true);
+  if v_res = 'pedido' then
+    v_id := net.http_get('https://rwadar.pages.dev/datos/tokenizacion-serie.json', '{}'::jsonb,
+      '{"accept": "application/json", "user-agent": "RWAdar/1.0 (+https://rwadar.pages.dev)"}'::jsonb, 10000);
+    update rwadar_mercado.configuracion set diaria_peticion = v_id, diaria_pedida_el = rwadar_mercado.reloj() where unica;
+  end if;
+  return v_res;
 end
 $funcion$;
 create or replace function rwadar_mercado.probar_leer() returns jsonb
 language plpgsql security definer set search_path = '' as $funcion$
+declare
+  c rwadar_mercado.configuracion%rowtype;
+  v_res jsonb;
+  v_estado integer;
+  v_bytes integer;
 begin
   perform pg_advisory_xact_lock(20261113, 35);
-  if (select encendido from rwadar_mercado.configuracion where unica) then return '{"coingecko":"encendido"}'; end if;
-  return rwadar_mercado.leer_respuesta(false);
+  select * into c from rwadar_mercado.configuracion where unica;
+  if c.encendido then return '{"coingecko":"encendido"}'; end if;
+  v_res := rwadar_mercado.leer_respuesta(false);
+  if c.diaria_peticion is not null then
+    select h.status_code, octet_length(h.content) into v_estado, v_bytes from net._http_response h where h.id = c.diaria_peticion;
+    if found then
+      update rwadar_mercado.configuracion set diaria_peticion = null where unica;
+      v_res := v_res || jsonb_build_object('diaria', coalesce(v_estado, 0), 'diaria_bytes', v_bytes);
+    else
+      v_res := v_res || '{"diaria": "esperando"}';
+    end if;
+  end if;
+  return v_res;
 end
 $funcion$;
 

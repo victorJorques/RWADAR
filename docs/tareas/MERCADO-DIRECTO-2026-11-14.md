@@ -1,9 +1,10 @@
 # «La tokenización en el mundo» en directo · contrato (14/11/2026)
 
-**Estado: construido y probado en local. SIN ENCENDER y SIN PUBLICAR.** Nada
-aplicado en Supabase, ningún flujo lanzado, ninguna OTA. Encenderlo lo hace el
-coordinador después de enseñárselo a la dirección y con su permiso, paso a paso
-(apartado 6).
+**Estado: construido, revisado (diseño y construcción, con sus arreglos) y
+probado en local. LISTO PARA PUBLICAR Y ENCENDER; todavía sin encender ni
+publicar.** Nada aplicado en Supabase, ningún flujo lanzado, ninguna OTA.
+Encenderlo lo hace el coordinador con el permiso de la dirección (14/11/2026),
+paso a paso (apartado 6).
 
 Decisión de la dirección (13/11/2026): «Supabase pregunta a CoinGecko cada 5
 minutos (una sola consulta para los 250 tokens) y guarda el punto. La web y la
@@ -31,6 +32,16 @@ día. Además ahorra unos 15 min diarios de GitHub.»
 - **Si el directo falla o se queda viejo (más de 20 minutos)**, la web y la
   app usan la copia publicada, como hoy, y lo dicen con una línea. Apagado a
   propósito, sin aviso.
+- **Mide lo mismo que la diaria** (medido el 13/11/2026 con los 30 tokens de
+  la diaria de las 21:08 UTC): la suma por `/coins/markets` (41.854,3 M$ a
+  las 21:43 y 41.863,0 M$ a las 21:52 UTC) y la de los últimos puntos de
+  `market_chart` (41.867,4 M$, pedidos de 21:44 a 21:51) se separan un
+  **−0,027 %** con la lectura más cercana y un **−0,017 %** en el mismo cubo
+  de 5 minutos (con la grabación de las 14:47 UTC, +0,005 %). El 14/11 a las
+  00:38 UTC, figure-heloc daba 27.727.293.617 en `markets` y 27.726.634.853
+  en `market_chart` (0,0024 %). Por token, la mayor diferencia fue
+  kinesis-gold (−0,96 %, momentos distintos). La costura del 5 % de
+  `unirDirecto` queda muy por encima.
 - **Ahorro**: cuando el directo lleve una semana bien, el flujo diario deja de
   hacer las finas: de 22,8 a unos 9,5 minutos por ejecución (unos 400 minutos
   al mes de los 2.000).
@@ -117,7 +128,7 @@ como mucho). Ocupa unos 13 kB (el formato de la fina publicada, 38 kB).
 |---|---|---|
 | 200 `{ version: 1, fina, sinLectura }` | casa con la diaria del despliegue, ≤ 20 min, no más de 5 «del futuro», la base leyó la diaria hace ≤ 45 min | hasta generado + 6,5 min (entre 15 s y 5 min; si ya pasó, 60 s) |
 | 404 `directo_apagado` | sin la 35, deshecha o apagada | 5 min |
-| 503 `directo_sin_datos` / `directo_no_valido` / `directo_no_casa` / `directo_atrasado` | lo que dice | 60 s |
+| 503 `directo_sin_datos` / `directo_no_valido` / `directo_no_casa` / `directo_atrasado` | lo que dice; `directo_no_valido` también si las dos series vienen a `null` (nada que pintar: así lo ven la alarma diaria y `comprobar-publicado`, no un 200 vacío; revisión del 14/11) | 60 s |
 | 503 `directo_no_responde` | Supabase no responde (si hay uno guardado de ≤ 20 min, ese con 200) | 60 s |
 
 `fina` va en el formato de `tokenizacion-serie-fina.json` y pasa
@@ -160,9 +171,19 @@ aviso en el registro): no tumban la publicación. Falla con 5xx sin JSON, un
   vale, cada 5 min; apagado, cada 15). Sin cambiar de pestaña ni cerrar los
   desplegables; con la cruz a la vista, espera. Al volver a primer plano, si
   han pasado más de 4 minutos, enseguida.
+- **Cualquier 404 es «apagado», sin aviso** (`motivoDirecto`, revisión del
+  14/11): también el `{"error":"ruta_no_permitida"}` de una web sin la ruta
+  (la OTA antes que la web, o una web anterior publicada). Así no sale el
+  aviso falso a todos. `comprobar-publicado` y la alarma diaria
+  (`juzgar-directo.mjs`) siguen exigiendo `directo_apagado`.
+- **Si la pestaña elegida se queda sin datos al refrescar** (en «24 h», el
+  directo falla y la copia publicada no trae la de 5 minutos, lo normal en la
+  fase 2), la web pasa a la primera pestaña con datos, como al empezar y como
+  la app con `elegida` (revisión del 14/11).
 - La app: solo JavaScript (OTA). Guardián con
   `--base fa30779f7d1d671f56b5f711cde9cac9eb090310`: `ok:true`, 1.4.2(24). La
-  OTA sola es segura: sin la ruta, la app sigue con la copia publicada.
+  OTA sola es segura: sin la ruta (404, sea cual sea su código), la app sigue
+  con la copia publicada y sin aviso.
 
 ## 5. El flujo «Mercado en directo (base)»
 
@@ -176,8 +197,8 @@ cambian la base o llaman a CoinGecko desde ella.
 | `ensayo-35` | la 35 y su verificador en una transacción que se deshace | — |
 | `aplicar-35` | aplica la 35 y verifica | sí |
 | `verificar-35` | solo lee | — |
-| `probar-coingecko` | con el directo apagado, UNA llamada desde la red de Supabase y qué respondió (estado, bytes, 429, cuántos válidos, el primero, la hora más reciente) | — |
-| `sembrar` | la historia (unas 81 llamadas a CoinGecko desde GitHub, 13 s entre ellas, ~18 min) en una sola transacción | — |
+| `probar-coingecko` | con el directo apagado, UNA llamada desde la red de Supabase y qué respondió (estado, bytes, 429, cuántos válidos, el primero, la hora más reciente); y la diaria publicada, como la leerá el reloj (su código y sus bytes; no la guarda). **Sin un 200 de la diaria, falla**: no se enciende (revisión del 14/11) | — |
+| `sembrar` | la historia (unas 81 llamadas a CoinGecko desde GitHub, 13 s entre ellas, ~18 min) en una sola transacción. Si un token de la diaria se queda sin alguna de sus dos historias (`days=31` y `days=1`), **para sin escribir nada** (código 3): quedaría «fuera» en toda la ventana sembrada y, con figure-heloc (más de la mitad), no saldría ninguna serie en 24 h ni en 30 días (revisión del 14/11). Se vuelve a lanzar más tarde | — |
 | `encender` | siembra y enciende en la misma ejecución (la 35 exige una siembra de menos de 30 min) | — |
 | `apagar` | quita los relojes; guarda los datos | — |
 | `deshacer` | relojes, función y esquema; comprueba que no queda nada | sí |
@@ -214,12 +235,19 @@ Después, en este orden:
 3. «Mercado en directo (base)»: `ensayo-35` → `aplicar-35` (DIRECTO) →
    `verificar-35`.
 4. `probar-coingecko` (DIRECTO) 3 o 4 veces, espaciadas (como mucho una cada
-   5 minutos): que salga 200 con 250 válidos. Si sale 429 a menudo, hace
+   5 minutos): que salga 200 con 250 válidos y `"diaria": 200` (si la diaria
+   no da 200, el paso falla: Supabase no puede leer la web y no se enciende
+   hasta arreglarlo). Si sale 429 a menudo, hace
    falta la clave Demo (comprobar antes su tope mensual en la cuenta de
    CoinGecko; usarla solo en `pedir()`).
 5. `encender` (DIRECTO): siembra (~18 min) y enciende. A los 15 minutos,
    `estado`: 3 llamadas con 200, documento de menos de 10 minutos, «fuera»
-   vacío, `/api/tokenizacion/directo` con 200.
+   vacío, `/api/tokenizacion/directo` con 200. **Y a los 25-30 minutos, otra
+   vez `estado`**: la hora en que la base leyó la diaria tiene que ser
+   posterior a la siembra (la siembra la apunta como leída, así que la
+   primera lectura de verdad desde Supabase llega hacia el minuto 18). Si
+   no, `apagar`: a los 45 minutos la web pasaría a «atrasado» con aviso para
+   todos.
 6. Mirar /mercado/ en el móvil; enviar la OTA (guardián con
    `--base fa30779…`).
 7. Una semana de vigilancia sin gastar Actions: `estado` cuando haga falta y
@@ -230,6 +258,12 @@ Después, en este orden:
    ~9,5 minutos por ejecución) cuando, en 7 días, ≥ 98 % de las llamadas den
    200, el documento se sirva con ≤ 20 minutos el ≥ 99 % de las veces y
    `comparar-directo.mjs` pase (≥ 95 % de los cubos dentro del 0,1 %).
+   **Lo que cambia con la fase 2**: sin `--fina`, la copia publicada ya no
+   trae las series finas, así que si el directo falla el respaldo es día a
+   día y «24 h» se desactiva (la web y la app pasan a la primera pestaña con
+   datos). En ese mismo PR hay que adaptar `.github/comprobar-publicado.mjs`,
+   que hoy exige `/datos/tokenizacion-serie-fina.json` (la comprobación «es
+   el del build y casa con la diaria»), y sus pruebas.
 
 **Apagar**: `apagar` (DIRECTO). En 5 minutos como mucho la web y la app vuelven
 a la copia publicada, sin aviso. **Volver a encender**: `encender` (siembra
@@ -242,6 +276,16 @@ apagado): `sembrar` (DIRECTO) rellena el hueco con la historia de CoinGecko.
 - Base: obs_5m + obs_1h de 60 tokens, unos 8,5 MB en PGlite (lo medido en la
   prueba de retención, con sus índices); las respuestas de pg_net (6 h), unos
   5 MB; el resto, poco. Unos 15 MB de los 500 MB gratis.
+- **Pendiente (revisión del 14/11, gravedad baja, no aplicado)**: un token que
+  entra en la lista de la diaria sin haber estado entre los 60 mayores no
+  tiene historia en el directo, y cuenta como «fuera» (24 h en la de 5
+  minutos, 30 días en la horaria); si pesa más del 1 %, esa serie no sale
+  (con las dos a `null`, el servidor da 503 y salta la alarma). Guardar los
+  250 en vez de 60 lo cubriría solo para quien ya estaba en la lista de
+  CoinGecko (unos 25-35 MB en vez de 8,5) y no para un token recién añadido
+  a la categoría, que es el caso probable. Lo que lo cubre de verdad: lanzar
+  `sembrar` cuando cambie la lista de la diaria (a mano hoy; o que el flujo
+  diario siembre solo los tokens nuevos).
 - Salida de Supabase: unos 13 kB por lectura del servidor; con las visitas
   de hoy, menos de 1 MB al día.
 - CoinGecko: como mucho 288 llamadas al día desde Supabase.

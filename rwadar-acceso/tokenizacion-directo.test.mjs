@@ -105,6 +105,8 @@ test('503 con su código: sin datos, roto, de otra lista, viejo, del futuro, la 
     ['directo_sin_datos', { supabase: () => new Response('{"estado":"sin_datos"}') }],
     ['directo_no_valido', { supabase: () => ok({ ...DOC, v: 2 }) }],
     ['directo_no_valido', { supabase: () => new Response('[1,2]') }],
+    // Las dos series a null: nada que pintar. 503 (lo ven la alarma diaria y comprobar-publicado), no un 200 vacío.
+    ['directo_no_valido', { supabase: () => ok({ ...DOC, series: { '5m': null, '1h': null } }) }],
     ['directo_no_casa', { supabase: () => ok({ ...DOC, tokens: [...DOC.tokens.slice(0, 29), 'otro-token'] }) }],
     ['directo_no_casa', { diaria: null }],
     ['directo_atrasado', { inicio: GENERADO + 21 * MIN }],
@@ -125,6 +127,12 @@ test('503 con su código: sin datos, roto, de otra lista, viejo, del futuro, la 
   }
   // 20 minutos justos todavía vale.
   assert.equal((await montar({ inicio: GENERADO + 20 * MIN }).pedir()).status, 200);
+  // Con una sola de las dos series, también.
+  for (const clave of ['5m', '1h']) {
+    const r = await montar({ supabase: () => ok({ ...DOC, series: { ...DOC.series, [clave]: null } }) }).pedir();
+    assert.equal(r.status, 200, clave);
+    assert.equal(modelo.validarDirecto(await r.json()).fina.series[clave], null, clave);
+  }
 });
 
 test('Supabase cae con uno guardado de 10 minutos: sirve ese; sin nada, 503 y no vuelve a preguntar en 60 s', async () => {

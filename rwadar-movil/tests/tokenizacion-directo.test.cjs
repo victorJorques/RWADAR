@@ -77,6 +77,14 @@ test('directoAFina: cualquier forma rota lanza', () => {
   }
   assert.throws(() => t.validarDirecto({ version: 1, fina: FINA }), /forma/);
   assert.throws(() => t.validarDirecto({ version: 1, fina: FINA, sinLectura: { '5m': [] } }), /sin lectura/);
+  // Sin ninguna serie no hay nada que pintar: no vale (revisión del 14/11; el servidor da 503, no un 200 vacío).
+  const vacia = servido(documento({ ...FINA, series: { '5m': null, '1h': null } }));
+  assert.throws(() => t.validarDirecto(vacia), /sin ninguna serie/);
+  // Con una sola de las dos, sí.
+  for (const clave of ['5m', '1h']) {
+    const una = servido(documento({ ...FINA, series: { ...FINA.series, [clave]: null } }));
+    assert.equal(t.validarDirecto(una).fina.series[clave], null, clave);
+  }
 });
 
 test('unirDirecto: con el directo bien, la serie del directo; la cifra grande y el final de cada pestaña son ultimo', () => {
@@ -231,7 +239,12 @@ test('avisoDirecto: solo con el directo encendido y fallando; nunca con apagado 
   for (const m of ['apagado', 'no_casa', null, undefined]) assert.equal(t.avisoDirecto(m, publicada), '');
   // Lo que dice el servidor.
   assert.equal(t.motivoDirecto(404, { error: 'directo_apagado' }), 'apagado');
-  assert.equal(t.motivoDirecto(404, { error: 'ruta_no_permitida' }), 'red');
+  // Cualquier 404 es «apagado», sin aviso (revisión del 14/11): también el de una web sin la ruta
+  // (la OTA antes que la web, o una web anterior publicada). comprobar-publicado sigue exigiendo directo_apagado.
+  assert.equal(t.motivoDirecto(404, { error: 'ruta_no_permitida' }), 'apagado');
+  assert.equal(t.motivoDirecto(404, null), 'apagado');
+  assert.equal(t.avisoDirecto(t.motivoDirecto(404, { error: 'ruta_no_permitida' }), sola), '');
+  assert.equal(t.avisoDirecto(t.motivoDirecto(404, null), publicada), '');
   assert.equal(t.motivoDirecto(503, { error: 'directo_no_casa' }), 'no_casa');
   assert.equal(t.motivoDirecto(503, { error: 'directo_atrasado' }), 'atrasado');
   assert.equal(t.motivoDirecto(503, { error: 'otro' }), 'red');
