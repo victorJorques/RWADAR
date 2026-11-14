@@ -604,17 +604,17 @@ function cambioTabsMovilEsCoherente(codigo) {
     getAttribute(clave){ return this.atributos.get(clave) ?? null; },
   }));
   const document = { body:{ dataset:{} } };
-  let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
+  let cabeceraActual = '', mediciones = 0;
   let perfiles = 0, academias = 0;
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
-    'mostrarAvisos', 'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
+    'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
       let activa='buscar',academyAbierta=false,academyHistorial=false;
       let detalleAbierto=null,detalleHistorial=false,movilFiltrosAbiertos=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
   const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
-    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
+    id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
     ()=>{ perfiles++; }, ()=>{ academias++; });
   for (const [nombre,vista] of pasos) {
     if (vista) document.body.dataset.movilBuscar = vista;
@@ -627,43 +627,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   }
   api.cambiar('sistema-operativo-inventado', { arriba:false });
   return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
-    mediciones === 2 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
-}
-
-function subvistaAvisosConservaEstadoYFoco(codigo) {
-  const inicio = codigo.indexOf('function mostrarAvisos(mostrar,enfocar=true,gestionarHistorial=true){');
-  const fin = codigo.indexOf('function pintarSonidoMovil(){', inicio);
-  if (inicio < 0 || fin < 0) return false;
-  const fuente = codigo.slice(inicio, fin);
-  const clases = new Set();
-  const atributos = new Map([['aria-expanded','false']]);
-  const panel = { classList:{ toggle(clase, activo){ activo ? clases.add(clase) : clases.delete(clase); } } };
-  const vista = { hidden:true };
-  const abre = {
-    focused:false,
-    setAttribute(clave, valor){ atributos.set(clave, String(valor)); },
-    focus(){ this.focused=true; },
-  };
-  const cierra = { focused:false, focus(){ this.focused=true; } };
-  const nodos = new Map([
-    ['movilPanelMas',panel], ['movilVistaAvisos',vista], ['movilAbrirAvisos',abre],
-    ['movilCerrarAvisos',cierra],
-  ]);
-  const document = { getElementById:id=>nodos.get(id) || null };
-  let desplazamientos = 0;
-  const mostrarAvisos = new Function('document', 'window', 'reduce', 'requestAnimationFrame', `
-    const media={matches:false};
-    let avisosHistorial=false;
-    ${fuente}
-    return mostrarAvisos;
-  `)(document, {scrollTo(){ desplazamientos++; }}, ()=>true, fn=>fn());
-  mostrarAvisos(true);
-  const abierta = vista.hidden === false && clases.has('movil-subvista-abierta') &&
-    atributos.get('aria-expanded') === 'true' && cierra.focused && desplazamientos === 1;
-  mostrarAvisos(false);
-  const cerrada = vista.hidden === true && !clases.has('movil-subvista-abierta') &&
-    atributos.get('aria-expanded') === 'false' && abre.focused;
-  return abierta && cerrada;
+    mediciones === 2 && perfiles === 1 && academias === 1;
 }
 
 console.log('=== PRUEBAS ESTÁTICAS DE LA WEB ===');
@@ -1458,7 +1422,6 @@ prueba('Atrás y Adelante restauran las tres subvistas sin mezclar estados',
   /mostrarDetalle\([^;]+enfocar,false,origen\)/.test(codigoShellMovil) &&
   /mostrarAcademy\(true,enfocar,false,document\.getElementById\(['"]movilTabAcademy['"]\)\)/.test(codigoShellMovil) &&
   /cambiar\('academy',\{arriba:false\}\)/.test(codigoShellMovil) &&
-  /mostrarAvisos\(true,enfocar,false\)/.test(codigoShellMovil) &&
   /pageshow[\s\S]*?!e\.persisted\|\|media\.matches!==modoMovilPrevio[\s\S]*?reconciliarEstadoSubvista\(false\)/.test(codigoShellMovil));
 prueba('el cierre devuelve el foco a un control que también queda dentro de pantalla',
   /getClientRects&&nodo\.getClientRects\(\)\.length/.test(codigoShellMovil) &&
@@ -1466,11 +1429,10 @@ prueba('el cierre devuelve el foco a un control que también queda dentro de pan
   /if\(!enVista\(destino\)&&destino\.scrollIntoView\)/.test(codigoShellMovil) &&
   /scrollIntoView\(\{block:['"]center['"],behavior:['"]auto['"]\}\)/.test(codigoShellMovil) &&
   /document\.getElementById\(['"]q['"]\)\|\|document\.getElementById\(['"]movilTabRadar['"]\)/.test(codigoShellMovil));
-prueba('Ayuda sustituye Detalle o Avisos sin encadenar back y push',
+// La subvista móvil de Avisos se quitó el 13/11/2026 (no estaba en la página): Ayuda solo sustituye a Detalle.
+prueba('Ayuda sustituye Detalle sin encadenar back y push',
   /if\(academyAbierta\)[\s\S]{0,240}?return/.test(codigoShellMovil) &&
-  /const sustituyeAvisos=[\s\S]{0,180}?rwadarAvisos===true/.test(codigoShellMovil) &&
-  /mostrarAvisos\(false,false,false\)/.test(codigoShellMovil) &&
-  /\(sustituyeDetalle\|\|sustituyeAvisos\)[\s\S]{0,180}?history\.replaceState/.test(codigoShellMovil));
+  /if\(sustituyeDetalle&&typeof history!=='undefined'&&history\.replaceState\)[\s\S]{0,180}?history\.replaceState/.test(codigoShellMovil));
 prueba('el sonido es voluntario, cálido y la animación automática permanece silenciosa',
   /recuerda\.leer\(['"]rwadar\.sonido['"]\)===['"]1['"]/.test(jsSinComentarios) &&
   /function pulsoCalido\(/.test(jsSinComentarios) &&
@@ -1689,7 +1651,7 @@ const aprendeHTML = lee('aprende/index.html');
     /closest\('\[data-perfil-oferta\]'\)/.test(codigoShellMovil)&&/Movil\.ir\('movilRadarIntro',r\)/.test(js));
   prueba('Inicio: sin style= ni on…= y quieto con «reducir movimiento»',
     !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(panelInicioHTML)&&
-    /\.rel-anim \.rel-revela,\.rel-anim \.rel-barra-rel\{opacity:1;transform:none\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
+    !/\.rel-anim/.test(css)&&/\.rel-progreso\{transition:none!important\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
 }
 // «Fuera del radar» pasa a «Descartadas» (decisión de Víctor, 04/11/2026); /fuera-del-radar/ y #fuera se quedan.
 // El rótulo no se fija en una prueba (decisión de Víctor, 04/11/2026: sin reglas de redacción).
@@ -1720,8 +1682,6 @@ prueba('guardar solo existe en el móvil, donde está Perfil',
 prueba('Avisos nunca es una pestaña',
   !/id=["']movilVistaAvisos["']/.test(html) &&
   !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
-prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
-  subvistaAvisosConservaEstadoYFoco(js));
 
 prueba('Perfil agrupa cuenta, guardados, avisos y privacidad sin ocultar herramientas',
   /id="movilCuentaAccion"[^>]*disabled/.test(panelPerfilHTML) &&
@@ -1862,7 +1822,22 @@ const transparenciaComercialPublicada = fs.readFileSync(
   path.join(publicado, 'transparencia-comercial.html'), 'utf8');
 const paraEmpresasPublicada = fs.readFileSync(path.join(publicado, 'para-empresas.html'), 'utf8');
 const swPublicado = fs.readFileSync(path.join(publicado, 'sw.js'), 'utf8');
-const scriptsPublicados = [...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
+/* Limpieza de la web (13/11/2026): lo publicado va sin comentarios HTML, salvo las
+   marcas de los generadores, y el JSON-LD (dentro de <script>) se copia tal cual. */
+{
+  const comentarios = documento => [...documento.matchAll(/<!--([\s\S]*?)-->/g)].map(m => m[1]);
+  const jsonLd = documento => [...documento.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  const { sinComentariosHTML } = require('./rwadar-adelgazar.js');
+  prueba('el HTML publicado va sin comentarios, salvo las marcas de los generadores, con el JSON-LD intacto',
+    comentarios(html).length > 20 && comentarios(htmlPublicado).length > 0 &&
+    comentarios(htmlPublicado).every(c => /^[a-z][a-z0-9-]*:(?:ini|fin)$/.test(c)) &&
+    ['pre:ini', 'pre:fin', 'academy:ini', 'academy:fin'].every(m => comentarios(htmlPublicado).includes(m)) &&
+    [privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada].every(d => comentarios(d).length === 0) &&
+    JSON.stringify(jsonLd(htmlPublicado)) === JSON.stringify(jsonLd(html)) && jsonLd(html).length > 0 &&
+    sinComentariosHTML('<p>a</p>\n  <!-- x -->\n<p title="<!-- t -->">b <!-- y --> c</p><pre><!-- z --></pre>') ===
+      '<p>a</p>\n  \n<p title="<!-- t -->">b <!-- y --> c</p><pre><!-- z --></pre>');
+}
+const scriptsPublicados =[...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
 const recursoJSPublicado = scriptsPublicados.at(-1)?.[1] || '';
 const recursoCatalogoPublicado = scriptsPublicados.find(s => /\/catalogo-publico-20261022\./.test(s[1]))?.[1] || '';
 const catalogoPublicado = fs.readFileSync(path.join(publicado, '.' + recursoCatalogoPublicado), 'utf8');
@@ -2312,12 +2287,13 @@ probarFocoAlCerrarFicha({ p: pestanaCatalogo(), prueba });
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   for(const slug of ['backed-finance','franklin-templeton','midas','openeden','superstate']){
     c.slugSupervision=slug;
-    const etiqueta=vm.runInContext('supervisionOferta({plataformaSlug:slugSupervision}).texto',c);
+    // supervisionOferta (la etiqueta de la tarjeta antigua) se quitó el 13/11/2026: la que se ve es la del radar.
+    const etiqueta=vm.runInContext('etiquetaVerificacionLocal(P.find(p=>p.slug===slugSupervision).verificacionLocal.licenciaRegistro.estado)',c);
     prueba(slug+' conserva consulta documental sin atribuir aprobación genérica del producto',
-      etiqueta==='Documentación de producto consultada'&&!/aprobad|aval|garant/i.test(etiqueta));
+      etiqueta==='Consta en el documento del producto'&&!/aprobad|aval|garant/i.test(etiqueta));
   }
   prueba('Spiko conserva el registro de plataforma ante su supervisor sin atribuirlo a un producto',
-    vm.runInContext("supervisionOferta({plataformaSlug:'spiko'}).texto==='Plataforma registrada ante su supervisor'",c));
+    vm.runInContext("etiquetaVerificacionLocal(P.find(p=>p.slug==='spiko').verificacionLocal.licenciaRegistro.estado)==='Registro confirmado'",c));
 }
 {
   const p=pestanaCatalogo();
@@ -3144,7 +3120,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     reglasBoton.every(d=>[...d.matchAll(/min-height\s*:\s*(\d+(?:\.\d+)?)px/g)].every(m=>Number(m[1])>=44)) &&
     declaracionesCSS(css,'.escaparate-detalle-boton:focus-visible').some(d=>/outline\s*:\s*[1-9]\d*px/.test(d)));
   const reglasSeguridad = ['.escaparate-referencia','.escaparate-dato-principal .escaparate-referencia',
-    '.escaparate-dialogo-dato .escaparate-referencia','.escaparate-aviso-compacto',
+    // La referencia en la ficha vigente va en «Lo esencial» (antes, .escaparate-dialogo-dato, retirado el 13/11/2026).
+    '.escaparate-esencial dd small','.escaparate-aviso-compacto',
     '.escaparate-estado.escaparate-estado-linea'].flatMap(selector=>declaracionesCSS(css,selector));
   prueba('referencia obligatoria, aviso crítico y estado no se ocultan ni recortan por CSS',
     reglasSeguridad.length >= 5 && reglasSeguridad.every(d=>
@@ -3551,10 +3528,14 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
   const sinIngles = [...textosPush, ...textosActivar, 'Reintentar', 'Entrar de nuevo', ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
-  const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
+  /* Desde el 13/11/2026 los diccionarios no se piden con <script>: van, en este orden, en
+     data-idioma-en de idioma-previo (en <head>), que los carga antes del motor solo en inglés. */
+  const enDiferido = (html.match(/<script src="\/assets\/idioma-previo-20261104\.js" data-idioma-en="([^"]+)"><\/script>/) || [, ''])[1].split(' ');
+  const iComun = enDiferido.indexOf('/assets/idioma-en-20261022.js'), iAvisos = enDiferido.indexOf('/assets/idioma-en-avisos-20261112.js');
   prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
-    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
-    scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
+    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun === 0 && iAvisos === 1 && enDiferido.length === 2 &&
+    scriptsIndex.indexOf('/assets/idioma-previo-20261104.js') === 0 && scriptsIndex.includes('/assets/idioma-20261022.js') &&
+    !scriptsIndex.some(ruta => /\/assets\/idioma-en-/.test(ruta)) &&
     Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
     /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
   // 12/11/2026, Víctor en su iPhone: el bloque se quedaba en «Comprobando…». Cada llamada lleva plazo y el

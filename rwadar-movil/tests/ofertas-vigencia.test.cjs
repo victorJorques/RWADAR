@@ -562,7 +562,8 @@ test('web y contrato compartido rechazan la misma documentación inválida y esc
     assert.equal(!!contexto.documentacionOfertaLocal({ ...oferta, documentacion }), valida);
     assert.equal(!!movil.documentacionOferta({ ...oferta, documentacion }, ahora), valida);
   }
-  const html = contexto.documentacionOfertaHtml(base);
+  const partes = contexto.partesDocumentacionOferta(base);
+  const html = partes.ficha + partes.referencias + partes.fuentes;
   assert.doesNotMatch(html, /<script>|<b>con texto<\/b>|javascript:/);
   assert.match(html, /&lt;script&gt;/);
   assert.match(html, /a=1&amp;b=2/);

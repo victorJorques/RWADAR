@@ -6,6 +6,132 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (23) · Claude · Limpieza de código de la web
+
+- **Encargo de la dirección (13/11):** «Si hay código antiguo que no vale para
+  nada, que hace más gasto que bien, yo lo quitaría» y «optimiza el trabajo
+  para no malgastar». Parte de la auditoría de la tarde (candidatos C1 a C19,
+  con sus condiciones). Rama **`worktree-wf_d48d491a-f9c-4`**, desde `main`
+  en `caf7225`. **SIN PUBLICAR**: ni push, ni flujos, ni Supabase, ni EAS.
+  El motor de idiomas y el diccionario de la app no se tocan: no hace falta
+  OTA.
+- **Qué se quitó, en llano:**
+  1. **El diccionario inglés ya no se descarga en castellano (C1/C11).** Lo
+     más pesado: 226 kB (56 kB comprimidos) en cada página y, en Inicio,
+     10 kB más del de la campana. Las 73 páginas lo apuntan en
+     `data-idioma-en` de `idioma-previo` (en `<head>`; el publicador le pone
+     la huella). Con «en» guardado, `idioma-previo` escribe sus `<script
+     defer>` antes del motor: entra en el mismo orden y momento que antes y
+     la página nace en inglés (también `/#explain` en la app). En
+     castellano, `RWAdarIdioma` es una fachada del motor: al pulsar
+     «English» carga el diccionario, vuelve a ejecutar el motor (ya en la
+     caché) y traduce en el sitio, sin recargar; sin red, cambia igual y lo
+     reintenta. El motor (copia exacta de `rwadar-movil/lib/idioma.js`) no
+     cambia. Actualizados a la vez el publicador (orden de scripts de Inicio
+     y `data-idioma-en`), `.github/comprobar-publicado.mjs` (cuenta
+     `data-idioma-en` entre los cuatro recursos de idioma), los generadores
+     (`rwadar-fichas.js`, `rwadar-academy.js`) y las pruebas que exigían la
+     etiqueta.
+  2. **Funciones y ramas muertas de `rwadar-20260820.js` (C7, C8/C17):**
+     `emisionRemota` y `textoOpcional`, `validarLoteCatalogoRemoto` (V1),
+     `tarjetaNuevaHtml`, `supervisionOferta` con `ICONO_SUPERVISOR`,
+     `documentacionOfertaHtml`; el carrusel «Quién más se ha movido»,
+     «Fuentes de este apartado» y `.rel-revela` (solo existen en /aprende/,
+     con su copia propia) y la subvista móvil de Avisos (`#movilVistaAvisos`
+     no está en la página). Se conserva `delete estado.rwadarAvisos` en
+     `estadoBaseSubvista`.
+  3. **Unas 100 reglas CSS de diseños retirados (C6/C16)** en
+     `rwadar-20260820.css`, `noticias-sector-20261110.css` y
+     `secciones-20261110.css`; en las listas mixtas sale solo el selector
+     muerto. Con `.rel-novedades` sale su generador sin llamadas
+     (`bloqueWeb` de `rwadar-noticias.js`).
+  4. **Comentarios HTML de las páginas publicadas (C5).** `rwadar-site/` los
+     conserva; al publicar, `sinComentariosHTML` (en `rwadar-adelgazar.js`)
+     quita solo el comentario, con un recorrido que respeta etiquetas,
+     comillas, `<script>` (JSON-LD), `<style>`, `<pre>`, `<textarea>` y
+     `<title>`. Se quedan las marcas `<!--pre:…-->`, `<!--academy:…-->`,
+     `<!--academy-inicio:…-->`, los condicionales y un comentario entre dos
+     textos con letras (el traductor los lee por separado). Actualizada la
+     decisión escrita de la cabecera de `rwadar-adelgazar.js`.
+- **Arreglos de la verificación independiente (14/11, aplicados por el
+  coordinador):** (1) carrera al cambiar de idioma: si se pulsaba «English» y,
+  mientras llegaba el diccionario, «Español», la página acababa en inglés y
+  guardaba «en». Ahora gana la última elección (`cambiarIdioma` con turno en
+  `idioma-previo-20261104.js`); prueba nueva de Chromium «gana la última
+  elección…» en `rwadar-acceso/idioma-diferido-navegador.test.mjs`, que falla
+  con el código de antes. (2) Fuera las 6 reglas `.rel-anim` que ya nadie
+  activaba (y la prueba de `probar-web.mjs` que las exigía pasa a exigir que
+  no estén y que la barra de progreso no se anime con «reducir movimiento»);
+  fuera `mostrarAvisos`/`cierresAvisos` del arnés de pestañas; comentario
+  corregido. (3) Conocido y aceptado: sin red para el diccionario, «English»
+  marca el inglés aunque los textos sigan en castellano, y lo reintenta la
+  vez siguiente (lo comprueba su prueba). `npm test` entero: salida 0.
+- **Ahorro medido** (Inicio, móvil Pixel 5 en Chromium, caché vacía, worker
+  local con host `rwadar.test`, misma máquina y mismo guion antes y
+  después): en castellano, **46 → 44 peticiones; 2.288,0 → 2.028,9 kB
+  (−259 kB); gzip-9 912,1 → 832,4 kB (−80 kB); brotli 837,0 → 773,3 kB
+  (−64 kB)**. JS 1.297,2 → 1.053,7 kB (br 269,7 → 209,7), CSS 240,9 →
+  233,0 kB (br 43,0 → 41,8), HTML 199,7 → 192,1 kB (br 32,6 → 30,1). En
+  inglés (lo descarga todo): 2.288,0 → 2.265,0 kB (br 837,0 → 832,2).
+  `idioma-previo` crece 0,8 kB comprimidos en cada página (la fachada); el
+  resto baja. `rwadar-site/assets`: 2.105.221 → 2.090.108 B; lo publicado,
+  assets 1.897.087 → 1.881.417 B y HTML 1.844.382 → 1.831.680 B.
+- **Capturas** (Inicio, /mercado/ y una ficha; 390 y 1366; castellano e
+  inglés), en el scratchpad de la sesión (`codigo-muerto/capturas/antes`,
+  `despues` y `antes-repeticion`): 10 de 12 idénticas píxel a píxel; las
+  dos de Inicio en escritorio difieren en el pie (3.453 y 3.732 píxeles de
+  suavizado de letra) igual que dos tomas seguidas de la web de antes, y
+  las de después son idénticas a esa segunda toma: no cambia nada visible.
+- **Pruebas:** `npm test` entero con salida 0 (5 min; acceso 330/330 con
+  las de Chromium, móvil 649 + 2 omitidas de antes);
+  `comprobar-ota-compatible.cjs --base fa30779…` con salida 0; gitleaks sin
+  hallazgos. Prueba nueva de Chromium
+  `rwadar-acceso/idioma-diferido-navegador.test.mjs` (móvil y escritorio:
+  en castellano no se pide el diccionario; con «en» guardado los
+  diccionarios corren antes que el motor y en DOMContentLoaded ya está en
+  inglés; «English» traduce en el sitio una sola vez; sin red no rompe;
+  `/#explain` en la app). Comprobada con mutaciones: contra la web de antes
+  falla, y si se quita la escritura previa también.
+  Pruebas ajustadas porque comprobaban lo quitado (sin debilitar lo vivo):
+  `probar-catalogo-publico` (el lector V1 pasa a una copia propia de la
+  prueba; el catálogo caduco se comprueba en `comprobarCatalogoEmbebido`),
+  `probar-web-tarjeta`, `probar-web` (etiqueta de supervisión en
+  `etiquetaVerificacionLocal`; la regla de seguridad de la referencia mira
+  `.escaparate-esencial dd small`, la de la ficha vigente; fuera la prueba
+  de la subvista de Avisos), `ofertas-vigencia`, `probar-fichas`,
+  `probar-web-escritorio`, `probar-para-empresas`,
+  `probar-transparencia-comercial` y `academy-candado-navegador`.
+- **Lo que no se quitó y por qué:**
+  - **C12/C3, escaparate de revisión local (≈4 kB comprimidos):** la
+    herramienta está viva (RUNBOOK y CI la ejecutan) y su código va
+    entrelazado con lo de producción: `pintarTiposOfertaLocal` se llama
+    siempre, `activaControlesEscaparateLocal` lo usa el respaldo local de la
+    copia publicada en 127.0.0.1 y `MANIFIESTO_EDITORIAL_LOCAL` lo lee
+    `imagenOfertaLocal`. Hacerlo bien pide quitarlo al publicar con marcas
+    dentro de funciones, un sustituto de `cargarEscaparateLocal` que falle
+    (para no llegar a `mirar()` ni a producción) y lo mismo en el CSS:
+    cambio propio. `limpiarRetornoSinServiciosUsuario` y
+    `activarBusquedaOfertas` no se tocan nunca (son de producción).
+  - **C10, recortar el diccionario al publicar:** con C1 hecho, solo lo
+    ahorraría quien navega en inglés, y necesita la lista blanca de textos
+    del servidor (aviso de bienvenida, vocabulario del catálogo) y una
+    prueba de recorrido en inglés con cuenta.
+  - **C2, claves sin uso en `lib/idioma-en.js`:** cambia el paquete de la
+    app (OTA) y la lista incluía dos textos vivos del aviso de bienvenida.
+  - **C4/C14, poda de `tokenizacion-modelo`:** rompe la decisión «una sola
+    fuente para web, app y servidor» y la tarea n.º 71 (gráfico en directo)
+    puede necesitar en el navegador esas funciones: decidir antes.
+  - **C13 (opiniones) y C15 (comunidad):** interruptores «en pausa»
+    (INTERNO): lo decide Víctor.
+  - **C19, imágenes de Leaflet:** 0 kB por visita y dejaría `url()` colgando
+    en `leaflet-1.9.4.css`.
+  - Visto al pasar, sin tocar (fuera de la lista): la rama `[data-emi-orden]`
+    del clic de Inicio y la regla `#movilPanelMas.movil-subvista-abierta…`
+    ya no tienen a quién servir, y las clases `.rel-nueva*` se quedaron sin
+    generador al quitar `tarjetaNuevaHtml`.
+- **Pendiente para Víctor:** nada que hacer ahora; al publicar, la web entra
+  con su flujo normal (sin OTA).
+
 ## 13 de noviembre de 2026 (22) · Claude · Gráfico de la tokenización con más detalle
 
 - **Encargo de la dirección (13/11):** «El gráfico, cuanto más detalle en el

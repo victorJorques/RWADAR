@@ -30,7 +30,7 @@ const web = fs.readFileSync('../rwadar-site/assets/rwadar-20260820.js', 'utf8');
 const astWeb = parse(web, { ecmaVersion: 2024, sourceType: 'script' });
 const dependencias = ['CATMETA', 'urlHttps', 'textoDato', 'numeroRemoto',
   'booleanoOpcional', 'cifraCatalogoRemota', 'ofertaCatalogoRemota', 'fechaLocalValida',
-  'fechaOfertaPublicaValida', 'validarRevisionCatalogo', 'validarLoteCatalogoRemoto',
+  'fechaOfertaPublicaValida', 'validarRevisionCatalogo',
   'metadatosCatalogoV2', 'validarManifiestoCatalogoV2',
   'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'documentacionOfertaLocal', 'EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG',
   'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal',
@@ -44,7 +44,27 @@ const lector = dependencias.map(nombre => {
   return `${nodo.kind} ${web.slice(declaracion.start, declaracion.end)};`;
 }).join('\n');
 const normalizarCliente = vm.runInNewContext(`${lector}\nofertaCatalogoRemota;`, { URL });
-const validarCliente = vm.runInNewContext(`${lector}\nvalidarLoteCatalogoRemoto;`, { URL });
+/* El lector V1 de la web (validarLoteCatalogoRemoto: 26 plataformas y 28 ofertas) ya no está en
+   rwadar-20260820.js: la web valida con validarLoteCatalogoRemotoV2, que exige el manifiesto V2
+   (limpieza de la web, 13/11/2026). Para seguir comprobando el lote histórico del importador v1,
+   la prueba conserva aquí su copia, con las mismas funciones del cliente que usaba. */
+const LECTOR_V1 = String.raw`function validarLoteCatalogoRemoto(plataformas,ofertas){
+ if(!Array.isArray(plataformas)||plataformas.length!==26||
+    !Array.isArray(ofertas)||ofertas.length!==28)throw new Error('lote público incompleto');
+ if(new Set(plataformas.map(p=>p.slug)).size!==26||new Set(ofertas.map(o=>o.slug)).size!==28)
+  throw new Error('lote público con slugs duplicados');
+ validarRevisionCatalogo([...plataformas,...ofertas].map(x=>x.revision_id));
+ const fechas=new Set(plataformas.map(p=>p.verificacion_local&&p.verificacion_local.verificadoEl));
+ if(fechas.size!==1)throw new Error('lote público con fechas mezcladas');
+ const fecha=[...fechas][0];
+ if(!fechaLocalValida(fecha))throw new Error('fecha de lote inválida');
+ const base=Date.parse(fecha+'T00:00:00Z'),hoy=new Date(),hoyUTC=Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate());
+ const edad=Math.floor((hoyUTC-base)/86400000);
+ if(!Number.isFinite(base)||edad<0||edad>7)throw new Error('lote público futuro o caducado');
+ if(!ofertas.every(o=>fechaOfertaPublicaValida(o.verificada_el,fecha)))throw new Error('fecha individual de oferta inválida');
+ return fecha;
+}`;
+const validarCliente = vm.runInNewContext(`${lector}\n${LECTOR_V1}\nvalidarLoteCatalogoRemoto;`, { URL });
 const filaApi = fila => {
   const copia = JSON.parse(JSON.stringify(fila));
   copia.verificada_el = copia.verificada_el.slice(0, 10);
@@ -363,9 +383,13 @@ paso('una respuesta vacía no reemplaza el pre-render válido',
 fs.rmSync(temporal, { recursive:true, force:true });
 
 new Function(web);
-paso('el cliente compila y cierra el catálogo embebido caduco antes de renderizar',
+// Hasta el 13/11/2026, «edad>7» solo lo cumplía el lector V1 (validarLoteCatalogoRemoto), que nadie
+// llamaba: lo vivo es comprobarCatalogoEmbebido, que cierra el lote futuro o roto y marca el caducado
+// (se sigue viendo, con aviso y sin cifras vencidas).
+paso('el cliente compila, cierra el catálogo embebido futuro o roto y marca el caducado antes de renderizar',
   /function comprobarCatalogoEmbebido\(\)/.test(web) &&
-  /edad<0\|\|edad>7/.test(web) && /P\.length=0;EMI\.length=0/.test(web) &&
+  /edad<0\)\s*throw new Error\('lote embebido fechado en el futuro'\)/.test(web) &&
+  /CATALOGO_CADUCADO=edad>P\[0\]\.vigencia_lote_dias/.test(web) && /P\.length=0;EMI\.length=0/.test(web) &&
   /catch\{refrescarVigenciaOfertas\(\)\}/.test(web) &&
   !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(web));
 

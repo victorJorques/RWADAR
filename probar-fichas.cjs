@@ -314,7 +314,8 @@ verificar('las páginas fijas llevan og:*, twitter:card e idioma-previo en head'
     const cabeza=contenido.slice(0,contenido.indexOf('</head>'));
     for(const meta of ['og:title','og:description','og:url','og:image'])assert(cabeza.includes('<meta property="'+meta+'" content="'),nombre+' '+meta);
     assert(cabeza.includes('<meta name="twitter:card" content="summary_large_image">'),nombre+' twitter:card');
-    assert(/<script src="\/assets\/idioma-previo-20261104\.js"><\/script>/.test(cabeza),nombre+' idioma-previo');
+    assert(/<script src="\/assets\/idioma-previo-20261104\.js" data-idioma-en="\/assets\/idioma-en-20261022\.js"><\/script>/.test(cabeza),nombre+' idioma-previo');
+    assert(!/<script src="\/assets\/idioma-en-20261022\.js"/.test(contenido),nombre+' sin el diccionario inglés en <script>');
   }
 });
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{

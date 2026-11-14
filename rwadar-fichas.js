@@ -176,9 +176,9 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     // Vista previa grande también en X y apps que solo leen twitter:card (QA 04/11/2026, n.º 29).
     '<meta name="twitter:card" content="summary_large_image">\n' +
     '<link rel="alternate" type="application/rss+xml" title="Novedades de RWAdar" href="/novedades.xml">\n' +
-    '<script src="/assets/idioma-previo-20261104.js"></script><link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
+    '<script src="/assets/idioma-previo-20261104.js" data-idioma-en="/assets/idioma-en-20261022.js"></script><link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
     (oferta ? '<script src="/'+COMPARTIDO+'" defer></script>\n' : '') +
-    '<script src="/assets/idioma-en-20261022.js" defer></script><script src="/assets/idioma-20261022.js" defer></script><script src="/assets/idioma-web-20261022.js" defer></script>\n'+
+    '<script src="/assets/idioma-20261022.js" defer></script><script src="/assets/idioma-web-20261022.js" defer></script>\n'+
     (oferta ? '<script src="/'+JS+'" defer></script>\n' : '') +
     '</head><body><a class="saltar" href="#contenido">Saltar al contenido</a><header class="cabecera"><a class="marca" href="/" aria-label="RWAdar · Inicio">RWA<span>dar</span></a>' +
     '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Novedades</a></nav></header>' +

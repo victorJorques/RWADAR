@@ -172,8 +172,10 @@ for (const nombre of paginasFichas) {
     ? pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${ruta}">`) &&
       (pagina.texto.match(/<h1\b[^>]*>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || '')
     : pagina.texto.includes('<rss version="2.0"') && pagina.texto.includes('https://rwadar.pages.dev/')));
-  if(esHtml){for(const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/(?:ficha-editorial|ficha-pagina|fichas|idioma(?:-en|-web)?)-20261022\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
-    ok(`interfaz de idiomas completa en ${ruta}`,(pagina.texto.match(/(?:href|src)="\/assets\/idioma(?:-en|-web)?-20261022\.[0-9a-f]{12}\.(?:css|js)"/g)||[]).length===4);}
+  /* El diccionario inglés va en data-idioma-en de idioma-previo (se carga solo
+     en inglés; limpieza de la web, 13/11/2026): cuenta como uno de los cuatro. */
+  if(esHtml){for(const m of pagina.texto.matchAll(/(?:href|src|data-idioma-en)="(\/assets\/(?:ficha-editorial|ficha-pagina|fichas|idioma(?:-en|-web)?)-20261022\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
+    ok(`interfaz de idiomas completa en ${ruta}`,(pagina.texto.match(/(?:href|src|data-idioma-en)="\/assets\/idioma(?:-en|-web)?-20261022\.[0-9a-f]{12}\.(?:css|js)"/g)||[]).length===4);}
 }
 for (const nombre of ARCHIVOS_PUBLICABLES.filter(n => n.endsWith('.woff2'))) {
   const respuesta = await fetch(base + '/' + nombre, {cache:'no-store'});
@@ -182,7 +184,7 @@ for (const nombre of ARCHIVOS_PUBLICABLES.filter(n => n.endsWith('.woff2'))) {
   ok(`tipografía íntegra ${nombre}`, respuesta.status === 200 && bytes.subarray(0,4).toString() === 'wOF2' &&
     crypto.createHash('sha256').update(bytes).digest('hex').slice(0,12) === huella);
 }
-const assetsLeccion = /(?:href|src)="(\/assets\/(?:academy-20261002|idioma(?:-en|-web)?-20261022)\.[0-9a-f]{12}\.(?:css|js))"/g;
+const assetsLeccion = /(?:href|src|data-idioma-en)="(\/assets\/(?:academy-20261002|idioma(?:-en|-web)?-20261022)\.[0-9a-f]{12}\.(?:css|js))"/g;
 if (conCuenta) {
   /* El contenido se comprueba en rwadar-publicado/: el índice publicado debe
      ser byte a byte el de esa carpeta, o lo comprobado no es lo que se sirve. */

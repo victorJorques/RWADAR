@@ -130,7 +130,8 @@ test('las dos páginas cargan la misma hoja y el mismo script del candado, publi
     // con la pasarela (diferida) ya cargada.
     assert.equal((html.match(/<script src="\/assets\/academy-candado-20261108\.js"><\/script>/g) || []).length, 1);
     assert.equal((html.match(/academy-candado-20261108\.js/g) || []).length, 1);
-    assert.ok(html.includes('<script src="/assets/idioma-previo-20261104.js"></script>\n<script src="/assets/academy-candado-20261108.js"></script>'));
+    // idioma-previo lleva el diccionario inglés en data-idioma-en (Inicio, también el de la campana).
+    assert.match(html, /<script src="\/assets\/idioma-previo-20261104\.js" data-idioma-en="\/assets\/idioma-en-20261022\.js(?: \/assets\/idioma-en-avisos-20261112\.js)?"><\/script>\n<script src="\/assets\/academy-candado-20261108\.js"><\/script>/);
     assert.ok(html.indexOf('/assets/academy-candado-20261108.js') < html.indexOf('</head>'));
   }
   assert.match(candadoJS, /if \(document\.readyState === 'loading'\) document\.addEventListener\('DOMContentLoaded', iniciar, \{ once: true \}\);/);
