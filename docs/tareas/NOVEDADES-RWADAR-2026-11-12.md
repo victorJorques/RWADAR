@@ -12,6 +12,41 @@ en detalle».
    cada uno con su icono. Dos botones: **«Ver en detalle»** y **«Entendido»**.
    Sale **una vez por versión**: al cerrarla (Entendido, ×, Escape o tocando
    fuera) o al ver el detalle, no vuelve a salir hasta la siguiente.
+   **Desde el 14/11/2026**, debajo de los puntos y antes de los botones, el
+   recuadro **«Activa los avisos»** («Recibe cada novedad en el móvil, como
+   un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.») con el botón
+   **«Activar avisos»**: cierra la ventana (cuenta como vista, igual que
+   «Entendido») y lleva a **Perfil › Avisos** (web: `/#perfil-avisos`; app:
+   `irAAvisosPerfil()`). Encargo: «que para activar las notificaciones salga
+   el aviso al salir la notificación de novedades al entrar a la app, para
+   recordar e incitar a la gente a que las activen». **Solo sale si en ese
+   dispositivo las notificaciones no están ya activas**; si no se puede
+   saber, sale (mejor recordar). No pide permisos: el flujo y sus
+   instrucciones están en Perfil › Avisos.
+   - Web: lo decide `estadoAvisosNavegador` del modelo con lo que sabe el
+     navegador (soporte, permiso «granted» y una suscripción de push en el
+     service worker, que es lo que deja Perfil › Avisos). Se mira justo antes
+     de enseñar la ventana, con 2,5 s de plazo. En el ordenador también sale:
+     Perfil › Avisos explica que se activan desde el móvil y deja encender
+     «Avisos de novedades» (correo).
+   - App: `estadoAvisosMovil` (`lib/novedades-rwadar.js`) con lo que enseña
+     el interruptor «Notificaciones en este móvil» (`useAvisosNovedades`,
+     `movil.activo`; con el permiso quitado en los ajustes, `sin-permiso`,
+     se recuerda; con «Avisos de novedades» apagado, `servidor.novedades`, el
+     móvil solo recibe avisos de servicio y también se recuerda). Mientras se
+     comprueba, la ventana espera (3 s como mucho). Con los avisos apagados
+     en la app (interruptor), no sale.
+   - Lo visto, en la app, va en `rwadar.editorial.novedades.vista.v2`
+     (`lib/datos.js`). Las versiones de la app anteriores al recuadro lo
+     guardaban en la `v1`; si la v1 dice `2026-11-14.2` o posterior y no hay
+     v2, se lee como `2026-11-14`: con la OTA, el primer arranque aún corre la
+     versión vieja, que pudo enseñarla sin el recuadro y darla por vista. Así
+     sale una vez más, ya con él. Se sigue escribiendo también en la v1 por si
+     se vuelve atrás. Las dos se borran con «Borrar datos del dispositivo».
+   - Los textos no van en el JSON (no se añaden campos): en la web, en `UI`
+     de `novedades-producto-20261112.js`; en la app, con el diccionario común
+     (`lib/idioma-en.js`, copiado a la web). Para que todos lo vean, se subió
+     la versión a `2026-11-14.2`.
 2. **«Ver en detalle»**: la página **/novedades-rwadar/**, con cada novedad
    explicada en frases cortas, un «Cómo se hace» cuando hay pasos y el camino a
    **Perfil › Avisos** para activar las notificaciones.
@@ -86,6 +121,16 @@ resumen tienen que existir en la app. Las pruebas lo comprueban. Forma:
 con el icono genérico y la marca como vista; con la OTA antes, la app usa su
 copia nueva (gana la versión más nueva) con los dibujos buenos.
 
+**Con el recuadro «Activa los avisos» (versión `2026-11-14.2`)**, el orden no
+basta: la OTA se descarga en segundo plano y se aplica en el arranque
+siguiente (`checkAutomatically: ON_LOAD`, `fallbackToCacheTimeout: 0`), así
+que el primer arranque tras publicar aún corre la versión vieja, que enseña la
+ventana sin el recuadro y la da por vista. Lo resuelve la clave nueva de lo
+visto (`novedades.vista.v2`, ver arriba): en la app con la OTA nueva vuelve a
+salir una vez, con el recuadro. Se pueden publicar la OTA y la web el mismo
+día; mejor primero la OTA, para que la ventana sin recuadro salga a menos
+gente.
+
 **No se añaden campos ni se suben los límites** (tamaño, número de puntos,
 largo de los textos, iconos nuevos con dibujo) sin publicar antes una OTA
 con el validador nuevo (`rwadar-movil/lib/novedades-rwadar.js`): la app
@@ -113,5 +158,7 @@ genérico).
   con el foco en «Avisos»; en escritorio, la cuenta) y se quita de la
   dirección.
 - Accesible: `<dialog>` modal con nombre y descripción, foco en el título,
-  Tab por ×, «Ver en detalle» y «Entendido», Escape cierra y el foco vuelve.
-  Legible desde 320 px.
+  Tab por ×, «Activar avisos» (si sale el recuadro), «Ver en detalle» y
+  «Entendido», Escape cierra y el foco vuelve. Legible desde 320 px; con la
+  letra al 200 % el cuerpo se desplaza y los botones de abajo siguen a la
+  vista.

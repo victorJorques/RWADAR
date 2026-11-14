@@ -56,8 +56,18 @@ if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1')
    novedades que se ha visto en este dispositivo, p. ej. «2026-11-12». No es
    un dato personal ni va por cuenta; no sale del móvil. Solo evita enseñarla
    dos veces y se borra con «Borrar datos del dispositivo». */
-const NOVEDADES_VISTAS = `${PREFIJO}novedades.vista.v1`;
+const NOVEDADES_VISTAS = `${PREFIJO}novedades.vista.v2`;
 CLAVES_LOCALES.push(NOVEDADES_VISTAS);
+/* La v1 es la de las versiones de la app sin el recuadro «Activa los avisos»
+   (14/11/2026). Con la OTA, el primer arranque aún corre la versión vieja: si
+   la web ya tenía la 2026-11-14.2, la enseñaba sin el recuadro y la daba por
+   vista en la v1. Por eso lo que diga la v1 desde la 2026-11-14.2 se lee como
+   «2026-11-14» (la ventana sale una vez más, ya con el recuadro). Se sigue
+   escribiendo también en la v1 por si se vuelve a una versión anterior. */
+const NOVEDADES_VISTAS_V1 = `${PREFIJO}novedades.vista.v1`;
+const V1_DESDE_RECUADRO = '2026-11-14.2';
+const V1_ANTES_DEL_RECUADRO = '2026-11-14';
+CLAVES_LOCALES.push(NOVEDADES_VISTAS_V1);
 
 let lectorCatalogo = null;
 let accesoCatalogo = null;
@@ -562,7 +572,11 @@ export async function guardarProgresoAcademy(progreso) {
 export async function leerNovedadesVistas() {
   try {
     const version = await AsyncStorage.getItem(NOVEDADES_VISTAS);
-    return { ok: true, version: versionValida(version) ? version : null };
+    if (versionValida(version)) return { ok: true, version };
+    // Sin la v2, la v1 de una versión anterior de la app (ver arriba).
+    const antigua = await AsyncStorage.getItem(NOVEDADES_VISTAS_V1);
+    if (!versionValida(antigua)) return { ok: true, version: null };
+    return { ok: true, version: compararVersiones(antigua, V1_DESDE_RECUADRO) >= 0 ? V1_ANTES_DEL_RECUADRO : antigua };
   } catch {
     return { ok: false, version: null };
   }
@@ -572,14 +586,19 @@ export async function leerNovedadesVistas() {
    en la app puede ser más vieja que la descargada). Nunca lanza. */
 export async function marcarNovedadesVistas(version) {
   if (!versionValida(version)) return false;
+  const subir = async (clave) => {
+    const actual = await AsyncStorage.getItem(clave);
+    if (versionValida(actual) && compararVersiones(actual, version) >= 0) return;
+    await AsyncStorage.setItem(clave, version);
+  };
   try {
-    const actual = await AsyncStorage.getItem(NOVEDADES_VISTAS);
-    if (versionValida(actual) && compararVersiones(actual, version) >= 0) return true;
-    await AsyncStorage.setItem(NOVEDADES_VISTAS, version);
-    return true;
+    await subir(NOVEDADES_VISTAS);
   } catch {
     return false;
   }
+  // La copia en la v1, para una vuelta atrás; si falla, lo que manda es la v2.
+  try { await subir(NOVEDADES_VISTAS_V1); } catch { /* nada */ }
+  return true;
 }
 
 /* Avisos de novedades: qué avisos de Inicio has leído, el identificador de

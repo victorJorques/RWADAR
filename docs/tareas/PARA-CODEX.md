@@ -6,6 +6,43 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (28) · Claude · Recuadro «Activa los avisos» en la ventana de novedades · SIN PUBLICAR (rama `aviso-activar-notificaciones`, solo commit local)
+
+- **Encargo de la dirección (14/11):** «que para activar las notificaciones
+  salga el aviso al salir la notificación de novedades al entrar a la app,
+  para recordar e incitar a la gente a que las activen».
+- **Qué cambia (web y app):** dentro de la ventana «Novedades de RWAdar»,
+  debajo de los puntos, el recuadro **«Activa los avisos»** («Recibe cada
+  novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos
+  cuando quieras.») con el botón **«Activar avisos»**: cierra la ventana (cuenta
+  como vista) y lleva a Perfil › Avisos (web `/#perfil-avisos`; app
+  `irAAvisosPerfil()`). Solo sale si en ese dispositivo las notificaciones
+  no están ya activas (web: permiso y suscripción de push del navegador,
+  `estadoAvisosNavegador` del modelo; app: el interruptor «Notificaciones en
+  este móvil» y además «Avisos de novedades» encendido, `estadoAvisosMovil`
+  de `lib/novedades-rwadar.js`); si no se sabe, sale. En el ordenador también
+  sale (Perfil › Avisos explica que se activan desde el móvil y deja encender
+  el correo de novedades). No pide permisos. Inglés en `UI` de la web y en el
+  diccionario común (`lib/idioma-en.js`, copiado a la web).
+- **JSON sin campos nuevos;** versión **2026-11-14.2** (la ventana vuelve a
+  salir una vez a todos) y copia de la app al día.
+- **Lo visto en la app, en una clave nueva** (`novedades.vista.v2`, en
+  `lib/datos.js`): la OTA se aplica en el arranque siguiente, así que el
+  primero tras publicar aún corre la versión vieja, que podía enseñar la
+  2026-11-14.2 sin el recuadro y darla por vista. Si solo hay v1 y dice
+  2026-11-14.2 o posterior, se lee como 2026-11-14: sale una vez más, con el
+  recuadro. Se escribe también la v1 por si se vuelve atrás. **La OTA y la
+  web se pueden publicar el mismo día** (mejor primero la OTA). Escrito en
+  `NOVEDADES-RWADAR-2026-11-12.md`.
+- **Pruebas:** `npm run test:web` (probar-web 723 correctas), `npm --prefix
+  rwadar-movil test` (679 correctas, 2 omitidas de siempre),
+  `novedades-producto-navegador` en Chromium (1 de 1: sale sin avisos, no
+  sale con ellos, «Activar avisos» lleva a Perfil › Avisos y marca vista,
+  320 px con letra al 200 %), guardián de OTA con la base `fa30779…`
+  `ok:true`.
+
+---
+
 ## 14 de noviembre de 2026 (27) · Claude · Ventana «Novedades» del 14/11 y noticias de cada mañana · PUBLICADO (OTA n.º 32, web n.º 101 revisión y n.º 102 producción, PR #147 y sello #148)
 
 - **Encargo de la dirección (14/11):** «haz que las notificaciones salgan y lo

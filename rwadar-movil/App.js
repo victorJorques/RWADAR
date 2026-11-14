@@ -60,7 +60,7 @@ import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 import { PantallaNovedades, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
-import { textosNovedades } from './lib/novedades-rwadar';
+import { estadoAvisosMovil, textosNovedades } from './lib/novedades-rwadar';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const URL_PRIVACIDAD_AVISOS = `${URL_PRIVACIDAD}#avisos-novedades`;
@@ -449,7 +449,10 @@ export default function App() {
      bloqueo o la carga, ni una ficha, el explicador, la privacidad, una
      pantalla de Inicio («Mercado y noticias», «Aprende») o una notificación
      abriéndose. El aviso de versión nueva y la bienvenida no
-     son ventanas: siguen en su sitio debajo. */
+     son ventanas: siguen en su sitio debajo. Desde el 14/11/2026 lleva el
+     recuadro «Activa los avisos» si las notificaciones no están activas en
+     este móvil (lo que enseña Perfil › Avisos; sin los avisos en la app, no
+     sale: no hay a dónde llevar). */
   const pantallaPrincipal = fuentesListas && !cargando && Boolean(usuarioAdmitido)
     && !(CUENTA_REMOTA_ACTIVA && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion))
     && !(CUENTA_REMOTA_ACTIVA && (seguridad.preparando || seguridad.bloqueado));
@@ -457,6 +460,7 @@ export default function App() {
     listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
       && !pantallaInicio && !slugAvisoPendiente && !destinoAvisoPendiente,
     leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
+    avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta) : 'apagados',
   });
 
   const refrescar = async () => {
@@ -1236,7 +1240,9 @@ export default function App() {
 
         {/* Novedades de RWAdar: la ventana al abrir y su detalle (también desde Perfil). */}
         <VentanaNovedades visible={novedadesRwadar.ventana} datos={novedadesRwadar.datos}
-          onDetalle={novedadesRwadar.verDetalle} onEntendido={novedadesRwadar.entendido} />
+          onDetalle={novedadesRwadar.verDetalle} onEntendido={novedadesRwadar.entendido}
+          recordarAvisos={novedadesRwadar.recordarAvisos}
+          onActivarAvisos={() => { novedadesRwadar.activarAvisos(); irAAvisosPerfil(); }} />
         <PantallaNovedades visible={novedadesRwadar.detalle} datos={novedadesRwadar.datos}
           onCerrar={novedadesRwadar.cerrarDetalle}
           onIrAvisos={() => { novedadesRwadar.cerrarDetalle(); irAAvisosPerfil(); }}

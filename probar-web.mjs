@@ -3841,7 +3841,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
   const datos = modelo.validarTexto(textoJSON);
   // 1 · La forma del archivo.
   prueba(`el archivo de novedades vale (versión ${datos.version}, ${Buffer.byteLength(textoJSON)} bytes de ${modelo.MAX_BYTES}) y lleva su inglés en «en»`,
-    /^\d{4}-\d{2}-\d{2}$/.test(datos.version) && Buffer.byteLength(textoJSON) <= modelo.MAX_BYTES &&
+    /^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?$/.test(datos.version) && Buffer.byteLength(textoJSON) <= modelo.MAX_BYTES &&
     datos.titulo === 'Novedades de RWAdar' && datos.en.titulo === 'RWAdar news' &&
     datos.resumen.every(p => p.en.titulo && p.en.texto) && datos.detalle.every(s => s.en.titulo && s.en.parrafos.length === s.parrafos.length));
   prueba('el resumen son 4 o 5 puntos de una línea, cada uno con un icono conocido y su sección en el detalle',
@@ -3889,7 +3889,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     modelo.CLAVE_VISTA === 'rwadar.novedades.vista' && modelo.pendiente(almacen, datos.version) && modelo.marcarVista(almacen, datos.version) &&
     JSON.stringify(memoria) === JSON.stringify({ 'rwadar.novedades.vista': datos.version }) && !modelo.pendiente(almacen, datos.version) &&
     modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
-    modelo.pendiente(almacen, '2026-11-14.2') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
+    modelo.pendiente(almacen, '2026-11-14.3') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
     !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
   const ui = lee('assets/novedades-producto-20261112.js');
   // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo
@@ -3925,9 +3925,35 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
       (() => { const b = nuevoAlmacen(); return modelo.puedeGuardar(b) && JSON.stringify(b.m) === '{}'; })());
     prueba('la ventana decide con el modelo (motivoSinVentana y estadoVentana) y no repite la lógica',
       ui.includes('modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,') &&
-      ui.includes("const estado = modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });") &&
-      ui.includes("if (estado === 'ensenar') mostrar(datos, almacen);") && ui.includes("else if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
+      ui.includes("const ahora = () => modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });") &&
+      ui.includes("if (estado === 'ensenar') { mostrar(datos, almacen, avisos); return; }") && ui.includes("if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
       !/function hayOtroDialogo|pideOtraCosa/.test(ui));
+    /* El recuadro «Activa los avisos» (14/11/2026): «que para activar las notificaciones salga el aviso al salir la
+       notificación de novedades al entrar a la app, para recordar e incitar a la gente a que las activen». Sale salvo
+       con las notificaciones ya activas en este navegador (soporte, permiso y suscripción de push); si no se sabe, sale. */
+    const avisos = (o) => modelo.estadoAvisosNavegador(o);
+    prueba('el recuadro «Activa los avisos» sale salvo con las notificaciones activas en este navegador; si no se sabe, sale',
+      avisos({ soporte: true, permiso: 'granted', suscrito: true }) === 'activos' &&
+      avisos({ soporte: true, permiso: 'granted', suscrito: false }) === 'inactivos' &&
+      avisos({ soporte: true, permiso: 'default' }) === 'inactivos' && avisos({ soporte: true, permiso: 'denied', suscrito: true }) === 'inactivos' &&
+      avisos({ soporte: true, permiso: 'granted' }) === 'desconocido' && avisos({ soporte: true, permiso: 'raro', suscrito: true }) === 'desconocido' &&
+      avisos({ soporte: false, permiso: 'granted', suscrito: true }) === 'desconocido' && avisos() === 'desconocido' &&
+      modelo.conRecordatorioAvisos('activos') === false &&
+      ['inactivos', 'desconocido', undefined, '', 'basura'].every(e => modelo.conRecordatorioAvisos(e) === true));
+    const enComunRec = require('./rwadar-site/assets/idioma-en-20261022.js');
+    prueba('el recuadro: debajo de los puntos, su botón «Activar avisos» la cierra (vista) y lleva a /#perfil-avisos, sin pedir permisos y con el inglés del diccionario común',
+      ui.includes("if (modelo.conRecordatorioAvisos(avisos)) cuerpo.append(recordatorio(t));") &&
+      ui.includes('boton.href = RUTA_AVISOS; boton.dataset.novAvisos = \'\'; boton.dataset.novFoco = \'avisos\';') &&
+      ui.includes("if (e.target.closest?.('[data-nov-avisos]')) { visto(); d.close(); return; }") &&
+      ui.includes("const avisos = await avisosDelNavegador();") &&
+      ui.includes('registro.pushManager.getSubscription()') && !/requestPermission|pushManager\.subscribe|\.subscribe\(/.test(ui) &&
+      ui.indexOf("recTit: 'Activa los avisos'") > 0 && ui.indexOf("recTit: 'Turn on alerts'") > 0 &&
+      [['Activa los avisos', 'Turn on alerts'], ['Activar avisos', 'Turn on alerts'],
+        ['Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.',
+          'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.']]
+        .every(([es, en]) => enComunRec[es] === en && ui.includes(`'${es}'`) && ui.includes(`'${en}'`)) &&
+      /\.nov-rec-boton\{[^}]*min-height:48px[^}]*\}/.test(lee('assets/novedades-producto-20261112.css')) &&
+      /\.nov-rec-boton:focus-visible\{outline:2px solid var\(--senal\)/.test(lee('assets/novedades-producto-20261112.css')));
   }
 
   // 2 · Enlaces y piezas: la ventana en Inicio, la página, Perfil (móvil y cuenta) y el pie.

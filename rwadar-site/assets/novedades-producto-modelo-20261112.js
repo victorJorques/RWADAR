@@ -315,9 +315,33 @@
     return 'ensenar';
   }
 
+  /* ---- El recuadro «Activa los avisos» de la ventana (14/11/2026) ----
+     Encargo: «que para activar las notificaciones salga el aviso al salir la
+     notificación de novedades al entrar a la app, para recordar e incitar a
+     la gente a que las activen». Va dentro de la ventana, debajo de los
+     puntos, y lleva a Perfil › Avisos (/#perfil-avisos, como el detalle).
+     Sale salvo que las notificaciones ya estén activas en ESTE navegador.
+     Lo que activa Perfil › Avisos («Notificaciones en este móvil») es una
+     suscripción de push del navegador con el permiso concedido; al
+     desactivarlas o al cerrar sesión se quita. Así que: con soporte, permiso
+     «granted» y suscripción, están activas ('activos'); sin permiso o sin
+     suscripción, no ('inactivos'); si no se puede saber (sin soporte, un
+     error o un plazo vencido), 'desconocido'. Solo con 'activos' no sale:
+     mejor recordar. La ventana nunca pide permisos: el flujo y sus
+     instrucciones (en iPhone, añadir a la pantalla de inicio) están en
+     Perfil › Avisos. */
+  function estadoAvisosNavegador({ soporte = false, permiso = '', suscrito = null } = {}) {
+    if (soporte !== true) return 'desconocido';
+    if (permiso === 'default' || permiso === 'denied') return 'inactivos';
+    if (permiso !== 'granted') return 'desconocido';
+    if (suscrito === true) return 'activos';
+    return suscrito === false ? 'inactivos' : 'desconocido';
+  }
+  const conRecordatorioAvisos = estado => estado !== 'activos';
+
   return Object.freeze({
     RUTA, URL_PUBLICA, PAGINA, CLAVE_VISTA, MAX_BYTES, LIMITES, ICONOS, ICONO_GENERICO,
     validar, validarTexto, enIdioma, trazosIcono, fechaLarga, fechaISO, posterior, leerVista, marcarVista, pendiente,
-    puedeGuardar, pideOtraCosa, hayOtroDialogo, motivoSinVentana, estadoVentana,
+    puedeGuardar, pideOtraCosa, hayOtroDialogo, motivoSinVentana, estadoVentana, estadoAvisosNavegador, conRecordatorioAvisos,
   });
 });
