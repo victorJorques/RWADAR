@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "fecha": "2026-11-14",
+  "generado": "2026-11-14T13:12:50.422Z",
+  "fuentes": [
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 140108,
+      "sha256": "e781ed720cec86116e08e0c4f26140f1befd67a519aee0caaf0998c237ca4782",
+      "horaUtc": "2026-11-14T13:12:43.647Z",
+      "error": null
+    },
+    {
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2208721,
+      "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
+      "horaUtc": "2026-11-14T13:12:43.688Z",
+      "error": null
+    },
+    {
+      "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2824126,
+      "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
+      "horaUtc": "2026-11-14T13:12:43.689Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 97216,
+      "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
+      "horaUtc": "2026-11-14T13:12:46.981Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 126383,
+      "sha256": "289265b26b53f727c54ce701024533e4dafdcd1a90189dea9601cb127eaece58",
+      "horaUtc": "2026-11-14T13:12:49.646Z",
+      "error": null
+    }
+  ]
+}
