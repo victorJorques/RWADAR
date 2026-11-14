@@ -98,6 +98,11 @@ export const ICONOS = Object.freeze({
   // La calculadora: «Calcula tus números».
   calculadora: ['M6.5 2.8h11a1.6 1.6 0 0 1 1.6 1.6v15.2a1.6 1.6 0 0 1-1.6 1.6h-11a1.6 1.6 0 0 1-1.6-1.6V4.4a1.6 1.6 0 0 1 1.6-1.6z',
     'M8.4 6.4h7.2v3.2H8.4z', 'M8.6 13.4h.01', 'M12 13.4h.01', 'M15.4 13.4h.01', 'M8.6 17h.01', 'M12 17h.01', 'M15.4 17h.01'],
+  // Los ejes y una línea que sube: el mercado en directo (14/11/2026).
+  grafico: ['M4 4v16h16', 'm7.5 14.5 3.5-4 3 2.5 5.5-6.5'],
+  // Un periódico con su foto: las noticias con foto (14/11/2026).
+  noticias: ['M4.5 4h15a1.5 1.5 0 0 1 1.5 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4z',
+    'M6.5 7.5h5V12h-5z', 'M14.5 8h3', 'M14.5 11.5h3', 'M6.5 15.5h11'],
 });
 export const ICONO_GENERICO = ['M12 3.5v4', 'M12 16.5v4', 'M3.5 12h4', 'M16.5 12h4', 'M6.3 6.3l2.6 2.6', 'M15.1 15.1l2.6 2.6',
   'M6.3 17.7l2.6-2.6', 'M15.1 8.9l2.6-2.6'];

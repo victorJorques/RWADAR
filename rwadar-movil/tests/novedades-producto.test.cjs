@@ -35,15 +35,15 @@ test('novedades · la copia incluida es válida, igual al archivo de ejemplo y c
   assert.deepEqual(NOVEDADES_PRODUCTO, ejemplo, 'lib/novedades-producto.js y fixtures/novedades-producto.ejemplo.json no coinciden');
   const datos = n.validarNovedadesProducto(NOVEDADES_PRODUCTO);
   assert.deepEqual(n.RESPALDO, datos);
-  assert.equal(datos.version, '2026-11-12');
+  assert.equal(datos.version, '2026-11-14');
   assert.equal(datos.titulo, 'Novedades de RWAdar');
   assert.ok(datos.resumen.length >= 4 && datos.resumen.length <= 5, 'entre 4 y 5 puntos');
   for (const p of datos.resumen) {
     for (const t of [p.titulo, p.texto, p.en.titulo, p.en.texto]) assert.ok(!/[.!?].+[.!?].+[.!?]/.test(t), `más de una línea: ${t}`);
   }
-  // Lo pedido, dicho en el resumen: avisos, el número sin leer, la sesión, el correo y la calculadora.
+  // Lo nuevo del 14/11, dicho en el resumen: el mercado en directo y las noticias con foto; y siguen los avisos y la calculadora.
   const todo = JSON.stringify(datos.resumen);
-  for (const x of ['WhatsApp', 'Perfil › Avisos', 'número', '30 días', 'rwadares@gmail.com', '¿Quieres colaborar con nosotros?', 'Calcula tus números', 'Mercado y noticias']) {
+  for (const x of ['cada 5 minutos', 'con su foto', 'WhatsApp', 'Perfil › Avisos', 'Calcula tus números', 'Mercado y noticias']) {
     assert.ok(todo.includes(x), `falta en el resumen: ${x}`);
   }
   // Sin promesas de rentabilidad.
@@ -144,7 +144,7 @@ test('novedades · versiones: por fecha y, el mismo día, por el número de desp
   assert.equal(n.compararVersiones('2026-11-12', '2026-11-12'), 0);
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, null), true, 'sin ninguna vista, sale');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, 'basura'), true);
-  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-12'), false, 'ya vista, no sale');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-14'), false, 'ya vista, no sale');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-20'), false, 'sin red, una copia más vieja que la vista no vuelve a salir');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-11'), true);
   for (const v of ['2025-12-31', '2026-13-01', '2026-11-12.', '2026-11-12.123', ' 2026-11-12']) assert.equal(n.versionValida(v), false, v);
@@ -180,7 +180,7 @@ test('novedades · descarga: pide el JSON de la web sin cookies ni sesión y se 
   const vieja = copia(NOVEDADES_PRODUCTO); vieja.version = '2026-11-01';
   const r2 = await n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(vieja)) });
   assert.equal(r2.origen, 'respaldo');
-  assert.equal(r2.datos.version, '2026-11-12');
+  assert.equal(r2.datos.version, '2026-11-14');
 });
 
 test('novedades · sin red, con HTML, demasiado grande, error del servidor, plazo vencido o JSON malo: la copia incluida', async () => {
@@ -390,23 +390,23 @@ test('novedades · la ventana sale una vez por versión al abrir la app, cuando 
   let s = await app.asentar();
   assert.equal(s.ventana, true, 'sale');
   assert.equal(s.detalle, false);
-  assert.equal(s.datos.version, '2026-11-12');
+  assert.equal(s.datos.version, '2026-11-14');
   // «Entendido» la cierra y guarda la versión vista.
   s.entendido();
   s = await app.asentar();
   assert.equal(s.ventana, false);
-  assert.deepEqual(app.marcadas, ['2026-11-12']);
+  assert.deepEqual(app.marcadas, ['2026-11-14']);
   // En la misma sesión no vuelve a salir.
   s = await app.asentar();
   assert.equal(s.ventana, false);
   app.desmontar();
   // Al volver a abrir la app con esa versión vista, tampoco.
-  const otra = arrancar({ vista: { ok: true, version: '2026-11-12' } });
+  const otra = arrancar({ vista: { ok: true, version: '2026-11-14' } });
   assert.equal((await otra.asentar()).ventana, false);
   assert.deepEqual(otra.marcadas, []);
   otra.desmontar();
   // Con una versión nueva en la web, sí.
-  const mas = arrancar({ vista: { ok: true, version: '2026-11-12' }, cargar: async () => ({ datos: n.validarNovedadesProducto(nueva()), origen: 'web' }) });
+  const mas = arrancar({ vista: { ok: true, version: '2026-11-14' }, cargar: async () => ({ datos: n.validarNovedadesProducto(nueva()), origen: 'web' }) });
   s = await mas.asentar();
   assert.equal(s.ventana, true);
   assert.equal(s.datos.version, '2026-11-20');
@@ -446,14 +446,14 @@ test('novedades · «Ver en detalle» abre el detalle y cuenta como vista; desde
   s = await app.asentar();
   assert.equal(s.ventana, false);
   assert.equal(s.detalle, true);
-  assert.deepEqual(app.marcadas, ['2026-11-12']);
+  assert.deepEqual(app.marcadas, ['2026-11-14']);
   s.cerrarDetalle();
   s = await app.asentar();
   assert.equal(s.detalle, false);
   assert.equal(s.ventana, false, 'cerrar el detalle no vuelve a abrir la ventana');
   app.desmontar();
   // Desde Perfil, aunque ya se hayan visto, y antes de que salga sola.
-  const perfil = arrancar({ vista: { ok: true, version: '2026-11-12' } });
+  const perfil = arrancar({ vista: { ok: true, version: '2026-11-14' } });
   s = await perfil.asentar();
   s.verDetalle();
   s = await perfil.asentar();
@@ -472,7 +472,7 @@ test('novedades · sin red sale la copia incluida; un JSON malo de la web se ign
   const malo = copia(NOVEDADES_PRODUCTO); malo.version = '2026-12-01'; malo.resumen[0].texto = '<img src=x onerror=alert(1)>';
   const conMalo = arrancar({ cargar: () => n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(malo)) }) });
   s = await conMalo.asentar();
-  assert.equal(s.datos.version, '2026-11-12', 'se queda con la copia incluida');
+  assert.equal(s.datos.version, '2026-11-14', 'se queda con la copia incluida');
   assert.ok(!JSON.stringify(s.datos).includes('onerror'));
   conMalo.desmontar();
 
@@ -522,7 +522,7 @@ test('novedades · la ventana: diálogo accesible con el título, los puntos (ic
   assert.equal(modal.props.statusBarTranslucent, true);
   const cabecera = nodos(arbol).find((x) => x?.props?.accessibilityRole === 'header');
   assert.deepEqual(textos(cabecera), ['Novedades de RWAdar']);
-  assert.ok(textos(arbol).includes('12 de noviembre de 2026'));
+  assert.ok(textos(arbol).includes('14 de noviembre de 2026'));
   for (const p of n.RESPALDO.resumen) {
     const punto = porId(arbol, `novedadPunto-${p.id}`);
     assert.ok(punto, `falta el punto ${p.id}`);
@@ -596,7 +596,7 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
     const ventana = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO }).arbol;
     const v = textos(ventana);
     assert.ok(v.includes(n.RESPALDO.en.titulo));
-    assert.ok(v.includes('12 November 2026'));
+    assert.ok(v.includes('14 November 2026'));
     for (const p of n.RESPALDO.resumen) { assert.ok(v.includes(p.en.titulo), p.en.titulo); assert.ok(v.includes(p.en.texto), p.en.texto); }
     assert.ok(v.includes('See details') && v.includes('Got it'));
     assert.equal(porId(ventana, 'novedadesVerDetalle').props.accessibilityLabel, 'See details');
