@@ -13,12 +13,32 @@
    coinciden y que la app acepta el de la web.
    --------------------------------------------------------------------- */
 const NOVEDADES_PRODUCTO = {
-  "version": "2026-11-12",
+  "version": "2026-11-14",
   "titulo": "Novedades de RWAdar",
   "en": {
     "titulo": "RWAdar news"
   },
   "resumen": [
+    {
+      "id": "mercado-directo",
+      "icono": "grafico",
+      "titulo": "El mercado, en directo",
+      "texto": "Se actualiza cada 5 minutos. Míralo en «Mercado y noticias».",
+      "en": {
+        "titulo": "The market, live",
+        "texto": "It updates every 5 minutes. See it in «Market and news»."
+      }
+    },
+    {
+      "id": "noticias-foto",
+      "icono": "noticias",
+      "titulo": "Noticias con foto y titulares claros",
+      "texto": "La más importante sale arriba, en grande, con su foto.",
+      "en": {
+        "titulo": "News with photos and clear headlines",
+        "texto": "The top story comes first, big, with its photo."
+      }
+    },
     {
       "id": "avisos-movil",
       "icono": "notificacion",
@@ -27,36 +47,6 @@ const NOVEDADES_PRODUCTO = {
       "en": {
         "titulo": "Alerts on your phone",
         "texto": "They arrive like a WhatsApp message. Turn them on in Profile › Alerts."
-      }
-    },
-    {
-      "id": "avisos-sin-leer",
-      "icono": "contador",
-      "titulo": "Ves los avisos que no has leído",
-      "texto": "Un número, como un «1», te dice cuántos son.",
-      "en": {
-        "titulo": "See the alerts you haven't read",
-        "texto": "A number, like a «1», tells you how many."
-      }
-    },
-    {
-      "id": "sesion-30-dias",
-      "icono": "sesion",
-      "titulo": "En la web, tu sesión dura 30 días",
-      "texto": "Marca «Mantener la sesión iniciada» al entrar en la web.",
-      "en": {
-        "titulo": "On the website, stay signed in for 30 days",
-        "texto": "Tick «Keep me signed in» when you sign in on the website."
-      }
-    },
-    {
-      "id": "contacto",
-      "icono": "correo",
-      "titulo": "Nuevo correo: rwadares@gmail.com",
-      "texto": "Y al final de Inicio: «¿Quieres colaborar con nosotros?».",
-      "en": {
-        "titulo": "New email: rwadares@gmail.com",
-        "texto": "And at the end of Home: «Would you like to work with us?»."
       }
     },
     {
@@ -71,6 +61,58 @@ const NOVEDADES_PRODUCTO = {
     }
   ],
   "detalle": [
+    {
+      "id": "mercado-directo",
+      "titulo": "El mercado de activos tokenizados, en directo",
+      "parrafos": [
+        "En «Mercado y noticias» ves cuánto valen, sumados, los mayores activos tokenizados: fondos del Tesoro, oro, acciones y otros. Los datos son de CoinGecko.",
+        "Desde el 14 de noviembre, el gráfico se actualiza cada 5 minutos. En la pestaña «24 h» ves cómo se ha movido durante el día; en «1 S» y «1 M», hora a hora.",
+        "La cifra mide el tamaño del mercado. No es lo que habría ganado una inversión."
+      ],
+      "pasos": [
+        "En Inicio, entra en «Mercado y noticias».",
+        "Elige la pestaña «24 h»."
+      ],
+      "en": {
+        "titulo": "The tokenized asset market, live",
+        "parrafos": [
+          "In «Market and news» you can see how much the largest tokenized assets are worth together: Treasury funds, gold, shares and others. The data comes from CoinGecko.",
+          "Since 14 November, the chart updates every 5 minutes. In the «24H» tab you can see how it has moved during the day; in «1W» and «1M», hour by hour.",
+          "The figure measures the size of the market. It is not what an investment would have earned."
+        ],
+        "pasos": [
+          "On Home, open «Market and news».",
+          "Choose the «24H» tab."
+        ]
+      }
+    },
+    {
+      "id": "noticias-foto",
+      "titulo": "Noticias del sector con foto y titulares más claros",
+      "parrafos": [
+        "La noticia más importante sale arriba, en grande, con su foto y el titular encima.",
+        "Las demás van en tarjetas, cada una con su foto. Los titulares son más cortos y dicen lo importante.",
+        "Las fotos son imágenes ilustrativas hechas con IA, no fotos de la noticia. Cada noticia lleva el enlace a su fuente.",
+        "Las fotos pesan menos: en el móvil, Inicio descarga menos datos."
+      ],
+      "pasos": [
+        "En Inicio, baja hasta las noticias.",
+        "Para verlas todas, entra en «Mercado y noticias»."
+      ],
+      "en": {
+        "titulo": "Sector news with photos and clearer headlines",
+        "parrafos": [
+          "The most important story comes first, big, with its photo and the headline on top.",
+          "The others come in cards, each with its photo. Headlines are shorter and say what matters.",
+          "The photos are illustrative images made with AI, not photos of the news. Each story links to its source.",
+          "The photos are lighter: on your phone, Home downloads less data."
+        ],
+        "pasos": [
+          "On Home, scroll down to the news.",
+          "To see them all, open «Market and news»."
+        ]
+      }
+    },
     {
       "id": "avisos-movil",
       "titulo": "Avisos en tu móvil, como un WhatsApp",

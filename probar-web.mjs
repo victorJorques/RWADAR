@@ -3848,10 +3848,14 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     datos.resumen.length >= 4 && datos.resumen.length <= 5 &&
     datos.resumen.every(p => Object.hasOwn(modelo.ICONOS, p.icono) && datos.detalle.some(s => s.id === p.id) &&
       [p.titulo, p.en.titulo].every(t => t.length <= 45) && [p.texto, p.en.texto].every(t => t.length <= 72)));
-  prueba('el detalle explica lo publicado del 11 y el 12/11 en frases cortas (avisos, el «1», la sesión de 30 días, el correo y la calculadora)',
-    ['avisos-movil', 'avisos-sin-leer', 'sesion-30-dias', 'contacto', 'calcula-y-mercado'].every(id => datos.detalle.some(s => s.id === id)) &&
+  // Desde el 14/11/2026, primero el mercado en directo y las noticias con foto; lo del 11 y el 12/11 sigue debajo.
+  const seccionAvisos = datos.detalle.find(s => s.id === 'avisos-movil');
+  prueba('el detalle explica lo publicado del 11 al 14/11 en frases cortas (el mercado en directo, las noticias con foto, avisos, el «1», la sesión de 30 días, el correo y la calculadora)',
+    ['mercado-directo', 'noticias-foto', 'avisos-movil', 'avisos-sin-leer', 'sesion-30-dias', 'contacto', 'calcula-y-mercado'].every(id => datos.detalle.some(s => s.id === id)) &&
+    datos.detalle[0].id === 'mercado-directo' && /cada 5 minutos/.test(datos.detalle[0].parrafos.join(' ')) &&
+    /no fotos de la noticia/.test(datos.detalle.find(s => s.id === 'noticias-foto').parrafos.join(' ')) &&
     datos.detalle.every(s => [...s.parrafos, ...s.pasos].every(f => f.split(/(?<=[.:!?])\s+/).every(frase => frase.length <= 160))) &&
-    /Perfil › Avisos/.test(JSON.stringify(datos.detalle[0])) && /Safari/.test(datos.detalle[0].parrafos.join(' ')) &&
+    /Perfil › Avisos/.test(JSON.stringify(seccionAvisos)) && /Safari/.test(seccionAvisos.parrafos.join(' ')) &&
     /Mantener la sesión iniciada en este dispositivo/.test(JSON.stringify(datos.detalle)) && /rwadares@gmail\.com/.test(JSON.stringify(datos.detalle)));
   prueba('sin promesas de rentabilidad: la calculadora dice que no es una promesa y que se puede perder dinero',
     !/garantizad|asegurad|sin riesgo|ganar[áa]s|\d+\s?%/i.test(textoJSON) &&
@@ -3885,7 +3889,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     modelo.CLAVE_VISTA === 'rwadar.novedades.vista' && modelo.pendiente(almacen, datos.version) && modelo.marcarVista(almacen, datos.version) &&
     JSON.stringify(memoria) === JSON.stringify({ 'rwadar.novedades.vista': datos.version }) && !modelo.pendiente(almacen, datos.version) &&
     modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
-    modelo.pendiente(almacen, '2026-11-12.2') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
+    modelo.pendiente(almacen, '2026-11-14.2') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
     !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
   const ui = lee('assets/novedades-producto-20261112.js');
   // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo

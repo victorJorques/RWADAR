@@ -20,7 +20,7 @@
                           en: { titulo, parrafos, pasos } }] }
    El inglés va en «en» de cada elemento, como en noticias-v2.json, con los
    mismos párrafos y pasos que el castellano. «icono» es una clave en
-   minúsculas (notificacion, contador, sesion, correo, calculadora): una
+   minúsculas (notificacion, contador, sesion, correo, calculadora, grafico, noticias): una
    desconocida se pinta con el icono genérico, sin rechazar el archivo.
    Los límites y el orden de las versiones son los del modelo de la web
    (rwadar-site/assets/novedades-producto-modelo-20261112.js): lo que la web

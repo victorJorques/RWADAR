@@ -58,7 +58,8 @@ resumen tienen que existir en la app. Las pruebas lo comprueban. Forma:
   una con 1 a 8 párrafos y 0 a 8 pasos. Los `id` (minúsculas, números y
   guiones) son únicos en cada lista; cada punto del resumen lleva a la
   sección del mismo `id` (`/novedades-rwadar/#<id>`).
-- `icono`: `notificacion`, `contador`, `sesion`, `correo` o `calculadora`
+- `icono`: `notificacion`, `contador`, `sesion`, `correo`, `calculadora`,
+  `grafico` o `noticias` (estos dos, desde el 14/11/2026)
   (dibujos de 24 × 24 en `ICONOS` del modelo). Una clave desconocida se pinta
   con un icono genérico.
 - Solo texto llano: sin `<` ni `>`, sin espacios al principio o al final, sin

@@ -109,7 +109,7 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       assert.ok(v.abierta && v.modal, 'es un diálogo modal');
       assert.equal(v.cuantas, 1);
       assert.equal(v.titulo, NOVEDADES.titulo);
-      assert.equal(v.fecha, '12 de noviembre de 2026');
+      assert.equal(v.fecha, '14 de noviembre de 2026');
       assert.ok(v.descrita, 'aria-describedby apunta a la lista de puntos');
       assert.deepEqual(v.puntos.map(p => [p.titulo, p.texto]), NOVEDADES.resumen.map(p => [p.titulo, p.texto]));
       assert.ok(v.puntos.length >= 4 && v.puntos.length <= 5, `${v.puntos.length} puntos`);
@@ -189,7 +189,7 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       });
       assert.deepEqual(d.h1, [NOVEDADES.titulo], 'un solo h1, el del archivo');
       assert.equal(d.titulo, 'Novedades de RWAdar · RWAdar');
-      assert.equal(d.fecha, 'Novedades del 12 de noviembre de 2026');
+      assert.equal(d.fecha, 'Novedades del 14 de noviembre de 2026');
       assert.equal(d.ocupada, 'false'); assert.ok(d.estado, 'sin «Cargando…»');
       assert.deepEqual(d.resumen.map(p => p.texto), NOVEDADES.resumen.map(p => p.titulo));
       assert.ok(d.resumen.every(p => p.href && p.href.startsWith('#')), 'cada punto lleva a su sección');
@@ -207,8 +207,8 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
 
       // Un punto del resumen lleva a su sección; /novedades-rwadar/#<id> también al cargar.
       // (La web desplaza con suavidad: se espera a que la sección llegue arriba.)
-      await pagina.click('#novResumen a[href="#sesion-30-dias"]');
-      await pagina.waitForFunction(() => { const r = document.getElementById('sesion-30-dias').getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight / 2; }, null, { timeout: 5000 });
+      await pagina.click('#novResumen a[href="#avisos-movil"]');
+      await pagina.waitForFunction(() => { const r = document.getElementById('avisos-movil').getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight / 2; }, null, { timeout: 5000 });
       await pagina.goto('about:blank');  // si no, cambiar solo el ancla no vuelve a cargar la página
       await pagina.goto(local.url + '/novedades-rwadar/#contacto', { waitUntil: 'load' });
       await pagina.waitForSelector('[data-novedades-estado="listo"]');
@@ -220,7 +220,7 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       const en = await pagina.evaluate(() => ({ h1: document.getElementById('novTit').textContent, lang: document.getElementById('novTit').lang, titulo: document.title,
         fecha: document.getElementById('novFecha').textContent.trim(), primera: document.querySelector('#novDetalle h2').textContent,
         pasos: document.querySelector('.nov-pasos-tit').textContent, cta: document.querySelector('.nov-cta-boton').textContent.replace(/\s+/g, ' ').trim() }));
-      assert.deepEqual(en, { h1: NOVEDADES.en.titulo, lang: 'en', titulo: NOVEDADES.en.titulo + ' · RWAdar', fecha: 'News from 12 November 2026',
+      assert.deepEqual(en, { h1: NOVEDADES.en.titulo, lang: 'en', titulo: NOVEDADES.en.titulo + ' · RWAdar', fecha: 'News from 14 November 2026',
         primera: NOVEDADES.detalle[0].en.titulo, pasos: 'How to do it', cta: 'Go to Profile › Alerts →' });
       if (CAPTURAS && movil) await pagina.screenshot({ path: path.join(CAPTURAS, `detalle-en-${ancho}x${alto}.png`) });
       await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
@@ -269,7 +269,7 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
       const v = await esperarVentana(pagina);
       assert.equal(v.titulo, NOVEDADES.en.titulo);
-      assert.equal(v.fecha, '12 November 2026');
+      assert.equal(v.fecha, '14 November 2026');
       assert.equal(v.lang, 'en');
       assert.equal(v.langTitulo, 'en', 'el título va en inglés, no marcado como texto de una fuente');
       assert.equal(v.deLaFuente, 0, 'sin «Original source text»: es texto de RWAdar');
