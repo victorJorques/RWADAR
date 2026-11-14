@@ -13,7 +13,7 @@
    coinciden y que la app acepta el de la web.
    --------------------------------------------------------------------- */
 const NOVEDADES_PRODUCTO = {
-  "version": "2026-11-14",
+  "version": "2026-11-14.2",
   "titulo": "Novedades de RWAdar",
   "en": {
     "titulo": "RWAdar news"

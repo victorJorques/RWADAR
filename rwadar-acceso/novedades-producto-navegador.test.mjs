@@ -14,6 +14,15 @@
      un navegador normal. La decisión es del modelo (motivoSinVentana y
      estadoVentana) y probar-web la prueba también sin navegador, para CI.
    - Perfil (móvil) lleva el enlace «Novedades de RWAdar».
+   - El recuadro «Activa los avisos» (14/11/2026: «que para activar las
+     notificaciones salga el aviso al salir la notificación de novedades al
+     entrar a la app, para recordar e incitar a la gente a que las activen»):
+     debajo de los puntos, sale sin notificaciones activas en este navegador
+     (y si no se sabe), no sale con ellas activas (permiso y suscripción de
+     push, simulados), su botón «Activar avisos» la cierra, cuenta como vista
+     y lleva a Perfil › Avisos; el Tab va ×, «Activar avisos», «Ver en
+     detalle», «Entendido»; a 320 px con la letra al 200 % el contenido se
+     desplaza y «Entendido» sigue a la vista.
    Sin errores, sin desbordes y con contraste AA. Sin red. Con
    RWADAR_CAPTURAS=<carpeta> guarda además las capturas. */
 import test from 'node:test';
@@ -43,6 +52,15 @@ const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI 
 
 /* Un navegador «normal»: Playwright marca navigator.webdriver y la ventana no sale con él. */
 const COMO_PERSONA = () => Object.defineProperty(Navigator.prototype, 'webdriver', { get: () => false, configurable: true });
+/* Notificaciones ya activas en este navegador, como las deja Perfil › Avisos: permiso concedido y una
+   suscripción de push en el service worker (simulada: sin red no hay servicio de push). */
+const AVISOS_ACTIVOS = () => {
+  Object.defineProperty(Notification, 'permission', { get: () => 'granted', configurable: true });
+  const suscripcion = { endpoint: 'https://push.ejemplo.test/rwadar', toJSON() { return { endpoint: this.endpoint, keys: { p256dh: 'p', auth: 'a' } }; } };
+  ServiceWorkerContainer.prototype.getRegistration = async () => ({ pushManager: { getSubscription: async () => suscripcion } });
+};
+const TEXTOS_REC = { es: ['Activa los avisos', 'Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.', 'Activar avisos'],
+  en: ['Turn on alerts', 'News reaches your phone, like a WhatsApp message. It is free and you can turn them off whenever you like.', 'Turn on alerts'] };
 
 /* Contraste WCAG entre el color del texto y el primer fondo opaco de debajo. */
 const CONTRASTE = `(sel) => {
@@ -70,7 +88,14 @@ const LEER_VENTANA = `() => {
       icono: p.querySelectorAll('.nov-icono svg path').length, oculto: p.querySelector('.nov-icono').getAttribute('aria-hidden') })),
     botones, cerrar: d.querySelector('[data-nov-cerrar]')?.getAttribute('aria-label'), foco: d.contains(document.activeElement) ? (document.activeElement.dataset.novFoco || document.activeElement.id) : null,
     lang: d.lang, traducir: d.getAttribute('translate'), langTitulo: tit && tit.closest('[lang]').lang, deLaFuente: d.querySelectorAll('[data-idioma-fuente],[data-idioma-fuente-etiqueta]').length, dentro: r.left >= 0 && r.right <= innerWidth + 0.5 && r.top >= 0 && r.bottom <= innerHeight + 0.5,
-    fuera, anchoDoc: document.documentElement.scrollWidth, anchoVentana: innerWidth, visto: localStorage.getItem('${CLAVE}') };
+    fuera, anchoDoc: document.documentElement.scrollWidth, anchoVentana: innerWidth, visto: localStorage.getItem('${CLAVE}'),
+    avisos: d.dataset.novedadesAvisos,
+    rec: (() => { const c = d.querySelector('[data-nov-recordatorio]'); if (!c) return null; const b = c.querySelector('[data-nov-avisos]');
+      return { titulo: c.querySelector('.nov-rec-tit').textContent.trim(), texto: c.querySelector('.nov-rec-txt').textContent.trim(), boton: b.textContent.trim(),
+        etiqueta: b.tagName, href: b.getAttribute('href'), alto: b.getBoundingClientRect().height, nombre: document.getElementById(c.getAttribute('aria-labelledby'))?.textContent.trim(),
+        enCuerpo: !!b.closest('.nov-cuerpo'), trasPuntos: !!(d.querySelector('.nov-puntos').compareDocumentPosition(c) & Node.DOCUMENT_POSITION_FOLLOWING),
+        icono: c.querySelectorAll('.nov-icono svg path').length, lang: c.closest('[lang]').lang }; })(),
+    entendidoVisible: (() => { const b = d.querySelector('[data-nov-entendido]').getBoundingClientRect(); return b.height > 0 && b.top >= 0 && b.bottom <= innerHeight + 0.5; })() };
 }`;
 
 async function abrirInicio(pagina, url, { limpiar = true } = {}) {
@@ -123,20 +148,28 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       assert.equal(v.fuera, 0, 'nada se sale de la pantalla');
       assert.ok(v.anchoDoc <= v.anchoVentana, `sin desplazamiento horizontal (${v.anchoDoc} > ${v.anchoVentana})`);
       assert.equal(v.visto, null, 'abierta todavía no cuenta como vista');
-      for (const sel of ['.nov-tit', '.nov-fecha', '.nov-punto-tit', '.nov-punto-txt', '.nov-ver', '.nov-entendido']) {
+      // El recuadro «Activa los avisos»: sin notificaciones activas en este navegador, sale, debajo de los puntos.
+      assert.equal(v.avisos, 'inactivos');
+      assert.ok(v.rec, 'sale el recuadro «Activa los avisos»');
+      assert.deepEqual([v.rec.titulo, v.rec.texto, v.rec.boton], TEXTOS_REC.es);
+      assert.deepEqual([v.rec.etiqueta, v.rec.href, v.rec.nombre], ['A', '/#perfil-avisos', 'Activa los avisos'], 'un enlace a Perfil › Avisos, con nombre');
+      assert.ok(v.rec.enCuerpo && v.rec.trasPuntos, 'debajo de los puntos y antes de los botones');
+      assert.ok(v.rec.alto >= 44 && v.rec.icono > 0, `botón de ${v.rec.alto} px, con su icono`);
+      assert.ok(v.entendidoVisible, '«Entendido» se ve sin desplazar nada');
+      for (const sel of ['.nov-tit', '.nov-fecha', '.nov-punto-tit', '.nov-punto-txt', '.nov-rec-tit', '.nov-rec-txt', '.nov-rec-boton', '.nov-ver', '.nov-entendido']) {
         const c = await pagina.evaluate(`(${CONTRASTE})(${JSON.stringify('#novedadesDialogo ' + sel)})`);
         assert.ok(c !== null && c >= 4.5, `${sel}: contraste ${c?.toFixed(2)} (AA pide 4,5)`);
       }
       if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, `ventana-${ancho}x${alto}.png`) });
 
-      // Teclado: Tab recorre ×, Ver en detalle y Entendido, con foco visible, sin salir de la ventana.
+      // Teclado: Tab recorre ×, Activar avisos, Ver en detalle y Entendido, con foco visible, sin salir de la ventana.
       const recorrido = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 4; i++) {
         await pagina.keyboard.press('Tab');
         recorrido.push(await pagina.evaluate(() => { const a = document.activeElement, s = getComputedStyle(a);
           return { foco: a.dataset.novFoco || a.id || a.tagName, dentro: !!a.closest('#novedadesDialogo'), visible: s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2 }; }));
       }
-      assert.deepEqual(recorrido.map(r => r.foco), ['cerrar', 'ver', 'entendido']);
+      assert.deepEqual(recorrido.map(r => r.foco), ['cerrar', 'avisos', 'ver', 'entendido']);
       assert.ok(recorrido.every(r => r.dentro && r.visible), `foco visible y dentro: ${JSON.stringify(recorrido)}`);
       if (CAPTURAS && movil) await pagina.screenshot({ path: path.join(CAPTURAS, `ventana-foco-entendido-${ancho}x${alto}.png`) });
 
@@ -170,6 +203,26 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       await esperarVentana(pagina);
       await pagina.click('#novedadesDialogo [data-nov-cerrar]');
       await pagina.waitForSelector('#novedadesDialogo', { state: 'detached', timeout: 5000 });
+
+      // 4b · «Activar avisos» del recuadro: la cierra, cuenta como vista y lleva a Perfil › Avisos (/#perfil-avisos).
+      await abrirInicio(pagina, local.url + '/');
+      await esperarVentana(pagina);
+      await pagina.click('#novedadesDialogo [data-nov-avisos]');
+      await pagina.waitForSelector('#novedadesDialogo', { state: 'detached', timeout: 5000 });
+      await pagina.waitForTimeout(600);
+      const tras = await pagina.evaluate(c => ({ visto: localStorage.getItem(c), ruta: location.pathname, hash: location.hash,
+        abierta: document.documentElement.classList.contains('nov-abierta'), pestana: document.getElementById('movilTabMas').getAttribute('aria-selected'),
+        foco: document.activeElement && document.activeElement.id, panel: !document.getElementById('movilPanelMas').hidden }), CLAVE);
+      assert.equal(tras.visto, NOVEDADES.version, '«Activar avisos» cuenta como vista, como «Entendido»');
+      assert.deepEqual([tras.ruta, tras.hash, tras.abierta], ['/', '', false], 'en Inicio, sin el ancla y con la página libre');
+      if (movil) {
+        assert.equal(tras.pestana, 'true', 'abre la pestaña Perfil');
+        assert.ok(tras.panel, 'con el panel de Perfil a la vista');
+        assert.equal(tras.foco, 'perfilAvisosTit', 'y el foco en «Avisos»');
+        if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, `activar-avisos-perfil-${ancho}x${alto}.png`) });
+      }
+      await abrirInicio(pagina, local.url + '/', { limpiar: false });
+      await noSale(pagina, 'tras «Activar avisos»');
 
       // 5 · «Ver en detalle»: la página con todo el detalle y el camino a Perfil › Avisos.
       await abrirInicio(pagina, local.url + '/');
@@ -275,6 +328,8 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       assert.equal(v.deLaFuente, 0, 'sin «Original source text»: es texto de RWAdar');
       assert.deepEqual(v.puntos.map(p => [p.titulo, p.texto]), NOVEDADES.resumen.map(p => [p.en.titulo, p.en.texto]));
       assert.deepEqual(v.botones.map(b => b.texto), ['See details', 'Got it']);
+      assert.ok(v.rec, 'el recuadro también sale en inglés');
+      assert.deepEqual([v.rec.titulo, v.rec.texto, v.rec.boton, v.rec.lang], [...TEXTOS_REC.en, 'en']);
       assert.equal(v.cerrar, 'Close the news');
       assert.equal(v.fuera, 0, 'nada se sale de la pantalla en inglés');
       if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, 'ventana-en-390x844.png') });
@@ -282,6 +337,70 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
       await pagina.waitForTimeout(300);
       assert.equal(await pagina.textContent('#novedadesTit'), NOVEDADES.titulo);
+      assert.equal(await pagina.textContent('#novedadesRecTit'), TEXTOS_REC.es[0]);
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+
+    // El recuadro «Activa los avisos»: con las notificaciones ya activas en este navegador no sale; si no se sabe, sí.
+    {
+      const contexto = await navegador.newContext({ viewport: { width: 390, height: 844 } });
+      await contexto.addInitScript(COMO_PERSONA);
+      await contexto.addInitScript(AVISOS_ACTIVOS);
+      const pagina = await contexto.newPage();
+      const errores = [];
+      pagina.on('pageerror', e => errores.push(e.message));
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      const v = await esperarVentana(pagina);
+      assert.equal(v.avisos, 'activos');
+      assert.equal(v.rec, null, 'con las notificaciones activas, sin recuadro');
+      assert.equal(v.puntos.length, NOVEDADES.resumen.length, 'el resto de la ventana, igual');
+      assert.ok(v.entendidoVisible && v.dentro && v.fuera === 0);
+      const recorrido = [];
+      for (let i = 0; i < 3; i++) { await pagina.keyboard.press('Tab'); recorrido.push(await pagina.evaluate(() => document.activeElement.dataset.novFoco)); }
+      assert.deepEqual(recorrido, ['cerrar', 'ver', 'entendido']);
+      if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, 'ventana-con-avisos-activos-390x844.png') });
+      await pagina.click('#novedadesDialogo [data-nov-entendido]');
+      await pagina.waitForSelector('#novedadesDialogo', { state: 'detached', timeout: 5000 });
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    {
+      // Sin soporte de notificaciones (no se puede saber): mejor recordar, sale.
+      const contexto = await navegador.newContext({ viewport: { width: 390, height: 844 } });
+      await contexto.addInitScript(COMO_PERSONA);
+      await contexto.addInitScript(() => { delete globalThis.PushManager; });
+      const pagina = await contexto.newPage();
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      const v = await esperarVentana(pagina);
+      assert.equal(v.avisos, 'desconocido');
+      assert.ok(v.rec, 'sin saberlo, el recuadro sale');
+      await contexto.close();
+    }
+    {
+      // A 320 px con la letra al 200 %: el contenido se desplaza y los botones siguen a la vista.
+      const contexto = await navegador.newContext({ viewport: { width: 320, height: 568 } });
+      await contexto.addInitScript(COMO_PERSONA);
+      await contexto.addInitScript(() => document.addEventListener('DOMContentLoaded', () => { document.documentElement.style.fontSize = '200%'; }));
+      const pagina = await contexto.newPage();
+      const errores = [];
+      pagina.on('pageerror', e => errores.push(e.message));
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      const v = await esperarVentana(pagina);
+      assert.ok(v.rec, 'sale el recuadro');
+      assert.ok(v.dentro, 'la ventana cabe en la pantalla');
+      assert.ok(v.entendidoVisible, '«Entendido» sigue a la vista');
+      assert.equal(v.fuera, 0, 'nada se sale por los lados');
+      assert.ok(v.anchoDoc <= v.anchoVentana, `sin desplazamiento horizontal (${v.anchoDoc} > ${v.anchoVentana})`);
+      const cuerpo = await pagina.evaluate(() => { const c = document.querySelector('#novedadesDialogo .nov-cuerpo'); return { alto: c.clientHeight, contenido: c.scrollHeight, desplaza: getComputedStyle(c).overflowY }; });
+      assert.ok(cuerpo.contenido > cuerpo.alto && cuerpo.desplaza === 'auto', `el contenido se desplaza (${cuerpo.contenido} en ${cuerpo.alto} px)`);
+      if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, 'ventana-letra-grande-320x568.png') });
+      // Con el teclado se llega al botón del recuadro: se desplaza hasta él y se ve entero.
+      await pagina.keyboard.press('Tab'); await pagina.keyboard.press('Tab');
+      const foco = await pagina.evaluate(() => { const a = document.activeElement, b = a.getBoundingClientRect(), c = document.querySelector('#novedadesDialogo .nov-cuerpo').getBoundingClientRect();
+        return { foco: a.dataset.novFoco, visible: b.top >= c.top - 0.5 && b.bottom <= c.bottom + 0.5 }; });
+      assert.deepEqual(foco, { foco: 'avisos', visible: true });
+      if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, 'ventana-letra-grande-foco-activar-320x568.png') });
       assert.deepEqual(errores, []);
       await contexto.close();
     }

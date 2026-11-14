@@ -97,6 +97,27 @@ function hayNovedadesSinVer(datos, vista) {
   return !versionValida(vista) || compararVersiones(datos.version, vista) > 0;
 }
 
+/* El recuadro «Activa los avisos» de la ventana (14/11/2026). Encargo: «que
+   para activar las notificaciones salga el aviso al salir la notificación de
+   novedades al entrar a la app, para recordar e incitar a la gente a que las
+   activen». Sale salvo que las notificaciones ya estén activas en ESTE móvil,
+   como lo enseña el interruptor «Notificaciones en este móvil» de Perfil ›
+   Avisos (useAvisosNovedades: movil.activo, de lib/avisos-cuenta.js). Con el
+   permiso quitado en los ajustes del móvil ('sin-permiso') no llegan, así que
+   también se recuerda. Recibe lo que devuelve useAvisosNovedades y dice
+   'activos', 'inactivos', 'comprobando' (aún no se sabe: la ventana espera un
+   poco) o 'desconocido' (sin cuenta o con un error: sale, mejor recordar). */
+function estadoAvisosMovil(avisos) {
+  if (!avisos || avisos.activo !== true) return 'desconocido';
+  const movil = avisos.movil;
+  if (esObjeto(movil)) return movil.activo === true && movil.estado !== 'sin-permiso' ? 'activos' : 'inactivos';
+  return avisos.errorCarga ? 'desconocido' : 'comprobando';
+}
+/* ¿Sale el recuadro? Siempre, salvo con las notificaciones activas en este
+   móvil o con los avisos apagados en la app ('apagados': no hay Perfil ›
+   Avisos al que llevar). */
+const conRecordatorioAvisos = (estado) => estado !== 'activos' && estado !== 'apagados';
+
 /* Comprueba el archivo entero y devuelve una copia limpia. Lanza si algo no cuadra. */
 function validarNovedadesProducto(datos) {
   claves(datos, ['version', 'titulo', 'en', 'resumen', 'detalle'], 'novedades');
@@ -198,4 +219,4 @@ async function cargarNovedadesProducto({ fetchImpl = (...args) => fetch(...args)
 
 module.exports = { URL_NOVEDADES_PRODUCTO, PLAZO_MS, MAX_CARACTERES, MAX, LIMITES, RESPALDO,
   versionValida, compararVersiones, hayNovedadesSinVer, validarNovedadesProducto, novedadesValidas,
-  textosNovedades, cargarNovedadesProducto };
+  textosNovedades, cargarNovedadesProducto, estadoAvisosMovil, conRecordatorioAvisos };
