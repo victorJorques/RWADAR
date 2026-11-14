@@ -7,8 +7,9 @@
 // Monta un mundo de mentira y hace pasar por él un día bueno y los malos:
 // - «GitHub» = un repositorio git desnudo en una carpeta temporal (origin);
 //   el PR = una rama empujada ahí; unir = merge --no-ff; la CI = las
-//   comprobaciones deterministas (cambios-ci.sh, validar --publicada y la
-//   compuerta sobre la unión) o un resultado fijo («CI falla»);
+//   comprobaciones deterministas (cambios-ci.sh, que el PR de las noticias
+//   solo lleve noticias, validar --publicada y la compuerta sobre la unión)
+//   o un resultado fijo («CI falla»);
 // - «producción» y «revisión» = el worker de la web en 127.0.0.1
 //   (rwadar-acceso/probar-worker-local.mjs) sirviendo una construcción local
 //   (rwadar-publicar.js --local --sin-sincronizar);
@@ -218,13 +219,17 @@ async function manana(nombre, o = {}) {
   r = await na(['cerrojo', '--rapido'], { trabajo: t, extra: ['--base', prod.url] });
   if (r.codigo === 3) return { estado: 'SIN_HACER_NADA', paso: 'repaso', motivo: r.salida.split('\n')[0] };
   empujar(`${B}:refs/heads/claude/noticias-ensayo`);
-  // «CI»: la decisión de cambios-ci.sh, validar --publicada y la compuerta sobre la unión.
+  // «CI»: la decisión de cambios-ci.sh, el paso del trabajo «secretos» que mira que el PR
+  // de las noticias solo lleve noticias (con el título del PR), validar --publicada y la compuerta sobre la unión.
   let ciBien = true;
   if (o.ciFalla) ciBien = false;
   else {
     const c = spawnSync('bash', ['.github/cambios-ci.sh', S, B], { cwd: REPO, encoding: 'utf8', env: { ...process.env, GITHUB_EVENT_NAME: 'pull_request' } });
+    const titulo = `Noticias automáticas del ${FECHA.slice(8, 10)}/${FECHA.slice(5, 7)}/${FECHA.slice(0, 4)}`;
+    const n = spawnSync(process.execPath, ['.github/noticias-pr.mjs', S, B], { cwd: REPO, encoding: 'utf8', env: { ...process.env, TITULO: titulo } });
+    if (n.status !== 0) log(`CI: el PR de las noticias lleva algo más que noticias:\n${n.stdout}${n.stderr}`);
     const v = await na(['validar', '--publicada']);
-    ciBien = c.status === 0 && v.codigo === 0;
+    ciBien = c.status === 0 && n.status === 0 && v.codigo === 0;
   }
   if (o.mainSeMueve) {
     g('checkout', '-q', '--detach', S); fs.appendFileSync(path.join(REPO, 'docs/INTERNO.md'), '\nOtro trabajo.\n');
