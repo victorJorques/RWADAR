@@ -15,7 +15,7 @@
        "version": "AAAA-MM-DD" (o "AAAA-MM-DD.N" si hay otra el mismo día),
        "titulo":  "Novedades de RWAdar",
        "en":      { "titulo": "…" },
-       "resumen": [ 1 a 6 puntos (hoy 5), cada uno de UNA línea:
+       "resumen": [ 1 a 6 puntos (hoy 4), cada uno de UNA línea:
          { "id", "icono", "titulo", "texto", "en": { "titulo", "texto" } } ],
        "detalle": [ 1 a 10 secciones:
          { "id", "titulo", "parrafos": [1 a 8], "pasos": [0 a 8],

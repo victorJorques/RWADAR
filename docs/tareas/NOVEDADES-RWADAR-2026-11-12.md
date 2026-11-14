@@ -54,7 +54,7 @@ resumen tienen que existir en la app. Las pruebas lo comprueban. Forma:
   largo que en castellano.
 - `version`: `AAAA-MM-DD` (o `AAAA-MM-DD.2` si hay otra el mismo día). **Al
   cambiar la versión, la ventana vuelve a salir a todo el mundo una vez.**
-- `resumen`: de 1 a 6 puntos (hoy 5); `detalle`: de 1 a 10 secciones, cada
+- `resumen`: de 1 a 6 puntos (hoy 4); `detalle`: de 1 a 10 secciones, cada
   una con 1 a 8 párrafos y 0 a 8 pasos. Los `id` (minúsculas, números y
   guiones) son únicos en cada lista; cada punto del resumen lleva a la
   sección del mismo `id` (`/novedades-rwadar/#<id>`).
@@ -80,6 +80,11 @@ resumen tienen que existir en la app. Las pruebas lo comprueban. Forma:
    coge el archivo nuevo sola **si tiene la misma forma**: no hace falta OTA
    salvo que cambie su código. La copia de respaldo nueva llega a la app con
    la siguiente OTA.
+
+**Con iconos nuevos, primero la OTA y después la web** (revisión del
+14/11/2026): si la web va antes, la app instalada enseña la ventana una vez
+con el icono genérico y la marca como vista; con la OTA antes, la app usa su
+copia nueva (gana la versión más nueva) con los dibujos buenos.
 
 **No se añaden campos ni se suben los límites** (tamaño, número de puntos,
 largo de los textos, iconos nuevos con dibujo) sin publicar antes una OTA

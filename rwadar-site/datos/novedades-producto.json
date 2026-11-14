@@ -51,8 +51,8 @@
       "id": "mercado-directo",
       "titulo": "El mercado de activos tokenizados, en directo",
       "parrafos": [
-        "En «Mercado y noticias» ves cuánto valen, sumados, los mayores activos tokenizados: fondos del Tesoro, oro, acciones y otros. Los datos son de CoinGecko.",
-        "Desde el 14 de noviembre, el gráfico se actualiza cada 5 minutos. En la pestaña «24 h» ves cómo se ha movido durante el día; en «1 S» y «1 M», hora a hora.",
+        "En «Mercado y noticias» ves cuánto valen, sumados, los mayores activos tokenizados: crédito privado, fondos del Tesoro, oro, acciones y otros. Los datos son de CoinGecko.",
+        "Desde el 14 de noviembre, el gráfico se actualiza cada 5 minutos. En la pestaña «24 h» ves cómo se ha movido en las últimas 24 horas; en «1 S» y «1 M», hora a hora.",
         "La cifra mide el tamaño del mercado. No es lo que habría ganado una inversión."
       ],
       "pasos": [
@@ -60,10 +60,10 @@
         "Elige la pestaña «24 h»."
       ],
       "en": {
-        "titulo": "The tokenized asset market, live",
+        "titulo": "The tokenised asset market, live",
         "parrafos": [
-          "In «Market and news» you can see how much the largest tokenized assets are worth together: Treasury funds, gold, shares and others. The data comes from CoinGecko.",
-          "Since 14 November, the chart updates every 5 minutes. In the «24H» tab you can see how it has moved during the day; in «1W» and «1M», hour by hour.",
+          "In «Market and news» you can see how much the largest tokenised assets are worth together: private credit, Treasury funds, gold, shares and others. The data comes from CoinGecko.",
+          "Since 14 November, the chart updates every 5 minutes. In the «24H» tab you can see how it has moved over the last 24 hours; in «1W» and «1M», hour by hour.",
           "The figure measures the size of the market. It is not what an investment would have earned."
         ],
         "pasos": [
