@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Limpieza de código de la web (#138) sobre el catálogo 434217eb",
+  "nota": "Gráfico en directo (#141) y noticias automáticas (#140)",
   "revisionAprobada": {
-    "commit": "ccedb524e2417bf87ed4143c6c7bec9a74e15743",
-    "contenidoSha256": "sha256:1733804603e4e99bbb5d4fc82f83f660cfbdda95941a987c03523111efb57697",
+    "commit": "ef8af7a425694bf57aa50887370dbdab1ec94ec1",
+    "contenidoSha256": "sha256:e17dfacf99bee3646a6d6f9598dbd0bef7c8f3425d4b04bd858f97d5bbc0324a",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
