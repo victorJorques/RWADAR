@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-13",
+  "actualizadoEl": "2026-11-14",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Gráfico de la tokenización con más detalle (#136) y ciclo más rápido (#135), sobre el catálogo 434217eb",
+  "nota": "Limpieza de código de la web (#138) sobre el catálogo 434217eb",
   "revisionAprobada": {
-    "commit": "403cda1802c1e1d6e9fc98b67a87f4fec6de366b",
-    "contenidoSha256": "sha256:32e938fccd6eb734e594ba5b69572df18c36ea0ed416b5c539903728f21d47f8",
+    "commit": "ccedb524e2417bf87ed4143c6c7bec9a74e15743",
+    "contenidoSha256": "sha256:1733804603e4e99bbb5d4fc82f83f660cfbdda95941a987c03523111efb57697",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
