@@ -76,6 +76,8 @@ export const PESOS = Object.freeze({
   'node probar-notificaciones.mjs': 6,
   'node probar-webpush-supabase.mjs': 5.5,
   'node probar-pie-sin-nombre.mjs': 3.5,
+  // Notificaciones sin cuenta (migración 36, 14/11/2026).
+  'node probar-avisos-sin-cuenta.mjs': 6,
   'node probar-admin-huella.mjs': 14,
   // Gráfico en directo (migración 35, 14/11/2026): cada uno, menos de 25 s.
   'node probar-mercado-directo-regla.mjs': 7,

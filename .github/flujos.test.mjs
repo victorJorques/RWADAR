@@ -9,6 +9,8 @@
 //   no, cambios-ci.sh no las vería y un PR de documentación se saltaría
 //   pruebas que sí lo leen);
 // - que el ensayo de restauración no confunda un fallo de gh con «no hay copias».
+// - «Avisos a registrados (base)»: cada acción de la lista tiene su caso y su
+//   SQL, y las que cambian la base piden AVISOS (también las de la 36).
 // Uso: node --test .github/flujos.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -558,6 +560,25 @@ test('las pruebas escriben entera la ruta de cada documento que leen (si no, cam
   assert.ok(archivos.length > 50, `solo ${archivos.length} archivos de pruebas`);
   const problemas = archivos.flatMap(f => rutasDeDocumentosArmadas(fs.readFileSync(path.join(raiz, f), 'utf8'), contexto).map(p => `${f}: ${p}`));
   assert.deepEqual(problemas, [], 'Escribe entera la ruta (p. ej. \'docs/RUNBOOK.md\'):\n' + problemas.join('\n'));
+});
+
+/* ---------- avisos-base.yml: acciones, casos y AVISOS ---------- */
+test('avisos-base.yml: cada acción de la lista tiene su caso con un SQL que existe, y al revés; las que cambian la base piden AVISOS', () => {
+  const flujo = leer('.github/workflows/avisos-base.yml');
+  const opciones = flujo.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1].trim().split('\n').map(l => l.trim().slice(2));
+  const casos = [...flujo.matchAll(/^ {12}([a-z0-9-]+)\)\s+SQL="([^"]+)";\s+CAMBIA=(si|no)/gm)].map(m => ({ accion: m[1], sql: m[2], cambia: m[3] }));
+  assert.deepEqual(casos.map(c => c.accion).sort(), [...opciones].sort(), 'las mismas acciones en la lista y en «Comprobar la acción»');
+  const D = 'rwadar-app/db';
+  const variables = Object.fromEntries([...flujo.matchAll(/^ {10}(V3[0-9])="\$D\/([^"]+)"$/gm)].map(m => [m[1], `${D}/${m[2]}`]));
+  for (const c of casos) {
+    const ruta = c.sql.replace(/^\$D\//, D + '/').replace(/^\$(V3[0-9])$/, (_, v) => variables[v]);
+    assert.ok(fs.existsSync(path.join(raiz, ruta)), `${c.accion}: no existe ${ruta}`);
+  }
+  // Las de la 36 (notificaciones sin cuenta): aplicar, activar y apagar cambian la base; la prueba pide AVISOS sin copia.
+  const de36 = Object.fromEntries(casos.filter(c => /-36$|sin-cuenta$/.test(c.accion)).map(c => [c.accion, c.cambia]));
+  assert.deepEqual(de36, { 'ensayo-36': 'no', 'verificar-36': 'no', 'aplicar-36': 'si', 'activar-sin-cuenta': 'si', 'apagar-sin-cuenta': 'si', 'prueba-sin-cuenta': 'no' });
+  assert.match(flujo, /if \[ "\$CAMBIA" = si \] && \[ "\$CONFIRMAR" != "AVISOS" \]; then/);
+  assert.match(flujo, /if \[ "\$ACCION" = prueba-sin-cuenta \] && \[ "\$CONFIRMAR" != "AVISOS" \]; then/);
 });
 
 /* ---------- ensayo de restauración ---------- */

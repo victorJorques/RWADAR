@@ -156,11 +156,13 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
   const importTokenizacion = "import { crearTokenizacionServidor, crearTokenizacionDirectoServidor } from './tokenizacion-servidor.mjs';";
   const importWebpush = "import { crearWebpushServidor } from './webpush-servidor.mjs';";
+  const importSinCuenta = "import { crearAvisosSinCuentaServidor } from './avisos-sin-cuenta-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
   if (original.split(importTokenizacion).length !== 2) throw new Error('Falta la integración explícita de la tokenización.');
   if (original.split(importWebpush).length !== 2) throw new Error('Falta la integración explícita de las notificaciones web.');
-  const servidor = original.replace(importCartera, '').replace(importTokenizacion, '').replace(importWebpush, '');
+  if (original.split(importSinCuenta).length !== 2) throw new Error('Falta la integración explícita de los avisos sin cuenta.');
+  const servidor = original.replace(importCartera, '').replace(importTokenizacion, '').replace(importWebpush, '').replace(importSinCuenta, '');
   const modelo = fs.readFileSync(path.join(raiz, '../rwadar-movil/lib/cartera.js'), 'utf8');
   if (/\brequire\s*\(|\bimport\b\s*(?:\(|[{*'"\w])/.test(modelo)) throw new Error('El motor de cartera debe ser autónomo.');
   const importModelo = "import carteraModelo from '../rwadar-movil/lib/cartera.js';";
@@ -188,6 +190,15 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   if (webpush.split(exportWebpush).length !== 2 || /\bexport\b/.test(webpush.replace(exportWebpush, ''))) {
     throw new Error('webpush-servidor.mjs solo puede exportar crearWebpushServidor.');
   }
+  /* Notificaciones sin cuenta (14/11/2026): /api/avisos/*. Igual que las
+     notificaciones web: autónomo, en su propio ámbito y sin exportarse desde
+     _worker.js. */
+  const sinCuenta = fs.readFileSync(path.join(raiz, 'avisos-sin-cuenta-servidor.mjs'), 'utf8');
+  if (/\bimport\b\s*(?:\(|[{*'"\w])|\brequire\s*\(/.test(sinCuenta)) throw new Error('Los avisos sin cuenta no admiten dependencias.');
+  const exportSinCuenta = 'export function crearAvisosSinCuentaServidor(';
+  if (sinCuenta.split(exportSinCuenta).length !== 2 || /\bexport\b/.test(sinCuenta.replace(exportSinCuenta, ''))) {
+    throw new Error('avisos-sin-cuenta-servidor.mjs solo puede exportar crearAvisosSinCuentaServidor.');
+  }
   // New dependencies require an explicit bundling decision.
   if (/\bimport\s*(?:\(|[{*'"\w])/.test(servidor) || /\bexport\s+default\b/.test(servidor)) {
     throw new Error('El servidor de acceso debe ser autónomo sin export default.');
@@ -198,14 +209,16 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
      «export function» / «export async function» (compilar.test.mjs lo comprueba
      además importando el worker). */
   for (const [nombre, codigo] of [['servidor.mjs', servidor], ['cartera-servidor.mjs', cartera], ['tokenizacion-servidor.mjs', tokenizacion],
-    ['webpush-servidor.mjs', webpush]]) {
+    ['webpush-servidor.mjs', webpush], ['avisos-sin-cuenta-servidor.mjs', sinCuenta]]) {
     const exportaciones = codigo.match(/\bexport\b(?!\s*(?:async\s+)?function\b)[^\n]{0,40}/g);
     if (exportaciones) throw new Error(`${nombre} solo puede exportar funciones: ${exportaciones[0].trim()}`);
   }
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     'const tokenizacionModelo = (() => { const module = { exports: {} };\n' + modeloTokenizacion + '\nreturn module.exports; })();\n' + tokenizacion + '\n' +
     'const crearWebpushServidor = (() => {\n' + webpush.replace(exportWebpush, 'function crearWebpushServidor(') +
-    '\nreturn crearWebpushServidor; })();\n' + servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
+    '\nreturn crearWebpushServidor; })();\n' +
+    'const crearAvisosSinCuentaServidor = (() => {\n' + sinCuenta.replace(exportSinCuenta, 'function crearAvisosSinCuentaServidor(') +
+    '\nreturn crearAvisosSinCuentaServidor; })();\n' + servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
     'const fichasRWAdar = new Set(' + JSON.stringify(publicadas) + ');\n' +
     'const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso, lecciones }) + ');\n' +

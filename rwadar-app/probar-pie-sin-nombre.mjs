@@ -306,10 +306,10 @@ const compruebaBase = (entradas) => correPaso(BASE, 'Comprobar la acción', { AC
    ===================================================================== */
 {
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1].trim().split('\n').map((l) => l.trim().slice(2));
-  paso('avisos-base.yml añade ensayo-34, verificar-34 y aplicar-34 tras prueba-webpush y conserva las demás',
+  paso('avisos-base.yml añade ensayo-34, verificar-34 y aplicar-34 tras prueba-webpush y conserva las demás (las de la 36 las mira probar-avisos-sin-cuenta.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31', 'aplicar-31',
       'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid', 'ensayo-33', 'verificar-33', 'aplicar-33',
-      'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar',
+      'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34', 'ensayo-36', 'verificar-36', 'aplicar-36', 'activar-sin-cuenta', 'apagar-sin-cuenta', 'prueba-sin-cuenta', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar',
       'apagar-casilla', 'hacer-admin']));
   paso('el flujo comprueba que las dos copias de la 34 son idénticas y avisa de reaplicar la 34 tras aplicar-30 y aplicar-31',
     BASE.includes('cmp -s "$D/34_pie_sin_nombre.sql" rwadar-app/supabase/migrations/20261112210000_pie_sin_nombre.sql')

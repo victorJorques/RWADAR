@@ -6,6 +6,56 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (29) · Claude · Notificaciones sin cuenta, parte 1: base (migración 36) y servidor · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en
+  Android; muy importante que funcionen las notificaciones y los avisos aunque
+  no tengan cuenta o no hayan iniciado sesión: que puedan activarlas». Esta es
+  la parte 1 (base y servidor); la parte 2 (web, app y textos legales) va
+  aparte. Contrato entre las dos:
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md).
+- **Base, migración 36** (`rwadar-app/db/36_avisos_sin_cuenta.sql` y su copia
+  `supabase/migrations/20261114180000_avisos_sin_cuenta.sql`). Solo añade y
+  **nace apagada**. Tablas aparte, sin usuario (`sin_cuenta_web`,
+  `sin_cuenta_movil`, sus colas y `historial_sin_cuenta`, solo añadir). API
+  para anon (texto versionado `sin-cuenta-v1-2026-11-14`, alta, baja y estado
+  de la web y del móvil, avisos publicados) con interruptor, versión, forma,
+  cupos (300 altas nuevas por hora y 20 000 en total por canal), «misma
+  dirección con otra clave auth se rechaza» y la baja siempre. Envío dentro de
+  `procesar()` (la de la 33 más cuatro bloques `sin_cuenta_*`) reutilizando
+  `webpush_encolar` y las cabeceras de Expo; no duplica si la cuenta ya lo
+  recibe; borra por 404/410, DeviceNotRegistered o tres fallos seguidos.
+  `limpiar()` = la de la 32 más `sin_cuenta_limpiar()` (90 días, 180 días y 3
+  años). Scripts: `_verificar`, `_activar` (exige push y clave VAPID),
+  `_apagar`, `_prueba` (solo con 5 suscripciones sin cuenta o menos);
+  `fallo_cerrado.sql` también lo apaga.
+- **Flujo `avisos-base.yml`:** `ensayo-36`, `verificar-36`, `aplicar-36`,
+  `activar-sin-cuenta`, `apagar-sin-cuenta` y `prueba-sin-cuenta` (las que
+  cambian la base, con copia y `AVISOS`); avisos de reaplicar la 36 tras
+  `aplicar-30`, `-32` y `-33`. `.github/flujos.test.mjs`: cada acción con su
+  caso y su SQL.
+- **Servidor:** `rwadar-acceso/avisos-sin-cuenta-servidor.mjs` en
+  `servidor.mjs` y `compilar.cjs`: `POST /api/avisos/web`,
+  `POST /api/avisos/movil` (`alta|baja|estado`), `GET /api/avisos/texto` y
+  `GET /api/avisos/recientes` (60 s en memoria). Origin igual o ninguno,
+  `cross-site` 403, JSON ≤ 4 kB con claves exactas, sin cookies, límites por
+  visitante nuevos (altas 20, bajas 60, estados 120 cada 10 min) e
+  interruptor `AVISOS_SIN_CUENTA` **encendido** (decisión de la dirección; la
+  base sigue apagada). Sin la cabecera secreta (decisión: no ahora).
+- **Pruebas:** `probar-avisos-sin-cuenta.mjs` (72 correctas, en
+  `npm test`, con el ensayo, aplicar, verificar y la prueba del flujo
+  ejecutados de verdad con bash); `npm --prefix rwadar-app test` salida 0
+  (las listas de acciones de las pruebas de la 30, 32, 33 y 34 al día);
+  `rwadar-acceso/avisos-sin-cuenta.test.mjs` 15 de 15 y `compilar.test.mjs`
+  14 de 14; `node --test .github/*.test.mjs` 119 de 119; `npm run test:web`
+  (probar-web 723 correctas).
+- **Pendiente (con orden de Víctor):** la parte 2 (web, app y textos legales);
+  después, `ensayo-36` → `aplicar-36` → `verificar-36`, web en revisión →
+  `activar-sin-cuenta` → probar en un iPhone y un Android →
+  `prueba-sin-cuenta`; web en producción y OTA. Nada aplicado ni publicado.
+
+---
+
 ## 14 de noviembre de 2026 (28) · Claude · Recuadro «Activa los avisos» en la ventana de novedades · SIN PUBLICAR (rama `aviso-activar-notificaciones`, solo commit local)
 
 - **Encargo de la dirección (14/11):** «que para activar las notificaciones

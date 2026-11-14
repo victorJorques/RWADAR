@@ -104,6 +104,22 @@ begin
 end
 $novedades$;
 
+-- Notificaciones sin cuenta (36): si existe su interruptor, se apaga con su
+-- fecha. No se borra ninguna fila ni el historial sin cuenta. Sus RPC ya
+-- quedaron cerradas arriba (todas las de public). Tras reparar: reaplicar la
+-- 36 y, con orden de Víctor, 36_avisos_sin_cuenta_activar.sql.
+do $sin_cuenta$
+begin
+  if to_regclass('rwadar_novedades.configuracion') is not null
+     and exists (select 1 from pg_attribute
+                  where attrelid = to_regclass('rwadar_novedades.configuracion')
+                    and attname = 'sin_cuenta_activa' and not attisdropped) then
+    execute 'update rwadar_novedades.configuracion set sin_cuenta_activa = false, sin_cuenta_activada_el = null where unica';
+    raise notice 'RWAdar 36: notificaciones sin cuenta apagadas. Tras reparar, reaplica 36_avisos_sin_cuenta.sql y, con orden de Víctor, 36_avisos_sin_cuenta_activar.sql';
+  end if;
+end
+$sin_cuenta$;
+
 -- pg_cron ofrece unschedule(text) en Supabase. La rama bigint permite que el
 -- cierre siga siendo util con instalaciones antiguas que solo tengan esa firma.
 -- El reloj de retención de la 22 NO se detiene: no hace red y minimiza datos
