@@ -277,6 +277,9 @@ async function capturar(base, dir, prefijo) {
         await pagina.goto(base + ruta, { waitUntil: 'load' });
         await pagina.waitForSelector(ruta === '/' ? '[data-noticias="portada"] img' : '[data-noticias="lista"] img', { timeout: 15000 }).catch(() => {});
         await pagina.evaluate(() => { try { localStorage.setItem('rwadar-novedades-vistas', '99'); } catch { /* nada */ } document.querySelectorAll('dialog[open]').forEach(d => d.close()); });
+        // La cabecera fija saldría pegada en medio de una captura alta: en la captura, en su sitio.
+        // (Por el CSSOM: la CSP de la web no deja añadir estilos en línea.)
+        await pagina.evaluate(() => document.querySelectorAll('header').forEach(h => h.style.setProperty('position', 'static', 'important')));
         const bloque = await pagina.$(ruta === '/' ? '[data-noticias="portada"]' : '[data-noticias="lista"]');
         if (bloque) await bloque.scrollIntoViewIfNeeded();
         await pagina.waitForTimeout(600);

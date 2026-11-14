@@ -65,7 +65,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   validar, producción, flujo, personas, reloj), `config.json` (interruptor:
   `"activo"`), `fuentes-barrido.json`, `EDITOR.md`, `VERIFICADOR.md`,
   `ORDEN-TAREA.md` (texto exacto de la tarea, hora y encendido),
-  `pruebas/` (77 pruebas), `ensayo.mjs`;
+  `pruebas/` (78 pruebas), `ensayo.mjs`;
   `rwadar-app/data/noticias-diarias/LEEME.md`; `AGENTS.md` (la autorización
   permanente de Víctor del 13/11 solo para esto y lo que sigue necesitando su
   orden); `docs/INTERNO.md`; la skill `investigacion-catalogo` (rama de
@@ -90,7 +90,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
     Toca `cambios-ci.sh` (tercera salida `noticias=`), `ci.yml`,
     `partes-ci.mjs` y `flujos.test.mjs`: mejor en su propio PR, con el
     integrador del gráfico en directo (que también toca `.github/`).
-- **Pruebas:** las 77 de la skill (`node --test
+- **Pruebas:** las 78 de la skill (`node --test
   .claude/skills/noticias-automaticas/pruebas/*.test.mjs`); **ensayo completo
   en local** (`node .claude/skills/noticias-automaticas/ensayo.mjs`): un
   «GitHub» de mentira (repositorio desnudo), la web servida por el worker
@@ -99,7 +99,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   de otros bytes, CI falla, `main` se mueve, fuente crítica caída, fuente de
   una noticia caída, siete cerrojos, «Publicar web» de otro commit, revisión
   y producción que fallan); **32 mutaciones** que deshacen una regla cada una
-  y hacen fallar su prueba. Resultados y capturas: ver abajo.
+  y hacen fallar su prueba.
+- **Resultados (14/11, en este contenedor):** `npm test` entero en la raíz,
+  **salida 0** (78 pruebas de la skill dentro; `validar --publicada` dice que
+  la edición publicada aún no es automática); ensayo completo **25/25 días
+  como se esperaba** (367 s; 16 push, todos al origin de ensayo; nada a
+  GitHub ni a Cloudflare); mutaciones **32/32 cazadas** (guion `mutaciones.mjs`
+  del scratchpad, sobre una copia del commit); guardián de la OTA
+  `ok:true` (1.4.2(24)); gitleaks 8.30.1 con `rwadar-app/gitleaks.toml` sobre
+  los commits de esta rama: **sin hallazgos** (sobre todo el historial salen
+  los 4 de siempre, de commits del 05/11 que no son de esta rama). Capturas
+  a escala 2 del día bueno servido por la «producción» local (Inicio y
+  /mercado/ a 390 y 1366, con la noticia de «Hoy» del ensayo): carpeta
+  `automatico/noticias/capturas/` del scratchpad.
+- **Un fallo de verdad que encontró la construcción:** la regla de correos de
+  V-11 tenía longitudes sin acotar y tardaba unos 20 s con una línea larga
+  sin «@» (200 kB de notas); ahora 2 ms (`lib/personas.mjs`).
 - **Para encender (lo hace el coordinador tras enseñárselo a Víctor):**
   `ORDEN-TAREA.md`. Obligatorio antes: añadir `victorJorques/RWADAR` a los
   repositorios del entorno «Rwadar Con Internet». Primero un disparo con
@@ -118,8 +133,8 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 - **Otros puntos de integración:** `main` tendrá commits de unión (solo los
   de las noticias); no encontré nada que dependa de la historia lineal. Las
   pruebas de `sello.test.mjs` hacen commits en una copia aparte (`git
-  worktree`, sin ramas) y tardan unos 6-10 s; en una máquina muy cargada,
-  más.
+  worktree`, sin ramas) y tardan unos 12-15 s aquí, con la máquina cargada;
+  su peso en `partes-ci.mjs` es 15 s (las cinco partes siguen ≤ 40 s).
 
 ---
 
