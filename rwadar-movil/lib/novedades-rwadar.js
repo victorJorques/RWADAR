@@ -104,13 +104,16 @@ function hayNovedadesSinVer(datos, vista) {
    como lo enseña el interruptor «Notificaciones en este móvil» de Perfil ›
    Avisos (useAvisosNovedades: movil.activo, de lib/avisos-cuenta.js). Con el
    permiso quitado en los ajustes del móvil ('sin-permiso') no llegan, así que
-   también se recuerda. Recibe lo que devuelve useAvisosNovedades y dice
+   también se recuerda; y con «Avisos de novedades» apagado (servidor.novedades)
+   el móvil solo recibe avisos de servicio, no las novedades: también. Recibe lo que devuelve useAvisosNovedades y dice
    'activos', 'inactivos', 'comprobando' (aún no se sabe: la ventana espera un
    poco) o 'desconocido' (sin cuenta o con un error: sale, mejor recordar). */
 function estadoAvisosMovil(avisos) {
   if (!avisos || avisos.activo !== true) return 'desconocido';
   const movil = avisos.movil;
-  if (esObjeto(movil)) return movil.activo === true && movil.estado !== 'sin-permiso' ? 'activos' : 'inactivos';
+  if (esObjeto(movil)) {
+    return movil.activo === true && movil.estado !== 'sin-permiso' && avisos.servidor?.novedades === true ? 'activos' : 'inactivos';
+  }
   return avisos.errorCarga ? 'desconocido' : 'comprobando';
 }
 /* ¿Sale el recuadro? Siempre, salvo con las notificaciones activas en este

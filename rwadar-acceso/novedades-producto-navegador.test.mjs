@@ -59,8 +59,8 @@ const AVISOS_ACTIVOS = () => {
   const suscripcion = { endpoint: 'https://push.ejemplo.test/rwadar', toJSON() { return { endpoint: this.endpoint, keys: { p256dh: 'p', auth: 'a' } }; } };
   ServiceWorkerContainer.prototype.getRegistration = async () => ({ pushManager: { getSubscription: async () => suscripcion } });
 };
-const TEXTOS_REC = { es: ['Activa los avisos', 'Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.', 'Activar avisos'],
-  en: ['Turn on alerts', 'News reaches your phone, like a WhatsApp message. It is free and you can turn them off whenever you like.', 'Turn on alerts'] };
+const TEXTOS_REC = { es: ['Activa los avisos', 'Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.', 'Activar avisos'],
+  en: ['Turn on alerts', 'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.', 'Turn on alerts'] };
 
 /* Contraste WCAG entre el color del texto y el primer fondo opaco de debajo. */
 const CONTRASTE = `(sel) => {

@@ -247,7 +247,8 @@ function datosConAlmacen(inicial = {}, fallos = {}) {
     for (const clave of Object.keys(require.cache)) if (clave.startsWith(lib)) delete require.cache[clave];
   }
 }
-const CLAVE_VISTA = 'rwadar.editorial.novedades.vista.v1';
+const CLAVE_VISTA = 'rwadar.editorial.novedades.vista.v2';
+const CLAVE_VISTA_V1 = 'rwadar.editorial.novedades.vista.v1';
 
 test('novedades · lo visto se guarda en el móvil por versión, nunca baja a una anterior y se borra con los datos del dispositivo', async () => {
   const { datos, mapa } = datosConAlmacen({ 'otra.app': 'conservar' });
@@ -260,15 +261,51 @@ test('novedades · lo visto se guarda en el móvil por versión, nunca baja a un
   assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12');
   assert.equal(await datos.marcarNovedadesVistas('2026-11-12.2'), true);
   assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12.2');
+  // También en la clave antigua, por si se vuelve a una versión anterior de la app.
+  assert.equal(mapa.get(CLAVE_VISTA_V1), '2026-11-12.2');
   // Solo una versión, nada más: ni datos de la persona ni basura.
   assert.equal(await datos.marcarNovedadesVistas('<script>'), false);
   assert.equal(await datos.marcarNovedadesVistas({ correo: 'ana@ejemplo.test' }), false);
   assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12.2');
   mapa.set(CLAVE_VISTA, 'basura');
+  mapa.set(CLAVE_VISTA_V1, 'basura');
   assert.deepEqual(await datos.leerNovedadesVistas(), { ok: true, version: null });
   await datos.borrarDatosDispositivo();
   assert.equal(mapa.has(CLAVE_VISTA), false);
+  assert.equal(mapa.has(CLAVE_VISTA_V1), false);
   assert.equal(mapa.get('otra.app'), 'conservar');
+});
+
+/* La OTA se aplica en el arranque siguiente: el primero aún corre la versión
+   vieja (sin el recuadro), que pudo enseñar la 2026-11-14.2 y darla por vista
+   en la v1. Esa marca no cuenta: la ventana sale una vez más, con el recuadro. */
+test('novedades · lo que una versión vieja de la app dio por visto desde la 2026-11-14.2 no cuenta: sale una vez más, con el recuadro', async () => {
+  // Sin la v2, la v1 se respeta hasta antes del recuadro.
+  for (const [v1, leida] of [['2026-11-12', '2026-11-12'], ['2026-11-14', '2026-11-14'], ['2026-11-14.2', '2026-11-14'], ['2026-11-20', '2026-11-14']]) {
+    const { datos } = datosConAlmacen({ [CLAVE_VISTA_V1]: v1 });
+    assert.deepEqual(await datos.leerNovedadesVistas(), { ok: true, version: leida }, v1);
+  }
+  // Con la v2, manda la v2.
+  const conV2 = datosConAlmacen({ [CLAVE_VISTA_V1]: '2026-11-14.2', [CLAVE_VISTA]: '2026-11-14.2' });
+  assert.deepEqual(await conV2.datos.leerNovedadesVistas(), { ok: true, version: '2026-11-14.2' });
+
+  // De punta a punta, con el hook: la versión vieja la marcó vista en la v1.
+  const { datos, mapa } = datosConAlmacen({ [CLAVE_VISTA_V1]: '2026-11-14.2' });
+  const app = arrancar({ avisos: 'inactivos', vista: datos.leerNovedadesVistas, marcar: datos.marcarNovedadesVistas });
+  let s = await app.asentar();
+  assert.equal(s.ventana, true, 'sale una vez más');
+  assert.equal(s.datos.version, '2026-11-14.2');
+  assert.equal(s.recordarAvisos, true, 'ahora con el recuadro');
+  s.entendido();
+  s = await app.asentar();
+  assert.equal(s.ventana, false);
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-14.2');
+  assert.equal(mapa.get(CLAVE_VISTA_V1), '2026-11-14.2');
+  app.desmontar();
+  // En el arranque siguiente ya no sale.
+  const otra = arrancar({ avisos: 'inactivos', vista: datos.leerNovedadesVistas, marcar: datos.marcarNovedadesVistas });
+  assert.equal((await otra.asentar()).ventana, false);
+  otra.desmontar();
 });
 
 test('novedades · si el móvil no deja leer o escribir, no se rompe nada (y sin leer, la ventana no sale sola)', async () => {
@@ -374,13 +411,13 @@ function cargarComponente(react) {
 
 /* El hook, como lo usa App: cada «arranque» es un hook nuevo con su almacén. */
 function arrancar({ vista = { ok: true, version: null }, cargar = async () => ({ datos: n.RESPALDO, origen: 'respaldo' }), listo = true,
-  avisos = 'inactivos', esperaAvisosMs = 10000 } = {}) {
+  avisos = 'inactivos', esperaAvisosMs = 10000, marcar = null } = {}) {
   const h = crearReact();
   const { modulo } = cargarComponente(h.react);
   const marcadas = [];
   const estado = { listo, avisos };
   const pintar = () => h.pintar(() => modulo.useNovedadesRwadar({ listo: estado.listo, esperaMs: 0, cargar, avisos: estado.avisos, esperaAvisosMs,
-    leerVista: typeof vista === 'function' ? vista : async () => vista, marcarVista: async (v) => { marcadas.push(v); return true; } }));
+    leerVista: typeof vista === 'function' ? vista : async () => vista, marcarVista: async (v) => { marcadas.push(v); return marcar ? marcar(v) : true; } }));
   return {
     marcadas, estado, pintar, desmontar: h.desmontar,
     async asentar() { let s; for (let i = 0; i < 6; i++) { s = pintar(); await esperar(); } return pintar(); },
@@ -471,13 +508,17 @@ test('novedades · «Ver en detalle» abre el detalle y cuenta como vista; desde
    --------------------------------------------------------------------- */
 test('novedades · avisos del móvil: lo que enseña Perfil › Avisos decide el recuadro; si no se sabe, sale', () => {
   const e = n.estadoAvisosMovil;
-  assert.equal(e({ activo: true, movil: { estado: 'activo', activo: true } }), 'activos');
+  const servidor = { novedades: true };
+  assert.equal(e({ activo: true, servidor, movil: { estado: 'activo', activo: true } }), 'activos');
   // Activadas pero con el envío en pausa: no se insiste.
-  assert.equal(e({ activo: true, movil: { estado: 'servicio-pendiente', activo: true } }), 'activos');
+  assert.equal(e({ activo: true, servidor, movil: { estado: 'servicio-pendiente', activo: true } }), 'activos');
   // Con el permiso quitado en los ajustes no llegan: se recuerda.
-  assert.equal(e({ activo: true, movil: { estado: 'sin-permiso', activo: true } }), 'inactivos');
+  assert.equal(e({ activo: true, servidor, movil: { estado: 'sin-permiso', activo: true } }), 'inactivos');
+  // Con «Avisos de novedades» apagado, el móvil solo recibe avisos de servicio: se recuerda.
+  assert.equal(e({ activo: true, servidor: { novedades: false }, movil: { estado: 'activo', activo: true } }), 'inactivos');
+  assert.equal(e({ activo: true, servidor: null, movil: { estado: 'activo', activo: true } }), 'inactivos');
   for (const estado of ['disponible', 'no-registrado', 'denegado', 'requiere-version', 'no-disponible', 'servicio-pendiente']) {
-    assert.equal(e({ activo: true, movil: { estado, activo: false } }), 'inactivos', estado);
+    assert.equal(e({ activo: true, servidor, movil: { estado, activo: false } }), 'inactivos', estado);
   }
   // Aún sin respuesta: se comprueba (la ventana espera un poco). Con un error o sin cuenta: no se sabe.
   assert.equal(e({ activo: true, movil: null, cargando: true }), 'comprobando');
@@ -630,7 +671,7 @@ test('novedades · el recuadro «Activa los avisos»: debajo de los puntos, ante
   assert.ok(rec, 'sale el recuadro');
   const [tit] = nodos(rec).filter((x) => x?.props?.accessibilityRole === 'header');
   assert.deepEqual(textos(tit), ['Activa los avisos']);
-  assert.ok(textos(rec).includes('Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.'));
+  assert.ok(textos(rec).includes('Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.'));
   assert.equal(deTipo(rec, 'Svg').length, 1, 'con el icono de los avisos');
   const boton = porId(rec, 'novedadesActivarAvisos');
   assert.equal(boton.props.accessibilityRole, 'button');
@@ -712,7 +753,7 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
     assert.ok(!v.some((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t)), `queda castellano: ${v.filter((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t))}`);
     const conRec = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO, recordarAvisos: true }).arbol;
     const r = textos(porId(conRec, 'novedadesRecordatorio'));
-    assert.deepEqual(r, ['Turn on alerts', 'News reaches your phone, like a WhatsApp message. It is free and you can turn them off whenever you like.', 'Turn on alerts']);
+    assert.deepEqual(r, ['Turn on alerts', 'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.', 'Turn on alerts']);
     assert.equal(porId(conRec, 'novedadesActivarAvisos').props.accessibilityLabel, 'Turn on alerts');
     assert.equal(porId(conRec, 'novedadesActivarAvisos').props.accessibilityHint, 'Closes this window and takes you to Profile › Alerts');
 
@@ -731,7 +772,7 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
   const fuente = leer('componentes', 'NovedadesRwadar.js');
   const fijas = ['Ver en detalle', 'Entendido', 'Abre las novedades explicadas paso a paso', 'Cierra esta ventana. Puedes volver a verla en Perfil.',
     'Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.', 'Ir a Perfil › Avisos', 'Todas las novedades anteriores, en la web', 'Volver',
-    'Activa los avisos', 'Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.', 'Activar avisos',
+    'Activa los avisos', 'Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.', 'Activar avisos',
     'Cierra esta ventana y te lleva a Perfil › Avisos'];
   for (const t of fijas) { assert.ok(fuente.includes(t), `ya no está: ${t}`); assert.ok(Object.hasOwn(en, t), `sin traducción: ${t}`); }
   assert.equal(leer('lib', 'idioma-en.js'), fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/idioma-en-20261022.js'), 'utf8'));
@@ -779,7 +820,8 @@ test('novedades · privacidad de la app: la marca de «ya visto» se explica, si
   assert.ok(app.includes(frase));
   assert.ok(Object.hasOwn(en, frase));
   const datos = leer('lib', 'datos.js');
-  assert.match(datos, /const NOVEDADES_VISTAS = `\$\{PREFIJO\}novedades\.vista\.v1`;\s*CLAVES_LOCALES\.push\(NOVEDADES_VISTAS\);/);
+  assert.match(datos, /const NOVEDADES_VISTAS = `\$\{PREFIJO\}novedades\.vista\.v2`;\s*CLAVES_LOCALES\.push\(NOVEDADES_VISTAS\);/);
+  assert.match(datos, /const NOVEDADES_VISTAS_V1 = `\$\{PREFIJO\}novedades\.vista\.v1`;[\s\S]{0,200}CLAVES_LOCALES\.push\(NOVEDADES_VISTAS_V1\);/);
   // El módulo no lee nada de la cuenta ni manda cookies.
   const modulo = leer('lib', 'novedades-rwadar.js');
   const codigo = modulo.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');

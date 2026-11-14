@@ -55,7 +55,7 @@
       ctaTit: '¿Quieres enterarte de las próximas novedades?',
       ctaTexto: 'Activa los avisos en Perfil › Avisos. Es gratis y los puedes quitar cuando quieras.',
       ctaBoton: 'Ir a Perfil › Avisos', tituloPagina: t => t + ' · RWAdar',
-      recTit: 'Activa los avisos', recTexto: 'Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.',
+      recTit: 'Activa los avisos', recTexto: 'Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.',
       recBoton: 'Activar avisos',
     }),
     en: Object.freeze({
@@ -66,7 +66,7 @@
       ctaTit: 'Want to hear about what comes next?',
       ctaTexto: 'Turn on alerts in Profile › Alerts. It is free and you can turn them off whenever you like.',
       ctaBoton: 'Go to Profile › Alerts', tituloPagina: t => t + ' · RWAdar',
-      recTit: 'Turn on alerts', recTexto: 'News reaches your phone, like a WhatsApp message. It is free and you can turn them off whenever you like.',
+      recTit: 'Turn on alerts', recTexto: 'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.',
       recBoton: 'Turn on alerts',
     }),
   });

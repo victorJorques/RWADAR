@@ -3949,8 +3949,8 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
       ui.includes('registro.pushManager.getSubscription()') && !/requestPermission|pushManager\.subscribe|\.subscribe\(/.test(ui) &&
       ui.indexOf("recTit: 'Activa los avisos'") > 0 && ui.indexOf("recTit: 'Turn on alerts'") > 0 &&
       [['Activa los avisos', 'Turn on alerts'], ['Activar avisos', 'Turn on alerts'],
-        ['Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.',
-          'News reaches your phone, like a WhatsApp message. It is free and you can turn them off whenever you like.']]
+        ['Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.',
+          'Get RWAdar news on your phone, like a WhatsApp message. It is free and you can turn alerts off whenever you like.']]
         .every(([es, en]) => enComunRec[es] === en && ui.includes(`'${es}'`) && ui.includes(`'${en}'`)) &&
       /\.nov-rec-boton\{[^}]*min-height:48px[^}]*\}/.test(lee('assets/novedades-producto-20261112.css')) &&
       /\.nov-rec-boton:focus-visible\{outline:2px solid var\(--senal\)/.test(lee('assets/novedades-producto-20261112.css')));

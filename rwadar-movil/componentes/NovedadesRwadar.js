@@ -159,7 +159,7 @@ function RecordatorioAvisos({ onActivar }) {
         <View style={s.puntoIcono}><IconoNovedad nombre="notificacion" /></View>
         <Text style={s.recordatorioTit} accessibilityRole="header">Activa los avisos</Text>
       </View>
-      <Text style={s.recordatorioTxt}>Te llegan las novedades al móvil, como un WhatsApp. Es gratis y los quitas cuando quieras.</Text>
+      <Text style={s.recordatorioTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
       <Pressable testID="novedadesActivarAvisos" onPress={() => onActivar?.()}
         accessibilityRole="button" accessibilityLabel="Activar avisos"
         accessibilityHint="Cierra esta ventana y te lleva a Perfil › Avisos"
