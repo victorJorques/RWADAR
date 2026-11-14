@@ -15,3 +15,8 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
   publicar la web y enviar la OTA, si pasan las compuertas (ver `AGENTS.md`).
 - Víctor prefiere explicaciones en lenguaje llano y ver las cosas funcionando
   (salida real, capturas), no la intención.
+- **Una sola revisión del trabajo** (orden de Víctor del 14/11/2026: «que se
+  revise el trabajo pero 1 vez, no mil»). Nada de revisar el diseño, luego la
+  construcción, luego verificar los arreglos: se construye, se revisa una vez,
+  se arregla lo que salga y se entrega. Las pruebas automáticas (`npm test`, la
+  CI) y el sello se mantienen. Prioridad: entregar rápido.

@@ -1,6 +1,6 @@
 // Public reading and private account API. No passwords, tokens or user data are logged.
 import { crearCarteraServidor } from './cartera-servidor.mjs';
-import { crearTokenizacionServidor } from './tokenizacion-servidor.mjs';
+import { crearTokenizacionServidor, crearTokenizacionDirectoServidor } from './tokenizacion-servidor.mjs';
 import { crearWebpushServidor } from './webpush-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
@@ -521,6 +521,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
   }
   const atenderCartera = crearCarteraServidor({ api, sesion: sesionPeticion, respuesta });
   const atenderTokenizacion = crearTokenizacionServidor({ fetchImpl, ahora, cache: cacheTokenizacion, respuesta, leerTexto });
+  const atenderDirecto = crearTokenizacionDirectoServidor({ api, ahora, respuesta, leerTexto });
   const webpush = crearWebpushServidor({ fetchImpl, ahora, plazoMs: plazoWebpushMs, api, cuerpoJSON, respuesta, reservarIntento });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
@@ -544,6 +545,13 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     if (path === '/api/tokenizacion') {
       const activo = context.activo || (env?.ASSETS ? ruta => env.ASSETS.fetch(new Request(ruta, { method: 'GET' })) : null);
       return atenderTokenizacion({ request, url, activo, waitUntil: context.waitUntil });
+    }
+    // El gráfico en directo (14/11/2026): lo que guarda la base (migración 35),
+    // leído con la clave publicable y servido desde la memoria. Público, sin
+    // sesión, solo GET y sin parámetros.
+    if (path === '/api/tokenizacion/directo') {
+      const activo = context.activo || (env?.ASSETS ? ruta => env.ASSETS.fetch(new Request(ruta, { method: 'GET' })) : null);
+      return atenderDirecto({ request, url, env, activo });
     }
     // The catalog, the Academy index, sources, RSS and SEO pages are public;
     // Academy lessons may require an account (puertaAcademy). Only the

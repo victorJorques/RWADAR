@@ -36,6 +36,8 @@
 .mk-aviso-tokens{color:var(--tx-2)}
 /* Una pestaña fina con tokens fuera (13/11/2026): su línea acaba algo por debajo de la cifra grande y se dice. */
 .mk-aviso-fuera{color:var(--tx-2)}
+/* El directo encendido que no se puede usar (14/11/2026): el gráfico es la copia publicada y se dice hasta cuándo llega. */
+.mk-aviso-directo{color:var(--tx-2)}
 /* El total de la categoría, en gris tras la nota corta bajo el gráfico (en la cabecera empujaba el gráfico fuera de la primera pantalla). */
 .mk-total-cat{color:var(--tx-3)}
 

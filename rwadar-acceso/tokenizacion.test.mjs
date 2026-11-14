@@ -217,9 +217,9 @@ test('la web lleva una copia exacta del motor, la semilla del histórico y de la
   // El script no usa innerHTML ni habla con nadie más que con su propio sitio.
   const js = fs.readFileSync(path.join(RAIZ, 'rwadar-site/assets/mercado-20261111.js'), 'utf8');
   assert.doesNotMatch(js, /innerHTML|insertAdjacentHTML|coingecko\.com\/api|api\.coingecko/);
-  // Y la serie fina (13/11/2026), de su propio sitio como las demás.
+  // Y la serie fina (13/11/2026) y el directo (14/11/2026), de su propio sitio como las demás.
   assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/api/tokenizacion', '/datos/tokenizacion-historico.json', '/datos/tokenizacion-serie.json',
-    '/datos/tokenizacion-serie-fina.json']);
+    '/datos/tokenizacion-serie-fina.json', '/api/tokenizacion/directo']);
 });
 
 /* ---- Chromium: la portada con la sección, en móvil y en escritorio ---- */

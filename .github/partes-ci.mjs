@@ -14,11 +14,11 @@
 //                                         primer fallo, como «&&»)
 //
 // Partes:
-//   bateria-1 … bateria-5  las pruebas de rwadar-app (npm run test:db), una
+//   bateria-1 … bateria-6  las pruebas de rwadar-app (npm run test:db), una
 //       a una, y el bloque web (test:web, test:qr, test:tools y test:acceso,
 //       juntos y en su orden: las de acceso y probar-orden leen el
 //       rwadar-publicado/ que genera test:web). Se reparten por lo que tarda
-//       cada una (PESOS) para que las cinco acaben a la vez. Son cinco para
+//       cada una (PESOS) para que las seis acaben a la vez. Son seis (desde el 14/11/2026, con el directo y las noticias automáticas) para
 //       que cada parte quede bien por debajo del minuto (GitHub cobra cada
 //       trabajo por minutos enteros).
 //   movil   npm run test:mobile (lleva sus propias dependencias).
@@ -34,7 +34,7 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 
-export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4', 'bateria-5'];
+export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4', 'bateria-5', 'bateria-6'];
 
 // Segundos que tarda cada orden en GitHub (estimados el 13/11/2026: lo medido
 // en local sin Chromium, como en CI, por 1,1; el bloque web, medido en CI).
@@ -77,6 +77,10 @@ export const PESOS = Object.freeze({
   'node probar-webpush-supabase.mjs': 5.5,
   'node probar-pie-sin-nombre.mjs': 3.5,
   'node probar-admin-huella.mjs': 14,
+  // Gráfico en directo (migración 35, 14/11/2026): cada uno, menos de 25 s.
+  'node probar-mercado-directo-regla.mjs': 7,
+  'node probar-mercado-directo-base.mjs': 8,
+  'node probar-mercado-directo-flujo.mjs': 6,
   'node --test probar-mapa-buscar.test.cjs': 0.2,
   'node --test ../.claude/skills/investigacion-catalogo/entrega/motor.test.mjs ../.claude/skills/investigacion-catalogo/entrega/flujo.test.mjs': 5.5,
   // Noticias automáticas (14/11/2026): sus pruebas (la de sello.test.mjs hace

@@ -154,7 +154,7 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   const publicadas = fichasPublicadas(fichas);
   const { acceso, lecciones } = academyPublicada(academy);
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
-  const importTokenizacion = "import { crearTokenizacionServidor } from './tokenizacion-servidor.mjs';";
+  const importTokenizacion = "import { crearTokenizacionServidor, crearTokenizacionDirectoServidor } from './tokenizacion-servidor.mjs';";
   const importWebpush = "import { crearWebpushServidor } from './webpush-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');

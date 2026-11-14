@@ -46,6 +46,8 @@ const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
 const paginasFichas = require('../rwadar-fichas-manifiesto.js');
 const {ARCHIVOS_PUBLICABLES, PAGINAS_SECCIONES} = require('../rwadar-publicacion-segura.js');
+const tokenizacionModelo = require('../rwadar-movil/lib/tokenizacion.js');
+const { juzgarDirecto } = await import('./juzgar-directo.mjs');
 
 const base = String(process.argv[2] || '').replace(/\/$/, '');
 const prueba = process.env.RWADAR_COMPROBAR_LOCAL === '1' && /^http:\/\/127\.0\.0\.1:\d+$/.test(base);
@@ -338,6 +340,14 @@ let generadoFina = null, generadoDiaria = null;
 try { generadoFina = JSON.parse(serieFina.texto).generado; generadoDiaria = JSON.parse(serieMercado.texto).generado; } catch {}
 ok('/datos/tokenizacion-serie-fina.json es el del build y casa con la diaria', serieFina.estado === 200 &&
   serieFina.texto === leerPublicado('datos/tokenizacion-serie-fina.json') && typeof generadoFina === 'string' && generadoFina === generadoDiaria);
+// El gráfico en directo (14/11/2026, migración 35): 200 válido, 404 directo_apagado o 503 con un
+// código conocido (este, con un aviso y sin fallar: .github/juzgar-directo.mjs).
+{
+  const directo = await pedir('/api/tokenizacion/directo');
+  const juicio = juzgarDirecto(directo.estado, directo.texto, tokenizacionModelo);
+  if (juicio.aviso && juicio.bien) console.log(`  AVISO ${juicio.aviso}`);
+  ok(`/api/tokenizacion/directo responde lo esperado (${directo.estado}${juicio.bien ? '' : ': ' + juicio.aviso})`, juicio.bien);
+}
 // «Novedades de RWAdar» (12/11/2026): lo que leen la ventana de Inicio, /novedades-rwadar/ y la app.
 const novedadesProducto = await pedir('/datos/novedades-producto.json');
 ok('/datos/novedades-producto.json es el del build', novedadesProducto.estado === 200 &&

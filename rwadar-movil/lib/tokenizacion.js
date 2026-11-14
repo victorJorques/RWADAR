@@ -770,6 +770,200 @@ function unirSerieFina(diaria, fina) {
   FINAS.set(unida, sola.generado);
   return { ...sola, fina: unida };
 }
+/* =====================================================================
+   El gráfico en directo (14/11/2026): Supabase pide a CoinGecko cada 5
+   minutos (migración 35) y el servidor de la web lo sirve en
+   /api/tokenizacion/directo. Las series son las mismas que las de
+   tokenizacion-serie-fina.json (la misma regla, el mismo validador), pero
+   no son de la misma ejecución que la diaria publicada: se unen con
+   unirDirecto y no con unirSerieFina. Contrato:
+   docs/tareas/MERCADO-DIRECTO-2026-11-14.md.
+   ===================================================================== */
+const DIRECTO_MAX_MS = 20 * MIN_MS;
+const DIRECTO_FUTURO_MS = 5 * MIN_MS;
+const COSTURA_MAX = 0.05;
+const MAX_SIN_LECTURA = 20;
+/* Los cubos sin lectura del directo de una serie: [[desde, hasta], …],
+   cada uno alineado a su paso, en orden y sin solaparse. */
+function validarSinLectura(lista, r, donde) {
+  exigir(Array.isArray(lista) && lista.length <= MAX_SIN_LECTURA, donde);
+  let antes = -Infinity;
+  return lista.map(x => {
+    const a = Array.isArray(x) && x.length === 2 ? msMinuto(x[0]) : null, b = a !== null ? msMinuto(x[1]) : null;
+    exigir(a !== null && b !== null && a % r.pasoMs === 0 && b % r.pasoMs === 0 && a <= b && a > antes, donde);
+    antes = b;
+    return [x[0], x[1]];
+  });
+}
+/* Del documento compacto de la base (rwadar_mercado.directo) al formato de
+   tokenizacion-serie-fina.json, validado con validarSerieFina tal cual, más
+   los cubos sin lectura y la hora de la diaria que usa la base. Lanza si
+   la forma no es exactamente la esperada. */
+function directoAFina(doc) {
+  exigir(esObjeto(doc) && Object.keys(doc).sort().join() === 'diaria,diariaLeida,generado,series,tokens,v' && doc.v === 1, 'directo: forma no válida');
+  exigir(typeof doc.generado === 'string' && ISO.test(doc.generado) && typeof doc.diaria === 'string' && ISO.test(doc.diaria) &&
+    (doc.diariaLeida === null || (typeof doc.diariaLeida === 'string' && ISO.test(doc.diariaLeida))), 'directo: horas no válidas');
+  exigir(esObjeto(doc.series) && Object.keys(doc.series).sort().join() === '1h,5m', 'directo: series no válidas');
+  const series = {}, sinLectura = {};
+  for (const clave of ORDEN_FINAS) {
+    const x = doc.series[clave], r = RESOLUCIONES[clave], donde = 'directo ' + clave;
+    if (x === null) { series[clave] = null; sinLectura[clave] = []; continue; }
+    exigir(esObjeto(x) && Object.keys(x).sort().join() === 'arrastre,desde,fuera,largos,n,sinLectura,valorFuera,valores', donde + ': forma no válida');
+    const desde = msMinuto(x.desde);
+    exigir(desde !== null && desde % r.pasoMs === 0, donde + ': inicio no válido');
+    exigir(Array.isArray(x.valores) && x.valores.length >= 2 && x.valores.length <= r.maxPuntos &&
+      x.valores.every(v => Number.isInteger(v) && valorCreible(v)), donde + ': valores no válidos');
+    exigir(Array.isArray(x.n) && x.n.length >= 1 && x.n.length <= r.maxPuntos && x.n.every(t => Array.isArray(t) && t.length === 2 &&
+      Number.isInteger(t[0]) && t[0] >= 1 && Number.isInteger(t[1]) && t[1] >= 1 && t[1] <= 250), donde + ': tramos no válidos');
+    exigir(x.n.reduce((s, t) => s + t[0], 0) === x.valores.length, donde + ': los tramos no cuadran con los valores');
+    const puntos = [];
+    let k = 0;
+    for (const [veces, tokens] of x.n) for (let j = 0; j < veces; j++, k++) puntos.push([isoMinuto(desde + k * r.pasoMs), x.valores[k], tokens]);
+    series[clave] = { paso: r.pasoMs / 1000, arrastre: x.arrastre, fuera: x.fuera, valorFuera: x.valorFuera, largos: x.largos, puntos };
+    sinLectura[clave] = validarSinLectura(x.sinLectura, r, donde + ': cubos sin lectura no válidos');
+  }
+  const fina = validarSerieFina({ version: 1, fuente: FUENTE.nombre, categoria: SERIE.categoria, generado: doc.generado, tokens: doc.tokens, series });
+  return { fina, sinLectura, diaria: doc.diaria, diariaLeida: doc.diariaLeida };
+}
+/* Lo que sirve /api/tokenizacion/directo: { version: 1, fina, sinLectura }.
+   Devuelve { fina, sinLectura } validados o lanza. Sin ninguna serie no hay
+   nada que pintar: no vale (revisión del 14/11/2026; así el servidor da 503
+   y lo ven la alarma diaria y comprobar-publicado, no un 200 vacío). */
+function validarDirecto(r) {
+  exigir(esObjeto(r) && Object.keys(r).sort().join() === 'fina,sinLectura,version' && r.version === 1, 'directo: forma no válida');
+  const fina = validarSerieFina(r.fina);
+  exigir(ORDEN_FINAS.some(c => fina.series[c]), 'directo: sin ninguna serie');
+  exigir(esObjeto(r.sinLectura) && Object.keys(r.sinLectura).sort().join() === '1h,5m', 'directo: cubos sin lectura no válidos');
+  const sinLectura = {};
+  for (const clave of ORDEN_FINAS) {
+    sinLectura[clave] = fina.series[clave] ? validarSinLectura(r.sinLectura[clave], RESOLUCIONES[clave], 'directo: cubos sin lectura no válidos') : [];
+  }
+  return { fina, sinLectura };
+}
+/* Cuánto tiempo ha pasado desde que llegó una respuesta (revisión del
+   14/11/2026): performance.now() de algunos móviles se para mientras el
+   aparato duerme, y Date.now() salta si cambia la hora. Vale el mayor de
+   los dos (el de Date.now(), solo si no va hacia atrás). */
+function transcurridoMs({ perf0, perf1, fecha0, fecha1 }) {
+  const p = Number.isFinite(perf0) && Number.isFinite(perf1) ? Math.max(0, perf1 - perf0) : 0;
+  const d = Number.isFinite(fecha0) && Number.isFinite(fecha1) && fecha1 - fecha0 >= 0 ? fecha1 - fecha0 : 0;
+  return Math.max(p, d);
+}
+/* La edad del dato en directo con el reloj del servidor (la cabecera Date
+   de su respuesta) más lo transcurrido desde que llegó; solo sin Date, con
+   el reloj del aparato. Un móvil con la hora mal puesta no lo rechaza. */
+function edadDirecto({ generado, fechaServidor = null, transcurrido = 0, ahora = Date.now() }) {
+  const g = Date.parse(generado), s = typeof fechaServidor === 'string' ? Date.parse(fechaServidor) : fechaServidor;
+  if (!Number.isFinite(g)) return NaN;
+  return Number.isFinite(s) ? s - g + Math.max(0, transcurrido || 0) : ahora - g;
+}
+/* El punto de una serie fina del cubo que contiene «ms», o null. */
+function puntoDelCubo(x, clave, ms) {
+  if (!x) return null;
+  const paso = RESOLUCIONES[clave].pasoMs, c = Math.floor(ms / paso) * paso;
+  const primero = msMinuto(x.puntos[0][0]), i = (c - primero) / paso;
+  return Number.isInteger(i) && i >= 0 && i < x.puntos.length ? x.puntos[i] : null;
+}
+/* La diaria publicada con el directo: { serie, motivo } (serie null y el
+   motivo si no se puede usar; entonces se usa el archivo publicado).
+   1. Las dos valen; si no, 'no_valido'.
+   2. Mismos tokens; si no, 'no_casa' (pasa unos minutos tras publicar una
+      diaria con otra lista: sin aviso).
+   3. El directo no es más viejo que la diaria ('no_casa') y tiene como
+      mucho 20 minutos y no más de 5 «del futuro», medidos con edadMs
+      (edadDirecto); si no, 'atrasado'.
+   4. «ultimo»: el último punto de la más fina más su valorFuera (la suma
+      de todos los tokens con su último dato).
+   5. Freno del 25 % frente al último punto de la diaria y costura: el
+      punto del directo del cubo de «generado» de la diaria (de la de 5
+      minutos o, si no lo tiene, de la horaria), más su valorFuera, no se
+      separa más de un 5 % del último punto de la diaria (mismo instante y
+      mismos tokens: medido, un 0,02-0,03 %). Si no, 'costura'.
+   6. «hoy» es el día UTC de ultimo (nunca la hora del aparato). Los días
+      de la diaria anteriores a hoy se quedan; si su último punto es de un
+      día anterior a hoy, vale como los días que faltan: cada punto de un
+      día D pasado es el valor justo antes de las 00:00 UTC de D, el del
+      cubo de las 23:00 UTC del día anterior de la horaria del directo (más
+      su valorFuera); si la horaria no lo tiene, ese día falta (y el último
+      de la diaria se queda como estaba). El punto de hoy es ultimo.
+   7. La unida lleva el «generado» del directo, la fina con origen
+      'directo', ultimo y los cubos sin lectura de cada serie. */
+function unirDirecto(diaria, directo, { edadMs } = {}) {
+  const no = motivo => ({ serie: null, motivo });
+  let s, d;
+  try { s = validarSerie(diaria); d = validarDirecto(directo); } catch { return no('no_valido'); }
+  const { fina: _anterior, ...sola } = s;
+  const f = d.fina;
+  if (f.tokens.length !== sola.tokens.length || !f.tokens.every(t => sola.tokens.includes(t))) return no('no_casa');
+  if (Date.parse(f.generado) < Date.parse(sola.generado)) return no('no_casa');
+  if (!Number.isFinite(edadMs) || edadMs > DIRECTO_MAX_MS || edadMs < -DIRECTO_FUTURO_MS) return no('atrasado');
+  const fina = ORDEN_FINAS.find(c => f.series[c]);
+  if (!fina || !sola.puntos.length) return no('no_valido');
+  const xf = f.series[fina], u = xf.puntos[xf.puntos.length - 1];
+  const ultimo = Object.freeze({ t: u[0], ms: msMinuto(u[0]), fecha: u[0].slice(0, 10), valor: u[1] + xf.valorFuera, tokens: f.tokens.length });
+  const uDiaria = sola.puntos[sola.puntos.length - 1];
+  if (!(Math.abs(ultimo.valor / uDiaria.valor - 1) < CAMBIO_24H_MAX / 100)) return no('costura');
+  const gDiaria = Date.parse(sola.generado);
+  const costura = ['5m', '1h'].map(c => [c, puntoDelCubo(f.series[c], c, gDiaria)]).find(([, p]) => p);
+  if (!costura || Math.abs((costura[1][1] + f.series[costura[0]].valorFuera) / uDiaria.valor - 1) > COSTURA_MAX) return no('costura');
+  // Los días: hoy (UTC) es el de ultimo.
+  const hoy = ultimo.fecha, horaria = f.series['1h'];
+  const delDia = fecha => {
+    const p = puntoDelCubo(horaria, '1h', msFecha(fecha) - HORA_MS);
+    return p ? { fecha, valor: p[1] + horaria.valorFuera, tokens: p[2] + horaria.fuera.length } : null;
+  };
+  const puntos = sola.puntos.filter(p => p.fecha < hoy).map((p, i, todos) => (i === todos.length - 1 && i === sola.puntos.length - 1 ? delDia(p.fecha) || p : p));
+  const ultimaFecha = puntos.length ? puntos[puntos.length - 1].fecha : null;
+  if (ultimaFecha) {
+    for (let ms = msFecha(ultimaFecha) + DIA_MS; ms < msFecha(hoy); ms += DIA_MS) { const p = delDia(fechaDe(ms)); if (p) puntos.push(p); }
+  }
+  puntos.push({ fecha: hoy, valor: ultimo.valor, tokens: ultimo.tokens });
+  const desde = fechaDe(msFecha(hoy) - SERIE.dias * DIA_MS);
+  const recortados = puntos.filter(p => p.fecha >= desde).slice(-SERIE.maxPuntos);
+  const series = {};
+  for (const clave of ORDEN_FINAS) {
+    const x = f.series[clave];
+    if (!x) continue;
+    series[clave] = Object.freeze({ clave, pasoMs: RESOLUCIONES[clave].pasoMs, arrastre: x.arrastre, origen: 'directo',
+      fuera: Object.freeze(x.fuera.slice()), valorFuera: x.valorFuera, largos: Object.freeze(x.largos.slice()),
+      sinLectura: Object.freeze(d.sinLectura[clave].map(t => Object.freeze(t.slice()))),
+      puntos: Object.freeze(x.puntos.map(([t, valor, tokens]) => Object.freeze({ t, ms: msMinuto(t), fecha: t.slice(0, 10), valor, tokens }))) });
+  }
+  const unida = Object.freeze({ generado: f.generado, origen: 'directo', ultimo, series: Object.freeze(series) });
+  FINAS.set(unida, f.generado);
+  let serie;
+  try { serie = validarSerie({ ...sola, generado: f.generado, puntos: recortados, fina: unida }); } catch { return no('no_valido'); }
+  return { serie, motivo: null };
+}
+/* El motivo de una respuesta de /api/tokenizacion/directo que no es 200.
+   Cualquier 404 es «apagado», sin aviso (revisión del 14/11/2026): también
+   el {"error":"ruta_no_permitida"} de una web sin la ruta (la OTA antes que
+   la web, o una web anterior publicada). comprobar-publicado sigue
+   exigiendo directo_apagado. */
+const MOTIVOS_DIRECTO = Object.freeze({ directo_apagado: 'apagado', directo_sin_datos: 'sin_datos', directo_no_valido: 'no_valido',
+  directo_no_casa: 'no_casa', directo_atrasado: 'atrasado', directo_no_responde: 'no_responde' });
+function motivoDirecto(estado, cuerpo) {
+  const m = esObjeto(cuerpo) && typeof cuerpo.error === 'string' ? MOTIVOS_DIRECTO[cuerpo.error] : null;
+  if (estado === 404) return 'apagado';
+  if (estado === 503 && m && m !== 'apagado') return m;
+  return 'red';
+}
+/* El aviso cuando el directo está encendido y no se puede usar: nunca con
+   'apagado' (apagado a propósito) ni con 'no_casa' (pasa unos minutos tras
+   cada publicación). «serie» es la que se pinta (el archivo publicado). */
+function avisoDirecto(motivo, serie, idioma = 'es') {
+  if (!motivo || motivo === 'apagado' || motivo === 'no_casa') return '';
+  const en = idioma === 'en', fino = ultimoFino(serie);
+  const hasta = fino ? fechaCorta(horaEspana(fino.ms).fecha, idioma) + ', ' + horaEspana(fino.ms).hora : null;
+  if (en) return 'Live data can’t be used right now: the chart uses the last published copy, ' + (hasta ? `with data up to ${hasta} (Spain time).` : 'day by day.');
+  return 'Ahora no se puede usar el dato en directo: el gráfico usa la última copia publicada, ' + (hasta ? `con datos hasta el ${hasta} (hora de España).` : 'día a día.');
+}
+/* ¿Viene la serie del directo? */
+function esDirecto(serie) {
+  const f = esObjeto(serie) && esObjeto(serie.fina) && FINAS.get(serie.fina) === serie.generado ? serie.fina : null;
+  return !!f && f.origen === 'directo';
+}
+
 /* La serie fina «clave» de una serie unida, o null. */
 function serieFinaDe(serie, clave) {
   const f = esObjeto(serie) && esObjeto(serie.fina) && FINAS.get(serie.fina) === serie.generado ? serie.fina : null;
@@ -795,7 +989,13 @@ function seriePestana(serie, clave) {
     const f = serieFinaDe(s, res);
     const t = f ? tramo(f.puntos, clave) : null;
     if (t && t[0].ms <= inicioPestana(p, t[t.length - 1].ms) + 2 * f.pasoMs) {
-      return { resolucion: res, pasoMs: f.pasoMs, puntos: t, arrastre: f.arrastre, fuera: f.fuera, valorFuera: f.valorFuera, largos: f.largos };
+      const r = { resolucion: res, pasoMs: f.pasoMs, puntos: t, arrastre: f.arrastre, fuera: f.fuera, valorFuera: f.valorFuera, largos: f.largos };
+      // Del directo: su origen y los ratos sin lectura que caen en la pestaña.
+      if (f.origen === 'directo') {
+        r.origen = 'directo';
+        r.sinLectura = f.sinLectura.filter(([a, b]) => msMinuto(b) >= t[0].ms && msMinuto(a) <= t[t.length - 1].ms);
+      }
+      return r;
     }
   }
   if (p.soloFina) return null;
@@ -1152,16 +1352,30 @@ function notaFina(elegida, incluidos, idioma = 'es') {
   const quienes = nl <= 3 ? ' (' + listaNombres(elegida.largos, idioma) + ')' : '';
   const fuera = avisoFuera(elegida, incluidos, idioma);
   const frase = x => (x ? ' ' + x[0].toUpperCase() + x.slice(1) + '.' : '');
+  const directo = elegida.origen === 'directo' ? notaDirecto(elegida.sinLectura || [], elegida.resolucion, idioma) : '';
   if (en) {
     return ` In this tab, one point every ${cinco ? '5 minutes' : 'hour'}, in Spain (mainland) time: each token's latest figure in that ${cinco ? '5-minute slot' : 'hour'}` +
       ` (if it has none, its previous one, at most ${horas} hours old).` +
       (nl ? ` ${nl === 1 ? '1 token' : nl + ' tokens'}${quienes} ${nl === 1 ? 'goes' : 'go'} more than an hour without CoinGecko data at times: then ${nl === 1 ? 'its' : 'their'} latest figure counts.` : '') +
-      frase(fuera);
+      frase(fuera) + directo;
   }
   return ` En esta pestaña, un punto cada ${cinco ? '5 minutos' : 'hora'}, en hora de España peninsular: el último dato de cada token en ${cinco ? 'esos 5 minutos' : 'esa hora'}` +
     ` (si no tiene, el anterior, como mucho de ${horas} horas antes).` +
     (nl ? ` ${nl === 1 ? '1 token' : nl + ' tokens'}${quienes} ${nl === 1 ? 'pasa' : 'pasan'} ratos de más de una hora sin dato en CoinGecko: ahí cuenta su último dato.` : '') +
-    frase(fuera);
+    frase(fuera) + directo;
+}
+/* Con el directo: que se pide cada 5 minutos y, si en la pestaña hubo ratos
+   en que el propio directo no pudo leer (Supabase parado, una racha de
+   429), cuándo: ahí se repite el último dato y no es culpa de CoinGecko. */
+function notaDirecto(sinLectura, resolucion, idioma = 'es') {
+  const en = idioma === 'en', paso = resolucion === '1h' ? HORA_MS : 5 * MIN_MS;
+  const cuando = ms => { const h = horaEspana(ms); return fechaCorta(h.fecha, idioma) + ', ' + h.hora; };
+  const ratos = sinLectura.map(([a, b]) => [msMinuto(a), msMinuto(b) + paso]);
+  const lista = ratos.slice(-2).map(([a, b]) => (en ? `from ${cuando(a)} to ${cuando(b)}` : `del ${cuando(a)} al ${cuando(b)}`));
+  const huecos = !ratos.length ? ''
+    : en ? ` Live data could not be read ${ratos.length > 2 ? `${ratos.length} times, the last ` : ''}${lista.join(' and ')} (Spain time): the latest figure is repeated there.`
+      : ` El directo no pudo leer ${ratos.length > 2 ? `${ratos.length} veces, las últimas ` : ''}${lista.join(' y ')} (hora de España): ahí se repite el último dato.`;
+  return (en ? ' Fetched from CoinGecko every 5 minutes.' : ' Se pide a CoinGecko cada 5 minutos.') + huecos;
 }
 /* Las fechas que faltan entre el primer y el último punto. */
 function diasQueFaltan(puntos) {
@@ -1365,4 +1579,6 @@ module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVa
   CAMBIO_24H_MAX, cambio24hCreible, etiquetaPestana, anioSerie, coberturaTexto, entranAMitad, cifraGrande, cambio24h, esHoy, cuandoDato,
   lineaTotalCategoria, explicacionCambio, subtituloCifra,
   RESOLUCIONES, FUERA_MAX_PCT, avisoFuera, urlHistoriaFina, observacionesToken, construirSerieFina, validarSerieFina, serializarSerieFina, serieFinaValida, serieFinaVacia,
-  seriesEnlazadas, unirSerieFina, serieFinaDe, seriePestana, pestanaDisponible, textoInstante, horaEspana, indicesPintar, isoMinuto, msMinuto };
+  seriesEnlazadas, unirSerieFina, serieFinaDe, seriePestana, pestanaDisponible, textoInstante, horaEspana, indicesPintar, isoMinuto, msMinuto,
+  directoAFina, validarDirecto, transcurridoMs, edadDirecto, unirDirecto, motivoDirecto, avisoDirecto, esDirecto, notaDirecto,
+  DIRECTO_MAX_MS, COSTURA_MAX };
