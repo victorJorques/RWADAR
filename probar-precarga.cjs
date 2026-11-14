@@ -76,8 +76,13 @@ prueba('fotos de las noticias: la base las lleva todas y con los bytes de fotos.
   // Rediseño de Inicio (10/11/2026): el publicador copia la biblioteca a noticias-editoriales/.
   const fotos=archivos.filter(a=>/^noticias-editoriales\/[a-z0-9-]+\.webp$/.test(a.ruta));
   assert(fotos.length>=3,'El build local debe llevar las fotos de las noticias');
+  // Una foto que use la edición de la base (con la biblioteca de 23, la primera por orden puede no usarse:
+  // 14/11/2026). Una foto de la biblioteca que la edición no usa puede faltar; una que usa, no.
+  const usada=JSON.parse(fs.readFileSync(path.join(base,'datos/noticias-v2.json'),'utf8')).noticias[0].imagen;
+  const fotoUsada=fotos.find(a=>a.ruta===`noticias-editoriales/${usada}.webp`);
+  assert(fotoUsada,'La foto de la primera noticia de la base tiene que estar en la base');
   const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
-  const p=path.join(base,fotos[0].ruta), original=fs.readFileSync(p);
+  const p=path.join(base,fotoUsada.ruta), original=fs.readFileSync(p);
   try{
     fs.writeFileSync(p,Buffer.concat([original,Buffer.from('cambio')]));
     assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
