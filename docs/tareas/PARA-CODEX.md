@@ -6,7 +6,16 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 14 de noviembre de 2026 (26) · Claude · Noticias que entran por los ojos · SIN ENCENDER / SIN PUBLICAR
+> **Estado al cerrar el 14/11 (coordinador):** publicado y comprobado en vivo
+> lo de (23) a (26). El directo responde 200 en `/api/tokenizacion/directo` y
+> la web lo usa (`data-mercado-origen="directo"`). La tarea de las noticias
+> existe, pero el ensayo de las 11:35 UTC paró sin hacer nada: la sesión nueva
+> no trae el repositorio (el entorno «Rwadar Con Internet» no tiene
+> `victorJorques/RWADAR` en Repositories) ni la herramienta add_repo. Hasta que
+> Víctor lo añada en los ajustes del entorno, cada mañana frena y avisa sin
+> publicar. Desde hoy rige en `CLAUDE.md`: una sola revisión del trabajo.
+
+## 14 de noviembre de 2026 (26) · Claude · Noticias que entran por los ojos · PUBLICADO (web n.º 100, OTA n.º 31, PR #143)
 
 - **Encargo de la dirección (13/11):** «que las noticias tengan titulares
   buenos y se priorice lo visual y la imagen, que atraiga». Es la tercera de
@@ -192,7 +201,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   «Publicar web» y, después, «OTA Android» con la base `fa30779…`: primero
   la web, para que las variantes existan cuando la app nueva las pida). Unos
   15-17 minutos de Actions, una vez; ningún gasto diario nuevo.
-## 14 de noviembre de 2026 (25) · Claude · Gráfico en directo · LISTA PARA PUBLICAR Y ENCENDER (lo hace el coordinador)
+## 14 de noviembre de 2026 (25) · Claude · Gráfico en directo · ENCENDIDO (migración 35 aplicada 14/11 10:47 UTC, siembra y encendido 11:07, web n.º 98, OTA n.º 30, PR #141)
 
 - **Entrega (14/11, rama `entrega-grafico`):** unida la rama del constructor
   con `merge --no-ff` sobre la rama de trabajo (al día con `main`) y
@@ -364,7 +373,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
      (`test`), `.github/comprobar-publicado.mjs`, `probar-worker-local.mjs`,
      `MercadoBolsa.js` y el CSS de /mercado/ (zonas distintas). Lo une el
      integrador.
-## 14 de noviembre de 2026 (24) · Claude · Noticias del sector solas, con freno · unidas, SIN ENCENDER (se encienden cuando entre la guía de titulares)
+## 14 de noviembre de 2026 (24) · Claude · Noticias del sector solas, con freno · tarea creada (trig_015P5b7guTMypbzynUu6HtMo, 08:32 Madrid); FALTA el repositorio en el entorno
 
 - **Encargo de la dirección (13/11, respuesta expresa de Víctor):** «Cada
   mañana una sesión programada las escribe y las verifica. Si el verificador
