@@ -141,3 +141,27 @@ jobs:
             commit -q -m "Foto y serie de la tokenización del $FECHA (datos: CoinGecko)"
           git push origin HEAD:refs/heads/datos-tokenizacion
           echo "Foto y serie del $FECHA guardadas en la rama datos-tokenizacion."
+
+      # El gráfico en directo (migración 35, 14/11/2026): si está encendido y
+      # no responde bien dos veces seguidas (90 s entre ellas), este paso
+      # falla y GitHub manda su aviso. Apagado (404 directo_apagado) o «no
+      # casa» (unos minutos tras publicar otra lista), no falla. Va al final:
+      # la foto y la serie ya están guardadas. Solo lee la web pública.
+      - name: Comprobar el gráfico en directo
+        run: |
+          set -uo pipefail
+          CODIGO=000; ERROR=""
+          for intento in 1 2; do
+            CODIGO="$(curl -sS -o "$RUNNER_TEMP/directo.json" -w '%{http_code}' --max-time 20 https://rwadar.pages.dev/api/tokenizacion/directo || echo 000)"
+            ERROR="$(grep -o '"error":"[a-z_]*"' "$RUNNER_TEMP/directo.json" 2>/dev/null | head -n 1 | cut -d'"' -f4 || true)"
+            case "$CODIGO:$ERROR" in
+              200:*) echo "El directo responde bien."; exit 0 ;;
+              404:directo_apagado) echo "El directo está apagado: nada que comprobar."; exit 0 ;;
+              503:directo_no_casa) echo "El directo aún no casa con la diaria publicada (unos minutos tras publicar)."; exit 0 ;;
+            esac
+            echo "Intento $intento: el directo respondió $CODIGO ${ERROR:-sin código}."
+            if [ "$intento" = 1 ]; then sleep 90; fi
+          done
+          echo "::error::El gráfico en directo está encendido y no responde bien ($CODIGO ${ERROR:-sin código}). Mira «Mercado en directo (base)», acción estado."
+          echo "- El gráfico en directo no responde bien ($CODIGO ${ERROR:-sin código})." >> "$GITHUB_STEP_SUMMARY"
+          exit 1

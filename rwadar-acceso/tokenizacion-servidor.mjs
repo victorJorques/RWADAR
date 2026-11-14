@@ -120,3 +120,110 @@ export function crearTokenizacionServidor({ fetchImpl, ahora = Date.now, plazoMs
     return respuesta(tokenizacionModelo.resumir({ historico, actual: actual.foto, fuente: actual.fuente }));
   };
 }
+
+/* GET /api/tokenizacion/directo (14/11/2026): el gráfico en directo. La base
+   (migración 35) pide a CoinGecko cada 5 minutos y guarda un documento
+   compacto; este servidor lo lee con la clave publicable
+   (public.tokenizacion_directo(), sin cookies ni sesión de nadie), lo pasa
+   al formato de tokenizacion-serie-fina.json con directoAFina (que lo valida
+   con validarSerieFina, el de siempre) y lo sirve como
+   { version: 1, fina, sinLectura }. Lo lee el servidor y no el navegador ni
+   la app: la salida de Supabase es como mucho una lectura cada 5 minutos por
+   copia del servidor, la IP del visitante no llega a Supabase, la CSP no
+   cambia y, sin parámetros, nadie se salta la memoria.
+   Respuestas:
+     200 el directo, si casa con la diaria de este despliegue (mismos
+         tokens), tiene como mucho 20 minutos (y no más de 5 «del futuro»)
+         y la base leyó la diaria hace menos de 45 minutos;
+     404 {"error":"directo_apagado"}: sin la 35, deshecha o apagada (sin aviso);
+     503 {"error": directo_sin_datos | directo_no_valido | directo_no_casa |
+         directo_atrasado | directo_no_responde}. Si Supabase no responde y
+         hay uno guardado de 20 minutos o menos, ese (200).
+   Memoria: el bueno, hasta su siguiente dato (generado + 6,5 minutos; entre
+   15 s y 5 minutos; si ya pasó, 60 s: una racha de 429 no hace leer a
+   Supabase cada 15 s); «apagado», 5 minutos; los fallos, 60 s. Las
+   peticiones a la vez comparten una sola lectura. */
+const DIRECTO_MAX_BYTES = 64 * 1024;
+const DIRECTO_MAX_MS = 20 * 60000;
+const DIRECTO_FUTURO_MS = 5 * 60000;
+const DIARIA_LEIDA_MAX_MS = 45 * 60000;
+const RUTA_DIARIA = '/datos/tokenizacion-serie.json';
+const MAX_DIARIA = 256 * 1024;
+const DIARIA_MEMORIA_MS = 10 * 60000;
+const APAGADO_MEMORIA_MS = 5 * 60000;
+const FALLO_MEMORIA_MS = 60000;
+const SIGUIENTE_MS = 6.5 * 60000;
+
+export function crearTokenizacionDirectoServidor({ api, ahora = Date.now, respuesta, leerTexto }) {
+  let bueno = null;   // { estado: 200, cuerpo, generadoMs, hasta }
+  let fallo = null;   // { estado, cuerpo, hasta, caido }
+  let diaria = null;  // { tokens, hasta }
+  let enVuelo = null;
+
+  async function tokensDiaria(activo, origen) {
+    const t = ahora();
+    if (diaria && diaria.hasta > t) return diaria.tokens;
+    let tokens = null;
+    try {
+      const r = typeof activo === 'function' ? await activo(origen + RUTA_DIARIA) : null;
+      if (r && r.status === 200) tokens = tokenizacionModelo.validarSerie(JSON.parse(await leerTexto(r, MAX_DIARIA))).tokens;
+      else await r?.body?.cancel().catch(() => {});
+    } catch { tokens = null; }
+    diaria = { tokens, hasta: t + DIARIA_MEMORIA_MS };
+    return tokens;
+  }
+
+  /* Lee la base y decide: { estado, cuerpo, hasta } (para servir y guardar). */
+  async function leer(env, activo, origen) {
+    const t = ahora();
+    let r;
+    try {
+      r = await api(env, '/rest/v1/rpc/tokenizacion_directo', { method: 'POST', data: {}, maxBytes: DIRECTO_MAX_BYTES });
+    } catch (error) {
+      // PostgREST 404: la función no existe (sin la 35 o deshecha) = apagado.
+      if (error?.status === 404) return { estado: 404, cuerpo: { error: 'directo_apagado' }, hasta: t + APAGADO_MEMORIA_MS };
+      return { estado: 503, cuerpo: { error: 'directo_no_responde' }, hasta: t + FALLO_MEMORIA_MS, caido: true };
+    }
+    const no = error => ({ estado: 503, cuerpo: { error }, hasta: t + FALLO_MEMORIA_MS });
+    if (!r || typeof r !== 'object' || Array.isArray(r)) return no('directo_no_valido');
+    if (r.estado === 'apagado') return { estado: 404, cuerpo: { error: 'directo_apagado' }, hasta: t + APAGADO_MEMORIA_MS };
+    if (r.estado === 'sin_datos') return no('directo_sin_datos');
+    if (r.estado !== 'ok') return no('directo_no_valido');
+    let d;
+    try { d = tokenizacionModelo.directoAFina(r.doc); } catch { return no('directo_no_valido'); }
+    const generadoMs = Date.parse(d.fina.generado), edad = t - generadoMs;
+    if (edad > DIRECTO_MAX_MS || edad < -DIRECTO_FUTURO_MS) return no('directo_atrasado');
+    // La base relee la lista de la diaria publicada cada 15 minutos: si lleva
+    // más de 45 sin poder, el directo puede estar sumando otra lista.
+    const leida = d.diariaLeida ? Date.parse(d.diariaLeida) : NaN;
+    if (!(t - leida <= DIARIA_LEIDA_MAX_MS)) return no('directo_atrasado');
+    const tokens = await tokensDiaria(activo, origen);
+    if (!tokens || tokens.length !== d.fina.tokens.length || !tokens.every(x => d.fina.tokens.includes(x))) return no('directo_no_casa');
+    const siguiente = generadoMs + SIGUIENTE_MS;
+    const hasta = siguiente <= t ? t + FALLO_MEMORIA_MS : Math.min(Math.max(siguiente, t + 15000), t + APAGADO_MEMORIA_MS);
+    return { estado: 200, cuerpo: { version: 1, fina: d.fina, sinLectura: d.sinLectura }, generadoMs, hasta };
+  }
+
+  function servir(e, t) {
+    const segundos = Math.max(0, Math.ceil((e.hasta - t) / 1000));
+    return respuesta(e.cuerpo, e.estado, { 'Cache-Control': 'public, max-age=' + (e.estado === 200 ? Math.min(segundos, 300) : 60) });
+  }
+  // Supabase caído: lo guardado, mientras tenga 20 minutos o menos.
+  const guardado = t => (bueno && t - bueno.generadoMs <= DIRECTO_MAX_MS ? { ...bueno, hasta: Math.min(t + FALLO_MEMORIA_MS, bueno.generadoMs + DIRECTO_MAX_MS) } : null);
+
+  return async function atenderDirecto({ request, url, env, activo }) {
+    if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405, { Allow: 'GET' });
+    if (url.search) return respuesta({ error: 'solicitud_invalida' }, 400);
+    const t = ahora();
+    if (bueno && bueno.hasta > t) return servir(bueno, t);
+    if (fallo && fallo.hasta > t) return servir((fallo.caido && guardado(t)) || fallo, t);
+    if (!enVuelo) enVuelo = leer(env, activo, url.origin).finally(() => { enVuelo = null; });
+    const e = await enVuelo;
+    const t2 = ahora();
+    if (e.estado === 200) { bueno = e; fallo = null; return servir(e, t2); }
+    fallo = e;
+    if (e.caido) { const g = guardado(t2); if (g) return servir(g, t2); }
+    else bueno = null;
+    return servir(e, t2);
+  };
+}

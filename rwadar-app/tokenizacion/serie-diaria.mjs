@@ -76,7 +76,7 @@ const PLAZO_FINA_MS = 34 * 60000;
 
 const dormir = ms => new Promise(r => setTimeout(r, ms));
 
-async function pedirJSON(url, { fetchImpl, esperar, avisar }) {
+export async function pedirJSON(url, { fetchImpl, esperar, avisar }) {
   let ultimo;
   for (let intento = 1; intento <= INTENTOS; intento++) {
     let espera = intento === 1 ? 10000 : 30000;

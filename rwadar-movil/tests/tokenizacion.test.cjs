@@ -1053,17 +1053,20 @@ test('con las series finas: «24 h» activa, cada pestaña con la más fina, la 
   }
 });
 
-test('sin que nadie se lo diga, la pantalla y la tarjeta de Inicio leen la diaria con su fina (cargarSerieConFina); sin fina, la diaria sola y «24 h» desactivada', async () => {
+test('sin que nadie se lo diga, la pantalla y la tarjeta de Inicio leen la serie con el directo (cargarSerieConDirecto; si no vale, la fina publicada); sin fina, la diaria sola y «24 h» desactivada', async () => {
   for (const [serie, conFina] of [[UNIDA, true], [SERIE, false]]) {
     const { react, pintar } = crearReact();
     const llamadas = [];
-    const remota = { cargarSerie: async () => { llamadas.push('diaria'); return SERIE; }, cargarSerieConFina: async () => { llamadas.push('con fina'); return serie; } };
+    // El directo apagado (como antes de encenderlo): la fina publicada, si la hay, y ningún aviso.
+    const remota = { cargarSerie: async () => { llamadas.push('diaria'); return SERIE; },
+      cargarSerieConDirecto: async () => { llamadas.push('con directo'); return { serie, origen: conFina ? 'archivo' : 'diaria', motivo: 'apagado', proximo: 0 }; } };
     const { MercadoPantalla } = cargarMercado(react, VENTANA, remota);
     const props = { cargarVivo: async () => RESUMEN };
     pintar(MercadoPantalla, props);
     await esperar(); await esperar();
     const arbol = pintar(MercadoPantalla, props);
-    assert.deepEqual(llamadas, ['con fina']);
+    assert.deepEqual(llamadas, ['con directo']);
+    assert.equal(porTestID(arbol, 'mercado-aviso-directo'), undefined, 'apagado, sin aviso');
     assert.equal(!porTestID(arbol, 'pestana-1d').props.accessibilityState.disabled, conFina);
     // La tarjeta: el cambio del mes y el minigráfico, de la misma serie que la pestaña 1 M.
     const otro = crearReact();
@@ -1075,6 +1078,52 @@ test('sin que nadie se lo diga, la pantalla y la tarjeta de Inicio leen la diari
     assert.equal(g1m.resolucion, conFina ? '1h' : '1d');
     assert.ok(porTestID(tarjeta, 'mercado-cotizacion').props.accessibilityLabel.includes(`${g1m.cambioTexto} en el último mes`));
   }
+});
+
+/* ---- El gráfico en directo (14/11/2026) ---- */
+test('en directo: sin aviso; con el directo encendido y fallando, la copia publicada con su aviso (pantalla) y «copia de las …» (tarjeta)', async () => {
+  const fino = UNIDA.fina.series['5m'].puntos.at(-1);
+  const hora = t.horaEspana(fino.ms).hora;
+  for (const [origen, motivo, aviso] of [['archivo', 'atrasado', true], ['archivo', 'no_responde', true], ['archivo', 'apagado', false], ['archivo', 'no_casa', false], ['directo', null, false]]) {
+    const props = { cargarVivo: async () => RESUMEN, cargarLaSerie: async () => ({ serie: UNIDA, origen, motivo, proximo: 0 }) };
+    const v = await pantallaLista(props);
+    const nodo = porTestID(v.arbol, 'mercado-aviso-directo');
+    assert.equal(nodo ? textoDe(nodo) : null, aviso ? t.avisoDirecto(motivo, UNIDA, 'es') : null, `${origen} ${motivo}`);
+    if (aviso) assert.match(textoDe(nodo), /^Ahora no se puede usar el dato en directo: el gráfico usa la última copia publicada, con datos hasta el \d\d\/\d\d\/\d{4}, \d\d:\d\d \(hora de España\)\.$/);
+    const otro = crearReact();
+    const Tarjeta = cargarMercado(otro.react, VENTANA).MercadoCotizacion;
+    otro.pintar(Tarjeta, props);
+    await esperar(); await esperar();
+    const tarjeta = otro.pintar(Tarjeta, props);
+    const copia = porTestID(tarjeta, 'mercado-cotizacion-copia');
+    assert.equal(copia ? textoDe(copia) : null, aviso ? `copia de las ${hora}` : null, `tarjeta ${origen} ${motivo}`);
+  }
+});
+
+test('en directo: se vuelve a pedir la serie cuando toca, sin cambiar de pestaña ni volver a pedir el total; con la cruz a la vista, espera', async () => {
+  const llamadas = { vivo: 0, serie: 0 };
+  const props = { cargarVivo: async () => { llamadas.vivo++; return RESUMEN; },
+    // Tras el segundo, sin «proximo»: así no queda ningún reloj (el React de las pruebas no desmonta).
+    cargarLaSerie: async () => { llamadas.serie++; return { serie: UNIDA, origen: 'directo', motivo: null, proximo: llamadas.serie < 2 ? Date.now() + 40 : 0 }; } };
+  const v = await pantallaLista(props);
+  nodos(v.arbol).filter((n) => n?.props?.accessibilityRole === 'tab')[1].props.onPress();
+  v.otra();
+  assert.deepEqual(llamadas, { vivo: 1, serie: 1 });
+  // Con la cruz a la vista (el dedo en el gráfico), el refresco espera 3 s.
+  grafico(v.arbol).props.onResponderGrant({ nativeEvent: { locationX: 100 } });
+  v.otra();
+  await new Promise((r) => setTimeout(r, 1200));
+  assert.equal(llamadas.serie, 1, 'con la cruz a la vista no se vuelve a pedir');
+  grafico(v.arbol).props.onResponderRelease();
+  // La cruz se queda 3 s tras soltar; después se quita (React vuelve a pintar) y el refresco sale en el siguiente intento.
+  await new Promise((r) => setTimeout(r, 3200));
+  v.otra();
+  await new Promise((r) => setTimeout(r, 3200));
+  v.otra();
+  assert.ok(llamadas.serie >= 2, `la serie, otra vez (${llamadas.serie})`);
+  assert.equal(llamadas.vivo, 1, 'el total no se vuelve a pedir');
+  assert.deepEqual(nodos(v.arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected),
+    [false, true, false, false, false, false, false], 'sigue en 1 S');
 });
 
 test('el lector de pantalla recorre la línea a saltos que se oyen: una hora en 24 h, 6 horas en 1 S y un día en 1 M y en las diarias', () => {
