@@ -108,7 +108,9 @@ function hayNovedadesSinVer(datos, vista) {
    el móvil solo recibe avisos de servicio, no las novedades: también. Recibe lo que devuelve useAvisosNovedades y dice
    'activos', 'inactivos', 'comprobando' (aún no se sabe: la ventana espera un
    poco) o 'desconocido' (sin cuenta o con un error: sale, mejor recordar). */
-function estadoAvisosMovil(avisos) {
+function estadoAvisosMovil(avisos, { sinCuenta = false } = {}) {
+  // Notificaciones sin cuenta activas en este móvil (14/11/2026): también le llegan.
+  if (sinCuenta === true) return 'activos';
   if (!avisos || avisos.activo !== true) return 'desconocido';
   const movil = avisos.movil;
   if (esObjeto(movil)) {

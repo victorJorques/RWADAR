@@ -1385,6 +1385,30 @@
 
     <section class="movil-menu-grupo" aria-labelledby="perfilAvisosTit">
       <h3 id="perfilAvisosTit">Avisos</h3>
+      <!-- Notificaciones sin cuenta (14/11/2026, docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md): con AVISOS_SIN_CUENTA_REMOTO encendido en assets/rwadar-20260820.js (pintarSinCuenta). Sin sesión, siempre; con sesión, solo si este móvil las tiene activadas sin cuenta. El texto del permiso (#perfilScTexto) lo da el servidor, versionado, en el idioma de la página; la información básica y quién interviene, también en los dos idiomas. -->
+      <div id="perfilAvisosSinCuenta" hidden>
+      <article class="movil-estado avisos-sc">
+        <div class="movil-estado-cab">
+          <span class="movil-estado-icono" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/></svg></span>
+          <div><p class="movil-mini-etiqueta">Sin cuenta</p><h3 id="perfilScTit">Notificaciones en este móvil</h3></div>
+        </div>
+        <p class="avisos-sc-permiso" id="perfilScTexto" translate="no" hidden></p>
+        <p class="perfil-nota perfil-ayuda" id="perfilScEstado" role="status">Comprobando las notificaciones de este móvil…</p>
+        <ol class="avisos-push-pasos" id="perfilScPasos" hidden>
+          <li>Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).</li>
+          <li>Elige «Añadir a pantalla de inicio» y pulsa Añadir.</li>
+          <li>Abre RWAdar desde el icono nuevo y vuelve a Perfil › Avisos. No hace falta cuenta.</li></ol>
+        <div class="avisos-push-acciones">
+          <button type="button" class="avisos-push-boton" id="perfilScInstalar" data-push-instalar hidden>Ver cómo añadirla</button>
+          <button type="button" class="avisos-push-boton avisos-push-principal" id="perfilScActivar" data-sc-activar hidden disabled>Activar notificaciones en este móvil</button>
+          <button type="button" class="avisos-push-boton" id="perfilScVer" data-sc-ver hidden>Ver los últimos avisos</button>
+          <button type="button" class="avisos-push-boton" id="perfilScDesactivar" data-sc-desactivar hidden>Desactivar las notificaciones de este móvil</button>
+          <button type="button" class="avisos-push-boton avisos-push-principal" id="perfilScReintentar" data-sc-reintentar hidden>Reintentar</button>
+        </div>
+        <p class="perfil-nota avisos-push-quien" id="perfilScQuien" translate="no" hidden></p>
+        <p class="perfil-aviso-detalle" id="perfilScDatos" translate="no"></p>
+      </article>
+      </div>
       <!-- Cada tarjeta va en un div con hidden: .movil-estado fija display y taparía el atributo. -->
       <div id="perfilAvisosProximamente">
       <article class="movil-estado">

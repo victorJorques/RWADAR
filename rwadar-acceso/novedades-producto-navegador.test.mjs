@@ -93,7 +93,10 @@ const LEER_VENTANA = `() => {
     rec: (() => { const c = d.querySelector('[data-nov-recordatorio]'); if (!c) return null; const b = c.querySelector('[data-nov-avisos]');
       return { titulo: c.querySelector('.nov-rec-tit').textContent.trim(), texto: c.querySelector('.nov-rec-txt').textContent.trim(), boton: b.textContent.trim(),
         etiqueta: b.tagName, href: b.getAttribute('href'), alto: b.getBoundingClientRect().height, nombre: document.getElementById(c.getAttribute('aria-labelledby'))?.textContent.trim(),
-        enCuerpo: !!b.closest('.nov-cuerpo'), trasPuntos: !!(d.querySelector('.nov-puntos').compareDocumentPosition(c) & Node.DOCUMENT_POSITION_FOLLOWING),
+        enCuerpo: !!b.closest('.nov-cuerpo'), antesDePuntos: !!(c.compareDocumentPosition(d.querySelector('.nov-puntos')) & Node.DOCUMENT_POSITION_FOLLOWING),
+        // A la vista sin desplazar: el recuadro entero (hasta su botón) dentro del cuerpo, con el cuerpo arriba del todo.
+        aLaVista: (() => { const cu = d.querySelector('.nov-cuerpo'), rc = cu.getBoundingClientRect(), rr = c.getBoundingClientRect(), rb = b.getBoundingClientRect();
+          return cu.scrollTop === 0 && rr.top >= rc.top - 0.5 && rb.bottom <= rc.bottom + 0.5 && rb.bottom <= innerHeight; })(),
         icono: c.querySelectorAll('.nov-icono svg path').length, lang: c.closest('[lang]').lang }; })(),
     entendidoVisible: (() => { const b = d.querySelector('[data-nov-entendido]').getBoundingClientRect(); return b.height > 0 && b.top >= 0 && b.bottom <= innerHeight + 0.5; })() };
 }`;
@@ -153,7 +156,8 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       assert.ok(v.rec, 'sale el recuadro «Activa los avisos»');
       assert.deepEqual([v.rec.titulo, v.rec.texto, v.rec.boton], TEXTOS_REC.es);
       assert.deepEqual([v.rec.etiqueta, v.rec.href, v.rec.nombre], ['A', '/#perfil-avisos', 'Activa los avisos'], 'un enlace a Perfil › Avisos, con nombre');
-      assert.ok(v.rec.enCuerpo && v.rec.trasPuntos, 'debajo de los puntos y antes de los botones');
+      assert.ok(v.rec.enCuerpo && v.rec.antesDePuntos, 'arriba del cuerpo, antes de los puntos (2026-11-14.3)');
+      assert.ok(v.rec.aLaVista, 'el recuadro y su botón, a la vista sin desplazar');
       assert.ok(v.rec.alto >= 44 && v.rec.icono > 0, `botón de ${v.rec.alto} px, con su icono`);
       assert.ok(v.entendidoVisible, '«Entendido» se ve sin desplazar nada');
       for (const sel of ['.nov-tit', '.nov-fecha', '.nov-punto-tit', '.nov-punto-txt', '.nov-rec-tit', '.nov-rec-txt', '.nov-rec-boton', '.nov-ver', '.nov-entendido']) {
@@ -362,6 +366,25 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, 'ventana-con-avisos-activos-390x844.png') });
       await pagina.click('#novedadesDialogo [data-nov-entendido]');
       await pagina.waitForSelector('#novedadesDialogo', { state: 'detached', timeout: 5000 });
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // Encargo del 14/11/2026: el recuadro se ve SIN DESPLAZAR en un iPhone 13 con Safari (390 × 664 útiles)
+    // y en un Android pequeño (360 × 640), en castellano y en inglés.
+    for (const [ancho, alto, idioma] of [[390, 664, 'es'], [360, 640, 'es'], [360, 640, 'en']]) {
+      const contexto = await navegador.newContext({ viewport: { width: ancho, height: alto } });
+      await contexto.addInitScript(COMO_PERSONA);
+      if (idioma === 'en') await contexto.addInitScript(() => { try { if (!localStorage.getItem('rwadar.idioma')) localStorage.setItem('rwadar.idioma', 'en'); } catch {} });
+      const pagina = await contexto.newPage();
+      const errores = [];
+      pagina.on('pageerror', e => errores.push(e.message));
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      const v = await esperarVentana(pagina);
+      assert.ok(v.rec, `${ancho} × ${alto} (${idioma}): sale el recuadro`);
+      assert.ok(v.rec.antesDePuntos, 'arriba, antes de los puntos');
+      assert.ok(v.rec.aLaVista, `${ancho} × ${alto} (${idioma}): el recuadro y su botón, a la vista sin desplazar`);
+      assert.ok(v.entendidoVisible && v.dentro && v.fuera === 0, `${ancho} × ${alto}: la ventana cabe`);
+      if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, `ventana-${ancho}x${alto}${idioma === 'en' ? '-en' : ''}.png`) });
       assert.deepEqual(errores, []);
       await contexto.close();
     }

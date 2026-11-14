@@ -37,15 +37,32 @@ html.nov-abierta,html.nov-abierta body{overflow:hidden}
 .nov-acciones{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px 18px;border-top:var(--bd);background:var(--s1)}
 .nov-acciones>*{flex:1 1 140px;min-height:48px;padding:0 16px;font:600 1rem/1.2 var(--body);text-decoration:none;text-align:center}
 .nov-acciones>:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
-/* El recuadro «Activa los avisos» (14/11/2026), debajo de los puntos: como el
-   «¿Quieres enterarte…?» de la página, con su botón de 48 px a lo ancho. Va
+/* El recuadro «Activa los avisos» (14/11/2026): como el «¿Quieres
+   enterarte…?» de la página, con su botón de 48 px a lo ancho. Desde la
+   2026-11-14.3 va ARRIBA del cuerpo (antes de los puntos) y compacto, para
+   que se vea entero sin desplazar en un iPhone 13 (390 × 664) y en un Android
+   pequeño (360 × 640), también con el texto del permiso (sin cuenta). Va
    dentro de .nov-cuerpo, que se desplaza: los botones de abajo no se mueven. */
-.nov-rec{display:grid;gap:10px;margin:18px 0 0;padding:14px 14px 16px;border:1px solid var(--senal-30);border-radius:var(--r-l);background:var(--senal-t)}
-.nov-rec-cab{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center}
+.nov-rec{display:grid;gap:8px;margin:0 0 18px;padding:12px 12px 14px;border:1px solid var(--senal-30);border-radius:var(--r-l);background:var(--senal-t)}
+.nov-rec-cab{display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;align-items:center}
+.nov-rec-cab .nov-icono{width:32px;height:32px}
 .nov-rec-tit{margin:0;color:var(--tx);font:700 1.0625rem/1.3 var(--display);overflow-wrap:break-word}
-.nov-rec-txt{margin:0;color:var(--tx-2);font:400 1rem/1.45 var(--body);overflow-wrap:break-word}
+.nov-rec-txt{margin:0;color:var(--tx-2);font:400 .9375rem/1.45 var(--body);overflow-wrap:break-word}
+/* El texto del permiso (sin cuenta): lo que se acepta, en el color del texto. */
+.nov-rec-permiso{color:var(--tx);font-size:.875rem;line-height:1.42}
+.nov-rec-permiso a,.nov-rec-info a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
+.nov-rec-estado{margin:0;color:var(--senal-cl,var(--tx));font:600 .9375rem/1.4 var(--body)}
+.nov-rec-estado[hidden]{display:none}
 .nov-rec-boton{display:flex;align-items:center;justify-content:center;min-height:48px;padding:8px 16px;font:600 1rem/1.2 var(--body);text-decoration:none;text-align:center}
+.nov-rec-boton:disabled{opacity:.6;cursor:progress}
 .nov-rec-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+/* La información básica, plegada debajo del botón. */
+.nov-rec-info{color:var(--tx-2);font:400 .8125rem/1.45 var(--body)}
+.nov-rec-info summary{display:flex;align-items:center;min-height:32px;color:var(--tx-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.nov-rec-info summary:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+.nov-rec-info p{margin:6px 0 0;overflow-wrap:break-word}
+/* Quién interviene en la entrega, a la vista junto al botón (anexo legal, 7.3). */
+.nov-rec-quien{margin:0;overflow-wrap:break-word}
 
 /* ---- La página /novedades-rwadar/ ---- */
 .nov-pagina .sec-entradilla time{color:var(--tx)}

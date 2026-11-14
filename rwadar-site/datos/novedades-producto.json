@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-14.2",
+  "version": "2026-11-14.4",
   "titulo": "Novedades de RWAdar",
   "en": {
     "titulo": "RWAdar news"
@@ -29,10 +29,10 @@
       "id": "avisos-movil",
       "icono": "notificacion",
       "titulo": "Avisos en tu móvil",
-      "texto": "Te llegan como un WhatsApp. Actívalos en Perfil › Avisos.",
+      "texto": "Como un WhatsApp, también sin cuenta. Actívalos en Perfil › Avisos.",
       "en": {
         "titulo": "Alerts on your phone",
-        "texto": "They arrive like a WhatsApp message. Turn them on in Profile › Alerts."
+        "texto": "Like WhatsApp, no account needed. Turn them on in Profile › Alerts."
       }
     },
     {
@@ -104,27 +104,27 @@
       "titulo": "Avisos en tu móvil, como un WhatsApp",
       "parrafos": [
         "Cuando haya algo nuevo en RWAdar, te puede llegar un aviso al móvil, igual que te llega un mensaje de WhatsApp.",
-        "Es gratis y lo eliges tú: solo te llegan si los activas. Los puedes quitar cuando quieras en Perfil › Avisos o en los ajustes del móvil.",
+        "Es gratis y lo eliges tú: solo te llegan si los activas, y no hace falta cuenta. Los puedes quitar cuando quieras en Perfil › Avisos o en los ajustes del móvil.",
         "En iPhone, primero añade la web a la pantalla de inicio: en Safari, pulsa el botón Compartir y después «Añadir a pantalla de inicio». Luego abre RWAdar desde ese icono.",
         "En Android, puedes hacerlo en la app de RWAdar o en la web, desde el navegador del móvil."
       ],
       "pasos": [
-        "Entra en tu cuenta de RWAdar.",
-        "Ve a Perfil › Avisos y activa «Avisos de novedades».",
-        "Activa «Notificaciones en este móvil» y acepta cuando el móvil te pregunte."
+        "Ve a Perfil › Avisos. No hace falta cuenta: en la app, si no has entrado, están en la primera pantalla.",
+        "Pulsa «Activar notificaciones en este móvil» y acepta cuando el móvil te pregunte.",
+        "Si has entrado en tu cuenta (en la web o en la app), activa «Avisos de novedades» y después «Notificaciones en este móvil»."
       ],
       "en": {
         "titulo": "Alerts on your phone, like WhatsApp",
         "parrafos": [
           "When there is something new on RWAdar, you can get an alert on your phone, just like a WhatsApp message.",
-          "It is free and your choice: you only get them if you turn them on. You can turn them off whenever you like in Profile › Alerts or in your phone settings.",
+          "It is free and your choice: you only get them if you turn them on, and you don't need an account. You can turn them off whenever you like in Profile › Alerts or in your phone settings.",
           "On iPhone, first add the website to your home screen: in Safari, tap the Share button and then «Add to Home Screen». Then open RWAdar from that icon.",
           "On Android, you can do it in the RWAdar app or on the website, from your phone's browser."
         ],
         "pasos": [
-          "Sign in to your RWAdar account.",
-          "Go to Profile › Alerts and turn on «News notices».",
-          "Turn on «Notifications on this phone» and accept when your phone asks."
+          "Go to Profile › Alerts. You don't need an account: in the app, if you haven't signed in, they are on the first screen.",
+          "Tap «Turn on notifications on this phone» and accept when your phone asks.",
+          "If you have signed in to your account (on the website or in the app), turn on «News notices» and then «Notifications on this phone»."
         ]
       }
     },

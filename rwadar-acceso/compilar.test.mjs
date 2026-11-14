@@ -59,9 +59,10 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
     const cartera = fs.readFileSync(path.join(AQUI, 'cartera-servidor.mjs'), 'utf8');
     const tokenizacion = fs.readFileSync(path.join(AQUI, 'tokenizacion-servidor.mjs'), 'utf8');
     const webpush = fs.readFileSync(path.join(AQUI, 'webpush-servidor.mjs'), 'utf8');
-    const escribir = (s, c = cartera, k = tokenizacion, w = webpush) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s);
+    const sinCuenta = fs.readFileSync(path.join(AQUI, 'avisos-sin-cuenta-servidor.mjs'), 'utf8');
+    const escribir = (s, c = cartera, k = tokenizacion, w = webpush, sc = sinCuenta) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s);
       fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); fs.writeFileSync(path.join(raiz, 'tokenizacion-servidor.mjs'), k);
-      fs.writeFileSync(path.join(raiz, 'webpush-servidor.mjs'), w); };
+      fs.writeFileSync(path.join(raiz, 'webpush-servidor.mjs'), w); fs.writeFileSync(path.join(raiz, 'avisos-sin-cuenta-servidor.mjs'), sc); };
     escribir(servidor);
     assert.equal(construirWorker(raiz), construirWorker(), 'la copia sin cambios compila igual');
     for (const extra of ["export const VERSION_PRUEBA = 'x';", 'export let marca = 1;', 'export var activo = false;',
@@ -74,7 +75,17 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
       assert.throws(() => construirWorker(raiz), /tokenizacion-servidor\.mjs solo puede exportar funciones/, extra);
       escribir(servidor, cartera, tokenizacion, webpush + '\n' + extra + '\n');
       assert.throws(() => construirWorker(raiz), /webpush-servidor\.mjs solo puede exportar/, extra);
+      escribir(servidor, cartera, tokenizacion, webpush, sinCuenta + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /avisos-sin-cuenta-servidor\.mjs solo puede exportar/, extra);
     }
+    /* Notificaciones sin cuenta (14/11/2026): como las notificaciones web, en
+       su propio ámbito, sin dependencias y solo crearAvisosSinCuentaServidor. */
+    escribir(servidor, cartera, tokenizacion, webpush, sinCuenta + '\nexport function otraSinCuenta() {}\n');
+    assert.throws(() => construirWorker(raiz), /avisos-sin-cuenta-servidor\.mjs solo puede exportar crearAvisosSinCuentaServidor/);
+    escribir(servidor, cartera, tokenizacion, webpush, "import x from 'node:crypto';\n" + sinCuenta);
+    assert.throws(() => construirWorker(raiz), /Los avisos sin cuenta no admiten dependencias/);
+    escribir(servidor.replace("import { crearAvisosSinCuentaServidor } from './avisos-sin-cuenta-servidor.mjs';\n", ''));
+    assert.throws(() => construirWorker(raiz), /Falta la integración explícita de los avisos sin cuenta/);
     /* Notificaciones web (12/11/2026): el módulo va en su propio ámbito, sin
        dependencias, y solo da crearWebpushServidor (el worker no lo exporta). */
     escribir(servidor, cartera, tokenizacion, webpush + '\nexport async function otraWebpush() {}\n');
