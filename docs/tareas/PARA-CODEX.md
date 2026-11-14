@@ -6,6 +6,59 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (32) · Claude · Noticias del 14/11, recuadro «Activa los avisos» y notificaciones sin cuenta · TODO PUBLICADO Y ENCENDIDO
+
+- **Encargos de la dirección (14/11):** «publícalo todo: las notificaciones,
+  el gráfico, las noticias»; «que para activar las notificaciones salga el
+  aviso al salir la ventana de novedades»; «que el gráfico y las noticias se
+  actualicen automáticamente»; «que salga en iPhone y Android y que funcionen
+  aunque no tengan cuenta o no hayan iniciado sesión».
+- **Noticias del 14/11:** publicadas con la skill (editor, verificador pase 1
+  «con_cambios», 2 correcciones del programa, pase 2 «conforme»), PR #154
+  unido con «merge», «Publicar web» revisión y producción con comprobación en
+  vivo. Por el camino, dos frenos: #150 (CI) y #153 (3 commits); la edición
+  verificada no cambió (idéntica al byte).
+- **Arreglo de la tarea de cada mañana (#152):** `sello.test.mjs` simulaba el
+  día con la fecha fija `2026-11-14` en una copia del repositorio y chocaba con
+  la edición real de ese día (la CI del PR de las noticias fallaba). La copia
+  quita esa edición antes de simular. Ojo: un PR cuyo título empiece por
+  «Noticias automáticas» lo trata la CI como el de la mañana (#151 se cerró
+  por eso).
+- **Tarea programada:** «Noticias automáticas de RWAdar», cada día a las
+  08:32 (España), se despierta en la **sesión fija con el repositorio**
+  («Noticias automáticas de RWAdar (sesión fija con el repositorio)», etiqueta
+  `rwadar-noticias-automaticas`); su prueba de arranque pasó (repositorio,
+  push en seco, GitHub, red, Skill y Agent). Rama de cada día:
+  `claude/noticias-<fecha>`. La tarea antigua (sesión nueva sin repositorio)
+  queda desactivada y renombrada «(antigua, sin repositorio; no usar)».
+- **Gráfico:** el directo se actualiza solo cada 5 minutos (Supabase); la
+  serie diaria la lanza GitHub (hoy, 13:39 UTC).
+- **Recuadro «Activa los avisos» (#155, sello #156):** OTA n.º 33 y web n.º 105
+  (revisión) y 106 (producción).
+- **Notificaciones sin cuenta (#157, sello #158; detalle en (29)-(31) y en
+  `AVISOS-SIN-CUENTA-2026-11-14.md`):** `ensayo-36` correcto en producción,
+  `aplicar-36` (con copia antes y verificación), `activar-sin-cuenta`, web n.º
+  107 (revisión) y 108 (producción), OTA n.º 34. Comprobado en vivo:
+  `/api/avisos/texto` da `activo: true` (versión `sin-cuenta-v1-2026-11-14`);
+  alta, estado, baja y que otra llave no ve ni borra la suscripción, contra la
+  base real (alta de prueba dada de baja al momento). En Chromium sin pantalla
+  no se pueden recibir notificaciones reales: falta la prueba en un iPhone (con
+  la web en la pantalla de inicio) y en un Android.
+- **Aviso a los usuarios** (orden permanente): anuncio n.º 4, «Avisos en el
+  móvil, también sin cuenta», enlace a Perfil › Avisos.
+- **Dato:** antes de esto solo había 2 navegadores con notificaciones (con
+  cuenta); el ensayo-36 lo contó.
+- **Riesgo aceptado para entregar hoy (S5 del anexo):** sin la cabecera
+  secreta entre el servidor de la web y la base, alguien podría llamar a
+  Supabase directamente y llenar los cupos de altas (300 por hora, 5 000
+  navegadores): la gente de verdad vería «cupo» o «lleno». No filtra datos.
+  El verificador 36 avisa; `apagar-sin-cuenta` lo corta. Hacer la cabecera es
+  lo siguiente si se ve abuso.
+- **Pendiente para la dirección:** probar en su iPhone (web en la pantalla de
+  inicio → Perfil › Avisos → «Activar notificaciones en este móvil») y en un
+  Android; si llega, nada más. Las ramas locales `aviso-activar-notificaciones`
+  y `avisos-sin-cuenta` ya están unidas.
+
 ## 14 de noviembre de 2026 (31) · Claude · Notificaciones sin cuenta: arreglos de la revisión · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
 
 - **Qué es:** la revisión única de las entradas 29 y 30 encontró 9 cosas; están
