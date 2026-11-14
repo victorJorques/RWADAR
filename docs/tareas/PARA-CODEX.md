@@ -6,6 +6,45 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (27) · Claude · Ventana «Novedades» del 14/11 y noticias de cada mañana · PUBLICADO (OTA n.º 32, web n.º 101 revisión y n.º 102 producción, PR #147 y sello #148)
+
+- **Encargo de la dirección (14/11):** «haz que las notificaciones salgan y lo
+  nuevo que hemos puesto, que salga y publica». La notificación ya había
+  salido (anuncio n.º 3, «El mercado, en directo, y noticias con foto», 12:12
+  UTC, otra sesión). Faltaba que **la ventana que sale al abrir** la web y la
+  app lo contara: seguía con lo del 12/11.
+- **Qué cambia:** `novedades-producto.json` pasa a la versión **2026-11-14**
+  (vuelve a salir una vez a todos): el mercado en directo (cada 5 minutos,
+  pestaña «24 h»), las noticias con foto, los avisos en el móvil y la
+  calculadora; el detalle conserva lo del 11 y el 12/11. Dos iconos nuevos
+  (`grafico` y `noticias`) iguales en la web y en la app; la descripción de
+  /novedades-rwadar/ al día. Pruebas actualizadas a la versión nueva (solo
+  fechas y contenido de la edición; se añaden comprobaciones).
+- **Una revisión** (un revisor independiente): sin bloqueos; 6 arreglos
+  menores aplicados (descripción de la página, «crédito privado», «últimas
+  24 horas», «tokenised», «hoy 4», y **con iconos nuevos, primero la OTA y
+  después la web**, ya escrito en `NOVEDADES-RWADAR-2026-11-12.md`).
+- **Pruebas:** `npm run test:web` (salida 0), `npm --prefix rwadar-movil test`
+  (675 correctas, 2 omitidas de siempre), `novedades-producto-navegador` en
+  Chromium (390 y 1366, en inglés también), guardián de OTA con la base
+  `fa30779…` `ok:true`; CI del PR y del sello en verde.
+- **Publicado y comprobado en vivo:** OTA n.º 32 (primero), «Publicar web»
+  revisión (n.º 101) y producción (n.º 102). `https://rwadar.pages.dev/datos/novedades-producto.json`
+  da `2026-11-14`; el directo responde 200 y la web lo usa
+  (`data-mercado-origen="directo"`). No se envió otra notificación: la del
+  12:12 ya anunciaba lo mismo.
+- **Noticias de cada mañana (lo que fallaba):** la tarea abría cada mañana una
+  sesión nueva **sin el repositorio** (ni el entorno «RWADAR noticias» que
+  creó otra sesión lo clonaba). Arreglo preparado: una **sesión fija con el
+  repositorio** («Noticias automáticas de RWAdar (sesión fija con el
+  repositorio)», etiqueta `rwadar-noticias-automaticas`); su prueba de
+  arranque salió bien (repositorio, push en seco, herramientas de GitHub,
+  red, Skill y Agent). **Falta crear la tarea programada que la despierte a
+  las 08:32**: el control de permisos bloqueó `create_trigger` dos veces y
+  necesita la aprobación expresa de Víctor. La tarea anterior sigue
+  desactivada (sin repositorio, no sirve). Las noticias del 14/11 no
+  salieron.
+
 > **Estado al cerrar el 14/11 (coordinador):** publicado y comprobado en vivo
 > lo de (23) a (26). El directo responde 200 en `/api/tokenizacion/directo` y
 > la web lo usa (`data-mercado-origen="directo"`). La tarea de las noticias
