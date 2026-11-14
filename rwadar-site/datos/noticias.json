@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-13",
+  "actualizadoEl": "2026-11-14",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
@@ -23,7 +23,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-13",
+      "consultadaEl": "2026-11-14",
       "tituloInformativo": "La CNMV difunde advertencias de supervisores europeos sobre 11 entidades no registradas"
     },
     {
@@ -34,11 +34,11 @@
       "ambito": "UE",
       "titulo": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
       "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
-      "porQueImporta": "En España, Robinhood solo vende hoy los «Classic». Que su filial europea sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "porQueImporta": "El cambio vale también para los tokens ya emitidos, desde el 9 de noviembre. Que la filial europea de Robinhood sea participante autorizado es un plan que el folleto ya recogía en junio.",
       "en": {
         "titulo": "Robinhood: the issuer may cut your Stock Tokens for costs",
         "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
-        "porQueImporta": "In Spain, Robinhood only sells the Classic tokens today. Making its EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+        "porQueImporta": "The change also applies to tokens already issued, from 9 November. Making Robinhood's EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
         "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
       },
       "fuente": {
@@ -46,7 +46,7 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-13",
+      "consultadaEl": "2026-11-14",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor"
     },
     {
@@ -69,7 +69,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-13",
+      "consultadaEl": "2026-11-14",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT"
     },
     {
@@ -92,7 +92,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-13",
+      "consultadaEl": "2026-11-14",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados"
     },
     {
@@ -115,7 +115,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-13",
+      "consultadaEl": "2026-11-14",
       "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto"
     }
   ]

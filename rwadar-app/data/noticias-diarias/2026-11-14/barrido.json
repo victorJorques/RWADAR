@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "fecha": "2026-11-14",
+  "inicioUtc": "2026-11-14T12:57:49.789Z",
+  "finUtc": "2026-11-14T12:58:21.207Z",
+  "desde": "2026-11-13",
+  "fuentes": [
+    {
+      "id": "cnmv-notas",
+      "nombre": "CNMV, notas de prensa",
+      "url": "https://www.cnmv.es/portal/aldia/notasprensa",
+      "critica": true,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 242942,
+      "sha256": "d733d993695b0f90dd27be70f7df09992d710b2a6ce22803d7793257d9a7a603",
+      "horaUtc": "2026-11-14T12:57:49.789Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 10,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-11",
+          "hora": "13:00",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d"
+        },
+        {
+          "fecha": "2026-11-10",
+          "hora": "12:20",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d"
+        },
+        {
+          "fecha": "2026-11-06",
+          "hora": "11:40",
+          "titulo": "La CNMV destaca la fortaleza de los mercados financieros en un entorno de incertidumbre y subidas de tipos de interés",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0c4d3fda-18b5-4d32-995e-2638faec6d24%7d"
+        },
+        {
+          "fecha": "2026-11-03",
+          "hora": "14:00",
+          "titulo": "La CNMV inicia la consulta pública del proyecto de actualización del Código de gobierno de las sociedades cotizadas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0444aa7b-6689-4475-8a68-d2d2d6bfbadb%7d"
+        },
+        {
+          "fecha": "2026-11-03",
+          "hora": "11:35",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4aab4e0b-415a-4960-9c25-30fd7772ed44%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "13:06",
+          "titulo": "La CNMV autoriza Bit2MeSTX, un Sistema de Negociación y Liquidación (SNL) basado en Tecnología de Registros Distribuidos (TRD)",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "13:05",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b5ceeb2a9-ed98-4136-ba9d-49b94a9a1c78%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "10:55",
+          "titulo": "La CNMV publica el nuevo documento de preguntas y respuestas sobre el régimen de folletos a publicar en las ofertas públicas y admisiones a cotización en mercados regulados",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb85b6ac4-b856-4277-aba7-b57fc6a37ac0%7d"
+        },
+        {
+          "fecha": "2026-10-27",
+          "hora": "12:50",
+          "titulo": "La CNMV analiza el crecimiento de los mercados privados y la fragmentación bursátil con economistas y expertos financieros",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b38456bfb-146f-45eb-8418-4e492189164b%7d"
+        },
+        {
+          "fecha": "2026-10-26",
+          "hora": "14:00",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bc3d04c13-d7fe-42fe-ab29-0a498e134591%7d"
+        }
+      ],
+      "nuevos": []
+    },
+    {
+      "id": "esma-rss",
+      "nombre": "ESMA, noticias (RSS)",
+      "url": "https://www.esma.europa.eu/rss.xml",
+      "critica": true,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 61936,
+      "sha256": "cf42108834a9fba4cc5eb71448c0c4c7d82e7e4bff408e582633b7e4e74504f7",
+      "horaUtc": "2026-11-14T12:57:49.823Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 10,
+      "fueraDelSector": 2,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-09",
+          "hora": "09:54",
+          "titulo": "EU seeks nominations for stakeholder group on tokenisation standards in finance",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/eu-seeks-nominations-stakeholder-group-tokenisation-standards-finance"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "14:26",
+          "titulo": "ESMA publishes latest edition of its newsletter",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-publishes-latest-edition-its-newsletter-45"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "10:05",
+          "titulo": "ESMA proposes simpler EU Taxonomy reporting",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-proposes-simpler-eu-taxonomy-reporting"
+        },
+        {
+          "fecha": "2026-10-22",
+          "hora": "16:51",
+          "titulo": "ESMA streamlines several Q&As as part of simplification efforts",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-streamlines-several-qas-part-simplification-efforts"
+        },
+        {
+          "fecha": "2026-10-20",
+          "hora": "14:34",
+          "titulo": "ESMA specifies requirements to facilitate safe use of post-trade risk reduction services",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-specifies-requirements-facilitate-safe-use-post-trade-risk-reduction"
+        },
+        {
+          "fecha": "2026-10-16",
+          "hora": "12:21",
+          "titulo": "ESMA finalises the review of guidelines on the delay in disclosure of inside information",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-finalises-review-guidelines-delay-disclosure-inside-information"
+        },
+        {
+          "fecha": "2026-10-15",
+          "hora": "15:17",
+          "titulo": "ESMA updates its manual on transparency with new guidance for OTC derivatives and tick-size regime",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-manual-transparency-new-guidance-otc-derivatives-and-tick"
+        },
+        {
+          "fecha": "2026-10-15",
+          "hora": "09:41",
+          "titulo": "ESMA's third Sanctions Report highlights the need for greater convergence in enforcement",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esmas-third-sanctions-report-highlights-need-greater-convergence-enforcement"
+        }
+      ],
+      "nuevos": []
+    },
+    {
+      "id": "boe-sumario",
+      "nombre": "BOE, sumario del día (API de datos abiertos)",
+      "url": "https://www.boe.es/datosabiertos/api/boe/sumario/20261114",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/xml",
+      "bytes": 228152,
+      "sha256": "7f87422f500d9823f0c9ab217d660a05760fc39e3f1afb760790730c17b5a337",
+      "horaUtc": "2026-11-14T12:57:49.824Z",
+      "error": null,
+      "sinEdicion": false,
+      "cambia": null,
+      "leidos": 388,
+      "fueraDelSector": 386,
+      "omitidosPorNombre": 1,
+      "elementos": [
+        {
+          "fecha": "2026-11-14",
+          "hora": null,
+          "titulo": "Resolución de 3 de noviembre de 2026, de la Comisión Nacional del Mercado de Valores, por la que se publican las sanciones por infracción muy grave y grave a Construcciones y Auxiliar de Ferrocarriles, SA.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23891"
+        }
+      ],
+      "nuevos": [
+        {
+          "fecha": "2026-11-14",
+          "hora": null,
+          "titulo": "Resolución de 3 de noviembre de 2026, de la Comisión Nacional del Mercado de Valores, por la que se publican las sanciones por infracción muy grave y grave a Construcciones y Auxiliar de Ferrocarriles, SA.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23891"
+        }
+      ]
+    },
+    {
+      "id": "consejo-rss",
+      "nombre": "Consejo de la UE, comunicados (RSS)",
+      "url": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/xml; charset=utf-8",
+      "bytes": 14867,
+      "sha256": "1e6b7d9c8e9eea51067cbb866cc134fc50bac5d905129908072ebb52abcbc548",
+      "horaUtc": "2026-11-14T12:57:49.825Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 20,
+      "fueraDelSector": 20,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "bce-rss",
+      "nombre": "BCE, prensa (RSS)",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml",
+      "bytes": 5898,
+      "sha256": "1a602fc5e042a4e0de84004e880ecf4bf985836a09beb2da9b22802e13ad09ae",
+      "horaUtc": "2026-11-14T12:57:49.826Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 15,
+      "fueraDelSector": 14,
+      "omitidosPorNombre": 1,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "eba-rss",
+      "nombre": "EBA, noticias (RSS)",
+      "url": "https://www.eba.europa.eu/rss.xml",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 18157,
+      "sha256": "690c83a1d1b369e1c740137c9fd87672dbf09ae4974edf63414d2803cd9c5e97",
+      "horaUtc": "2026-11-14T12:57:49.827Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 10,
+      "fueraDelSector": 10,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "comision-fisma",
+      "nombre": "Comisión Europea, noticias de finanzas (DG FISMA)",
+      "url": "https://finance.ec.europa.eu/finance-news_en",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 174154,
+      "sha256": "929750d461fa39224270a34395a8a118213268f573045b0569462222486558a6",
+      "horaUtc": "2026-11-14T12:57:49.828Z",
+      "error": null,
+      "cambia": null,
+      "leidos": 0,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    }
+  ],
+  "deNoticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 140108,
+      "sha256": "e781ed720cec86116e08e0c4f26140f1befd67a519aee0caaf0998c237ca4782",
+      "horaUtc": "2026-11-14T12:58:14.771Z",
+      "error": null,
+      "igualQuePublicada": null
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2208721,
+      "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
+      "horaUtc": "2026-11-14T12:57:49.829Z",
+      "error": null,
+      "igualQuePublicada": null
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2824126,
+      "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
+      "horaUtc": "2026-11-14T12:57:49.829Z",
+      "error": null,
+      "igualQuePublicada": null
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 97216,
+      "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
+      "horaUtc": "2026-11-14T12:58:17.695Z",
+      "error": null,
+      "igualQuePublicada": null
+    },
+    {
+      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 126383,
+      "sha256": "289265b26b53f727c54ce701024533e4dafdcd1a90189dea9601cb127eaece58",
+      "horaUtc": "2026-11-14T12:58:20.382Z",
+      "error": null,
+      "igualQuePublicada": null
+    }
+  ],
+  "caidas": [],
+  "criticasCaidas": []
+}

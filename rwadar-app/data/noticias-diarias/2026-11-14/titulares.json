@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "fecha": "2026-11-14",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "ef8916de157acf74be281491f5a1e5e4bc0a4b3267ea1fdf2f6b677745468edb"
+  },
+  "noticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "propuestas": {
+        "es": [
+          "11 firmas sin registro: compruébalas antes de invertir",
+          "Tres supervisores de la UE avisan de 11 firmas sin registro",
+          "Alemania prohibió a una firma ofrecer acciones sin folleto"
+        ],
+        "en": [
+          "11 unregistered firms: check them before you invest",
+          "Three EU supervisors flag 11 unregistered firms",
+          "Germany barred a firm offering shares with no prospectus"
+        ]
+      },
+      "elegido": {
+        "es": "11 firmas sin registro: compruébalas antes de invertir",
+        "en": "11 unregistered firms: check them before you invest"
+      },
+      "motivo": "Lleva la cifra y lo que puede hacer el lector (buscar la entidad en el buscador de advertencias que cita la CNMV); las otras ponen delante al organismo o a una sola de las 11 firmas.",
+      "heredado": null,
+      "foto": {
+        "clave": "alerta-fraude-3",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude-2",
+          "alerta-fraude",
+          "pago-online"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "propuestas": {
+        "es": [
+          "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+          "Liechtenstein aprueba cambios en los Stock Tokens",
+          "Robinhood podrá cobrar costes de sus Stock Tokens en tokens"
+        ],
+        "en": [
+          "Robinhood: the issuer may cut your Stock Tokens for costs",
+          "Liechtenstein approves changes to Robinhood's Stock Tokens",
+          "Robinhood may charge Stock Token costs in tokens"
+        ]
+      },
+      "elegido": {
+        "es": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+        "en": "Robinhood: the issuer may cut your Stock Tokens for costs"
+      },
+      "motivo": "Dice lo que le puede pasar al lector, con el sujeto exacto (el emisor) y en futuro, como el suplemento («may include proportionately reducing the number of Products»); las otras ponen al supervisor delante o confunden el sujeto.",
+      "heredado": null,
+      "foto": {
+        "clave": "acciones-movil",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "propuestas": {
+        "es": [
+          "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+          "Los 27 piden elevar a 300.000 millones el tope piloto",
+          "Sin topes por activo: lo que piden los 27 para tokenizar"
+        ],
+        "en": [
+          "Tokenised markets: EU states want a cap 50 times higher",
+          "EU states seek a €300bn cap for tokenised markets",
+          "EU states want to drop per-asset caps in tokenised markets"
+        ]
+      },
+      "elegido": {
+        "es": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+        "en": "Tokenised markets: EU states want a cap 50 times higher"
+      },
+      "motivo": "La cifra se entiende sin saber el tope actual (300.000 / 6.000 = 50 veces) y el verbo «piden» deja claro que es una posición, no una ley; «tope piloto» y «por activo» son más oscuros.",
+      "heredado": null,
+      "foto": {
+        "clave": "instituciones-ue-2",
+        "encaje": "propia",
+        "alternativas": [
+          "instituciones-ue",
+          "red-europea"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "propuestas": {
+        "es": [
+          "España ya tiene dos mercados de valores tokenizados",
+          "La CNMV autoriza Bit2Me STX, mercado de valores tokenizados",
+          "Bit2Me STX podrá negociar acciones y bonos tokenizados"
+        ],
+        "en": [
+          "Spain now has two tokenised securities markets",
+          "Spain's CNMV authorises Bit2Me STX for tokenised securities",
+          "Bit2Me STX will allow trading in tokenised shares and bonds"
+        ]
+      },
+      "elegido": {
+        "es": "España ya tiene dos mercados de valores tokenizados",
+        "en": "Spain now has two tokenised securities markets"
+      },
+      "motivo": "Hecho y cifra que se entienden sin conocer al regulador; la autorización ya es firme y la lista de ESMA da dos en España, así que «ya» es exacto.",
+      "heredado": null,
+      "foto": {
+        "clave": "bolsa-madrid",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu",
+          "red-europea"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
+      "propuestas": {
+        "es": [
+          "La CNMV propone atender tus quejas contra plataformas cripto",
+          "Quejas contra plataformas cripto: consulta hasta el 16/11",
+          "Reclamar ante la CNMV a plataformas cripto, aún en proyecto"
+        ],
+        "en": [
+          "Spain's CNMV proposes taking your crypto platform complaints",
+          "Crypto platform complaints: CNMV consults until 16 November",
+          "Complaints about crypto platforms could go to Spain's CNMV"
+        ]
+      },
+      "elegido": {
+        "es": "La CNMV propone atender tus quejas contra plataformas cripto",
+        "en": "Spain's CNMV proposes taking your crypto platform complaints"
+      },
+      "motivo": "Dice qué puede cambiar para el lector y, con «propone», que es un proyecto en consulta; la del plazo pone el trámite delante y la tercera es más torpe.",
+      "heredado": null,
+      "foto": {
+        "clave": "documentos-consulta",
+        "encaje": "propia",
+        "alternativas": [
+          "regulador-espana",
+          "regulador-espana-2"
+        ],
+        "faltaria": null
+      }
+    }
+  ]
+}
