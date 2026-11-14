@@ -28,7 +28,7 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   const conBase = fs.readdirSync(FLUJOS).filter(n => /\.ya?ml$/.test(n))
     .filter(n => /secrets\.SUPABASE_DB_URL/.test(fs.readFileSync(path.join(FLUJOS, n), 'utf8'))).sort();
   assert.deepEqual(conBase, ['aplicar-catalogo.yml', 'avisar-novedad.yml', 'avisos-base.yml', 'copia-seguridad.yml',
-    'correo-lettermint.yml', 'dominio-correo.yml', 'notificaciones-web.yml', 'numeros.yml', 'vigilante.yml'],
+    'correo-lettermint.yml', 'dominio-correo.yml', 'mercado-directo-base.yml', 'notificaciones-web.yml', 'numeros.yml', 'vigilante.yml'],
     'si se añade un flujo con la base, que entre en esta regla');
   for (const n of conBase) {
     const flujo = fs.readFileSync(path.join(FLUJOS, n), 'utf8');
