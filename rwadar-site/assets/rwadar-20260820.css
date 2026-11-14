@@ -2116,14 +2116,8 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .rel-progreso.on{opacity:1}
 .rel-progreso span{display:block;height:100%;background:var(--tx-2);transform:scaleX(0);transform-origin:left center}
 #movilPanelInicio[hidden] .rel-progreso{display:none}
-/* Aparecer al bajar: solo con JS y sin «reducir movimiento» (200 ms). */
-.rel-anim .rel-revela{opacity:0;transform:translateY(12px);transition:opacity var(--t-3) var(--ease),transform var(--t-3) var(--ease)}
-.rel-anim .rel-revela.visto{opacity:1;transform:none}
-.rel-anim .rel-par .rel-barra-rel{transform:scaleX(0);transition:transform var(--t-3) var(--ease) 120ms}
-.rel-anim .visto .rel-barra-rel{transform:none}
 @media (prefers-reduced-motion:reduce){
-  .rel-anim .rel-revela,.rel-anim .rel-revela *,.rel-progreso{transition:none!important}
-  .rel-anim .rel-revela,.rel-anim .rel-barra-rel{opacity:1;transform:none}
+  .rel-progreso{transition:none!important}
   .rel-quien-lista,.rel-tarjetas{scroll-behavior:auto}
 }
 /* Pantallas bajas: si se ve el botón, se ve el aviso (va antes). En escritorio, no. */

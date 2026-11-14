@@ -604,17 +604,17 @@ function cambioTabsMovilEsCoherente(codigo) {
     getAttribute(clave){ return this.atributos.get(clave) ?? null; },
   }));
   const document = { body:{ dataset:{} } };
-  let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
+  let cabeceraActual = '', mediciones = 0;
   let perfiles = 0, academias = 0;
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
-    'mostrarAvisos', 'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
+    'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
       let activa='buscar',academyAbierta=false,academyHistorial=false;
       let detalleAbierto=null,detalleHistorial=false,movilFiltrosAbiertos=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
   const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
-    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
+    id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
     ()=>{ perfiles++; }, ()=>{ academias++; });
   for (const [nombre,vista] of pasos) {
     if (vista) document.body.dataset.movilBuscar = vista;
@@ -1651,7 +1651,7 @@ const aprendeHTML = lee('aprende/index.html');
     /closest\('\[data-perfil-oferta\]'\)/.test(codigoShellMovil)&&/Movil\.ir\('movilRadarIntro',r\)/.test(js));
   prueba('Inicio: sin style= ni on…= y quieto con «reducir movimiento»',
     !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(panelInicioHTML)&&
-    /\.rel-anim \.rel-revela,\.rel-anim \.rel-barra-rel\{opacity:1;transform:none\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
+    !/\.rel-anim/.test(css)&&/\.rel-progreso\{transition:none!important\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
 }
 // «Fuera del radar» pasa a «Descartadas» (decisión de Víctor, 04/11/2026); /fuera-del-radar/ y #fuera se quedan.
 // El rótulo no se fija en una prueba (decisión de Víctor, 04/11/2026: sin reglas de redacción).

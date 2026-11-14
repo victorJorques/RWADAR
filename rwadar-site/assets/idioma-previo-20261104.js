@@ -59,9 +59,12 @@
         ingles: (texto, profundidad) => (completo || motor).ingles(texto, profundidad),
         traducir: (texto, idioma = motor.obtenerIdioma()) => idioma === 'en' ? (completo || motor).ingles(texto) : texto,
         cambiarIdioma(idioma) {
-          cambios++;
+          // Gana la última elección: si mientras llega el diccionario se elige
+          // otra vez «Español», el inglés que llega tarde no se aplica.
+          const turno = ++cambios;
           if (idioma !== 'en' || listo()) return motor.cambiarIdioma(idioma);
-          return cargarIngles().catch(() => {}).then(() => motor.cambiarIdioma(idioma));
+          return cargarIngles().catch(() => {})
+            .then(() => (cambios === turno ? motor.cambiarIdioma(idioma) : motor.obtenerIdioma()));
         },
         cargarIdioma(entrada) {
           if (listo()) return motor.cargarIdioma(entrada);

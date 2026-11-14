@@ -53,6 +53,19 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
      `<!--academy-inicio:…-->`, los condicionales y un comentario entre dos
      textos con letras (el traductor los lee por separado). Actualizada la
      decisión escrita de la cabecera de `rwadar-adelgazar.js`.
+- **Arreglos de la verificación independiente (14/11, aplicados por el
+  coordinador):** (1) carrera al cambiar de idioma: si se pulsaba «English» y,
+  mientras llegaba el diccionario, «Español», la página acababa en inglés y
+  guardaba «en». Ahora gana la última elección (`cambiarIdioma` con turno en
+  `idioma-previo-20261104.js`); prueba nueva de Chromium «gana la última
+  elección…» en `rwadar-acceso/idioma-diferido-navegador.test.mjs`, que falla
+  con el código de antes. (2) Fuera las 6 reglas `.rel-anim` que ya nadie
+  activaba (y la prueba de `probar-web.mjs` que las exigía pasa a exigir que
+  no estén y que la barra de progreso no se anime con «reducir movimiento»);
+  fuera `mostrarAvisos`/`cierresAvisos` del arnés de pestañas; comentario
+  corregido. (3) Conocido y aceptado: sin red para el diccionario, «English»
+  marca el inglés aunque los textos sigan en castellano, y lo reintenta la
+  vez siguiente (lo comprueba su prueba). `npm test` entero: salida 0.
 - **Ahorro medido** (Inicio, móvil Pixel 5 en Chromium, caché vacía, worker
   local con host `rwadar.test`, misma máquina y mismo guion antes y
   después): en castellano, **46 → 44 peticiones; 2.288,0 → 2.028,9 kB

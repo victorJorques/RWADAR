@@ -2213,8 +2213,9 @@ function sincronizarRadarPlegado(){
  b.textContent=abierto?'Ocultar el radar':'Ver el radar';
 }
 /* El relato: la portada a la altura de la pantalla y la barra de progreso de
-   lectura. El carrusel «Quién más se ha movido», «Fuentes de este apartado» y
-   el aparecer al bajar (.rel-revela) viven en /aprende/ (aprende-20261110.js). */
+   lectura. El carrusel «Quién más se ha movido» y «Fuentes de este apartado»
+   viven en /aprende/ (aprende-20261110.js); .rel-revela solo existe allí y no
+   se anima. */
 var relatoInicio=(function(){
  const $=id=>document.getElementById(id),panel=$('movilPanelInicio'),raiz=document.documentElement;
  const b=$('movilRadarAlternar');

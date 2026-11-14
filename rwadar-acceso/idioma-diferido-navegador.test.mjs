@@ -83,6 +83,7 @@ async function abrir(navegador, base, opciones, ruta, { ingles = false, app = fa
     const url = new URL(ruta.request().url());
     if (url.origin !== base) return ruta.abort();
     if (control.bloquearDiccionario && esDiccionario(url.pathname)) return ruta.abort();
+    if (control.retenerDiccionario && esDiccionario(url.pathname)) return control.retenerDiccionario.then(() => ruta.continue());
     return ruta.continue();
   });
   pagina.on('request', r => { const url = new URL(r.url()); if (url.origin === base) pedidas.push(url.pathname); });
@@ -200,6 +201,33 @@ test('sin red para el diccionario, «English» no rompe la página y lo vuelve a
     await s.pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
     await s.pagina.waitForFunction(() => RWAdarIdioma.traducir('Inicio') !== 'Inicio');
     assert.equal(await s.pagina.evaluate(() => RWAdarIdioma.traducir('Inicio')), INGLES.Inicio, 'con red, lo carga al volver a elegir inglés');
+    await s.contexto.close();
+  } finally { await navegador.close(); await local.cerrar(); }
+});
+
+test('gana la última elección: «English» y enseguida «Español» no acaba en inglés al llegar el diccionario', { skip: sinNavegador || (!construida && 'falta rwadar-publicado/: npm run test:web') }, async () => {
+  const local = await arrancarWorkerLocal({ raiz: PUBLICADO, puerto: 0 });
+  const navegador = await playwright.chromium.launch();
+  try {
+    const s = await abrir(navegador, local.url, VISTAS[0][1], '/plataformas/archax');
+    await s.pagina.waitForFunction(() => document.querySelector('[data-elegir-idioma="en"]'));
+    let soltar; s.control.retenerDiccionario = new Promise(ok => { soltar = ok; });
+    const pedidosAntes = s.pedidas.filter(esDiccionario).length;
+    await s.pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
+    for (let i = 0; i < 100 && s.pedidas.filter(esDiccionario).length === pedidosAntes; i++) await new Promise(ok => setTimeout(ok, 20));
+    assert.ok(s.pedidas.filter(esDiccionario).length > pedidosAntes, 'al elegir inglés se pide el diccionario (retenido)');
+    await s.pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
+    await s.pagina.waitForFunction(() => document.documentElement.lang === 'es');
+    soltar(); s.control.retenerDiccionario = null;
+    await s.pagina.waitForFunction(() => typeof RWAdarIdioma.traducir === 'function' && RWAdarIdioma.ingles('Inicio') !== 'Inicio');
+    await s.pagina.waitForTimeout(300);
+    const fin = await s.pagina.evaluate(() => ({ lang: document.documentElement.lang, idioma: RWAdarIdioma.obtenerIdioma(),
+      guardado: localStorage.getItem('rwadar.idioma'), pulsado: document.querySelector('[data-elegir-idioma="es"]').getAttribute('aria-pressed') }));
+    assert.equal(fin.idioma, 'es', 'el motor se queda en castellano');
+    assert.equal(fin.lang, 'es', 'la página se queda en castellano');
+    assert.notEqual(fin.guardado, 'en', 'no se guarda «en»');
+    assert.equal(fin.pulsado, 'true', '«Español» sigue pulsado');
+    assert.deepEqual(s.errores, [], 'sin errores');
     await s.contexto.close();
   } finally { await navegador.close(); await local.cerrar(); }
 });
