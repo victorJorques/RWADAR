@@ -16,7 +16,7 @@ export const REGLAS_PERSONAS = Object.freeze([
   { id: 'tratamiento', re: new RegExp(`(?:^|[^\\p{L}])D\\.\\s+${MAYUS}`, 'u') },
   { id: 'tratamiento', re: new RegExp(`(?:^|[^\\p{L}])(?:don|doña|Don|Doña)\\s+${MAYUS}`, 'u') },
   { id: 'cargo-con-nombre', re: new RegExp(`(?:^|[^\\p{L}])(?:President|Presidenta|Presidente|Vice-President|Vicepresident[ae]|Commissioner|Comisari[oa]|Governor|Gobernador(?:a)?|Minister|Ministr[oa]|Chair(?:man|woman|person)?|Executive Director|Secretary-General)\\s+${PALABRA}\\s+${PALABRA}`, 'u') },
-  { id: 'nombramiento-o-cese', re: /(?:^|[^\p{L}])(?:se nombra|nombramiento|nombrad[oa]s?|dispone el cese|se dispone el cese|cese de don|cese de doña)(?![\p{L}])/iu },
+  { id: 'nombramiento-o-cese', re: /(?:^|[^\p{L}])(?:se nombra|nombra a|nombramiento|nombrad[oa]s?|dispone el cese|se dispone el cese|cese de don|cese de doña|appoints|appointed|appointment of)(?![\p{L}])/iu },
   { id: 'correo', re: /[\w.+-]+@[\w-]+\.[a-z]{2,}/iu },
   { id: 'telefono', re: /(?<![\w.,/])(?:\+\d{1,3}[\s-]?)?[6789]\d{2}[\s-]?\d{3}[\s-]?\d{3}(?![\w.,/])/u },
 ]);

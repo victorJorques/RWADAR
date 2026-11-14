@@ -19,18 +19,22 @@ import { buscarPersonas } from './personas.mjs';
 
 export const SECTOR = /tokeni[sz]|token|cripto|crypto|\bmica\b|\bdlt\b|blockchain|cadena de bloques|registros? distribuidos?|distributed ledger|stablecoin|activos? digital|digital asset|valores|securities|\bcnmv\b|\besma\b|folleto|prospectus|financiaci[oó]n participativa|crowdfunding|advertencia|warning|unregistered|no registrad|inversor|investor|mercados? de capitales|capital markets|money market|fondos? monetari|letras del tesoro|treasury bills|bonos? digital|digital bonds?/iu;
 
+// Discursos, entrevistas y comparecencias: casi siempre llevan el nombre de
+// quien habla. No van a barrido.json (el editor los ve en las copias en bruto).
+export const PERSONALES = /\b(?:speech|keynote|interview|remarks|blog post|podcast|hearing|testimony|discurso|entrevista|intervenci[oó]n|comparecencia|declaraciones de)\b/iu;
+
 const pausa = ms => new Promise(f => setTimeout(f, ms));
 const servidor = url => { try { return new URL(url).host; } catch { return '?'; } };
 
 /* Una petición con las reglas de arriba. Devuelve {http, tipo, bytes, sha256,
    horaUtc, urlFinal, error, cuerpo}. «pedir» se puede cambiar en las pruebas. */
-export async function pedirFuente(url, { pedir = fetch, intentos = 3, plazoMs = 40000, esperaBaseMs = 2000, ahora = () => new Date() } = {}) {
+export async function pedirFuente(url, { pedir = fetch, intentos = 3, plazoMs = 40000, esperaBaseMs = 2000, ahora = () => new Date(), accept = '*/*' } = {}) {
   let ultimo = null;
   for (let i = 0; i < intentos; i++) {
     const horaUtc = ahora().toISOString();
     try {
       const r = await pedir(url, { redirect: 'follow', signal: AbortSignal.timeout(plazoMs),
-        headers: { accept: '*/*', 'accept-language': 'es-ES,es;q=0.9,en;q=0.8' } });
+        headers: { accept, 'accept-language': 'es-ES,es;q=0.9,en;q=0.8' } });
       const cuerpo = Buffer.from(await r.arrayBuffer());
       const resultado = { http: r.status, tipo: r.headers.get('content-type') || '', bytes: cuerpo.length, sha256: sha256(cuerpo),
         horaUtc, urlFinal: r.url || url, error: null, cuerpo };
@@ -46,7 +50,7 @@ export async function pedirFuente(url, { pedir = fetch, intentos = 3, plazoMs = 
 
 /* Pide una lista de URL: servidores distintos a la vez, el mismo de una en una
    y con «separacionMs» entre peticiones. */
-export async function pedirVarias(urls, { separacionMs = 2000, ...opciones } = {}) {
+export async function pedirVarias(urls, { separacionMs = 2000, acceptPorUrl = new Map(), ...opciones } = {}) {
   const porServidor = new Map();
   for (const url of urls) {
     const s = servidor(url);
@@ -57,7 +61,7 @@ export async function pedirVarias(urls, { separacionMs = 2000, ...opciones } = {
   await Promise.all([...porServidor.values()].map(async lista => {
     for (let i = 0; i < lista.length; i++) {
       if (i) await pausa(separacionMs);
-      salida.set(lista[i], await pedirFuente(lista[i], opciones));
+      salida.set(lista[i], await pedirFuente(lista[i], { ...opciones, ...(acceptPorUrl.has(lista[i]) ? { accept: acceptPorUrl.get(lista[i]) } : {}) }));
     }
   }));
   return salida;
@@ -126,8 +130,8 @@ export function filtrarElementos(elementos, { todoDelSector = false } = {}) {
   const guardados = [];
   let fueraDelSector = 0, conNombre = 0;
   for (const e of elementos) {
-    if (!todoDelSector && !SECTOR.test(`${e.titulo} ${e.enlace}`)) { fueraDelSector++; continue; }
-    if (buscarPersonas(e.titulo, { titular: true }) || buscarPersonas(descodificar(e.enlace || '').replace(/[-_/]/g, ' '))) { conNombre++; continue; }
+    if (!todoDelSector && !SECTOR.test(e.titulo)) { fueraDelSector++; continue; }
+    if (PERSONALES.test(e.titulo) || buscarPersonas(e.titulo, { titular: true }) || buscarPersonas(descodificar(e.enlace || '').replace(/[-_/]/g, ' '))) { conNombre++; continue; }
     guardados.push({ fecha: e.fecha, hora: e.hora, titulo: e.titulo.slice(0, 240), enlace: e.enlace.slice(0, 400) });
   }
   return { guardados, fueraDelSector, conNombre };
@@ -146,7 +150,8 @@ export async function barrer({ fecha, ayer, fuentes, referencia, huellasAnterior
   const inicioUtc = new Date().toISOString();
   const lista = fuentes.map(f => ({ ...f, urlReal: direccion(f.url, fecha, ayer) }));
   const deNoticias = [...new Set((referencia?.noticias || []).map(n => n.fuente?.url).filter(Boolean))];
-  const respuestas = await pedirVarias([...new Set([...lista.map(f => f.urlReal), ...deNoticias])], opciones);
+  const acceptPorUrl = new Map(lista.filter(f => f.accept).map(f => [f.urlReal, f.accept]));
+  const respuestas = await pedirVarias([...new Set([...lista.map(f => f.urlReal), ...deNoticias])], { ...opciones, acceptPorUrl });
   const desde = referencia?.actualizadoEl || ayer;
   fs.mkdirSync(crudo, { recursive: true });
   const guardar = (nombre, r) => { if (r.cuerpo?.length) fs.writeFileSync(path.join(crudo, nombre + extension(r.tipo)), r.cuerpo); };
@@ -160,7 +165,7 @@ export async function barrer({ fecha, ayer, fuentes, referencia, huellasAnterior
     if (!caida && !sinEdicion) {
       try { elementos = (LECTORES[f.lector] || LECTORES.huella)(r.cuerpo.toString('utf8')); } catch { elementos = []; }
     }
-    if (!caida && f.lector !== 'huella' && !sinEdicion && elementos.length === 0) {
+    if (!caida && f.lector !== 'huella' && !sinEdicion && !f.vacioEsNormal && elementos.length === 0) {
       // Respondió, pero no se entiende: como caída (la página cambió de forma).
       salida.caidas.push({ id: f.id, motivo: 'respondió sin elementos legibles' });
       if (f.critica) salida.criticasCaidas.push(f.id);
@@ -191,7 +196,7 @@ export async function barrer({ fecha, ayer, fuentes, referencia, huellasAnterior
 /* comprobar-fuentes: abre cada fuente.url de una edición y escribe el
    inventario del programa (V-12 se juzga contra este, no contra el del editor). */
 export async function comprobarFuentes({ fecha, edicion, crudo, opciones = {} }) {
-  const urls = [...new Set((edicion?.noticias || []).map(n => n?.fuente?.url).filter(u => typeof u === 'string' && /^https:\/\//.test(u)))];
+  const urls = [...new Set((edicion?.noticias || []).map(n => n?.fuente?.url).filter(u => typeof u === 'string' && /^https?:\/\//.test(u)))];
   const respuestas = await pedirVarias(urls, opciones);
   if (crudo) fs.mkdirSync(crudo, { recursive: true });
   const fuentes = urls.map(url => {

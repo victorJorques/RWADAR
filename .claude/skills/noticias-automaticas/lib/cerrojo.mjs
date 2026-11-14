@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { RUTAS, ARCHIVOS_NOTICIAS, DIR_SKILL, sha256, git, gitTexto, leerJSON, leerJSONSiHay, sumarDias, diasEntre, ddmm, ddmmaaaa, esFecha } from './comun.mjs';
+import { RUTAS, ARCHIVOS_NOTICIAS, DIR_SKILL, enlazarDependencias, sha256, git, gitTexto, leerJSON, leerJSONSiHay, sumarDias, diasEntre, ddmm, ddmmaaaa, esFecha } from './comun.mjs';
 import { compararArchivos, cambiosSelladosDesde } from './produccion.mjs';
 import { comprobarConforme, verificacionFinal, nombreEdicion } from './validar.mjs';
 
@@ -163,21 +163,12 @@ export function noticiasVerificadasEn(cwd, ref) {
   return salida;
 }
 
-/* Una copia aparte de «ref» (git worktree) con las dependencias enlazadas.
-   rwadar-app/node_modules es una carpeta de verdad con un enlace por paquete:
-   un enlace con ese nombre no lo ignora Git y ensuciaría el árbol. */
+/* Una copia aparte de «ref» (git worktree) con las dependencias enlazadas. */
 export function prepararCopia({ cwd, ref, destino }) {
   fs.rmSync(destino, { recursive: true, force: true });
   git(['worktree', 'prune'], { cwd, permitir: [0, 128] });
   git(['worktree', 'add', '--detach', '--force', destino, ref], { cwd });
-  const raizMods = path.join(cwd, 'node_modules');
-  if (fs.existsSync(raizMods)) fs.symlinkSync(raizMods, path.join(destino, 'node_modules'), 'dir');
-  const appMods = path.join(cwd, 'rwadar-app', 'node_modules');
-  if (fs.existsSync(appMods)) {
-    const dentro = path.join(destino, 'rwadar-app', 'node_modules');
-    fs.mkdirSync(dentro, { recursive: true });
-    for (const e of fs.readdirSync(appMods)) fs.symlinkSync(path.join(appMods, e), path.join(dentro, e));
-  }
+  enlazarDependencias(cwd, destino);
   return destino;
 }
 /* Construye la copia con el reloj dado y devuelve su rwadar-publicado/. */

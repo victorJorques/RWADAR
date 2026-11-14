@@ -133,7 +133,7 @@ export function comprobarConforme(ver, { bytes, ids, pase, fecha }) {
    fase «editor»: lo que entrega el editor (o el corregido), antes de la carpeta.
    fase «final»: la carpeta del día ya en el repositorio, con su verificación.
    fase «publicada»: una carpeta guardada (para npm test y la CI): V-1…V-12, V-14 y V-15. */
-export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titularesRuta, inventario, referencia, carpeta, base, conSello = false }) {
+export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titularesRuta, inventario, referencia, carpeta, base, conSello = false, rutaGuia = null }) {
   const { modelo, fotos: modFotos, v1 } = modulos(raiz);
   const reglas = [];
   const regla = (id, fallos, nombre) => { reglas.push({ id, nombre, ok: fallos.length === 0, detalle: fallos }); return fallos.length === 0; };
@@ -206,7 +206,7 @@ export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titular
       }
       if (!caida) { f.push(`${n?.id}: consultadaEl ${n?.consultadaEl} y su fuente responde: debe ser ${fecha}`); continue; }
       const ref = refPorId.get(n.id);
-      if (!ref) f.push(`${n.id}: fuente caída y no estaba publicada`);
+      if (!ref) { if (fase !== 'publicada') f.push(`${n.id}: fuente caída y no estaba publicada`); }
       else if (!igual(ref, n)) f.push(`${n.id}: fuente caída: debe quedar letra a letra como la publicada (también consultadaEl)`);
     }
     regla('V-5', f, 'consultada hoy, o intacta si su fuente cayó');
@@ -234,11 +234,14 @@ export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titular
   {
     const f = [];
     try { titulares = leerJSON(titularesRuta); } catch (e) { f.push(e.message); }
-    const guia = path.join(raiz, RUTAS.guia);
+    const guia = rutaGuia || path.join(raiz, RUTAS.guia);
     if (titulares) {
       if (titulares.version !== 1) f.push('titulares.json: version debe ser 1');
       if (titulares.fecha !== fecha) f.push(`titulares.json: fecha ${titulares.fecha}, se esperaba ${fecha}`);
-      if (!fs.existsSync(guia)) f.push(`falta la guía de titulares (${RUTAS.guia})`);
+      if (fase === 'publicada') {
+        // Una carpeta guardada se juzga con la guía de su día: solo se mira que la nombre.
+        if (titulares.guia?.ruta !== RUTAS.guia || !/^[0-9a-f]{64}$/.test(String(titulares.guia?.sha256 || ''))) f.push('titulares.json: falta la guía (ruta y SHA-256)');
+      } else if (!fs.existsSync(guia)) f.push(`falta la guía de titulares (${RUTAS.guia})`);
       else if (titulares.guia?.ruta !== RUTAS.guia || titulares.guia?.sha256 !== sha256(fs.readFileSync(guia))) {
         f.push('titulares.json: la guía no es la actual (ruta y SHA-256 de GUIA-TITULARES.md)');
       }
@@ -313,7 +316,7 @@ export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titular
         texto.split('\n').forEach((linea, i) => { const h = buscarPersonas(linea); if (h) f.push(`${a.rel}:${i + 1}: ${h.regla} («${h.trozo}»)`); });
       }
     }
-    regla('V-11', f, 'sin nombres con tratamiento, nombramientos, correos ni teléfonos');
+    regla('V-11', f, 'sin datos personales (tratamientos, cargos con nombre, altas y bajas del BOE, correos y teléfonos)');
   }
   // V-12 Fuentes https y abiertas hoy por el programa (no por el editor).
   {

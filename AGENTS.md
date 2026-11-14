@@ -58,6 +58,38 @@ Cada candidata se admite y publica tras las compuertas y con autorización, o no
 se admite ni publica ese día; no se mantiene una cola ni un estado público
 «en investigación». En otro inicio manual se consultan de nuevo las fuentes,
 sin arrastrar aprobaciones. El catálogo completo ya publicado se conserva.
+La única excepción a «inicio manual» son las noticias del sector de cada
+mañana (abajo).
+
+**Noticias del sector automáticas (autorización permanente de Víctor del
+13/11/2026).** Cada mañana, la tarea programada «Noticias automáticas de
+RWAdar» sigue la skill
+[`noticias-automaticas`](.claude/skills/noticias-automaticas/SKILL.md) y, sin
+pedir permiso cada vez, puede: escribir y verificar las noticias del sector
+(un editor y un verificador independientes), abrir su PR, unirlo a `main` con
+la CI en verde, sellar ese contenido en el mismo PR y lanzar «Publicar web»
+(revisión y producción). Solo si pasan todas las compuertas de la skill (el
+freno); si algo falla o hay dudas, no se publica nada y se avisa a Víctor.
+Nunca se avisa a los usuarios.
+
+El PR de la mañana solo puede cambiar `rwadar-site/datos/noticias-v2.json`,
+`rwadar-site/datos/noticias.json`, `rwadar-app/data/noticias-diarias/<fecha>/`
+y el sello (`estado.json`: commit, huella y nota; nunca `actualizadoEl`, que
+sigue siendo la fecha del último sello revisado por una persona: a los 7 días
+sin uno, la mañana se para y avisa). Esta autorización **no** incluye:
+investigar o cambiar el catálogo, tocar Supabase (salvo la lectura de
+visitante), enviar OTA, compilar la app, avisos o notificaciones a usuarios,
+generar o cambiar fotos, cambiar código, la CI, la skill, la guía de titulares
+o esta autorización, ni publicar si el freno paró.
+
+Sigue necesitando la orden de Víctor: encender la tarea, cambiar su hora o su
+texto, volver a encenderla tras pausarla, publicar unas noticias que el freno
+paró, retirar unas noticias ya publicadas y cualquier cambio en el
+procedimiento. Para pausarla sin borrar nada: `"activo": false` en
+`.claude/skills/noticias-automaticas/config.json` (cualquier herramienta puede
+proponerlo en un PR), desactivar la tarea programada o, solo un día, crear la
+rama `claude/cerrojo-ciclo-<AAAA-MM-DD>`. Estado: preparada y **SIN
+ENCENDER** (ver [`ORDEN-TAREA.md`](.claude/skills/noticias-automaticas/ORDEN-TAREA.md)).
 
 ## Límites de seguridad
 

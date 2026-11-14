@@ -97,6 +97,19 @@ export function git(argumentos, { cwd = RAIZ_REPO, permitir = [0] } = {}) {
   if (!permitir.includes(r.status)) throw new Error(`git ${argumentos.join(' ')} (código ${r.status}): ${String(r.stderr).trim()}`);
   return { codigo: r.status, salida: String(r.stdout), error: String(r.stderr) };
 }
+/* Las dependencias de una copia aparte (git worktree), enlazadas desde la raíz.
+   node_modules/ es una carpeta de verdad con un enlace por paquete: un enlace
+   llamado node_modules no lo ignora Git («node_modules/» solo casa con
+   carpetas) y la compuerta vería el árbol sucio. */
+export function enlazarDependencias(raiz, destino) {
+  for (const sub of ['', 'rwadar-app', 'rwadar-movil']) {
+    const origen = path.join(raiz, sub, 'node_modules');
+    if (!fs.existsSync(origen)) continue;
+    const dentro = path.join(destino, sub, 'node_modules');
+    fs.mkdirSync(dentro, { recursive: true });
+    for (const e of fs.readdirSync(origen)) if (!fs.existsSync(path.join(dentro, e))) fs.symlinkSync(path.join(origen, e), path.join(dentro, e));
+  }
+}
 export const gitTexto = (argumentos, opciones) => git(argumentos, opciones).salida.trim();
 export function arbolLimpio(cwd = RAIZ_REPO) {
   return gitTexto(['status', '--porcelain=v1', '--untracked-files=all'], { cwd }) === '';
