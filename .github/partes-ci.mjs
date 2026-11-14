@@ -14,11 +14,11 @@
 //                                         primer fallo, como «&&»)
 //
 // Partes:
-//   bateria-1 … bateria-5  las pruebas de rwadar-app (npm run test:db), una
+//   bateria-1 … bateria-6  las pruebas de rwadar-app (npm run test:db), una
 //       a una, y el bloque web (test:web, test:qr, test:tools y test:acceso,
 //       juntos y en su orden: las de acceso y probar-orden leen el
 //       rwadar-publicado/ que genera test:web). Se reparten por lo que tarda
-//       cada una (PESOS) para que las cinco acaben a la vez. Son cinco para
+//       cada una (PESOS) para que las seis acaben a la vez. Son seis (desde el 14/11/2026, con el directo y las noticias automáticas) para
 //       que cada parte quede bien por debajo del minuto (GitHub cobra cada
 //       trabajo por minutos enteros).
 //   movil   npm run test:mobile (lleva sus propias dependencias).
@@ -34,7 +34,7 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 
-export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4', 'bateria-5'];
+export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4', 'bateria-5', 'bateria-6'];
 
 // Segundos que tarda cada orden en GitHub (estimados el 13/11/2026: lo medido
 // en local sin Chromium, como en CI, por 1,1; el bloque web, medido en CI).

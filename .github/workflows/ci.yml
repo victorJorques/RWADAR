@@ -110,11 +110,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { parte: bateria-1, nombre: 'Batería 1/5', base: true, movil: false, auditar: rwadar-app }
-          - { parte: bateria-2, nombre: 'Batería 2/5', base: true, movil: false, auditar: '' }
-          - { parte: bateria-3, nombre: 'Batería 3/5', base: true, movil: false, auditar: '' }
-          - { parte: bateria-4, nombre: 'Batería 4/5', base: true, movil: false, auditar: '' }
-          - { parte: bateria-5, nombre: 'Batería 5/5', base: true, movil: false, auditar: '' }
+          - { parte: bateria-1, nombre: 'Batería 1/6', base: true, movil: false, auditar: rwadar-app }
+          - { parte: bateria-2, nombre: 'Batería 2/6', base: true, movil: false, auditar: '' }
+          - { parte: bateria-3, nombre: 'Batería 3/6', base: true, movil: false, auditar: '' }
+          - { parte: bateria-4, nombre: 'Batería 4/6', base: true, movil: false, auditar: '' }
+          - { parte: bateria-5, nombre: 'Batería 5/6', base: true, movil: false, auditar: '' }
+          - { parte: bateria-6, nombre: 'Batería 6/6', base: true, movil: false, auditar: '' }
           - { parte: movil, nombre: 'App móvil', base: false, movil: true, auditar: rwadar-movil }
     steps:
       - name: Descargar el código
