@@ -6,7 +6,7 @@
 -- La web y la app lo leen directamente, sin publicar nada.»
 -- Copia idéntica: supabase/migrations/20261114090000_mercado_directo.sql.
 --
--- Aplicarla es tocar Supabase en línea: solo con orden expresa de Víctor,
+-- Aplicarla es tocar Supabase en línea: solo con orden expresa de la dirección,
 -- con el flujo «Mercado en directo (base)» (ensayo-35, aplicar-35 y
 -- verificar-35). Nunca con `supabase db push`. No depende de las
 -- migraciones 01-34 ni toca nada suyo: solo crea el esquema

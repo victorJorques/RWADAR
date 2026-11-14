@@ -100,6 +100,19 @@ const fetchPega = ({ falla = [], sinDiaria = false } = {}) => async (url) => {
   paso('solo usa SUPABASE_DB_URL y COPIA_CLAVE', isDeepStrictEqual(secretos, ['secrets.COPIA_CLAVE', 'secrets.SUPABASE_DB_URL']));
 }
 
+/* ---------- 2b · La vigilancia de la fase 2 (comparar-directo.mjs) ---------- */
+{
+  const { compararDirecto } = await import('./tokenizacion/comparar-directo.mjs');
+  const fina = JSON.parse(leer('tokenizacion/prueba-serie-fina-20261113.json'));
+  const igual = compararDirecto({ version: 1, fina, sinLectura: { '5m': [], '1h': [] } }, fina);
+  // El directo un 0,05 % por encima en todo: dentro; un 0,2 % en la mitad de los cubos: fuera de la compuerta.
+  const mueve = (f, factor, cada = 1) => { const x = JSON.parse(JSON.stringify(f)); x.series['5m'].puntos = x.series['5m'].puntos.map((p, i) => (i % cada ? p : [p[0], Math.round(p[1] * factor), p[2]])); return x; };
+  const poco = compararDirecto({ version: 1, fina: mueve(fina, 1.0005), sinLectura: { '5m': [], '1h': [] } }, fina);
+  const mucho = compararDirecto({ version: 1, fina: mueve(fina, 1.002, 2), sinLectura: { '5m': [], '1h': [] } }, fina);
+  paso(`comparar-directo: el mismo instante (cada punto de la fina con el cubo de 5 minutos del directo que lo contiene); la compuerta de la fase 2 (≥ 95 % dentro del 0,1 %) pasa con un 0,05 % y no con un 0,2 % en la mitad (${igual.comparables} comparables)`,
+    igual.pasa && igual.maximo < 0.001 && igual.mismosFuera && igual.mismosLargos && igual.comparables > 289 && poco.pasa && !mucho.pasa);
+}
+
 /* ---------- 3 · Dobles: psql (PGlite + pg_net), node, sleep y curl ---------- */
 const db = await baseDirecto({ aplicar: false });
 const llamadas = [];

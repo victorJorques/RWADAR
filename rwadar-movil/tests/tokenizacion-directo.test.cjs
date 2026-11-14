@@ -137,6 +137,10 @@ test('unirDirecto: freno del 25 % y costura del 5 % (en la de 5 minutos y en la 
   assert.equal(conDiaria(0.049, 3), null, 'horaria (diaria de hace 3 días): 4,9 % sí');
   assert.equal(conDiaria(0.051, 3), 'costura', 'horaria: 5,1 % no');
   assert.equal(conDiaria(0.3), 'costura', 'el freno del 25 %');
+  // El freno por sí solo: la costura casa (diaria de ayer, en la de 5 minutos) pero el último dato sube un 40 %.
+  const salto = copia(FINA), ult = salto.series['5m'].puntos.length - 1;
+  salto.series['5m'].puntos[ult] = [salto.series['5m'].puntos[ult][0], Math.round(salto.series['5m'].puntos[ult][1] * 1.4), 30];
+  assert.equal(unir(diariaDe(1), servido(documento(salto))).motivo, 'costura', 'un salto del 40 % en el último dato');
   // Una diaria de hace más de 30 días: no hay costura que mirar.
   assert.equal(unir(diariaDe(29)).motivo, null);
   const vieja = copia(DIARIA); vieja.generado = '2026-10-01T10:00:00Z'; vieja.puntos = vieja.puntos.filter(p => p.fecha <= '2026-10-01');
@@ -163,6 +167,17 @@ test('unirDirecto: los días desde la diaria hasta hoy salen de la horaria del d
     }
     assert.ok(p.length <= t.SERIE.maxPuntos);
     assert.ok(p[0].fecha >= t.fechaDe(t.msMinuto('2026-11-13T00:00Z') - 365 * DIA));
+  }
+  // Con un token fuera de la horaria (150 M$), cada día que se rellena suma también lo de fuera.
+  const conFuera = copia(FINA), FUERA = 150e6, fueraId = conFuera.tokens[conFuera.tokens.length - 1];
+  conFuera.series['1h'].fuera = [fueraId]; conFuera.series['1h'].valorFuera = FUERA;
+  conFuera.series['1h'].largos = conFuera.series['1h'].largos.filter(x => x !== fueraId);
+  conFuera.series['1h'].puntos = conFuera.series['1h'].puntos.map(([iso, v, n]) => [iso, v - FUERA, n - 1]);
+  const rf = unir(diariaDe(3), servido(documento(conFuera)));
+  assert.equal(rf.motivo, null);
+  for (const f of ['2026-11-11', '2026-11-12']) {
+    assert.equal(rf.serie.puntos.find(x => x.fecha === f).valor, del23(f)[1], `${f}: el cubo de las 23:00 más lo de fuera`);
+    assert.equal(rf.serie.puntos.find(x => x.fecha === f).tokens, 30);
   }
   // Sin horaria (ese día no salió): el último punto de la diaria se queda como estaba; con una
   // diaria de hace 3 días tampoco hay costura que mirar (la de 5 minutos solo cubre 24 h).

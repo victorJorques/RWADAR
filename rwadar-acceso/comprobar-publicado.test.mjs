@@ -82,8 +82,9 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
   for (const linea of esperadas) assert.ok(correcta(resultado.lineas, linea), 'Falta: ' + linea);
   assert.equal(academy.lecciones.length, 9); assert.deepEqual([...academy.pendientes], []);
   assert.ok(!salida.includes('(Próximamente) no tiene página'), 'no queda ninguna lección «Próximamente» que pedir');
-  // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó).
-  assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user']);
+  // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó) y, desde el 14/11/2026, por la
+  // función pública del gráfico en directo (sin la migración 35, 404: «directo_apagado»).
+  assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user', 'POST /rest/v1/rpc/tokenizacion_directo']);
 });
 
 /* En una vista previa (revision.rwadar.pages.dev), Cloudflare Pages pone

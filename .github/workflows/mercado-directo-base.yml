@@ -8,7 +8,7 @@ name: Mercado en directo (base)
 # se puede pasar un archivo cualquiera.
 #
 # Cada acción que cambia la base (o llama a CoinGecko desde ella) necesita
-# orden expresa de Víctor (AGENTS.md) y escribir DIRECTO en «confirmar».
+# orden expresa de la dirección (AGENTS.md) y escribir DIRECTO en «confirmar».
 # «ensayo-35», «verificar-35» y «estado» no cambian nada.
 #
 #   ensayo-35        la 35 y su verificador en una transacción que se deshace.

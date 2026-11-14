@@ -111,7 +111,8 @@ test('503 con su código: sin datos, roto, de otra lista, viejo, del futuro, la 
     ['directo_atrasado', { inicio: GENERADO - 6 * MIN }],
     ['directo_atrasado', { supabase: () => ok({ ...DOC, diariaLeida: '2026-11-13T14:20:00Z' }) }],
     ['directo_atrasado', { supabase: () => ok({ ...DOC, diariaLeida: null }) }],
-    ['directo_no_responde', { supabase: () => new Response('x'.repeat(70 * 1024)) }],
+    // Un documento bueno, pero con más de 64 kB en la respuesta: no se lee entero.
+    ['directo_no_responde', { supabase: () => new Response(JSON.stringify({ estado: 'ok', doc: DOC, relleno: 'x'.repeat(70 * 1024) })) }],
     ['directo_no_responde', { supabase: () => new Response('error', { status: 500 }) }],
     ['directo_no_responde', { supabase: () => { throw new Error('sin red'); } }],
   ];

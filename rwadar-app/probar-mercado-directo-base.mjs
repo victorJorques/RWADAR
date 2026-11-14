@@ -112,7 +112,9 @@ await db.exec('update rwadar_mercado.configuracion set encendido = true');
   paso('leer(): 200 bueno → guarda observaciones (los 60 mayores ∪ los de la diaria), apunta la lectura, hace el documento y pone los fallos a 0',
     l.coingecko === 200 && l.validos === 250 && l.construido === true && (await valor(db, 'select count(distinct token) from rwadar_mercado.obs_5m')) === 60
     && (await valor(db, 'select count(*) from rwadar_mercado.lecturas')) === 1 && (await cfg()).fallos_seguidos === 0
-    && isDeepStrictEqual((await cfg()).tokens, TOKENS) && (await valor(db, 'select count(*) from rwadar_mercado.directo')) === 1);
+    && isDeepStrictEqual((await cfg()).tokens, TOKENS) && (await valor(db, 'select count(*) from rwadar_mercado.directo')) === 1
+    // La hora del documento es la de la respuesta de CoinGecko (10:03:01), no la de la lectura (10:04).
+    && (await valor(db, "select doc->>'generado' from rwadar_mercado.directo")) === '2026-11-14T10:03:01Z');
   // Ranuras: un reloj que llega 50 s tarde no pierde su ranura; dos peticiones nunca a menos de 240 s.
   await fijarReloj(db, T + 4 * MIN + 59000);
   paso('a los 4 min 59 s (misma ranura de 5 minutos), ninguna', (await pedir()) === 'pronto' && (await nuevas()).length === 0);
