@@ -20,3 +20,11 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
   construcción, luego verificar los arreglos: se construye, se revisa una vez,
   se arregla lo que salga y se entrega. Las pruebas automáticas (`npm test`, la
   CI) y el sello se mantienen. Prioridad: entregar rápido.
+- **Novedades siempre como notificación** (orden permanente de Víctor del
+  14/11/2026: «pon las novedades como notificación, acuérdate eso siempre»).
+  Cada vez que se publique algo nuevo para el usuario (mejoras de la web o la
+  app, o un ciclo del catálogo con cambios), al terminar se lanza «Avisar
+  novedad» (`avisar-novedad.yml`, acción `anunciar`, tipo `novedad`, título y
+  texto en llano sin «oportunidad», «rentabilidad», «garantiz…» ni %, enlace a
+  la página donde se ve, confirmación `ENVIAR`). Esta orden es el permiso para
+  ese aviso; no hace falta pedirlo cada vez.
