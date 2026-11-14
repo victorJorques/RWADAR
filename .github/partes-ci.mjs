@@ -79,6 +79,10 @@ export const PESOS = Object.freeze({
   'node probar-admin-huella.mjs': 14,
   'node --test probar-mapa-buscar.test.cjs': 0.2,
   'node --test ../.claude/skills/investigacion-catalogo/entrega/motor.test.mjs ../.claude/skills/investigacion-catalogo/entrega/flujo.test.mjs': 5.5,
+  // Noticias automáticas (14/11/2026): sus pruebas (la de sello.test.mjs hace
+  // commits en una copia aparte con git worktree) y la edición publicada.
+  'node --test ../.claude/skills/noticias-automaticas/pruebas/*.test.mjs': 15,
+  'node ../.claude/skills/noticias-automaticas/noticias-auto.mjs validar --publicada': 0.5,
   'node --test ../.github/*.test.mjs': 14,
   'test:web': 10,
   'test:qr': 0.1,
@@ -98,6 +102,8 @@ export const SELLO = Object.freeze([
   'node probar-transparencia-comercial.mjs',
   'node probar-cobro-seguro.mjs',
   'node probar-auditoria-relanzamiento.mjs',
+  // Las noticias automáticas sellan con estado.json como plantilla (14/11/2026).
+  'node --test ../.claude/skills/noticias-automaticas/pruebas/*.test.mjs',
   'node --test ../.github/flujos.test.mjs',
 ]);
 const PRUEBAS_GITHUB = 'node --test ../.github/*.test.mjs';

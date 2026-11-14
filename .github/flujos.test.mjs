@@ -354,6 +354,9 @@ function bateriaDePrueba(app) {
   for (const orden of app) {
     const m = /^node (?:--test )?([\w.-]+)$/.exec(orden);
     if (m) escribir(path.join('rwadar-app', m[1]), apuntar + (m[1] === 'falla.mjs' ? 'process.exit(3);\n' : ''));
+    // «node --test ../carpeta/*.test.mjs» (las pruebas de las noticias automáticas): una prueba de mentira en esa carpeta.
+    const g = /^node --test \.\.\/(?!\.github\/)(.+)\/\*\.test\.mjs$/.exec(orden);
+    if (g) escribir(path.join(g[1], 'carpeta.test.mjs'), apuntar);
   }
   escribir('.github/flujos.test.mjs', apuntar);
   escribir('package.json', JSON.stringify({ scripts: {
@@ -378,7 +381,8 @@ const correrParte = (dir, ...args) => {
 
 test('partes-ci: ejecuta una parte en su orden, dentro de rwadar-app, y para en el primer fallo', async (t) => {
   const { plan, PARTES_BATERIA } = await import('./partes-ci.mjs');
-  const SELLO_APP = ['node probar-transparencia-comercial.mjs', 'node probar-cobro-seguro.mjs', 'node probar-auditoria-relanzamiento.mjs'];
+  const SELLO_APP = ['node probar-transparencia-comercial.mjs', 'node probar-cobro-seguro.mjs', 'node probar-auditoria-relanzamiento.mjs',
+    'node --test ../.claude/skills/noticias-automaticas/pruebas/*.test.mjs'];
   const app = ['node probar-comunidad.mjs', 'node uno.mjs', ...SELLO_APP, 'node probar-admin-huella.mjs', 'node dos.mjs',
     'node probar-reabrir-cuentas.mjs', 'node --test ../.github/*.test.mjs'];
   const dir = bateriaDePrueba(app);
@@ -394,14 +398,14 @@ test('partes-ci: ejecuta una parte en su orden, dentro de rwadar-app, y para en 
   }
   // (la de ../.github/*.test.mjs corre el flujos.test.mjs de mentira).
   assert.deepEqual(vistas.filter(v => / en rwadar-app$/.test(v)).sort(),
-    app.map(o => (o.includes('*') ? 'flujos.test.mjs' : o.replace(/^node /, '')) + ' en rwadar-app').sort());
+    app.map(o => (o.includes('../.github/*') ? 'flujos.test.mjs' : o.includes('*') ? 'carpeta.test.mjs' : o.replace(/^node /, '')) + ' en rwadar-app').sort());
   // Los guiones de la raíz corren desde la raíz.
   assert.ok(vistas.includes(`web.mjs en ${path.basename(dir)}`) && vistas.includes(`movil.mjs en ${path.basename(dir)}`), vistas.join('\n'));
-  // El sello: sus cuatro órdenes, en este orden.
+  // El sello: sus cinco órdenes, en este orden.
   const sello = correrParte(dir, 'sello');
   assert.equal(sello.codigo, 0, sello.texto);
   assert.deepEqual(sello.traza, ['probar-transparencia-comercial.mjs en rwadar-app', 'probar-cobro-seguro.mjs en rwadar-app',
-    'probar-auditoria-relanzamiento.mjs en rwadar-app', 'flujos.test.mjs en rwadar-app']);
+    'probar-auditoria-relanzamiento.mjs en rwadar-app', 'carpeta.test.mjs en rwadar-app', 'flujos.test.mjs en rwadar-app']);
 
   // Una orden que falla: la parte devuelve su código y no sigue (como «&&»).
   // Detrás, varias más del mismo peso, para que alguna caiga en su parte.
@@ -457,7 +461,10 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   assert.match(leer('.github/workflows/publicar.yml'), /- name: Comprobar la aprobación antes de tocar la red\n {8}run: node rwadar-app\/auditar-relanzamiento\.mjs\n/);
 
   // Vigía: cada prueba de la batería que lee el sello corre en el trabajo «sello»…
-  const archivoDe = orden => orden === 'node --test ../.github/flujos.test.mjs' ? '.github/flujos.test.mjs' : `rwadar-app/${orden.replace(/^node /, '')}`;
+  // «node --test ../carpeta/*.test.mjs» (las pruebas de las noticias automáticas) cuenta como su carpeta.
+  const archivoDe = orden => orden === 'node --test ../.github/flujos.test.mjs' ? '.github/flujos.test.mjs'
+    : /^node --test \.\.\/.+\/\*\.test\.mjs$/.test(orden) ? orden.replace(/^node --test \.\.\//, '').replace(/\/\*\.test\.mjs$/, '')
+      : `rwadar-app/${orden.replace(/^node /, '')}`;
   assert.deepEqual(plan(raiz).sello.map(x => x.orden), [...SELLO]);
   const enSello = new Set(SELLO.map(archivoDe));
   for (const f of enSello) assert.ok(fs.existsSync(path.join(raiz, f)), f);
@@ -467,7 +474,7 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   const CUBIERTO_POR_LA_COMPUERTA = new Set(['probar-web.mjs']);
   const leen = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', ':(glob)**/probar-*', ':(glob)**/*.test.*'], { cwd: raiz, encoding: 'utf8' })
     .split('\n').filter(Boolean).filter(f => !f.includes('node_modules/'));
-  const sinCubrir = leen.filter(f => !enSello.has(f) && !CUBIERTO_POR_LA_COMPUERTA.has(f));
+  const sinCubrir = leen.filter(f => !enSello.has(f) && ![...enSello].some(d => f.startsWith(d + '/')) && !CUBIERTO_POR_LA_COMPUERTA.has(f));
   assert.deepEqual(sinCubrir, [], 'Estas pruebas leen el sello y el PR del sello se las saltaría: añádelas a SELLO en .github/partes-ci.mjs (o comprueba que la compuerta cubre lo que miran):\n' + sinCubrir.join('\n'));
   const web = leer('probar-web.mjs');
   assert.equal((web.match(/relanzamiento/g) || []).length, 1, 'probar-web.mjs lee el sello en un solo sitio');
@@ -483,7 +490,12 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   // si la batería lo corre y si el trabajo «Sello» cubre lo que mira, y añádelo aquí.
   const codigo = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', '*.js', '*.mjs', '*.cjs'], { cwd: raiz, encoding: 'utf8' })
     .split('\n').filter(f => f && !f.includes('node_modules/')).sort();
-  assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs', '.github/flujos.test.mjs', '.github/partes-ci.mjs',
+  // Las noticias automáticas (14/11/2026) sellan solo las noticias y sin tocar «actualizadoEl»; sus pruebas (que leen
+  // el sello con RUTAS.sello) van en el trabajo «Sello» (SELLO) y ensayo.mjs no lo corre la batería.
+  assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs',
+    '.claude/skills/noticias-automaticas/ensayo.mjs', '.claude/skills/noticias-automaticas/lib/cerrojo.mjs',
+    '.claude/skills/noticias-automaticas/lib/comun.mjs', '.claude/skills/noticias-automaticas/lib/flujo.mjs',
+    '.github/flujos.test.mjs', '.github/partes-ci.mjs',
     'probar-web.mjs', 'rwadar-app/auditar-relanzamiento.mjs', 'rwadar-app/probar-auditoria-relanzamiento.mjs',
     'rwadar-app/probar-cobro-seguro.mjs', 'rwadar-app/probar-transparencia-comercial.mjs', 'rwadar-precargar-imagenes.js',
     'rwadar-publicacion-segura.js', 'rwadar-publicar.js'], 'Otro archivo de código nombra el sello: revisa si la batería lo corre y si el trabajo «Sello» lo cubre');

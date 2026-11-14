@@ -494,9 +494,15 @@ test('la fuente corta: en inglés, los organismos traducidos («Consejo de la UE
   assert.equal(m.fuenteTraducida(n('CNMV, nota'), 'en'), false);
   assert.equal(m.fuenteCorta(n('Robinhood Assets (Jersey) Limited, suplemento'), 'en'), 'Robinhood Assets (Jersey) Limited');
   assert.equal(m.fuenteCorta({}), '');
-  // Todas las fuentes de las noticias de hoy salen en inglés sin nada en castellano que tenga traducción.
+  // Todas las fuentes de las noticias publicadas salen en inglés sin nada en castellano que tenga traducción.
+  // No se exige ninguna fuente en concreto: las noticias cambian cada mañana (noticias automáticas,
+  // 14/11/2026) y la del Consejo sale de los 30 días el 04/12; el caso del Consejo ya se prueba arriba.
   const datos = require('../../rwadar-site/datos/noticias-v2.json');
-  const enIngles = datos.noticias.map((x) => m.fuenteCorta(x, 'en'));
-  assert.ok(enIngles.includes('Council of the EU'), enIngles.join(' | '));
-  assert.ok(!enIngles.some((f) => Object.keys(m.FUENTES_EN).includes(f)));
+  for (const x of datos.noticias) {
+    const corta = m.fuenteCorta(x, 'es');
+    const en = m.fuenteCorta(x, 'en');
+    if (Object.hasOwn(m.FUENTES_EN, corta)) assert.equal(en, m.FUENTES_EN[corta], `${x.id}: «${corta}» sin traducir`);
+    else assert.equal(en, corta, `${x.id}: «${corta}» no tiene traducción y no debe cambiar`);
+    assert.ok(!Object.keys(m.FUENTES_EN).includes(en), `${x.id}: «${en}» sigue en castellano`);
+  }
 });

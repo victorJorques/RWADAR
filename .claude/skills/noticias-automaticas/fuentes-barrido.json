@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "nota": "Lista cerrada de fuentes que lee el programa cada mañana (barrido). «critica»: si no se lee, la mañana frena. «todoDelSector»: todo lo que publica es del sector (si no, solo se guardan los elementos con palabras del sector). «vacioEsNormal»: responder sin elementos no es una caída. «sinEdicionEsNormal»: un 404 es que hoy no hay edición. Las direcciones admiten {AAAAMMDD} (hoy) y {AAAAMMDD_AYER}.",
+  "fuentes": [
+    { "id": "cnmv-notas", "nombre": "CNMV, notas de prensa", "url": "https://www.cnmv.es/portal/aldia/notasprensa", "lector": "cnmv-lista", "critica": true, "todoDelSector": true },
+    { "id": "esma-rss", "nombre": "ESMA, noticias (RSS)", "url": "https://www.esma.europa.eu/rss.xml", "lector": "rss", "critica": true },
+    { "id": "boe-sumario", "nombre": "BOE, sumario del día (API de datos abiertos)", "url": "https://www.boe.es/datosabiertos/api/boe/sumario/{AAAAMMDD}", "lector": "boe", "accept": "application/xml", "sinEdicionEsNormal": true },
+    { "id": "consejo-rss", "nombre": "Consejo de la UE, comunicados (RSS)", "url": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx", "lector": "rss", "vacioEsNormal": true },
+    { "id": "bce-rss", "nombre": "BCE, prensa (RSS)", "url": "https://www.ecb.europa.eu/rss/press.html", "lector": "rss", "vacioEsNormal": true },
+    { "id": "eba-rss", "nombre": "EBA, noticias (RSS)", "url": "https://www.eba.europa.eu/rss.xml", "lector": "rss", "vacioEsNormal": true },
+    { "id": "comision-fisma", "nombre": "Comisión Europea, noticias de finanzas (DG FISMA)", "url": "https://finance.ec.europa.eu/finance-news_en", "lector": "huella" }
+  ]
+}

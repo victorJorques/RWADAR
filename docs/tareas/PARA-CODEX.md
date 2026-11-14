@@ -6,6 +6,138 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (24, la numera el integrador) · Claude · Noticias del sector solas, con freno · SIN ENCENDER / SIN PUBLICAR
+
+- **Encargo de la dirección (13/11, respuesta expresa de Víctor):** «Cada
+  mañana una sesión programada las escribe y las verifica. Si el verificador
+  no encuentra problemas, se publican solas en la web y en la app; si
+  encuentra alguno, no se publica nada y te aviso.» Rama
+  **`worktree-wf_2b351839-8d5-1`** (desde `main` en `ccedb52`, con el
+  borrador de `worktree-wf_e178936d-288-6`). Diseño y revisión adversarial:
+  `PLAN.md` y `etapas-previas.json` del scratchpad de la sesión
+  (`automatico/noticias/`). **Nada encendido ni publicado:** ni push, ni
+  flujos, ni tareas programadas, ni Supabase, ni avisos. No toca contenido
+  sellado (unir la rama no pide sello ni publicar) ni la app (guardián de la
+  OTA `ok:true`, 1.4.2(24)).
+- **Qué hay, en llano:** una skill nueva,
+  [`.claude/skills/noticias-automaticas/`](../../.claude/skills/noticias-automaticas/SKILL.md),
+  que una sesión nueva sin contexto sigue cada mañana a las 08:32 (España):
+  1. **Cerrojo** (`noticias-auto.mjs cerrojo`): no hace nada si hay ciclo
+     manual (rama `claude/cerrojo-ciclo-<fecha>`, que ahora pone y quita la
+     skill `investigacion-catalogo`), un PR ajeno que toque la web, el
+     catálogo, la base o la app, una ejecución manual en marcha, noticias de
+     hoy ya publicadas, el catálogo a medias en Supabase, `main` sin pasar la
+     compuerta, **el último sello revisado por una persona de hace más de 7
+     días**, o **`main` distinto de producción** (construye `main` con el
+     reloj de la última publicación y compara archivo a archivo, por
+     SHA-256, todo `rwadar-publicado/`, y además lo sellado con git). Dice
+     qué tiene que hacer la dirección y avisa, salvo en pausa o «ya
+     publicadas».
+  2. **Barrido** con un programa (CNMV, ESMA, BOE, Consejo, BCE, EBA y
+     Comisión; `fuentes-barrido.json`): las críticas (CNMV y ESMA) caídas →
+     freno. A Git solo va lo del sector y sin nada con forma de nombre (el
+     BOE trae nombramientos a diario).
+  3. **Editor** (subagente) con su encargo literal
+     (`noticias-auto.mjs encargo --rol editor`): 3 propuestas de titular por
+     idioma, la elegida y por qué, y la foto de la biblioteca que mejor
+     encaja, sin repetir; si ninguna encaja, la genérica con lo que faltaría.
+     Sus notas van a una carpeta de nombre aleatorio que el encargo del
+     verificador no nombra.
+  4. **El programa abre cada fuente** (`comprobar-fuentes`) y pasa **16
+     reglas** (V-1 … V-16 en `lib/validar.mjs`).
+  5. **Verificador** (otro subagente nuevo) con su encargo literal; su
+     veredicto va atado al SHA-256 de la edición. «con_cambios» → el programa
+     aplica solo esas correcciones (el «antes» letra a letra), valida otra
+     vez y un **segundo pase** tiene que dar «conforme».
+  6. **Un solo PR con las noticias y su sello**, unido con «merge» (nunca
+     «squash»: rompe el sello, lo prueba la unión simulada). El sello
+     automático solo cambia commit, huella y nota de `estado.json`, **nunca
+     `actualizadoEl`** (la caducidad de 7 días sigue siendo de una persona).
+     Antes de unir: base = `main`, cabeza = sello, solo archivos permitidos,
+     CI en verde. «Publicar web» revisión y producción, comprobando antes y
+     después que la ejecución publica el commit de unión (si no, se cancela),
+     y comprobación en vivo byte a byte (JSON v2 y v1, cada foto por su
+     SHA-256, Inicio y /mercado/).
+  7. **El freno:** cualquier otra cosa → no se publica nada, resumen en
+     llano y notificación (`noticias-auto.mjs resumen`). Nunca se avisa a
+     usuarios.
+- **Archivos:** `noticias-auto.mjs` (18 órdenes), `lib/` (cerrojo, barrido,
+  validar, producción, flujo, personas, reloj), `config.json` (interruptor:
+  `"activo"`), `fuentes-barrido.json`, `EDITOR.md`, `VERIFICADOR.md`,
+  `ORDEN-TAREA.md` (texto exacto de la tarea, hora y encendido),
+  `pruebas/` (78 pruebas), `ensayo.mjs`;
+  `rwadar-app/data/noticias-diarias/LEEME.md`; `AGENTS.md` (la autorización
+  permanente de Víctor del 13/11 solo para esto y lo que sigue necesitando su
+  orden); `docs/INTERNO.md`; la skill `investigacion-catalogo` (rama de
+  cerrojo, mismo procedimiento de titulares); `rwadar-app/package.json`
+  (las pruebas de la skill y `validar --publicada` en `npm test`);
+  `.github/partes-ci.mjs` (pesos, y las pruebas de la skill en el trabajo
+  «Sello»: usan `estado.json`) y `.github/flujos.test.mjs` (lo vigila).
+- **Arreglo que hacía falta:** la prueba 16 de
+  `rwadar-movil/tests/noticias-sector.test.cjs` exigía «Council of the EU»
+  entre las fuentes publicadas: se habría puesto en rojo sola (esa noticia sale
+  de los 30 días el 04/12). Ahora comprueba la traducción de cada fuente
+  publicada, sea cual sea (pasa con la edición de hoy y con una sin el
+  Consejo; el caso del Consejo sigue probado con el ejemplo fijo).
+- **Minutos de Actions** (medidos: PR #135 9 min facturados, #136 8, sello
+  #137 3, «Publicar web» 1-2 cada una):
+  - Construido (vía 2: un PR con noticias y sello): **11-13 al día, 330-390
+    al mes**; un día frenado antes del PR, 0. Como hoy (dos PR) serían 14-16.
+  - **Propuesto, sin construir** (vía 3, `PLAN.md` § 10.2): un trabajo
+    «Noticias» en la CI para los PR que solo cambian las noticias y el sello
+    (test:web, las pruebas de noticias de la web y la app, las de la skill,
+    `validar --publicada` y la compuerta): **7-8 al día, 210-240 al mes**.
+    Toca `cambios-ci.sh` (tercera salida `noticias=`), `ci.yml`,
+    `partes-ci.mjs` y `flujos.test.mjs`: mejor en su propio PR, con el
+    integrador del gráfico en directo (que también toca `.github/`).
+- **Pruebas:** las 78 de la skill (`node --test
+  .claude/skills/noticias-automaticas/pruebas/*.test.mjs`); **ensayo completo
+  en local** (`node .claude/skills/noticias-automaticas/ensayo.mjs`): un
+  «GitHub» de mentira (repositorio desnudo), la web servida por el worker
+  local, fuentes locales, y 25 días (bueno, modo ensayo, verificador rechaza,
+  con cambios y segundo pase conforme o no, cuatro validadores, verificación
+  de otros bytes, CI falla, `main` se mueve, fuente crítica caída, fuente de
+  una noticia caída, siete cerrojos, «Publicar web» de otro commit, revisión
+  y producción que fallan); **32 mutaciones** que deshacen una regla cada una
+  y hacen fallar su prueba.
+- **Resultados (14/11, en este contenedor):** `npm test` entero en la raíz,
+  **salida 0** (78 pruebas de la skill dentro; `validar --publicada` dice que
+  la edición publicada aún no es automática); ensayo completo **25/25 días
+  como se esperaba** (367 s; 16 push, todos al origin de ensayo; nada a
+  GitHub ni a Cloudflare); mutaciones **32/32 cazadas** (guion `mutaciones.mjs`
+  del scratchpad, sobre una copia del commit); guardián de la OTA
+  `ok:true` (1.4.2(24)); gitleaks 8.30.1 con `rwadar-app/gitleaks.toml` sobre
+  los commits de esta rama: **sin hallazgos** (sobre todo el historial salen
+  los 4 de siempre, de commits del 05/11 que no son de esta rama). Capturas
+  a escala 2 del día bueno servido por la «producción» local (Inicio y
+  /mercado/ a 390 y 1366, con la noticia de «Hoy» del ensayo): carpeta
+  `automatico/noticias/capturas/` del scratchpad.
+- **Un fallo de verdad que encontró la construcción:** la regla de correos de
+  V-11 tenía longitudes sin acotar y tardaba unos 20 s con una línea larga
+  sin «@» (200 kB de notas); ahora 2 ms (`lib/personas.mjs`).
+- **Para encender (lo hace el coordinador tras enseñárselo a Víctor):**
+  `ORDEN-TAREA.md`. Obligatorio antes: añadir `victorJorques/RWADAR` a los
+  repositorios del entorno «Rwadar Con Internet». Primero un disparo con
+  «MODO ENSAYO»; el primer día real, vigilado.
+- **Enganche con la mejora visual (para el integrador):** la mañana **frena
+  si no existe `rwadar-editorial-source/noticias/GUIA-TITULARES.md`** (V-8
+  exige su SHA-256 en `titulares.json`); las genéricas de `config.json`
+  (`fotos.genericas`) tienen que existir en `fotos.json` y, si `fotos.json`
+  declara las suyas (`genericas`, o `generica`/`categorias` por foto),
+  coincidir (lo vigila una prueba); `titulares.maxCaracteres` (60) y
+  `propuestasMin` (3) se alinean con la guía. Si la mejora visual añade
+  campos a la noticia, V-13 frena hasta que estén en producción y en la OTA;
+  si cambia la forma de servir las fotos (variantes, `srcset`), hay que
+  ajustar `comprobarVivoUnaVez` en `lib/flujo.mjs` (pide
+  `/noticias-editoriales/<clave>.webp` y compara con `fotos.json`).
+- **Otros puntos de integración:** `main` tendrá commits de unión (solo los
+  de las noticias); no encontré nada que dependa de la historia lineal. Las
+  pruebas de `sello.test.mjs` hacen commits en una copia aparte (`git
+  worktree`, sin ramas) y tardan unos 12-15 s aquí, con la máquina cargada;
+  su peso en `partes-ci.mjs` es 15 s (las cinco partes siguen ≤ 40 s).
+
+---
+
 ## 13 de noviembre de 2026 (23) · Claude · Limpieza de código de la web
 
 - **Encargo de la dirección (13/11):** «Si hay código antiguo que no vale para
