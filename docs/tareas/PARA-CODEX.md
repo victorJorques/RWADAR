@@ -6,6 +6,173 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (31) · Claude · Notificaciones sin cuenta: arreglos de la revisión · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Qué es:** la revisión única de las entradas 29 y 30 encontró 9 cosas; están
+  arregladas en la misma rama. Nada publicado, nada aplicado en Supabase, sin
+  flujos ni EAS. Resumen también en
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md),
+  «Arreglos de la revisión».
+- **Base (36, las dos copias iguales):**
+  - un fallo general nuestro ya no borra a nadie: en la web solo cuentan como
+    fallo de la suscripción el 400 y el 413; -1 (nuestro servidor o el
+    cifrado), 401 y 403 (VAPID o firma) dejan el envío «fallido» sin contar;
+    en Expo, `MismatchSenderId` (credenciales de FCM) tampoco cuenta;
+  - contra quien llama directamente a la base: máximo propio de la web
+    `sin_cuenta_maximo_web` = 5 000 (el móvil sigue en 20 000) y tope de
+    30 000 notificaciones web sin cuenta en 24 h (`sin_cuenta_tope_dia_web`,
+    reintentos incluidos; llegado, espera y lo avisa). **La cabecera secreta
+    no está hecha: Víctor tiene que decidirla antes de `activar-sin-cuenta`**
+    (condición S5 del anexo);
+  - la prueba llega a la app como `{tipo:'novedad', destino:'inicio'}` (la app
+    no conocía 'prueba');
+  - móvil, ni dos ni ninguno: el de sin cuenta espera a que `repartir()` haya
+    repartido el anuncio y no sale si ese token ya estaba en una cuenta a la
+    que se le repartió;
+  - verificador 36: comprueba todo lo anterior y avisa (sin fallar) si el
+    cupo de una hora se llenó en 7 días, si se llegó al tope diario o a un
+    máximo, y con 10 o más bajas por fallos en 24 h; el «OK» dice cuántas
+    notificaciones web y bajas por fallos hubo en 24 h. `procesar()` no
+    cambia (sigue igual a la de la 33 más los cuatro bloques).
+- **Web:** la ventana de novedades, cuando activa allí mismo, enseña a la vista
+  «El servicio de tu navegador puede estar fuera de la UE…» debajo del botón,
+  con «Privacidad» a `/privacidad#garantias-push` (anexo 7.3).
+  `novedades-producto.json` **2026-11-14.4**: el tercer paso, «Si has entrado en
+  tu cuenta (en la web o en la app)…» (copia de la app y ejemplo al día).
+- **App:** con un texto nuevo del permiso, el estado `texto-nuevo` en vez de
+  «Activadas», con «Activar…» otra vez (renueva la versión con el mismo
+  token) y «Desactivar».
+- **Legal:** privacidad §6 y registro A5: en la app, el origen «Perfil» es su
+  primera pantalla sin sesión; registro A5 con los cupos y los borrados
+  nuevos y el punto que faltaba; anexo 7.3 (la ventana) y 7.7 (S3 dónde se
+  prueba cada cosa; S5 la cabecera secreta).
+- **Pruebas:** `npm --prefix rwadar-app test` salida 0
+  (`probar-avisos-sin-cuenta.mjs` 75 de 75, antes 72: fallos generales, tope
+  diario, ni dos ni ninguno y 6 roturas más que el verificador detecta, 22 en
+  total); `npm run test:web` salida 0 (probar-web 732 correctas);
+  `npm --prefix rwadar-movil test` 693 correctas y 2 omitidas de siempre (2
+  nuevas de `texto-nuevo`); `node --test rwadar-acceso/*.test.mjs` 367 de 367
+  con Chromium (la ventana comprueba la frase junto al botón a 390 × 664 y
+  360 × 640); `node --test .github/*.test.mjs` 119 de 119; guardián de OTA con
+  la base `fa30779…` `ok:true`.
+- **Orden para activarlo (cada paso con orden de Víctor):** decidir la
+  cabecera secreta (S5) → `ensayo-36` → `aplicar-36` → `verificar-36` →
+  `activar-sin-cuenta` → web en revisión → prueba en iPhone (web en la
+  pantalla de inicio) y en Android con Chrome: `prueba-sin-cuenta` y ver que
+  **llega**; al terminar, **«Desactivar» en la revisión** (cada notificación
+  abre producción; si no, llegarían dos durante 180 días) → web en producción
+  con la privacidad, y allí la prueba completa (tocarla abre la lista con la
+  baja; «Desactivar») → OTA de Android y prueba en un Android físico (llega
+  como novedad; sin sesión, la baja arriba) → «Avisar novedad» (tipo
+  `novedad`, enlace `/novedades-rwadar/#avisos-movil`).
+
+---
+
+## 14 de noviembre de 2026 (30) · Claude · Notificaciones sin cuenta, parte 2: web, app y textos legales · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en
+  Android; muy importante que funcionen las notificaciones y los avisos aunque
+  no tengan cuenta o no hayan iniciado sesión: que puedan activarlas», y el
+  recuadro «Activa los avisos» de la ventana de novedades para incitar a
+  activarlas. Parte 2 sobre la parte 1 (entrada 29). Contrato y resumen:
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md), «Parte 2».
+- **Web** (`rwadar-20260820.js`, interruptor `AVISOS_SIN_CUENTA_REMOTO`
+  encendido; la base sigue apagada): Perfil › Avisos sin sesión con
+  «Notificaciones en este móvil» (sin cuenta): el texto versionado que da el
+  servidor, quién interviene, la información básica y «Activar…» en el mismo
+  toque (permiso, service worker, suscripción, alta y notificación de
+  muestra). iPhone sin la web instalada: los pasos y «Ver cómo añadirla».
+  Base apagada: «todavía no están disponibles», sin pedir nada. Renovación al
+  abrir, como mucho cada 12 h (marca local `rwadar.avisos.sin-cuenta.v1`, sin
+  la dirección). `?avisos=1` sin sesión: los avisos publicados y «Desactivar
+  las notificaciones de este móvil». Con sesión: una suscripción por
+  navegador (activar con cuenta la reutiliza; «Desactivar» de la cuenta quita
+  las dos; cerrar sesión o borrar la cuenta deja la de sin cuenta).
+- **Ventana de novedades** (web y app): el recuadro arriba, antes de los
+  puntos, y compacto (a la vista sin desplazar en 390 × 664 y 360 × 640). En
+  la web, sin sesión, «Activar avisos» las activa ahí mismo con el texto
+  versionado a la vista; en iPhone sin instalar, los pasos; si no, a Perfil ›
+  Avisos. `novedades-producto.json` **2026-11-14.3** (sin campos nuevos; los
+  pasos de `avisos-movil` sin «Entra en tu cuenta», con «No hace falta
+  cuenta») y copia de la app al día.
+- **App** (solo JS, `AVISOS_SIN_CUENTA_REMOTOS` encendido):
+  `lib/avisos-sin-cuenta.js` y `componentes/AvisosSinCuenta.js` dentro de
+  `AccesoObligatorio`, encima del formulario (token de Expo y
+  `/api/avisos/movil`); renovación diaria al abrir (y baja si se quitó el
+  permiso); abierta desde una notificación sin sesión, la baja arriba; con
+  sesión, «Desactivar» del móvil también las quita y hay un botón solo para
+  ellas; la ventana no las vuelve a pedir si ya están; «Borrar datos del
+  dispositivo» da de baja primero. Privacidad de la app, un párrafo.
+- **Legal:** privacidad (14/11/2026): §2 (la marca), §5, §6 «Notificaciones
+  sin cuenta», §8, §9, §11 (art. 11) y §12 (ni activarlas sin cuenta siendo
+  menor); sitemap al día. Registro de actividades, versión 9 (A5 «Sin
+  cuenta»). Anexo, apartado 7 (condiciones S1-S4).
+- **Pruebas:** `npm run test:web` salida 0 (probar-web 732 correctas, 9 de sin
+  cuenta); `node --test rwadar-acceso/*.test.mjs` 367 de 367, Chromium incluido
+  (nueva `avisos-sin-cuenta-navegador`: 4 pruebas por el worker de verdad);
+  `npm --prefix rwadar-movil test` 691 correctas, 2 omitidas de siempre
+  (nueva `avisos-sin-cuenta.test.cjs`: 11); `npm --prefix rwadar-app test`
+  salida 0; `node --test .github/*.test.mjs` 119 de 119; guardián de OTA con la
+  base `fa30779…` `ok:true`.
+- **Pendiente (cada paso con orden de Víctor):** unir la rama (PR, CI y
+  sello); `ensayo-36` → `aplicar-36` → `verificar-36`; web en revisión →
+  `activar-sin-cuenta` → probar en un iPhone (web en la pantalla de inicio) y
+  en un Android → `prueba-sin-cuenta`; web en producción con la privacidad;
+  después la OTA (la app llama a `/api/avisos/movil` en producción); y el aviso
+  de novedad («Avisos en el móvil, también sin cuenta»).
+
+---
+
+## 14 de noviembre de 2026 (29) · Claude · Notificaciones sin cuenta, parte 1: base (migración 36) y servidor · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en
+  Android; muy importante que funcionen las notificaciones y los avisos aunque
+  no tengan cuenta o no hayan iniciado sesión: que puedan activarlas». Esta es
+  la parte 1 (base y servidor); la parte 2 (web, app y textos legales) va
+  aparte. Contrato entre las dos:
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md).
+- **Base, migración 36** (`rwadar-app/db/36_avisos_sin_cuenta.sql` y su copia
+  `supabase/migrations/20261114180000_avisos_sin_cuenta.sql`). Solo añade y
+  **nace apagada**. Tablas aparte, sin usuario (`sin_cuenta_web`,
+  `sin_cuenta_movil`, sus colas y `historial_sin_cuenta`, solo añadir). API
+  para anon (texto versionado `sin-cuenta-v1-2026-11-14`, alta, baja y estado
+  de la web y del móvil, avisos publicados) con interruptor, versión, forma,
+  cupos (300 altas nuevas por hora y 20 000 en total por canal), «misma
+  dirección con otra clave auth se rechaza» y la baja siempre. Envío dentro de
+  `procesar()` (la de la 33 más cuatro bloques `sin_cuenta_*`) reutilizando
+  `webpush_encolar` y las cabeceras de Expo; no duplica si la cuenta ya lo
+  recibe; borra por 404/410, DeviceNotRegistered o tres fallos seguidos.
+  `limpiar()` = la de la 32 más `sin_cuenta_limpiar()` (90 días, 180 días y 3
+  años). Scripts: `_verificar`, `_activar` (exige push y clave VAPID),
+  `_apagar`, `_prueba` (solo con 5 suscripciones sin cuenta o menos);
+  `fallo_cerrado.sql` también lo apaga.
+- **Flujo `avisos-base.yml`:** `ensayo-36`, `verificar-36`, `aplicar-36`,
+  `activar-sin-cuenta`, `apagar-sin-cuenta` y `prueba-sin-cuenta` (las que
+  cambian la base, con copia y `AVISOS`); avisos de reaplicar la 36 tras
+  `aplicar-30`, `-32` y `-33`. `.github/flujos.test.mjs`: cada acción con su
+  caso y su SQL.
+- **Servidor:** `rwadar-acceso/avisos-sin-cuenta-servidor.mjs` en
+  `servidor.mjs` y `compilar.cjs`: `POST /api/avisos/web`,
+  `POST /api/avisos/movil` (`alta|baja|estado`), `GET /api/avisos/texto` y
+  `GET /api/avisos/recientes` (60 s en memoria). Origin igual o ninguno,
+  `cross-site` 403, JSON ≤ 4 kB con claves exactas, sin cookies, límites por
+  visitante nuevos (altas 20, bajas 60, estados 120 cada 10 min) e
+  interruptor `AVISOS_SIN_CUENTA` **encendido** (decisión de la dirección; la
+  base sigue apagada). Sin la cabecera secreta (decisión: no ahora).
+- **Pruebas:** `probar-avisos-sin-cuenta.mjs` (72 correctas, en
+  `npm test`, con el ensayo, aplicar, verificar y la prueba del flujo
+  ejecutados de verdad con bash); `npm --prefix rwadar-app test` salida 0
+  (las listas de acciones de las pruebas de la 30, 32, 33 y 34 al día);
+  `rwadar-acceso/avisos-sin-cuenta.test.mjs` 15 de 15 y `compilar.test.mjs`
+  14 de 14; `node --test .github/*.test.mjs` 119 de 119; `npm run test:web`
+  (probar-web 723 correctas).
+- **Pendiente (con orden de Víctor):** la parte 2 (web, app y textos legales);
+  después, `ensayo-36` → `aplicar-36` → `verificar-36`, web en revisión →
+  `activar-sin-cuenta` → probar en un iPhone y un Android →
+  `prueba-sin-cuenta`; web en producción y OTA. Nada aplicado ni publicado.
+
+---
+
 ## 14 de noviembre de 2026 (28) · Claude · Recuadro «Activa los avisos» en la ventana de novedades · SIN PUBLICAR (rama `aviso-activar-notificaciones`, solo commit local)
 
 - **Encargo de la dirección (14/11):** «que para activar las notificaciones

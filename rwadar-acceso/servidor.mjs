@@ -2,6 +2,7 @@
 import { crearCarteraServidor } from './cartera-servidor.mjs';
 import { crearTokenizacionServidor, crearTokenizacionDirectoServidor } from './tokenizacion-servidor.mjs';
 import { crearWebpushServidor } from './webpush-servidor.mjs';
+import { crearAvisosSinCuentaServidor } from './avisos-sin-cuenta-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
@@ -47,12 +48,18 @@ const MAX_BODY = 16 * 1024;
 // shares Supabase's outgoing address cannot use up RWAdar's; see
 // webpush-servidor.mjs); session renewals with a refresh_token (renovar: a
 // visitor needs about one per hour of use, a few more with several tabs; only
-// requests that reach Supabase count, not those served from the shared one).
-const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000, webpushSinClave: 300, renovar: 60 });
+// requests that reach Supabase count, not those served from the shared one);
+// notifications without an account (14/11/2026, avisos-sin-cuenta-servidor.mjs):
+// sign-ups (avisosAlta), removals (avisosBaja) and status checks (avisosEstado).
+// Mobile carriers put many people behind one address (CGNAT), so these are
+// generous: the real barrier is the hourly and total quota in the database.
+const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000, webpushSinClave: 300, renovar: 60,
+  avisosAlta: 20, avisosBaja: 60, avisosEstado: 120 });
 const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio',
-  '/api/acceso/baja': 'baja', '/api/interno/webpush': 'webpush', '/api/interno/webpush:sin-clave': 'webpushSinClave' });
+  '/api/acceso/baja': 'baja', '/api/interno/webpush': 'webpush', '/api/interno/webpush:sin-clave': 'webpushSinClave',
+  '/api/avisos:alta': 'avisosAlta', '/api/avisos:baja': 'avisosBaja', '/api/avisos:estado': 'avisosEstado' });
 // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
 // casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
 // Ninguna de estas constantes se exporta: este archivo acaba dentro de
@@ -72,6 +79,13 @@ const IDIOMAS_AVISOS = Object.freeze(['es', 'en']);
 // avisosNovedades, si viene, sea un booleano, pero no lo pasa a los metadatos:
 // nadie se apunta a los avisos desde el alta mientras no esté activa.
 const AVISOS_CASILLA_ALTA = false;
+// Notificaciones sin cuenta (14/11/2026): /api/avisos/* (web y app de
+// Android, sin sesión). ENCENDIDO por decisión de la dirección: la base (36)
+// nace apagada y se enciende aparte (activar-sin-cuenta); mientras tanto la
+// web y la app reciben «apagado» y dicen que todavía no está disponible.
+// Apagado aquí, el alta da 404 y el texto dice activo = false; la baja, el
+// estado y los avisos siguen. Como los demás interruptores, no se exporta.
+const AVISOS_SIN_CUENTA = true;
 const MENSAJE_BAJA = 'Si el enlace era válido, ya no recibirás avisos de novedades.';
 // Academy con cuenta: modos de academy.json y forma de un slug publicado.
 const ACCESOS_ACADEMY = Object.freeze(['cuenta', 'publico']);
@@ -292,9 +306,12 @@ async function leerTexto(result, maxBytes) {
 // tocar el archivo. El worker y functions/_middleware.js no lo pasan.
 // cacheTokenizacion: solo para las pruebas (null, sin Cache API; o un doble).
 // plazoWebpushMs: espera máxima al servicio de push (las pruebas la acortan).
+// avisosSinCuenta: solo para las pruebas (apagan el interruptor sin tocar el archivo).
 export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null,
-  avisosNovedades = AVISOS_CASILLA_ALTA, cacheTokenizacion = undefined, plazoWebpushMs = 10000 } = {}) {
+  avisosNovedades = AVISOS_CASILLA_ALTA, cacheTokenizacion = undefined, plazoWebpushMs = 10000,
+  avisosSinCuenta = AVISOS_SIN_CUENTA } = {}) {
   if (typeof avisosNovedades !== 'boolean') throw new Error('avisos_invalidos');
+  if (typeof avisosSinCuenta !== 'boolean') throw new Error('avisos_sin_cuenta_invalidos');
   const limitador = crearLimitador(ahora);
   // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
   // El worker la recibe de construirWorker, sacada de rwadar-academy/academy.json.
@@ -523,6 +540,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
   const atenderTokenizacion = crearTokenizacionServidor({ fetchImpl, ahora, cache: cacheTokenizacion, respuesta, leerTexto });
   const atenderDirecto = crearTokenizacionDirectoServidor({ api, ahora, respuesta, leerTexto });
   const webpush = crearWebpushServidor({ fetchImpl, ahora, plazoMs: plazoWebpushMs, api, cuerpoJSON, respuesta, reservarIntento });
+  const atenderAvisosSinCuenta = crearAvisosSinCuentaServidor({ api, ahora, respuesta, reservarIntento, activo: avisosSinCuenta });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
     // Set-Cookie de la sesión renovada en esta petición, también si después falla.
@@ -534,6 +552,9 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     // Origin ni cookies, con la clave VAPID de RWAdar en sus cabeceras. Va antes
     // de la regla de Origin de /api/acceso/ y no lee ni toca la cookie de nadie.
     if (path === '/api/interno/webpush') return webpush.atender({ request, env, url });
+    // Notificaciones sin cuenta (14/11/2026): sin sesión ni cookies; la app
+    // nativa no manda Origin. Sus propias reglas de Origin, método y cuerpo.
+    if (path.startsWith('/api/avisos/')) return atenderAvisosSinCuenta({ request, env, url, path });
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       if (!endpoint || request.method !== 'POST') return respuesta({ error: 'metodo_no_permitido' }, 405);
       // Host-only cookies plus strict Origin and JSON prevent login/logout CSRF.
@@ -762,5 +783,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     }
   }
   return { atender, verificar,
-    avisosNovedades: Object.freeze({ activos: avisosNovedades, version: VERSION_AVISOS_NOVEDADES }) };
+    avisosNovedades: Object.freeze({ activos: avisosNovedades, version: VERSION_AVISOS_NOVEDADES }),
+    avisosSinCuenta: Object.freeze({ activos: avisosSinCuenta, limites: Object.freeze({
+      alta: LIMITES.avisosAlta, baja: LIMITES.avisosBaja, estado: LIMITES.avisosEstado }) }) };
 }

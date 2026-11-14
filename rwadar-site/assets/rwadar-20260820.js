@@ -4237,6 +4237,15 @@ const Cuenta = (function(){
     que llegarán cuando empecemos. Apagado, Perfil no enseña el botón. */
  const AVISOS_WEBPUSH_REMOTO=true;
  const AVISOS_WEBPUSH_DISPONIBLE=AVISOS_NOVEDADES_DISPONIBLES&&AVISOS_WEBPUSH_REMOTO;
+ /* Notificaciones sin cuenta (14/11/2026, docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md):
+    sin sesión, Perfil › Avisos deja activarlas en este móvil por
+    /api/avisos/* del servidor de la web (migración 36). Encendido en el código
+    por decisión de la dirección; la base nace apagada y se enciende aparte
+    (activar-sin-cuenta): mientras tanto el bloque dice con calma que todavía
+    no está disponible y no pide nada. Con las cuentas en pausa (o en la copia
+    local) también se apaga. */
+ const AVISOS_SIN_CUENTA_REMOTO=true;
+ const AVISOS_SIN_CUENTA_DISPONIBLE=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_SIN_CUENTA_REMOTO;
  const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';
  /* El mismo texto que la base, la app y la casilla de /acceso: cambiar una
     palabra obliga a crear una versión nueva. v2: revisión legal del 06/11/2026. */
@@ -5392,6 +5401,8 @@ const Cuenta = (function(){
   if(!AVISOS_BANDEJA_DISPONIBLE)return;
   if(identidadConfirmada&&ses){abrirAvisos(null);return;}
   if(restauracionCuenta){restauracionCuenta.then(abrirAvisosPedido,abrirAvisosPedido);return;}
+  /* Sin sesión (14/11/2026): los avisos publicados y la baja de este móvil. */
+  if(AVISOS_SIN_CUENTA_DISPONIBLE){abrirAvisosSinCuenta();return;}
   aviso('Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.');
  }
  /* Perfil › Avisos: en el móvil, la pestaña Perfil; en escritorio, el panel de la cuenta. */
@@ -5671,15 +5682,20 @@ const Cuenta = (function(){
        subscribe() tiene su propio plazo. */
     fase='suscribir';
     const vieja=await conPlazo(r.pushManager.getSubscription(),PLAZO_SUELTA_MS).catch(()=>null);
-    if(vieja)await conPlazo(vieja.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
+    /* Sin cuenta (14/11/2026): cada navegador tiene UNA suscripción. Si es
+       la de las notificaciones sin cuenta y con la misma clave, se reutiliza:
+       quitarla las apagaría. La base no manda dos (db/36). */
+    const reutilizada=vieja&&AVISOS_SIN_CUENTA_DISPONIBLE&&mismaClave(vieja,k)&&esDeSinCuenta(datosSeguros(vieja))?vieja:null;
+    if(vieja&&!reutilizada)await conPlazo(vieja.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
     if(!sigue())return;
-    const sub=await conPlazo(r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(k)}));
-    if(!sigue()){sub.unsubscribe().catch(()=>{});return;}
+    const sub=reutilizada||await conPlazo(r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(k)}));
+    const soltarNueva=()=>{if(!reutilizada)sub.unsubscribe().catch(()=>{});};
+    if(!sigue()){soltarNueva();return;}
     fase='registrar';
     let ok=false;
     try{ok=(await conPlazo(rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datosSuscripcion(sub))},cuenta)))===true;}
-    catch(e){sub.unsubscribe().catch(()=>{});throw e;}
-    if(!ok){sub.unsubscribe().catch(()=>{});throw new Error('registro');}
+    catch(e){soltarNueva();throw e;}
+    if(!ok){soltarNueva();throw new Error('registro');}
     if(!sigue())return;
     push.estado='activo';push.registrado=true;pushRenovado={cuenta,el:Date.now()};
     resultado=novedades&&!novedades.push_activo?'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.'
@@ -5712,6 +5728,10 @@ const Cuenta = (function(){
    try{const j=await conPlazo(rest('/rpc/quitar_aviso_webpush',{method:'POST',body:JSON.stringify({p_endpoint:datosSuscripcion(sub).p_endpoint})},cuenta));ok=j===true||j===false;}
    catch(e){ok=false;}
   }
+  /* Sin cuenta (14/11/2026): si esta suscripción es también la de las
+     notificaciones sin cuenta, se queda en el navegador (al cerrar sesión o
+     al borrar la cuenta no se pierden). desactivarPush la da de baja antes. */
+  if(AVISOS_SIN_CUENTA_DISPONIBLE&&esDeSinCuenta(datosSeguros(sub)))return ok;
   /* Sin suscripción en el navegador, el servicio de push rechaza la dirección
      y la base la borra en el siguiente envío, aunque la llamada anterior fallara. */
   await conPlazo(sub.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
@@ -5722,7 +5742,9 @@ const Cuenta = (function(){
   const cuenta=versionCuenta;
   const actual=push={estado:'activo',cuenta,ocupado:true,desde:Date.now(),mensaje:'',error:false,registrado:true,fallo:''};pintarPush();
   const sigue=()=>vigente(cuenta)&&push===actual;
-  soltarPush(cuenta).then(ok=>{
+  /* «Desactivar las notificaciones de este móvil» las quita todas: también
+     las de sin cuenta, si este navegador las tenía (antes de soltar la suscripción). */
+  (AVISOS_SIN_CUENTA_DISPONIBLE?bajaSinCuentaAntes():Promise.resolve()).then(()=>soltarPush(cuenta)).then(ok=>{
    if(!sigue())return;
    push.registrado=false;push.estado=estadoPush(false);
    push.mensaje=ok?'Notificaciones desactivadas en este móvil.':'Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con tu cuenta. Se borrará sola en el próximo envío.';
@@ -5773,6 +5795,482 @@ const Cuenta = (function(){
    '</div><p class="perfil-nota avisos-push-quien" id="'+pre+'PushQuien" hidden>'+conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')+'</p></div>';
  }
 
+ /* avisos-sin-cuenta:inicio */
+ /* --- notificaciones sin cuenta (14/11/2026) -----------------------
+    Encargo de la dirección (14/11/2026): «que salga tanto en iPhone como en
+    Android; muy importante que funcionen las notificaciones y los avisos
+    aunque no tengan cuenta o no hayan iniciado sesión: que puedan
+    activarlas». Contrato: docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md. Todo
+    va por el servidor de la web (/api/avisos/*, sin cookies), nunca directo
+    a Supabase.
+    - Sin sesión, Perfil › Avisos enseña «Notificaciones en este móvil» (sin
+      cuenta) con el texto versionado de GET /api/avisos/texto (tal cual, en
+      el idioma de la página), quién interviene, la información básica y
+      «Activar notificaciones en este móvil». En el MISMO toque (iOS solo
+      pide el permiso dentro del gesto): permiso, service worker, suscripción
+      (se reutiliza la de este navegador si es de la misma clave) y POST
+      /api/avisos/web (alta con la versión y el idioma del texto que se ha
+      visto y dónde: perfil, novedades o avisos); después, una notificación
+      de muestra. La ventana de novedades usa lo mismo
+      (window.RWAdarAvisosSinCuenta).
+    - El texto solo se pide cuando hace falta (el bloque se ve en pantalla o
+      la ventana de novedades lo va a ofrecer): cada petición cuenta en el
+      cupo diario del servidor de la web.
+    - Este navegador guarda solo una marca (CLAVE_SC): una huella de la
+      dirección de entrega (no la dirección), la versión, el idioma, dónde se
+      activaron y cuándo se renovaron. Con ella se renueva al abrir como mucho
+      cada 12 horas (estado y, si sigue activa, alta) y se sabe sin preguntar
+      a nadie que la suscripción es la de sin cuenta.
+    - Cada navegador tiene UNA suscripción. Con sesión: activar las de la
+      cuenta reutiliza la de sin cuenta (activarPush), «Desactivar» de la
+      cuenta quita las dos (desactivarPush) y cerrar sesión o borrar la cuenta
+      deja la de sin cuenta (soltarPush). Con sesión, este bloque solo sale si
+      este móvil las tiene activadas sin cuenta, para poder quitarlas.
+    - ?avisos=1 sin sesión: los avisos publicados (GET /api/avisos/recientes)
+      y «Desactivar las notificaciones de este móvil» (LSSI, art. 21.2).
+    - Base apagada, servidor apagado o sin la migración 36: «todavía no está
+      disponible», sin pedir ningún permiso ni romper nada. */
+ const CLAVE_SC='rwadar.avisos.sin-cuenta.v1';
+ const RENOVAR_SC_MS=432e5;
+ const VERSION_SC=/^[a-z0-9][a-z0-9.-]{2,79}$/;
+ const ORIGENES_SC=['novedades','perfil','avisos'];
+ const PLAZO_VENTANA_SC_MS=2500;
+ const PRIVACIDAD_SC='/privacidad#avisos-sin-cuenta';
+ /* Primera capa de información junto al botón (RGPD, art. 13; LOPDGDD,
+    art. 11), fuera del texto versionado: cambiarla no pide versión nueva.
+    Igual que en la privacidad, §6 «Notificaciones sin cuenta». */
+ const INFO_SC=Object.freeze({
+  es:'Información básica sobre tus datos (sin cuenta). Responsable: el titular de RWAdar, identificado en el aviso legal. Para qué: enviarte a este móvil las notificaciones de RWAdar (fichas nuevas y novedades). Base: tu consentimiento, que retiras cuando quieras. Datos: la dirección de entrega de este navegador y sus claves, con la versión del texto, la fecha, el idioma y dónde las activaste; sin nombre ni correo. Proveedores: Supabase, Cloudflare y el servicio de push de Apple, Google, Mozilla o Microsoft, según el navegador; algunos tratan datos fuera de la UE con garantías. Plazos: hasta que las desactives o 180 días sin abrir RWAdar. Derechos: como no sabemos quién eres, se ejercen desactivándolas aquí (RGPD, art. 11); también puedes escribir a rwadares@gmail.com o reclamar ante la AEPD. Más información en Privacidad.',
+  en:'Basic information about your data (no account). Controller: the owner of RWAdar, identified in the legal notice. Purpose: sending RWAdar notifications to this phone (new listings and news). Legal basis: your consent, which you can withdraw at any time. Data: this browser\'s delivery address and its keys, with the text version, the date, the language and where you turned them on; no name or email. Providers: Supabase, Cloudflare and the push service of Apple, Google, Mozilla or Microsoft, depending on the browser; some process data outside the EU with safeguards. Retention: until you turn them off or 180 days without opening RWAdar. Rights: since we do not know who you are, you exercise them by turning notifications off here (GDPR, art. 11); you can also write to rwadares@gmail.com or complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.'
+ });
+ /* Quién interviene en la entrega (anexo legal, 2.4, condición C2), sin cuenta: sin campana. */
+ const QUIEN_SC=Object.freeze({
+  es:'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, las novedades siguen en la web. Más en Privacidad.',
+  en:'Your browser\'s service may be outside the EU: it sees when each notice is sent, but cannot read its text. If you don\'t turn them on, the news is still on the website. More in Privacy.'
+ });
+ const TEXTOS_SC={
+  'escritorio':'Las notificaciones se activan desde el móvil o la tableta: abre RWAdar allí y ve a Perfil › Avisos. No hace falta cuenta.',
+  'instalar-ios':TEXTOS_PUSH['instalar-ios'],
+  'sin-soporte':TEXTOS_PUSH['sin-soporte'],
+  'denegado':TEXTOS_PUSH['denegado'],
+  'denegado-navegador':TEXTOS_PUSH['denegado-navegador'],
+  'comprobando':TEXTOS_PUSH['comprobando'],
+  'error-comprobar':TEXTOS_PUSH['error-comprobar'],
+  'no-disponible':'Las notificaciones sin cuenta todavía no están disponibles. Pronto podrás activarlas aquí.',
+  'disponible':'Al activarlas, el navegador te pedirá permiso. No hace falta cuenta: guardamos solo la dirección de entrega de este navegador y sus claves, sin tu nombre ni tu correo. Las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas o tras 180 días sin abrir RWAdar.',
+  'activo':'Activadas en este móvil, sin cuenta. Puedes desactivarlas aquí cuando quieras.',
+  'activo-pausa':'Activadas en este móvil. Ahora mismo no estamos enviando notificaciones: te llegarán en cuanto empecemos.',
+  'activo-cuenta':'Este móvil también las tiene activadas sin cuenta: te llegan aunque cierres sesión. Puedes desactivarlas aquí.',
+  'texto-nuevo':'Hemos cambiado el texto de las notificaciones. Léelo y vuelve a activarlas para seguir recibiéndolas.',
+  /* Resultados de activar y desactivar. */
+  'activadas':'Notificaciones activadas en este móvil.',
+  'sin-permiso':'No has dado permiso. Puedes volver a intentarlo cuando quieras.',
+  'apagado':'Las notificaciones sin cuenta todavía no están disponibles. Pronto podrás activarlas aquí.',
+  'version':'Hemos cambiado el texto de las notificaciones. Léelo y vuelve a pulsar «Activar notificaciones en este móvil».',
+  'lleno':'Ahora no se pueden activar más notificaciones. Vuelve a intentarlo más adelante.',
+  'cupo':'Mucha gente está activándolas a la vez. Vuelve a intentarlo dentro de un rato.',
+  'desactivadas':'Notificaciones desactivadas en este móvil.',
+  'desactivadas-sin-confirmar':'Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con RWAdar. Se borrarán solas en el próximo envío.',
+  'error-desactivar':'No se han podido desactivar las notificaciones. Vuelve a intentarlo.',
+  'caducadas':'Este móvil ha dejado de recibir las notificaciones de RWAdar. Vuelve a activarlas para recibirlas.'
+ };
+ let sc={texto:undefined,pedido:null,activa:undefined,vigente:true,servicio:true,sinMarca:null,consultada:false,suscrito:false,
+  comprobacion:null,ocupado:false,mensaje:'',error:false,desde:0,intento:null};
+ const esperaSC=ms=>new Promise(ok=>setTimeout(ok,ms));
+ /* Huella de 64 bits de la dirección de entrega: basta para reconocerla y no la guarda. */
+ function huellaSC(s){
+  let h1=0xdeadbeef,h2=0x41c6ce57;
+  for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677);}
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (h2>>>0).toString(16).padStart(8,'0')+(h1>>>0).toString(16).padStart(8,'0');
+ }
+ function marcaSC(){
+  try{
+   const m=JSON.parse(localStorage.getItem(CLAVE_SC)||'null');
+   return m&&m.v===1&&typeof m.huella==='string'&&/^[0-9a-f]{16}$/.test(m.huella)&&typeof m.version==='string'&&VERSION_SC.test(m.version)&&
+    ['es','en'].includes(m.idioma)&&ORIGENES_SC.includes(m.origen)&&Number.isFinite(m.renovado)?m:null;
+  }catch(e){return null;}
+ }
+ function guardarMarcaSC(m){try{if(m)localStorage.setItem(CLAVE_SC,JSON.stringify(m));else localStorage.removeItem(CLAVE_SC);}catch(e){}}
+ function datosSeguros(sub){try{return datosSuscripcion(sub);}catch(e){return null;}}
+ /* ¿Esta suscripción es la de las notificaciones sin cuenta de este navegador? */
+ function esDeSinCuenta(datos,m=marcaSC()){return !!(m&&datos&&m.huella===huellaSC(datos.p_endpoint));}
+ /* ¿Se creó con esta clave VAPID? Si el navegador no lo dice, no (se crea otra). */
+ function mismaClave(sub,k){
+  try{
+   const o=sub&&sub.options&&sub.options.applicationServerKey;if(!o||typeof k!=='string')return false;
+   const a=new Uint8Array(o),b=bytesClave(k);
+   return a.length===b.length&&a.every((x,i)=>x===b[i]);
+  }catch(e){return false;}
+ }
+ /* GET /api/avisos/texto, con tipos estrictos. activo solo con la clave. */
+ function textoSinCuentaValido(j){
+  if(!j||typeof j!=='object'||Array.isArray(j)||j.v!==1||typeof j.activo!=='boolean')return null;
+  if(j.version===null&&j.texto===null)return {activo:false,version:null,texto:null,clave:null};
+  const bueno=t=>typeof t==='string'&&t.length>=20&&t.length<=1000&&!/[<>\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(t);
+  if(typeof j.version!=='string'||!VERSION_SC.test(j.version)||!j.texto||typeof j.texto!=='object'||!bueno(j.texto.es)||!bueno(j.texto.en))return null;
+  const clave=typeof j.clavePublica==='string'&&CLAVE_VAPID.test(j.clavePublica)?j.clavePublica:null;
+  return {activo:j.activo===true&&clave!==null,version:j.version,texto:{es:j.texto.es,en:j.texto.en},clave};
+ }
+ /* Una llamada a /api/avisos/*: sin cookies y con plazo. Devuelve el estado y el JSON (o null). */
+ async function pedirSinCuenta(ruta,cuerpo){
+  const r=await conPlazo(fetch(ruta,cuerpo
+   ?{method:'POST',credentials:'omit',cache:'no-store',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(cuerpo)}
+   :{method:'GET',credentials:'omit',headers:{Accept:'application/json'}}));
+  let j=null;
+  try{j=await conPlazo(r.json(),PLAZO_SUELTA_MS);}catch(e){j=null;}
+  return {status:r.status,j:j&&typeof j==='object'&&!Array.isArray(j)?j:null};
+ }
+ function cargarTextoSC(forzar=false){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE)return Promise.resolve(null);
+  if(sc.pedido)return sc.pedido;
+  if(sc.texto&&!forzar)return Promise.resolve(sc.texto);
+  const p=sc.pedido=pedirSinCuenta('/api/avisos/texto').then(({status,j})=>{
+   const t=status===200?textoSinCuentaValido(j):null;
+   sc.texto=t;return t;
+  }).catch(()=>{sc.texto=null;return null;}).finally(()=>{if(sc.pedido===p)sc.pedido=null;pintarSinCuenta();});
+  return p;
+ }
+ /* La suscripción de este navegador con el permiso dado, o null. */
+ async function suscripcionActual(){
+  if(!soportaPush()||permisoNotificaciones()!=='granted')return null;
+  try{
+   const r=await conPlazo(navigator.serviceWorker.getRegistration('/'),PLAZO_SUELTA_MS);
+   const sub=r&&r.pushManager?await conPlazo(r.pushManager.getSubscription(),PLAZO_SUELTA_MS):null;
+   const datos=sub?datosSeguros(sub):null;
+   return datos?{sub,datos}:null;
+  }catch(e){return null;}
+ }
+ /* Al abrir: lo que sabe este navegador (la marca y su suscripción), sin
+    preguntar a nadie. Si toca (12 h), renueva en segundo plano. */
+ function comprobarSinCuenta(){
+  if(sc.comprobacion)return sc.comprobacion;
+  const p=sc.comprobacion=(async()=>{
+   if(!soportaPush()||!esMovilOTableta()){sc.activa=false;return;}
+   const actual=await suscripcionActual(),m=marcaSC();
+   sc.suscrito=!!actual;
+   if(actual&&esDeSinCuenta(actual.datos,m)){
+    sc.activa=true;sc.sinMarca=null;
+    if(!(Date.now()-m.renovado<RENOVAR_SC_MS&&Date.now()>=m.renovado))renovarSinCuenta(actual.datos,m).catch(()=>{});
+    return;
+   }
+   /* La marca no corresponde (otra suscripción o ninguna): ya no vale. */
+   if(m)guardarMarcaSC(null);
+   sc.activa=false;sc.sinMarca=actual?actual.datos:null;sc.consultada=false;
+  })().catch(()=>{sc.activa=false;}).finally(()=>{sc.comprobacion=null;pintarSinCuenta();});
+  return p;
+ }
+ /* Una suscripción sin marca (la marca se borró, o es la de una cuenta que
+    salió sin conexión): se pregunta UNA vez a la base, solo sin sesión y
+    con el bloque a la vista. */
+ async function consultarSinMarca(){
+  const datos=sc.sinMarca;
+  if(!datos||sc.consultada)return;
+  sc.consultada=true;
+  try{
+   const {status,j}=await pedirSinCuenta('/api/avisos/web',{accion:'estado',endpoint:datos.p_endpoint,auth:datos.p_auth});
+   if(status===200&&j&&j.ok===true&&j.activa===true){
+    sc.activa=true;sc.vigente=j.vigente===true;sc.servicio=j.servicio===true;
+    const t=sc.texto&&sc.texto.version?sc.texto:null;
+    if(t&&sc.vigente)guardarMarcaSC({v:1,huella:huellaSC(datos.p_endpoint),version:t.version,idioma:enIngles()?'en':'es',origen:'perfil',renovado:Date.now()});
+   }
+  }catch(e){}
+  sc.sinMarca=null;pintarSinCuenta();
+ }
+ /* Renovar (la base borra a los 180 días sin renovar): estado y, si sigue
+    activa con el texto vigente, alta otra vez con lo que se aceptó. Un
+    intento cada 12 horas, salga como salga. */
+ async function renovarSinCuenta(datos,m){
+  guardarMarcaSC(Object.assign({},m,{renovado:Date.now()}));
+  const e=await pedirSinCuenta('/api/avisos/web',{accion:'estado',endpoint:datos.p_endpoint,auth:datos.p_auth});
+  if(e.status!==200||!e.j||e.j.ok!==true)return;
+  if(e.j.activa!==true){
+   /* La base ya no la tiene (180 días, el servicio la rechazó…): se puede volver a activar. */
+   guardarMarcaSC(null);sc.activa=false;sc.mensaje=TEXTOS_SC.caducadas;sc.error=false;pintarSinCuenta();return;
+  }
+  sc.vigente=e.j.vigente===true;sc.servicio=e.j.servicio===true;
+  if(sc.vigente)await pedirSinCuenta('/api/avisos/web',{accion:'alta',endpoint:datos.p_endpoint,p256dh:datos.p_p256dh,auth:datos.p_auth,
+   version:m.version,idioma:m.idioma,origen:m.origen});
+  pintarSinCuenta();
+ }
+ /* Cuando el bloque se ve (o no hay IntersectionObserver): el texto y, sin sesión, la consulta pendiente. */
+ function verSinCuenta(){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE)return;
+  if(!['escritorio','instalar-ios','sin-soporte'].includes(estadoSinCuenta()))cargarTextoSC().catch(()=>{});
+  Promise.resolve(sc.comprobacion).then(()=>{if(!(identidadConfirmada&&ses))return consultarSinMarca();}).catch(()=>{});
+ }
+ function estadoSinCuenta(){
+  if(!esMovilOTableta())return 'escritorio';
+  if(esIos()&&!instalada())return 'instalar-ios';
+  if(!soportaPush())return 'sin-soporte';
+  const permiso=permisoNotificaciones();
+  if(sc.activa===true&&permiso==='granted')return sc.vigente===false?'texto-nuevo':'activo';
+  if(permiso==='denied')return esIos()||instalada()?'denegado':'denegado-navegador';
+  if(sc.activa===undefined||sc.texto===undefined||(sc.sinMarca&&!sc.consultada))return 'comprobando';
+  if(sc.texto===null)return 'error-comprobar';
+  if(!sc.texto.activo)return 'no-disponible';
+  return 'disponible';
+ }
+ function textoEstadoSC(est,con){
+  if(est==='activo')return con?TEXTOS_SC['activo-cuenta']:sc.servicio===false?TEXTOS_SC['activo-pausa']:TEXTOS_SC.activo;
+  return TEXTOS_SC[est]||'';
+ }
+ /* Un texto en su idioma con «Privacidad»/«Privacy» del final enlazado. */
+ function conEnlaceFinal(texto,href){
+  const m=/^(.*\s)(Privacidad|Privacy)\.$/.exec(texto);
+  return m?esc(m[1])+'<a href="'+esc(href)+'">'+m[2]+'</a>.':esc(texto);
+ }
+ /* Solo se toca lo que cambia: el traductor de la web observa el DOM. */
+ function ponerHtml(n,html){if(n&&n.innerHTML!==html)n.innerHTML=html;}
+ function ponerTexto(n,t){if(n&&n.textContent!==t)n.textContent=t;}
+ function pintarSinCuenta(){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE||typeof document==='undefined')return;
+  const con=identidadConfirmada&&!!ses,est=estadoSinCuenta(),activa=est==='activo'||est==='texto-nuevo';
+  const lengua=enIngles()?'en':'es',texto=sc.texto&&sc.texto.texto?sc.texto.texto[lengua]:'';
+  const puede=['disponible','texto-nuevo'].includes(est)&&!!sc.texto&&sc.texto.activo===true;
+  const caja=$('perfilAvisosSinCuenta');
+  if(caja){
+   if(caja.hidden!==(con&&!activa))caja.hidden=con&&!activa;
+   const t=$('perfilScTexto');
+   if(t){t.hidden=!texto;t.lang=lengua;ponerHtml(t,texto?conEnlaceFinal(texto,PRIVACIDAD_SC):'');}
+   const e=$('perfilScEstado');
+   if(e){ponerTexto(e,sc.ocupado?'Un momento…':sc.mensaje||textoEstadoSC(est,con));
+    e.setAttribute('role',sc.error||est==='error-comprobar'?'alert':'status');}
+   const pasos=$('perfilScPasos');if(pasos)pasos.hidden=est!=='instalar-ios';
+   const ver=$('perfilScInstalar');if(ver)ver.hidden=!(est==='instalar-ios'&&typeof window!=='undefined'&&typeof window.rwadarInstalarIphone==='function');
+   const act=$('perfilScActivar');
+   if(act){act.hidden=!['disponible','comprobando','texto-nuevo'].includes(est);act.disabled=sc.ocupado||!puede;}
+   const des=$('perfilScDesactivar');if(des){des.hidden=!activa;des.disabled=sc.ocupado;}
+   const lista=$('perfilScVer');if(lista)lista.hidden=!activa;
+   const rei=$('perfilScReintentar');if(rei){rei.hidden=est!=='error-comprobar';rei.disabled=sc.ocupado;}
+   const quien=$('perfilScQuien');
+   if(quien){quien.hidden=!['disponible','comprobando','texto-nuevo','activo'].includes(est);quien.lang=lengua;ponerHtml(quien,conEnlaceFinal(QUIEN_SC[lengua],'/privacidad#garantias-push'));}
+   const datos=$('perfilScDatos');if(datos){datos.lang=lengua;ponerHtml(datos,conEnlaceFinal(INFO_SC[lengua],PRIVACIDAD_SC));}
+  }
+  /* El pie de la lista de ?avisos=1. */
+  const quitar=$('avisosScDesactivar'),res=$('avisosScResultado');
+  if(quitar){quitar.hidden=!(sc.suscrito||activa);quitar.disabled=sc.ocupado;}
+  if(res){const m=sc.ocupado?'Un momento…':sc.mensaje;ponerTexto(res,m);res.hidden=!m;res.setAttribute('role',sc.error?'alert':'status');}
+ }
+ /* Por qué no se ha podido activar: lo que dice el servidor o el paso del navegador. */
+ function motivoSinCuenta(e,fase){
+  const codigo=e&&e.codigoSC;
+  if(codigo==='apagado'||codigo==='no_disponible')return 'apagado';
+  if(codigo==='version'||codigo==='lleno')return codigo;
+  if(codigo==='cupo'||codigo==='intentos_excedidos')return 'cupo';
+  if(codigo)return e.status>=500||e.status===0?'red':'otro';
+  const m=motivoActivarPush(e,fase);
+  return m==='sesion'?'otro':m;
+ }
+ async function altaSinCuenta(datos,version,idioma,origen){
+  const {status,j}=await pedirSinCuenta('/api/avisos/web',{accion:'alta',endpoint:datos.p_endpoint,p256dh:datos.p_p256dh,auth:datos.p_auth,version,idioma,origen});
+  if(status===200&&j&&j.ok===true&&j.estado==='activa')return {ok:true};
+  return {ok:false,status,error:j&&typeof j.error==='string'?j.error:'respuesta'};
+ }
+ /* En el MISMO toque: el permiso se pide antes de cualquier espera.
+    avisar:false cuando quien llama enseña el resultado (la ventana de novedades). */
+ function activarSinCuenta(origen,{avisar:avisarFin=true}={}){
+  const o=ORIGENES_SC.includes(origen)?origen:'perfil';
+  const est=estadoSinCuenta(),t=sc.texto;
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE||sc.ocupado||!['disponible','texto-nuevo'].includes(est)||!t||!t.activo)
+   return Promise.resolve({ok:false,estado:est,mensaje:'',error:false});
+  const idioma=enIngles()?'en':'es';
+  let permiso;
+  try{permiso=permisoNotificaciones()==='granted'?Promise.resolve('granted'):Promise.resolve(Notification.requestPermission());}
+  catch(e){permiso=Promise.resolve('default');}
+  const actual=sc.intento={};
+  sc.ocupado=true;sc.desde=Date.now();sc.mensaje='';sc.error=false;pintarSinCuenta();
+  const sigue=()=>sc.intento===actual;
+  return (async()=>{
+   let resultado='',error=false,ok=false,fase='permiso';
+   try{
+    const p=await permiso;
+    if(!sigue())return {ok:false,mensaje:'',error:false};
+    sc.desde=Date.now();
+    if(p!=='granted'){resultado=p==='denied'?'':TEXTOS_SC['sin-permiso'];return {ok:false,mensaje:resultado,error:false};}
+    fase='trabajador';
+    const r=await conPlazo(registroTrabajador());
+    if(!sigue())return {ok:false,mensaje:'',error:false};
+    fase='suscribir';
+    let sub=await conPlazo(r.pushManager.getSubscription(),PLAZO_SUELTA_MS).catch(()=>null),nueva=false;
+    const crear=async()=>{
+     if(sub)await conPlazo(sub.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
+     sub=await conPlazo(r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(t.clave)}));nueva=true;
+    };
+    if(!sub||!mismaClave(sub,t.clave))await crear();
+    if(!sigue()){if(nueva)sub.unsubscribe().catch(()=>{});return {ok:false,mensaje:'',error:false};}
+    fase='registrar';
+    let alta=await altaSinCuenta(datosSuscripcion(sub),t.version,idioma,o);
+    /* Esa dirección ya está dada de alta con otra clave: otra suscripción y otra vez. */
+    if(!alta.ok&&alta.error==='en_uso'){await crear();alta=await altaSinCuenta(datosSuscripcion(sub),t.version,idioma,o);}
+    if(!alta.ok){
+     if(nueva)sub.unsubscribe().catch(()=>{});
+     throw Object.assign(new Error('alta'),{codigoSC:alta.error,status:alta.status});
+    }
+    if(!sigue())return {ok:false,mensaje:'',error:false};
+    guardarMarcaSC({v:1,huella:huellaSC(datosSuscripcion(sub).p_endpoint),version:t.version,idioma,origen:o,renovado:Date.now()});
+    sc.activa=true;sc.vigente=true;sc.servicio=true;sc.suscrito=true;sc.sinMarca=null;
+    ok=true;resultado=TEXTOS_SC.activadas;
+    /* La notificación de muestra, con plazo: si no sale, ya están activadas igual. */
+    try{await conPlazo(r.showNotification(idioma==='en'?'Notifications turned on for this phone':'Notificaciones activadas en este móvil',{
+     body:idioma==='en'?'This is how RWAdar notices will reach you.':'Así te llegarán los avisos de RWAdar.',
+     icon:'/icono-192.png',tag:'rwadar-activadas',lang:idioma,data:{url:'/'}}),PLAZO_SUELTA_MS);}catch(e){}
+   }catch(e){
+    if(!sigue())return {ok:false,mensaje:'',error:false};
+    const motivo=motivoSinCuenta(e,fase);
+    if(motivo==='apagado'&&sc.texto)sc.texto=Object.assign({},sc.texto,{activo:false});
+    if(motivo==='version')cargarTextoSC(true).catch(()=>{});
+    error=motivo!=='denegado';
+    resultado=!error?'':TEXTOS_SC[motivo]||TEXTOS_ACTIVAR_PUSH[motivo]||TEXTOS_ACTIVAR_PUSH.otro;
+   }finally{
+    if(sigue()){sc.ocupado=false;sc.mensaje=resultado;sc.error=error;pintarSinCuenta();if(resultado&&avisarFin)aviso(resultado);}
+   }
+   return {ok,mensaje:resultado,error};
+  })();
+ }
+ /* Baja en la base (con la clave auth de este navegador, que hace de llave)
+    y fuera la suscripción, salvo que la cuenta abierta la use. */
+ function desactivarSinCuenta(){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE||sc.ocupado)return Promise.resolve({ok:false});
+  const actual=sc.intento={};
+  sc.ocupado=true;sc.desde=Date.now();sc.mensaje='';sc.error=false;pintarSinCuenta();
+  const sigue=()=>sc.intento===actual;
+  return (async()=>{
+   let ok=true,error=false,resultado='';
+   try{
+    const s=await suscripcionActual();
+    if(s){
+     try{const {status,j}=await pedirSinCuenta('/api/avisos/web',{accion:'baja',endpoint:s.datos.p_endpoint,auth:s.datos.p_auth});ok=status===200&&!!j&&j.ok===true;}
+     catch(e){ok=false;}
+     const cuentaLaUsa=identidadConfirmada&&!!ses&&push.cuenta===versionCuenta&&push.registrado===true;
+     guardarMarcaSC(null);
+     if(!cuentaLaUsa)await conPlazo(s.sub.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
+    }else guardarMarcaSC(null);
+    sc.activa=false;sc.vigente=true;sc.sinMarca=null;sc.suscrito=false;
+    resultado=ok?TEXTOS_SC.desactivadas:TEXTOS_SC['desactivadas-sin-confirmar'];error=!ok;
+   }catch(e){resultado=TEXTOS_SC['error-desactivar'];error=true;}
+   finally{if(sigue()){sc.ocupado=false;sc.mensaje=resultado;sc.error=error;pintarSinCuenta();if(resultado)aviso(resultado);}}
+   return {ok:!error};
+  })();
+ }
+ /* Antes de que la cuenta suelte la suscripción («Desactivar» de la cuenta): baja también sin cuenta. Nunca falla. */
+ async function bajaSinCuentaAntes(){
+  try{
+   const s=await suscripcionActual();
+   if(!s||!esDeSinCuenta(s.datos))return;
+   await pedirSinCuenta('/api/avisos/web',{accion:'baja',endpoint:s.datos.p_endpoint,auth:s.datos.p_auth}).catch(()=>{});
+   guardarMarcaSC(null);sc.activa=false;sc.suscrito=false;pintarSinCuenta();
+  }catch(e){}
+ }
+ /* Si el navegador no contestó nunca, al volver a la página «Un momento…» no se queda para siempre. */
+ function liberarSinCuentaAtascado(){
+  if(!sc.ocupado||!(Date.now()-(sc.desde||0)>LIBERAR_PUSH_MS))return;
+  sc.intento=null;sc.ocupado=false;sc.mensaje=TEXTOS_ACTIVAR_PUSH.otro;sc.error=true;pintarSinCuenta();
+ }
+
+ /* ?avisos=1 sin sesión: los avisos publicados y la baja de este móvil. */
+ let listaSC={avisos:null,error:false,pedida:0};
+ function pintarListaSC(){
+  const caja=$('avisosScLista');if(!caja)return;
+  const dos=n=>String(n).padStart(2,'0'),dia=d=>dos(d.getDate())+'/'+dos(d.getMonth()+1)+'/'+d.getFullYear();
+  const iso=d=>d.getFullYear()+'-'+dos(d.getMonth()+1)+'-'+dos(d.getDate());
+  const l=listaSC.avisos;
+  ponerHtml(caja,listaSC.error&&!l?'<p class="perfil-nota" role="status">No se han podido cargar los avisos. Vuelve a intentarlo más tarde.</p>'
+   :!l?'<p class="perfil-nota" role="status">Cargando los avisos…</p>'
+   :!l.length?'<p class="perfil-nota">Aquí verás las fichas nuevas del radar y las novedades de RWAdar.</p>'
+   :'<ul class="bandeja-avisos">'+l.map(a=>'<li><b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
+     (a.fecha?'<time datetime="'+iso(a.fecha)+'">'+dia(a.fecha)+'</time>':'')+
+     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>').join('')+'</ul>');
+ }
+ async function cargarListaSC(){
+  listaSC.pedida=Date.now();listaSC.error=false;pintarListaSC();
+  try{
+   const {status,j}=await pedirSinCuenta('/api/avisos/recientes');
+   if(status!==200||!j||j.v!==1||!Array.isArray(j.avisos)||j.avisos.length>50)throw new Error('lista');
+   const vistos=new Set();
+   listaSC.avisos=j.avisos.filter(a=>a&&a.tipo!=='bienvenida').map(avisoBandeja).filter(a=>a&&!vistos.has(a.id)&&vistos.add(a.id)).slice(0,20);
+  }catch(e){listaSC.error=true;}
+  pintarListaSC();
+ }
+ function abrirAvisosSinCuenta(origen){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE||typeof document==='undefined'||!document.createElement)return;
+  let d=$('avisosScDialogo');
+  if(!d){
+   d=document.createElement('dialog');
+   d.id='avisosScDialogo';d.className='escaparate-dialogo avisos-dialogo avisos-sc-dialogo';
+   d.setAttribute('aria-labelledby','avisosScDialogoTit');
+   d.innerHTML='<div class="escaparate-dialogo-marco"><header class="avisos-dialogo-cab"><div><span>Fichas nuevas y novedades</span>'+
+    '<h2 id="avisosScDialogoTit">Avisos de RWAdar</h2></div><button type="button" data-cerrar-avisos-sc aria-label="Cerrar">×</button></header>'+
+    '<div class="avisos-dialogo-cuerpo"><div id="avisosScLista"></div></div>'+
+    '<div class="avisos-dialogo-pie">'+
+    '<p class="avisos-baja" id="avisosScBaja">¿No quieres estos avisos? Desactívalos aquí o en los ajustes del móvil.</p>'+
+    '<p class="perfil-nota avisos-sc-resultado" id="avisosScResultado" role="status" hidden></p>'+
+    '<button type="button" class="avisos-gestionar avisos-sc-quitar" id="avisosScDesactivar" data-sc-desactivar hidden>Desactivar las notificaciones de este móvil</button>'+
+    '<button type="button" class="avisos-gestionar" data-avisos-sc-perfil>Notificaciones y avisos en Perfil</button></div></div>';
+   d.addEventListener('click',e=>{
+    if(e.target===d||(e.target.closest&&e.target.closest('[data-cerrar-avisos-sc]')))d.close();
+    else if(e.target.closest&&e.target.closest('[data-avisos-sc-perfil]')){d._origen=null;d.close();irAPerfilAvisos();}
+   });
+   d.addEventListener('close',()=>{if(d._origen&&document.contains(d._origen))d._origen.focus({preventScroll:true});});
+   document.body.appendChild(d);
+  }
+  d._origen=origen||null;
+  pintarListaSC();pintarSinCuenta();
+  if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
+  const cerrarBoton=d.querySelector('[data-cerrar-avisos-sc]');if(cerrarBoton)cerrarBoton.focus({preventScroll:true});
+  /* Visto: el número del icono y el del service worker, a 0. */
+  insigniaApp(0);avisarTrabajador({tipo:'avisos-vistos',n:0});
+  if(!listaSC.avisos||listaSC.error||Date.now()-listaSC.pedida>60000)cargarListaSC().catch(()=>{});
+  /* ¿Hay algo que desactivar en este navegador? */
+  suscripcionActual().then(s=>{sc.suscrito=!!s;pintarSinCuenta();}).catch(()=>{});
+ }
+ /* Para la ventana de novedades (assets/novedades-producto-20261112.js): qué
+    puede hacer su botón «Activar avisos». 'directo' (sin sesión, en un móvil
+    que puede y con la base encendida: activa aquí mismo, con el texto
+    versionado a la vista), 'instalar' (iPhone sin la web en la pantalla de
+    inicio: los pasos), 'activos' (ya están) o 'perfil' (lo demás: a Perfil ›
+    Avisos). Espera como mucho PLAZO_VENTANA_SC_MS. */
+ async function paraVentanaSC(){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE)return {modo:'perfil'};
+  if(restauracionCuenta)await Promise.race([Promise.resolve(restauracionCuenta).catch(()=>{}),esperaSC(PLAZO_VENTANA_SC_MS)]);
+  if(identidadConfirmada&&ses||restauracionCuenta)return {modo:'perfil'};
+  const previo=estadoSinCuenta();
+  if(previo==='instalar-ios')return {modo:typeof window!=='undefined'&&typeof window.rwadarInstalarIphone==='function'?'instalar':'perfil'};
+  if(['escritorio','sin-soporte','denegado','denegado-navegador'].includes(previo))return {modo:'perfil'};
+  await Promise.race([Promise.all([Promise.resolve(sc.comprobacion),cargarTextoSC()]).then(()=>consultarSinMarca()),esperaSC(PLAZO_VENTANA_SC_MS)]).catch(()=>{});
+  const est=estadoSinCuenta();
+  if(est==='activo')return {modo:'activos'};
+  /* quien: la frase del anexo (7.3) junto al botón, como en Perfil › Avisos. */
+  if(est==='disponible'&&sc.texto&&sc.texto.activo)return {modo:'directo',version:sc.texto.version,texto:Object.assign({},sc.texto.texto),
+   info:INFO_SC,privacidad:PRIVACIDAD_SC,quien:QUIEN_SC,garantias:'/privacidad#garantias-push'};
+  return {modo:'perfil'};
+ }
+ function iniciarSinCuenta(){
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE||typeof document==='undefined')return;
+  comprobarSinCuenta();
+  /* El texto, cuando el bloque se ve en pantalla (la pestaña Perfil). */
+  const caja=$('perfilAvisosSinCuenta');
+  if(caja&&typeof IntersectionObserver==='function'){
+   try{new IntersectionObserver(entradas=>{if(entradas.some(e=>e.isIntersecting))verSinCuenta();}).observe(caja);}catch(e){verSinCuenta();}
+  }else verSinCuenta();
+  document.addEventListener('visibilitychange',()=>{
+   if(document.visibilityState!=='visible')return;
+   if(sc.ocupado)liberarSinCuentaAtascado();
+   /* Al volver (quizá de los ajustes del móvil): el permiso y la suscripción pueden haber cambiado. */
+   else if(!sc.comprobacion)comprobarSinCuenta();
+  });
+  try{
+   window.RWAdarAvisosSinCuenta=Object.freeze({
+    paraVentana:paraVentanaSC,
+    activar:origen=>activarSinCuenta(origen,{avisar:false}),
+    estado:estadoSinCuenta
+   });
+  }catch(e){}
+  pintarSinCuenta();
+ }
+ /* avisos-sin-cuenta:fin */
+
  /* --- estado del botón de la cabecera ----------------------------- */
  function pinta(){
   /* La comunidad escucha este aviso para enseñar u ocultar el formulario. */
@@ -5820,6 +6318,8 @@ const Cuenta = (function(){
    if(!identidadConfirmada||!ses)push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false,fallo:''};
    pintarPush();cargarPush().catch(()=>{});
   }
+  /* Sin cuenta (14/11/2026): con sesión el bloque solo sale si este móvil las tiene así. */
+  if(AVISOS_SIN_CUENTA_DISPONIBLE)pintarSinCuenta();
   /* La campana: con sesión confirmada se pide la bandeja para contar lo no leído. */
   if(AVISOS_BANDEJA_DISPONIBLE){
    pintarCampana();
@@ -5866,7 +6366,13 @@ const Cuenta = (function(){
    else if(t.closest('[data-push-reintentar]'))reintentarPush();
    else if(t.closest('[data-push-entrar]'))entrarPush();
    else if(t.closest('[data-push-instalar]')&&typeof window.rwadarInstalarIphone==='function')window.rwadarInstalarIphone(t.closest('[data-push-instalar]'));
+   /* Sin cuenta (14/11/2026): Perfil › Avisos y la lista de ?avisos=1. */
+   else if(AVISOS_SIN_CUENTA_DISPONIBLE&&t.closest('[data-sc-activar]'))activarSinCuenta('perfil');
+   else if(AVISOS_SIN_CUENTA_DISPONIBLE&&t.closest('[data-sc-desactivar]'))desactivarSinCuenta();
+   else if(AVISOS_SIN_CUENTA_DISPONIBLE&&t.closest('[data-sc-reintentar]')){sc.mensaje='';sc.error=false;cargarTextoSC(true).catch(()=>{});comprobarSinCuenta();}
+   else if(AVISOS_SIN_CUENTA_DISPONIBLE&&t.closest('[data-sc-ver]'))abrirAvisosSinCuenta(t.closest('[data-sc-ver]'));
   });
+  if(AVISOS_SIN_CUENTA_DISPONIBLE)iniciarSinCuenta();
   const huecoPush=$('perfilPushHueco');
   if(huecoPush&&AVISOS_WEBPUSH_DISPONIBLE&&typeof huecoPush.replaceWith==='function'&&document.createElement){
    const caja=document.createElement('div');caja.innerHTML=bloquePush('perfil');
@@ -5897,7 +6403,7 @@ const Cuenta = (function(){
    let idiomaCampana=document.documentElement.lang;
    new MutationObserver(()=>{
     const ahora=document.documentElement.lang;if(ahora===idiomaCampana)return;
-    idiomaCampana=ahora;pintarCampana();
+    idiomaCampana=ahora;pintarCampana();if(AVISOS_SIN_CUENTA_DISPONIBLE)pintarSinCuenta();
    }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   }catch(e){}
   const opcionNovedades=$('perfilNovedadesOpcion');

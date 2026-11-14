@@ -48,7 +48,7 @@
   <a class="volver" href="/">← Volver al inicio</a>
 
   <h1>Privacidad</h1>
-  <p class="fecha">Versión revisada el <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
+  <p class="fecha">Versión revisada el <time datetime="2026-11-14">14 de noviembre de 2026</time></p>
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
@@ -62,7 +62,7 @@
       para guardar la lista de plataformas que sigues. Solo te enviamos los correos
       necesarios para confirmar la dirección y recuperar la contraseña. <b>Las opiniones y
       los avisos por correo siguen en pausa.</b> Las notificaciones en el móvil solo llegan si
-      las activas tú en Perfil › Avisos (apartado 6). La lista de seguimiento
+      las activas tú en Perfil › Avisos (apartado 6), con cuenta o sin ella. La lista de seguimiento
       de tu cuenta es distinta de los favoritos: estos se guardan solo en el dispositivo
       en la app nativa, o solo en tu navegador en la web.</p>
     <p>Puedes <b>borrar tu cuenta tú mismo</b> desde Perfil, confirmando tu contraseña
@@ -225,6 +225,16 @@
           vez (LSSI, art. 22.2), no es un dato personal y no sale del navegador. La app de Android guarda lo mismo en el móvil.</td>
         <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador (almacenamiento local) o tu móvil</td>
       </tr>
+      <tr id="marca-sin-cuenta">
+        <td>Notificaciones <br>sin cuenta</td>
+        <td><span class="celda-etiqueta">Por qué ocurre</span> Solo si activas las notificaciones sin cuenta (apartado 6). El
+          navegador guarda una marca para saber que su suscripción es la de sin cuenta: una huella de la dirección de
+          entrega (no la dirección), la versión y el idioma del texto que aceptaste, dónde las activaste y cuándo se
+          renovaron. Sirve para renovarlas como mucho cada 12 horas al abrir la web y para no quitarlas al cerrar sesión.
+          Es estrictamente necesaria para lo que pides (LSSI, art. 22.2) y se borra al desactivarlas. La app de Android
+          guarda en el móvil el identificador de entrega con esos mismos datos.</td>
+        <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador (almacenamiento local) o tu móvil</td>
+      </tr>
       <tr>
         <td>Instalaciones anteriores <br>de la aplicación web</td>
         <td><span class="celda-etiqueta">Por qué ocurre</span> Cuando la web se actualiza en tu navegador, se borran las copias antiguas de RWAdar.
@@ -243,7 +253,8 @@
     lección, a qué lección volver (24 horas, apartado 9), con tu cuenta, qué avisos has leído
     y el número de avisos sin ver para el icono y, con o sin cuenta, qué versión de las novedades
     ya has visto; nada de eso sale de tu navegador
-    ni se envía a RWAdar. Puedes borrar los favoritos desde Perfil. No guarda una copia PWA del catálogo. No incluye publicidad,
+    ni se envía a RWAdar. Si activas las notificaciones sin cuenta, guarda además su marca (apartado 2, sin la
+    dirección de entrega), que tampoco sale de tu navegador. Puedes borrar los favoritos desde Perfil. No guarda una copia PWA del catálogo. No incluye publicidad,
     píxeles sociales ni analítica de seguimiento entre sitios. No se utiliza Zaraz.</p>
   <p><b>Estadísticas de la web/PWA:</b> esta versión incluye
     Cloudflare Web Analytics solo en <span class="codigo">rwadar.pages.dev</span>.
@@ -397,7 +408,9 @@
     en Perfil › Avisos, con «Notificaciones en este móvil», desde el navegador del móvil o la
     tableta (en iPhone y iPad, con RWAdar añadida a la pantalla de inicio). En la app de
     Android, desde la versión 1.4.2, con el mismo botón. Desde el 12/11/2026 ya las enviamos a
-    quien las activa. Solo se piden si pulsas
+    quien las activa. <b>También sin cuenta</b> (desde el 14/11/2026): en la web, en Perfil ›
+    Avisos sin entrar; en la app, en la primera pantalla, sin entrar
+    (<a href="#avisos-sin-cuenta">apartado 6, «Notificaciones sin cuenta»</a>). Solo se piden si pulsas
     ese botón, el sistema o el navegador te pide permiso y puedes quitarlas cuando quieras. Qué se guarda, quién las entrega y cuándo se
     borra se explica en el <a href="#avisos-novedades">apartado 6</a>. La app no crea una
     identidad remota de instalación ni activa seguimiento por instalación, y ninguna
@@ -484,6 +497,58 @@
       borra todo lo demás.</li>
     <li><b>Base jurídica:</b> tu consentimiento (art. 6.1.a RGPD y art. 21 de la Ley 34/2002).
       Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.</li>
+  </ul>
+
+  <h3 id="avisos-sin-cuenta">Notificaciones sin cuenta</h3>
+  <p><b>Desde el 14/11/2026 puedes recibir las notificaciones de RWAdar en tu móvil sin crear una
+    cuenta ni entrar en ella.</b> Funcionan así:</p>
+  <ul>
+    <li><b>Qué son:</b> las mismas notificaciones de RWAdar sobre fichas nuevas en el radar y
+      novedades de la web y la app. Sin correos: sin cuenta no tenemos tu correo.</li>
+    <li><b>Solo con tu permiso:</b> las activas con el botón «Activar notificaciones en este móvil»:
+      en la web, en Perfil › Avisos o en el recuadro «Activa los avisos» de la ventana de novedades
+      (en iPhone y iPad, con RWAdar añadida a la pantalla de inicio); en la app de Android 1.4.2 o
+      posterior, en la primera pantalla. Junto al botón se enseña el texto del permiso, con su
+      versión (<code>sin-cuenta-v1-2026-11-14</code>): «Quiero recibir en este móvil notificaciones
+      de RWAdar: fichas nuevas en el radar y novedades de la web y la app. Es opcional y no necesita
+      cuenta. Las quitas cuando quieras aquí o en los ajustes del móvil. Solo para mayores de 18
+      años. Más información en Privacidad.». Después, el navegador o el móvil te pide permiso.</li>
+    <li><b>Qué se guarda:</b> en la web, la suscripción de tu navegador (la dirección de entrega de
+      su servicio de notificaciones y sus dos claves de cifrado); en la app, el identificador de
+      entrega de tu móvil. Con ellos, la versión del texto que aceptaste, en qué idioma lo viste,
+      dónde las activaste (Perfil, la ventana de novedades o la lista de avisos; en la app sin
+      sesión, «Perfil» es su primera pantalla) y las fechas del alta y de la última renovación. Nada más: ni nombre, ni correo, ni cuenta. Como prueba del
+      permiso (art. 7.1 RGPD) se apunta cada alta y cada baja con un número al azar, sin la
+      dirección ni el identificador: el canal (web o app), la versión, el idioma, dónde y, en las
+      bajas, el motivo (el botón, el servicio que la rechazó, los fallos repetidos o la caducidad).
+      En tu navegador o en tu móvil queda la marca del <a href="#marca-sin-cuenta">apartado 2</a>.</li>
+    <li><b>Quién interviene:</b> la base de datos de RWAdar (Supabase) las guarda y las envía a
+      través del servidor de su web (Cloudflare), que en la web las cifra y las entrega sin
+      guardarlas. Las entrega el servicio de notificaciones de tu navegador (Apple, Google, Mozilla
+      o Microsoft, <a href="#garantias-push">apartado 8</a>) o, en la app, Expo con Firebase Cloud
+      Messaging de Google (con su envío de fechas y datos técnicos del móvil,
+      <a href="#firebase-android">apartado 5</a>, que también consientes al activarlas sin cuenta;
+      sin cuenta, si no las activas, no le llega nada). Las de la web van cifradas de extremo a extremo.</li>
+    <li><b>Sin duplicados:</b> si ese mismo navegador o móvil también recibe los avisos con tu cuenta,
+      te llega una sola notificación. Al cerrar sesión en la web, las de sin cuenta siguen; al
+      desactivar «Notificaciones en este móvil» con tu cuenta, se quitan las dos.</li>
+    <li><b>Baja:</b> con el botón «Desactivar las notificaciones de este móvil», en Perfil › Avisos de
+      la web, en la lista que abre cada notificación o en la primera pantalla de la app; también
+      quitando el permiso en los ajustes del móvil o desinstalando la app. Cada notificación abre la
+      lista de avisos con ese botón (art. 21.2 de la Ley 34/2002).</li>
+    <li><b>Conservación:</b> hasta que las desactives o el servicio de notificaciones las dé por
+      caducadas, y como mucho 180 días sin abrir RWAdar en ese navegador o esa app (al abrirla se
+      renuevan). Los registros de cada envío, 90 días. El historial de altas y bajas, 3 años desde la
+      baja, solo para atender reclamaciones.</li>
+    <li><b>Base jurídica:</b> tu consentimiento (art. 6.1.a RGPD y arts. 21 y 22.2 de la Ley 34/2002),
+      que puedes retirar cuando quieras sin que afecte a los envíos anteriores.</li>
+    <li><b>Tus derechos sin cuenta:</b> no sabemos quién eres y no te pedimos datos para saberlo
+      (art. 11 RGPD). La forma de ejercer la supresión y la oposición es el botón de desactivar o los
+      ajustes del móvil, que borran la suscripción o el identificador al momento. Para otra
+      solicitud, escribe a <a href="mailto:rwadares@gmail.com">rwadares@gmail.com</a>; si quieres que
+      la atendamos, tendrás que darnos algo que nos permita encontrarla (por ejemplo, la fecha y la
+      hora en que las activaste).</li>
+    <li><b>Edad:</b> solo para mayores de 18 años (<a href="#edad-minima">apartado 12</a>).</li>
   </ul>
 
   <h2 id="consultas-b2b">7 · Consultas de empresas por correo</h2>
@@ -629,7 +694,9 @@
       cuando corresponde. En Android, Firefox puede hacer llegar la notificación a través del
       servicio de Google, igual de cifrada.</li>
   </ul>
-  <p>Si prefieres que tus avisos no pasen por estos servicios, no actives las notificaciones en
+  <p>Lo mismo vale para las notificaciones sin cuenta (<a href="#avisos-sin-cuenta">apartado 6</a>):
+    esos servicios reciben la dirección de entrega y la notificación cifrada, nunca un nombre ni un
+    correo. Si prefieres que tus avisos no pasen por estos servicios, no actives las notificaciones en
     el móvil: verás los mismos avisos en la campana de tu cuenta. RWAdar no promete que
     cada notificación llegue: depende del móvil, del navegador y de su configuración.</p>
 
@@ -659,6 +726,12 @@
       caducada o tras 180 días sin entrar en tu cuenta desde ese navegador. Un proceso diario elimina por lotes instalaciones con más de 180 días sin actividad.
       Se comprobó su ejecución el 27 de septiembre de 2026. Este proceso no borra
       cuentas ni sustituye la atención de una solicitud de derechos.</li>
+    <li id="plazos-sin-cuenta"><b>Notificaciones sin cuenta:</b> la suscripción de la web o el identificador de la app,
+      hasta que las desactives, el servicio de notificaciones las dé por caducadas o pasen 180 días
+      sin abrir RWAdar en ese navegador o esa app; los registros de cada envío, 90 días; el historial
+      de altas y bajas (sin la dirección ni el identificador), 3 años desde la baja, solo para atender
+      reclamaciones. La marca de tu navegador o tu móvil (apartado 2), hasta desactivarlas o borrar
+      los datos del sitio o de la app.</li>
     <li><b>Avisos de novedades:</b> el permiso y su historial de altas y bajas, mientras exista
       la cuenta; tras borrarla, el historial queda bloqueado durante 3 años, solo para atender
       reclamaciones (art. 32 LOPDGDD). El resto, como se explica en el apartado 6.</li>
@@ -719,12 +792,16 @@
     e indica qué solicitas y el correo de la cuenta, si existió. Aporta solo la información
     necesaria; no envíes contraseñas ni tokens. El titular verificará la identidad de forma
     proporcionada y responderá dentro del plazo legal aplicable.</p>
+  <p><b>Notificaciones sin cuenta:</b> como no sabemos quién eres, no podemos identificarte para
+    atender una solicitud (art. 11 RGPD). Las quitas tú en el momento con «Desactivar las
+    notificaciones de este móvil» o en los ajustes del móvil, y se borran (apartado 6).</p>
   <p>Si crees que tus datos no se están tratando bien, puedes reclamar ante la
     <a href="https://www.aepd.es" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
 
-  <h2>12 · Edad mínima</h2>
+  <h2 id="edad-minima">12 · Edad mínima</h2>
   <p>RWAdar está dirigido exclusivamente a personas mayores de 18 años. Las personas menores de
-    18 años no deben crear una cuenta ni utilizar las funciones de seguimiento, opiniones o avisos.
+    18 años no deben crear una cuenta ni utilizar las funciones de seguimiento, opiniones o avisos,
+    ni activar las notificaciones, tampoco sin cuenta (su texto lo dice: «Solo para mayores de 18 años»).
     Al crear la cuenta confirmas que tienes 18 años o más.
     Si detectamos una cuenta de una persona menor de 18 años, la bloquearemos y eliminaremos sus
     datos conforme a las obligaciones legales aplicables.</p>

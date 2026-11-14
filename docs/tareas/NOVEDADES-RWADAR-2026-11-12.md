@@ -12,7 +12,12 @@ en detalle».
    cada uno con su icono. Dos botones: **«Ver en detalle»** y **«Entendido»**.
    Sale **una vez por versión**: al cerrarla (Entendido, ×, Escape o tocando
    fuera) o al ver el detalle, no vuelve a salir hasta la siguiente.
-   **Desde el 14/11/2026**, debajo de los puntos y antes de los botones, el
+   **Desde el 14/11/2026** (versión `2026-11-14.3`: ARRIBA del cuerpo, antes
+   de los puntos, y compacto, a la vista sin desplazar en 390 × 664 y
+   360 × 640; en la web, sin sesión y donde se puede, su botón activa las
+   notificaciones sin cuenta AHÍ MISMO, con el texto versionado a la vista, y
+   en iPhone sin instalar lleva a los pasos de añadirla; ver
+   [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md)), el
    recuadro **«Activa los avisos»** («Recibe cada novedad en el móvil, como
    un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.») con el botón
    **«Activar avisos»**: cierra la ventana (cuenta como vista, igual que

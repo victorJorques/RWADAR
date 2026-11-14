@@ -149,14 +149,18 @@ function FondoSeguro({ children }) {
   );
 }
 
-/* El recuadro «Activa los avisos», debajo de los puntos (14/11/2026). Va
-   dentro de lo que se desplaza: con letra grande, «Ver en detalle» y
-   «Entendido» siguen a la vista. Vibra en irAAvisosPerfil de App.js. */
+/* El recuadro «Activa los avisos» (14/11/2026). Desde la 2026-11-14.3 va
+   ARRIBA, antes de los puntos, y compacto: se ve sin desplazar en un Android
+   pequeño (360 × 640). Va dentro de lo que se desplaza: con letra grande,
+   «Ver en detalle» y «Entendido» siguen a la vista. En la app la ventana solo
+   sale con sesión, así que lleva a Perfil › Avisos (sin sesión, las
+   notificaciones sin cuenta están en la pantalla de acceso). Vibra en
+   irAAvisosPerfil de App.js. */
 function RecordatorioAvisos({ onActivar }) {
   return (
     <View style={s.recordatorio} testID="novedadesRecordatorio">
       <View style={s.recordatorioCab}>
-        <View style={s.puntoIcono}><IconoNovedad nombre="notificacion" /></View>
+        <View style={[s.puntoIcono, s.recordatorioIcono]}><IconoNovedad nombre="notificacion" /></View>
         <Text style={s.recordatorioTit} accessibilityRole="header">Activa los avisos</Text>
       </View>
       <Text style={s.recordatorioTxt}>Recibe cada novedad en el móvil, como un WhatsApp. Es gratis y puedes quitar los avisos cuando quieras.</Text>
@@ -185,6 +189,7 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido, recor
             <ScrollView style={s.desplazable} contentContainerStyle={s.ventanaCuerpo} bounces={false}>
               <Text noTraducir idiomaOriginal={t.lengua} style={s.titulo} accessibilityRole="header">{t.titulo}</Text>
               <Text noTraducir idiomaOriginal={t.lengua} style={s.fecha}>{t.fecha}</Text>
+              {recordarAvisos ? <RecordatorioAvisos onActivar={onActivarAvisos} /> : null}
               <View style={s.puntos}>
                 {t.resumen.map((p) => (
                   <View key={p.id} style={s.punto} testID={`novedadPunto-${p.id}`} accessible
@@ -197,7 +202,6 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido, recor
                   </View>
                 ))}
               </View>
-              {recordarAvisos ? <RecordatorioAvisos onActivar={onActivarAvisos} /> : null}
             </ScrollView>
             <View style={s.botones}>
               <Pressable testID="novedadesVerDetalle" onPress={() => { tacto.abrir(); onDetalle?.(); }}
@@ -324,8 +328,10 @@ const s = StyleSheet.create({
   botonVerdeTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.enSenal, textAlign: 'center' },
   foco: { borderWidth: 2, borderColor: C.tx },
   // El recuadro «Activa los avisos»: como «Ir a Perfil › Avisos» del detalle, con el tono verde de los iconos.
-  recordatorio: { marginTop: 18, padding: 14, borderRadius: R.l, backgroundColor: C.senalT, borderWidth: 1, borderColor: C.bd, gap: 10 },
-  recordatorioCab: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  // Arriba y compacto (2026-11-14.3): a la vista sin desplazar en 360 × 640.
+  recordatorio: { marginTop: 14, padding: 12, borderRadius: R.l, backgroundColor: C.senalT, borderWidth: 1, borderColor: C.bd, gap: 8 },
+  recordatorioCab: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  recordatorioIcono: { width: 32, height: 32 },
   recordatorioTit: { fontFamily: F.negrita, fontSize: 18, lineHeight: 23, color: C.tx, flex: 1, minWidth: 0 },
   recordatorioTxt: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx2 },
 

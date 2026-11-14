@@ -2321,6 +2321,18 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .avisos-push-principal{background:var(--senal);color:var(--en-senal)}
 .avisos-push-boton:disabled{opacity:.55;cursor:not-allowed}
 .perfil-ver-avisos[hidden]{display:none}
+/* Notificaciones sin cuenta (14/11/2026): el texto versionado del permiso, que
+   da el servidor, se lee como el del interruptor de la cuenta; sus enlaces se
+   ven como enlaces. La lista de ?avisos=1 sin sesión reutiliza .avisos-dialogo. */
+.movil-estado>p.avisos-sc-permiso{margin:12px 0 0;color:var(--tx);font-size:.9rem;line-height:1.5}
+.avisos-sc-permiso[hidden]{display:none}
+.avisos-sc-permiso a,.avisos-sc .perfil-aviso-detalle a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
+.avisos-sc .avisos-push-acciones{margin-top:10px}
+.avisos-sc-resultado{margin:8px 0 0}
+.avisos-sc-resultado[hidden]{display:none}
+.avisos-gestionar.avisos-sc-quitar{background:var(--senal);border-color:var(--senal);color:var(--en-senal)}
+.avisos-gestionar[hidden]{display:none}
+.avisos-gestionar:disabled{opacity:.55;cursor:not-allowed}
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
   /* En la barra del móvil la campana va a la izquierda de la descarga y de la ayuda. */

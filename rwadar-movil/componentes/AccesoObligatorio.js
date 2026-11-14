@@ -3,9 +3,13 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, SelectorIdioma, Text, View } from './Idioma';
 import Cuenta from './Cuenta';
+import AvisosSinCuenta from './AvisosSinCuenta';
 import { C, F } from '../lib/tema';
 
-export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace, aviso = null, avisosNovedades = false }) {
+/* `sinCuenta` (14/11/2026): las notificaciones sin cuenta, encima del
+   formulario de la cuenta ({ desdeNotificacion } si se ha abierto desde una
+   notificación). Sin él (interruptor apagado), la pantalla de siempre. */
+export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace, aviso = null, avisosNovedades = false, sinCuenta = null }) {
   // «aviso»: una versión nueva puede ser justo la que arregla el acceso.
   return <SafeAreaView style={s.pagina} edges={['top', 'right', 'bottom', 'left']}>
     {aviso}
@@ -16,6 +20,8 @@ export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace, 
       <Text style={s.marca}>RWAdar</Text>
       <Text accessibilityRole="header" style={s.titulo}>Tu radar, con tu cuenta</Text>
       <Text style={s.descripcion}>Entra o crea una cuenta gratuita. En «Mis inversiones» puedes registrar lo que compraste, sus valoraciones y lo cobrado, y ver tu resultado en la web y la app con tu cuenta. El registro es manual. Confirma tu correo antes de entrar.</Text>
+      {sinCuenta ? <AvisosSinCuenta desdeNotificacion={sinCuenta.desdeNotificacion === true} onAbrirEnlace={onAbrirEnlace}
+        gestor={sinCuenta.gestor || null} /> : null}
       {controlador && estado ? <Cuenta controlador={controlador} estado={estado}
         plataformas={[]} onAbrirEnlace={onAbrirEnlace} avisosNovedades={avisosNovedades === true} /> :
         <View accessibilityRole="progressbar"><ActivityIndicator color={C.tx} /><Text style={s.descripcion}>Preparando el acceso…</Text></View>}

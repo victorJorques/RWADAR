@@ -350,10 +350,11 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
   const runs = [...BASE.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1]
     .trim().split('\n').map((l) => l.trim().slice(2));
-  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30 (las de la 32 las mira probar-notificaciones.mjs; las de la 33, probar-webpush-supabase.mjs, y las de la 34, probar-pie-sin-nombre.mjs)',
+  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30 (las de la 32 las mira probar-notificaciones.mjs; las de la 33, probar-webpush-supabase.mjs, las de la 34, probar-pie-sin-nombre.mjs, y las de la 36, probar-avisos-sin-cuenta.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31',
       'aplicar-31', 'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid',
       'ensayo-33', 'verificar-33', 'aplicar-33', 'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34',
+      'ensayo-36', 'verificar-36', 'aplicar-36', 'activar-sin-cuenta', 'apagar-sin-cuenta', 'prueba-sin-cuenta',
       'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla', 'hacer-admin'])
     && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(BASE));
   const guardar = pasoDe(BASE, 'Guardar en Vault el token de Lettermint y el remitente') || '';
