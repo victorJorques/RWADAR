@@ -13,7 +13,7 @@
    coinciden y que la app acepta el de la web.
    --------------------------------------------------------------------- */
 const NOVEDADES_PRODUCTO = {
-  "version": "2026-11-14.3",
+  "version": "2026-11-14.4",
   "titulo": "Novedades de RWAdar",
   "en": {
     "titulo": "RWAdar news"
@@ -125,7 +125,7 @@ const NOVEDADES_PRODUCTO = {
       "pasos": [
         "Ve a Perfil › Avisos. No hace falta cuenta: en la app, si no has entrado, están en la primera pantalla.",
         "Pulsa «Activar notificaciones en este móvil» y acepta cuando el móvil te pregunte.",
-        "Si has entrado en tu cuenta en la app, activa «Avisos de novedades» y después «Notificaciones en este móvil»."
+        "Si has entrado en tu cuenta (en la web o en la app), activa «Avisos de novedades» y después «Notificaciones en este móvil»."
       ],
       "en": {
         "titulo": "Alerts on your phone, like WhatsApp",
@@ -138,7 +138,7 @@ const NOVEDADES_PRODUCTO = {
         "pasos": [
           "Go to Profile › Alerts. You don't need an account: in the app, if you haven't signed in, they are on the first screen.",
           "Tap «Turn on notifications on this phone» and accept when your phone asks.",
-          "If you have signed in to your account in the app, turn on «News notices» and then «Notifications on this phone»."
+          "If you have signed in to your account (on the website or in the app), turn on «News notices» and then «Notifications on this phone»."
         ]
       }
     },

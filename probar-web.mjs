@@ -3890,7 +3890,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     modelo.CLAVE_VISTA === 'rwadar.novedades.vista' && modelo.pendiente(almacen, datos.version) && modelo.marcarVista(almacen, datos.version) &&
     JSON.stringify(memoria) === JSON.stringify({ 'rwadar.novedades.vista': datos.version }) && !modelo.pendiente(almacen, datos.version) &&
     modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
-    modelo.pendiente(almacen, '2026-11-14.4') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
+    modelo.pendiente(almacen, '2026-11-14.5') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
     !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
   const ui = lee('assets/novedades-producto-20261112.js');
   // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo
@@ -4094,9 +4094,11 @@ console.log('\n=== NOTIFICACIONES SIN CUENTA (14/11/2026) ===');
     /Lo mismo vale para las notificaciones sin cuenta/.test(priv) && /<b>También sin cuenta<\/b> \(desde el 14\/11\/2026\)/.test(priv) &&
     /<b>Base jurídica:<\/b> tu consentimiento \(art\. 6\.1\.a RGPD y arts\. 21 y 22\.2 de la Ley 34\/2002\)/.test(priv));
   const avisosMovil = JSON.parse(lee('datos/novedades-producto.json')).detalle.find(s => s.id === 'avisos-movil');
-  prueba('novedades 2026-11-14.3: en los pasos, sin «Entra en tu cuenta» y con «No hace falta cuenta»',
-    JSON.parse(lee('datos/novedades-producto.json')).version === '2026-11-14.3' &&
+  prueba('novedades 2026-11-14.4: en los pasos, sin «Entra en tu cuenta», con «No hace falta cuenta» y, con cuenta, en la web o en la app',
+    JSON.parse(lee('datos/novedades-producto.json')).version === '2026-11-14.4' &&
     !avisosMovil.pasos.some(p => /Entra en tu cuenta/.test(p)) && avisosMovil.pasos.some(p => /No hace falta cuenta/.test(p)) &&
+    avisosMovil.pasos.includes('Si has entrado en tu cuenta (en la web o en la app), activa «Avisos de novedades» y después «Notificaciones en este móvil».') &&
+    avisosMovil.en.pasos.includes('If you have signed in to your account (on the website or in the app), turn on «News notices» and then «Notifications on this phone».') &&
     !avisosMovil.en.pasos.some(p => /Sign in to your RWAdar account/.test(p)));
   const enComunSC = require('./rwadar-site/assets/idioma-en-20261022.js'), enAvisosSC = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
   prueba('el inglés de lo nuevo: en el común (web y app) o en el de la campana (solo web)',

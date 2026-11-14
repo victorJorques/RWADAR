@@ -128,7 +128,7 @@ consultados el 07/11/2026.
 | A2 | Lista de seguimiento y cartera de cada cuenta | Activa | Servicio que se pide (6.1.b) |
 | A3 | Acceso a RWAdar Academy con cuenta | Activa en la app y, desde el 06/11/2026, en la web | Servicio que se pide (6.1.b) |
 | A4 | Correo de bienvenida (y push de bienvenida) | Preparado, **no se envía** (pendiente) | Servicio que se pide (6.1.b) |
-| A5 | Avisos de novedades por correo, push de la app y notificaciones de la web | Con la web y la OTA de la rama del 12/11 publicadas: **el permiso se recoge en Perfil** (web y app) y la web deja registrar la suscripción de su navegador. **No se envía nada** mientras `push_habilitado` y el correo sigan apagados (pendiente) **Sin cuenta** (14/11/2026, migración 36 y web y OTA sin publicar): también se pueden activar en el móvil sin cuenta, por `/api/avisos/*` del servidor de la web; la base nace apagada | Consentimiento (6.1.a; LSSI, arts. 21 y 22.2) |
+| A5 | Avisos de novedades por correo, push de la app y notificaciones de la web | Con la web y la OTA de la rama del 12/11 publicadas: **el permiso se recoge en Perfil** (web y app) y la web deja registrar la suscripción de su navegador. **No se envía nada** mientras `push_habilitado` y el correo sigan apagados (pendiente). **Sin cuenta** (14/11/2026, migración 36 y web y OTA sin publicar): también se pueden activar en el móvil sin cuenta, por `/api/avisos/*` del servidor de la web; la base nace apagada | Consentimiento (6.1.a; LSSI, arts. 21 y 22.2) |
 | A6 | Prueba del permiso (historial de altas y bajas) | Activa desde el 12/11/2026 (Perfil › Avisos) | Obligación legal (6.1.c) |
 | A7 | Bajas de los avisos que llegan por correo | (pendiente) | Obligación legal (6.1.c) |
 | A8 | Consultas de empresas («Para empresas») | Activa | Interés legítimo (6.1.f) |
@@ -750,8 +750,9 @@ valoración: [anexo, apartado 7](ANEXO-NOTIFICACIONES-2026-11-12.md#7-notificaci
   - web: la dirección de entrega del servicio de push del navegador y sus dos
     claves; app: el identificador de Expo;
   - con ellos: la versión del texto, el idioma en que se vio, dónde se activó
-    (`novedades`, `perfil` o `avisos`), las fechas del alta y de la última
-    renovación y un contador de fallos;
+    (`novedades`, `perfil` o `avisos`; en la app, el canal `movil`, `perfil`
+    es su primera pantalla sin sesión, el único sitio donde se activan allí),
+    las fechas del alta y de la última renovación y un contador de fallos;
   - historial (solo añadir): un número al azar (`ref`), el canal, alta o baja,
     la versión, el idioma, el origen y el motivo de la baja. Sin dirección ni
     identificador;
@@ -774,18 +775,23 @@ valoración: [anexo, apartado 7](ANEXO-NOTIFICACIONES-2026-11-12.md#7-notificaci
   Avisos de la web, la lista que abre cada notificación, `?avisos=1` sin
   sesión, y la primera pantalla de la app, con la frase de baja arriba si se
   abre desde una notificación), los ajustes del móvil o desinstalar la app.
-  Una respuesta 404/410 del servicio, `DeviceNotRegistered` o tres fallos
-  seguidos la borran también.
+  Una respuesta 404/410 del servicio, `DeviceNotRegistered` o tres rechazos
+  seguidos de esa suscripción (400 o 413 del servicio de push de la web) la
+  borran también. Un fallo general de RWAdar (su servidor, la clave VAPID o
+  las credenciales de Firebase) no borra nada: el envío queda fallido.
 - **Derechos:** sin cuenta no se puede identificar a la persona (RGPD,
   art. 11); el botón y los ajustes del móvil suprimen al momento. La
   privacidad (§6 y §11) lo explica.
 - **Medidas:** las de A5 y además: las funciones para anónimos validan la
   forma, exigen el interruptor y la versión vigente y tienen cupos (300 altas
-  nuevas por hora y 20 000 en total por canal); la clave `auth` del navegador
+  nuevas por hora en cada canal; como mucho 5 000 navegadores y 20 000
+  móviles; y 30 000 notificaciones web en 24 horas, por el cupo gratis de
+  Cloudflare); la clave `auth` del navegador
   hace de llave para la baja y el estado; el servidor de la web limita por
   visitante (altas 20, bajas 60, estados 120 cada 10 minutos), no lee ni
-  escribe cookies y exige el mismo origen; si la misma dirección o token está
-  en una cuenta que lo va a recibir, no se manda el de sin cuenta;
+  escribe cookies y exige el mismo origen; si la misma dirección está en una
+  cuenta que lo va a recibir, o si al repartir el anuncio ese móvil ya
+  estaba en una cuenta a la que se repartió, no se manda el de sin cuenta;
   `fallo_cerrado.sql` también lo apaga.
 
 ### A6 · Prueba del permiso (historial de altas y bajas)

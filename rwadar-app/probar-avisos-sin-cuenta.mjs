@@ -463,7 +463,7 @@ if (hayBash) {
     ensayo.estado === 0 && ensayo.llamadas.length === 1
     && ensayo.texto.includes('ENSAYO CORRECTO: 36_avisos_sin_cuenta.sql y sus verificadores pasan')
     && ['30', '31', '32', '33', '34'].every((n) => new RegExp(`NOTICE: {2}RWAdar ${n} OK`).test(ensayo.stderr))
-    && /NOTICE: {2}RWAdar 36 OK: sin cuenta apagado, 0 navegador\(es\) y 0 móvil\(es\) sin cuenta, 0 fila\(s\) en su historial, cupos 300 por hora y 20000 en total por canal, push apagado/.test(ensayo.stderr)
+    && /NOTICE: {2}RWAdar 36 OK: sin cuenta apagado, 0 navegador\(es\) y 0 móvil\(es\) sin cuenta, 0 fila\(s\) en su historial, cupos 300 altas nuevas por hora por canal y como mucho 5000 navegadores y 20000 móviles, 0 de 30000 notificaciones web en 24 h, 0 baja\(s\) por fallos en 24 h, push apagado/.test(ensayo.stderr)
     && (await una(db, "select to_regclass('rwadar_novedades.sin_cuenta_web') t")).t === null
     && !(await una(db, "select pg_get_functiondef('rwadar_novedades.procesar()'::regprocedure) d")).d.includes('sin_cuenta'));
 }
@@ -478,6 +478,7 @@ await db.exec(HOSTIL.replace(/ grant /g, ' revoke ').replace(/ to /g, ' from '))
   paso(`la 36 se aplica dos veces con privilegios por defecto hostiles; nace apagada, con la versión, los textos y los cupos del contrato, y no toca el push ni la clave VAPID${fallidos(v) ? ` · ${fallidos(v)}` : ''}`,
     c.sin_cuenta_activa === false && c.sin_cuenta_activada_el === null && c.sin_cuenta_version === VERSION_SC
     && c.sin_cuenta_texto_es === TEXTO_ES && c.sin_cuenta_texto_en === TEXTO_EN && c.sin_cuenta_cupo_hora === 300 && c.sin_cuenta_maximo === 20000
+    && c.sin_cuenta_maximo_web === 5000 && c.sin_cuenta_tope_dia_web === 30000
     && c.push_habilitado === false && c.webpush_clave_publica === VAPID.publica && c.version_consentimiento === VERSION
     && !(await una(db, "select has_function_privilege('service_role', 'rwadar_novedades.sin_cuenta_enviar_webpush(integer)', 'EXECUTE') a")).a
     && !(await una(db, "select has_function_privilege('public', 'public.alta_aviso_sin_cuenta_web(text,text,text,text,text,text)', 'EXECUTE') a")).a
@@ -601,7 +602,7 @@ const tUno = expo('uno');
       bien.estado === 0 && llegados.length === 1 && llegados[0].vapid && JSON.parse(llegados[0].claro).titulo === PRUEBA_TITULO
       && JSON.parse(llegados[0].claro).url === 'https://rwadar.pages.dev/?avisos=1'
       && expoPedidas.length === 1 && expoPedidas[0].body.to === tUno && expoPedidas[0].body.priority === 'high'
-      && expoPedidas[0].body.channelId === 'novedades' && isDeepStrictEqual(expoPedidas[0].body.data, { tipo: 'prueba', destino: 'inicio' })
+      && expoPedidas[0].body.channelId === 'novedades' && isDeepStrictEqual(expoPedidas[0].body.data, { tipo: 'novedad', destino: 'inicio' })
       && /Aceptadas: 2/.test(bien.resumen) && /Códigos: \[200, 201\]/.test(bien.resumen)
       && /^\[\[[0-9]+, [0-9]+, 1\], \[[0-9]+, [0-9]+, 2\]\]$/.test(variablesPsql(bien.llamadas[1]).peticiones));
     paso('la salida y el resumen de la prueba solo llevan cuentas y códigos: ni direcciones, ni tokens, ni claves',
@@ -719,13 +720,20 @@ const sTres = navegador(mozilla('tres'));
   const renovarConCupo = await altaWeb(sTres);
   await sesion(db);
   const total = await numero(db, 'select count(*) from rwadar_novedades.sin_cuenta_web');
-  await db.query('update rwadar_novedades.configuracion set sin_cuenta_cupo_hora = 300, sin_cuenta_maximo = $1', [total]);
+  // El máximo de la web es el suyo (5 000), no el del móvil (20 000).
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_cupo_hora = 300, sin_cuenta_maximo = $1, sin_cuenta_maximo_web = $2', [total, total + 1]);
+  const sCuatroBis = navegador(fcm('cuatro-bis'));
+  const usaElSuyo = await altaWeb(sCuatroBis);
+  await sesion(db);
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_maximo = 20000, sin_cuenta_maximo_web = $1', [total + 1]);
   const lleno = await altaWeb(sCuatro);
   const renovarLleno = await altaWeb(sTres);
   await sesion(db);
-  await db.query('update rwadar_novedades.configuracion set sin_cuenta_maximo = 20000');
-  paso('cupos: pasado el de altas nuevas por hora da «cupo» y llegado al máximo total da «lleno», sin guardar nada; renovar no gasta cupo',
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_maximo_web = 5000');
+  await bajaWeb(sCuatroBis);
+  paso('cupos: pasado el de altas nuevas por hora da «cupo» y llegado al máximo de la web (sin_cuenta_maximo_web, no el del móvil) da «lleno», sin guardar nada; renovar no gasta cupo',
     dentro.nueva === true && isDeepStrictEqual(fuera, { ok: false, error: 'cupo' }) && renovarConCupo.nueva === false
+    && usaElSuyo.nueva === true
     && isDeepStrictEqual(lleno, { ok: false, error: 'lleno' }) && renovarLleno.nueva === false
     && (await numero(db, 'select count(*) from rwadar_novedades.sin_cuenta_web where endpoint = $1', [sCuatro.endpoint])) === 0);
   paso('el historial sin cuenta solo admite añadir: cambiar o borrar una fila reciente da 42501, también al propietario',
@@ -855,6 +863,42 @@ let a1;
   paso('el recibo «ok» deja el push «aceptado» y terminado', fin.find((x) => x.token === tSolo)?.estado === 'aceptado'
     && fin.find((x) => x.token === tSolo)?.terminado_el instanceof Date && fin.find((x) => x.token === expo('dos'))?.estado === 'ticket');
 }
+{
+  // Ni dos ni ninguno en el móvil: lo que decide es lo que ya repartió
+  // repartir() (30) a las cuentas, no cómo están ahora.
+  const carla = await alta(db, 'carla-sc@ejemplo.test');
+  const dani = await alta(db, 'dani-sc@ejemplo.test');
+  const eva = await alta(db, 'eva-sc@ejemplo.test');
+  await consentir(carla);
+  await consentir(eva);
+  const tCarla = expo('carla');
+  const tDani = expo('dani');
+  const tEva1 = expo('eva-uno');
+  const tEva2 = expo('eva-dos');
+  await movilCuenta(dani, tDani);
+  await movilCuenta(eva, tEva1);
+  for (const t of [tCarla, tDani, tEva2]) await altaMovil(t);
+  const deCuentas = async (a) => { await sesion(db); return (await filas(db, "select token from rwadar_novedades.pushes where anuncio_id = $1 and tipo = 'anuncio' and token is not null order by token", [a])).map((x) => x.token); };
+  const a = await anunciar('novedad:sc-ni-dos-ni-ninguno', 'Ni dos ni ninguno', 'Una sola por móvil.');
+  // Carla mete su móvil en la cuenta después de publicarse y antes de
+  // repartir: se lo da su cuenta y no sale el de sin cuenta.
+  await movilCuenta(carla, tCarla);
+  // Antes de procesar(), repartir() a solas: después Dani da el permiso
+  // (su cuenta ya no lo recibe) y Eva mete otro móvil en la cuenta (repartir
+  // no se lo dio): a los dos les llega el de sin cuenta.
+  await sesion(db);
+  await db.query('select rwadar_novedades.repartir()');
+  await consentir(dani);
+  await movilCuenta(eva, tEva2);
+  const { r } = await procesar();
+  const sc = (await pushes(a)).map((x) => x.token);
+  const cuentas = await deCuentas(a);
+  paso(`móvil sin cuenta y con cuenta: una sola notificación por móvil, según lo que repartió repartir() (${JSON.stringify({ sin_cuenta: r.sin_cuenta_push_enviados })})`,
+    cuentas.includes(tCarla) && !sc.includes(tCarla)
+    && !cuentas.includes(tDani) && sc.filter((t) => t === tDani).length === 1
+    && cuentas.includes(tEva1) && !cuentas.includes(tEva2) && sc.filter((t) => t === tEva2).length === 1);
+  for (const t of [tCarla, tDani, tEva2]) await bajaMovil(t);
+}
 
 /* =====================================================================
    11 · Lectura web: 404/410, tres fallos seguidos, reintentos
@@ -863,15 +907,22 @@ let a1;
   const sCinco = navegador(fcm('cinco'));
   const sSeis = navegador(mozilla('seis'));
   const sSiete = navegador(fcm('siete'));
-  for (const s of [sCinco, sSeis, sSiete]) await altaWeb(s);
+  // Fallos generales nuestros: el servidor de la web (-1, p. ej. al cifrar)
+  // y la clave VAPID o la firma (401 y 403, que salen para todos).
+  const sNuestros = { '-1': navegador(fcm('nuestro-menos-uno')), 401: navegador(fcm('nuestro-401')), 403: navegador(apple('nuestro-403')) };
+  for (const s of [sCinco, sSeis, sSiete, ...Object.values(sNuestros)]) await altaWeb(s);
   const tFallo = expo('fallo');
   await altaMovil(tFallo);
   respuestasServidor.set(sCinco.endpoint, { status_code: 200, content: '{"codigo": 404}' });
   respuestasServidor.set(sSeis.endpoint, { status_code: 200, content: '{"codigo": 413}' });
   respuestasServidor.set(sSiete.endpoint, { status_code: 200, content: '{"codigo": 429}' });
+  for (const [c, s] of Object.entries(sNuestros)) respuestasServidor.set(s.endpoint, { status_code: 200, content: `{"codigo": ${c}}` });
   const refSeis = (await una(db, 'select ref from rwadar_novedades.sin_cuenta_web where endpoint = $1', [sSeis.endpoint])).ref;
+  const bajasFallosMovilAntes = await numero(db, "select count(*) from rwadar_novedades.historial_sin_cuenta where canal = 'movil' and accion = 'baja' and motivo = 'fallos'");
   const fallosSeis = [];
   const fallosMovil = [];
+  const fallosNuestros = [];
+  const anunciosFallo = [];
   for (let i = 1; i <= 3; i++) {
     const a = await anunciar(`novedad:sc-fallo-${i}`, `Fallo ${i}`, 'Para contar los fallos seguidos.');
     const desde = await ultimaPeticion();
@@ -883,6 +934,9 @@ let a1;
     await procesar();
     fallosSeis.push((await una(db, 'select fallos from rwadar_novedades.sin_cuenta_web where endpoint = $1', [sSeis.endpoint]))?.fallos ?? null);
     fallosMovil.push((await una(db, 'select fallos from rwadar_novedades.sin_cuenta_movil where token = $1', [tFallo]))?.fallos ?? null);
+    fallosNuestros.push((await filas(db, 'select fallos from rwadar_novedades.sin_cuenta_web where endpoint = any($1) order by id',
+      [Object.values(sNuestros).map((x) => x.endpoint)])).map((x) => x.fallos).join(''));
+    anunciosFallo.push(a);
     if (i === 1) {
       const e = await enviosWeb(a);
       paso('404 borra el navegador (con sus envíos) y apunta la baja «servicio»; 429 queda a reintentar',
@@ -892,10 +946,20 @@ let a1;
   }
   respuestasServidor.clear();
   const bajaSeis = (await filas(db, "select motivo from rwadar_novedades.historial_sin_cuenta where ref = $1 and accion = 'baja'", [refSeis]));
-  paso(`tres fallos seguidos que no se arreglan reintentando (413 en la web, MismatchSenderId en Expo) borran la suscripción con la baja «fallos» (${fallosSeis.join(',')} · ${fallosMovil.join(',')})`,
-    isDeepStrictEqual(fallosSeis, [1, 2, null]) && isDeepStrictEqual(fallosMovil, [1, 2, null])
-    && isDeepStrictEqual(bajaSeis.map((b) => b.motivo), ['fallos'])
-    && (await filas(db, "select motivo from rwadar_novedades.historial_sin_cuenta where canal = 'movil' and accion = 'baja' order by id desc limit 1"))[0].motivo === 'fallos');
+  paso(`tres fallos seguidos que no se arreglan reintentando (413 del servicio de push) borran el navegador con la baja «fallos» (${fallosSeis.join(',')})`,
+    isDeepStrictEqual(fallosSeis, [1, 2, null]) && isDeepStrictEqual(bajaSeis.map((b) => b.motivo), ['fallos']));
+  const pushesFallo = [];
+  for (const a of anunciosFallo) pushesFallo.push(...(await pushes(a)).filter((x) => x.token === tFallo));
+  const enviosNuestros = [];
+  for (const a of anunciosFallo) enviosNuestros.push(...(await enviosWeb(a)).filter((x) => Object.values(sNuestros).some((y) => y.endpoint === x.endpoint)));
+  paso(`un fallo general nuestro no borra a nadie: MismatchSenderId de Expo (credenciales de FCM del proyecto) y -1, 401 y 403 del servidor de la web dejan cada envío «fallido» sin contar fallos, tres anuncios seguidos (${fallosMovil.join(',')} · ${fallosNuestros.join(',')})`,
+    isDeepStrictEqual(fallosMovil, [0, 0, 0]) && isDeepStrictEqual(fallosNuestros, ['000', '000', '000'])
+    && pushesFallo.length === 3 && pushesFallo.every((x) => x.estado === 'fallido' && x.error === 'MismatchSenderId')
+    && enviosNuestros.length === 9 && enviosNuestros.every((x) => x.estado === 'fallido' && [-1, 401, 403].includes(x.codigo))
+    && (await numero(db, "select count(*) from rwadar_novedades.historial_sin_cuenta where canal = 'movil' and accion = 'baja' and motivo = 'fallos'")) === bajasFallosMovilAntes
+    && (await numero(db, 'select count(*) from rwadar_novedades.sin_cuenta_web where endpoint = any($1)', [Object.values(sNuestros).map((x) => x.endpoint)])) === 3);
+  for (const s of Object.values(sNuestros)) await bajaWeb(s);
+  await bajaMovil(tFallo);
   const sOcho = navegador(fcm('ocho'));
   await altaWeb(sOcho);
   respuestasServidor.set(sOcho.endpoint, { status_code: 200, content: '{"codigo": 400}' });
@@ -963,6 +1027,33 @@ let a1;
   paso('una tanda fuera de 1..500 se rechaza (22023)',
     (await codigo(() => db.query('select rwadar_novedades.sin_cuenta_enviar_webpush(0)'))) === '22023'
     && (await codigo(() => db.query('select rwadar_novedades.sin_cuenta_enviar_push(501)'))) === '22023');
+  // Tope diario de la web (cupo gratis de Cloudflare): llegado, no se pide
+  // nada; con hueco para uno, sale uno y los demás esperan a otra vuelta.
+  const sDiez = navegador(fcm('diez'));
+  const sOnce = navegador(mozilla('once'));
+  for (const x of [sDiez, sOnce]) await altaWeb(x);
+  const aTope = await anunciar('novedad:sc-tope-diario', 'Tope diario', 'Con el tope diario alcanzado espera.');
+  await sesion(db);
+  const enDia = await numero(db, "select coalesce(sum(intentos), 0) from rwadar_novedades.envios_sin_cuenta_web where creado_el > now() - interval '24 hours'");
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_tope_dia_web = $1', [enDia]);
+  const avisosTope = [];
+  const conTope = Number((await db.query('select rwadar_novedades.sin_cuenta_enviar_webpush(200) n', [], { onNotice: (n) => avisosTope.push(n.message) })).rows[0].n);
+  const tras0 = (await enviosWeb(aTope)).length;
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_tope_dia_web = $1', [enDia + 1]);
+  const conHueco = await numero(db, 'select rwadar_novedades.sin_cuenta_enviar_webpush(200)');
+  const tras1 = (await enviosWeb(aTope)).length;
+  const vTope = await verificador('36');
+  await sesion(db);
+  await db.query('update rwadar_novedades.configuracion set sin_cuenta_tope_dia_web = 30000');
+  const conTodo = await numero(db, 'select rwadar_novedades.sin_cuenta_enviar_webpush(200)');
+  const tras2 = (await enviosWeb(aTope)).length;
+  paso(`tope diario de notificaciones web sin cuenta: llegado, no pide nada y lo avisa; con hueco para una, sale una; el verificador 36 lo avisa sin fallar; quitado, sale el resto (${conTope}, ${conHueco}, ${conTodo})`,
+    conTope === 0 && tras0 === 0 && avisosTope.some((m) => /tope diario de [0-9]+ notificaciones web sin cuenta alcanzado/.test(m))
+    && conHueco === 1 && tras1 === 1 && vTope.ok && /tope diario alcanzado/.test((vTope.avisos || []).join(' '))
+    && conTodo >= 1 && tras2 >= 2);
+  await atenderPgNet();
+  await procesar();
+  for (const x of [sDiez, sOnce]) await bajaWeb(x);
 }
 
 /* =====================================================================
@@ -1036,6 +1127,9 @@ let a1;
   const bajaM = funcionDe(SQL36, 'public.baja_aviso_sin_cuenta_movil');
   const enviarW = funcionDe(SQL36, 'rwadar_novedades.sin_cuenta_enviar_webpush');
   const pruebaF = funcionDe(SQL36, 'rwadar_novedades.sin_cuenta_prueba');
+  const enviarP = funcionDe(SQL36, 'rwadar_novedades.sin_cuenta_enviar_push');
+  const leerP = funcionDe(SQL36, 'rwadar_novedades.sin_cuenta_leer_push');
+  const leerW = funcionDe(SQL36, 'rwadar_novedades.sin_cuenta_leer_webpush');
   const rompe = async (romper, arreglar) => { await sesion(db); await db.exec(romper); const x = await verificador('36'); await sesion(db); await db.exec(arreglar); return x; };
   const textoBueno = `update rwadar_novedades.configuracion set sin_cuenta_texto_es = '${TEXTO_ES.replace(/'/g, "''")}'`;
   const rotos = {
@@ -1050,6 +1144,13 @@ let a1;
     'el envío sin mirar las cuentas': [await rompe(enviarW.replace('select 1 from rwadar_novedades.suscripciones_web s', 'select 1 from rwadar_novedades.sin_cuenta_web s')
       .replace('join rwadar_novedades.preferencias p on p.usuario_id = s.usuario_id\n               join auth.users u on u.id = s.usuario_id', 'join rwadar_novedades.configuracion p on true\n               join auth.users u on false'), enviarW), /cuentas/],
     'la prueba sin límite': [await rompe(pruebaF.replace('if v_web + v_movil > 5 then', 'if v_web + v_movil > 500 then'), pruebaF), /5 suscripciones/],
+    'la prueba con un tipo que la app no conoce': [await rompe(pruebaF.replace("jsonb_build_object('tipo', 'novedad', 'destino', 'inicio')", "jsonb_build_object('tipo', 'prueba', 'destino', 'inicio')"), pruebaF), /aviso de novedad/],
+    'MismatchSenderId cuenta como fallo del móvil': [await rompe(leerP.replace("error = left(coalesce(v_error, 'Error de Expo'), 160)\n         where id = r.id;",
+      "error = left(coalesce(v_error, 'Error de Expo'), 160)\n         where id = r.id;\n        perform rwadar_novedades.sin_cuenta_fallo('movil', r.movil_id);"), leerP), /fallo general/],
+    'la web cuenta 401 y 403 como fallos': [await rompe(leerW.replace('if v_codigo in (400, 413) then', 'if v_codigo in (400, 401, 403, 413) then'), leerW), /fallo general/],
+    'el envío web sin tope diario': [await rompe(enviarW.replace('limit least(p_tanda, v_hueco)', 'limit p_tanda'), enviarW), /tope diario/],
+    'el móvil sin mirar lo repartido': [await rompe(enviarP.replace('and a.push_repartido_el is not null', ''), enviarP), /cuentas/],
+    'el alta web con el máximo del móvil': [await rompe(altaW.replace('v_cfg.sin_cuenta_maximo_web', 'v_cfg.sin_cuenta_maximo'), altaW), /cupos/],
     'la API para service_role': [await rompe('grant execute on function public.alta_aviso_sin_cuenta_web(text,text,text,text,text,text) to service_role',
       'revoke execute on function public.alta_aviso_sin_cuenta_web(text,text,text,text,text,text) from service_role'), /permisos incorrectos/],
     'la API sin anon': [await rompe('revoke execute on function public.avisos_publicos(integer) from anon', 'grant execute on function public.avisos_publicos(integer) to anon'), /permisos incorrectos/],
@@ -1060,7 +1161,7 @@ let a1;
     'una tabla sin RLS': [await rompe('alter table rwadar_novedades.sin_cuenta_movil disable row level security', 'alter table rwadar_novedades.sin_cuenta_movil enable row level security'), /no tiene RLS/],
   };
   const noDetecta = Object.entries(rotos).filter(([, [x, motivo]]) => x.ok || !motivo.test(x.error || '')).map(([nombre, [x]]) => `${nombre}: ${x.error || 'pasa'}`);
-  paso(`el verificador 36 detecta ${Object.keys(rotos).length} roturas (procesar y limpiar sin lo suyo o fuera de sitio, el texto, los cupos, la clave auth, la baja, las cuentas, la prueba, permisos, disparador y RLS)${noDetecta.length ? ` · no detecta: ${noDetecta.join(' | ')}` : ''}`,
+  paso(`el verificador 36 detecta ${Object.keys(rotos).length} roturas (procesar y limpiar sin lo suyo o fuera de sitio, el texto, los cupos y el tope diario, la clave auth, la baja, las cuentas y lo repartido, la prueba, los fallos generales, permisos, disparador y RLS)${noDetecta.length ? ` · no detecta: ${noDetecta.join(' | ')}` : ''}`,
     noDetecta.length === 0 && (await verificador('36')).ok);
 }
 {

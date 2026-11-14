@@ -24,7 +24,17 @@ la app tienen que decir con calma que «todavía no está disponible».
   `activar-sin-cuenta`.
 - La cabecera secreta opcional entre el servidor y la base **no se hace
   ahora**: las funciones de la base son la barrera de verdad (cupos, forma,
-  versión, interruptor).
+  versión, interruptor). **Antes de `activar-sin-cuenta` hay que volver a
+  decidirlo sabiendo esto** (revisión del 14/11): la clave publicable va en
+  la web, así que cualquiera puede llamar a la base sin pasar por el
+  servidor. Con 300 altas falsas por hora agota el cupo de todos (la gente
+  de verdad ve «cupo») y en unas 17 horas llena los 5 000 navegadores
+  («lleno»). Para acotar el daño, la web tiene su propio máximo (5 000) y un
+  tope de 30 000 notificaciones web sin cuenta en 24 horas (el cupo gratis de
+  Cloudflare es de 100 000 al día; si se agota, la Academy sale sin pedir
+  cuenta), y el verificador 36 avisa si el cupo de una hora se llenó. Lo que
+  lo cierra de verdad es la cabecera secreta (un secreto nuevo en Cloudflare
+  y en Vault). Es la condición S5 del anexo.
 
 ## El texto del permiso (versionado)
 
@@ -172,7 +182,8 @@ gasta cupo. Los GET no tienen límite (salen de la memoria).
   art. 21.2).
 - **App:** Expo, canal de Android `novedades`, prioridad alta, `sound`
   `default`, `data` solo `{"tipo","destino"}` (como las de cuenta). La
-  prueba lleva `{"tipo":"prueba","destino":"inicio"}`.
+  prueba lleva `{"tipo":"novedad","destino":"inicio"}`: la app la reconoce
+  como un aviso de novedad y, sin sesión, enseña arriba la frase de baja.
 - La prueba (acción `prueba-sin-cuenta`) se titula «Prueba de RWAdar» con el
   texto «Si ves esto, las notificaciones funcionan en este móvil.».
 
@@ -182,21 +193,37 @@ gasta cupo. Los GET no tienen límite (salen de la memoria).
   la versión vigente del texto, de los anuncios **publicados en los últimos 7
   días**, después de su alta y después de encender el push y lo de sin
   cuenta. Nada viejo sale de golpe.
-- **Sin duplicados:** si esa misma dirección (o ese token) está en una cuenta
+- **Sin duplicados:** en la web, si esa misma dirección está en una cuenta
   que lo va a recibir (permiso vigente y alta anterior al anuncio), no sale el
-  de sin cuenta. Si la cuenta no tiene el permiso, sí sale el de sin cuenta.
+  de sin cuenta. En el móvil cuenta lo que ya repartió `repartir()` (30), que
+  va antes en la misma vuelta: el de sin cuenta espera a que el anuncio esté
+  repartido y no sale si ese token estaba en una cuenta a la que se le
+  repartió (ya estaba en ella al repartirlo). Si la cuenta da el permiso o
+  mete el móvil después de repartir, sí sale el de sin cuenta: ni dos ni
+  ninguno.
 - **Borrados:** 404 o 410 del servicio de push, `DeviceNotRegistered` de Expo
-  o tres fallos seguidos que no se arreglan reintentando (en la web, un 4xx
-  que no es 404/410/429 o la entrada no válida; en Expo, `MismatchSenderId`)
-  borran la fila y apuntan la baja. Un envío que llega pone los fallos a cero.
+  o tres rechazos seguidos de esa suscripción (en la web, 400 o 413 del
+  servicio de push) borran la fila y apuntan la baja. Un envío que llega pone
+  los fallos a cero. **Un fallo general nuestro no borra a nadie:** en la web,
+  -1 (nuestro servidor, también si falla el cifrado), 401 y 403 (la clave
+  VAPID o la firma) y cualquier otro código dejan el envío «fallido» sin
+  contar; en Expo, `MismatchSenderId` (las credenciales de FCM del proyecto)
+  y cualquier otro error también, como con las cuentas (30).
 - **Plazos (limpiar(), cada día):** envíos 90 días; navegadores y móviles sin
   renovar, 180 días; historial del permiso, 3 años desde la baja.
 - **Historial del permiso** (`historial_sin_cuenta`, solo añadir): cada alta
   (nueva o con versión nueva) y cada baja (botón, servicio, fallos o
   caducada), con versión, idioma y origen. Sin dirección ni token: solo un
   número al azar (`ref`). Es la prueba del consentimiento (RGPD art. 7.1).
-- **Cupos de la base:** 300 altas nuevas por hora y 20 000 en total, por
-  canal (columnas `sin_cuenta_cupo_hora` y `sin_cuenta_maximo`).
+- **Cupos de la base:** 300 altas nuevas por hora en cada canal
+  (`sin_cuenta_cupo_hora`); como mucho 5 000 navegadores
+  (`sin_cuenta_maximo_web`) y 20 000 móviles (`sin_cuenta_maximo`); y un tope
+  de 30 000 notificaciones web sin cuenta en 24 horas, reintentos incluidos
+  (`sin_cuenta_tope_dia_web`): llegado, no se pide nada más hasta que baje.
+  El verificador 36 avisa (sin fallar) si el cupo de una hora se llenó en los
+  últimos 7 días, si se llegó al tope diario o a un máximo, y con 10 bajas o
+  más por fallos en 24 horas; y siempre dice cuántas notificaciones web y
+  cuántas bajas por fallos hubo en 24 horas.
 - **Capacidad:** tandas de 200 por vuelta (cada 5 minutos) en la web y en
   Expo: unas 2 400 por hora en cada canal. Cada notificación web gasta una
   petición del cupo gratis de Cloudflare (100 000 al día).
@@ -233,15 +260,32 @@ las llaman directamente: van por el servidor (`/api/avisos/*`).
 
 Flujo «Avisos a registrados (base)» (`avisos-base.yml`):
 
+0. Antes de nada, Víctor decide lo de la cabecera secreta (arriba,
+   «Decisiones»; condición S5 del anexo).
 1. `ensayo-36` (no cambia nada) → `aplicar-36` (copia antes, `AVISOS`) →
    `verificar-36` (pasa los verificadores 30, 31, 32, 33, 34 y 36). Con la base
    apagada, no cambia nada para nadie.
-2. Web en revisión → `activar-sin-cuenta` (`AVISOS`; exige el push encendido y
-   la clave VAPID) → activarlas en un iPhone (web en la pantalla de inicio) y
-   en un Android → `prueba-sin-cuenta` (`AVISOS`; solo sale con 5
-   suscripciones sin cuenta o menos).
-3. Web en producción con la privacidad nueva; después, la OTA de Android.
-4. Marcha atrás: `apagar-sin-cuenta` (corta altas y envíos sin cuenta; la baja
+2. `activar-sin-cuenta` (`AVISOS`; exige el push encendido y la clave VAPID).
+   La web de producción todavía es la vieja: no tiene `/api/avisos/*` ni el
+   bloque, así que nadie puede activarlas allí.
+3. Web en revisión → activarlas en un iPhone (web en la pantalla de inicio) y
+   en un Android con Chrome → `prueba-sin-cuenta` (`AVISOS`; solo sale con 5
+   suscripciones sin cuenta o menos). Aquí solo se comprueba que **llega**:
+   cada notificación abre `https://rwadar.pages.dev/?avisos=1`, que hasta el
+   paso 4 es la web vieja («Entra en tu cuenta…»). **Al terminar, pulsar
+   «Desactivar» en la revisión**, en los dos móviles: si no, esa suscripción
+   de revisión seguiría recibiendo hasta 180 días y, con la de producción,
+   llegarían dos por aviso.
+4. Web en producción, con la privacidad nueva en el mismo despliegue. Repetir
+   la prueba completa allí (condición S3): activar, `prueba-sin-cuenta`,
+   tocarla (se abre la lista con la baja) y «Desactivar».
+5. OTA de Android, después de la web (la app llama a `/api/avisos/movil` en
+   producción). Prueba en un Android físico (C6): activar en la primera
+   pantalla, `prueba-sin-cuenta` (llega como aviso de novedad), tocarla (sin
+   sesión, la frase de baja arriba) y «Desactivar».
+6. «Avisar novedad» (`anunciar`, tipo `novedad`, enlace
+   `/novedades-rwadar/#avisos-movil`).
+7. Marcha atrás: `apagar-sin-cuenta` (corta altas y envíos sin cuenta; la baja
    sigue). `fallo_cerrado.sql` también lo apaga.
 
 **Ojo:** reaplicar la 30, la 32 o la 33 quita lo de sin cuenta de
@@ -268,7 +312,10 @@ lo detecta y el flujo lo avisa).
   ventana de novedades.
 - **Ventana de novedades** (web y app): el recuadro arriba y compacto; en la
   web, sin sesión, activa directamente (o lleva a los pasos del iPhone, o a
-  Perfil › Avisos). `novedades-producto.json` a `2026-11-14.3`.
+  Perfil › Avisos). `novedades-producto.json` a `2026-11-14.3` y, tras la
+  revisión, `2026-11-14.4` (el tercer paso vale para la web y la app con
+  sesión). En modo «directo», la frase de quién interviene va a la vista
+  debajo del botón, antes de la información básica plegada (anexo, 7.3).
 - **App** (`lib/avisos-sin-cuenta.js`, `componentes/AvisosSinCuenta.js`,
   interruptor `AVISOS_SIN_CUENTA_REMOTOS` encendido): dentro de
   `AccesoObligatorio`, encima del formulario; token de Expo y
@@ -286,6 +333,30 @@ lo detecta y el flujo lo avisa).
   360 × 640) y `rwadar-movil/tests/avisos-sin-cuenta.test.cjs`.
 - **Orden al publicar:** la web (con la privacidad) antes que la OTA: la app
   llama a `/api/avisos/movil` en producción.
+
+## Arreglos de la revisión (14/11/2026, sin publicar)
+
+1. Un fallo general nuestro ya no borra las suscripciones sin cuenta: en la
+   web solo cuentan 400 y 413; -1, 401 y 403 dejan el envío «fallido» sin
+   contar; en Expo, `MismatchSenderId` no cuenta (arriba, «Borrados»).
+2. Abuso llamando directamente a la base: máximo propio de la web (5 000),
+   tope de 30 000 notificaciones web en 24 horas y avisos en el verificador
+   36. La cabecera secreta queda para que la decida Víctor (S5).
+3. La ventana de novedades, en modo «directo», enseña a la vista la frase de
+   quién interviene debajo del botón, con «Privacidad» a
+   `/privacidad#garantias-push` (anexo, 7.3).
+4. La prueba llega a la app como `{"tipo":"novedad","destino":"inicio"}`, y el
+   orden de la operación (arriba) separa lo que se comprueba en revisión
+   (que llega, y «Desactivar» al terminar) de lo que se comprueba en
+   producción (tocarla y la baja).
+5. Móvil: ni dos ni ninguno; cuenta lo que ya repartió `repartir()`.
+6. App: con un texto nuevo del permiso, el estado `texto-nuevo` (y no
+   «Activadas»), con el texto nuevo y «Activar…» otra vez, que renueva la
+   versión con el mismo token.
+7. `novedades-producto.json` `2026-11-14.4`: el tercer paso dice «en la web o
+   en la app».
+8. En la app, el origen `perfil` del historial es su primera pantalla sin
+   sesión (privacidad §6 y registro A5 lo aclaran).
 
 ## Archivos
 

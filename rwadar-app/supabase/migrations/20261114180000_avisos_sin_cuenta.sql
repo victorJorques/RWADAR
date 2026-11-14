@@ -108,6 +108,13 @@ select pg_advisory_xact_lock(20261114, 36);
 -- ---------------------------------------------------------------------
 -- 1 · Configuración: interruptor, texto versionado y cupos
 -- ---------------------------------------------------------------------
+-- Cupos (la clave publicable va en la web y en la app, así que cualquiera
+-- puede llamar a estas funciones sin pasar por el servidor): 300 altas
+-- nuevas por hora en cada canal; como mucho 20 000 móviles
+-- (`sin_cuenta_maximo`) y 5 000 navegadores (`sin_cuenta_maximo_web`: cada
+-- notificación web gasta una petición del cupo gratis de Cloudflare, 100 000
+-- al día); y un tope de 30 000 envíos web sin cuenta en 24 horas
+-- (`sin_cuenta_tope_dia_web`): llegado, se espera a que baje.
 -- Nace apagado. Reaplicar la 36 no lo enciende ni lo apaga: solo vuelve a
 -- poner la versión y los textos de este archivo (cambiar una palabra obliga
 -- a otra versión, y las altas con la anterior dejan de recibir hasta que la
@@ -120,7 +127,9 @@ alter table rwadar_novedades.configuracion
   add column if not exists sin_cuenta_texto_es text,
   add column if not exists sin_cuenta_texto_en text,
   add column if not exists sin_cuenta_cupo_hora integer not null default 300,
-  add column if not exists sin_cuenta_maximo integer not null default 20000;
+  add column if not exists sin_cuenta_maximo integer not null default 20000,
+  add column if not exists sin_cuenta_maximo_web integer not null default 5000,
+  add column if not exists sin_cuenta_tope_dia_web integer not null default 30000;
 
 update rwadar_novedades.configuracion
    set sin_cuenta_version = 'sin-cuenta-v1-2026-11-14',
@@ -134,7 +143,8 @@ alter table rwadar_novedades.configuracion add constraint sin_cuenta_activada_co
                                    and sin_cuenta_texto_es is not null and sin_cuenta_texto_en is not null));
 alter table rwadar_novedades.configuracion drop constraint if exists sin_cuenta_cupos_validos;
 alter table rwadar_novedades.configuracion add constraint sin_cuenta_cupos_validos
-  check (sin_cuenta_cupo_hora between 1 and 5000 and sin_cuenta_maximo between 1 and 100000);
+  check (sin_cuenta_cupo_hora between 1 and 5000 and sin_cuenta_maximo between 1 and 100000
+         and sin_cuenta_maximo_web between 1 and 100000 and sin_cuenta_tope_dia_web between 1 and 100000);
 
 -- ---------------------------------------------------------------------
 -- 2 · Tablas sin cuenta (sin usuario, sin correo)
@@ -217,6 +227,9 @@ create table if not exists rwadar_novedades.envios_sin_cuenta_web (
 );
 create index if not exists envios_sin_cuenta_web_por_suscripcion
   on rwadar_novedades.envios_sin_cuenta_web (suscripcion_id);
+-- Para el tope diario de envíos web sin cuenta (sin_cuenta_enviar_webpush).
+create index if not exists envios_sin_cuenta_web_por_fecha
+  on rwadar_novedades.envios_sin_cuenta_web (creado_el);
 
 -- Un push de Expo por anuncio y móvil. El token no se copia: se lee de
 -- sin_cuenta_movil al enviar. `ticket` = Expo lo aceptó; el recibo (a los
@@ -331,7 +344,9 @@ begin
 end
 $funcion$;
 
--- Un fallo que no se arregla reintentando: al tercero seguido, fuera.
+-- Un fallo que no se arregla reintentando: al tercero seguido, fuera. Hoy
+-- solo lo cuenta la web (400 o 413 del servicio de push); los fallos que son
+-- nuestros (servidor, clave VAPID, credenciales de FCM) no cuentan.
 create or replace function rwadar_novedades.sin_cuenta_fallo(p_canal text, p_id bigint)
 returns void
 language plpgsql security definer set search_path = ''
@@ -509,7 +524,7 @@ begin
          and h.creado_el > now() - interval '1 hour') >= v_cfg.sin_cuenta_cupo_hora then
     return jsonb_build_object('ok', false, 'error', 'cupo');
   end if;
-  if (select count(*) from rwadar_novedades.sin_cuenta_web) >= v_cfg.sin_cuenta_maximo then
+  if (select count(*) from rwadar_novedades.sin_cuenta_web) >= v_cfg.sin_cuenta_maximo_web then
     return jsonb_build_object('ok', false, 'error', 'lleno');
   end if;
   insert into rwadar_novedades.sin_cuenta_web (endpoint, p256dh, auth, version, idioma, origen)
@@ -729,8 +744,8 @@ declare
   v_envio bigint;
   v_lote jsonb;
   v_peticiones jsonb;
-  v_suscripcion bigint;
   v_total integer;
+  v_hueco integer;
 begin
   v_total := 0;
   if p_tanda is null or p_tanda not between 1 and 500 then
@@ -744,6 +759,17 @@ begin
     return 0;
   end if;
   perform pg_advisory_xact_lock(20261114, 36);
+
+  -- Tope diario: cada envío (y cada reintento) gasta una petición del cupo
+  -- gratis de Cloudflare. Llegado el tope de 24 horas, no se pide nada más
+  -- hasta que baje (lo de las cuentas no se toca; el verificador 36 avisa).
+  v_hueco := v_cfg.sin_cuenta_tope_dia_web
+             - (select coalesce(sum(e.intentos), 0) from rwadar_novedades.envios_sin_cuenta_web e
+                 where e.creado_el > now() - interval '24 hours')::integer;
+  if v_hueco <= 0 then
+    raise warning 'rwadar_novedades: tope diario de % notificaciones web sin cuenta alcanzado; se reanuda cuando baje', v_cfg.sin_cuenta_tope_dia_web;
+    return 0;
+  end if;
 
   -- Un reintento de un anuncio de hace más de 7 días ya no sale.
   update rwadar_novedades.envios_sin_cuenta_web e
@@ -779,7 +805,7 @@ begin
                 and u.email_confirmed_at is not null and u.is_anonymous is not true
                 and coalesce(a.publicado_el, a.creado_el) > s.creado_el)
      order by coalesce(a.publicado_el, a.creado_el), a.id, w.id
-     limit p_tanda
+     limit least(p_tanda, v_hueco)
   loop
     v_envio := null;
     insert into rwadar_novedades.envios_sin_cuenta_web as e (anuncio_id, suscripcion_id, estado, intentos)
@@ -808,12 +834,11 @@ begin
       from jsonb_array_elements(v_peticiones) as x(valor)
   loop
     if r.peticion is null then
-      -- No se pudo pedir (no pasa con lo que sale de las tablas): fallido.
+      -- No se pudo pedir (no pasa con lo que sale de las tablas): fallido,
+      -- sin contar un fallo del navegador (el fallo es nuestro).
       update rwadar_novedades.envios_sin_cuenta_web
          set estado = 'fallido', codigo = -1, actualizado_el = now()
-       where id = r.id
-      returning suscripcion_id into v_suscripcion;
-      perform rwadar_novedades.sin_cuenta_fallo('web', v_suscripcion);
+       where id = r.id;
     else
       update rwadar_novedades.envios_sin_cuenta_web
          set peticion_id = r.peticion, peticion_el = now()
@@ -828,10 +853,13 @@ $funcion$;
 -- Las respuestas del servidor de la web (como leer_webpush, 33): 200 con
 -- {"codigo": n} → 2xx enviado; 404 o 410 borra el navegador (baja por el
 -- servicio); 0, 429 o 5xx, a reintentar a los 5 minutos (al tercero,
--- fallido); -1 u otro código, fallido y cuenta un fallo (al tercero seguido,
--- fuera). Cualquier otra respuesta del servidor y una petición sin
--- respuesta a los 10 minutos: a reintentar, contando el intento. Devuelve
--- cuántos leyó.
+-- fallido); 400 o 413 (el servicio de push rechaza esa suscripción), fallido
+-- y cuenta un fallo (al tercero seguido, fuera). -1 (nuestro servidor, p. ej.
+-- al cifrar), 401 o 403 (la clave VAPID o la firma: fallan para todos) u
+-- otro código, fallido sin contar: un fallo general nuestro no puede borrar
+-- todas las suscripciones sin cuenta. Cualquier otra respuesta del servidor
+-- y una petición sin respuesta a los 10 minutos: a reintentar, contando el
+-- intento. Devuelve cuántos leyó.
 create or replace function rwadar_novedades.sin_cuenta_leer_webpush()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -879,7 +907,9 @@ begin
          set estado = 'fallido', codigo = v_codigo, peticion_id = null, peticion_el = null,
              actualizado_el = now()
        where id = r.id;
-      perform rwadar_novedades.sin_cuenta_fallo('web', r.suscripcion_id);
+      if v_codigo in (400, 413) then
+        perform rwadar_novedades.sin_cuenta_fallo('web', r.suscripcion_id);
+      end if;
     end if;
     v_total := v_total + 1;
   end loop;
@@ -891,8 +921,8 @@ $funcion$;
 -- mismas cabeceras que enviar_push, prioridad alta y el canal `novedades`
 -- de Android; `data` solo con {tipo, destino}. Las mismas reglas que la web
 -- (7 días, después del alta y de las dos activaciones, versión vigente, sin
--- repetir) y, si el token está en una cuenta que lo va a recibir, no sale.
--- Devuelve cuántas peticiones hizo (envíos y recibos).
+-- repetir) y, si repartir() (30) ya se lo dio a ese móvil por su cuenta, no
+-- sale. Devuelve cuántas peticiones hizo (envíos y recibos).
 create or replace function rwadar_novedades.sin_cuenta_enviar_push(p_tanda integer default 200)
 returns integer
 language plpgsql security definer set search_path = ''
@@ -980,16 +1010,19 @@ begin
        and (s.id is null
             or (s.estado = 'reintentar' and s.intentos < 3
                 and s.actualizado_el <= now() - interval '5 minutes'))
-       -- No llegan dos: ese móvil está en una cuenta con el permiso vigente
-       -- desde antes de publicarse el anuncio (repartir() de la 30 se lo da).
+       -- Primero lo reparte repartir() (30) a las cuentas, que va antes en
+       -- la misma vuelta de procesar(): así se sabe a quién le llega ya.
+       and a.push_repartido_el is not null
+       -- No llegan dos: lo que ya repartió repartir(). Ese móvil está en una
+       -- cuenta a la que se repartió el anuncio, y ya estaba en ella al
+       -- repartirlo (repartir() lo da a todos los móviles de la cuenta en
+       -- ese momento). Si la cuenta dio el permiso después, o el móvil
+       -- entró en la cuenta después, sale el de sin cuenta.
        and not exists (
-             select 1 from rwadar_novedades.dispositivos d
-               join rwadar_novedades.preferencias p on p.usuario_id = d.usuario_id
-               join auth.users u on u.id = d.usuario_id
-              where d.token = m.token
-                and p.novedades and p.version = v_cfg.version_consentimiento
-                and u.email_confirmed_at is not null and u.is_anonymous is not true
-                and coalesce(a.publicado_el, a.creado_el) > d.creado_el)
+             select 1 from rwadar_novedades.pushes p
+               join rwadar_novedades.dispositivos d on d.usuario_id = p.usuario_id
+              where p.anuncio_id = a.id and p.tipo = 'anuncio' and p.estado <> 'descartado'
+                and d.token = m.token and d.creado_el <= p.creado_el)
      order by coalesce(a.publicado_el, a.creado_el), a.id, m.id
      limit greatest(p_tanda - v_total, 0)
   loop
@@ -1031,9 +1064,11 @@ end
 $funcion$;
 
 -- Respuestas de Expo (envíos y recibos). DeviceNotRegistered borra el móvil
--- (baja por el servicio); MismatchSenderId cuenta un fallo (al tercero
--- seguido, fuera); otro error es definitivo para ese aviso; una respuesta
--- ilegible o sin éxito, a reintentar (un recibo, a volver a consultar).
+-- (baja por el servicio); otro error (también MismatchSenderId, que según
+-- Expo son las credenciales de FCM del proyecto y sale para todos) es
+-- definitivo para ese aviso y no cuenta como fallo del móvil, como con las
+-- cuentas (30); una respuesta ilegible o sin éxito, a reintentar (un
+-- recibo, a volver a consultar).
 create or replace function rwadar_novedades.sin_cuenta_leer_push()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -1082,9 +1117,6 @@ begin
            set estado = 'fallido', terminado_el = now(), peticion_id = null, peticion_el = null,
                actualizado_el = now(), error = left(coalesce(v_error, 'Error de Expo'), 160)
          where id = r.id;
-        if v_error = 'MismatchSenderId' then
-          perform rwadar_novedades.sin_cuenta_fallo('movil', r.movil_id);
-        end if;
       else
         update rwadar_novedades.pushes_sin_cuenta
            set estado = case when r.intentos >= 3 then 'fallido' else 'reintentar' end,
@@ -1107,9 +1139,6 @@ begin
            set estado = 'fallido', terminado_el = now(), peticion_id = null, peticion_el = null,
                actualizado_el = now(), error = left(coalesce(v_error, 'Error definitivo del recibo'), 160)
          where id = r.id;
-        if v_error = 'MismatchSenderId' then
-          perform rwadar_novedades.sin_cuenta_fallo('movil', r.movil_id);
-        end if;
       else
         update rwadar_novedades.pushes_sin_cuenta
            set estado = 'ticket', peticion_id = null, peticion_el = null, actualizado_el = now(),
@@ -1424,7 +1453,9 @@ begin
           'sound', 'default',
           'priority', 'high',
           'channelId', 'novedades',
-          'data', jsonb_build_object('tipo', 'prueba', 'destino', 'inicio')),
+          -- Lo mismo que un aviso de novedad: la app lo reconoce y, sin
+          -- sesión, enseña arriba la baja (S3).
+          'data', jsonb_build_object('tipo', 'novedad', 'destino', 'inicio')),
         timeout_milliseconds := 10000
       ) into v_peticion;
       if v_peticion is null then

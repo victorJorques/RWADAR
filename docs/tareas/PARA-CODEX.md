@@ -6,6 +6,68 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (31) · Claude · Notificaciones sin cuenta: arreglos de la revisión · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Qué es:** la revisión única de las entradas 29 y 30 encontró 9 cosas; están
+  arregladas en la misma rama. Nada publicado, nada aplicado en Supabase, sin
+  flujos ni EAS. Resumen también en
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md),
+  «Arreglos de la revisión».
+- **Base (36, las dos copias iguales):**
+  - un fallo general nuestro ya no borra a nadie: en la web solo cuentan como
+    fallo de la suscripción el 400 y el 413; -1 (nuestro servidor o el
+    cifrado), 401 y 403 (VAPID o firma) dejan el envío «fallido» sin contar;
+    en Expo, `MismatchSenderId` (credenciales de FCM) tampoco cuenta;
+  - contra quien llama directamente a la base: máximo propio de la web
+    `sin_cuenta_maximo_web` = 5 000 (el móvil sigue en 20 000) y tope de
+    30 000 notificaciones web sin cuenta en 24 h (`sin_cuenta_tope_dia_web`,
+    reintentos incluidos; llegado, espera y lo avisa). **La cabecera secreta
+    no está hecha: Víctor tiene que decidirla antes de `activar-sin-cuenta`**
+    (condición S5 del anexo);
+  - la prueba llega a la app como `{tipo:'novedad', destino:'inicio'}` (la app
+    no conocía 'prueba');
+  - móvil, ni dos ni ninguno: el de sin cuenta espera a que `repartir()` haya
+    repartido el anuncio y no sale si ese token ya estaba en una cuenta a la
+    que se le repartió;
+  - verificador 36: comprueba todo lo anterior y avisa (sin fallar) si el
+    cupo de una hora se llenó en 7 días, si se llegó al tope diario o a un
+    máximo, y con 10 o más bajas por fallos en 24 h; el «OK» dice cuántas
+    notificaciones web y bajas por fallos hubo en 24 h. `procesar()` no
+    cambia (sigue igual a la de la 33 más los cuatro bloques).
+- **Web:** la ventana de novedades, cuando activa allí mismo, enseña a la vista
+  «El servicio de tu navegador puede estar fuera de la UE…» debajo del botón,
+  con «Privacidad» a `/privacidad#garantias-push` (anexo 7.3).
+  `novedades-producto.json` **2026-11-14.4**: el tercer paso, «Si has entrado en
+  tu cuenta (en la web o en la app)…» (copia de la app y ejemplo al día).
+- **App:** con un texto nuevo del permiso, el estado `texto-nuevo` en vez de
+  «Activadas», con «Activar…» otra vez (renueva la versión con el mismo
+  token) y «Desactivar».
+- **Legal:** privacidad §6 y registro A5: en la app, el origen «Perfil» es su
+  primera pantalla sin sesión; registro A5 con los cupos y los borrados
+  nuevos y el punto que faltaba; anexo 7.3 (la ventana) y 7.7 (S3 dónde se
+  prueba cada cosa; S5 la cabecera secreta).
+- **Pruebas:** `npm --prefix rwadar-app test` salida 0
+  (`probar-avisos-sin-cuenta.mjs` 75 de 75, antes 72: fallos generales, tope
+  diario, ni dos ni ninguno y 6 roturas más que el verificador detecta, 22 en
+  total); `npm run test:web` salida 0 (probar-web 732 correctas);
+  `npm --prefix rwadar-movil test` 693 correctas y 2 omitidas de siempre (2
+  nuevas de `texto-nuevo`); `node --test rwadar-acceso/*.test.mjs` 367 de 367
+  con Chromium (la ventana comprueba la frase junto al botón a 390 × 664 y
+  360 × 640); `node --test .github/*.test.mjs` 119 de 119; guardián de OTA con
+  la base `fa30779…` `ok:true`.
+- **Orden para activarlo (cada paso con orden de Víctor):** decidir la
+  cabecera secreta (S5) → `ensayo-36` → `aplicar-36` → `verificar-36` →
+  `activar-sin-cuenta` → web en revisión → prueba en iPhone (web en la
+  pantalla de inicio) y en Android con Chrome: `prueba-sin-cuenta` y ver que
+  **llega**; al terminar, **«Desactivar» en la revisión** (cada notificación
+  abre producción; si no, llegarían dos durante 180 días) → web en producción
+  con la privacidad, y allí la prueba completa (tocarla abre la lista con la
+  baja; «Desactivar») → OTA de Android y prueba en un Android físico (llega
+  como novedad; sin sesión, la baja arriba) → «Avisar novedad» (tipo
+  `novedad`, enlace `/novedades-rwadar/#avisos-movil`).
+
+---
+
 ## 14 de noviembre de 2026 (30) · Claude · Notificaciones sin cuenta, parte 2: web, app y textos legales · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
 
 - **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en

@@ -28,6 +28,9 @@ declare
   v_web integer;
   v_movil integer;
   v_historial integer;
+  v_lleno_hora text;
+  v_envios_dia integer;
+  v_bajas_fallos integer;
 begin
   if to_regclass('rwadar_novedades.sin_cuenta_web') is null
      or to_regclass('rwadar_novedades.sin_cuenta_movil') is null
@@ -39,7 +42,8 @@ begin
   if (select count(*) from pg_attribute
        where attrelid = 'rwadar_novedades.configuracion'::regclass and not attisdropped and attnum > 0
          and attname in ('sin_cuenta_activa', 'sin_cuenta_activada_el', 'sin_cuenta_version', 'sin_cuenta_texto_es',
-                         'sin_cuenta_texto_en', 'sin_cuenta_cupo_hora', 'sin_cuenta_maximo')) <> 7
+                         'sin_cuenta_texto_en', 'sin_cuenta_cupo_hora', 'sin_cuenta_maximo',
+                         'sin_cuenta_maximo_web', 'sin_cuenta_tope_dia_web')) <> 9
      or (select count(*) from pg_constraint
           where conrelid = 'rwadar_novedades.configuracion'::regclass and contype = 'c' and convalidated
             and conname in ('sin_cuenta_activada_con_fecha', 'sin_cuenta_cupos_validos')) <> 2 then
@@ -199,6 +203,9 @@ begin
   if position('en_uso' in pg_get_functiondef('public.alta_aviso_sin_cuenta_web(text,text,text,text,text,text)'::regprocedure)) = 0 then
     raise exception '36: el alta web no rechaza una dirección con otra clave auth';
   end if;
+  if position('v_cfg.sin_cuenta_maximo_web' in pg_get_functiondef('public.alta_aviso_sin_cuenta_web(text,text,text,text,text,text)'::regprocedure)) = 0 then
+    raise exception '36: el alta web no usa su máximo (sin_cuenta_maximo_web): no comprueba los cupos';
+  end if;
   foreach v_firma in array array['public.baja_aviso_sin_cuenta_web(text,text)', 'public.baja_aviso_sin_cuenta_movil(text)'] loop
     if position('sin_cuenta_activa' in pg_get_functiondef(to_regprocedure(v_firma))) > 0 then
       raise exception '36: la baja % depende del interruptor (tiene que funcionar siempre)', v_firma;
@@ -210,12 +217,14 @@ begin
   v_def := pg_get_functiondef('rwadar_novedades.sin_cuenta_enviar_webpush(integer)'::regprocedure);
   if position('push_habilitado' in v_def) = 0 or position('sin_cuenta_activa' in v_def) = 0
      or position('rwadar_novedades.webpush_encolar(' in v_def) = 0 or position('net.http_post' in v_def) > 0
-     or position('rwadar_novedades.suscripciones_web' in v_def) = 0 or position('interval ''7 days''' in v_def) = 0 then
-    raise exception '36: sin_cuenta_enviar_webpush no comprueba los interruptores, los 7 días o las cuentas, o no usa webpush_encolar';
+     or position('rwadar_novedades.suscripciones_web' in v_def) = 0 or position('interval ''7 days''' in v_def) = 0
+     or position('v_cfg.sin_cuenta_tope_dia_web' in v_def) = 0 or position('least(p_tanda, v_hueco)' in v_def) = 0 then
+    raise exception '36: sin_cuenta_enviar_webpush no comprueba los interruptores, los 7 días, las cuentas o el tope diario, o no usa webpush_encolar';
   end if;
   v_def := pg_get_functiondef('rwadar_novedades.sin_cuenta_enviar_push(integer)'::regprocedure);
   if position('push_habilitado' in v_def) = 0 or position('sin_cuenta_activa' in v_def) = 0
      or position('rwadar_novedades.dispositivos' in v_def) = 0 or position('interval ''7 days''' in v_def) = 0
+     or position('rwadar_novedades.pushes p' in v_def) = 0 or position('a.push_repartido_el is not null' in v_def) = 0
      or position('''priority'', ''high''' in v_def) = 0 or position('''channelId'', ''novedades''' in v_def) = 0 then
     raise exception '36: sin_cuenta_enviar_push no comprueba los interruptores, los 7 días o las cuentas, o no usa prioridad alta y el canal novedades';
   end if;
@@ -223,6 +232,16 @@ begin
      or position('net.http_post' in pg_get_functiondef('rwadar_novedades.sin_cuenta_leer_webpush()'::regprocedure)) > 0
      or position('DeviceNotRegistered' in pg_get_functiondef('rwadar_novedades.sin_cuenta_leer_push()'::regprocedure)) = 0 then
     raise exception '36: la lectura sin cuenta no aplica las reglas del contrato';
+  end if;
+  -- Un fallo general nuestro (servidor de la web, clave VAPID, credenciales
+  -- de FCM) no puede borrar las suscripciones: en la web solo cuentan 400 y
+  -- 413, en Expo nada, y pedir sin respuesta no cuenta.
+  v_def := pg_get_functiondef('rwadar_novedades.sin_cuenta_leer_webpush()'::regprocedure);
+  if (length(v_def) - length(replace(v_def, 'sin_cuenta_fallo(', ''))) <> length('sin_cuenta_fallo(')
+     or position('if v_codigo in (400, 413) then' in v_def) = 0
+     or position('sin_cuenta_fallo(' in pg_get_functiondef('rwadar_novedades.sin_cuenta_leer_push()'::regprocedure)) > 0
+     or position('sin_cuenta_fallo(' in pg_get_functiondef('rwadar_novedades.sin_cuenta_enviar_webpush(integer)'::regprocedure)) > 0 then
+    raise exception '36: un fallo general (servidor, VAPID o FCM) contaría como fallo de cada suscripción sin cuenta y las borraría';
   end if;
 
   -- procesar(): los cuatro bloques sin cuenta, una vez cada uno, dentro del
@@ -258,9 +277,13 @@ begin
     raise exception '36: sin_cuenta_limpiar() no cumple los plazos (90 días, 180 días y 3 años) o hace red';
   end if;
 
-  -- La prueba solo sale con 5 suscripciones sin cuenta o menos.
+  -- La prueba solo sale con 5 suscripciones sin cuenta o menos, y en la app
+  -- llega como un aviso de novedad (la app no conoce otro tipo).
   if position('if v_web + v_movil > 5 then' in pg_get_functiondef('rwadar_novedades.sin_cuenta_prueba()'::regprocedure)) = 0 then
     raise exception '36: la prueba sin cuenta no se limita a 5 suscripciones';
+  end if;
+  if position('jsonb_build_object(''tipo'', ''novedad'', ''destino'', ''inicio'')' in pg_get_functiondef('rwadar_novedades.sin_cuenta_prueba()'::regprocedure)) = 0 then
+    raise exception '36: la prueba sin cuenta no llega a la app como un aviso de novedad';
   end if;
 
   select count(*) into v_web from rwadar_novedades.sin_cuenta_web;
@@ -269,9 +292,36 @@ begin
   if v_cfg.sin_cuenta_activa and not (v_cfg.push_habilitado and v_cfg.webpush_clave_publica is not null) then
     raise warning 'RWAdar 36: sin cuenta activo, pero con el push apagado o sin clave VAPID no sale nada ni se admiten altas (activar-push y crear-vapid)';
   end if;
-  raise notice 'RWAdar 36 OK: sin cuenta %, % navegador(es) y % móvil(es) sin cuenta, % fila(s) en su historial, cupos % por hora y % en total por canal, push %',
+  -- Avisos de abuso o de un fallo general (no paran el verificador): el
+  -- cupo de altas nuevas de una hora lleno en los últimos 7 días (alguien
+  -- puede estar llamando directamente a la base), el tope diario de envíos
+  -- web alcanzado, el máximo de un canal lleno y bajas por fallos en 24 h.
+  select string_agg(distinct x.canal, ' y ' order by x.canal) into v_lleno_hora
+    from (select h.canal, count(*) over (partition by h.canal order by h.creado_el
+                                         range between interval '1 hour' preceding and current row) as n
+            from rwadar_novedades.historial_sin_cuenta h
+           where h.accion = 'alta' and h.motivo = 'nueva' and h.creado_el > now() - interval '7 days') x
+   where x.n >= v_cfg.sin_cuenta_cupo_hora;
+  if v_lleno_hora is not null then
+    raise warning 'RWAdar 36: en los últimos 7 días se llenó el cupo de % altas nuevas en una hora (%): quien de verdad quiso activarlas vio «cupo». Si se repite, alguien llama directamente a la base: decidir la cabecera secreta del servidor', v_cfg.sin_cuenta_cupo_hora, v_lleno_hora;
+  end if;
+  select coalesce(sum(e.intentos), 0)::integer into v_envios_dia
+    from rwadar_novedades.envios_sin_cuenta_web e where e.creado_el > now() - interval '24 hours';
+  if v_envios_dia >= v_cfg.sin_cuenta_tope_dia_web then
+    raise warning 'RWAdar 36: tope diario alcanzado: % notificaciones web sin cuenta en 24 h (tope %); las demás esperan', v_envios_dia, v_cfg.sin_cuenta_tope_dia_web;
+  end if;
+  if v_web >= v_cfg.sin_cuenta_maximo_web or v_movil >= v_cfg.sin_cuenta_maximo then
+    raise warning 'RWAdar 36: lleno: % de % navegadores y % de % móviles sin cuenta; las altas nuevas dicen «lleno»', v_web, v_cfg.sin_cuenta_maximo_web, v_movil, v_cfg.sin_cuenta_maximo;
+  end if;
+  select count(*) into v_bajas_fallos from rwadar_novedades.historial_sin_cuenta h
+   where h.accion = 'baja' and h.motivo = 'fallos' and h.creado_el > now() - interval '24 hours';
+  if v_bajas_fallos >= 10 then
+    raise warning 'RWAdar 36: % bajas por fallos seguidos en 24 h: comprobar el servidor de la web y la clave VAPID', v_bajas_fallos;
+  end if;
+  raise notice 'RWAdar 36 OK: sin cuenta %, % navegador(es) y % móvil(es) sin cuenta, % fila(s) en su historial, cupos % altas nuevas por hora por canal y como mucho % navegadores y % móviles, % de % notificaciones web en 24 h, % baja(s) por fallos en 24 h, push %',
     case when v_cfg.sin_cuenta_activa then 'activo' else 'apagado' end,
-    v_web, v_movil, v_historial, v_cfg.sin_cuenta_cupo_hora, v_cfg.sin_cuenta_maximo,
+    v_web, v_movil, v_historial, v_cfg.sin_cuenta_cupo_hora, v_cfg.sin_cuenta_maximo_web, v_cfg.sin_cuenta_maximo,
+    v_envios_dia, v_cfg.sin_cuenta_tope_dia_web, v_bajas_fallos,
     case when v_cfg.push_habilitado then 'encendido' else 'apagado' end;
 end
 $verificador$;

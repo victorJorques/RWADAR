@@ -122,7 +122,14 @@ function crearAvisosSinCuenta({ push, almacen, fetchImpl = (...a) => fetch(...a)
     if (NO_DISPONIBLE.includes(sistema) || plataforma !== 'android') {
       return { estado: 'no-disponible', motivo: sistema, activo: !!guardado };
     }
-    if (guardado && sistema === 'permitido') return { estado: 'activo', activo: true };
+    if (guardado && sistema === 'permitido') {
+      // La base solo envía con el texto vigente: con otro texto en el servidor,
+      // dejan de llegar hasta aceptarlo (activar() con el mismo token lo renueva).
+      if (textoServidor?.activo === true && typeof textoServidor.version === 'string' && textoServidor.version !== guardado.version) {
+        return { estado: 'texto-nuevo', activo: true };
+      }
+      return { estado: 'activo', activo: true };
+    }
     // Activadas, pero el permiso del sistema se quitó: se pueden quitar del todo.
     if (guardado) return { estado: 'sin-permiso', activo: true };
     if (sistema === 'denegado') return { estado: 'denegado', activo: false };

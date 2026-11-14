@@ -62,6 +62,8 @@ export const TEXTOS_SIN_CUENTA = Object.freeze({
     error: 'No hemos podido comprobar las notificaciones de este móvil. Revisa la conexión y pulsa Reintentar.',
     apagado: 'Las notificaciones sin cuenta todavía no están disponibles. Pronto podrás activarlas aquí.',
     activo: 'Activadas en este móvil, sin cuenta. Puedes desactivarlas aquí cuando quieras.',
+    // Activadas con un texto anterior: no llegan hasta aceptar el nuevo (arriba).
+    'texto-nuevo': 'Hemos cambiado el texto de las notificaciones. Léelo y vuelve a pulsar «Activar notificaciones en este móvil».',
     'sin-permiso': 'El sistema no permite notificaciones de RWAdar. Actívalas en los ajustes del móvil.',
     denegado: 'El sistema no permite notificaciones de RWAdar. Actívalas en los ajustes del móvil.',
   }),
@@ -118,6 +120,8 @@ export default function AvisosSinCuenta({ gestor = null, desdeNotificacion = fal
     if (procesando || !texto) return;
     setProcesando(true); setMensaje(''); setError('');
     let r;
+    // origen 'perfil': en la app (canal «movil» del historial) es el sitio fijo, esta primera pantalla sin sesión;
+    // así lo dicen la privacidad (§6) y el registro de actividades (A5).
     try { r = await g.current.activar(texto, { idioma, origen: 'perfil' }); } catch { r = { ok: false, estado: 'error' }; }
     if (!vivo.current) return;
     if (r.ok) setMensaje(TEXTOS_SIN_CUENTA.mensajes.activadas);
@@ -142,7 +146,7 @@ export default function AvisosSinCuenta({ gestor = null, desdeNotificacion = fal
 
   const estado = movil?.estado || 'comprobando';
   const permiso = texto && texto.texto ? texto.texto[idioma] : '';
-  const puedeActivar = estado === 'disponible' && !!texto?.activo;
+  const puedeActivar = (estado === 'disponible' || estado === 'texto-nuevo') && !!texto?.activo;
   const conQuien = Platform.OS === 'android' && !['requiere-version', 'no-disponible'].includes(estado);
   const nota = estado === 'disponible' ? TEXTOS_SIN_CUENTA.movil : TEXTOS_SIN_CUENTA.estados[estado] || '';
   return (

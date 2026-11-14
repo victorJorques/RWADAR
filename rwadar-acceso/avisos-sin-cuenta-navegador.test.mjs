@@ -382,7 +382,13 @@ const LEER_RECUADRO = () => {
   return { modo: c.dataset.novModo, titulo: c.querySelector('.nov-rec-tit').textContent, texto: c.querySelector('.nov-rec-txt').textContent,
     boton: b.textContent.trim(), etiqueta: b.tagName, antesDePuntos: !!(c.compareDocumentPosition(d.querySelector('.nov-puntos')) & Node.DOCUMENT_POSITION_FOLLOWING),
     aLaVista: cuerpo.scrollTop === 0 && rr.top >= rc.top - 0.5 && rb.bottom <= rc.bottom + 0.5 && rb.bottom <= innerHeight, alto: rb.height,
-    ventana: [innerWidth, innerHeight], fuera: [...d.querySelectorAll('*')].filter(n => { const r = n.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 0.5 || r.left < -0.5); }).length };
+    ventana: [innerWidth, innerHeight], fuera: [...d.querySelectorAll('*')].filter(n => { const r = n.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 0.5 || r.left < -0.5); }).length,
+    quien: (() => {
+      const q = c.querySelector('p.nov-rec-quien'), det = c.querySelector('details.nov-rec-info');
+      if (!q) return null;
+      return { texto: q.textContent, enlace: q.querySelector('a')?.getAttribute('href') || null, visible: q.getBoundingClientRect().height > 0,
+        trasBoton: !!(b.compareDocumentPosition(q) & Node.DOCUMENT_POSITION_FOLLOWING), antesDeInfo: !!det && !!(q.compareDocumentPosition(det) & Node.DOCUMENT_POSITION_FOLLOWING) };
+    })() };
 };
 
 test('en Chromium: ventana de novedades sin sesión: el recuadro arriba y a la vista (390 × 664 y 360 × 640) y «Activar avisos» activa aquí mismo', { skip: sinNavegador, timeout: 240000 }, async () => {
@@ -404,6 +410,10 @@ test('en Chromium: ventana de novedades sin sesión: el recuadro arriba y a la v
       assert.ok(v.antesDePuntos, 'arriba, antes de los puntos');
       assert.ok(v.aLaVista, `${ancho} × ${alto}: el recuadro y su botón, a la vista sin desplazar: ${JSON.stringify(v)}`);
       assert.ok(v.alto >= 44 && v.fuera === 0);
+      // Anexo legal, 7.3: quién interviene, junto al botón y a la vista (no plegado), con «Privacidad» a #garantias-push.
+      assert.ok(v.quien && v.quien.visible && v.quien.trasBoton && v.quien.antesDeInfo, `quién interviene, junto al botón: ${JSON.stringify(v.quien)}`);
+      assert.match(v.quien.texto, /^El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto\. .* Más en Privacidad\.$/);
+      assert.equal(v.quien.enlace, '/privacidad#garantias-push');
       await captura(pagina, `ventana-sin-cuenta-${dispositivo === 'iPhone 13' ? 'iphone13' : 'android'}-${ancho}x${alto}.png`);
       await pagina.click('#novedadesDialogo [data-nov-avisos]');
       await pagina.waitForFunction(() => /Notificaciones activadas en este móvil/.test(document.querySelector('#novedadesDialogo [data-nov-recordatorio]')?.textContent || ''), null, { timeout: 15000 });

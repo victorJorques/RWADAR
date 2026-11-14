@@ -89,6 +89,22 @@ test('sin cuenta · estados: 1.4.1, dispositivo sin push, base apagada, error, d
   assert.deepEqual(s.llamadas, [], 'mirar el estado no llama a nadie');
 });
 
+test('sin cuenta · texto nuevo del permiso: «Activadas» deja paso a volver a aceptarlo, y activar con el mismo token lo renueva', async () => {
+  const NUEVA = 'sin-cuenta-v2-2026-12-01';
+  const nuevo = sc.validarTexto({ ...TEXTO, version: NUEVA, texto: { es: TEXTO_ES.replace('Es opcional', 'Es voluntario'), en: TEXTO_EN } });
+  const s = servidor(), p = push({ estado: 'permitido' }), almacen = almacenFalso(guardado());
+  const g = sc.crearAvisosSinCuenta({ push: p, almacen, fetchImpl: s.fetchImpl, ahora: () => new Date(HOY + 'T10:00:00Z') });
+  assert.deepEqual(await g.estado(nuevo), { estado: 'texto-nuevo', activo: true }, 'la base ya no envía con el texto anterior');
+  assert.deepEqual(await g.estado(sc.validarTexto(TEXTO)), { estado: 'activo', activo: true }, 'con el mismo texto, activas');
+  assert.deepEqual(await g.estado({ ...nuevo, activo: false }), { estado: 'activo', activo: true }, 'con la base apagada no se pide nada');
+  assert.deepEqual(await g.estado(undefined), { estado: 'activo', activo: true }, 'sin el texto todavía, lo guardado');
+  assert.deepEqual(await g.activar(nuevo, { idioma: 'es', origen: 'perfil' }), { ok: true, estado: 'activo' });
+  assert.deepEqual(s.llamadas.map((x) => x.cuerpo), [{ accion: 'alta', token: TOKEN, plataforma: 'android', version: NUEVA, idioma: 'es', origen: 'perfil' }],
+    'una sola alta, con el mismo token y la versión nueva (sin baja)');
+  assert.equal(almacen.valor.version, NUEVA);
+  assert.deepEqual(await g.estado(nuevo), { estado: 'activo', activo: true });
+});
+
 test('sin cuenta · activar: permiso y token tras pulsar, alta con la versión, el idioma y el origen; sin cookies', async () => {
   const s = servidor(), p = push(), almacen = almacenFalso();
   const g = sc.crearAvisosSinCuenta({ push: p, almacen, fetchImpl: s.fetchImpl, ahora: () => new Date(HOY + 'T10:00:00Z') });
@@ -282,7 +298,7 @@ function gestorFalso({ estado = 'disponible', textoServidor = sc.validarTexto(TE
   const llamadas = [];
   let actual = estado;
   return { llamadas, async texto() { llamadas.push('texto'); if (textoServidor instanceof Error) throw textoServidor; return textoServidor; },
-    async estado(t) { return t === undefined ? { estado: 'comprobando', activo: actual === 'activo' } : { estado: actual, activo: actual === 'activo' || actual === 'sin-permiso' }; },
+    async estado(t) { return t === undefined ? { estado: 'comprobando', activo: actual === 'activo' } : { estado: actual, activo: ['activo', 'sin-permiso', 'texto-nuevo'].includes(actual) }; },
     async activar(t, o) { llamadas.push(['activar', t.version, o]); if (activar.ok) actual = 'activo'; return activar; },
     async desactivar() { llamadas.push('desactivar'); actual = 'disponible'; return { ok: true, confirmada: true }; } };
 }
@@ -312,6 +328,19 @@ test('sin cuenta · pantalla de acceso: el texto versionado, qué se guarda, Fir
   assert.deepEqual(g.llamadas.filter((x) => Array.isArray(x)), [['activar', VERSION, { idioma: 'es', origen: 'perfil' }]]);
   assert.ok(texto(arbol).includes('Notificaciones activadas en este móvil.'));
   assert.ok(boton(arbol, 'Desactivar las notificaciones de este móvil'), 'y ahora se pueden desactivar');
+  assert.equal(boton(arbol, 'Activar notificaciones en este móvil'), undefined);
+});
+
+test('sin cuenta · activadas con un texto anterior: el texto nuevo, «Activar…» otra vez y «Desactivar»', async () => {
+  const g = gestorFalso({ estado: 'texto-nuevo' });
+  const { pintar, TEXTOS_SIN_CUENTA } = await montar({ gestor: g });
+  let arbol = pintar();
+  assert.ok(texto(arbol).includes(TEXTO_ES) && texto(arbol).includes(TEXTOS_SIN_CUENTA.estados['texto-nuevo']));
+  assert.ok(boton(arbol, 'Desactivar las notificaciones de este móvil'), 'siguen activas: se pueden quitar');
+  boton(arbol, 'Activar notificaciones en este móvil').props.onPress();
+  await espera(); await espera();
+  arbol = pintar();
+  assert.deepEqual(g.llamadas.filter((x) => Array.isArray(x)), [['activar', VERSION, { idioma: 'es', origen: 'perfil' }]]);
   assert.equal(boton(arbol, 'Activar notificaciones en este móvil'), undefined);
 });
 

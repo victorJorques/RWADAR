@@ -663,8 +663,10 @@ y derechos, con «Privacidad» enlazada a §6 «Notificaciones sin cuenta».
 
 ### 7.3 Frases de primera capa sin cuenta (texto exacto)
 
-- **Web** (junto al botón; variante de 2.4 sin la campana, que sin cuenta no
-  existe): «El servicio de tu navegador puede estar fuera de la UE: ve la hora
+- **Web** (junto al botón, en Perfil › Avisos y también en la ventana de
+  novedades cuando su «Activar avisos» las activa allí mismo: a la vista,
+  debajo del botón y antes de la información básica plegada; variante de 2.4
+  sin la campana, que sin cuenta no existe): «El servicio de tu navegador puede estar fuera de la UE: ve la hora
   de cada aviso, pero no puede leer su texto. Si no las activas, las novedades
   siguen en la web. Más en Privacidad.» Inglés: «Your browser's service may be
   outside the EU: it sees when each notice is sent, but cannot read its text.
@@ -706,5 +708,6 @@ algo que permita encontrarla (art. 11.2); la privacidad (§6 y §11) lo dice.
 |---|---|---|---|
 | **S1** | La privacidad con §2, §5, §6 «Notificaciones sin cuenta», §8, §9, §11 y §12 nuevos, **publicada en el mismo despliegue** que la web | Publicar la web, con orden de Víctor | Hecho en el repositorio; falta publicar |
 | **S2** | La 36 aplicada y verificada (`ensayo-36`, `aplicar-36`, `verificar-36`) | Víctor (flujo) | Pendiente |
-| **S3** | Prueba real en un iPhone (web en la pantalla de inicio) y en un Android: activar, `prueba-sin-cuenta`, tocarla (se abre la lista con la baja) y «Desactivar» | Víctor | Pendiente |
+| **S3** | Prueba real en un iPhone (web en la pantalla de inicio) y en un Android: activar, `prueba-sin-cuenta`, tocarla (se abre la lista con la baja) y «Desactivar». **Dónde:** cada notificación abre `https://rwadar.pages.dev/?avisos=1` (producción). En la web de revisión solo se comprueba que llega y, al terminar, se pulsa allí «Desactivar» (si no, esa suscripción de revisión seguiría recibiendo hasta 180 días y, con la de producción, llegarían dos). Tocarla y ver la lista con la baja se comprueba en producción, ya publicada. En la app, después de la OTA: la prueba llega como un aviso de novedad (`{tipo: 'novedad', destino: 'inicio'}`) y, sin sesión, abre la primera pantalla con la frase de baja arriba | Víctor | Pendiente |
 | **S4** | La OTA con el bloque de la app, después de la web (la app llama a `/api/avisos/movil` en producción); C5 y C6 siguen valiendo | OTA con orden de Víctor | Hecho en el repositorio; falta la OTA |
+| **S5** | Decidir, sabiendo el riesgo, si se hace antes la cabecera secreta entre el servidor de la web y la base. Sin ella, cualquiera puede llamar directamente a Supabase con la clave publicable: con 300 altas falsas por hora agota el cupo de todos (la gente de verdad ve «cupo») y en unas 17 horas llena los 5 000 navegadores («lleno»). El daño en Cloudflare queda acotado por el máximo de 5 000 y el tope de 30 000 notificaciones web en 24 horas, y el verificador 36 avisa si el cupo de una hora se llenó | Víctor | Pendiente (decisión) |

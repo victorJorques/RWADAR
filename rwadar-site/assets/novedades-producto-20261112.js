@@ -233,16 +233,19 @@
     cab.append(icono('notificacion'), tit);
     caja.append(cab);
     if (rec.modo === 'directo') {
-      // El texto versionado del permiso, tal cual y en su idioma; «Privacidad» enlaza a su apartado.
-      const texto = (rec.texto && rec.texto[lengua]) || '';
-      const p = propio(el('p', 'nov-rec-txt nov-rec-permiso'));
-      const m = /^(.*\s)(Privacidad|Privacy)\.$/.exec(texto);
-      if (m) {
-        const a = el('a', '', m[2]);
-        a.href = rec.privacidad || '/privacidad';
-        p.append(m[1], a, '.');
-      } else p.textContent = texto;
-      caja.append(p);
+      // Un texto de la web tal cual y en su idioma; su «Privacidad» final enlaza a su apartado.
+      const conPrivacidad = (clase, texto, href) => {
+        const p = propio(el('p', clase));
+        const m = /^(.*\s)(Privacidad|Privacy)\.$/.exec(texto);
+        if (m) {
+          const a = el('a', '', m[2]);
+          a.href = href;
+          p.append(m[1], a, '.');
+        } else p.textContent = texto;
+        return p;
+      };
+      // El texto versionado del permiso.
+      caja.append(conPrivacidad('nov-rec-txt nov-rec-permiso', (rec.texto && rec.texto[lengua]) || '', rec.privacidad || '/privacidad'));
       const estado = propio(el('p', 'nov-rec-estado'));
       estado.id = 'novedadesRecEstado';
       estado.setAttribute('role', rec.paso === 'fallo' ? 'alert' : 'status');
@@ -255,6 +258,9 @@
         boton.disabled = rec.paso === 'espera';
         caja.append(boton);
       }
+      // Quién interviene en la entrega, junto al botón (anexo legal, 7.3), a la vista.
+      const quien = (rec.quien && rec.quien[lengua]) || '';
+      if (quien) caja.append(conPrivacidad('nov-rec-info nov-rec-quien', quien, rec.garantias || '/privacidad#garantias-push'));
       const info = propio(el('details', 'nov-rec-info'));
       const resumen = el('summary', '', t.recInfo);
       resumen.dataset.novFoco = 'info';

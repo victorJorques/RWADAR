@@ -61,6 +61,8 @@ html.nov-abierta,html.nov-abierta body{overflow:hidden}
 .nov-rec-info summary{display:flex;align-items:center;min-height:32px;color:var(--tx-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .nov-rec-info summary:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .nov-rec-info p{margin:6px 0 0;overflow-wrap:break-word}
+/* Quién interviene en la entrega, a la vista junto al botón (anexo legal, 7.3). */
+.nov-rec-quien{margin:0;overflow-wrap:break-word}
 
 /* ---- La página /novedades-rwadar/ ---- */
 .nov-pagina .sec-entradilla time{color:var(--tx)}

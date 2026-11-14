@@ -6241,8 +6241,9 @@ const Cuenta = (function(){
   await Promise.race([Promise.all([Promise.resolve(sc.comprobacion),cargarTextoSC()]).then(()=>consultarSinMarca()),esperaSC(PLAZO_VENTANA_SC_MS)]).catch(()=>{});
   const est=estadoSinCuenta();
   if(est==='activo')return {modo:'activos'};
+  /* quien: la frase del anexo (7.3) junto al botón, como en Perfil › Avisos. */
   if(est==='disponible'&&sc.texto&&sc.texto.activo)return {modo:'directo',version:sc.texto.version,texto:Object.assign({},sc.texto.texto),
-   info:INFO_SC,privacidad:PRIVACIDAD_SC};
+   info:INFO_SC,privacidad:PRIVACIDAD_SC,quien:QUIEN_SC,garantias:'/privacidad#garantias-push'};
   return {modo:'perfil'};
  }
  function iniciarSinCuenta(){
