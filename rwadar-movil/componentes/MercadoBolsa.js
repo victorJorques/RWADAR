@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { PanResponder, StyleSheet, useWindowDimensions } from 'react-native';
+import { AppState, PanResponder, StyleSheet, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Line, LinearGradient, Path, Rect, Stop, Text as SvgText } from 'react-native-svg';
 import { Pressable, Text, View, useIdioma } from './Idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
-import { cargarSerieConFina } from '../lib/tokenizacion-serie-remota';
-import { FUENTE, PESTANAS, PESTANA_INICIAL, cambio24h, cambioPct, cifraGrande, coberturaTexto, colorTipo, coordenadas, cuandoDato, cuota, direccion,
+import { cargarSerieConDirecto } from '../lib/tokenizacion-serie-remota';
+import { FUENTE, PESTANAS, PESTANA_INICIAL, avisoDirecto, cambio24h, cambioPct, cifraGrande, coberturaTexto, colorTipo, coordenadas, cuandoDato, cuota, direccion,
   etiquetaPestana, explicacionCambio, fechaCorta, finaAtrasada, graficoPestana, horaEspana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados,
   msMinuto, notaCorta, notaSerie, pestanaDisponible, porcentaje, serieAtrasada, seriePestana, subtituloCifra, textoInstante, tramosSeguidos,
   trazosSvg } from '../lib/tokenizacion';
@@ -41,6 +41,12 @@ import { tacto } from '../lib/tacto';
    5 minutos; 1 S y 1 M, cada hora; las demás, cada día. Sin la fina (una web
    sin publicar o una lectura que falla), todo sigue con la diaria y «24 h»
    sale desactivada. El eje y la cruz dicen la hora de España en las finas.
+   En directo (14/11/2026): la serie sale de /api/tokenizacion/directo
+   (cargarSerieConDirecto: Supabase pide a CoinGecko cada 5 minutos); si no
+   vale, la fina publicada, como antes. Con la app a la vista se vuelve a
+   pedir cuando toca el dato siguiente, sin cambiar de pestaña y esperando a
+   que se quite la cruz. Si el directo está encendido y falla, una línea lo
+   dice (y en Inicio, «copia de las 16:05»); apagado, nada.
    --------------------------------------------------------------------- */
 const VERDE = C.senal;
 // Un solo rojo para la línea y las cifras: #FF6B5E pasa AA como texto sobre s0 y s1.
@@ -56,24 +62,62 @@ const CRUZ_FIJA_MS = 3000;
 const colorLinea = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO : C.tx2);
 const colorTexto = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO_TEXTO : C.tx2);
 
-/* Las dos lecturas, juntas. Un fallo de una no tumba la otra. La serie, con
-   sus finas si las hay y casan con ella (si no, la diaria sola). */
-export function useMercado({ cargarVivo = cargarTokenizacion, cargarLaSerie = cargarSerieConFina } = {}) {
-  const [estado, setEstado] = useState({ fase: 'cargando', vivo: null, serie: null });
+/* Las dos lecturas, juntas. Un fallo de una no tumba la otra. La serie, del
+   directo si vale; si no, con sus finas publicadas si las hay y casan con
+   ella (si no, la diaria sola). cargarLaSerie puede devolver la serie sola
+   (las pruebas de antes) o { serie, origen, motivo, proximo }.
+   El refresco (14/11/2026): con la app activa (AppState) se vuelve a pedir
+   la serie (no el total) cuando toca; con la cruz a la vista («ocupado»), 3 s
+   después; al volver a primer plano, enseguida si ya tocaba o si han pasado
+   más de 4 minutos (con Date.now(), que no se para cuando el móvil duerme). */
+const MAX_ESPERA_MS = 30 * 60000;
+const comoResultado = (r) => (r && typeof r === 'object' && 'origen' in r && 'serie' in r ? r : { serie: r || null, origen: null, motivo: null, proximo: 0 });
+export function useMercado({ cargarVivo = cargarTokenizacion, cargarLaSerie = cargarSerieConDirecto, ocupado = null } = {}) {
+  const [estado, setEstado] = useState({ fase: 'cargando', vivo: null, serie: null, origen: null, motivo: null });
   const vivoRef = useRef(true);
-  const pedir = useCallback(() => {
-    setEstado((s) => ({ ...s, fase: 'cargando' }));
-    const a = Promise.resolve().then(() => cargarVivo()).then((d) => (d && d.fuente !== 'sin-datos' ? d : null)).catch(() => null);
-    const b = Promise.resolve().then(() => cargarLaSerie()).catch(() => null);
-    return Promise.all([a, b]).then(([vivo, serie]) => {
+  const reloj = useRef({ temporizador: null, proximo: 0, pedido: 0 });
+  const acciones = useRef({});
+  const pedir = useCallback(({ soloSerie = false } = {}) => {
+    if (!soloSerie) setEstado((s) => ({ ...s, fase: 'cargando' }));
+    reloj.current.pedido = Date.now();
+    const a = soloSerie ? Promise.resolve(null) : Promise.resolve().then(() => cargarVivo()).then((d) => (d && d.fuente !== 'sin-datos' ? d : null)).catch(() => null);
+    const b = Promise.resolve().then(() => cargarLaSerie()).then(comoResultado).catch(() => null);
+    return Promise.all([a, b]).then(([vivo, r]) => {
       if (!vivoRef.current) return;
+      reloj.current.proximo = r && r.proximo ? r.proximo : 0;
       setEstado((s) => {
-        const v = vivo || s.vivo, se = serie || s.serie;
-        return { fase: v || se ? 'listo' : 'error', vivo: v, serie: se };
+        const v = vivo || s.vivo, se = (r && r.serie) || s.serie;
+        const origen = r && r.serie ? r.origen : s.origen, motivo = r && r.serie ? r.motivo : s.motivo;
+        return { fase: v || se ? 'listo' : 'error', vivo: v, serie: se, origen, motivo };
       });
+      acciones.current.programar?.();
     });
   }, [cargarVivo, cargarLaSerie]);
-  useEffect(() => { vivoRef.current = true; pedir(); return () => { vivoRef.current = false; }; }, [pedir]);
+  acciones.current.pedir = pedir;
+  acciones.current.programar = () => {
+    const r = reloj.current;
+    clearTimeout(r.temporizador);
+    r.temporizador = null;
+    const activa = !AppState || !AppState.currentState || AppState.currentState === 'active';
+    if (!vivoRef.current || !r.proximo || !activa) return;
+    r.temporizador = setTimeout(() => acciones.current.tic(), Math.min(MAX_ESPERA_MS, Math.max(1000, r.proximo - Date.now())));
+  };
+  acciones.current.tic = () => {
+    reloj.current.temporizador = null;
+    if (!vivoRef.current) return;
+    if (ocupado && ocupado.current) { reloj.current.temporizador = setTimeout(() => acciones.current.tic(), 3000); return; }
+    acciones.current.pedir({ soloSerie: true });
+  };
+  useEffect(() => {
+    vivoRef.current = true;
+    pedir();
+    const escucha = AppState && typeof AppState.addEventListener === 'function' ? AppState.addEventListener('change', (e) => {
+      const r = reloj.current;
+      if (e !== 'active') { clearTimeout(r.temporizador); r.temporizador = null; return; }
+      if (r.proximo && (Date.now() >= r.proximo || Date.now() - r.pedido > 4 * 60000)) acciones.current.tic(); else acciones.current.programar();
+    }) : null;
+    return () => { vivoRef.current = false; clearTimeout(reloj.current.temporizador); escucha?.remove?.(); };
+  }, [pedir]);
   return { ...estado, reintentar: pedir };
 }
 
@@ -179,7 +223,7 @@ function fechasQueCaben(marcas, coords, PW, letra) {
    línea se pinta simplificada sin perder máximos ni mínimos (trazosSvg con
    indicesPintar) y la cruz busca el punto con búsqueda binaria
    (indiceCercano), entre todos los puntos. */
-export function GraficoBolsa({ g, idioma, alto = 270 }) {
+export function GraficoBolsa({ g, idioma, alto = 270, ocupado = null }) {
   const { fontScale } = useWindowDimensions();
   const [ancho, setAncho] = useState(0);
   const lineas = useMemo(() => lineasBurbuja(g, idioma, ancho, fontScale), [g, idioma, ancho, fontScale]);
@@ -265,6 +309,8 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
   }, [g, coords, color, PW, PH, ARRIBA, letra, EJE, PILDORA, ancho, altoTotal, idioma]);
 
   const k = indice === null ? null : Math.max(0, Math.min(g.puntos.length - 1, indice));
+  // Con la cruz a la vista, el refresco del directo espera (si no, la cruz se iría con la serie nueva).
+  if (ocupado) ocupado.current = k !== null;
   const ultimo = g.puntos[g.puntos.length - 1];
   const pk = k === null ? null : g.puntos[k];
   const ck = k === null ? null : coords[k] || null;
@@ -358,7 +404,10 @@ function pestanasEnDosFilas(ancho, fontScale = 1, n = PESTANAS.length) {
 export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, children = null }) {
   const idioma = useIdioma();
   const en = idioma === 'en';
-  const { fase, vivo, serie, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
+  const cruzVisible = useRef(false);
+  const { fase, vivo, serie, origen, motivo, reintentar } = useMercado({ cargarVivo, cargarLaSerie, ocupado: cruzVisible });
+  // El directo encendido que no se puede usar: el gráfico es la copia publicada y se dice ('' si va bien o está apagado).
+  const avisoDelDirecto = serie && origen && origen !== 'directo' ? avisoDirecto(motivo, serie, idioma) : '';
   const [pestana, setPestana] = useState(PESTANA_INICIAL);
   const [como, setComo] = useState(false);
   // Por tipo de activo, plegado (en el móvil, las noticias quedan más arriba).
@@ -431,6 +480,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {g && g.avisoTokens ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-tokens">{mayuscula(g.avisoTokens) + '.'}</Text> : null}
           {/* En una pestaña fina con tokens sin datos, su línea acaba por debajo de la cifra grande: se dice cuánto y por qué. */}
           {g && g.avisoFuera ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-fuera">{mayuscula(g.avisoFuera) + '.'}</Text> : null}
+          {avisoDelDirecto ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-directo">{avisoDelDirecto}</Text> : null}
           {/* Una pestaña fina con la serie fina de más de 26 horas antes del dato de hoy: hasta cuándo llega
               (se hace una vez al día y la web se publica a mano; sin esto, «24 h» seguía en el día de la publicación). */}
           {!vieja && g && g.resolucion !== '1d' && vivo && finaAtrasada(serie, vivo.actualizado) ? (
@@ -461,7 +511,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       ) : null}
       {g ? (
         <View style={e.grafico}>
-          <GraficoBolsa g={g} idioma={idioma} />
+          <GraficoBolsa g={g} idioma={idioma} ocupado={cruzVisible} />
           {/* Una línea corta a la vista; el resto, en «Cómo se calcula». */}
           {/* Con la misma coletilla que el subtítulo y, en gris, el total de la categoría con su hora. */}
           <Text noTraducir style={e.nota} testID="mercado-nota">
@@ -572,9 +622,13 @@ function Minigrafico({ g }) {
 export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLaSerie }) {
   const idioma = useIdioma();
   const en = idioma === 'en';
-  const { fase, vivo, serie, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
+  const { fase, vivo, serie, origen, motivo, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
   // La misma cifra que el final del minigráfico: el último punto de la serie.
   const hoy = valorHoy(vivo, serie);
+  // Sin el directo (encendido y fallando): «copia de las 16:05», la de la copia publicada.
+  const cifraHoy = cifraGrande(serie, vivo);
+  const copia = serie && origen && origen !== 'directo' && avisoDirecto(motivo, serie, idioma)
+    ? (cifraHoy && cifraHoy.t ? `${en ? 'copy from ' : 'copia de las '}${horaEspana(msMinuto(cifraHoy.t)).hora}` : (en ? 'published copy' : 'copia publicada')) : '';
   const vieja = atrasada(vivo, serie);
   // El minigráfico del mes: con la serie horaria si la hay (721 puntos; se pinta simplificado, sin perder máximos ni mínimos).
   const g = useMemo(() => (serie ? graficoPestana(serie, '1m', idioma) : null), [serie, idioma]);
@@ -610,6 +664,7 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
           {g ? <Cambio g={g} /> : null}
           {g ? <Text noTraducir style={e.ctPeriodo}>{g.periodoTexto}</Text> : null}
           {vieja ? <Text noTraducir style={e.ctPeriodo}>{`${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}`}</Text> : null}
+          {!vieja && copia ? <Text noTraducir style={e.ctPeriodo} testID="mercado-cotizacion-copia">{copia}</Text> : null}
         </View>
         {g && apilada ? <View style={e.ctMiniFila}><Minigrafico g={g} /></View> : null}
       </Pressable>

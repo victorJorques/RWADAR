@@ -93,6 +93,9 @@ export function crearAuthSimulado({ registro = [], responder = null } = {}) {
     if (['/auth/v1/signup', '/auth/v1/recover', '/auth/v1/resend'].includes(ruta) && metodo === 'POST') return json({});
     if (ruta === '/rest/v1/rpc/baja_avisos' && metodo === 'POST') return json(true);
     if (ruta === '/rest/v1/rpc/mis_avisos_recientes' && conSesion) return json([]);
+    // El gráfico en directo (migración 35): como en producción antes de aplicarla,
+    // la función no existe (PostgREST 404) y la ruta responde «directo_apagado».
+    if (ruta === '/rest/v1/rpc/tokenizacion_directo' && metodo === 'POST') return json({ code: 'PGRST202', message: 'sin la migración 35' }, 404);
     return json({ message: 'no simulado en el arnés local' }, 503);
   };
 }
