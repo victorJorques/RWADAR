@@ -105,6 +105,17 @@ export function sellar({ raiz, fecha, base = 'origin/main', revisionCatalogo }) 
   for (const rel of archivosCambiados(raiz, base)) {
     if (!archivoPermitido(rel, fecha)) throw new Freno('sello', `la rama cambia ${rel}, fuera de lo que puede tocar la mañana`);
   }
+  // La base tiene que estar ya sellada: el sello automático aprueba las
+  // noticias, nunca lo que otro unió a main sin sello (p. ej. un PR de código
+  // unido antes que su PR de sello). Su contenido sellado tiene que ser igual
+  // al del commit que aprobó su estado.json.
+  const estadoBase = JSON.parse(git(['show', `${base}:${RUTAS.sello}`], { cwd: raiz }).salida);
+  const aprobado = String(estadoBase?.revisionAprobada?.commit || '');
+  const ancestro = /^[0-9a-f]{40}$/.test(aprobado)
+    && git(['merge-base', '--is-ancestor', aprobado, base], { cwd: raiz, permitir: [0, 1, 128] }).codigo === 0;
+  const igualQueAprobado = ancestro
+    && git(['diff', '--quiet', '--no-renames', aprobado, base, '--', ...RUTAS_CONTENIDO_APROBADO], { cwd: raiz, permitir: [0, 1] }).codigo === 0;
+  if (!igualQueAprobado) throw new Freno('sello', 'main tiene contenido sellado que nadie aprobó (su sello no lo cubre): el sello automático no lo aprueba');
   const ruta = path.join(raiz, RUTAS.sello);
   const antes = leerJSON(ruta);
   const despues = structuredClone(antes);
@@ -119,17 +130,26 @@ export function sellar({ raiz, fecha, base = 'origin/main', revisionCatalogo }) 
 
 /* Tras el commit del sello (B): ¿la unión con «merge» deja main publicable?
    Se simula en un árbol aparte: main (base) + merge --no-ff B, y la compuerta
-   de «Publicar web» (auditar-relanzamiento.mjs) tiene que decir que sí. */
+   de «Publicar web» (auditar-relanzamiento.mjs) tiene que decir que sí.
+   «cabeza» se resuelve en «raiz», ANTES de crear la copia: dentro de la copia,
+   HEAD es la propia base y la unión no uniría nada («Already up to date»). */
 export function simularUnion({ raiz, base = 'origin/main', cabeza = 'HEAD', modo = 'merge', destino }) {
+  const sha = gitTexto(['rev-parse', '--verify', `${cabeza}^{commit}`], { cwd: raiz });
   const dir = destino || fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-union-'));
   fs.rmSync(dir, { recursive: true, force: true });
   git(['worktree', 'add', '--detach', '--force', dir, base], { cwd: raiz });
   try {
     const id = ['-c', 'user.name=Ensayo', '-c', 'user.email=ensayo@example.invalid'];
     if (modo === 'squash') {
-      git([...id, 'merge', '--squash', cabeza], { cwd: dir });
+      git([...id, 'merge', '--squash', sha], { cwd: dir });
       git([...id, 'commit', '-q', '-m', 'Unión simulada (squash)'], { cwd: dir });
-    } else git([...id, 'merge', '--no-ff', '-q', '-m', 'Unión simulada', cabeza], { cwd: dir });
+    } else {
+      git([...id, 'merge', '--no-ff', '-q', '-m', 'Unión simulada', sha], { cwd: dir });
+      // Que de verdad haya unido la rama: el segundo padre de la unión es la cabeza.
+      if (git(['rev-parse', '--verify', '-q', 'HEAD^2'], { cwd: dir, permitir: [0, 1, 128] }).salida.trim() !== sha) {
+        throw new Freno('sello', 'la unión simulada no unió la rama (la cabeza ya estaba en la base o no se resolvió)');
+      }
+    }
     enlazarDependencias(raiz, dir);
     const r = spawnSync(process.execPath, ['rwadar-app/auditar-relanzamiento.mjs'], { cwd: dir, encoding: 'utf8' });
     const bloqueos = [...String(r.stdout).matchAll(/^- \[([A-Z_]+)\]/gm)].map(m => m[1]);

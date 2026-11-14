@@ -1,10 +1,15 @@
 // La carpeta del día, el sello automático y la unión simulada, en una copia
 // aparte del repositorio (git worktree de usar y tirar; no crea ramas), una
 // sola para todo el archivo (crearla cuesta unos segundos):
-// - «main» de prueba = HEAD + la guía fija + un sello revisado de ayer;
+// - «main» de prueba = HEAD + la guía fija + un sello revisado de ayer, hecho
+//   con el estado.json FIJO de pruebas/fijos/ (no con el del repositorio: así
+//   un PR que solo cambia el sello no puede romper estas pruebas, y no tienen
+//   que correr en el trabajo «Sello» de la CI);
 // - commit A = noticias (preparar); commit B = sello (sellar);
 // - main + merge --no-ff B → LISTO; squash → COMMIT_NO_ANCESTRO; main movido
-//   con contenido → CONTENIDO_NO_APROBADO (mutación 5).
+//   con contenido → CONTENIDO_NO_APROBADO (mutación 5); algo colado tras el
+//   sello → CONTENIDO_NO_APROBADO (la unión simulada une de verdad); main con
+//   contenido sin sellar → el sello automático frena.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -14,9 +19,13 @@ import { sellar, simularUnion } from '../lib/flujo.mjs';
 import { cambiosDelSello, CAMBIOS_SELLO_PERMITIDOS } from '../lib/validar.mjs';
 import { enlazarDependencias, Freno, RUTAS } from '../lib/comun.mjs';
 import { RAIZ, GUIA, FECHA, BASE, tmp, montarDia, programa, gitEn, escribir } from './ayuda.mjs';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const ESTADO = RUTAS.sello;
+// Un sello revisado de verdad (copia del estado.json del 14/11/2026). Si la
+// compuerta cambia lo que pide a estado.json, cópialo otra vez del repositorio.
+const ESTADO_FIJO = fileURLToPath(new URL('./fijos/estado.json', import.meta.url));
 // El sello revisado de la copia es de ayer: así se ve si el sello automático cambiara «actualizadoEl».
 const ayerUTC = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
 
@@ -29,7 +38,7 @@ before(() => {
   escribir(path.join(wt, 'rwadar-editorial-source/noticias/GUIA-TITULARES.md'), fs.readFileSync(GUIA));
   git('add', '-A'); git('commit', '-q', '-m', 'guía fija de prueba');
   const { huellaContenidoAprobado } = require(path.join(wt, 'rwadar-publicacion-segura.js'));
-  const e = JSON.parse(fs.readFileSync(path.join(wt, ESTADO), 'utf8'));
+  const e = JSON.parse(fs.readFileSync(ESTADO_FIJO, 'utf8'));
   e.actualizadoEl = ayerUTC; e.nota = 'Sello revisado de prueba para la copia de usar y tirar de las pruebas';
   e.revisionAprobada.commit = git('rev-parse', 'HEAD'); e.revisionAprobada.contenidoSha256 = huellaContenidoAprobado(wt);
   fs.writeFileSync(path.join(wt, ESTADO), JSON.stringify(e, null, 2) + '\n');
@@ -59,8 +68,19 @@ test('un día bueno de punta a punta en la copia: preparar, commit A, sellar, co
   c.git('add', '-A'); c.git('commit', '-q', '-m', 'Sello: noticias del 14/11/2026');
   // comprobar-sello: V-16 con el sello y la unión simulada con «merge» → LISTO.
   r = programa(['comprobar-sello', '--raiz', c.wt, '--fecha', FECHA, '--trabajo', dia.trabajo, '--base', c.main]);
+  // Si aquí falla la compuerta (y no por las noticias), puede que el estado.json fijo se haya quedado viejo: ver ESTADO_FIJO.
   assert.equal(r.codigo, 0, r.salida);
   assert.match(r.salida, /LISTO/);
+  // La unión simulada une de verdad la rama, también con la cabeza por defecto («HEAD»,
+  // la que usa comprobar-sello): algo colado tras el sello no da LISTO.
+  fs.appendFileSync(path.join(c.wt, 'rwadar-site/robots.txt'), '\n# colado tras el sello\n');
+  c.git('commit', '-q', '-am', 'colado tras el sello');
+  const colado = simularUnion({ raiz: c.wt, base: c.main });
+  assert.equal(colado.listo, false, colado.salida);
+  assert.ok(colado.bloqueos.includes('CONTENIDO_NO_APROBADO'), colado.salida);
+  c.git('reset', '-q', '--hard', 'HEAD~1');
+  // Si la cabeza ya está en la base, no hay nada que unir: frena (antes daba LISTO sobre la base sola).
+  assert.throws(() => simularUnion({ raiz: c.wt, base: c.main, cabeza: c.main }), e => e instanceof Freno && /no unió la rama/.test(e.motivo));
   r = programa(['validar', '--publicada', '--raiz', c.wt]);
   assert.equal(r.codigo, 0, r.salida);
   assert.match(r.salida, /mañana del 2026-11-14: \d+ reglas bien/);
@@ -114,4 +134,28 @@ test('fase final (V-11, V-14, V-15, V-16): verificación de otros bytes, un PDF,
   for (const esperado of [/V-14 verificación: edicionSha256 no es el SHA-256/, /V-15 copia\.pdf: archivo no permitido/, /V-15 copia\.pdf: extensión no permitida/,
     /V-15 la carpeta ocupa \d+ B \(máximo 200000\)/, /V-11 EDICION\.md:3: tratamiento/, /V-16 cambia rwadar-site\/robots\.txt/,
     /V-15 rwadar-site\/datos\/noticias\.json no es la v2 sin «imagen»/]) assert.match(r.salida, esperado);
+});
+
+test('el sello automático no aprueba lo que otro unió a main sin sello', () => {
+  volverAMain();
+  fs.appendFileSync(path.join(c.wt, 'rwadar-site/robots.txt'), '\n# en main sin sellar\n');
+  c.git('commit', '-q', '-am', 'main sin sellar');
+  const sinSellar = c.git('rev-parse', 'HEAD');
+  fs.writeFileSync(path.join(c.wt, 'rwadar-site/datos/noticias-v2.json'), JSON.stringify(BASE));
+  fs.writeFileSync(path.join(c.wt, 'rwadar-site/datos/noticias.json'), JSON.stringify(BASE));
+  c.git('add', '-A'); c.git('commit', '-q', '-m', 'noticias');
+  assert.throws(() => sellar({ raiz: c.wt, fecha: FECHA, base: sinSellar, revisionCatalogo: 'x' }),
+    e => e instanceof Freno && /nadie aprobó/.test(e.motivo));
+  // Y con el commit aprobado que no está en la historia de main, tampoco.
+  volverAMain();
+  const e = JSON.parse(fs.readFileSync(path.join(c.wt, ESTADO), 'utf8'));
+  e.revisionAprobada.commit = 'f'.repeat(40);
+  fs.writeFileSync(path.join(c.wt, ESTADO), JSON.stringify(e, null, 2) + '\n');
+  c.git('commit', '-q', '-am', 'sello con un commit que no existe');
+  const ajeno = c.git('rev-parse', 'HEAD');
+  fs.writeFileSync(path.join(c.wt, 'rwadar-site/datos/noticias-v2.json'), JSON.stringify(BASE));
+  fs.writeFileSync(path.join(c.wt, 'rwadar-site/datos/noticias.json'), JSON.stringify(BASE));
+  c.git('add', '-A'); c.git('commit', '-q', '-m', 'noticias');
+  assert.throws(() => sellar({ raiz: c.wt, fecha: FECHA, base: ajeno, revisionCatalogo: 'x' }),
+    e2 => e2 instanceof Freno && /nadie aprobó/.test(e2.motivo));
 });
