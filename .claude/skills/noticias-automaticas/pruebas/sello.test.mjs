@@ -36,6 +36,11 @@ before(() => {
   enlazarDependencias(RAIZ, wt);
   const git = gitEn(wt);
   escribir(path.join(wt, 'rwadar-editorial-source/noticias/GUIA-TITULARES.md'), fs.readFileSync(GUIA));
+  // La fecha de las pruebas es fija (FECHA). Si el repositorio ya tiene una
+  // edición real de ese día (la primera fue la del 14/11/2026), «preparar» la
+  // tomaría por «otra mañana de hoy» y frenaría: en esta copia de usar y
+  // tirar se quita antes de simular el día.
+  fs.rmSync(path.join(wt, 'rwadar-app/data/noticias-diarias', FECHA), { recursive: true, force: true });
   git('add', '-A'); git('commit', '-q', '-m', 'guía fija de prueba');
   const { huellaContenidoAprobado } = require(path.join(wt, 'rwadar-publicacion-segura.js'));
   const e = JSON.parse(fs.readFileSync(ESTADO_FIJO, 'utf8'));
