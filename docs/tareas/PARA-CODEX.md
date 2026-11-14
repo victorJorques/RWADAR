@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 14 de noviembre de 2026 (24, la numera el integrador) · Claude · Noticias del sector solas, con freno · SIN ENCENDER / SIN PUBLICAR
+## 14 de noviembre de 2026 (24) · Claude · Noticias del sector solas, con freno · unidas, SIN ENCENDER (se encienden cuando entre la guía de titulares)
 
 - **Encargo de la dirección (13/11, respuesta expresa de Víctor):** «Cada
   mañana una sesión programada las escribe y las verifica. Si el verificador
