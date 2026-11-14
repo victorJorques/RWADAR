@@ -26,7 +26,15 @@ escribió.
 5. **La foto** encaja con la noticia y no engaña (por ejemplo, una alerta para
    una noticia que no es de riesgo), y no se repite en la edición.
 6. **Sin personas**: ningún nombre de persona física, tratamiento, cargo con
-   nombre, correo ni teléfono.
+   nombre, correo ni teléfono. **Esto lo compruebas tú, literal, en cada
+   noticia**: lee entero cada texto que se publica (titular, resumen, «por qué
+   importa» y título informativo, en castellano y en inglés) y tu `literal`.
+   El programa (V-11) solo caza un nombre con tratamiento o cargo delante, un
+   correo o un teléfono; **no** caza un nombre suelto («la presidenta del BCE,
+   Nombre Apellido», «Apellido dijo», «según Apellido»). Si ves uno, la
+   noticia es `corregir` (quitando el nombre: «la presidenta del BCE») o
+   `quitar`, y nunca `"personas": false`. Ante la duda (¿es una persona o una
+   marca?), trátalo como persona.
 7. **Lo que falta**: si en `barrido.json` hay algo de hoy o de ayer más
    importante que lo elegido, dilo en `faltaAlgo` (no cambia el veredicto por
    sí solo).
