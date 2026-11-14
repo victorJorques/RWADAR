@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-14",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "fecha": "2026-11-11",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "UE",
+      "titulo": "11 firmas sin registro: compruébalas antes de invertir",
+      "resumen": "La CNMV difunde los avisos de supervisores de Austria (seis), Países Bajos (cuatro) y Alemania (uno) sobre 11 entidades no registradas. El supervisor alemán prohibió a una de ellas ofrecer acciones al público por no haber publicado el folleto.",
+      "porQueImporta": "Ofrecer valores al público sin el folleto exigido es una señal de alarma, también en las emisiones tokenizadas. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
+      "en": {
+        "titulo": "11 unregistered firms: check them before you invest",
+        "resumen": "The CNMV relays warnings from supervisors in Austria (six), the Netherlands (four) and Germany (one) about 11 unregistered entities. Germany's supervisor barred one of them from offering shares to the public for not publishing a prospectus.",
+        "porQueImporta": "Offering securities to the public without a required prospectus is a red flag, tokenised issues included. Before investing, look the firm up in the CNMV's search tool for warnings.",
+        "tituloInformativo": "Spain's CNMV relays EU supervisors' warnings about 11 unregistered entities"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 11/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-14",
+      "tituloInformativo": "La CNMV difunde advertencias de supervisores europeos sobre 11 entidades no registradas",
+      "imagen": "alerta-fraude-3"
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "fecha": "2026-11-09",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+      "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
+      "porQueImporta": "El cambio vale también para los tokens ya emitidos, desde el 9 de noviembre. Que la filial europea de Robinhood sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "en": {
+        "titulo": "Robinhood: the issuer may cut your Stock Tokens for costs",
+        "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
+        "porQueImporta": "The change also applies to tokens already issued, from 9 November. Making Robinhood's EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+        "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
+      },
+      "fuente": {
+        "nombre": "Robinhood Assets (Jersey) Limited, suplemento al folleto base aprobado por la FMA el 09/11/2026",
+        "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-14",
+      "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
+      "imagen": "acciones-movil"
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "fecha": "2026-11-04",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+      "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
+      "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
+      "en": {
+        "titulo": "Tokenised markets: EU states want a cap 50 times higher",
+        "resumen": "Member states' ambassadors (Coreper) approved the Council's position: drop the per-asset caps and raise to €300bn the maximum value each DLT market infrastructure can record or trade.",
+        "porQueImporta": "Today's cap is €6bn and holds back large players. This is a negotiating position, not law: it still has to be agreed with the European Parliament.",
+        "tituloInformativo": "EU countries want to raise the DLT Pilot Regime cap from €6bn to €300bn"
+      },
+      "fuente": {
+        "nombre": "Consejo de la UE, orientación general (ST 13779/1/26 REV 1) y puntos «A» del ECOFIN (ST 14900/26)",
+        "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-14",
+      "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
+      "imagen": "instituciones-ue-2"
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "fecha": "2026-10-28",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "España",
+      "titulo": "España ya tiene dos mercados de valores tokenizados",
+      "resumen": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo opera Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
+      "porQueImporta": "España suma dos con Securitize. Se autoriza el mercado, no una emisión: por ahora no consta ninguna con documento público para particulares.",
+      "en": {
+        "titulo": "Spain now has two tokenised securities markets",
+        "resumen": "It is a DLT-based trading and settlement system under the EU pilot regime. It is run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
+        "porQueImporta": "Spain now has two, with Securitize. The market is authorised, not an issue: so far no issue with a public document for retail investors is on record.",
+        "tituloInformativo": "Spain's CNMV authorises Bit2Me STX, the country's second market for tokenised securities"
+      },
+      "fuente": {
+        "nombre": "CNMV, nota de prensa del 28/10/2026 (ESMA la registra con fecha 27/10/2026)",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-14",
+      "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
+      "imagen": "bolsa-madrid"
+    },
+    {
+      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
+      "fecha": "2026-10-15",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "España",
+      "titulo": "La CNMV propone atender tus quejas contra plataformas cripto",
+      "resumen": "La CNMV somete a consulta un proyecto de Circular que amplía su servicio de reclamaciones a los proveedores de servicios de criptoactivos y a las plataformas de financiación participativa. Comentarios hasta el 16/11.",
+      "porQueImporta": "Algunas emisiones tokenizadas se venden por estas plataformas. Si sale adelante, podrías reclamar ante la CNMV. Por ahora es un proyecto.",
+      "en": {
+        "titulo": "Spain's CNMV proposes taking your crypto platform complaints",
+        "resumen": "The CNMV opened a consultation on a draft Circular extending its complaints service to crypto-asset service providers and crowdfunding platforms. Comments are accepted until 16 November.",
+        "porQueImporta": "Some tokenised issues are sold through these platforms. If adopted, you could complain to the CNMV. For now it is only a draft.",
+        "tituloInformativo": "Spain's CNMV proposes handling complaints against crowdfunding and crypto providers"
+      },
+      "fuente": {
+        "nombre": "CNMV, nota de prensa del 15/10/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-14",
+      "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
+      "imagen": "documentos-consulta"
+    }
+  ]
+}
