@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fixture sintética: XML raro a propósito para probar el lector. No es un feed real. -->
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Feed raro</title>
+<link>https://ejemplo.test/</link>
+<item>
+  <title><![CDATA[Bitcoin &amp; ether: whales move 12,000 BTC </item> to Binance]]></title>
+  <link>https://ejemplo.test/a?utm_source=rss&amp;utm_medium=feed&amp;id=7</link>
+  <pubDate>Sat, 14 Nov 2026 09:00:00 GMT</pubDate>
+  <description><![CDATA[<p>Primera <b>línea</b> con &#8217;comillas&#x2019; y &quot;dobles&quot; y&nbsp;espacios.</p><script>alert("no")</script><p>The post X appeared first on Feed raro.</p>]]></description>
+</item>
+<item>
+  <title>Bitcoin miners &amp;amp; the halving: what&amp;#039;s next</title>
+  <link>https://ejemplo.test/b</link>
+  <pubDate>2026-11-14 08:00:00</pubDate>
+  <description>&lt;p&gt;Texto &lt;a href="x"&gt;con enlace&lt;/a&gt; escapado.&lt;/p&gt;</description>
+</item>
+<item>
+  <title>Sin fecha: bitcoin sube</title>
+  <link>https://ejemplo.test/c</link>
+</item>
+<item>
+  <title>Fecha rota: bitcoin baja</title>
+  <link>https://ejemplo.test/rota</link>
+  <pubDate>ayer por la tarde</pubDate>
+</item>
+<item>
+  <description>Un item sin titular</description>
+  <pubDate>Sat, 14 Nov 2026 07:00:00 +0000</pubDate>
+</item>
+<item/>
+<!-- <item><title>Comentado: no debe salir</title></item> -->
+<item>
+  <title>Bitcoin item sin cerrar &#x110000; &#0; &foo; raro</title>
+  <guid isPermaLink="true">https://ejemplo.test/d</guid>
+  <pubDate>Sat, 14 Nov 2026 06:00:00 +0100</pubDate>
+<item>
+  <title>BTC tras el item sin cerrar</title>
+  <link>javascript:alert(1)</link>
+  <pubDate>Sat, 14 Nov 2026 05:00:00 EST</pubDate>
+  <content:encoded><![CDATA[<div><img src="x.jpg"/></div><p>Resumen desde content:encoded</p>]]></content:encoded>
+</item>
+<entry>
+  <title type="html">Bitcoin en Atom</title>
+  <link rel="enclosure" href="https://ejemplo.test/img.jpg"/>
+  <link rel="alternate" href="https://ejemplo.test/atom"/>
+  <updated>2026-11-14T04:00:00Z</updated>
+  <summary>Resumen Atom</summary>
+  <category term="mercados"/>
+</entry>
+<item>
+  <title>Bitcoin con resumen muy largo</title>
+  <link>https://ejemplo.test/largo</link>
+  <pubDate>Sat, 14 Nov 2026 03:00:00 +0000</pubDate>
+  <description>Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print. Bitcoin moves sideways while traders wait for the next macro print.</description>
+</item>
+</channel>
+</rss>

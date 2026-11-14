@@ -1,0 +1,27 @@
+{
+  "_nota": "Respuestas de error reales capturadas el 14/11/2026 (código HTTP y cuerpo).",
+  "coinbase_par_desconocido": {
+    "status": 404,
+    "cuerpo": "{\"message\":\"NotFound\"}"
+  },
+  "coinbase_granularidad_4h": {
+    "status": 400,
+    "cuerpo": "{\"message\":\"Unsupported granularity\"}"
+  },
+  "binance_bloqueo_451": {
+    "status": 451,
+    "cuerpo": "{\n  \"code\": 0,\n  \"msg\": \"Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received this message in error.\"\n}"
+  },
+  "binance_simbolo_desconocido": {
+    "status": 400,
+    "cuerpo": "{\"code\":-1121,\"msg\":\"Invalid symbol.\"}"
+  },
+  "kraken_par_desconocido": {
+    "status": 200,
+    "cuerpo": "{\"error\":[\"EQuery:Unknown asset pair\"]}"
+  },
+  "bitstamp_par_desconocido": {
+    "status": 404,
+    "cuerpo": ""
+  }
+}
