@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Novedades del 14/11: el mercado en directo y las noticias con foto (#147)",
+  "nota": "Noticias del sector del 14/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo 434217eb",
   "revisionAprobada": {
-    "commit": "7af3d7301f7d80c7dae6c3f5874265b374a08cf9",
-    "contenidoSha256": "sha256:98bdf0c710c7def93ebcf83f6564f8ccffddfbea56be31fed90cd90ad0da3699",
+    "commit": "aa0e5da1c50acb9b7797bbacccb3351a2597e477",
+    "contenidoSha256": "sha256:b2c14f67008211e10e8644d6d1c2aecb518e121143c633aa4ff72e2114febfb6",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
