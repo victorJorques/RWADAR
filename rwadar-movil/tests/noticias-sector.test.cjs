@@ -50,7 +50,11 @@ test('la edición publicada vale para la app: de 1 a 8 noticias, las de hoy prim
   const secciones = d.noticias.map(n => n.seccion);
   assert.deepEqual(secciones, [...secciones].sort((a, b) => (a === 'hoy' ? 0 : 1) - (b === 'hoy' ? 0 : 1)), 'las de hoy, primero');
   assert.deepEqual(d.noticias.map(n => n.id), PUBLICADO.noticias.map(n => n.id), 'el archivo ya viene en ese orden');
-  assert.ok(d.noticias.every(n => /^https:\/\//.test(n.fuente.url) && [...n.titulo].length <= 70));
+  assert.ok(d.noticias.every(n => /^https:\/\//.test(n.fuente.url)));
+  // La guía de titulares (14/11/2026): 60 caracteres como mucho en las dos lenguas, y una foto distinta para cada una.
+  assert.ok(d.noticias.every(n => [...n.titulo].length <= 60 && [...n.en.titulo].length <= 60));
+  assert.equal(new Set(d.noticias.map(n => n.imagen)).size, d.noticias.length, 'fotos distintas');
+  assert.deepEqual(m.revisarEdicion(PUBLICADO).errores, [], 'la edición publicada cumple la guía medible');
 });
 
 test('la edición de ejemplo tiene la forma: 6 noticias, las de hoy primero y de la más nueva a la más antigua', () => {
@@ -68,7 +72,7 @@ test('la edición de ejemplo tiene la forma: 6 noticias, las de hoy primero y de
     assert.deepEqual(n.fuente, o.fuente);
     assert.match(n.fuente.url, /^https:\/\//);
   }
-  // Los titulares en castellano caben en 70 caracteres, como pidió Víctor.
+  // Los titulares en castellano caben en 70 caracteres (la edición de ejemplo es anterior a la guía de 60).
   assert.ok(d.noticias.every(n => [...n.titulo].length <= 70));
 });
 
@@ -172,10 +176,14 @@ test('las fotos: cada noticia trae su clave y la foto sale de rwadar.pages.dev, 
   for (const viejo of ['ilustracion', 'variantes', 'RECORTE_DETALLE', 'VARIANTES']) assert.equal(m[viejo], undefined, viejo);
   const componente = fs.readFileSync(path.join(RAIZ, 'componentes/NoticiasSector.js'), 'utf8');
   assert.doesNotMatch(componente, /ilustracion|Ilustracion|Polygon|Ellipse/);
-  assert.match(componente, /rutaFoto\(noticia, \{ base: URL_FOTOS \}\)/);
+  // La app pide la foto del tamaño que necesita (480, 960 o 1200) y, si falla, la de 1200.
+  assert.match(componente, /rutaFoto\(noticia, \{ base: URL_FOTOS, ancho: tamano \}\)/);
+  assert.match(componente, /anchoFoto\(PixelRatio\.getPixelSizeForLayoutSize\(ancho\)\)/);
   // Ni la web ni la app piden la foto a nadie más que a RWAdar.
   const web = fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/noticias-sector-20261110.js'), 'utf8');
-  assert.match(web, /modelo\.rutaFoto\(n\)/);
+  // La web, con los atributos del modelo (src, srcset, sizes, loading): ninguno a mano.
+  assert.match(web, /modelo\.atributosFoto\(n, papel\)/);
+  assert.doesNotMatch(web, /\.(?:srcset|sizes|loading)\s*=|setAttribute\('(?:srcset|sizes|loading)'/);
   assert.doesNotMatch(web, /https?:\/\/(?!rwadar)/);
 });
 
@@ -272,10 +280,12 @@ function crearReact() {
   };
   return { react, pintar(componente, props) { indice = 0; const arbol = componente(props); for (const fn of efectos.splice(0)) fn(); return arbol; } };
 }
-function cargarSeccion(react) {
+/* La pantalla: 390 puntos de ancho, escala 2 y la letra normal, salvo que la prueba diga otra cosa. */
+function cargarSeccion(react, { ancho = 390, escala = 2, fontScale = 1 } = {}) {
   const absoluto = path.join(RAIZ, 'componentes', 'NoticiasSector.js');
   const original = Module._load, extension = Module._extensions['.js'];
-  const nativo = { StyleSheet: { create: (s) => s, absoluteFill: {} }, Platform: { OS: 'android' }, useWindowDimensions: () => ({ width: 390, height: 844 }) };
+  const nativo = { StyleSheet: { create: (s) => s, absoluteFill: {} }, Platform: { OS: 'android' },
+    useWindowDimensions: () => ({ width: ancho, height: 844, fontScale }), PixelRatio: { getPixelSizeForLayoutSize: (x) => Math.round(x * escala) } };
   for (const tipo of ['Text', 'View', 'Pressable', 'ScrollView', 'Image']) nativo[tipo] = tipo;
   // FlatList pinta sus elementos con renderItem; Modal, su contenido si está visible.
   nativo.FlatList = (p) => ({ type: 'FlatList', props: p, children: p.data.map((item, index) => p.renderItem({ item, index })) });
@@ -315,8 +325,11 @@ const DOS_DIAS_DESPUES = reloj(masDias(HOY, 2));
 const AYER_LA_SEGUNDA = reloj(masDias(DATOS.noticias[1].fecha, 1));
 
 const fotos = (arbol) => buscar(arbol, n => n.type === 'Image').map(n => n.props.source.uri);
+const URL_FOTOS = 'https://rwadar.pages.dev/noticias-editoriales/';
+// El estilo de un Pressable (función de «pressed»), aplanado.
+const estiloDe = (n) => Object.assign({}, ...[].concat(typeof n.props.style === 'function' ? n.props.style({ pressed: false }) : n.props.style).flat(9).filter(Boolean));
 
-test('Inicio en la app («Mercado y noticias»): cargando, después 3 filas compactas con foto pequeña, titular, fuente y fecha', async () => {
+test('Inicio en la app («Mercado y noticias»): cargando, después la portada con foto grande y dos tarjetas con foto, titular, fuente y fecha', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const abiertas = [];
@@ -334,25 +347,34 @@ test('Inicio en la app («Mercado y noticias»): cargando, después 3 filas comp
   // La segunda (de «importante»), el día siguiente al de su fecha, dice «Ayer» también en su etiqueta accesible.
   const filasOtroDia = buscar(pintar(Seccion, { ...props, ahora: AYER_LA_SEGUNDA }), n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
   assert.equal(filasOtroDia[1].props.accessibilityLabel, `${n1.titulo}. ${corta(n1)} · ${ddmmaaaa(n1.fecha)}. Ayer`);
-  // Titular (3 líneas como mucho), fuente y fecha: sin resumen. «Hoy» o «Ayer» van delante de la fuente,
-  // que se corta en una línea: la etiqueta ya no cae sola en otra línea.
-  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 3).length, 3);
-  const meta = buscar(filasOtroDia[1], n => n.type === 'View' && Array.isArray(n.props.style) && n.props.style.some(x => x && x.flexWrap === 'nowrap'))[0];
-  assert.ok(meta, 'la fila de la fuente no se parte');
-  const hijos = buscar(meta, n => n.type === 'Text');
-  assert.equal(textoDe(hijos[0]), 'Ayer', 'la etiqueta, delante');
-  assert.equal(hijos[1].props.numberOfLines, 1, 'la fuente, en una línea');
+  // Titular entero (sin numberOfLines en ningún texto), fuente y fecha: sin resumen. «Hoy» o «Ayer», después de la fuente.
+  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines !== undefined).length, 0, 'ningún titular se corta');
+  const hijos = buscar(filasOtroDia[1], n => n.type === 'Text').map(textoDe);
+  assert.ok(hijos.indexOf('Ayer') > hijos.indexOf(`${corta(n1)} · ${ddmmaaaa(n1.fecha)}`), 'la etiqueta, después de la fuente');
   for (const n of DATOS.noticias.slice(0, 3)) assert.ok(!texto.includes(llano(n.resumen)), `sin resumen: ${n.id}`);
   assert.ok(texto.includes(`${corta(n0)} · ${ddmmaaaa(n0.fecha)}`));
-  assert.deepEqual(fotos(arbol), DATOS.noticias.slice(0, 3).map(n => `https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`));
-  assert.equal(buscar(arbol, n => n.type === 'Svg').length, 0, 'foto pequeña, sin degradado encima');
+  // A 390 puntos y escala 2: la portada (358 × 2 = 716 px) baja la de 960; las tarjetas (173 × 2 = 346 px), la de 480.
+  assert.deepEqual(fotos(arbol), [`${URL_FOTOS}960/${n0.imagen}.webp`, ...DATOS.noticias.slice(1, 3).map(n => `${URL_FOTOS}480/${n.imagen}.webp`)]);
+  // La portada: crece con la letra (minHeight 3:4 del ancho, nunca height), con su velo detrás del texto.
+  const portada = buscar(arbol, n => n.props?.testID === 'noticia-portada')[0];
+  assert.equal(portada, filas[0]);
+  assert.equal(estiloDe(portada).minHeight, Math.round(358 * 3 / 4));
+  assert.equal(estiloDe(portada).height, undefined, 'nunca un alto fijo');
+  const velos = buscar(arbol, n => n.type === 'Svg');
+  assert.equal(velos.length, 1, 'el velo, solo en la portada');
+  comprobarVelo(velos[0], buscar(portada, n => n.type === 'View' && n.children?.includes?.(velos[0]))[0] || buscar(portada, n => n.type === 'View' && buscar(n, x => x === velos[0]).length && estiloDe(n).paddingTop)[0]);
+  // La píldora de categoría no se lee en voz alta (la etiqueta accesible no cambia).
+  const pildora = buscar(portada, n => n.type === 'View' && n.props.accessible === false && n.props.importantForAccessibility === 'no-hide-descendants' && textoDe(n) === CATEGORIA_ES[n0.categoria]);
+  assert.equal(pildora.length, 1, 'la píldora de categoría, oculta al lector');
+  // Las tarjetas, en dos columnas.
+  assert.equal(buscar(arbol, n => n.props?.testID === 'noticias-dos-columnas').length, 1);
   assert.match(texto, /Imágenes ilustrativas generadas con IA, no fotos de la noticia\./);
   assert.equal(buscar(arbol, n => n.type === 'Modal').length, 0, 'en Inicio no hay detalle');
   filas[1].props.onPress();
   assert.deepEqual(abiertas, [DATOS.noticias[1].id]);
 });
 
-test('debajo del gráfico: las 6 con la fuente y la fecha, el titular, «Por qué te importa» en la primera y dos líneas de resumen en las demás, y la foto; al tocar, su detalle', async () => {
+test('debajo del gráfico: la portada con «Por qué te importa» debajo y las demás en tarjetas con foto, fuente, fecha y titular; al tocar, su detalle', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const enlaces = [];
@@ -365,13 +387,16 @@ test('debajo del gráfico: las 6 con la fuente y la fecha, el titular, «Por qu�
   assert.equal(fotos(arbol).length, 6);
   const n0 = DATOS.noticias[0];
   assert.equal(filas[0].props.accessibilityLabel, `${n0.titulo}. ${corta(n0)} · ${ddmmaaaa(n0.fecha)}. Ayer`, 'al día siguiente, la de hoy es de ayer');
-  // La primera dice ya por qué te importa; las demás, su resumen en dos líneas.
+  // Debajo de la portada, por qué te importa; las tarjetas, solo titular, fuente y fecha (el resumen, en el detalle).
   const importa = buscar(arbol, n => n.props?.testID === 'noticia-importa');
   assert.equal(importa.length, 1);
   assert.equal(textoDe(importa[0]).replace(/\s+/g, ' '), `Por qué te importa : ${DATOS.noticias[0].porQueImporta}`.replace(/\s+/g, ' '));
-  assert.ok(!textoDe(arbol).includes(llano(n0.resumen)), 'en la primera, no el resumen');
-  assert.ok(textoDe(arbol).includes(DATOS.noticias[1].resumen), 'en las demás, el resumen');
-  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 2).length, 5, 'dos líneas de resumen');
+  for (const n of DATOS.noticias) assert.ok(!textoDe(arbol).includes(llano(n.resumen)), `sin resumen fuera del detalle: ${n.id}`);
+  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines !== undefined).length, 0, 'ningún titular se corta');
+  // 6 noticias: la portada y 5 tarjetas, en filas de dos; la quinta, sola y ancha (sin hueco al lado).
+  assert.equal(buscar(arbol, n => n.props?.testID === 'noticia-portada').length, 1);
+  assert.deepEqual(fotos(arbol).slice(1, 5).map(u => u.replace(URL_FOTOS, '').split('/')[0]), ['480', '480', '480', '480']);
+  assert.equal(fotos(arbol)[5], `${URL_FOTOS}960/${DATOS.noticias[5].imagen}.webp`, 'la tarjeta ancha, con la de 960');
   // La cuarta: anterior al día de la de hoy, así que ni «Hoy» ni «Ayer».
   const n = DATOS.noticias[3];
   assert.ok(n.fecha < HOY);
@@ -385,7 +410,8 @@ test('debajo del gráfico: las 6 con la fuente y la fecha, el titular, «Por qu�
   assert.ok(texto.includes(fechaYTema), fechaYTema);
   assert.equal(buscar(modal, x => x.props?.accessibilityLabel === fechaYTema).length, 1, `del ${ddmmaaaa(n.fecha)}: ni «Hoy» ni «Ayer»`);
   assert.ok(!texto.includes(n.tituloInformativo), 'sin repetir el titular con otras palabras');
-  assert.deepEqual(fotos(modal), [`https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`]);
+  // El detalle, a 390 puntos (escala 2): la de 960.
+  assert.deepEqual(fotos(modal), [`${URL_FOTOS}960/${n.imagen}.webp`]);
   for (const parte of [n.titulo, n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre, 'Consultada el', ddmmaaaa(n.consultadaEl),
     'Leer en la fuente (sales de RWAdar)', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) {
     assert.ok(texto.includes(parte), parte);
@@ -499,4 +525,233 @@ test('la fuente corta: en inglés, los organismos traducidos («Consejo de la UE
   const enIngles = datos.noticias.map((x) => m.fuenteCorta(x, 'en'));
   assert.ok(enIngles.includes('Council of the EU'), enIngles.join(' | '));
   assert.ok(!enIngles.some((f) => Object.keys(m.FUENTES_EN).includes(f)));
+});
+
+/* ---- Noticias que entran por los ojos (14/11/2026): el velo, la letra grande, los tamaños y el respaldo ---- */
+function comprobarVelo(svg, caja) {
+  // Dos tramos: la rampa (de 0 a 0,72, en los primeros puntos) y, desde ahí hasta abajo, nunca menos de 0,72.
+  const rects = buscar(svg, n => n.type === 'Rect');
+  const grad = id => buscar(svg, n => n.type === 'LinearGradient' && n.props.id === id)[0];
+  const opacidades = g => buscar(g, n => n.type === 'Stop').map(x => Number(x.props.stopOpacity));
+  const bajo = rects.find(r => Number(r.props.y) > 0);
+  assert.ok(bajo, 'falta el tramo de debajo de la rampa');
+  const rampa = Number(bajo.props.y);
+  assert.ok(Math.min(...opacidades(grad(bajo.props.fill.replace(/^url\(#|\)$/g, '')))) >= 0.72, 'detrás del texto, el velo nunca baja de 0,72');
+  assert.ok(Math.max(...opacidades(grad(bajo.props.fill.replace(/^url\(#|\)$/g, '')))) >= 0.9);
+  assert.equal(bajo.props.height, '100%', 'el velo llega hasta abajo');
+  assert.ok(caja, 'la caja del texto');
+  assert.ok(estiloDe(caja).paddingTop >= rampa + 8, 'el texto empieza por debajo de la rampa');
+}
+function textoPintado(Seccion, pintar, props) { pintar(Seccion, props); return new Promise(r => setTimeout(() => setTimeout(() => r(pintar(Seccion, props)), 0), 0)); }
+
+test('con la letra grande (fontScale 1,3 a 390) las tarjetas van en filas; a 360 con la letra normal, en dos columnas', async () => {
+  for (const [ancho, fontScale, dos] of [[390, 1.3, false], [390, 1.15, false], [360, 1, true], [390, 1, true]]) {
+    const { react, pintar } = crearReact();
+    const Seccion = cargarSeccion(react, { ancho, fontScale });
+    const arbol = await textoPintado(Seccion, pintar, { cargar: async () => DATOS, ahora: EL_DIA_DE_HOY, modo: 'compacta', onAbrir() {} });
+    assert.equal(buscar(arbol, n => n.props?.testID === 'noticias-dos-columnas').length, dos ? 1 : 0, `${ancho} a ${fontScale}`);
+    // La portada sigue creciendo con la letra: minHeight, nunca height.
+    const portada = buscar(arbol, n => n.props?.testID === 'noticia-portada')[0];
+    assert.equal(estiloDe(portada).height, undefined);
+    assert.equal(estiloDe(portada).minHeight, Math.round((ancho - 32) * 3 / 4));
+    if (!dos) for (const f of buscar(arbol, n => n.type === 'Image').slice(1)) assert.match(f.props.source.uri, /\/480\//, 'foto pequeña en las filas');
+  }
+});
+
+test('el tamaño de la foto según la pantalla: escala 3 pide 1200 para la portada y 960 para las tarjetas', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react, { escala: 3 });
+  const arbol = await textoPintado(Seccion, pintar, { cargar: async () => DATOS, ahora: EL_DIA_DE_HOY, modo: 'compacta', onAbrir() {} });
+  const [n0, n1, n2] = DATOS.noticias;
+  assert.deepEqual(fotos(arbol), [`${URL_FOTOS}${n0.imagen}.webp`, `${URL_FOTOS}960/${n1.imagen}.webp`, `${URL_FOTOS}960/${n2.imagen}.webp`]);
+});
+
+test('si la variante no carga, la app prueba la de 1200; si tampoco, queda el fondo oscuro', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const props = { cargar: async () => DATOS, ahora: EL_DIA_DE_HOY, modo: 'compacta', onAbrir() {} };
+  let arbol = await textoPintado(Seccion, pintar, props);
+  const n1 = DATOS.noticias[1];
+  let img = buscar(arbol, n => n.type === 'Image')[1];
+  assert.equal(img.props.source.uri, `${URL_FOTOS}480/${n1.imagen}.webp`);
+  img.props.onError();
+  arbol = pintar(Seccion, props);
+  img = buscar(arbol, n => n.type === 'Image')[1];
+  assert.equal(img.props.source.uri, `${URL_FOTOS}${n1.imagen}.webp`, 'después, la de 1200');
+  img.props.onError();
+  arbol = pintar(Seccion, props);
+  assert.equal(buscar(arbol, n => n.type === 'Image').length, 2, 'y si falla también, sin foto');
+});
+
+test('una edición de 1 o 2 noticias: la portada sola, o la portada y una tarjeta ancha (sin hueco)', async () => {
+  for (const cuantas of [1, 2]) {
+    const datos = { ...DATOS, noticias: DATOS.noticias.slice(0, cuantas) };
+    const { react, pintar } = crearReact();
+    const Seccion = cargarSeccion(react);
+    const arbol = await textoPintado(Seccion, pintar, { cargar: async () => datos, ahora: EL_DIA_DE_HOY, modo: 'compacta', onAbrir() {} });
+    assert.equal(buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button').length, cuantas);
+    if (cuantas === 2) assert.equal(fotos(arbol)[1], `${URL_FOTOS}960/${datos.noticias[1].imagen}.webp`, 'la tarjeta sola ocupa todo el ancho');
+  }
+});
+
+test('en inglés, la portada y las tarjetas con los campos «en» y la categoría traducida', async () => {
+  await idioma.cambiarIdioma('en');
+  try {
+    const { react, pintar } = crearReact();
+    const Seccion = cargarSeccion(react);
+    const arbol = await textoPintado(Seccion, pintar, { cargar: async () => DATOS, ahora: EL_DIA_DE_HOY, modo: 'compacta', onAbrir() {} });
+    const texto = textoDe(arbol);
+    for (const n of DATOS.noticias.slice(0, 3)) assert.ok(texto.includes(llano(n.en.titulo)), n.id);
+    assert.ok(texto.includes(m.CATEGORIAS[DATOS.noticias[0].categoria].en));
+  } finally { await idioma.cambiarIdioma('es'); }
+});
+
+/* ---- El modelo de las fotos y de la guía de titulares (14/11/2026) ---- */
+test('anchoFoto: el menor de 480, 960 y 1200 que llega; con un valor raro, 1200', () => {
+  assert.deepEqual(m.ANCHOS_FOTO, [480, 960, 1200]);
+  for (const [px, ancho] of [[1, 480], [480, 480], [481, 960], [960, 960], [961, 1200], [1200, 1200], [5000, 1200], [NaN, 1200], [-3, 1200], [0, 1200], ['500', 1200], [undefined, 1200]]) {
+    assert.equal(m.anchoFoto(px), ancho, String(px));
+  }
+});
+
+test('rutaFoto con y sin ancho, srcsetFoto y atributosFoto por papel', () => {
+  const n = { imagen: 'alerta-fraude' };
+  assert.equal(m.rutaFoto(n), '/noticias-editoriales/alerta-fraude.webp');
+  assert.equal(m.rutaFoto(n, { ancho: 480 }), '/noticias-editoriales/480/alerta-fraude.webp');
+  assert.equal(m.rutaFoto(n, { ancho: 960, base: m.URL_FOTOS }), 'https://rwadar.pages.dev/noticias-editoriales/960/alerta-fraude.webp');
+  assert.equal(m.rutaFoto(n, { ancho: 1200 }), '/noticias-editoriales/alerta-fraude.webp');
+  assert.equal(m.rutaFoto(n, { ancho: 720 }), '/noticias-editoriales/alerta-fraude.webp', 'un ancho que no existe: la de 1200');
+  assert.equal(m.rutaFoto({ imagen: '../x' }, { ancho: 480 }), null);
+  assert.equal(m.srcsetFoto(n), '/noticias-editoriales/480/alerta-fraude.webp 480w, /noticias-editoriales/960/alerta-fraude.webp 960w, /noticias-editoriales/alerta-fraude.webp 1200w');
+  assert.equal(m.srcsetFoto({}), null);
+  assert.equal(m.atributosFoto({}, 'portada'), null);
+  assert.throws(() => m.atributosFoto(n, 'otro'), /papel/);
+  assert.deepEqual(m.SIZES, {
+    portada: '(min-width:64em) min(66vw, 860px), calc(100vw - 32px)',
+    tarjeta: '(min-width:64em) min(33vw, 420px), (min-width:22em) calc(50vw - 22px), 112px',
+    ancha: '(min-width:64em) min(66vw, 860px), (min-width:22em) calc(100vw - 32px), 112px',
+    anchaDos: '(min-width:64em) min(33vw, 420px), (min-width:22em) calc(100vw - 32px), 112px',
+    anchaTres: '(min-width:64em) min(66vw, 860px), (min-width:22em) calc(50vw - 22px), 112px',
+    detalle: '(min-width:601px) 600px, 100vw',
+  });
+  assert.ok(Object.isFrozen(m.SIZES));
+  const portada = m.atributosFoto(n, 'portada');
+  assert.deepEqual(portada, { src: '/noticias-editoriales/alerta-fraude.webp', srcset: m.srcsetFoto(n), sizes: m.SIZES.portada, width: 1200, height: 800, decoding: 'async' });
+  assert.equal('loading' in portada, false, 'la portada nunca es perezosa (es el LCP en tableta y escritorio)');
+  for (const papel of ['tarjeta', 'ancha', 'anchaDos', 'anchaTres', 'detalle']) {
+    const a = m.atributosFoto(n, papel);
+    assert.equal(a.loading, 'lazy', papel);
+    assert.equal(a.sizes, m.SIZES[papel]);
+    assert.equal(a.srcset, m.srcsetFoto(n));
+  }
+  // Nunca de otro sitio: solo la ruta propia o rwadar.pages.dev.
+  for (const papel of Object.keys(m.SIZES)) {
+    const a = m.atributosFoto(n, papel, { base: m.URL_FOTOS });
+    for (const u of [a.src, ...a.srcset.split(', ').map(x => x.split(' ')[0])]) assert.match(u, /^https:\/\/rwadar\.pages\.dev\/noticias-editoriales\//);
+  }
+});
+
+test('esAncha: la última tarjeta, si queda sola en su fila de dos o de tres columnas', () => {
+  const anchas = total => Array.from({ length: total }, (_, i) => m.esAncha(i, total)).map((x, i) => (x ? i : null)).filter(x => x !== null);
+  assert.deepEqual(anchas(1), []);
+  assert.deepEqual(anchas(2), [1], 'la portada y una tarjeta: sola en dos columnas');
+  assert.deepEqual(anchas(3), [], 'Inicio: dos tarjetas, ninguna sola');
+  assert.deepEqual(anchas(4), [3]);
+  assert.deepEqual(anchas(5), [4], 'en tres columnas, la quinta, con otra al lado');
+  assert.deepEqual(anchas(6), [5]);
+  assert.deepEqual(anchas(9), []);
+  assert.equal(m.esAncha(0, 2), false, 'la portada nunca');
+  assert.equal(m.esAncha(1.5, 3), false);
+  // Y el tamaño de su foto: estirada solo en la rejilla en que lo está.
+  assert.equal(m.papelTarjeta(1, 2), 'anchaDos', 'dos noticias: a todo el ancho en dos columnas; en tres, en su columna');
+  assert.equal(m.papelTarjeta(3, 4), 'ancha', 'cuatro: sola en las dos rejillas');
+  assert.equal(m.papelTarjeta(4, 5), 'anchaTres', 'cinco: en dos columnas va en pareja; en tres, a dos columnas');
+  assert.equal(m.papelTarjeta(1, 3), 'tarjeta');
+});
+
+test('firmaPrepintado y debeRepintar: la firma de lo que pinta Inicio, sin reloj', () => {
+  const d = m.validarNoticias(PUBLICADO);
+  const firma = m.firmaPrepintado(d);
+  assert.match(firma, /^[0-9a-f]{8}$/);
+  assert.equal(m.firmaPrepintado(m.validarNoticias(PUBLICADO)), firma, 'misma edición, misma firma');
+  // Cambia si cambia lo que se ve de las tres primeras; no, si cambia la cuarta o un resumen.
+  const otra = structuredClone(PUBLICADO);
+  otra.noticias[0].titulo = otra.noticias[0].titulo.replace(/.$/, 'x');
+  assert.notEqual(m.firmaPrepintado(m.validarNoticias(otra)), firma);
+  const foto = structuredClone(PUBLICADO);
+  foto.noticias[1].imagen = 'pago-online';
+  assert.notEqual(m.firmaPrepintado(m.validarNoticias(foto)), firma);
+  const resumen = structuredClone(PUBLICADO);
+  resumen.noticias[0].resumen += ' Más.';
+  if (resumen.noticias[3]) resumen.noticias[3].titulo = 'Otro titular de prueba';
+  assert.equal(m.firmaPrepintado(m.validarNoticias(resumen)), firma);
+  assert.equal(m.debeRepintar({ prepintado: firma, datos: d, idioma: 'es' }), false);
+  assert.equal(m.debeRepintar({ prepintado: firma, datos: d, idioma: 'en' }), true, 'en inglés, se rehace');
+  assert.equal(m.debeRepintar({ prepintado: '00000000', datos: d, idioma: 'es' }), true, 'otra edición, se rehace');
+  assert.equal(m.debeRepintar({ prepintado: d.actualizadoEl, datos: d, idioma: 'es' }), true, 'la fecha no es la firma');
+  assert.equal(m.debeRepintar({ prepintado: undefined, datos: d, idioma: 'es' }), true);
+  assert.equal(m.debeRepintar({ prepintado: firma, datos: null, idioma: 'es' }), true);
+  // Sin reloj ni Intl en el código de la firma.
+  const fuente = fs.readFileSync(path.join(RAIZ, 'lib/noticias-sector.js'), 'utf8');
+  const cuerpo = fuente.slice(fuente.indexOf('function firmaPrepintado'), fuente.indexOf('function debeRepintar'));
+  assert.doesNotMatch(cuerpo, /Date|Intl|toLocale|Math\.random/);
+});
+
+const conTitulo = (titulo, campo = 'titulo') => {
+  const d = structuredClone(PUBLICADO);
+  if (campo === 'titulo') d.noticias[0].titulo = titulo; else d.noticias[0].en.titulo = titulo;
+  return d;
+};
+const codigos = (r, que = 'errores') => r[que].map(x => x.codigo);
+
+test('revisarEdicion: los errores de la guía (largo, promesas, «¡», emojis, punto final, fotos)', () => {
+  assert.deepEqual(m.revisarEdicion(PUBLICADO), m.revisarEdicion(structuredClone(PUBLICADO)));
+  assert.equal(m.REGLAS_TITULAR.max, 60);
+  // 61 caracteres, en castellano y en inglés.
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('a'.repeat(61)))), ['largo']);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('a'.repeat(60)))), []);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('b'.repeat(61), 'en'))), ['largo']);
+  // Promesas: error.
+  for (const t of ['Rentabilidad garantizada en los bonos tokenizados', 'Garantizamos el capital de los tokens', 'Tokens sin riesgo para todos',
+    'Una oportunidad única en la cadena', 'Una oportunidad de oro con el oro tokenizado', 'Hazte rico con los tokens', 'El chollo de los tokens',
+    'No te lo pierdas: tokens de bonos', 'Risk-free tokenised bonds', 'Guaranteed returns on tokens', 'Get rich with tokens', 'Un pelotazo con los tokens']) {
+    assert.ok(codigos(m.revisarEdicion(conTitulo(t))).includes('prohibida'), t);
+  }
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('¡Llegan los bonos tokenizados'))), ['exclamacion']);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('Llegan los bonos tokenizados!', 'en'))), ['exclamacion']);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('Llegan los bonos tokenizados 🚀'))), ['emoji']);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('Llegan los bonos tokenizados ✅'))), ['emoji']);
+  assert.deepEqual(codigos(m.revisarEdicion(conTitulo('Llegan los bonos tokenizados.'))), ['punto-final']);
+  // Fotos: repetida, sin foto, fuera de la biblioteca.
+  const repetida = structuredClone(PUBLICADO);
+  repetida.noticias[1].imagen = repetida.noticias[0].imagen;
+  assert.deepEqual(codigos(m.revisarEdicion(repetida)), ['foto-repetida']);
+  const sinFoto = structuredClone(PUBLICADO);
+  delete sinFoto.noticias[2].imagen;
+  assert.deepEqual(codigos(m.revisarEdicion(sinFoto)), ['sin-foto']);
+  const claves = PUBLICADO.noticias.map(n => n.imagen);
+  assert.deepEqual(codigos(m.revisarEdicion(PUBLICADO, { fotos: claves })), []);
+  assert.deepEqual(codigos(m.revisarEdicion(PUBLICADO, { fotos: claves.slice(1) })), ['foto-desconocida']);
+  // Con la forma rota no lanza: lo dice.
+  assert.deepEqual(codigos(m.revisarEdicion({ version: 2 })), ['forma']);
+});
+
+test('revisarEdicion: titulares legítimos del sector no paran nada (solo un aviso para el verificador)', () => {
+  for (const [t, aviso] of [['Una aseguradora tokeniza 200 millones en bonos', 'raiz-promesa'], ['Bonos garantizados por el Estado llegan a la cadena', 'raiz-promesa'],
+    ['State-guaranteed bonds go on-chain', 'raiz-promesa'], ['La CNMV avisa de la falsa oportunidad de los tokens', 'raiz-promesa'],
+    ['Robinhood amplía sus acciones tokenizadas de EE. UU.', null], ['Una filial de Ejemplo S. A. tokeniza pagarés', null],
+    ['Los tokens de bonos se disparan en la UE', 'dudosa']]) {
+    const r = m.revisarEdicion(conTitulo(t));
+    assert.deepEqual(codigos(r), [], t);
+    if (aviso) assert.ok(codigos(r, 'avisos').includes(aviso), `${t}: ${codigos(r, 'avisos')}`);
+  }
+  // La cifra que no está en el resumen: aviso (las derivadas, como «50 veces», se comprueban a mano).
+  const cifra = m.revisarEdicion(conTitulo('Una gestora tokeniza 999 millones'));
+  assert.deepEqual(codigos(cifra), []);
+  assert.ok(codigos(cifra, 'avisos').includes('cifra'));
+});
+
+test('el modelo no usa \\p{…} ni lookbehind (Hermes, la app instalada, carga este archivo)', () => {
+  const fuente = fs.readFileSync(path.join(RAIZ, 'lib/noticias-sector.js'), 'utf8');
+  assert.doesNotMatch(fuente, /\\p\{|\(\?<[=!]/);
 });

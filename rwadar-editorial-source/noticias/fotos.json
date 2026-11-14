@@ -1,6 +1,6 @@
 {
  "versionEsquema": 1,
- "nota": "Biblioteca de fotos editoriales de las noticias del sector, por tema: cada noticia elige una clave en su campo «imagen». Son escenas genéricas generadas con IA, no fotos de la noticia: sin texto, letras, logotipos, marcas, banderas ni personas. «concepto» completa el texto alternativo («Imagen ilustrativa generada con IA: …»); «retoque», si lo hay, desenfoca zonas de la toma (una pantalla, un rótulo falso) o la voltea en espejo, y dice por qué; «encuadre» es la posición (x% y%) del recorte 3:2 sobre la toma del modelo, para dejar el sujeto en el tercio derecho. fotografiar.py genera cada toma con el modelo, la recorta, la exporta a fotos/<clave>.webp (1200×800, como mucho 160 kB) y apunta aquí la semilla, los bytes y el sha256.",
+ "nota": "Biblioteca de fotos editoriales de las noticias del sector, por tema: cada noticia elige una clave en su campo «imagen». Son escenas genéricas generadas con IA, no fotos de la noticia: sin texto, letras, logotipos, marcas, banderas ni personas. «concepto» completa el texto alternativo («Imagen ilustrativa generada con IA: …»); «retoque», si lo hay, desenfoca zonas de la toma (una pantalla, un rótulo falso) o la voltea en espejo, y dice por qué; «encuadre» es la posición (x% y%) del recorte 3:2 sobre la toma del modelo, para dejar el sujeto en el tercio derecho. fotografiar.py genera cada toma con el modelo, la recorta, la exporta a fotos/<clave>.webp (1200×800, como mucho 160 kB) y, del mismo recorte, a fotos/480/ y fotos/960/ («variantes»), y apunta aquí la semilla, los bytes y el sha256 de cada una. «temas» dice qué temas de noticia cubre cada foto (la lista cerrada está en «temas» de arriba) y «genericas», la foto de cada categoría cuando ningún tema encaja. Una foto publicada no se cambia nunca bajo la misma clave, tampoco sus variantes: una escena nueva lleva una clave nueva.",
  "modelos": {
   "realvisxl": {
    "nombre": "RealVisXL V5.0 Lightning (SG161222)",
@@ -23,7 +23,42 @@
   "formato": "WebP sin metadatos",
   "ancho": 1200,
   "alto": 800,
-  "maxBytes": 160000
+  "maxBytes": 160000,
+  "variantes": {
+   "480": {
+    "alto": 320,
+    "maxBytes": 60000,
+    "calidad": 80
+   },
+   "960": {
+    "alto": 640,
+    "maxBytes": 120000,
+    "calidad": 78
+   }
+  }
+ },
+ "temas": {
+  "regulacion-espana": "Regulación en España",
+  "regulacion-ue": "Regulación en la UE",
+  "fraude-advertencias": "Avisos y fraude",
+  "consultas-reclamaciones": "Consultas y reclamaciones",
+  "bonos-deuda": "Bonos, pagarés y deuda",
+  "inmobiliario": "Inmobiliario",
+  "oro-materias-primas": "Oro y materias primas",
+  "fondos-monetarios": "Fondos monetarios y del Tesoro",
+  "acciones-tokenizadas": "Acciones tokenizadas",
+  "pagos-stablecoins": "Pagos y monedas estables",
+  "bancos": "Bancos",
+  "bolsas-mercados": "Bolsas y mercados",
+  "ciberseguridad": "Ciberseguridad",
+  "emisiones-infraestructura": "Emisiones e infraestructura",
+  "internacional": "Internacional"
+ },
+ "genericas": {
+  "regulacion": "regulador-espana",
+  "mercado": "red-europea",
+  "producto": "acciones-eeuu",
+  "riesgo": "alerta-fraude"
  },
  "fotos": {
   "alerta-fraude": {
@@ -82,7 +117,20 @@
     "espejo": true
    },
    "bytes": 64072,
-   "sha256": "67500be754f9ae251cb19979fa41782e24369c4a677ca1832bd294ae85ec51ff"
+   "sha256": "67500be754f9ae251cb19979fa41782e24369c4a677ca1832bd294ae85ec51ff",
+   "temas": [
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 13360,
+     "sha256": "cb8b6fcb5cedce54f2aaf59f3a10664d9b68ac13a996f4b6117b506d015eeb90"
+    },
+    "960": {
+     "bytes": 32768,
+     "sha256": "a9098f8911d19844e2605352579781acb2a2ad093c5912f2555f562dc1f55b20"
+    }
+   }
   },
   "acciones-eeuu": {
    "modelo": "realvisxl",
@@ -181,7 +229,21 @@
     ]
    },
    "bytes": 83156,
-   "sha256": "049a926005a41abf1eca4e87049e2a293e8543896439f9d6c86e0938d5e90f79"
+   "sha256": "049a926005a41abf1eca4e87049e2a293e8543896439f9d6c86e0938d5e90f79",
+   "temas": [
+    "acciones-tokenizadas",
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 19390,
+     "sha256": "7e2f89057c9c260aadec1c2d5a9108134fd0b5e182cc6790b7c2a33f2f3587f3"
+    },
+    "960": {
+     "bytes": 45620,
+     "sha256": "9916a2ecdce2da5e49797834a0432e5cc83b1c0536089c9c854530f67e80b38a"
+    }
+   }
   },
   "red-europea": {
    "modelo": "realvisxl",
@@ -191,7 +253,21 @@
    "semilla": 51,
    "encuadre": "50% 50%",
    "bytes": 132148,
-   "sha256": "f435c627b58f895e11b1ba7e7597a50725c7e687f409978c5d3851475cf03b48"
+   "sha256": "f435c627b58f895e11b1ba7e7597a50725c7e687f409978c5d3851475cf03b48",
+   "temas": [
+    "emisiones-infraestructura",
+    "regulacion-ue"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 27922,
+     "sha256": "3896cd0bfdcd35e483113cdc2137b1139207ec141869c319f154bc3f49735a3e"
+    },
+    "960": {
+     "bytes": 71402,
+     "sha256": "145452b7cf0589b7e4f962af2e47c06f1bbd37d82479fbbb02943a97ef96f982"
+    }
+   }
   },
   "pagares-deuda": {
    "modelo": "realvisxl",
@@ -227,7 +303,20 @@
     ]
    },
    "bytes": 73762,
-   "sha256": "b33ca719242d6839bcc342b90ed2dc8e03eb9bccf2d7279887173b3a8c78a16c"
+   "sha256": "b33ca719242d6839bcc342b90ed2dc8e03eb9bccf2d7279887173b3a8c78a16c",
+   "temas": [
+    "bonos-deuda"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 14612,
+     "sha256": "b5e6c0fd75432b08271ca8d5adaad73fb1da08d87c23529b0a7590a0f4941a32"
+    },
+    "960": {
+     "bytes": 36492,
+     "sha256": "fadebe42e2c1a942e149b8654f44c4e078ebc838bff9345abd6a6aefc76d9fb7"
+    }
+   }
   },
   "instituciones-ue": {
    "modelo": "realvisxl",
@@ -237,7 +326,20 @@
    "semilla": 23,
    "encuadre": "0% 50%",
    "bytes": 115752,
-   "sha256": "805347de8dca4ae434b634cc8648f609b6a9f7f5b39c5c2fed9a2585596aadf7"
+   "sha256": "805347de8dca4ae434b634cc8648f609b6a9f7f5b39c5c2fed9a2585596aadf7",
+   "temas": [
+    "regulacion-ue"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 23564,
+     "sha256": "6375637e4673d1a4f9e9f8ce7a82f8d8eee89ee9a08e6d06312ffb32edea14ec"
+    },
+    "960": {
+     "bytes": 61050,
+     "sha256": "4793945e53f2c29459b7ca98ac7b3eed19b3946bd7103f46bd4c5773ee822020"
+    }
+   }
   },
   "bolsa-madrid": {
    "modelo": "realvisxl",
@@ -247,7 +349,20 @@
    "semilla": 11,
    "encuadre": "0% 50%",
    "bytes": 94994,
-   "sha256": "6f893db6348b1712eb7afb723de0b555a0f2493cddf3d2f128922737bc39fe02"
+   "sha256": "6f893db6348b1712eb7afb723de0b555a0f2493cddf3d2f128922737bc39fe02",
+   "temas": [
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 17272,
+     "sha256": "011ea862f30071f936829cd107ce36af0cfd4300e2135b91396aa73289c1ed74"
+    },
+    "960": {
+     "bytes": 47196,
+     "sha256": "0eadfb77169a04baf5924dc083096168da858a408437025af5cdde219b82b81d"
+    }
+   }
   },
   "pago-online": {
    "modelo": "realvisxl",
@@ -283,7 +398,21 @@
     ]
    },
    "bytes": 44176,
-   "sha256": "aa2b98fe08b181c6260e08cc34368cb908ea8fe391b163f7c9bb4687e40d1eb9"
+   "sha256": "aa2b98fe08b181c6260e08cc34368cb908ea8fe391b163f7c9bb4687e40d1eb9",
+   "temas": [
+    "pagos-stablecoins",
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 11034,
+     "sha256": "cdef8f83f8cd48fb18a147b85769d4e3bfc398b377708188dc23cac54bf5d1e2"
+    },
+    "960": {
+     "bytes": 22746,
+     "sha256": "34bf340a482eac6bee639102f0f3f8fe825c1c9a9a4f7f35496c7166c1e2c34c"
+    }
+   }
   },
   "regulador-espana": {
    "modelo": "realvisxl",
@@ -293,7 +422,396 @@
    "semilla": 37,
    "encuadre": "0% 50%",
    "bytes": 151954,
-   "sha256": "9054c21d6de37ef4dc91fff500526e636129e26ac6d39b02701b573efeaf312b"
+   "sha256": "9054c21d6de37ef4dc91fff500526e636129e26ac6d39b02701b573efeaf312b",
+   "temas": [
+    "regulacion-espana"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 29658,
+     "sha256": "0576cf46661bad89d61c9cda39b368c275627ab31e469c09f55e369e09d87c6a"
+    },
+    "960": {
+     "bytes": 79956,
+     "sha256": "c0413388ece29c7f296b9a396a091c0eab2121956d57a3b64a6627dda92ce653"
+    }
+   }
+  },
+  "alerta-fraude-2": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un móvil con la pantalla rota tirado en el asfalto mojado de noche, con reflejos rojos y verde azulados",
+   "prompt": "Cracked smartphone lying face up on wet black asphalt at night on the right, dark screen with a faint red glow, red and teal reflections in puddles, empty dark left side",
+   "semilla": 7,
+   "encuadre": "0% 50%",
+   "temas": [
+    "fraude-advertencias"
+   ],
+   "bytes": 114758,
+   "sha256": "13568850a4628578368f0275f238550ea0a47bfd3d119b12dd6912b9b581e6e2",
+   "variantes": {
+    "480": {
+     "bytes": 26114,
+     "sha256": "0985f34cf6b03cf9292ffcc0254b9ee8405850cd5f6b6c66e54c8a3b77ea4116"
+    },
+    "960": {
+     "bytes": 61790,
+     "sha256": "2c296731bef17e89386eb68b151dc47524c7a35b0c430aec84a86368617e234c"
+    }
+   }
+  },
+  "alerta-fraude-3": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "dos luces rojas de aviso en un muro de hormigón verde azulado de noche, reflejadas en el suelo mojado",
+   "prompt": "Single red warning light glowing on the right of a dark wet concrete wall at night, red haze, teal reflections on a puddle below, empty dark left side",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "temas": [
+    "fraude-advertencias"
+   ],
+   "bytes": 76758,
+   "sha256": "0ef2dbfebb49f883a6ea46d4a2278ac68257c137ca9bc8abfe3986431b324f4c",
+   "variantes": {
+    "480": {
+     "bytes": 13232,
+     "sha256": "c1b0891c5ec2a08a0ad5b8fbf68735adb37b59021d23b4d9804ee46539f969b0"
+    },
+    "960": {
+     "bytes": 34716,
+     "sha256": "424dc745c25e1b082834ea37331f6e6e6759f583061bef6e4f4c1b5232cca41d"
+    }
+   }
+  },
+  "regulador-espana-2": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "el gran pasillo vacío de un edificio oficial clásico de noche, con columnas, lámparas de araña y el suelo de mármol brillante",
+   "prompt": "Grand empty hall of a classical Spanish government building at night, marble columns, long bare polished wooden table, warm brass lamps, teal light through tall windows",
+   "semilla": 7,
+   "encuadre": "50% 50%",
+   "temas": [
+    "regulacion-espana"
+   ],
+   "bytes": 74208,
+   "sha256": "441c91d610b6447d11a7b97e4ced307ce56611d6b57a68fecd9f27d344ae7fab",
+   "variantes": {
+    "480": {
+     "bytes": 14254,
+     "sha256": "dc9b3a1a8ef7c6918ae0c1750fdaa84734e588792ed6282ae4a59ae913fb4b4e"
+    },
+    "960": {
+     "bytes": 35482,
+     "sha256": "281f6e5444e34650469053b57c35f4af8ed3d6d14016ea6e386f89e115fc5701"
+    }
+   }
+  },
+  "documentos-consulta": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "una pila de folios en blanco con unas gafas encima, sobre un escritorio oscuro, bajo una lámpara verde",
+   "prompt": "Neat stack of plain blank white paper sheets with paper clips and reading glasses on the right of a dark desk under a warm lamp, emerald reflections, empty dark left side",
+   "semilla": 23,
+   "encuadre": "0% 50%",
+   "temas": [
+    "consultas-reclamaciones",
+    "regulacion-espana"
+   ],
+   "bytes": 65318,
+   "sha256": "224945c96c9e364116cce5d6eacb29280dc0228584b2d00d42497321a1f18738",
+   "variantes": {
+    "480": {
+     "bytes": 15638,
+     "sha256": "123b83897ea041e26ac580119304128ae5873cf271858ff96fc88d9bccd17c96"
+    },
+    "960": {
+     "bytes": 33760,
+     "sha256": "99e4ab8f6db054640c7ea3abc28ee8f606b2a30a332cf93d0c849e436c3e0f6f"
+    }
+   }
+  },
+  "instituciones-ue-2": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "una sala de reuniones vacía con una mesa redonda de madera y sillas verde azuladas, con los ventanales a una ciudad de noche",
+   "prompt": "Empty modern meeting room at night with a large round bare wooden table and empty chairs, floor-to-ceiling glass, blue city lights outside, soft teal glow",
+   "semilla": 23,
+   "encuadre": "0% 50%",
+   "temas": [
+    "regulacion-ue"
+   ],
+   "bytes": 103898,
+   "sha256": "82404bb5b7bc3473aa256e0a82ab3b43150124855ea20ceaf8fd951951781e5e",
+   "variantes": {
+    "480": {
+     "bytes": 21080,
+     "sha256": "b0bc9e582a71246701b5e72d158a5201d037385800e3c42f7f99468b256d0421"
+    },
+    "960": {
+     "bytes": 52096,
+     "sha256": "c0a48c1cef18a2f7e0689ddbb4d3cf2d06ea1e9594f71983746c972882f48d53"
+    }
+   }
+  },
+  "bonos-emision": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "dos pergaminos enrollados y atados con una cinta esmeralda sobre un escritorio de madera oscura",
+   "prompt": "Rolled cream parchment scrolls tied with a thin emerald ribbon on the right of a dark walnut desk at night, warm side light, shallow depth of field, empty dark left side",
+   "semilla": 23,
+   "encuadre": "0% 50%",
+   "temas": [
+    "bonos-deuda"
+   ],
+   "bytes": 69006,
+   "sha256": "66acff04260c4d84c0147b6ebd6c0e2f3e5d3e4af79f850ffc969b0915382d37",
+   "variantes": {
+    "480": {
+     "bytes": 14460,
+     "sha256": "92c4c897513dc754ada18f1eec35e7e105fba8c45e14c373bba59e54c829cc90"
+    },
+    "960": {
+     "bytes": 34730,
+     "sha256": "4568d69fdf3b62719edc38b1911d81741c45d0950b9dac3ef37fdde6d4fad8cf"
+    }
+   }
+  },
+  "inmuebles-ciudad": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un edificio de viviendas con balcones y plantas en una calle con árboles, a la hora azul y con las luces encendidas",
+   "prompt": "Modern residential apartment building in a Spanish city at blue hour, warm lit windows, small balconies with plants, quiet tree-lined street, deep blue sky",
+   "semilla": 23,
+   "encuadre": "100% 50%",
+   "temas": [
+    "inmobiliario"
+   ],
+   "bytes": 112134,
+   "sha256": "1fcd8490f20b7c1b65bfb1bf61d99c2726057f5646a4d3d6bebffddcf77a27a3",
+   "variantes": {
+    "480": {
+     "bytes": 23010,
+     "sha256": "44ca542de4c65b6bbe0dbbf2b00b44523c35a56b04fd43706e4f33bac5447ab2"
+    },
+    "960": {
+     "bytes": 59886,
+     "sha256": "7e81c1aa77eb85cfd976d1c4181bebc1e78f49bead05ea4b304e99cd201dd889"
+    }
+   }
+  },
+  "inmuebles-costa": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un pueblo de casas blancas en una ladera junto al mar al anochecer, con las ventanas encendidas",
+   "prompt": "Whitewashed Mediterranean houses on a hillside at dusk, warm lit windows, terracotta roofs, calm sea below, violet and teal sky",
+   "semilla": 23,
+   "encuadre": "100% 50%",
+   "temas": [
+    "inmobiliario"
+   ],
+   "bytes": 142052,
+   "sha256": "4e1c793312c13ab72811e170e1c367ae09133829279127aa080978d6184cfda9",
+   "variantes": {
+    "480": {
+     "bytes": 28000,
+     "sha256": "24f13e9276af050e8babbf6120d38a05c165ab02697bdc2fa128e69fac1782e8"
+    },
+    "960": {
+     "bytes": 72688,
+     "sha256": "a4b2224ab0c6c59dd938a8b74fc76bcecc05952ca23576e8fd11f59edec14c2e"
+    }
+   }
+  },
+  "oro-pepitas": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un montón de pepitas de oro y piedras verde azuladas sobre una pizarra oscura",
+   "prompt": "Pile of raw natural gold nuggets on dark slate stone on the right, warm golden rim light, macro photo, shallow depth of field, empty dark left side",
+   "semilla": 23,
+   "encuadre": "100% 50%",
+   "temas": [
+    "oro-materias-primas"
+   ],
+   "bytes": 124336,
+   "sha256": "ee13e89f08928eafcf88fbeae12ad95efc4b2430008033ceca75423899c644cf",
+   "variantes": {
+    "480": {
+     "bytes": 30322,
+     "sha256": "140513e452490ebe7dc5390a0860a34689894c5843508694a2329be2c6a7c9bf"
+    },
+    "960": {
+     "bytes": 69460,
+     "sha256": "34d56d8ab41917633881acceadefc33897a6c0d8d10745264f3b6bc55ef79722"
+    }
+   }
+  },
+  "moneda-digital": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un disco liso de cristal verde azulado que brilla sobre una superficie negra, con su reflejo",
+   "prompt": "Single plain smooth metallic disc glowing teal standing on its edge on the right of a black glass surface, perfect reflection, soft emerald rim light, dark empty left side",
+   "semilla": 7,
+   "encuadre": "0% 50%",
+   "temas": [
+    "pagos-stablecoins"
+   ],
+   "bytes": 43110,
+   "sha256": "35634b4d15fecfb43ace2d0690bf9602e4a3be90c36110e46692dda9559b10d4",
+   "variantes": {
+    "480": {
+     "bytes": 7908,
+     "sha256": "c45f3a4d96c0c2ed6ba805368193c7155570075311e54b5d2c7c2a0411b4d9fb"
+    },
+    "960": {
+     "bytes": 21108,
+     "sha256": "0ac01d6ce8a1863719f5826e976c650eece9d33844002b3ae5a5e5268749f40d"
+    }
+   }
+  },
+  "fondos-liquidez": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un puerto deportivo de noche con veleros amarrados y las luces de una ciudad reflejadas en el agua quieta",
+   "prompt": "Calm dark water in a modern harbour at night, perfectly still reflections of warm city lights, a single moored sailboat on the right, teal haze",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "temas": [
+    "fondos-monetarios"
+   ],
+   "bytes": 84128,
+   "sha256": "1376d5abfb2b2270884a31607ee87dca51878bea9d48d641b9ee6bd84af31ce1",
+   "variantes": {
+    "480": {
+     "bytes": 17362,
+     "sha256": "87fb95bb7a714d8e6a10af91bac72571a39832dec370489237f5821f38f7fc4a"
+    },
+    "960": {
+     "bytes": 45000,
+     "sha256": "bf4aef13eacf68cce3fa2bcc9060e395719fadbf967e81eb25534116ef2190b2"
+    }
+   }
+  },
+  "acciones-movil": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un móvil tumbado en la mesa de madera de una terraza de noche, con la pantalla de un brillo verde azulado sin nada legible y luces desenfocadas detrás",
+   "prompt": "Smartphone lying flat on the right of a dark wooden cafe table at night, screen an extremely blurred glowing green rising line, warm round bokeh lights, empty dark left side",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "retoque": {
+    "motivo": "espejo para llevar el móvil a la derecha",
+    "espejo": true
+   },
+   "temas": [
+    "acciones-tokenizadas"
+   ],
+   "bytes": 61302,
+   "sha256": "e36de9a9e5f3763cedfa83dd1eb39c7d494d8f70147c9d30415e1dd45bc5f381",
+   "variantes": {
+    "480": {
+     "bytes": 15624,
+     "sha256": "17ef56f07bdcba15f495f16e55ff3e341cedbc0429f9193c2192e8b4ff799432"
+    },
+    "960": {
+     "bytes": 33398,
+     "sha256": "a950df726d1536b5d23c8675de280d47223eac5b0c462f724d24a4e9e29f26d6"
+    }
+   }
+  },
+  "banco-sala": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "el vestíbulo vacío de un edificio clásico de noche, con ventanales en arco, apliques encendidos, una lámpara de araña y el suelo de mármol verde",
+   "prompt": "Interior of a classic bank hall at night, empty marble floor, tall arched windows, brass lamps, dark wooden counters, warm and teal light",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "temas": [
+    "bancos"
+   ],
+   "bytes": 77044,
+   "sha256": "cc876bfb5a1ed42bab072eea9486f18f875549ccaf34a8c9130b69fd445609e9",
+   "variantes": {
+    "480": {
+     "bytes": 15678,
+     "sha256": "bb3075e9a78eb60f90b66b93d1c729defb70e9a45ab4fe53c5dced4eee78c928"
+    },
+    "960": {
+     "bytes": 39652,
+     "sha256": "0f7a67cbe59fd2daaba3777d7846540d375ed286f5d6a2aca35c7b8fb9ce17f3"
+    }
+   }
+  },
+  "servidores-seguridad": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "el pasillo de un centro de datos a oscuras, con filas de armarios de servidores y luces de estado verdes y verde azuladas",
+   "prompt": "Long aisle of server racks in a dark data center, rows of small teal and green status lights, glossy floor reflections, one-point perspective",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "retoque": {
+    "motivo": "desenfocar la señal luminosa del fondo del pasillo, para que no se lea ningún pictograma",
+    "difuminar": [
+     {
+      "puntos": [
+       [
+        1068,
+        326
+       ],
+       [
+        1108,
+        326
+       ],
+       [
+        1108,
+        360
+       ],
+       [
+        1068,
+        360
+       ]
+      ],
+      "radio": 8
+     }
+    ]
+   },
+   "temas": [
+    "ciberseguridad"
+   ],
+   "bytes": 87590,
+   "sha256": "3704a32fd27d90ac4126d15ba5c0255d1dd6aabd27f2018f4b34722d082a672c",
+   "variantes": {
+    "480": {
+     "bytes": 17942,
+     "sha256": "a74c2b660336c0fa01dc30491564ec6491a7d1a99d596c64f9f00f8852348faa"
+    },
+    "960": {
+     "bytes": 46000,
+     "sha256": "e916812bff342d1e6c52705f297fe35dbf1553a3bfd908a8f699585413171768"
+    }
+   }
+  },
+  "planeta-noche": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "la Tierra de noche vista desde la órbita, con las luces de las ciudades a lo largo de unas costas imaginarias y una fina línea de atmósfera",
+   "prompt": "Night view of planet Earth from orbit, city lights glowing amber across a continent, thin teal atmosphere line, black space on the left",
+   "semilla": 7,
+   "encuadre": "100% 50%",
+   "temas": [
+    "internacional"
+   ],
+   "bytes": 91066,
+   "sha256": "b41106deac372fb9a316b982e23c22b7dc46fe438f67883247db5b8f0cacf62e",
+   "variantes": {
+    "480": {
+     "bytes": 17934,
+     "sha256": "19ba270cd89f7a7f0192ff2788f09145ca86178f71cb5504b77fdc89a8237aa3"
+    },
+    "960": {
+     "bytes": 47140,
+     "sha256": "da4399604d1ac6153fa51066f5909009b7545a72ea735ce196b8151fa46453e5"
+    }
+   }
   }
  }
 }

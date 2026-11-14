@@ -200,10 +200,156 @@ function claveFoto(valor, donde) {
   }
   return valor;
 }
-/* La ruta (web) o la dirección completa (app) de la foto de una noticia. */
-function rutaFoto(n, { base = RUTA_FOTOS } = {}) {
+/* Tres tamaños de cada foto (noticias que entran por los ojos, 14/11/2026):
+   480 × 320 y 960 × 640 en las carpetas «480/» y «960/», y la de 1200 × 800
+   donde estuvo siempre (la app ya instalada sigue cargando esa). Cada pantalla
+   baja la que necesita: una foto de 72 px ya no baja 1200. */
+const ANCHOS_FOTO = Object.freeze([480, 960, 1200]);
+/* El menor ancho que llega a «px» píxeles reales; con un valor raro, la de 1200. */
+function anchoFoto(px) {
+  if (typeof px !== 'number' || !Number.isFinite(px) || px <= 0) return 1200;
+  return ANCHOS_FOTO.find(a => a >= px) || 1200;
+}
+/* La ruta (web) o la dirección completa (app) de la foto de una noticia.
+   Sin «ancho» (o con uno que no existe), la de 1200, como siempre. */
+function rutaFoto(n, { base = RUTA_FOTOS, ancho } = {}) {
   if (!n || typeof n.imagen !== 'string' || !CLAVE_FOTO.test(n.imagen)) return null;
-  return `${base}${n.imagen}.webp`;
+  const carpeta = ancho === 480 || ancho === 960 ? `${ancho}/` : '';
+  return `${base}${carpeta}${n.imagen}.webp`;
+}
+/* «srcset» de la web: los tres tamaños. */
+function srcsetFoto(n, { base = RUTA_FOTOS } = {}) {
+  if (!rutaFoto(n, { base })) return null;
+  return ANCHOS_FOTO.map(a => `${rutaFoto(n, { base, ancho: a })} ${a}w`).join(', ');
+}
+/* Lo que ocupa cada foto en la pantalla («sizes»), según su papel. Los cortes
+   son los de la rejilla de noticias-sector-20261110.css (en em: con la letra
+   grande la rejilla cambia sola). La última tarjeta, cuando queda sola en su
+   fila, se estira (papelTarjeta): en dos columnas, a todo el ancho
+   («anchaDos»); en tres, a dos o tres columnas («anchaTres»); o en las dos
+   rejillas («ancha»). */
+const SIZES = Object.freeze({
+  portada: '(min-width:64em) min(66vw, 860px), calc(100vw - 32px)',
+  tarjeta: '(min-width:64em) min(33vw, 420px), (min-width:22em) calc(50vw - 22px), 112px',
+  ancha: '(min-width:64em) min(66vw, 860px), (min-width:22em) calc(100vw - 32px), 112px',
+  anchaDos: '(min-width:64em) min(33vw, 420px), (min-width:22em) calc(100vw - 32px), 112px',
+  anchaTres: '(min-width:64em) min(66vw, 860px), (min-width:22em) calc(50vw - 22px), 112px',
+  detalle: '(min-width:601px) 600px, 100vw',
+});
+/* Los atributos de la <img> de una foto, la única fuente para el pintor de la
+   web y para el prepintado de Inicio (rwadar-noticias-portada.js): ninguno
+   escribe srcset, sizes ni loading a mano. La portada nunca es perezosa: en
+   una tableta o una pantalla grande es lo más grande de la primera pantalla
+   (LCP), y si esperara a la maqueta tardaría el triple (medido el 13/11). */
+function atributosFoto(n, papel, { base = RUTA_FOTOS } = {}) {
+  if (!Object.hasOwn(SIZES, papel)) throw new Error(`papel de foto desconocido: ${papel}`);
+  const src = rutaFoto(n, { base });
+  if (!src) return null;
+  const a = { src, srcset: srcsetFoto(n, { base }), sizes: SIZES[papel], width: 1200, height: 800, decoding: 'async' };
+  if (papel !== 'portada') a.loading = 'lazy';
+  return a;
+}
+
+/* ¿Es la tarjeta i (la portada es la 0) de una rejilla de «total» la última
+   y queda sola en su fila? En dos columnas, si el total es par; en tres
+   (desde 64em, con la portada ocupando dos columnas y dos filas), si el total
+   pasa de 3 y no es múltiplo de 3. Entonces la rejilla la estira (sin hueco al
+   lado) y su foto se pide más grande (SIZES.ancha). */
+function esAncha(i, total) {
+  return papelTarjeta(i, total) !== 'tarjeta';
+}
+/* El papel de la foto de la tarjeta i (para «sizes»): «tarjeta», o la
+   ancha de la rejilla en que se estira. */
+function papelTarjeta(i, total) {
+  if (!Number.isInteger(i) || !Number.isInteger(total) || i < 1 || i !== total - 1) return 'tarjeta';
+  const enDos = total % 2 === 0, enTres = total >= 4 && total % 3 !== 0;
+  return enDos && enTres ? 'ancha' : enDos ? 'anchaDos' : enTres ? 'anchaTres' : 'tarjeta';
+}
+
+/* ---- Inicio: la portada y dos tarjetas ---- */
+const EN_INICIO = 3;
+/* La firma de lo que pinta Inicio (FNV-1a de 32 bits): lo que se ve de las
+   tres primeras en castellano. El publicador la escribe en
+   data-nt-prepintado y el JS la compara para no rehacer la lista: con dos
+   ediciones el mismo día, la fecha no bastaría. Pura: sin reloj ni Intl. */
+function firmaPrepintado(datos) {
+  const lista = Array.isArray(datos?.noticias) ? datos.noticias.slice(0, EN_INICIO) : [];
+  const texto = 'nt-v1|' + JSON.stringify(lista.map(n => [n.id, n.titulo, n.imagen || '', n.categoria, n.fecha, fuenteCorta(n, 'es')]));
+  let h = 0x811c9dc5;
+  for (let i = 0; i < texto.length; i++) { h ^= texto.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16).padStart(8, '0');
+}
+/* ¿Hay que rehacer la lista que trae Inicio ya pintada? Solo se deja si es la
+   misma edición (misma firma) y la página está en castellano. */
+function debeRepintar({ prepintado, datos, idioma } = {}) {
+  if (typeof prepintado !== 'string' || !prepintado || idioma !== 'es' || !datos) return true;
+  return prepintado !== firmaPrepintado(datos);
+}
+
+/* ---- Titulares (guía: rwadar-editorial-source/noticias/GUIA-TITULARES.md) ----
+   Lo que se puede medir de la guía. Los errores paran la publicación
+   (rwadar-publicar.js) y las noticias automáticas antes de abrir su PR; los
+   avisos los lee el verificador. Solo con expresiones que entiende cualquier
+   motor de JS (también Hermes, que carga este archivo): sin escapes de propiedades Unicode ni
+   lookbehind. */
+const LETRA = 'A-Za-z0-9\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u024f';
+const frase = lista => new RegExp(`(?:^|[^${LETRA}])(${lista.join('|')})(?![${LETRA}])`, 'i');
+const REGLAS_TITULAR = Object.freeze({
+  max: 60,
+  // Promesas y gancho barato: error.
+  prohibidas: frase(['rentabilidad(?:es)? garantizadas?', 'garantizamos', 'sin riesgos?', 'oportunidad (?:única|unica|de oro)', 'hazte rico',
+    'chollos?', 'pelotazo', 'imperdibles?', 'no te lo pierdas', 'dinero fácil', 'dinero facil', 'risk[- ]free', 'guaranteed returns?', 'get rich',
+    'once[- ]in[- ]a[- ]lifetime', "don'?t miss"]),
+  // Signos de exclamación: error.
+  exclamacion: /[¡!]/,
+  // Raíces que suelen acompañar a una promesa, pero también a un titular
+  // legítimo («bonos garantizados por el Estado», «una aseguradora»,
+  // «la falsa oportunidad»): aviso para el verificador.
+  raices: /garantiz|asegur|oportunidad|guarantee|opportunit/i,
+  // Exageraciones: aviso.
+  dudosas: /dispar[ao]|desplom|se hunde|hundimiento|hist[oó]ric|revoluci|incre[ií]ble|brutal|bomba|skyrocket|soar|plunge|crash|historic|revolution|incredible/i,
+  // Emoji y pictogramas (por rangos, sin escapes de propiedades Unicode): error.
+  emoji: /[\u2190-\u21ff\u2300-\u23ff\u2460-\u27bf\u2900-\u297f\u2b00-\u2bff\ufe0f]|[\ud83c-\ud83e][\udc00-\udfff]/,
+  // Un titular no acaba en punto, salvo una abreviatura («EE. UU.»).
+  abreviatura: /(?:EE\. ?UU\.|S\. ?A\.|S\. ?L\.|etc\.|Inc\.|Ltd\.|Corp\.|Co\.|U\. ?S\.|U\. ?K\.|N\. ?V\.|Jr\.)$/,
+});
+const cifras = t => (String(t).match(/\d+(?:[.,]\d+)*/g) || []);
+/* Revisa una edición contra la guía medible. No lanza: devuelve
+   { errores: [{ id, campo, codigo, texto }], avisos: [...] }. «fotos», si se
+   pasa, son las claves de la biblioteca (fotos.json). */
+function revisarEdicion(datos, { fotos = null } = {}) {
+  const errores = [], avisos = [];
+  let limpios;
+  try { limpios = validarNoticias(datos); }
+  catch (e) { errores.push({ id: '', campo: '', codigo: 'forma', texto: e.message }); return { errores, avisos }; }
+  const biblioteca = fotos ? new Set(fotos) : null;
+  const usadas = new Map();
+  for (const n of limpios.noticias) {
+    const campos = [['titulo', n.titulo, [n.resumen, n.porQueImporta, n.tituloInformativo || '']],
+      ['en.titulo', n.en.titulo, [n.en.resumen, n.en.porQueImporta, n.en.tituloInformativo || '']]];
+    for (const [campo, t, contexto] of campos) {
+      const largo = [...t].length;
+      if (largo > REGLAS_TITULAR.max) errores.push({ id: n.id, campo, codigo: 'largo', texto: `${largo} caracteres (máximo ${REGLAS_TITULAR.max})` });
+      const promesa = REGLAS_TITULAR.prohibidas.exec(t);
+      if (promesa) errores.push({ id: n.id, campo, codigo: 'prohibida', texto: `«${promesa[1]}»` });
+      if (REGLAS_TITULAR.exclamacion.test(t)) errores.push({ id: n.id, campo, codigo: 'exclamacion', texto: 'lleva «¡» o «!»' });
+      if (REGLAS_TITULAR.emoji.test(t)) errores.push({ id: n.id, campo, codigo: 'emoji', texto: 'lleva un emoji o un símbolo' });
+      if (/\.$/.test(t) && !REGLAS_TITULAR.abreviatura.test(t)) errores.push({ id: n.id, campo, codigo: 'punto-final', texto: 'acaba en punto' });
+      const raiz = REGLAS_TITULAR.raices.exec(t);
+      if (raiz && !promesa) avisos.push({ id: n.id, campo, codigo: 'raiz-promesa', texto: `«${raiz[0]}»: comprueba que no promete nada` });
+      const duda = REGLAS_TITULAR.dudosas.exec(t);
+      if (duda) avisos.push({ id: n.id, campo, codigo: 'dudosa', texto: `«${duda[0]}»: comprueba que no exagera` });
+      const fuera = cifras(t).filter(c => !contexto.some(x => x.includes(c)));
+      if (fuera.length) avisos.push({ id: n.id, campo, codigo: 'cifra', texto: `${fuera.join(', ')} no está tal cual en el resumen: compruébalo` });
+    }
+    if (!n.imagen) errores.push({ id: n.id, campo: 'imagen', codigo: 'sin-foto', texto: 'sin foto' });
+    else {
+      if (usadas.has(n.imagen)) errores.push({ id: n.id, campo: 'imagen', codigo: 'foto-repetida', texto: `«${n.imagen}» ya la usa ${usadas.get(n.imagen)}` });
+      else usadas.set(n.imagen, n.id);
+      if (biblioteca && !biblioteca.has(n.imagen)) errores.push({ id: n.id, campo: 'imagen', codigo: 'foto-desconocida', texto: `«${n.imagen}» no está en fotos.json` });
+    }
+  }
+  return { errores, avisos };
 }
 /* Las noticias sin foto (para el generador, que las exige al publicar). */
 function noticiasSinFoto(datos) {
@@ -235,6 +381,7 @@ const fuenteTraducida = (noticia, idioma = 'es') => fuenteCorta(noticia, idioma)
 
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
   textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente,
-  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto, FUENTES_EN, fuenteCorta, fuenteTraducida };
+  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto, FUENTES_EN, fuenteCorta, fuenteTraducida,
+  ANCHOS_FOTO, anchoFoto, srcsetFoto, SIZES, atributosFoto, esAncha, papelTarjeta, EN_INICIO, firmaPrepintado, debeRepintar, REGLAS_TITULAR, revisarEdicion };
 
 window.RWAdarNoticiasModelo=module.exports; })();

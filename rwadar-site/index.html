@@ -197,11 +197,15 @@
 
     <!-- 3 · Mercado y noticias (11/11/2026): una tarjeta tipo cotización
          (nombre, cifra de hoy, cambio del último mes y un minigráfico del
-         mes) y las 3 noticias principales, compactas; el gráfico entero y
+         mes) y las 3 noticias principales: la primera, de portada con su
+         foto grande, y dos tarjetas con foto (14/11/2026); el gráfico entero y
          todas las noticias, en /mercado/. Lo pintan assets/mercado-20261111.js
          (datos de CoinGecko que lee nuestro servidor y la serie de
          /datos/tokenizacion-serie.json) y assets/noticias-sector-20261110.js
-         (/datos/noticias-v2.json); aquí no hay ninguna cifra. -->
+         (/datos/noticias-v2.json); aquí no hay ninguna cifra. La lista de
+         noticias está vacía en esta fuente: el publicador escribe las tres en
+         el index.html publicado (rwadar-noticias-portada.js), para que la
+         foto de portada no espere al JavaScript. -->
     <section class="ini-bloque mk mk--inicio nt nt--portada" id="mercado" aria-labelledby="mkTit" data-mercado="inicio" data-noticias="portada">
       <div class="ini-bloque-cab">
         <h2 class="ini-bloque-tit" id="mkTit">Mercado y noticias</h2>
@@ -212,7 +216,7 @@
       </div>
       <h3 class="solo-lector" id="ntTit">Noticias</h3>
       <p class="ini-bloque-sub solo-lector" id="ntFecha" hidden></p>
-      <ul class="nt-compacta" id="ntLista" aria-labelledby="ntTit" hidden></ul>
+      <ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>
       <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
       <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
       <a class="ini-ver" href="/mercado/"><span>Ver mercado y noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>

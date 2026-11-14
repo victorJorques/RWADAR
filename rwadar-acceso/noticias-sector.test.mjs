@@ -3,8 +3,9 @@
    «imagen» para la app ya instalada (publicables, cabeceras y validación en
    el generador, con el motor congelado de esa app), la copia web del motor, el script sin
    innerHTML ni terceros, y en Chromium a 390 × 844 y 1366 × 900: en Inicio,
-   dentro de «Mercado y noticias» (11/11/2026), 3 noticias compactas que
-   llevan a su detalle; en /mercado/, debajo del gráfico, las 6 con su detalle
+   dentro de «Mercado y noticias» (11/11/2026), la portada con foto grande y
+   dos tarjetas (14/11/2026) que llevan a su detalle; en /mercado/, debajo del
+   gráfico, la portada y las demás en tarjetas, con su detalle
    en un diálogo accesible con su enlace que sale de RWAdar, teclado,
    /mercado/#id, /noticias/#id (lleva a /mercado/#id), inglés y archivo caído. Sin red. */
 import test from 'node:test';
@@ -122,10 +123,10 @@ const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI 
 // La foto de prueba: una WebP propia del repositorio en lugar de cada foto de la biblioteca (el sitio fuente no las lleva).
 const FOTO_PRUEBA = fs.readFileSync(path.join(RAIZ, 'rwadar-movil/assets/ofertas-editoriales/inmobiliario-rwadar.webp'));
 async function conFotos(pagina, pedidas) {
-  await pagina.route('**/noticias-editoriales/*.webp', r => { pedidas.push(new URL(r.request().url()).pathname); return r.fulfill({ status: 200, contentType: 'image/webp', body: FOTO_PRUEBA }); });
+  await pagina.route('**/noticias-editoriales/**', r => { pedidas.push(new URL(r.request().url()).pathname); return r.fulfill({ status: 200, contentType: 'image/webp', body: FOTO_PRUEBA }); });
 }
 
-test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /mercado/ con las 6, teclado, diálogo, #id, /noticias/#id, inglés y archivo caído', { skip: sinNavegador, timeout: 180000 }, async () => {
+test('en Chromium: Inicio con la portada y dos tarjetas en «Mercado y noticias»; /mercado/ con las 6, teclado, diálogo, #id, /noticias/#id, inglés y archivo caído', { skip: sinNavegador, timeout: 180000 }, async () => {
   // El dato de hoy no importa aquí: su API se corta y la cotización usa la copia estática.
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0,
     responder: async url => (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
@@ -154,20 +155,21 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await pagina.waitForFunction(() => [...document.querySelectorAll('#ntLista img')].every(i => i.complete && i.naturalWidth > 0));
       const m = await pagina.evaluate(() => {
         const s = document.getElementById('mercado'), l = document.getElementById('ntLista');
-        const filas = [...l.querySelectorAll('.nt-c')];
-        const tit = filas[1].querySelector('.nt-c-tit'), estilo = getComputedStyle(tit);
-        const foto = filas[0].querySelector('.nt-foto').getBoundingClientRect();
+        const filas = [...l.querySelectorAll('a[data-nt-id]')];
+        const tit = filas[1].querySelector('.nt-t-tit'), estilo = getComputedStyle(tit);
+        const foto = filas[0].querySelector('.nt-p-foto').getBoundingClientRect();
         const fuera = [...s.querySelectorAll('*')].filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         return {
           n: filas.length, tipos: filas.map(a => a.tagName), href: filas.map(a => a.getAttribute('href')),
           conEtiqueta: filas.filter(b => b.hasAttribute('aria-label')).length,
           hoy: filas.filter(b => b.querySelector('.nt-hoy')?.textContent === 'Hoy').map(b => b.dataset.ntId),
           ayer: filas.filter(b => b.querySelector('.nt-hoy--ayer')?.textContent === 'Ayer').map(b => b.dataset.ntId),
-          meta: filas.map(a => a.querySelector('.nt-c-meta').textContent),
+          meta: filas.map(a => a.querySelector('.nt-meta').textContent),
           fotos: filas.map(a => { const i = a.querySelector('img'); return i && i.getAttribute('src'); }),
-          altVacio: filas.every(a => a.querySelector('img').getAttribute('alt') === '' && a.querySelector('.nt-foto').getAttribute('aria-hidden') === 'true'),
-          fotoPeq: foto.width <= 96 && foto.height <= 72, svg: l.querySelectorAll('svg').length, anchoPagina: document.documentElement.scrollWidth, fuera: fuera.length,
-          clamp: estilo.webkitLineClamp, lineas: Math.round(tit.getBoundingClientRect().height / parseFloat(estilo.lineHeight)), color: estilo.color,
+          altVacio: filas.every(a => a.querySelector('img').getAttribute('alt') === '' && a.querySelector('[class$="-foto"]').getAttribute('aria-hidden') === 'true'),
+          portadaGrande: foto.width >= 300 && foto.height >= 200, primera: filas[0].className, svg: l.querySelectorAll('svg').length,
+          anchoPagina: document.documentElement.scrollWidth, fuera: fuera.length,
+          clamp: estilo.webkitLineClamp, entero: [...l.querySelectorAll('.nt-p-tit,.nt-t-tit')].every(t => getComputedStyle(t).overflow === 'visible' && t.getBoundingClientRect().bottom <= t.closest('a,article').getBoundingClientRect().bottom + 1), color: estilo.color,
           fecha: document.getElementById('ntFecha').textContent, cabecera: document.getElementById('ntTit').textContent,
           bloque: document.getElementById('mkTit').textContent,
           ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(), nota: document.getElementById('ntNota').textContent,
@@ -186,14 +188,15 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
         'y «Ayer» en las del día anterior (en la edición del 12/11, ninguna de las 3; al día siguiente, más abajo)');
       assert.equal(m.meta[0], `${corta(n0)} · ${ddmmaaaa(n0.fecha)} Hoy`, 'la fuente y la fecha, en pequeño');
       assert.deepEqual(m.fotos, DATOS_EJ.noticias.slice(0, 3).map(n => `/noticias-editoriales/${n.imagen}.webp`));
-      assert.ok(pedidas.length >= 1 && pedidas.every(r => /^\/noticias-editoriales\/[a-z0-9-]+\.webp$/.test(r)));
+      assert.ok(pedidas.length >= 1 && pedidas.every(r => /^\/noticias-editoriales\/(?:(?:480|960)\/)?[a-z0-9-]+\.webp$/.test(r)));
       assert.ok(m.altVacio, 'la foto es decorativa: el titular ya lo dice');
-      assert.ok(m.fotoPeq, 'foto pequeña');
+      assert.ok(m.portadaGrande, 'la primera, de portada con la foto grande');
+      assert.equal(m.primera, 'nt-p');
       assert.equal(m.svg, 0, 'sin ilustraciones SVG');
       assert.equal(m.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal de la página`);
       assert.equal(m.fuera, 0);
-      assert.equal(m.clamp, '3');
-      assert.ok(m.lineas <= 3, `como mucho 3 líneas (${m.lineas})`);
+      assert.equal(m.clamp, 'none', 'los titulares no se cortan');
+      assert.ok(m.entero, 'ningún titular recortado');
       assert.equal(m.color, 'rgb(247, 245, 240)');
       assert.equal(m.bloque, 'Mercado y noticias');
       assert.equal(m.cabecera, 'Noticias');
@@ -222,10 +225,10 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await ayer.goto(local.url + '/', { waitUntil: 'load' });
       await ayer.waitForSelector('#mercado[data-noticias-estado="listo"]', { timeout: 20000 });
       const a = await ayer.evaluate(() => {
-        const filas = [...document.querySelectorAll('#ntLista .nt-c')];
+        const filas = [...document.querySelectorAll('#ntLista a[data-nt-id]')];
         return { hoy: filas.filter(b => b.querySelector('.nt-hoy')?.textContent === 'Hoy').map(b => b.dataset.ntId),
           ayer: filas.filter(b => b.querySelector('.nt-hoy--ayer')?.textContent === 'Ayer').map(b => b.dataset.ntId),
-          meta: filas[0].querySelector('.nt-c-meta').textContent };
+          meta: filas[0].querySelector('.nt-meta').textContent };
       });
       assert.deepEqual(a.hoy, [], `${ancho}: al día siguiente, ninguna dice «Hoy»`);
       assert.deepEqual(a.ayer, DATOS_EJ.noticias.slice(0, 3).filter(n => n.fecha === HOY).map(n => n.id), 'y la de hoy dice «Ayer»');
@@ -247,13 +250,13 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await lista.goto(local.url + '/mercado/', { waitUntil: 'load' });
       await lista.waitForSelector('#noticias[data-noticias-estado="listo"]', { timeout: 20000 });
       const l = await lista.evaluate(() => {
-        const primera = document.querySelector('#ntLista .nt-fila:nth-child(2) .nt-art');
-        const foto = primera.querySelector('.nt-art-foto').getBoundingClientRect(), texto = primera.querySelector('.nt-art-txt').getBoundingClientRect();
+        const portada = document.querySelector('#ntLista .nt-v-portada article.nt-p');
+        const foto = portada.querySelector('.nt-p-foto').getBoundingClientRect();
         return {
-          n: document.querySelectorAll('#ntLista .nt-art').length, botones: [...document.querySelectorAll('#ntLista .nt-art-abrir')].map(b => b.tagName + ':' + b.type),
-          titulos: [...document.querySelectorAll('#ntLista .nt-art-tit')].map(h => h.tagName),
-          resumen: document.querySelector('#ntLista .nt-art-resumen').textContent, unaLinea: getComputedStyle(document.querySelectorAll('#ntLista .nt-art-resumen')[1]).webkitLineClamp,
-          meta: document.querySelector('#ntLista .nt-art-meta').textContent, fotoDerecha: foto.left >= texto.right - 1,
+          n: document.querySelectorAll('#ntLista article').length, botones: [...document.querySelectorAll('#ntLista .nt-abrir')].map(b => b.tagName + ':' + b.type),
+          titulos: [...document.querySelectorAll('#ntLista .nt-titular')].map(h => h.tagName),
+          resumen: document.querySelector('#ntLista .nt-v-importa').textContent, sinResumen: document.querySelectorAll('#ntLista article p').length,
+          meta: document.querySelector('#ntLista .nt-meta').textContent, portadaGrande: foto.width >= 300,
           anchoPagina: document.documentElement.scrollWidth, h1: document.querySelector('h1').textContent, h2: document.getElementById('ntTit').textContent,
           traGrafico: document.getElementById('tokenizacion').compareDocumentPosition(document.getElementById('noticias')) & Node.DOCUMENT_POSITION_FOLLOWING,
         };
@@ -262,10 +265,10 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       assert.equal(l.n, 6, 'las 6');
       assert.ok(l.botones.every(b => b === 'BUTTON:button'));
       assert.ok(l.titulos.every(t => t === 'H3'), 'bajo «Noticias relacionadas» (h2), los titulares son h3');
-      assert.equal(l.resumen, `Por qué te importa: ${DATOS_EJ.noticias[0].porQueImporta}`, 'la primera dice ya por qué te importa');
-      assert.equal(l.unaLinea, '2', 'las demás, dos líneas de resumen (con una, se cortaba a media palabra)');
+      assert.equal(l.resumen, `Por qué te importa: ${DATOS_EJ.noticias[0].porQueImporta}`, 'debajo de la portada, por qué te importa');
+      assert.equal(l.sinResumen, 0, 'las tarjetas, solo titular, fuente y fecha (el resumen, en el detalle)');
       assert.equal(l.meta, `${corta(n0)} · ${ddmmaaaa(n0.fecha)} Hoy`);
-      assert.ok(l.fotoDerecha, 'la foto a la derecha');
+      assert.ok(l.portadaGrande, 'la portada, con la foto grande');
       assert.equal(l.anchoPagina, ancho);
       assert.equal(l.h1, 'Mercado de activos tokenizados');
       assert.equal(l.h2, 'Noticias relacionadas');
@@ -305,7 +308,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await lista.waitForFunction(() => !document.getElementById('ntDialogo').open && !document.documentElement.classList.contains('nt-dialogo-abierto'));
       assert.equal(await lista.evaluate(() => document.activeElement.dataset.ntId), n.id);
       // Con el ratón: la fila entera abre; «×» cierra.
-      await lista.click(`#ntLista #${DATOS_EJ.noticias[3].id} .nt-art`, { position: { x: 30, y: 30 } });
+      await lista.click(`#ntLista #${DATOS_EJ.noticias[3].id} article`, { position: { x: 30, y: 30 } });
       await lista.waitForSelector('#ntDialogo[open]');
       await lista.click('#ntDialogo [data-nt-cerrar]');
       await lista.waitForFunction(() => !document.getElementById('ntDialogo').open && !document.documentElement.classList.contains('nt-dialogo-abierto'));
@@ -313,7 +316,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await lista.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
       await lista.waitForFunction(() => document.getElementById('ntTit').textContent === 'Related news');
       const en = await lista.evaluate(() => ({ fecha: document.getElementById('ntFecha').textContent,
-        primero: document.querySelector('#ntLista .nt-art-tit').textContent, hoy: document.querySelector('#ntLista .nt-hoy').textContent,
+        primero: document.querySelector('#ntLista .nt-titular').textContent, hoy: document.querySelector('#ntLista .nt-hoy').textContent,
         nota: document.getElementById('ntNota').textContent, h1: document.querySelector('h1').textContent }));
       assert.deepEqual(en, { fecha: `Updated on ${enBreve(DATOS_EJ.actualizadoEl)}`, primero: DATOS_EJ.noticias[0].en.titulo, hoy: 'Today',
         nota: 'Illustrative AI-generated images, not photos of the news.', h1: 'Tokenised asset market' });
@@ -345,19 +348,19 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
       await pagina.waitForSelector('#mercado[data-noticias-estado="listo"]', { timeout: 20000 });
       assert.equal(await pagina.locator('#ntLista .nt-hoy').count(), 0);
-      assert.equal(await pagina.getAttribute('#ntLista .nt-c', 'data-nt-id'), DATOS_EJ.noticias[0].id);
+      assert.equal(await pagina.getAttribute('#ntLista a[data-nt-id]', 'data-nt-id'), DATOS_EJ.noticias[0].id);
       await pagina.close();
     }
     // Una foto que no carga: se quita y queda el fondo oscuro; el titular sigue.
     {
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
-      await pagina.route('**/noticias-editoriales/*.webp', r => r.fulfill({ status: 404, body: '' }));
+      await pagina.route('**/noticias-editoriales/**', r => r.fulfill({ status: 404, body: '' }));
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
       await pagina.waitForSelector('#mercado[data-noticias-estado="listo"]', { timeout: 20000 });
       await pagina.evaluate(() => document.getElementById('mercado').scrollIntoView());
       await pagina.waitForFunction(() => document.querySelectorAll('#ntLista .nt-foto--sin').length === 3);
       assert.equal(await pagina.locator('#ntLista img').count(), 0);
-      assert.equal(await pagina.locator('#ntLista .nt-c-tit').count(), 3);
+      assert.equal(await pagina.locator('#ntLista .nt-p-tit, #ntLista .nt-t-tit').count(), 3);
       await pagina.close();
     }
     // Sin el archivo: lo dice, sin ninguna noticia, y el resto de Inicio sigue.
@@ -370,4 +373,352 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
     assert.ok(await pagina.isVisible('#relPortada'));
     await pagina.close();
   } finally { await navegador.close(); await local.cerrar(); }
+});
+
+/* ---- Noticias que entran por los ojos (14/11/2026): las noticias de Inicio escritas en el HTML publicado ---- */
+const portadaNt = require('../rwadar-noticias-portada.js');
+// Una edición fija (no la viva): un PR de las noticias de la mañana no depende de estas pruebas.
+const TEXTO_VIS = lee('rwadar-acceso/fixtures/noticias-visual.json');
+const VIS = JSON.parse(TEXTO_VIS);
+
+test('el HTML de las noticias de Inicio: portada y dos tarjetas con los atributos del modelo, escapado y sin estilos en línea', () => {
+  const datos = modelo.validarNoticias(VIS);
+  const h = portadaNt.htmlNoticiasInicio(VIS);
+  assert.deepEqual([...h.matchAll(/<li\b[^>]*>/g)].map(m => m[0]), ['<li class="nt-v-portada">', '<li>', '<li>']);
+  const imgs = [...h.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
+  assert.equal(imgs.length, 3);
+  imgs.forEach((img, i) => {
+    const a = modelo.atributosFoto(datos.noticias[i], i === 0 ? 'portada' : 'tarjeta');
+    assert.ok(img.includes(` src="${a.src}"`) && img.includes(` srcset="${a.srcset}"`) && img.includes(` sizes="${a.sizes}"`), img);
+    assert.ok(img.includes(' alt=""') && img.includes(' decoding="async"') && img.includes(' width="1200" height="800"'));
+    assert.equal(/\sloading=/.test(img), i > 0, i === 0 ? 'la portada, sin loading' : 'las tarjetas, perezosas');
+  });
+  assert.doesNotMatch(h, /\sstyle\s*=|\son[a-z]+\s*=/, 'la CSP no admite estilos en línea');
+  // Los textos, escapados: & " ' y = (los que deja pasar el validador).
+  assert.ok(h.includes('>Bonos &quot;verdes&quot; &amp; pagarés: 11 firmas sin registro<'));
+  assert.ok(h.includes('>L&#39;Europe: los 27 piden un tope 50 veces mayor<'));
+  assert.ok(h.includes('>Deuda onchain&#61;menos costes, según el emisor de Robinhood<'));
+  assert.equal(portadaNt.esc('<b>x</b> & "y" \'z\' a=b'), '&lt;b&gt;x&lt;/b&gt; &amp; &quot;y&quot; &#39;z&#39; a&#61;b');
+  // Un titular con marcado ni siquiera se escribe: la función valida la edición antes.
+  const conB = structuredClone(VIS); conB.noticias[0].titulo = '<b>x</b>';
+  assert.throws(() => portadaNt.htmlNoticiasInicio(conB), /caracteres no permitidos/);
+  // Ni «Hoy» ni «Ayer» (dependen del día de quien mira: los pone el JS).
+  assert.doesNotMatch(h, /nt-hoy|>Hoy<|>Ayer</);
+  // Enlaces a su detalle, el titular primero en el DOM y la píldora oculta al lector.
+  for (const n of datos.noticias.slice(0, 3)) assert.ok(h.includes(`href="/mercado/#${n.id}" data-nt-id="${n.id}"`));
+  assert.match(h, /<span class="nt-p-cat nt-cat--riesgo" aria-hidden="true">Riesgo<\/span><span class="nt-p-tit"/);
+  // Con 1 noticia, la portada sola; con 2, la portada y una tarjeta ancha (sin hueco al lado).
+  const una = portadaNt.htmlNoticiasInicio({ ...VIS, noticias: VIS.noticias.slice(0, 1) });
+  assert.deepEqual([...una.matchAll(/<li\b[^>]*>/g)].map(m => m[0]), ['<li class="nt-v-portada">']);
+  const dos = portadaNt.htmlNoticiasInicio({ ...VIS, noticias: VIS.noticias.slice(0, 2) });
+  assert.deepEqual([...dos.matchAll(/<li\b[^>]*>/g)].map(m => m[0]), ['<li class="nt-v-portada">', '<li class="nt-v-ancha">']);
+  assert.ok(dos.includes(` sizes="${modelo.SIZES.anchaDos}"`));
+});
+
+test('el HTML de Inicio no depende del reloj ni del huso: misma edición, mismos bytes', () => {
+  const ruta = path.join(RAIZ, 'rwadar-noticias-portada.js'), fixture = path.join(RAIZ, 'rwadar-acceso/fixtures/noticias-visual.json');
+  const correr = (tz, ms) => execSync(`${JSON.stringify(process.execPath)} -e ${JSON.stringify(
+    `const R=Date;globalThis.Date=class extends R{constructor(...a){super(...(a.length?a:[${ms}]))}static now(){return ${ms}}};` +
+    `const p=require(${JSON.stringify(ruta)});process.stdout.write(p.htmlNoticiasInicio(JSON.parse(require('fs').readFileSync(${JSON.stringify(fixture)},'utf8'))))`)}`,
+  { encoding: 'utf8', env: { ...process.env, TZ: tz } });
+  const a = correr('Pacific/Kiritimati', Date.UTC(2026, 10, 13, 23, 30)), b = correr('America/Adak', Date.UTC(2027, 0, 2, 3, 0));
+  assert.ok(a.length > 1000);
+  assert.equal(a, b);
+  assert.equal(a, portadaNt.htmlNoticiasInicio(VIS));
+});
+
+test('el index.html publicado: las noticias dentro de #ntLista, con su firma, «Cargando…» oculto y la nota visible; si algo no cuadra, se para', () => {
+  const fuente = lee('rwadar-site/index.html');
+  const salida = portadaNt.prepararInicioPublicado(fuente, VIS);
+  const ul = salida.match(/<ul class="nt-v" id="ntLista"([^>]*)>([\s\S]*?)<\/ul>/);
+  assert.ok(ul);
+  assert.equal(ul[1], ` aria-labelledby="ntTit" data-nt-prepintado="${modelo.firmaPrepintado(modelo.validarNoticias(VIS))}"`, 'sin hidden y con la firma');
+  assert.equal(ul[2], portadaNt.htmlNoticiasInicio(VIS));
+  assert.ok(salida.includes('<p class="nt-estado" id="ntEstado" role="status" hidden>Cargando las noticias…</p>'));
+  assert.ok(salida.includes('<p class="nt-nota" id="ntNota">Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>'));
+  // Fuera de la lista, el resto de la página no cambia.
+  assert.equal(portadaNt.sinNoticiasInicio(salida), fuente);
+  // Sin la lista vacía (o ya escrita), se para.
+  assert.throws(() => portadaNt.inyectarNoticiasInicio(salida, VIS), /lista de noticias/);
+  assert.throws(() => portadaNt.inyectarNoticiasInicio(fuente.replace('id="ntLista"', 'id="otraLista"'), VIS), /lista de noticias/);
+  assert.throws(() => portadaNt.inyectarNoticiasInicio(fuente.replace(' role="status">Cargando las noticias…', ' role="status">Cargando…'), VIS), /Cargando/);
+  // La regla de la CSP mira todo el HTML: un titular con « onchain=» la dispararía sin el escape.
+  assert.throws(() => portadaNt.validaMarcadoEstricto('x', '<p> onchain=menos</p>'), /CSP/);
+  portadaNt.validaMarcadoEstricto('x', salida);
+  // Dos ediciones distintas: el HTML publicado cambia, pero sin las noticias es el mismo
+  // (lo que compara la mañana automática entre `main` y producción).
+  const otra = portadaNt.prepararInicioPublicado(fuente, JSON.parse(TEXTO));
+  assert.notEqual(otra, salida);
+  assert.equal(portadaNt.sinNoticiasInicio(otra), portadaNt.sinNoticiasInicio(salida));
+  // El publicador lo aplica al index.html de la carpeta temporal, tras validar y revisar la guía; nunca a rwadar-site/index.html.
+  const publicador = lee('rwadar-publicar.js');
+  assert.match(publicador, /const inicioTemporal = path\.join\(temporal, 'index\.html'\);\n\s*fs\.writeFileSync\(inicioTemporal, prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias\), 'utf8'\);/);
+  assert.ok(publicador.indexOf('noticiasModelo.revisarEdicion(') < publicador.indexOf('prepararInicioPublicado(fs.readFileSync'));
+  assert.doesNotMatch(publicador, /writeFileSync\(FILE[^\n]*(?:prepararInicio|inyectarNoticias)/);
+  assert.doesNotMatch(publicador, /function validaMarcadoEstricto/, 'una sola regla de la CSP, la del módulo');
+  // Y el módulo entra en la compuerta del sello.
+  const { RUTAS_CONTENIDO_APROBADO } = require('../rwadar-publicacion-segura.js');
+  assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-noticias-portada.js'));
+  // La edición viva también pasa el camino entero del publicador (la mañana lo hace antes de su PR).
+  portadaNt.prepararInicioPublicado(fuente, JSON.parse(TEXTO));
+  assert.deepEqual(modelo.revisarEdicion(JSON.parse(TEXTO)).errores, []);
+});
+
+test('la biblioteca de fotos: el comprobador para con una variante cambiada, que falta o que sobra, de otro tamaño, o con temas y genéricas mal', async () => {
+  const fotosMod = require('../rwadar-noticias-editoriales.js');
+  const sharp = require('sharp');
+  const os = require('node:os');
+  const real = fotosMod.cargarFotosNoticias(RAIZ, { claves: [] });
+  assert.ok(real.variantes.length === real.fotos.length * 2);
+  assert.ok(real.publicables.some(f => f.salida === `noticias-editoriales/480/${real.fotos[0].clave}.webp`));
+  const caso = async (nombre, romper, error) => {
+    const raiz = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-fotos-'));
+    try {
+      fs.cpSync(path.join(RAIZ, 'rwadar-editorial-source/noticias'), path.join(raiz, 'rwadar-editorial-source/noticias'), { recursive: true });
+      const dir = path.join(raiz, 'rwadar-editorial-source/noticias');
+      const spec = JSON.parse(fs.readFileSync(path.join(dir, 'fotos.json'), 'utf8'));
+      await romper(dir, spec);
+      fs.writeFileSync(path.join(dir, 'fotos.json'), JSON.stringify(spec));
+      assert.throws(() => fotosMod.cargarFotosNoticias(raiz, { claves: [] }), error, nombre);
+    } finally { fs.rmSync(raiz, { recursive: true, force: true }); }
+  };
+  const clave = real.fotos[0].clave;
+  await caso('un byte cambiado en 480', dir => { const p = path.join(dir, 'fotos/480', clave + '.webp'); const b = fs.readFileSync(p); b[b.length - 1] ^= 1; fs.writeFileSync(p, b); }, /480\/.*no coinciden/);
+  await caso('falta la de 960', dir => fs.rmSync(path.join(dir, 'fotos/960', clave + '.webp')), /falta la foto .*960/);
+  await caso('sobra un archivo en 480', dir => fs.writeFileSync(path.join(dir, 'fotos/480/sobra.webp'), 'x'), /no permitido.*480\/sobra\.webp/);
+  await caso('sobra una carpeta', dir => fs.mkdirSync(path.join(dir, 'fotos/720')), /no permitido.*720/);
+  await caso('variante de 480 × 300 (con sus bytes y su sha256 al día)', async (dir, spec) => {
+    // La propia foto, reducida a 480 × 300: pesa como una variante de verdad.
+    const b = await sharp(path.join(dir, 'fotos', clave + '.webp')).resize(480, 300, { fit: 'fill' }).webp({ quality: 80 }).toBuffer();
+    assert.ok(b.length > 1024 && b.length <= 60000);
+    fs.writeFileSync(path.join(dir, 'fotos/480', clave + '.webp'), b);
+    spec.fotos[clave].variantes['480'] = { bytes: b.length, sha256: require('node:crypto').createHash('sha256').update(b).digest('hex') };
+  }, /tamaño de 480\//);
+  await caso('un tema que no está en la lista', (dir, spec) => { spec.fotos[clave].temas = ['inventado']; }, /temas/);
+  await caso('un tema sin ninguna foto', (dir, spec) => { spec.temas.sin_foto_prueba = 'Sin foto'; spec.temas['sin-foto-prueba'] = 'Sin foto'; delete spec.temas.sin_foto_prueba; }, /temas sin ninguna foto: sin-foto-prueba/);
+  await caso('una genérica que no existe', (dir, spec) => { spec.genericas.riesgo = 'no-existe'; }, /genericas/);
+  await caso('falta una categoría en las genéricas', (dir, spec) => { delete spec.genericas.mercado; }, /genericas/);
+  await caso('sin variantes declaradas', (dir, spec) => { delete spec.fotos[clave].variantes; }, /variantes/);
+});
+
+test('en Chromium, sobre la web construida: Inicio llega con las noticias escritas, el JS no las rehace, el velo se lee con una foto blanca, la letra grande y el movimiento reducido', { skip: sinNavegador || (!fs.existsSync(path.join(RAIZ, 'rwadar-publicado/index.html')) && 'falta rwadar-publicado (npm run test:web)'), timeout: 240000 }, async () => {
+  // La edición fija, la misma que escribe en el HTML este arnés (no la viva).
+  const raizPub = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'rwadar-pub-'));
+  fs.cpSync(path.join(RAIZ, 'rwadar-publicado'), raizPub, { recursive: true });
+  const indice = path.join(raizPub, 'index.html');
+  fs.writeFileSync(indice, portadaNt.prepararInicioPublicado(portadaNt.sinNoticiasInicio(fs.readFileSync(indice, 'utf8')), VIS));
+  fs.writeFileSync(path.join(raizPub, 'datos/noticias-v2.json'), TEXTO_VIS);
+  const local = await arrancarWorkerLocal({ raiz: raizPub, puerto: 0,
+    responder: async url => (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
+  const navegador = await playwright.chromium.launch();
+  const BLANCA = await require('sharp')({ create: { width: 1200, height: 800, channels: 3, background: '#ffffff' } }).webp().toBuffer();
+  const datos = modelo.validarNoticias(VIS);
+  try {
+    // 1 · Sin JS: se ven las tres, con su foto y la nota.
+    {
+      const ctx = await navegador.newContext({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      const r = await p.evaluate(() => ({ n: document.querySelectorAll('#ntLista > li').length, visible: !document.getElementById('ntLista').hidden,
+        nota: !document.getElementById('ntNota').hidden, cargando: !document.getElementById('ntEstado').hidden }));
+      assert.deepEqual(r, { n: 3, visible: true, nota: true, cargando: false });
+      await ctx.close();
+    }
+    // 2 · Con JS, en castellano: los mismos nodos (no se rehacen), «Hoy» si toca, y lo pintado por el JS es igual que lo escrito.
+    for (const [ancho, alto, escala] of [[390, 844, 2], [1366, 900, 1]]) {
+      const ctx = await navegador.newContext({ viewport: { width: ancho, height: alto }, deviceScaleFactor: escala, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      const errores = [];
+      p.on('pageerror', e => errores.push(e.message));
+      await p.clock.setFixedTime(aMediodia(datos.noticias[0].fecha));
+      await p.route('**/datos/noticias-v2.json', async r => { await new Promise(f => setTimeout(f, 300)); return r.fulfill({ status: 200, contentType: 'application/json', body: TEXTO_VIS }); });
+      await p.goto(local.url + '/', { waitUntil: 'domcontentloaded' });
+      await p.evaluate(() => { window.__marca = document.querySelector('#ntLista > li'); window.__html = document.getElementById('ntLista').innerHTML; });
+      await p.waitForSelector('#mercado[data-noticias-estado="listo"]', { timeout: 20000 });
+      const r = await p.evaluate(() => ({ mismo: window.__marca === document.querySelector('#ntLista > li'), n: document.querySelectorAll('#ntLista > li').length,
+        sinHoy: document.getElementById('ntLista').innerHTML.replace(/ <span class="nt-hoy[^"]*">(?:Hoy|Ayer)<\/span>/g, '') === window.__html,
+        firma: document.getElementById('ntLista').dataset.ntPrepintado, desborde: document.documentElement.scrollWidth - innerWidth }));
+      assert.deepEqual(errores, []);
+      assert.equal(r.mismo, true, `${ancho}: el JS no rehace la lista escrita`);
+      assert.equal(r.sinHoy, true, `${ancho}: solo añade «Hoy» o «Ayer»`);
+      assert.equal(r.n, 3);
+      assert.equal(r.desborde, 0);
+      // Las fotos: la portada sin lazy, las tarjetas con lazy, y del tamaño justo.
+      await p.evaluate(() => document.getElementById('mercado').scrollIntoView());
+      await p.waitForFunction(() => [...document.querySelectorAll('#ntLista img')].every(i => i.complete), null, { timeout: 20000 });
+      const fotos = await p.evaluate(() => [...document.querySelectorAll('#ntLista img')].map(i => ({ lazy: i.loading, src: i.currentSrc, w: i.getBoundingClientRect().width })));
+      assert.equal(fotos[0].lazy, 'auto');
+      assert.ok(fotos.slice(1).every(f => f.lazy === 'lazy'));
+      for (const f of fotos) {
+        const real = Number((f.src.match(/noticias-editoriales\/(480|960)\//) || [0, 1200])[1]);
+        assert.ok(real <= Math.max(480, 1.5 * f.w * escala) + 1, `${ancho}: ${f.src} para ${Math.round(f.w)} px`);
+      }
+      await ctx.close();
+    }
+    // 2b · Lo que pinta el JS (con otra firma, la rehace) es exactamente lo que escribió el publicador.
+    for (const ancho of [390, 1366]) {
+      const ctx = await navegador.newContext({ viewport: { width: ancho, height: 900 }, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      await p.route(local.url + '/', async r => {
+        const resp = await r.fetch();
+        return r.fulfill({ response: resp, body: (await resp.text()).replace(/data-nt-prepintado="[0-9a-f]{8}"/, 'data-nt-prepintado="00000000"') });
+      });
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      await p.waitForSelector('#mercado[data-noticias-estado="listo"]', { timeout: 20000 });
+      // El HTML del publicador, leído por el propio navegador (así los dos se serializan igual).
+      const r = await p.evaluate(esperado => { const t = document.createElement('template'); t.innerHTML = esperado;
+        return { html: document.getElementById('ntLista').innerHTML.replace(/ <span class="nt-hoy[^"]*">(?:Hoy|Ayer)<\/span>/g, ''), esperado: t.innerHTML,
+          firma: document.getElementById('ntLista').dataset.ntPrepintado }; }, portadaNt.htmlNoticiasInicio(VIS));
+      assert.equal(r.firma, undefined, 'con otra firma, la rehace');
+      assert.equal(r.html, r.esperado, `${ancho}: el JS pinta lo mismo que el publicador`);
+      await ctx.close();
+    }
+    // 3 · En inglés, se rehacen con los textos «en»; con el archivo caído, se queda la escrita.
+    {
+      const ctx = await navegador.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' });
+      await ctx.addInitScript(() => { try { localStorage.setItem('rwadar.idioma', 'en'); } catch { /* sin almacenamiento */ } });
+      const p = await ctx.newPage();
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      const enIngles = await p.evaluate(() => document.documentElement.lang);
+      if (enIngles === 'en') {
+        await p.waitForFunction(t => document.querySelector('#ntLista .nt-p-tit')?.textContent === t, VIS.noticias[0].en.titulo, { timeout: 20000 });
+        assert.equal(await p.evaluate(() => document.getElementById('ntLista').dataset.ntPrepintado), undefined);
+      }
+      await ctx.close();
+      const ctx2 = await navegador.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' });
+      const p2 = await ctx2.newPage();
+      await p2.route('**/datos/noticias-v2.json', r => r.fulfill({ status: 503, body: '' }));
+      await p2.goto(local.url + '/', { waitUntil: 'load' });
+      await p2.waitForSelector('#mercado[data-noticias-estado="prepintado"]', { timeout: 20000 });
+      assert.equal(await p2.locator('#ntLista > li').count(), 3);
+      assert.equal(await p2.isVisible('#ntEstado'), false, 'sin el aviso de error: es la misma edición publicada');
+      await ctx2.close();
+    }
+    // 4 · Contraste con una foto blanca entera (el peor caso): el píxel más claro bajo el texto, con el texto transparente.
+    for (const [ancho, alto] of [[320, 700], [390, 844], [1366, 900]]) {
+      const ctx = await navegador.newContext({ viewport: { width: ancho, height: alto }, deviceScaleFactor: 1, serviceWorkers: 'block', reducedMotion: 'reduce' });
+      const p = await ctx.newPage();
+      await p.route('**/noticias-editoriales/**', r => r.fulfill({ status: 200, contentType: 'image/webp', body: BLANCA }));
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      await p.evaluate(() => { document.getElementById('mercado').scrollIntoView(); for (const i of document.querySelectorAll('#ntLista img')) i.loading = 'eager'; });
+      await p.waitForFunction(() => [...document.querySelectorAll('#ntLista img')].every(i => i.complete && i.naturalWidth > 0), null, { timeout: 20000 });
+      await p.waitForSelector('#mercado[data-noticias-estado]', { timeout: 20000 });
+      await p.evaluate(() => {
+        // El texto, transparente (por el CSSOM: la CSP no deja meter un <style>), conservando su caja.
+        for (const e of document.querySelectorAll('#ntLista .nt-p-txt *, #ntLista .nt-t-txt *')) e.style.setProperty('color', 'transparent', 'important');
+        document.querySelector('#ntLista .nt-p').scrollIntoView({ block: 'center' });
+      });
+      await p.waitForTimeout(300);
+      // Las cajas del texto, medidas justo antes de la captura (la página ya no se mueve).
+      const cajas = await p.evaluate(ancho => {
+        const sel = ancho >= 1024 ? '#ntLista .nt-p-tit, #ntLista .nt-p .nt-meta, #ntLista .nt-t-tit, #ntLista .nt-t .nt-meta' : '#ntLista .nt-p-tit, #ntLista .nt-p .nt-meta';
+        return [...document.querySelectorAll(sel)].map(e => { const b = e.getBoundingClientRect(); return { x: b.x, y: b.y, w: b.width, h: b.height }; });
+      }, ancho);
+      const png = await p.screenshot();
+      if (process.env.RWADAR_CAPTURAS) fs.writeFileSync(path.join(process.env.RWADAR_CAPTURAS, `blanca-${ancho}.png`), png);
+      const minimo = await p.evaluate(async ({ datos, cajas }) => {
+        const img = new Image(); img.src = 'data:image/png;base64,' + datos; await img.decode();
+        const c = document.createElement('canvas'); c.width = img.width; c.height = img.height;
+        const g = c.getContext('2d'); g.drawImage(img, 0, 0);
+        const lum = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+        const texto = 0.2126 * lum(247) + 0.7152 * lum(245) + 0.0722 * lum(240);
+        let peor = Infinity;
+        for (const b of cajas) {
+          if (b.w < 1 || b.y < 0 || b.y + b.h > img.height) continue;
+          const d = g.getImageData(Math.round(b.x), Math.round(b.y), Math.max(1, Math.round(b.w)), Math.max(1, Math.round(b.h))).data;
+          for (let i = 0; i < d.length; i += 4) {
+            const L = 0.2126 * lum(d[i]) + 0.7152 * lum(d[i + 1]) + 0.0722 * lum(d[i + 2]);
+            peor = Math.min(peor, (texto + 0.05) / (L + 0.05));
+          }
+        }
+        return peor;
+      }, { datos: png.toString('base64'), cajas });
+      console.log(`contraste con foto blanca a ${ancho}: ${minimo.toFixed(2)}:1`);
+      assert.ok(minimo >= 4.5, `${ancho}: contraste ${minimo.toFixed(2)}:1 con una foto blanca (AA pide 4,5:1)`);
+      assert.ok(minimo >= 7, `${ancho}: meta de diseño 7:1 (${minimo.toFixed(2)})`);
+      // Movimiento reducido: al pasar el ratón, la foto no cambia.
+      if (ancho >= 1024) {
+        await p.hover('#ntLista .nt-p');
+        assert.equal(await p.evaluate(() => getComputedStyle(document.querySelector('#ntLista .nt-p img')).transform), 'none');
+      }
+      await ctx.close();
+    }
+    // 5 · Letra grande (32 px en el navegador, a 390): una columna, la portada crece y ningún titular sale de su tarjeta.
+    {
+      const ctx = await navegador.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      const cdp = await ctx.newCDPSession(p);
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      await cdp.send('Page.setFontSizes', { fontSizes: { standard: 32, fixed: 26 } });
+      await p.waitForTimeout(300);
+      const r = await p.evaluate(() => {
+        const l = document.getElementById('ntLista');
+        const columnas = getComputedStyle(l).gridTemplateColumns.split(' ').length;
+        const portada = l.querySelector('.nt-p').getBoundingClientRect().height;
+        const fuera = [...l.querySelectorAll('.nt-p-tit,.nt-t-tit')].filter(t => t.getBoundingClientRect().bottom > t.closest('a').getBoundingClientRect().bottom + 1).length;
+        // Lo que salga de la pantalla en la sección (el resto de Inicio no es de esta prueba).
+        const desborde = [...l.querySelectorAll('*')].filter(n => n.getBoundingClientRect().right > innerWidth + 0.5).length;
+        return { columnas, portada, fuera, desborde };
+      });
+      assert.equal(r.columnas, 1, 'con la letra grande, una columna');
+      assert.ok(r.portada > 269, `la portada crece (${r.portada})`);
+      assert.equal(r.fuera, 0);
+      assert.equal(r.desborde, 0);
+      await ctx.close();
+    }
+    // 5b · /mercado/ con 5 noticias: sin huecos al final de la rejilla (la última se estira) ni en 3 columnas ni en 2.
+    for (const [ancho, columnas] of [[1366, 3], [768, 2]]) {
+      const ctx = await navegador.newContext({ viewport: { width: ancho, height: 900 }, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      await p.goto(local.url + '/mercado/', { waitUntil: 'load' });
+      await p.waitForSelector('#noticias[data-noticias-estado="listo"]', { timeout: 20000 });
+      const r = await p.evaluate(() => {
+        const l = document.getElementById('ntLista'), b = l.getBoundingClientRect(), ultimo = l.lastElementChild.getBoundingClientRect();
+        return { columnas: getComputedStyle(l).gridTemplateColumns.split(' ').length, derecha: Math.round(b.right - ultimo.right),
+          ancha: l.lastElementChild.classList.contains('nt-v-ancha') };
+      });
+      assert.equal(r.columnas, columnas);
+      assert.equal(r.derecha, 0, `${ancho}: la última llega al borde derecho (sin hueco)`);
+      assert.equal(r.ancha, true, 'y pide la foto de tarjeta ancha');
+      await ctx.close();
+    }
+    // 6 · Tableta (1024 × 1366): la foto de portada se pide antes de acabar de leer el HTML del todo (antes del DOMContentLoaded).
+    {
+      const ctx = await navegador.newContext({ viewport: { width: 1024, height: 1366 }, deviceScaleFactor: 2, serviceWorkers: 'block' });
+      const p = await ctx.newPage();
+      const pedidas = [];
+      p.on('request', q => { if (/noticias-editoriales\//.test(q.url())) pedidas.push({ url: q.url(), t: Date.now() }); });
+      let dcl = 0;
+      p.on('domcontentloaded', () => { dcl = Date.now(); });
+      await p.goto(local.url + '/', { waitUntil: 'load' });
+      const primera = pedidas.find(x => x.url.includes(datos.noticias[0].imagen));
+      assert.ok(primera, 'la foto de portada se pide al cargar');
+      assert.ok(primera.t <= dcl, 'antes de que acabe el JavaScript');
+      await ctx.close();
+    }
+  } finally { await navegador.close(); await local.cerrar(); fs.rmSync(raizPub, { recursive: true, force: true }); }
+});
+
+test('la guía de titulares (GUIA-TITULARES.md): sus apartados fijos, las fotos que nombra existen y cubre todos los temas', () => {
+  const ruta = path.join(RAIZ, 'rwadar-editorial-source/noticias/GUIA-TITULARES.md');
+  assert.ok(fs.existsSync(ruta), 'la guía de titulares tiene que existir: la leen las noticias automáticas de cada mañana');
+  const guia = fs.readFileSync(ruta, 'utf8');
+  for (const apartado of ['## 1 · Las reglas del titular', '## 2 · Ejemplos de las ediciones reales', '## 3 · Cómo se escribe uno', '## 4 · La foto']) {
+    assert.ok(guia.includes(apartado), apartado);
+  }
+  const spec = JSON.parse(lee('rwadar-editorial-source/noticias/fotos.json'));
+  const tabla = guia.slice(guia.indexOf('## 4 · La foto'));
+  const nombradas = [...new Set([...tabla.matchAll(/`([a-z0-9-]+)`/g)].map(m => m[1]))].filter(k => !/^(?:fotos|genericas|temas|faltaria)$/.test(k));
+  for (const k of nombradas) assert.ok(Object.hasOwn(spec.fotos, k), `la guía nombra «${k}», que no está en fotos.json`);
+  for (const k of Object.keys(spec.fotos)) assert.ok(nombradas.includes(k), `la foto «${k}» no sale en la tabla de la guía`);
+  for (const [tema, nombre] of Object.entries(spec.temas)) {
+    const fila = tabla.split('\n').find(l => l.startsWith(`| ${nombre} |`));
+    assert.ok(fila, `falta el tema «${nombre}» en la tabla`);
+    const deTabla = [...fila.matchAll(/`([a-z0-9-]+)`/g)].map(m => m[1]).sort();
+    const deFotos = Object.entries(spec.fotos).filter(([, f]) => f.temas.includes(tema)).map(([k]) => k).sort();
+    assert.deepEqual(deTabla, deFotos, `las fotos del tema «${nombre}» en la guía y en fotos.json`);
+  }
+  for (const [cat, clave] of Object.entries(spec.genericas)) assert.ok(guia.includes(`${modelo.CATEGORIAS[cat].es.toLowerCase()} → \`${clave}\``), `genérica de ${cat}`);
+  // El largo de la guía es el del programa.
+  assert.ok(guia.includes(`${modelo.REGLAS_TITULAR.max} caracteres como mucho`));
 });

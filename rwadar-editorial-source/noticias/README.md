@@ -2,8 +2,11 @@
 
 Biblioteca reutilizable de fotos editoriales **por tema** para las tarjetas de
 noticias de Inicio y de la sección de noticias. Cada noticia elige una clave en
-su campo `imagen` (por ejemplo, `"imagen": "alerta-fraude"`); varias noticias
-pueden compartir la misma foto.
+su campo `imagen` (por ejemplo, `"imagen": "alerta-fraude"`). Desde el
+14/11/2026 la primera noticia es una portada con la foto grande, y **ninguna
+foto se repite en la misma edición** (lo comprueba `revisarEdicion()`): por eso
+los temas más usados tienen dos o tres escenas. Cómo se elige la foto de cada
+noticia: `GUIA-TITULARES.md`, apartado «4 · La foto».
 
 No son fotos de la noticia: son escenas genéricas generadas con IA, de revista
 financiera, nocturnas o de hora azul, con el tema oscuro de RWAdar. El sujeto va
@@ -25,7 +28,10 @@ biblioteca.
 - Sin cifras ni promesas: la foto acompaña al titular, no lo sustituye.
 - El `concepto` describe lo que **se ve** en la foto elegida, no lo que se
   pidió: si el modelo no dibujó el sello, el `concepto` no lo nombra.
-- **Una foto ya publicada no se cambia bajo la misma clave**: una toma nueva
+- **Nada de lingotes**: el modelo les graba sellos con letras falsas (2 de 2
+  tomas de prueba); para el oro, pepitas.
+- **Una foto ya publicada no se cambia bajo la misma clave**, tampoco sus
+  variantes de 480 y 960: una toma nueva
   va con una clave nueva (`acciones-eeuu-2`) y se cambia el campo `imagen` de
   las noticias. La precarga de imágenes comprueba la web publicada contra
   `fotos.json` y se pararía con una foto distinta bajo una clave ya servida.
@@ -47,9 +53,26 @@ biblioteca.
 - `fotos/<clave>.webp`: la foto lista para servir, 1200×800, WebP sin
   metadatos, como mucho 160 kB. La web la publica en
   `/noticias-editoriales/<clave>.webp`, y la app la carga desde
-  `https://rwadar.pages.dev/noticias-editoriales/<clave>.webp`.
+  `https://rwadar.pages.dev/noticias-editoriales/<clave>.webp` (la app ya
+  instalada, siempre esta).
+- `fotos/480/<clave>.webp` (480×320, como mucho 60 kB) y
+  `fotos/960/<clave>.webp` (960×640, como mucho 120 kB): las variantes, del
+  mismo recorte que la de 1200 (no de la de 1200: un paso menos de
+  compresión). Se publican en `/noticias-editoriales/480/` y `/960/`; la web
+  las elige con `srcset` y `sizes` y la app nueva según la pantalla
+  (`anchoFoto()` del modelo). Así una foto de 72 px ya no baja 1200 px.
+  `fotos.json` apunta sus bytes y su sha256 en `variantes`.
+- `fotos.json`, además: `temas` (la lista cerrada de temas de noticia),
+  `temas` de cada foto (de 1 a 3) y `genericas` (la foto de cada categoría
+  cuando ningún tema encaja; la usan las noticias automáticas de cada
+  mañana). `node rwadar-noticias-editoriales.js --comprobar` lo comprueba
+  todo: cada tema con al menos una foto, cada variante con su tamaño, bytes y
+  sha256, y nada en `fotos/`, `fotos/480/` ni `fotos/960/` que no sea de la
+  biblioteca.
 - `fotografiar.py`: genera las tomas con el modelo en el ordenador, sin
-  servicios de pago, las recorta y exporta, y apunta semilla, bytes y sha256.
+  servicios de pago, las recorta y exporta (la de 1200 y sus variantes), y
+  apunta semilla, bytes y sha256.
+- `GUIA-TITULARES.md`: cómo se escribe un titular y cómo se elige la foto.
 
 ## Licencia y transparencia
 
@@ -81,19 +104,43 @@ python rwadar-editorial-source/noticias/fotografiar.py --solo=clave --semilla=7 
 python rwadar-editorial-source/noticias/fotografiar.py --exportar              # recorta de nuevo (tras cambiar un encuadre)
 ```
 
+Con otra versión de Pillow, la misma toma puede dar otros bytes: `--exportar`
+de una foto ya publicada tiene que dar el mismo sha256 (si no, no se usa). El
+14/11/2026 las 8 publicadas salieron idénticas con Pillow 13.0.0 y de ahí
+salieron sus variantes.
+
 Para un tema nuevo: añade su clave en `fotos.json` con `prompt`, `concepto`,
-`encuadre` y una semilla, genera candidatas, míralas y exporta la elegida.
+`encuadre`, `temas` y una semilla, genera candidatas, míralas a tamaño
+completo y exporta la elegida; añádela a la tabla de `GUIA-TITULARES.md` (una
+prueba compara la tabla con `fotos.json`).
 Cambiar una foto cambia su `sha256` en `fotos.json`; si ya está publicada, va con otra clave (ver «Reglas»).
 
-## Temas
+## Temas y escenas
 
-| Clave | Escena |
-| --- | --- |
-| `alerta-fraude` | Un móvil sobre una mesa oscura con un gráfico de bolsa genérico en rojo de alerta y luces rojas y verdes desenfocadas detrás (pantalla retocada y en espejo). |
-| `acciones-eeuu` | Un escritorio de operaciones de noche con dos monitores con gráficos de bolsa genéricos (barras y tablas desenfocadas) y las luces de una ciudad detrás. Sustituye, antes de publicarse, a la fachada de columnas, que repetía el motivo de las tarjetas de ofertas. |
-| `red-europea` | Una red de líneas de luz que une los edificios de una ciudad europea genérica de noche, vista aérea. |
-| `pagares-deuda` | Una hoja en blanco, una pluma y dos tinteros en un escritorio oscuro con un leve brillo esmeralda (etiqueta del tintero desenfocada). |
-| `instituciones-ue` | Un edificio institucional europeo moderno de cristal a la hora azul, genérico. |
-| `bolsa-madrid` | El horizonte de un distrito de negocios con rascacielos al atardecer, de aire madrileño pero genérico. |
-| `pago-online` | Un portátil en una mesa de noche con una página de pago genérica desenfocada (pantalla retocada) y luz cálida. |
-| `regulador-espana` | La esquina de piedra de un edificio oficial clásico de aire madrileño de noche, con luz cálida y verde azulada. |
+23 fotos; cada una cubre de 1 a 3 temas de la lista cerrada de `fotos.json` (`temas`). La tabla de la guía (`GUIA-TITULARES.md`, «4 · La foto») dice qué foto va con cada tema.
+
+| Clave | Temas | Escena |
+| --- | --- | --- |
+| `alerta-fraude` | Avisos y fraude | Un móvil sobre una mesa oscura con un gráfico de bolsa genérico en rojo de alerta y luces rojas y verdes desenfocadas al fondo. |
+| `acciones-eeuu` | Acciones tokenizadas, Bolsas y mercados | Un escritorio de operaciones de noche con dos monitores que muestran gráficos de bolsa genéricos y las luces de una ciudad desenfocadas detrás. |
+| `red-europea` | Emisiones e infraestructura, Regulación en la UE | Una red de líneas de luz verde azulada que une los barrios de una ciudad europea genérica de noche, vista desde el aire. |
+| `pagares-deuda` | Bonos, pagarés y deuda | Una hoja en blanco, una pluma y dos tinteros sobre un escritorio oscuro de noche, con un leve brillo verde esmeralda. |
+| `instituciones-ue` | Regulación en la UE | Un edificio institucional europeo moderno de cristal a la hora azul, genérico y no reconocible. |
+| `bolsa-madrid` | Bolsas y mercados | El horizonte de un distrito de negocios con rascacielos al atardecer, de aire madrileño pero genérico. |
+| `pago-online` | Pagos y monedas estables, Avisos y fraude | Un portátil sobre una mesa de noche con una página de pago genérica desenfocada y una luz cálida. |
+| `regulador-espana` | Regulación en España | La esquina de piedra de un edificio oficial clásico de aire madrileño de noche, con balcones de hierro y luz cálida y verde azulada, genérica. |
+| `alerta-fraude-2` | Avisos y fraude | Un móvil con la pantalla rota tirado en el asfalto mojado de noche, con reflejos rojos y verde azulados. |
+| `alerta-fraude-3` | Avisos y fraude | Dos luces rojas de aviso en un muro de hormigón verde azulado de noche, reflejadas en el suelo mojado. |
+| `regulador-espana-2` | Regulación en España | El gran pasillo vacío de un edificio oficial clásico de noche, con columnas, lámparas de araña y el suelo de mármol brillante. |
+| `documentos-consulta` | Consultas y reclamaciones, Regulación en España | Una pila de folios en blanco con unas gafas encima, sobre un escritorio oscuro, bajo una lámpara verde. |
+| `instituciones-ue-2` | Regulación en la UE | Una sala de reuniones vacía con una mesa redonda de madera y sillas verde azuladas, con los ventanales a una ciudad de noche. |
+| `bonos-emision` | Bonos, pagarés y deuda | Dos pergaminos enrollados y atados con una cinta esmeralda sobre un escritorio de madera oscura. |
+| `inmuebles-ciudad` | Inmobiliario | Un edificio de viviendas con balcones y plantas en una calle con árboles, a la hora azul y con las luces encendidas. |
+| `inmuebles-costa` | Inmobiliario | Un pueblo de casas blancas en una ladera junto al mar al anochecer, con las ventanas encendidas. |
+| `oro-pepitas` | Oro y materias primas | Un montón de pepitas de oro y piedras verde azuladas sobre una pizarra oscura. |
+| `moneda-digital` | Pagos y monedas estables | Un disco liso de cristal verde azulado que brilla sobre una superficie negra, con su reflejo. |
+| `fondos-liquidez` | Fondos monetarios y del Tesoro | Un puerto deportivo de noche con veleros amarrados y las luces de una ciudad reflejadas en el agua quieta. |
+| `acciones-movil` | Acciones tokenizadas | Un móvil tumbado en la mesa de madera de una terraza de noche, con la pantalla de un brillo verde azulado sin nada legible y luces desenfocadas detrás. |
+| `banco-sala` | Bancos | El vestíbulo vacío de un edificio clásico de noche, con ventanales en arco, apliques encendidos, una lámpara de araña y el suelo de mármol verde. |
+| `servidores-seguridad` | Ciberseguridad | El pasillo de un centro de datos a oscuras, con filas de armarios de servidores y luces de estado verdes y verde azuladas. |
+| `planeta-noche` | Internacional | La Tierra de noche vista desde la órbita, con las luces de las ciudades a lo largo de unas costas imaginarias y una fina línea de atmósfera. |
