@@ -1,9 +1,15 @@
 /* =====================================================================
    RWAdar · «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día)
    ---------------------------------------------------------------------
-   Inicio: tres tarjetas grandes con foto editorial y solo el titular, sobre
-   un degradado oscuro (contraste AA en cualquier foto). /noticias/: las 8,
-   cada una con su foto, fecha, titular y resumen, y un diálogo de lectura.
+   Noticias que entran por los ojos (14/11/2026): Inicio y /mercado/ comparten
+   la rejilla .nt-v. La primera noticia es una portada: foto a sangre y, abajo,
+   la categoría, «fuente · fecha» y el titular sobre un velo que nunca baja de
+   0,72 detrás de una letra (contraste ≥ 7:1 con cualquier foto, también
+   blanca). Las demás, tarjetas con su foto 3:2; desde 64em, con el titular
+   encima y el mismo velo. Los cortes van en em: con la letra del navegador
+   grande, la rejilla pasa sola a una columna. Ningún titular se corta
+   (sin line-clamp ni overflow:hidden en las tarjetas). /mercado/ añade
+   «Por qué te importa» bajo la portada y un diálogo de lectura.
    Solo tokens de rwadar-20260820.css; el verde de la señal, para el foco,
    «Hoy» y el enlace. Sin estilos en línea: la CSP no lleva 'unsafe-inline'.
    ===================================================================== */
@@ -12,9 +18,9 @@
 .nt-nota{margin-top:10px;color:var(--tx-3);font:400 .75rem/1.45 var(--body)}
 
 /* La foto: cubre su caja; si no carga, queda un fondo oscuro con el halo de la marca. */
-.nt-foto,.nt-art-foto,.nt-dlg-arte{display:block;overflow:hidden;
+.nt-p-foto,.nt-t-foto,.nt-dlg-arte{display:block;overflow:hidden;
   background:radial-gradient(120% 90% at 70% 10%,rgba(37,227,154,.12),transparent 60%),var(--s2)}
-.nt-foto img,.nt-art-foto img,.nt-dlg-arte img{display:block;width:100%;height:100%;object-fit:cover}
+.nt-p-foto img,.nt-t-foto img,.nt-dlg-arte img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* ---- «Hoy» y «Ayer» sobre la foto ---- */
 .nt-hoy{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;
@@ -23,35 +29,107 @@
 .nt-hoy::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--senal);box-shadow:0 0 0 3px var(--senal-t)}
 .nt-hoy--ayer{color:var(--tx);box-shadow:inset 0 0 0 1px var(--linea)}
 .nt-hoy--ayer::before{background:var(--tx-2);box-shadow:none}
-
-/* ---- /noticias/: la lista ---- */
-.nt-lista{display:grid;gap:16px;margin:24px 0 0;padding:0;list-style:none}
-.nt-lista[hidden]{display:none}
-.nt-fila{min-width:0;scroll-margin-top:96px}
-.nt-art{position:relative;display:grid;grid-template-rows:auto 1fr;height:100%;overflow:hidden;border:var(--bd);border-radius:var(--r-l);background:var(--s1);transition:border-color var(--t-2) var(--ease)}
-.nt-art:hover{border-color:var(--tx-3)}
-.nt-art-foto{aspect-ratio:16/9}
-.nt-art-txt{display:flex;flex-direction:column;padding:16px 16px 14px}
-.nt-art-meta,.nt-dlg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;color:var(--tx-3);font:500 .8125rem/1.4 var(--body)}
-.nt-art-meta time,.nt-dlg-meta time{font-variant-numeric:tabular-nums}
-.nt-art-tit{margin:6px 0 0;color:var(--tx);font:700 1.25rem/1.22 var(--display);letter-spacing:-.015em;text-wrap:balance}
-.nt-art-abrir{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
-/* Toda la tarjeta abre el detalle. */
-.nt-art-abrir::after{content:'';position:absolute;inset:0;border-radius:var(--r-l)}
-.nt-art-abrir:focus-visible::after{outline:2px solid var(--senal);outline-offset:-2px}
-.nt-art-abrir:active::after{background:var(--ton)}
-.nt-art-resumen{margin:8px 0 0;color:var(--tx-2);font:400 1rem/1.5 var(--body);
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 .nt-hoy--dlg{position:static;margin-left:4px}
-@media (min-width:768px){
-  .nt-lista{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-  .nt-fila:first-child{grid-column:1/-1}
-  .nt-fila:first-child .nt-art{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:auto}
-  .nt-fila:first-child .nt-art-foto{aspect-ratio:auto;min-height:320px}
-  .nt-fila:first-child .nt-art-txt{justify-content:center;padding:32px}
-  .nt-fila:first-child .nt-art-tit{font-size:1.875rem;line-height:1.12}
-  .nt-art-txt{padding:20px 20px 18px}
+
+/* ---- La rejilla: portada y tarjetas ---- */
+.nt-v{--velo:11,10,10;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px;margin:16px 0 0;padding:0;list-style:none}
+.nt-v[hidden]{display:none}
+.nt-v>li{min-width:0;scroll-margin-top:96px}
+.nt-v-portada{grid-column:1/-1;display:flex;flex-direction:column}
+@media (max-width:21.99em){.nt-v{grid-template-columns:minmax(0,1fr);gap:16px}}
+/* Sin huecos: la última tarjeta, si queda sola en su fila, se estira (y su
+   <li> lleva .nt-v-ancha para pedir la foto más grande: modelo.esAncha). En
+   dos columnas, con un número par de noticias, ocupa todo el ancho. */
+@media (min-width:22em) and (max-width:63.99em){
+  .nt-v>li:last-child:nth-child(even){grid-column:1/-1}
+  .nt-v>li:last-child:nth-child(even) .nt-t-foto{aspect-ratio:2/1}
 }
+@media (min-width:64em){
+  .nt-v{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;grid-auto-flow:dense}
+  .nt-v-portada{grid-column:1/3;grid-row:span 2}
+  /* Con una sola noticia, la portada a todo el ancho; con dos, la portada y
+     una tarjeta en la misma fila (sin hueco debajo de la tarjeta). */
+  .nt-v-portada:only-child{grid-column:1/-1;grid-row:auto}
+  .nt-v-portada:nth-last-child(2){grid-row:auto}
+  /* Desde la cuarta, filas de tres: la última, sola, a todo el ancho; con
+     otra al lado, en dos columnas. */
+  .nt-v>li:last-child:nth-child(3n+4){grid-column:1/-1}
+  .nt-v>li:last-child:nth-child(3n+5){grid-column:span 2}
+}
+
+/* Portada: foto a sangre, titular encima. La tarjeta crece con el texto
+   (aspect-ratio da el alto mínimo, nunca un alto fijo). */
+.nt-p{position:relative;flex:1 0 auto;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/3;
+  border-radius:var(--r-l);color:var(--tx);text-decoration:none;isolation:isolate;background:var(--s2);-webkit-tap-highlight-color:transparent}
+@media (min-width:37.5em){.nt-p{aspect-ratio:16/9}}
+@media (min-width:64em){.nt-p{aspect-ratio:auto}.nt-v-portada:only-child .nt-p{aspect-ratio:21/9}}
+.nt-p-foto{position:absolute;inset:0;z-index:-1;border-radius:inherit}
+.nt-p-foto img{object-position:70% 50%}
+/* El velo: de 0 a .72 en la rampa de arriba (48 px; 64 desde 64em) y de .72
+   a .92 hasta abajo. El texto empieza debajo de la rampa (relleno 56/72). */
+.nt-p-txt{display:flex;flex-direction:column;padding:56px 16px 16px;border-radius:0 0 var(--r-l) var(--r-l);
+  background:linear-gradient(180deg,rgba(var(--velo),0) 0,rgba(var(--velo),.72) 48px,rgba(var(--velo),.92) 100%)}
+@media (min-width:64em){.nt-p-txt{padding:72px 28px 26px;
+  background:linear-gradient(180deg,rgba(var(--velo),0) 0,rgba(var(--velo),.72) 64px,rgba(var(--velo),.92) 100%)}}
+/* Orden visual: categoría, «fuente · fecha» y titular; en el DOM el titular
+   va primero para que el nombre del enlace empiece por él. */
+.nt-p-cat{order:-2;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;padding:4px 10px 4px 8px;
+  border-radius:var(--r-p);background:rgba(var(--velo),.88);font:600 .75rem/1.2 var(--body);letter-spacing:.02em}
+.nt-p-cat::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.nt-cat--regulacion{color:#9B8CFF}
+.nt-cat--mercado{color:#32C9F5}
+.nt-cat--producto{color:#4FE0B0}
+.nt-cat--riesgo{color:#FF8A80}
+/* «fuente · fecha» en línea: si no cabe, la fecha baja entera (sin dejar el punto solo). */
+.nt-meta{display:block;font:500 .8125rem/1.35 var(--body)}
+.nt-meta time{white-space:nowrap}
+.nt-meta time{font-variant-numeric:tabular-nums}
+.nt-meta .nt-hoy{position:static;margin-left:4px;padding:2px 8px 2px 6px;font-size:.6875rem;vertical-align:1px}
+.nt-p .nt-meta{order:-1;color:var(--tx)}
+.nt-p-tit{display:block;margin:6px 0 0;overflow-wrap:break-word;hyphens:manual;color:var(--tx);
+  font:700 1.5rem/1.15 var(--display);letter-spacing:-.02em;text-wrap:balance}
+@media (max-width:22.5em){.nt-p-tit{font-size:1.375rem}}
+@media (min-width:37.5em){.nt-p-tit{font-size:1.875rem;line-height:1.1}}
+@media (min-width:64em){.nt-p-tit{font-size:2.25rem;line-height:1.08;letter-spacing:-.025em}}
+.nt-v-importa{margin:10px 0 0;color:var(--tx-2);font:400 1rem/1.5 var(--body)}
+.nt-v-importa-rot{color:var(--senal);font-weight:600}
+
+/* Tarjetas: foto 3:2 arriba y titular debajo; desde 64em, titular encima
+   de la foto con el mismo velo (rampa de 40 px, relleno de 48). */
+.nt-t{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;color:var(--tx);text-decoration:none;isolation:isolate;
+  border-radius:var(--r-m);-webkit-tap-highlight-color:transparent}
+.nt-t-foto{aspect-ratio:3/2;border-radius:var(--r-m)}
+.nt-t-txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.nt-t-tit{display:block;margin:0;overflow-wrap:break-word;hyphens:manual;color:var(--tx);
+  font:700 1.0625rem/1.25 var(--display);letter-spacing:-.01em;text-wrap:pretty}
+.nt-t .nt-meta{color:var(--tx-3);font-size:.75rem}
+@media (max-width:21.99em){.nt-t{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:start}}
+@media (min-width:64em){
+  .nt-v>li:not(.nt-v-portada){display:flex;flex-direction:column}
+  .nt-t{flex:1 0 auto;justify-content:flex-end;aspect-ratio:3/2;height:auto;border-radius:var(--r-l)}
+  .nt-t-foto{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;border-radius:inherit}
+  .nt-t-txt{padding:48px 18px 16px;border-radius:0 0 var(--r-l) var(--r-l);
+    background:linear-gradient(180deg,rgba(var(--velo),0) 0,rgba(var(--velo),.72) 40px,rgba(var(--velo),.92) 100%)}
+  .nt-t .nt-meta{color:var(--tx)}
+  .nt-t-tit{font-size:1.25rem;line-height:1.2}
+  .nt-v>li:last-child:nth-child(3n+4) .nt-t,.nt-v>li:last-child:nth-child(3n+5) .nt-t{aspect-ratio:auto;min-height:15rem}
+}
+/* El zoom de la foto al pasar el ratón, solo si se puede pasar el ratón y
+   nadie ha pedido reducir el movimiento. */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .nt-p-foto img,.nt-t-foto img{transition:transform 400ms var(--ease)}
+  .nt-p:hover img,.nt-t:hover img{transform:scale(1.03)}
+}
+.nt-p:focus-visible,.nt-t:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+/* /mercado/: el titular es un botón que abre el diálogo; su ::after cubre la tarjeta. */
+.nt-titular{margin:0}
+.nt-p-tit.nt-titular{margin-top:6px}
+.nt-abrir{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nt-abrir::after{content:'';position:absolute;inset:0;border-radius:inherit}
+.nt-p .nt-abrir::after{border-radius:var(--r-l)}
+.nt-t .nt-abrir::after{border-radius:var(--r-m)}
+.nt-abrir:focus-visible::after{outline:2px solid var(--senal);outline-offset:2px}
+.nt-abrir:active::after{background:var(--ton)}
 
 /* ---- El diálogo de lectura ---- */
 html.nt-dialogo-abierto{overflow:hidden}

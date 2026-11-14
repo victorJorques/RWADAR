@@ -1917,7 +1917,7 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   prueba('«Mercado y noticias» va en Inicio tras «Ofertas» y antes de «Aprende»: la cotización y las noticias, con «Ver mercado y noticias →»; el HTML no trae cifras',
     a1 > html.indexOf('id="relNuevas"') && a1 < html.indexOf('id="iniAprendeTit"') && !html.includes('data-tokenizacion') &&
     bloque.includes('<h2 class="ini-bloque-tit" id="mkTit">Mercado y noticias</h2>') &&
-    /data-mercado="inicio" data-noticias="portada"/.test(bloque) && bloque.includes('<ul class="nt-compacta" id="ntLista"') &&
+    /data-mercado="inicio" data-noticias="portada"/.test(bloque) && bloque.includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') &&
     /<a class="ini-ver" href="\/mercado\/"><span>Ver mercado y noticias<\/span>/.test(bloque) &&
     !/\d/.test(bloque.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]*>/g, '')) &&
     /<script src="\/assets\/mercado-20261111\.js" defer><\/script>/.test(html) && !/tokenizacion-20261110\.(js|css)/.test(html));
@@ -1993,8 +1993,8 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   const scriptNt = lee('assets/noticias-sector-20261110.js');
   prueba('/mercado/ trae la lista y el diálogo del detalle, sin ninguna noticia escrita en el HTML; Inicio enlaza a /mercado/#<id>',
     /data-noticias="lista"/.test(enLista) && enLista.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
-    enLista.includes('<ul class="nt-lista" id="ntLista"') && datosNt.noticias.every(n => !mercadoNt.includes(n.titulo)) &&
-    /a\.href = '\/mercado\/#' \+ encodeURIComponent\(n\.id\)/.test(scriptNt) && !/'\/noticias\/#'/.test(scriptNt) && /function metaFuente/.test(scriptNt));
+    enLista.includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') && datosNt.noticias.every(n => !mercadoNt.includes(n.titulo)) &&
+    /\.href = '\/mercado\/#' \+ encodeURIComponent\(n\.id\)/.test(scriptNt) && !/'\/noticias\/#'/.test(scriptNt) && /function metaFuente/.test(scriptNt));
   prueba('/datos/noticias-v2.json se publica tal cual y con la forma que leen la web y la app nuevas, todas con su foto',
     fs.readFileSync(path.join(publicado, 'datos', 'noticias-v2.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
     nt.noticiasSinFoto(JSON.parse(fuente)).length === 0 && /noticiasModelo\.validarNoticias/.test(publicador));
@@ -2014,16 +2014,86 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     prueba(`node ${args.join(' ')} pasa`, r.status === 0);
   }
   // Las fotos: cada «imagen» tiene su WebP en noticias-editoriales/, con los bytes y el sha256 de fotos.json, y no sobra ninguno.
+  // Desde el 14/11/2026, también sus variantes de 480 y 960 (en sus carpetas), ni más ni menos.
   const fotosNt = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/noticias/fotos.json'), 'utf8')).fotos;
   const dirFotos = path.join(publicado, 'noticias-editoriales');
   const publicadas = fs.existsSync(dirFotos) ? fs.readdirSync(dirFotos).sort() : [];
+  const sha = b => crypto.createHash('sha256').update(b).digest('hex');
   prueba('las fotos de las noticias se publican en /noticias-editoriales/ tal cual fotos.json, sin que falte ni sobre ninguna',
-    publicadas.join('|') === Object.keys(fotosNt).map(k => k + '.webp').sort().join('|') &&
+    publicadas.join('|') === ['480', '960', ...Object.keys(fotosNt).map(k => k + '.webp')].sort().join('|') &&
     nt.clavesFotos(datosNt).every(k => publicadas.includes(k + '.webp')) &&
     Object.entries(fotosNt).every(([k, f]) => {
       const b = fs.readFileSync(path.join(dirFotos, k + '.webp'));
-      return b.length === f.bytes && crypto.createHash('sha256').update(b).digest('hex') === f.sha256;
+      return b.length === f.bytes && sha(b) === f.sha256;
     }));
+  prueba('y sus variantes en /noticias-editoriales/480/ y /960/, tal cual fotos.json, sin que falte ni sobre ninguna',
+    ['480', '960'].every(w => {
+      const dir = path.join(dirFotos, w);
+      const hay = fs.existsSync(dir) ? fs.readdirSync(dir).sort() : [];
+      return hay.join('|') === Object.keys(fotosNt).map(k => k + '.webp').sort().join('|') &&
+        Object.entries(fotosNt).every(([k, f]) => { const b = fs.readFileSync(path.join(dir, k + '.webp')); return b.length === f.variantes[w].bytes && sha(b) === f.variantes[w].sha256; });
+    }));
+  /* Noticias que entran por los ojos (14/11/2026): Inicio llega con la portada y dos tarjetas ya
+     escritas (solo en el publicado; la fuente sigue vacía), y lo importante del diseño se comprueba
+     aquí, sin navegador, para que lo vigile la CI. */
+  const portadaNt = require('./rwadar-noticias-portada.js');
+  const ulPublicada = (htmlPublicado.match(/<ul class="nt-v" id="ntLista"[^>]*>([\s\S]*?)<\/ul>/) || [])[0] || '';
+  const firmaNt = nt.firmaPrepintado(datosNt);
+  const lisNt = [...ulPublicada.matchAll(/<li\b[^>]*>/g)].map(m => m[0]);
+  const imgsNt = [...ulPublicada.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
+  const enInicio = datosNt.noticias.slice(0, nt.EN_INICIO);
+  prueba('el Inicio publicado trae la portada y dos tarjetas escritas, con la firma de la edición; rwadar-site/index.html, la lista vacía',
+    ulPublicada.includes(`data-nt-prepintado="${firmaNt}"`) && !/<ul class="nt-v" id="ntLista"[^>]*\shidden/.test(ulPublicada) &&
+    lisNt.length === enInicio.length && lisNt[0] === '<li class="nt-v-portada">' &&
+    enInicio.every(n => ulPublicada.includes(`href="/mercado/#${n.id}" data-nt-id="${n.id}"`) && ulPublicada.includes(portadaNt.esc(n.titulo))) &&
+    /<p class="nt-estado" id="ntEstado" role="status" hidden>/.test(htmlPublicado) && /<p class="nt-nota" id="ntNota">Imágenes ilustrativas/.test(htmlPublicado) &&
+    !html.includes('data-nt-prepintado') && html.includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') &&
+    !/\sstyle\s*=/.test(ulPublicada) &&
+    portadaNt.sinNoticiasInicio(htmlPublicado).includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') &&
+    /prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias\)/.test(publicador) && !/writeFileSync\(FILE[^;]*prepararInicio/.test(publicador));
+  prueba('las fotos de Inicio llevan srcset y sizes del modelo; la portada no es perezosa y las tarjetas sí',
+    imgsNt.length === enInicio.length && imgsNt.every((img, i) => {
+      const a = nt.atributosFoto(enInicio[i], i === 0 ? 'portada' : nt.papelTarjeta(i, enInicio.length));
+      return img.includes(`srcset="${a.srcset}"`) && img.includes(`sizes="${a.sizes}"`) && img.includes(`src="${a.src}"`) &&
+        img.includes('decoding="async"') && (i === 0 ? !/\sloading=/.test(img) : img.includes('loading="lazy"'));
+    }));
+  prueba('el publicador revisa la guía de titulares (revisarEdicion) antes de publicar, con la biblioteca de fotos',
+    /noticiasModelo\.revisarEdicion\(JSON\.parse\(textoNoticias\), \{ fotos: fotosNoticias\.fotos\.map\(f => f\.clave\) \}\)/.test(publicador) &&
+    /if \(guia\.errores\.length\)/.test(publicador) && nt.revisarEdicion(JSON.parse(fuente), { fotos: Object.keys(fotosNt) }).errores.length === 0);
+  // El CSS de la rejilla, leído como texto: el velo, el relleno, nada que recorte un titular, cortes en em y el movimiento.
+  const cssNt = lee('assets/noticias-sector-20261110.css');
+  const reglasNt = [...cssNt.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => ({ sel: m[1].trim(), cuerpo: m[2] }));
+  const veloNt = [...cssNt.matchAll(/linear-gradient\(180deg,rgba\(var\(--velo\),0\) 0,rgba\(var\(--velo\),\.72\) (\d+)px,rgba\(var\(--velo\),\.92\) 100%\)/g)].map(m => Number(m[1]));
+  const rellenoNt = sel => reglasNt.filter(r => r.sel.endsWith(sel)).map(r => Number((r.cuerpo.match(/padding:(\d+)px/) || [])[1])).filter(Boolean);
+  // Cada @media con su bloque (llaves emparejadas); los de la rejilla son los que tocan .nt-v, .nt-p o .nt-t.
+  const mediasNt = [];
+  for (const m of cssNt.matchAll(/@media([^{]*)\{/g)) {
+    let n = 1, i = m.index + m[0].length;
+    for (; i < cssNt.length && n; i++) n += cssNt[i] === '{' ? 1 : cssNt[i] === '}' ? -1 : 0;
+    const cuerpo = cssNt.slice(m.index + m[0].length, i);
+    if (/width/.test(m[1]) && /\.nt-(?:v|p|t)\b|\.nt-(?:p|t)-/.test(cuerpo)) mediasNt.push(m[1]);
+  }
+  prueba('el velo de la portada y de las tarjetas llega a .72 al final de la rampa y a .92 abajo; el texto empieza 8 px por debajo de la rampa',
+    veloNt.length === 3 && veloNt[0] === 48 && veloNt[1] === 64 && veloNt[2] === 40 &&
+    Math.min(...rellenoNt('.nt-p-txt')) >= 48 + 8 && rellenoNt('.nt-p-txt').includes(72) && rellenoNt('.nt-t-txt').includes(48) &&
+    /--velo:11,10,10/.test(cssNt));
+  prueba('ningún titular se corta: ni overflow:hidden ni line-clamp en la rejilla (salvo la caja de la foto), y sin silabeo',
+    reglasNt.filter(r => /\.nt-(?:v|p|t)\b|\.nt-(?:p|t)-/.test(r.sel)).every(r => !/line-clamp/.test(r.cuerpo) &&
+      (!/overflow:hidden/.test(r.cuerpo) || r.sel.split(',').every(x => /-foto$|nt-dlg-arte$/.test(x.trim())))) &&
+    /\.nt-p-tit\{[^}]*hyphens:manual/.test(cssNt) && /\.nt-t-tit\{[^}]*hyphens:manual/.test(cssNt));
+  prueba('los cortes de la rejilla van en em (con la letra grande, una columna) y la portada crece con el texto',
+    mediasNt.length > 0 && mediasNt.every(m => /em\b/.test(m) && !/\dpx/.test(m)) &&
+    !/\.nt-p\{[^}]*(?:^|;)height:/.test(cssNt) && /\.nt-p\{[^}]*aspect-ratio:4\/3/.test(cssNt));
+  prueba('el zoom de la foto, solo si se puede pasar el ratón y nadie pidió reducir el movimiento',
+    reglasNt.filter(r => /(?:^|;)\s*transform:/.test(r.cuerpo)).length === 1 &&
+    /@media \(hover:hover\) and \(prefers-reduced-motion:no-preference\)\{\s*\.nt-p-foto img,\.nt-t-foto img\{transition:transform[^}]*\}\s*\.nt-p:hover img,\.nt-t:hover img\{transform:scale\(1\.03\)\}/.test(cssNt));
+  prueba('los colores de la píldora de categoría son los del modelo',
+    Object.entries(nt.CATEGORIAS).every(([k, c]) => cssNt.includes(`.nt-cat--${k}{color:${c.color}}`)));
+  prueba('el JS de las noticias no escribe srcset, sizes ni loading a mano (solo con atributosFoto), y pinta la nota de las fotos',
+    /modelo\.atributosFoto\(n, papel\)/.test(scriptNt) && !/\.(?:srcset|sizes|loading)\s*=/.test(scriptNt) &&
+    !/setAttribute\('(?:srcset|sizes|loading)'/.test(scriptNt) && !/['"](?:lazy|eager)['"]/.test(scriptNt) &&
+    /modelo\.debeRepintar\(\{ prepintado: lista\.dataset\.ntPrepintado, datos, idioma: idioma\(\) \}\)/.test(scriptNt) &&
+    panelInicioHTML.includes('Imágenes ilustrativas generadas con IA, no fotos de la noticia.') && !/\.nt-compacta|\.nt-c\b|\.nt-art|\.nt-fila/.test(lee('assets/mercado-20261111.css') + cssNt));
   const ntPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/noticias-sector-/.test(r));
   prueba('el motor y la sección de las noticias salen con huella, tras la tokenización y antes del snapshot del catálogo',
     ntPublicados.length === 2 && /^\/assets\/noticias-sector-modelo-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[0]) &&

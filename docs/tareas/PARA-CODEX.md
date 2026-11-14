@@ -6,6 +6,192 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (26) · Claude · Noticias que entran por los ojos · SIN ENCENDER / SIN PUBLICAR
+
+- **Encargo de la dirección (13/11):** «que las noticias tengan titulares
+  buenos y se priorice lo visual y la imagen, que atraiga». Es la tercera de
+  las tres mejoras que se construyen a la vez (gráfico en directo, noticias
+  solas con freno y esta); las une un integrador. Rama
+  **`worktree-wf_1f50042c-37c-1`**, desde `main` en `a4a594f` (sellado). La
+  empezó otra sesión, que se cortó cuando se reinició la máquina con dos
+  commits hechos (`5d3053c` y `5c633b8`, rama `worktree-wf_dfb920ce-e87-3`);
+  esta sesión los trajo, los revisó, arregló una prueba, midió, capturó y
+  cerró. **SIN PUBLICAR NI ENCENDER**: ni push, ni flujos, ni Supabase, ni
+  EAS, ni OTA. Plan y revisión del diseño, en el scratchpad de la sesión
+  (`automatico/visual/PLAN.md` y `etapas-previas.json`).
+- **Qué cambia, en llano:**
+  1. **La primera noticia es una portada**: foto grande y, encima, sobre un
+     velo oscuro, la categoría, «fuente · fecha» y el titular. Las demás, en
+     tarjetas con su foto (dos columnas en el móvil; en escritorio, la portada
+     ocupa dos columnas y dos filas y las tarjetas llevan el titular sobre la
+     foto). Igual en Inicio, en «Mercado y noticias» (/mercado/, adonde lleva
+     /noticias/) y en la app. Con la letra grande, la rejilla pasa sola a una
+     columna (cortes en em) y la portada crece; ningún titular se corta. Se
+     mantiene «Imágenes ilustrativas generadas con IA, no fotos de la
+     noticia».
+  2. **Las fotos pesan menos aunque se vean más grandes**: cada foto tiene
+     tres tamaños (480, 960 y 1200 px; `srcset`/`sizes` en la web y
+     `anchoFoto()` en la app) y cada pantalla baja el que necesita.
+  3. **Inicio llega con las tres noticias ya escritas en el HTML publicado**
+     (`rwadar-noticias-portada.js`): la foto de portada no espera al
+     JavaScript. El JS no las rehace si son de la misma edición y la página
+     está en castellano (firma FNV-1a de lo pintado en
+     `data-nt-prepintado`); en inglés o con otra edición, sí.
+     `rwadar-site/index.html` no se toca: la lista sigue vacía y con
+     `hidden` en la fuente.
+  4. **De 8 a 23 fotos** en la biblioteca, por temas (lista cerrada en
+     `fotos.json`: 15 `temas`, cada uno con al menos una foto, y
+     `genericas`). Cada toma se miró a tamaño completo; la sala de
+     operaciones no se aprobó (los monitores salían con seudotexto). Hoja de
+     contactos: `automatico/visual/capturas/biblioteca-23.png`.
+  5. **Guía de titulares** (`rwadar-editorial-source/noticias/GUIA-TITULARES.md`)
+     y lo medible de ella en el programa (`revisarEdicion()` del modelo): 60
+     caracteres como mucho en las dos lenguas, sin frases de promesa, «¡»,
+     emojis ni punto final (salvo abreviaturas), y una foto distinta y de la
+     biblioteca para cada noticia. El publicador se para con un error y
+     escribe los avisos. Es el punto de enganche de las noticias automáticas.
+  6. **Titulares nuevos para la edición publicada del 13/11** (4 de 5
+     cambian) y una foto distinta para cada noticia, comprobados contra sus
+     fuentes abiertas de nuevo el 14/11 (misma huella que el 13/11); adenda
+     en `rwadar-app/data/verificaciones/2026-11-13-v2/noticias/EDICION.md` y
+     v1 regenerado. Ojo: la noticia 5 (consulta de la CNMV) admite
+     comentarios hasta el 16/11; desde el 17/11 la edición siguiente tiene
+     que quitarla o reescribirla.
+- **Lo que pidió la revisión del diseño y cómo quedó** (las siete, hechas):
+  1. (alta) **El cerrojo de la mañana y el `index.html` que ahora depende de
+     la edición.** `sinNoticiasInicio(html)` deja el Inicio publicado como si
+     no llevara noticias; probado (M39): dos ediciones distintas dan el mismo
+     Inicio sin noticias, igual a la fuente. **Lo une el integrador** en
+     `.claude/skills/noticias-automaticas/lib/produccion.mjs`
+     (`compararArchivos`): para `index.html`, comparar
+     `sinNoticiasInicio(local) === sinNoticiasInicio(producción)` en lugar de
+     los sha256, con su mutación en esa rama.
+  2. (media) **Falsos positivos de los titulares.** Error solo para las
+     frases de promesa como palabras enteras, «¡» y «!»; las raíces sueltas
+     («garantiz», «asegur», «oportunidad», «guarantee») son aviso; el punto
+     final admite abreviaturas («EE. UU.», «S. A.»). Una prueba por cada
+     falso positivo de la revisión.
+  3. (media) **El camino entero del publicador, antes del PR.**
+     `validaMarcadoEstricto` vive en `rwadar-noticias-portada.js` (el
+     publicador la importa) y `prepararInicioPublicado(html, edición)` hace
+     lo mismo que el publicador. **El integrador lo añade a V-17** de la
+     mañana junto con `revisarEdicion(edición, { fotos })`. Ediciones de 1 y
+     2 noticias: con 1, la portada a todo el ancho; con 2, la portada y una
+     tarjeta sin hueco (web y app, probadas).
+  4. (baja) **Firma** pura de lo pintado (FNV-1a), no la fecha.
+  5. (baja) **Vuelta atrás**: ver abajo.
+  6. (baja) **Volver a medir después de unir las tres ramas**: pendiente del
+     integrador (ver «Para el integrador»).
+  7. (baja) **Ritmo**: fotos en segundo plano desde el primer minuto; web y
+     app a la vez; la biblioteca nueva, al final.
+- **Arreglo de esta sesión:** `probar-precarga.cjs` (la prueba «la base las
+  lleva todas») borraba la primera foto por orden alfabético y esperaba
+  «Falta la foto de una noticia base». Con la biblioteca de 23, esa foto
+  (`acciones-eeuu`) ya no la usa la edición, y que falte una foto que nadie
+  usa está permitido: la prueba fallaba sin que hubiera un fallo. Ahora borra
+  la foto de la primera noticia de la base. La regla no cambia.
+- **Medidas de Inicio, antes (`a4a594f`) y después (esta rama)**, las dos
+  construidas con `rwadar-publicar.js --local` y servidas con el worker local
+  (sin comprimir, HTTP/1.1); `medir-inicio2.mjs`, mediana de 5 cargas,
+  alternando antes y después en cada vista, con la máquina tranquila. Perfil
+  lento: CPU × 4, 1,6 Mb/s y 150 ms.
+
+  | Vista | Fotos de noticias al cargar | Total al cargar (rápido) | DCL lento | LCP rápido | LCP lento | Elemento del LCP |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 390 × 844 @2 | 266 → 73 kB (−73 %) | 1.962 → 1.779 kB (−9 %) | 10,6 → 9,7 s | 152 → 156 ms | 2.768 → 2.972 ms (+7 %) | el titular de arriba de Inicio, igual |
+  | 1366 × 900 @1 | 266 → 73 kB (−73 %) | 2.270 → 2.015 kB (−11 %) | 10,8 → 10,0 s | 184 → 164 ms | 2.948 → 3.160 ms (+7 %) | igual |
+  | 1024 × 1366 @2 | 266 → 153 kB (−43 %) | 2.447 → 2.167 kB (−11 %) | 11,1 → 10,5 s | 184 → 188 ms | 2.972 → 3.368 ms (**+13 %**) | pasa a ser la foto de portada |
+  | 2560 × 1440 @1 | 266 → 73 kB (−73 %) | 2.394 → 2.087 kB (−13 %) | 10,9 → 10,1 s | 212 → 224 ms | 3.036 → 3.264 ms (+8 %) | pasa a ser la foto de portada |
+
+  En el móvil, las tres fotos de Inicio pasan de 266 kB a 73 kB; la página
+  entera baja entre un 9 y un 13 % y termina antes (DCL y load en el perfil
+  lento, −5 a −9 %).
+  **La meta del plan (LCP ≤ +10 % o 100 ms) se cumple en tres vistas y no en
+  la tableta con el perfil lento (+13 %, +396 ms).** Por qué: en una tableta
+  la foto de portada cabe en la primera pantalla y pasa a ser lo más grande
+  (el LCP, que es justo lo que pide «lo visual primero»); se baja a la vez
+  que el CSS que frena el primer pintado (161 kB sin comprimir) y le quita
+  ancho de banda: el CSS principal acaba a los 2,6 s antes y a los 3,0 s
+  después. Probé `fetchpriority="high"` y `"low"` en la foto (perfil lento,
+  1024, 390 y 2560; `automatico/visual/c2/prioridad.log`): ninguno cambia la
+  cascada en el servidor local, que reparte el ancho de banda por igual (con
+  «low», la foto empieza igual a los 0,28 s), así que **no lo he añadido**.
+  En producción (HTTP/2-3, que ordena por prioridad, y CSS comprimido) el CSS
+  debería ir antes que la foto, **sin comprobar**. Si la dirección quiere la
+  meta también en tableta: (a) aceptarlo y medir en vivo tras publicar;
+  (b) una `<picture>` que en tableta con pantalla densa pida la foto de 960
+  (−31 kB; unos −160 ms por la cuenta, sin medir) a cambio de algo de
+  nitidez; (c) portada perezosa,
+  que va contra «lazy salvo la portada». El integrador vuelve a medir tras
+  unir las tres ramas (punto 6 de abajo).
+- **Capturas a escala 2** (en `automatico/visual/capturas/`): antes y después
+  de Inicio y de /mercado/ a 390 y 1366 (`antes-*`, `despues-*`; la página
+  entera recortada al bloque, sin las capas fijas), la portada con una foto
+  blanca (`despues-foto-blanca-*`: el titular se lee igual) y la letra del
+  navegador a 32 px (`despues-letra32-inicio-390.png`: una columna, portada
+  de 411 px, nada cortado). App con react-native-web (`capturas/app/`):
+  Inicio y «Mercado y noticias» en castellano e inglés y la letra a 1,3
+  (tarjetas en filas); antes, `antes-*`. En la app el arnés no agranda la
+  letra (el sistema sí lo hace en el móvil): solo muestra el cambio de
+  rejilla. Ningún desborde horizontal en ninguna vista.
+- **Pruebas:**
+  - `npm test` en la raíz: **salida 0** en una sola pasada (274 s): base (PGlite), web
+    (publicador, `probar-web`, fichas, precarga), QR, móvil (661 correctas y
+    las 2 saltadas de siempre), herramientas y acceso (337 correctas, **0
+    saltadas**: las de Chromium corrieron en local).
+  - **Mutaciones: 44 de 44 cazadas** (M1-M33, M37 y M38 del plan, con M15b
+    y M18b, y M39-M45, que se añadieron al construir; M34-M36 son del
+    integrador). Arnés:
+    `automatico/visual/c2/mutar.mjs --con-construir` (deshace cada regla,
+    corre la prueba que la vigila y la restaura); resultado en
+    `c2/mutaciones.json`. Las cazan pruebas de Node (las ve la CI) salvo M27,
+    que solo caza Chromium.
+  - Guardián de OTA con la base `fa30779…`:
+    `{"ok":true,"runtime":"1.4.2(24)",…}` (la app solo cambia JS).
+  - `copiar-modelo-web.cjs --comprobar` (motor web y app idénticos) y
+    `rwadar-noticias-editoriales.js --comprobar` (23 fotos, 46 variantes, 15
+    temas).
+  - gitleaks con `rwadar-app/gitleaks.toml` sobre los commits de la rama:
+    sin hallazgos. Sin nombres de personas en lo añadido.
+- **Para el integrador:**
+  1. `produccion.mjs` (noticias automáticas): `index.html` con
+     `sinNoticiasInicio()` (punto 1 de arriba), con su mutación.
+  2. V-17 de la mañana: `revisarEdicion()` y `prepararInicioPublicado()`
+     sobre la edición `editor`, `final` y `publicada` (punto 3), con la
+     mutación M34 (la mañana sin V-17: un titular con «oportunidad única»
+     frena antes del PR).
+  3. Coherencias: `REGLAS_TITULAR.max` (60) = `config.titulares.maxCaracteres`
+     (M35); `fotos.json.genericas` = `config.json.fotos.genericas` (M36:
+     regulación → `regulador-espana`, mercado → `red-europea`, producto →
+     `acciones-eeuu`, riesgo → `alerta-fraude`).
+  4. Las pruebas de esta rama que leen la edición viva son de Node
+     (`rwadar-acceso/noticias-sector.test.mjs`: «index.html publicado»,
+     `rwadar-movil/tests/noticias-sector.test.cjs` y la de la precarga); las
+     de Chromium usan la edición fija `rwadar-acceso/fixtures/noticias-visual.json`.
+  5. Si la mañana trae una edición de prueba en `noticias-v2.json`, gana la
+     más nueva y se le aplica la guía.
+  6. **Repetir la medida de Inicio sobre la unión de las tres ramas** (el
+     gráfico en directo añade una lectura en Inicio): `medir-inicio2.mjs`, las
+     cuatro vistas, perfiles rápido y lento, mediana de 5, alternando antes
+     y después (`automatico/visual/c2/medir-ab.sh`).
+  7. Orden: esta rama va antes o a la vez que la mañana (la mañana necesita
+     la guía). Publicar la web justo después de unir y sellar.
+- **Vuelta atrás:** se pueden revertir el diseño (`noticias-sector-20261110.js`
+  y `.css`, `mercado-20261111.css`, los dos `index.html`, el componente de la
+  app) y el prepintado (la llamada en `rwadar-publicar.js`). **No se
+  revierten** `rwadar-precargar-imagenes.js` (la base publicada ya llevará
+  `noticias-editoriales/480/` y `960/`, y la regla antigua la rechazaría),
+  `rwadar-noticias-editoriales.js`, la copia de las variantes de
+  `rwadar-publicar.js`, `fotos.json` ni `fotos/` (las fotos publicadas no se
+  cambian nunca). La regla de 60 caracteres se afloja en una línea
+  (`REGLAS_TITULAR.max`), con su prueba. App: otra OTA con el JS anterior; la
+  app nueva sigue funcionando con la web revertida (las variantes siguen
+  publicadas).
+- **Pendiente para la dirección:** ver las capturas, la hoja de contactos de
+  las fotos nuevas y los titulares; dar la orden de publicar (PR, sello,
+  «Publicar web» y, después, «OTA Android» con la base `fa30779…`: primero
+  la web, para que las variantes existan cuando la app nueva las pida). Unos
+  15-17 minutos de Actions, una vez; ningún gasto diario nuevo.
 ## 14 de noviembre de 2026 (25) · Claude · Gráfico en directo · LISTA PARA PUBLICAR Y ENCENDER (lo hace el coordinador)
 
 - **Entrega (14/11, rama `entrega-grafico`):** unida la rama del constructor

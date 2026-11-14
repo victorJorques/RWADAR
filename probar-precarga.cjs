@@ -76,8 +76,13 @@ prueba('fotos de las noticias: la base las lleva todas y con los bytes de fotos.
   // Rediseño de Inicio (10/11/2026): el publicador copia la biblioteca a noticias-editoriales/.
   const fotos=archivos.filter(a=>/^noticias-editoriales\/[a-z0-9-]+\.webp$/.test(a.ruta));
   assert(fotos.length>=3,'El build local debe llevar las fotos de las noticias');
+  // Una foto que use la edición de la base (con la biblioteca de 23, la primera por orden puede no usarse:
+  // 14/11/2026). Una foto de la biblioteca que la edición no usa puede faltar; una que usa, no.
+  const usada=JSON.parse(fs.readFileSync(path.join(base,'datos/noticias-v2.json'),'utf8')).noticias[0].imagen;
+  const fotoUsada=fotos.find(a=>a.ruta===`noticias-editoriales/${usada}.webp`);
+  assert(fotoUsada,'La foto de la primera noticia de la base tiene que estar en la base');
   const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
-  const p=path.join(base,fotos[0].ruta), original=fs.readFileSync(p);
+  const p=path.join(base,fotoUsada.ruta), original=fs.readFileSync(p);
   try{
     fs.writeFileSync(p,Buffer.concat([original,Buffer.from('cambio')]));
     assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
@@ -86,6 +91,30 @@ prueba('fotos de las noticias: la base las lleva todas y con los bytes de fotos.
     fs.writeFileSync(path.join(base,'noticias-editoriales/inventada.webp'),original);
     assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
   }finally{fs.writeFileSync(p,original);fs.rmSync(path.join(base,'noticias-editoriales/inventada.webp'),{force:true});}
+  assert.equal(validarBase(base,sello).sha256,sello.sha256);
+});
+prueba('fotos de las noticias: sus variantes de 480 y 960 valen en la base, una cambiada para, y una base sin variantes sigue valiendo',()=>{
+  // Noticias que entran por los ojos (14/11/2026): noticias-editoriales/480/ y /960/, con las mismas reglas.
+  const variantes=archivos.filter(a=>/^noticias-editoriales\/(?:480|960)\/[a-z0-9-]+\.webp$/.test(a.ruta));
+  assert(variantes.length>=6,'El build local debe llevar las variantes de las fotos de las noticias');
+  const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
+  const p=path.join(base,variantes[0].ruta), original=fs.readFileSync(p);
+  const copia=path.join(temporal,'variantes-base');
+  try{
+    fs.writeFileSync(p,Buffer.concat([original,Buffer.from('cambio')]));
+    assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
+    fs.writeFileSync(p,original);
+    fs.writeFileSync(path.join(base,'noticias-editoriales/480/inventada.webp'),original);
+    assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
+    fs.rmSync(path.join(base,'noticias-editoriales/480/inventada.webp'));
+    // Una base anterior (sin variantes) sigue valiendo.
+    fs.mkdirSync(copia,{recursive:true});
+    for(const w of ['480','960']) fs.renameSync(path.join(base,'noticias-editoriales',w),path.join(copia,w));
+    assert.equal(validarBase(base,recalcular()).sha256,recalcular().sha256);
+  }finally{
+    for(const w of ['480','960']) if(fs.existsSync(path.join(copia,w))) fs.renameSync(path.join(copia,w),path.join(base,'noticias-editoriales',w));
+    fs.writeFileSync(p,original);fs.rmSync(path.join(base,'noticias-editoriales/480/inventada.webp'),{force:true});
+  }
   assert.equal(validarBase(base,sello).sha256,sello.sha256);
 });
 prueba('un alta ya añadida al manifiesto no invalida la base: el worker esperado sale de sus fichas',()=>{

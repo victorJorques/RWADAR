@@ -14,8 +14,11 @@ en RWADAR_MAESTRAS (fuera de Git;
 por defecto, una carpeta temporal), se recorta a 3:2 según «encuadre», se
 reduce a 1200×800 y se exporta a fotos/<clave>.webp sin metadatos, bajando la
 calidad hasta que pese como mucho «maxBytes». Si la foto declara un «retoque»
-(desenfocar una pantalla, voltear en espejo), se aplica antes del recorte. Después apunta en fotos.json la
-semilla, los bytes y el sha256.
+(desenfocar una pantalla, voltear en espejo), se aplica antes del recorte. Del
+mismo recorte salen también las variantes de «salida.variantes» (14/11/2026):
+fotos/480/<clave>.webp (480×320) y fotos/960/<clave>.webp (960×640), que la web
+elige con srcset y la app según la pantalla. Después apunta en fotos.json la
+semilla, los bytes y el sha256 de cada una.
 
 Necesita torch, diffusers, transformers, accelerate y pillow, y unos 7 GB del
 modelo (RWADAR_MODELO=carpeta local, o se descarga de Hugging Face). Tarda unos
@@ -51,8 +54,9 @@ def maestra(clave, s):
     return os.path.join(MAESTRAS, f'{clave}-{s}-{huella}.png')
 
 
-def recortar(img, encuadre):
-    """Recorte 3:2 en la posición «x% y%» y reducción al tamaño de salida."""
+def recortar(img, encuadre, destino_ancho=None, destino_alto=None):
+    """Recorte 3:2 en la posición «x% y%» y reducción al tamaño pedido (el de salida, si no se dice)."""
+    destino_ancho, destino_alto = destino_ancho or salida['ancho'], destino_alto or salida['alto']
     ancho, alto = img.size
     objetivo = salida['ancho'] / salida['alto']
     if ancho / alto > objetivo:
@@ -61,7 +65,7 @@ def recortar(img, encuadre):
         w, h = ancho, round(ancho / objetivo)
     px, py = (float(v.rstrip('%')) / 100 for v in encuadre.split())
     x, y = round((ancho - w) * px), round((alto - h) * py)
-    return img.crop((x, y, x + w, y + h)).resize((salida['ancho'], salida['alto']), Image.LANCZOS)
+    return img.crop((x, y, x + w, y + h)).resize((destino_ancho, destino_alto), Image.LANCZOS)
 
 
 def retocar(img, retoque):
@@ -78,20 +82,32 @@ def retocar(img, retoque):
     return img
 
 
-def exportar(clave, f):
-    img = retocar(Image.open(maestra(clave, f['semilla'])).convert('RGB'), f.get('retoque', {}))
-    img = recortar(img, f['encuadre'])
-    destino = os.path.join(AQUI, 'fotos', f'{clave}.webp')
-    for calidad in range(86, 40, -3):
+def guardar_webp(img, destino, calidades, max_bytes, nombre):
+    """Guarda el WebP bajando la calidad hasta que pese como mucho max_bytes."""
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    for calidad in calidades:
         img.save(destino, 'WEBP', quality=calidad, method=6)
-        if os.path.getsize(destino) <= salida['maxBytes']:
+        if os.path.getsize(destino) <= max_bytes:
             break
     else:
-        sys.exit(f'{clave}: no baja de {salida["maxBytes"]} bytes')
+        sys.exit(f'{nombre}: no baja de {max_bytes} bytes')
     datos = open(destino, 'rb').read()
-    f['bytes'] = len(datos)
-    f['sha256'] = hashlib.sha256(datos).hexdigest()
-    print(f'{clave}: semilla {f["semilla"]}, calidad {calidad}, {len(datos)} bytes', flush=True)
+    return calidad, len(datos), hashlib.sha256(datos).hexdigest()
+
+
+def exportar(clave, f):
+    base = retocar(Image.open(maestra(clave, f['semilla'])).convert('RGB'), f.get('retoque', {}))
+    calidad, f['bytes'], f['sha256'] = guardar_webp(recortar(base, f['encuadre']), os.path.join(AQUI, 'fotos', f'{clave}.webp'),
+                                                   range(86, 40, -3), salida['maxBytes'], clave)
+    print(f'{clave}: semilla {f["semilla"]}, calidad {calidad}, {f["bytes"]} bytes', flush=True)
+    # Las variantes, del mismo recorte (no de la de 1200: un paso menos de compresión).
+    f['variantes'] = {}
+    for ancho, v in sorted(salida.get('variantes', {}).items(), key=lambda x: int(x[0])):
+        calidad, n, huella = guardar_webp(recortar(base, f['encuadre'], int(ancho), v['alto']),
+                                          os.path.join(AQUI, 'fotos', ancho, f'{clave}.webp'),
+                                          range(v['calidad'], 40, -3), v['maxBytes'], f'{clave} ({ancho})')
+        f['variantes'][ancho] = {'bytes': n, 'sha256': huella}
+        print(f'  {ancho}: calidad {calidad}, {n} bytes', flush=True)
 
 
 def guardar_spec():

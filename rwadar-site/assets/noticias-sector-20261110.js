@@ -4,13 +4,16 @@
    ---------------------------------------------------------------------
    Pinta la sección [data-noticias] con /datos/noticias-v2.json (estático,
    del propio despliegue; el navegador no habla con nadie más). Dos modos:
+   Desde el 14/11/2026 («noticias que entran por los ojos») las dos son la
+   misma rejilla (<ul class="nt-v">): la primera noticia, de portada, con la
+   foto grande y el titular encima; las demás, tarjetas con su foto.
    - data-noticias="portada" (Inicio, bloque «Mercado y noticias» del
-     11/11/2026): las 3 primeras, compactas, con una foto pequeña, la fuente,
-     la fecha y el titular. Cada una es un enlace a su detalle en
-     /mercado/#<id>. «Hoy» o «Ayer» según la fecha de quien mira.
-   - data-noticias="lista" (/mercado/, «Noticias relacionadas», como en una
-     app de bolsa; /noticias/ lleva ahí): las 8, cada una con la fuente y la
-     fecha en pequeño, el titular grande, una línea de resumen y la foto
+     11/11/2026): la portada y dos tarjetas. Cada una es un enlace a su
+     detalle en /mercado/#<id>. «Hoy» o «Ayer» según la fecha de quien mira.
+     Llegan ya escritas en el HTML publicado (rwadar-noticias-portada.js):
+     si son de esta edición y la página está en castellano, no se rehacen.
+   - data-noticias="lista" (/mercado/, «Noticias relacionadas»; /noticias/
+     lleva ahí): todas; debajo de la portada, «Por qué te importa»
      (data-noticias-nivel="3": los titulares son h3). Al pulsar, un
      <dialog> con todo el detalle: «Por qué te importa», la fuente y «Leer
      en la fuente (sales de RWAdar) ↗» (rel="noopener noreferrer"). Escape o
@@ -27,7 +30,7 @@
    ===================================================================== */
 (() => {
   const modelo = globalThis.RWAdarNoticiasModelo;
-  const RUTA = '/datos/noticias-v2.json', PLAZO_MS = 10000, EN_PORTADA = 3;
+  const RUTA = '/datos/noticias-v2.json', PLAZO_MS = 10000;
   let seccion, modo, lista, estado, fecha, nota, dialogo, cuerpoDlg, datos = null, abierta = null, origenFoco = null, suscrito = false;
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
@@ -51,20 +54,20 @@
     n.lang = idioma();
     return n;
   }
-  /* La foto: decorativa (el titular ya lo dice todo), perezosa y sin datos de
-     quien mira para nadie más que RWAdar. Si falla, se quita y queda el fondo. */
-  function foto(n, clase, { perezosa = true, ancho = 1200, alto = 800 } = {}) {
+  /* La foto: decorativa (el titular ya lo dice todo) y sin datos de quien mira
+     para nadie más que RWAdar. Los atributos (src, srcset, sizes, loading…)
+     los da el modelo (atributosFoto), los mismos que escribe el publicador en
+     Inicio: aquí no se escribe ninguno a mano. Si falla, se quita y queda el fondo. */
+  function foto(n, clase, papel) {
     const caja = el('span', clase);
     caja.setAttribute('aria-hidden', 'true');
-    const ruta = modelo.rutaFoto(n);
-    if (!ruta) { caja.classList.add('nt-foto--sin'); return caja; }
+    const a = modelo.atributosFoto(n, papel);
+    if (!a) { caja.classList.add('nt-foto--sin'); return caja; }
     const img = document.createElement('img');
     img.alt = '';
-    img.width = ancho; img.height = alto;
-    img.decoding = 'async';
-    if (perezosa) img.loading = 'lazy';
+    for (const k of ['width', 'height', 'decoding', 'loading']) if (a[k] !== undefined) img.setAttribute(k, a[k]);
     img.addEventListener('error', () => { img.remove(); caja.classList.add('nt-foto--sin'); }, { once: true });
-    img.src = ruta;
+    for (const k of ['src', 'srcset', 'sizes']) img.setAttribute(k, a[k]);
     caja.append(img);
     return caja;
   }
@@ -77,12 +80,15 @@
   }
   /* Como en una app de bolsa: la fuente (lo que va antes de la primera coma
      de su nombre, tal como lo escribe RWAdar; en inglés, los organismos
-     traducidos: modelo.fuenteCorta) y la fecha, en pequeño. */
-  function metaFuente(n, clase) {
-    const p = el('p', clase), cuando = dato('time', '', modelo.fechaCorta(n.fecha, idioma()));
-    cuando.dateTime = n.fecha;
+     traducidos: modelo.fuenteCorta) y la fecha, en pequeño. El mismo marcado
+     que escribe el publicador en Inicio (rwadar-noticias-portada.js). */
+  function metaFuente(n) {
+    const p = el('span', 'nt-meta');
     const fuente = el('span', 'nt-fuente-corta', modelo.fuenteCorta(n, idioma()));
     fuente.lang = modelo.fuenteTraducida(n, idioma()) ? 'en' : 'es'; fuente.setAttribute('translate', 'no');
+    const cuando = el('time');
+    cuando.setAttribute('translate', 'no'); cuando.lang = idioma();
+    cuando.dateTime = n.fecha; cuando.textContent = modelo.fechaCorta(n.fecha, idioma());
     p.append(fuente, ' · ', cuando);
     return p;
   }
@@ -96,61 +102,82 @@
     } catch { return null; } finally { clearTimeout(reloj); }
   }
 
-  /* Inicio: una fila compacta (foto pequeña, fuente y fecha, titular), enlace a
-     su detalle en /mercado/. El nombre del enlace empieza por el titular. */
-  function tarjetaPortada(n, i) {
+  /* Una noticia de la rejilla (14/11/2026, «noticias que entran por los
+     ojos»): la primera, de portada (foto a sangre y el titular encima, sobre
+     un velo que nunca baja de 0,72 detrás de una letra); las demás, tarjetas
+     con su foto. En Inicio cada una es un enlace a su detalle en /mercado/;
+     en /mercado/ el titular es un botón que abre el diálogo (su ::after cubre
+     la tarjeta). El nombre del enlace o del botón empieza por el titular: la
+     píldora de categoría va oculta al lector y la fuente, después. «ancha»:
+     la última, cuando queda sola en su fila (modelo.esAncha). */
+  function tarjeta(n, i, total) {
     const t = modelo.textos(n, idioma());
-    const li = el('li', 'nt-c-item');
-    const a = el('a', 'nt-c');
-    a.href = '/mercado/#' + encodeURIComponent(n.id);
-    a.dataset.ntId = n.id;
-    a.append(foto(n, 'nt-foto', { perezosa: i > 0, ancho: 144, alto: 144 }));
-    const texto = el('span', 'nt-c-txt');
-    const tit = dato('span', 'nt-c-tit', t.titulo);
-    const m = metaFuente(n, 'nt-c-meta');
-    const reciente = etiqueta(n);
-    if (reciente) m.append(' ', reciente);
-    texto.append(tit, m);
-    a.append(texto);
-    li.append(a);
+    const portada = i === 0, ancha = modelo.esAncha(i, total);
+    const pre = portada ? 'nt-p' : 'nt-t';
+    const li = el('li', portada ? 'nt-v-portada' : (ancha ? 'nt-v-ancha' : ''));
+    const papel = portada ? 'portada' : modelo.papelTarjeta(i, total);
+    let caja;
+    if (modo === 'lista') {
+      li.id = n.id;
+      caja = el('article', pre);
+      caja.setAttribute('aria-labelledby', 'nt-t-' + n.id);
+      const h = el(seccion.dataset.noticiasNivel === '3' ? 'h3' : 'h2', pre + '-tit nt-titular');
+      h.id = 'nt-t-' + n.id;
+      const b = el('button', 'nt-abrir');
+      b.type = 'button';
+      b.dataset.ntId = n.id;
+      b.append(dato('span', '', t.titulo));
+      h.append(b);
+      caja.append(foto(n, pre + '-foto', papel), textoTarjeta(n, pre, h, portada, 'div'));
+    } else {
+      caja = el('a', pre);
+      caja.href = '/mercado/#' + encodeURIComponent(n.id);
+      caja.dataset.ntId = n.id;
+      caja.append(foto(n, pre + '-foto', papel), textoTarjeta(n, pre, dato('span', pre + '-tit', t.titulo), portada, 'span'));
+    }
+    li.append(caja);
+    // /mercado/: debajo de la portada, por qué te importa (el detalle lleva el resumen y eso).
+    if (portada && modo === 'lista') {
+      const importa = el('p', 'nt-v-importa');
+      importa.append(el('span', 'nt-v-importa-rot', 'Por qué te importa'), ': ', dato('span', '', t.porQueImporta));
+      li.append(importa);
+    }
     return li;
   }
-  /* /mercado/: la fuente y la fecha, el titular, dos líneas de resumen (la
-     primera, «Por qué te importa») y la foto; el titular es un botón que abre
-     el detalle entero (toda la fila). */
-  function tarjetaLista(n, i) {
-    const t = modelo.textos(n, idioma());
-    const li = el('li', 'nt-fila');
-    li.id = n.id;
-    const art = el('article', 'nt-art');
-    art.setAttribute('aria-labelledby', 'nt-t-' + n.id);
-    art.append(foto(n, 'nt-art-foto', { perezosa: i > 1 }));
-    const texto = el('div', 'nt-art-txt');
-    const m = metaFuente(n, 'nt-art-meta');
-    const reciente = etiqueta(n, 'nt-hoy--dlg');
-    if (reciente) m.append(' ', reciente);
-    const h = el(seccion.dataset.noticiasNivel === '3' ? 'h3' : 'h2', 'nt-art-tit');
-    h.id = 'nt-t-' + n.id;
-    const b = el('button', 'nt-art-abrir');
-    b.type = 'button';
-    b.dataset.ntId = n.id;
-    b.append(dato('span', '', t.titulo));
-    h.append(b);
-    // La primera dice ya por qué te importa (el detalle lleva el resumen y eso); las demás, dos líneas de resumen.
-    if (i === 0) {
-      const importa = el('p', 'nt-art-resumen nt-art-importa');
-      importa.append(el('span', 'nt-art-importa-rot', 'Por qué te importa'), ': ', dato('span', '', t.porQueImporta));
-      texto.append(m, h, importa);
-    } else texto.append(m, h, dato('p', 'nt-art-resumen', t.resumen));
-    art.append(texto);
-    li.append(art);
-    return li;
+  /* El texto: dentro de un enlace (Inicio), span; en /mercado/ lleva un h3, div. */
+  function textoTarjeta(n, pre, titular, portada, etiquetaCaja) {
+    const caja = el(etiquetaCaja, pre + '-txt');
+    if (portada) {
+      const cat = el('span', 'nt-p-cat nt-cat--' + n.categoria);
+      cat.setAttribute('aria-hidden', 'true');
+      cat.textContent = modelo.etiquetaCategoria(n.categoria, idioma());
+      caja.append(cat);
+    }
+    caja.append(titular, metaFuente(n));
+    return caja;
+  }
+  /* «Hoy» o «Ayer», según el día de quien mira, al final de «fuente · fecha». */
+  function ponerRecientes() {
+    for (const m of lista.querySelectorAll('.nt-meta')) {
+      m.querySelector('.nt-hoy')?.remove();
+      const id = m.closest('[data-nt-id]')?.dataset.ntId || m.closest('li[id]')?.id;
+      const n = datos.noticias.find(x => x.id === id);
+      const cual = n && etiqueta(n);
+      if (cual) m.append(' ', cual);
+    }
   }
 
   function pintar() {
     if (!seccion) return;
     // idioma-web carga después (defer, en orden): se suscribe al pintar.
     if (!suscrito && globalThis.RWAdarIdioma?.suscribirIdioma) { suscrito = true; globalThis.RWAdarIdioma.suscribirIdioma(pintar); }
+    /* Sin el archivo, la lista que trae Inicio ya escrita es la misma edición
+       publicada: se queda (solo en castellano) en lugar del aviso de error. */
+    if (!datos && lista.dataset.ntPrepintado && lista.children.length && idioma() === 'es') {
+      seccion.dataset.noticiasEstado = 'prepintado';
+      estado.hidden = true;
+      return;
+    }
     seccion.dataset.noticiasEstado = datos ? 'listo' : 'sin-datos';
     if (!datos) {
       lista.hidden = true; nota.hidden = true; if (fecha) fecha.hidden = true;
@@ -170,8 +197,19 @@
     }
     nota.hidden = false;
     lista.hidden = false;
+    /* Inicio llega con las tres ya escritas por el publicador
+       (data-nt-prepintado = la firma de lo pintado): si es la misma edición y
+       la página está en castellano, no se rehacen, solo se pone «Hoy» o
+       «Ayer». Si no (inglés, otra edición), se rehacen. */
+    if (modo === 'portada' && !modelo.debeRepintar({ prepintado: lista.dataset.ntPrepintado, datos, idioma: idioma() })) {
+      ponerRecientes();
+      return;
+    }
+    delete lista.dataset.ntPrepintado;
     const enfocada = document.activeElement?.closest?.('[data-nt-id]')?.dataset.ntId;
-    lista.replaceChildren(...(modo === 'lista' ? datos.noticias.map(tarjetaLista) : datos.noticias.slice(0, EN_PORTADA).map(tarjetaPortada)));
+    const noticias = modo === 'lista' ? datos.noticias : datos.noticias.slice(0, modelo.EN_INICIO);
+    lista.replaceChildren(...noticias.map((n, i) => tarjeta(n, i, noticias.length)));
+    ponerRecientes();
     if (enfocada) lista.querySelector(`[data-nt-id="${CSS.escape(enfocada)}"]`)?.focus({ preventScroll: true });
     if (abierta && dialogo?.open) pintarDetalle(abierta);
   }
@@ -180,7 +218,7 @@
   function pintarDetalle(n) {
     const lengua = idioma(), t = modelo.textos(n, lengua);
     const marco = el('article', 'nt-dlg-art');
-    const arte = foto(n, 'nt-dlg-arte', { perezosa: false });
+    const arte = foto(n, 'nt-dlg-arte', 'detalle');
     const m = meta(n, 'nt-dlg-meta');
     const reciente = etiqueta(n, 'nt-hoy--dlg');
     if (reciente) m.append(' ', reciente);
@@ -260,7 +298,7 @@
     if (modo === 'lista') {
       if (!dialogo || !cuerpoDlg) return;
       lista.addEventListener('click', ev => {
-        const b = ev.target.closest('.nt-art-abrir');
+        const b = ev.target.closest('.nt-abrir');
         if (b) abrir(b.dataset.ntId, b);
       });
       dialogo.addEventListener('click', ev => {

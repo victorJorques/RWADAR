@@ -147,7 +147,9 @@ function rutasBaseObligatorias(base, excluirLote) {
    la biblioteca entera a noticias-editoriales/<clave>.webp. En la base, cada
    una tiene que ser exactamente la de fotos.json (bytes y sha256: una foto ya
    publicada no se cambia bajo la misma clave) y tienen que estar todas las que
-   usa su datos/noticias-v2.json. Una base anterior al rediseño no lleva ni
+   usa su datos/noticias-v2.json. Desde el 14/11/2026 también sus variantes
+   (noticias-editoriales/480/ y /960/), con las mismas reglas; una base
+   anterior, sin variantes, sigue valiendo. Una base anterior al rediseño no lleva ni
    el v2 ni las fotos, y sigue valiendo. */
 function fotosNoticiasBase(base) {
   const prefijo=RUTA_FOTOS_NOTICIAS+'/';
@@ -174,7 +176,7 @@ function validarBase(base, sello, {excluirLote}={}) {
     rutas.add(a.ruta);
     const original=a.ruta.replace(/\.[a-f0-9]{12}(\.(?:js|css))$/,'$1');
     assert(seguridad.ARCHIVOS_PUBLICABLES.includes(original)||ARTEFACTOS_ACCESO.includes(a.ruta)||/^ofertas-editoriales\/(?:manifest\.json|[a-z0-9-]+\.webp)$/.test(a.ruta)||
-      /^noticias-editoriales\/[a-z0-9-]+\.webp$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
+      /^noticias-editoriales\/(?:(?:480|960)\/)?[a-z0-9-]+\.webp$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
   }
   for(const esencial of ['index.html','sw.js','_headers','_redirects',...ARTEFACTOS_ACCESO]) assert(rutas.has(esencial),'Base incompleta');
   const obligatorias=rutasBaseObligatorias(base,excluirLote);

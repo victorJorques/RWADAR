@@ -369,6 +369,15 @@ for (const clave of clavesUsadas) {
   ok(`foto /noticias-editoriales/${clave}.webp publicada, WebP y con el sha256 de fotos.json`, respuesta.status === 200 &&
     /^image\/webp\b/.test(respuesta.headers.get('content-type') || '') && Boolean(foto) && bytes.length === foto.bytes &&
     crypto.createHash('sha256').update(bytes).digest('hex') === foto.sha256);
+  // Y sus variantes (14/11/2026): las que eligen el srcset de la web y la app según la pantalla.
+  for (const ancho of ['480', '960']) {
+    const r = await fetch(`${base}/noticias-editoriales/${ancho}/${clave}.webp`, { cache: 'no-store' });
+    const b = Buffer.from(await r.arrayBuffer());
+    const v = foto?.variantes?.[ancho];
+    ok(`foto /noticias-editoriales/${ancho}/${clave}.webp publicada, WebP y con el sha256 de fotos.json`, r.status === 200 &&
+      /^image\/webp\b/.test(r.headers.get('content-type') || '') && Boolean(v) && b.length === v.bytes &&
+      crypto.createHash('sha256').update(b).digest('hex') === v.sha256);
+  }
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);
