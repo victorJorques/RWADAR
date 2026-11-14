@@ -1,4 +1,82 @@
 'use strict';
+// Diccionario inglés solo para quien lo usa (limpieza de la web, 13/11/2026).
+// Antes, cada página lo pedía con <script defer> y quien navega en castellano
+// se descargaba 226 kB (57 kB comprimidos) que no usaba. Ahora las páginas lo
+// apuntan en data-idioma-en de este mismo <script> (rutas separadas por un
+// espacio; el publicador les pone la huella como a cualquier otra) y:
+// - Con «en» guardado, aquí mismo se escriben sus <script defer> con
+//   document.write. Quedan en <head>, antes del motor (idioma-20261022.js), y
+//   se ejecutan en el mismo orden y momento que antes: el motor arma su mapa
+//   con el diccionario completo y la página entra en inglés como siempre
+//   (también /#explain en la app).
+// - En castellano, el motor carga sin diccionario. RWAdarIdioma es entonces
+//   una fachada del motor: al elegir «English», carga el diccionario y vuelve
+//   a ejecutar el motor (el mismo archivo, ya en la caché) para usar su
+//   traducción completa. El idioma actual y las suscripciones se quedan en el
+//   primer motor, así que para el resto de la web no cambia nada. Sin red,
+//   cambia igual (sin diccionario) y lo vuelve a intentar la próxima vez.
+// El motor es copia exacta del de la app (rwadar-movil/lib/idioma.js): no se
+// toca; esto vive solo en la web.
+(() => {
+  const yo = document.currentScript;
+  const lista = String((yo && yo.dataset && yo.dataset.idiomaEn) || '').split(/\s+/)
+    .filter(ruta => /^\/assets\/[\w.-]+\.js$/.test(ruta));
+  if (!lista.length) return;
+  let guardado = null;
+  try { guardado = localStorage.getItem('rwadar.idioma'); } catch { /* sin almacenamiento: castellano */ }
+  if (guardado === 'en' && document.readyState === 'loading') {
+    document.write(lista.map(ruta => '<script src="' + ruta + '" defer><\/script>').join(''));
+  }
+  let motor = null, completo = null, fachada, rutaMotor = '', conDiccionario = false, carga = null, cambios = 0;
+  const listo = () => conDiccionario || !!completo;
+  // Diccionarios y motor, en este orden (async=false respeta el orden de inserción).
+  const cargarIngles = () => carga || (carga = new Promise((ok, mal) => {
+    if (listo()) { ok(); return; }
+    if (!rutaMotor) { mal(new Error('sin motor')); return; }
+    let fallo = false;
+    const scripts = [...lista, rutaMotor].map(ruta => {
+      const s = document.createElement('script');
+      s.src = ruta; s.async = false;
+      s.addEventListener('error', () => { fallo = true; }, { once: true });
+      return s;
+    });
+    const ultimo = scripts[scripts.length - 1];
+    ultimo.addEventListener('load', () => {
+      if (fallo || !completo) { completo = null; mal(new Error('sin diccionario')); } else ok();
+    }, { once: true });
+    ultimo.addEventListener('error', () => mal(new Error('sin motor')), { once: true });
+    for (const s of scripts) document.head.appendChild(s);
+  }).catch(e => { carga = null; throw e; }));
+  Object.defineProperty(globalThis, 'RWAdarIdioma', {
+    configurable: true, enumerable: true,
+    get: () => fachada,
+    set(api) {
+      if (motor) { completo = api; return; }
+      motor = api;
+      conDiccionario = !!globalThis.RWAdarEnglish;
+      rutaMotor = (document.currentScript && document.currentScript.src) || '';
+      fachada = Object.freeze({ ...api,
+        ingles: (texto, profundidad) => (completo || motor).ingles(texto, profundidad),
+        traducir: (texto, idioma = motor.obtenerIdioma()) => idioma === 'en' ? (completo || motor).ingles(texto) : texto,
+        cambiarIdioma(idioma) {
+          // Gana la última elección: si mientras llega el diccionario se elige
+          // otra vez «Español», el inglés que llega tarde no se aplica.
+          const turno = ++cambios;
+          if (idioma !== 'en' || listo()) return motor.cambiarIdioma(idioma);
+          return cargarIngles().catch(() => {})
+            .then(() => (cambios === turno ? motor.cambiarIdioma(idioma) : motor.obtenerIdioma()));
+        },
+        cargarIdioma(entrada) {
+          if (listo()) return motor.cargarIdioma(entrada);
+          const antes = cambios;
+          return Promise.resolve().then(() => entrada.getItem(motor.CLAVE_IDIOMA)).catch(() => null)
+            .then(valor => (valor === 'en' ? cargarIngles().catch(() => {}) : null))
+            .then(() => (cambios === antes ? motor.cargarIdioma(entrada) : motor.obtenerIdioma()));
+        },
+      });
+    },
+  });
+})();
 // Va en <head>, sin defer, antes de pintar nada. En escritorio, si la
 // preferencia guardada es inglés, la página nace oculta (clase idioma-previo,
 // en idioma-20261022.css) hasta que idioma-web termina de traducirla. Así no se
@@ -11,7 +89,7 @@
 // puede cortar el JS diferido ni la traducción: con la CPU ocupada, la página
 // sale en cuanto el hilo queda libre (unos 2 s con la CPU x4), pero nunca se
 // queda en blanco para siempre.
-// Sin red, sin innerHTML y sin estilos en línea (CSP).
+// Este bloque: sin red, sin innerHTML y sin estilos en línea (CSP).
 (() => {
   let guardado = null;
   try { guardado = localStorage.getItem('rwadar.idioma'); } catch { return; }

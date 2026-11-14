@@ -2126,20 +2126,6 @@ function lugarTarjetaHtml(lugar){
  const partes=String(lugar).split(' · '),pais=partes.pop();
  return '<span class="rel-lugar">'+(partes.length?'<span translate="no" lang="es">'+escHtml(partes.join(' · '))+'</span> · ':'')+'<span>'+escHtml(pais)+'</span></span>';
 }
-function tarjetaNuevaHtml(o,i){
- const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
- /* Su línea de riesgo, como la Selección; y, como la tarjeta de Ofertas
-    (05/11/2026), solo el aviso crítico entero: los demás, en la ficha. */
- const bloqueo=avisoBloqueoOferta(o);
- return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
-  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
-  '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
-  /* Lugar en su propio bloque (no empieza línea con «·»); el país se traduce. */
-  '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
-  '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
-  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
-  '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
-}
 /* Ofertas de Inicio (rediseño del 10/11/2026): un solo carrusel con las
    recién añadidas y las que pasan las 5 comprobaciones, sin duplicados y
    6 como mucho. Primero las nuevas (de la más nueva a la más antigua);
@@ -2226,9 +2212,10 @@ function sincronizarRadarPlegado(){
  b.setAttribute('aria-expanded',abierto?'true':'false');
  b.textContent=abierto?'Ocultar el radar':'Ver el radar';
 }
-/* El relato: aparecer al bajar (quieto con «reducir movimiento»), el carrusel
-   «Quién más se ha movido», «Fuentes de este apartado», la
-   portada a la altura de la pantalla y la barra de progreso de lectura. */
+/* El relato: la portada a la altura de la pantalla y la barra de progreso de
+   lectura. El carrusel «Quién más se ha movido» y «Fuentes de este apartado»
+   viven en /aprende/ (aprende-20261110.js); .rel-revela solo existe allí y no
+   se anima. */
 var relatoInicio=(function(){
  const $=id=>document.getElementById(id),panel=$('movilPanelInicio'),raiz=document.documentElement;
  const b=$('movilRadarAlternar');
@@ -2246,34 +2233,7 @@ var relatoInicio=(function(){
   pintarRadarInicio(inicioSinCifras());rotulos();
  }).observe(raiz,{attributes:true,attributeFilter:['class']});
  if(!panel||typeof panel.addEventListener!=='function'||!raiz||!raiz.classList||typeof panel.querySelectorAll!=='function')return null;
- const quieto=movimientoReducido,todos=s=>[...panel.querySelectorAll(s)];
- let io=null,origen=null;
- if(!quieto()&&typeof IntersectionObserver==='function'){
-  raiz.classList.add('rel-anim');
-  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
- }
- const revelar=()=>todos('.rel-revela:not(.visto)').forEach(n=>io?io.observe(n):n.classList.add('visto'));
- /* «Quién más se ha movido»: sin tamaño (Inicio oculto) se supone el principio,
-    y un ResizeObserver repinta en cuanto lo hay. */
- const lista=$('relQuienLista'),items=lista?[...lista.children]:[],pos=$('relQuienPos'),ant=panel.querySelector('.rel-quien-ant'),sig=panel.querySelector('.rel-quien-sig');
- if($('relQuienTotal'))$('relQuienTotal').textContent=String(items.length);
- const paso=()=>items.length>1?items[1].offsetLeft-items[0].offsetLeft:lista.clientWidth;
- const actual=()=>{const p=paso();return p>0?Math.max(0,Math.min(items.length-1,Math.round(lista.scrollLeft/p))):0;};
- function quien(){
-  if(!lista)return;
-  const ancho=lista.clientWidth;
-  if(pos)pos.textContent=String(ancho?actual()+1:1);
-  if(ant)ant.disabled=!ancho||lista.scrollLeft<4;
-  if(sig)sig.disabled=ancho?lista.scrollLeft+ancho>=lista.scrollWidth-4:items.length<2;
- }
- const ir=d=>lista.scrollTo({left:Math.max(0,actual()+d)*paso(),behavior:quieto()?'auto':'smooth'});
- if(lista){
-  let raf=0;lista.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;quien();});},{passive:true});
-  if(ant)ant.addEventListener('click',()=>ir(-1));
-  if(sig)sig.addEventListener('click',()=>ir(1));
-  lista.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();ir(e.key==='ArrowRight'?1:-1);}});
-  if(typeof ResizeObserver==='function')new ResizeObserver(quien).observe(lista);
- }
+ const quieto=movimientoReducido;
  /* Rótulos del radar a 12 px en pantalla aunque el SVG se escale. Solo hay
     rótulos en tableta y escritorio: en el móvil el radar va sin texto. */
  function rotulos(){
@@ -2285,9 +2245,6 @@ var relatoInicio=(function(){
    if(!t.dataset.y0)t.dataset.y0=t.getAttribute('y');const y0=parseFloat(t.dataset.y0),salto=fs*1.2;
    ts.forEach(s=>s.setAttribute('dy',salto.toFixed(1)));if(y0<200)t.setAttribute('y',(y0+15*ts.length-salto*ts.length).toFixed(1));});
  }
- /* «Fuentes de este apartado»: abre la lista en su grupo; «Volver al texto» regresa. */
- const refs=$('relRefs');
- const llevar=(n,centro)=>{n.scrollIntoView({block:centro?'center':'start',behavior:quieto()?'auto':'smooth'});n.focus({preventScroll:true});};
  panel.addEventListener('click',e=>{
   /* «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero»
      (data-movil-ir hace el resto). */
@@ -2310,20 +2267,7 @@ var relatoInicio=(function(){
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
    if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
-  const a=e.target.closest&&e.target.closest('a[data-rel-fuentes]');
-  if(a){
-   const g=$('fuentes-'+a.dataset.relFuentes);if(!g||!refs)return;
-   e.preventDefault();e.stopPropagation();refs.open=true;origen=a;
-   todos('.rel-refs-grupo').forEach(x=>{const on=x===g;x.classList.toggle('activa',on);x.querySelector('.rel-refs-volver').hidden=!on;});
-   llevar(g,false);return;
-  }
-  const v=e.target.closest&&e.target.closest('.rel-refs-volver');
-  if(v&&origen&&origen.isConnected){e.preventDefault();v.hidden=true;llevar(origen,true);}
  });
- /* Un enlace directo a «#fuentes-…» abre la lista en su grupo. */
- if(typeof location!=='undefined'&&refs){const m=/^#fuentes-(\w+)$/.exec(location.hash||''),g=m&&$('fuentes-'+m[1]);
-  if(g){refs.open=true;todos('.rel-refs-grupo').forEach(x=>x.classList.toggle('activa',x===g));
-   setTimeout(()=>requestAnimationFrame(()=>llevar(g,false)),120);}}
  /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
  panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.rel-tarjetas>li');
   if(li)li.scrollIntoView({block:'nearest',inline:'nearest',behavior:quieto()?'auto':'smooth'});});
@@ -2349,10 +2293,10 @@ var relatoInicio=(function(){
   barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6&&y<total+window.innerHeight);
  }
  window.addEventListener('scroll',()=>{if(pendiente)return;pendiente=true;requestAnimationFrame(()=>{pendiente=false;progreso();});},{passive:true});
- window.addEventListener('resize',()=>{alto();rotulos();quien();progreso();},{passive:true});
+ window.addEventListener('resize',()=>{alto();rotulos();progreso();},{passive:true});
  try{if(typeof RWAdarIdioma!=='undefined')RWAdarIdioma.suscribirIdioma(()=>{huellaInicio='';pintarInicio();});}catch(e){}
- const repintar=()=>{alto();rotulos();quien();revelar();progreso();};
- /* Al volver a Inicio, el radar y el carrusel ya tienen tamaño: se miden otra vez. */
+ const repintar=()=>{alto();rotulos();progreso();};
+ /* Al volver a Inicio, el radar ya tiene tamaño: se mide otra vez. */
  if(typeof MutationObserver==='function'&&document.body)new MutationObserver(()=>{if(document.body.dataset.movilPestana==='inicio')requestAnimationFrame(repintar);})
   .observe(document.body,{attributes:true,attributeFilter:['data-movil-pestana']});
  repintar();
@@ -2476,8 +2420,7 @@ const NOMBRE_IDIOMA_CITA={en:'inglés',fr:'francés',de:'alemán'};
 function nombreFuenteLocal(url){
  try{return new URL(url).hostname.replace(/^www\./,'')}catch{return 'Fuente documental'}
 }
-/* Las tres partes por separado (la ficha las coloca en su orden); juntas, para quien las pida enteras. */
-function documentacionOfertaHtml(d,opciones){const x=partesDocumentacionOferta(d,opciones);return x?x.ficha+x.referencias+x.fuentes:''}
+/* Las tres partes por separado: la ficha las coloca en su orden. */
 function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
  if(!d)return null;
  const fecha=v=>escHtml(fechaES(v));
@@ -2594,17 +2537,6 @@ const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
    consta supervisada, no dice «Ver oferta en X»: dice que se sale de RWAdar
    (igual en las fichas fijas y en la app). */
 const SALIR_AL_PROVEEDOR='Ir a la web del proveedor (sales de RWAdar)';
-/* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
-   plataforma. Sale del radar; sin promesas ni sellos que no consten. */
-const ICONO_SUPERVISOR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
-function supervisionOferta(o){
- const p=(typeof P!=='undefined'&&Array.isArray(P)?P:[]).find(x=>x&&x.slug===o.plataformaSlug);
- const estado=p&&p.verificacionLocal&&p.verificacionLocal.licenciaRegistro&&p.verificacionLocal.licenciaRegistro.estado;
- if(estado==='confirmada_regulador')return {clase:'ok',texto:'Plataforma registrada ante su supervisor'};
- if(estado==='confirmada_documento_producto')return {clase:'ok',texto:'Documentación de producto consultada'};
- if(p)return {clase:'pendiente',texto:'Registro de la plataforma por confirmar'};
- return {clase:'pendiente',texto:'Plataforma aún no evaluada en el radar'};
-}
 function resumenEditorialOferta(o){
  const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;
  if(api&&typeof api.resumenOferta==='function')return api.resumenOferta(o,typeof P!=='undefined'?P:[]);
@@ -3473,38 +3405,10 @@ function descarteRemoto(x){
   why:textoDato(x.motivo_descarte,'motivo',3000),fuentes:fuentes};
 }
 
-const textoOpcional=(v,nombre,max)=>v==null?'':textoDato(v,nombre,max);
 const numeroRemoto=(v,nombre,def=0)=>{if(v==null)return def;const n=Number(v);
  if(!Number.isFinite(n))throw new Error(nombre+' no es numérico');return n};
 const booleanoOpcional=(v,nombre)=>{if(v==null)return null;
  if(typeof v!=='boolean')throw new Error(nombre+' no es booleano');return v};
-function emisionRemota(e){
- const estado=textoDato(e.estado,'estado de emisión',30);
- if(!['abierta','programada','en_estudio'].includes(estado))throw new Error('estado de emisión no público');
- const x={
-  s:textoDato(e.slug,'slug de emisión',140),t:textoDato(e.titulo,'título de emisión',240),
-  res:textoOpcional(e.resumen,'resumen de emisión',3000),pl:textoDato(e.plataforma,'plataforma de emisión',120),
-  plw:urlHttps(e.plataforma_web),cat:textoDato(e.categoria,'categoría de emisión',80),
-  ub:textoOpcional(e.ubicacion,'ubicación de emisión',160),mon:textoDato(e.moneda,'moneda de emisión',12),
-  min:numeroRemoto(e.ticket_minimo,'entrada mínima'),obj:numeroRemoto(e.objetivo,'objetivo'),
-  cap:numeroRemoto(e.captado,'captado'),pct:numeroRemoto(e.porcentaje,'porcentaje'),
-  rent:e.rentabilidad==null?null:numeroRemoto(e.rentabilidad,'rentabilidad'),
-  plazo:e.plazo_meses==null?null:numeroRemoto(e.plazo_meses,'plazo'),
-  tipo:textoOpcional(e.tipo_rendimiento,'tipo de rendimiento',100),
-  cierra:textoOpcional(e.cierra_el,'cierre de emisión',10),abre:textoOpcional(e.abre_en,'apertura de emisión',40),
-  est:estado,cont:e.continua===true,esNo:booleanoOpcional(e.disponible_es,'disponibilidad en España'),
-  vinc:booleanoOpcional(e.vinculante,'carácter vinculante'),
-  rest:textoOpcional(e.acceso_restringido,'restricción de acceso',300),
-  rentNo:e.rentabilidad_no_publicada===true,url:urlHttps(e.url),
-  ver:textoDato(e.verificada_el,'fecha de emisión',10),pat:e.patrocinada===true,
- };
- if(!Object.prototype.hasOwnProperty.call(CATMETA,x.cat)||!x.plw||!x.url||
-    !/^\d{4}-\d{2}-\d{2}$/.test(x.ver)||
-    (x.cierra&&!/^\d{4}-\d{2}-\d{2}$/.test(x.cierra))||
-    [x.min,x.obj,x.cap,x.pct].some(n=>n<0)||x.min>1e12||x.obj>1e15||x.cap>1e15||x.pct>10000)
-   throw new Error('emisión fuera del contrato público');
- return x;
-}
 
 const ESTADOS_VERIFICACION_LOCAL={
  estadoOperativo:new Set(['observada','no_verificable']),
@@ -3653,22 +3557,6 @@ function validarRevisionCatalogo(revisiones){
  const ids=new Set(revisiones);
  if(ids.size!==1||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test([...ids][0]||''))
   throw new Error('lote público con revisiones mezcladas o sin revision_id');
-}
-function validarLoteCatalogoRemoto(plataformas,ofertas){
- if(!Array.isArray(plataformas)||plataformas.length!==26||
-    !Array.isArray(ofertas)||ofertas.length!==28)throw new Error('lote público incompleto');
- if(new Set(plataformas.map(p=>p.slug)).size!==26||new Set(ofertas.map(o=>o.slug)).size!==28)
-  throw new Error('lote público con slugs duplicados');
- validarRevisionCatalogo([...plataformas,...ofertas].map(x=>x.revision_id));
- const fechas=new Set(plataformas.map(p=>p.verificacion_local&&p.verificacion_local.verificadoEl));
- if(fechas.size!==1)throw new Error('lote público con fechas mezcladas');
- const fecha=[...fechas][0];
- if(!fechaLocalValida(fecha))throw new Error('fecha de lote inválida');
- const base=Date.parse(fecha+'T00:00:00Z'),hoy=new Date(),hoyUTC=Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate());
- const edad=Math.floor((hoyUTC-base)/86400000);
- if(!Number.isFinite(base)||edad<0||edad>7)throw new Error('lote público futuro o caducado');
- if(!ofertas.every(o=>fechaOfertaPublicaValida(o.verificada_el,fecha)))throw new Error('fecha individual de oferta inválida');
- return fecha;
 }
 
 function metadatosCatalogoV2(fila){
@@ -6283,7 +6171,7 @@ const Movil = (function(){
     (#fuentes-cap3), se queda en Inicio. */
  const anclaEnInicio=()=>{try{const n=document.getElementById(decodeURIComponent(location.hash.slice(1)));return !!(n&&n.closest&&n.closest('#movilPanelInicio'))}catch(e){return false}};
  const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?(anclaEnInicio()?'inicio':'buscar'):'inicio';
- let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
+ let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false;
  let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
  let modoMovilPrevio=media.matches;
 
@@ -6409,13 +6297,9 @@ const Movil = (function(){
      detalle anterior no cierra la lección recién abierta. */
   const sustituyeDetalle=detalleAbierto&&detalleHistorial&&history.state&&
    history.state.rwadarDetalle===detalleAbierto;
-  const vistaAvisos=document.getElementById('movilVistaAvisos');
-  const sustituyeAvisos=vistaAvisos&&!vistaAvisos.hidden&&avisosHistorial&&history.state&&
-   history.state.rwadarAvisos===true;
   if(detalleAbierto)cerrarDetalleVisual(false);
-  if(vistaAvisos&&!vistaAvisos.hidden){avisosHistorial=false;mostrarAvisos(false,false,false);}
   cambiar('academy',{arriba:false});
-  if((sustituyeDetalle||sustituyeAvisos)&&typeof history!=='undefined'&&history.replaceState){
+  if(sustituyeDetalle&&typeof history!=='undefined'&&history.replaceState){
    const estado={...estadoBaseSubvista(),rwadarAcademy:true};
    history.replaceState(estado,'',location.href);
    mostrarAcademy(true,true,false,origen);academyHistorial=true;
@@ -6473,28 +6357,6 @@ const Movil = (function(){
   }
   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});geometria();
   if(enfocar)setTimeout(()=>objetivo.querySelector('.movil-subvista-volver')?.focus({preventScroll:true}),60);
- }
- function mostrarAvisos(mostrar,enfocar=true,gestionarHistorial=true){
-  const panel=document.getElementById('movilPanelMas');
-  const vista=document.getElementById('movilVistaAvisos');
-  const abre=document.getElementById('movilAbrirAvisos');
-  if(!panel||!vista||!abre)return;
-  const estabaAbierta=!vista.hidden;
-  if(mostrar&&!estabaAbierta&&gestionarHistorial&&media.matches&&typeof history!=='undefined'&&history.pushState){
-   history.pushState({...estadoBaseSubvista(),rwadarAvisos:true},'',location.href);avisosHistorial=true;
-  }
-  if(!mostrar&&estabaAbierta&&gestionarHistorial&&avisosHistorial&&history.state&&history.state.rwadarAvisos===true){
-   avisosHistorial=false;history.back();if(enfocar)return;
-  }
-  vista.hidden=!mostrar;
-  panel.classList.toggle('movil-subvista-abierta',mostrar);
-  abre.setAttribute('aria-expanded',mostrar?'true':'false');
-  if(!mostrar)avisosHistorial=false;
-  if(!enfocar)return;
-  if(mostrar){
-   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
-   requestAnimationFrame(()=>document.getElementById('movilCerrarAvisos')?.focus({preventScroll:true}));
-  }else abre.focus({preventScroll:true});
  }
  function pintarSonidoMovil(){
   const boton=document.getElementById('movilSonido');
@@ -6583,7 +6445,6 @@ const Movil = (function(){
    cerrarAcademyVisual(false);if(volver)history.back();
   }
   if(id!=='buscar'&&movilFiltrosAbiertos){movilFiltrosAbiertos=false;actualizarFiltrosMoviles();}
-  if(id!=='cuenta'||activa==='cuenta')mostrarAvisos(false,false);
   activa=id;
   document.body.dataset.movilPestana=id;
   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!==id;});
@@ -6620,7 +6481,6 @@ const Movil = (function(){
   if(gruposPintadosMovil!==null&&gruposPintadosMovil!==esMovil&&typeof pintarEmisiones==='function')pintarEmisiones();
   if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();pintarPerfil();pintarAcademy();}
   else{
-   mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
    document.body.classList.remove('movil-teclado');
    paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar'&&!(relato&&nombre==='inicio');});
@@ -6714,8 +6574,6 @@ const Movil = (function(){
     Favoritos.borrar();avisar('Guardados borrados de este navegador.');
    }
   }
-  if(accion.dataset.movilAction==='avisos'){e.preventDefault();mostrarAvisos(true);}
-  if(accion.dataset.movilAction==='cerrar-avisos'){e.preventDefault();mostrarAvisos(false);}
   if(accion.dataset.movilAction==='sonido'){
    e.preventDefault();
    const interruptor=document.getElementById('snd');
@@ -6747,8 +6605,6 @@ const Movil = (function(){
    e.preventDefault();movilFiltrosAbiertos=false;actualizarFiltrosMoviles();
    document.getElementById('movilFiltrosToggle')?.focus({preventScroll:true});return;
   }
-  const avisos=document.getElementById('movilVistaAvisos');
-  if(avisos&&!avisos.hidden){e.preventDefault();mostrarAvisos(false);}
  });
  function reconciliarEstadoSubvista(enfocar=true){
   if(!media.matches)return;
@@ -6770,13 +6626,6 @@ const Movil = (function(){
   }else{
    if(detalleAbierto)cerrarDetalleVisual(enfocar);
    if(academyAbierta)cerrarAcademyVisual(enfocar);
-  }
-  const avisos=document.getElementById('movilVistaAvisos');
-  if(avisos&&avisos.hidden&&estado.rwadarAvisos===true){
-   cambiar('cuenta',{arriba:false});
-   mostrarAvisos(true,enfocar,false);avisosHistorial=true;
-  }else if(avisos&&!avisos.hidden&&estado.rwadarAvisos!==true){
-   avisosHistorial=false;mostrarAvisos(false,enfocar,false);
   }
  }
  window.addEventListener('popstate',()=>reconciliarEstadoSubvista(true));

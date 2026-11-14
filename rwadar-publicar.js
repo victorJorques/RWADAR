@@ -23,7 +23,7 @@ const { execFileSync } = require('child_process');
    Wrangler, npx ni otros procesos posteriores de publicación. */
 const entornoSincronizacion = { ...process.env };
 delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
-const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
+const { adelgazarJS, adelgazarCSS, sinComentariosHTML } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { cargarFotosNoticias } = require('./rwadar-noticias-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
@@ -288,9 +288,21 @@ if (scriptsPropios.filter(s => s[1] === rutaCatalogo).length !== 1 ||
     indiceHelper <= indiceCatalogo || indiceHelper >= scriptsPropios.length - 1 ||
     scriptsPropios.slice(indiceCatalogo).some(s => !/\bdefer\b/i.test(s[0]) || /\basync\b|\btype\s*=/i.test(s[0])) ||
     JSON.stringify(scriptsPropios.slice(indiceHelper+1,-1).map(s=>s[1]))!==JSON.stringify([
-      '/assets/idioma-en-20261022.js','/assets/idioma-en-avisos-20261112.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',
+      '/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',
       '/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js'])) {
   console.error('ERROR: el snapshot único del catálogo debe cargar con defer antes del comportamiento.');
+  process.exit(1);
+}
+/* El diccionario inglés (común y, después, el de la campana) ya no se pide con
+   <script>: va en data-idioma-en de idioma-previo, en <head>, que lo carga
+   antes del motor solo si la preferencia es inglés (o al elegir «English»).
+   Limpieza de la web, 13/11/2026. */
+if (scriptsPropios.filter(s => s[1] === '/assets/idioma-previo-20261104.js').length !== 1 ||
+    scriptsPropios.findIndex(s => s[1] === '/assets/idioma-previo-20261104.js') > indiceCatalogo ||
+    /\b(?:defer|async)\b/i.test(scriptsPropios.find(s => s[1] === '/assets/idioma-previo-20261104.js')[0]) ||
+    !scriptsPropios.find(s => s[1] === '/assets/idioma-previo-20261104.js')[0]
+      .includes('data-idioma-en="/assets/idioma-en-20261022.js /assets/idioma-en-avisos-20261112.js"')) {
+  console.error('ERROR: index.html debe apuntar los diccionarios inglés (común y avisos, en ese orden) en data-idioma-en de idioma-previo, en <head> y sin defer.');
   process.exit(1);
 }
 const scriptCatalogo = fs.readFileSync(path.join(DIR, rutaCatalogo.slice(1)), 'utf8');
@@ -672,9 +684,13 @@ function construirSalida() {
       for (const [antes, despues] of referencias) salida = salida.split(antes).join(despues);
       return salida;
     };
+    /* Y las páginas, sin sus comentarios HTML (13/11/2026): se quedan las marcas
+       de los generadores (<!--pre:ini-->, <!--academy:ini-->…), con las que las
+       pruebas comparan lo publicado con rwadar-site/ (ver rwadar-adelgazar.js). */
     for (const nombre of [...PAGINAS_HTML, 'sw.js']) {
       const archivo = path.join(temporal, ...nombre.split('/'));
-      fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
+      const reescrito = reescribirReferencias(fs.readFileSync(archivo, 'utf8'));
+      fs.writeFileSync(archivo, nombre.endsWith('.html') ? sinComentariosHTML(reescrito) : reescrito, 'utf8');
     }
     /* Con la Academy solo con cuenta, la web publicada da 303 a quien no ha
        entrado: lo que lleva cada lección se comprueba aquí, antes de subir. */

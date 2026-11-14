@@ -687,14 +687,13 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 <meta property="og:image:height" content="630">
 ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
-<script src="/assets/idioma-previo-20261104.js"></script>
+<script src="/assets/idioma-previo-20261104.js" data-idioma-en="/assets/idioma-en-20261022.js"></script>
 ${candado ? `<script src="${CANDADO_JS}"></script>\n` : ''}<link rel="stylesheet" href="${CSS}">
 ${candado ? `<link rel="stylesheet" href="${CANDADO_CSS}">\n` : ''}<link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd)}
 </script>
 <script src="${ANALITICA}" defer></script>
-<script src="/assets/idioma-en-20261022.js" defer></script>
 <script src="/assets/idioma-20261022.js" defer></script>
 <script src="/assets/idioma-web-20261022.js" defer></script>
 <script src="${JS}" defer></script>

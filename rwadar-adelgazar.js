@@ -30,8 +30,13 @@
    o de un comentario.
 
    LO QUE NO SE TOCA, PASE LO QUE PASE:
-   - Los comentarios HTML. `<!--pre:ini-->` y `<!--pre:fin-->` son las
-     marcas que usa el publicador para inyectar las fichas.
+   - Las marcas de los generadores en el HTML (`<!--pre:ini-->`,
+     `<!--academy:fin-->`, `<!--academy-inicio:ini-->`…): con ellas el
+     publicador inyecta las fichas y las pruebas comparan lo publicado con
+     la fuente. Desde el 13/11/2026 el resto de comentarios HTML sí se
+     quitan de lo publicado (sinComentariosHTML, más abajo), con un
+     recorrido que sabe si está dentro de una etiqueta, de un <script>
+     (también el JSON-LD), un <style>, un <pre>, un <textarea> o un <title>.
    - El interior de cualquier cadena, plantilla o expresión regular.
    - Los saltos de línea. Se conservan todos: así, si algún día un error
      apunta a la línea 2.400, sigue siendo la 2.400 de la fuente.
@@ -178,4 +183,60 @@ function adelgazar(html) {
 const adelgazarJS = src => apretar(sinComentariosJS(src));
 const adelgazarCSS = src => apretar(sinComentariosCSS(src));
 
-module.exports = { adelgazar, adelgazarJS, adelgazarCSS, apretar, sinComentariosJS, sinComentariosCSS };
+/* Comentarios del HTML publicado (limpieza de la web, 13/11/2026): en Inicio
+   eran 7,7 kB que solo sirven para leer la fuente. Se quita solo el
+   comentario: los espacios y saltos de línea de alrededor se quedan, así que
+   la página se pinta igual también donde el espacio cuenta (white-space).
+   Se quedan:
+   - las marcas de los generadores (`<!--nombre:ini-->`, `<!--nombre:fin-->`);
+   - los comentarios condicionales (`<!--[if …]>`);
+   - un comentario entre dos textos con letras en el mismo elemento: quitarlo
+     uniría dos nodos de texto que idioma-web traduce por separado.
+   Lo de dentro de una etiqueta (atributos, entre comillas), de <script> (el
+   JSON-LD también), <style>, <pre>, <textarea> y <title> se copia tal cual. */
+const MARCA_HTML = /^[a-z][a-z0-9-]*:(?:ini|fin)$/;
+const TEXTO_CRUDO = new Set(['script', 'style', 'pre', 'textarea', 'title']);
+function sinComentariosHTML(html) {
+  let out = '', i = 0;
+  const n = html.length;
+  while (i < n) {
+    const lt = html.indexOf('<', i);
+    if (lt < 0) { out += html.slice(i); break; }
+    out += html.slice(i, lt);
+    i = lt;
+    if (html.startsWith('<!--', i)) {
+      const fin = html.indexOf('-->', i + 4);
+      if (fin < 0) { out += html.slice(i); break; }       // sin cerrar: se deja
+      const dentro = html.slice(i + 4, fin), sigue = fin + 3;
+      const antes = out.slice(out.lastIndexOf('>') + 1);
+      const proximo = html.indexOf('<', sigue), despues = html.slice(sigue, proximo < 0 ? n : proximo);
+      const conserva = MARCA_HTML.test(dentro.trim()) || dentro.startsWith('[') ||
+        (/\S/.test(antes) && /\S/.test(despues));
+      if (conserva) out += html.slice(i, sigue);
+      i = sigue;
+      continue;
+    }
+    const etiqueta = /^<(\/?)([A-Za-z][A-Za-z0-9-]*)/.exec(html.slice(i, i + 64));
+    if (!etiqueta) { out += '<'; i++; continue; }        // <!DOCTYPE o un «<» suelto
+    let j = i + 1, comilla = '';
+    while (j < n) {                                       // hasta el «>» que cierra la etiqueta
+      const c = html[j];
+      if (comilla) { if (c === comilla) comilla = ''; }
+      else if (c === '"' || c === "'") comilla = c;
+      else if (c === '>') break;
+      j++;
+    }
+    out += html.slice(i, j + 1);
+    i = j + 1;
+    const nombre = etiqueta[2].toLowerCase();
+    if (!etiqueta[1] && TEXTO_CRUDO.has(nombre)) {        // su contenido, tal cual
+      const cierre = html.toLowerCase().indexOf('</' + nombre, i);
+      const hasta = cierre < 0 ? n : cierre;
+      out += html.slice(i, hasta);
+      i = hasta;
+    }
+  }
+  return out;
+}
+
+module.exports = { adelgazar, adelgazarJS, adelgazarCSS, apretar, sinComentariosJS, sinComentariosCSS, sinComentariosHTML };
