@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "verificacionSha256": "e1ce05cd09e0db386597f311a59beba79c19e6f268dfe8c35375b3fa74230b19",
+  "aplicadas": [
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "campo": "porQueImporta",
+      "antes": "En España, Robinhood solo vende hoy los «Classic». Que su filial europea sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "despues": "El cambio vale también para los tokens ya emitidos, desde el 9 de noviembre. Que la filial europea de Robinhood sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "motivo": "La fuente (el suplemento y el folleto consolidado) no dice que en España Robinhood solo venda hoy los «Classic»; la palabra no aparece salvo en «Ethereum Classic» y el lector no sabe qué son. Se cambia por lo que sí dice: el suplemento modifica las condiciones de los productos ya emitidos con fecha efectiva del 9/11/2026."
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "campo": "en.porQueImporta",
+      "antes": "In Spain, Robinhood only sells the Classic tokens today. Making its EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+      "despues": "The change also applies to tokens already issued, from 9 November. Making Robinhood's EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+      "motivo": "Lo mismo en inglés: «only sells the Classic tokens» no está en la fuente."
+    }
+  ]
+}

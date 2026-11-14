@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "pase": 2,
+  "fecha": "2026-11-14",
+  "edicionSha256": "89a940b5e00d1f1eca339803f361af34615c54e506c6e8f12baa31f06948252b",
+  "veredicto": "conforme",
+  "noticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+        "http": 200,
+        "horaUtc": "2026-11-14T13:13:33.390Z",
+        "sha256": "e781ed720cec86116e08e0c4f26140f1befd67a519aee0caaf0998c237ca4782",
+        "caida": false
+      },
+      "literal": "La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales sobre las entidades no registradas […] por no haber publicado EL FOLLETO INFORMATIVO O DOCUMENTO EQUIVALENTE REQUERIDO POR LA NORMATIVA DE VALORES. […] Además, la web de la CNMV ofrece un buscador de entidades advertidas.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Contadas en el documento: 6 de la FMA de Austria, 4 de la AFM de Países Bajos y 1 de BaFin (11). Documento del 11/11/2026. Foto de avisos (alerta-fraude-3), distinta de la portada publicada ayer (alerta-fraude) y única en la edición. Sin cambios desde el pase 1 salvo consultadaEl."
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+        "http": 200,
+        "horaUtc": "2026-11-14T13:13:34.886Z",
+        "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
+        "caida": false
+      },
+      "literal": "the Issuer is permitted to pass on certain fees and costs charged to the Issuer in connection with an Underlying to Investors, which may include proportionately reducing the number of Products held by such Investors […] the Issuer has amended the Terms and Conditions of each Series of Products that have been issued and remain outstanding as at the date of this Supplement",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "otrasFuentes": [
+        {
+          "url": "https://docs.robinhood.com/rhj/faq/",
+          "http": 200,
+          "horaUtc": "2026-11-14T13:16:27.124Z",
+          "sha256": "3d616fe7eeea15324d8948d98742fc9a20ad378a4241c53fe89005aacaf788d8",
+          "caida": false,
+          "literal": "Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. […] Stock Tokens are designed for global investors who want exposure to US capital markets."
+        }
+      ],
+      "nota": "Las dos correcciones del pase 1 (porQueImporta y en.porQueImporta) están aplicadas letra a letra y el texto nuevo lo respalda la fuente: las condiciones de los productos ya emitidos cambian con fecha efectiva la del suplemento (09/11/2026). El plan de sumar a la filial europea como participante autorizado está en la versión consolidada del folleto de 25/06/2026 y no lo añade la parte modificativa del suplemento. «Stock Tokens» y la exposición a EE. UU. constan en la web del emisor que el propio suplemento cita (docs.robinhood.com/rhj); el folleto admite subyacentes de otras bolsas, pero el producto se presenta como exposición a EE. UU."
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+        "http": 200,
+        "horaUtc": "2026-11-14T13:13:35.544Z",
+        "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
+        "caida": false
+      },
+      "literal": "an aggregate cap that limits the total value of financial instruments intermediated by a DLT market infrastructure of EUR 6 billion. Those activity thresholds have made it difficult for certain large market participants to use the Pilot framework […] Therefore, all asset-specific caps should be withdrawn, whereas the aggregate cap should be raised to EUR 300 billion.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "otrasFuentes": [
+        {
+          "url": "https://data.consilium.europa.eu/doc/document/ST-14900-2026-INIT/en/pdf",
+          "http": 200,
+          "horaUtc": "2026-11-14T13:13:39.354Z",
+          "sha256": "54f5eeefda10ae00b309e1996590999152cc10e77bf0449e2ac1f2da58eb2cb7",
+          "caida": false,
+          "literal": "General approach approved by Coreper. Part 2, on 04.11.2026"
+        }
+      ],
+      "nota": "300.000 / 6.000 = 50. La fecha 04/11/2026 es la de la aprobación por el Coreper (ST 14900/26, citado en la fuente). Es orientación general del Consejo, no ley: el titular dice «piden»."
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+        "http": 200,
+        "horaUtc": "2026-11-14T13:13:37.124Z",
+        "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
+        "caida": false
+      },
+      "literal": "El Consejo de la CNMV ha autorizado el Sistema de Negociación y Liquidación, SNL, basado en Tecnología de Registros Distribuidos, TRD, así como las normas internas que regirán su funcionamiento. […] En Bit2MeSTX se podrán negociar acciones y bonos representados en TRD.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "otrasFuentes": [
+        {
+          "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+          "http": 200,
+          "horaUtc": "2026-11-14T13:13:39.894Z",
+          "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc",
+          "caida": false,
+          "literal": "Securitize Europe DLT TSS Spain 26 November 2025 […] Bit2Me STX DLT TSS Spain 27 October 2026"
+        }
+      ],
+      "nota": "En la lista de ESMA solo hay dos infraestructuras con jurisdicción España, así que «dos» y «ya» son exactos. «No consta ninguna» emisión es formulación prudente."
+    },
+    {
+      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
+        "http": 200,
+        "horaUtc": "2026-11-14T13:13:38.247Z",
+        "sha256": "289265b26b53f727c54ce701024533e4dafdcd1a90189dea9601cb127eaece58",
+        "caida": false
+      },
+      "literal": "Los interesados podrán enviar comentarios hasta el 16 de noviembre de 2026. […] La CNMV inicia hoy el trámite de audiencia pública para el proyecto de Circular […] Ampliar dicho procedimiento a las reclamaciones derivadas de la prestación de servicios de criptoactivos y de financiación participativa",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true,
+      "nota": "Proyecto en consulta, plazo hasta el 16/11/2026 (sigue abierto hoy). Documento del 15/10/2026."
+    }
+  ],
+  "hoyCorrecto": true,
+  "faltaAlgo": [],
+  "correcciones": [],
+  "comprobaciones": {
+    "correccionesPrevias": "Las 2 correcciones de correcciones.json (verificacionSha256 e1ce05cd…0b19, que coincide con verificador/verificacion.json) están aplicadas: cada «despues» aparece una vez y ningún «antes» queda. Deshaciéndolas sobre el JSON verificado se obtiene exactamente el SHA-256 que juzgó el pase 1 (f38c1d26ef3d24711b0462939fb0a96562f361acb556c90721cb30d9c283b578): no ha cambiado nada más.",
+    "frenteAProduccion": "Frente a lo publicado (produccion-noticias-v2.json, del 13/11): mismas 5 noticias en el mismo orden; solo cambian actualizadoEl y consultadaEl (14/11), la foto de la portada (alerta-fraude a alerta-fraude-3) y los dos textos corregidos de Robinhood.",
+    "titulares": "titulares.json: el elegido de cada noticia y su foto coinciden con la edición; tres propuestas por idioma; la huella de la guía coincide con GUIA-TITULARES.md (ef8916de…8edb). Titulares de 46 a 60 caracteres, sin punto final ni palabras de promesa o exageración.",
+    "fotos": "Cinco fotos distintas, todas en fotos.json con el tema que corresponde a su noticia.",
+    "barrido": "Lo único nuevo en el barrido (BOE de hoy: sanciones de la CNMV a una empresa industrial cotizada) no es del sector de la tokenización; nada de hoy o de ayer supera a lo elegido."
+  }
+}
