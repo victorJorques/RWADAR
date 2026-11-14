@@ -16,7 +16,7 @@
 //   verificador = archivos fijos (pruebas/ayuda.mjs).
 // El repositorio de verdad no se toca: el ensayo trabaja en un clon
 // («git clone --shared», con su propia configuración) y comprueba al final
-// que las ramas de GitHub del repositorio de verdad no han cambiado.
+// antes de cada push que va al origin de ensayo y a ningún otro sitio.
 // =====================================================================
 import fs from 'node:fs';
 import os from 'node:os';
@@ -39,6 +39,13 @@ const ID = ['-c', 'user.name=Ensayo', '-c', 'user.email=ensayo@ejemplo.test', '-
 const g = (...a) => execFileSync('git', [...ID, ...a], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 << 20 }).trim();
 const gOrigin = (...a) => execFileSync('git', ['--git-dir', ORIGIN, ...a], { encoding: 'utf8' }).trim();
 const log = t => process.stdout.write(t + '\n');
+/* Cada push del ensayo va al origin de ensayo, y a ningún otro sitio (se comprueba antes de empujar). */
+let empujes = 0;
+function empujar(...a) {
+  const url = g('remote', 'get-url', 'origin'), remotos = g('remote').split('\n');
+  if (url !== ORIGIN || remotos.length !== 1) throw new Error(`el clon empujaría fuera del origin de ensayo (${url})`);
+  g('push', '-q', 'origin', ...a); empujes++;
+}
 const inicio = Date.now();
 const seg = () => `${((Date.now() - inicio) / 1000).toFixed(0)} s`;
 
@@ -69,7 +76,6 @@ function construir(ref, destino) {
 /* ---------------- El mundo ---------------- */
 const RELOJ = new Date().toISOString().replace(/\.\d+Z$/, 'Z');
 log(`Ensayo en ${E}`);
-const ramasAntes = execFileSync('git', ['for-each-ref', '--format=%(refname) %(objectname)', 'refs/heads', 'refs/remotes'], { cwd: RAIZ, encoding: 'utf8' });
 execFileSync('git', ['clone', '-q', '--shared', '--no-checkout', RAIZ, REPO]);
 // El repositorio de verdad puede ser superficial (sin toda la historia): el clon lo sabe por su archivo «shallow».
 const COMUN = path.resolve(RAIZ, execFileSync('git', ['rev-parse', '--git-common-dir'], { cwd: RAIZ, encoding: 'utf8' }).trim());
@@ -211,7 +217,7 @@ async function manana(nombre, o = {}) {
   // Repaso del cerrojo y «PR».
   r = await na(['cerrojo', '--rapido'], { trabajo: t, extra: ['--base', prod.url] });
   if (r.codigo === 3) return { estado: 'SIN_HACER_NADA', paso: 'repaso', motivo: r.salida.split('\n')[0] };
-  g('push', '-q', 'origin', `${B}:refs/heads/claude/noticias-ensayo`);
+  empujar(`${B}:refs/heads/claude/noticias-ensayo`);
   // «CI»: la decisión de cambios-ci.sh, validar --publicada y la compuerta sobre la unión.
   let ciBien = true;
   if (o.ciFalla) ciBien = false;
@@ -222,7 +228,7 @@ async function manana(nombre, o = {}) {
   }
   if (o.mainSeMueve) {
     g('checkout', '-q', '--detach', S); fs.appendFileSync(path.join(REPO, 'docs/INTERNO.md'), '\nOtro trabajo.\n');
-    g('commit', '-q', '-am', 'otro trabajo'); g('push', '-q', 'origin', 'HEAD:refs/heads/main'); g('checkout', '-q', '--detach', B);
+    g('commit', '-q', '-am', 'otro trabajo'); empujar('HEAD:refs/heads/main'); g('checkout', '-q', '--detach', B);
   }
   g('fetch', '-q', 'origin');
   const mainAhora = gOrigin('rev-parse', 'refs/heads/main');
@@ -234,7 +240,7 @@ async function manana(nombre, o = {}) {
   // Unir con «merge» en el origin.
   g('checkout', '-q', '--detach', mainAhora); g('merge', '-q', '--no-ff', '-m', 'Unión del PR de las noticias', B);
   const M = g('rev-parse', 'HEAD');
-  g('push', '-q', 'origin', 'HEAD:refs/heads/main'); gOrigin('update-ref', '-d', 'refs/heads/claude/noticias-ensayo');
+  empujar('HEAD:refs/heads/main'); gOrigin('update-ref', '-d', 'refs/heads/claude/noticias-ensayo');
   // «Publicar web» revisión: la compuerta y la construcción de M.
   escribir(path.join(t, 'ejecucion-revision.json'), { path: '.github/workflows/publicar.yml', event: 'workflow_dispatch', head_branch: 'main', head_sha: o.ejecucionAjena ? S : M });
   r = await na(['comprobar-ejecucion', '--ejecucion', path.join(t, 'ejecucion-revision.json'), '--union', M], { trabajo: t });
@@ -310,7 +316,7 @@ const DIAS = [
   ['cerrojo: main con un cambio sellado sin publicar', 'SIN_HACER_NADA', { antesDelCerrojo: () => {
     g('checkout', '-q', '--detach', S); fs.appendFileSync(path.join(REPO, 'rwadar-site/robots.txt'), '\n# cambio sin publicar\n');
     g('commit', '-q', '-am', 'cambio sellado sin publicar'); sellarComoPersona('Sello revisado de un cambio que aún no se ha publicado en el ensayo');
-    g('push', '-q', 'origin', 'HEAD:refs/heads/main'); g('fetch', '-q', 'origin'); } }],
+    empujar('HEAD:refs/heads/main'); g('fetch', '-q', 'origin'); } }],
   ['cerrojo: ya publicadas hoy', 'SIN_HACER_NADA', { antesDelCerrojo: () => {
     const e = edicionBuena(); fs.writeFileSync(path.join(PROD, 'datos', 'noticias-v2.json'), JSON.stringify(e)); } }],
   ['«Publicar web» publicaría otro commit', 'UNIDO_SIN_PUBLICAR', { ejecucionAjena: true }],
@@ -338,11 +344,10 @@ try {
 } finally {
   await prod.cerrar(); await rev.cerrar(); await fuentesSrv.cerrar();
 }
-const ramasDespues = execFileSync('git', ['for-each-ref', '--format=%(refname) %(objectname)', 'refs/heads', 'refs/remotes'], { cwd: RAIZ, encoding: 'utf8' });
-const intacto = ramasAntes === ramasDespues;
+const intacto = g('remote', 'get-url', 'origin') === ORIGIN;
 log('\n=== Resumen del ensayo ===');
 filas.forEach(f => log(f));
-log(`Ramas del repositorio de verdad: ${intacto ? 'sin cambios' : 'CAMBIARON'} · ningún push fuera del origin de ensayo (${ORIGIN}).`);
+log(`${empujes} push, todos al origin de ensayo (${ORIGIN}); el clon no conoce otro remoto${intacto ? '' : ' (¡NO!)'}. Ningún «Publicar web», PR ni petición a GitHub o Cloudflare: todo en 127.0.0.1.`);
 log(`${filas.length - mal}/${filas.length} días como se esperaba · ${seg()}`);
 if (!args.conservar) fs.rmSync(E, { recursive: true, force: true });
 process.exitCode = mal || !intacto ? 1 : 0;
