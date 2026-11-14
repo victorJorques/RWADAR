@@ -22,6 +22,13 @@ el orden de trabajo y lo aprendido para hacerlo rápido.
 1. Lee `AGENTS.md`, la entrada de arriba de `docs/tareas/PARA-CODEX.md` y el
    «Qué está funcionando hoy» de `docs/INTERNO.md`. `node rwadar-node-seguro.js`.
 2. `git fetch origin main && git checkout -b claude/catalogo-<fecha> origin/main`.
+   **Cerrojo para las noticias automáticas** (desde el 14/11/2026): crea la
+   rama `claude/cerrojo-ciclo-<fecha>` en GitHub
+   (`git push origin origin/main:refs/heads/claude/cerrojo-ciclo-<fecha>`; no
+   lanza ningún flujo ni gasta minutos). Mientras exista, la mañana automática
+   no hace nada. Bórrala al cerrar (paso 4). Si al empezar ves abierto un PR
+   «Noticias automáticas del …», espera a que se una o se cierre antes de unir
+   nada tuyo.
 3. En segundo plano: `npm ci` en la raíz, `rwadar-app` y `rwadar-movil`.
 4. Lectura pública (precondición, con hora):
    `bash .claude/skills/investigacion-catalogo/leer-publico.sh rwadar-app/data/verificaciones/<fecha>-v2/lectura-publica`.
@@ -92,7 +99,14 @@ del mismo registro o con WebFetch y regístralo en `cambios-radar.json`
 mismo, cambia la fuente ahí y su comprobación en
 `rwadar-app/data/comprobaciones-fuentes.json` (edición mínima, sin reformatear).
 
-**Noticias del sector (desde el 10/11/2026, petición de Víctor).** En cada
+**Noticias del sector (desde el 10/11/2026, petición de Víctor).** Si las
+noticias automáticas de esta mañana ya salieron (`actualizadoEl` de
+`https://rwadar.pages.dev/datos/noticias-v2.json` es hoy), no se rehacen salvo
+novedad importante. Si se hacen, con el mismo procedimiento que la mañana
+(skill `noticias-automaticas`): la guía de titulares y fotos
+(`rwadar-editorial-source/noticias/GUIA-TITULARES.md`), `titulares.json` con
+tres propuestas por idioma, y `noticias-auto.mjs validar` antes del
+verificador. En cada
 ciclo se renuevan las noticias de Inicio: flujo con dos analistas (regulación
 España/UE; mercado, productos y riesgos), un redactor jefe y un verificador
 independiente (modelo: `rwadar-app/data/verificaciones/2026-11-10-v2/noticias/`,
@@ -246,7 +260,9 @@ Trampas conocidas:
 Informe fechado (`docs/INVESTIGACION-CATALOGO-<fecha>.md`), `docs/INTERNO.md`
 en llano, entrada arriba de `docs/tareas/PARA-CODEX.md` y, para Víctor, un
 resumen corto: qué cambió en las ofertas, qué no entró y por qué, y qué está
-publicado y comprobado.
+publicado y comprobado. Borra la rama de cerrojo de las noticias
+automáticas (`git push origin --delete claude/cerrojo-ciclo-<fecha>`), también
+si el ciclo se paró a medias.
 
 ## Vigía: medido el 13/11/2026
 

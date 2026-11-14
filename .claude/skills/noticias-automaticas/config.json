@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "activo": true,
+  "publicarSiSoloCambianFechas": true,
+  "horaLimiteUnion": "12:30",
+  "produccion": "https://rwadar.pages.dev",
+  "revision": "https://revision.rwadar.pages.dev",
+  "selloHumanoMaxDias": 7,
+  "titulares": { "maxCaracteres": 60, "propuestasMin": 3 },
+  "edicion": { "hoyMax": 3, "importanteMax": 5, "totalMin": 3, "totalMax": 8, "diasImportante": 30 },
+  "fotos": {
+    "distintasEn": "edicion",
+    "genericas": { "regulacion": "regulador-espana", "mercado": "red-europea", "producto": "acciones-eeuu", "riesgo": "alerta-fraude" }
+  },
+  "carpeta": { "maxBytes": 200000, "extensiones": [".json", ".md", ".txt"] },
+  "clavesNuevasPermitidas": []
+}

@@ -354,6 +354,9 @@ function bateriaDePrueba(app) {
   for (const orden of app) {
     const m = /^node (?:--test )?([\w.-]+)$/.exec(orden);
     if (m) escribir(path.join('rwadar-app', m[1]), apuntar + (m[1] === 'falla.mjs' ? 'process.exit(3);\n' : ''));
+    // «node --test ../carpeta/*.test.mjs» (las pruebas de las noticias automáticas): una prueba de mentira en esa carpeta.
+    const g = /^node --test \.\.\/(?!\.github\/)(.+)\/\*\.test\.mjs$/.exec(orden);
+    if (g) escribir(path.join(g[1], 'carpeta.test.mjs'), apuntar);
   }
   escribir('.github/flujos.test.mjs', apuntar);
   escribir('package.json', JSON.stringify({ scripts: {
@@ -379,7 +382,9 @@ const correrParte = (dir, ...args) => {
 test('partes-ci: ejecuta una parte en su orden, dentro de rwadar-app, y para en el primer fallo', async (t) => {
   const { plan, PARTES_BATERIA } = await import('./partes-ci.mjs');
   const SELLO_APP = ['node probar-transparencia-comercial.mjs', 'node probar-cobro-seguro.mjs', 'node probar-auditoria-relanzamiento.mjs'];
-  const app = ['node probar-comunidad.mjs', 'node uno.mjs', ...SELLO_APP, 'node probar-admin-huella.mjs', 'node dos.mjs',
+  // Una orden «node --test ../carpeta/*.test.mjs» (como las de las noticias automáticas) también corre en su parte.
+  const app = ['node probar-comunidad.mjs', 'node uno.mjs', ...SELLO_APP, 'node --test ../.claude/skills/noticias-automaticas/pruebas/*.test.mjs',
+    'node probar-admin-huella.mjs', 'node dos.mjs',
     'node probar-reabrir-cuentas.mjs', 'node --test ../.github/*.test.mjs'];
   const dir = bateriaDePrueba(app);
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
@@ -394,7 +399,7 @@ test('partes-ci: ejecuta una parte en su orden, dentro de rwadar-app, y para en 
   }
   // (la de ../.github/*.test.mjs corre el flujos.test.mjs de mentira).
   assert.deepEqual(vistas.filter(v => / en rwadar-app$/.test(v)).sort(),
-    app.map(o => (o.includes('*') ? 'flujos.test.mjs' : o.replace(/^node /, '')) + ' en rwadar-app').sort());
+    app.map(o => (o.includes('../.github/*') ? 'flujos.test.mjs' : o.includes('*') ? 'carpeta.test.mjs' : o.replace(/^node /, '')) + ' en rwadar-app').sort());
   // Los guiones de la raíz corren desde la raíz.
   assert.ok(vistas.includes(`web.mjs en ${path.basename(dir)}`) && vistas.includes(`movil.mjs en ${path.basename(dir)}`), vistas.join('\n'));
   // El sello: sus cuatro órdenes, en este orden.
@@ -483,10 +488,20 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   // si la batería lo corre y si el trabajo «Sello» cubre lo que mira, y añádelo aquí.
   const codigo = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', '*.js', '*.mjs', '*.cjs'], { cwd: raiz, encoding: 'utf8' })
     .split('\n').filter(f => f && !f.includes('node_modules/')).sort();
-  assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs', '.github/flujos.test.mjs', '.github/partes-ci.mjs',
+  // Las noticias automáticas (14/11/2026) sellan solo las noticias y sin tocar «actualizadoEl». La batería no lee el
+  // sello del repositorio con ellas: sus pruebas hacen su «main» con un estado.json fijo (pruebas/fijos/estado.json),
+  // «validar --publicada» no mira el sello (V-16 es de la fase final) y ensayo.mjs no lo corre la batería. Por eso
+  // no van en el trabajo «Sello» (ahorra un minuto en cada PR de sello: el trabajo se quedaba cerca de 60 s).
+  assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs',
+    '.claude/skills/noticias-automaticas/ensayo.mjs', '.claude/skills/noticias-automaticas/lib/cerrojo.mjs',
+    '.claude/skills/noticias-automaticas/lib/comun.mjs', '.claude/skills/noticias-automaticas/lib/flujo.mjs',
+    '.github/flujos.test.mjs', '.github/partes-ci.mjs',
     'probar-web.mjs', 'rwadar-app/auditar-relanzamiento.mjs', 'rwadar-app/probar-auditoria-relanzamiento.mjs',
     'rwadar-app/probar-cobro-seguro.mjs', 'rwadar-app/probar-transparencia-comercial.mjs', 'rwadar-precargar-imagenes.js',
     'rwadar-publicacion-segura.js', 'rwadar-publicar.js'], 'Otro archivo de código nombra el sello: revisa si la batería lo corre y si el trabajo «Sello» lo cubre');
+  assert.ok(!SELLO.some(o => o.includes('noticias-automaticas')), 'las pruebas de las noticias automáticas no leen el sello del repositorio');
+  assert.match(leer('.claude/skills/noticias-automaticas/pruebas/sello.test.mjs'), /JSON\.parse\(fs\.readFileSync\(ESTADO_FIJO, 'utf8'\)\)/,
+    'sello.test.mjs tiene que hacer su «main» con el estado.json fijo: si lee el del repositorio, va en SELLO');
   // rwadar-publicar.js lee el sello solo en modo remoto; test:web lo corre con --local.
   const publicar = leer('rwadar-publicar.js'), iRemoto = publicar.indexOf('\nif (remoto) {\n');
   assert.equal((publicar.match(/'relanzamiento'/g) || []).length, 1, 'rwadar-publicar.js lee el sello en otro sitio');

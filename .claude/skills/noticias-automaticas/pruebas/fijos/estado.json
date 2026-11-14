@@ -1,0 +1,320 @@
+{
+  "version": 3,
+  "actualizadoEl": "2026-11-14",
+  "publicacionSolicitada": true,
+  "perfilPublicacion": "editorial-gratuito",
+  "modeloComercial": "publicidad-en-app-pendiente",
+  "actividadComercial": {
+    "comisiones": false,
+    "publicidad": false,
+    "atribucion": false,
+    "cobros": false
+  },
+  "comisionVariableSobreInversion": false,
+  "nota": "Limpieza de código de la web (#138) sobre el catálogo 434217eb",
+  "revisionAprobada": {
+    "commit": "ccedb524e2417bf87ed4143c6c7bec9a74e15743",
+    "contenidoSha256": "sha256:1733804603e4e99bbb5d4fc82f83f660cfbdda95941a987c03523111efb57697",
+    "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
+  },
+  "controles": {
+    "identidad_legal_y_fiscal": {
+      "estado": "aprobado",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "rwadar-site/privacidad.html#aviso-legal",
+          "verificadoEl": "2026-09-27",
+          "resumen": "El titular ha facilitado nombre completo, NIF con letra de control válida y domicilio completo declarado sin número. El correo público de RWAdar está confirmado. Identificación de persona física para el alcance editorial gratuito; no acredita altas ni habilita cobros."
+        }
+      ],
+      "detalle": "Identificación del titular persona física incorporada por indicación expresa. La comprobación es formal y documental según lo declarado por el titular; las obligaciones de una actividad remunerada se revisan antes de activar publicidad o cobros."
+    },
+    "revision_legal": {
+      "estado": "aprobado",
+      "detalle": "Revisión interna limitada al radar editorial gratuito y su política publicable. No constituye un dictamen externo, licencia financiera ni aprobación para monetizar.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-EDITORIAL-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Identidad, condiciones, límites editoriales, ausencia de intermediación y de monetización, proveedores y derechos documentados para este corte."
+        }
+      ]
+    },
+    "aviso_legal_y_condiciones": {
+      "estado": "aprobado",
+      "detalle": "Privacidad actualizada para registro manual privado de inversiones compartido en Supabase, sin compras ni cotizaciones automáticas de proveedores. Conserva consulta pública, identidad y alcance editorial gratuito.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md#implementacion-y-pruebas-locales",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Privacidad del 11/10 describe web y Android, sesión en memoria y baja con contraseña reciente. No permite inversión, custodia, anuncios, opiniones, avisos ni una descarga pública del manual. Las verificaciones reales y sus límites se separan de los ensayos locales."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "rwadar-site/privacidad.html#aviso-legal",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Datos declarados por el titular completos, finalidades y proveedores descritos, criterios de conservación y proceso diario de180días comprobado en metadatos."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#web-y-acceso",
+          "verificadoEl": "2026-10-23",
+          "resumen": "La política describe el flujo implementado, la cookie necesaria, el acceso por cuenta y la retirada de la caché PWA. La publicación está pendiente; no acredita pruebas reales de correo."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-ACTUALIZACION-141-2026-10-28.md",
+          "verificadoEl": "2026-10-28",
+          "resumen": "Revisión de cartera privada y privacidad, aislamiento de cuentas y controles dirigidos. APK nuevo pendiente de validación propia."
+        }
+      ]
+    },
+    "primer_acuerdo_patrocinio": {
+      "estado": "pendiente",
+      "evidencias": [],
+      "detalle": "No exigido al perfil editorial gratuito. Para monetizar anuncios faltan red elegida, titular y condiciones aceptadas, revision de la app y controles de privacidad; no se exige a las empresas del catalogo pagar por aparecer."
+    },
+    "facturacion_y_cobro": {
+      "estado": "pendiente",
+      "evidencias": [],
+      "detalle": "Faltan datos de facturacion, tratamiento fiscal y medio de cobro a nombre del titular."
+    },
+    "catalogo_actual_y_citable": {
+      "estado": "aprobado",
+      "detalle": "Revisión del 22/10 aplicada con SQL editorial limitado y comprobada por lectura pública: 26 plataformas, 4 descartadas y 49 referencias (24/21/4), vigente hasta el 29/10. IOD cerrado, fuentes y fechas conservadas por afirmación; no se atribuye investigación documental profunda a un simple recuento de capturas. Al vencer se mantiene el catálogo con aviso y sin cifras vencidas.",
+      "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#catalogo-aplicado",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Lote 349df4ef: 123 URL capturadas, contraste de 69 fuentes del radar, SQL editorial revisado y probado dos veces en PGlite, aplicado con guarda de revisión anterior y lectura pública posterior 26/49/4. No se aplicó la migración de comunidad."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#catalogo-y-preparacion-local",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Lectura pública real, snapshot 21/10, 26/49/4 y correspondencia exacta 49/49 de imágenes; npm test final: 502 web, 184 móvil, base/QR/herramientas correctos."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-10-21.md",
+          "verificadoEl": "2026-10-21",
+          "resumen": "Revisión documentada del catálogo del 21/10 y sus fuentes, vigencia hasta 28/10; la lectura posterior no cambia fechas de revisión."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-10-06.md",
+          "verificadoEl": "2026-10-06",
+          "resumen": "Informe del lote editorial vigente del 6/10, con revisión de fuentes y fichas y vigencia hasta el 13/10. No se reutiliza como una comprobación nueva del 11/10."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md#comprobaciones-reales-en-linea",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Lectura de catálogo y sincronización real sin escrituras: 26 plataformas, 4 descartes y 49 referencias V2. Publicación no retirada, fechas del lote conservadas y catálogo siempre disponible salvo orden expresa."
+        },
+        {
+          "tipo": "fuente-primaria",
+          "referencia": "rwadar-app/data/verificaciones/2026-09-28/revision-fuentes.json",
+          "verificadoEl": "2026-09-28",
+          "resumen": "Consultadas las 69 fuentes anteriores y documentos alternativos oficiales. Se añade OCC para Paxos; no se renuevan afirmaciones de acceso o licencia que no pudieron contrastarse."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-catalogo-publico.mjs",
+          "verificadoEl": "2026-09-28",
+          "resumen": "76 pruebas locales aprobadas. Borrador remoto invisible bajo anon, fechas canónicas compatibles y catálogo aprobado 26/28; sincronizador REST real correcto."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Migración SQL aplicada y contrato comprobado: documentación conservada al caducar cifras, cero permisos de mutación, 26/28 reales y fuentes fechadas."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Lote real 26/49 y colecciones 24/21/4, Spiko ISIN y 13 destinos V2 comprobados. PGlite verifica exclusión de borradores y falta de retorno a lotes anteriores."
+        }
+      ]
+    },
+    "derechos_de_imagen": {
+      "estado": "aprobado",
+      "detalle": "Material editorial generado propio, procedencia y etiqueta. Incluye 49 ilustraciones por ficha del contrato v2 y las 4 ilustraciones de categoría; no se publican las fotografías internas de terceros.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md",
+          "verificadoEl": "2026-10-21",
+          "resumen": "Procedencia y revisión de las 49 ilustraciones editoriales de fichas, rótulo editorial y texto alternativo IA; publicación de este corte solicitada expresamente por el titular."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-EDITORIAL-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Revisión visual de las4ilustraciones sin referencias ajenas, manifiesto y huellas verificados;26portadas editoriales con procedencia registrada."
+        }
+      ]
+    },
+    "beta_segura_extremo_a_extremo": {
+      "estado": "aprobado",
+      "detalle": "Preview99d594e3 comprobada: lectura pública,26/49,SEO/RSS,privados denegados y recursos exactos. Login propio real, cookie, sesión y logout aprobados;frontend con3regresiones de doble cierre. CSS conserva revisión previa; el controlador visual26/10 no pudo completar. Android19 sigue pendiente y separado. La revocación declarada por el titular se conserva como antecedente documentado; no acredita una auditoría histórica completa ni valida el nuevo APK.",
+      "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md#acceso-real-de-la-preview-y-continuación-nativa",
+          "verificadoEl": "2026-10-24",
+          "resumen": "Run privado40121753928: paso web aprobado99peticiones/3páginas/87recursos,26/49 y logoutreal. Su fallo posterior NameError del arnés nativo se conserva y no apruebaAPK. Diseño radar depreview2b48b963 inspeccionado390/1440;19IDsintactos."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#producción-integral-comprobada",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Producción e764634c desde main08b18a4:208/208HTTP,206/206recursos idénticos a la preview y Chrome real a320/390/1440. ES/EN, persistencia, búsqueda, favorito, modal y comparación0/2/3 con controles44px dentro. Cero errores observados y sin escrituras. Android1.4.0 continúa con compuerta independiente."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#preview-y-publicación-remotas",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Preview34208f87 del corte2c98d46:208/208HTTP,206/206recursos y Chrome público con catálogo real a320/390/1440. ES/EN persistente, buscador, favorito, foco tras repintado, detalle sin recorte y barra comparación0/2/3 con controles44px dentro. Cero errores observados; sin escrituras de cuentas. QA nativa1.4.0 separada y todavía pendiente."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Pruebas locales del nuevo catálogo, interfaz, páginas, RSS y seguridad de comunidad sin aplicar. Vídeo real de interfaz con nueve perfiles simulados, 45/45 tareas observables, reproducción completa comprobada; no equivale a usuarios humanos ni a un APK instalado."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-1.3.2-2026-10-22.md",
+          "verificadoEl": "2026-10-22",
+          "resumen": "APK exacto 1.3.2/código 16 instalado en emulador API 35: catálogo 26/49, cinco fotos editoriales, Academy, favorito persistente y cuatro formularios sin credenciales. Capturas propias revisadas; separación 92 px. Release final latest y descarga anónima con firma, tamaño, huellas y ZIP coincidentes. Coste estimado cero, controles de publicación devueltos a NO."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#produccion-publicada-y-comprobada",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Producción real desde main: 35/35 HTTP y 113/113 recursos idénticos a la preview revisada, catálogo del 21/10 e imágenes visibles, navegador sin errores observados. /android redirige a la release final 1.3.2. No se modificó Supabase."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#preview-publicada-y-comprobada",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Preview real del corte del 21/10: 35/35 HTTP y 113/113 archivos idénticos; búsqueda, fotos, Academy, cuentas opcionales y anchos 320/390/1440 observados sin bloqueos. No se envía correo ni se atribuye esta prueba a un APK instalado."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-1.3.1-2026-10-11.md",
+          "verificadoEl": "2026-10-11",
+          "resumen": "APK exacto 1.3.1/código14 instalado y ejecutado en emulador API35: catálogo 26/49, navegación, Academy, favorito persistente y formularios sin credenciales. Separación nativa 92px y capturas revisadas. Release pública y descarga anónima coincidentes en firma, tamaño y huellas. Pruebas locales finales 501 web/182 móvil/196 SQL. No Auth nativo real, SMTP nativo ni dispositivo físico."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Web aprobada: revisión pública comprobada por HTTP 35/35, huellas 64/64 y navegador con formularios y catálogo íntegro. Local: 501 web, 180 móvil, 196 SQL y Chrome 61+30. Alta real confirmada por el titular, perfil/salida observados y recuperación recibida. SQL aplicado/postverificado. El cambio real de contraseña, la baja real y el APK nuevo no se atribuyen a estas pruebas web."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-WEB-2026-09-28.md",
+          "verificadoEl": "2026-09-28",
+          "resumen": "329 pruebas web y 13 de presentación editorial aprobadas; 54 archivos del preview idénticos, cabeceras y rutas correctas, navegación y tamaños móviles revisados sin errores de consola observados."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-2026-09-28.md",
+          "verificadoEl": "2026-09-28",
+          "resumen": "APK8 con identidad y firma verificadas; instalación limpia y navegación del catálogo real en emulador Android superadas. Evidencia y limitaciones registradas."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/seguridad/REVISION-SEGURIDAD-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Contención actual y límites históricos separados; nuevas altas cerradas, cero permisos de mutación ni RPCprivilegiadas para clientes, catálogo público íntegro."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-catalogo-publico.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "70pruebas aisladas con defaults heredados y cierre de permisos, más verificación RESTreal de26/28 y4descartes documentados."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Evidencia de la etapa V1: preview corregido y pruebas aprobadas. El cierre posterior enlaza el catálogo V2 y APK10 publicados y comprobados por separado."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Preview164c8c56 y producción78977d11 comprobados por HTTP54/54 y navegador;49fichas,341web84móviles. APK10 PASS final36703760962 con GreenPoint/Hausera y REST idéntico antes/después. Publicación y descarga anónima posterior comprobadas."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "APK1.1.2/código10 publicado a las10:50:52UTC y descargado sin autenticación a las10:52:17UTC; misma huella y certificado que el binario ensayado. Distribución directa y emulador, sin atribuir tiendas ni dispositivo físico."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#evidencia-local-y-limites",
+          "verificadoEl": "2026-10-23",
+          "resumen": "Corte f3cfb1a revisado localmente. Worker completo, sesión confirmada, aislamiento por usuario, lectura editorial, bloqueo de producción si Supabase admite anónimos y tutorial manual. No es prueba E2E remota ni aprobación del APK."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md",
+          "verificadoEl": "2026-10-26",
+          "resumen": "Preview99d594e3:16controlesHTTP y4pasos realesAuth con cuentaQA existente, además de37pruebas dirigidas. Lectura pública26/49 y privados denegados. CSS sin cambios; nueva captura visual no disponible. Sin aprobación APK19."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-MAPA-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Mapa local revisado: web549,páginas90,acceso55,mapa10,precarga31. Preview3fbac666 y8controlesHTTPS reales aprobados; fuentes,26coordenadas,49ofertas,cincoassetsversionados yfrontera401privada correctos. Revisión visual no acreditada por bloqueo del controlador. Publicación de producción reiterada expresamente por Víctor. No aprueba Android."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-SESION-TUTORIAL-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Tres regresiones del código real aprobadas y revisión independiente. La sesión se conserva ante opciones nulas y el401 sigue rechazado. APK intacto; validación nativa aún pendiente."
+        }
+      ]
+    },
+    "alcance_editorial_sin_monetizacion": {
+      "estado": "aprobado",
+      "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-transparencia-comercial.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Dieciséis comprobaciones superadas: fichas gratuitas, anuncios pendientes, ausencia de comisión activa y separación del criterio editorial. La medición agregada de visitas no añade conversiones ni cobros."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-para-empresas.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Dieciocho comprobaciones superadas sobre el canal exploratorio, sin precios, contratación, factura ni captación de datos de inversores. Un contacto no activa un anuncio o una ficha pagada."
+        }
+      ],
+      "detalle": "Alcance editorial gratuito revisado conforme a la decisión del titular, con las cuatro capacidades comerciales desactivadas. No habilita SDK publicitario, atribución, comisiones ni recepción de dinero. El resto de controles y la revisión del artefacto permanecen separados."
+    },
+    "operacion_monitorizacion_y_rollback": {
+      "estado": "aprobado",
+      "detalle": "Soporte por correo del titular, panel de métricas creado, verificación por etapas y punto de restauración real conservado. No se afirma vigilancia humana continua ni rollback público ya ensayado.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/OPERACION-LANZAMIENTO.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Procedimiento de preview, comprobación y producción; restauración a237c1ed9-feaf-44ea-b408-bac23f904f27 listado por Cloudflare; limpieza preservada."
+        }
+      ]
+    }
+  }
+}

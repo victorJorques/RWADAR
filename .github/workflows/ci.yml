@@ -55,6 +55,19 @@ jobs:
         # La regla está en el script para poder probarla: .github/flujos.test.mjs.
         run: bash .github/cambios-ci.sh
 
+      # Desde el 14/11/2026: el PR de las noticias automáticas de la mañana
+      # («Noticias automáticas del DD/MM/AAAA») solo puede cambiar las dos
+      # copias de las noticias, la carpeta del día y el sello. Así no lo hace
+      # cumplir solo la sesión que lee webs de terceros. Con el Node que trae
+      # el runner (solo módulos de Node, sin instalar nada ni usar la red) y en
+      # menos de un segundo; en los demás PR no mira nada. El título va por
+      # una variable, nunca escrito dentro del guion.
+      - name: El PR de las noticias automáticas solo lleva noticias
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          TITULO: ${{ github.event.pull_request.title }}
+        run: node .github/noticias-pr.mjs
+
       - name: Preparar escáner verificado
         shell: bash
         run: |

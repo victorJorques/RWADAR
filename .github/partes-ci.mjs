@@ -79,6 +79,12 @@ export const PESOS = Object.freeze({
   'node probar-admin-huella.mjs': 14,
   'node --test probar-mapa-buscar.test.cjs': 0.2,
   'node --test ../.claude/skills/investigacion-catalogo/entrega/motor.test.mjs ../.claude/skills/investigacion-catalogo/entrega/flujo.test.mjs': 5.5,
+  // Noticias automáticas (14/11/2026): sus pruebas (la de sello.test.mjs hace
+  // commits en una copia aparte con git worktree) y la edición publicada. No
+  // van en SELLO: hacen su «main» de prueba con un estado.json fijo
+  // (pruebas/fijos/estado.json), así que un PR de solo sello no las cambia.
+  'node --test ../.claude/skills/noticias-automaticas/pruebas/*.test.mjs': 15,
+  'node ../.claude/skills/noticias-automaticas/noticias-auto.mjs validar --publicada': 0.5,
   'node --test ../.github/*.test.mjs': 14,
   'test:web': 10,
   'test:qr': 0.1,
