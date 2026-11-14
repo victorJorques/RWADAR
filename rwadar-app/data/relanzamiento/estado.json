@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Noticias que entran por los ojos (#143)",
+  "nota": "Novedades del 14/11: el mercado en directo y las noticias con foto (#147)",
   "revisionAprobada": {
-    "commit": "c1aabfba0d2f2cb9dc664d649a2400670ed9cb97",
-    "contenidoSha256": "sha256:63e4ae206bab07e5da63c1ef4624cdadc3fedafba3383217ba0956c369df0df3",
+    "commit": "7af3d7301f7d80c7dae6c3f5874265b374a08cf9",
+    "contenidoSha256": "sha256:98bdf0c710c7def93ebcf83f6564f8ccffddfbea56be31fed90cd90ad0da3699",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
