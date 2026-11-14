@@ -9,11 +9,11 @@
       "seccion": "importante",
       "categoria": "riesgo",
       "ambito": "UE",
-      "titulo": "11 firmas sin registro: avisos de tres países de la UE",
+      "titulo": "11 firmas sin registro: compruébalas antes de invertir",
       "resumen": "La CNMV difunde los avisos de supervisores de Austria (seis), Países Bajos (cuatro) y Alemania (uno) sobre 11 entidades no registradas. El supervisor alemán prohibió a una de ellas ofrecer acciones al público por no haber publicado el folleto.",
       "porQueImporta": "Ofrecer valores al público sin el folleto exigido es una señal de alarma, también en las emisiones tokenizadas. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
       "en": {
-        "titulo": "11 unregistered firms flagged in three EU countries",
+        "titulo": "11 unregistered firms: check them before you invest",
         "resumen": "The CNMV relays warnings from supervisors in Austria (six), the Netherlands (four) and Germany (one) about 11 unregistered entities. Germany's supervisor barred one of them from offering shares to the public for not publishing a prospectus.",
         "porQueImporta": "Offering securities to the public without a required prospectus is a red flag, tokenised issues included. Before investing, look the firm up in the CNMV's search tool for warnings.",
         "tituloInformativo": "Spain's CNMV relays EU supervisors' warnings about 11 unregistered entities"
@@ -33,11 +33,11 @@
       "seccion": "importante",
       "categoria": "producto",
       "ambito": "UE",
-      "titulo": "Robinhood: su emisor podrá restar Stock Tokens por costes",
+      "titulo": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
       "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
       "porQueImporta": "En España, Robinhood solo vende hoy los «Classic». Que su filial europea sea participante autorizado es un plan que el folleto ya recogía en junio.",
       "en": {
-        "titulo": "Robinhood Stock Tokens: the issuer may cut tokens for costs",
+        "titulo": "Robinhood: the issuer may cut your Stock Tokens for costs",
         "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
         "porQueImporta": "In Spain, Robinhood only sells the Classic tokens today. Making its EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
         "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
@@ -49,7 +49,7 @@
       },
       "consultadaEl": "2026-11-13",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
-      "imagen": "acciones-eeuu"
+      "imagen": "acciones-movil"
     },
     {
       "id": "consejo-ue-tope-regimen-piloto-dlt",
@@ -57,11 +57,11 @@
       "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "UE",
-      "titulo": "Mercados DLT: los Veintisiete piden un tope 50 veces mayor",
+      "titulo": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
       "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
       "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
       "en": {
-        "titulo": "DLT markets: EU states want a cap 50 times higher",
+        "titulo": "Tokenised markets: EU states want a cap 50 times higher",
         "resumen": "Member states' ambassadors (Coreper) approved the Council's position: drop the per-asset caps and raise to €300bn the maximum value each DLT market infrastructure can record or trade.",
         "porQueImporta": "Today's cap is €6bn and holds back large players. This is a negotiating position, not law: it still has to be agreed with the European Parliament.",
         "tituloInformativo": "EU countries want to raise the DLT Pilot Regime cap from €6bn to €300bn"
@@ -73,7 +73,7 @@
       },
       "consultadaEl": "2026-11-13",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
-      "imagen": "instituciones-ue"
+      "imagen": "instituciones-ue-2"
     },
     {
       "id": "cnmv-autoriza-bit2me-stx",
@@ -105,7 +105,7 @@
       "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "España",
-      "titulo": "Quejas contra plataformas cripto: la CNMV quiere atenderlas",
+      "titulo": "La CNMV propone atender tus quejas contra plataformas cripto",
       "resumen": "La CNMV somete a consulta un proyecto de Circular que amplía su servicio de reclamaciones a los proveedores de servicios de criptoactivos y a las plataformas de financiación participativa. Comentarios hasta el 16/11.",
       "porQueImporta": "Algunas emisiones tokenizadas se venden por estas plataformas. Si sale adelante, podrías reclamar ante la CNMV. Por ahora es un proyecto.",
       "en": {
@@ -121,7 +121,7 @@
       },
       "consultadaEl": "2026-11-13",
       "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
-      "imagen": "regulador-espana"
+      "imagen": "documentos-consulta"
     }
   ]
 }

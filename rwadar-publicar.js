@@ -37,6 +37,7 @@ const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
 const { historicoTokenizacion, serieTokenizacion, serieFinaTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
+const { validaMarcadoEstricto, prepararInicioPublicado } = require('./rwadar-noticias-portada');
 // «Novedades de RWAdar» (12/11/2026): el modelo de la web valida /datos/novedades-producto.json.
 const novedadesModelo = require('./rwadar-site/assets/novedades-producto-modelo-20261112.js');
 const {
@@ -232,19 +233,9 @@ const htmlOriginal = html;
 /* ---- 0b · la CSP estricta también es un invariante de publicación ----
    Un atributo style/on* o un bloque ejecutable inline haría que la página
    fallara bajo nuestras propias cabeceras (o tentaría a reabrir
-   unsafe-inline). Se valida la portada y las páginas auxiliares. */
-function validaMarcadoEstricto(nombre, contenido) {
-  if (/<style\b/i.test(contenido) || /\sstyle\s*=/i.test(contenido) ||
-      /\son[a-z]+\s*=/i.test(contenido)) {
-    throw new Error(`${nombre} contiene CSS o manejadores inline incompatibles con la CSP`);
-  }
-  for (const m of contenido.matchAll(/<script\b([^>]*)>/gi)) {
-    const attrs = m[1];
-    if (/\bsrc\s*=/i.test(attrs)) continue;
-    if (/\btype\s*=\s*["']application\/ld\+json["']/i.test(attrs)) continue;
-    throw new Error(`${nombre} contiene un script ejecutable inline`);
-  }
-}
+   unsafe-inline). Se valida la portada y las páginas auxiliares. La regla
+   (validaMarcadoEstricto) vive en rwadar-noticias-portada.js desde el
+   14/11/2026: las noticias automáticas la pasan antes de abrir su PR. */
 
 try {
   for (const nombre of PAGINAS_HTML) {
@@ -644,6 +635,23 @@ function construirSalida() {
     try { noticiasV1.validarComoAppInstalada(textoNoticiasV1); }
     catch (e) { throw new Error(`la app instalada no aceptaría /datos/noticias.json: ${e.message}`); }
     console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl} (v2 con fotos y v1 para la app instalada).`);
+    /* La guía de titulares, en lo que se puede medir (14/11/2026,
+       rwadar-editorial-source/noticias/GUIA-TITULARES.md): titulares de 60
+       caracteres como mucho, sin promesas, «¡», emojis ni punto final, y una
+       foto distinta de la biblioteca para cada noticia. Los avisos (cifras,
+       palabras que exageran) los mira el verificador. */
+    const guia = noticiasModelo.revisarEdicion(JSON.parse(textoNoticias), { fotos: fotosNoticias.fotos.map(f => f.clave) });
+    if (guia.errores.length) {
+      throw new Error('las noticias no cumplen la guía de titulares: ' +
+        guia.errores.map(x => `«${x.id}», ${x.campo}: ${x.texto}`).join('; '));
+    }
+    for (const x of guia.avisos) console.log(`Aviso de la guía de titulares («${x.id}», ${x.campo}): ${x.texto}.`);
+    /* Inicio llega con las tres noticias ya escritas (portada y dos
+       tarjetas, en castellano): la foto de portada no espera al JavaScript.
+       Solo en el index.html de esta carpeta temporal; rwadar-site/index.html
+       no se toca (rwadar-noticias-portada.js). */
+    const inicioTemporal = path.join(temporal, 'index.html');
+    fs.writeFileSync(inicioTemporal, prepararInicioPublicado(fs.readFileSync(inicioTemporal, 'utf8'), noticias), 'utf8');
     /* «Novedades de RWAdar» (12/11/2026): lo leen la ventana de Inicio, la
        página /novedades-rwadar/ y la app. Un archivo mal formado no se
        publica: la web no enseñaría nada y la app se quedaría con su copia. */

@@ -138,37 +138,6 @@
 
 /* ---- Noticias relacionadas, en /mercado/ ---- */
 .mk-noticias{margin-top:40px;padding-top:28px;border-top:var(--bd);scroll-margin-top:80px}
-.mk-noticias .nt-lista{gap:0;margin-top:8px}
-.mk-noticias .nt-fila{border-bottom:var(--bd)}
-.mk-noticias .nt-art{grid-template-columns:minmax(0,1fr) 96px;grid-template-rows:auto;gap:14px;align-items:start;padding:16px 0;border:0;border-radius:0;background:transparent}
-.mk-noticias .nt-art:hover{border-color:transparent}
-.mk-noticias .nt-art-foto{grid-column:2;grid-row:1;aspect-ratio:1;border-radius:var(--r-m)}
-.mk-noticias .nt-art-txt{grid-column:1;grid-row:1;padding:0}
-.mk-noticias .nt-art-tit{margin-top:4px;font-size:1.1875rem;line-height:1.25}
-.mk-noticias .nt-art-resumen{margin-top:6px;font-size:.9375rem;line-height:1.45;-webkit-line-clamp:2;line-clamp:2}
-/* La primera noticia dice por qué te importa, no el resumen (el detalle lleva los dos). */
-.mk-noticias .nt-art-importa{-webkit-line-clamp:3;line-clamp:3}
-.nt-art-importa-rot{color:var(--senal);font-weight:600}
-.mk-noticias .nt-art-meta{font-size:.75rem}
-.mk-noticias .nt-art-abrir::after{border-radius:var(--r-s)}
-/* Aquí las tarjetas no tienen margen interior ni borde: el anillo de foco va por fuera (sin recorte), sin pisar la primera letra de cada línea. */
-.mk-noticias .nt-art{overflow:visible}
-.mk-noticias .nt-art-abrir:focus-visible::after{outline-offset:4px}
-.mk-noticias .nt-art-abrir:active::after{background:var(--ton)}
-.mk-noticias .nt-fila:first-child .nt-art{grid-template-columns:1fr;grid-template-rows:auto auto}
-.mk-noticias .nt-fila:first-child .nt-art-foto{grid-column:1;grid-row:1;aspect-ratio:16/9;min-height:0}
-.mk-noticias .nt-fila:first-child .nt-art-txt{grid-row:2;padding:0}
-.mk-noticias .nt-fila:first-child .nt-art-tit{font-size:1.5rem;line-height:1.18}
-@media (min-width:768px){
-  .mk-noticias .nt-lista{grid-template-columns:1fr;gap:0}
-  .mk-noticias .nt-art{grid-template-columns:minmax(0,1fr) 168px;gap:24px;padding:20px 0}
-  .mk-noticias .nt-art-foto{aspect-ratio:3/2}
-  .mk-noticias .nt-fila:first-child .nt-art{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:auto}
-  .mk-noticias .nt-fila:first-child .nt-art-foto{grid-column:1;grid-row:1;aspect-ratio:16/10;min-height:0}
-  .mk-noticias .nt-fila:first-child .nt-art-txt{grid-column:2;grid-row:1;align-self:center}
-  .mk-noticias .nt-fila:first-child .nt-art-tit{font-size:1.875rem;line-height:1.12}
-  .mk-noticias .nt-fila:first-child .nt-art-resumen{-webkit-line-clamp:3;line-clamp:3}
-}
 
 /* ---- /mercado/ en escritorio: más aire ---- */
 @media (min-width:768px){
@@ -209,20 +178,3 @@
   .mk-mini-svg path,.mk-mini-svg line{vector-effect:non-scaling-stroke}
 }
 
-/* Inicio: noticias compactas, foto pequeña y titular. */
-.nt-compacta{display:grid;gap:0;margin:12px 0 0;padding:0;list-style:none}
-.nt-compacta[hidden]{display:none}
-.nt-compacta .nt-c-item{border-bottom:var(--bd)}
-.nt-c{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:center;padding:14px 0;color:var(--tx);text-decoration:none;-webkit-tap-highlight-color:transparent;border-radius:var(--r-s)}
-.nt-c:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
-.nt-c .nt-foto{width:72px;height:72px;border-radius:var(--r-m)}
-.nt-c-txt{display:flex;flex-direction:column;gap:4px;min-width:0}
-.nt-c-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;color:var(--tx-3);font:500 .75rem/1.3 var(--body)}
-.nt-c-meta .nt-hoy{position:static;padding:2px 8px 2px 6px;font-size:.6875rem}
-.nt-c-tit{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;color:var(--tx);font:700 1.0625rem/1.25 var(--display);letter-spacing:-.01em}
-@media (hover:hover){.nt-c:hover .nt-c-tit{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--tx-3)}}
-@media (min-width:768px){
-  .nt-compacta{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px}
-  .nt-c{grid-template-columns:96px minmax(0,1fr)}
-  .nt-c .nt-foto{width:96px;height:72px}
-}

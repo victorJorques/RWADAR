@@ -205,3 +205,59 @@ con fuente primaria que cumpla los criterios. «Hoy» sigue vacío; no se fuerza
 Si la CNMV publica más tarde (algunos días lo hace hasta las 14:00 UTC), la
 candidata natural a «Hoy» sería su advertencia, con la foto `alerta-fraude`
 (y la del 11/11 tendría que cambiar de foto o salir).
+
+## Adenda del 14/11/2026 · titulares y fotos con la guía nueva (SIN PUBLICAR)
+
+Encargo de la dirección del 13/11: «que las noticias tengan titulares buenos y
+se priorice lo visual y la imagen, que atraiga». Se aplica a esta edición la
+guía nueva (`rwadar-editorial-source/noticias/GUIA-TITULARES.md`): 60
+caracteres como mucho en las dos lenguas, lo que cambia para el lector
+primero, verbo activo, cifra de la fuente y sin promesas; y una foto distinta
+para cada noticia, elegida por tema de la biblioteca ampliada. Solo cambian
+`titulo`, `en.titulo` e `imagen`: ningún dato, cifra, fecha, fuente, resumen ni
+`tituloInformativo`. Redactó los titulares el diseñador de la mejora; los
+comprobó otra sesión (el constructor), contra las fuentes abiertas de nuevo
+el 14/11 a las 02:08-02:09 UTC: las seis dan 200 y **la misma huella** que el
+13/11 y que la primera apertura del 14/11 (00:35 UTC), así que las citas
+siguen ahí, letra a letra.
+
+| Fuente | Hora UTC (14/11) | HTTP | Huella |
+|---|---|---|---|
+| CNMV, advertencias de supervisores internacionales (11/11) | 02:08:48 | 200 | `e781ed720cec8611` |
+| Robinhood Assets (Jersey), suplemento del 09/11 | 02:08:53 | 200 | `978eea67a47d5bb6` |
+| Consejo de la UE, ST 13779/1/26 REV 1 | 02:09:00 | 200 | `757b8851957af55c` |
+| CNMV, Bit2Me STX (28/10) | 02:09:06 | 200 | `e09fadd373bf3621` |
+| CNMV, consulta sobre reclamaciones (15/10) | 02:09:12 | 200 | `289265b26b53f727` |
+| ESMA, lista de infraestructuras DLT | 02:09:18 | 200 | `8f223820d3223598` |
+
+| # | Antes | Ahora (caracteres) | En qué se apoya |
+|---|---|---|---|
+| 1 (portada) | 11 firmas sin registro: avisos de tres países de la UE · *11 unregistered firms flagged in three EU countries* | **11 firmas sin registro: compruébalas antes de invertir** (54) · *11 unregistered firms: check them before you invest* (51) | CNMV, 11/11: advertencias «sobre las entidades no registradas» (6 de Austria, 4 de los Países Bajos y 1 de Alemania) y «la web de la CNMV ofrece un buscador de entidades advertidas». El consejo es la prudencia genérica que respalda la fuente (guía, regla 8). |
+| 2 | Robinhood: su emisor podrá restar Stock Tokens por costes · *Robinhood Stock Tokens: the issuer may cut tokens for costs* | **Robinhood: el emisor podrá restarte Stock Tokens por costes** (59) · *Robinhood: the issuer may cut your Stock Tokens for costs* (57) | Suplemento, punto (1)(C): el emisor puede repercutir costes al inversor, «which may include proportionately reducing the number of Products held by such Investors». «Restarte»: lo que le puede pasar al lector, con el sujeto exacto (el emisor). |
+| 3 | Mercados DLT: los Veintisiete piden un tope 50 veces mayor · *DLT markets: EU states want a cap 50 times higher* | **Mercados tokenizados: los 27 piden un tope 50 veces mayor** (57) · *Tokenised markets: EU states want a cap 50 times higher* (55) | Orientación general del Consejo: el tope agregado «of EUR 6 billion» … «should be raised to EUR 300 billion» (× 50). Sin la sigla DLT (regla 7). «Los 27» son los Estados del Consejo, como decía «los Veintisiete». |
+| 4 | España ya tiene dos mercados de valores tokenizados | sin cambios (51 · 46): ya cumple | CNMV, 28/10, y lista de ESMA: dos infraestructuras españolas. |
+| 5 | Quejas contra plataformas cripto: la CNMV quiere atenderlas | **La CNMV propone atender tus quejas contra plataformas cripto** (60); inglés sin cambios (60) | CNMV, 15/10: proyecto de Circular para «ampliar dicho procedimiento a las reclamaciones derivadas de la prestación de servicios de criptoactivos y de financiación participativa». «Propone»: es un proyecto en consulta (regla 6). Comentarios «hasta el próximo 16 de noviembre»: **desde el 17/11 la edición siguiente tiene que quitar o reescribir esta noticia.** |
+
+Avisos del programa (`revisarEdicion()`), mirados a mano: en la 3, «27» y «50»
+no están tal cual en el resumen (es la cuenta 300.000 / 6.000 y los Estados
+del Consejo), como ya admitía la guía. Ningún error.
+
+Fotos (una distinta por noticia, elegida por tema con la tabla de la guía;
+la portada, con la más clara del suyo):
+
+| # | Antes | Ahora | Por qué |
+|---|---|---|---|
+| 1 (portada) | `alerta-fraude` | `alerta-fraude` | Avisos y fraude: el móvil con la alarma roja es la más clara del tema. |
+| 2 | `acciones-eeuu` | `acciones-movil` | Acciones tokenizadas: Robinhood es una app (móvil en una mesa, sin nada legible en la pantalla). |
+| 3 | `instituciones-ue` | `instituciones-ue-2` | Regulación en la UE: una mesa redonda vacía, como los Estados del Consejo. |
+| 4 | `bolsa-madrid` | `bolsa-madrid` | Bolsas y mercados en España. |
+| 5 | `regulador-espana` | `documentos-consulta` | Consultas y reclamaciones: es una consulta pública (folios en blanco). |
+
+Comprobado con `revisarEdicion()` (sin errores; fotos distintas y de la
+biblioteca), `validarNoticias()`, el motor congelado de la app instalada
+(`node rwadar-app/noticias/noticias-v1.cjs`, que regenera
+`rwadar-site/datos/noticias.json` sin «imagen») y la construcción local de la
+web (`rwadar-publicar.js --local`). `noticias-2026-11-13.json` de esta carpeta
+queda igual que `rwadar-site/datos/noticias-v2.json`. **Sin publicar**: entra con la mejora,
+cuando se publique; si para entonces hay una edición más nueva, se le aplica
+la guía a esa y estos titulares quedan como ejemplos.

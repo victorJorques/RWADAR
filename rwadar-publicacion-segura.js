@@ -99,6 +99,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-editorial-source/noticias/fotos.json',
   'rwadar-editorial-source/noticias/fotos',
   'rwadar-noticias-editoriales.js',
+  // Las noticias de Inicio escritas en el index.html publicado (14/11/2026).
+  'rwadar-noticias-portada.js',
   'rwadar-movil/lib/ficha-editorial.js',
   'rwadar-movil/lib/idioma.js',
   'rwadar-movil/lib/idioma-en.js',
