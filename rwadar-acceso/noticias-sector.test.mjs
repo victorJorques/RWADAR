@@ -466,7 +466,10 @@ test('el index.html publicado: las noticias dentro de #ntLista, con su firma, «
 
 test('la biblioteca de fotos: el comprobador para con una variante cambiada, que falta o que sobra, de otro tamaño, o con temas y genéricas mal', async () => {
   const fotosMod = require('../rwadar-noticias-editoriales.js');
-  const sharp = require('sharp');
+  // sharp solo está en las dependencias de la raíz: la CI de la batería no la instala.
+  // Sin ella se salta solo el caso que fabrica una variante de otro tamaño.
+  let sharp = null;
+  try { sharp = require('sharp'); } catch { /* sin sharp: se omite ese caso */ }
   const os = require('node:os');
   const real = fotosMod.cargarFotosNoticias(RAIZ, { claves: [] });
   assert.ok(real.variantes.length === real.fotos.length * 2);
@@ -487,7 +490,7 @@ test('la biblioteca de fotos: el comprobador para con una variante cambiada, que
   await caso('falta la de 960', dir => fs.rmSync(path.join(dir, 'fotos/960', clave + '.webp')), /falta la foto .*960/);
   await caso('sobra un archivo en 480', dir => fs.writeFileSync(path.join(dir, 'fotos/480/sobra.webp'), 'x'), /no permitido.*480\/sobra\.webp/);
   await caso('sobra una carpeta', dir => fs.mkdirSync(path.join(dir, 'fotos/720')), /no permitido.*720/);
-  await caso('variante de 480 × 300 (con sus bytes y su sha256 al día)', async (dir, spec) => {
+  if (sharp) await caso('variante de 480 × 300 (con sus bytes y su sha256 al día)', async (dir, spec) => {
     // La propia foto, reducida a 480 × 300: pesa como una variante de verdad.
     const b = await sharp(path.join(dir, 'fotos', clave + '.webp')).resize(480, 300, { fit: 'fill' }).webp({ quality: 80 }).toBuffer();
     assert.ok(b.length > 1024 && b.length <= 60000);
