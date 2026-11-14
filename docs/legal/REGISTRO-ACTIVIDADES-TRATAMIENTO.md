@@ -1,6 +1,8 @@
 # Registro de actividades de tratamiento · RWAdar
 
-**Fecha:** 12/11/2026 (versión 8: la sesión de la web se renueva sola y,
+**Fecha:** 14/11/2026 (versión 9: notificaciones sin cuenta, migración 36,
+escrita y probada, sin aplicar ni publicar; ver A5, «Sin cuenta». La versión 8,
+del 12/11/2026: la sesión de la web se renueva sola y,
 si la persona lo pide al entrar, dura hasta 30 días; dos cookies necesarias.
 La versión 7, del mismo día: las notificaciones de la web se envían
 desde Supabase y Cloudflare, migración 33, y GitHub deja de enviarlas a todos.
@@ -126,7 +128,7 @@ consultados el 07/11/2026.
 | A2 | Lista de seguimiento y cartera de cada cuenta | Activa | Servicio que se pide (6.1.b) |
 | A3 | Acceso a RWAdar Academy con cuenta | Activa en la app y, desde el 06/11/2026, en la web | Servicio que se pide (6.1.b) |
 | A4 | Correo de bienvenida (y push de bienvenida) | Preparado, **no se envía** (pendiente) | Servicio que se pide (6.1.b) |
-| A5 | Avisos de novedades por correo, push de la app y notificaciones de la web | Con la web y la OTA de la rama del 12/11 publicadas: **el permiso se recoge en Perfil** (web y app) y la web deja registrar la suscripción de su navegador. **No se envía nada** mientras `push_habilitado` y el correo sigan apagados (pendiente) | Consentimiento (6.1.a; LSSI, art. 21) |
+| A5 | Avisos de novedades por correo, push de la app y notificaciones de la web | Con la web y la OTA de la rama del 12/11 publicadas: **el permiso se recoge en Perfil** (web y app) y la web deja registrar la suscripción de su navegador. **No se envía nada** mientras `push_habilitado` y el correo sigan apagados (pendiente) **Sin cuenta** (14/11/2026, migración 36 y web y OTA sin publicar): también se pueden activar en el móvil sin cuenta, por `/api/avisos/*` del servidor de la web; la base nace apagada | Consentimiento (6.1.a; LSSI, arts. 21 y 22.2) |
 | A6 | Prueba del permiso (historial de altas y bajas) | Activa desde el 12/11/2026 (Perfil › Avisos) | Obligación legal (6.1.c) |
 | A7 | Bajas de los avisos que llegan por correo | (pendiente) | Obligación legal (6.1.c) |
 | A8 | Consultas de empresas («Para empresas») | Activa | Interés legítimo (6.1.f) |
@@ -718,6 +720,74 @@ Valen para todas las fichas; cada ficha añade las suyas.
     conexión a Firebase (06/11/2026). Falta repetirlo en un Android físico
     antes de encender el push.
 
+#### A5 · Sin cuenta (versión 9, 14/11/2026)
+
+Encargo de la dirección (14/11/2026): «muy importante que funcionen las
+notificaciones y los avisos aunque no tengan cuenta o no hayan iniciado
+sesión: que puedan activarlas». Contrato técnico:
+[`AVISOS-SIN-CUENTA-2026-11-14.md`](../tareas/AVISOS-SIN-CUENTA-2026-11-14.md);
+valoración: [anexo, apartado 7](ANEXO-NOTIFICACIONES-2026-11-12.md#7-notificaciones-sin-cuenta-14112026).
+
+- **Estado:** la migración 36 está escrita y probada en local (PGlite) y
+  **nace apagada** (`sin_cuenta_activa = false`); la web y la app (OTA) tienen
+  el bloque con sus interruptores encendidos en el código, pero **nada está
+  aplicado ni publicado**. Mientras la base esté apagada, la web y la app dicen
+  «todavía no está disponible» y no piden nada. Se enciende con
+  `activar-sin-cuenta` (exige el push encendido y la clave VAPID), con orden
+  de Víctor.
+- **Interesados:** personas que usan la web o la app sin cuenta o sin haber
+  entrado, en un móvil o una tableta. Solo mayores de 18 años: lo dice el texto
+  del permiso y la privacidad (§12); no se comprueba más (decisión de la
+  dirección del 14/11/2026; el anexo, 7.4).
+- **Finalidad:** la misma de A5 (fichas nuevas en el radar y novedades de la
+  web y la app), solo por notificación. Sin correo.
+- **Base jurídica:** consentimiento (RGPD, art. 6.1.a; LSSI, arts. 21 y 22.2),
+  con el texto versionado `sin-cuenta-v1-2026-11-14` junto al botón, y la
+  información básica sin cuenta al lado.
+- **Datos** (tablas aparte, sin usuario: `sin_cuenta_web`, `sin_cuenta_movil`,
+  sus colas `envios_sin_cuenta_web` y `pushes_sin_cuenta`, y
+  `historial_sin_cuenta`):
+  - web: la dirección de entrega del servicio de push del navegador y sus dos
+    claves; app: el identificador de Expo;
+  - con ellos: la versión del texto, el idioma en que se vio, dónde se activó
+    (`novedades`, `perfil` o `avisos`), las fechas del alta y de la última
+    renovación y un contador de fallos;
+  - historial (solo añadir): un número al azar (`ref`), el canal, alta o baja,
+    la versión, el idioma, el origen y el motivo de la baja. Sin dirección ni
+    identificador;
+  - en el dispositivo: la web guarda una marca (`rwadar.avisos.sin-cuenta.v1`:
+    huella de la dirección, no la dirección; versión, idioma, origen y fecha de
+    renovación); la app, el identificador de Expo con esos datos
+    (`rwadar.editorial.avisos.sin-cuenta.v1`). Estrictamente necesarias (LSSI,
+    art. 22.2).
+- **Destinatarios:** Supabase (base y envío), Cloudflare (el servidor de la web:
+  `/api/avisos/*`, sin cookies, y `/api/interno/webpush`, que cifra y entrega
+  sin guardar); los servicios de push de los navegadores (Apple, Google,
+  Mozilla, Microsoft; no son encargados, anexo 1.2); en la app, Expo y Google
+  (Firebase Cloud Messaging, con su «latido», anexo 2).
+- **Transferencias:** las de A5 (Supabase, Cloudflare, Expo, Google:
+  apartado 3; servicios de push: anexo 1.3).
+- **Plazos:** hasta la baja o 180 días sin renovar (la web y la app renuevan al
+  abrir: la web cada 12 horas como mucho, la app una vez al día); los envíos,
+  90 días; el historial, 3 años desde la baja. Los borra `limpiar()` cada día.
+- **Baja:** el botón «Desactivar las notificaciones de este móvil» (Perfil ›
+  Avisos de la web, la lista que abre cada notificación, `?avisos=1` sin
+  sesión, y la primera pantalla de la app, con la frase de baja arriba si se
+  abre desde una notificación), los ajustes del móvil o desinstalar la app.
+  Una respuesta 404/410 del servicio, `DeviceNotRegistered` o tres fallos
+  seguidos la borran también.
+- **Derechos:** sin cuenta no se puede identificar a la persona (RGPD,
+  art. 11); el botón y los ajustes del móvil suprimen al momento. La
+  privacidad (§6 y §11) lo explica.
+- **Medidas:** las de A5 y además: las funciones para anónimos validan la
+  forma, exigen el interruptor y la versión vigente y tienen cupos (300 altas
+  nuevas por hora y 20 000 en total por canal); la clave `auth` del navegador
+  hace de llave para la baja y el estado; el servidor de la web limita por
+  visitante (altas 20, bajas 60, estados 120 cada 10 minutos), no lee ni
+  escribe cookies y exige el mismo origen; si la misma dirección o token está
+  en una cuenta que lo va a recibir, no se manda el de sin cuenta;
+  `fallo_cerrado.sql` también lo apaga.
+
 ### A6 · Prueba del permiso (historial de altas y bajas)
 
 - **Estado:** la tabla existe desde el 06/11/2026 (la 30, aplicada). Activa
@@ -1243,4 +1313,5 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 | 12/11/2026 | Versión 5: notificaciones en la web (Web Push, migración 32, sin aplicar): datos nuevos (`suscripciones_web`, `envios_web`), destinatarios nuevos (servicios de push de Apple, Google, Mozilla y Microsoft, y GitHub como remitente), plazos (90 y 180 días, cada día con el reloj de limpieza) y la baja en cada notificación. A5: el permiso ya se recoge en Perfil (web y app) y la casilla del alta sigue apagada. Corregida la fila de Apple (la app nativa sigue sin aplicar; la web en iPhone usa el servicio de push de Apple). Anexo legal pendiente antes de `activar-push` | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 6: el [anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md), «sí, con condiciones». Los servicios de push de los navegadores no son encargados; DPF comprobado en la lista oficial (Google LLC, Microsoft Corporation, GitHub y Netlify, «Active»; Apple y Mozilla, no figuran) y quién responde en el EEE según cada empresa; Mozilla, riesgo residual bajo. El «latido» de Firebase: su envío, con consentimiento junto al botón; guardarlo antes, riesgo residual con arreglo en la próxima versión nativa. La 32 y la clave VAPID, aplicadas el 12/11. GitHub pasa de «recomendado» a condición para enviar a todos por la web. Condiciones C1-C6 y revisión del punto 1.3 en los pendientes. Corrección del mismo día, tras una revisión independiente: C5 pide la OTA ya en uso, la recomendación R2 pasa a ser la condición C7 (baja a la vista en la app), en el punto 1.3 del anexo la lectura más probable es que sí hay transferencia (Mozilla, riesgo aceptado a sabiendas), y las frases de primera capa y la baja de la app ya están en el código | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 7: las notificaciones de la web se envían desde Supabase (pg_net, migración 33) y el servidor de la web en Cloudflare las cifra, firma y entrega (`/api/interno/webpush`); los dos ya son encargados con contrato. Cloudflare suma A5 y lo que recibe para cada envío; GitHub deja de enviar a todos (solo la prueba de administración) y sale de A5; las copias ya no llevan las suscripciones de la web. Condición C3 del anexo, hecha en el código (se cumple al publicar la web y aplicar la 33) | Claude, por encargo de Víctor («hazlo en Supabase mientras y ya haremos el cambio») |
+| 14/11/2026 | Versión 9: notificaciones sin cuenta (A5, «Sin cuenta»; migración 36, web y OTA, sin aplicar ni publicar): interesados sin cuenta (solo mayores de 18, declarado), datos (suscripción de la web o identificador de Expo, con versión, idioma, origen y fechas; historial con un número al azar), destinatarios (los de A5), plazos (180 días, 90 días y 3 años), baja en cada notificación y derechos sin identificar (art. 11) | Claude, por encargo de Víctor («que puedan activarlas aunque no tengan cuenta») |
 | 12/11/2026 | Versión 8: sesión de la web que se mantiene. Además de `__Host-rwadar-acceso` (el pase de una hora), la cookie `__Host-rwadar-renovar` guarda el token de renovación de Supabase; las dos, HttpOnly, Secure, SameSite=Lax y `__Host-`. Sin la casilla «Mantener la sesión iniciada en este dispositivo» (sin marcar por defecto) son de sesión del navegador; con ella, una hora y 30 días. Salir y borrar la cuenta las borran y cierran la sesión en Supabase; abrir otra sesión en el mismo navegador cierra la anterior. La casilla también al confirmar el correo. La privacidad ya no las llama «de sesión» (en la guía de la AEPD, las que se borran al cerrar el navegador) y dice que la duración larga solo va si se pide. Información básica de los avisos: «Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el aviso legal», con enlace; sin el nombre, por petición de Víctor. Riesgo residual aceptado: la primera capa no da el nombre (LOPDGDD, art. 11.2.a), que está a un toque. Privacidad (apartados 2 y 9) al día | Claude, por encargo de Víctor («que al iniciar sesión se mantenga» y «no quiero que salga mi nombre aquí») |

@@ -54,6 +54,15 @@ export const AVISOS_CASILLA_ALTA_REMOTA = false;
    Encendido el 12/11/2026. */
 export const AVISOS_BANDEJA_REMOTA = true;
 
+/* Notificaciones sin cuenta (14/11/2026, docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md).
+   Encendido en el código por decisión de la dirección: la pantalla de acceso
+   (la única sin sesión) enseña «Notificaciones en este móvil» sin cuenta,
+   que hablan solo con https://rwadar.pages.dev/api/avisos/*. La base nace
+   apagada y se enciende aparte (activar-sin-cuenta): mientras tanto el
+   bloque dice que todavía no está disponible y no pide nada. Es solo JS:
+   llega por OTA a la 1.4.2 (con la 1.4.1 dice que llega con la 1.4.2). */
+export const AVISOS_SIN_CUENTA_REMOTOS = true;
+
 export function modoLocalActivo() {
   return MODO_LOCAL === true;
 }

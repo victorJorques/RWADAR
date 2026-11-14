@@ -35,7 +35,7 @@ test('novedades · la copia incluida es válida, igual al archivo de ejemplo y c
   assert.deepEqual(NOVEDADES_PRODUCTO, ejemplo, 'lib/novedades-producto.js y fixtures/novedades-producto.ejemplo.json no coinciden');
   const datos = n.validarNovedadesProducto(NOVEDADES_PRODUCTO);
   assert.deepEqual(n.RESPALDO, datos);
-  assert.equal(datos.version, '2026-11-14.2');
+  assert.equal(datos.version, '2026-11-14.3');
   assert.equal(datos.titulo, 'Novedades de RWAdar');
   assert.ok(datos.resumen.length >= 4 && datos.resumen.length <= 5, 'entre 4 y 5 puntos');
   for (const p of datos.resumen) {
@@ -93,7 +93,10 @@ test('novedades · el texto común es cierto en la app: lo que solo está en la 
   // Lo que la revisión vio mal: el botón de la web en el paso de la app y Android solo en la app.
   const avisos = NOVEDADES_PRODUCTO.detalle.find((s) => s.id === 'avisos-movil');
   assert.ok(avisos.pasos.some((p) => p.includes('«Notificaciones en este móvil»')) && fuentes.includes('Notificaciones en este móvil'));
-  assert.ok(!avisos.pasos.some((p) => /Activar notificaciones en este móvil/.test(p)));
+  // Desde la 2026-11-14.3 (sin cuenta), «Activar notificaciones en este móvil» es también el botón de la app (pantalla de acceso).
+  assert.ok(avisos.pasos.some((p) => /«Activar notificaciones en este móvil»/.test(p)) && fuentes.includes('Activar notificaciones en este móvil'));
+  assert.ok(!avisos.pasos.some((p) => /Entra en tu cuenta/.test(p)), 'no hace falta cuenta');
+  assert.ok(avisos.pasos.some((p) => /No hace falta cuenta/.test(p)));
   assert.match(avisos.parrafos.join(' '), /En Android, puedes hacerlo en la app de RWAdar o en la web/);
 });
 
@@ -144,7 +147,8 @@ test('novedades · versiones: por fecha y, el mismo día, por el número de desp
   assert.equal(n.compararVersiones('2026-11-12', '2026-11-12'), 0);
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, null), true, 'sin ninguna vista, sale');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, 'basura'), true);
-  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-14.2'), false, 'ya vista, no sale');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-14.3'), false, 'ya vista, no sale');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-14.2'), true, 'quien vio la 14.2 la vuelve a ver: el recuadro arriba y los avisos sin cuenta');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-14'), true, 'quien vio la del 14/11 la vuelve a ver, con el recuadro de los avisos');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-20'), false, 'sin red, una copia más vieja que la vista no vuelve a salir');
   assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-11'), true);
@@ -181,7 +185,7 @@ test('novedades · descarga: pide el JSON de la web sin cookies ni sesión y se 
   const vieja = copia(NOVEDADES_PRODUCTO); vieja.version = '2026-11-01';
   const r2 = await n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(vieja)) });
   assert.equal(r2.origen, 'respaldo');
-  assert.equal(r2.datos.version, '2026-11-14.2');
+  assert.equal(r2.datos.version, '2026-11-14.3');
 });
 
 test('novedades · sin red, con HTML, demasiado grande, error del servidor, plazo vencido o JSON malo: la copia incluida', async () => {
@@ -294,13 +298,13 @@ test('novedades · lo que una versión vieja de la app dio por visto desde la 20
   const app = arrancar({ avisos: 'inactivos', vista: datos.leerNovedadesVistas, marcar: datos.marcarNovedadesVistas });
   let s = await app.asentar();
   assert.equal(s.ventana, true, 'sale una vez más');
-  assert.equal(s.datos.version, '2026-11-14.2');
+  assert.equal(s.datos.version, '2026-11-14.3');
   assert.equal(s.recordarAvisos, true, 'ahora con el recuadro');
   s.entendido();
   s = await app.asentar();
   assert.equal(s.ventana, false);
-  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-14.2');
-  assert.equal(mapa.get(CLAVE_VISTA_V1), '2026-11-14.2');
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-14.3');
+  assert.equal(mapa.get(CLAVE_VISTA_V1), '2026-11-14.3');
   app.desmontar();
   // En el arranque siguiente ya no sale.
   const otra = arrancar({ avisos: 'inactivos', vista: datos.leerNovedadesVistas, marcar: datos.marcarNovedadesVistas });
@@ -429,23 +433,23 @@ test('novedades · la ventana sale una vez por versión al abrir la app, cuando 
   let s = await app.asentar();
   assert.equal(s.ventana, true, 'sale');
   assert.equal(s.detalle, false);
-  assert.equal(s.datos.version, '2026-11-14.2');
+  assert.equal(s.datos.version, '2026-11-14.3');
   // «Entendido» la cierra y guarda la versión vista.
   s.entendido();
   s = await app.asentar();
   assert.equal(s.ventana, false);
-  assert.deepEqual(app.marcadas, ['2026-11-14.2']);
+  assert.deepEqual(app.marcadas, ['2026-11-14.3']);
   // En la misma sesión no vuelve a salir.
   s = await app.asentar();
   assert.equal(s.ventana, false);
   app.desmontar();
   // Al volver a abrir la app con esa versión vista, tampoco.
-  const otra = arrancar({ vista: { ok: true, version: '2026-11-14.2' } });
+  const otra = arrancar({ vista: { ok: true, version: '2026-11-14.3' } });
   assert.equal((await otra.asentar()).ventana, false);
   assert.deepEqual(otra.marcadas, []);
   otra.desmontar();
   // Con una versión nueva en la web, sí.
-  const mas = arrancar({ vista: { ok: true, version: '2026-11-14.2' }, cargar: async () => ({ datos: n.validarNovedadesProducto(nueva()), origen: 'web' }) });
+  const mas = arrancar({ vista: { ok: true, version: '2026-11-14.3' }, cargar: async () => ({ datos: n.validarNovedadesProducto(nueva()), origen: 'web' }) });
   s = await mas.asentar();
   assert.equal(s.ventana, true);
   assert.equal(s.datos.version, '2026-11-20');
@@ -485,14 +489,14 @@ test('novedades · «Ver en detalle» abre el detalle y cuenta como vista; desde
   s = await app.asentar();
   assert.equal(s.ventana, false);
   assert.equal(s.detalle, true);
-  assert.deepEqual(app.marcadas, ['2026-11-14.2']);
+  assert.deepEqual(app.marcadas, ['2026-11-14.3']);
   s.cerrarDetalle();
   s = await app.asentar();
   assert.equal(s.detalle, false);
   assert.equal(s.ventana, false, 'cerrar el detalle no vuelve a abrir la ventana');
   app.desmontar();
   // Desde Perfil, aunque ya se hayan visto, y antes de que salga sola.
-  const perfil = arrancar({ vista: { ok: true, version: '2026-11-14.2' } });
+  const perfil = arrancar({ vista: { ok: true, version: '2026-11-14.3' } });
   s = await perfil.asentar();
   s.verDetalle();
   s = await perfil.asentar();
@@ -584,7 +588,7 @@ test('novedades · sin red sale la copia incluida; un JSON malo de la web se ign
   const malo = copia(NOVEDADES_PRODUCTO); malo.version = '2026-12-01'; malo.resumen[0].texto = '<img src=x onerror=alert(1)>';
   const conMalo = arrancar({ cargar: () => n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(malo)) }) });
   s = await conMalo.asentar();
-  assert.equal(s.datos.version, '2026-11-14.2', 'se queda con la copia incluida');
+  assert.equal(s.datos.version, '2026-11-14.3', 'se queda con la copia incluida');
   assert.ok(!JSON.stringify(s.datos).includes('onerror'));
   conMalo.desmontar();
 
@@ -663,7 +667,7 @@ test('novedades · la ventana: diálogo accesible con el título, los puntos (ic
   assert.equal(porId(oculta, 'novedadesVentana'), undefined);
 });
 
-test('novedades · el recuadro «Activa los avisos»: debajo de los puntos, antes de los botones, y su botón lleva a Perfil › Avisos', () => {
+test('novedades · el recuadro «Activa los avisos»: arriba, antes de los puntos (2026-11-14.3), y su botón lleva a Perfil › Avisos', () => {
   const llamadas = [];
   const { arbol, tactos } = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO, recordarAvisos: true,
     onDetalle: () => llamadas.push('detalle'), onEntendido: () => llamadas.push('entendido'), onActivarAvisos: () => llamadas.push('avisos') });
@@ -678,12 +682,13 @@ test('novedades · el recuadro «Activa los avisos»: debajo de los puntos, ante
   assert.equal(boton.props.accessibilityLabel, 'Activar avisos');
   assert.equal(boton.props.accessibilityHint, 'Cierra esta ventana y te lleva a Perfil › Avisos');
   assert.deepEqual(textos(boton), ['Activar avisos']);
-  // Dentro de lo que se desplaza, tras los puntos; los botones de abajo, fuera (siempre a la vista).
+  // Dentro de lo que se desplaza, ARRIBA (antes del primer punto: a la vista sin desplazar en 360 × 640);
+  // los botones de abajo, fuera (siempre a la vista).
   const [desplazable] = deTipo(arbol, 'ScrollView');
   const dentro = nodos(desplazable);
   assert.ok(dentro.includes(rec), 'el recuadro se desplaza con los puntos');
-  const ultimoPunto = porId(arbol, `novedadPunto-${n.RESPALDO.resumen.at(-1).id}`);
-  assert.ok(dentro.indexOf(ultimoPunto) < dentro.indexOf(rec), 'debajo de los puntos');
+  const primerPunto = porId(arbol, `novedadPunto-${n.RESPALDO.resumen[0].id}`);
+  assert.ok(dentro.indexOf(rec) < dentro.indexOf(primerPunto), 'antes de los puntos');
   assert.ok(!dentro.includes(porId(arbol, 'novedadesEntendido')) && !dentro.includes(porId(arbol, 'novedadesVerDetalle')), 'los botones, fuera del desplazamiento');
   // Orden de lectura y de foco: «Activar avisos», «Ver en detalle», «Entendido».
   const orden = nodos(arbol).map((x) => x?.props?.testID).filter((id) => ['novedadesActivarAvisos', 'novedadesVerDetalle', 'novedadesEntendido'].includes(id));
@@ -801,7 +806,8 @@ test('novedades · App: la ventana espera a Inicio sin nada encima, el detalle l
   assert.ok(app.indexOf('useNovedadesRwadar(') < app.indexOf('if (CUENTA_REMOTA_ACTIVA && (restaurandoAcceso'));
   assert.match(app, /<VentanaNovedades visible=\{novedadesRwadar\.ventana\} datos=\{novedadesRwadar\.datos\}\s*onDetalle=\{novedadesRwadar\.verDetalle\} onEntendido=\{novedadesRwadar\.entendido\}\s*recordarAvisos=\{novedadesRwadar\.recordarAvisos\}\s*onActivarAvisos=\{\(\) => \{ novedadesRwadar\.activarAvisos\(\); irAAvisosPerfil\(\); \}\} \/>/);
   // El recuadro «Activa los avisos»: con lo que enseña Perfil › Avisos (useAvisosNovedades); sin los avisos en la app, no sale.
-  assert.ok(llamada.includes("avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta) : 'apagados',"));
+  // Con las notificaciones sin cuenta activas en este móvil, también cuentan como activas (14/11/2026).
+  assert.ok(llamada.includes("avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta, { sinCuenta: sinCuentaActiva }) : 'apagados',"));
   assert.ok(app.indexOf('const novedadesCuenta = useAvisosNovedades(') < app.indexOf('useNovedadesRwadar('));
   assert.match(app, /<PantallaNovedades visible=\{novedadesRwadar\.detalle\}/);
   assert.match(app, /onIrAvisos=\{\(\) => \{ novedadesRwadar\.cerrarDetalle\(\); irAAvisosPerfil\(\); \}\}/);

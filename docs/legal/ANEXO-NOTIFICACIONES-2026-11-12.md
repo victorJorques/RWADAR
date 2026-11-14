@@ -628,3 +628,83 @@ botón y diálogo de la campana), `rwadar-movil/componentes/AvisosNovedades.js`,
 `rwadar-movil/App.js` (destino de cada notificación),
 `docs/tareas/APK-1.4.2-NOTIFICACIONES.md`, la privacidad, el registro de
 actividades y [`encargados/README.md`](encargados/README.md).
+
+---
+
+## 7. Notificaciones sin cuenta (14/11/2026)
+
+**Encargo de la dirección (14/11/2026):** «que salga tanto en iPhone como en
+Android; muy importante que funcionen las notificaciones y los avisos aunque
+no tengan cuenta o no hayan iniciado sesión: que puedan activarlas». Contrato
+técnico: [`AVISOS-SIN-CUENTA-2026-11-14.md`](../tareas/AVISOS-SIN-CUENTA-2026-11-14.md);
+registro: A5, «Sin cuenta» (versión 9). Redactado por Claude (IA); no es el
+dictamen de un abogado.
+
+### 7.1 Qué cambia y qué no
+
+- **No cambia** lo de los apartados 1 a 3: los mismos servicios de push (no
+  son encargados, 1.2), las mismas transferencias (1.3), el mismo envío desde
+  Supabase y Cloudflare (1.5) y el mismo «latido» de Firebase en la app (2).
+- **Cambia** quién da el permiso: una persona sin cuenta. No hay correo ni
+  nombre: solo la suscripción del navegador (dirección de entrega y sus dos
+  claves) o el identificador de Expo, con la versión del texto, el idioma, el
+  origen y las fechas, en tablas aparte sin usuario. El historial del permiso
+  guarda un número al azar, no la dirección.
+
+### 7.2 Base jurídica y consentimiento [SEGURO]
+
+Consentimiento (RGPD, art. 6.1.a; LSSI, arts. 21 y 22.2). El texto versionado
+`sin-cuenta-v1-2026-11-14` va junto al botón, tal cual, en el idioma de la
+página, y se guarda la versión y el idioma con el alta (art. 7.1: poder
+demostrarlo). El botón es el acto afirmativo; el sistema o el navegador pide
+después su propio permiso. Al lado, la información básica sin cuenta (primera
+capa, RGPD art. 13): responsable, finalidad, base, datos, proveedores, plazos
+y derechos, con «Privacidad» enlazada a §6 «Notificaciones sin cuenta».
+
+### 7.3 Frases de primera capa sin cuenta (texto exacto)
+
+- **Web** (junto al botón; variante de 2.4 sin la campana, que sin cuenta no
+  existe): «El servicio de tu navegador puede estar fuera de la UE: ve la hora
+  de cada aviso, pero no puede leer su texto. Si no las activas, las novedades
+  siguen en la web. Más en Privacidad.» Inglés: «Your browser's service may be
+  outside the EU: it sees when each notice is sent, but cannot read its text.
+  If you don't turn them on, the news is still on the website. More in
+  Privacy.»
+- **App** (C5 sin cuenta; sin «Inicio», al que sin cuenta no se llega): «Con
+  ellas activadas, el componente de notificaciones de Google (Firebase) envía
+  también a Google las fechas en que abres la app (hasta 30) y datos técnicos
+  del móvil, que usa para sus estadísticas. Si no las activas, no le llega
+  nada.»
+
+### 7.4 Edad [INTERPRETABLE; decisión de la dirección]
+
+No se puede comprobar la edad de quien activa sin cuenta. Decisión de la
+dirección (14/11/2026): el texto del permiso dice «Solo para mayores de 18
+años», igual que con cuenta, y no se comprueba más. La privacidad (§12) lo
+repite. Riesgo residual bajo: el contenido es informativo y no comercial.
+
+### 7.5 Derechos sin identificar a la persona (RGPD, art. 11) [SEGURO]
+
+RWAdar no pide datos para identificar a quien activa sin cuenta. La supresión
+y la oposición se ejercen con el botón de desactivar o los ajustes del móvil,
+que borran al momento. Para otra solicitud, la persona puede escribir y dar
+algo que permita encontrarla (art. 11.2); la privacidad (§6 y §11) lo dice.
+
+### 7.6 La baja en cada aviso (LSSI, art. 21.2) [SEGURO]
+
+- **Web:** cada notificación abre `?avisos=1`; sin sesión, la lista de avisos
+  publicados con «¿No quieres estos avisos? Desactívalos aquí o en los ajustes
+  del móvil.» y el botón «Desactivar las notificaciones de este móvil», a la
+  vista sin desplazar.
+- **App:** sin sesión, la notificación abre la pantalla de acceso; si se abre
+  desde una notificación, el bloque sin cuenta pone arriba la misma frase y su
+  botón (C7 sin cuenta). Con sesión, lo de C7.
+
+### 7.7 Condiciones para `activar-sin-cuenta`
+
+| | Condición | Quién | Estado |
+|---|---|---|---|
+| **S1** | La privacidad con §2, §5, §6 «Notificaciones sin cuenta», §8, §9, §11 y §12 nuevos, **publicada en el mismo despliegue** que la web | Publicar la web, con orden de Víctor | Hecho en el repositorio; falta publicar |
+| **S2** | La 36 aplicada y verificada (`ensayo-36`, `aplicar-36`, `verificar-36`) | Víctor (flujo) | Pendiente |
+| **S3** | Prueba real en un iPhone (web en la pantalla de inicio) y en un Android: activar, `prueba-sin-cuenta`, tocarla (se abre la lista con la baja) y «Desactivar» | Víctor | Pendiente |
+| **S4** | La OTA con el bloque de la app, después de la web (la app llama a `/api/avisos/movil` en producción); C5 y C6 siguen valiendo | OTA con orden de Víctor | Hecho en el repositorio; falta la OTA |

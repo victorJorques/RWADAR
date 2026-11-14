@@ -71,7 +71,9 @@ const TEXTO_MOVIL_QUIEN = 'Con ellas activadas, el componente de notificaciones 
 const TEXTO_DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
 const INICIAL = Object.freeze({ servidor: null, movil: null, avisos: [], leidos: [], cargando: false,
-  errorCarga: '', procesando: '', mensaje: '', error: '' });
+  errorCarga: '', procesando: '', mensaje: '', error: '', sinCuenta: false });
+// Notificaciones sin cuenta en este móvil, con la sesión abierta (14/11/2026).
+const TEXTO_SIN_CUENTA_CON_SESION = 'Este móvil también tiene activadas las notificaciones sin cuenta: te llegan aunque cierres sesión.';
 
 /* Quita este móvil de los avisos al cerrar sesión, con la sesión que se
    cierra. La llama el controlador de cuentas con plazo; si falla (sin
@@ -92,7 +94,11 @@ export async function quitarPushAlSalir({ cliente, usuarioId }) {
   return true;
 }
 
-export function useAvisosNovedades({ cuenta, usuarioId }) {
+/* `sinCuenta` (14/11/2026, opcional): el gestor de las notificaciones sin
+   cuenta (componentes/AvisosSinCuenta.js). Con él, el panel dice si este
+   móvil también las tiene así, «Desactivar» del móvil las quita también y
+   hay un botón para quitar solo esas. Cerrar sesión no las toca. */
+export function useAvisosNovedades({ cuenta, usuarioId, sinCuenta = null }) {
   const [vista, setVista] = useState(INICIAL);
   const gestor = useRef(null);
   const turno = useRef(0);
@@ -102,7 +108,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
   }
   async function cargar(g, vuelta) {
     actualizar(vuelta, { cargando: true, errorCarga: '' });
-    const [perfil, recientes] = await Promise.allSettled([g.cargarPerfil(), g.cargarRecientes(10)]);
+    const [perfil, recientes, conSinCuenta] = await Promise.allSettled([g.cargarPerfil(), g.cargarRecientes(10),
+      sinCuenta ? sinCuenta.activo() : Promise.resolve(false)]);
     // Renovación en segundo plano, sin tocar la pantalla. Si falla, ya se
     // intentará en otra carga u otro día.
     if (perfil.status === 'fulfilled' && perfil.value.movil?.estado === 'activo' && vuelta === turno.current) {
@@ -112,6 +119,7 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
       cargando: false,
       ...(perfil.status === 'fulfilled' ? perfil.value : {}),
       ...(recientes.status === 'fulfilled' ? recientes.value : {}),
+      sinCuenta: conSinCuenta.status === 'fulfilled' && conSinCuenta.value === true,
       errorCarga: [perfil, recientes].some((r) => r.status === 'rejected' && sinSesion(r.reason)) ? MENSAJES.sesion
         : perfil.status === 'rejected' || recientes.status === 'rejected' ? MENSAJES.carga : '',
     });
@@ -164,6 +172,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     try {
       if (movil.activo) {
         await g.desactivarMovil();
+        // «Desactivar» quita todas las de este móvil: también las de sin cuenta.
+        if (sinCuenta && vista.sinCuenta) { try { await sinCuenta.desactivar(); } catch { /* Lo limpia la base. */ } }
         mensaje = MENSAJES.movilOff;
       } else {
         const resultado = await g.activarMovil(servidor);
@@ -174,9 +184,24 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     } catch (fallo) {
       error = sinSesion(fallo) ? MENSAJES.sesion : MENSAJES.error;
     }
-    let nuevo = movil;
+    let nuevo = movil, conSinCuenta = vista.sinCuenta;
     try { nuevo = await g.estadoMovil(servidor); } catch { /* Se conserva el último estado conocido. */ }
-    actualizar(vuelta, { movil: nuevo, procesando: '', mensaje, error });
+    if (sinCuenta) { try { conSinCuenta = (await sinCuenta.activo()) === true; } catch { /* el último */ } }
+    actualizar(vuelta, { movil: nuevo, procesando: '', mensaje, error, sinCuenta: conSinCuenta });
+  }
+
+  /* Solo las de sin cuenta (el botón del panel, con la sesión abierta). */
+  async function desactivarSinCuenta() {
+    const vuelta = turno.current;
+    if (!sinCuenta || vista.procesando) return;
+    actualizar(vuelta, { procesando: 'sin-cuenta', mensaje: '', error: '' });
+    let r;
+    try { r = await sinCuenta.desactivar(); } catch { r = { ok: false }; }
+    let conSinCuenta = !r?.ok;
+    try { conSinCuenta = (await sinCuenta.activo()) === true; } catch { /* el último */ }
+    actualizar(vuelta, { procesando: '', sinCuenta: conSinCuenta,
+      mensaje: r?.ok ? 'Notificaciones sin cuenta desactivadas en este móvil.' : '',
+      error: r?.ok ? '' : 'No hemos podido confirmar la baja. Revisa la conexión y vuelve a intentarlo.' });
   }
 
   async function marcarLeidos(ids) {
@@ -206,7 +231,7 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     return marcarLeidos(idsNoLeidos);
   }
   return { ...vista, activo: Boolean(cuenta && usuarioId), idsNoLeidos, noLeidos: idsNoLeidos.length,
-    alternarNovedades, alternarMovil, marcarLeidos, marcarTodosLeidos, recargar };
+    alternarNovedades, alternarMovil, marcarLeidos, marcarTodosLeidos, recargar, desactivarSinCuenta };
 }
 
 /* Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026):
@@ -323,7 +348,7 @@ function Boton({ texto, onPress }) {
 /* Perfil › Avisos. `estado` es lo que devuelve useAvisosNovedades.
    `onPrivacidad`, si llega, abre la privacidad (segunda capa de la
    información básica). */
-export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMovil, onAjustes, onReintentar, onPrivacidad }) {
+export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMovil, onAjustes, onReintentar, onPrivacidad, onDesactivarSinCuenta }) {
   const servidor = estado?.servidor, movil = estado?.movil;
   const procesando = estado?.procesando || '';
   if (!servidor) {
@@ -368,6 +393,10 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
         ? <Text style={s.nota}>{TEXTO_MOVIL_QUIEN}</Text> : null}
       {(movil?.estado === 'denegado' || movil?.estado === 'sin-permiso') && onAjustes
         ? <Boton texto="Abrir ajustes" onPress={onAjustes} /> : null}
+      {/* Sin cuenta (14/11/2026): con la sesión abierta, se dice y se pueden quitar solas. */}
+      {estado.sinCuenta === true ? <Text style={s.nota}>{TEXTO_SIN_CUENTA_CON_SESION}</Text> : null}
+      {estado.sinCuenta === true && typeof onDesactivarSinCuenta === 'function'
+        ? <Boton texto="Desactivar las notificaciones sin cuenta" onPress={onDesactivarSinCuenta} /> : null}
       {estado.mensaje ? <Text style={s.mensaje}>{estado.mensaje}</Text> : null}
       {estado.error ? <Text style={s.error} accessibilityRole="alert">{estado.error}</Text> : null}
     </View>

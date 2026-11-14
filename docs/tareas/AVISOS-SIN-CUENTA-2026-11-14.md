@@ -8,7 +8,8 @@ Este documento es el contrato entre la **parte 1** (base y servidor, ya
 hecha en la rama `avisos-sin-cuenta`) y la **parte 2** (web, app y textos
 legales). Todo lo que la web y la app necesitan saber está aquí.
 
-**Estado:** nada publicado ni aplicado. La migración 36 está escrita y
+**Estado:** nada publicado ni aplicado. La parte 2 (web, app y legal) también
+está hecha en la misma rama (abajo, «Parte 2»). La migración 36 está escrita y
 probada en local (PGlite); el servidor de la web tiene las rutas nuevas con
 su interruptor **encendido en el código**. La base nace **apagada**: mientras
 no se lance `activar-sin-cuenta`, el servidor contesta «apagado» y la web y
@@ -246,6 +247,45 @@ Flujo «Avisos a registrados (base)» (`avisos-base.yml`):
 **Ojo:** reaplicar la 30, la 32 o la 33 quita lo de sin cuenta de
 `procesar()` o `limpiar()`: después hay que reaplicar la 36 (el verificador 36
 lo detecta y el flujo lo avisa).
+
+## Parte 2 (web, app y textos legales) · hecha el 14/11/2026, sin publicar
+
+- **Web** (`rwadar-site/assets/rwadar-20260820.js`, bloque
+  `avisos-sin-cuenta:inicio`…`fin`, interruptor `AVISOS_SIN_CUENTA_REMOTO`
+  encendido): Perfil › Avisos sin sesión con el bloque «Notificaciones en este
+  móvil» (sin cuenta), arriba de la tarjeta de la cuenta (`index.html`,
+  `#perfilAvisosSinCuenta`). El texto se pide a `/api/avisos/texto` solo
+  cuando el bloque se ve. «Activar…» en el mismo toque (permiso, service
+  worker, suscripción reutilizada si es de la misma clave, alta con `origen`
+  `perfil` o `novedades`, notificación de muestra). Marca en el navegador:
+  `rwadar.avisos.sin-cuenta.v1` (huella de la dirección, versión, idioma,
+  origen y renovación). Renovación al abrir, como mucho cada 12 h.
+  `?avisos=1` sin sesión: diálogo con `/api/avisos/recientes` y «Desactivar
+  las notificaciones de este móvil». Con sesión: activar con cuenta reutiliza
+  la suscripción de sin cuenta; «Desactivar» de la cuenta quita las dos;
+  cerrar sesión o borrar la cuenta deja la de sin cuenta.
+  `window.RWAdarAvisosSinCuenta` (`paraVentana`, `activar`, `estado`) para la
+  ventana de novedades.
+- **Ventana de novedades** (web y app): el recuadro arriba y compacto; en la
+  web, sin sesión, activa directamente (o lleva a los pasos del iPhone, o a
+  Perfil › Avisos). `novedades-producto.json` a `2026-11-14.3`.
+- **App** (`lib/avisos-sin-cuenta.js`, `componentes/AvisosSinCuenta.js`,
+  interruptor `AVISOS_SIN_CUENTA_REMOTOS` encendido): dentro de
+  `AccesoObligatorio`, encima del formulario; token de Expo y
+  `/api/avisos/movil`; renovación diaria al abrir (y baja si el permiso se
+  quitó); desde una notificación sin sesión, la baja arriba; con sesión,
+  «Desactivar» del móvil quita también las de sin cuenta y hay un botón para
+  quitar solo esas; «Borrar datos del dispositivo» da de baja primero
+  (`rwadar.editorial.avisos.sin-cuenta.v1`). Solo JavaScript: OTA compatible
+  con la 1.4.2.
+- **Legal:** privacidad §2, §5, §6 «Notificaciones sin cuenta», §8, §9, §11 y
+  §12; registro, A5 «Sin cuenta» (versión 9); anexo, apartado 7.
+- **Pruebas:** `probar-web.mjs` (bloque «NOTIFICACIONES SIN CUENTA»),
+  `rwadar-acceso/avisos-sin-cuenta-navegador.test.mjs` (Chromium, por el
+  worker de verdad), `novedades-producto-navegador.test.mjs` (390 × 664 y
+  360 × 640) y `rwadar-movil/tests/avisos-sin-cuenta.test.cjs`.
+- **Orden al publicar:** la web (con la privacidad) antes que la OTA: la app
+  llama a `/api/avisos/movil` en producción.
 
 ## Archivos
 

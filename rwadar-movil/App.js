@@ -19,8 +19,9 @@ import {
 } from './lib/datos';
 import {
   MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
-  AVISOS_BANDEJA_REMOTA, AVISOS_CASILLA_ALTA_REMOTA,
+  AVISOS_BANDEJA_REMOTA, AVISOS_CASILLA_ALTA_REMOTA, AVISOS_SIN_CUENTA_REMOTOS,
 } from './lib/modo-local';
+import { gestorSinCuenta } from './componentes/AvisosSinCuenta';
 import { crearControladorCuentas } from './lib/cuentas';
 import { cuentaAdmitida } from './lib/acceso-obligatorio';
 import AccesoObligatorio from './componentes/AccesoObligatorio';
@@ -84,6 +85,9 @@ const CASILLA_ALTA_ACTIVA = AVISOS_NOVEDADES_ACTIVOS && AVISOS_CASILLA_ALTA_REMO
 // «Avisos» de Inicio con lo recibido. Con los avisos completos encendidos, ya
 // la traen ellos.
 const BANDEJA_AVISOS_ACTIVA = CUENTA_REMOTA_ACTIVA && AVISOS_BANDEJA_REMOTA === true && !AVISOS_NOVEDADES_ACTIVOS;
+// Notificaciones sin cuenta (14/11/2026, lib/modo-local.js): en la pantalla de
+// acceso, la única sin sesión. Solo hablan con /api/avisos/* de la web.
+const AVISOS_SIN_CUENTA_ACTIVOS = MODO_LOCAL === false && AVISOS_SIN_CUENTA_REMOTOS === true;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -191,7 +195,9 @@ export default function App() {
   const usuarioAdmitido = cuentaAdmitida(estadoCuenta) ? estadoCuenta.usuario.id : null;
   const seguridad = useBloqueoApp({ usuarioId: CUENTA_REMOTA_ACTIVA ? usuarioAdmitido : null });
   // Sin el interruptor, el hook no recibe cuenta y no llama a nada.
-  const novedadesCuenta = useAvisosNovedades({ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS ? usuarioAdmitido : null });
+  const novedadesCuenta = useAvisosNovedades({ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS ? usuarioAdmitido : null,
+    // Con sesión, «Desactivar» del móvil quita también las de sin cuenta; cerrar sesión las deja.
+    sinCuenta: AVISOS_SIN_CUENTA_ACTIVOS ? gestorSinCuenta() : null });
   // Igual con la bandeja: sin su interruptor no recibe cuenta y no llama a nada.
   const bandejaAvisos = useBandejaAvisos({ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA ? usuarioAdmitido : null });
   // Lo que pinta la tarjeta «Avisos» de Inicio y cuenta su insignia, si hay algo.
@@ -397,6 +403,24 @@ export default function App() {
     });
     return () => { vivo = false; };
   }, []);
+  /* Notificaciones sin cuenta (14/11/2026): una vez al día al abrir la app,
+     con o sin sesión, se renuevan (la base borra a los 180 días sin renovar)
+     y, si el permiso del sistema se quitó, se dan de baja. Nunca pide nada. */
+  const [sinCuentaActiva, setSinCuentaActiva] = useState(false);
+  useEffect(() => {
+    if (!AVISOS_SIN_CUENTA_ACTIVOS) return undefined;
+    let vivo = true;
+    const g = gestorSinCuenta();
+    g.renovar().catch(() => {}).finally(() => { g.activo().then((a) => { if (vivo) setSinCuentaActiva(a === true); }, () => {}); });
+    return () => { vivo = false; };
+  }, []);
+  // Al entrar o salir de la cuenta (la pantalla de acceso las puede haber cambiado).
+  useEffect(() => {
+    if (!AVISOS_SIN_CUENTA_ACTIVOS) return undefined;
+    let vivo = true;
+    gestorSinCuenta().activo().then((a) => { if (vivo) setSinCuentaActiva(a === true); }, () => {});
+    return () => { vivo = false; };
+  }, [usuarioAdmitido, novedadesCuenta.sinCuenta]);
   useEffect(() => observarAperturasAvisos((slug) => {
     setSlugAvisoPendiente(slug);
     return true;
@@ -460,7 +484,7 @@ export default function App() {
     listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
       && !pantallaInicio && !slugAvisoPendiente && !destinoAvisoPendiente,
     leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
-    avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta) : 'apagados',
+    avisos: AVISOS_NOVEDADES_ACTIVOS ? estadoAvisosMovil(novedadesCuenta, { sinCuenta: sinCuentaActiva }) : 'apagados',
   });
 
   const refrescar = async () => {
@@ -785,7 +809,9 @@ export default function App() {
   if (fuentesListas && !usuarioAdmitido) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} aviso={avisoActualizacion}
-        avisosNovedades={CASILLA_ALTA_ACTIVA} />
+        avisosNovedades={CASILLA_ALTA_ACTIVA}
+        /* Sin sesión, las notificaciones sin cuenta; abierta desde una notificación, con su baja arriba. */
+        sinCuenta={AVISOS_SIN_CUENTA_ACTIVOS ? { desdeNotificacion: Boolean(destinoAvisoPendiente) } : null} />
     </SafeAreaProvider>;
   }
 
@@ -1189,7 +1215,8 @@ export default function App() {
               panelNovedades={AVISOS_NOVEDADES_ACTIVOS ? (
                 <PanelAvisosNovedades estado={novedadesCuenta} onAlternarNovedades={novedadesCuenta.alternarNovedades}
                   onAlternarMovil={novedadesCuenta.alternarMovil} onAjustes={abrirAjustes}
-                  onReintentar={novedadesCuenta.recargar} onPrivacidad={() => abrirEnlace(URL_PRIVACIDAD_AVISOS)} />
+                  onReintentar={novedadesCuenta.recargar} onPrivacidad={() => abrirEnlace(URL_PRIVACIDAD_AVISOS)}
+                  onDesactivarSinCuenta={novedadesCuenta.desactivarSinCuenta} />
               ) : null}
             />
           ) : null}
@@ -1977,6 +2004,12 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                         ? 'Si activas «Notificaciones en este móvil», el sistema te pedirá permiso y se guarda en tu cuenta un identificador de entrega de este móvil y si es Android o iOS. Expo y Firebase Cloud Messaging lo usan para entregar cada notificación, que no lleva datos personales. Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app. Las instalaciones antiguas siguen desactivadas.'
                         : 'Esta versión no solicita permisos push ni obtiene tokens: las notificaciones en el móvil llegan con la versión 1.4.2. Las instalaciones antiguas siguen desactivadas.'}
                     </Text>
+                    {/* Notificaciones sin cuenta (14/11/2026): en la primera pantalla, sin entrar. */}
+                    {AVISOS_SIN_CUENTA_ACTIVOS ? (
+                      <Text style={e.privacidadParrafo}>
+                        {'También puedes activar las notificaciones sin cuenta, en la primera pantalla de la app, sin entrar. Entonces se guarda solo un identificador de entrega de este móvil, con la versión del texto que aceptaste, el idioma, dónde las activaste y las fechas; sin nombre ni correo. Se borra al desactivarlas, al quitar el permiso en los ajustes del móvil o tras 180 días sin abrir la app. Al cerrar sesión siguen; al desactivar aquí «Notificaciones en este móvil» se quitan también. Más en la privacidad de la web, apartado 6.'}
+                      </Text>
+                    ) : null}
                   </>
                 ) : (
                   <>

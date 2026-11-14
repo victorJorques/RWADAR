@@ -6,6 +6,7 @@ import { CACHE_CATALOGO, crearLectorCatalogo } from './catalogo-remoto';
 import { normalizarProgreso, progresoVacio } from './academy-progreso';
 import { clavesPrivadasDispositivo } from './acceso-obligatorio';
 import { quitarPushConCliente } from './avisos-cuenta';
+import { bajaSinCuenta, validarGuardado } from './avisos-sin-cuenta';
 import { compararVersiones, versionValida } from './novedades-rwadar';
 
 /* Supabase no se importa al evaluar este módulo. En modo interno ni siquiera
@@ -470,10 +471,11 @@ export async function sincronizarSeguimientoPendiente() {
    para poder reintentar y no dejar una fila remota inaccesible. El token de
    avisos de este móvil sigue la misma regla, pero sin bloquear el borrado:
    ver clavesPushQuitadas. */
-export async function borrarDatosDispositivo({ plazoQuitarPush = PLAZO_QUITAR_PUSH } = {}) {
+export async function borrarDatosDispositivo({ plazoQuitarPush = PLAZO_QUITAR_PUSH, fetchSinCuenta } = {}) {
   const todas = await AsyncStorage.getAllKeys();
   const quitados = [];
-  const clavesCuenta = [...clavesPrivadasDispositivo(todas), ...await clavesPushQuitadas(todas, plazoQuitarPush, quitados)];
+  const clavesCuenta = [...clavesPrivadasDispositivo(todas), ...await clavesPushQuitadas(todas, plazoQuitarPush, quitados),
+    ...await claveSinCuentaQuitada(todas, plazoQuitarPush, fetchSinCuenta)];
   if (USUARIO_LOCAL) {
     await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
     await requitarPushTrasBorrar(quitados, plazoQuitarPush);
@@ -722,6 +724,42 @@ async function clavesPushQuitadas(todas, plazo, quitados = []) {
     } catch { /* Se conserva para reintentarlo. */ }
   }
   return quitadas;
+}
+
+/* Notificaciones sin cuenta (14/11/2026, lib/avisos-sin-cuenta.js): lo de
+   este móvil, sin cuenta y sin UUID (rwadar.editorial.avisos.sin-cuenta.v1):
+   el token de Expo, la versión y el idioma del texto aceptado, dónde se
+   activaron y el día de la última renovación. Solo en el dispositivo. No va
+   en clavesPrivadasDispositivo (lib/acceso-obligatorio.js): «Borrar datos
+   del dispositivo» lo quita solo después de darlo de baja en el servidor
+   (claveSinCuentaQuitada). */
+const AVISOS_SIN_CUENTA = `${PREFIJO}avisos.sin-cuenta.v1`;
+export const CLAVE_AVISOS_SIN_CUENTA = AVISOS_SIN_CUENTA;
+export async function avisosSinCuenta() {
+  try {
+    const guardado = await AsyncStorage.getItem(AVISOS_SIN_CUENTA);
+    return guardado ? validarGuardado(JSON.parse(guardado)) : null;
+  } catch {
+    return null;
+  }
+}
+export async function guardarAvisosSinCuenta(datos) {
+  const limpio = validarGuardado(datos);
+  if (MODO_LOCAL || !limpio) throw new Error('Datos de avisos no válidos');
+  await AsyncStorage.setItem(AVISOS_SIN_CUENTA, JSON.stringify(limpio));
+}
+export async function borrarAvisosSinCuenta() {
+  await AsyncStorage.removeItem(AVISOS_SIN_CUENTA);
+}
+/* «Borrar datos del dispositivo»: primero la baja (con plazo corto) y,
+   confirmada, la clave. Sin conexión, la clave se conserva para reintentarlo
+   al desactivarlas o al volver a borrar; nunca bloquea ni hace fallar el borrado. */
+async function claveSinCuentaQuitada(todas, plazo, fetchImpl) {
+  if (!todas.includes(AVISOS_SIN_CUENTA)) return [];
+  const guardado = await avisosSinCuenta();
+  if (!guardado) return [AVISOS_SIN_CUENTA];
+  const ok = await bajaSinCuenta(guardado.token, { plazoMs: plazo, ...(fetchImpl ? { fetchImpl } : {}) });
+  return ok ? [AVISOS_SIN_CUENTA] : [];
 }
 
 export async function novedades(slugs) {

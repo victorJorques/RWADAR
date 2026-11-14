@@ -6,6 +6,61 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 14 de noviembre de 2026 (30) · Claude · Notificaciones sin cuenta, parte 2: web, app y textos legales · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
+
+- **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en
+  Android; muy importante que funcionen las notificaciones y los avisos aunque
+  no tengan cuenta o no hayan iniciado sesión: que puedan activarlas», y el
+  recuadro «Activa los avisos» de la ventana de novedades para incitar a
+  activarlas. Parte 2 sobre la parte 1 (entrada 29). Contrato y resumen:
+  [`AVISOS-SIN-CUENTA-2026-11-14.md`](AVISOS-SIN-CUENTA-2026-11-14.md), «Parte 2».
+- **Web** (`rwadar-20260820.js`, interruptor `AVISOS_SIN_CUENTA_REMOTO`
+  encendido; la base sigue apagada): Perfil › Avisos sin sesión con
+  «Notificaciones en este móvil» (sin cuenta): el texto versionado que da el
+  servidor, quién interviene, la información básica y «Activar…» en el mismo
+  toque (permiso, service worker, suscripción, alta y notificación de
+  muestra). iPhone sin la web instalada: los pasos y «Ver cómo añadirla».
+  Base apagada: «todavía no están disponibles», sin pedir nada. Renovación al
+  abrir, como mucho cada 12 h (marca local `rwadar.avisos.sin-cuenta.v1`, sin
+  la dirección). `?avisos=1` sin sesión: los avisos publicados y «Desactivar
+  las notificaciones de este móvil». Con sesión: una suscripción por
+  navegador (activar con cuenta la reutiliza; «Desactivar» de la cuenta quita
+  las dos; cerrar sesión o borrar la cuenta deja la de sin cuenta).
+- **Ventana de novedades** (web y app): el recuadro arriba, antes de los
+  puntos, y compacto (a la vista sin desplazar en 390 × 664 y 360 × 640). En
+  la web, sin sesión, «Activar avisos» las activa ahí mismo con el texto
+  versionado a la vista; en iPhone sin instalar, los pasos; si no, a Perfil ›
+  Avisos. `novedades-producto.json` **2026-11-14.3** (sin campos nuevos; los
+  pasos de `avisos-movil` sin «Entra en tu cuenta», con «No hace falta
+  cuenta») y copia de la app al día.
+- **App** (solo JS, `AVISOS_SIN_CUENTA_REMOTOS` encendido):
+  `lib/avisos-sin-cuenta.js` y `componentes/AvisosSinCuenta.js` dentro de
+  `AccesoObligatorio`, encima del formulario (token de Expo y
+  `/api/avisos/movil`); renovación diaria al abrir (y baja si se quitó el
+  permiso); abierta desde una notificación sin sesión, la baja arriba; con
+  sesión, «Desactivar» del móvil también las quita y hay un botón solo para
+  ellas; la ventana no las vuelve a pedir si ya están; «Borrar datos del
+  dispositivo» da de baja primero. Privacidad de la app, un párrafo.
+- **Legal:** privacidad (14/11/2026): §2 (la marca), §5, §6 «Notificaciones
+  sin cuenta», §8, §9, §11 (art. 11) y §12 (ni activarlas sin cuenta siendo
+  menor); sitemap al día. Registro de actividades, versión 9 (A5 «Sin
+  cuenta»). Anexo, apartado 7 (condiciones S1-S4).
+- **Pruebas:** `npm run test:web` salida 0 (probar-web 732 correctas, 9 de sin
+  cuenta); `node --test rwadar-acceso/*.test.mjs` 367 de 367, Chromium incluido
+  (nueva `avisos-sin-cuenta-navegador`: 4 pruebas por el worker de verdad);
+  `npm --prefix rwadar-movil test` 691 correctas, 2 omitidas de siempre
+  (nueva `avisos-sin-cuenta.test.cjs`: 11); `npm --prefix rwadar-app test`
+  salida 0; `node --test .github/*.test.mjs` 119 de 119; guardián de OTA con la
+  base `fa30779…` `ok:true`.
+- **Pendiente (cada paso con orden de Víctor):** unir la rama (PR, CI y
+  sello); `ensayo-36` → `aplicar-36` → `verificar-36`; web en revisión →
+  `activar-sin-cuenta` → probar en un iPhone (web en la pantalla de inicio) y
+  en un Android → `prueba-sin-cuenta`; web en producción con la privacidad;
+  después la OTA (la app llama a `/api/avisos/movil` en producción); y el aviso
+  de novedad («Avisos en el móvil, también sin cuenta»).
+
+---
+
 ## 14 de noviembre de 2026 (29) · Claude · Notificaciones sin cuenta, parte 1: base (migración 36) y servidor · SIN PUBLICAR (rama `avisos-sin-cuenta`, solo commit local)
 
 - **Encargo de la dirección (14/11):** «que salga tanto en iPhone como en

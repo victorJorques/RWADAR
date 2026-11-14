@@ -710,9 +710,14 @@ function efectoApp(fragmento) {
 }
 
 test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las nuevas', () => {
-  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
   for (const n of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[n] = n;
   const Privacidad = funcionApp('Privacidad', entorno);
+  // Notificaciones sin cuenta (14/11/2026): con su interruptor, la privacidad de la app lo cuenta, con su inglés.
+  const conSinCuenta = texto(funcionApp('Privacidad', { ...entorno, AVISOS_SIN_CUENTA_ACTIVOS: true })({ estadoCuenta: { disponible: true }, avisosNovedades: true, pushNovedades: true }));
+  const parrafoSinCuenta = conSinCuenta.match(/También puedes activar las notificaciones sin cuenta[^]*?apartado 6\./)[0];
+  assert.match(parrafoSinCuenta, /sin nombre ni correo/);
+  assert.notEqual(idioma.ingles(parrafoSinCuenta), parrafoSinCuenta, 'falta el inglés del párrafo sin cuenta');
   const hoy = texto(Privacidad({ estadoCuenta: { disponible: true } }));
   assert.match(hoy, /No se activan opiniones, publicidad, avisos por correo ni push al registrarte/);
   assert.match(hoy, /Instalaciones y avisos desactivados/);
@@ -850,7 +855,7 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
     }
   }
   assert.match(APP, /const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;/);
-  assert.match(APP, /useAvisosNovedades\(\{ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS \? usuarioAdmitido : null \}\)/);
+  assert.match(APP, /useAvisosNovedades\(\{ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS \? usuarioAdmitido : null,[\s\S]{0,140}sinCuenta: AVISOS_SIN_CUENTA_ACTIVOS \? gestorSinCuenta\(\) : null \}\)/);
   assert.match(APP, /const avisosInicio = AVISOS_NOVEDADES_ACTIVOS \? novedadesCuenta : BANDEJA_AVISOS_ACTIVA \? bandejaAvisos : null;/);
   assert.match(APP, /tarjetaAvisos=\{avisosInicio \? \(/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
@@ -1018,7 +1023,7 @@ test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta
   // El texto versionado del permiso no cambia.
   assert.equal(avisosCuenta.VERSION_AVISOS, 'novedades-v2-2026-11-06');
   // Privacidad: con la bandeja, una frase de lo que se ve y se guarda; sin ella, nada nuevo.
-  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
   for (const n of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[n] = n;
   const Privacidad = funcionApp('Privacidad', entorno);
   const FRASE = /En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar\. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo\. No se envían por correo ni como notificaciones\./;

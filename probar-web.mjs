@@ -3416,7 +3416,8 @@ prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
     privacidadLineal.includes('<a href="#firebase-android">apartado 5</a>') &&
-    privacidad.includes('Versión revisada el <time datetime="2026-11-12">12 de noviembre de 2026</time>'));
+    // 14/11/2026: notificaciones sin cuenta (§6 «Notificaciones sin cuenta»).
+    privacidad.includes('Versión revisada el <time datetime="2026-11-14">14 de noviembre de 2026</time>'));
 }
 // Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
 const seccionAvisos =privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
@@ -3889,7 +3890,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     modelo.CLAVE_VISTA === 'rwadar.novedades.vista' && modelo.pendiente(almacen, datos.version) && modelo.marcarVista(almacen, datos.version) &&
     JSON.stringify(memoria) === JSON.stringify({ 'rwadar.novedades.vista': datos.version }) && !modelo.pendiente(almacen, datos.version) &&
     modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
-    modelo.pendiente(almacen, '2026-11-14.3') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
+    modelo.pendiente(almacen, '2026-11-14.4') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
     !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
   const ui = lee('assets/novedades-producto-20261112.js');
   // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo
@@ -3926,7 +3927,7 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     prueba('la ventana decide con el modelo (motivoSinVentana y estadoVentana) y no repite la lógica',
       ui.includes('modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,') &&
       ui.includes("const ahora = () => modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });") &&
-      ui.includes("if (estado === 'ensenar') { mostrar(datos, almacen, avisos); return; }") && ui.includes("if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
+      ui.includes("if (estado === 'ensenar') { mostrar(datos, almacen, avisos, rec); return; }") && ui.includes("if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
       !/function hayOtroDialogo|pideOtraCosa/.test(ui));
     /* El recuadro «Activa los avisos» (14/11/2026): «que para activar las notificaciones salga el aviso al salir la
        notificación de novedades al entrar a la app, para recordar e incitar a la gente a que las activen». Sale salvo
@@ -3941,11 +3942,17 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
       modelo.conRecordatorioAvisos('activos') === false &&
       ['inactivos', 'desconocido', undefined, '', 'basura'].every(e => modelo.conRecordatorioAvisos(e) === true));
     const enComunRec = require('./rwadar-site/assets/idioma-en-20261022.js');
-    prueba('el recuadro: debajo de los puntos, su botón «Activar avisos» la cierra (vista) y lleva a /#perfil-avisos, sin pedir permisos y con el inglés del diccionario común',
-      ui.includes("if (modelo.conRecordatorioAvisos(avisos)) cuerpo.append(recordatorio(t));") &&
+    /* Desde la 2026-11-14.3 (sin cuenta): ARRIBA del cuerpo, antes de los puntos, y su botón, según la web
+       (window.RWAdarAvisosSinCuenta.paraVentana): 'directo' activa aquí mismo con el texto versionado a la vista
+       (la ventana no pide permisos ella misma: lo hace la web, en el mismo toque), 'instalar' lleva a los pasos
+       del iPhone y 'perfil' cierra y lleva a /#perfil-avisos. */
+    prueba('el recuadro: arriba, antes de los puntos; «Activar avisos» activa sin cuenta en el mismo toque, lleva a los pasos del iPhone o a /#perfil-avisos; con el inglés del diccionario común',
+      ui.includes("if (modelo.conRecordatorioAvisos(avisos)) cuerpo.append(recordatorio(t, rec));\n    cuerpo.append(lista);") &&
       ui.includes('boton.href = RUTA_AVISOS; boton.dataset.novAvisos = \'\'; boton.dataset.novFoco = \'avisos\';') &&
-      ui.includes("if (e.target.closest?.('[data-nov-avisos]')) { visto(); d.close(); return; }") &&
-      ui.includes("const avisos = await avisosDelNavegador();") &&
+      ui.includes("const promesa = globalThis.RWAdarAvisosSinCuenta.activar('novedades');") &&
+      ui.indexOf("const promesa = globalThis.RWAdarAvisosSinCuenta.activar('novedades');") < ui.indexOf("rec.paso = 'espera';") &&
+      ui.includes("globalThis.rwadarInstalarIphone(null);") &&
+      ui.includes("let avisos = await avisosDelNavegador();") && ui.includes("await modoRecordatorio()") &&
       ui.includes('registro.pushManager.getSubscription()') && !/requestPermission|pushManager\.subscribe|\.subscribe\(/.test(ui) &&
       ui.indexOf("recTit: 'Activa los avisos'") > 0 && ui.indexOf("recTit: 'Turn on alerts'") > 0 &&
       [['Activa los avisos', 'Turn on alerts'], ['Activar avisos', 'Turn on alerts'],
@@ -4028,6 +4035,77 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     lineal.includes('Es estrictamente necesario para lo que pides, ver cada novedad una sola vez (LSSI, art. 22.2), no es un dato personal y no sale del navegador') &&
     lineal.includes('con o sin cuenta, qué versión de las novedades ya has visto; nada de eso sale de tu navegador') &&
     /<li><b>Datos locales:<\/b>(?:(?!<\/li>).)*La marca de «Novedades de RWAdar» ya vistas \(solo la fecha de la versión, sin datos personales\) es estrictamente necesaria para no repetirte la ventana \(LSSI, art\. 22\.2\)/.test(lineal));
+}
+
+console.log('\n=== NOTIFICACIONES SIN CUENTA (14/11/2026) ===');
+/* Encargo de la dirección: «muy importante que funcionen las notificaciones y los avisos aunque no tengan cuenta
+   o no hayan iniciado sesión: que puedan activarlas». Contrato: docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md. La
+   base nace apagada (migración 36); la web, el servidor y la app, encendidos en el código. Sin navegador: lo que se
+   ve en Chromium está en rwadar-acceso/avisos-sin-cuenta-navegador.test.mjs. */
+{
+  const raiz = path.join(sitio, '..');
+  const leerRaiz = (...p) => fs.readFileSync(path.join(raiz, ...p), 'utf8');
+  const web = lee('assets/rwadar-20260820.js'), indice = lee('index.html'), priv = lee('privacidad.html').replace(/\s+/g, ' ');
+  const sql36 = leerRaiz('rwadar-app', 'db', '36_avisos_sin_cuenta.sql');
+  const versionSC = sql36.match(/sin_cuenta_version = '([^']+)'/)?.[1];
+  const textoSC = sql36.match(/sin_cuenta_texto_es = '((?:[^']|'')+)'/)?.[1]?.replace(/''/g, "'");
+  const textoSCen = sql36.match(/sin_cuenta_texto_en = '((?:[^']|'')+)'/)?.[1]?.replace(/''/g, "'");
+  prueba('interruptores encendidos en el código (web, servidor y app) y la base nace apagada',
+    web.includes(' const AVISOS_SIN_CUENTA_REMOTO=true;') &&
+    web.includes(' const AVISOS_SIN_CUENTA_DISPONIBLE=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_SIN_CUENTA_REMOTO;') &&
+    leerRaiz('rwadar-acceso', 'servidor.mjs').includes('const AVISOS_SIN_CUENTA = true;') &&
+    leerRaiz('rwadar-movil', 'lib', 'modo-local.js').includes('export const AVISOS_SIN_CUENTA_REMOTOS = true;') &&
+    /sin_cuenta_activa boolean not null default false/.test(sql36));
+  prueba('el texto del permiso es uno solo: la base lo da (36), la web y la app lo piden al servidor y la privacidad lo cita igual',
+    versionSC === 'sin-cuenta-v1-2026-11-14' && /Solo para mayores de 18 años\. Más información en Privacidad\.$/.test(textoSC || '') &&
+    /Only for people aged 18 or over\. More information in Privacy\.$/.test(textoSCen || '') &&
+    !web.includes(textoSC) && !leerRaiz('rwadar-movil', 'componentes', 'AvisosSinCuenta.js').includes(textoSC) &&
+    web.includes("pedirSinCuenta('/api/avisos/texto')") && leerRaiz('rwadar-movil', 'lib', 'avisos-sin-cuenta.js').includes("pedir('/texto')") &&
+    priv.includes('(<code>' + versionSC + '</code>): «' + textoSC + '»') &&
+    leerRaiz('docs/tareas/AVISOS-SIN-CUENTA-2026-11-14.md').includes('**Castellano:** ' + textoSC));
+  prueba('Perfil › Avisos: el bloque sin cuenta va primero, con su botón, los pasos del iPhone sin «entra en tu cuenta» y sin tocar Supabase',
+    indice.indexOf('<div id="perfilAvisosSinCuenta" hidden>') > 0 &&
+    indice.indexOf('<div id="perfilAvisosSinCuenta" hidden>') < indice.indexOf('<div id="perfilAvisosProximamente">') &&
+    /id="perfilScActivar" data-sc-activar hidden disabled>Activar notificaciones en este móvil</.test(indice) &&
+    /id="perfilScDesactivar" data-sc-desactivar hidden>Desactivar las notificaciones de este móvil</.test(indice) &&
+    indice.includes('<li>Abre RWAdar desde el icono nuevo y vuelve a Perfil › Avisos. No hace falta cuenta.</li>') &&
+    /<p class="avisos-sc-permiso" id="perfilScTexto" translate="no" hidden><\/p>/.test(indice) &&
+    !/rpc\/(?:alta|baja)_aviso_sin_cuenta|aviso_sin_cuenta_web_activo/.test(web) &&
+    (web.match(/credentials:'omit'/g) || []).length >= 2);
+  const activar = web.slice(web.indexOf(' function activarSinCuenta('), web.indexOf(' function desactivarSinCuenta('));
+  prueba('activar sin cuenta: el permiso en el mismo toque (antes de cualquier espera), alta con versión, idioma y origen, y la notificación de muestra',
+    activar.indexOf('Notification.requestPermission()') > 0 && activar.indexOf('Notification.requestPermission()') < activar.indexOf('await') &&
+    activar.includes("{accion:'alta',endpoint:datos.p_endpoint,p256dh:datos.p_p256dh,auth:datos.p_auth,version,idioma,origen}") === false &&
+    web.includes("{accion:'alta',endpoint:datos.p_endpoint,p256dh:datos.p_p256dh,auth:datos.p_auth,version,idioma,origen}") &&
+    activar.includes("if(!alta.ok&&alta.error==='en_uso')") && activar.includes("tag:'rwadar-activadas'"));
+  prueba('convivencia con la cuenta: una suscripción por navegador; cerrar sesión no quita la de sin cuenta, «Desactivar» de la cuenta quita las dos y activar con cuenta la reutiliza',
+    web.includes('if(AVISOS_SIN_CUENTA_DISPONIBLE&&esDeSinCuenta(datosSeguros(sub)))return ok;') &&
+    web.includes('(AVISOS_SIN_CUENTA_DISPONIBLE?bajaSinCuentaAntes():Promise.resolve()).then(()=>soltarPush(cuenta))') &&
+    web.includes('const reutilizada=vieja&&AVISOS_SIN_CUENTA_DISPONIBLE&&mismaClave(vieja,k)&&esDeSinCuenta(datosSeguros(vieja))?vieja:null;'));
+  prueba('?avisos=1 sin sesión: los avisos publicados y la baja de este móvil; renovación como mucho cada 12 horas',
+    web.includes('if(AVISOS_SIN_CUENTA_DISPONIBLE){abrirAvisosSinCuenta();return;}') &&
+    web.includes("pedirSinCuenta('/api/avisos/recientes')") && web.includes("avisarTrabajador({tipo:'avisos-vistos',n:0});") &&
+    web.includes("¿No quieres estos avisos? Desactívalos aquí o en los ajustes del móvil.") &&
+    web.includes('const RENOVAR_SC_MS=432e5;') && web.includes("const CLAVE_SC='rwadar.avisos.sin-cuenta.v1';"));
+  prueba('privacidad: §2 (la marca), §5, §6 «Notificaciones sin cuenta», §8, §9, §11 (art. 11) y §12 (ni activar notificaciones sin cuenta)',
+    priv.includes('<tr id="marca-sin-cuenta">') && priv.includes('<h3 id="avisos-sin-cuenta">Notificaciones sin cuenta</h3>') &&
+    priv.includes('<li id="plazos-sin-cuenta">') && /art\. 11 RGPD/.test(priv) &&
+    priv.includes('ni activar las notificaciones, tampoco sin cuenta') && priv.includes('<h2 id="edad-minima">12 · Edad mínima</h2>') &&
+    /Lo mismo vale para las notificaciones sin cuenta/.test(priv) && /<b>También sin cuenta<\/b> \(desde el 14\/11\/2026\)/.test(priv) &&
+    /<b>Base jurídica:<\/b> tu consentimiento \(art\. 6\.1\.a RGPD y arts\. 21 y 22\.2 de la Ley 34\/2002\)/.test(priv));
+  const avisosMovil = JSON.parse(lee('datos/novedades-producto.json')).detalle.find(s => s.id === 'avisos-movil');
+  prueba('novedades 2026-11-14.3: en los pasos, sin «Entra en tu cuenta» y con «No hace falta cuenta»',
+    JSON.parse(lee('datos/novedades-producto.json')).version === '2026-11-14.3' &&
+    !avisosMovil.pasos.some(p => /Entra en tu cuenta/.test(p)) && avisosMovil.pasos.some(p => /No hace falta cuenta/.test(p)) &&
+    !avisosMovil.en.pasos.some(p => /Sign in to your RWAdar account/.test(p)));
+  const enComunSC = require('./rwadar-site/assets/idioma-en-20261022.js'), enAvisosSC = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
+  prueba('el inglés de lo nuevo: en el común (web y app) o en el de la campana (solo web)',
+    ['Sin cuenta', 'Activar notificaciones en este móvil', 'Desactivar las notificaciones de este móvil',
+      '¿No quieres estos avisos? Desactívalos aquí o en los ajustes del móvil.',
+      'Las notificaciones sin cuenta todavía no están disponibles. Pronto podrás activarlas aquí.'].every(k => typeof enComunSC[k] === 'string') &&
+    ['Avisos de RWAdar', 'Ver los últimos avisos', 'Fichas nuevas y novedades',
+      'Abre RWAdar desde el icono nuevo y vuelve a Perfil › Avisos. No hace falta cuenta.'].every(k => typeof enAvisosSC[k] === 'string') &&
+    Object.keys(enAvisosSC).every(k => !Object.hasOwn(enComunSC, k)));
 }
 
 console.log('\n=== RWADAR ACADEMY ===');
