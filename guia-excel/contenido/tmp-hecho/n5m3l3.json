@@ -1,0 +1,319 @@
+{
+ "id": "n5m3l3",
+ "titulo": "Diseño que se entiende en diez segundos",
+ "minutos": 15,
+ "objetivo": "Diseñar la página de un cuadro de mando que se entiende en diez segundos: lo importante primero, cifras grandes, poco color, títulos con la conclusión, accesible y lista para imprimir en una página.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "He visto el borrador del cuadro. Hay colores por todas partes, un velocímetro en 3D y cifras que no leo sin gafas. Necesito saber en diez segundos si vamos bien o mal. Arréglalo antes del comité.",
+  "logro": "Ya sabes diseñar una página para dirección clara y accesible, con títulos que cuentan la conclusión y lista para imprimir."
+ },
+ "funciones": [
+  "SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### La regla de los diez segundos\nCarmen mirará la página unos segundos antes de que empiece el comité. En ese tiempo tiene que saber **si vamos bien o mal**.\n\nLeemos como un libro: de izquierda a derecha y de arriba abajo. Por eso **lo más importante va arriba a la izquierda** (las ventas frente al objetivo) y el detalle, debajo. Lo que pongas abajo a la derecha es lo último que se mira, si es que se mira."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e1",
+   "modo": "test",
+   "pregunta": "¿Dónde colocas la tarjeta «Ventas del mes frente al objetivo», la cifra que más le importa a Carmen?",
+   "opciones": [
+    {
+     "texto": "Arriba a la izquierda",
+     "correcta": true,
+     "porque": "Es donde empieza a leer: lo primero que verá es lo que más importa."
+    },
+    {
+     "texto": "En el centro, con un recuadro de colores para que destaque",
+     "correcta": false,
+     "porque": "La vista no empieza en el centro, y un recuadro llamativo distrae del resto. La posición hace el trabajo."
+    },
+    {
+     "texto": "Abajo, como conclusión final",
+     "correcta": false,
+     "porque": "En una página para dirección la conclusión va primero, no al final de un recorrido."
+    }
+   ],
+   "explicacion": "Primero la respuesta, después el detalle: es la forma de presentar a dirección."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Cifras grandes y pocos gráficos\nArriba van las **tarjetas**: cuatro cifras grandes (ventas, cumplimiento, ticket medio, clientes activos), cada una con su comparación debajo en letra normal: «Objetivo: 16.000 €».\n\nDebajo, **uno o dos gráficos** como mucho y una tabla corta (el top 5 de productos). Redondea para presentar: euros sin céntimos y porcentajes con un decimal. Nadie decide nada por los céntimos."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "Un color distinto en cada barra (arcoíris)",
+     "Gris para todo y un solo color para lo que importa"
+    ],
+    [
+     "Gráficos en 3D, con sombras y brillos",
+     "Columnas o líneas planas, sin adornos"
+    ],
+    [
+     "Un velocímetro para el cumplimiento",
+     "Una cifra grande: «94,6 % del objetivo»"
+    ],
+    [
+     "Letra de 8 puntos para que quepa todo",
+     "Letra de 11 (la normal de Excel) o más, y quitar lo que sobra"
+    ],
+    [
+     "Título «Ventas por mes»",
+     "Título «Las ventas superan el objetivo en 5 de 10 meses»"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e2",
+   "modo": "ordenar",
+   "enunciado": "Ordena los elementos de la página de Carmen, de arriba abajo.",
+   "pasos": [
+    "Título con la conclusión del mes",
+    "Las cuatro tarjetas de cifras clave",
+    "El gráfico de ventas frente a objetivo por mes",
+    "La tabla de los cinco productos que más venden",
+    "La nota con la fuente de los datos y la fecha de actualización"
+   ],
+   "explicacion": "De lo general al detalle: conclusión, cifras, evolución, detalle y, al pie, de dónde sale todo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Color solo para lo que importa\nSi todo tiene color, nada destaca. Usa gris o azul oscuro para todo y **un color de aviso** solo donde hay que mirar (el mes que no llega al objetivo).\n\nY **no dependas solo del color**: hay personas que no distinguen bien el rojo del verde, y muchos informes se imprimen en blanco y negro. Acompaña el color con **símbolo y palabra** («▲ Cumple», «▼ No llega») y cuida el **contraste**: texto oscuro sobre fondo claro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e3",
+   "modo": "test",
+   "pregunta": "El cuadro del antecesor marca cada zona con un círculo verde o rojo, sin nada más. ¿Qué cambias?",
+   "opciones": [
+    {
+     "texto": "Añado junto al círculo un símbolo y una palabra: «▲ Cumple» o «▼ No llega»",
+     "correcta": true,
+     "porque": "Así se entiende aunque no distingas el rojo del verde o lo imprimas en blanco y negro."
+    },
+    {
+     "texto": "Pongo un rojo más intenso para que se vea mejor",
+     "correcta": false,
+     "porque": "Quien no distingue el rojo del verde seguirá sin verlo, y en blanco y negro los dos salen grises."
+    },
+    {
+     "texto": "Quito el color: con los números basta",
+     "correcta": false,
+     "porque": "El color ayuda a ver de un vistazo dónde mirar. Lo malo no es el color, es que sea la única pista."
+    }
+   ],
+   "explicacion": "La regla: el color ayuda, pero la información tiene que estar también en el texto."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Títulos que dicen la conclusión\n«Ventas por mes» describe el gráfico. «Las ventas no alcanzan el objetivo en octubre» dice **lo que hay que saber**: Carmen lee el título y ya tiene la conclusión.\n\nEl problema: si lo escribes a mano, el mes que viene mentirá. La solución es un **título con fórmula**: unes textos con `&` y eliges la frase con `SI`, según lo que digan los datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e4",
+   "modo": "formula",
+   "enunciado": "En **A1** escribe el título del cuadro con una fórmula que una el mes de **B3** con la conclusión. Si las ventas (B4) llegan al objetivo (B5) o lo superan, debe decir **«Octubre: las ventas alcanzan el objetivo»**; si no, **«Octubre: las ventas no alcanzan el objetivo»**. Ahora debe salir la segunda.",
+   "hoja": {
+    "celdas": {
+     "A3": "Mes",
+     "B3": "Octubre",
+     "A4": "Ventas (sin IVA)",
+     "B4": 15133.55,
+     "A5": "Objetivo",
+     "B5": 16000
+    },
+    "formatos": {
+     "B4:B5": "eur"
+    },
+    "anchos": {
+     "A": 46,
+     "B": 12
+    },
+    "columnas": 2,
+    "filas": 5
+   },
+   "objetivo": "A1",
+   "solucion": "=B3&\": las ventas \"&SI(B4>=B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"",
+   "alternativas": [
+    "=SI(B4>=B5;B3&\": las ventas alcanzan el objetivo\";B3&\": las ventas no alcanzan el objetivo\")",
+    "=B3&SI(B4>=B5;\": las ventas alcanzan el objetivo\";\": las ventas no alcanzan el objetivo\")",
+    "=SI(B4<B5;B3&\": las ventas no alcanzan el objetivo\";B3&\": las ventas alcanzan el objetivo\")"
+   ],
+   "errores_tipicos": [
+    "=\"Octubre: las ventas no alcanzan el objetivo\"",
+    "=B3&\": las ventas \"&SI(B4>B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"",
+    "=B3&\": las ventas \"&SI(B4<B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\""
+   ],
+   "variantes": [
+    {
+     "B4": 17250
+    },
+    {
+     "B4": 16000
+    },
+    {
+     "B3": "Noviembre"
+    }
+   ],
+   "pistas": [
+    "Son tres trozos unidos con `&`: el mes (B3), el texto `\": las ventas \"` y la palabra que cambia, más `\" el objetivo\"` al final.",
+    "La palabra que cambia la elige un SI: `SI(B4>=B5;\"alcanzan\";\"no alcanzan\")`. Cuidado con los espacios dentro de las comillas.",
+    "`=B3&\": las ventas \"&SI(B4>=B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"`"
+   ],
+   "explicacion": "Tu título cambia solo con los datos: si en noviembre se llega al objetivo, dirá «alcanzan» sin que nadie lo toque. Con `>=`, llegar justo al objetivo también cuenta."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Que quepa en una página\nEl cuadro de mando es **una página**. Para que no se parta al imprimir o al pasarlo a PDF: **Disposición de página** (en algunas versiones, «Diseño de página») › **Ajustar área de impresión** › **Ancho: 1 página** y **Alto: 1 página**, y orientación **horizontal**.\n\nExcel reduce la escala lo justo para que quepa. Si así la letra queda diminuta, el problema no es la impresora: sobra contenido."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e5",
+   "modo": "test",
+   "pregunta": "Al pasar el cuadro a PDF, la última columna sale sola en una segunda página. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Disposición de página › Ajustar área de impresión › Ancho: 1 página",
+     "correcta": true,
+     "porque": "Excel reduce la escala lo justo para que el ancho quepa en una página. Si queda demasiado pequeño, quita contenido."
+    },
+    {
+     "texto": "Bajo toda la letra a 7 puntos",
+     "correcta": false,
+     "porque": "Cabría, pero nadie lo leería: es el error de la letra diminuta. Deja que Excel ajuste la escala y, si aun así no cabe, quita cosas."
+    },
+    {
+     "texto": "Lo dejo en dos páginas y que Carmen las junte",
+     "correcta": false,
+     "porque": "Un cuadro de mando es una página: lo que no cabe sobra o va a un anexo."
+    }
+   ],
+   "explicacion": "Ajustar el ancho y el alto a una página es el último paso antes de cada envío."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Texto alternativo: el gráfico contado con palabras\nEl **texto alternativo** son una o dos frases que describen un gráfico para quien no puede verlo: un lector de pantalla las lee en voz alta. Mejor si dicen la conclusión: «Ventas de enero a octubre frente al objetivo; se alcanza en 5 de 10 meses».\n\nSe pone con clic derecho en el **borde** del gráfico › **Ver texto alternativo** (en Excel 2016 a 2024, «Editar texto alternativo»). Y antes de enviar, Excel puede revisar lo que falta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e6",
+   "modo": "cinta",
+   "enunciado": "¿Dónde le pides a Excel que revise si falta texto alternativo u otros problemas de accesibilidad antes de enviar el cuadro?",
+   "ruta": [
+    "Revisar",
+    "Accesibilidad",
+    "Comprobar accesibilidad"
+   ],
+   "explicacion": "Revisar › Comprobar accesibilidad abre un panel con lo que falla (por ejemplo, gráficos sin texto alternativo) y cómo arreglarlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l3-e7",
+   "modo": "abierta",
+   "pregunta": "Carmen quiere arreglado el gráfico de ventas frente a objetivo por mes. Datos: de enero a octubre se alcanza el objetivo en **6 meses**, y el peor es **agosto**, con el **88 %** del objetivo. Escribe: **1)** el título del gráfico, que diga la conclusión, y **2)** su texto alternativo (una o dos frases).",
+   "modelo": "1) Título: «Las ventas alcanzan el objetivo en 6 de 10 meses; agosto, el peor (88 %)».\n2) Texto alternativo: «Gráfico de columnas y línea con las ventas de enero a octubre de 2026 frente al objetivo de cada mes. Se alcanza el objetivo en 6 meses; el peor es agosto, con el 88 % del objetivo».",
+   "criterios": [
+    "El título dice la conclusión, no solo el tema",
+    "El título cabe en una línea",
+    "El texto alternativo dice qué tipo de gráfico es y qué muestra",
+    "El texto alternativo incluye la conclusión principal",
+    "No depende de colores («la barra roja…»)"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n5m3l3-q1",
+   "modo": "test",
+   "pregunta": "Javier propone un velocímetro en 3D para el cumplimiento del objetivo. ¿Qué le propones?",
+   "opciones": [
+    {
+     "texto": "Una cifra grande con su comparación: «94,6 % del objetivo»",
+     "correcta": true,
+     "porque": "Se lee en un segundo, ocupa poco y no distorsiona nada."
+    },
+    {
+     "texto": "El mismo velocímetro, pero en 2D",
+     "correcta": false,
+     "porque": "Mejor sin 3D, pero sigue ocupando mucho sitio para enseñar una sola cifra."
+    },
+    {
+     "texto": "Un gráfico circular con lo vendido y lo que falta",
+     "correcta": false,
+     "porque": "Los circulares se leen mal y, si se supera el objetivo, ya no tienen sentido."
+    }
+   ]
+  },
+  {
+   "id": "n5m3l3-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "¿En qué zona de la página va lo más importante del cuadro de mando?",
+   "aceptadas": [
+    "arriba a la izquierda",
+    "Arriba a la izquierda",
+    "arriba izquierda",
+    "arriba, a la izquierda",
+    "esquina superior izquierda",
+    "la esquina superior izquierda"
+   ],
+   "explicacion": "Arriba a la izquierda: es donde empieza la lectura."
+  },
+  {
+   "id": "n5m3l3-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué texto devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Indicador",
+     "B1": "Valor",
+     "A2": "Ventas",
+     "B2": 15200,
+     "A3": "Objetivo",
+     "B3": 16000
+    },
+    "formatos": {
+     "B2:B3": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 12
+    }
+   },
+   "celda": "A5",
+   "formula": "=\"Ventas \"&SI(B2>=B3;\"por encima\";\"por debajo\")&\" del objetivo\"",
+   "explicacion": "15.200 no llega a 16.000, así que SI elige «por debajo». Un título así se actualiza solo."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "La regla de los diez segundos",
+   "dorso": "Lo importante arriba a la izquierda, cifras grandes con su comparación y un título que dice la conclusión."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Que el cuadro quepa en una página",
+   "dorso": "Disposición de página › Ajustar área de impresión › Ancho: 1 página y Alto: 1 página; orientación horizontal."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Añadir texto alternativo a un gráfico",
+   "dorso": "Clic derecho en el borde › Ver texto alternativo (Excel 2016-2024: Editar texto alternativo). Revisar › Comprobar accesibilidad avisa de lo que falta."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Semáforo hecho solo con colores",
+   "dorso": "Añade símbolo y palabra («▲ Cumple»): no todos distinguen el rojo del verde y en blanco y negro no se ve."
+  }
+ ]
+}

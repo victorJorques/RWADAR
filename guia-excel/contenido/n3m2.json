@@ -1,0 +1,2119 @@
+{
+ "id": "n3m2",
+ "nivel": "n3",
+ "titulo": "Búsquedas avanzadas y cruces de listas",
+ "intro": "Buena parte del trabajo de oficina consiste en poner un dato al lado de otro: el porcentaje de comisión junto a las ventas, el precio junto al código, el cobro del banco junto a la factura. En este módulo aprenderás a buscar por tramos, a buscar en cualquier versión de Excel y a cruzar dos listas para decir qué falta en cada una, que es como se cierra cada mes.",
+ "repaso_inicial": [
+  {
+   "id": "n3m2-r1",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber cuánto ha vendido la delegación escrita en **E2** en la familia escrita en **F2**. Escribe en **G2** una fórmula que lo calcule con los datos de A1:C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Familia",
+     "C1": "Importe",
+     "E1": "Delegación",
+     "F1": "Familia",
+     "G1": "Total",
+     "A2": "Zaragoza",
+     "B2": "Cable",
+     "C2": 1840.5,
+     "A3": "Pamplona",
+     "B3": "Cable",
+     "C3": 920.3,
+     "A4": "Pamplona",
+     "B4": "Luminarias",
+     "C4": 1310,
+     "A5": "Lleida",
+     "B5": "Cable",
+     "C5": 655.2,
+     "A6": "Pamplona",
+     "B6": "Cable",
+     "C6": 412.75,
+     "A7": "Zaragoza",
+     "B7": "Mecanismos",
+     "C7": 730,
+     "E2": "Pamplona",
+     "F2": "Cable"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "G2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "E": 11,
+     "F": 11,
+     "G": 11
+    },
+    "columnas": 7,
+    "filas": 7
+   },
+   "objetivo": "G2",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2;B2:B7;F2)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;E2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(A2:A7;E2;C2:C7)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\"Pamplona\";B2:B7;\"Cable\")"
+   ],
+   "variantes": [
+    {
+     "E2": "Zaragoza"
+    },
+    {
+     "F2": "Luminarias"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay dos condiciones a la vez (delegación y familia): necesitas la versión de «varios criterios».",
+    "SUMAR.SI.CONJUNTO empieza por lo que se suma (C2:C7) y sigue con parejas rango; criterio.",
+    "`=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2;B2:B7;F2)`"
+   ],
+   "explicacion": "1.333,05 €: las dos ventas de cable de Pamplona. Y como los criterios están en celdas, Javier puede cambiar la delegación o la familia sin tocar la fórmula."
+  },
+  {
+   "id": "n3m2-r2",
+   "modo": "test",
+   "pregunta": "Buscas el precio del código de A2 en la tarifa con BUSCARV. ¿Qué escribes en el último argumento para que nunca te traiga el precio de otro producto?",
+   "opciones": [
+    {
+     "texto": "FALSO",
+     "correcta": true,
+     "porque": "FALSO pide coincidencia exacta: si el código no está, sale #N/D en vez de un precio equivocado."
+    },
+    {
+     "texto": "VERDADERO",
+     "correcta": false,
+     "porque": "VERDADERO es coincidencia aproximada: si el código no está, trae el de otro producto sin avisar."
+    },
+    {
+     "texto": "Nada: se puede dejar vacío",
+     "correcta": false,
+     "porque": "Si lo omites, BUSCARV usa VERDADERO (aproximada) por defecto. Es el error más caro de BUSCARV."
+    }
+   ],
+   "explicacion": "Para códigos, siempre FALSO. En la primera lección de este módulo verás el único caso en que la aproximada es justo lo que quieres."
+  },
+  {
+   "id": "n3m2-r3",
+   "modo": "predice",
+   "enunciado": "Escala de descuentos con SI.CONJUNTO. El pedido es de **2.000 €** justos. ¿Qué descuento devuelve? Escríbelo como porcentaje.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "C1": "% dto.",
+     "A2": "PC-26/298",
+     "B2": 2000
+    },
+    "formatos": {
+     "B2": "eur",
+     "C2": "pct"
+    },
+    "columnas": 3,
+    "filas": 2
+   },
+   "celda": "C2",
+   "formula": "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)",
+   "formato_resultado": "pct",
+   "explicacion": "5 %: 2.000 no llega a 5.000, pero sí cumple «>=2000», y SI.CONJUNTO se queda con la primera condición que se cumple. Hoy aprenderás a sacar esta escala de la fórmula a una tabla.",
+   "respuesta": "5%"
+  },
+  {
+   "id": "n3m2-r4",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué error devuelve BUSCARX cuando no encuentra el valor y no le has dicho qué hacer en ese caso?",
+   "aceptadas": [
+    "#N/D",
+    "N/D",
+    "#n/d",
+    "n/d"
+   ],
+   "explicacion": "#N/D, «no disponible»: el valor no está en la lista. Se cambia por un aviso con el cuarto hueco de BUSCARX o con SI.ND, nunca por un 0."
+  }
+ ],
+ "practica_excel": null,
+ "lecciones": [
+  {
+   "id": "n3m2l1",
+   "titulo": "Tramos con BUSCARX: comisiones y descuentos",
+   "minutos": 16,
+   "objetivo": "Calcular porcentajes e importes por tramos (comisiones, descuentos por volumen) con BUSCARX en modo -1 o BUSCARV con VERDADERO sobre una tabla de tramos que se cambia sin tocar las fórmulas.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Te paso las ventas de octubre de los comerciales. Las comisiones van por tramos: desde 10.000 € un 2 %, desde 20.000 € un 3,5 % y desde 40.000 € un 5 %. Quiero el importe de cada uno para la nómina, y que la escala se pueda cambiar sin tocar fórmulas.",
+    "logro": "Ya sabes calcular comisiones y descuentos por tramos con una tabla que se cambia sin tocar ninguna fórmula."
+   },
+   "funciones": [
+    "BUSCARX",
+    "BUSCARV"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Javier paga las comisiones por **tramos**, como los escalones de una escalera: cuanto más vende un comercial, más alto es su porcentaje.\n\nEn el nivel anterior, con SI.CONJUNTO, escribías los escalones **dentro** de la fórmula. Funciona, pero cada vez que cambia la escala hay que retocar todas las fórmulas, y alguna se queda sin cambiar.\n\nHoy lo harás como se hace en las empresas: la escala va en una **tabla de tramos** aparte, y una fórmula busca en ella el escalón de cada comercial."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "La tabla de tramos de Javier",
+     "hoja": {
+      "celdas": {
+       "A1": "Desde",
+       "B1": "Comisión",
+       "A2": 0,
+       "B2": 0,
+       "A3": 10000,
+       "B3": 0.02,
+       "A4": 20000,
+       "B4": 0.035,
+       "A5": 40000,
+       "B5": 0.05
+      },
+      "formatos": {
+       "A2:A5": "eur",
+       "B2:B5": "pct1"
+      },
+      "anchos": {
+       "A": 14,
+       "B": 12
+      },
+      "columnas": 2,
+      "filas": 5
+     },
+     "pie": "Cada fila dice desde qué importe se aplica ese porcentaje: desde 10.000 €, el 2 %; desde 20.000 €, el 3,5 %; desde 40.000 €, el 5 %. Por debajo de 10.000 €, nada."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e1",
+     "modo": "test",
+     "pregunta": "Raúl Gimeno ha vendido **25.400 €** en octubre. Mirando la tabla de tramos, ¿qué comisión le toca?",
+     "opciones": [
+      {
+       "texto": "3,5 %",
+       "correcta": true,
+       "porque": "Eso es: 25.400 ya ha pasado el escalón de 20.000, pero no llega al de 40.000. Se queda en el escalón de 20.000."
+      },
+      {
+       "texto": "5 %",
+       "correcta": false,
+       "porque": "Para el 5 % tendría que llegar a 40.000 €, y aún le faltan 14.600 €."
+      },
+      {
+       "texto": "2 %",
+       "correcta": false,
+       "porque": "El 2 % es desde 10.000 €. Raúl ya ha subido un escalón más, el de 20.000 €."
+      },
+      {
+       "texto": "Ninguna: 25.400 no aparece en la tabla",
+       "correcta": false,
+       "porque": "No hace falta que aparezca: la tabla dice «desde». Buscas el escalón más alto que no pasa de sus ventas."
+      }
+     ],
+     "explicacion": "Lo que acabas de hacer de cabeza es justo lo que hará la fórmula: buscar el escalón más alto que no supera las ventas."
+    },
+    {
+     "tipo": "texto",
+     "md": "Ya conoces BUSCARX: busca un valor y trae el dato de al lado. Pero busca **exacto**: 25.400 no está en la columna «Desde», así que daría #N/D.\n\nPara los tramos le añades un quinto hueco, el **modo de coincidencia**, con el valor **-1**: «exacta o, si no está, la siguiente menor». Busca 25.400, no lo encuentra y se queda con el escalón de debajo, el de 20.000.\n\n`=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)`"
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "dato",
+     "titulo": "¿Por qué dos ; seguidos?",
+     "md": "El cuarto hueco es «si no se encuentra». Aquí sobra, porque la tabla empieza en 0 y siempre hay un escalón. Se deja vacío, pero hay que escribir su `;` para llegar al quinto: por eso ves `;;-1`.\n\nOtros valores del quinto hueco: **0**, solo exacta (lo que hace si lo dejas vacío), y **1**, exacta o la siguiente **mayor**."
+    },
+    {
+     "tipo": "pasos",
+     "titulo": "Ejemplo resuelto: el porcentaje de Raúl",
+     "pasos": [
+      {
+       "md": "En **C2** escribe `=BUSCARX(` y haz clic en **B2**: es lo que buscas, las ventas de Raúl. Escribe `;`."
+      },
+      {
+       "md": "Selecciona **E2:E5** (la columna «Desde») y pulsa [[F4]] para fijarla: `$E$2:$E$5`. Escribe `;`."
+      },
+      {
+       "md": "Selecciona **F2:F5** (los porcentajes), pulsa [[F4]] y termina con `;;-1)`. Pulsa [[Intro]]."
+      },
+      {
+       "md": "Sale **3,5 %**. Copia la fórmula hasta C6 con el controlador de relleno: cada comercial recibe su porcentaje.",
+       "hoja": {
+        "celdas": {
+         "A1": "Comercial",
+         "B1": "Ventas oct.",
+         "C1": "% comisión",
+         "E1": "Desde",
+         "F1": "Comisión",
+         "A2": "Raúl Gimeno",
+         "B2": 25400,
+         "C2": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+         "A3": "Elena Sanz",
+         "B3": 9850,
+         "C3": "=BUSCARX(B3;$E$2:$E$5;$F$2:$F$5;;-1)",
+         "A4": "Iñaki Goñi",
+         "B4": 41200,
+         "C4": "=BUSCARX(B4;$E$2:$E$5;$F$2:$F$5;;-1)",
+         "A5": "Montse Pujol",
+         "B5": 20000,
+         "C5": "=BUSCARX(B5;$E$2:$E$5;$F$2:$F$5;;-1)",
+         "A6": "Sergio Bueno",
+         "B6": 15730,
+         "C6": "=BUSCARX(B6;$E$2:$E$5;$F$2:$F$5;;-1)",
+         "E2": 0,
+         "F2": 0,
+         "E3": 10000,
+         "F3": 0.02,
+         "E4": 20000,
+         "F4": 0.035,
+         "E5": 40000,
+         "F5": 0.05
+        },
+        "formatos": {
+         "B2:B6": "eur",
+         "C2:C6": "pct1",
+         "E2:E5": "eur",
+         "F2:F5": "pct1"
+        },
+        "anchos": {
+         "A": 17,
+         "B": 12,
+         "C": 11
+        },
+        "columnas": 6,
+        "filas": 6
+       }
+      }
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e2",
+     "modo": "predice",
+     "enunciado": "Montse Pujol ha vendido **20.000 €** justos, ni un euro más. ¿Qué porcentaje devuelve la fórmula de C2? Escríbelo como porcentaje (por ejemplo, 2%).",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas oct.",
+       "C1": "% comisión",
+       "E1": "Desde",
+       "F1": "Comisión",
+       "A2": "Montse Pujol",
+       "B2": 20000,
+       "E2": 0,
+       "F2": 0,
+       "E3": 10000,
+       "F3": 0.02,
+       "E4": 20000,
+       "F4": 0.035,
+       "E5": 40000,
+       "F5": 0.05
+      },
+      "formatos": {
+       "B2": "eur",
+       "C2": "pct1",
+       "E2:E5": "eur",
+       "F2:F5": "pct1"
+      },
+      "anchos": {
+       "A": 14,
+       "B": 12,
+       "C": 11
+      },
+      "columnas": 6,
+      "filas": 5
+     },
+     "celda": "C2",
+     "formula": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+     "formato_resultado": "pct1",
+     "explicacion": "«Exacta o la siguiente menor»: 20.000 **sí** está en la tabla, así que se queda con su fila, el 3,5 %. Quien llega justo al límite ya está en ese tramo, porque la tabla dice «desde». Es el caso que más discusiones da con los comerciales: compruébalo siempre.",
+     "respuesta": "3,5%"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e3",
+     "modo": "formula",
+     "enunciado": "Nuria ha empezado la columna de porcentajes, pero en **C2** le sale #N/D. **Arregla la fórmula** para que traiga el % de comisión de Raúl según la tabla de tramos (E1:F5). Después se copiará hasta **C6**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas oct.",
+       "C1": "% comisión",
+       "E1": "Desde",
+       "F1": "Comisión",
+       "A2": "Raúl Gimeno",
+       "B2": 25400,
+       "A3": "Elena Sanz",
+       "B3": 9850,
+       "A4": "Iñaki Goñi",
+       "B4": 41200,
+       "A5": "Montse Pujol",
+       "B5": 20000,
+       "A6": "Sergio Bueno",
+       "B6": 15730,
+       "E2": 0,
+       "F2": 0,
+       "E3": 10000,
+       "F3": 0.02,
+       "E4": 20000,
+       "F4": 0.035,
+       "E5": 40000,
+       "F5": 0.05
+      },
+      "formatos": {
+       "B2:B6": "eur",
+       "C2:C6": "pct1",
+       "E2:E5": "eur",
+       "F2:F5": "pct1"
+      },
+      "anchos": {
+       "A": 17,
+       "B": 12,
+       "C": 11
+      },
+      "columnas": 6,
+      "filas": 6
+     },
+     "objetivo": "C2",
+     "copiar_a": [
+      "C3:C6"
+     ],
+     "inicial": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5)",
+     "solucion": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+     "alternativas": [
+      "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;0;-1)",
+      "=BUSCARX(B2;E$2:E$5;F$2:F$5;;-1)",
+      "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)"
+     ],
+     "errores_tipicos": [
+      "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;1)",
+      "=BUSCARX(B2;E2:E5;F2:F5;;-1)"
+     ],
+     "variantes": [
+      {
+       "B2": 40000
+      },
+      {
+       "F4": 0.03
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Sin quinto hueco, BUSCARX busca el valor exacto, y 25.400 no está en la columna «Desde».",
+      "Añade dos huecos al final: el cuarto vacío y el quinto con el modo «exacta o la siguiente menor».",
+      "Termina la fórmula así: `…;$F$2:$F$5;;-1)`."
+     ],
+     "explicacion": "Cada comercial tiene ya su porcentaje, y el día que cambie la escala solo tocarás la tabla. Este patrón (BUSCARX con -1 sobre una tabla «Desde») te sirve para comisiones, descuentos por volumen, portes según el peso o categorías de cliente."
+    },
+    {
+     "tipo": "texto",
+     "md": "La tabla de tramos sigue tres reglas:\n\n1. Cada fila lleva el **límite inferior** del tramo: desde cuánto se aplica.\n2. Va **ordenada de menor a mayor**.\n3. La primera fila empieza en **0**, para que cualquier venta tenga escalón.\n\nEl error típico es copiar la escala tal como llega en un correo: «hasta 9.999 €, hasta 19.999 €…». Con el límite superior, el -1 baja al escalón de debajo y el comercial cobra **un tramo menos**."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e4",
+     "modo": "predice",
+     "enunciado": "Alguien montó la tabla con el límite **superior** («Hasta»). Sergio ha vendido **15.730 €**, así que le toca el 2 %. ¿Qué devuelve la fórmula de C2? Escríbelo como porcentaje.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas oct.",
+       "C1": "% comisión",
+       "E1": "Hasta",
+       "F1": "Comisión",
+       "A2": "Sergio Bueno",
+       "B2": 15730,
+       "E2": 9999.99,
+       "F2": 0,
+       "E3": 19999.99,
+       "F3": 0.02,
+       "E4": 39999.99,
+       "F4": 0.035,
+       "E5": 9999999,
+       "F5": 0.05
+      },
+      "formatos": {
+       "B2": "eur",
+       "C2": "pct1",
+       "E2:E5": "eur",
+       "F2:F5": "pct1"
+      },
+      "anchos": {
+       "A": 14,
+       "B": 12,
+       "C": 11,
+       "E": 15
+      },
+      "columnas": 6,
+      "filas": 5
+     },
+     "celda": "C2",
+     "formula": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+     "formato_resultado": "pct",
+     "explicacion": "Devuelve **0 %**. La fórmula busca 15.730, no lo encuentra y baja a la siguiente menor, 9.999,99, que es la fila del 0 %. Con «Hasta» le quitas un tramo a Sergio, y Excel no avisa de nada. Por eso la tabla siempre se escribe con «Desde»: 0, 10.000, 20.000, 40.000.",
+     "respuesta": "0%"
+    },
+    {
+     "tipo": "texto",
+     "md": "En Excel 2019 o anterior no hay BUSCARX. Para tramos, el equivalente de toda la vida es **BUSCARV con VERDADERO** al final:\n\n`=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)`\n\nAprendiste a poner siempre **FALSO** para buscar códigos. Los tramos son la excepción: VERDADERO significa «coincidencia aproximada», que aquí es justo el escalón de debajo.\n\nA cambio, BUSCARV exige que la primera columna de la tabla esté **ordenada de menor a mayor**."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "VERDADERO, solo para tramos",
+     "md": "Si te dejas el cuarto argumento, BUSCARV usa VERDADERO sin avisar. Con códigos de producto eso trae el precio de **otro** producto. En los tramos, escríbelo igualmente: quien lea tu fórmula verá que la aproximada es a propósito."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e5",
+     "modo": "formula",
+     "enunciado": "El proveedor Cables Jalón nos hace **descuento por volumen**: desde 1.000 €, un 3 %; desde 3.000 €, un 5 %; desde 6.000 €, un 8 %. Andrés quiere la plantilla en el ordenador del almacén, que tiene **Excel 2019**. En **C2** trae el % de descuento del pedido de la fila 2 con **BUSCARV**, lista para copiar hasta **C6**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Importe",
+       "C1": "% dto.",
+       "E1": "Desde",
+       "F1": "Descuento",
+       "A2": "PC-26/301",
+       "B2": 2450,
+       "A3": "PC-26/302",
+       "B3": 6800,
+       "A4": "PC-26/303",
+       "B4": 980,
+       "A5": "PC-26/304",
+       "B5": 3000,
+       "A6": "PC-26/305",
+       "B6": 5120,
+       "E2": 0,
+       "F2": 0,
+       "E3": 1000,
+       "F3": 0.03,
+       "E4": 3000,
+       "F4": 0.05,
+       "E5": 6000,
+       "F5": 0.08
+      },
+      "formatos": {
+       "B2:B6": "eur",
+       "C2:C6": "pct",
+       "E2:E5": "eur",
+       "F2:F5": "pct"
+      },
+      "anchos": {
+       "A": 12,
+       "B": 12
+      },
+      "columnas": 6,
+      "filas": 6
+     },
+     "objetivo": "C2",
+     "copiar_a": [
+      "C3:C6"
+     ],
+     "solucion": "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)",
+     "debe_usar": [
+      "BUSCARV"
+     ],
+     "alternativas": [
+      "=BUSCARV(B2;E$2:F$5;2;VERDADERO)"
+     ],
+     "errores_tipicos": [
+      "=BUSCARV(B2;$E$2:$F$5;2;FALSO)",
+      "=BUSCARV(B2;E2:F5;2;VERDADERO)",
+      "=BUSCARV(B2;$E$2:$F$5;1;VERDADERO)"
+     ],
+     "variantes": [
+      {
+       "B2": 6000
+      },
+      {
+       "F3": 0.04
+      }
+     ],
+     "formato_resultado": "pct",
+     "pistas": [
+      "BUSCARV necesita: qué buscas, la tabla entera, el número de columna que traes y el tipo de coincidencia.",
+      "La tabla es E2:F5 (fíjala con [[F4]]) y el descuento está en su columna 2.",
+      "`=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)`"
+     ],
+     "explicacion": "Mismo resultado que BUSCARX con -1, y funciona en cualquier Excel: 3 % para el pedido de 2.450 €, 8 % para el de 6.800 €. Ya tienes las dos herramientas: BUSCARX para los libros modernos y BUSCARV con VERDADERO cuando el archivo tiene que abrirse en un Excel antiguo."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Javier Ortega",
+     "puesto": "Director comercial",
+     "md": "Cambio de última hora: dirección ha aprobado subir el último tramo, desde 40.000 €, al **6 %**. Y quiero ver ya el **importe** de la comisión en euros, no solo el porcentaje."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e6",
+     "modo": "test",
+     "pregunta": "Con la escala en una tabla de tramos, ¿qué tienes que cambiar para aplicar el 6 %?",
+     "opciones": [
+      {
+       "texto": "Solo la celda del 5 % en la tabla de tramos: escribes 6 %",
+       "correcta": true,
+       "porque": "Exacto: todas las fórmulas leen la tabla, así que se actualizan solas. Esta es la gran ventaja de no meter los tramos en la fórmula."
+      },
+      {
+       "texto": "Todas las fórmulas de la columna de comisión",
+       "correcta": false,
+       "porque": "Eso pasaría con los tramos escritos dentro de un SI anidado. Con la tabla, las fórmulas no se tocan."
+      },
+      {
+       "texto": "Añadir al final una fila nueva: 40.000 € y 6 %",
+       "correcta": false,
+       "porque": "Tendrías dos filas «desde 40.000» con dos porcentajes distintos: una tabla contradictoria con la que la fórmula puede seguir aplicando el 5 %. Un tramo, una fila: basta con cambiar la celda."
+      },
+      {
+       "texto": "Reescribir la tabla con «Hasta» para que quepa el nuevo tramo",
+       "correcta": false,
+       "porque": "Con «Hasta» el -1 baja un escalón y todos cobrarían un tramo menos. La tabla se queda con «Desde»."
+      }
+     ],
+     "explicacion": "Un cambio de escala, una celda. Diez segundos de trabajo y cero fórmulas tocadas."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l1-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Javier.** La tabla ya tiene el 6 %. En **C2** calcula el **importe de la comisión** de Raúl en euros: sus ventas por el porcentaje que le toca según la tabla de tramos. Todo en **una sola fórmula**, lista para copiar hasta **C6**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas oct.",
+       "C1": "Comisión (€)",
+       "E1": "Desde",
+       "F1": "Comisión",
+       "A2": "Raúl Gimeno",
+       "B2": 25400,
+       "A3": "Elena Sanz",
+       "B3": 9850,
+       "A4": "Iñaki Goñi",
+       "B4": 41200,
+       "A5": "Montse Pujol",
+       "B5": 20000,
+       "A6": "Sergio Bueno",
+       "B6": 15730,
+       "E2": 0,
+       "F2": 0,
+       "E3": 10000,
+       "F3": 0.02,
+       "E4": 20000,
+       "F4": 0.035,
+       "E5": 40000,
+       "F5": 0.06
+      },
+      "formatos": {
+       "B2:B6": "eur",
+       "C2:C6": "eur",
+       "E2:E5": "eur",
+       "F2:F5": "pct1"
+      },
+      "anchos": {
+       "A": 17,
+       "B": 12,
+       "C": 13
+      },
+      "columnas": 6,
+      "filas": 6
+     },
+     "objetivo": "C2",
+     "copiar_a": [
+      "C3:C6"
+     ],
+     "solucion": "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+     "alternativas": [
+      "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)*B2",
+      "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;0;-1)",
+      "=B2*BUSCARV(B2;$E$2:$F$5;2;VERDADERO)"
+     ],
+     "errores_tipicos": [
+      "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+      "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5)",
+      "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;1)",
+      "=B2*0,035"
+     ],
+     "variantes": [
+      {
+       "B2": 40000
+      },
+      {
+       "F5": 0.055
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "El importe es ventas × porcentaje, y el porcentaje ya sabes traerlo de la tabla.",
+      "Multiplica B2 por la fórmula de BUSCARX con -1 que has usado antes.",
+      "`=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)`"
+     ],
+     "explicacion": "Comisiones de octubre listas para la nómina: 889 € para Raúl, 2.472 € para Iñaki (ya con el 6 %), 0 € para Elena. Compruébalo con un caso a mano: Montse, 20.000 × 3,5 % = 700 €. Y si el año que viene cambia la escala, Javier solo tendrá que tocar la tabla."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m2l1-q1",
+     "modo": "respuesta_corta",
+     "pregunta": "En BUSCARX, ¿qué valor escribes en el quinto hueco (modo de coincidencia) para que busque «exacta o la siguiente menor»?",
+     "aceptadas": [
+      "-1",
+      "−1",
+      "menos 1",
+      "menos uno"
+     ],
+     "explicacion": "-1: si no encuentra el valor exacto, se queda con el siguiente menor, que en una tabla «Desde» es el escalón que toca."
+    },
+    {
+     "id": "n3m2l1-q2",
+     "modo": "test",
+     "pregunta": "La escala de descuentos dice: «menos de 500 €, sin descuento; desde 500 €, un 2 %; desde 2.000 €, un 4 %». ¿Cómo la escribes en la tabla de tramos?",
+     "opciones": [
+      {
+       "texto": "Desde 0 → 0 % · desde 500 → 2 % · desde 2.000 → 4 %",
+       "correcta": true,
+       "porque": "Límite inferior, de menor a mayor y empezando en 0: las tres reglas de una tabla de tramos."
+      },
+      {
+       "texto": "Hasta 499,99 → 0 % · hasta 1.999,99 → 2 % · hasta 999.999 → 4 %",
+       "correcta": false,
+       "porque": "Es el límite superior: con -1 o con VERDADERO, la fórmula bajaría un escalón y aplicaría un tramo menos."
+      },
+      {
+       "texto": "Desde 2.000 → 4 % · desde 500 → 2 % · desde 0 → 0 %",
+       "correcta": false,
+       "porque": "Los límites son buenos, pero el orden no: BUSCARV con VERDADERO exige la primera columna de menor a mayor. Ordénala siempre así."
+      },
+      {
+       "texto": "Desde 500 → 2 % · desde 2.000 → 4 %",
+       "correcta": false,
+       "porque": "Falta la fila del 0: un pedido de 300 € no tendría escalón y la fórmula daría #N/D."
+      }
+     ],
+     "explicacion": "Una tabla de tramos se escribe siempre igual: el límite inferior de cada tramo («Desde»), de menor a mayor y empezando en 0. Así cualquier importe encuentra su escalón, con BUSCARX o con BUSCARV."
+    },
+    {
+     "id": "n3m2l1-q3",
+     "modo": "predice",
+     "enunciado": "Un pedido de **6.000 €** justos. ¿Qué descuento devuelve esta fórmula? Escríbelo como porcentaje.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Importe",
+       "C1": "% dto.",
+       "E1": "Desde",
+       "F1": "Descuento",
+       "A2": "PC-26/310",
+       "B2": 6000,
+       "E2": 0,
+       "F2": 0,
+       "E3": 1000,
+       "F3": 0.03,
+       "E4": 3000,
+       "F4": 0.05,
+       "E5": 6000,
+       "F5": 0.08
+      },
+      "formatos": {
+       "B2": "eur",
+       "C2": "pct",
+       "E2:E5": "eur",
+       "F2:F5": "pct"
+      },
+      "columnas": 6,
+      "filas": 5
+     },
+     "celda": "C2",
+     "formula": "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)",
+     "formato_resultado": "pct",
+     "explicacion": "8 %: 6.000 está en la tabla y la coincidencia aproximada también acepta el valor exacto. Llegar justo al límite ya da derecho a ese tramo.",
+     "respuesta": "8%"
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "BUSCARX para tramos: ¿cómo se escribe?",
+     "dorso": "=BUSCARX(valor; columna Desde; columna resultado;;-1). El -1 significa «exacta o la siguiente menor»."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Las tres reglas de una tabla de tramos",
+     "dorso": "Límite inferior («Desde»), ordenada de menor a mayor y empezando en 0."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Tramos en Excel 2019 o anterior",
+     "dorso": "=BUSCARV(valor; tabla; columna; VERDADERO), con la primera columna ordenada de menor a mayor."
+    },
+    {
+     "tipo": "error",
+     "frente": "¿Qué pasa si la tabla de tramos usa el límite superior («Hasta»)?",
+     "dorso": "La fórmula baja un escalón y aplica un tramo menos, sin dar ningún error."
+    }
+   ]
+  },
+  {
+   "id": "n3m2l2",
+   "titulo": "INDICE y COINCIDIR: la búsqueda que funciona en cualquier Excel",
+   "minutos": 16,
+   "objetivo": "Buscar con INDICE y COINCIDIR (y COINCIDIRX) en cualquier versión de Excel, hacia cualquier lado y en tablas de doble entrada.",
+   "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Para el comité del lunes quiero una casilla donde escriba una delegación y un mes y me salga lo que vendimos. Sin perderme en la tabla. Y que funcione también en el portátil viejo de la sala de juntas.",
+    "logro": "Ya sabes buscar con INDICE y COINCIDIR en cualquier versión de Excel, hacia cualquier lado y en tablas de doble entrada."
+   },
+   "funciones": [
+    "INDICE",
+    "COINCIDIR",
+    "COINCIDIRX"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "BUSCARX es cómoda, pero tiene dos límites en la oficina: **no existe en Excel 2019** ni anteriores, y BUSCARV, su alternativa antigua, solo trae columnas que estén a la **derecha** de la que busca.\n\nLa pareja **INDICE + COINCIDIR** funciona en cualquier versión y busca hacia cualquier lado. La verás en muchos libros de empresa antiguos.\n\nLa idea es partir la búsqueda en dos pasos, como con los buzones de un portal: primero averiguas **en qué buzón** está (la posición) y luego miras **qué hay dentro** (el valor)."
+    },
+    {
+     "tipo": "texto",
+     "md": "**COINCIDIR** responde a «¿en qué posición está?». Devuelve un número, no el dato.\n\n`=COINCIDIR(\"LED-T120\";A2:A7;0)` → **3**\n\nTres huecos: qué buscas; dónde lo buscas (una sola columna o fila); y un **0**, que significa «coincidencia exacta».\n\nOjo: la posición se cuenta **desde el principio del rango**, no es el número de fila. LED-T120 está en la fila 4 de la hoja, pero es el **tercero** del rango A2:A7."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Tarifa de Iluminación Moncayo",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Descripción",
+       "C1": "Precio",
+       "A2": "LED-P60",
+       "B2": "Panel LED 60×60 40 W",
+       "C2": 24.9,
+       "A3": "LED-DL18",
+       "B3": "Downlight LED 18 W",
+       "C3": 8.75,
+       "A4": "LED-T120",
+       "B4": "Tubo LED 120 cm 18 W",
+       "C4": 4.6,
+       "A5": "LED-PR50",
+       "B5": "Proyector LED 50 W",
+       "C5": 19.4,
+       "A6": "LED-CA100",
+       "B6": "Campana LED 100 W",
+       "C6": 58,
+       "A7": "LED-RG36",
+       "B7": "Regleta LED estanca 36 W",
+       "C7": 16.3
+      },
+      "formatos": {
+       "C2:C7": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 24,
+       "C": 10
+      },
+      "columnas": 3,
+      "filas": 7
+     },
+     "resaltar": [
+      "A4"
+     ],
+     "pie": "LED-T120 está en la fila 4 de la hoja, pero en la posición 3 del rango A2:A7."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "El 0 no es opcional",
+     "md": "Si omites el tercer hueco, COINCIDIR usa **1**: coincidencia aproximada, que exige la lista ordenada de menor a mayor. Con códigos desordenados devuelve posiciones equivocadas **sin avisar**. Es el mismo peligro que BUSCARV sin FALSO."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e1",
+     "modo": "predice",
+     "enunciado": "Con la misma tarifa, ¿qué número devuelve esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Descripción",
+       "C1": "Precio",
+       "A2": "LED-P60",
+       "B2": "Panel LED 60×60 40 W",
+       "C2": 24.9,
+       "A3": "LED-DL18",
+       "B3": "Downlight LED 18 W",
+       "C3": 8.75,
+       "A4": "LED-T120",
+       "B4": "Tubo LED 120 cm 18 W",
+       "C4": 4.6,
+       "A5": "LED-PR50",
+       "B5": "Proyector LED 50 W",
+       "C5": 19.4,
+       "A6": "LED-CA100",
+       "B6": "Campana LED 100 W",
+       "C6": 58,
+       "A7": "LED-RG36",
+       "B7": "Regleta LED estanca 36 W",
+       "C7": 16.3
+      },
+      "formatos": {
+       "C2:C7": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 24,
+       "C": 10
+      },
+      "columnas": 5,
+      "filas": 7
+     },
+     "celda": "E2",
+     "formula": "=COINCIDIR(\"LED-CA100\";A2:A7;0)",
+     "explicacion": "5: LED-CA100 es el quinto código del rango A2:A7, aunque esté en la fila 6 de la hoja. COINCIDIR te da la posición; en un momento la usarás para traer el dato.",
+     "respuesta": "5"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e2",
+     "modo": "formula",
+     "enunciado": "Andrés quiere saber en qué posición de la tarifa está el código que ha escrito en **E2**. En **F2** escribe una fórmula que devuelva esa **posición** dentro de la lista de códigos A2:A7.",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Descripción",
+       "C1": "Precio",
+       "E1": "Código buscado",
+       "F1": "Posición",
+       "A2": "LED-P60",
+       "B2": "Panel LED 60×60 40 W",
+       "C2": 24.9,
+       "A3": "LED-DL18",
+       "B3": "Downlight LED 18 W",
+       "C3": 8.75,
+       "A4": "LED-T120",
+       "B4": "Tubo LED 120 cm 18 W",
+       "C4": 4.6,
+       "A5": "LED-PR50",
+       "B5": "Proyector LED 50 W",
+       "C5": 19.4,
+       "A6": "LED-CA100",
+       "B6": "Campana LED 100 W",
+       "C6": 58,
+       "A7": "LED-RG36",
+       "B7": "Regleta LED estanca 36 W",
+       "C7": 16.3,
+       "E2": "LED-PR50"
+      },
+      "formatos": {
+       "C2:C7": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 24,
+       "C": 10,
+       "E": 15
+      },
+      "columnas": 6,
+      "filas": 7
+     },
+     "objetivo": "F2",
+     "solucion": "=COINCIDIR(E2;A2:A7;0)",
+     "alternativas": [
+      "=COINCIDIR(E2;$A$2:$A$7;0)",
+      "=COINCIDIRX(E2;A2:A7)"
+     ],
+     "errores_tipicos": [
+      "=COINCIDIR(E2;A2:A7)",
+      "=COINCIDIR(E2;A1:A7;0)",
+      "=COINCIDIR(E2;A2:A7;1)"
+     ],
+     "variantes": [
+      {
+       "E2": "LED-DL18"
+      },
+      {
+       "E2": "LED-RG36"
+      }
+     ],
+     "pistas": [
+      "COINCIDIR necesita tres cosas: qué buscas, dónde lo buscas y el tipo de coincidencia.",
+      "Lo que buscas está en E2 y la lista de códigos es A2:A7. Para «exacta», el tercer hueco es 0.",
+      "`=COINCIDIR(E2;A2:A7;0)`"
+     ],
+     "explicacion": "4: LED-PR50 es el cuarto código de la tarifa. Y como la fórmula lee E2, si Andrés escribe otro código, la posición cambia sola. Ya tienes la mitad de la búsqueda."
+    },
+    {
+     "tipo": "texto",
+     "md": "**INDICE** hace lo contrario: le das una posición y te devuelve lo que hay en ella.\n\n`=INDICE(C2:C7;3)` → **4,60 €**, el tercer precio del rango.\n\nDos huecos: el rango donde está el dato que quieres traer y la posición. Igual que antes, la posición se cuenta desde el principio del rango.\n\nPor separado parecen poco útiles. Juntas forman una búsqueda completa: COINCIDIR averigua la posición e INDICE la usa para traer el dato."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para traer el precio del código de E2, metes COINCIDIR dentro de INDICE:\n\n`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`\n\nSe lee **de dentro afuera**: COINCIDIR busca el código en A2:A7 y dice «posición 4»; INDICE va a C2:C7 y trae el cuarto precio.\n\nLos dos rangos tienen que estar **alineados**: empezar y terminar en las mismas filas (de la 2 a la 7). Si uno empieza en la fila 3, todo se desplaza y traes el precio del producto de al lado."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "La búsqueda completa",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Descripción",
+       "C1": "Precio",
+       "E1": "Código buscado",
+       "F1": "Precio",
+       "A2": "LED-P60",
+       "B2": "Panel LED 60×60 40 W",
+       "C2": 24.9,
+       "A3": "LED-DL18",
+       "B3": "Downlight LED 18 W",
+       "C3": 8.75,
+       "A4": "LED-T120",
+       "B4": "Tubo LED 120 cm 18 W",
+       "C4": 4.6,
+       "A5": "LED-PR50",
+       "B5": "Proyector LED 50 W",
+       "C5": 19.4,
+       "A6": "LED-CA100",
+       "B6": "Campana LED 100 W",
+       "C6": 58,
+       "A7": "LED-RG36",
+       "B7": "Regleta LED estanca 36 W",
+       "C7": 16.3,
+       "E2": "LED-PR50",
+       "F2": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))"
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "F2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 24,
+       "C": 10,
+       "E": 15,
+       "F": 10
+      },
+      "columnas": 6,
+      "filas": 7
+     },
+     "resaltar": [
+      "F2"
+     ],
+     "pie": "COINCIDIR da 4; INDICE trae el cuarto precio de C2:C7: 19,40 €."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e3",
+     "modo": "formula",
+     "enunciado": "Nuria ha copiado esta búsqueda en **F2**, pero para LED-PR50 trae **58,00 €**, el precio del producto de debajo. **Arréglala** para que traiga el precio correcto del código de E2.",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Descripción",
+       "C1": "Precio",
+       "E1": "Código buscado",
+       "F1": "Precio",
+       "A2": "LED-P60",
+       "B2": "Panel LED 60×60 40 W",
+       "C2": 24.9,
+       "A3": "LED-DL18",
+       "B3": "Downlight LED 18 W",
+       "C3": 8.75,
+       "A4": "LED-T120",
+       "B4": "Tubo LED 120 cm 18 W",
+       "C4": 4.6,
+       "A5": "LED-PR50",
+       "B5": "Proyector LED 50 W",
+       "C5": 19.4,
+       "A6": "LED-CA100",
+       "B6": "Campana LED 100 W",
+       "C6": 58,
+       "A7": "LED-RG36",
+       "B7": "Regleta LED estanca 36 W",
+       "C7": 16.3,
+       "E2": "LED-PR50"
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "F2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 24,
+       "C": 10,
+       "E": 15,
+       "F": 10
+      },
+      "columnas": 6,
+      "filas": 7
+     },
+     "objetivo": "F2",
+     "inicial": "=INDICE(C3:C8;COINCIDIR(E2;A2:A7;0))",
+     "solucion": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))",
+     "debe_usar": [
+      "INDICE"
+     ],
+     "alternativas": [
+      "=INDICE($C$2:$C$7;COINCIDIR(E2;$A$2:$A$7;0))",
+      "=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))"
+     ],
+     "errores_tipicos": [
+      "=INDICE(C2:C7;COINCIDIR(E2;A3:A8;0))",
+      "=INDICE(C1:C7;COINCIDIR(E2;A2:A7;0))"
+     ],
+     "variantes": [
+      {
+       "E2": "LED-P60"
+      },
+      {
+       "C5": 21.9
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Compara los dos rangos de la fórmula: ¿empiezan en la misma fila?",
+      "COINCIDIR cuenta desde A2, pero INDICE cuenta desde C3: van desfasados una fila.",
+      "Haz que INDICE use C2:C7: `=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`."
+     ],
+     "explicacion": "19,40 €, el precio bueno. Un rango desfasado no da ningún error: trae un dato que parece correcto y no lo es. Cuando revises una búsqueda ajena, mira siempre que los dos rangos empiecen y terminen en las mismas filas."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e4",
+     "modo": "formula",
+     "enunciado": "La tarifa nueva llega con el **código en la última columna** (C), y Andrés necesita la **descripción**, que está a la izquierda. En **F2** trae la descripción del código de E2, con la fórmula lista para copiar hasta **F5**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Descripción",
+       "B1": "Precio",
+       "C1": "Código",
+       "E1": "Código",
+       "F1": "Descripción",
+       "A2": "Panel LED 60×60 40 W",
+       "B2": 24.9,
+       "C2": "LED-P60",
+       "A3": "Downlight LED 18 W",
+       "B3": 8.75,
+       "C3": "LED-DL18",
+       "A4": "Tubo LED 120 cm 18 W",
+       "B4": 4.6,
+       "C4": "LED-T120",
+       "A5": "Proyector LED 50 W",
+       "B5": 19.4,
+       "C5": "LED-PR50",
+       "A6": "Campana LED 100 W",
+       "B6": 58,
+       "C6": "LED-CA100",
+       "A7": "Regleta LED estanca 36 W",
+       "B7": 16.3,
+       "C7": "LED-RG36",
+       "E2": "LED-T120",
+       "E3": "LED-P60",
+       "E4": "LED-RG36",
+       "E5": "LED-DL18"
+      },
+      "formatos": {
+       "B2:B7": "eur"
+      },
+      "anchos": {
+       "A": 24,
+       "B": 10,
+       "C": 11,
+       "E": 11,
+       "F": 24
+      },
+      "columnas": 6,
+      "filas": 7
+     },
+     "objetivo": "F2",
+     "copiar_a": [
+      "F3:F5"
+     ],
+     "solucion": "=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7;0))",
+     "debe_usar": [
+      "INDICE"
+     ],
+     "alternativas": [
+      "=INDICE(A$2:A$7;COINCIDIR(E2;C$2:C$7;0))",
+      "=INDICE($A$2:$A$7;COINCIDIRX(E2;$C$2:$C$7))"
+     ],
+     "errores_tipicos": [
+      "=INDICE(A2:A7;COINCIDIR(E2;C2:C7;0))",
+      "=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7))",
+      "=INDICE($B$2:$B$7;COINCIDIR(E2;$C$2:$C$7;0))"
+     ],
+     "variantes": [
+      {
+       "E3": "LED-PR50"
+      }
+     ],
+     "pistas": [
+      "COINCIDIR busca el código en su columna (C); INDICE trae el dato de la columna de descripciones (A).",
+      "Como vas a copiar, fija los dos rangos con [[F4]]: `$A$2:$A$7` y `$C$2:$C$7`.",
+      "`=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7;0))`"
+     ],
+     "explicacion": "Has buscado **hacia la izquierda**, algo que BUSCARV no sabe hacer. Con INDICE + COINCIDIR da igual dónde esté cada columna, y la fórmula funciona en cualquier Excel."
+    },
+    {
+     "tipo": "texto",
+     "md": "Desde Excel 2021 existe **COINCIDIRX**, la versión moderna de COINCIDIR. Busca **exacto por defecto**, así que el 0 ya no hace falta:\n\n`=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))`\n\nComo BUSCARX, no existe en Excel 2019 ni anteriores: allí sale #¿NOMBRE?.\n\n¿Cuál usar? En un libro que solo se abre en Microsoft 365, lo más claro es BUSCARX. Si el archivo va a un Excel antiguo, INDICE + COINCIDIR con su 0. Y cuando abras un libro ajeno, sabrás leer las tres."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e5",
+     "modo": "test",
+     "pregunta": "La plantilla de pedidos va al portátil de la sala de juntas, que tiene **Excel 2019**. ¿Qué fórmula usas para traer el precio del código de E2?",
+     "opciones": [
+      {
+       "texto": "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`",
+       "correcta": true,
+       "porque": "Funciona en todas las versiones y busca exacto gracias al 0."
+      },
+      {
+       "texto": "`=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))`",
+       "correcta": false,
+       "porque": "COINCIDIRX es de Excel 2021: en Excel 2019 saldría #¿NOMBRE?."
+      },
+      {
+       "texto": "`=BUSCARX(E2;A2:A7;C2:C7)`",
+       "correcta": false,
+       "porque": "BUSCARX también es de Excel 2021 en adelante: en 2019 no existe."
+      },
+      {
+       "texto": "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7))`",
+       "correcta": false,
+       "porque": "Funciona en Excel 2019, pero sin el 0 la búsqueda es aproximada y, con códigos desordenados, trae precios equivocados sin avisar."
+      }
+     ],
+     "explicacion": "Antes de elegir la función, pregunta quién va a abrir el archivo y con qué Excel."
+    },
+    {
+     "tipo": "texto",
+     "md": "INDICE admite un tercer hueco: la **columna**. En una tabla de doble entrada (delegaciones en filas, meses en columnas) buscas la fila con un COINCIDIR y la columna con otro:\n\n`=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))`\n\n- El primer COINCIDIR busca la delegación en la columna A: da la fila.\n- El segundo busca el mes en la fila 1: da la columna.\n- INDICE cruza las dos, como en «hundir la flota»."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Ventas por delegación y mes",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Julio",
+       "C1": "Agosto",
+       "D1": "Septiembre",
+       "E1": "Octubre",
+       "A2": "Zaragoza",
+       "B2": 412350,
+       "C2": 298140,
+       "D2": 436920,
+       "E2": 451780,
+       "A3": "Pamplona",
+       "B3": 186420,
+       "C3": 121300,
+       "D3": 192760,
+       "E3": 204150,
+       "A4": "Lleida",
+       "B4": 143980,
+       "C4": 97450,
+       "D4": 151200,
+       "E4": 158630,
+       "G2": "Delegación",
+       "H2": "Lleida",
+       "G3": "Mes",
+       "H3": "Septiembre",
+       "G4": "Venta",
+       "H4": "=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))"
+      },
+      "formatos": {
+       "B2:E4": "eur",
+       "H4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 13,
+       "C": 13,
+       "D": 13,
+       "E": 13,
+       "G": 11,
+       "H": 13
+      },
+      "columnas": 8,
+      "filas": 4
+     },
+     "resaltar": [
+      "H4",
+      "D4"
+     ],
+     "pie": "Lleida es la fila 3 del rango y Septiembre, la columna 3: INDICE trae 151.200 €."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e6",
+     "modo": "predice",
+     "enunciado": "Sin COINCIDIR, con los números a mano: ¿qué devuelve esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Julio",
+       "C1": "Agosto",
+       "D1": "Septiembre",
+       "E1": "Octubre",
+       "A2": "Zaragoza",
+       "B2": 412350,
+       "C2": 298140,
+       "D2": 436920,
+       "E2": 451780,
+       "A3": "Pamplona",
+       "B3": 186420,
+       "C3": 121300,
+       "D3": 192760,
+       "E3": 204150,
+       "A4": "Lleida",
+       "B4": 143980,
+       "C4": 97450,
+       "D4": 151200,
+       "E4": 158630
+      },
+      "formatos": {
+       "B2:E4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 13,
+       "C": 13,
+       "D": 13,
+       "E": 13
+      },
+      "columnas": 6,
+      "filas": 4
+     },
+     "celda": "F6",
+     "formula": "=INDICE(B2:E4;3;2)",
+     "formato_resultado": "eur",
+     "explicacion": "97.450 €: la fila 3 del rango B2:E4 es Lleida y la columna 2 es Agosto (B es la primera). Cuenta siempre desde la esquina del rango, no desde A1.",
+     "respuesta": "97.450,00 €"
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Nuria Campos",
+     "puesto": "Administración",
+     "md": "Un truco para lo de Carmen: no escribas «Pamplona» ni «Octubre» dentro de la fórmula. Ponlos en dos celdas aparte y que la fórmula las lea. Así Carmen cambia la celda y ve otra cifra sin tocar nada más."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l2-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Carmen.** En **H4** escribe una fórmula que devuelva la venta de la delegación escrita en **H2** en el mes escrito en **H3**, buscando en la tabla A1:E4. Tiene que funcionar para cualquier delegación y mes que escriba Carmen.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Julio",
+       "C1": "Agosto",
+       "D1": "Septiembre",
+       "E1": "Octubre",
+       "A2": "Zaragoza",
+       "B2": 412350,
+       "C2": 298140,
+       "D2": 436920,
+       "E2": 451780,
+       "A3": "Pamplona",
+       "B3": 186420,
+       "C3": 121300,
+       "D3": 192760,
+       "E3": 204150,
+       "A4": "Lleida",
+       "B4": 143980,
+       "C4": 97450,
+       "D4": 151200,
+       "E4": 158630,
+       "G2": "Delegación",
+       "H2": "Pamplona",
+       "G3": "Mes",
+       "H3": "Octubre",
+       "G4": "Venta"
+      },
+      "formatos": {
+       "B2:E4": "eur",
+       "H4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 13,
+       "C": 13,
+       "D": 13,
+       "E": 13,
+       "G": 11,
+       "H": 13
+      },
+      "columnas": 8,
+      "filas": 4
+     },
+     "objetivo": "H4",
+     "solucion": "=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))",
+     "debe_usar": [
+      "INDICE"
+     ],
+     "alternativas": [
+      "=INDICE($B$2:$E$4;COINCIDIR(H2;$A$2:$A$4;0);COINCIDIR(H3;$B$1:$E$1;0))",
+      "=INDICE(B2:E4;COINCIDIRX(H2;A2:A4);COINCIDIRX(H3;B1:E1))"
+     ],
+     "errores_tipicos": [
+      "=INDICE(B2:E4;COINCIDIR(H2;A1:A4;0);COINCIDIR(H3;B1:E1;0))",
+      "=INDICE(B2:E4;COINCIDIR(H3;B1:E1;0);COINCIDIR(H2;A2:A4;0))",
+      "=INDICE(B2:E4;2;4)",
+      "=INDICE(A1:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))"
+     ],
+     "variantes": [
+      {
+       "H2": "Lleida",
+       "H3": "Julio"
+      },
+      {
+       "H2": "Zaragoza",
+       "H3": "Septiembre"
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Necesitas INDICE con tres huecos: el bloque de cifras (B2:E4), la fila y la columna.",
+      "La fila sale de buscar H2 en A2:A4; la columna, de buscar H3 en B1:E1. Las dos con COINCIDIR y su 0.",
+      "`=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))`"
+     ],
+     "explicacion": "Carmen ya tiene su consulta: cambia la delegación o el mes y la cifra se actualiza sola, también en el portátil viejo. Compruébala mirando la tabla: Pamplona en octubre, 204.150 €. Esta casilla de «elige y mira» es la base de muchos informes de dirección."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m2l2-q1",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Qué número escribes en el tercer hueco de COINCIDIR para que busque el valor exacto?",
+     "aceptadas": [
+      "0",
+      "cero"
+     ],
+     "explicacion": "0 = coincidencia exacta. Sin él, COINCIDIR hace una búsqueda aproximada que con datos desordenados falla sin avisar."
+    },
+    {
+     "id": "n3m2l2-q2",
+     "modo": "predice",
+     "enunciado": "Lucía, de RRHH, consulta los días de vacaciones que le quedan a cada persona. ¿Qué devuelve esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Empleado",
+       "B1": "Días pendientes",
+       "A2": "Pilar Gascón",
+       "B2": 12,
+       "A3": "Óscar Lafuente",
+       "B3": 4,
+       "A4": "Ainhoa Zubiri",
+       "B4": 9,
+       "A5": "Jordi Vallès",
+       "B5": 15
+      },
+      "anchos": {
+       "A": 16,
+       "B": 15
+      },
+      "columnas": 4,
+      "filas": 5
+     },
+     "celda": "D2",
+     "formula": "=INDICE(B2:B5;COINCIDIR(\"Ainhoa Zubiri\";A2:A5;0))",
+     "explicacion": "COINCIDIR encuentra a Ainhoa en la posición 3 de A2:A5, e INDICE trae el tercer valor de B2:B5: 9 días.",
+     "respuesta": "9"
+    },
+    {
+     "id": "n3m2l2-q3",
+     "modo": "cinta",
+     "enunciado": "Quieres insertar INDICE con su ventana de ayuda, que te va pidiendo cada hueco. ¿Dónde está la lista de funciones de búsqueda en la cinta?",
+     "ruta": [
+      "Fórmulas",
+      "Biblioteca de funciones",
+      "Búsqueda y referencia"
+     ],
+     "explicacion": "Fórmulas › Biblioteca de funciones › Búsqueda y referencia. Ahí están BUSCARV, BUSCARX, COINCIDIR, INDICE y compañía."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "COINCIDIR para buscar exacto: ¿cómo se escribe y qué devuelve?",
+     "dorso": "=COINCIDIR(valor; rango; 0). Devuelve la posición (un número), contada desde el principio del rango."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "INDICE: ¿qué hace?",
+     "dorso": "=INDICE(rango; fila; [columna]). Devuelve lo que hay en esa posición del rango."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "La búsqueda que funciona en cualquier Excel",
+     "dorso": "=INDICE(columna que traes; COINCIDIR(valor; columna donde buscas; 0)). Los dos rangos, alineados."
+    },
+    {
+     "tipo": "error",
+     "frente": "¿Qué pasa si omites el 0 de COINCIDIR?",
+     "dorso": "Hace una búsqueda aproximada: con datos desordenados devuelve posiciones equivocadas sin avisar."
+    }
+   ]
+  },
+  {
+   "id": "n3m2l3",
+   "titulo": "Cruzar dos listas: qué falta en cada lado",
+   "minutos": 18,
+   "objetivo": "Cruzar dos listas en los dos sentidos (CONTAR.SI, BUSCARX con «si no se encuentra»), detectar claves repetidas y comparar importes redondeados: la base de una conciliación.",
+   "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Cierre de octubre. Te paso nuestras facturas cobradas y el extracto del banco. Quiero saber qué facturas no han entrado, qué ingresos no tienen factura y si algún importe no cuadra. Lo necesito hoy antes de las cinco.",
+    "logro": "Ya sabes conciliar dos listas: lo que falta en cada lado, los repetidos y los importes que no cuadran."
+   },
+   "funciones": [
+    "CONTAR.SI",
+    "BUSCARX",
+    "SI",
+    "SI.ND"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Cada mes, Marta compara dos listas que **deberían** coincidir: las facturas que tenemos como cobradas y los ingresos que aparecen en el banco. Eso se llama **conciliar**: poner las dos listas una frente a otra y explicar cada diferencia.\n\n**Cruzar** dos listas es preguntarse, fila a fila: ¿esto está también en la otra lista? Lo harás con fórmulas, porque a ojo, con 300 facturas, siempre se escapa algo.\n\nCon seis facturas todavía se ve a simple vista. Empieza por ahí."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Nuestras facturas (A:C) y el extracto del banco (F:G)",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "F1": "Referencia",
+       "G1": "Importe banco",
+       "A2": "FV-26/0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1452,
+       "A3": "FV-26/0415",
+       "B3": "Montajes Arga",
+       "C3": 868.7,
+       "A4": "FV-26/0419",
+       "B4": "Electricidad Segre",
+       "C4": 2310.45,
+       "A5": "FV-26/0423",
+       "B5": "Reformas Delicias",
+       "C5": 512.3,
+       "A6": "FV-26/0427",
+       "B6": "Climatización Huesca",
+       "C6": 1089,
+       "A7": "FV-26/0431",
+       "B7": "Instalaciones Gállego",
+       "C7": 3674.25,
+       "F2": "FV-26/0412",
+       "G2": 1452,
+       "F3": "FV-26/0419",
+       "G3": 2310.45,
+       "F4": "FV-26/0423",
+       "G4": 512.3,
+       "F5": "FV-26/0431",
+       "G5": 3647.25,
+       "F6": "FV-26/0423",
+       "G6": 512.3,
+       "F7": "FV-26/0438",
+       "G7": 745.8,
+       "F8": "FV-26/0427",
+       "G8": 1089
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 20,
+       "C": 11,
+       "F": 11,
+       "G": 13
+      },
+      "columnas": 7,
+      "filas": 8
+     },
+     "pie": "La columna Referencia del banco trae el número de factura que el cliente escribió en su transferencia."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e1",
+     "modo": "test",
+     "pregunta": "Mira las dos listas. ¿Qué factura nuestra **no** aparece en el banco?",
+     "opciones": [
+      {
+       "texto": "FV-26/0415 (Montajes Arga)",
+       "correcta": true,
+       "porque": "Correcto: está en nuestras facturas, pero ninguna referencia del banco es FV-26/0415. Ese cobro no ha entrado."
+      },
+      {
+       "texto": "FV-26/0438",
+       "correcta": false,
+       "porque": "Es al revés: FV-26/0438 está en el banco pero no en nuestras facturas. También hay que explicarla, pero es el otro sentido del cruce."
+      },
+      {
+       "texto": "FV-26/0431 (Instalaciones Gállego)",
+       "correcta": false,
+       "porque": "Sí aparece en el banco, aunque con otro importe. Eso es otro problema, y lo resolverás al final."
+      },
+      {
+       "texto": "Ninguna: están todas",
+       "correcta": false,
+       "porque": "Repasa la lista del banco: hay una de nuestras facturas que no sale nunca."
+      }
+     ],
+     "explicacion": "Ya has visto los tres problemas típicos de una conciliación: una factura sin cobrar, un ingreso sin factura y un importe distinto. Ahora vas a hacer que Excel los encuentre por ti."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para que Excel lo mire por ti, usa **CONTAR.SI**, que ya conoces: cuenta cuántas veces aparece algo en un rango.\n\n`=CONTAR.SI($F$2:$F$8;A2)` cuenta cuántas veces sale la factura de A2 en la columna del banco. Si da **0**, no está; si da 1 o más, está.\n\nPara que se lea mejor, lo envuelves en un SI:\n\n`=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")`\n\nEl rango del banco va fijado con $ porque copiarás la fórmula hacia abajo."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e2",
+     "modo": "formula",
+     "enunciado": "Nuria ha empezado la columna **D** («¿En banco?»), pero su fórmula solo da un número. **Complétala** para que en **D2** salga el texto **Sí** si la factura de A2 está en el banco (F2:F8) y **No está** si no. Escribe los dos textos tal cual. Se copiará hasta **D7**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "¿En banco?",
+       "F1": "Referencia",
+       "G1": "Importe banco",
+       "A2": "FV-26/0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1452,
+       "A3": "FV-26/0415",
+       "B3": "Montajes Arga",
+       "C3": 868.7,
+       "A4": "FV-26/0419",
+       "B4": "Electricidad Segre",
+       "C4": 2310.45,
+       "A5": "FV-26/0423",
+       "B5": "Reformas Delicias",
+       "C5": 512.3,
+       "A6": "FV-26/0427",
+       "B6": "Climatización Huesca",
+       "C6": 1089,
+       "A7": "FV-26/0431",
+       "B7": "Instalaciones Gállego",
+       "C7": 3674.25,
+       "F2": "FV-26/0412",
+       "G2": 1452,
+       "F3": "FV-26/0419",
+       "G3": 2310.45,
+       "F4": "FV-26/0423",
+       "G4": 512.3,
+       "F5": "FV-26/0431",
+       "G5": 3647.25,
+       "F6": "FV-26/0423",
+       "G6": 512.3,
+       "F7": "FV-26/0438",
+       "G7": 745.8,
+       "F8": "FV-26/0427",
+       "G8": 1089
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 20,
+       "C": 11,
+       "D": 11,
+       "F": 11,
+       "G": 13
+      },
+      "columnas": 7,
+      "filas": 8
+     },
+     "objetivo": "D2",
+     "copiar_a": [
+      "D3:D7"
+     ],
+     "inicial": "=CONTAR.SI($F$2:$F$8;A2)",
+     "solucion": "=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")",
+     "alternativas": [
+      "=SI(CONTAR.SI($F$2:$F$8;A2)=0;\"No está\";\"Sí\")",
+      "=SI(CONTAR.SI($F$2:$F$8;A2)>=1;\"Sí\";\"No está\")",
+      "=SI(CONTAR.SI(F$2:F$8;A2)>0;\"Sí\";\"No está\")"
+     ],
+     "errores_tipicos": [
+      "=SI(CONTAR.SI(F2:F8;A2)>0;\"Sí\";\"No está\")",
+      "=SI(CONTAR.SI($F$2:$F$8;A2)>1;\"Sí\";\"No está\")",
+      "=SI(CONTAR.SI($A$2:$A$7;F2)>0;\"Sí\";\"No está\")"
+     ],
+     "variantes": [
+      {
+       "F3": "FV-26/0415"
+      }
+     ],
+     "pistas": [
+      "La cuenta de Nuria ya está bien: 0 significa que no está. Solo falta convertir el número en texto con un SI.",
+      "La condición del SI es «la cuenta es mayor que 0»: `CONTAR.SI($F$2:$F$8;A2)>0`.",
+      "`=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")`"
+     ],
+     "explicacion": "Ahí está: FV-26/0415, de Montajes Arga, no ha entrado en el banco. Marta tendrá que reclamarla o averiguar si el cliente pagó con otra referencia. Con 300 facturas, esta columna te ahorra una tarde."
+    },
+    {
+     "tipo": "texto",
+     "md": "No te quedes aquí. Has mirado **nuestras facturas** contra el banco, pero no al revés. Un ingreso del banco que no tiene factura nuestra **nunca saldrá** en la columna D, porque esa columna solo recorre nuestras facturas.\n\nPor eso un cruce se hace siempre **en los dos sentidos**:\n\n1. Lo nuestro que no está en el banco: falta un cobro.\n2. Lo del banco que no está en lo nuestro: un ingreso sin explicar (una factura sin registrar, un cliente que se equivocó de número…)."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para el segundo sentido puedes usar BUSCARX con su **cuarto hueco**, «si no se encuentra». Además de decir si está, **trae un dato** de la otra lista, por ejemplo el cliente:\n\n`=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")`\n\nSi la referencia del banco está entre nuestras facturas, trae el nombre del cliente; si no, escribe «Sin factura».\n\nEn un Excel antiguo se consigue lo mismo poniendo SI.ND alrededor de INDICE + COINCIDIR o de BUSCARV con FALSO."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e3",
+     "modo": "formula",
+     "enunciado": "Ahora el otro sentido. En **H2** escribe una fórmula que, para la referencia del banco de F2, traiga el **cliente** de nuestra lista de facturas (A2:B7), o el texto **Sin factura** si no está. Se copiará hasta **H8**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "F1": "Referencia",
+       "G1": "Importe banco",
+       "H1": "Cliente",
+       "A2": "FV-26/0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1452,
+       "A3": "FV-26/0415",
+       "B3": "Montajes Arga",
+       "C3": 868.7,
+       "A4": "FV-26/0419",
+       "B4": "Electricidad Segre",
+       "C4": 2310.45,
+       "A5": "FV-26/0423",
+       "B5": "Reformas Delicias",
+       "C5": 512.3,
+       "A6": "FV-26/0427",
+       "B6": "Climatización Huesca",
+       "C6": 1089,
+       "A7": "FV-26/0431",
+       "B7": "Instalaciones Gállego",
+       "C7": 3674.25,
+       "F2": "FV-26/0412",
+       "G2": 1452,
+       "F3": "FV-26/0419",
+       "G3": 2310.45,
+       "F4": "FV-26/0423",
+       "G4": 512.3,
+       "F5": "FV-26/0431",
+       "G5": 3647.25,
+       "F6": "FV-26/0423",
+       "G6": 512.3,
+       "F7": "FV-26/0438",
+       "G7": 745.8,
+       "F8": "FV-26/0427",
+       "G8": 1089
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 20,
+       "C": 11,
+       "F": 11,
+       "G": 13,
+       "H": 20
+      },
+      "columnas": 8,
+      "filas": 8
+     },
+     "objetivo": "H2",
+     "copiar_a": [
+      "H3:H8"
+     ],
+     "solucion": "=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")",
+     "alternativas": [
+      "=SI.ND(BUSCARX(F2;$A$2:$A$7;$B$2:$B$7);\"Sin factura\")",
+      "=SI.ND(INDICE($B$2:$B$7;COINCIDIR(F2;$A$2:$A$7;0));\"Sin factura\")",
+      "=SI.ND(BUSCARV(F2;$A$2:$B$7;2;FALSO);\"Sin factura\")"
+     ],
+     "errores_tipicos": [
+      "=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7)",
+      "=SI.ERROR(BUSCARX(F2;$A$2:$A$7;$B$2:$B$7);0)",
+      "=BUSCARX(F2;A2:A7;B2:B7;\"Sin factura\")",
+      "=BUSCARX(A2;$F$2:$F$8;$G$2:$G$8;\"Sin factura\")"
+     ],
+     "variantes": [
+      {
+       "A3": "FV-26/0438"
+      }
+     ],
+     "pistas": [
+      "Lo que buscas es la referencia del banco (F2), y dónde la buscas es nuestra columna de facturas.",
+      "BUSCARX con cuatro huecos: qué buscas, $A$2:$A$7, $B$2:$B$7 y el texto «Sin factura» entre comillas.",
+      "`=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")`"
+     ],
+     "explicacion": "Un ingreso de 745,80 € con la referencia FV-26/0438 no tiene factura en nuestra lista. Puede ser una factura sin registrar o un cliente que se equivocó de número: hay que averiguarlo. Si solo hubieras cruzado en un sentido, ese dinero se habría quedado sin explicar."
+    },
+    {
+     "tipo": "texto",
+     "md": "Antes de fiarte de un cruce, cuenta las **claves repetidas** (la clave es la columna que une las dos listas: aquí, el número de factura). Si el banco trae la misma referencia dos veces (un cliente que pagó dos veces, o en dos plazos), BUSCARX se queda con la **primera** y no avisa de la otra.\n\nLa comprobación es CONTAR.SI otra vez, pero contra **su propia lista**:\n\n`=CONTAR.SI($F$2:$F$8;F2)`\n\nSi da 1, la referencia es única. Si da 2 o más, está repetida: revísala antes de seguir."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e4",
+     "modo": "formula",
+     "enunciado": "En **H2** calcula **cuántas veces** aparece en el banco la referencia de F2. Se copiará hasta **H8**; las que den más de 1 son las repetidas.",
+     "hoja": {
+      "celdas": {
+       "F1": "Referencia",
+       "G1": "Importe banco",
+       "H1": "Veces",
+       "F2": "FV-26/0412",
+       "G2": 1452,
+       "F3": "FV-26/0419",
+       "G3": 2310.45,
+       "F4": "FV-26/0423",
+       "G4": 512.3,
+       "F5": "FV-26/0431",
+       "G5": 3647.25,
+       "F6": "FV-26/0423",
+       "G6": 512.3,
+       "F7": "FV-26/0438",
+       "G7": 745.8,
+       "F8": "FV-26/0427",
+       "G8": 1089
+      },
+      "formatos": {
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "F": 11,
+       "G": 13,
+       "H": 8
+      },
+      "columnas": 8,
+      "filas": 8
+     },
+     "objetivo": "H2",
+     "copiar_a": [
+      "H3:H8"
+     ],
+     "solucion": "=CONTAR.SI($F$2:$F$8;F2)",
+     "alternativas": [
+      "=CONTAR.SI(F$2:F$8;F2)"
+     ],
+     "errores_tipicos": [
+      "=CONTAR.SI(F2:F8;F2)",
+      "=CONTAR.SI($F$2:$F$8;\"FV-26/0423\")",
+      "=CONTARA($F$2:$F$8)"
+     ],
+     "variantes": [
+      {
+       "F3": "FV-26/0412"
+      }
+     ],
+     "pistas": [
+      "Es un CONTAR.SI de la columna del banco contra sí misma.",
+      "El rango es F2:F8, fijado con $ para copiar; el criterio, la referencia de la fila (F2).",
+      "`=CONTAR.SI($F$2:$F$8;F2)`"
+     ],
+     "explicacion": "FV-26/0423 sale dos veces: Reformas Delicias ha pagado dos veces sus 512,30 €. Marta decidirá si se devuelve o se descuenta de la próxima factura, pero sin esta columna nadie se habría enterado. Contar antes de cruzar evita conciliar a medias."
+    },
+    {
+     "tipo": "texto",
+     "md": "Último paso: los **importes**. Que una factura esté en el banco no significa que se haya cobrado entera. Para comprobarlo, restas: **diferencia = nuestro importe − importe del banco**. Si da 0, cuadra; si no, hay algo que explicar.\n\nAntes de hacerlo con todas, mira un caso. En la hoja de Marta, el total de cada factura sale de una fórmula: base × 1,21."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e5",
+     "modo": "predice",
+     "enunciado": "En pantalla, C2 y D2 muestran los dos **254,98 €**. ¿Qué escribe Excel en E2?",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Base",
+       "C1": "Total",
+       "D1": "Banco",
+       "E1": "¿Cuadra?",
+       "A2": "FV-26/0440",
+       "B2": 210.73,
+       "C2": "=B2*1,21",
+       "D2": 254.98
+      },
+      "formatos": {
+       "B2:D2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "C": 11,
+       "D": 11,
+       "E": 10
+      },
+      "columnas": 5,
+      "filas": 2
+     },
+     "celda": "E2",
+     "formula": "=SI(C2=D2;\"Cuadra\";\"Revisar\")",
+     "explicacion": "«Revisar». Parecen iguales, pero C2 guarda 254,9833: el formato solo enseña dos decimales. Para Excel, 254,9833 y 254,98 son números distintos.",
+     "respuesta": "Revisar"
+    },
+    {
+     "tipo": "texto",
+     "md": "Lo que ves no siempre es lo que hay (lo viste con REDONDEAR). El formato de euros solo **enseña** dos decimales; por dentro, C2 sigue valiendo 254,9833, y la comparación mira lo de dentro.\n\nLa solución: compara la diferencia **redondeada** a 2 decimales.\n\n`=REDONDEAR(C2-D2;2)`\n\nSi da 0, cuadran al céntimo. Las milésimas que nadie va a cobrar ya no te saltan como diferencia, y las diferencias de verdad siguen saliendo."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e6",
+     "modo": "ordenar",
+     "enunciado": "Ordena los pasos de una conciliación bien hecha.",
+     "pasos": [
+      "Contar las claves repetidas en las dos listas",
+      "Cruzar en los dos sentidos: lo nuestro contra el banco y el banco contra lo nuestro",
+      "Restar los importes de las que están en los dos lados, redondeando a 2 decimales",
+      "Explicar cada «No está», cada repetida y cada diferencia antes de entregar"
+     ],
+     "explicacion": "Primero se comprueba que las claves son fiables, después se cruza en los dos sentidos, luego se comparan importes y al final se explica todo. Una conciliación no está hecha hasta que cada diferencia tiene explicación."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Marta Ruiz",
+     "puesto": "Directora financiera",
+     "md": "Lo del ingreso sin factura y el pago repetido, perfecto. Me falta lo más importante: al lado de cada factura, cuánto difiere de lo que ha entrado en el banco. Si no ha entrado nada, que ponga «No está», que un cero me engaña. Y ojo, que en mi hoja el total es base × 1,21."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m2l3-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Marta.** En **D2** calcula la diferencia entre el total de nuestra factura (C2) y lo que ha entrado en el banco por esa factura (F:G), **redondeada a 2 decimales**. Si la factura no está en el banco, tiene que salir el texto **No está**. Se copiará hasta **D7**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Base",
+       "C1": "Total",
+       "D1": "Diferencia",
+       "F1": "Referencia",
+       "G1": "Importe banco",
+       "A2": "FV-26/0412",
+       "B2": 1200,
+       "C2": "=B2*1,21",
+       "A3": "FV-26/0415",
+       "B3": 717.93,
+       "C3": "=B3*1,21",
+       "A4": "FV-26/0419",
+       "B4": 1909.46,
+       "C4": "=B4*1,21",
+       "A5": "FV-26/0423",
+       "B5": 423.39,
+       "C5": "=B5*1,21",
+       "A6": "FV-26/0427",
+       "B6": 900,
+       "C6": "=B6*1,21",
+       "A7": "FV-26/0431",
+       "B7": 3036.57,
+       "C7": "=B7*1,21",
+       "F2": "FV-26/0412",
+       "G2": 1452,
+       "F3": "FV-26/0419",
+       "G3": 2310.45,
+       "F4": "FV-26/0423",
+       "G4": 512.3,
+       "F5": "FV-26/0431",
+       "G5": 3647.25,
+       "F6": "FV-26/0423",
+       "G6": 512.3,
+       "F7": "FV-26/0438",
+       "G7": 745.8,
+       "F8": "FV-26/0427",
+       "G8": 1089
+      },
+      "formatos": {
+       "B2:C7": "eur",
+       "D2:D7": "eur",
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "C": 11,
+       "D": 11,
+       "F": 11,
+       "G": 13
+      },
+      "columnas": 7,
+      "filas": 8
+     },
+     "objetivo": "D2",
+     "copiar_a": [
+      "D3:D7"
+     ],
+     "solucion": "=SI.ND(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);\"No está\")",
+     "alternativas": [
+      "=SI(CONTAR.SI($F$2:$F$8;A2)=0;\"No está\";REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2))",
+      "=SI.ND(REDONDEAR(C2-INDICE($G$2:$G$8;COINCIDIR(A2;$F$2:$F$8;0));2);\"No está\")",
+      "=SI.ND(REDONDEAR(C2-BUSCARV(A2;$F$2:$G$8;2;FALSO);2);\"No está\")"
+     ],
+     "errores_tipicos": [
+      "=SI.ND(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);\"No está\")",
+      "=REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8;\"No está\");2)",
+      "=SI.ERROR(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);0)",
+      "=SI.ND(REDONDEAR(C2-BUSCARX(A2;F2:F8;G2:G8);2);\"No está\")"
+     ],
+     "variantes": [
+      {
+       "G5": 3674.25
+      },
+      {
+       "F3": "FV-26/0415"
+      }
+     ],
+     "tolerancia": 0.001,
+     "formato_resultado": "eur",
+     "pistas": [
+      "Empieza por traer el importe del banco con BUSCARX (buscas A2 en F2:F8 y traes G2:G8) y réstalo de C2.",
+      "Redondea esa resta con REDONDEAR(…;2) y envuelve todo en SI.ND(…;\"No está\"): si BUSCARX no encuentra la factura, el #N/D se convierte en el aviso.",
+      "`=SI.ND(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);\"No está\")`"
+     ],
+     "explicacion": "Conciliación hecha. Cuatro facturas cuadran al céntimo, FV-26/0415 no ha entrado y FV-26/0431 tiene **27,00 €** de diferencia: el cliente transfirió 3.647,25 en vez de 3.674,25, dos cifras cambiadas de sitio. Con eso, el ingreso sin factura y el pago repetido, Marta tiene todo lo que necesita para cerrar octubre."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m2l3-q1",
+     "modo": "test",
+     "pregunta": "Has marcado nuestras facturas que no están en el banco y no sale ningún «No está». ¿Puedes decirle a Marta que todo cuadra?",
+     "opciones": [
+      {
+       "texto": "No: faltan el otro sentido del cruce, los repetidos y los importes",
+       "correcta": true,
+       "porque": "Exacto: puede haber ingresos sin factura, pagos repetidos o importes distintos, y ninguno sale en esa columna."
+      },
+      {
+       "texto": "Sí: si todas nuestras facturas están en el banco, cuadra",
+       "correcta": false,
+       "porque": "Solo has mirado un sentido. Un ingreso del banco sin factura nuestra no aparece en tu columna."
+      },
+      {
+       "texto": "Sí, siempre que no salga ningún #N/D",
+       "correcta": false,
+       "porque": "Que no salga ningún error no significa que el resultado esté bien: Excel calcula tan tranquilo aunque falten datos o los importes no coincidan."
+      }
+     ],
+     "explicacion": "Que no salga ningún «No está» solo cierra el primer paso. Una conciliación está hecha cuando has mirado los dos sentidos, los repetidos y los importes, y cada diferencia tiene explicación."
+    },
+    {
+     "id": "n3m2l3-q2",
+     "modo": "formula",
+     "enunciado": "Andrés quiere saber qué pedidos a proveedores no han llegado todavía. En **B2** escribe una fórmula que diga **Sí** si el pedido de A2 aparece en la lista de albaranes recibidos (D2:D5) y **Falta** si no. Se copiará hasta **B5**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "¿Recibido?",
+       "D1": "Albaranes (pedido)",
+       "A2": "PC-26/301",
+       "A3": "PC-26/302",
+       "A4": "PC-26/303",
+       "A5": "PC-26/304",
+       "D2": "PC-26/302",
+       "D3": "PC-26/304",
+       "D4": "PC-26/301",
+       "D5": "PC-26/309"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "D": 18
+      },
+      "columnas": 4,
+      "filas": 5
+     },
+     "objetivo": "B2",
+     "copiar_a": [
+      "B3:B5"
+     ],
+     "solucion": "=SI(CONTAR.SI($D$2:$D$5;A2)>0;\"Sí\";\"Falta\")",
+     "alternativas": [
+      "=SI(CONTAR.SI($D$2:$D$5;A2)=0;\"Falta\";\"Sí\")",
+      "=SI.ND(SI(COINCIDIR(A2;$D$2:$D$5;0)>0;\"Sí\");\"Falta\")"
+     ],
+     "errores_tipicos": [
+      "=SI(CONTAR.SI(D2:D5;A2)>0;\"Sí\";\"Falta\")",
+      "=SI(CONTAR.SI($A$2:$A$5;D2)>0;\"Sí\";\"Falta\")"
+     ],
+     "variantes": [
+      {
+       "D5": "PC-26/303"
+      }
+     ],
+     "pistas": [
+      "Es la misma pregunta que con las facturas: ¿aparece este pedido en la otra lista?",
+      "Cuenta cuántas veces sale A2 en $D$2:$D$5 y mira si es mayor que 0.",
+      "`=SI(CONTAR.SI($D$2:$D$5;A2)>0;\"Sí\";\"Falta\")`"
+     ],
+     "explicacion": "Falta el PC-26/303. Y fíjate en el otro sentido: hay un albarán del PC-26/309 que no está en esta lista de pedidos. Andrés querrá saber de dónde ha salido."
+    },
+    {
+     "id": "n3m2l3-q3",
+     "modo": "predice",
+     "enunciado": "Un cliente pagó la misma factura en dos plazos. ¿Qué devuelve esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Referencia",
+       "B1": "Importe",
+       "A2": "FV-26/0423",
+       "B2": 312.3,
+       "A3": "FV-26/0431",
+       "B3": 3647.25,
+       "A4": "FV-26/0423",
+       "B4": 200
+      },
+      "formatos": {
+       "B2:B4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11
+      },
+      "columnas": 4,
+      "filas": 4
+     },
+     "celda": "D2",
+     "formula": "=BUSCARX(\"FV-26/0423\";A2:A4;B2:B4)",
+     "formato_resultado": "eur",
+     "explicacion": "312,30 €: BUSCARX se queda con la primera coincidencia y no avisa de la segunda. Los 200 € del segundo plazo no aparecen. Por eso se cuentan los repetidos antes de cruzar.",
+     "respuesta": "312,30 €"
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué es conciliar dos listas?",
+     "dorso": "Ponerlas una frente a otra (por ejemplo, facturas y banco) y explicar cada diferencia: lo que falta en cada lado, los repetidos y los importes que no coinciden."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Fórmula para saber si A2 está en la otra lista (F2:F8)",
+     "dorso": "=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")"
+    },
+    {
+     "tipo": "error",
+     "frente": "¿Por qué hay que cruzar en los dos sentidos?",
+     "dorso": "Porque lo que solo está en la otra lista nunca sale en tu columna: un ingreso sin factura se te escaparía."
+    },
+    {
+     "tipo": "truco",
+     "frente": "¿Cómo compruebas si dos importes con céntimos cuadran?",
+     "dorso": "Con la diferencia redondeada: =REDONDEAR(C2-G2;2). Si da 0, cuadran al céntimo."
+    }
+   ]
+  }
+ ]
+}

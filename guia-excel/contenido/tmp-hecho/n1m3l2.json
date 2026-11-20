@@ -1,0 +1,351 @@
+{
+ "id": "n1m3l2",
+ "titulo": "Que se lea bien: bordes, colores y alineación",
+ "minutos": 15,
+ "objetivo": "Dejar una tabla clara y profesional con negrita, bordes, relleno suave, alineación y Ajustar texto, sin combinar celdas dentro de los datos.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Mañana enseño las ventas de noviembre por comercial en la reunión de delegaciones y la hoja parece un listín telefónico. Que se lean los títulos y que quede seria, nada de colores de feria. Y añade el % de objetivo de cada uno, que es lo primero que miro.",
+  "logro": "Ya sabes dejar una tabla clara y profesional (negrita, bordes, relleno suave, alineación) y añadir una columna de % de objetivo que se lee de un vistazo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una tabla clara se lee en diez segundos; una confusa provoca errores. En una oficina se sigue casi siempre la misma receta:\n\n- La **cabecera** (fila 1) en **negrita** y con un relleno suave.\n- **Bordes** finos para separar las filas.\n- Textos a la izquierda y números a la derecha (Excel ya lo hace solo).\n- Como mucho, **un** color.\n\nLos estilos de letra tienen atajo, y en el Excel español **no son los de los tutoriales en inglés**."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Ctrl+N",
+     "accion": "Negrita"
+    },
+    {
+     "teclas": "Ctrl+K",
+     "accion": "Cursiva"
+    },
+    {
+     "teclas": "Ctrl+S",
+     "accion": "Subrayado (no guarda: guardar es Ctrl+G)"
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e1",
+   "modo": "respuesta_corta",
+   "pregunta": "Has seleccionado la fila de títulos de la tabla de Javier. ¿Qué atajo la pone en **negrita**?",
+   "aceptadas": [
+    "Ctrl+N",
+    "Control+N",
+    "Ctrl N",
+    "Ctrl + N",
+    "Control N"
+   ],
+   "explicacion": "[[Ctrl]]+[[N]], de «negrita». Pulsa otra vez y la quitas. Es el formato que más usarás en tu vida."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Bordes** está en **Inicio › Fuente**: es el botón del cuadradito con líneas. Su flecha abre las opciones; las más útiles son **Todos los bordes** (una cuadrícula fina) y **Borde exterior** (un marco alrededor).\n\nAl lado está **Color de relleno**, el bote de pintura, que colorea el fondo. Para la cabecera, un tono **claro**: el texto negro tiene que leerse perfecto.\n\nOjo: las líneas grises de la hoja **no se imprimen**; los bordes, sí."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e2",
+   "modo": "cinta",
+   "enunciado": "Quieres una cuadrícula fina alrededor de cada celda de la tabla, que también salga al imprimir. ¿Qué botón usas?",
+   "ruta": [
+    "Inicio",
+    "Fuente",
+    "Bordes"
+   ],
+   "explicacion": "Inicio › Fuente › Bordes, y en su flecha, Todos los bordes. Así la tabla sale con líneas también en papel y en PDF."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "Cada columna de un color distinto",
+     "Un solo relleno suave en la cabecera"
+    ],
+    [
+     "Rojo chillón para todo lo importante",
+     "Negrita para lo importante; el rojo, solo para alertas"
+    ],
+    [
+     "Cinco tipos de letra y tamaños",
+     "Una fuente, dos tamaños como mucho"
+    ],
+    [
+     "Espacios para mover un texto",
+     "Los botones de alineación"
+    ],
+    [
+     "Celdas combinadas dentro de la lista",
+     "Una fila por registro, sin combinar"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e3",
+   "modo": "test",
+   "pregunta": "Javier quiere que la tabla de ventas «se vea bien» para la reunión. ¿Qué propuesta es más profesional?",
+   "opciones": [
+    {
+     "texto": "Cabecera en negrita con relleno gris claro, bordes finos y los importes en euros.",
+     "correcta": true,
+     "porque": "Es la receta de oficina: se lee rápido, se imprime bien y no distrae de los números."
+    },
+    {
+     "texto": "Cada delegación de un color fuerte (Zaragoza rojo, Pamplona verde, Lleida amarillo).",
+     "correcta": false,
+     "porque": "Los colores fuertes cansan, se imprimen mal en blanco y negro y no añaden información que no esté ya en la columna «Delegación»."
+    },
+    {
+     "texto": "Todo en negrita y en mayúsculas, para que destaque.",
+     "correcta": false,
+     "porque": "Si todo destaca, nada destaca. La negrita sirve para marcar lo importante, como los títulos o el total."
+    }
+   ],
+   "explicacion": "Menos es más: el formato está para que el número se lea, no para lucirse."
+  },
+  {
+   "tipo": "texto",
+   "md": "En **Inicio › Alineación** tienes los botones para alinear a la izquierda, al centro o a la derecha, y arriba, en medio o abajo.\n\n**Ajustar texto** es para cabeceras largas como «Ventas acumuladas noviembre»: el texto se reparte en varias líneas **dentro** de la celda, sin ensanchar la columna.\n\nUna costumbre que hay que evitar: **meter espacios** delante de un texto para moverlo. El espacio se queda dentro del dato."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e4",
+   "modo": "test",
+   "pregunta": "En la columna «Delegación», alguien escribió «   Pamplona» con espacios delante para que quedara más centrado. ¿Qué problema da?",
+   "opciones": [
+    {
+     "texto": "Ya no es el mismo texto que «Pamplona»: al ordenar o buscar, Excel lo trata como otro distinto.",
+     "correcta": true,
+     "porque": "Exacto. Cada espacio es un carácter más. Para Excel, «   Pamplona» y «Pamplona» son textos diferentes."
+    },
+    {
+     "texto": "Ninguno: los espacios no cuentan.",
+     "correcta": false,
+     "porque": "Sí cuentan: forman parte del contenido de la celda, aunque no se vean."
+    },
+    {
+     "texto": "Ninguno: Excel borra los espacios al pulsar Intro.",
+     "correcta": false,
+     "porque": "Excel guarda lo que escribes tal cual, espacios incluidos."
+    }
+   ],
+   "explicacion": "Para mover un texto dentro de la celda usa los botones de alineación (o **Aumentar sangría**). Los datos se quedan limpios y la tabla, igual de bonita."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ya tienes perfecta la cabecera de Zaragoza y quieres lo mismo en la de Pamplona. No lo repitas: usa **Copiar formato**, la brocha de **Inicio › Portapapeles**.\n\n1. Haz clic en una celda que ya tenga el formato.\n2. Pulsa la brocha.\n3. Haz clic, o arrastra, sobre las celdas de destino.\n\nCopia el aspecto, **no el contenido**. Truco: con **doble clic** en la brocha sigue activa para varias zonas; se apaga con [[Esc]]."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e5",
+   "modo": "ordenar",
+   "enunciado": "Copia el formato de la cabecera de Zaragoza (A1:F1) a las cabeceras de Pamplona y de Lleida, que están más abajo. Ordena los pasos.",
+   "pasos": [
+    "Selecciona la cabecera ya preparada, A1:F1",
+    "Haz doble clic en la brocha Copiar formato",
+    "Arrastra sobre la cabecera de Pamplona y, después, sobre la de Lleida",
+    "Pulsa Esc para apagar la brocha"
+   ],
+   "explicacion": "Con el doble clic, la brocha sirve para las dos cabeceras sin volver a pulsarla. Y [[Esc]] la apaga, para no pintar sin querer la siguiente celda en la que hagas clic."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Combinar y centrar** (Inicio › Alineación) une varias celdas en una. Parece cómodo, pero tiene dos peligros:\n\n- Si las celdas tenían datos, **solo se queda el de la esquina superior izquierda**; el resto se borra.\n- Dentro de una lista, **da problemas al ordenar y filtrar**.\n\nÚsalo solo para un título encima de un informe. Mejor aún: **Centrar en la selección** ([[Ctrl]]+[[1]] › pestaña Alineación › Horizontal). Se ve igual y no rompe nada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e6",
+   "modo": "test",
+   "pregunta": "Javier quiere el título «Ventas noviembre 2026» centrado sobre las columnas A-F, y después va a ordenar la tabla de debajo por ventas. ¿Qué usas para el título?",
+   "opciones": [
+    {
+     "texto": "Centrar en la selección (Ctrl+1 › Alineación › Horizontal)",
+     "correcta": true,
+     "porque": "Se ve centrado sobre A-F, pero cada celda sigue siendo independiente. Nada se rompe al ordenar."
+    },
+    {
+     "texto": "Combinar y centrar",
+     "correcta": false,
+     "porque": "Funcionaría para el título, pero combinar es justo la costumbre que luego da guerra al ordenar y filtrar. Mejor no acostumbrarse."
+    },
+    {
+     "texto": "Escribir el título en C1 con espacios delante hasta que quede en medio",
+     "correcta": false,
+     "porque": "Los espacios no centran: se descuadran en cuanto cambias el ancho de una columna, y ensucian el dato."
+    }
+   ],
+   "explicacion": "Centrar en la selección es el truco que distingue a quien sabe Excel: el mismo aspecto que combinar, sin sus problemas."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Javier Ortega",
+   "puesto": "Director comercial",
+   "md": "La tabla ya se lee. Ahora lo importante: en la columna E quiero el **% de objetivo** de cada comercial, ventas entre objetivo. Que se vea con %, no como 1,1."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l2-e7",
+   "modo": "formula",
+   "enunciado": "Misión de Javier. En **E2** calcula el **% de objetivo** de Raquel: sus ventas (D2) entre su objetivo (C2). La columna E ya tiene formato de porcentaje. Tu fórmula se copiará a E3:E6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Delegación",
+     "C1": "Objetivo",
+     "D1": "Ventas",
+     "E1": "% objetivo",
+     "A2": "Raquel Benedí",
+     "B2": "Zaragoza",
+     "C2": 42000,
+     "D2": 46200,
+     "A3": "Tomás Echeverría",
+     "B3": "Pamplona",
+     "C3": 35000,
+     "D3": 31850,
+     "A4": "Marina Puig",
+     "B4": "Lleida",
+     "C4": 30000,
+     "D4": 30000,
+     "A5": "Hugo Lasheras",
+     "B5": "Zaragoza",
+     "C5": 38000,
+     "D5": 41420,
+     "A6": "Irene Arbués",
+     "B6": "Zaragoza",
+     "C6": 40000,
+     "D6": 35200
+    },
+    "formatos": {
+     "C2:D6": "eur",
+     "E2:E6": "pct"
+    },
+    "anchos": {
+     "A": 17,
+     "B": 11,
+     "C": 12,
+     "D": 12,
+     "E": 11
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E6"
+   ],
+   "solucion": "=D2/C2",
+   "errores_tipicos": [
+    "=C2/D2",
+    "=D2/C2*100",
+    "=D2/$C$2",
+    "=D2-C2"
+   ],
+   "variantes": [
+    {
+     "D2": 50400,
+     "C4": 25000
+    }
+   ],
+   "formato_resultado": "pct",
+   "pistas": [
+    "El % de objetivo responde a «¿qué parte del objetivo ha vendido?»: lo vendido entre lo que tenía que vender.",
+    "Ventas entre objetivo, de la misma fila. No multipliques por 100: de eso ya se encarga el formato %.",
+    "=D2/C2"
+   ],
+   "explicacion": "Raquel está al **110%**: ha vendido un 10 % más de lo previsto, y Tomás se queda en el 91%. La fórmula da 1,1 y el formato lo enseña como 110%: si multiplicaras por 100, verías un absurdo 11000%. Javier ya tiene su tabla para la reunión."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m3l2-q1",
+   "modo": "cinta",
+   "enunciado": "La cabecera «Ventas acumuladas noviembre» no cabe en la columna. Quieres que se reparta en dos líneas dentro de la celda. ¿Qué botón pulsas?",
+   "ruta": [
+    "Inicio",
+    "Alineación",
+    "Ajustar texto"
+   ],
+   "explicacion": "Inicio › Alineación › Ajustar texto. La columna no se ensancha: crece la altura de la fila."
+  },
+  {
+   "id": "n1m3l2-q2",
+   "modo": "test",
+   "pregunta": "Acabas de rellenar la tabla y pulsas [[Ctrl]]+[[S]] para guardar. ¿Qué pasa en el Excel español?",
+   "opciones": [
+    {
+     "texto": "Se subraya lo que tengas seleccionado; no se guarda nada.",
+     "correcta": true,
+     "porque": "Eso es: en español Ctrl+S es Subrayado. Guardar es Ctrl+G."
+    },
+    {
+     "texto": "Se guarda el libro.",
+     "correcta": false,
+     "porque": "Ese es el atajo de los tutoriales en inglés (Save). En el Excel español guarda Ctrl+G."
+    },
+    {
+     "texto": "Se abre la ventana Guardar como.",
+     "correcta": false,
+     "porque": "Guardar como es F12. Ctrl+S, en español, subraya."
+    }
+   ],
+   "explicacion": "Negrita [[Ctrl]]+[[N]], cursiva [[Ctrl]]+[[K]], subrayado [[Ctrl]]+[[S]] y guardar [[Ctrl]]+[[G]]. Si un día subrayas sin querer, [[Ctrl]]+[[Z]] lo deshace."
+  },
+  {
+   "id": "n1m3l2-q3",
+   "modo": "predice",
+   "enunciado": "Hugo tenía un objetivo de **38.000 €** y ha vendido **41.420 €**. En D2 está `=C2/B2` con formato de porcentaje. ¿Qué se verá? Escribe el número con el % pegado.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Objetivo",
+     "C1": "Ventas",
+     "D1": "% objetivo",
+     "A2": "Hugo Lasheras",
+     "B2": 38000,
+     "C2": 41420
+    },
+    "formatos": {
+     "B2:C2": "eur"
+    },
+    "anchos": {
+     "A": 15,
+     "D": 11
+    }
+   },
+   "celda": "D2",
+   "formula": "=C2/B2",
+   "formato_resultado": "pct",
+   "explicacion": "41.420 / 38.000 = 1,09, que con formato de porcentaje se ve **109%**. La fórmula calcula y el formato presenta."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "atajo",
+   "frente": "Negrita, cursiva y subrayado en el Excel español",
+   "dorso": "Ctrl+N, Ctrl+K y Ctrl+S (Ctrl+S no guarda: guardar es Ctrl+G)"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Para qué sirve Copiar formato (la brocha)?",
+   "dorso": "Copia solo el aspecto de una celda a otras. Doble clic para usarla varias veces; Esc para apagarla."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no combinar celdas dentro de una lista?",
+   "dorso": "Da problemas al ordenar y filtrar, y al combinar solo se conserva el dato de arriba a la izquierda. Para títulos: Centrar en la selección."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde está Centrar en la selección?",
+   "dorso": "Ctrl+1 › pestaña Alineación › Horizontal: Centrar en la selección."
+  }
+ ]
+}

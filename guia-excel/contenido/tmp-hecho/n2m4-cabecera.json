@@ -1,0 +1,119 @@
+{
+ "id": "n2m4",
+ "nivel": "n2",
+ "titulo": "Fechas y plazos",
+ "intro": "En una empresa casi todo tiene fecha: cuándo vence una factura, cuántos días tarda un proveedor, cuántos años lleva alguien en la casa. En este módulo aprendes a calcular esos plazos con exactitud, con meses de verdad, fines de semana y festivos, sin sacar el calendario del cajón.",
+ "repaso_inicial": [
+  {
+   "id": "n2m4-r1",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber cuánto se ha vendido en **Pamplona**. En **F2** suma los importes de la columna D solo de las filas cuya delegación (columna C) sea Pamplona. Debe salir **2.975,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "F1": "Ventas Pamplona",
+     "A2": "P-2801",
+     "B2": "Irene",
+     "C2": "Pamplona",
+     "D2": 1250,
+     "A3": "P-2802",
+     "B3": "Pablo",
+     "C3": "Zaragoza",
+     "D3": 860,
+     "A4": "P-2803",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2804",
+     "B5": "Irene",
+     "C5": "Pamplona",
+     "D5": 1725,
+     "A6": "P-2805",
+     "B6": "Pablo",
+     "C6": "Zaragoza",
+     "D6": 540
+    },
+    "formatos": {
+     "D2:D6": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 17
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SUMAR.SI(C2:C6;\"Pamplona\";D2:D6)",
+   "alternativas": [
+    "=SUMAR.SI($C$2:$C$6;\"Pamplona\";$D$2:$D$6)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(C2:C6;\"Pamplona\")",
+    "=SUMAR.SI(D2:D6;\"Pamplona\";C2:C6)",
+    "=SUMA(D2:D6)"
+   ],
+   "variantes": [
+    {
+     "D5": 100
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una suma con condición: la función que suma solo las filas que cumplen algo.",
+    "`SUMAR.SI(dónde miro; qué busco; qué sumo)`. Miras en C, buscas \"Pamplona\" y sumas D.",
+    "`=SUMAR.SI(C2:C6;\"Pamplona\";D2:D6)`"
+   ],
+   "explicacion": "Bien recordado: 1.250 + 1.725. En este módulo vas a añadir a tus resúmenes una pieza nueva, la fecha, para poder responder a «¿cuánto se vendió en noviembre?»."
+  },
+  {
+   "id": "n2m4-r2",
+   "modo": "predice",
+   "enunciado": "El código de cada albarán empieza por las tres letras de la delegación. ¿Qué devuelve la fórmula de **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Albarán",
+     "B1": "Delegación",
+     "A2": "PAM-0458"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=IZQUIERDA(A2;3)",
+   "explicacion": "IZQUIERDA toma los primeros caracteres de un texto: aquí, los 3 primeros, «PAM». Hoy vas a ver que con las fechas pasa algo parecido: también se pueden desmontar en trozos."
+  },
+  {
+   "id": "n2m4-r3",
+   "modo": "test",
+   "pregunta": "Lucía quiere marcar con **Sí** a quien tenga contrato fijo **y** más de 20 días de vacaciones pendientes. El tipo de contrato está en B2 y los días en C2. ¿Qué fórmula usas?",
+   "opciones": [
+    {
+     "texto": "=SI(Y(B2=\"Fijo\";C2>20);\"Sí\";\"No\")",
+     "correcta": true,
+     "porque": "Correcto: Y exige que se cumplan las dos condiciones a la vez."
+    },
+    {
+     "texto": "=SI(O(B2=\"Fijo\";C2>20);\"Sí\";\"No\")",
+     "correcta": false,
+     "porque": "O da Sí con que se cumpla una sola de las dos: marcaría a todos los fijos, tengan los días que tengan."
+    },
+    {
+     "texto": "=SI(B2=\"Fijo\";\"Sí\";\"No\")",
+     "correcta": false,
+     "porque": "Solo mira el contrato y se olvida de los días pendientes."
+    },
+    {
+     "texto": "=Y(SI(B2=\"Fijo\";C2>20))",
+     "correcta": false,
+     "porque": "El orden está al revés: primero va SI y, dentro, Y con las dos condiciones."
+    }
+   ]
+  }
+ ],
+ "practica_excel": null
+}

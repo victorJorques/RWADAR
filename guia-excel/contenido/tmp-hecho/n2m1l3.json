@@ -1,0 +1,235 @@
+{
+ "id": "n2m1l3",
+ "titulo": "Listas desplegables: que nadie escriba lo que no debe",
+ "minutos": 15,
+ "objetivo": "Crear listas desplegables y reglas de validación de datos con mensajes claros, y comprobar que los datos ya escritos las cumplen.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Mis comerciales apuntan la delegación como les da la gana y luego el recuento de visitas por delegación no cuadra nunca. Ponme un desplegable para que solo puedan elegir Zaragoza, Pamplona o Lleida. Y que si escriben otra cosa, no les deje.",
+  "logro": "Ya sabes poner listas desplegables con mensaje de ayuda y de error, y cazar los datos que no cumplen la regla."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Para ti, «Pamplona», «Pamplona » (con un espacio al final) y «Panplona» son la misma ciudad. Para Excel son **tres textos distintos**. Basta un espacio de más o una letra cambiada para que un recuento, un filtro o un resumen por delegación salgan mal… sin dar ningún error.\n\nMira el registro de visitas de los comerciales: ¿cuántas visitas a Pamplona hay de verdad?"
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Registro de visitas comerciales",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Delegación", "C1": "Comercial",
+     "A2": { "fecha": "2026-11-02" }, "B2": "Pamplona", "C2": "Íñigo Sarasa",
+     "A3": { "fecha": "2026-11-02" }, "B3": "Zaragoza", "C3": "Pilar Gimeno",
+     "A4": { "fecha": "2026-11-03" }, "B4": "Pamplona ", "C4": "Íñigo Sarasa",
+     "A5": { "fecha": "2026-11-04" }, "B5": "Lleida", "C5": "Jordi Puig",
+     "A6": { "fecha": "2026-11-05" }, "B6": "Panplona", "C6": "Amaia Etxeberria",
+     "A7": { "fecha": "2026-11-05" }, "B7": "Pamplona", "C7": "Amaia Etxeberria",
+     "A8": { "fecha": "2026-11-06" }, "B8": "Zaragoza", "C8": "Pilar Gimeno",
+     "A9": { "fecha": "2026-11-06" }, "B9": "Pamplona.", "C9": "Íñigo Sarasa"
+    },
+    "formatos": { "A2:A9": "fecha" },
+    "anchos": { "A": 11, "B": 12, "C": 18 }
+   },
+   "resaltar": ["B4", "B6", "B9"],
+   "pie": "B4 lleva un espacio al final que no se ve; B6 y B9 están mal escritas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e1",
+   "modo": "predice",
+   "enunciado": "Esta fórmula cuenta cuántas celdas de B2:B9 dicen **exactamente** «Pamplona» (la función CONTAR.SI la estudiarás a fondo en el módulo siguiente). En la lista hay 5 visitas a Pamplona. ¿Qué número dará?",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Delegación", "C1": "Comercial",
+     "A2": { "fecha": "2026-11-02" }, "B2": "Pamplona", "C2": "Íñigo Sarasa",
+     "A3": { "fecha": "2026-11-02" }, "B3": "Zaragoza", "C3": "Pilar Gimeno",
+     "A4": { "fecha": "2026-11-03" }, "B4": "Pamplona ", "C4": "Íñigo Sarasa",
+     "A5": { "fecha": "2026-11-04" }, "B5": "Lleida", "C5": "Jordi Puig",
+     "A6": { "fecha": "2026-11-05" }, "B6": "Panplona", "C6": "Amaia Etxeberria",
+     "A7": { "fecha": "2026-11-05" }, "B7": "Pamplona", "C7": "Amaia Etxeberria",
+     "A8": { "fecha": "2026-11-06" }, "B8": "Zaragoza", "C8": "Pilar Gimeno",
+     "A9": { "fecha": "2026-11-06" }, "B9": "Pamplona.", "C9": "Íñigo Sarasa"
+    },
+    "formatos": { "A2:A9": "fecha" },
+    "anchos": { "A": 11, "B": 12, "C": 18 }
+   },
+   "celda": "E2",
+   "formula": "=CONTAR.SI(B2:B9;\"Pamplona\")",
+   "explicacion": "Solo 2. «Pamplona » (con espacio), «Panplona» y «Pamplona.» no cuentan, porque no son exactamente el mismo texto. Javier vería 2 visitas donde hubo 5. Esto se evita impidiendo que se escriba a mano.",
+   "respuesta": ""
+  },
+  {
+   "tipo": "texto",
+   "md": "La solución es la **validación de datos**: una regla que pones en unas celdas y que decide **qué se puede escribir** en ellas. La más usada es la **lista desplegable**: al hacer clic en la celda aparece una flechita y la persona **elige** de una lista en lugar de teclear.\n\nEstá en **Datos › Herramientas de datos › Validación de datos**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e2",
+   "modo": "cinta",
+   "enunciado": "Busca en la cinta el botón para crear una lista desplegable.",
+   "ruta": ["Datos", "Herramientas de datos", "Validación de datos"],
+   "explicacion": "Datos › Herramientas de datos › Validación de datos. Fíjate en que el botón tiene una flechita: ahí hay más opciones que usarás al final de la lección."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: el desplegable de delegaciones",
+   "pasos": [
+    { "md": "Crea una hoja nueva y llámala **Listas**. En A1 escribe *Delegación* y debajo, una por celda: Zaragoza, Pamplona, Lleida. Bien escritas: de aquí copiará todo el mundo." },
+    { "md": "Vuelve al registro y selecciona las celdas donde se escribirá la delegación, por ejemplo **B2:B500**." },
+    { "md": "Ve a **Datos › Herramientas de datos › Validación de datos**. En la pestaña **Configuración**, en **Permitir**, elige **Lista**.", "ruta": ["Datos", "Herramientas de datos", "Validación de datos"] },
+    { "md": "Haz clic en la casilla **Origen**, ve a la hoja Listas y selecciona **A2:A4**. Queda `=Listas!$A$2:$A$4`. Pulsa **Aceptar**." },
+    { "md": "Haz clic en B2: aparece la flechita con las tres delegaciones." }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e3",
+   "modo": "test",
+   "pregunta": "¿Por qué es mejor tener las delegaciones en una hoja **Listas** aparte que escribirlas cada vez en cada desplegable?",
+   "opciones": [
+    { "texto": "Porque si mañana abre la delegación de Huesca, la añades en un solo sitio y amplías el origen", "correcta": true, "porque": "Un dato, un sitio. Todos los desplegables que leen de esa lista quedan al día a la vez." },
+    { "texto": "Porque Excel no deja crear un desplegable sin una hoja que se llame Listas", "correcta": false, "porque": "El nombre de la hoja da igual; Listas es una costumbre de oficina para encontrarla rápido." },
+    { "texto": "Porque así el libro ocupa menos", "correcta": false, "porque": "La diferencia de tamaño es despreciable. La ventaja es tener la lista oficial en un único lugar." }
+   ],
+   "explicacion": "Las listas oficiales (delegaciones, categorías, estados, tipos de IVA) van en una hoja aparte, bien escritas y en un solo sitio."
+  },
+  {
+   "tipo": "texto",
+   "md": "El mismo cuadro tiene dos pestañas más:\n\n- **Mensaje de entrada**: una nota que aparece al seleccionar la celda. Por ejemplo: «Elige la delegación de la lista».\n- **Mensaje de error**: lo que sale si alguien escribe algo que no está en la lista. Su **Estilo** decide qué pasa:\n  - **Detener**: no deja escribirlo.\n  - **Advertencia**: avisa y pregunta si quiere seguir.\n  - **Información**: solo informa y lo deja pasar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e4",
+   "modo": "test",
+   "pregunta": "Javier dice: «que si escriben otra cosa, **no les deje**». ¿Qué estilo eliges en el Mensaje de error?",
+   "opciones": [
+    { "texto": "Detener", "correcta": true, "porque": "Es el único que bloquea: la persona tiene que elegir un valor de la lista o cancelar." },
+    { "texto": "Advertencia", "correcta": false, "porque": "Advertencia avisa, pero deja seguir si la persona pulsa Sí. El «Panplona» acabaría entrando." },
+    { "texto": "Información", "correcta": false, "porque": "Información solo da un aviso y acepta el dato. Es la regla más suave." }
+   ],
+   "explicacion": "Y escribe un mensaje que ayude, no que regañe: «Elige Zaragoza, Pamplona o Lleida en la flechita» es mejor que «Dato no válido»."
+  },
+  {
+   "tipo": "texto",
+   "md": "La validación no sirve solo para listas. En **Permitir** también puedes elegir números, fechas o longitud de texto, con condiciones como **entre**, **mayor que** o **menor que**. Unos ejemplos de oficina:"
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Reglas de validación habituales",
+   "cabecera": ["Columna", "Permitir", "Condición"],
+   "filas": [
+    ["Importe de una factura", "Decimal", "mayor que 0"],
+    ["Días de vacaciones pedidos", "Número entero", "entre 1 y 30"],
+    ["Fecha de una factura de 2026", "Fecha", "entre 01/01/2026 y 31/12/2026"],
+    ["Estado de una incidencia", "Lista", "Abierta, En curso, Cerrada"]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e5",
+   "modo": "test",
+   "pregunta": "Lucía, de RRHH, recibe solicitudes de vacaciones en las que alguien escribió «-3» días o «2,5». Quiere que solo se puedan escribir días enteros del 1 al 30. ¿Qué regla pones?",
+   "opciones": [
+    { "texto": "Permitir: Número entero, entre 1 y 30", "correcta": true, "porque": "Número entero rechaza 2,5 y el «entre» rechaza el -3 y cualquier cosa por encima de 30." },
+    { "texto": "Permitir: Decimal, mayor que 0", "correcta": false, "porque": "Dejaría pasar 2,5 y también 300. Decimal es para importes, no para días." },
+    { "texto": "Permitir: Lista, con los números del 1 al 30 en la hoja Listas", "correcta": false, "porque": "Funcionaría, pero es dar un rodeo: para números, la regla de número entero es más sencilla y clara." }
+   ]
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Cuidado con dos trampas. Una: la validación **no revisa lo que ya estaba escrito**, solo lo nuevo. Dos: si alguien **copia y pega** un dato, la regla no salta. Para cazarlos, ve a la flechita de **Datos › Validación de datos** y elige **Rodear con un círculo datos no válidos** (la ayuda de Microsoft lo llama «Círculo con datos no válidos»). Excel marca con un círculo rojo cada celda que no cumple la regla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e6",
+   "modo": "formula",
+   "enunciado": "Comprueba antes de entregar. En F2:F4 ya tienes las visitas por delegación y en **F5** su suma: 5. En **F6** cuenta cuántas visitas hay registradas en total, es decir, cuántas celdas de **B2:B9** tienen algo escrito. Si F6 no coincide con F5, hay delegaciones mal escritas.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Delegación", "E1": "Delegación", "F1": "Visitas",
+     "A2": { "fecha": "2026-11-02" }, "B2": "Pamplona",
+     "A3": { "fecha": "2026-11-02" }, "B3": "Zaragoza",
+     "A4": { "fecha": "2026-11-03" }, "B4": "Pamplona ",
+     "A5": { "fecha": "2026-11-04" }, "B5": "Lleida",
+     "A6": { "fecha": "2026-11-05" }, "B6": "Panplona",
+     "A7": { "fecha": "2026-11-05" }, "B7": "Pamplona",
+     "A8": { "fecha": "2026-11-06" }, "B8": "Zaragoza",
+     "A9": { "fecha": "2026-11-06" }, "B9": "Pamplona.",
+     "E2": "Zaragoza", "F2": "=CONTAR.SI($B$2:$B$9;E2)",
+     "E3": "Pamplona", "F3": "=CONTAR.SI($B$2:$B$9;E3)",
+     "E4": "Lleida", "F4": "=CONTAR.SI($B$2:$B$9;E4)",
+     "E5": "Suma", "F5": "=SUMA(F2:F4)",
+     "E6": "Registradas"
+    },
+    "formatos": { "A2:A9": "fecha" },
+    "anchos": { "A": 11, "B": 12, "E": 12 }
+   },
+   "objetivo": "F6",
+   "solucion": "=CONTARA(B2:B9)",
+   "alternativas": ["=CONTARA(A2:A9)"],
+   "errores_tipicos": ["=CONTAR(B2:B9)", "=SUMA(F2:F4)"],
+   "variantes": [{ "B9": null, "A9": null }],
+   "pistas": [
+    "Quieres contar celdas con texto, no números. ¿Qué función de contar cuenta todo lo que no está vacío?",
+    "CONTAR solo cuenta números (aquí daría 0). La que cuenta textos es CONTARA.",
+    "Escribe `=CONTARA(B2:B9)`."
+   ],
+   "explicacion": "8 visitas registradas frente a 5 bien clasificadas: faltan 3, justo las mal escritas. Esta comprobación (el total por grupos tiene que coincidir con el total general) es un **total de control**, y te salvará más de un informe."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l3-e7",
+   "modo": "ordenar",
+   "enunciado": "La misión de Javier completa. Ordena los pasos para dejar el registro de visitas a prueba de despistes.",
+   "pasos": [
+    "En la hoja Listas, escribe Zaragoza, Pamplona y Lleida, una por celda",
+    "En el registro, selecciona las celdas de la columna Delegación",
+    "Ve a Datos › Validación de datos y, en Permitir, elige Lista",
+    "En Origen, selecciona las tres delegaciones de la hoja Listas",
+    "En Mensaje de error, elige el estilo Detener y escribe un mensaje que ayude",
+    "Usa Rodear con un círculo datos no válidos y corrige las delegaciones mal escritas que ya había"
+   ],
+   "explicacion": "Misión cumplida: desde hoy nadie puede escribir «Panplona», y lo que ya estaba mal lo has encontrado y corregido. Con esto, el recuento por delegación de Javier por fin cuadra."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m1l3-q1",
+   "modo": "cinta",
+   "enunciado": "Sin mirar arriba: ¿dónde se crea una lista desplegable?",
+   "ruta": ["Datos", "Herramientas de datos", "Validación de datos"],
+   "explicacion": "Datos › Herramientas de datos › Validación de datos, y en Permitir, Lista."
+  },
+  {
+   "id": "n2m1l3-q2",
+   "modo": "test",
+   "pregunta": "Has puesto un desplegable con estilo Detener. Un compañero copia «Lerida» de un correo y lo pega en la columna. ¿Qué pasa?",
+   "opciones": [
+    { "texto": "Se pega sin aviso: la validación no salta al pegar", "correcta": true, "porque": "Así es: al pegar no aparecen mensajes. Por eso conviene revisar con «Rodear con un círculo datos no válidos»." },
+    { "texto": "Excel lo bloquea con el mensaje de error", "correcta": false, "porque": "El mensaje solo sale cuando se escribe en la celda, no cuando se pega." },
+    { "texto": "Excel lo corrige solo a «Lleida»", "correcta": false, "porque": "Excel nunca corrige el dato por su cuenta: lo deja tal cual." }
+   ]
+  },
+  {
+   "id": "n2m1l3-q3",
+   "modo": "test",
+   "pregunta": "Quieres que en la columna Importe solo se puedan escribir cantidades positivas, con decimales. ¿Qué eliges en Permitir?",
+   "opciones": [
+    { "texto": "Decimal, mayor que 0", "correcta": true, "porque": "Decimal admite céntimos y «mayor que 0» rechaza ceros y negativos." },
+    { "texto": "Número entero, mayor que 0", "correcta": false, "porque": "Rechazaría 125,50 €: los importes llevan céntimos." },
+    { "texto": "Lista", "correcta": false, "porque": "Una lista sirve para elegir entre valores fijos, no para importes libres." }
+   ]
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "concepto", "frente": "Ruta para crear una lista desplegable", "dorso": "Datos › Herramientas de datos › Validación de datos › Permitir: Lista › Origen" },
+  { "tipo": "concepto", "frente": "Estilos del mensaje de error de la validación", "dorso": "Detener (bloquea), Advertencia (avisa y deja seguir), Información (solo informa)" },
+  { "tipo": "error", "frente": "¿La validación de datos impide pegar un dato que no cumple la regla?", "dorso": "No. Hay que revisar con «Rodear con un círculo datos no válidos» (flecha de Validación de datos)" },
+  { "tipo": "concepto", "frente": "¿Dónde se guardan las listas oficiales de los desplegables?", "dorso": "En una hoja aparte (p. ej. Listas), bien escritas y en un solo sitio" }
+ ]
+}

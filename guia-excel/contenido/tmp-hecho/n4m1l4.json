@@ -1,0 +1,336 @@
+{
+  "id": "n4m1l4",
+  "titulo": "Combinar consultas y anular la dinamización",
+  "minutos": 16,
+  "objetivo": "Traer columnas de otra tabla con Combinar consultas eligiendo el tipo de combinación, encontrar lo que falta con Anti izquierda y pasar a filas las tablas con meses en columnas.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Las ventas vienen con el código de producto, pero yo las quiero ver por familia, y la familia está en el maestro de productos. Y dime qué códigos vendidos no están en el maestro: alguien los da de alta mal y luego no cuadran los informes.",
+    "logro": "Ya sabes cruzar dos consultas como un BUSCARX, encontrar lo que falta y dejar las tablas listas para analizarlas."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "**Combinar consultas** es el BUSCARX de Power Query. Para cada venta, busca su pareja en el **maestro de productos** (la lista de referencia, con una fila por producto) usando una columna común, la **clave**: aquí, `CodProducto`.\n\nEn el editor: **Inicio › Combinar consultas**, eliges el maestro, haces clic en la clave de cada tabla y aceptas. Sale una columna nueva con la palabra *Table*: pulsa su botón **Expandir** y marca lo que quieres traer, como `Familia`."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e1",
+      "modo": "test",
+      "pregunta": "Javier quiere la **familia** de cada venta, y la familia está en el maestro de productos. ¿Qué herramienta de Power Query usas?",
+      "opciones": [
+        {
+          "texto": "Combinar consultas",
+          "correcta": true,
+          "porque": "Busca cada código en el maestro y trae su familia, igual que haría BUSCARX."
+        },
+        {
+          "texto": "Anexar consultas",
+          "correcta": false,
+          "porque": "Anexar pone una tabla debajo de otra; aquí hay que emparejar filas."
+        },
+        {
+          "texto": "Rellenar hacia abajo",
+          "correcta": false,
+          "porque": "Rellena huecos con el valor de arriba; no busca nada en otra tabla."
+        }
+      ],
+      "explicacion": "Anexar apila; Combinar empareja. Con esas dos ideas unes casi cualquier par de tablas."
+    },
+    {
+      "tipo": "texto",
+      "md": "Al combinar eliges el **tipo de combinación**, es decir, qué filas quieres en el resultado:\n\n- **Externa izquierda**: todas las de la primera tabla, con lo que encuentre en la segunda. Es la más habitual.\n- **Interna**: solo las filas que están en las dos.\n- **Anti izquierda**: solo las filas de la primera que **no** tienen pareja en la segunda. Perfecta para ver lo que falta.\n\nHay más tipos, pero con estos tres resolverás casi todo."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Mismo tipo, otro nombre",
+      "md": "La ayuda de Microsoft a veces los llama con nombres largos: «Combinación externa izquierda», «Combinación interna», «Izquierda anti unión» o «Anticombinación izquierda». Son los mismos."
+    },
+    {
+      "tipo": "tabla",
+      "titulo": "Las mismas ventas, tres resultados",
+      "cabecera": ["Tipo de combinación", "Filas que salen", "Qué pasa con LED-PAN60 (no está en el maestro)"],
+      "filas": [
+        ["Externa izquierda", "6 de 6", "Sale, con la familia vacía (null)"],
+        ["Interna", "5", "Desaparece: el total de ventas ya no cuadra con el ERP"],
+        ["Anti izquierda", "1", "Es la única fila que sale"]
+      ],
+      "pie": "Ventas: 6 líneas. Maestro: todos los códigos vendidos menos LED-PAN60."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e2",
+      "modo": "test",
+      "pregunta": "Javier quiere **todas** las ventas con su familia, aunque algún código no esté en el maestro. ¿Qué tipo de combinación eliges?",
+      "opciones": [
+        {
+          "texto": "Externa izquierda",
+          "correcta": true,
+          "porque": "Conserva todas las ventas. Las que no encuentran pareja quedan con la familia vacía, a la vista."
+        },
+        {
+          "texto": "Interna",
+          "correcta": false,
+          "porque": "Las ventas sin pareja desaparecerían sin avisar y el total ya no cuadraría con el ERP."
+        },
+        {
+          "texto": "Anti izquierda",
+          "correcta": false,
+          "porque": "Solo sacaría las ventas sin pareja: sirve para la lista de lo que falta, no para el informe."
+        }
+      ],
+      "explicacion": "En un informe de ventas, Externa izquierda: no se pierde ni un euro."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e3",
+      "modo": "respuesta_corta",
+      "pregunta": "Ahora Javier quiere **solo** las ventas cuyo código **no está** en el maestro. ¿Qué tipo de combinación eliges?",
+      "aceptadas": ["Anti izquierda", "anti izquierda", "Anti-izquierda", "anti-izquierda", "Izquierda anti unión", "Anticombinación izquierda", "Anti izquierda (solo filas de la primera)"],
+      "explicacion": "**Anti izquierda** deja solo las filas de la primera tabla sin pareja: la lista de lo que hay que dar de alta. Con fórmulas lo hacías con CONTAR.SI(…)=0; aquí se repite solo cada mes. Para no tocar la consulta de ventas, hazla con **Combinar consultas como nuevas** (la flecha del botón)."
+    },
+    {
+      "tipo": "texto",
+      "md": "Cuidado con las **claves repetidas**. Si en el maestro un código aparece **dos veces**, cada venta de ese código encuentra dos parejas y, al expandir, **se duplica**. El total de ventas sube sin que nadie lo note.\n\nAntes de combinar, revisa el maestro: selecciona la columna clave y usa **Inicio › Quitar filas › Quitar duplicados**. Y después de combinar, comprueba que la tabla de ventas tiene **las mismas filas** que antes."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e4",
+      "modo": "formula",
+      "enunciado": "Antes de combinar, revisa el maestro. En **D2** cuenta cuántas veces aparece el código de **A2** en toda la lista **A2:A9**. Tu fórmula se copiará a D3:D9: el código que dé 2 está repetido.",
+      "hoja": {
+        "celdas": {
+          "A1": "CodProducto",
+          "B1": "Descripción",
+          "C1": "Familia",
+          "D1": "Veces",
+          "A2": "CAB-15",
+          "B2": "Cable 1,5 mm² (rollo 100 m)",
+          "C2": "Cableado",
+          "A3": "CAN-25",
+          "B3": "Canaleta 25×16 (2 m)",
+          "C3": "Canalización",
+          "A4": "INT-SIM",
+          "B4": "Interruptor simple",
+          "C4": "Mecanismos",
+          "A5": "MAG-216",
+          "B5": "Magnetotérmico 2P 16 A",
+          "C5": "Protección",
+          "A6": "LED-DL18",
+          "B6": "Downlight LED 18 W",
+          "C6": "Iluminación",
+          "A7": "DIF-240",
+          "B7": "Diferencial 2P 40 A 30 mA",
+          "C7": "Protección",
+          "A8": "MAG-216",
+          "B8": "Magnetotérmico 2P 16 A",
+          "C8": "Protección",
+          "A9": "TUB-16",
+          "B9": "Tubo corrugado 16 mm (100 m)",
+          "C9": "Canalización"
+        },
+        "anchos": {"A": 12, "B": 27, "C": 13, "D": 7}
+      },
+      "objetivo": "D2",
+      "copiar_a": ["D3:D9"],
+      "solucion": "=CONTAR.SI($A$2:$A$9;A2)",
+      "alternativas": [
+        "=CONTAR.SI(A$2:A$9;A2)"
+      ],
+      "errores_tipicos": [
+        "=CONTAR.SI(A2:A9;A2)",
+        "=CONTARA($A$2:$A$9)",
+        "=CONTAR.SI($A$2:$A$9;\"MAG-216\")"
+      ],
+      "variantes": [
+        {"A3": "CAB-15"}
+      ],
+      "pistas": [
+        "Para contar cuántas veces aparece algo en una lista: CONTAR.SI(lista; lo que buscas).",
+        "La lista es $A$2:$A$9, fija para que no se mueva al copiar, y lo que buscas es A2.",
+        "=CONTAR.SI($A$2:$A$9;A2)"
+      ],
+      "explicacion": "**MAG-216 sale 2 veces**: si combinaras así, cada venta de ese magnetotérmico se duplicaría. Ya sabes que en la consulta del maestro toca **Quitar duplicados** antes de combinar. Revisar la clave antes de cruzar es lo que distingue un informe fiable."
+    },
+    {
+      "tipo": "texto",
+      "md": "Muchas tablas llegan **a lo ancho**: un comercial por fila y un mes por columna. Se leen bien, pero no se pueden analizar: no puedes filtrar por mes ni hacer una dinámica por meses.\n\nPara pasarlas **a lo largo**, una fila por comercial y mes, selecciona las columnas que **no** son meses (`Comercial`) y usa **Transformar › Anular dinamización de otras columnas**. Salen dos columnas: una con el nombre del mes y otra con la cifra. Llámalas `Mes` y `Objetivo`."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Objetivos de venta: así llegan, a lo ancho",
+      "hoja": {
+        "celdas": {
+          "A1": "Comercial",
+          "B1": "May",
+          "C1": "Jun",
+          "D1": "Jul",
+          "E1": "Ago",
+          "F1": "Sep",
+          "G1": "Oct",
+          "A2": "Pilar Ibáñez",
+          "B2": 42000,
+          "C2": 44000,
+          "D2": 40000,
+          "E2": 30000,
+          "F2": 43000,
+          "G2": 46000,
+          "A3": "Sergio Lacasa",
+          "B3": 38000,
+          "C3": 39000,
+          "D3": 36000,
+          "E3": 27000,
+          "F3": 39000,
+          "G3": 41000,
+          "A4": "Irene Goñi",
+          "B4": 35000,
+          "C4": 36000,
+          "D4": 33000,
+          "E4": 25000,
+          "F4": 36000,
+          "G4": 38000,
+          "A5": "Marc Vidal",
+          "B5": 31000,
+          "C5": 32000,
+          "D5": 30000,
+          "E5": 22000,
+          "F5": 32000,
+          "G5": 34000
+        },
+        "formatos": {"B2:G5": "#.##0 €"},
+        "anchos": {"A": 14}
+      },
+      "pie": "Para Power Query, «Comercial» es la columna que se queda; los seis meses pasan a filas."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e5",
+      "modo": "test",
+      "pregunta": "La tabla de objetivos de arriba tiene 4 comerciales y 6 meses en columnas. Después de **Anular dinamización de otras columnas**, ¿cuántas filas tendrá?",
+      "opciones": [
+        {
+          "texto": "24",
+          "correcta": true,
+          "porque": "Una fila por cada comercial y mes: 4 × 6 = 24."
+        },
+        {
+          "texto": "4",
+          "correcta": false,
+          "porque": "Así está ahora, a lo ancho: una fila por comercial."
+        },
+        {
+          "texto": "10",
+          "correcta": false,
+          "porque": "Has sumado 4 + 6; al pasar a lo largo, comerciales y meses se multiplican."
+        },
+        {
+          "texto": "6",
+          "correcta": false,
+          "porque": "Esos son los meses, pero cada mes se repite para cada comercial."
+        }
+      ],
+      "explicacion": "24 filas con tres columnas: Comercial, Mes y Objetivo. Y si el mes que viene la tabla trae una columna **Nov**, este paso también la pasa a filas, sin tocar nada."
+    },
+    {
+      "tipo": "texto",
+      "md": "¿**Power Query** o **fórmulas**? Power Query brilla con lo que **se repite**: importar la exportación de cada mes, limpiarla, unir archivos y cruzar listas largas. Se monta una vez y se actualiza con un clic.\n\nLas fórmulas son mejores cuando el resultado debe cambiar **al instante** al escribir un dato: un precio, el tipo de IVA, una simulación. Power Query no reacciona hasta que pulsas **Actualizar**.\n\nEn la práctica se combinan: Power Query prepara los datos y las fórmulas o las dinámicas calculan encima."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "truco",
+      "titulo": "Consultas de apoyo, sin hoja",
+      "md": "Una consulta que solo sirve para combinar (como el maestro) no necesita su propia hoja: **Cerrar y cargar en… › Solo crear conexión**. Queda disponible para las demás consultas y no llena el libro de hojas."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e6",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para darle a Javier las ventas con su familia, sin duplicados y comprobadas.",
+      "pasos": [
+        "Maestro: clic dentro de la Tabla › Datos › De una tabla o rango",
+        "En el maestro, seleccionar CodProducto › Quitar duplicados",
+        "Cerrar y cargar en… › Solo crear conexión",
+        "En la consulta de ventas: Combinar consultas con el maestro por CodProducto, tipo Externa izquierda",
+        "Expandir la columna nueva y marcar Familia",
+        "Cerrar y cargar, y comprobar que las ventas tienen las mismas filas que antes"
+      ],
+      "explicacion": "Primero se prepara el maestro (sin duplicados y como conexión), después se combina y se expande, y al final se comprueba el número de filas."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l4-e7",
+      "modo": "abierta",
+      "pregunta": "Tu consulta con **Anti izquierda** devuelve 5 ventas, todas del código **LED-PAN60** (panel LED 60×60), por 1.536,00 €, vendidas desde septiembre. Escribe a Javier un mensaje breve: qué has hecho, qué falta y qué propones.",
+      "modelo": "Javier: ya tienes las ventas por familia; se ponen al día solas con Actualizar todo. Al cruzarlas con el maestro sale un código vendido que no está dado de alta: LED-PAN60 (panel LED 60×60), 5 ventas desde septiembre por 1.536,00 €, que ahora aparecen sin familia. Propongo que Andrés lo dé de alta en el maestro como Iluminación; al actualizar, entrará solo en su familia.",
+      "criterios": [
+        "Dice qué ha hecho (ventas por familia que se actualizan con un clic)",
+        "Da el dato concreto de lo que falta (código, número de ventas o importe)",
+        "Propone una acción (dar de alta el código en el maestro) y quién la hace",
+        "Es breve y se entiende sin conocer Power Query"
+      ]
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n4m1l4-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "Seleccionas la columna Comercial de una tabla con los meses en columnas. ¿Qué comando de Power Query pasa los meses a filas?",
+      "aceptadas": ["Anular dinamización de otras columnas", "anular dinamización de otras columnas", "Anular la dinamización de otras columnas", "Anular dinamizacion de otras columnas"],
+      "explicacion": "**Transformar › Anular dinamización de otras columnas**: deja fija la columna elegida y pasa a filas todas las demás, incluidas las que lleguen en el futuro."
+    },
+    {
+      "id": "n4m1l4-q2",
+      "modo": "test",
+      "pregunta": "Quieres poner las ventas de Lleida **debajo** de las de Pamplona y, en otra consulta, traer el **precio** del maestro a cada venta. ¿Qué usas en cada caso?",
+      "opciones": [
+        {
+          "texto": "Anexar para lo primero; Combinar para lo segundo",
+          "correcta": true,
+          "porque": "Anexar apila tablas con las mismas columnas; Combinar empareja filas por una clave."
+        },
+        {
+          "texto": "Combinar para lo primero; Anexar para lo segundo",
+          "correcta": false,
+          "porque": "Está al revés: para apilar se anexa y para buscar se combina."
+        },
+        {
+          "texto": "Combinar para las dos cosas",
+          "correcta": false,
+          "porque": "Combinar no pone unas filas debajo de otras: para eso está Anexar."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l4-q3",
+      "modo": "test",
+      "pregunta": "Marta cambia el tipo de IVA en una celda y quiere ver los totales nuevos al momento. ¿Power Query o fórmula?",
+      "opciones": [
+        {
+          "texto": "Fórmula",
+          "correcta": true,
+          "porque": "Las fórmulas se recalculan al instante cuando cambia un dato."
+        },
+        {
+          "texto": "Power Query",
+          "correcta": false,
+          "porque": "Solo cambiaría al pulsar Actualizar. Para ver el efecto al momento, fórmula."
+        },
+        {
+          "texto": "Da igual, las dos reaccionan igual",
+          "correcta": false,
+          "porque": "No: Power Query espera a que actualices; las fórmulas, no."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {"tipo": "concepto", "frente": "Combinar consultas: ¿a qué fórmula se parece?", "dorso": "A BUSCARX: trae columnas de otra tabla emparejando por una clave."},
+    {"tipo": "concepto", "frente": "Tipo de combinación para ver lo que falta", "dorso": "Anti izquierda: solo las filas de la primera tabla sin pareja en la segunda."},
+    {"tipo": "concepto", "frente": "Después de combinar, la tabla de ventas tiene más filas que antes. ¿Por qué?", "dorso": "La clave está repetida en el maestro. Quitar duplicados en el maestro antes de combinar."},
+    {"tipo": "concepto", "frente": "Meses en columnas → una fila por mes", "dorso": "Selecciona las columnas que no son meses › Transformar › Anular dinamización de otras columnas."},
+    {"tipo": "concepto", "frente": "Consulta que solo sirve para combinar con otras", "dorso": "Cerrar y cargar en… › Solo crear conexión."}
+  ]
+}

@@ -1,0 +1,406 @@
+{
+ "id": "n3m4l4",
+ "titulo": "Campo calculado, diseño de informe y gráfico dinámico",
+ "minutos": 16,
+ "objetivo": "Añadir a una dinámica un campo calculado de margen, presentarla en formato tabular con los subtotales adecuados, crear su gráfico dinámico y enlazar sus cifras sin copiarlas a mano.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Carmen quiere ver el margen de cada familia, no solo lo vendido: añádelo a tu dinámica y ponle un gráfico. Y revisa la celda del margen total del informe del mes pasado, que lo hizo alguien que ya no está y no me cuadra con contabilidad.",
+  "logro": "Ya sabes calcular márgenes dentro de una dinámica, presentarla como un informe limpio con su gráfico y detectar un margen total mal calculado."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "El listado tiene **Importe** y **Coste**, pero no **Margen**. No hace falta añadir una columna: la dinámica puede calcularlo con un **campo calculado**, un campo nuevo hecho con una fórmula sobre otros campos.\n\nClic en la dinámica › **Analizar tabla dinámica** › **Cálculos** › **Campos, elementos y conjuntos** › **Campo calculado**. En **Nombre** escribe `Margen`; en **Fórmula**, `=Importe-Coste` (con doble clic en la lista de campos los insertas) › **Aceptar**. El campo aparece en la lista: arrástralo a Valores."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e1",
+   "modo": "cinta",
+   "enunciado": "Quieres añadir a la dinámica el campo calculado **Margen**. ¿Qué botón abre el menú donde está *Campo calculado*?",
+   "ruta": [
+    "Analizar tabla dinámica",
+    "Cálculos",
+    "Campos, elementos y conjuntos"
+   ],
+   "explicacion": "Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. El campo nuevo vive dentro de la dinámica: el listado no cambia."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ojo con cómo calcula: el campo calculado trabaja con las **sumas** de cada grupo. Para Cableado, Margen = suma del Importe de Cableado − suma del Coste de Cableado.\n\nPara restar y dividir es justo lo que quieres. Un **Margen %** con la fórmula `=(Importe-Coste)/Importe` da el margen real de cada familia: margen total entre ventas totales. Es lo que vas a hacer ahora con una fórmula normal, para ver qué calcula la dinámica por dentro."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Multiplicar no funciona igual",
+   "md": "Un campo calculado `=Unidades*Precio` multiplica la **suma** de unidades por la **suma** de precios: un disparate. Lo que se calcula fila a fila, calcúlalo en el listado (una columna calculada de la Tabla) y súmalo después en la dinámica."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e2",
+   "modo": "formula",
+   "enunciado": "Esta es la dinámica de octubre con Importe y Coste por familia. En **D2** calcula el **margen %** de Cableado: (importe − coste) ÷ importe. Tu fórmula se copiará a D3:D6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Familia",
+     "B1": "Suma de Importe",
+     "C1": "Suma de Coste",
+     "D1": "Margen %",
+     "A2": "Cableado",
+     "B2": 18420.5,
+     "C2": 14370,
+     "A3": "Canalización",
+     "B3": 6135.2,
+     "C3": 4290,
+     "A4": "Mecanismos",
+     "B4": 7980,
+     "C4": 5265,
+     "A5": "Iluminación",
+     "B5": 14760.8,
+     "C5": 9450,
+     "A6": "Protección",
+     "B6": 9203.5,
+     "C6": 6810
+    },
+    "formatos": {
+     "B2:C6": "eur",
+     "D2:D6": "0,00%"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 16,
+     "C": 15,
+     "D": 11
+    }
+   },
+   "objetivo": "D2",
+   "solucion": "=(B2-C2)/B2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "alternativas": [
+    "=1-C2/B2",
+    "=(B2-C2)/$B2"
+   ],
+   "errores_tipicos": [
+    "=B2-C2/B2",
+    "=(B2-C2)/C2",
+    "=B2-C2"
+   ],
+   "variantes": [
+    {
+     "C2": 15000
+    },
+    {
+     "B4": 9000
+    }
+   ],
+   "formato_resultado": "0,00%",
+   "pistas": [
+    "Primero el margen en euros, entre paréntesis: (B2-C2). Después divídelo entre el importe.",
+    "Sin paréntesis, Excel divide antes de restar: `B2-C2/B2` no es lo mismo.",
+    "`=(B2-C2)/B2`"
+   ],
+   "explicacion": "21,99 % para Cableado y 35,98 % para Iluminación. Es exactamente lo que hace el campo calculado Margen %, familia a familia. Con esto puedes decirle a Carmen qué familias dejan más dinero, no solo cuáles venden más."
+  },
+  {
+   "tipo": "texto",
+   "md": "La trampa más común: el listado trae una columna **% margen** por línea y alguien la pone en Valores como **Promedio**. Eso es la media de las líneas: una venta de 20 € pesa lo mismo que una de 5.000 €.\n\nEl margen real de un grupo es **margen total ÷ ventas totales**. Por eso se calcula con un campo calculado (que trabaja con sumas), no promediando porcentajes. Y lo mismo para el total de la empresa: nunca la media de los porcentajes de cada familia."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e3",
+   "modo": "test",
+   "pregunta": "Una familia tiene solo dos ventas: una de **5.000 €** con un 10 % de margen (500 €) y otra de **100 €** con un 50 % (50 €). La dinámica, con *Promedio de % margen*, dice 30 %. ¿Cuál es el margen real de la familia?",
+   "opciones": [
+    {
+     "texto": "10,78 %: (500 + 50) ÷ (5.000 + 100)",
+     "correcta": true,
+     "porque": "Exacto: 550 € de margen sobre 5.100 € vendidos. La venta grande manda, igual que en las cuentas de la empresa."
+    },
+    {
+     "texto": "30 %: la media de 10 % y 50 %",
+     "correcta": false,
+     "porque": "Es lo que da el Promedio, pero trata igual la venta de 100 € que la de 5.000 €. La empresa no ganó un 30 % de lo que vendió."
+    },
+    {
+     "texto": "60 %: 10 % + 50 %",
+     "correcta": false,
+     "porque": "Es lo que daría Suma de % margen: sumar porcentajes de líneas distintas no tiene sentido."
+    },
+    {
+     "texto": "50 %: el margen más alto",
+     "correcta": false,
+     "porque": "Ese es el de la venta pequeña; casi todo el dinero vino de la grande, que deja un 10 %."
+    }
+   ],
+   "explicacion": "Margen real = margen total ÷ ventas totales. Un campo calculado `=(Importe-Coste)/Importe` lo hace bien porque trabaja con sumas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Por defecto, la dinámica usa el diseño **compacto**: si pones Zona y Familia en Filas, las dos van en la misma columna, con sangría. Para mirar en pantalla está bien; para filtrar, copiar o imprimir, mejor el formato **tabular**: cada campo en su columna.\n\n**Diseño** › **Diseño de informe** › elige la opción **tabular** y después **Repetir todas las etiquetas de elementos**, para que la zona salga en todas las filas y no solo en la primera."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Compacto (el de serie)",
+   "der": "Tabular con etiquetas repetidas",
+   "filas": [
+    [
+     "Una sola columna, «Etiquetas de fila», con zonas y familias",
+     "Una columna para Zona y otra para Familia"
+    ],
+    [
+     "La zona aparece una vez, encima de sus familias",
+     "La zona se repite en cada fila"
+    ],
+    [
+     "Cómodo para mirar en pantalla",
+     "Cómodo para filtrar, copiar a otra hoja o imprimir"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e4",
+   "modo": "cinta",
+   "enunciado": "Marta quiere la dinámica con Zona y Familia en columnas separadas para imprimirla. ¿Qué botón abre las opciones de formato tabular y de repetir etiquetas?",
+   "ruta": [
+    "Diseño",
+    "Diseño",
+    "Diseño de informe"
+   ],
+   "explicacion": "Diseño › Diseño › Diseño de informe. La pestaña Diseño de la dinámica aparece, como Analizar tabla dinámica, al seleccionar una celda de la dinámica."
+  },
+  {
+   "tipo": "texto",
+   "md": "En el mismo grupo están los **Subtotales** (una fila «Total Zaragoza» al acabar cada zona) y los **Totales generales** (la fila y la columna del final).\n\n- Para leer, los subtotales ayudan.\n- Para trabajar con las cifras (filtrar, copiar), suelen estorbar: **Diseño** › **Subtotales** › **No mostrar subtotales**.\n\nY una regla de oro: si sumas tú a mano celdas de una dinámica con subtotales, sumarás cosas dos veces."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e5",
+   "modo": "test",
+   "pregunta": "Junto a una dinámica con Zona y Familia en Filas (con subtotales por zona), un compañero escribe `=SUMA(C5:C22)` para «comprobar» el total, sin incluir la fila Total general. Le sale **el doble** del total general. ¿Por qué?",
+   "opciones": [
+    {
+     "texto": "El rango incluye las filas de subtotal: cada zona se suma dos veces (sus familias y su total)",
+     "correcta": true,
+     "porque": "Eso es. Para comprobar, compara con el Total general o quita los subtotales antes de sumar."
+    },
+    {
+     "texto": "La dinámica no está actualizada",
+     "correcta": false,
+     "porque": "Una dinámica sin actualizar no daría justo el doble en la SUMA: aquí sale doble porque se suman también los subtotales."
+    },
+    {
+     "texto": "SUMA no funciona con tablas dinámicas",
+     "correcta": false,
+     "porque": "SUMA suma las celdas de una dinámica como cualquier otra; el problema es qué celdas entran en el rango."
+    },
+    {
+     "texto": "Hay ventas repetidas en el listado",
+     "correcta": false,
+     "porque": "Ventas repetidas cambiarían también el total de la propia dinámica; no harían que tu SUMA saliera justo el doble."
+    }
+   ],
+   "explicacion": "Cuidado con sumar a mano un informe que ya trae totales: es el clásico «sumar los totales dos veces»."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un **gráfico dinámico** es un gráfico unido a una dinámica. Clic en la dinámica › **Analizar tabla dinámica** › **Gráfico dinámico** › elige, por ejemplo, **Columna agrupada** › **Aceptar**.\n\nLo bueno: va siempre a la par con su dinámica. Si filtras con la segmentación, mueves campos o actualizas, el gráfico cambia solo. Carmen pulsa «Lleida» y ve el gráfico de Lleida."
+  },
+  {
+   "tipo": "texto",
+   "md": "En una hoja de resumen, si escribes `=` y **haces clic** en una cifra de la dinámica, Excel no pone `=B5`, sino algo así:\n\n`=IMPORTARDATOSDINAMICOS(\"Importe\";$A$3;\"Familia\";\"Cableado\")`\n\nNo es un error: busca la cifra **por su nombre** (el Importe de Cableado de la dinámica que empieza en A3), así que sigue trayendo la buena aunque la dinámica cambie de orden o de tamaño. Si prefieres `=B5`, escribe la referencia con el teclado en vez de hacer clic. Lo que nunca debes hacer: **copiar las cifras a mano**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e6",
+   "modo": "test",
+   "pregunta": "Para el resumen de Carmen, un compañero **tecleó a mano** en otra hoja las cifras de la dinámica. Llegan ventas nuevas y actualizas. ¿Qué pasa con su resumen?",
+   "opciones": [
+    {
+     "texto": "Se queda con las cifras viejas, y nada avisa de que ya no cuadran",
+     "correcta": true,
+     "porque": "Exacto: un número tecleado no se entera de nada. Con una fórmula que apunte a la dinámica (IMPORTARDATOSDINAMICOS o =B5), el resumen se actualiza con ella."
+    },
+    {
+     "texto": "Se actualiza también, porque las cifras salen de la dinámica",
+     "correcta": false,
+     "porque": "Salieron de ella, pero al teclearlas son números sueltos: no tienen ningún vínculo."
+    },
+    {
+     "texto": "Excel avisa de que hay cifras desactualizadas",
+     "correcta": false,
+     "porque": "Excel no puede saber que esos números los tecleaste mirando la dinámica."
+    },
+    {
+     "texto": "Da el error #¡REF!",
+     "correcta": false,
+     "porque": "No hay fórmula, así que no puede dar error: da cifras viejas en silencio, que es peor."
+    }
+   ],
+   "explicacion": "Las cifras de un informe, siempre con fórmula. Si al hacer clic en la dinámica sale IMPORTARDATOSDINAMICOS, déjala: es tu enlace con los datos."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Esta es la hoja del mes pasado. En D7 tendría que estar el margen total de la empresa, pero no me cuadra con contabilidad. Mírala, por favor."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l4-e7",
+   "modo": "formula",
+   "enunciado": "En **D7** está el margen total con la fórmula `=PROMEDIO(D2:D6)`: la media de los márgenes de cada familia. **Arréglala**: el margen total es (importe total − coste total) ÷ importe total, con los totales de la fila 7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Familia",
+     "B1": "Suma de Importe",
+     "C1": "Suma de Coste",
+     "D1": "Margen %",
+     "A2": "Cableado",
+     "B2": 18420.5,
+     "C2": 14370,
+     "D2": "=(B2-C2)/B2",
+     "A3": "Canalización",
+     "B3": 6135.2,
+     "C3": 4290,
+     "D3": "=(B3-C3)/B3",
+     "A4": "Mecanismos",
+     "B4": 7980,
+     "C4": 5265,
+     "D4": "=(B4-C4)/B4",
+     "A5": "Iluminación",
+     "B5": 14760.8,
+     "C5": 9450,
+     "D5": "=(B5-C5)/B5",
+     "A6": "Protección",
+     "B6": 9203.5,
+     "C6": 6810,
+     "D6": "=(B6-C6)/B6",
+     "A7": "Total general",
+     "B7": "=SUMA(B2:B6)",
+     "C7": "=SUMA(C2:C6)"
+    },
+    "formatos": {
+     "B2:C7": "eur",
+     "D2:D7": "0,00%"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 16,
+     "C": 15,
+     "D": 11
+    }
+   },
+   "objetivo": "D7",
+   "inicial": "=PROMEDIO(D2:D6)",
+   "solucion": "=(B7-C7)/B7",
+   "alternativas": [
+    "=1-C7/B7",
+    "=(SUMA(B2:B6)-SUMA(C2:C6))/SUMA(B2:B6)"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(D2:D6)",
+    "=(B7-C7)/C7",
+    "=SUMA(D2:D6)",
+    "=B7-C7/B7"
+   ],
+   "no_usar": [
+    "PROMEDIO"
+   ],
+   "variantes": [
+    {
+     "B2": 30000
+    },
+    {
+     "C5": 12000
+    }
+   ],
+   "formato_resultado": "0,00%",
+   "pistas": [
+    "La media de porcentajes trata igual a la familia que vende 6.000 € y a la que vende 18.000 €. El total no se promedia: se divide.",
+    "Usa los totales de la fila 7: margen total (B7 − C7) entre importe total (B7).",
+    "`=(B7-C7)/B7`"
+   ],
+   "explicacion": "28,88 %, no el 29,62 % que daba la media. Parece poco, pero sobre 56.500 € de ventas son unos 417 € de margen que no existen. Ya puedes decirle a Marta por qué no le cuadraba con contabilidad y cómo se calcula bien: totales entre totales."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m4l4-q1",
+   "modo": "test",
+   "pregunta": "Un compañero crea el campo calculado `=Unidades*Precio` y le salen importes enormes. ¿Por qué?",
+   "opciones": [
+    {
+     "texto": "Multiplica la suma de unidades por la suma de precios de cada grupo",
+     "correcta": true,
+     "porque": "Eso es: el campo calculado trabaja con sumas. Para multiplicar fila a fila, hazlo en el listado y suma después."
+    },
+    {
+     "texto": "Le falta el signo $",
+     "correcta": false,
+     "porque": "En un campo calculado no hay celdas que fijar: se escriben nombres de campos."
+    },
+    {
+     "texto": "La dinámica no está actualizada",
+     "correcta": false,
+     "porque": "Actualizar no cambia cómo calcula: seguiría multiplicando sumas."
+    },
+    {
+     "texto": "Los campos calculados solo pueden restar",
+     "correcta": false,
+     "porque": "Pueden sumar, restar, multiplicar y dividir; el problema es que lo hacen sobre las sumas."
+    }
+   ],
+   "explicacion": "Campo calculado = fórmula sobre las sumas de cada grupo. Perfecto para márgenes; un disparate para multiplicar fila a fila."
+  },
+  {
+   "id": "n3m4l4-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "Escribes `=` y haces clic en una cifra de la dinámica. ¿Cómo se llama la función que aparece en la fórmula?",
+   "aceptadas": [
+    "IMPORTARDATOSDINAMICOS",
+    "importardatosdinamicos",
+    "IMPORTARDATOSDINÁMICOS",
+    "Importardatosdinamicos"
+   ],
+   "explicacion": "IMPORTARDATOSDINAMICOS(campo_de_datos; tabla_dinámica; [campo1; elemento1]; …) trae una cifra de la dinámica por su nombre. Existe en todas las versiones de Excel."
+  },
+  {
+   "id": "n3m4l4-q3",
+   "modo": "cinta",
+   "enunciado": "Con una celda de la dinámica seleccionada, ¿dónde creas un gráfico unido a ella?",
+   "ruta": [
+    "Analizar tabla dinámica",
+    "Herramientas",
+    "Gráfico dinámico"
+   ],
+   "explicacion": "Analizar tabla dinámica › Herramientas › Gráfico dinámico. También está en Insertar › Gráficos › Gráfico dinámico."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo añades un campo calculado a una dinámica?",
+   "dorso": "Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. Nombre (Margen) y fórmula (=Importe-Coste)."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no se promedian los % de margen para sacar el margen total?",
+   "dorso": "Porque cada línea o familia pesa igual. Margen real = margen total ÷ ventas totales."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "¿Qué es IMPORTARDATOSDINAMICOS?",
+   "dorso": "La fórmula que crea Excel al hacer clic en una cifra de la dinámica: la trae por su nombre. IMPORTARDATOSDINAMICOS(campo_de_datos; tabla_dinámica; [campo1; elemento1]; …)"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo pones una dinámica con cada campo en su columna?",
+   "dorso": "Diseño › Diseño de informe › formato tabular + Repetir todas las etiquetas de elementos."
+  }
+ ]
+}

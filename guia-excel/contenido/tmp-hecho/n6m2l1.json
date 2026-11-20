@@ -1,0 +1,476 @@
+{
+ "id": "n6m2l1",
+ "titulo": "Errores caros de hojas de cálculo y cómo no repetirlos",
+ "minutos": 15,
+ "objetivo": "Reconocer los errores de hoja de cálculo que más han costado en empresas reales y aplicar las reglas que los evitan: rangos que crecen, cada dato una sola vez, ningún número a mano en las fórmulas, una fórmula por columna y los códigos como texto.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Carmen va a pagar las comisiones de noviembre con mi hoja y no me fío: la montó un becario con prisa. Revísala y déjala bien antes del viernes. Y en enero la comisión sube del 3 % al 3,5 %: que no haya que tocar fórmula por fórmula.",
+  "logro": "Ya sabes encontrar y corregir los errores que más dinero cuestan en una hoja: rangos que se quedan cortos, totales contados dos veces y porcentajes escritos dentro de las fórmulas."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Empecemos por una verdad incómoda. Raymond Panko, profesor de la Universidad de Hawái, reunió los estudios que revisaron **a fondo** hojas de cálculo reales de empresas: de 85 hojas, **el 94 % tenía errores**. No eran ejercicios de clase: eran hojas de trabajo de verdad.\n\nPor eso, en un trabajo profesional, **lo normal es comprobar**. Pensar «a mí no me va a pasar» es, precisamente, el primer error."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e1",
+   "modo": "test",
+   "pregunta": "Terminas la hoja de comisiones y no aparece ningún error del tipo `#¡VALOR!` o `#N/D`. ¿Qué puedes concluir?",
+   "opciones": [
+    {
+     "texto": "Que no hay errores de escritura, pero los resultados aún pueden estar mal.",
+     "correcta": true,
+     "porque": "Exacto. Excel solo avisa cuando no puede calcular. Si una fórmula apunta a la celda equivocada o deja filas fuera, calcula tan tranquila y da un número falso."
+    },
+    {
+     "texto": "Que la hoja está bien: si hubiera un fallo, Excel avisaría.",
+     "correcta": false,
+     "porque": "Es la confusión más común. Excel no sabe qué querías calcular: si sumas el rango equivocado, te da la suma de ese rango sin quejarse."
+    },
+    {
+     "texto": "Que ya solo falta darle formato y enviarla.",
+     "correcta": false,
+     "porque": "Antes de enviar falta lo más importante: comprobar que las cifras cuadran con la fuente. El formato va al final."
+    }
+   ],
+   "explicacion": "«No sale error» no significa «está bien». Vamos a ver cuatro casos reales y la regla que habría evitado cada uno."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Caso 1: las filas que se quedaron fuera.** En 2013, tres investigadores (Herndon, Ash y Pollin) pidieron la hoja de cálculo de un estudio de economía muy conocido, el de Reinhart y Rogoff. Encontraron que una media cubría las filas 30 a 44 en lugar de la 30 a la 49: **cinco países** (Australia, Austria, Bélgica, Canadá y Dinamarca) se habían quedado fuera del cálculo.\n\nLo encontraron porque pidieron **la hoja**: mirando solo el resultado, era imposible verlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e2",
+   "modo": "predice",
+   "enunciado": "Esta es la hoja de ventas de Javier. Antes de que Excel lo calcule: ¿qué total da la fórmula de **C9**? (Escribe solo el número.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Delegación",
+     "C1": "Ventas nov.",
+     "A2": "Sergio Lahoz",
+     "B2": "Zaragoza",
+     "C2": 18500,
+     "A3": "Pilar Gimeno",
+     "B3": "Zaragoza",
+     "C3": 21000,
+     "A4": "Iñaki Etxeberria",
+     "B4": "Pamplona",
+     "C4": 16000,
+     "A5": "Ainhoa Goñi",
+     "B5": "Pamplona",
+     "C5": 12500,
+     "A6": "Jordi Serra",
+     "B6": "Lleida",
+     "C6": 14000,
+     "A7": "Montse Farré",
+     "B7": "Lleida",
+     "C7": 10000,
+     "A8": "Arnau Vidal",
+     "B8": "Lleida",
+     "C8": 9500,
+     "A9": "Total"
+    },
+    "formatos": {
+     "C2:C8": "#.##0 €"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 12,
+     "C": 13
+    }
+   },
+   "celda": "C9",
+   "formula": "=SUMA(C2:C6)",
+   "explicacion": "Da 82.000: la suma va de C2 a C6 y deja fuera a los dos últimos comerciales de Lleida (19.500 €). El total real es 101.500 €. Excel no avisa de nada: suma exactamente lo que le pides.",
+   "respuesta": "82000"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e3",
+   "modo": "formula",
+   "enunciado": "La fórmula de **C9** deja fuera las filas 7 y 8. Corrígela para que sume las ventas de **todos** los comerciales, de C2 a C8. Debe salir 101.500 €.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Delegación",
+     "C1": "Ventas nov.",
+     "A2": "Sergio Lahoz",
+     "B2": "Zaragoza",
+     "C2": 18500,
+     "A3": "Pilar Gimeno",
+     "B3": "Zaragoza",
+     "C3": 21000,
+     "A4": "Iñaki Etxeberria",
+     "B4": "Pamplona",
+     "C4": 16000,
+     "A5": "Ainhoa Goñi",
+     "B5": "Pamplona",
+     "C5": 12500,
+     "A6": "Jordi Serra",
+     "B6": "Lleida",
+     "C6": 14000,
+     "A7": "Montse Farré",
+     "B7": "Lleida",
+     "C7": 10000,
+     "A8": "Arnau Vidal",
+     "B8": "Lleida",
+     "C8": 9500,
+     "A9": "Total"
+    },
+    "formatos": {
+     "C2:C9": "#.##0 €"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 12,
+     "C": 13
+    }
+   },
+   "objetivo": "C9",
+   "inicial": "=SUMA(C2:C6)",
+   "solucion": "=SUMA(C2:C8)",
+   "alternativas": [
+    "=C2+C3+C4+C5+C6+C7+C8"
+   ],
+   "errores_tipicos": [
+    "=SUMA(C2:C6)",
+    "=SUMA(C2:C7)",
+    "=101500"
+   ],
+   "variantes": [
+    {
+     "C8": 11000
+    },
+    {
+     "C2": 20000
+    }
+   ],
+   "formato_resultado": "#.##0 €",
+   "pistas": [
+    "Mira los números de fila: ¿en qué fila acaba la lista y en qué fila acaba el rango de la fórmula?",
+    "La lista termina en la fila 8, pero el rango se para en C6.",
+    "Cambia el final del rango: =SUMA(C2:C8)"
+   ],
+   "explicacion": "Ahora el total recoge a los siete comerciales: 101.500 €. Es el caso de Reinhart y Rogoff en pequeño. Cada vez que revises una hoja ajena, mira dónde **empieza y acaba** cada rango."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Regla 1: rangos que crecen solos.** Si el mes que viene Javier añade un comercial en la fila 9, `=SUMA(C2:C8)` no lo sumará: el rango es fijo y no se entera.\n\nLa solución es la que viste en el nivel 2: convertir la lista en **Tabla**. Las fórmulas que usan una columna de la Tabla incluyen las filas nuevas que escribes justo debajo, sin que tengas que tocar nada."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "Convertir una lista en Tabla",
+   "md": "Haz clic dentro de la lista y pulsa [[Ctrl]]+[[T]]. También está en **Insertar › Tablas › Tabla**."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Caso 2: el signo menos.** En 1994, en Fidelity Magellan, un fondo de inversión de Estados Unidos, un contable pasó a una hoja aparte una pérdida de 1.300 millones de dólares **sin el signo menos**. Lo que tenía que restar, sumó, y la estimación se desvió 2.600 millones: **el doble** de la cifra. El reparto de dividendo que se había anunciado se canceló.\n\nRegla: las cifras **se enlazan con una fórmula** (`=B7`), no se copian a mano, y cada columna deja claro su signo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e4",
+   "modo": "predice",
+   "enunciado": "Lo de Fidelity, en pequeño: la pérdida de Lleida (6.000 €) se copió a mano **sin el signo menos**. ¿Qué resultado da **B5**? (Escribe solo el número.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Resultado oct.",
+     "A2": "Zaragoza",
+     "B2": 25000,
+     "A3": "Pamplona",
+     "B3": 8000,
+     "A4": "Lleida (pérdida)",
+     "B4": 6000,
+     "A5": "Total"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 15
+    }
+   },
+   "celda": "B5",
+   "formula": "=SUMA(B2:B4)",
+   "explicacion": "Da 39.000. Con el signo bien puesto (−6.000) daría 27.000. La diferencia, 12.000, es **el doble** de la pérdida: olvidar un signo no desvía el total una vez, sino dos. Por eso en Fidelity 1.300 millones se convirtieron en un error de 2.600.",
+   "respuesta": "39000"
+  },
+  {
+   "tipo": "texto",
+   "md": "**Caso 3: contar dos veces.** En 2016, cuando Tesla compró SolarCity, el banco Lazard valoró SolarCity con unas hojas de previsiones en las que **se contaron dos veces** 400 millones de dólares de deuda prevista. Lo recoge el documento que Tesla presentó ante la SEC, el supervisor de la bolsa de Estados Unidos.\n\nEn una oficina pasa a menudo con los **subtotales**: si están dentro del rango que sumas, los cuentas dos veces. Regla: cada dato se calcula **una sola vez** y, si lo necesitas en otro sitio, lo enlazas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e5",
+   "modo": "formula",
+   "enunciado": "Esta versión de la hoja de Javier tiene un subtotal por delegación en las filas 4, 7 y 11. En **B12** escribe el **total general** de ventas sin contar nada dos veces. Debe salir 101.500 €, igual que antes.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Ventas nov.",
+     "A2": "Zaragoza · Sergio Lahoz",
+     "B2": 18500,
+     "A3": "Zaragoza · Pilar Gimeno",
+     "B3": 21000,
+     "A4": "Subtotal Zaragoza",
+     "B4": "=SUMA(B2:B3)",
+     "A5": "Pamplona · Iñaki Etxeberria",
+     "B5": 16000,
+     "A6": "Pamplona · Ainhoa Goñi",
+     "B6": 12500,
+     "A7": "Subtotal Pamplona",
+     "B7": "=SUMA(B5:B6)",
+     "A8": "Lleida · Jordi Serra",
+     "B8": 14000,
+     "A9": "Lleida · Montse Farré",
+     "B9": 10000,
+     "A10": "Lleida · Arnau Vidal",
+     "B10": 9500,
+     "A11": "Subtotal Lleida",
+     "B11": "=SUMA(B8:B10)",
+     "A12": "Total general"
+    },
+    "formatos": {
+     "B2:B12": "#.##0 €"
+    },
+    "anchos": {
+     "A": 28,
+     "B": 13
+    }
+   },
+   "objetivo": "B12",
+   "solucion": "=B4+B7+B11",
+   "alternativas": [
+    "=SUMA(B4;B7;B11)",
+    "=SUMA(B2:B3;B5:B6;B8:B10)"
+   ],
+   "errores_tipicos": [
+    "=SUMA(B2:B11)",
+    "=B4+B7",
+    "=101500"
+   ],
+   "variantes": [
+    {
+     "B2": 20000
+    },
+    {
+     "B10": 12000
+    }
+   ],
+   "formato_resultado": "#.##0 €",
+   "pistas": [
+    "Si sumas de B2 a B11, cada venta entra dos veces: una por sí misma y otra dentro de su subtotal.",
+    "Los tres subtotales ya contienen todas las ventas. Basta con sumar B4, B7 y B11.",
+    "=B4+B7+B11"
+   ],
+   "explicacion": "101.500 €, el mismo total que en el ejercicio anterior: cuadra. Sumar todo el rango habría dado 203.000 €, justo el doble. Cuando un total te salga «sospechosamente el doble», busca subtotales dentro del rango."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "`=C2*0,03`: el 3 % escrito dentro de cada fórmula",
+     "`=C2*$G$2`: el 3 % en una celda, a la vista, y la fórmula apunta a ella"
+    ],
+    [
+     "Una fila «arreglada» a mano con una fórmula distinta",
+     "La misma fórmula en toda la columna, copiada hacia abajo"
+    ],
+    [
+     "`=SUMA(C2:C8)` sobre una lista que crece cada mes",
+     "La lista convertida en Tabla ([[Ctrl]]+[[T]])"
+    ],
+    [
+     "Una cifra copiada a mano de otra hoja",
+     "La cifra enlazada con una fórmula, calculada una sola vez"
+    ]
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "**Caso 4: los códigos que no son números.** En 2010, según el informe oficial del comisionado británico de interceptación de comunicaciones, un fallo de formato en una hoja de cálculo del MI5 cambió los tres últimos dígitos de unos números de teléfono por «000». Se pidieron por error los datos de 134 números que no tenían nada que ver con ninguna investigación.\n\nRegla: **los códigos son texto**. Teléfonos, NIF, códigos postales o números de cuenta no se suman: se guardan como texto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e6",
+   "modo": "test",
+   "pregunta": "Andrés te pasa una lista de proveedores con su número de cuenta de 20 cifras. Al pegarla, Excel muestra cosas como `2,08512E+19` y, al ensanchar la columna, las cuentas acaban en ceros. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "Excel las ha tomado como números y solo guarda 15 cifras: las demás se han convertido en ceros. Hay que traerlas como texto.",
+     "correcta": true,
+     "porque": "Exacto. Excel trabaja con 15 cifras de precisión. Un código de 20 cifras guardado como número pierde las últimas sin avisar."
+    },
+    {
+     "texto": "Es solo un problema de formato: con el formato de número adecuado vuelven a salir bien.",
+     "correcta": false,
+     "porque": "El formato cambia cómo se ve el número, no lo que Excel ha guardado. Las cifras que pasan de la 15.ª ya son ceros y no vuelven."
+    },
+    {
+     "texto": "Hay que redondearlas con REDONDEAR para que se vean enteras.",
+     "correcta": false,
+     "porque": "REDONDEAR trabaja con cantidades. Un número de cuenta no es una cantidad: no se redondea, se guarda como texto."
+    }
+   ],
+   "explicacion": "Como en el caso del MI5: un código tratado como número se estropea sin avisar. La solución es importarlo como texto (lo viste con los CSV en el nivel 3) o volver a pedir los datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l1-e7",
+   "modo": "formula",
+   "enunciado": "El encargo de Javier. En la columna D, el 3 % estaba escrito dentro de cada fórmula, y en la fila 5 alguien tecleó 0,3 en lugar de 0,03 (¡Ainhoa iba a cobrar 3.750 € en vez de 375 €!). En **D2** escribe la comisión usando el porcentaje de **G2**. Tu fórmula se copiará a D3:D8, así que fija lo que no deba moverse.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Delegación",
+     "C1": "Ventas nov.",
+     "D1": "Comisión",
+     "F1": "Dato",
+     "G1": "Valor",
+     "A2": "Sergio Lahoz",
+     "B2": "Zaragoza",
+     "C2": 18500,
+     "A3": "Pilar Gimeno",
+     "B3": "Zaragoza",
+     "C3": 21000,
+     "A4": "Iñaki Etxeberria",
+     "B4": "Pamplona",
+     "C4": 16000,
+     "A5": "Ainhoa Goñi",
+     "B5": "Pamplona",
+     "C5": 12500,
+     "A6": "Jordi Serra",
+     "B6": "Lleida",
+     "C6": 14000,
+     "A7": "Montse Farré",
+     "B7": "Lleida",
+     "C7": 10000,
+     "A8": "Arnau Vidal",
+     "B8": "Lleida",
+     "C8": 9500,
+     "F2": "% comisión",
+     "G2": 0.03
+    },
+    "formatos": {
+     "C2:C8": "#.##0 €",
+     "D2:D8": "eur",
+     "G2": "pct1"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 12,
+     "C": 13,
+     "D": 12,
+     "F": 12
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D8"
+   ],
+   "inicial": "=C2*0,03",
+   "solucion": "=C2*$G$2",
+   "alternativas": [
+    "=$G$2*C2",
+    "=C2*G$2"
+   ],
+   "errores_tipicos": [
+    "=C2*0,03",
+    "=C2*G2",
+    "=C2*3%"
+   ],
+   "variantes": [
+    {
+     "G2": 0.035
+    },
+    {
+     "C3": 25000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Cambia el 0,03 por la celda donde está el porcentaje.",
+    "Al copiar hacia abajo, G2 pasaría a G3, G4… que están vacías. Hay que fijarla con $.",
+    "=C2*$G$2"
+   ],
+   "explicacion": "Ahora toda la columna tiene **la misma fórmula** y el porcentaje está a la vista en G2. En enero, Javier cambia G2 a 3,5 % y las siete comisiones se recalculan solas. La hoja ya está lista para que Carmen pague sin sustos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n6m2l1-q1",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "En un informe que recibe filas nuevas cada semana encuentras `=SUMA(D2:D40)` y, debajo, `=D41*0,21`. ¿Qué reglas rompe? Marca todas las que correspondan.",
+   "opciones": [
+    {
+     "texto": "Usa un rango fijo que no crecerá con las filas nuevas",
+     "correcta": true,
+     "porque": "Sí: cuando lleguen datos en la fila 41 y siguientes, la SUMA no los verá. Con una Tabla, el rango crecería solo."
+    },
+    {
+     "texto": "Tiene un número que puede cambiar (el 21 % de IVA) escrito dentro de la fórmula",
+     "correcta": true,
+     "porque": "Sí: si el tipo cambia, habrá que buscarlo dentro de cada fórmula. Va en una celda y la fórmula apunta a ella."
+    },
+    {
+     "texto": "Guarda códigos como números",
+     "correcta": false,
+     "porque": "Aquí no hay códigos: D son importes, y los importes sí son números."
+    },
+    {
+     "texto": "Cuenta dos veces un subtotal",
+     "correcta": false,
+     "porque": "Con lo que se ve no hay ningún subtotal dentro del rango; el problema está en el rango fijo y en el 0,21."
+    }
+   ],
+   "explicacion": "Dos reglas en dos fórmulas: rangos que crecen (Tablas) y ningún número que pueda cambiar dentro de una fórmula."
+  },
+  {
+   "id": "n6m2l1-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "Importas una lista de clientes y el código postal 08001 aparece como 8001. ¿Como qué tipo de dato tenías que haberlo guardado? (Una palabra.)",
+   "aceptadas": [
+    "texto",
+    "Texto",
+    "como texto",
+    "TEXTO"
+   ],
+   "explicacion": "Como texto. Un código postal no es una cantidad: si Excel lo toma como número, le quita el cero de delante."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué parte de las hojas de empresa revisadas a fondo tenía errores, según Panko?",
+   "dorso": "El 94 % de 85 hojas. Lo normal es que haya errores: por eso se comprueba."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo evitas que un total deje fuera las filas nuevas?",
+   "dorso": "Convirtiendo la lista en Tabla (Ctrl+T) y revisando dónde empieza y acaba cada rango."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no escribir `=C2*0,03`?",
+   "dorso": "Si el porcentaje cambia, hay que tocar cada fórmula y siempre se escapa alguna. Ponlo en una celda y fíjala: `=C2*$G$2`."
+  },
+  {
+   "tipo": "error",
+   "frente": "Un total te sale justo el doble de lo esperado. ¿Qué buscas?",
+   "dorso": "Subtotales dentro del rango sumado: se están contando dos veces."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo se guardan los códigos postales, NIF y números de cuenta?",
+   "dorso": "Como texto. Como número pierden los ceros de delante o las cifras a partir de la 15.ª."
+  }
+ ]
+}

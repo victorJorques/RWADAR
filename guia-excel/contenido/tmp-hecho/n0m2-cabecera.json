@@ -1,0 +1,34 @@
+{
+ "id": "n0m2",
+ "nivel": "n0",
+ "titulo": "Escribir datos",
+ "intro": "En una oficina, la mitad del trabajo con Excel es apuntar datos y que queden bien: un importe con punto en vez de coma o una fecha mal escrita estropean cualquier cuenta posterior. En este módulo aprendes a escribir, corregir, mover y guardar datos sin miedo, como lo hace quien lleva años en administración.",
+ "repaso_inicial": [
+  {
+   "id": "n0m2-r1",
+   "modo": "test",
+   "pregunta": "¿Cómo se llama la celda en la que se cruzan la **columna C** y la **fila 4**?",
+   "opciones": [
+    {"texto": "C4", "correcta": true, "porque": "Correcto: primero la letra de la columna y después el número de la fila."},
+    {"texto": "4C", "correcta": false, "porque": "El orden es al revés: en Excel siempre va primero la letra de la columna."},
+    {"texto": "CD4", "correcta": false, "porque": "CD sería otra columna muy lejana. La columna es solo C."}
+   ],
+   "explicacion": "Letra de columna + número de fila: esa es la dirección de cada celda."
+  },
+  {
+   "id": "n0m2-r2",
+   "modo": "senala",
+   "pregunta": "Toca el **cuadro de nombres**: el que te dice en qué celda estás.",
+   "zona": "cuadro_nombres",
+   "explicacion": "Arriba a la izquierda, encima de la columna A. Si te pierdes en una hoja, mira ahí."
+  },
+  {
+   "id": "n0m2-r3",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cuántas celdas tiene el rango **A1:B3**? Escribe solo el número.",
+   "aceptadas": ["6", "seis"],
+   "explicacion": "Dos columnas (A y B) por tres filas (1, 2 y 3): 6 celdas."
+  }
+ ],
+ "practica_excel": null
+}

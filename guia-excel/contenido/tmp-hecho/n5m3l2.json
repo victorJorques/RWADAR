@@ -1,0 +1,479 @@
+{
+ "id": "n5m3l2",
+ "titulo": "Estructura: datos, cálculos y presentación separados",
+ "minutos": 16,
+ "objetivo": "Organizar un cuadro de mando en hojas de datos, parámetros, cálculos y presentación, para que el mes que viene se actualice cambiando una sola celda.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "El cuadro de ventas que hacía mi antecesor había que rehacerlo cada mes y siempre fallaba algo. Quiero uno que el mes que viene se actualice cambiando el mes y poco más. Y que, si estás de vacaciones, lo pueda sacar otra persona.",
+  "logro": "Ya sabes organizar un cuadro de mando en capas, hacer que sus cifras dependan de una sola celda con el mes y dejar escrito cómo se actualiza."
+ },
+ "funciones": [
+  "SUMAR.SI.CONJUNTO",
+  "CONTAR.SI.CONJUNTO",
+  "FIN.MES",
+  "TEXTO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Tres capas, como en un restaurante\nUn restaurante tiene **despensa**, **cocina** y **comedor**, y nadie cocina en el comedor. Un buen cuadro de mando, igual:\n\n- **Datos**: la exportación tal como llega. No se toca.\n- **Cálculos**: las fórmulas y las tablas dinámicas que resumen.\n- **Presentación**: la página que ve Carmen. Solo **lee** de Cálculos.\n\nY dos hojas pequeñas: **Parámetros** (lo que se cambia a mano: el mes, los objetivos) y **Léeme** (las instrucciones)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e1",
+   "modo": "test",
+   "pregunta": "Llega la exportación de ventas de noviembre del programa de gestión. ¿En qué hoja la pegas?",
+   "opciones": [
+    {
+     "texto": "En Datos, debajo de las ventas que ya había",
+     "correcta": true,
+     "porque": "Eso es: los datos van juntos y tal cual llegan. Las fórmulas de Cálculos los leerán desde ahí."
+    },
+    {
+     "texto": "En Presentación, para que Carmen la vea",
+     "correcta": false,
+     "porque": "La presentación solo enseña el resumen. Si mezclas datos y presentación, ni se lee bien ni se puede resumir."
+    },
+    {
+     "texto": "En Cálculos, al lado de las fórmulas",
+     "correcta": false,
+     "porque": "Cálculos es la cocina: transforma datos, pero no los guarda. Si pegas ahí, el mes que viene no sabrás qué es dato y qué es fórmula."
+    }
+   ],
+   "explicacion": "Cada cosa en su hoja: así sabes dónde mirar cuando algo falla."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La presentación solo lee\nEn la hoja de presentación **no se escribe ni un número**. Cada cifra es una fórmula que apunta a Cálculos, por ejemplo `=Cálculos!B4` (nombre de la hoja, signo de exclamación y celda).\n\n¿Por qué? Un número tecleado no se actualiza: el mes que viene seguirá igual y nadie se dará cuenta. Es de los errores más caros, porque la cifra parece buena… y es del mes pasado."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Cazar números tecleados",
+   "md": "**Fórmulas › Mostrar fórmulas** enseña las fórmulas en lugar de los resultados. En la hoja de presentación, todo lo que no empiece por `=` es sospechoso. Vuelve a pulsarlo para dejarlo como estaba."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e2",
+   "modo": "test",
+   "pregunta": "En el cuadro del antecesor de Javier, la tarjeta de ventas muestra **48.200 €**. Haces clic y en la barra de fórmulas pone `48200`. ¿Qué problema hay?",
+   "opciones": [
+    {
+     "texto": "Es un número tecleado: no cambiará aunque cambien los datos",
+     "correcta": true,
+     "porque": "Exacto. El mes que viene seguirá diciendo 48.200 € y parecerá una cifra correcta."
+    },
+    {
+     "texto": "Ninguno, si la cifra de este mes está bien",
+     "correcta": false,
+     "porque": "Hoy puede estar bien. El problema llega el mes que viene, cuando alguien actualice los datos y esta celda se quede igual."
+    },
+    {
+     "texto": "Que le falta el formato de euros",
+     "correcta": false,
+     "porque": "El formato no es el problema: la cifra no está conectada a nada."
+    }
+   ],
+   "explicacion": "Sustitúyelo por una fórmula que lea de Cálculos, como `=Cálculos!B4`."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El mes vive en una sola celda\nPara que el cuadro funcione el mes que viene **sin tocar fórmulas**, el mes del informe se escribe **una vez**, en Parámetros, como el día 1 del mes (01/10/2026). Todas las fórmulas lo leen de ahí.\n\nPara las ventas del mes, se suma desde ese día hasta el último día del mes, que te da `FIN.MES(G2;0)`. En noviembre cambias 01/10 por 01/11 y todo se recalcula. Aquí, para practicar, el mes está en G2, al lado de los datos."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Ejemplo resuelto: las ventas del mes leen G2",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "F1": "Panel",
+     "G1": "Valor",
+     "F2": "Mes del informe",
+     "G2": {
+      "fecha": "2026-10-01"
+     },
+     "F3": "Ventas del mes",
+     "F4": "Facturas del mes",
+     "A2": {
+      "fecha": "2026-09-08"
+     },
+     "B2": "F26-0702",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1320.4,
+     "A3": {
+      "fecha": "2026-09-15"
+     },
+     "B3": "F26-0718",
+     "C3": "Montajes Segre",
+     "D3": 2210.0,
+     "A4": {
+      "fecha": "2026-09-22"
+     },
+     "B4": "F26-0733",
+     "C4": "Reformas Delicias",
+     "D4": 389.9,
+     "A5": {
+      "fecha": "2026-09-30"
+     },
+     "B5": "F26-0760",
+     "C5": "Electricidad Arga",
+     "D5": 1750.0,
+     "A6": {
+      "fecha": "2026-10-06"
+     },
+     "B6": "F26-0866",
+     "C6": "Electricidad Arga",
+     "D6": 965.0,
+     "A7": {
+      "fecha": "2026-10-14"
+     },
+     "B7": "F26-0881",
+     "C7": "Reformas Delicias",
+     "D7": 1488.0,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0897",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "A9": {
+      "fecha": "2026-10-27"
+     },
+     "B9": "F26-0912",
+     "C9": "Instalaciones Moncayo",
+     "D9": 712.3,
+     "A10": {
+      "fecha": "2026-10-30"
+     },
+     "B10": "F26-0925",
+     "C10": "Electricidad Arga",
+     "D10": 2045.1,
+     "A11": {
+      "fecha": "2026-11-04"
+     },
+     "B11": "F26-0940",
+     "C11": "Instalaciones Moncayo",
+     "D11": 845.6,
+     "A12": {
+      "fecha": "2026-11-11"
+     },
+     "B12": "F26-0957",
+     "C12": "Montajes Segre",
+     "D12": 1102.35,
+     "G3": "=SUMAR.SI.CONJUNTO(D2:D12;A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))"
+    },
+    "formatos": {
+     "A2:A12": "fecha",
+     "D2:D12": "eur",
+     "G2": "fecha",
+     "G3": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 2,
+     "F": 16,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 12
+   },
+   "resaltar": [
+    "G2",
+    "G3"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Desde el día 1 (\">=\"&G2) hasta el último día del mes (\"<=\"&FIN.MES(G2;0)). Resultado: 8.330,40 €."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e3",
+   "modo": "formula",
+   "enunciado": "Ahora tú. En **G4**, el **número de facturas del mes** de G2, con el mismo truco de fechas. En octubre debe salir **5**; si alguien cambia G2 a septiembre, tiene que salir 4 sin tocar tu fórmula.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "F1": "Panel",
+     "G1": "Valor",
+     "F2": "Mes del informe",
+     "G2": {
+      "fecha": "2026-10-01"
+     },
+     "F3": "Ventas del mes",
+     "F4": "Facturas del mes",
+     "A2": {
+      "fecha": "2026-09-08"
+     },
+     "B2": "F26-0702",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1320.4,
+     "A3": {
+      "fecha": "2026-09-15"
+     },
+     "B3": "F26-0718",
+     "C3": "Montajes Segre",
+     "D3": 2210.0,
+     "A4": {
+      "fecha": "2026-09-22"
+     },
+     "B4": "F26-0733",
+     "C4": "Reformas Delicias",
+     "D4": 389.9,
+     "A5": {
+      "fecha": "2026-09-30"
+     },
+     "B5": "F26-0760",
+     "C5": "Electricidad Arga",
+     "D5": 1750.0,
+     "A6": {
+      "fecha": "2026-10-06"
+     },
+     "B6": "F26-0866",
+     "C6": "Electricidad Arga",
+     "D6": 965.0,
+     "A7": {
+      "fecha": "2026-10-14"
+     },
+     "B7": "F26-0881",
+     "C7": "Reformas Delicias",
+     "D7": 1488.0,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0897",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "A9": {
+      "fecha": "2026-10-27"
+     },
+     "B9": "F26-0912",
+     "C9": "Instalaciones Moncayo",
+     "D9": 712.3,
+     "A10": {
+      "fecha": "2026-10-30"
+     },
+     "B10": "F26-0925",
+     "C10": "Electricidad Arga",
+     "D10": 2045.1,
+     "A11": {
+      "fecha": "2026-11-04"
+     },
+     "B11": "F26-0940",
+     "C11": "Instalaciones Moncayo",
+     "D11": 845.6,
+     "A12": {
+      "fecha": "2026-11-11"
+     },
+     "B12": "F26-0957",
+     "C12": "Montajes Segre",
+     "D12": 1102.35,
+     "G3": "=SUMAR.SI.CONJUNTO(D2:D12;A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))"
+    },
+    "formatos": {
+     "A2:A12": "fecha",
+     "D2:D12": "eur",
+     "G2": "fecha",
+     "G3": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 2,
+     "F": 16,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 12
+   },
+   "objetivo": "G4",
+   "solucion": "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))",
+   "alternativas": [
+    "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<\"&FECHA.MES(G2;1))",
+    "=CONTAR.SI.CONJUNTO(A2:A12;\"<=\"&FIN.MES(G2;0);A2:A12;\">=\"&G2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(A2:A12;\">=\"&G2)",
+    "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<\"&FIN.MES(G2;0))",
+    "=CONTARA(B6:B10)"
+   ],
+   "variantes": [
+    {
+     "G2": {
+      "fecha": "2026-09-01"
+     }
+    },
+    {
+     "G2": {
+      "fecha": "2026-11-01"
+     }
+    }
+   ],
+   "pistas": [
+    "Contar con dos condiciones sobre la misma columna de fechas: CONTAR.SI.CONJUNTO.",
+    "Primera condición: `A2:A12;\">=\"&G2`. Segunda: `A2:A12;\"<=\"&FIN.MES(G2;0)`.",
+    "`=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))`"
+   ],
+   "explicacion": "**5 facturas.** Y lo importante: cambia G2 y la cifra cambia sola. Con `<=FIN.MES` entra también la factura del último día (la del 30/09 en septiembre); con `<` se perdería."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e4",
+   "modo": "predice",
+   "enunciado": "Hasta el título del cuadro puede leer el mes. ¿Qué texto mostrará esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Parámetro",
+     "B1": "Valor",
+     "A2": "Mes del informe",
+     "B2": {
+      "fecha": "2026-10-01"
+     }
+    },
+    "formatos": {
+     "B2": "fecha"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 12
+    }
+   },
+   "celda": "A4",
+   "formula": "=\"Cuadro de mando de \"&TEXTO(B2;\"mmmm aaaa\")",
+   "explicacion": "TEXTO convierte la fecha en el nombre del mes y el año, y `&` lo une al resto. En noviembre el título cambiará solo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Gráficos y segmentaciones que no se rompen\nDos trampas típicas:\n\n- **Gráfico sobre un rango fijo** (A2:B11): lo que pegues debajo se queda fuera. Hazlo sobre una **Tabla** o una **tabla dinámica**, que crecen solas.\n- **Una segmentación por dinámica**: Carmen pulsa «Lleida» y solo cambia medio cuadro. Usa una sola, conectada a todas: **Segmentación › Conexiones de informe**. Solo se conectan dinámicas que salen **del mismo origen** de datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e5",
+   "modo": "cinta",
+   "enunciado": "La segmentación de Zona no filtra la dinámica de familias. Con esa dinámica seleccionada, ¿dónde ves y marcas las segmentaciones conectadas a ella?",
+   "ruta": [
+    "Analizar tabla dinámica",
+    "Filtrar",
+    "Conexiones de filtro"
+   ],
+   "explicacion": "Analizar tabla dinámica › Filtrar › Conexiones de filtro: marca la segmentación de Zona y Aceptar. Desde la segmentación, el camino es Segmentación › Conexiones de informe."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La hoja Léeme\nLa primera hoja del libro se lo explica a quien lo abra (también a ti dentro de seis meses):\n\n- **Qué es** y para quién.\n- **De dónde salen los datos** (qué exportación, con qué filtro).\n- **Las definiciones** de cada indicador.\n- **Cómo se actualiza**, paso a paso.\n\nCon un buen Léeme, si te vas de vacaciones otra persona saca el cuadro sin llamarte."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena cómo se construye el cuadro de mando, del primer paso al último.",
+   "pasos": [
+    "Hoja Datos: la exportación tal cual, convertida en Tabla",
+    "Hoja Cálculos: fórmulas y dinámicas que resumen los datos",
+    "Hoja Presentación: tarjetas y gráficos que leen de Cálculos",
+    "Revisar que la celda de comprobación diga «OK»",
+    "Exportar la presentación a PDF y enviarla"
+   ],
+   "explicacion": "Se construye de abajo arriba: sin datos no hay cálculos, y sin cálculos la presentación no tiene qué leer. Comprobar va siempre antes de enviar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l2-e7",
+   "modo": "abierta",
+   "pregunta": "Escribe la sección **«Cómo se actualiza»** del Léeme del cuadro de Javier: los pasos que seguirá quien lo saque el mes que viene (de 4 a 6 pasos numerados).",
+   "modelo": "Cómo se actualiza (primer día laborable de cada mes):\n1. Exporta del programa de gestión las ventas del mes y pégalas debajo de la Tabla de la hoja Datos.\n2. En Parámetros, cambia el mes del informe (día 1 del mes, por ejemplo 01/11/2026).\n3. Pulsa Datos › Actualizar todo.\n4. Comprueba que la celda de control de Cálculos dice «OK» y que el total coincide con el del programa.\n5. Deja las segmentaciones sin filtro y exporta la hoja Presentación a PDF.",
+   "criterios": [
+    "Dice dónde se pegan los datos nuevos",
+    "El mes se cambia solo en Parámetros",
+    "Incluye actualizar las dinámicas (Actualizar todo)",
+    "Incluye una comprobación antes de enviar",
+    "Son pasos numerados que entiende otra persona"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n5m3l2-q1",
+   "modo": "test",
+   "pregunta": "¿Qué hoja no debe llevar **ningún** número escrito a mano?",
+   "opciones": [
+    {
+     "texto": "Presentación",
+     "correcta": true,
+     "porque": "Sí: solo lee de Cálculos, así que cada cifra es una fórmula."
+    },
+    {
+     "texto": "Datos",
+     "correcta": false,
+     "porque": "Datos está lleno de números, pero son la fuente: llegan así del programa."
+    },
+    {
+     "texto": "Parámetros",
+     "correcta": false,
+     "porque": "Es justo donde se escriben a mano el mes y los objetivos."
+    }
+   ]
+  },
+  {
+   "id": "n5m3l2-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "La fecha 01/10/2026 está en G2. Escribe la fórmula que devuelve el último día de ese mes.",
+   "aceptadas": [
+    "=FIN.MES(G2;0)",
+    "FIN.MES(G2;0)",
+    "=fin.mes(g2;0)"
+   ],
+   "explicacion": "`FIN.MES(G2;0)`: el 0 significa «este mismo mes». Con 1 daría el último día del mes siguiente."
+  },
+  {
+   "id": "n5m3l2-q3",
+   "modo": "test",
+   "pregunta": "¿Qué tienen que cumplir dos tablas dinámicas para conectarlas a la misma segmentación?",
+   "opciones": [
+    {
+     "texto": "Salir del mismo origen de datos",
+     "correcta": true,
+     "porque": "Eso es: la segmentación filtra un campo del origen, así que las dinámicas tienen que compartirlo."
+    },
+    {
+     "texto": "Estar en la misma hoja",
+     "correcta": false,
+     "porque": "Pueden estar en hojas distintas; lo que cuenta es el origen."
+    },
+    {
+     "texto": "Tener los mismos campos en Filas",
+     "correcta": false,
+     "porque": "Una puede mostrar productos y otra familias: basta con que salgan de la misma Tabla."
+    }
+   ]
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Las capas de un cuadro de mando",
+   "dorso": "Datos (no se tocan) · Cálculos (fórmulas y dinámicas) · Presentación (solo lee). Más Parámetros y Léeme."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Sumar las ventas del mes cuyo día 1 está en G2",
+   "dorso": "=SUMAR.SI.CONJUNTO(Importes;Fechas;\">=\"&G2;Fechas;\"<=\"&FIN.MES(G2;0))"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Conectar una segmentación a varias dinámicas",
+   "dorso": "Segmentación › Conexiones de informe. Desde la dinámica: Analizar tabla dinámica › Filtrar › Conexiones de filtro."
+  }
+ ]
+}

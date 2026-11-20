@@ -1,0 +1,1269 @@
+{
+  "id": "n0m2",
+  "nivel": "n0",
+  "titulo": "Escribir datos",
+  "intro": "En una oficina, la mitad del trabajo con Excel es apuntar datos y que queden bien: un importe con punto en vez de coma o una fecha mal escrita estropean cualquier cuenta posterior. En este módulo aprendes a escribir, corregir, mover y guardar datos sin miedo, como lo hace quien lleva años en administración.",
+  "repaso_inicial": [
+    {
+      "id": "n0m2-r1",
+      "modo": "test",
+      "pregunta": "¿Cómo se llama la celda en la que se cruzan la **columna C** y la **fila 4**?",
+      "opciones": [
+        {
+          "texto": "C4",
+          "correcta": true,
+          "porque": "Correcto: primero la letra de la columna y después el número de la fila."
+        },
+        {
+          "texto": "4C",
+          "correcta": false,
+          "porque": "El orden es al revés: en Excel siempre va primero la letra de la columna."
+        },
+        {
+          "texto": "CD4",
+          "correcta": false,
+          "porque": "CD sería otra columna muy lejana. La columna es solo C."
+        }
+      ],
+      "explicacion": "Letra de columna + número de fila: esa es la dirección de cada celda."
+    },
+    {
+      "id": "n0m2-r2",
+      "modo": "senala",
+      "pregunta": "Toca el **cuadro de nombres**: el que te dice en qué celda estás.",
+      "zona": "cuadro_nombres",
+      "explicacion": "Arriba a la izquierda, encima de la columna A. Si te pierdes en una hoja, mira ahí."
+    },
+    {
+      "id": "n0m2-r3",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cuántas celdas tiene el rango **A1:B3**? Escribe solo el número.",
+      "aceptadas": [
+        "6",
+        "seis"
+      ],
+      "explicacion": "Dos columnas (A y B) por tres filas (1, 2 y 3): 6 celdas."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n0m2l1",
+      "titulo": "Escribir, corregir y deshacer",
+      "minutos": 12,
+      "objetivo": "Escribir datos en una celda, confirmarlos, corregir una letra sin borrar lo demás y deshacer cualquier error con Ctrl+Z.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "Hola, bienvenida. En la lista de extensiones de teléfono hay dos fallos: el apellido de Sergio pone «Lázro» y a Pablo Gil le falta su extensión, la 214. ¿Me lo arreglas? Con cuidado, que esa lista la usa recepción todo el día.",
+        "logro": "Ya sabes escribir y corregir datos en una hoja de la empresa sin estropear lo que había, y deshacer cualquier error en un segundo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Escribir en Excel tiene tres pasos:\n\n1. **Haz clic** en la celda.\n2. **Escribe**.\n3. Pulsa **Intro** para confirmar.\n\nMientras escribes, el texto todavía no está dentro de la celda: está «en el aire». Al pulsar **Intro**, se queda guardado en la celda y Excel baja a la celda de abajo, listo para el siguiente dato."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La lista de extensiones de Lucía",
+          "hoja": {
+            "celdas": {
+              "A1": "Nombre",
+              "B1": "Apellidos",
+              "C1": "Departamento",
+              "D1": "Extensión",
+              "A2": "Ana",
+              "B2": "Beltrán Sanz",
+              "C2": "Administración",
+              "D2": 201,
+              "A3": "Sergio",
+              "B3": "Lázro Pérez",
+              "C3": "Almacén",
+              "D3": 230,
+              "A4": "Pablo",
+              "B4": "Gil Moreno",
+              "C4": "Compras",
+              "A5": "Irene",
+              "B5": "Cuesta Royo",
+              "C5": "Comercial",
+              "D5": 245
+            },
+            "anchos": {
+              "A": 10,
+              "B": 14,
+              "C": 16,
+              "D": 11
+            }
+          },
+          "resaltar": [
+            "B3",
+            "D4"
+          ],
+          "pie": "Los dos fallos: el apellido de B3 y la extensión que falta en D4."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e1",
+          "modo": "test",
+          "pregunta": "Has hecho clic en **D4** y has escrito `214`. ¿Qué tecla pulsas para que se quede guardado en la celda?",
+          "opciones": [
+            {
+              "texto": "[[Intro]]",
+              "correcta": true,
+              "porque": "Eso es: Intro confirma lo que has escrito y lo deja dentro de la celda."
+            },
+            {
+              "texto": "[[Esc]]",
+              "correcta": false,
+              "porque": "Esc hace lo contrario: cancela lo que estabas escribiendo y la celda se queda como estaba."
+            },
+            {
+              "texto": "[[Supr]]",
+              "correcta": false,
+              "porque": "Supr sirve para vaciar celdas, no para confirmar lo que escribes."
+            }
+          ],
+          "explicacion": "Primer paso dado: ya sabes meter un dato en una hoja de la empresa. Con [[Tab]] (la tecla con dos flechas, encima de [[Bloq Mayús]]) también se confirma, pero Excel salta a la celda de la derecha en vez de bajar."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Te has equivocado de celda mientras escribías? Pulsa **Esc**: lo que estabas escribiendo desaparece y la celda queda **exactamente como estaba**.\n\nY un detalle importante: mientras escribes, Excel está «ocupado» y muchos botones de la cinta se ven en gris. Si algo no responde, casi siempre es porque te falta pulsar **Intro**."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Intro",
+              "accion": "Confirmar y bajar a la celda de abajo"
+            },
+            {
+              "teclas": "Tab",
+              "accion": "Confirmar y pasar a la celda de la derecha"
+            },
+            {
+              "teclas": "Esc",
+              "accion": "Cancelar lo que estás escribiendo"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e2",
+          "modo": "test",
+          "pregunta": "Estás escribiendo `Comer` en **C3** y te das cuenta: esa celda era la de Sergio, que es de Almacén. Todavía no has pulsado nada más. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Pulso [[Esc]]",
+              "correcta": true,
+              "porque": "Correcto: Esc cancela lo que estabas escribiendo y C3 vuelve a decir «Almacén», sin daños."
+            },
+            {
+              "texto": "Pulso [[Intro]] y luego lo arreglo",
+              "correcta": false,
+              "porque": "Con Intro confirmarías «Comer» y borrarías «Almacén». Se podría deshacer, pero es dar un rodeo."
+            },
+            {
+              "texto": "Cierro Excel sin guardar",
+              "correcta": false,
+              "porque": "Demasiado drástico: perderías todo lo que hayas hecho desde la última vez que guardaste."
+            }
+          ],
+          "explicacion": "Esc es tu freno de emergencia mientras escribes. Úsalo sin miedo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora, el error más típico del primer día: si haces clic en una celda que ya tiene algo y **empiezas a escribir**, lo nuevo **sustituye todo** lo que había.\n\nEs como grabar encima de un mensaje del contestador: lo anterior desaparece entero. Si en B3 («Lázro Pérez») escribes solo `Lázaro`, el «Pérez» se pierde."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Truco de veterana: para cambiar **una letra** no reescribas la celda. Pulsa **F2** (o haz doble clic en la celda) y entras «dentro» del texto, con el cursor parpadeando. Así tocas solo lo que está mal."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e3",
+          "modo": "test",
+          "pregunta": "En B3 pone `Lázro Pérez`. Haces clic en B3, escribes `Lázaro` y pulsas Intro. ¿Qué queda en B3?",
+          "opciones": [
+            {
+              "texto": "`Lázaro`",
+              "correcta": true,
+              "porque": "Así es: al escribir directamente sobre una celda llena, lo nuevo sustituye todo. El «Pérez» se ha perdido."
+            },
+            {
+              "texto": "`Lázaro Pérez`",
+              "correcta": false,
+              "porque": "Eso solo pasaría si hubieras entrado con F2 o doble clic y corregido solo la palabra. Escribir encima borra todo lo anterior."
+            },
+            {
+              "texto": "`Lázro Pérez Lázaro`",
+              "correcta": false,
+              "porque": "Excel no añade lo nuevo al final: lo cambia por completo."
+            }
+          ],
+          "explicacion": "Acabas de detectar el error más común de quien empieza. Por eso, para retocar una celda, se entra con F2 o doble clic."
+        },
+        {
+          "tipo": "pantalla",
+          "md": "Hay una tercera forma de corregir: haz clic en la celda y luego en la **barra de fórmulas**, la franja larga encima de las columnas. Ahí ves todo el contenido de la celda, aunque sea muy largo, y puedes editarlo con calma.",
+          "resaltar": "barra_formulas"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e4",
+          "modo": "senala",
+          "pregunta": "Toca la **barra de fórmulas**: el sitio donde ves y puedes corregir el contenido completo de la celda activa.",
+          "zona": "barra_formulas",
+          "explicacion": "Esa es. Cuando una celda tiene un texto largo que no se ve entero, míralo en la barra de fórmulas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para **vaciar** una celda: selecciónala y pulsa **Supr**. Si seleccionas varias celdas, Supr las vacía todas de golpe.\n\n¿Y si borras algo sin querer? Ya conoces a tu mejor aliada: **Ctrl+Z deshace** lo último que has hecho, y cada vez que lo pulsas deshace un paso más. Si deshaces de más, **Ctrl+Y** lo rehace."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Equivocarse aquí es gratis",
+          "md": "Con [[Ctrl]]+[[Z]] a mano, puedes probar sin miedo. Si algo sale raro, deshaces y vuelves a intentarlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e5",
+          "modo": "respuesta_corta",
+          "pregunta": "Acabas de pulsar Supr sin querer y has vaciado toda la columna de extensiones. ¿Qué atajo de teclado lo devuelve todo a su sitio?",
+          "aceptadas": [
+            "Ctrl+Z",
+            "Control+Z",
+            "Ctrl Z",
+            "Ctrl + Z",
+            "Control Z"
+          ],
+          "explicacion": "Ctrl+Z, deshacer. Te acaba de salvar la mañana: recepción ni se habrá enterado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l1-e6",
+          "modo": "ordenar",
+          "enunciado": "Lucía te ha pasado su encargo. Ordena los pasos: **primero** corrige el apellido de Sergio («Lázro» → «Lázaro») sin perder el «Pérez», y **después** escribe la extensión 214 de Pablo en D4.",
+          "pasos": [
+            "Haz clic en B3",
+            "Pulsa F2 para entrar en la celda",
+            "Con las flechas, lleva el cursor entre la «z» y la «r»",
+            "Escribe la «a» que falta y pulsa Intro",
+            "Haz clic en D4, que está vacía",
+            "Escribe 214 y pulsa Intro"
+          ],
+          "explicacion": "Encargo resuelto: el apellido está bien, el «Pérez» sigue ahí y la extensión de Pablo ya está. Así se toca una lista que usan otros: solo lo necesario."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m2l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué tecla pulsas para corregir una celda sin borrar lo que ya tiene?",
+          "aceptadas": [
+            "F2",
+            "f2"
+          ],
+          "explicacion": "F2 (o doble clic en la celda): entras en el contenido y cambias solo lo que hace falta."
+        },
+        {
+          "id": "n0m2l1-q2",
+          "modo": "test",
+          "pregunta": "Has deshecho tres cambios con Ctrl+Z, pero el último sí estaba bien. ¿Cómo lo recuperas?",
+          "opciones": [
+            {
+              "texto": "[[Ctrl]]+[[Y]]",
+              "correcta": true,
+              "porque": "Correcto: Ctrl+Y rehace lo que acabas de deshacer."
+            },
+            {
+              "texto": "[[Esc]]",
+              "correcta": false,
+              "porque": "Esc cancela lo que estás escribiendo en ese momento; no recupera cambios deshechos."
+            },
+            {
+              "texto": "Otra vez [[Ctrl]]+[[Z]]",
+              "correcta": false,
+              "porque": "Ctrl+Z deshace un paso más hacia atrás: te alejarías todavía más del cambio bueno."
+            }
+          ],
+          "explicacion": "Ctrl+Z hacia atrás, Ctrl+Y hacia delante."
+        },
+        {
+          "id": "n0m2l1-q3",
+          "modo": "test",
+          "pregunta": "Escribes en una celda y, sin pulsar Intro, intentas usar un botón de la cinta, pero está en gris. ¿Por qué?",
+          "opciones": [
+            {
+              "texto": "Porque Excel sigue esperando a que confirmes lo que escribes",
+              "correcta": true,
+              "porque": "Eso es: mientras escribes, muchos botones se desactivan. Pulsa Intro (o Esc) y vuelven."
+            },
+            {
+              "texto": "Porque el archivo está estropeado",
+              "correcta": false,
+              "porque": "No: es lo normal mientras estás escribiendo en una celda."
+            },
+            {
+              "texto": "Porque hay que guardar antes",
+              "correcta": false,
+              "porque": "Guardar no tiene nada que ver; falta confirmar la celda con Intro."
+            }
+          ],
+          "explicacion": "Si algo no responde mientras escribes, primero Intro."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Deshacer lo último que has hecho",
+          "dorso": "Ctrl+Z (y Ctrl+Y para rehacer)"
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Corregir una celda sin borrar lo que tiene",
+          "dorso": "F2 o doble clic en la celda"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué pasa si escribes sobre una celda que ya tiene datos?",
+          "dorso": "Lo nuevo sustituye todo lo anterior."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Cancelar lo que estás escribiendo en una celda",
+          "dorso": "Esc: la celda queda como estaba"
+        }
+      ]
+    },
+    {
+      "id": "n0m2l2",
+      "titulo": "Números, textos y fechas: cómo los entiende Excel",
+      "minutos": 14,
+      "objetivo": "Escribir importes, cantidades, fechas y porcentajes de forma que Excel los reconozca como números y pueda calcular con ellos.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Te paso los cobros que ha recibido hoy el banco: Instalaciones Ebro, 1.250,40 €, y Electricidad Moncayo, 980,75 €, los dos con fecha 16/11/2026. Apúntalos en la hoja de cobros, que luego los sumo. Que Excel los entienda como números, por favor.",
+        "logro": "Ya sabes escribir importes, fechas y porcentajes para que Excel los entienda y se puedan sumar, y detectar a simple vista un dato mal escrito."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Para Excel no todo lo que escribes es igual. Distingue sobre todo entre:\n\n- **Números**: cantidades, importes, fechas. Con ellos puede calcular.\n- **Textos**: nombres, productos, direcciones. Solo los guarda.\n\nY te da una pista a simple vista: los **números se alinean a la derecha** de la celda y los **textos a la izquierda**. Mira la columna de cantidades de Andrés."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Recuento del almacén",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Cantidad",
+              "C1": "Precio",
+              "A2": "Cable 2,5 mm (rollo 100 m)",
+              "B2": 40,
+              "C2": 52.9,
+              "A3": "Bridas negras (bolsa 100)",
+              "B3": "'120",
+              "C3": 3.15,
+              "A4": "Tubo corrugado 20 mm",
+              "B4": 25,
+              "C4": 18.4
+            },
+            "formatos": {
+              "C2:C4": "eur"
+            },
+            "anchos": {
+              "A": 26,
+              "B": 10,
+              "C": 10
+            }
+          },
+          "resaltar": [
+            "B3"
+          ],
+          "pie": "¿Ves el 120 pegado a la izquierda? Parece un número, pero Excel lo tiene guardado como texto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e1",
+          "modo": "test",
+          "pregunta": "En la columna de cantidades, todos los números están a la derecha menos el **120**, que está a la izquierda. ¿Qué te dice eso?",
+          "opciones": [
+            {
+              "texto": "Que Excel no lo trata como número, sino como texto",
+              "correcta": true,
+              "porque": "Exacto: alineado a la izquierda (sin que nadie lo haya cambiado a mano) es señal de texto. Excel no podrá calcular bien con él."
+            },
+            {
+              "texto": "Que es el número más grande de la columna",
+              "correcta": false,
+              "porque": "La alineación no depende del tamaño del número, sino de si Excel lo entiende como número o como texto."
+            },
+            {
+              "texto": "Nada: es solo una cuestión de estética",
+              "correcta": false,
+              "porque": "Es mucho más que estética: un número guardado como texto da problemas al sumar, ordenar o buscar."
+            }
+          ],
+          "explicacion": "Ya tienes tu primer «detector de problemas»: mirar hacia qué lado se alinea un dato. Lo usarás cada vez que te llegue una hoja de otro programa."
+        },
+        {
+          "tipo": "texto",
+          "md": "Primera regla para que Excel entienda un número: en España, los **decimales van con coma**.\n\n- Bien: `12,5`\n- Mal: `12.5`\n\nCon punto, Excel no lo reconoce como el número que tú querías: lo puede dejar como **texto** o incluso convertirlo en una **fecha**. Y tampoco escribas el punto de los miles: teclea `1250,4` y deja que el formato lo muestre bonito."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e2",
+          "modo": "test",
+          "pregunta": "Un metro de cable cuesta ochenta y cinco céntimos. ¿Cómo lo escribes en la celda?",
+          "opciones": [
+            {
+              "texto": "`0,85`",
+              "correcta": true,
+              "porque": "Correcto: coma decimal, como se escribe en España. Excel lo reconoce como número."
+            },
+            {
+              "texto": "`0.85`",
+              "correcta": false,
+              "porque": "Con punto, Excel en español no lo entiende como 0,85: puede quedar como texto o convertirse en una fecha."
+            },
+            {
+              "texto": "`0,85 €/m`",
+              "correcta": false,
+              "porque": "Las unidades dentro de la celda convierten el dato en texto. El «€/m» va en la cabecera de la columna."
+            }
+          ],
+          "explicacion": "Coma decimal siempre. Un detalle tan pequeño separa una hoja que calcula de una que da errores."
+        },
+        {
+          "tipo": "texto",
+          "md": "Segunda regla: **una celda, un dato**. Nada de escribir `12 uds`, `5 kg` o `100 EUR`. En cuanto añades letras, Excel lo guarda como **texto** y ya no puede hacer cuentas con él.\n\nLa unidad se pone en la **cabecera**: «Cantidad (uds)», «Peso (kg)», «Importe (€)». Y el símbolo de euro lo pone el **formato** de la celda, que aprenderás en el nivel 1."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Andrés Molina",
+          "puesto": "Jefe de compras y almacén",
+          "md": "Oye, la hoja de cajas me da un error raro en el total. Nuria ya ha puesto la cuenta que suma las dos filas. ¿Ves qué pasa?"
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Cajas recibidas",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Cajas",
+              "A2": "Distribuciones Aragón",
+              "B2": 120,
+              "A3": "Suministros Navarra",
+              "B3": "12 uds",
+              "A4": "Total",
+              "B4": "=B2+B3"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 10
+            }
+          },
+          "resaltar": [
+            "B3",
+            "B4"
+          ],
+          "pie": "En B4 hay una cuenta que suma B2 y B3. Las cuentas las aprenderás en el módulo siguiente; aquí solo mira el resultado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e3",
+          "modo": "test",
+          "pregunta": "El total de Andrés sale `#¡VALOR!`. ¿Por qué?",
+          "opciones": [
+            {
+              "texto": "Porque en B3 pone «12 uds»: es texto y Excel no puede sumarlo",
+              "correcta": true,
+              "porque": "Eso es: al añadir «uds», el 12 dejó de ser un número. Excel avisa con #¡VALOR! de que no puede hacer la cuenta."
+            },
+            {
+              "texto": "Porque 120 + 12 es demasiado grande",
+              "correcta": false,
+              "porque": "Excel maneja números enormes sin problema; el fallo está en el tipo de dato, no en el tamaño."
+            },
+            {
+              "texto": "Porque los proveedores son distintos",
+              "correcta": false,
+              "porque": "Los nombres de la columna A no intervienen en la cuenta. El problema está en B3."
+            }
+          ],
+          "explicacion": "Has encontrado el fallo tú sola. Cuando veas un #¡VALOR!, sospecha de un número escrito con letras."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e4",
+          "modo": "predice",
+          "enunciado": "Andrés corrige **B3** y deja solo el número `12`. La cuenta de B4 sigue siendo la misma. ¿Qué número aparecerá ahora en B4?",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Cajas",
+              "A2": "Distribuciones Aragón",
+              "B2": 120,
+              "A3": "Suministros Navarra",
+              "B3": 12,
+              "A4": "Total"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 10
+            }
+          },
+          "celda": "B4",
+          "formula": "=B2+B3",
+          "explicacion": "120 + 12 = 132. Con el dato bien escrito, la cuenta funciona sola. Las unidades, en la cabecera.",
+          "respuesta": "132"
+        },
+        {
+          "tipo": "texto",
+          "md": "Las **fechas** se escriben con barras: **día/mes/año**, con el año entero. Por ejemplo, `16/11/2026`.\n\nSi Excel la reconoce, la verás **a la derecha**, como cualquier número. Dos formas de liarla:\n\n- Con puntos (`16.11.2026`) puede quedarse como texto, a la izquierda.\n- Sin año (`16/11`), Excel pone el año en curso: con una factura del año pasado, la fecha saldría mal."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Fecha bien escrita",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha de cobro",
+              "A2": {
+                "fecha": "2026-11-16"
+              }
+            },
+            "formatos": {
+              "A2": "fecha"
+            },
+            "anchos": {
+              "A": 16
+            }
+          },
+          "resaltar": [
+            "A2"
+          ],
+          "pie": "Escrita como 16/11/2026: Excel la reconoce y la alinea a la derecha."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e5",
+          "modo": "test",
+          "pregunta": "Tienes que apuntar una factura del **3 de diciembre de 2025**. ¿Qué escribes?",
+          "opciones": [
+            {
+              "texto": "`03/12/2025`",
+              "correcta": true,
+              "porque": "Correcto: día, mes y año completo, separados por barras. Excel la reconoce como fecha."
+            },
+            {
+              "texto": "`03/12`",
+              "correcta": false,
+              "porque": "Sin año, Excel pone el año en curso (2026) y la factura quedaría con la fecha equivocada."
+            },
+            {
+              "texto": "`3 dic. 2025 (factura)`",
+              "correcta": false,
+              "porque": "Con palabras añadidas se convierte en texto. Una celda, un dato: la palabra «factura» va en otra columna."
+            }
+          ],
+          "explicacion": "Con el año completo no hay sorpresas. Las fechas bien escritas te permitirán más adelante ordenar, filtrar por mes y calcular plazos de pago."
+        },
+        {
+          "tipo": "texto",
+          "md": "Los **porcentajes** se escriben con el signo: `21%`. Excel lo muestra como 21 %, pero por dentro guarda **0,21**, que es lo que usará en las cuentas (21 % es 21 de cada 100).\n\nAsí que el IVA general, el 21 %, se teclea `21%`. No escribas `21` a secas: en una celda normal, Excel entendería veintiuno."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "Vas a apuntar el importe del cobro de Electricidad Moncayo: **980,75 €**. Escribe exactamente lo que teclearías en la celda.",
+          "aceptadas": [
+            "980,75"
+          ],
+          "explicacion": "Solo el número, con coma decimal y sin el €. El símbolo lo pondrá el formato de la columna. Así Marta podrá sumarlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l2-e7",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "Un compañero ha empezado la hoja de cobros de Marta. Marca **todas** las entradas que están **bien escritas** para que Excel las entienda.",
+          "opciones": [
+            {
+              "texto": "Fecha: `16/11/2026`",
+              "correcta": true,
+              "porque": "Bien: día/mes/año con barras y año completo."
+            },
+            {
+              "texto": "Importe: `1250,40`",
+              "correcta": true,
+              "porque": "Bien: número con coma decimal, sin punto de miles ni €."
+            },
+            {
+              "texto": "Cliente: `Instalaciones Ebro`",
+              "correcta": true,
+              "porque": "Bien: es un texto y debe ser texto."
+            },
+            {
+              "texto": "Importe: `980.75`",
+              "correcta": false,
+              "porque": "Mal: con punto, Excel en español no lo entiende como 980,75. Se escribe 980,75."
+            },
+            {
+              "texto": "Fecha: `16.11.2026`",
+              "correcta": false,
+              "porque": "Mal: con puntos puede quedarse como texto. Usa barras: 16/11/2026."
+            },
+            {
+              "texto": "Cliente e importe: `Moncayo 980,75`",
+              "correcta": false,
+              "porque": "Mal: dos datos en una celda. El cliente va en una columna y el importe en otra."
+            }
+          ],
+          "explicacion": "Encargo de Marta resuelto: fecha, cliente e importe, cada uno en su celda y bien escrito. Ahora esos cobros se pueden sumar, ordenar y filtrar sin sorpresas."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m2l2-q1",
+          "modo": "test",
+          "pregunta": "Sin tocar la alineación, ¿hacia qué lado se coloca un **texto** en la celda?",
+          "opciones": [
+            {
+              "texto": "A la izquierda",
+              "correcta": true,
+              "porque": "Correcto: textos a la izquierda, números y fechas a la derecha."
+            },
+            {
+              "texto": "A la derecha",
+              "correcta": false,
+              "porque": "A la derecha van los números y las fechas."
+            },
+            {
+              "texto": "Centrado",
+              "correcta": false,
+              "porque": "Excel no centra nada por su cuenta; eso se hace a mano con el formato."
+            }
+          ],
+          "explicacion": "La alineación es tu pista rápida para detectar números que en realidad son texto."
+        },
+        {
+          "id": "n0m2l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué tecleas en la celda para poner un IVA del diez por ciento?",
+          "aceptadas": [
+            "10%",
+            "10 %"
+          ],
+          "explicacion": "10% (Excel guarda 0,1 por dentro)."
+        },
+        {
+          "id": "n0m2l2-q3",
+          "modo": "test",
+          "pregunta": "En una celda pone `5 kg`. ¿Qué problema tiene?",
+          "opciones": [
+            {
+              "texto": "Es texto: Excel no podrá calcular con ese 5",
+              "correcta": true,
+              "porque": "Eso es: las letras convierten el dato en texto. La unidad va en la cabecera: «Peso (kg)»."
+            },
+            {
+              "texto": "Ninguno, Excel quita las letras solo",
+              "correcta": false,
+              "porque": "Excel no quita las letras: lo guarda tal cual, como texto."
+            },
+            {
+              "texto": "Que debería ser «5 Kg» con mayúscula",
+              "correcta": false,
+              "porque": "La mayúscula no cambia nada: con letras o sin ellas en mayúscula, sigue siendo texto."
+            }
+          ],
+          "explicacion": "Una celda, un dato, y la unidad en la cabecera."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo reconoces a simple vista un número guardado como texto?",
+          "dorso": "Se alinea a la izquierda (los números de verdad van a la derecha)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se escribe doce y medio en Excel en español?",
+          "dorso": "12,5 (con coma; con punto puede quedar como texto o fecha)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se escribe una fecha para que Excel la entienda?",
+          "dorso": "Con barras y año completo: 16/11/2026."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué significa #¡VALOR! en una suma de dos celdas?",
+          "dorso": "Que una de ellas tiene texto (por ejemplo «12 uds») y no se puede calcular."
+        }
+      ]
+    },
+    {
+      "id": "n0m2l3",
+      "titulo": "Copiar, cortar, pegar y ensanchar columnas",
+      "minutos": 12,
+      "objetivo": "Copiar o mover datos con Ctrl+C, Ctrl+X y Ctrl+V sin pisar nada, y ensanchar una columna cuando aparece ######.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "En la hoja del pedido semanal, la columna de proveedores se quedó en la F, lejísimos. Muévela a la C, que está vacía. Y la columna de importes sale llena de almohadillas: déjala que se lea, que la reviso en diez minutos.",
+        "logro": "Ya sabes copiar y mover datos sin pisar nada y arreglar una columna que no deja ver los importes."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Tres atajos que usarás cien veces al día:\n\n- **Copiar** (Ctrl+C): como una **fotocopia**. El original se queda donde estaba.\n- **Cortar** (Ctrl+X): como una **mudanza**. El dato se va del sitio de origen.\n- **Pegar** (Ctrl+V): coloca lo copiado o cortado donde tú digas.\n\nSirven igual en Word, en el correo y en casi cualquier programa."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Ctrl+C",
+              "accion": "Copiar"
+            },
+            {
+              "teclas": "Ctrl+X",
+              "accion": "Cortar"
+            },
+            {
+              "teclas": "Ctrl+V",
+              "accion": "Pegar"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e1",
+          "modo": "test",
+          "pregunta": "Quieres el nombre de un producto **en dos sitios**: donde está y también en otra celda. ¿Qué usas?",
+          "opciones": [
+            {
+              "texto": "Copiar ([[Ctrl]]+[[C]]) y pegar",
+              "correcta": true,
+              "porque": "Correcto: copiar es una fotocopia. El original se queda y aparece otro igual donde pegues."
+            },
+            {
+              "texto": "Cortar ([[Ctrl]]+[[X]]) y pegar",
+              "correcta": false,
+              "porque": "Cortar es una mudanza: el dato desaparecería de su sitio original."
+            },
+            {
+              "texto": "Solo pegar ([[Ctrl]]+[[V]])",
+              "correcta": false,
+              "porque": "Pegar sin copiar antes no sirve: Excel no sabe qué tiene que poner."
+            }
+          ],
+          "explicacion": "Copiar duplica, cortar mueve. Con esto ya no tendrás que reescribir nada dos veces."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: copiar un producto",
+          "pasos": [
+            {
+              "md": "Haz clic en **A2** y pulsa [[Ctrl]]+[[C]]. Alrededor de la celda aparece un **borde discontinuo que se mueve**: Excel te dice «tengo esto copiado».",
+              "hoja": {
+                "celdas": {
+                  "A1": "Producto",
+                  "B1": "Uds",
+                  "A2": "Magnetotérmico 2P 16 A",
+                  "B2": 30
+                },
+                "anchos": {
+                  "A": 24,
+                  "B": 8
+                }
+              }
+            },
+            {
+              "md": "Haz clic en la celda de destino, **A3**, y pulsa [[Ctrl]]+[[V]]. El producto aparece también en A3 y el original sigue en A2.",
+              "hoja": {
+                "celdas": {
+                  "A1": "Producto",
+                  "B1": "Uds",
+                  "A2": "Magnetotérmico 2P 16 A",
+                  "B2": 30,
+                  "A3": "Magnetotérmico 2P 16 A"
+                },
+                "anchos": {
+                  "A": 24,
+                  "B": 8
+                }
+              }
+            },
+            {
+              "md": "Mientras el borde se siga moviendo, puedes pegar en más celdas. Cuando acabes, pulsa [[Esc]] para quitarlo."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e2",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para copiar la cantidad de B2 a B3.",
+          "pasos": [
+            "Haz clic en B2",
+            "Pulsa Ctrl+C",
+            "Haz clic en B3",
+            "Pulsa Ctrl+V",
+            "Pulsa Esc para quitar el borde que se mueve"
+          ],
+          "explicacion": "Siempre igual: primero eliges qué copias, luego adónde va. Este gesto lo repetirás a diario."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Cortar** funciona igual, pero con [[Ctrl]]+[[X]]: seleccionas, cortas, haces clic en el destino y pegas. El dato **se muda**: la celda de origen se queda vacía.\n\nSirve para recolocar una columna que está en mal sitio. Si quieres que el dato se quede también donde estaba, no cortes: copia."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e3",
+          "modo": "respuesta_corta",
+          "pregunta": "Quieres **mover** unos datos a otro sitio (que desaparezcan de donde están). ¿Qué atajo pulsas **antes** de pegar con Ctrl+V?",
+          "aceptadas": [
+            "Ctrl+X",
+            "Control+X",
+            "Ctrl X",
+            "Ctrl + X",
+            "Control X"
+          ],
+          "explicacion": "Ctrl+X, cortar. Después, Ctrl+V en el destino."
+        },
+        {
+          "tipo": "cinta",
+          "md": "Si prefieres el ratón, los tres botones están en **Inicio**, a la izquierda del todo, en el grupo **Portapapeles**: Pegar (el grande), Cortar (las tijeras) y Copiar.",
+          "ruta": [
+            "Inicio",
+            "Portapapeles",
+            "Copiar"
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e4",
+          "modo": "cinta",
+          "enunciado": "Sin teclado: ¿dónde está el botón **Cortar**?",
+          "ruta": [
+            "Inicio",
+            "Portapapeles",
+            "Cortar"
+          ],
+          "explicacion": "Inicio › Portapapeles › Cortar. Teclado o ratón: elige lo que te resulte más cómodo."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Cuidado con una cosa: si pegas sobre celdas que ya tienen datos, Excel **los sustituye sin preguntar**. Antes de pegar, mira que el destino esté vacío. Y si te pasa, [[Ctrl]]+[[Z]] al momento."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e5",
+          "modo": "test",
+          "pregunta": "Has pegado una lista de precios y, al mirar, ves que has tapado la columna de cantidades, que estaba llena. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Pulso [[Ctrl]]+[[Z]] para deshacer el pegado",
+              "correcta": true,
+              "porque": "Correcto: deshacer devuelve las cantidades a su sitio. Luego pegas donde toca."
+            },
+            {
+              "texto": "Vuelvo a escribir las cantidades de memoria",
+              "correcta": false,
+              "porque": "Es lento y arriesgado: puedes equivocarte en algún número. Ctrl+Z lo arregla en un segundo y sin errores."
+            },
+            {
+              "texto": "Pulso [[Esc]]",
+              "correcta": false,
+              "porque": "Esc solo quita el borde de copiado; lo pegado se queda donde está."
+            }
+          ],
+          "explicacion": "Pegar encima es un clásico. Ahora sabes repararlo antes de que nadie lo note."
+        },
+        {
+          "tipo": "texto",
+          "md": "Te encontrarás esto en una celda: `########`. **No es un error** ni has roto nada: el número o la fecha **no cabe** en la columna, y Excel prefiere enseñar almohadillas antes que un número cortado (que te haría leer mal un importe).\n\nLa solución: **ensanchar la columna**."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para ensanchar, ve a la fila de las letras de las columnas. Pon el ratón en la **línea de la derecha** de la letra (por ejemplo, entre la D y la E). El puntero cambia a una flecha doble.\n\n- **Arrastra** hacia la derecha para darle el ancho que quieras.\n- O haz **doble clic**: Excel ajusta la columna al dato más largo que contiene."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e6",
+          "modo": "senala",
+          "pregunta": "Toca la zona donde está la línea que hay que arrastrar (o en la que hacer doble clic) para ensanchar una columna.",
+          "zona": "encabezado_columna",
+          "explicacion": "Ahí, en los encabezados de columna, entre una letra y la siguiente. Doble clic y la columna se ajusta sola."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l3-e7",
+          "modo": "ordenar",
+          "enunciado": "Resuelve el encargo de Andrés. Ordena los pasos: **primero** mueve los proveedores de la columna F (F1:F8) a la columna C, y **después** arregla las almohadillas de la columna D.",
+          "pasos": [
+            "Selecciona F1:F8",
+            "Pulsa Ctrl+X",
+            "Haz clic en C1, que está vacía",
+            "Pulsa Ctrl+V",
+            "Pon el ratón en la línea entre las letras D y E",
+            "Haz doble clic para que la columna D se ajuste"
+          ],
+          "explicacion": "Encargo cumplido: los proveedores están donde deben, la columna F ha quedado libre y los importes se leen enteros. Andrés no tendrá nada que corregir."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m2l3-q1",
+          "modo": "test",
+          "pregunta": "Una celda con un importe muestra `#######`. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "La columna es demasiado estrecha para el número",
+              "correcta": true,
+              "porque": "Correcto: ensancha la columna (doble clic en el borde de su letra) y el número aparece."
+            },
+            {
+              "texto": "El importe se ha borrado",
+              "correcta": false,
+              "porque": "El número sigue ahí; solo es que no cabe a la vista."
+            },
+            {
+              "texto": "El archivo tiene un virus",
+              "correcta": false,
+              "porque": "Nada que ver: las almohadillas solo indican falta de espacio."
+            }
+          ],
+          "explicacion": "Almohadillas = columna estrecha. Doble clic en el borde y listo."
+        },
+        {
+          "id": "n0m2l3-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo pega lo que has copiado?",
+          "aceptadas": [
+            "Ctrl+V",
+            "Control+V",
+            "Ctrl V",
+            "Ctrl + V",
+            "Control V"
+          ],
+          "explicacion": "Ctrl+V, pegar."
+        },
+        {
+          "id": "n0m2l3-q3",
+          "modo": "test",
+          "pregunta": "Repaso de la lección anterior: en una celda de cantidades alguien ha escrito `30 uds`. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Dejo solo `30` y pongo «(uds)» en la cabecera",
+              "correcta": true,
+              "porque": "Eso es: una celda, un dato. Así Excel puede calcular con el 30."
+            },
+            {
+              "texto": "Lo dejo, se entiende perfectamente",
+              "correcta": false,
+              "porque": "Lo entiendes tú, pero Excel lo guarda como texto y no podrá sumarlo."
+            },
+            {
+              "texto": "Ensancho la columna",
+              "correcta": false,
+              "porque": "El ancho no cambia el tipo de dato: seguiría siendo texto."
+            }
+          ],
+          "explicacion": "Mezclar lo aprendido es la mejor forma de que se quede."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Copiar, cortar y pegar",
+          "dorso": "Ctrl+C copiar · Ctrl+X cortar · Ctrl+V pegar"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Diferencia entre copiar y cortar",
+          "dorso": "Copiar duplica (el original se queda); cortar mueve (el origen queda vacío)."
+        },
+        {
+          "tipo": "error",
+          "frente": "Una celda muestra ######",
+          "dorso": "La columna es estrecha: doble clic en el borde derecho de la letra de la columna."
+        }
+      ]
+    },
+    {
+      "id": "n0m2l4",
+      "titulo": "Guardar, cerrar y volver a abrir",
+      "minutos": 13,
+      "objetivo": "Guardar un libro con un nombre con sentido en la carpeta correcta, cerrarlo sin perder nada, volver a abrirlo y organizar sus hojas.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Gracias por empezar la hoja de gastos de la oficina de noviembre. Guárdala en la carpeta de Administración con un nombre que se entienda, nada de «Libro1». Y ponle a la hoja el nombre «Noviembre», que en diciembre añadiremos otra.",
+        "logro": "Ya sabes guardar tu trabajo con un nombre que cualquiera entiende, encontrarlo después y organizar las hojas de un libro."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Un archivo de Excel se llama **libro**. Al crearlo, Excel le pone un nombre provisional, «Libro1», y mientras no lo guardes vive solo en la memoria del ordenador: si se va la luz, se pierde.\n\nPara guardar, pulsa **Ctrl+G** (G de Guardar). La primera vez, Excel te pregunta **dónde** y **con qué nombre**. Después, cada Ctrl+G guarda los cambios en ese mismo archivo, sin preguntar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo guarda el libro en el Excel en español?",
+          "aceptadas": [
+            "Ctrl+G",
+            "Control+G",
+            "Ctrl G",
+            "Ctrl + G",
+            "Control G"
+          ],
+          "explicacion": "Ctrl+G. Acostúmbrate a pulsarlo cada pocos minutos, sin pensarlo, como quien mira por el retrovisor."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Ctrl+S no guarda (aquí)",
+          "md": "En los vídeos en inglés verás [[Ctrl]]+[[S]] para guardar. En el Excel en español, [[Ctrl]]+[[S]] es **subrayado**: no guarda nada. El tuyo es [[Ctrl]]+[[G]]."
+        },
+        {
+          "tipo": "texto",
+          "md": "Hay dos formas de guardar:\n\n- **Guardar** (Ctrl+G): actualiza el mismo archivo.\n- **Guardar como** (F12): te deja elegir **otra carpeta u otro nombre**. Se usa la primera vez o para hacer una **copia** sin tocar el original.\n\nLos libros se guardan como archivos **.xlsx**, el formato normal de Excel. Lo verás al final del nombre."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e2",
+          "modo": "test",
+          "pregunta": "Marta te pide una copia del presupuesto para probar cambios **sin tocar el original**. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Guardar como ([[F12]]) con otro nombre",
+              "correcta": true,
+              "porque": "Correcto: Guardar como crea un archivo nuevo con el nombre que elijas, y el original queda intacto."
+            },
+            {
+              "texto": "Guardar ([[Ctrl]]+[[G]]) y luego cambiar las cosas",
+              "correcta": false,
+              "porque": "Ctrl+G guarda en el mismo archivo: los cambios de prueba acabarían en el original."
+            },
+            {
+              "texto": "[[Ctrl]]+[[S]]",
+              "correcta": false,
+              "porque": "En el Excel en español, Ctrl+S pone el texto subrayado; no guarda."
+            }
+          ],
+          "explicacion": "Guardar como es tu red de seguridad para probar sin riesgo. En una empresa, nunca trabajes sobre el único original."
+        },
+        {
+          "tipo": "texto",
+          "md": "El nombre del archivo tiene que decir **qué es** a quien lo vea dentro de seis meses. Una buena receta: **año-mes y de qué trata**.\n\nPor ejemplo: `2026-11 Gastos oficina.xlsx`. Poner el año y el mes delante hace que, en la carpeta, los archivos salgan **ordenados por fecha** solos. Usa guiones: la barra `/` no se permite en los nombres de archivo."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "Libro1.xlsx",
+              "2026-11 Gastos oficina.xlsx"
+            ],
+            [
+              "final_final2.xlsx",
+              "2026-11 Cobros clientes.xlsx"
+            ],
+            [
+              "cosas marta.xlsx",
+              "2026-11 Pedido semanal almacén.xlsx"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e3",
+          "modo": "test",
+          "pregunta": "¿Qué nombre pondrías al listado de vacaciones de diciembre de 2026 que te ha pedido Lucía?",
+          "opciones": [
+            {
+              "texto": "`2026-12 Vacaciones plantilla.xlsx`",
+              "correcta": true,
+              "porque": "Perfecto: dice de cuándo es y de qué trata, y se ordenará bien en la carpeta."
+            },
+            {
+              "texto": "`Vacaciones definitivo bueno.xlsx`",
+              "correcta": false,
+              "porque": "«Definitivo» y «bueno» no dicen nada: ¿de qué año? Pronto habrá un «definitivo2»."
+            },
+            {
+              "texto": "`12/2026 Vacaciones.xlsx`",
+              "correcta": false,
+              "porque": "La barra «/» no está permitida en los nombres de archivo. Usa guiones: 2026-12."
+            },
+            {
+              "texto": "`Libro1.xlsx`",
+              "correcta": false,
+              "porque": "Es el nombre provisional de Excel: nadie sabrá qué contiene."
+            }
+          ],
+          "explicacion": "Un buen nombre te ahorra tiempo a ti y a todo el equipo: el archivo se encuentra a la primera."
+        },
+        {
+          "tipo": "texto",
+          "md": "Tan importante como el nombre es **dónde** lo guardas. En Electro Cierzo, los archivos de cada departamento están en una **carpeta compartida en la nube** (OneDrive o SharePoint), no en el escritorio de tu ordenador.\n\nCuando un archivo está ahí, arriba a la izquierda verás el interruptor **Autoguardado** activado: Excel guarda solo cada pocos segundos."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Antes de guardar, mira la carpeta",
+          "md": "El fallo típico no es no guardar, sino no saber **dónde** se guardó. Antes de aceptar, fíjate en qué carpeta estás."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e4",
+          "modo": "senala",
+          "pregunta": "Si prefieres el ratón: toca el botón **Guardar** (el disquete de la esquina de arriba).",
+          "zona": "guardar",
+          "explicacion": "Ese botón hace lo mismo que Ctrl+G. Siempre está a mano, arriba del todo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Al **cerrar** un libro con cambios sin guardar, Excel pregunta si quieres guardarlos. Tres botones:\n\n- **Guardar**: guarda y cierra.\n- **No guardar**: cierra y **pierde** los cambios.\n- **Cancelar**: no cierra; vuelves al libro.\n\nPara **volver a abrirlo**: Archivo › Abrir (o Ctrl+A). Ahí verás la lista de archivos **recientes** y podrás buscar en tus carpetas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e5",
+          "modo": "test",
+          "pregunta": "Llevas una hora con la hoja de gastos, cierras Excel y aparece la pregunta de guardar los cambios. No estás segura de qué hacer. ¿Qué pulsas?",
+          "opciones": [
+            {
+              "texto": "Cancelar, y reviso con calma antes de cerrar",
+              "correcta": true,
+              "porque": "Bien pensado: Cancelar no cierra ni pierde nada. Vuelves al libro y decides tranquila."
+            },
+            {
+              "texto": "No guardar",
+              "correcta": false,
+              "porque": "Cerraría el libro y perderías la hora de trabajo desde la última vez que guardaste."
+            },
+            {
+              "texto": "Cualquiera, Excel lo recupera todo",
+              "correcta": false,
+              "porque": "No te fíes: lo que cierras sin guardar puede perderse. Y Ctrl+Z no sirve una vez cerrado el libro."
+            }
+          ],
+          "explicacion": "Ante la duda, Cancelar. Y si estás segura de que los cambios valen, Guardar."
+        },
+        {
+          "tipo": "pantalla",
+          "md": "Un libro puede tener varias **hojas**, como las pestañas de un archivador. Están abajo a la izquierda.\n\n- **Añadir** una hoja: botón **+** que hay a su derecha.\n- **Cambiar el nombre**: doble clic en la pestaña, escribe y pulsa Intro.\n- **Eliminar**: clic derecho en la pestaña › Eliminar.",
+          "resaltar": "pestanas_hoja"
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Eliminar una hoja no se deshace",
+          "md": "Si eliminas una hoja, [[Ctrl]]+[[Z]] **no** la recupera. Antes de borrar una, asegúrate de que no la necesita nadie."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e6",
+          "modo": "senala",
+          "pregunta": "En diciembre habrá que añadir otra hoja al libro de gastos. Toca el botón para **añadir una hoja nueva**.",
+          "zona": "nueva_hoja",
+          "explicacion": "El **+** junto a las pestañas. Cada clic añade una hoja vacía; luego le pones nombre con doble clic en su pestaña."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m2l4-e7",
+          "modo": "ordenar",
+          "enunciado": "Resuelve el encargo de Marta. Ordena los pasos: **primero** pon a la hoja el nombre «Noviembre» y **después** guarda el libro por primera vez en la carpeta de Administración.",
+          "pasos": [
+            "Haz doble clic en la pestaña de la hoja",
+            "Escribe Noviembre y pulsa Intro",
+            "Pulsa F12 para abrir Guardar como",
+            "Ve a la carpeta de Administración",
+            "Escribe el nombre 2026-11 Gastos oficina",
+            "Pulsa Guardar"
+          ],
+          "explicacion": "Encargo terminado: la hoja se llama «Noviembre» y el libro está en su carpeta con un nombre que cualquiera entiende. Marta lo encontrará a la primera."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m2l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué tecla abre **Guardar como** para guardar con otro nombre o en otra carpeta?",
+          "aceptadas": [
+            "F12",
+            "f12"
+          ],
+          "explicacion": "F12, Guardar como."
+        },
+        {
+          "id": "n0m2l4-q2",
+          "modo": "senala",
+          "pregunta": "Toca la zona donde están las **pestañas de las hojas** del libro.",
+          "zona": "pestanas_hoja",
+          "explicacion": "Abajo a la izquierda. Doble clic en una para cambiarle el nombre."
+        },
+        {
+          "id": "n0m2l4-q3",
+          "modo": "test",
+          "pregunta": "Repaso del módulo: en la celda B3 pone `Gil Moreno` y quieres que ponga `Gil Moreno Sanz`. ¿Cuál es la forma más segura?",
+          "opciones": [
+            {
+              "texto": "Seleccionar B3, pulsar [[F2]], escribir « Sanz» al final y pulsar [[Intro]]",
+              "correcta": true,
+              "porque": "Correcto: con F2 entras en la celda con el cursor al final y solo añades lo que falta."
+            },
+            {
+              "texto": "Seleccionar B3 y escribir `Sanz`",
+              "correcta": false,
+              "porque": "Escribir encima sustituye todo: B3 pasaría a decir solo «Sanz»."
+            },
+            {
+              "texto": "Seleccionar B3 y pulsar [[Supr]]",
+              "correcta": false,
+              "porque": "Supr vacía la celda: perderías «Gil Moreno»."
+            }
+          ],
+          "explicacion": "F2 para retocar, Intro para confirmar, Ctrl+Z si algo sale mal."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Guardar en el Excel en español",
+          "dorso": "Ctrl+G (Ctrl+S es subrayado)"
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Guardar como (otro nombre u otra carpeta)",
+          "dorso": "F12"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se pone nombre a un archivo de trabajo?",
+          "dorso": "Año-mes y de qué trata, con guiones: 2026-11 Gastos oficina.xlsx"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se cambia el nombre de una hoja?",
+          "dorso": "Doble clic en su pestaña, escribir el nombre e Intro."
+        }
+      ]
+    }
+  ]
+}

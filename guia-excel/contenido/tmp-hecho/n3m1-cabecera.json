@@ -1,0 +1,141 @@
+{
+ "id": "n3m1",
+ "nivel": "n3",
+ "titulo": "Sumar y contar con varios criterios",
+ "intro": "Ya eres del equipo, y las preguntas dejan de ser «¿cuánto hemos vendido?» para convertirse en «¿cuánto ha vendido Pamplona en luminarias este trimestre?». Con SUMAR.SI.CONJUNTO y sus hermanas respondes a cualquiera de ellas con una sola fórmula, sin filtrar ni sumar a mano, y el resultado se recalcula solo cuando cambian los datos.",
+ "repaso_inicial": [
+  {
+   "id": "n3m1-r1",
+   "modo": "formula",
+   "enunciado": "Calentamiento. En **E2** suma los importes de la delegación que aparece en **E1**. Usa la celda E1, no escribas el nombre. Para Pamplona debe salir **2.953,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Importe",
+     "D1": "Delegación",
+     "E1": "Pamplona",
+     "D2": "Ventas",
+     "A2": "Zaragoza",
+     "B2": 1250,
+     "A3": "Pamplona",
+     "B3": 860.4,
+     "A4": "Lleida",
+     "B4": 2310,
+     "A5": "Pamplona",
+     "B5": 1780,
+     "A6": "Zaragoza",
+     "B6": 690,
+     "A7": "Pamplona",
+     "B7": 312.6
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "D": 11,
+     "E": 12
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=SUMAR.SI(A2:A7;E1;B2:B7)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(B2:B7;A2:A7;E1)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B7;E1;A2:A7)",
+    "=SUMA(B2:B7)",
+    "=SUMAR.SI(A2:A7;\"Pamplona\";B2:B7)"
+   ],
+   "variantes": [
+    {
+     "E1": "Zaragoza"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una suma con una condición: SUMAR.SI.",
+    "En SUMAR.SI van, por este orden: dónde miro (A2:A7), qué busco (E1) y qué sumo (B2:B7).",
+    "`=SUMAR.SI(A2:A7;E1;B2:B7)`"
+   ],
+   "explicacion": "2.953,00 €: los tres pedidos de Pamplona. Fíjate en el orden de SUMAR.SI (lo que se suma va al final): en este módulo verás una función parecida que lo pone al principio."
+  },
+  {
+   "id": "n3m1-r2",
+   "modo": "test",
+   "pregunta": "En **C2** tienes `=$A2*B$1`. La copias una columna a la derecha y una fila hacia abajo, a **D3**. ¿Qué fórmula queda?",
+   "opciones": [
+    {
+     "texto": "`=$A3*C$1`",
+     "correcta": true,
+     "porque": "Correcto: $A2 tiene la columna fija, así que solo cambia la fila (A3); B$1 tiene la fila fija, así que solo cambia la columna (C$1)."
+    },
+    {
+     "texto": "`=$A2*C$1`",
+     "correcta": false,
+     "porque": "El $ de $A2 solo fija la columna. La fila 2 no tiene $, así que al bajar pasa a 3."
+    },
+    {
+     "texto": "`=$B3*C$2`",
+     "correcta": false,
+     "porque": "Lo que va detrás de un $ no cambia nunca: la A de $A2 y el 1 de B$1 se quedan como están."
+    },
+    {
+     "texto": "`=$A2*B$1`",
+     "correcta": false,
+     "porque": "Eso pasaría con todo fijado ($A$2 y $B$1). Aquí cada referencia tiene una parte libre."
+    }
+   ],
+   "explicacion": "El $ fija solo lo que tiene justo detrás: la columna o la fila. Este truco es la base del cuadro resumen de la primera lección."
+  },
+  {
+   "id": "n3m1-r3",
+   "modo": "predice",
+   "enunciado": "¿Qué devolverá esta fórmula en **D1**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Importe",
+     "A2": "Zaragoza",
+     "B2": 1250,
+     "A3": "Pamplona",
+     "B3": 860.4,
+     "A4": "Lleida",
+     "B4": 2310,
+     "A5": "Pamplona",
+     "B5": 1780,
+     "A6": "Zaragoza",
+     "B6": 690,
+     "A7": "Pamplona",
+     "B7": 312.6
+    },
+    "formatos": {
+     "B2:B7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11
+    }
+   },
+   "celda": "D1",
+   "formula": "=CONTAR.SI(B2:B7;\">1000\")",
+   "explicacion": "3: los pedidos de 1.250, 2.310 y 1.780 €. CONTAR.SI cuenta las celdas que cumplen la condición; el criterio con signo va entre comillas.",
+   "respuesta": "3"
+  },
+  {
+   "id": "n3m1-r4",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función devuelve el **último día del mes** de una fecha? (Solo el nombre).",
+   "aceptadas": [
+    "FIN.MES",
+    "=FIN.MES",
+    "fin.mes",
+    "FIN.MES()"
+   ],
+   "explicacion": "FIN.MES: `=FIN.MES(A2;0)` da el último día del mes de A2. La usarás en este módulo para sumar meses enteros."
+  }
+ ],
+ "practica_excel": null
+}

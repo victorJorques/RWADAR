@@ -1,0 +1,220 @@
+{
+ "id": "n0m3l1",
+ "titulo": "El signo igual: Excel como calculadora",
+ "minutos": 12,
+ "objetivo": "Escribir fórmulas que empiezan por = y usan + - * / para hacer cuentas, con decimales con coma, sin escribir nunca el resultado a mano.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "Hoy han entrado tres albaranes de proveedores: 128 €, 46,50 € y 310 €. Apúntame en Excel cuánto suman, con la cuenta hecha por Excel, no con la calculadora del móvil. Y ya que estás: tengo 360 bridas para repartir en 8 cajas iguales, ¿cuántas van en cada una?",
+  "logro": "Ya sabes usar Excel como calculadora: sumar, restar, multiplicar y dividir con fórmulas que cualquiera puede revisar."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Hasta ahora has escrito **datos**: nombres, importes, fechas. Hoy Excel empieza a **calcular**.\n\nUna **fórmula** es una cuenta que Excel hace por ti. Para que sepa que lo que escribes es una cuenta y no un texto, empieza **siempre** por el signo **igual**: `=` (en el teclado español, [[Mayús]]+[[0]]).\n\nEscribes `=12+8`, pulsas **Intro** y la celda muestra **20**. El signo igual es como decirle a Excel: «calcula esto»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e1",
+   "modo": "formula",
+   "enunciado": "Tu primera fórmula. Haz clic en la celda **B2**, escribe `=12+8` y pulsa **Intro**. Debe salir **20**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Prueba",
+     "B1": "Resultado",
+     "A2": "Mi primera fórmula"
+    },
+    "anchos": {"A": 20}
+   },
+   "objetivo": "B2",
+   "solucion": "=12+8",
+   "alternativas": ["=8+12"],
+   "errores_tipicos": ["=12-8", "=12*8"],
+   "pistas": [
+    "Lo primero que escribes es el signo igual.",
+    "Después del igual van los números con el signo de sumar entre ellos.",
+    "Escribe exactamente `=12+8` y pulsa Intro."
+   ],
+   "explicacion": "Hecho: acabas de escribir tu primera fórmula. El `=` del principio es lo que convierte lo que escribes en una cuenta. Todo lo que harás en Excel a partir de hoy empieza así."
+  },
+  {
+   "tipo": "texto",
+   "md": "Los cuatro signos de las cuentas (los **operadores**) son:\n\n- `+` sumar: `=128+46`\n- `-` restar: `=500-120`\n- `*` multiplicar (el **asterisco**): `=150*3`\n- `/` dividir (la **barra**): `=100/4`\n\nLos tienes juntos en el teclado numérico, a la derecha del teclado. Si tu portátil no tiene, el `*` está encima del `+` y la `/` encima del 7 (con [[Mayús]])."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Ni x ni dos puntos",
+   "md": "En el colegio multiplicabas con **x** y dividías con **:**. Excel no los entiende como cuentas: `=150x3` da error. Usa siempre `*` y `/`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e2",
+   "modo": "test",
+   "pregunta": "Andrés pide 3 cajas de mecanismos de 150 € cada una. ¿Qué escribes en la celda para que Excel calcule cuánto cuestan?",
+   "opciones": [
+    {"texto": "`=150*3`", "correcta": true, "porque": "Correcto: empieza por = y multiplica con el asterisco. La celda mostrará 450."},
+    {"texto": "`=150x3`", "correcta": false, "porque": "La x no es un signo de Excel. No lo acepta como cuenta: usa el asterisco `*`."},
+    {"texto": "`150*3`", "correcta": false, "porque": "Falta el signo igual. Sin él, Excel lo guarda como texto y la celda mostrará «150*3», sin calcular."},
+    {"texto": "`=150:3`", "correcta": false, "porque": "Los dos puntos no dividen ni multiplican en Excel (más adelante verás que sirven para otra cosa). Para multiplicar, `*`."}
+   ],
+   "explicacion": "Signo igual delante y el operador correcto: con esas dos cosas ya puedes hacer cualquier cuenta sencilla de la oficina."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e3",
+   "modo": "formula",
+   "enunciado": "En el almacén hay **6 rollos** de cable de **100 metros** cada uno. En la celda **B2**, escribe una fórmula que multiplique 6 por 100. Debe salir **600**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cálculo",
+     "B1": "Metros",
+     "A2": "Metros de cable en 6 rollos"
+    },
+    "anchos": {"A": 28}
+   },
+   "objetivo": "B2",
+   "solucion": "=6*100",
+   "alternativas": ["=100*6"],
+   "errores_tipicos": ["=6+100", "=100/6"],
+   "pistas": [
+    "Empieza por el signo igual.",
+    "Para multiplicar se usa el asterisco `*`.",
+    "Escribe `=6*100` y pulsa Intro."
+   ],
+   "explicacion": "Bien hecho: 600 metros. Así calcularás cantidades de almacén (rollos por metros, cajas por unidades) en segundos y sin errores de calculadora."
+  },
+  {
+   "tipo": "texto",
+   "md": "Después de pulsar Intro, en la celda ya no ves la fórmula: ves el **resultado**. ¿Dónde se ha ido la fórmula? Sigue ahí dentro.\n\nHaz clic en la celda y mira la **barra de fórmulas**, la franja larga encima de las columnas. Ahí aparece la fórmula de verdad.\n\n- La **celda** enseña el resultado: `600`.\n- La **barra de fórmulas** enseña la cuenta: `=6*100`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e4",
+   "modo": "senala",
+   "pregunta": "Quieres ver qué cuenta hay detrás de un resultado. Toca la **barra de fórmulas**.",
+   "zona": "barra_formulas",
+   "explicacion": "Esa franja te dice siempre qué hay de verdad en la celda. Cuando una cifra te parezca rara, haz clic en su celda y mira aquí: sabrás si es una fórmula o un número escrito a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e5",
+   "modo": "predice",
+   "enunciado": "Antes de que Excel lo calcule: en la celda B2 alguien ha escrito `=1000/8` para repartir 1.000 € de material entre 8 obras. ¿Qué número mostrará la celda?",
+   "hoja": {
+    "celdas": {
+     "A1": "Reparto",
+     "B1": "Importe por obra",
+     "A2": "1.000 € entre 8 obras"
+    },
+    "anchos": {"A": 22, "B": 16}
+   },
+   "celda": "B2",
+   "formula": "=1000/8",
+   "explicacion": "1.000 entre 8 es 125. La barra `/` divide. La celda muestra 125 y la barra de fórmulas sigue mostrando `=1000/8`."
+  },
+  {
+   "tipo": "texto",
+   "md": "Dentro de una fórmula, los **decimales van con coma**, igual que cuando escribes un dato: `=46,5+12,25`.\n\nY los **miles no se escriben con punto**: 1.250 € se escribe `1250` dentro de la fórmula. El punto de los miles solo lo pone Excel al **mostrar** el número.\n\nTampoco se escribe el símbolo €: dentro de una cuenta solo van números y signos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e6",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** Nuria quiso repartir **360 bridas en 8 cajas** y escribió en **B2** `360/8`, pero Excel lo dejó como texto y no calculó nada. Corrige la fórmula para que la celda muestre **45**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Reparto de bridas",
+     "B1": "Por caja",
+     "A2": "360 bridas en 8 cajas"
+    },
+    "anchos": {"A": 22}
+   },
+   "objetivo": "B2",
+   "inicial": "360/8",
+   "solucion": "=360/8",
+   "errores_tipicos": ["=360*8", "=360-8"],
+   "pistas": [
+    "La cuenta está bien; le falta algo al principio.",
+    "Sin el signo igual, Excel no sabe que es una cuenta.",
+    "Escribe `=360/8` y pulsa Intro."
+   ],
+   "explicacion": "Arreglado: 45 bridas por caja. Este es el fallo más típico del primer día. Cuando una celda muestra la cuenta en vez del resultado, mira si falta el `=` del principio."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un consejo: nunca hagas la cuenta en la calculadora del móvil y escribas el resultado en la celda. Si lo haces con fórmula, cualquiera que haga clic ve **de dónde sale** el número y puede revisarlo. Un número suelto no se puede comprobar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l1-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Andrés.** En la celda **B2**, escribe una fórmula que sume los tres albaranes de hoy: **128 €**, **46,50 €** y **310 €**. Debe salir **484,5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Importe",
+     "A2": "Total albaranes 16/11/2026",
+     "A3": "Bridas por caja",
+     "B3": 45
+    },
+    "formatos": {"B2": "eur"},
+    "anchos": {"A": 26, "B": 12}
+   },
+   "objetivo": "B2",
+   "solucion": "=128+46,5+310",
+   "alternativas": ["=128+46,50+310", "=310+128+46,5"],
+   "errores_tipicos": ["=128+46+310", "=128+465+310"],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Son tres importes que hay que sumar: empieza por `=` y une los números con `+`.",
+    "El 46,50 se escribe con coma decimal, y sin el símbolo €.",
+    "Escribe `=128+46,5+310` y pulsa Intro."
+   ],
+   "explicacion": "Encargo resuelto: 484,50 €, y Andrés puede hacer clic en la celda y ver la cuenta en la barra de fórmulas. Así se apuntan los importes en una oficina: con la cuenta a la vista, nunca con un número que nadie puede revisar."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m3l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: ¿qué signo usas en Excel para **multiplicar**?",
+   "aceptadas": ["*", "asterisco", "el asterisco", "Asterisco"],
+   "explicacion": "El asterisco `*`. Y para dividir, la barra `/`."
+  },
+  {
+   "id": "n0m3l1-q2",
+   "modo": "test",
+   "pregunta": "Una compañera hace la cuenta con la calculadora y escribe **484,5** en la celda. Tú escribes `=128+46,5+310`. Las dos celdas muestran lo mismo. ¿Qué ventaja tiene la tuya?",
+   "opciones": [
+    {"texto": "Cualquiera ve en la barra de fórmulas de dónde sale el número y puede revisarlo", "correcta": true, "porque": "Exacto: la fórmula deja la cuenta a la vista. Si un albarán estaba mal, se ve y se corrige en un momento."},
+    {"texto": "Ninguna: si sale lo mismo, da igual", "correcta": false, "porque": "Hoy sale lo mismo, pero el 484,5 suelto no dice de dónde viene. Si hay un error en la calculadora, nadie podrá encontrarlo."},
+    {"texto": "La suya es mejor porque es más corta", "correcta": false, "porque": "Más corta, pero imposible de comprobar. En una empresa, un número que no se puede revisar es un riesgo."}
+   ],
+   "explicacion": "Regla de oficina: las cuentas, con fórmula. Los resultados escritos a mano no se pueden revisar."
+  },
+  {
+   "id": "n0m3l1-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué mostrará la celda con esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cuenta"
+    }
+   },
+   "celda": "A2",
+   "formula": "=500-120",
+   "explicacion": "500 menos 120 son 380. El signo `-` resta."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Con qué empieza siempre una fórmula?", "dorso": "Con el signo igual: =. Sin él, Excel lo guarda como texto."},
+  {"tipo": "concepto", "frente": "Los cuatro operadores de Excel", "dorso": "+ sumar · - restar · * multiplicar · / dividir (nunca x ni :)"},
+  {"tipo": "concepto", "frente": "La celda muestra… y la barra de fórmulas muestra…", "dorso": "La celda, el resultado (600). La barra de fórmulas, la cuenta (=6*100)."},
+  {"tipo": "error", "frente": "¿Cómo se escribe 46,50 dentro de una fórmula?", "dorso": "46,5 (coma decimal, sin punto de miles ni símbolo €)."}
+ ]
+}

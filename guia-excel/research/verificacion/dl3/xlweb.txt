@@ -1,0 +1,202 @@
+ 
+ Table of contents 
+ Exit editor mode 
+ Ask Learn 
+ Ask Learn 
+ Reading mode 
+ Table of contents 
+ Read in English 
+ Add 
+ Add to Plans 
+ Edit 
+ Copy Markdown 
+ Print 
+ Note 
+ Access to this page requires authorization. You can try signing in or changing directories .
+ Access to this page requires authorization. You can try changing directories .
+ Excel for the web
+ Feedback 
+ Summarize this article for me
+ In this article
+ Excel for the web (formerly Excel Web App) extends your Microsoft Excel experience to the web browser, where you can work with workbooks directly on the website where the workbook is stored. All customers can view and lightly edit Office files using Microsoft 365 for the web.
+ Note
+ Workbooks that exceed 100 megabytes (MB) cannot be viewed in Excel for the web from within Microsoft SharePoint Online. To view larger files, you'll need the Excel desktop app installed on your computer.
+ Note
+ To help you compare offers, advanced features listed in this article include Excel desktop app capabilities that are only available in the Office suite (such as Office Professional Plus, Office Standard, or Microsoft 365 Apps for enterprise). For a list of all Microsoft 365 for the web features, such as Word for the web and PowerPoint for the web, see Feature availability across Microsoft 365 for the web plans .
+ To see what file types are supported by Excel for the web, see Supported file types for Microsoft 365 for the web . To learn more about the differences between Excel for the web and the Excel desktop app, see Differences between using a workbook in the browser and in Excel .
+ Add background color to sheet tabs
+ Add a background fill color to the sheet tabs to the bottom of your workbook to make them stand out. For more information, see Add a background color to a sheet tab .
+ Add hyperlinks
+ Link to web pages or open files on the web by adding a hyperlink in a cell. You can type the web address directly in the cell or use the Insert Hyperlink command.
+ Advanced data types: Stocks and Geography
+ You can get stock and geographic data in Excel. It's as easy as typing text into a cell, and then converting it to the Stocks data type or the Geography data type. Learn more about Stocks and Geography data types .
+ Advanced time filtering (Timeline slicer)
+ The Timeline control lets you filter modeled data. It's a visual way to view and change a continuous range of dates and filter pivot-based objects, such as PivotTables and PivotCharts.
+ Alignment
+ Use the Alignment buttons on the Home tab to change the alignment of text.
+ Apply conditional formatting
+ Use a conditional format to help you visually explore and analyze data, detect critical issues, and identify patterns and trends. Learn more about how to use conditional formatting in Excel for the web .
+ Apply data validation to cells
+ This feature is available in Excel for the web. Other advanced features are only available in the Excel desktop app.
+ Apply smart/recommended formatting
+ Not available in Excel for the web. In the Excel desktop app, recommended charts let you pick from a variety of charts that are best for presenting your data. Learn more about how to use chart recommendations in Excel .
+ Autocomplete
+ Excel for the web can complete what you're typing into a cell and, if there's more than one possible value, display them all in a list that you can pick from.
+ AutoSum
+ Total a column or row of numbers by selecting the cells you want to sum and then double-click AutoSum. The result appears in the next blank cell.
+ Calculations
+ You can use Excel to perform a variety of automatic, manual, and iterative calculations. Excel uses functions to perform these calculations. For more information, see Excel functions by category .
+ Cell references in formulas
+ You can use cell references in formulas. When you refer to a cell or a range in a formula , the referred cell or range is highlighted with a color. For more information, see Use cell references in a formula .
+ Chart animations adapt to new data
+ Only Microsoft Excel desktop app supports advanced chart features. Learn more about how to animate a SmartArt graphic .
+ Charts and tables, including PivotChart reports and PivotTable reports
+ Excel charts and tables make it easy to format data and manage information. To learn more, see Create and format tables and Overview of PivotTable and PivotChart reports .
+ Check spelling
+ To check spelling for any text on your worksheet, select Review > Proofing > Spelling . Learn more about checking spelling .
+ Comment creation
+ You can insert, edit, and delete comments in Excel for the web. You can also resolve a comment thread, which closes it to edits and to new comments, but leaves it in place. This lets you reopen the thread to comments if needed. Use @mentions in your comments to send email to the person you mention. Learn more about adding a comment to Excel .
+ Convert a table to a range
+ After you create an Excel table, you might only want the table style without the table functionality. To stop working with your data in a table without losing any table style formatting that you applied, you can convert the table to a regular range of data in the worksheet. Learn more about how to convert an Excel table to a range of data .
+ Copy and paste
+ You can cut, copy, and paste text, hyperlinks, numbers, formulas, shapes, charts, and images. If you have data in columns that you need to rotate to rearrange in rows, use the Transpose feature on the Paste menu. Learn more about copy and paste in Excel for the web . Using Edge or Chrome as your browser, you can copy hyperlinks from other apps and paste them into Excel for the web. The pasted hyperlinks will function normally.
+ Create external data connections
+ You can use Excel for the web to view data connections, but you can't create external data connections using Excel for the web. You'll need the Excel desktop app to work with external data.
+ Create tables
+ Create a table to organize and analyze related data. Tables make it easy to sort, filter, and format your data. Add some polish with table formatting options , including a style gallery.
+ Creation of advanced analysis views (Power Pivot and Slicers)
+ Advanced analysis views, such as Power Pivot, are only available in Excel desktop app. These features are not supported in Excel for the web. Learn more about PowerPivot .
+ Data validation
+ You can use data validation to restrict the type of data or the values that users enter into a cell. To learn more, see Apply data validation to cells .
+ Drag and drop cells
+ You can move cell value in Excel for the web by dragging and dropping cells from one place to another.
+ Draw cell borders
+ You can draw borders around cells on a worksheet to help visually organize your data. Learn more about cell borders in Excel .
+ Dropbox
+ Dropbox is a file hosting service that offers cloud storage, file synchronization, personal cloud, and client software.
+ Duplicate (copy) worksheets
+ You can duplicate (or copy) worksheets within a workbook or to another workbook in Excel for the web. Learn more about copying worksheets in Excel for the web .
+ Embed workbook on web or blog page (OneDrive)
+ If you store an Excel workbook on OneDrive.com, you can embed it directly in a blog or website. Your readers can sort, filter, and calculate data right there, and if you update the workbook in OneDrive, they'll see the latest changes the next time they refresh the page. Learn more about embedding an Excel workbook on your blog .
+ External references (links)
+ An external reference (also called a link) is a reference to a cell or range on a worksheet in another Excel workbook, or a reference to a defined name in another workbook. You can use Excel for the web to view external references, but you can't create them using Excel for the web. You'll need the Excel desktop app to create or update external references.
+ Fill Handle
+ Drag the Fill Handle that appears in the lower-right corner of a selected cell or range of cells to fill the data into adjacent cells.
+ Find
+ Find cell content in the active worksheet. An easy-to-use dialog box gives the option to search up or down from the current selection in the worksheet. Find All lets you highlight every instance of your search term.
+ Font and cell formatting
+ Customize your data to give it the exact look you want. Choose from a variety of font styles or colors or change the size and color of text. Additionally, you can draw cell borders, and pick border colors.
+ Formula bar
+ See the formulas behind a cell's results in the formula bar. You can add, change, and delete parts of your formula in the browser just like you would in the Excel desktop app. Excel for the web highlights the formula's arguments with colors that provide a visual mapping between the formula and the data on the worksheet.
+ Formula tools, advanced
+ Microsoft Excel desktop app provides the most advanced formula tools, such as 3D reference style. Excel for the web supports a growing number of advanced Excel formulas, such as dynamic array formulas . Learn more about formulas .
+ Freeze panes
+ The freeze panes feature is available in the Excel for the web ribbon. Learn more about how freeze panes work in Excel and see tips for Excel for the web .
+ Full fidelity reading view
+ Anything you can see in a workbook in the browser in Editing View, you can see in Reading View.
+ Functions
+ You can use most of the more than 400 Excel worksheet functions in formulas in Excel for the web, including functions used in dynamic array formulas , such as the FILTER function .
+ GoTo
+ Quickly navigate around your spreadsheet using the GoTo feature. Type in a cell reference and jump to that location in the spreadsheet. Learn more about keyboard shortcuts in Excel for the web .
+ Group data
+ You can group or outline rows and columns in your Excel for the web spreadsheet. Keyboard shortcuts make it easy to quickly expand or collapse the groups you create. Learn more about grouping data in Excel for the web .
+ Hide/unhide rows, columns, and sheets
+ You can hide and unhide rows, columns, and sheets in a workbook in Excel for the web.
+ Ideas
+ Ideas in Excel helps you understand your data through high-level visual summaries, trends, and patterns. Simply select a cell in a data range, and then select the Ideas button on the Home tab. Ideas in Excel will analyze your data and return interesting visuals about it in a task pane. Learn more about Ideas in Excel .
+ Insert charts
+ Create a chart to visually represent your data. Choose from a variety of chart types, such as column, line, pie, or bar charts. Learn more about creating charts .
+ Insert/delete rows and columns
+ Select one or more rows before selecting Insert or Delete on the Home tab to add or remove rows or columns in your worksheet one at a time or several at once.
+ Insert pictures
+ Add some visual interest by inserting pictures in your spreadsheet. Learn more about inserting pictures in Excel for the web .
+ Insert shapes
+ Add and format shapes such as boxes, circles, lines, connectors, or arrows to your Excel for the web spreadsheet. Learn more about adding shapes .
+ Keyboard shortcuts
+ You can control keyboard shortcuts so they work the same in desktop and web versions of Excel by changing the Keyboard Shortcuts setting—you can even override browser shortcuts. Just select Help > Keyboard Shortcuts .”
+ Merge cells
+ Use Merge & Center on the Home tab to combine and center the contents of the selected cells in one larger cell. You can change the alignment by selecting the Alignment buttons.
+ Named ranges
+ You cannot create named ranges in Excel for the web, but you can use the named ranges that you created in Excel desktop in your spreadsheet in Excel for the web. When you select a named range, the name appears just before the formula bar.
+ Number formatting
+ Change the format of numbers. Pick a format such as Currency or Short Date from a list of formats, change the decimal places, or insert a thousands separator.
+ Office add-ins
+ Some, but not all Office add-ins are available in Excel for the web. You can get an add-in for Excel from the Office Store. Learn more about how to get an Excel add-in .
+ Offline viewing and authoring
+ Excel for the web is launched from an internet browser and relies on an internet connection. To access spreadsheets offline, Microsoft Excel desktop app must be installed on your computer and used to view and edit Excel worksheets.
+ PivotTables
+ You can insert PivotTables in your Excel for the web spreadsheet and calculate, summarize, and analyze data. Learn more about how to insert a PivotTable in Excel for the web .
+ Post to Social network and present online
+ Share selected portions of your spreadsheets on the web by embedding them on your social network pages, or Skype for Business conversations, or meetings. Excel for the web does not support these features.
+ Power Pivot viewing
+ Excel for the web allows you to view Power Pivot tables and charts, but you need the Excel desktop app to create Power Pivot data models.
+ Print
+ Use the Print command in Excel for the web to send the entire worksheet or the current selection to the printer. Learn more about how to print in Excel for the web .
+ Real-time co-authoring
+ Two or more people can work in the same spreadsheet at the same time by opening it in their web browser instead of in the Excel desktop app. Real-time presence helps you see where your co-authors are working in the document so that you don't create conflicts as you edit, and you can see changes as they're being made. For more information about real-time co-authoring, see Collaborate on Excel workbooks at the same time with co-authoring .
+ Recommended chart creation and editing with formatting controls
+ Only Microsoft Excel desktop app supports advanced charts. Excel for the web does not support these features. Learn more about available chart types .
+ Remove duplicate values
+ You can remove duplicate values in a range or table. For more information, see Filter for unique values or remove duplicate values .
+ Rename and add sheets
+ Select the New Sheet icon to add a sheet. Right-click any sheet tab to rename it.
+ Rename file while workbook is open
+ In Excel for the web, you can rename a workbook file without closing it by selecting the filename in the header and typing in a new name. To rename a file using Excel desktop app, close the file, navigate to its location on your device, and rename the file.
+ Replace
+ Not available in Excel for the web. If you have the Excel desktop app installed on your computer, then you can use Excel to find and replace content in a document. Learn more about using find and replace in Excel .
+ Rights Management: IRM and password security
+ Protect your workbooks using passwords, permissions, and other restrictions in Excel desktop app. In Excel for the web, you can load and interact with workbooks that contain Sheet Protection, which prevents users from selecting or typing in protected cells. Learn more about protecting Excel workbooks .
+ Save or Download a copy
+ Want your own copy of the workbook? Use the Save As command on the File tab, or right-click the workbook's name in its folder and use the Download command to send a copy to your computer.
+ Sensitivity labels
+ Maintain control of access and sensitivity of your documents by manually applying a label or by using the automatically recommended labels from Microsoft.
+ Share
+ One-click process for sending a link that others can use to view or edit the document. Learn more about using Microsoft 365 for the web to work together in Office 365 .
+ Sheet protection
+ When you share an Excel file with other users, you can protect a worksheet to help prevent it from being changed, and you can choose the actions that you allow the users of your worksheet to perform.
+ Sheet views
+ Sheet views let you create customized views of an Excel worksheet without being disrupted by others. For instance, you can set up a filter to display only the records that are important to you, without being affected by others sorting and filtering in the document. You can even set up multiple sheet views on the same worksheet.
+ Slicers
+ View slicers in your worksheet and filter your data by selecting the slicer buttons. You cannot create or edit slicers in Excel for the web, but you can delete existing slicers.
+ Sort and filter data
+ In Excel for the web, you can view and reorder all worksheets, sort and filter data (top-to-bottom or left-to-right, multiple levels), and drill into the details of PivotTables. Sort conditionally-formatted data that uses icon sets or color scales by using their icons or color values. Learn more about sorting and filtering data .
+ Spreadsheet audit and compliance
+ In Microsoft Excel desktop app, you can use the worksheet inquire and compare features to compare versions of a workbook, analyze a workbook for problems or inconsistencies, or see links between workbook and worksheets. Excel for the web does not support these features. Learn more about what you can do with Spreadsheet Inquire .
+ Status bar aggregates
+ When you select a group of cells in Excel for the web, you can see the SUM, AVERAGE, and COUNT in the status bar. You can also customize the status bar by choosing which aggregates you want to see.
+ Surveys
+ Note
+ The Excel Survey feature will be retired for all tenants in November 2025 and will no longer be available.
+ Use Survey to send an Excel for the web form to users that they can fill out. Responses will be automatically compiled in an online worksheet. Learn more about surveys in Excel .
+ Tell Me
+ When you need to accomplish something in Excel for the web but don't know how, you can use the Tell Me search feature to quickly find what you're looking for. Tell Me understands what you're trying to accomplish and helps you do it faster by making suggestions.
+ Text formatting
+ You can apply various text formatting options including strikethrough, increasing/decreasing indent in Excel for the web.
+ Total data
+ You can quickly total data in a table by enabling the Toggle Total Row option. For more information, see Total the data in an Excel table .
+ Undo and redo
+ Excel for the web saves your work automatically. If you make a mistake, use Undo or press Ctrl+Z, and Redo or press Ctrl+Y. Learn more about keyboard shortcuts in Excel for the web .
+ VBA and macro scripting
+ Microsoft Excel desktop app is an extremely powerful tool used to manipulate, analyze, and present data. Sometimes, despite the rich set of features, your organization might find it easier to use Visual Basic for Applications (VBA), a programming language, to create a macro that performs mundane, repetitive tasks or to perform some task that the user interface (UI) does not seem to address. You cannot create macros with VBA in Excel for the web, but you can open and edit VBA-enabled spreadsheets without removing (or corrupting) the VBA contained in the file. Learn more about getting started with macros .
+ View 3D charts
+ View 3D charts in your worksheet. You cannot create or edit 3D charts in Excel for the web.
+ What if analysis tools
+ Not available in Excel for the web. You can view "What if" analysis results in Excel for the web, as expected. If you want to use analysis tools such as Goal Seek, Data Tables, Solver, and Series, then you'll need the Excel desktop app. Learn more about differences between using a workbook in the browser and in Excel desktop app .
+ Workbook Statistics
+ The Workbook Statistics feature counts and identifies elements of a workbook, helping you discover all of its content. You'll find it on the Review tab.
+ Feature availability
+ To view feature availability across plans, standalone options, and on-premises solutions, see Microsoft 365 for the web service description .
+ Feedback
+ Was this page helpful?
+ Yes 
+ No 
+ No 
+ Need help with this topic?
+ Want to try using Ask Learn to clarify or guide you through this topic?
+ Ask Learn 
+ Ask Learn 
+ Suggest a fix? 
+ Additional resources
+ Last updated on 
+ 2023-04-25
+ 

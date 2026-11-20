@@ -1,0 +1,475 @@
+{
+ "id": "n6m2l3",
+ "titulo": "Documentar: la hoja Léeme y el registro de cambios",
+ "minutos": 15,
+ "objetivo": "Dejar un libro documentado (hoja Léeme con supuestos y pasos de actualización, registro de cambios y entregas con fecha y versión) para que otra persona lo mantenga sin ti.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "En Navidad te vas dos semanas y el informe de cobros de diciembre lo sacará Nuria. Déjale el libro listo para que no tenga que llamarte: qué es, de dónde salen los datos y cómo se actualiza. Y que quede apuntado lo que hemos ido cambiando este otoño.",
+  "logro": "Ya sabes documentar un libro con su hoja Léeme, sus supuestos, sus pasos de actualización y su registro de cambios, y nombrar cada entrega con fecha y versión, para que otra persona lo mantenga sin ti."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Un libro que solo entiende quien lo hizo tiene fecha de caducidad. Funciona mientras tú estás; el día que te vas de vacaciones, te pones mala o cambias de puesto, alguien tendrá que **adivinar** de dónde salen los datos y qué botón se pulsa.\n\nEl error tiene nombre: **«está todo en mi cabeza»**. Esta lección va de sacarlo de tu cabeza y meterlo **dentro del libro**, en una hoja que se suele llamar **Léeme**."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te cuento una de cuando llegué. El compañero que llevaba las comisiones se jubiló y nos dejó el libro sin una sola nota. Tardamos dos semanas en averiguar por qué la columna H restaba un 2 %: era un descuento pactado con un cliente que ya ni nos compraba. Desde entonces, libro que hago, libro que lleva su Léeme."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e1",
+   "modo": "test",
+   "pregunta": "Te vas de vacaciones y Nuria sacará el informe de cobros. ¿Dónde dejas las instrucciones?",
+   "opciones": [
+    {
+     "texto": "En una hoja «Léeme», la primera del propio libro",
+     "correcta": true,
+     "porque": "Eso es: las instrucciones viajan con el libro. Quien lo abra, hoy o dentro de un año, las ve lo primero."
+    },
+    {
+     "texto": "En un correo a Nuria antes de irte",
+     "correcta": false,
+     "porque": "El correo se queda en la bandeja de Nuria. Quien herede el libro en marzo no lo verá. Las guías de buenas prácticas piden no separar las instrucciones del libro."
+    },
+    {
+     "texto": "Se lo explicas de palabra el último día",
+     "correcta": false,
+     "porque": "En dos semanas se olvida la mitad, y no le sirve a nadie más. Lo que no está escrito sigue estando solo en tu cabeza."
+    },
+    {
+     "texto": "En un documento de Word guardado en tu escritorio",
+     "correcta": false,
+     "porque": "Nadie más lo encuentra, y cuando cambies el libro el Word se quedará viejo. Dentro del libro, en cambio, lo ves cada vez que lo abres."
+    }
+   ],
+   "explicacion": "La hoja Léeme es la primera del libro y explica cómo funciona. Así el libro se explica solo, sin depender de ti."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un buen **Léeme** contesta, en pocas líneas, lo que preguntaría alguien que abre el libro por primera vez:\n\n- **Qué es** y **para quién**.\n- **De dónde salen los datos**: programa, informe y cuándo se exportan.\n- **Cómo se actualiza**, paso a paso.\n- **Supuestos**: las decisiones que has tomado (ahora lo vemos).\n- **Responsable** y suplente.\n- **Fecha y versión**.\n\nNo hace falta que sea bonito: hace falta que esté y que esté al día."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Léeme del informe de cobros (primeras líneas)",
+   "hoja": {
+    "celdas": {
+     "A1": "Apartado",
+     "B1": "Contenido",
+     "A2": "Qué es",
+     "B2": "Informe mensual de cobros por cliente",
+     "A3": "Para quién",
+     "B3": "Marta Ruiz (Dirección financiera)",
+     "A4": "De dónde salen los datos",
+     "B4": "Programa de gestión › informe «Cobros por cliente», en CSV",
+     "A5": "Cómo se actualiza",
+     "B5": "Pasos numerados, más abajo",
+     "A6": "Supuestos",
+     "B6": "Importes sin IVA; facturas anuladas, fuera",
+     "A7": "Responsable",
+     "B7": "Tú (suplente: Nuria Campos)",
+     "A8": "Fecha y versión",
+     "B8": "20/11/2026 · v04"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 54
+    },
+    "columnas": 2,
+    "filas": 8
+   },
+   "pie": "Dos columnas bastan: el apartado y lo que hay que saber."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e2",
+   "modo": "test",
+   "pregunta": "Andrés te pasa el libro de pedidos a proveedores que llevaba su antiguo ayudante, con este Léeme:\n\n| Apartado | Contenido |\n|---|---|\n| Qué es | Pedidos semanales a proveedores |\n| Para quién | Andrés Molina (Compras) |\n| Responsable | Andrés Molina |\n| Fecha y versión | 03/11/2026 · v02 |\n\nLa semana que viene te toca actualizarlo a ti. ¿Qué es lo que **más** falta?",
+   "opciones": [
+    {
+     "texto": "De dónde salen los datos y los pasos para actualizarlo",
+     "correcta": true,
+     "porque": "Justo: sabes qué es, pero no de qué informe salen los pedidos ni qué hay que pulsar. Sin eso, tendrás que llamar a Andrés."
+    },
+    {
+     "texto": "Un índice con vínculos a cada hoja",
+     "correcta": false,
+     "porque": "Un índice ayuda a moverse por el libro, pero sin saber de dónde salen los datos no podrás actualizar nada."
+    },
+    {
+     "texto": "La explicación de cada fórmula, celda por celda",
+     "correcta": false,
+     "porque": "Eso sería un manual enorme que nadie lee. Lo que te bloquea no son las fórmulas, sino no saber el origen de los datos ni los pasos."
+    },
+    {
+     "texto": "Nada: con saber qué es y de quién es basta",
+     "correcta": false,
+     "porque": "Es el «está todo en mi cabeza» disimulado: el libro dice qué es, pero no cómo se hace. Te tocaría preguntar."
+    }
+   ],
+   "explicacion": "El origen de los datos y los pasos de actualización son lo que permite que otra persona haga el trabajo sin ti."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un **supuesto** es una decisión que tomaste al construir el informe y que **no se ve** mirando la hoja: «los importes van sin IVA», «las facturas anuladas no cuentan», «un cobro cuenta el día que entra en el banco».\n\nSi no los escribes, alguien comparará tu total con otro informe que sí lleva IVA y creerá que hay un descuadre de miles de euros. Escríbelos aunque te parezcan obvios: hoy lo son para ti; dentro de seis meses, para nadie."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Si cambia un supuesto, cambia el Léeme",
+   "md": "Si Marta te pide incluir las facturas anuladas, no basta con cambiar la fórmula: corrige también el supuesto en el Léeme. Un Léeme que dice una cosa y una hoja que hace otra es peor que no tener Léeme."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e3",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "Marca **todas** las frases que son supuestos y deben ir escritas en el Léeme del informe de cobros.",
+   "opciones": [
+    {
+     "texto": "Los importes van sin IVA",
+     "correcta": true,
+     "porque": "Sí: no se ve en la hoja y cambia el total un 21 % en las facturas al tipo general. Quien compare con otro informe necesita saberlo."
+    },
+    {
+     "texto": "Las facturas anuladas no se cuentan",
+     "correcta": true,
+     "porque": "Sí: es una decisión tuya (o de Marta) que cambia el número de facturas y el total."
+    },
+    {
+     "texto": "Un cobro cuenta en el mes en que entra en el banco, no en el de la factura",
+     "correcta": true,
+     "porque": "Sí: el mismo cobro puede caer en octubre o en noviembre según la regla. Si no lo escribes, dos personas harán el informe distinto."
+    },
+    {
+     "texto": "La columna D tiene formato de euros",
+     "correcta": false,
+     "porque": "Eso se ve nada más abrir la hoja y no cambia ningún resultado. No es un supuesto."
+    },
+    {
+     "texto": "El libro está hecho con Excel",
+     "correcta": false,
+     "porque": "Es evidente para quien lo abre y no cambia ninguna cifra."
+    }
+   ],
+   "explicacion": "Un supuesto es una regla que **cambia las cifras** y que **no se ve** en la hoja. Esos van siempre por escrito."
+  },
+  {
+   "tipo": "texto",
+   "md": "Las **instrucciones de actualización** son una receta. Reglas:\n\n- Un paso por línea, numerado, y empezando por un verbo: *Exporta*, *Guarda*, *Pulsa*, *Comprueba*.\n- Di **dónde exactamente**: qué informe del programa, qué carpeta, qué botón.\n- Termina con **qué debe verse** al acabar: «la celda de control dice OK».\n\nEscríbelas para alguien que nunca ha visto el libro. Si un paso necesita que te llamen, falta un paso."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Un paso, una fila",
+   "md": "Puedes escribir varias líneas dentro de una celda con [[Alt]]+[[Intro]], pero en el Léeme se lee mejor cada paso en su propia fila: 1, 2, 3… Así también es fácil añadir uno en medio."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e4",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos de actualización del informe de cobros, tal como irían en el Léeme.",
+   "pasos": [
+    "Exporta del programa de gestión el informe «Cobros por cliente» del mes, en CSV",
+    "Guarda el CSV en la carpeta del informe, con el nombre que indica el Léeme",
+    "Abre el libro y pulsa Datos › Actualizar todo",
+    "Comprueba que la celda de control dice «OK»",
+    "Anota en el registro de cambios la fecha, qué has hecho y tu nombre"
+   ],
+   "explicacion": "Primero los datos (exportar y guardar donde los lee el libro), después actualizar, luego **comprobar** antes de dar nada por bueno y, al final, dejarlo apuntado. Si el control dice «REVISAR», el Léeme debe decir qué mirar antes de enviar nada."
+  },
+  {
+   "tipo": "texto",
+   "md": "El **registro de cambios** es el diario del libro: una tabla, al final del Léeme, con una línea por cada cambio. Tres columnas como mínimo:\n\n- **Fecha**.\n- **Qué ha cambiado y por qué**.\n- **Quién** lo ha hecho.\n\nCuando en marzo alguien pregunte «¿por qué en octubre salía distinto?», la respuesta estará escrita: «15/10: fuera las facturas anuladas, lo pide Marta». Sin registro, toca adivinar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e5",
+   "modo": "formula",
+   "enunciado": "Este es el registro de cambios del informe de cobros. En **F2** escribe una fórmula que muestre la **fecha del último cambio**. Tiene que seguir funcionando cuando alguien añada líneas nuevas debajo, hasta la fila 12.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Versión",
+     "C1": "Qué ha cambiado y por qué",
+     "D1": "Quién",
+     "F1": "Último cambio",
+     "A2": {
+      "fecha": "2026-10-06"
+     },
+     "B2": "v01",
+     "C2": "Primera versión (cobros de septiembre)",
+     "D2": "Tú",
+     "A3": {
+      "fecha": "2026-10-15"
+     },
+     "B3": "v02",
+     "C3": "Fuera las facturas anuladas: lo pide Marta",
+     "D3": "Tú",
+     "A4": {
+      "fecha": "2026-11-05"
+     },
+     "B4": "v03",
+     "C4": "Añadidas las celdas de control",
+     "D4": "Tú",
+     "A5": {
+      "fecha": "2026-11-18"
+     },
+     "B5": "v04",
+     "C5": "Nueva columna Delegación",
+     "D5": "Nuria Campos"
+    },
+    "formatos": {
+     "A2:A12": "fecha",
+     "F2": "fecha"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 8,
+     "C": 40,
+     "D": 13,
+     "E": 3,
+     "F": 14
+    },
+    "columnas": 6,
+    "filas": 12
+   },
+   "objetivo": "F2",
+   "solucion": "=MAX(A2:A12)",
+   "debe_usar": [
+    "MAX"
+   ],
+   "alternativas": [
+    "=MAX(A2:A20)",
+    "=MAX(A2:A100)"
+   ],
+   "errores_tipicos": [
+    "=A5",
+    "=MAX(A2:A5)",
+    "=MIN(A2:A12)"
+   ],
+   "variantes": [
+    {
+     "A6": {
+      "fecha": "2026-11-20"
+     },
+     "B6": "v05",
+     "C6": "Control de facturas duplicadas",
+     "D6": "Tú"
+    }
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "Las fechas son números: la más reciente es la más grande.",
+    "La función que devuelve el número más grande de un rango es MAX. Abarca también las filas vacías de abajo.",
+    "Escribe `=MAX(A2:A12)`."
+   ],
+   "explicacion": "Ya tienes una celda «Último cambio» que se pone al día sola. Llévala arriba del Léeme: quien abra el libro sabrá al instante si está actualizado. Como el rango llega a la fila 12 y MAX no tiene en cuenta las celdas vacías, las líneas nuevas cuentan sin tocar la fórmula. En tu libro real, convierte el registro en Tabla y crecerá sin límite."
+  },
+  {
+   "tipo": "texto",
+   "md": "En las carpetas compartidas abundan nombres como `informe_final_v2_BUENO_revJuan.xlsx`. ¿Cuál es el último? Nadie lo sabe.\n\nUna forma de nombrar que funciona: **fecha en año-mes-día, proyecto y versión con dos cifras**, sin espacios ni tildes:\n\n`2026-11-20_Cobros-octubre_v03.xlsx`\n\nCon la fecha así, ordenar por nombre es ordenar por fecha. Y con dos cifras (v03, v04… v12), todas las versiones tienen la misma forma."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "En OneDrive o SharePoint, sin copias",
+   "md": "Si el libro vive en OneDrive o SharePoint, no hagas copias v01, v02… del libro de trabajo: Excel guarda las versiones él solo. Las ves en **Archivo › Información › Historial de versiones**. El nombre con fecha y versión úsalo para lo que **entregas**: el PDF o la copia que guardas en una carpeta «Entregas»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e6",
+   "modo": "formula",
+   "enunciado": "Marta quiere que todas las entregas se llamen igual. En **B6** ya hay una fórmula que pone la fecha y el proyecto. **Complétala** para que añada `_v` y la versión de **B4** con dos cifras. Debe salir `2026-11-20_Cobros-octubre_v03.xlsx`.",
+   "hoja": {
+    "celdas": {
+     "A1": "Dato",
+     "B1": "Valor",
+     "A2": "Fecha de entrega",
+     "B2": {
+      "fecha": "2026-11-20"
+     },
+     "A3": "Proyecto",
+     "B3": "Cobros-octubre",
+     "A4": "Versión",
+     "B4": 3,
+     "A6": "Nombre del archivo"
+    },
+    "formatos": {
+     "B2": "fecha"
+    },
+    "anchos": {
+     "A": 20,
+     "B": 40
+    },
+    "columnas": 2,
+    "filas": 6
+   },
+   "objetivo": "B6",
+   "inicial": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\".xlsx\"",
+   "solucion": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
+   "debe_usar": [
+    "TEXTO"
+   ],
+   "alternativas": [
+    "=CONCAT(TEXTO(B2;\"aaaa-mm-dd\");\"_\";B3;\"_v\";TEXTO(B4;\"00\");\".xlsx\")"
+   ],
+   "errores_tipicos": [
+    "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&B4&\".xlsx\"",
+    "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v0\"&B4&\".xlsx\"",
+    "=B2&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
+    "=TEXTO(B2;\"dd-mm-aaaa\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\""
+   ],
+   "variantes": [
+    {
+     "B4": 12
+    },
+    {
+     "B2": {
+      "fecha": "2026-12-03"
+     },
+     "B3": "Cobros-noviembre",
+     "B4": 1
+    }
+   ],
+   "pistas": [
+    "Te falta un trozo entre el proyecto y `\".xlsx\"`: el texto `\"_v\"` y la versión, unidos con `&`.",
+    "Si unes B4 tal cual, sale `v3`. Para que salga `03`, conviértelo con `TEXTO(B4;\"00\")`: el formato `00` rellena con ceros hasta dos cifras.",
+    "`=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"`"
+   ],
+   "explicacion": "Ya tienes el nombre de cada entrega hecho con fórmula: se acabó el «final_BUENO». `TEXTO(B2;\"aaaa-mm-dd\")` pone la fecha en año-mes-día, para que la carpeta se ordene sola por fecha, y `TEXTO(B4;\"00\")` da v03, v04… v12, siempre con dos cifras. Ponlo en el Léeme y copia ese nombre cada vez que guardes una entrega."
+  },
+  {
+   "tipo": "texto",
+   "md": "Último paso: **probar el manual**. Dale el libro a otra persona (Nuria, por ejemplo) y pídele que lo actualice siguiendo el Léeme **sin preguntarte nada**. Tú solo miras y apuntas.\n\nCada vez que se atasca, falta una línea: añádela y anótalo en el registro de cambios. Si no hay nadie, hazlo tú **al día siguiente**, siguiendo el Léeme al pie de la letra: lo que tengas que «recordar» es justo lo que falta escribir."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l3-e7",
+   "modo": "abierta",
+   "pregunta": "**La misión de Marta.** Escribe el Léeme del informe de cobros para que Nuria lo saque en diciembre sin llamarte. Una línea por apartado. Esto es lo que sabes:\n\n- Es el informe mensual de cobros por cliente, para Marta (Carmen recibe el PDF).\n- Los datos salen del programa de gestión, informe «Cobros por cliente», en CSV, el primer día laborable del mes. El CSV va en la carpeta del informe, con el nombre `cobros.csv`.\n- Se actualiza con Datos › Actualizar todo. Hay una celda de control que dice «OK» o «REVISAR».\n- Tus decisiones: importes sin IVA; facturas anuladas, fuera; un cobro cuenta el día que entra en el banco.\n- Responsable: tú. Suplente: Nuria. Hoy es 20/11/2026 y vas por la v04.",
+   "modelo": "**Qué es:** informe mensual de cobros por cliente. **Para quién:** Marta Ruiz (Carmen Soler recibe el PDF).\n**Datos:** programa de gestión › informe «Cobros por cliente», en CSV, el primer día laborable del mes.\n**Cómo se actualiza:**\n1. Exporta el informe «Cobros por cliente» del mes en CSV.\n2. Guárdalo en la carpeta del informe con el nombre cobros.csv, sustituyendo al anterior.\n3. Abre el libro y pulsa Datos › Actualizar todo.\n4. Comprueba que la celda de control dice «OK». Si dice «REVISAR», no envíes nada y avisa a Marta.\n5. Guarda el PDF con el nombre AAAA-MM-DD_Cobros-mes_vNN y envíaselo a Marta.\n6. Anota en el registro de cambios la fecha, qué has hecho y tu nombre.\n**Supuestos:** importes sin IVA; las facturas anuladas no cuentan; un cobro cuenta el día que entra en el banco.\n**Responsable:** yo. **Suplente:** Nuria Campos.\n**Fecha y versión:** 20/11/2026 · v04.",
+   "criterios": [
+    "Dice qué es el informe y para quién",
+    "Indica de dónde salen los datos (programa, informe, formato y cuándo se exporta) y dónde se guarda el CSV",
+    "Da pasos numerados, empezando por un verbo, que incluyen actualizar y comprobar que el control dice «OK» (y qué hacer si dice «REVISAR»)",
+    "Escribe los tres supuestos: sin IVA, anuladas fuera y fecha de cobro",
+    "Pone responsable, suplente, fecha y versión"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n6m2l3-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En el registro de cambios, cada línea lleva la fecha y qué ha cambiado (y por qué). ¿Qué tercer dato no puede faltar?",
+   "aceptadas": [
+    "quién",
+    "quien",
+    "quién lo ha hecho",
+    "quien lo ha hecho",
+    "quién lo hizo",
+    "quien lo hizo",
+    "quién lo ha cambiado",
+    "quien lo ha cambiado",
+    "la persona",
+    "la persona que lo hace",
+    "el nombre",
+    "nombre",
+    "autor",
+    "el autor",
+    "responsable",
+    "el responsable"
+   ],
+   "explicacion": "**Quién** lo ha hecho. Así, si algo no cuadra, sabes a quién preguntar. Fecha, qué y por qué, y quién: el diario completo del libro."
+  },
+  {
+   "id": "n6m2l3-q2",
+   "modo": "test",
+   "pregunta": "Vas a guardar las entregas de tres meses en la misma carpeta y quieres que se ordenen solas por fecha. ¿Qué nombres eliges?",
+   "opciones": [
+    {
+     "texto": "2026-09-30_Cobros_v01 · 2026-10-31_Cobros_v01 · 2026-11-20_Cobros_v03",
+     "correcta": true,
+     "porque": "Eso es: con la fecha en año-mes-día, el orden por nombre coincide con el orden por fecha. Y la versión dice cuál es la buena."
+    },
+    {
+     "texto": "30-09-2026_Cobros · 31-10-2026_Cobros · 20-11-2026_Cobros",
+     "correcta": false,
+     "porque": "Así se ordenan por el día: el 20-11 saldría antes que el 30-09. Y sin versión no sabes cuál es la última de cada mes."
+    },
+    {
+     "texto": "Cobros septiembre · Cobros octubre · Cobros noviembre",
+     "correcta": false,
+     "porque": "Por orden alfabético quedarían noviembre, octubre, septiembre. Además no dicen el año ni la versión."
+    },
+    {
+     "texto": "Cobros_final · Cobros_final2 · Cobros_BUENO",
+     "correcta": false,
+     "porque": "El clásico: nadie sabe cuál es el último ni de qué mes es cada uno."
+    }
+   ],
+   "explicacion": "Fecha en año-mes-día al principio, proyecto y versión con dos cifras: la carpeta se ordena sola."
+  },
+  {
+   "id": "n6m2l3-q3",
+   "modo": "test",
+   "pregunta": "Has terminado el Léeme del informe de cobros. ¿Cuál es la mejor forma de saber si sirve?",
+   "opciones": [
+    {
+     "texto": "Que Nuria actualice el informe siguiéndolo, sin preguntarte, mientras tú apuntas dónde se atasca",
+     "correcta": true,
+     "porque": "Eso es probarlo de verdad: cada atasco es una línea que falta en el Léeme."
+    },
+    {
+     "texto": "Releerlo tú con calma antes de irte",
+     "correcta": false,
+     "porque": "Al releer, tu cabeza rellena los huecos sin que te des cuenta. Si no hay nadie, síguelo tú al día siguiente, paso a paso y al pie de la letra."
+    },
+    {
+     "texto": "Mandárselo a Marta para que dé el visto bueno",
+     "correcta": false,
+     "porque": "Marta no va a actualizar el informe: leerlo no es probarlo. Quien tiene que poder seguirlo es quien lo va a hacer."
+    },
+    {
+     "texto": "Añadir capturas de pantalla de todo",
+     "correcta": false,
+     "porque": "Pueden ayudar, pero sin probarlo no sabes qué falta. Primero la prueba; después, las capturas donde alguien se haya atascado."
+    }
+   ],
+   "explicacion": "Un manual se prueba usándolo: otra persona lo sigue sin ayuda, o tú al día siguiente, al pie de la letra."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué lleva una hoja Léeme?",
+   "dorso": "Qué es y para quién; de dónde salen los datos; cómo se actualiza, paso a paso; supuestos; responsable y suplente; fecha y versión."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es un supuesto y dónde se escribe?",
+   "dorso": "Una decisión que cambia las cifras y no se ve en la hoja («importes sin IVA», «anuladas fuera»). Va escrito en el Léeme."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Columnas del registro de cambios",
+   "dorso": "Fecha · qué ha cambiado y por qué · quién. Una línea por cambio."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Nombre de entrega que se ordena solo por fecha",
+   "dorso": "AAAA-MM-DD_Proyecto_vNN, p. ej. 2026-11-20_Cobros-octubre_v03.xlsx. Con fórmula: TEXTO(fecha;\"aaaa-mm-dd\") y TEXTO(versión;\"00\")."
+  },
+  {
+   "tipo": "error",
+   "frente": "«Está todo en mi cabeza»: ¿cómo compruebas que no?",
+   "dorso": "Otra persona actualiza el libro siguiendo el Léeme sin preguntarte. Cada atasco es una línea que falta."
+  }
+ ]
+}

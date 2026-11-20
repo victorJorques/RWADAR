@@ -1,0 +1,9 @@
+Cierre de noviembre de 2026 (5.º día laborable de diciembre). Archivos reexportados con noviembre.
+Copia los 5 CSV en ..\Fuentes (sustituyendo los anteriores) y pulsa Datos > Actualizar todo.
+
+Cifras de cuadre de noviembre:
+- Ventas netas de noviembre (ERP): 820.437,10 € en 1.305 líneas; de ellas, Logroño 96.469,88 €.
+- Pendiente de cobro a 30/11/2026: 1.765.355,13 €.
+- Stock valorado a 30/11/2026: 1.047.622,85 €.
+- FTE a 30/11/2026: 55,25 (incluye los 2 comerciales de Logroño).
+Octubre y los meses anteriores no cambian.

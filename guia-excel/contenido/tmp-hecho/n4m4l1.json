@@ -1,0 +1,319 @@
+{
+ "id": "n4m4l1",
+ "titulo": "Graba tu primera macro",
+ "minutos": 15,
+ "objetivo": "Grabar una macro que repite un formato, ejecutarla con un atajo, guardarla en un libro .xlsm y decidir cuándo es seguro habilitar macros.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Cada lunes pego en la hoja «Listado» de mi libro de pedidos lo que saca el programa y, antes de mandárselo a los comerciales, pongo la cabecera en negrita, ajusto las columnas y escribo la nota «Uso interno». Diez minutos tirados cada semana. ¿Me lo dejas en un solo atajo?",
+  "logro": "Ya sabes grabar una macro, ejecutarla con un atajo, guardarla en un libro .xlsm y decidir cuándo es seguro habilitar macros."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una **macro** es una lista de pasos que Excel graba mientras tú trabajas y que luego repite cuando se lo pides. Funciona como la grabadora del móvil: pulsas grabar, haces las cosas una vez y paras.\n\nSi cada lunes das el mismo formato al mismo listado (negrita, anchos, una nota), la macro lo hace en un segundo.\n\nPor dentro, Excel escribe esos pasos en un lenguaje de programación llamado **VBA** (Visual Basic para Aplicaciones). Para grabar no necesitas saberlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e1",
+   "modo": "test",
+   "pregunta": "Javier repite cada lunes los mismos pasos de formato sobre su listado de pedidos. ¿Qué haría una macro con eso?",
+   "opciones": [
+    {
+     "texto": "Grabar los pasos una vez y repetirlos cada vez que la ejecute",
+     "correcta": true,
+     "porque": "Exacto: Javier hace el trabajo una vez mientras Excel graba y, a partir de ahí, la macro lo repite en un segundo."
+    },
+    {
+     "texto": "Calcular los importes de los pedidos, como una fórmula",
+     "correcta": false,
+     "porque": "Para calcular están las fórmulas, que se recalculan solas. Una macro repite acciones (clics, formatos, textos)."
+    },
+    {
+     "texto": "Traer cada lunes el archivo nuevo del programa de gestión y limpiarlo",
+     "correcta": false,
+     "porque": "Traer y limpiar archivos que llegan cada semana es el terreno de Power Query, que ya conoces. La macro repite lo que tú haces dentro de Excel."
+    }
+   ],
+   "explicacion": "Macro = grabar una vez, repetir siempre. Sirve para todo lo que haces igual, paso a paso, una y otra vez."
+  },
+  {
+   "tipo": "texto",
+   "md": "Tienes dos sitios para grabar:\n\n- **Vista › Macros**: el botón **Macros** despliega **Ver macros**, **Grabar macro** y **Usar referencias relativas**. Está siempre a mano.\n- **Programador › Código**: la pestaña de quien trabaja con macros, con **Visual Basic**, **Macros**, **Grabar macro** y **Seguridad de macros**.\n\nLa pestaña **Programador** viene oculta. Merece la pena activarla una vez y dejarla puesta."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Activar la pestaña Programador",
+   "md": "**Archivo › Opciones › Personalizar cinta de opciones** y, en la lista de la derecha, marca **Programador**. Algunas webs la llaman «Desarrollador», pero en el Excel en español es **Programador**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e2",
+   "modo": "cinta",
+   "enunciado": "Ya tienes activada la pestaña Programador. ¿Qué botón pulsas para **empezar a grabar** una macro?",
+   "ruta": [
+    "Programador",
+    "Código",
+    "Grabar macro"
+   ],
+   "explicacion": "Programador › Código › Grabar macro. Si no tienes esa pestaña, el mismo botón está en Vista › Macros › Macros › Grabar macro."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: la macro de Javier",
+   "pasos": [
+    {
+     "md": "**Ensaya antes.** Haz los pasos una vez sin grabar, para saber exactamente qué vas a hacer: la grabadora apunta **todo**, también los clics de más. Luego deja la hoja «Listado» como estaba y haz clic en **A1**."
+    },
+    {
+     "md": "Pulsa **Programador › Código › Grabar macro**. En **Nombre de la macro** escribe `FormatoPedidos`, todo junto: el nombre no admite espacios.",
+     "ruta": [
+      "Programador",
+      "Código",
+      "Grabar macro"
+     ]
+    },
+    {
+     "md": "En **Tecla de método abreviado** escribe una **J mayúscula** (de Javier): el atajo será [[Ctrl]]+[[Mayús]]+[[J]]. Usa mayúscula: con una letra minúscula pisarías atajos de cada día; con una g, [[Ctrl]]+[[G]] dejaría de guardar mientras el libro esté abierto."
+    },
+    {
+     "md": "En **Guardar macro en** deja **Este libro** (la macro viaja dentro del archivo). En **Descripción** escribe para qué sirve. Pulsa **Aceptar**: desde ahora, todo se graba."
+    },
+    {
+     "md": "Haz los pasos: clic en el número de la **fila 1** y [[Ctrl]]+[[N]] (negrita); selecciona las columnas **A a F** y haz doble clic en el borde entre dos letras de columna (ancho automático); escribe «Uso interno» en **H1** y pulsa [[Intro]]."
+    },
+    {
+     "md": "Pulsa **Programador › Código › Detener grabación** (es el mismo botón, que ha cambiado de nombre). La macro ya existe."
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e3",
+   "modo": "test",
+   "pregunta": "¿Cuál de estos nombres acepta Excel para una macro?",
+   "opciones": [
+    {
+     "texto": "FormatoPedidos_Lunes",
+     "correcta": true,
+     "porque": "Válido: empieza por una letra y solo lleva letras y un guion bajo. Además, se entiende qué hace."
+    },
+    {
+     "texto": "Formato pedidos lunes",
+     "correcta": false,
+     "porque": "Los espacios no se admiten. Junta las palabras (FormatoPedidosLunes) o sepáralas con guion bajo."
+    },
+    {
+     "texto": "1_FormatoPedidos",
+     "correcta": false,
+     "porque": "El nombre tiene que empezar por una letra, no por un número."
+    },
+    {
+     "texto": "Formato-Pedidos",
+     "correcta": false,
+     "porque": "El guion medio no vale; el guion bajo (_) sí."
+    }
+   ],
+   "explicacion": "La regla: empieza por letra; después, letras, números o guion bajo; nada de espacios. Y que el nombre diga qué hace: dentro de un año lo agradecerás."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para **ejecutar** la macro (que repita los pasos), ve a la hoja que quieres arreglar y:\n\n- pulsa su atajo, [[Ctrl]]+[[Mayús]]+[[J]], o\n- abre la lista de macros con **Vista › Macros › Macros** (o [[Alt]]+[[F8]]), elige **FormatoPedidos** y pulsa **Ejecutar**.\n\nLa macro trabaja sobre la hoja que esté activa en ese momento. Antes de pulsar, mira bien en qué hoja estás."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Una macro no se deshace",
+   "md": "Lo que hace una macro **no se deshace** con [[Ctrl]]+[[Z]]. Antes de ejecutarla sobre datos importantes, **guarda** el libro o trabaja sobre una copia: si algo sale mal, cierras sin guardar y vuelves a abrirlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e4",
+   "modo": "test",
+   "pregunta": "Javier ejecuta FormatoPedidos y se da cuenta de que estaba en la hoja **Tarifas**, no en «Listado»: le ha cambiado la negrita, los anchos y ha escrito «Uso interno» en H1. Había guardado justo antes. ¿Qué hace?",
+   "opciones": [
+    {
+     "texto": "Cerrar el libro sin guardar y volver a abrirlo",
+     "correcta": true,
+     "porque": "Así recupera el libro tal como estaba al guardar. Por eso se guarda antes de ejecutar una macro."
+    },
+    {
+     "texto": "Pulsar Ctrl+Z hasta que vuelva todo",
+     "correcta": false,
+     "porque": "Los cambios de una macro no se deshacen con Ctrl+Z: al ejecutarla, Excel vacía la lista de cosas que se pueden deshacer."
+    },
+    {
+     "texto": "Ejecutar la macro otra vez para que se anule",
+     "correcta": false,
+     "porque": "Una macro no se anula a sí misma: repetiría los mismos cambios en la misma hoja."
+    }
+   ],
+   "explicacion": "Guardar antes de ejecutar es tu botón de deshacer. Si la macro toca muchos datos, mejor todavía: prueba primero en una copia."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al grabar, Excel apunta por defecto **celdas fijas**: si hiciste clic en H1, la macro irá siempre a H1, estés donde estés.\n\nA veces quieres lo contrario: «la celda de la derecha de donde esté». Para eso, antes de grabar, activa **Usar referencias relativas** (en **Vista › Macros** o en **Programador › Código**). Así la macro apunta **movimientos** desde la celda activa, no direcciones.\n\nEs la misma idea que el $ en las fórmulas: fijo frente a relativo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e5",
+   "modo": "test",
+   "pregunta": "Lucía graba una macro **sin** activar Usar referencias relativas: con la celda activa en **B4**, pulsa la flecha derecha y escribe «Revisado» en **C4**. Al día siguiente la ejecuta con la celda activa en **B10**. ¿Dónde escribe «Revisado»?",
+   "opciones": [
+    {
+     "texto": "En C4",
+     "correcta": true,
+     "porque": "Sin referencias relativas, la grabadora apuntó la dirección exacta, C4, y la macro vuelve allí siempre."
+    },
+    {
+     "texto": "En C10",
+     "correcta": false,
+     "porque": "Eso pasaría si hubiera grabado con Usar referencias relativas: «una a la derecha de la celda activa»."
+    },
+    {
+     "texto": "En B10",
+     "correcta": false,
+     "porque": "La macro no escribe en la celda activa sin más: repite el paso grabado, que fue ir a C4."
+    }
+   ],
+   "explicacion": "Celdas fijas: siempre al mismo sitio. Referencias relativas: «desde donde estés». Decídelo antes de pulsar Grabar macro."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un libro normal (**.xlsx**) **no puede guardar macros**. Si guardas ahí un libro que tiene una, Excel avisa de que no puede guardarla; si sigues adelante, se guarda **sin la macro** y, al cerrar, la pierdes.\n\nPara conservarla: **Archivo › Guardar como** y, en el tipo, elige **Libro de Excel habilitado para macros (*.xlsm)**. La **m** final es de *macros*.\n\nEsa extensión avisa también a quien lo abra: «aquí dentro hay código»."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una macro es un **programa**: igual que da formato, podría borrar datos o instalar algo dañino. Por eso Excel abre los libros con las macros **desactivadas** y muestra una barra amarilla con el botón **Habilitar contenido**.\n\nPúlsalo solo si sabes **quién** hizo el libro y lo **esperabas**: el de Javier, sí; un adjunto inesperado, no.\n\nEn Windows, si el archivo llega de **internet o por correo**, Excel bloquea sus macros y ni siquiera ofrece el botón. Si de verdad es de confianza, lo resuelve informática."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Nuria te avisa",
+   "md": "«El año pasado llegó una “factura pendiente” en .xlsm de un supuesto proveedor, pidiendo habilitar el contenido para verla. No era el proveedor. Ante la duda no se habilita nada: se llama al proveedor al teléfono de siempre y se avisa a informática.»"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e6",
+   "modo": "test",
+   "pregunta": "Te llega un correo de «Cables del Norte», que no es proveedor vuestro, con el adjunto **Pedido_urgente.xlsm** y el texto «Habilite el contenido para ver el pedido». ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "No lo abro, no habilito nada y aviso a informática",
+     "correcta": true,
+     "porque": "Remitente desconocido, archivo con macros y prisa por habilitar: tres señales de engaño. Un pedido de verdad no necesita macros para leerse."
+    },
+    {
+     "texto": "Lo abro y pulso Habilitar contenido: solo es un pedido",
+     "correcta": false,
+     "porque": "Habilitar ejecuta el código del archivo en tu ordenador. Si es dañino, el mal ya está hecho."
+    },
+    {
+     "texto": "Lo abro, lo guardo como .xlsx y así ya no tiene peligro",
+     "correcta": false,
+     "porque": "Abrirlo ya es arriesgarse, y el problema de fondo sigue: no sabes quién lo envía. Primero se comprueba con el remitente y se avisa a informática."
+    },
+    {
+     "texto": "Se lo reenvío a Nuria para que lo abra ella",
+     "correcta": false,
+     "porque": "Así solo pasas el riesgo a otra persona. Lo correcto es no abrirlo y avisar a informática."
+    }
+   ],
+   "explicacion": "Habilitar contenido, solo en libros de gente conocida y que esperabas. Esa regla te protege a ti y a toda la empresa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l1-e7",
+   "modo": "ordenar",
+   "enunciado": "Es la tarea de Javier, entera. Ordena los pasos para dejarle su atajo listo para el lunes.",
+   "pasos": [
+    "Ensayar los pasos una vez, sin grabar, para saber exactamente qué hacer",
+    "Pulsar Grabar macro y poner nombre (FormatoPedidos), atajo (Ctrl+Mayús+J) y Este libro",
+    "Hacer los pasos: negrita en la fila 1, ancho automático en A:F y «Uso interno» en H1",
+    "Pulsar Detener grabación",
+    "Con la macro ya grabada, guardar como Libro de Excel habilitado para macros (.xlsm)",
+    "El lunes, pegar el listado nuevo en «Listado» y pulsar Ctrl+Mayús+J para comprobar que funciona"
+   ],
+   "explicacion": "Ensayo, grabación, parada, .xlsm y prueba con datos reales. Los diez minutos de cada lunes se quedan en un segundo. Y si un día el listado trae más columnas, en la lección siguiente verás cómo retocar la macro sin volver a grabarla."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m4l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre la lista de macros para elegir una y ejecutarla?",
+   "aceptadas": [
+    "Alt+F8",
+    "Alt F8",
+    "Alt + F8",
+    "ALT+F8",
+    "alt+f8"
+   ],
+   "explicacion": "[[Alt]]+[[F8]] abre la ventana Macro: eliges la macro y pulsas Ejecutar. Es lo mismo que Vista › Macros › Macros."
+  },
+  {
+   "id": "n4m4l1-q2",
+   "modo": "test",
+   "pregunta": "Guardas el libro de Javier como **.xlsx** y, al aviso de Excel, respondes que sí, que siga. ¿Qué pasa con la macro?",
+   "opciones": [
+    {
+     "texto": "Se pierde: el .xlsx no guarda macros",
+     "correcta": true,
+     "porque": "Exacto. Para conservarla hay que guardar como Libro de Excel habilitado para macros (.xlsm)."
+    },
+    {
+     "texto": "Se conserva igual, solo cambia la extensión",
+     "correcta": false,
+     "porque": "El formato .xlsx no puede contener macros; por eso Excel avisa antes de guardar."
+    },
+    {
+     "texto": "Excel cambia solo el archivo a .xlsm",
+     "correcta": false,
+     "porque": "Excel avisa, pero si le dices que siga, guarda en .xlsx sin la macro. El cambio a .xlsm lo eliges tú en Guardar como."
+    }
+   ],
+   "explicacion": "Libro con macros = .xlsm. Es el error más común con las macros, y se paga con trabajo perdido."
+  },
+  {
+   "id": "n4m4l1-q3",
+   "modo": "cinta",
+   "enunciado": "En el ordenador de una compañera no está la pestaña Programador. ¿Qué botón abre la lista de macros (y también Grabar macro)?",
+   "ruta": [
+    "Vista",
+    "Macros",
+    "Macros"
+   ],
+   "explicacion": "Vista › Macros › Macros: está en todos los Excel de escritorio, sin activar nada."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "atajo",
+   "frente": "Abrir la lista de macros para ejecutar una",
+   "dorso": "Alt+F8 (o Vista › Macros › Macros) y Ejecutar."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿En qué formato se guarda un libro con macros?",
+   "dorso": "Libro de Excel habilitado para macros (.xlsm). En .xlsx la macro se pierde."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Se deshace una macro con Ctrl+Z?",
+   "dorso": "No. Guarda antes de ejecutarla o pruébala en una copia."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cuándo pulsar Habilitar contenido?",
+   "dorso": "Solo si sabes quién hizo el libro y lo esperabas. Ante la duda, no, y avisa a informática."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué cambia al grabar con Usar referencias relativas?",
+   "dorso": "La macro repite movimientos desde la celda activa, en vez de ir siempre a las mismas celdas."
+  }
+ ]
+}

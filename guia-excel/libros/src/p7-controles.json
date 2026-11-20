@@ -1,0 +1,266 @@
+{
+ "controles": [
+  {
+   "pregunta": "Presupuesto anual total de gastos 2026, todas las pestañas (€)",
+   "respuesta": 9173000.0,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "Ventas netas reales de enero a octubre de 2026 (€)",
+   "respuesta": 7841402.19,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "Resultado real de enero a octubre: Σ Haber − Σ Debe del diario (€)",
+   "respuesta": 143745.82,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "Real de enero a octubre de la partida «Otros servicios», todos los departamentos (€)",
+   "respuesta": 65336.4,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "Real de enero a octubre sin centro de coste asignable («Sin asignar») (€)",
+   "respuesta": 386.4,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "EBITDA real acumulado de enero a octubre (€)",
+   "respuesta": 249128.72,
+   "tolerancia": 0.01
+  },
+  {
+   "pregunta": "Número de partidas × departamento cuya desviación «importa»",
+   "respuesta": 6,
+   "tolerancia": 0
+  },
+  {
+   "pregunta": "Previsión de cierre del EBITDA 2026, escenario base: ventas 0 % y Logroño abierto (€)",
+   "respuesta": 319056.05,
+   "tolerancia": 0.01
+  }
+ ],
+ "extra": {
+  "ebitda_ppto_acum": 363472.67,
+  "margen_pct_real": 0.2749999384995198,
+  "margen_pct_ppto": 0.2799999492249184,
+  "ventas_ppto_acum": 7877880.0,
+  "resultado_ppto_acum": 249302.67,
+  "resultado_prev_base": 183035.66,
+  "escenarios": {
+   "-8%|Logroño": [
+    283168.53,
+    147148.14
+   ],
+   "-8%|sin Logroño": [
+    296168.53,
+    160148.14
+   ],
+   "+0%|Logroño": [
+    319056.05,
+    183035.66
+   ],
+   "+0%|sin Logroño": [
+    332056.05,
+    196035.66
+   ],
+   "+4%|Logroño": [
+    336999.81,
+    200979.42
+   ],
+   "+4%|sin Logroño": [
+    349999.81,
+    213979.42
+   ]
+  },
+  "buscar_objetivo": {
+   "var": 0.2785234458478395,
+   "ventas_novdic": 2048347.98,
+   "ventas_novdic_ppto": 1602120.0,
+   "margen_novdic": 448594.0
+  },
+  "fin_novdic": 6637.5,
+  "ipmt20": 222.36,
+  "ipmt21": 215.13,
+  "cumipmt_10_21": 3052.22,
+  "importan": [
+   {
+    "Partida": "Sueldos y salarios",
+    "Departamento": "ALM",
+    "Real": 401200.0,
+    "Ppto": 380000.0,
+    "Desv": 21200.0,
+    "DesvPct": 0.0558,
+    "FD": "D",
+    "Naturaleza": "Real"
+   },
+   {
+    "Partida": "Reparaciones",
+    "Departamento": "ALM",
+    "Real": 19200.0,
+    "Ppto": 15000.0,
+    "Desv": 4200.0,
+    "DesvPct": 0.28,
+    "FD": "D",
+    "Naturaleza": "Real"
+   },
+   {
+    "Partida": "Publicidad y ferias",
+    "Departamento": "COM",
+    "Real": 33400.0,
+    "Ppto": 26100.0,
+    "Desv": 7300.0,
+    "DesvPct": 0.2797,
+    "FD": "D",
+    "Naturaleza": "Real"
+   },
+   {
+    "Partida": "Suministros",
+    "Departamento": "ALM",
+    "Real": 37950.0,
+    "Ppto": 34230.0,
+    "Desv": 3720.0,
+    "DesvPct": 0.1087,
+    "FD": "D",
+    "Naturaleza": "Real"
+   },
+   {
+    "Partida": "Apertura Logroño",
+    "Departamento": "DIR",
+    "Real": 21300.0,
+    "Ppto": 0.0,
+    "Desv": 21300.0,
+    "DesvPct": NaN,
+    "FD": "D",
+    "Naturaleza": "Fuera de presupuesto"
+   },
+   {
+    "Partida": "Amortización",
+    "Departamento": "ADM",
+    "Real": 72000.0,
+    "Ppto": 80000.0,
+    "Desv": -8000.0,
+    "DesvPct": -0.1,
+    "FD": "F",
+    "Naturaleza": "Temporal"
+   }
+  ],
+  "cascada": [
+   [
+    "EBITDA presupuestado",
+    363472.67
+   ],
+   [
+    "Ventas (volumen)",
+    -10213.78
+   ],
+   [
+    "Margen %",
+    -39207.1
+   ],
+   [
+    "Personal",
+    -31146.67
+   ],
+   [
+    "Otros gastos",
+    -10076.4
+   ],
+   [
+    "Apertura Logroño",
+    -21300.0
+   ],
+   [
+    "Temporales (seguro)",
+    -2400.0
+   ],
+   [
+    "EBITDA real",
+    249128.72
+   ]
+  ],
+  "prev_temporales": {
+   "Seguros|ADM": 14400,
+   "Amortización|ADM": 96000
+  },
+  "cambio_18nov": {
+   "real_624": 111300.0,
+   "ppto_624": 105000.0,
+   "desv": 6300.0,
+   "pct": 0.06,
+   "importan": 7,
+   "ebitda_real": 239328.72,
+   "ebitda_prev": 309256.05,
+   "resultado_real": 133945.82,
+   "lineas": 7604
+  },
+  "paco": {
+   "presentado": {
+    "Ventas netas": 8745773.66,
+    "Coste de ventas": 6305217.94,
+    "Personal": 1605282.15,
+    "Arrendamientos": 130200.0,
+    "Reparaciones": 17028.68,
+    "Profesionales": 44945.9,
+    "Transportes": 105096.85,
+    "Seguros": 13800.0,
+    "Servicios bancarios": 8901.68,
+    "Publicidad": 29259.31,
+    "Suministros": 41771.09,
+    "Otros servicios": 94116.36,
+    "Gastos financieros": 37536.53,
+    "Total servicios exteriores": 485119.87,
+    "Amortización": 0.0,
+    "Total gastos": 8918276.36,
+    "Resultado": 312617.17
+   },
+   "correcto": {
+    "Ventas netas": 8745773.66,
+    "Coste de ventas": 6326817.94,
+    "Personal": 1610597.27,
+    "Arrendamientos": 130200.0,
+    "Reparaciones": 17028.68,
+    "Profesionales": 44945.9,
+    "Transportes": 116102.6,
+    "Seguros": 13800.0,
+    "Servicios bancarios": 8901.68,
+    "Publicidad": 29259.31,
+    "Suministros": 41771.09,
+    "Otros servicios": 94116.36,
+    "Gastos financieros": 37536.53,
+    "Amortización": 92000.0,
+    "Total servicios exteriores": 496125.62,
+    "Total gastos": 8563077.36,
+    "Resultado": 182696.3
+   },
+   "ppto": {
+    "Ventas netas": 8900000,
+    "Coste de ventas": 6408000,
+    "Personal": 1580000,
+    "Arrendamientos": 132000,
+    "Reparaciones": 16000,
+    "Profesionales": 48000,
+    "Transportes": 118000,
+    "Seguros": 13800,
+    "Servicios bancarios": 9000,
+    "Publicidad": 28000,
+    "Suministros": 39000,
+    "Otros servicios": 96000,
+    "Amortización": 92000,
+    "Gastos financieros": 36000,
+    "Total servicios exteriores": 499800,
+    "Total gastos": 9115600,
+    "Resultado": 284200
+   },
+   "efectos": {
+    "E1": 11005.75,
+    "E2": 5315.12,
+    "E6": 92000.0,
+    "E8": 21600.0
+   }
+  },
+  "lineas": 7603,
+  "prev_ebitda_anual_ppto": 444000.0
+ }
+}

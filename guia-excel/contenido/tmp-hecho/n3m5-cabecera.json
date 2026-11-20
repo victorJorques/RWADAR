@@ -1,0 +1,167 @@
+{
+ "id": "n3m5",
+ "nivel": "n3",
+ "titulo": "Listas que se actualizan solas, gráficos y revisión",
+ "intro": "Los informes que te piden cada semana no se rehacen a mano: se montan una vez con listados y rankings que se actualizan solos. Y antes de enviarlos se presentan con el gráfico adecuado y se revisan, porque una hoja sin errores a la vista no siempre es una hoja correcta.",
+ "repaso_inicial": [
+  {
+   "id": "n3m5-r1",
+   "modo": "formula",
+   "enunciado": "Repaso de limpieza. El banco exporta los cobros con el importe como texto y con el símbolo del euro: «1.845,30 €». En **C2** conviértelo en un número que se pueda sumar. Se copiará a **C3:C5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Importe (texto)",
+     "C1": "Importe",
+     "A2": {
+      "fecha": "2026-11-09"
+     },
+     "B2": "'1.845,30 €",
+     "A3": {
+      "fecha": "2026-11-10"
+     },
+     "B3": "'612,00 €",
+     "A4": {
+      "fecha": "2026-11-12"
+     },
+     "B4": "'12.480,75 €",
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "'95,40 €"
+    },
+    "formatos": {
+     "A2:A5": "fecha",
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 16,
+     "C": 13
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")",
+   "alternativas": [
+    "=VALOR(SUSTITUIR(B2;\"€\";\"\"))",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\" €\";\"\");\",\";\".\")"
+   ],
+   "errores_tipicos": [
+    "=VALOR.NUMERO(B2;\",\";\".\")",
+    "=SUSTITUIR(B2;\"€\";\"\")",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\".\";\",\")"
+   ],
+   "variantes": [
+    {
+     "B2": "'2.500,00 €"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay dos problemas: el símbolo € y que es un texto. Primero se quita el € y después se convierte.",
+    "SUSTITUIR(B2;\"€\";\"\") quita el euro; VALOR.NUMERO(…;\",\";\".\") lee la coma como decimal y el punto como miles.",
+    "`=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")`"
+   ],
+   "explicacion": "1.845,30 €, ya como número: SUSTITUIR limpia y VALOR.NUMERO convierte. Los listados que harás en este módulo necesitan datos así de limpios: si llegan sucios, primero se limpian."
+  },
+  {
+   "id": "n3m5-r2",
+   "modo": "test",
+   "pregunta": "Han entrado 40 ventas nuevas en el listado del que sale tu tabla dinámica (dentro del mismo rango), pero los totales de la dinámica no cambian. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Actualizarla: Analizar tabla dinámica › Actualizar",
+     "correcta": true,
+     "porque": "Eso es. La dinámica trabaja con una copia guardada de los datos y no se recalcula sola como una fórmula: hay que actualizarla."
+    },
+    {
+     "texto": "Borrarla y hacerla otra vez desde cero",
+     "correcta": false,
+     "porque": "Funcionaría, pero es perder el tiempo y el diseño: basta con Actualizar."
+    },
+    {
+     "texto": "Esperar: se pone al día sola al guardar el libro",
+     "correcta": false,
+     "porque": "No: si no la actualizas (o no lo tienes configurado al abrir), seguirá enseñando los datos antiguos."
+    },
+    {
+     "texto": "Escribir los totales nuevos a mano encima",
+     "correcta": false,
+     "porque": "Nunca: escribir encima de una dinámica rompe la relación con los datos y el próximo cambio te dejará cifras falsas."
+    }
+   ],
+   "explicacion": "Una tabla dinámica es una foto de los datos: cuando cambian, hay que pulsar Actualizar ([[Alt]]+[[F5]]) o Actualizar todo ([[Ctrl]]+[[Alt]]+[[F5]])."
+  },
+  {
+   "id": "n3m5-r3",
+   "modo": "formula",
+   "enunciado": "Andrés escribe un código de producto en **E2**. En **F2** escribe una fórmula que traiga su **precio** de la tarifa (columnas A a C).",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "A2": "CAB-15",
+     "B2": "Cable 1,5 mm² (rollo 100 m)",
+     "C2": 38.9,
+     "A3": "CAB-25",
+     "B3": "Cable 2,5 mm² (rollo 100 m)",
+     "C3": 59.4,
+     "A4": "TUB-20",
+     "B4": "Tubo corrugado 20 mm (100 m)",
+     "C4": 17.8,
+     "A5": "MAG-16",
+     "B5": "Magnetotérmico 2P 16 A",
+     "C5": 9.75,
+     "A6": "LED-18",
+     "B6": "Panel LED 18 W",
+     "C6": 14.6,
+     "A7": "BRI-300",
+     "B7": "Bridas 300 mm (bolsa 100)",
+     "C7": 4.2,
+     "E1": "Código",
+     "F1": "Precio",
+     "E2": "TUB-20"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 9,
+     "B": 26,
+     "C": 9,
+     "E": 9,
+     "F": 10
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))",
+   "alternativas": [
+    "=BUSCARX(E2;A2:A7;C2:C7)",
+    "=BUSCARV(E2;A2:C7;3;FALSO)",
+    "=INDICE($C$2:$C$7;COINCIDIR(E2;$A$2:$A$7;0))"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(E2;A2:A7;B2:B7)",
+    "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0)+1)"
+   ],
+   "variantes": [
+    {
+     "E2": "MAG-16"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay que buscar el código de E2 en la columna A y traer lo que hay en la misma fila de la columna C.",
+    "Te vale BUSCARX, BUSCARV con FALSO o INDICE + COINCIDIR con 0 (coincidencia exacta).",
+    "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`"
+   ],
+   "explicacion": "17,80 € el rollo de tubo corrugado. INDICE + COINCIDIR funciona en cualquier versión de Excel; BUSCARX, desde Excel 2021. Lo importante: coincidencia exacta, para no traer el precio de otro producto."
+  }
+ ],
+ "practica_excel": null
+}

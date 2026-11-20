@@ -1,0 +1,291 @@
+{
+  "id": "n5m1l3",
+  "titulo": "AGRUPARPOR y PIVOTARPOR: una tabla dinámica hecha con fórmula",
+  "minutos": 15,
+  "objetivo": "Leer y escribir resúmenes por grupos con AGRUPARPOR y PIVOTARPOR, saber cuándo conviene una tabla dinámica y montar el equivalente compatible con UNICOS y SUMAR.SI.",
+  "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Quiero en la hoja de resumen las ventas por delegación, y que se actualicen solas en cuanto Marta pegue los pedidos del mes. La última vez nadie pulsó Actualizar y presenté cifras viejas. Ah, y que también funcione en Lleida.",
+    "logro": "Ya sabes montar un resumen por grupos que se actualiza solo, y elegir entre AGRUPARPOR, tabla dinámica o UNICOS con SUMAR.SI según quién vaya a abrir el libro."
+  },
+  "funciones": ["AGRUPARPOR", "PIVOTARPOR", "SUMA", "UNICOS", "SUMAR.SI"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "### El resumen que se queda viejo\n\nUna **tabla dinámica** resume muy bien, pero tiene un punto débil que ya conoces: si cambian los datos, no se entera hasta que alguien pulsa **Actualizar**.\n\nMicrosoft 365 trae una fórmula que hace el mismo tipo de resumen: **AGRUPARPOR**. Como cualquier fórmula, se recalcula sola en cuanto cambia un dato. Nadie tiene que acordarse de nada."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Cómo se escribe\n\n`=AGRUPARPOR(campos_fila; valores; función)`\n\n- **campos_fila**: la columna por la que agrupas (la delegación).\n- **valores**: la columna que quieres resumir (el importe).\n- **función**: qué hacer con cada grupo: SUMA, PROMEDIO, MAX… escrita **sin paréntesis**, solo su nombre.\n\nCon las delegaciones en B y los importes en D: `=AGRUPARPOR(B2:B9;D2:D9;SUMA)`."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e1",
+      "modo": "test",
+      "pregunta": "Los pedidos tienen la delegación en B2:B9 y el importe en D2:D9. ¿Qué fórmula da el **total por delegación**?",
+      "opciones": [
+        { "texto": "=AGRUPARPOR(B2:B9;D2:D9;SUMA)", "correcta": true, "porque": "Correcto: primero por qué agrupas (delegación), después qué resumes (importe) y al final cómo (SUMA, sin paréntesis)." },
+        { "texto": "=AGRUPARPOR(D2:D9;B2:B9;SUMA)", "correcta": false, "porque": "Está al revés: agruparía por importe y trataría de sumar nombres de delegación." },
+        { "texto": "=AGRUPARPOR(B2:B9;D2:D9;SUMA())", "correcta": false, "porque": "La función va sin paréntesis: AGRUPARPOR solo necesita su nombre para aplicarla a cada grupo." },
+        { "texto": "=SUMAR.SI(B2:B9;D2:D9;SUMA)", "correcta": false, "porque": "SUMAR.SI pide un criterio concreto (\"Zaragoza\") y no admite una función como argumento." }
+      ],
+      "explicacion": "Orden de los argumentos: por qué agrupo; qué resumo; cómo lo resumo."
+    },
+    {
+      "tipo": "tabla",
+      "titulo": "Resultado de =AGRUPARPOR(B2:B9;D2:D9;SUMA)",
+      "cabecera": ["Delegación", "Ventas"],
+      "filas": [
+        ["Lleida", "7.430,00 €"],
+        ["Pamplona", "12.115,40 €"],
+        ["Zaragoza", "21.704,60 €"],
+        ["(total general)", "41.250,00 €"]
+      ],
+      "pie": "Una fila por delegación y, al final, el total general, que Excel añade solo. Parece una tabla dinámica, pero es una fórmula: cambias un importe y el resumen cambia al momento. (Ejemplo ilustrativo: la hoja de práctica no calcula AGRUPARPOR.)"
+    },
+    {
+      "tipo": "texto",
+      "md": "### Otra función, otra pregunta\n\nCambiando el tercer argumento cambias lo que preguntas a cada grupo:\n- `PROMEDIO`: pedido medio por delegación.\n- `MAX`: el pedido más grande de cada una.\n- `CONTAR`: cuántos pedidos tiene cada una (cuenta los importes).\n\nY para ordenar de más a menos ventas, el **sexto** argumento: `=AGRUPARPOR(B2:B9;D2:D9;SUMA;;;-2)`. El 2 es la columna de ventas del resultado y el signo menos, de mayor a menor. Los `;;` dejan vacíos los argumentos intermedios."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e2",
+      "modo": "respuesta_corta",
+      "pregunta": "Carmen quiere ver el **pedido más grande** de cada delegación. Escribe la fórmula completa: delegaciones en B2:B9, importes en D2:D9.",
+      "aceptadas": [
+        "=AGRUPARPOR(B2:B9;D2:D9;MAX)",
+        "AGRUPARPOR(B2:B9;D2:D9;MAX)",
+        "=AGRUPARPOR(B2:B9; D2:D9; MAX)",
+        "AGRUPARPOR(B2:B9; D2:D9; MAX)",
+        "=AGRUPARPOR(B2:B9;D2:D9;MAX;;;-2)"
+      ],
+      "explicacion": "`=AGRUPARPOR(B2:B9;D2:D9;MAX)`. Misma estructura, otra función: por eso merece la pena entender bien los tres argumentos."
+    },
+    {
+      "tipo": "texto",
+      "md": "### PIVOTARPOR: filas y columnas\n\nSi además quieres **columnas** (una por familia de producto, por ejemplo), usa **PIVOTARPOR**. Es AGRUPARPOR con un argumento más, el segundo:\n\n`=PIVOTARPOR(B2:B9;C2:C9;D2:D9;SUMA)`\n\n- filas: delegación (B)\n- columnas: familia (C)\n- valores: importe (D)\n- función: SUMA\n\nSale un cuadro de doble entrada, como una tabla dinámica con un campo en Filas y otro en Columnas."
+    },
+    {
+      "tipo": "tabla",
+      "titulo": "Resultado de =PIVOTARPOR(B2:B9;C2:C9;D2:D9;SUMA)",
+      "cabecera": ["Delegación", "Cable", "Iluminación", "(total)"],
+      "filas": [
+        ["Lleida", "4.210,00 €", "3.220,00 €", "7.430,00 €"],
+        ["Pamplona", "7.315,40 €", "4.800,00 €", "12.115,40 €"],
+        ["Zaragoza", "13.204,60 €", "8.500,00 €", "21.704,60 €"],
+        ["(total)", "24.730,00 €", "16.520,00 €", "41.250,00 €"]
+      ],
+      "pie": "Los totales de fila y de columna también los añade Excel. (Ejemplo ilustrativo: la hoja de práctica no calcula PIVOTARPOR.)"
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena los argumentos de PIVOTARPOR tal como se escriben, del primero al último.",
+      "pasos": [
+        "Campos de fila: lo que va en las filas (delegación)",
+        "Campos de columna: lo que va en las columnas (familia)",
+        "Valores: lo que se resume (importe)",
+        "Función: cómo se resume (SUMA)"
+      ],
+      "explicacion": "Filas, columnas, valores y función. Si quitas las columnas, tienes AGRUPARPOR: filas, valores y función."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Solo en Microsoft 365\n\nAGRUPARPOR y PIVOTARPOR existen **solo en Microsoft 365** (Windows, Mac y web). **No** están en Excel 2024 ni en Excel 2021 de compra única: quien abra tu libro con uno de esos verá **#¿NOMBRE?**.\n\nCómo elegir:\n- **AGRUPARPOR**: resúmenes fijos que deben estar siempre al día, para gente con Microsoft 365.\n- **Tabla dinámica**: para explorar arrastrando campos o filtrar con segmentaciones, en cualquier versión."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e4",
+      "modo": "test",
+      "pregunta": "Marta te pide un resumen de cobros por cliente para el asesor fiscal externo, que trabaja con **Excel 2024** de compra única. ¿Qué usas?",
+      "opciones": [
+        { "texto": "Una tabla dinámica, o UNICOS con SUMAR.SI", "correcta": true, "porque": "Las dos funcionan en Excel 2024. Recuerda que la tabla dinámica hay que actualizarla; la fórmula se actualiza sola." },
+        { "texto": "AGRUPARPOR, porque se actualiza sola", "correcta": false, "porque": "Se actualiza sola… en Microsoft 365. En Excel 2024 de compra única no existe: el asesor vería #¿NOMBRE?." },
+        { "texto": "PIVOTARPOR, que es más completa", "correcta": false, "porque": "Tiene el mismo problema: solo existe en Microsoft 365." },
+        { "texto": "Copiar los totales como valores para que no falle nada", "correcta": false, "porque": "Hoy funcionaría, pero el mes que viene estaría desfasado y nadie podría revisar de dónde sale cada número." }
+      ],
+      "explicacion": "La mejor herramienta es la que funciona en el Excel de quien recibe el archivo."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Para el resumen de Carmen, nada de AGRUPARPOR: en Lleida siguen con Excel 2021. El truco de siempre: **UNICOS** saca la lista de delegaciones sin repetir y **SUMAR.SI** suma cada una. Las dos funcionan en Excel 2021 y se actualizan solas, sin pulsar nada."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e5",
+      "modo": "formula",
+      "enunciado": "Primer paso del resumen. En **F2** saca la lista de **delegaciones sin repetir**, ordenada de la A a la Z, a partir de B2:B10. Deben salir 3 delegaciones en F2:F4.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Delegación",
+          "C1": "Familia",
+          "D1": "Importe",
+          "A2": "ZGZ-2026-0412",
+          "B2": "Zaragoza",
+          "C2": "Cable",
+          "D2": 2480.5,
+          "A3": "PAM-2026-0157",
+          "B3": "Pamplona",
+          "C3": "Iluminación",
+          "D3": 3320.4,
+          "A4": "ZGZ-2026-0413",
+          "B4": "Zaragoza",
+          "C4": "Mecanismos",
+          "D4": 615.2,
+          "A5": "LLE-2026-0098",
+          "B5": "Lleida",
+          "C5": "Cable",
+          "D5": 1840,
+          "A6": "ZGZ-2026-0414",
+          "B6": "Zaragoza",
+          "C6": "Iluminación",
+          "D6": 4150,
+          "A7": "PAM-2026-0158",
+          "B7": "Pamplona",
+          "C7": "Cable",
+          "D7": 1204,
+          "A8": "LLE-2026-0099",
+          "B8": "Lleida",
+          "C8": "Iluminación",
+          "D8": 2675.3,
+          "A9": "ZGZ-2026-0415",
+          "B9": "Zaragoza",
+          "C9": "Mecanismos",
+          "D9": 980.75,
+          "A10": "PAM-2026-0159",
+          "B10": "Pamplona",
+          "C10": "Cable",
+          "D10": 5010.9,
+          "F1": "Delegación",
+          "G1": "Ventas"
+        },
+        "formatos": { "D2:D10": "eur" },
+        "anchos": { "A": 15, "B": 12, "C": 12, "F": 12 }
+      },
+      "objetivo": "F2",
+      "solucion": "=ORDENAR(UNICOS(B2:B10))",
+      "debe_usar": ["UNICOS"],
+      "errores_tipicos": ["=UNICOS(B2:B10)", "=ORDENAR(B2:B10)", "=UNICOS(B1:B10)"],
+      "variantes": [{ "B5": "Pamplona", "B8": "Pamplona" }],
+      "pistas": [
+        "Necesitas dos cosas: quitar repetidos y ordenar.",
+        "UNICOS quita los repetidos; ORDENAR, puesta por fuera, los pone de la A a la Z.",
+        "Escribe `=ORDENAR(UNICOS(B2:B10))`."
+      ],
+      "explicacion": "Ya tienes las filas del resumen. Si el mes que viene entra una delegación nueva en los datos, aparecerá sola en la lista."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l3-e6",
+      "modo": "formula",
+      "enunciado": "**El encargo de Carmen.** En **G2** calcula las **ventas** de la delegación que aparece en F2, sumando los importes de D2:D10. La fórmula se copiará a G3:G4, así que fija lo que no debe moverse. Para Lleida debe salir 4.515,30 €.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Delegación",
+          "C1": "Familia",
+          "D1": "Importe",
+          "A2": "ZGZ-2026-0412",
+          "B2": "Zaragoza",
+          "C2": "Cable",
+          "D2": 2480.5,
+          "A3": "PAM-2026-0157",
+          "B3": "Pamplona",
+          "C3": "Iluminación",
+          "D3": 3320.4,
+          "A4": "ZGZ-2026-0413",
+          "B4": "Zaragoza",
+          "C4": "Mecanismos",
+          "D4": 615.2,
+          "A5": "LLE-2026-0098",
+          "B5": "Lleida",
+          "C5": "Cable",
+          "D5": 1840,
+          "A6": "ZGZ-2026-0414",
+          "B6": "Zaragoza",
+          "C6": "Iluminación",
+          "D6": 4150,
+          "A7": "PAM-2026-0158",
+          "B7": "Pamplona",
+          "C7": "Cable",
+          "D7": 1204,
+          "A8": "LLE-2026-0099",
+          "B8": "Lleida",
+          "C8": "Iluminación",
+          "D8": 2675.3,
+          "A9": "ZGZ-2026-0415",
+          "B9": "Zaragoza",
+          "C9": "Mecanismos",
+          "D9": 980.75,
+          "A10": "PAM-2026-0159",
+          "B10": "Pamplona",
+          "C10": "Cable",
+          "D10": 5010.9,
+          "F1": "Delegación",
+          "G1": "Ventas",
+          "F2": "=ORDENAR(UNICOS(B2:B10))"
+        },
+        "formatos": { "D2:D10": "eur", "G2:G4": "eur" },
+        "anchos": { "A": 15, "B": 12, "C": 12, "F": 12, "G": 13 }
+      },
+      "objetivo": "G2",
+      "copiar_a": ["G3:G4"],
+      "solucion": "=SUMAR.SI($B$2:$B$10;F2;$D$2:$D$10)",
+      "alternativas": [
+        "=SUMAR.SI(B$2:B$10;F2;D$2:D$10)",
+        "=SUMAR.SI.CONJUNTO($D$2:$D$10;$B$2:$B$10;F2)"
+      ],
+      "errores_tipicos": [
+        "=SUMAR.SI(B2:B10;F2;D2:D10)",
+        "=SUMA($D$2:$D$10)",
+        "=SUMAR.SI($B$2:$B$10;$F$2;$D$2:$D$10)"
+      ],
+      "variantes": [{ "D5": 3000 }],
+      "formato_resultado": "eur",
+      "pistas": [
+        "SUMAR.SI pide: dónde mirar (las delegaciones), qué buscar (F2) y qué sumar (los importes).",
+        "Al copiar hacia abajo, los rangos de datos no deben moverse: fíjalos con $ (tecla F4). F2 sí debe cambiar a F3, F4.",
+        "Escribe `=SUMAR.SI($B$2:$B$10;F2;$D$2:$D$10)`."
+      ],
+      "explicacion": "Resumen terminado: Lleida 4.515,30 €, Pamplona 9.535,30 € y Zaragoza 8.226,45 €. Funciona en el Excel 2021 de Lleida y se actualiza solo cuando Marta pegue los pedidos nuevos. Última comprobación de profesional: la suma de las tres debe dar el total de D2:D10, 22.277,05 €."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m1l3-q1",
+      "modo": "test",
+      "pregunta": "Has montado el resumen de ventas por delegación. ¿Cómo compruebas que no se ha quedado fuera ningún pedido?",
+      "opciones": [
+        { "texto": "La suma de las ventas por delegación debe ser igual a la suma de todos los importes", "correcta": true, "porque": "Es un total de control: si no cuadra, falta algún pedido (por ejemplo, una delegación mal escrita) o sobra alguno." },
+        { "texto": "Si no sale ningún error, está bien", "correcta": false, "porque": "Una fórmula puede no dar error y estar mal: una delegación escrita «Zaragoza » con un espacio no sumaría y nadie lo notaría." },
+        { "texto": "Contar cuántas delegaciones aparecen", "correcta": false, "porque": "Te dice si están todas las delegaciones, no si están todos los importes." },
+        { "texto": "Mirar si los números parecen razonables", "correcta": false, "porque": "A ojo no se ve que falte un pedido de 615 € entre miles de euros. Mejor un cuadre exacto." }
+      ]
+    },
+    {
+      "id": "n5m1l3-q2",
+      "modo": "respuesta_corta",
+      "pregunta": "En `=AGRUPARPOR(B2:B9;D2:D9;SUMA)`, ¿qué palabra pondrías en lugar de SUMA para obtener el **importe medio** de cada grupo?",
+      "aceptadas": ["PROMEDIO", "=PROMEDIO", "PROMEDIO()"],
+      "explicacion": "PROMEDIO, sin paréntesis: `=AGRUPARPOR(B2:B9;D2:D9;PROMEDIO)`."
+    },
+    {
+      "id": "n5m1l3-q3",
+      "modo": "cinta",
+      "enunciado": "Necesitas un resumen que funcione en **cualquier versión** de Excel y que se pueda explorar arrastrando campos. ¿Qué botón usas?",
+      "ruta": ["Insertar", "Tablas", "Tabla dinámica"],
+      "explicacion": "Insertar › Tablas › Tabla dinámica. No olvides que, si cambian los datos, hay que pulsar Actualizar."
+    }
+  ],
+  "tarjetas": [
+    { "tipo": "funcion", "frente": "Sintaxis de AGRUPARPOR", "dorso": "=AGRUPARPOR(campos_fila; valores; función). La función sin paréntesis: SUMA, PROMEDIO, MAX…" },
+    { "tipo": "funcion", "frente": "¿Qué añade PIVOTARPOR a AGRUPARPOR?", "dorso": "Un segundo argumento con los campos de columna: =PIVOTARPOR(filas; columnas; valores; función)." },
+    { "tipo": "concepto", "frente": "¿En qué versiones existen AGRUPARPOR y PIVOTARPOR?", "dorso": "Solo en Microsoft 365. En Excel 2024 o 2021 dan #¿NOMBRE?: usa tabla dinámica o UNICOS + SUMAR.SI." },
+    { "tipo": "concepto", "frente": "Resumen por grupos compatible con Excel 2021", "dorso": "=ORDENAR(UNICOS(B2:B100)) para la lista y =SUMAR.SI($B$2:$B$100;F2;$D$2:$D$100) al lado." }
+  ]
+}

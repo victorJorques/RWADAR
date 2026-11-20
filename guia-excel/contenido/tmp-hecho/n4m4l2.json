@@ -1,0 +1,423 @@
+{
+ "id": "n4m4l2",
+ "titulo": "Un botón, un vistazo al código y cuándo usar cada herramienta",
+ "minutos": 16,
+ "objetivo": "Poner una macro en un botón, leer y retocar el código grabado, y elegir entre fórmula, Power Query, macro o Scripts de Office para cada tarea repetitiva.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Javier está encantado con su macro y ahora quiere macros para todo: para juntar los CSV de cobros de las tres delegaciones, para calcular el total pendiente de cada una y para dejar el informe listo para imprimir. Antes de que llenemos la empresa de macros que nadie sabe tocar, dime qué usarías para cada cosa.",
+  "logro": "Ya sabes poner una macro en un botón, retocar su código sin miedo y elegir la herramienta adecuada para cada trabajo repetitivo."
+ },
+ "funciones": [
+  "SUMAR.SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Javier no quiere aprenderse atajos. Solución: un **botón** en la propia hoja «Listado».\n\n1. **Insertar › Ilustraciones › Formas** y elige un rectángulo.\n2. Dibújalo en una zona libre de la hoja y escribe dentro «Dar formato».\n3. Clic derecho sobre la forma › **Asignar macro**.\n4. Elige **FormatoPedidos** y pulsa **Aceptar**.\n\nDesde ese momento, un clic en la forma ejecuta la macro. Cualquiera del equipo puede usarla sin saber que existe [[Alt]]+[[F8]]."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e1",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para poner la macro de Javier en un botón.",
+   "pasos": [
+    "Insertar › Ilustraciones › Formas y elegir un rectángulo",
+    "Dibujar la forma en una zona libre y escribir dentro «Dar formato»",
+    "Clic derecho sobre la forma › Asignar macro",
+    "Elegir FormatoPedidos y pulsar Aceptar",
+    "Hacer clic fuera de la forma y probar el botón"
+   ],
+   "explicacion": "Forma, texto, Asignar macro, elegir y probar. Con un botón, la macro está al alcance de todo el equipo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Lo que grabaste está escrito en **VBA**. Para verlo, pulsa [[Alt]]+[[F11]]: se abre el **Editor de Visual Basic**, una ventana aparte. A la izquierda, en la carpeta **Módulos**, haz doble clic en **Módulo1**.\n\nPara **leerlo** no hace falta saber programar: cada línea es una orden en inglés y se ejecutan de arriba abajo. Empieza en `Sub FormatoPedidos()` y acaba en `End Sub`. Las líneas verdes que empiezan por un apóstrofo (`'`) son **comentarios**: notas para personas que Excel no ejecuta."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Alt+F11",
+     "accion": "Abrir el Editor de Visual Basic (también en Programador › Código › Visual Basic)"
+    },
+    {
+     "teclas": "Alt+F8",
+     "accion": "Abrir la lista de macros para ejecutarlas"
+    }
+   ]
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "El código de FormatoPedidos (resumido)",
+   "cabecera": [
+    "Línea",
+    "Qué hace"
+   ],
+   "filas": [
+    [
+     "`Sub FormatoPedidos()`",
+     "Empieza la macro FormatoPedidos"
+    ],
+    [
+     "`' Formato del listado para comerciales`",
+     "Comentario: la descripción que escribiste al grabar"
+    ],
+    [
+     "`Rows(\"1:1\").Select`",
+     "Selecciona la fila 1"
+    ],
+    [
+     "`Selection.Font.Bold = True`",
+     "Pone en negrita lo seleccionado (True = sí)"
+    ],
+    [
+     "`Columns(\"A:F\").EntireColumn.AutoFit`",
+     "Ajusta el ancho de las columnas A a F"
+    ],
+    [
+     "`Range(\"H1\").Select`",
+     "Selecciona la celda H1"
+    ],
+    [
+     "`ActiveCell.FormulaR1C1 = \"Uso interno\"`",
+     "Escribe ese texto en la celda activa (así apunta la grabadora todo lo que tecleas)"
+    ],
+    [
+     "`End Sub`",
+     "Termina la macro"
+    ]
+   ],
+   "pie": "Lo que va entre comillas son datos: direcciones de celdas y textos. Es lo que se suele retocar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e2",
+   "modo": "test",
+   "pregunta": "Javier quiere que la nota diga «Uso interno - no reenviar» en lugar de «Uso interno». ¿Qué cambias en el código?",
+   "opciones": [
+    {
+     "texto": "El texto entre comillas de la línea `ActiveCell.FormulaR1C1 = \"Uso interno\"`",
+     "correcta": true,
+     "porque": "Eso es: lo que va entre comillas es el texto que se escribe en la celda. Cambias solo eso, guardas y pruebas."
+    },
+    {
+     "texto": "El nombre de la línea `Sub FormatoPedidos()`",
+     "correcta": false,
+     "porque": "Ese es el nombre de la macro. Cambiarlo no cambia lo que escribe, y además el botón dejaría de encontrarla."
+    },
+    {
+     "texto": "`Range(\"H1\")` por `Range(\"Uso interno - no reenviar\")`",
+     "correcta": false,
+     "porque": "Range lleva una dirección de celda, no un texto: la macro daría un error al llegar a esa línea."
+    },
+    {
+     "texto": "Nada: hay que grabar la macro entera otra vez",
+     "correcta": false,
+     "porque": "Se puede, pero es más lento y te arriesgas a grabar clics de más. Para cambiar un texto basta con retocar una línea."
+    }
+   ],
+   "explicacion": "Retocar lo que va entre comillas es la edición más habitual de una macro grabada, y ya sabes hacerla."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para retocar una macro sin sustos:\n\n1. Guarda una **copia** del libro antes de tocar el código.\n2. Cambia **solo** lo que va entre comillas: una dirección (`\"A:F\"` → `\"A:H\"`) o un texto. No toques puntos, paréntesis ni palabras en inglés.\n3. Cierra el editor, guarda el .xlsm y **ejecuta la macro** para comprobar el resultado.\n\nSi al ejecutarla sale un mensaje de error, pulsa **Finalizar** y revisa la línea que tocaste: casi siempre falta una comilla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e3",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "El programa ahora exporta el listado con **8 columnas (A a H)**. Si no tocas nada, la nota «Uso interno» caería encima de los datos de la columna H. Marca **todos** los cambios necesarios.",
+   "opciones": [
+    {
+     "texto": "Cambiar `\"A:F\"` por `\"A:H\"` en la línea de AutoFit",
+     "correcta": true,
+     "porque": "Sí: así se ajusta también el ancho de las columnas G y H."
+    },
+    {
+     "texto": "Cambiar `Range(\"H1\")` por `Range(\"J1\")`",
+     "correcta": true,
+     "porque": "Sí: la nota pasa a una columna libre, con la I de separación, y no pisa los datos."
+    },
+    {
+     "texto": "Cambiar `True` por `False` en la línea de la negrita",
+     "correcta": false,
+     "porque": "Eso quitaría la negrita de la cabecera; no tiene nada que ver con las columnas nuevas."
+    },
+    {
+     "texto": "Cambiar `Rows(\"1:1\")` por `Rows(\"1:8\")`",
+     "correcta": false,
+     "porque": "Rows habla de filas: pondría en negrita las ocho primeras filas, datos incluidos. Lo que ha cambiado son las columnas."
+    }
+   ],
+   "explicacion": "Dos retoques entre comillas y la macro vuelve a servir. Esta es la pega de las macros grabadas: apuntan rangos fijos, y cuando cambia la forma de los datos hay que revisarlas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ya tienes tres formas de no repetir trabajo, y cada una tiene su terreno:\n\n- **Fórmulas**, para **calcular**: se recalculan solas cuando cambia un dato y cualquiera ve cómo se calcula.\n- **Power Query**, para **traer, limpiar y unir datos** que llegan cada semana o cada mes: se repite con **Actualizar todo**.\n- **Macros**, para **acciones** que no son cálculo ni limpieza: dar formato, preparar la impresión, vaciar una plantilla.\n\nLa pregunta clave: «¿esto es calcular, traer datos o repetir clics?»"
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Tabla de decisión",
+   "cabecera": [
+    "Si la tarea es…",
+    "Usa",
+    "Por qué"
+   ],
+   "filas": [
+    [
+     "Calcular totales, IVA, comisiones, buscar precios",
+     "Fórmulas",
+     "Se actualizan solas al cambiar un dato y el cálculo está a la vista."
+    ],
+    [
+     "Importar el CSV del programa, limpiarlo o unir varios archivos",
+     "Power Query",
+     "Los pasos quedan a la vista y se repiten con Actualizar todo, sin código."
+    ],
+    [
+     "Dar siempre el mismo formato, preparar la impresión, vaciar una plantilla",
+     "Macro (VBA)",
+     "Repite clics que no son cálculos. Pide un .xlsm y Excel de escritorio."
+    ]
+   ],
+   "pie": "Si dudas entre macro y Power Query para preparar datos, elige Power Query: es más fácil de revisar y aguanta mejor los cambios."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Facturas: nunca con macros",
+   "md": "Según la Agencia Tributaria, una hoja que solo sirve para escribir, imprimir y guardar facturas no es un sistema informático de facturación; pero si con una macro genera el libro registro de facturas, sí lo es, con todas sus obligaciones. La facturación va en el programa de gestión, no en un Excel con macros."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e4",
+   "modo": "test",
+   "pregunta": "Cada mes llegan tres CSV de cobros (Zaragoza, Pamplona y Lleida) que hay que juntar en una sola lista y limpiar de filas vacías. ¿Qué usas?",
+   "opciones": [
+    {
+     "texto": "Power Query: anexar los tres archivos y limpiar con pasos",
+     "correcta": true,
+     "porque": "Es su terreno: traer, limpiar y unir archivos. El mes que viene, Actualizar todo y listo."
+    },
+    {
+     "texto": "Una macro grabada que abra los tres archivos y copie y pegue sus datos",
+     "correcta": false,
+     "porque": "Funcionaría hasta que un archivo traiga más filas o cambie de nombre: la grabadora apunta rangos fijos. Y nadie ve qué hace sin abrir el código."
+    },
+    {
+     "texto": "Fórmulas que apunten celda a celda a los tres archivos",
+     "correcta": false,
+     "porque": "Los vínculos a otros libros se rompen con facilidad y no quitan filas vacías. Para unir archivos, Power Query."
+    }
+   ],
+   "explicacion": "Traer y unir datos que llegan cada mes = Power Query. Una macro aquí sería justo el error que se quiere evitar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e5",
+   "modo": "formula",
+   "enunciado": "Javier quería una macro que escribiera cada lunes el total pendiente de cobro de una delegación. Una fórmula lo hace sola y siempre al día. En **F2** calcula el total pendiente de la delegación que está escrita en **E2** (ahora, Zaragoza).",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Pendiente",
+     "E1": "Delegación",
+     "F1": "Total pendiente",
+     "A2": "Instalaciones Ebro, S.L.",
+     "B2": "Zaragoza",
+     "C2": 2450.8,
+     "A3": "Electricidad Arga, S.L.",
+     "B3": "Pamplona",
+     "C3": 1320,
+     "A4": "Montajes Segre, S.L.",
+     "B4": "Lleida",
+     "C4": 980.45,
+     "A5": "Reformas Delicias, S.L.",
+     "B5": "Zaragoza",
+     "C5": 3715.2,
+     "A6": "Iluminación Txantrea, S.L.",
+     "B6": "Pamplona",
+     "C6": 640,
+     "A7": "Instalaciones Moncayo, S.L.",
+     "B7": "Zaragoza",
+     "C7": 1189.35,
+     "A8": "Climatización Noguera, S.L.",
+     "B8": "Lleida",
+     "C8": 2210,
+     "A9": "Electro Gállego, S.L.",
+     "B9": "Zaragoza",
+     "C9": 455.6,
+     "E2": "Zaragoza"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 26,
+     "B": 12,
+     "C": 12,
+     "E": 12,
+     "F": 15
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SUMAR.SI(B2:B9;E2;C2:C9)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C9;B2:B9;E2)",
+    "=SUMAR.SI($B$2:$B$9;$E$2;$C$2:$C$9)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B9;\"Zaragoza\";C2:C9)",
+    "=SUMA(C2:C9)",
+    "=SUMAR.SI(C2:C9;E2;B2:B9)"
+   ],
+   "variantes": [
+    {
+     "E2": "Pamplona"
+    },
+    {
+     "E2": "Lleida",
+     "C4": 1500
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una suma con condición: solo cuentan las filas cuya delegación coincide con la de E2.",
+    "SUMAR.SI pide tres cosas, en este orden: dónde mirar (B2:B9), qué buscar (E2) y qué sumar (C2:C9).",
+    "Escribe =SUMAR.SI(B2:B9;E2;C2:C9)."
+   ],
+   "explicacion": "7.810,95 € pendientes en Zaragoza, y si cambias E2 a Pamplona o a Lleida, el total cambia solo. Ninguna macro que «escribe el total» te da eso: la fórmula está siempre al día y cualquiera ve cómo se calcula. Compruébalo: los totales de las tres delegaciones suman lo mismo que la columna C. Calcular → fórmula."
+  },
+  {
+   "tipo": "texto",
+   "md": "En **Excel para la web** las macros VBA no se pueden crear, ejecutar ni editar: siguen dentro del archivo, pero hay que abrirlo en la aplicación de escritorio.\n\nLa alternativa moderna son los **Scripts de Office** (*Office Scripts*): se graban en la pestaña **Automatizar**, funcionan en la web, en Windows y en Mac, y se guardan en OneDrive, no dentro del libro. Piden una licencia de Microsoft 365 de empresa, e informática puede desactivarlos: si no ves la pestaña **Automatizar**, no los tienes."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te cuento por experiencia: aquí hubo un compañero que lo hacía todo con macros. Se jubiló y nadie sabía tocarlas; cuando cambió el formato de las exportaciones, se rompieron todas. Si haces una, que tenga un nombre claro, su descripción y una nota en el libro de qué hace y quién la hizo. Y tranquila: en las ofertas de administración las macros suelen pedirse como «valorable»; lo que nunca falta son fórmulas, tablas dinámicas y buen criterio."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e6",
+   "modo": "test",
+   "pregunta": "Lucía abre el libro de Javier en Excel para la web, desde el navegador, y pulsa el botón «Dar formato». No pasa nada. ¿Por qué?",
+   "opciones": [
+    {
+     "texto": "En Excel para la web las macros VBA no se ejecutan: hay que abrirlo en la aplicación de escritorio",
+     "correcta": true,
+     "porque": "Eso es. La macro sigue en el archivo; en el Excel de escritorio funcionará."
+    },
+    {
+     "texto": "El libro tendría que estar guardado como .xlsx",
+     "correcta": false,
+     "porque": "Al revés: en .xlsx no habría macro. El .xlsm es correcto; el problema es dónde se abre."
+    },
+    {
+     "texto": "Lucía no tiene activada la pestaña Programador",
+     "correcta": false,
+     "porque": "Programador hace falta para grabar o ver el código, no para ejecutar una macro desde un botón."
+    },
+    {
+     "texto": "Hay que volver a grabar la macro en su ordenador",
+     "correcta": false,
+     "porque": "La macro está bien. Si se abre en el Excel de escritorio, el botón funciona."
+    }
+   ],
+   "explicacion": "Si el equipo trabaja mucho en el navegador, piensa antes en fórmulas, Power Query o Scripts de Office que en VBA."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m4l2-e7",
+   "modo": "abierta",
+   "pregunta": "Contesta a Marta. Para cada una de las tres cosas que quiere Javier (juntar los CSV de cobros de las tres delegaciones, calcular el total pendiente de cada una y dejar el informe listo para imprimir), di qué herramienta usarías y por qué. Una línea por tarea.",
+   "modelo": "1) Juntar los CSV de cobros: Power Query, anexando los tres archivos y limpiándolos con pasos; cada mes, Actualizar todo. 2) Total pendiente por delegación: fórmulas (SUMAR.SI sobre la lista que deja Power Query), que se recalculan solas y se ven. 3) Informe listo para imprimir: una macro grabada en un .xlsm, con nombre claro, descripción y un botón; o un Script de Office si trabajamos en la web. Así solo lleva macro lo que de verdad son clics repetidos.",
+   "criterios": [
+    "Elige Power Query para juntar y limpiar los CSV",
+    "Elige fórmulas (o una tabla dinámica) para los totales y dice que se actualizan solas",
+    "Reserva la macro, o un Script de Office, para el formato y la impresión",
+    "Da un motivo para cada elección",
+    "Menciona algo que facilite que otros la mantengan (nombre claro, descripción, .xlsm, nota de qué hace)"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m4l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre el Editor de Visual Basic para ver el código de una macro?",
+   "aceptadas": [
+    "Alt+F11",
+    "Alt F11",
+    "Alt + F11",
+    "ALT+F11",
+    "alt+f11"
+   ],
+   "explicacion": "[[Alt]]+[[F11]] abre el Editor de Visual Basic. También: Programador › Código › Visual Basic."
+  },
+  {
+   "id": "n4m4l2-q2",
+   "modo": "test",
+   "pregunta": "Javier quiere que la comisión de cada comercial (el 3 % de sus ventas) aparezca sola en cuanto se apunta una venta. ¿Qué usas?",
+   "opciones": [
+    {
+     "texto": "Una fórmula",
+     "correcta": true,
+     "porque": "Es un cálculo: la fórmula se recalcula al momento y el cálculo está a la vista."
+    },
+    {
+     "texto": "Una macro con un botón «Calcular comisiones»",
+     "correcta": false,
+     "porque": "Habría que acordarse de pulsarla cada vez, y nadie vería cómo se calcula sin abrir el código."
+    },
+    {
+     "texto": "Power Query",
+     "correcta": false,
+     "porque": "Power Query trae y prepara datos y solo cambia al pulsar Actualizar, no al escribir una venta."
+    }
+   ],
+   "explicacion": "Calcular → fórmula; traer y limpiar datos → Power Query; repetir clics → macro."
+  },
+  {
+   "id": "n4m4l2-q3",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para retocar con seguridad un rango en el código de una macro.",
+   "pasos": [
+    "Guardar una copia del libro",
+    "Pulsar Alt+F11 y abrir Módulo1",
+    "Cambiar solo lo que va entre comillas, por ejemplo \"A:F\" por \"A:H\"",
+    "Cerrar el editor y guardar el .xlsm",
+    "Ejecutar la macro y comprobar el resultado"
+   ],
+   "explicacion": "Copia, editor, retoque mínimo, guardar y comprobar. Así un error nunca te cuesta el libro."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "atajo",
+   "frente": "Ver el código de una macro",
+   "dorso": "Alt+F11 abre el Editor de Visual Basic (o Programador › Código › Visual Basic)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Poner una macro en un botón",
+   "dorso": "Insertar › Ilustraciones › Formas, dibujar la forma, clic derecho › Asignar macro."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Fórmula, Power Query o macro?",
+   "dorso": "Calcular → fórmula. Traer, limpiar y unir datos → Power Query. Repetir clics (formato, impresión) → macro."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Funcionan las macros VBA en Excel para la web?",
+   "dorso": "No se crean, ni se ejecutan, ni se editan. La alternativa son los Scripts de Office (pestaña Automatizar)."
+  }
+ ]
+}

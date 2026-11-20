@@ -1,0 +1,5 @@
+{
+  "titulo": "N5 · Modelo de datos de ventas: relaciones, recuento distinto y medidas",
+  "descripcion": "Cuatro Tablas (Ventas con 2.000 líneas, Clientes, Productos y Calendario) para relacionarlas en un modelo de datos y sacar ventas por provincia y familia, clientes distintos y margen % con medidas.",
+  "nivel": "n5"
+}

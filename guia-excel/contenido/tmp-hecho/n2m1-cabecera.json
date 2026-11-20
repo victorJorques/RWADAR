@@ -1,0 +1,165 @@
+{
+ "id": "n2m1",
+ "nivel": "n2",
+ "titulo": "Tablas de Excel y control de lo que se escribe",
+ "intro": "En tu primer mes ya no solo usas listas: las cuidas. Aquí aprendes a convertir una lista en una Tabla que crece sola, a impedir que la gente escriba «Panplona» con listas desplegables, a que los avisos se pinten solos con formato condicional y a pasar resultados a otro libro sin fórmulas, cuatro cosas que en cualquier oficina se usan a diario.",
+ "repaso_inicial": [
+  {
+   "id": "n2m1-r1",
+   "modo": "formula",
+   "enunciado": "Repaso del símbolo $. En **C2** calcula el precio con IVA del primer producto: precio sin IVA (B2) por (1 + el IVA que está en **F1**). Tu fórmula se copiará a C3:C4, así que fija lo que no debe moverse.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Sin IVA",
+     "C1": "Con IVA",
+     "E1": "IVA",
+     "F1": 0.21,
+     "A2": "Cable 2,5 mm² (100 m)",
+     "B2": 48.6,
+     "A3": "Panel LED 60x60",
+     "B3": 32.25,
+     "A4": "Caja de empalmes",
+     "B4": 2.9
+    },
+    "formatos": {
+     "B2:C4": "eur",
+     "F1": "pct"
+    },
+    "anchos": {
+     "A": 22
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "solucion": "=B2*(1+$F$1)",
+   "alternativas": [
+    "=B2*(1+F$1)",
+    "=B2+B2*$F$1"
+   ],
+   "errores_tipicos": [
+    "=B2*(1+F1)",
+    "=B2*1,21"
+   ],
+   "variantes": [
+    {
+     "F1": 0.1
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Precio con IVA = precio × (1 + IVA).",
+    "La celda del IVA es F1, y al copiar hacia abajo no debe moverse.",
+    "Escribe `=B2*(1+$F$1)`."
+   ],
+   "explicacion": "Bien recordado: `$F$1` se queda quieta al copiar y `B2` baja fila a fila. Lo vas a seguir usando en este módulo."
+  },
+  {
+   "id": "n2m1-r2",
+   "modo": "predice",
+   "enunciado": "Repaso de contar. En B2:B6 hay tres importes, la palabra «pendiente» y una celda vacía. ¿Qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Importe",
+     "A2": "FV-26/0801",
+     "B2": 1250,
+     "A3": "FV-26/0802",
+     "B3": "pendiente",
+     "A4": "FV-26/0803",
+     "B4": 830.5,
+     "A5": "FV-26/0804",
+     "A6": "FV-26/0805",
+     "B6": 2140
+    },
+    "formatos": {
+     "B2:B6": "eur"
+    }
+   },
+   "celda": "D2",
+   "formula": "=CONTAR(B2:B6)",
+   "explicacion": "CONTAR solo cuenta **números**: 3. Si quisieras contar todo lo que tiene algo escrito, texto incluido, usarías CONTARA (daría 4).",
+   "respuesta": "3"
+  },
+  {
+   "id": "n2m1-r3",
+   "modo": "test",
+   "pregunta": "Repaso de ordenar. Quieres ordenar la lista de clientes por la columna Ciudad. ¿Qué es lo peligroso?",
+   "opciones": [
+    {
+     "texto": "Seleccionar solo la columna Ciudad y ordenarla sin ampliar la selección",
+     "correcta": true,
+     "porque": "Correcto: se ordenaría solo esa columna y cada ciudad acabaría junto al cliente equivocado. Hay que ordenar la lista entera."
+    },
+    {
+     "texto": "Hacer clic en una celda de la columna Ciudad y usar Ordenar de A a Z",
+     "correcta": false,
+     "porque": "Así Excel ordena la lista entera usando esa columna: es la forma segura."
+    },
+    {
+     "texto": "Ordenar una lista que tiene la fila de títulos arriba",
+     "correcta": false,
+     "porque": "Es lo normal: Excel reconoce la fila de títulos y no la mueve."
+    }
+   ]
+  },
+  {
+   "id": "n2m1-r4",
+   "modo": "respuesta_corta",
+   "pregunta": "Repaso de formato. ¿Qué atajo pone en **negrita** la celda en el Excel en español?",
+   "aceptadas": [
+    "Ctrl+N",
+    "Control+N",
+    "Ctrl N",
+    "Ctrl + N"
+   ],
+   "explicacion": "Ctrl+N, de «negrita». Ctrl+B, el de los tutoriales en inglés, aquí abre Buscar."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "Andrés Molina te pasa el **registro de incidencias de clientes**: 60 incidencias que rellenan entre todos, con categorías y estados escritos de mil maneras. Descarga el libro y sigue la hoja **Instrucciones**:\n\n1. Convierte la lista en la Tabla **Incidencias** ([[Ctrl]]+[[T]]).\n2. Pon listas desplegables en **Categoría** y **Estado**, con origen en la hoja **Listas** y estilo **Detener**.\n3. Caza los datos mal escritos con **Rodear con un círculo datos no válidos** y corrígelos.\n4. Añade la columna calculada **Días abiertos** (la fórmula está en las instrucciones).\n5. Activa la **fila de totales** y resalta en rojo los **Días abiertos mayores que 10**.\n\nIntenta hacerlo en menos de 25 minutos: en las pruebas de selección siempre hay reloj. Después responde a los controles.",
+  "archivo": "n2-registro-incidencias.xlsx",
+  "controles": [
+   {
+    "pregunta": "Después de limpiar, ¿cuántas incidencias son de la categoría «Material defectuoso»?",
+    "respuesta": 14,
+    "tolerancia": 0,
+    "pista": "Filtra la columna Categoría por Material defectuoso, selecciona las celdas visibles de esa columna y mira el Recuento en la barra de estado. Si te salen menos de las que esperas, quedan variantes sin corregir (Mat. defectuoso, Defectuoso…)."
+   },
+   {
+    "pregunta": "¿Cuántas incidencias no están cerradas (Abierta o En curso)?",
+    "respuesta": 16,
+    "tolerancia": 0,
+    "pista": "Filtra Estado quitando Cerrada. Recuerda que «En proceso» había que corregirlo a En curso, y que «Cerrado» y «Cerrada » (con espacio) son Cerrada."
+   },
+   {
+    "pregunta": "Sin ningún filtro, ¿cuánto suma la fila de totales en Importe afectado (€)?",
+    "respuesta": 84219.42,
+    "tolerancia": 0.01,
+    "pista": "Borra todos los filtros (Datos › Borrar) y elige Suma en la flecha de la fila de totales bajo Importe afectado."
+   },
+   {
+    "pregunta": "Sin filtros, ¿cuánto suma la fila de totales en Días abiertos?",
+    "respuesta": 743,
+    "tolerancia": 0,
+    "pista": "Comprueba la fórmula de I2: si está Cerrada, cierre menos apertura; si no, la fecha de corte de L1 ($L$1) menos apertura. Si ves fechas en lugar de números, cambia el formato a Número."
+   },
+   {
+    "pregunta": "¿Cuántas celdas de Días abiertos quedan resaltadas en rojo (más de 10 días)?",
+    "respuesta": 26,
+    "tolerancia": 0,
+    "pista": "La regla es Mayor que 10: una incidencia de 10 días justos no se marca. Puedes contarlas filtrando Días abiertos por color."
+   },
+   {
+    "pregunta": "Filtra la Categoría «Error en factura». ¿Qué importe muestra ahora la fila de totales (€)?",
+    "respuesta": 16337.39,
+    "tolerancia": 0.01,
+    "pista": "La fila de totales usa SUBTOTALES y solo suma lo visible. Si sale el total general, el filtro no está puesto; si sale menos, quedan «Error factura» o «Error en la factura» sin corregir."
+   }
+  ],
+  "solucion_md": "**Solución paso a paso**\n\n1. Clic en A1 › [[Ctrl]]+[[T]] › rango `=$A$1:$H$61` con **La tabla tiene encabezados** › Aceptar. En **Diseño de tabla › Nombre de la tabla**, escribe `Incidencias`.\n2. Selecciona los datos de Categoría (E2:E61) › **Datos › Validación de datos** › Permitir: **Lista** › Origen `=Listas!$A$2:$A$5` › pestaña Mensaje de error, estilo **Detener**. Lo mismo en Estado (F2:F61) con `=Listas!$C$2:$C$4`.\n3. Flecha de **Validación de datos › Rodear con un círculo datos no válidos**: salen **19 círculos** (16 categorías y 3 estados). Corrige cada uno con el desplegable: «Retraso entrega», «Retraso» o «Retraso en entrga» son *Retraso en entrega*; «Mat. defectuoso», «Defectuoso» o «Material defectuso» son *Material defectuoso*; «Error factura» o «Error en la factura» son *Error en factura*; «Ped. incompleto», «Incompleto» o «Pedido incompleto.» son *Pedido incompleto*; varios llevan un espacio invisible al final. En Estado: «Cerrado» y «Cerrada » son *Cerrada*; «En proceso» es *En curso*.\n4. En I1 escribe `Días abiertos` y en I2: `=SI([@Estado]=\"Cerrada\";[@[Fecha cierre]]-[@[Fecha apertura]];$L$1-[@[Fecha apertura]])`. La Tabla la copia sola a las 60 filas. Formato Número sin decimales.\n5. **Diseño de tabla › Fila de totales**: Suma en Importe afectado (84.219,42 €) y Suma en Días abiertos (743).\n6. Selecciona I2:I61 › **Inicio › Formato condicional › Reglas para resaltar celdas › Mayor que** › 10 › relleno rojo claro: 26 celdas.\n\n**Controles**: 23 Retraso en entrega, 14 Material defectuoso, 16 Error en factura y 7 Pedido incompleto (suman 60: total de control cuadrado). 44 cerradas, 10 abiertas y 6 en curso. Filtrando Error en factura, la fila de totales da 16.337,39 €. De las 26 con más de 10 días, 12 siguen sin cerrar: esas son las que Andrés tiene que perseguir.",
+  "archivo_solucion": "n2-registro-incidencias-solucion.xlsx"
+ }
+}

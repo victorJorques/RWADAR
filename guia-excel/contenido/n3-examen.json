@@ -1,0 +1,644 @@
+{
+ "nivel": "n3",
+ "titulo": "Examen del nivel 3",
+ "intro": "Ya eres del equipo y te llegan los informes: quince encargos reales de todos los departamentos, sin pistas. Con 12 aciertos de 15 (80 %) consigues la insignia y el certificado del nivel 3.",
+ "umbral": 0.8,
+ "preguntas": [
+  {
+   "id": "n3-x1",
+   "modo": "formula",
+   "leccion": "n3m1l2",
+   "enunciado": "Electricidad Arga pregunta cuánto le facturamos en un mes. En **F4** calcula lo facturado al cliente de **F1** en el mes cuyo **día 1** está en **F2**: del día 1 al último día de ese mes, los dos incluidos. Usa las dos celdas: la fórmula tiene que servir para cualquier cliente y cualquier mes. Para octubre debe salir **3.333,25 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Cliente",
+     "F1": "Electricidad Arga",
+     "E2": "Mes (día 1)",
+     "F2": {
+      "fecha": "2026-10-01"
+     },
+     "E4": "Facturado",
+     "A2": {
+      "fecha": "2026-09-30"
+     },
+     "B2": "Electricidad Arga",
+     "C2": 1320,
+     "A3": {
+      "fecha": "2026-10-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 845.6,
+     "A4": {
+      "fecha": "2026-10-07"
+     },
+     "B4": "Montajes Segre",
+     "C4": 2210,
+     "A5": {
+      "fecha": "2026-10-15"
+     },
+     "B5": "Electricidad Arga",
+     "C5": 1975.25,
+     "A6": {
+      "fecha": "2026-10-22"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 640,
+     "A7": {
+      "fecha": "2026-10-31"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 512.4,
+     "A8": {
+      "fecha": "2026-11-01"
+     },
+     "B8": "Electricidad Arga",
+     "C8": 1088,
+     "A9": {
+      "fecha": "2026-11-12"
+     },
+     "B9": "Montajes Segre",
+     "C9": 930.75,
+     "A10": {
+      "fecha": "2026-11-16"
+     },
+     "B10": "Electricidad Arga",
+     "C10": 760.3
+    },
+    "formatos": {
+     "A2:A10": "fecha",
+     "F2": "fecha",
+     "C2:C10": "eur",
+     "F4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 22,
+     "E": 12,
+     "F": 18
+    }
+   },
+   "objetivo": "F4",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0);B2:B10;F1)",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<\"&FIN.MES(F2;0)+1)",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$10;$B$2:$B$10;$F$1;$A$2:$A$10;\">=\"&$F$2;$A$2:$A$10;\"<=\"&FIN.MES($F$2;0))",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<\"&FECHA.MES(F2;1))"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<\"&FIN.MES(F2;0))",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<=\"&F2+30)",
+    "=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2)"
+   ],
+   "variantes": [
+    {
+     "F1": "Montajes Segre"
+    },
+    {
+     "F2": {
+      "fecha": "2026-11-01"
+     }
+    },
+    {
+     "F1": "Electricidad Arga",
+     "F2": {
+      "fecha": "2026-09-01"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;F1;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))`: tres condiciones a la vez (el cliente, desde el día 1 y hasta el último día que calcula FIN.MES). Entran las facturas del 1 y del 31 de octubre; la del 30 de septiembre y la del 1 de noviembre se quedan fuera. Ojo con atajos como `F2+30`: en un mes de 30 días se cuela el día 1 del mes siguiente."
+  },
+  {
+   "id": "n3-x2",
+   "modo": "formula",
+   "leccion": "n3m1l3",
+   "enunciado": "Carmen quiere para el comité el **importe medio de los pedidos ya servidos** de cada delegación (los pendientes no cuentan). En **G2** calcúlalo para la delegación de **F2**. Tu fórmula se copiará a **G3:G4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Estado",
+     "C1": "Importe",
+     "F1": "Delegación",
+     "G1": "Media servidos",
+     "F2": "Zaragoza",
+     "F3": "Pamplona",
+     "F4": "Lleida",
+     "A2": "Pamplona",
+     "B2": "Servido",
+     "C2": 1612.8,
+     "A3": "Lleida",
+     "B3": "Servido",
+     "C3": 2045,
+     "A4": "Zaragoza",
+     "B4": "Servido",
+     "C4": 1480,
+     "A5": "Zaragoza",
+     "B5": "Pendiente",
+     "C5": 386.4,
+     "A6": "Pamplona",
+     "B6": "Pendiente",
+     "C6": 920.5,
+     "A7": "Zaragoza",
+     "B7": "Servido",
+     "C7": 2890,
+     "A8": "Lleida",
+     "B8": "Pendiente",
+     "C8": 1210,
+     "A9": "Pamplona",
+     "B9": "Servido",
+     "C9": 1047.2,
+     "A10": "Zaragoza",
+     "B10": "Servido",
+     "C10": 735.6,
+     "A11": "Lleida",
+     "B11": "Servido",
+     "C11": 611,
+     "A12": "Zaragoza",
+     "B12": "Pendiente",
+     "C12": 1954,
+     "A13": "Pamplona",
+     "B13": "Servido",
+     "C13": 402
+    },
+    "formatos": {
+     "C2:C13": "eur",
+     "G2:G4": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "F": 12,
+     "G": 15
+    }
+   },
+   "objetivo": "G2",
+   "copiar_a": [
+    "G3:G4"
+   ],
+   "solucion": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;F2;$B$2:$B$13;\"Servido\")",
+   "alternativas": [
+    "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;\"Servido\";$A$2:$A$13;F2)",
+    "=PROMEDIO.SI.CONJUNTO(C$2:C$13;A$2:A$13;F2;B$2:B$13;\"Servido\")",
+    "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;$F2;$B$2:$B$13;\"Servido\")",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;F2;$B$2:$B$13;\"Servido\")/CONTAR.SI.CONJUNTO($A$2:$A$13;F2;$B$2:$B$13;\"Servido\")"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;F2;B2:B13;\"Servido\")",
+    "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;F2)",
+    "=PROMEDIO.SI($A$2:$A$13;F2;$C$2:$C$13)",
+    "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;F2;$B$2:$B$13;\"Pendiente\")"
+   ],
+   "variantes": [
+    {
+     "B5": "Servido"
+    },
+    {
+     "C4": 1800
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;F2;$B$2:$B$13;\"Servido\")`: primero el rango que se promedia y después dos parejas, delegación y estado. Zaragoza da 1.701,87 € (5.105,60 € entre sus 3 pedidos servidos). Sin los $, al copiar los rangos bajan y Pamplona y Lleida pierden su primer pedido sin avisar."
+  },
+  {
+   "id": "n3-x3",
+   "modo": "formula",
+   "leccion": "n3m2l1",
+   "enunciado": "La agencia de transporte cobra los **portes según el peso** del envío, por tramos: desde 0 kg, 9,50 €; desde 30 kg, 14,80 €; desde 100 kg, 32,00 €, y desde 500 kg, 68,00 €. Andrés tiene esa escala en **E1:F5**. En **C2** calcula los portes del envío de la fila 2 leyendo la escala, de forma que si la agencia cambia una tarifa solo haya que tocar la tabla. La fórmula se copiará a **C3:C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Envío",
+     "B1": "Peso (kg)",
+     "C1": "Portes",
+     "E1": "Desde (kg)",
+     "F1": "Portes",
+     "E2": 0,
+     "F2": 9.5,
+     "E3": 30,
+     "F3": 14.8,
+     "E4": 100,
+     "F4": 32,
+     "E5": 500,
+     "F5": 68,
+     "A2": "ENV-26/1102",
+     "B2": 45,
+     "A3": "ENV-26/1103",
+     "B3": 12.5,
+     "A4": "ENV-26/1104",
+     "B4": 100,
+     "A5": "ENV-26/1105",
+     "B5": 620,
+     "A6": "ENV-26/1106",
+     "B6": 99.9
+    },
+    "formatos": {
+     "F2:F5": "eur",
+     "C2:C6": "eur",
+     "B2:B6": "num"
+    },
+    "anchos": {
+     "A": 12,
+     "E": 11
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+   "alternativas": [
+    "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)",
+    "=BUSCARX(B2;E$2:E$5;F$2:F$5;;-1)",
+    "=BUSCARV(B2;E$2:F$5;2;VERDADERO)",
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;0;-1)"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5)",
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;1)",
+    "=BUSCARX(B2;E2:E5;F2:F5;;-1)",
+    "=BUSCARV(B2;$E$2:$F$5;2;FALSO)"
+   ],
+   "variantes": [
+    {
+     "B2": 30
+    },
+    {
+     "F3": 15.5
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)`: con -1 busca el peso exacto o el siguiente menor, que en una tabla «Desde» es el tramo que toca. 45 kg pagan 14,80 €; 100 kg justos ya pagan 32,00 €, y 99,9 kg, todavía 14,80 €. En un Excel sin BUSCARX, lo mismo con `BUSCARV(B2;$E$2:$F$5;2;VERDADERO)`."
+  },
+  {
+   "id": "n3-x4",
+   "modo": "formula",
+   "leccion": "n3m2l2",
+   "enunciado": "Andrés consulta en el portátil del almacén, que tiene **Excel 2019**, el **plazo de entrega en días** de cada proveedor según la familia. La fórmula de **H3** la hizo otra persona y trae el plazo de **otro proveedor** sin dar ningún error. **Arréglala** para que devuelva el plazo del proveedor de **H1** en la familia de **H2**, y que siga funcionando en Excel 2019.",
+   "hoja": {
+    "celdas": {
+     "A1": "Proveedor",
+     "B1": "Cableado",
+     "C1": "Iluminación",
+     "D1": "Protección",
+     "A2": "Cables Jalón",
+     "B2": 3,
+     "C2": 7,
+     "D2": 5,
+     "A3": "Iluminación Segre",
+     "B3": 6,
+     "C3": 2,
+     "D3": 8,
+     "A4": "Aparellaje Moncayo",
+     "B4": 5,
+     "C4": 9,
+     "D4": 2,
+     "A5": "Bridas del Cinca",
+     "B5": 4,
+     "C5": 6,
+     "D5": 7,
+     "G1": "Proveedor",
+     "H1": "Aparellaje Moncayo",
+     "G2": "Familia",
+     "H2": "Iluminación",
+     "G3": "Plazo (días)"
+    },
+    "anchos": {
+     "A": 19,
+     "G": 12,
+     "H": 19
+    }
+   },
+   "objetivo": "H3",
+   "inicial": "=INDICE(B2:D5;COINCIDIR(H1;A1:A5;0);COINCIDIR(H2;B1:D1;0))",
+   "solucion": "=INDICE(B2:D5;COINCIDIR(H1;A2:A5;0);COINCIDIR(H2;B1:D1;0))",
+   "alternativas": [
+    "=INDICE($B$2:$D$5;COINCIDIR(H1;$A$2:$A$5;0);COINCIDIR(H2;$B$1:$D$1;0))",
+    "=INDICE(A1:D5;COINCIDIR(H1;A1:A5;0);COINCIDIR(H2;A1:D1;0))"
+   ],
+   "errores_tipicos": [
+    "=INDICE(B2:D5;COINCIDIR(H1;A1:A5;0);COINCIDIR(H2;B1:D1;0))",
+    "=INDICE(B2:D5;COINCIDIR(H2;B1:D1;0);COINCIDIR(H1;A2:A5;0))",
+    "=INDICE(B2:D5;3;2)"
+   ],
+   "debe_usar": [
+    "INDICE",
+    "COINCIDIR"
+   ],
+   "no_usar": [
+    "BUSCARX",
+    "COINCIDIRX"
+   ],
+   "variantes": [
+    {
+     "H1": "Cables Jalón",
+     "H2": "Protección"
+    }
+   ],
+   "explicacion": "El COINCIDIR de la fila buscaba en A1:A5 (con el título) mientras INDICE contaba desde la fila 2: todo quedaba desplazado un proveedor. Con los dos rangos alineados, `=INDICE(B2:D5;COINCIDIR(H1;A2:A5;0);COINCIDIR(H2;B1:D1;0))` da 9 días. INDICE + COINCIDIR con su 0 funciona en cualquier versión de Excel."
+  },
+  {
+   "id": "n3-x5",
+   "modo": "formula",
+   "leccion": "n3m2l3",
+   "enunciado": "Cierre de compras. Andrés tiene los **albaranes** recibidos de Cables Jalón (A:B) y las **facturas** que nos ha mandado (E:F), cada una con el albarán al que corresponde. En **C2** saca el importe facturado por el albarán de A2 o, si ese albarán no aparece en las facturas, el texto **Sin facturar**. La fórmula se copiará a **C3:C7**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Albarán",
+     "B1": "Importe albarán",
+     "C1": "Facturado",
+     "E1": "Albarán facturado",
+     "F1": "Importe factura",
+     "A2": "AL-26/3301",
+     "B2": 1240,
+     "A3": "AL-26/3302",
+     "B3": 865.5,
+     "A4": "AL-26/3303",
+     "B4": 2310,
+     "A5": "AL-26/3304",
+     "B5": 452.8,
+     "A6": "AL-26/3305",
+     "B6": 1795,
+     "A7": "AL-26/3306",
+     "B7": 618.4,
+     "E2": "AL-26/3303",
+     "F2": 2310,
+     "E3": "AL-26/3301",
+     "F3": 1240,
+     "E4": "AL-26/3306",
+     "F4": 681.4,
+     "E5": "AL-26/3302",
+     "F5": 865.5,
+     "E6": "AL-26/3308",
+     "F6": 905
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "F2:F6": "eur",
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 15,
+     "C": 13,
+     "E": 17,
+     "F": 15
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C7"
+   ],
+   "solucion": "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6;\"Sin facturar\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(A2;$E$2:$E$6;$F$2:$F$6);\"Sin facturar\")",
+    "=SI.ND(INDICE($F$2:$F$6;COINCIDIR(A2;$E$2:$E$6;0));\"Sin facturar\")",
+    "=SI.ND(BUSCARV(A2;$E$2:$F$6;2;FALSO);\"Sin facturar\")",
+    "=BUSCARX(A2;E$2:E$6;F$2:F$6;\"Sin facturar\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)",
+    "=SI.ERROR(BUSCARX(A2;$E$2:$E$6;$F$2:$F$6);0)",
+    "=BUSCARX(A2;E2:E6;F2:F6;\"Sin facturar\")",
+    "=BUSCARX(E2;$A$2:$A$7;$B$2:$B$7;\"Sin facturar\")"
+   ],
+   "variantes": [
+    {
+     "E6": "AL-26/3304"
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6;\"Sin facturar\")`. Salen tres cosas que contarle a Andrés: AL-26/3304 y AL-26/3305 están sin facturar; el AL-26/3306 se ha facturado por 681,40 € en vez de 618,40 € (63 € de más), y en el otro sentido hay una factura del AL-26/3308, que no está entre nuestros albaranes."
+  },
+  {
+   "id": "n3-x6",
+   "modo": "formula",
+   "leccion": "n3m3l3",
+   "enunciado": "El reloj de fichajes de RRHH exporta la fecha como texto pegado y en orden español: «03112026» es el 3 de noviembre de 2026 (día, mes y año). En **B2** conviértela en una fecha de verdad, con la que Lucía pueda calcular y ordenar. Se copiará a **B3:B5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha (texto)",
+     "B1": "Fecha",
+     "C1": "Persona",
+     "A2": "'03112026",
+     "C2": "Rosa Gimeno Lahoz",
+     "A3": "'09112026",
+     "C3": "Hugo Bernal Pueyo",
+     "A4": "'16112026",
+     "C4": "Iván Royo Sanz",
+     "A5": "'28102026",
+     "C5": "Marta Oliván Gil"
+    },
+    "formatos": {
+     "B2:B5": "fecha"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 12,
+     "C": 20
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=FECHA(DERECHA(A2;4);EXTRAE(A2;3;2);IZQUIERDA(A2;2))",
+   "alternativas": [
+    "=FECHA(EXTRAE(A2;5;4);EXTRAE(A2;3;2);IZQUIERDA(A2;2))",
+    "=FECHA(DERECHA(A2;4);EXTRAE(A2;3;2);EXTRAE(A2;1;2))"
+   ],
+   "errores_tipicos": [
+    "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))",
+    "=FECHA(DERECHA(A2;4);IZQUIERDA(A2;2);EXTRAE(A2;3;2))",
+    "=VALOR(A2)"
+   ],
+   "debe_usar": [
+    "FECHA"
+   ],
+   "variantes": [
+    {
+     "A2": "'31122026"
+    }
+   ],
+   "formato_resultado": "fecha",
+   "explicacion": "`=FECHA(DERECHA(A2;4);EXTRAE(A2;3;2);IZQUIERDA(A2;2))`: FECHA pide año, mes y día, en ese orden, así que hay que sacar cada trozo de su sitio. Si cambias el mes por el día, el 3 de noviembre se convierte en el 11 de marzo sin ningún aviso."
+  },
+  {
+   "id": "n3-x7",
+   "modo": "test",
+   "leccion": "n3m3l2",
+   "pregunta": "Lucía tiene el listado de inscripciones a la formación de prevención: una fila por persona y curso (Nombre, DNI, Curso, Fecha). Quiere una lista con **cada persona una sola vez** para enviar los certificados. Hay dos «María García» distintas. En una copia de la hoja, ¿cómo usa **Quitar duplicados**?",
+   "opciones": [
+    {
+     "texto": "Marcando solo la columna DNI",
+     "correcta": true,
+     "porque": "Correcto: el DNI identifica a cada persona. Queda una fila por persona, y las dos María García, con DNI distinto, se quedan las dos."
+    },
+    {
+     "texto": "Marcando solo la columna Nombre",
+     "correcta": false,
+     "porque": "Borraría a una de las dos María García: para Excel, mismo nombre es fila repetida, aunque el DNI sea otro."
+    },
+    {
+     "texto": "Marcando todas las columnas",
+     "correcta": false,
+     "porque": "Solo borraría filas idénticas en todo. La misma persona en dos cursos distintos seguiría saliendo dos veces."
+    },
+    {
+     "texto": "Marcando Nombre y Curso",
+     "correcta": false,
+     "porque": "Dejaría a cada persona tantas veces como cursos haya hecho, y si las dos María García coinciden en un curso, borraría a una."
+    }
+   ],
+   "explicacion": "Quitar duplicados compara solo las columnas que marcas. Se marca la que identifica de verdad cada registro: DNI, NIF o código. Y siempre sobre una copia, contando las filas antes y después."
+  },
+  {
+   "id": "n3-x8",
+   "modo": "test",
+   "leccion": "n3m3l4",
+   "pregunta": "Marta abre con doble clic un CSV del banco con el **número de cuenta de 20 cifras** de cada proveedor. Excel lo enseña como 2,08501E+19 y, con formato Número, las últimas cifras salen como ceros. ¿Qué ha pasado y qué hace?",
+   "opciones": [
+    {
+     "texto": "Excel lo ha leído como número y solo guarda 15 cifras: vuelve a importarlo con De texto/CSV y esa columna como Texto",
+     "correcta": true,
+     "porque": "Correcto: a partir de la 15.ª cifra Excel pone ceros y no se recuperan. Importada como Texto, la cuenta llega entera."
+    },
+    {
+     "texto": "Es solo el formato: con formato Número sin decimales se ve entera",
+     "correcta": false,
+     "porque": "Eso vale para números de hasta 15 cifras, como un EAN de 13. Con 20 cifras, las cinco últimas ya se han perdido."
+    },
+    {
+     "texto": "El archivo viene mal del banco: hay que pedirlo otra vez",
+     "correcta": false,
+     "porque": "Ábrelo con el Bloc de notas y verás las 20 cifras: el archivo está bien. Lo ha estropeado el doble clic."
+    },
+    {
+     "texto": "Cambiar el Origen del archivo a 65001: Unicode (UTF-8)",
+     "correcta": false,
+     "porque": "La codificación arregla tildes y eñes rotas, no cifras perdidas."
+    }
+   ],
+   "explicacion": "Los códigos largos (cuentas, referencias, EAN) son textos, no cantidades: se importan como Texto con Datos › Obtener y transformar datos › De texto/CSV."
+  },
+  {
+   "id": "n3-x9",
+   "modo": "test",
+   "leccion": "n3m4l1",
+   "pregunta": "Lucía tiene en una Tabla las horas de formación de 2026 (Fecha, Persona, Departamento, Centro, Horas). Quiere un informe con las **horas de cada departamento** (una fila por departamento) **por trimestre** (una columna por trimestre), y poder elegir **un centro** encima del informe. ¿Cómo coloca los campos de la tabla dinámica?",
+   "opciones": [
+    {
+     "texto": "Departamento en Filas, Fecha en Columnas (agrupada por trimestres), Horas en Valores y Centro en Filtros",
+     "correcta": true,
+     "porque": "Correcto: lo que se suma va a Valores; lo que va hacia abajo, a Filas; hacia la derecha, a Columnas, y lo que elige qué entra, a Filtros."
+    },
+    {
+     "texto": "Departamento en Filas, Centro en Columnas, Horas en Valores y Fecha en Filtros",
+     "correcta": false,
+     "porque": "Tendrías una columna por centro y no por trimestre, y con la fecha en Filtros solo verías el periodo que elijas."
+    },
+    {
+     "texto": "Departamento y Fecha en Filas, Horas en Valores y Centro en Columnas",
+     "correcta": false,
+     "porque": "Los trimestres irían hacia abajo y los centros hacia la derecha: justo al revés de lo que pide Lucía."
+    },
+    {
+     "texto": "Horas en Filas, Departamento en Columnas y Centro en Valores",
+     "correcta": false,
+     "porque": "Horas es el número que hay que sumar: va en Valores. Con Centro en Valores, la dinámica contaría filas."
+    }
+   ],
+   "explicacion": "Antes de arrastrar, traduce la pregunta: qué se suma (Valores), por qué se desglosa hacia abajo (Filas) y hacia la derecha (Columnas), y qué se elige (Filtros)."
+  },
+  {
+   "id": "n3-x10",
+   "modo": "test",
+   "leccion": "n3m4l2",
+   "pregunta": "Tu dinámica tiene las **zonas en Filas** y los **meses en Columnas**. Carmen quiere ver, en cada mes, **qué parte de las ventas de ese mes** hizo cada zona, de forma que **cada mes sume 100 %**. ¿Qué eliges en *Mostrar valores como*?",
+   "opciones": [
+    {
+     "texto": "% del total de columnas",
+     "correcta": true,
+     "porque": "Correcto: cada columna es un mes, y con esta opción cada columna suma 100 %."
+    },
+    {
+     "texto": "% del total de filas",
+     "correcta": false,
+     "porque": "Así sumaría 100 % cada zona: verías cómo se reparten las ventas de una zona entre los meses, que es otra pregunta."
+    },
+    {
+     "texto": "% del total general",
+     "correcta": false,
+     "porque": "Toda la tabla sumaría 100 %: cada cifra sería la parte de todo el periodo, no la de su mes."
+    },
+    {
+     "texto": "Ninguna: en Resumir valores por, Promedio",
+     "correcta": false,
+     "porque": "Promedio da la venta media en euros, no un porcentaje."
+    }
+   ],
+   "explicacion": "Antes de leer o elegir un porcentaje, busca dónde está el 100 %: en cada fila, en cada columna o en el total general."
+  },
+  {
+   "id": "n3-x12",
+   "modo": "test",
+   "leccion": "n3m4l4",
+   "pregunta": "El listado de ventas tiene, en cada línea, el Importe, la Comisión en euros y el «% comisión» (distinto según el producto). Para saber qué parte de lo que vende Raúl Gimeno se va en comisiones, Javier pone **% comisión** en Valores como **Promedio** y sale 4,0 %. ¿Qué le dices?",
+   "opciones": [
+    {
+     "texto": "Que ese 4,0 % es la media de las líneas; la parte real es la comisión total entre las ventas totales, por ejemplo con un campo calculado =Comisión/Importe",
+     "correcta": true,
+     "porque": "Correcto: el campo calculado trabaja con las sumas de cada comercial, así que cada venta pesa lo que vale."
+    },
+    {
+     "texto": "Que está bien: la media de los porcentajes es el porcentaje del total",
+     "correcta": false,
+     "porque": "Solo coincidiría si todas las ventas fueran del mismo importe. Una venta de 50 € pesaría igual que una de 5.000 €."
+    },
+    {
+     "texto": "Que lo cambie a Suma de % comisión",
+     "correcta": false,
+     "porque": "Sumar porcentajes de líneas distintas no tiene sentido: con 200 líneas al 4 % saldría un 800 %."
+    },
+    {
+     "texto": "Que use Mostrar valores como › % del total general",
+     "correcta": false,
+     "porque": "Eso diría qué parte de todos los porcentajes corresponde a Raúl, no qué parte de sus ventas son comisiones."
+    }
+   ],
+   "explicacion": "Porcentaje de un grupo = total de la parte ÷ total del todo. Nunca la media de los porcentajes de cada línea."
+  },
+  {
+   "id": "n3-x14",
+   "modo": "test",
+   "leccion": "n3m5l3",
+   "pregunta": "Andrés quiere enseñar en un solo gráfico, mes a mes, el **número de pedidos** a proveedores (entre 80 y 120) y el **importe medio por pedido** (entre 1.500 y 2.300 €). ¿Qué gráfico le preparas?",
+   "opciones": [
+    {
+     "texto": "Combinado: los pedidos en columnas y el importe medio en una línea con eje secundario",
+     "correcta": true,
+     "porque": "Correcto: dos medidas con escalas muy distintas, cada una con su propio eje, y las dos se leen."
+    },
+    {
+     "texto": "Columnas para las dos series, en el mismo eje",
+     "correcta": false,
+     "porque": "Con un eje que llega a 2.500, las columnas de unos 100 pedidos quedarían aplastadas abajo."
+    },
+    {
+     "texto": "Circular",
+     "correcta": false,
+     "porque": "El circular reparte un total en porciones; aquí hay dos medidas que cambian en el tiempo."
+    },
+    {
+     "texto": "Dispersión con los pedidos y el importe medio",
+     "correcta": false,
+     "porque": "La dispersión busca si dos medidas van juntas, pero pierde el orden de los meses, que es lo que Andrés quiere enseñar."
+    }
+   ],
+   "explicacion": "Gráfico combinado con eje secundario: Insertar › Gráficos › Insertar gráfico combinado. Y un título que diga la conclusión."
+  }
+ ]
+}

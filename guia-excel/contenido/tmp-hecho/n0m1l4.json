@@ -1,0 +1,207 @@
+{
+  "id": "n0m1l4",
+  "titulo": "Moverte y seleccionar",
+  "minutos": 15,
+  "objetivo": "Moverte por una hoja con el ratón y el teclado, seleccionar rangos, filas y columnas, y leer la suma de lo seleccionado en la barra de estado.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Entro en una reunión en dos minutos. Dime cuánto suman las ventas de octubre de los cuatro comerciales. No me hagas fórmulas: selecciónalas y mira la suma abajo, que es lo más rápido.",
+    "logro": "Ya sabes moverte por cualquier hoja sin perderte, seleccionar lo que necesitas y obtener una suma en segundos con la barra de estado."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Para cambiar de celda puedes **hacer clic** en ella con el ratón, o usar el teclado, que es más rápido cuando rellenas datos:\n\n- Las **flechas** te mueven una celda en esa dirección.\n- **Intro** te baja a la celda de abajo.\n- **Tab** (la tecla de las dos flechitas, a la izquierda de la Q) te lleva a la celda de la derecha.\n\nSi además mantienes pulsada **Mayús** (la tecla de las mayúsculas, con una flecha hacia arriba), van al revés: [[Mayús]]+[[Intro]] sube y [[Mayús]]+[[Tab]] va a la izquierda."
+    },
+    {
+      "tipo": "atajos",
+      "atajos": [
+        { "teclas": "Intro", "accion": "Bajar a la celda de abajo" },
+        { "teclas": "Tab", "accion": "Ir a la celda de la derecha" },
+        { "teclas": "Mayús+Intro", "accion": "Subir a la celda de arriba" },
+        { "teclas": "Mayús+Tab", "accion": "Ir a la celda de la izquierda" }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e1",
+      "modo": "test",
+      "pregunta": "Estás en la celda **B2** y pulsas **Intro**. ¿En qué celda acabas?",
+      "opciones": [
+        {
+          "texto": "B3",
+          "correcta": true,
+          "porque": "Eso es: Intro baja una fila. La columna (B) no cambia; la fila pasa de 2 a 3."
+        },
+        {
+          "texto": "C2",
+          "correcta": false,
+          "porque": "A la derecha te lleva Tab, no Intro. Intro baja."
+        },
+        {
+          "texto": "B1",
+          "correcta": false,
+          "porque": "Para subir haría falta Mayús+Intro. Intro solo, baja."
+        }
+      ],
+      "explicacion": "Intro baja; Tab va a la derecha. Así se rellena una lista sin tocar el ratón."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e2",
+      "modo": "respuesta_corta",
+      "pregunta": "Estás en **A2** apuntando un proveedor. Pulsas **Tab** dos veces. ¿En qué celda estás ahora?",
+      "aceptadas": ["C2", "c2", "la C2", "celda C2"],
+      "explicacion": "Cada Tab avanza una columna a la derecha: de A2 a B2 y de B2 a C2. Es lo que harás para rellenar una fila: nombre, Tab, teléfono, Tab, ciudad."
+    },
+    {
+      "tipo": "texto",
+      "md": "Las listas que salen del programa de gestión tienen cientos o miles de filas. Para no perderte, dos atajos:\n\n- [[Ctrl]]+[[Inicio]]: te devuelve a **A1**, el principio de la hoja. (Inicio es una tecla; en algunos teclados pone «Home».)\n- [[Ctrl]]+**flecha**: salta, como un ascensor, hasta **el final de los datos** en esa dirección. Por ejemplo, [[Ctrl]]+[[↓]] te lleva a la última fila con datos de esa columna."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "El ascensor se para en los huecos",
+      "md": "[[Ctrl]]+flecha se detiene en la primera celda vacía que encuentra. Si la columna tiene huecos, pulsa otra vez para seguir bajando, y no des por hecho que has llegado al final."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "El listado de pedidos del mes tiene más de dos mil líneas. Te he visto bajar con la rueda del ratón… ¡vas a estar ahí hasta el viernes! [[Ctrl]]+[[↓]] y llegas abajo en un segundo. Y [[Ctrl]]+[[Inicio]] para volver arriba."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e3",
+      "modo": "test",
+      "pregunta": "Tienes abierto el listado de pedidos: la columna A tiene datos de la fila 1 a la **2.481**, sin ninguna celda vacía. Estás en **A2** y pulsas [[Ctrl]]+[[↓]]. ¿Dónde acabas?",
+      "opciones": [
+        {
+          "texto": "En A2481, la última fila con datos.",
+          "correcta": true,
+          "porque": "Correcto. Ctrl+flecha abajo salta hasta el final de los datos de esa columna. Así ves de un vistazo cuántas líneas tiene un listado."
+        },
+        {
+          "texto": "En A3, una fila más abajo.",
+          "correcta": false,
+          "porque": "Eso haría la flecha sola (o Intro). Con Ctrl delante, salta hasta el final de los datos."
+        },
+        {
+          "texto": "En A1, al principio de la hoja.",
+          "correcta": false,
+          "porque": "A A1 te lleva Ctrl+Inicio. Ctrl+flecha abajo va hacia abajo, hasta la última celda con datos."
+        }
+      ],
+      "explicacion": "Ctrl+flecha para ir al final; Ctrl+Inicio para volver a A1. Con estos dos no te perderás en ninguna hoja."
+    },
+    {
+      "tipo": "texto",
+      "md": "**Seleccionar** es marcar varias celdas a la vez, para luego hacer algo con todas. Dos formas:\n\n- **Con el ratón**: haz clic en la primera celda y, sin soltar el botón, **arrastra** hasta la última.\n- **Con el teclado**: ponte en la primera celda, mantén pulsada [[Mayús]] y pulsa las flechas.\n\nLo seleccionado se ve sombreado, y en el cuadro de nombres sigue apareciendo la celda donde empezaste."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "No arrastres desde la esquina",
+      "md": "La celda activa tiene un cuadradito en la esquina de abajo a la derecha: el **controlador de relleno**. Si arrastras desde ahí (el puntero se vuelve una cruz negra y fina), **copias** la celda en vez de seleccionar. Arrastra desde el centro de la celda, con la cruz blanca y gruesa. Si te pasa, [[Ctrl]]+[[Z]]."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e4",
+      "modo": "ordenar",
+      "enunciado": "Quieres seleccionar los importes de **B2 hasta B6** solo con el teclado. Ordena los pasos.",
+      "pasos": [
+        "Haz clic en la celda B2",
+        "Mantén pulsada la tecla Mayús",
+        "Sin soltar Mayús, pulsa la flecha abajo cuatro veces",
+        "Suelta Mayús: el rango B2:B6 queda sombreado"
+      ],
+      "explicacion": "Primero te colocas en la primera celda y luego amplías con Mayús + flechas. De B2 a B6 hay cuatro saltos (B3, B4, B5 y B6)."
+    },
+    {
+      "tipo": "texto",
+      "md": "Para seleccionar una **columna entera**, haz clic en su **letra** de arriba. Para una **fila entera**, en su **número** de la izquierda.\n\nCon el teclado:\n- [[Ctrl]]+[[Barra espaciadora]]: la columna entera de la celda activa.\n- [[Mayús]]+[[Barra espaciadora]]: la fila entera.\n\nY para seleccionar **toda la hoja**, el triángulo de la esquina, donde se cruzan letras y números."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e5",
+      "modo": "senala",
+      "pregunta": "Quieres seleccionar **la fila 5 entera** de un clic. Toca dónde harías clic.",
+      "zona": "encabezado_fila",
+      "explicacion": "En el número de la fila, a la izquierda. Un clic ahí selecciona la fila completa, de la columna A hasta la última."
+    },
+    {
+      "tipo": "texto",
+      "md": "Ahora el truco favorito de la oficina. Selecciona varias celdas con números y mira la **barra de estado**, abajo a la derecha. Excel te enseña, sin escribir nada:\n\n- **Promedio**: la media.\n- **Recuento**: cuántas celdas hay con algo escrito.\n- **Suma**: el total.\n\nEs perfecto para una respuesta rápida o para comprobar un total que te pasan. Pero no se guarda: cuando seleccionas otra cosa, desaparece."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l4-e6",
+      "modo": "respuesta_corta",
+      "pregunta": "**El encargo de Javier.** Seleccionas B2:B5 en su hoja de ventas de octubre:\n\n| | A | B |\n|---|---|---|\n| **1** | Comercial | Ventas octubre |\n| **2** | Laura Gil | 18.450,00 € |\n| **3** | Pablo Navarro | 22.310,50 € |\n| **4** | Sergio Lacasa | 15.980,25 € |\n| **5** | Elena Royo | 20.705,00 € |\n\n¿Qué cantidad verás junto a **Suma** en la barra de estado? (Escribe el número como en la hoja, con coma para los decimales.)",
+      "aceptadas": ["77.445,75 €", "77.445,75", "77445,75", "77445,75 €", "77.445,75€", "77445,75€", "77445.75"],
+      "explicacion": "Suma: **77.445,75 €** (18.450 + 22.310,50 + 15.980,25 + 20.705). Javier tiene su dato antes de entrar en la reunión y tú no has escrito ni una fórmula. La barra de estado también te dirá Recuento: 4, una forma rápida de confirmar que no te has dejado ningún comercial."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n0m1l4-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "Estás perdida en la fila 1.900 de un listado. ¿Qué atajo te devuelve a la celda **A1**?",
+      "aceptadas": ["Ctrl+Inicio", "Control+Inicio", "Ctrl Inicio", "Ctrl+Home"],
+      "explicacion": "Ctrl+Inicio te lleva a A1 estés donde estés."
+    },
+    {
+      "id": "n0m1l4-q2",
+      "modo": "test",
+      "pregunta": "Marta te pregunta cuánto suman doce importes de una columna. Lo quiere ya y no necesita guardarlo. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Selecciono los doce importes y leo la Suma en la barra de estado.",
+          "correcta": true,
+          "porque": "Lo más rápido para un dato al momento. Si hubiera que dejarlo guardado en la hoja, usarías una fórmula (lo verás en el módulo 3)."
+        },
+        {
+          "texto": "Hago clic en el primer importe y miro el cuadro de nombres.",
+          "correcta": false,
+          "porque": "El cuadro de nombres solo te dice en qué celda estás, no suma nada."
+        },
+        {
+          "texto": "Pulso Ctrl+Inicio.",
+          "correcta": false,
+          "porque": "Ctrl+Inicio te lleva a A1, pero no te da ningún total."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l4-q3",
+      "modo": "respuesta_corta",
+      "pregunta": "Seleccionas con Mayús + flechas desde **B2 hasta C4**. ¿Cuántas celdas has seleccionado?",
+      "aceptadas": ["6", "6 celdas", "seis"],
+      "explicacion": "B2:C4 = 2 columnas (B y C) × 3 filas (2, 3 y 4) = 6. Si la barra de estado dice Recuento: 6 y todas tienen datos, has seleccionado bien."
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "atajo",
+      "frente": "Volver a la celda A1",
+      "dorso": "Ctrl+Inicio"
+    },
+    {
+      "tipo": "atajo",
+      "frente": "Saltar hasta el final de los datos de una columna",
+      "dorso": "Ctrl+flecha abajo (se para en las celdas vacías)"
+    },
+    {
+      "tipo": "atajo",
+      "frente": "Seleccionar celda a celda con el teclado",
+      "dorso": "Mayús+flechas"
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Dónde ves la suma de lo seleccionado sin escribir una fórmula?",
+      "dorso": "En la barra de estado, abajo a la derecha (Promedio, Recuento y Suma)."
+    }
+  ]
+}

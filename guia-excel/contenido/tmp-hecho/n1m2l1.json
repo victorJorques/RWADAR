@@ -1,0 +1,475 @@
+{
+ "id": "n1m2l1",
+ "titulo": "PROMEDIO, MAX y MIN",
+ "minutos": 14,
+ "objetivo": "Calcular la media, el valor más alto y el más bajo de una lista con PROMEDIO, MAX y MIN, escribiendo bien los argumentos y sin meter el total en el cálculo.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Para la reunión del lunes quiero las ventas de octubre de mis seis comerciales resumidas: la media, la mejor y la peor. Y dime cuánto separa al mejor del peor, que quiero ver si el equipo está muy desigual.",
+  "logro": "Ya sabes resumir cualquier lista de importes con su media, su máximo y su mínimo, y calcular la distancia entre el mejor y el peor."
+ },
+ "funciones": [
+  "PROMEDIO",
+  "MAX",
+  "MIN"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Ya conoces **SUMA**. Hoy aprendes tres funciones más que se escriben igual:\n\n- **PROMEDIO**: la media (suma todo y divide entre cuántos hay).\n- **MAX**: el número más alto.\n- **MIN**: el número más bajo.\n\nUna **función** es una receta que Excel ya sabe hacer. Tú solo le das los ingredientes, que se llaman **argumentos**, entre paréntesis: `=PROMEDIO(B2:B7)`. Primero el nombre, luego el paréntesis con los datos."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Ventas de la semana por delegación",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Ventas",
+     "A2": "Zaragoza",
+     "B2": 12400,
+     "A3": "Pamplona",
+     "B3": 8300,
+     "A4": "Lleida",
+     "B4": 7100,
+     "A6": "Media",
+     "B6": "=PROMEDIO(B2:B4)",
+     "A7": "Máxima",
+     "B7": "=MAX(B2:B4)",
+     "A8": "Mínima",
+     "B8": "=MIN(B2:B4)"
+    },
+    "formatos": {
+     "B2:B8": "eur"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 13
+    }
+   },
+   "resaltar": [
+    "B6:B8"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Las tres fórmulas usan el mismo rango, B2:B4. Solo cambia el nombre de la función."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e1",
+   "modo": "test",
+   "pregunta": "Javier quiere saber **la venta más alta** de la lista B2:B7. ¿Qué fórmula escribes?",
+   "opciones": [
+    {
+     "texto": "=MAX(B2:B7)",
+     "correcta": true,
+     "porque": "Eso es. MAX devuelve el número más alto del rango."
+    },
+    {
+     "texto": "=MIN(B2:B7)",
+     "correcta": false,
+     "porque": "MIN da justo lo contrario: la venta más baja."
+    },
+    {
+     "texto": "=PROMEDIO(B2:B7)",
+     "correcta": false,
+     "porque": "PROMEDIO da la media, un valor intermedio, no el más alto."
+    },
+    {
+     "texto": "=SUMA(B2:B7)",
+     "correcta": false,
+     "porque": "SUMA da el total de todas las ventas, no la mayor."
+    }
+   ],
+   "explicacion": "MAX = máximo, el más alto. MIN = mínimo, el más bajo. Fácil de recordar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e2",
+   "modo": "formula",
+   "enunciado": "Estas son las ventas de octubre de los seis comerciales. Haz clic en **B9** y escribe exactamente `=PROMEDIO(B2:B7)`. Debe salir la **venta media** por comercial.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "A2": "Pablo Herrero",
+     "B2": 18450,
+     "A3": "Elena Gil",
+     "B3": 22310,
+     "A4": "Sergio Lahoz",
+     "B4": 15980,
+     "A5": "Raquel Sanz",
+     "B5": 24120,
+     "A6": "Daniel Pueyo",
+     "B6": 19760,
+     "A7": "Irene Marco",
+     "B7": 17340,
+     "A9": "Media"
+    },
+    "formatos": {
+     "B2:B9": "eur"
+    },
+    "anchos": {
+     "A": 15,
+     "B": 13
+    }
+   },
+   "objetivo": "B9",
+   "solucion": "=PROMEDIO(B2:B7)",
+   "debe_usar": [
+    "PROMEDIO"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(B2:B6)",
+    "=SUMA(B2:B7)"
+   ],
+   "variantes": [
+    {
+     "B3": 25000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza por el signo =, como todas las fórmulas.",
+    "Después el nombre de la función, PROMEDIO, y abre paréntesis.",
+    "Dentro del paréntesis va el rango de las ventas: B2:B7. Cierra el paréntesis y pulsa Intro."
+   ],
+   "explicacion": "Tu primera media: 19.660 € por comercial. Excel ha sumado las seis ventas y ha dividido entre 6. Con esta misma fórmula sacarás la media de cualquier lista: facturas, pedidos, horas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Excel te ayuda mientras escribes. Al teclear `=PRO` aparece una **lista de funciones** que empiezan así. Baja con las flechas y pulsa **Tab**: Excel escribe el nombre y abre el paréntesis por ti.\n\nDespués aparece una **etiqueta amarilla** con la forma de la función: `PROMEDIO(número1; [número2]; ...)`. Lo que va entre corchetes `[ ]` es **opcional**: puedes ponerlo o no."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Sin escribir nada",
+   "md": "La flechita del botón **Autosuma** (Inicio › Edición) despliega **Promedio**, **Contar números**, **Máx.** y **Mín.** Excel propone el rango y tú pulsas Intro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e3",
+   "modo": "cinta",
+   "enunciado": "Nuria te dice: «Si no te acuerdas de cómo se escribe, búscala en el botón de la suma, el de la letra griega Σ». Toca ese botón en la pestaña **Inicio**.",
+   "ruta": [
+    "Inicio",
+    "Edición",
+    "Autosuma"
+   ],
+   "explicacion": "Inicio › Edición › Autosuma. Su flechita guarda las funciones más usadas: Suma, Promedio, Contar números, Máx. y Mín."
+  },
+  {
+   "tipo": "texto",
+   "md": "Los argumentos se separan con **punto y coma** `;`. En España la **coma** es la de los decimales (19,5), así que Excel no puede usarla para separar.\n\nCon `;` puedes dar **varios rangos** a la vez:\n\n`=MAX(B2:B7;D2:D7)` busca el número más alto **entre las dos columnas juntas**."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "`=MAX(B2:B7,D2:D7)` (coma: Excel no lo entiende)",
+     "`=MAX(B2:B7;D2:D7)`"
+    ],
+    [
+     "`=AVERAGE(B2:B7)` (nombre en inglés: sale #¿NOMBRE?)",
+     "`=PROMEDIO(B2:B7)`"
+    ],
+    [
+     "`=PROMEDIO B2:B7` (sin paréntesis)",
+     "`=PROMEDIO(B2:B7)`"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e4",
+   "modo": "formula",
+   "enunciado": "Andrés tiene el stock (lo que queda en el almacén) de cable de Zaragoza en **B2:B5** y el de Pamplona en **D2:D5**. En **G2** calcula el **stock más alto de los dos almacenes juntos** (una sola cifra).",
+   "hoja": {
+    "celdas": {
+     "A1": "Cable Zgz",
+     "B1": "Rollos",
+     "A2": "1,5 mm²",
+     "B2": 140,
+     "A3": "2,5 mm²",
+     "B3": 96,
+     "A4": "4 mm²",
+     "B4": 42,
+     "A5": "6 mm²",
+     "B5": 18,
+     "C1": "Cable Pam",
+     "D1": "Rollos",
+     "C2": "1,5 mm²",
+     "D2": 85,
+     "C3": "2,5 mm²",
+     "D3": 152,
+     "C4": "4 mm²",
+     "D4": 30,
+     "C5": "6 mm²",
+     "D5": 12,
+     "F2": "Más alto"
+    },
+    "anchos": {
+     "A": 11,
+     "C": 11,
+     "F": 10
+    }
+   },
+   "objetivo": "G2",
+   "solucion": "=MAX(B2:B5;D2:D5)",
+   "debe_usar": [
+    "MAX"
+   ],
+   "alternativas": [
+    "=MAX(D2:D5;B2:B5)",
+    "=MAX(B2:D5)"
+   ],
+   "errores_tipicos": [
+    "=MAX(B2:B5)",
+    "=MIN(B2:B5;D2:D5)",
+    "=MAX(D2:D5)"
+   ],
+   "variantes": [
+    {
+     "B2": 200
+    },
+    {
+     "D4": 300
+    }
+   ],
+   "pistas": [
+    "La función del más alto es MAX.",
+    "Puedes darle dos rangos separados por punto y coma: uno por almacén.",
+    "Escribe =MAX(B2:B5;D2:D5) y pulsa Intro."
+   ],
+   "explicacion": "152 rollos, en Pamplona. Con dos rangos y un `;` has mirado dos almacenes de una vez. También vale `=MAX(B2:D5)`, porque MAX ignora las celdas con texto de la columna C."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e5",
+   "modo": "predice",
+   "enunciado": "Elena estuvo de baja en octubre y su celda está **vacía** (no tiene un 0). ¿Qué media dará `=PROMEDIO(B2:B5)`? Escribe el número sin el símbolo €.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas",
+     "A2": "Pablo",
+     "B2": 18000,
+     "A3": "Elena",
+     "A4": "Sergio",
+     "B4": 16000,
+     "A5": "Raquel",
+     "B5": 23000
+    }
+   },
+   "celda": "B7",
+   "formula": "=PROMEDIO(B2:B5)",
+   "explicacion": "PROMEDIO **ignora las celdas vacías**: suma 18.000 + 16.000 + 23.000 = 57.000 y divide entre 3, no entre 4: **19.000**. Si hubieras escrito un 0, sí contaría y la media bajaría a 14.250. Vacío y cero no son lo mismo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Ojo con la fila de **TOTAL**. Si la metes en el rango del PROMEDIO o del MAX, Excel la trata como un comercial más. El MAX te devolverá el propio total (siempre es el número más alto) y la media se dispara. Mira siempre dónde acaba tu rango."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e6",
+   "modo": "formula",
+   "enunciado": "Esta media de **E2** sale demasiado alta. La fórmula que hay está mal: corrígela para que calcule la **media de los cuatro proveedores** sin el total.",
+   "hoja": {
+    "celdas": {
+     "A1": "Proveedor",
+     "B1": "Compras nov.",
+     "A2": "Cables del Norte",
+     "B2": 8200,
+     "A3": "Luminia LED",
+     "B3": 5400,
+     "A4": "Mecanismos Arnal",
+     "B4": 3100,
+     "A5": "Tubos Gállego",
+     "B5": 2900,
+     "A6": "TOTAL",
+     "B6": "=SUMA(B2:B5)",
+     "D2": "Media"
+    },
+    "formatos": {
+     "B2:B6": "eur",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 17,
+     "B": 13
+    }
+   },
+   "objetivo": "E2",
+   "inicial": "=PROMEDIO(B2:B6)",
+   "solucion": "=PROMEDIO(B2:B5)",
+   "debe_usar": [
+    "PROMEDIO"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(B2:B6)",
+    "=PROMEDIO(B3:B6)"
+   ],
+   "variantes": [
+    {
+     "B2": 10000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Mira qué hay en la fila 6: es el total, no un proveedor.",
+    "El rango tiene que acabar en la última fila de datos.",
+    "Cambia B6 por B5: =PROMEDIO(B2:B5)."
+   ],
+   "explicacion": "Ahora sí: 4.900 € de media. Antes salía 7.840 € porque el total contaba como un quinto proveedor. Este error aparece muchísimo en hojas de empresa; acabas de aprender a detectarlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l1-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** En **E2** calcula **cuántos euros separan al comercial que más vendió del que menos vendió** en octubre. Una sola fórmula, sin escribir cifras a mano.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "A2": "Pablo Herrero",
+     "B2": 18450,
+     "A3": "Elena Gil",
+     "B3": 22310,
+     "A4": "Sergio Lahoz",
+     "B4": 15980,
+     "A5": "Raquel Sanz",
+     "B5": 24120,
+     "A6": "Daniel Pueyo",
+     "B6": 19760,
+     "A7": "Irene Marco",
+     "B7": 17340,
+     "A8": "TOTAL",
+     "B8": "=SUMA(B2:B7)",
+     "D2": "Diferencia"
+    },
+    "formatos": {
+     "B2:B8": "eur",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 15,
+     "B": 13,
+     "D": 11
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=MAX(B2:B7)-MIN(B2:B7)",
+   "debe_usar": [
+    "MAX",
+    "MIN"
+   ],
+   "errores_tipicos": [
+    "=MAX(B2:B8)-MIN(B2:B8)",
+    "=MIN(B2:B7)-MAX(B2:B7)",
+    "=MAX(B2:B7)"
+   ],
+   "variantes": [
+    {
+     "B4": 12000
+    },
+    {
+     "B5": 30000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Necesitas dos cifras: la venta más alta y la más baja. Luego restas.",
+    "Una con MAX y otra con MIN, las dos sobre B2:B7 (sin el TOTAL de la fila 8).",
+    "=MAX(B2:B7)-MIN(B2:B7)"
+   ],
+   "explicacion": "8.140 € entre Raquel y Sergio. Has metido dos funciones en una fórmula y has dejado fuera el total. Si mañana cambia una venta, la diferencia se actualiza sola. Con esto y la media de antes, Javier ya tiene su resumen para el lunes."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m2l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cómo se llama en el Excel español la función que calcula la **media**? Escribe solo el nombre.",
+   "aceptadas": [
+    "PROMEDIO",
+    "promedio",
+    "Promedio"
+   ],
+   "explicacion": "PROMEDIO. Su nombre en inglés, AVERAGE, en el Excel español da el error #¿NOMBRE?."
+  },
+  {
+   "id": "n1m2l1-q2",
+   "modo": "test",
+   "pregunta": "Quieres la venta más baja de dos columnas, B2:B7 y D2:D7. ¿Cuál está bien escrita?",
+   "opciones": [
+    {
+     "texto": "=MIN(B2:B7;D2:D7)",
+     "correcta": true,
+     "porque": "Correcto: dos rangos separados por punto y coma."
+    },
+    {
+     "texto": "=MIN(B2:B7,D2:D7)",
+     "correcta": false,
+     "porque": "En el Excel español la coma es para decimales; los argumentos van con ;."
+    },
+    {
+     "texto": "=MIN(B2:B7)+MIN(D2:D7)",
+     "correcta": false,
+     "porque": "Eso suma los dos mínimos, no busca el más bajo de todos."
+    },
+    {
+     "texto": "=MAX(B2:B7;D2:D7)",
+     "correcta": false,
+     "porque": "MAX da el más alto, no el más bajo."
+    }
+   ]
+  },
+  {
+   "id": "n1m2l1-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta fórmula? La celda B3 tiene el texto «sin datos».",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "A2": "P-101",
+     "B2": 340,
+     "A3": "P-102",
+     "B3": "sin datos",
+     "A4": "P-103",
+     "B4": 95,
+     "A5": "P-104",
+     "B5": 210
+    }
+   },
+   "celda": "B7",
+   "formula": "=MIN(B2:B5)",
+   "explicacion": "MIN mira solo los números y se salta el texto: el más bajo es 95."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Media de un rango en Excel español",
+   "dorso": "=PROMEDIO(B2:B7). Ignora las celdas vacías y el texto, pero cuenta los ceros."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "El valor más alto y el más bajo de un rango",
+   "dorso": "=MAX(B2:B7) y =MIN(B2:B7)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Con qué se separan los argumentos de una función en el Excel español?",
+   "dorso": "Con punto y coma: =MAX(B2:B7;D2:D7). La coma es para los decimales."
+  },
+  {
+   "tipo": "error",
+   "frente": "La media sale demasiado alta y el MAX devuelve el total de la lista. ¿Qué ha pasado?",
+   "dorso": "El rango incluye la fila del total. Acórtalo hasta la última fila de datos."
+  }
+ ]
+}

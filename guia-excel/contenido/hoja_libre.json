@@ -1,0 +1,14 @@
+{ "celdas": {
+  "A1": "Fecha", "B1": "Comercial", "C1": "Zona", "D1": "Producto", "E1": "Unidades", "F1": "Importe",
+  "A2": {"fecha": "2026-10-01"}, "B2": "Lucía Ferrer", "C2": "Norte", "D2": "Cable 3x2,5", "E2": 12, "F2": 1250,
+  "A3": {"fecha": "2026-10-03"}, "B3": "Marcos Vidal", "C3": "Sur", "D3": "Canaleta 40x60", "E3": 30, "F3": 830.5,
+  "A4": {"fecha": "2026-10-07"}, "B4": "Lucía Ferrer", "C4": "Sur", "D4": "Cable 3x2,5", "E4": 20, "F4": 2100,
+  "A5": {"fecha": "2026-10-12"}, "B5": "Ana Roldán", "C5": "Norte", "D5": "Tubo corrugado", "E5": 45, "F5": 640,
+  "A6": {"fecha": "2026-10-15"}, "B6": "Marcos Vidal", "C6": "Norte", "D6": "Canaleta 40x60", "E6": 52, "F6": 1475.2,
+  "A7": {"fecha": "2026-10-20"}, "B7": "Ana Roldán", "C7": "Este", "D7": "Bridas", "E7": 200, "F7": 310,
+  "A8": {"fecha": "2026-10-22"}, "B8": "Lucía Ferrer", "C8": "Este", "D8": "Tubo corrugado", "E8": 60, "F8": 905,
+  "A9": {"fecha": "2026-10-28"}, "B9": "Marcos Vidal", "C9": "Sur", "D9": "Bridas", "E9": 150, "F9": 232.5,
+  "A10": {"fecha": "2026-11-03"}, "B10": "Ana Roldán", "C10": "Norte", "D10": "Cable 3x2,5", "E10": 8, "F10": 846,
+  "A11": {"fecha": "2026-11-05"}, "B11": "Lucía Ferrer", "C11": "Norte", "D11": "Canaleta 40x60", "E11": 25, "F11": 712.5
+ },
+ "formatos": { "A2:A30": "fecha", "F2:F30": "eur" }, "anchos": { "A": 11, "B": 14, "D": 16, "F": 12 }, "columnas": 9, "filas": 16 }

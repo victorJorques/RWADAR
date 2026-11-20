@@ -1,0 +1,774 @@
+{
+ "id": "n3m5l1",
+ "titulo": "FILTRAR: listados que se actualizan solos",
+ "minutos": 15,
+ "objetivo": "Sacar en otro sitio de la hoja, con una sola fórmula, las filas que cumplen una o varias condiciones, y que el listado se actualice solo.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Los clientes me llaman cada dos por tres: «¿qué tengo pendiente?». Quiero una hoja donde escribo el nombre del cliente y me salen sus pedidos pendientes, sin filtrar cada vez. Y si no tiene nada, que lo diga claro, no un error raro.",
+  "logro": "Ya sabes montar con FILTRAR un listado que se rellena solo: escribes un cliente y salen sus pedidos pendientes, o un aviso si no hay."
+ },
+ "funciones": [
+  "FILTRAR"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Ya sabes filtrar con el embudo de **Datos › Filtro**: escondes filas y miras lo que queda. Pero si Javier cambia de cliente, vuelves a filtrar a mano.\n\n**FILTRAR** hace lo mismo con una fórmula, en otro sitio de la hoja: copia las filas que cumplen una condición y se actualiza sola.\n\nEs una fórmula de **matriz dinámica**: la escribes en **una** celda y devuelve **muchos** resultados, que ocupan las celdas de al lado. Excel lo llama **desbordamiento** (en la oficina oirás «derramar»)."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Así se ve: los pedidos servidos",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente",
+     "F1": "Pedidos servidos",
+     "F2": "Pedido",
+     "G2": "Cliente",
+     "H2": "Importe",
+     "I2": "Estado",
+     "F3": "=FILTRAR(A2:D9;D2:D9=\"Servido\")"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H3:H10": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "E": 3,
+     "F": 9,
+     "G": 20,
+     "H": 10,
+     "I": 10
+    },
+    "columnas": 9,
+    "filas": 10
+   },
+   "resaltar": [
+    "F3:I5"
+   ],
+   "pie": "La fórmula `=FILTRAR(A2:D9;D2:D9=\"Servido\")` solo está en **F3**. Lo demás lo ha desbordado ella: si cambias un estado en la columna D, el listado cambia solo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e1",
+   "modo": "test",
+   "pregunta": "En la hoja de arriba, la fórmula está **solo** en F3. ¿Qué hay entonces en F4 y F5?",
+   "opciones": [
+    {
+     "texto": "Resultados de la misma fórmula de F3, que se han desbordado hacia abajo",
+     "correcta": true,
+     "porque": "Eso es. Una sola fórmula rellena todo el bloque, y si cambia un dato del listado, el bloque entero se recalcula."
+    },
+    {
+     "texto": "Copias de la fórmula, arrastradas con el controlador de relleno",
+     "correcta": false,
+     "porque": "Con FILTRAR no se copia nada: la fórmula de F3 ocupa sola las filas que necesita, ni una más ni una menos."
+    },
+    {
+     "texto": "Datos escritos a mano que alguien pegó debajo",
+     "correcta": false,
+     "porque": "No. De hecho, si hubiera algo escrito ahí, FILTRAR no tendría sitio y daría un error (lo verás en esta lección)."
+    }
+   ],
+   "explicacion": "Eso es el desbordamiento: una fórmula en una celda y el resultado ocupando las de al lado. Para cambiar el listado se toca la fórmula de F3, nunca las celdas de debajo."
+  },
+  {
+   "tipo": "texto",
+   "md": "La fórmula tiene tres partes:\n\n`=FILTRAR(matriz; incluir; [si_vacío])`\n\n- **matriz**: el bloque que quieres ver, **sin los títulos**. Aquí, A2:D9.\n- **incluir**: la condición. Una columna comparada con algo, como `D2:D9=\"Servido\"`. Excel la mira fila a fila y se queda con las que dan VERDADERO.\n- **si_vacío** (opcional): qué mostrar si no hay ninguna. Lo verás enseguida.\n\nLa columna de la condición tiene que ocupar **las mismas filas** que la matriz: de la 2 a la 9 en las dos."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Desde Excel 2021",
+   "md": "FILTRAR (y ORDENAR, ORDENARPOR y UNICOS, de la lección siguiente) está en **Excel 2021, 2024 y Microsoft 365**, en la web y en Mac. En Excel 2019 o anteriores sale **#¿NOMBRE?**. Allí, la alternativa es el filtro de **Datos › Filtro** de siempre, repitiéndolo a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e2",
+   "modo": "formula",
+   "enunciado": "Javier escribe el cliente en **G1**. En **F3** escribe una fórmula con FILTRAR que saque **todas las columnas** (A a D) de los pedidos de ese cliente. Usa la celda G1 en la condición: no escribas el nombre.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente",
+     "F2": "Pedido",
+     "G2": "Cliente",
+     "H2": "Importe",
+     "I2": "Estado",
+     "F1": "Cliente:",
+     "G1": "Instalaciones Ebro"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H3:H10": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "E": 3,
+     "F": 9,
+     "G": 20,
+     "H": 10,
+     "I": 10
+    },
+    "columnas": 9,
+    "filas": 10
+   },
+   "objetivo": "F3",
+   "solucion": "=FILTRAR(A2:D9;B2:B9=G1)",
+   "alternativas": [
+    "=FILTRAR(A2:D9;B2:B9=$G$1)",
+    "=FILTRAR(A2:D9;G1=B2:B9)"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:D9;B2:B9=\"Instalaciones Ebro\")",
+    "=FILTRAR(A2:D9;B2:B9=\"G1\")",
+    "=FILTRAR(B2:B9;B2:B9=G1)"
+   ],
+   "variantes": [
+    {
+     "G1": "Montajes Arga"
+    }
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "pistas": [
+    "Empieza por `=FILTRAR(` y selecciona el bloque de datos sin títulos: A2:D9.",
+    "Después del `;` va la condición: la columna de clientes (B2:B9) comparada con la celda G1.",
+    "`=FILTRAR(A2:D9;B2:B9=G1)`"
+   ],
+   "explicacion": "Ahí están los tres pedidos de Instalaciones Ebro, y si Javier escribe otro cliente en G1, el listado cambia solo. Así se hace un informe que «se actualiza solo»: sin una sola fila copiada a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e3",
+   "modo": "test",
+   "pregunta": "Ahora Javier escribe en G1 **Talleres Huerva**, un cliente nuevo que aún no tiene pedidos. Antes de verlo: ¿qué crees que saldrá en F3?",
+   "opciones": [
+    {
+     "texto": "Un error: #¡CALC!",
+     "correcta": true,
+     "porque": "Bien visto. FILTRAR no encuentra ninguna fila y, como no le has dicho qué poner en ese caso, avisa con #¡CALC!."
+    },
+    {
+     "texto": "La celda vacía",
+     "correcta": false,
+     "porque": "Sería lo lógico, pero no: si no hay filas y no le dices qué mostrar, FILTRAR avisa con un error."
+    },
+    {
+     "texto": "#N/D",
+     "correcta": false,
+     "porque": "#N/D es el aviso de las búsquedas (BUSCARX, BUSCARV) cuando no encuentran un código. FILTRAR usa otro."
+    },
+    {
+     "texto": "Un 0",
+     "correcta": false,
+     "porque": "FILTRAR no suma ni cuenta: devuelve filas. Si no hay ninguna, no tiene un 0 que dar."
+    }
+   ],
+   "explicacion": "#¡CALC! en FILTRAR quiere decir «no hay ninguna fila que cumpla». Ahora verás cómo cambiarlo por un mensaje claro."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ese **#¡CALC!** no quiere decir que la fórmula esté mal: quiere decir «no hay ninguna fila que cumpla». Pero a Javier le parecerá una avería.\n\nPara eso está el tercer argumento, **si_vacío**: lo que quieres ver cuando no hay resultados, entre comillas si es un texto.\n\n`=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")`\n\nSi el cliente tiene pedidos, salen sus filas; si no, sale «Sin pedidos». Ponlo siempre: una lista vacía es un caso normal, no un error."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e4",
+   "modo": "formula",
+   "enunciado": "En G1 está **Talleres Huerva**, que no tiene pedidos. En **F3** escribe la fórmula que saca los pedidos (columnas A a D) del cliente de G1 y que, si no hay ninguno, muestre el texto **Sin pedidos**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente",
+     "F2": "Pedido",
+     "G2": "Cliente",
+     "H2": "Importe",
+     "I2": "Estado",
+     "F1": "Cliente:",
+     "G1": "Talleres Huerva"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H3:H10": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "E": 3,
+     "F": 9,
+     "G": 20,
+     "H": 10,
+     "I": 10
+    },
+    "columnas": 9,
+    "filas": 10
+   },
+   "objetivo": "F3",
+   "solucion": "=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")",
+   "alternativas": [
+    "=FILTRAR(A2:D9;B2:B9=$G$1;\"Sin pedidos\")",
+    "=SI.ERROR(FILTRAR(A2:D9;B2:B9=G1);\"Sin pedidos\")"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:D9;B2:B9=G1)",
+    "=FILTRAR(A2:D9;B2:B9=G1;\"\")"
+   ],
+   "variantes": [
+    {
+     "G1": "Instalaciones Ebro"
+    }
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "pistas": [
+    "Parte de la fórmula del ejercicio anterior: `=FILTRAR(A2:D9;B2:B9=G1)`.",
+    "Añade un tercer argumento, después de otro `;`, con el texto entre comillas.",
+    "`=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")`"
+   ],
+   "explicacion": "Con un cliente nuevo, la hoja dice «Sin pedidos», y en cuanto tenga alguno enseñará sus filas. Un informe que miran otras personas nunca debe enseñar un error en un caso normal."
+  },
+  {
+   "tipo": "texto",
+   "md": "Javier quiere ahora los pedidos **pendientes** y además **de más de 1.000 €**: dos condiciones a la vez.\n\nDentro de FILTRAR, cada condición va **entre paréntesis** y se unen así:\n\n- `*` significa **y** (las dos a la vez): `(D2:D9=\"Pendiente\")*(C2:C9>1000)`\n- `+` significa **o** (basta una): `(B2:B9=\"Montajes Arga\")+(B2:B9=\"Instalaciones Ebro\")`\n\n¿Por qué funciona? Para Excel, VERDADERO vale 1 y FALSO vale 0. 1 × 1 = 1, pero 1 × 0 = 0: con el asterisco solo pasan las filas que lo cumplen todo."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Aquí no sirven Y ni O",
+   "md": "`Y(D2:D9=\"Pendiente\";C2:C9>1000)` resume toda la columna en un **único** VERDADERO o FALSO, y FILTRAR necesita una respuesta **por fila**. Dentro de FILTRAR, usa `*` y `+`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e5",
+   "modo": "predice",
+   "enunciado": "Mira la fila 9: pedido P-4108, 690 €, Pendiente. ¿Qué número devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente"
+    },
+    "formatos": {
+     "C2:C9": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "F": 10
+    }
+   },
+   "celda": "F9",
+   "formula": "=(D9=\"Pendiente\")*(C9>1000)",
+   "explicacion": "`D9=\"Pendiente\"` es VERDADERO (1), pero `C9>1000` es FALSO (0), y 1 × 0 = 0. Esta fila no pasaría el filtro: cumple una condición, no las dos.",
+   "respuesta": "0"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e6",
+   "modo": "formula",
+   "enunciado": "En **G1** está el importe mínimo. En **F3** saca todas las columnas (A a D) de los pedidos que estén **Pendiente** y además superen el importe de G1 (más de, no «igual o más»).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente",
+     "F2": "Pedido",
+     "G2": "Cliente",
+     "H2": "Importe",
+     "I2": "Estado",
+     "F1": "Más de:",
+     "G1": 1000
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H3:H10": "eur",
+     "G1": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "E": 3,
+     "F": 9,
+     "G": 20,
+     "H": 10,
+     "I": 10
+    },
+    "columnas": 9,
+    "filas": 10
+   },
+   "objetivo": "F3",
+   "solucion": "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>G1))",
+   "alternativas": [
+    "=FILTRAR(A2:D9;(C2:C9>G1)*(D2:D9=\"Pendiente\"))",
+    "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>$G$1))"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")+(C2:C9>G1))",
+    "=FILTRAR(A2:D9;Y(D2:D9=\"Pendiente\";C2:C9>G1))",
+    "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>=G1))",
+    "=FILTRAR(A2:D9;D2:D9=\"Pendiente\")"
+   ],
+   "variantes": [
+    {
+     "G1": 2000
+    },
+    {
+     "G1": 1250
+    }
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "pistas": [
+    "Son dos condiciones a la vez: estado Pendiente **y** importe mayor que G1.",
+    "Pon cada condición entre paréntesis y únelas con `*`.",
+    "`=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>G1))`"
+   ],
+   "explicacion": "Cuatro pedidos pendientes de más de 1.000 €. Si Javier sube el mínimo en G1, la lista se encoge sola. Así se preparan las listas de «lo que hay que mirar hoy»: pendientes grandes, facturas vencidas, stock bajo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te cuento lo que me pasó el mes pasado. Tenía un FILTRAR estupendo y alguien escribió «llamar el lunes» justo debajo. El listado desapareció y salió **#¡DESBORDAMIENTO!**: la fórmula no tenía sitio. Borras la nota y vuelve todo. Y otra: FILTRAR no funciona **dentro de una Tabla** de Excel; escríbela fuera, en celdas normales."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l1-e7",
+   "modo": "formula",
+   "enunciado": "**Misión de Javier.** Javier escribe el cliente en **G1**. En **F3** saca todas las columnas (A a D) de los pedidos de ese cliente que estén **Pendiente**. Si no tiene ninguno pendiente, que salga **Nada pendiente**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "A2": "P-4101",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "D2": "Pendiente",
+     "A3": "P-4102",
+     "B3": "Electricidad Moncayo",
+     "C3": 480,
+     "D3": "Servido",
+     "A4": "P-4103",
+     "B4": "Montajes Arga",
+     "C4": 2310,
+     "D4": "Pendiente",
+     "A5": "P-4104",
+     "B5": "Instalaciones Ebro",
+     "C5": 760,
+     "D5": "Servido",
+     "A6": "P-4105",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1940,
+     "D6": "Pendiente",
+     "A7": "P-4106",
+     "B7": "Instalaciones Ebro",
+     "C7": 1580,
+     "D7": "Pendiente",
+     "A8": "P-4107",
+     "B8": "Electricidad Moncayo",
+     "C8": 3120,
+     "D8": "Servido",
+     "A9": "P-4108",
+     "B9": "Montajes Arga",
+     "C9": 690,
+     "D9": "Pendiente",
+     "F2": "Pedido",
+     "G2": "Cliente",
+     "H2": "Importe",
+     "I2": "Estado",
+     "F1": "Cliente:",
+     "G1": "Montajes Arga"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H3:H10": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 20,
+     "C": 10,
+     "D": 10,
+     "E": 3,
+     "F": 9,
+     "G": 20,
+     "H": 10,
+     "I": 10
+    },
+    "columnas": 9,
+    "filas": 10
+   },
+   "objetivo": "F3",
+   "solucion": "=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")",
+   "alternativas": [
+    "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(B2:B9=G1);\"Nada pendiente\")",
+    "=FILTRAR(A2:D9;(B2:B9=$G$1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\"))",
+    "=FILTRAR(A2:D9;(B2:B9=G1)+(D2:D9=\"Pendiente\");\"Nada pendiente\")",
+    "=FILTRAR(A2:D9;B2:B9=G1;\"Nada pendiente\")"
+   ],
+   "variantes": [
+    {
+     "G1": "Electricidad Moncayo"
+    },
+    {
+     "G1": "Instalaciones Ebro"
+    }
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "pistas": [
+    "Son dos condiciones a la vez (el cliente de G1 **y** el estado Pendiente) y un texto para cuando no haya nada.",
+    "Une las dos condiciones con `*`, cada una entre paréntesis, y añade el texto como tercer argumento.",
+    "`=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")`"
+   ],
+   "explicacion": "Misión cumplida: Javier escribe un cliente y ve al momento lo que tiene pendiente, o «Nada pendiente». Con 2.000 pedidos la fórmula sería la misma. Esta es la base de los listados que se envían cada lunes sin rehacerlos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m5l1-q1",
+   "modo": "test",
+   "pregunta": "Tu FILTRAR de F3 muestra **#¡DESBORDAMIENTO!**. Ves que en **G5** alguien ha escrito «ojo, revisar». ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Borro o muevo esa nota para dejar libre la zona del listado",
+     "correcta": true,
+     "porque": "Exacto. En cuanto la zona queda vacía, el listado vuelve a aparecer."
+    },
+    {
+     "texto": "Envuelvo la fórmula en SI.ERROR para que no salga el error",
+     "correcta": false,
+     "porque": "Taparías el aviso y seguirías sin listado. El error te dice justo lo que pasa: algo estorba."
+    },
+    {
+     "texto": "Vuelvo a escribir la fórmula desde cero",
+     "correcta": false,
+     "porque": "La fórmula está bien. El problema es lo que hay en medio: si no lo quitas, la nueva fallará igual."
+    },
+    {
+     "texto": "Ensancho la columna G",
+     "correcta": false,
+     "porque": "El ancho no tiene nada que ver: eso arregla los #####, no el desbordamiento."
+    }
+   ],
+   "explicacion": "#¡DESBORDAMIENTO! siempre dice lo mismo: la fórmula no tiene sitio. Deja libre la zona donde tiene que salir el resultado."
+  },
+  {
+   "id": "n3m5l1-q2",
+   "modo": "formula",
+   "enunciado": "Marta quiere ver las facturas de las delegaciones de **Pamplona o Lleida**. En **E2** escribe una fórmula que saque las tres columnas de esas facturas y que, si no hubiera ninguna, muestre **Ninguna**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Delegación",
+     "C1": "Importe",
+     "A2": "F-0501",
+     "B2": "Zaragoza",
+     "C2": 1210,
+     "A3": "F-0502",
+     "B3": "Pamplona",
+     "C3": 845,
+     "A4": "F-0503",
+     "B4": "Lleida",
+     "C4": 2300,
+     "A5": "F-0504",
+     "B5": "Zaragoza",
+     "C5": 990,
+     "A6": "F-0505",
+     "B6": "Lleida",
+     "C6": 1475,
+     "A7": "F-0506",
+     "B7": "Pamplona",
+     "C7": 3020,
+     "A8": "F-0507",
+     "B8": "Zaragoza",
+     "C8": 660,
+     "E1": "Factura",
+     "F1": "Delegación",
+     "G1": "Importe"
+    },
+    "formatos": {
+     "C2:C8": "eur",
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "A": 8,
+     "B": 11,
+     "C": 10,
+     "D": 3,
+     "E": 8,
+     "F": 11,
+     "G": 10
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "E2",
+   "solucion": "=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")+(B2:B8=\"Lleida\");\"Ninguna\")",
+   "alternativas": [
+    "=FILTRAR(A2:C8;(B2:B8=\"Lleida\")+(B2:B8=\"Pamplona\");\"Ninguna\")",
+    "=FILTRAR(A2:C8;B2:B8<>\"Zaragoza\";\"Ninguna\")"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")*(B2:B8=\"Lleida\");\"Ninguna\")",
+    "=FILTRAR(A2:C8;B2:B8=\"Pamplona\";\"Ninguna\")"
+   ],
+   "variantes": [
+    {
+     "B5": "Pamplona",
+     "B3": "Zaragoza"
+    }
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "pistas": [
+    "Basta con que cumpla una de las dos: eso es una **o**.",
+    "Cada condición entre paréntesis, unidas con `+`, y el texto como tercer argumento.",
+    "`=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")+(B2:B8=\"Lleida\");\"Ninguna\")`"
+   ],
+   "explicacion": "Cuatro facturas fuera de Zaragoza. Con `+` basta con que se cumpla una condición; con `*` tendrían que cumplirse las dos, y una factura no puede ser de dos delegaciones a la vez."
+  },
+  {
+   "id": "n3m5l1-q3",
+   "modo": "test",
+   "pregunta": "Javier quiere ver **qué pedidos** tiene pendientes Montajes Arga, uno por fila, con su importe. ¿Qué herramienta usas?",
+   "opciones": [
+    {
+     "texto": "FILTRAR",
+     "correcta": true,
+     "porque": "Eso es: devuelve las filas enteras que cumplen las condiciones, tantas como haya."
+    },
+    {
+     "texto": "SUMAR.SI.CONJUNTO",
+     "correcta": false,
+     "porque": "Te daría el importe total pendiente, un solo número, no la lista de pedidos."
+    },
+    {
+     "texto": "BUSCARX",
+     "correcta": false,
+     "porque": "BUSCARX trae una sola coincidencia (la primera que encuentra), no todas."
+    },
+    {
+     "texto": "CONTAR.SI.CONJUNTO",
+     "correcta": false,
+     "porque": "Te diría cuántos pedidos hay, pero no cuáles."
+    }
+   ],
+   "explicacion": "FILTRAR cuando quieres ver las filas; SUMAR.SI.CONJUNTO o CONTAR.SI.CONJUNTO cuando basta un número; BUSCARX cuando buscas un solo dato."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "FILTRAR: ¿qué argumentos tiene?",
+   "dorso": "FILTRAR(matriz; incluir; [si_vacío]). Ej.: =FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")"
+  },
+  {
+   "tipo": "error",
+   "frente": "Un FILTRAR da #¡CALC!",
+   "dorso": "No hay ninguna fila que cumpla y falta el tercer argumento (si_vacío)."
+  },
+  {
+   "tipo": "error",
+   "frente": "Una fórmula que desborda da #¡DESBORDAMIENTO!",
+   "dorso": "Algo ocupa la zona donde tiene que salir el resultado (o está dentro de una Tabla). Deja libre la zona."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Dos condiciones dentro de FILTRAR: ¿* o +?",
+   "dorso": "* = y (las dos a la vez); + = o (basta una). Cada condición, entre paréntesis."
+  }
+ ]
+}

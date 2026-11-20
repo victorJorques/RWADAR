@@ -1,0 +1,197 @@
+{
+ "id": "n2m5",
+ "nivel": "n2",
+ "titulo": "Buscar datos en otra tabla",
+ "intro": "En una empresa casi nunca está todo en la misma lista: el pedido tiene códigos, la tarifa tiene precios y el maestro de clientes tiene los nombres. Aquí aprenderás a cruzarlas con BUSCARX y BUSCARV, algo que harás casi a diario, y a no fiarte de una búsqueda hasta haberla comprobado.",
+ "repaso_inicial": [
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5-r1",
+   "modo": "formula",
+   "enunciado": "Calentamiento del módulo de textos: los códigos de A2:A4 llegan con espacios sobrantes. En **B2** deja el código de A2 **limpio** y prepara la fórmula para copiarla hasta **B4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código exportado",
+     "B1": "Código limpio",
+     "A2": "  CAB-15 ",
+     "A3": "LED-18  ",
+     "A4": " MAG-16"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 14
+    },
+    "columnas": 3,
+    "filas": 4
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B4"
+   ],
+   "solucion": "=ESPACIOS(A2)",
+   "errores_tipicos": [
+    "=A2",
+    "=MAYUSC(A2)"
+   ],
+   "variantes": [
+    {
+     "A2": " TUB-20  "
+    }
+   ],
+   "debe_usar": [
+    "ESPACIOS"
+   ],
+   "pistas": [
+    "Hay una función que quita los espacios del principio y del final.",
+    "Se llama ESPACIOS y solo necesita la celda.",
+    "`=ESPACIOS(A2)`"
+   ],
+   "explicacion": "Bien recordado. En este módulo verás que estos espacios son la causa número uno de que una búsqueda «no encuentre» lo que sí está."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5-r2",
+   "modo": "test",
+   "pregunta": "En C2 tienes `=B2*F1` y la copias hasta C10. Todas las filas menos la primera salen a 0. ¿Qué falta?",
+   "opciones": [
+    {
+     "texto": "Fijar F1 con $: `=B2*$F$1`",
+     "correcta": true,
+     "porque": "Correcto: sin $, al copiar F1 pasa a F2, F3… que están vacías."
+    },
+    {
+     "texto": "Fijar B2 con $: `=$B$2*F1`",
+     "correcta": false,
+     "porque": "B2 debe moverse: cada fila usa su propia base."
+    },
+    {
+     "texto": "Usar SUMA",
+     "correcta": false,
+     "porque": "No hay nada que sumar: el problema es la referencia que se mueve."
+    },
+    {
+     "texto": "Escribir el valor de F1 dentro de la fórmula",
+     "correcta": false,
+     "porque": "Funcionaría, pero cuando cambie ese valor tendrías que tocar todas las fórmulas."
+    }
+   ],
+   "explicacion": "Lo vas a necesitar enseguida: las tablas donde se busca se fijan exactamente así."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5-r3",
+   "modo": "predice",
+   "enunciado": "Para el resumen mensual de ventas necesitas el número de mes de cada pedido. ¿Qué devuelve la fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": {
+      "fecha": "2026-10-14"
+     }
+    },
+    "formatos": {
+     "A1": "fecha"
+    },
+    "anchos": {
+     "A": 12
+    },
+    "columnas": 3,
+    "filas": 2
+   },
+   "celda": "B1",
+   "formula": "=MES(A1)",
+   "explicacion": "MES devuelve el número del mes: 10 (octubre). Con una columna así podrás sumar las ventas de cada mes con SUMAR.SI."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5-r4",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber cuántos pedidos ha hecho la delegación de **Lleida**. En **E2** escribe la fórmula que los cuente (debe salir **3**).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Delegación",
+     "A2": "PV-26-1401",
+     "B2": "Zaragoza",
+     "A3": "PV-26-1402",
+     "B3": "Lleida",
+     "A4": "PV-26-1403",
+     "B4": "Pamplona",
+     "A5": "PV-26-1404",
+     "B5": "Lleida",
+     "A6": "PV-26-1405",
+     "B6": "Zaragoza",
+     "A7": "PV-26-1406",
+     "B7": "Lleida",
+     "D1": "Delegación",
+     "D2": "Lleida",
+     "E1": "Pedidos"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "D": 11
+    },
+    "columnas": 5,
+    "filas": 7
+   },
+   "objetivo": "E2",
+   "solucion": "=CONTAR.SI(B2:B7;\"Lleida\")",
+   "alternativas": [
+    "=CONTAR.SI(B2:B7;D2)"
+   ],
+   "errores_tipicos": [
+    "=CONTARA(B2:B7)",
+    "=CONTAR(B2:B7)"
+   ],
+   "variantes": [
+    {
+     "B2": "Lleida"
+    }
+   ],
+   "pistas": [
+    "Contar las celdas que cumplen una condición.",
+    "CONTAR.SI(dónde; qué).",
+    "`=CONTAR.SI(B2:B7;\"Lleida\")`"
+   ],
+   "explicacion": "Perfecto. Al final del módulo usarás CONTAR.SI para contar los productos que se quedan sin precio."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "Andrés y Javier te pasan las **120 líneas de pedido** de septiembre a hoy y la **tarifa** de 40 productos. Descarga el libro y sigue la hoja **Instrucciones**:\n\n1. Limpia los tres códigos de la **Tarifa** que tienen un espacio al final (Reemplazar, [[Ctrl]]+[[L]]).\n2. En **Pedidos**, trae la **Descripción** y el **Precio** con BUSCARX (o BUSCARV con FALSO), con `ESPACIOS` para los códigos que llegan sucios y «Sin tarifa» si el producto no está.\n3. Calcula el **Importe** (0 si no hay tarifa) y el **Mes** de cada línea.\n4. En **Resumen**, suma por comercial y por mes con SUMAR.SI, ponle el nombre **TipoIVA** a la celda del IVA y calcula el total con IVA.\n5. Cuenta las líneas «Sin tarifa».\n\nIntenta hacerlo en menos de 30 minutos. Después responde a los controles.",
+  "archivo": "n2-pedidos-y-tarifa.xlsx",
+  "controles": [
+   {
+    "pregunta": "¿Cuántas líneas de pedido se quedan «Sin tarifa»?",
+    "respuesta": 6,
+    "tolerancia": 0,
+    "pista": "Son tres productos que no están en la tarifa, pedidos dos veces cada uno. Si te salen más, quedan códigos con espacios: revisa que la fórmula lleve ESPACIOS(E2) y que hayas limpiado la columna A de la Tarifa."
+   },
+   {
+    "pregunta": "¿Cuánto suma el importe de todas las líneas, sin IVA (€)?",
+    "respuesta": 29609.9,
+    "tolerancia": 0.01,
+    "pista": "Suma la columna Importe (I2:I121). Si sale menos, hay líneas que deberían tener precio y salen «Sin tarifa»; si sale #N/D o #¡VALOR!, revisa el cuarto hueco de BUSCARX y la fórmula del importe."
+   },
+   {
+    "pregunta": "¿Cuánto ha vendido Pablo Gimeno (€, sin IVA)?",
+    "respuesta": 6874.95,
+    "tolerancia": 0.01,
+    "pista": "SUMAR.SI(Pedidos!$C$2:$C$121;A3;Pedidos!$I$2:$I$121), con el nombre del comercial en A3. Comprueba que la suma de los cinco comerciales es igual al total."
+   },
+   {
+    "pregunta": "¿Cuánto se vendió en octubre (€, sin IVA)?",
+    "respuesta": 8955.85,
+    "tolerancia": 0.01,
+    "pista": "Necesitas la columna Mes (=MES(B2)) y un SUMAR.SI que busque el 10 en esa columna y sume el Importe."
+   },
+   {
+    "pregunta": "¿Cuál es el total con IVA de la hoja Resumen (€)?",
+    "respuesta": 35827.98,
+    "tolerancia": 0.01,
+    "pista": "=B8*(1+TipoIVA), con B10 llamada TipoIVA en el cuadro de nombres. Si Excel dice #¿NOMBRE?, el nombre no se guardó: selecciona B10, escríbelo de nuevo y pulsa Intro."
+   }
+  ],
+  "solucion_md": "### Solución paso a paso\n\n1. **Tarifa limpia.** En la hoja Tarifa, selecciona la columna A, [[Ctrl]]+[[L]], busca un espacio y reemplaza por nada. Los códigos con espacio eran CAJ-REG, DIF-25 y TUB-16 (8 líneas de pedido dependían de ellos).\n2. **Descripción** (G2): `=BUSCARX(ESPACIOS(E2);Tarifa!$A$2:$A$41;Tarifa!$B$2:$B$41;\"Sin tarifa\")`. **Precio** (H2): igual, pero con `Tarifa!$C$2:$C$41`. Con Excel 2019: `=SI.ND(BUSCARV(ESPACIOS(E2);Tarifa!$A$2:$C$41;3;FALSO);\"Sin tarifa\")`. Diez códigos del pedido llegaban con un espacio al final: ESPACIOS los arregla dentro de la fórmula.\n3. **Importe** (I2): `=SI(H2=\"Sin tarifa\";0;F2*H2)`. **Mes** (J2): `=MES(B2)`. Copia las cuatro fórmulas hasta la fila 121.\n4. **Resumen.** B2: `=SUMAR.SI(Pedidos!$C$2:$C$121;A2;Pedidos!$I$2:$I$121)`, copiada hasta B6. E2: `=SUMAR.SI(Pedidos!$J$2:$J$121;D2;Pedidos!$I$2:$I$121)`, copiada hasta E4. B8: `=SUMA(Pedidos!$I$2:$I$121)` → 29.609,90 €.\n5. **Nombre.** Selecciona B10, escribe TipoIVA en el cuadro de nombres e Intro. B11: `=B8*(1+TipoIVA)` → 35.827,98 €.\n6. **Aviso.** B13: `=CONTAR.SI(Pedidos!$H$2:$H$121;\"Sin tarifa\")` → 6 (LED-36, CAJ-EST y DIF-40, dos líneas cada uno).\n7. **Comprobación.** Por comercial suma 29.609,90 € (Irene 8.864,90; Pablo 6.874,95; Sergio 7.534,75; Maite 2.001,30; Jordi 4.334,00) y por mes también (septiembre 14.240,15; octubre 8.955,85; noviembre 6.413,90): cuadra con el total.\n\nEn el correo a Andrés: «Seis líneas sin tarifa (LED-36, CAJ-EST y DIF-40): ¿les damos precio?».",
+  "archivo_solucion": "n2-pedidos-y-tarifa-solucion.xlsx"
+ }
+}

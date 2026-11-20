@@ -1,0 +1,204 @@
+{
+  "id": "n4m1",
+  "nivel": "n4",
+  "titulo": "Power Query: el informe que se hace solo",
+  "intro": "Cada mes llegan las mismas exportaciones del ERP y alguien pierde horas limpiándolas, pegándolas y cruzándolas. Con Power Query grabas ese trabajo una vez y el mes siguiente basta con pulsar Actualizar todo: menos horas y menos errores.",
+  "repaso_inicial": [
+    {
+      "id": "n4m1-r1",
+      "modo": "formula",
+      "enunciado": "Repaso de BUSCARX. En **C2** trae la **familia** del producto de A2 buscándolo en el maestro (**E2:F6**). Tu fórmula se copiará a C3:C5.",
+      "hoja": {
+        "celdas": {
+          "A1": "CodProducto",
+          "B1": "Importe",
+          "C1": "Familia",
+          "E1": "CodProducto",
+          "F1": "Familia",
+          "A2": "MAG-216",
+          "B2": 196,
+          "A3": "LED-DL18",
+          "B3": 357.6,
+          "A4": "TUB-16",
+          "B4": 154,
+          "A5": "CAB-15",
+          "B5": 390,
+          "E2": "TUB-16",
+          "F2": "Canalización",
+          "E3": "CAB-15",
+          "F3": "Cableado",
+          "E4": "MAG-216",
+          "F4": "Protección",
+          "E5": "LED-DL18",
+          "F5": "Iluminación",
+          "E6": "INT-SIM",
+          "F6": "Mecanismos"
+        },
+        "formatos": {
+          "B2:B5": "eur"
+        },
+        "anchos": {
+          "A": 12,
+          "C": 13,
+          "E": 12,
+          "F": 13
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C5"
+      ],
+      "solucion": "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)",
+      "alternativas": [
+        "=BUSCARV(A2;$E$2:$F$6;2;FALSO)",
+        "=INDICE($F$2:$F$6;COINCIDIR(A2;$E$2:$E$6;0))",
+        "=BUSCARX(A2;E$2:E$6;F$2:F$6)"
+      ],
+      "errores_tipicos": [
+        "=BUSCARX(A2;E2:E6;F2:F6)",
+        "=BUSCARX(A2;$E$2:$E$6;$E$2:$E$6)"
+      ],
+      "variantes": [
+        {
+          "A2": "INT-SIM"
+        }
+      ],
+      "pistas": [
+        "BUSCARX(lo que buscas; dónde lo buscas; qué devuelves).",
+        "Buscas A2 en $E$2:$E$6 y devuelves $F$2:$F$6. Los $ evitan que el maestro se mueva al copiar.",
+        "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)"
+      ],
+      "explicacion": "Así traes la familia con una fórmula. En este módulo verás que Power Query hace lo mismo con **Combinar consultas**, y que se repite solo cada mes."
+    },
+    {
+      "id": "n4m1-r2",
+      "modo": "test",
+      "pregunta": "Has añadido 40 filas nuevas a la Tabla de ventas, pero la tabla dinámica sigue enseñando los números de antes. ¿Qué te falta?",
+      "opciones": [
+        {
+          "texto": "Actualizarla (Datos › Actualizar todo)",
+          "correcta": true,
+          "porque": "La dinámica trabaja con una copia guardada de los datos y solo cambia al actualizar."
+        },
+        {
+          "texto": "Rehacer la tabla dinámica desde cero",
+          "correcta": false,
+          "porque": "No hace falta: si el origen es una Tabla, basta con actualizar para que entren las filas nuevas."
+        },
+        {
+          "texto": "Nada: se pondrá al día sola en unos minutos",
+          "correcta": false,
+          "porque": "A diferencia de las fórmulas, la dinámica no se recalcula sola: espera a que pulses Actualizar."
+        }
+      ],
+      "explicacion": "Con Power Query pasa lo mismo: nada cambia hasta que pulsas Actualizar todo."
+    },
+    {
+      "id": "n4m1-r3",
+      "modo": "predice",
+      "enunciado": "¿Cuántas ventas de **Pamplona** superan los 500 €? Predice el resultado antes de verlo.",
+      "hoja": {
+        "celdas": {
+          "A1": "Albarán",
+          "B1": "Delegación",
+          "C1": "Importe",
+          "A2": "A26-31201",
+          "B2": "Zaragoza",
+          "C2": 820,
+          "A3": "A26-31202",
+          "B3": "Pamplona",
+          "C3": 450,
+          "A4": "A26-31203",
+          "B4": "Lleida",
+          "C4": 610,
+          "A5": "A26-31204",
+          "B5": "Pamplona",
+          "C5": 1200,
+          "A6": "A26-31205",
+          "B6": "Pamplona",
+          "C6": 505,
+          "A7": "A26-31206",
+          "B7": "Zaragoza",
+          "C7": 300
+        },
+        "formatos": {
+          "C2:C7": "eur"
+        },
+        "anchos": {
+          "A": 11,
+          "B": 11
+        }
+      },
+      "celda": "E2",
+      "formula": "=CONTAR.SI.CONJUNTO(B2:B7;\"Pamplona\";C2:C7;\">500\")",
+      "explicacion": "Pamplona con más de 500 €: 1.200 y 505. El 450 es de Pamplona, pero no pasa de 500."
+    },
+    {
+      "id": "n4m1-r4",
+      "modo": "test",
+      "pregunta": "Abres con doble clic un CSV del ERP y los códigos de cliente `004127` aparecen como `4127`. ¿Qué ha pasado?",
+      "opciones": [
+        {
+          "texto": "Excel los ha tomado por números y les ha quitado los ceros",
+          "correcta": true,
+          "porque": "Con la configuración de fábrica, al abrir un CSV Excel convierte en número lo que lo parece. Por eso los CSV se importan, no se abren con doble clic."
+        },
+        {
+          "texto": "El ERP ha exportado mal los códigos",
+          "correcta": false,
+          "porque": "Si abres el CSV con el Bloc de notas verás los ceros: el archivo está bien."
+        },
+        {
+          "texto": "Es solo el formato: los ceros siguen guardados en la celda",
+          "correcta": false,
+          "porque": "No: lo guardado ya es el número 4127. Cambiar el formato no recupera el texto original."
+        }
+      ],
+      "explicacion": "En la lección 2 verás que Power Query tiene el mismo peligro, y cómo evitarlo."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "**Encargo de Javier Ortega:** las ventas de mayo a octubre de 2026 en una sola tabla, con la familia de cada producto, y una tabla dinámica por delegación y mes. El mes que viene solo quiere dejar el CSV nuevo en la carpeta y pulsar Actualizar todo.\n\n1. Descarga y descomprime `n4-ventas-mensuales.zip`. Dentro hay una carpeta `ERP` con seis CSV y el libro `n4-maestro-productos.xlsx` (instrucciones y maestro). Guarda ese libro con otro nombre y trabaja en él.\n2. Antes de conectar, abre los CSV con el Bloc de notas: uno no es como los demás.\n3. Combina la carpeta `ERP` con Power Query (**Datos › Obtener datos › Del archivo › De la carpeta**). El archivo distinto, sácalo de esa consulta, impórtalo aparte con su configuración regional y anéxalo.\n4. Limpia: fuera las filas TOTAL, tipos correctos y fechas bien leídas.\n5. Carga el maestro (**De una tabla o rango**), revisa que no tenga códigos repetidos y combínalo con las ventas (**Externa izquierda**). Saca aparte los códigos que no están en el maestro (**Anti izquierda**).\n6. Carga las ventas en una Tabla y haz la tabla dinámica: Delegacion en filas, Fecha agrupada por meses en columnas y suma de ImporteNeto.\n\nIntenta hacerlo en menos de 45 minutos. Después contesta los controles.",
+    "archivo": "n4-ventas-mensuales.zip",
+    "controles": [
+      {
+        "pregunta": "Número de líneas de la tabla final de ventas (ya combinada con el maestro y sin filas TOTAL)",
+        "respuesta": 299,
+        "tolerancia": 0,
+        "pista": "Si te salen 305, siguen dentro las seis filas TOTAL. Si te salen 320, el maestro tiene un código repetido (MAG-216): quita duplicados antes de combinar."
+      },
+      {
+        "pregunta": "Importe neto total de mayo a octubre (€)",
+        "respuesta": 56588.05,
+        "tolerancia": 0.01,
+        "pista": "Si te sale el doble, siguen dentro las filas TOTAL. Si te sale 59.856,84 €, no has quitado los duplicados del maestro."
+      },
+      {
+        "pregunta": "Importe neto de agosto, según la fecha de venta (€)",
+        "respuesta": 8842.38,
+        "tolerancia": 0.01,
+        "pista": "El CSV de agosto trae las fechas al estilo de EE. UU. (mes/día/año) y una columna de más. Impórtalo aparte, con la fecha en Usar configuración regional › Inglés (Estados Unidos), y anéxalo."
+      },
+      {
+        "pregunta": "Importe neto de la familia Iluminación (€)",
+        "respuesta": 10905.72,
+        "tolerancia": 0.01,
+        "pista": "Combina con el maestro por CodProducto (Externa izquierda) y expande Familia. Las ventas sin familia no cuentan aquí."
+      },
+      {
+        "pregunta": "Importe neto de las ventas cuyo código no está en el maestro (€)",
+        "respuesta": 1536.0,
+        "tolerancia": 0.01,
+        "pista": "Con Anti izquierda (ventas frente a maestro) salen 5 líneas de un solo código, que se vende desde septiembre."
+      },
+      {
+        "pregunta": "Importe neto de Pamplona en octubre (€)",
+        "respuesta": 3339.01,
+        "tolerancia": 0.01,
+        "pista": "Léelo en la tabla dinámica: Pamplona en filas y octubre en columnas. Si no cuadra, revisa que Fecha sea de tipo Fecha y que agosto se haya leído con la configuración de EE. UU."
+      }
+    ],
+    "solucion_md": "### Las consultas\n1. **Ventas_carpeta**: Datos › Obtener datos › Del archivo › De la carpeta › `ERP` › Combinar › Combinar y transformar datos (archivo de ejemplo: el primero, mayo). Filtro en el nombre del archivo para dejar fuera `ventas_2026_08.csv`. Filtro en Albaran: distinto de TOTAL. Tipos: Fecha como Fecha, Unidades como número entero, ImporteNeto como número decimal y el resto como Texto.\n2. **Ventas_agosto**: Datos › De texto/CSV › `ventas_2026_08.csv` › Transformar datos. Quitar la columna Observaciones, filtrar TOTAL y, en Fecha, icono de tipo › Usar configuración regional › Fecha + Inglés (Estados Unidos), reemplazando el tipo automático. Cargar como Solo crear conexión.\n3. **Ventas_carpeta › Inicio › Anexar consultas › Ventas_agosto**. Las columnas casan por nombre.\n4. **Productos**: De una tabla o rango › CodProducto › Quitar duplicados (MAG-216 estaba dos veces) › Cerrar y cargar en… › Solo crear conexión.\n5. **Combinar consultas** Ventas × Productos por CodProducto, Externa izquierda, expandir Descripcion y Familia. Cerrar y cargar en una Tabla: **299 líneas**.\n6. **Sin maestro**: Combinar consultas como nuevas con Anti izquierda: solo LED-PAN60 (panel LED 60×60), 5 líneas y 1.536,00 €. Hay que pedir a Andrés que lo dé de alta como Iluminación.\n\n### La tabla dinámica\nDelegacion en filas, Fecha agrupada por meses en columnas, suma de ImporteNeto. Total: 56.588,05 €; agosto: 8.842,38 €; Pamplona en octubre: 3.339,01 €.\n\n### El mes que viene\nSe deja `ventas_2026_11.csv` en `ERP` y se pulsa Datos › Actualizar todo (Ctrl+Alt+F5). Lo más profesional, además, es pedir que agosto se vuelva a exportar con la configuración española.",
+    "archivo_solucion": "n4-ventas-mensuales-solucion.xlsx"
+  }
+}

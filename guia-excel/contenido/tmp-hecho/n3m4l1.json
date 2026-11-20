@@ -1,0 +1,224 @@
+{
+ "id": "n3m4l1",
+ "titulo": "Qué es una tabla dinámica y cómo se crea",
+ "minutos": 15,
+ "objetivo": "Crear una tabla dinámica desde una Tabla, colocar cada campo en su área para responder una pregunta de negocio y comprobar que el resultado cuadra con el listado.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Mañana tengo reunión con los comerciales y quiero ver cuánto hemos vendido en cada zona en octubre y lo que va de noviembre. No me mandes el listado del programa, que no hay quien lo lea: mándame el resumen y dime que está comprobado.",
+  "logro": "Ya sabes convertir un listado largo en un resumen por zona con una tabla dinámica y comprobar que cuadra con el listado."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Javier no quiere cientos de líneas: quiere **una cifra por zona**. Para eso está la **tabla dinámica**, un resumen que Excel monta solo a partir de un listado. Cada columna del listado se convierte en un **campo** (Zona, Importe…) y tú eliges qué quieres ver arrastrando esos campos. Excel suma por ti.\n\nDos cosas tranquilizan: **no cambia los datos originales** (el resumen va aparte, normalmente en otra hoja) y, si te equivocas, vuelves a arrastrar."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "El listado de partida (en la realidad, cientos de filas)",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Comercial", "C1": "Zona", "D1": "Familia", "E1": "Importe",
+     "A2": {"fecha": "2026-10-05"}, "B2": "Raúl Gimeno", "C2": "Zaragoza", "D2": "Cableado", "E2": 1240,
+     "A3": {"fecha": "2026-10-08"}, "B3": "Elena Sanz", "C3": "Pamplona", "D3": "Iluminación", "E3": 860,
+     "A4": {"fecha": "2026-10-14"}, "B4": "Jordi Vidal", "C4": "Lleida", "D4": "Protección", "E4": 530,
+     "A5": {"fecha": "2026-10-20"}, "B5": "Raúl Gimeno", "C5": "Zaragoza", "D5": "Iluminación", "E5": 975,
+     "A6": {"fecha": "2026-10-27"}, "B6": "Elena Sanz", "C6": "Pamplona", "D6": "Cableado", "E6": 1410,
+     "A7": {"fecha": "2026-10-30"}, "B7": "Pilar Lasheras", "C7": "Zaragoza", "D7": "Mecanismos", "E7": 320,
+     "A8": {"fecha": "2026-11-03"}, "B8": "Jordi Vidal", "C8": "Lleida", "D8": "Cableado", "E8": 1150,
+     "A9": {"fecha": "2026-11-06"}, "B9": "Pilar Lasheras", "C9": "Zaragoza", "D9": "Protección", "E9": 690,
+     "A10": {"fecha": "2026-11-10"}, "B10": "Raúl Gimeno", "C10": "Zaragoza", "D10": "Cableado", "E10": 880,
+     "A11": {"fecha": "2026-11-12"}, "B11": "Elena Sanz", "C11": "Pamplona", "D11": "Mecanismos", "E11": 415,
+     "A12": {"fecha": "2026-11-13"}, "B12": "Jordi Vidal", "C12": "Lleida", "D12": "Iluminación", "E12": 1020,
+     "A13": {"fecha": "2026-11-16"}, "B13": "Pilar Lasheras", "C13": "Zaragoza", "D13": "Cableado", "E13": 760
+    },
+    "formatos": {"A2:A13": "fecha", "E2:E13": "eur"},
+    "anchos": {"A": 11, "B": 15, "C": 10, "D": 12, "E": 11}
+   },
+   "pie": "Cada fila es una venta. Fecha, Comercial, Zona, Familia e Importe serán los campos de la dinámica."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e1",
+   "modo": "test",
+   "pregunta": "Creas una tabla dinámica con este listado de ventas. ¿Qué le pasa al listado original?",
+   "opciones": [
+    {"texto": "Nada: sigue igual y el resumen va aparte", "correcta": true, "porque": "Exacto. La dinámica lee el listado y monta el resumen en otro sitio. Puedes probar sin miedo a estropear los datos."},
+    {"texto": "Se ordena por zona", "correcta": false, "porque": "La dinámica no toca el orden de tus filas. Ordenar el listado es otra herramienta (Datos › Ordenar)."},
+    {"texto": "Se borran las filas repetidas", "correcta": false, "porque": "No borra nada. Eso lo hace Quitar duplicados, que usaste al limpiar datos."}
+   ],
+   "explicacion": "La tabla dinámica es un informe aparte: tus datos se quedan exactamente como estaban."
+  },
+  {
+   "tipo": "texto",
+   "md": "La dinámica es tan buena como el listado del que sale. Antes de crearla, revisa tres cosas:\n\n- **Una sola fila de títulos**, sin celdas combinadas y con un título distinto en cada columna.\n- **Sin filas vacías** en medio ni **filas de totales** dentro: la dinámica las trataría como ventas.\n- **Convertido en Tabla** ([[Ctrl]]+[[T]], lo viste en el nivel 2). Así, cuando pegues ventas debajo, la Tabla crece y la dinámica las recoge. Con un rango fijo como A1:E13, la fila 14 se quedaría fuera."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "La fila TOTAL del programa",
+   "md": "Nuria: «El programa de gestión añade al final una fila TOTAL. Si no la borras, la dinámica la suma como una venta más y el total general sale el doble. Me pasó en mi primer cierre».\n"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e2",
+   "modo": "test",
+   "pregunta": "Las ventas del listado suman 10.250 €, pero el programa ha añadido al final una fila «TOTAL» con 10.250 € en Importe y la zona vacía. Creas la dinámica sin borrarla. ¿Qué total general te sale?",
+   "opciones": [
+    {"texto": "20.500 €, con una fila de más sin nombre de zona", "correcta": true, "porque": "Eso es: la dinámica no sabe que esa fila es un total y la suma como si fuera una venta. Bórrala del origen antes de crear la dinámica."},
+    {"texto": "10.250 €, porque la dinámica reconoce los totales", "correcta": false, "porque": "La dinámica no distingue una venta de una fila de totales: suma todo lo que hay en la columna Importe."},
+    {"texto": "Un error, porque la zona está vacía", "correcta": false, "porque": "No da error: junta las filas sin zona en una fila aparte y las suma igualmente. Por eso el fallo pasa desapercibido."}
+   ],
+   "explicacion": "Sumar un total que está dentro de los datos es uno de los errores más caros de las hojas de empresa: el resultado parece normal y es el doble."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: la dinámica de Javier",
+   "pasos": [
+    {"md": "Haz clic en **cualquier celda** de la Tabla de ventas. No hace falta seleccionarla entera: Excel la reconoce sola."},
+    {"md": "Ve a **Insertar › Tabla dinámica**. Si el botón despliega un menú, elige **Desde una tabla o rango**.", "ruta": ["Insertar", "Tablas", "Tabla dinámica"]},
+    {"md": "En la ventana que se abre, comprueba que el origen es el **nombre de tu Tabla** (por ejemplo, *Ventas*) y deja marcada **Nueva hoja de cálculo**. Pulsa **Aceptar**."},
+    {"md": "Aparece una hoja nueva. A la derecha verás el panel **Campos de tabla dinámica**: arriba, la lista de campos; abajo, cuatro cuadros llamados **áreas**."},
+    {"md": "Arrastra **Zona** al área **Filas** e **Importe** al área **Valores**. El resumen aparece al momento: una fila por zona con su suma."}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e3",
+   "modo": "cinta",
+   "enunciado": "Tienes una celda de la Tabla de ventas seleccionada. ¿Dónde está el botón para crear la **tabla dinámica**?",
+   "ruta": ["Insertar", "Tablas", "Tabla dinámica"],
+   "explicacion": "Insertar › Tablas › Tabla dinámica. Desde dentro de una Tabla también tienes Diseño de tabla › Resumir con tabla dinámica, que hace lo mismo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cada área hace una cosa:\n\n- **Filas**: lo que quieres ver hacia abajo, una fila por elemento (una por zona).\n- **Columnas**: lo que quieres ver hacia la derecha (una columna por familia).\n- **Valores**: los números que se suman o se cuentan (Importe).\n- **Filtros**: un filtro encima de todo el informe (solo un comercial, por ejemplo).\n\nPiensa primero la pregunta. En «ventas **por** zona **y** familia», lo que va detrás de «ventas» va a Valores; detrás de «por», a Filas; detrás de «y», a Columnas."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Resultado: ventas por zona y familia",
+   "cabecera": ["Zona", "Cableado", "Iluminación", "Mecanismos", "Protección", "Total general"],
+   "filas": [
+    ["Lleida", "1.150,00 €", "1.020,00 €", "", "530,00 €", "2.700,00 €"],
+    ["Pamplona", "1.410,00 €", "860,00 €", "415,00 €", "", "2.685,00 €"],
+    ["Zaragoza", "2.880,00 €", "975,00 €", "320,00 €", "690,00 €", "4.865,00 €"],
+    ["Total general", "5.440,00 €", "2.855,00 €", "735,00 €", "1.220,00 €", "10.250,00 €"]
+   ],
+   "pie": "Zona en Filas, Familia en Columnas, Importe en Valores. Las zonas salen por orden alfabético, una casilla vacía significa «no hubo ventas» y el total general (10.250,00 €) es la suma de todo el listado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e4",
+   "modo": "test",
+   "pregunta": "Ahora Javier pregunta: «¿Cuánto ha vendido cada comercial en cada zona?». Quieres una fila por comercial y una columna por zona. ¿Cómo colocas los campos?",
+   "opciones": [
+    {"texto": "Comercial en Filas, Zona en Columnas, Importe en Valores", "correcta": true, "porque": "Correcto: ventas (Valores) por comercial (Filas) y zona (Columnas). La propia frase te dice dónde va cada campo."},
+    {"texto": "Importe en Filas y Comercial en Valores", "correcta": false, "porque": "Al revés. Importe en Filas haría una fila por cada cifra distinta, y Comercial en Valores contaría nombres en lugar de sumar euros."},
+    {"texto": "Comercial y Zona en Valores", "correcta": false, "porque": "En Valores van los números que quieres sumar. Comercial y Zona son las etiquetas que ordenan el resumen: van en Filas y Columnas."},
+    {"texto": "Zona en Filtros, Comercial en Filas, Importe en Valores", "correcta": false, "porque": "Así verías una sola zona cada vez (la que elijas en el filtro), no todas a la vez en columnas. Responde a otra pregunta: «ventas de cada comercial en Lleida»."}
+   ],
+   "explicacion": "Antes de arrastrar nada, traduce la pregunta: qué se suma (Valores), por qué se desglosa hacia abajo (Filas) y hacia la derecha (Columnas)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e5",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para crear la dinámica de ventas por zona y entregarla comprobada.",
+   "pasos": [
+    "Revisar que el listado no tiene filas vacías ni una fila TOTAL",
+    "Hacer clic en una celda de la Tabla de ventas",
+    "Insertar › Tabla dinámica, Nueva hoja de cálculo y Aceptar",
+    "Arrastrar Zona a Filas e Importe a Valores",
+    "Comparar el total general con la suma de la columna Importe del listado"
+   ],
+   "explicacion": "Primero el origen limpio; después crear y colocar los campos; al final, comprobar. Ese último paso es el que separa un informe fiable de uno que solo lo parece."
+  },
+  {
+   "tipo": "texto",
+   "md": "La mayoría de las hojas de empresa tienen errores, y una dinámica hecha con un origen mal preparado da cifras falsas con muy buena cara. Antes de enviar nada, **comprueba al menos una cifra por otro camino**:\n\n- El **total general** tiene que ser igual a la suma de la columna Importe del listado.\n- Una cifra concreta, la de Zaragoza, tiene que coincidir con una fórmula que ya conoces: `SUMAR.SI`.\n\nSi las dos cuadran, puedes enviarla tranquila."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e6",
+   "modo": "formula",
+   "enunciado": "La dinámica dice que **Zaragoza** vendió **4.865,00 €**. Compruébalo con una fórmula: en **H2** suma el Importe (columna E) de las filas cuya Zona (columna C) es la que pone en **G2**. Si sale 4.865,00 €, la dinámica está bien.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Comercial", "C1": "Zona", "D1": "Familia", "E1": "Importe", "G1": "Zona", "H1": "Comprobación",
+     "A2": {"fecha": "2026-10-05"}, "B2": "Raúl Gimeno", "C2": "Zaragoza", "D2": "Cableado", "E2": 1240,
+     "A3": {"fecha": "2026-10-08"}, "B3": "Elena Sanz", "C3": "Pamplona", "D3": "Iluminación", "E3": 860,
+     "A4": {"fecha": "2026-10-14"}, "B4": "Jordi Vidal", "C4": "Lleida", "D4": "Protección", "E4": 530,
+     "A5": {"fecha": "2026-10-20"}, "B5": "Raúl Gimeno", "C5": "Zaragoza", "D5": "Iluminación", "E5": 975,
+     "A6": {"fecha": "2026-10-27"}, "B6": "Elena Sanz", "C6": "Pamplona", "D6": "Cableado", "E6": 1410,
+     "A7": {"fecha": "2026-10-30"}, "B7": "Pilar Lasheras", "C7": "Zaragoza", "D7": "Mecanismos", "E7": 320,
+     "A8": {"fecha": "2026-11-03"}, "B8": "Jordi Vidal", "C8": "Lleida", "D8": "Cableado", "E8": 1150,
+     "A9": {"fecha": "2026-11-06"}, "B9": "Pilar Lasheras", "C9": "Zaragoza", "D9": "Protección", "E9": 690,
+     "A10": {"fecha": "2026-11-10"}, "B10": "Raúl Gimeno", "C10": "Zaragoza", "D10": "Cableado", "E10": 880,
+     "A11": {"fecha": "2026-11-12"}, "B11": "Elena Sanz", "C11": "Pamplona", "D11": "Mecanismos", "E11": 415,
+     "A12": {"fecha": "2026-11-13"}, "B12": "Jordi Vidal", "C12": "Lleida", "D12": "Iluminación", "E12": 1020,
+     "A13": {"fecha": "2026-11-16"}, "B13": "Pilar Lasheras", "C13": "Zaragoza", "D13": "Cableado", "E13": 760,
+     "G2": "Zaragoza"
+    },
+    "formatos": {"A2:A13": "fecha", "E2:E13": "eur", "H2": "eur"},
+    "anchos": {"A": 11, "B": 14, "C": 10, "D": 11, "E": 11, "G": 10, "H": 13}
+   },
+   "objetivo": "H2",
+   "solucion": "=SUMAR.SI(C2:C13;G2;E2:E13)",
+   "alternativas": ["=SUMAR.SI.CONJUNTO(E2:E13;C2:C13;G2)", "=SUMAR.SI($C$2:$C$13;G2;$E$2:$E$13)"],
+   "errores_tipicos": ["=SUMAR.SI(C2:C13;\"Zaragoza\";E2:E13)", "=SUMA(E2:E13)", "=CONTAR.SI(C2:C13;G2)"],
+   "variantes": [{"G2": "Lleida"}, {"E2": 2000}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Quieres sumar solo algunas filas, las de una zona: es trabajo de SUMAR.SI (dónde mirar; qué buscar; qué sumar).",
+    "Mira en C2:C13, busca lo que hay en G2 y suma E2:E13.",
+    "Escribe `=SUMAR.SI(C2:C13;G2;E2:E13)`."
+   ],
+   "explicacion": "4.865,00 €: la dinámica cuadra. Como apuntas a G2 en vez de escribir «Zaragoza», cambias la zona y la comprobación se rehace sola. Comprobar una cifra por otro camino es lo que hace que tus informes sean de fiar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l1-e7",
+   "modo": "abierta",
+   "pregunta": "Escribe el mensaje para Javier con el resumen por zona. Usa la tabla de resultados: Zaragoza 4.865 €, Lleida 2.700 € y Pamplona 2.685 €; total 10.250 €. Que se lea en diez segundos y diga cómo lo has comprobado.",
+   "modelo": "Hola, Javier: ventas de octubre y lo que va de noviembre por zona: Zaragoza 4.865 €, Lleida 2.700 € y Pamplona 2.685 €; total 10.250 €. Zaragoza se lleva casi la mitad. Está comprobado: el total coincide con el listado del programa y la cifra de Zaragoza la he sacado también con una fórmula aparte. Te adjunto la tabla. Un saludo.",
+   "criterios": [
+    "Da la cifra de cada zona y el total",
+    "Destaca lo importante en una frase (qué zona vende más)",
+    "Dice cómo lo ha comprobado (total de control o fórmula)",
+    "Es breve y no adjunta el listado entero"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m4l1-q1",
+   "modo": "test",
+   "pregunta": "Tu dinámica sale de un rango normal, A1:E13 (no es una Tabla). Pegas diez ventas nuevas en las filas 14 a 23. ¿Qué pasa con la dinámica?",
+   "opciones": [
+    {"texto": "Las ventas nuevas se quedan fuera, porque el origen acaba en la fila 13", "correcta": true, "porque": "Eso es: un rango fijo no crece. Por eso el origen debe ser una Tabla, que se amplía sola al pegar justo debajo."},
+    {"texto": "Las recoge solas, porque están justo debajo", "correcta": false, "porque": "Un rango normal no se amplía al escribir debajo; una Tabla, sí."},
+    {"texto": "Se borran, porque la dinámica no admite cambios", "correcta": false, "porque": "La dinámica nunca borra tus datos: sencillamente no los ve."}
+   ],
+   "explicacion": "Origen = Tabla, siempre. En la lección 3 verás además que, tras añadir datos, hay que pulsar Actualizar."
+  },
+  {
+   "id": "n3m4l1-q2",
+   "modo": "test",
+   "pregunta": "¿Qué pregunta responde una dinámica con **Familia** en Filas, **Zona** en Filtros e **Importe** en Valores?",
+   "opciones": [
+    {"texto": "Ventas de cada familia, de todas las zonas o de la que elijas en el filtro", "correcta": true, "porque": "Correcto: Filas desglosa por familia, Valores suma el importe y el filtro de Zona decide qué zonas entran."},
+    {"texto": "Ventas de cada familia en cada zona, todas a la vez", "correcta": false, "porque": "Para ver todas las zonas a la vez, una al lado de otra, Zona iría en Columnas."},
+    {"texto": "Cuántas ventas hay de cada familia", "correcta": false, "porque": "Un campo de números en Valores se suma: verías euros, no el número de ventas."}
+   ],
+   "explicacion": "Filas y Columnas desglosan; Valores calcula; Filtros decide qué datos entran en todo el informe."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Qué es una tabla dinámica?", "dorso": "Un resumen que Excel monta solo a partir de un listado, arrastrando campos. No cambia los datos originales."},
+  {"tipo": "concepto", "frente": "¿Cómo se crea una tabla dinámica?", "dorso": "Clic dentro de la Tabla › Insertar › Tablas › Tabla dinámica › Nueva hoja de cálculo › Aceptar."},
+  {"tipo": "concepto", "frente": "Las cuatro áreas de una tabla dinámica", "dorso": "Filas (hacia abajo), Columnas (hacia la derecha), Valores (lo que se suma o cuenta) y Filtros (filtro de todo el informe)."},
+  {"tipo": "error", "frente": "El total general de la dinámica sale el doble. ¿Causa típica?", "dorso": "El origen tiene dentro una fila de totales (la fila TOTAL del programa). Bórrala antes de crear la dinámica."}
+ ]
+}

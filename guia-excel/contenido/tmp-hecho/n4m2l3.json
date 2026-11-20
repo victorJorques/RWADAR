@@ -1,0 +1,197 @@
+{
+ "id": "n4m2l3",
+ "titulo": "Proteger: una plantilla que otros rellenan sin romperla",
+ "minutos": 14,
+ "objetivo": "Proteger una hoja dejando libres solo las celdas de entrada, proteger la estructura del libro, distinguir protección de seguridad y guardar el trabajo como plantilla.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "Cada mes los jefes de equipo me rellenan la hoja de horas extra y siempre hay alguien que escribe encima de una fórmula. ¿Me la dejas para que solo puedan tocar las horas? Y que no me borren pestañas, por favor, que luego me vuelvo loca.",
+  "logro": "Ya sabes preparar una plantilla protegida que otros rellenan sin romperla, y sabes qué protege y qué no."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Entradas y fórmulas\n\nEn una plantilla compartida hay dos tipos de celdas: las **de entrada**, donde otros escriben (las horas de cada persona), y las **de cálculo**, con fórmulas que nadie debe tocar (el importe, el total).\n\nSi alguien escribe un número encima de una fórmula, la hoja sigue pareciendo correcta… pero ya no calcula. **Proteger la hoja** impide justo eso."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La hoja de horas extra de Lucía",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado", "B1": "Horas extra", "C1": "Precio hora", "D1": "Importe",
+     "A2": "Ana Gil Lahoz", "B2": 6, "C2": 18.5, "D2": "=B2*C2",
+     "A3": "Raúl Sanz Pérez", "B3": 4, "C3": 18.5, "D3": "=B3*C3",
+     "A4": "Pilar Andrés Royo", "B4": 0, "C4": 21, "D4": "=B4*C4",
+     "A5": "Iker Echeverría Sola", "B5": 8, "C5": 18.5, "D5": "=B5*C5",
+     "A6": "Marina Ortiz Gracia", "B6": 3, "C6": 21, "D6": "=B6*C6",
+     "A7": "Total", "B7": "=SUMA(B2:B6)", "D7": "=SUMA(D2:D6)"
+    },
+    "formatos": {"C2:C6": "eur", "D2:D7": "eur"},
+    "anchos": {"A": 22, "B": 12, "C": 12}
+   },
+   "resaltar": ["B2:B6"],
+   "pie": "Las horas (resaltadas) son lo único que escribe cada jefe de equipo. El precio lo fija RRHH y el resto son fórmulas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e1",
+   "modo": "test",
+   "pregunta": "En esta plantilla, ¿qué celdas tiene que poder escribir cada jefe de equipo?",
+   "opciones": [
+    {"texto": "B2:B6, las horas", "correcta": true, "porque": "Eso es: son las únicas entradas. Todo lo demás debe quedar bloqueado."},
+    {"texto": "D2:D6, los importes", "correcta": false, "porque": "Son fórmulas: si alguien escribe encima, el importe deja de calcularse y nadie se da cuenta."},
+    {"texto": "C2:C6, el precio por hora", "correcta": false, "porque": "Es un dato de RRHH: si cada jefe lo cambia, las horas se pagarían a precios distintos."},
+    {"texto": "Todas, para no complicarse", "correcta": false, "porque": "Entonces proteger no serviría de nada: lo que no es entrada se bloquea."}
+   ],
+   "explicacion": "Antes de proteger, decide qué es entrada. Todo lo demás, bloqueado."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El detalle que casi nadie conoce\n\nTodas las celdas de Excel vienen marcadas de fábrica como **Bloqueada**. No lo notas porque el bloqueo **solo actúa cuando proteges la hoja**.\n\nPor eso el orden importa:\n\n1. **Primero**, quita el bloqueo a las celdas de entrada: [[Ctrl]]+[[1]] › pestaña **Proteger** › desmarca **Bloqueada**.\n2. **Después**, protege la hoja.\n\nSi lo haces al revés, nadie podrá escribir ni siquiera en las horas."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: proteger la hoja de horas",
+   "pasos": [
+    {"md": "Selecciona **B2:B6** (las horas)."},
+    {"md": "Pulsa [[Ctrl]]+[[1]], ve a la pestaña **Proteger**, desmarca **Bloqueada** y pulsa **Aceptar**."},
+    {"md": "Ve a **Revisar** › **Proteger** › **Proteger hoja**.", "ruta": ["Revisar", "Proteger", "Proteger hoja"]},
+    {"md": "Marca lo que permites (por ejemplo, **Seleccionar celdas desbloqueadas**). Si quieres, escribe una contraseña. Pulsa **Aceptar**."},
+    {"md": "Prueba: escribe en B3 (te deja) y en D3 (Excel te avisa de que la celda está protegida)."}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e2",
+   "modo": "cinta",
+   "enunciado": "Ya has desbloqueado las horas. ¿Dónde está el botón para **proteger la hoja**?",
+   "ruta": ["Revisar", "Proteger", "Proteger hoja"],
+   "explicacion": "Revisar › Proteger › Proteger hoja. Con la hoja protegida, el mismo botón pasa a llamarse **Desproteger hoja**. En Excel para la web está en Revisar › **Administrar protección**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e3",
+   "modo": "test",
+   "pregunta": "Un compañero de Pamplona, con prisa, protegió su hoja **sin desbloquear** antes las horas. ¿Qué pasa cuando un jefe de equipo intenta escribir en B3?",
+   "opciones": [
+    {"texto": "Excel no le deja: la celda está bloqueada y la hoja, protegida", "correcta": true, "porque": "Todas las celdas venían bloqueadas; al proteger, el bloqueo se activa en todas, también en las horas. Hay que desproteger, desbloquear B2:B6 y volver a proteger."},
+    {"texto": "Puede escribir, porque en las horas no hay fórmula", "correcta": false, "porque": "El bloqueo no depende de que haya fórmula: todas las celdas nacen bloqueadas."},
+    {"texto": "Puede escribir, pero no se guarda al cerrar", "correcta": false, "porque": "No llega a escribir: Excel le avisa en el momento de que la celda está protegida."}
+   ],
+   "explicacion": "Es el error más típico al proteger: primero se desbloquean las entradas y después se protege."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Proteger el libro: que no desaparezcan pestañas\n\n**Proteger hoja** cuida las celdas de una hoja. **Proteger libro** (Revisar › Proteger › Proteger libro) cuida la **estructura**: impide agregar, mover, ocultar o eliminar hojas.\n\nImagina que las fórmulas tiran de una hoja «Tarifas». Si alguien la elimina, todas esas fórmulas dan `#¡REF!`. Con la estructura protegida, eso ya no puede pasar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e4",
+   "modo": "test",
+   "pregunta": "Ayer alguien eliminó sin querer la hoja «Tarifas» de una plantilla y todas las fórmulas dieron `#¡REF!`. ¿Qué lo habría evitado?",
+   "opciones": [
+    {"texto": "Proteger libro (la estructura)", "correcta": true, "porque": "Eso es: proteger la estructura impide eliminar, mover u ocultar hojas."},
+    {"texto": "Proteger hoja en «Tarifas»", "correcta": false, "porque": "Protege sus celdas, pero no impide eliminar la hoja entera: eso es cosa de la estructura del libro."},
+    {"texto": "Ocultar la hoja «Tarifas»", "correcta": false, "porque": "Una hoja oculta se puede volver a mostrar y eliminar. Ocultar no es proteger."}
+   ],
+   "explicacion": "Hoja = celdas. Libro = pestañas. En una plantilla compartida, lo normal es proteger las dos cosas."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Proteger no es esconder\n\nMicrosoft lo dice tal cual: «La protección a nivel de hoja de cálculo no está pensada como característica de seguridad». Solo evita que alguien **cambie** celdas sin querer. No impide que **lea** los datos.\n\nSi el archivo tiene datos confidenciales (nóminas, datos personales), lo que impide abrirlo es la **contraseña de apertura**: Archivo › Información › Proteger libro › **Cifrar con contraseña**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Si olvidas la contraseña, no hay vuelta atrás",
+   "md": "Microsoft no puede recuperar contraseñas olvidadas, y distinguen mayúsculas de minúsculas. Guárdala donde indique la empresa y **nunca** la mandes en el mismo correo que el archivo: envíala por otro canal (una llamada o un mensaje aparte)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e5",
+   "modo": "abierta",
+   "pregunta": "Lucía te escribe: «He puesto contraseña a la hoja de nóminas con Proteger hoja, así ya puedo mandarla a la gestoría tranquila, ¿no?». Contéstale en dos o tres frases.",
+   "modelo": "No del todo, Lucía: Proteger hoja solo evita que se cambien celdas, pero cualquiera que abra el archivo puede leer las nóminas. Para que no se pueda abrir, hay que cifrarlo con contraseña (Archivo › Información › Proteger libro › Cifrar con contraseña). Y la contraseña, mejor por teléfono o en un mensaje aparte, no en el mismo correo.",
+   "criterios": [
+    "Explica que Proteger hoja no impide leer los datos",
+    "Propone Cifrar con contraseña (contraseña de apertura)",
+    "Recomienda enviar la contraseña por otro canal",
+    "Lo dice de forma clara y amable, como a una compañera"
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "### Guárdala como plantilla\n\nCuando la hoja esté lista, guárdala como **plantilla**: Archivo › Guardar como › y en el tipo de archivo elige **Plantilla de Excel (*.xltx)**.\n\nAl abrir una plantilla, Excel crea un **libro nuevo** con todo preparado, protección incluida, y el original queda limpio para el mes siguiente. Se acabó rellenar encima del archivo del mes pasado."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "En Excel para la web",
+   "md": "La protección está en Revisar › **Administrar protección**, con sus «Rangos desbloqueados». Si alguien del equipo trabaja desde el navegador, búscala ahí."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e6",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué extensión tiene un archivo de **plantilla** de Excel (sin macros)?",
+   "aceptadas": [".xltx", "xltx", "XLTX", ".XLTX", "*.xltx"],
+   "explicacion": ".xltx. Un libro normal es .xlsx; la plantilla cambia la «s» por la «t». Al abrirla, siempre crea un libro nuevo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Antes de mandar una plantilla protegida, haz lo que hago yo: ábrela como si fueras un jefe de equipo e intenta romperla. Escribe en las horas, escribe en un importe, intenta borrar una pestaña. Si algo se deja romper, mejor que lo descubras tú."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l3-e7",
+   "modo": "ordenar",
+   "enunciado": "**El encargo de Lucía.** Ordena todo lo que haces para entregar la plantilla de horas extra.",
+   "pasos": [
+    "Seleccionar las celdas de las horas (B2:B6)",
+    "Ctrl+1 › pestaña Proteger › desmarcar Bloqueada",
+    "Revisar › Proteger hoja y, después, Revisar › Proteger libro",
+    "Archivo › Guardar como › Plantilla de Excel (.xltx)",
+    "Abrir la plantilla como un jefe de equipo e intentar escribir en un importe",
+    "Enviar la plantilla a los jefes de equipo"
+   ],
+   "explicacion": "Encargo cumplido: los jefes de equipo solo pueden escribir sus horas, nadie puede borrar pestañas y cada mes empiezan desde una plantilla limpia. Lo mismo te servirá para hojas de gastos de viaje, pedidos internos o solicitudes de vacaciones."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m2l3-q1",
+   "modo": "test",
+   "pregunta": "¿Cómo vienen de fábrica todas las celdas de una hoja nueva?",
+   "opciones": [
+    {"texto": "Bloqueadas, aunque no se nota hasta que proteges la hoja", "correcta": true, "porque": "Eso es: por eso hay que desbloquear las entradas antes de proteger."},
+    {"texto": "Desbloqueadas: hay que bloquear las fórmulas una a una", "correcta": false, "porque": "Es al revés: todo viene bloqueado y tú desbloqueas solo las entradas."},
+    {"texto": "Ni una cosa ni otra: el bloqueo solo existe en las plantillas .xltx", "correcta": false, "porque": "El bloqueo existe en cualquier libro, sea plantilla o no."}
+   ],
+   "explicacion": "Bloqueada de fábrica + Proteger hoja = celda que no se puede cambiar."
+  },
+  {
+   "id": "n4m2l3-q2",
+   "modo": "cinta",
+   "enunciado": "¿Dónde proteges la **estructura** del libro, para que nadie elimine ni mueva hojas?",
+   "ruta": ["Revisar", "Proteger", "Proteger libro"],
+   "explicacion": "Revisar › Proteger › Proteger libro. Al lado está Proteger hoja, que cuida las celdas."
+  },
+  {
+   "id": "n4m2l3-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "En el cuadro Formato de celdas, ¿en qué pestaña está la casilla **Bloqueada**?",
+   "aceptadas": ["Proteger", "proteger", "La pestaña Proteger", "la pestaña Proteger", "pestaña Proteger"],
+   "explicacion": "En la pestaña **Proteger** ([[Ctrl]]+[[1]] › Proteger). Ahí desmarcas Bloqueada en las celdas de entrada."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "Los dos pasos para proteger una plantilla", "dorso": "1) Desbloquear las entradas: Ctrl+1 › Proteger › quitar Bloqueada. 2) Revisar › Proteger hoja."},
+  {"tipo": "concepto", "frente": "Proteger hoja frente a Proteger libro", "dorso": "Hoja: las celdas. Libro: la estructura (agregar, mover, ocultar o eliminar hojas)."},
+  {"tipo": "error", "frente": "¿La contraseña de Proteger hoja protege datos confidenciales?", "dorso": "No. Para que no se pueda abrir: Archivo › Información › Proteger libro › Cifrar con contraseña."},
+  {"tipo": "concepto", "frente": "¿Qué es un archivo .xltx?", "dorso": "Una plantilla de Excel: al abrirla crea un libro nuevo y el original queda limpio."}
+ ]
+}

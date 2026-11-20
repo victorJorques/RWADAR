@@ -1,0 +1,308 @@
+{
+ "filas_csv": 9070,
+ "duplicados": 63,
+ "movimientos": 9007,
+ "filas_inventario": 196,
+ "codigos_como_numero": 22,
+ "articulos": 180,
+ "dobles": 16,
+ "plazos_vacios": 5,
+ "sin_ficha": 3,
+ "valor_stock": 1051445.52,
+ "valor_stock_teorico": 1051486.23,
+ "recuento_cuadran": 8,
+ "ajustes_recuento": {
+  "Cable RZ1-K 0,6/1 kV 3G2,5 mm²": -12.5,
+  "Downlight LED 18 W 4000 K (ref. LED-0412)": -3.0
+ },
+ "abc_n": {
+  "C": 100,
+  "B": 41,
+  "A": 36,
+  "Sin ficha": 3
+ },
+ "abc_pct_valor": {
+  "A": 0.7997,
+  "B": 0.1494,
+  "C": 0.0509
+ },
+ "consumo_anual_valor": 5692208.39,
+ "muertos": 12,
+ "valor_muertos": 77703.3,
+ "muertos_sin_ventas": 4,
+ "lineas_pedido": 20,
+ "importe_pedido": 52090.9,
+ "pedido_por_proveedor": {
+  "Arnedo": [
+   4,
+   16120.2
+  ],
+  "Cinca": [
+   6,
+   6241.0
+  ],
+  "Elecvía": [
+   3,
+   6785.7
+  ],
+  "Luzaide": [
+   4,
+   14172.0
+  ],
+  "Tormes": [
+   3,
+   8772.0
+  ]
+ },
+ "valor_ss": 97658.06,
+ "sensibilidad_ss": {
+  "0.9": 78512.65,
+  "0.95": 100352.48,
+  "0.975": 119173.69,
+  "0.99": 141002.43
+ },
+ "esc_tormes5": [
+  20,
+  58783.9
+ ],
+ "esc_tormes5_tormes": [
+  3,
+  15465.0
+ ],
+ "base_tormes": [
+  3,
+  8772.0
+ ],
+ "esc_cierre": [
+  27,
+  117565.2
+ ],
+ "esc_cierre_tormes": [
+  10,
+  55235.0
+ ],
+ "sin_pendiente": [
+  29,
+  85009.6
+ ],
+ "con_pendiente_n": 9,
+ "sigma_sin_ceros": [
+  19,
+  94026.12
+ ],
+ "err_quitar_inv": 42285.49,
+ "err_duplicados_valor": -10376.29,
+ "q05_filas": 87,
+ "negativos_sin_arreglar_codigos": 18,
+ "claves_sin_arreglar_codigos": 184,
+ "stock_negativo": 0,
+ "rotacion_global": 4.21,
+ "cobertura_dias_global": 47.7,
+ "rojos": 21,
+ "stock_cero_con_venta": 16,
+ "frontera": [
+  "005993",
+  "Fuente de alimentación LED 24 V 150 W"
+ ],
+ "dias_lab": 129,
+ "pedido_lineas_A": 11,
+ "tipos_variantes": {
+  "SAL": 6848,
+  "Salida": 1176,
+  "ENT": 358,
+  "salida ": 259,
+  "TRA": 202,
+  "DEV": 159,
+  "REG+": 35,
+  "REG-": 21,
+  "DPR": 12
+ },
+ "q14": 40,
+ "q07": 1046,
+ "q08": 1435,
+ "muertos_lista": [
+  [
+   "004593",
+   "Campana industrial LED 200 W",
+   "66.0",
+   "7128.0",
+   NaN
+  ],
+  [
+   "019243",
+   "Taladro percutor 18 V",
+   "55.0",
+   "7095.0",
+   "2026-05-14"
+  ],
+  [
+   "016845",
+   "Bandeja perforada 60x300 (tramo 3 m)",
+   "261.0",
+   "6890.4",
+   "2026-05-07"
+  ],
+  [
+   "002258",
+   "Cable RZ1-K 0,6/1 kV 5G10 mm²",
+   "1089.0",
+   "6642.9",
+   "2026-05-28"
+  ],
+  [
+   "019514",
+   "Nivel láser de líneas",
+   "74.0",
+   "6586.0",
+   NaN
+  ],
+  [
+   "004280",
+   "Proyector LED 150 W IP65 6000 K",
+   "126.0",
+   "6552.0",
+   "2026-06-09"
+  ],
+  [
+   "003946",
+   "Panel LED 120x30 40 W 4000 K",
+   "269.0",
+   "6456.0",
+   NaN
+  ],
+  [
+   "013146",
+   "Diferencial 4P 63 A 300 mA clase A",
+   "51.0",
+   "6375.0",
+   "2026-05-11"
+  ],
+  [
+   "012446",
+   "Magnetotérmico 4P 63 A 10 kA",
+   "67.0",
+   "6365.0",
+   "2026-05-04"
+  ],
+  [
+   "014799",
+   "Cuadro de empotrar 36 módulos",
+   "128.0",
+   "6144.0",
+   "2026-07-31"
+  ],
+  [
+   "010954",
+   "Termostato digital",
+   "171.0",
+   "5814.0",
+   "2026-06-18"
+  ],
+  [
+   "013464",
+   "Limitador de sobretensiones tipo 1+2",
+   "39.0",
+   "5655.0",
+   NaN
+  ]
+ ],
+ "recuento_lista": [
+  [
+   "000202",
+   "Cable H07Z1-K 1,5 mm² marrón",
+   "234359.0",
+   "0.0"
+  ],
+  [
+   "000452",
+   "Cable H07Z1-K 1,5 mm² amarillo-verde",
+   "0.0",
+   "0.0"
+  ],
+  [
+   "001929",
+   "Cable RZ1-K 0,6/1 kV 3G2,5 mm²",
+   "4133.5",
+   "-12.5"
+  ],
+  [
+   "002680",
+   "Downlight LED 12 W 4000 K",
+   "1514.0",
+   "0.0"
+  ],
+  [
+   "002796",
+   "Downlight LED 18 W 4000 K (ref. LED-0412)",
+   "458.0",
+   "-3.0"
+  ],
+  [
+   "003136",
+   "Panel LED 60x60 40 W 4000 K",
+   "1519.0",
+   "0.0"
+  ],
+  [
+   "012301",
+   "Magnetotérmico 4P 40 A 10 kA",
+   "0.0",
+   "0.0"
+  ],
+  [
+   "016383",
+   "Canaleta PVC 16x16 (tramo 2 m)",
+   "5744.0",
+   "0.0"
+  ],
+  [
+   "017445",
+   "Tapa bandeja 100 (tramo 3 m)",
+   "102.0",
+   "0.0"
+  ],
+  [
+   "018389",
+   "Comprobador de tensión bipolar",
+   "41.0",
+   "0.0"
+  ]
+ ],
+ "top_pedido": [
+  [
+   "012301",
+   "Magnetotérmico 4P 40 A 10 kA",
+   "Arnedo",
+   "207.0",
+   "14697.0"
+  ],
+  [
+   "004870",
+   "Lámpara LED E27 12 W 4000 K",
+   "Luzaide",
+   "2750.0",
+   "5362.5"
+  ],
+  [
+   "006031",
+   "Pantalla estanca LED 2x36 W IP65",
+   "Luzaide",
+   "200.0",
+   "4300.0"
+  ],
+  [
+   "006546",
+   "Emergencia LED 100 lm",
+   "Elecvía",
+   "251.0",
+   "3589.3"
+  ],
+  [
+   "002283",
+   "Manguera RV-K 0,6/1 kV 3G2,5 mm²",
+   "Tormes",
+   "3300.0",
+   "3465.0"
+  ]
+ ]
+}

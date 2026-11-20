@@ -1,0 +1,65 @@
+{
+ "id": "n1m3",
+ "nivel": "n1",
+ "titulo": "Dar formato",
+ "intro": "Una hoja con los cálculos bien hechos pero sin formato parece un borrador: cuesta leerla y nadie se fía de ella. En este módulo aprenderás a mostrar euros, porcentajes y fechas como en cualquier oficina, a dejar las tablas claras y a reorganizar filas, columnas y hojas sin romper ninguna fórmula.",
+ "repaso_inicial": [
+  {
+   "id": "n1m3-r1",
+   "modo": "formula",
+   "enunciado": "Calentamos con el símbolo $. Andrés aplica a toda la tarifa el descuento de **F1**. En **C2** calcula el precio con descuento del primer producto: precio × (1 − descuento). Tu fórmula se copiará a C3:C4, así que fija lo que no debe moverse.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Precio tarifa", "C1": "Con descuento", "E1": "Descuento", "F1": 0.1,
+     "A2": "Bridas 200 mm (bolsa 100)", "B2": 6.8,
+     "A3": "Canaleta 40x60 (2 m)", "B3": 9.45,
+     "A4": "Tubo corrugado 20 mm (rollo)", "B4": 24.9
+    },
+    "formatos": {"B2:B4": "eur", "C2:C4": "eur", "F1": "pct"},
+    "anchos": {"A": 26, "B": 13, "C": 14}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C4"],
+   "solucion": "=B2*(1-$F$1)",
+   "alternativas": ["=B2-B2*$F$1", "=B2*(1-F$1)"],
+   "errores_tipicos": ["=B2*(1-F1)", "=B2*0,9", "=B2-$F$1"],
+   "variantes": [{"F1": 0.15}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Precio por (1 menos el descuento). El descuento está en F1.",
+    "Al copiar hacia abajo, F1 se movería a F2, F3… y allí no hay nada. Hay que fijarla.",
+    "=B2*(1-$F$1)"
+   ],
+   "explicacion": "6,12 € para las bridas. `$F$1` no se mueve al copiar y `B2` sí: si mañana el descuento pasa al 15 %, cambias F1 y se recalcula toda la tarifa."
+  },
+  {
+   "id": "n1m3-r2",
+   "modo": "predice",
+   "enunciado": "Sin calcular a mano todo: ¿qué devuelve esta fórmula con los kilómetros que hicieron los repartidores esta semana?",
+   "hoja": {
+    "celdas": {
+     "A1": "Repartidor", "B1": "Km",
+     "A2": "Óscar", "B2": 320,
+     "A3": "Yolanda", "B3": 280,
+     "A4": "Iván", "B4": 410,
+     "A5": "Rocío", "B5": 290
+    }
+   },
+   "celda": "B6",
+   "formula": "=PROMEDIO(B2:B5)",
+   "explicacion": "PROMEDIO suma (1.300) y divide entre cuántos números hay (4): **325** km de media."
+  },
+  {
+   "id": "n1m3-r3",
+   "modo": "test",
+   "pregunta": "En C2 tienes `=SI(B2>=1000;\"Pide firma\";\"OK\")` y B2 vale **1000**. ¿Qué sale en C2?",
+   "opciones": [
+    {"texto": "Pide firma", "correcta": true, "porque": "Correcto: `>=` significa «mayor o igual», y 1000 es igual a 1000, así que la condición se cumple."},
+    {"texto": "OK", "correcta": false, "porque": "Saldría OK con `>` (mayor estricto). Con `>=` el propio 1000 ya cumple."},
+    {"texto": "VERDADERO", "correcta": false, "porque": "SI no devuelve VERDADERO: devuelve lo que pongas en el segundo o el tercer argumento."}
+   ],
+   "explicacion": "Fíjate siempre en si el límite entra (`>=`) o no (`>`): es la diferencia entre pedir firma o no en una compra de 1.000 €."
+  }
+ ],
+ "practica_excel": null
+}

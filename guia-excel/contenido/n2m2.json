@@ -1,0 +1,2208 @@
+{
+  "id": "n2m2",
+  "nivel": "n2",
+  "titulo": "Decidir y contar con condiciones",
+  "intro": "En tu primer mes ya no te piden solo totales: te piden quién cobra el bonus, qué descuento lleva cada pedido o cuánto ha vendido cada comercial. Con Y, O, los tramos y las funciones .SI vas a responder a esas preguntas en segundos y con una hoja que se actualiza sola.",
+  "repaso_inicial": [
+    {
+      "id": "n2m2-r1",
+      "modo": "formula",
+      "enunciado": "Andrés quiere saber qué reponer. En **C2** escribe **Pedir** si el stock de B2 es **menor que 20** y **OK** en otro caso. Se copiará a C3:C5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Producto",
+          "B1": "Stock",
+          "C1": "Reponer",
+          "A2": "Cable 2,5 mm² (rollo 100 m)",
+          "B2": 12,
+          "A3": "Canaleta 40x25 (2 m)",
+          "B3": 85,
+          "A4": "Bridas 200 mm (bolsa 100)",
+          "B4": 20,
+          "A5": "Magnetotérmico 2P 16 A",
+          "B5": 7
+        },
+        "anchos": {
+          "A": 28
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C5"
+      ],
+      "solucion": "=SI(B2<20;\"Pedir\";\"OK\")",
+      "alternativas": [
+        "=SI(B2>=20;\"OK\";\"Pedir\")"
+      ],
+      "errores_tipicos": [
+        "=SI(B2<=20;\"Pedir\";\"OK\")",
+        "=SI(B2>20;\"Pedir\";\"OK\")"
+      ],
+      "variantes": [
+        {
+          "B3": 3
+        }
+      ],
+      "pistas": [
+        "Es una decisión con una sola condición: la función SI.",
+        "`=SI(condición; si se cumple; si no)`. La condición es B2<20.",
+        "`=SI(B2<20;\"Pedir\";\"OK\")`"
+      ],
+      "explicacion": "Bien recordado. Las bridas, con 20 justas, salen «OK» porque «menor que 20» no incluye el 20. En este módulo vas a llevar SI mucho más lejos."
+    },
+    {
+      "id": "n2m2-r2",
+      "modo": "test",
+      "pregunta": "En D2 tienes `=C2*$F$1` y la copias a D3. ¿Qué fórmula queda en D3?",
+      "opciones": [
+        {
+          "texto": "=C3*$F$1",
+          "correcta": true,
+          "porque": "Correcto: C2 no tiene $ y baja una fila; $F$1 está fijada y no se mueve."
+        },
+        {
+          "texto": "=C3*$F$2",
+          "correcta": false,
+          "porque": "Los $ delante de la F y del 1 impiden que cambie la fila."
+        },
+        {
+          "texto": "=C2*$F$1",
+          "correcta": false,
+          "porque": "C2 no lleva $, así que sí cambia al copiar hacia abajo."
+        }
+      ]
+    },
+    {
+      "id": "n2m2-r3",
+      "modo": "predice",
+      "enunciado": "¿Qué devuelve la fórmula en **B1**?",
+      "hoja": {
+        "celdas": {
+          "A1": "Irene",
+          "A2": 450,
+          "A3": "Pablo",
+          "A4": 1200
+        }
+      },
+      "celda": "B1",
+      "formula": "=CONTAR(A1:A4)",
+      "explicacion": "CONTAR solo cuenta números: 450 y 1.200. Para contar también textos usarías CONTARA.",
+      "respuesta": "2"
+    },
+    {
+      "id": "n2m2-r4",
+      "modo": "cinta",
+      "enunciado": "Quieres que en la columna «Delegación» solo se pueda elegir Zaragoza, Pamplona o Lleida de una lista desplegable. ¿Dónde está el botón?",
+      "ruta": [
+        "Datos",
+        "Herramientas de datos",
+        "Validación de datos"
+      ],
+      "explicacion": "Datos › Herramientas de datos › Validación de datos, y en «Permitir» eliges Lista. Con nombres bien escritos, los CONTAR.SI de este módulo no fallarán por un «Zaragzoa»."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n2m2l1",
+      "titulo": "Dos condiciones a la vez: Y y O",
+      "minutos": 14,
+      "objetivo": "Decidir con dos condiciones a la vez usando Y (se cumplen todas) y O (basta con una), solas o dentro de un SI.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Este mes se paga el bonus de octubre: 300 € a quien haya llegado a su objetivo y no tenga ninguna incidencia abierta. Te paso la lista; ponme en la columna E cuánto cobra cada uno. El importe está en H1, que igual Carmen lo sube.",
+        "logro": "Ya sabes decidir con dos condiciones a la vez (Y, O) dentro de un SI, y que la fórmula se adapte sola si cambia el importe."
+      },
+      "funciones": [
+        "SI",
+        "Y",
+        "O"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Con **SI** ya sabes decidir con **una** condición. Pero en la oficina casi nada depende de una sola cosa: el bonus se cobra si llegas al objetivo **y** no tienes incidencias.\n\nPara eso está la función **Y**: `=Y(condición1; condición2)`. Responde **VERDADERO** si se cumplen **todas** y **FALSO** si falla alguna. VERDADERO y FALSO son las dos respuestas posibles a una pregunta de sí o no: Excel las escribe así, en mayúsculas."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Y en acción: ¿cumple las dos cosas?",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas",
+              "C1": "Objetivo",
+              "D1": "Incidencias",
+              "E1": "¿Las dos?",
+              "A2": "Pablo Lasheras",
+              "B2": 48200,
+              "C2": 45000,
+              "D2": 0,
+              "E2": "=Y(B2>=C2;D2=0)",
+              "A3": "Irene Gracia",
+              "B3": 51000,
+              "C3": 50000,
+              "D3": 1,
+              "E3": "=Y(B3>=C3;D3=0)",
+              "A4": "Sergio Aznar",
+              "B4": 39800,
+              "C4": 42000,
+              "D4": 0,
+              "E4": "=Y(B4>=C4;D4=0)"
+            },
+            "formatos": {
+              "B2:C4": "#.##0 €"
+            },
+            "anchos": {
+              "A": 16,
+              "E": 11
+            }
+          },
+          "resaltar": [
+            "E2:E4"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Irene vende más que su objetivo, pero tiene una incidencia: con Y, un solo fallo basta para que salga FALSO."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e1",
+          "modo": "test",
+          "pregunta": "Regla del bonus: llegar al objetivo **y** no tener incidencias. Irene ha superado su objetivo, pero tiene **1 incidencia**. ¿Cobra el bonus?",
+          "opciones": [
+            {
+              "texto": "No",
+              "correcta": true,
+              "porque": "Exacto: con «y» tienen que cumplirse las dos cosas. Le falla la segunda, así que no cobra."
+            },
+            {
+              "texto": "Sí, porque ha superado el objetivo",
+              "correcta": false,
+              "porque": "Eso sería si bastara con una de las dos condiciones (eso es «o»). La regla dice «y»: hacen falta las dos."
+            },
+            {
+              "texto": "Depende de cuánto haya superado el objetivo",
+              "correcta": false,
+              "porque": "La regla no habla de cuánto lo supere. Solo mira dos cosas: llegar al objetivo y cero incidencias."
+            }
+          ],
+          "explicacion": "Así piensa la función Y: todas las condiciones o nada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e2",
+          "modo": "predice",
+          "enunciado": "Sergio no ha llegado a su objetivo y no tiene incidencias. ¿Qué escribirá Excel en **E2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas",
+              "C1": "Objetivo",
+              "D1": "Incidencias",
+              "A2": "Sergio Aznar",
+              "B2": 39800,
+              "C2": 42000,
+              "D2": 0
+            },
+            "formatos": {
+              "B2:C2": "#.##0 €"
+            },
+            "anchos": {
+              "A": 16
+            }
+          },
+          "celda": "E2",
+          "formula": "=Y(B2>=C2;D2=0)",
+          "explicacion": "39.800 no es mayor o igual que 42.000: la primera condición falla. Aunque la segunda se cumpla, Y devuelve FALSO.",
+          "respuesta": "FALSO"
+        },
+        {
+          "tipo": "texto",
+          "md": "La otra cara es la función **O**: `=O(condición1; condición2)`. Responde **VERDADERO** si se cumple **al menos una**. Solo da FALSO cuando fallan todas.\n\nEjemplo de la oficina: Marta quiere revisar un pedido antes de servirlo si es de **más de 1.000 €** *o* si el cliente es **nuevo**. Basta con que pase una de las dos cosas para que haya que mirarlo.\n\nTruco para no confundirlas: **Y** es exigente (todas); **O** es generosa (alguna)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e3",
+          "modo": "predice",
+          "enunciado": "Un pedido de 450 € de un cliente **nuevo**. ¿Qué escribirá Excel en **D2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "C1": "Cliente",
+              "A2": "P-2612",
+              "B2": 450,
+              "C2": "Nuevo"
+            },
+            "formatos": {
+              "B2": "eur"
+            }
+          },
+          "celda": "D2",
+          "formula": "=O(B2>1000;C2=\"Nuevo\")",
+          "explicacion": "450 no pasa de 1.000, pero el cliente es nuevo: con O basta una condición, así que sale VERDADERO. Fíjate en que el texto \"Nuevo\" va entre comillas dentro de la fórmula.",
+          "respuesta": "VERDADERO"
+        },
+        {
+          "tipo": "texto",
+          "md": "Y y O casi nunca se usan solas: se meten **dentro de un SI**, en el sitio de la condición. Así, en vez de VERDADERO o FALSO, la hoja dice algo útil:\n\n`=SI(Y(B2>=C2;D2=0);\"Sí\";\"No\")`\n\nSe lee: «si cumple las dos cosas, escribe Sí; si no, escribe No». Primero se resuelve el Y de dentro y luego el SI decide."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "SI con Y dentro",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas",
+              "C1": "Objetivo",
+              "D1": "Incidencias",
+              "E1": "Bonus",
+              "A2": "Pablo Lasheras",
+              "B2": 48200,
+              "C2": 45000,
+              "D2": 0,
+              "E2": "=SI(Y(B2>=C2;D2=0);\"Sí\";\"No\")",
+              "A3": "Irene Gracia",
+              "B3": 51000,
+              "C3": 50000,
+              "D3": 1,
+              "E3": "=SI(Y(B3>=C3;D3=0);\"Sí\";\"No\")"
+            },
+            "formatos": {
+              "B2:C3": "#.##0 €"
+            },
+            "anchos": {
+              "A": 16
+            }
+          },
+          "resaltar": [
+            "E2:E3"
+          ],
+          "mostrar_formulas": true
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Marta Ruiz",
+          "puesto": "Directora financiera",
+          "md": "Una cosa rápida: los pedidos de **más de 1.000 €** o de **clientes nuevos** quiero revisarlos antes de servirlos, por el riesgo de impago. Márcamelos con «Revisar» y el resto con «OK»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e4",
+          "modo": "formula",
+          "enunciado": "La fórmula de **D2** ya mira el importe, pero se olvida de los clientes nuevos. Complétala para que escriba **Revisar** si el importe pasa de 1.000 € **o** el cliente es «Nuevo», y **OK** en otro caso. Se copiará a D3:D6.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "C1": "Cliente",
+              "D1": "Revisión",
+              "A2": "P-2611",
+              "B2": 1450,
+              "C2": "Habitual",
+              "A3": "P-2612",
+              "B3": 380,
+              "C3": "Nuevo",
+              "A4": "P-2613",
+              "B4": 720,
+              "C4": "Habitual",
+              "A5": "P-2614",
+              "B5": 2100,
+              "C5": "Nuevo",
+              "A6": "P-2615",
+              "B6": 95,
+              "C6": "Habitual"
+            },
+            "formatos": {
+              "B2:B6": "eur"
+            },
+            "anchos": {
+              "D": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D6"
+          ],
+          "inicial": "=SI(B2>1000;\"Revisar\";\"OK\")",
+          "solucion": "=SI(O(B2>1000;C2=\"Nuevo\");\"Revisar\";\"OK\")",
+          "alternativas": [
+            "=SI(O(C2=\"Nuevo\";B2>1000);\"Revisar\";\"OK\")",
+            "=SI(O(B2>1000;C2=\"nuevo\");\"Revisar\";\"OK\")"
+          ],
+          "errores_tipicos": [
+            "=SI(Y(B2>1000;C2=\"Nuevo\");\"Revisar\";\"OK\")",
+            "=SI(B2>1000;\"Revisar\";\"OK\")"
+          ],
+          "variantes": [
+            {
+              "B4": 1200
+            },
+            {
+              "C6": "Nuevo"
+            }
+          ],
+          "debe_usar": [
+            "O"
+          ],
+          "pistas": [
+            "Basta con que se cumpla **una** de las dos cosas: ¿Y u O?",
+            "Cambia la condición `B2>1000` por `O(B2>1000;C2=\"Nuevo\")`. El resto del SI se queda igual.",
+            "`=SI(O(B2>1000;C2=\"Nuevo\");\"Revisar\";\"OK\")`"
+          ],
+          "explicacion": "Ya marcas sola los pedidos con riesgo: el de 380 € también sale como «Revisar» porque el cliente es nuevo. Así se filtra en muchas empresas lo que pasa por las manos de finanzas antes de servirse."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no (Excel no lo entiende)",
+          "der": "Así sí",
+          "filas": [
+            [
+              "`=SI(B2>=C2 Y D2=0;…)`",
+              "`=SI(Y(B2>=C2;D2=0);…)`"
+            ],
+            [
+              "`=SI(500<=B2<=2000;…)`",
+              "`=SI(Y(B2>=500;B2<=2000);…)`"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e5",
+          "modo": "formula",
+          "enunciado": "Andrés prepara en el **muelle 2** los pedidos de **entre 500 € y 2.000 €, ambos incluidos**; el resto va al **muelle 1**. La fórmula de **C2** está escrita «como en matemáticas» y siempre dice Muelle 1. Arréglala (se copiará a C3:C6).",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "C1": "Muelle",
+              "A2": "P-2620",
+              "B2": 1250,
+              "A3": "P-2621",
+              "B3": 3400,
+              "A4": "P-2622",
+              "B4": 500,
+              "A5": "P-2623",
+              "B5": 180,
+              "A6": "P-2624",
+              "B6": 2000
+            },
+            "formatos": {
+              "B2:B6": "eur"
+            },
+            "anchos": {
+              "C": 11
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C6"
+          ],
+          "inicial": "=SI(500<=B2<=2000;\"Muelle 2\";\"Muelle 1\")",
+          "solucion": "=SI(Y(B2>=500;B2<=2000);\"Muelle 2\";\"Muelle 1\")",
+          "alternativas": [
+            "=SI(Y(B2<=2000;B2>=500);\"Muelle 2\";\"Muelle 1\")"
+          ],
+          "errores_tipicos": [
+            "=SI(Y(B2>500;B2<2000);\"Muelle 2\";\"Muelle 1\")",
+            "=SI(O(B2>=500;B2<=2000);\"Muelle 2\";\"Muelle 1\")"
+          ],
+          "variantes": [
+            {
+              "B3": 1999
+            }
+          ],
+          "debe_usar": [
+            "Y"
+          ],
+          "pistas": [
+            "«Entre 500 y 2.000» son dos condiciones que se cumplen a la vez: ser mayor o igual que 500 **y** menor o igual que 2.000.",
+            "Sustituye `500<=B2<=2000` por `Y(B2>=500;B2<=2000)`.",
+            "`=SI(Y(B2>=500;B2<=2000);\"Muelle 2\";\"Muelle 1\")`"
+          ],
+          "explicacion": "Arreglado. Excel no encadena comparaciones: `500<=B2` da VERDADERO y luego compara VERDADERO con 2000, que no tiene sentido. «Entre dos valores» siempre se escribe con Y. Y fíjate en los bordes: 500 y 2.000 van al muelle 2 porque usas `>=` y `<=`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e6",
+          "modo": "test",
+          "pregunta": "Javier te pide: «Avísame de los clientes que lleven más de 60 días sin comprar **o** que hayan bajado sus compras este año». ¿Qué función usas dentro del SI?",
+          "opciones": [
+            {
+              "texto": "O",
+              "correcta": true,
+              "porque": "Correcto: con que pase una de las dos cosas ya merece una llamada. «Alguna» es O."
+            },
+            {
+              "texto": "Y",
+              "correcta": false,
+              "porque": "Y solo avisaría de los clientes que cumplen las dos a la vez, y se te escaparían los que solo cumplen una."
+            },
+            {
+              "texto": "Dos SI seguidos en la misma celda, uno para cada condición",
+              "correcta": false,
+              "porque": "Una celda solo tiene una fórmula. Para juntar dos condiciones en una sola decisión está O (o Y)."
+            }
+          ],
+          "explicacion": "Pista para la vida real: escucha la conjunción del encargo. «Y» → Y; «o» → O. Si dudas, pregunta con un ejemplo concreto («¿y si solo cumple una?»)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l1-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** En **E2** escribe cuánto bonus cobra Pablo: el importe de **H1** si sus ventas llegan al objetivo (iguales o mayores) **y** tiene 0 incidencias; si no, **0**. Tu fórmula se copiará a E3:E7, así que fija lo que no deba moverse.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas oct.",
+              "C1": "Objetivo",
+              "D1": "Incidencias",
+              "E1": "Bonus",
+              "G1": "Bonus (€)",
+              "H1": 300,
+              "A2": "Pablo Lasheras",
+              "B2": 48200,
+              "C2": 45000,
+              "D2": 0,
+              "A3": "Irene Gracia",
+              "B3": 51000,
+              "C3": 50000,
+              "D3": 1,
+              "A4": "Sergio Aznar",
+              "B4": 39800,
+              "C4": 42000,
+              "D4": 0,
+              "A5": "Elena Beltrán",
+              "B5": 40000,
+              "C5": 40000,
+              "D5": 0,
+              "A6": "Óscar Lafuente",
+              "B6": 36500,
+              "C6": 35000,
+              "D6": 0,
+              "A7": "Raquel Sanz",
+              "B7": 29900,
+              "C7": 38000,
+              "D7": 2
+            },
+            "formatos": {
+              "B2:C7": "#.##0 €",
+              "E2:E7": "eur",
+              "H1": "eur"
+            },
+            "anchos": {
+              "A": 16,
+              "G": 10
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "solucion": "=SI(Y(B2>=C2;D2=0);$H$1;0)",
+          "alternativas": [
+            "=SI(Y(D2=0;B2>=C2);$H$1;0)",
+            "=SI(Y(B2>=C2;D2=0);H$1;0)",
+            "=SI(Y(B2>=C2;D2<1);$H$1;0)"
+          ],
+          "errores_tipicos": [
+            "=SI(Y(B2>=C2;D2=0);H1;0)",
+            "=SI(Y(B2>C2;D2=0);$H$1;0)",
+            "=SI(O(B2>=C2;D2=0);$H$1;0)",
+            "=SI(Y(B2>=C2;D2=0);300;0)"
+          ],
+          "variantes": [
+            {
+              "H1": 350
+            },
+            {
+              "D2": 1
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "La condición tiene dos partes que deben cumplirse a la vez: ¿Y u O? Y si se cumple, el resultado no es un texto: es el importe de H1.",
+            "`=SI(Y(B2>=C2;D2=0); importe ; 0)`. Al copiar hacia abajo, H1 se movería a H2, H3… y esas celdas están vacías.",
+            "`=SI(Y(B2>=C2;D2=0);$H$1;0)`"
+          ],
+          "explicacion": "Misión cumplida: Pablo, Elena y Óscar cobran 300 € cada uno. Elena llega **justo** a su objetivo, y por eso usas `>=` y no `>`. Como el importe está en $H$1, si Carmen lo sube a 350 € solo tocas una celda. Antes de enviárselo a Javier, comprueba un caso a ojo: Irene no cobra por su incidencia."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m2l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué función devuelve VERDADERO cuando se cumple **al menos una** de las condiciones?",
+          "aceptadas": [
+            "O",
+            "=O",
+            "O()",
+            "la función O",
+            "función O"
+          ],
+          "explicacion": "O: basta con una. Y exige todas."
+        },
+        {
+          "id": "n2m2l1-q2",
+          "modo": "predice",
+          "enunciado": "El pedido es de 80 € y el cliente **no** paga por adelantado. ¿Qué devuelve la fórmula en **C1**?",
+          "hoja": {
+            "celdas": {
+              "A1": 80,
+              "B1": "No"
+            }
+          },
+          "celda": "C1",
+          "formula": "=O(A1>=100;B1=\"Sí\")",
+          "explicacion": "Las dos condiciones fallan (80 no llega a 100 y B1 dice «No»). O solo da FALSO cuando fallan todas, y este es el caso.",
+          "respuesta": "FALSO"
+        },
+        {
+          "id": "n2m2l1-q3",
+          "modo": "cinta",
+          "enunciado": "Quieres ver la lista de funciones lógicas (SI, Y, O…) desde la cinta. ¿Dónde está?",
+          "ruta": [
+            "Fórmulas",
+            "Biblioteca de funciones",
+            "Lógicas"
+          ],
+          "explicacion": "Fórmulas › Biblioteca de funciones › Lógicas. Al elegir una función se abre una ventana que te pide cada dato de la función en su casilla: útil cuando dudas del orden."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Función Y: sintaxis y cuándo da VERDADERO",
+          "dorso": "=Y(cond1; cond2; …) → VERDADERO solo si se cumplen TODAS."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Función O: sintaxis y cuándo da VERDADERO",
+          "dorso": "=O(cond1; cond2; …) → VERDADERO si se cumple AL MENOS UNA."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Cómo se escribe «B2 entre 500 y 2.000» en Excel?",
+          "dorso": "=Y(B2>=500;B2<=2000). Nunca 500<=B2<=2000."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde va Y u O dentro de un SI?",
+          "dorso": "En el primer argumento, el de la condición: =SI(Y(…);si_sí;si_no)."
+        }
+      ]
+    },
+    {
+      "id": "n2m2l2",
+      "titulo": "Tramos: SI dentro de SI y SI.CONJUNTO",
+      "minutos": 15,
+      "objetivo": "Asignar un resultado por tramos (descuentos, categorías) con SI anidado o SI.CONJUNTO, con las condiciones en el orden correcto y un caso «resto».",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Desde el lunes aplicamos la nueva escala de descuentos: desde 5.000 € un 8 %, desde 2.000 € un 5 % y desde 500 € un 2 %. Por debajo de 500 €, nada. Ponme el descuento de cada pedido de esta semana, que los quiero revisar hoy.",
+        "logro": "Ya sabes asignar descuentos, categorías o cualquier escala por tramos con una sola fórmula que se copia a toda la lista."
+      },
+      "funciones": [
+        "SI",
+        "SI.CONJUNTO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Muchas reglas de empresa funcionan por **tramos**, como los escalones de una escalera: según el importe, te toca un descuento u otro; según lo que compra un cliente, es de categoría A, B o C.\n\nUn SI solo tiene **dos salidas** (sí o no). Para tres o más escalones necesitas encadenar decisiones. Antes de escribir nada, ponte el ejemplo en la cabeza: ¿qué le toca a un pedido de 3.200 €?"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e1",
+          "modo": "test",
+          "pregunta": "Escala de descuentos: **desde 5.000 €**, 8 %; **desde 2.000 €**, 5 %; **desde 500 €**, 2 %; por debajo, 0 %. ¿Qué descuento tiene un pedido de **3.200 €**?",
+          "opciones": [
+            {
+              "texto": "5 %",
+              "correcta": true,
+              "porque": "Eso es: no llega a 5.000, pero sí pasa de 2.000. Es el escalón más alto que alcanza."
+            },
+            {
+              "texto": "2 %",
+              "correcta": false,
+              "porque": "Es verdad que pasa de 500, pero también pasa de 2.000, que es un escalón más alto. Se queda con el mejor que alcanza."
+            },
+            {
+              "texto": "8 %",
+              "correcta": false,
+              "porque": "Para el 8 % tendría que llegar a 5.000 €, y se queda en 3.200 €."
+            }
+          ],
+          "explicacion": "Lo has resuelto mirando primero el escalón más alto y bajando. Así es justo como hay que escribir la fórmula."
+        },
+        {
+          "tipo": "texto",
+          "md": "La forma clásica es meter **un SI dentro de otro**. El segundo SI va en el hueco del «si no» del primero:\n\n`=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))`\n\nSe lee así: «¿llega a 5.000? Grande. Si no, ¿llega a 1.000? Mediano. Si no, Pequeño». Cada SI añade un escalón. Cuenta los paréntesis: al final se cierran todos los SI que hayas abierto (aquí, dos)."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Tamaño de pedido con SI dentro de SI",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "C1": "Tamaño",
+              "A2": "P-2630",
+              "B2": 6200,
+              "C2": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+              "A3": "P-2631",
+              "B3": 1800,
+              "C3": "=SI(B3>=5000;\"Grande\";SI(B3>=1000;\"Mediano\";\"Pequeño\"))",
+              "A4": "P-2632",
+              "B4": 450,
+              "C4": "=SI(B4>=5000;\"Grande\";SI(B4>=1000;\"Mediano\";\"Pequeño\"))"
+            },
+            "formatos": {
+              "B2:B4": "eur"
+            },
+            "anchos": {
+              "C": 12
+            }
+          },
+          "resaltar": [
+            "C2:C4"
+          ],
+          "mostrar_formulas": true
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e2",
+          "modo": "predice",
+          "enunciado": "Un pedido de 1.500 €. ¿Qué escribirá Excel en **C2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "A2": "P-2633",
+              "B2": 1500
+            },
+            "formatos": {
+              "B2": "eur"
+            }
+          },
+          "celda": "C2",
+          "formula": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+          "explicacion": "No llega a 5.000, así que pasa al segundo SI. Sí llega a 1.000: Mediano.",
+          "respuesta": "Mediano"
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora la regla de oro: **Excel se queda con la primera condición que se cumple** y ya no mira las demás.\n\nPor eso, con `>=`, los tramos se escriben **de mayor a menor**. Si empiezas por `B2>=1000`, un pedido de 6.000 € también cumple esa condición y se queda en «Mediano»: nunca llegará a «Grande»."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "El truco de Nuria",
+          "md": "Antes de escribir la fórmula, apunta los tramos en una lista de **mayor a menor**, con el «resto» al final. Luego solo tienes que copiarlos en ese orden."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e3",
+          "modo": "predice",
+          "enunciado": "Esta fórmula tiene los tramos al revés. El pedido es de **6.000 €**. ¿Qué escribirá Excel en **C2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "A2": "P-2634",
+              "B2": 6000
+            },
+            "formatos": {
+              "B2": "eur"
+            }
+          },
+          "celda": "C2",
+          "formula": "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+          "explicacion": "6.000 cumple ya la primera condición (es mayor o igual que 1.000), así que sale «Mediano» y el segundo SI ni se mira. No da error: da un resultado **equivocado**, que es peor porque no se nota.",
+          "respuesta": "Mediano"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e4",
+          "modo": "formula",
+          "enunciado": "Andrés clasifica los pedidos para preparar el transporte: **Grande** desde 5.000 €, **Mediano** desde 1.000 €, **Pequeño** el resto. La fórmula de **C2** tiene los tramos en mal orden. Arréglala (se copiará a C3:C6).",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "C1": "Tamaño",
+              "A2": "P-2640",
+              "B2": 6200,
+              "A3": "P-2641",
+              "B3": 1800,
+              "A4": "P-2642",
+              "B4": 450,
+              "A5": "P-2643",
+              "B5": 5000,
+              "A6": "P-2644",
+              "B6": 999
+            },
+            "formatos": {
+              "B2:B6": "eur"
+            },
+            "anchos": {
+              "C": 12
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C6"
+          ],
+          "inicial": "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+          "solucion": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+          "alternativas": [
+            "=SI.CONJUNTO(B2>=5000;\"Grande\";B2>=1000;\"Mediano\";VERDADERO;\"Pequeño\")",
+            "=SI(B2<1000;\"Pequeño\";SI(B2<5000;\"Mediano\";\"Grande\"))"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+            "=SI(B2>5000;\"Grande\";SI(B2>1000;\"Mediano\";\"Pequeño\"))"
+          ],
+          "variantes": [
+            {
+              "B4": 7300
+            }
+          ],
+          "pistas": [
+            "¿Qué condición tiene que ir primero: la más exigente o la más fácil de cumplir?",
+            "Intercambia los tramos: primero `B2>=5000` con «Grande» y, dentro, `B2>=1000` con «Mediano».",
+            "`=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))`"
+          ],
+          "explicacion": "Ahora los pedidos de 6.200 € y de 5.000 € salen como «Grande». Has arreglado el error de tramos más frecuente en las oficinas, y además sabes por qué pasaba: gana la primera condición que se cumple."
+        },
+        {
+          "tipo": "texto",
+          "md": "En Excel moderno hay una forma más limpia: **SI.CONJUNTO**. Escribes parejas de **condición; resultado**, en orden, sin meter un SI dentro de otro:\n\n`=SI.CONJUNTO(B2>=5000;\"Grande\";B2>=1000;\"Mediano\";VERDADERO;\"Pequeño\")`\n\nEl último par, `VERDADERO;\"Pequeño\"`, es el **resto**: una condición que siempre se cumple y recoge todo lo que no ha entrado antes. La regla de oro sigue valiendo: gana la primera que se cumple."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Dos cosas que debes saber",
+          "md": "- Si **olvidas el resto** y ninguna condición se cumple, SI.CONJUNTO devuelve **#N/D**.\n- **Excel 2016** no tiene SI.CONJUNTO (está desde Excel 2019 y en Microsoft 365). Si el libro lo va a abrir alguien con Excel 2016, usa SI dentro de SI, que funciona en todas las versiones."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e5",
+          "modo": "ordenar",
+          "enunciado": "Vas a escribir la escala de descuentos con SI.CONJUNTO. Ordena las parejas **condición; resultado** tal como deben ir dentro de la fórmula.",
+          "pasos": [
+            "B2>=5000; 8 %",
+            "B2>=2000; 5 %",
+            "B2>=500; 2 %",
+            "VERDADERO; 0 %"
+          ],
+          "explicacion": "De mayor a menor y el resto al final. Si el 2 % fuera primero, todos los pedidos de más de 500 € se quedarían con el 2 %."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e6",
+          "modo": "formula",
+          "enunciado": "Javier clasifica a los clientes por lo que han comprado en el año: **A** desde 50.000 €, **B** desde 15.000 €, **C** el resto. En **C2** escribe la categoría del primer cliente. Puedes usar SI.CONJUNTO o SI dentro de SI. Se copiará a C3:C7.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Compras 2026",
+              "C1": "Categoría",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": 72400,
+              "A3": "Electricidad Monzón",
+              "B3": 18900,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": 9600,
+              "A5": "Climatización Bardenas",
+              "B5": 50000,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": 15000,
+              "A7": "Hogar Eléctrico Tudela",
+              "B7": 4300
+            },
+            "formatos": {
+              "B2:B7": "#.##0 €"
+            },
+            "anchos": {
+              "A": 26,
+              "B": 13
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C7"
+          ],
+          "solucion": "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";VERDADERO;\"C\")",
+          "alternativas": [
+            "=SI(B2>=50000;\"A\";SI(B2>=15000;\"B\";\"C\"))",
+            "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";B2<15000;\"C\")"
+          ],
+          "errores_tipicos": [
+            "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\")",
+            "=SI.CONJUNTO(B2>=15000;\"B\";B2>=50000;\"A\";VERDADERO;\"C\")",
+            "=SI.CONJUNTO(B2>50000;\"A\";B2>15000;\"B\";VERDADERO;\"C\")"
+          ],
+          "variantes": [
+            {
+              "B3": 61000
+            },
+            {
+              "B7": 15500
+            }
+          ],
+          "pistas": [
+            "Tres categorías, de la más exigente a la menos: A, luego B y al final el resto (C).",
+            "Con SI.CONJUNTO: `=SI.CONJUNTO(B2>=50000;\"A\"; … ; VERDADERO;\"C\")`. Te falta la pareja de la B en medio.",
+            "`=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";VERDADERO;\"C\")`"
+          ],
+          "explicacion": "Clasificación hecha: dos clientes A, dos B y dos C. Fíjate en Climatización Bardenas: compra **justo** 50.000 € y es A porque usas `>=`. Esta clasificación ABC sirve para decidir a qué clientes visita más el equipo comercial."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Javier Ortega",
+          "puesto": "Director comercial",
+          "md": "¿Cómo vas con los descuentos? Ojo con los pedidos que caen **justo** en 500 o en 2.000 €, que la semana pasada hubo lío con un cliente por eso."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l2-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** En **C2** calcula el porcentaje de descuento del primer pedido: **8 %** desde 5.000 €, **5 %** desde 2.000 €, **2 %** desde 500 € y **0 %** por debajo. Escribe los porcentajes como `0,08` o como `8%`. Se copiará a C3:C8.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe",
+              "C1": "Descuento",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": 6150,
+              "A3": "Electricidad Monzón",
+              "B3": 2000,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": 1340,
+              "A5": "Hogar Eléctrico Tudela",
+              "B5": 499,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": 500,
+              "A7": "Climatización Bardenas",
+              "B7": 3780,
+              "A8": "Electro Huesca Instal., S.L.",
+              "B8": 5000
+            },
+            "formatos": {
+              "B2:B8": "eur",
+              "C2:C8": "pct"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C8"
+          ],
+          "solucion": "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)",
+          "alternativas": [
+            "=SI.CONJUNTO(B2>=5000;8%;B2>=2000;5%;B2>=500;2%;VERDADERO;0%)",
+            "=SI(B2>=5000;0,08;SI(B2>=2000;0,05;SI(B2>=500;0,02;0)))",
+            "=SI(B2>=5000;8%;SI(B2>=2000;5%;SI(B2>=500;2%;0)))"
+          ],
+          "errores_tipicos": [
+            "=SI.CONJUNTO(B2>=500;0,02;B2>=2000;0,05;B2>=5000;0,08;VERDADERO;0)",
+            "=SI.CONJUNTO(B2>5000;0,08;B2>2000;0,05;B2>500;0,02;VERDADERO;0)",
+            "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02)",
+            "=SI.CONJUNTO(B2>=5000;8;B2>=2000;5;B2>=500;2;VERDADERO;0)"
+          ],
+          "variantes": [
+            {
+              "B2": 450
+            },
+            {
+              "B5": 2500
+            }
+          ],
+          "formato_resultado": "pct",
+          "pistas": [
+            "Cuatro escalones: tres condiciones y un resto. Empieza por el más alto, 5.000 €.",
+            "`=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05; … ;VERDADERO;0)`. Falta el escalón de 500 €.",
+            "`=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)`"
+          ],
+          "explicacion": "Misión cumplida, y sin el lío de la semana pasada: el pedido de 2.000 € lleva un 5 % y el de 500 €, un 2 %, porque usas `>=`. Ojo: escribir `8` en vez de `0,08` daría un 800 %. Con esta misma estructura harás comisiones, portes o cualquier escala por tramos."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Si la escala cambia a menudo",
+          "md": "Aquí has escrito los tramos dentro de la fórmula, que vale para escalas pequeñas y estables. Más adelante aprenderás a poner la escala en una tablita aparte, para cambiarla sin tocar ninguna fórmula."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m2l2-q1",
+          "modo": "predice",
+          "enunciado": "A esta fórmula le falta el «resto». El cliente ha comprado 9.600 €. ¿Qué devuelve en **C1**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Instalaciones Arrabal, S.L.",
+              "B1": 9600
+            }
+          },
+          "celda": "C1",
+          "formula": "=SI.CONJUNTO(B1>=50000;\"A\";B1>=15000;\"B\")",
+          "explicacion": "Ninguna condición se cumple y no hay resto: SI.CONJUNTO devuelve #N/D. Se arregla añadiendo `;VERDADERO;\"C\"` al final.",
+          "respuesta": "#N/D"
+        },
+        {
+          "id": "n2m2l2-q2",
+          "modo": "test",
+          "pregunta": "Tienes tramos con `>=`: desde 1.000, desde 5.000 y desde 10.000. ¿En qué orden van dentro del SI anidado?",
+          "opciones": [
+            {
+              "texto": "10.000, 5.000, 1.000 y luego el resto",
+              "correcta": true,
+              "porque": "Correcto: de mayor a menor, porque gana la primera condición que se cumple."
+            },
+            {
+              "texto": "1.000, 5.000, 10.000 y luego el resto",
+              "correcta": false,
+              "porque": "Un importe de 12.000 cumple ya «desde 1.000» y se quedaría en el tramo más bajo."
+            },
+            {
+              "texto": "Da igual: Excel busca el tramo correcto",
+              "correcta": false,
+              "porque": "No: Excel lee las condiciones en orden y se para en la primera verdadera. El orden lo pones tú."
+            }
+          ]
+        },
+        {
+          "id": "n2m2l2-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "El libro lo va a usar la delegación de Lleida, que todavía tiene Excel 2016. ¿Qué usas para los tramos en lugar de SI.CONJUNTO? (respuesta breve)",
+          "aceptadas": [
+            "SI anidado",
+            "SI anidados",
+            "SI dentro de SI",
+            "un SI dentro de otro",
+            "SI dentro de otro SI",
+            "SI anidada",
+            "SI"
+          ],
+          "explicacion": "SI dentro de SI (SI anidado) funciona en todas las versiones. SI.CONJUNTO existe desde Excel 2019."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "SI.CONJUNTO: sintaxis con «resto»",
+          "dorso": "=SI.CONJUNTO(cond1; valor1; cond2; valor2; VERDADERO; resto)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Tramos con >=: ¿en qué orden se escriben?",
+          "dorso": "De mayor a menor. Excel se queda con la primera condición que se cumple."
+        },
+        {
+          "tipo": "error",
+          "frente": "SI.CONJUNTO devuelve #N/D. ¿Causa más probable?",
+          "dorso": "Ninguna condición se cumple y falta el resto: añade ;VERDADERO;valor al final."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Desde qué versión existe SI.CONJUNTO?",
+          "dorso": "Excel 2019 y Microsoft 365. En Excel 2016, SI dentro de SI."
+        }
+      ]
+    },
+    {
+      "id": "n2m2l3",
+      "titulo": "CONTAR.SI y SUMAR.SI: resúmenes por categoría",
+      "minutos": 16,
+      "objetivo": "Contar y sumar solo las filas que cumplen una condición (un comercial, una delegación, un importe mínimo) y montar un resumen que se copia sin romperse.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Para la reunión del lunes necesito cuánto ha vendido cada comercial esta quincena. Ponme al lado de la lista de pedidos un resumen con un total por persona. Y que cuadre con el total, que Carmen lo mira todo.",
+        "logro": "Ya sabes montar un resumen por comercial, delegación o lo que haga falta con CONTAR.SI y SUMAR.SI, y comprobar que cuadra."
+      },
+      "funciones": [
+        "CONTAR.SI",
+        "SUMAR.SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Ya sabes contar todo con CONTAR o CONTARA. Pero lo que te piden en la oficina suele ser: «¿cuántos pedidos son **de Pamplona**?». Para contar solo lo que cumple una condición está **CONTAR.SI**:\n\n`=CONTAR.SI(rango; criterio)`\n\n- **rango**: dónde mira (la columna de delegaciones).\n- **criterio**: qué tiene que poner para contar (\"Pamplona\", entre comillas porque es texto).\n\nNo distingue mayúsculas: \"pamplona\" cuenta igual."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Cuántos pedidos hay de Zaragoza",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Delegación",
+              "A2": "P-2650",
+              "B2": "Zaragoza",
+              "A3": "P-2651",
+              "B3": "Pamplona",
+              "A4": "P-2652",
+              "B4": "Lleida",
+              "A5": "P-2653",
+              "B5": "Zaragoza",
+              "D1": "De Zaragoza",
+              "D2": "=CONTAR.SI(B2:B5;\"Zaragoza\")"
+            },
+            "anchos": {
+              "B": 11,
+              "D": 12
+            }
+          },
+          "resaltar": [
+            "D2"
+          ],
+          "mostrar_formulas": true
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e1",
+          "modo": "formula",
+          "enunciado": "La fórmula de **F2** cuenta los pedidos de Zaragoza, pero Javier quiere saber cuántos son de **Pamplona**. Cámbiala para que cuente los de Pamplona.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Comercial",
+              "C1": "Delegación",
+              "D1": "Importe",
+              "A2": "P-2650",
+              "B2": "Pablo",
+              "C2": "Zaragoza",
+              "D2": 1250,
+              "A3": "P-2651",
+              "B3": "Irene",
+              "C3": "Pamplona",
+              "D3": 500,
+              "A4": "P-2652",
+              "B4": "Sergio",
+              "C4": "Lleida",
+              "D4": 2310,
+              "A5": "P-2653",
+              "B5": "Pablo",
+              "C5": "Zaragoza",
+              "D5": 760,
+              "A6": "P-2654",
+              "B6": "Irene",
+              "C6": "Pamplona",
+              "D6": 1000,
+              "A7": "P-2655",
+              "B7": "Sergio",
+              "C7": "Zaragoza",
+              "D7": 3150,
+              "A8": "P-2656",
+              "B8": "Pablo",
+              "C8": "Lleida",
+              "D8": 395,
+              "A9": "P-2657",
+              "B9": "Irene",
+              "C9": "Zaragoza",
+              "D9": 1890,
+              "A10": "P-2658",
+              "B10": "Sergio",
+              "C10": "Lleida",
+              "D10": 620,
+              "A11": "P-2659",
+              "B11": "Pablo",
+              "C11": "Pamplona",
+              "D11": 1475,
+              "F1": "Pedidos de Pamplona"
+            },
+            "formatos": {
+              "D2:D11": "eur"
+            },
+            "anchos": {
+              "C": 11,
+              "F": 24
+            }
+          },
+          "objetivo": "F2",
+          "inicial": "=CONTAR.SI(C2:C11;\"Zaragoza\")",
+          "solucion": "=CONTAR.SI(C2:C11;\"Pamplona\")",
+          "alternativas": [
+            "=CONTAR.SI(C2:C11;\"pamplona\")",
+            "=CONTAR.SI($C$2:$C$11;\"Pamplona\")"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(C2:C11;\"Zaragoza\")",
+            "=CONTARA(C2:C11)"
+          ],
+          "variantes": [
+            {
+              "C4": "Pamplona"
+            }
+          ],
+          "debe_usar": [
+            "CONTAR.SI"
+          ],
+          "pistas": [
+            "Solo tienes que cambiar el criterio, lo que va entre comillas.",
+            "Sustituye \"Zaragoza\" por \"Pamplona\". Las comillas se quedan.",
+            "`=CONTAR.SI(C2:C11;\"Pamplona\")`"
+          ],
+          "explicacion": "Tres pedidos de Pamplona. Con esto ya respondes en segundos a la pregunta más repetida de cualquier reunión: «¿cuántos hay de…?»."
+        },
+        {
+          "tipo": "texto",
+          "md": "El criterio también puede ser una **comparación**. Entonces el signo y el número van **juntos y entre comillas**:\n\n- `=CONTAR.SI(D2:D11;\">1000\")` cuenta los importes mayores que 1.000.\n- `\">=500\"` mayor o igual; `\"<200\"` menor que 200.\n\nY si lo que buscas ya está escrito en una celda, pon la celda **sin comillas**: `=CONTAR.SI(C2:C11;F2)` cuenta lo que diga F2. Así cambias F2 y el resultado se actualiza solo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e2",
+          "modo": "formula",
+          "enunciado": "Marta pregunta: **¿cuántos pedidos pasan de 1.000 €?** (1.000 justos no cuentan). Escribe la respuesta con una fórmula en **F2**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Comercial",
+              "C1": "Delegación",
+              "D1": "Importe",
+              "A2": "P-2650",
+              "B2": "Pablo",
+              "C2": "Zaragoza",
+              "D2": 1250,
+              "A3": "P-2651",
+              "B3": "Irene",
+              "C3": "Pamplona",
+              "D3": 500,
+              "A4": "P-2652",
+              "B4": "Sergio",
+              "C4": "Lleida",
+              "D4": 2310,
+              "A5": "P-2653",
+              "B5": "Pablo",
+              "C5": "Zaragoza",
+              "D5": 760,
+              "A6": "P-2654",
+              "B6": "Irene",
+              "C6": "Pamplona",
+              "D6": 1000,
+              "A7": "P-2655",
+              "B7": "Sergio",
+              "C7": "Zaragoza",
+              "D7": 3150,
+              "A8": "P-2656",
+              "B8": "Pablo",
+              "C8": "Lleida",
+              "D8": 395,
+              "A9": "P-2657",
+              "B9": "Irene",
+              "C9": "Zaragoza",
+              "D9": 1890,
+              "A10": "P-2658",
+              "B10": "Sergio",
+              "C10": "Lleida",
+              "D10": 620,
+              "A11": "P-2659",
+              "B11": "Pablo",
+              "C11": "Pamplona",
+              "D11": 1475,
+              "F1": "Pedidos de más de 1.000 €"
+            },
+            "formatos": {
+              "D2:D11": "eur"
+            },
+            "anchos": {
+              "C": 11,
+              "F": 24
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=CONTAR.SI(D2:D11;\">1000\")",
+          "alternativas": [
+            "=CONTAR.SI($D$2:$D$11;\">1000\")"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(D2:D11;\">=1000\")",
+            "=CONTAR(D2:D11)",
+            "=5"
+          ],
+          "variantes": [
+            {
+              "D3": 1800
+            }
+          ],
+          "debe_usar": [
+            "CONTAR.SI"
+          ],
+          "pistas": [
+            "Quieres **contar** filas que cumplen una condición sobre el importe (columna D).",
+            "`=CONTAR.SI(D2:D11; criterio)`. El criterio es «mayor que 1.000», con el signo entre comillas.",
+            "`=CONTAR.SI(D2:D11;\">1000\")`"
+          ],
+          "explicacion": "Cinco pedidos. El de 1.000 € justos se queda fuera porque usas `>` y no `>=`: lee siempre con cuidado si el encargo dice «más de» o «desde». Las comillas son obligatorias: sin ellas Excel no acepta la fórmula."
+        },
+        {
+          "tipo": "texto",
+          "md": "Contar está bien, pero Javier quiere **euros**. Para sumar solo lo que cumple una condición está **SUMAR.SI**:\n\n`=SUMAR.SI(rango; criterio; rango_suma)`\n\n- **rango**: dónde busca (los nombres de los comerciales).\n- **criterio**: qué busca (\"Irene\").\n- **rango_suma**: qué suma de esas filas (los importes).\n\nPiensa en «busca aquí, esto, y suma de allí»."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Lo que ha vendido Irene",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Importe",
+              "A2": "Irene",
+              "B2": 500,
+              "A3": "Pablo",
+              "B3": 1250,
+              "A4": "Irene",
+              "B4": 1000,
+              "A5": "Sergio",
+              "B5": 2310,
+              "D1": "Irene",
+              "D2": "=SUMAR.SI(A2:A5;\"Irene\";B2:B5)"
+            },
+            "formatos": {
+              "B2:B5": "eur",
+              "D2": "eur"
+            }
+          },
+          "resaltar": [
+            "D2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Busca «Irene» en A2:A5 y suma de B2:B5 los importes de esas filas: 500 + 1.000."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e3",
+          "modo": "predice",
+          "enunciado": "¿Qué resultado dará la fórmula en **D2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Importe",
+              "A2": "Pablo",
+              "B2": 1250,
+              "A3": "Sergio",
+              "B3": 2310,
+              "A4": "Pablo",
+              "B4": 760,
+              "A5": "Pablo",
+              "B5": 395
+            },
+            "formatos": {
+              "B2:B5": "eur"
+            }
+          },
+          "celda": "D2",
+          "formula": "=SUMAR.SI(A2:A5;\"Pablo\";B2:B5)",
+          "explicacion": "Las filas de Pablo son la 2, la 4 y la 5: 1.250 + 760 + 395 = 2.405. La de Sergio se salta.",
+          "respuesta": "2405"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e4",
+          "modo": "formula",
+          "enunciado": "Andrés quiere saber **cuánto suman los pedidos de más de 500 €** (los de 500 € justos no). Escríbelo en **F2**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Comercial",
+              "C1": "Delegación",
+              "D1": "Importe",
+              "A2": "P-2650",
+              "B2": "Pablo",
+              "C2": "Zaragoza",
+              "D2": 1250,
+              "A3": "P-2651",
+              "B3": "Irene",
+              "C3": "Pamplona",
+              "D3": 500,
+              "A4": "P-2652",
+              "B4": "Sergio",
+              "C4": "Lleida",
+              "D4": 2310,
+              "A5": "P-2653",
+              "B5": "Pablo",
+              "C5": "Zaragoza",
+              "D5": 760,
+              "A6": "P-2654",
+              "B6": "Irene",
+              "C6": "Pamplona",
+              "D6": 1000,
+              "A7": "P-2655",
+              "B7": "Sergio",
+              "C7": "Zaragoza",
+              "D7": 3150,
+              "A8": "P-2656",
+              "B8": "Pablo",
+              "C8": "Lleida",
+              "D8": 395,
+              "A9": "P-2657",
+              "B9": "Irene",
+              "C9": "Zaragoza",
+              "D9": 1890,
+              "A10": "P-2658",
+              "B10": "Sergio",
+              "C10": "Lleida",
+              "D10": 620,
+              "A11": "P-2659",
+              "B11": "Pablo",
+              "C11": "Pamplona",
+              "D11": 1475,
+              "F1": "Importe pedidos > 500 €"
+            },
+            "formatos": {
+              "D2:D11": "eur",
+              "F2": "eur"
+            },
+            "anchos": {
+              "C": 11,
+              "F": 24
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=SUMAR.SI(D2:D11;\">500\")",
+          "alternativas": [
+            "=SUMAR.SI(D2:D11;\">500\";D2:D11)",
+            "=SUMAR.SI($D$2:$D$11;\">500\")"
+          ],
+          "errores_tipicos": [
+            "=SUMAR.SI(D2:D11;\">=500\")",
+            "=SUMA(D2:D11)",
+            "=CONTAR.SI(D2:D11;\">500\")"
+          ],
+          "variantes": [
+            {
+              "D8": 900
+            }
+          ],
+          "formato_resultado": "eur",
+          "debe_usar": [
+            "SUMAR.SI"
+          ],
+          "pistas": [
+            "Esta vez hay que **sumar**, no contar. Y la condición está en la misma columna que se suma.",
+            "Cuando el rango donde buscas y el que sumas son el mismo, puedes omitir el tercer argumento: `=SUMAR.SI(D2:D11; criterio)`.",
+            "`=SUMAR.SI(D2:D11;\">500\")`"
+          ],
+          "explicacion": "12.455 €. Si la condición y la suma están en la misma columna, basta con dos argumentos. El pedido de 500 € y el de 395 € se quedan fuera. Este tipo de cálculo sirve, por ejemplo, para saber cuánto pesan los pedidos grandes en las ventas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para montar un resumen con una fila por delegación escribes la fórmula una vez y la copias hacia abajo. Pero cuidado: al copiar, **los rangos se mueven** igual que cualquier referencia.\n\n`C2:C11` pasaría a `C3:C12`, luego a `C4:C13`… y se va dejando filas fuera por arriba. La solución es la de siempre: **fija los rangos con $** (`$C$2:$C$11`) y deja sin fijar la celda del criterio, que sí debe bajar."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Nuria avisa",
+          "md": "El rango donde buscas y el rango que sumas tienen que tener el **mismo tamaño** y **empezar en la misma fila** (C2:C11 con D2:D11). Si los desalineas, Excel no da error: suma importes de otras filas y no te enteras."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e5",
+          "modo": "formula",
+          "enunciado": "En **G2** hay una fórmula que cuenta los pedidos de la delegación de F2. Al copiarla a G3:G4 da números que no cuadran. Arréglala para que se pueda copiar.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Comercial",
+              "C1": "Delegación",
+              "D1": "Importe",
+              "A2": "P-2650",
+              "B2": "Pablo",
+              "C2": "Zaragoza",
+              "D2": 1250,
+              "A3": "P-2651",
+              "B3": "Irene",
+              "C3": "Pamplona",
+              "D3": 500,
+              "A4": "P-2652",
+              "B4": "Sergio",
+              "C4": "Lleida",
+              "D4": 2310,
+              "A5": "P-2653",
+              "B5": "Pablo",
+              "C5": "Zaragoza",
+              "D5": 760,
+              "A6": "P-2654",
+              "B6": "Irene",
+              "C6": "Pamplona",
+              "D6": 1000,
+              "A7": "P-2655",
+              "B7": "Sergio",
+              "C7": "Zaragoza",
+              "D7": 3150,
+              "A8": "P-2656",
+              "B8": "Pablo",
+              "C8": "Lleida",
+              "D8": 395,
+              "A9": "P-2657",
+              "B9": "Irene",
+              "C9": "Zaragoza",
+              "D9": 1890,
+              "A10": "P-2658",
+              "B10": "Sergio",
+              "C10": "Lleida",
+              "D10": 620,
+              "A11": "P-2659",
+              "B11": "Pablo",
+              "C11": "Pamplona",
+              "D11": 1475,
+              "F1": "Delegación",
+              "G1": "Pedidos",
+              "F2": "Lleida",
+              "F3": "Pamplona",
+              "F4": "Zaragoza"
+            },
+            "formatos": {
+              "D2:D11": "eur"
+            },
+            "anchos": {
+              "C": 11,
+              "F": 24
+            }
+          },
+          "objetivo": "G2",
+          "copiar_a": [
+            "G3:G4"
+          ],
+          "inicial": "=CONTAR.SI(C2:C11;F2)",
+          "solucion": "=CONTAR.SI($C$2:$C$11;F2)",
+          "alternativas": [
+            "=CONTAR.SI(C$2:C$11;F2)",
+            "=CONTAR.SI($C$2:$C$11;$F2)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(C2:C11;F2)",
+            "=CONTAR.SI($C$2:$C$11;$F$2)"
+          ],
+          "variantes": [
+            {
+              "C11": "Zaragoza"
+            }
+          ],
+          "debe_usar": [
+            "CONTAR.SI"
+          ],
+          "pistas": [
+            "Mira qué pasa en G4 al copiar: el rango ya no empieza en la fila 2.",
+            "El rango C2:C11 debe quedarse quieto; F2 sí tiene que bajar a F3 y F4.",
+            "`=CONTAR.SI($C$2:$C$11;F2)`"
+          ],
+          "explicacion": "Ahora cuadra: 3 + 3 + 4 = 10 pedidos, los mismos que tiene la lista. Esa suma es tu **comprobación**: si el resumen no da el total de filas, algo falla. El rango fijo y el criterio móvil es el patrón de todos los resúmenes."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e6",
+          "modo": "test",
+          "pregunta": "Un compañero ha escrito `=SUMAR.SI(B2:B11;\"Irene\";D3:D12)`. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "Suma importes que no son de Irene, sin dar ningún aviso",
+              "correcta": true,
+              "porque": "Eso es: el rango_suma empieza una fila más abajo, así que para cada fila de Irene suma el importe de la fila siguiente. No sale error y el resultado parece normal."
+            },
+            {
+              "texto": "Excel da un error y avisa",
+              "correcta": false,
+              "porque": "Ojalá. Excel la calcula sin quejarse; por eso este error pasa desapercibido en muchas hojas."
+            },
+            {
+              "texto": "Suma bien, porque Excel ajusta los rangos solo",
+              "correcta": false,
+              "porque": "Excel no sabe que te has equivocado: empareja la primera fila de un rango con la primera del otro, aunque no se correspondan."
+            }
+          ],
+          "explicacion": "Revisa siempre que los dos rangos empiecen en la misma fila. Y comprueba con un caso que conozcas: si sabes que Irene vendió 3.390 €, mira que salga eso."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Javier Ortega",
+          "puesto": "Director comercial",
+          "md": "Te he dejado los nombres en la columna F. Rellena la G con lo vendido por cada uno y avísame. Acuérdate de que tiene que cuadrar con el total de la lista."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l3-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** En **G2** calcula cuánto ha vendido el comercial de **F2** (suma de sus importes). Tu fórmula se copiará a G3:G4. Luego comprueba que los tres suman lo mismo que toda la columna D.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Comercial",
+              "C1": "Delegación",
+              "D1": "Importe",
+              "A2": "P-2650",
+              "B2": "Pablo",
+              "C2": "Zaragoza",
+              "D2": 1250,
+              "A3": "P-2651",
+              "B3": "Irene",
+              "C3": "Pamplona",
+              "D3": 500,
+              "A4": "P-2652",
+              "B4": "Sergio",
+              "C4": "Lleida",
+              "D4": 2310,
+              "A5": "P-2653",
+              "B5": "Pablo",
+              "C5": "Zaragoza",
+              "D5": 760,
+              "A6": "P-2654",
+              "B6": "Irene",
+              "C6": "Pamplona",
+              "D6": 1000,
+              "A7": "P-2655",
+              "B7": "Sergio",
+              "C7": "Zaragoza",
+              "D7": 3150,
+              "A8": "P-2656",
+              "B8": "Pablo",
+              "C8": "Lleida",
+              "D8": 395,
+              "A9": "P-2657",
+              "B9": "Irene",
+              "C9": "Zaragoza",
+              "D9": 1890,
+              "A10": "P-2658",
+              "B10": "Sergio",
+              "C10": "Lleida",
+              "D10": 620,
+              "A11": "P-2659",
+              "B11": "Pablo",
+              "C11": "Pamplona",
+              "D11": 1475,
+              "F1": "Comercial",
+              "G1": "Ventas",
+              "F2": "Irene",
+              "F3": "Pablo",
+              "F4": "Sergio"
+            },
+            "formatos": {
+              "D2:D11": "eur",
+              "G2:G4": "eur"
+            },
+            "anchos": {
+              "C": 11,
+              "F": 24
+            }
+          },
+          "objetivo": "G2",
+          "copiar_a": [
+            "G3:G4"
+          ],
+          "solucion": "=SUMAR.SI($B$2:$B$11;F2;$D$2:$D$11)",
+          "alternativas": [
+            "=SUMAR.SI(B$2:B$11;F2;D$2:D$11)",
+            "=SUMAR.SI($B$2:$B$11;$F2;$D$2:$D$11)"
+          ],
+          "errores_tipicos": [
+            "=SUMAR.SI(B2:B11;F2;D2:D11)",
+            "=SUMAR.SI($B$2:$B$11;\"Irene\";$D$2:$D$11)",
+            "=CONTAR.SI($B$2:$B$11;F2)",
+            "=SUMAR.SI($B$2:$B$11;F2;$D$3:$D$12)"
+          ],
+          "variantes": [
+            {
+              "D2": 2000
+            },
+            {
+              "B11": "Sergio"
+            }
+          ],
+          "formato_resultado": "eur",
+          "debe_usar": [
+            "SUMAR.SI"
+          ],
+          "pistas": [
+            "Busca en la columna de comerciales (B), el nombre de F2, y suma de la columna de importes (D).",
+            "`=SUMAR.SI(rango_comerciales; F2; rango_importes)`. Los dos rangos, fijados con $ para poder copiar.",
+            "`=SUMAR.SI($B$2:$B$11;F2;$D$2:$D$11)`"
+          ],
+          "explicacion": "Misión cumplida: Irene 3.390 €, Pablo 3.880 € y Sergio 6.080 €. Suman 13.350 €, justo el total de la columna D: el resumen **cuadra**. Ese cuadre es lo que te permite enviarlo con tranquilidad. Con este mismo patrón harás resúmenes por cliente, por producto o por mes."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m2l3-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En `=SUMAR.SI(B2:B11;\"Irene\";D2:D11)`, ¿qué rango es el que se **suma**?",
+          "aceptadas": [
+            "D2:D11",
+            "D2:D11.",
+            "$D$2:$D$11"
+          ],
+          "explicacion": "El tercero, D2:D11 (rango_suma). B2:B11 es donde se busca a Irene."
+        },
+        {
+          "id": "n2m2l3-q2",
+          "modo": "test",
+          "pregunta": "En una lista de facturas quieres saber cuántas son del cliente «Reformas Delicias, S.L.». ¿Qué función usas?",
+          "opciones": [
+            {
+              "texto": "CONTAR.SI",
+              "correcta": true,
+              "porque": "Correcto: cuenta solo las filas que cumplen un criterio, en este caso un nombre de cliente."
+            },
+            {
+              "texto": "CONTARA",
+              "correcta": false,
+              "porque": "CONTARA cuenta todas las celdas no vacías, sean del cliente que sean."
+            },
+            {
+              "texto": "SUMAR.SI",
+              "correcta": false,
+              "porque": "SUMAR.SI sumaría importes; aquí te piden cuántas facturas, no cuántos euros."
+            }
+          ]
+        },
+        {
+          "id": "n2m2l3-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve la fórmula en **C1**?",
+          "hoja": {
+            "celdas": {
+              "A1": 480,
+              "A2": 1500,
+              "A3": 620,
+              "A4": 2000
+            }
+          },
+          "celda": "C1",
+          "formula": "=CONTAR.SI(A1:A4;\">=620\")",
+          "explicacion": "Cuenta 1.500, 620 y 2.000: tres valores mayores o iguales que 620. El 620 entra por el «=».",
+          "respuesta": "3"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "CONTAR.SI: sintaxis",
+          "dorso": "=CONTAR.SI(rango; criterio). Ej.: =CONTAR.SI(C2:C11;\"Pamplona\")"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "SUMAR.SI: sintaxis",
+          "dorso": "=SUMAR.SI(rango; criterio; rango_suma): busca aquí, esto, y suma de allí."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Cómo se escribe el criterio «mayor que 1.000»?",
+          "dorso": "Entre comillas, signo y número juntos: \">1000\""
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Resumen que se copia hacia abajo: ¿qué se fija con $?",
+          "dorso": "Los rangos ($B$2:$B$11). La celda del criterio (F2) se deja sin fijar."
+        }
+      ]
+    },
+    {
+      "id": "n2m2l4",
+      "titulo": "PROMEDIO.SI, comodines y «distinto de»",
+      "minutos": 16,
+      "objetivo": "Calcular medias por categoría con PROMEDIO.SI y escribir criterios más finos: textos que contienen algo (comodines), «distinto de» y umbrales que se leen de una celda.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Estoy preparando la revisión de riesgo de noviembre. Necesito saber cuánto suman los pedidos iguales o superiores al umbral que pongo en E2. Lo voy a ir cambiando (1.500, 3.000…), así que tiene que actualizarse solo.",
+        "logro": "Ya sabes hacer criterios que contienen un texto, que excluyen algo o que leen el umbral de una celda, y calcular medias por grupo."
+      },
+      "funciones": [
+        "PROMEDIO.SI",
+        "CONTAR.SI",
+        "SUMAR.SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Javier quiere el **ticket medio** de cada delegación: lo que gasta de media un cliente en cada pedido. Es la media de los importes, pero solo de las filas de esa delegación.\n\nPara eso está **PROMEDIO.SI**, que funciona igual que SUMAR.SI:\n\n`=PROMEDIO.SI(rango; criterio; rango_promedio)`\n\nBusca aquí, esto, y haz la media de allí. Si ya dominas SUMAR.SI, esta te sale sola."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e1",
+          "modo": "predice",
+          "enunciado": "¿Qué resultado dará la fórmula en **D2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Importe",
+              "A2": "Lleida",
+              "B2": 400,
+              "A3": "Zaragoza",
+              "B3": 1800,
+              "A4": "Lleida",
+              "B4": 600,
+              "A5": "Pamplona",
+              "B5": 900
+            },
+            "formatos": {
+              "B2:B5": "eur"
+            }
+          },
+          "celda": "D2",
+          "formula": "=PROMEDIO.SI(A2:A5;\"Lleida\";B2:B5)",
+          "explicacion": "Solo cuenta las filas de Lleida: (400 + 600) / 2 = 500.",
+          "respuesta": "500"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e2",
+          "modo": "formula",
+          "enunciado": "En **F2** calcula el **ticket medio de Lleida**: la media de los importes de los pedidos de esa delegación.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Importe",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": "Zaragoza",
+              "C2": 1840,
+              "A3": "Electricidad Monzón",
+              "B3": "Lleida",
+              "C3": 620,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": "Zaragoza",
+              "C4": 3150,
+              "A5": "Climatización Bardenas",
+              "B5": "Pamplona",
+              "C5": 1500,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": "Lleida",
+              "C6": 980,
+              "A7": "Hogar Eléctrico Tudela",
+              "B7": "Pamplona",
+              "C7": 410,
+              "A8": "Electro Huesca Instal., S.L.",
+              "B8": "Zaragoza",
+              "C8": 2275,
+              "A9": "Fontanería y Luz Balaguer",
+              "B9": "Lleida",
+              "C9": 1300,
+              "A10": "Proyectos Eléctricos Navarra, S.L.",
+              "B10": "Pamplona",
+              "C10": 4060,
+              "A11": "Antonio Lázaro Gil",
+              "B11": "Zaragoza",
+              "C11": 265,
+              "F1": "Ticket medio Lleida"
+            },
+            "formatos": {
+              "C2:C11": "eur",
+              "F2": "eur"
+            },
+            "anchos": {
+              "A": 30,
+              "B": 11,
+              "E": 22
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=PROMEDIO.SI(B2:B11;\"Lleida\";C2:C11)",
+          "alternativas": [
+            "=PROMEDIO.SI($B$2:$B$11;\"Lleida\";$C$2:$C$11)",
+            "=SUMAR.SI(B2:B11;\"Lleida\";C2:C11)/CONTAR.SI(B2:B11;\"Lleida\")"
+          ],
+          "errores_tipicos": [
+            "=PROMEDIO(C2:C11)",
+            "=SUMAR.SI(B2:B11;\"Lleida\";C2:C11)",
+            "=PROMEDIO.SI(B2:B11;\"Lleida\")"
+          ],
+          "variantes": [
+            {
+              "C3": 800
+            }
+          ],
+          "formato_resultado": "eur",
+          "tolerancia": 0.01,
+          "pistas": [
+            "Es una media, pero solo de algunas filas. ¿Qué función hace la media con condición?",
+            "`=PROMEDIO.SI(columna_delegación; \"Lleida\"; columna_importe)`",
+            "`=PROMEDIO.SI(B2:B11;\"Lleida\";C2:C11)`"
+          ],
+          "explicacion": "966,67 €. Si te olvidas del tercer argumento, Excel intenta hacer la media de los propios nombres de delegación y da #¡DIV/0!. El ticket medio es una de las cifras que más mira un director comercial."
+        },
+        {
+          "tipo": "texto",
+          "md": "A veces no buscas un texto exacto, sino uno que **contenga** algo. Para eso están los **comodines**, símbolos que hacen de «lo que sea»:\n\n- `*` vale por **cualquier cantidad** de caracteres (o ninguno). `\"*S.L.*\"` = «contiene S.L.».\n- `?` vale por **un solo** carácter. `\"P-26??\"` = «P-26 y dos caracteres más».\n\nAsí cuentas, por ejemplo, cuántos clientes son sociedades limitadas sin revisarlos uno a uno."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e3",
+          "modo": "formula",
+          "enunciado": "Marta quiere saber **cuántos pedidos son de clientes cuyo nombre contiene «S.L.»**. Escribe la respuesta en **F2** con una fórmula.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Importe",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": "Zaragoza",
+              "C2": 1840,
+              "A3": "Electricidad Monzón",
+              "B3": "Lleida",
+              "C3": 620,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": "Zaragoza",
+              "C4": 3150,
+              "A5": "Climatización Bardenas",
+              "B5": "Pamplona",
+              "C5": 1500,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": "Lleida",
+              "C6": 980,
+              "A7": "Hogar Eléctrico Tudela",
+              "B7": "Pamplona",
+              "C7": 410,
+              "A8": "Electro Huesca Instal., S.L.",
+              "B8": "Zaragoza",
+              "C8": 2275,
+              "A9": "Fontanería y Luz Balaguer",
+              "B9": "Lleida",
+              "C9": 1300,
+              "A10": "Proyectos Eléctricos Navarra, S.L.",
+              "B10": "Pamplona",
+              "C10": 4060,
+              "A11": "Antonio Lázaro Gil",
+              "B11": "Zaragoza",
+              "C11": 265,
+              "F1": "Pedidos de S.L."
+            },
+            "formatos": {
+              "C2:C11": "eur"
+            },
+            "anchos": {
+              "A": 30,
+              "B": 11,
+              "E": 22
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=CONTAR.SI(A2:A11;\"*S.L.*\")",
+          "alternativas": [
+            "=CONTAR.SI($A$2:$A$11;\"*S.L.*\")",
+            "=CONTAR.SI(A2:A11;\"*s.l.*\")",
+            "=CONTAR.SI(A2:A11;\"*S.L.\")"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(A2:A11;\"S.L.\")",
+            "=CONTARA(A2:A11)",
+            "=4"
+          ],
+          "variantes": [
+            {
+              "A3": "Electricidad Monzón, S.L."
+            }
+          ],
+          "debe_usar": [
+            "CONTAR.SI"
+          ],
+          "pistas": [
+            "Es contar con condición, pero la condición es «contiene», no «es igual a».",
+            "El asterisco vale por «cualquier cosa». Ponlo delante y detrás de S.L.",
+            "`=CONTAR.SI(A2:A11;\"*S.L.*\")`"
+          ],
+          "explicacion": "Cuatro. Sin asteriscos, `\"S.L.\"` solo contaría celdas que pongan exactamente «S.L.» y daría 0. Los comodines te salvan cuando los nombres vienen largos del programa de gestión."
+        },
+        {
+          "tipo": "texto",
+          "md": "Otro criterio muy útil: **distinto de**, que se escribe `<>`.\n\n- `=CONTAR.SI(B2:B11;\"<>Zaragoza\")` cuenta todo lo que **no** sea Zaragoza.\n- `=CONTAR.SI(B2:B11;\"<>\")` cuenta las celdas **no vacías**.\n\nOjo: «distinto de Zaragoza» también cuenta las celdas vacías, porque una celda vacía no dice Zaragoza."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e4",
+          "modo": "predice",
+          "enunciado": "Carmen pregunta cuántos pedidos vienen **de fuera de Zaragoza**. ¿Qué dará la fórmula en **F2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Importe",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": "Zaragoza",
+              "C2": 1840,
+              "A3": "Electricidad Monzón",
+              "B3": "Lleida",
+              "C3": 620,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": "Zaragoza",
+              "C4": 3150,
+              "A5": "Climatización Bardenas",
+              "B5": "Pamplona",
+              "C5": 1500,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": "Lleida",
+              "C6": 980,
+              "A7": "Hogar Eléctrico Tudela",
+              "B7": "Pamplona",
+              "C7": 410,
+              "A8": "Electro Huesca Instal., S.L.",
+              "B8": "Zaragoza",
+              "C8": 2275,
+              "A9": "Fontanería y Luz Balaguer",
+              "B9": "Lleida",
+              "C9": 1300,
+              "A10": "Proyectos Eléctricos Navarra, S.L.",
+              "B10": "Pamplona",
+              "C10": 4060,
+              "A11": "Antonio Lázaro Gil",
+              "B11": "Zaragoza",
+              "C11": 265
+            },
+            "formatos": {
+              "C2:C11": "eur"
+            },
+            "anchos": {
+              "A": 30,
+              "B": 11,
+              "E": 22
+            }
+          },
+          "celda": "F2",
+          "formula": "=CONTAR.SI(B2:B11;\"<>Zaragoza\")",
+          "explicacion": "Hay 10 pedidos y 4 son de Zaragoza: 6 vienen de Pamplona y Lleida.",
+          "respuesta": "6"
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora el caso de la misión: el umbral está en una **celda** (E2) y Marta lo irá cambiando. El criterio es un texto, así que hay que **pegar** el signo con el valor de la celda usando `&` (el «pegamento» de Excel):\n\n`=SUMAR.SI(C2:C11;\">=\"&E2)`\n\nEl signo va entre comillas; la celda, fuera. Si E2 vale 1.500, Excel lo convierte en `\">=1500\"`."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "`\">=E2\"` (Excel compara con el texto «E2», no con su valor)",
+              "`\">=\"&E2`"
+            ],
+            [
+              "`>=E2` sin comillas (Excel no acepta la fórmula)",
+              "`\">=\"&E2`"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e5",
+          "modo": "test",
+          "pregunta": "Quieres contar los importes de C2:C11 **mayores que el valor de E2**. ¿Qué fórmula está bien?",
+          "opciones": [
+            {
+              "texto": "`=CONTAR.SI(C2:C11;\">\"&E2)`",
+              "correcta": true,
+              "porque": "Correcto: el signo entre comillas y la celda pegada con &. Si cambias E2, el resultado cambia."
+            },
+            {
+              "texto": "`=CONTAR.SI(C2:C11;\">E2\")`",
+              "correcta": false,
+              "porque": "Dentro de las comillas, E2 es solo texto: Excel no mira lo que hay en la celda E2. Es el error más típico con criterios."
+            },
+            {
+              "texto": "`=CONTAR.SI(C2:C11;E2)`",
+              "correcta": false,
+              "porque": "Así contarías los importes **iguales** a E2. Falta el signo «>»."
+            }
+          ],
+          "explicacion": "Regla para recordar: lo que es texto fijo va entre comillas; lo que es una celda va fuera, unido con &."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e6",
+          "modo": "test",
+          "pregunta": "Marta mira las devoluciones. **Pamplona**: 2 devoluciones de 100 pedidos (2 %). **Lleida**: 1 devolución de 2 pedidos (50 %). ¿Cuál es el porcentaje de devoluciones de las dos juntas?",
+          "opciones": [
+            {
+              "texto": "Unos 2,9 % (3 devoluciones de 102 pedidos)",
+              "correcta": true,
+              "porque": "Correcto: para un porcentaje global se divide el total entre el total: 3 / 102."
+            },
+            {
+              "texto": "26 %, la media de 2 % y 50 %",
+              "correcta": false,
+              "porque": "Promediar porcentajes da el mismo peso a 2 pedidos que a 100. Por eso sale un 26 % que no se parece a la realidad."
+            },
+            {
+              "texto": "52 %, la suma de los dos",
+              "correcta": false,
+              "porque": "Los porcentajes de grupos distintos no se suman: cada uno está calculado sobre una base diferente."
+            }
+          ],
+          "explicacion": "Error clásico de informe: **no hagas la media de porcentajes**. Suma los casos, suma los totales y divide. Con PROMEDIO.SI haz medias de importes, no de tasas."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Marta Ruiz",
+          "puesto": "Directora financiera",
+          "md": "Te he puesto el umbral en **E2**, de momento 1.500 €. «Iguales o superiores», que el de 1.500 justo también lo quiero. Mañana lo subo a 3.000 para ver cómo cambia."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m2l4-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Marta.** En **F2** calcula cuánto suman los pedidos **iguales o superiores** al umbral de **E2**. Si Marta cambia E2, el resultado tiene que cambiar solo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Importe",
+              "A2": "Reformas Delicias, S.L.",
+              "B2": "Zaragoza",
+              "C2": 1840,
+              "A3": "Electricidad Monzón",
+              "B3": "Lleida",
+              "C3": 620,
+              "A4": "Instalaciones Arrabal, S.L.",
+              "B4": "Zaragoza",
+              "C4": 3150,
+              "A5": "Climatización Bardenas",
+              "B5": "Pamplona",
+              "C5": 1500,
+              "A6": "Montajes Segre, S.C.P.",
+              "B6": "Lleida",
+              "C6": 980,
+              "A7": "Hogar Eléctrico Tudela",
+              "B7": "Pamplona",
+              "C7": 410,
+              "A8": "Electro Huesca Instal., S.L.",
+              "B8": "Zaragoza",
+              "C8": 2275,
+              "A9": "Fontanería y Luz Balaguer",
+              "B9": "Lleida",
+              "C9": 1300,
+              "A10": "Proyectos Eléctricos Navarra, S.L.",
+              "B10": "Pamplona",
+              "C10": 4060,
+              "A11": "Antonio Lázaro Gil",
+              "B11": "Zaragoza",
+              "C11": 265,
+              "E1": "Umbral",
+              "E2": 1500,
+              "F1": "Suma ≥ umbral"
+            },
+            "formatos": {
+              "C2:C11": "eur",
+              "E2": "eur",
+              "F2": "eur"
+            },
+            "anchos": {
+              "A": 30,
+              "B": 11,
+              "E": 22
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=SUMAR.SI(C2:C11;\">=\"&E2)",
+          "alternativas": [
+            "=SUMAR.SI(C2:C11;\">=\"&E2;C2:C11)",
+            "=SUMAR.SI($C$2:$C$11;\">=\"&$E$2)"
+          ],
+          "errores_tipicos": [
+            "=SUMAR.SI(C2:C11;\">=E2\")",
+            "=SUMAR.SI(C2:C11;\">\"&E2)",
+            "=SUMAR.SI(C2:C11;\">=1500\")",
+            "=CONTAR.SI(C2:C11;\">=\"&E2)"
+          ],
+          "variantes": [
+            {
+              "E2": 3000
+            },
+            {
+              "E2": 980
+            }
+          ],
+          "formato_resultado": "eur",
+          "debe_usar": [
+            "SUMAR.SI"
+          ],
+          "pistas": [
+            "Sumar con condición sobre la propia columna de importes. El criterio es «mayor o igual que lo que diga E2».",
+            "El signo va entre comillas y la celda fuera, unidos con &: `\">=\"&E2`.",
+            "`=SUMAR.SI(C2:C11;\">=\"&E2)`"
+          ],
+          "explicacion": "Misión cumplida: con 1.500 € suman 12.825 €, y si Marta pone 3.000 € la cifra baja sola a 7.210 €. Has construido un pequeño **panel con un control**: alguien cambia una celda y el informe responde. Así se hacen los análisis de «¿y si…?» en cualquier departamento financiero."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m2l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué comodín vale por **cualquier cantidad** de caracteres en un criterio?",
+          "aceptadas": [
+            "*",
+            "el asterisco",
+            "asterisco",
+            "\"*\""
+          ],
+          "explicacion": "El asterisco *. El signo ? vale solo por un carácter."
+        },
+        {
+          "id": "n2m2l4-q2",
+          "modo": "predice",
+          "enunciado": "Repaso de la primera lección. ¿Qué devuelve la fórmula en **C1**?",
+          "hoja": {
+            "celdas": {
+              "A1": 2400,
+              "B1": "Pamplona"
+            }
+          },
+          "celda": "C1",
+          "formula": "=SI(Y(A1>=2000;B1=\"Zaragoza\");\"Visita\";\"Llamada\")",
+          "explicacion": "El importe sí llega a 2.000, pero la delegación no es Zaragoza. Con Y falla una, así que «Llamada».",
+          "respuesta": "Llamada"
+        },
+        {
+          "id": "n2m2l4-q3",
+          "modo": "test",
+          "pregunta": "Has hecho un resumen de ventas por delegación con SUMAR.SI. Antes de enviarlo, ¿cuál es la mejor comprobación?",
+          "opciones": [
+            {
+              "texto": "Que la suma del resumen coincida con el total de la columna de importes",
+              "correcta": true,
+              "porque": "Eso es un total de control: si no cuadra, falta o sobra alguna fila (un nombre mal escrito, un rango que no llega al final)."
+            },
+            {
+              "texto": "Que ninguna celda muestre un error",
+              "correcta": false,
+              "porque": "No basta: un rango desalineado o mal fijado da cifras sin error y equivocadas."
+            },
+            {
+              "texto": "Que los números tengan formato de euros",
+              "correcta": false,
+              "porque": "El formato cambia cómo se ve, no si el cálculo está bien."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "PROMEDIO.SI: sintaxis",
+          "dorso": "=PROMEDIO.SI(rango; criterio; rango_promedio)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Criterio «contiene S.L.»",
+          "dorso": "\"*S.L.*\" (el * vale por cualquier cantidad de caracteres; ? por uno solo)"
+        },
+        {
+          "tipo": "error",
+          "frente": "Criterio «mayor o igual que lo que diga E2»",
+          "dorso": "\">=\"&E2. Nunca \">=E2\" (eso busca el texto E2)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Criterio «distinto de Zaragoza»",
+          "dorso": "\"<>Zaragoza\". Y \"<>\" solo = celdas no vacías."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Se puede hacer la media de dos porcentajes para el total?",
+          "dorso": "No. Divide total de casos entre total de la base (3/102), no promedies tasas."
+        }
+      ]
+    }
+  ]
+}

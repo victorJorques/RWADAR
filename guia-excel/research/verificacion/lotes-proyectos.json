@@ -1,0 +1,200 @@
+[
+ {
+  "id": "proyectos-1",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 6,
+    "texto": "Leyenda: **[VERIFICADO: url]** = comprobado hoy en fuente primaria (página oficial, PDF o norma). **[VERIFICADO local: archivo]** = fuente primaria descargada en `research/raw/` y leída. **[SIN VERIFICAR]** = fuente secundaria, deducción o criterio propio. **[DISEÑO]** = dato inventado a propósito para la empresa ficticia; no es un dato del mundo real.",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 46,
+    "texto": "| **Criteria «Microsoft Excel 365»** y SHL, Kenexa | Tests de 5 a 35 min; los interactivos incluyen simulaciones | Ver `curriculo.md` §3.1 [VERIFICADO allí: Criteria; SIN VERIFICAR: SHL y Kenexa]. |",
+    "contexto": "| **TestGorilla «Microsoft Excel (Advanced)»** | Test de selección de **10 min**, disponible en español | Temas: organización de datos, fórmulas avanzadas, informes y visualizaciones, funciones avanzadas. [VERIFICADO: https://www.testgorilla.com/test-library/role-specific-skills-tests/microsoft-exce"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 47,
+    "texto": "| **Pruebas prácticas propias de empresas y ETT** | Archivo con datos e instrucciones, de 30 a 60 min | Limpiar, BUSCARV o BUSCARX, SI, SUMAR.SI.CONJUNTO, tabla dinámica, gráfico, formato condicional, «dejar la tabla ordenada y entendible» [SIN VERIFICAR: guías de formadores, ver `curriculo.md` §3.1-3.2] → examen final, parte B. |",
+    "contexto": "| **Criteria «Microsoft Excel 365»** y SHL, Kenexa | Tests de 5 a 35 min; los interactivos incluyen simulaciones | Ver `curriculo.md` §3.1 [VERIFICADO allí: Criteria; SIN VERIFICAR: SHL y Kenexa]. |"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 55,
+    "texto": "| **Norma 43 (AEB/CECA), «Información normalizada de cuenta corriente»**, junio de 2012 | Formato de los extractos bancarios españoles | Registro de movimientos: fecha de operación y fecha valor en formato AAMMDD, concepto común de 2 posiciones (02 ingresos, 03 recibos, 04 transferencias y cheques, 05 préstamos, 06 remesas, 14 devoluciones e impagados, 15 nóminas y seguros sociales, 17 intereses y comisiones…), **clave Debe/Haber** (1 = Debe, 2 = Haber), importe de 14 posiciones (12 enteros y 2 decimales, sin coma). [VERIFICADO local: raw/empresa/n43.pdf; URL oficial SIN VERIFICAR] → P4 (ampliación N43). |",
+    "contexto": "| **Microsoft, Hoja de previsión** | Ayuda oficial es-ES | Datos > Previsión > Hoja de previsión. Intervalos constantes. Admite hasta un 30 % de puntos que faltan. Algoritmo ETS AAA. Intervalo de confianza del 95 % por defecto. Con menos de dos ciclos, la estacionalidad no es fiable. [VERIFICADO: ht"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 76,
+    "texto": "- **CIF ficticio:** el generador calcula el dígito de control correcto de un CIF «B» y **pone otro distinto**. Así el CIF tiene formato real, pero no puede coincidir con el de ninguna empresa [criterio propio]. Antes de publicar, comprobar en el BORME que no existe una sociedad con ese nombre [SIN VERIFICAR: no se ha podido buscar].",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 156,
+    "texto": "| Q04 | Espacios sobrantes y caracteres invisibles | Espacios al final; espacio duro CARACTER(160), que viene de webs y PDF | ESPACIOS no quita el CARACTER(160): `=ESPACIOS(SUSTITUIR(A2;CARACTER(160);\" \"))`; LIMPIAR para los caracteres de control; en Power Query, Recortar y Limpiar [SIN VERIFICAR en esta línea: el detalle de 160 viene de la ayuda de ESPACIOS] |",
+    "contexto": "| Q03 | **Falsos duplicados** | Filas iguales que son legítimas: el mismo artículo en dos ubicaciones, o dos cobros del mismo importe el mismo día | No se quitan, se suman (Agrupar por o SUMAR.SI.CONJUNTO). En conciliaciones se numera cada repetición (clave + nº de ocurrencia) |"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 419,
+    "texto": "- Versión: Microsoft 365 o 2021+ para SECUENCIA y FILTRAR, con alternativa clásica (columnas auxiliares). La protección y la validación funcionan también en Excel para la web, aunque algunas opciones solo se configuran en escritorio [SIN VERIFICAR].",
+    "contexto": "- Duración: **5-7 h**."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 433,
+    "texto": "| ¿Cuántos días de vacaciones hay y se cuentan como naturales o laborables? | Por convenio de la empresa, **22 días laborables** (lunes a viernes, sin festivos) por año completo. [DISEÑO; el mínimo legal son 30 días naturales, ET art. 38.1 VERIFICADO. Equivaler 30 naturales a 22 laborables es habitual, pero depende del convenio: SIN VERIFICAR] |",
+    "contexto": "|---|---|"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 450,
+    "texto": "| `festivos_2026.xlsx` (de la gestoría) | unas 40 | Fecha, Descripción, Ámbito (Nacional, Aragón, Navarra, Cataluña, Local Zaragoza, Local Pamplona, Local Lleida) | **1 fecha errónea** (el generador elige cuál y lo deja en el log) y **1 festivo autonómico que falta**. La verdad sale del BOE y del boletín autonómico en el momento de generar los datos [SIN VERIFICAR aquí: no se han descargado las resoluciones de fiestas de 2026 y 2027] |",
+    "contexto": "| `ausencias_2026.csv` | unas 140 | CodEmpleado, Tipo (IT_EC, IT_AT, PR_MAT, PR_FALL, PR_ENF, PR_TRAS, PNR), Desde, Hasta (vacía si sigue abierta), DíasNaturales, **Observaciones** | **Q20: 11 observaciones con información de salud** («lumbalgia», «ansiedad»…) que hay que borrar · 3 bajas abiertas ("
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 468,
+    "texto": "- En Microsoft 365, el último argumento puede ser `FILTRAR(Festivos[Fecha];(Festivos[Delegación]=[@Delegación])+(Festivos[Delegación]=\"Todas\"))` [SIN VERIFICAR que DIAS.LAB.INTL admita una matriz desbordada como festivos; alternativa segura: tres rangos con nombre, FestZGZ, FestPAM y FestLLE, elegidos con SI o CAMBIAR].",
+    "contexto": "`=DIAS.LAB.INTL([@Desde];[@Hasta];1;festivos_de_su_delegación)`."
+   }
+  ]
+ },
+ {
+  "id": "proyectos-2",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 476,
+    "texto": "- Cuidado: a tiempo parcial con jornada reducida **todos los días**, los días de vacaciones son los mismos; no se multiplica por la jornada (en el pago sí cuenta) [SIN VERIFICAR: principio de igualdad del ET art. 12.4.d; confirmarlo con la gestoría].",
+    "contexto": "- Formato condicional: saldo < 0 en rojo; saldo > 5 a 1 de diciembre en ámbar."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 485,
+    "texto": "7. **Validación en `Periodos`** (rangos normales, no referencias estructuradas: la validación de datos no las acepta [SIN VERIFICAR; limitación conocida]): Desde ≤ Hasta, dentro de 2026-2027 y **sin solape** con otro periodo de la misma persona: `=CONTAR.SI.CONJUNTO($A:$A;$A2;$F:$F;\"<=\"&$G2;$G:$G;\">=\"&$F2)=1`.",
+    "contexto": "- Inmovilizar paneles e imprimir títulos."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 490,
+    "texto": "- **Ojo:** en una hoja protegida la Tabla no crece al escribir debajo. Por eso se deja la Tabla dimensionada con filas vacías (por ejemplo, 300) o se deja `Periodos` sin proteger pero con validación [SIN VERIFICAR el comportamiento exacto en Excel para la web].",
+    "contexto": "- Proteger libro (estructura)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 552,
+    "texto": "- Desplegable dependiente Departamento → Empleado, con `FILTRAR` y una referencia desbordada `=$X$2#` en la validación (solo 365) [SIN VERIFICAR: las referencias desbordadas en la validación].",
+    "contexto": "- **Power Query** para pasar la cuadrícula de Administración a periodos (Anular dinamización + Agrupar por)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 625,
+    "texto": "- (b) Agrupados: tabla `Aplicaciones` (IdCobro, NumFactura, Importe) con las referencias extraídas del concepto (Relleno rápido, HALLAR o EXTRAE; en 365, `REGEXEXTRACCION(Concepto;\"F2[56]-\\d{6}\";1)` [SIN VERIFICAR: modo «todas las coincidencias» = 1]). Regla: el cobro cubre lo citado y, si no llega, se aplica primero a la factura más antigua.",
+    "contexto": "- (a) Directos: `=SUMAR.SI.CONJUNTO(Cobros[Importe];Cobros[NumFactura];[@NumFactura];Cobros[FechaCobro];\"<=\"&Corte)`. Incluye las devoluciones, que restan."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 677,
+    "texto": "- La regla fiscal del IS para que el deterioro sea deducible (más de 6 meses desde el vencimiento) está [SIN VERIFICAR en esta línea: confirmar el art. 13.1 de la LIS].",
+    "contexto": "- **Deterioro de clientes** (MO-220, «bad debt expense»): porcentaje por tramo, en la cuenta 694 contra la 490 [VERIFICADO local: PGC]."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 781,
+    "texto": "- Alternativa (N4): Power Query, columna de índice por grupo de importe y **Combinar consultas**, con «Externa completa» para ver las dos caras y «Anti izquierda» para lo que no casa [SIN VERIFICAR: rótulos literales en es-ES].",
+    "contexto": "- después BUSCARX de la clave en el otro lado, con control de fecha (|diferencia| ≤ 5 días)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 835,
+    "texto": "- Versión: Microsoft 365 o 2016+ en Windows (Power Query). En Mac, Power Query existe, pero con conectores limitados [VERIFICADO en `excel-moderno.md` §0.13; el conector de carpeta en Mac está SIN VERIFICAR].",
+    "contexto": "- Duración: **8-10 h**, más 1 h del cambio inesperado."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 899,
+    "texto": "10. **Segmentaciones** de Delegación y Familia conectadas a todas las tablas dinámicas (Conexiones de informe) y **escala de tiempo** por mes [SIN VERIFICAR: rótulo literal «Conexiones de informe»].",
+    "contexto": "- (d) top 20 clientes y **Pareto** (% acumulado)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 907,
+    "texto": "- Título dinámico: `=\"Ventas acumuladas a \"&TEXTO(MAX(Ventas[Fecha]);\"mmmm \\de aaaa\")` [SIN VERIFICAR el escape `\\de` en es-ES; alternativa: dos celdas].",
+    "contexto": "- «Dirección»: completa."
+   }
+  ]
+ },
+ {
+  "id": "proyectos-3",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 964,
+    "texto": "La actualización falla con un error de Power Query del tipo «No se encontró la columna…» [SIN VERIFICAR el texto literal en es-ES]. Solución: paso de renombrado tolerante o pedir al ERP que mantenga el nombre; añadir Logroño al mapa y los objetivos; anotar el cambio. Javier recibe un aviso de que Logroño no tiene comparación con 2025.",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1033,
+    "texto": "7. **ABC**: consumo valorado anualizado → ORDENAR de mayor a menor → % acumulado → `SI.CONJUNTO(Acum<=80%;\"A\";Acum<=95%;\"B\";VERDADERO;\"C\")`. Gráfico de **Pareto** (Insertar > gráfico estadístico) [SIN VERIFICAR: ubicación literal del Pareto en la cinta es-ES].",
+    "contexto": "Cobertura (días) = Stock / d. Rotación = consumo anualizado / stock medio."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1085,
+    "texto": "- Cantidad económica de pedido (fórmula de Wilson) [SIN VERIFICAR: fórmula de manual de operaciones, no de fuente primaria].",
+    "contexto": "- Clasificación XYZ (coeficiente de variación) cruzada con ABC."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1307,
+    "texto": "4. **Medidas DAX** (los nombres de las medidas en español; las funciones DAX se escriben **en inglés** en cualquier idioma de Excel; el separador de argumentos en un Power Pivot configurado para España está [SIN VERIFICAR]: probar `;` y `,`):",
+    "contexto": "- Sin relaciones de varios a varios."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1409,
+    "texto": "- Seguridad Social e impuestos (IVA e IRPF trimestrales en enero) con las fechas que dé la asesoría [SIN VERIFICAR: calendario fiscal de 2027; no se escribe en la guía sin comprobarlo en la AEAT];",
+    "contexto": "- nóminas a fin de mes y paga extra (dato del convenio);"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1419,
+    "texto": "- **No se recomienda** para la guía sin una línea legal propia. Los tipos de cotización de 2026, las bases máximas y mínimas, el MEI y las retenciones de IRPF cambian cada año y por normativa [SIN VERIFICAR: Orden de cotización de 2026 en el BOE]. Si se hace, con parámetros en una hoja y la fuente oficial citada en cada uno.",
+    "contexto": "- Cubre el objetivo del MO-220 «Calculate gross and net pay for multiple employees; employer payroll tax liabilities» [VERIFICADO]."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1547,
+    "texto": "3. **Festivos sin verificar.** Antes de generar los datos de P2 (y los días laborables de P3, P5 y P6) hay que sacar del BOE la resolución de fiestas laborales de 2026 y de 2027, los boletines de Aragón, Navarra y Cataluña y los festivos locales de Zaragoza, Pamplona y Lleida. En este documento solo se usan como seguros el 25/12, el 01/01, el 06/01, el 08/12 y el 01/05 (nacionales), y la Pascua: domingo 05/04/2026 y domingo 28/03/2027 [SIN VERIFICAR en BOE].",
+    "contexto": "2. **La ayuda de Microsoft en español tiene errores de traducción** también en limpieza de datos: la página «Diez formas principales de limpiar los datos» llama **RECORTAR** a la función de quitar espacios; en Excel en español es **ESPACIOS** [VERIFICADO]. No hay que copiar nombres de esa página (ve"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1549,
+    "texto": "5. **DAX en un Excel en español**: las funciones DAX van en inglés (CALCULATE, DIVIDE…). El **separador de argumentos** (`;` o `,`) en Power Pivot con la configuración de España está [SIN VERIFICAR]. Probarlo antes de publicar P8.",
+    "contexto": "4. **Rótulos del editor de Power Query en es-ES** sin verificar uno a uno: «Usar configuración regional», «Quitar filas superiores», «Usar la primera fila como encabezado», tipos de combinación («Externa izquierda», «Anti izquierda», «Externa completa»), «Anular dinamización de otras columnas», y ta"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1551,
+    "texto": "7. **Error silencioso probable en Power Query**: un texto «1234.56» convertido a número con la configuración es-ES puede acabar como 123456 (el punto se lee como separador de miles) [SIN VERIFICAR, hay que probarlo]. Por eso P3 pide el control «Σ Total ≈ Σ Base × (1 + IVA)», que lo delata.",
+    "contexto": "6. **Power Pivot solo en Windows.** P8 necesita plan B (tabla única + SUMAR.SI.CONJUNTO o AGRUPARPOR) y entregar en PDF a quien use Mac o iPad."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1552,
+    "texto": "8. **La validación de datos no acepta referencias estructuradas**, y una **Tabla no crece en una hoja protegida** [SIN VERIFICAR los dos, limitaciones conocidas]. P2 da la alternativa (rangos normales, Tabla dimensionada de antemano). Comprobarlo en Excel 365 y en Excel para la web.",
+    "contexto": "7. **Error silencioso probable en Power Query**: un texto «1234.56» convertido a número con la configuración es-ES puede acabar como 123456 (el punto se lee como separador de miles) [SIN VERIFICAR, hay que probarlo]. Por eso P3 pide el control «Σ Total ≈ Σ Base × (1 + IVA)», que lo delata."
+   }
+  ]
+ }
+]

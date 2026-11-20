@@ -1,0 +1,387 @@
+{
+ "id": "n1",
+ "nombre": "Usuaria básica",
+ "lema": "Hojas sencillas, presentables y con cálculos que no fallan al copiarlos.",
+ "horas": 10,
+ "equivale_a": "Ofertas «Excel a nivel usuario» o «manejo de Excel»; ICAEW Basic user; parte básica de MO-210 (dominios 1, 2 y 5); núcleo de la UF0321",
+ "puede_hacer_sola": [
+  "Da formato de euros, porcentaje, fecha y decimales, y sabe que el formato cambia lo que se ve, no lo que vale.",
+  "Pone bordes, rellenos, alineación y estilos de celda, y evita combinar celdas dentro de una lista.",
+  "Inserta, elimina y oculta filas y columnas, y mueve o copia hojas.",
+  "Rellena series y copia fórmulas hacia abajo; fija con $ (F4) la celda del IVA para que la fórmula se copie bien.",
+  "Calcula totales, medias, máximos, mínimos y recuentos, redondea importes y decide con SI («Grande»/«Normal»).",
+  "Ordena una lista entera sin desordenarla, la filtra, inmoviliza la fila de títulos y busca y reemplaza.",
+  "Imprime o exporta a PDF un informe en una página con títulos repetidos, encabezado y número de página.",
+  "Hace un gráfico de columnas, líneas o circular con título y etiquetas.",
+  "Prepara una factura o presupuesto sencillo (base, IVA y total) y un listado de gastos del mes con totales."
+ ],
+ "modulos": [
+  {
+   "id": "n1m1",
+   "titulo": "Que se vea bien",
+   "objetivos": [
+    "es capaz de aplicar formatos de número (moneda, contabilidad, porcentaje, fecha, decimales)",
+    "es capaz de dar un aspecto profesional con fuentes, bordes, rellenos, alineación y estilos de celda",
+    "es capaz de insertar, eliminar, ocultar y mostrar filas, columnas y hojas"
+   ],
+   "lecciones": [
+    {
+     "id": "n1m1l1",
+     "titulo": "Formatos de número: lo que se ve y lo que vale",
+     "minutos": 13,
+     "conceptos": [
+      "Formato de celdas (Ctrl+1)",
+      "Moneda y Contabilidad en €",
+      "Porcentaje (Estilo porcentual)",
+      "Fecha corta y larga",
+      "separador de miles y decimales (Aumentar/Disminuir decimales)",
+      "formato frente a valor: 1,2345 se ve 1,23 € pero vale 1,2345",
+      "los códigos (CP, teléfono, cuenta) son texto: formato Texto antes de escribir"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E07 Creer que quitar decimales con el formato redondea el valor",
+      "Escribir el símbolo € a mano en vez de dar formato",
+      "Códigos postales como número: 08001 se queda en 8001"
+     ],
+     "ejercicios_vivos": [
+      "predice: =B2*1000 con B2 = 1,2345 mostrado como 1,23 € (1234,5)",
+      "predice: =SUMA(B2:B4) con tres valores de 0,333 mostrados con 2 decimales (0,999)"
+     ],
+     "otros_ejercicios": [
+      "cinta: Inicio > Número > Estilo porcentual",
+      "cinta: Inicio > Número > Formato de número de contabilidad",
+      "test: 08001 se queda en 8001: ¿qué ha pasado y cómo se evita?",
+      "respuesta_corta: atajo de Formato de celdas (Ctrl+1)",
+      "test: ¿quitar decimales con el botón redondea el valor?",
+      "recuerda: test formato frente a valor",
+      "recuerda: cinta Disminuir decimales"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n1m1l2",
+     "titulo": "Fuentes, bordes, alineación y estilos de celda",
+     "minutos": 12,
+     "conceptos": [
+      "negrita, cursiva y subrayado (Ctrl+N, Ctrl+K, Ctrl+S)",
+      "bordes y color de relleno",
+      "alinear y Ajustar texto",
+      "Combinar y centrar solo en títulos; dentro de una lista estropea ordenar y filtrar",
+      "Centrar en la selección como alternativa (Formato de celdas > Alineación)",
+      "Estilos de celda (Título, Entrada, Cálculo, Notas…)",
+      "Copiar formato (brocha)",
+      "Borrar formatos"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E11 Combinar celdas dentro de una lista de datos",
+      "Usar colores sin significado y sin leyenda"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Inicio > Estilos > Estilos de celda",
+      "cinta: Inicio > Portapapeles > Copiar formato",
+      "test: ¿por qué no combinar celdas en una lista que vas a ordenar?",
+      "respuesta_corta: atajo de negrita (Ctrl+N)",
+      "test: Ctrl+S en el Excel español (subrayado)",
+      "cinta: Inicio > Alineación > Ajustar texto",
+      "recuerda: test combinar y centrar",
+      "recuerda: respuesta_corta cursiva (Ctrl+K)"
+     ],
+     "practica_excel_real": "Dar formato profesional a un presupuesto sin formato: títulos con estilo, importes en euros, bordes en la tabla y fila de total destacada, sin combinar celdas dentro de los datos."
+    },
+    {
+     "id": "n1m1l3",
+     "titulo": "Filas, columnas y hojas: insertar, eliminar y ocultar",
+     "minutos": 12,
+     "conceptos": [
+      "insertar y eliminar filas, columnas y celdas (Ctrl++ y Ctrl+-)",
+      "ancho de columna y alto de fila",
+      "ocultar y mostrar filas y columnas (Ctrl+9, Ctrl+0)",
+      "ocultar no es borrar ni proteger: lo oculto viaja con el archivo",
+      "mover y copiar hojas",
+      "las fórmulas se adaptan al insertar filas dentro del rango"
+     ],
+     "funciones": [
+      "SUMA"
+     ],
+     "errores_conceptuales": [
+      "Creer que ocultar una columna la quita del archivo que envías",
+      "Insertar la fila nueva debajo del total y que no entre en la suma (E14)"
+     ],
+     "ejercicios_vivos": [
+      "predice: tras insertar una fila dentro del rango, =SUMA(B2:B5) pasa a SUMA(B2:B6) y el total incluye el dato nuevo",
+      "predice: un dato escrito debajo del total no entra en =SUMA(B2:B5)"
+     ],
+     "otros_ejercicios": [
+      "test: ocultas la columna de salarios y mandas el archivo: ¿está a salvo?",
+      "respuesta_corta: atajo para insertar filas o celdas (Ctrl++)",
+      "cinta: Inicio > Celdas > Insertar",
+      "ordenar: copiar una hoja a otra posición del libro",
+      "test: dónde insertar una línea nueva para que entre en el total",
+      "recuerda: test ocultar no es borrar",
+      "recuerda: respuesta_corta ocultar columnas (Ctrl+0)"
+     ],
+     "practica_excel_real": null
+    }
+   ],
+   "practica_excel": "Libro n1-presupuesto-formato.xlsx: dar formato completo a un presupuesto (euros, %, fechas, estilos de celda), insertar dos líneas que falten de forma que entren en el total y ocultar una columna de notas internas, explicando en la hoja «Respuestas» por qué ocultarla no basta si el archivo sale de la empresa."
+  },
+  {
+   "id": "n1m2",
+   "titulo": "Copiar fórmulas sin romperlas",
+   "objetivos": [
+    "es capaz de rellenar series y copiar fórmulas con el controlador de relleno",
+    "es capaz de usar referencias absolutas para tipos fijos como el IVA",
+    "es capaz de resumir una lista con PROMEDIO, MAX, MIN, CONTAR, CONTARA y CONTAR.BLANCO",
+    "es capaz de decidir con SI sencillo"
+   ],
+   "lecciones": [
+    {
+     "id": "n1m2l1",
+     "titulo": "Rellenar series y copiar fórmulas",
+     "minutos": 12,
+     "conceptos": [
+      "controlador de relleno (el cuadradito de la esquina)",
+      "series de números, meses, días y fechas",
+      "doble clic en el controlador copia hasta el final de los datos",
+      "referencia relativa: al bajar una fila, B2 pasa a B3",
+      "Ctrl+J rellena hacia abajo",
+      "comprobar la última fila copiada"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Escribir la misma fórmula a mano en cada fila",
+      "Copiar la fórmula más allá de los datos o quedarse corta"
+     ],
+     "ejercicios_vivos": [
+      "=B2*C2 copiada hasta la fila 8 (copiar_a)",
+      "=C2-B2 diferencia entre dos meses copiada hacia abajo",
+      "predice: qué fórmula queda en D5 al copiar =B2*C2 desde D2",
+      "mini-tarea: importes de un pedido de 7 líneas con una sola fórmula copiada"
+     ],
+     "otros_ejercicios": [
+      "senala: toca el controlador de relleno",
+      "test: qué serie sale al arrastrar «enero»",
+      "respuesta_corta: atajo para rellenar hacia abajo (Ctrl+J)",
+      "recuerda: predice la fórmula copiada"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n1m2l2",
+     "titulo": "El IVA en una celda fija: referencias absolutas",
+     "minutos": 15,
+     "conceptos": [
+      "un tipo que puede cambiar (IVA 21 %, 10 %, 4 %) va en su propia celda, nunca dentro de la fórmula",
+      "$B$1: referencia absoluta; F4 pone los $",
+      "cuota de IVA = base × tipo; total = base × (1 + tipo)",
+      "subir un precio un 10 %: =B2*(1+10 %) frente a =B2+10 %",
+      "REDONDEAR la cuota a 2 decimales",
+      "factura sencilla: base, IVA, total"
+     ],
+     "funciones": [
+      "REDONDEAR"
+     ],
+     "errores_conceptuales": [
+      "E06 Copiar sin $ y que el tipo se desplace (B2*(1+F2), F3…)",
+      "E05 Sumar el porcentaje como si fuera un número: =A1+10 %",
+      "E19 Escribir =B2*1,21 dentro de la fórmula"
+     ],
+     "ejercicios_vivos": [
+      "=B2*$F$1 cuota de IVA copiada hacia abajo (copiar_a, variantes: F1 = 10 %)",
+      "=B2*(1+$F$1) total con IVA (errores_tipicos: =B2*(1+F1), =B2*1,21)",
+      "arregla el error: =B2*(1+F1) que falla al copiar",
+      "predice: =A1+10 % con A1 = 100 (100,1)",
+      "=REDONDEAR(B2*$F$1;2)",
+      "mini-tarea: factura de 5 líneas con base, IVA redondeado y total; control: total = base + IVA"
+     ],
+     "otros_ejercicios": [
+      "test: por qué no escribir =B2*0,21",
+      "recuerda: escribe el total con IVA fijando la celda del tipo"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n1m2l3",
+     "titulo": "Resumir una lista: promedio, máximo, mínimo y contar",
+     "minutos": 13,
+     "conceptos": [
+      "PROMEDIO, MAX y MIN",
+      "CONTAR cuenta números; CONTARA cuenta celdas no vacías; CONTAR.BLANCO cuenta vacías",
+      "una celda vacía no cuenta en el promedio; un 0 sí",
+      "la barra de estado como comprobación rápida"
+     ],
+     "funciones": [
+      "PROMEDIO",
+      "MAX",
+      "MIN",
+      "CONTAR",
+      "CONTARA",
+      "CONTAR.BLANCO"
+     ],
+     "errores_conceptuales": [
+      "E20 Usar CONTAR para contar nombres (da 0)",
+      "E23 Poner 0 donde no hay dato y bajar la media"
+     ],
+     "ejercicios_vivos": [
+      "=PROMEDIO(B2:B9) ticket medio",
+      "=MAX(B2:B9) y =MIN(B2:B9)",
+      "=CONTARA(A2:A9) número de clientes",
+      "=CONTAR.BLANCO(C2:C9) clientes sin teléfono",
+      "predice: =PROMEDIO(A1:A4) con 10, vacía, 20 y 0 (10)",
+      "arregla el error: =CONTAR(A2:A9) para contar nombres → CONTARA"
+     ],
+     "otros_ejercicios": [
+      "test: CONTAR frente a CONTARA",
+      "recuerda: escribe cuántas celdas vacías hay en C2:C9"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n1m2l4",
+     "titulo": "Decidir con SI",
+     "minutos": 14,
+     "conceptos": [
+      "SI(prueba; si es verdadero; si es falso)",
+      "comparaciones = <> > < >= <=",
+      "textos entre comillas en la fórmula",
+      "el umbral va en una celda aparte (con $)",
+      "devolver un número o un texto",
+      "SI que devuelve vacío \"\""
+     ],
+     "funciones": [
+      "SI"
+     ],
+     "errores_conceptuales": [
+      "Confundir > con >= en el límite (999 frente a 1.000)",
+      "Olvidar las comillas en el texto",
+      "Escribir el umbral dentro de la fórmula"
+     ],
+     "ejercicios_vivos": [
+      "=SI(B2>=1000;\"Grande\";\"Normal\") (variantes: B2 = 999 y 1000)",
+      "=SI(B2>=$F$1;\"Grande\";\"Normal\") con el umbral en F1, copiada hacia abajo",
+      "=SI(C2=\"Sí\";B2*$F$2;0) descuento si el cliente es preferente, con el % del descuento en F2",
+      "arregla el error: =SI(B2>1000;Grande;Normal) sin comillas",
+      "predice: =SI(B2<>\"\";\"Hecho\";\"Pendiente\")",
+      "mini-tarea: marcar pedidos urgentes por importe y plazo"
+     ],
+     "otros_ejercicios": [
+      "test: ¿qué devuelve SI con B2 = 1000 si la prueba es B2>1000?",
+      "recuerda: escribe un SI que diga «Aprobado» o «Revisar»"
+     ],
+     "practica_excel_real": null
+    }
+   ],
+   "practica_excel": "Libro n1-factura.xlsx: completar una factura de 8 líneas (importe, IVA desde una celda de tipos, cuota redondeada, total), marcar con SI las líneas con descuento, y resumir con promedio, máximo y recuento. Controles: total base, total IVA, total factura."
+  },
+  {
+   "id": "n1m3",
+   "titulo": "Ordenar, imprimir y hacer gráficos",
+   "objetivos": [
+    "es capaz de ordenar y filtrar una lista sin desordenar los datos",
+    "es capaz de inmovilizar la fila de títulos y buscar y reemplazar",
+    "es capaz de preparar una impresión o un PDF a una página",
+    "es capaz de crear un gráfico sencillo y adecuado"
+   ],
+   "lecciones": [
+    {
+     "id": "n1m3l1",
+     "titulo": "Ordenar, filtrar y buscar en una lista",
+     "minutos": 14,
+     "conceptos": [
+      "una lista bien hecha: una fila de títulos, sin filas ni columnas vacías",
+      "ordenar de A a Z y de mayor a menor con la celda dentro de la lista",
+      "Autofiltro (Ctrl+Mayús+L) por texto, número y fecha",
+      "quitar el filtro antes de seguir",
+      "Inmovilizar paneles (fila superior)",
+      "Buscar (Ctrl+B) y Reemplazar (Ctrl+L)"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E12 Ordenar solo una columna y separar los datos de cada fila",
+      "Olvidar un filtro activo y creer que faltan datos",
+      "Reemplazar «Madrid» en todo el libro sin revisar"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Datos > Ordenar y filtrar > Filtro",
+      "cinta: Vista > Ventana > Inmovilizar",
+      "test: seleccionas solo la columna de importes y ordenas: ¿qué pasa?",
+      "respuesta_corta: atajo de Buscar (Ctrl+B)",
+      "test: el total parece menor de lo normal y la flecha del filtro tiene un embudo",
+      "ordenar: pasos para ordenar por fecha y luego filtrar un cliente",
+      "recuerda: respuesta_corta Ctrl+Mayús+L",
+      "recuerda: test ordenar una sola columna"
+     ],
+     "practica_excel_real": "Con una lista de 60 pedidos: ordenar por fecha, filtrar un cliente y un mes, inmovilizar la fila de títulos y reemplazar un nombre de comercial mal escrito."
+    },
+    {
+     "id": "n1m3l2",
+     "titulo": "Imprimir y exportar a PDF en una página",
+     "minutos": 13,
+     "conceptos": [
+      "vista previa (Ctrl+P)",
+      "orientación vertical u horizontal y márgenes",
+      "ajustar a una página de ancho",
+      "Área de impresión",
+      "Imprimir títulos: repetir la fila de títulos en cada página",
+      "encabezado y pie con nombre de empresa y número de página",
+      "Diseño de página / Disposición de página (el nombre de la pestaña varía)"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Mandar un PDF de 6 páginas con una columna suelta en cada una",
+      "Imprimir sin títulos en la segunda página"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Disposición de página > Configurar página > Imprimir títulos",
+      "cinta: Disposición de página > Configurar página > Área de impresión",
+      "cinta: Disposición de página > Ajustar área de impresión > Ancho",
+      "test: el informe sale en dos páginas por una columna: ¿qué cambias?",
+      "ordenar: preparar un listado largo para imprimir con títulos en cada hoja",
+      "test: dónde se pone el número de página",
+      "recuerda: cinta Imprimir títulos",
+      "recuerda: test ajustar a una página"
+     ],
+     "practica_excel_real": "Dejar el listado de pedidos listo para enviar: horizontal, una página de ancho, títulos repetidos, encabezado con la empresa y pie con página; exportarlo a PDF."
+    },
+    {
+     "id": "n1m3l3",
+     "titulo": "Tu primer gráfico",
+     "minutos": 13,
+     "conceptos": [
+      "elegir el gráfico por el mensaje: comparar (columnas o barras), evolución (líneas), reparto de un total (circular, pocos trozos)",
+      "Gráficos recomendados",
+      "título que diga la conclusión",
+      "etiquetas de datos y leyenda",
+      "mover y cambiar el tamaño",
+      "el gráfico se actualiza al cambiar los datos"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Gráfico circular con 12 trozos o con meses",
+      "Seleccionar también la fila del total y que aparezca como una barra gigante",
+      "Título genérico «Gráfico 1»"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Insertar > Gráficos > Gráficos recomendados",
+      "cinta: Insertar > Gráficos > Insertar gráfico de líneas o áreas",
+      "test: ventas de 12 meses: ¿qué gráfico?",
+      "test: reparto de ventas entre 3 delegaciones",
+      "test: aparece una barra enorme: ¿qué has seleccionado de más?",
+      "cinta: Diseño de gráfico > Diseños de gráfico > Agregar elemento de gráfico",
+      "recuerda: test elegir gráfico",
+      "recuerda: cinta gráfico de columnas"
+     ],
+     "practica_excel_real": "Crear un gráfico de columnas de ventas por mes y uno circular del reparto por delegación, con títulos que digan la conclusión y etiquetas de datos."
+    }
+   ],
+   "practica_excel": "Libro n1-gastos-mes.xlsx (prueba de salida del nivel en pequeño): listado de 40 líneas de pedido: formato, IVA con referencia absoluta, totales, SI para marcar pedidos grandes, filtro de un cliente, gráfico por mes y PDF a una página. Controles: total base, total con IVA, n.º de pedidos grandes."
+  }
+ ],
+ "examen_nivel": "25 min, sin pistas, 80 % a la primera: total con IVA fijando el tipo y copiando (con variantes del tipo), redondear la cuota, PROMEDIO/MAX/CONTARA/CONTAR.BLANCO sobre una lista, SI con umbral en celda, predecir formato frente a valor y vacía frente a cero, y preguntas de criterio y cinta sobre ordenar (no una sola columna), filtro activo, combinar celdas, imprimir en una página, elegir gráfico y ocultar no es proteger."
+}

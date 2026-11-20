@@ -1,0 +1,178 @@
+{
+ "corte": "2026-10-31",
+ "K": 1.0896004466646434,
+ "n_documentos": 2636,
+ "n_f26": 2536,
+ "n_r26": 24,
+ "n_f25": 76,
+ "suma_base": 6901306.28,
+ "suma_cuota": 1442796.22,
+ "suma_total": 8344202.52,
+ "dif_total_base_cuota": 100.02,
+ "pendiente_total": 1896731.01,
+ "a_cuenta_total": 24500.0,
+ "saldo_430": 1872231.01,
+ "a_cuenta_n": 9,
+ "cobrado_total": 6447471.51,
+ "por_tramo": {
+  "0 · No vencido": 1382832.59,
+  "1 · 1-30": 193293.73,
+  "2 · 31-60": 79407.35,
+  "3 · 61-90": 41270.72,
+  "4 · 91-180": 119756.58,
+  "5 · Más de 180": 80170.04
+ },
+ "pct_tramo": {
+  "0 · No vencido": 0.7291,
+  "1 · 1-30": 0.1019,
+  "2 · 31-60": 0.0419,
+  "3 · 61-90": 0.0218,
+  "4 · 91-180": 0.0631,
+  "5 · Más de 180": 0.0423
+ },
+ "vencido_total": 513898.42,
+ "vencido_mas60": 241197.34,
+ "top10_mas60": [
+  [
+   "C0257",
+   "Electricidad y Fontanería Bordeta, S. Coop.",
+   97722.16
+  ],
+  [
+   "C0055",
+   "Instalaciones Eléctricas Lasheras, S. Coop.",
+   22688.5
+  ],
+  [
+   "C0317",
+   "Automatismos Lacasa, S.L.",
+   16172.65
+  ],
+  [
+   "C0111",
+   "Automatismos Andía, S.L.",
+   11237.99
+  ],
+  [
+   "C0023",
+   "Electricidad Mijares, S.L.",
+   11213.11
+  ],
+  [
+   "C0294",
+   "Construcciones Aznar, S. Coop.",
+   8453.5
+  ],
+  [
+   "C0143",
+   "Construcciones Segre, S.L.",
+   7521.29
+  ],
+  [
+   "C0159",
+   "Construcciones Guadalope, S.L.",
+   6810.51
+  ],
+  [
+   "C0002",
+   "Telecomunicaciones Pilar, S.L.U.",
+   6537.44
+  ],
+  [
+   "C0316",
+   "Mantenimientos Industriales Tena, S.L.",
+   6426.29
+  ]
+ ],
+ "supera_limite": [
+  [
+   "C0020",
+   "Construcciones Cappont, S.L.",
+   37590.1,
+   30000.0,
+   7590.1
+  ],
+  [
+   "C0023",
+   "Electricidad Mijares, S.L.",
+   70389.8,
+   60000.0,
+   10389.8
+  ],
+  [
+   "C0055",
+   "Instalaciones Eléctricas Lasheras, S. Coop.",
+   50983.6,
+   38000.0,
+   12983.6
+  ],
+  [
+   "C0120",
+   "Servicios Técnicos Jota, S.L.",
+   32489.84,
+   20000.0,
+   12489.84
+  ]
+ ],
+ "clientes_mas60_dias": [
+  "C0004",
+  "C0029",
+  "C0057",
+  "C0128",
+  "C0185",
+  "C0219",
+  "C0290"
+ ],
+ "facturas_plazo_mas60": 77,
+ "pendiente_plazo_mas60": 67303.23,
+ "saldo_favor": [
+  [
+   "C0013",
+   "Instalaciones Arga, S.L.",
+   -2465.44
+  ],
+  [
+   "C0298",
+   "Instalaciones Urgell, S. Coop.",
+   -2642.1
+  ]
+ ],
+ "facturacion_ago_oct": 2393611.1,
+ "dias_pmc": 92,
+ "pmc": 72.0,
+ "bloqueado": [
+  "C0023",
+  "Electricidad Mijares, S.L.",
+  13,
+  61703.25,
+  61703.25
+ ],
+ "estados": {
+  "Cobrada": 2037,
+  "Pendiente": 556,
+  "Parcial": 35,
+  "Saldo a favor": 8
+ },
+ "cien": "F26-001990",
+ "redondeo": [
+  "F26-001782",
+  "F26-000703",
+  "F26-000051",
+  "F26-001626"
+ ],
+ "favor": "C0013",
+ "a_cuenta_clientes": [
+  "C0188",
+  "C0172",
+  "C0316",
+  "C0057",
+  "C0030",
+  "C0312",
+  "C0052",
+  "C0193",
+  "C0126"
+ ],
+ "n_cobros": 2143,
+ "n_cobros_nov": 125,
+ "cobros_nov_importe": 388459.89
+}

@@ -1,0 +1,347 @@
+{
+ "id": "n0",
+ "nombre": "Primeros pasos",
+ "lema": "De no haber abierto nunca Excel a rellenar, calcular y guardar una hoja sin miedo.",
+ "horas": 5,
+ "equivale_a": "DigComp 3.0 Básico (CS1.3.04); camino hacia ICAEW Basic user",
+ "puede_hacer_sola": [
+  "Abre Excel, crea un libro en blanco, lo guarda con un nombre claro en su carpeta o en OneDrive y lo vuelve a abrir.",
+  "Señala y nombra las partes de la ventana: cinta de opciones, barra de fórmulas, cuadro de nombres, pestañas de hoja y barra de estado.",
+  "Dice la dirección de cualquier celda (C5) y de un rango (A1:C10), y va a ella con el cuadro de nombres.",
+  "Escribe textos, números con coma decimal, fechas dd/mm/aaaa y porcentajes, y sabe por la alineación si Excel los ha entendido.",
+  "Se mueve y selecciona con ratón y teclado; corrige, borra, deshace, copia y pega.",
+  "Escribe fórmulas que empiezan por = con + − * / ^ y referencias a celdas, y suma una columna con Autosuma.",
+  "Rellena una plantilla que le pasan (parte de horas, hoja de pedido) sin estropearla, calcula sus totales y la guarda con un nombre claro."
+ ],
+ "modulos": [
+  {
+   "id": "n0m1",
+   "titulo": "La ventana de Excel",
+   "objetivos": [
+    "es capaz de abrir Excel y crear un libro en blanco",
+    "es capaz de nombrar y señalar las partes de la ventana",
+    "es capaz de decir la dirección de una celda y de un rango",
+    "es capaz de añadir, cambiar de nombre y eliminar hojas, y de guardar el libro en su carpeta o en OneDrive"
+   ],
+   "lecciones": [
+    {
+     "id": "n0m1l1",
+     "titulo": "Qué es Excel y cómo es su ventana",
+     "minutos": 12,
+     "conceptos": [
+      "hoja de cálculo como cuaderno de cuadros que calcula",
+      "libro en blanco",
+      "cinta de opciones: pestañas, grupos y botones",
+      "barra de fórmulas",
+      "cuadro de nombres",
+      "pestañas de hoja",
+      "barra de estado",
+      "zoom"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Creer que Excel es solo una tabla para escribir (no ve que calcula)",
+      "Confundir la cinta de opciones con la hoja"
+     ],
+     "ejercicios_vivos": [
+      "Primera victoria guiada: en B5 escribe tal cual =B2+B3+B4 para sumar tres facturas (se le da la fórmula escrita) y ve cómo cambia el total al cambiar B3"
+     ],
+     "otros_ejercicios": [
+      "senala: toca la cinta de opciones",
+      "senala: toca la barra de fórmulas",
+      "senala: toca el cuadro de nombres",
+      "senala: toca las pestañas de hoja",
+      "senala: toca la barra de estado",
+      "test: ¿para qué usa Excel una administrativa? (registrar, calcular, resumir; no maquetar cartas)",
+      "recuerda: senala barra de fórmulas sin pista"
+     ],
+     "practica_excel_real": "Abrir Excel en su ordenador, crear un libro en blanco y localizar cada parte de la ventana con la lista de la lección."
+    },
+    {
+     "id": "n0m1l2",
+     "titulo": "Filas, columnas, celdas y rangos",
+     "minutos": 12,
+     "conceptos": [
+      "columnas con letras y filas con números",
+      "celda = cruce de columna y fila",
+      "dirección de celda (C5)",
+      "celda activa",
+      "ir a una celda escribiendo su dirección en el cuadro de nombres",
+      "rango A1:C10 y cuántas celdas tiene",
+      "encabezados de fila y de columna"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Escribir la dirección al revés (5C en vez de C5)",
+      "Creer que A1:C10 son solo dos celdas"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "pantalla: la alumna toca encabezado de columna, encabezado de fila y celda activa",
+      "respuesta_corta: la celda resaltada está en la columna D y la fila 7: ¿cómo se llama? (D7)",
+      "respuesta_corta: escribe el rango que va de B2 a B9 (B2:B9)",
+      "test: ¿cuántas celdas tiene A1:B3? (6)",
+      "senala: toca el encabezado de columna",
+      "test con trampa: 5C frente a C5",
+      "recuerda: respuesta_corta dirección de celda",
+      "recuerda: test rango"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n0m1l3",
+     "titulo": "El libro: hojas, guardar y OneDrive",
+     "minutos": 15,
+     "conceptos": [
+      "libro = archivo .xlsx; hoja = pestaña",
+      "añadir hoja (botón + o Mayús+F11), cambiar el nombre (doble clic) y eliminar (no se puede deshacer)",
+      "cambiar de hoja con Ctrl+Av Pág / Ctrl+Re Pág",
+      "Guardar (Ctrl+G) frente a Guardar como (F12)",
+      "nombre de archivo con sentido y fecha (Gastos_2026-11_v01.xlsx)",
+      "carpeta del ordenador frente a OneDrive (copia en la nube, acceso desde otro equipo)",
+      "Autoguardado: funciona con el archivo en OneDrive o SharePoint",
+      "un adjunto del correo se guarda primero y luego se trabaja"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Pensar que cada hoja es un archivo distinto",
+      "Confundir Guardar con Guardar como y machacar el original",
+      "Usar Ctrl+S para guardar (en el Excel español es Subrayado)",
+      "Trabajar sobre el adjunto abierto desde el correo y perder los cambios",
+      "E32 Confundir Ctrl+Z con tener versiones guardadas"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "senala: toca el botón de nueva hoja",
+      "cinta: Archivo > Archivo > Guardar como",
+      "test: Ctrl+G frente a Ctrl+S",
+      "test: ¿qué nombre de archivo es mejor? (Gastos_2026-11_v01.xlsx frente a «Libro1 definitivo bueno»)",
+      "test: ¿qué ventaja tiene guardar en OneDrive?",
+      "ordenar: abrir un adjunto, guardarlo en tu carpeta con otro nombre y trabajar sobre esa copia",
+      "recuerda: respuesta_corta atajo de Guardar (Ctrl+G)",
+      "recuerda: test hoja frente a libro"
+     ],
+     "practica_excel_real": "Crear un libro con dos hojas llamadas «Enero» y «Febrero» y guardarlo como Gastos_2026_v01.xlsx en Documentos o en OneDrive; cerrarlo y volver a abrirlo desde Archivo > Abrir; si está en OneDrive, comprobar que el Autoguardado está activado."
+    }
+   ],
+   "practica_excel": "Libro n0-primeros-pasos.xlsx: renombrar hojas, ir a celdas con el cuadro de nombres, contestar en la hoja «Respuestas» qué hay en cinco direcciones dadas y guardarlo con su nombre."
+  },
+  {
+   "id": "n0m2",
+   "titulo": "Escribir, moverse y corregir",
+   "objetivos": [
+    "es capaz de moverse y seleccionar con ratón y teclado",
+    "es capaz de escribir textos, números, fechas y porcentajes que Excel entienda",
+    "es capaz de corregir, deshacer, copiar y pegar sin miedo"
+   ],
+   "lecciones": [
+    {
+     "id": "n0m2l1",
+     "titulo": "Moverse y seleccionar",
+     "minutos": 12,
+     "conceptos": [
+      "flechas, Intro y Tab",
+      "Ctrl+Inicio y Ctrl+Fin",
+      "Ctrl+flecha para saltar al borde de los datos",
+      "seleccionar arrastrando y con Mayús+flechas",
+      "Ctrl+Mayús+flecha para seleccionar hasta el final",
+      "seleccionar fila o columna entera (encabezado, Mayús/Ctrl+barra espaciadora)",
+      "selección de rangos separados con Ctrl",
+      "la barra de estado muestra suma, promedio y recuento de lo seleccionado"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Bajar con la rueda del ratón por 2.000 filas en lugar de Ctrl+flecha",
+      "Creer que la barra de estado escribe el resultado en la hoja"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "test: estás en A1 de una lista de 800 filas: ¿cómo llegas a la última? (Ctrl+flecha abajo)",
+      "respuesta_corta: atajo para ir a A1 (Ctrl+Inicio)",
+      "test: qué muestra la barra de estado al seleccionar importes",
+      "senala: toca la barra de estado",
+      "ordenar: seleccionar una columna de datos hasta el final con teclado",
+      "test: Ctrl+E selecciona todo (no Ctrl+A, que abre)",
+      "recuerda: respuesta_corta Ctrl+Fin",
+      "recuerda: test Ctrl+flecha"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n0m2l2",
+     "titulo": "Escribir datos: texto, números, fechas y porcentajes",
+     "minutos": 14,
+     "conceptos": [
+      "coma decimal y punto de miles en Excel español",
+      "los números se alinean a la derecha y los textos a la izquierda",
+      "fechas dd/mm/aaaa (03/04/2026 es el 3 de abril)",
+      "porcentaje: 21 % es 0,21",
+      "no escribir «€» ni «uds.» dentro del número",
+      "##### significa columna estrecha, no error",
+      "ajustar el ancho de columna con doble clic",
+      "Alt+Intro para una segunda línea en la celda"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Escribir 3.5 con punto (queda como texto o fecha)",
+      "Escribir «120 €» o «5 uds.» a mano en la celda (deja de ser número)",
+      "Creer que ##### es un error de datos"
+     ],
+     "ejercicios_vivos": [
+      "predice: =ESNUMERO(A2) con A2 = 3,5 frente a A3 = \"3.5\" (VERDADERO / FALSO) — se presenta como «¿lo ha entendido Excel como número?»"
+     ],
+     "otros_ejercicios": [
+      "test: escribes 3.5 y se queda a la izquierda: ¿por qué?",
+      "test: ¿cómo escribes el 4 de marzo de 2026?",
+      "test: qué significa ##### en una celda",
+      "respuesta_corta: escribe veintiún por ciento como número decimal (0,21)",
+      "test: «120 €» escrito a mano frente a 120 con formato",
+      "recuerda: test alineación número/texto",
+      "recuerda: respuesta_corta coma decimal"
+     ],
+     "practica_excel_real": "En un libro nuevo, escribir una lista de 5 gastos (fecha, concepto, importe con decimales) y comprobar por la alineación que todo se ha entendido; ensanchar columnas con doble clic."
+    },
+    {
+     "id": "n0m2l3",
+     "titulo": "Corregir, deshacer, copiar y pegar",
+     "minutos": 12,
+     "conceptos": [
+      "editar con F2 o doble clic",
+      "Supr borra el contenido",
+      "Esc cancela lo que estás escribiendo",
+      "Ctrl+Z deshace y Ctrl+Y rehace",
+      "Ctrl+C, Ctrl+X, Ctrl+V",
+      "Ctrl+Z no sustituye a guardar copias",
+      "pegar encima sustituye lo que había"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Borrar la celda y escribir todo de nuevo para corregir una letra",
+      "Confiar en que Ctrl+Z lo arregla todo (no deshace un archivo cerrado ni eliminar una hoja)",
+      "Pegar encima de datos sin mirar"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "test: has borrado una columna sin querer: ¿qué haces primero? (Ctrl+Z)",
+      "respuesta_corta: tecla para editar la celda activa (F2)",
+      "test: Ctrl+X frente a Ctrl+C",
+      "ordenar: mover un bloque de datos a otra zona",
+      "test: ¿qué no deshace Ctrl+Z? (eliminar una hoja, cerrar sin guardar)",
+      "cinta: Inicio > Portapapeles > Pegar",
+      "recuerda: respuesta_corta Ctrl+Y",
+      "recuerda: test Esc"
+     ],
+     "practica_excel_real": null
+    }
+   ],
+   "practica_excel": "Libro n0-parte-horas.xlsx: corregir cinco errores de escritura (punto decimal, € escrito a mano, fecha al revés, número con «h», columna estrecha) en un parte de horas y guardarlo con otro nombre."
+  },
+  {
+   "id": "n0m3",
+   "titulo": "Excel calcula",
+   "objetivos": [
+    "es capaz de escribir fórmulas que empiezan por = y usan referencias a celdas",
+    "es capaz de predecir el resultado de una fórmula con varias operaciones",
+    "es capaz de sumar una columna con Autosuma y comprobarla con la barra de estado"
+   ],
+   "lecciones": [
+    {
+     "id": "n0m3l1",
+     "titulo": "Tu primera fórmula",
+     "minutos": 13,
+     "conceptos": [
+      "toda fórmula empieza por =",
+      "la celda muestra el resultado y la barra de fórmulas, la fórmula",
+      "referencia a celda (=B2*C2) en vez de escribir el número",
+      "Excel recalcula solo cuando cambian los datos",
+      "escribir la referencia haciendo clic en la celda"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E01 Escribir el resultado a mano en vez de una fórmula",
+      "E02 Fórmula sin = (queda como texto)",
+      "E19 Escribir los números dentro de la fórmula (=100*21) en vez de apuntar a las celdas"
+     ],
+     "ejercicios_vivos": [
+      "=B2*C2 (importe = cantidad × precio)",
+      "=B2+B3 (dos facturas)",
+      "=B4-B5 (lo que queda por cobrar)",
+      "predice: =B2*C2 tras cambiar C2",
+      "arregla el error: fórmula inicial «B2*C2» sin ="
+     ],
+     "otros_ejercicios": [
+      "senala: dónde ves la fórmula (barra de fórmulas)",
+      "test: =100*21 frente a =B2*C2: ¿cuál sigue bien si cambia el precio?",
+      "recuerda: escribe =B2*C2 sin mirar"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n0m3l2",
+     "titulo": "Las operaciones y su orden",
+     "minutos": 13,
+     "conceptos": [
+      "operadores + − * / ^",
+      "primero potencias, luego multiplicar y dividir, luego sumar y restar",
+      "los paréntesis mandan",
+      "precio con descuento: =B2-B2*C2 y =B2*(1-C2)",
+      "media de dos valores con paréntesis"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E04 Prioridad de operadores: =B2+B3/2 cuando se quería la media",
+      "Olvidar el paréntesis en =B2*(1-C2)"
+     ],
+     "ejercicios_vivos": [
+      "predice: =A1*A2+1 con 4 y 6 (25)",
+      "predice: =5+2*3 (11)",
+      "=(B2+B3)/2 (media de dos meses)",
+      "=B2*(1-C2) (precio con descuento)",
+      "arregla el error: =B2+B3/2 → =(B2+B3)/2",
+      "=B2^2 (superficie de un local cuadrado)"
+     ],
+     "otros_ejercicios": [
+      "test: qué se calcula primero en =10-2*3",
+      "recuerda: predice con paréntesis",
+      "recuerda: escribe la media de B2 y B3"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n0m3l3",
+     "titulo": "Sumar una columna con Autosuma",
+     "minutos": 12,
+     "conceptos": [
+      "función = receta con nombre: SUMA(rango)",
+      "Autosuma (Inicio > Edición) y su atajo Alt+= (Alt+Mayús+0 en teclado español)",
+      "comprobar el rango que propone Autosuma",
+      "SUMA(B2:B9) frente a =B2+B3+…",
+      "la barra de estado para comprobar el total"
+     ],
+     "funciones": [
+      "SUMA"
+     ],
+     "errores_conceptuales": [
+      "E03 SUMA redundante: =SUMA(B2+B3+B4)",
+      "Aceptar el rango de Autosuma sin mirarlo (se deja filas o incluye el encabezado)"
+     ],
+     "ejercicios_vivos": [
+      "=SUMA(B2:B9) total de facturas",
+      "=SUMA(C2:C6) total de horas",
+      "arregla el error: =SUMA(B2:B6) que se deja dos filas fuera → =SUMA(B2:B8)",
+      "predice: =SUMA(B2:B4) con un valor cambiado",
+      "mini-tarea: total de un pedido de 6 líneas con SUMA"
+     ],
+     "otros_ejercicios": [
+      "cinta: Inicio > Edición > Autosuma",
+      "test: =SUMA(B2+B3+B4) frente a =SUMA(B2:B4)",
+      "recuerda: escribe la suma de B2:B7 sin mirar"
+     ],
+     "practica_excel_real": null
+    }
+   ],
+   "practica_excel": "Libro n0-pedido.xlsx: rellenar una hoja de pedido que ya trae el formato (cantidades), calcular importes con =cantidad*precio y el total con Autosuma, comprobar el total con la barra de estado y guardarlo con nombre y fecha. Control: total del pedido."
+  }
+ ],
+ "examen_nivel": "15 min, sin pistas, 80 % a la primera: señalar 4 partes de la ventana, dar direcciones de celda y rango, reconocer datos mal escritos (punto decimal, € a mano, fecha), atajos básicos (Ctrl+G, F12, Ctrl+Z, Ctrl+Inicio), guardar en OneDrive frente a la carpeta, predecir fórmulas con prioridad y paréntesis, y escribir en vivo una fórmula con referencias y una SUMA de columna."
+}

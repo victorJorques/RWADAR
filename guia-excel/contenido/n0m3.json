@@ -1,0 +1,1707 @@
+{
+  "id": "n0m3",
+  "nivel": "n0",
+  "titulo": "Tu primera fórmula",
+  "intro": "Las fórmulas son lo que convierte una hoja de Excel en algo más que papel cuadriculado: los totales se calculan solos y se actualizan cuando cambian los datos. En este módulo escribes tus primeras cuentas, sumas columnas enteras y entregas en PDF una plantilla de la empresa, rellena y comprobada.",
+  "repaso_inicial": [
+    {
+      "id": "n0m3-r1",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cómo se llama la celda que está en la columna **C** y la fila **5**?",
+      "aceptadas": [
+        "C5",
+        "c5"
+      ],
+      "explicacion": "C5: primero la letra de la columna y luego el número de la fila. Hoy usarás estas direcciones dentro de tus fórmulas."
+    },
+    {
+      "id": "n0m3-r2",
+      "modo": "test",
+      "pregunta": "Quieres escribir el precio **doce euros y medio** para que Excel lo entienda como número. ¿Qué tecleas?",
+      "opciones": [
+        {
+          "texto": "12,5",
+          "correcta": true,
+          "porque": "Correcto: en España los decimales van con coma. Excel lo alinea a la derecha, señal de que es un número."
+        },
+        {
+          "texto": "12.5",
+          "correcta": false,
+          "porque": "Con punto, el Excel en español no lo reconoce como ese número: puede quedarse como texto o convertirse en una fecha."
+        },
+        {
+          "texto": "12,5 euros",
+          "correcta": false,
+          "porque": "Con la palabra «euros», Excel lo guarda como texto y no podrá hacer cuentas con él. La unidad va en la cabecera de la columna."
+        }
+      ],
+      "explicacion": "Coma decimal y solo el número. Dentro de las fórmulas será igual."
+    },
+    {
+      "id": "n0m3-r3",
+      "modo": "respuesta_corta",
+      "pregunta": "Acabas de borrar sin querer una columna de datos. ¿Qué atajo lo **deshace**?",
+      "aceptadas": [
+        "Ctrl+Z",
+        "Control+Z",
+        "Ctrl Z",
+        "Ctrl + Z",
+        "ctrl+z"
+      ],
+      "explicacion": "[[Ctrl]]+[[Z]]. Te salvará también si escribes encima de una fórmula, como verás en este módulo."
+    },
+    {
+      "id": "n0m3-r4",
+      "modo": "senala",
+      "pregunta": "Seleccionas varios importes y quieres ver su suma sin escribir nada. Toca la **barra de estado**.",
+      "zona": "barra_estado",
+      "explicacion": "Abajo del todo, a la derecha: Promedio, Recuento y Suma de lo que seleccionas. En este módulo la usarás para comprobar tus totales."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "Tu primer día con plantillas reales de Electro Cierzo. Descarga el libro **n0-parte-de-horas.xlsx** y sigue la hoja «Instrucciones»:\n\n1. En «Parte de horas», escribe las horas del jueves (**8**, en C5) y del viernes (**6,5**, en C6).\n2. En **C8**, el total de horas con `SUMA` (de C2 a C6).\n3. En **C10**, el importe a pagar: total de horas por precio por hora (`=C8*C9`).\n4. Cambia el nombre de la hoja «Hoja2» por **«Pedido»**.\n5. En «Pedido», escribe las unidades que faltan: **15** en B3 y **40** en B5.\n6. En **D8**, el total del pedido con `SUMA` (de D2 a D7).\n\nEscribe solo en las celdas amarillas y en las de los totales. Comprueba cada total con la barra de estado y después escribe aquí los totales de control.",
+    "archivo": "n0-parte-de-horas.xlsx",
+    "controles": [
+      {
+        "pregunta": "Total de horas de la semana (celda C8 de «Parte de horas»)",
+        "respuesta": 38,
+        "tolerancia": 0.01,
+        "pista": "Si te sale 23,5, faltan el jueves y el viernes. Si te sale 31,5, el rango de SUMA no llega hasta C6."
+      },
+      {
+        "pregunta": "Importe a pagar del parte (celda C10), en euros",
+        "respuesta": 661.2,
+        "tolerancia": 0.01,
+        "pista": "Es el total de horas (C8) multiplicado por el precio por hora (C9): =C8*C9. Si te sale 0, revisa que C8 tenga su fórmula."
+      },
+      {
+        "pregunta": "Importe de la línea del cable de 2,5 mm² (celda D3 de «Pedido»), en euros",
+        "respuesta": 897,
+        "tolerancia": 0.01,
+        "pista": "Escribe 15 en B3: la fórmula de D3 (=B3*C3) ya está hecha y se calcula sola."
+      },
+      {
+        "pregunta": "Importe de la línea de las bridas (celda D5), en euros",
+        "respuesta": 126,
+        "tolerancia": 0.01,
+        "pista": "Escribe 40 en B5 (las unidades), no en la columna del importe."
+      },
+      {
+        "pregunta": "Total del pedido sin IVA (celda D8), en euros",
+        "respuesta": 2590.5,
+        "tolerancia": 0.01,
+        "pista": "=SUMA(D2:D7). Si te sale 1.567,50 €, todavía no has escrito las unidades de B3 y B5."
+      }
+    ],
+    "solucion_md": "**Parte de horas**\n\n- C5: `8` y C6: `6,5` (datos, sin fórmula).\n- C8: `=SUMA(C2:C6)` → **38** horas.\n- C10: `=C8*C9` → 38 × 17,40 € = **661,20 €**.\n\n**Hoja «Pedido»** (doble clic en la pestaña «Hoja2», escribir Pedido, Intro)\n\n- B3: `15` → D3 se calcula solo: 15 × 59,80 € = **897,00 €**.\n- B5: `40` → D5: 40 × 3,15 € = **126,00 €**.\n- D8: `=SUMA(D2:D7)` → **2.590,50 €**.\n\n**Comprobación**: selecciona C2:C6 y la barra de estado debe decir Suma 38; selecciona D2:D7 y debe decir 2.590,50.",
+    "archivo_solucion": "n0-parte-de-horas-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n0m3l1",
+      "titulo": "El signo igual: Excel como calculadora",
+      "minutos": 12,
+      "objetivo": "Escribir fórmulas que empiezan por = y usan + - * / para hacer cuentas, con decimales con coma, sin escribir nunca el resultado a mano.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Hoy han entrado tres albaranes de proveedores: 128 €, 46,50 € y 310 €. Apúntame en Excel cuánto suman, con la cuenta hecha por Excel, no con la calculadora del móvil. Y ya que estás: tengo 360 bridas para repartir en 8 cajas iguales, ¿cuántas van en cada una?",
+        "logro": "Ya sabes usar Excel como calculadora: sumar, restar, multiplicar y dividir con fórmulas que cualquiera puede revisar."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En el módulo 1 ya hiciste tus primeras cuentas (`=2+3`). Hoy vas a hacerlas de verdad, con las cuatro operaciones.\n\nRecuerda: una **fórmula** es una cuenta que Excel hace por ti. Para que sepa que lo que escribes es una cuenta y no un texto, empieza **siempre** por el signo **igual**: `=` (en el teclado español, [[Mayús]]+[[0]]).\n\nEscribes `=12+8`, pulsas **Intro** y la celda muestra **20**. El signo igual es como decirle a Excel: «calcula esto»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e1",
+          "modo": "formula",
+          "enunciado": "Calentamiento. Haz clic en la celda **B2**, escribe `=12+8` y pulsa **Intro**. Debe salir **20**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Prueba",
+              "B1": "Resultado",
+              "A2": "Mi primera fórmula"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "objetivo": "B2",
+          "solucion": "=12+8",
+          "alternativas": [
+            "=8+12"
+          ],
+          "errores_tipicos": [
+            "=12-8",
+            "=12*8"
+          ],
+          "pistas": [
+            "Lo primero que escribes es el signo igual.",
+            "Después del igual van los números con el signo de sumar entre ellos.",
+            "Escribe exactamente `=12+8` y pulsa Intro."
+          ],
+          "explicacion": "Hecho: fórmula escrita y calculada. El `=` del principio es lo que convierte lo que escribes en una cuenta. Todo lo que harás en Excel a partir de hoy empieza así."
+        },
+        {
+          "tipo": "texto",
+          "md": "Los cuatro signos de las cuentas (los **operadores**) son:\n\n- `+` sumar: `=128+46`\n- `-` restar: `=500-120`\n- `*` multiplicar (el **asterisco**): `=150*3`\n- `/` dividir (la **barra**): `=100/4`\n\nLos tienes juntos en el teclado numérico, a la derecha del teclado. Si tu portátil no tiene, el `*` está encima del `+` y la `/` encima del 7 (con [[Mayús]])."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Ni x ni dos puntos",
+          "md": "En el colegio multiplicabas con **x** y dividías con **:**. Excel no los entiende como cuentas: `=150x3` da error. Usa siempre `*` y `/`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e2",
+          "modo": "test",
+          "pregunta": "Andrés pide 3 cajas de mecanismos de 150 € cada una. ¿Qué escribes en la celda para que Excel calcule cuánto cuestan?",
+          "opciones": [
+            {
+              "texto": "`=150*3`",
+              "correcta": true,
+              "porque": "Correcto: empieza por = y multiplica con el asterisco. La celda mostrará 450."
+            },
+            {
+              "texto": "`=150x3`",
+              "correcta": false,
+              "porque": "La x no es un signo de Excel. No lo acepta como cuenta: usa el asterisco `*`."
+            },
+            {
+              "texto": "`150*3`",
+              "correcta": false,
+              "porque": "Falta el signo igual. Sin él, Excel lo guarda como texto y la celda mostrará «150*3», sin calcular."
+            },
+            {
+              "texto": "`=150:3`",
+              "correcta": false,
+              "porque": "Los dos puntos no dividen ni multiplican en Excel (más adelante verás que sirven para otra cosa). Para multiplicar, `*`."
+            }
+          ],
+          "explicacion": "Signo igual delante y el operador correcto: con esas dos cosas ya puedes hacer cualquier cuenta sencilla de la oficina."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e3",
+          "modo": "formula",
+          "enunciado": "En el almacén hay **6 rollos** de cable de **100 metros** cada uno. En la celda **B2**, escribe una fórmula que multiplique 6 por 100. Debe salir **600**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cálculo",
+              "B1": "Metros",
+              "A2": "Metros de cable en 6 rollos"
+            },
+            "anchos": {
+              "A": 28
+            }
+          },
+          "objetivo": "B2",
+          "solucion": "=6*100",
+          "alternativas": [
+            "=100*6"
+          ],
+          "errores_tipicos": [
+            "=6+100",
+            "=100/6"
+          ],
+          "pistas": [
+            "Empieza por el signo igual.",
+            "Para multiplicar se usa el asterisco `*`.",
+            "Escribe `=6*100` y pulsa Intro."
+          ],
+          "explicacion": "Bien hecho: 600 metros. Así calcularás cantidades de almacén (rollos por metros, cajas por unidades) en segundos y sin errores de calculadora."
+        },
+        {
+          "tipo": "texto",
+          "md": "Después de pulsar Intro, en la celda ya no ves la fórmula: ves el **resultado**. ¿Dónde se ha ido la fórmula? Sigue ahí dentro.\n\nHaz clic en la celda y mira la **barra de fórmulas**, la franja larga encima de las columnas. Ahí aparece la fórmula de verdad.\n\n- La **celda** enseña el resultado: `600`.\n- La **barra de fórmulas** enseña la cuenta: `=6*100`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e4",
+          "modo": "senala",
+          "pregunta": "Quieres ver qué cuenta hay detrás de un resultado. Toca la **barra de fórmulas**.",
+          "zona": "barra_formulas",
+          "explicacion": "Esa franja te dice siempre qué hay de verdad en la celda. Cuando una cifra te parezca rara, haz clic en su celda y mira aquí: sabrás si es una fórmula o un número escrito a mano."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e5",
+          "modo": "predice",
+          "enunciado": "Antes de que Excel lo calcule: en la celda B2 alguien ha escrito `=1000/8` para repartir 1.000 € de material entre 8 obras. ¿Qué número mostrará la celda?",
+          "hoja": {
+            "celdas": {
+              "A1": "Reparto",
+              "B1": "Importe por obra",
+              "A2": "1.000 € entre 8 obras"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 16
+            }
+          },
+          "celda": "B2",
+          "formula": "=1000/8",
+          "explicacion": "1.000 entre 8 es 125. La barra `/` divide. La celda muestra 125 y la barra de fórmulas sigue mostrando `=1000/8`.",
+          "respuesta": "125"
+        },
+        {
+          "tipo": "texto",
+          "md": "Dentro de una fórmula, los **decimales van con coma**, igual que cuando escribes un dato: `=46,5+12,25`.\n\nY los **miles no se escriben con punto**: 1.250 € se escribe `1250` dentro de la fórmula. El punto de los miles solo lo pone Excel al **mostrar** el número.\n\nTampoco se escribe el símbolo €: dentro de una cuenta solo van números y signos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e6",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** Nuria quiso repartir **360 bridas en 8 cajas** y escribió en **B2** `360/8`, pero Excel lo dejó como texto y no calculó nada. Corrige la fórmula para que la celda muestre **45**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Reparto de bridas",
+              "B1": "Por caja",
+              "A2": "360 bridas en 8 cajas"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "objetivo": "B2",
+          "inicial": "360/8",
+          "solucion": "=360/8",
+          "errores_tipicos": [
+            "=360*8",
+            "=360-8"
+          ],
+          "pistas": [
+            "La cuenta está bien; le falta algo al principio.",
+            "Sin el signo igual, Excel no sabe que es una cuenta.",
+            "Escribe `=360/8` y pulsa Intro."
+          ],
+          "explicacion": "Arreglado: 45 bridas por caja. Este es el fallo más típico del primer día. Cuando una celda muestra la cuenta en vez del resultado, mira si falta el `=` del principio."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un consejo: nunca hagas la cuenta en la calculadora del móvil y escribas el resultado en la celda. Si lo haces con fórmula, cualquiera que haga clic ve **de dónde sale** el número y puede revisarlo. Un número suelto no se puede comprobar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l1-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Andrés.** En la celda **B2**, escribe una fórmula que sume los tres albaranes de hoy: **128 €**, **46,50 €** y **310 €**. Debe salir **484,5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Importe",
+              "A2": "Total albaranes 16/11/2026",
+              "A3": "Bridas por caja",
+              "B3": 45
+            },
+            "formatos": {
+              "B2": "eur"
+            },
+            "anchos": {
+              "A": 26,
+              "B": 12
+            }
+          },
+          "objetivo": "B2",
+          "solucion": "=128+46,5+310",
+          "alternativas": [
+            "=128+46,50+310",
+            "=310+128+46,5"
+          ],
+          "errores_tipicos": [
+            "=128+46+310",
+            "=128+465+310"
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Son tres importes que hay que sumar: empieza por `=` y une los números con `+`.",
+            "El 46,50 se escribe con coma decimal, y sin el símbolo €.",
+            "Escribe `=128+46,5+310` y pulsa Intro."
+          ],
+          "explicacion": "Encargo resuelto: 484,50 €, y Andrés puede hacer clic en la celda y ver la cuenta en la barra de fórmulas. Así se apuntan los importes en una oficina: con la cuenta a la vista, nunca con un número que nadie puede revisar."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m3l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar: ¿qué signo usas en Excel para **multiplicar**?",
+          "aceptadas": [
+            "*",
+            "asterisco",
+            "el asterisco",
+            "Asterisco"
+          ],
+          "explicacion": "El asterisco `*`. Y para dividir, la barra `/`."
+        },
+        {
+          "id": "n0m3l1-q2",
+          "modo": "test",
+          "pregunta": "Una compañera hace la cuenta con la calculadora y escribe **484,5** en la celda. Tú escribes `=128+46,5+310`. Las dos celdas muestran lo mismo. ¿Qué ventaja tiene la tuya?",
+          "opciones": [
+            {
+              "texto": "Cualquiera ve en la barra de fórmulas de dónde sale el número y puede revisarlo",
+              "correcta": true,
+              "porque": "Exacto: la fórmula deja la cuenta a la vista. Si un albarán estaba mal, se ve y se corrige en un momento."
+            },
+            {
+              "texto": "Ninguna: si sale lo mismo, da igual",
+              "correcta": false,
+              "porque": "Hoy sale lo mismo, pero el 484,5 suelto no dice de dónde viene. Si hay un error en la calculadora, nadie podrá encontrarlo."
+            },
+            {
+              "texto": "La suya es mejor porque es más corta",
+              "correcta": false,
+              "porque": "Más corta, pero imposible de comprobar. En una empresa, un número que no se puede revisar es un riesgo."
+            }
+          ],
+          "explicacion": "Regla de oficina: las cuentas, con fórmula. Los resultados escritos a mano no se pueden revisar."
+        },
+        {
+          "id": "n0m3l1-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué mostrará la celda con esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cuenta"
+            }
+          },
+          "celda": "A2",
+          "formula": "=500-120",
+          "explicacion": "500 menos 120 son 380. El signo `-` resta.",
+          "respuesta": "380"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Con qué empieza siempre una fórmula?",
+          "dorso": "Con el signo igual: =. Sin él, Excel lo guarda como texto."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Los cuatro operadores de Excel",
+          "dorso": "+ sumar · - restar · * multiplicar · / dividir (nunca x ni :)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "La celda muestra… y la barra de fórmulas muestra…",
+          "dorso": "La celda, el resultado (600). La barra de fórmulas, la cuenta (=6*100)."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Cómo se escribe 46,50 dentro de una fórmula?",
+          "dorso": "46,5 (coma decimal, sin punto de miles ni símbolo €)."
+        }
+      ]
+    },
+    {
+      "id": "n0m3l2",
+      "titulo": "Fórmulas con celdas: la idea más importante de Excel",
+      "minutos": 14,
+      "objetivo": "Escribir fórmulas que usan direcciones de celda (=B2*C2) en lugar de números, para que el resultado se actualice solo cuando cambian los datos.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Te paso el pedido de Instalaciones Ebro: precio y unidades de cada línea. Calcúlame el importe de la línea de las luminarias con fórmula, que el cliente todavía puede cambiar las unidades y no quiero rehacer la cuenta cada vez.",
+        "logro": "Ya sabes hacer cálculos que se actualizan solos cuando cambian los datos: la base de todo lo que harás en Excel."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En la lección anterior escribías los números dentro de la fórmula: `=38,9*4`. Funciona, pero tiene trampa: si el precio cambia, la fórmula no se entera.\n\nLa idea más importante de Excel es esta: en vez de los números, escribe **dónde están**. Si el precio está en **B2** y las unidades en **C2**, la fórmula es `=B2*C2`.\n\nEs como una receta: «multiplica lo que haya en B2 por lo que haya en C2»."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así se ve",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Cable 1,5 mm² (rollo 100 m)",
+              "B2": 38.9,
+              "C2": 4,
+              "D2": "=B2*C2"
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "resaltar": [
+            "D2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "D2 no contiene 38,9 ni 4: contiene las direcciones B2 y C2. Excel va a mirar qué hay en ellas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e1",
+          "modo": "formula",
+          "enunciado": "Tu primera fórmula con celdas. En **D2**, escribe `=B2*C2` para multiplicar el precio por las unidades. Debe salir **155,60 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Cable 1,5 mm² (rollo 100 m)",
+              "B2": 38.9,
+              "C2": 4
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "objetivo": "D2",
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=38,9*4",
+            "=B2+C2",
+            "=B2*B2"
+          ],
+          "variantes": [
+            {
+              "B2": 40,
+              "C2": 5
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza por `=` y en vez de números escribe las direcciones de las celdas.",
+            "El precio está en B2 y las unidades en C2. Multiplícalas con `*`.",
+            "Escribe `=B2*C2` y pulsa Intro."
+          ],
+          "explicacion": "Ya está: 155,60 €. Y lo mejor no se ve: si mañana cambia el precio de B2, D2 se recalcula solo. Así funcionan todas las facturas y pedidos de la empresa."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora viene la magia. Imagina que el cliente pide **6 rollos** en vez de 4. Haces clic en **C2**, escribes `6` y pulsas Intro.\n\nNo tienes que tocar la fórmula: D2 pasa sola de 155,60 € a **233,40 €**, porque sigue diciendo «multiplica B2 por C2» y C2 ahora vale 6.\n\nPor eso en una empresa los datos van en celdas y los cálculos apuntan a ellas: cambias un dato y todo se pone al día."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e2",
+          "modo": "predice",
+          "enunciado": "En D2 está la fórmula `=B2*C2`. Javier llama: el cliente quiere **30 luminarias** y has cambiado C2 a 30. Sin tocar la fórmula, ¿qué número mostrará D2?",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Luminaria LED 18 W",
+              "B2": 12.4,
+              "C2": 30
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "celda": "D2",
+          "formula": "=B2*C2",
+          "explicacion": "12,40 × 30 = 372. La fórmula mira lo que hay ahora en C2, así que el importe se actualiza solo. No has tenido que hacer ninguna cuenta.",
+          "respuesta": "372"
+        },
+        {
+          "tipo": "texto",
+          "md": "No hace falta teclear las direcciones. Hay una forma más cómoda y con menos errores: **hacer clic** en las celdas mientras escribes la fórmula. Excel pone la dirección por ti."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: la fórmula a golpe de clic",
+          "pasos": [
+            {
+              "md": "Haz clic en **D2** (donde quieres el resultado) y escribe `=`."
+            },
+            {
+              "md": "Haz clic en **B2**. En la fórmula aparece `=B2`, y B2 se rodea de un borde de color."
+            },
+            {
+              "md": "Escribe `*` y haz clic en **C2**. La fórmula ya es `=B2*C2`."
+            },
+            {
+              "md": "Pulsa **Intro**. D2 muestra el resultado."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e3",
+          "modo": "formula",
+          "enunciado": "Factura de Electricidad Moncayo con descuento. En **D2** calcula lo que queda por pagar: el **total** (B2) **menos** el **descuento** (C2). Prueba a hacerlo con clics. Debe salir **1.137,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Total",
+              "C1": "Descuento",
+              "D1": "A pagar",
+              "A2": "Electricidad Moncayo",
+              "B2": 1240,
+              "C2": 103
+            },
+            "formatos": {
+              "B2:D2": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 12,
+              "C": 12,
+              "D": 12
+            }
+          },
+          "objetivo": "D2",
+          "solucion": "=B2-C2",
+          "errores_tipicos": [
+            "=1240-103",
+            "=C2-B2",
+            "=B2+C2"
+          ],
+          "variantes": [
+            {
+              "B2": 980,
+              "C2": 49
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Es una resta: al total le quitas el descuento.",
+            "Empieza por `=`, haz clic en B2, escribe `-` y haz clic en C2.",
+            "La fórmula es `=B2-C2`."
+          ],
+          "explicacion": "Correcto: 1.137,00 €. Primero el total y luego lo que se resta: en una resta el orden importa (`=C2-B2` daría un número negativo)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e4",
+          "modo": "formula",
+          "enunciado": "La comida de Navidad del almacén cuesta lo que hay en **B2** y van las personas de **C2**. En **D2** calcula cuánto toca **por persona**. Debe salir **27,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Evento",
+              "B1": "Importe",
+              "C1": "Personas",
+              "D1": "Por persona",
+              "A2": "Comida de Navidad",
+              "B2": 486,
+              "C2": 18
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "eur"
+            },
+            "anchos": {
+              "A": 20,
+              "D": 12
+            }
+          },
+          "objetivo": "D2",
+          "solucion": "=B2/C2",
+          "errores_tipicos": [
+            "=486/18",
+            "=C2/B2",
+            "=B2*C2"
+          ],
+          "variantes": [
+            {
+              "B2": 540,
+              "C2": 20
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "«Por persona» es repartir: una división.",
+            "Lo que se reparte (el importe, B2) va primero; luego la barra `/` y entre cuántos (C2).",
+            "La fórmula es `=B2/C2`."
+          ],
+          "explicacion": "27,00 € por persona. Si al final se apunta alguien más, cambias C2 y el reparto se recalcula solo."
+        },
+        {
+          "tipo": "texto",
+          "md": "La regla de oro, que te ahorrará muchos disgustos: **si un número ya está en una celda, no lo escribas dentro de la fórmula**. Apunta a su celda.\n\n- Mal: `=12,4*25`. Hoy da bien, pero si cambian las unidades, el importe se queda viejo.\n- Bien: `=B2*C2`. Siempre al día.\n\nEn las hojas de empresa este fallo es de los más comunes, y de los más difíciles de ver: el resultado parece correcto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e5",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** En **D2** alguien escribió `=12,4*25` con los números a mano. Hoy da bien, pero si cambian el precio o las unidades no se actualizará. Cámbiala por una fórmula que **apunte a las celdas**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Luminaria LED 18 W",
+              "B2": 12.4,
+              "C2": 25
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "eur"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "objetivo": "D2",
+          "inicial": "=12,4*25",
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=310",
+            "=B2*25",
+            "=12,4*C2"
+          ],
+          "variantes": [
+            {
+              "B2": 13.1,
+              "C2": 40
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El 12,4 ya está escrito en una celda, y el 25 en otra. ¿En cuáles?",
+            "El precio está en B2 y las unidades en C2: cambia cada número por su dirección.",
+            "La fórmula es `=B2*C2`."
+          ],
+          "explicacion": "Arreglado. Ahora el importe depende de las celdas y nunca se quedará viejo. Revisar las fórmulas en busca de números escritos a mano es una de las primeras cosas que hace una buena administrativa."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Truco para no apuntar a la celda equivocada: haz doble clic en una celda con fórmula. Excel pinta cada dirección de la fórmula de un color y rodea esa celda con un borde del mismo color. Así ves de un vistazo a qué celdas mira."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e6",
+          "modo": "test",
+          "pregunta": "En la fila 3 está el tubo corrugado: precio en B3 y unidades en C3. ¿Qué fórmula pones en **D3** para su importe?",
+          "opciones": [
+            {
+              "texto": "`=B3*C3`",
+              "correcta": true,
+              "porque": "Correcto: las dos celdas de su misma fila, la 3."
+            },
+            {
+              "texto": "`=B2*C2`",
+              "correcta": false,
+              "porque": "Esas celdas son de la fila 2, la del producto de arriba. Darías el importe de otro producto: un error que no avisa."
+            },
+            {
+              "texto": "`=B3*C2`",
+              "correcta": false,
+              "porque": "Mezcla el precio del tubo con las unidades de otra línea. Cada fórmula debe mirar a su propia fila."
+            },
+            {
+              "texto": "`=D3*C3`",
+              "correcta": false,
+              "porque": "D3 es la propia celda del importe, no el precio. Una fórmula no puede usarse a sí misma."
+            }
+          ],
+          "explicacion": "Mira siempre que la fórmula apunta a las celdas de su fila. Apuntar a la celda equivocada da un número que parece bueno y no lo es."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l2-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Marta.** Pedido de Instalaciones Ebro. En **D3** calcula el importe de la línea de las **luminarias**: su precio por sus unidades, con una fórmula que apunte a las celdas de su fila. Debe salir **372,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Cable 2,5 mm² (rollo 100 m)",
+              "B2": 59.8,
+              "C2": 3,
+              "D2": "=B2*C2",
+              "A3": "Luminaria LED 18 W",
+              "B3": 12.4,
+              "C3": 30,
+              "A4": "Bridas 200 mm (bolsa 100)",
+              "B4": 3.15,
+              "C4": 10,
+              "D4": "=B4*C4"
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "D2:D4": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "objetivo": "D3",
+          "solucion": "=B3*C3",
+          "alternativas": [
+            "=C3*B3"
+          ],
+          "errores_tipicos": [
+            "=12,4*30",
+            "=B2*C2",
+            "=B4*C4",
+            "=B3*C2"
+          ],
+          "variantes": [
+            {
+              "C3": 45
+            },
+            {
+              "B3": 11.9,
+              "C3": 20
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Las luminarias están en la fila 3. ¿Dónde están su precio y sus unidades?",
+            "Precio en B3, unidades en C3: multiplícalas, sin escribir números.",
+            "La fórmula es `=B3*C3`."
+          ],
+          "explicacion": "Encargo resuelto: 372,00 €. Si el cliente cambia las unidades, Marta solo tiene que tocar C3 y el importe se actualiza. Esta idea, que la fórmula mire a las celdas, es la base de todo lo que harás en Excel."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m3l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar: escribe la fórmula que multiplica lo que hay en **B4** por lo que hay en **C4**.",
+          "aceptadas": [
+            "=B4*C4",
+            "=C4*B4",
+            "=b4*c4",
+            "=c4*b4"
+          ],
+          "explicacion": "`=B4*C4`: signo igual, las direcciones de las celdas y el asterisco entre ellas."
+        },
+        {
+          "id": "n0m3l2-q2",
+          "modo": "predice",
+          "enunciado": "En D2 está `=B2-C2`. Marta cambia el descuento de C2 a **50**. ¿Qué mostrará D2?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Total",
+              "C1": "Descuento",
+              "D1": "A pagar",
+              "A2": "Montajes Arnedo",
+              "B2": 820,
+              "C2": 50
+            },
+            "anchos": {
+              "A": 18
+            }
+          },
+          "celda": "D2",
+          "formula": "=B2-C2",
+          "explicacion": "820 − 50 = 770. La fórmula toma el valor nuevo de C2 sin que la toques.",
+          "respuesta": "770"
+        },
+        {
+          "id": "n0m3l2-q3",
+          "modo": "test",
+          "pregunta": "¿Por qué es mejor `=B2*C2` que `=12,4*25`, si hoy las dos dan 310?",
+          "opciones": [
+            {
+              "texto": "Porque si cambia un dato de B2 o C2, el resultado se actualiza solo",
+              "correcta": true,
+              "porque": "Exacto: la fórmula con celdas sigue a los datos; la de números a mano se queda con los de hoy."
+            },
+            {
+              "texto": "Porque Excel calcula más rápido con letras",
+              "correcta": false,
+              "porque": "La velocidad es la misma. La diferencia es que una se actualiza y la otra no."
+            },
+            {
+              "texto": "Da igual, si el resultado es el mismo",
+              "correcta": false,
+              "porque": "Hoy sí, pero en cuanto cambie el precio o las unidades, `=12,4*25` dará un importe viejo sin avisar."
+            }
+          ],
+          "explicacion": "Si el dato está en una celda, la fórmula apunta a la celda. Siempre."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué hace =B2*C2?",
+          "dorso": "Multiplica lo que haya en B2 por lo que haya en C2. Si cambian, el resultado se actualiza solo."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué tiene de malo =12,4*25 si 12,4 está en B2 y 25 en C2?",
+          "dorso": "Los números van a mano: si cambian los datos, el resultado se queda viejo. Mejor =B2*C2."
+        },
+        {
+          "tipo": "truco",
+          "frente": "Cómo poner una dirección en la fórmula sin teclearla",
+          "dorso": "Mientras escribes la fórmula, haz clic en la celda: Excel escribe su dirección."
+        },
+        {
+          "tipo": "truco",
+          "frente": "¿Cómo ves a qué celdas mira una fórmula?",
+          "dorso": "Doble clic en la celda: cada dirección sale de un color y su celda, con un borde del mismo color."
+        }
+      ]
+    },
+    {
+      "id": "n0m3l3",
+      "titulo": "Sumar una columna: SUMA y Autosuma",
+      "minutos": 15,
+      "objetivo": "Sumar una columna con la función SUMA y con el botón Autosuma, revisar que el rango coge todas las filas y comprobar el total con la barra de estado.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Javier ha pasado los tickets de su viaje a Lleida y Pamplona de esta semana. Necesito el total para cuadrarlo con el cargo de la tarjeta de empresa. Con fórmula, por favor, y compruébalo antes de mandármelo.",
+        "logro": "Ya sabes sumar una columna entera en segundos con SUMA y comprobar que el total está bien."
+      },
+      "funciones": [
+        "SUMA"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Una **función** es una fórmula que Excel ya trae hecha y tiene un **nombre**. La más usada de todas es **SUMA**.\n\n`=SUMA(B2:B6)` significa: «suma todo lo que hay **de B2 a B6**». Lo de dentro del paréntesis es un **rango**: un bloque de celdas seguidas. Los **dos puntos** se leen «hasta».\n\nCon SUMA da igual que sean 5 filas o 500: la fórmula es igual de corta."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así se ve",
+          "hoja": {
+            "celdas": {
+              "A1": "Gasto",
+              "B1": "Importe",
+              "A2": "Gasolina",
+              "B2": 62.4,
+              "A3": "Peaje AP-68",
+              "B3": 18.95,
+              "A4": "Comida",
+              "B4": 24.5,
+              "A5": "Aparcamiento",
+              "B5": 9.6,
+              "A6": "Hotel Lleida",
+              "B6": 78,
+              "A7": "Total",
+              "B7": "=SUMA(B2:B6)"
+            },
+            "formatos": {
+              "B2:B7": "eur"
+            },
+            "anchos": {
+              "A": 16
+            }
+          },
+          "resaltar": [
+            "B7"
+          ],
+          "mostrar_formulas": true,
+          "pie": "El rango B2:B6 son las cinco celdas de importes. El total va justo debajo, fuera del rango."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e1",
+          "modo": "formula",
+          "enunciado": "Gastos de material de oficina de noviembre. En **B7** escribe `=SUMA(B2:B6)` para sumar los cinco importes. Debe salir **214,85 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Gasto",
+              "B1": "Importe",
+              "A2": "Papel A4 (5 paquetes)",
+              "B2": 23.75,
+              "A3": "Tóner impresora",
+              "B3": 89.9,
+              "A4": "Archivadores",
+              "B4": 31.2,
+              "A5": "Bolígrafos y rotuladores",
+              "B5": 14.5,
+              "A6": "Etiquetas almacén",
+              "B6": 55.5,
+              "A7": "Total"
+            },
+            "formatos": {
+              "B2:B7": "eur"
+            },
+            "anchos": {
+              "A": 24
+            }
+          },
+          "objetivo": "B7",
+          "solucion": "=SUMA(B2:B6)",
+          "alternativas": [
+            "=SUMA(B6:B2)"
+          ],
+          "debe_usar": [
+            "SUMA"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B2:B5)",
+            "=SUMA(B3:B6)",
+            "=214,85"
+          ],
+          "variantes": [
+            {
+              "B4": 40,
+              "B6": 60
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza por `=` y escribe el nombre de la función: SUMA.",
+            "Entre paréntesis, la primera celda, dos puntos y la última: B2 hasta B6.",
+            "Escribe `=SUMA(B2:B6)` y pulsa Intro."
+          ],
+          "explicacion": "Primera función, hecha: 214,85 €. Con SUMA sumarás gastos, ventas, horas o facturas, tengan las filas que tengan."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Y no vale `=B2+B3+B4+B5+B6`? Da lo mismo, pero:\n\n- Con 40 filas es una fórmula larguísima y es muy fácil **saltarse una**.\n- Si más adelante **insertas una fila** en medio del rango, `SUMA(B2:B6)` la incluye sola (pasa a B2:B7). La suma con `+` no se entera.\n\nPor eso, para sumar una columna, siempre **SUMA con un rango**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e2",
+          "modo": "test",
+          "pregunta": "Tienes importes de **B2 a B30**. ¿Qué fórmula es la buena para sumarlos todos?",
+          "opciones": [
+            {
+              "texto": "`=SUMA(B2:B30)`",
+              "correcta": true,
+              "porque": "Correcto: los dos puntos dicen «de B2 hasta B30», las 29 celdas."
+            },
+            {
+              "texto": "`=SUMA(B2;B30)`",
+              "correcta": false,
+              "porque": "El punto y coma separa celdas sueltas: solo suma B2 y B30, dos celdas. Las de en medio se quedan fuera."
+            },
+            {
+              "texto": "`=SUMA(B2+B30)`",
+              "correcta": false,
+              "porque": "También suma solo B2 y B30. Dentro de SUMA no se usa `+`: se pone el rango con dos puntos."
+            },
+            {
+              "texto": "`=B2+B3+B4…` hasta B30",
+              "correcta": false,
+              "porque": "Da bien si no te saltas ninguna, pero son 29 celdas a mano: lenta y fácil de equivocar."
+            }
+          ],
+          "explicacion": "Dos puntos = «hasta». Es el detalle que más se confunde al empezar, y ahora ya lo tienes claro."
+        },
+        {
+          "tipo": "texto",
+          "md": "Aún más rápido: el botón **Autosuma** (el símbolo **Σ**, la letra griega sigma, que parece una E) en **Inicio › Edición**.\n\n1. Haz clic en la celda **justo debajo** de los números.\n2. Pulsa **Autosuma**. Excel escribe `=SUMA(…)` y marca con una línea de puntos el rango que cree que quieres.\n3. **Mira el rango**. Si es correcto, pulsa **Intro**.\n\nTambién está en **Fórmulas › Biblioteca de funciones**."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Autosuma con el teclado",
+          "md": "[[Alt]]+[[=]]. En el teclado español el `=` se hace con [[Mayús]]+[[0]], así que pulsa a la vez [[Alt]]+[[Mayús]]+[[0]]."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e3",
+          "modo": "cinta",
+          "enunciado": "Estás debajo de una columna de importes y quieres que Excel escriba la suma por ti. Busca el botón **Autosuma** en la pestaña **Inicio**.",
+          "ruta": [
+            "Inicio",
+            "Edición",
+            "Autosuma"
+          ],
+          "explicacion": "Inicio › Edición › Autosuma, a la derecha del todo de la cinta. Un clic y la suma está escrita; solo te queda revisar el rango."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e4",
+          "modo": "predice",
+          "enunciado": "En la lista de cobros, uno no tiene importe todavía: alguien escribió «pendiente». ¿Qué número mostrará `=SUMA(B2:B5)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Cobrado",
+              "A2": "Instalaciones Ebro",
+              "B2": 450,
+              "A3": "Electricidad Moncayo",
+              "B3": 1200,
+              "A4": "Montajes Arnedo",
+              "B4": "pendiente",
+              "A5": "Reformas Delicias",
+              "B5": 300
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "celda": "B6",
+          "formula": "=SUMA(B2:B5)",
+          "explicacion": "1.950. SUMA no da error con textos: simplemente los **salta**. Útil, pero ojo: «pendiente» no cuenta, así que el total no incluye ese cobro.",
+          "respuesta": "1950"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e5",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** Esta lista de pedidos tenía 5 filas y luego se añadió una sexta (Reformas Delicias, fila 7). El total de **B8** sigue diciendo `=SUMA(B2:B6)` y se la deja fuera. Corrige el rango para que sume **todas** las filas. Debe salir **3.145,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Pedido",
+              "A2": "Instalaciones Ebro",
+              "B2": 640,
+              "A3": "Electricidad Moncayo",
+              "B3": 1125,
+              "A4": "Montajes Arnedo",
+              "B4": 380,
+              "A5": "Clima Huesca",
+              "B5": 510,
+              "A6": "Luz y Obra Tudela",
+              "B6": 215,
+              "A7": "Reformas Delicias",
+              "B7": 275,
+              "A8": "Total"
+            },
+            "formatos": {
+              "B2:B8": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "objetivo": "B8",
+          "inicial": "=SUMA(B2:B6)",
+          "solucion": "=SUMA(B2:B7)",
+          "debe_usar": [
+            "SUMA"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B3:B7)",
+            "=SUMA(B2:B6)+275"
+          ],
+          "variantes": [
+            {
+              "B7": 500
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Mira hasta qué fila llegan los datos.",
+            "Los datos empiezan en B2 y terminan en B7. El total (B8) no entra.",
+            "La fórmula es `=SUMA(B2:B7)`."
+          ],
+          "explicacion": "Corregido: 3.145,00 €. Un rango que se queda corto no da ningún error: simplemente suma de menos. Por eso, cuando añadas filas, revisa siempre hasta dónde llega el total."
+        },
+        {
+          "tipo": "texto",
+          "md": "Otro despiste típico: meter la celda del **total** dentro de su propio rango. Si en **B7** escribes `=SUMA(B2:B7)`, le pides al total que se sume a sí mismo. Es como intentar medir una regla con ella misma.\n\nExcel lo llama **referencia circular**: te muestra un aviso y el total sale a 0 o mal. El rango termina **en la fila de encima** del total."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e6",
+          "modo": "test",
+          "pregunta": "Los gastos están de B2 a B9 y el total va en **B10**. Al escribir la fórmula, Excel te avisa de una **referencia circular**. ¿Qué has escrito, seguramente?",
+          "opciones": [
+            {
+              "texto": "`=SUMA(B2:B10)`",
+              "correcta": true,
+              "porque": "Eso es: el rango llega hasta B10, la propia celda del total. Debe acabar en B9."
+            },
+            {
+              "texto": "`=SUMA(B2:B9)`",
+              "correcta": false,
+              "porque": "Esta es la buena: suma los gastos y deja fuera la celda del total. No daría ningún aviso."
+            },
+            {
+              "texto": "`=SUMA(B3:B9)`",
+              "correcta": false,
+              "porque": "Esta se deja fuera B2 y sumaría de menos, pero no es circular: no incluye B10."
+            }
+          ],
+          "explicacion": "Si ves el aviso de referencia circular, mira si el rango incluye la celda donde estás escribiendo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Antes de dar un total por bueno, **compruébalo**. Tienes un truco que ya conoces: selecciona los importes (sin el total) y mira la **barra de estado**, abajo a la derecha. Ahí verás **Suma**.\n\nSi la Suma de la barra coincide con tu fórmula, el rango está bien. Si no, a tu fórmula le falta o le sobra algo. Diez segundos que evitan pasar un total equivocado a tu jefa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l3-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Marta.** Tickets del viaje de Javier. En **B9** calcula el total de los siete gastos con **SUMA** (o con Autosuma). Debe salir **366,80 €**. Después compruébalo: seleccionarías B2:B8 y mirarías la Suma de la barra de estado.",
+          "hoja": {
+            "celdas": {
+              "A1": "Gasto",
+              "B1": "Importe",
+              "A2": "Gasolina ida",
+              "B2": 62.4,
+              "A3": "Peaje AP-68",
+              "B3": 18.95,
+              "A4": "Comida Lleida",
+              "B4": 24.5,
+              "A5": "Hotel Lleida",
+              "B5": 78,
+              "A6": "Aparcamiento Pamplona",
+              "B6": 9.6,
+              "A7": "Cena con cliente",
+              "B7": 112.35,
+              "A8": "Gasolina vuelta",
+              "B8": 61,
+              "A9": "Total"
+            },
+            "formatos": {
+              "B2:B9": "eur"
+            },
+            "anchos": {
+              "A": 24
+            }
+          },
+          "objetivo": "B9",
+          "solucion": "=SUMA(B2:B8)",
+          "debe_usar": [
+            "SUMA"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B2:B7)",
+            "=SUMA(B3:B8)",
+            "=366,8",
+            "=SUMA(B2;B8)"
+          ],
+          "variantes": [
+            {
+              "B7": 98.4
+            },
+            {
+              "B2": 70,
+              "B8": 55.25
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Los importes van de B2 a B8. El total está en B9 y no entra en el rango (si lo metes, aquí verás #¡REF!; en Excel, el aviso de referencia circular).",
+            "Escribe `=SUMA(` y selecciona con el ratón de B2 a B8, o escribe el rango con dos puntos.",
+            "La fórmula es `=SUMA(B2:B8)`."
+          ],
+          "explicacion": "Encargo resuelto: 366,80 €, listo para cuadrar con el cargo de la tarjeta. Sumar una columna y comprobarla con la barra de estado es algo que harás todas las semanas."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m3l3-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar: escribe la fórmula que suma todos los importes **de C2 a C20**.",
+          "aceptadas": [
+            "=SUMA(C2:C20)",
+            "=suma(c2:c20)",
+            "=Suma(C2:C20)",
+            "=SUMA(c2:c20)"
+          ],
+          "explicacion": "`=SUMA(C2:C20)`: el nombre de la función y, entre paréntesis, el rango con dos puntos (de C2 hasta C20)."
+        },
+        {
+          "id": "n0m3l3-q2",
+          "modo": "test",
+          "pregunta": "Quieres saber al momento cuánto suman unas celdas, **sin escribir ninguna fórmula**. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Seleccionarlas y mirar Suma en la barra de estado",
+              "correcta": true,
+              "porque": "Correcto: la barra de estado, abajo a la derecha, suma lo que seleccionas. Perfecto para comprobar."
+            },
+            {
+              "texto": "Pulsar Autosuma",
+              "correcta": false,
+              "porque": "Autosuma escribe una fórmula SUMA en una celda. Es útil, pero sí escribe una fórmula."
+            },
+            {
+              "texto": "Sumarlas con la calculadora del móvil",
+              "correcta": false,
+              "porque": "Lenta y con riesgo de teclear mal. La barra de estado lo hace sola y sin errores."
+            }
+          ],
+          "explicacion": "La barra de estado es tu comprobación rápida de cualquier total."
+        },
+        {
+          "id": "n0m3l3-q3",
+          "modo": "formula",
+          "enunciado": "Repaso mezclado. En **D2** calcula el importe de la línea: **precio** (B2) por **unidades** (C2). Debe salir **285,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Magnetotérmico 2P 16 A",
+              "B2": 11.4,
+              "C2": 25
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "eur"
+            },
+            "anchos": {
+              "A": 24
+            }
+          },
+          "objetivo": "D2",
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B2:C2)",
+            "=11,4*25",
+            "=B2+C2"
+          ],
+          "variantes": [
+            {
+              "B2": 12,
+              "C2": 10
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Aquí no se suma una columna: se multiplican dos celdas.",
+            "Precio por unidades: B2 por C2, con el asterisco.",
+            "La fórmula es `=B2*C2`."
+          ],
+          "explicacion": "Bien elegido: SUMA es para sumar muchas celdas; para precio por unidades, una multiplicación. Saber qué herramienta usar es la mitad del trabajo."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Sintaxis de SUMA para sumar de B2 a B6",
+          "dorso": "=SUMA(B2:B6) (los dos puntos significan «hasta»)."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Autosuma con el teclado español",
+          "dorso": "Alt+= (en el teclado español: Alt+Mayús+0). En la cinta: Inicio › Edición › Autosuma."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué pasa si escribes =SUMA(B2:B7) en la propia celda B7?",
+          "dorso": "Referencia circular: el total se incluye a sí mismo. El rango debe acabar en B6."
+        },
+        {
+          "tipo": "error",
+          "frente": "=SUMA(B2;B30) frente a =SUMA(B2:B30)",
+          "dorso": "Con ; solo suma B2 y B30. Con : suma todo de B2 hasta B30."
+        }
+      ]
+    },
+    {
+      "id": "n0m3l4",
+      "titulo": "Rellena una plantilla sin romperla y envíala en PDF",
+      "minutos": 15,
+      "objetivo": "Rellenar una plantilla escribiendo solo en las celdas de datos, reconocer las celdas con fórmula, reparar un total roto, comprobarlo y enviar la hoja en PDF.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "Te paso la plantilla del parte de horas de Diego, el mozo de refuerzo del almacén. Faltan el jueves (8 h) y el viernes (6,5 h). Ojo, que creo que la semana pasada alguien escribió encima del total. Compruébalo y mándamelo en PDF, que es lo que firma Andrés.",
+        "logro": "Ya sabes rellenar una plantilla de la empresa sin romperla, comprobar el total y entregarla en PDF."
+      },
+      "funciones": [
+        "SUMA"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En la oficina casi nunca empezarás una hoja de cero. Te darán una **plantilla**: una hoja ya preparada que se reutiliza cada semana o cada mes.\n\nUna plantilla tiene dos tipos de celdas:\n\n- **Celdas para escribir**: los datos de esta semana. Suelen estar vacías o de otro color.\n- **Celdas con fórmulas**: los totales. Se calculan solas y **no se tocan**."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Parte de horas de Diego, semana del 16/11/2026",
+          "hoja": {
+            "celdas": {
+              "A1": "Día",
+              "B1": "Fecha",
+              "C1": "Horas",
+              "A2": "Lunes",
+              "B2": {
+                "fecha": "2026-11-16"
+              },
+              "C2": 8,
+              "A3": "Martes",
+              "B3": {
+                "fecha": "2026-11-17"
+              },
+              "C3": 8,
+              "A4": "Miércoles",
+              "B4": {
+                "fecha": "2026-11-18"
+              },
+              "C4": 7.5,
+              "A5": "Jueves",
+              "B5": {
+                "fecha": "2026-11-19"
+              },
+              "A6": "Viernes",
+              "B6": {
+                "fecha": "2026-11-20"
+              },
+              "A8": "Total horas",
+              "C8": "=SUMA(C2:C6)"
+            },
+            "formatos": {
+              "B2:B6": "fecha"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12
+            }
+          },
+          "resaltar": [
+            "C5:C6"
+          ],
+          "pie": "Las celdas marcadas (C5 y C6) esperan las horas del jueves y el viernes. C8 tiene una fórmula: el total se calcula solo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e1",
+          "modo": "test",
+          "pregunta": "En el parte de Diego, los días van en la columna A (el jueves, en la fila 5), las fechas en la B y las horas en la C. El total de horas está en C8. Tienes que apuntar las **8 horas del jueves**: ¿en qué celda escribes?",
+          "opciones": [
+            {
+              "texto": "C5",
+              "correcta": true,
+              "porque": "Correcto: la fila del jueves (5) y la columna de las horas (C). Es una celda vacía, preparada para eso."
+            },
+            {
+              "texto": "C8",
+              "correcta": false,
+              "porque": "C8 es el total y tiene una fórmula. Si escribes encima, la borras y el total deja de calcularse."
+            },
+            {
+              "texto": "B5",
+              "correcta": false,
+              "porque": "B5 es la fecha del jueves. Si escribes ahí, borras la fecha y las horas no quedan apuntadas."
+            }
+          ],
+          "explicacion": "Primera regla de una plantilla: escribe solo en las celdas de datos. Las demás ya hacen su trabajo."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Cómo sabes si una celda tiene fórmula? A simple vista no se nota: la celda solo enseña el resultado.\n\nHaz **un clic** en ella y mira la **barra de fórmulas**:\n\n- Si empieza por `=`, como `=SUMA(C2:C6)`, es una **fórmula**: no la toques.\n- Si es un número suelto, como `8`, es un **dato**: puedes cambiarlo si hace falta.\n\nUn clic no cambia nada: es solo mirar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e2",
+          "modo": "predice",
+          "enunciado": "Ya has escrito **8** en C5 (jueves) y **6,5** en C6 (viernes). C8 tiene `=SUMA(C2:C6)`. ¿Qué número mostrará el total?",
+          "hoja": {
+            "celdas": {
+              "A1": "Día",
+              "C1": "Horas",
+              "A2": "Lunes",
+              "C2": 8,
+              "A3": "Martes",
+              "C3": 8,
+              "A4": "Miércoles",
+              "C4": 7.5,
+              "A5": "Jueves",
+              "C5": 8,
+              "A6": "Viernes",
+              "C6": 6.5,
+              "A8": "Total horas"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "celda": "C8",
+          "formula": "=SUMA(C2:C6)",
+          "explicacion": "8 + 8 + 7,5 + 8 + 6,5 = 38. Tú solo has escrito dos datos y la plantilla ha calculado el total sola. Para eso sirven.",
+          "respuesta": "38"
+        },
+        {
+          "tipo": "texto",
+          "md": "El error que más daño hace en una plantilla: **escribir un número encima de una fórmula**.\n\nPasa así: el total no te cuadra, lo calculas de cabeza y escribes `38` encima. Hoy se ve bien. Pero la fórmula ha **desaparecido**: si mañana Lucía corrige una hora, el total se queda en 38 y nadie se da cuenta.\n\nSi te equivocas y escribes encima, [[Ctrl]]+[[Z]] lo deshace al momento."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e3",
+          "modo": "test",
+          "pregunta": "Alguien escribió **38** encima de la fórmula del total. Después, Lucía corrige el martes de 8 a **6** horas. ¿Qué muestra el total?",
+          "opciones": [
+            {
+              "texto": "38, aunque el total real ahora es 36",
+              "correcta": true,
+              "porque": "Exacto: el 38 es un número fijo, no una cuenta. No se entera del cambio y el parte queda mal sin que nada avise."
+            },
+            {
+              "texto": "36, porque Excel lo recalcula",
+              "correcta": false,
+              "porque": "Excel recalcula las fórmulas, pero en esa celda ya no hay fórmula: hay un 38 escrito a mano."
+            },
+            {
+              "texto": "Un mensaje de error",
+              "correcta": false,
+              "porque": "Eso sería casi mejor, porque se vería. Lo peligroso es que no sale ningún aviso: el número parece correcto."
+            }
+          ],
+          "explicacion": "Por eso un total escrito a mano es tan peligroso: falla en silencio. Y Diego cobraría horas que no ha hecho."
+        },
+        {
+          "tipo": "texto",
+          "md": "Antes de enviar cualquier hoja, **comprueba el total**. Dos maneras rápidas:\n\n1. **Haz clic en el total** y mira la barra de fórmulas: ¿hay una fórmula y su rango coge todas las filas?\n2. **Selecciona los datos** y mira la **Suma** de la barra de estado: ¿coincide con el total?\n\nSi las dos cosas cuadran, puedes enviarla tranquila."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e4",
+          "modo": "test",
+          "pregunta": "Seleccionas las horas de lunes a viernes y la barra de estado dice **Suma 38**. Pero el total de la plantilla dice **31,5**. ¿Qué es lo más probable?",
+          "opciones": [
+            {
+              "texto": "La fórmula del total no coge todas las filas",
+              "correcta": true,
+              "porque": "Eso es: 38 − 31,5 = 6,5, justo las horas del viernes. El rango del total se queda corto (seguramente acaba en C5)."
+            },
+            {
+              "texto": "La barra de estado está mal",
+              "correcta": false,
+              "porque": "La barra de estado suma exactamente lo que seleccionas. Si no cuadra, el problema está en la fórmula, no en la barra."
+            },
+            {
+              "texto": "Es normal: siempre hay algo de diferencia",
+              "correcta": false,
+              "porque": "Un total no tiene «algo de diferencia». Si no cuadra, hay un error, y se busca antes de enviar."
+            }
+          ],
+          "explicacion": "Buena pista de detective: la diferencia (6,5) te dice qué fila falta. Haz clic en el total y lo confirmarás en la barra de fórmulas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuando te piden una hoja «en **PDF**», no envíes el archivo de Excel. Un PDF se ve igual en cualquier ordenador o móvil, no se puede cambiar sin querer y se puede firmar.\n\nPara crearlo: **Archivo › Exportar › Crear documento PDF/XPS** y pulsa el botón **Crear PDF/XPS**. Eliges carpeta y nombre, y pulsas **Publicar**.\n\nAntes, mira cómo quedará en papel con la **vista previa de impresión**: [[Ctrl]]+[[P]]."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Excel o PDF, según para qué",
+          "md": "**PDF** cuando la hoja es para leer, firmar o archivar (un parte, una factura, un informe). **Excel** cuando la otra persona tiene que seguir trabajando con los datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e5",
+          "modo": "cinta",
+          "enunciado": "El parte está comprobado. Abre la pestaña **Archivo** y busca la opción para **exportar** la hoja (desde ahí se crea el PDF).",
+          "ruta": [
+            "Archivo",
+            "Archivo",
+            "Exportar"
+          ],
+          "explicacion": "Archivo › Exportar. Dentro verás **Crear documento PDF/XPS** y el botón **Crear PDF/XPS**: eliges carpeta y nombre, y Publicar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para entregar el parte en PDF **sin sorpresas**.",
+          "pasos": [
+            "Comprueba el total con la barra de fórmulas y la barra de estado",
+            "Guarda el libro con Ctrl+G",
+            "Mira la vista previa de impresión con Ctrl+P",
+            "Ve a Archivo › Exportar › Crear documento PDF/XPS y pulsa Crear PDF/XPS",
+            "Elige la carpeta, escribe el nombre y pulsa Publicar",
+            "Adjunta el PDF al correo para Lucía"
+          ],
+          "explicacion": "Primero se comprueba, luego se guarda y al final se exporta y se envía. Si exportas antes de comprobar, mandarás un PDF con el error dentro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m3l4-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Lucía.** Ya has apuntado el jueves y el viernes, pero Lucía tenía razón: en **C8** alguien escribió `38` encima del total. Pon en C8 la fórmula que **suma las horas de C2 a C6**, para que el total vuelva a calcularse solo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Día",
+              "B1": "Fecha",
+              "C1": "Horas",
+              "A2": "Lunes",
+              "B2": {
+                "fecha": "2026-11-16"
+              },
+              "C2": 8,
+              "A3": "Martes",
+              "B3": {
+                "fecha": "2026-11-17"
+              },
+              "C3": 8,
+              "A4": "Miércoles",
+              "B4": {
+                "fecha": "2026-11-18"
+              },
+              "C4": 7.5,
+              "A5": "Jueves",
+              "B5": {
+                "fecha": "2026-11-19"
+              },
+              "C5": 8,
+              "A6": "Viernes",
+              "B6": {
+                "fecha": "2026-11-20"
+              },
+              "C6": 6.5,
+              "A8": "Total horas"
+            },
+            "formatos": {
+              "B2:B6": "fecha"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12
+            }
+          },
+          "objetivo": "C8",
+          "inicial": "38",
+          "solucion": "=SUMA(C2:C6)",
+          "debe_usar": [
+            "SUMA"
+          ],
+          "errores_tipicos": [
+            "=38",
+            "=SUMA(C2:C5)",
+            "=SUMA(C2:C8)"
+          ],
+          "variantes": [
+            {
+              "C3": 6
+            },
+            {
+              "C6": 4
+            }
+          ],
+          "pistas": [
+            "Borra el 38: ahí tiene que ir una fórmula, no un número.",
+            "Usa SUMA con el rango de las horas, de C2 a C6, sin la celda del total (si la incluyes, aquí verás #¡REF!; en Excel, el aviso de referencia circular).",
+            "La fórmula es `=SUMA(C2:C6)`."
+          ],
+          "explicacion": "Plantilla reparada: 38 horas, y ahora sí se recalcula si alguien corrige un día. Solo te queda exportarla a PDF y enviársela a Lucía. Revisar que los totales tienen fórmula antes de enviar es lo que distingue a quien trabaja con cuidado."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m3l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar: ¿qué atajo abre la **vista previa de impresión** para ver cómo quedará la hoja en papel?",
+          "aceptadas": [
+            "Ctrl+P",
+            "Control+P",
+            "Ctrl P",
+            "Ctrl + P",
+            "ctrl+p"
+          ],
+          "explicacion": "[[Ctrl]]+[[P]] (de «imprimir»). Úsalo antes de exportar a PDF para ver si cabe en la página."
+        },
+        {
+          "id": "n0m3l4-q2",
+          "modo": "test",
+          "pregunta": "Haces clic en una celda de una plantilla y la barra de fórmulas muestra `=SUMA(D2:D9)`. ¿Qué haces con esa celda?",
+          "opciones": [
+            {
+              "texto": "No escribir en ella: es una fórmula que calcula sola",
+              "correcta": true,
+              "porque": "Correcto: empieza por =, así que es una fórmula. Escribir encima la borraría."
+            },
+            {
+              "texto": "Escribir el total que te sale con la calculadora",
+              "correcta": false,
+              "porque": "Borrarías la fórmula y el total dejaría de actualizarse. Es el error más dañino en una plantilla."
+            },
+            {
+              "texto": "Borrarla con Supr para que quede más limpia",
+              "correcta": false,
+              "porque": "Te quedarías sin total. Las celdas con fórmula son parte de la plantilla: se dejan como están."
+            }
+          ],
+          "explicacion": "Clic, mira la barra de fórmulas: si empieza por =, no se toca."
+        },
+        {
+          "id": "n0m3l4-q3",
+          "modo": "formula",
+          "enunciado": "Repaso mezclado. Gasto de gasoil de las furgonetas: en **B6** suma los cuatro repostajes de **B2 a B5**. Debe salir **343,30 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Furgoneta",
+              "B1": "Gasoil",
+              "A2": "Furgoneta 1",
+              "B2": 86.4,
+              "A3": "Furgoneta 2",
+              "B3": 92.15,
+              "A4": "Furgoneta 3",
+              "B4": 78.5,
+              "A5": "Furgoneta 4",
+              "B5": 86.25,
+              "A6": "Total"
+            },
+            "formatos": {
+              "B2:B6": "eur"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "objetivo": "B6",
+          "solucion": "=SUMA(B2:B5)",
+          "debe_usar": [
+            "SUMA"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B2:B4)",
+            "=343,3",
+            "=SUMA(B2:B6)"
+          ],
+          "variantes": [
+            {
+              "B3": 100
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Una columna que sumar: función SUMA.",
+            "El rango va de B2 a B5; el total (B6) no entra.",
+            "La fórmula es `=SUMA(B2:B5)`."
+          ],
+          "explicacion": "343,30 €, con fórmula y con el rango justo. Ya lo haces sin pensar."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo sabes si una celda tiene fórmula?",
+          "dorso": "Haz clic y mira la barra de fórmulas: si empieza por =, es una fórmula (no escribas encima)."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué pasa si escribes un número encima del total de una plantilla?",
+          "dorso": "Borras la fórmula: el total ya no se actualiza y falla sin avisar. Ctrl+Z lo deshace al momento."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Cómo guardar una hoja en PDF",
+          "dorso": "Archivo › Exportar › Crear documento PDF/XPS › botón Crear PDF/XPS › carpeta y nombre › Publicar."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Vista previa de impresión",
+          "dorso": "Ctrl+P"
+        }
+      ]
+    }
+  ]
+}

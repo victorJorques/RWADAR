@@ -1,0 +1,418 @@
+{
+ "id": "n6m3l2",
+ "titulo": "Compartir con seguridad y cumplir con la protección de datos",
+ "minutos": 16,
+ "objetivo": "Compartir un libro con los permisos justos y enviarlo fuera de la empresa sin datos personales de más, sin información escondida y, si hace falta, cifrado.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "La consultora que nos prepara el plan de formación de 2027 necesita saber cuántas personas hay en cada departamento y cuántas horas de formación han hecho este año. Te paso la hoja de plantilla, pero lleva DNI, salarios y bajas: que no salga nada que no haga falta. ¿Se lo mandas hoy?",
+  "logro": "Ya sabes compartir un archivo con los permisos justos y enviar fuera solo los datos necesarios, sin nada escondido."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Compartir un archivo parece cosa de un clic. Pero un Excel puede llevar **mucho más de lo que se ve**: hojas ocultas, comentarios, el nombre de quien lo hizo y, sobre todo, **datos de personas**.\n\nUn **dato personal** es cualquier información sobre una persona a la que se puede identificar: su nombre, su DNI, su salario, sus bajas. Los protege el **RGPD** (Reglamento General de Protección de Datos, una norma europea), además de la ley española.\n\nEn esta lección aprendes a compartir sin que se escape nada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e1",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "En la hoja de plantilla que te ha pasado Lucía, ¿cuáles de estas columnas son datos personales? Marca todas las que lo sean.",
+   "opciones": [
+    {
+     "texto": "El DNI de cada persona",
+     "correcta": true,
+     "porque": "Sí: identifica a la persona sin ninguna duda."
+    },
+    {
+     "texto": "El salario de cada persona",
+     "correcta": true,
+     "porque": "Sí: es información sobre una persona concreta, que está en su fila junto a su nombre."
+    },
+    {
+     "texto": "Los días de baja de cada persona",
+     "correcta": true,
+     "porque": "Sí, y además delicado, porque tiene que ver con la salud. Cuanto más delicado es un dato, más cuidado."
+    },
+    {
+     "texto": "El número total de personas del departamento de Almacén",
+     "correcta": false,
+     "porque": "No: es un total y no dice nada de nadie en concreto (salvo que el grupo sea tan pequeño que se adivine de quién se habla)."
+    }
+   ],
+   "explicacion": "Si el dato se puede unir a una persona concreta, es personal. Los totales por grupo, en general, no."
+  },
+  {
+   "tipo": "texto",
+   "md": "Hay dos formas de hacer llegar un libro a alguien:\n\n- **Adjuntarlo** a un correo: cada persona recibe **una copia**. Si luego cambias algo, su copia se queda vieja, y lo enviado **ya no se puede retirar**.\n- **Compartir un enlace** al libro guardado en **OneDrive** o **SharePoint** (los espacios de archivos de Microsoft 365): todos ven **la misma versión**, y puedes **cambiar o quitar el permiso** cuando quieras.\n\nDentro de la empresa, por defecto, **enlace**."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al pulsar **Compartir** (el botón de arriba a la derecha, o Archivo › Compartir) decides dos cosas:\n\n1. **Quién puede abrir el enlace.** Las opciones se llaman «Cualquiera», «Personas de *(tu organización)* con el vínculo», «Usuarios con acceso existente» y «**Personas que elija**». Esta última da acceso solo a quien tú escribas.\n2. **Qué puede hacer**: editar o solo ver.\n\nRegla práctica: **personas concretas** y el **permiso mínimo** que necesiten."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "«Cualquiera» es cualquiera",
+   "md": "Con un vínculo «Cualquiera», quien tenga el enlace (también si se lo reenvían) abre el archivo sin identificarse. Microsoft recomienda no usarlo «a menos que sea absolutamente necesario»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e2",
+   "modo": "test",
+   "pregunta": "Javier tiene que corregir contigo las cifras de comisiones en el libro, y Andrés solo necesita consultarlas. Los dos son de la empresa. ¿Cómo compartes?",
+   "opciones": [
+    {
+     "texto": "Un enlace «Personas que elija» con permiso de edición para Javier, y otro de solo ver para Andrés",
+     "correcta": true,
+     "porque": "Eso es: solo entran ellos dos, y cada uno puede hacer lo que necesita, ni más ni menos."
+    },
+    {
+     "texto": "Un enlace «Cualquiera» con edición, para que no tengan problemas al abrirlo",
+     "correcta": false,
+     "porque": "Abrirías el libro a cualquiera que reciba el enlace, aunque no sea de la empresa, y con permiso para cambiarlo todo."
+    },
+    {
+     "texto": "Adjuntas el libro en un correo a los dos",
+     "correcta": false,
+     "porque": "Cada uno tendría su copia: Javier corregiría la suya, y la tuya se quedaría sin sus cambios."
+    },
+    {
+     "texto": "Un enlace con edición para los dos: Andrés ya sabe que no debe tocar nada",
+     "correcta": false,
+     "porque": "Funciona hasta el día en que Andrés ordena una columna sin querer. Dale solo lo que necesita: ver."
+    }
+   ],
+   "explicacion": "Personas concretas y el permiso mínimo. Si mañana alguien ya no lo necesita, le quitas el permiso y listo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Con el libro compartido, varias personas pueden trabajar **a la vez** en el mismo archivo: es la **coautoría**. Hace falta Microsoft 365, el archivo en OneDrive o SharePoint y el **Autoguardado** (el guardado automático) activado.\n\nPara preguntar algo sin tocar las celdas, deja un **comentario**: Revisar › Comentarios › **Nuevo comentario**. Si escribes **@** y el nombre de un compañero (una *@mención*), le llega un **correo con un enlace** a ese comentario. Funciona con personas de tu organización."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Dos personas, la misma celda",
+   "md": "Si dos personas cambian la misma celda, se queda el último cambio guardado. Microsoft aconseja repartirse zonas u hojas del libro."
+  },
+  {
+   "tipo": "texto",
+   "md": "El RGPD pide que los datos personales sean «adecuados, pertinentes y **limitados a lo necesario**». Se llama **minimización**.\n\nAntes de enviar algo fuera, pregúntate: **¿qué necesita de verdad quien lo recibe?**\n- Quita las columnas que no hacen falta: DNI, teléfono, IBAN (la cuenta del banco), salario.\n- Mejor aún, manda **totales** en lugar del detalle de cada persona.\n- Si hay que distinguir filas, cambia el nombre por un **código** (EMP-014)."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Un caso real",
+   "md": "Según la prensa jurídica, la AEPD (Agencia Española de Protección de Datos) multó con 35.000 € a una empresa que dejó accesible por enlace una hoja de cálculo con nombre, apellidos y DNI de 10.837 personas. La empresa alegó que fue un error puntual de una persona recién contratada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e3",
+   "modo": "test",
+   "pregunta": "La consultora necesita saber, por departamento, cuántas personas hay y cuántas horas de formación han hecho. ¿Qué le mandas?",
+   "opciones": [
+    {
+     "texto": "Una tabla con departamento, número de personas y horas de formación, sin nombres",
+     "correcta": true,
+     "porque": "Exacto: es justo lo que necesita y no identifica a nadie. Lo mínimo necesario."
+    },
+    {
+     "texto": "La hoja de plantilla entera, con las columnas de DNI, salario y bajas ocultas",
+     "correcta": false,
+     "porque": "Ocultar no es quitar: cualquiera las vuelve a mostrar en dos clics. Y además le mandas nombres que no necesita."
+    },
+    {
+     "texto": "El nombre y las horas de cada persona, sin DNI ni salario",
+     "correcta": false,
+     "porque": "Mejor, pero sobran los nombres: para su trabajo le bastan los totales por departamento. Si no necesita saber quién, no le mandes quién."
+    },
+    {
+     "texto": "La hoja entera, pero cifrada con contraseña",
+     "correcta": false,
+     "porque": "Cifrar protege el envío, pero la consultora seguiría recibiendo DNI, salarios y bajas que no necesita. Primero se quita lo que sobra."
+    }
+   ],
+   "explicacion": "Primero, qué necesita; después, cómo enviarlo. Si con totales basta, no salen datos de nadie."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cuidado con una falsa seguridad muy común: **ocultar no es quitar**.\n\n- Las filas, columnas y hojas **ocultas** se vuelven a mostrar con dos clics.\n- Un **filtro** solo esconde filas: siguen dentro del archivo.\n- Mover los datos a una columna lejana tampoco sirve.\n- Una **tabla dinámica** guarda, por defecto, una copia de sus datos de origen dentro del libro: con doble clic en un valor, Excel saca el detalle en una hoja nueva.\n\nLo que no debe salir **se borra** de la copia que envías."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e4",
+   "modo": "test",
+   "pregunta": "Vas a mandar a Electricidad Moncayo, un cliente, su presupuesto. En el libro hay una hoja oculta, «Costes», con lo que nos cuesta cada producto. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Le mandas el PDF del presupuesto o, si necesita el Excel, una copia sin la hoja Costes",
+     "correcta": true,
+     "porque": "Eso es: lo que el cliente no debe ver no viaja en el archivo. Oculta, la hoja sigue ahí."
+    },
+    {
+     "texto": "Nada: la hoja está oculta y el cliente no la verá",
+     "correcta": false,
+     "porque": "Clic derecho en una pestaña › Mostrar, y ahí están tus costes. Ocultar sirve para ordenar, no para proteger."
+    },
+    {
+     "texto": "Proteges la hoja del presupuesto con Revisar › Proteger hoja",
+     "correcta": false,
+     "porque": "Proteger una hoja impide cambiar celdas, no leerlas. Y la hoja Costes seguiría dentro del archivo."
+    },
+    {
+     "texto": "Pones un filtro en la hoja Costes para que no se vea ninguna fila",
+     "correcta": false,
+     "porque": "Un filtro solo esconde filas: en cuanto se quita, todo vuelve a verse."
+    }
+   ],
+   "explicacion": "Mandar a un cliente nuestros márgenes es de los errores más caros. Lo que no debe salir, se borra de la copia (o se manda un PDF)."
+  },
+  {
+   "tipo": "texto",
+   "md": "Antes de enviar un libro fuera, pásale el **Inspector de documento**: Archivo › Información › Comprobar si hay problemas › **Inspeccionar documento**.\n\nBusca lo que no se ve a simple vista y **puede quitarlo**: comentarios, el nombre del autor y otras propiedades, encabezados y pies, filas, columnas y hojas ocultas.\n\nOtras cosas **las avisa, pero no las quita**: vínculos a otros libros, datos guardados de tablas dinámicas, macros, filtros y nombres ocultos. Esas, a mano.\n\nÚsalo **sobre una copia**: quizá no se pueda deshacer."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e5",
+   "modo": "cinta",
+   "enunciado": "Vas a revisar la copia para la consultora con el Inspector de documento. Primero, abre la pantalla de **Archivo** donde está «Comprobar si hay problemas».",
+   "ruta": [
+    "Archivo",
+    "Archivo",
+    "Información"
+   ],
+   "explicacion": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Pulsa Inspeccionar y quita lo que encuentre, siempre en la copia, nunca en el original."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si un archivo con datos personales **tiene que salir** de la empresa, cífralo: Archivo › Información › Proteger libro › **Cifrar con contraseña**. Sin la contraseña, el archivo no se abre.\n\nTres reglas:\n- Distingue mayúsculas y minúsculas, y Microsoft **no puede recuperarla** si se olvida.\n- **Nunca** va en el mismo correo que el archivo: mándala por otro canal (teléfono, SMS).\n- Proteger una hoja **no es lo mismo**: Microsoft avisa de que «no está pensada como característica de seguridad»."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Si se te escapa un archivo",
+   "md": "Si envías por error datos personales (destinatario o archivo equivocado), avisa **enseguida** a quien lleve la protección de datos en la empresa. Es una brecha de seguridad: el RGPD pide notificarla a la autoridad, cuando proceda, sin dilación y, si es posible, en 72 horas como máximo. Borrar el correo y callar lo empeora."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena la lista de comprobación antes de enviar un libro fuera de la empresa.",
+   "pasos": [
+    "Pregúntate si hace falta el libro o basta con un PDF o un resumen",
+    "Guarda una copia para enviar (el original no se toca)",
+    "En la copia, borra las columnas y hojas que no hacen falta",
+    "Pasa el Inspector de documento a la copia",
+    "Si lleva datos personales, cífrala con contraseña",
+    "Envíala y manda la contraseña por otro canal"
+   ],
+   "explicacion": "Primero decides qué sale; después lo limpias, lo compruebas, lo proteges y lo envías. La contraseña siempre viaja aparte."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l2-e7",
+   "modo": "formula",
+   "enunciado": "**La misión.** A la consultora solo le llegará la tabla de la derecha: personas y horas por departamento. Las personas (columna G) ya están. En **H2** calcula las horas de formación del departamento de **F2**, sumando la columna D. Tu fórmula se copiará a H3:H5, así que fija los rangos. En H2 debe salir **36**. (Para practicar, la hoja tiene 10 personas; en el libro real harás lo mismo con las 58.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "DNI",
+     "C1": "Departamento",
+     "D1": "Horas form.",
+     "A2": "Sergio Lozano Ruiz",
+     "B2": "72914583K",
+     "C2": "Comercial",
+     "D2": 8,
+     "A3": "Elena Castro Pardo",
+     "B3": "25640917M",
+     "C3": "Administración",
+     "D3": 16,
+     "A4": "Iñaki Etxeberria Sola",
+     "B4": "44873026P",
+     "C4": "Compras",
+     "D4": 10,
+     "A5": "Pilar Navarro Gil",
+     "B5": "17395248R",
+     "C5": "Almacén",
+     "D5": 12,
+     "A6": "Raúl Herrero Sanz",
+     "B6": "73052861W",
+     "C6": "Almacén",
+     "D6": 20,
+     "A7": "Ana Belén Domínguez Rey",
+     "B7": "29481735B",
+     "C7": "Comercial",
+     "D7": 6,
+     "A8": "Rocío Marín Vidal",
+     "B8": "18627340H",
+     "C8": "Almacén",
+     "D8": 4,
+     "A9": "Jorge Prieto Lasheras",
+     "B9": "72318094C",
+     "C9": "Administración",
+     "D9": 12,
+     "A10": "Laura Gimeno Ferrer",
+     "B10": "25917463X",
+     "C10": "Comercial",
+     "D10": 14,
+     "A11": "Óscar Bielsa Mur",
+     "B11": "47120586D",
+     "C11": "Compras",
+     "D11": 8,
+     "F1": "Departamento",
+     "G1": "Personas",
+     "H1": "Horas",
+     "F2": "Almacén",
+     "G2": "=CONTAR.SI($C$2:$C$11;F2)",
+     "F3": "Comercial",
+     "G3": "=CONTAR.SI($C$2:$C$11;F3)",
+     "F4": "Administración",
+     "G4": "=CONTAR.SI($C$2:$C$11;F4)",
+     "F5": "Compras",
+     "G5": "=CONTAR.SI($C$2:$C$11;F5)"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 11,
+     "C": 14,
+     "D": 10,
+     "E": 3,
+     "F": 14,
+     "G": 9,
+     "H": 8
+    }
+   },
+   "objetivo": "H2",
+   "copiar_a": [
+    "H3:H5"
+   ],
+   "solucion": "=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)",
+   "alternativas": [
+    "=SUMAR.SI(C$2:C$11;F2;D$2:D$11)",
+    "=SUMAR.SI.CONJUNTO($D$2:$D$11;$C$2:$C$11;F2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(C2:C11;F2;D2:D11)",
+    "=SUMAR.SI($C$2:$C$11;$F$2;$D$2:$D$11)",
+    "=CONTAR.SI($C$2:$C$11;F2)",
+    "=SUMA($D$2:$D$11)"
+   ],
+   "variantes": [
+    {
+     "D5": 30
+    },
+    {
+     "C2": "Almacén"
+    }
+   ],
+   "pistas": [
+    "Quieres sumar las horas (columna D) solo de las filas cuyo departamento (columna C) sea el de F2: eso es SUMAR.SI.",
+    "SUMAR.SI(dónde miro; qué busco; qué sumo): `=SUMAR.SI(C2:C11;F2;D2:D11)`. Ahora fija los dos rangos para que no se muevan al copiar.",
+    "Con $ en los rangos y F2 sin fijar: `=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)`."
+   ],
+   "explicacion": "Almacén 36 h, Comercial 28 h, Administración 28 h y Compras 18 h. Esa tabla es lo único que sale: sin nombres, sin DNI, sin salarios ni bajas. Para enviarla, cópiala y pégala **como valores** en un libro nuevo (o expórtala a PDF): así no viaja ninguna fórmula que apunte a la plantilla. Lucía ya puede respirar."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n6m3l2-q1",
+   "modo": "test",
+   "pregunta": "¿Qué impide de verdad que alguien que no debe **lea** un archivo que envías por correo?",
+   "opciones": [
+    {
+     "texto": "Archivo › Información › Proteger libro › Cifrar con contraseña, y la contraseña por otro canal",
+     "correcta": true,
+     "porque": "Eso es: sin la contraseña de apertura, el archivo no se abre. Y como la contraseña va aparte, un correo equivocado no lleva las dos cosas."
+    },
+    {
+     "texto": "Revisar › Proteger hoja, con contraseña",
+     "correcta": false,
+     "porque": "Solo impide cambiar las celdas bloqueadas; el contenido se lee igual. No está pensada para la seguridad."
+    },
+    {
+     "texto": "Ocultar las hojas con los datos delicados",
+     "correcta": false,
+     "porque": "Ocultar no es quitar: se vuelven a mostrar con dos clics."
+    },
+    {
+     "texto": "Cifrarlo y poner la contraseña al final del mismo correo",
+     "correcta": false,
+     "porque": "Quien reciba el correo por error tendrá juntos el archivo y la llave."
+    }
+   ],
+   "explicacion": "Cifrar con contraseña y mandarla por otro canal. Y antes, quitar lo que no hace falta."
+  },
+  {
+   "id": "n6m3l2-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "En un comentario de Excel, ¿qué signo escribes delante del nombre de un compañero para que le llegue un aviso por correo?",
+   "aceptadas": [
+    "@",
+    "arroba",
+    "una arroba",
+    "la arroba",
+    "Arroba",
+    "La arroba"
+   ],
+   "explicacion": "La arroba: «@Lucía, ¿esta columna hace falta?». Le llega un correo con un enlace a tu comentario."
+  },
+  {
+   "id": "n6m3l2-q3",
+   "modo": "test",
+   "pregunta": "Te das cuenta de que has enviado a un cliente un Excel con los teléfonos y correos de todos los clientes. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Avisar enseguida a quien lleve la protección de datos en la empresa",
+     "correcta": true,
+     "porque": "Es una brecha de seguridad. Hay plazo (si procede notificarla, 72 horas como máximo, si es posible) y lo valora quien lleva el tema. Cuanto antes, mejor."
+    },
+    {
+     "texto": "Pedirle al cliente que lo borre y no decir nada más",
+     "correcta": false,
+     "porque": "Pedir que lo borre puede ayudar, pero la empresa tiene que saberlo para valorar si debe notificarlo."
+    },
+    {
+     "texto": "Esperar a ver si el cliente dice algo",
+     "correcta": false,
+     "porque": "Mientras esperas, corre el plazo, y los datos siguen donde no deben."
+    },
+    {
+     "texto": "Mandar otro correo con el archivo bueno, sin explicar nada",
+     "correcta": false,
+     "porque": "El archivo malo sigue en su bandeja. Esconder el error lo hace más grave."
+    }
+   ],
+   "explicacion": "Un error se puede tener; callarlo es lo que lo convierte en un problema serio."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es la minimización de datos?",
+   "dorso": "Usar y enviar solo los datos personales necesarios para lo que se va a hacer (RGPD, art. 5.1.c)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué enlace usas para compartir un libro con dos compañeros?",
+   "dorso": "«Personas que elija», con el permiso mínimo que necesite cada uno (editar o solo ver)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde está el Inspector de documento?",
+   "dorso": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Siempre sobre una copia."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo se cifra un libro con contraseña?",
+   "dorso": "Archivo › Información › Proteger libro › Cifrar con contraseña. La contraseña, por otro canal."
+  },
+  {
+   "tipo": "error",
+   "frente": "«Las columnas de DNI están ocultas: ya lo puedo mandar»",
+   "dorso": "Ocultar no es quitar: se muestran con dos clics. Bórralas de la copia que envías."
+  }
+ ]
+}

@@ -1,0 +1,497 @@
+{
+ "id": "n6m3l3",
+ "titulo": "Mantener un informe recurrente y saber decir «así no llego»",
+ "minutos": 16,
+ "objetivo": "Llevar un informe mensual con una rutina fija, detectar cuando cambia el formato de los datos, avisar a tiempo de un retraso con una alternativa y dejarlo listo para que otra persona lo actualice.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Desde diciembre, el informe de cobros es tuyo: el día 3 de cada mes, a primera hora, en mi correo. Este mes, además, Javier quiere el detalle por comercial y el banco ha cambiado el formato del extracto. Dime hoy si llegas al día 3 y, si no, qué me puedes dar.",
+  "logro": "Ya sabes mantener un informe mes a mes con su rutina y sus comprobaciones, y avisar a tiempo, con una alternativa, cuando no llegas."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Un informe que se hace **cada mes** es una promesa: el mismo día y con la misma calidad. El primer mes es fácil, porque lo acabas de montar. Lo difícil llega el séptimo: el banco cambia el formato del extracto, te piden una columna nueva o te vas de vacaciones.\n\nDe eso va esta lección: una **rutina** que no falla, qué hacer cuando **cambian los datos**, cómo **avisar a tiempo** cuando no llegas y cómo **traspasar** el informe a otra persona."
+  },
+  {
+   "tipo": "texto",
+   "md": "La rutina de cada mes tiene cinco pasos, siempre en el mismo orden:\n\n1. **Datos nuevos**: guarda la exportación del mes donde la espera el libro.\n2. **Actualizar**: Datos › **Actualizar todo** (refresca las consultas y las tablas dinámicas).\n3. **Comprobar**: mira las celdas de control. Si alguna dice REVISAR, no sigas.\n4. **Entregar**: el correo con las conclusiones y el PDF.\n5. **Anotar** en el registro: fecha, quién lo ha hecho, filas cargadas, totales e incidencias.\n\nSiempre igual: así no se olvida nada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e1",
+   "modo": "ordenar",
+   "enunciado": "Ordena la rutina mensual del informe de cobros.",
+   "pasos": [
+    "Guardar la exportación del mes donde la espera el libro",
+    "Datos › Actualizar todo",
+    "Revisar las celdas de control",
+    "Enviar el correo con las conclusiones y el PDF",
+    "Anotar la actualización en el registro"
+   ],
+   "explicacion": "Datos, actualizar, comprobar, entregar y anotar. Si una comprobación falla, la rutina se para ahí: no se entrega nada que no cuadre."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un día, el banco o el programa de gestión **cambian el formato** de la exportación: una columna nueva, otro orden, otro nombre. Tus fórmulas siguen apuntando a la columna de siempre… y casi nunca sale un error: **sale un número falso**.\n\nPor eso un informe que se repite necesita comprobaciones que vigilen **la forma** de los datos: que cada columna esté donde se espera, cuántas filas han llegado y si el total cuadra con el del origen."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e2",
+   "modo": "predice",
+   "enunciado": "El informe de cobros suma la columna C, porque ahí venía siempre el importe. Este mes el banco ha añadido una columna **Referencia** delante del importe. ¿Qué devuelve ahora la fórmula del informe?",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Concepto",
+     "C1": "Referencia",
+     "D1": "Importe",
+     "A2": {
+      "fecha": "2026-11-02"
+     },
+     "B2": "Transf. Instalaciones Moncayo",
+     "C2": "TR-48211",
+     "D2": 3480,
+     "A3": {
+      "fecha": "2026-11-04"
+     },
+     "B3": "Transf. Montajes Cinca",
+     "C3": "TR-48390",
+     "D3": 1250.4,
+     "A4": {
+      "fecha": "2026-11-09"
+     },
+     "B4": "Transf. Reformas Jalón",
+     "C4": "TR-48655",
+     "D4": 912.35,
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "Transf. Electro Huesca",
+     "C5": "TR-48902",
+     "D5": 2200,
+     "A6": {
+      "fecha": "2026-11-18"
+     },
+     "B6": "Transf. Electricidad Arga",
+     "C6": "TR-49147",
+     "D6": 615.25
+    },
+    "formatos": {
+     "A2:A6": "fecha",
+     "D2:D6": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 28,
+     "C": 11,
+     "D": 11
+    }
+   },
+   "celda": "F2",
+   "formula": "=SUMA(C2:C6)",
+   "explicacion": "Da **0**: SUMA no tiene en cuenta los textos de la columna C. Y no sale ningún error. El informe diría que en noviembre no se ha cobrado nada; y si la columna nueva trajera números, sumaría referencias como si fueran euros. Por eso hay que vigilar la forma de los datos.",
+   "respuesta": "0"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e3",
+   "modo": "formula",
+   "enunciado": "Pon un vigilante. En **F2** escribe una comprobación que muestre **OK** si la cabecera de la columna C (la celda **C1**) es «Importe», y **REVISAR** si no. Con el extracto de este mes debe salir **REVISAR**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Concepto",
+     "C1": "Referencia",
+     "D1": "Importe",
+     "F1": "Control formato",
+     "A2": {
+      "fecha": "2026-11-02"
+     },
+     "B2": "Transf. Instalaciones Moncayo",
+     "C2": "TR-48211",
+     "D2": 3480,
+     "A3": {
+      "fecha": "2026-11-04"
+     },
+     "B3": "Transf. Montajes Cinca",
+     "C3": "TR-48390",
+     "D3": 1250.4,
+     "A4": {
+      "fecha": "2026-11-09"
+     },
+     "B4": "Transf. Reformas Jalón",
+     "C4": "TR-48655",
+     "D4": 912.35,
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "Transf. Electro Huesca",
+     "C5": "TR-48902",
+     "D5": 2200,
+     "A6": {
+      "fecha": "2026-11-18"
+     },
+     "B6": "Transf. Electricidad Arga",
+     "C6": "TR-49147",
+     "D6": 615.25
+    },
+    "formatos": {
+     "A2:A6": "fecha",
+     "D2:D6": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 28,
+     "C": 11,
+     "D": 11,
+     "E": 3,
+     "F": 15
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SI(C1=\"Importe\";\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(C1<>\"Importe\";\"REVISAR\";\"OK\")",
+    "=SI(IGUAL(C1;\"Importe\");\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(C1=\"Importe\";\"REVISAR\";\"OK\")",
+    "=SI(D1=\"Importe\";\"OK\";\"REVISAR\")",
+    "=\"REVISAR\""
+   ],
+   "variantes": [
+    {
+     "C1": "Importe"
+    }
+   ],
+   "pistas": [
+    "Es una decisión con dos salidas: SI(condición; si se cumple; si no).",
+    "La condición compara la celda con un texto: `C1=\"Importe\"`. Los textos van entre comillas.",
+    "`=SI(C1=\"Importe\";\"OK\";\"REVISAR\")`"
+   ],
+   "explicacion": "Sale REVISAR: tu vigilante ha visto el cambio antes que Marta. Pon uno así por cada columna que use el informe, junto al control de filas y de total que ya sabes hacer, y la rutina se parará sola cuando cambie el origen. Entonces: adaptas las fórmulas o la consulta, compruebas que cuadra y lo anotas en el registro de cambios."
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces, con la rutina en marcha, ves que **no llegas**: datos que se retrasan, un cambio que lleva más horas de las previstas, un encargo nuevo.\n\nLo peor es **callar** y esperar a que se arregle solo. Cuanto **antes avises**, más opciones tiene la otra persona: mover una reunión, darte prioridad, aceptar una versión más corta.\n\nUn buen aviso tiene tres partes:\n1. **Qué pasa** y por qué.\n2. **Qué puedes darle y cuándo**.\n3. **Qué necesitas** de ella o qué tiene que decidir."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "Día 3, a mediodía: «Perdona, aún no lo tengo»",
+     "Día 20 del mes anterior: «El día 3 no llego a todo. Te propongo esto…»"
+    ],
+    [
+     "«Voy un poco liada, a ver si llego»",
+     "«Adaptar el informe al nuevo extracto me lleva 3 horas más de lo previsto»"
+    ],
+    [
+     "Trabajar el fin de semana sin decir nada y entregar con prisas",
+     "Pedir que decida qué va primero: con prisa se cometen más errores"
+    ],
+    [
+     "«No puedo»",
+     "«El día 3, lo imprescindible; el detalle por comercial, el día 10»"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e4",
+   "modo": "test",
+   "pregunta": "Hoy es 20 de noviembre y ya sabes que el detalle por comercial no estará para el 3 de diciembre. ¿Cuándo y cómo se lo dices a Marta?",
+   "opciones": [
+    {
+     "texto": "Hoy, diciéndole qué sí tendrá el día 3 y en qué fecha tendrá el resto",
+     "correcta": true,
+     "porque": "Eso es: con casi dos semanas de margen, Marta puede reorganizarse o decirte qué prefiere. Y le llevas una solución, no solo un problema."
+    },
+    {
+     "texto": "El día 2, cuando estés segura del todo",
+     "correcta": false,
+     "porque": "El día 2 ya no tiene margen para nada. Avisar tarde convierte un retraso en un problema."
+    },
+    {
+     "texto": "No dices nada y trabajas el fin de semana para intentarlo",
+     "correcta": false,
+     "porque": "Quizá llegues, pero con prisa y cansancio se cometen más errores. Y si no llegas, el aviso llega cuando ya no sirve."
+    },
+    {
+     "texto": "Le dices «no llego» y que decida ella qué hacer",
+     "correcta": false,
+     "porque": "Avisas a tiempo, bien, pero sin propuesta. Tú sabes mejor que nadie qué se puede hacer: dale una opción concreta."
+    }
+   ],
+   "explicacion": "Pronto y con alternativa. Avisar a tiempo no es quedar mal: es lo que hace una profesional que controla su trabajo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cuando no llegas a todo, **negocia el alcance**: qué se entrega ya y qué espera.\n\nDivide el trabajo en **imprescindible** (lo que hace falta sí o sí el día 3) y **puede esperar** (lo nuevo, lo que mejora pero no corre prisa). Suma las horas de cada parte y compáralas con las que tienes.\n\nSi lo imprescindible cabe, propón una **versión mínima primero**: el día 3, lo de siempre y bien comprobado; lo nuevo, después y con fecha. Mejor algo bien y a tiempo que todo mal."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e5",
+   "modo": "formula",
+   "enunciado": "Entre el día 1 (cuando llegan los datos) y el día 3 tienes **10 horas** (C9). Para hacerlo todo necesitas 14,5 (C10). En **C11** calcula las horas de la **versión mínima**: la suma de las horas de las tareas marcadas «Imprescindible». Debe salir **8,5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tarea",
+     "B1": "Tipo",
+     "C1": "Horas",
+     "A2": "Cargar y comprobar los cobros de noviembre",
+     "B2": "Imprescindible",
+     "C2": 3,
+     "A3": "Adaptar el informe al nuevo extracto del banco",
+     "B3": "Imprescindible",
+     "C3": 3,
+     "A4": "Detalle de cobros por comercial (nuevo)",
+     "B4": "Puede esperar",
+     "C4": 4,
+     "A5": "Gráfico de evolución del año",
+     "B5": "Puede esperar",
+     "C5": 2,
+     "A6": "Correo de entrega a Marta",
+     "B6": "Imprescindible",
+     "C6": 1.5,
+     "A7": "Anotar en el registro y actualizar el Léeme",
+     "B7": "Imprescindible",
+     "C7": 1,
+     "A9": "Horas disponibles",
+     "C9": 10,
+     "A10": "Horas para hacerlo todo",
+     "C10": "=SUMA(C2:C7)",
+     "A11": "Horas de la versión mínima"
+    },
+    "formatos": {
+     "C2:C11": "0,0"
+    },
+    "anchos": {
+     "A": 42,
+     "B": 15,
+     "C": 8
+    }
+   },
+   "objetivo": "C11",
+   "solucion": "=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Imprescindible\")",
+    "=SUMAR.SI(B2:B7;B2;C2:C7)"
+   ],
+   "errores_tipicos": [
+    "=SUMA(C2:C7)",
+    "=CONTAR.SI(B2:B7;\"Imprescindible\")",
+    "=C2+C3+C6+C7",
+    "=SUMAR.SI(C2:C7;\"Imprescindible\";B2:B7)"
+   ],
+   "variantes": [
+    {
+     "B5": "Imprescindible"
+    },
+    {
+     "C3": 5
+    }
+   ],
+   "formato_resultado": "0,0",
+   "pistas": [
+    "Quieres sumar horas, pero solo de algunas filas: las que en la columna B dicen «Imprescindible». Es SUMAR.SI.",
+    "SUMAR.SI(dónde miro; qué busco; qué sumo): miras en B2:B7, buscas \"Imprescindible\" y sumas C2:C7.",
+    "`=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)`"
+   ],
+   "explicacion": "8,5 horas: lo imprescindible cabe en tus 10. Ya tienes el argumento con números: el día 3, el informe de siempre con el nuevo extracto del banco; el detalle por comercial y el gráfico, después. Así se negocia un alcance: con cifras, no con sensaciones."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un informe que **solo sabe actualizar una persona** está a una gripe de fallar. Para que otra lo saque sin llamarte:\n\n- El **Léeme**, con la rutina paso a paso en una página.\n- **Comprobaciones automáticas**: que el libro avise solo si algo no cuadra.\n- El **registro** de cada mes, para comparar filas y totales.\n- Y la prueba de verdad: que la otra persona lo actualice **una vez ella sola**, siguiendo el Léeme, mientras tú todavía estás para resolver dudas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una vez al año, revisa si el informe **sigue haciendo falta** y si Excel sigue siendo la herramienta adecuada. Señales para proponer otra:\n\n- Los datos se acercan al límite de una hoja (1.048.576 filas) o el libro va lento aunque esté bien hecho.\n- **Muchas personas escriben datos a la vez** (pedidos, horas): mejor un formulario, una aplicación o una base de datos.\n- Cada persona debe ver **solo lo suyo**: Power BI permite limitarlo.\n- El proceso está regulado (facturas, nóminas): va en su programa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e6",
+   "modo": "test",
+   "pregunta": "¿En cuál de estos casos tiene sentido proponer otra herramienta en lugar de un Excel compartido?",
+   "opciones": [
+    {
+     "texto": "Los doce comerciales tienen que apuntar sus pedidos cada día, a la vez, en el mismo libro",
+     "correcta": true,
+     "porque": "Eso es: muchas personas escribiendo datos a la vez es trabajo para un formulario, una aplicación o una base de datos."
+    },
+    {
+     "texto": "Marta quiere un gráfico más en el informe de cobros",
+     "correcta": false,
+     "porque": "Es una mejora del informe, no un motivo para cambiar de herramienta. Excel lo hace sin problema."
+    },
+    {
+     "texto": "Nuria va a sacar el informe en diciembre, mientras estás de vacaciones",
+     "correcta": false,
+     "porque": "Eso se resuelve con un buen Léeme y una prueba de traspaso, no con otra herramienta."
+    },
+    {
+     "texto": "El informe tarda dos minutos en actualizarse",
+     "correcta": false,
+     "porque": "Dos minutos al mes no son un problema. Antes de pensar en cambiar, comprueba si de verdad hay una señal."
+    }
+   ],
+   "explicacion": "Excel es un taller estupendo para analizar y cuadrar. Cuando muchas personas escriben a la vez, o cada una debe ver solo lo suyo, toca proponer otra cosa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m3l3-e7",
+   "modo": "abierta",
+   "pregunta": "**La misión.** Escribe el mensaje para Marta. Datos: hoy es 20 de noviembre; los datos de noviembre llegan el día 1 y tienes 10 horas hasta el día 3. Hacerlo todo lleva 14,5 horas; lo imprescindible (cargar y comprobar los cobros, adaptar el informe al nuevo extracto del banco, el correo y el registro), 8,5. El detalle por comercial (4 h) y el gráfico del año (2 h) pueden esperar: podrías tenerlos el jueves 10 de diciembre.",
+   "modelo": "Asunto: Informe de cobros de noviembre: qué tendrás el día 3\n\nMarta:\n\nTe aviso ya, para que te dé tiempo a organizarte: el día 3 no llego a todo.\n\nEl banco ha cambiado el formato del extracto y tengo que adaptar el informe; además, el detalle por comercial es nuevo. En total son unas 14,5 horas, y entre el 1 y el 3 tengo 10.\n\nTe propongo:\n- Día 3: el informe de cobros de siempre, ya con el nuevo extracto y todas las comprobaciones.\n- Jueves 10: el detalle por comercial para Javier y el gráfico del año.\n\nSi el detalle por comercial te hace falta antes, dímelo y vemos qué dejamos para después. ¿Te parece bien?\n\nUn saludo.",
+   "criterios": [
+    "Avisa hoy, con antelación, sin esperar al día 3",
+    "Explica qué pasa y por qué, con las horas",
+    "Propone una versión mínima para el día 3 y una fecha concreta para el resto",
+    "Pide a Marta que confirme o que decida las prioridades",
+    "Tono profesional y breve, sin excusas ni dramatismo"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n6m3l3-q1",
+   "modo": "test",
+   "pregunta": "Nuria sacará el informe de cobros en diciembre, mientras estás de vacaciones. ¿Qué demuestra mejor que podrá hacerlo sin ti?",
+   "opciones": [
+    {
+     "texto": "Que lo actualice ella sola una vez, siguiendo el Léeme, antes de que te vayas",
+     "correcta": true,
+     "porque": "Eso es: si lo saca sola con el Léeme, el informe ya no depende de ti. Y si se atasca, lo descubrís mientras aún estás."
+    },
+    {
+     "texto": "Que se lo expliques en una reunión de una hora",
+     "correcta": false,
+     "porque": "Ayuda, pero escuchar no es hacer: lo que no ha practicado se le olvidará."
+    },
+    {
+     "texto": "Que tenga tu móvil por si le surgen dudas",
+     "correcta": false,
+     "porque": "Si tiene que llamarte, el informe sigue dependiendo de ti (y te estropea las vacaciones)."
+    },
+    {
+     "texto": "Que el libro tenga todas las fórmulas bien hechas",
+     "correcta": false,
+     "porque": "Necesario, pero no suficiente: también tiene que saber qué pasos seguir y qué mirar."
+    }
+   ],
+   "explicacion": "La prueba del traspaso es que la otra persona lo haga una vez sola. Un informe que solo sabe actualizar una persona es un riesgo para la empresa."
+  },
+  {
+   "id": "n6m3l3-q2",
+   "modo": "cinta",
+   "enunciado": "Ya has guardado la exportación de este mes. ¿Dónde está el botón que refresca de una vez todas las consultas y tablas dinámicas del libro?",
+   "ruta": [
+    "Datos",
+    "Consultas y conexiones",
+    "Actualizar todo"
+   ],
+   "explicacion": "Datos › Consultas y conexiones › Actualizar todo. Es el paso 2 de la rutina; después, las comprobaciones."
+  },
+  {
+   "id": "n6m3l3-q3",
+   "modo": "formula",
+   "enunciado": "Otro vigilante. En **F2** escribe una comprobación que muestre **OK** si el número de cobros cargados (las fechas de A2:A7) es igual al que indica el banco en **E2**, y **REVISAR** si no. Este mes falta uno: debe salir **REVISAR**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Cobros (banco)",
+     "F1": "Control filas",
+     "A2": {
+      "fecha": "2026-11-02"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 3480,
+     "A3": {
+      "fecha": "2026-11-04"
+     },
+     "B3": "Montajes Cinca",
+     "C3": 1250.4,
+     "A4": {
+      "fecha": "2026-11-09"
+     },
+     "B4": "Reformas Jalón",
+     "C4": 912.35,
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "Electro Huesca",
+     "C5": 2200,
+     "A6": {
+      "fecha": "2026-11-18"
+     },
+     "B6": "Electricidad Arga",
+     "C6": 615.25,
+     "E2": 6
+    },
+    "formatos": {
+     "A2:A7": "fecha",
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 22,
+     "C": 11,
+     "D": 3,
+     "E": 14,
+     "F": 13
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(CONTAR(A2:A7)=E2;\"OK\";\"REVISAR\")",
+    "=SI(E2=CONTARA(A2:A7);\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(CONTARA(A2:A7)=E2;\"REVISAR\";\"OK\")",
+    "=SI(SUMA(C2:C7)=E2;\"OK\";\"REVISAR\")",
+    "=\"REVISAR\""
+   ],
+   "variantes": [
+    {
+     "E2": 5
+    }
+   ],
+   "pistas": [
+    "Cuenta las filas que han llegado y compáralas con E2 dentro de un SI.",
+    "CONTARA(A2:A7) cuenta las celdas con algo escrito.",
+    "`=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")`"
+   ],
+   "explicacion": "REVISAR: el banco dice 6 cobros y han llegado 5. Antes de entregar, toca averiguar cuál falta. Columnas, filas y total: los tres vigilantes de un informe que se repite."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Los cinco pasos de la rutina de un informe mensual",
+   "dorso": "1) Datos nuevos · 2) Actualizar todo (pestaña Datos) · 3) Comprobar · 4) Entregar · 5) Anotar en el registro."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Las tres partes de un buen aviso de retraso",
+   "dorso": "Qué pasa y por qué · qué puedes dar y cuándo · qué necesitas o qué tiene que decidir la otra persona. Y se da pronto."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es negociar el alcance?",
+   "dorso": "Separar lo imprescindible de lo que puede esperar y entregar primero una versión mínima bien hecha, con fecha para el resto."
+  },
+  {
+   "tipo": "error",
+   "frente": "«La fórmula no da error, así que el informe está bien»",
+   "dorso": "Un cambio de formato en el origen casi nunca da error: da un número falso. Vigila columnas, filas y total cada mes."
+  }
+ ]
+}

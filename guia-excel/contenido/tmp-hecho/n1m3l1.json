@@ -1,0 +1,244 @@
+{
+ "id": "n1m3l1",
+ "titulo": "Formatos de número: euros, miles, porcentajes y fechas",
+ "minutos": 15,
+ "objetivo": "Mostrar importes en euros, tipos en porcentaje y fechas en día/mes/año sabiendo que el formato cambia el aspecto, nunca el valor.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Te paso el resumen de cobros de la semana para el comité del viernes. Ahora mismo es un mar de números: importes sin €, el IVA como 0,21 y los vencimientos como 46340. Déjalo legible, pero sin tocar ni un valor.",
+  "logro": "Ya sabes dar formato de euros, porcentaje y fecha a una hoja sin cambiar sus valores, y reconocer una fecha disfrazada de número."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Hoy vas a aprender a **vestir** los números. El **formato** es el aspecto de una celda: con €, con %, como fecha… Es como el envoltorio de un regalo: cambia cómo se ve, **no lo que hay dentro**.\n\nEn la hoja de abajo, las tres celdas de la columna B **valen lo mismo**: 1250,5. Solo cambia el formato. Para ver el valor de verdad de una celda, haz clic en ella y mira la **barra de fórmulas**."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "El mismo número con tres formatos",
+   "hoja": {
+    "celdas": {
+     "A1": "Formato", "B1": "Se ve así",
+     "A2": "General", "B2": 1250.5,
+     "A3": "Moneda", "B3": 1250.5,
+     "A4": "Porcentaje", "B4": 1250.5
+    },
+    "formatos": {"B3": "eur", "B4": "pct"},
+    "anchos": {"A": 14, "B": 14}
+   },
+   "resaltar": ["B2:B4"],
+   "pie": "Las tres celdas valen 1250,5. El 125050% de B4 es el mismo número con el formato equivocado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e1",
+   "modo": "test",
+   "pregunta": "La celda B3 se ve como **1.250,50 €**. ¿Qué hay guardado de verdad dentro?",
+   "opciones": [
+    {"texto": "El número 1250,5", "correcta": true, "porque": "Eso es. El punto de los miles, los dos decimales y el € son el envoltorio; dentro solo hay el número."},
+    {"texto": "El texto «1.250,50 €», con el símbolo incluido", "correcta": false, "porque": "El € lo pone el formato. Si estuviera escrito dentro, sería un texto y no se podría sumar."},
+    {"texto": "1.250,50 €, pero solo hasta que cierres el libro", "correcta": false, "porque": "El formato se guarda con el libro y el valor también. Ninguno se pierde al cerrar."}
+   ],
+   "explicacion": "Primera regla del formato: **cambia lo que ves, no lo que vale**. Por eso puedes ponerle euros a una columna sin miedo a estropear ninguna cuenta."
+  },
+  {
+   "tipo": "texto",
+   "md": "Los formatos están en la pestaña **Inicio**, grupo **Número**:\n\n- Un **desplegable** con los básicos: General, Número, Moneda, Contabilidad, Fecha corta, Fecha larga, Porcentaje…\n- **Botones rápidos**: el de euros (**Formato de número de contabilidad**), el de % (**Estilo porcentual**), el de los miles (**Estilo millares**) y los de aumentar y disminuir decimales.\n\nSi quieres ver todas las opciones juntas, abre la ventana **Formato de celdas** con [[Ctrl]]+[[1]]."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {"teclas": "Ctrl+1", "accion": "Abrir la ventana Formato de celdas (el 1 de la fila de números, no el del teclado numérico)"}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e2",
+   "modo": "cinta",
+   "enunciado": "Marta quiere los importes en euros. Has seleccionado la columna. ¿Qué botón pulsas? Es el de **contabilidad**.",
+   "ruta": ["Inicio", "Número", "Formato de número de contabilidad"],
+   "explicacion": "Inicio › Número › Formato de número de contabilidad. Un clic y toda la columna pasa a euros con dos decimales."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Moneda** y **Contabilidad** ponen el € detrás, el punto de los miles y dos decimales: 1.250,50 €. La diferencia es pequeña: Contabilidad alinea los símbolos en columna y muestra los ceros como un guion. Verás los dos en Electro Cierzo.\n\n**Estilo millares** pone el punto de los miles y dos decimales, sin el €.\n\nLa regla de oro: **escribe solo el número** (1250,5) y deja que el formato ponga el €."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Nunca escribas «euros» a mano",
+   "md": "Si escribes `95 euros` en una celda, Excel lo guarda como **texto**: se lee bien, pero no suma. Una pista para cazarlos: los textos se pegan a la **izquierda** de la celda y los números, a la **derecha**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e3",
+   "modo": "predice",
+   "enunciado": "Alguien escribió **95 euros** a mano en B3. ¿Qué total dará `=SUMA(B2:B4)`? Escribe solo el número.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente", "B1": "Cobrado",
+     "A2": "Instalaciones Moncayo", "B2": 1200,
+     "A3": "Electricidad Arguis", "B3": "95 euros",
+     "A4": "Montajes Ribagorza, S.L.", "B4": 340.5
+    },
+    "formatos": {"B2": "eur", "B4": "eur"},
+    "anchos": {"A": 24, "B": 13}
+   },
+   "celda": "B5",
+   "formula": "=SUMA(B2:B4)",
+   "formato_resultado": "eur",
+   "explicacion": "Sale **1.540,50 €**: SUMA se salta el texto «95 euros» sin avisar, y faltan 95 € en el total. Por eso el € se pone con el formato, nunca escrito a mano. Para arreglarlo, escribe 95 en B3 y dale formato de euros."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un porcentaje es una parte de 1: **21 % = 0,21**. El formato Porcentaje multiplica lo que ves por 100 y añade el %: la celda vale 0,21 y se ve **21%**.\n\nDos formas correctas de escribir el IVA:\n- Escribe `21%` directamente: Excel guarda 0,21.\n- Escribe `0,21` y pulsa **Estilo porcentual**.\n\nLa trampa: si la celda **ya tenía un 21** y pulsas el botón %, verás **2100%**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e4",
+   "modo": "predice",
+   "enunciado": "Lucía escribió **21** en B2. En C2 está ese mismo valor (`=B2`) y le aplica **Estilo porcentual**. ¿Qué se verá en C2? Escribe el número con el % pegado, sin espacio.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto", "B1": "Escrito", "C1": "Con formato %",
+     "A2": "Tipo de IVA", "B2": 21
+    },
+    "anchos": {"A": 13, "C": 15}
+   },
+   "celda": "C2",
+   "formula": "=B2",
+   "formato_resultado": "pct",
+   "explicacion": "Se ve **2100%**: la celda vale 21 y el formato lo multiplica por 100. Para que sea un 21 % de verdad, la celda tiene que valer 0,21: escribe `21%` o `0,21`. Si ves un 2100%, ya sabes de dónde sale."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e5",
+   "modo": "formula",
+   "enunciado": "Ahora úsalo. En **D2** calcula la **cuota de IVA** del primer producto: la base (B2) por el tipo (C2). Tu fórmula se copiará a D3:D4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Base", "C1": "Tipo IVA", "D1": "Cuota IVA",
+     "A2": "Panel LED 60x60 (caja 4 uds)", "B2": 186.4, "C2": 0.21,
+     "A3": "Cable 2,5 mm² (rollo 100 m)", "B3": 58.9, "C3": 0.21,
+     "A4": "Magnetotérmico 2P 16 A (10 uds)", "B4": 312, "C4": 0.21
+    },
+    "formatos": {"B2:B4": "eur", "C2:C4": "pct", "D2:D4": "eur"},
+    "anchos": {"A": 30, "B": 11, "C": 10, "D": 12}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D4"],
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=B2*21", "=B2*C2/100", "=B2*0,21", "=B2*$C$2"],
+   "variantes": [{"B2": 200, "C3": 0.1}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "C2 se ve como 21%, pero ¿cuánto vale de verdad?",
+    "Vale 0,21, así que basta multiplicar la base por esa celda. Nada de dividir entre 100.",
+    "=B2*C2"
+   ],
+   "explicacion": "39,14 € de IVA para los paneles. Como C2 vale 0,21 aunque se vea 21%, se multiplica tal cual: ni `/100` ni un 21 escrito a mano. Con esto calculas el IVA de cualquier línea de factura."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para Excel, una **fecha es un número**: los días que han pasado desde el 1/1/1900. El 14/11/2026 es el día **46340**. Gracias a eso se pueden restar fechas o sumarles días.\n\nSi una columna de fechas aparece como 46340, 46345… no está rota: tiene formato **General**. Ponle un formato de fecha:\n- **Fecha corta**: 14/11/2026.\n- **Fecha larga**: sábado, 14 de noviembre de 2026."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La misma fecha con tres formatos",
+   "hoja": {
+    "celdas": {
+     "A1": "Formato", "B1": "Se ve así",
+     "A2": "General", "B2": 46340,
+     "A3": "Fecha corta", "B3": {"fecha": "2026-11-14"},
+     "A4": "Fecha larga", "B4": {"fecha": "2026-11-14"}
+    },
+    "formatos": {"B3": "fecha", "B4": "dddd, d \"de\" mmmm \"de\" aaaa"},
+    "anchos": {"A": 13, "B": 32}
+   },
+   "resaltar": ["B2:B4"]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e6",
+   "modo": "test",
+   "pregunta": "Andrés te pasa su lista de pedidos y en la columna «Entrega» se ve **46345**, **46351**, **46358**… ¿Qué haces?",
+   "opciones": [
+    {"texto": "Les pongo formato Fecha corta: son fechas con formato General.", "correcta": true, "porque": "Exacto. El valor está bien; solo le falta el envoltorio de fecha. 46345 se verá como 19/11/2026."},
+    {"texto": "Las borro y las escribo otra vez a mano.", "correcta": false, "porque": "No hace falta: los datos están bien. Reescribir a mano es la forma más rápida de meter errores."},
+    {"texto": "Les pongo formato de euros: son importes.", "correcta": false, "porque": "Una columna llamada «Entrega» con números de unos 46.000 que suben poco a poco es la pista típica de fechas sin formato."}
+   ],
+   "explicacion": "Cuando veas números de unos 46.000 donde debería haber fechas, ya sabes qué pasa: fechas con formato General. Se arregla en dos clics."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Chuleta: valor, formato y lo que ves",
+   "cabecera": ["Valor guardado", "Formato", "Se ve"],
+   "filas": [
+    ["1250,5", "Moneda o Contabilidad", "1.250,50 €"],
+    ["1250,5", "Estilo millares", "1.250,50"],
+    ["0,21", "Porcentaje", "21%"],
+    ["21", "Porcentaje", "2100%"],
+    ["46340", "Fecha corta", "14/11/2026"],
+    ["46340", "General", "46340"]
+   ],
+   "pie": "La primera columna nunca cambia: solo cambia la última."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Lo del comité: los vencimientos están en D2:D9 y salen como 46340. Quiero ver día, mes y año. Hazlo desde Formato de celdas, que así ves todas las opciones."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l1-e7",
+   "modo": "ordenar",
+   "enunciado": "Misión de Marta: pon formato de fecha corta a los vencimientos (D2:D9) desde la ventana **Formato de celdas**. Ordena los pasos.",
+   "pasos": [
+    "Selecciona D2:D9",
+    "Pulsa Ctrl+1",
+    "En la pestaña Número, elige la categoría Fecha",
+    "Elige el tipo día/mes/año",
+    "Pulsa Aceptar",
+    "Comprueba que se ve 14/11/2026 y no 46340"
+   ],
+   "explicacion": "Primero se selecciona y luego se da formato: es la regla de todo Excel. El último paso es el que separa a una buena administrativa de las demás: **mirar el resultado** antes de entregarlo. El resumen de Marta ya está listo para el comité."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m3l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre la ventana **Formato de celdas**?",
+   "aceptadas": ["Ctrl+1", "Control+1", "Ctrl 1", "Ctrl + 1", "Control 1"],
+   "explicacion": "[[Ctrl]]+[[1]]: ahí están todos los formatos de número, la alineación, los bordes y el relleno."
+  },
+  {
+   "id": "n1m3l1-q2",
+   "modo": "predice",
+   "enunciado": "En B1 está el descuento pactado con un cliente: **0,075**. En C1 lo copias (`=B1`) y le aplicas **Estilo porcentual**, que no muestra decimales. ¿Qué verás en C1? Escribe el número con el % pegado.",
+   "hoja": {"celdas": {"A1": "Descuento", "B1": 0.075}},
+   "celda": "C1",
+   "formula": "=B1",
+   "formato_resultado": "pct",
+   "explicacion": "Se ve **8%**, aunque la celda vale 0,075 (7,5 %). El formato redondea lo que ves, no lo que vale. Con **Aumentar decimales** verías 7,5%."
+  },
+  {
+   "id": "n1m3l1-q3",
+   "modo": "cinta",
+   "enunciado": "Tienes 0,21 en una celda y quieres que se vea 21%. ¿Qué botón pulsas?",
+   "ruta": ["Inicio", "Número", "Estilo porcentual"],
+   "explicacion": "Inicio › Número › Estilo porcentual. Recuerda: funciona bien con 0,21; con un 21 escrito verías 2100%."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "Abrir la ventana Formato de celdas", "dorso": "Ctrl+1"},
+  {"tipo": "concepto", "frente": "¿El formato cambia el valor de una celda?", "dorso": "No. Solo cambia cómo se ve. El valor de verdad está en la barra de fórmulas."},
+  {"tipo": "concepto", "frente": "¿Cuánto vale de verdad una celda que se ve como 21%?", "dorso": "0,21. Por eso, para calcular el IVA, se multiplica por la celda tal cual, sin dividir entre 100."},
+  {"tipo": "error", "frente": "Una columna de fechas se ve como 46340, 46345… ¿qué pasa?", "dorso": "Son fechas con formato General. Ponles formato Fecha corta (46340 = 14/11/2026)."},
+  {"tipo": "error", "frente": "Escribes «95 euros» en una celda. ¿Qué problema da?", "dorso": "Excel lo guarda como texto y SUMA lo ignora. Escribe solo 95 y ponle formato de euros."}
+ ]
+}

@@ -1,0 +1,288 @@
+{
+  "id": "n5m2l1",
+  "titulo": "Hechos y dimensiones: ordenar los datos como un profesional",
+  "minutos": 15,
+  "objetivo": "Separar un listado de ventas en una tabla de hechos y sus dimensiones (clientes, productos y calendario), cada una con una clave única comprobada con una fórmula.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "El programa de gestión me saca las ventas en una sola hoja: cada línea repite el cliente, su provincia, el producto y la familia. Cuando un cliente se muda hay que tocar cuarenta filas y siempre se escapa alguna. ¿Me lo ordenas como se debe antes del informe por provincia y familia?",
+    "logro": "Ya sabes ordenar los datos de un negocio en una tabla de hechos y sus dimensiones, y comprobar con una fórmula que cada clave es única antes de relacionarlas."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Javier te reenvía la exportación de ventas del programa de gestión. Cada fila es una línea de albarán (el documento que acompaña a la mercancía) y repite **todo**: el código y el nombre del cliente, su provincia, el producto y su familia.\n\nParece cómodo, pero tiene trampa: el mismo dato está escrito muchas veces. Si Instalaciones Moncayo se muda, hay que corregir todas sus filas, y basta con olvidar una para que el informe por provincia salga mal."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "La exportación de Javier (5 de sus 2.000 filas)",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha", "B1": "CodCliente", "C1": "Cliente", "D1": "Provincia", "E1": "Producto", "F1": "Familia", "G1": "Importe",
+          "A2": {"fecha": "2026-11-03"}, "B2": "C-1043", "C2": "Instalaciones Moncayo", "D2": "Zaragoza", "E2": "Cable 2,5 mm²", "F2": "Cableado", "G2": 449.1,
+          "A3": {"fecha": "2026-11-03"}, "B3": "C-1017", "C3": "Electricidad Arga S.L.", "D3": "Navarra", "E3": "Downlight LED 18 W", "F3": "Iluminación", "G3": 298,
+          "A4": {"fecha": "2026-11-04"}, "B4": "C-1043", "C4": "Instalaciones Moncayo", "D4": "Zaragoza", "E4": "Diferencial 2P 40 A", "F4": "Protección", "G4": 154,
+          "A5": {"fecha": "2026-11-05"}, "B5": "C-1088", "C5": "Montajes Segre S.L.", "D5": "Lleida", "E5": "Canaleta 40×25", "F5": "Canalización", "G5": 192,
+          "A6": {"fecha": "2026-11-06"}, "B6": "C-1043", "C6": "Instalaciones Moncayo", "D6": "Zaragoza", "E6": "Interruptor simple", "F6": "Mecanismos", "G6": 92
+        },
+        "formatos": {"A2:A6": "fecha", "G2:G6": "eur"},
+        "anchos": {"A": 11, "B": 11, "C": 22, "D": 10, "E": 20, "F": 13, "G": 11},
+        "columnas": 7,
+        "filas": 6
+      },
+      "resaltar": ["B2:D2", "B4:D4", "B6:D6"],
+      "pie": "Moncayo y su provincia aparecen tres veces en solo cinco filas. En la exportación entera, decenas de veces."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e1",
+      "modo": "test",
+      "pregunta": "Instalaciones Moncayo se traslada a Huesca. Con la exportación tal como está, ¿qué tienes que hacer para que el informe por provincia salga bien?",
+      "opciones": [
+        {"texto": "Cambiar «Zaragoza» por «Huesca» en todas las filas de Moncayo, sin dejarte ninguna", "correcta": true, "porque": "Exacto: el dato está repetido en cada venta, así que hay que corregirlo en cada fila. Con 2.000 filas, es fácil que se escape alguna. Por eso los profesionales lo guardan en un solo sitio."},
+        {"texto": "Cambiarlo solo en la primera fila: Excel copia el cambio a las demás", "correcta": false, "porque": "Excel no sabe que esas filas hablan del mismo cliente: cada celda es independiente. Las demás seguirían diciendo Zaragoza."},
+        {"texto": "Nada: al actualizar la tabla dinámica, la provincia se corrige sola", "correcta": false, "porque": "Actualizar vuelve a leer los datos tal como están. Si las filas dicen Zaragoza, el informe dirá Zaragoza."}
+      ],
+      "explicacion": "Un dato escrito muchas veces acaba escrito de varias formas. La solución es escribirlo una sola vez, y eso es lo que vas a aprender ahora."
+    },
+    {
+      "tipo": "texto",
+      "md": "La solución profesional es separar los datos en dos clases de tablas:\n\n- **Tabla de hechos**: lo que *pasa* en el negocio. Cada venta, cada pedido o cada fichaje es una fila. Tiene muchas filas, crece cada día y guarda sobre todo fechas, códigos y números.\n- **Tablas de dimensiones**: *quién, qué y cuándo*. Una ficha por cliente, por producto o por día, con sus datos descriptivos: nombre, provincia, familia.\n\nPiénsalo así: los tiques de una tienda son hechos; la agenda de clientes es una dimensión."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e2",
+      "modo": "test",
+      "multiple": true,
+      "pregunta": "Andrés Molina te enseña cuatro listas del almacén. ¿Cuáles son tablas de **dimensiones**? Marca todas las que lo sean.",
+      "opciones": [
+        {"texto": "Proveedores: un proveedor por fila, con su CIF, su ciudad y su plazo de entrega", "correcta": true, "porque": "Sí: describe *quién* nos vende. Una fila por proveedor y cambia poco."},
+        {"texto": "Productos: un artículo por fila, con su familia y su precio de tarifa", "correcta": true, "porque": "Sí: describe *qué* vendemos y compramos. Cada artículo aparece una sola vez."},
+        {"texto": "Entradas de almacén: cada recepción de mercancía con fecha, proveedor, artículo y unidades", "correcta": false, "porque": "Es una tabla de hechos: cada fila es algo que *pasa* (una recepción), crece cada día y lleva unidades."},
+        {"texto": "Pedidos a proveedor: cada línea de pedido con fecha, artículo y unidades", "correcta": false, "porque": "También son hechos: cada línea es un pedido que ocurre en una fecha. Se unirá a Proveedores y a Productos."}
+      ],
+      "explicacion": "Truco para clasificar: si la tabla crece cada día con cosas que ocurren y lleva fechas e importes o unidades, es de hechos. Si es una ficha que describe a alguien o algo, es una dimensión."
+    },
+    {
+      "tipo": "texto",
+      "md": "Para unir hechos y dimensiones hace falta una **clave**: una columna que identifica cada ficha sin dudas, como el DNI a una persona. En Clientes, la clave es **CodCliente**.\n\nLa regla de oro: en la dimensión, cada clave aparece **una sola vez**. En la tabla de hechos, en cambio, se repite en cada venta de ese cliente.\n\nNo uses el nombre como clave: «Electricidad Arga S.L.» y «Electricidad Arga, S.L.» parecen el mismo cliente, pero para Excel son dos textos distintos."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Dimensión Clientes",
+      "hoja": {
+        "celdas": {
+          "A1": "CodCliente", "B1": "Cliente", "C1": "Provincia", "D1": "Tipo",
+          "A2": "C-1017", "B2": "Electricidad Arga S.L.", "C2": "Navarra", "D2": "Instalador",
+          "A3": "C-1043", "B3": "Instalaciones Moncayo", "C3": "Zaragoza", "D3": "Instalador",
+          "A4": "C-1088", "B4": "Montajes Segre S.L.", "C4": "Lleida", "D4": "Empresa",
+          "A5": "C-1102", "B5": "Reformas Cinca S.L.U.", "C5": "Huesca", "D5": "Constructora"
+        },
+        "anchos": {"A": 11, "B": 22, "C": 10, "D": 12},
+        "columnas": 4,
+        "filas": 5
+      },
+      "resaltar": ["A2:A5"],
+      "pie": "Cuatro clientes, cuatro códigos distintos: la clave es única. La provincia de Moncayo está escrita una sola vez."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e3",
+      "modo": "predice",
+      "enunciado": "Nuria ha montado a mano la dimensión Clientes copiando filas de la exportación. Antes de que Excel lo calcule: ¿qué devuelve esta fórmula en E2?",
+      "hoja": {
+        "celdas": {
+          "A1": "CodCliente", "B1": "Cliente", "C1": "Provincia",
+          "A2": "C-1017", "B2": "Electricidad Arga S.L.", "C2": "Navarra",
+          "A3": "C-1043", "B3": "Instalaciones Moncayo", "C3": "Zaragoza",
+          "A4": "C-1088", "B4": "Montajes Segre S.L.", "C4": "Lleida",
+          "A5": "C-1102", "B5": "Reformas Cinca S.L.U.", "C5": "Huesca",
+          "A6": "C-1043", "B6": "Instalaciones Moncayo", "C6": "Huesca",
+          "A7": "C-1110", "B7": "Electro Jalón S.L.", "C7": "Zaragoza",
+          "E1": "Veces que sale C-1043"
+        },
+        "anchos": {"A": 11, "B": 22, "C": 10, "E": 20},
+        "columnas": 6,
+        "filas": 7
+      },
+      "celda": "E2",
+      "formula": "=CONTAR.SI(A2:A7;\"C-1043\")",
+      "explicacion": "Devuelve 2: la clave C-1043 está dos veces, una con Zaragoza y otra con Huesca. Con una clave repetida, Excel no puede unir esta tabla con las ventas: no sabría a cuál de las dos fichas asignar cada venta de Moncayo."
+    },
+    {
+      "tipo": "texto",
+      "md": "Al separar así los datos sale un dibujo de **estrella**: la tabla de hechos en el centro y cada dimensión alrededor, unida a ella por su clave.\n\n- **Ventas** (el centro): fecha, CodCliente, CodProducto, unidades e importe.\n- **Clientes**: CodCliente, nombre, provincia.\n- **Productos**: CodProducto, descripción, familia.\n- **Calendario**: fecha, mes, trimestre, año.\n\nCada nombre, provincia o familia se escribe **una sola vez**. Este *esquema en estrella* es como ordenan los datos Power Pivot y Power BI, las herramientas de análisis de Microsoft."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e4",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para convertir la exportación gigante de Javier en una estrella.",
+      "pasos": [
+        "Decide qué es una fila de la tabla de hechos: una línea de albarán",
+        "Decide las dimensiones: quién (clientes), qué (productos) y cuándo (calendario)",
+        "Crea cada dimensión con sus datos descriptivos y su clave",
+        "Comprueba que ninguna clave de las dimensiones está repetida",
+        "Une cada dimensión con la tabla de hechos por su clave"
+      ],
+      "explicacion": "Primero lo que pasa (los hechos), después quién, qué y cuándo (las dimensiones), luego las claves comprobadas y, al final, las uniones. Unir sin comprobar las claves es el error que más tiempo hace perder."
+    },
+    {
+      "tipo": "texto",
+      "md": "Hay una dimensión que casi nunca viene en la exportación: el **Calendario**. Es una tabla con **una fila por día**, sin saltarse ninguno, y columnas que describen cada día: año, mes, trimestre.\n\n¿Para qué, si la venta ya tiene fecha? Para que cualquier informe agrupe por mes o por trimestre sin añadir columnas a la tabla de hechos. Además, los cálculos que comparan un año con el anterior necesitan un calendario completo: sin él, no salen.\n\nSe construye con fórmulas que ya conoces."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Así empieza un Calendario",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha", "B1": "Año", "C1": "Mes", "D1": "Nombre del mes",
+          "A2": {"fecha": "2026-01-01"}, "B2": "=AÑO(A2)", "C2": "=MES(A2)", "D2": "=TEXTO(A2;\"mmmm\")",
+          "A3": "=A2+1", "B3": "=AÑO(A3)", "C3": "=MES(A3)", "D3": "=TEXTO(A3;\"mmmm\")",
+          "A4": "=A3+1", "B4": "=AÑO(A4)", "C4": "=MES(A4)", "D4": "=TEXTO(A4;\"mmmm\")",
+          "A5": "=A4+1", "B5": "=AÑO(A5)", "C5": "=MES(A5)", "D5": "=TEXTO(A5;\"mmmm\")"
+        },
+        "formatos": {"A2:A5": "fecha"},
+        "anchos": {"A": 12, "D": 16},
+        "columnas": 4,
+        "filas": 5
+      },
+      "mostrar_formulas": true,
+      "pie": "Cada día es el anterior + 1: así no se salta ninguno. Se copia hacia abajo hasta el 31/12 del último año."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e5",
+      "modo": "formula",
+      "enunciado": "Completa tu Calendario. En **D2** calcula el **trimestre** (1, 2, 3 o 4) de la fecha de A2: enero, febrero y marzo son el 1; abril, mayo y junio, el 2… Tienes el mes ya calculado en C2. Tu fórmula se copiará hasta D8.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha", "B1": "Año", "C1": "Mes", "D1": "Trimestre",
+          "A2": {"fecha": "2026-01-15"}, "B2": "=AÑO(A2)", "C2": "=MES(A2)",
+          "A3": {"fecha": "2026-02-28"}, "B3": "=AÑO(A3)", "C3": "=MES(A3)",
+          "A4": {"fecha": "2026-04-01"}, "B4": "=AÑO(A4)", "C4": "=MES(A4)",
+          "A5": {"fecha": "2026-05-20"}, "B5": "=AÑO(A5)", "C5": "=MES(A5)",
+          "A6": {"fecha": "2026-07-31"}, "B6": "=AÑO(A6)", "C6": "=MES(A6)",
+          "A7": {"fecha": "2026-08-14"}, "B7": "=AÑO(A7)", "C7": "=MES(A7)",
+          "A8": {"fecha": "2026-11-16"}, "B8": "=AÑO(A8)", "C8": "=MES(A8)"
+        },
+        "formatos": {"A2:A8": "fecha"},
+        "anchos": {"A": 12, "D": 11},
+        "columnas": 4,
+        "filas": 8
+      },
+      "objetivo": "D2",
+      "copiar_a": ["D3:D8"],
+      "solucion": "=REDONDEAR.MAS(C2/3;0)",
+      "alternativas": ["=REDONDEAR.MAS(MES(A2)/3;0)", "=ENTERO((C2+2)/3)", "=ENTERO((MES(A2)+2)/3)"],
+      "errores_tipicos": ["=C2/3", "=REDONDEAR(C2/3;0)", "=REDONDEAR.MENOS(C2/3;0)"],
+      "variantes": [{"A2": {"fecha": "2026-12-31"}, "A5": {"fecha": "2026-03-09"}}],
+      "pistas": [
+        "El trimestre es el mes dividido entre 3 y redondeado siempre hacia arriba: febrero es 2 ÷ 3 = 0,67, y eso es el trimestre 1.",
+        "Para redondear siempre hacia arriba tienes REDONDEAR.MAS(número;0). REDONDEAR a secas fallaría con abril: 4 ÷ 3 = 1,33 daría 1.",
+        "Escribe =REDONDEAR.MAS(C2/3;0) y cópiala hasta D8."
+      ],
+      "explicacion": "Tu Calendario ya tiene Año, Mes y Trimestre. Cuando lo unas a las ventas, cualquier informe podrá agrupar por trimestre sin tocar la tabla de hechos: el trabajo se hace una vez, en la dimensión, y sirve para siempre."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e6",
+      "modo": "abierta",
+      "pregunta": "Lucía Fernández (RRHH) lleva los **fichajes** en una sola hoja: cada fila tiene la fecha, la hora de entrada y la de salida, y además el número de empleado, el nombre, el departamento y la delegación de la persona. Diseña su modelo: ¿qué tabla es de hechos, qué dimensiones harías, con qué clave cada una y qué columnas pondrías en cada tabla?",
+      "modelo": "Hechos: Fichajes, una fila por fichaje, con Fecha, NumEmpleado, Entrada y Salida. Dimensiones: Empleados (clave NumEmpleado, única) con nombre, departamento y delegación; y Calendario (clave Fecha, una fila por día) con año, mes y trimestre. En Fichajes no se repiten ni el nombre ni el departamento: solo la clave del empleado.",
+      "criterios": [
+        "Identifica Fichajes como la tabla de hechos (una fila por fichaje)",
+        "Propone una dimensión Empleados con una clave única (el número de empleado), no el nombre",
+        "Incluye una dimensión Calendario unida por la fecha",
+        "Deja en la tabla de hechos solo la fecha, las horas y la clave del empleado; lo descriptivo va a las dimensiones"
+      ]
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Me pasó el año pasado: monté la tabla de clientes copiando del programa de gestión y se coló un código repetido. Excel no quiso crear la unión y perdí una mañana buscando por qué. Desde entonces pongo junto a cada dimensión una celda que cuenta las claves repetidas. Si no da 0, no sigo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l1-e7",
+      "modo": "formula",
+      "enunciado": "La misión de Javier. Has sacado la dimensión **Clientes** de la exportación. Antes de unirla a las ventas, en **E2** escribe la celda de control de Nuria: debe devolver **cuántas claves sobran** en A2:A9, es decir, el número de códigos menos el número de códigos distintos. Si todo está bien, da 0.",
+      "hoja": {
+        "celdas": {
+          "A1": "CodCliente", "B1": "Cliente", "C1": "Provincia", "E1": "Claves repetidas",
+          "A2": "C-1017", "B2": "Electricidad Arga S.L.", "C2": "Navarra",
+          "A3": "C-1043", "B3": "Instalaciones Moncayo", "C3": "Zaragoza",
+          "A4": "C-1088", "B4": "Montajes Segre S.L.", "C4": "Lleida",
+          "A5": "C-1102", "B5": "Reformas Cinca S.L.U.", "C5": "Huesca",
+          "A6": "C-1110", "B6": "Electro Jalón S.L.", "C6": "Zaragoza",
+          "A7": "C-1115", "B7": "Mantenimientos Tudela S.L.", "C7": "Navarra",
+          "A8": "C-1119", "B8": "Iluminación Noguera S.A.", "C8": "Lleida",
+          "A9": "C-1043", "B9": "Instalaciones Moncayo", "C9": "Huesca"
+        },
+        "anchos": {"A": 11, "B": 25, "C": 10, "E": 16},
+        "columnas": 5,
+        "filas": 9
+      },
+      "objetivo": "E2",
+      "solucion": "=CONTARA(A2:A9)-CONTARA(UNICOS(A2:A9))",
+      "alternativas": ["=FILAS(A2:A9)-FILAS(UNICOS(A2:A9))", "=CONTARA(A2:A9)-FILAS(UNICOS(A2:A9))"],
+      "errores_tipicos": ["=CONTAR.SI(A2:A9;\"C-1043\")", "=CONTARA(UNICOS(A2:A9))", "=CONTARA(A2:A9)", "=CONTAR(A2:A9)-CONTAR(UNICOS(A2:A9))"],
+      "variantes": [{"A9": "C-1120"}, {"A5": "C-1017"}],
+      "pistas": [
+        "Necesitas dos cuentas: cuántos códigos hay y cuántos códigos distintos hay. La diferencia son los que sobran.",
+        "CONTARA cuenta celdas con texto (CONTAR solo cuenta números). Para los distintos, mete UNICOS(A2:A9) dentro de CONTARA.",
+        "=CONTARA(A2:A9)-CONTARA(UNICOS(A2:A9))"
+      ],
+      "explicacion": "Tu control da 1: C-1043 está dos veces, Moncayo en Zaragoza y en Huesca, justo el lío de la tabla gigante. Pregunta a Javier cuál es la buena, corrige la ficha y el control bajará a 0. Ya puedes entregarle una dimensión limpia, y esta celda te avisará cada vez que alguien cuele un duplicado."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m2l1-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cómo se llama la tabla que guarda lo que *pasa* en el negocio (cada venta, cada pedido), con muchas filas que crecen cada día?",
+      "aceptadas": ["tabla de hechos", "hechos", "la tabla de hechos", "de hechos", "tabla de hecho"],
+      "explicacion": "La tabla de hechos. Las fichas que describen quién, qué y cuándo (clientes, productos, días) son las tablas de dimensiones."
+    },
+    {
+      "id": "n5m2l1-q2",
+      "modo": "test",
+      "pregunta": "En la dimensión Productos, ¿cuántas veces puede aparecer el código CAB-025?",
+      "opciones": [
+        {"texto": "Una sola vez", "correcta": true, "porque": "Es la clave de la dimensión: una ficha por artículo. Si se repite, no se puede unir con las ventas."},
+        {"texto": "Tantas como ventas tenga ese artículo", "correcta": false, "porque": "Eso pasa en la tabla de hechos (Ventas), no en la dimensión."},
+        {"texto": "Una vez por cada cambio de precio", "correcta": false, "porque": "Si cambia el precio, se corrige en su única fila. Repetir la clave impide unir la tabla con las ventas."}
+      ]
+    },
+    {
+      "id": "n5m2l1-q3",
+      "modo": "predice",
+      "enunciado": "Celda de control junto a la dimensión Productos. ¿Qué devuelve?",
+      "hoja": {
+        "celdas": {
+          "A1": "CodProducto", "B1": "Familia",
+          "A2": "CAB-015", "B2": "Cableado",
+          "A3": "CAB-025", "B3": "Cableado",
+          "A4": "LED-018", "B4": "Iluminación",
+          "A5": "PRO-216", "B5": "Protección",
+          "A6": "MEC-101", "B6": "Mecanismos"
+        },
+        "anchos": {"A": 12, "B": 12},
+        "columnas": 4,
+        "filas": 6
+      },
+      "celda": "D2",
+      "formula": "=CONTARA(A2:A6)-CONTARA(UNICOS(A2:A6))",
+      "explicacion": "0: hay 5 códigos y 5 distintos. Ninguna clave sobra, así que la dimensión Productos está lista para unirse a las ventas. Que Cableado se repita no importa: la familia no es la clave."
+    }
+  ],
+  "tarjetas": [
+    {"tipo": "concepto", "frente": "¿Qué es una tabla de hechos?", "dorso": "La que guarda lo que pasa (ventas, pedidos, fichajes): muchas filas, crece cada día, lleva fechas, claves y números."},
+    {"tipo": "concepto", "frente": "¿Qué es una tabla de dimensión?", "dorso": "Una ficha por cliente, producto o día, con sus datos descriptivos y una clave que no se repite."},
+    {"tipo": "concepto", "frente": "¿Qué es un esquema en estrella?", "dorso": "La tabla de hechos en el centro y las dimensiones alrededor, unidas por sus claves. Cada dato descriptivo se escribe una sola vez."},
+    {"tipo": "funcion", "frente": "Celda de control: ¿cuántas claves repetidas hay en A2:A200?", "dorso": "=CONTARA(A2:A200)-CONTARA(UNICOS(A2:A200)). Tiene que dar 0."}
+  ]
+}

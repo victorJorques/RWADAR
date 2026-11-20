@@ -1,0 +1,2220 @@
+{
+  "id": "n4m3",
+  "nivel": "n4",
+  "titulo": "Simular: ¿y si…?",
+  "intro": "En una empresa casi ningún número es seguro: el precio puede bajar, las ventas pueden no llegar y cada banco ofrece condiciones distintas. En este módulo aprenderás a preguntarle a Excel «¿y si…?», a calcular un préstamo de principio a fin y a enseñar el resultado con el gráfico adecuado, para que quien decide lo haga con todos los casos sobre la mesa.",
+  "repaso_inicial": [
+    {
+      "id": "n4m3-r1",
+      "modo": "formula",
+      "enunciado": "Javier quiere marcar los productos con poco margen. En **C2** escribe una fórmula que muestre **Revisar** si el margen de B2 es menor que el mínimo de **E2**, y **OK** si no. Se copiará a **C3:C5**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Producto",
+          "B1": "Margen",
+          "C1": "Revisión",
+          "E1": "Margen mínimo",
+          "A2": "Tira LED 5 m",
+          "B2": 0.3,
+          "E2": 0.25,
+          "A3": "Canaleta 40x60",
+          "B3": 0.18,
+          "A4": "Magnetotérmico 2P 16 A",
+          "B4": 0.27,
+          "A5": "Bridas 200 mm (100 uds.)",
+          "B5": 0.22
+        },
+        "formatos": {
+          "B2:B5": "pct",
+          "E2": "pct"
+        },
+        "anchos": {
+          "A": 26,
+          "B": 10,
+          "C": 11,
+          "D": 3,
+          "E": 15
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C5"
+      ],
+      "solucion": "=SI(B2<$E$2;\"Revisar\";\"OK\")",
+      "alternativas": [
+        "=SI(B2>=$E$2;\"OK\";\"Revisar\")",
+        "=SI(B2<E$2;\"Revisar\";\"OK\")"
+      ],
+      "errores_tipicos": [
+        "=SI(B2<E2;\"Revisar\";\"OK\")",
+        "=SI(B2>$E$2;\"Revisar\";\"OK\")",
+        "=SI(B2<0,25;\"Revisar\";\"OK\")"
+      ],
+      "debe_usar": [
+        "SI"
+      ],
+      "variantes": [
+        {
+          "E2": 0.2
+        }
+      ],
+      "pistas": [
+        "SI tiene tres partes: la prueba, lo que sale si se cumple y lo que sale si no.",
+        "La prueba es `B2<$E$2`. Fija E2 con $: al copiar hacia abajo no debe moverse.",
+        "Escribe `=SI(B2<$E$2;\"Revisar\";\"OK\")`."
+      ],
+      "explicacion": "La canaleta y las bridas quedan marcadas. Y como el mínimo está en su propia celda (un supuesto a la vista), si Dirección lo sube al 28 % solo hay que cambiar E2: justo la idea que vas a usar en todo este módulo."
+    },
+    {
+      "id": "n4m3-r2",
+      "modo": "test",
+      "pregunta": "En Power Query quitaste dos columnas, cambiaste tipos y filtraste las devoluciones. El mes que viene, ¿dónde estarán esos cambios para repetirlos?",
+      "opciones": [
+        {
+          "texto": "En los **Pasos aplicados** de la consulta: se repiten solos al pulsar Actualizar",
+          "correcta": true,
+          "porque": "Eso es: la consulta guarda la receta paso a paso y la vuelve a aplicar a los datos nuevos."
+        },
+        {
+          "texto": "En ningún sitio: hay que repetirlos a mano cada mes",
+          "correcta": false,
+          "porque": "Justo para evitar eso existe Power Query: cada clic queda apuntado como un paso."
+        },
+        {
+          "texto": "En el historial de Deshacer de Excel",
+          "correcta": false,
+          "porque": "Deshacer solo recuerda lo que has hecho en la sesión y se pierde al cerrar. Los pasos de la consulta se guardan con el libro."
+        }
+      ]
+    },
+    {
+      "id": "n4m3-r3",
+      "modo": "test",
+      "pregunta": "Vas a proteger una plantilla de gastos de viaje. ¿Qué haces **antes** de proteger la hoja para que tus compañeros puedan escribir en las celdas de entrada?",
+      "opciones": [
+        {
+          "texto": "Seleccionar esas celdas, [[Ctrl]]+[[1]] › pestaña Proteger › desmarcar **Bloqueada**",
+          "correcta": true,
+          "porque": "Eso es: todas las celdas vienen bloqueadas de fábrica. Se desbloquean las de entrada y después se protege la hoja."
+        },
+        {
+          "texto": "Nada: al proteger la hoja, Excel deja escribir en las celdas vacías",
+          "correcta": false,
+          "porque": "No distingue entre vacías y llenas: con la hoja protegida, toda celda que siga marcada como Bloqueada queda cerrada."
+        },
+        {
+          "texto": "Proteger primero y desbloquear después las celdas de entrada",
+          "correcta": false,
+          "porque": "Con la hoja ya protegida no puedes cambiar el formato de las celdas. El orden es: desbloquear y luego proteger."
+        }
+      ]
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "Descarga el libro y sigue la hoja «Instrucciones» (intenta hacerlo en menos de 40 minutos). **Parte 1**: Marta va a pedir 35.000 € al 5,4 % anual a 4 años, con cuota mensual, para una carretilla elevadora del almacén. Calcula la cuota con PAGO, monta el cuadro de amortización de 48 meses y comprueba que el saldo final es 0. **Parte 2**: completa el modelo de margen del panel LED 60x60 40 W con los supuestos separados (margen de contribución = ingresos − costes variables; beneficio = margen de contribución − costes fijos), busca con Buscar objetivo el precio de equilibrio y crea los escenarios Pesimista, Base y Optimista con su resumen. Después escribe aquí tus totales de control.",
+    "archivo": "n4-simulador.xlsx",
+    "controles": [
+      {
+        "pregunta": "Cuota mensual del préstamo (€)",
+        "respuesta": 812.38,
+        "tolerancia": 0.01,
+        "pista": "`=-PAGO(C5/12;C6*12;C4)`. Si te sale casi 10.000 €, has usado la tasa anual y los años sin pasarlos a meses."
+      },
+      {
+        "pregunta": "Total de intereses del préstamo (€)",
+        "respuesta": 3994.36,
+        "tolerancia": 0.01,
+        "pista": "Suma la columna Interés del cuadro, o calcula cuota × 48 − 35.000. Si te sale 7.560 €, has calculado 5,4 % × 4 años sobre los 35.000 €, como si la deuda no bajara."
+      },
+      {
+        "pregunta": "Intereses pagados el primer año, meses 1 a 12 (€)",
+        "respuesta": 1692.55,
+        "tolerancia": 0.01,
+        "pista": "`=SUMA(E12:E23)`. El interés del mes 1 tiene que ser 157,50 € (35.000 × 5,4 % ÷ 12)."
+      },
+      {
+        "pregunta": "Precio de equilibrio del panel LED (€)",
+        "respuesta": 29,
+        "tolerancia": 0.01,
+        "pista": "Buscar objetivo: Definir la celda C15, Con el valor 0, Cambiando la celda C5. Compruébalo: coste por unidad + costes fijos ÷ unidades."
+      },
+      {
+        "pregunta": "Beneficio en el escenario pesimista (€)",
+        "respuesta": -2800,
+        "tolerancia": 0.01,
+        "pista": "Con 30 € y 3.200 unidades: (30 − 21,50) × 3.200 − 30.000. Sale negativo: en ese caso la línea pierde dinero."
+      },
+      {
+        "pregunta": "Beneficio en el escenario optimista (€)",
+        "respuesta": 22900,
+        "tolerancia": 0.01,
+        "pista": "Con 33 € y 4.600 unidades. Si no coincide, revisa que el beneficio (C15) se calcule solo con fórmulas que apunten a C5:C8."
+      }
+    ],
+    "solucion_md": "### Parte 1 · Préstamo\n- **C7** `=-PAGO(C5/12;C6*12;C4)` → 812,38 €.\n- Fila del mes 1 (fila 12): saldo inicial `=C4`; cuota `=$C$7`; interés `=C12*$C$5/12`; capital `=D12-E12`; saldo final `=C12-F12`. Mes 2: saldo inicial `=G12`. Copia hasta la fila 59.\n- **C61** `=G59` → 0 (puede salir algo como -1,1E-11: es 0). **C62** `=SUMA(F12:F59)` → 35.000,00 €.\n- **C8** `=SUMA(E12:E59)` → 3.994,36 € (o `=C7*C6*12-C4`). **C9** `=SUMA(E12:E23)` → 1.692,55 €.\n\n### Parte 2 · Margen\n- Cálculos: `=C5*C6`, `=C6*C7`, `=C11-C12`, `=C8`, `=C13-C14`. Beneficio del caso base: 12.000,00 €.\n- Buscar objetivo (C15 a 0 cambiando C5): **29,00 €**.\n- Escenarios (celdas cambiantes C5:C6): Pesimista, 30 € y 3.200 uds. → **−2.800 €**; Base → **12.000 €**; Optimista, 33 € y 4.600 uds. → **22.900 €**. Resumen con C15 como celda de resultado.\n\nLectura para Marta: con las ventas previstas, el precio puede bajar hasta 29 € sin perder dinero; si además las ventas caen como en el caso pesimista, la línea pierde 2.800 €.",
+    "archivo_solucion": "n4-simulador-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n4m3l1",
+      "titulo": "Buscar objetivo: que Excel despeje por ti",
+      "minutos": 15,
+      "objetivo": "Usar Buscar objetivo para encontrar el dato que da el resultado que quieres (punto de equilibrio, precio para un margen) y entender qué hace por dentro con una fórmula directa.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Nos ofrecen alquilar una máquina para cortar cable a medida: 1.800 € al mes, más 180 € de mantenimiento. Cobraríamos 6 € por bobina cortada y cada una nos cuesta 2,40 € entre material y mano de obra. ¿Cuántas bobinas al mes tenemos que cortar para no perder dinero?",
+        "logro": "Ya sabes calcular el punto de equilibrio de un proyecto y pedirle a Excel que despeje cualquier dato con Buscar objetivo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Hasta ahora siempre ibas en el mismo sentido: **pones los datos y la fórmula da el resultado**.\n\nEn la empresa muchas preguntas van **al revés**: sabes el resultado que quieres y te falta el dato. «¿Cuántas bobinas hay que cortar para no perder dinero?» «¿A qué precio vendo para ganar un 30 %?»\n\nPara eso Excel tiene **Buscar objetivo**: tú le dices el resultado y él prueba valores en una celda hasta conseguirlo. Como tantear con la calculadora, pero en un segundo."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "El modelo de la máquina de cortar cable",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Valor",
+              "A2": "Precio por bobina",
+              "B2": 6,
+              "A3": "Coste por bobina",
+              "B3": 2.4,
+              "A4": "Alquiler mensual",
+              "B4": 1800,
+              "A5": "Bobinas al mes",
+              "B5": 400,
+              "A6": "Beneficio del mes",
+              "B6": "=B5*(B2-B3)-B4"
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "B6": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "resaltar": [
+            "B6"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Cada bobina deja 6 − 2,40 = 3,60 €. El beneficio es lo que dejan todas las bobinas menos el alquiler."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e1",
+          "modo": "predice",
+          "enunciado": "Calentamiento. Con **400 bobinas** al mes, ¿qué número saldrá en **B6**? Calcúlalo de cabeza: cada bobina deja 3,60 €.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Valor",
+              "A2": "Precio por bobina",
+              "B2": 6,
+              "A3": "Coste por bobina",
+              "B3": 2.4,
+              "A4": "Alquiler mensual",
+              "B4": 1800,
+              "A5": "Bobinas al mes",
+              "B5": 400,
+              "A6": "Beneficio del mes"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "celda": "B6",
+          "formula": "=B5*(B2-B3)-B4",
+          "explicacion": "400 × 3,60 = 1.440 €, y 1.440 − 1.800 = **−360 €**. Con 400 bobinas la máquina **pierde** 360 € al mes. La pregunta de Andrés es justo la contraria: ¿con cuántas bobinas el beneficio llega a 0?",
+          "respuesta": "-360"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Las tres casillas de Buscar objetivo\n\n- **Definir la celda**: la celda del **resultado**. Tiene que contener una **fórmula** (aquí, B6).\n- **Con el valor**: el número que quieres que salga (aquí, **0**: ni ganar ni perder).\n- **Cambiando la celda**: el **dato** que Excel puede tocar para conseguirlo (aquí, B5, las bobinas).\n\nExcel prueba valores en B5 hasta que B6 vale 0."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Solo cambia una celda",
+          "md": "Buscar objetivo trabaja con **un único dato** variable. Si necesitas mover varios a la vez, existe un complemento llamado **Solver** (Datos › Análisis), que es para modelos más avanzados."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e2",
+          "modo": "cinta",
+          "enunciado": "¿Dónde está **Buscar objetivo**? Toca el botón que lo contiene.",
+          "ruta": [
+            "Datos",
+            "Previsión",
+            "Análisis de hipótesis"
+          ],
+          "explicacion": "Datos › Previsión › **Análisis de hipótesis**. Es un desplegable con tres herramientas: Administrador de escenarios, Buscar objetivo y Tabla de datos. Las dos últimas las verás en la próxima lección."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: ¿cuántas bobinas para no perder dinero?",
+          "pasos": [
+            {
+              "md": "Haz clic en **B6**, la celda del beneficio (la que tiene la fórmula)."
+            },
+            {
+              "md": "Abre **Buscar objetivo**.",
+              "ruta": [
+                "Datos",
+                "Previsión",
+                "Análisis de hipótesis"
+              ]
+            },
+            {
+              "md": "Rellena: **Definir la celda** `B6` · **Con el valor** `0` · **Cambiando la celda** `B5`. Pulsa **Aceptar**."
+            },
+            {
+              "md": "Excel tantea y deja **500** en B5; B6 pasa a 0,00 €. Si a veces ves algo como 499,9999, es normal: llega por aproximación."
+            },
+            {
+              "md": "Excel te enseña la solución en una ventana: **Aceptar** la deja escrita en B5; **Cancelar** devuelve B5 a su valor de antes (400)."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e3",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para usar Buscar objetivo.",
+          "pasos": [
+            "Comprueba que la celda del resultado tiene una fórmula",
+            "Datos › Previsión › Análisis de hipótesis › Buscar objetivo",
+            "En «Definir la celda», pon la celda del resultado",
+            "En «Con el valor», escribe el número que quieres conseguir",
+            "En «Cambiando la celda», pon el dato que Excel puede mover",
+            "Pulsa Aceptar y decide si te quedas con la solución"
+          ],
+          "explicacion": "Primero se mira que el resultado salga de una fórmula; si no, Excel no tiene nada que despejar. Después, las tres casillas en orden: resultado, valor deseado y dato que cambia."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Lo que hace por dentro: despejar\n\nEl **punto de equilibrio** es la cantidad con la que no ganas ni pierdes. Tiene fórmula directa:\n\n> unidades = costes fijos ÷ (precio − coste por unidad)\n\n**Costes fijos**: los que pagas igual hagas 1 bobina o 1.000 (el alquiler). Cada bobina deja 3,60 €, así que hacen falta 1.800 ÷ 3,60 = **500** bobinas.\n\nBuscar objetivo llega a lo mismo tanteando; te salva cuando la fórmula es tan larga que no sabes despejarla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e4",
+          "modo": "formula",
+          "enunciado": "Nuria escribió en **B7** el punto de equilibrio, pero le sale **297,6** bobinas y eso no cuadra con Buscar objetivo, que dio 500. **Arregla la fórmula de B7** para que dé las bobinas que necesitamos para no perder dinero.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Valor",
+              "A2": "Precio por bobina",
+              "B2": 6,
+              "A3": "Coste por bobina",
+              "B3": 2.4,
+              "A4": "Alquiler mensual",
+              "B4": 1800,
+              "A7": "Bobinas de equilibrio"
+            },
+            "formatos": {
+              "B2:B4": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "objetivo": "B7",
+          "inicial": "=B4/B2-B3",
+          "solucion": "=B4/(B2-B3)",
+          "alternativas": [
+            "=B4/(-B3+B2)"
+          ],
+          "errores_tipicos": [
+            "=B4/B2-B3",
+            "=B4/B2",
+            "=B4/(B3-B2)",
+            "=1800/3,6"
+          ],
+          "variantes": [
+            {
+              "B4": 2400,
+              "B2": 7
+            },
+            {
+              "B3": 3
+            }
+          ],
+          "pistas": [
+            "Excel hace primero las divisiones y después las restas. ¿Qué está dividiendo ahora?",
+            "Hay que dividir el alquiler entre lo que deja **cada bobina**: precio menos coste.",
+            "Encierra la resta entre paréntesis: `=B4/(B2-B3)`."
+          ],
+          "explicacion": "Sin paréntesis, Excel calculaba 1.800 ÷ 6 = 300 y luego restaba 2,40. Con `(B2-B3)` divide entre lo que deja cada bobina: **500**. Acabas de comprobar un resultado de Buscar objetivo con una fórmula directa: dos caminos que dan lo mismo son la mejor señal de que está bien."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Dos trampas de Buscar objetivo que he visto mil veces:\n1. En «Definir la celda» pones una celda con un **número escrito**, no una fórmula: Excel te avisa de que tiene que contener una fórmula.\n2. En «Cambiando la celda» pones un dato **del que no depende** el resultado: Excel tantea y tantea, y no encuentra solución."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e5",
+          "modo": "test",
+          "pregunta": "Javier copió el modelo de la máquina y pegó solo los **valores** para enviarlo por correo. Ahora B6 contiene el número −360 escrito, sin fórmula. Lanza Buscar objetivo con Definir la celda B6, valor 0, cambiando B5. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "Excel avisa de que la celda tiene que contener una fórmula",
+              "correcta": true,
+              "porque": "Eso es. Buscar objetivo necesita una fórmula que dependa del dato que cambia; un número fijo no reacciona a nada. Solución: volver a poner la fórmula en B6."
+            },
+            {
+              "texto": "Excel pone 500 en B5, como siempre",
+              "correcta": false,
+              "porque": "Para llegar a 500, B6 tendría que recalcularse al cambiar B5. Con un número escrito, B6 no se mueve nunca."
+            },
+            {
+              "texto": "Excel cambia B6 a 0 y listo",
+              "correcta": false,
+              "porque": "Buscar objetivo no escribe en la celda del resultado: mueve la celda que cambia y mira cómo responde la fórmula."
+            }
+          ],
+          "explicacion": "Regla de oro: la celda de «Definir la celda» siempre tiene fórmula, y la de «Cambiando la celda» siempre es un dato escrito del que esa fórmula depende."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Otro uso: el precio para un margen\n\nYa conoces el **margen sobre la venta**: (precio − coste) ÷ precio. Con Buscar objetivo: Definir la celda del margen, Con el valor **0,3** (30 %), Cambiando la celda del precio.\n\nDespejado a mano queda:\n\n> precio = coste ÷ (1 − margen)\n\nOjo con el atajo de sumar un 30 % al coste: 84 € × 1,3 = 109,20 €, y ese precio solo deja un 23 % de margen sobre la venta."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e6",
+          "modo": "formula",
+          "enunciado": "Javier quiere un **margen sobre la venta del 30 %** para la campana LED de 150 W. En **B5** calcula el **precio de venta** que lo consigue, con el coste de B2 y el margen deseado de B3. Debe salir **120,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Campana LED 150 W",
+              "B1": "Valor",
+              "A2": "Coste de compra",
+              "B2": 84,
+              "A3": "Margen deseado",
+              "B3": 0.3,
+              "A5": "Precio de venta"
+            },
+            "formatos": {
+              "B2": "eur",
+              "B3": "pct",
+              "B5": "eur"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "objetivo": "B5",
+          "solucion": "=B2/(1-B3)",
+          "alternativas": [
+            "=B2/(100%-B3)"
+          ],
+          "errores_tipicos": [
+            "=B2*(1+B3)",
+            "=B2*1,3",
+            "=B2/1-B3",
+            "=B2+B3"
+          ],
+          "variantes": [
+            {
+              "B2": 50,
+              "B3": 0.25
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El margen se calcula sobre el **precio**, no sobre el coste. Por eso no vale sumar un 30 % al coste.",
+            "Si el margen es el 30 % del precio, el coste es el 70 % restante: precio × (1 − B3) = coste.",
+            "Despeja el precio: `=B2/(1-B3)`."
+          ],
+          "explicacion": "120 € − 84 € = 36 €, y 36 ÷ 120 = 30 %. Con esta fórmula puedes fijar el precio de cualquier artículo a partir del margen que pide Dirección. Si la pruebas con Buscar objetivo, el resultado es el mismo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l1-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Andrés.** A los 1.800 € de alquiler se suman **180 € de mantenimiento**. En **B7** calcula cuántas bobinas al mes hay que cortar para **no perder dinero**. Debe salir **550**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Máquina de corte",
+              "B1": "Valor",
+              "A2": "Precio por bobina",
+              "B2": 6,
+              "A3": "Coste por bobina",
+              "B3": 2.4,
+              "A4": "Alquiler mensual",
+              "B4": 1800,
+              "A5": "Mantenimiento mensual",
+              "B5": 180,
+              "A7": "Bobinas de equilibrio"
+            },
+            "formatos": {
+              "B2:B5": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "objetivo": "B7",
+          "solucion": "=(B4+B5)/(B2-B3)",
+          "alternativas": [
+            "=SUMA(B4:B5)/(B2-B3)",
+            "=B4/(B2-B3)+B5/(B2-B3)"
+          ],
+          "errores_tipicos": [
+            "=B4/(B2-B3)",
+            "=B4+B5/(B2-B3)",
+            "=(B4+B5)/B2-B3",
+            "=550"
+          ],
+          "variantes": [
+            {
+              "B5": 360,
+              "B2": 6.5
+            },
+            {
+              "B3": 2
+            }
+          ],
+          "pistas": [
+            "Los costes fijos ahora son dos: alquiler y mantenimiento.",
+            "Súmalos entre paréntesis y divide entre lo que deja cada bobina.",
+            "`=(B4+B5)/(B2-B3)`"
+          ],
+          "explicacion": "1.980 € ÷ 3,60 € = **550 bobinas al mes**. Ya puedes contestar a Andrés: por debajo de 550 la máquina pierde dinero; por encima, gana. Este cálculo (el punto de equilibrio) es de lo primero que pide Dirección antes de aprobar cualquier inversión."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m3l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En el cuadro de Buscar objetivo, ¿cómo se llama la casilla donde pones el **dato que Excel puede mover**?",
+          "aceptadas": [
+            "Cambiando la celda",
+            "cambiando la celda",
+            "Cambiando celda",
+            "Cambiando la celda:"
+          ],
+          "explicacion": "**Cambiando la celda**. Las otras dos son «Definir la celda» (el resultado, con fórmula) y «Con el valor» (el número que quieres)."
+        },
+        {
+          "id": "n4m3l1-q2",
+          "modo": "test",
+          "pregunta": "Marta te pide: «¿Qué descuento máximo puedo darle a Instalaciones Moncayo para que el pedido siga dejando 2.000 € de margen?». Tienes un modelo con el descuento en una celda y el margen calculado con fórmula. ¿Qué herramienta usas?",
+          "opciones": [
+            {
+              "texto": "Buscar objetivo",
+              "correcta": true,
+              "porque": "Sabes el resultado (2.000 € de margen) y buscas el dato (el descuento). Es justo su trabajo."
+            },
+            {
+              "texto": "BUSCARX",
+              "correcta": false,
+              "porque": "Se parece en el nombre, pero BUSCARX trae un dato de otra tabla (un precio de la tarifa). No despeja nada."
+            },
+            {
+              "texto": "Un filtro en la columna del margen",
+              "correcta": false,
+              "porque": "Filtrar oculta filas de una lista; no calcula qué valor hay que poner en una celda."
+            },
+            {
+              "texto": "Probar descuentos a mano hasta que salga",
+              "correcta": false,
+              "porque": "Funciona, pero tardas más y es fácil quedarte cerca sin llegar. Buscar objetivo hace ese tanteo por ti."
+            }
+          ]
+        },
+        {
+          "id": "n4m3l1-q3",
+          "modo": "formula",
+          "enunciado": "Sin mirar arriba. Una caja de 100 bridas se vende a 15 € y nos cuesta 9 €. La campaña para lanzarla cuesta 4.200 €. En **B5** calcula cuántas cajas hay que vender para cubrir la campaña (beneficio 0).",
+          "hoja": {
+            "celdas": {
+              "A1": "Bridas en caja",
+              "B1": "Valor",
+              "A2": "Precio por caja",
+              "B2": 15,
+              "A3": "Coste por caja",
+              "B3": 9,
+              "A4": "Coste de la campaña",
+              "B4": 4200,
+              "A5": "Cajas de equilibrio"
+            },
+            "formatos": {
+              "B2:B4": "eur"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "objetivo": "B5",
+          "solucion": "=B4/(B2-B3)",
+          "errores_tipicos": [
+            "=B4/B2-B3",
+            "=B4/B2",
+            "=700"
+          ],
+          "variantes": [
+            {
+              "B4": 6000,
+              "B3": 10
+            }
+          ],
+          "pistas": [
+            "¿Cuánto deja cada caja?",
+            "Divide el coste fijo (la campaña) entre lo que deja cada caja.",
+            "`=B4/(B2-B3)`"
+          ],
+          "explicacion": "4.200 ÷ 6 = **700 cajas**. Costes fijos entre lo que deja cada unidad: la fórmula del punto de equilibrio sirve para cualquier producto."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde está Buscar objetivo?",
+          "dorso": "Datos › Previsión › Análisis de hipótesis › Buscar objetivo."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Las tres casillas de Buscar objetivo",
+          "dorso": "Definir la celda (el resultado, con fórmula) · Con el valor (lo que quieres) · Cambiando la celda (el dato que se mueve)."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Punto de equilibrio en unidades",
+          "dorso": "Costes fijos ÷ (precio − coste por unidad). Ej.: =B4/(B2-B3)"
+        },
+        {
+          "tipo": "error",
+          "frente": "Buscar objetivo dice que la celda debe contener una fórmula. ¿Qué pasa?",
+          "dorso": "En «Definir la celda» hay un número escrito. Pon la celda que calcula el resultado con fórmula."
+        }
+      ]
+    },
+    {
+      "id": "n4m3l2",
+      "titulo": "Escenarios y tablas de datos",
+      "minutos": 16,
+      "objetivo": "Montar un modelo con los supuestos separados del cálculo, guardar escenarios (pesimista, base y optimista) y construir un cuadro de sensibilidad precio × unidades.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "En Navidad lanzamos la tira LED de 5 m. No sé si venderemos 800 o 1.500 unidades, ni si aguantaremos el precio de 24 €. Quiero ver el beneficio en tres casos (malo, normal y bueno) y un cuadro con precios y unidades cruzados. El lunes decidimos el precio.",
+        "logro": "Ya sabes separar los supuestos del cálculo, guardar escenarios y montar un cuadro de sensibilidad que responde a «¿y si…?» de un vistazo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Un modelo: supuestos arriba, cálculos abajo\nUn **modelo** es una hoja que calcula un resultado a partir de datos que todavía no sabes seguros. Esos datos se llaman **supuestos** (o **entradas**): el precio, las unidades, el coste.\n\nLa regla de oro: cada supuesto en **su propia celda**, todos juntos y a la vista. Debajo, los cálculos, hechos solo con fórmulas que apuntan a esas celdas. Así, para probar otro caso, cambias una celda y todo se recalcula."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "El modelo de la tira LED",
+          "hoja": {
+            "celdas": {
+              "A1": "Tira LED 5 m · campaña de Navidad",
+              "B1": "Valor",
+              "A2": "Precio de venta",
+              "B2": 24,
+              "A3": "Unidades",
+              "B3": 1200,
+              "A4": "Coste por unidad",
+              "B4": 14.5,
+              "A5": "Gastos de campaña",
+              "B5": 6000,
+              "A7": "Ingresos",
+              "B7": "=B2*B3",
+              "A8": "Costes",
+              "B8": "=B3*B4+B5",
+              "A9": "Beneficio",
+              "B9": "=B7-B8"
+            },
+            "formatos": {
+              "B2": "eur",
+              "B3": "#.##0",
+              "B4:B5": "eur",
+              "B7:B9": "eur"
+            },
+            "anchos": {
+              "A": 32,
+              "B": 14
+            }
+          },
+          "resaltar": [
+            "B2:B5"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Resaltados, los supuestos: lo único que se cambia. Debajo, los cálculos: solo fórmulas, ni un número escrito a mano."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e1",
+          "modo": "formula",
+          "enunciado": "Empieza por lo fácil. En **B9** calcula el **beneficio**: los ingresos de B7 menos los costes de B8. Debe salir **5.400,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tira LED 5 m · campaña de Navidad",
+              "B1": "Valor",
+              "A2": "Precio de venta",
+              "B2": 24,
+              "A3": "Unidades",
+              "B3": 1200,
+              "A4": "Coste por unidad",
+              "B4": 14.5,
+              "A5": "Gastos de campaña",
+              "B5": 6000,
+              "A7": "Ingresos",
+              "B7": "=B2*B3",
+              "A8": "Costes",
+              "B8": "=B3*B4+B5",
+              "A9": "Beneficio"
+            },
+            "formatos": {
+              "B2": "eur",
+              "B3": "#.##0",
+              "B4:B5": "eur",
+              "B7:B9": "eur"
+            },
+            "anchos": {
+              "A": 32,
+              "B": 14
+            }
+          },
+          "objetivo": "B9",
+          "solucion": "=B7-B8",
+          "alternativas": [
+            "=B2*B3-(B3*B4+B5)",
+            "=B2*B3-B3*B4-B5"
+          ],
+          "errores_tipicos": [
+            "=B7+B8",
+            "=B8-B7",
+            "=5400"
+          ],
+          "variantes": [
+            {
+              "B2": 22,
+              "B3": 800
+            },
+            {
+              "B4": 15
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El beneficio es lo que te queda de lo que ingresas después de pagar lo que cuesta.",
+            "Los ingresos están en B7 y los costes en B8: réstalos.",
+            "Escribe `=B7-B8`."
+          ],
+          "explicacion": "5.400 € de beneficio en el caso normal. Fíjate en que tu fórmula no lleva ningún número escrito, solo celdas: cuando Javier cambie el precio o las unidades, el beneficio se recalculará solo. Ese es el corazón de cualquier simulación."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El error que lo estropea todo\nMuchas hojas de empresa esconden los supuestos **dentro de las fórmulas**: `=B3*24` en lugar de `=B2*B3`. Funciona… hasta que cambia el precio. Entonces hay que buscar cada 24 escondido, y el que se te escape te dará un beneficio falso sin ningún aviso.\n\nUn número escrito dentro de una fórmula es un **supuesto escondido**. Sácalo a una celda."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e2",
+          "modo": "formula",
+          "enunciado": "Un compañero dejó en **B7** la fórmula `=B3*24`. Javier ha cambiado el precio de B2 a **22 €**, pero los ingresos no se mueven. Arregla **B7** para que use el precio de B2. Debe salir **26.400,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tira LED 5 m · campaña de Navidad",
+              "B1": "Valor",
+              "A2": "Precio de venta",
+              "B2": 22,
+              "A3": "Unidades",
+              "B3": 1200,
+              "A4": "Coste por unidad",
+              "B4": 14.5,
+              "A5": "Gastos de campaña",
+              "B5": 6000,
+              "A7": "Ingresos",
+              "A8": "Costes",
+              "B8": "=B3*B4+B5",
+              "A9": "Beneficio",
+              "B9": "=B7-B8"
+            },
+            "formatos": {
+              "B2": "eur",
+              "B3": "#.##0",
+              "B4:B5": "eur",
+              "B7:B9": "eur"
+            },
+            "anchos": {
+              "A": 32,
+              "B": 14
+            }
+          },
+          "objetivo": "B7",
+          "inicial": "=B3*24",
+          "solucion": "=B2*B3",
+          "alternativas": [
+            "=B3*B2"
+          ],
+          "errores_tipicos": [
+            "=B3*24",
+            "=B3*22",
+            "=26400"
+          ],
+          "variantes": [
+            {
+              "B2": 25
+            },
+            {
+              "B3": 900
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El precio ya está en una celda. ¿En cuál?",
+            "Cambia el 24 de la fórmula por la celda del precio, B2.",
+            "Escribe `=B2*B3`."
+          ],
+          "explicacion": "Ahora B7 sigue al precio: si mañana es 25 €, cambias B2 y ya está. Acabas de convertir un supuesto escondido en uno a la vista, que es lo primero que hay que revisar en cualquier hoja que heredes."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Escenarios: cada «¿y si…?» guardado con nombre\nJavier quiere tres casos: **pesimista**, **base** y **optimista**. Un **escenario** es un juego de valores para tus supuestos, guardado con un nombre: «Pesimista: precio 22 €, 800 unidades».\n\nLo que *no* hay que hacer: cambiar B2 y B3 a mano, apuntar el beneficio en un papel y volver a teclear. Al final nadie sabe qué números se quedaron en la hoja. El **Administrador de escenarios** guarda los casos y te deja pasar de uno a otro con un clic."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e3",
+          "modo": "cinta",
+          "enunciado": "El Administrador de escenarios está en el mismo menú que Buscar objetivo. Toca el botón que abre ese menú.",
+          "ruta": [
+            "Datos",
+            "Previsión",
+            "Análisis de hipótesis"
+          ],
+          "explicacion": "Datos › Previsión › **Análisis de hipótesis** despliega tres herramientas: **Administrador de escenarios**, **Buscar objetivo** y **Tabla de datos**. Al acabar esta lección conocerás las tres."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: los tres casos de Javier",
+          "pasos": [
+            {
+              "md": "Selecciona **B2:B3**: las celdas que cambian de un caso a otro (precio y unidades)."
+            },
+            {
+              "md": "Abre **Análisis de hipótesis › Administrador de escenarios** y pulsa **Agregar**.",
+              "ruta": [
+                "Datos",
+                "Previsión",
+                "Análisis de hipótesis"
+              ]
+            },
+            {
+              "md": "Primero guarda lo que ya tienes. **Nombre del escenario**: `Base`. En **Celdas cambiantes** ya aparece `B2:B3`. En **Comentario**, de dónde salen los números. Pulsa **Aceptar**."
+            },
+            {
+              "md": "Excel te enseña los **valores del escenario**: 24 y 1.200, los de ahora. **Aceptar**."
+            },
+            {
+              "md": "Pulsa **Agregar** otra vez y crea `Pesimista` (22 y 800) y `Optimista` (25 y 1.500)."
+            },
+            {
+              "md": "Para ver un caso, elígelo en la lista y pulsa **Mostrar**: Excel escribe sus valores en B2:B3 y todo el modelo se recalcula. Por eso guardaste primero el Base: así siempre puedes volver a él."
+            }
+          ]
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un truco que me ha salvado más de una reunión: en el **Comentario** de cada escenario apunta de dónde sale cada número («precio de la competencia en octubre», «ventas de la campaña de 2025»). Dentro de tres meses nadie se acordará… y Javier te lo preguntará."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e4",
+          "modo": "predice",
+          "enunciado": "Pulsas **Mostrar** en el escenario **Pesimista**: Excel escribe 22 € en B2 y 800 en B3. Antes de mirar, ¿cuántos euros de beneficio salen en **B9**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Tira LED 5 m · campaña de Navidad",
+              "B1": "Valor",
+              "A2": "Precio de venta",
+              "B2": 22,
+              "A3": "Unidades",
+              "B3": 800,
+              "A4": "Coste por unidad",
+              "B4": 14.5,
+              "A5": "Gastos de campaña",
+              "B5": 6000,
+              "A7": "Ingresos",
+              "B7": "=B2*B3",
+              "A8": "Costes",
+              "B8": "=B3*B4+B5",
+              "A9": "Beneficio"
+            },
+            "formatos": {
+              "B2": "eur",
+              "B3": "#.##0",
+              "B4:B5": "eur",
+              "B7:B9": "eur"
+            },
+            "anchos": {
+              "A": 32,
+              "B": 14
+            }
+          },
+          "celda": "B9",
+          "formula": "=B7-B8",
+          "explicacion": "Ingresos: 22 × 800 = 17.600 €. Costes: 800 × 14,50 + 6.000 = 17.600 €. Beneficio: **0**. El caso malo ni gana ni pierde: está justo en el punto de equilibrio que viste en la lección anterior. Es exactamente lo que Javier necesita saber antes de bajar el precio.",
+          "respuesta": "0"
+        },
+        {
+          "tipo": "texto",
+          "md": "### El informe resumen: los casos en una tabla\nEn el Administrador de escenarios, el botón **Resumen** te pide las **Celdas de resultado** (aquí, B9, el beneficio). Excel crea una hoja nueva con una columna por escenario: arriba los supuestos de cada caso, abajo el resultado.\n\nOjo: ese informe es una **foto**. Si después cambias el coste o los gastos, no se actualiza solo: vuelve a pulsar **Resumen**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e5",
+          "modo": "test",
+          "pregunta": "Este es el resumen que has sacado para Javier:\n\n| | Valores actuales | Pesimista | Base | Optimista |\n|---|---|---|---|---|\n| Precio | 24,00 € | 22,00 € | 24,00 € | 25,00 € |\n| Unidades | 1.200 | 800 | 1.200 | 1.500 |\n| **Beneficio** | 5.400 € | 0 € | 5.400 € | 9.750 € |\n\nJavier pregunta: «¿Qué conclusión saco?». ¿Cuál es la lectura correcta?",
+          "opciones": [
+            {
+              "texto": "En el peor caso no perdemos dinero, y en el mejor el beneficio es casi el doble que en el caso base.",
+              "correcta": true,
+              "porque": "Eso es: pesimista 0 € (ni gana ni pierde) y optimista 9.750 €, casi el doble de 5.400 €. Un resumen se lee comparando columnas."
+            },
+            {
+              "texto": "Ganaremos 5.400 € seguro, porque es lo que pone en «Valores actuales».",
+              "correcta": false,
+              "porque": "«Valores actuales» solo enseña lo que había en la hoja al crear el resumen. No es una predicción: es uno de los casos."
+            },
+            {
+              "texto": "Conviene bajar el precio a 22 € para vender más.",
+              "correcta": false,
+              "porque": "El resumen no dice eso: en el pesimista el precio baja *y además* se venden menos unidades. Para ver qué pasa cambiando solo el precio hace falta un cuadro de sensibilidad (lo verás enseguida)."
+            },
+            {
+              "texto": "El escenario optimista tiene un error, porque gana mucho más que los otros.",
+              "correcta": false,
+              "porque": "Ganar más es lo esperable en el caso optimista: precio algo más alto y más unidades. No hay error."
+            }
+          ],
+          "explicacion": "El resumen pone los casos uno al lado del otro para que quien decide vea el abanico: de 0 € a 9.750 €."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Tabla de datos: Excel prueba muchos valores por ti\nLos escenarios sirven para tres o cuatro casos. Si quieres ver **muchos**, usa **Análisis de hipótesis › Tabla de datos**.\n\nCon **una variable**: en una columna escribes los valores que quieres probar (800, 1.000, 1.200, 1.500 unidades); en la celda de encima y a la derecha de esa lista, una fórmula que apunta al resultado: `=B9`. Seleccionas todo, indicas la **celda de entrada** (B3, las unidades) y Excel rellena el beneficio de cada valor."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Con dos variables: precio × unidades\nPara cruzar dos supuestos: los **precios** en una fila, las **unidades** en una columna y, en la esquina donde se cruzan, `=B9`. Seleccionas el cuadro entero y en **Tabla de datos** indicas:\n- **Celda de entrada (fila)**: B2, el precio, porque los precios van en fila.\n- **Celda de entrada (columna)**: B3, las unidades.\n\nExcel calcula el beneficio de cada combinación."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Dos manías de la Tabla de datos",
+          "md": "Las celdas de entrada (B2 y B3) tienen que estar **en la misma hoja** que la tabla. Y los resultados no se pueden borrar ni cambiar de uno en uno: si quieres quitarla, selecciona la tabla entera."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para montar la tabla de datos de dos variables (precio × unidades) que quiere Javier.",
+          "pasos": [
+            "Prepara el cuadro: precios en C12:F12, unidades en B13:B16 y =B9 en la esquina, B12",
+            "Selecciona el cuadro entero, B12:F16",
+            "Abre Datos › Análisis de hipótesis › Tabla de datos",
+            "Celda de entrada (fila): B2 · Celda de entrada (columna): B3",
+            "Pulsa Aceptar y comprueba un caso que ya conoces (24 € y 1.200 unidades deben dar 5.400 €)"
+          ],
+          "explicacion": "Primero se prepara el cuadro, después se selecciona y por último se le dice a Excel qué celda del modelo sustituye la fila y cuál la columna. El último paso es tu comprobación: un caso conocido tiene que dar lo mismo que el modelo."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El mismo cuadro, con fórmulas y $\nTambién puedes montar el cuadro con una fórmula normal copiada a todas sus celdas. Ventaja: se ve cómo calcula cada celda y la puedes revisar una a una.\n\nEl truco son las **referencias mixtas** que ya conoces: `B$4` fija la **fila** de los precios y `$A5` fija la **columna** de las unidades. Al copiar, cada celda cruza su precio con sus unidades."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Comprueba con un caso conocido",
+          "md": "En el cuadro, 24 € y 1.200 unidades tienen que dar **5.400 €**, el mismo beneficio del modelo. Si no, alguna referencia está mal fijada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l2-e7",
+          "modo": "formula",
+          "enunciado": "Monta el cuadro de Javier. En **B5** calcula el beneficio con el precio de la **fila 4** y las unidades de la **columna A**: (precio − coste por unidad) × unidades − gastos de campaña. Tu fórmula se copiará a todo el cuadro **B5:E8**, así que pon $ donde haga falta. En B5 debe salir **0,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Coste por unidad",
+              "B1": 14.5,
+              "A2": "Gastos de campaña",
+              "B2": 6000,
+              "A4": "Uds. / Precio",
+              "B4": 22,
+              "C4": 23,
+              "D4": 24,
+              "E4": 25,
+              "A5": 800,
+              "A6": 1000,
+              "A7": 1200,
+              "A8": 1500
+            },
+            "formatos": {
+              "B1:B2": "eur",
+              "B4:E4": "eur",
+              "A5:A8": "#.##0",
+              "B5:E8": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 13,
+              "C": 13,
+              "D": 13,
+              "E": 13
+            }
+          },
+          "objetivo": "B5",
+          "copiar_a": [
+            "C5:E5",
+            "B6:E8"
+          ],
+          "solucion": "=(B$4-$B$1)*$A5-$B$2",
+          "alternativas": [
+            "=$A5*(B$4-$B$1)-$B$2",
+            "=B$4*$A5-$A5*$B$1-$B$2"
+          ],
+          "errores_tipicos": [
+            "=(B4-B1)*A5-B2",
+            "=(B$4-$B$1)*A5-$B$2",
+            "=(B4-$B$1)*$A5-$B$2",
+            "=($B$4-$B$1)*$A5-$B$2"
+          ],
+          "variantes": [
+            {
+              "B1": 15,
+              "B2": 5000
+            },
+            {
+              "B4": 21,
+              "A5": 900
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Piensa solo en B5: precio en B4, coste en B1, unidades en A5 y gastos en B2. Primero consigue que B5 dé 0.",
+            "Al copiar a la derecha cambia el precio: fija su **fila** con `B$4`. Al copiar hacia abajo cambian las unidades: fija su **columna** con `$A5`. Coste y gastos no se mueven nunca: `$B$1` y `$B$2`.",
+            "Escribe `=(B$4-$B$1)*$A5-$B$2`."
+          ],
+          "explicacion": "Cuadro listo, y cuadra: 24 € con 1.200 unidades da 5.400 €, igual que el modelo. Javier ve de un vistazo que a 22 € necesita vender más de 800 unidades para ganar algo, y que a 25 € con 1.500 llega a 9.750 €. Esto es un **análisis de sensibilidad**, y en tu Excel lo puedes hacer igual con Tabla de datos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m3l2-q1",
+          "modo": "test",
+          "pregunta": "Le preparas a Marta un modelo de préstamo para que pruebe casos. ¿Dónde pones el tipo de interés del 6 %?",
+          "opciones": [
+            {
+              "texto": "En su propia celda, junto a los demás supuestos, y las fórmulas apuntan a ella",
+              "correcta": true,
+              "porque": "Así se ve, se cambia en un solo sitio y los escenarios y las tablas de datos pueden tocarlo."
+            },
+            {
+              "texto": "Dentro de cada fórmula, como `*6%`, para que nadie lo cambie sin querer",
+              "correcta": false,
+              "porque": "Es un supuesto escondido: si el tipo cambia hay que buscarlo fórmula a fórmula, y los escenarios no pueden cambiarlo. Para evitar cambios sin querer está la protección de hojas."
+            },
+            {
+              "texto": "En un comentario de la celda del resultado",
+              "correcta": false,
+              "porque": "Un comentario no entra en ningún cálculo: el modelo no lo usaría."
+            }
+          ]
+        },
+        {
+          "id": "n4m3l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "En una tabla de datos de dos variables, los **precios** van en una fila y las **unidades** en una columna. La celda del precio del modelo, ¿en qué casilla la indicas? Escribe **fila** o **columna**.",
+          "aceptadas": [
+            "fila",
+            "Fila",
+            "Celda de entrada (fila)",
+            "la fila",
+            "en la fila"
+          ],
+          "explicacion": "En **Celda de entrada (fila)**: los valores que están en fila (los precios) sustituyen a esa celda. Las unidades, que van en columna, sustituyen a la de **Celda de entrada (columna)**."
+        },
+        {
+          "id": "n4m3l2-q3",
+          "modo": "formula",
+          "enunciado": "Cuadro de importes para un presupuesto: en **B2** calcula precio (fila 1) × unidades (columna A) con una fórmula que se pueda copiar a todo **B2:D4**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Uds. / Precio",
+              "B1": 9.5,
+              "C1": 12,
+              "D1": 14.75,
+              "A2": 10,
+              "A3": 25,
+              "A4": 40
+            },
+            "formatos": {
+              "B1:D1": "eur",
+              "B2:D4": "eur"
+            },
+            "anchos": {
+              "A": 16,
+              "B": 12,
+              "C": 12,
+              "D": 12
+            }
+          },
+          "objetivo": "B2",
+          "copiar_a": [
+            "C2:D2",
+            "B3:D4"
+          ],
+          "solucion": "=B$1*$A2",
+          "alternativas": [
+            "=$A2*B$1"
+          ],
+          "errores_tipicos": [
+            "=B1*A2",
+            "=$B$1*$A2",
+            "=B$1*A2",
+            "=B1*$A2"
+          ],
+          "variantes": [
+            {
+              "B1": 10,
+              "A3": 30
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El precio está en la fila 1 y las unidades en la columna A.",
+            "Fija la fila del precio (`B$1`) y la columna de las unidades (`$A2`).",
+            "Escribe `=B$1*$A2`."
+          ],
+          "explicacion": "Una sola fórmula para nueve celdas. Es el mismo patrón del cuadro de sensibilidad: fila fija para lo que va arriba, columna fija para lo que va a la izquierda."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un supuesto (o entrada) de un modelo?",
+          "dorso": "Un dato que no sabes seguro (precio, unidades, coste). Va en su propia celda, a la vista, y las fórmulas apuntan a él."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Escenarios o tabla de datos?",
+          "dorso": "Escenarios: pocos casos con nombre (pesimista, base, optimista) y un informe resumen. Tabla de datos: muchos valores de una o dos entradas a la vez."
+        },
+        {
+          "tipo": "error",
+          "frente": "El informe resumen de escenarios no refleja un cambio que acabas de hacer. ¿Por qué?",
+          "dorso": "Es una foto fija: no se actualiza solo. Vuelve a pulsar Resumen."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Cuadro con precios en la fila 4 y unidades en la columna A: ¿qué referencias usas en B5?",
+          "dorso": "`B$4` (fila fija) y `$A5` (columna fija); lo que no se mueve nunca, con dos $: `$B$1`."
+        }
+      ]
+    },
+    {
+      "id": "n4m3l3",
+      "titulo": "Préstamos: la cuota y el cuadro de amortización",
+      "minutos": 18,
+      "objetivo": "Calcular la cuota de un préstamo con PAGO, separar intereses y capital con PAGOINT y PAGOPRIN, montar y comprobar el cuadro de amortización y calcular un ahorro con VF.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "El banco nos ofrece 20.000 € para la furgoneta de reparto de Pamplona: 5 años, al 6 % anual, con cuota mensual. Necesito la cuota, el cuadro de amortización para contabilidad y cuánto pagaremos de intereses en total. Antes del viernes, por favor.",
+        "logro": "Ya sabes calcular la cuota de cualquier préstamo de cuota fija, montar su cuadro de amortización, comprobar que cuadra y decir cuánto cuesta de verdad."
+      },
+      "funciones": [
+        "PAGO",
+        "PAGOINT",
+        "PAGOPRIN",
+        "VF"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Un préstamo de cuota fija\nCuatro palabras que vas a oír en cuanto se hable de préstamos:\n- **Capital** o **importe**: lo que te presta el banco (20.000 €).\n- **Interés**: lo que cobra el banco por prestártelo, en % al año.\n- **Plazo**: cuánto tardas en devolverlo.\n- **Cuota**: lo que pagas cada mes.\n\nEn el préstamo de cuota fija (también llamado *sistema francés*), la cuota es siempre la misma: una parte paga intereses y el resto devuelve deuda."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e1",
+          "modo": "test",
+          "pregunta": "El préstamo de la furgoneta es a **5 años** con cuotas **mensuales**. ¿Cuántas cuotas pagará Electro Cierzo?",
+          "opciones": [
+            {
+              "texto": "60",
+              "correcta": true,
+              "porque": "Eso es: 5 años × 12 meses = 60 cuotas. Este número es el que Excel llama **nper**."
+            },
+            {
+              "texto": "5",
+              "correcta": false,
+              "porque": "5 es el número de años. Si pagas cada mes, hay 12 cuotas por año."
+            },
+            {
+              "texto": "12",
+              "correcta": false,
+              "porque": "12 son las cuotas de un solo año; el préstamo dura cinco."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "### PAGO: la cuota en una fórmula\n`=PAGO(tasa; nper; va)` calcula la cuota fija:\n- **tasa**: el interés **de cada periodo**. Si pagas cada mes, el interés anual entre 12: `6%/12`.\n- **nper**: el número de cuotas: 5 años × 12 = 60.\n- **va**: el importe que te prestan, 20.000 €.\n\nLa regla de oro: tasa y nper en la **misma unidad**. Cuotas mensuales, tasa mensual."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "El error más caro: tasa anual con cuotas mensuales",
+          "md": "`=PAGO(6%;60;20000)` calcula como si el banco cobrara un 6 % **cada mes**: sale una cuota de más de 1.200 €. Si la cuota es mensual, divide la tasa entre 12."
+        },
+        {
+          "tipo": "texto",
+          "md": "### ¿Por qué sale en negativo?\nExcel mira el dinero desde tu caja: los 20.000 € del préstamo **entran** (positivo) y la cuota **sale** (negativo). Por eso `PAGO` devuelve **−386,66 €**. No es un error.\n\nPara verla en positivo en un informe, pon un signo menos delante de la función: `=-PAGO(B2/12;B3*12;B1)`."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La cuota de la furgoneta",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe del préstamo",
+              "B1": 20000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Años",
+              "B3": 5,
+              "A4": "Cuota (como sale)",
+              "B4": "=PAGO(B2/12;B3*12;B1)",
+              "A5": "Cuota en positivo",
+              "B5": "=-PAGO(B2/12;B3*12;B1)"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B4:B5": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 16
+            }
+          },
+          "resaltar": [
+            "B4:B5"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Misma cuota, distinto signo. Fíjate en el /12 de la tasa y el *12 de los años."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e2",
+          "modo": "formula",
+          "enunciado": "Un compañero calculó la cuota en **B4** con `=-PAGO(B2;B3;B1)` y le sale **4.747,93 €**: demasiado para una furgoneta. La cuota es **mensual**. Arregla la fórmula para que dé la cuota mensual en positivo: **386,66 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe del préstamo",
+              "B1": 20000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Años",
+              "B3": 5,
+              "A4": "Cuota mensual"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B4": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 16
+            }
+          },
+          "objetivo": "B4",
+          "inicial": "=-PAGO(B2;B3;B1)",
+          "solucion": "=-PAGO(B2/12;B3*12;B1)",
+          "alternativas": [
+            "=PAGO(B2/12;B3*12;-B1)",
+            "=-PAGO(B2/12;12*B3;B1)"
+          ],
+          "errores_tipicos": [
+            "=-PAGO(B2;B3;B1)",
+            "=-PAGO(B2;B3*12;B1)",
+            "=-PAGO(B2/12;B3;B1)",
+            "=PAGO(B2/12;B3*12;B1)"
+          ],
+          "debe_usar": [
+            "PAGO"
+          ],
+          "variantes": [
+            {
+              "B1": 15000,
+              "B3": 3
+            },
+            {
+              "B2": 0.045
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "La fórmula usa el interés anual y los años, pero la cuota es de cada mes.",
+            "Pasa las dos cosas a meses: el interés entre 12 (`B2/12`) y los años por 12 (`B3*12`).",
+            "Escribe `=-PAGO(B2/12;B3*12;B1)`."
+          ],
+          "explicacion": "386,66 € al mes durante 60 meses. Lo que había calculado tu compañero era la cuota de un único pago **al año**. Moraleja para siempre: tasa y número de cuotas en la misma unidad. Ya puedes calcular la cuota de cualquier préstamo de cuota fija."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Cada cuota tiene dos trozos\nDe los 386,66 € de cada mes, una parte son **intereses** (lo que gana el banco) y el resto es **capital** (deuda que devuelves). Al principio debes mucho y pagas muchos intereses; cada mes debes un poco menos, así que el interés baja y el capital sube.\n- `PAGOINT(tasa; período; nper; va)`: los intereses de la cuota número *período*.\n- `PAGOPRIN(tasa; período; nper; va)`: el capital de esa cuota.\n\nLas dos salen en negativo, como PAGO."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e3",
+          "modo": "formula",
+          "enunciado": "Marta quiere saber cuánto de la **primera cuota** son intereses. En **B5** usa **PAGOINT** con el período **1** y ponle un signo menos para verlo en positivo. Debe salir **100,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe del préstamo",
+              "B1": 20000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Años",
+              "B3": 5,
+              "A4": "Cuota mensual",
+              "B4": "=-PAGO(B2/12;B3*12;B1)",
+              "A5": "Intereses de la cuota 1"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B4:B5": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 16
+            }
+          },
+          "objetivo": "B5",
+          "solucion": "=-PAGOINT(B2/12;1;B3*12;B1)",
+          "alternativas": [
+            "=PAGOINT(B2/12;1;B3*12;-B1)",
+            "=-PAGOINT(B2/12;1;12*B3;B1)"
+          ],
+          "errores_tipicos": [
+            "=PAGOINT(B2/12;1;B3*12;B1)",
+            "=-PAGOINT(B2;1;B3*12;B1)",
+            "=-PAGOINT(B2;1;B3;B1)"
+          ],
+          "debe_usar": [
+            "PAGOINT"
+          ],
+          "variantes": [
+            {
+              "B1": 30000
+            },
+            {
+              "B2": 0.048,
+              "B3": 4
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Los argumentos son los de PAGO con uno nuevo en segundo lugar: el número de la cuota (aquí, 1).",
+            "`PAGOINT(B2/12; 1; B3*12; B1)`, con un signo menos delante.",
+            "Escribe `=-PAGOINT(B2/12;1;B3*12;B1)`."
+          ],
+          "explicacion": "100 € de intereses en la primera cuota: 20.000 × 6 % ÷ 12. El resto, 286,66 €, devuelve deuda; es lo que daría `PAGOPRIN` con el período 1. Interés + capital = cuota, siempre. Con esto ya puedes contestar «¿cuánto de esta cuota es gasto?», que es lo que contabilidad apunta como gasto financiero."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Marta Ruiz",
+          "puesto": "Directora financiera",
+          "md": "Antes de firmar, Carmen pregunta otra cosa: «¿Y si, en vez de pedir el préstamo, apartamos **500 € al mes** en una cuenta al **2 %** anual durante **3 años**? ¿Cuánto tendríamos?». ¿Me lo miras?"
+        },
+        {
+          "tipo": "texto",
+          "md": "### VF: cuánto tendrás al final\n`=VF(tasa; nper; pago)` calcula el **valor futuro**: cuánto dinero tendrás al final si aportas lo mismo cada periodo. Mismas reglas que PAGO: tasa y nper en meses, y el signo visto desde tu caja: los 500 € que aportas **salen** (negativo) y lo que recuperas al final **entra** (positivo).\n\nSu pareja es `VA` (**valor actual**): cuánto vale hoy una serie de pagos futuros."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e4",
+          "modo": "formula",
+          "enunciado": "En **B5** calcula con **VF** cuánto tendrá la empresa al cabo de 3 años: aporta **500 €** al mes (B1) a un **2 %** anual (B2) durante **3** años (B3). Debe salir en positivo: unos **18.535 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Aportación mensual",
+              "B1": 500,
+              "A2": "Interés anual",
+              "B2": 0.02,
+              "A3": "Años",
+              "B3": 3,
+              "A5": "Ahorro al final"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B5": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 16
+            }
+          },
+          "objetivo": "B5",
+          "solucion": "=VF(B2/12;B3*12;-B1)",
+          "alternativas": [
+            "=-VF(B2/12;B3*12;B1)",
+            "=VF(B2/12;12*B3;-B1)"
+          ],
+          "errores_tipicos": [
+            "=VF(B2/12;B3*12;B1)",
+            "=VF(B2;B3;-B1)",
+            "=B1*B3*12"
+          ],
+          "debe_usar": [
+            "VF"
+          ],
+          "variantes": [
+            {
+              "B1": 300
+            },
+            {
+              "B2": 0.03,
+              "B3": 2
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Igual que en PAGO: el interés entre 12 y los años por 12.",
+            "Los 500 € salen de la caja: ponlos en negativo, `-B1`, y el resultado saldrá positivo.",
+            "Escribe `=VF(B2/12;B3*12;-B1)`."
+          ],
+          "explicacion": "18.535,05 €: 18.000 € que aportas más 535,05 € de intereses. Con VF contestas en un minuto a «¿cuánto tendremos si ahorramos tanto al mes?», y Carmen puede comparar esa opción con la de pedir el préstamo."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El cuadro de amortización\nContabilidad te pedirá el **cuadro de amortización**: una fila por cuota con lo que debes al empezar el mes (**saldo inicial**), la **cuota**, su **interés**, su **capital** y lo que debes al acabar (**saldo final**).\n\nCada fila sale de la anterior: el saldo final de un mes es el saldo inicial del siguiente. Así, con una fila bien hecha, el resto se copia hacia abajo."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Los tres primeros meses",
+          "hoja": {
+            "celdas": {
+              "A1": "Mes",
+              "B1": "Saldo inicial",
+              "C1": "Cuota",
+              "D1": "Interés",
+              "E1": "Capital",
+              "F1": "Saldo final",
+              "A2": 1,
+              "B2": 20000,
+              "C2": 386.66,
+              "D2": 100,
+              "E2": 286.66,
+              "F2": 19713.34,
+              "A3": 2,
+              "B3": 19713.34,
+              "C3": 386.66,
+              "D3": 98.57,
+              "E3": 288.09,
+              "F3": 19425.25,
+              "A4": 3,
+              "B4": 19425.25,
+              "C4": 386.66,
+              "D4": 97.13,
+              "E4": 289.53,
+              "F4": 19135.72
+            },
+            "formatos": {
+              "B2:F4": "eur"
+            },
+            "anchos": {
+              "A": 6,
+              "B": 14,
+              "C": 11,
+              "D": 11,
+              "E": 11,
+              "F": 14
+            }
+          },
+          "pie": "Interés = saldo inicial × interés anual ÷ 12 · Capital = cuota − interés · Saldo final = saldo inicial − capital. El interés baja cada mes y el capital sube."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e5",
+          "modo": "formula",
+          "enunciado": "Monta la columna de intereses del cuadro. En **D7** calcula el interés del mes 1: **saldo inicial** (B7) × **interés anual** (B2) ÷ 12. Tu fórmula se copiará a **D8:D10**, así que fija lo que no debe moverse. Debe salir **100,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe",
+              "B1": 20000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Meses",
+              "B3": 60,
+              "A4": "Cuota",
+              "B4": "=-PAGO(B2/12;B3;B1)",
+              "A6": "Mes",
+              "B6": "Saldo inicial",
+              "C6": "Cuota",
+              "D6": "Interés",
+              "E6": "Capital",
+              "F6": "Saldo final",
+              "A7": 1,
+              "B7": "=B1",
+              "C7": "=$B$4",
+              "E7": "=C7-D7",
+              "F7": "=B7-E7",
+              "A8": 2,
+              "B8": "=F7",
+              "C8": "=$B$4",
+              "E8": "=C8-D8",
+              "F8": "=B8-E8",
+              "A9": 3,
+              "B9": "=F8",
+              "C9": "=$B$4",
+              "E9": "=C9-D9",
+              "F9": "=B9-E9",
+              "A10": 4,
+              "B10": "=F9",
+              "C10": "=$B$4",
+              "E10": "=C10-D10",
+              "F10": "=B10-E10"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B4": "eur",
+              "B7:F10": "eur"
+            },
+            "anchos": {
+              "A": 13,
+              "B": 14,
+              "C": 11,
+              "D": 11,
+              "E": 11,
+              "F": 14
+            }
+          },
+          "objetivo": "D7",
+          "copiar_a": [
+            "D8:D10"
+          ],
+          "solucion": "=B7*$B$2/12",
+          "alternativas": [
+            "=B7*($B$2/12)",
+            "=B7*B$2/12",
+            "=-PAGOINT($B$2/12;A7;$B$3;$B$1)"
+          ],
+          "errores_tipicos": [
+            "=B7*B2/12",
+            "=$B$1*$B$2/12",
+            "=B7*$B$2"
+          ],
+          "variantes": [
+            {
+              "B1": 15000
+            },
+            {
+              "B2": 0.045
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El interés de cada mes se calcula sobre lo que debes al empezarlo: el saldo inicial de esa fila.",
+            "El saldo inicial (B7) tiene que bajar de fila al copiar; el interés anual (B2) no: fíjalo con `$B$2`.",
+            "Escribe `=B7*$B$2/12`."
+          ],
+          "explicacion": "Mira cómo baja el interés: 100,00 €, 98,57 €, 97,13 €… porque cada mes debes un poco menos. Y el capital sube en la misma medida. Copia esta fila hasta el mes 60 y tendrás el cuadro que pide contabilidad."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La comprobación: el último saldo es 0\nUn cuadro bien hecho termina con el **saldo final del último mes en 0,00 €**: has devuelto toda la deuda. Dos comprobaciones más que hace cualquier contable:\n- La suma de la columna **Capital** es el importe prestado (20.000 €).\n- La suma de la columna **Interés** es el coste total del préstamo.\n\nSi el último saldo no es 0, el cuadro tiene un error: no lo entregues."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Un cero que no lo parece",
+          "md": "A veces el último saldo aparece como algo parecido a `-3,6E-12`, es decir, −0,0000000000036. Son restos de redondeo internos de Excel: ese saldo es 0."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e6",
+          "modo": "test",
+          "pregunta": "Terminas el cuadro y el **saldo final del mes 60 sale 8.412,55 €**, no 0. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Revisar las fórmulas (tasa entre 12, número de cuotas, $ al copiar) y no entregarlo hasta que dé 0",
+              "correcta": true,
+              "porque": "Eso es: el saldo final es tu total de control. Si no da 0, alguna fórmula está mal, y casi siempre es una de esas tres cosas."
+            },
+            {
+              "texto": "Entregarlo: son restos del redondeo",
+              "correcta": false,
+              "porque": "Los restos del redondeo son números diminutos, como 0,0000000001. Más de 8.000 € es un error de verdad."
+            },
+            {
+              "texto": "Escribir un 0 a mano en esa celda",
+              "correcta": false,
+              "porque": "Eso tapa el síntoma y deja el error dentro: los intereses y el capital de todo el cuadro seguirían mal."
+            },
+            {
+              "texto": "Quitar los decimales del formato",
+              "correcta": false,
+              "porque": "El formato solo cambia cómo se ve el número, no lo que vale. Seguirían faltando más de 8.000 €."
+            }
+          ],
+          "explicacion": "Comprobar antes de entregar es lo que separa una hoja fiable de una que un día le cuesta dinero a la empresa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l3-e7",
+          "modo": "formula",
+          "enunciado": "Último dato para Marta: **cuánto pagaremos de intereses en total**. En **B6** calcúlalo con lo que ya está en la hoja: la cuota (B4), el número de cuotas (B3) y el importe (B1). Debe salir **3.199,36 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe",
+              "B1": 20000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Meses",
+              "B3": 60,
+              "A4": "Cuota",
+              "B4": "=-PAGO(B2/12;B3;B1)",
+              "A6": "Total de intereses"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B4": "eur",
+              "B6": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 16
+            }
+          },
+          "objetivo": "B6",
+          "solucion": "=B4*B3-B1",
+          "alternativas": [
+            "=B3*B4-B1",
+            "=-PAGO(B2/12;B3;B1)*B3-B1"
+          ],
+          "errores_tipicos": [
+            "=B4*B3",
+            "=B1*B2*B3/12",
+            "=B1*B2",
+            "=3199,36"
+          ],
+          "variantes": [
+            {
+              "B1": 15000,
+              "B3": 36
+            },
+            {
+              "B2": 0.045
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero piensa cuánto pagas en total: la cuota, tantas veces como cuotas hay.",
+            "A ese total pagado réstale lo que te prestaron: lo que sobra son los intereses.",
+            "Escribe `=B4*B3-B1`."
+          ],
+          "explicacion": "3.199,36 € de intereses: 386,66 × 60 = 23.199,36 € pagados por 20.000 € prestados. Fíjate en que no es 6 % × 5 años = 6.000 €: como cada mes debes menos, pagas intereses sobre una deuda que se va reduciendo. Con la cuota, el cuadro y este total, Marta tiene todo lo que pidió."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m3l3-q1",
+          "modo": "formula",
+          "enunciado": "Otro préstamo: **12.000 €** (B1) al **4,5 %** anual (B2) a **4 años** (B3), con cuota mensual. En **B4** calcula la cuota en positivo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Importe",
+              "B1": 12000,
+              "A2": "Interés anual",
+              "B2": 0.045,
+              "A3": "Años",
+              "B3": 4,
+              "A4": "Cuota mensual"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct1",
+              "B4": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 14
+            }
+          },
+          "objetivo": "B4",
+          "solucion": "=-PAGO(B2/12;B3*12;B1)",
+          "alternativas": [
+            "=PAGO(B2/12;B3*12;-B1)",
+            "=-PAGO(B2/12;12*B3;B1)"
+          ],
+          "errores_tipicos": [
+            "=-PAGO(B2;B3;B1)",
+            "=-PAGO(B2;B3*12;B1)",
+            "=PAGO(B2/12;B3*12;B1)"
+          ],
+          "debe_usar": [
+            "PAGO"
+          ],
+          "variantes": [
+            {
+              "B1": 9000
+            },
+            {
+              "B3": 3
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "PAGO necesita la tasa de cada mes, el número de cuotas y el importe.",
+            "Tasa: `B2/12`. Cuotas: `B3*12`. Y un signo menos delante para verla en positivo.",
+            "Escribe `=-PAGO(B2/12;B3*12;B1)`."
+          ],
+          "explicacion": "273,64 € al mes. Interés anual entre 12, años por 12 y el signo menos: la receta de siempre."
+        },
+        {
+          "id": "n4m3l3-q2",
+          "modo": "test",
+          "pregunta": "En un préstamo de cuota fija, según pasan los meses, ¿qué ocurre dentro de cada cuota?",
+          "opciones": [
+            {
+              "texto": "Los intereses bajan y el capital que devuelves sube",
+              "correcta": true,
+              "porque": "Eso es: el interés se calcula sobre lo que aún debes, que es cada vez menos. Como la cuota no cambia, lo que deja de ir a intereses va a capital."
+            },
+            {
+              "texto": "Los intereses y el capital son iguales todos los meses",
+              "correcta": false,
+              "porque": "Lo que no cambia es la cuota entera. Su reparto entre intereses y capital cambia cada mes."
+            },
+            {
+              "texto": "Los intereses suben y el capital baja",
+              "correcta": false,
+              "porque": "Es al revés: cuanto menos debes, menos intereses te cobran."
+            }
+          ]
+        },
+        {
+          "id": "n4m3l3-q3",
+          "modo": "predice",
+          "enunciado": "Te quedan **30.000 €** por devolver y el interés es del **6 %** anual. ¿Cuántos euros de intereses te cobrarán este mes?",
+          "hoja": {
+            "celdas": {
+              "A1": "Saldo pendiente",
+              "B1": 30000,
+              "A2": "Interés anual",
+              "B2": 0.06,
+              "A3": "Interés del mes"
+            },
+            "formatos": {
+              "B1": "eur",
+              "B2": "pct",
+              "B3": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 14
+            }
+          },
+          "celda": "B3",
+          "formula": "=B1*B2/12",
+          "formato_resultado": "eur",
+          "explicacion": "30.000 × 6 % = 1.800 € al año; entre 12 meses, **150 €** este mes. Es la misma cuenta que hace cada fila del cuadro de amortización.",
+          "respuesta": "150,00 €"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "PAGO: sintaxis y regla de oro",
+          "dorso": "`=PAGO(tasa; nper; va)`. Tasa y nper en la misma unidad: cuota mensual → interés anual/12 y años×12. Sale negativa: `=-PAGO(…)` para verla en positivo."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "PAGOINT y PAGOPRIN",
+          "dorso": "Intereses y capital de la cuota número «período»: `PAGOINT(tasa; período; nper; va)`. Interés + capital = cuota."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo compruebas un cuadro de amortización?",
+          "dorso": "El saldo final de la última cuota es 0, y la suma de la columna Capital es el importe prestado."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "VF",
+          "dorso": "`=VF(tasa; nper; pago)`: cuánto tendrás al final aportando lo mismo cada periodo. La aportación, en negativo, para que el resultado salga positivo."
+        }
+      ]
+    },
+    {
+      "id": "n4m3l4",
+      "titulo": "Gráficos especiales: cascada, histograma y compañía",
+      "minutos": 15,
+      "objetivo": "Elegir el gráfico especial que responde a cada pregunta (cascada, histograma, embudo, cajas y bigotes), preparar sus datos y saber cuándo no conviene usarlo.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "El jueves presento las cuentas del año al consejo. Quiero un gráfico que se entienda de un vistazo: cómo pasamos de las ventas al resultado, partida a partida. Prepárame los datos y dime qué gráfico usarías.",
+        "logro": "Ya sabes elegir el gráfico especial que responde a cada pregunta, preparar sus datos y montar una cascada que explica las cuentas en un vistazo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Gráficos para preguntas concretas\nLas columnas, las líneas y los circulares que ya sabes hacer responden a «¿cuánto?» y «¿cómo evoluciona?». Hay preguntas que piden otro gráfico:\n- «¿Cómo pasamos de las ventas al resultado?» → **cascada**.\n- «¿Cómo se reparten los importes?» → **histograma**.\n- «¿En qué etapa se nos pierden los clientes?» → **embudo**.\n- «¿Qué proveedor es más regular?» → **cajas y bigotes**.\n\nEl gráfico se elige por la pregunta, no por lo vistoso que queda."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e1",
+          "modo": "test",
+          "pregunta": "Carmen quiere enseñar al consejo **cómo pasamos de las ventas al resultado**, partida a partida. ¿Qué gráfico eliges?",
+          "opciones": [
+            {
+              "texto": "Cascada",
+              "correcta": true,
+              "porque": "Eso es: la cascada parte de las ventas y va restando cada gasto hasta llegar al resultado. Se ve qué partida se come más."
+            },
+            {
+              "texto": "Circular",
+              "correcta": false,
+              "porque": "Un circular reparte un total en trozos, pero no enseña cómo se suma y se resta hasta llegar a otro total."
+            },
+            {
+              "texto": "Líneas",
+              "correcta": false,
+              "porque": "Las líneas enseñan cómo evoluciona algo en el tiempo (las ventas mes a mes), no cómo se llega de una cifra a otra."
+            },
+            {
+              "texto": "Histograma",
+              "correcta": false,
+              "porque": "El histograma cuenta cuántos valores caen en cada tramo. No suma ni resta partidas."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "### La cascada, barra a barra\nLa primera barra es el punto de partida (las ventas). Cada partida **sube** o **baja** desde donde acabó la anterior: las positivas suben, las negativas bajan. La última barra es el total, apoyada en el suelo.\n\nPor eso los datos se preparan así: los **ingresos en positivo**, los **gastos en negativo** y, al final, el **resultado**."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Los datos de la cascada de Carmen",
+          "hoja": {
+            "celdas": {
+              "A1": "Partida (miles de €)",
+              "B1": "Importe",
+              "A2": "Ventas",
+              "B2": 14200,
+              "A3": "Compras de material",
+              "B3": -10650,
+              "A4": "Personal",
+              "B4": -2380,
+              "A5": "Transporte y otros gastos",
+              "B5": -850,
+              "A6": "Resultado",
+              "B6": "=SUMA(B2:B5)"
+            },
+            "formatos": {
+              "B2:B6": "#.##0"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 12
+            }
+          },
+          "resaltar": [
+            "B3:B5"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Los gastos van en negativo: así la cascada sabe que bajan."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e2",
+          "modo": "cinta",
+          "enunciado": "Con los datos seleccionados, toca el botón que inserta un gráfico de **cascada**.",
+          "ruta": [
+            "Insertar",
+            "Gráficos",
+            "Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial"
+          ],
+          "explicacion": "Insertar › Gráficos › **Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial** y, dentro, **Cascada**. En ese mismo botón está el embudo."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: la cascada de Carmen",
+          "pasos": [
+            {
+              "md": "Selecciona **A1:B6**: partidas e importes, con el resultado al final."
+            },
+            {
+              "md": "Inserta el gráfico: botón de cascada y embudo › **Cascada**.",
+              "ruta": [
+                "Insertar",
+                "Gráficos",
+                "Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial"
+              ]
+            },
+            {
+              "md": "Sorpresa: la barra **Resultado** aparece flotando, como si fuera otra subida de 320. Excel no sabe que es un total."
+            },
+            {
+              "md": "Haz clic en esa barra y otro clic más para seleccionarla **solo a ella**. Botón derecho › **Establecer como total**. Ahora baja hasta el suelo y mide 320."
+            },
+            {
+              "md": "Cambia el título por la conclusión: «De 14,2 millones de ventas a 320.000 € de resultado». Quien lo mire sabrá qué buscar."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e3",
+          "modo": "test",
+          "pregunta": "Haces una cascada de la tesorería del mes y la barra **Saldo final** sale flotando en el aire, encima de las demás. ¿Qué falta?",
+          "opciones": [
+            {
+              "texto": "Seleccionar solo esa barra y marcar «Establecer como total»",
+              "correcta": true,
+              "porque": "Eso es: sin esa marca, Excel trata el saldo final como un movimiento más y lo apila sobre los anteriores."
+            },
+            {
+              "texto": "Escribir los gastos en negativo",
+              "correcta": false,
+              "porque": "Si los gastos estuvieran en positivo subirían en vez de bajar, pero aquí lo que falla es la última barra: Excel no sabe que es un total."
+            },
+            {
+              "texto": "Ordenar las partidas de mayor a menor",
+              "correcta": false,
+              "porque": "En una cascada el orden es el de la historia (de dónde partes y adónde llegas), no el tamaño. Ordenar no arregla el total."
+            },
+            {
+              "texto": "Cambiar a un gráfico de columnas apiladas",
+              "correcta": false,
+              "porque": "Las columnas apiladas no enseñan cómo se llega de una cifra a otra. La cascada está bien elegida; solo falta marcar el total."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "### Histograma: cómo se reparten los valores\nAndrés tiene 300 pedidos y quiere saber si casi todos son pequeños o hay muchos grandes. Un **histograma** corta los importes en **tramos** (0-500 €, 500-1.000 €…) y dibuja una barra por tramo, tan alta como **cuántos pedidos** caen en él. Las barras van pegadas porque los tramos son seguidos.\n\nEstá en Insertar › Gráficos › **Insertar gráfico estadístico** › Histograma. Excel elige los tramos; puedes cambiar su ancho en el formato del eje horizontal."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e4",
+          "modo": "formula",
+          "enunciado": "Cada barra de un histograma es un recuento. Hazlo tú: en **F2** cuenta cuántos pedidos de **B2:B11** están en el tramo de la fila 2: desde D2 (incluido) hasta E2 (sin incluir). Copiarás la fórmula a **F3:F4**. En F2 deben salir **5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "D1": "Desde",
+              "E1": "Hasta",
+              "F1": "N.º pedidos",
+              "A2": "P-4101",
+              "B2": 1290,
+              "A3": "P-4102",
+              "B3": 845,
+              "A4": "P-4103",
+              "B4": 120,
+              "A5": "P-4104",
+              "B5": 310,
+              "A6": "P-4105",
+              "B6": 1420,
+              "A7": "P-4106",
+              "B7": 75,
+              "A8": "P-4107",
+              "B8": 460,
+              "A9": "P-4108",
+              "B9": 980,
+              "A10": "P-4109",
+              "B10": 230,
+              "A11": "P-4110",
+              "B11": 640,
+              "D2": 0,
+              "E2": 500,
+              "D3": 500,
+              "E3": 1000,
+              "D4": 1000,
+              "E4": 1500
+            },
+            "formatos": {
+              "B2:B11": "eur",
+              "D2:E4": "eur"
+            },
+            "anchos": {
+              "A": 9,
+              "B": 12,
+              "C": 3,
+              "D": 11,
+              "E": 11,
+              "F": 12
+            }
+          },
+          "objetivo": "F2",
+          "copiar_a": [
+            "F3:F4"
+          ],
+          "solucion": "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=\"&D2;$B$2:$B$11;\"<\"&E2)",
+          "alternativas": [
+            "=CONTAR.SI.CONJUNTO(B$2:B$11;\">=\"&D2;B$2:B$11;\"<\"&E2)",
+            "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">\"&D2;$B$2:$B$11;\"<=\"&E2)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI.CONJUNTO(B2:B11;\">=\"&D2;B2:B11;\"<\"&E2)",
+            "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=D2\";$B$2:$B$11;\"<E2\")",
+            "=CONTAR.SI(B2:B11;\"<500\")",
+            "=5"
+          ],
+          "debe_usar": [
+            "CONTAR.SI.CONJUNTO"
+          ],
+          "variantes": [
+            {
+              "B4": 700
+            },
+            {
+              "E2": 400,
+              "D3": 400
+            }
+          ],
+          "pistas": [
+            "Necesitas contar con **dos condiciones** sobre el mismo rango: mayor o igual que D2 y menor que E2.",
+            "Usa CONTAR.SI.CONJUNTO con el rango dos veces. Un criterio con celda se escribe uniendo: `\">=\"&D2`. Fija el rango con $ para poder copiar.",
+            "Escribe `=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=\"&D2;$B$2:$B$11;\"<\"&E2)`."
+          ],
+          "explicacion": "5 pedidos de menos de 500 €, 3 entre 500 y 1.000 y 2 entre 1.000 y 1.500. Eso es justo lo que dibuja un histograma: una barra por tramo, tan alta como su recuento. Y te sirve de comprobación: 5 + 3 + 2 = 10, no se ha quedado ningún pedido fuera."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Gráfico de barras o columnas",
+          "der": "Histograma",
+          "filas": [
+            [
+              "Una barra por cada cosa: cada comercial, cada mes",
+              "Una barra por cada tramo de valores: 0-500 €, 500-1.000 €…"
+            ],
+            [
+              "La altura es el valor de esa cosa (sus ventas)",
+              "La altura es cuántos datos caen en ese tramo"
+            ],
+            [
+              "Las barras van separadas",
+              "Las barras van pegadas: los tramos son seguidos"
+            ],
+            [
+              "Responde «¿cuánto vende cada uno?»",
+              "Responde «¿cómo se reparten los importes?»"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e5",
+          "modo": "test",
+          "pregunta": "Lucía quiere saber si las horas extra de la plantilla están repartidas o se concentran en unos pocos: cuántas personas hacen de 0 a 5 horas, de 5 a 10, de 10 a 15… ¿Qué gráfico usa?",
+          "opciones": [
+            {
+              "texto": "Un histograma de las horas extra",
+              "correcta": true,
+              "porque": "Eso es: cada barra cuenta cuántas personas caen en un tramo de horas. Se ve de un golpe si la mayoría está abajo o arriba."
+            },
+            {
+              "texto": "Columnas, una por persona",
+              "correcta": false,
+              "porque": "Con 58 personas saldrían 58 columnas: verías quién hace más, pero no cuántas personas hay en cada tramo. Es la confusión típica entre barras e histograma."
+            },
+            {
+              "texto": "Un circular con las horas de cada persona",
+              "correcta": false,
+              "porque": "58 trozos de tarta no se leen, y tampoco agrupa por tramos."
+            },
+            {
+              "texto": "Una cascada",
+              "correcta": false,
+              "porque": "La cascada explica cómo se llega de un total a otro sumando y restando. Aquí no hay partidas que sumar."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "### Embudo: etapas que van perdiendo\nUn **embudo** dibuja las etapas de un proceso, de la más grande a la más pequeña, centradas una debajo de otra. Javier lo usa para ver dónde se le escapan las ventas: 120 presupuestos enviados → 70 aceptados → 64 pedidos servidos → 58 cobrados. El escalón más grande es donde más se pierde (aquí, entre enviados y aceptados).\n\nEstá en el mismo botón que la cascada."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Cajas y bigotes: comparar cómo varían\nAndrés quiere saber qué proveedor es más **regular** con los plazos de entrega. El gráfico de **cajas y bigotes** dibuja, para cada proveedor, una **caja** donde cae la mitad central de sus plazos. La raya de dentro es la **mediana** (el valor del medio si los ordenas), los **bigotes** llegan hasta el valor más bajo y el más alto que no son atípicos, y los puntos sueltos son **valores atípicos** (datos muy alejados del resto). Caja corta: proveedor regular.\n\nEstá en **Insertar gráfico estadístico**, junto al histograma."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Versiones",
+          "md": "Cascada, histograma y cajas y bigotes existen desde Excel 2016; el embudo, desde Excel 2019 y en Microsoft 365. En versiones anteriores esos gráficos no se ven."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "Andrés tiene los plazos de entrega de todos los pedidos de sus tres proveedores de cable y quiere ver **cuál es más regular**. ¿Qué gráfico le recomiendas? Escribe su nombre.",
+          "aceptadas": [
+            "cajas y bigotes",
+            "Cajas y bigotes",
+            "gráfico de cajas y bigotes",
+            "caja y bigotes",
+            "de cajas y bigotes",
+            "diagrama de cajas y bigotes",
+            "cajas y bigote"
+          ],
+          "explicacion": "**Cajas y bigotes**: una caja por proveedor. El de la caja más corta es el más regular, y los puntos sueltos señalan los pedidos que llegaron fuera de lo normal."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Cuándo NO usarlos\nUn gráfico especial que nadie entiende no sirve. Antes de usarlo, piensa en quién lo va a leer: si el consejo nunca ha visto unas cajas y bigotes, quizá unas columnas con el plazo medio de cada proveedor digan lo suficiente.\n\nY si usas uno especial, ponle un **título que diga la conclusión** («Cables Pirineo es el proveedor más regular») y explica en una frase cómo se lee."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m3l4-e7",
+          "modo": "formula",
+          "enunciado": "Prepara los datos de la cascada de Carmen. Contabilidad te ha pasado las partidas con los gastos ya en negativo. En **B6** calcula el **Resultado**: la última barra, la que marcarás como total. Debe salir **320** (miles de €).",
+          "hoja": {
+            "celdas": {
+              "A1": "Partida (miles de €)",
+              "B1": "Importe",
+              "A2": "Ventas",
+              "B2": 14200,
+              "A3": "Compras de material",
+              "B3": -10650,
+              "A4": "Personal",
+              "B4": -2380,
+              "A5": "Transporte y otros gastos",
+              "B5": -850,
+              "A6": "Resultado"
+            },
+            "formatos": {
+              "B2:B6": "#.##0"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 12
+            }
+          },
+          "objetivo": "B6",
+          "solucion": "=SUMA(B2:B5)",
+          "alternativas": [
+            "=B2+B3+B4+B5"
+          ],
+          "errores_tipicos": [
+            "=B2-SUMA(B3:B5)",
+            "=SUMA(B3:B5)",
+            "=B2-B3-B4-B5",
+            "=320"
+          ],
+          "variantes": [
+            {
+              "B4": -2500
+            },
+            {
+              "B2": 15000
+            }
+          ],
+          "formato_resultado": "#.##0",
+          "pistas": [
+            "Los gastos ya vienen con signo menos. ¿Qué operación junta ingresos y gastos así?",
+            "Si lo sumas todo, los negativos restan solos.",
+            "Escribe `=SUMA(B2:B5)`."
+          ],
+          "explicacion": "320 mil euros de resultado. Como los gastos ya son negativos, basta con sumar: si los hubieras restado, se volverían positivos y el resultado se dispararía. Esta celda es además tu comprobación: la última barra de la cascada tiene que medir esto. Selecciona A1:B6, inserta la cascada, marca Resultado como total y Carmen tiene su gráfico para el consejo."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m3l4-q1",
+          "modo": "cinta",
+          "enunciado": "¿Dónde está el botón para insertar un **histograma**?",
+          "ruta": [
+            "Insertar",
+            "Gráficos",
+            "Insertar gráfico estadístico"
+          ],
+          "explicacion": "Insertar › Gráficos › **Insertar gráfico estadístico**: ahí están el histograma y las cajas y bigotes. La cascada y el embudo están en otro botón."
+        },
+        {
+          "id": "n4m3l4-q2",
+          "modo": "test",
+          "pregunta": "Javier quiere ver cuántos de los presupuestos del trimestre llegan a cada etapa: enviados, aceptados, servidos y cobrados. ¿Qué gráfico usa?",
+          "opciones": [
+            {
+              "texto": "Embudo",
+              "correcta": true,
+              "porque": "Eso es: etapas de un proceso que van perdiendo por el camino, de la más grande a la más pequeña."
+            },
+            {
+              "texto": "Cascada",
+              "correcta": false,
+              "porque": "La cascada suma y resta partidas hasta un total. Aquí cada etapa es una parte de la anterior, no algo que se suma o se resta."
+            },
+            {
+              "texto": "Histograma",
+              "correcta": false,
+              "porque": "El histograma reparte valores en tramos numéricos. Las etapas de venta no son tramos."
+            },
+            {
+              "texto": "Cajas y bigotes",
+              "correcta": false,
+              "porque": "Sirve para comparar cómo varían los valores de varios grupos, no para seguir un proceso por etapas."
+            }
+          ]
+        },
+        {
+          "id": "n4m3l4-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "En los datos de una cascada, ¿cómo se escriben los gastos: en **positivo** o en **negativo**?",
+          "aceptadas": [
+            "negativo",
+            "en negativo",
+            "negativos",
+            "Negativo",
+            "con signo menos"
+          ],
+          "explicacion": "En **negativo**: así la cascada los dibuja bajando. Los ingresos, en positivo, suben."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué gráfico usas para «cómo pasamos de las ventas al resultado»?",
+          "dorso": "Cascada: ingresos en positivo, gastos en negativo y el resultado marcado con «Establecer como total»."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Histograma frente a gráfico de barras",
+          "dorso": "Barras: una por cada cosa, con su valor. Histograma: una por tramo de valores, con cuántos datos caen en él."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Para qué sirve un gráfico de cajas y bigotes?",
+          "dorso": "Para comparar cómo varían los valores de varios grupos: caja = mitad central, raya = mediana, puntos sueltos = valores atípicos."
+        },
+        {
+          "tipo": "error",
+          "frente": "La barra del resultado de tu cascada sale flotando. ¿Qué haces?",
+          "dorso": "Selecciónala sola › botón derecho › Establecer como total."
+        }
+      ]
+    }
+  ]
+}

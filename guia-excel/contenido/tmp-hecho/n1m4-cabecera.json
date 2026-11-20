@@ -1,0 +1,89 @@
+{
+ "id": "n1m4",
+ "nivel": "n1",
+ "titulo": "Ordenar, filtrar, gráficos e imprimir",
+ "intro": "Hacer bien los cálculos es la mitad del trabajo; la otra mitad es encontrar lo que te piden en una lista larga y entregarlo de forma que se entienda. En este módulo aprendes a ordenar y filtrar sin estropear nada, a contar con un gráfico lo que dicen los números y a imprimir o enviar en PDF y CSV sin sorpresas.",
+ "repaso_inicial": [
+  {
+   "id": "n1m4-r1",
+   "modo": "formula",
+   "enunciado": "Calentamos con el $. En **D2** calcula el **IVA** del pedido: importe de C2 por el tipo de IVA de **F1**. Tu fórmula se copiará a D3:D5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Cliente", "C1": "Importe", "D1": "IVA", "E1": "Tipo IVA", "F1": 0.21,
+     "A2": "P-5520", "B2": "Clima Segre", "C2": 1240,
+     "A3": "P-5521", "B3": "Reformas Arga", "C3": 386.5,
+     "A4": "P-5522", "B4": "Instalaciones Ebro", "C4": 2915,
+     "A5": "P-5523", "B5": "Montajes Ultzama", "C5": 708.2
+    },
+    "formatos": {"C2:D5": "eur", "F1": "pct"},
+    "anchos": {"B": 18}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D5"],
+   "solucion": "=C2*$F$1",
+   "alternativas": ["=C2*F$1"],
+   "errores_tipicos": ["=C2*F1", "=C2*21", "=C2*0,21"],
+   "variantes": [{"F1": 0.1}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El IVA es el importe por el tipo de IVA.",
+    "El tipo está en F1 y al copiar hacia abajo no debe moverse: fíjalo con $.",
+    "=C2*$F$1"
+   ],
+   "explicacion": "260,40 € para Clima Segre. El tipo de IVA en una celda fija con $: si cambia, solo tocas F1."
+  },
+  {
+   "id": "n1m4-r2",
+   "modo": "predice",
+   "enunciado": "Gastos de desplazamiento de la semana. ¿Qué devuelve esta fórmula en **B7**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Día", "B1": "Gasto",
+     "A2": "Lunes", "B2": 42,
+     "A3": "Martes", "B3": 18,
+     "A4": "Miércoles", "B4": 75,
+     "A5": "Jueves", "B5": 25
+    },
+    "formatos": {"B2:B5": "eur"}
+   },
+   "celda": "B7",
+   "formula": "=MAX(B2:B5)-MIN(B2:B5)",
+   "explicacion": "El máximo es 75 y el mínimo, 18: 75 − 18 = 57. MAX y MIN te dan los extremos de cualquier lista."
+  },
+  {
+   "id": "n1m4-r3",
+   "modo": "test",
+   "pregunta": "Una celda muestra **12,35 €** pero en la barra de fórmulas pone **12,3456**. Si la usas en una fórmula, ¿con qué número calcula Excel?",
+   "opciones": [
+    {"texto": "Con 12,3456", "correcta": true, "porque": "Correcto. El formato solo cambia cómo se ve; Excel calcula con el valor real. Para quedarte con dos decimales de verdad, REDONDEAR."},
+    {"texto": "Con 12,35", "correcta": false, "porque": "Es lo que se ve, pero no lo que hay. El formato de euros redondea solo a la vista."},
+    {"texto": "Con 12", "correcta": false, "porque": "Excel no quita decimales por su cuenta: usa el valor completo de la barra de fórmulas."}
+   ]
+  },
+  {
+   "id": "n1m4-r4",
+   "modo": "test",
+   "pregunta": "Tienes una lista de 300 clientes y al bajar se pierde de vista la fila de títulos. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Vista › Inmovilizar › Inmovilizar fila superior", "correcta": true, "porque": "Correcto. La fila 1 se queda fija en pantalla mientras bajas por la lista."},
+    {"texto": "Copiar la fila de títulos cada 30 filas", "correcta": false, "porque": "Metes filas que no son datos en medio de la lista: estropean los totales, el orden y los filtros."},
+    {"texto": "Ocultar las filas que ya has revisado", "correcta": false, "porque": "Ocultar no fija nada y es fácil olvidar que hay filas escondidas."}
+   ]
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "**Práctica del nivel 1: factura y notas de gasto.** Marta Ruiz te pide dos cosas para hoy, en el mismo libro.\n\n**Hoja «Factura»** (8 líneas para Instalaciones Ebro): calcula el importe de cada línea, su IVA con el tipo fijo de **E4** (con $), el total de cada línea, la base imponible, el IVA y el total de la factura. Da formato de euros y de fecha (la fecha de B4 aparece como un número: dale formato dd/mm/aaaa).\n\n**Hoja «Gastos»** (40 notas de gasto de octubre): calcula total, media, máximo, número de gastos y cuántos no tienen justificante; en la columna G pon «Revisar» con SI en los de **más de 300 €**; ordena por categoría y, dentro, por importe de mayor a menor; suma cada categoría en J2:J6; haz un gráfico de columnas con título y etiquetas; y prepara la hoja para imprimir en una página de ancho, con la fila 1 repetida y número de página.\n\nLos pasos detallados están en la hoja «Instrucciones». Después, contesta las preguntas de control.",
+  "archivo": "n1-factura-y-gastos.xlsx",
+  "controles": [
+   {"pregunta": "Total de la factura con IVA (€)", "respuesta": 3091.13, "tolerancia": 0.01, "pista": "Base imponible (suma de los ocho importes) más IVA. Si te sale distinto, revisa que el IVA de cada línea use $E$4 y que la base sume E8:E15."},
+   {"pregunta": "Total de los 40 gastos de octubre (€)", "respuesta": 3803.92, "tolerancia": 0.01, "pista": "SUMA de toda la columna Importe, de E2 a E41. Comprueba que el rango no se queda corto."},
+   {"pregunta": "Media por gasto (€, con dos decimales)", "respuesta": 95.10, "tolerancia": 0.01, "pista": "PROMEDIO de E2:E41. Debe ser el total entre 40."},
+   {"pregunta": "¿Cuántos gastos no tienen justificante?", "respuesta": 6, "tolerancia": 0, "pista": "Los que tienen vacía la columna F. CONTAR.BLANCO(F2:F41)."},
+   {"pregunta": "¿Cuántos gastos llevan «Revisar»?", "respuesta": 5, "tolerancia": 0, "pista": "Solo los de MÁS de 300 €. Hay uno de 300,00 € justo: ese no cuenta. Usa > y no >=."},
+   {"pregunta": "Total de la categoría Desplazamientos (€)", "respuesta": 925.32, "tolerancia": 0.01, "pista": "Después de ordenar por categoría, los desplazamientos quedan juntos: suma solo ese bloque. Si no cuadra, puede que una fila se descolocara al ordenar."}
+  ],
+  "solucion_md": "**Factura**\n\n- E8: `=C8*D8`; F8: `=E8*$E$4`; G8: `=E8+F8`, copiadas hasta la fila 15.\n- E17: `=SUMA(E8:E15)` → 2.554,65 €; E18: `=SUMA(F8:F15)` → 536,48 €; E19: `=E17+E18` → **3.091,13 €**.\n- Comprobación: el IVA total debe coincidir con `=E17*E4`.\n\n**Gastos**\n\n- Total `=SUMA(E2:E41)` → **3.803,92 €**; media `=PROMEDIO(E2:E41)` → **95,10 €**; máximo `=MAX(E2:E41)` → 390,48 €; número `=CONTAR(E2:E41)` → 40; sin justificante `=CONTAR.BLANCO(F2:F41)` → **6**.\n- G2: `=SI(E2>300;\"Revisar\";\"\")`, copiada hasta G41 → **5** gastos (el de 300,00 € no).\n- Ordenar: Datos › Ordenar, por Categoría de A a Z, Agregar nivel, Importe de mayor a menor.\n- Por categoría: Alojamiento 1.793,42 €; Aparcamiento 155,57 €; Comidas 181,09 €; **Desplazamientos 925,32 €**; Material de oficina 748,52 €.\n- Gráfico de columnas con I1:J6, título «Gastos de octubre de 2026 por categoría» y etiquetas de datos.\n- Imprimir: horizontal, «Ajustar todas las columnas en una página», Imprimir títulos con $1:$1 y número de página en el pie.",
+  "archivo_solucion": "n1-factura-y-gastos-solucion.xlsx"
+ }
+}

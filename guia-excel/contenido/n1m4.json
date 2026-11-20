@@ -1,0 +1,1221 @@
+{
+  "id": "n1m4",
+  "nivel": "n1",
+  "titulo": "Ordenar, filtrar, gráficos e imprimir",
+  "intro": "Hacer bien los cálculos es la mitad del trabajo; la otra mitad es encontrar lo que te piden en una lista larga y entregarlo de forma que se entienda. En este módulo aprendes a ordenar y filtrar sin estropear nada, a contar con un gráfico lo que dicen los números y a imprimir o enviar en PDF y CSV sin sorpresas.",
+  "repaso_inicial": [
+    {
+      "id": "n1m4-r1",
+      "modo": "formula",
+      "enunciado": "Calentamos con el $. En **D2** calcula el **IVA** del pedido: importe de C2 por el tipo de IVA de **F1**. Tu fórmula se copiará a D3:D5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Cliente",
+          "C1": "Importe",
+          "D1": "IVA",
+          "E1": "Tipo IVA",
+          "F1": 0.21,
+          "A2": "P-5520",
+          "B2": "Clima Segre",
+          "C2": 1240,
+          "A3": "P-5521",
+          "B3": "Reformas Arga",
+          "C3": 386.5,
+          "A4": "P-5522",
+          "B4": "Instalaciones Ebro",
+          "C4": 2915,
+          "A5": "P-5523",
+          "B5": "Montajes Ultzama",
+          "C5": 708.2
+        },
+        "formatos": {
+          "C2:D5": "eur",
+          "F1": "pct"
+        },
+        "anchos": {
+          "B": 18
+        }
+      },
+      "objetivo": "D2",
+      "copiar_a": [
+        "D3:D5"
+      ],
+      "solucion": "=C2*$F$1",
+      "alternativas": [
+        "=C2*F$1"
+      ],
+      "errores_tipicos": [
+        "=C2*F1",
+        "=C2*21",
+        "=C2*0,21"
+      ],
+      "variantes": [
+        {
+          "F1": 0.1
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "El IVA es el importe por el tipo de IVA.",
+        "El tipo está en F1 y al copiar hacia abajo no debe moverse: fíjalo con $.",
+        "=C2*$F$1"
+      ],
+      "explicacion": "260,40 € para Clima Segre. El tipo de IVA en una celda fija con $: si cambia, solo tocas F1."
+    },
+    {
+      "id": "n1m4-r2",
+      "modo": "predice",
+      "enunciado": "Gastos de desplazamiento de la semana. ¿Qué devuelve esta fórmula en **B7**?",
+      "hoja": {
+        "celdas": {
+          "A1": "Día",
+          "B1": "Gasto",
+          "A2": "Lunes",
+          "B2": 42,
+          "A3": "Martes",
+          "B3": 18,
+          "A4": "Miércoles",
+          "B4": 75,
+          "A5": "Jueves",
+          "B5": 25
+        },
+        "formatos": {
+          "B2:B5": "eur"
+        }
+      },
+      "celda": "B7",
+      "formula": "=MAX(B2:B5)-MIN(B2:B5)",
+      "explicacion": "El máximo es 75 y el mínimo, 18: 75 − 18 = 57. MAX y MIN te dan los extremos de cualquier lista.",
+      "respuesta": "57"
+    },
+    {
+      "id": "n1m4-r3",
+      "modo": "test",
+      "pregunta": "Una celda muestra **12,35 €** pero en la barra de fórmulas pone **12,3456**. Si la usas en una fórmula, ¿con qué número calcula Excel?",
+      "opciones": [
+        {
+          "texto": "Con 12,3456",
+          "correcta": true,
+          "porque": "Correcto. El formato solo cambia cómo se ve; Excel calcula con el valor real. Para quedarte con dos decimales de verdad, REDONDEAR."
+        },
+        {
+          "texto": "Con 12,35",
+          "correcta": false,
+          "porque": "Es lo que se ve, pero no lo que hay. El formato de euros redondea solo a la vista."
+        },
+        {
+          "texto": "Con 12",
+          "correcta": false,
+          "porque": "Excel no quita decimales por su cuenta: usa el valor completo de la barra de fórmulas."
+        }
+      ]
+    },
+    {
+      "id": "n1m4-r4",
+      "modo": "test",
+      "pregunta": "Tienes una lista de 300 clientes y al bajar se pierde de vista la fila de títulos. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Vista › Ventana › Inmovilizar › Inmovilizar fila superior",
+          "correcta": true,
+          "porque": "Correcto. La fila 1 se queda fija en pantalla mientras bajas por la lista."
+        },
+        {
+          "texto": "Copiar la fila de títulos cada 30 filas",
+          "correcta": false,
+          "porque": "Metes filas que no son datos en medio de la lista: estropean los totales, el orden y los filtros."
+        },
+        {
+          "texto": "Ocultar las filas que ya has revisado",
+          "correcta": false,
+          "porque": "Ocultar no fija nada y es fácil olvidar que hay filas escondidas."
+        }
+      ]
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "**Práctica del nivel 1: factura y notas de gasto.** Marta Ruiz te pide dos cosas para hoy, en el mismo libro.\n\n**Hoja «Factura»** (8 líneas para Instalaciones Ebro): calcula el importe de cada línea, su IVA con el tipo fijo de **E4** (con $) redondeado a céntimos con REDONDEAR, el total de cada línea, la base imponible, el IVA y el total de la factura. Da formato de euros y de fecha (la fecha de B4 aparece como un número: dale formato dd/mm/aaaa).\n\n**Hoja «Gastos»** (40 notas de gasto de octubre): calcula total, media, máximo, número de gastos y cuántos no tienen justificante; en la columna G pon «Revisar» con SI en los de **más de 300 €**; ordena por categoría y, dentro, por importe de mayor a menor; suma cada categoría en J2:J6; haz un gráfico de columnas con título y etiquetas; y prepara la hoja para imprimir en una página de ancho, con la fila 1 repetida y número de página.\n\nLos pasos detallados están en la hoja «Instrucciones». Después, contesta las preguntas de control.",
+    "archivo": "n1-factura-y-gastos.xlsx",
+    "controles": [
+      {
+        "pregunta": "Total de la factura con IVA (€)",
+        "respuesta": 3091.12,
+        "tolerancia": 0.01,
+        "pista": "Base imponible (suma de los ocho importes) más IVA. Si te sale 3.091,13 €, te falta redondear el IVA de cada línea con REDONDEAR(…;2). Revisa también que el IVA use $E$4 y que la base sume E8:E15."
+      },
+      {
+        "pregunta": "Total de los 40 gastos de octubre (€)",
+        "respuesta": 3803.92,
+        "tolerancia": 0.01,
+        "pista": "SUMA de toda la columna Importe, de E2 a E41. Comprueba que el rango no se queda corto."
+      },
+      {
+        "pregunta": "Media por gasto (€, con dos decimales)",
+        "respuesta": 95.1,
+        "tolerancia": 0.01,
+        "pista": "PROMEDIO de E2:E41. Debe ser el total entre 40."
+      },
+      {
+        "pregunta": "¿Cuántos gastos no tienen justificante?",
+        "respuesta": 6,
+        "tolerancia": 0,
+        "pista": "Los que tienen vacía la columna F. CONTAR.BLANCO(F2:F41)."
+      },
+      {
+        "pregunta": "¿Cuántos gastos llevan «Revisar»?",
+        "respuesta": 5,
+        "tolerancia": 0,
+        "pista": "Solo los de MÁS de 300 €. Hay uno de 300,00 € justo: ese no cuenta. Usa > y no >=."
+      },
+      {
+        "pregunta": "Total de la categoría Desplazamientos (€)",
+        "respuesta": 925.32,
+        "tolerancia": 0.01,
+        "pista": "Después de ordenar por categoría, los desplazamientos quedan juntos: suma solo ese bloque. Si no cuadra, puede que una fila se descolocara al ordenar."
+      }
+    ],
+    "solucion_md": "**Factura**\n\n- E8: `=C8*D8`; F8: `=REDONDEAR(E8*$E$4;2)`; G8: `=E8+F8`, copiadas hasta la fila 15.\n- E17: `=SUMA(E8:E15)` → 2.554,65 €; E18: `=SUMA(F8:F15)` → 536,47 €; E19: `=E17+E18` → **3.091,12 €**.\n- Comprobación: E19 debe coincidir con `=SUMA(G8:G15)`. Sin redondear cada línea saldría 3.091,13 €: el céntimo «que no cuadra» de la lección de REDONDEAR.\n\n**Gastos**\n\n- Total `=SUMA(E2:E41)` → **3.803,92 €**; media `=PROMEDIO(E2:E41)` → **95,10 €**; máximo `=MAX(E2:E41)` → 390,48 €; número `=CONTAR(E2:E41)` → 40; sin justificante `=CONTAR.BLANCO(F2:F41)` → **6**.\n- G2: `=SI(E2>300;\"Revisar\";\"\")`, copiada hasta G41 → **5** gastos (el de 300,00 € no).\n- Ordenar: Datos › Ordenar, por Categoría de A a Z, Agregar nivel, Importe de mayor a menor.\n- Por categoría: Alojamiento 1.793,42 €; Aparcamiento 155,57 €; Comidas 181,09 €; **Desplazamientos 925,32 €**; Material de oficina 748,52 €.\n- Gráfico de columnas con I1:J6, título «Gastos de octubre de 2026 por categoría» y etiquetas de datos.\n- Imprimir: horizontal, «Ajustar todas las columnas en una página», Imprimir títulos con $1:$1 y número de página en el pie.",
+    "archivo_solucion": "n1-factura-y-gastos-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n1m4l1",
+      "titulo": "Ordenar y filtrar una lista sin estropearla",
+      "minutos": 15,
+      "objetivo": "Ordenar una lista por una o dos columnas sin descolocar las filas, filtrar para ver solo lo que interesa sabiendo que no se borra nada, y buscar y reemplazar un dato en toda la hoja.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "El jueves me reúno con el equipo de Pamplona. Sácame de la lista de clientes solo los de Pamplona, de más venta a menos, con el total abajo. Y no me rompas la lista, que la usa todo el departamento.",
+        "logro": "Ya sabes ordenar y filtrar una lista de clientes sin descolocar ni perder ningún dato, y comprobar con un total que todo cuadra."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Una **lista** es una tabla de datos con una regla sencilla: **una fila por cosa** (un cliente, una factura) y **una columna por dato** (nombre, delegación, ventas).\n\nPara que Excel la entienda como un bloque:\n\n- **Una sola fila de títulos** arriba del todo.\n- **Ninguna fila ni columna vacía** en medio.\n- **Un dato por celda**: la ciudad en una columna, las ventas en otra.\n\nAsí Excel sabe dónde empieza y dónde acaba, y puede ordenarla y filtrarla."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Clientes de Electro Cierzo (ventas de enero a octubre de 2026)",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Ventas",
+              "A2": "Instalaciones Ebro",
+              "B2": "Zaragoza",
+              "C2": 31250,
+              "A3": "Reformas Arga",
+              "B3": "Pamplona",
+              "C3": 18450,
+              "A4": "Clima Segre",
+              "B4": "Lleida",
+              "C4": 22780,
+              "A5": "Iluminación Baztán",
+              "B5": "Pamplona",
+              "C5": 23900,
+              "A6": "Electricidad Aranda",
+              "B6": "Zaragoza",
+              "C6": 12640,
+              "A7": "Electricidad Txantrea",
+              "B7": "Pamplona",
+              "C7": 9870,
+              "A8": "Instalaciones Noguera",
+              "B8": "Lleida",
+              "C8": 15310,
+              "A9": "Montajes Ultzama",
+              "B9": "Pamplona",
+              "C9": 14200
+            },
+            "formatos": {
+              "C2:C9": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 12,
+              "C": 12
+            }
+          },
+          "pie": "Una fila de títulos, ocho clientes seguidos, un dato en cada celda: una lista bien hecha."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e1",
+          "modo": "test",
+          "pregunta": "Un compañero te pasa su lista de clientes. ¿Cuál de estas cosas **rompe** la lista y hará que Excel no la ordene entera?",
+          "opciones": [
+            {
+              "texto": "Una fila vacía entre el cliente 4 y el 5",
+              "correcta": true,
+              "porque": "Correcto. Excel cree que la lista termina en la fila vacía: al ordenar o filtrar, los clientes de debajo se quedan fuera."
+            },
+            {
+              "texto": "Que los títulos estén en negrita",
+              "correcta": false,
+              "porque": "La negrita es solo aspecto. No cambia nada: la lista sigue siendo un bloque."
+            },
+            {
+              "texto": "Que la columna Ventas tenga formato de euros",
+              "correcta": false,
+              "porque": "El formato de euros solo cambia cómo se ve el número. Al revés: es lo recomendable."
+            }
+          ],
+          "explicacion": "Las filas vacías parten la lista en dos trozos. Si te llega una lista con huecos, elimina esas filas antes de ordenar o filtrar."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Ordenar** es cambiar el orden de las filas: de la A a la Z, de más venta a menos…\n\nLo importante: Excel mueve **filas enteras**. Cada cliente viaja con su delegación y sus ventas.\n\nCómo se hace:\n\n1. Haz clic en **una sola celda** de la columna por la que quieres ordenar (por ejemplo, C3, en Ventas). No selecciones la columna entera.\n2. Ve a **Datos › Ordenar y filtrar** y pulsa **Ordenar de A a Z** o **Ordenar de Z a A**.\n\nCon números, «de A a Z» es de menor a mayor."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e2",
+          "modo": "cinta",
+          "enunciado": "Tienes el cursor en una celda de la columna **Ventas**. Javier quiere ver primero a los clientes que **más** compran. Toca el botón que ordena de mayor a menor.",
+          "ruta": [
+            "Datos",
+            "Ordenar y filtrar",
+            "Ordenar de Z a A"
+          ],
+          "explicacion": "Datos › Ordenar y filtrar › Ordenar de Z a A. Con números, de Z a A significa de mayor a menor. El mismo botón está también en Inicio › Edición › Ordenar y filtrar."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "El error más caro que he visto: alguien seleccionó **solo** la columna de ventas y la ordenó. Los nombres se quedaron quietos y los importes se movieron: cada cliente acabó con las ventas de otro, y no daba ningún error.\n\nSi seleccionas una columna, Excel te avisa y te pregunta. Elige siempre **Ampliar la selección**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e3",
+          "modo": "test",
+          "pregunta": "Has seleccionado la columna C entera y has pulsado Ordenar de Z a A. Excel te pregunta qué hacer. ¿Qué eliges?",
+          "opciones": [
+            {
+              "texto": "Ampliar la selección",
+              "correcta": true,
+              "porque": "Correcto. Excel incluye el resto de columnas de la lista y ordena filas enteras: cada cliente sigue con sus ventas."
+            },
+            {
+              "texto": "Continuar con la selección actual",
+              "correcta": false,
+              "porque": "Ordenaría solo la columna Ventas. Los importes cambiarían de cliente sin que nada lo avise: la lista quedaría revuelta."
+            },
+            {
+              "texto": "Cualquiera: el resultado es el mismo",
+              "correcta": false,
+              "porque": "No. Una mueve filas enteras y la otra solo una columna. La diferencia es tener la lista bien o estropeada."
+            }
+          ],
+          "explicacion": "Ampliar la selección mantiene juntos los datos de cada fila. Mejor aún: haz clic en una sola celda antes de ordenar y el aviso ni aparece."
+        },
+        {
+          "tipo": "texto",
+          "md": "A veces hay que ordenar por **dos cosas**: primero por delegación y, dentro de cada delegación, por ventas.\n\nPara eso está el botón grande **Datos › Ordenar y filtrar › Ordenar**. Abre un cuadro donde pones:\n\n- **Ordenar por**: Delegación, de A a Z.\n- Pulsas **Agregar nivel**.\n- **Luego por**: Ventas, de mayor a menor.\n\nExcel aplica el primer criterio y usa el segundo para desempatar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e4",
+          "modo": "ordenar",
+          "enunciado": "Para otra reunión, Javier quiere la lista de clientes agrupada por delegación y, dentro de cada una, de más venta a menos. Pon los pasos en orden.",
+          "pasos": [
+            "Haz clic en una celda cualquiera de la lista",
+            "Datos › Ordenar y filtrar › Ordenar",
+            "En «Ordenar por» elige Delegación, de A a Z",
+            "Pulsa Agregar nivel",
+            "En «Luego por» elige Ventas, de mayor a menor",
+            "Pulsa Aceptar y revisa un par de filas"
+          ],
+          "explicacion": "Primero se dice dónde está la lista (una celda basta), después los criterios por orden de importancia. Y al final se mira: revisar un par de filas es la costumbre que evita sorpresas."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Filtrar** es ver solo las filas que te interesan, por ejemplo, los clientes de Pamplona.\n\n1. Haz clic en una celda de la lista.\n2. **Datos › Ordenar y filtrar › Filtro**. En cada título aparece una **flecha**.\n3. Abre la flecha de *Delegación*, desmarca **(Seleccionar todo)** y marca **Pamplona**. Aceptar.\n\nPara volver a verlo todo, abre la flecha y marca de nuevo (Seleccionar todo), o pulsa otra vez **Filtro** para quitar las flechas."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Ctrl+Mayús+L",
+              "accion": "Poner o quitar las flechas de filtro"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e5",
+          "modo": "test",
+          "pregunta": "Has filtrado Pamplona y ahora solo ves 4 clientes. Los números de fila salen en azul y saltan: 3, 5, 7, 9. Marta se asusta: «¿Has borrado los demás?». ¿Qué le contestas?",
+          "opciones": [
+            {
+              "texto": "No: están ocultos. El filtro solo esconde filas; al quitarlo vuelven todas",
+              "correcta": true,
+              "porque": "Correcto. Filtrar no borra nada. Los números azules y los saltos son la señal de que hay un filtro puesto."
+            },
+            {
+              "texto": "Sí, pero se recuperan con Ctrl+Z",
+              "correcta": false,
+              "porque": "No se ha borrado nada, así que no hay nada que deshacer. Basta con quitar el filtro."
+            },
+            {
+              "texto": "Sí: para no perderlos hay que filtrar en una copia del libro",
+              "correcta": false,
+              "porque": "No hace falta copia: el filtro nunca elimina filas. Trabajar sobre la lista original es lo normal."
+            }
+          ],
+          "explicacion": "Filtrar es como mirar por una ventanita: lo demás sigue ahí. Fíjate siempre en los números de fila azules: te dicen que estás viendo solo una parte."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Buscar y reemplazar** sirve para encontrar un dato en una hoja larga o cambiarlo en todas partes de una vez.\n\n- **Buscar**: [[Ctrl]]+[[B]]. Escribes, por ejemplo, *Txantrea* y pulsas Buscar siguiente.\n- **Reemplazar**: [[Ctrl]]+[[L]]. En *Buscar* pones lo que hay y en *Reemplazar con* lo nuevo.\n\nCaso real: un cliente cambia de nombre y aparece en 60 filas. Con Reemplazar lo cambias en segundos, sin tocar las demás celdas."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Reemplazar todos cambia también los trozos",
+          "md": "Reemplazar busca el texto **dentro** de cada celda. Si cambias «Ebro» por otra palabra, también cambiará «Instalaciones Ebro» y «Reformas Ebro». Antes de pulsar **Reemplazar todos**, pulsa **Buscar todos** y mira la lista. En **Opciones** puedes marcar «Coincidir con el contenido de toda la celda»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e6",
+          "modo": "test",
+          "pregunta": "La delegación de Lleida pasa a llamarse **Lleida-Segrià**. En la columna Delegación pone «Lleida», pero en la columna Cliente hay un «Distribuciones Lleida Sur». ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Selecciono solo la columna Delegación y reemplazo ahí",
+              "correcta": true,
+              "porque": "Correcto. Si hay celdas seleccionadas, Reemplazar trabaja solo en ellas: el nombre del cliente no se toca."
+            },
+            {
+              "texto": "Ctrl+L con una sola celda seleccionada y Reemplazar todos",
+              "correcta": false,
+              "porque": "Con una sola celda seleccionada busca en toda la hoja: también cambiaría el cliente a «Distribuciones Lleida-Segrià Sur»."
+            },
+            {
+              "texto": "Lo cambio a mano celda por celda para ir seguro",
+              "correcta": false,
+              "porque": "Funciona en una lista corta, pero con cientos de filas es lento y es fácil saltarse alguna. Reemplazar sobre una selección es igual de seguro y mucho más rápido."
+            }
+          ],
+          "explicacion": "Primero se limita dónde buscar (seleccionando la columna) y después se reemplaza. Así cambias cientos de celdas sin efectos secundarios."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Ya tienes a los de Pamplona filtrados y ordenados. Los he copiado a una hoja nueva para Javier: al copiar una lista filtrada, Excel solo copia las filas que se ven.\n\nUn truco antes de mandarlo: pon siempre el **total**. Y ponlo en la copia, no debajo de la lista filtrada: **SUMA cuenta también las filas que esconde el filtro**, como pasaba con las ocultas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l1-e7",
+          "modo": "formula",
+          "enunciado": "Termina el encargo de Javier. En la hoja nueva están los clientes de Pamplona que copió Nuria, de más a menos venta. En **C6** calcula el **total de ventas** de los cuatro clientes (C2:C5).",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Delegación",
+              "C1": "Ventas",
+              "A2": "Iluminación Baztán",
+              "B2": "Pamplona",
+              "C2": 23900,
+              "A3": "Reformas Arga",
+              "B3": "Pamplona",
+              "C3": 18450,
+              "A4": "Montajes Ultzama",
+              "B4": "Pamplona",
+              "C4": 14200,
+              "A5": "Electricidad Txantrea",
+              "B5": "Pamplona",
+              "C5": 9870,
+              "B6": "Total"
+            },
+            "formatos": {
+              "C2:C6": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 12,
+              "C": 12
+            }
+          },
+          "objetivo": "C6",
+          "solucion": "=SUMA(C2:C5)",
+          "debe_usar": [
+            "SUMA"
+          ],
+          "alternativas": [],
+          "errores_tipicos": [
+            "=SUMA(C2:C4)",
+            "=SUMA(C3:C5)"
+          ],
+          "variantes": [
+            {
+              "C4": 15000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Es la función de sumar una columna que ya conoces.",
+            "SUMA con el rango de las cuatro ventas, de C2 a C5.",
+            "=SUMA(C2:C5)"
+          ],
+          "explicacion": "66.420 €. Encargo resuelto: lista filtrada, ordenada y con su total, y la lista original intacta debajo del filtro. Es justo lo que te pedirán antes de cada reunión comercial."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m4l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo abre **Reemplazar** en el Excel en español?",
+          "aceptadas": [
+            "Ctrl+L",
+            "Control+L",
+            "Ctrl L",
+            "Ctrl + L"
+          ],
+          "explicacion": "Ctrl+L (y Ctrl+B para Buscar). En los tutoriales en inglés verás Ctrl+H y Ctrl+F: en el Excel en español no son esos."
+        },
+        {
+          "id": "n1m4l1-q2",
+          "modo": "cinta",
+          "enunciado": "Sin mirar arriba: pon las **flechas de filtro** en los títulos de la lista.",
+          "ruta": [
+            "Datos",
+            "Ordenar y filtrar",
+            "Filtro"
+          ],
+          "explicacion": "Datos › Ordenar y filtrar › Filtro (o Ctrl+Mayús+L). Las flechas aparecen en cada título."
+        },
+        {
+          "id": "n1m4l1-q3",
+          "modo": "test",
+          "pregunta": "Después de ordenar, ves que «Clima Segre» tiene ahora las ventas de «Reformas Arga». ¿Qué ha pasado?",
+          "opciones": [
+            {
+              "texto": "Se ordenó solo una columna y los datos se separaron de su fila",
+              "correcta": true,
+              "porque": "Correcto. Es el síntoma típico: los nombres se quedan y los importes se mueven. Deshaz con Ctrl+Z y ordena con una sola celda seleccionada."
+            },
+            {
+              "texto": "Había un filtro puesto",
+              "correcta": false,
+              "porque": "El filtro oculta filas, pero no cambia los datos de una fila a otra."
+            },
+            {
+              "texto": "La columna tenía formato de euros",
+              "correcta": false,
+              "porque": "El formato no influye al ordenar: solo cambia cómo se ve el número."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Las tres reglas de una lista bien hecha",
+          "dorso": "Una sola fila de títulos, ninguna fila vacía en medio y un dato por celda."
+        },
+        {
+          "tipo": "error",
+          "frente": "Al ordenar, Excel pregunta si ampliar la selección. ¿Qué eliges?",
+          "dorso": "Ampliar la selección: así mueve filas enteras y no separa los datos."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Buscar / Reemplazar en el Excel en español",
+          "dorso": "Ctrl+B / Ctrl+L"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Filtrar borra filas?",
+          "dorso": "No: las oculta. Los números de fila en azul avisan de que hay un filtro."
+        }
+      ]
+    },
+    {
+      "id": "n1m4l2",
+      "titulo": "Tu primer gráfico",
+      "minutos": 15,
+      "objetivo": "Elegir el gráfico que cuenta el mensaje (columnas, líneas o circular), crearlo seleccionando los datos con sus títulos y dejarlo listo para enseñar con título y etiquetas de datos.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "El lunes, en el comité, quiero ver de un vistazo cuánto ha vendido cada delegación en el tercer trimestre. Un gráfico, por favor: nadie lee tablas de números a las nueve de la mañana.",
+        "logro": "Ya sabes elegir el gráfico adecuado para cada mensaje y crearlo con título y cifras, listo para una reunión de dirección."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Una tabla obliga a leer número a número. Un **gráfico** cuenta lo mismo en cinco segundos: quién vende más, si algo sube o baja.\n\nAntes de crear uno, hazte una pregunta: **¿qué quiero que se vea?** Según la respuesta, el gráfico es uno u otro. Con tres tipos resolverás casi todo lo que te pidan en la oficina."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Qué gráfico usar",
+          "cabecera": [
+            "Quiero enseñar…",
+            "Gráfico",
+            "Ejemplo en Electro Cierzo"
+          ],
+          "filas": [
+            [
+              "**Comparar** cantidades entre sí",
+              "Columnas (o barras, si los nombres son largos)",
+              "Ventas de cada delegación"
+            ],
+            [
+              "Cómo **evoluciona** algo en el tiempo",
+              "Líneas",
+              "Cobros de cada mes del año"
+            ],
+            [
+              "Cómo se **reparte** un todo, en pocas partes",
+              "Circular",
+              "Plantilla por delegación: Zaragoza, Pamplona, Lleida"
+            ]
+          ],
+          "pie": "Primero el mensaje, después el gráfico."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e1",
+          "modo": "test",
+          "pregunta": "Carmen quiere **comparar** las ventas del trimestre de Zaragoza, Pamplona y Lleida. ¿Qué gráfico usas?",
+          "opciones": [
+            {
+              "texto": "Columnas",
+              "correcta": true,
+              "porque": "Correcto. Una columna por delegación: la más alta salta a la vista y se comparan de un golpe."
+            },
+            {
+              "texto": "Líneas",
+              "correcta": false,
+              "porque": "Las líneas unen puntos en el tiempo. Unir Zaragoza con Pamplona no tiene sentido: no hay un «antes» y un «después»."
+            },
+            {
+              "texto": "Ninguno: mejor la tabla de números",
+              "correcta": false,
+              "porque": "Carmen ha pedido justo lo contrario: verlo de un vistazo. Con tres cifras, un gráfico de columnas se entiende al instante."
+            }
+          ],
+          "explicacion": "Comparar cantidades = columnas. Es el gráfico que más usarás en tu vida laboral."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e2",
+          "modo": "test",
+          "pregunta": "Marta quiere enseñar al banco cómo han ido los **cobros mes a mes**, de enero a octubre. ¿Qué gráfico eliges?",
+          "opciones": [
+            {
+              "texto": "Líneas",
+              "correcta": true,
+              "porque": "Correcto. Los meses van seguidos en el tiempo y la línea muestra de un vistazo si sube, baja o se mantiene."
+            },
+            {
+              "texto": "Circular",
+              "correcta": false,
+              "porque": "Un circular con diez porciones de meses no enseña la evolución: no se ve si el dinero sube o baja."
+            },
+            {
+              "texto": "Columnas, una por mes, ordenadas de mayor a menor",
+              "correcta": false,
+              "porque": "Al ordenar por importe se pierde el orden de los meses, que es justo lo que interesa. Columnas en orden de meses valdrían; ordenadas por importe, no."
+            }
+          ],
+          "explicacion": "Tiempo = líneas. Si en el eje de abajo hay meses, días o años, piensa primero en una línea."
+        },
+        {
+          "tipo": "texto",
+          "md": "El gráfico **circular** (de «quesitos») es el que más se usa mal. Sirve solo si se cumplen dos cosas:\n\n1. Las porciones son **partes de un todo** que suma el 100 %.\n2. Son **pocas**: dos, tres, cuatro o cinco.\n\nCon doce porciones el ojo no distingue cuál es mayor y los colores se confunden. Para muchas categorías, usa **barras ordenadas** de mayor a menor."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e3",
+          "modo": "test",
+          "pregunta": "Javier te pide un circular con las ventas de sus **12 comerciales** para la reunión. ¿Qué le propones?",
+          "opciones": [
+            {
+              "texto": "Un gráfico de barras con los 12 comerciales ordenados de más venta a menos",
+              "correcta": true,
+              "porque": "Correcto. Con 12 nombres, las barras se leen bien y el orden dice quién va primero. Es lo que Javier quiere saber."
+            },
+            {
+              "texto": "El circular que pide, con 12 colores distintos",
+              "correcta": false,
+              "porque": "Doce porciones parecidas no se distinguen: nadie sabrá quién vende más. Se puede proponer algo mejor con amabilidad."
+            },
+            {
+              "texto": "Un circular en 3D para que se vea más vistoso",
+              "correcta": false,
+              "porque": "El 3D deforma las porciones: las de delante parecen más grandes de lo que son. Engaña al que mira."
+            }
+          ],
+          "explicacion": "Proponer el gráfico adecuado es parte del trabajo. «Te lo hago en barras ordenadas, que con doce se lee mejor» es una respuesta profesional."
+        },
+        {
+          "tipo": "texto",
+          "md": "Crear el gráfico son dos pasos:\n\n1. **Selecciona los datos con sus títulos**: los nombres de la columna A y las cifras de la columna B, títulos incluidos (A1:B4). No selecciones la fila del total.\n2. **Insertar › Gráficos** y elige el tipo. Si dudas, **Gráficos recomendados** te propone opciones.\n\nExcel lo dibuja encima de la hoja. Puedes moverlo arrastrándolo por el borde."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Ventas del tercer trimestre de 2026",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Ventas 3T",
+              "A2": "Zaragoza",
+              "B2": 412300,
+              "A3": "Pamplona",
+              "B3": 186750,
+              "A4": "Lleida",
+              "B4": 143900,
+              "A5": "Total",
+              "B5": "=SUMA(B2:B4)"
+            },
+            "formatos": {
+              "B2:B5": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 14
+            }
+          },
+          "resaltar": [
+            "A1:B4"
+          ],
+          "pie": "Lo resaltado es lo que se selecciona para el gráfico: nombres y cifras con sus títulos, sin el total."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Gráfico en un segundo",
+          "md": "Con los datos seleccionados, [[Alt]]+[[F1]] crea al momento un gráfico de columnas en la misma hoja. [[F11]] lo crea en una hoja nueva."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e4",
+          "modo": "test",
+          "pregunta": "Con la hoja de arriba, ¿qué seleccionas antes de insertar el gráfico de Carmen?",
+          "opciones": [
+            {
+              "texto": "A1:B4",
+              "correcta": true,
+              "porque": "Correcto. Nombres, cifras y títulos: Excel pone «Zaragoza», «Pamplona» y «Lleida» debajo de cada columna."
+            },
+            {
+              "texto": "B2:B4",
+              "correcta": false,
+              "porque": "Sin la columna A, Excel no sabe los nombres y pone 1, 2, 3 debajo de las columnas. Nadie sabrá cuál es cuál."
+            },
+            {
+              "texto": "A1:B5",
+              "correcta": false,
+              "porque": "Incluye la fila del total: saldría una columna «Total» que dobla a las demás y las hace parecer pequeñas."
+            }
+          ],
+          "explicacion": "Etiquetas + cifras + títulos, y nada de totales. Si la selección es buena, el gráfico sale casi hecho."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e5",
+          "modo": "cinta",
+          "enunciado": "Ya tienes seleccionado A1:B4. Toca el botón para insertar un **gráfico de columnas**.",
+          "ruta": [
+            "Insertar",
+            "Gráficos",
+            "Insertar gráfico de columnas o de barras"
+          ],
+          "explicacion": "Insertar › Gráficos › Insertar gráfico de columnas o de barras. Elige la primera opción, «Columna agrupada», la más sencilla."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un gráfico para enseñar necesita dos cosas:\n\n- **Título que diga el mensaje**. No «Gráfico 1»: mejor «Ventas del 3T por delegación» o incluso «Zaragoza vende más que Pamplona y Lleida juntas».\n- **Etiquetas de datos**: la cifra encima de cada columna, para no adivinar.\n\nHaz clic en el gráfico y pulsa el botón **+** que aparece a su lado (**Elementos de gráfico**). Marca *Título del gráfico* y *Etiquetas de datos*."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "Sin título o con «Título del gráfico»",
+              "Un título que diga qué se ve"
+            ],
+            [
+              "Columnas en 3D con sombras",
+              "Columnas planas: se comparan sin engaños"
+            ],
+            [
+              "Circular con 12 porciones",
+              "Barras ordenadas de mayor a menor"
+            ],
+            [
+              "Hay que adivinar las cifras",
+              "Etiquetas de datos encima de cada columna"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e6",
+          "modo": "formula",
+          "enunciado": "Carmen querrá saber qué parte del total vende cada delegación, para decirlo en el comité. En **C2** calcula el **porcentaje** de Zaragoza sobre el total (ventas de B2 entre el total de B5). Tu fórmula se copiará a C3:C4, así que fija el total.",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Ventas 3T",
+              "C1": "% del total",
+              "A2": "Zaragoza",
+              "B2": 412300,
+              "A3": "Pamplona",
+              "B3": 186750,
+              "A4": "Lleida",
+              "B4": 143900,
+              "A5": "Total",
+              "B5": "=SUMA(B2:B4)"
+            },
+            "formatos": {
+              "B2:B5": "eur",
+              "C2:C4": "pct1"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 14,
+              "C": 12
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C4"
+          ],
+          "solucion": "=B2/$B$5",
+          "alternativas": [
+            "=B2/B$5"
+          ],
+          "errores_tipicos": [
+            "=B2/B5",
+            "=B5/B2",
+            "=$B$2/$B$5"
+          ],
+          "variantes": [
+            {
+              "B3": 200000
+            }
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "La parte de un total es: la parte entre el total.",
+            "La parte es B2 y el total está en B5. Al copiar hacia abajo, B5 no debe moverse.",
+            "=B2/$B$5"
+          ],
+          "explicacion": "Zaragoza hace el 55,5 % de las ventas. Has mezclado lo que ya sabías (el $ y los porcentajes) con el gráfico: ahora Carmen tiene la imagen y la cifra que la acompaña."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l2-e7",
+          "modo": "ordenar",
+          "enunciado": "Hazle a Carmen su gráfico para el comité. Ordena los pasos.",
+          "pasos": [
+            "Selecciona A1:B4: delegaciones y ventas con sus títulos, sin el total",
+            "Insertar › Gráficos › Insertar gráfico de columnas o de barras › Columna agrupada",
+            "Con el botón + del gráfico (Elementos de gráfico), marca Etiquetas de datos y cambia el título por «Ventas del 3T de 2026 por delegación»",
+            "Comprueba que las cifras del gráfico coinciden con las de la tabla"
+          ],
+          "explicacion": "Seleccionar, insertar, completar y comprobar. Un gráfico con título y cifras, revisado antes de enviarlo: listo para el comité de dirección."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m4l2-q1",
+          "modo": "test",
+          "pregunta": "Lucía quiere enseñar cómo se reparten las 58 personas de la plantilla entre **Zaragoza, Pamplona y Lleida**. ¿Qué gráfico encaja?",
+          "opciones": [
+            {
+              "texto": "Circular",
+              "correcta": true,
+              "porque": "Correcto. Son partes de un todo (la plantilla entera) y solo tres porciones: el caso perfecto para un circular."
+            },
+            {
+              "texto": "Líneas",
+              "correcta": false,
+              "porque": "No hay evolución en el tiempo: son tres sedes en un mismo momento."
+            },
+            {
+              "texto": "Circular en 3D",
+              "correcta": false,
+              "porque": "El tipo es bueno, pero el 3D deforma las porciones. Siempre plano."
+            }
+          ]
+        },
+        {
+          "id": "n1m4l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué tipo de gráfico usas para enseñar cómo **evolucionan** las ventas mes a mes? (una palabra)",
+          "aceptadas": [
+            "líneas",
+            "lineas",
+            "línea",
+            "linea",
+            "de líneas",
+            "de lineas",
+            "gráfico de líneas",
+            "grafico de lineas"
+          ],
+          "explicacion": "Líneas: el tiempo va en el eje de abajo y la línea muestra si sube o baja."
+        },
+        {
+          "id": "n1m4l2-q3",
+          "modo": "cinta",
+          "enunciado": "Si no sabes qué gráfico elegir, deja que Excel te proponga. Toca ese botón.",
+          "ruta": [
+            "Insertar",
+            "Gráficos",
+            "Gráficos recomendados"
+          ],
+          "explicacion": "Insertar › Gráficos › Gráficos recomendados. Te enseña opciones con tus datos; tú decides cuál cuenta mejor el mensaje."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Comparar / evolución en el tiempo / partes de un todo: ¿qué gráfico?",
+          "dorso": "Columnas / líneas / circular (solo con pocas porciones)."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no se usa un gráfico en 3D?",
+          "dorso": "Deforma los tamaños: lo de delante parece más grande de lo que es."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Crear un gráfico al momento con los datos seleccionados",
+          "dorso": "Alt+F1 (en la misma hoja) o F11 (en una hoja nueva)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué seleccionas antes de insertar un gráfico?",
+          "dorso": "Los nombres y las cifras con sus títulos, sin la fila del total."
+        }
+      ]
+    },
+    {
+      "id": "n1m4l3",
+      "titulo": "Imprimir, PDF y CSV sin sorpresas",
+      "minutos": 16,
+      "objetivo": "Preparar una hoja para imprimirla en una página de ancho, con los títulos repetidos y número de página, y saber cuándo enviar un PDF y cuándo un CSV y qué se pierde en cada caso.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Mañana llevo al banco el listado de cobros pendientes, impreso: que quepa de ancho en la hoja y que cada página lleve los títulos y su número. Después mándale el mismo listado a la gestoría en CSV, que lo cargan en su programa.",
+        "logro": "Ya sabes dejar un listado listo para imprimir o enviar en PDF sin páginas sueltas, y exportar los datos en CSV sabiendo qué se pierde."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En pantalla una hoja parece perfecta, y al imprimir sale en 14 páginas con una columna suelta en cada una. Para evitarlo hay una regla: **antes de imprimir, mira la vista previa**.\n\nPulsa [[Ctrl]]+[[P]] (o **Archivo › Imprimir**). A la derecha ves cómo quedará cada página, y abajo cuántas páginas salen: «1 de 14» es la señal de alarma. Aquí mismo lo arreglas antes de gastar papel."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo abre la **vista previa de impresión**?",
+          "aceptadas": [
+            "Ctrl+P",
+            "Control+P",
+            "Ctrl P",
+            "Ctrl + P"
+          ],
+          "explicacion": "Ctrl+P, de «imprimir». Úsalo siempre antes de imprimir o de exportar a PDF: lo que ves ahí es lo que sale."
+        },
+        {
+          "tipo": "texto",
+          "md": "Tres ajustes arreglan casi todo. Están en la pestaña **Disposición de página** (en algunas versiones se llama *Diseño de página*), grupo **Configurar página**, y también en la vista previa:\n\n- **Orientación**: *Vertical* u *Horizontal*. Si la lista es ancha, horizontal.\n- **Márgenes**: el blanco alrededor. *Estrechos* deja más sitio.\n- **Ajustar**: en la vista previa, cambia *Sin escalado* por **Ajustar todas las columnas en una página**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e2",
+          "modo": "cinta",
+          "enunciado": "El listado de Marta tiene 8 columnas y en vertical no cabe. Toca el botón para ponerlo en **horizontal**.",
+          "ruta": [
+            "Disposición de página",
+            "Configurar página",
+            "Orientación"
+          ],
+          "explicacion": "Disposición de página › Configurar página › Orientación › Horizontal. Con listas anchas es lo primero que se prueba."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e3",
+          "modo": "test",
+          "pregunta": "El listado de cobros tiene 200 filas. La vista previa dice «1 de 14»: siete páginas con casi todo y siete con solo la columna *Importe*. ¿Qué eliges en la vista previa?",
+          "opciones": [
+            {
+              "texto": "Ajustar todas las columnas en una página",
+              "correcta": true,
+              "porque": "Correcto. Todas las columnas caben de ancho y las filas siguen en las páginas que hagan falta, con letra legible."
+            },
+            {
+              "texto": "Ajustar hoja en una página",
+              "correcta": false,
+              "porque": "Metería las 200 filas en un solo folio: la letra saldría tan pequeña que no se podría leer."
+            },
+            {
+              "texto": "Bajar la letra de toda la hoja a tamaño 6",
+              "correcta": false,
+              "porque": "Estropea la hoja para trabajar en pantalla y no garantiza que quepa. El ajuste de impresión hace lo mismo sin tocar los datos."
+            }
+          ],
+          "explicacion": "Con listas largas: todas las columnas en una página de ancho, y que las filas ocupen las páginas que necesiten. Con una hoja pequeña (una factura), sí puedes usar «Ajustar hoja en una página»."
+        },
+        {
+          "tipo": "texto",
+          "md": "Dos ajustes más para documentos de varias páginas:\n\n- **Imprimir títulos**: repite la fila de títulos arriba de cada página. Sin esto, en la página 3 nadie sabe qué es cada columna. **Disposición de página › Configurar página › Imprimir títulos**, y en *Repetir filas en extremo superior* indicas la fila 1 (`$1:$1`).\n- **Área de impresión**: si solo quieres imprimir una parte, selecciónala y ve a **Área de impresión › Establecer área de impresión**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e4",
+          "modo": "cinta",
+          "enunciado": "Marta quiere que **cada página** del listado lleve arriba la fila de títulos (Factura, Cliente, Vencimiento…). Toca el botón donde se configura.",
+          "ruta": [
+            "Disposición de página",
+            "Configurar página",
+            "Imprimir títulos"
+          ],
+          "explicacion": "Disposición de página › Configurar página › Imprimir títulos. En «Repetir filas en extremo superior» pones $1:$1 y la fila 1 sale en todas las páginas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Si un documento tiene varias páginas, **numéralas**. Si se caen al suelo o falta una, se nota.\n\n**Insertar › Texto › Encabezado y pie de página**. Excel muestra la hoja tal como se imprimirá, con tres cajitas arriba (encabezado) y tres abajo (pie). Haz clic en la del centro de abajo y pulsa **Número de página**.\n\nEn el encabezado puedes poner el nombre del documento: «Cobros pendientes a 16/11/2026»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e5",
+          "modo": "formula",
+          "enunciado": "Antes de enviar el listado, apunta cuántas facturas lleva, para que la gestoría compruebe que le llega todo. En **B11** cuenta cuántas facturas hay en A2:A9.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Vencimiento",
+              "D1": "Importe",
+              "A2": "F-2026-1184",
+              "B2": "Instalaciones Ebro",
+              "C2": {
+                "fecha": "2026-11-20"
+              },
+              "D2": 4235.6,
+              "A3": "F-2026-1191",
+              "B3": "Clima Segre",
+              "C3": {
+                "fecha": "2026-11-25"
+              },
+              "D3": 1870.25,
+              "A4": "F-2026-1203",
+              "B4": "Reformas Arga",
+              "C4": {
+                "fecha": "2026-11-30"
+              },
+              "D4": 962.8,
+              "A5": "F-2026-1210",
+              "B5": "Electricidad Aranda",
+              "C5": {
+                "fecha": "2026-12-05"
+              },
+              "D5": 3410,
+              "A6": "F-2026-1218",
+              "B6": "Iluminación Baztán",
+              "C6": {
+                "fecha": "2026-12-10"
+              },
+              "D6": 2588.4,
+              "A7": "F-2026-1225",
+              "B7": "Montajes Ultzama",
+              "C7": {
+                "fecha": "2026-12-15"
+              },
+              "D7": 745.15,
+              "A8": "F-2026-1231",
+              "B8": "Instalaciones Noguera",
+              "C8": {
+                "fecha": "2026-12-20"
+              },
+              "D8": 5120,
+              "A9": "F-2026-1240",
+              "B9": "Electricidad Txantrea",
+              "C9": {
+                "fecha": "2026-12-28"
+              },
+              "D9": 1306.9,
+              "A11": "Nº de facturas",
+              "C11": "Total",
+              "D11": "=SUMA(D2:D9)"
+            },
+            "formatos": {
+              "C2:C9": "fecha",
+              "D2:D11": "eur"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 21,
+              "C": 12,
+              "D": 12
+            }
+          },
+          "objetivo": "B11",
+          "solucion": "=CONTARA(A2:A9)",
+          "alternativas": [
+            "=CONTAR(D2:D9)",
+            "=CONTARA(B2:B9)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR(A2:A9)",
+            "=CONTARA(A1:A9)"
+          ],
+          "variantes": [
+            {
+              "A5": null,
+              "B5": null,
+              "C5": null,
+              "D5": null
+            }
+          ],
+          "pistas": [
+            "Los números de factura llevan letras: no son números. ¿Qué función cuenta celdas con cualquier cosa escrita?",
+            "CONTARA cuenta las celdas que no están vacías. Sin la fila de títulos.",
+            "=CONTARA(A2:A9)"
+          ],
+          "explicacion": "8 facturas por 20.239,10 €. Con el número de registros y el total en el correo, la gestoría comprueba en un minuto que su programa ha cargado todo. Es un total de control, y lo usarás en cada envío de datos."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para enviar el archivo tienes dos formatos, y no sirven para lo mismo:\n\n- **PDF**: una foto de lo que se imprimiría. Se ve igual en cualquier ordenador y no se puede cambiar. Para clientes, bancos y jefes. **Archivo › Exportar › Crear documento PDF/XPS**.\n- **CSV**: solo los datos, en texto, para cargarlos en otro programa. **Archivo › Guardar como** y en el tipo eliges **CSV UTF-8 (delimitado por comas)**."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Lo que se pierde en un CSV",
+          "md": "Un CSV guarda **solo la hoja que tienes abierta** y **solo los valores**: donde había una fórmula queda su resultado. Se pierden las fórmulas, los colores, los bordes, los anchos de columna y el resto de hojas. Guarda siempre primero tu libro como *.xlsx* y haz el CSV como una copia aparte."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e6",
+          "modo": "test",
+          "pregunta": "Guardaste el listado como CSV y lo enviaste. Al día siguiente lo abres para seguir trabajando: el total ya no se recalcula al cambiar un importe y los euros salen sin color ni bordes. ¿Qué ha pasado?",
+          "opciones": [
+            {
+              "texto": "El CSV solo guarda valores: la fórmula del total se convirtió en un número fijo",
+              "correcta": true,
+              "porque": "Correcto. Es lo normal en un CSV. Por eso se trabaja en el .xlsx y el CSV es solo una copia para enviar."
+            },
+            {
+              "texto": "Excel se ha estropeado y hay que reinstalarlo",
+              "correcta": false,
+              "porque": "Excel funciona bien: el formato CSV no puede guardar fórmulas ni formato."
+            },
+            {
+              "texto": "La gestoría ha cambiado tu archivo",
+              "correcta": false,
+              "porque": "Tu copia está en tu ordenador. La pérdida ocurrió al guardar como CSV, no al enviarlo."
+            }
+          ],
+          "explicacion": "Regla de oficina: el trabajo vive en el .xlsx. El PDF es para que lo lean; el CSV, para que otro programa cargue los datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m4l3-e7",
+          "modo": "ordenar",
+          "enunciado": "Resuelve el encargo de Marta de principio a fin. Ordena los pasos.",
+          "pasos": [
+            "Guarda el libro (.xlsx) con Ctrl+G",
+            "Prepara la página: horizontal, fila 1 repetida con Imprimir títulos y número de página en el pie",
+            "Ctrl+P: elige «Ajustar todas las columnas en una página» y revisa cada página en la vista previa",
+            "Imprime el listado para el banco",
+            "Archivo › Guardar como › CSV UTF-8 (delimitado por comas), como copia aparte",
+            "Envía el CSV a la gestoría con el nº de facturas y el total"
+          ],
+          "explicacion": "Primero se protege el original, después se prepara la página, se comprueba en la vista previa y se imprime. El CSV va al final, como copia, y con sus totales de control. Encargo completo."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m4l3-q1",
+          "modo": "test",
+          "pregunta": "Tienes que mandar una factura a un cliente para que la vea y la pague. ¿En qué formato?",
+          "opciones": [
+            {
+              "texto": "PDF",
+              "correcta": true,
+              "porque": "Correcto. Se ve igual en cualquier ordenador o móvil y el cliente no puede cambiar las cifras sin querer."
+            },
+            {
+              "texto": "CSV",
+              "correcta": false,
+              "porque": "El CSV es para cargar datos en otro programa: perdería el formato y se vería como texto sin presentación."
+            },
+            {
+              "texto": "El .xlsx con tus fórmulas",
+              "correcta": false,
+              "porque": "El cliente podría cambiar celdas sin darse cuenta y vería tus fórmulas internas. Para leer, PDF."
+            }
+          ]
+        },
+        {
+          "id": "n1m4l3-q2",
+          "modo": "cinta",
+          "enunciado": "Quieres imprimir solo un trozo de la hoja. Ya lo has seleccionado. Toca el botón donde se fija lo que se imprime.",
+          "ruta": [
+            "Disposición de página",
+            "Configurar página",
+            "Área de impresión"
+          ],
+          "explicacion": "Disposición de página › Configurar página › Área de impresión › Establecer área de impresión."
+        },
+        {
+          "id": "n1m4l3-q3",
+          "modo": "test",
+          "pregunta": "Imprimes un listado de 5 páginas y desde la página 2 nadie sabe qué es cada columna. ¿Qué faltó?",
+          "opciones": [
+            {
+              "texto": "Imprimir títulos (repetir la fila 1 arriba de cada página)",
+              "correcta": true,
+              "porque": "Correcto. Así la fila de títulos sale en todas las páginas."
+            },
+            {
+              "texto": "Poner la hoja en horizontal",
+              "correcta": false,
+              "porque": "La orientación cambia el ancho que cabe, pero los títulos seguirían saliendo solo en la primera página."
+            },
+            {
+              "texto": "Inmovilizar la fila 1",
+              "correcta": false,
+              "porque": "Inmovilizar fija la fila en la pantalla, no en el papel. Para imprimir hace falta Imprimir títulos."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Vista previa de impresión",
+          "dorso": "Ctrl+P (Archivo › Imprimir)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Lista larga y ancha: ¿qué ajuste de impresión?",
+          "dorso": "Horizontal + «Ajustar todas las columnas en una página»."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde se repite la fila de títulos en cada página impresa?",
+          "dorso": "Disposición de página › Imprimir títulos › Repetir filas en extremo superior ($1:$1)."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué se pierde al guardar como CSV?",
+          "dorso": "Fórmulas (queda el resultado), formato y el resto de hojas. Solo guarda los valores de la hoja activa."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "nivel": "n4",
+  "titulo": "Examen del nivel 4",
+  "intro": "Quince encargos de oficina para demostrar que tu informe se hace solo, tus plantillas aguantan y sabes simular antes de decidir.",
+  "umbral": 0.8,
+  "preguntas": [
+    {
+      "id": "n4-x1",
+      "leccion": "n4m1l2",
+      "modo": "test",
+      "pregunta": "Cargas en Power Query el informe de envíos de un proveedor de Estados Unidos. En la columna de fecha, unas filas salen como **Error** y otras parecen buenas, pero en un informe de julio aparecen envíos «del 7 de diciembre». ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Cambiar el tipo de esa columna con Usar configuración regional: Fecha e Inglés (Estados Unidos), reemplazando el paso de tipo automático",
+          "correcta": true,
+          "porque": "Eso es: le dices a Power Query cómo escribe las fechas ese país. Se arreglan a la vez los Error y las fechas cambiadas, y el paso se repite solo cada mes."
+        },
+        {
+          "texto": "Quitar con un filtro las filas que dan Error",
+          "correcta": false,
+          "porque": "Perderías envíos de verdad, y las fechas que no dan Error seguirían cambiadas (07/12 leído como 7 de diciembre)."
+        },
+        {
+          "texto": "Corregir a mano las fechas en la Tabla cargada",
+          "correcta": false,
+          "porque": "Al actualizar, la Tabla se reescribe desde la consulta y tus correcciones desaparecen."
+        },
+        {
+          "texto": "Poner la columna como Texto para que no salgan Error",
+          "correcta": false,
+          "porque": "Los Error desaparecen, pero ya no son fechas: no podrías agrupar por meses ni filtrar por periodo."
+        }
+      ],
+      "explicacion": "Fechas de otro país = configuración regional de ese país en el paso de tipo. Los Error se ven; las fechas cambiadas que parecen buenas son las peligrosas."
+    },
+    {
+      "id": "n4-x2",
+      "leccion": "n4m1l3",
+      "modo": "test",
+      "pregunta": "Tu consulta combina todos los archivos de la carpeta `Cobros_ERP`. Andrés guarda ahí también un Excel con sus notas, `notas_andres.xlsx`. ¿Qué pasará la próxima vez que pulses Actualizar todo?",
+      "opciones": [
+        {
+          "texto": "Power Query intentará leerlo como otra exportación de cobros: dará errores o meterá filas que no son cobros",
+          "correcta": true,
+          "porque": "Eso es: la consulta de carpeta se trae todo lo que hay dentro. Esa carpeta es solo para las exportaciones; las notas, en otra."
+        },
+        {
+          "texto": "Nada: la consulta solo lee los archivos .csv",
+          "correcta": false,
+          "porque": "Lee todos los archivos de la carpeta y de sus subcarpetas, sean del tipo que sean, salvo que filtres la lista de archivos."
+        },
+        {
+          "texto": "Power Query borrará el archivo para que no moleste",
+          "correcta": false,
+          "porque": "Power Query nunca modifica ni borra los archivos que lee."
+        },
+        {
+          "texto": "Aparecerá como una consulta nueva, aparte",
+          "correcta": false,
+          "porque": "La consulta de carpeta no crea consultas nuevas: mete lo que encuentra en la misma tabla."
+        }
+      ],
+      "explicacion": "Carpeta limpia = informe fiable. Nombres fijos para las exportaciones y nada más dentro."
+    },
+    {
+      "id": "n4-x3",
+      "leccion": "n4m1l4",
+      "modo": "test",
+      "pregunta": "Andrés quiere la lista de productos del **maestro** que **no se han vendido** en todo el año, para sacarlos del catálogo. Tienes las consultas Productos (el maestro) y Ventas. ¿Cómo las combinas?",
+      "opciones": [
+        {
+          "texto": "Productos como primera tabla, Ventas como segunda, tipo Anti izquierda",
+          "correcta": true,
+          "porque": "Anti izquierda deja las filas de la primera tabla que no tienen pareja en la segunda: productos sin ninguna venta."
+        },
+        {
+          "texto": "Ventas como primera tabla, Productos como segunda, tipo Anti izquierda",
+          "correcta": false,
+          "porque": "Así salen las ventas de códigos que no están en el maestro: justo lo contrario de lo que pide Andrés."
+        },
+        {
+          "texto": "Productos como primera tabla, Ventas como segunda, tipo Interna",
+          "correcta": false,
+          "porque": "Interna deja solo los productos que sí tienen ventas, y además repite cada uno tantas veces como ventas tenga."
+        },
+        {
+          "texto": "Ventas como primera tabla, Productos como segunda, tipo Externa izquierda",
+          "correcta": false,
+          "porque": "Trae la familia a cada venta, pero un producto que no se ha vendido ni siquiera aparece."
+        }
+      ],
+      "explicacion": "En Anti izquierda importa el orden: salen las filas de la primera tabla que faltan en la segunda."
+    },
+    {
+      "id": "n4-x4",
+      "leccion": "n4m1l4",
+      "modo": "respuesta_corta",
+      "pregunta": "El presupuesto de ventas llega con una fila por delegación (Zaragoza, Pamplona y Lleida) y los 12 meses en columnas. En Power Query seleccionas la columna Delegación y anulas la dinamización de las demás columnas. ¿Cuántas filas tendrá el resultado?",
+      "aceptadas": [
+        "36",
+        "36 filas",
+        "treinta y seis",
+        "Treinta y seis"
+      ],
+      "explicacion": "3 delegaciones × 12 meses = **36 filas**, con tres columnas: la delegación, el mes y el importe. Así ya se puede filtrar por mes o hacer una dinámica."
+    },
+    {
+      "id": "n4-x5",
+      "leccion": "n4m2l1",
+      "modo": "formula",
+      "enunciado": "Comisiones de noviembre. En **D2** calcula la comisión del comercial. Su **neto** es ventas (B2) menos devoluciones (C2). Si el neto llega al objetivo de **G1**, cobra el porcentaje de **G2** sobre el neto; si no, el de **G3**. Escribe una sola fórmula que **ponga nombre al neto y lo calcule una sola vez**. Se copiará a D3:D5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Comercial",
+          "B1": "Ventas",
+          "C1": "Devoluciones",
+          "D1": "Comisión",
+          "F1": "Objetivo",
+          "G1": 30000,
+          "F2": "Comisión alta",
+          "G2": 0.05,
+          "F3": "Comisión base",
+          "G3": 0.02,
+          "A2": "Pilar Ibáñez",
+          "B2": 34250.8,
+          "C2": 1120,
+          "A3": "Sergio Lacasa",
+          "B3": 29800,
+          "C3": 450,
+          "A4": "Irene Goñi",
+          "B4": 30540,
+          "C4": 540,
+          "A5": "Marc Vidal",
+          "B5": 18420.5,
+          "C5": 0
+        },
+        "formatos": {
+          "B2:D5": "eur",
+          "G1": "eur",
+          "G2:G3": "pct"
+        },
+        "anchos": {
+          "A": 14,
+          "F": 14
+        }
+      },
+      "objetivo": "D2",
+      "copiar_a": [
+        "D3:D5"
+      ],
+      "solucion": "=LET(neto;B2-C2;SI(neto>=$G$1;neto*$G$2;neto*$G$3))",
+      "alternativas": [
+        "=LET(neto;B2-C2;neto*SI(neto>=$G$1;$G$2;$G$3))",
+        "=LET(neto;B2-C2;SI(neto<$G$1;neto*$G$3;neto*$G$2))",
+        "=LET(neto;B2-C2;SI(neto>=G$1;neto*G$2;neto*G$3))"
+      ],
+      "errores_tipicos": [
+        "=LET(neto;B2-C2;SI(neto>$G$1;neto*$G$2;neto*$G$3))",
+        "=LET(neto;B2-C2;SI(neto>=G1;neto*G2;neto*G3))",
+        "=LET(neto;B2;SI(neto>=$G$1;neto*$G$2;neto*$G$3))",
+        "=SI(B2-C2>=$G$1;(B2-C2)*$G$2;(B2-C2)*$G$3)"
+      ],
+      "variantes": [
+        {
+          "G1": 25000
+        },
+        {
+          "C3": 0,
+          "G2": 0.06
+        }
+      ],
+      "debe_usar": [
+        "LET"
+      ],
+      "formato_resultado": "eur",
+      "explicacion": "Pilar cobra 1.656,54 €; Irene, que llega justo a 30.000 €, también cobra el 5 %: por eso la prueba es «mayor o igual». El neto se calcula una vez y la fórmula se lee sola."
+    },
+    {
+      "id": "n4-x6",
+      "leccion": "n4m2l2",
+      "modo": "predice",
+      "enunciado": "Marta usa este código para que los saldos negativos salgan entre paréntesis. ¿Qué devuelve la fórmula con el saldo de B2?",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "B1": "Saldo",
+          "A2": "Electricidad Hnos. Lasheras",
+          "B2": -12500
+        },
+        "formatos": {
+          "B2": "eur"
+        },
+        "anchos": {
+          "A": 26
+        }
+      },
+      "celda": "C2",
+      "formula": "=TEXTO(B2;\"#.##0 €;(#.##0 €)\")",
+      "explicacion": "Es negativo, así que usa la segunda sección: entre paréntesis, sin signo menos, con punto de miles y sin decimales.",
+      "respuesta": "(12.500 €)"
+    },
+    {
+      "id": "n4-x7",
+      "leccion": "n4m2l3",
+      "modo": "test",
+      "pregunta": "Lucía va a mandar a la gestoría el libro de nóminas y quiere que **nadie sin la contraseña pueda ni abrirlo**. ¿Qué usa?",
+      "opciones": [
+        {
+          "texto": "Archivo › Información › Proteger libro › Cifrar con contraseña",
+          "correcta": true,
+          "porque": "Es la contraseña de apertura: sin ella, el archivo no se abre. Y la contraseña se manda por otro canal, no en el mismo correo."
+        },
+        {
+          "texto": "Revisar › Proteger hoja, con contraseña",
+          "correcta": false,
+          "porque": "Solo impide cambiar las celdas bloqueadas; cualquiera que abra el archivo puede leer las nóminas."
+        },
+        {
+          "texto": "Revisar › Proteger libro (la estructura)",
+          "correcta": false,
+          "porque": "Impide añadir, mover o eliminar hojas, pero el contenido se sigue leyendo."
+        },
+        {
+          "texto": "Ocultar las hojas de las nóminas",
+          "correcta": false,
+          "porque": "Una hoja oculta se vuelve a mostrar con dos clics. Ocultar no es proteger."
+        }
+      ],
+      "explicacion": "Proteger hoja o libro evita cambios sin querer; para que no se lea, cifrar con contraseña."
+    },
+    {
+      "id": "n4-x8",
+      "leccion": "n4m2l4",
+      "modo": "respuesta_corta",
+      "pregunta": "Vas a mandar a un cliente una copia de un libro cuyas fórmulas apuntan a archivos de tu ordenador. Él solo necesita las cifras, fijas. En la copia abres el panel de vínculos con otros libros. ¿Qué opción eliges?",
+      "aceptadas": [
+        "Romper vínculos",
+        "romper vínculos",
+        "Romper vinculos",
+        "romper vinculos",
+        "Romper vínculo",
+        "romper vínculo",
+        "Romper los vínculos",
+        "romper los vínculos"
+      ],
+      "explicacion": "**Romper vínculos** convierte las fórmulas en sus valores actuales: el cliente ve las cifras y no le salen avisos de archivos que no existen en su ordenador. Siempre en una copia."
+    },
+    {
+      "id": "n4-x9",
+      "leccion": "n4m3l1",
+      "modo": "formula",
+      "enunciado": "Andrés estudia vender un kit de iluminación LED para naves. Cada kit se vende al precio de **B2** y nos cuesta **B3**; la campaña de lanzamiento cuesta **B4**, y Carmen quiere que la línea deje el beneficio de **B5**. En **B7** calcula cuántos kits hay que vender para llegar justo a ese beneficio.",
+      "hoja": {
+        "celdas": {
+          "A1": "Kit LED para naves",
+          "B1": "Valor",
+          "A2": "Precio por kit",
+          "B2": 85,
+          "A3": "Coste por kit",
+          "B3": 61,
+          "A4": "Campaña de lanzamiento",
+          "B4": 9600,
+          "A5": "Beneficio que pide Carmen",
+          "B5": 6000,
+          "A7": "Kits necesarios"
+        },
+        "formatos": {
+          "B2:B5": "eur"
+        },
+        "anchos": {
+          "A": 26
+        }
+      },
+      "objetivo": "B7",
+      "solucion": "=(B4+B5)/(B2-B3)",
+      "alternativas": [
+        "=(B5+B4)/(B2-B3)",
+        "=SUMA(B4:B5)/(B2-B3)",
+        "=B4/(B2-B3)+B5/(B2-B3)"
+      ],
+      "errores_tipicos": [
+        "=B4/(B2-B3)",
+        "=(B4+B5)/B2-B3",
+        "=B4+B5/(B2-B3)",
+        "=650"
+      ],
+      "variantes": [
+        {
+          "B5": 9000
+        },
+        {
+          "B2": 90,
+          "B3": 60
+        }
+      ],
+      "explicacion": "(9.600 + 6.000) ÷ (85 − 61) = **650 kits**. Es el punto de equilibrio con un beneficio pedido encima: lo que dejas de cubrir con cada kit son los fijos más el beneficio. Buscar objetivo, con el beneficio en 6.000, daría lo mismo."
+    },
+    {
+      "id": "n4-x10",
+      "leccion": "n4m3l2",
+      "modo": "test",
+      "pregunta": "Carmen quiere ver en un solo cuadro el beneficio de la campaña para **8 precios** y **6 volúmenes de venta** distintos, calculado con el modelo de siempre. ¿Qué usas?",
+      "opciones": [
+        {
+          "texto": "Una tabla de datos de dos variables (o el mismo cuadro con referencias mixtas)",
+          "correcta": true,
+          "porque": "Prueba muchos valores de dos supuestos a la vez: las 48 combinaciones en un cuadro, todas desde el mismo modelo."
+        },
+        {
+          "texto": "El Administrador de escenarios, con un escenario por combinación",
+          "correcta": false,
+          "porque": "Tendrías que crear 48 escenarios a mano. Los escenarios son para pocos casos con nombre (pesimista, base, optimista)."
+        },
+        {
+          "texto": "Buscar objetivo",
+          "correcta": false,
+          "porque": "Despeja un solo dato para conseguir un resultado concreto; no calcula muchas combinaciones."
+        },
+        {
+          "texto": "Cambiar precio y unidades a mano y apuntar cada beneficio",
+          "correcta": false,
+          "porque": "Es lento, se cuelan errores y al final nadie sabe qué valores se quedaron en la hoja."
+        }
+      ],
+      "explicacion": "Pocos casos con nombre → escenarios. Muchos valores de una o dos entradas → tabla de datos."
+    },
+    {
+      "id": "n4-x11",
+      "leccion": "n4m3l3",
+      "modo": "formula",
+      "enunciado": "El banco ofrece a Electro Cierzo **48.000 €** (B1) para renovar las estanterías del almacén de Lleida, al **3,9 %** anual (B2) a **6 años** (B3), con cuota mensual. En **B4** calcula la cuota mensual, en positivo.",
+      "hoja": {
+        "celdas": {
+          "A1": "Importe del préstamo",
+          "B1": 48000,
+          "A2": "Interés anual",
+          "B2": 0.039,
+          "A3": "Años",
+          "B3": 6,
+          "A4": "Cuota mensual"
+        },
+        "formatos": {
+          "B1": "eur",
+          "B2": "pct1"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "B4",
+      "solucion": "=-PAGO(B2/12;B3*12;B1)",
+      "alternativas": [
+        "=PAGO(B2/12;B3*12;-B1)",
+        "=-PAGO(B2/12;12*B3;B1)"
+      ],
+      "errores_tipicos": [
+        "=-PAGO(B2;B3;B1)",
+        "=-PAGO(B2;B3*12;B1)",
+        "=-PAGO(B2/12;B3;B1)",
+        "=PAGO(B2/12;B3*12;B1)"
+      ],
+      "variantes": [
+        {
+          "B1": 30000
+        },
+        {
+          "B2": 0.05,
+          "B3": 5
+        }
+      ],
+      "debe_usar": [
+        "PAGO"
+      ],
+      "formato_resultado": "eur",
+      "explicacion": "748,78 € al mes durante 72 meses: interés anual entre 12, años por 12 y el signo menos para verla en positivo."
+    },
+    {
+      "id": "n4-x12",
+      "leccion": "n4m3l3",
+      "modo": "formula",
+      "enunciado": "Con el mismo préstamo, contabilidad pregunta qué parte de la **cuota número 12** (B5) **devuelve deuda**, es decir, cuánto es capital y no intereses. En **B6** calcúlalo en positivo.",
+      "hoja": {
+        "celdas": {
+          "A1": "Importe del préstamo",
+          "B1": 48000,
+          "A2": "Interés anual",
+          "B2": 0.039,
+          "A3": "Años",
+          "B3": 6,
+          "A4": "Cuota mensual",
+          "B4": "=-PAGO(B2/12;B3*12;B1)",
+          "A5": "Cuota número",
+          "B5": 12,
+          "A6": "Capital de esa cuota"
+        },
+        "formatos": {
+          "B1": "eur",
+          "B2": "pct1",
+          "B4": "eur"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "B6",
+      "solucion": "=-PAGOPRIN(B2/12;B5;B3*12;B1)",
+      "alternativas": [
+        "=PAGOPRIN(B2/12;B5;B3*12;-B1)",
+        "=-PAGOPRIN(B2/12;12;B3*12;B1)",
+        "=B4+PAGOINT(B2/12;B5;B3*12;B1)",
+        "=B4-(-PAGOINT(B2/12;B5;B3*12;B1))"
+      ],
+      "errores_tipicos": [
+        "=-PAGOINT(B2/12;B5;B3*12;B1)",
+        "=-PAGOPRIN(B2;B5;B3;B1)",
+        "=PAGOPRIN(B2/12;B5;B3*12;B1)",
+        "=B4"
+      ],
+      "variantes": [
+        {
+          "B1": 30000
+        },
+        {
+          "B2": 0.05
+        }
+      ],
+      "formato_resultado": "eur",
+      "explicacion": "De los 748,78 € de la cuota 12, 614,32 € devuelven deuda y 134,46 € son intereses. Capital + intereses = cuota, siempre."
+    },
+    {
+      "id": "n4-x13",
+      "leccion": "n4m3l4",
+      "modo": "test",
+      "pregunta": "Marta quiere comparar ante el consejo cómo **varían** los días que tardan en pagar los clientes de Zaragoza, Pamplona y Lleida: en qué delegación son más regulares y dónde hay casos extremos. ¿Qué gráfico eliges?",
+      "opciones": [
+        {
+          "texto": "Cajas y bigotes, una caja por delegación",
+          "correcta": true,
+          "porque": "La caja muestra la mitad central de los plazos, la raya la mediana y los puntos sueltos los casos extremos: las tres delegaciones se comparan de un vistazo."
+        },
+        {
+          "texto": "Un histograma con los días de cobro de todos los clientes",
+          "correcta": false,
+          "porque": "Enseña cómo se reparten los plazos, pero mezcla las tres delegaciones: no se pueden comparar."
+        },
+        {
+          "texto": "Una cascada",
+          "correcta": false,
+          "porque": "La cascada explica cómo se pasa de una cifra a otra sumando y restando partidas; aquí no hay partidas."
+        },
+        {
+          "texto": "Un embudo",
+          "correcta": false,
+          "porque": "El embudo sigue las etapas de un proceso que va perdiendo por el camino; no compara cómo varían tres grupos."
+        }
+      ],
+      "explicacion": "Comparar cómo varían varios grupos → cajas y bigotes. Y con un título que diga la conclusión."
+    },
+    {
+      "id": "n4-x14",
+      "leccion": "n4m4l1",
+      "modo": "ordenar",
+      "enunciado": "Lucía quiere una macro que escriba «Revisado» en la celda **de la derecha de donde esté**, en cualquier fila, y que no se pierda al cerrar el libro. Ordena los pasos.",
+      "pasos": [
+        "Antes de grabar, activar Usar referencias relativas",
+        "Pulsar Grabar macro y poner el nombre y el atajo",
+        "Pulsar la flecha derecha, escribir «Revisado» y pulsar Intro",
+        "Pulsar Detener grabación",
+        "Guardar como Libro de Excel habilitado para macros (.xlsm)"
+      ],
+      "explicacion": "Con referencias relativas, la macro apunta «una celda a la derecha» y no una dirección fija. Y sin .xlsm, la macro se pierde al guardar."
+    },
+    {
+      "id": "n4-x15",
+      "leccion": "n4m4l2",
+      "modo": "test",
+      "pregunta": "Cada viernes, Andrés deja el informe de stock listo para imprimir siempre igual: oculta las columnas de trabajo, fija el área de impresión y lo ajusta a una página de ancho. Los datos ya los trae Power Query. ¿Qué usarías para ese último paso?",
+      "opciones": [
+        {
+          "texto": "Una macro grabada, en un libro .xlsm y con un botón",
+          "correcta": true,
+          "porque": "Son clics de formato e impresión que se repiten igual cada semana: el terreno de las macros."
+        },
+        {
+          "texto": "Otra consulta de Power Query",
+          "correcta": false,
+          "porque": "Power Query trae y limpia datos; no oculta columnas de la hoja ni prepara la impresión."
+        },
+        {
+          "texto": "Una fórmula en cada columna",
+          "correcta": false,
+          "porque": "Las fórmulas calculan valores; no cambian el formato ni la configuración de la página."
+        },
+        {
+          "texto": "Una tabla de datos de Análisis de hipótesis",
+          "correcta": false,
+          "porque": "Sirve para probar muchos valores de un supuesto; no tiene nada que ver con imprimir."
+        }
+      ],
+      "explicacion": "Calcular → fórmula. Traer y limpiar datos → Power Query. Repetir clics → macro."
+    }
+  ]
+}

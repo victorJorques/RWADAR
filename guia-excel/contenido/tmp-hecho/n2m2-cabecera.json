@@ -1,0 +1,62 @@
+{
+ "id": "n2m2",
+ "nivel": "n2",
+ "titulo": "Decidir y contar con condiciones",
+ "intro": "En tu primer mes ya no te piden solo totales: te piden quién cobra el bonus, qué descuento lleva cada pedido o cuánto ha vendido cada comercial. Con Y, O, los tramos y las funciones .SI vas a responder a esas preguntas en segundos y con una hoja que se actualiza sola.",
+ "repaso_inicial": [
+  {
+   "id": "n2m2-r1",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber qué reponer. En **C2** escribe **Pedir** si el stock de B2 es **menor que 20** y **OK** en otro caso. Se copiará a C3:C5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Stock", "C1": "Reponer",
+     "A2": "Cable 2,5 mm² (rollo 100 m)", "B2": 12,
+     "A3": "Canaleta 40x25 (2 m)", "B3": 85,
+     "A4": "Bridas 200 mm (bolsa 100)", "B4": 20,
+     "A5": "Magnetotérmico 2P 16 A", "B5": 7
+    },
+    "anchos": {"A": 28}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C5"],
+   "solucion": "=SI(B2<20;\"Pedir\";\"OK\")",
+   "alternativas": ["=SI(B2>=20;\"OK\";\"Pedir\")"],
+   "errores_tipicos": ["=SI(B2<=20;\"Pedir\";\"OK\")", "=SI(B2>20;\"Pedir\";\"OK\")"],
+   "variantes": [{"B3": 3}],
+   "pistas": [
+    "Es una decisión con una sola condición: la función SI.",
+    "`=SI(condición; si se cumple; si no)`. La condición es B2<20.",
+    "`=SI(B2<20;\"Pedir\";\"OK\")`"
+   ],
+   "explicacion": "Bien recordado. Las bridas, con 20 justas, salen «OK» porque «menor que 20» no incluye el 20. En este módulo vas a llevar SI mucho más lejos."
+  },
+  {
+   "id": "n2m2-r2",
+   "modo": "test",
+   "pregunta": "En D2 tienes `=C2*$F$1` y la copias a D3. ¿Qué fórmula queda en D3?",
+   "opciones": [
+    {"texto": "=C3*$F$1", "correcta": true, "porque": "Correcto: C2 no tiene $ y baja una fila; $F$1 está fijada y no se mueve."},
+    {"texto": "=C3*$F$2", "correcta": false, "porque": "Los $ delante de la F y del 1 impiden que cambie la fila."},
+    {"texto": "=C2*$F$1", "correcta": false, "porque": "C2 no lleva $, así que sí cambia al copiar hacia abajo."}
+   ]
+  },
+  {
+   "id": "n2m2-r3",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve la fórmula en **B1**?",
+   "hoja": {"celdas": {"A1": "Irene", "A2": 450, "A3": "Pablo", "A4": 1200}},
+   "celda": "B1",
+   "formula": "=CONTAR(A1:A4)",
+   "explicacion": "CONTAR solo cuenta números: 450 y 1.200. Para contar también textos usarías CONTARA."
+  },
+  {
+   "id": "n2m2-r4",
+   "modo": "cinta",
+   "enunciado": "Quieres que en la columna «Delegación» solo se pueda elegir Zaragoza, Pamplona o Lleida de una lista desplegable. ¿Dónde está el botón?",
+   "ruta": ["Datos", "Herramientas de datos", "Validación de datos"],
+   "explicacion": "Datos › Herramientas de datos › Validación de datos, y en «Permitir» eliges Lista. Con nombres bien escritos, los CONTAR.SI de este módulo no fallarán por un «Zaragzoa»."
+  }
+ ],
+ "practica_excel": null
+}

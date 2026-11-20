@@ -1,0 +1,815 @@
+
+## Métodos abreviados de teclado más usados
+ - Para realizar esta acción => Pulse
+ - Cerrar un libro de trabajo. => Ctrl+W
+ - Abrir un libro de trabajo. => Ctrl+A
+ - Ir a la pestaña Inicio . => Alt+H
+ - Guardar un libro de trabajo. => Ctrl+S
+ - Copiar selección. => Ctrl+C
+ - Pegar selección => Ctrl+V
+ - Deshacer acción reciente. => Ctrl+Z
+ - Quitar el contenido de una celda. => Eliminar
+ - Elegir un color de relleno. => ALT+O, S, O
+ - Cortar selección. => Ctrl+X
+ - Vaya a la pestaña Insertar . => Alt+N
+ - Aplicar el formato de negrita. => Ctrl+Alt+N
+ - Centrar el contenido de la celda. => Alt+H, A, C
+ - Vaya a la pestaña Diseño de página . => Alt+P
+ - Vaya a la pestaña Datos . => Alt+A
+ - Ir a la pestaña Ver . => Alt+W
+ - Abrir el menú contextual. => Mayús+F10 o Tecla de menú de Windows
+ - Agregar bordes. => ALT+O, B, B
+ - Eliminar columna. => Alt+H, D, C
+ - Vaya a la pestaña Fórmula . => Alt+M
+ - Úselo para ocultar las filas seleccionadas. => Ctrl+9
+ - Úselo para ocultar las columnas seleccionadas. => Ctrl+0
+
+## Usar las teclas de acceso para las pestañas de la cinta de opciones
+ - Para hacer esto => Presione
+ - Ir al campo de búsqueda de la cinta de opciones y escribir un término de búsqueda para asi => Alt+Q, después escribir el término de búsqueda
+ - Abrir el menú Archivo . => Alt+A
+ - Úselo para abrir la pestaña Inicio , dar formato a texto y números y usar la herramienta B => ALT+H
+ - Úselo para abrir la pestaña Insertar e insertar tablas dinámicas, gráficos, complementos,  => ALT+N
+ - Úselo para abrir la pestaña Diseño de página y trabajar con temas, configuración de página => Alt+P
+ - Úselo para abrir la pestaña Fórmulas e insertar, rastrear y personalizar cálculos y funcio => Alt+M
+ - Úselo para abrir la pestaña Datos y conectarse a datos, ordenarlos, filtrarlos, analizarlo => Alt+A
+ - Úselo para abrir la pestaña Revisar y revisar la ortografía, agregar notas y comentarios y => Alt+R
+ - Úselo para abrir la pestaña Vista y obtener una vista previa de los saltos de página y los => Alt+N
+
+## Trabajar en la cinta de opciones con el teclado
+ - Para ello => Pulse
+ - Seleccionar la pestaña activa de la cinta de opciones y activar las teclas de acceso. => Alt o F10. Moverse a una pestaña diferente o usar las teclas de acceso
+ - Mueva el foco a los comandos de la cinta de opciones o del panel de complementos. => Tecla TAB o Mayús+TAB
+ - Desplazarse hacia abajo, arriba, a la izquierda o a la derecha, respectivamente, entre los => Teclas de dirección
+ - Muestra la información sobre herramientas del elemento de la cinta de opciones que está ac => Ctrl+Shift+F10
+ - Activar el botón seleccionado. => Barra espaciadora o Entrar
+ - Úselo para abrir la lista de un comando seleccionado. => Tecla de flecha abajo
+ - Úselo para abrir el menú de un botón seleccionado. => Alt+flecha abajo
+ - Cuando un menú o submenú está abierto, úselo para moverse al siguiente comando. => Tecla de flecha abajo
+ - Expandir o contraer la cinta de opciones. => Ctrl+F1
+ - Abrir un menú contextual. => Mayús+F10 O bien, en un Windows teclado, la tecla Menú de Windows (nor
+ - Úselo para moverse al submenú cuando un menú principal está abierto o seleccionado. => Tecla de flecha izquierda
+ - Moverse de un grupo de controles a otro. => Ctrl+Tecla de dirección izquierda o derecha
+
+## Métodos abreviados de teclado para navegar por celdas
+ - Para ello => Presionar
+ - Úselo para ir a la celda anterior de una hoja de cálculo o a la opción anterior de un cuad => Mayús+Tab
+ - Úselo para subir una celda en una hoja de cálculo. => Tecla de flecha arriba
+ - Úselo para bajar una celda en una hoja de cálculo. => Tecla de flecha abajo
+ - Úselo para moverse una celda a la izquierda en una hoja de cálculo. => Tecla de flecha izquierda
+ - Úselo para moverse una celda a la derecha en una hoja de cálculo. => Tecla de flecha derecha
+ - Úselo para moverse hasta el extremo del área de datos actual en una hoja de cálculo. => Ctrl+tecla de dirección
+ - Úselo para entrar en el modo final, ir a la siguiente celda no vacía de la misma columna o => Fin, tecla de dirección
+ - Úselo para ir a la última celda de una hoja de cálculo, a la última fila utilizada de la ú => Ctrl+Fin
+ - Úselo para extender la selección de celdas hasta la última celda utilizada de la hoja de c => Ctrl+Mayús+Fin
+ - Úselo para desplazarse hasta la celda de la esquina superior izquierda de la ventana cuand => Inicio+Bloq Despl
+ - Úselo para ir al principio de una hoja de cálculo. => Ctrl+Inicio
+ - Úselo para bajar una pantalla en una hoja de cálculo. => Página abajo
+ - Úselo para ir a la siguiente hoja de un libro. => Ctrl+Av Pág
+ - Úselo para moverse una pantalla a la derecha en una hoja de cálculo. => Alt+Av Pág
+ - Úselo para subir una pantalla en una hoja de cálculo. => Página arriba
+ - Úselo para moverse una pantalla a la izquierda en una hoja de cálculo. => Alt+Re Pág
+ - Úselo para ir a la hoja anterior de un libro. => Ctrl+Re Pág
+ - Úselo para mover una celda a la derecha en una hoja de cálculo. O, en una hoja de cálculo  => Tecla Tab
+ - Abra la lista de opciones de validación en una celda que tenga la opción de validación de  => Alt+flecha abajo
+ - Úselo para recorrer las formas flotantes, como cuadros de texto o imágenes. => Ctrl+Alt+5 y después la tecla TAB varias veces
+ - Salga de la navegación de forma flotante y vuelva a la navegación normal. => Esc
+ - Desplazar horizontalmente => Ctrl+Mayús y, a continuación, desplaza la rueda del ratón hacia arriba
+ - Acercar. => Ctrl+Alt+Signo igual (=)
+ - Alejar. => Ctrl+Alt+Signo menos (-)
+
+## Métodos abreviados de teclado para dar formato a celdas
+ - Para ello => Pulse
+ - Úselo para abrir el cuadro de diálogo Formato de celdas . => Ctrl+1
+ - Úselo para dar formato a fuentes en el cuadro de diálogo Formato de celdas . => Ctrl+Mayús+F
+ - Úselo para editar la celda activa y colocar el punto de inserción al final de su contenido => F2
+ - Insertar una nota. Abrir y editar un comentario de celda => Mayús+F2 Mayús+F2
+ - Insertar un nuevo comentario encadenado. Abrir y responder a un comentario encadenado. => Ctrl+Mayús+F2 Ctrl+Mayús+F2
+ - Abrir el cuadro de diálogo Insertar para insertar celdas en blanco. => Ctrl+Mayús+signo más (+)
+ - Abrir el cuadro de diálogo Eliminar para eliminar las celdas seleccionadas. => Ctrl+signo menos (-)
+ - Úselo para insertar la hora actual. => Ctrl+Mayús+dos puntos (:)
+ - Úselo para insertar la fecha actual. => Ctrl+punto y coma (;)
+ - Úselo para cambiar entre mostrar valores de celda o fórmulas de la hoja de cálculo. => Ctrl+acento grave (`)
+ - Copiar la fórmula de la celda situada sobre la celda activa en la celda o en la barra de f => Ctrl+apóstrofo (')
+ - Úselo para mover las celdas seleccionadas. => Ctrl+X
+ - Úselo para copiar las celdas seleccionadas. => Ctrl+C
+ - Úselo para pegar contenido en el punto de inserción, reemplazando cualquier selección. => Ctrl+V
+ - Abrir el cuadro de diálogo Pegado especial . => Ctrl+Alt+V
+ - Úselo para poner en cursiva el texto o quitar formato de cursiva. => Ctrl+K o Ctrl+3
+ - Úselo para poner texto en negrita o quitar formato de negrita. => Ctrl+N o Ctrl+2
+ - Úselo para subrayar texto o quitar el subrayado. => Ctrl+S o Ctrl+4
+ - Úselo para aplicar o quitar formato de tachado. => Ctrl+5
+ - Úselo para alternar entre ocultar objetos, mostrar objetos y mostrar marcadores de posició => Ctrl+6
+ - Úselo para aplicar un contorno a las celdas seleccionadas. => Ctrl+Mayús+Y comercial (&), s
+ - Úselo para quitar el contorno de las celdas seleccionadas. => Ctrl+Mayús+Carácter de subrayado (_)
+ - Úselo para mostrar u ocultar símbolos de esquema. => Ctrl+8
+ - Use el comando Rellenar hacia abajo para copiar el contenido y el formato de la celda situ => Ctrl+D
+ - Aplicar el formato de número General . => Ctrl+Mayús+virgulilla (~)
+ - Úselo para aplicar el formato Moneda con dos decimales (los números negativos aparecen ent => Ctrl+Mayús+signo de dólar ($)
+ - Úselo para aplicar el formato Porcentaje sin decimales. => Ctrl+Mayús+porcentaje (%)
+ - Úselo para aplicar el formato de número Científico con dos decimales. => Ctrl+Mayús+acento circunflejo (^)
+ - Úselo para aplicar el formato Fecha con el día, mes y año. => Ctrl+Mayús+signo de número (#)
+ - Úselo para aplicar el formato Hora con la hora y los minutos e indicar a.m. o p.m. => Ctrl+Mayús+arroba (@)
+ - Úselo para aplicar el formato Número con dos decimales, separador de miles y signo menos ( => Ctrl+Mayús+signo de exclamación (!)
+ - Abrir el cuadro de diálogo Insertar hipervínculo => Ctrl+Alt+K
+ - Úselo para revisar la ortografía de la hoja de cálculo activa o del rango seleccionado. => F7
+ - Úselo para mostrar las opciones de Análisis rápido para las celdas seleccionadas que conti => Ctrl+Q
+ - Úselo para mostrar el cuadro de diálogo Crear tabla . => Ctrl+L o Ctrl+T
+ - Abrir el cuadro de diálogo Estadísticas del libro . => Ctrl+Mayús+G
+
+## Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel
+ - Para realizar esta acción => Presionar
+ - Pegar todo el contenido y formato de celda. => A
+ - Pegar solo las fórmulas tal y como se escribieron en la barra de fórmulas. => F
+ - Pegue solo los valores (no las fórmulas). => V
+ - Pegue solo el formato copiado. => T
+ - Pegar solo los comentarios y notas adjuntos a la celda. => C
+ - Pegue solo la configuración de validación de datos de las celdas copiadas. => N
+ - Pegue todo el contenido y formato de las celdas copiadas. => H
+ - Pegue todo el contenido de la celda sin bordes. => X
+ - Pegue solo los anchos de columna de las celdas copiadas. => W
+ - Pegue solo las fórmulas y los formatos de número de las celdas copiadas. => R
+ - Pegue solo los valores (no las fórmulas) y los formatos de número de las celdas copiadas. => U
+
+## Métodos abreviados de teclado para realizar selecciones y acciones
+ - Para ello => Presionar
+ - Úselo para seleccionar toda la hoja de cálculo. => Ctrl+E o Ctrl+Mayús+barra espaciadora
+ - Úselo para seleccionar la hoja actual y la siguiente de un libro. => Ctrl+Mayús+Av Pág
+ - Úselo para seleccionar la hoja actual y la anterior de un libro. => Ctrl+Mayús+Re Pág
+ - Úselo para extender en una celda la selección de celdas. => Mayús+tecla de dirección
+ - Úselo para extender la selección de celdas a la última celda no vacía de la misma columna  => Ctrl+Mayús+tecla de dirección
+ - Úselo para activar el modo extendido y usar las teclas de dirección para extender una sele => F8
+ - Úselo para agregar una celda o un rango de celdas no adyacentes a una selección de celdas  => Mayús+F8
+ - Úselo para comenzar una nueva línea en la misma celda. => Alt+Entrar
+ - Úselo para rellenar el rango de celdas seleccionado con la entrada actual. => Ctrl+Entrar
+ - Úselo para completar una entrada de celda y seleccionar la celda de encima. => Mayús+Entrar
+ - Úselo para seleccionar una columna completa de una hoja de cálculo. => Ctrl+barra espaciadora
+ - Úselo para seleccionar una fila completa de una hoja de cálculo. => Mayús+barra espaciadora
+ - Úselo para seleccionar todos los objetos de una hoja de cálculo cuando se está seleccionad => Ctrl+Mayús+barra espaciadora
+ - Úselo para ampliar la selección de celdas hasta el comienzo de la hoja de cálculo. => Ctrl+Mayús+Inicio
+ - Seleccionar la región actual si la hoja de cálculo contiene datos. Presione una segunda ve => Ctrl+E o Ctrl+Mayús+barra espaciadora
+ - Úselo para seleccionar el área actual alrededor de la celda activa. => Ctrl+Mayús+asterisco (*)
+ - Úselo para seleccionar el primer comando del menú cuando un menú o un submenú están visibl => Inicio
+ - Úselo para repetir el último comando o acción, si es posible. => Ctrl+Y
+ - Deshacer la última acción. => Ctrl+Z
+ - Expanda filas o columnas agrupadas. => Mientras mantiene el puntero sobre los elementos contraídos, mantenga 
+ - Contraiga filas o columnas agrupadas. => Mientras mantiene el puntero sobre los elementos expandidos, mantenga 
+
+## Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas
+ - Para ello => Pulse
+ - Active o desactive la información sobre herramientas para comprobar fórmulas directamente  => Ctrl+Alt+P
+ - Úselo para editar la celda activa y colocar el punto de inserción al final de su contenido => F2
+ - Úselo para expandir o contraer la barra de fórmulas. => Ctrl+Mayús+U
+ - Úselo para cancelar una entrada de la celda o la barra de fórmulas. => Esc
+ - Úselo para completar una entrada de la barra de fórmulas y seleccionar la celda de abajo. => ENTRAR
+ - Úselo para mover el cursor al final del texto en la barra de fórmulas. => Ctrl+Fin
+ - Úselo para seleccionar todo el texto en la barra de fórmulas desde la posición del cursor  => Ctrl+Mayús+Fin
+ - Úselo para calcular todas las hojas de cálculo de todos los libros abiertos. => F9
+ - Úselo para calcular la hoja de cálculo activa. => Shift+F9
+ - Úselo para calcular todas las hojas de cálculo de todos los libros abiertos, independiente => Ctrl+Alt+F9
+ - Úselo para comprobar fórmulas dependientes y luego calcular todas las celdas de todos los  => Ctrl+Alt+Mayús+F9
+ - Úselo para mostrar el menú o mensaje de un botón de comprobación de errores . => Alt+Mayús+F10
+ - Úselo para mostrar el cuadro de diálogo Argumentos de función cuando el punto de inserción => Ctrl+E
+ - Úselo para insertar paréntesis y nombres de argumento cuando el punto de inserción está a  => Ctrl+Mayús+A
+ - Insertar la fórmula Suma => Alt+signo igual (=)
+ - Úselo para invocar Relleno rápido a fin de reconocer automáticamente los patrones de las c => Ctrl+Mayús+E
+ - Úselo para recorrer las distintas combinaciones de referencias absolutas y relativas en un => F4
+ - Úselo para insertar una función. => Mayús+F3
+ - Úselo para copiar el valor de la celda situada sobre la celda activa en la celda o en la b => Ctrl+Mayús+comillas rectas (")
+ - Úselo para crear un gráfico incrustado a partir de los datos del rango actual. => Alt+F1
+ - Úselo para crear un gráfico a partir de los datos del rango actual en una hoja de gráfico  => F11
+ - Úselo para definir un nombre para usar en las referencias. => Alt+U, I, D
+ - Úselo para pegar un nombre desde el cuadro de diálogo Pegar nombre (si se han definido nom => F3
+ - En un formulario de datos, sirve para ir al primer campo del registro siguiente. => Entrar
+ - Úselo para crear, ejecutar, editar o eliminar una macro. => Alt+F8
+ - Úselo para abrir el editor de Microsoft Visual Basic para Aplicaciones . => Alt+F11
+ - Abrir el Editor de consultas de Power Query => Alt+F12
+
+## Métodos abreviados de teclado para actualizar datos externos
+ - Para realizar esta acción => Presionar
+ - Detener una operación de actualización => Esc
+ - Actualizar datos en la hoja de cálculo actual => Ctrl+F5
+ - Actualizar los datos en el libro => Ctrl+Alt+F5
+
+## Métodos abreviados de teclado y accesibilidad en Power Pivot
+ - Para realizar esta acción => Presionar
+ - Se abre el menú contextual para la celda, columna o fila seleccionada. => Mayús+F10
+ - Se selecciona la tabla completa. => Ctrl+A
+ - Se copian los datos seleccionados. => Ctrl+C
+ - Se elimina la tabla. => Ctrl+D
+ - Se mueve la tabla. => Ctrl+M
+ - Se cambia el nombre de la tabla. => CTRL+D
+ - Guarde el archivo. => Ctrl+S
+ - Rehacer la última acción. => Ctrl+Y
+ - Deshacer la última acción. => Ctrl+Z
+ - Se selecciona la columna actual. => Ctrl+Barra espaciadora
+ - Se selecciona la fila actual. => Mayús+barra espaciadora
+ - Se seleccionan todas las celdas de la ubicación actual hasta la última celda de la columna => Mayús+Av Pág
+ - Se seleccionan todas las celdas de la ubicación actual hasta la primera celda de la column => Mayús+Re Pág
+ - Se seleccionan todas las celdas de la ubicación actual hasta la última celda de la fila. => Mayús+Fin
+ - Se seleccionan todas las celdas de la ubicación actual hasta la primera celda de la fila. => Mayús+Inicio
+ - Se mueve a la tabla anterior. => Ctrl+Re Pág
+ - Se mueve a la tabla siguiente. => Ctrl+Av Pág
+ - Se mueve a la primera celda de la esquina superior izquierda de la tabla seleccionada. => Ctrl+Inicio
+ - Desplazarse a la última celda de la esquina inferior derecha de la tabla seleccionada. => Ctrl+Fin
+ - Se mueve a la primera celda de la fila seleccionada. => Ctrl+Tecla de flecha izquierda
+ - Se mueve a la última celda de la fila seleccionada. => Ctrl+Tecla de flecha derecha
+ - Se mueve a la primera celda de la columna seleccionada. => Ctrl+Tecla de flecha arriba
+ - Se mueve a la última celda de la columna seleccionada. => Ctrl+Tecla de flecha abajo
+ - Se cierra un cuadro de diálogo o se cancela un proceso, como una operación de pegado. => CTRL+Esc
+ - Se abre el cuadro de diálogo del menú Autofiltro . => Alt+flecha abajo
+ - Se abre el cuadro de diálogo Ir a . => F5
+ - Recalcular todas las fórmulas de la ventana Power Pivot. Para obtener más información, vea => F9
+
+## Copilot en Excel
+ - Para realizar esta acción => Usar
+ - Envíe su indicación en el panel de tareas de Copilot en Excel. => Entrar
+ - Detener o cancelar la solicitud de Copilot en Excel. => Esc
+ - Acepta los cambios realizados por Copilot en Excel. => Ctrl+Entrar
+ - Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel. => Ctrl+Mayús+M
+ - Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel. => Alt+C
+ - Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel. => Ctrl+J
+ - Inicie el dictado de Copilot en Excel. => Alt+Mayús+H
+ - Abra el panel de tareas de Copilot en Excel. => Alt+C
+ - Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel. => F6
+
+## Teclas de función
+ - Tecla => Descripción
+ - F1 => Solo F1: muestra el panel de tareas Ayuda de Excel. Ctrl+F1: muestra u
+ - F2 => Solo F2: úselo para editar la celda activa y colocar el punto de inser
+ - F3 => Solo F3: muestra el cuadro de diálogo Pegar nombre . Solo está disponi
+ - F4 => Solo F4: repite el último comando o acción, si es posible. Cuando se s
+ - F5 => Solo F5: muestra el cuadro de diálogo Ir a . Ctrl+F5: restaura el tama
+ - F6 => Solo F6: cambia entre la hoja de cálculo, la cinta de opciones, el pan
+ - F7 => Solo F7: abre el cuadro de diálogo Ortografía para revisar la ortograf
+ - F8 => Solo F8: activa o desactiva el modo extendido. En el modo extendido ap
+ - F9 => Solo F9: calcula todas las hojas de cálculo de todos los libros abiert
+ - F10 => Solo F10: activa o desactiva las KeyTips. (hará lo mismo si presiona A
+ - F11 => Solo F11: crea un gráfico a partir de los datos del rango actual en un
+ - F12 => Solo F12: muestra el cuadro de diálogo Guardar como .
+
+## Otras teclas de método abreviado útiles
+ - Tecla => Descripción
+ - Alt => Muestra los KeyTips (nuevos métodos abreviados) en la cinta de opcione
+ - Teclas de dirección => Mueve el cursor una celda hacia arriba, hacia abajo, hacia la izquierd
+ - Retroceso => Elimina un carácter a la izquierda en la barra de fórmulas. También bo
+ - Eliminar => Quita el contenido (datos y fórmulas) de las celdas seleccionadas sin 
+ - Fin => Fin activa o desactiva el modo final . En el modo final puede presiona
+ - Entrar => Completa una entrada de celda desde la celda o la barra de fórmulas, y
+ - Esc => Cancela una entrada de la celda o la barra de fórmulas. Cierra un menú
+ - Inicio => Va al principio de una fila de una hoja de cálculo. Permite desplazars
+ - Página abajo => Baja una pantalla en una hoja de cálculo. Alt+Av Pág se desplaza una p
+ - Página arriba => Sube una pantalla en una hoja de cálculo. Alt+Re Pág se desplaza una p
+ - Mayús => Mantenga presionada la tecla Mayús mientras arrastra una fila, columna
+ - Barra espaciadora => En un cuadro de diálogo, ejecuta la acción del botón seleccionado, o b
+ - Tecla Tab => Mueve una celda a la derecha en una hoja de cálculo. Permite desplazar
+
+## Métodos abreviados de teclado más usados
+ - Para realizar esta acción => Pulse
+ - Pegar selección => Cmd+V o bien Ctrl+V
+ - Copiar selección. => Cmd+C o bien Ctrl+C
+ - Borrar selección. => Eliminar
+ - Guardar libro. => Cmd+S o bien Ctrl+S
+ - Deshacer una acción. => Cmd+Z o bien Ctrl+Z
+ - Rehacer acciones. => Cmd+Y o bien Ctrl+Y o bien Cmd+Mayús+Z
+ - Cortar selección. => Cmd+X o bien Ctrl+X o bien Mayús+
+ - Aplicar el formato de negrita. => Cmd+B o bien Ctrl+N
+ - Imprimir libro. => Cmd+P o bien Ctrl+P
+ - Abrir Visual Basic. => OPCIÓN+F11
+ - Rellenar celdas hacia abajo. => Cmd+D o bien Ctrl+D
+ - Rellenar celdas a la derecha. => Cmd+R o bien CTRL+D
+ - Insertar celdas. => Ctrl+Mayús+signo igual ( = )
+ - Eliminar celdas. => Cmd+Guion (-) o bien Ctrl+Guion (-)
+ - Calcular todos los libros abiertos => +Signo igual (=) o bien F9
+ - Cerrar la ventana. => Cmd+W o bien Ctrl+W
+ - Salga de Excel. => Cmd+Q
+ - Muestra el cuadro de diálogo Ir a la página => Ctrl+G o bien F5
+ - Mostrar el cuadro de diálogo Formato de celdas => Cmd+1 o bien Ctrl+1
+ - Mostrar el cuadro de diálogo Reemplazar . => Ctrl+H o bien Cmd+Mayús+H
+ - Usar Pegado especial => Cmd+Ctrl+V o bien Ctrl+Opción+V o bien Cmd+Opción+V
+ - Aplicar formato de subrayado => Cmd+U
+ - Aplicar el formato de cursiva. => Cmd+I o bien Ctrl+I
+ - Abrir un nuevo libro en blanco => Cmd+N o bien Ctrl+U
+ - Crear un libro a partir de una plantilla => Cmd+Mayús+P
+ - Mostrar el cuadro de diálogo Guardar como . => Cmd+Mayús+S o bien F12
+ - Mostrar la ventana Ayuda . => F1 o bien Cmd+Barra diagonal (/)
+ - Seleccionar todo. => Cmd+A o bien Cmd+Mayús+Barra espaciadora
+ - Agregar o quitar un filtro => Cmd+Mayús+F o bien Ctrl+Mayús+L
+ - Minimizar o maximizar las pestañas de la cinta => Cmd+Opción+R
+ - Mostrar el cuadro de diálogo Abrir . => Cmd+O o bien Ctrl+A
+ - Revisar la ortografía. => F7
+ - Abrir el diccionario de sinónimos => Mayús+F7
+ - Abrir el Generador de fórmulas => Mayús+F3
+ - Abrir el cuadro de diálogo Definir nombre => Cmd+F3
+ - Insertar o responder un comentario => Cmd+Retorno
+ - Abrir el cuadro de diálogo Crear nombres => Cmd+Mayús+F3
+ - Insertar una nueva hoja * => Mayús+F11
+ - Vista previa de impresión. => Cmd+P o bien Ctrl+P
+
+## Trabajar en ventanas y cuadros de diálogo
+ - Para hacer esto => Pulse
+ - Expandir o minimizar la cinta de opciones => Cmd+Opción+R
+ - Cambiar a la vista de semana completa => Cmd+Ctrl+F
+ - Cambiar a la siguiente aplicación => Cmd+Tab
+ - Cambiar a la aplicación anterior => Mayús+ +Tab
+ - Cerrar la ventana del libro activo => Cmd+W
+ - Realiza una captura de pantalla y guárdala en el escritorio. => Mayús+Cmd+3
+ - Minimizar la ventana activa => Ctrl+F9
+ - Maximizar o restaurar la ventana activa => Ctrl+F10 o bien Cmd+F10
+ - Ocultar Excel . => Cmd+H
+ - Ir al cuadro, la opción, el control o el comando siguiente. => Tecla TAB
+ - Ir al cuadro, la opción, el control o el comando anterior. => Mayús+TAB
+ - Salir de un cuadro de diálogo o cancelar una acción. => Esc
+ - Realice la acción asignada al botón predeterminado (el botón con el contorno en negrita). => Entrar
+ - Cancelar el comando y cerrar el cuadro de diálogo. => Esc
+
+## Moverse y desplazarse por una hoja o un libro
+ - Para ello => Presionar
+ - Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha => Teclas de dirección
+ - Desplazarse hasta el extremo de la región de datos actual. => Cmd+Tecla de dirección
+ - Ir al principio de la fila. => Inicio En un MacBook, presione FN + flecha izquierda
+ - Ir al principio de la hoja => Ctrl+Inicio En un MacBook, presione Ctrl+Fn+Tecla de dirección izquier
+ - Ir a la última celda en uso de la hoja => Ctrl+Fin En un MacBook, Ctrl+Fn+Tecla de dirección derecha
+ - Mover una pantalla hacia abajo => Página abajo En un MacBook, presione FN + FLECHA ABAJO
+ - Retroceder una pantalla => Página arriba En un MacBook, presione FN + FLECHA ARRIBA
+ - Desplazar una pantalla a la derecha => Opción+Re Pág En un MacBook, presione FN + OPCIÓN + FLECHA ABAJO
+ - Desplazar una palabra a la izquierda => Opción+Re Pág En un MacBook, presione FN + OPCIÓN + FLECHA ARRIBA
+ - Ir a la siguiente hoja del libro => Ctrl+Av Pág o bien Opción+tecla de dirección derecha
+ - Ir a la hoja anterior del libro => Ctrl+Av Pág o bien Opción+tecla de dirección izquierda
+ - Desplazarse para mostrar la celda activa => Ctrl+Suprimir
+ - Muestra el cuadro de diálogo Ir a la página => Ctrl+G
+ - Mostrar el cuadro de diálogo Buscar . => Ctrl+B o bien Mayús+F5
+ - Obtener acceso a la opción de búsqueda (cuando se está en una celda o cuando se selecciona => Cmd+F
+ - Desplazarse entre celdas desbloqueadas en una hoja protegida => Tecla TAB
+ - Desplazar horizontalmente => Mayús y, a continuación, desplázate hacia arriba la rueda del mouse ha
+
+## Escribir datos en una hoja
+ - Para ello => Presione
+ - Editar la celda seleccionada => F2
+ - Completar una entrada de celda y desplazarse hacia delante en la selección => Entrar
+ - Úselo para comenzar una nueva línea en la misma celda. => Opción+Retorno o Ctrl+Opción+Retorno
+ - Rellenar el rango de celdas seleccionado con el texto que escriba => Cmd+Retorno o bien Ctrl+Retorno
+ - Completar una entrada de celda y desplazarse hacia atrás en la selección => Mayús+Entrar
+ - Completar una entrada de celda y mover a la derecha en la selección => Tecla TAB
+ - Completar una entrada de celda y mover a la izquierda de la selección => Mayús+Tab
+ - Cancelar una entrada de celda => Esc
+ - Eliminar el carácter situado a la izquierda del punto de inserción o eliminar la selección => Suprimir
+ - Suprimir el carácter situado a la derecha del punto de inserción o eliminar la selección N => En un MacBook, Fn+Delete
+ - Suprimir texto al final de la línea Nota: Algunos teclados más pequeños no tienen esta tec => Ctrl+ En un MacBook, Ctrl+Fn+Supr
+ - Mover el cursor un carácter hacia arriba, hacia abajo, hacia la izquierda o hacia la derec => Teclas de dirección
+ - Desplazarse al principio de la línea. => Inicio En un MacBook, presione FN + flecha izquierda
+ - Insertar una nota. => Mayús+F2
+ - Abrir y editar un comentario de celda => Mayús+F2
+ - Insertar un nuevo comentario encadenado. => Cmd+Mayús+F2
+ - Abrir y responder a un comentario encadenado. => Cmd+Mayús+F2
+ - Rellenar hacia abajo. => Ctrl+J o bien Cmd+D
+ - Rellenar hacia la derecha => CTRL+D o bien Cmd+R
+ -  => Ctrl+E
+ - Definir un nombre => Ctrl+I
+
+## Trabajar en celdas o la barra de fórmulas
+ - Para ello => Presionar
+ - Active o desactive la información sobre herramientas para comprobar fórmulas directamente  => Ctrl+Opción+P
+ - Editar la celda seleccionada => F2
+ - Úselo para expandir o contraer la barra de fórmulas. => Ctrl+Mayús+U
+ - Editar la celda activa y luego borrarla, o borrar el carácter anterior en la celda activa  => Eliminar
+ - Completar una entrada de celda => Entrar
+ - Especificar una fórmula como fórmula de matriz => Mayús+Cmd+Retorno o bien Ctrl+Mayús+Retorno
+ - Úselo para cancelar una entrada de la celda o la barra de fórmulas. => Esc
+ - Mostrar el Generador de fórmulas después de escribir un nombre de función válido en una fó => Ctrl+A
+ - Insertar un hipervínculo. => Cmd+K o bien Ctrl+Alt+K
+ - Editar la celda activa y colocar el punto de inserción al final de la línea => Ctrl+S
+ - Abrir el Generador de fórmulas => Mayús+F3
+ - Calcular la hoja activa => Mayús+F9
+ - Mostrar el menú contextual. => Mayús+F10
+ - Iniciar una fórmula => = (signo igual)
+ - Activar o desactivar el estilo de referencia entre fórmula absolutas, relativas y mixtas => Cmd+T o bien F4
+ - Insertar la fórmula Autosuma => Mayús+Cmd+T
+ - Escribe la Fecha. => Ctrl+punto y coma (;)
+ - Introducir la hora => Cmd+Punto y coma (;)
+ - Úselo para copiar el valor de la celda situada sobre la celda activa en la celda o en la b => Ctrl+Mayús+marca de pulgada/Comilla doble recta (")
+ - Alternar entre mostrar valores de celda y mostrar fórmulas de celdas => Ctrl+acento grave (`)
+ - Copiar la fórmula de la celda situada sobre la celda activa en la celda o en la barra de f => Ctrl+apóstrofo (')
+ - Mostrar la lista Autocompletar => Opción+flecha abajo
+ - Definir un nombre => Ctrl+I
+ - Abra el panel Búsqueda inteligente => Ctrl+Opción+Cmd+L
+ - Úselo para calcular todas las hojas de cálculo de todos los libros abiertos. => Ctrl+Opción+F9
+ - Compruebe las fórmulas dependientes y, a continuación, calcule todas las celdas de todos l => Ctrl+Opción+Mayús+F9
+
+## Dar formato y editar datos
+ - Para ello => Presione
+ - Editar la celda seleccionada => F2
+ - Crear una tabla => Cmd+T o bien Ctrl+T
+ - Insertar un salto de línea en una celda => Cmd+Opción+Retorno o bien Ctrl+Opción+Retorno
+ - Insertar caracteres especiales como símbolos, incluidos emoji => Ctrl+Cmd+Barra espaciadora
+ - Aumentar el tamaño de la fuente. => ⌘+Mayús+Corchete angular de cierre (>)
+ - Reducir el tamaño de la fuente. => ⌘+Mayús+Corchete angular de apertura (<)
+ - Alinear centro => Cmd+E
+ - Alinear a la izquierda. => Cmd+L
+ - Mostrar el cuadro de diálogo Modificar el estilo de las celdas => Mayús+Cmd+L
+ - Mostrar el cuadro de diálogo Formato de celdas => Cmd+1
+ - Aplicar el formato de número general => Ctrl+Mayús+Tilde (~)
+ - Aplicar el formato de moneda con dos decimales (los números negativos aparecen en rojo ent => Ctrl+Mayús+signo de dólar ($)
+ - Aplicar el formato de porcentajes sin decimales => Ctrl+Mayús+porcentaje (%)
+ - Aplicar el formato de número exponencial con dos decimales => Ctrl+Mayús+Símbolo de intercalación (^)
+ - Aplicar el formato de fecha con el día, mes y año => Ctrl+Mayús+signo de número (#)
+ - Aplicar el formato de hora con la hora y los minutos e indicar a.m. o p.m. => Ctrl+Mayús+arroba (@)
+ - Aplicar el formato de número con dos decimales, separador de miles y signo menos (-) para  => Ctrl+Mayús+signo de exclamación (!)
+ - Quitar el contorno de las celdas seleccionadas => Cmd+Opción+Cero (0)
+ - Agregar un contorno a la derecha de la selección => Cmd+Opción+Tecla de dirección derecha
+ - Agregar un contorno a la izquierda de la selección => Cmd+Opción+Tecla de dirección izquierda
+ - Agregar un contorno a la parte superior de la selección => Cmd+Opción+Tecla de dirección arriba
+ - Agregar un contorno a la parte inferior de la selección => Cmd+Opción+Tecla de dirección abajo
+ - Quitar contornos => Cmd+Opción+Guion
+ - Aplicar o quitar el formato de negrita. => Cmd+B
+ - Aplicar o quitar el formato de cursiva => Cmd+I
+ - Aplicar o quitar el formato de subrayado. => Cmd+U
+ - Aplicar o quitar formato de tachado. => Mayús+Cmd+X
+ - Ocultar una columna => Cmd+Paréntesis derecho ()) o bien Ctrl+paréntesis derecho ())
+ - Mostrar una columna => Mayús+Cmd+paréntesis de cierre ()) o bien Ctrl+Mayús+paréntesis de cie
+ - Ocultar una fila => Cmd+paréntesis de apertura (() o bien Ctrl+paréntesis de apertura (()
+ - Mostrar una fila => Mayús+Cmd+paréntesis de apertura (() o bien Ctrl+Mayús+paréntesis de a
+ - Editar la celda activa => Ctrl+S
+ - Cancela una entrada de la celda o la barra de fórmulas => Esc
+ - Editar la celda activa y luego borrarla, o borrar el carácter anterior en la celda activa  => Eliminar
+ - Pegar texto en la celda activa => Cmd+V
+ - Completar una entrada de celda => Entrar
+ - Dar a las celdas seleccionadas la entrada actual de la celda => Cmd+Retorno o bien Ctrl+Retorno
+ - Especificar una fórmula como fórmula de matriz => Mayús+Cmd+Retorno o bien Ctrl+Mayús+Retorno
+ - Mostrar el Generador de fórmulas después de escribir un nombre de función válido en una fó => Ctrl+E
+
+## Seleccionar celdas, columnas o filas
+ - Para ello => Presionar
+ - Extender la selección una celda => Mayús+tecla de dirección
+ - Extender la selección a la última celda no vacía de la misma columna o fila que la celda a => Mayús+Cmd+Tecla de dirección
+ - Ampliar la selección hasta el principio de la fila => Mayús+Inicio En un MacBook, presione MAYÚS + FN + FLECHA IZQUIERDA
+ - Ampliar la selección hasta al principio de la hoja => Ctrl+Mayús+Inicio En un MacBook, presione Ctrl+Mayús+Fn+Tecla de direc
+ - Extender la selección a la última celda utilizada en la hoja (esquina inferior derecha) => Ctrl+Mayús+Fin En un MacBook, presione Ctrl+Mayús+Fn+Tecla de direcció
+ - Seleccionar la columna completa * => Ctrl+barra espaciadora
+ - Seleccionar toda la fila => Mayús+barra espaciadora
+ - Seleccione la región actual o toda la hoja. Presione más de una vez para expandir la selec => Cmd+A
+ - Seleccionar sólo las celdas visibles de la selección actual => Mayús+Cmd+Asterisco (*)
+ - Seleccionar sólo la celda activa cuando se seleccionan varias celdas => Mayús+Supr (no la tecla de eliminación directa que se encuentra en tec
+ - Ampliar la selección una pantalla hacia abajo => Mayús+Av Pág En un MacBook, presione MAYÚS + FN + FLECHA ABAJO
+ - Ampliar la selección una línea hacia arriba => Mayús+Re Pág En un MacBook, presione MAYÚS + FN + FLECHA ARRIBA
+ - Alternar entre ocultar objetos, mostrar objetos y y mostrar marcadores de posición de obje => Ctrl+6
+ - Activar la característica de extender una selección mediante las teclas de dirección. => F8
+ - Agregar otro rango de celdas a la selección => Mayús+F8
+ - Seleccionar la matriz actual, que es la matriz que está a la que pertenece la celda activa => Ctrl+Barra diagonal (/)
+ - Seleccione las celdas de una fila que no coincidan con el valor en la celda activa de esa  => Ctrl+Barra invertida (\)
+ - Seleccione solo las celdas que tienen referencia directa de las fórmulas de la selección => Ctrl+Mayús+Corchete de apertura ([)
+ - Seleccionar todas las celdas con referencia directa o indirecta de las fórmulas de la sele => Ctrl+Mayús+llave izquierda ({)
+ - Seleccionar solo las celdas con fórmulas que hagan referencia directa a la celda activa => Ctrl+corchete de cierre (])
+ - Seleccionar todas las celdas con fórmulas que hagan referencia directa o indirecta a la ce => Ctrl+Mayús+llave derecha ( })
+
+## Trabajar con una selección
+ - Para ello => Presionar
+ - Copie una selección. => Cmd+C o bien Ctrl+V
+ - Pegue una selección. => Cmd+V o bien Ctrl+V
+ - Cortar una selección. => Cmd+X o bien Ctrl+X
+ - Borrar una selección. => Eliminar
+ - Suprimir la selección => Ctrl+Guion
+ - Deshacer la última acción. => Cmd+Z
+ - Ocultar una columna => Cmd+Paréntesis derecho ()) o bien Ctrl+paréntesis derecho ())
+ - Mostrar una columna => Cmd+Mayús+paréntesis de cierre ()) o bien Ctrl+Mayús+paréntesis de cie
+ - Ocultar una fila => Cmd+paréntesis de apertura (() o bien Ctrl+paréntesis de apertura (()
+ - Mostrar una fila => Cmd+Mayús+paréntesis de apertura (() o bien Ctrl+Mayús+paréntesis de a
+ - Mover filas, columnas o celdas seleccionadas => Mantenga presionada la tecla Mayús mientras arrastra una fila, columna
+ - Mover de arriba a abajo dentro de la selección (hacia abajo) * * => Entrar
+ - Mover de abajo a arriba dentro de la selección (hacia arriba) * * => Mayús+Entrar
+ - Desplazarse de izquierda a derecha dentro de la selección, O bajar una celda si solo una c => Tecla TAB
+ - Desplazarse de derecha a izquierda dentro de la selección O subir una celda si solo una co => Mayús+Tab
+ - Moverse en el sentido de las agujas del reloj a la siguiente esquina de la selección => Ctrl+Punto (.)
+ - Grupo celdas seleccionadas => Cmd+Mayús+K
+ - Desagrupar las celdas seleccionadas => Cmd+Mayús+J
+
+## Usar gráficos
+ - Para ello => Presione
+ - Insertar una nueva hoja de gráfico * => F11
+ - Recorrer la selección de objeto de gráfico => Teclas de dirección
+
+## Ordenar, filtrar y usar informes de tabla dinámica
+ - Para ello => Presionar
+ - Verá el cuadro de diálogo Ordenar . => Cmd+Mayús+R
+ - Agregar o quitar un filtro => Cmd+Mayús+F o bien Ctrl+Mayús+L
+ - Mostrar la lista de filtros o la página de tabla dinámica para la celda seleccionada. => Opción+Flecha abajo
+
+## Datos del esquema
+ - Para ello => Presione
+ - Mostrar u ocultar símbolos de esquema => Ctrl+8
+ - Ocultar las filas seleccionadas => Ctrl+9
+ - Mostrar las filas seleccionadas => Ctrl+Mayús+paréntesis de apertura (()
+ - Ocultar las columnas seleccionadas => Ctrl+Cero (0)
+ - Mostrar las columnas seleccionadas => Ctrl+Mayús+paréntesis de cierre ())
+
+## Copilot en Excel
+ - Para realizar esta acción => Usar
+ - Envíe su indicación en el panel de tareas de Copilot en Excel. => Entrar
+ - Detener o cancelar la solicitud de Copilot en Excel. => Esc
+ - Acepta los cambios realizados por Copilot en Excel. => Cmd+Retorno
+ - Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel. => Cmd+Mayús+M
+ - Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel. => Opción+C
+ - Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel. => Cmd+J
+ - Inicie el dictado de Copilot en Excel. => Opción+Mayús+H
+ - Abra el panel de tareas de Copilot en Excel. => Cmd+Ctrl+I
+ - Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel. => Mayús+F6
+
+## Usar métodos abreviados de tecla de función
+ - Para realizar esta acción => Presione
+ - Mostrar la ventana Ayuda . => F1
+ - Editar la celda seleccionada => F2
+ - Inserte una nota o abra y edite una nota de celda. => Mayús+F2
+ - Inserte un comentario encadenado o ábralo y responda a un comentario encadenado. => Cmd+Mayús+F2
+ - Abrir el cuadro de diálogo Guardar . => OPCIÓN+F2
+ - Abrir el Generador de fórmulas => Mayús+F3
+ - Abrir el cuadro de diálogo Definir nombre => Cmd+F3
+ - Cierre una ventana o un cuadro de diálogo. => Cmd+F4
+ - Muestra el cuadro de diálogo Ir a la página => F5
+ - Mostrar el cuadro de diálogo Buscar . => Mayús+F5
+ - Ir al cuadro de diálogo Buscar hoja . => Ctrl+F5
+ - Cambie el foco entre la hoja de cálculo, la cinta de opciones, el panel de tareas y la bar => F6 o Mayús+F6
+ - Revisar la ortografía. => F7
+ - Abrir el diccionario de sinónimos => Mayús+F7 o bien Ctrl+Opción+Cmd+R
+ - Extender la selección => F8
+ - Agregar a la selección => Mayús+F8
+ - Mostrar el cuadro de diálogo Macros . => OPCIÓN+F8
+ - Calcular todos los libros abiertos => F9
+ - Calcular la hoja activa => Mayús+F9
+ - Minimizar la ventana activa => Ctrl+F9
+ - Muestra el menú contextual o el menú "clic con el botón derecho". => Mayús+F10
+ - Mostrar un menú emergente (en el menú del botón objeto), por ejemplo, haciendo clic en el  => Opción+Mayús+F10
+ - Maximizar o restaurar la ventana activa => Ctrl+F10 o bien Cmd+F10
+ - Insertar una nueva hoja de gráfico* => F11
+ - Insertar una nueva hoja* => Mayús+F11
+ - Inserte una Excel hoja de macros 4.0. => Cmd+F11
+ - Abrir Visual Basic . => OPCIÓN+F11
+ - Mostrar el cuadro de diálogo Guardar como . => F12
+ - Mostrar el cuadro de diálogo Abrir . => Cmd+F12
+ - Abrir el Editor de consultas de Power Query => OPCIÓN+F12
+
+## Dibujo
+ - Para => Presionar
+ - Activar y desactivar el modo Dibujo . => Cmd+Ctrl+Z
+
+## Navegar por la hoja de cálculo
+ - Para hacer esto => Pulse
+ - Desplazarse una celda a la derecha => Tecla TAB
+ - Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha => Teclas de dirección
+ - Ir a la siguiente hoja del libro => Opción+tecla de dirección derecha
+ - Ir a la hoja anterior del libro => Opción+tecla de dirección izquierda
+
+## Dar formato y editar datos
+ - Para ello => Pulse
+ - Aplicar borde de contorno => +Opción+0
+ - Quitar borde de contorno => +Opción+guion (-)
+ - Ocultar columna(s) => +0
+ - Ocultar fila(s) => Ctrl+9
+ - Mostrar columna(s) => Mayús+ +0 o Mayús+Ctrl+paréntesis de cierre ())
+ - Mostrar fila(s) => Mayús+Ctrl+9 o Mayús+Ctrl+paréntesis de apertura (()
+
+## Trabajar en celdas o la barra de fórmulas
+ - Para hacer esto => Pulse
+ - Ir a la celda de la derecha. => Tecla TAB
+ - Moverse por el texto de la celda => Teclas de dirección
+ - Copie una selección. => +C
+ - Pegue una selección. => +V
+ - Cortar una selección. => +X
+ - Deshacer una acción. => +Z
+ - Rehacer una acción => +Y o +Mayús+Z
+ - Aplicar formato en negrita al texto seleccionado. => +B
+ - Aplicar formato en cursiva al texto seleccionado. => +I
+ - Subrayar el texto seleccionado. => +U
+ - Seleccionar todo. => +A
+ - Seleccione un rango de celdas. => Mayús + tecla de flecha derecha o izquierda
+ - Insertar un salto de línea en una celda => +Opción+Retorno o Ctrl+Opción+Retorno
+ - Mover el cursor al principio de la línea actual dentro de una celda => +Tecla de flecha izquierda
+ - Mover el cursor al final de la línea actual dentro de una celda => +Tecla de dirección derecha
+ - Mover el cursor al principio de la línea actual. => +Tecla de dirección arriba
+ - Desplazar el cursor al final de la línea actual => +Tecla de dirección abajo
+ - Dentro de una celda que contiene un salto de línea, mover el cursor hacia arriba por un pá => Opción+tecla de flecha arriba
+ - Dentro de una celda que contiene un salto de línea, mover el cursor hacia abajo por un pár => Opción+flecha abajo
+ - Mover el cursor una palabra a la derecha. => Opción+tecla de dirección derecha
+ - Mover el cursor una palabra a la izquierda. => Opción+tecla de dirección izquierda
+ - Insertar una fórmula autosuma. => Mayús+ +T
+
+## Navegar por la hoja de cálculo
+ - Para hacer esto => Pulse
+ - Desplazarse una celda a la derecha => Tecla TAB
+ - Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha => Teclas de dirección arriba, abajo, izquierda o derecha
+
+## Trabajar con celdas
+ - Para hacer esto => Pulse
+ - Mover una hoja de cálculo => Ctrl+S
+ - Copie una selección. => Ctrl+C
+ - Pegue una selección. => Ctrl+V
+ - Cortar una selección. => Ctrl+X
+ - Deshacer una acción. => Ctrl+Z
+ - Rehacer una acción => Ctrl+Y
+ - Aplicar el formato de negrita. => Ctrl+N
+ - Aplicar el formato de cursiva. => Ctrl+I
+ - Aplicar formato de subrayado => Ctrl+S
+ - Seleccionar todo. => Ctrl+A
+ - Find. => Ctrl+B
+ - Insertar un salto de línea en una celda => Alt+Entrar
+
+## Métodos abreviados de teclado más usados
+ - Para realizar esta acción => Pulse
+ - Ir a una celda específica => Ctrl+G
+ - Moverse hacia abajo. => Av pág o flecha abajo
+ - Moverse hacia arriba. => Re pág o flecha arriba
+ - Imprimir un libro. => Ctrl+P
+ - Copiar selección. => Ctrl+C
+ - Pegar selección => Ctrl+V
+ - Cortar selección. => Ctrl+X
+ - Deshacer una acción. => Ctrl+Z
+ - Abrir libro => Ctrl+A
+ - Cerrar libro => Ctrl+W
+ - Abrir el cuadro de diálogo Guardar como . => Alt + F2
+ - Use Buscar . => Ctrl+B o Mayús+F3
+ - Aplicar el formato de negrita. => Ctrl+Alt+N
+ - Abrir el menú contextual. => Windows teclados: Mayús+F10 o tecla menú de Windows Otros teclados: Ma
+ - Saltar a Búsqueda . => Alt+Q
+ - Repetir búsqueda , hacia abajo => Mayús+F4
+ - Repetir búsqueda , hacia arriba => Ctrl+Mayús+F4
+ - Insertar un gráfico => Alt+F1
+ - Muestra las teclas de acceso (comandos de la cinta de opciones) en la cinta clásica al usa => Alt Period (.)
+
+## Ir a las teclas de acceso de la cinta de opciones
+ - Para realizar esta acción => Presione
+ - Vaya al campo de búsqueda de la cinta de opciones y escriba un término de búsqueda. => Alt+Tecla del logotipo de Windows, Q
+ - Abrir el menú Archivo . => Alt+Tecla del logotipo de Windows, F
+ - Abrir la pestaña Inicio y dar formato a texto y números o usar otras herramientas como Bus => Alt+Tecla del logotipo de Windows, H
+ - Abrir la pestaña Insertar e insertar una función, una tabla, un gráfico, un hipervínculo o => Alt+Tecla del logotipo de Windows, N
+ - Abrir la pestaña Datos y actualizar las conexiones o usar herramientas de datos. => Alt+Tecla del logotipo de Windows, A
+ - Abrir la pestaña Revisar y usar el Comprobador de accesibilidad o trabajar con comentarios => Alt+Tecla del logotipo de Windows, R
+ - Abrir la pestaña Vista para elegir una vista, inmovilizar filas o columnas en la hoja de c => Alt+Tecla del logotipo de Windows, W
+
+## Trabajar en las pestañas y los menús de la cinta
+ - Para hacer esto => Presione
+ - Seleccionar la pestaña activa de la cinta de opciones y activar las teclas de acceso. => Alt+Tecla del logotipo de Windows. Para ir a otra pestaña, use las tec
+ - Mover el foco a comandos en la cinta. => Entrar y, luego, TAB o Mayús+TAB
+ - Activar el botón seleccionado. => Barra espaciadora o Entrar
+ - Úselo para abrir la lista de un comando seleccionado. => Barra espaciadora o Entrar
+ - Abrir el menú de un botón seleccionado. => Alt+flecha abajo
+ - Cuando un menú o submenú está abierto, úselo para moverse al siguiente comando. => Esc
+
+## Métodos abreviados de teclado para la edición de celdas
+ - Para realizar esta acción => Pulse
+ - Insertar una fila encima de la actual => Alt+Windows logo key+H, I, R
+ - Insertar una columna a la izquierda de la columna actual => Alt+Windows logo key+H, I, C
+ - Cortar selección. => Ctrl+X
+ - Copiar selección. => Ctrl+C
+ - Pegar selección => Ctrl+V
+ - Deshacer una acción. => Ctrl+Z
+ - Rehacer una acción => Ctrl+Y
+ - Úselo para comenzar una nueva línea en la misma celda. => Alt+Entrar
+ - Insertar un hipervínculo. => Ctrl+Alt+K
+ - Insertar una tabla. => Ctrl+I
+ - Úselo para insertar una función. => Mayús+F3
+ - Aumentar el tamaño de la fuente. => Ctrl+Mayús+corchete angular de cierre (>)
+ - Reducir el tamaño de la fuente. => Ctrl+Mayús+corchete angular de apertura (<)
+ - Aplique un filtro. => Alt+Windows logo key+A, T
+ - Reaplicar un filtro => Ctrl+Alt+L
+ - Active y desactive Autofiltro . => Ctrl+Mayús+L
+
+## Métodos abreviados de teclado para la inserción de datos
+ - Para realizar esta acción => Pulse
+ - Completar la escritura de la celda y seleccionar la celda de abajo => Entrar
+ - Completar la escritura de la celda y seleccionar la celda de arriba => Mayús+Entrar
+ - Completar la escritura de la celda y seleccionar la siguiente celda en la fila => Tecla TAB
+ - Completar la escritura de la celda y seleccionar la celda anterior en la fila => Mayús+TAB
+ - Cancelar la entrada de celda => Esc
+
+## Métodos abreviados de teclado para la edición de datos en celdas
+ - Para realizar esta acción => Presione
+ - Editar la celda seleccionada => F2
+ - Recorrer todas las distintas combinaciones de referencias absolutas y relativas cuando se  => F4
+ - Editar la celda seleccionada => Eliminar
+ - Borrar la celda seleccionada y empezar a editar => Retroceso
+ - Ir al principio de línea de celda => Inicio
+ - Ir al final de línea de celda => Fin
+ - Seleccione a la derecha por un carácter. => Mayús+Flecha derecha
+ - Seleccionar hasta el principio de datos de celda => Mayús+Inicio
+ - Seleccione hasta el final de los datos de la celda. => Mayús+Fin
+ - Seleccione a la izquierda un carácter. => Mayús+Flecha izquierda
+ - Extender la selección a la última celda que no esté en blanco de la misma columna o fila q => Ctrl+Mayús+Flecha derecha o Ctrl+Mayús+Flecha izquierda
+ - Insertar la fecha actual. => Ctrl+punto y coma (;)
+ - Insertar la hora actual. => Ctrl+Mayús+Punto y coma (;)
+ - Copiar la fórmula de la celda superior => Ctrl+apóstrofo (')
+ - Copiar el valor de la celda superior => Ctrl+Mayús+Apóstrofo (')
+ - Inserta un argumento de fórmula. => Ctrl+Mayús+A
+
+## Métodos abreviados de teclado para dar formato a celdas
+ - Para ello => Presione
+ - Aplicar el formato de negrita. => Ctrl+N
+ - Aplicar el formato de cursiva. => Ctrl+I
+ - Aplicar formato de subrayado => Ctrl+S
+ - Pegar el formato => Mayús+Ctrl+V
+ - Aplica el contorno a las celdas seleccionadas. => Ctrl+Mayús+Y comercial (&)
+ - Aplicar el formato de número => Ctrl+Mayús+1
+ - Aplique el formato de hora => Ctrl+Mayús+2
+ - Aplique el formato de fecha => Ctrl+Mayús+3
+ - Aplique el formato de moneda => Ctrl+Mayús+4
+ - Aplicar el formato de porcentajes => Ctrl+Mayús+5
+ - Aplique el formato científico => Ctrl+Mayús+6
+ - Aplicar borde exterior => CTRL+Mayús+7
+ - Abrir el cuadro de diálogo Formato de número => Ctrl+1
+
+## Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo
+ - Para realizar esta acción => Pulse
+ - Moverse hacia arriba una celda. => Flecha arriba o Mayús+Entrar
+ - Moverse hacia abajo una celda. => Flecha abajo o Entrar
+ - Moverse hacia la derecha una celda. => La tecla TAB o la tecla de flecha derecha
+ - Ir al principio de la fila => Inicio
+ - Ir a la celda A1 => Ctrl+Inicio
+ - Ir a la última celda del rango utilizado => Ctrl+Fin
+ - Bajar una pantalla (28 filas) => Página abajo
+ - Subir una pantalla (28 filas) => Página arriba
+ - Desplazarse hasta el extremo de la región de datos actual. => Ctrl+Flecha derecha o Ctrl+flecha izquierda
+ - Mover entre la cinta de opciones y el contenido del libro => Ctrl+F6
+ - Desplazarse a una pestaña diferente de la cinta de opciones => Tecla TAB Presione Entrar para ir a esa pestaña de la cinta.
+ - Insertar una nueva hoja => Mayús+F11
+ - Pasar a la pestaña siguiente => Ctrl + Alt + AV Pág
+ - Cambie a la siguiente hoja (cuando se encuentra en Microsoft Teams o en un explorador dist => Ctrl+Av Pág
+ - Pasar a la pestaña anterior => Ctrl + Alt + Re Pág
+ - Cambiar a la hoja anterior (en Microsoft Teams o en un explorador distinto de Chrome). => Ctrl+Re Pág
+
+## Métodos abreviados de teclado para trabajar con objetos
+ - Para realizar esta acción => Pulse
+ - Abrir un menú o explorar más => Alt+flecha abajo
+ - Cierre el menú o explore en profundidad. => Alt+tecla de dirección arriba
+ - Seguir hipervínculo => Ctrl+Entrar
+ - Abrir una nota para editarla => Mayús+F2
+ - Abrir y responder a un comentario encadenado. => Ctrl+Mayús+F2
+ - Girar un objeto a la izquierda => Alt+Tecla de dirección izquierda
+ - Girar un objeto a la derecha => Alt+flecha derecha
+
+## Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos
+ - Para realizar esta acción => Pulse
+ - Seleccione un rango de celdas. => Mayús+Teclas de dirección
+ - Seleccionar una columna completa => Ctrl+barra espaciadora
+ - Seleccionar toda una fila => Mayús+barra espaciadora
+ - Extender la selección a la última celda que no esté en blanco de la misma columna o fila q => Ctrl+Mayús+Flecha derecha o Ctrl+Mayús+Flecha izquierda
+ - Agregue una celda o un rango de celdas no adyacentes a una selección de celdas => Mayús+F8
+ - Inserta celdas, filas o columnas. => Ctrl+Signo más (+)
+ - Eliminar celdas, filas o columnas => Ctrl+signo menos (-)
+ - Ocultar filas => Ctrl+9
+ - Mostrar filas => CTRL+Mayús+9
+ - Ocultar columnas => Ctrl+0
+ - Mostrar columnas => CTRL+Mayús+0
+
+## Métodos abreviados de teclado para moverse dentro de un rango seleccionado
+ - Para realizar esta acción => Pulse
+ - De arriba a abajo (o hacia delante en la selección) => Entrar
+ - Desplazarse de abajo a arriba (o volver a través de la selección). => Mayús+Entrar
+ - Mover hacia delante en una fila (o hacia abajo a través de una sola columna de selección) => Tecla TAB
+ - Mover hacia atrás en una fila (o hacia arriba a través de una selección de una sola column => Mayús+TAB
+ - Desplazarse a una celda activa. => Mayús+Retroceso
+ - Se desplaza a la celda activa y mantiene la selección. => Ctrl+Retroceso
+ - Girar la celda activa a través de las esquinas del rango seleccionado => Ctrl+Punto (.)
+ - Desplazarse al siguiente rango seleccionado => Ctrl + Alt + Flecha derecha
+ - Desplazarse al anterior rango seleccionado => Ctrl + Alt + Flecha izquierda
+ - Extender la selección a la última celda de la hoja => Ctrl+Mayús+Fin
+ - Extender la selección a la primera celda de la hoja => Ctrl+Mayús+Inicio
+
+## Métodos abreviados de teclado para el cálculo de datos
+ - Para realizar esta acción => Presionar
+ - Calcular libro (actualización) => F9
+ - Realice el cálculo completo. => Ctrl+Mayús+Alt+F9
+ - Actualizar datos externos => ALT+F5
+ - Actualizar todos los datos externos => Ctrl+Alt+F5
+ - Aplicar suma automática. => Alt+signo igual (=)
+ - Aplicar relleno rápido . => Ctrl+E
+
+## Copilot en Excel
+ - Para realizar esta acción => Usar
+ - Envíe su indicación en el panel de tareas de Copilot en Excel. => Entrar o Entrar
+ - Detener o cancelar la solicitud de Copilot en Excel. => Esc
+ - Acepta los cambios realizados por Copilot en Excel. => Ctrl+Entrar o Cmd+Retorno
+ - Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel. => Ctrl+Mayús+M o Cmd+Mayús+M
+ - Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel. => Alt+C u Opción+C
+ - Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel. => Ctrl+J o Cmd+J
+ - Inicie el dictado de Copilot en Excel. => Alt+Mayús+H u Opción+Mayús+H
+ - Abra el panel de tareas de Copilot en Excel. => Alt+C o Cmd+Ctrl+I
+ - Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel. => F6 o Mayús+F6
+
+## Menú de accesos directos de accesibilidad
+ - Para realizar esta acción => Presionar
+ - Cíclico entre regiones de punto de referencia. => CTRL + F6 o CTRL + Mayús + F6
+ - Moverse dentro de una región de punto de referencia. => Tecla TAB o Mayús+TAB
+ - Vaya al campo de búsqueda para ejecutar cualquier comando. => Alt+Q
+ - Mostrar u ocultar sugerencias clave o acceder a la cinta de opciones => Alt+Tecla del logotipo de Windows.
+ - Editar la celda seleccionada => F2
+ - Ir a una celda específica => Ctrl+G
+ - Desplazarse a otra hoja de cálculo del libro. => CTRL + Alt + Retroceder Página o CTRL + Alt + Avanzar página
+ - Abrir el menú contextual. => Mayús+F10 o tecla de menú de Windows
+ - Leer encabezado de fila => CTRL + Alt + Mayús + T
+ - Leer fila hasta la celda activa => CTRL + Alt + Mayús + Inicio
+ - Leer fila a partir de la celda activa => CTRL + Alt + Mayús + Fin
+ - Leer encabezado de columna => CTRL + Alt + Mayús + H
+ - Leer columna hasta la celda activa => CTRL + Alt + Mayús + Retroceder Página
+ - Leer columna a partir de la celda activa => Ctrl+Alt+Mayús+Re Pág
+ - Abra una lista de opciones de movimiento dentro de un cuadro de diálogo. => Ctrl+Alt+Barra espaciadora
+
+## Controlar métodos abreviados de teclado en Microsoft Excel en la Web reemplazando los métodos abreviados de teclado del explorador
+ -  => En Excel para la Web, seleccione Métodos abreviados de teclado de la A

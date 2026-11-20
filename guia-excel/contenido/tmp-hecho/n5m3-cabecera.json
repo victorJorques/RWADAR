@@ -1,0 +1,208 @@
+{
+ "id": "n5m3",
+ "nivel": "n5",
+ "titulo": "El cuadro de mando",
+ "intro": "Un cuadro de mando es la página que dirección mira cada mes para decidir: pocas cifras, bien definidas y siempre comparadas. Aquí aprendes a elegirlas, a montarlas para que se actualicen solas, a presentarlas para que se entiendan en diez segundos y a construir un presupuesto que avisa cuando algo no cuadra.",
+ "repaso_inicial": [
+  {
+   "id": "n5m3-r1",
+   "modo": "formula",
+   "enunciado": "En **F5** suma las ventas de la zona que pone **F2** entre las fechas de **F3** y **F4** (las dos incluidas). Ahora, Pamplona en octubre: debe salir **4.155,85 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Zona",
+     "C1": "Importe",
+     "A2": {
+      "fecha": "2026-10-02"
+     },
+     "B2": "Pamplona",
+     "C2": 1250,
+     "A3": {
+      "fecha": "2026-10-08"
+     },
+     "B3": "Zaragoza",
+     "C3": 2310.4,
+     "A4": {
+      "fecha": "2026-10-15"
+     },
+     "B4": "Pamplona",
+     "C4": 860.75,
+     "A5": {
+      "fecha": "2026-10-22"
+     },
+     "B5": "Lleida",
+     "C5": 1475,
+     "A6": {
+      "fecha": "2026-10-29"
+     },
+     "B6": "Pamplona",
+     "C6": 2045.1,
+     "A7": {
+      "fecha": "2026-11-03"
+     },
+     "B7": "Pamplona",
+     "C7": 990,
+     "E1": "Filtro",
+     "F1": "Valor",
+     "E2": "Zona",
+     "F2": "Pamplona",
+     "E3": "Desde",
+     "F3": {
+      "fecha": "2026-10-01"
+     },
+     "E4": "Hasta",
+     "F4": {
+      "fecha": "2026-10-31"
+     },
+     "E5": "Ventas"
+    },
+    "formatos": {
+     "A2:A7": "fecha",
+     "C2:C7": "eur",
+     "F3:F4": "fecha",
+     "F5": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 11,
+     "D": 2,
+     "E": 8,
+     "F": 12
+    },
+    "columnas": 6,
+    "filas": 7
+   },
+   "objetivo": "F5",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4;B2:B7;F2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B7;F2;C2:C7)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Pamplona\";A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3)"
+   ],
+   "variantes": [
+    {
+     "F2": "Lleida"
+    },
+    {
+     "F4": {
+      "fecha": "2026-11-30"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Son tres condiciones: la zona y dos sobre la fecha (desde y hasta).",
+    "Primero el rango que se suma (C2:C7); después las parejas rango-criterio: B2:B7 con F2, A2:A7 con \">=\"&F3 y A2:A7 con \"<=\"&F4.",
+    "`=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)`"
+   ],
+   "explicacion": "Es la fórmula que hay detrás de casi cualquier indicador mensual: suma con condiciones que leen celdas, para que cambiar la zona o el mes no obligue a tocar la fórmula."
+  },
+  {
+   "id": "n5m3-r2",
+   "modo": "test",
+   "pregunta": "En un modelo de datos de ventas, ¿cuál es la tabla de **hechos**?",
+   "opciones": [
+    {
+     "texto": "Ventas: una fila por línea de factura, con fecha, cliente, producto e importe",
+     "correcta": true,
+     "porque": "Sí: registra lo que pasa, una fila por operación, y es la que más crece."
+    },
+    {
+     "texto": "Clientes: una fila por cliente, con su provincia y su tipo",
+     "correcta": false,
+     "porque": "Es una dimensión: describe quién compra, y cada cliente aparece una sola vez."
+    },
+    {
+     "texto": "Calendario: una fila por día, con su mes y su trimestre",
+     "correcta": false,
+     "porque": "Es una dimensión: sirve para agrupar los hechos por fechas."
+    }
+   ]
+  },
+  {
+   "id": "n5m3-r3",
+   "modo": "predice",
+   "enunciado": "¿Qué número devuelve esta fórmula con LET?",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Importe",
+     "A2": "Ventas",
+     "B2": 15600,
+     "A3": "Objetivo",
+     "B3": 15000
+    },
+    "formatos": {
+     "B2:B3": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "B": 12
+    }
+   },
+   "celda": "B5",
+   "formula": "=LET(ventas;B2;objetivo;B3;ventas/objetivo-1)",
+   "explicacion": "LET pone nombre a B2 y B3: 15.600 ÷ 15.000 − 1 = 0,04, un 4 % por encima del objetivo."
+  },
+  {
+   "id": "n5m3-r4",
+   "modo": "cinta",
+   "enunciado": "Llegan datos nuevos. ¿Qué botón actualiza de una vez todas las consultas y tablas dinámicas del libro?",
+   "ruta": [
+    "Datos",
+    "Consultas y conexiones",
+    "Actualizar todo"
+   ],
+   "explicacion": "Datos › Consultas y conexiones › Actualizar todo ([[Ctrl]]+[[Alt]]+[[F5]]). Será el paso de cada mes en tu cuadro de mando."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "**Práctica del módulo: el cuadro de mando del comité.** Carmen quiere su página de cada mes. Descarga **n5-cuadro-de-mando.xlsx** (805 líneas de factura de enero a octubre de 2026 y los objetivos por mes y zona) y sigue la hoja «Instrucciones»:\n\n1. Comprueba el total de control: la columna Importe suma **158.685,54 €**.\n2. Crea las hojas Léeme, Cuadro, Parámetros y Cálculos. En Parámetros, celda B2, el mes del informe: 01/10/2026.\n3. En Cálculos, los cuatro indicadores de octubre con fórmulas que lean ese mes: ventas (sin IVA), cumplimiento del objetivo, ticket medio (ventas ÷ facturas **distintas**) y clientes activos.\n4. Una tabla de enero a octubre con ventas, objetivo, cumplimiento y «¿Alcanzado?».\n5. Dos tablas dinámicas (productos ordenados de mayor a menor y ventas por familia) con **una** segmentación de Zona conectada a las dos.\n6. El Cuadro: título con la conclusión hecho con fórmula, cuatro tarjetas, gráfico de ventas frente a objetivo por mes, top 5 y segmentación. Texto alternativo en el gráfico y todo en una página horizontal.\n7. Una celda de comprobación que diga «OK» o «Revisar».\n\nIntenta hacerlo en menos de 45 minutos. Al terminar, deja la segmentación sin filtro.",
+  "archivo": "n5-cuadro-de-mando.xlsx",
+  "controles": [
+   {
+    "pregunta": "Ventas de octubre de 2026, sin IVA (€)",
+    "respuesta": 14924.49,
+    "tolerancia": 0.01,
+    "pista": "Suma de la columna Importe (no «Importe con IVA») con fecha entre el 01/10 y el 31/10: SUMAR.SI.CONJUNTO con \">=\"&Parámetros!B2 y \"<=\"&FIN.MES(Parámetros!B2;0). Si te sale 18.058,65 €, has sumado con IVA."
+   },
+   {
+    "pregunta": "Cumplimiento del objetivo de octubre, en % con dos decimales (escribe solo el número, por ejemplo 98,76)",
+    "respuesta": 102.93,
+    "tolerancia": 0.01,
+    "pista": "Ventas de octubre ÷ la suma de los objetivos de octubre de las tres zonas (SUMAR.SI.CONJUNTO sobre la Tabla Objetivos con el mes de Parámetros). Si sale muy por encima o por debajo, mira si has sumado solo una zona."
+   },
+   {
+    "pregunta": "Ticket medio de octubre (€)",
+    "respuesta": 324.45,
+    "tolerancia": 0.01,
+    "pista": "Ventas de octubre ÷ número de facturas distintas: CONTARA(UNICOS(FILTRAR(columna Factura; fechas de octubre))). Si te sale 191,34 €, has dividido entre las 78 líneas en lugar de entre las 46 facturas."
+   },
+   {
+    "pregunta": "Clientes activos en octubre (clientes distintos)",
+    "respuesta": 31,
+    "tolerancia": 0,
+    "pista": "Como las facturas distintas, pero con la columna Cliente. Si te sale 78, has contado líneas: falta UNICOS."
+   },
+   {
+    "pregunta": "¿En cuántos meses, de enero a octubre, se alcanzó el objetivo de la empresa?",
+    "respuesta": 4,
+    "tolerancia": 0,
+    "pista": "En la tabla mes a mes, «¿Alcanzado?» = SI(Ventas>=Objetivo;\"Sí\";\"No\"), y cuenta los «Sí» con CONTAR.SI. El objetivo de cada mes es la suma de las tres zonas."
+   },
+   {
+    "pregunta": "Con la segmentación de Zona en «Pamplona», importe del producto que encabeza el top 5 (€)",
+    "respuesta": 6658.1,
+    "tolerancia": 0.01,
+    "pista": "En la dinámica de productos (Producto en Filas, Importe en Valores, ordenada de mayor a menor), marca Pamplona en la segmentación y lee la primera fila. Si no cambia nada al marcarla, la segmentación no está conectada: Segmentación › Conexiones de informe."
+   }
+  ],
+  "solucion_md": "### Cómo se hace\n\n1. **Total de control**: selecciona la columna Importe de la Tabla Ventas y lee la Suma en la barra de estado: 158.685,54 € (805 líneas).\n2. **Parámetros**: en B2, 01/10/2026, con relleno amarillo claro (celda de entrada).\n3. **Indicadores en Cálculos** (con B2 = `=Parámetros!B2` y B3 = `=FIN.MES(B2;0)`):\n   - Ventas: `=SUMAR.SI.CONJUNTO(Ventas[Importe];Ventas[Fecha];\">=\"&B2;Ventas[Fecha];\"<=\"&B3)` → **14.924,49 €**.\n   - Objetivo: `=SUMAR.SI.CONJUNTO(Objetivos[Objetivo];Objetivos[Mes];B2)` → 14.500 €. Cumplimiento: ventas ÷ objetivo → **102,93 %**.\n   - Facturas distintas: `=CONTARA(UNICOS(FILTRAR(Ventas[Factura];(Ventas[Fecha]>=B2)*(Ventas[Fecha]<=B3))))` → 46. Ticket medio: ventas ÷ 46 → **324,45 €**.\n   - Clientes activos: lo mismo con Ventas[Cliente] → **31**.\n4. **Mes a mes**: en A12:A21 el día 1 de cada mes; ventas con SUMAR.SI.CONJUNTO y FIN.MES, objetivo con SUMAR.SI.CONJUNTO, cumplimiento y `=SI(B12>=C12;\"Sí\";\"No\")`. `=CONTAR.SI(E12:E21;\"Sí\")` → **4** meses (enero, febrero, septiembre y octubre).\n5. **Dinámicas y segmentación**: Insertar › Tabla dinámica desde la Tabla Ventas: Producto a Filas, Importe a Valores, clic derecho › Ordenar › Ordenar de mayor a menor; otra con Familia a Filas. Analizar tabla dinámica › Insertar segmentación de datos › Zona; Segmentación › Conexiones de informe › marca las dos. Con Pamplona, el primero es la manguera 3G2,5 con **6.658,10 €**.\n6. **Cuadro**: título `=\"Ventas de \"&TEXTO(Parámetros!B2;\"mmmm\")&\": \"&SI(Cálculos!B6>=1;\"se alcanza\";\"no se alcanza\")&\" el objetivo\"`; tarjetas con `=Cálculos!B4`, etc.; gráfico combinado (Insertar › Insertar gráfico combinado: ventas en columnas, objetivo en línea) sobre la tabla mes a mes; clic derecho › Ver texto alternativo; Disposición de página › Ajustar área de impresión › Ancho 1 página y Alto 1 página, horizontal.\n7. **Comprobación**: `=SI(ABS(SUMA(B12:B21)-SUMA(Ventas[Importe]))<0,01;\"OK\";\"Revisar\")`.\n\nEn **n5-cuadro-de-mando-solucion.xlsx** tienes el libro hecho (Léeme, Parámetros, Cálculos con comprobaciones, Cuadro de una página con el gráfico y su texto alternativo) y en «Cómo se hace» los pasos de las dinámicas y la segmentación, que hay que crear a mano.",
+  "archivo_solucion": "n5-cuadro-de-mando-solucion.xlsx"
+ }
+}

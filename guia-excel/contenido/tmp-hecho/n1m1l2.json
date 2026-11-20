@@ -1,0 +1,436 @@
+{
+ "id": "n1m1l2",
+ "titulo": "El símbolo $: fija la celda que no debe moverse",
+ "minutos": 15,
+ "objetivo": "Fijar con $ (tecla F4) la celda de un dato común, como el tipo de IVA o el porcentaje de comisión, para que la fórmula se pueda copiar a toda la lista sin descolocarse.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Necesito las comisiones de noviembre de los cinco comerciales para pasarlas a nóminas. Este mes es un 3 % de lo vendido; te lo he puesto arriba, en B1, porque en diciembre cambia. Rápido, por favor.",
+  "logro": "Ya sabes copiar una fórmula que usa un dato común (IVA, comisión, precio por kilómetro) sin que se descoloque, gracias al símbolo $."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "A veces todas las filas necesitan **el mismo dato**: el tipo de IVA, el porcentaje de comisión, el precio por kilómetro. Ese dato se escribe **una sola vez**, en una celda aparte, y las fórmulas apuntan a él.\n\nPero aquí la copia te juega una mala pasada. Mira la hoja: en C4 la fórmula del IVA (la **base**, que es el importe sin IVA, por el tipo) está bien. Al copiarla hacia abajo, la dirección del IVA **también baja**… y deja de apuntar a B1."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Lo que pasa si no fijas el IVA",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.21,
+     "A3": "Factura",
+     "B3": "Base",
+     "C3": "IVA",
+     "A4": "F26-0412",
+     "B4": 1250,
+     "C4": "=B4*B1",
+     "A5": "F26-0413",
+     "B5": 845.5,
+     "C5": "=B5*B2",
+     "A6": "F26-0414",
+     "B6": 2310,
+     "C6": "=B6*B3",
+     "A7": "F26-0415",
+     "B7": 96.8,
+     "C7": "=B7*B4"
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:B7": "eur",
+     "C4:C7": "eur"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "resaltar": [
+    "C5:C7"
+   ],
+   "mostrar_formulas": true,
+   "pie": "C5 apunta a B2 (vacía) y da 0. C6 apunta a un texto y da error. C7 multiplica dos importes y da un número absurdo **sin ningún aviso**: el error más peligroso."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e1",
+   "modo": "predice",
+   "enunciado": "Antes de verlo: la fórmula de C5 quedó `=B5*B2` al copiarla, y **B2 está vacía**. ¿Qué número saldrá en C5?",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.21,
+     "A3": "Factura",
+     "B3": "Base",
+     "C3": "IVA",
+     "A4": "F26-0412",
+     "B4": 1250,
+     "A5": "F26-0413",
+     "B5": 845.5
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:B5": "eur",
+     "C5": "eur"
+    }
+   },
+   "celda": "C5",
+   "formula": "=B5*B2",
+   "explicacion": "Una celda vacía vale 0 para Excel, y cualquier cosa por 0 da 0. La factura aparece «sin IVA» y nadie lo nota a simple vista. Por eso hay que fijar la celda del IVA."
+  },
+  {
+   "tipo": "texto",
+   "md": "La solución es un **ancla**: el símbolo **$**. Escribes `$B$1` en lugar de `B1`.\n\n- El `$` delante de la **B** dice: «la columna no se mueve».\n- El `$` delante del **1** dice: «la fila no se mueve».\n\nCon los dos, `$B$1` apunta **siempre** a B1, copies la fórmula donde la copies. Esto se llama **referencia absoluta**. Las demás direcciones, sin `$`, siguen moviéndose fila a fila como antes."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "F4 pone los $ por ti",
+   "md": "Mientras escribes la fórmula, justo después de hacer clic en B1, pulsa [[F4]]: `B1` se convierte en `$B$1`. En muchos portátiles hay que pulsar [[Fn]]+[[F4]]."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e2",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** La fórmula de **C4** calcula el IVA de la factura, pero al copiarla a **C5:C8** se descoloca. Corrígela para que apunte siempre al tipo de IVA de **B1**. Debe salir **262,50 €** en C4 y estar bien en todas las filas.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.21,
+     "A3": "Factura",
+     "B3": "Base",
+     "C3": "IVA",
+     "A4": "F26-0412",
+     "B4": 1250,
+     "A5": "F26-0413",
+     "B5": 845.5,
+     "A6": "F26-0414",
+     "B6": 2310,
+     "A7": "F26-0415",
+     "B7": 96.8,
+     "A8": "F26-0416",
+     "B8": 4780
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:B8": "eur",
+     "C4:C8": "eur"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "objetivo": "C4",
+   "inicial": "=B4*B1",
+   "copiar_a": [
+    "C5:C8"
+   ],
+   "solucion": "=B4*$B$1",
+   "alternativas": [
+    "=$B$1*B4",
+    "=B4*B$1"
+   ],
+   "errores_tipicos": [
+    "=B4*B1",
+    "=B4*0,21",
+    "=B4*21"
+   ],
+   "variantes": [
+    {
+     "B1": 0.1,
+     "B6": 2000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "La base (B4) sí debe moverse fila a fila; el tipo de IVA (B1), no.",
+    "Pon el cursor sobre `B1` dentro de la fórmula y pulsa F4, o escribe los $ a mano.",
+    "La fórmula correcta es `=B4*$B$1`."
+   ],
+   "explicacion": "Cinco facturas con su IVA correcto. `B4` va bajando y `$B$1` se queda quieta. Este patrón (dato común en una celda + $) lo usarás a diario: IVA, comisiones, tarifas, descuentos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e3",
+   "modo": "respuesta_corta",
+   "pregunta": "Estás escribiendo una fórmula y acabas de hacer clic en **B1**. ¿Qué tecla pulsas para que se convierta en `$B$1`?",
+   "aceptadas": [
+    "F4",
+    "f4",
+    "Fn+F4",
+    "la tecla F4",
+    "tecla F4"
+   ],
+   "explicacion": "[[F4]] (en algunos portátiles, [[Fn]]+[[F4]]). Es más rápido y más seguro que escribir los $ a mano."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Otra cosa que verás por ahí: fórmulas como `=B4*0,21`, con el 21 % escrito **dentro**. Hoy funcionan. Pero el día que haya que usar otro tipo, toca buscarlo en cientos de fórmulas, y siempre se escapa alguna. El dato, en su celda; la fórmula, apuntando a ella con `$`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e4",
+   "modo": "test",
+   "pregunta": "Tienes el tipo de IVA en **B1** y vas a copiar la fórmula de C4 a cien filas. ¿Cuál es la mejor fórmula para C4?",
+   "opciones": [
+    {
+     "texto": "=B4*$B$1",
+     "correcta": true,
+     "porque": "Correcto: la base se mueve fila a fila y el IVA queda fijo. Si el tipo cambia, solo tocas B1."
+    },
+    {
+     "texto": "=B4*0,21",
+     "correcta": false,
+     "porque": "Da bien hoy, pero el 21 % está escondido dentro de cien fórmulas. Si cambia, tendrás que corregirlas todas."
+    },
+    {
+     "texto": "=B4*B1",
+     "correcta": false,
+     "porque": "Al copiarla, B1 pasa a B2, B3… y apunta a celdas vacías o a otros datos."
+    },
+    {
+     "texto": "=$B$4*$B$1",
+     "correcta": false,
+     "porque": "Con $ en la base, las cien filas calcularían el IVA de la misma factura, la de la fila 4."
+    }
+   ],
+   "explicacion": "La regla: `$` solo en lo que debe quedarse quieto. Lo que cambia de fila en fila, sin `$`."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cuidado con el exceso de celo: **no pongas $ a todo**. Si escribes `=$C$4*$B$1`, al copiarla todas las filas calcularán con el dato de la fila 4 y verás la misma cifra repetida.\n\nPregúntate siempre: «Cuando baje a la fila siguiente, ¿este dato debe cambiar?». Si la respuesta es sí, sin `$`. Si es no, con `$`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e5",
+   "modo": "formula",
+   "enunciado": "Lucía, de RRHH, paga los desplazamientos a **0,30 € por kilómetro** (está en **B1**). En **D4** calcula lo que cobra Sergio: kilómetros por precio por km. La app copiará tu fórmula a **D5:D7**. Debe salir **54,60 €** en D4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pago por km",
+     "B1": 0.3,
+     "A3": "Empleado",
+     "B3": "Viaje",
+     "C3": "Km",
+     "D3": "Importe",
+     "A4": "Sergio Gil",
+     "B4": "Pamplona",
+     "C4": 182,
+     "A5": "Elena Navarro",
+     "B5": "Lleida",
+     "C5": 152,
+     "A6": "Raúl Pérez",
+     "B6": "Huesca",
+     "C6": 74,
+     "A7": "Pilar Martín",
+     "B7": "Teruel",
+     "C7": 171
+    },
+    "formatos": {
+     "B1": "eur",
+     "D4:D7": "eur"
+    },
+    "anchos": {
+     "A": 14
+    }
+   },
+   "objetivo": "D4",
+   "copiar_a": [
+    "D5:D7"
+   ],
+   "solucion": "=C4*$B$1",
+   "alternativas": [
+    "=$B$1*C4",
+    "=C4*B$1"
+   ],
+   "errores_tipicos": [
+    "=C4*B1",
+    "=C4*0,3",
+    "=$C$4*$B$1"
+   ],
+   "variantes": [
+    {
+     "B1": 0.35,
+     "C5": 200
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "¿Qué dato cambia de una persona a otra? Los kilómetros (columna C). ¿Cuál es igual para todos? El precio por km (B1).",
+    "Multiplica los km de la fila 4 por B1, y fija B1 con F4.",
+    "La fórmula es `=C4*$B$1`."
+   ],
+   "explicacion": "Hoja de kilometraje lista. Y si la empresa cambia el precio por kilómetro, Lucía solo toca B1 y se recalculan todos. Así se montan las hojas que se reutilizan mes a mes."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una curiosidad que verás algún día. Si pulsas [[F4]] varias veces, el `$` va cambiando de sitio:\n\n1. `$B$1`: fija columna y fila.\n2. `B$1`: fija solo la fila.\n3. `$B1`: fija solo la columna.\n4. `B1`: sin fijar (vuelta al principio).\n\nLas dos del medio se llaman **referencias mixtas**. Sirven para tablas que se copian hacia abajo **y** hacia la derecha. Por ahora te basta con `$B$1`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e6",
+   "modo": "abierta",
+   "pregunta": "Entra un compañero nuevo en el almacén y te pregunta por qué en tu hoja pones `$B$1` y no `B1`. Explícaselo en dos o tres frases, sin tecnicismos.",
+   "modelo": "Porque el tipo de IVA está solo en B1 y todas las filas tienen que usarlo. Si no pongo los $, al copiar la fórmula hacia abajo B1 se convierte en B2, B3…, que están vacías o tienen otros datos, y los resultados salen mal. Con $B$1 esa dirección se queda fija y la base sí va cambiando de fila.",
+   "criterios": [
+    "Dice que el dato común está en una sola celda",
+    "Explica que al copiar, sin $, la dirección se mueve a otra celda",
+    "Dice que el $ la deja fija mientras el resto de la fórmula sigue cambiando",
+    "Lo explica con palabras sencillas"
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l2-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Javier.** En **C4** calcula la comisión de Alberto: sus ventas por el porcentaje de **B1**. La app copiará tu fórmula a **C5:C8**, y el total de **C10** se llenará solo. Debe salir **1.447,50 €** en C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comisión",
+     "B1": 0.03,
+     "A3": "Comercial",
+     "B3": "Ventas noviembre",
+     "C3": "Comisión",
+     "A4": "Alberto Sanz",
+     "B4": 48250,
+     "A5": "Rocío Lozano",
+     "B5": 61730,
+     "A6": "Daniel Herrero",
+     "B6": 39880,
+     "A7": "Beatriz Gómez",
+     "B7": 55410,
+     "A8": "Iván Castillo",
+     "B8": 27960,
+     "A10": "Total comisiones",
+     "C10": "=SUMA(C4:C8)"
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:B8": "eur",
+     "C4:C10": "eur"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 16
+    }
+   },
+   "objetivo": "C4",
+   "copiar_a": [
+    "C5:C8"
+   ],
+   "solucion": "=B4*$B$1",
+   "alternativas": [
+    "=$B$1*B4",
+    "=B4*B$1"
+   ],
+   "errores_tipicos": [
+    "=B4*B1",
+    "=B4*0,03",
+    "=B4*3",
+    "=$B$4*$B$1"
+   ],
+   "variantes": [
+    {
+     "B1": 0.035
+    },
+    {
+     "B7": 60000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Las ventas cambian de un comercial a otro; el porcentaje de B1 es el mismo para todos.",
+    "Multiplica B4 por B1 y fija B1 con F4.",
+    "La fórmula es `=B4*$B$1`."
+   ],
+   "explicacion": "Comisiones listas para nóminas. Y cuando en diciembre Javier cambie el porcentaje, bastará con escribir el nuevo en B1: las cinco comisiones y el total se recalculan solos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m1l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En **C2** tienes `=B2*$E$1`. La copias hacia abajo hasta **C5**. ¿Qué fórmula queda en **C5**?",
+   "aceptadas": [
+    "=B5*$E$1",
+    "=b5*$e$1",
+    "B5*$E$1",
+    "= B5*$E$1"
+   ],
+   "explicacion": "`B2` no tiene $ y baja tres filas hasta `B5`. `$E$1` está fijada y no se mueve: `=B5*$E$1`."
+  },
+  {
+   "id": "n1m1l2-q2",
+   "modo": "predice",
+   "enunciado": "Javier ha cambiado la comisión de **B1** al 3,5 %. La fórmula de C4 es `=B4*$B$1`. ¿Qué sale ahora en C4?",
+   "hoja": {
+    "celdas": {
+     "A1": "Comisión",
+     "B1": 0.035,
+     "A3": "Comercial",
+     "B3": "Ventas",
+     "C3": "Comisión",
+     "A4": "Alberto Sanz",
+     "B4": 48250
+    },
+    "formatos": {
+     "B1": "pct1",
+     "B4": "eur",
+     "C4": "eur"
+    }
+   },
+   "celda": "C4",
+   "formula": "=B4*$B$1",
+   "explicacion": "48.250 × 0,035 = 1.688,75 €. Solo ha cambiado B1, y la fórmula lo ha recogido sin tocarla."
+  },
+  {
+   "id": "n1m1l2-q3",
+   "modo": "test",
+   "pregunta": "Copias `=$C$4*$B$1` hacia abajo en una lista de importes. ¿Qué verás?",
+   "opciones": [
+    {
+     "texto": "El mismo resultado repetido en todas las filas",
+     "correcta": true,
+     "porque": "Correcto: con $ en C4, todas las filas usan el dato de la fila 4. El $ solo va en lo que no debe moverse."
+    },
+    {
+     "texto": "Cada fila con su resultado correcto",
+     "correcta": false,
+     "porque": "Para eso C4 tendría que poder bajar a C5, C6…, y el $ se lo impide."
+    },
+    {
+     "texto": "Un error #¡REF!",
+     "correcta": false,
+     "porque": "No hay ningún error: la fórmula es válida, solo que calcula siempre lo mismo. Por eso es un fallo difícil de ver."
+    }
+   ],
+   "explicacion": "Ni sin $ ni con $ en todo: $ solo en el dato común."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es una referencia absoluta?",
+   "dorso": "Una dirección con $ (como $B$1) que no cambia al copiar la fórmula."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Poner los $ mientras escribes la fórmula",
+   "dorso": "F4 (en portátiles, a veces Fn+F4). Pulsada varias veces: $B$1, B$1, $B1, B1."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no se escribe =B4*0,21?",
+   "dorso": "Porque el dato queda escondido en la fórmula. Ponlo en una celda y apunta a ella con $: =B4*$B$1."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde va el $?",
+   "dorso": "Solo en lo que debe quedarse quieto al copiar (el dato común). Lo que cambia de fila en fila, sin $."
+  }
+ ]
+}

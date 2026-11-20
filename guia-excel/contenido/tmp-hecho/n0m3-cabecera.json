@@ -1,0 +1,53 @@
+{
+ "id": "n0m3",
+ "nivel": "n0",
+ "titulo": "Tu primera fórmula",
+ "intro": "Las fórmulas son lo que convierte una hoja de Excel en algo más que papel cuadriculado: los totales se calculan solos y se actualizan cuando cambian los datos. En este módulo escribes tus primeras cuentas, sumas columnas enteras y entregas en PDF una plantilla de la empresa, rellena y comprobada.",
+ "repaso_inicial": [
+  {
+   "id": "n0m3-r1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cómo se llama la celda que está en la columna **C** y la fila **5**?",
+   "aceptadas": ["C5", "c5"],
+   "explicacion": "C5: primero la letra de la columna y luego el número de la fila. Hoy usarás estas direcciones dentro de tus fórmulas."
+  },
+  {
+   "id": "n0m3-r2",
+   "modo": "test",
+   "pregunta": "Quieres escribir el precio **doce euros y medio** para que Excel lo entienda como número. ¿Qué tecleas?",
+   "opciones": [
+    {"texto": "12,5", "correcta": true, "porque": "Correcto: en España los decimales van con coma. Excel lo alinea a la derecha, señal de que es un número."},
+    {"texto": "12.5", "correcta": false, "porque": "Con punto, el Excel en español no lo reconoce como ese número: puede quedarse como texto o convertirse en una fecha."},
+    {"texto": "12,5 euros", "correcta": false, "porque": "Con la palabra «euros», Excel lo guarda como texto y no podrá hacer cuentas con él. La unidad va en la cabecera de la columna."}
+   ],
+   "explicacion": "Coma decimal y solo el número. Dentro de las fórmulas será igual."
+  },
+  {
+   "id": "n0m3-r3",
+   "modo": "respuesta_corta",
+   "pregunta": "Acabas de borrar sin querer una columna de datos. ¿Qué atajo lo **deshace**?",
+   "aceptadas": ["Ctrl+Z", "Control+Z", "Ctrl Z", "Ctrl + Z", "ctrl+z"],
+   "explicacion": "[[Ctrl]]+[[Z]]. Te salvará también si escribes encima de una fórmula, como verás en este módulo."
+  },
+  {
+   "id": "n0m3-r4",
+   "modo": "senala",
+   "pregunta": "Seleccionas varios importes y quieres ver su suma sin escribir nada. Toca la **barra de estado**.",
+   "zona": "barra_estado",
+   "explicacion": "Abajo del todo, a la derecha: Promedio, Recuento y Suma de lo que seleccionas. En este módulo la usarás para comprobar tus totales."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "Tu primer día con plantillas reales de Electro Cierzo. Descarga el libro **n0-parte-de-horas.xlsx** y sigue la hoja «Instrucciones»:\n\n1. En «Parte de horas», escribe las horas del jueves (**8**, en C5) y del viernes (**6,5**, en C6).\n2. En **C8**, el total de horas con `SUMA` (de C2 a C6).\n3. En **C10**, el importe a pagar: total de horas por precio por hora (`=C8*C9`).\n4. Cambia el nombre de la hoja «Hoja2» por **«Pedido»**.\n5. En «Pedido», escribe las unidades que faltan: **15** en B3 y **40** en B5.\n6. En **D8**, el total del pedido con `SUMA` (de D2 a D7).\n\nEscribe solo en las celdas amarillas y en las de los totales. Comprueba cada total con la barra de estado y después escribe aquí los totales de control.",
+  "archivo": "n0-parte-de-horas.xlsx",
+  "controles": [
+   {"pregunta": "Total de horas de la semana (celda C8 de «Parte de horas»)", "respuesta": 38, "tolerancia": 0.01, "pista": "Si te sale 23,5, faltan el jueves y el viernes. Si te sale 31,5, el rango de SUMA no llega hasta C6."},
+   {"pregunta": "Importe a pagar del parte (celda C10), en euros", "respuesta": 661.2, "tolerancia": 0.01, "pista": "Es el total de horas (C8) multiplicado por el precio por hora (C9): =C8*C9. Si te sale 0, revisa que C8 tenga su fórmula."},
+   {"pregunta": "Importe de la línea del cable de 2,5 mm² (celda D3 de «Pedido»), en euros", "respuesta": 897, "tolerancia": 0.01, "pista": "Escribe 15 en B3: la fórmula de D3 (=B3*C3) ya está hecha y se calcula sola."},
+   {"pregunta": "Importe de la línea de las bridas (celda D5), en euros", "respuesta": 126, "tolerancia": 0.01, "pista": "Escribe 40 en B5 (las unidades), no en la columna del importe."},
+   {"pregunta": "Total del pedido sin IVA (celda D8), en euros", "respuesta": 2590.5, "tolerancia": 0.01, "pista": "=SUMA(D2:D7). Si te sale 1.567,50 €, todavía no has escrito las unidades de B3 y B5."}
+  ],
+  "solucion_md": "**Parte de horas**\n\n- C5: `8` y C6: `6,5` (datos, sin fórmula).\n- C8: `=SUMA(C2:C6)` → **38** horas.\n- C10: `=C8*C9` → 38 × 17,40 € = **661,20 €**.\n\n**Hoja «Pedido»** (doble clic en la pestaña «Hoja2», escribir Pedido, Intro)\n\n- B3: `15` → D3 se calcula solo: 15 × 59,80 € = **897,00 €**.\n- B5: `40` → D5: 40 × 3,15 € = **126,00 €**.\n- D8: `=SUMA(D2:D7)` → **2.590,50 €**.\n\n**Comprobación**: selecciona C2:C6 y la barra de estado debe decir Suma 38; selecciona D2:D7 y debe decir 2.590,50.",
+  "archivo_solucion": "n0-parte-de-horas-solucion.xlsx"
+ }
+}

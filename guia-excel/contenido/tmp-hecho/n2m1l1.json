@@ -1,0 +1,239 @@
+{
+ "id": "n2m1l1",
+ "titulo": "Convierte tu lista en una Tabla",
+ "minutos": 14,
+ "objetivo": "Convertir una lista en una Tabla de Excel con nombre y fila de totales, para que crezca sola cuando entren datos nuevos.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "Te paso la lista de pedidos a proveedores de noviembre. Cada vez que alguien apunta un pedido nuevo, el total de abajo deja de cuadrar y me vuelvo loco. ¿Me la dejas para que crezca sola, se llame Pedidos y tenga su total?",
+  "logro": "Ya sabes convertir una lista en una Tabla con nombre y fila de totales que incluye sola los datos nuevos."
+ },
+ "funciones": ["SUBTOTALES"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Las listas de una oficina **crecen cada día**: un pedido nuevo, otra factura, una visita más. El problema es que una fórmula como `=SUMA(E2:E6)` mira **solo** esas cinco celdas. Lo que escribas en la fila 7 se queda fuera del total, y nadie se da cuenta hasta que el total no cuadra con el banco o con el proveedor.\n\nMira la lista de Andrés: el pedido de la fila 7 no está en el total."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Pedidos a proveedores · noviembre 2026",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Fecha", "C1": "Proveedor", "D1": "Producto", "E1": "Importe",
+     "A2": "PC-1101", "B2": { "fecha": "2026-11-02" }, "C2": "Cables del Ebro", "D2": "Cable 2,5 mm² (rollo 100 m)", "E2": 486,
+     "A3": "PC-1102", "B3": { "fecha": "2026-11-03" }, "C3": "Iluminación Moncayo", "D3": "Panel LED 60x60", "E3": 1290,
+     "A4": "PC-1103", "B4": { "fecha": "2026-11-05" }, "C4": "Mecanismos Pirineo", "D4": "Enchufes Schuko blancos", "E4": 312.5,
+     "A5": "PC-1104", "B5": { "fecha": "2026-11-09" }, "C5": "Cables del Ebro", "D5": "Tubo corrugado 20 mm", "E5": 158.4,
+     "A6": "PC-1105", "B6": { "fecha": "2026-11-11" }, "C6": "Protecciones Aragón", "D6": "Magnetotérmicos 2P 16 A", "E6": 744,
+     "A7": "PC-1106", "B7": { "fecha": "2026-11-16" }, "C7": "Mecanismos Pirineo", "D7": "Bridas negras 200 mm", "E7": 96.3,
+     "A9": "Total", "E9": "=SUMA(E2:E6)"
+    },
+    "formatos": { "B2:B7": "fecha", "E2:E9": "eur" },
+    "anchos": { "A": 9, "B": 11, "C": 20, "D": 26, "E": 12 }
+   },
+   "resaltar": ["E7", "E9"],
+   "mostrar_formulas": true,
+   "pie": "El pedido PC-1106 (fila 7) se apuntó después de escribir el total."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e1",
+   "modo": "test",
+   "pregunta": "Andrés ha apuntado el pedido PC-1106 en la fila 7. ¿Por qué el total de **E9** no lo suma?",
+   "opciones": [
+    { "texto": "Porque la fórmula dice E2:E6 y la fila 7 queda fuera de ese rango", "correcta": true, "porque": "Exacto. Un rango es una dirección fija: E2:E6 son esas cinco celdas y ninguna más, aunque escribas justo debajo." },
+    { "texto": "Porque Excel tarda un rato en recalcular los totales", "correcta": false, "porque": "Excel recalcula al instante. El total está bien calculado; lo que está mal es el rango que mira." },
+    { "texto": "Porque hay que guardar el libro para que el total se actualice", "correcta": false, "porque": "Guardar no cambia ningún cálculo. El problema es que la fórmula no incluye la fila 7." }
+   ],
+   "explicacion": "Este es uno de los errores más repetidos en las empresas: rangos que no se amplían cuando llegan datos nuevos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e2",
+   "modo": "formula",
+   "enunciado": "Arréglalo a la antigua primero. La fórmula de **E9** se ha quedado corta: corrígela para que sume **todos** los pedidos, de la fila 2 a la 7. Tiene que salir 3.087,20 €.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Fecha", "C1": "Proveedor", "D1": "Producto", "E1": "Importe",
+     "A2": "PC-1101", "B2": { "fecha": "2026-11-02" }, "C2": "Cables del Ebro", "D2": "Cable 2,5 mm² (rollo 100 m)", "E2": 486,
+     "A3": "PC-1102", "B3": { "fecha": "2026-11-03" }, "C3": "Iluminación Moncayo", "D3": "Panel LED 60x60", "E3": 1290,
+     "A4": "PC-1103", "B4": { "fecha": "2026-11-05" }, "C4": "Mecanismos Pirineo", "D4": "Enchufes Schuko blancos", "E4": 312.5,
+     "A5": "PC-1104", "B5": { "fecha": "2026-11-09" }, "C5": "Cables del Ebro", "D5": "Tubo corrugado 20 mm", "E5": 158.4,
+     "A6": "PC-1105", "B6": { "fecha": "2026-11-11" }, "C6": "Protecciones Aragón", "D6": "Magnetotérmicos 2P 16 A", "E6": 744,
+     "A7": "PC-1106", "B7": { "fecha": "2026-11-16" }, "C7": "Mecanismos Pirineo", "D7": "Bridas negras 200 mm", "E7": 96.3,
+     "A9": "Total"
+    },
+    "formatos": { "B2:B7": "fecha", "E2:E9": "eur" },
+    "anchos": { "A": 9, "B": 11, "C": 20, "D": 26, "E": 12 }
+   },
+   "objetivo": "E9",
+   "inicial": "=SUMA(E2:E6)",
+   "solucion": "=SUMA(E2:E7)",
+   "alternativas": ["=E2+E3+E4+E5+E6+E7", "=SUMA(E2:E8)"],
+   "errores_tipicos": ["=SUMA(E2:E6)", "=SUMA(E3:E7)"],
+   "variantes": [{ "E7": 120 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Mira dónde termina el rango: E6. ¿Dónde está el último pedido?",
+    "El rango tiene que ir desde E2 hasta la fila del último pedido.",
+    "Cambia el 6 por un 7: `=SUMA(E2:E7)`."
+   ],
+   "explicacion": "Total cuadrado. Pero fíjate: mañana llega el pedido PC-1107 y habrá que volver a tocar la fórmula. Eso es justo lo que una **Tabla** hace sola, y es lo que vas a aprender ahora."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una **Tabla** de Excel (con T mayúscula) es una lista que Excel reconoce como un bloque con nombre propio. Es como pasar de folios sueltos a un archivador con etiquetas. Al convertir la lista en Tabla:\n\n- **Crece sola**: lo que escribas justo debajo pasa a formar parte de ella.\n- Trae **flechas de filtro** en los títulos.\n- Se pinta con **filas con bandas** (una de color, otra no) para no perderte al leer.\n- Tiene un **nombre**, como *Pedidos*."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "Crear una Tabla: Ctrl+T",
+   "md": "En el Excel en español es [[Ctrl]]+[[T]]. En vídeos en inglés verás Ctrl+L: aquí Ctrl+L abre **Reemplazar**, así que no te fíes."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: la lista de Andrés pasa a ser Tabla",
+   "pasos": [
+    { "md": "Haz clic en **cualquier celda** de la lista, por ejemplo A2. No hace falta seleccionarla entera." },
+    { "md": "Pulsa [[Ctrl]]+[[T]] o ve a **Insertar › Tablas › Tabla**.", "ruta": ["Insertar", "Tablas", "Tabla"] },
+    { "md": "Excel propone el rango (aquí `=$A$1:$E$7`). Comprueba que llega hasta el último pedido y que está marcada la casilla **La tabla tiene encabezados**." },
+    { "md": "Pulsa **Aceptar**. La lista se pinta con bandas, aparecen flechas en los títulos y arriba sale una pestaña nueva: **Diseño de tabla**." }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e3",
+   "modo": "cinta",
+   "enunciado": "Andrés no se acuerda de atajos: «¿Dónde está eso de Tabla en los menús?». Enséñale el botón en la cinta.",
+   "ruta": ["Insertar", "Tablas", "Tabla"],
+   "explicacion": "Insertar › Tablas › Tabla. Ojo: al lado está **Tabla dinámica**, que es otra herramienta (sirve para resumir y la verás más adelante)."
+  },
+  {
+   "tipo": "texto",
+   "md": "Antes de convertir, comprueba que la lista está **limpia**. Excel solo reconoce bien una Tabla si:\n\n- Tiene **una sola fila de títulos**, arriba, y ningún título repetido.\n- Hay **una fila por registro** (un pedido, una factura, una persona).\n- No hay **filas vacías** en medio: Excel cree que la lista termina ahí.\n- No hay **subtotales** dentro: el total va en la fila de totales, que verás enseguida."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    ["Títulos en dos filas: «Importe» arriba y «sin IVA» debajo", "Un título por columna en una sola fila: «Importe sin IVA»"],
+    ["Una fila vacía entre octubre y noviembre «para que se lea mejor»", "Todo seguido; para separar meses, una columna Fecha"],
+    ["Una fila «Subtotal Pamplona» en medio de la lista", "Sin subtotales dentro: los totales se calculan aparte"]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e4",
+   "modo": "test",
+   "pregunta": "Lucía, de RRHH, te pasa tres listas de personal para convertirlas en Tabla. ¿Cuál puedes convertir tal cual?",
+   "opciones": [
+    { "texto": "Títulos en la fila 1 (Nombre, Departamento, Fecha de alta) y una persona por fila, sin huecos", "correcta": true, "porque": "Esta cumple todo: una fila de títulos, un registro por fila y sin filas vacías. Ctrl+T y listo." },
+    { "texto": "Una fila vacía entre los de Administración y los de Almacén para que se vea mejor", "correcta": false, "porque": "Excel tomaría la fila vacía como el final de la lista y la Tabla se quedaría solo con Administración." },
+    { "texto": "Al final de cada departamento, una fila con el número de personas", "correcta": false, "porque": "Esas filas de recuento se mezclarían con los datos y estropearían filtros y totales. Quítalas antes." }
+   ],
+   "explicacion": "Una fila por registro, una columna por dato y nada más: así se guardan los datos en cualquier empresa. Los resúmenes se hacen aparte."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al crearla, Excel la llama **Tabla1**. Ponle un nombre que diga lo que guarda:\n\n1. Haz clic dentro de la Tabla.\n2. Ve a **Diseño de tabla › Propiedades › Nombre de la tabla**.\n3. Escribe `Pedidos` y pulsa **Intro**.\n\nEl nombre empieza por letra y va **sin espacios**: `PedidosNoviembre`, no «Pedidos noviembre». Y si no ves la pestaña **Diseño de tabla**, es que la celda activa está fuera de la Tabla: haz clic dentro."
+  },
+  {
+   "tipo": "texto",
+   "md": "La **fila de totales** añade una fila *Total* debajo de la Tabla. Se activa en **Diseño de tabla › Opciones de estilo de tabla › Fila de totales**.\n\nEn cada celda de esa fila aparece una flechita para elegir el cálculo: suma, promedio, recuento, máximo, mínimo… Y lo mejor: cuando añades pedidos, la fila de totales **baja sola** y los incluye."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e5",
+   "modo": "cinta",
+   "enunciado": "Ya tienes la Tabla Pedidos. Activa su **fila de totales**.",
+   "ruta": ["Diseño de tabla", "Opciones de estilo de tabla", "Fila de totales"],
+   "explicacion": "Diseño de tabla › Opciones de estilo de tabla › Fila de totales. Es una casilla: si la desmarcas, la fila desaparece sin borrar nada de la Tabla."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si haces clic en el total y miras la barra de fórmulas, verás algo así: `=SUBTOTALES(109;[Importe])`. No te asustes:\n\n- **SUBTOTALES** calcula solo con las filas que **se ven**. Si filtras por un proveedor, el total pasa a ser el de ese proveedor.\n- El **109** le dice «suma, dejando fuera las filas ocultas».\n- `[Importe]` es la columna Importe de la Tabla.\n\nCon todo a la vista, da lo mismo que SUMA."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e6",
+   "modo": "predice",
+   "enunciado": "Aquí no hay ningún filtro: se ven las seis filas. Antes de que Excel lo calcule, ¿qué devuelve esta fórmula de subtotal en **E8**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "C1": "Proveedor", "E1": "Importe",
+     "A2": "PC-1101", "C2": "Cables del Ebro", "E2": 486,
+     "A3": "PC-1102", "C3": "Iluminación Moncayo", "E3": 1290,
+     "A4": "PC-1103", "C4": "Mecanismos Pirineo", "E4": 312.5,
+     "A5": "PC-1104", "C5": "Cables del Ebro", "E5": 158.4,
+     "A6": "PC-1105", "C6": "Protecciones Aragón", "E6": 744,
+     "A7": "PC-1106", "C7": "Mecanismos Pirineo", "E7": 96.3
+    },
+    "formatos": { "E2:E8": "eur" },
+    "anchos": { "C": 20, "E": 12 }
+   },
+   "celda": "E8",
+   "formula": "=SUBTOTALES(109;E2:E7)",
+   "formato_resultado": "eur",
+   "explicacion": "Sin filas ocultas, SUBTOTALES con 109 suma todo: 3.087,20 €, igual que `=SUMA(E2:E7)`. Si filtraras solo «Cables del Ebro», daría 644,40 €. Por eso el total de una Tabla filtrada siempre cuadra con lo que ves.",
+   "respuesta": ""
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te cuento la prueba que hago yo siempre: escribe un pedido en la fila **justo debajo** de la Tabla. Si se pinta con el estilo y el total cambia, la Tabla está bien hecha. Eso sí: si dejas una fila vacía entre medias, ya no lo coge."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l1-e7",
+   "modo": "ordenar",
+   "enunciado": "La misión de Andrés, de principio a fin. Ordena los pasos para dejarle la lista de pedidos como la quiere.",
+   "pasos": [
+    "Haz clic en cualquier celda de la lista de pedidos",
+    "Pulsa Ctrl+T y comprueba el rango y la casilla «La tabla tiene encabezados»",
+    "Pulsa Aceptar",
+    "En Diseño de tabla › Nombre de la tabla, escribe Pedidos y pulsa Intro",
+    "Marca Fila de totales y elige Suma en la columna Importe",
+    "Escribe un pedido de prueba justo debajo, comprueba que el total cambia y bórralo"
+   ],
+   "explicacion": "Misión cumplida: la lista de Andrés crece sola, se llama Pedidos y su total incluye siempre todos los pedidos. El último paso es tu control de calidad: no entregues sin comprobar."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m1l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Con qué atajo conviertes una lista en Tabla en el Excel en español?",
+   "aceptadas": ["Ctrl+T", "Control+T", "Ctrl T", "Ctrl + T"],
+   "explicacion": "Ctrl+T. También desde Insertar › Tablas › Tabla."
+  },
+  {
+   "id": "n2m1l1-q2",
+   "modo": "test",
+   "pregunta": "Escribes 20 pedidos nuevos justo debajo de la Tabla Pedidos, que tiene fila de totales. ¿Qué pasa con el total?",
+   "opciones": [
+    { "texto": "Los incluye solo: la Tabla crece y la fila de totales baja", "correcta": true, "porque": "Eso es lo que hace a la Tabla tan útil: los cálculos que se apoyan en ella se amplían solos." },
+    { "texto": "No cambia: hay que reescribir la fórmula del total", "correcta": false, "porque": "Eso pasa con un rango normal como E2:E6, no con una Tabla." },
+    { "texto": "Se borra la fila de totales y hay que volver a activarla", "correcta": false, "porque": "La fila de totales no se borra: se desplaza hacia abajo con la Tabla." }
+   ]
+  },
+  {
+   "id": "n2m1l1-q3",
+   "modo": "test",
+   "pregunta": "Filtras la Tabla Pedidos para ver solo «Mecanismos Pirineo». ¿Qué muestra la fila de totales?",
+   "opciones": [
+    { "texto": "El total de los pedidos de Mecanismos Pirineo, los que se ven", "correcta": true, "porque": "La fila de totales usa SUBTOTALES, que solo calcula con las filas visibles." },
+    { "texto": "El total de todos los pedidos, filtrados o no", "correcta": false, "porque": "Eso haría SUMA, que no distingue filas ocultas por un filtro. La fila de totales usa SUBTOTALES." },
+    { "texto": "Un error, porque hay filas ocultas", "correcta": false, "porque": "Filtrar no provoca errores: SUBTOTALES está pensada justo para eso." }
+   ]
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "atajo", "frente": "Convertir una lista en Tabla (Excel en español)", "dorso": "Ctrl+T, o Insertar › Tablas › Tabla" },
+  { "tipo": "concepto", "frente": "¿Dónde se cambia el nombre de una Tabla?", "dorso": "Diseño de tabla › Propiedades › Nombre de la tabla (sin espacios; p. ej. Pedidos)" },
+  { "tipo": "concepto", "frente": "Cuatro reglas de una lista lista para ser Tabla", "dorso": "Una fila de títulos sin repetir, una fila por registro, sin filas vacías, sin subtotales dentro" },
+  { "tipo": "funcion", "frente": "¿Qué calcula la fila de totales al filtrar?", "dorso": "Solo las filas visibles: usa SUBTOTALES (109 = suma sin filas ocultas)" }
+ ]
+}

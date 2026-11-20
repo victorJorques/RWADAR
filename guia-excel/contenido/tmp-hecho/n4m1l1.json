@@ -1,0 +1,310 @@
+{
+  "id": "n4m1l1",
+  "titulo": "Qué es Power Query y tu primera consulta",
+  "minutos": 14,
+  "objetivo": "Crear una consulta de Power Query que limpia una exportación del ERP, cargarla en una Tabla y repetirla cada semana con Actualizar todo.",
+  "mision": {
+    "de": "Andrés Molina",
+    "puesto": "Jefe de compras y almacén",
+    "texto": "Cada lunes saco del ERP «pendientes_proveedores.csv» y me paso una hora quitando columnas, filtrando lo ya servido y ordenando. ¿Me lo dejas para que el lunes que viene sea un clic? Y el CSV no lo toques, que lo archivo tal cual.",
+    "logro": "Ya sabes crear una consulta de Power Query que limpia una exportación y se repite sola con Actualizar todo."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "**Power Query** es la herramienta de Excel para traer datos y limpiarlos. Funciona como una **grabadora**: cada cosa que haces (quitar una columna, filtrar, ordenar) queda apuntada como un **paso**.\n\nEl lunes que viene, cuando llegue el archivo nuevo, pulsas **Actualizar** y Excel repite todos los pasos solo, en segundos.\n\nAl conjunto de pasos guardados se le llama **consulta**: es la receta (de dónde vienen los datos y qué se les hace)."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e1",
+      "modo": "test",
+      "pregunta": "Andrés limpia a mano el mismo CSV cada lunes. Si se monta una vez con Power Query, ¿qué habrá que hacer el lunes que viene?",
+      "opciones": [
+        {
+          "texto": "Guardar el CSV nuevo en el mismo sitio y pulsar Actualizar",
+          "correcta": true,
+          "porque": "Eso es: los pasos ya están grabados en la consulta y Actualizar los repite sobre el archivo nuevo."
+        },
+        {
+          "texto": "Repetir la limpieza a mano, pero más deprisa",
+          "correcta": false,
+          "porque": "Esa es justo la tarea que desaparece: la limpieza está grabada y se repite sola."
+        },
+        {
+          "texto": "Volver a crear la consulta desde cero",
+          "correcta": false,
+          "porque": "La consulta se crea una vez y se reutiliza cada semana. Solo se toca si cambia la forma del archivo."
+        }
+      ],
+      "explicacion": "Grabar una vez y repetir siempre: esa es la idea de todo este módulo."
+    },
+    {
+      "tipo": "texto",
+      "md": "Power Query está en la pestaña **Datos**, grupo **Obtener y transformar datos**. Las dos puertas que más usarás:\n\n- **De texto/CSV**: para un archivo que saca el programa de gestión (el ERP).\n- **De una tabla o rango**: para una lista que ya está en tu libro (Excel la convierte antes en Tabla).\n\nAl elegir el archivo, Excel enseña una vista previa. Pulsa **Transformar datos** y se abre el **Editor de Power Query**, la ventana donde se limpia."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "¿Qué Excel lo tiene?",
+      "md": "Viene incluido en Excel para Windows desde la versión 2016 y en Microsoft 365. En Excel para la web funciona entero desde enero de 2026. En Mac hay editor, pero con menos orígenes de datos. En el móvil no hay Power Query."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e2",
+      "modo": "cinta",
+      "enunciado": "Andrés te ha dejado `pendientes_proveedores.csv`. ¿Qué botón pulsas para llevarlo a Power Query?",
+      "ruta": [
+        "Datos",
+        "Obtener y transformar datos",
+        "De texto/CSV"
+      ],
+      "explicacion": "**Datos › Obtener y transformar datos › De texto/CSV**. Eliges el archivo, miras la vista previa y pulsas **Transformar datos** para limpiarlo antes de cargarlo."
+    },
+    {
+      "tipo": "texto",
+      "md": "En el **Editor de Power Query** hay tres zonas:\n\n- En el centro, una **vista previa** de los datos.\n- Arriba, sus pestañas con los botones de limpieza (**Inicio**, **Transformar**…).\n- A la derecha, la lista **Pasos aplicados**: cada clic que das se apunta ahí, en orden. El primero, **Origen**, es el archivo del que se leen los datos.\n\nNada de esto llega a tu hoja hasta que pulsas **Inicio › Cerrar y cargar**."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: el CSV de Andrés",
+      "pasos": [
+        {
+          "md": "**Datos › De texto/CSV**, eliges `pendientes_proveedores.csv` y pulsas **Transformar datos**. Se abre el editor."
+        },
+        {
+          "md": "Seleccionas las columnas que Andrés no usa (*Almacén* y *Usuario*; con [[Ctrl]] eliges varias) y pulsas **Inicio › Quitar columnas**. Aparece un paso nuevo en Pasos aplicados."
+        },
+        {
+          "md": "En la flecha del encabezado **Estado** desmarcas *Servido* y aceptas, igual que un filtro de Excel. Otro paso."
+        },
+        {
+          "md": "En la flecha de **Fecha pedido** ordenas de la más antigua a la más reciente. Otro paso."
+        },
+        {
+          "md": "**Inicio › Cerrar y cargar**. Excel crea una hoja nueva con el resultado en una **Tabla**:",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Pedido",
+              "C1": "Fecha pedido",
+              "D1": "Estado",
+              "E1": "Importe",
+              "A2": "Lumitec Iberia",
+              "B2": "PC-26-0811",
+              "C2": {"fecha": "2026-10-27"},
+              "D2": "Pendiente",
+              "E2": 1240.5,
+              "A3": "Cables del Ebro",
+              "B3": "PC-26-0823",
+              "C3": {"fecha": "2026-10-30"},
+              "D3": "Parcial",
+              "E3": 386.2,
+              "A4": "Mecanismos Lur",
+              "B4": "PC-26-0830",
+              "C4": {"fecha": "2026-11-04"},
+              "D4": "Pendiente",
+              "E4": 2915
+            },
+            "formatos": {"C2:C4": "fecha", "E2:E4": "eur"},
+            "anchos": {"A": 16, "B": 12, "C": 12}
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena el recorrido completo, desde el CSV de Andrés hasta el lunes siguiente.",
+      "pasos": [
+        "Datos › De texto/CSV",
+        "Elegir pendientes_proveedores.csv en su carpeta",
+        "Pulsar Transformar datos",
+        "Limpiar en el editor: quitar columnas, filtrar y ordenar",
+        "Inicio › Cerrar y cargar",
+        "El lunes siguiente: guardar el CSV nuevo con el mismo nombre y pulsar Actualizar todo"
+      ],
+      "explicacion": "Primero se elige el origen, luego se limpia en el editor y al final se carga. Desde ese día, cada lunes solo queda el último paso."
+    },
+    {
+      "tipo": "texto",
+      "md": "La lista **Pasos aplicados** es tu receta, y se puede revisar:\n\n- Haz clic en un paso y verás cómo estaban los datos en ese momento.\n- La **X** que aparece a la izquierda de un paso lo borra.\n- Si te equivocas, borra el paso y repítelo: equivocarse aquí es gratis.\n\nY lo más tranquilizador: Power Query **lee** el archivo original, pero **nunca lo modifica**. El CSV de Andrés queda tal cual."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "Nuria avisa: no corrijas la Tabla cargada",
+      "md": "Si cambias a mano un dato de la Tabla que ha cargado Power Query, al **actualizar** se pierde: la Tabla se vuelve a escribir con lo que dice la consulta. Las correcciones se hacen **en la consulta**, como un paso más."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e4",
+      "modo": "test",
+      "pregunta": "En la Tabla cargada ves que el proveedor «Lumitec Iberia» aparece en dos filas como «LUMITEC IBERIA SL». ¿Dónde lo corriges para que no vuelva a salir mal?",
+      "opciones": [
+        {
+          "texto": "En el Editor de Power Query, con un paso más que lo corrija",
+          "correcta": true,
+          "porque": "Así la corrección forma parte de la receta y se repite sola cada lunes."
+        },
+        {
+          "texto": "Directamente en la Tabla cargada",
+          "correcta": false,
+          "porque": "Al actualizar el lunes, la Tabla se reescribe desde la consulta y tu cambio desaparece."
+        },
+        {
+          "texto": "En el CSV original, cada lunes",
+          "correcta": false,
+          "porque": "Funcionaría, pero volverías a limpiar a mano cada semana. Además, Andrés quiere el CSV intacto."
+        }
+      ],
+      "explicacion": "Regla de oro: los arreglos van en la consulta, nunca en el resultado. En la próxima lección verás los pasos de limpieza más útiles."
+    },
+    {
+      "tipo": "texto",
+      "md": "Desde que pulsas **Cerrar y cargar**, el trabajo de cada lunes se reduce a esto:\n\n1. Guardar el CSV nuevo **con el mismo nombre y en la misma carpeta**, sustituyendo el anterior.\n2. Abrir tu libro y pulsar **Datos › Actualizar todo**.\n\nPower Query vuelve a leer el archivo y repite cada paso. Sin copiar ni pegar.\n\nSi cambias el nombre del CSV o lo mueves de carpeta, la consulta no lo encontrará y dará un error."
+    },
+    {
+      "tipo": "atajos",
+      "atajos": [
+        {"teclas": "Ctrl+Alt+F5", "accion": "Actualizar todo: todas las consultas y tablas dinámicas del libro"},
+        {"teclas": "Alt+F12", "accion": "Abrir el Editor de Power Query"}
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e5",
+      "modo": "formula",
+      "enunciado": "Andrés quiere poder fiarse del resultado. El ERP dice que el total pendiente es el de **G2**. En **G3** escribe una fórmula que calcule la **suma de la columna Importe (E2:E7) menos G2**. Si sale **0**, no falta ni sobra nada.",
+      "hoja": {
+        "celdas": {
+          "A1": "Proveedor",
+          "B1": "Pedido",
+          "C1": "Fecha pedido",
+          "D1": "Estado",
+          "E1": "Importe",
+          "A2": "Lumitec Iberia",
+          "B2": "PC-26-0811",
+          "C2": {"fecha": "2026-10-27"},
+          "D2": "Pendiente",
+          "E2": 1240.5,
+          "A3": "Cables del Ebro",
+          "B3": "PC-26-0823",
+          "C3": {"fecha": "2026-10-30"},
+          "D3": "Parcial",
+          "E3": 386.2,
+          "A4": "Mecanismos Lur",
+          "B4": "PC-26-0830",
+          "C4": {"fecha": "2026-11-04"},
+          "D4": "Pendiente",
+          "E4": 2915,
+          "A5": "Bridas Moncayo",
+          "B5": "PC-26-0841",
+          "C5": {"fecha": "2026-11-09"},
+          "D5": "Pendiente",
+          "E5": 148.75,
+          "A6": "Protecciones Segre",
+          "B6": "PC-26-0852",
+          "C6": {"fecha": "2026-11-11"},
+          "D6": "Parcial",
+          "E6": 760,
+          "A7": "Lumitec Iberia",
+          "B7": "PC-26-0858",
+          "C7": {"fecha": "2026-11-13"},
+          "D7": "Pendiente",
+          "E7": 1033.4,
+          "F2": "Total ERP",
+          "G2": 6483.85,
+          "F3": "Diferencia"
+        },
+        "formatos": {"C2:C7": "fecha", "E2:E7": "eur", "G2:G3": "eur"},
+        "anchos": {"A": 18, "B": 12, "C": 12, "F": 11}
+      },
+      "objetivo": "G3",
+      "solucion": "=SUMA(E2:E7)-G2",
+      "alternativas": [
+        "=SUMA(E2:E7)-$G$2",
+        "=(E2+E3+E4+E5+E6+E7)-G2"
+      ],
+      "errores_tipicos": [
+        "=SUMA(E2:E7)",
+        "=SUMA(E2:E6)-G2"
+      ],
+      "variantes": [
+        {"E4": 2195},
+        {"G2": 6500}
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Primero suma la columna Importe: SUMA(E2:E7).",
+        "Al resultado réstale la celda del ERP: … -G2.",
+        "=SUMA(E2:E7)-G2"
+      ],
+      "explicacion": "Da **0**: lo que has cargado cuadra con el ERP. Esta **celda de control** junto a la Tabla te avisará el lunes en que falte o sobre algo. En tu libro real usa la columna entera de la Tabla, por ejemplo `=SUMA(Pendientes[Importe])-G2`, para que la fórmula crezca con los datos."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Andrés Molina",
+      "puesto": "Jefe de compras y almacén",
+      "md": "¡Una hora menos cada lunes! Una cosa: el lunes que viene estoy en Pamplona y lo actualiza Nuria, que no ha visto la consulta. Déjale las instrucciones claras, por favor."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l1-e6",
+      "modo": "abierta",
+      "pregunta": "Escribe a Nuria, en tres pasos cortos, qué tiene que hacer el lunes para tener la lista de pendientes limpia y comprobada.",
+      "modelo": "1) Saca del ERP «pendientes_proveedores.csv» y guárdalo con ese mismo nombre en la carpeta de siempre, sustituyendo el anterior. 2) Abre el libro y pulsa Datos › Actualizar todo (Ctrl+Alt+F5). 3) Mira la celda de control: si la diferencia es 0, cuadra y se puede enviar; si no, avísame antes.",
+      "criterios": [
+        "Guardar el CSV nuevo con el mismo nombre y en la misma carpeta",
+        "Pulsar Actualizar todo (botón o Ctrl+Alt+F5)",
+        "Revisar la celda de control antes de dar por bueno el resultado",
+        "No pide limpiar a mano ni tocar la Tabla cargada"
+      ]
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n4m1l1-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cómo se llama la lista del Editor de Power Query donde queda apuntado cada cambio que haces?",
+      "aceptadas": ["Pasos aplicados", "pasos aplicados", "Pasos", "los pasos aplicados"],
+      "explicacion": "**Pasos aplicados**, a la derecha del editor. Es la receta que se repite al actualizar."
+    },
+    {
+      "id": "n4m1l1-q2",
+      "modo": "test",
+      "pregunta": "¿Qué le pasa al CSV original cuando Power Query lo limpia?",
+      "opciones": [
+        {
+          "texto": "Nada: Power Query lo lee, pero no lo cambia",
+          "correcta": true,
+          "porque": "La limpieza vive en la consulta; el archivo de origen queda intacto."
+        },
+        {
+          "texto": "Se guarda limpio encima del original",
+          "correcta": false,
+          "porque": "Power Query nunca escribe en el origen; el resultado va a una Tabla de tu libro."
+        },
+        {
+          "texto": "Se borra para que no se cargue dos veces",
+          "correcta": false,
+          "porque": "Al contrario: lo necesita para leerlo cada vez que actualizas."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l1-q3",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué atajo de teclado actualiza todas las consultas del libro?",
+      "aceptadas": ["Ctrl+Alt+F5", "Control+Alt+F5", "Ctrl Alt F5", "ctrl+alt+f5", "Ctrl + Alt + F5"],
+      "explicacion": "[[Ctrl]]+[[Alt]]+[[F5]], lo mismo que **Datos › Actualizar todo**."
+    }
+  ],
+  "tarjetas": [
+    {"tipo": "concepto", "frente": "¿Qué es una consulta de Power Query?", "dorso": "La receta guardada: de dónde vienen los datos y qué pasos se les aplican. Se repite con Actualizar."},
+    {"tipo": "atajo", "frente": "Actualizar todas las consultas del libro", "dorso": "Ctrl+Alt+F5 (o Datos › Actualizar todo)."},
+    {"tipo": "atajo", "frente": "Abrir el Editor de Power Query", "dorso": "Alt+F12."},
+    {"tipo": "concepto", "frente": "Corriges a mano un dato de la Tabla que cargó Power Query. ¿Qué pasa al actualizar?", "dorso": "Se pierde: la Tabla se reescribe desde la consulta. Corrige con un paso en el editor."}
+  ]
+}

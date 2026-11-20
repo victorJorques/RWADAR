@@ -1,0 +1,1789 @@
+{
+  "id": "n1m1",
+  "nivel": "n1",
+  "titulo": "Fórmulas que se copian bien",
+  "intro": "En una oficina casi nunca se calcula una sola fila: hay pedidos de veinte líneas, facturas de toda la semana y listas de cincuenta clientes. Aquí aprendes a escribir una fórmula una vez, copiarla sin que se descoloque y calcular IVA, descuentos y subidas como lo hace un departamento de administración.",
+  "repaso_inicial": [
+    {
+      "id": "n1m1-r1",
+      "modo": "test",
+      "pregunta": "Quieres que Excel multiplique el precio de **B2** por las unidades de **C2**. ¿Qué escribes en D2?",
+      "opciones": [
+        {
+          "texto": "=B2*C2",
+          "correcta": true,
+          "porque": "Correcto: empieza por el signo igual y usa las direcciones de las celdas, así el resultado cambia solo si cambian los datos."
+        },
+        {
+          "texto": "B2*C2",
+          "correcta": false,
+          "porque": "Sin el signo igual delante, Excel lo toma como un texto y no calcula nada."
+        },
+        {
+          "texto": "=B2xC2",
+          "correcta": false,
+          "porque": "En Excel el signo de multiplicar es el asterisco `*`, no la letra x."
+        },
+        {
+          "texto": "=48,90*12",
+          "correcta": false,
+          "porque": "Da el número de hoy, pero si cambia el precio de B2 el resultado no se entera: has escrito los datos a mano dentro de la fórmula."
+        }
+      ]
+    },
+    {
+      "id": "n1m1-r2",
+      "modo": "predice",
+      "enunciado": "Antes de que Excel lo calcule: ¿qué devuelve esta fórmula en A5?",
+      "hoja": {
+        "celdas": {
+          "A1": "Importe",
+          "A2": 120,
+          "A3": 80,
+          "A4": 45.5
+        },
+        "formatos": {
+          "A2:A4": "eur"
+        }
+      },
+      "celda": "A5",
+      "formula": "=SUMA(A2:A4)",
+      "explicacion": "SUMA suma todas las celdas del rango A2:A4: 120 + 80 + 45,50 = 245,50.",
+      "respuesta": "245,5"
+    },
+    {
+      "id": "n1m1-r3",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué atajo de teclado guarda el libro en el Excel en español?",
+      "aceptadas": [
+        "Ctrl+G",
+        "Control+G",
+        "Ctrl G",
+        "Ctrl + G",
+        "ctrl+g"
+      ],
+      "explicacion": "[[Ctrl]]+[[G]], de «Guardar». Úsalo cada pocos minutos: es tu seguro contra cortes de luz y cierres inesperados."
+    },
+    {
+      "id": "n1m1-r4",
+      "modo": "test",
+      "pregunta": "¿Qué celda es **D7**?",
+      "opciones": [
+        {
+          "texto": "La de la columna D y la fila 7",
+          "correcta": true,
+          "porque": "Correcto: primero la letra de la columna y después el número de la fila, como en el juego de los barcos."
+        },
+        {
+          "texto": "La de la fila D y la columna 7",
+          "correcta": false,
+          "porque": "En Excel las filas son números y las columnas, letras. Nunca al revés."
+        },
+        {
+          "texto": "La séptima celda que has escrito",
+          "correcta": false,
+          "porque": "La dirección no depende del orden en que escribes: es un sitio fijo de la hoja."
+        }
+      ]
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n1m1l1",
+      "titulo": "Copiar fórmulas hacia abajo: el controlador de relleno",
+      "minutos": 14,
+      "objetivo": "Escribir una fórmula en la primera fila y copiarla a toda la columna con el controlador de relleno, entendiendo por qué las direcciones cambian solas, y crear series (días, meses, números y fechas).",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Buenos días. Te dejo el pedido a Conductores del Ebro con seis líneas. Me falta el importe de cada una (precio por unidades) y el total. Lo necesito antes de las doce para mandarlo.",
+        "logro": "Ya sabes calcular una columna entera de importes escribiendo la fórmula una sola vez y copiándola en un segundo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Esta semana vas a ver listas largas: pedidos, facturas, ventas. Si cada fila necesita el mismo cálculo, **no lo escribas fila a fila**. Escribes la fórmula **una vez**, en la primera fila, y la **copias** hacia abajo.\n\nEs como hacer una receta para una persona y decirle a Excel: «haz lo mismo para todas las demás». Ahorras tiempo y, sobre todo, **errores**: cuantas menos fórmulas escribes a mano, menos te puedes equivocar."
+        },
+        {
+          "tipo": "pantalla",
+          "md": "Cuando seleccionas una celda, en su esquina de abajo a la derecha aparece un **cuadradito**. Se llama **controlador de relleno**. Si pones el ratón encima, el puntero se convierte en una **cruz negra y fina**: ahí puedes arrastrar para copiar.",
+          "resaltar": "controlador_relleno"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e1",
+          "modo": "senala",
+          "pregunta": "Toca el **controlador de relleno**: el cuadradito con el que copiarás fórmulas hacia abajo.",
+          "zona": "controlador_relleno",
+          "explicacion": "Ese cuadradito es tu herramienta más usada a partir de hoy. Arrastrándolo copias una fórmula a diez, cien o mil filas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Mira qué pasa al copiar. En **D2** está `=B2*C2`. Al arrastrarla una fila abajo, en **D3** aparece `=B3*C3`, y en **D4**, `=B4*C4`.\n\nExcel no copia «la celda B2», sino la idea: «la celda de **dos columnas a la izquierda**, en **mi misma fila**». Por eso cada fila usa sus propios datos. A esto se le llama **referencia relativa**: la dirección se mueve con la fórmula."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La misma fórmula, copiada",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Bridas 200 mm (bolsa)",
+              "B2": 3.2,
+              "C2": 50,
+              "D2": "=B2*C2",
+              "A3": "Caja de empalme",
+              "B3": 1.85,
+              "C3": 40,
+              "D3": "=B3*C3",
+              "A4": "Base de enchufe",
+              "B4": 4.6,
+              "C4": 30,
+              "D4": "=B4*C4"
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "D2:D4": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "resaltar": [
+            "D2:D4"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Fíjate: solo cambia el número de fila. La letra de la columna se queda igual porque has copiado hacia abajo, no hacia un lado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e2",
+          "modo": "test",
+          "pregunta": "En **D2** tienes `=B2*C2`. La copias con el controlador de relleno a **D3**. ¿Qué fórmula queda en D3?",
+          "opciones": [
+            {
+              "texto": "=B3*C3",
+              "correcta": true,
+              "porque": "Correcto: has bajado una fila, así que las dos direcciones bajan una fila. Cada línea multiplica sus propios datos."
+            },
+            {
+              "texto": "=B2*C2",
+              "correcta": false,
+              "porque": "Si fuera así, todas las filas darían el mismo importe que la primera. Excel mueve las direcciones al copiar."
+            },
+            {
+              "texto": "=C2*D2",
+              "correcta": false,
+              "porque": "Al copiar hacia abajo cambia la fila, no la columna. Las letras solo cambian si copias hacia la derecha o la izquierda."
+            },
+            {
+              "texto": "=B3*C2",
+              "correcta": false,
+              "porque": "Las dos direcciones son relativas y se mueven igual. No hay motivo para que una cambie y la otra no."
+            }
+          ],
+          "explicacion": "Al copiar hacia abajo, los números de fila suben de uno en uno: 2, 3, 4… Por eso una sola fórmula sirve para toda la lista."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: copiar arrastrando",
+          "pasos": [
+            {
+              "md": "Haz clic en **D2** y escribe `=B2*C2`. Pulsa [[Intro]]."
+            },
+            {
+              "md": "Vuelve a hacer clic en **D2** para seleccionarla."
+            },
+            {
+              "md": "Lleva el ratón al **cuadradito** de la esquina inferior derecha hasta que veas la **cruz negra y fina**."
+            },
+            {
+              "md": "Mantén pulsado el botón izquierdo y **arrastra hacia abajo** hasta la última fila de datos. Suelta."
+            },
+            {
+              "md": "Comprueba una fila al azar: haz clic en ella y mira la **barra de fórmulas**. Debe usar los datos de su propia fila."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e3",
+          "modo": "formula",
+          "enunciado": "Tu turno, con la ayuda puesta. En **D2** escribe `=B2*C2` (precio por unidades). Al comprobar, la app copiará tu fórmula a **D3:D4**, como si arrastraras el cuadradito. Debe salir **160,00 €** en D2.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Bridas 200 mm (bolsa)",
+              "B2": 3.2,
+              "C2": 50,
+              "A3": "Caja de empalme",
+              "B3": 1.85,
+              "C3": 40,
+              "A4": "Base de enchufe",
+              "B4": 4.6,
+              "C4": 30
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "D2:D4": "eur"
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=B2+C2",
+            "=3,2*50"
+          ],
+          "variantes": [
+            {
+              "B2": 3.5,
+              "C3": 25
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza siempre por el signo igual `=`.",
+            "Haz clic en la celda del precio (B2), escribe el asterisco `*` y haz clic en las unidades (C2).",
+            "La fórmula completa es `=B2*C2`."
+          ],
+          "explicacion": "Una fórmula, tres importes correctos. Con esto ya puedes calcular cualquier columna de importes de un pedido o una factura, tenga 3 filas o 300."
+        },
+        {
+          "tipo": "texto",
+          "md": "Arrastrar está bien para pocas filas. Para listas largas hay algo mejor: **doble clic en el controlador de relleno**.\n\nExcel copia la fórmula hacia abajo **solo**, hasta la última fila que tenga datos la columna de al lado. Si la columna de al lado tiene un hueco (una fila vacía), se para ahí: revisa siempre el final de la lista."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Rellenar hacia abajo con el teclado",
+          "md": "Selecciona desde la celda con la fórmula hasta la última fila y pulsa [[Ctrl]]+[[J]]. En el Excel en español es la **J**; [[Ctrl]]+[[D]] rellena hacia la derecha."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e4",
+          "modo": "test",
+          "pregunta": "Tienes una lista de 200 facturas. Escribes la fórmula en la fila 2 y haces **doble clic** en el controlador de relleno. Solo se rellena hasta la fila 57. ¿Qué ha pasado lo más probable?",
+          "opciones": [
+            {
+              "texto": "La columna de al lado tiene una celda vacía en la fila 58",
+              "correcta": true,
+              "porque": "Correcto: el doble clic copia hasta donde encuentra datos seguidos en la columna vecina. Un hueco lo para. Rellena el resto arrastrando o con Ctrl+J."
+            },
+            {
+              "texto": "Excel solo copia 56 filas cada vez",
+              "correcta": false,
+              "porque": "No hay límite así. El doble clic llega hasta el final de los datos, sean 50 o 50 000 filas."
+            },
+            {
+              "texto": "La fórmula está mal escrita",
+              "correcta": false,
+              "porque": "Si la fórmula estuviera mal, fallaría también en las filas copiadas, no se pararía en una fila concreta."
+            }
+          ],
+          "explicacion": "Por eso, después de rellenar, baja al final de la lista ([[Ctrl]]+[[↓]]) y comprueba que la última fila también tiene su fórmula."
+        },
+        {
+          "tipo": "texto",
+          "md": "El controlador de relleno también sabe **continuar series**. Escribe el primer elemento, arrastra y Excel sigue la secuencia:\n\n- `lunes` → martes, miércoles, jueves…\n- `enero` → febrero, marzo, abril…\n- Una fecha, `16/11/2026` → 17/11/2026, 18/11/2026…\n- `1` y `2` en dos celdas, **seleccionadas juntas** → 3, 4, 5…\n\nOjo con los números: si escribes solo un `1` y arrastras, Excel copia el 1 en todas las celdas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e5",
+          "modo": "test",
+          "pregunta": "Lucía, de RRHH, te pide numerar del 1 al 30 la columna A de una lista de turnos. ¿Cuál es la forma más rápida y segura?",
+          "opciones": [
+            {
+              "texto": "Escribir 1 en A2 y 2 en A3, seleccionar las dos y arrastrar el controlador hasta A31",
+              "correcta": true,
+              "porque": "Correcto: con dos números Excel entiende el paso (de uno en uno) y continúa la serie: 3, 4, 5… hasta 30."
+            },
+            {
+              "texto": "Escribir 1 en A2 y arrastrar el controlador hasta A31",
+              "correcta": false,
+              "porque": "Con un solo número, Excel lo copia: saldrían treinta unos. Puedes arreglarlo con el botón de opciones que aparece al soltar, pero es más fácil darle dos números."
+            },
+            {
+              "texto": "Escribir los 30 números a mano",
+              "correcta": false,
+              "porque": "Funciona, pero es lento y es fácil saltarse uno. Para eso existe el controlador de relleno."
+            }
+          ],
+          "explicacion": "Con días, meses y fechas basta un elemento; con números, dale dos para que Excel vea el ritmo."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un aviso de compañera: la persona que había antes en tu puesto escribía la fórmula **fila a fila**. En la fila 34 puso `=B34*C33` sin darse cuenta y el pedido salió mal. Una fórmula copiada no se equivoca de fila. Una fórmula escrita a mano, a veces sí."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "En **D2** tienes `=B2*C2`. La copias hacia abajo hasta **D5**. ¿Qué fórmula queda en **D5**? Escríbela.",
+          "aceptadas": [
+            "=B5*C5",
+            "=b5*c5",
+            "= B5*C5",
+            "B5*C5"
+          ],
+          "explicacion": "De la fila 2 a la 5 hay tres filas, así que las dos direcciones bajan tres filas: `=B5*C5`. Si en una fila copiada te sale un número raro, haz clic y mira su fórmula: así se encuentran los errores."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l1-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Andrés.** En **D2** escribe la fórmula del importe de la primera línea (precio por unidades). La app la copiará a **D3:D7**. Debe salir **586,80 €** en D2, y el total de **D9** se llenará solo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Cable 2,5 mm² (rollo 100 m)",
+              "B2": 48.9,
+              "C2": 12,
+              "A3": "Canaleta 40×60 (tramo 2 m)",
+              "B3": 6.35,
+              "C3": 40,
+              "A4": "Tubo corrugado 20 mm (rollo)",
+              "B4": 21.8,
+              "C4": 15,
+              "A5": "Bridas 200 mm (bolsa 100)",
+              "B5": 3.2,
+              "C5": 50,
+              "A6": "Magnetotérmico 2P 16 A",
+              "B6": 9.75,
+              "C6": 30,
+              "A7": "Panel LED 60×60",
+              "B7": 27.4,
+              "C7": 18,
+              "A9": "Total pedido",
+              "D9": "=SUMA(D2:D7)"
+            },
+            "formatos": {
+              "B2:B7": "eur",
+              "D2:D9": "eur"
+            },
+            "anchos": {
+              "A": 28
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D7"
+          ],
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=B2+C2",
+            "=48,9*12",
+            "=B2*C3"
+          ],
+          "variantes": [
+            {
+              "B2": 50,
+              "C7": 20
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Es el mismo cálculo de antes: precio por unidades, en la fila 2.",
+            "Usa las direcciones de las celdas, no los números: así, si Andrés cambia una cantidad, el importe se actualiza solo.",
+            "Escribe `=B2*C2`."
+          ],
+          "explicacion": "Pedido calculado: seis importes y el total en segundos. Si mañana Andrés cambia una cantidad, todo se recalcula solo. Esto es exactamente lo que harás con cualquier pedido, albarán o factura."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m1l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar: ¿cómo se llama el cuadradito de la esquina de la celda que sirve para copiar fórmulas?",
+          "aceptadas": [
+            "controlador de relleno",
+            "el controlador de relleno",
+            "Controlador de relleno",
+            "controlador relleno"
+          ],
+          "explicacion": "**Controlador de relleno.** Arrástralo para copiar o haz doble clic para rellenar hasta el final de la lista."
+        },
+        {
+          "id": "n1m1l1-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "En **E3** tienes `=C3*D3`. La copias hacia abajo hasta **E9**. ¿Qué fórmula queda en **E9**?",
+          "aceptadas": [
+            "=C9*D9",
+            "=c9*d9",
+            "C9*D9",
+            "= C9*D9"
+          ],
+          "explicacion": "Del 3 al 9 hay seis filas: las dos direcciones bajan seis filas y quedan `=C9*D9`."
+        },
+        {
+          "id": "n1m1l1-q3",
+          "modo": "cinta",
+          "enunciado": "Sin teclado ni ratón en la esquina: ¿dónde está el botón **Rellenar** de la cinta, el que copia hacia abajo lo que has seleccionado?",
+          "ruta": [
+            "Inicio",
+            "Edición",
+            "Rellenar"
+          ],
+          "explicacion": "Inicio › Edición › Rellenar › Hacia abajo. Hace lo mismo que [[Ctrl]]+[[J]]."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una referencia relativa?",
+          "dorso": "Una dirección sin $ (como B2) que se mueve al copiar la fórmula: copiada una fila abajo, pasa a B3."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Rellenar hacia abajo con el teclado (Excel en español)",
+          "dorso": "Ctrl+J (Ctrl+D rellena hacia la derecha)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Hasta dónde llega el doble clic en el controlador de relleno?",
+          "dorso": "Hasta la última fila con datos seguidos de la columna de al lado. Un hueco lo para."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo numeras 1, 2, 3… con el controlador de relleno?",
+          "dorso": "Escribe 1 y 2, selecciona las dos celdas y arrastra. Con un solo 1, Excel lo copia."
+        }
+      ]
+    },
+    {
+      "id": "n1m1l2",
+      "titulo": "El símbolo $: fija la celda que no debe moverse",
+      "minutos": 15,
+      "objetivo": "Fijar con $ (tecla F4) la celda de un dato común, como el tipo de IVA o el porcentaje de comisión, para que la fórmula se pueda copiar a toda la lista sin descolocarse.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Necesito las comisiones de noviembre de los cinco comerciales para pasarlas a nóminas. Este mes es un 3 % de lo vendido; te lo he puesto arriba, en B1, porque en diciembre cambia. Rápido, por favor.",
+        "logro": "Ya sabes copiar una fórmula que usa un dato común (IVA, comisión, precio por kilómetro) sin que se descoloque, gracias al símbolo $."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "A veces todas las filas necesitan **el mismo dato**: el tipo de IVA, el porcentaje de comisión, el precio por kilómetro. Ese dato se escribe **una sola vez**, en una celda aparte, y las fórmulas apuntan a él.\n\nPero aquí la copia te juega una mala pasada. Mira la hoja: en C4 la fórmula del IVA (la **base**, que es el importe sin IVA, por el tipo) está bien. Al copiarla hacia abajo, la dirección del IVA **también baja**… y deja de apuntar a B1."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Lo que pasa si no fijas el IVA",
+          "hoja": {
+            "celdas": {
+              "A1": "Tipo de IVA",
+              "B1": 0.21,
+              "A3": "Factura",
+              "B3": "Base",
+              "C3": "IVA",
+              "A4": "F26-0412",
+              "B4": 1250,
+              "C4": "=B4*B1",
+              "A5": "F26-0413",
+              "B5": 845.5,
+              "C5": "=B5*B2",
+              "A6": "F26-0414",
+              "B6": 2310,
+              "C6": "=B6*B3",
+              "A7": "F26-0415",
+              "B7": 96.8,
+              "C7": "=B7*B4"
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:B7": "eur",
+              "C4:C7": "eur"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "resaltar": [
+            "C5:C7"
+          ],
+          "mostrar_formulas": true,
+          "pie": "C5 apunta a B2 (vacía) y da 0. C6 apunta a un texto y da error. C7 multiplica dos importes y da un número absurdo **sin ningún aviso**: el error más peligroso."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e1",
+          "modo": "predice",
+          "enunciado": "Antes de verlo: la fórmula de C5 quedó `=B5*B2` al copiarla, y **B2 está vacía**. ¿Qué número saldrá en C5?",
+          "hoja": {
+            "celdas": {
+              "A1": "Tipo de IVA",
+              "B1": 0.21,
+              "A3": "Factura",
+              "B3": "Base",
+              "C3": "IVA",
+              "A4": "F26-0412",
+              "B4": 1250,
+              "A5": "F26-0413",
+              "B5": 845.5
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:B5": "eur",
+              "C5": "eur"
+            }
+          },
+          "celda": "C5",
+          "formula": "=B5*B2",
+          "explicacion": "Una celda vacía vale 0 para Excel, y cualquier cosa por 0 da 0. La factura aparece «sin IVA» y nadie lo nota a simple vista. Por eso hay que fijar la celda del IVA.",
+          "respuesta": "0"
+        },
+        {
+          "tipo": "texto",
+          "md": "La solución es un **ancla**: el símbolo **$**. Escribes `$B$1` en lugar de `B1`.\n\n- El `$` delante de la **B** dice: «la columna no se mueve».\n- El `$` delante del **1** dice: «la fila no se mueve».\n\nCon los dos, `$B$1` apunta **siempre** a B1, copies la fórmula donde la copies. Esto se llama **referencia absoluta**. Las demás direcciones, sin `$`, siguen moviéndose fila a fila como antes."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "F4 pone los $ por ti",
+          "md": "Mientras escribes la fórmula, justo después de hacer clic en B1, pulsa [[F4]]: `B1` se convierte en `$B$1`. En muchos portátiles hay que pulsar [[Fn]]+[[F4]]."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e2",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** La fórmula de **C4** calcula el IVA de la factura, pero al copiarla a **C5:C8** se descoloca. Corrígela para que apunte siempre al tipo de IVA de **B1**. Debe salir **262,50 €** en C4 y estar bien en todas las filas.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tipo de IVA",
+              "B1": 0.21,
+              "A3": "Factura",
+              "B3": "Base",
+              "C3": "IVA",
+              "A4": "F26-0412",
+              "B4": 1250,
+              "A5": "F26-0413",
+              "B5": 845.5,
+              "A6": "F26-0414",
+              "B6": 2310,
+              "A7": "F26-0415",
+              "B7": 96.8,
+              "A8": "F26-0416",
+              "B8": 4780
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:B8": "eur",
+              "C4:C8": "eur"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "objetivo": "C4",
+          "inicial": "=B4*B1",
+          "copiar_a": [
+            "C5:C8"
+          ],
+          "solucion": "=B4*$B$1",
+          "alternativas": [
+            "=$B$1*B4",
+            "=B4*B$1"
+          ],
+          "errores_tipicos": [
+            "=B4*B1",
+            "=B4*0,21",
+            "=B4*21"
+          ],
+          "variantes": [
+            {
+              "B1": 0.1,
+              "B6": 2000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "La base (B4) sí debe moverse fila a fila; el tipo de IVA (B1), no.",
+            "Pon el cursor sobre `B1` dentro de la fórmula y pulsa F4, o escribe los $ a mano.",
+            "La fórmula correcta es `=B4*$B$1`."
+          ],
+          "explicacion": "Cinco facturas con su IVA correcto. `B4` va bajando y `$B$1` se queda quieta. Este patrón (dato común en una celda + $) lo usarás a diario: IVA, comisiones, tarifas, descuentos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e3",
+          "modo": "respuesta_corta",
+          "pregunta": "Estás escribiendo una fórmula y acabas de hacer clic en **B1**. ¿Qué tecla pulsas para que se convierta en `$B$1`?",
+          "aceptadas": [
+            "F4",
+            "f4",
+            "Fn+F4",
+            "la tecla F4",
+            "tecla F4"
+          ],
+          "explicacion": "[[F4]] (en algunos portátiles, [[Fn]]+[[F4]]). Es más rápido y más seguro que escribir los $ a mano."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Otra cosa que verás por ahí: fórmulas como `=B4*0,21`, con el 21 % escrito **dentro**. Hoy funcionan. Pero el día que haya que usar otro tipo, toca buscarlo en cientos de fórmulas, y siempre se escapa alguna. El dato, en su celda; la fórmula, apuntando a ella con `$`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e4",
+          "modo": "test",
+          "pregunta": "Tienes el tipo de IVA en **B1** y vas a copiar la fórmula de C4 a cien filas. ¿Cuál es la mejor fórmula para C4?",
+          "opciones": [
+            {
+              "texto": "=B4*$B$1",
+              "correcta": true,
+              "porque": "Correcto: la base se mueve fila a fila y el IVA queda fijo. Si el tipo cambia, solo tocas B1."
+            },
+            {
+              "texto": "=B4*0,21",
+              "correcta": false,
+              "porque": "Da bien hoy, pero el 21 % está escondido dentro de cien fórmulas. Si cambia, tendrás que corregirlas todas."
+            },
+            {
+              "texto": "=B4*B1",
+              "correcta": false,
+              "porque": "Al copiarla, B1 pasa a B2, B3… y apunta a celdas vacías o a otros datos."
+            },
+            {
+              "texto": "=$B$4*$B$1",
+              "correcta": false,
+              "porque": "Con $ en la base, las cien filas calcularían el IVA de la misma factura, la de la fila 4."
+            }
+          ],
+          "explicacion": "La regla: `$` solo en lo que debe quedarse quieto. Lo que cambia de fila en fila, sin `$`."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuidado con el exceso de celo: **no pongas $ a todo**. Si escribes `=$C$4*$B$1`, al copiarla todas las filas calcularán con el dato de la fila 4 y verás la misma cifra repetida.\n\nPregúntate siempre: «Cuando baje a la fila siguiente, ¿este dato debe cambiar?». Si la respuesta es sí, sin `$`. Si es no, con `$`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e5",
+          "modo": "formula",
+          "enunciado": "Lucía, de RRHH, paga los desplazamientos a **0,30 € por kilómetro** (está en **B1**). En **D4** calcula lo que cobra Sergio: kilómetros por precio por km. La app copiará tu fórmula a **D5:D7**. Debe salir **54,60 €** en D4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pago por km",
+              "B1": 0.3,
+              "A3": "Empleado",
+              "B3": "Viaje",
+              "C3": "Km",
+              "D3": "Importe",
+              "A4": "Sergio Gil",
+              "B4": "Pamplona",
+              "C4": 182,
+              "A5": "Elena Navarro",
+              "B5": "Lleida",
+              "C5": 152,
+              "A6": "Raúl Pérez",
+              "B6": "Huesca",
+              "C6": 74,
+              "A7": "Pilar Martín",
+              "B7": "Teruel",
+              "C7": 171
+            },
+            "formatos": {
+              "B1": "eur",
+              "D4:D7": "eur"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "objetivo": "D4",
+          "copiar_a": [
+            "D5:D7"
+          ],
+          "solucion": "=C4*$B$1",
+          "alternativas": [
+            "=$B$1*C4",
+            "=C4*B$1"
+          ],
+          "errores_tipicos": [
+            "=C4*B1",
+            "=C4*0,3",
+            "=$C$4*$B$1"
+          ],
+          "variantes": [
+            {
+              "B1": 0.35,
+              "C5": 200
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "¿Qué dato cambia de una persona a otra? Los kilómetros (columna C). ¿Cuál es igual para todos? El precio por km (B1).",
+            "Multiplica los km de la fila 4 por B1, y fija B1 con F4.",
+            "La fórmula es `=C4*$B$1`."
+          ],
+          "explicacion": "Hoja de kilometraje lista. Y si la empresa cambia el precio por kilómetro, Lucía solo toca B1 y se recalculan todos. Así se montan las hojas que se reutilizan mes a mes."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una curiosidad que verás algún día. Si pulsas [[F4]] varias veces, el `$` va cambiando de sitio:\n\n1. `$B$1`: fija columna y fila.\n2. `B$1`: fija solo la fila.\n3. `$B1`: fija solo la columna.\n4. `B1`: sin fijar (vuelta al principio).\n\nLas dos del medio se llaman **referencias mixtas**. Sirven para tablas que se copian hacia abajo **y** hacia la derecha. Por ahora te basta con `$B$1`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e6",
+          "modo": "abierta",
+          "pregunta": "Entra un compañero nuevo en el almacén y te pregunta por qué en tu hoja pones `$B$1` y no `B1`. Explícaselo en dos o tres frases, sin tecnicismos.",
+          "modelo": "Porque el tipo de IVA está solo en B1 y todas las filas tienen que usarlo. Si no pongo los $, al copiar la fórmula hacia abajo B1 se convierte en B2, B3…, que están vacías o tienen otros datos, y los resultados salen mal. Con $B$1 esa dirección se queda fija y la base sí va cambiando de fila.",
+          "criterios": [
+            "Dice que el dato común está en una sola celda",
+            "Explica que al copiar, sin $, la dirección se mueve a otra celda",
+            "Dice que el $ la deja fija mientras el resto de la fórmula sigue cambiando",
+            "Lo explica con palabras sencillas"
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l2-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Javier.** En **C4** calcula la comisión de Alberto: sus ventas por el porcentaje de **B1**. La app copiará tu fórmula a **C5:C8**, y el total de **C10** se llenará solo. Debe salir **1.447,50 €** en C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comisión",
+              "B1": 0.03,
+              "A3": "Comercial",
+              "B3": "Ventas noviembre",
+              "C3": "Comisión",
+              "A4": "Alberto Sanz",
+              "B4": 48250,
+              "A5": "Rocío Lozano",
+              "B5": 61730,
+              "A6": "Daniel Herrero",
+              "B6": 39880,
+              "A7": "Beatriz Gómez",
+              "B7": 55410,
+              "A8": "Iván Castillo",
+              "B8": 27960,
+              "A10": "Total comisiones",
+              "C10": "=SUMA(C4:C8)"
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:B8": "eur",
+              "C4:C10": "eur"
+            },
+            "anchos": {
+              "A": 16,
+              "B": 16
+            }
+          },
+          "objetivo": "C4",
+          "copiar_a": [
+            "C5:C8"
+          ],
+          "solucion": "=B4*$B$1",
+          "alternativas": [
+            "=$B$1*B4",
+            "=B4*B$1"
+          ],
+          "errores_tipicos": [
+            "=B4*B1",
+            "=B4*0,03",
+            "=B4*3",
+            "=$B$4*$B$1"
+          ],
+          "variantes": [
+            {
+              "B1": 0.035
+            },
+            {
+              "B7": 60000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Las ventas cambian de un comercial a otro; el porcentaje de B1 es el mismo para todos.",
+            "Multiplica B4 por B1 y fija B1 con F4.",
+            "La fórmula es `=B4*$B$1`."
+          ],
+          "explicacion": "Comisiones listas para nóminas. Y cuando en diciembre Javier cambie el porcentaje, bastará con escribir el nuevo en B1: las cinco comisiones y el total se recalculan solos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m1l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En **C2** tienes `=B2*$E$1`. La copias hacia abajo hasta **C5**. ¿Qué fórmula queda en **C5**?",
+          "aceptadas": [
+            "=B5*$E$1",
+            "=b5*$e$1",
+            "B5*$E$1",
+            "= B5*$E$1"
+          ],
+          "explicacion": "`B2` no tiene $ y baja tres filas hasta `B5`. `$E$1` está fijada y no se mueve: `=B5*$E$1`."
+        },
+        {
+          "id": "n1m1l2-q2",
+          "modo": "predice",
+          "enunciado": "Javier ha cambiado la comisión de **B1** al 3,5 %. La fórmula de C4 es `=B4*$B$1`. ¿Qué sale ahora en C4?",
+          "hoja": {
+            "celdas": {
+              "A1": "Comisión",
+              "B1": 0.035,
+              "A3": "Comercial",
+              "B3": "Ventas",
+              "C3": "Comisión",
+              "A4": "Alberto Sanz",
+              "B4": 48250
+            },
+            "formatos": {
+              "B1": "pct1",
+              "B4": "eur",
+              "C4": "eur"
+            }
+          },
+          "celda": "C4",
+          "formula": "=B4*$B$1",
+          "explicacion": "48.250 × 0,035 = 1.688,75 €. Solo ha cambiado B1, y la fórmula lo ha recogido sin tocarla.",
+          "respuesta": "1688,75"
+        },
+        {
+          "id": "n1m1l2-q3",
+          "modo": "test",
+          "pregunta": "Copias `=$C$4*$B$1` hacia abajo en una lista de importes. ¿Qué verás?",
+          "opciones": [
+            {
+              "texto": "El mismo resultado repetido en todas las filas",
+              "correcta": true,
+              "porque": "Correcto: con $ en C4, todas las filas usan el dato de la fila 4. El $ solo va en lo que no debe moverse."
+            },
+            {
+              "texto": "Cada fila con su resultado correcto",
+              "correcta": false,
+              "porque": "Para eso C4 tendría que poder bajar a C5, C6…, y el $ se lo impide."
+            },
+            {
+              "texto": "Un error #¡REF!",
+              "correcta": false,
+              "porque": "No hay ningún error: la fórmula es válida, solo que calcula siempre lo mismo. Por eso es un fallo difícil de ver."
+            }
+          ],
+          "explicacion": "Ni sin $ ni con $ en todo: $ solo en el dato común."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una referencia absoluta?",
+          "dorso": "Una dirección con $ (como $B$1) que no cambia al copiar la fórmula."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Poner los $ mientras escribes la fórmula",
+          "dorso": "F4 (en portátiles, a veces Fn+F4). Pulsada varias veces: $B$1, B$1, $B1, B1."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no se escribe =B4*0,21?",
+          "dorso": "Porque el dato queda escondido en la fórmula. Ponlo en una celda y apunta a ella con $: =B4*$B$1."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde va el $?",
+          "dorso": "Solo en lo que debe quedarse quieto al copiar (el dato común). Lo que cambia de fila en fila, sin $."
+        }
+      ]
+    },
+    {
+      "id": "n1m1l3",
+      "titulo": "El orden de las operaciones y los paréntesis",
+      "minutos": 14,
+      "objetivo": "Saber en qué orden calcula Excel (paréntesis, potencias, multiplicar y dividir, sumar y restar) y usar paréntesis para calcular bien una media a mano y un margen.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Mañana reviso precios con Carmen. Necesito el margen de estos cinco productos: qué parte del precio de venta nos queda después de pagar el coste. La hoja de la última vez daba márgenes de risa, así que mírala bien.",
+        "logro": "Ya sabes escribir fórmulas con varias operaciones que calculan lo que quieres, como medias y márgenes, sin caer en la trampa del orden."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Cuando una fórmula tiene varias operaciones, Excel **no** calcula de izquierda a derecha como una calculadora de bolsillo. Sigue un orden fijo, el mismo que en matemáticas:\n\n1. Lo que está entre **paréntesis** `( )`.\n2. Las **potencias** `^` (elevar a: `2^3` es 2×2×2).\n3. **Multiplicar** `*` y **dividir** `/`.\n4. **Sumar** `+` y **restar** `-`.\n\nSi hay dos del mismo nivel, de izquierda a derecha."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e1",
+          "modo": "predice",
+          "enunciado": "Aplica el orden: primero multiplicar, luego sumar. ¿Qué número devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Resultado"
+            }
+          },
+          "celda": "A2",
+          "formula": "=2+3*4",
+          "explicacion": "Primero 3 × 4 = 12, y después 2 + 12 = 14. Si te salía 20 es que has sumado primero, como una calculadora de bolsillo: Excel no lo hace.",
+          "respuesta": "14"
+        },
+        {
+          "tipo": "texto",
+          "md": "Los **paréntesis mandan**. Lo que metes entre paréntesis se calcula antes que nada, así que con ellos decides tú el orden.\n\nEs como en la cocina: «mezcla la harina y el azúcar, y luego añade los huevos» no es lo mismo que «mezcla la harina con el azúcar y los huevos a la vez»."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Sin paréntesis",
+          "der": "Con paréntesis",
+          "filas": [
+            [
+              "`=2+3*4` da **14**",
+              "`=(2+3)*4` da **20**"
+            ],
+            [
+              "`=10-4/2` da **8**",
+              "`=(10-4)/2` da **3**"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e2",
+          "modo": "test",
+          "pregunta": "Quieres sumar 2 y 3 y **después** multiplicar por 4, para que salga 20. ¿Qué escribes?",
+          "opciones": [
+            {
+              "texto": "=(2+3)*4",
+              "correcta": true,
+              "porque": "Correcto: el paréntesis obliga a sumar primero (5) y luego multiplicar (20)."
+            },
+            {
+              "texto": "=2+3*4",
+              "correcta": false,
+              "porque": "Excel multiplica antes de sumar: 3 × 4 = 12, más 2, da 14."
+            },
+            {
+              "texto": "=2+(3*4)",
+              "correcta": false,
+              "porque": "Ese paréntesis no cambia nada: la multiplicación ya iba primero. Sigue dando 14."
+            }
+          ],
+          "explicacion": "Cuando dudes, pon paréntesis: no estropean nada y dejan claro qué va primero."
+        },
+        {
+          "tipo": "texto",
+          "md": "Donde más se nota es en la **media a mano**. Para la media de tres meses hay que **sumar los tres y dividir entre 3**.\n\nMuchas personas escriben `=B2+B3+B4/3`. Pero Excel divide primero: solo divide B4 entre 3, y luego le suma B2 y B3. Sale una cifra mucho más alta de lo normal.\n\nLo correcto: `=(B2+B3+B4)/3`. El paréntesis hace que primero se sume todo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e3",
+          "modo": "test",
+          "pregunta": "La hoja que preparó otra persona calcula la media de ventas de Pamplona con `=B2+B3+B4/3`. Los tres meses fueron **186.400 €**, **175.200 €** y **192.650 €**. Antes de verlo: ¿qué saldrá más o menos?",
+          "opciones": [
+            {
+              "texto": "Más de 400.000 €",
+              "correcta": true,
+              "porque": "Correcto: Excel divide solo los 192.650 entre 3 (unos 64.000) y luego le suma los otros dos meses enteros. Sale 425.816,67 €."
+            },
+            {
+              "texto": "Unos 184.750 €, la media de verdad",
+              "correcta": false,
+              "porque": "Eso saldría si primero sumara los tres meses. Pero sin paréntesis Excel divide antes de sumar."
+            },
+            {
+              "texto": "Un error, porque la fórmula está mal escrita",
+              "correcta": false,
+              "porque": "La fórmula es válida y Excel la calcula sin quejarse. Por eso este fallo es peligroso: no avisa."
+            }
+          ],
+          "explicacion": "Sale más de 425.000 €, cuando ningún mes llega a 200.000 €. Una media nunca puede ser mayor que el dato más alto: si lo es, la fórmula está mal. Ese vistazo de sentido común te salvará muchas veces."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e4",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** En **B5** está la media mal calculada. Corrígela para que sume los tres meses y divida entre 3. Debe salir **184.750,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Mes",
+              "B1": "Ventas Pamplona",
+              "A2": "Septiembre",
+              "B2": 186400,
+              "A3": "Octubre",
+              "B3": 175200,
+              "A4": "Noviembre",
+              "B4": 192650,
+              "A5": "Media"
+            },
+            "formatos": {
+              "B2:B5": "eur"
+            },
+            "anchos": {
+              "B": 16
+            }
+          },
+          "objetivo": "B5",
+          "inicial": "=B2+B3+B4/3",
+          "solucion": "=(B2+B3+B4)/3",
+          "alternativas": [
+            "=SUMA(B2:B4)/3",
+            "=B2/3+B3/3+B4/3"
+          ],
+          "errores_tipicos": [
+            "=B2+B3+B4/3",
+            "=B2+B3+B4",
+            "=184750"
+          ],
+          "variantes": [
+            {
+              "B2": 200000,
+              "B4": 150000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero hay que sumar los tres meses y solo después dividir.",
+            "Encierra la suma entre paréntesis y divide el paréntesis entre 3.",
+            "La fórmula es `=(B2+B3+B4)/3`."
+          ],
+          "explicacion": "Ahora sí: 184.750 €, una cifra entre el mes más bajo y el más alto. Has aprendido a desconfiar de un resultado raro y a arreglarlo, que es la mitad del trabajo con Excel."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cada paréntesis que abres hay que **cerrarlo**. Si escribes `=(B2+B3/2` y pulsas [[Intro]], Excel no la acepta tal cual: te avisa de que hay un problema y a veces te propone una corrección. **Léela antes de aceptar**: puede cerrar el paréntesis en un sitio que no es el que tú querías.\n\nMientras escribes, Excel pinta cada pareja de paréntesis del mismo color. Úsalo para comprobar que cada uno tiene su pareja."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e5",
+          "modo": "test",
+          "pregunta": "Escribes `=(B2+B3)/(B4-B5` y pulsas Intro. Excel te propone una corrección. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Leer dónde pone el paréntesis que falta y aceptar solo si es lo que quería",
+              "correcta": true,
+              "porque": "Correcto: aquí falta cerrar el segundo paréntesis después de B5. Si la propuesta lo pone ahí, acepta; si no, corrígelo tú."
+            },
+            {
+              "texto": "Aceptar siempre sin mirar, Excel sabe lo que hace",
+              "correcta": false,
+              "porque": "Excel adivina, no sabe qué querías calcular. Una corrección mal puesta da un resultado sin error pero equivocado."
+            },
+            {
+              "texto": "Borrar la fórmula y escribir el resultado a mano",
+              "correcta": false,
+              "porque": "Un número escrito a mano no se actualiza cuando cambian los datos. Arregla la fórmula."
+            }
+          ],
+          "explicacion": "Revisa siempre una corrección automática: tú eres quien sabe qué debe calcular la fórmula."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e6",
+          "modo": "formula",
+          "enunciado": "Ahora sin ayuda inicial. En **E2** calcula la **media de los tres meses** de Zaragoza (septiembre, octubre y noviembre). La app copiará tu fórmula a **E3:E4** para las otras delegaciones. Debe salir **414.316,67 €** en E2.",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Septiembre",
+              "C1": "Octubre",
+              "D1": "Noviembre",
+              "E1": "Media",
+              "A2": "Zaragoza",
+              "B2": 412300,
+              "C2": 398750,
+              "D2": 431900,
+              "A3": "Pamplona",
+              "B3": 186400,
+              "C3": 175200,
+              "D3": 192650,
+              "A4": "Lleida",
+              "B4": 143900,
+              "C4": 151300,
+              "D4": 139800
+            },
+            "formatos": {
+              "B2:E4": "eur"
+            },
+            "anchos": {
+              "B": 14,
+              "C": 14,
+              "D": 14,
+              "E": 14
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E4"
+          ],
+          "solucion": "=(B2+C2+D2)/3",
+          "alternativas": [
+            "=SUMA(B2:D2)/3"
+          ],
+          "errores_tipicos": [
+            "=B2+C2+D2/3",
+            "=B2+C2+D2",
+            "=(B2+C2+D2)/2"
+          ],
+          "variantes": [
+            {
+              "B2": 300000,
+              "D3": 210000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Esta vez los tres meses están en la misma fila: B2, C2 y D2.",
+            "Suma los tres entre paréntesis y divide entre 3.",
+            "La fórmula es `=(B2+C2+D2)/3`. También vale `=SUMA(B2:D2)/3`."
+          ],
+          "explicacion": "Media trimestral de las tres delegaciones con una sola fórmula. En el próximo módulo verás la función PROMEDIO, que lo hace más corto, pero ya entiendes qué calcula por dentro."
+        },
+        {
+          "tipo": "texto",
+          "md": "Último caso, el de Javier: el **margen**. Es la parte del precio de venta que le queda a la empresa después de pagar lo que costó el producto.\n\nSe calcula así: **(precio de venta − coste) / precio de venta**.\n\nPor ejemplo, si vendes a 10 € algo que te costó 7,50 €, ganas 2,50 €, y 2,50 / 10 = 0,25. Con formato de porcentaje se ve **25 %** (el formato lo verás en el módulo 3 de este nivel). Sin el paréntesis, Excel dividiría solo el coste."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l3-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Javier.** En **D2** calcula el margen del panel LED: (precio de venta − coste) / precio de venta. La app copiará tu fórmula a **D3:D6**. La columna D ya tiene formato de porcentaje: debe salir **30 %** en D2.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio de venta",
+              "C1": "Coste",
+              "D1": "Margen",
+              "A2": "Panel LED 60×60",
+              "B2": 27.4,
+              "C2": 19.18,
+              "A3": "Magnetotérmico 2P 16 A",
+              "B3": 9.75,
+              "C3": 6.24,
+              "A4": "Canaleta 40×60 (tramo 2 m)",
+              "B4": 6.35,
+              "C4": 4.45,
+              "A5": "Cable 2,5 mm² (rollo 100 m)",
+              "B5": 48.9,
+              "C5": 39.12,
+              "A6": "Bridas 200 mm (bolsa 100)",
+              "B6": 3.2,
+              "C6": 1.6
+            },
+            "formatos": {
+              "B2:C6": "eur",
+              "D2:D6": "pct"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 15
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D6"
+          ],
+          "solucion": "=(B2-C2)/B2",
+          "alternativas": [
+            "=1-C2/B2"
+          ],
+          "errores_tipicos": [
+            "=B2-C2/B2",
+            "=(B2-C2)/C2",
+            "=B2-C2"
+          ],
+          "variantes": [
+            {
+              "B2": 30,
+              "C5": 30
+            }
+          ],
+          "formato_resultado": "pct",
+          "tolerancia": 0.0001,
+          "pistas": [
+            "Primero la resta (venta menos coste) y después la división entre la venta.",
+            "La resta tiene que ir entre paréntesis; si no, Excel dividiría solo el coste.",
+            "La fórmula es `=(B2-C2)/B2`."
+          ],
+          "explicacion": "Márgenes correctos: del 20 % del cable al 50 % de las bridas. Javier ya puede ver qué productos dejan más dinero. Y la próxima vez que una hoja dé «márgenes de risa», sabrás dónde mirar: en los paréntesis."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m1l3-q1",
+          "modo": "predice",
+          "enunciado": "Sin mirar las reglas: ¿qué devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Resultado"
+            }
+          },
+          "celda": "A2",
+          "formula": "=10-4/2",
+          "explicacion": "Primero se divide: 4 / 2 = 2. Después se resta: 10 − 2 = 8.",
+          "respuesta": "8"
+        },
+        {
+          "id": "n1m1l3-q2",
+          "modo": "ordenar",
+          "enunciado": "Ordena cómo calcula Excel una fórmula, de lo primero a lo último.",
+          "pasos": [
+            "Lo que está entre paréntesis",
+            "Las potencias (^)",
+            "Multiplicar y dividir (* y /)",
+            "Sumar y restar (+ y -)"
+          ],
+          "explicacion": "Paréntesis, potencias, multiplicar y dividir, sumar y restar. Y si dudas, paréntesis."
+        },
+        {
+          "id": "n1m1l3-q3",
+          "modo": "test",
+          "pregunta": "Precio de venta en **B2** y coste en **C2**. ¿Qué fórmula da el margen sobre la venta?",
+          "opciones": [
+            {
+              "texto": "=(B2-C2)/B2",
+              "correcta": true,
+              "porque": "Correcto: primero lo que se gana (venta − coste) y después se divide entre la venta."
+            },
+            {
+              "texto": "=B2-C2/B2",
+              "correcta": false,
+              "porque": "Sin paréntesis, Excel divide primero C2 entre B2 y luego se lo resta a B2: sale un número sin sentido."
+            },
+            {
+              "texto": "=(B2-C2)/C2",
+              "correcta": false,
+              "porque": "Así divides entre el coste, no entre la venta. Es otro cálculo y da una cifra más alta que el margen."
+            }
+          ],
+          "explicacion": "El paréntesis decide qué se calcula primero; el divisor decide sobre qué se mide."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿En qué orden calcula Excel?",
+          "dorso": "Paréntesis → potencias (^) → multiplicar y dividir → sumar y restar. Del mismo nivel, de izquierda a derecha."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué falla en =B2+B3+B4/3?",
+          "dorso": "Solo divide B4 entre 3. La media correcta es =(B2+B3+B4)/3."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Fórmula del margen sobre la venta",
+          "dorso": "=(venta − coste)/venta, por ejemplo =(B2-C2)/B2."
+        },
+        {
+          "tipo": "truco",
+          "frente": "¿Cómo detectas una media mal calculada de un vistazo?",
+          "dorso": "Una media nunca es mayor que el dato más alto ni menor que el más bajo."
+        }
+      ]
+    },
+    {
+      "id": "n1m1l4",
+      "titulo": "Porcentajes de verdad: IVA, descuentos y subidas",
+      "minutos": 18,
+      "objetivo": "Calcular con porcentajes guardados en una celda: total con IVA, precio con descuento, base a partir de un total con IVA y variación entre dos periodos.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Instalaciones Moncayo nos pide presupuesto de cuatro productos. Tienen un 5 % de descuento por ser buenos clientes, y luego va el IVA. Necesito el total de cada línea y el del presupuesto, con el descuento y el IVA en celdas aparte por si negocian.",
+        "logro": "Ya sabes calcular IVA, descuentos, bases sin IVA y variaciones en porcentaje, que es lo que más se hace en un departamento de administración."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Un **porcentaje es un número** con otro aspecto. «Por ciento» significa «de cada cien»:\n\n- 21 % = 21 de cada 100 = **0,21**\n- 5 % = **0,05**\n- 100 % = **1**\n\nSi escribes `21%` en una celda, Excel guarda 0,21 y te lo enseña como 21 %. Para calcular el 21 % de algo, lo **multiplicas por 0,21**: el 21 % de 100 € es 100 × 0,21 = 21 €."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e1",
+          "modo": "test",
+          "pregunta": "Para Excel, ¿qué número es **10 %**?",
+          "opciones": [
+            {
+              "texto": "0,1",
+              "correcta": true,
+              "porque": "Correcto: 10 de cada 100 es 10 / 100 = 0,1."
+            },
+            {
+              "texto": "10",
+              "correcta": false,
+              "porque": "10 es diez unidades enteras. Si multiplicas un precio por 10, lo multiplicas por diez, no le calculas el 10 %."
+            },
+            {
+              "texto": "1,1",
+              "correcta": false,
+              "porque": "1,1 es el 110 %: sirve para subir un 10 %, pero no es el 10 % en sí."
+            }
+          ],
+          "explicacion": "Ten siempre presente esta equivalencia: 10 % es 0,1; 21 % es 0,21. Todo lo demás de la lección sale de aquí."
+        },
+        {
+          "tipo": "texto",
+          "md": "Con el **IVA** hay dos cálculos:\n\n- **Cuota de IVA** = base × tipo → `=B4*$B$1`\n- **Total con IVA** = base × (1 + tipo) → `=B4*(1+$B$1)`\n\n¿Por qué `1 +`? Porque el total es la base entera (el 100 %, que es 1) más su IVA (0,21). En total, 1,21 veces la base: 1.000 € de base son 1.210 € con IVA. El paréntesis hace que primero se sume 1 + 0,21."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e2",
+          "modo": "formula",
+          "enunciado": "En **D4** calcula el **total con IVA** de la primera factura: base × (1 + tipo de IVA). El tipo está en **B1**. La app copiará tu fórmula a **D5:D7**. Debe salir **1.512,50 €** en D4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tipo de IVA",
+              "B1": 0.21,
+              "A3": "Factura",
+              "B3": "Base",
+              "C3": "IVA",
+              "D3": "Total",
+              "A4": "F26-0412",
+              "B4": 1250,
+              "C4": "=B4*$B$1",
+              "A5": "F26-0413",
+              "B5": 845.5,
+              "C5": "=B5*$B$1",
+              "A6": "F26-0414",
+              "B6": 2310,
+              "C6": "=B6*$B$1",
+              "A7": "F26-0415",
+              "B7": 96.8,
+              "C7": "=B7*$B$1"
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:D7": "eur"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "objetivo": "D4",
+          "copiar_a": [
+            "D5:D7"
+          ],
+          "solucion": "=B4*(1+$B$1)",
+          "alternativas": [
+            "=B4+C4",
+            "=B4+B4*$B$1",
+            "=B4*(1+B$1)"
+          ],
+          "errores_tipicos": [
+            "=B4+21%",
+            "=B4*(1+B1)",
+            "=B4*1,21",
+            "=B4+$B$1",
+            "=B4*1+$B$1"
+          ],
+          "variantes": [
+            {
+              "B1": 0.1
+            },
+            {
+              "B5": 1000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El total es la base más su IVA. En una sola multiplicación: base × (1 + tipo).",
+            "No olvides el paréntesis alrededor de `1+$B$1`, y fija B1 con F4.",
+            "La fórmula es `=B4*(1+$B$1)`. También vale `=B4+C4`, porque el IVA ya está en C."
+          ],
+          "explicacion": "Totales de factura correctos, y preparados para el día que cambie el tipo de IVA. Con esto ya puedes cuadrar cualquier factura: base + IVA = total."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Andrés Molina",
+          "puesto": "Compras y almacén",
+          "md": "Oye, el proveedor nos sube un 10 % la canaleta, que costaba 100 € la caja. Yo pondría `=A1+10%` y listo, ¿no?"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e3",
+          "modo": "predice",
+          "enunciado": "Antes de contestar a Andrés: con **100** en A1, ¿qué devuelve `=A1+10%`?",
+          "hoja": {
+            "celdas": {
+              "A1": 100
+            }
+          },
+          "celda": "B1",
+          "formula": "=A1+10%",
+          "explicacion": "Da **100,1**, no 110. El 10 % es 0,1, y 100 + 0,1 = 100,1. Para subir un 10 % hay que multiplicar: `=A1*(1+10%)`, o mejor con el 10 % en su propia celda. Es el error más típico con porcentajes: sumar el porcentaje en vez de aplicarlo.",
+          "respuesta": "100,1"
+        },
+        {
+          "tipo": "texto",
+          "md": "El **descuento** es el caso contrario: en lugar de añadir, quitas.\n\n**Precio con descuento** = precio × (1 − descuento) → `=B4*(1-$B$1)`\n\nCon un 8 % de descuento, el cliente paga el 92 % del precio: 1 − 0,08 = 0,92. Un panel de 100 € se queda en 92 €. Otra vez el paréntesis: primero 1 − 0,08 y después la multiplicación."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e4",
+          "modo": "formula",
+          "enunciado": "Electricidad Arbués tiene un **8 % de descuento** (en **B1**). En **C4** calcula el precio neto del panel LED: precio de tarifa × (1 − descuento). La app copiará tu fórmula a **C5:C7**. Debe salir **25,21 €** en C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Descuento cliente",
+              "B1": 0.08,
+              "A3": "Producto",
+              "B3": "Precio tarifa",
+              "C3": "Precio neto",
+              "A4": "Panel LED 60×60",
+              "B4": 27.4,
+              "A5": "Magnetotérmico 2P 16 A",
+              "B5": 9.75,
+              "A6": "Cable 2,5 mm² (rollo 100 m)",
+              "B6": 48.9,
+              "A7": "Canaleta 40×60 (tramo 2 m)",
+              "B7": 6.35
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:C7": "eur"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 13
+            }
+          },
+          "objetivo": "C4",
+          "copiar_a": [
+            "C5:C7"
+          ],
+          "solucion": "=B4*(1-$B$1)",
+          "alternativas": [
+            "=B4-B4*$B$1",
+            "=B4*(1-B$1)"
+          ],
+          "errores_tipicos": [
+            "=B4-$B$1",
+            "=B4*$B$1",
+            "=B4*(1-B1)",
+            "=B4-8%",
+            "=B4*0,92"
+          ],
+          "variantes": [
+            {
+              "B1": 0.15
+            },
+            {
+              "B6": 50
+            }
+          ],
+          "formato_resultado": "eur",
+          "tolerancia": 0.01,
+          "pistas": [
+            "Si el descuento es del 8 %, el cliente paga el 92 % del precio.",
+            "Multiplica el precio por (1 − la celda del descuento), y fija esa celda con F4.",
+            "La fórmula es `=B4*(1-$B$1)`."
+          ],
+          "explicacion": "Precios netos para Arbués en un momento. Si negocian un 10 %, solo cambias B1. Es exactamente lo que se hace al preparar una oferta o revisar una factura de proveedor."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora al revés: te dan un **total con IVA** (un ticket de gasolina, de papelería) y necesitas la **base**.\n\nLo correcto es **dividir**: base = total / (1 + tipo) → `=B4/(1+$B$1)`. 121 € / 1,21 = **100 €**.\n\nLa trampa: restar el 21 % del total. 121 − 21 % de 121 = **95,59 €**, y no es la base. El 21 % se calculó sobre la base, no sobre el total, así que hay que deshacer la multiplicación."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e5",
+          "modo": "formula",
+          "enunciado": "**Arregla el error.** Marta te pasa tres tickets de gastos con IVA del 21 % incluido. La fórmula de **C4** resta el 21 % al total y da una base equivocada. Corrígela para que divida entre (1 + tipo). La app la copiará a **C5:C6**. Debe salir **50,00 €** en C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tipo de IVA",
+              "B1": 0.21,
+              "A3": "Ticket",
+              "B3": "Total pagado",
+              "C3": "Base",
+              "A4": "Gasolinera",
+              "B4": 60.5,
+              "A5": "Ferretería",
+              "B5": 145.2,
+              "A6": "Papelería",
+              "B6": 36.3
+            },
+            "formatos": {
+              "B1": "pct",
+              "B4:C6": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 13
+            }
+          },
+          "objetivo": "C4",
+          "inicial": "=B4-B4*$B$1",
+          "copiar_a": [
+            "C5:C6"
+          ],
+          "solucion": "=B4/(1+$B$1)",
+          "alternativas": [
+            "=B4/(1+B$1)"
+          ],
+          "errores_tipicos": [
+            "=B4-B4*$B$1",
+            "=B4*(1-$B$1)",
+            "=B4/(1+B1)",
+            "=B4/1+$B$1",
+            "=B4/1,21"
+          ],
+          "variantes": [
+            {
+              "B1": 0.1
+            },
+            {
+              "B5": 100
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "El total es la base multiplicada por 1,21. Para volver a la base, deshaz esa multiplicación.",
+            "Lo contrario de multiplicar es dividir: divide el total entre (1 + tipo).",
+            "La fórmula es `=B4/(1+$B$1)`."
+          ],
+          "explicacion": "Bases exactas: 50, 120 y 30 €. Compruébalo al revés: 50 × 1,21 = 60,50, el total del ticket. Este cálculo lo harás cada vez que contabilices un gasto con el IVA incluido."
+        },
+        {
+          "tipo": "texto",
+          "md": "Por último, la pregunta que más hacen los jefes: «¿cuánto hemos subido o bajado?». Es la **variación**:\n\n**Variación** = (nuevo − antiguo) / antiguo → `=(C2-B2)/B2`\n\nSe divide entre el valor **antiguo** porque es el punto de partida. Si vendías 100 y ahora vendes 120, has subido 20 sobre 100: un **20 %**. Si sale en negativo, has bajado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e6",
+          "modo": "formula",
+          "enunciado": "Carmen quiere saber cuánto han variado las ventas de **noviembre** respecto a **octubre** en cada delegación. En **D2** calcula la variación de Zaragoza: (nuevo − antiguo) / antiguo. La app copiará tu fórmula a **D3:D4**. La columna D tiene formato de porcentaje con un decimal: debe salir **8,3 %** en D2.",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Octubre",
+              "C1": "Noviembre",
+              "D1": "Variación",
+              "A2": "Zaragoza",
+              "B2": 398750,
+              "C2": 431900,
+              "A3": "Pamplona",
+              "B3": 175200,
+              "C3": 192650,
+              "A4": "Lleida",
+              "B4": 151300,
+              "C4": 139800
+            },
+            "formatos": {
+              "B2:C4": "eur",
+              "D2:D4": "pct1"
+            },
+            "anchos": {
+              "B": 14,
+              "C": 14
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=(C2-B2)/B2",
+          "alternativas": [
+            "=C2/B2-1"
+          ],
+          "errores_tipicos": [
+            "=(C2-B2)/C2",
+            "=C2-B2/B2",
+            "=C2-B2",
+            "=(B2-C2)/B2"
+          ],
+          "variantes": [
+            {
+              "B2": 400000,
+              "C3": 150000
+            }
+          ],
+          "formato_resultado": "pct1",
+          "tolerancia": 0.0001,
+          "pistas": [
+            "Nuevo es noviembre (columna C); antiguo es octubre (columna B).",
+            "Resta entre paréntesis y divide entre el valor de octubre.",
+            "La fórmula es `=(C2-B2)/B2`."
+          ],
+          "explicacion": "Zaragoza sube un 8,3 %, Pamplona un 10 % y Lleida baja un 7,6 %. Con esta fórmula responderás a la pregunta de cualquier reunión: «¿cómo vamos respecto al mes pasado?»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m1l4-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Marta.** El descuento está en **B1** (5 %) y el IVA en **B2** (21 %). En **D5** calcula el total de la primera línea: precio × unidades, con el descuento aplicado y el IVA sumado. La app copiará tu fórmula a **D6:D8**, y el total del presupuesto de **D10** se llenará solo. Debe salir **755,91 €** en D5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Descuento",
+              "B1": 0.05,
+              "A2": "IVA",
+              "B2": 0.21,
+              "A4": "Producto",
+              "B4": "Precio",
+              "C4": "Uds",
+              "D4": "Total con dto. e IVA",
+              "A5": "Panel LED 60×60",
+              "B5": 27.4,
+              "C5": 24,
+              "A6": "Magnetotérmico 2P 16 A",
+              "B6": 9.75,
+              "C6": 40,
+              "A7": "Cable 2,5 mm² (rollo 100 m)",
+              "B7": 48.9,
+              "C7": 10,
+              "A8": "Bridas 200 mm (bolsa 100)",
+              "B8": 3.2,
+              "C8": 30,
+              "A10": "Total presupuesto",
+              "D10": "=SUMA(D5:D8)"
+            },
+            "formatos": {
+              "B1:B2": "pct",
+              "B5:B8": "eur",
+              "D5:D10": "eur"
+            },
+            "anchos": {
+              "A": 28,
+              "D": 20
+            }
+          },
+          "objetivo": "D5",
+          "copiar_a": [
+            "D6:D8"
+          ],
+          "solucion": "=B5*C5*(1-$B$1)*(1+$B$2)",
+          "alternativas": [
+            "=B5*C5*(1+$B$2)*(1-$B$1)",
+            "=(B5*C5)*(1-$B$1)*(1+$B$2)",
+            "=B5*C5*(1-B$1)*(1+B$2)"
+          ],
+          "errores_tipicos": [
+            "=B5*C5*(1-B1)*(1+B2)",
+            "=B5*C5-$B$1+$B$2",
+            "=B5*C5*(1-$B$1)+$B$2",
+            "=B5*C5*0,95*1,21"
+          ],
+          "variantes": [
+            {
+              "B1": 0.1,
+              "B2": 0.1
+            },
+            {
+              "C7": 12
+            }
+          ],
+          "formato_resultado": "eur",
+          "tolerancia": 0.01,
+          "pistas": [
+            "Son tres pasos en cadena: importe (precio × uds), luego × (1 − descuento), luego × (1 + IVA).",
+            "Cada porcentaje va en su paréntesis, y las dos celdas de porcentaje llevan $: $B$1 y $B$2.",
+            "La fórmula es `=B5*C5*(1-$B$1)*(1+$B$2)`."
+          ],
+          "explicacion": "Presupuesto de Instalaciones Moncayo terminado: cuatro líneas y el total, con el descuento y el IVA en celdas que Marta puede cambiar si negocian. Has juntado todo el módulo en una fórmula: copiar, $, paréntesis y porcentajes. Esto ya es trabajo de administración de verdad."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m1l4-q1",
+          "modo": "test",
+          "pregunta": "Un ticket de **242 €** lleva el 21 % de IVA incluido. ¿Cuál es la base?",
+          "opciones": [
+            {
+              "texto": "200 €, porque 242 / 1,21 = 200",
+              "correcta": true,
+              "porque": "Correcto: se deshace la multiplicación dividiendo entre 1,21. Compruébalo: 200 × 1,21 = 242."
+            },
+            {
+              "texto": "191,18 €, porque 242 − 21 % de 242",
+              "correcta": false,
+              "porque": "Ese es el error típico: el 21 % se calculó sobre la base, no sobre el total. Restarlo del total quita de más."
+            },
+            {
+              "texto": "221 €, porque 242 − 21",
+              "correcta": false,
+              "porque": "Restar 21 € no tiene sentido: el IVA es un porcentaje, no una cantidad fija."
+            }
+          ],
+          "explicacion": "Para quitar el IVA, divide: total / (1 + tipo)."
+        },
+        {
+          "id": "n1m1l4-q2",
+          "modo": "predice",
+          "enunciado": "Las ventas de un comercial pasan de **80.000 €** (B1) a **100.000 €** (C1). ¿Qué número devuelve esta fórmula? Escríbelo con decimales (luego, con formato de porcentaje, se verá como %).",
+          "hoja": {
+            "celdas": {
+              "A1": "Ventas",
+              "B1": 80000,
+              "C1": 100000
+            },
+            "formatos": {
+              "B1:C1": "eur",
+              "D1": "pct"
+            }
+          },
+          "celda": "D1",
+          "formula": "=(C1-B1)/B1",
+          "explicacion": "Sube 20.000 sobre los 80.000 de partida: 20.000 / 80.000 = 0,25, es decir, un 25 %. Si hubieras dividido entre el nuevo (100.000), te saldría un 20 %, que es incorrecto.",
+          "respuesta": "0,25"
+        },
+        {
+          "id": "n1m1l4-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "El precio está en **B4** y el descuento en **$B$1**. Escribe la fórmula del precio con descuento.",
+          "aceptadas": [
+            "=B4*(1-$B$1)",
+            "=b4*(1-$b$1)",
+            "B4*(1-$B$1)",
+            "=B4-B4*$B$1",
+            "=(1-$B$1)*B4"
+          ],
+          "explicacion": "`=B4*(1-$B$1)`: el cliente paga el precio por (1 − descuento)."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Total con IVA a partir de la base",
+          "dorso": "=base*(1+tipo), por ejemplo =B4*(1+$B$1)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Base a partir de un total con IVA",
+          "dorso": "=total/(1+tipo), por ejemplo =B4/(1+$B$1). Nunca restar el 21 % del total."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Precio con descuento",
+          "dorso": "=precio*(1-descuento), por ejemplo =B4*(1-$B$1)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Variación entre dos periodos",
+          "dorso": "=(nuevo-antiguo)/antiguo, por ejemplo =(C2-B2)/B2."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Qué da =A1+10% si A1 vale 100?",
+          "dorso": "100,1. Para subir un 10 %: =A1*(1+10%), mejor con el 10 % en una celda."
+        }
+      ]
+    }
+  ]
+}

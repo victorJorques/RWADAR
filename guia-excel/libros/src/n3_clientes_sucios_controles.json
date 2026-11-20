@@ -1,0 +1,38 @@
+[
+ {
+  "pregunta": "Número de clientes únicos (un cliente = un NIF) después de limpiar y quitar los duplicados reales",
+  "respuesta": 276,
+  "tolerancia": 0,
+  "pista": "La exportación trae 300 filas. Si te quedan 290, has quitado duplicados sin limpiar antes el NIF: «B50…» y «B50… » (con espacio) no son iguales para Excel. Si te quedan 274, lo has hecho por el nombre del cliente y te has llevado por delante clientes distintos que se llaman igual (dos autónomos «Electricidad Martínez», en Huesca y en Logroño, por ejemplo). Hazlo con el NIF limpio (ESPACIOS y MAYUSC)."
+ },
+ {
+  "pregunta": "Suma del límite de crédito de los clientes únicos (€)",
+  "respuesta": 2752500.0,
+  "tolerancia": 0.01,
+  "pista": "Si te sale bastante menos, la suma se está saltando los límites guardados como texto («6.000,00 €», «6000»). Conviértelos con VALOR.NUMERO(SUSTITUIR(G2;\"€\";\"\");\",\";\".\") o con Texto en columnas. Si te sale más, aún quedan clientes repetidos."
+ },
+ {
+  "pregunta": "¿Cuántos clientes únicos tienen un código postal que empieza por 0 (Barcelona, Álava y Burgos)?",
+  "respuesta": 37,
+  "tolerancia": 0,
+  "pista": "Si te sale 0, el código postal sigue siendo un número y ha perdido el cero. Recupéralo con =TEXTO(E2;\"00000\") y cuenta con CONTAR.SI(rango;\"0*\")."
+ },
+ {
+  "pregunta": "Importe neto total de las ventas de octubre del CSV (€)",
+  "respuesta": 356196.69,
+  "tolerancia": 0.01,
+  "pista": "El CSV tiene 473 líneas de ventas. Impórtalo con Datos › Obtener y transformar datos › De texto/CSV, Origen del archivo 65001: Unicode (UTF-8) y Delimitador Punto y coma. Si te sale una cifra enorme o redonda, los importes no se han leído con la coma decimal."
+ },
+ {
+  "pregunta": "¿Cuántos clientes únicos no tienen ninguna venta en octubre?",
+  "respuesta": 46,
+  "tolerancia": 0,
+  "pista": "Cruza por NIF con CONTAR.SI(NIF de las ventas; NIF del cliente) y cuenta los 0. Si te salen 67, todavía hay NIF con un espacio al final en tu lista de clientes: límpialos antes de cruzar."
+ },
+ {
+  "pregunta": "Importe de las ventas cuyo NIF no está en tu lista de clientes (€)",
+  "respuesta": 4490.9,
+  "tolerancia": 0.01,
+  "pista": "Es el cruce al revés: para cada venta, CONTAR.SI(NIF de los clientes limpios; NIF de la venta). Las de resultado 0 son de 3 clientes nuevos que aún no están en la exportación (9 líneas). Si te sale más, tus NIF de clientes aún tienen espacios."
+ }
+]

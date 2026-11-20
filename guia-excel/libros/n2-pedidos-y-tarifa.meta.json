@@ -1,0 +1,5 @@
+{
+  "titulo": "N2 · Pedidos y tarifa (datos de partida)",
+  "descripcion": "Ciento veinte líneas de pedido y una tarifa de 40 productos, con códigos con espacios y productos sin tarifa, para cruzar con BUSCARX y resumir por comercial y por mes.",
+  "nivel": "n2"
+}

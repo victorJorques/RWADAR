@@ -1,0 +1,124 @@
+{
+ "id": "n4m4",
+ "nivel": "n4",
+ "titulo": "Macros: grabar para no repetir",
+ "intro": "Hay tareas que no son cálculos ni limpieza de datos, sino los mismos clics de cada semana: dar formato a un listado, prepararlo para enviarlo, vaciar una plantilla. Una macro los graba una vez y los repite con un atajo o un botón; saber cuándo usarla, y cuándo no, te ahorra horas y algún susto.",
+ "repaso_inicial": [
+  {
+   "id": "n4m4-r1",
+   "modo": "test",
+   "pregunta": "Llega el CSV de ventas de noviembre. Lo guardas en la misma carpeta y con el mismo nombre que el de octubre, que es el archivo que lee tu consulta de Power Query. ¿Qué haces ahora?",
+   "opciones": [
+    {
+     "texto": "Datos › Actualizar todo",
+     "correcta": true,
+     "porque": "Eso es: los pasos de limpieza ya están guardados en la consulta y Actualizar todo los repite sobre el archivo nuevo."
+    },
+    {
+     "texto": "Abrir el Editor de Power Query y repetir los pasos uno a uno",
+     "correcta": false,
+     "porque": "Los pasos ya están grabados en la consulta; repetirlos sería hacer el trabajo dos veces."
+    },
+    {
+     "texto": "Crear una consulta nueva para noviembre",
+     "correcta": false,
+     "porque": "La misma consulta sirve cada mes mientras el archivo tenga la misma forma."
+    },
+    {
+     "texto": "Grabar una macro que copie y pegue los datos nuevos",
+     "correcta": false,
+     "porque": "Power Query ya lo resuelve sin código. Una macro aquí sería más frágil: en este módulo verás por qué."
+    }
+   ],
+   "explicacion": "Archivo nuevo en el mismo sitio + Actualizar todo: así se hace solo el informe de cada mes."
+  },
+  {
+   "id": "n4m4-r2",
+   "modo": "formula",
+   "enunciado": "Marta va a financiar la furgoneta de reparto: 30.000 € al 4,5 % de interés anual, a pagar en 60 cuotas mensuales. En **B6** calcula la **cuota mensual**, y que salga en positivo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Valor",
+     "A2": "Importe del préstamo",
+     "B2": 30000,
+     "A3": "Interés anual",
+     "B3": 0.045,
+     "A4": "Plazo (meses)",
+     "B4": 60,
+     "A6": "Cuota mensual"
+    },
+    "formatos": {
+     "B2": "eur",
+     "B3": "pct1",
+     "B6": "eur"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 14
+    }
+   },
+   "objetivo": "B6",
+   "solucion": "=PAGO(B3/12;B4;-B2)",
+   "alternativas": [
+    "=-PAGO(B3/12;B4;B2)"
+   ],
+   "errores_tipicos": [
+    "=PAGO(B3;B4;-B2)",
+    "=PAGO(B3/12;B4*12;-B2)",
+    "=PAGO(B3/12;B4;B2)"
+   ],
+   "variantes": [
+    {
+     "B2": 45000,
+     "B4": 48
+    },
+    {
+     "B3": 0.06
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "La función de la cuota de un préstamo pide tres cosas: el interés de cada periodo, el número de cuotas y el importe prestado.",
+    "El interés es anual y las cuotas son mensuales: divide B3 entre 12. El plazo ya está en meses (B4).",
+    "Escribe =PAGO(B3/12;B4;-B2). El signo menos delante de B2 hace que la cuota salga en positivo."
+   ],
+   "explicacion": "Unos 559 € al mes. Con PAGO y los datos en celdas, Marta puede probar otro plazo u otro interés y ver la cuota al momento."
+  },
+  {
+   "id": "n4m4-r3",
+   "modo": "test",
+   "pregunta": "Lucía quiere que en su plantilla de horas solo se pueda escribir en las celdas de las horas (C5:G20). ¿Qué hay que hacer **antes** de Revisar › Proteger hoja?",
+   "opciones": [
+    {
+     "texto": "Seleccionar C5:G20 y, en Formato de celdas › Proteger, quitar la marca de Bloqueada",
+     "correcta": true,
+     "porque": "Correcto: todas las celdas vienen bloqueadas, y al proteger la hoja solo quedan libres las que hayas desbloqueado antes."
+    },
+    {
+     "texto": "Nada: al proteger la hoja, Excel pregunta qué celdas dejar libres",
+     "correcta": false,
+     "porque": "Proteger hoja pide una contraseña y unos permisos generales, pero no qué celdas quedan libres: eso se decide antes, desbloqueándolas."
+    },
+    {
+     "texto": "Poner una contraseña para abrir el archivo",
+     "correcta": false,
+     "porque": "Eso impide abrir el libro a quien no la sepa; no deja escribir en unas celdas sí y en otras no."
+    }
+   ],
+   "explicacion": "Primero desbloquear lo que se rellena; después proteger la hoja. En ese orden."
+  },
+  {
+   "id": "n4m4-r4",
+   "modo": "cinta",
+   "enunciado": "Andrés quiere saber qué precio de venta le da exactamente 5.000 € de margen. ¿Qué botón contiene **Buscar objetivo**?",
+   "ruta": [
+    "Datos",
+    "Previsión",
+    "Análisis de hipótesis"
+   ],
+   "explicacion": "Datos › Previsión › Análisis de hipótesis › Buscar objetivo. En el mismo menú están el Administrador de escenarios y Tabla de datos."
+  }
+ ],
+ "practica_excel": null
+}

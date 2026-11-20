@@ -1,0 +1,1877 @@
+{
+  "id": "n2m1",
+  "nivel": "n2",
+  "titulo": "Tablas de Excel y control de lo que se escribe",
+  "intro": "En tu primer mes ya no solo usas listas: las cuidas. Aquí aprendes a convertir una lista en una Tabla que crece sola, a impedir que la gente escriba «Panplona» con listas desplegables, a que los avisos se pinten solos con formato condicional y a pasar resultados a otro libro sin fórmulas, cuatro cosas que en cualquier oficina se usan a diario.",
+  "repaso_inicial": [
+    {
+      "id": "n2m1-r1",
+      "modo": "formula",
+      "enunciado": "Repaso del símbolo $. En **C2** calcula el precio con IVA del primer producto: precio sin IVA (B2) por (1 + el IVA que está en **F1**). Tu fórmula se copiará a C3:C4, así que fija lo que no debe moverse.",
+      "hoja": {
+        "celdas": {
+          "A1": "Producto",
+          "B1": "Sin IVA",
+          "C1": "Con IVA",
+          "E1": "IVA",
+          "F1": 0.21,
+          "A2": "Cable 2,5 mm² (100 m)",
+          "B2": 48.6,
+          "A3": "Panel LED 60x60",
+          "B3": 32.25,
+          "A4": "Caja de empalmes",
+          "B4": 2.9
+        },
+        "formatos": {
+          "B2:C4": "eur",
+          "F1": "pct"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C4"
+      ],
+      "solucion": "=B2*(1+$F$1)",
+      "alternativas": [
+        "=B2*(1+F$1)",
+        "=B2+B2*$F$1"
+      ],
+      "errores_tipicos": [
+        "=B2*(1+F1)",
+        "=B2*1,21"
+      ],
+      "variantes": [
+        {
+          "F1": 0.1
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Precio con IVA = precio × (1 + IVA).",
+        "La celda del IVA es F1, y al copiar hacia abajo no debe moverse.",
+        "Escribe `=B2*(1+$F$1)`."
+      ],
+      "explicacion": "Bien recordado: `$F$1` se queda quieta al copiar y `B2` baja fila a fila. Lo vas a seguir usando en este módulo."
+    },
+    {
+      "id": "n2m1-r2",
+      "modo": "predice",
+      "enunciado": "Repaso de contar. En B2:B6 hay tres importes, la palabra «pendiente» y una celda vacía. ¿Qué devuelve esta fórmula?",
+      "hoja": {
+        "celdas": {
+          "A1": "Factura",
+          "B1": "Importe",
+          "A2": "FV-26/0801",
+          "B2": 1250,
+          "A3": "FV-26/0802",
+          "B3": "pendiente",
+          "A4": "FV-26/0803",
+          "B4": 830.5,
+          "A5": "FV-26/0804",
+          "A6": "FV-26/0805",
+          "B6": 2140
+        },
+        "formatos": {
+          "B2:B6": "eur"
+        }
+      },
+      "celda": "D2",
+      "formula": "=CONTAR(B2:B6)",
+      "explicacion": "CONTAR solo cuenta **números**: 3. Si quisieras contar todo lo que tiene algo escrito, texto incluido, usarías CONTARA (daría 4).",
+      "respuesta": "3"
+    },
+    {
+      "id": "n2m1-r3",
+      "modo": "test",
+      "pregunta": "Repaso de ordenar. Quieres ordenar la lista de clientes por la columna Ciudad. ¿Qué es lo peligroso?",
+      "opciones": [
+        {
+          "texto": "Seleccionar solo la columna Ciudad y ordenarla sin ampliar la selección",
+          "correcta": true,
+          "porque": "Correcto: se ordenaría solo esa columna y cada ciudad acabaría junto al cliente equivocado. Hay que ordenar la lista entera."
+        },
+        {
+          "texto": "Hacer clic en una celda de la columna Ciudad y usar Ordenar de A a Z",
+          "correcta": false,
+          "porque": "Así Excel ordena la lista entera usando esa columna: es la forma segura."
+        },
+        {
+          "texto": "Ordenar una lista que tiene la fila de títulos arriba",
+          "correcta": false,
+          "porque": "Es lo normal: Excel reconoce la fila de títulos y no la mueve."
+        }
+      ]
+    },
+    {
+      "id": "n2m1-r4",
+      "modo": "respuesta_corta",
+      "pregunta": "Repaso de formato. ¿Qué atajo pone en **negrita** la celda en el Excel en español?",
+      "aceptadas": [
+        "Ctrl+N",
+        "Control+N",
+        "Ctrl N",
+        "Ctrl + N"
+      ],
+      "explicacion": "Ctrl+N, de «negrita». Ctrl+B, el de los tutoriales en inglés, aquí abre Buscar."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "Andrés Molina te pasa el **registro de incidencias de clientes**: 60 incidencias que rellenan entre todos, con categorías y estados escritos de mil maneras. Descarga el libro y sigue la hoja **Instrucciones**:\n\n1. Convierte la lista en la Tabla **Incidencias** ([[Ctrl]]+[[T]]).\n2. Pon listas desplegables en **Categoría** y **Estado**, con origen en la hoja **Listas** y estilo **Detener**.\n3. Caza los datos mal escritos con **Rodear con un círculo datos no válidos** y corrígelos.\n4. Añade la columna calculada **Días abiertos** (la fórmula está en las instrucciones).\n5. Activa la **fila de totales** y resalta en rojo los **Días abiertos mayores que 10**.\n\nIntenta hacerlo en menos de 25 minutos: en las pruebas de selección siempre hay reloj. Después responde a los controles.",
+    "archivo": "n2-registro-incidencias.xlsx",
+    "controles": [
+      {
+        "pregunta": "Después de limpiar, ¿cuántas incidencias son de la categoría «Material defectuoso»?",
+        "respuesta": 14,
+        "tolerancia": 0,
+        "pista": "Filtra la columna Categoría por Material defectuoso, selecciona las celdas visibles de esa columna y mira el Recuento en la barra de estado. Si te salen menos de las que esperas, quedan variantes sin corregir (Defectuoso, Material defectuso…)."
+      },
+      {
+        "pregunta": "¿Cuántas incidencias no están cerradas (Abierta o En curso)?",
+        "respuesta": 16,
+        "tolerancia": 0,
+        "pista": "Filtra Estado quitando Cerrada. Recuerda que «En proceso» había que corregirlo a En curso, y que «Cerrado» y «Cerrada » (con espacio) son Cerrada."
+      },
+      {
+        "pregunta": "Sin ningún filtro, ¿cuánto suma la fila de totales en Importe afectado (€)?",
+        "respuesta": 84219.42,
+        "tolerancia": 0.01,
+        "pista": "Borra todos los filtros (Datos › Borrar) y elige Suma en la flecha de la fila de totales bajo Importe afectado."
+      },
+      {
+        "pregunta": "Sin filtros, ¿cuánto suma la fila de totales en Días abiertos?",
+        "respuesta": 743,
+        "tolerancia": 0,
+        "pista": "Comprueba la fórmula de I2: si está Cerrada, cierre menos apertura; si no, la fecha de corte de L1 ($L$1) menos apertura. Si ves fechas en lugar de números, cambia el formato a Número."
+      },
+      {
+        "pregunta": "¿Cuántas celdas de Días abiertos quedan resaltadas en rojo (más de 10 días)?",
+        "respuesta": 26,
+        "tolerancia": 0,
+        "pista": "La regla es Mayor que 10: una incidencia de 10 días justos no se marca. Puedes contarlas filtrando Días abiertos por color."
+      },
+      {
+        "pregunta": "Filtra la Categoría «Error en factura». ¿Qué importe muestra ahora la fila de totales (€)?",
+        "respuesta": 16337.39,
+        "tolerancia": 0.01,
+        "pista": "La fila de totales usa SUBTOTALES y solo suma lo visible. Si sale el total general, el filtro no está puesto; si sale menos, quedan «Error factura» o «Error en factura » (con un espacio al final) sin corregir."
+      }
+    ],
+    "solucion_md": "**Solución paso a paso**\n\n1. Clic en A1 › [[Ctrl]]+[[T]] › rango `=$A$1:$H$61` con **La tabla tiene encabezados** › Aceptar. En **Diseño de tabla › Nombre de la tabla**, escribe `Incidencias`.\n2. Selecciona los datos de Categoría (E2:E61) › **Datos › Validación de datos** › Permitir: **Lista** › Origen `=Listas!$A$2:$A$5` › pestaña Mensaje de error, estilo **Detener**. Lo mismo en Estado (F2:F61) con `=Listas!$C$2:$C$4`.\n3. Flecha de **Validación de datos › Rodear con un círculo datos no válidos**: salen **19 círculos** (16 categorías y 3 estados). Corrige cada uno con el desplegable: «Retraso en entrga», «Retraso entrega» o «Retraso» son *Retraso en entrega*; «Defectuoso» o «Material defectuso» son *Material defectuoso*; «Error factura» es *Error en factura*; «Pedido incompleto.» es *Pedido incompleto*; y tres llevan un espacio invisible al final («Error en factura », dos veces, y «Pedido incompleto »). En Estado: «Cerrado» y «Cerrada » son *Cerrada*; «En proceso» es *En curso*.\n4. En I1 escribe `Días abiertos` y en I2: `=SI([@Estado]=\"Cerrada\";[@[Fecha cierre]]-[@[Fecha apertura]];$L$1-[@[Fecha apertura]])`. La Tabla la copia sola a las 60 filas. Formato Número sin decimales.\n5. **Diseño de tabla › Fila de totales**: Suma en Importe afectado (84.219,42 €) y Suma en Días abiertos (743).\n6. Selecciona I2:I61 › **Inicio › Formato condicional › Reglas para resaltar celdas › Mayor que** › 10 › relleno rojo claro: 26 celdas.\n\n**Controles**: 23 Retraso en entrega, 14 Material defectuoso, 16 Error en factura y 7 Pedido incompleto (suman 60: total de control cuadrado). 44 cerradas, 10 abiertas y 6 en curso. Filtrando Error en factura, la fila de totales da 16.337,39 €. De las 26 con más de 10 días, 12 siguen sin cerrar: esas son las que Andrés tiene que perseguir.",
+    "archivo_solucion": "n2-registro-incidencias-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n2m1l1",
+      "titulo": "Convierte tu lista en una Tabla",
+      "minutos": 14,
+      "objetivo": "Convertir una lista en una Tabla de Excel con nombre y fila de totales, para que crezca sola cuando entren datos nuevos.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Te paso la lista de pedidos a proveedores de noviembre. Cada vez que alguien apunta un pedido nuevo, el total de abajo deja de cuadrar y me vuelvo loco. ¿Me la dejas para que crezca sola, se llame Pedidos y tenga su total?",
+        "logro": "Ya sabes convertir una lista en una Tabla con nombre y fila de totales que incluye sola los datos nuevos."
+      },
+      "funciones": [
+        "SUBTOTALES"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Las listas de una oficina **crecen cada día**: un pedido nuevo, otra factura, una visita más. El problema es que una fórmula como `=SUMA(E2:E6)` mira **solo** esas cinco celdas. Lo que escribas en la fila 7 se queda fuera del total, y nadie se da cuenta hasta que el total no cuadra con el banco o con el proveedor.\n\nMira la lista de Andrés: el pedido de la fila 7 no está en el total."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Pedidos a proveedores · noviembre 2026",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Proveedor",
+              "D1": "Producto",
+              "E1": "Importe",
+              "A2": "PC-1101",
+              "B2": {
+                "fecha": "2026-11-02"
+              },
+              "C2": "Cables del Ebro",
+              "D2": "Cable 2,5 mm² (rollo 100 m)",
+              "E2": 486,
+              "A3": "PC-1102",
+              "B3": {
+                "fecha": "2026-11-03"
+              },
+              "C3": "Iluminación Moncayo",
+              "D3": "Panel LED 60x60",
+              "E3": 1290,
+              "A4": "PC-1103",
+              "B4": {
+                "fecha": "2026-11-05"
+              },
+              "C4": "Mecanismos Pirineo",
+              "D4": "Enchufes Schuko blancos",
+              "E4": 312.5,
+              "A5": "PC-1104",
+              "B5": {
+                "fecha": "2026-11-09"
+              },
+              "C5": "Cables del Ebro",
+              "D5": "Tubo corrugado 20 mm",
+              "E5": 158.4,
+              "A6": "PC-1105",
+              "B6": {
+                "fecha": "2026-11-11"
+              },
+              "C6": "Protecciones Aragón",
+              "D6": "Magnetotérmicos 2P 16 A",
+              "E6": 744,
+              "A7": "PC-1106",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Mecanismos Pirineo",
+              "D7": "Bridas negras 200 mm",
+              "E7": 96.3,
+              "A9": "Total",
+              "E9": "=SUMA(E2:E6)"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "E2:E9": "eur"
+            },
+            "anchos": {
+              "A": 9,
+              "B": 11,
+              "C": 20,
+              "D": 26,
+              "E": 12
+            }
+          },
+          "resaltar": [
+            "E7",
+            "E9"
+          ],
+          "mostrar_formulas": true,
+          "pie": "El pedido PC-1106 (fila 7) se apuntó después de escribir el total."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e1",
+          "modo": "test",
+          "pregunta": "Andrés ha apuntado el pedido PC-1106 en la fila 7. ¿Por qué el total de **E9** no lo suma?",
+          "opciones": [
+            {
+              "texto": "Porque la fórmula dice E2:E6 y la fila 7 queda fuera de ese rango",
+              "correcta": true,
+              "porque": "Exacto. Un rango es una dirección fija: E2:E6 son esas cinco celdas y ninguna más, aunque escribas justo debajo."
+            },
+            {
+              "texto": "Porque Excel tarda un rato en recalcular los totales",
+              "correcta": false,
+              "porque": "Excel recalcula al instante. El total está bien calculado; lo que está mal es el rango que mira."
+            },
+            {
+              "texto": "Porque hay que guardar el libro para que el total se actualice",
+              "correcta": false,
+              "porque": "Guardar no cambia ningún cálculo. El problema es que la fórmula no incluye la fila 7."
+            }
+          ],
+          "explicacion": "Este es uno de los errores más repetidos en las empresas: rangos que no se amplían cuando llegan datos nuevos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e2",
+          "modo": "formula",
+          "enunciado": "Arréglalo a la antigua primero. La fórmula de **E9** se ha quedado corta: corrígela para que sume **todos** los pedidos, de la fila 2 a la 7. Tiene que salir 3.087,20 €.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Proveedor",
+              "D1": "Producto",
+              "E1": "Importe",
+              "A2": "PC-1101",
+              "B2": {
+                "fecha": "2026-11-02"
+              },
+              "C2": "Cables del Ebro",
+              "D2": "Cable 2,5 mm² (rollo 100 m)",
+              "E2": 486,
+              "A3": "PC-1102",
+              "B3": {
+                "fecha": "2026-11-03"
+              },
+              "C3": "Iluminación Moncayo",
+              "D3": "Panel LED 60x60",
+              "E3": 1290,
+              "A4": "PC-1103",
+              "B4": {
+                "fecha": "2026-11-05"
+              },
+              "C4": "Mecanismos Pirineo",
+              "D4": "Enchufes Schuko blancos",
+              "E4": 312.5,
+              "A5": "PC-1104",
+              "B5": {
+                "fecha": "2026-11-09"
+              },
+              "C5": "Cables del Ebro",
+              "D5": "Tubo corrugado 20 mm",
+              "E5": 158.4,
+              "A6": "PC-1105",
+              "B6": {
+                "fecha": "2026-11-11"
+              },
+              "C6": "Protecciones Aragón",
+              "D6": "Magnetotérmicos 2P 16 A",
+              "E6": 744,
+              "A7": "PC-1106",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Mecanismos Pirineo",
+              "D7": "Bridas negras 200 mm",
+              "E7": 96.3,
+              "A9": "Total"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "E2:E9": "eur"
+            },
+            "anchos": {
+              "A": 9,
+              "B": 11,
+              "C": 20,
+              "D": 26,
+              "E": 12
+            }
+          },
+          "objetivo": "E9",
+          "inicial": "=SUMA(E2:E6)",
+          "solucion": "=SUMA(E2:E7)",
+          "alternativas": [
+            "=E2+E3+E4+E5+E6+E7",
+            "=SUMA(E2:E8)"
+          ],
+          "errores_tipicos": [
+            "=SUMA(E2:E6)",
+            "=SUMA(E3:E7)"
+          ],
+          "variantes": [
+            {
+              "E7": 120
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Mira dónde termina el rango: E6. ¿Dónde está el último pedido?",
+            "El rango tiene que ir desde E2 hasta la fila del último pedido.",
+            "Cambia el 6 por un 7: `=SUMA(E2:E7)`."
+          ],
+          "explicacion": "Total cuadrado. Pero fíjate: mañana llega el pedido PC-1107 y habrá que volver a tocar la fórmula. Eso es justo lo que una **Tabla** hace sola, y es lo que vas a aprender ahora."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una **Tabla** de Excel (con T mayúscula) es una lista que Excel reconoce como un bloque con nombre propio. Es como pasar de folios sueltos a un archivador con etiquetas. Al convertir la lista en Tabla:\n\n- **Crece sola**: lo que escribas justo debajo pasa a formar parte de ella.\n- Trae **flechas de filtro** en los títulos.\n- Se pinta con **filas con bandas** (una de color, otra no) para no perderte al leer.\n- Tiene un **nombre**, como *Pedidos*."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Crear una Tabla: Ctrl+T",
+          "md": "En el Excel en español es [[Ctrl]]+[[T]]. En vídeos en inglés verás Ctrl+L: aquí Ctrl+L abre **Reemplazar**, así que no te fíes."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: la lista de Andrés pasa a ser Tabla",
+          "pasos": [
+            {
+              "md": "Haz clic en **cualquier celda** de la lista, por ejemplo A2. No hace falta seleccionarla entera."
+            },
+            {
+              "md": "Pulsa [[Ctrl]]+[[T]] o ve a **Insertar › Tablas › Tabla**.",
+              "ruta": [
+                "Insertar",
+                "Tablas",
+                "Tabla"
+              ]
+            },
+            {
+              "md": "Excel propone el rango (aquí `=$A$1:$E$7`). Comprueba que llega hasta el último pedido y que está marcada la casilla **La tabla tiene encabezados**."
+            },
+            {
+              "md": "Pulsa **Aceptar**. La lista se pinta con bandas, aparecen flechas en los títulos y arriba sale una pestaña nueva: **Diseño de tabla**."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e3",
+          "modo": "cinta",
+          "enunciado": "Andrés no se acuerda de atajos: «¿Dónde está eso de Tabla en los menús?». Enséñale el botón en la cinta.",
+          "ruta": [
+            "Insertar",
+            "Tablas",
+            "Tabla"
+          ],
+          "explicacion": "Insertar › Tablas › Tabla. Ojo: al lado está **Tabla dinámica**, que es otra herramienta (sirve para resumir y la verás más adelante)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Antes de convertir, comprueba que la lista está **limpia**. Excel solo reconoce bien una Tabla si:\n\n- Tiene **una sola fila de títulos**, arriba, y ningún título repetido.\n- Hay **una fila por registro** (un pedido, una factura, una persona).\n- No hay **filas vacías** en medio: Excel cree que la lista termina ahí.\n- No hay **subtotales** dentro: el total va en la fila de totales, que verás enseguida."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "Títulos en dos filas: «Importe» arriba y «sin IVA» debajo",
+              "Un título por columna en una sola fila: «Importe sin IVA»"
+            ],
+            [
+              "Una fila vacía entre octubre y noviembre «para que se lea mejor»",
+              "Todo seguido; para separar meses, una columna Fecha"
+            ],
+            [
+              "Una fila «Subtotal Pamplona» en medio de la lista",
+              "Sin subtotales dentro: los totales se calculan aparte"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e4",
+          "modo": "test",
+          "pregunta": "Lucía, de RRHH, te pasa tres listas de personal para convertirlas en Tabla. ¿Cuál puedes convertir tal cual?",
+          "opciones": [
+            {
+              "texto": "Títulos en la fila 1 (Nombre, Departamento, Fecha de alta) y una persona por fila, sin huecos",
+              "correcta": true,
+              "porque": "Esta cumple todo: una fila de títulos, un registro por fila y sin filas vacías. Ctrl+T y listo."
+            },
+            {
+              "texto": "Una fila vacía entre los de Administración y los de Almacén para que se vea mejor",
+              "correcta": false,
+              "porque": "Excel tomaría la fila vacía como el final de la lista y la Tabla se quedaría solo con Administración."
+            },
+            {
+              "texto": "Al final de cada departamento, una fila con el número de personas",
+              "correcta": false,
+              "porque": "Esas filas de recuento se mezclarían con los datos y estropearían filtros y totales. Quítalas antes."
+            }
+          ],
+          "explicacion": "Una fila por registro, una columna por dato y nada más: así se guardan los datos en cualquier empresa. Los resúmenes se hacen aparte."
+        },
+        {
+          "tipo": "texto",
+          "md": "Al crearla, Excel la llama **Tabla1**. Ponle un nombre que diga lo que guarda:\n\n1. Haz clic dentro de la Tabla.\n2. Ve a **Diseño de tabla › Propiedades › Nombre de la tabla**.\n3. Escribe `Pedidos` y pulsa **Intro**.\n\nEl nombre empieza por letra y va **sin espacios**: `PedidosNoviembre`, no «Pedidos noviembre». Y si no ves la pestaña **Diseño de tabla**, es que la celda activa está fuera de la Tabla: haz clic dentro."
+        },
+        {
+          "tipo": "texto",
+          "md": "La **fila de totales** añade una fila *Total* debajo de la Tabla. Se activa en **Diseño de tabla › Opciones de estilo de tabla › Fila de totales**.\n\nEn cada celda de esa fila aparece una flechita para elegir el cálculo: suma, promedio, recuento, máximo, mínimo… Y lo mejor: cuando añades pedidos, la fila de totales **baja sola** y los incluye."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e5",
+          "modo": "cinta",
+          "enunciado": "Ya tienes la Tabla Pedidos. Activa su **fila de totales**.",
+          "ruta": [
+            "Diseño de tabla",
+            "Opciones de estilo de tabla",
+            "Fila de totales"
+          ],
+          "explicacion": "Diseño de tabla › Opciones de estilo de tabla › Fila de totales. Es una casilla: si la desmarcas, la fila desaparece sin borrar nada de la Tabla."
+        },
+        {
+          "tipo": "texto",
+          "md": "Si haces clic en el total y miras la barra de fórmulas, verás algo así: `=SUBTOTALES(109;[Importe])`. No te asustes:\n\n- **SUBTOTALES** calcula solo con las filas que **se ven**. Si filtras por un proveedor, el total pasa a ser el de ese proveedor.\n- El **109** le dice «suma, dejando fuera las filas ocultas».\n- `[Importe]` es la columna Importe de la Tabla.\n\nCon todo a la vista, da lo mismo que SUMA."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e6",
+          "modo": "predice",
+          "enunciado": "Aquí no hay ningún filtro: se ven las seis filas. Antes de que Excel lo calcule, ¿qué devuelve esta fórmula de subtotal en **E8**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "C1": "Proveedor",
+              "E1": "Importe",
+              "A2": "PC-1101",
+              "C2": "Cables del Ebro",
+              "E2": 486,
+              "A3": "PC-1102",
+              "C3": "Iluminación Moncayo",
+              "E3": 1290,
+              "A4": "PC-1103",
+              "C4": "Mecanismos Pirineo",
+              "E4": 312.5,
+              "A5": "PC-1104",
+              "C5": "Cables del Ebro",
+              "E5": 158.4,
+              "A6": "PC-1105",
+              "C6": "Protecciones Aragón",
+              "E6": 744,
+              "A7": "PC-1106",
+              "C7": "Mecanismos Pirineo",
+              "E7": 96.3
+            },
+            "formatos": {
+              "E2:E8": "eur"
+            },
+            "anchos": {
+              "C": 20,
+              "E": 12
+            }
+          },
+          "celda": "E8",
+          "formula": "=SUBTOTALES(109;E2:E7)",
+          "formato_resultado": "eur",
+          "explicacion": "Sin filas ocultas, SUBTOTALES con 109 suma todo: 3.087,20 €, igual que `=SUMA(E2:E7)`. Si filtraras solo «Cables del Ebro», daría 644,40 €. Por eso el total de una Tabla filtrada siempre cuadra con lo que ves.",
+          "respuesta": "3.087,20 €"
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Te cuento la prueba que hago yo siempre: escribe un pedido en la fila **justo debajo** de la Tabla. Si se pinta con el estilo y el total cambia, la Tabla está bien hecha. Eso sí: si dejas una fila vacía entre medias, ya no lo coge."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l1-e7",
+          "modo": "ordenar",
+          "enunciado": "La misión de Andrés, de principio a fin. Ordena los pasos para dejarle la lista de pedidos como la quiere.",
+          "pasos": [
+            "Haz clic en cualquier celda de la lista de pedidos",
+            "Pulsa Ctrl+T y comprueba el rango y la casilla «La tabla tiene encabezados»",
+            "Pulsa Aceptar",
+            "En Diseño de tabla › Nombre de la tabla, escribe Pedidos y pulsa Intro",
+            "Marca Fila de totales y elige Suma en la columna Importe",
+            "Escribe un pedido de prueba justo debajo, comprueba que el total cambia y bórralo"
+          ],
+          "explicacion": "Misión cumplida: la lista de Andrés crece sola, se llama Pedidos y su total incluye siempre todos los pedidos. El último paso es tu control de calidad: no entregues sin comprobar."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m1l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Con qué atajo conviertes una lista en Tabla en el Excel en español?",
+          "aceptadas": [
+            "Ctrl+T",
+            "Control+T",
+            "Ctrl T",
+            "Ctrl + T"
+          ],
+          "explicacion": "Ctrl+T. También desde Insertar › Tablas › Tabla."
+        },
+        {
+          "id": "n2m1l1-q2",
+          "modo": "test",
+          "pregunta": "Escribes 20 pedidos nuevos justo debajo de la Tabla Pedidos, que tiene fila de totales. ¿Qué pasa con el total?",
+          "opciones": [
+            {
+              "texto": "Los incluye solo: la Tabla crece y la fila de totales baja",
+              "correcta": true,
+              "porque": "Eso es lo que hace a la Tabla tan útil: los cálculos que se apoyan en ella se amplían solos."
+            },
+            {
+              "texto": "No cambia: hay que reescribir la fórmula del total",
+              "correcta": false,
+              "porque": "Eso pasa con un rango normal como E2:E6, no con una Tabla."
+            },
+            {
+              "texto": "Se borra la fila de totales y hay que volver a activarla",
+              "correcta": false,
+              "porque": "La fila de totales no se borra: se desplaza hacia abajo con la Tabla."
+            }
+          ]
+        },
+        {
+          "id": "n2m1l1-q3",
+          "modo": "test",
+          "pregunta": "Filtras la Tabla Pedidos para ver solo «Mecanismos Pirineo». ¿Qué muestra la fila de totales?",
+          "opciones": [
+            {
+              "texto": "El total de los pedidos de Mecanismos Pirineo, los que se ven",
+              "correcta": true,
+              "porque": "La fila de totales usa SUBTOTALES, que solo calcula con las filas visibles."
+            },
+            {
+              "texto": "El total de todos los pedidos, filtrados o no",
+              "correcta": false,
+              "porque": "Eso haría SUMA, que no distingue filas ocultas por un filtro. La fila de totales usa SUBTOTALES."
+            },
+            {
+              "texto": "Un error, porque hay filas ocultas",
+              "correcta": false,
+              "porque": "Filtrar no provoca errores: SUBTOTALES está pensada justo para eso."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Convertir una lista en Tabla (Excel en español)",
+          "dorso": "Ctrl+T, o Insertar › Tablas › Tabla"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde se cambia el nombre de una Tabla?",
+          "dorso": "Diseño de tabla › Propiedades › Nombre de la tabla (sin espacios; p. ej. Pedidos)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Cuatro reglas de una lista lista para ser Tabla",
+          "dorso": "Una fila de títulos sin repetir, una fila por registro, sin filas vacías, sin subtotales dentro"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "¿Qué calcula la fila de totales al filtrar?",
+          "dorso": "Solo las filas visibles: usa SUBTOTALES (109 = suma sin filas ocultas)"
+        }
+      ]
+    },
+    {
+      "id": "n2m1l2",
+      "titulo": "Columnas calculadas y referencias con nombre",
+      "minutos": 14,
+      "objetivo": "Crear una columna calculada en una Tabla, leer referencias como [@Cantidad] o Pedidos[Importe] y mantener una sola fórmula por columna.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "En la Tabla de pedidos falta el importe neto de cada línea: cantidad por precio, menos el descuento que nos hace el proveedor. Que sea una fórmula que no haya que arrastrar cada vez que entra un pedido, por favor.",
+        "logro": "Ya sabes crear columnas calculadas que se rellenan solas y leer las fórmulas con nombres de columna que verás en cualquier Tabla."
+      },
+      "funciones": [
+        "SUMA"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En una Tabla, una columna con fórmula se llama **columna calculada**. Funciona así:\n\n1. Escribes un título nuevo justo a la derecha de la Tabla, por ejemplo *Importe*. La Tabla se amplía sola.\n2. Escribes la fórmula **solo en la primera fila** y pulsas **Intro**.\n3. Excel la copia a **toda la columna**, y también a las filas que añadas mañana.\n\nSe acabó arrastrar el controlador de relleno."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e1",
+          "modo": "formula",
+          "enunciado": "Calentamos con lo que ya sabes. En **D2** calcula el importe de la primera línea: cantidad (B2) por precio (C2). Tu fórmula se copiará a D3:D6, como haría la Tabla.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Cantidad",
+              "C1": "Precio",
+              "D1": "Importe",
+              "A2": "Cable 1,5 mm² (100 m)",
+              "B2": 12,
+              "C2": 39.9,
+              "A3": "Canaleta 40x60 (2 m)",
+              "B3": 30,
+              "C3": 6.85,
+              "A4": "Bridas 300 mm (100 ud.)",
+              "B4": 25,
+              "C4": 4.2,
+              "A5": "Luminaria estanca LED 18 W",
+              "B5": 16,
+              "C5": 21.5,
+              "A6": "Magnetotérmico 1P+N 10 A",
+              "B6": 40,
+              "C6": 8.75
+            },
+            "formatos": {
+              "C2:D6": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D6"
+          ],
+          "solucion": "=B2*C2",
+          "alternativas": [
+            "=C2*B2"
+          ],
+          "errores_tipicos": [
+            "=B2+C2",
+            "=B2*$C$2"
+          ],
+          "variantes": [
+            {
+              "C2": 41.5,
+              "B4": 30
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Importe = cantidad × precio, de la misma fila.",
+            "Las celdas de la fila 2 son B2 y C2. El signo de multiplicar es *.",
+            "Escribe `=B2*C2`."
+          ],
+          "explicacion": "Perfecto: cinco importes con una sola fórmula. Ahora verás cómo escribe Excel esta misma fórmula dentro de una Tabla."
+        },
+        {
+          "tipo": "texto",
+          "md": "Si haces lo mismo dentro de una Tabla y **haces clic** en las celdas en lugar de escribirlas, Excel no pone `=B2*C2`. Pone esto:\n\n`=[@Cantidad]*[@Precio]`\n\nEs una **referencia estructurada**: en vez de la dirección de la celda, usa el **nombre de la columna**. La @ significa «de esta fila». Se lee como una frase: «la Cantidad de esta fila por el Precio de esta fila»."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Lo mismo, dicho de dos formas",
+          "cabecera": [
+            "Con celdas",
+            "Con nombres (en una Tabla)",
+            "Se lee"
+          ],
+          "filas": [
+            [
+              "`=B2*C2`",
+              "`=[@Cantidad]*[@Precio]`",
+              "Cantidad por precio de esta fila"
+            ],
+            [
+              "`=SUMA(D2:D6)`",
+              "`=SUMA(Pedidos[Importe])`",
+              "Suma de toda la columna Importe de la Tabla Pedidos"
+            ]
+          ],
+          "pie": "Las referencias estructuradas solo existen dentro de las Tablas de Excel. La hoja de práctica de esta guía no las calcula: aquí las vas a leer y escribir, y a calcular con celdas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e2",
+          "modo": "test",
+          "pregunta": "En la Tabla de Marta ves `=[@Cantidad]*[@Precio]` en la columna Importe. ¿Qué hace?",
+          "opciones": [
+            {
+              "texto": "Multiplica la cantidad de esa fila por el precio de esa misma fila",
+              "correcta": true,
+              "porque": "Eso es: la @ quiere decir «esta fila». Es exactamente tu `=B2*C2`, pero con nombres."
+            },
+            {
+              "texto": "Multiplica la suma de toda la columna Cantidad por toda la columna Precio",
+              "correcta": false,
+              "porque": "Para referirse a la columna entera se escribe sin @: `Pedidos[Cantidad]`. Con @ es solo la fila actual."
+            },
+            {
+              "texto": "Nada: los corchetes indican que la fórmula tiene un error",
+              "correcta": false,
+              "porque": "Los corchetes son normales en las Tablas: rodean el nombre de una columna. Los errores empiezan por # (#¿NOMBRE?, #N/D…)."
+            }
+          ],
+          "explicacion": "Leer referencias estructuradas es una habilidad de oficina: te van a llegar libros llenos de ellas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Sin la @ te refieres a la **columna entera**. Primero el nombre de la Tabla y, entre corchetes, el de la columna:\n\n`=SUMA(Pedidos[Importe])`\n\nSe lee: «suma la columna Importe de la Tabla Pedidos». Coge todas las filas de datos (sin el título ni la fila de totales) y, cuando la Tabla crece, la fórmula crece con ella. Además funciona desde cualquier hoja del libro: ideal para un resumen."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e3",
+          "modo": "test",
+          "pregunta": "En la hoja Resumen, Marta quiere el total de la columna **Importe** de la Tabla **Pedidos**, que no se quede corto cuando entren pedidos. ¿Qué fórmula pones?",
+          "opciones": [
+            {
+              "texto": "=SUMA(Pedidos[Importe])",
+              "correcta": true,
+              "porque": "Nombre de la Tabla y, entre corchetes, la columna: suma todas las filas, también las que se añadan."
+            },
+            {
+              "texto": "=SUMA([@Importe])",
+              "correcta": false,
+              "porque": "La @ es «esta fila»: solo tendría sentido dentro de la Tabla y sumaría un único importe."
+            },
+            {
+              "texto": "=SUMA(Importe)",
+              "correcta": false,
+              "porque": "Sin el nombre de la Tabla ni los corchetes, Excel no sabe qué es «Importe» y devuelve #¿NOMBRE?."
+            },
+            {
+              "texto": "=SUMA(D2:D6)",
+              "correcta": false,
+              "porque": "Hoy daría bien, pero es un rango fijo: el pedido de mañana se quedaría fuera, como en la lección anterior."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e4",
+          "modo": "respuesta_corta",
+          "pregunta": "Ahora escríbela tú. La Tabla **Pedidos** tiene una columna **Cantidad**. Escribe la fórmula que suma esa columna entera.",
+          "aceptadas": [
+            "=SUMA(Pedidos[Cantidad])",
+            "SUMA(Pedidos[Cantidad])",
+            "=suma(Pedidos[Cantidad])",
+            "=SUMA(pedidos[cantidad])"
+          ],
+          "explicacion": "`=SUMA(Pedidos[Cantidad])`: función, nombre de la Tabla y la columna entre corchetes. En Excel no hace falta escribirla entera: al teclear `Pedidos[` te ofrece la lista de columnas."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Una regla de oro: **una sola fórmula por columna**. Si en una fila alguien sobrescribe la fórmula con un número o con otra fórmula, el total sigue «saliendo», pero ya no es verdad. Excel lo marca con un triangulito verde en la esquina de la celda. Cuando lo veas, no lo ignores."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e5",
+          "modo": "formula",
+          "enunciado": "Encuentra el error. El proveedor subió la canaleta de 6,50 € a 6,85 €, pero alguien escribió el precio viejo **dentro** de la fórmula de la fila 4. Arregla **D4** para que haga lo mismo que las demás filas: cantidad por precio de la columna C.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Cantidad",
+              "C1": "Precio",
+              "D1": "Importe",
+              "A2": "Cable 1,5 mm² (100 m)",
+              "B2": 12,
+              "C2": 39.9,
+              "D2": "=B2*C2",
+              "A3": "Bridas 300 mm (100 ud.)",
+              "B3": 25,
+              "C3": 4.2,
+              "D3": "=B3*C3",
+              "A4": "Canaleta 40x60 (2 m)",
+              "B4": 30,
+              "C4": 6.85,
+              "A5": "Luminaria estanca LED 18 W",
+              "B5": 16,
+              "C5": 21.5,
+              "D5": "=B5*C5",
+              "A6": "Magnetotérmico 1P+N 10 A",
+              "B6": 40,
+              "C6": 8.75,
+              "D6": "=B6*C6"
+            },
+            "formatos": {
+              "C2:D6": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "objetivo": "D4",
+          "inicial": "=B4*6,5",
+          "solucion": "=B4*C4",
+          "alternativas": [
+            "=C4*B4"
+          ],
+          "errores_tipicos": [
+            "=B4*6,5",
+            "=B4*6,85"
+          ],
+          "variantes": [
+            {
+              "C4": 7.1
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Mira la fórmula de D3 o de D5: ¿qué hacen con el precio?",
+            "El precio no se escribe en la fórmula: se coge de su celda, C4.",
+            "Escribe `=B4*C4`."
+          ],
+          "explicacion": "Arreglado, y además a prueba de futuro: si el proveedor vuelve a cambiar el precio, solo tocarás C4. Escribir `6,85` dentro también habría dado bien hoy, pero fallaría con la siguiente subida. En una Tabla, este error se evita dejando que la columna calculada ponga la misma fórmula en todas las filas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una cosa más para que los corchetes no te asusten. Si el título de la columna tiene **espacios** u otros signos, Excel lo envuelve en **doble corchete**:\n\n`=[@[Precio unidad]]*[@Cantidad]`\n\nNo es un error: es la forma de decir dónde empieza y dónde acaba un nombre con espacios. Por eso muchas empresas usan títulos cortos y sin espacios (*PrecioUd*, *Cantidad*)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e6",
+          "modo": "test",
+          "pregunta": "Abres un libro de compras y ves `=[@[Precio unidad]]*[@Cantidad]`. ¿Por qué Precio unidad lleva dos pares de corchetes y Cantidad uno?",
+          "opciones": [
+            {
+              "texto": "Porque «Precio unidad» tiene un espacio y Excel necesita marcar dónde empieza y termina el nombre",
+              "correcta": true,
+              "porque": "Exacto. Los nombres con espacios o signos van entre doble corchete; los de una sola palabra, con uno."
+            },
+            {
+              "texto": "Porque Precio unidad es una columna más importante",
+              "correcta": false,
+              "porque": "Excel no da importancia a las columnas: los corchetes dependen solo de cómo está escrito el nombre."
+            },
+            {
+              "texto": "Porque la fórmula está mal escrita y hay que borrar un par de corchetes",
+              "correcta": false,
+              "porque": "Si quitas un par, Excel no entendería el nombre con espacio. La fórmula está bien."
+            }
+          ]
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Marta Ruiz",
+          "puesto": "Directora financiera",
+          "md": "Te añado una columna: cada proveedor nos hace un **descuento** distinto. Necesito el importe **neto** por línea: cantidad por precio, menos su descuento."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l2-e7",
+          "modo": "formula",
+          "enunciado": "La misión de Marta. En **E2** calcula el importe neto de la primera línea: cantidad (B2) × precio (C2) × (1 − descuento de D2). Tu fórmula se copiará a E3:E6, igual que haría la columna calculada.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Cantidad",
+              "C1": "Precio",
+              "D1": "Descuento",
+              "E1": "Neto",
+              "A2": "Cable 1,5 mm² (100 m)",
+              "B2": 12,
+              "C2": 39.9,
+              "D2": 0.08,
+              "A3": "Canaleta 40x60 (2 m)",
+              "B3": 30,
+              "C3": 6.85,
+              "D3": 0.05,
+              "A4": "Bridas 300 mm (100 ud.)",
+              "B4": 25,
+              "C4": 4.2,
+              "D4": 0,
+              "A5": "Luminaria estanca LED 18 W",
+              "B5": 16,
+              "C5": 21.5,
+              "D5": 0.12,
+              "A6": "Magnetotérmico 1P+N 10 A",
+              "B6": 40,
+              "C6": 8.75,
+              "D6": 0.1
+            },
+            "formatos": {
+              "C2:C6": "eur",
+              "D2:D6": "pct",
+              "E2:E6": "eur"
+            },
+            "anchos": {
+              "A": 26,
+              "D": 11
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E6"
+          ],
+          "solucion": "=B2*C2*(1-D2)",
+          "alternativas": [
+            "=B2*C2-B2*C2*D2",
+            "=(B2*C2)*(1-D2)",
+            "=C2*B2*(1-D2)"
+          ],
+          "errores_tipicos": [
+            "=B2*C2*D2",
+            "=B2*C2-D2",
+            "=B2*C2*1-D2"
+          ],
+          "variantes": [
+            {
+              "D2": 0.15,
+              "C3": 7
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Si el descuento es del 8 %, pagas el 92 %: multiplica por (1 − descuento).",
+            "Primero cantidad por precio, `B2*C2`, y después por `(1-D2)`. Los paréntesis son obligatorios.",
+            "Escribe `=B2*C2*(1-D2)`."
+          ],
+          "explicacion": "Misión cumplida: 440,50 € netos en el cable, y la fórmula vale para todas las líneas. En la Tabla de Marta quedaría así: `=[@Cantidad]*[@Precio]*(1-[@Descuento])`, escrita una sola vez. Con esto calculas el neto de cualquier pedido con descuentos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m1l2-q1",
+          "modo": "test",
+          "pregunta": "¿Cuál de estas fórmulas se refiere a **toda** la columna Importe de la Tabla Ventas?",
+          "opciones": [
+            {
+              "texto": "Ventas[Importe]",
+              "correcta": true,
+              "porque": "Nombre de la Tabla y columna entre corchetes, sin @: la columna entera."
+            },
+            {
+              "texto": "[@Importe]",
+              "correcta": false,
+              "porque": "Con @ es solo el importe de la fila en la que está la fórmula."
+            },
+            {
+              "texto": "Importe@Ventas",
+              "correcta": false,
+              "porque": "Esa forma no existe en Excel. El orden es Tabla[Columna]."
+            }
+          ]
+        },
+        {
+          "id": "n2m1l2-q2",
+          "modo": "predice",
+          "enunciado": "Sin calculadora a mano: 10 rollos a 20 € con un 10 % de descuento. ¿Qué da la fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cantidad",
+              "B1": "Precio",
+              "C1": "Descuento",
+              "A2": 10,
+              "B2": 20,
+              "C2": 0.1
+            },
+            "formatos": {
+              "B2": "eur",
+              "C2": "pct"
+            }
+          },
+          "celda": "D2",
+          "formula": "=A2*B2*(1-C2)",
+          "explicacion": "10 × 20 = 200 €; con un 10 % menos se paga el 90 %: 180 €.",
+          "respuesta": "180"
+        },
+        {
+          "id": "n2m1l2-q3",
+          "modo": "test",
+          "pregunta": "En una columna calculada, la fila 12 tiene un número escrito a mano en lugar de la fórmula. ¿Qué es lo correcto?",
+          "opciones": [
+            {
+              "texto": "Volver a poner la fórmula de la columna en esa fila",
+              "correcta": true,
+              "porque": "Una sola fórmula por columna: así un cambio de precio o de cantidad se recalcula en todas las filas."
+            },
+            {
+              "texto": "Dejarlo si el número coincide con el resultado de hoy",
+              "correcta": false,
+              "porque": "Coincide hoy; cuando cambie la cantidad o el precio, esa fila se quedará con el valor viejo y nadie lo notará."
+            },
+            {
+              "texto": "Pintar la celda de amarillo para acordarte",
+              "correcta": false,
+              "porque": "El color no arregla el cálculo. Hay que recuperar la fórmula."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué significa la @ en =[@Cantidad]*[@Precio]?",
+          "dorso": "«De esta fila»: la Cantidad y el Precio de la fila donde está la fórmula"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Sumar la columna Importe de la Tabla Pedidos",
+          "dorso": "=SUMA(Pedidos[Importe])"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una columna calculada?",
+          "dorso": "Una columna de una Tabla con una sola fórmula que Excel copia sola a todas las filas, también a las nuevas"
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué sale [@[Precio unidad]] con doble corchete?",
+          "dorso": "Porque el nombre de la columna tiene un espacio; no es un error"
+        }
+      ]
+    },
+    {
+      "id": "n2m1l3",
+      "titulo": "Listas desplegables: que nadie escriba lo que no debe",
+      "minutos": 15,
+      "objetivo": "Crear listas desplegables y reglas de validación de datos con mensajes claros, y comprobar que los datos ya escritos las cumplen.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Mis comerciales apuntan la delegación como les da la gana y luego el recuento de visitas por delegación no cuadra nunca. Ponme un desplegable para que solo puedan elegir Zaragoza, Pamplona o Lleida. Y que si escriben otra cosa, no les deje.",
+        "logro": "Ya sabes poner listas desplegables con mensaje de ayuda y de error, y cazar los datos que no cumplen la regla."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Para ti, «Pamplona», «Pamplona » (con un espacio al final) y «Panplona» son la misma ciudad. Para Excel son **tres textos distintos**. Basta un espacio de más o una letra cambiada para que un recuento, un filtro o un resumen por delegación salgan mal… sin dar ningún error.\n\nMira el registro de visitas de los comerciales: ¿cuántas visitas a Pamplona hay de verdad?"
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Registro de visitas comerciales",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Delegación",
+              "C1": "Comercial",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Pamplona",
+              "C2": "Íñigo Sarasa",
+              "A3": {
+                "fecha": "2026-11-02"
+              },
+              "B3": "Zaragoza",
+              "C3": "Pilar Gimeno",
+              "A4": {
+                "fecha": "2026-11-03"
+              },
+              "B4": "Pamplona ",
+              "C4": "Íñigo Sarasa",
+              "A5": {
+                "fecha": "2026-11-04"
+              },
+              "B5": "Lleida",
+              "C5": "Jordi Puig",
+              "A6": {
+                "fecha": "2026-11-05"
+              },
+              "B6": "Panplona",
+              "C6": "Amaia Etxeberria",
+              "A7": {
+                "fecha": "2026-11-05"
+              },
+              "B7": "Pamplona",
+              "C7": "Amaia Etxeberria",
+              "A8": {
+                "fecha": "2026-11-06"
+              },
+              "B8": "Zaragoza",
+              "C8": "Pilar Gimeno",
+              "A9": {
+                "fecha": "2026-11-06"
+              },
+              "B9": "Pamplona.",
+              "C9": "Íñigo Sarasa"
+            },
+            "formatos": {
+              "A2:A9": "fecha"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 12,
+              "C": 18
+            }
+          },
+          "resaltar": [
+            "B4",
+            "B6",
+            "B9"
+          ],
+          "pie": "B4 lleva un espacio al final que no se ve; B6 y B9 están mal escritas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e1",
+          "modo": "predice",
+          "enunciado": "Esta fórmula cuenta cuántas celdas de B2:B9 dicen **exactamente** «Pamplona» (la función CONTAR.SI la estudiarás a fondo en el módulo siguiente). En la lista hay 5 visitas a Pamplona. ¿Qué número dará?",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Delegación",
+              "C1": "Comercial",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Pamplona",
+              "C2": "Íñigo Sarasa",
+              "A3": {
+                "fecha": "2026-11-02"
+              },
+              "B3": "Zaragoza",
+              "C3": "Pilar Gimeno",
+              "A4": {
+                "fecha": "2026-11-03"
+              },
+              "B4": "Pamplona ",
+              "C4": "Íñigo Sarasa",
+              "A5": {
+                "fecha": "2026-11-04"
+              },
+              "B5": "Lleida",
+              "C5": "Jordi Puig",
+              "A6": {
+                "fecha": "2026-11-05"
+              },
+              "B6": "Panplona",
+              "C6": "Amaia Etxeberria",
+              "A7": {
+                "fecha": "2026-11-05"
+              },
+              "B7": "Pamplona",
+              "C7": "Amaia Etxeberria",
+              "A8": {
+                "fecha": "2026-11-06"
+              },
+              "B8": "Zaragoza",
+              "C8": "Pilar Gimeno",
+              "A9": {
+                "fecha": "2026-11-06"
+              },
+              "B9": "Pamplona.",
+              "C9": "Íñigo Sarasa"
+            },
+            "formatos": {
+              "A2:A9": "fecha"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 12,
+              "C": 18
+            }
+          },
+          "celda": "E2",
+          "formula": "=CONTAR.SI(B2:B9;\"Pamplona\")",
+          "explicacion": "Solo 2. «Pamplona » (con espacio), «Panplona» y «Pamplona.» no cuentan, porque no son exactamente el mismo texto. Javier vería 2 visitas donde hubo 5. Esto se evita impidiendo que se escriba a mano.",
+          "respuesta": "2"
+        },
+        {
+          "tipo": "texto",
+          "md": "La solución es la **validación de datos**: una regla que pones en unas celdas y que decide **qué se puede escribir** en ellas. La más usada es la **lista desplegable**: al hacer clic en la celda aparece una flechita y la persona **elige** de una lista en lugar de teclear.\n\nEstá en **Datos › Herramientas de datos › Validación de datos**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e2",
+          "modo": "cinta",
+          "enunciado": "Busca en la cinta el botón para crear una lista desplegable.",
+          "ruta": [
+            "Datos",
+            "Herramientas de datos",
+            "Validación de datos"
+          ],
+          "explicacion": "Datos › Herramientas de datos › Validación de datos. Fíjate en que el botón tiene una flechita: ahí hay más opciones que usarás al final de la lección."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: el desplegable de delegaciones",
+          "pasos": [
+            {
+              "md": "Crea una hoja nueva y llámala **Listas**. En A1 escribe *Delegación* y debajo, una por celda: Zaragoza, Pamplona, Lleida. Bien escritas: de aquí copiará todo el mundo."
+            },
+            {
+              "md": "Vuelve al registro y selecciona las celdas donde se escribirá la delegación, por ejemplo **B2:B500**."
+            },
+            {
+              "md": "Ve a **Datos › Herramientas de datos › Validación de datos**. En la pestaña **Configuración**, en **Permitir**, elige **Lista**.",
+              "ruta": [
+                "Datos",
+                "Herramientas de datos",
+                "Validación de datos"
+              ]
+            },
+            {
+              "md": "Haz clic en la casilla **Origen**, ve a la hoja Listas y selecciona **A2:A4**. Queda `=Listas!$A$2:$A$4`. Pulsa **Aceptar**."
+            },
+            {
+              "md": "Haz clic en B2: aparece la flechita con las tres delegaciones."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e3",
+          "modo": "test",
+          "pregunta": "¿Por qué es mejor tener las delegaciones en una hoja **Listas** aparte que escribirlas cada vez en cada desplegable?",
+          "opciones": [
+            {
+              "texto": "Porque si mañana abre la delegación de Huesca, la añades en un solo sitio y amplías el origen",
+              "correcta": true,
+              "porque": "Un dato, un sitio. Todos los desplegables que leen de esa lista quedan al día a la vez."
+            },
+            {
+              "texto": "Porque Excel no deja crear un desplegable sin una hoja que se llame Listas",
+              "correcta": false,
+              "porque": "El nombre de la hoja da igual; Listas es una costumbre de oficina para encontrarla rápido."
+            },
+            {
+              "texto": "Porque así el libro ocupa menos",
+              "correcta": false,
+              "porque": "La diferencia de tamaño es despreciable. La ventaja es tener la lista oficial en un único lugar."
+            }
+          ],
+          "explicacion": "Las listas oficiales (delegaciones, categorías, estados, tipos de IVA) van en una hoja aparte, bien escritas y en un solo sitio."
+        },
+        {
+          "tipo": "texto",
+          "md": "El mismo cuadro tiene dos pestañas más:\n\n- **Mensaje de entrada**: una nota que aparece al seleccionar la celda. Por ejemplo: «Elige la delegación de la lista».\n- **Mensaje de error**: lo que sale si alguien escribe algo que no está en la lista. Su **Estilo** decide qué pasa:\n  - **Detener**: no deja escribirlo.\n  - **Advertencia**: avisa y pregunta si quiere seguir.\n  - **Información**: solo informa y lo deja pasar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e4",
+          "modo": "test",
+          "pregunta": "Javier dice: «que si escriben otra cosa, **no les deje**». ¿Qué estilo eliges en el Mensaje de error?",
+          "opciones": [
+            {
+              "texto": "Detener",
+              "correcta": true,
+              "porque": "Es el único que bloquea: la persona tiene que elegir un valor de la lista o cancelar."
+            },
+            {
+              "texto": "Advertencia",
+              "correcta": false,
+              "porque": "Advertencia avisa, pero deja seguir si la persona pulsa Sí. El «Panplona» acabaría entrando."
+            },
+            {
+              "texto": "Información",
+              "correcta": false,
+              "porque": "Información solo da un aviso y acepta el dato. Es la regla más suave."
+            }
+          ],
+          "explicacion": "Y escribe un mensaje que ayude, no que regañe: «Elige Zaragoza, Pamplona o Lleida en la flechita» es mejor que «Dato no válido»."
+        },
+        {
+          "tipo": "texto",
+          "md": "La validación no sirve solo para listas. En **Permitir** también puedes elegir números, fechas o longitud de texto, con condiciones como **entre**, **mayor que** o **menor que**. Unos ejemplos de oficina:"
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Reglas de validación habituales",
+          "cabecera": [
+            "Columna",
+            "Permitir",
+            "Condición"
+          ],
+          "filas": [
+            [
+              "Importe de una factura",
+              "Decimal",
+              "mayor que 0"
+            ],
+            [
+              "Días de vacaciones pedidos",
+              "Número entero",
+              "entre 1 y 30"
+            ],
+            [
+              "Fecha de una factura de 2026",
+              "Fecha",
+              "entre 01/01/2026 y 31/12/2026"
+            ],
+            [
+              "Estado de una incidencia",
+              "Lista",
+              "Abierta, En curso, Cerrada"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e5",
+          "modo": "test",
+          "pregunta": "Lucía, de RRHH, recibe solicitudes de vacaciones en las que alguien escribió «-3» días o «2,5». Quiere que solo se puedan escribir días enteros del 1 al 30. ¿Qué regla pones?",
+          "opciones": [
+            {
+              "texto": "Permitir: Número entero, entre 1 y 30",
+              "correcta": true,
+              "porque": "Número entero rechaza 2,5 y el «entre» rechaza el -3 y cualquier cosa por encima de 30."
+            },
+            {
+              "texto": "Permitir: Decimal, mayor que 0",
+              "correcta": false,
+              "porque": "Dejaría pasar 2,5 y también 300. Decimal es para importes, no para días."
+            },
+            {
+              "texto": "Permitir: Lista, con los números del 1 al 30 en la hoja Listas",
+              "correcta": false,
+              "porque": "Funcionaría, pero es dar un rodeo: para números, la regla de número entero es más sencilla y clara."
+            }
+          ]
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Cuidado con dos trampas. Una: la validación **no revisa lo que ya estaba escrito**, solo lo nuevo. Dos: si alguien **copia y pega** un dato, la regla no salta. Para cazarlos, ve a la flechita de **Datos › Validación de datos** y elige **Rodear con un círculo datos no válidos** (la ayuda de Microsoft lo llama «Círculo con datos no válidos»). Excel marca con un círculo rojo cada celda que no cumple la regla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e6",
+          "modo": "formula",
+          "enunciado": "Comprueba antes de entregar. En F2:F4 ya tienes las visitas por delegación y en **F5** su suma: 5. En **F6** cuenta cuántas visitas hay registradas en total, es decir, cuántas celdas de **B2:B9** tienen algo escrito. Si F6 no coincide con F5, hay delegaciones mal escritas.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Delegación",
+              "E1": "Delegación",
+              "F1": "Visitas",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Pamplona",
+              "A3": {
+                "fecha": "2026-11-02"
+              },
+              "B3": "Zaragoza",
+              "A4": {
+                "fecha": "2026-11-03"
+              },
+              "B4": "Pamplona ",
+              "A5": {
+                "fecha": "2026-11-04"
+              },
+              "B5": "Lleida",
+              "A6": {
+                "fecha": "2026-11-05"
+              },
+              "B6": "Panplona",
+              "A7": {
+                "fecha": "2026-11-05"
+              },
+              "B7": "Pamplona",
+              "A8": {
+                "fecha": "2026-11-06"
+              },
+              "B8": "Zaragoza",
+              "A9": {
+                "fecha": "2026-11-06"
+              },
+              "B9": "Pamplona.",
+              "E2": "Zaragoza",
+              "F2": "=CONTAR.SI($B$2:$B$9;E2)",
+              "E3": "Pamplona",
+              "F3": "=CONTAR.SI($B$2:$B$9;E3)",
+              "E4": "Lleida",
+              "F4": "=CONTAR.SI($B$2:$B$9;E4)",
+              "E5": "Suma",
+              "F5": "=SUMA(F2:F4)",
+              "E6": "Registradas"
+            },
+            "formatos": {
+              "A2:A9": "fecha"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 12,
+              "E": 12
+            }
+          },
+          "objetivo": "F6",
+          "solucion": "=CONTARA(B2:B9)",
+          "alternativas": [
+            "=CONTARA(A2:A9)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR(B2:B9)",
+            "=SUMA(F2:F4)"
+          ],
+          "variantes": [
+            {
+              "B9": null,
+              "A9": null
+            }
+          ],
+          "pistas": [
+            "Quieres contar celdas con texto, no números. ¿Qué función de contar cuenta todo lo que no está vacío?",
+            "CONTAR solo cuenta números (aquí daría 0). La que cuenta textos es CONTARA.",
+            "Escribe `=CONTARA(B2:B9)`."
+          ],
+          "explicacion": "8 visitas registradas frente a 5 bien clasificadas: faltan 3, justo las mal escritas. Esta comprobación (el total por grupos tiene que coincidir con el total general) es un **total de control**, y te salvará más de un informe."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l3-e7",
+          "modo": "ordenar",
+          "enunciado": "La misión de Javier completa. Ordena los pasos para dejar el registro de visitas a prueba de despistes.",
+          "pasos": [
+            "En la hoja Listas, escribe Zaragoza, Pamplona y Lleida, una por celda",
+            "En el registro, selecciona las celdas de la columna Delegación",
+            "Ve a Datos › Validación de datos y, en Permitir, elige Lista",
+            "En Origen, selecciona las tres delegaciones de la hoja Listas",
+            "En Mensaje de error, elige el estilo Detener y escribe un mensaje que ayude",
+            "Usa Rodear con un círculo datos no válidos y corrige las delegaciones mal escritas que ya había"
+          ],
+          "explicacion": "Misión cumplida: desde hoy nadie puede escribir «Panplona», y lo que ya estaba mal lo has encontrado y corregido. Con esto, el recuento por delegación de Javier por fin cuadra."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m1l3-q1",
+          "modo": "cinta",
+          "enunciado": "Sin mirar arriba: ¿dónde se crea una lista desplegable?",
+          "ruta": [
+            "Datos",
+            "Herramientas de datos",
+            "Validación de datos"
+          ],
+          "explicacion": "Datos › Herramientas de datos › Validación de datos, y en Permitir, Lista."
+        },
+        {
+          "id": "n2m1l3-q2",
+          "modo": "test",
+          "pregunta": "Has puesto un desplegable con estilo Detener. Un compañero copia «Lerida» de un correo y lo pega en la columna. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "Se pega sin aviso: la validación no salta al pegar",
+              "correcta": true,
+              "porque": "Así es: al pegar no aparecen mensajes. Por eso conviene revisar con «Rodear con un círculo datos no válidos»."
+            },
+            {
+              "texto": "Excel lo bloquea con el mensaje de error",
+              "correcta": false,
+              "porque": "El mensaje solo sale cuando se escribe en la celda, no cuando se pega."
+            },
+            {
+              "texto": "Excel lo corrige solo a «Lleida»",
+              "correcta": false,
+              "porque": "Excel nunca corrige el dato por su cuenta: lo deja tal cual."
+            }
+          ]
+        },
+        {
+          "id": "n2m1l3-q3",
+          "modo": "test",
+          "pregunta": "Quieres que en la columna Importe solo se puedan escribir cantidades positivas, con decimales. ¿Qué eliges en Permitir?",
+          "opciones": [
+            {
+              "texto": "Decimal, mayor que 0",
+              "correcta": true,
+              "porque": "Decimal admite céntimos y «mayor que 0» rechaza ceros y negativos."
+            },
+            {
+              "texto": "Número entero, mayor que 0",
+              "correcta": false,
+              "porque": "Rechazaría 125,50 €: los importes llevan céntimos."
+            },
+            {
+              "texto": "Lista",
+              "correcta": false,
+              "porque": "Una lista sirve para elegir entre valores fijos, no para importes libres."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Ruta para crear una lista desplegable",
+          "dorso": "Datos › Herramientas de datos › Validación de datos › Permitir: Lista › Origen"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Estilos del mensaje de error de la validación",
+          "dorso": "Detener (bloquea), Advertencia (avisa y deja seguir), Información (solo informa)"
+        },
+        {
+          "tipo": "error",
+          "frente": "¿La validación de datos impide pegar un dato que no cumple la regla?",
+          "dorso": "No. Hay que revisar con «Rodear con un círculo datos no válidos» (flecha de Validación de datos)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde se guardan las listas oficiales de los desplegables?",
+          "dorso": "En una hoja aparte (p. ej. Listas), bien escritas y en un solo sitio"
+        }
+      ]
+    },
+    {
+      "id": "n2m1l4",
+      "titulo": "Formato condicional y pegado especial",
+      "minutos": 16,
+      "objetivo": "Resaltar automáticamente los datos importantes con formato condicional, añadir minigráficos y pasar resultados a otro sitio con Pegar valores.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "En la lista de facturas pendientes quiero ver de un vistazo las que pasan de 3.000 €, y que se marquen solas cuando cambie algo. Luego pásame los importes a mi libro de tesorería, solo los números: mi libro no tiene tus fórmulas.",
+        "logro": "Ya sabes hacer que Excel marque solo lo importante con formato condicional y pasar resultados a otro libro con Pegar valores."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Marta quiere ver de un vistazo las facturas de más de 3.000 €. Podrías pintarlas de rojo a mano, pero mañana un cliente paga, otro importe cambia… y tus colores siguen donde estaban, mintiendo.\n\nEl **formato condicional** es una **regla**: «si el importe es mayor que 3.000, píntalo». Excel la vuelve a mirar cada vez que cambia un dato, así que el color siempre dice la verdad."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e1",
+          "modo": "test",
+          "pregunta": "Ayer pintaste a mano de rojo las facturas de más de 3.000 €. Hoy una de 2.800 € se ha corregido a 3.400 €. ¿Qué pasa con su color?",
+          "opciones": [
+            {
+              "texto": "Sigue sin color: el relleno a mano no sabe que el importe ha cambiado",
+              "correcta": true,
+              "porque": "Exacto. Un color puesto a mano es una foto de ayer. Por eso se usa formato condicional."
+            },
+            {
+              "texto": "Se pone roja sola, porque Excel recuerda por qué la pintaste",
+              "correcta": false,
+              "porque": "Excel no sabe por qué pintaste nada. Solo una regla de formato condicional se actualiza sola."
+            },
+            {
+              "texto": "Sale un aviso de que el color ya no es correcto",
+              "correcta": false,
+              "porque": "No hay ningún aviso: el color equivocado se queda ahí sin que nadie lo note."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "El botón está en **Inicio › Estilos › Formato condicional**. Al pulsarlo verás cinco familias de reglas:\n\n- **Reglas para resaltar celdas**: mayor que, menor que, entre, texto que contiene, valores duplicados.\n- **Reglas superiores e inferiores**: los 10 mayores, por encima del promedio…\n- **Barras de datos**: una barra dentro de cada celda, más larga cuanto mayor es el número.\n- **Escalas de color**: de verde a rojo según el valor.\n- **Conjuntos de iconos**: flechas, semáforos…"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e2",
+          "modo": "cinta",
+          "enunciado": "Abre el menú de formato condicional.",
+          "ruta": [
+            "Inicio",
+            "Estilos",
+            "Formato condicional"
+          ],
+          "explicacion": "Inicio › Estilos › Formato condicional. Antes de pulsarlo, selecciona las celdas a las que se aplicará la regla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e3",
+          "modo": "test",
+          "pregunta": "Para marcar en rojo las facturas de **más de 3.000 €**, ¿qué regla eliges?",
+          "opciones": [
+            {
+              "texto": "Reglas para resaltar celdas › Mayor que…",
+              "correcta": true,
+              "porque": "Es la regla directa: escribes el límite (o eliges la celda donde está) y el formato."
+            },
+            {
+              "texto": "Reglas superiores e inferiores › 10 superiores",
+              "correcta": false,
+              "porque": "Marcaría las 10 más altas, pasen o no de 3.000 €. Sirve para un ranking, no para un límite."
+            },
+            {
+              "texto": "Escalas de color",
+              "correcta": false,
+              "porque": "Pinta todas las celdas en degradado. Sirve para ver tendencias, no para separar las que pasan de un límite."
+            },
+            {
+              "texto": "Reglas para resaltar celdas › Valores duplicados",
+              "correcta": false,
+              "porque": "Esa marca importes repetidos, muy útil para detectar facturas metidas dos veces, pero no compara con 3.000 €."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "Dos detalles que separan a una novata de una profesional:\n\n- **El límite, en una celda.** En el cuadro *Mayor que*, en lugar de teclear 3000, haz clic en la celda donde está el límite (queda `=$G$1`). Si Marta lo cambia a 2.500, los colores se actualizan solos.\n- **El color no cambia el valor.** Una celda roja sigue valiendo lo mismo y las sumas no se enteran. Y si el informe se imprime en blanco y negro, el color desaparece: conviene una marca escrita además del color."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e4",
+          "modo": "formula",
+          "enunciado": "La marca escrita para cuando Marta imprima en blanco y negro. En **D2** escribe una fórmula que ponga «Revisar» si el importe de C2 es **mayor** que el límite de **G1**, y que deje la celda vacía (`\"\"`) si no. Tu fórmula se copiará a D3:D7.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "D1": "Aviso",
+              "F1": "Límite",
+              "G1": 3000,
+              "A2": "FV-26/0812",
+              "B2": "Instalaciones Ebro, S.L.",
+              "C2": 2450,
+              "A3": "FV-26/0815",
+              "B3": "Electricidad Hnos. Lacasa",
+              "C3": 3820.5,
+              "A4": "FV-26/0821",
+              "B4": "Montajes Delicias, S.L.",
+              "C4": 1275,
+              "A5": "FV-26/0826",
+              "B5": "Climatización Moncayo",
+              "C5": 5310,
+              "A6": "FV-26/0830",
+              "B6": "Reformas Actur, S.L.",
+              "C6": 980.4,
+              "A7": "FV-26/0833",
+              "B7": "Instalaciones Ebro, S.L.",
+              "C7": 3000
+            },
+            "formatos": {
+              "C2:C7": "eur",
+              "G1": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 25,
+              "C": 12,
+              "D": 9
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D7"
+          ],
+          "solucion": "=SI(C2>$G$1;\"Revisar\";\"\")",
+          "alternativas": [
+            "=SI(C2>G$1;\"Revisar\";\"\")",
+            "=SI(C2<=$G$1;\"\";\"Revisar\")"
+          ],
+          "errores_tipicos": [
+            "=SI(C2>G1;\"Revisar\";\"\")",
+            "=SI(C2>=$G$1;\"Revisar\";\"\")",
+            "=SI(C2>3000;\"Revisar\";\"\")"
+          ],
+          "variantes": [
+            {
+              "G1": 2000
+            }
+          ],
+          "pistas": [
+            "Es una decisión: usa SI(condición; si se cumple; si no).",
+            "La condición es `C2>$G$1`. Fija G1 con $ para que no se mueva al copiar, y pon los textos entre comillas.",
+            "Escribe `=SI(C2>$G$1;\"Revisar\";\"\")`."
+          ],
+          "explicacion": "Dos facturas marcadas: 3.820,50 € y 5.310 €. Fíjate en la de 3.000 € justos: no sale, porque «mayor que» no incluye el propio límite. Y como el límite está en G1, si Marta lo cambia, las marcas se recalculan solas. Esta misma idea es la del formato condicional."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e5",
+          "modo": "test",
+          "pregunta": "Javier quiere comparar de un vistazo las ventas de sus seis comerciales, dentro de las mismas celdas y viendo quién vende más que quién. ¿Qué formato condicional le pones?",
+          "opciones": [
+            {
+              "texto": "Barras de datos",
+              "correcta": true,
+              "porque": "Cada celda lleva una barra proporcional a su valor: se compara de un vistazo, como un gráfico dentro de la tabla."
+            },
+            {
+              "texto": "Reglas para resaltar celdas › Mayor que",
+              "correcta": false,
+              "porque": "Solo separa en dos grupos (pasa o no pasa un límite). No deja ver cuánto vende cada uno respecto a los demás."
+            },
+            {
+              "texto": "Conjuntos de iconos con semáforos",
+              "correcta": false,
+              "porque": "Agrupa en tres colores; dos comerciales con ventas muy distintas pueden tener el mismo semáforo."
+            }
+          ],
+          "explicacion": "Regla rápida: para un límite, **Mayor que**; para comparar cantidades, **barras de datos**; para ver tendencias en una tabla grande, **escalas de color**. Y con moderación: si todo tiene color, nada destaca."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para revisar o quitar reglas, en el mismo menú tienes **Administrar reglas** (las ves todas y puedes editarlas) y **Borrar reglas** (de las celdas seleccionadas o de toda la hoja). Si heredas un libro con colores raros, empieza por Administrar reglas.\n\nY un extra muy vistoso: los **minigráficos**, gráficos diminutos dentro de una celda que enseñan la tendencia de una fila, por ejemplo las ventas de enero a junio de cada comercial. Están en **Insertar › Minigráficos**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e6",
+          "modo": "cinta",
+          "enunciado": "Javier quiere, al final de cada fila de su informe, una línea pequeña con la evolución de ventas de enero a junio de cada comercial. ¿Qué botón usas?",
+          "ruta": [
+            "Insertar",
+            "Minigráficos",
+            "Línea"
+          ],
+          "explicacion": "Insertar › Minigráficos › Línea. Excel te pide el rango de datos (las ventas de la fila) y dónde ponerlo (la celda de la derecha). Para comparar cantidades sueltas, mejor **Columna**."
+        },
+        {
+          "tipo": "texto",
+          "md": "Última herramienta: **pegar solo valores**. Cuando copias una celda con fórmula y la pegas normal, pegas **la fórmula**. Si la pegas en otro libro, la fórmula busca celdas que allí no existen y se rompe, o se queda enlazada a tu archivo.\n\nCon **Pegado especial › Valores** pegas **el resultado**, el número tal cual, sin fórmula. Se usa para mandar cifras a otro libro, para guardar la foto de un cierre o para enviar datos a alguien que no debe ver tus cálculos."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Ctrl+C",
+              "accion": "Copiar"
+            },
+            {
+              "teclas": "Ctrl+Alt+V",
+              "accion": "Abrir Pegado especial (después, V = Valores y Aceptar)"
+            }
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Lo mismo, con el ratón, y un extra",
+          "md": "También en **Inicio › Portapapeles**, flechita de **Pegar** › **Pegar valores**. Y en el cuadro de Pegado especial hay una casilla **Transponer**: pega las filas como columnas y al revés. Muy útil cuando te pasan los meses en vertical y los necesitas en horizontal."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m1l4-e7",
+          "modo": "ordenar",
+          "enunciado": "La misión de Marta completa. Ordena los pasos: primero marcar las facturas de más de 3.000 € y después pasar los importes a su libro de tesorería sin fórmulas.",
+          "pasos": [
+            "Selecciona los importes de las facturas pendientes",
+            "Ve a Inicio › Formato condicional › Reglas para resaltar celdas › Mayor que",
+            "Haz clic en la celda del límite (3.000 €), elige el formato y pulsa Aceptar",
+            "Copia los importes con Ctrl+C",
+            "En el libro de tesorería, haz clic en la celda de destino y pulsa Ctrl+Alt+V",
+            "Elige Valores y pulsa Aceptar"
+          ],
+          "explicacion": "Misión cumplida: Marta ve en rojo lo que pasa del límite, los colores se actualizan solos y en su libro solo hay números, sin fórmulas que se rompan. Haz siempre la prueba final: haz clic en una celda pegada y mira la barra de fórmulas; debe salir un número, no una fórmula."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m1l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo abre el cuadro de **Pegado especial**?",
+          "aceptadas": [
+            "Ctrl+Alt+V",
+            "Control+Alt+V",
+            "Ctrl Alt V",
+            "Ctrl + Alt + V"
+          ],
+          "explicacion": "Ctrl+Alt+V. Dentro, la V marca Valores."
+        },
+        {
+          "id": "n2m1l4-q2",
+          "modo": "predice",
+          "enunciado": "La factura de C2 es de 3.000 € justos. ¿Qué escribe esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "C1": "Importe",
+              "A2": "FV-26/0833",
+              "C2": 3000
+            },
+            "formatos": {
+              "C2": "eur"
+            }
+          },
+          "celda": "D2",
+          "formula": "=SI(C2>3000;\"Revisar\";\"OK\")",
+          "explicacion": "«OK»: 3.000 no es **mayor** que 3.000. Si Marta quisiera incluirla, la condición sería `>=`. Lo mismo pasa con la regla *Mayor que* del formato condicional.",
+          "respuesta": "OK"
+        },
+        {
+          "id": "n2m1l4-q3",
+          "modo": "test",
+          "pregunta": "Una celda con 4.200 € está en rojo por una regla de formato condicional. ¿Cuánto suma esa celda en `=SUMA(C2:C10)`?",
+          "opciones": [
+            {
+              "texto": "4.200 €, como cualquier otra",
+              "correcta": true,
+              "porque": "El formato condicional solo cambia el aspecto, nunca el valor."
+            },
+            {
+              "texto": "Nada: las celdas marcadas se excluyen",
+              "correcta": false,
+              "porque": "SUMA no mira colores. Si quieres dejar fuera algunas celdas, hace falta una condición en la fórmula."
+            },
+            {
+              "texto": "Depende del color elegido",
+              "correcta": false,
+              "porque": "El color no influye en ningún cálculo."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Ruta del formato condicional",
+          "dorso": "Inicio › Estilos › Formato condicional"
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Pegar solo el resultado, sin la fórmula",
+          "dorso": "Ctrl+Alt+V › Valores › Aceptar (o Inicio › Pegar › Pegar valores)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué regla para marcar importes por encima de un límite?",
+          "dorso": "Reglas para resaltar celdas › Mayor que, con el límite en una celda"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde se insertan los minigráficos?",
+          "dorso": "Insertar › Minigráficos › Línea, Columna o Ganancia o pérdida"
+        }
+      ]
+    }
+  ]
+}

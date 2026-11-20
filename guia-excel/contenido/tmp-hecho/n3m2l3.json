@@ -1,0 +1,653 @@
+{
+ "id": "n3m2l3",
+ "titulo": "Cruzar dos listas: qué falta en cada lado",
+ "minutos": 18,
+ "objetivo": "Cruzar dos listas en los dos sentidos (CONTAR.SI, BUSCARX con «si no se encuentra»), detectar claves repetidas y comparar importes redondeados: la base de una conciliación.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Cierre de octubre. Te paso nuestras facturas cobradas y el extracto del banco. Quiero saber qué facturas no han entrado, qué ingresos no tienen factura y si algún importe no cuadra. Lo necesito hoy antes de las cinco.",
+  "logro": "Ya sabes conciliar dos listas: lo que falta en cada lado, los repetidos y los importes que no cuadran."
+ },
+ "funciones": [
+  "CONTAR.SI",
+  "BUSCARX",
+  "SI",
+  "SI.ND"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Cada mes, Marta compara dos listas que **deberían** coincidir: las facturas que tenemos como cobradas y los ingresos que aparecen en el banco. Eso se llama **conciliar**: poner las dos listas una frente a otra y explicar cada diferencia.\n\n**Cruzar** dos listas es preguntarse, fila a fila: ¿esto está también en la otra lista? Lo harás con fórmulas, porque a ojo, con 300 facturas, siempre se escapa algo.\n\nCon seis facturas todavía se ve a simple vista. Empieza por ahí."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Nuestras facturas (A:C) y el extracto del banco (F:G)",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "F1": "Referencia",
+     "G1": "Importe banco",
+     "A2": "FV-26/0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1452,
+     "A3": "FV-26/0415",
+     "B3": "Montajes Arga",
+     "C3": 868.7,
+     "A4": "FV-26/0419",
+     "B4": "Electricidad Segre",
+     "C4": 2310.45,
+     "A5": "FV-26/0423",
+     "B5": "Reformas Delicias",
+     "C5": 512.3,
+     "A6": "FV-26/0427",
+     "B6": "Climatización Huesca",
+     "C6": 1089,
+     "A7": "FV-26/0431",
+     "B7": "Instalaciones Gállego",
+     "C7": 3674.25,
+     "F2": "FV-26/0412",
+     "G2": 1452,
+     "F3": "FV-26/0419",
+     "G3": 2310.45,
+     "F4": "FV-26/0423",
+     "G4": 512.3,
+     "F5": "FV-26/0431",
+     "G5": 3647.25,
+     "F6": "FV-26/0423",
+     "G6": 512.3,
+     "F7": "FV-26/0438",
+     "G7": 745.8,
+     "F8": "FV-26/0427",
+     "G8": 1089
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 20,
+     "C": 11,
+     "F": 11,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "pie": "La columna Referencia del banco trae el número de factura que el cliente escribió en su transferencia."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e1",
+   "modo": "test",
+   "pregunta": "Mira las dos listas. ¿Qué factura nuestra **no** aparece en el banco?",
+   "opciones": [
+    {
+     "texto": "FV-26/0415 (Montajes Arga)",
+     "correcta": true,
+     "porque": "Correcto: está en nuestras facturas, pero ninguna referencia del banco es FV-26/0415. Ese cobro no ha entrado."
+    },
+    {
+     "texto": "FV-26/0438",
+     "correcta": false,
+     "porque": "Es al revés: FV-26/0438 está en el banco pero no en nuestras facturas. También hay que explicarla, pero es el otro sentido del cruce."
+    },
+    {
+     "texto": "FV-26/0431 (Instalaciones Gállego)",
+     "correcta": false,
+     "porque": "Sí aparece en el banco, aunque con otro importe. Eso es otro problema, y lo resolverás al final."
+    },
+    {
+     "texto": "Ninguna: están todas",
+     "correcta": false,
+     "porque": "Repasa la lista del banco: hay una de nuestras facturas que no sale nunca."
+    }
+   ],
+   "explicacion": "Ya has visto los tres problemas típicos de una conciliación: una factura sin cobrar, un ingreso sin factura y un importe distinto. Ahora vas a hacer que Excel los encuentre por ti."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para que Excel lo mire por ti, usa **CONTAR.SI**, que ya conoces: cuenta cuántas veces aparece algo en un rango.\n\n`=CONTAR.SI($F$2:$F$8;A2)` cuenta cuántas veces sale la factura de A2 en la columna del banco. Si da **0**, no está; si da 1 o más, está.\n\nPara que se lea mejor, lo envuelves en un SI:\n\n`=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")`\n\nEl rango del banco va fijado con $ porque copiarás la fórmula hacia abajo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e2",
+   "modo": "formula",
+   "enunciado": "Nuria ha empezado la columna **D** («¿En banco?»), pero su fórmula solo da un número. **Complétala** para que en **D2** salga el texto **Sí** si la factura de A2 está en el banco (F2:F8) y **No está** si no. Escribe los dos textos tal cual. Se copiará hasta **D7**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "¿En banco?",
+     "F1": "Referencia",
+     "G1": "Importe banco",
+     "A2": "FV-26/0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1452,
+     "A3": "FV-26/0415",
+     "B3": "Montajes Arga",
+     "C3": 868.7,
+     "A4": "FV-26/0419",
+     "B4": "Electricidad Segre",
+     "C4": 2310.45,
+     "A5": "FV-26/0423",
+     "B5": "Reformas Delicias",
+     "C5": 512.3,
+     "A6": "FV-26/0427",
+     "B6": "Climatización Huesca",
+     "C6": 1089,
+     "A7": "FV-26/0431",
+     "B7": "Instalaciones Gállego",
+     "C7": 3674.25,
+     "F2": "FV-26/0412",
+     "G2": 1452,
+     "F3": "FV-26/0419",
+     "G3": 2310.45,
+     "F4": "FV-26/0423",
+     "G4": 512.3,
+     "F5": "FV-26/0431",
+     "G5": 3647.25,
+     "F6": "FV-26/0423",
+     "G6": 512.3,
+     "F7": "FV-26/0438",
+     "G7": 745.8,
+     "F8": "FV-26/0427",
+     "G8": 1089
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 20,
+     "C": 11,
+     "D": 11,
+     "F": 11,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D7"
+   ],
+   "inicial": "=CONTAR.SI($F$2:$F$8;A2)",
+   "solucion": "=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")",
+   "alternativas": [
+    "=SI(CONTAR.SI($F$2:$F$8;A2)=0;\"No está\";\"Sí\")",
+    "=SI(CONTAR.SI($F$2:$F$8;A2)>=1;\"Sí\";\"No está\")",
+    "=SI(CONTAR.SI(F$2:F$8;A2)>0;\"Sí\";\"No está\")"
+   ],
+   "errores_tipicos": [
+    "=SI(CONTAR.SI(F2:F8;A2)>0;\"Sí\";\"No está\")",
+    "=SI(CONTAR.SI($F$2:$F$8;A2)>1;\"Sí\";\"No está\")",
+    "=SI(CONTAR.SI($A$2:$A$7;F2)>0;\"Sí\";\"No está\")"
+   ],
+   "variantes": [
+    {
+     "F3": "FV-26/0415"
+    }
+   ],
+   "pistas": [
+    "La cuenta de Nuria ya está bien: 0 significa que no está. Solo falta convertir el número en texto con un SI.",
+    "La condición del SI es «la cuenta es mayor que 0»: `CONTAR.SI($F$2:$F$8;A2)>0`.",
+    "`=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")`"
+   ],
+   "explicacion": "Ahí está: FV-26/0415, de Montajes Arga, no ha entrado en el banco. Marta tendrá que reclamarla o averiguar si el cliente pagó con otra referencia. Con 300 facturas, esta columna te ahorra una tarde."
+  },
+  {
+   "tipo": "texto",
+   "md": "No te quedes aquí. Has mirado **nuestras facturas** contra el banco, pero no al revés. Un ingreso del banco que no tiene factura nuestra **nunca saldrá** en la columna D, porque esa columna solo recorre nuestras facturas.\n\nPor eso un cruce se hace siempre **en los dos sentidos**:\n\n1. Lo nuestro que no está en el banco: falta un cobro.\n2. Lo del banco que no está en lo nuestro: un ingreso sin explicar (una factura sin registrar, un cliente que se equivocó de número…)."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para el segundo sentido puedes usar BUSCARX con su **cuarto hueco**, «si no se encuentra». Además de decir si está, **trae un dato** de la otra lista, por ejemplo el cliente:\n\n`=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")`\n\nSi la referencia del banco está entre nuestras facturas, trae el nombre del cliente; si no, escribe «Sin factura».\n\nEn un Excel antiguo se consigue lo mismo poniendo SI.ND alrededor de INDICE + COINCIDIR o de BUSCARV con FALSO."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e3",
+   "modo": "formula",
+   "enunciado": "Ahora el otro sentido. En **H2** escribe una fórmula que, para la referencia del banco de F2, traiga el **cliente** de nuestra lista de facturas (A2:B7), o el texto **Sin factura** si no está. Se copiará hasta **H8**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "F1": "Referencia",
+     "G1": "Importe banco",
+     "H1": "Cliente",
+     "A2": "FV-26/0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1452,
+     "A3": "FV-26/0415",
+     "B3": "Montajes Arga",
+     "C3": 868.7,
+     "A4": "FV-26/0419",
+     "B4": "Electricidad Segre",
+     "C4": 2310.45,
+     "A5": "FV-26/0423",
+     "B5": "Reformas Delicias",
+     "C5": 512.3,
+     "A6": "FV-26/0427",
+     "B6": "Climatización Huesca",
+     "C6": 1089,
+     "A7": "FV-26/0431",
+     "B7": "Instalaciones Gállego",
+     "C7": 3674.25,
+     "F2": "FV-26/0412",
+     "G2": 1452,
+     "F3": "FV-26/0419",
+     "G3": 2310.45,
+     "F4": "FV-26/0423",
+     "G4": 512.3,
+     "F5": "FV-26/0431",
+     "G5": 3647.25,
+     "F6": "FV-26/0423",
+     "G6": 512.3,
+     "F7": "FV-26/0438",
+     "G7": 745.8,
+     "F8": "FV-26/0427",
+     "G8": 1089
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 20,
+     "C": 11,
+     "F": 11,
+     "G": 13,
+     "H": 20
+    },
+    "columnas": 8,
+    "filas": 8
+   },
+   "objetivo": "H2",
+   "copiar_a": [
+    "H3:H8"
+   ],
+   "solucion": "=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(F2;$A$2:$A$7;$B$2:$B$7);\"Sin factura\")",
+    "=SI.ND(INDICE($B$2:$B$7;COINCIDIR(F2;$A$2:$A$7;0));\"Sin factura\")",
+    "=SI.ND(BUSCARV(F2;$A$2:$B$7;2;FALSO);\"Sin factura\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7)",
+    "=SI.ERROR(BUSCARX(F2;$A$2:$A$7;$B$2:$B$7);0)",
+    "=BUSCARX(F2;A2:A7;B2:B7;\"Sin factura\")",
+    "=BUSCARX(A2;$F$2:$F$8;$G$2:$G$8;\"Sin factura\")"
+   ],
+   "variantes": [
+    {
+     "A3": "FV-26/0438"
+    }
+   ],
+   "pistas": [
+    "Lo que buscas es la referencia del banco (F2), y dónde la buscas es nuestra columna de facturas.",
+    "BUSCARX con cuatro huecos: qué buscas, $A$2:$A$7, $B$2:$B$7 y el texto «Sin factura» entre comillas.",
+    "`=BUSCARX(F2;$A$2:$A$7;$B$2:$B$7;\"Sin factura\")`"
+   ],
+   "explicacion": "Un ingreso de 745,80 € con la referencia FV-26/0438 no tiene factura en nuestra lista. Puede ser una factura sin registrar o un cliente que se equivocó de número: hay que averiguarlo. Si solo hubieras cruzado en un sentido, ese dinero se habría quedado sin explicar."
+  },
+  {
+   "tipo": "texto",
+   "md": "Antes de fiarte de un cruce, cuenta las **claves repetidas** (la clave es la columna que une las dos listas: aquí, el número de factura). Si el banco trae la misma referencia dos veces (un cliente que pagó dos veces, o en dos plazos), BUSCARX se queda con la **primera** y no avisa de la otra.\n\nLa comprobación es CONTAR.SI otra vez, pero contra **su propia lista**:\n\n`=CONTAR.SI($F$2:$F$8;F2)`\n\nSi da 1, la referencia es única. Si da 2 o más, está repetida: revísala antes de seguir."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e4",
+   "modo": "formula",
+   "enunciado": "En **H2** calcula **cuántas veces** aparece en el banco la referencia de F2. Se copiará hasta **H8**; las que den más de 1 son las repetidas.",
+   "hoja": {
+    "celdas": {
+     "F1": "Referencia",
+     "G1": "Importe banco",
+     "H1": "Veces",
+     "F2": "FV-26/0412",
+     "G2": 1452,
+     "F3": "FV-26/0419",
+     "G3": 2310.45,
+     "F4": "FV-26/0423",
+     "G4": 512.3,
+     "F5": "FV-26/0431",
+     "G5": 3647.25,
+     "F6": "FV-26/0423",
+     "G6": 512.3,
+     "F7": "FV-26/0438",
+     "G7": 745.8,
+     "F8": "FV-26/0427",
+     "G8": 1089
+    },
+    "formatos": {
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "F": 11,
+     "G": 13,
+     "H": 8
+    },
+    "columnas": 8,
+    "filas": 8
+   },
+   "objetivo": "H2",
+   "copiar_a": [
+    "H3:H8"
+   ],
+   "solucion": "=CONTAR.SI($F$2:$F$8;F2)",
+   "alternativas": [
+    "=CONTAR.SI(F$2:F$8;F2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(F2:F8;F2)",
+    "=CONTAR.SI($F$2:$F$8;\"FV-26/0423\")",
+    "=CONTARA($F$2:$F$8)"
+   ],
+   "variantes": [
+    {
+     "F3": "FV-26/0412"
+    }
+   ],
+   "pistas": [
+    "Es un CONTAR.SI de la columna del banco contra sí misma.",
+    "El rango es F2:F8, fijado con $ para copiar; el criterio, la referencia de la fila (F2).",
+    "`=CONTAR.SI($F$2:$F$8;F2)`"
+   ],
+   "explicacion": "FV-26/0423 sale dos veces: Reformas Delicias ha pagado dos veces sus 512,30 €. Marta decidirá si se devuelve o se descuenta de la próxima factura, pero sin esta columna nadie se habría enterado. Contar antes de cruzar evita conciliar a medias."
+  },
+  {
+   "tipo": "texto",
+   "md": "Último paso: los **importes**. Que una factura esté en el banco no significa que se haya cobrado entera. Para comprobarlo, restas: **diferencia = nuestro importe − importe del banco**. Si da 0, cuadra; si no, hay algo que explicar.\n\nAntes de hacerlo con todas, mira un caso. En la hoja de Marta, el total de cada factura sale de una fórmula: base × 1,21."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e5",
+   "modo": "predice",
+   "enunciado": "En pantalla, C2 y D2 muestran los dos **254,98 €**. ¿Qué escribe Excel en E2?",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Base",
+     "C1": "Total",
+     "D1": "Banco",
+     "E1": "¿Cuadra?",
+     "A2": "FV-26/0440",
+     "B2": 210.73,
+     "C2": "=B2*1,21",
+     "D2": 254.98
+    },
+    "formatos": {
+     "B2:D2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "D": 11,
+     "E": 10
+    },
+    "columnas": 5,
+    "filas": 2
+   },
+   "celda": "E2",
+   "formula": "=SI(C2=D2;\"Cuadra\";\"Revisar\")",
+   "explicacion": "«Revisar». Parecen iguales, pero C2 guarda 254,9833: el formato solo enseña dos decimales. Para Excel, 254,9833 y 254,98 son números distintos.",
+   "respuesta": "Revisar"
+  },
+  {
+   "tipo": "texto",
+   "md": "Lo que ves no siempre es lo que hay (lo viste con REDONDEAR). El formato de euros solo **enseña** dos decimales; por dentro, C2 sigue valiendo 254,9833, y la comparación mira lo de dentro.\n\nLa solución: compara la diferencia **redondeada** a 2 decimales.\n\n`=REDONDEAR(C2-D2;2)`\n\nSi da 0, cuadran al céntimo. Las milésimas que nadie va a cobrar ya no te saltan como diferencia, y las diferencias de verdad siguen saliendo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos de una conciliación bien hecha.",
+   "pasos": [
+    "Contar las claves repetidas en las dos listas",
+    "Cruzar en los dos sentidos: lo nuestro contra el banco y el banco contra lo nuestro",
+    "Restar los importes de las que están en los dos lados, redondeando a 2 decimales",
+    "Explicar cada «No está», cada repetida y cada diferencia antes de entregar"
+   ],
+   "explicacion": "Primero se comprueba que las claves son fiables, después se cruza en los dos sentidos, luego se comparan importes y al final se explica todo. Una conciliación no está hecha hasta que cada diferencia tiene explicación."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Lo del ingreso sin factura y el pago repetido, perfecto. Me falta lo más importante: al lado de cada factura, cuánto difiere de lo que ha entrado en el banco. Si no ha entrado nada, que ponga «No está», que un cero me engaña. Y ojo, que en mi hoja el total es base × 1,21."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l3-e7",
+   "modo": "formula",
+   "enunciado": "**Misión de Marta.** En **D2** calcula la diferencia entre el total de nuestra factura (C2) y lo que ha entrado en el banco por esa factura (F:G), **redondeada a 2 decimales**. Si la factura no está en el banco, tiene que salir el texto **No está**. Se copiará hasta **D7**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Base",
+     "C1": "Total",
+     "D1": "Diferencia",
+     "F1": "Referencia",
+     "G1": "Importe banco",
+     "A2": "FV-26/0412",
+     "B2": 1200,
+     "C2": "=B2*1,21",
+     "A3": "FV-26/0415",
+     "B3": 717.93,
+     "C3": "=B3*1,21",
+     "A4": "FV-26/0419",
+     "B4": 1909.46,
+     "C4": "=B4*1,21",
+     "A5": "FV-26/0423",
+     "B5": 423.39,
+     "C5": "=B5*1,21",
+     "A6": "FV-26/0427",
+     "B6": 900,
+     "C6": "=B6*1,21",
+     "A7": "FV-26/0431",
+     "B7": 3036.57,
+     "C7": "=B7*1,21",
+     "F2": "FV-26/0412",
+     "G2": 1452,
+     "F3": "FV-26/0419",
+     "G3": 2310.45,
+     "F4": "FV-26/0423",
+     "G4": 512.3,
+     "F5": "FV-26/0431",
+     "G5": 3647.25,
+     "F6": "FV-26/0423",
+     "G6": 512.3,
+     "F7": "FV-26/0438",
+     "G7": 745.8,
+     "F8": "FV-26/0427",
+     "G8": 1089
+    },
+    "formatos": {
+     "B2:C7": "eur",
+     "D2:D7": "eur",
+     "G2:G8": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "D": 11,
+     "F": 11,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D7"
+   ],
+   "solucion": "=SI.ND(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);\"No está\")",
+   "alternativas": [
+    "=SI(CONTAR.SI($F$2:$F$8;A2)=0;\"No está\";REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2))",
+    "=SI.ND(REDONDEAR(C2-INDICE($G$2:$G$8;COINCIDIR(A2;$F$2:$F$8;0));2);\"No está\")",
+    "=SI.ND(REDONDEAR(C2-BUSCARV(A2;$F$2:$G$8;2;FALSO);2);\"No está\")"
+   ],
+   "errores_tipicos": [
+    "=SI.ND(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);\"No está\")",
+    "=REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8;\"No está\");2)",
+    "=SI.ERROR(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);0)",
+    "=SI.ND(REDONDEAR(C2-BUSCARX(A2;F2:F8;G2:G8);2);\"No está\")"
+   ],
+   "variantes": [
+    {
+     "G5": 3674.25
+    },
+    {
+     "F3": "FV-26/0415"
+    }
+   ],
+   "tolerancia": 0.001,
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza por traer el importe del banco con BUSCARX (buscas A2 en F2:F8 y traes G2:G8) y réstalo de C2.",
+    "Redondea esa resta con REDONDEAR(…;2) y envuelve todo en SI.ND(…;\"No está\"): si BUSCARX no encuentra la factura, el #N/D se convierte en el aviso.",
+    "`=SI.ND(REDONDEAR(C2-BUSCARX(A2;$F$2:$F$8;$G$2:$G$8);2);\"No está\")`"
+   ],
+   "explicacion": "Conciliación hecha. Cuatro facturas cuadran al céntimo, FV-26/0415 no ha entrado y FV-26/0431 tiene **27,00 €** de diferencia: el cliente transfirió 3.647,25 en vez de 3.674,25, dos cifras cambiadas de sitio. Con eso, el ingreso sin factura y el pago repetido, Marta tiene todo lo que necesita para cerrar octubre."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m2l3-q1",
+   "modo": "test",
+   "pregunta": "Has marcado nuestras facturas que no están en el banco y no sale ningún «No está». ¿Puedes decirle a Marta que todo cuadra?",
+   "opciones": [
+    {
+     "texto": "No: faltan el otro sentido del cruce, los repetidos y los importes",
+     "correcta": true,
+     "porque": "Exacto: puede haber ingresos sin factura, pagos repetidos o importes distintos, y ninguno sale en esa columna."
+    },
+    {
+     "texto": "Sí: si todas nuestras facturas están en el banco, cuadra",
+     "correcta": false,
+     "porque": "Solo has mirado un sentido. Un ingreso del banco sin factura nuestra no aparece en tu columna."
+    },
+    {
+     "texto": "Sí, siempre que no salga ningún #N/D",
+     "correcta": false,
+     "porque": "Que no salga ningún error no significa que el resultado esté bien: Excel calcula tan tranquilo aunque falten datos o los importes no coincidan."
+    }
+   ],
+   "explicacion": "Que no salga ningún «No está» solo cierra el primer paso. Una conciliación está hecha cuando has mirado los dos sentidos, los repetidos y los importes, y cada diferencia tiene explicación."
+  },
+  {
+   "id": "n3m2l3-q2",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber qué pedidos a proveedores no han llegado todavía. En **B2** escribe una fórmula que diga **Sí** si el pedido de A2 aparece en la lista de albaranes recibidos (D2:D5) y **Falta** si no. Se copiará hasta **B5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "¿Recibido?",
+     "D1": "Albaranes (pedido)",
+     "A2": "PC-26/301",
+     "A3": "PC-26/302",
+     "A4": "PC-26/303",
+     "A5": "PC-26/304",
+     "D2": "PC-26/302",
+     "D3": "PC-26/304",
+     "D4": "PC-26/301",
+     "D5": "PC-26/309"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "D": 18
+    },
+    "columnas": 4,
+    "filas": 5
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=SI(CONTAR.SI($D$2:$D$5;A2)>0;\"Sí\";\"Falta\")",
+   "alternativas": [
+    "=SI(CONTAR.SI($D$2:$D$5;A2)=0;\"Falta\";\"Sí\")",
+    "=SI.ND(SI(COINCIDIR(A2;$D$2:$D$5;0)>0;\"Sí\");\"Falta\")"
+   ],
+   "errores_tipicos": [
+    "=SI(CONTAR.SI(D2:D5;A2)>0;\"Sí\";\"Falta\")",
+    "=SI(CONTAR.SI($A$2:$A$5;D2)>0;\"Sí\";\"Falta\")"
+   ],
+   "variantes": [
+    {
+     "D5": "PC-26/303"
+    }
+   ],
+   "pistas": [
+    "Es la misma pregunta que con las facturas: ¿aparece este pedido en la otra lista?",
+    "Cuenta cuántas veces sale A2 en $D$2:$D$5 y mira si es mayor que 0.",
+    "`=SI(CONTAR.SI($D$2:$D$5;A2)>0;\"Sí\";\"Falta\")`"
+   ],
+   "explicacion": "Falta el PC-26/303. Y fíjate en el otro sentido: hay un albarán del PC-26/309 que no está en esta lista de pedidos. Andrés querrá saber de dónde ha salido."
+  },
+  {
+   "id": "n3m2l3-q3",
+   "modo": "predice",
+   "enunciado": "Un cliente pagó la misma factura en dos plazos. ¿Qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Referencia",
+     "B1": "Importe",
+     "A2": "FV-26/0423",
+     "B2": 312.3,
+     "A3": "FV-26/0431",
+     "B3": 3647.25,
+     "A4": "FV-26/0423",
+     "B4": 200
+    },
+    "formatos": {
+     "B2:B4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11
+    },
+    "columnas": 4,
+    "filas": 4
+   },
+   "celda": "D2",
+   "formula": "=BUSCARX(\"FV-26/0423\";A2:A4;B2:B4)",
+   "formato_resultado": "eur",
+   "explicacion": "312,30 €: BUSCARX se queda con la primera coincidencia y no avisa de la segunda. Los 200 € del segundo plazo no aparecen. Por eso se cuentan los repetidos antes de cruzar.",
+   "respuesta": "312,30 €"
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es conciliar dos listas?",
+   "dorso": "Ponerlas una frente a otra (por ejemplo, facturas y banco) y explicar cada diferencia: lo que falta en cada lado, los repetidos y los importes que no coinciden."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Fórmula para saber si A2 está en la otra lista (F2:F8)",
+   "dorso": "=SI(CONTAR.SI($F$2:$F$8;A2)>0;\"Sí\";\"No está\")"
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué hay que cruzar en los dos sentidos?",
+   "dorso": "Porque lo que solo está en la otra lista nunca sale en tu columna: un ingreso sin factura se te escaparía."
+  },
+  {
+   "tipo": "truco",
+   "frente": "¿Cómo compruebas si dos importes con céntimos cuadran?",
+   "dorso": "Con la diferencia redondeada: =REDONDEAR(C2-G2;2). Si da 0, cuadran al céntimo."
+  }
+ ]
+}

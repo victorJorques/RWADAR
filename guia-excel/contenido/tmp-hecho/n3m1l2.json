@@ -1,0 +1,860 @@
+{
+ "id": "n3m1l2",
+ "titulo": "Entre dos fechas y con criterios en celdas",
+ "minutos": 15,
+ "objetivo": "Sumar y contar por periodos (entre dos fechas, un mes entero) con SUMAR.SI.CONJUNTO, leyendo las fechas y el resto de criterios de celdas que se pueden cambiar.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Instalaciones Moncayo dice que no le cuadra el tercer trimestre. Necesito lo que les facturamos del 1 de julio al 30 de septiembre, ambos incluidos. Deja las fechas y el cliente en celdas, que luego lo usaré con otros clientes.",
+  "logro": "Ya sabes sumar y contar por periodos, entre dos fechas o en un mes entero, con criterios que se cambian desde una celda."
+ },
+ "funciones": [
+  "SUMAR.SI.CONJUNTO",
+  "CONTAR.SI.CONJUNTO",
+  "FIN.MES",
+  "FECHA"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Marta casi nunca pregunta «cuánto en total». Pregunta «cuánto **entre** tal fecha y tal fecha»: del trimestre, de octubre, desde el día 1.\n\nRecuerda que para Excel una fecha es un **número** (los días que han pasado desde el 1/1/1900). Por eso puede comprobar si una fecha es mayor o menor que otra:\n\n- `>=` significa «desde», **incluido** ese día.\n- `<=` significa «hasta», **incluido** ese día."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Facturas emitidas (base imponible)",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "A2": {
+      "fecha": "2026-06-24"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 1840,
+     "A3": {
+      "fecha": "2026-07-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 2350.5,
+     "A4": {
+      "fecha": "2026-07-15"
+     },
+     "B4": "Instalaciones Moncayo",
+     "C4": 980,
+     "A5": {
+      "fecha": "2026-07-31"
+     },
+     "B5": "Montajes Segre",
+     "C5": 1275.4,
+     "A6": {
+      "fecha": "2026-08-05"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 2105.25,
+     "A7": {
+      "fecha": "2026-08-28"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 640,
+     "A8": {
+      "fecha": "2026-09-10"
+     },
+     "B8": "Montajes Segre",
+     "C8": 3410,
+     "A9": {
+      "fecha": "2026-09-30"
+     },
+     "B9": "Instalaciones Moncayo",
+     "C9": 1560.8,
+     "A10": {
+      "fecha": "2026-10-01"
+     },
+     "B10": "Instalaciones Moncayo",
+     "C10": 725,
+     "A11": {
+      "fecha": "2026-10-14"
+     },
+     "B11": "Electricidad Arga",
+     "C11": 1990,
+     "A12": {
+      "fecha": "2026-10-31"
+     },
+     "B12": "Montajes Segre",
+     "C12": 860.3,
+     "A13": {
+      "fecha": "2026-11-03"
+     },
+     "B13": "Instalaciones Moncayo",
+     "C13": 1215.6
+    },
+    "formatos": {
+     "A2:A13": "fecha",
+     "C2:C13": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 21,
+     "C": 11
+    }
+   },
+   "pie": "Fíjate en las facturas de los días 1 y último de cada mes: son las que se pierden cuando el signo está mal."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e1",
+   "modo": "test",
+   "pregunta": "Marta pide lo facturado **desde el 1 de julio**. ¿Qué signo pones delante de la fecha para que entren también las facturas del mismo 1 de julio?",
+   "opciones": [
+    {
+     "texto": ">=",
+     "correcta": true,
+     "porque": "Correcto: «mayor o igual» incluye el propio 1 de julio. Entra la factura de 2.350,50 € de Electricidad Arga."
+    },
+    {
+     "texto": ">",
+     "correcta": false,
+     "porque": "«Mayor que» empieza el 2 de julio: dejarías fuera los 2.350,50 € facturados el día 1 a Electricidad Arga."
+    },
+    {
+     "texto": "=",
+     "correcta": false,
+     "porque": "«Igual» solo suma lo facturado ese día exacto, no lo que viene después."
+    }
+   ],
+   "explicacion": "En contabilidad «desde el día 1» siempre incluye el día 1. Por eso los periodos se escriben con `>=` y `<=`."
+  },
+  {
+   "tipo": "texto",
+   "md": "Lo profesional es poner la fecha **en una celda** y que la fórmula la lea. Así, el mes que viene Marta solo cambia la celda.\n\nEl criterio se forma **uniendo** el signo con la celda mediante `&`:\n\n`\">=\"&F1`\n\nEl signo va **entre comillas**, porque es texto, y la celda **fuera**, porque es una referencia. Si escribes `\">=F1\"`, todo queda dentro de las comillas y Excel compara con el texto «F1», no con la fecha que hay en esa celda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e2",
+   "modo": "formula",
+   "enunciado": "La fórmula de **F3** debería sumar lo facturado **desde la fecha de F1** (01/10/2026), pero tiene la celda metida dentro de las comillas. Arréglala. Debe salir **4.790,90 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Desde",
+     "F1": {
+      "fecha": "2026-10-01"
+     },
+     "E3": "Facturado",
+     "A2": {
+      "fecha": "2026-06-24"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 1840,
+     "A3": {
+      "fecha": "2026-07-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 2350.5,
+     "A4": {
+      "fecha": "2026-07-15"
+     },
+     "B4": "Instalaciones Moncayo",
+     "C4": 980,
+     "A5": {
+      "fecha": "2026-07-31"
+     },
+     "B5": "Montajes Segre",
+     "C5": 1275.4,
+     "A6": {
+      "fecha": "2026-08-05"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 2105.25,
+     "A7": {
+      "fecha": "2026-08-28"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 640,
+     "A8": {
+      "fecha": "2026-09-10"
+     },
+     "B8": "Montajes Segre",
+     "C8": 3410,
+     "A9": {
+      "fecha": "2026-09-30"
+     },
+     "B9": "Instalaciones Moncayo",
+     "C9": 1560.8,
+     "A10": {
+      "fecha": "2026-10-01"
+     },
+     "B10": "Instalaciones Moncayo",
+     "C10": 725,
+     "A11": {
+      "fecha": "2026-10-14"
+     },
+     "B11": "Electricidad Arga",
+     "C11": 1990,
+     "A12": {
+      "fecha": "2026-10-31"
+     },
+     "B12": "Montajes Segre",
+     "C12": 860.3,
+     "A13": {
+      "fecha": "2026-11-03"
+     },
+     "B13": "Instalaciones Moncayo",
+     "C13": 1215.6
+    },
+    "formatos": {
+     "A2:A13": "fecha",
+     "C2:C13": "eur",
+     "F1": "fecha",
+     "F3": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 21,
+     "C": 11,
+     "E": 11,
+     "F": 12
+    }
+   },
+   "objetivo": "F3",
+   "inicial": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=F1\")",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)",
+   "alternativas": [
+    "=SUMAR.SI(A2:A13;\">=\"&F1;C2:C13)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&$F$1)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">\"&F1)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=F1\")"
+   ],
+   "variantes": [
+    {
+     "F1": {
+      "fecha": "2026-09-01"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El problema está en el criterio: `\">=F1\"`. La F1 no puede ir dentro de las comillas.",
+    "Cierra las comillas justo después del signo y une la celda con `&`.",
+    "El criterio correcto es `\">=\"&F1`: `=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)`"
+   ],
+   "explicacion": "4.790,90 €: todo lo facturado desde el 1 de octubre, incluida la factura de ese mismo día. Y ahora la fórmula **lee** la fecha: cambia F1 y se recalcula sola."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para un periodo hacen falta **dos condiciones sobre la misma columna**: desde y hasta. SUMAR.SI.CONJUNTO lo permite: repites el rango de fechas en dos parejas.\n\n`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`\n\nSe lee: suma los importes de las filas cuya fecha es mayor o igual que F1 **y** menor o igual que F2."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e3",
+   "modo": "predice",
+   "enunciado": "Andrés quería lo facturado en **septiembre** (fechas de E1 a E2), pero su fórmula solo tiene el «desde». Antes de verlo calculado: ¿qué número saldrá en **E4**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Importe",
+     "D1": "Desde",
+     "E1": {
+      "fecha": "2026-09-01"
+     },
+     "D2": "Hasta",
+     "E2": {
+      "fecha": "2026-09-30"
+     },
+     "D4": "Facturado",
+     "A2": {
+      "fecha": "2026-09-15"
+     },
+     "B2": 450,
+     "A3": {
+      "fecha": "2026-09-30"
+     },
+     "B3": 1200,
+     "A4": {
+      "fecha": "2026-10-01"
+     },
+     "B4": 830,
+     "A5": {
+      "fecha": "2026-10-20"
+     },
+     "B5": 2100
+    },
+    "formatos": {
+     "A2:A5": "fecha",
+     "B2:B5": "eur",
+     "E1:E2": "fecha"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "D": 10,
+     "E": 11
+    }
+   },
+   "celda": "E4",
+   "formula": "=SUMAR.SI.CONJUNTO(B2:B5;A2:A5;\">=\"&E1)",
+   "explicacion": "Ha sumado septiembre **y** octubre (450 + 1.200 + 830 + 2.100), porque solo había «desde». Con el «hasta» (`;A2:A5;\"<=\"&E2`) habría dado 1.650, que es lo que se pedía. Es un error silencioso: no sale ningún aviso, solo un número demasiado grande.",
+   "respuesta": "4580"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e4",
+   "modo": "formula",
+   "enunciado": "En **F4** suma lo facturado **entre la fecha de F1 y la de F2**, las dos incluidas (ahora, el tercer trimestre). Debe salir **12.321,95 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Desde",
+     "F1": {
+      "fecha": "2026-07-01"
+     },
+     "E2": "Hasta",
+     "F2": {
+      "fecha": "2026-09-30"
+     },
+     "E4": "Facturado",
+     "A2": {
+      "fecha": "2026-06-24"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 1840,
+     "A3": {
+      "fecha": "2026-07-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 2350.5,
+     "A4": {
+      "fecha": "2026-07-15"
+     },
+     "B4": "Instalaciones Moncayo",
+     "C4": 980,
+     "A5": {
+      "fecha": "2026-07-31"
+     },
+     "B5": "Montajes Segre",
+     "C5": 1275.4,
+     "A6": {
+      "fecha": "2026-08-05"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 2105.25,
+     "A7": {
+      "fecha": "2026-08-28"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 640,
+     "A8": {
+      "fecha": "2026-09-10"
+     },
+     "B8": "Montajes Segre",
+     "C8": 3410,
+     "A9": {
+      "fecha": "2026-09-30"
+     },
+     "B9": "Instalaciones Moncayo",
+     "C9": 1560.8,
+     "A10": {
+      "fecha": "2026-10-01"
+     },
+     "B10": "Instalaciones Moncayo",
+     "C10": 725,
+     "A11": {
+      "fecha": "2026-10-14"
+     },
+     "B11": "Electricidad Arga",
+     "C11": 1990,
+     "A12": {
+      "fecha": "2026-10-31"
+     },
+     "B12": "Montajes Segre",
+     "C12": 860.3,
+     "A13": {
+      "fecha": "2026-11-03"
+     },
+     "B13": "Instalaciones Moncayo",
+     "C13": 1215.6
+    },
+    "formatos": {
+     "A2:A13": "fecha",
+     "C2:C13": "eur",
+     "F1:F2": "fecha",
+     "F4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 21,
+     "C": 11,
+     "E": 11,
+     "F": 12
+    }
+   },
+   "objetivo": "F4",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\"<=\"&F2;A2:A13;\">=\"&F1)",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;\">=\"&$F$1;$A$2:$A$13;\"<=\"&$F$2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">\"&F1;A2:A13;\"<\"&F2)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&F2)"
+   ],
+   "variantes": [
+    {
+     "F1": {
+      "fecha": "2026-10-01"
+     },
+     "F2": {
+      "fecha": "2026-10-31"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Dos condiciones sobre la columna de fechas (A): una con F1 y otra con F2.",
+    "Primera pareja: `A2:A13;\">=\"&F1`. Segunda: `A2:A13;\"<=\"&F2`. Delante de todo, los importes C2:C13.",
+    "`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`"
+   ],
+   "explicacion": "12.321,95 €: el trimestre completo, con las facturas del 1 de julio y del 30 de septiembre dentro y la del 1 de octubre fuera. Cambiando F1 y F2 tienes cualquier periodo: una semana, un mes o un año."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Y si te piden «octubre»? No hace falta escribir dos fechas. Pon en F1 el **día 1 del mes** y deja que **FIN.MES** calcule el último:\n\n`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))`\n\n`FIN.MES(F1;0)` da el último día del mismo mes: 31/10/2026. Si no quieres celdas de apoyo, la fecha también puede ir dentro con **FECHA**: `\">=\"&FECHA(2026;10;1)`."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Nunca escribas la fecha dentro de las comillas",
+   "md": "Con `\">=01/10/2026\"`, la fecha va como **texto** y Excel la interpreta según la configuración regional del ordenador que abre el libro: en uno configurado con el formato de EE. UU. (mes/día) podría leerse como el 10 de enero. Además, cada mes tendrías que reescribir la fórmula. Usa una celda o FECHA."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e5",
+   "modo": "formula",
+   "enunciado": "En **F1** está el día 1 del mes que quiere Marta. En **F3** suma lo facturado **en todo ese mes**, del día 1 al último (calcúlalo con FIN.MES). Para octubre debe salir **3.575,30 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Mes (día 1)",
+     "F1": {
+      "fecha": "2026-10-01"
+     },
+     "E3": "Facturado",
+     "A2": {
+      "fecha": "2026-06-24"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 1840,
+     "A3": {
+      "fecha": "2026-07-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 2350.5,
+     "A4": {
+      "fecha": "2026-07-15"
+     },
+     "B4": "Instalaciones Moncayo",
+     "C4": 980,
+     "A5": {
+      "fecha": "2026-07-31"
+     },
+     "B5": "Montajes Segre",
+     "C5": 1275.4,
+     "A6": {
+      "fecha": "2026-08-05"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 2105.25,
+     "A7": {
+      "fecha": "2026-08-28"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 640,
+     "A8": {
+      "fecha": "2026-09-10"
+     },
+     "B8": "Montajes Segre",
+     "C8": 3410,
+     "A9": {
+      "fecha": "2026-09-30"
+     },
+     "B9": "Instalaciones Moncayo",
+     "C9": 1560.8,
+     "A10": {
+      "fecha": "2026-10-01"
+     },
+     "B10": "Instalaciones Moncayo",
+     "C10": 725,
+     "A11": {
+      "fecha": "2026-10-14"
+     },
+     "B11": "Electricidad Arga",
+     "C11": 1990,
+     "A12": {
+      "fecha": "2026-10-31"
+     },
+     "B12": "Montajes Segre",
+     "C12": 860.3,
+     "A13": {
+      "fecha": "2026-11-03"
+     },
+     "B13": "Instalaciones Moncayo",
+     "C13": 1215.6
+    },
+    "formatos": {
+     "A2:A13": "fecha",
+     "C2:C13": "eur",
+     "F1": "fecha",
+     "F3": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 21,
+     "C": 11,
+     "E": 12,
+     "F": 12
+    }
+   },
+   "objetivo": "F3",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&FIN.MES(F1;0)+1)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\"<=\"&FIN.MES(F1;0);A2:A13;\">=\"&F1)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&FIN.MES(F1;0))",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F1+30)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)"
+   ],
+   "variantes": [
+    {
+     "F1": {
+      "fecha": "2026-09-01"
+     }
+    },
+    {
+     "F1": {
+      "fecha": "2026-07-01"
+     }
+    }
+   ],
+   "debe_usar": [
+    "FIN.MES"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es la fórmula de «entre dos fechas», pero el «hasta» no está en una celda: lo calcula FIN.MES a partir de F1.",
+    "El «hasta» es `\"<=\"&FIN.MES(F1;0)`: el 0 significa «el mismo mes de F1».",
+    "`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))`"
+   ],
+   "explicacion": "3.575,30 €, incluida la factura del 31 de octubre. Con una sola celda (el día 1) tienes el mes completo, tenga 28, 30 o 31 días. Es la base de cualquier informe mensual: cambia F1 y tienes otro mes."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e6",
+   "modo": "test",
+   "pregunta": "Importas las facturas del programa de gestión y la columna de fechas sale **alineada a la izquierda**. Tu fórmula del trimestre da menos de lo que esperabas. ¿Qué es lo más probable?",
+   "opciones": [
+    {
+     "texto": "Esas fechas son texto: un criterio como \">=\"&F1 compara números, y las filas con fecha-texto se quedan fuera sin avisar",
+     "correcta": true,
+     "porque": "Exacto. Excel alinea a la derecha los números y las fechas de verdad. Una «fecha» a la izquierda suele ser texto, y la fórmula la ignora en silencio."
+    },
+    {
+     "texto": "Falta el $ en los rangos",
+     "correcta": false,
+     "porque": "El $ solo importa al copiar la fórmula a otras celdas. Aquí la fórmula está bien: el problema está en los datos."
+    },
+    {
+     "texto": "SUMAR.SI.CONJUNTO no admite fechas",
+     "correcta": false,
+     "porque": "Sí las admite, siempre que sean fechas de verdad (números con formato de fecha), como en todos los ejercicios de esta lección."
+    }
+   ],
+   "explicacion": "Cuando un total te parezca bajo, mira primero si los datos son lo que parecen. Cómo convertir esas fechas-texto en fechas de verdad lo verás en el módulo de limpieza de datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l2-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Marta.** En **F5** suma lo facturado **al cliente de F3** entre la fecha de **F1** y la de **F2**, las dos incluidas. Usa las tres celdas, no escribas el nombre ni las fechas en la fórmula. Debe salir **4.646,05 €**. Reto: intenta hacerlo en menos de 3 minutos.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Desde",
+     "F1": {
+      "fecha": "2026-07-01"
+     },
+     "E2": "Hasta",
+     "F2": {
+      "fecha": "2026-09-30"
+     },
+     "E3": "Cliente",
+     "F3": "Instalaciones Moncayo",
+     "E5": "Facturado",
+     "A2": {
+      "fecha": "2026-06-24"
+     },
+     "B2": "Instalaciones Moncayo",
+     "C2": 1840,
+     "A3": {
+      "fecha": "2026-07-01"
+     },
+     "B3": "Electricidad Arga",
+     "C3": 2350.5,
+     "A4": {
+      "fecha": "2026-07-15"
+     },
+     "B4": "Instalaciones Moncayo",
+     "C4": 980,
+     "A5": {
+      "fecha": "2026-07-31"
+     },
+     "B5": "Montajes Segre",
+     "C5": 1275.4,
+     "A6": {
+      "fecha": "2026-08-05"
+     },
+     "B6": "Instalaciones Moncayo",
+     "C6": 2105.25,
+     "A7": {
+      "fecha": "2026-08-28"
+     },
+     "B7": "Electricidad Arga",
+     "C7": 640,
+     "A8": {
+      "fecha": "2026-09-10"
+     },
+     "B8": "Montajes Segre",
+     "C8": 3410,
+     "A9": {
+      "fecha": "2026-09-30"
+     },
+     "B9": "Instalaciones Moncayo",
+     "C9": 1560.8,
+     "A10": {
+      "fecha": "2026-10-01"
+     },
+     "B10": "Instalaciones Moncayo",
+     "C10": 725,
+     "A11": {
+      "fecha": "2026-10-14"
+     },
+     "B11": "Electricidad Arga",
+     "C11": 1990,
+     "A12": {
+      "fecha": "2026-10-31"
+     },
+     "B12": "Montajes Segre",
+     "C12": 860.3,
+     "A13": {
+      "fecha": "2026-11-03"
+     },
+     "B13": "Instalaciones Moncayo",
+     "C13": 1215.6
+    },
+    "formatos": {
+     "A2:A13": "fecha",
+     "C2:C13": "eur",
+     "F1:F2": "fecha",
+     "F5": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 21,
+     "C": 11,
+     "E": 10,
+     "F": 21
+    }
+   },
+   "objetivo": "F5",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2;B2:B13;F3)",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;$F$3;$A$2:$A$13;\">=\"&$F$1;$A$2:$A$13;\"<=\"&$F$2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;\"Instalaciones Moncayo\";A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)"
+   ],
+   "variantes": [
+    {
+     "F3": "Electricidad Arga"
+    },
+    {
+     "F1": {
+      "fecha": "2026-10-01"
+     },
+     "F2": {
+      "fecha": "2026-12-31"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Son tres condiciones: el cliente (columna B) y las dos fechas (columna A, dos veces).",
+    "La pareja del cliente es `B2:B13;F3`: cuando el criterio es «igual a», basta con la celda, sin comillas ni &.",
+    "`=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`"
+   ],
+   "explicacion": "4.646,05 €: las tres facturas de Instalaciones Moncayo del trimestre (980,00 + 2.105,25 + 1.560,80). La del 24 de junio y la del 1 de octubre quedan fuera, como debe ser. Marta ya puede cuadrarlo con el cliente, y la hoja le sirve para cualquier otro cambiando F1, F2 y F3."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m1l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Escribe el criterio para «**hasta la fecha de G2**, incluido ese día» (solo el criterio, como iría dentro de SUMAR.SI.CONJUNTO).",
+   "aceptadas": [
+    "\"<=\"&G2",
+    "\"<=\" & G2",
+    "\"<=\"&$G$2",
+    "\"<=\" &G2",
+    "\"<=\"& G2"
+   ],
+   "explicacion": "`\"<=\"&G2`: el signo entre comillas, la celda fuera y el & uniéndolos. Con `<=` el propio día de G2 entra en la suma."
+  },
+  {
+   "id": "n3m1l2-q2",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber **cuántos pedidos** hizo el cliente de **E3** entre las fechas de **E1** y **E2** (ambas incluidas). Escríbelo en **E5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Cliente",
+     "D1": "Desde",
+     "E1": {
+      "fecha": "2026-04-01"
+     },
+     "D2": "Hasta",
+     "E2": {
+      "fecha": "2026-06-30"
+     },
+     "D3": "Cliente",
+     "E3": "Montajes Segre",
+     "D5": "Pedidos",
+     "A2": {
+      "fecha": "2026-03-30"
+     },
+     "B2": "Montajes Segre",
+     "A3": {
+      "fecha": "2026-04-01"
+     },
+     "B3": "Montajes Segre",
+     "A4": {
+      "fecha": "2026-04-17"
+     },
+     "B4": "Electricidad Arga",
+     "A5": {
+      "fecha": "2026-05-12"
+     },
+     "B5": "Montajes Segre",
+     "A6": {
+      "fecha": "2026-06-02"
+     },
+     "B6": "Electricidad Arga",
+     "A7": {
+      "fecha": "2026-06-30"
+     },
+     "B7": "Montajes Segre",
+     "A8": {
+      "fecha": "2026-07-01"
+     },
+     "B8": "Montajes Segre"
+    },
+    "formatos": {
+     "A2:A8": "fecha",
+     "E1:E2": "fecha"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 18,
+     "D": 9,
+     "E": 16
+    }
+   },
+   "objetivo": "E5",
+   "solucion": "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2)",
+   "alternativas": [
+    "=CONTAR.SI.CONJUNTO(A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2;B2:B8;E3)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1)",
+    "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">\"&E1;A2:A8;\"<\"&E2)",
+    "=CONTAR.SI(B2:B8;E3)"
+   ],
+   "variantes": [
+    {
+     "E3": "Electricidad Arga"
+    }
+   ],
+   "pistas": [
+    "Se piden pedidos (contar), con tres condiciones: cliente, desde y hasta.",
+    "CONTAR.SI.CONJUNTO no lleva rango de suma. Parejas: `B2:B8;E3`, `A2:A8;\">=\"&E1` y `A2:A8;\"<=\"&E2`.",
+    "`=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2)`"
+   ],
+   "explicacion": "3 pedidos en el segundo trimestre: el del 1 de abril y el del 30 de junio entran; los del 30 de marzo y el 1 de julio, no. Contar entre fechas funciona igual que sumar."
+  },
+  {
+   "id": "n3m1l2-q3",
+   "modo": "test",
+   "pregunta": "¿Cuál es el criterio correcto para «desde la fecha que hay en **B1**»?",
+   "opciones": [
+    {
+     "texto": "`\">=\"&B1`",
+     "correcta": true,
+     "porque": "Correcto: el signo entre comillas, la celda fuera y unidos con &."
+    },
+    {
+     "texto": "`\">=B1\"`",
+     "correcta": false,
+     "porque": "Con B1 dentro de las comillas, Excel compara con el texto «B1», no con la fecha de la celda."
+    },
+    {
+     "texto": "`>=B1`",
+     "correcta": false,
+     "porque": "Sin comillas, Excel no lo entiende como criterio: el signo tiene que ir entre comillas."
+    },
+    {
+     "texto": "`\">=\"B1`",
+     "correcta": false,
+     "porque": "Falta el & que une el signo con la celda: Excel no aceptará la fórmula."
+    }
+   ],
+   "explicacion": "Signo entre comillas + & + celda. Es el mismo patrón para `\">\"&`, `\"<=\"&` o `\"<>\"&`."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Criterio «desde la fecha de F1», incluida",
+   "dorso": "\">=\"&F1 (signo entre comillas, celda fuera, unidos con &)."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Sumar entre dos fechas (F1 y F2) con SUMAR.SI.CONJUNTO",
+   "dorso": "=SUMAR.SI.CONJUNTO(importes; fechas; \">=\"&F1; fechas; \"<=\"&F2). El rango de fechas se repite."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Último día del mes de la fecha de F1",
+   "dorso": "=FIN.MES(F1;0)"
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no escribir \">=01/10/2026\" en el criterio?",
+   "dorso": "Depende de cómo lea las fechas cada ordenador y hay que reescribirlo cada vez. Usa una celda o FECHA(2026;10;1)."
+  }
+ ]
+}

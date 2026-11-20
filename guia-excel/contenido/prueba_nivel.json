@@ -1,0 +1,800 @@
+{
+ "intro": "Contesta sin buscar. Si no sabes algo, elige lo que creas y sigue: no pasa nada, solo sirve para saber por dónde te conviene empezar.",
+ "umbral": 0.67,
+ "preguntas": [
+  {
+   "id": "pn-n0-x14",
+   "leccion": "n0m3l4",
+   "modo": "formula",
+   "enunciado": "**Arregla la plantilla.** En el resumen de kilómetros de las furgonetas, alguien escribió `1840` a mano en **B7**, el total. Pon en B7 una fórmula que sume los kilómetros de **B2 a B6**, para que el total se recalcule solo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Furgoneta",
+     "B1": "Km semana",
+     "A2": "Furgoneta 1",
+     "B2": 412,
+     "A3": "Furgoneta 2",
+     "B3": 388,
+     "A4": "Furgoneta 3",
+     "B4": 295,
+     "A5": "Furgoneta 4",
+     "B5": 503,
+     "A6": "Furgoneta 5",
+     "B6": 276,
+     "A7": "Total"
+    }
+   },
+   "objetivo": "B7",
+   "solucion": "=SUMA(B2:B6)",
+   "inicial": "1840",
+   "errores_tipicos": [
+    "=1874",
+    "=SUMA(B2:B5)",
+    "=SUMA(B3:B6)"
+   ],
+   "variantes": [
+    {
+     "B3": 400
+    },
+    {
+     "B6": 0
+    }
+   ],
+   "debe_usar": [
+    "SUMA"
+   ],
+   "explicacion": "Total con fórmula: ahora da 1.874 km (el 1.840 escrito a mano ya estaba mal) y se actualiza si alguien corrige un dato.",
+   "nivel": "n0"
+  },
+  {
+   "id": "pn-n0-x15",
+   "leccion": "n0m3l4",
+   "modo": "test",
+   "pregunta": "Antes de mandar en PDF el parte de gastos, seleccionas los importes y la barra de estado dice **Suma 1.245,60**. El total de la hoja dice **1.120,00**. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "No lo envío: hago clic en el total y miro en la barra de fórmulas si tiene fórmula y si su rango coge todas las filas",
+     "correcta": true,
+     "porque": "Correcto: si no cuadra, hay un error (rango corto o número escrito a mano). Se busca antes de exportar."
+    },
+    {
+     "texto": "Lo envío: la barra de estado a veces redondea",
+     "correcta": false,
+     "porque": "La barra de estado suma exactamente lo seleccionado. La diferencia de 125,60 es un error real."
+    },
+    {
+     "texto": "Escribo 1245,60 encima del total",
+     "correcta": false,
+     "porque": "Así borrarías la fórmula y el total dejaría de actualizarse. Hay que arreglar la fórmula, no taparla."
+    }
+   ],
+   "explicacion": "Comprobar el total con la barra de estado y la barra de fórmulas antes de enviar es lo que evita pasar errores a la jefa.",
+   "nivel": "n0"
+  },
+  {
+   "id": "pn-n0-x3",
+   "leccion": "n0m1l3",
+   "modo": "respuesta_corta",
+   "pregunta": "Andrés te pide que revises el rango **D4:F9** del inventario. ¿Cuántas celdas tienes que revisar? (Escribe solo el número.)",
+   "aceptadas": [
+    "18",
+    "18 celdas",
+    "dieciocho"
+   ],
+   "explicacion": "Columnas D, E y F = 3. Filas de la 4 a la 9 = 6. 3 × 6 = 18.",
+   "nivel": "n0"
+  },
+  {
+   "id": "pn-n1-x9",
+   "modo": "formula",
+   "enunciado": "Andrés controla el almacén: si el **stock** (columna B) está **por debajo** del **mínimo** (columna C), en **D2** debe salir **\"Pedir\"**; si no, **\"OK\"**. Tu fórmula se copiará a **D3:D6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Artículo",
+     "B1": "Stock",
+     "C1": "Mínimo",
+     "D1": "Acción",
+     "A2": "Cable 2,5 mm² (rollo)",
+     "B2": 36,
+     "C2": 40,
+     "A3": "Bridas 200 mm (bolsa)",
+     "B3": 120,
+     "C3": 50,
+     "A4": "Panel LED 60×60",
+     "B4": 25,
+     "C4": 25,
+     "A5": "Magnetotérmico 2P 16 A",
+     "B5": 8,
+     "C5": 30,
+     "A6": "Canaleta 40×60",
+     "B6": 210,
+     "C6": 100
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "solucion": "=SI(B2<C2;\"Pedir\";\"OK\")",
+   "alternativas": [
+    "=SI(B2>=C2;\"OK\";\"Pedir\")"
+   ],
+   "errores_tipicos": [
+    "=SI(B2<=C2;\"Pedir\";\"OK\")",
+    "=SI(B2<C2;\"OK\";\"Pedir\")",
+    "=SI(B2>C2;\"Pedir\";\"OK\")"
+   ],
+   "variantes": [
+    {
+     "B4": 24
+    },
+    {
+     "C3": 150
+    }
+   ],
+   "explicacion": "La prueba compara dos celdas de la misma fila: B2<C2. El panel LED, con 25 justos, queda en «OK» porque no está por debajo del mínimo.",
+   "leccion": "n1m2l4",
+   "nivel": "n1"
+  },
+  {
+   "id": "pn-n1-x15",
+   "modo": "test",
+   "pregunta": "La gestoría necesita cargar en su programa el listado de facturas del mes. ¿Cómo se lo mandas?",
+   "opciones": [
+    {
+     "texto": "Una copia guardada como CSV UTF-8 (delimitado por comas), con el nº de facturas y el total en el correo",
+     "correcta": true,
+     "porque": "Correcto: el CSV lleva solo los datos para otro programa, y los totales de control permiten comprobar que ha cargado todo."
+    },
+    {
+     "texto": "Un PDF del listado",
+     "correcta": false,
+     "porque": "El PDF es para leer, no para cargar datos en un programa."
+    },
+    {
+     "texto": "Guardas tu libro de trabajo como CSV y sigues trabajando en él",
+     "correcta": false,
+     "porque": "El CSV pierde fórmulas, formato y el resto de hojas. Tu trabajo sigue en el .xlsx; el CSV es una copia aparte."
+    }
+   ],
+   "explicacion": "PDF para leer, CSV para cargar datos, .xlsx para trabajar.",
+   "leccion": "n1m4l3",
+   "nivel": "n1"
+  },
+  {
+   "id": "pn-n1-x8",
+   "modo": "predice",
+   "enunciado": "Una línea de factura tiene una base de **19,99 €** (A1) y el tipo de IVA está en A2. ¿Qué número devuelve esta fórmula? Escríbelo con coma.",
+   "hoja": {
+    "celdas": {
+     "A1": 19.99,
+     "A2": 0.21
+    }
+   },
+   "celda": "B1",
+   "formula": "=REDONDEAR(A1*A2;2)",
+   "explicacion": "19,99 × 0,21 = 4,1979. Con 2 decimales, la tercera cifra (7) hace subir la segunda: 4,20, que Excel muestra como 4,2 sin formato.",
+   "leccion": "n1m2l3",
+   "respuesta": "4,2",
+   "nivel": "n1"
+  },
+  {
+   "id": "pn-n2-x13",
+   "modo": "formula",
+   "leccion": "n2m5l2",
+   "enunciado": "Javier quiere ver al lado de cada pedido el **comercial que lleva a ese cliente**, sacado del maestro de clientes de **F:G**. Si el cliente no está en el maestro, tiene que salir **Sin asignar**. Escribe la fórmula en **C2** y prepárala para copiarla hasta **C5**. C2 debe decir **Irene Gracia**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Nº cliente",
+     "C1": "Comercial",
+     "A2": "PV-26-1601",
+     "B2": 430031,
+     "A3": "PV-26-1602",
+     "B3": 430090,
+     "A4": "PV-26-1603",
+     "B4": 430012,
+     "A5": "PV-26-1604",
+     "B5": 430058,
+     "F1": "Nº cliente",
+     "G1": "Comercial",
+     "F2": 430012,
+     "G2": "Pablo Lasheras",
+     "F3": 430027,
+     "G3": "Sergio Aznar",
+     "F4": 430031,
+     "G4": "Irene Gracia",
+     "F5": 430045,
+     "G5": "Pablo Lasheras",
+     "F6": 430058,
+     "G6": "Elena Beltrán"
+    },
+    "anchos": {
+     "G": 16
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=BUSCARX(B2;$F$2:$F$6;$G$2:$G$6;\"Sin asignar\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(B2;$F$2:$F$6;$G$2:$G$6);\"Sin asignar\")",
+    "=SI.ND(BUSCARV(B2;$F$2:$G$6;2;FALSO);\"Sin asignar\")",
+    "=BUSCARX(B2;F$2:F$6;G$2:G$6;\"Sin asignar\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(B2;$F$2:$F$6;$G$2:$G$6)",
+    "=BUSCARX(B2;F2:F6;G2:G6;\"Sin asignar\")",
+    "=SI.ND(BUSCARV(B2;$F$2:$G$6;2);\"Sin asignar\")",
+    "=SI.ERROR(BUSCARX(B2;$F$2:$F$6;$G$2:$G$6);0)"
+   ],
+   "variantes": [
+    {
+     "B2": 430027
+    }
+   ],
+   "explicacion": "Búsqueda con aviso y la tabla fijada: `=BUSCARX(B2;$F$2:$F$6;$G$2:$G$6;\"Sin asignar\")`. El cliente 430090 no está en el maestro y sale el aviso en lugar de #N/D. Un BUSCARV sin FALSO le habría puesto el comercial de otro cliente sin avisar.",
+   "nivel": "n2"
+  },
+  {
+   "id": "pn-n2-x15",
+   "modo": "test",
+   "leccion": "n2m5l4",
+   "pregunta": "En la plantilla de presupuestos, **F1** tiene el tipo de IVA y las fórmulas dicen `=B2*(1+$F$1)`. Marta quiere que cualquiera entienda la fórmula sin buscar qué es F1. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Selecciono F1, escribo TipoIVA en el cuadro de nombres, pulso Intro y uso =B2*(1+TipoIVA)",
+     "correcta": true,
+     "porque": "Correcto: el nombre se lee solo y, como apunta siempre a F1, se copia igual que $F$1."
+    },
+    {
+     "texto": "Llamo a F1 «Tipo IVA» en el cuadro de nombres",
+     "correcta": false,
+     "porque": "Los nombres no admiten espacios: usa TipoIVA o Tipo_IVA."
+    },
+    {
+     "texto": "Escribo el IVA dentro de la fórmula: =B2*1,21",
+     "correcta": false,
+     "porque": "Se lee, pero el día que cambie el tipo habrá que tocar todas las fórmulas, y alguna se quedará sin cambiar."
+    },
+    {
+     "texto": "Llamo a F1 IVA1",
+     "correcta": false,
+     "porque": "IVA1 es la dirección de una celda de verdad (columna IVA, fila 1): Excel no lo acepta como nombre."
+    }
+   ],
+   "explicacion": "Un buen nombre definido: sin espacios, empieza por letra, no parece una celda y dice lo que guarda. Para revisar a qué apunta cada nombre, Fórmulas › Nombres definidos › Administrador de nombres.",
+   "nivel": "n2"
+  },
+  {
+   "id": "pn-n2-x7",
+   "modo": "predice",
+   "leccion": "n2m2l4",
+   "enunciado": "Andrés quiere saber cuántos códigos de la lista **empiezan** por LED. ¿Qué devuelve la fórmula de **C1**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "A2": "LED-18",
+     "A3": "CAB-15",
+     "A4": "LED-36",
+     "A5": "PAN-LED60",
+     "A6": "LED-24",
+     "A7": "MAG-16"
+    }
+   },
+   "celda": "C1",
+   "formula": "=CONTAR.SI(A2:A7;\"LED*\")",
+   "explicacion": "Cuenta 3: LED-18, LED-36 y LED-24. «LED*» significa «empieza por LED y después lo que sea»; PAN-LED60 contiene LED, pero no empieza por ahí. Para «contiene» haría falta un asterisco delante también: \"*LED*\".",
+   "respuesta": "3",
+   "nivel": "n2"
+  },
+  {
+   "id": "pn-n3-x13",
+   "modo": "formula",
+   "leccion": "n3m5l2",
+   "enunciado": "Para la reunión del lunes, Javier quiere los **pedidos pendientes** con todas sus columnas (A a D), **del más grande al más pequeño**. Escríbelo en **F2** con una sola fórmula que se rehaga sola cuando cambie un estado o un importe, sin tocar el listado original.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Estado",
+     "F1": "Pedido",
+     "G1": "Cliente",
+     "H1": "Importe",
+     "I1": "Estado",
+     "A2": "P-4211",
+     "B2": "Instalaciones Ebro",
+     "C2": 1840,
+     "D2": "Pendiente",
+     "A3": "P-4212",
+     "B3": "Montajes Arga",
+     "C3": 620,
+     "D3": "Servido",
+     "A4": "P-4213",
+     "B4": "Electricidad Moncayo",
+     "C4": 2975,
+     "D4": "Pendiente",
+     "A5": "P-4214",
+     "B5": "Talleres Huerva",
+     "C5": 455,
+     "D5": "Pendiente",
+     "A6": "P-4215",
+     "B6": "Riegos y Luz del Segre",
+     "C6": 1310,
+     "D6": "Servido",
+     "A7": "P-4216",
+     "B7": "Electro Baztán",
+     "C7": 3420,
+     "D7": "Pendiente",
+     "A8": "P-4217",
+     "B8": "Instalaciones Noguera",
+     "C8": 980,
+     "D8": "Pendiente",
+     "A9": "P-4218",
+     "B9": "Montajes Arga",
+     "C9": 2150,
+     "D9": "Servido"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "H2:H9": "eur"
+    },
+    "anchos": {
+     "B": 21,
+     "G": 21
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=ORDENAR(FILTRAR(A2:D9;D2:D9=\"Pendiente\");3;-1)",
+   "alternativas": [
+    "=ORDENAR(FILTRAR(A2:D9;D2:D9=\"Pendiente\";\"Nada pendiente\");3;-1)",
+    "=ORDENAR(FILTRAR($A$2:$D$9;$D$2:$D$9=\"Pendiente\");3;-1)",
+    "=ORDENARPOR(FILTRAR(A2:D9;D2:D9=\"Pendiente\");FILTRAR(C2:C9;D2:D9=\"Pendiente\");-1)"
+   ],
+   "errores_tipicos": [
+    "=FILTRAR(A2:D9;D2:D9=\"Pendiente\")",
+    "=ORDENAR(FILTRAR(A2:D9;D2:D9=\"Pendiente\");3)",
+    "=ORDENAR(A2:D9;3;-1)",
+    "=ORDENAR(FILTRAR(A2:D9;D2:D9=\"Pendiente\");1;-1)"
+   ],
+   "debe_usar": [
+    "FILTRAR"
+   ],
+   "variantes": [
+    {
+     "D3": "Pendiente"
+    },
+    {
+     "C5": 3600
+    }
+   ],
+   "explicacion": "`=ORDENAR(FILTRAR(A2:D9;D2:D9=\"Pendiente\");3;-1)`: FILTRAR se queda con los pendientes y ORDENAR los pone por la 3.ª columna (Importe) de mayor a menor. Electro Baztán arriba con 3.420 €. Una función dentro de otra, cada una un paso, y el listado original intacto.",
+   "nivel": "n3"
+  },
+  {
+   "id": "pn-n3-x15",
+   "modo": "test",
+   "leccion": "n3m5l4",
+   "pregunta": "En la lista de stock (A2:F40), la columna **E** es el stock actual y la **F**, el stock mínimo de cada artículo. Andrés quiere la **fila entera** en naranja cuando el stock está **por debajo de su mínimo**. Seleccionas A2:F40. ¿Qué fórmula pones en la regla de formato condicional?",
+   "opciones": [
+    {
+     "texto": "=$E2<$F2",
+     "correcta": true,
+     "porque": "Correcto: columnas fijas y fila libre. Cada fila compara su stock con su propio mínimo y se pintan sus seis celdas."
+    },
+    {
+     "texto": "=E2<F2",
+     "correcta": false,
+     "porque": "Sin $ en las columnas, la celda de B compararía F con G, la de C, G con H…: se pintarían celdas sueltas sin sentido."
+    },
+    {
+     "texto": "=$E$2<$F$2",
+     "correcta": false,
+     "porque": "Todas las filas mirarían el artículo de la fila 2: se pintaría la lista entera o nada."
+    },
+    {
+     "texto": "=$E2<$F$2",
+     "correcta": false,
+     "porque": "El mínimo es distinto para cada artículo: con $F$2, todas las filas se compararían con el mínimo del primero."
+    }
+   ],
+   "explicacion": "La regla se escribe para la primera fila del rango y Excel la mueve como si la copiara: columna fija ($E, $F) y fila libre (2). Antes de crearla, pruébala en una columna auxiliar.",
+   "nivel": "n3"
+  },
+  {
+   "id": "pn-n3-x11",
+   "modo": "cinta",
+   "leccion": "n3m4l3",
+   "enunciado": "Pegas las ventas de noviembre debajo del listado y pulsas Actualizar todo, pero la dinámica no las recoge: su origen es un rango fijo que acaba en la fila 1200. Con una celda de la dinámica seleccionada, ¿qué botón usas para ampliar ese origen?",
+   "ruta": [
+    "Analizar tabla dinámica",
+    "Datos",
+    "Cambiar origen de datos"
+   ],
+   "explicacion": "Analizar tabla dinámica › Datos › Cambiar origen de datos. Sirve para hoy; para que no vuelva a pasar, convierte el listado en Tabla ([[Ctrl]]+[[T]]) y úsala como origen: crecerá sola con cada fila nueva.",
+   "nivel": "n3"
+  },
+  {
+   "id": "pn-n4-x12",
+   "leccion": "n4m3l3",
+   "modo": "formula",
+   "enunciado": "Con el mismo préstamo, contabilidad pregunta qué parte de la **cuota número 12** (B5) **devuelve deuda**, es decir, cuánto es capital y no intereses. En **B6** calcúlalo en positivo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe del préstamo",
+     "B1": 48000,
+     "A2": "Interés anual",
+     "B2": 0.039,
+     "A3": "Años",
+     "B3": 6,
+     "A4": "Cuota mensual",
+     "B4": "=-PAGO(B2/12;B3*12;B1)",
+     "A5": "Cuota número",
+     "B5": 12,
+     "A6": "Capital de esa cuota"
+    },
+    "formatos": {
+     "B1": "eur",
+     "B2": "pct1",
+     "B4": "eur"
+    },
+    "anchos": {
+     "A": 22
+    }
+   },
+   "objetivo": "B6",
+   "solucion": "=-PAGOPRIN(B2/12;B5;B3*12;B1)",
+   "alternativas": [
+    "=PAGOPRIN(B2/12;B5;B3*12;-B1)",
+    "=-PAGOPRIN(B2/12;12;B3*12;B1)",
+    "=B4+PAGOINT(B2/12;B5;B3*12;B1)",
+    "=B4-(-PAGOINT(B2/12;B5;B3*12;B1))"
+   ],
+   "errores_tipicos": [
+    "=-PAGOINT(B2/12;B5;B3*12;B1)",
+    "=-PAGOPRIN(B2;B5;B3;B1)",
+    "=PAGOPRIN(B2/12;B5;B3*12;B1)",
+    "=B4"
+   ],
+   "variantes": [
+    {
+     "B1": 30000
+    },
+    {
+     "B2": 0.05
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "De los 748,78 € de la cuota 12, 614,32 € devuelven deuda y 134,46 € son intereses. Capital + intereses = cuota, siempre.",
+   "nivel": "n4"
+  },
+  {
+   "id": "pn-n4-x15",
+   "leccion": "n4m4l2",
+   "modo": "test",
+   "pregunta": "Cada viernes, Andrés deja el informe de stock listo para imprimir siempre igual: oculta las columnas de trabajo, fija el área de impresión y lo ajusta a una página de ancho. Los datos ya los trae Power Query. ¿Qué usarías para ese último paso?",
+   "opciones": [
+    {
+     "texto": "Una macro grabada, en un libro .xlsm y con un botón",
+     "correcta": true,
+     "porque": "Son clics de formato e impresión que se repiten igual cada semana: el terreno de las macros."
+    },
+    {
+     "texto": "Otra consulta de Power Query",
+     "correcta": false,
+     "porque": "Power Query trae y limpia datos; no oculta columnas de la hoja ni prepara la impresión."
+    },
+    {
+     "texto": "Una fórmula en cada columna",
+     "correcta": false,
+     "porque": "Las fórmulas calculan valores; no cambian el formato ni la configuración de la página."
+    },
+    {
+     "texto": "Una tabla de datos de Análisis de hipótesis",
+     "correcta": false,
+     "porque": "Sirve para probar muchos valores de un supuesto; no tiene nada que ver con imprimir."
+    }
+   ],
+   "explicacion": "Calcular → fórmula. Traer y limpiar datos → Power Query. Repetir clics → macro.",
+   "nivel": "n4"
+  },
+  {
+   "id": "pn-n4-x6",
+   "leccion": "n4m2l2",
+   "modo": "predice",
+   "enunciado": "Marta usa este código para que los saldos negativos salgan entre paréntesis. ¿Qué devuelve la fórmula con el saldo de B2?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Saldo",
+     "A2": "Electricidad Hnos. Lasheras",
+     "B2": -12500
+    },
+    "formatos": {
+     "B2": "eur"
+    },
+    "anchos": {
+     "A": 26
+    }
+   },
+   "celda": "C2",
+   "formula": "=TEXTO(B2;\"#.##0 €;(#.##0 €)\")",
+   "explicacion": "Es negativo, así que usa la segunda sección: entre paréntesis, sin signo menos, con punto de miles y sin decimales.",
+   "respuesta": "(12.500 €)",
+   "nivel": "n4"
+  },
+  {
+   "id": "pn-n5-x13",
+   "leccion": "n5m4l1",
+   "modo": "formula",
+   "enunciado": "Pediste a un chat la fórmula para traer el **precio de tarifa** (tabla E1:F6) de cada código de la columna A, y te dio `=VLOOKUP(A2,$E$2:$F$6,2)`. Escríbela en **B2** para tu Excel en español y pruébala con un caso conocido: en la tarifa, **CAB-025** cuesta **58,90 €**. Se copiará a B3:B5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Precio",
+     "E1": "Código",
+     "F1": "Precio tarifa",
+     "A2": "CAB-025",
+     "A3": "BRI-300",
+     "A4": "LED-018",
+     "A5": "MEC-101",
+     "E2": "MEC-101",
+     "F2": 4.35,
+     "E3": "CAB-025",
+     "F3": 58.9,
+     "E4": "LED-018",
+     "F4": 12.6,
+     "E5": "TUB-020",
+     "F5": 21.4,
+     "E6": "BRI-300",
+     "F6": 3.15
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "F2:F6": "eur"
+    },
+    "anchos": {
+     "F": 13
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=BUSCARV(A2;$E$2:$F$6;2;FALSO)",
+   "alternativas": [
+    "=BUSCARV(A2;$E$2:$F$6;2;0)",
+    "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)",
+    "=INDICE($F$2:$F$6;COINCIDIR(A2;$E$2:$E$6;0))"
+   ],
+   "errores_tipicos": [
+    "=BUSCARV(A2;$E$2:$F$6;2)",
+    "=BUSCARV(A2;E2:F6;2;FALSO)",
+    "=BUSCARV(A2;$E$2:$F$6;2;VERDADERO)"
+   ],
+   "no_usar": [
+    "VLOOKUP"
+   ],
+   "variantes": [
+    {
+     "F3": 61.2
+    },
+    {
+     "A3": "TUB-020"
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "Había dos fallos. El visible: nombre en inglés y comas. El silencioso: sin el cuarto argumento, BUSCARV busca un valor **aproximado** en una tarifa que no está ordenada y puede devolver precios de otro artículo sin dar ningún error. Con `FALSO` busca el código exacto. Por eso se prueba siempre con un caso conocido.",
+   "nivel": "n5"
+  },
+  {
+   "id": "pn-n5-x15",
+   "leccion": "n5m4l3",
+   "modo": "test",
+   "pregunta": "El libro de pedidos está en OneDrive y el equipo lo abre en **Excel para la web**. Cada día laborable a las 8:00 hay que aplicarle el mismo formato, que lleva un año sin cambiar. ¿Qué propones?",
+   "opciones": [
+    {
+     "texto": "Un Office Script con ese formato, programado con Power Automate",
+     "correcta": true,
+     "porque": "Eso es: el script funciona en Excel para la web y Power Automate lo ejecuta solo a la hora fijada. El proceso es estable, así que merece la pena automatizarlo."
+    },
+    {
+     "texto": "Una macro VBA que alguien ejecute cada mañana",
+     "correcta": false,
+     "porque": "En Excel para la web no se pueden crear, ejecutar ni editar macros VBA. Y dependería de que alguien se acuerde."
+    },
+    {
+     "texto": "Pasar el libro a Power BI",
+     "correcta": false,
+     "porque": "Power BI es para cuadros de mando que consultan muchas personas, no para dar formato a un libro de Excel."
+    },
+    {
+     "texto": "Una celda de Python que aplique el formato",
+     "correcta": false,
+     "porque": "Python en Excel sirve para analizar datos dentro de una celda, no para programar tareas a una hora fija."
+    }
+   ],
+   "explicacion": "Repetitivo y estable + libro en la nube = Office Script; para que se ejecute solo, Power Automate.",
+   "nivel": "n5"
+  },
+  {
+   "id": "pn-n5-x12",
+   "leccion": "n5m3l4",
+   "modo": "predice",
+   "enunciado": "Esta celda de comprobación la dejó tu antecesor. La tabla suma 15.805 € y contabilidad dice 16.105 €: faltan 300 €. ¿Qué muestra la fórmula? Escríbelo tal cual saldría en la celda.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Importe",
+     "A2": "Cobros por transferencia",
+     "B2": 12480,
+     "A3": "Cobros por tarjeta",
+     "B3": 2915,
+     "A4": "Cobros en efectivo",
+     "B4": 410,
+     "A6": "Total según contabilidad",
+     "B6": 16105,
+     "A7": "Comprobación"
+    },
+    "formatos": {
+     "B2:B6": "eur"
+    },
+    "anchos": {
+     "A": 24
+    }
+   },
+   "celda": "B7",
+   "formula": "=SI(SUMA(B2:B4)-B6<0,01;\"OK\";\"Revisar\")",
+   "explicacion": "Dice **OK**, y está mal: la diferencia es −300, y −300 es menor que 0,01. Sin ABS, cualquier tabla que se quede **corta** pasa la comprobación. La buena: `=SI(ABS(SUMA(B2:B4)-B6)<0,01;\"OK\";\"Revisar\")`.",
+   "respuesta": "OK",
+   "nivel": "n5"
+  },
+  {
+   "id": "pn-n6-x14",
+   "modo": "formula",
+   "leccion": "n6m3l3",
+   "enunciado": "Cada mes cargas el extracto del banco en esta hoja (hasta la fila 8). En **F3** escribe un control que diga «OK» solo si la cabecera de la columna C sigue siendo «Importe» **y** han llegado tantos movimientos (fechas de A2:A8) como indica el banco en **F2**. Si falla cualquiera, «REVISAR».",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Concepto",
+     "C1": "Importe",
+     "E1": "Comprobación",
+     "F1": "Resultado",
+     "E2": "Movimientos según el banco",
+     "F2": 6,
+     "E3": "Control del extracto",
+     "A2": {
+      "fecha": "2026-11-02"
+     },
+     "B2": "Transf. Instalaciones Moncayo",
+     "C2": 3480,
+     "A3": {
+      "fecha": "2026-11-04"
+     },
+     "B3": "Transf. Montajes Cinca",
+     "C3": 1250.4,
+     "A4": {
+      "fecha": "2026-11-09"
+     },
+     "B4": "Transf. Reformas Jalón",
+     "C4": 912.35,
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "Transf. Electro Huesca",
+     "C5": 2200,
+     "A6": {
+      "fecha": "2026-11-18"
+     },
+     "B6": "Transf. Electricidad Arga",
+     "C6": 615.25,
+     "A7": {
+      "fecha": "2026-11-24"
+     },
+     "B7": "Transf. Clima y Luz Huesca",
+     "C7": 1694
+    },
+    "formatos": {
+     "A2:A8": "fecha",
+     "C2:C8": "eur"
+    },
+    "anchos": {
+     "B": 30,
+     "E": 26
+    }
+   },
+   "objetivo": "F3",
+   "solucion": "=SI(Y(C1=\"Importe\";CONTARA(A2:A8)=F2);\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(Y(CONTARA(A2:A8)=F2;C1=\"Importe\");\"OK\";\"REVISAR\")",
+    "=SI(Y(C1=\"Importe\";CONTAR(A2:A8)=F2);\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(CONTARA(A2:A8)=F2;\"OK\";\"REVISAR\")",
+    "=SI(C1=\"Importe\";\"OK\";\"REVISAR\")",
+    "=SI(O(C1=\"Importe\";CONTARA(A2:A8)=F2);\"OK\";\"REVISAR\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "C1": "Referencia"
+    },
+    {
+     "C1": "Importe",
+     "F2": 7
+    }
+   ],
+   "explicacion": "OK este mes. Si el banco cambia la columna de sitio o falta un movimiento, la rutina se para aquí, antes de entregar un número falso.",
+   "nivel": "n6"
+  },
+  {
+   "id": "pn-n6-x15",
+   "modo": "test",
+   "leccion": "n6m3l3",
+   "pregunta": "Hoy es 24 de noviembre. El informe de cobros se entrega el día 3 y ya sabes que no llegarás a todo: adaptar el nuevo extracto del banco lleva 3 horas más de lo previsto. ¿Qué mensaje le mandas a Marta?",
+   "opciones": [
+    {
+     "texto": "«El día 3 no llego a todo: adaptar el nuevo extracto me lleva 3 horas más. Te propongo el día 3 el informe de siempre, comprobado, y el detalle nuevo el día 9. ¿Te encaja?»",
+     "correcta": true,
+     "porque": "Pronto, con el porqué en cifras, una versión mínima con fecha para el resto y una pregunta para que Marta decida."
+    },
+    {
+     "texto": "«Voy un poco liada, haré lo que pueda para el día 3.»",
+     "correcta": false,
+     "porque": "No dice qué pasa, qué tendrá ni cuándo. Marta no puede organizarse con eso."
+    },
+    {
+     "texto": "Ninguno: trabajas el fin de semana y, si el día 3 no está, se lo explicas entonces.",
+     "correcta": false,
+     "porque": "Callar un retraso le quita a Marta el margen para reorganizarse, y con prisa se cometen más errores."
+    },
+    {
+     "texto": "«No puedo con todo. Dime qué hago.»",
+     "correcta": false,
+     "porque": "Avisas, pero sin propuesta. Tú sabes mejor que nadie qué se puede tener el día 3: ofrécelo."
+    }
+   ],
+   "explicacion": "Avisar pronto, explicar con cifras y proponer: lo imprescindible a tiempo y el resto con fecha.",
+   "nivel": "n6"
+  },
+  {
+   "id": "pn-n6-x8",
+   "modo": "predice",
+   "leccion": "n6m2l1",
+   "enunciado": "Hoja de compras de octubre por familia. Antes de que Excel lo calcule: ¿qué total da la fórmula de **B8**? (Escribe solo el número.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Compras oct.",
+     "A2": "Cable",
+     "B2": 4200,
+     "A3": "Canaleta",
+     "B3": 1800,
+     "A4": "Subtotal conducción",
+     "B4": "=SUMA(B2:B3)",
+     "A5": "Luminarias LED",
+     "B5": 5300,
+     "A6": "Mecanismos",
+     "B6": 2700,
+     "A7": "Subtotal material eléctrico",
+     "B7": "=SUMA(B5:B6)",
+     "A8": "Total"
+    },
+    "formatos": {
+     "B2:B8": "#.##0 €"
+    },
+    "anchos": {
+     "A": 28
+    }
+   },
+   "celda": "B8",
+   "formula": "=SUMA(B2:B7)",
+   "explicacion": "28.000: justo el doble de las compras reales (14.000 €), porque el rango incluye los dos subtotales y cada compra se cuenta dos veces. El total correcto es `=B4+B7`.",
+   "respuesta": "28000",
+   "nivel": "n6"
+  }
+ ]
+}

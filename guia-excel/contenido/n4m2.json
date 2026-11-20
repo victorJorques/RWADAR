@@ -1,0 +1,1780 @@
+{
+  "id": "n4m2",
+  "nivel": "n4",
+  "titulo": "Fórmulas legibles y plantillas seguras",
+  "intro": "Cuando tus hojas las usan otras personas, no basta con que calculen bien: tienen que entenderse, verse como pide el informe y aguantar a quien las rellena con prisa. En este módulo aprendes a escribir fórmulas que se leen, a dar formato sin perder el número, a proteger plantillas y a juntar datos de varios libros sin vínculos rotos ni versiones «final_v7».",
+  "repaso_inicial": [
+    {
+      "id": "n4m2-r1",
+      "modo": "test",
+      "pregunta": "Combinas en Power Query las ventas del trimestre (**1.240 filas**) con el maestro de productos para traer la familia. Al cargar, la tabla de ventas tiene **1.268 filas**. ¿Qué ha pasado?",
+      "opciones": [
+        {
+          "texto": "Algún código está repetido en el maestro y sus ventas se han duplicado al expandir",
+          "correcta": true,
+          "porque": "Eso es: cada venta de un código repetido encuentra dos parejas y sale dos veces. Se arregla con Quitar duplicados en la consulta del maestro, antes de combinar."
+        },
+        {
+          "texto": "Has elegido Anti izquierda en vez de Externa izquierda",
+          "correcta": false,
+          "porque": "Anti izquierda daría muchas menos filas, no más: solo las ventas sin pareja en el maestro."
+        },
+        {
+          "texto": "Power Query añade una fila por cada familia del maestro",
+          "correcta": false,
+          "porque": "Combinar no crea filas por familias: solo trae columnas. Las filas de más salen de claves repetidas."
+        },
+        {
+          "texto": "Se han colado las filas de total del ERP",
+          "correcta": false,
+          "porque": "Esas filas ya estarían antes de combinar. Si el número cambia justo al combinar, la causa está en el maestro."
+        }
+      ],
+      "explicacion": "Después de combinar se comprueba siempre que las filas no han cambiado: 1.240 antes, 1.240 después. Si suben, hay claves repetidas."
+    },
+    {
+      "id": "n4m2-r2",
+      "modo": "formula",
+      "enunciado": "En **F3** calcula el total vendido por la delegación de **F1** en la familia de **F2**. Sin escribir «Pamplona» ni «Cable» dentro de la fórmula: usa las celdas de criterio.",
+      "hoja": {
+        "celdas": {
+          "A1": "Delegación",
+          "B1": "Familia",
+          "C1": "Importe",
+          "E1": "Delegación",
+          "F1": "Pamplona",
+          "A2": "Zaragoza",
+          "B2": "Cable",
+          "C2": 4820.5,
+          "E2": "Familia",
+          "F2": "Cable",
+          "A3": "Pamplona",
+          "B3": "Cable",
+          "C3": 2310,
+          "E3": "Total",
+          "A4": "Pamplona",
+          "B4": "Mecanismos",
+          "C4": 1475.8,
+          "A5": "Lleida",
+          "B5": "Cable",
+          "C5": 1990.25,
+          "A6": "Pamplona",
+          "B6": "Cable",
+          "C6": 860.4,
+          "A7": "Zaragoza",
+          "B7": "Mecanismos",
+          "C7": 3120
+        },
+        "formatos": {
+          "C2:C7": "eur",
+          "F3": "eur"
+        },
+        "anchos": {
+          "A": 12,
+          "B": 12,
+          "E": 11,
+          "F": 12
+        }
+      },
+      "objetivo": "F3",
+      "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;F1;B2:B7;F2)",
+      "alternativas": [
+        "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;F1)"
+      ],
+      "errores_tipicos": [
+        "=SUMAR.SI(A2:A7;F1;C2:C7)",
+        "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\"Pamplona\";B2:B7;\"Cable\")"
+      ],
+      "variantes": [
+        {
+          "F1": "Zaragoza",
+          "F2": "Mecanismos"
+        }
+      ],
+      "debe_usar": [
+        "SUMAR.SI.CONJUNTO"
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Hay dos condiciones a la vez: delegación y familia. Eso es SUMAR.SI.CONJUNTO.",
+        "Primero el rango que se suma (C2:C7); después, cada pareja rango de criterio; criterio.",
+        "`=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;F1;B2:B7;F2)`"
+      ],
+      "explicacion": "2.310 + 860,40 = 3.170,40 €. Con los criterios en celdas, cambias F1 o F2 y el total se recalcula."
+    },
+    {
+      "id": "n4m2-r3",
+      "modo": "predice",
+      "enunciado": "¿Qué devuelve esta fórmula si A2 contiene la fecha 16/11/2026?",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "A2": {
+            "fecha": "2026-11-16"
+          }
+        },
+        "formatos": {
+          "A2": "fecha"
+        }
+      },
+      "celda": "B2",
+      "formula": "=TEXTO(A2;\"mmmm\")",
+      "explicacion": "El código `mmmm` saca el nombre completo del mes. En este módulo verás muchos más códigos como este.",
+      "respuesta": "noviembre"
+    },
+    {
+      "id": "n4m2-r4",
+      "modo": "test",
+      "pregunta": "Le pones el nombre definido **TipoIVA** a la celda H1. ¿Qué ganas al escribir `=B2*(1+TipoIVA)` en lugar de `=B2*(1+$H$1)`?",
+      "opciones": [
+        {
+          "texto": "La fórmula se lee sola y TipoIVA sigue apuntando a H1 al copiarla",
+          "correcta": true,
+          "porque": "Eso es: un nombre definido se refiere siempre a la misma celda y dice qué hay en ella."
+        },
+        {
+          "texto": "Que el IVA se actualiza solo cuando cambia la ley",
+          "correcta": false,
+          "porque": "No: el valor de H1 lo sigues cambiando tú. El nombre solo hace la fórmula más clara."
+        },
+        {
+          "texto": "Nada: TipoIVA se mueve al copiar, como cualquier referencia sin $",
+          "correcta": false,
+          "porque": "Un nombre definido no se desplaza al copiar: siempre señala la misma celda."
+        }
+      ],
+      "explicacion": "Ponerle nombre a las cosas hace las fórmulas legibles. En la primera lección verás cómo hacerlo dentro de una sola fórmula, con LET."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n4m2l1",
+      "titulo": "LET: ponle nombre a los pasos de tu fórmula",
+      "minutos": 15,
+      "objetivo": "Escribir fórmulas largas por pasos con LET, poniendo nombre a cada resultado intermedio para calcularlo una sola vez y que cualquiera del equipo las entienda.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "La hoja de presupuestos tiene una fórmula que nadie se atreve a tocar: repite el mismo neto tres veces. ¿Me la dejas legible? Neto con descuento, el 3 % extra si la línea llega a 1.000 € y el total con IVA. La va a usar todo el equipo.",
+        "logro": "Ya sabes escribir fórmulas largas por pasos con LET: se leen, se revisan y se cambian en un solo sitio."
+      },
+      "funciones": [
+        "LET"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### La fórmula que nadie se atreve a tocar\n\nEn la hoja de presupuestos hay esto:\n\n`=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))`\n\nEl trozo `B2*C2*(1-D2)` (el **neto**: precio por unidades, menos el descuento) aparece **tres veces**. Si un día cambia la forma de calcular el neto, hay que tocarlo en tres sitios, y basta con olvidar uno para que el presupuesto salga mal. Además, quien la lee tiene que descifrarla."
+        },
+        {
+          "tipo": "texto",
+          "md": "### LET: un nombre para cada paso\n\n**LET** te deja ponerle **nombre** a un resultado intermedio y usar ese nombre en el resto de la fórmula. Es como apuntar en un pósit «neto = 210» y luego decir «al neto, quítale el descuento».\n\n`=LET(neto;B2*C2;neto*(1-D2))`\n\n1. `neto` es el **nombre** que eliges tú.\n2. `B2*C2` es su **valor**.\n3. `neto*(1-D2)` es el **cálculo final**, el que sale en la celda."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así se ve",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "E1": "Neto",
+              "A2": "Bridas 200 mm (bolsa 100)",
+              "B2": 4.2,
+              "C2": 50,
+              "D2": 0.1,
+              "E2": "=LET(neto;B2*C2;neto*(1-D2))"
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "pct",
+              "E2": "eur"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "resaltar": [
+            "E2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "4,20 × 50 = 210 €; con el 10 % de descuento quedan 189,00 €."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e1",
+          "modo": "predice",
+          "enunciado": "Calcula de cabeza antes que Excel: ¿qué devuelve esta fórmula en E2? (Precio 4 €, 25 unidades, 10 % de descuento.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "A2": "Bridas 200 mm (bolsa 100)",
+              "B2": 4,
+              "C2": 25,
+              "D2": 0.1
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "pct"
+            },
+            "anchos": {
+              "A": 26
+            }
+          },
+          "celda": "E2",
+          "formula": "=LET(neto;B2*C2;neto*(1-D2))",
+          "explicacion": "`neto` vale 4 × 25 = 100, y el cálculo final es 100 × (1 − 0,10) = 90. Acabas de leer tu primera LET: nombre, valor y cálculo.",
+          "respuesta": "90"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Las reglas del juego\n\n- Los argumentos (lo que separas con `;`) van **por parejas**: nombre; valor; nombre; valor…\n- El **último** argumento es siempre el **cálculo final**: lo que sale en la celda.\n- Un nombre puede usar los anteriores: `=LET(base;B2*C2;dto;base*D2;base-dto)`.\n- Los nombres solo existen **dentro de esa fórmula**: en otra celda no significan nada.\n\nLET está en Excel 2021, Excel 2024 y Microsoft 365."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e2",
+          "modo": "formula",
+          "enunciado": "La fórmula de **E2** ya calcula el neto, pero se ha quedado a medias: devuelve el neto **sin IVA**. Arréglala para que el cálculo final sea el **neto con IVA** (el tipo está en **H1**). Se copiará a E3:E4, así que fija H1.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "E1": "Con IVA",
+              "G1": "IVA",
+              "H1": 0.21,
+              "A2": "Cable H07V-K 2,5 mm² (100 m)",
+              "B2": 38.9,
+              "C2": 6,
+              "D2": 0.1,
+              "A3": "Canaleta 40×60 (tramo 2 m)",
+              "B3": 7.35,
+              "C3": 20,
+              "D3": 0.05,
+              "A4": "Caja de empalme estanca",
+              "B4": 2.8,
+              "C4": 50,
+              "D4": 0
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "D2:D4": "pct",
+              "E2:E4": "eur",
+              "H1": "pct"
+            },
+            "anchos": {
+              "A": 28
+            }
+          },
+          "objetivo": "E2",
+          "inicial": "=LET(neto;B2*C2*(1-D2);neto)",
+          "copiar_a": [
+            "E3:E4"
+          ],
+          "solucion": "=LET(neto;B2*C2*(1-D2);neto*(1+$H$1))",
+          "alternativas": [
+            "=LET(neto;B2*C2*(1-D2);neto+neto*$H$1)",
+            "=LET(neto;B2*C2*(1-D2);neto*(1+H$1))"
+          ],
+          "errores_tipicos": [
+            "=LET(neto;B2*C2*(1-D2);neto*(1+H1))",
+            "=LET(neto;B2*C2*(1-D2);neto*1,21)"
+          ],
+          "variantes": [
+            {
+              "H1": 0.1,
+              "B3": 8
+            }
+          ],
+          "debe_usar": [
+            "LET"
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "No toques la primera parte: el nombre `neto` y su valor ya están bien. Solo cambia el último argumento.",
+            "El cálculo final tiene que ser el neto por (1 + IVA).",
+            "Cambia el último `neto` por `neto*(1+$H$1)`. El $ evita que H1 se mueva al copiar."
+          ],
+          "explicacion": "Has completado tu primera LET: el neto se calcula una vez y el último argumento lo convierte en importe con IVA. Si mañana cambia el tipo, basta con tocar H1."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no: el neto se repite",
+          "der": "Así sí: con LET",
+          "filas": [
+            [
+              "`=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))`",
+              "`=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))`"
+            ],
+            [
+              "El neto se calcula 3 veces",
+              "El neto se calcula 1 vez"
+            ],
+            [
+              "Para cambiarlo, hay que tocar 3 sitios",
+              "Para cambiarlo, 1 sitio"
+            ],
+            [
+              "Hay que descifrarla",
+              "Se lee sola: «si el neto llega al mínimo, réstale el 3 %»"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e3",
+          "modo": "formula",
+          "enunciado": "Reescribe con LET la fórmula de la hoja de presupuestos. En **E2** calcula el **neto** de la línea (precio × unidades × (1 − descuento)). Si el neto llega a **H1** (1.000 €), réstale el descuento extra de **H2** (3 %); si no, deja el neto tal cual. Debe dar lo mismo que la fórmula antigua, pero calculando el neto **una sola vez**. Se copiará a E3:E5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "E1": "Neto final",
+              "G1": "Mínimo",
+              "H1": 1000,
+              "G2": "Dto. extra",
+              "H2": 0.03,
+              "A2": "Cable H07V-K 2,5 mm² (100 m)",
+              "B2": 38.9,
+              "C2": 30,
+              "D2": 0.1,
+              "A3": "Magnetotérmico 2P 16 A",
+              "B3": 9.75,
+              "C3": 40,
+              "D3": 0.15,
+              "A4": "Downlight LED 18 W",
+              "B4": 12.4,
+              "C4": 120,
+              "D4": 0.2,
+              "A5": "Tubo corrugado 20 mm (100 m)",
+              "B5": 14.6,
+              "C5": 25,
+              "D5": 0.05
+            },
+            "formatos": {
+              "B2:B5": "eur",
+              "D2:D5": "pct",
+              "E2:E5": "eur",
+              "H1": "eur",
+              "H2": "pct"
+            },
+            "anchos": {
+              "A": 28,
+              "G": 11
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E5"
+          ],
+          "solucion": "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))",
+          "alternativas": [
+            "=LET(neto;B2*C2*(1-D2);SI(neto<$H$1;neto;neto*(1-$H$2)))",
+            "=LET(neto;B2*C2*(1-D2);neto*SI(neto>=$H$1;1-$H$2;1))",
+            "=LET(neto;B2*C2*(1-D2);SI(neto>=H$1;neto*(1-H$2);neto))"
+          ],
+          "errores_tipicos": [
+            "=LET(neto;B2*C2*(1-D2);SI(neto>=H1;neto*(1-H2);neto))",
+            "=LET(neto;B2*C2*(1-D2);neto)",
+            "=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))"
+          ],
+          "variantes": [
+            {
+              "H1": 1200,
+              "H2": 0.05
+            },
+            {
+              "B3": 10,
+              "C3": 125,
+              "D3": 0.2
+            }
+          ],
+          "debe_usar": [
+            "LET"
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza con `=LET(neto;` y escribe como valor el cálculo del neto: `B2*C2*(1-D2)`.",
+            "El cálculo final es un SI que pregunta si `neto` llega a $H$1. Si sí: `neto*(1-$H$2)`. Si no: `neto`.",
+            "`=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))`"
+          ],
+          "explicacion": "El mismo resultado, la mitad de largo y se lee de corrido: «calcula el neto; si llega al mínimo, réstale el 3 %». Si un día cambia la forma de calcular el neto, solo hay que tocar un sitio."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Nombres que no confundan a Excel\n\nUn nombre de LET **empieza por una letra** y no lleva espacios (si quieres, usa `_`: `precio_final`). Y, sobre todo, **no puede parecer una celda**. La última columna de Excel es la XFD, así que `iva21` o `dto1` son direcciones de celda de verdad (columna IVA, fila 21; columna DTO, fila 1), y Excel no las admite como nombre.\n\nElige palabras cortas que digan lo que guardan: `neto`, `dto`, `iva`, `total`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e4",
+          "modo": "test",
+          "pregunta": "¿Cuál de estos nombres **no** puedes usar dentro de LET?",
+          "opciones": [
+            {
+              "texto": "`iva21`",
+              "correcta": true,
+              "porque": "Exacto: IVA21 es una celda de verdad (columna IVA, fila 21). Excel no admite como nombre algo que parece una referencia."
+            },
+            {
+              "texto": "`neto`",
+              "correcta": false,
+              "porque": "Este sí vale: empieza por letra, no tiene espacios y no se parece a ninguna celda."
+            },
+            {
+              "texto": "`precio_final`",
+              "correcta": false,
+              "porque": "Este también vale: el guion bajo está permitido y es la forma de evitar el espacio."
+            },
+            {
+              "texto": "`dto`",
+              "correcta": false,
+              "porque": "Vale: son solo letras, sin número de fila, así que no es la dirección de ninguna celda."
+            }
+          ],
+          "explicacion": "Regla rápida: si tu nombre son letras seguidas de un número, probablemente es una celda. Usa solo palabras."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Fórmulas que se leen en vertical\n\nUna LET larga se lee mejor en varias líneas. Mientras la escribes en la barra de fórmulas, pulsa [[Alt]]+[[Intro]] para saltar de línea. El resultado no cambia:\n\n- `=LET(neto;B2*C2*(1-D2);`\n- `final;SI(neto>=$H$1;neto*(1-$H$2);neto);`\n- `final*(1+$H$3))`\n\nUna línea por paso y la última, el resultado. Si la barra se queda pequeña, amplíala con [[Ctrl]]+[[Mayús]]+[[U]]."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Alt+Intro",
+              "accion": "Saltar de línea dentro de la fórmula (o de la celda)"
+            },
+            {
+              "teclas": "Ctrl+Mayús+U",
+              "accion": "Ampliar o reducir la barra de fórmulas"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e5",
+          "modo": "predice",
+          "enunciado": "Aquí un nombre usa otro. ¿Qué resultado sale en E2? (Precio 20 €, 50 unidades, 10 % de descuento.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "A2": "Regleta 6 tomas con interruptor",
+              "B2": 20,
+              "C2": 50,
+              "D2": 0.1
+            },
+            "formatos": {
+              "B2": "eur",
+              "D2": "pct"
+            },
+            "anchos": {
+              "A": 30
+            }
+          },
+          "celda": "E2",
+          "formula": "=LET(base;B2*C2;dto;base*D2;base-dto)",
+          "explicacion": "`base` = 20 × 50 = 1.000; `dto` = 1.000 × 0,10 = 100; y el cálculo final, `base-dto`, da 900. Cada nombre puede usar los que tiene antes.",
+          "respuesta": "900"
+        },
+        {
+          "tipo": "texto",
+          "md": "### ¿Y si alguien tiene un Excel antiguo?\n\nLET funciona en Excel 2021, Excel 2024, Microsoft 365, Excel para la web y Mac (2021 o posterior). En **Excel 2019 o anterior** no existe: la fórmula aparece con el prefijo `_xlfn.` y, si alguien la edita, da `#¿NOMBRE?`.\n\nSi en tu empresa conviven versiones, la alternativa clásica es poner cada paso en una **columna auxiliar** (una columna «Neto») o guardar los datos fijos con un **nombre definido**."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Truco de la casa: antes de sustituir una fórmula antigua por tu LET, ponla al lado en una columna de prueba y comprueba que las dos dan lo mismo en todas las filas. Luego borras la vieja. Así nadie te puede decir que «el presupuesto ha cambiado»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l1-e6",
+          "modo": "formula",
+          "enunciado": "**El encargo de Marta.** En **E2** calcula el **total con IVA** de la línea con una sola LET de tres pasos:\n\n1. `neto`: precio × unidades × (1 − descuento).\n2. `final`: si `neto` llega a **H1**, réstale el descuento extra de **H2**; si no, `neto`.\n3. Cálculo final: `final` con el IVA de **H3**.\n\nSe copiará a E3:E5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Dto",
+              "E1": "Total con IVA",
+              "G1": "Mínimo",
+              "H1": 1000,
+              "G2": "Dto. extra",
+              "H2": 0.03,
+              "G3": "IVA",
+              "H3": 0.21,
+              "A2": "Cable H07V-K 2,5 mm² (100 m)",
+              "B2": 38.9,
+              "C2": 30,
+              "D2": 0.1,
+              "A3": "Magnetotérmico 2P 16 A",
+              "B3": 9.75,
+              "C3": 40,
+              "D3": 0.15,
+              "A4": "Downlight LED 18 W",
+              "B4": 12.4,
+              "C4": 120,
+              "D4": 0.2,
+              "A5": "Tubo corrugado 20 mm (100 m)",
+              "B5": 14.6,
+              "C5": 25,
+              "D5": 0.05
+            },
+            "formatos": {
+              "B2:B5": "eur",
+              "D2:D5": "pct",
+              "E2:E5": "eur",
+              "H1": "eur",
+              "H2:H3": "pct"
+            },
+            "anchos": {
+              "A": 28,
+              "E": 13,
+              "G": 11
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E5"
+          ],
+          "solucion": "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final*(1+$H$3))",
+          "alternativas": [
+            "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto)*(1+$H$3))",
+            "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final+final*$H$3)",
+            "=LET(neto;B2*C2*(1-D2);dtoextra;$H$2;iva;$H$3;final;SI(neto>=$H$1;neto*(1-dtoextra);neto);final*(1+iva))"
+          ],
+          "errores_tipicos": [
+            "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))",
+            "=LET(neto;B2*C2*(1-D2);final;SI(neto>=H1;neto*(1-H2);neto);final*(1+H3))",
+            "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);neto*(1+$H$3))"
+          ],
+          "variantes": [
+            {
+              "H3": 0.1
+            },
+            {
+              "H1": 1200,
+              "C3": 100
+            }
+          ],
+          "debe_usar": [
+            "LET"
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza igual que antes, `=LET(neto;B2*C2*(1-D2);`, y añade la segunda pareja: `final;` seguido del SI del ejercicio anterior.",
+            "Después del SI va el último argumento, el cálculo final: `final*(1+$H$3)`. Ojo: con `final`, no con `neto`.",
+            "`=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final*(1+$H$3))`"
+          ],
+          "explicacion": "Encargo cumplido: una fórmula que cualquiera del equipo lee paso a paso y que calcula cada cosa una sola vez. Con LET, las fórmulas largas de presupuestos, comisiones o márgenes dejan de ser una caja negra."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m2l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En una LET, ¿qué es siempre el **último** argumento?",
+          "aceptadas": [
+            "el cálculo final",
+            "cálculo final",
+            "calculo final",
+            "el calculo final",
+            "el cálculo",
+            "el calculo",
+            "la fórmula final",
+            "el resultado",
+            "el cálculo que sale en la celda"
+          ],
+          "explicacion": "Los argumentos van por parejas (nombre; valor) y el último, suelto, es el cálculo final: lo que se ve en la celda."
+        },
+        {
+          "id": "n4m2l1-q2",
+          "modo": "test",
+          "pregunta": "Vas a enviar a la delegación de Lleida una hoja con LET y allí tienen Excel 2019. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Pasar cada paso a una columna auxiliar (o a un nombre definido) para que funcione en su versión",
+              "correcta": true,
+              "porque": "Eso es: Excel 2019 no conoce LET. Con columnas auxiliares el cálculo es el mismo y funciona en cualquier versión."
+            },
+            {
+              "texto": "Nada: al abrirla, Excel 2019 traduce LET a una fórmula que entiende",
+              "correcta": false,
+              "porque": "No la traduce: la verán con el prefijo `_xlfn.` y, si la editan, dará #¿NOMBRE?."
+            },
+            {
+              "texto": "Cambiar los ; por , para que la entienda",
+              "correcta": false,
+              "porque": "El separador no tiene nada que ver: el problema es que esa versión no tiene la función LET."
+            }
+          ],
+          "explicacion": "Antes de enviar una hoja con funciones modernas, pregunta qué versión tiene quien la va a usar."
+        },
+        {
+          "id": "n4m2l1-q3",
+          "modo": "formula",
+          "enunciado": "Sin mirar arriba: en **C2** calcula el **margen sobre la venta** con LET. Llama `margen` a venta − coste (B2 − A2) y, como cálculo final, divide `margen` entre la venta (B2).",
+          "hoja": {
+            "celdas": {
+              "A1": "Coste",
+              "B1": "Venta",
+              "C1": "Margen",
+              "A2": 62.4,
+              "B2": 89.9
+            },
+            "formatos": {
+              "A2:B2": "eur",
+              "C2": "pct1"
+            }
+          },
+          "objetivo": "C2",
+          "solucion": "=LET(margen;B2-A2;margen/B2)",
+          "alternativas": [
+            "=LET(venta;B2;coste;A2;(venta-coste)/venta)"
+          ],
+          "errores_tipicos": [
+            "=LET(margen;B2-A2;margen/A2)",
+            "=LET(margen;B2-A2;margen)"
+          ],
+          "variantes": [
+            {
+              "A2": 50,
+              "B2": 80
+            }
+          ],
+          "debe_usar": [
+            "LET"
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "Estructura: `=LET(nombre;valor;cálculo)`.",
+            "El nombre es `margen` y su valor, `B2-A2`. El cálculo final divide entre la venta.",
+            "`=LET(margen;B2-A2;margen/B2)`"
+          ],
+          "explicacion": "(89,90 − 62,40) / 89,90 ≈ 30,6 %. Nombre, valor y cálculo final: ya lo escribes sin mirar."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Sintaxis de LET",
+          "dorso": "=LET(nombre; valor; [nombre2; valor2…]; cálculo final). El último argumento es lo que sale en la celda."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Para qué sirve LET en una fórmula larga?",
+          "dorso": "Cada paso tiene nombre y se calcula una sola vez: la fórmula se lee mejor y se cambia en un solo sitio."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no vale el nombre iva21 dentro de LET?",
+          "dorso": "Porque IVA21 es una celda (columna IVA, fila 21). Los nombres no pueden parecer referencias."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Saltar de línea mientras escribes una fórmula larga",
+          "dorso": "Alt+Intro. Y Ctrl+Mayús+U amplía la barra de fórmulas."
+        }
+      ]
+    },
+    {
+      "id": "n4m2l2",
+      "titulo": "Formatos personalizados: que el número se vea como quieres",
+      "minutos": 15,
+      "objetivo": "Crear formatos de número personalizados (ceros delante, miles y euros, negativos, palabras y fechas) sin que el número deje de serlo, y usar TEXTO solo cuando hay que meterlo en una frase.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "El informe de cobros que le paso a Carmen tiene que verse como siempre: los días de retraso con la palabra «días», los saldos negativos entre paréntesis y un titular con la fecha y el total pendiente. Y ojo, que las columnas se tienen que poder seguir sumando.",
+        "logro": "Ya sabes dar a los números el aspecto que pide un informe sin dejar de poder calcular con ellos."
+      },
+      "funciones": [
+        "TEXTO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Lo que ves y lo que hay\n\nYa sabes que el formato cambia **cómo se ve** un número, no **lo que vale**: 1234,5 puede verse como 1.234,50 € y sigue valiendo 1234,5. Cuando ningún formato de la lista te sirve, creas el tuyo:\n\n1. Selecciona las celdas.\n2. Pulsa [[Ctrl]]+[[1]] para abrir **Formato de celdas**.\n3. Pestaña **Número** › categoría **Personalizada**.\n4. Escribe el código en el cuadro **Tipo** y mira la **Muestra**."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Ctrl+1",
+              "accion": "Abrir Formato de celdas"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e1",
+          "modo": "respuesta_corta",
+          "pregunta": "Para empezar: ¿qué atajo abre el cuadro **Formato de celdas**, donde están los formatos personalizados?",
+          "aceptadas": [
+            "Ctrl+1",
+            "Control+1",
+            "Ctrl 1",
+            "Ctrl + 1",
+            "ctrl+1",
+            "Control + 1"
+          ],
+          "explicacion": "[[Ctrl]]+[[1]] abre Formato de celdas desde cualquier celda. Lo usarás a diario: números, fechas, bordes y, en la próxima lección, la protección."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Los códigos básicos: 0 y #\n\n- `0` es una cifra **obligatoria**: si no hay cifra, pone un cero. Con `000`, el 7 se ve **007**.\n- `#` es una cifra **opcional**: solo aparece si hace falta.\n- El **punto** separa los miles y la **coma** los decimales, como escribes en España.\n- El símbolo ` €` se muestra tal cual.\n\nAsí, `#.##0,00 €` es el formato de euros de toda la vida."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "El mismo número con códigos distintos",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "B1": "Se ve así",
+              "A2": {
+                "texto": "000"
+              },
+              "B2": 7,
+              "A3": "#.##0",
+              "B3": 1234.5,
+              "A4": "#.##0,00 €",
+              "B4": 1234.5,
+              "A5": "0,0",
+              "B5": 1234.5
+            },
+            "formatos": {
+              "B2": "000",
+              "B3": "#.##0",
+              "B4": "#.##0,00 €",
+              "B5": "0,0"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 14
+            }
+          },
+          "pie": "B3, B4 y B5 valen exactamente 1234,5: solo cambia su aspecto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e2",
+          "modo": "predice",
+          "enunciado": "Andrés quiere los códigos de artículo siempre con cuatro cifras. TEXTO aplica un código de formato a un número. ¿Qué devuelve esta fórmula? (A2 = 45)",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "A2": 45
+            }
+          },
+          "celda": "B2",
+          "formula": "=TEXTO(A2;\"0000\")",
+          "explicacion": "Cada 0 es una cifra obligatoria: 45 tiene dos, así que se rellenan dos ceros delante y sale 0045. TEXTO entiende los mismos códigos que pondrías en Formato de celdas.",
+          "respuesta": "0045"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e3",
+          "modo": "test",
+          "pregunta": "Quieres que los importes de un informe se vean como **12.500 €**: con punto de miles y sin decimales. ¿Qué código pones?",
+          "opciones": [
+            {
+              "texto": "`#.##0 €`",
+              "correcta": true,
+              "porque": "Eso es: el punto marca los miles, el 0 asegura al menos una cifra y, sin coma, no hay decimales."
+            },
+            {
+              "texto": "`0 €`",
+              "correcta": false,
+              "porque": "Saldría 12500 €: sin el punto no hay separador de miles."
+            },
+            {
+              "texto": "`#.##0,00 €`",
+              "correcta": false,
+              "porque": "Saldría 12.500,00 €: los dos ceros detrás de la coma piden dos decimales."
+            },
+            {
+              "texto": "`#,##0 €`",
+              "correcta": false,
+              "porque": "Es la forma inglesa. En el Excel español la coma marca los decimales, no los miles."
+            }
+          ],
+          "explicacion": "Punto para los miles, coma para los decimales: igual que escribes los números a mano."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Positivo; negativo; cero\n\nUn código puede tener **secciones separadas por punto y coma**: la primera para los positivos, la segunda para los negativos y la tercera para el cero.\n\n`#.##0,00 €;(#.##0,00 €);\"-\"`\n\n- 1.250,50 → **1.250,50 €**\n- −320 → **(320,00 €)**, como en contabilidad\n- 0 → **-**\n\nOjo: en cuanto escribes una sección de negativos, Excel ya no pone el signo menos. Lo pones tú, o los paréntesis."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Saldos de clientes",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Saldo",
+              "A2": "Instalaciones Moncayo, S.L.",
+              "B2": 1250.5,
+              "A3": "Electricidad Hnos. Lasheras",
+              "B3": -320,
+              "A4": "Reformas Delicias, S.L.",
+              "B4": 0,
+              "A5": "Total",
+              "B5": "=SUMA(B2:B4)"
+            },
+            "formatos": {
+              "B2:B5": "#.##0,00 €;(#.##0,00 €);\"-\""
+            },
+            "anchos": {
+              "A": 28,
+              "B": 14
+            }
+          },
+          "resaltar": [
+            "B3"
+          ],
+          "pie": "El total es 930,50 €: los paréntesis solo cambian el aspecto, el −320 sigue restando."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e4",
+          "modo": "predice",
+          "enunciado": "Un compañero escribió la sección de negativos **sin** signo ni paréntesis. ¿Qué muestra esta fórmula con el saldo de B3 (−320)?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Saldo",
+              "A2": "Instalaciones Moncayo, S.L.",
+              "B2": 1250.5,
+              "A3": "Electricidad Hnos. Lasheras",
+              "B3": -320
+            },
+            "anchos": {
+              "A": 28
+            }
+          },
+          "celda": "C3",
+          "formula": "=TEXTO(B3;\"#.##0,00;#.##0,00\")",
+          "explicacion": "Muestra 320,00, sin signo. Al escribir la sección de negativos, el signo pasa a ser cosa tuya. Un saldo deudor que parece a favor es un error caro: pon siempre `-` o paréntesis en la segunda sección.",
+          "respuesta": "320,00"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Palabras dentro del formato\n\nPara que se vea «45 días», **no escribas** «45 días» en la celda: sería texto y ya no se podría sumar ni comparar. Deja el 45 y ponle este código:\n\n`0\" días\"`\n\nLo que va **entre comillas** se muestra tal cual. La celda sigue valiendo 45: puedes sumarla, sacar la media o usarla en un SI."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Retraso de cobro con el formato 0\" días\"",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Retraso",
+              "A2": "F-2026-0412",
+              "B2": 45,
+              "A3": "F-2026-0438",
+              "B3": 12,
+              "A4": "F-2026-0455",
+              "B4": 30,
+              "A5": "Total",
+              "B5": "=SUMA(B2:B4)"
+            },
+            "formatos": {
+              "B2:B5": "0\" días\""
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "pie": "Se lee «45 días» y la suma funciona: 87 días."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e5",
+          "modo": "predice",
+          "enunciado": "En otra hoja, alguien escribió los retrasos a mano, con la palabra incluida. ¿Qué devuelve `=SUMA(B2:B4)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Retraso",
+              "A2": "F-2026-0412",
+              "B2": "45 días",
+              "A3": "F-2026-0438",
+              "B3": "12 días",
+              "A4": "F-2026-0455",
+              "B4": "30 días"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "celda": "B5",
+          "formula": "=SUMA(B2:B4)",
+          "explicacion": "Da 0: «45 días» escrito así es texto, y SUMA no suma textos. Con el formato `0\" días\"` se ve igual y sigue sumando 87. Esa es la diferencia entre formato y contenido.",
+          "respuesta": "0"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Fechas a tu manera\n\nLas fechas también tienen sus códigos: `d` para el día, `m` para el mes y `aaaa` para el año.\n\n- `dd/mm/aaaa` → 16/11/2026\n- `mmmm aaaa` → noviembre 2026\n- `dddd` → lunes\n- `mmm` → nov\n\nUsa siempre **aaaa**. El `yyyy` que verás en tutoriales en inglés es para el Excel en inglés: en el tuyo no sirve como año."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e6",
+          "modo": "formula",
+          "enunciado": "En **B3** escribe una fórmula que muestre el mes del informe como **noviembre 2026**, a partir de la fecha de **B1**. Servirá para el título: cuando cambie la fecha, cambiará solo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha del informe",
+              "B1": {
+                "fecha": "2026-11-16"
+              },
+              "A3": "Mes del informe"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 16
+            }
+          },
+          "objetivo": "B3",
+          "solucion": "=TEXTO(B1;\"mmmm aaaa\")",
+          "alternativas": [
+            "=TEXTO(B1;\"mmmm\")&\" \"&TEXTO(B1;\"aaaa\")"
+          ],
+          "errores_tipicos": [
+            "=TEXTO(B1;\"mm aaaa\")",
+            "=TEXTO(B1;\"mmm aaaa\")",
+            "=B1"
+          ],
+          "variantes": [
+            {
+              "B1": {
+                "fecha": "2027-01-08"
+              }
+            }
+          ],
+          "debe_usar": [
+            "TEXTO"
+          ],
+          "pistas": [
+            "Usa TEXTO: primero la celda con la fecha y, después, el código entre comillas.",
+            "El mes con su nombre completo es `mmmm`; el año, `aaaa`. Entre los dos, un espacio.",
+            "`=TEXTO(B1;\"mmmm aaaa\")`"
+          ],
+          "explicacion": "Ya tienes el mes del informe escrito como lo diría una persona. Cambia la fecha de B1 y el título se pone al día solo: una tarea menos cada mes."
+        },
+        {
+          "tipo": "texto",
+          "md": "### ¿Formato o TEXTO?\n\n- **Formato de celdas** ([[Ctrl]]+[[1]]): para las columnas de números. Cambia el aspecto y **el número sigue siendo número**.\n- **TEXTO**: solo cuando el número va **dentro de una frase** o de un título, unido con `&`. El resultado es **texto**: se ve perfecto, pero ya no se puede sumar.\n\nRegla de oficina: las columnas, con formato; los titulares, con TEXTO."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l2-e7",
+          "modo": "formula",
+          "enunciado": "**El titular de Marta.** En **B4** escribe la frase que encabeza el informe, con la fecha de **B1** y el total pendiente de **B2**. Tiene que salir exactamente así, con sus espacios y sus dos puntos:\n\n`Pendiente de cobro a 16/11/2026: 48.215,40 €`",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha del informe",
+              "B1": {
+                "fecha": "2026-11-16"
+              },
+              "A2": "Pendiente de cobro",
+              "B2": 48215.4,
+              "A4": "Titular"
+            },
+            "formatos": {
+              "B1": "fecha",
+              "B2": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 16
+            }
+          },
+          "objetivo": "B4",
+          "solucion": "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00 €\")",
+          "alternativas": [
+            "=CONCAT(\"Pendiente de cobro a \";TEXTO(B1;\"dd/mm/aaaa\");\": \";TEXTO(B2;\"#.##0,00 €\"))",
+            "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00\")&\" €\""
+          ],
+          "errores_tipicos": [
+            "=\"Pendiente de cobro a \"&B1&\": \"&B2",
+            "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&B2",
+            "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"0,00\")&\" €\""
+          ],
+          "variantes": [
+            {
+              "B1": {
+                "fecha": "2026-12-31"
+              },
+              "B2": 1234.5
+            }
+          ],
+          "debe_usar": [
+            "TEXTO"
+          ],
+          "pistas": [
+            "Une con `&` cuatro piezas: el texto fijo, la fecha, los dos puntos con su espacio y el importe.",
+            "La fecha: `TEXTO(B1;\"dd/mm/aaaa\")`. El importe: `TEXTO(B2;\"#.##0,00 €\")`. Cuida los espacios dentro de las comillas: `\"Pendiente de cobro a \"` y `\": \"`.",
+            "`=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00 €\")`"
+          ],
+          "explicacion": "Titular listo: cambia la fecha o el total y la frase se actualiza sola. Sin TEXTO, la frase mostraría el número de serie de la fecha (46342) y el importe sin puntos ni euros. Con esto, tus informes se presentan solos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m2l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué código de formato muestra el número 7 como **007**?",
+          "aceptadas": [
+            "000",
+            "\"000\""
+          ],
+          "explicacion": "Tres ceros = tres cifras obligatorias. Muy útil para códigos de artículo, de cliente o de delegación."
+        },
+        {
+          "id": "n4m2l2-q2",
+          "modo": "test",
+          "pregunta": "Aplicas a una columna de importes el formato `#.##0,00 €`. ¿Qué les pasa a los valores?",
+          "opciones": [
+            {
+              "texto": "Nada: solo cambia cómo se ven, y se siguen sumando",
+              "correcta": true,
+              "porque": "Eso es: el formato es la ropa del número, no el número."
+            },
+            {
+              "texto": "Se convierten en texto",
+              "correcta": false,
+              "porque": "Eso lo hace TEXTO, no el formato de celdas."
+            },
+            {
+              "texto": "Se redondean de verdad a dos decimales",
+              "correcta": false,
+              "porque": "Solo se muestran con dos decimales; la celda guarda todos. Para redondear el valor, REDONDEAR."
+            }
+          ],
+          "explicacion": "Formato = aspecto. TEXTO = convertir en texto. REDONDEAR = cambiar el valor."
+        },
+        {
+          "id": "n4m2l2-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué muestra esta fórmula con el saldo de B2 (−1520,75)?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Saldo",
+              "A2": "Montajes Arga, S.L.",
+              "B2": -1520.75
+            },
+            "anchos": {
+              "A": 22
+            }
+          },
+          "celda": "C2",
+          "formula": "=TEXTO(B2;\"#.##0,00;(#.##0,00);0\")",
+          "explicacion": "Es negativo, así que usa la segunda sección: entre paréntesis y sin signo menos, con punto de miles: (1.520,75).",
+          "respuesta": "(1.520,75)"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "¿Dónde se crea un formato personalizado?",
+          "dorso": "Ctrl+1 › Número › Personalizada › cuadro Tipo."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Diferencia entre 0 y # en un código de formato",
+          "dorso": "0 = cifra obligatoria (000 muestra 7 como 007). # = cifra opcional, solo si hace falta."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Las tres secciones de un formato",
+          "dorso": "positivo;negativo;cero. Ejemplo: #.##0,00 €;(#.##0,00 €);\"-\""
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no escribir «45 días» en la celda?",
+          "dorso": "Porque es texto y no suma. Escribe 45 y usa el formato 0\" días\"."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "TEXTO: sintaxis y cuándo usarla",
+          "dorso": "=TEXTO(valor; \"código\"). Solo para meter números o fechas en frases: el resultado es texto."
+        }
+      ]
+    },
+    {
+      "id": "n4m2l3",
+      "titulo": "Proteger: una plantilla que otros rellenan sin romperla",
+      "minutos": 14,
+      "objetivo": "Proteger una hoja dejando libres solo las celdas de entrada, proteger la estructura del libro, distinguir protección de seguridad y guardar el trabajo como plantilla.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "Cada mes los jefes de equipo me rellenan la hoja de horas extra y siempre hay alguien que escribe encima de una fórmula. ¿Me la dejas para que solo puedan tocar las horas? Y que no me borren pestañas, por favor, que luego me vuelvo loca.",
+        "logro": "Ya sabes preparar una plantilla protegida que otros rellenan sin romperla, y sabes qué protege y qué no."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Entradas y fórmulas\n\nEn una plantilla compartida hay dos tipos de celdas: las **de entrada**, donde otros escriben (las horas de cada persona), y las **de cálculo**, con fórmulas que nadie debe tocar (el importe, el total).\n\nSi alguien escribe un número encima de una fórmula, la hoja sigue pareciendo correcta… pero ya no calcula. **Proteger la hoja** impide justo eso."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La hoja de horas extra de Lucía",
+          "hoja": {
+            "celdas": {
+              "A1": "Empleado",
+              "B1": "Horas extra",
+              "C1": "Precio hora",
+              "D1": "Importe",
+              "A2": "Ana Gil Lahoz",
+              "B2": 6,
+              "C2": 18.5,
+              "D2": "=B2*C2",
+              "A3": "Raúl Sanz Pérez",
+              "B3": 4,
+              "C3": 18.5,
+              "D3": "=B3*C3",
+              "A4": "Pilar Andrés Royo",
+              "B4": 0,
+              "C4": 21,
+              "D4": "=B4*C4",
+              "A5": "Iker Echeverría Sola",
+              "B5": 8,
+              "C5": 18.5,
+              "D5": "=B5*C5",
+              "A6": "Marina Ortiz Gracia",
+              "B6": 3,
+              "C6": 21,
+              "D6": "=B6*C6",
+              "A7": "Total",
+              "B7": "=SUMA(B2:B6)",
+              "D7": "=SUMA(D2:D6)"
+            },
+            "formatos": {
+              "C2:C6": "eur",
+              "D2:D7": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 12,
+              "C": 12
+            }
+          },
+          "resaltar": [
+            "B2:B6"
+          ],
+          "pie": "Las horas (resaltadas) son lo único que escribe cada jefe de equipo. El precio lo fija RRHH y el resto son fórmulas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e1",
+          "modo": "test",
+          "pregunta": "En esta plantilla, ¿qué celdas tiene que poder escribir cada jefe de equipo?",
+          "opciones": [
+            {
+              "texto": "B2:B6, las horas",
+              "correcta": true,
+              "porque": "Eso es: son las únicas entradas. Todo lo demás debe quedar bloqueado."
+            },
+            {
+              "texto": "D2:D6, los importes",
+              "correcta": false,
+              "porque": "Son fórmulas: si alguien escribe encima, el importe deja de calcularse y nadie se da cuenta."
+            },
+            {
+              "texto": "C2:C6, el precio por hora",
+              "correcta": false,
+              "porque": "Es un dato de RRHH: si cada jefe lo cambia, las horas se pagarían a precios distintos."
+            },
+            {
+              "texto": "Todas, para no complicarse",
+              "correcta": false,
+              "porque": "Entonces proteger no serviría de nada: lo que no es entrada se bloquea."
+            }
+          ],
+          "explicacion": "Antes de proteger, decide qué es entrada. Todo lo demás, bloqueado."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El detalle que casi nadie conoce\n\nTodas las celdas de Excel vienen marcadas de fábrica como **Bloqueada**. No lo notas porque el bloqueo **solo actúa cuando proteges la hoja**.\n\nPor eso el orden importa:\n\n1. **Primero**, quita el bloqueo a las celdas de entrada: [[Ctrl]]+[[1]] › pestaña **Proteger** › desmarca **Bloqueada**.\n2. **Después**, protege la hoja.\n\nSi lo haces al revés, nadie podrá escribir ni siquiera en las horas."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: proteger la hoja de horas",
+          "pasos": [
+            {
+              "md": "Selecciona **B2:B6** (las horas)."
+            },
+            {
+              "md": "Pulsa [[Ctrl]]+[[1]], ve a la pestaña **Proteger**, desmarca **Bloqueada** y pulsa **Aceptar**."
+            },
+            {
+              "md": "Ve a **Revisar** › **Proteger** › **Proteger hoja**.",
+              "ruta": [
+                "Revisar",
+                "Proteger",
+                "Proteger hoja"
+              ]
+            },
+            {
+              "md": "Marca lo que permites (por ejemplo, **Seleccionar celdas desbloqueadas**). Si quieres, escribe una contraseña. Pulsa **Aceptar**."
+            },
+            {
+              "md": "Prueba: escribe en B3 (te deja) y en D3 (Excel te avisa de que la celda está protegida)."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e2",
+          "modo": "cinta",
+          "enunciado": "Ya has desbloqueado las horas. ¿Dónde está el botón para **proteger la hoja**?",
+          "ruta": [
+            "Revisar",
+            "Proteger",
+            "Proteger hoja"
+          ],
+          "explicacion": "Revisar › Proteger › Proteger hoja. Con la hoja protegida, el mismo botón pasa a llamarse **Desproteger hoja**. En Excel para la web está en Revisar › **Administrar protección**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e3",
+          "modo": "test",
+          "pregunta": "Un compañero de Pamplona, con prisa, protegió su hoja **sin desbloquear** antes las horas. ¿Qué pasa cuando un jefe de equipo intenta escribir en B3?",
+          "opciones": [
+            {
+              "texto": "Excel no le deja: la celda está bloqueada y la hoja, protegida",
+              "correcta": true,
+              "porque": "Todas las celdas venían bloqueadas; al proteger, el bloqueo se activa en todas, también en las horas. Hay que desproteger, desbloquear B2:B6 y volver a proteger."
+            },
+            {
+              "texto": "Puede escribir, porque en las horas no hay fórmula",
+              "correcta": false,
+              "porque": "El bloqueo no depende de que haya fórmula: todas las celdas nacen bloqueadas."
+            },
+            {
+              "texto": "Puede escribir, pero no se guarda al cerrar",
+              "correcta": false,
+              "porque": "No llega a escribir: Excel le avisa en el momento de que la celda está protegida."
+            }
+          ],
+          "explicacion": "Es el error más típico al proteger: primero se desbloquean las entradas y después se protege."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Proteger el libro: que no desaparezcan pestañas\n\n**Proteger hoja** cuida las celdas de una hoja. **Proteger libro** (Revisar › Proteger › Proteger libro) cuida la **estructura**: impide agregar, mover, ocultar o eliminar hojas.\n\nImagina que las fórmulas tiran de una hoja «Tarifas». Si alguien la elimina, todas esas fórmulas dan `#¡REF!`. Con la estructura protegida, eso ya no puede pasar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e4",
+          "modo": "test",
+          "pregunta": "Ayer alguien eliminó sin querer la hoja «Tarifas» de una plantilla y todas las fórmulas dieron `#¡REF!`. ¿Qué lo habría evitado?",
+          "opciones": [
+            {
+              "texto": "Proteger libro (la estructura)",
+              "correcta": true,
+              "porque": "Eso es: proteger la estructura impide eliminar, mover u ocultar hojas."
+            },
+            {
+              "texto": "Proteger hoja en «Tarifas»",
+              "correcta": false,
+              "porque": "Protege sus celdas, pero no impide eliminar la hoja entera: eso es cosa de la estructura del libro."
+            },
+            {
+              "texto": "Ocultar la hoja «Tarifas»",
+              "correcta": false,
+              "porque": "Una hoja oculta se puede volver a mostrar y eliminar. Ocultar no es proteger."
+            }
+          ],
+          "explicacion": "Hoja = celdas. Libro = pestañas. En una plantilla compartida, lo normal es proteger las dos cosas."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Proteger no es esconder\n\nMicrosoft lo dice tal cual: «La protección a nivel de hoja de cálculo no está pensada como característica de seguridad». Solo evita que alguien **cambie** celdas sin querer. No impide que **lea** los datos.\n\nSi el archivo tiene datos confidenciales (nóminas, datos personales), lo que impide abrirlo es la **contraseña de apertura**: Archivo › Información › Proteger libro › **Cifrar con contraseña**."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Si olvidas la contraseña, no hay vuelta atrás",
+          "md": "Microsoft no puede recuperar contraseñas olvidadas, y distinguen mayúsculas de minúsculas. Guárdala donde indique la empresa y **nunca** la mandes en el mismo correo que el archivo: envíala por otro canal (una llamada o un mensaje aparte)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e5",
+          "modo": "abierta",
+          "pregunta": "Lucía te escribe: «He puesto contraseña a la hoja de nóminas con Proteger hoja, así ya puedo mandarla a la gestoría tranquila, ¿no?». Contéstale en dos o tres frases.",
+          "modelo": "No del todo, Lucía: Proteger hoja solo evita que se cambien celdas, pero cualquiera que abra el archivo puede leer las nóminas. Para que no se pueda abrir, hay que cifrarlo con contraseña (Archivo › Información › Proteger libro › Cifrar con contraseña). Y la contraseña, mejor por teléfono o en un mensaje aparte, no en el mismo correo.",
+          "criterios": [
+            "Explica que Proteger hoja no impide leer los datos",
+            "Propone Cifrar con contraseña (contraseña de apertura)",
+            "Recomienda enviar la contraseña por otro canal",
+            "Lo dice de forma clara y amable, como a una compañera"
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "### Guárdala como plantilla\n\nCuando la hoja esté lista, guárdala como **plantilla**: Archivo › Guardar como › y en el tipo de archivo elige **Plantilla de Excel (*.xltx)**.\n\nAl abrir una plantilla, Excel crea un **libro nuevo** con todo preparado, protección incluida, y el original queda limpio para el mes siguiente. Se acabó rellenar encima del archivo del mes pasado."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "En Excel para la web",
+          "md": "La protección está en Revisar › **Administrar protección**, con sus «Rangos desbloqueados». Si alguien del equipo trabaja desde el navegador, búscala ahí."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué extensión tiene un archivo de **plantilla** de Excel (sin macros)?",
+          "aceptadas": [
+            ".xltx",
+            "xltx",
+            "XLTX",
+            ".XLTX",
+            "*.xltx"
+          ],
+          "explicacion": ".xltx. Un libro normal es .xlsx; la plantilla cambia la «s» por la «t». Al abrirla, siempre crea un libro nuevo."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Antes de mandar una plantilla protegida, haz lo que hago yo: ábrela como si fueras un jefe de equipo e intenta romperla. Escribe en las horas, escribe en un importe, intenta borrar una pestaña. Si algo se deja romper, mejor que lo descubras tú."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l3-e7",
+          "modo": "ordenar",
+          "enunciado": "**El encargo de Lucía.** Ordena todo lo que haces para entregar la plantilla de horas extra.",
+          "pasos": [
+            "Seleccionar las celdas de las horas (B2:B6)",
+            "Ctrl+1 › pestaña Proteger › desmarcar Bloqueada",
+            "Revisar › Proteger hoja y, después, Revisar › Proteger libro",
+            "Archivo › Guardar como › Plantilla de Excel (.xltx)",
+            "Abrir la plantilla como un jefe de equipo e intentar escribir en un importe",
+            "Enviar la plantilla a los jefes de equipo"
+          ],
+          "explicacion": "Encargo cumplido: los jefes de equipo solo pueden escribir sus horas, nadie puede borrar pestañas y cada mes empiezan desde una plantilla limpia. Lo mismo te servirá para hojas de gastos de viaje, pedidos internos o solicitudes de vacaciones."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m2l3-q1",
+          "modo": "test",
+          "pregunta": "¿Cómo vienen de fábrica todas las celdas de una hoja nueva?",
+          "opciones": [
+            {
+              "texto": "Bloqueadas, aunque no se nota hasta que proteges la hoja",
+              "correcta": true,
+              "porque": "Eso es: por eso hay que desbloquear las entradas antes de proteger."
+            },
+            {
+              "texto": "Desbloqueadas: hay que bloquear las fórmulas una a una",
+              "correcta": false,
+              "porque": "Es al revés: todo viene bloqueado y tú desbloqueas solo las entradas."
+            },
+            {
+              "texto": "Ni una cosa ni otra: el bloqueo solo existe en las plantillas .xltx",
+              "correcta": false,
+              "porque": "El bloqueo existe en cualquier libro, sea plantilla o no."
+            }
+          ],
+          "explicacion": "Bloqueada de fábrica + Proteger hoja = celda que no se puede cambiar."
+        },
+        {
+          "id": "n4m2l3-q2",
+          "modo": "cinta",
+          "enunciado": "¿Dónde proteges la **estructura** del libro, para que nadie elimine ni mueva hojas?",
+          "ruta": [
+            "Revisar",
+            "Proteger",
+            "Proteger libro"
+          ],
+          "explicacion": "Revisar › Proteger › Proteger libro. Al lado está Proteger hoja, que cuida las celdas."
+        },
+        {
+          "id": "n4m2l3-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "En el cuadro Formato de celdas, ¿en qué pestaña está la casilla **Bloqueada**?",
+          "aceptadas": [
+            "Proteger",
+            "proteger",
+            "La pestaña Proteger",
+            "la pestaña Proteger",
+            "pestaña Proteger"
+          ],
+          "explicacion": "En la pestaña **Proteger** ([[Ctrl]]+[[1]] › Proteger). Ahí desmarcas Bloqueada en las celdas de entrada."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Los dos pasos para proteger una plantilla",
+          "dorso": "1) Desbloquear las entradas: Ctrl+1 › Proteger › quitar Bloqueada. 2) Revisar › Proteger hoja."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Proteger hoja frente a Proteger libro",
+          "dorso": "Hoja: las celdas. Libro: la estructura (agregar, mover, ocultar o eliminar hojas)."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿La contraseña de Proteger hoja protege datos confidenciales?",
+          "dorso": "No. Para que no se pueda abrir: Archivo › Información › Proteger libro › Cifrar con contraseña."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un archivo .xltx?",
+          "dorso": "Una plantilla de Excel: al abrirla crea un libro nuevo y el original queda limpio."
+        }
+      ]
+    },
+    {
+      "id": "n4m2l4",
+      "titulo": "Varios libros: vínculos, consolidar y versiones",
+      "minutos": 16,
+      "objetivo": "Reconocer y gestionar fórmulas que apuntan a otros libros, juntar hojas iguales con Consolidar o con una fórmula 3D, recuperar versiones anteriores, vigilar el cálculo manual y comprobar que el total cuadra.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "Para el comité del jueves quiero las ventas de octubre de toda la empresa: Zaragoza, Pamplona y Lleida juntas. Que cuadre con lo que dice cada delegación, y que no me llegue otro «resumen_final_v7_bueno.xlsx».",
+        "logro": "Ya sabes juntar datos de varias hojas o libros, vigilar los vínculos, recuperar versiones y demostrar que el total cuadra."
+      },
+      "funciones": [
+        "SUMA"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Una fórmula que mira a otro libro\n\nSi en tu libro escribes `=` y haces clic en una celda de **otro libro abierto**, Excel crea un **vínculo** (una referencia externa):\n\n`=[Ventas_Pamplona.xlsx]Octubre!$B$5`\n\nSe lee así: el libro va entre **corchetes**, la hoja antes del **!** y la celda al final. Cuando cierras el libro de origen, Excel añade delante la **ruta completa** de la carpeta donde está guardado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e1",
+          "modo": "test",
+          "pregunta": "En `=[Ventas_Pamplona.xlsx]Octubre!$B$5`, ¿qué es **Octubre**?",
+          "opciones": [
+            {
+              "texto": "La hoja del libro de Pamplona",
+              "correcta": true,
+              "porque": "Eso es: va justo antes del !, que es donde siempre se escribe la hoja."
+            },
+            {
+              "texto": "El libro",
+              "correcta": false,
+              "porque": "El libro es lo que va entre corchetes: Ventas_Pamplona.xlsx."
+            },
+            {
+              "texto": "La celda",
+              "correcta": false,
+              "porque": "La celda es lo último, detrás del !: $B$5."
+            }
+          ],
+          "explicacion": "[libro] hoja ! celda. Con eso ya sabes leer de dónde saca el dato cualquier vínculo."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Por qué se rompen\n\nUn vínculo guarda **dónde estaba** el otro archivo. Da problemas cuando:\n\n- alguien **cambia el nombre** del archivo o lo **mueve** de carpeta;\n- envías tu libro por correo y el vínculo apunta a **tu** ordenador, al que nadie más llega;\n- se decide no actualizar: el libro enseña cifras viejas y nadie se entera.\n\nPor eso conviene evitarlos. Tú ya tienes la alternativa: **Power Query**, que lee los archivos y se actualiza con un clic."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El panel Vínculos de libro\n\nPara ver de qué archivos depende tu libro: **Datos** › **Consultas y conexiones** › **Vínculos de libro** (en versiones anteriores, «Editar vínculos»).\n\n- **Actualizar** (o **Actualizar todo**): trae las cifras nuevas.\n- En **Más comandos (…)**, junto a cada archivo: **Cambiar origen**, para apuntar al archivo en su nueva carpeta o con su nuevo nombre, y **Romper vínculos**, que convierte las fórmulas en sus **valores actuales**. Hazlo siempre en una copia del libro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e2",
+          "modo": "cinta",
+          "enunciado": "¿Dónde abres el panel para revisar los vínculos con otros libros?",
+          "ruta": [
+            "Datos",
+            "Consultas y conexiones",
+            "Vínculos de libro"
+          ],
+          "explicacion": "Datos › Consultas y conexiones › **Vínculos de libro**. En los Excel antiguos se llamaba «Editar vínculos». Revísalo antes de enviar cualquier libro."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Antes de mandar un libro fuera, abre Vínculos de libro. Si aparece una ruta tipo `C:\\Users\\…`, ese archivo solo existe en tu ordenador. O rompes el vínculo en una copia, o mandas un PDF con lo justo."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Consolidar: juntar hojas con la misma forma\n\nLas tres delegaciones usan la misma hoja: familias de producto en filas, ventas en columnas. Para sumarlas, ve a una hoja vacía y abre **Datos** › **Herramientas de datos** › **Consolidar**. Eliges la función (**Suma**), añades el rango de cada delegación con **Agregar** y marcas **Fila superior** y **Columna izquierda** para que junte por los rótulos.\n\nFunciona bien con hojas de la misma estructura. Si los datos cambian cada mes, Power Query es mejor."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e3",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para consolidar las ventas de las tres delegaciones con **Consolidar**.",
+          "pasos": [
+            "Ir a una hoja vacía «Total» y seleccionar la celda A1",
+            "Datos › Herramientas de datos › Consolidar",
+            "Elegir Suma, agregar los rangos de Zaragoza, Pamplona y Lleida y marcar Fila superior y Columna izquierda",
+            "Pulsar Aceptar",
+            "Comprobar que el total coincide con la suma de los totales de cada delegación"
+          ],
+          "explicacion": "Primero dónde va el resultado, luego el cuadro, sus opciones y Aceptar. Y siempre, al final, la comprobación: un consolidado que no cuadra no se entrega."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La fórmula 3D: la misma celda en muchas hojas\n\nSi las hojas están en el **mismo libro**, una a continuación de otra, hay un atajo:\n\n`=SUMA(Zaragoza:Lleida!B5)`\n\nSuma la celda **B5** de **todas** las hojas que hay desde la pestaña Zaragoza hasta la pestaña Lleida, ambas incluidas. Con una hoja por mes, `=SUMA(Enero:Diciembre!B5)` da el total del año.\n\nCuidado: si mueves otra hoja dentro de ese tramo de pestañas, también entra en la suma."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e4",
+          "modo": "test",
+          "pregunta": "El libro de ventas tiene, en este orden, las pestañas **Zaragoza**, **Pamplona**, **Lleida** y **Total**. En la hoja Total escribes `=SUMA(Zaragoza:Lleida!C8)`. ¿Qué suma?",
+          "opciones": [
+            {
+              "texto": "La celda C8 de Zaragoza, Pamplona y Lleida",
+              "correcta": true,
+              "porque": "Eso es: los dos puntos significan «desde… hasta», así que entra también la hoja de en medio."
+            },
+            {
+              "texto": "Solo la C8 de Zaragoza y la de Lleida",
+              "correcta": false,
+              "porque": "Los dos puntos no son «y»: es un tramo, y Pamplona está dentro."
+            },
+            {
+              "texto": "La C8 de todas las hojas, Total incluida",
+              "correcta": false,
+              "porque": "Total está fuera del tramo: solo cuentan las pestañas desde Zaragoza hasta Lleida."
+            }
+          ],
+          "explicacion": "Hoja inicial:hoja final!celda. Es la forma más corta de sumar la misma celda en hojas iguales."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Adiós a «final_v7_bueno»\n\nSi el archivo vive en **OneDrive** o **SharePoint**, no hace falta guardar copias con nombres cada vez más largos: Excel guarda las versiones solo. Para volver atrás: **Archivo** › **Información** › **Historial de versiones**, abres la versión que quieras y la restauras.\n\nRestaura cuando nadie más esté editando. Y para marcar una entrega, guarda un PDF o una copia en una carpeta «Entregas»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e5",
+          "modo": "test",
+          "pregunta": "Javier ha pegado datos encima de la hoja de comisiones, que está en SharePoint, y se ha perdido lo que había ayer. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Archivo › Información › Historial de versiones y restaurar la versión de ayer",
+              "correcta": true,
+              "porque": "Eso es: el historial guarda las versiones del propio archivo, sin que nadie haya tenido que hacer copias."
+            },
+            {
+              "texto": "Buscar en el correo la última copia que alguien mandó",
+              "correcta": false,
+              "porque": "Puede estar desfasada o incompleta. El historial tiene la versión exacta de ayer."
+            },
+            {
+              "texto": "Pulsar Ctrl+Z hasta que vuelva",
+              "correcta": false,
+              "porque": "Deshacer sirve para tus propios cambios, no para lo que pegó otra persona en su ordenador."
+            }
+          ],
+          "explicacion": "Con OneDrive o SharePoint, el historial de versiones es tu red de seguridad. Por eso los archivos de equipo se comparten con un enlace y no como copias adjuntas."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Cálculo manual: las cifras que no se mueven\n\nEn **Fórmulas** › **Cálculo** › **Opciones para el cálculo** se puede pasar de **Automático** a **Manual**. Algunos libros muy pesados vienen así para ir más rápido. En manual, cambias un dato y los totales **no se recalculan** hasta que pulsas [[F9]] (todos los libros abiertos) o [[Mayús]]+[[F9]] (solo la hoja activa).\n\nSi heredas un libro y las cifras «no cuadran», mira esto lo primero."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "F9",
+              "accion": "Calcular todos los libros abiertos"
+            },
+            {
+              "teclas": "Mayús+F9",
+              "accion": "Calcular la hoja activa"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "El libro de pedidos que te ha pasado Andrés está en cálculo manual. Cambias una cantidad y el total no se mueve. ¿Qué tecla pulsas para recalcular todo?",
+          "aceptadas": [
+            "F9",
+            "f9",
+            "La tecla F9",
+            "la tecla F9"
+          ],
+          "explicacion": "[[F9]] recalcula todos los libros abiertos ([[Mayús]]+[[F9]], solo la hoja activa). Si el libro no tiene por qué ir en manual, vuelve a ponerlo en Automático: Fórmulas › Cálculo › Opciones para el cálculo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m2l4-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Carmen.** Ya tienes las ventas de octubre consolidadas: la columna E suma las tres delegaciones de cada familia. La fila 7 recoge el total que **cada delegación** dio en su correo. En **E8** escribe la comprobación: si la suma de **E2:E6** es igual a la suma de **B7:D7**, que salga **Cuadra**; si no, **Revisar**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Familia",
+              "B1": "Zaragoza",
+              "C1": "Pamplona",
+              "D1": "Lleida",
+              "E1": "Empresa",
+              "A2": "Cable",
+              "B2": 84250,
+              "C2": 41380,
+              "D2": 29640,
+              "E2": "=SUMA(B2:D2)",
+              "A3": "Mecanismos",
+              "B3": 31480,
+              "C3": 15920,
+              "D3": 12750,
+              "E3": "=SUMA(B3:D3)",
+              "A4": "Iluminación LED",
+              "B4": 52940,
+              "C4": 23610,
+              "D4": 19870,
+              "E4": "=SUMA(B4:D4)",
+              "A5": "Protección",
+              "B5": 27310,
+              "C5": 13240,
+              "D5": 9860,
+              "E5": "=SUMA(B5:D5)",
+              "A6": "Canalización",
+              "B6": 18620,
+              "C6": 9470,
+              "D6": 7130,
+              "E6": "=SUMA(B6:D6)",
+              "A7": "Total según delegación",
+              "B7": 214600,
+              "C7": 103620,
+              "D7": 79250,
+              "A8": "Comprobación"
+            },
+            "formatos": {
+              "B2:E7": "#.##0 €"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 11,
+              "C": 11,
+              "D": 11,
+              "E": 12
+            }
+          },
+          "objetivo": "E8",
+          "solucion": "=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Cuadra\";\"Revisar\")",
+          "alternativas": [
+            "=SI(SUMA(B7:D7)=SUMA(E2:E6);\"Cuadra\";\"Revisar\")",
+            "=SI(SUMA(E2:E6)<>SUMA(B7:D7);\"Revisar\";\"Cuadra\")",
+            "=SI(REDONDEAR(SUMA(E2:E6)-SUMA(B7:D7);2)=0;\"Cuadra\";\"Revisar\")"
+          ],
+          "errores_tipicos": [
+            "=\"Cuadra\"",
+            "=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Revisar\";\"Cuadra\")",
+            "=SI(SUMA(E2:E6)=SUMA(E2:E6);\"Cuadra\";\"Revisar\")"
+          ],
+          "variantes": [
+            {
+              "C4": 23160
+            },
+            {
+              "B7": 214000
+            }
+          ],
+          "pistas": [
+            "Es un SI: la prueba compara dos sumas con `=`.",
+            "La prueba es `SUMA(E2:E6)=SUMA(B7:D7)`. Si es verdad, \"Cuadra\"; si no, \"Revisar\".",
+            "`=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Cuadra\";\"Revisar\")`"
+          ],
+          "explicacion": "Celda de comprobación lista: si alguien toca una cifra o una delegación da mal su total, la hoja avisa con «Revisar» antes de que lo vea Carmen. Con importes con céntimos, compara mejor con `REDONDEAR(…;2)=0`, para que una diferencia invisible de decimales no te dé un falso «Revisar»."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m2l4-q1",
+          "modo": "test",
+          "pregunta": "El archivo de Lleida se ha movido a otra carpeta y tu vínculo ya no se actualiza. En Vínculos de libro, ¿qué eliges?",
+          "opciones": [
+            {
+              "texto": "Cambiar origen",
+              "correcta": true,
+              "porque": "Eso es: le dices a Excel dónde está ahora el archivo y el vínculo vuelve a funcionar."
+            },
+            {
+              "texto": "Romper vínculos",
+              "correcta": false,
+              "porque": "Convertiría las fórmulas en sus valores actuales: ya no se actualizarían nunca más. Eso se hace en una copia, y solo cuando quieres cifras fijas."
+            },
+            {
+              "texto": "Actualizar",
+              "correcta": false,
+              "porque": "Actualizar busca el archivo donde estaba; si ya no está ahí, no lo encuentra."
+            }
+          ],
+          "explicacion": "Archivo movido o renombrado → Cambiar origen. Quiero cifras fijas → Romper vínculos (en una copia)."
+        },
+        {
+          "id": "n4m2l4-q2",
+          "modo": "cinta",
+          "enunciado": "¿Dónde está el botón **Consolidar**?",
+          "ruta": [
+            "Datos",
+            "Herramientas de datos",
+            "Consolidar"
+          ],
+          "explicacion": "Datos › Herramientas de datos › Consolidar, junto a Quitar duplicados y Validación de datos."
+        },
+        {
+          "id": "n4m2l4-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "Escribe la fórmula que suma la celda **B5** de todas las hojas desde **Enero** hasta **Diciembre**.",
+          "aceptadas": [
+            "=SUMA(Enero:Diciembre!B5)",
+            "SUMA(Enero:Diciembre!B5)",
+            "=suma(enero:diciembre!b5)",
+            "=SUMA(enero:diciembre!B5)",
+            "=Suma(Enero:Diciembre!B5)"
+          ],
+          "explicacion": "`=SUMA(Enero:Diciembre!B5)`: hoja inicial, dos puntos, hoja final, exclamación y la celda."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Partes de =[Ventas.xlsx]Octubre!$B$5",
+          "dorso": "[libro] · hoja antes del ! · celda al final."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Vínculos de libro: dónde está y qué ofrece",
+          "dorso": "Datos › Consultas y conexiones. Actualizar, Cambiar origen y Romper vínculos (convierte las fórmulas en valores: hazlo en una copia)."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Fórmula 3D para sumar la misma celda en varias hojas",
+          "dorso": "=SUMA(Enero:Diciembre!B5): suma B5 de todas las hojas entre Enero y Diciembre."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Recalcular un libro en cálculo manual",
+          "dorso": "F9: todos los libros abiertos. Mayús+F9: solo la hoja activa."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Recuperar una versión anterior en OneDrive o SharePoint",
+          "dorso": "Archivo › Información › Historial de versiones. Restaura cuando nadie más esté editando."
+        }
+      ]
+    }
+  ]
+}

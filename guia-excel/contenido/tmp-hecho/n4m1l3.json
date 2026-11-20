@@ -1,0 +1,369 @@
+{
+  "id": "n4m1l3",
+  "titulo": "Unir los archivos de todos los meses: anexar y carpeta",
+  "minutos": 16,
+  "objetivo": "Unir en una sola consulta tablas con las mismas columnas (Anexar) o todos los archivos de una carpeta, y comprobar que no falta ni sobra nada.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Tengo un CSV de ventas por mes, de noviembre del año pasado a octubre, en la carpeta Ventas_ERP. Para la reunión del jueves lo quiero todo en una tabla. Y no me digas que vas a copiar y pegar: el mes que viene quiero dejar el archivo y que se actualice solo.",
+    "logro": "Ya sabes unir todos los archivos de una carpeta en una tabla que crece sola cada mes, y comprobar que no falta nada."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "**Anexar** es poner una tabla **debajo** de otra, como grapar dos listados uno detrás de otro. Sirve cuando las dos tienen **las mismas columnas**: por ejemplo, las ventas de Pamplona y las de Lleida.\n\nEn el editor: **Inicio › Anexar consultas** y eliges la otra tabla (o varias, con **Tres o más tablas**). Si no quieres tocar las originales, usa la flecha del botón y **Anexar consultas como nuevas**: crea una consulta aparte con el resultado."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e1",
+      "modo": "test",
+      "pregunta": "Tienes dos consultas, **Ventas_Pamplona** y **Ventas_Lleida**, con las mismas columnas. Javier quiere una sola lista con todo. ¿Qué usas?",
+      "opciones": [
+        {
+          "texto": "Anexar consultas",
+          "correcta": true,
+          "porque": "Pone las filas de una debajo de las de la otra, y se repite sola al actualizar."
+        },
+        {
+          "texto": "Combinar consultas",
+          "correcta": false,
+          "porque": "Combinar empareja filas de dos tablas por una columna común, como BUSCARX; no las apila. Lo verás en la próxima lección."
+        },
+        {
+          "texto": "Copiar y pegar una debajo de la otra",
+          "correcta": false,
+          "porque": "Sirve una vez. El mes que viene tendrías que repetirlo, y ahí es donde se cuelan filas de menos o de más."
+        }
+      ],
+      "explicacion": "Anexar = una debajo de otra. Es el primer paso para dejar de copiar y pegar listados."
+    },
+    {
+      "tipo": "texto",
+      "md": "Power Query empareja las columnas **por su nombre**, no por su posición. Si en un archivo la columna se llama `Importe` y en el otro `Importe neto`, para él son dos columnas distintas: en el resultado salen **las dos**, cada una con huecos en las filas del otro archivo. Esos huecos se ven como *null*, que es como Power Query llama a una celda vacía.\n\nArreglo: antes de anexar, cambia el nombre en una de las consultas (doble clic en el encabezado) para que coincidan."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Pamplona y Lleida anexadas con nombres distintos",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "B1": "Cliente",
+          "C1": "Importe",
+          "D1": "Importe neto",
+          "A2": {"fecha": "2026-10-05"},
+          "B2": "Montajes Arga, S.L.",
+          "C2": 812.4,
+          "D2": "null",
+          "A3": {"fecha": "2026-10-06"},
+          "B3": "Electro Bardenas, S.L.",
+          "C3": 455,
+          "D3": "null",
+          "A4": {"fecha": "2026-10-05"},
+          "B4": "Instalaciones Segre 2010, S.L.",
+          "C4": "null",
+          "D4": 1290.15,
+          "A5": {"fecha": "2026-10-07"},
+          "B5": "Montajes Eléctricos Cinca, S.L.",
+          "C5": "null",
+          "D5": 367.8
+        },
+        "formatos": {"A2:A5": "fecha", "C2:D5": "eur"},
+        "anchos": {"A": 11, "B": 28, "C": 10, "D": 12}
+      },
+      "pie": "Las filas de Lleida traen su importe en otra columna: Power Query no sabe que es lo mismo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e2",
+      "modo": "test",
+      "pregunta": "Anexas **enero** (columnas Fecha, Cliente, Importe) y **febrero** (Fecha, Cliente, Importe, Comercial). ¿Qué sale?",
+      "opciones": [
+        {
+          "texto": "Cuatro columnas; en las filas de enero, Comercial sale null",
+          "correcta": true,
+          "porque": "La columna que solo existe en una tabla aparece igual, vacía en las filas de la otra."
+        },
+        {
+          "texto": "Un error, porque las tablas no tienen las mismas columnas",
+          "correcta": false,
+          "porque": "Power Query anexa igualmente y rellena con null lo que falta."
+        },
+        {
+          "texto": "Tres columnas: Comercial se pierde",
+          "correcta": false,
+          "porque": "Anexar no quita columnas: se queda con todas las de las dos tablas."
+        }
+      ],
+      "explicacion": "Por eso, después de anexar, conviene mirar si alguna columna sale medio vacía: suele ser un nombre que no coincide."
+    },
+    {
+      "tipo": "texto",
+      "md": "Si hay **un archivo por mes**, anexarlos a mano cada mes sería volver a empezar. Para eso está la **carpeta**:\n\n**Datos › Obtener datos › Del archivo › De la carpeta**, eliges la carpeta y, en la ventana que sale, **Combinar › Combinar y transformar datos**.\n\nPower Query toma un **archivo de ejemplo** (normalmente, el primero de la lista), aprende con él cómo es cada archivo y aplica los mismos pasos a **todos**. Resultado: una sola tabla con las filas de todos los meses."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para unir los CSV mensuales de Javier.",
+      "pasos": [
+        "Guardar todos los CSV de ventas, y solo esos, en una carpeta",
+        "Datos › Obtener datos › Del archivo › De la carpeta",
+        "Elegir la carpeta Ventas_ERP",
+        "Combinar › Combinar y transformar datos",
+        "Revisar el archivo de ejemplo y aceptar",
+        "Limpiar y poner los tipos en el editor",
+        "Inicio › Cerrar y cargar"
+      ],
+      "explicacion": "La carpeta se prepara antes; la consulta se monta una vez. A partir de ahí, cada archivo nuevo entra solo."
+    },
+    {
+      "tipo": "texto",
+      "md": "Lo mejor llega el mes que viene: Javier deja `ventas_2026_11.csv` en la carpeta, pulsa **Actualizar todo** y noviembre aparece en la tabla. Sin tocar la consulta.\n\nPara que funcione, la carpeta tiene que estar **limpia**: Power Query se trae **todo** lo que hay dentro, también lo de las subcarpetas. Una copia olvidada (`ventas_2026_09 - copia.csv`) hace que septiembre cuente dos veces."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "empresa",
+      "titulo": "Una carpeta solo para la consulta",
+      "md": "Pon un nombre fijo a los archivos (`ventas_AAAA_MM.csv`), no guardes nada más en esa carpeta y deja las copias y pruebas en otra. Así cualquiera del equipo puede actualizar el informe sin romperlo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e4",
+      "modo": "cinta",
+      "enunciado": "Javier ya ha dejado el CSV de noviembre en la carpeta. ¿Qué botón pulsas para que entre en la tabla?",
+      "ruta": [
+        "Datos",
+        "Consultas y conexiones",
+        "Actualizar todo"
+      ],
+      "explicacion": "**Datos › Consultas y conexiones › Actualizar todo** (o [[Ctrl]]+[[Alt]]+[[F5]]). La consulta vuelve a leer la carpeta y noviembre entra solo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e5",
+      "modo": "test",
+      "pregunta": "Después de actualizar, **septiembre** sale con el doble de ventas que los demás meses. En la carpeta ves `ventas_2026_09.csv` y `ventas_2026_09 - copia.csv`. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Sacar la copia de la carpeta y volver a actualizar",
+          "correcta": true,
+          "porque": "La consulta lee todo lo que hay en la carpeta: sin la copia, septiembre vuelve a contar una sola vez."
+        },
+        {
+          "texto": "Borrar a mano las filas repetidas en la Tabla cargada",
+          "correcta": false,
+          "porque": "Al próximo Actualizar todo volverían, porque la Tabla se reescribe desde la consulta."
+        },
+        {
+          "texto": "Dividir septiembre entre dos con una fórmula",
+          "correcta": false,
+          "porque": "Taparías el síntoma y esconderías el problema; el mes que la copia ya no esté, septiembre saldría a la mitad."
+        }
+      ],
+      "explicacion": "Cuando un mes sale raro, mira primero la carpeta: casi siempre hay un archivo de más o con otra forma."
+    },
+    {
+      "tipo": "texto",
+      "md": "Para saber de qué archivo viene cada fila, Power Query añade al combinar la carpeta una columna con el **nombre del archivo** (suele llamarse `Source.Name`). No la quites: es tu herramienta de control.\n\nCon ella puedes sumar lo cargado de cada archivo y compararlo con el total que da el ERP. Si un archivo no cuadra, sabes exactamente dónde mirar."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e6",
+      "modo": "formula",
+      "enunciado": "Ya has combinado la carpeta. En **A:B** tienes lo cargado (archivo e importe) y en **E:F**, el total de cada archivo según el ERP. En **G2** calcula la **diferencia**: lo cargado de ese archivo menos su total del ERP. Tu fórmula se copiará a G3:G4, así que fija lo que no debe moverse.",
+      "hoja": {
+        "celdas": {
+          "A1": "Source.Name",
+          "B1": "Importe",
+          "A2": "ventas_2026_08.csv",
+          "B2": 1250.4,
+          "A3": "ventas_2026_08.csv",
+          "B3": 830,
+          "A4": "ventas_2026_08.csv",
+          "B4": 415.6,
+          "A5": "ventas_2026_09.csv",
+          "B5": 960.25,
+          "A6": "ventas_2026_09.csv",
+          "B6": 1120,
+          "A7": "ventas_2026_09.csv",
+          "B7": 705.75,
+          "A8": "ventas_2026_10.csv",
+          "B8": 1430.8,
+          "A9": "ventas_2026_10.csv",
+          "B9": 419.5,
+          "A10": "ventas_2026_10.csv",
+          "B10": 610,
+          "E1": "Archivo",
+          "F1": "Total ERP",
+          "G1": "Diferencia",
+          "E2": "ventas_2026_10.csv",
+          "F2": 2710.3,
+          "E3": "ventas_2026_09.csv",
+          "F3": 2786,
+          "E4": "ventas_2026_08.csv",
+          "F4": 2496
+        },
+        "formatos": {"B2:B10": "eur", "F2:G4": "eur"},
+        "anchos": {"A": 18, "B": 10, "E": 18, "F": 10, "G": 10}
+      },
+      "objetivo": "G2",
+      "copiar_a": ["G3:G4"],
+      "solucion": "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)-F2",
+      "alternativas": [
+        "=SUMAR.SI(A$2:A$10;E2;B$2:B$10)-F2",
+        "=SUMAR.SI.CONJUNTO($B$2:$B$10;$A$2:$A$10;E2)-F2"
+      ],
+      "errores_tipicos": [
+        "=SUMAR.SI(A2:A10;E2;B2:B10)-F2",
+        "=SUMA($B$2:$B$10)-F2",
+        "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)"
+      ],
+      "variantes": [
+        {"B9": 500},
+        {"F3": 2700}
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Para sumar solo las filas de un archivo: SUMAR.SI(dónde buscar; qué buscar; qué sumar).",
+        "SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10) y réstale F2. Los rangos llevan $ para que no se muevan al copiar.",
+        "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)-F2"
+      ],
+      "explicacion": "Agosto y septiembre dan 0, pero **octubre da −250 €**: falta en lo cargado una línea de 250 €. Sin esta columna nadie lo habría visto. Así se trabaja en una oficina: cada vez que actualizas, miras los controles antes de enviar nada."
+    },
+    {
+      "tipo": "texto",
+      "md": "Ojo con los archivos que **no son iguales**. El archivo de ejemplo decide las columnas: lo que no esté en él, no entra.\n\nSi un mes trae una columna de más o con otro nombre (`Importe neto` en vez de `Importe`), el resultado no sale como esperas. Lo normal es ver una columna **vacía (null) en todas las filas de ese mes**.\n\nPor eso, después de combinar, mira las columnas importantes: si un mes entero sale vacío, abre su archivo y compara los encabezados."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Javier Ortega",
+      "puesto": "Director comercial",
+      "md": "Ya está la carpeta con los 12 archivos, de noviembre de 2025 a octubre de 2026. Antes de la reunión dime solo una cosa: ¿están todas las filas?"
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l3-e7",
+      "modo": "formula",
+      "enunciado": "En **E2** escribe una fórmula que muestre **OK** si la suma de filas de los 12 archivos según el ERP (**B2:B13**) es igual a las filas que tiene la tabla cargada (**D2**), y **REVISAR** si no.",
+      "hoja": {
+        "celdas": {
+          "A1": "Archivo",
+          "B1": "Filas en el ERP",
+          "D1": "Filas cargadas",
+          "E1": "Control",
+          "A2": "ventas_2025_11.csv",
+          "B2": 412,
+          "A3": "ventas_2025_12.csv",
+          "B3": 398,
+          "A4": "ventas_2026_01.csv",
+          "B4": 365,
+          "A5": "ventas_2026_02.csv",
+          "B5": 371,
+          "A6": "ventas_2026_03.csv",
+          "B6": 402,
+          "A7": "ventas_2026_04.csv",
+          "B7": 437,
+          "A8": "ventas_2026_05.csv",
+          "B8": 420,
+          "A9": "ventas_2026_06.csv",
+          "B9": 455,
+          "A10": "ventas_2026_07.csv",
+          "B10": 431,
+          "A11": "ventas_2026_08.csv",
+          "B11": 389,
+          "A12": "ventas_2026_09.csv",
+          "B12": 418,
+          "A13": "ventas_2026_10.csv",
+          "B13": 441,
+          "D2": 4939
+        },
+        "formatos": {"B2:B13": "num", "D2": "num"},
+        "anchos": {"A": 18, "B": 14, "D": 14, "E": 10}
+      },
+      "objetivo": "E2",
+      "solucion": "=SI(SUMA(B2:B13)=D2;\"OK\";\"REVISAR\")",
+      "alternativas": [
+        "=SI(D2=SUMA(B2:B13);\"OK\";\"REVISAR\")",
+        "=SI(SUMA(B2:B13)<>D2;\"REVISAR\";\"OK\")",
+        "=SI(D2-SUMA(B2:B13)=0;\"OK\";\"REVISAR\")"
+      ],
+      "errores_tipicos": [
+        "=SI(SUMA(B2:B12)=D2;\"OK\";\"REVISAR\")",
+        "=SUMA(B2:B13)-D2",
+        "=SI(SUMA(B2:B13)=D2;\"REVISAR\";\"OK\")"
+      ],
+      "variantes": [
+        {"D2": 4520},
+        {"B8": 300}
+      ],
+      "pistas": [
+        "Necesitas una decisión: SI(condición; si se cumple; si no).",
+        "La condición compara la suma de B2:B13 con D2: SUMA(B2:B13)=D2. Los textos van entre comillas.",
+        "=SI(SUMA(B2:B13)=D2;\"OK\";\"REVISAR\")"
+      ],
+      "explicacion": "Sale **OK**: las 4.939 filas de los doce archivos están en tu tabla, y ya puedes contestar a Javier con seguridad. Deja este control en todos tus informes que se actualizan: cada mes, un vistazo y sabes si puedes enviarlo."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n4m1l3-q1",
+      "modo": "test",
+      "pregunta": "Tras combinar la carpeta, la columna **Importe** sale *null* en todas las filas de **marzo** y en ningún otro mes. ¿Qué es lo más probable?",
+      "opciones": [
+        {
+          "texto": "En el CSV de marzo esa columna se llama de otra forma",
+          "correcta": true,
+          "porque": "Power Query busca la columna por su nombre; si en marzo se llama distinto, sus filas se quedan vacías."
+        },
+        {
+          "texto": "Marzo no tuvo ventas",
+          "correcta": false,
+          "porque": "Entonces no habría filas de marzo. Aquí hay filas, pero sin importe."
+        },
+        {
+          "texto": "Power Query ha borrado los importes al actualizar",
+          "correcta": false,
+          "porque": "Power Query no cambia los archivos: lee lo que hay. El problema está en el archivo de marzo."
+        }
+      ],
+      "explicacion": "Abre el CSV de marzo con el Bloc de notas y mira la primera línea: ahí están los nombres de las columnas."
+    },
+    {
+      "id": "n4m1l3-q2",
+      "modo": "respuesta_corta",
+      "pregunta": "Al combinar una carpeta, ¿cómo se llama el archivo que Power Query usa como modelo para saber cómo son todos?",
+      "aceptadas": ["Archivo de ejemplo", "archivo de ejemplo", "El archivo de ejemplo", "el archivo de ejemplo", "ejemplo"],
+      "explicacion": "El **archivo de ejemplo**: normalmente el primero de la lista, aunque puedes elegir otro en la ventana Combinar archivos."
+    },
+    {
+      "id": "n4m1l3-q3",
+      "modo": "test",
+      "pregunta": "Llega el CSV de diciembre. ¿Qué haces con tu consulta de carpeta?",
+      "opciones": [
+        {
+          "texto": "Guardarlo en la carpeta con el mismo patrón de nombre y pulsar Actualizar todo",
+          "correcta": true,
+          "porque": "La consulta lee la carpeta entera cada vez: diciembre entra solo."
+        },
+        {
+          "texto": "Abrirlo, copiar sus filas y pegarlas debajo de la Tabla",
+          "correcta": false,
+          "porque": "Al actualizar, la Tabla se reescribe y lo pegado se pierde o se duplica."
+        },
+        {
+          "texto": "Crear otra consulta De la carpeta solo para diciembre",
+          "correcta": false,
+          "porque": "No hace falta: la consulta que ya tienes recoge todos los archivos de la carpeta."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {"tipo": "concepto", "frente": "¿Qué hace Anexar consultas?", "dorso": "Pone una tabla debajo de otra. Empareja las columnas por su nombre; lo que no coincide sale con null."},
+    {"tipo": "concepto", "frente": "Unir todos los archivos de una carpeta con Power Query", "dorso": "Datos › Obtener datos › Del archivo › De la carpeta › Combinar › Combinar y transformar datos."},
+    {"tipo": "concepto", "frente": "Un mes sale el doble tras actualizar la consulta de carpeta. ¿Qué miras?", "dorso": "La carpeta: casi seguro hay una copia del archivo (también cuentan las subcarpetas)."},
+    {"tipo": "concepto", "frente": "¿Qué decide el archivo de ejemplo al combinar una carpeta?", "dorso": "Qué columnas hay y qué pasos se aplican a todos los archivos."}
+  ]
+}

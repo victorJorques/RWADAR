@@ -1,0 +1,291 @@
+{
+  "id": "x0m1",
+  "nivel": "x0",
+  "titulo": "Ejemplo de módulo (formato de referencia)",
+  "intro": "Por qué importa este módulo en el trabajo, en dos frases.",
+  "repaso_inicial": [
+    {
+      "id": "x0m1-r1",
+      "modo": "test",
+      "pregunta": "¿Con qué signo empieza siempre una fórmula?",
+      "opciones": [
+        {
+          "texto": "=",
+          "correcta": true,
+          "porque": "Correcto: el signo igual le dice a Excel que lo que sigue es un cálculo."
+        },
+        {
+          "texto": "#",
+          "correcta": false,
+          "porque": "El # aparece en los errores (#N/D) y en los rangos derramados, no al empezar una fórmula."
+        },
+        {
+          "texto": "$",
+          "correcta": false,
+          "porque": "El $ fija filas o columnas dentro de una referencia, como en $B$1."
+        }
+      ]
+    }
+  ],
+  "lecciones": [
+    {
+      "id": "x0m1l1",
+      "titulo": "Multiplicar precio por unidades y sumar el IVA",
+      "minutos": 12,
+      "objetivo": "Calcular el total con IVA de una lista de productos con una sola fórmula que se puede copiar hacia abajo.",
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "En una empresa casi todo empieza así: una columna de **precios**, otra de **unidades** y la necesidad de un total. La clave es escribir la fórmula **una vez** y copiarla.\n\n- `=B2*C2` multiplica el precio por las unidades.\n- Al copiarla hacia abajo, Excel ajusta las referencias: en la fila 3 será `=B3*C3`."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un consejo de veterana: el IVA **nunca** se escribe dentro de la fórmula. Cuando cambió del 18 al 21 %, quien lo tenía en una celda tardó diez segundos en actualizar todo."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Fijar una celda",
+          "md": "Con el cursor sobre la referencia, pulsa **F4**: `B6` pasa a `$B$6`."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Nunca escribas el 21 % dentro de la fórmula",
+          "md": "Si el tipo de IVA está en una celda, cuando cambie solo tendrás que tocar esa celda."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así se ve",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "D1": "Importe",
+              "A2": "Café",
+              "B2": 1.5,
+              "C2": 10,
+              "D2": "=B2*C2",
+              "A3": "Té",
+              "B3": 2,
+              "C3": 5,
+              "D3": "=B3*C3"
+            },
+            "formatos": {
+              "B2:B3": "eur",
+              "D2:D3": "eur"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "resaltar": [
+            "D2",
+            "D3"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Fíjate en cómo cambia el número de fila de una fórmula a otra."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto",
+          "pasos": [
+            {
+              "md": "Selecciona la celda **D2** y escribe `=`."
+            },
+            {
+              "md": "Haz clic en **B2**, escribe `*` y haz clic en **C2**. Pulsa **Intro**."
+            },
+            {
+              "md": "Vuelve a D2 y arrastra el cuadradito de la esquina (el **controlador de relleno**) hasta D3."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e1",
+          "modo": "formula",
+          "enunciado": "En **E2** calcula el importe con IVA de la fila 2: precio × unidades × (1 + IVA). El IVA está en **B6**. Tu fórmula se copiará a E3:E4, así que fija lo que no debe moverse.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Precio",
+              "C1": "Uds",
+              "E1": "Con IVA",
+              "A2": "Café",
+              "B2": 1.5,
+              "C2": 10,
+              "A3": "Té",
+              "B3": 2,
+              "C3": 5,
+              "A4": "Agua",
+              "B4": 0.8,
+              "C4": 20,
+              "A6": "IVA",
+              "B6": 0.21
+            },
+            "formatos": {
+              "B2:B4": "eur",
+              "B6": "pct",
+              "E2:E4": "eur"
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E4"
+          ],
+          "solucion": "=B2*C2*(1+$B$6)",
+          "alternativas": [
+            "=B2*C2+B2*C2*$B$6",
+            "=(B2*C2)*(1+B$6)"
+          ],
+          "errores_tipicos": [
+            "=B2*C2*(1+B6)",
+            "=B2*C2*1,21"
+          ],
+          "variantes": [
+            {
+              "B2": 3,
+              "B6": 0.1
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero el importe sin IVA: precio por unidades.",
+            "Multiplica ese importe por (1 + la celda del IVA).",
+            "Al copiar hacia abajo, B6 se movería a B7, B8… Fíjala con $: $B$6."
+          ],
+          "explicacion": "`$B$6` se queda fija al copiar; `B2` y `C2` cambian de fila. Este patrón (dato que se repite en una sola celda + referencia absoluta) lo usarás a diario."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e2",
+          "modo": "predice",
+          "enunciado": "Antes de que Excel lo calcule: ¿qué resultado dará esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": 10,
+              "A2": 20,
+              "A3": "texto"
+            }
+          },
+          "celda": "B1",
+          "formula": "=SUMA(A1:A3)",
+          "explicacion": "SUMA ignora las celdas con texto: 10 + 20 = 30.",
+          "respuesta": "30"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e3",
+          "modo": "cinta",
+          "enunciado": "¿Dónde está el botón para aplicar **Formato condicional**?",
+          "ruta": [
+            "Inicio",
+            "Estilos",
+            "Formato condicional"
+          ],
+          "explicacion": "Inicio › Estilos › Formato condicional."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e4",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para crear una lista desplegable.",
+          "pasos": [
+            "Selecciona las celdas donde irá la lista",
+            "Datos › Validación de datos",
+            "En Permitir, elige Lista",
+            "En Origen, escribe o selecciona los valores",
+            "Pulsa Aceptar"
+          ],
+          "explicacion": "Primero se selecciona dónde aplicar la regla y después se define."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e5",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo guarda el libro en el Excel en español?",
+          "aceptadas": [
+            "Ctrl+G",
+            "Control+G",
+            "Ctrl G"
+          ],
+          "explicacion": "En español es Ctrl+G (de «Guardar»). Ctrl+S, el de los tutoriales en inglés, aquí subraya."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "x0m1l1-e6",
+          "modo": "abierta",
+          "pregunta": "Tu jefa te pide «un resumen de ventas». Escribe tres preguntas que le harías antes de empezar.",
+          "modelo": "1) ¿De qué periodo? 2) ¿Agrupado por qué: comercial, producto, zona? 3) ¿Para cuándo y quién lo va a leer?",
+          "criterios": [
+            "Pregunta por el periodo",
+            "Pregunta por el nivel de detalle o agrupación",
+            "Pregunta por el plazo, el destinatario o el formato"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "x0m1l1-q1",
+          "modo": "test",
+          "pregunta": "Copias `=A1*$B$1` una fila hacia abajo. ¿Qué queda?",
+          "opciones": [
+            {
+              "texto": "=A2*$B$1",
+              "correcta": true,
+              "porque": "A1 es relativa y pasa a A2; $B$1 está fijada."
+            },
+            {
+              "texto": "=A2*$B$2",
+              "correcta": false,
+              "porque": "Los dos $ impiden que B1 cambie de fila."
+            },
+            {
+              "texto": "=A1*$B$1",
+              "correcta": false,
+              "porque": "A1 no tiene $, así que sí cambia al copiar."
+            }
+          ]
+        },
+        {
+          "id": "x0m1l1-q2",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": 4,
+              "B1": 0.25
+            }
+          },
+          "celda": "C1",
+          "formula": "=A1*(1+B1)",
+          "explicacion": "4 × 1,25 = 5.",
+          "respuesta": "5"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Fijar una referencia ($) mientras escribes la fórmula",
+          "dorso": "F4 (pulsa varias veces para alternar $A$1, A$1, $A1, A1)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una referencia absoluta?",
+          "dorso": "Una referencia con $ (por ejemplo $B$6) que no cambia al copiar la fórmula."
+        }
+      ],
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Necesito el importe con IVA de estos tres productos para el presupuesto de Instalaciones Ebro. El tipo de IVA está arriba, por si cambia. ¿Me lo tienes en diez minutos?",
+        "logro": "Ya sabes calcular un importe con IVA con una fórmula que se copia a toda la lista."
+      }
+    }
+  ],
+  "practica_excel": null
+}

@@ -1,0 +1,5 @@
+{
+  "titulo": "N4 · Exportaciones mensuales del ERP (carpeta para Power Query)",
+  "descripcion": "Carpeta comprimida con seis CSV de ventas (mayo-octubre 2026) y el maestro de productos de Electro Cierzo, para combinarlos con Power Query.",
+  "nivel": "n4"
+}

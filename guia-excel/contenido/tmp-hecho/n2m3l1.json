@@ -1,0 +1,436 @@
+{
+ "id": "n2m3l1",
+ "titulo": "Unir textos: &, CONCAT y UNIRCADENAS",
+ "minutos": 15,
+ "objetivo": "Unir textos y datos de varias celdas en una frase lista para usar, con los importes y las fechas bien escritos gracias a TEXTO.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Mañana mando los recordatorios de cobro. Necesito al lado de cada factura la frase lista para pegar en el correo, tipo «Instalaciones Ebro: factura F-1024 por 1.250,00 €». Con el importe bien escrito, por favor, no un 1250 a secas.",
+  "logro": "Ya sabes montar frases automáticas con los datos de la hoja, con importes y fechas bien escritos, para correos, etiquetas o informes."
+ },
+ "funciones": [
+  "CONCAT",
+  "UNIRCADENAS",
+  "TEXTO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Muchas veces la información está repartida: el nombre en una columna y los apellidos en otra. Para **unir** textos se usa el signo `&` (se lee «y»; en el teclado está en [[Mayús]]+[[6]]).\n\n`=A2&B2` pega lo que hay en A2 y en B2… pero **sin nada en medio**: «PabloLasheras Gil».\n\nEl espacio también hay que añadirlo, como un trozo más entre comillas: `=A2&\" \"&B2` → «Pablo Lasheras Gil»."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Unir con un espacio en medio",
+   "hoja": {
+    "celdas": {
+     "A1": "Nombre",
+     "B1": "Apellidos",
+     "C1": "Unido",
+     "A2": "Lucía",
+     "B2": "Fernández Royo",
+     "C2": "=A2&\" \"&B2"
+    },
+    "anchos": {
+     "B": 16,
+     "C": 24
+    }
+   },
+   "resaltar": [
+    "C2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Cada trozo se une con &. El espacio es un texto más: \" \"."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e1",
+   "modo": "formula",
+   "enunciado": "Javier quiere el nombre completo de cada comercial para el cartel de la reunión. En **C2** une el nombre (A2) y los apellidos (B2) con un espacio en medio, para que salga **Pablo Lasheras Gil**. Tu fórmula se copiará a C3:C5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Nombre",
+     "B1": "Apellidos",
+     "C1": "Nombre completo",
+     "A2": "Pablo",
+     "B2": "Lasheras Gil",
+     "A3": "Irene",
+     "B3": "Sanz Ochoa",
+     "A4": "Sergio",
+     "B4": "Bueno Pardo",
+     "A5": "Ainhoa",
+     "B5": "Elizalde Mur"
+    },
+    "anchos": {
+     "B": 14,
+     "C": 24
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=A2&\" \"&B2",
+   "alternativas": [
+    "=CONCAT(A2;\" \";B2)",
+    "=CONCATENAR(A2;\" \";B2)"
+   ],
+   "errores_tipicos": [
+    "=A2&B2",
+    "=A2&\"\"&B2",
+    "=B2&\" \"&A2"
+   ],
+   "variantes": [
+    {
+     "A3": "Marta"
+    }
+   ],
+   "pistas": [
+    "Empieza con = y haz clic en A2.",
+    "Tres trozos: A2, un espacio entre comillas y B2, unidos con &.",
+    "`=A2&\" \"&B2`"
+   ],
+   "explicacion": "Ya tienes los cuatro nombres completos con una sola fórmula. Este truco lo usarás para etiquetas, listados de personal y cartas: nadie vuelve a escribir un nombre a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e2",
+   "modo": "formula",
+   "enunciado": "Javier ha dejado una fórmula en **C2** para el código de cliente de la campaña 2026, pero sale **CL-04122026**. Tiene que salir **CL-0412-2026** (con un guion antes del año). Arréglala; se copiará a C3:C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Campaña",
+     "C1": "Código de campaña",
+     "A2": "CL-0412",
+     "B2": 2026,
+     "A3": "CL-0087",
+     "B3": 2026,
+     "A4": "CL-1135",
+     "B4": 2027
+    },
+    "anchos": {
+     "C": 20
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "inicial": "=A2&B2",
+   "solucion": "=A2&\"-\"&B2",
+   "alternativas": [
+    "=CONCAT(A2;\"-\";B2)"
+   ],
+   "errores_tipicos": [
+    "=A2&B2",
+    "=A2&\" \"&B2",
+    "=A2&\"-2026\""
+   ],
+   "variantes": [
+    {
+     "B2": 2028
+    }
+   ],
+   "pistas": [
+    "Falta un trozo entre el código y el año.",
+    "Ese trozo es un guion, y como es texto va entre comillas: \"-\".",
+    "`=A2&\"-\"&B2`"
+   ],
+   "explicacion": "El guion entra como un texto más entre comillas, igual que el espacio. Y fíjate en que el año 2026 era un número: & lo convierte en texto sin problema."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cuando unes muchos trozos, los `&` se acumulan. Dos funciones te ahorran trabajo:\n\n- `CONCAT(texto1; texto2; …)` une todo lo que le des, en orden. `=CONCAT(A2;\" \";B2)` es lo mismo que `=A2&\" \"&B2`.\n- `UNIRCADENAS(separador; ignorar_vacías; textos)` pone el **separador** entre cada trozo. Con `VERDADERO` en el segundo argumento se salta las celdas vacías.\n\n`=UNIRCADENAS(\", \";VERDADERO;A2:A4)` → «Zaragoza, Pamplona, Lleida»."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Si en tu empresa tienen Excel 2016",
+   "md": "CONCAT y UNIRCADENAS existen desde Excel 2019. En Excel 2016 usa `&` o la función antigua `CONCATENAR`, que hace lo mismo que CONCAT pero no admite rangos (hay que darle las celdas una a una)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e3",
+   "modo": "test",
+   "pregunta": "Andrés quiere en una sola celda los códigos de A2:A4 separados por coma y espacio: «CAB-0425, MAG-1016, LED-2203». ¿Qué fórmula lo consigue?",
+   "opciones": [
+    {
+     "texto": "=UNIRCADENAS(\", \";VERDADERO;A2:A4)",
+     "correcta": true,
+     "porque": "Correcto: pone «, » entre cada código y se saltaría cualquier celda vacía."
+    },
+    {
+     "texto": "=CONCAT(A2:A4)",
+     "correcta": false,
+     "porque": "CONCAT une el rango, pero sin nada en medio: «CAB-0425MAG-1016LED-2203»."
+    },
+    {
+     "texto": "=A2&A3&A4",
+     "correcta": false,
+     "porque": "Mismo problema: & no añade separadores si no los escribes tú."
+    },
+    {
+     "texto": "=SUMA(A2:A4)",
+     "correcta": false,
+     "porque": "SUMA es para números; con textos da 0."
+    }
+   ],
+   "explicacion": "Para listas con separador, UNIRCADENAS es la herramienta: separador, VERDADERO y el rango."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e4",
+   "modo": "formula",
+   "enunciado": "Andrés tiene que pedir al proveedor los artículos que se han agotado (A2:A6; la celda A4 está vacía). En **C2** escribe una fórmula que los junte separados por **coma y espacio**, sin dejar huecos: debe salir **Cable 2,5 mm² (100 m), Canaleta 40x25, Magnetotérmico 2P 16 A, Tubo corrugado 20 mm**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Agotados",
+     "A2": "Cable 2,5 mm² (100 m)",
+     "A3": "Canaleta 40x25",
+     "A5": "Magnetotérmico 2P 16 A",
+     "A6": "Tubo corrugado 20 mm",
+     "C1": "Texto para el correo al proveedor"
+    },
+    "anchos": {
+     "A": 24,
+     "C": 40
+    }
+   },
+   "objetivo": "C2",
+   "solucion": "=UNIRCADENAS(\", \";VERDADERO;A2:A6)",
+   "errores_tipicos": [
+    "=UNIRCADENAS(\", \";FALSO;A2:A6)",
+    "=CONCAT(A2:A6)",
+    "=UNIRCADENAS(\",\";VERDADERO;A2:A6)"
+   ],
+   "variantes": [
+    {
+     "A4": "Bridas 200 mm"
+    }
+   ],
+   "debe_usar": [
+    "UNIRCADENAS"
+   ],
+   "pistas": [
+    "Necesitas la función que pone un separador entre cada trozo.",
+    "`UNIRCADENAS(separador; ignorar_vacías; rango)`. El separador es \", \" (coma y espacio).",
+    "`=UNIRCADENAS(\", \";VERDADERO;A2:A6)`"
+   ],
+   "explicacion": "Lista lista para pegar en el correo. Con `VERDADERO` la celda vacía no deja un «, ,» feo, y si alguien rellena A4 mañana, la lista se actualiza sola."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora, una sorpresa. Al unir, Excel **olvida el formato** de los números y las fechas. Unido a un texto:\n\n- 1.250,00 € pasa a «1250».\n- La fecha 30/11/2026 pasa a «46356».\n\n¿Por qué? Por dentro, una fecha es un número (los días que han pasado desde 1900) y el formato era solo el «disfraz». Al unir, el disfraz se cae. Compruébalo en la siguiente pantalla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e5",
+   "modo": "predice",
+   "enunciado": "En B1 hay una fecha (se ve 30/11/2026). ¿Qué texto saldrá en **C1** con esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "F-1024",
+     "B1": {
+      "fecha": "2026-11-30"
+     }
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "B": 12
+    }
+   },
+   "celda": "C1",
+   "formula": "=\"Vence el \"&B1",
+   "explicacion": "Sale el número de serie de la fecha, no la fecha. Con la función TEXTO lo arreglas: le pones el formato que quieres ver."
+  },
+  {
+   "tipo": "texto",
+   "md": "La función **TEXTO** convierte un número o una fecha en texto **con el formato que tú digas**:\n\n`TEXTO(valor; \"formato\")`\n\n| Quieres ver | Fórmula |\n|---|---|\n| 1.250,00 € | `TEXTO(C2;\"#.##0,00 €\")` |\n| 30/11/2026 | `TEXTO(B2;\"dd/mm/aaaa\")` |\n| 21% | `TEXTO(D2;\"0%\")` |\n\nEl formato va entre comillas. En Excel en español, los años son «aaaa», el punto separa miles y la coma, decimales."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e6",
+   "modo": "formula",
+   "enunciado": "La fórmula de **C2** da «Vence el 46356». Arréglala con TEXTO para que salga **Vence el 30/11/2026**. Se copiará a C3:C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Vencimiento",
+     "C1": "Aviso",
+     "A2": "F-1024",
+     "B2": {
+      "fecha": "2026-11-30"
+     },
+     "A3": "F-1031",
+     "B3": {
+      "fecha": "2026-12-05"
+     },
+     "A4": "F-1037",
+     "B4": {
+      "fecha": "2026-12-15"
+     }
+    },
+    "formatos": {
+     "B2:B4": "fecha"
+    },
+    "anchos": {
+     "B": 12,
+     "C": 22
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "inicial": "=\"Vence el \"&B2",
+   "solucion": "=\"Vence el \"&TEXTO(B2;\"dd/mm/aaaa\")",
+   "alternativas": [
+    "=CONCAT(\"Vence el \";TEXTO(B2;\"dd/mm/aaaa\"))"
+   ],
+   "errores_tipicos": [
+    "=\"Vence el \"&B2",
+    "=\"Vence el \"&TEXTO(B2;\"mm/dd/aaaa\")",
+    "=\"Vence el\"&TEXTO(B2;\"dd/mm/aaaa\")"
+   ],
+   "variantes": [
+    {
+     "B2": {
+      "fecha": "2027-01-08"
+     }
+    }
+   ],
+   "debe_usar": [
+    "TEXTO"
+   ],
+   "pistas": [
+    "La fecha necesita un «disfraz» antes de unirla: la función TEXTO.",
+    "Cambia `B2` por `TEXTO(B2;\"dd/mm/aaaa\")`. El formato va entre comillas.",
+    "`=\"Vence el \"&TEXTO(B2;\"dd/mm/aaaa\")`"
+   ],
+   "explicacion": "Ahora la fecha se lee como una fecha. Ojo con el orden: «dd/mm» es día/mes, como en España; «mm/dd» es el orden de Estados Unidos y confunde a cualquiera."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te aviso: Marta copia esas frases tal cual en el correo al cliente. Si le llega un «por 2310,75» sin punto ni euro, te la devuelve. Mira bien el importe antes de darlo por bueno."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l1-e7",
+   "modo": "formula",
+   "enunciado": "El encargo de Marta. En **D2** escribe una fórmula que construya: **Instalaciones Ebro: factura F-1024 por 1.250,00 €** (cliente, dos puntos y espacio, «factura », el número, « por » y el importe con formato de euros). Se copiará a D3:D5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Frase para el correo",
+     "A2": "F-1024",
+     "B2": "Instalaciones Ebro",
+     "C2": 1250,
+     "A3": "F-1031",
+     "B3": "Electricidad Moncayo",
+     "C3": 486.4,
+     "A4": "F-1037",
+     "B4": "Montajes Arga",
+     "C4": 2310.75,
+     "A5": "F-1042",
+     "B5": "Reformas Segre",
+     "C5": 98.5
+    },
+    "formatos": {
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "B": 20,
+     "C": 11,
+     "D": 46
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D5"
+   ],
+   "solucion": "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")",
+   "alternativas": [
+    "=CONCAT(B2;\": factura \";A2;\" por \";TEXTO(C2;\"#.##0,00 €\"))",
+    "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00\")&\" €\""
+   ],
+   "errores_tipicos": [
+    "=B2&\": factura \"&A2&\" por \"&C2",
+    "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"0,00 €\")",
+    "=B2&\":factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")"
+   ],
+   "variantes": [
+    {
+     "C3": 15400,
+     "B3": "Grupo Electro Tudela"
+    }
+   ],
+   "debe_usar": [
+    "TEXTO"
+   ],
+   "pistas": [
+    "Son cinco trozos unidos con &: B2, \": factura \", A2, \" por \" y el importe.",
+    "El importe va con TEXTO y el formato de euros: `TEXTO(C2;\"#.##0,00 €\")`. Cuida los espacios dentro de las comillas.",
+    "`=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")`"
+   ],
+   "explicacion": "Cuatro frases listas para el correo, con el importe como lo escribiría una persona: 2.310,75 €. Si cambia un importe, la frase cambia sola. Esta misma técnica sirve para asuntos de correo, etiquetas de envío o el pie de un informe."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m3l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué símbolo se usa en una fórmula para unir dos textos, por ejemplo el nombre y los apellidos?",
+   "aceptadas": [
+    "&",
+    "ampersand",
+    "y comercial",
+    "el &"
+   ],
+   "explicacion": "El & une trozos: `=A2&\" \"&B2`. El espacio, como texto entre comillas."
+  },
+  {
+   "id": "n2m3l1-q2",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta fórmula? (D1 está vacía)",
+   "hoja": {
+    "celdas": {
+     "A1": "ZA",
+     "B1": 2026,
+     "C1": "'0412"
+    }
+   },
+   "celda": "E1",
+   "formula": "=UNIRCADENAS(\"-\";VERDADERO;A1:D1)",
+   "explicacion": "Une A1, B1 y C1 con un guion entre cada uno y se salta D1 porque está vacía. Así se arman los códigos de pedido que vas a aprender a desmontar en la siguiente lección."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Unir nombre (A2) y apellidos (B2) con un espacio",
+   "dorso": "=A2&\" \"&B2"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "UNIRCADENAS: sintaxis",
+   "dorso": "=UNIRCADENAS(separador; ignorar_vacías; textos). Ej.: =UNIRCADENAS(\", \";VERDADERO;A2:A6)"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Unir un importe con formato de euros",
+   "dorso": "TEXTO(C2;\"#.##0,00 €\") → 1.250,00 €"
+  },
+  {
+   "tipo": "error",
+   "frente": "Al unir una fecha sale un número como 46356. ¿Por qué y cómo se arregla?",
+   "dorso": "La fecha es un número por dentro y al unir pierde el formato. Usa TEXTO(B2;\"dd/mm/aaaa\")."
+  }
+ ]
+}

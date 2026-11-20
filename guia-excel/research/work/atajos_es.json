@@ -1,0 +1,3607 @@
+[
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cerrar un libro de trabajo.",
+"b": "Ctrl+W"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir un libro de trabajo.",
+"b": "Ctrl+A"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Ir a la pestaña Inicio .",
+"b": "Alt+H"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Guardar un libro de trabajo.",
+"b": "Ctrl+S"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Copiar selección.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Pegar selección",
+"b": "Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Deshacer acción reciente.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Quitar el contenido de una celda.",
+"b": "Eliminar"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Elegir un color de relleno.",
+"b": "ALT+O, S, O"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cortar selección.",
+"b": "Ctrl+X"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Vaya a la pestaña Insertar .",
+"b": "Alt+N"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Aplicar el formato de negrita.",
+"b": "Ctrl+Alt+N"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Centrar el contenido de la celda.",
+"b": "Alt+H, A, C"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Vaya a la pestaña Diseño de página .",
+"b": "Alt+P"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Vaya a la pestaña Datos .",
+"b": "Alt+A"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Ir a la pestaña Ver .",
+"b": "Alt+W"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el menú contextual.",
+"b": "Mayús+F10 o Tecla de menú de Windows"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Agregar bordes.",
+"b": "ALT+O, B, B"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Eliminar columna.",
+"b": "Alt+H, D, C"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Vaya a la pestaña Fórmula .",
+"b": "Alt+M"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Úselo para ocultar las filas seleccionadas.",
+"b": "Ctrl+9"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Úselo para ocultar las columnas seleccionadas.",
+"b": "Ctrl+0"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Para hacer esto",
+"b": "Presione"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Ir al campo de búsqueda de la cinta de opciones y escribir un término de búsqueda para asistencia o contenido de ayuda.",
+"b": "Alt+Q, después escribir el término de búsqueda"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Abrir el menú Archivo .",
+"b": "Alt+A"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Inicio , dar formato a texto y números y usar la herramienta Buscar.",
+"b": "ALT+H"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Insertar e insertar tablas dinámicas, gráficos, complementos, minigráficos, imágenes, formas, encabezados o cuadros de texto.",
+"b": "ALT+N"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Diseño de página y trabajar con temas, configuración de página, escala y alineación.",
+"b": "Alt+P"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Fórmulas e insertar, rastrear y personalizar cálculos y funciones.",
+"b": "Alt+M"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Datos y conectarse a datos, ordenarlos, filtrarlos, analizarlos y trabajar con ellos.",
+"b": "Alt+A"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Revisar y revisar la ortografía, agregar notas y comentarios y proteger libros y hojas.",
+"b": "Alt+R"
+},
+{
+"sec": "Usar las teclas de acceso para las pestañas de la cinta de opciones",
+"a": "Úselo para abrir la pestaña Vista y obtener una vista previa de los saltos de página y los diseños, mostrar y ocultar las líneas de cuadrícula y los títulos, establecer el aumento del zoom, administrar ventanas y paneles y ver macros.",
+"b": "Alt+N"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Para ello",
+"b": "Pulse"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Seleccionar la pestaña activa de la cinta de opciones y activar las teclas de acceso.",
+"b": "Alt o F10. Moverse a una pestaña diferente o usar las teclas de acceso o las teclas de dirección."
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Mueva el foco a los comandos de la cinta de opciones o del panel de complementos.",
+"b": "Tecla TAB o Mayús+TAB"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Desplazarse hacia abajo, arriba, a la izquierda o a la derecha, respectivamente, entre los elementos de la cinta de opciones.",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Muestra la información sobre herramientas del elemento de la cinta de opciones que está actualmente en el foco.",
+"b": "Ctrl+Shift+F10"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Activar el botón seleccionado.",
+"b": "Barra espaciadora o Entrar"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Úselo para abrir la lista de un comando seleccionado.",
+"b": "Tecla de flecha abajo"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Úselo para abrir el menú de un botón seleccionado.",
+"b": "Alt+flecha abajo"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Cuando un menú o submenú está abierto, úselo para moverse al siguiente comando.",
+"b": "Tecla de flecha abajo"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Expandir o contraer la cinta de opciones.",
+"b": "Ctrl+F1"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Abrir un menú contextual.",
+"b": "Mayús+F10 O bien, en un Windows teclado, la tecla Menú de Windows (normalmente entre las teclas Alt Gr y Ctrl derecha)"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Úselo para moverse al submenú cuando un menú principal está abierto o seleccionado.",
+"b": "Tecla de flecha izquierda"
+},
+{
+"sec": "Trabajar en la cinta de opciones con el teclado",
+"a": "Moverse de un grupo de controles a otro.",
+"b": "Ctrl+Tecla de dirección izquierda o derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para ir a la celda anterior de una hoja de cálculo o a la opción anterior de un cuadro de diálogo.",
+"b": "Mayús+Tab"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para subir una celda en una hoja de cálculo.",
+"b": "Tecla de flecha arriba"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para bajar una celda en una hoja de cálculo.",
+"b": "Tecla de flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para moverse una celda a la izquierda en una hoja de cálculo.",
+"b": "Tecla de flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para moverse una celda a la derecha en una hoja de cálculo.",
+"b": "Tecla de flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para moverse hasta el extremo del área de datos actual en una hoja de cálculo.",
+"b": "Ctrl+tecla de dirección"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para entrar en el modo final, ir a la siguiente celda no vacía de la misma columna o fila que la celda activa y desactivar el modo final . Si las celdas están vacías, sirve para moverse a la última celda de la fila o columna.",
+"b": "Fin, tecla de dirección"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para ir a la última celda de una hoja de cálculo, a la última fila utilizada de la última columna utilizada.",
+"b": "Ctrl+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para extender la selección de celdas hasta la última celda utilizada de la hoja de cálculo (esquina inferior derecha).",
+"b": "Ctrl+Mayús+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para desplazarse hasta la celda de la esquina superior izquierda de la ventana cuando la tecla Bloq Despl está activada.",
+"b": "Inicio+Bloq Despl"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para ir al principio de una hoja de cálculo.",
+"b": "Ctrl+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para bajar una pantalla en una hoja de cálculo.",
+"b": "Página abajo"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para ir a la siguiente hoja de un libro.",
+"b": "Ctrl+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para moverse una pantalla a la derecha en una hoja de cálculo.",
+"b": "Alt+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para subir una pantalla en una hoja de cálculo.",
+"b": "Página arriba"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para moverse una pantalla a la izquierda en una hoja de cálculo.",
+"b": "Alt+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para ir a la hoja anterior de un libro.",
+"b": "Ctrl+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para mover una celda a la derecha en una hoja de cálculo. O, en una hoja de cálculo protegida, úselo para desplazarse entre celdas desbloqueadas.",
+"b": "Tecla Tab"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Abra la lista de opciones de validación en una celda que tenga la opción de validación de datos aplicada.",
+"b": "Alt+flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Úselo para recorrer las formas flotantes, como cuadros de texto o imágenes.",
+"b": "Ctrl+Alt+5 y después la tecla TAB varias veces"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Salga de la navegación de forma flotante y vuelva a la navegación normal.",
+"b": "Esc"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Desplazar horizontalmente",
+"b": "Ctrl+Mayús y, a continuación, desplaza la rueda del ratón hacia arriba para ir hacia la izquierda, hacia abajo para ir a la derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Acercar.",
+"b": "Ctrl+Alt+Signo igual (=)"
+},
+{
+"sec": "Métodos abreviados de teclado para navegar por celdas",
+"a": "Alejar.",
+"b": "Ctrl+Alt+Signo menos (-)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Para ello",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para abrir el cuadro de diálogo Formato de celdas .",
+"b": "Ctrl+1"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para dar formato a fuentes en el cuadro de diálogo Formato de celdas .",
+"b": "Ctrl+Mayús+F"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para editar la celda activa y colocar el punto de inserción al final de su contenido. O bien, si la edición está desactivada para la celda, sirve para mover el punto de inserción en la barra de fórmulas. Si está editando una fórmula, active o desactive el modo Señalar para poder crear una referencia con las teclas de flecha.",
+"b": "F2"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Insertar una nota. Abrir y editar un comentario de celda",
+"b": "Mayús+F2 Mayús+F2"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Insertar un nuevo comentario encadenado. Abrir y responder a un comentario encadenado.",
+"b": "Ctrl+Mayús+F2 Ctrl+Mayús+F2"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Insertar para insertar celdas en blanco.",
+"b": "Ctrl+Mayús+signo más (+)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Eliminar para eliminar las celdas seleccionadas.",
+"b": "Ctrl+signo menos (-)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para insertar la hora actual.",
+"b": "Ctrl+Mayús+dos puntos (:)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para insertar la fecha actual.",
+"b": "Ctrl+punto y coma (;)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para cambiar entre mostrar valores de celda o fórmulas de la hoja de cálculo.",
+"b": "Ctrl+acento grave (`)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Copiar la fórmula de la celda situada sobre la celda activa en la celda o en la barra de fórmulas",
+"b": "Ctrl+apóstrofo (')"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para mover las celdas seleccionadas.",
+"b": "Ctrl+X"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para copiar las celdas seleccionadas.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para pegar contenido en el punto de inserción, reemplazando cualquier selección.",
+"b": "Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Pegado especial .",
+"b": "Ctrl+Alt+V"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para poner en cursiva el texto o quitar formato de cursiva.",
+"b": "Ctrl+K o Ctrl+3"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para poner texto en negrita o quitar formato de negrita.",
+"b": "Ctrl+N o Ctrl+2"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para subrayar texto o quitar el subrayado.",
+"b": "Ctrl+S o Ctrl+4"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar o quitar formato de tachado.",
+"b": "Ctrl+5"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para alternar entre ocultar objetos, mostrar objetos y mostrar marcadores de posición de objetos.",
+"b": "Ctrl+6"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar un contorno a las celdas seleccionadas.",
+"b": "Ctrl+Mayús+Y comercial (&), s"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para quitar el contorno de las celdas seleccionadas.",
+"b": "Ctrl+Mayús+Carácter de subrayado (_)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para mostrar u ocultar símbolos de esquema.",
+"b": "Ctrl+8"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Use el comando Rellenar hacia abajo para copiar el contenido y el formato de la celda situada más arriba de un rango seleccionado a las celdas de abajo.",
+"b": "Ctrl+D"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar el formato de número General .",
+"b": "Ctrl+Mayús+virgulilla (~)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato Moneda con dos decimales (los números negativos aparecen entre paréntesis).",
+"b": "Ctrl+Mayús+signo de dólar ($)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato Porcentaje sin decimales.",
+"b": "Ctrl+Mayús+porcentaje (%)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato de número Científico con dos decimales.",
+"b": "Ctrl+Mayús+acento circunflejo (^)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato Fecha con el día, mes y año.",
+"b": "Ctrl+Mayús+signo de número (#)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato Hora con la hora y los minutos e indicar a.m. o p.m.",
+"b": "Ctrl+Mayús+arroba (@)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para aplicar el formato Número con dos decimales, separador de miles y signo menos (-) para los valores negativos.",
+"b": "Ctrl+Mayús+signo de exclamación (!)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Insertar hipervínculo",
+"b": "Ctrl+Alt+K"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para revisar la ortografía de la hoja de cálculo activa o del rango seleccionado.",
+"b": "F7"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para mostrar las opciones de Análisis rápido para las celdas seleccionadas que contienen datos.",
+"b": "Ctrl+Q"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Úselo para mostrar el cuadro de diálogo Crear tabla .",
+"b": "Ctrl+L o Ctrl+T"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Estadísticas del libro .",
+"b": "Ctrl+Mayús+G"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Para realizar esta acción",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegar todo el contenido y formato de celda.",
+"b": "A"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegar solo las fórmulas tal y como se escribieron en la barra de fórmulas.",
+"b": "F"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo los valores (no las fórmulas).",
+"b": "V"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo el formato copiado.",
+"b": "T"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegar solo los comentarios y notas adjuntos a la celda.",
+"b": "C"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo la configuración de validación de datos de las celdas copiadas.",
+"b": "N"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue todo el contenido y formato de las celdas copiadas.",
+"b": "H"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue todo el contenido de la celda sin bordes.",
+"b": "X"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo los anchos de columna de las celdas copiadas.",
+"b": "W"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo las fórmulas y los formatos de número de las celdas copiadas.",
+"b": "R"
+},
+{
+"sec": "Métodos abreviados de teclado en el cuadro de diálogo Pegado especial en Excel",
+"a": "Pegue solo los valores (no las fórmulas) y los formatos de número de las celdas copiadas.",
+"b": "U"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar toda la hoja de cálculo.",
+"b": "Ctrl+E o Ctrl+Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar la hoja actual y la siguiente de un libro.",
+"b": "Ctrl+Mayús+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar la hoja actual y la anterior de un libro.",
+"b": "Ctrl+Mayús+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para extender en una celda la selección de celdas.",
+"b": "Mayús+tecla de dirección"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para extender la selección de celdas a la última celda no vacía de la misma columna o fila que la celda activa, o si la siguiente celda está en blanco, a la siguiente celda que no esté en blanco.",
+"b": "Ctrl+Mayús+tecla de dirección"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para activar el modo extendido y usar las teclas de dirección para extender una selección. Vuelva a presionar para desactivarlo.",
+"b": "F8"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para agregar una celda o un rango de celdas no adyacentes a una selección de celdas usando las teclas de dirección.",
+"b": "Mayús+F8"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para comenzar una nueva línea en la misma celda.",
+"b": "Alt+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para rellenar el rango de celdas seleccionado con la entrada actual.",
+"b": "Ctrl+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para completar una entrada de celda y seleccionar la celda de encima.",
+"b": "Mayús+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar una columna completa de una hoja de cálculo.",
+"b": "Ctrl+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar una fila completa de una hoja de cálculo.",
+"b": "Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar todos los objetos de una hoja de cálculo cuando se está seleccionado un objeto.",
+"b": "Ctrl+Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para ampliar la selección de celdas hasta el comienzo de la hoja de cálculo.",
+"b": "Ctrl+Mayús+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Seleccionar la región actual si la hoja de cálculo contiene datos. Presione una segunda vez para seleccionar la región actual y sus filas de resumen. Presione una tercera vez para seleccionar toda la hoja de cálculo.",
+"b": "Ctrl+E o Ctrl+Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar el área actual alrededor de la celda activa.",
+"b": "Ctrl+Mayús+asterisco (*)"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para seleccionar el primer comando del menú cuando un menú o un submenú están visibles.",
+"b": "Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Úselo para repetir el último comando o acción, si es posible.",
+"b": "Ctrl+Y"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Deshacer la última acción.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Expanda filas o columnas agrupadas.",
+"b": "Mientras mantiene el puntero sobre los elementos contraídos, mantenga presionada la tecla Mayús y desplácese hacia abajo."
+},
+{
+"sec": "Métodos abreviados de teclado para realizar selecciones y acciones",
+"a": "Contraiga filas o columnas agrupadas.",
+"b": "Mientras mantiene el puntero sobre los elementos expandidos, mantenga presionada la tecla Mayús y desplácese hacia arriba."
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Para ello",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Active o desactive la información sobre herramientas para comprobar fórmulas directamente en la barra de fórmulas o en la celda que está editando.",
+"b": "Ctrl+Alt+P"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para editar la celda activa y colocar el punto de inserción al final de su contenido. O bien, si la edición está desactivada para la celda, sirve para mover el punto de inserción en la barra de fórmulas. Si está editando una fórmula, active o desactive el modo Señalar para poder crear una referencia con las teclas de flecha.",
+"b": "F2"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para expandir o contraer la barra de fórmulas.",
+"b": "Ctrl+Mayús+U"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para cancelar una entrada de la celda o la barra de fórmulas.",
+"b": "Esc"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para completar una entrada de la barra de fórmulas y seleccionar la celda de abajo.",
+"b": "ENTRAR"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para mover el cursor al final del texto en la barra de fórmulas.",
+"b": "Ctrl+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para seleccionar todo el texto en la barra de fórmulas desde la posición del cursor hasta el final.",
+"b": "Ctrl+Mayús+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para calcular todas las hojas de cálculo de todos los libros abiertos.",
+"b": "F9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para calcular la hoja de cálculo activa.",
+"b": "Shift+F9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para calcular todas las hojas de cálculo de todos los libros abiertos, independientemente de si han cambiado desde el último cálculo.",
+"b": "Ctrl+Alt+F9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para comprobar fórmulas dependientes y luego calcular todas las celdas de todos los libros abiertos, incluidas las celdas que no tienen marcado que sea necesario calcularlas.",
+"b": "Ctrl+Alt+Mayús+F9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para mostrar el menú o mensaje de un botón de comprobación de errores .",
+"b": "Alt+Mayús+F10"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para mostrar el cuadro de diálogo Argumentos de función cuando el punto de inserción está a la derecha de un nombre de función en una fórmula.",
+"b": "Ctrl+E"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para insertar paréntesis y nombres de argumento cuando el punto de inserción está a la derecha de un nombre de función en una fórmula.",
+"b": "Ctrl+Mayús+A"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Insertar la fórmula Suma",
+"b": "Alt+signo igual (=)"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para invocar Relleno rápido a fin de reconocer automáticamente los patrones de las columnas adyacentes y rellenar la columna actual.",
+"b": "Ctrl+Mayús+E"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para recorrer las distintas combinaciones de referencias absolutas y relativas en una fórmula si se selecciona una referencia o un rango de celdas.",
+"b": "F4"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para insertar una función.",
+"b": "Mayús+F3"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para copiar el valor de la celda situada sobre la celda activa en la celda o en la barra de fórmulas.",
+"b": "Ctrl+Mayús+comillas rectas (\")"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para crear un gráfico incrustado a partir de los datos del rango actual.",
+"b": "Alt+F1"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para crear un gráfico a partir de los datos del rango actual en una hoja de gráfico distinta.",
+"b": "F11"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para definir un nombre para usar en las referencias.",
+"b": "Alt+U, I, D"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para pegar un nombre desde el cuadro de diálogo Pegar nombre (si se han definido nombres en el libro).",
+"b": "F3"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "En un formulario de datos, sirve para ir al primer campo del registro siguiente.",
+"b": "Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para crear, ejecutar, editar o eliminar una macro.",
+"b": "Alt+F8"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Úselo para abrir el editor de Microsoft Visual Basic para Aplicaciones .",
+"b": "Alt+F11"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con datos, funciones y la barra de fórmulas",
+"a": "Abrir el Editor de consultas de Power Query",
+"b": "Alt+F12"
+},
+{
+"sec": "Métodos abreviados de teclado para actualizar datos externos",
+"a": "Para realizar esta acción",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado para actualizar datos externos",
+"a": "Detener una operación de actualización",
+"b": "Esc"
+},
+{
+"sec": "Métodos abreviados de teclado para actualizar datos externos",
+"a": "Actualizar datos en la hoja de cálculo actual",
+"b": "Ctrl+F5"
+},
+{
+"sec": "Métodos abreviados de teclado para actualizar datos externos",
+"a": "Actualizar los datos en el libro",
+"b": "Ctrl+Alt+F5"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Para realizar esta acción",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se abre el menú contextual para la celda, columna o fila seleccionada.",
+"b": "Mayús+F10"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se selecciona la tabla completa.",
+"b": "Ctrl+A"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se copian los datos seleccionados.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se elimina la tabla.",
+"b": "Ctrl+D"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve la tabla.",
+"b": "Ctrl+M"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se cambia el nombre de la tabla.",
+"b": "CTRL+D"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Guarde el archivo.",
+"b": "Ctrl+S"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Rehacer la última acción.",
+"b": "Ctrl+Y"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Deshacer la última acción.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se selecciona la columna actual.",
+"b": "Ctrl+Barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se selecciona la fila actual.",
+"b": "Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se seleccionan todas las celdas de la ubicación actual hasta la última celda de la columna.",
+"b": "Mayús+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se seleccionan todas las celdas de la ubicación actual hasta la primera celda de la columna.",
+"b": "Mayús+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se seleccionan todas las celdas de la ubicación actual hasta la última celda de la fila.",
+"b": "Mayús+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se seleccionan todas las celdas de la ubicación actual hasta la primera celda de la fila.",
+"b": "Mayús+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la tabla anterior.",
+"b": "Ctrl+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la tabla siguiente.",
+"b": "Ctrl+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la primera celda de la esquina superior izquierda de la tabla seleccionada.",
+"b": "Ctrl+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Desplazarse a la última celda de la esquina inferior derecha de la tabla seleccionada.",
+"b": "Ctrl+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la primera celda de la fila seleccionada.",
+"b": "Ctrl+Tecla de flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la última celda de la fila seleccionada.",
+"b": "Ctrl+Tecla de flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la primera celda de la columna seleccionada.",
+"b": "Ctrl+Tecla de flecha arriba"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se mueve a la última celda de la columna seleccionada.",
+"b": "Ctrl+Tecla de flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se cierra un cuadro de diálogo o se cancela un proceso, como una operación de pegado.",
+"b": "CTRL+Esc"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se abre el cuadro de diálogo del menú Autofiltro .",
+"b": "Alt+flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Se abre el cuadro de diálogo Ir a .",
+"b": "F5"
+},
+{
+"sec": "Métodos abreviados de teclado y accesibilidad en Power Pivot",
+"a": "Recalcular todas las fórmulas de la ventana Power Pivot. Para obtener más información, vea Recalcular fórmulas en Power Pivot .",
+"b": "F9"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Para realizar esta acción",
+"b": "Usar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Envíe su indicación en el panel de tareas de Copilot en Excel.",
+"b": "Entrar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Detener o cancelar la solicitud de Copilot en Excel.",
+"b": "Esc"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Acepta los cambios realizados por Copilot en Excel.",
+"b": "Ctrl+Entrar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel.",
+"b": "Ctrl+Mayús+M"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel.",
+"b": "Alt+C"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel.",
+"b": "Ctrl+J"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Inicie el dictado de Copilot en Excel.",
+"b": "Alt+Mayús+H"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Abra el panel de tareas de Copilot en Excel.",
+"b": "Alt+C"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel.",
+"b": "F6"
+},
+{
+"sec": "Teclas de función",
+"a": "Tecla",
+"b": "Descripción"
+},
+{
+"sec": "Teclas de función",
+"a": "F1",
+"b": "Solo F1: muestra el panel de tareas Ayuda de Excel. Ctrl+F1: muestra u oculta la cinta de opciones. Alt+F1: crea un gráfico incrustado a partir de los datos del rango actual. Alt+Mayús+F1: inserta una hoja de cálculo nueva. Ctrl+Mayús+F1: alterna el modo de pantalla completa"
+},
+{
+"sec": "Teclas de función",
+"a": "F2",
+"b": "Solo F2: úselo para editar la celda activa y colocar el punto de inserción al final de su contenido. O bien, si la edición está desactivada para la celda, sirve para mover el punto de inserción en la barra de fórmulas. Si está editando una fórmula, active o desactive el modo Señalar para poder crear una referencia con las teclas de flecha. Mayús+F2: agrega o modifica un comentario de celda. Ctrl+F2: edite la celda activa en la barra de fórmulas. Si ya está editando la celda activa, cambie el foco entre la fórmula y el editor de celdas."
+},
+{
+"sec": "Teclas de función",
+"a": "F3",
+"b": "Solo F3: muestra el cuadro de diálogo Pegar nombre . Solo está disponible si se han definido nombres en el libro. Mayús+F3: muestra el cuadro de diálogo Insertar función ."
+},
+{
+"sec": "Teclas de función",
+"a": "F4",
+"b": "Solo F4: repite el último comando o acción, si es posible. Cuando se selecciona una referencia o un rango de celdas en una fórmula, F4 recorre las distintas combinaciones de referencias absolutas y relativas. Ctrl+F4: cierra la ventana del libro seleccionado. Alt+F4: cierra Excel."
+},
+{
+"sec": "Teclas de función",
+"a": "F5",
+"b": "Solo F5: muestra el cuadro de diálogo Ir a . Ctrl+F5: restaura el tamaño de la ventana del libro seleccionado."
+},
+{
+"sec": "Teclas de función",
+"a": "F6",
+"b": "Solo F6: cambia entre la hoja de cálculo, la cinta de opciones, el panel de tareas y los controles de zoom . En una hoja de cálculo que se ha dividido, F6 incluye los paneles divididos cuando se alterna entre los paneles y el área de la cinta de opciones. Mayús+F6: cambia entre la hoja de cálculo, los controles de zoom , el panel de tareas y la cinta de opciones. Ctrl+F6: cambia entre dos Excel ventanas. Ctrl+Mayús.+F6: cambia entre todas las ventanas de Excel."
+},
+{
+"sec": "Teclas de función",
+"a": "F7",
+"b": "Solo F7: abre el cuadro de diálogo Ortografía para revisar la ortografía de la hoja de cálculo activa o del rango seleccionado. Ctrl+F7: ejecuta el comando Mover en la ventana del libro cuando no está maximizada. Use las teclas de dirección para mover la ventana y, cuando haya acabado, presione Entrar o Esc para cancelar."
+},
+{
+"sec": "Teclas de función",
+"a": "F8",
+"b": "Solo F8: activa o desactiva el modo extendido. En el modo extendido aparece Selección extendida en la línea de estado y las teclas de dirección extienden la selección. Mayús+F8: permite agregar una celda o un rango de celdas no adyacentes a una selección de celdas con las teclas de dirección. Ctrl+F8: ejecuta el comando Tamaño cuando un libro no está maximizado. ALT+F8 muestra el cuadro de diálogo Macro para crear, ejecutar, modificar o eliminar una macro."
+},
+{
+"sec": "Teclas de función",
+"a": "F9",
+"b": "Solo F9: calcula todas las hojas de cálculo de todos los libros abiertos. Mayús+F9: calcula la hoja de cálculo activa. Ctrl+Alt+F9: calcula todas las hojas de cálculo de todos los libros abiertos, independientemente de si han cambiado desde el último cálculo. Ctrl+Alt+Mayús+F9: vuelve a comprobar fórmulas dependientes y luego calcula todas las celdas de todos los libros abiertos, incluidas las celdas que no tienen marcado que sea necesario calcularlas. Ctrl+F9: minimiza una ventana del libro hasta convertirla en un icono."
+},
+{
+"sec": "Teclas de función",
+"a": "F10",
+"b": "Solo F10: activa o desactiva las KeyTips. (hará lo mismo si presiona Alt). Mayús+F10: muestra el menú contextual de un elemento seleccionado. Alt+Mayús+F10: muestra el menú o mensaje de un botón de comprobación de errores . Ctrl+F10: maximiza o restaura la ventana de libro seleccionada."
+},
+{
+"sec": "Teclas de función",
+"a": "F11",
+"b": "Solo F11: crea un gráfico a partir de los datos del rango actual en una hoja de gráfico distinta. Mayús+F11: inserta una hoja de cálculo nueva. Alt+F11: abre el Editor de Microsoft Visual Basic para Aplicaciones , donde puede crear una macro usando Visual Basic para Aplicaciones (VBA)."
+},
+{
+"sec": "Teclas de función",
+"a": "F12",
+"b": "Solo F12: muestra el cuadro de diálogo Guardar como ."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Tecla",
+"b": "Descripción"
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Alt",
+"b": "Muestra los KeyTips (nuevos métodos abreviados) en la cinta de opciones. Por ejemplo, ALT, W, P cambia la hoja de cálculo a la vista Diseño de página . ALT, W, L cambia la hoja de cálculo a la vista Normal . ALT, W, I cambia la hoja de cálculo a la Vista previa de salto de página ."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Teclas de dirección",
+"b": "Mueve el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha en una hoja de cálculo. Ctrl+tecla de dirección se desplaza hasta el extremo del área de datos actual en una hoja de cálculo. Mayús+tecla de dirección extiende la selección de celdas en una celda. Ctrl+Mayús+tecla de dirección extiende la selección de celdas a la última celda no vacía de la misma columna o fila que la celda activa, o si la siguiente celda está en blanco, extiende la selección a la siguiente celda que no esté en blanco. Las teclas de flecha izquierda o derecha seleccionan la pestaña de la izquierda o de la derecha cuando se selecciona la cinta de opciones. Cuando se abre o selecciona un submenú, estas teclas de dirección alternan entre el menú principal y el submenú. Cuando se selecciona una pestaña de la cinta de opciones, estas teclas permiten desplazarse por los botones de pestaña. Las teclas de flecha arriba o abajo seleccionan el siguiente comando o el anterior cuando hay abierto un menú o un submenú. Cuando se selecciona una pestaña de la cinta de opciones, estas teclas permiten desplazarse hacia arriba o hacia abajo en el grupo de pestañas. En un cuadro de diálogo, las teclas de dirección permiten desplazarse entre opciones en una lista desplegable abierta o entre opciones de un grupo de opciones. Flecha abajo o Alt+flecha abajo abre una lista desplegable seleccionada."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Retroceso",
+"b": "Elimina un carácter a la izquierda en la barra de fórmulas. También borra el contenido de la celda activa. En el modo de edición de celdas, elimina el carácter situado a la izquierda del punto de inserción."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Eliminar",
+"b": "Quita el contenido (datos y fórmulas) de las celdas seleccionadas sin afectar a los formatos de celda ni a los comentarios encadenados. En el modo de edición de celdas, elimina el carácter situado a la derecha del punto de inserción."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Fin",
+"b": "Fin activa o desactiva el modo final . En el modo final puede presionar una tecla de dirección para desplazarse hasta la siguiente celda no vacía de la misma columna o fila que la celda activa. El modo final se desactiva automáticamente después de presionar la tecla de dirección. Asegúrese de volver a presionar Fin antes de presionar la siguiente tecla de dirección. El modo final se muestra en la barra de estado si está activado. Si las celdas están vacías, al presionar Fin después de una tecla de dirección, pasará a la última celda de la fila o columna. Fin también selecciona el último comando del menú cuando un menú o un submenú están visibles. Ctrl+Fin permite desplazarse a la última celda de una hoja de cálculo, a la última fila usada de la última columna usada. Si el cursor está en la barra de fórmulas, Ctrl+Fin permite mover el cursor al final del texto. Ctrl+Mayús+Fin extiende la selección de celdas hasta la última celda usada de la hoja de cálculo (esquina inferior derecha). Si el cursor está en la barra de fórmulas, Ctrl+Mayús+Fin selecciona todo el texto de la barra de fórmulas desde la posición del cursor hasta el final; esto no afecta al alto de la barra de fórmulas."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Entrar",
+"b": "Completa una entrada de celda desde la celda o la barra de fórmulas, y selecciona la celda situada debajo (de forma predeterminada). En un formulario de datos, va al primer campo del registro siguiente. Abre un menú seleccionado (presione F10 para activar la barra de menús) o realiza la acción de un comando seleccionado. En un cuadro de diálogo, ejecuta la acción asignada al botón de comando predeterminado del cuadro de diálogo (el botón con el contorno en negrita, que suele ser el botón Aceptar ). Alt+Entrar comienza una nueva línea en la misma celda. Ctrl+Entrar rellena el rango de celdas seleccionado con la entrada actual. Mayús+Entrar completa una entrada de celda y selecciona la celda situada encima."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Esc",
+"b": "Cancela una entrada de la celda o la barra de fórmulas. Cierra un menú o submenú, un cuadro de diálogo o una ventana de mensaje abiertos."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Inicio",
+"b": "Va al principio de una fila de una hoja de cálculo. Permite desplazarse hasta la celda de la esquina superior izquierda de la ventana cuando la tecla Bloq Despl está activada. Selecciona el primer comando del menú cuando un menú o un submenú están visibles. Ctrl+Inicio va al inicio de una hoja de cálculo. Ctrl+Mayús+Inicio amplia la selección de celdas hasta el comienzo de la hoja de cálculo."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Página abajo",
+"b": "Baja una pantalla en una hoja de cálculo. Alt+Av Pág se desplaza una pantalla a la derecha en una hoja de cálculo. Ctrl+Av Pág va a la siguiente hoja de un libro. Ctrl+Mayús+Av Pág selecciona la hoja actual y la siguiente de un libro."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Página arriba",
+"b": "Sube una pantalla en una hoja de cálculo. Alt+Re Pág se desplaza una pantalla a la izquierda en una hoja de cálculo. Ctrl+Re Pág va a la hoja anterior de un libro. Ctrl+Mayús+Re Pág selecciona la hoja actual y la anterior de un libro."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Mayús",
+"b": "Mantenga presionada la tecla Mayús mientras arrastra una fila, columna o celdas seleccionadas para mover las celdas seleccionadas y colocarlas para insertarlas en una nueva ubicación."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Barra espaciadora",
+"b": "En un cuadro de diálogo, ejecuta la acción del botón seleccionado, o bien activa o desactiva una casilla. Ctrl+barra espaciadora selecciona una columna completa de una hoja de cálculo. Mayús+barra espaciadora selecciona una fila completa de una hoja de cálculo. Ctrl+Mayús+barra espaciadora selecciona toda la hoja de cálculo. Si la hoja de cálculo contiene datos, con Ctrl+Mayús+barra espaciadora se selecciona la región actual. Presione Ctrl+Mayús+barra espaciadora una segunda vez para seleccionar la región actual y las filas de resumen. Presione Ctrl+Mayús+barra espaciadora una tercera vez para seleccionar toda la hoja de cálculo. Cuando se selecciona un objeto, Ctrl+Mayús+barra espaciadora selecciona todos los objetos de una hoja de cálculo. Alt+barra espaciadora muestra el menú Control de la ventana de Excel."
+},
+{
+"sec": "Otras teclas de método abreviado útiles",
+"a": "Tecla Tab",
+"b": "Mueve una celda a la derecha en una hoja de cálculo. Permite desplazarse entre celdas desbloqueadas en una hoja de cálculo protegida. Mueve a la opción o al grupo de opciones siguientes de un cuadro de diálogo. Mayús+tabulador permite moverse a la celda anterior de una hoja de cálculo o a la opción anterior de un cuadro de diálogo. Ctrl+Tab cambia a la siguiente pestaña de un cuadro de diálogo o, (si no hay ningún cuadro de diálogo abierto(, cambia entre 2 ventanas de Excel. Ctrl+Mayús+Tab cambia a la anterior pestaña de un diálogo o, si no hay ningún diálogo abierto, cambia entre todas las ventanas de Excel."
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Pegar selección",
+"b": "Cmd+V o bien Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Copiar selección.",
+"b": "Cmd+C o bien Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Borrar selección.",
+"b": "Eliminar"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Guardar libro.",
+"b": "Cmd+S o bien Ctrl+S"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Deshacer una acción.",
+"b": "Cmd+Z o bien Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Rehacer acciones.",
+"b": "Cmd+Y o bien Ctrl+Y o bien Cmd+Mayús+Z"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cortar selección.",
+"b": "Cmd+X o bien Ctrl+X o bien Mayús+"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Aplicar el formato de negrita.",
+"b": "Cmd+B o bien Ctrl+N"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Imprimir libro.",
+"b": "Cmd+P o bien Ctrl+P"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir Visual Basic.",
+"b": "OPCIÓN+F11"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Rellenar celdas hacia abajo.",
+"b": "Cmd+D o bien Ctrl+D"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Rellenar celdas a la derecha.",
+"b": "Cmd+R o bien CTRL+D"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Insertar celdas.",
+"b": "Ctrl+Mayús+signo igual ( = )"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Eliminar celdas.",
+"b": "Cmd+Guion (-) o bien Ctrl+Guion (-)"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Calcular todos los libros abiertos",
+"b": "+Signo igual (=) o bien F9"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cerrar la ventana.",
+"b": "Cmd+W o bien Ctrl+W"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Salga de Excel.",
+"b": "Cmd+Q"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Muestra el cuadro de diálogo Ir a la página",
+"b": "Ctrl+G o bien F5"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Mostrar el cuadro de diálogo Formato de celdas",
+"b": "Cmd+1 o bien Ctrl+1"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Mostrar el cuadro de diálogo Reemplazar .",
+"b": "Ctrl+H o bien Cmd+Mayús+H"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Usar Pegado especial",
+"b": "Cmd+Ctrl+V o bien Ctrl+Opción+V o bien Cmd+Opción+V"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Aplicar formato de subrayado",
+"b": "Cmd+U"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Aplicar el formato de cursiva.",
+"b": "Cmd+I o bien Ctrl+I"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir un nuevo libro en blanco",
+"b": "Cmd+N o bien Ctrl+U"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Crear un libro a partir de una plantilla",
+"b": "Cmd+Mayús+P"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Mostrar el cuadro de diálogo Guardar como .",
+"b": "Cmd+Mayús+S o bien F12"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Mostrar la ventana Ayuda .",
+"b": "F1 o bien Cmd+Barra diagonal (/)"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Seleccionar todo.",
+"b": "Cmd+A o bien Cmd+Mayús+Barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Agregar o quitar un filtro",
+"b": "Cmd+Mayús+F o bien Ctrl+Mayús+L"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Minimizar o maximizar las pestañas de la cinta",
+"b": "Cmd+Opción+R"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Mostrar el cuadro de diálogo Abrir .",
+"b": "Cmd+O o bien Ctrl+A"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Revisar la ortografía.",
+"b": "F7"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el diccionario de sinónimos",
+"b": "Mayús+F7"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el Generador de fórmulas",
+"b": "Mayús+F3"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el cuadro de diálogo Definir nombre",
+"b": "Cmd+F3"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Insertar o responder un comentario",
+"b": "Cmd+Retorno"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el cuadro de diálogo Crear nombres",
+"b": "Cmd+Mayús+F3"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Insertar una nueva hoja *",
+"b": "Mayús+F11"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Vista previa de impresión.",
+"b": "Cmd+P o bien Ctrl+P"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Para hacer esto",
+"b": "Pulse"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Expandir o minimizar la cinta de opciones",
+"b": "Cmd+Opción+R"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Cambiar a la vista de semana completa",
+"b": "Cmd+Ctrl+F"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Cambiar a la siguiente aplicación",
+"b": "Cmd+Tab"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Cambiar a la aplicación anterior",
+"b": "Mayús+ +Tab"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Cerrar la ventana del libro activo",
+"b": "Cmd+W"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Realiza una captura de pantalla y guárdala en el escritorio.",
+"b": "Mayús+Cmd+3"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Minimizar la ventana activa",
+"b": "Ctrl+F9"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Maximizar o restaurar la ventana activa",
+"b": "Ctrl+F10 o bien Cmd+F10"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Ocultar Excel .",
+"b": "Cmd+H"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Ir al cuadro, la opción, el control o el comando siguiente.",
+"b": "Tecla TAB"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Ir al cuadro, la opción, el control o el comando anterior.",
+"b": "Mayús+TAB"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Salir de un cuadro de diálogo o cancelar una acción.",
+"b": "Esc"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Realice la acción asignada al botón predeterminado (el botón con el contorno en negrita).",
+"b": "Entrar"
+},
+{
+"sec": "Trabajar en ventanas y cuadros de diálogo",
+"a": "Cancelar el comando y cerrar el cuadro de diálogo.",
+"b": "Esc"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha.",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazarse hasta el extremo de la región de datos actual.",
+"b": "Cmd+Tecla de dirección"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Ir al principio de la fila.",
+"b": "Inicio En un MacBook, presione FN + flecha izquierda"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Ir al principio de la hoja",
+"b": "Ctrl+Inicio En un MacBook, presione Ctrl+Fn+Tecla de dirección izquierda"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Ir a la última celda en uso de la hoja",
+"b": "Ctrl+Fin En un MacBook, Ctrl+Fn+Tecla de dirección derecha"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Mover una pantalla hacia abajo",
+"b": "Página abajo En un MacBook, presione FN + FLECHA ABAJO"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Retroceder una pantalla",
+"b": "Página arriba En un MacBook, presione FN + FLECHA ARRIBA"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazar una pantalla a la derecha",
+"b": "Opción+Re Pág En un MacBook, presione FN + OPCIÓN + FLECHA ABAJO"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazar una palabra a la izquierda",
+"b": "Opción+Re Pág En un MacBook, presione FN + OPCIÓN + FLECHA ARRIBA"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Ir a la siguiente hoja del libro",
+"b": "Ctrl+Av Pág o bien Opción+tecla de dirección derecha"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Ir a la hoja anterior del libro",
+"b": "Ctrl+Av Pág o bien Opción+tecla de dirección izquierda"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazarse para mostrar la celda activa",
+"b": "Ctrl+Suprimir"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Muestra el cuadro de diálogo Ir a la página",
+"b": "Ctrl+G"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Mostrar el cuadro de diálogo Buscar .",
+"b": "Ctrl+B o bien Mayús+F5"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Obtener acceso a la opción de búsqueda (cuando se está en una celda o cuando se selecciona una celda)",
+"b": "Cmd+F"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazarse entre celdas desbloqueadas en una hoja protegida",
+"b": "Tecla TAB"
+},
+{
+"sec": "Moverse y desplazarse por una hoja o un libro",
+"a": "Desplazar horizontalmente",
+"b": "Mayús y, a continuación, desplázate hacia arriba la rueda del mouse hacia la izquierda, hacia abajo para la derecha"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Para ello",
+"b": "Presione"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Completar una entrada de celda y desplazarse hacia delante en la selección",
+"b": "Entrar"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Úselo para comenzar una nueva línea en la misma celda.",
+"b": "Opción+Retorno o Ctrl+Opción+Retorno"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Rellenar el rango de celdas seleccionado con el texto que escriba",
+"b": "Cmd+Retorno o bien Ctrl+Retorno"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Completar una entrada de celda y desplazarse hacia atrás en la selección",
+"b": "Mayús+Entrar"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Completar una entrada de celda y mover a la derecha en la selección",
+"b": "Tecla TAB"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Completar una entrada de celda y mover a la izquierda de la selección",
+"b": "Mayús+Tab"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Cancelar una entrada de celda",
+"b": "Esc"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Eliminar el carácter situado a la izquierda del punto de inserción o eliminar la selección",
+"b": "Suprimir"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Suprimir el carácter situado a la derecha del punto de inserción o eliminar la selección Nota: Algunos teclados más pequeños no tienen esta tecla.",
+"b": "En un MacBook, Fn+Delete"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Suprimir texto al final de la línea Nota: Algunos teclados más pequeños no tienen esta tecla.",
+"b": "Ctrl+ En un MacBook, Ctrl+Fn+Supr"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Mover el cursor un carácter hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Desplazarse al principio de la línea.",
+"b": "Inicio En un MacBook, presione FN + flecha izquierda"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Insertar una nota.",
+"b": "Mayús+F2"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Abrir y editar un comentario de celda",
+"b": "Mayús+F2"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Insertar un nuevo comentario encadenado.",
+"b": "Cmd+Mayús+F2"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Abrir y responder a un comentario encadenado.",
+"b": "Cmd+Mayús+F2"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Rellenar hacia abajo.",
+"b": "Ctrl+J o bien Cmd+D"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Rellenar hacia la derecha",
+"b": "CTRL+D o bien Cmd+R"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "",
+"b": "Ctrl+E"
+},
+{
+"sec": "Escribir datos en una hoja",
+"a": "Definir un nombre",
+"b": "Ctrl+I"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Active o desactive la información sobre herramientas para comprobar fórmulas directamente en la barra de fórmulas.",
+"b": "Ctrl+Opción+P"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Úselo para expandir o contraer la barra de fórmulas.",
+"b": "Ctrl+Mayús+U"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Editar la celda activa y luego borrarla, o borrar el carácter anterior en la celda activa mientras modifica el contenido de la celda",
+"b": "Eliminar"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Completar una entrada de celda",
+"b": "Entrar"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Especificar una fórmula como fórmula de matriz",
+"b": "Mayús+Cmd+Retorno o bien Ctrl+Mayús+Retorno"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Úselo para cancelar una entrada de la celda o la barra de fórmulas.",
+"b": "Esc"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mostrar el Generador de fórmulas después de escribir un nombre de función válido en una fórmula",
+"b": "Ctrl+A"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Insertar un hipervínculo.",
+"b": "Cmd+K o bien Ctrl+Alt+K"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Editar la celda activa y colocar el punto de inserción al final de la línea",
+"b": "Ctrl+S"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Abrir el Generador de fórmulas",
+"b": "Mayús+F3"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Calcular la hoja activa",
+"b": "Mayús+F9"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mostrar el menú contextual.",
+"b": "Mayús+F10"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Iniciar una fórmula",
+"b": "= (signo igual)"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Activar o desactivar el estilo de referencia entre fórmula absolutas, relativas y mixtas",
+"b": "Cmd+T o bien F4"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Insertar la fórmula Autosuma",
+"b": "Mayús+Cmd+T"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Escribe la Fecha.",
+"b": "Ctrl+punto y coma (;)"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Introducir la hora",
+"b": "Cmd+Punto y coma (;)"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Úselo para copiar el valor de la celda situada sobre la celda activa en la celda o en la barra de fórmulas.",
+"b": "Ctrl+Mayús+marca de pulgada/Comilla doble recta (\")"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Alternar entre mostrar valores de celda y mostrar fórmulas de celdas",
+"b": "Ctrl+acento grave (`)"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Copiar la fórmula de la celda situada sobre la celda activa en la celda o en la barra de fórmulas",
+"b": "Ctrl+apóstrofo (')"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mostrar la lista Autocompletar",
+"b": "Opción+flecha abajo"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Definir un nombre",
+"b": "Ctrl+I"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Abra el panel Búsqueda inteligente",
+"b": "Ctrl+Opción+Cmd+L"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Úselo para calcular todas las hojas de cálculo de todos los libros abiertos.",
+"b": "Ctrl+Opción+F9"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Compruebe las fórmulas dependientes y, a continuación, calcule todas las celdas de todos los libros abiertos.",
+"b": "Ctrl+Opción+Mayús+F9"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Para ello",
+"b": "Presione"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Crear una tabla",
+"b": "Cmd+T o bien Ctrl+T"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Insertar un salto de línea en una celda",
+"b": "Cmd+Opción+Retorno o bien Ctrl+Opción+Retorno"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Insertar caracteres especiales como símbolos, incluidos emoji",
+"b": "Ctrl+Cmd+Barra espaciadora"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aumentar el tamaño de la fuente.",
+"b": "⌘+Mayús+Corchete angular de cierre (>)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Reducir el tamaño de la fuente.",
+"b": "⌘+Mayús+Corchete angular de apertura (<)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Alinear centro",
+"b": "Cmd+E"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Alinear a la izquierda.",
+"b": "Cmd+L"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar el cuadro de diálogo Modificar el estilo de las celdas",
+"b": "Mayús+Cmd+L"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar el cuadro de diálogo Formato de celdas",
+"b": "Cmd+1"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de número general",
+"b": "Ctrl+Mayús+Tilde (~)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de moneda con dos decimales (los números negativos aparecen en rojo entre paréntesis).",
+"b": "Ctrl+Mayús+signo de dólar ($)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de porcentajes sin decimales",
+"b": "Ctrl+Mayús+porcentaje (%)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de número exponencial con dos decimales",
+"b": "Ctrl+Mayús+Símbolo de intercalación (^)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de fecha con el día, mes y año",
+"b": "Ctrl+Mayús+signo de número (#)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de hora con la hora y los minutos e indicar a.m. o p.m.",
+"b": "Ctrl+Mayús+arroba (@)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar el formato de número con dos decimales, separador de miles y signo menos (-) para los valores negativos",
+"b": "Ctrl+Mayús+signo de exclamación (!)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Quitar el contorno de las celdas seleccionadas",
+"b": "Cmd+Opción+Cero (0)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Agregar un contorno a la derecha de la selección",
+"b": "Cmd+Opción+Tecla de dirección derecha"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Agregar un contorno a la izquierda de la selección",
+"b": "Cmd+Opción+Tecla de dirección izquierda"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Agregar un contorno a la parte superior de la selección",
+"b": "Cmd+Opción+Tecla de dirección arriba"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Agregar un contorno a la parte inferior de la selección",
+"b": "Cmd+Opción+Tecla de dirección abajo"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Quitar contornos",
+"b": "Cmd+Opción+Guion"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar o quitar el formato de negrita.",
+"b": "Cmd+B"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar o quitar el formato de cursiva",
+"b": "Cmd+I"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar o quitar el formato de subrayado.",
+"b": "Cmd+U"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar o quitar formato de tachado.",
+"b": "Mayús+Cmd+X"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Ocultar una columna",
+"b": "Cmd+Paréntesis derecho ()) o bien Ctrl+paréntesis derecho ())"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar una columna",
+"b": "Mayús+Cmd+paréntesis de cierre ()) o bien Ctrl+Mayús+paréntesis de cierre ())"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Ocultar una fila",
+"b": "Cmd+paréntesis de apertura (() o bien Ctrl+paréntesis de apertura (()"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar una fila",
+"b": "Mayús+Cmd+paréntesis de apertura (() o bien Ctrl+Mayús+paréntesis de apertura (()"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Editar la celda activa",
+"b": "Ctrl+S"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Cancela una entrada de la celda o la barra de fórmulas",
+"b": "Esc"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Editar la celda activa y luego borrarla, o borrar el carácter anterior en la celda activa mientras modifica el contenido de la celda",
+"b": "Eliminar"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Pegar texto en la celda activa",
+"b": "Cmd+V"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Completar una entrada de celda",
+"b": "Entrar"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Dar a las celdas seleccionadas la entrada actual de la celda",
+"b": "Cmd+Retorno o bien Ctrl+Retorno"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Especificar una fórmula como fórmula de matriz",
+"b": "Mayús+Cmd+Retorno o bien Ctrl+Mayús+Retorno"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar el Generador de fórmulas después de escribir un nombre de función válido en una fórmula",
+"b": "Ctrl+E"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Extender la selección una celda",
+"b": "Mayús+tecla de dirección"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Extender la selección a la última celda no vacía de la misma columna o fila que la celda activa",
+"b": "Mayús+Cmd+Tecla de dirección"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Ampliar la selección hasta el principio de la fila",
+"b": "Mayús+Inicio En un MacBook, presione MAYÚS + FN + FLECHA IZQUIERDA"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Ampliar la selección hasta al principio de la hoja",
+"b": "Ctrl+Mayús+Inicio En un MacBook, presione Ctrl+Mayús+Fn+Tecla de dirección izquierda"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Extender la selección a la última celda utilizada en la hoja (esquina inferior derecha)",
+"b": "Ctrl+Mayús+Fin En un MacBook, presione Ctrl+Mayús+Fn+Tecla de dirección derecha"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar la columna completa *",
+"b": "Ctrl+barra espaciadora"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar toda la fila",
+"b": "Mayús+barra espaciadora"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccione la región actual o toda la hoja. Presione más de una vez para expandir la selección.",
+"b": "Cmd+A"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar sólo las celdas visibles de la selección actual",
+"b": "Mayús+Cmd+Asterisco (*)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar sólo la celda activa cuando se seleccionan varias celdas",
+"b": "Mayús+Supr (no la tecla de eliminación directa que se encuentra en teclados completos)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Ampliar la selección una pantalla hacia abajo",
+"b": "Mayús+Av Pág En un MacBook, presione MAYÚS + FN + FLECHA ABAJO"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Ampliar la selección una línea hacia arriba",
+"b": "Mayús+Re Pág En un MacBook, presione MAYÚS + FN + FLECHA ARRIBA"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Alternar entre ocultar objetos, mostrar objetos y y mostrar marcadores de posición de objetos.",
+"b": "Ctrl+6"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Activar la característica de extender una selección mediante las teclas de dirección.",
+"b": "F8"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Agregar otro rango de celdas a la selección",
+"b": "Mayús+F8"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar la matriz actual, que es la matriz que está a la que pertenece la celda activa",
+"b": "Ctrl+Barra diagonal (/)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccione las celdas de una fila que no coincidan con el valor en la celda activa de esa fila. Debe seleccionar la fila a partir de la celda activa.",
+"b": "Ctrl+Barra invertida (\\)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccione solo las celdas que tienen referencia directa de las fórmulas de la selección",
+"b": "Ctrl+Mayús+Corchete de apertura ([)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar todas las celdas con referencia directa o indirecta de las fórmulas de la selección",
+"b": "Ctrl+Mayús+llave izquierda ({)"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar solo las celdas con fórmulas que hagan referencia directa a la celda activa",
+"b": "Ctrl+corchete de cierre (])"
+},
+{
+"sec": "Seleccionar celdas, columnas o filas",
+"a": "Seleccionar todas las celdas con fórmulas que hagan referencia directa o indirecta a la celda activa",
+"b": "Ctrl+Mayús+llave derecha ( })"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Copie una selección.",
+"b": "Cmd+C o bien Ctrl+V"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Pegue una selección.",
+"b": "Cmd+V o bien Ctrl+V"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Cortar una selección.",
+"b": "Cmd+X o bien Ctrl+X"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Borrar una selección.",
+"b": "Eliminar"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Suprimir la selección",
+"b": "Ctrl+Guion"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Deshacer la última acción.",
+"b": "Cmd+Z"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Ocultar una columna",
+"b": "Cmd+Paréntesis derecho ()) o bien Ctrl+paréntesis derecho ())"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Mostrar una columna",
+"b": "Cmd+Mayús+paréntesis de cierre ()) o bien Ctrl+Mayús+paréntesis de cierre ())"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Ocultar una fila",
+"b": "Cmd+paréntesis de apertura (() o bien Ctrl+paréntesis de apertura (()"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Mostrar una fila",
+"b": "Cmd+Mayús+paréntesis de apertura (() o bien Ctrl+Mayús+paréntesis de apertura (()"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Mover filas, columnas o celdas seleccionadas",
+"b": "Mantenga presionada la tecla Mayús mientras arrastra una fila, columna o celdas seleccionadas para mover las celdas seleccionadas y colocarlas para insertarlas en una nueva ubicación. Si no mantiene presionada la tecla Mayús mientras arrastra y coloca, las celdas seleccionadas se cortarán desde la ubicación original y se pegarán en la nueva ubicación (no insertadas)."
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Mover de arriba a abajo dentro de la selección (hacia abajo) * *",
+"b": "Entrar"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Mover de abajo a arriba dentro de la selección (hacia arriba) * *",
+"b": "Mayús+Entrar"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Desplazarse de izquierda a derecha dentro de la selección, O bajar una celda si solo una columna está seleccionada",
+"b": "Tecla TAB"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Desplazarse de derecha a izquierda dentro de la selección O subir una celda si solo una columna está seleccionada",
+"b": "Mayús+Tab"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Moverse en el sentido de las agujas del reloj a la siguiente esquina de la selección",
+"b": "Ctrl+Punto (.)"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Grupo celdas seleccionadas",
+"b": "Cmd+Mayús+K"
+},
+{
+"sec": "Trabajar con una selección",
+"a": "Desagrupar las celdas seleccionadas",
+"b": "Cmd+Mayús+J"
+},
+{
+"sec": "Usar gráficos",
+"a": "Para ello",
+"b": "Presione"
+},
+{
+"sec": "Usar gráficos",
+"a": "Insertar una nueva hoja de gráfico *",
+"b": "F11"
+},
+{
+"sec": "Usar gráficos",
+"a": "Recorrer la selección de objeto de gráfico",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Ordenar, filtrar y usar informes de tabla dinámica",
+"a": "Para ello",
+"b": "Presionar"
+},
+{
+"sec": "Ordenar, filtrar y usar informes de tabla dinámica",
+"a": "Verá el cuadro de diálogo Ordenar .",
+"b": "Cmd+Mayús+R"
+},
+{
+"sec": "Ordenar, filtrar y usar informes de tabla dinámica",
+"a": "Agregar o quitar un filtro",
+"b": "Cmd+Mayús+F o bien Ctrl+Mayús+L"
+},
+{
+"sec": "Ordenar, filtrar y usar informes de tabla dinámica",
+"a": "Mostrar la lista de filtros o la página de tabla dinámica para la celda seleccionada.",
+"b": "Opción+Flecha abajo"
+},
+{
+"sec": "Datos del esquema",
+"a": "Para ello",
+"b": "Presione"
+},
+{
+"sec": "Datos del esquema",
+"a": "Mostrar u ocultar símbolos de esquema",
+"b": "Ctrl+8"
+},
+{
+"sec": "Datos del esquema",
+"a": "Ocultar las filas seleccionadas",
+"b": "Ctrl+9"
+},
+{
+"sec": "Datos del esquema",
+"a": "Mostrar las filas seleccionadas",
+"b": "Ctrl+Mayús+paréntesis de apertura (()"
+},
+{
+"sec": "Datos del esquema",
+"a": "Ocultar las columnas seleccionadas",
+"b": "Ctrl+Cero (0)"
+},
+{
+"sec": "Datos del esquema",
+"a": "Mostrar las columnas seleccionadas",
+"b": "Ctrl+Mayús+paréntesis de cierre ())"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Para realizar esta acción",
+"b": "Usar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Envíe su indicación en el panel de tareas de Copilot en Excel.",
+"b": "Entrar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Detener o cancelar la solicitud de Copilot en Excel.",
+"b": "Esc"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Acepta los cambios realizados por Copilot en Excel.",
+"b": "Cmd+Retorno"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel.",
+"b": "Cmd+Mayús+M"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel.",
+"b": "Opción+C"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel.",
+"b": "Cmd+J"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Inicie el dictado de Copilot en Excel.",
+"b": "Opción+Mayús+H"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Abra el panel de tareas de Copilot en Excel.",
+"b": "Cmd+Ctrl+I"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel.",
+"b": "Mayús+F6"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Para realizar esta acción",
+"b": "Presione"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar la ventana Ayuda .",
+"b": "F1"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Inserte una nota o abra y edite una nota de celda.",
+"b": "Mayús+F2"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Inserte un comentario encadenado o ábralo y responda a un comentario encadenado.",
+"b": "Cmd+Mayús+F2"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir el cuadro de diálogo Guardar .",
+"b": "OPCIÓN+F2"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir el Generador de fórmulas",
+"b": "Mayús+F3"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir el cuadro de diálogo Definir nombre",
+"b": "Cmd+F3"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Cierre una ventana o un cuadro de diálogo.",
+"b": "Cmd+F4"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Muestra el cuadro de diálogo Ir a la página",
+"b": "F5"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar el cuadro de diálogo Buscar .",
+"b": "Mayús+F5"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Ir al cuadro de diálogo Buscar hoja .",
+"b": "Ctrl+F5"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Cambie el foco entre la hoja de cálculo, la cinta de opciones, el panel de tareas y la barra de estado.",
+"b": "F6 o Mayús+F6"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Revisar la ortografía.",
+"b": "F7"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir el diccionario de sinónimos",
+"b": "Mayús+F7 o bien Ctrl+Opción+Cmd+R"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Extender la selección",
+"b": "F8"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Agregar a la selección",
+"b": "Mayús+F8"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar el cuadro de diálogo Macros .",
+"b": "OPCIÓN+F8"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Calcular todos los libros abiertos",
+"b": "F9"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Calcular la hoja activa",
+"b": "Mayús+F9"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Minimizar la ventana activa",
+"b": "Ctrl+F9"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Muestra el menú contextual o el menú \"clic con el botón derecho\".",
+"b": "Mayús+F10"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar un menú emergente (en el menú del botón objeto), por ejemplo, haciendo clic en el botón después de pegarlo en una hoja",
+"b": "Opción+Mayús+F10"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Maximizar o restaurar la ventana activa",
+"b": "Ctrl+F10 o bien Cmd+F10"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Insertar una nueva hoja de gráfico*",
+"b": "F11"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Insertar una nueva hoja*",
+"b": "Mayús+F11"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Inserte una Excel hoja de macros 4.0.",
+"b": "Cmd+F11"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir Visual Basic .",
+"b": "OPCIÓN+F11"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar el cuadro de diálogo Guardar como .",
+"b": "F12"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Mostrar el cuadro de diálogo Abrir .",
+"b": "Cmd+F12"
+},
+{
+"sec": "Usar métodos abreviados de tecla de función",
+"a": "Abrir el Editor de consultas de Power Query",
+"b": "OPCIÓN+F12"
+},
+{
+"sec": "Dibujo",
+"a": "Para",
+"b": "Presionar"
+},
+{
+"sec": "Dibujo",
+"a": "Activar y desactivar el modo Dibujo .",
+"b": "Cmd+Ctrl+Z"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Para hacer esto",
+"b": "Pulse"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Desplazarse una celda a la derecha",
+"b": "Tecla TAB"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha.",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Ir a la siguiente hoja del libro",
+"b": "Opción+tecla de dirección derecha"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Ir a la hoja anterior del libro",
+"b": "Opción+tecla de dirección izquierda"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Para ello",
+"b": "Pulse"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Aplicar borde de contorno",
+"b": "+Opción+0"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Quitar borde de contorno",
+"b": "+Opción+guion (-)"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Ocultar columna(s)",
+"b": "+0"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Ocultar fila(s)",
+"b": "Ctrl+9"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar columna(s)",
+"b": "Mayús+ +0 o Mayús+Ctrl+paréntesis de cierre ())"
+},
+{
+"sec": "Dar formato y editar datos",
+"a": "Mostrar fila(s)",
+"b": "Mayús+Ctrl+9 o Mayús+Ctrl+paréntesis de apertura (()"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Para hacer esto",
+"b": "Pulse"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Ir a la celda de la derecha.",
+"b": "Tecla TAB"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Moverse por el texto de la celda",
+"b": "Teclas de dirección"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Copie una selección.",
+"b": "+C"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Pegue una selección.",
+"b": "+V"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Cortar una selección.",
+"b": "+X"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Deshacer una acción.",
+"b": "+Z"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Rehacer una acción",
+"b": "+Y o +Mayús+Z"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Aplicar formato en negrita al texto seleccionado.",
+"b": "+B"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Aplicar formato en cursiva al texto seleccionado.",
+"b": "+I"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Subrayar el texto seleccionado.",
+"b": "+U"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Seleccionar todo.",
+"b": "+A"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Seleccione un rango de celdas.",
+"b": "Mayús + tecla de flecha derecha o izquierda"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Insertar un salto de línea en una celda",
+"b": "+Opción+Retorno o Ctrl+Opción+Retorno"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mover el cursor al principio de la línea actual dentro de una celda",
+"b": "+Tecla de flecha izquierda"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mover el cursor al final de la línea actual dentro de una celda",
+"b": "+Tecla de dirección derecha"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mover el cursor al principio de la línea actual.",
+"b": "+Tecla de dirección arriba"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Desplazar el cursor al final de la línea actual",
+"b": "+Tecla de dirección abajo"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Dentro de una celda que contiene un salto de línea, mover el cursor hacia arriba por un párrafo",
+"b": "Opción+tecla de flecha arriba"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Dentro de una celda que contiene un salto de línea, mover el cursor hacia abajo por un párrafo",
+"b": "Opción+flecha abajo"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mover el cursor una palabra a la derecha.",
+"b": "Opción+tecla de dirección derecha"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Mover el cursor una palabra a la izquierda.",
+"b": "Opción+tecla de dirección izquierda"
+},
+{
+"sec": "Trabajar en celdas o la barra de fórmulas",
+"a": "Insertar una fórmula autosuma.",
+"b": "Mayús+ +T"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Para hacer esto",
+"b": "Pulse"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Desplazarse una celda a la derecha",
+"b": "Tecla TAB"
+},
+{
+"sec": "Navegar por la hoja de cálculo",
+"a": "Mover el cursor una celda hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha.",
+"b": "Teclas de dirección arriba, abajo, izquierda o derecha"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Para hacer esto",
+"b": "Pulse"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Mover una hoja de cálculo",
+"b": "Ctrl+S"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Copie una selección.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Pegue una selección.",
+"b": "Ctrl+V"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Cortar una selección.",
+"b": "Ctrl+X"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Deshacer una acción.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Rehacer una acción",
+"b": "Ctrl+Y"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Aplicar el formato de negrita.",
+"b": "Ctrl+N"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Aplicar el formato de cursiva.",
+"b": "Ctrl+I"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Aplicar formato de subrayado",
+"b": "Ctrl+S"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Seleccionar todo.",
+"b": "Ctrl+A"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Find.",
+"b": "Ctrl+B"
+},
+{
+"sec": "Trabajar con celdas",
+"a": "Insertar un salto de línea en una celda",
+"b": "Alt+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Ir a una celda específica",
+"b": "Ctrl+G"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Moverse hacia abajo.",
+"b": "Av pág o flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Moverse hacia arriba.",
+"b": "Re pág o flecha arriba"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Imprimir un libro.",
+"b": "Ctrl+P"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Copiar selección.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Pegar selección",
+"b": "Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cortar selección.",
+"b": "Ctrl+X"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Deshacer una acción.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir libro",
+"b": "Ctrl+A"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Cerrar libro",
+"b": "Ctrl+W"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el cuadro de diálogo Guardar como .",
+"b": "Alt + F2"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Use Buscar .",
+"b": "Ctrl+B o Mayús+F3"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Aplicar el formato de negrita.",
+"b": "Ctrl+Alt+N"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Abrir el menú contextual.",
+"b": "Windows teclados: Mayús+F10 o tecla menú de Windows Otros teclados: Mayús+F10"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Saltar a Búsqueda .",
+"b": "Alt+Q"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Repetir búsqueda , hacia abajo",
+"b": "Mayús+F4"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Repetir búsqueda , hacia arriba",
+"b": "Ctrl+Mayús+F4"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Insertar un gráfico",
+"b": "Alt+F1"
+},
+{
+"sec": "Métodos abreviados de teclado más usados",
+"a": "Muestra las teclas de acceso (comandos de la cinta de opciones) en la cinta clásica al usar narrador.",
+"b": "Alt Period (.)"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Para realizar esta acción",
+"b": "Presione"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Vaya al campo de búsqueda de la cinta de opciones y escriba un término de búsqueda.",
+"b": "Alt+Tecla del logotipo de Windows, Q"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir el menú Archivo .",
+"b": "Alt+Tecla del logotipo de Windows, F"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir la pestaña Inicio y dar formato a texto y números o usar otras herramientas como Buscar y filtrar",
+"b": "Alt+Tecla del logotipo de Windows, H"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir la pestaña Insertar e insertar una función, una tabla, un gráfico, un hipervínculo o un comentario.",
+"b": "Alt+Tecla del logotipo de Windows, N"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir la pestaña Datos y actualizar las conexiones o usar herramientas de datos.",
+"b": "Alt+Tecla del logotipo de Windows, A"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir la pestaña Revisar y usar el Comprobador de accesibilidad o trabajar con comentarios.",
+"b": "Alt+Tecla del logotipo de Windows, R"
+},
+{
+"sec": "Ir a las teclas de acceso de la cinta de opciones",
+"a": "Abrir la pestaña Vista para elegir una vista, inmovilizar filas o columnas en la hoja de cálculo o mostrar las líneas de división y los encabezados",
+"b": "Alt+Tecla del logotipo de Windows, W"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Para hacer esto",
+"b": "Presione"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Seleccionar la pestaña activa de la cinta de opciones y activar las teclas de acceso.",
+"b": "Alt+Tecla del logotipo de Windows. Para ir a otra pestaña, use las teclas de acceso o la tecla Tab."
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Mover el foco a comandos en la cinta.",
+"b": "Entrar y, luego, TAB o Mayús+TAB"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Activar el botón seleccionado.",
+"b": "Barra espaciadora o Entrar"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Úselo para abrir la lista de un comando seleccionado.",
+"b": "Barra espaciadora o Entrar"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Abrir el menú de un botón seleccionado.",
+"b": "Alt+flecha abajo"
+},
+{
+"sec": "Trabajar en las pestañas y los menús de la cinta",
+"a": "Cuando un menú o submenú está abierto, úselo para moverse al siguiente comando.",
+"b": "Esc"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Insertar una fila encima de la actual",
+"b": "Alt+Windows logo key+H, I, R"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Insertar una columna a la izquierda de la columna actual",
+"b": "Alt+Windows logo key+H, I, C"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Cortar selección.",
+"b": "Ctrl+X"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Copiar selección.",
+"b": "Ctrl+C"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Pegar selección",
+"b": "Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Deshacer una acción.",
+"b": "Ctrl+Z"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Rehacer una acción",
+"b": "Ctrl+Y"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Úselo para comenzar una nueva línea en la misma celda.",
+"b": "Alt+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Insertar un hipervínculo.",
+"b": "Ctrl+Alt+K"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Insertar una tabla.",
+"b": "Ctrl+I"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Úselo para insertar una función.",
+"b": "Mayús+F3"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Aumentar el tamaño de la fuente.",
+"b": "Ctrl+Mayús+corchete angular de cierre (>)"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Reducir el tamaño de la fuente.",
+"b": "Ctrl+Mayús+corchete angular de apertura (<)"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Aplique un filtro.",
+"b": "Alt+Windows logo key+A, T"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Reaplicar un filtro",
+"b": "Ctrl+Alt+L"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de celdas",
+"a": "Active y desactive Autofiltro .",
+"b": "Ctrl+Mayús+L"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Completar la escritura de la celda y seleccionar la celda de abajo",
+"b": "Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Completar la escritura de la celda y seleccionar la celda de arriba",
+"b": "Mayús+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Completar la escritura de la celda y seleccionar la siguiente celda en la fila",
+"b": "Tecla TAB"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Completar la escritura de la celda y seleccionar la celda anterior en la fila",
+"b": "Mayús+TAB"
+},
+{
+"sec": "Métodos abreviados de teclado para la inserción de datos",
+"a": "Cancelar la entrada de celda",
+"b": "Esc"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Para realizar esta acción",
+"b": "Presione"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Recorrer todas las distintas combinaciones de referencias absolutas y relativas cuando se selecciona una referencia de celda o rango.",
+"b": "F4"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Editar la celda seleccionada",
+"b": "Eliminar"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Borrar la celda seleccionada y empezar a editar",
+"b": "Retroceso"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Ir al principio de línea de celda",
+"b": "Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Ir al final de línea de celda",
+"b": "Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Seleccione a la derecha por un carácter.",
+"b": "Mayús+Flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Seleccionar hasta el principio de datos de celda",
+"b": "Mayús+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Seleccione hasta el final de los datos de la celda.",
+"b": "Mayús+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Seleccione a la izquierda un carácter.",
+"b": "Mayús+Flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Extender la selección a la última celda que no esté en blanco de la misma columna o fila que la celda activa, o si la siguiente celda está en blanco, a la siguiente celda que no esté en blanco.",
+"b": "Ctrl+Mayús+Flecha derecha o Ctrl+Mayús+Flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Insertar la fecha actual.",
+"b": "Ctrl+punto y coma (;)"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Insertar la hora actual.",
+"b": "Ctrl+Mayús+Punto y coma (;)"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Copiar la fórmula de la celda superior",
+"b": "Ctrl+apóstrofo (')"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Copiar el valor de la celda superior",
+"b": "Ctrl+Mayús+Apóstrofo (')"
+},
+{
+"sec": "Métodos abreviados de teclado para la edición de datos en celdas",
+"a": "Inserta un argumento de fórmula.",
+"b": "Ctrl+Mayús+A"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Para ello",
+"b": "Presione"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar el formato de negrita.",
+"b": "Ctrl+N"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar el formato de cursiva.",
+"b": "Ctrl+I"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar formato de subrayado",
+"b": "Ctrl+S"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Pegar el formato",
+"b": "Mayús+Ctrl+V"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplica el contorno a las celdas seleccionadas.",
+"b": "Ctrl+Mayús+Y comercial (&)"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar el formato de número",
+"b": "Ctrl+Mayús+1"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplique el formato de hora",
+"b": "Ctrl+Mayús+2"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplique el formato de fecha",
+"b": "Ctrl+Mayús+3"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplique el formato de moneda",
+"b": "Ctrl+Mayús+4"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar el formato de porcentajes",
+"b": "Ctrl+Mayús+5"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplique el formato científico",
+"b": "Ctrl+Mayús+6"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Aplicar borde exterior",
+"b": "CTRL+Mayús+7"
+},
+{
+"sec": "Métodos abreviados de teclado para dar formato a celdas",
+"a": "Abrir el cuadro de diálogo Formato de número",
+"b": "Ctrl+1"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Moverse hacia arriba una celda.",
+"b": "Flecha arriba o Mayús+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Moverse hacia abajo una celda.",
+"b": "Flecha abajo o Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Moverse hacia la derecha una celda.",
+"b": "La tecla TAB o la tecla de flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Ir al principio de la fila",
+"b": "Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Ir a la celda A1",
+"b": "Ctrl+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Ir a la última celda del rango utilizado",
+"b": "Ctrl+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Bajar una pantalla (28 filas)",
+"b": "Página abajo"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Subir una pantalla (28 filas)",
+"b": "Página arriba"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Desplazarse hasta el extremo de la región de datos actual.",
+"b": "Ctrl+Flecha derecha o Ctrl+flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Mover entre la cinta de opciones y el contenido del libro",
+"b": "Ctrl+F6"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Desplazarse a una pestaña diferente de la cinta de opciones",
+"b": "Tecla TAB Presione Entrar para ir a esa pestaña de la cinta."
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Insertar una nueva hoja",
+"b": "Mayús+F11"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Pasar a la pestaña siguiente",
+"b": "Ctrl + Alt + AV Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Cambie a la siguiente hoja (cuando se encuentra en Microsoft Teams o en un explorador distinto de Chrome).",
+"b": "Ctrl+Av Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Pasar a la pestaña anterior",
+"b": "Ctrl + Alt + Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para mover y desplazarse dentro de hojas de cálculo",
+"a": "Cambiar a la hoja anterior (en Microsoft Teams o en un explorador distinto de Chrome).",
+"b": "Ctrl+Re Pág"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Abrir un menú o explorar más",
+"b": "Alt+flecha abajo"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Cierre el menú o explore en profundidad.",
+"b": "Alt+tecla de dirección arriba"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Seguir hipervínculo",
+"b": "Ctrl+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Abrir una nota para editarla",
+"b": "Mayús+F2"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Abrir y responder a un comentario encadenado.",
+"b": "Ctrl+Mayús+F2"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Girar un objeto a la izquierda",
+"b": "Alt+Tecla de dirección izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con objetos",
+"a": "Girar un objeto a la derecha",
+"b": "Alt+flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Seleccione un rango de celdas.",
+"b": "Mayús+Teclas de dirección"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Seleccionar una columna completa",
+"b": "Ctrl+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Seleccionar toda una fila",
+"b": "Mayús+barra espaciadora"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Extender la selección a la última celda que no esté en blanco de la misma columna o fila que la celda activa, o si la siguiente celda está en blanco, a la siguiente celda que no esté en blanco.",
+"b": "Ctrl+Mayús+Flecha derecha o Ctrl+Mayús+Flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Agregue una celda o un rango de celdas no adyacentes a una selección de celdas",
+"b": "Mayús+F8"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Inserta celdas, filas o columnas.",
+"b": "Ctrl+Signo más (+)"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Eliminar celdas, filas o columnas",
+"b": "Ctrl+signo menos (-)"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Ocultar filas",
+"b": "Ctrl+9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Mostrar filas",
+"b": "CTRL+Mayús+9"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Ocultar columnas",
+"b": "Ctrl+0"
+},
+{
+"sec": "Métodos abreviados de teclado para trabajar con celdas, filas, columnas y objetos",
+"a": "Mostrar columnas",
+"b": "CTRL+Mayús+0"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Para realizar esta acción",
+"b": "Pulse"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "De arriba a abajo (o hacia delante en la selección)",
+"b": "Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Desplazarse de abajo a arriba (o volver a través de la selección).",
+"b": "Mayús+Entrar"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Mover hacia delante en una fila (o hacia abajo a través de una sola columna de selección)",
+"b": "Tecla TAB"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Mover hacia atrás en una fila (o hacia arriba a través de una selección de una sola columna)",
+"b": "Mayús+TAB"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Desplazarse a una celda activa.",
+"b": "Mayús+Retroceso"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Se desplaza a la celda activa y mantiene la selección.",
+"b": "Ctrl+Retroceso"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Girar la celda activa a través de las esquinas del rango seleccionado",
+"b": "Ctrl+Punto (.)"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Desplazarse al siguiente rango seleccionado",
+"b": "Ctrl + Alt + Flecha derecha"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Desplazarse al anterior rango seleccionado",
+"b": "Ctrl + Alt + Flecha izquierda"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Extender la selección a la última celda de la hoja",
+"b": "Ctrl+Mayús+Fin"
+},
+{
+"sec": "Métodos abreviados de teclado para moverse dentro de un rango seleccionado",
+"a": "Extender la selección a la primera celda de la hoja",
+"b": "Ctrl+Mayús+Inicio"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Para realizar esta acción",
+"b": "Presionar"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Calcular libro (actualización)",
+"b": "F9"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Realice el cálculo completo.",
+"b": "Ctrl+Mayús+Alt+F9"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Actualizar datos externos",
+"b": "ALT+F5"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Actualizar todos los datos externos",
+"b": "Ctrl+Alt+F5"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Aplicar suma automática.",
+"b": "Alt+signo igual (=)"
+},
+{
+"sec": "Métodos abreviados de teclado para el cálculo de datos",
+"a": "Aplicar relleno rápido .",
+"b": "Ctrl+E"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Para realizar esta acción",
+"b": "Usar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Envíe su indicación en el panel de tareas de Copilot en Excel.",
+"b": "Entrar o Entrar"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Detener o cancelar la solicitud de Copilot en Excel.",
+"b": "Esc"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Acepta los cambios realizados por Copilot en Excel.",
+"b": "Ctrl+Entrar o Cmd+Retorno"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Cambiar entre el modo de edición, chat y plan en el panel de tareas de Copilot en Excel.",
+"b": "Ctrl+Mayús+M o Cmd+Mayús+M"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Navegue entre las respuestas del chat en el panel de tareas de Copilot en Excel.",
+"b": "Alt+C u Opción+C"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Confirme el uso de los archivos seleccionados en el panel de tareas de Copilot en Excel.",
+"b": "Ctrl+J o Cmd+J"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Inicie el dictado de Copilot en Excel.",
+"b": "Alt+Mayús+H u Opción+Mayús+H"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Abra el panel de tareas de Copilot en Excel.",
+"b": "Alt+C o Cmd+Ctrl+I"
+},
+{
+"sec": "Copilot en Excel",
+"a": "Mover el foco entre la cuadrícula de Excel y el panel de tareas de Copilot en Excel.",
+"b": "F6 o Mayús+F6"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Para realizar esta acción",
+"b": "Presionar"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Cíclico entre regiones de punto de referencia.",
+"b": "CTRL + F6 o CTRL + Mayús + F6"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Moverse dentro de una región de punto de referencia.",
+"b": "Tecla TAB o Mayús+TAB"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Vaya al campo de búsqueda para ejecutar cualquier comando.",
+"b": "Alt+Q"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Mostrar u ocultar sugerencias clave o acceder a la cinta de opciones",
+"b": "Alt+Tecla del logotipo de Windows."
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Editar la celda seleccionada",
+"b": "F2"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Ir a una celda específica",
+"b": "Ctrl+G"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Desplazarse a otra hoja de cálculo del libro.",
+"b": "CTRL + Alt + Retroceder Página o CTRL + Alt + Avanzar página"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Abrir el menú contextual.",
+"b": "Mayús+F10 o tecla de menú de Windows"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer encabezado de fila",
+"b": "CTRL + Alt + Mayús + T"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer fila hasta la celda activa",
+"b": "CTRL + Alt + Mayús + Inicio"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer fila a partir de la celda activa",
+"b": "CTRL + Alt + Mayús + Fin"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer encabezado de columna",
+"b": "CTRL + Alt + Mayús + H"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer columna hasta la celda activa",
+"b": "CTRL + Alt + Mayús + Retroceder Página"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Leer columna a partir de la celda activa",
+"b": "Ctrl+Alt+Mayús+Re Pág"
+},
+{
+"sec": "Menú de accesos directos de accesibilidad",
+"a": "Abra una lista de opciones de movimiento dentro de un cuadro de diálogo.",
+"b": "Ctrl+Alt+Barra espaciadora"
+},
+{
+"sec": "Controlar métodos abreviados de teclado en Microsoft Excel en la Web reemplazando los métodos abreviados de teclado del explorador",
+"a": "",
+"b": "En Excel para la Web, seleccione Métodos abreviados de teclado de la Ayuda >. Buscar cualquier método abreviado de teclado Elegir la categoría de accesos directos que se mostrarán en la lista Seleccione Invalidar accesos directos del explorador. Seleccione Mostrar invalidaciones para mostrar invalidaciones de acceso directo en el cuadro de diálogo. Seleccione Cerrar ."
+}
+]

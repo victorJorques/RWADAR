@@ -1,0 +1,1112 @@
+{
+  "id": "n0m1",
+  "nivel": "n0",
+  "titulo": "Conoce Excel",
+  "intro": "En casi cualquier oficina, los pedidos, las facturas, los turnos y los informes viven en hojas de Excel, y lo primero que te pedirán es que encuentres un dato o mires una celda concreta. En este módulo pierdes el miedo a la pantalla: sabrás cómo se llama cada parte, cómo se nombra cada casilla y cómo moverte rápido por una hoja.",
+  "repaso_inicial": [
+    {
+      "id": "n0m1-r1",
+      "modo": "respuesta_corta",
+      "pregunta": "Antes de empezar, una cuenta de las de toda la vida. En el almacén piden **3 cajas** de bridas y cada caja cuesta **10 €**. ¿Cuántos euros cuesta el pedido? (Escribe solo el número.)",
+      "aceptadas": [
+        "30",
+        "30 €",
+        "30€",
+        "30 euros",
+        "30,00",
+        "30,00 €",
+        "treinta"
+      ],
+      "explicacion": "3 cajas × 10 € = 30 €. Esta cuenta la sabes hacer de cabeza; en este curso aprenderás a que Excel la haga por ti con cientos de pedidos a la vez."
+    },
+    {
+      "id": "n0m1-r2",
+      "modo": "test",
+      "pregunta": "Tienes que apuntar 20 proveedores con su nombre, su teléfono y su ciudad. ¿Qué forma de organizarlo es más fácil de leer y de revisar?",
+      "opciones": [
+        {
+          "texto": "Una tabla: una fila por proveedor y una columna para cada dato (nombre, teléfono, ciudad).",
+          "correcta": true,
+          "porque": "Exacto. Cada dato en su sitio: mirando hacia abajo ves todos los teléfonos, y mirando de lado ves todo sobre un proveedor. Así funciona Excel por dentro."
+        },
+        {
+          "texto": "Un párrafo seguido con todos los datos separados por comas.",
+          "correcta": false,
+          "porque": "Se puede leer, pero para encontrar un teléfono tendrías que repasarlo todo. Un texto corrido no se puede ordenar ni contar."
+        },
+        {
+          "texto": "Cada proveedor en una nota adhesiva distinta.",
+          "correcta": false,
+          "porque": "Las notas se pierden y no se pueden ordenar ni comparar de un vistazo. Una tabla lo junta todo en un mismo sitio."
+        }
+      ],
+      "explicacion": "Una fila por cosa y una columna por dato: esa es la idea que vas a usar en cada hoja de Excel de tu vida laboral."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n0m1l1",
+      "titulo": "Qué es Excel y para qué lo usarás",
+      "minutos": 12,
+      "objetivo": "Explicar con tus palabras qué es Excel, qué son un libro, una hoja y una celda, y hacer que Excel calcule una cuenta por ti.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Bienvenida a Electro Cierzo. Te toca la primera: en el almacén tenemos cajas de bridas en tres estanterías, 14 en una, 9 en otra y 6 en la última. Apúntame el total en Excel, que de cabeza siempre alguien se equivoca.",
+        "logro": "Ya sabes qué es un libro de Excel y has hecho tu primera cuenta en una hoja, como se hace en el almacén de verdad."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Imagina un **cuaderno de cuadros** enorme, como los del colegio. En cada cuadrito escribes una cosa: un nombre, un precio, una fecha.\n\n**Excel es eso, pero que además hace las cuentas solo.** Si apuntas lo que vende cada comercial, Excel te dice el total. Y si mañana cambia un número, el total se corrige al momento, sin borrar ni volver a sumar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e1",
+          "modo": "test",
+          "pregunta": "Con lo que acabas de leer, ¿qué es Excel?",
+          "opciones": [
+            {
+              "texto": "Un cuaderno de cuadros en el ordenador que además hace las cuentas solo.",
+              "correcta": true,
+              "porque": "Eso es. Escribes datos en casillas y Excel calcula con ellos. Ya tienes la idea principal de todo el curso."
+            },
+            {
+              "texto": "Un programa para escribir cartas y documentos largos.",
+              "correcta": false,
+              "porque": "Para cartas y documentos se usa Word. Excel es para datos en casillas: listas, cuentas y tablas."
+            },
+            {
+              "texto": "Una calculadora que solo usan los contables.",
+              "correcta": false,
+              "porque": "Calcula, sí, pero también guarda listas, fechas y nombres, y lo usan todos los departamentos, no solo contabilidad."
+            }
+          ],
+          "explicacion": "Primera pantalla superada. Quédate con la imagen del cuaderno de cuadros: te servirá durante todo el curso."
+        },
+        {
+          "tipo": "texto",
+          "md": "Tres palabras que oirás todos los días en la oficina:\n\n- **Libro**: el archivo entero, el que guardas y envías por correo. Por ejemplo, `Pedidos 2026.xlsx`.\n- **Hoja**: cada página del libro. Un libro puede tener varias: «Enero», «Febrero», «Marzo»…\n- **Celda**: cada casilla de una hoja. En una celda va **un solo dato**.\n\nComo un archivador: el libro es el archivador, las hojas son sus páginas y las celdas, los cuadritos de cada página."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e2",
+          "modo": "ordenar",
+          "enunciado": "Ordena de **lo más grande a lo más pequeño**: lo que contiene a lo demás va primero.",
+          "pasos": [
+            "Libro (el archivo que guardas y envías)",
+            "Hoja (cada página del libro)",
+            "Celda (cada casilla de una hoja)"
+          ],
+          "explicacion": "Un libro tiene hojas y cada hoja tiene celdas. Cuando Marta te diga «te mando el libro de cobros, mira la hoja de octubre», ya sabes de qué habla."
+        },
+        {
+          "tipo": "pantalla",
+          "md": "Así se ve Excel cuando abres un libro. **Toca cualquier parte** para curiosear qué es. No te preocupes por memorizarlo: en la próxima lección las verás una a una. Por ahora fíjate en la cuadrícula del centro: esas son las celdas."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Para qué se usa Excel en una empresa como Electro Cierzo? **En todos los departamentos**:\n\n- **Listas**: clientes, proveedores, la plantilla, el material del almacén.\n- **Cuentas**: el importe de una factura, las ventas del mes, las horas extra.\n- **Informes**: el resumen que Carmen, la directora, lee el lunes.\n\nNo es una herramienta de contables: la usan comerciales, recursos humanos, compras y, desde hoy, tú."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e3",
+          "modo": "test",
+          "pregunta": "Lucía, de Recursos Humanos, dice: «Yo no necesito Excel, eso es cosa de contabilidad». ¿Qué le contestarías?",
+          "opciones": [
+            {
+              "texto": "Que también le sirve: para la lista de la plantilla, las vacaciones o las horas de cada persona.",
+              "correcta": true,
+              "porque": "Bien visto. Recursos Humanos vive de listas y fechas, justo lo que Excel ordena y cuenta mejor."
+            },
+            {
+              "texto": "Que tiene razón: Excel es solo para cuentas de dinero.",
+              "correcta": false,
+              "porque": "Es un error muy común. Excel guarda y cuenta cualquier dato: nombres, fechas, horas, unidades… no solo euros."
+            },
+            {
+              "texto": "Que solo le hace falta si sabe muchas matemáticas.",
+              "correcta": false,
+              "porque": "No hace falta saber matemáticas: Excel hace las cuentas. Tú solo le dices qué cuenta quieres."
+            }
+          ],
+          "explicacion": "Excel sirve en cada departamento. Por eso saber usarlo bien es de lo más pedido en las ofertas de empleo de oficina."
+        },
+        {
+          "tipo": "texto",
+          "md": "**No hace falta saber matemáticas.** Tú decides qué cuenta quieres y Excel la hace sin equivocarse.\n\nPara pedirle una cuenta, escribes en una celda el signo **igual** (`=`) y después la cuenta. Por ejemplo, `=2+3`.\n\nEl `=` es como decirle a Excel: «esto no es para copiarlo tal cual, **calcúlalo**». Al pulsar **Intro** (la tecla grande de salto de línea), en la celda aparece el resultado: **5**."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: tu primera cuenta",
+          "pasos": [
+            {
+              "md": "Haz clic en una celda vacía. Queda rodeada por un recuadro: es la celda donde vas a escribir."
+            },
+            {
+              "md": "Escribe `=2+3`. Fíjate: empieza por el signo igual."
+            },
+            {
+              "md": "Pulsa **Intro**. En la celda ya no ves `=2+3`, ves el resultado: **5**.",
+              "hoja": {
+                "celdas": {
+                  "A1": "Cuenta",
+                  "A2": "=2+3"
+                },
+                "columnas": 3,
+                "filas": 3
+              }
+            },
+            {
+              "md": "La cuenta sigue guardada «por dentro» de la celda. Cuando vuelvas a seleccionarla, Excel te la enseña en la parte de arriba. Eso lo verás en la próxima lección."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e4",
+          "modo": "formula",
+          "enunciado": "Te toca. Haz clic en la celda **B2** (la que está marcada) y escribe exactamente `=2+3`. Después pulsa **Intro**. Debe salir **5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Prueba",
+              "B1": "Resultado",
+              "A2": "Mi primera cuenta"
+            },
+            "anchos": {
+              "A": 18
+            },
+            "columnas": 3,
+            "filas": 3
+          },
+          "objetivo": "B2",
+          "solucion": "=2+3",
+          "alternativas": [
+            "=3+2"
+          ],
+          "errores_tipicos": [
+            "=2*3",
+            "=2-3",
+            "=23"
+          ],
+          "pistas": [
+            "Todo lo que escribas en B2 tiene que empezar por el signo igual.",
+            "El signo igual está en la tecla del 0, en la fila de arriba del teclado: mantén pulsada Mayús (la tecla de las mayúsculas, con una flecha hacia arriba) y pulsa el 0.",
+            "Escribe en B2, sin espacios: =2+3 y pulsa Intro."
+          ],
+          "explicacion": "Excel acaba de calcular por ti. Has escrito una **fórmula**: una cuenta que empieza por `=`. Todo lo que harás en este curso, desde una factura hasta un informe para la dirección, se basa en esto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e5",
+          "modo": "predice",
+          "enunciado": "Andrés ha recibido **120** rollos de cable esta mañana y **35** esta tarde. En C1 alguien ha escrito `=120+35`. Antes de verlo, ¿qué número aparecerá en la celda?",
+          "hoja": {
+            "celdas": {
+              "A1": "Rollos recibidos hoy"
+            },
+            "anchos": {
+              "A": 20
+            },
+            "columnas": 3,
+            "filas": 2
+          },
+          "celda": "C1",
+          "formula": "=120+35",
+          "explicacion": "120 + 35 = 155. En la celda se ve el resultado, no la cuenta: por eso conviene saber que detrás de un número puede haber una fórmula.",
+          "respuesta": "155"
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un consejo de compañera para tu primer día: **no tengas miedo a tocar.** Si borras algo sin querer o te sale algo raro, pulsa [[Ctrl]]+[[Z]] y Excel deshace lo último que hiciste. Puedes pulsarlo varias veces para ir hacia atrás. Yo lo uso veinte veces al día."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Deshacer",
+          "md": "[[Ctrl]]+[[Z]]: deshace lo último. Mantén pulsada la tecla **Ctrl** (abajo a la izquierda) y, sin soltarla, pulsa la **Z**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e6",
+          "modo": "test",
+          "pregunta": "Estabas mirando la lista de pedidos y, sin querer, has borrado el nombre de un cliente. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Pulso [[Ctrl]]+[[Z]] para deshacer y el nombre vuelve.",
+              "correcta": true,
+              "porque": "Así se hace. Deshacer recupera lo que acabas de cambiar. Casi todo en Excel tiene vuelta atrás."
+            },
+            {
+              "texto": "Cierro Excel sin guardar y pido que me manden el archivo otra vez.",
+              "correcta": false,
+              "porque": "Funcionaría, pero perderías todo lo demás que hubieras hecho y molestarías a un compañero. [[Ctrl]]+[[Z]] lo arregla en un segundo."
+            },
+            {
+              "texto": "Lo dejo así: ya no se puede recuperar.",
+              "correcta": false,
+              "porque": "Sí se puede. Con [[Ctrl]]+[[Z]] Excel deshace lo último que hiciste, y puedes pulsarlo varias veces."
+            }
+          ],
+          "explicacion": "Recuerda [[Ctrl]]+[[Z]]: es tu red de seguridad. Con ella puedes probar sin miedo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l1-e7",
+          "modo": "formula",
+          "enunciado": "**El encargo de Andrés.** Hay cajas de bridas en tres estanterías: **14**, **9** y **6**. En la celda **B5** escribe una fórmula que sume las tres cantidades. Debe salir **29**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Ubicación",
+              "B1": "Cajas de bridas",
+              "A2": "Estantería 1",
+              "B2": 14,
+              "A3": "Estantería 2",
+              "B3": 9,
+              "A4": "Estantería 3",
+              "B4": 6,
+              "A5": "Total"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 16
+            },
+            "columnas": 3,
+            "filas": 6
+          },
+          "objetivo": "B5",
+          "solucion": "=14+9+6",
+          "alternativas": [
+            "=B2+B3+B4",
+            "=6+9+14"
+          ],
+          "errores_tipicos": [
+            "=14+9",
+            "=14+6",
+            "=1496"
+          ],
+          "pistas": [
+            "Empieza como en el ejercicio anterior: con el signo igual.",
+            "Tienes que sumar los tres números, uno detrás de otro, con el signo + entre ellos.",
+            "Escribe en B5: =14+9+6 y pulsa Intro."
+          ],
+          "explicacion": "Total: **29 cajas**. Acabas de resolver tu primer encargo real con Excel: un recuento de almacén. En el módulo 3 aprenderás a que la fórmula use las celdas, para que el total cambie solo cuando cambie una cantidad."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m1l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Sin mirar arriba: ¿cómo se llama cada casilla de una hoja de Excel, donde va un solo dato?",
+          "aceptadas": [
+            "celda",
+            "una celda",
+            "la celda",
+            "celdas"
+          ],
+          "explicacion": "Celda. Libro = el archivo; hoja = cada página; celda = cada casilla."
+        },
+        {
+          "id": "n0m1l1-q2",
+          "modo": "test",
+          "pregunta": "Marta te dice: «Te mando por correo el libro de cobros». ¿Qué vas a recibir?",
+          "opciones": [
+            {
+              "texto": "Un archivo de Excel entero, que puede tener varias hojas dentro.",
+              "correcta": true,
+              "porque": "Eso es: en Excel, «libro» es el archivo completo."
+            },
+            {
+              "texto": "Una sola casilla con el total de cobros.",
+              "correcta": false,
+              "porque": "Una casilla es una celda. El libro es el archivo entero, con todas sus hojas y celdas."
+            },
+            {
+              "texto": "Un libro en papel sobre cómo cobrar a los clientes.",
+              "correcta": false,
+              "porque": "En la oficina, «libro» casi siempre significa «archivo de Excel»."
+            }
+          ]
+        },
+        {
+          "id": "n0m1l1-q3",
+          "modo": "predice",
+          "enunciado": "En la celda B1 hay escrito `=40+15`. ¿Qué número se ve en la celda?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cajas"
+            },
+            "columnas": 2,
+            "filas": 2
+          },
+          "celda": "B1",
+          "formula": "=40+15",
+          "explicacion": "40 + 15 = 55. El signo igual hace que Excel calcule y enseñe el resultado.",
+          "respuesta": "55"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Libro, hoja y celda: ¿qué es cada uno?",
+          "dorso": "Libro = el archivo. Hoja = cada página del libro. Celda = cada casilla de una hoja (un dato por celda)."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Deshacer lo último que has hecho",
+          "dorso": "Ctrl+Z (puedes pulsarlo varias veces)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Con qué signo empieza una cuenta en Excel?",
+          "dorso": "Con el signo igual: =2+3 muestra 5."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l2",
+      "titulo": "La ventana de Excel: cada cosa en su sitio",
+      "minutos": 14,
+      "objetivo": "Encontrar y nombrar las partes de la ventana de Excel: cinta de opciones, Archivo, cuadro de nombres, barra de fórmulas, pestañas de hoja y barra de estado.",
+      "mision": {
+        "de": "Nuria Campos",
+        "puesto": "Administración",
+        "texto": "Mañana Marta te dirá cosas como «mira la barra de fórmulas» o «ve a la pestaña Inicio», y no espera a nadie. Hoy aprende dónde está cada cosa. Y de paso, ponme en negrita el título del listado de proveedores, que no se distingue.",
+        "logro": "Ya sabes encontrar cada parte de la ventana de Excel cuando te la nombren, y poner un título en negrita."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Arriba del todo está la **cinta de opciones**: la franja ancha llena de botones. Es como un mueble con cajones.\n\n- Las **pestañas** (Inicio, Insertar, Disposición de página (o «Diseño de página», según la versión), Fórmulas, Datos…) son los **cajones**: haces clic en una y cambian los botones de debajo.\n- Los botones van en **grupos**, con su nombre en pequeño debajo (por ejemplo, el grupo **Fuente**).\n\nLa que más usarás es **Inicio**. La primera, **Archivo**, es especial: abre una pantalla entera para guardar, abrir o imprimir."
+        },
+        {
+          "tipo": "pantalla",
+          "md": "Mira la fila de nombres de arriba: Archivo, Inicio, Insertar… Son las **pestañas de la cinta**. Toca algunas partes para ver qué son.",
+          "resaltar": "pestanas_cinta"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e1",
+          "modo": "senala",
+          "pregunta": "Toca las **pestañas de la cinta** (la fila con Inicio, Insertar, Fórmulas…).",
+          "zona": "pestanas_cinta",
+          "explicacion": "Ahí están. Cada pestaña abre un «cajón» distinto de botones. Si alguien te dice «ve a Datos», es una de estas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Vamos con un botón concreto. Para poner un texto en **negrita** (letra más gruesa, como los títulos):\n\n1. Haz clic en la celda del texto.\n2. Ve a la pestaña **Inicio**.\n3. Busca el grupo **Fuente** y pulsa el botón **N** (Negrita).\n\nEn la oficina lo escribimos así, con flechas: **Inicio › Fuente › Negrita**. Es la «dirección» de un botón: pestaña, grupo y botón."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Negrita con el teclado",
+          "md": "[[Ctrl]]+[[N]] pone o quita la negrita. Es la **N** de «negrita» (en los tutoriales en inglés verás Ctrl+B: en el Excel en español, Ctrl+B sirve para buscar)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e2",
+          "modo": "cinta",
+          "enunciado": "Encuentra el botón **Negrita** en la cinta: pestaña Inicio, grupo Fuente.",
+          "ruta": [
+            "Inicio",
+            "Fuente",
+            "Negrita"
+          ],
+          "explicacion": "Inicio › Fuente › Negrita. Has encontrado tu primer botón por su «dirección». Así encontrarás cualquier otro cuando te lo indiquen."
+        },
+        {
+          "tipo": "texto",
+          "md": "Justo debajo de la cinta hay una fila con dos cosas que se confunden mucho:\n\n- A la **izquierda**, un cuadro pequeño: el **cuadro de nombres**. Te dice **en qué celda estás** (por ejemplo, `B5`).\n- A la **derecha**, una barra larga: la **barra de fórmulas**. Te enseña **qué hay de verdad dentro** de la celda.\n\nTruco para no confundirlas: el cuadro de nombres dice **dónde**; la barra de fórmulas dice **qué**."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Cuadro de nombres (izquierda)",
+          "der": "Barra de fórmulas (derecha)",
+          "filas": [
+            [
+              "Dice DÓNDE estás: `B5`",
+              "Dice QUÉ hay dentro: `=14+9+6`"
+            ],
+            [
+              "Es pequeño",
+              "Es larga, ocupa casi todo el ancho"
+            ],
+            [
+              "Puedes escribir una dirección y pulsar Intro para ir allí",
+              "Puedes escribir o corregir lo que hay en la celda"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e3",
+          "modo": "senala",
+          "pregunta": "Quieres saber **en qué celda estás**. Toca la parte de la ventana que te lo dice.",
+          "zona": "cuadro_nombres",
+          "explicacion": "El cuadro de nombres, a la izquierda de la barra de fórmulas. Te dice dónde estás: muy útil cuando la hoja es grande."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e4",
+          "modo": "test",
+          "pregunta": "En la celda B5 se ve **29**. Marta te pregunta: «¿Ese 29 está escrito a mano o sale de una cuenta?». Haces clic en B5. ¿Dónde lo miras?",
+          "opciones": [
+            {
+              "texto": "En la barra de fórmulas: si pone `=14+9+6`, es una cuenta; si pone `29`, está escrito a mano.",
+              "correcta": true,
+              "porque": "Exacto. La barra de fórmulas enseña lo que hay de verdad dentro de la celda, aunque en la celda solo veas el resultado."
+            },
+            {
+              "texto": "En el cuadro de nombres.",
+              "correcta": false,
+              "porque": "Es la confusión más típica. El cuadro de nombres solo dice dónde estás (B5), no lo que hay dentro."
+            },
+            {
+              "texto": "En la propia celda: si se ve 29, es que está escrito 29.",
+              "correcta": false,
+              "porque": "La celda enseña el resultado. Detrás de un 29 puede haber una cuenta: solo la barra de fórmulas te lo dice."
+            }
+          ],
+          "explicacion": "Mirar la barra de fórmulas antes de fiarte de un número es un hábito de profesional: así descubrirás totales escritos a mano que no se actualizan."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora mira **abajo del todo**:\n\n- Las **pestañas de hoja**: «Hoja1», «Proveedores», «Octubre»… Cada una es una página del libro. Haz clic en una para verla. A su lado, un botón **+** crea una hoja nueva.\n- La **barra de estado**: la franja final. Cuando seleccionas varios números, ahí aparecen su suma y su promedio.\n\nOjo: las pestañas **de la cinta** están arriba y tienen botones; las pestañas **de hoja** están abajo y tienen tus datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e5",
+          "modo": "test",
+          "pregunta": "Lucía te escribe: «Abre el libro de la plantilla y ve a la pestaña **Vacaciones**». ¿Dónde la buscas?",
+          "opciones": [
+            {
+              "texto": "Abajo, entre las pestañas de hoja (junto a «Plantilla», «Horas»…).",
+              "correcta": true,
+              "porque": "Muy bien. «Vacaciones» no es una pestaña de Excel, es el nombre que Lucía ha puesto a una hoja de su libro. Las hojas están abajo."
+            },
+            {
+              "texto": "Arriba, en la cinta, junto a Inicio e Insertar.",
+              "correcta": false,
+              "porque": "Arriba solo están las pestañas de Excel (Inicio, Insertar, Datos…), que son iguales en todos los libros. Los nombres que pone la gente a sus páginas están abajo."
+            },
+            {
+              "texto": "En la barra de fórmulas.",
+              "correcta": false,
+              "porque": "La barra de fórmulas enseña lo que hay dentro de una celda, no las páginas del libro."
+            }
+          ],
+          "explicacion": "Regla rápida: si el nombre lo ha inventado alguien de la oficina («Vacaciones», «Octubre»), es una pestaña de hoja, abajo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e6",
+          "modo": "senala",
+          "pregunta": "Toca la **barra de estado**, donde Excel enseña la suma de los números que seleccionas.",
+          "zona": "barra_estado",
+          "explicacion": "La barra de estado, abajo del todo. En la lección 4 la usarás para sumar sin escribir nada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l2-e7",
+          "modo": "ordenar",
+          "enunciado": "**El encargo de Nuria.** El título del listado de proveedores está en la celda A1. Ordena los pasos para ponerlo en negrita con la cinta.",
+          "pasos": [
+            "Haz clic en la celda A1, la del título",
+            "Haz clic en la pestaña Inicio de la cinta",
+            "En el grupo Fuente, pulsa el botón Negrita (N)",
+            "Comprueba que el título se ve con la letra más gruesa"
+          ],
+          "explicacion": "Primero eliges **dónde** (la celda) y después **qué** le haces (el botón). Este orden vale para casi todo en Excel. Encargo de Nuria, resuelto."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m1l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cómo se llama la barra larga, encima de la cuadrícula, que enseña lo que hay de verdad dentro de la celda?",
+          "aceptadas": [
+            "barra de fórmulas",
+            "la barra de fórmulas",
+            "barra de formulas",
+            "la barra de formulas",
+            "barra de fórmula"
+          ],
+          "explicacion": "La barra de fórmulas dice QUÉ hay; el cuadro de nombres, a su izquierda, dice DÓNDE estás."
+        },
+        {
+          "id": "n0m1l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo de teclado pone un texto en negrita en el Excel en español?",
+          "aceptadas": [
+            "Ctrl+N",
+            "Control+N",
+            "Ctrl N",
+            "Ctrl+2"
+          ],
+          "explicacion": "Ctrl+N, de «negrita». Ctrl+B, el de los tutoriales en inglés, aquí abre Buscar."
+        },
+        {
+          "id": "n0m1l2-q3",
+          "modo": "senala",
+          "pregunta": "Quieres guardar, abrir o imprimir el libro. Toca **Archivo**.",
+          "zona": "archivo",
+          "explicacion": "Archivo, la primera pestaña. No abre botones como las demás: abre una pantalla entera para guardar, abrir, imprimir o compartir el libro."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Cuadro de nombres frente a barra de fórmulas",
+          "dorso": "Cuadro de nombres (izquierda): DÓNDE estás (B5). Barra de fórmulas (derecha): QUÉ hay dentro de la celda."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Poner o quitar negrita",
+          "dorso": "Ctrl+N (o Inicio › Fuente › Negrita)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Pestañas de la cinta frente a pestañas de hoja",
+          "dorso": "Cinta: arriba, botones de Excel (Inicio, Insertar…). Hoja: abajo, las páginas de tu libro («Octubre», «Vacaciones»)."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l3",
+      "titulo": "Celdas, filas y columnas: la dirección de cada casilla",
+      "minutos": 14,
+      "objetivo": "Dar la dirección de cualquier celda (C5), leer un rango (A1:C10) y saber cuántas celdas tiene.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Te he dejado la hoja de cobros pendientes. Cuando te diga «revisa D4» o «el rango C2:C6», necesito que vayas directa, sin buscar. Para empezar: ¿en qué celda está el importe pendiente de Electricidad Moncayo?",
+        "logro": "Ya sabes dar la dirección de cualquier celda y leer un rango, el idioma con el que se habla de Excel en la oficina."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "La cuadrícula de Excel se organiza en **columnas** y **filas**:\n\n- Las **columnas** van de arriba abajo y se nombran con **letras**: A, B, C…\n- Las **filas** van de izquierda a derecha y se nombran con **números**: 1, 2, 3…\n\nLas letras y los números están en los bordes de la hoja, en gris: son los **encabezados**. Truco para recordarlo: una columna es alta, como la de un edificio; una fila es como la fila de gente en la caja del súper."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Hoja de cobros pendientes de Marta",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Factura",
+              "C1": "Importe pendiente",
+              "D1": "Vence",
+              "A2": "Instalaciones Ebro, S.L.",
+              "B2": "F-2026-0412",
+              "C2": 1250.4,
+              "D2": {
+                "fecha": "2026-11-20"
+              },
+              "A3": "Electricidad Moncayo",
+              "B3": "F-2026-0398",
+              "C3": 860,
+              "D3": {
+                "fecha": "2026-11-25"
+              },
+              "A4": "Montajes Aragón Sur",
+              "B4": "F-2026-0420",
+              "C4": 2315.75,
+              "D4": {
+                "fecha": "2026-11-30"
+              },
+              "A5": "Reformas Delicias",
+              "B5": "F-2026-0377",
+              "C5": 497.2,
+              "D5": {
+                "fecha": "2026-12-02"
+              },
+              "A6": "Climatización Huesca",
+              "B6": "F-2026-0431",
+              "C6": 3020,
+              "D6": {
+                "fecha": "2026-12-05"
+              }
+            },
+            "formatos": {
+              "C2:C6": "eur",
+              "D2:D6": "fecha"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 13,
+              "C": 18,
+              "D": 12
+            },
+            "columnas": 5,
+            "filas": 7
+          },
+          "resaltar": [
+            "C1:C6"
+          ],
+          "pie": "La columna C (resaltada) guarda los importes. Cada fila, del 2 al 6, es una factura."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e1",
+          "modo": "senala",
+          "pregunta": "Toca la **letra de una columna**: los encabezados grises que hay encima de la cuadrícula.",
+          "zona": "encabezado_columna",
+          "explicacion": "Esas letras nombran las columnas. Al hacer clic en una, además, seleccionas la columna entera (lo practicarás en la lección siguiente)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cada celda tiene una **dirección**: la letra de su columna y el número de su fila. Como en el juego de hundir la flota.\n\n- La celda de la columna **C** y la fila **3** es la **C3**.\n- **Primero la letra, después el número**: se dice C3, nunca 3C.\n\nEn la hoja de Marta, la C3 tiene **860,00 €**: el importe de Electricidad Moncayo. Cuando alguien te diga «mira la C3», ya sabes ir directa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e2",
+          "modo": "respuesta_corta",
+          "pregunta": "Esta es la hoja de cobros de Marta, con sus letras y números:\n\n| | A | B | C |\n|---|---|---|---|\n| **1** | Cliente | Factura | Importe pendiente |\n| **2** | Instalaciones Ebro, S.L. | F-2026-0412 | 1.250,40 € |\n| **3** | Electricidad Moncayo | F-2026-0398 | 860,00 € |\n| **4** | Montajes Aragón Sur | F-2026-0420 | 2.315,75 € |\n| **5** | Reformas Delicias | F-2026-0377 | 497,20 € |\n\n¿En qué celda está el nombre **Reformas Delicias**? (Escribe la dirección, por ejemplo B2.)",
+          "aceptadas": [
+            "A5",
+            "a5",
+            "la A5",
+            "celda A5"
+          ],
+          "explicacion": "A5: columna A (la de los clientes) y fila 5. Primero miras la letra de arriba, después el número de la izquierda."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e3",
+          "modo": "test",
+          "pregunta": "Javier te dice deprisa: «Corrige el dato de la columna B, fila 4». ¿Qué celda es?",
+          "opciones": [
+            {
+              "texto": "B4",
+              "correcta": true,
+              "porque": "Eso es: primero la letra de la columna, después el número de la fila."
+            },
+            {
+              "texto": "4B",
+              "correcta": false,
+              "porque": "Excel no entiende «4B». Las direcciones siempre empiezan por la letra: B4."
+            },
+            {
+              "texto": "D2",
+              "correcta": false,
+              "porque": "Aquí se han cambiado la fila y la columna. Columna B (letra) y fila 4 (número): B4."
+            }
+          ],
+          "explicacion": "Letra + número. Si dudas, piensa en hundir la flota: «B4», nunca «4B»."
+        },
+        {
+          "tipo": "texto",
+          "md": "La **celda activa** es la celda en la que estás ahora. Se reconoce porque tiene un **recuadro grueso** alrededor.\n\n- Lo que escribas irá **a esa celda**.\n- Su dirección aparece en el **cuadro de nombres** (arriba a la izquierda), y los encabezados de su fila y su columna se colorean.\n\nAntes de escribir, mira siempre qué celda está activa: es la forma más sencilla de no escribir encima de un dato que no tocaba."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e4",
+          "modo": "senala",
+          "pregunta": "Toca la **celda activa**: la que tiene el recuadro grueso alrededor.",
+          "zona": "celda_activa",
+          "explicacion": "Esa es. Todo lo que teclees ahora irá a parar ahí, así que conviene mirarla antes de escribir."
+        },
+        {
+          "tipo": "texto",
+          "md": "Muchas veces no hablamos de una celda, sino de un **bloque de celdas**: un **rango**.\n\nSe escribe con **dos puntos** entre la primera y la última celda. Los dos puntos se leen **«hasta»**:\n\n- `C2:C6` = de C2 **hasta** C6: los cinco importes de Marta.\n- `A1:C10` = el rectángulo que va de A1 (arriba a la izquierda) **hasta** C10 (abajo a la derecha)."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "El rango C2:C6",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "C1": "Importe pendiente",
+              "A2": "Instalaciones Ebro, S.L.",
+              "C2": 1250.4,
+              "A3": "Electricidad Moncayo",
+              "C3": 860,
+              "A4": "Montajes Aragón Sur",
+              "C4": 2315.75,
+              "A5": "Reformas Delicias",
+              "C5": 497.2,
+              "A6": "Climatización Huesca",
+              "C6": 3020
+            },
+            "formatos": {
+              "C2:C6": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "C": 18
+            },
+            "columnas": 4,
+            "filas": 7
+          },
+          "resaltar": [
+            "C2:C6"
+          ],
+          "pie": "C2:C6 son cinco celdas: C2, C3, C4, C5 y C6."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e5",
+          "modo": "test",
+          "pregunta": "Marta te pide: «Revisa el rango **B2:B5**». ¿Qué celdas tienes que revisar?",
+          "opciones": [
+            {
+              "texto": "B2, B3, B4 y B5",
+              "correcta": true,
+              "porque": "Correcto: los dos puntos significan «hasta», así que es de B2 hasta B5, todas las de en medio incluidas."
+            },
+            {
+              "texto": "Solo B2 y B5",
+              "correcta": false,
+              "porque": "Es el fallo más típico al leer un rango. Los dos puntos no significan «y»: significan «hasta». Entran también B3 y B4."
+            },
+            {
+              "texto": "B2, C2, D2, E2 y F2",
+              "correcta": false,
+              "porque": "Eso sería avanzar por la fila 2. En B2:B5 la letra no cambia (siempre B): se baja por la columna B, de la fila 2 a la 5."
+            }
+          ],
+          "explicacion": "Dos puntos = «hasta». Al leer un rango, piensa: ¿dónde empieza?, ¿dónde acaba? Todo lo de en medio está dentro."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Cuántas celdas tiene un rango? Cuenta **columnas × filas**.\n\nEjemplo: `A1:C10`\n- Columnas: A, B y C → **3**.\n- Filas: de la 1 a la 10 → **10**.\n- Celdas: 3 × 10 = **30**.\n\nSaberlo te sirve para comprobar que has seleccionado lo que querías: si esperabas 5 facturas y tu rango tiene 4 celdas, falta una."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cuántas celdas tiene el rango **B2:D6**? (Escribe solo el número.)",
+          "aceptadas": [
+            "15",
+            "15 celdas",
+            "quince"
+          ],
+          "explicacion": "Columnas B, C y D = 3. Filas de la 2 a la 6 = 5 (2, 3, 4, 5 y 6). 3 × 5 = 15. Cuidado con restar 6 − 2 = 4: las filas se cuentan incluyendo la primera y la última."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l3-e7",
+          "modo": "respuesta_corta",
+          "pregunta": "**El encargo de Marta.** En su hoja de cobros:\n\n| | A | B | C | D |\n|---|---|---|---|---|\n| **1** | Cliente | Factura | Importe pendiente | Vence |\n| **2** | Instalaciones Ebro, S.L. | F-2026-0412 | 1.250,40 € | 20/11/2026 |\n| **3** | Electricidad Moncayo | F-2026-0398 | 860,00 € | 25/11/2026 |\n| **4** | Montajes Aragón Sur | F-2026-0420 | 2.315,75 € | 30/11/2026 |\n\n¿En qué celda está el **importe pendiente** de **Electricidad Moncayo**?",
+          "aceptadas": [
+            "C3",
+            "c3",
+            "la C3",
+            "celda C3"
+          ],
+          "explicacion": "C3: la columna C es la de los importes y la fila 3 es la de Electricidad Moncayo. Ya puedes contestar a Marta con su mismo idioma: «Está en C3, son 860 €»."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m1l3-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Escribe la dirección de la celda que está en la **columna D** y la **fila 7**.",
+          "aceptadas": [
+            "D7",
+            "d7"
+          ],
+          "explicacion": "D7: primero la letra de la columna, después el número de la fila."
+        },
+        {
+          "id": "n0m1l3-q2",
+          "modo": "test",
+          "pregunta": "¿Cuántas celdas tiene el rango **A1:B3**?",
+          "opciones": [
+            {
+              "texto": "6",
+              "correcta": true,
+              "porque": "2 columnas (A y B) × 3 filas (1, 2 y 3) = 6."
+            },
+            {
+              "texto": "2",
+              "correcta": false,
+              "porque": "Esas serían solo A1 y B3, las esquinas. Los dos puntos significan «hasta»: entra todo el rectángulo."
+            },
+            {
+              "texto": "4",
+              "correcta": false,
+              "porque": "Seguramente has restado 3 − 1 = 2 filas. Las filas se cuentan incluyendo la primera: 1, 2 y 3 son tres."
+            }
+          ]
+        },
+        {
+          "id": "n0m1l3-q3",
+          "modo": "senala",
+          "pregunta": "Toca el **número de una fila**: los encabezados grises de la izquierda.",
+          "zona": "encabezado_fila",
+          "explicacion": "Los números de la izquierda nombran las filas. Columnas = letras arriba; filas = números a la izquierda."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se escribe la dirección de una celda?",
+          "dorso": "Letra de la columna + número de la fila: C5 (nunca 5C)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué significan los dos puntos en A1:C10?",
+          "dorso": "«Hasta»: todas las celdas del rectángulo de A1 hasta C10."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cuántas celdas tiene un rango?",
+          "dorso": "Columnas × filas, contando la primera y la última. B2:D6 = 3 × 5 = 15."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es la celda activa?",
+          "dorso": "La celda en la que estás: tiene el recuadro grueso y su dirección sale en el cuadro de nombres."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l4",
+      "titulo": "Moverte y seleccionar",
+      "minutos": 15,
+      "objetivo": "Moverte por una hoja con el ratón y el teclado, seleccionar rangos, filas y columnas, y leer la suma de lo seleccionado en la barra de estado.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Entro en una reunión en dos minutos. Dime cuánto suman las ventas de octubre de los cuatro comerciales. No me hagas fórmulas: selecciónalas y mira la suma abajo, que es lo más rápido.",
+        "logro": "Ya sabes moverte por cualquier hoja sin perderte, seleccionar lo que necesitas y obtener una suma en segundos con la barra de estado."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Para cambiar de celda puedes **hacer clic** en ella con el ratón, o usar el teclado, que es más rápido cuando rellenas datos:\n\n- Las **flechas** te mueven una celda en esa dirección.\n- **Intro** te baja a la celda de abajo.\n- **Tab** (la tecla de las dos flechitas, a la izquierda de la Q) te lleva a la celda de la derecha.\n\nSi además mantienes pulsada **Mayús** (la tecla de las mayúsculas, con una flecha hacia arriba), van al revés: [[Mayús]]+[[Intro]] sube y [[Mayús]]+[[Tab]] va a la izquierda."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Intro",
+              "accion": "Bajar a la celda de abajo"
+            },
+            {
+              "teclas": "Tab",
+              "accion": "Ir a la celda de la derecha"
+            },
+            {
+              "teclas": "Mayús+Intro",
+              "accion": "Subir a la celda de arriba"
+            },
+            {
+              "teclas": "Mayús+Tab",
+              "accion": "Ir a la celda de la izquierda"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e1",
+          "modo": "test",
+          "pregunta": "Estás en la celda **B2** y pulsas **Intro**. ¿En qué celda acabas?",
+          "opciones": [
+            {
+              "texto": "B3",
+              "correcta": true,
+              "porque": "Eso es: Intro baja una fila. La columna (B) no cambia; la fila pasa de 2 a 3."
+            },
+            {
+              "texto": "C2",
+              "correcta": false,
+              "porque": "A la derecha te lleva Tab, no Intro. Intro baja."
+            },
+            {
+              "texto": "B1",
+              "correcta": false,
+              "porque": "Para subir haría falta Mayús+Intro. Intro solo, baja."
+            }
+          ],
+          "explicacion": "Intro baja; Tab va a la derecha. Así se rellena una lista sin tocar el ratón."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e2",
+          "modo": "respuesta_corta",
+          "pregunta": "Estás en **A2** apuntando un proveedor. Pulsas **Tab** dos veces. ¿En qué celda estás ahora?",
+          "aceptadas": [
+            "C2",
+            "c2",
+            "la C2",
+            "celda C2"
+          ],
+          "explicacion": "Cada Tab avanza una columna a la derecha: de A2 a B2 y de B2 a C2. Es lo que harás para rellenar una fila: nombre, Tab, teléfono, Tab, ciudad."
+        },
+        {
+          "tipo": "texto",
+          "md": "Las listas que salen del programa de gestión tienen cientos o miles de filas. Para no perderte, dos atajos:\n\n- [[Ctrl]]+[[Inicio]]: te devuelve a **A1**, el principio de la hoja. (Inicio es una tecla; en algunos teclados pone «Home».)\n- [[Ctrl]]+**flecha**: salta, como un ascensor, hasta **el final de los datos** en esa dirección. Por ejemplo, [[Ctrl]]+[[↓]] te lleva a la última fila con datos de esa columna."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "El ascensor se para en los huecos",
+          "md": "[[Ctrl]]+flecha se detiene en la primera celda vacía que encuentra. Si la columna tiene huecos, pulsa otra vez para seguir bajando, y no des por hecho que has llegado al final."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "El listado de pedidos del mes tiene más de dos mil líneas. Te he visto bajar con la rueda del ratón… ¡vas a estar ahí hasta el viernes! [[Ctrl]]+[[↓]] y llegas abajo en un segundo. Y [[Ctrl]]+[[Inicio]] para volver arriba."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e3",
+          "modo": "test",
+          "pregunta": "Tienes abierto el listado de pedidos: la columna A tiene datos de la fila 1 a la **2.481**, sin ninguna celda vacía. Estás en **A2** y pulsas [[Ctrl]]+[[↓]]. ¿Dónde acabas?",
+          "opciones": [
+            {
+              "texto": "En A2481, la última fila con datos.",
+              "correcta": true,
+              "porque": "Correcto. Ctrl+flecha abajo salta hasta el final de los datos de esa columna. Así ves de un vistazo cuántas líneas tiene un listado."
+            },
+            {
+              "texto": "En A3, una fila más abajo.",
+              "correcta": false,
+              "porque": "Eso haría la flecha sola (o Intro). Con Ctrl delante, salta hasta el final de los datos."
+            },
+            {
+              "texto": "En A1, al principio de la hoja.",
+              "correcta": false,
+              "porque": "A A1 te lleva Ctrl+Inicio. Ctrl+flecha abajo va hacia abajo, hasta la última celda con datos."
+            }
+          ],
+          "explicacion": "Ctrl+flecha para ir al final; Ctrl+Inicio para volver a A1. Con estos dos no te perderás en ninguna hoja."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Seleccionar** es marcar varias celdas a la vez, para luego hacer algo con todas. Dos formas:\n\n- **Con el ratón**: haz clic en la primera celda y, sin soltar el botón, **arrastra** hasta la última.\n- **Con el teclado**: ponte en la primera celda, mantén pulsada [[Mayús]] y pulsa las flechas.\n\nLo seleccionado se ve sombreado, y en el cuadro de nombres sigue apareciendo la celda donde empezaste."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "No arrastres desde la esquina",
+          "md": "La celda activa tiene un cuadradito en la esquina de abajo a la derecha: el **controlador de relleno**. Si arrastras desde ahí (el puntero se vuelve una cruz negra y fina), **copias** la celda en vez de seleccionar. Arrastra desde el centro de la celda, con la cruz blanca y gruesa. Si te pasa, [[Ctrl]]+[[Z]]."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e4",
+          "modo": "ordenar",
+          "enunciado": "Quieres seleccionar los importes de **B2 hasta B6** solo con el teclado. Ordena los pasos.",
+          "pasos": [
+            "Haz clic en la celda B2",
+            "Mantén pulsada la tecla Mayús",
+            "Sin soltar Mayús, pulsa la flecha abajo cuatro veces",
+            "Suelta Mayús: el rango B2:B6 queda sombreado"
+          ],
+          "explicacion": "Primero te colocas en la primera celda y luego amplías con Mayús + flechas. De B2 a B6 hay cuatro saltos (B3, B4, B5 y B6)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para seleccionar una **columna entera**, haz clic en su **letra** de arriba. Para una **fila entera**, en su **número** de la izquierda.\n\nCon el teclado:\n- [[Ctrl]]+[[Barra espaciadora]]: la columna entera de la celda activa.\n- [[Mayús]]+[[Barra espaciadora]]: la fila entera.\n\nY para seleccionar **toda la hoja**, el triángulo de la esquina donde se cruzan letras y números (el botón **Seleccionar todo**)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e5",
+          "modo": "senala",
+          "pregunta": "Quieres seleccionar **la fila 5 entera** de un clic. Toca dónde harías clic.",
+          "zona": "encabezado_fila",
+          "explicacion": "En el número de la fila, a la izquierda. Un clic ahí selecciona la fila completa, de la columna A hasta la última."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora el truco favorito de la oficina. Selecciona varias celdas con números y mira la **barra de estado**, abajo a la derecha. Excel te enseña, sin escribir nada:\n\n- **Promedio**: la media.\n- **Recuento**: cuántas celdas hay con algo escrito.\n- **Suma**: el total.\n\nEs perfecto para una respuesta rápida o para comprobar un total que te pasan. Pero no se guarda: cuando seleccionas otra cosa, desaparece."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n0m1l4-e6",
+          "modo": "respuesta_corta",
+          "pregunta": "**El encargo de Javier.** Seleccionas B2:B5 en su hoja de ventas de octubre:\n\n| | A | B |\n|---|---|---|\n| **1** | Comercial | Ventas octubre |\n| **2** | Laura Gil | 18.450,00 € |\n| **3** | Pablo Navarro | 22.310,50 € |\n| **4** | Sergio Lacasa | 15.980,25 € |\n| **5** | Elena Royo | 20.705,00 € |\n\n¿Qué cantidad verás junto a **Suma** en la barra de estado? (Escribe el número como en la hoja, con coma para los decimales.)",
+          "aceptadas": [
+            "77.445,75 €",
+            "77.445,75",
+            "77445,75",
+            "77445,75 €",
+            "77.445,75€",
+            "77445,75€",
+            "77445.75"
+          ],
+          "explicacion": "Suma: **77.445,75 €** (18.450 + 22.310,50 + 15.980,25 + 20.705). Javier tiene su dato antes de entrar en la reunión y tú no has escrito ni una fórmula. La barra de estado también te dirá Recuento: 4, una forma rápida de confirmar que no te has dejado ningún comercial."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n0m1l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Estás perdida en la fila 1.900 de un listado. ¿Qué atajo te devuelve a la celda **A1**?",
+          "aceptadas": [
+            "Ctrl+Inicio",
+            "Control+Inicio",
+            "Ctrl Inicio",
+            "Ctrl+Home"
+          ],
+          "explicacion": "Ctrl+Inicio te lleva a A1 estés donde estés."
+        },
+        {
+          "id": "n0m1l4-q2",
+          "modo": "test",
+          "pregunta": "Marta te pregunta cuánto suman doce importes de una columna. Lo quiere ya y no necesita guardarlo. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Selecciono los doce importes y leo la Suma en la barra de estado.",
+              "correcta": true,
+              "porque": "Lo más rápido para un dato al momento. Si hubiera que dejarlo guardado en la hoja, usarías una fórmula (lo verás en el módulo 3)."
+            },
+            {
+              "texto": "Hago clic en el primer importe y miro el cuadro de nombres.",
+              "correcta": false,
+              "porque": "El cuadro de nombres solo te dice en qué celda estás, no suma nada."
+            },
+            {
+              "texto": "Pulso Ctrl+Inicio.",
+              "correcta": false,
+              "porque": "Ctrl+Inicio te lleva a A1, pero no te da ningún total."
+            }
+          ]
+        },
+        {
+          "id": "n0m1l4-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "Seleccionas con Mayús + flechas desde **B2 hasta C4**. ¿Cuántas celdas has seleccionado?",
+          "aceptadas": [
+            "6",
+            "6 celdas",
+            "seis"
+          ],
+          "explicacion": "B2:C4 = 2 columnas (B y C) × 3 filas (2, 3 y 4) = 6. Si la barra de estado dice Recuento: 6 y todas tienen datos, has seleccionado bien."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "atajo",
+          "frente": "Volver a la celda A1",
+          "dorso": "Ctrl+Inicio"
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Saltar hasta el final de los datos de una columna",
+          "dorso": "Ctrl+flecha abajo (se para en las celdas vacías)"
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Seleccionar celda a celda con el teclado",
+          "dorso": "Mayús+flechas"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde ves la suma de lo seleccionado sin escribir una fórmula?",
+          "dorso": "En la barra de estado, abajo a la derecha (Promedio, Recuento y Suma)."
+        }
+      ]
+    }
+  ]
+}

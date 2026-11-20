@@ -1,0 +1,2652 @@
+{
+ "id": "n3m5",
+ "nivel": "n3",
+ "titulo": "Listas que se actualizan solas, gráficos y revisión",
+ "intro": "Los informes que te piden cada semana no se rehacen a mano: se montan una vez con listados y rankings que se actualizan solos. Y antes de enviarlos se presentan con el gráfico adecuado y se revisan, porque una hoja sin errores a la vista no siempre es una hoja correcta.",
+ "repaso_inicial": [
+  {
+   "id": "n3m5-r1",
+   "modo": "formula",
+   "enunciado": "Repaso de limpieza. El banco exporta los cobros con el importe como texto y con el símbolo del euro: «1.845,30 €». En **C2** conviértelo en un número que se pueda sumar. Se copiará a **C3:C5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Importe (texto)",
+     "C1": "Importe",
+     "A2": {
+      "fecha": "2026-11-09"
+     },
+     "B2": "'1.845,30 €",
+     "A3": {
+      "fecha": "2026-11-10"
+     },
+     "B3": "'612,00 €",
+     "A4": {
+      "fecha": "2026-11-12"
+     },
+     "B4": "'12.480,75 €",
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "'95,40 €"
+    },
+    "formatos": {
+     "A2:A5": "fecha",
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 16,
+     "C": 13
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")",
+   "alternativas": [
+    "=VALOR(SUSTITUIR(B2;\"€\";\"\"))",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\" €\";\"\");\",\";\".\")"
+   ],
+   "errores_tipicos": [
+    "=VALOR.NUMERO(B2;\",\";\".\")",
+    "=SUSTITUIR(B2;\"€\";\"\")",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\".\";\",\")"
+   ],
+   "variantes": [
+    {
+     "B2": "'2.500,00 €"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay dos problemas: el símbolo € y que es un texto. Primero se quita el € y después se convierte.",
+    "SUSTITUIR(B2;\"€\";\"\") quita el euro; VALOR.NUMERO(…;\",\";\".\") lee la coma como decimal y el punto como miles.",
+    "`=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")`"
+   ],
+   "explicacion": "1.845,30 €, ya como número: SUSTITUIR limpia y VALOR.NUMERO convierte. Los listados que harás en este módulo necesitan datos así de limpios: si llegan sucios, primero se limpian."
+  },
+  {
+   "id": "n3m5-r2",
+   "modo": "test",
+   "pregunta": "Han entrado 40 ventas nuevas en el listado del que sale tu tabla dinámica (dentro del mismo rango), pero los totales de la dinámica no cambian. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Actualizarla: Analizar tabla dinámica › Actualizar",
+     "correcta": true,
+     "porque": "Eso es. La dinámica trabaja con una copia guardada de los datos y no se recalcula sola como una fórmula: hay que actualizarla."
+    },
+    {
+     "texto": "Borrarla y hacerla otra vez desde cero",
+     "correcta": false,
+     "porque": "Funcionaría, pero es perder el tiempo y el diseño: basta con Actualizar."
+    },
+    {
+     "texto": "Esperar: se pone al día sola al guardar el libro",
+     "correcta": false,
+     "porque": "No: si no la actualizas (o no lo tienes configurado al abrir), seguirá enseñando los datos antiguos."
+    },
+    {
+     "texto": "Escribir los totales nuevos a mano encima",
+     "correcta": false,
+     "porque": "Nunca: escribir encima de una dinámica rompe la relación con los datos y el próximo cambio te dejará cifras falsas."
+    }
+   ],
+   "explicacion": "Una tabla dinámica es una foto de los datos: cuando cambian, hay que pulsar Actualizar ([[Alt]]+[[F5]]) o Actualizar todo ([[Ctrl]]+[[Alt]]+[[F5]])."
+  },
+  {
+   "id": "n3m5-r3",
+   "modo": "formula",
+   "enunciado": "Andrés escribe un código de producto en **E2**. En **F2** escribe una fórmula que traiga su **precio** de la tarifa (columnas A a C).",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "A2": "CAB-15",
+     "B2": "Cable 1,5 mm² (rollo 100 m)",
+     "C2": 38.9,
+     "A3": "CAB-25",
+     "B3": "Cable 2,5 mm² (rollo 100 m)",
+     "C3": 59.4,
+     "A4": "TUB-20",
+     "B4": "Tubo corrugado 20 mm (100 m)",
+     "C4": 17.8,
+     "A5": "MAG-16",
+     "B5": "Magnetotérmico 2P 16 A",
+     "C5": 9.75,
+     "A6": "LED-18",
+     "B6": "Panel LED 18 W",
+     "C6": 14.6,
+     "A7": "BRI-300",
+     "B7": "Bridas 300 mm (bolsa 100)",
+     "C7": 4.2,
+     "E1": "Código",
+     "F1": "Precio",
+     "E2": "TUB-20"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 9,
+     "B": 26,
+     "C": 9,
+     "E": 9,
+     "F": 10
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))",
+   "alternativas": [
+    "=BUSCARX(E2;A2:A7;C2:C7)",
+    "=BUSCARV(E2;A2:C7;3;FALSO)",
+    "=INDICE($C$2:$C$7;COINCIDIR(E2;$A$2:$A$7;0))"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(E2;A2:A7;B2:B7)",
+    "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0)+1)"
+   ],
+   "variantes": [
+    {
+     "E2": "MAG-16"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay que buscar el código de E2 en la columna A y traer lo que hay en la misma fila de la columna C.",
+    "Te vale BUSCARX, BUSCARV con FALSO o INDICE + COINCIDIR con 0 (coincidencia exacta).",
+    "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`"
+   ],
+   "explicacion": "17,80 € el rollo de tubo corrugado. INDICE + COINCIDIR funciona en cualquier versión de Excel; BUSCARX, desde Excel 2021. Lo importante: coincidencia exacta, para no traer el precio de otro producto."
+  }
+ ],
+ "practica_excel": null,
+ "lecciones": [
+  {
+   "id": "n3m5l1",
+   "titulo": "FILTRAR: listados que se actualizan solos",
+   "minutos": 15,
+   "objetivo": "Sacar en otro sitio de la hoja, con una sola fórmula, las filas que cumplen una o varias condiciones, y que el listado se actualice solo.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Los clientes me llaman cada dos por tres: «¿qué tengo pendiente?». Quiero una hoja donde escribo el nombre del cliente y me salen sus pedidos pendientes, sin filtrar cada vez. Y si no tiene nada, que lo diga claro, no un error raro.",
+    "logro": "Ya sabes montar con FILTRAR un listado que se rellena solo: escribes un cliente y salen sus pedidos pendientes, o un aviso si no hay."
+   },
+   "funciones": [
+    "FILTRAR"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Ya sabes filtrar con el embudo de **Datos › Filtro**: escondes filas y miras lo que queda. Pero si Javier cambia de cliente, vuelves a filtrar a mano.\n\n**FILTRAR** hace lo mismo con una fórmula, en otro sitio de la hoja: copia las filas que cumplen una condición y se actualiza sola.\n\nEs una fórmula de **matriz dinámica**: la escribes en **una** celda y devuelve **muchos** resultados, que ocupan las celdas de al lado. Excel lo llama **desbordamiento** (en la oficina oirás «derramar»)."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Así se ve: los pedidos servidos",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente",
+       "F1": "Pedidos servidos",
+       "F2": "Pedido",
+       "G2": "Cliente",
+       "H2": "Importe",
+       "I2": "Estado",
+       "F3": "=FILTRAR(A2:D9;D2:D9=\"Servido\")"
+      },
+      "formatos": {
+       "C2:C9": "eur",
+       "H3:H10": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "E": 3,
+       "F": 9,
+       "G": 20,
+       "H": 10,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 10
+     },
+     "resaltar": [
+      "F3:I5"
+     ],
+     "pie": "La fórmula `=FILTRAR(A2:D9;D2:D9=\"Servido\")` solo está en **F3**. Lo demás lo ha desbordado ella: si cambias un estado en la columna D, el listado cambia solo."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e1",
+     "modo": "test",
+     "pregunta": "En la hoja de arriba, la fórmula está **solo** en F3. ¿Qué hay entonces en F4 y F5?",
+     "opciones": [
+      {
+       "texto": "Resultados de la misma fórmula de F3, que se han desbordado hacia abajo",
+       "correcta": true,
+       "porque": "Eso es. Una sola fórmula rellena todo el bloque, y si cambia un dato del listado, el bloque entero se recalcula."
+      },
+      {
+       "texto": "Copias de la fórmula, arrastradas con el controlador de relleno",
+       "correcta": false,
+       "porque": "Con FILTRAR no se copia nada: la fórmula de F3 ocupa sola las filas que necesita, ni una más ni una menos."
+      },
+      {
+       "texto": "Datos escritos a mano que alguien pegó debajo",
+       "correcta": false,
+       "porque": "No. De hecho, si hubiera algo escrito ahí, FILTRAR no tendría sitio y daría un error (lo verás en esta lección)."
+      }
+     ],
+     "explicacion": "Eso es el desbordamiento: una fórmula en una celda y el resultado ocupando las de al lado. Para cambiar el listado se toca la fórmula de F3, nunca las celdas de debajo."
+    },
+    {
+     "tipo": "texto",
+     "md": "La fórmula tiene tres partes:\n\n`=FILTRAR(matriz; incluir; [si_vacío])`\n\n- **matriz**: el bloque que quieres ver, **sin los títulos**. Aquí, A2:D9.\n- **incluir**: la condición. Una columna comparada con algo, como `D2:D9=\"Servido\"`. Excel la mira fila a fila y se queda con las que dan VERDADERO.\n- **si_vacío** (opcional): qué mostrar si no hay ninguna. Lo verás enseguida.\n\nLa columna de la condición tiene que ocupar **las mismas filas** que la matriz: de la 2 a la 9 en las dos."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "dato",
+     "titulo": "Desde Excel 2021",
+     "md": "FILTRAR (y ORDENAR, ORDENARPOR y UNICOS, de la lección siguiente) está en **Excel 2021, 2024 y Microsoft 365**, en la web y en Mac. En Excel 2019 o anteriores sale **#¿NOMBRE?**. Allí, la alternativa es el filtro de **Datos › Filtro** de siempre, repitiéndolo a mano."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e2",
+     "modo": "formula",
+     "enunciado": "Javier escribe el cliente en **G1**. En **F3** escribe una fórmula con FILTRAR que saque **todas las columnas** (A a D) de los pedidos de ese cliente. Usa la celda G1 en la condición: no escribas el nombre.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente",
+       "F2": "Pedido",
+       "G2": "Cliente",
+       "H2": "Importe",
+       "I2": "Estado",
+       "F1": "Cliente:",
+       "G1": "Instalaciones Ebro"
+      },
+      "formatos": {
+       "C2:C9": "eur",
+       "H3:H10": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "E": 3,
+       "F": 9,
+       "G": 20,
+       "H": 10,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 10
+     },
+     "objetivo": "F3",
+     "solucion": "=FILTRAR(A2:D9;B2:B9=G1)",
+     "alternativas": [
+      "=FILTRAR(A2:D9;B2:B9=$G$1)",
+      "=FILTRAR(A2:D9;G1=B2:B9)"
+     ],
+     "errores_tipicos": [
+      "=FILTRAR(A2:D9;B2:B9=\"Instalaciones Ebro\")",
+      "=FILTRAR(A2:D9;B2:B9=\"G1\")",
+      "=FILTRAR(B2:B9;B2:B9=G1)"
+     ],
+     "variantes": [
+      {
+       "G1": "Montajes Arga"
+      }
+     ],
+     "debe_usar": [
+      "FILTRAR"
+     ],
+     "pistas": [
+      "Empieza por `=FILTRAR(` y selecciona el bloque de datos sin títulos: A2:D9.",
+      "Después del `;` va la condición: la columna de clientes (B2:B9) comparada con la celda G1.",
+      "`=FILTRAR(A2:D9;B2:B9=G1)`"
+     ],
+     "explicacion": "Ahí están los tres pedidos de Instalaciones Ebro, y si Javier escribe otro cliente en G1, el listado cambia solo. Así se hace un informe que «se actualiza solo»: sin una sola fila copiada a mano."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e3",
+     "modo": "test",
+     "pregunta": "Ahora Javier escribe en G1 **Talleres Huerva**, un cliente nuevo que aún no tiene pedidos. Antes de verlo: ¿qué crees que saldrá en F3?",
+     "opciones": [
+      {
+       "texto": "Un error: #¡CALC!",
+       "correcta": true,
+       "porque": "Bien visto. FILTRAR no encuentra ninguna fila y, como no le has dicho qué poner en ese caso, avisa con #¡CALC!."
+      },
+      {
+       "texto": "La celda vacía",
+       "correcta": false,
+       "porque": "Sería lo lógico, pero no: si no hay filas y no le dices qué mostrar, FILTRAR avisa con un error."
+      },
+      {
+       "texto": "#N/D",
+       "correcta": false,
+       "porque": "#N/D es el aviso de las búsquedas (BUSCARX, BUSCARV) cuando no encuentran un código. FILTRAR usa otro."
+      },
+      {
+       "texto": "Un 0",
+       "correcta": false,
+       "porque": "FILTRAR no suma ni cuenta: devuelve filas. Si no hay ninguna, no tiene un 0 que dar."
+      }
+     ],
+     "explicacion": "#¡CALC! en FILTRAR quiere decir «no hay ninguna fila que cumpla». Ahora verás cómo cambiarlo por un mensaje claro."
+    },
+    {
+     "tipo": "texto",
+     "md": "Ese **#¡CALC!** no quiere decir que la fórmula esté mal: quiere decir «no hay ninguna fila que cumpla». Pero a Javier le parecerá una avería.\n\nPara eso está el tercer argumento, **si_vacío**: lo que quieres ver cuando no hay resultados, entre comillas si es un texto.\n\n`=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")`\n\nSi el cliente tiene pedidos, salen sus filas; si no, sale «Sin pedidos». Ponlo siempre: una lista vacía es un caso normal, no un error."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e4",
+     "modo": "formula",
+     "enunciado": "En G1 está **Talleres Huerva**, que no tiene pedidos. En **F3** escribe la fórmula que saca los pedidos (columnas A a D) del cliente de G1 y que, si no hay ninguno, muestre el texto **Sin pedidos**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente",
+       "F2": "Pedido",
+       "G2": "Cliente",
+       "H2": "Importe",
+       "I2": "Estado",
+       "F1": "Cliente:",
+       "G1": "Talleres Huerva"
+      },
+      "formatos": {
+       "C2:C9": "eur",
+       "H3:H10": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "E": 3,
+       "F": 9,
+       "G": 20,
+       "H": 10,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 10
+     },
+     "objetivo": "F3",
+     "solucion": "=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")",
+     "alternativas": [
+      "=FILTRAR(A2:D9;B2:B9=$G$1;\"Sin pedidos\")",
+      "=SI.ERROR(FILTRAR(A2:D9;B2:B9=G1);\"Sin pedidos\")"
+     ],
+     "errores_tipicos": [
+      "=FILTRAR(A2:D9;B2:B9=G1)",
+      "=FILTRAR(A2:D9;B2:B9=G1;\"\")"
+     ],
+     "variantes": [
+      {
+       "G1": "Instalaciones Ebro"
+      }
+     ],
+     "debe_usar": [
+      "FILTRAR"
+     ],
+     "pistas": [
+      "Parte de la fórmula del ejercicio anterior: `=FILTRAR(A2:D9;B2:B9=G1)`.",
+      "Añade un tercer argumento, después de otro `;`, con el texto entre comillas.",
+      "`=FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")`"
+     ],
+     "explicacion": "Con un cliente nuevo, la hoja dice «Sin pedidos», y en cuanto tenga alguno enseñará sus filas. Un informe que miran otras personas nunca debe enseñar un error en un caso normal."
+    },
+    {
+     "tipo": "texto",
+     "md": "Javier quiere ahora los pedidos **pendientes** y además **de más de 1.000 €**: dos condiciones a la vez.\n\nDentro de FILTRAR, cada condición va **entre paréntesis** y se unen así:\n\n- `*` significa **y** (las dos a la vez): `(D2:D9=\"Pendiente\")*(C2:C9>1000)`\n- `+` significa **o** (basta una): `(B2:B9=\"Montajes Arga\")+(B2:B9=\"Instalaciones Ebro\")`\n\n¿Por qué funciona? Para Excel, VERDADERO vale 1 y FALSO vale 0. 1 × 1 = 1, pero 1 × 0 = 0: con el asterisco solo pasan las filas que lo cumplen todo."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Aquí no sirven Y ni O",
+     "md": "`Y(D2:D9=\"Pendiente\";C2:C9>1000)` resume toda la columna en un **único** VERDADERO o FALSO, y FILTRAR necesita una respuesta **por fila**. Dentro de FILTRAR, usa `*` y `+`."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e5",
+     "modo": "predice",
+     "enunciado": "Mira la fila 9: pedido P-4108, 690 €, Pendiente. ¿Qué número devuelve esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente"
+      },
+      "formatos": {
+       "C2:C9": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "F": 10
+      }
+     },
+     "celda": "F9",
+     "formula": "=(D9=\"Pendiente\")*(C9>1000)",
+     "explicacion": "`D9=\"Pendiente\"` es VERDADERO (1), pero `C9>1000` es FALSO (0), y 1 × 0 = 0. Esta fila no pasaría el filtro: cumple una condición, no las dos.",
+     "respuesta": "0"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e6",
+     "modo": "formula",
+     "enunciado": "En **G1** está el importe mínimo. En **F3** saca todas las columnas (A a D) de los pedidos que estén **Pendiente** y además superen el importe de G1 (más de, no «igual o más»).",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente",
+       "F2": "Pedido",
+       "G2": "Cliente",
+       "H2": "Importe",
+       "I2": "Estado",
+       "F1": "Más de:",
+       "G1": 1000
+      },
+      "formatos": {
+       "C2:C9": "eur",
+       "H3:H10": "eur",
+       "G1": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "E": 3,
+       "F": 9,
+       "G": 20,
+       "H": 10,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 10
+     },
+     "objetivo": "F3",
+     "solucion": "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>G1))",
+     "alternativas": [
+      "=FILTRAR(A2:D9;(C2:C9>G1)*(D2:D9=\"Pendiente\"))",
+      "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>$G$1))"
+     ],
+     "errores_tipicos": [
+      "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")+(C2:C9>G1))",
+      "=FILTRAR(A2:D9;Y(D2:D9=\"Pendiente\";C2:C9>G1))",
+      "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>=G1))",
+      "=FILTRAR(A2:D9;D2:D9=\"Pendiente\")"
+     ],
+     "variantes": [
+      {
+       "G1": 2000
+      },
+      {
+       "G1": 1250
+      }
+     ],
+     "debe_usar": [
+      "FILTRAR"
+     ],
+     "pistas": [
+      "Son dos condiciones a la vez: estado Pendiente **y** importe mayor que G1.",
+      "Pon cada condición entre paréntesis y únelas con `*`.",
+      "`=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(C2:C9>G1))`"
+     ],
+     "explicacion": "Cuatro pedidos pendientes de más de 1.000 €. Si Javier sube el mínimo en G1, la lista se encoge sola. Así se preparan las listas de «lo que hay que mirar hoy»: pendientes grandes, facturas vencidas, stock bajo."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Nuria Campos",
+     "puesto": "Administración",
+     "md": "Te cuento lo que me pasó el mes pasado. Tenía un FILTRAR estupendo y alguien escribió «llamar el lunes» justo debajo. El listado desapareció y salió **#¡DESBORDAMIENTO!**: la fórmula no tenía sitio. Borras la nota y vuelve todo. Y otra: FILTRAR no funciona **dentro de una Tabla** de Excel; escríbela fuera, en celdas normales."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l1-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Javier.** Javier escribe el cliente en **G1**. En **F3** saca todas las columnas (A a D) de los pedidos de ese cliente que estén **Pendiente**. Si no tiene ninguno pendiente, que salga **Nada pendiente**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Pedido",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Estado",
+       "A2": "P-4101",
+       "B2": "Instalaciones Ebro",
+       "C2": 1250,
+       "D2": "Pendiente",
+       "A3": "P-4102",
+       "B3": "Electricidad Moncayo",
+       "C3": 480,
+       "D3": "Servido",
+       "A4": "P-4103",
+       "B4": "Montajes Arga",
+       "C4": 2310,
+       "D4": "Pendiente",
+       "A5": "P-4104",
+       "B5": "Instalaciones Ebro",
+       "C5": 760,
+       "D5": "Servido",
+       "A6": "P-4105",
+       "B6": "Riegos y Luz del Segre",
+       "C6": 1940,
+       "D6": "Pendiente",
+       "A7": "P-4106",
+       "B7": "Instalaciones Ebro",
+       "C7": 1580,
+       "D7": "Pendiente",
+       "A8": "P-4107",
+       "B8": "Electricidad Moncayo",
+       "C8": 3120,
+       "D8": "Servido",
+       "A9": "P-4108",
+       "B9": "Montajes Arga",
+       "C9": 690,
+       "D9": "Pendiente",
+       "F2": "Pedido",
+       "G2": "Cliente",
+       "H2": "Importe",
+       "I2": "Estado",
+       "F1": "Cliente:",
+       "G1": "Montajes Arga"
+      },
+      "formatos": {
+       "C2:C9": "eur",
+       "H3:H10": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 20,
+       "C": 10,
+       "D": 10,
+       "E": 3,
+       "F": 9,
+       "G": 20,
+       "H": 10,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 10
+     },
+     "objetivo": "F3",
+     "solucion": "=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")",
+     "alternativas": [
+      "=FILTRAR(A2:D9;(D2:D9=\"Pendiente\")*(B2:B9=G1);\"Nada pendiente\")",
+      "=FILTRAR(A2:D9;(B2:B9=$G$1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")"
+     ],
+     "errores_tipicos": [
+      "=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\"))",
+      "=FILTRAR(A2:D9;(B2:B9=G1)+(D2:D9=\"Pendiente\");\"Nada pendiente\")",
+      "=FILTRAR(A2:D9;B2:B9=G1;\"Nada pendiente\")"
+     ],
+     "variantes": [
+      {
+       "G1": "Electricidad Moncayo"
+      },
+      {
+       "G1": "Instalaciones Ebro"
+      }
+     ],
+     "debe_usar": [
+      "FILTRAR"
+     ],
+     "pistas": [
+      "Son dos condiciones a la vez (el cliente de G1 **y** el estado Pendiente) y un texto para cuando no haya nada.",
+      "Une las dos condiciones con `*`, cada una entre paréntesis, y añade el texto como tercer argumento.",
+      "`=FILTRAR(A2:D9;(B2:B9=G1)*(D2:D9=\"Pendiente\");\"Nada pendiente\")`"
+     ],
+     "explicacion": "Misión cumplida: Javier escribe un cliente y ve al momento lo que tiene pendiente, o «Nada pendiente». Con 2.000 pedidos la fórmula sería la misma. Esta es la base de los listados que se envían cada lunes sin rehacerlos."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m5l1-q1",
+     "modo": "test",
+     "pregunta": "Tu FILTRAR de F3 muestra **#¡DESBORDAMIENTO!**. Ves que en **G5** alguien ha escrito «ojo, revisar». ¿Qué haces?",
+     "opciones": [
+      {
+       "texto": "Borro o muevo esa nota para dejar libre la zona del listado",
+       "correcta": true,
+       "porque": "Exacto. En cuanto la zona queda vacía, el listado vuelve a aparecer."
+      },
+      {
+       "texto": "Envuelvo la fórmula en SI.ERROR para que no salga el error",
+       "correcta": false,
+       "porque": "Taparías el aviso y seguirías sin listado. El error te dice justo lo que pasa: algo estorba."
+      },
+      {
+       "texto": "Vuelvo a escribir la fórmula desde cero",
+       "correcta": false,
+       "porque": "La fórmula está bien. El problema es lo que hay en medio: si no lo quitas, la nueva fallará igual."
+      },
+      {
+       "texto": "Ensancho la columna G",
+       "correcta": false,
+       "porque": "El ancho no tiene nada que ver: eso arregla los #####, no el desbordamiento."
+      }
+     ],
+     "explicacion": "#¡DESBORDAMIENTO! siempre dice lo mismo: la fórmula no tiene sitio. Deja libre la zona donde tiene que salir el resultado."
+    },
+    {
+     "id": "n3m5l1-q2",
+     "modo": "formula",
+     "enunciado": "Marta quiere ver las facturas de las delegaciones de **Pamplona o Lleida**. En **E2** escribe una fórmula que saque las tres columnas de esas facturas y que, si no hubiera ninguna, muestre **Ninguna**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Delegación",
+       "C1": "Importe",
+       "A2": "F-0501",
+       "B2": "Zaragoza",
+       "C2": 1210,
+       "A3": "F-0502",
+       "B3": "Pamplona",
+       "C3": 845,
+       "A4": "F-0503",
+       "B4": "Lleida",
+       "C4": 2300,
+       "A5": "F-0504",
+       "B5": "Zaragoza",
+       "C5": 990,
+       "A6": "F-0505",
+       "B6": "Lleida",
+       "C6": 1475,
+       "A7": "F-0506",
+       "B7": "Pamplona",
+       "C7": 3020,
+       "A8": "F-0507",
+       "B8": "Zaragoza",
+       "C8": 660,
+       "E1": "Factura",
+       "F1": "Delegación",
+       "G1": "Importe"
+      },
+      "formatos": {
+       "C2:C8": "eur",
+       "G2:G8": "eur"
+      },
+      "anchos": {
+       "A": 8,
+       "B": 11,
+       "C": 10,
+       "D": 3,
+       "E": 8,
+       "F": 11,
+       "G": 10
+      },
+      "columnas": 7,
+      "filas": 8
+     },
+     "objetivo": "E2",
+     "solucion": "=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")+(B2:B8=\"Lleida\");\"Ninguna\")",
+     "alternativas": [
+      "=FILTRAR(A2:C8;(B2:B8=\"Lleida\")+(B2:B8=\"Pamplona\");\"Ninguna\")",
+      "=FILTRAR(A2:C8;B2:B8<>\"Zaragoza\";\"Ninguna\")"
+     ],
+     "errores_tipicos": [
+      "=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")*(B2:B8=\"Lleida\");\"Ninguna\")",
+      "=FILTRAR(A2:C8;B2:B8=\"Pamplona\";\"Ninguna\")"
+     ],
+     "variantes": [
+      {
+       "B5": "Pamplona",
+       "B3": "Zaragoza"
+      }
+     ],
+     "debe_usar": [
+      "FILTRAR"
+     ],
+     "pistas": [
+      "Basta con que cumpla una de las dos: eso es una **o**.",
+      "Cada condición entre paréntesis, unidas con `+`, y el texto como tercer argumento.",
+      "`=FILTRAR(A2:C8;(B2:B8=\"Pamplona\")+(B2:B8=\"Lleida\");\"Ninguna\")`"
+     ],
+     "explicacion": "Cuatro facturas fuera de Zaragoza. Con `+` basta con que se cumpla una condición; con `*` tendrían que cumplirse las dos, y una factura no puede ser de dos delegaciones a la vez."
+    },
+    {
+     "id": "n3m5l1-q3",
+     "modo": "test",
+     "pregunta": "Javier quiere ver **qué pedidos** tiene pendientes Montajes Arga, uno por fila, con su importe. ¿Qué herramienta usas?",
+     "opciones": [
+      {
+       "texto": "FILTRAR",
+       "correcta": true,
+       "porque": "Eso es: devuelve las filas enteras que cumplen las condiciones, tantas como haya."
+      },
+      {
+       "texto": "SUMAR.SI.CONJUNTO",
+       "correcta": false,
+       "porque": "Te daría el importe total pendiente, un solo número, no la lista de pedidos."
+      },
+      {
+       "texto": "BUSCARX",
+       "correcta": false,
+       "porque": "BUSCARX trae una sola coincidencia (la primera que encuentra), no todas."
+      },
+      {
+       "texto": "CONTAR.SI.CONJUNTO",
+       "correcta": false,
+       "porque": "Te diría cuántos pedidos hay, pero no cuáles."
+      }
+     ],
+     "explicacion": "FILTRAR cuando quieres ver las filas; SUMAR.SI.CONJUNTO o CONTAR.SI.CONJUNTO cuando basta un número; BUSCARX cuando buscas un solo dato."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "FILTRAR: ¿qué argumentos tiene?",
+     "dorso": "FILTRAR(matriz; incluir; [si_vacío]). Ej.: =FILTRAR(A2:D9;B2:B9=G1;\"Sin pedidos\")"
+    },
+    {
+     "tipo": "error",
+     "frente": "Un FILTRAR da #¡CALC!",
+     "dorso": "No hay ninguna fila que cumpla y falta el tercer argumento (si_vacío)."
+    },
+    {
+     "tipo": "error",
+     "frente": "Una fórmula que desborda da #¡DESBORDAMIENTO!",
+     "dorso": "Algo ocupa la zona donde tiene que salir el resultado (o está dentro de una Tabla). Deja libre la zona."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Dos condiciones dentro de FILTRAR: ¿* o +?",
+     "dorso": "* = y (las dos a la vez); + = o (basta una). Cada condición, entre paréntesis."
+    }
+   ]
+  },
+  {
+   "id": "n3m5l2",
+   "titulo": "ORDENAR, ORDENARPOR y UNICOS: rankings y listas sin repetidos",
+   "minutos": 15,
+   "objetivo": "Sacar listas sin repetidos y rankings ordenados con fórmulas que se actualizan solas, sin tocar los datos originales.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "El lunes tengo reunión con los comerciales. Necesito el ranking de octubre, de quien más vende a quien menos, sacado del listado de ventas. Y que en noviembre salga solo, que no quiero que lo rehagas a mano cada mes.",
+    "logro": "Ya sabes sacar una lista sin repetidos, sumar lo de cada uno y ordenarlo en un ranking que se actualiza solo."
+   },
+   "funciones": [
+    "UNICOS",
+    "ORDENAR",
+    "ORDENARPOR",
+    "CONTARA",
+    "SUMAR.SI"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "El listado de ventas de octubre tiene una fila por venta: Sergio Bueno sale dos veces, Instalaciones Ebro tres… Para un resumen necesitas cada nombre **una sola vez**.\n\nA mano, copiarías la columna y usarías **Quitar duplicados**. Funciona, pero el mes que viene hay que repetirlo.\n\n**UNICOS** lo hace con una fórmula: `=UNICOS(B2:B13)` devuelve los clientes sin repetir, en el orden en que aparecen por primera vez. Como FILTRAR, se desborda hacia abajo y se actualiza sola."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Ojo con las celdas vacías",
+     "md": "Si el rango que le das a UNICOS tiene celdas **vacías**, en la lista aparece un **0**: la celda vacía cuenta como un valor más. Coge solo las filas con datos."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e1",
+     "modo": "formula",
+     "enunciado": "Este es el listado de ventas de octubre (en el real hay cientos de filas; la fórmula es la misma). En **E2** escribe una fórmula que saque la lista de **clientes** (columna B) **sin repetir**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "A2": "Sergio Bueno",
+       "B2": "Instalaciones Ebro",
+       "C2": 4250,
+       "A3": "Iñaki Goñi",
+       "B3": "Montajes Arga",
+       "C3": 3180,
+       "A4": "Montse Pujol",
+       "B4": "Riegos y Luz del Segre",
+       "C4": 2940,
+       "A5": "Raúl Gimeno",
+       "B5": "Talleres Huerva",
+       "C5": 5120,
+       "A6": "Pilar Lasheras",
+       "B6": "Electricidad Moncayo",
+       "C6": 1870,
+       "A7": "Sergio Bueno",
+       "B7": "Talleres Huerva",
+       "C7": 2630,
+       "A8": "Elena Sanz",
+       "B8": "Electro Baztán",
+       "C8": 2760,
+       "A9": "Iñaki Goñi",
+       "B9": "Montajes Arga",
+       "C9": 1420,
+       "A10": "Raúl Gimeno",
+       "B10": "Instalaciones Ebro",
+       "C10": 3390,
+       "A11": "Montse Pujol",
+       "B11": "Instalaciones Noguera",
+       "C11": 3560,
+       "A12": "Pilar Lasheras",
+       "B12": "Instalaciones Ebro",
+       "C12": 2210,
+       "A13": "Elena Sanz",
+       "B13": "Montajes Arga",
+       "C13": 1940,
+       "E1": "Clientes de octubre"
+      },
+      "formatos": {
+       "C2:C13": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 21,
+       "C": 9,
+       "D": 3,
+       "E": 21,
+       "F": 11,
+       "G": 3,
+       "H": 13,
+       "I": 10
+      },
+      "columnas": 5,
+      "filas": 13
+     },
+     "objetivo": "E2",
+     "solucion": "=UNICOS(B2:B13)",
+     "alternativas": [
+      "=UNICOS($B$2:$B$13)"
+     ],
+     "errores_tipicos": [
+      "=UNICOS(B1:B13)",
+      "=UNICOS(A2:A13)",
+      "=B2:B13"
+     ],
+     "variantes": [
+      {
+       "B13": "Talleres Huerva",
+       "B6": "Montajes Arga"
+      }
+     ],
+     "debe_usar": [
+      "UNICOS"
+     ],
+     "pistas": [
+      "La función se llama UNICOS (sin tilde) y aquí solo necesita un argumento: la columna.",
+      "Selecciona los clientes sin el título: de B2 a B13.",
+      "`=UNICOS(B2:B13)`"
+     ],
+     "explicacion": "Siete clientes, cada uno una vez. Si mañana entra una venta a un cliente nuevo dentro del rango, aparecerá solo al final de la lista. Se acabó quitar duplicados a mano cada mes."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e2",
+     "modo": "predice",
+     "enunciado": "Antes de calcularlo: ¿a cuántos clientes **distintos** se ha vendido en este listado? Cuéntalos a ojo en la columna B y escribe el número que devolverá la fórmula.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "A2": "Sergio Bueno",
+       "B2": "Instalaciones Ebro",
+       "C2": 4250,
+       "A3": "Iñaki Goñi",
+       "B3": "Montajes Arga",
+       "C3": 3180,
+       "A4": "Montse Pujol",
+       "B4": "Riegos y Luz del Segre",
+       "C4": 2940,
+       "A5": "Raúl Gimeno",
+       "B5": "Talleres Huerva",
+       "C5": 5120,
+       "A6": "Pilar Lasheras",
+       "B6": "Electricidad Moncayo",
+       "C6": 1870,
+       "A7": "Sergio Bueno",
+       "B7": "Talleres Huerva",
+       "C7": 2630,
+       "A8": "Elena Sanz",
+       "B8": "Electro Baztán",
+       "C8": 2760,
+       "A9": "Iñaki Goñi",
+       "B9": "Montajes Arga",
+       "C9": 1420,
+       "A10": "Raúl Gimeno",
+       "B10": "Instalaciones Ebro",
+       "C10": 3390,
+       "A11": "Montse Pujol",
+       "B11": "Instalaciones Noguera",
+       "C11": 3560,
+       "A12": "Pilar Lasheras",
+       "B12": "Instalaciones Ebro",
+       "C12": 2210,
+       "A13": "Elena Sanz",
+       "B13": "Montajes Arga",
+       "C13": 1940
+      },
+      "formatos": {
+       "C2:C13": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 21,
+       "C": 9,
+       "D": 3,
+       "E": 21,
+       "F": 11,
+       "G": 3,
+       "H": 13,
+       "I": 10
+      }
+     },
+     "celda": "E2",
+     "formula": "=CONTARA(UNICOS(B2:B13))",
+     "explicacion": "UNICOS deja cada cliente una vez y CONTARA cuenta cuántos quedan: 7 clientes distintos en 12 ventas. `=CONTARA(UNICOS(rango))` responde a una pregunta que las jefas hacen mucho: «¿a cuántos clientes hemos vendido?».",
+     "respuesta": "7"
+    },
+    {
+     "tipo": "texto",
+     "md": "Para un **ranking** hay que ordenar. **ORDENAR** devuelve una copia ordenada del bloque, sin tocar el original:\n\n`=ORDENAR(matriz; [índice_ordenación]; [criterio_ordenación])`\n\n- **matriz**: el bloque, sin títulos.\n- **índice_ordenación**: el número de la columna **dentro del bloque** por la que ordenas (1 la primera, 2 la segunda…).\n- **criterio_ordenación**: **1** de menor a mayor (o de la A a la Z) y **-1** de mayor a menor.\n\nSi no pones nada, ordena por la primera columna y de menor a mayor."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e3",
+     "modo": "formula",
+     "enunciado": "Este es el resumen de ventas de **septiembre** por comercial. En **E2** escribe una fórmula que devuelva el bloque entero (A a C) ordenado por **ventas, de mayor a menor**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Delegación",
+       "C1": "Ventas sep.",
+       "A2": "Sergio Bueno",
+       "B2": "Zaragoza",
+       "C2": 7640,
+       "A3": "Pilar Lasheras",
+       "B3": "Zaragoza",
+       "C3": 5120,
+       "A4": "Iñaki Goñi",
+       "B4": "Pamplona",
+       "C4": 6980,
+       "A5": "Montse Pujol",
+       "B5": "Lleida",
+       "C5": 4870,
+       "A6": "Raúl Gimeno",
+       "B6": "Zaragoza",
+       "C6": 8310,
+       "A7": "Elena Sanz",
+       "B7": "Pamplona",
+       "C7": 5560,
+       "E1": "Comercial",
+       "F1": "Delegación",
+       "G1": "Ventas sep."
+      },
+      "formatos": {
+       "C2:C7": "#.##0 €",
+       "G2:G7": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 11,
+       "C": 11,
+       "D": 3,
+       "E": 13,
+       "F": 11,
+       "G": 11
+      },
+      "columnas": 7,
+      "filas": 7
+     },
+     "objetivo": "E2",
+     "solucion": "=ORDENAR(A2:C7;3;-1)",
+     "alternativas": [
+      "=ORDENAR($A$2:$C$7;3;-1)"
+     ],
+     "errores_tipicos": [
+      "=ORDENAR(A2:C7;3)",
+      "=ORDENAR(A2:C7;3;1)",
+      "=ORDENAR(A2:C7;1;-1)",
+      "=ORDENAR(A2:C7)"
+     ],
+     "variantes": [
+      {
+       "C3": 9000
+      }
+     ],
+     "debe_usar": [
+      "ORDENAR"
+     ],
+     "pistas": [
+      "Las ventas son la **tercera** columna del bloque A2:C7.",
+      "De mayor a menor se pide con -1 como último argumento.",
+      "`=ORDENAR(A2:C7;3;-1)`"
+     ],
+     "explicacion": "Raúl Gimeno arriba y Montse Pujol abajo, y el resumen original sigue como estaba. Si cambia alguna cifra, el ranking se reordena solo."
+    },
+    {
+     "tipo": "texto",
+     "md": "A veces quieres el ranking **solo con los nombres**, sin enseñar cifras (por ejemplo, para la pizarra de la reunión).\n\n**ORDENARPOR** ordena un rango **según otro** rango, que no tiene por qué salir en el resultado:\n\n`=ORDENARPOR(A2:A7;C2:C7;-1)`\n\nSe lee así: «dame los nombres de A2:A7, ordenados por las ventas de C2:C7, de mayor a menor». Los dos rangos tienen que tener las mismas filas."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e4",
+     "modo": "formula",
+     "enunciado": "Para la pizarra de la reunión, Javier quiere **solo los nombres**, del que más vendió en septiembre al que menos. En **E2** escribe la fórmula.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Delegación",
+       "C1": "Ventas sep.",
+       "A2": "Sergio Bueno",
+       "B2": "Zaragoza",
+       "C2": 7640,
+       "A3": "Pilar Lasheras",
+       "B3": "Zaragoza",
+       "C3": 5120,
+       "A4": "Iñaki Goñi",
+       "B4": "Pamplona",
+       "C4": 6980,
+       "A5": "Montse Pujol",
+       "B5": "Lleida",
+       "C5": 4870,
+       "A6": "Raúl Gimeno",
+       "B6": "Zaragoza",
+       "C6": 8310,
+       "A7": "Elena Sanz",
+       "B7": "Pamplona",
+       "C7": 5560,
+       "E1": "Ranking sep."
+      },
+      "formatos": {
+       "C2:C7": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 11,
+       "C": 11,
+       "D": 3,
+       "E": 13,
+       "F": 11,
+       "G": 11
+      },
+      "columnas": 5,
+      "filas": 7
+     },
+     "objetivo": "E2",
+     "solucion": "=ORDENARPOR(A2:A7;C2:C7;-1)",
+     "alternativas": [
+      "=ORDENARPOR($A$2:$A$7;$C$2:$C$7;-1)"
+     ],
+     "errores_tipicos": [
+      "=ORDENARPOR(A2:A7;C2:C7)",
+      "=ORDENAR(A2:A7;1;-1)",
+      "=ORDENARPOR(C2:C7;A2:A7;-1)"
+     ],
+     "variantes": [
+      {
+       "C3": 9000
+      }
+     ],
+     "debe_usar": [
+      "ORDENARPOR"
+     ],
+     "pistas": [
+      "Primero lo que quieres ver (los nombres) y después por qué ordenas (las ventas).",
+      "Añade -1 al final para que vaya de mayor a menor.",
+      "`=ORDENARPOR(A2:A7;C2:C7;-1)`"
+     ],
+     "explicacion": "Raúl, Sergio, Iñaki… sin una sola cifra a la vista. ORDENARPOR te deja ordenar por una columna que no enseñas: útil para pizarras, correos y listados para clientes."
+    },
+    {
+     "tipo": "comparar",
+     "izq": "Así no",
+     "der": "Así sí",
+     "filas": [
+      [
+       "Ordenar el listado original para ver el ranking: pierdes el orden en que llegó y, si ordenas una sola columna, mezclas los datos",
+       "Dejar el original como llega y sacar el ranking con ORDENAR en otro sitio"
+      ],
+      [
+       "Copiar la columna y quitar duplicados a mano cada mes",
+       "UNICOS: la lista se rehace sola cuando cambian los datos"
+      ],
+      [
+       "Volver a ordenar cada vez que cambia una cifra",
+       "El ranking con fórmula se reordena solo"
+      ]
+     ]
+    },
+    {
+     "tipo": "texto",
+     "md": "Un último truco de las matrices dinámicas. Si en E2 tienes `=UNICOS(A2:A13)`, puedes referirte a **todo** su resultado escribiendo **E2#**: la celda de la fórmula seguida de una almohadilla.\n\n- `=CONTARA(E2#)` cuenta cuántos comerciales hay.\n- `=SUMAR.SI(A2:A13;E2#;C2:C13)` suma las ventas de cada uno de golpe, y también se desborda.\n\nLa ventaja: si mañana entra una comercial nueva, E2# se alarga solo. Un rango fijo, como E2:E7, se quedaría corto."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "dato",
+     "titulo": "En tu Excel, sí",
+     "md": "La hoja de práctica de esta guía todavía no entiende el **#**. En los ejercicios usarás rangos normales (E2:E7); en tu Excel 2021 o Microsoft 365, pruébalo."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e5",
+     "modo": "test",
+     "pregunta": "En **E2** tienes `=UNICOS(A2:A13)`. En otra celda, Javier escribe `=CONTARA(E2#)`. ¿Qué cuenta?",
+     "opciones": [
+      {
+       "texto": "Todos los nombres que ha desbordado UNICOS desde E2, sean cuantos sean",
+       "correcta": true,
+       "porque": "Eso es. E2# es «todo el resultado de la fórmula de E2». Si mañana hay siete comerciales, contará siete sin tocar nada."
+      },
+      {
+       "texto": "Solo la celda E2, así que da 1",
+       "correcta": false,
+       "porque": "Eso sería `=CONTARA(E2)`. La almohadilla añade todo lo que la fórmula ha desbordado."
+      },
+      {
+       "texto": "Toda la columna E",
+       "correcta": false,
+       "porque": "No: solo las celdas del resultado de E2. Lo que haya más abajo, fuera del resultado, no cuenta."
+      },
+      {
+       "texto": "Nada: el # siempre da error",
+       "correcta": false,
+       "porque": "En Excel 2021 y Microsoft 365, el # es válido (se llama operador de rango desbordado). Solo falla si en E2 no hay una fórmula que desborde."
+      }
+     ],
+     "explicacion": "E2# usa el operador de rango desbordado: se refiere a todo lo que devuelve la fórmula de E2, crezca o encoja."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Nuria Campos",
+     "puesto": "Administración",
+     "md": "Para el ranking de Javier no toques el listado de ventas: déjalo como sale del programa. Hazlo al lado en tres pasos: **UNICOS** para los nombres, **SUMAR.SI** para el total de cada uno y **ORDENAR** para el ranking. El primero ya te lo he dejado puesto en E2."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e6",
+     "modo": "formula",
+     "enunciado": "En **E2** ya está `=UNICOS(A2:A13)` con los seis comerciales. En **F2** escribe la fórmula que suma las ventas del comercial de E2. Se copiará hasta F7: fija con $ los rangos del listado para que no se muevan.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "A2": "Sergio Bueno",
+       "B2": "Instalaciones Ebro",
+       "C2": 4250,
+       "A3": "Iñaki Goñi",
+       "B3": "Montajes Arga",
+       "C3": 3180,
+       "A4": "Montse Pujol",
+       "B4": "Riegos y Luz del Segre",
+       "C4": 2940,
+       "A5": "Raúl Gimeno",
+       "B5": "Talleres Huerva",
+       "C5": 5120,
+       "A6": "Pilar Lasheras",
+       "B6": "Electricidad Moncayo",
+       "C6": 1870,
+       "A7": "Sergio Bueno",
+       "B7": "Talleres Huerva",
+       "C7": 2630,
+       "A8": "Elena Sanz",
+       "B8": "Electro Baztán",
+       "C8": 2760,
+       "A9": "Iñaki Goñi",
+       "B9": "Montajes Arga",
+       "C9": 1420,
+       "A10": "Raúl Gimeno",
+       "B10": "Instalaciones Ebro",
+       "C10": 3390,
+       "A11": "Montse Pujol",
+       "B11": "Instalaciones Noguera",
+       "C11": 3560,
+       "A12": "Pilar Lasheras",
+       "B12": "Instalaciones Ebro",
+       "C12": 2210,
+       "A13": "Elena Sanz",
+       "B13": "Montajes Arga",
+       "C13": 1940,
+       "E1": "Comercial",
+       "F1": "Ventas oct.",
+       "E2": "=UNICOS(A2:A13)"
+      },
+      "formatos": {
+       "C2:C13": "#.##0 €",
+       "F2:F7": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 21,
+       "C": 9,
+       "D": 3,
+       "E": 21,
+       "F": 11,
+       "G": 3,
+       "H": 13,
+       "I": 10
+      },
+      "columnas": 6,
+      "filas": 13
+     },
+     "objetivo": "F2",
+     "copiar_a": [
+      "F3:F7"
+     ],
+     "solucion": "=SUMAR.SI($A$2:$A$13;E2;$C$2:$C$13)",
+     "alternativas": [
+      "=SUMAR.SI(A$2:A$13;E2;C$2:C$13)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI($C$2:$C$13;E2;$A$2:$A$13)",
+      "=SUMAR.SI($A$2:$A$13;$E$2;$C$2:$C$13)",
+      "=SUMA($C$2:$C$13)"
+     ],
+     "variantes": [
+      {
+       "C2": 5000
+      }
+     ],
+     "formato_resultado": "#.##0 €",
+     "pistas": [
+      "Es un SUMAR.SI: dónde busca el nombre, qué nombre busca y qué columna suma.",
+      "Busca en la columna de comerciales ($A$2:$A$13) el nombre de E2 y suma los importes ($C$2:$C$13).",
+      "`=SUMAR.SI($A$2:$A$13;E2;$C$2:$C$13)`"
+     ],
+     "explicacion": "Ya tienes el total de cada comercial: un resumen sin tabla dinámica que se recalcula al cambiar cualquier venta. En tu Excel, con `=SUMAR.SI(A2:A13;E2#;C2:C13)` lo harías con una sola fórmula."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l2-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Javier.** En **H2** saca el ranking de octubre: los nombres y las ventas del resumen E2:F7, ordenados de **mayor a menor venta**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "A2": "Sergio Bueno",
+       "B2": "Instalaciones Ebro",
+       "C2": 4250,
+       "A3": "Iñaki Goñi",
+       "B3": "Montajes Arga",
+       "C3": 3180,
+       "A4": "Montse Pujol",
+       "B4": "Riegos y Luz del Segre",
+       "C4": 2940,
+       "A5": "Raúl Gimeno",
+       "B5": "Talleres Huerva",
+       "C5": 5120,
+       "A6": "Pilar Lasheras",
+       "B6": "Electricidad Moncayo",
+       "C6": 1870,
+       "A7": "Sergio Bueno",
+       "B7": "Talleres Huerva",
+       "C7": 2630,
+       "A8": "Elena Sanz",
+       "B8": "Electro Baztán",
+       "C8": 2760,
+       "A9": "Iñaki Goñi",
+       "B9": "Montajes Arga",
+       "C9": 1420,
+       "A10": "Raúl Gimeno",
+       "B10": "Instalaciones Ebro",
+       "C10": 3390,
+       "A11": "Montse Pujol",
+       "B11": "Instalaciones Noguera",
+       "C11": 3560,
+       "A12": "Pilar Lasheras",
+       "B12": "Instalaciones Ebro",
+       "C12": 2210,
+       "A13": "Elena Sanz",
+       "B13": "Montajes Arga",
+       "C13": 1940,
+       "E1": "Comercial",
+       "F1": "Ventas oct.",
+       "E2": "=UNICOS(A2:A13)",
+       "F2": "=SUMAR.SI($A$2:$A$13;E2;$C$2:$C$13)",
+       "F3": "=SUMAR.SI($A$2:$A$13;E3;$C$2:$C$13)",
+       "F4": "=SUMAR.SI($A$2:$A$13;E4;$C$2:$C$13)",
+       "F5": "=SUMAR.SI($A$2:$A$13;E5;$C$2:$C$13)",
+       "F6": "=SUMAR.SI($A$2:$A$13;E6;$C$2:$C$13)",
+       "F7": "=SUMAR.SI($A$2:$A$13;E7;$C$2:$C$13)",
+       "H1": "Ranking",
+       "I1": "Ventas"
+      },
+      "formatos": {
+       "C2:C13": "#.##0 €",
+       "F2:F7": "#.##0 €",
+       "I2:I7": "#.##0 €"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 21,
+       "C": 9,
+       "D": 3,
+       "E": 21,
+       "F": 11,
+       "G": 3,
+       "H": 13,
+       "I": 10
+      },
+      "columnas": 9,
+      "filas": 13
+     },
+     "objetivo": "H2",
+     "solucion": "=ORDENAR(E2:F7;2;-1)",
+     "alternativas": [
+      "=ORDENARPOR(E2:F7;F2:F7;-1)",
+      "=ORDENAR($E$2:$F$7;2;-1)"
+     ],
+     "errores_tipicos": [
+      "=ORDENAR(E2:F7;2)",
+      "=ORDENAR(E2:F7;1;-1)",
+      "=ORDENARPOR(E2:E7;F2:F7;-1)",
+      "=ORDENAR(A2:C13;3;-1)"
+     ],
+     "variantes": [
+      {
+       "C9": 3500
+      }
+     ],
+     "pistas": [
+      "Quieres el bloque de dos columnas E2:F7, ordenado.",
+      "Ordena por la **segunda** columna del bloque (las ventas), con -1.",
+      "`=ORDENAR(E2:F7;2;-1)`"
+     ],
+     "explicacion": "Misión cumplida: Raúl Gimeno encabeza el ranking de octubre y el listado del programa sigue intacto. En noviembre, con el listado nuevo en su sitio, los tres pasos se recalculan solos (si tiene más filas, amplía los rangos). Javier tendrá su ranking en un minuto."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m5l2-q1",
+     "modo": "formula",
+     "enunciado": "Andrés quiere la lista de **familias** de producto **sin repetir y en orden alfabético**. Escríbela en **D2** con una sola fórmula.",
+     "hoja": {
+      "celdas": {
+       "A1": "Código",
+       "B1": "Familia",
+       "A2": "CAB-15",
+       "B2": "Cableado",
+       "A3": "CAN-40",
+       "B3": "Canalización",
+       "A4": "MAG-16",
+       "B4": "Protección",
+       "A5": "CAB-25",
+       "B5": "Cableado",
+       "A6": "LED-18",
+       "B6": "Iluminación",
+       "A7": "BRI-300",
+       "B7": "Fijación",
+       "A8": "TUB-20",
+       "B8": "Canalización",
+       "A9": "LED-36",
+       "B9": "Iluminación",
+       "D1": "Familias"
+      },
+      "anchos": {
+       "A": 9,
+       "B": 13,
+       "C": 3,
+       "D": 13
+      },
+      "columnas": 4,
+      "filas": 9
+     },
+     "objetivo": "D2",
+     "solucion": "=ORDENAR(UNICOS(B2:B9))",
+     "alternativas": [
+      "=UNICOS(ORDENAR(B2:B9))",
+      "=ORDENAR(UNICOS(B2:B9);1;1)"
+     ],
+     "errores_tipicos": [
+      "=UNICOS(B2:B9)",
+      "=ORDENAR(B2:B9)",
+      "=ORDENAR(UNICOS(B2:B9);1;-1)"
+     ],
+     "variantes": [
+      {
+       "B9": "Automatización"
+      }
+     ],
+     "pistas": [
+      "Son dos pasos: quitar repetidos y ordenar.",
+      "Una función dentro de otra: ORDENAR(UNICOS(…)).",
+      "`=ORDENAR(UNICOS(B2:B9))`"
+     ],
+     "explicacion": "Cinco familias de la A a la Z. Meter una función dentro de otra es lo normal con las matrices dinámicas: cada una hace un paso."
+    },
+    {
+     "id": "n3m5l2-q2",
+     "modo": "test",
+     "pregunta": "Marta quiere la lista de **clientes ordenada por su deuda**, de más a menos, para un correo en el que **no quiere enseñar los importes**. ¿Qué usas?",
+     "opciones": [
+      {
+       "texto": "ORDENARPOR(clientes; deuda; -1)",
+       "correcta": true,
+       "porque": "Eso es: ordena los nombres según la deuda, y la deuda no aparece en el resultado."
+      },
+      {
+       "texto": "ORDENAR(clientes; 1; -1)",
+       "correcta": false,
+       "porque": "Eso ordena los nombres por sí mismos, de la Z a la A, no por la deuda."
+      },
+      {
+       "texto": "UNICOS(clientes)",
+       "correcta": false,
+       "porque": "Quita repetidos, pero no ordena por la deuda."
+      },
+      {
+       "texto": "Ordenar la hoja original por la deuda y copiar los nombres",
+       "correcta": false,
+       "porque": "Funciona una vez, pero toca el original y no se actualiza: el mes que viene, otra vez a mano."
+      }
+     ],
+     "explicacion": "ORDENARPOR ordena una cosa según otra que no tiene por qué salir en el resultado: perfecta cuando no quieres enseñar las cifras."
+    },
+    {
+     "id": "n3m5l2-q3",
+     "modo": "respuesta_corta",
+     "pregunta": "En ORDENAR y ORDENARPOR, ¿qué número escribes como criterio para ordenar **de mayor a menor**?",
+     "aceptadas": [
+      "-1",
+      "- 1",
+      "menos 1",
+      "menos uno"
+     ],
+     "explicacion": "-1 ordena de mayor a menor (o de la Z a la A); 1, o nada, de menor a mayor."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "UNICOS",
+     "dorso": "=UNICOS(rango): lista sin repetidos, en el orden en que aparecen. Contar distintos: =CONTARA(UNICOS(rango))."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "ORDENAR: ranking de mayor a menor por la 3.ª columna",
+     "dorso": "=ORDENAR(A2:C7;3;-1). -1 = de mayor a menor; 1 o nada = de menor a mayor."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "ORDENARPOR",
+     "dorso": "=ORDENARPOR(lo que ves; por lo que ordenas; -1). Ordena por una columna que no tiene por qué salir."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué significa E2# en una fórmula?",
+     "dorso": "Todo el resultado desbordado de la fórmula de E2, crezca o encoja."
+    }
+   ]
+  },
+  {
+   "id": "n3m5l3",
+   "titulo": "El gráfico adecuado y el gráfico combinado",
+   "minutos": 14,
+   "objetivo": "Elegir el gráfico según lo que se quiere contar, montar un gráfico combinado con eje secundario y presentarlo de forma honesta y clara.",
+   "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Para el comité del jueves quiero ver en un solo gráfico cómo van las ventas de cada mes y qué margen nos dejan. Que se entienda en cinco segundos y que el título me diga lo que tengo que ver.",
+    "logro": "Ya sabes elegir el gráfico según lo que quieres contar y hacer un gráfico combinado con eje secundario, con un título que da la conclusión."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Antes de tocar un gráfico, contesta: **¿qué quiero que se vea?** Casi siempre es una de estas cuatro cosas:\n\n| Quiero enseñar… | Gráfico |\n|---|---|\n| **Comparar** cifras (delegaciones, comerciales) | Columnas o barras |\n| **Evolución** en el tiempo (meses) | Líneas |\n| **Composición**: partes de un total | Circular (pocas partes) o columnas apiladas |\n| **Relación** entre dos medidas | Dispersión (puntos) |\n\nEl tipo no se elige por bonito: se elige por la pregunta."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e1",
+     "modo": "test",
+     "pregunta": "Lucía quiere enseñar cómo ha cambiado **la plantilla mes a mes** desde enero: 52 personas en enero, 53, 55… hasta las 58 de octubre. ¿Qué gráfico?",
+     "opciones": [
+      {
+       "texto": "Líneas",
+       "correcta": true,
+       "porque": "Eso es: una medida que cambia en el tiempo. La línea deja ver de un vistazo si sube, baja o se estanca."
+      },
+      {
+       "texto": "Circular",
+       "correcta": false,
+       "porque": "El circular es para partes de un total. Los meses no son partes de nada: son momentos distintos."
+      },
+      {
+       "texto": "Dispersión",
+       "correcta": false,
+       "porque": "La dispersión enseña la relación entre dos medidas distintas. Aquí hay una sola medida a lo largo del tiempo."
+      },
+      {
+       "texto": "Columnas apiladas",
+       "correcta": false,
+       "porque": "Las apiladas enseñan de qué se compone un total. Aquí no hay partes que sumar."
+      }
+     ],
+     "explicacion": "Evolución en el tiempo, líneas: de un vistazo se ve si la plantilla crece, baja o se estanca."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e2",
+     "modo": "test",
+     "pregunta": "Andrés sospecha que **los pedidos más grandes tardan más en servirse**. De cada pedido tiene el importe y los días que tardó. ¿Qué gráfico le ayuda a comprobarlo?",
+     "opciones": [
+      {
+       "texto": "Dispersión",
+       "correcta": true,
+       "porque": "Eso es: cada pedido es un punto, con el importe en un eje y los días en el otro. Si la nube de puntos sube hacia la derecha, Andrés tiene razón."
+      },
+      {
+       "texto": "Líneas",
+       "correcta": false,
+       "porque": "Las líneas unen puntos en orden, normalmente el del tiempo. Aquí los pedidos no tienen un orden natural: unirlos dibujaría un garabato."
+      },
+      {
+       "texto": "Columnas",
+       "correcta": false,
+       "porque": "Tendrías una columna por pedido y no verías la relación entre el importe y los días."
+      },
+      {
+       "texto": "Circular",
+       "correcta": false,
+       "porque": "El circular reparte un total en porciones; no relaciona dos medidas."
+      }
+     ],
+     "explicacion": "Para ver si dos medidas van juntas (más importe, más días), dispersión: cada pedido es un punto."
+    },
+    {
+     "tipo": "texto",
+     "md": "Carmen quiere ventas y margen en el mismo gráfico; cada uno es una **serie** (un grupo de datos del gráfico). Pero las ventas rondan **400.000 €** al mes y el margen es un **22 %** (0,22): en el mismo eje, la línea del margen queda aplastada contra el cero.\n\nLa solución es un **gráfico combinado con eje secundario**. Las ventas, en columnas con su escala a la izquierda; el margen, en una línea con **su propia escala a la derecha**: ese segundo eje vertical es el **eje secundario**."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e3",
+     "modo": "formula",
+     "enunciado": "Primero, los datos. En **D2** calcula el **margen %** de mayo: el margen en euros (C2) entre las ventas (B2). La fórmula se copiará hasta D7.",
+     "hoja": {
+      "celdas": {
+       "A1": "Mes",
+       "B1": "Ventas",
+       "C1": "Margen €",
+       "D1": "Margen %",
+       "A2": "Mayo",
+       "B2": 412300,
+       "C2": 99360,
+       "A3": "Junio",
+       "B3": 398750,
+       "C3": 93710,
+       "A4": "Julio",
+       "B4": 455900,
+       "C4": 103950,
+       "A5": "Agosto",
+       "B5": 301200,
+       "C5": 77110,
+       "A6": "Septiembre",
+       "B6": 468400,
+       "C6": 102580,
+       "A7": "Octubre",
+       "B7": 489150,
+       "C7": 103700
+      },
+      "formatos": {
+       "B2:C7": "#.##0 €",
+       "D2:D7": "pct1"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "C": 11,
+       "D": 10
+      }
+     },
+     "objetivo": "D2",
+     "copiar_a": [
+      "D3:D7"
+     ],
+     "solucion": "=C2/B2",
+     "errores_tipicos": [
+      "=B2/C2",
+      "=C2/$B$2",
+      "=C2/B2*100"
+     ],
+     "variantes": [
+      {
+       "C2": 120000,
+       "B5": 350000
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Margen % = margen en euros ÷ ventas.",
+      "Divide C2 entre B2. No multipliques por 100: el formato de porcentaje ya lo hace.",
+      "`=C2/B2`"
+     ],
+     "explicacion": "Ya tienes la serie que irá en el eje secundario: del 24,1 % de mayo al 21,2 % de octubre. Sin eje secundario, esos 0,24 desaparecerían al lado de los 400.000 € de ventas."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para crearlo:\n\n1. Selecciona los datos **con sus títulos**: los meses, las ventas y el margen % (para saltarte una columna, mantén pulsada [[Ctrl]] mientras seleccionas).\n2. **Insertar › Gráficos › Insertar gráfico combinado** y elige el modelo de **columnas con una línea en el eje secundario**.\n\nSi el gráfico ya está hecho, haz clic en él y ve a **Diseño de gráfico › Cambiar tipo de gráfico**. En la opción del gráfico combinado, eliges el tipo de cada serie y marcas la casilla **Eje secundario** en la del margen."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e4",
+     "modo": "cinta",
+     "enunciado": "Ya tienes seleccionados los meses, las ventas y el margen %. Toca el botón que crea el **gráfico combinado**.",
+     "ruta": [
+      "Insertar",
+      "Gráficos",
+      "Insertar gráfico combinado"
+     ],
+     "explicacion": "Insertar › Gráficos › Insertar gráfico combinado. Desde ahí eliges el modelo de columnas con una línea en el eje secundario."
+    },
+    {
+     "tipo": "texto",
+     "md": "Un gráfico para la dirección tiene que ser **honesto** y **limpio**:\n\n- **Eje desde cero** en columnas y barras: el ojo compara alturas; si el eje empieza en 300.000, una diferencia pequeña parece enorme.\n- **Título que dice la conclusión**: no «Ventas 2026», sino «Vendemos más, pero el margen baja».\n- **Quita lo que sobra**: 3D, sombras y la leyenda (el cuadro que dice qué color es cada serie) si solo hay una.\n- **Pocas series**: con más de cuatro o cinco líneas, nadie ve nada."
+    },
+    {
+     "tipo": "comparar",
+     "izq": "Así no",
+     "der": "Así sí",
+     "filas": [
+      [
+       "Título: «Gráfico 1»",
+       "Título: «Vendemos más, pero el margen baja desde julio»"
+      ],
+      [
+       "Eje de las columnas que empieza en 300.000 €",
+       "Eje que empieza en 0 €"
+      ],
+      [
+       "Ventas y margen % en el mismo eje: la línea, pegada al cero",
+       "Margen % en el eje secundario, con su escala a la derecha"
+      ],
+      [
+       "Columnas en 3D con sombras",
+       "Columnas planas con la cifra encima"
+      ]
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e5",
+     "modo": "test",
+     "pregunta": "Un compañero manda un gráfico de columnas con las ventas del trimestre por delegación: Zaragoza 512.000 €, Pamplona 498.000 € y Lleida 489.000 €. El eje vertical empieza en **485.000 €**, y la columna de Zaragoza parece **casi siete veces** más alta que la de Lleida. ¿Qué le dices?",
+     "opciones": [
+      {
+       "texto": "Que el eje empiece en 0: en realidad, Zaragoza vende menos de un 5 % más que Lleida",
+       "correcta": true,
+       "porque": "Eso es. Con el eje cortado, la altura ya no es la cifra: 27.000 € por encima de 485.000 frente a 4.000 parece una diferencia enorme, y no lo es."
+      },
+      {
+       "texto": "Que lo cambie a un gráfico circular",
+       "correcta": false,
+       "porque": "El circular es para partes de un total y con cifras tan parecidas no se leería mejor. El problema aquí es el eje, no el tipo."
+      },
+      {
+       "texto": "Que está bien: así se ven mejor las diferencias",
+       "correcta": false,
+       "porque": "Se ven más, pero falsas. En columnas, la altura tiene que ser la cifra; si cortas el eje, el gráfico exagera."
+      },
+      {
+       "texto": "Que añada un eje secundario",
+       "correcta": false,
+       "porque": "El eje secundario es para una segunda serie con otra escala (como el margen %). Aquí solo hay una serie."
+      }
+     ],
+     "explicacion": "En columnas y barras el eje empieza en 0, porque la altura tiene que ser la cifra. Si una diferencia pequeña importa, dila en el título en vez de exagerarla con el eje."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e6",
+     "modo": "abierta",
+     "pregunta": "Escribe el **título** del gráfico de Carmen. Ventas de mayo a octubre en columnas: suben de 412.300 € a 489.150 €, con un bache en agosto. Margen % en línea: baja del 24,1 % al 21,2 %. Que diga la conclusión en una frase.",
+     "modelo": "Vendemos más cada mes, pero el margen ha bajado del 24 % al 21 %",
+     "criterios": [
+      "Dice la conclusión, no solo el tema («Ventas y margen» no basta)",
+      "Habla de las dos cosas: las ventas y el margen",
+      "Es una frase corta, que se lee de un vistazo",
+      "Si da cifras, son correctas"
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l3-e7",
+     "modo": "ordenar",
+     "enunciado": "**Misión de Carmen.** Ordena los pasos para dejarle el gráfico listo para el comité.",
+     "pasos": [
+      "Selecciona los meses, las ventas y el margen %, con sus títulos",
+      "Insertar › Gráficos › Insertar gráfico combinado",
+      "Elige el modelo de columnas con una línea en el eje secundario",
+      "Cambia el título por la conclusión: «Vendemos más, pero el margen baja»",
+      "Revisa antes de enviar: eje de las columnas desde 0, sin 3D y cifras legibles"
+     ],
+     "explicacion": "Misión cumplida: un solo gráfico en el que Carmen ve en cinco segundos que las ventas suben y el margen baja. Primero los datos, luego el tipo y, al final, el mensaje y la revisión."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m5l3-q1",
+     "modo": "test",
+     "pregunta": "Javier quiere un gráfico de líneas con la evolución mensual de sus **12 comerciales**, una línea por cada uno. ¿Qué le aconsejas?",
+     "opciones": [
+      {
+       "texto": "Que no meta las 12: mejor unas barras ordenadas con el total de cada uno, o solo las líneas de los que le interesan",
+       "correcta": true,
+       "porque": "Eso es. Con 12 líneas cruzadas no se distingue ninguna; un gráfico tiene que dejar ver una idea."
+      },
+      {
+       "texto": "Un gráfico combinado con eje secundario",
+       "correcta": false,
+       "porque": "El eje secundario sirve para dos medidas con escalas distintas, no para muchas series de la misma medida."
+      },
+      {
+       "texto": "Un gráfico circular por cada mes",
+       "correcta": false,
+       "porque": "Doce circulares de doce porciones: ilegible. El circular solo funciona con pocas partes de un total."
+      },
+      {
+       "texto": "Que lo haga en 3D para que quepan mejor",
+       "correcta": false,
+       "porque": "El 3D deforma las cifras y no hace sitio a nada: complica la lectura."
+      }
+     ],
+     "explicacion": "Un gráfico tiene que dejar ver una idea. Con muchas series, elige las importantes o cambia de gráfico."
+    },
+    {
+     "id": "n3m5l3-q2",
+     "modo": "cinta",
+     "enunciado": "Ya tienes un gráfico de columnas con las ventas y el margen %, y el margen se ve pegado al cero. Con el gráfico seleccionado, ¿qué botón usas para pasar el margen a una línea en el eje secundario?",
+     "ruta": [
+      "Diseño de gráfico",
+      "Tipo",
+      "Cambiar tipo de gráfico"
+     ],
+     "explicacion": "Diseño de gráfico › Cambiar tipo de gráfico. En la opción del gráfico combinado eliges «Línea» para el margen y marcas «Eje secundario»."
+    },
+    {
+     "id": "n3m5l3-q3",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Cómo se llama el segundo eje vertical, el de la derecha, que tiene su propia escala?",
+     "aceptadas": [
+      "eje secundario",
+      "el eje secundario",
+      "secundario",
+      "eje vertical secundario"
+     ],
+     "explicacion": "El eje secundario. Se usa cuando dos series tienen escalas muy distintas, como euros y porcentajes."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "Comparar, evolución, composición, relación: ¿qué gráfico para cada una?",
+     "dorso": "Columnas o barras; líneas; circular (pocas partes) o columnas apiladas; dispersión."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cuándo usas un gráfico combinado con eje secundario?",
+     "dorso": "Cuando dos series tienen escalas muy distintas, como las ventas en € y el margen en %."
+    },
+    {
+     "tipo": "error",
+     "frente": "Columnas con el eje empezando en 485.000 €",
+     "dorso": "Exagera las diferencias. En columnas y barras, el eje empieza en 0."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué título le pones a un gráfico para la dirección?",
+     "dorso": "La conclusión en una frase: «Vendemos más, pero el margen baja»."
+    }
+   ]
+  },
+  {
+   "id": "n3m5l4",
+   "titulo": "Alertas con fórmula y cómo revisar una hoja ajena",
+   "minutos": 16,
+   "objetivo": "Pintar la fila entera de lo que requiere atención con una regla de formato condicional con fórmula, entender qué dice cada error y revisar fórmulas ajenas con las herramientas de auditoría.",
+   "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Te paso el libro de cobros que llevaba el chico de prácticas. Hay fórmulas que no me cuadran y no me fío. Revísalo, y quiero que las facturas vencidas y sin cobrar salgan en rojo, la fila entera. Fecha de corte: el lunes 16.",
+    "logro": "Ya sabes revisar una hoja ajena, entender y arreglar sus errores, y montar una alerta que pinta la fila entera de lo vencido."
+   },
+   "funciones": [
+    "SI.ERROR",
+    "Y",
+    "SUMAR.SI"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "En el nivel 2 pintaste las facturas de más de 3.000 €. Esas reglas miran solo **la propia celda**. Marta quiere más: pintar **la fila entera** de cada factura cuyo vencimiento ya ha pasado.\n\nPara eso están las reglas con **fórmula**: **Inicio › Estilos › Formato condicional › Nueva regla** y, en la lista de tipos de regla, la última: *Utilizar una fórmula que determine las celdas para aplicar formato*.\n\nLa fórmula tiene que dar **VERDADERO** (se pinta) o **FALSO** (no se pinta)."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e1",
+     "modo": "predice",
+     "enunciado": "Esta es la prueba que hará la regla en la fila 2. La factura vence el **30/10/2026** y la fecha de corte (H1) es el **16/11/2026**. ¿Qué devuelve? Escribe VERDADERO o FALSO.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Vencimiento",
+       "E1": "Estado",
+       "A2": "F-2026-0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1815,
+       "D2": {
+        "fecha": "2026-10-30"
+       },
+       "E2": "Pendiente",
+       "A3": "F-2026-0418",
+       "B3": "Montajes Arga",
+       "C3": 2420,
+       "D3": {
+        "fecha": "2026-11-05"
+       },
+       "E3": "Cobrada",
+       "A4": "F-2026-0425",
+       "B4": "Electricidad Moncayo",
+       "C4": 968,
+       "D4": {
+        "fecha": "2026-11-20"
+       },
+       "E4": "Pendiente",
+       "A5": "F-2026-0431",
+       "B5": "Riegos y Luz del Segre",
+       "C5": 3267,
+       "D5": {
+        "fecha": "2026-11-10"
+       },
+       "E5": "Pendiente",
+       "A6": "F-2026-0437",
+       "B6": "Talleres Huerva",
+       "C6": 605,
+       "D6": {
+        "fecha": "2026-11-25"
+       },
+       "E6": "Pendiente",
+       "A7": "F-2026-0440",
+       "B7": "Electro Baztán",
+       "C7": 1452,
+       "D7": {
+        "fecha": "2026-10-31"
+       },
+       "E7": "Cobrada",
+       "A8": "F-2026-0446",
+       "B8": "Instalaciones Noguera",
+       "C8": 2904,
+       "D8": {
+        "fecha": "2026-11-14"
+       },
+       "E8": "Pendiente",
+       "G1": "Fecha de corte",
+       "H1": {
+        "fecha": "2026-11-16"
+       }
+      },
+      "formatos": {
+       "C2:C8": "eur",
+       "D2:D8": "fecha",
+       "H1": "fecha"
+      },
+      "anchos": {
+       "A": 12,
+       "B": 21,
+       "C": 10,
+       "D": 11,
+       "E": 10,
+       "F": 10,
+       "G": 14,
+       "H": 11
+      }
+     },
+     "celda": "F2",
+     "formula": "=$D2<$H$1",
+     "explicacion": "VERDADERO: el 30/10 es anterior al 16/11, así que la factura está vencida y la regla pintaría su fila. Las fechas son números y se comparan como números: la más antigua es la menor.",
+     "respuesta": "VERDADERO"
+    },
+    {
+     "tipo": "texto",
+     "md": "La regla se escribe **para la primera fila** del rango que has seleccionado (A2:E8), y Excel la aplica a cada celda moviendo las referencias, como si la copiara.\n\nEl truco está en el **$**:\n\n- `$D2`: la **columna D, fija** (todas las celdas de la fila miran el vencimiento) y la **fila, libre** (cada fila mira el suyo).\n- `$H$1`: la fecha de corte, **fija del todo**.\n\nAsí, `=$D2<$H$1` pinta las cinco celdas de cada factura vencida."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e2",
+     "modo": "test",
+     "pregunta": "Seleccionas A2:E8 para pintar la fila entera de las facturas vencidas. ¿Qué fórmula escribes en la regla?",
+     "opciones": [
+      {
+       "texto": "=$D2<$H$1",
+       "correcta": true,
+       "porque": "Columna fija, fila libre, y la fecha de corte fija del todo: cada fila mira su propio vencimiento."
+      },
+      {
+       "texto": "=D2<$H$1",
+       "correcta": false,
+       "porque": "Sin $ en la columna, la celda de A mira la D, la de B mira la E, la de C mira la F… Cada celda compara una columna distinta y se pintan celdas sueltas sin sentido."
+      },
+      {
+       "texto": "=$D$2<$H$1",
+       "correcta": false,
+       "porque": "Con D2 fija del todo, todas las filas miran el vencimiento de la primera factura: se pinta todo o nada."
+      },
+      {
+       "texto": "=$D2<H1",
+       "correcta": false,
+       "porque": "H1 sin $ se mueve: la fila 3 compararía con H2, que está vacía, y la regla fallaría a partir de la segunda factura."
+      }
+     ],
+     "explicacion": "La regla se escribe para la primera fila: columna fija ($D), fila libre (2) y la fecha de corte fija del todo ($H$1)."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Qué te dice cada error",
+     "cabecera": [
+      "Error",
+      "Qué significa",
+      "Ejemplo típico"
+     ],
+     "filas": [
+      [
+       "#N/D",
+       "No disponible: una búsqueda no encuentra lo que busca",
+       "BUSCARX de un código que no está en la tarifa"
+      ],
+      [
+       "#¡VALOR!",
+       "Tipo de dato equivocado: hay texto donde debería haber un número",
+       "«1.250 €» guardado como texto y multiplicado por 2"
+      ],
+      [
+       "#¡REF!",
+       "La fórmula apunta a una celda que ya no existe",
+       "Se borró la columna que usaba la fórmula"
+      ],
+      [
+       "#¡DIV/0!",
+       "División entre cero o entre una celda vacía",
+       "Cumplimiento de un comercial sin objetivo"
+      ],
+      [
+       "#¿NOMBRE?",
+       "Excel no reconoce un nombre",
+       "Función mal escrita o en inglés, o un texto sin comillas"
+      ],
+      [
+       "#¡NUM!",
+       "Un número imposible",
+       "SIFECHA con la fecha inicial posterior a la final"
+      ],
+      [
+       "#¡DESBORDAMIENTO!",
+       "Una fórmula que desborda no tiene sitio",
+       "Algo escrito debajo de un FILTRAR"
+      ]
+     ],
+     "pie": "Un error es un mensaje: léelo antes de tocar nada. Y al revés: que no salga ningún error no quiere decir que la hoja esté bien."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e3",
+     "modo": "test",
+     "pregunta": "El chico de prácticas **borró la columna de descuentos** porque «ya no se usaba». Desde entonces, el total de la hoja muestra **#¡REF!**. ¿Qué ha pasado?",
+     "opciones": [
+      {
+       "texto": "Alguna fórmula usaba esa columna y ahora apunta a una celda que ya no existe",
+       "correcta": true,
+       "porque": "Eso es. Si acabas de borrar, [[Ctrl]]+[[Z]] lo deshace. Si no, abre la fórmula: verás #¡REF! dentro, justo donde estaba la referencia, y la rehaces."
+      },
+      {
+       "texto": "Hay texto donde debería haber un número",
+       "correcta": false,
+       "porque": "Eso sería #¡VALOR!. #¡REF! habla de referencias: celdas a las que la fórmula ya no puede llegar."
+      },
+      {
+       "texto": "Se ha dividido entre cero",
+       "correcta": false,
+       "porque": "Eso daría #¡DIV/0!."
+      },
+      {
+       "texto": "La función está mal escrita",
+       "correcta": false,
+       "porque": "Eso daría #¿NOMBRE?. Aquí la fórmula estaba bien hasta que se borró la columna."
+      }
+     ],
+     "explicacion": "#¡REF! es una referencia perdida. Antes de borrar una fila o una columna en una hoja ajena, comprueba que ninguna fórmula la usa."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e4",
+     "modo": "formula",
+     "enunciado": "El chico quería sumar en **G2** el importe de las facturas **Pendiente**, pero su fórmula da **#¿NOMBRE?**. Arréglala.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Vencimiento",
+       "E1": "Estado",
+       "A2": "F-2026-0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1815,
+       "D2": {
+        "fecha": "2026-10-30"
+       },
+       "E2": "Pendiente",
+       "A3": "F-2026-0418",
+       "B3": "Montajes Arga",
+       "C3": 2420,
+       "D3": {
+        "fecha": "2026-11-05"
+       },
+       "E3": "Cobrada",
+       "A4": "F-2026-0425",
+       "B4": "Electricidad Moncayo",
+       "C4": 968,
+       "D4": {
+        "fecha": "2026-11-20"
+       },
+       "E4": "Pendiente",
+       "A5": "F-2026-0431",
+       "B5": "Riegos y Luz del Segre",
+       "C5": 3267,
+       "D5": {
+        "fecha": "2026-11-10"
+       },
+       "E5": "Pendiente",
+       "A6": "F-2026-0437",
+       "B6": "Talleres Huerva",
+       "C6": 605,
+       "D6": {
+        "fecha": "2026-11-25"
+       },
+       "E6": "Pendiente",
+       "A7": "F-2026-0440",
+       "B7": "Electro Baztán",
+       "C7": 1452,
+       "D7": {
+        "fecha": "2026-10-31"
+       },
+       "E7": "Cobrada",
+       "A8": "F-2026-0446",
+       "B8": "Instalaciones Noguera",
+       "C8": 2904,
+       "D8": {
+        "fecha": "2026-11-14"
+       },
+       "E8": "Pendiente",
+       "G1": "Pendiente de cobro"
+      },
+      "formatos": {
+       "C2:C8": "eur",
+       "D2:D8": "fecha",
+       "G2": "eur"
+      },
+      "anchos": {
+       "A": 12,
+       "B": 21,
+       "C": 10,
+       "D": 11,
+       "E": 10,
+       "F": 10,
+       "G": 14,
+       "H": 11
+      }
+     },
+     "objetivo": "G2",
+     "inicial": "=SUMAR.SI(E2:E8;Pendiente;C2:C8)",
+     "solucion": "=SUMAR.SI(E2:E8;\"Pendiente\";C2:C8)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C8;E2:E8;\"Pendiente\")"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI(C2:C8;\"Pendiente\";E2:E8)",
+      "=SUMA(C2:C8)"
+     ],
+     "variantes": [
+      {
+       "E3": "Pendiente"
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "#¿NOMBRE? quiere decir que Excel ha encontrado una palabra que no reconoce. ¿Cuál puede ser?",
+      "Pendiente es un texto: sin comillas, Excel cree que es el nombre de algo.",
+      "`=SUMAR.SI(E2:E8;\"Pendiente\";C2:C8)`"
+     ],
+     "explicacion": "9.559 € pendientes de cobro. Los textos de una fórmula van siempre entre comillas; sin ellas, Excel busca algo que se llame así, no lo encuentra y avisa con #¿NOMBRE?."
+    },
+    {
+     "tipo": "texto",
+     "md": "**SI.ERROR** cambia un error por lo que tú digas:\n\n`=SI.ERROR(valor; valor_si_error)`\n\nÚsala solo cuando **sabes** qué error va a salir y por qué es normal. Ejemplo: una comercial nueva aún no tiene objetivo, así que ventas ÷ objetivo da #¡DIV/0!. Ahí, «Sin objetivo» es una respuesta honesta.\n\nPero ojo: SI.ERROR tapa **todos** los errores, también un #¡REF! o una errata. Si la usas para que la hoja «quede bonita», esconderás justo lo que tenías que ver."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e5",
+     "modo": "formula",
+     "enunciado": "Javier calcula el **% de cumplimiento** (ventas ÷ objetivo). Nerea Arbizu es nueva y aún no tiene objetivo, así que su fila da #¡DIV/0!. Arregla **D2** para que calcule el cumplimiento y, si da error, muestre **Sin objetivo**. Se copiará hasta D7.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas nov.",
+       "C1": "Objetivo",
+       "D1": "Cumplimiento",
+       "A2": "Sergio Bueno",
+       "B2": 41200,
+       "C2": 40000,
+       "A3": "Pilar Lasheras",
+       "B3": 28900,
+       "C3": 35000,
+       "A4": "Iñaki Goñi",
+       "B4": 37650,
+       "C4": 36000,
+       "A5": "Montse Pujol",
+       "B5": 30100,
+       "C5": 32000,
+       "A6": "Raúl Gimeno",
+       "B6": 46800,
+       "C6": 45000,
+       "A7": "Nerea Arbizu",
+       "B7": 12300
+      },
+      "formatos": {
+       "B2:C7": "#.##0 €",
+       "D2:D7": "pct1"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 11,
+       "C": 10,
+       "D": 13
+      }
+     },
+     "objetivo": "D2",
+     "copiar_a": [
+      "D3:D7"
+     ],
+     "inicial": "=B2/C2",
+     "solucion": "=SI.ERROR(B2/C2;\"Sin objetivo\")",
+     "alternativas": [
+      "=SI(C2=0;\"Sin objetivo\";B2/C2)",
+      "=SI(C2=\"\";\"Sin objetivo\";B2/C2)"
+     ],
+     "errores_tipicos": [
+      "=SI.ERROR(B2/C2;0)",
+      "=SI.ERROR(B2/C2;\"\")"
+     ],
+     "variantes": [
+      {
+       "C3": 38000
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Envuelve la división de siempre en SI.ERROR.",
+      "Primer argumento: B2/C2. Segundo: el texto que quieres ver, entre comillas.",
+      "`=SI.ERROR(B2/C2;\"Sin objetivo\")`"
+     ],
+     "explicacion": "Los cinco que tienen objetivo muestran su porcentaje y Nerea dice «Sin objetivo», que es la verdad. Aquí SI.ERROR está bien usada: sabías qué error salía y por qué."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para revisar una hoja ajena, ve a **Fórmulas › Auditoría de fórmulas**:\n\n- **Rastrear precedentes**: flechas desde las celdas que usa la fórmula. **Rastrear dependientes**: flechas hacia las fórmulas que usan esta celda. **Quitar flechas** las borra.\n- **Mostrar fórmulas**: enseña las fórmulas en lugar de los resultados (otro clic y vuelve).\n- **Comprobación de errores**: te lleva de un error a otro.\n- **Evaluar fórmula**: calcula una fórmula larga **paso a paso**, para ver dónde se tuerce."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Números escondidos",
+     "md": "El fallo más traicionero no da ningún aviso: un número escrito a mano dentro de una fórmula, como `=B2*0,21` o `=SUMA(C2:C8)+350`. Hoy cuadra; el día que cambie el dato, ya no. Con **Mostrar fórmulas** los verás enseguida: busca cifras sueltas dentro de las fórmulas."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e6",
+     "modo": "cinta",
+     "enunciado": "Un total del libro tiene una fórmula larguísima y da un resultado raro. Quieres ver cómo la calcula Excel **paso a paso**. ¿Qué botón usas?",
+     "ruta": [
+      "Fórmulas",
+      "Auditoría de fórmulas",
+      "Evaluar fórmula"
+     ],
+     "explicacion": "Fórmulas › Auditoría de fórmulas › Evaluar fórmula. Cada vez que pulsas **Evaluar**, Excel calcula la parte subrayada y te enseña el resultado: así ves en qué paso se tuerce."
+    },
+    {
+     "tipo": "texto",
+     "md": "Una regla mal escrita no da error: simplemente pinta lo que no es. Por eso, antes de crearla, **pruébala** en una columna auxiliar: escribe la fórmula en la primera fila, cópiala hacia abajo y mira los VERDADERO y FALSO.\n\nSi los VERDADERO caen justo en las filas que quieres pintar, copia esa misma fórmula en la regla. Después puedes borrar la columna auxiliar."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "truco",
+     "titulo": "La prueba de Nuria",
+     "md": "Cuando tengas la regla, cambia la fecha de corte y mira si los colores se mueven como esperas. Es la forma más rápida de pillar un $ mal puesto."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m5l4-e7",
+     "modo": "formula",
+     "enunciado": "**Misión de Marta.** Antes de crear la regla, pruébala. En **F2** escribe la fórmula de la alerta: VERDADERO si la factura **vence antes de la fecha de corte** (H1) **y** está **Pendiente**. Se copiará hasta F8: pon los $ como irían en la regla.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "D1": "Vencimiento",
+       "E1": "Estado",
+       "A2": "F-2026-0412",
+       "B2": "Instalaciones Ebro",
+       "C2": 1815,
+       "D2": {
+        "fecha": "2026-10-30"
+       },
+       "E2": "Pendiente",
+       "A3": "F-2026-0418",
+       "B3": "Montajes Arga",
+       "C3": 2420,
+       "D3": {
+        "fecha": "2026-11-05"
+       },
+       "E3": "Cobrada",
+       "A4": "F-2026-0425",
+       "B4": "Electricidad Moncayo",
+       "C4": 968,
+       "D4": {
+        "fecha": "2026-11-20"
+       },
+       "E4": "Pendiente",
+       "A5": "F-2026-0431",
+       "B5": "Riegos y Luz del Segre",
+       "C5": 3267,
+       "D5": {
+        "fecha": "2026-11-10"
+       },
+       "E5": "Pendiente",
+       "A6": "F-2026-0437",
+       "B6": "Talleres Huerva",
+       "C6": 605,
+       "D6": {
+        "fecha": "2026-11-25"
+       },
+       "E6": "Pendiente",
+       "A7": "F-2026-0440",
+       "B7": "Electro Baztán",
+       "C7": 1452,
+       "D7": {
+        "fecha": "2026-10-31"
+       },
+       "E7": "Cobrada",
+       "A8": "F-2026-0446",
+       "B8": "Instalaciones Noguera",
+       "C8": 2904,
+       "D8": {
+        "fecha": "2026-11-14"
+       },
+       "E8": "Pendiente",
+       "F1": "¿Alerta?",
+       "G1": "Fecha de corte",
+       "H1": {
+        "fecha": "2026-11-16"
+       }
+      },
+      "formatos": {
+       "C2:C8": "eur",
+       "D2:D8": "fecha",
+       "H1": "fecha"
+      },
+      "anchos": {
+       "A": 12,
+       "B": 21,
+       "C": 10,
+       "D": 11,
+       "E": 10,
+       "F": 10,
+       "G": 14,
+       "H": 11
+      }
+     },
+     "objetivo": "F2",
+     "copiar_a": [
+      "F3:F8"
+     ],
+     "solucion": "=Y($D2<$H$1;$E2=\"Pendiente\")",
+     "alternativas": [
+      "=Y($E2=\"Pendiente\";$D2<$H$1)"
+     ],
+     "errores_tipicos": [
+      "=$D2<$H$1",
+      "=Y(D2<H1;E2=\"Pendiente\")",
+      "=O($D2<$H$1;$E2=\"Pendiente\")",
+      "=Y($D$2<$H$1;$E2=\"Pendiente\")"
+     ],
+     "variantes": [
+      {
+       "H1": {
+        "fecha": "2026-11-21"
+       }
+      }
+     ],
+     "pistas": [
+      "Son dos condiciones a la vez: usa Y, que ya conoces.",
+      "Vencida: `$D2<$H$1`. Pendiente: `$E2=\"Pendiente\"`. Columna fija, fila libre.",
+      "`=Y($D2<$H$1;$E2=\"Pendiente\")`"
+     ],
+     "explicacion": "Tres VERDADERO: las facturas de Instalaciones Ebro, Riegos y Luz del Segre e Instalaciones Noguera. Ahora selecciona A2:E8, crea la regla con esta misma fórmula y elige un relleno rojo. Marta tendrá sus vencidas en rojo, y cuando cambie la fecha de corte, los colores se moverán solos."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m5l4-q1",
+     "modo": "formula",
+     "enunciado": "En **C2** el chico escribió `=B2*0,21`. Hoy funciona, pero esconde un número. Cámbiala para que use el tipo de IVA de **F1**. Se copiará hasta C6.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Base",
+       "C1": "IVA",
+       "A2": "F-2026-0450",
+       "B2": 1200,
+       "A3": "F-2026-0451",
+       "B3": 845.5,
+       "A4": "F-2026-0452",
+       "B4": 2310,
+       "A5": "F-2026-0453",
+       "B5": 96.8,
+       "A6": "F-2026-0454",
+       "B6": 4075,
+       "E1": "Tipo de IVA",
+       "F1": 0.21
+      },
+      "formatos": {
+       "B2:C6": "eur",
+       "F1": "pct"
+      },
+      "anchos": {
+       "A": 12,
+       "B": 10,
+       "C": 10,
+       "E": 11,
+       "F": 8
+      }
+     },
+     "objetivo": "C2",
+     "copiar_a": [
+      "C3:C6"
+     ],
+     "inicial": "=B2*0,21",
+     "solucion": "=B2*$F$1",
+     "alternativas": [
+      "=$F$1*B2",
+      "=B2*F$1"
+     ],
+     "errores_tipicos": [
+      "=B2*F1",
+      "=B2*21%"
+     ],
+     "variantes": [
+      {
+       "F1": 0.1
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "El 0,21 tiene que salir de la fórmula: el dato ya está en F1.",
+      "Al copiar hacia abajo, F1 se movería: fíjalo con $ (tecla F4).",
+      "`=B2*$F$1`"
+     ],
+     "explicacion": "Ahora, si el tipo cambia, tocas F1 y todo se recalcula. Un número escondido en una fórmula es de los fallos que nunca dan aviso."
+    },
+    {
+     "id": "n3m5l4-q2",
+     "modo": "test",
+     "pregunta": "Un compañero trae el saldo de cada cliente con `=SI.ERROR(BUSCARX(A2;$G$2:$G$90;$H$2:$H$90);0)` y dice que el total cuadra «más o menos». ¿Qué riesgo tiene?",
+     "opciones": [
+      {
+       "texto": "Si un cliente no está en la lista de G, sale 0 en vez de #N/D y nadie se entera de que falta",
+       "correcta": true,
+       "porque": "Eso es. Ese #N/D era un aviso útil. Mejor `BUSCARX(…;\"No está\")` y contar cuántos «No está» hay."
+      },
+      {
+       "texto": "Ninguno: un 0 es más limpio que un error",
+       "correcta": false,
+       "porque": "Más limpio, pero falso: ese 0 esconde un cliente que no se ha encontrado, y el total sale corto."
+      },
+      {
+       "texto": "Que BUSCARX no se puede meter dentro de SI.ERROR",
+       "correcta": false,
+       "porque": "Sí se puede. El problema no es que funcione, sino lo que tapa."
+      },
+      {
+       "texto": "Que el total sale más alto de lo que es",
+       "correcta": false,
+       "porque": "Al revés: los no encontrados suman 0, así que el total sale más bajo, no más alto."
+      }
+     ],
+     "explicacion": "SI.ERROR con un 0 convierte un aviso útil en una cifra falsa. Tapa un error solo cuando sabes cuál es y por qué es normal."
+    },
+    {
+     "id": "n3m5l4-q3",
+     "modo": "ordenar",
+     "enunciado": "Ordena los pasos para que las facturas vencidas y pendientes salgan en rojo, la fila entera.",
+     "pasos": [
+      "Selecciona A2:E8, las filas de datos sin los títulos",
+      "Inicio › Estilos › Formato condicional › Nueva regla",
+      "Elige «Utilizar una fórmula que determine las celdas para aplicar formato»",
+      "Escribe =Y($D2<$H$1;$E2=\"Pendiente\")",
+      "Pulsa Formato, elige un relleno rojo y acepta"
+     ],
+     "explicacion": "Primero se selecciona dónde se aplica la regla, después se elige el tipo de regla, se escribe la fórmula de la primera fila y, al final, el formato."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "Regla de formato condicional que pinta la fila entera",
+     "dorso": "Fórmula escrita para la primera fila, con la columna fija: =$D2<$H$1."
+    },
+    {
+     "tipo": "error",
+     "frente": "#¡REF!",
+     "dorso": "La fórmula apunta a una celda que ya no existe (se borró una fila o una columna). Deshacer o rehacer la referencia."
+    },
+    {
+     "tipo": "error",
+     "frente": "#¿NOMBRE?",
+     "dorso": "Excel no reconoce un nombre: función mal escrita o en inglés, o un texto sin comillas."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "SI.ERROR",
+     "dorso": "=SI.ERROR(valor; valor_si_error). Solo para errores que esperas y entiendes: los tapa todos."
+    },
+    {
+     "tipo": "truco",
+     "frente": "Ver una fórmula larga paso a paso",
+     "dorso": "Fórmulas › Auditoría de fórmulas › Evaluar fórmula."
+    }
+   ]
+  }
+ ]
+}

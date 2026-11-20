@@ -1,0 +1,548 @@
+{
+ "id": "n6m2l2",
+ "titulo": "Comprobar: totales de control y celdas que avisan",
+ "minutos": 16,
+ "objetivo": "Construir celdas de comprobación que comparan el informe con la fuente (importe con tolerancia de un céntimo y número de filas), resumirlas en una comprobación global y probar la hoja con casos límite antes de entregarla.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Esta tarde le mando a Carmen el informe de cobros de octubre. Antes, quiero una celda que diga «OK» si el total y el número de facturas cuadran con lo que da el programa de gestión, y «REVISAR» si no. «Lo he mirado y está bien» no me vale.",
+  "logro": "Ya sabes poner celdas de control que comparan tu informe con la fuente y avisan solas cuando algo no cuadra."
+ },
+ "funciones": [
+  "SI",
+  "ABS",
+  "SUMA",
+  "CONTARA",
+  "REDONDEAR",
+  "Y"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "**Lo que se pierde no avisa.** En octubre de 2020, Salud Pública de Inglaterra comunicó que **15.841 positivos de COVID**, del 25 de septiembre al 2 de octubre, no se habían incluido en sus cifras diarias. La causa, según su comunicado: algunos archivos con resultados superaron el tamaño máximo que admitía el sistema.\n\nLa defensa es sencilla: **contar lo que entra y lo que sale**. Si el sistema dice 100 filas, en tu informe tiene que haber 100."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "El límite del .xls",
+   "md": "El formato antiguo **.xls** (Excel 97-2003) solo tiene 65.536 filas y 256 columnas: si guardas ahí más datos, lo que no cabe se pierde. Guarda siempre en **.xlsx**, que admite 1.048.576 filas por hoja."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un **total de control** es una cifra de la fuente que tu informe tiene que reproducir. Antes de tocar nada, apunta lo que dice el programa de gestión: **cuántas facturas** hay y **cuánto suman**. Al terminar, tu informe tiene que dar lo mismo.\n\nLa forma más sencilla de compararlos es restar: si la diferencia es 0, cuadra; si no, la diferencia te dice cuánto falta o sobra."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e1",
+   "modo": "predice",
+   "enunciado": "El programa de gestión dice que los cobros de octubre suman 9.540 € (F2). ¿Qué devuelve la celda de diferencia **F3**? (Escribe solo el número, con su signo si lo tiene.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Cobrado",
+     "A2": "FV-1021",
+     "B2": "Instalaciones Moncayo",
+     "C2": 1850,
+     "A3": "FV-1022",
+     "B3": "Electricidad Arrabal",
+     "C3": 2300,
+     "A4": "FV-1025",
+     "B4": "Montajes Ribera",
+     "C4": 1240,
+     "A5": "FV-1027",
+     "B5": "Clima y Luz Huesca",
+     "C5": 960,
+     "A6": "FV-1030",
+     "B6": "Reformas Delicias",
+     "C6": 1790,
+     "B7": "Total informe",
+     "C7": "=SUMA(C2:C6)",
+     "E2": "Total según el programa",
+     "F2": 9540,
+     "E3": "Diferencia",
+     "F3": "=C7-F2"
+    },
+    "formatos": {
+     "C2:C7": "#.##0 €",
+     "F2": "#.##0 €"
+    },
+    "anchos": {
+     "B": 22,
+     "E": 24
+    }
+   },
+   "celda": "F3",
+   "formula": "=C7-F2",
+   "explicacion": "−1.400: el informe suma 8.140 € y el programa dice 9.540 €. Al informe le faltan 1.400 € (seguramente una factura que no ha entrado). El signo menos te dice que el informe se queda corto.",
+   "respuesta": "-1400"
+  },
+  {
+   "tipo": "texto",
+   "md": "Restar tiene dos pegas. La primera, **el signo**: para el control te da igual qué total es mayor; te importa **cuánto** se separan. Para eso está **ABS** (valor absoluto), que quita el signo: `=ABS(-1400)` da 1.400.\n\nLa segunda, **los céntimos**. Si un total redondea factura a factura y el otro no, pueden diferir en fracciones de céntimo aunque en pantalla se vean iguales. Por eso no se compara con `=`: se mira si la diferencia es **menor de un céntimo**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "La celda de comprobación",
+   "md": "`=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")`\n\nSe lee: «si la diferencia, sin signo, es menor de un céntimo, pon OK; si no, REVISAR». Ese pequeño margen de un céntimo se llama **tolerancia**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e2",
+   "modo": "formula",
+   "enunciado": "Nuria escribió en **F4** una comprobación con `=` y sale REVISAR, aunque los dos totales se ven iguales (8.083,62 €). El informe calcula el IVA sin redondear y el programa lo redondea factura a factura. Arregla **F4** para que compare con una **tolerancia de un céntimo**: «OK» si se diferencian menos de 0,01 €; si no, «REVISAR».",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Base",
+     "C1": "Total con IVA",
+     "A2": "FV-2026-0412",
+     "B2": 1250.35,
+     "C2": "=B2*(1+$F$2)",
+     "A3": "FV-2026-0413",
+     "B3": 842.17,
+     "C3": "=B3*(1+$F$2)",
+     "A4": "FV-2026-0415",
+     "B4": 2310.8,
+     "C4": "=B4*(1+$F$2)",
+     "A5": "FV-2026-0418",
+     "B5": 415.62,
+     "C5": "=B5*(1+$F$2)",
+     "A6": "FV-2026-0421",
+     "B6": 1098.45,
+     "C6": "=B6*(1+$F$2)",
+     "A7": "FV-2026-0422",
+     "B7": 763.29,
+     "C7": "=B7*(1+$F$2)",
+     "B8": "Total informe",
+     "C8": "=SUMA(C2:C7)",
+     "E2": "IVA",
+     "F2": 0.21,
+     "E3": "Total según el programa",
+     "F3": 8083.62,
+     "E4": "Comprobación"
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "C2:C8": "eur",
+     "F2": "pct",
+     "F3": "eur"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 13,
+     "C": 14,
+     "E": 24,
+     "F": 12
+    }
+   },
+   "objetivo": "F4",
+   "inicial": "=SI(C8=F3;\"OK\";\"REVISAR\")",
+   "solucion": "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(ABS(F3-C8)<0,01;\"OK\";\"REVISAR\")",
+    "=SI(ABS(C8-F3)<=0,01;\"OK\";\"REVISAR\")",
+    "=SI(REDONDEAR(C8;2)=REDONDEAR(F3;2);\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(C8=F3;\"OK\";\"REVISAR\")",
+    "=SI(C8-F3<0,01;\"OK\";\"REVISAR\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "B3": 942.17
+    },
+    {
+     "B4": 0
+    },
+    {
+     "F3": 8083.64
+    }
+   ],
+   "pistas": [
+    "Con `=`, dos importes que se diferencian en 0,003 € no son iguales. Compara la **diferencia**, no los importes.",
+    "La diferencia es C8-F3. Quítale el signo con ABS y mira si es menor que 0,01.",
+    "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")"
+   ],
+   "explicacion": "Ahora dice OK: la diferencia real es de 0,0028 €, una fracción de céntimo que sale del redondeo. Si mañana falta una factura, la diferencia será de cientos de euros y la celda dirá REVISAR. Esta celda es la que te ahorra el disgusto antes de enviar."
+  },
+  {
+   "tipo": "texto",
+   "md": "El importe no basta: dos errores pueden compensarse. Comprueba también **cuántas filas** hay, con `CONTARA`, que cuenta las celdas que no están vacías.\n\nY si limpias los datos, apunta lo que quitas. La cuenta tiene que cerrar: **filas que entran − filas que quitas a propósito = filas que quedan**. Aquí sí vale el `=`: los recuentos son números enteros, sin céntimos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e3",
+   "modo": "formula",
+   "enunciado": "Has quitado las filas duplicadas de la lista de clientes que exportó el programa. En **F4** comprueba que no se ha perdido nada más: «OK» si las filas que quedan (A2:A9) son las de la exportación (F2) menos los duplicados quitados (F3); si no, «REVISAR».",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Cliente",
+     "C1": "Población",
+     "A2": "C-1043",
+     "B2": "Instalaciones Moncayo, S.L.",
+     "C2": "Zaragoza",
+     "A3": "C-1051",
+     "B3": "Electricidad Arrabal, S.L.",
+     "C3": "Zaragoza",
+     "A4": "C-1060",
+     "B4": "Montajes Ribera, S.L.",
+     "C4": "Tudela",
+     "A5": "C-1072",
+     "B5": "Clima y Luz Huesca, S.L.",
+     "C5": "Huesca",
+     "A6": "C-1088",
+     "B6": "Reformas Delicias, S.L.",
+     "C6": "Zaragoza",
+     "A7": "C-1094",
+     "B7": "Electro Pirineo, S.L.",
+     "C7": "Jaca",
+     "A8": "C-1102",
+     "B8": "Instalaciones Segre, S.L.",
+     "C8": "Lleida",
+     "A9": "C-1115",
+     "B9": "Montajes Baztán, S.L.",
+     "C9": "Elizondo",
+     "E2": "Filas en la exportación",
+     "F2": 9,
+     "E3": "Duplicados quitados",
+     "F3": 1,
+     "E4": "Control de filas"
+    },
+    "anchos": {
+     "A": 10,
+     "B": 26,
+     "C": 11,
+     "E": 22,
+     "F": 10
+    }
+   },
+   "objetivo": "F4",
+   "solucion": "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(CONTARA(A2:A9)+F3=F2;\"OK\";\"REVISAR\")",
+    "=SI(F2-F3=CONTARA(A2:A9);\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(CONTAR(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
+    "=SI(CONTARA(A2:A9)=F2;\"OK\";\"REVISAR\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "F3": 2
+    },
+    {
+     "F2": 10
+    }
+   ],
+   "pistas": [
+    "Cuenta las filas que quedan con CONTARA(A2:A9). ¿Con qué cifra tienes que compararla?",
+    "Deben quedar F2-F3 filas. Compara las dos cosas dentro de un SI.",
+    "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")"
+   ],
+   "explicacion": "9 − 1 = 8, y quedan 8: OK. Si un día al limpiar se te va una fila de más, esta celda lo dirá antes que nadie. Fíjate en que CONTAR no serviría: cuenta solo números, y los códigos son texto."
+  },
+  {
+   "tipo": "texto",
+   "md": "Con varias celdas de control, nadie va a mirarlas una a una. Se resumen en una **comprobación global**: una sola celda, arriba y a la vista, que dice «TODO CUADRA» solo si **todas** dicen OK.\n\nPara eso sirve `Y`, que ya conoces: devuelve VERDADERO solo si se cumplen todas sus condiciones.\n\n`=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`"
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Dónde van las comprobaciones",
+   "md": "En los libros bien hechos, los controles viven en su propia hoja (**Comprobaciones**) y la global se repite arriba del informe, para que quien lo abra la vea sin buscarla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e4",
+   "modo": "formula",
+   "enunciado": "En la hoja Comprobaciones del informe de cobros ya hay tres controles (B2:B4). En **B6** escribe la comprobación global: «TODO CUADRA» si los tres dicen «OK», y «REVISAR» en cualquier otro caso. Escribe los textos tal cual, en mayúsculas.",
+   "hoja": {
+    "celdas": {
+     "A1": "Control",
+     "B1": "Resultado",
+     "A2": "Total de importes",
+     "B2": "OK",
+     "A3": "Número de facturas",
+     "B3": "OK",
+     "A4": "Facturas sin cliente",
+     "B4": "OK",
+     "A6": "Comprobación global"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 16
+    }
+   },
+   "objetivo": "B6",
+   "solucion": "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(CONTAR.SI(B2:B4;\"OK\")=3;\"TODO CUADRA\";\"REVISAR\")",
+    "=SI(Y(B2:B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(O(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+    "=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+    "=\"TODO CUADRA\""
+   ],
+   "variantes": [
+    {
+     "B3": "REVISAR"
+    },
+    {
+     "B3": "OK",
+     "B4": "REVISAR"
+    }
+   ],
+   "pistas": [
+    "Necesitas que se cumplan las tres condiciones a la vez: eso es Y.",
+    "Dentro de Y van las tres: B2=\"OK\"; B3=\"OK\"; B4=\"OK\". Luego, SI elige el texto.",
+    "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
+   ],
+   "explicacion": "Una celda, una respuesta: si cualquiera de los controles falla, la global dice REVISAR. Con O bastaría que uno dijera OK para dar el visto bueno, justo lo contrario de lo que quieres."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una hoja puede cuadrar hoy y fallar el mes que viene. Antes de darla por buena, pruébala con los **casos límite**, los que suelen romper las fórmulas:\n\n- **Un mes sin ventas** (ceros o filas vacías).\n- **Un cliente nuevo**, sin datos del mes anterior.\n- **Importes negativos**, como los abonos.\n\nCambia un dato, mira qué pasa y vuelve a dejarlo como estaba."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e5",
+   "modo": "test",
+   "pregunta": "Tu informe calcula, por cliente, la variación de ventas con `=(C2-B2)/B2`, donde B es octubre y C es noviembre. ¿Qué caso límite dará `#¡DIV/0!`?",
+   "opciones": [
+    {
+     "texto": "Un cliente nuevo, que en octubre no compró nada",
+     "correcta": true,
+     "porque": "Exacto: B2 vale 0 y no se puede dividir entre 0. Hay que decidir qué mostrar en ese caso (por ejemplo, «Nuevo») y dejarlo escrito."
+    },
+    {
+     "texto": "Un cliente con un abono en noviembre (importe negativo)",
+     "correcta": false,
+     "porque": "Un negativo en C2 da una variación negativa, pero no un error: dividir entre B2 sigue siendo posible. Eso sí, conviene mirar que el resultado tenga sentido."
+    },
+    {
+     "texto": "Un cliente que en noviembre no compró nada",
+     "correcta": false,
+     "porque": "C2 vale 0 y la fórmula da −100 %: es un resultado correcto (ha dejado de comprar), no un error."
+    }
+   ],
+   "explicacion": "Los casos límite se buscan a propósito antes de entregar: un cliente nuevo, un mes a cero, un abono. Mejor que los encuentres tú que Marta."
+  },
+  {
+   "tipo": "texto",
+   "md": "Y por último, **otra mirada**. En los estudios de Panko, una persona que revisa sola encuentra de media el 60-63 % de los errores; un equipo de tres, el 83 %. Nadie ve bien sus propios fallos.\n\nSi lo que entregas es importante, pide que lo revise otra persona. Si no hay nadie, déjalo reposar y revísalo **tú al día siguiente**, con una lista y sin prisa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena lo que haces con la exportación de cobros, desde que llega hasta que la entregas.",
+   "pasos": [
+    "Anotar cuántas filas hay y cuánto suman según el programa de gestión",
+    "Limpiar los datos y apuntar cuántas filas quitas y por qué",
+    "Construir el informe",
+    "Poner las celdas de control y la comprobación global",
+    "Probar casos límite: un mes a cero, un cliente nuevo, un abono",
+    "Revisarlo con la lista al día siguiente (o que lo revise otra persona) y entregarlo"
+   ],
+   "explicacion": "Lo primero es anotar los totales de la fuente **antes de tocar nada**: si limpias primero, ya no sabrás cuánto había. Y la revisión va al final, con todo montado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n6m2l2-e7",
+   "modo": "formula",
+   "enunciado": "El encargo de Marta. El programa de gestión dice que en octubre se cobraron 12.486,40 € (F2) en 7 facturas (F3). En **F5** escribe una sola fórmula que diga «OK» si el total del informe (C9) se diferencia de F2 menos de un céntimo **y**, además, el número de facturas de A2:A8 coincide con F3. Si falla cualquiera de las dos cosas, «REVISAR».",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Cobrado",
+     "A2": "FV-2026-0388",
+     "B2": "Instalaciones Moncayo",
+     "C2": 1815,
+     "A3": "FV-2026-0391",
+     "B3": "Electricidad Arrabal",
+     "C3": 2541.6,
+     "A4": "FV-2026-0395",
+     "B4": "Montajes Ribera",
+     "C4": 968,
+     "A5": "FV-2026-0402",
+     "B5": "Clima y Luz Huesca",
+     "C5": 3025,
+     "A6": "FV-2026-0406",
+     "B6": "Reformas Delicias",
+     "C6": 1452,
+     "A7": "FV-2026-0409",
+     "B7": "Electro Pirineo",
+     "C7": 2117.5,
+     "A8": "FV-2026-0411",
+     "B8": "Instalaciones Segre",
+     "C8": 567.3,
+     "B9": "Total informe",
+     "C9": "=SUMA(C2:C8)",
+     "E2": "Total según el programa",
+     "F2": 12486.4,
+     "E3": "Facturas según el programa",
+     "F3": 7,
+     "E5": "Control"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 22,
+     "C": 13,
+     "E": 26,
+     "F": 12
+    }
+   },
+   "objetivo": "F5",
+   "solucion": "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(Y(ABS(F2-C9)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+    "=SI(Y(CONTARA(A2:A8)=F3;ABS(C9-F2)<0,01);\"OK\";\"REVISAR\")",
+    "=SI(Y(ABS(C9-F2)<=0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(Y(C9=F2;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+    "=SI(O(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+    "=SI(ABS(C9-F2)<0,01;\"OK\";\"REVISAR\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "F3": 8
+    },
+    {
+     "F3": 7,
+     "C4": 1068
+    },
+    {
+     "C4": 968,
+     "F2": 12486.404
+    }
+   ],
+   "pistas": [
+    "Son dos condiciones que se tienen que cumplir a la vez, el importe y el recuento: eso es Y dentro de SI.",
+    "Condición 1: ABS(C9-F2)<0,01. Condición 2: CONTARA(A2:A8)=F3.",
+    "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
+   ],
+   "explicacion": "OK: 7 facturas y 12.486,40 €, igual que el programa. Ya puedes mandar el informe a Carmen sabiendo que cuadra, y el mes que viene la celda avisará sola si algo se descuadra."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n6m2l2-q1",
+   "modo": "formula",
+   "enunciado": "Sin mirar arriba: en **D2** escribe la comprobación entre el total del informe (B2) y el del banco (C2): «OK» si se diferencian menos de un céntimo; si no, «REVISAR». Tu fórmula se copiará a D3:D4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Mes",
+     "B1": "Total informe",
+     "C1": "Total banco",
+     "D1": "Control",
+     "A2": "Agosto",
+     "B2": 15230.5,
+     "C2": 15230.5,
+     "A3": "Septiembre",
+     "B3": 17104.2,
+     "C3": 17140.2,
+     "A4": "Octubre",
+     "B4": 18452.3,
+     "C4": 18452.304
+    },
+    "formatos": {
+     "B2:C4": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 14,
+     "C": 14,
+     "D": 11
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D4"
+   ],
+   "solucion": "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(ABS(C2-B2)<0,01;\"OK\";\"REVISAR\")",
+    "=SI(ABS(B2-C2)<=0,01;\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(B2=C2;\"OK\";\"REVISAR\")",
+    "=SI(B2-C2<0,01;\"OK\";\"REVISAR\")"
+   ],
+   "variantes": [
+    {
+     "C2": 15330.5
+    }
+   ],
+   "pistas": [
+    "Resta los dos totales, quita el signo y compara con un céntimo.",
+    "La condición del SI es ABS(B2-C2)<0,01.",
+    "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")"
+   ],
+   "explicacion": "Septiembre sale REVISAR: 17.104,20 frente a 17.140,20, dos cifras cambiadas de sitio al teclear. Octubre sale OK aunque el banco tenga una fracción de céntimo de diferencia."
+  },
+  {
+   "id": "n6m2l2-q2",
+   "modo": "test",
+   "pregunta": "Un informe suma `=SUMA(C2:C40)`, pero este mes la exportación llega hasta la fila 45. ¿Qué lo habría detectado antes de enviar?",
+   "opciones": [
+    {
+     "texto": "Comparar el número de filas y el total con lo que da el programa de gestión",
+     "correcta": true,
+     "porque": "Sí: faltarían cinco filas en el recuento y su importe en el total. Los controles lo cantan en cuanto los miras."
+    },
+    {
+     "texto": "Mirar que no aparezca ningún `#¡VALOR!`",
+     "correcta": false,
+     "porque": "Una SUMA con el rango corto no da ningún error: suma lo que le pides y se queda tan tranquila."
+    },
+    {
+     "texto": "Poner el total en negrita y con borde doble",
+     "correcta": false,
+     "porque": "El formato hace que el total se vea mejor, no que sea correcto."
+    }
+   ],
+   "explicacion": "Los totales de control y los recuentos son la red que atrapa los errores de la lección anterior: rangos cortos, filas perdidas y sumas dobles."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Celda de comprobación con tolerancia de un céntimo",
+   "dorso": "`=SI(ABS(A-B)<0,01;\"OK\";\"REVISAR\")`, donde A y B son los dos totales."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "¿Qué hace ABS?",
+   "dorso": "Devuelve el número sin signo: `=ABS(-12,5)` da 12,5."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Recuento al limpiar datos",
+   "dorso": "Filas que entran − filas que quitas a propósito = filas que quedan (cuéntalas con CONTARA)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es la comprobación global?",
+   "dorso": "Una celda, arriba y a la vista, que dice «TODO CUADRA» solo si todos los controles dicen OK: `=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué parte de los errores encuentra quien revisa solo, y un equipo de tres (Panko)?",
+   "dorso": "Sola, el 60-63 %; un equipo de tres, el 83 %. Lo importante lo revisa otra persona."
+  }
+ ]
+}

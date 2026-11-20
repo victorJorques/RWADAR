@@ -1,0 +1,78 @@
+{
+ "id": "n3m4",
+ "nivel": "n3",
+ "titulo": "Tablas dinámicas",
+ "intro": "Con una tabla dinámica, miles de líneas de ventas se convierten en un informe por zona, mes o familia en un par de minutos, sin escribir fórmulas. En este módulo aprenderás a crearlas, a mostrar porcentajes y márgenes, a filtrarlas con botones y, sobre todo, a entregarlas actualizadas y comprobadas: el informe mensual que te pedirán en cualquier empresa.",
+ "repaso_inicial": [
+  {
+   "id": "n3m4-r1",
+   "modo": "formula",
+   "enunciado": "Javier pregunta cuántas ventas de la zona que pone en **E2** han superado el importe de **F2** (más de, no «igual o más»). Escribe en **G2** una fórmula que lo cuente con los datos de A1:B9.",
+   "hoja": {
+    "celdas": {
+     "A1": "Zona", "B1": "Importe", "E1": "Zona", "F1": "Más de", "G1": "Nº de ventas",
+     "A2": "Pamplona", "B2": 1250,
+     "A3": "Zaragoza", "B3": 980,
+     "A4": "Pamplona", "B4": 640,
+     "A5": "Lleida", "B5": 1430,
+     "A6": "Pamplona", "B6": 1000,
+     "A7": "Pamplona", "B7": 2100,
+     "A8": "Zaragoza", "B8": 1500,
+     "A9": "Lleida", "B9": 720,
+     "E2": "Pamplona", "F2": 1000
+    },
+    "formatos": {"B2:B9": "eur", "F2": "eur"},
+    "anchos": {"A": 11, "B": 11, "E": 11, "F": 11, "G": 13}
+   },
+   "objetivo": "G2",
+   "solucion": "=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">\"&F2)",
+   "alternativas": ["=CONTAR.SI.CONJUNTO(B2:B9;\">\"&F2;A2:A9;E2)", "=CONTAR.SI.CONJUNTO($A$2:$A$9;E2;$B$2:$B$9;\">\"&F2)"],
+   "errores_tipicos": ["=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">=\"&F2)", "=CONTAR.SI(A2:A9;E2)", "=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">F2\")"],
+   "variantes": [{"E2": "Zaragoza"}, {"F2": 600}],
+   "pistas": [
+    "Dos condiciones a la vez (zona e importe) y quieres contar, no sumar: la versión «de varios criterios» de CONTAR.SI.",
+    "Parejas rango; criterio: A2:A9 con E2, y B2:B9 con `\">\"&F2` (el signo entre comillas, unido a la celda con &).",
+    "`=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">\"&F2)`"
+   ],
+   "explicacion": "2 ventas: las de 1.250 € y 2.100 €. La de 1.000 € justos no cuenta, porque «más de» es `>`. Hoy verás que una tabla dinámica hace estos recuentos por todas las zonas a la vez."
+  },
+  {
+   "id": "n3m4-r2",
+   "modo": "test",
+   "pregunta": "Tu listado de ventas está convertido en **Tabla** ([[Ctrl]]+[[T]]). Escribes una venta nueva en la primera fila vacía, justo debajo. ¿Qué pasa?",
+   "opciones": [
+    {"texto": "La Tabla se amplía sola y la nueva fila pasa a formar parte de ella", "correcta": true, "porque": "Eso es: la Tabla crece con cada fila nueva, con su formato y sus columnas calculadas. Por eso es el mejor origen para una tabla dinámica."},
+    {"texto": "La fila queda fuera hasta que vuelvas a crear la Tabla", "correcta": false, "porque": "Eso pasaría con un rango fijo, no con una Tabla: la Tabla se extiende sola."},
+    {"texto": "Excel avisa de que la Tabla está llena", "correcta": false, "porque": "Una Tabla no tiene un número fijo de filas: crece cuanto haga falta."},
+    {"texto": "Se borra el formato de la Tabla", "correcta": false, "porque": "Al contrario: la fila nueva hereda el formato de la Tabla."}
+   ],
+   "explicacion": "Tabla que crece + dinámica hecha desde la Tabla: así ninguna venta nueva se queda fuera del informe."
+  },
+  {
+   "id": "n3m4-r3",
+   "modo": "test",
+   "pregunta": "En la columna Importe de una exportación, algunas cifras salen alineadas a la izquierda y con un triangulito verde en la esquina. ¿Qué son?",
+   "opciones": [
+    {"texto": "Números guardados como texto: SUMA no los tiene en cuenta", "correcta": true, "porque": "Eso es: parecen números, pero Excel los trata como texto. Hay que convertirlos (VALOR.NUMERO, Texto en columnas…) antes de resumir."},
+    {"texto": "Números negativos", "correcta": false, "porque": "Un negativo lleva el signo menos y se alinea a la derecha, como cualquier número."},
+    {"texto": "Celdas con formato de euros", "correcta": false, "porque": "El formato de euros no cambia la alineación ni pone el triangulito verde."},
+    {"texto": "Cifras con decimales", "correcta": false, "porque": "Los decimales no cambian la alineación: un número de verdad va a la derecha, tenga o no decimales."}
+   ],
+   "explicacion": "Ojo con ellos en este módulo: en una tabla dinámica, una columna con textos hace que Excel cuente en vez de sumar."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "**Práctica del módulo: el informe de ventas 2026.** Javier y Carmen quieren el informe de enero a octubre. Descarga **n3-ventas-2026.xlsx** (una Tabla «Ventas» de 1.200 líneas) y sigue la hoja «Instrucciones». Todo se hace con tablas dinámicas, sin fórmulas:\n\n1. Anota el total de la columna Importe (selecciónala y míralo en la barra de estado): es tu total de control.\n2. Dinámica «Zona y mes»: Zona en Filas, Fecha en Columnas agrupada por meses, Importe en Valores con formato de euros.\n3. Los 5 productos que más venden: Producto en Filas, Importe en Valores, ordenado de mayor a menor.\n4. Peso de cada familia: Familia en Filas e Importe mostrado como % del total general.\n5. Campo calculado **Margen** = Importe − Coste, con Importe (en euros), Coste y Margen en Valores.\n6. Segmentación de Comercial conectada a todas las dinámicas y un gráfico dinámico de «Zona y mes». Al terminar, déjala sin filtro.\n7. Copia las 12 ventas de la hoja «Ventas nuevas», pégalas en la primera fila vacía debajo de la Tabla y pulsa **Actualizar todo** ([[Ctrl]]+[[Alt]]+[[F5]]).\n\nIntenta hacer cada dinámica en menos de 5 minutos. Los controles 3 a 6 se miden con las ventas nuevas ya dentro.",
+  "archivo": "n3-ventas-2026.xlsx",
+  "controles": [
+   {"pregunta": "Total general de Importe ANTES de añadir las ventas nuevas (€)", "respuesta": 244538.12, "tolerancia": 0.01, "pista": "Es el total de la columna Importe que ves en la barra de estado. Si tu dinámica da otra cifra, revisa que salga de la Tabla «Ventas» y que no tenga ningún filtro ni segmentación marcada."},
+   {"pregunta": "Total general DESPUÉS de pegar las 12 ventas nuevas y actualizar (€)", "respuesta": 247239.73, "tolerancia": 0.01, "pista": "Si sigue saliendo 244.538,12 €, no has actualizado (Ctrl+Alt+F5) o pegaste las ventas dejando una fila en blanco y quedaron fuera de la Tabla. La diferencia tiene que ser 2.701,61 €."},
+   {"pregunta": "Ventas de Zaragoza en marzo (€)", "respuesta": 11047.27, "tolerancia": 0.01, "pista": "En «Zona y mes», cruza la fila Zaragoza con la columna «mar». Si no hay columnas por meses, clic derecho en una fecha › Agrupar › Meses. Comprueba que la segmentación no tenga un comercial marcado."},
+   {"pregunta": "Importe del producto que queda en 5.º lugar (€)", "respuesta": 19673.05, "tolerancia": 0.01, "pista": "Producto en Filas, Importe en Valores; clic derecho en una cifra › Ordenar › Ordenar de mayor a menor, y cuenta cinco filas. Si las cifras son pequeñas y enteras, estás viendo una Cuenta: cambia a Suma."},
+   {"pregunta": "Peso de Iluminación sobre el total general, en % con dos decimales (escribe solo el número, por ejemplo 12,34)", "respuesta": 26.48, "tolerancia": 0.01, "pista": "Familia en Filas, Importe en Valores › Configuración de campo de valor › Mostrar valores como › % del total general. Hazlo después de actualizar con las ventas nuevas."},
+   {"pregunta": "Margen de la familia Protección: Importe − Coste (€)", "respuesta": 5569.94, "tolerancia": 0.01, "pista": "Campo calculado Margen con la fórmula =Importe-Coste (Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado), con Familia en Filas. Mira la fila Protección."}
+  ],
+  "solucion_md": "### Cómo se hace\n\n1. **Total de control**: selecciona la columna Importe de la Tabla y lee la Suma en la barra de estado: 244.538,12 €.\n2. **Zona y mes**: clic en la Tabla › Insertar › Tabla dinámica › Nueva hoja de cálculo. Zona a Filas, Fecha a Columnas (si Excel añade Años y Trimestres, quítalos y deja Meses: todo es de 2026), Importe a Valores. Configuración de campo de valor › Formato de número › Moneda.\n3. **Top 5**: Producto a Filas, Importe a Valores; clic derecho en una cifra › Ordenar › Ordenar de mayor a menor. Los cinco primeros son la manguera 3G2,5, el proyector LED 36 W, el downlight LED 18 W, el panel LED 60×60 y el cable de 2,5 mm².\n4. **% por familia**: Familia a Filas, Importe a Valores › Mostrar valores como › % del total general. Iluminación pesa el 26,48 %.\n5. **Margen**: Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. Nombre: Margen; fórmula: =Importe-Coste › Aceptar. Como el campo calculado trabaja con las sumas de cada familia, Margen ÷ Importe da el margen real.\n6. **Segmentación y gráfico**: Analizar tabla dinámica › Insertar segmentación de datos › Comercial; pestaña Segmentación › Conexiones de informe › marca todas las dinámicas. Gráfico: Analizar tabla dinámica › Gráfico dinámico › Columna agrupada. Antes de entregar, Borrar filtro.\n7. **Ventas nuevas**: pégalas justo debajo de la última fila de la Tabla (sin dejar filas en blanco) y pulsa Datos › Actualizar todo. El total pasa a 247.239,73 € (+2.701,61 €).\n\nEn **n3-ventas-2026-solucion.xlsx** tienes los pasos en la hoja «Cómo se hace» y las mismas cifras rehechas con fórmulas (SUMAR.SI.CONJUNTO y compañía) para comparar con tus dinámicas, más una hoja de controles.",
+  "archivo_solucion": "n3-ventas-2026-solucion.xlsx"
+ }
+}

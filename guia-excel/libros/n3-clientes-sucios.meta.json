@@ -1,0 +1,5 @@
+{
+  "titulo": "N3 · Exportación de clientes sucia",
+  "descripcion": "Listado de clientes de Electro Cierzo con espacios, mayúsculas, duplicados, códigos postales sin cero e importes como texto.",
+  "nivel": "n3"
+}

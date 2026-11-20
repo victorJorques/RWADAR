@@ -1,0 +1,5 @@
+{
+  "titulo": "N2 · Registro de incidencias de clientes (datos de partida)",
+  "descripcion": "Sesenta incidencias de clientes con categorías y estados mal escritos, para convertir en Tabla, poner desplegables y resaltar las que llevan más de 10 días.",
+  "nivel": "n2"
+}

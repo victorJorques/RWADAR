@@ -1,0 +1,384 @@
+{
+  "id": "n5m1l2",
+  "titulo": "Montar y recortar tablas con fórmulas",
+  "minutos": 16,
+  "objetivo": "Unir listas con APILARV, quedarte con las columnas que importan con ELEGIRCOLS y sacar un top que se rehace solo con TOMAR y ORDENAR.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Cada lunes copio a mano los pedidos de Zaragoza y de Pamplona en una hoja, borro columnas y ordeno para ver los más grandes. Me lleva media hora y siempre se me cuela algo. ¿Me lo dejas montado con fórmulas? Las dos listas juntas, solo cliente e importe, y los tres pedidos más grandes arriba.",
+    "logro": "Ya sabes unir listas, elegir columnas y sacar un top que se rehace solo cada vez que cambian los datos."
+  },
+  "funciones": ["APILARV", "ELEGIRCOLS", "TOMAR", "EXCLUIR", "ORDENAR", "FILTRAR"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "### Tablas que se montan solas\n\nEl top semanal de Javier se hace a mano: copiar, pegar, borrar columnas, ordenar. Cada lunes, igual. Y cada paso manual es una ocasión de error.\n\nExcel 2024 y Microsoft 365 tienen funciones que trabajan con **tablas enteras**: les das un bloque de celdas y devuelven otro bloque, que se derrama en la hoja. A ese bloque Excel lo llama **matriz**: un rango de filas y columnas, o el resultado de otra fórmula, como el de FILTRAR."
+    },
+    {
+      "tipo": "texto",
+      "md": "### APILARV: una lista debajo de otra\n\n`=APILARV(A2:B3;A6:B7)` pone las filas de la primera lista y, justo debajo, las de la segunda. La **V** es de *vertical*.\n\nAdmite las listas que quieras, separadas por `;`. Si mañana se suma Lleida: `=APILARV(lista1;lista2;lista3)`.\n\nLa regla de oro: las listas deben tener **las mismas columnas y en el mismo orden**."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Dos listas, una fórmula",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente ZGZ",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480.5,
+          "A3": "Electricidad Oroel",
+          "B3": 615.2,
+          "A5": "Cliente PAM",
+          "B5": "Importe",
+          "A6": "Elec Moncayo",
+          "B6": 3320.4,
+          "A7": "Talleres Irati",
+          "B7": 1204,
+          "D1": "Cliente",
+          "E1": "Importe",
+          "D2": "=APILARV(A2:B3;A6:B7)"
+        },
+        "formatos": { "B2:B7": "eur", "E2:E5": "eur" },
+        "anchos": { "A": 20, "D": 20 }
+      },
+      "resaltar": ["D2:E5"],
+      "pie": "La fórmula está solo en D2. Si cambias un importe de A2:B7, la lista unida cambia al momento."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e1",
+      "modo": "formula",
+      "enunciado": "En **F2** une con una fórmula los pedidos de Zaragoza (**A2:B4**) y, debajo, los de Pamplona (**A7:B8**), sin las cabeceras. Deben salir 5 filas.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente ZGZ",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480.5,
+          "A3": "Electricidad Oroel",
+          "B3": 615.2,
+          "A4": "Montajes Bardenas",
+          "B4": 4150,
+          "A6": "Cliente PAM",
+          "B6": "Importe",
+          "A7": "Elec Moncayo",
+          "B7": 3320.4,
+          "A8": "Talleres Irati",
+          "B8": 1204,
+          "F1": "Cliente",
+          "G1": "Importe"
+        },
+        "formatos": { "B2:B8": "eur", "G2:G6": "eur" },
+        "anchos": { "A": 20, "F": 20 }
+      },
+      "objetivo": "F2",
+      "solucion": "=APILARV(A2:B4;A7:B8)",
+      "debe_usar": ["APILARV"],
+      "errores_tipicos": ["=APILARV(A1:B4;A6:B8)", "=APILARV(A7:B8;A2:B4)"],
+      "variantes": [{ "B2": 1500 }],
+      "pistas": [
+        "La función que pone una lista debajo de otra es APILARV.",
+        "Primero el rango de Zaragoza y después el de Pamplona, separados por `;`. Sin las filas de cabecera.",
+        "Escribe `=APILARV(A2:B4;A7:B8)`."
+      ],
+      "explicacion": "Dos listas en una, sin copiar ni pegar. Si mañana cambia un importe en Pamplona, la lista unida ya lo refleja."
+    },
+    {
+      "tipo": "texto",
+      "md": "### ELEGIRCOLS: quédate con las columnas que importan\n\nLa exportación trae cuatro columnas, pero Javier solo quiere **cliente e importe**. **ELEGIRCOLS** devuelve las columnas que le pidas, **por su número dentro de la matriz** (no por la letra de la hoja):\n\n`=ELEGIRCOLS(A1:D5;2;4)` → la 2.ª (Cliente) y la 4.ª (Importe).\n\nTambién sirve para cambiar el orden: `=ELEGIRCOLS(A1:D5;4;2)` pone el importe primero."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e2",
+      "modo": "formula",
+      "enunciado": "En **F1** quédate solo con las columnas **Cliente** e **Importe** de la tabla A1:D5, cabeceras incluidas. Deben llenarse F1:G5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Cliente",
+          "C1": "Comercial",
+          "D1": "Importe",
+          "A2": "ZGZ-2026-0412",
+          "B2": "Instalaciones Ebro",
+          "C2": "Pilar Esteban",
+          "D2": 2480.5,
+          "A3": "ZGZ-2026-0413",
+          "B3": "Electricidad Oroel",
+          "C3": "Sergio Lafuente",
+          "D3": 615.2,
+          "A4": "ZGZ-2026-0414",
+          "B4": "Montajes Bardenas",
+          "C4": "Pilar Esteban",
+          "D4": 4150,
+          "A5": "ZGZ-2026-0415",
+          "B5": "Reformas Jaca",
+          "C5": "Sergio Lafuente",
+          "D5": 980.75
+        },
+        "formatos": { "D2:D5": "eur", "G2:G5": "eur" },
+        "anchos": { "A": 15, "B": 20, "C": 16, "F": 20 }
+      },
+      "objetivo": "F1",
+      "solucion": "=ELEGIRCOLS(A1:D5;2;4)",
+      "alternativas": ["=ELEGIRCOLS(B1:D5;1;3)"],
+      "debe_usar": ["ELEGIRCOLS"],
+      "errores_tipicos": ["=ELEGIRCOLS(A1:D5;2;3)", "=ELEGIRCOLS(A1:D5;4;2)", "=ELEGIRCOLS(A2:D5;2;4)"],
+      "variantes": [{ "D2": 999 }],
+      "pistas": [
+        "Cuenta las columnas dentro de A1:D5: Pedido es la 1.ª, Cliente la 2.ª…",
+        "Cliente es la 2.ª e Importe la 4.ª. ELEGIRCOLS pide la matriz y luego los números de columna.",
+        "Escribe `=ELEGIRCOLS(A1:D5;2;4)`."
+      ],
+      "explicacion": "Sin borrar ni ocultar nada: los datos originales siguen intactos y tu resumen solo enseña lo que Javier quiere ver."
+    },
+    {
+      "tipo": "texto",
+      "md": "### TOMAR y EXCLUIR: el principio o el final\n\n- `=TOMAR(matriz;3)` devuelve las **3 primeras** filas.\n- `=TOMAR(matriz;-3)` devuelve las **3 últimas**: el signo menos cuenta desde abajo, como el -1 de TEXTOANTES.\n- `=EXCLUIR(matriz;1)` devuelve todo **menos** la primera fila. Útil para quitar una cabecera.\n\nPiensa en un taco de albaranes: TOMAR coge los de arriba; EXCLUIR aparta los de arriba y se queda con el resto."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e3",
+      "modo": "predice",
+      "enunciado": "Antes de que Excel lo calcule: ¿cuánto da esta fórmula? Fíjate en el signo del segundo argumento.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480,
+          "A3": "Electricidad Oroel",
+          "B3": 615,
+          "A4": "Montajes Bardenas",
+          "B4": 4150,
+          "A5": "Reformas Jaca",
+          "B5": 980
+        },
+        "anchos": { "A": 20 }
+      },
+      "celda": "D2",
+      "formula": "=SUMA(TOMAR(B2:B5;-2))",
+      "explicacion": "-2 toma las **dos últimas** filas: 4.150 + 980 = 5.130. Con 2, sin signo, habrías sumado las dos primeras."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: un top 3 que se rehace solo",
+      "pasos": [
+        { "md": "Ordena de mayor a menor por el importe. En la matriz A2:B8 el importe es la **2.ª** columna: `ORDENAR(A2:B8;2;-1)`. El -1 es descendente, como viste en el nivel 3." },
+        { "md": "De esa lista ordenada, coge las 3 primeras filas: `TOMAR(…;3)`." },
+        { "md": "Junta las dos, una dentro de otra: `=TOMAR(ORDENAR(A2:B8;2;-1);3)`. Si mañana entra un pedido más grande, el top cambia solo." }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e4",
+      "modo": "formula",
+      "enunciado": "En **E2** saca el **top 3** de pedidos: las 3 filas de A2:B8 con mayor importe, de mayor a menor. Deben llenarse E2:F4.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480.5,
+          "A3": "Electricidad Oroel",
+          "B3": 615.2,
+          "A4": "Montajes Bardenas",
+          "B4": 4150,
+          "A5": "Reformas Jaca",
+          "B5": 980.75,
+          "A6": "Elec Moncayo",
+          "B6": 3320.4,
+          "A7": "Talleres Irati",
+          "B7": 1204,
+          "A8": "Instalaciones Baztán",
+          "B8": 5010.9,
+          "E1": "Cliente",
+          "F1": "Importe"
+        },
+        "formatos": { "B2:B8": "eur", "F2:F4": "eur" },
+        "anchos": { "A": 20, "E": 20 }
+      },
+      "objetivo": "E2",
+      "solucion": "=TOMAR(ORDENAR(A2:B8;2;-1);3)",
+      "alternativas": ["=TOMAR(ORDENARPOR(A2:B8;B2:B8;-1);3)"],
+      "debe_usar": ["TOMAR"],
+      "errores_tipicos": ["=TOMAR(ORDENAR(A2:B8;2);3)", "=TOMAR(A2:B8;3)", "=TOMAR(ORDENAR(A2:B8;2;-1);-3)"],
+      "variantes": [{ "B3": 9000 }],
+      "pistas": [
+        "Dos pasos: primero ordenar de mayor a menor por importe, después quedarte con 3 filas.",
+        "`ORDENAR(A2:B8;2;-1)` ordena por la 2.ª columna de mayor a menor. Métela dentro de TOMAR.",
+        "Escribe `=TOMAR(ORDENAR(A2:B8;2;-1);3)`."
+      ],
+      "explicacion": "Tu top 3 ya no se hace a mano: si entra un pedido mayor, sube solo al primer puesto. Es la base de cualquier «top 5 clientes» o «top 10 productos» de un informe mensual."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Me pasó con APILARV: la lista de Pamplona traía una columna más (el comercial) y salieron #N/D por todas partes. APILARV no mira las cabeceras: pone la columna 1 sobre la 1, la 2 sobre la 2… y rellena con **#N/D** los huecos de la lista más estrecha. Antes de apilar, iguala las columnas, por ejemplo con ELEGIRCOLS en cada lista."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e5",
+      "modo": "test",
+      "pregunta": "Apilas Zaragoza (Pedido, Cliente, Importe) y, debajo, Pamplona (Pedido, Cliente, **Comercial**, Importe). ¿Qué sale?",
+      "opciones": [
+        { "texto": "Una 3.ª columna que mezcla importes de Zaragoza con comerciales de Pamplona, y #N/D en la 4.ª columna de las filas de Zaragoza", "correcta": true, "porque": "Eso es: APILARV coloca por posición, no por nombre, y rellena con #N/D lo que falta. Por eso las dos listas deben tener las mismas columnas en el mismo orden." },
+        { "texto": "Cada dato bajo su cabecera correcta", "correcta": false, "porque": "APILARV no lee los nombres de las columnas, solo su posición." },
+        { "texto": "Un error #¡DESBORDAMIENTO! en la celda de la fórmula", "correcta": false, "porque": "Ese error sale cuando el resultado no cabe porque hay celdas ocupadas, no por el ancho de las listas." },
+        { "texto": "Solo las columnas que se llaman igual en las dos listas", "correcta": false, "porque": "APILARV no compara cabeceras; apila todas las columnas que le das." }
+      ],
+      "explicacion": "Antes de apilar, comprueba que las listas tienen las mismas columnas en el mismo orden."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Versiones y plan B\n\nAPILARV, ELEGIRCOLS, TOMAR y EXCLUIR existen en **Excel 2024** y **Microsoft 365**. ORDENAR y FILTRAR, desde **Excel 2021**.\n\nEn un Excel anterior, el plan B para unir listas que llegan cada semana es **Power Query** con **Anexar consultas**, como en el nivel 4. Funciona desde Excel 2016 y también se rehace con un clic en **Actualizar todo**."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l2-e6",
+      "modo": "formula",
+      "enunciado": "**El encargo de Javier.** En **F2** monta el top semanal con **una sola fórmula**:\n\n1. Une los pedidos de Zaragoza (**A2:D5**) y de Pamplona (**A8:D10**).\n2. Quédate solo con **Cliente** e **Importe**.\n3. Devuelve los **3** de mayor importe, de mayor a menor.\n\nDeben llenarse F2:G4. Intenta hacerlo en menos de 4 minutos.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Cliente",
+          "C1": "Comercial",
+          "D1": "Importe",
+          "A2": "ZGZ-2026-0412",
+          "B2": "Instalaciones Ebro",
+          "C2": "Pilar Esteban",
+          "D2": 2480.5,
+          "A3": "ZGZ-2026-0413",
+          "B3": "Electricidad Oroel",
+          "C3": "Sergio Lafuente",
+          "D3": 615.2,
+          "A4": "ZGZ-2026-0414",
+          "B4": "Montajes Bardenas",
+          "C4": "Pilar Esteban",
+          "D4": 4150,
+          "A5": "ZGZ-2026-0415",
+          "B5": "Reformas Jaca",
+          "C5": "Sergio Lafuente",
+          "D5": 980.75,
+          "A7": "Pedido",
+          "B7": "Cliente",
+          "C7": "Comercial",
+          "D7": "Importe",
+          "A8": "PAM-2026-0157",
+          "B8": "Elec Moncayo",
+          "C8": "Iván Goñi",
+          "D8": 3320.4,
+          "A9": "PAM-2026-0158",
+          "B9": "Talleres Irati",
+          "C9": "Iván Goñi",
+          "D9": 1204,
+          "A10": "PAM-2026-0159",
+          "B10": "Instalaciones Baztán",
+          "C10": "Ainhoa Etxeberria",
+          "D10": 5010.9,
+          "F1": "Cliente",
+          "G1": "Importe"
+        },
+        "formatos": { "D2:D10": "eur", "G2:G4": "eur" },
+        "anchos": { "A": 15, "B": 20, "C": 17, "F": 20 }
+      },
+      "objetivo": "F2",
+      "solucion": "=TOMAR(ORDENAR(ELEGIRCOLS(APILARV(A2:D5;A8:D10);2;4);2;-1);3)",
+      "alternativas": [
+        "=LET(todo;APILARV(A2:D5;A8:D10);dos;ELEGIRCOLS(todo;2;4);TOMAR(ORDENAR(dos;2;-1);3))",
+        "=ELEGIRCOLS(TOMAR(ORDENAR(APILARV(A2:D5;A8:D10);4;-1);3);2;4)",
+        "=TOMAR(ORDENAR(APILARV(ELEGIRCOLS(A2:D5;2;4);ELEGIRCOLS(A8:D10;2;4));2;-1);3)"
+      ],
+      "debe_usar": ["APILARV", "TOMAR"],
+      "errores_tipicos": [
+        "=TOMAR(ORDENAR(ELEGIRCOLS(APILARV(A2:D5;A8:D10);2;4);2);3)",
+        "=TOMAR(ELEGIRCOLS(APILARV(A2:D5;A8:D10);2;4);3)",
+        "=TOMAR(ORDENAR(ELEGIRCOLS(A2:D5;2;4);2;-1);3)"
+      ],
+      "variantes": [{ "D9": 6000 }],
+      "pistas": [
+        "Piensa en capas, de dentro afuera: unir → elegir columnas → ordenar → tomar 3.",
+        "`APILARV(A2:D5;A8:D10)` une las listas y `ELEGIRCOLS(…;2;4)` deja Cliente e Importe. En ese resultado, el importe es la **2.ª** columna.",
+        "Escribe `=TOMAR(ORDENAR(ELEGIRCOLS(APILARV(A2:D5;A8:D10);2;4);2;-1);3)`."
+      ],
+      "explicacion": "Media hora de cada lunes convertida en nada: Javier pega los pedidos nuevos y el top se rehace solo. Si te cuesta leer la fórmula, escríbela con LET y un nombre por paso; queda igual de bien."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m1l2-q1",
+      "modo": "test",
+      "pregunta": "En el registro de pedidos A2:D200, los más recientes están abajo. Quieres los **5 últimos**. ¿Qué fórmula usas?",
+      "opciones": [
+        { "texto": "=TOMAR(A2:D200;-5)", "correcta": true, "porque": "Correcto: con signo menos, TOMAR cuenta desde abajo." },
+        { "texto": "=TOMAR(A2:D200;5)", "correcta": false, "porque": "Sin signo devuelve las 5 primeras filas, que aquí son las más antiguas." },
+        { "texto": "=EXCLUIR(A2:D200;-5)", "correcta": false, "porque": "EXCLUIR quita esas filas: devolvería todo menos los 5 últimos." },
+        { "texto": "=ELEGIRCOLS(A2:D200;5)", "correcta": false, "porque": "ELEGIRCOLS elige columnas, no filas. Y la tabla solo tiene 4." }
+      ]
+    },
+    {
+      "id": "n5m1l2-q2",
+      "modo": "formula",
+      "enunciado": "Mezcla con el nivel 3. En **E2** saca los **2 pedidos más grandes de Pamplona**: cliente e importe (B y C), de mayor a menor. La delegación está en la columna A.",
+      "hoja": {
+        "celdas": {
+          "A1": "Delegación",
+          "B1": "Cliente",
+          "C1": "Importe",
+          "A2": "Zaragoza",
+          "B2": "Instalaciones Ebro",
+          "C2": 2480.5,
+          "A3": "Pamplona",
+          "B3": "Elec Moncayo",
+          "C3": 3320.4,
+          "A4": "Zaragoza",
+          "B4": "Montajes Bardenas",
+          "C4": 4150,
+          "A5": "Pamplona",
+          "B5": "Talleres Irati",
+          "C5": 1204,
+          "A6": "Lleida",
+          "B6": "Instalaciones Segre",
+          "C6": 1840,
+          "A7": "Pamplona",
+          "B7": "Instalaciones Baztán",
+          "C7": 5010.9,
+          "E1": "Cliente",
+          "F1": "Importe"
+        },
+        "formatos": { "C2:C7": "eur", "F2:F3": "eur" },
+        "anchos": { "B": 20, "E": 20 }
+      },
+      "objetivo": "E2",
+      "solucion": "=TOMAR(ORDENAR(FILTRAR(B2:C7;A2:A7=\"Pamplona\");2;-1);2)",
+      "debe_usar": ["FILTRAR", "TOMAR"],
+      "errores_tipicos": [
+        "=TOMAR(ORDENAR(B2:C7;2;-1);2)",
+        "=TOMAR(FILTRAR(B2:C7;A2:A7=\"Pamplona\");2)",
+        "=TOMAR(ORDENAR(FILTRAR(B2:C7;A2:A7=\"Pamplona\");2);2)"
+      ],
+      "variantes": [{ "C5": 7000 }],
+      "pistas": [
+        "Tres capas: filtrar Pamplona → ordenar por importe → tomar 2.",
+        "`FILTRAR(B2:C7;A2:A7=\"Pamplona\")` deja solo sus pedidos. Ordénalo por la 2.ª columna con -1.",
+        "Escribe `=TOMAR(ORDENAR(FILTRAR(B2:C7;A2:A7=\"Pamplona\");2;-1);2)`."
+      ],
+      "explicacion": "FILTRAR elige las filas, ORDENAR las pone en orden y TOMAR corta. Con este trío sacas el top de cualquier comercial, cliente o delegación."
+    },
+    {
+      "id": "n5m1l2-q3",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué función pone una lista debajo de otra?",
+      "aceptadas": ["APILARV", "=APILARV", "APILARV()", "=APILARV()"],
+      "explicacion": "APILARV(matriz1; matriz2; …). Las listas deben tener las mismas columnas en el mismo orden."
+    }
+  ],
+  "tarjetas": [
+    { "tipo": "funcion", "frente": "Unir dos listas una debajo de otra", "dorso": "=APILARV(lista1; lista2). Mismas columnas y en el mismo orden, o salen #N/D." },
+    { "tipo": "funcion", "frente": "Quedarte con la 2.ª y la 4.ª columna de A1:D50", "dorso": "=ELEGIRCOLS(A1:D50;2;4). Los números cuentan dentro de la matriz, no la letra de la hoja." },
+    { "tipo": "funcion", "frente": "Top 3 por importe (columna 2 de A2:B50)", "dorso": "=TOMAR(ORDENAR(A2:B50;2;-1);3)" },
+    { "tipo": "concepto", "frente": "TOMAR(matriz;-5) frente a EXCLUIR(matriz;1)", "dorso": "TOMAR con -5 devuelve las 5 últimas filas; EXCLUIR con 1 devuelve todo menos la primera (quita la cabecera)." }
+  ]
+}

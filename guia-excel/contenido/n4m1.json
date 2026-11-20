@@ -1,0 +1,1879 @@
+{
+  "id": "n4m1",
+  "nivel": "n4",
+  "titulo": "Power Query: el informe que se hace solo",
+  "intro": "Cada mes llegan las mismas exportaciones del ERP y alguien pierde horas limpiándolas, pegándolas y cruzándolas. Con Power Query grabas ese trabajo una vez y el mes siguiente basta con pulsar Actualizar todo: menos horas y menos errores.",
+  "repaso_inicial": [
+    {
+      "id": "n4m1-r1",
+      "modo": "formula",
+      "enunciado": "Repaso de BUSCARX. En **C2** trae la **familia** del producto de A2 buscándolo en el maestro (**E2:F6**). Tu fórmula se copiará a C3:C5.",
+      "hoja": {
+        "celdas": {
+          "A1": "CodProducto",
+          "B1": "Importe",
+          "C1": "Familia",
+          "E1": "CodProducto",
+          "F1": "Familia",
+          "A2": "MAG-216",
+          "B2": 196,
+          "A3": "LED-DL18",
+          "B3": 357.6,
+          "A4": "TUB-16",
+          "B4": 154,
+          "A5": "CAB-15",
+          "B5": 390,
+          "E2": "TUB-16",
+          "F2": "Canalización",
+          "E3": "CAB-15",
+          "F3": "Cableado",
+          "E4": "MAG-216",
+          "F4": "Protección",
+          "E5": "LED-DL18",
+          "F5": "Iluminación",
+          "E6": "INT-SIM",
+          "F6": "Mecanismos"
+        },
+        "formatos": {
+          "B2:B5": "eur"
+        },
+        "anchos": {
+          "A": 12,
+          "C": 13,
+          "E": 12,
+          "F": 13
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C5"
+      ],
+      "solucion": "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)",
+      "alternativas": [
+        "=BUSCARV(A2;$E$2:$F$6;2;FALSO)",
+        "=INDICE($F$2:$F$6;COINCIDIR(A2;$E$2:$E$6;0))",
+        "=BUSCARX(A2;E$2:E$6;F$2:F$6)"
+      ],
+      "errores_tipicos": [
+        "=BUSCARX(A2;E2:E6;F2:F6)",
+        "=BUSCARX(A2;$E$2:$E$6;$E$2:$E$6)"
+      ],
+      "variantes": [
+        {
+          "A2": "INT-SIM"
+        }
+      ],
+      "pistas": [
+        "BUSCARX(lo que buscas; dónde lo buscas; qué devuelves).",
+        "Buscas A2 en $E$2:$E$6 y devuelves $F$2:$F$6. Los $ evitan que el maestro se mueva al copiar.",
+        "=BUSCARX(A2;$E$2:$E$6;$F$2:$F$6)"
+      ],
+      "explicacion": "Así traes la familia con una fórmula. En este módulo verás que Power Query hace lo mismo con **Combinar consultas**, y que se repite solo cada mes."
+    },
+    {
+      "id": "n4m1-r2",
+      "modo": "test",
+      "pregunta": "Has añadido 40 filas nuevas a la Tabla de ventas, pero la tabla dinámica sigue enseñando los números de antes. ¿Qué te falta?",
+      "opciones": [
+        {
+          "texto": "Actualizarla (Datos › Actualizar todo)",
+          "correcta": true,
+          "porque": "La dinámica trabaja con una copia guardada de los datos y solo cambia al actualizar."
+        },
+        {
+          "texto": "Rehacer la tabla dinámica desde cero",
+          "correcta": false,
+          "porque": "No hace falta: si el origen es una Tabla, basta con actualizar para que entren las filas nuevas."
+        },
+        {
+          "texto": "Nada: se pondrá al día sola en unos minutos",
+          "correcta": false,
+          "porque": "A diferencia de las fórmulas, la dinámica no se recalcula sola: espera a que pulses Actualizar."
+        }
+      ],
+      "explicacion": "Con Power Query pasa lo mismo: nada cambia hasta que pulsas Actualizar todo."
+    },
+    {
+      "id": "n4m1-r3",
+      "modo": "predice",
+      "enunciado": "¿Cuántas ventas de **Pamplona** superan los 500 €? Predice el resultado antes de verlo.",
+      "hoja": {
+        "celdas": {
+          "A1": "Albarán",
+          "B1": "Delegación",
+          "C1": "Importe",
+          "A2": "A26-31201",
+          "B2": "Zaragoza",
+          "C2": 820,
+          "A3": "A26-31202",
+          "B3": "Pamplona",
+          "C3": 450,
+          "A4": "A26-31203",
+          "B4": "Lleida",
+          "C4": 610,
+          "A5": "A26-31204",
+          "B5": "Pamplona",
+          "C5": 1200,
+          "A6": "A26-31205",
+          "B6": "Pamplona",
+          "C6": 505,
+          "A7": "A26-31206",
+          "B7": "Zaragoza",
+          "C7": 300
+        },
+        "formatos": {
+          "C2:C7": "eur"
+        },
+        "anchos": {
+          "A": 11,
+          "B": 11
+        }
+      },
+      "celda": "E2",
+      "formula": "=CONTAR.SI.CONJUNTO(B2:B7;\"Pamplona\";C2:C7;\">500\")",
+      "explicacion": "Pamplona con más de 500 €: 1.200 y 505. El 450 es de Pamplona, pero no pasa de 500.",
+      "respuesta": "2"
+    },
+    {
+      "id": "n4m1-r4",
+      "modo": "test",
+      "pregunta": "Abres con doble clic un CSV del ERP y los códigos de cliente `004127` aparecen como `4127`. ¿Qué ha pasado?",
+      "opciones": [
+        {
+          "texto": "Excel los ha tomado por números y les ha quitado los ceros",
+          "correcta": true,
+          "porque": "Con la configuración de fábrica, al abrir un CSV Excel convierte en número lo que lo parece. Por eso los CSV se importan, no se abren con doble clic."
+        },
+        {
+          "texto": "El ERP ha exportado mal los códigos",
+          "correcta": false,
+          "porque": "Si abres el CSV con el Bloc de notas verás los ceros: el archivo está bien."
+        },
+        {
+          "texto": "Es solo el formato: los ceros siguen guardados en la celda",
+          "correcta": false,
+          "porque": "No: lo guardado ya es el número 4127. Cambiar el formato no recupera el texto original."
+        }
+      ],
+      "explicacion": "En la lección 2 verás que Power Query tiene el mismo peligro, y cómo evitarlo."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "**Encargo de Javier Ortega:** las ventas de mayo a octubre de 2026 en una sola tabla, con la familia de cada producto, y una tabla dinámica por delegación y mes. El mes que viene solo quiere dejar el CSV nuevo en la carpeta y pulsar Actualizar todo.\n\n1. Descarga y descomprime `n4-ventas-mensuales.zip`. Dentro hay una carpeta `ERP` con seis CSV y el libro `n4-maestro-productos.xlsx` (instrucciones y maestro). Guarda ese libro con otro nombre y trabaja en él.\n2. Antes de conectar, abre los CSV con el Bloc de notas: uno no es como los demás.\n3. Combina la carpeta `ERP` con Power Query (**Datos › Obtener datos › Del archivo › De la carpeta**). El archivo distinto, sácalo de esa consulta, impórtalo aparte con su configuración regional y anéxalo.\n4. Limpia: fuera las filas TOTAL, tipos correctos y fechas bien leídas.\n5. Carga el maestro (**De una tabla o rango**), revisa que no tenga códigos repetidos y combínalo con las ventas (**Externa izquierda**). Saca aparte los códigos que no están en el maestro (**Anti izquierda**).\n6. Carga las ventas en una Tabla y haz la tabla dinámica: Delegacion en filas, Fecha agrupada por meses en columnas y suma de ImporteNeto.\n\nIntenta hacerlo en menos de 45 minutos. Después contesta los controles.",
+    "archivo": "n4-ventas-mensuales.zip",
+    "controles": [
+      {
+        "pregunta": "Número de líneas de la tabla final de ventas (ya combinada con el maestro y sin filas TOTAL)",
+        "respuesta": 299,
+        "tolerancia": 0,
+        "pista": "Si te salen 305, siguen dentro las seis filas TOTAL. Si te salen 320, el maestro tiene un código repetido (MAG-216): quita duplicados antes de combinar."
+      },
+      {
+        "pregunta": "Importe neto total de mayo a octubre (€)",
+        "respuesta": 56588.05,
+        "tolerancia": 0.01,
+        "pista": "Si te sale el doble, siguen dentro las filas TOTAL. Si te sale 59.856,84 €, no has quitado los duplicados del maestro."
+      },
+      {
+        "pregunta": "Importe neto de agosto, según la fecha de venta (€)",
+        "respuesta": 8842.38,
+        "tolerancia": 0.01,
+        "pista": "El CSV de agosto trae las fechas al estilo de EE. UU. (mes/día/año) y una columna de más. Impórtalo aparte, con la fecha en Usar configuración regional › Inglés (Estados Unidos), y anéxalo."
+      },
+      {
+        "pregunta": "Importe neto de la familia Iluminación (€)",
+        "respuesta": 10905.72,
+        "tolerancia": 0.01,
+        "pista": "Combina con el maestro por CodProducto (Externa izquierda) y expande Familia. Las ventas sin familia no cuentan aquí."
+      },
+      {
+        "pregunta": "Importe neto de las ventas cuyo código no está en el maestro (€)",
+        "respuesta": 1536,
+        "tolerancia": 0.01,
+        "pista": "Con Anti izquierda (ventas frente a maestro) salen 5 líneas de un solo código, que se vende desde septiembre."
+      },
+      {
+        "pregunta": "Importe neto de Pamplona en octubre (€)",
+        "respuesta": 3339.01,
+        "tolerancia": 0.01,
+        "pista": "Léelo en la tabla dinámica: Pamplona en filas y octubre en columnas. Si no cuadra, revisa que Fecha sea de tipo Fecha y que agosto se haya leído con la configuración de EE. UU."
+      }
+    ],
+    "solucion_md": "### Las consultas\n1. **Ventas_carpeta**: Datos › Obtener datos › Del archivo › De la carpeta › `ERP` › Combinar › Combinar y transformar datos (archivo de ejemplo: el primero, mayo). Filtro en el nombre del archivo para dejar fuera `ventas_2026_08.csv`. Filtro en Albaran: distinto de TOTAL. Tipos: Fecha como Fecha, Unidades como número entero, ImporteNeto como número decimal y el resto como Texto.\n2. **Ventas_agosto**: Datos › De texto/CSV › `ventas_2026_08.csv` › Transformar datos. Quitar la columna Observaciones, filtrar TOTAL y, en Fecha, icono de tipo › Usar configuración regional › Fecha + Inglés (Estados Unidos), reemplazando el tipo automático. Cargar como Solo crear conexión.\n3. **Ventas_carpeta › Inicio › Anexar consultas › Ventas_agosto**. Las columnas casan por nombre.\n4. **Productos**: De una tabla o rango › CodProducto › Quitar duplicados (MAG-216 estaba dos veces) › Cerrar y cargar en… › Solo crear conexión.\n5. **Combinar consultas** Ventas × Productos por CodProducto, Externa izquierda, expandir Descripcion y Familia. Cerrar y cargar en una Tabla: **299 líneas**.\n6. **Sin maestro**: Combinar consultas como nuevas con Anti izquierda: solo LED-PAN60 (panel LED 60×60), 5 líneas y 1.536,00 €. Hay que pedir a Andrés que lo dé de alta como Iluminación.\n\n### La tabla dinámica\nDelegacion en filas, Fecha agrupada por meses en columnas, suma de ImporteNeto. Total: 56.588,05 €; agosto: 8.842,38 €; Pamplona en octubre: 3.339,01 €.\n\n### El mes que viene\nSe deja `ventas_2026_11.csv` en `ERP` y se pulsa Datos › Actualizar todo (Ctrl+Alt+F5). Lo más profesional, además, es pedir que agosto se vuelva a exportar con la configuración española.",
+    "archivo_solucion": "n4-ventas-mensuales-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n4m1l1",
+      "titulo": "Qué es Power Query y tu primera consulta",
+      "minutos": 14,
+      "objetivo": "Crear una consulta de Power Query que limpia una exportación del ERP, cargarla en una Tabla y repetirla cada semana con Actualizar todo.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Cada lunes saco del ERP «pendientes_proveedores.csv» y me paso una hora quitando columnas, filtrando lo ya servido y ordenando. ¿Me lo dejas para que el lunes que viene sea un clic? Y el CSV no lo toques, que lo archivo tal cual.",
+        "logro": "Ya sabes crear una consulta de Power Query que limpia una exportación y se repite sola con Actualizar todo."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "**Power Query** es la herramienta de Excel para traer datos y limpiarlos. Funciona como una **grabadora**: cada cosa que haces (quitar una columna, filtrar, ordenar) queda apuntada como un **paso**.\n\nEl lunes que viene, cuando llegue el archivo nuevo, pulsas **Actualizar** y Excel repite todos los pasos solo, en segundos.\n\nAl conjunto de pasos guardados se le llama **consulta**: es la receta (de dónde vienen los datos y qué se les hace)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e1",
+          "modo": "test",
+          "pregunta": "Andrés limpia a mano el mismo CSV cada lunes. Si se monta una vez con Power Query, ¿qué habrá que hacer el lunes que viene?",
+          "opciones": [
+            {
+              "texto": "Guardar el CSV nuevo en el mismo sitio y pulsar Actualizar",
+              "correcta": true,
+              "porque": "Eso es: los pasos ya están grabados en la consulta y Actualizar los repite sobre el archivo nuevo."
+            },
+            {
+              "texto": "Repetir la limpieza a mano, pero más deprisa",
+              "correcta": false,
+              "porque": "Esa es justo la tarea que desaparece: la limpieza está grabada y se repite sola."
+            },
+            {
+              "texto": "Volver a crear la consulta desde cero",
+              "correcta": false,
+              "porque": "La consulta se crea una vez y se reutiliza cada semana. Solo se toca si cambia la forma del archivo."
+            }
+          ],
+          "explicacion": "Grabar una vez y repetir siempre: esa es la idea de todo este módulo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Power Query está en la pestaña **Datos**, grupo **Obtener y transformar datos**. Las dos puertas que más usarás:\n\n- **De texto/CSV**: para un archivo que saca el programa de gestión (el ERP).\n- **De una tabla o rango**: para una lista que ya está en tu libro (Excel la convierte antes en Tabla).\n\nAl elegir el archivo, Excel enseña una vista previa. Pulsa **Transformar datos** y se abre el **Editor de Power Query**, la ventana donde se limpia."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "¿Qué Excel lo tiene?",
+          "md": "Viene incluido en Excel para Windows desde la versión 2016 y en Microsoft 365. En Excel para la web funciona entero desde enero de 2026. En Mac hay editor, pero con menos orígenes de datos. En el móvil no hay Power Query."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e2",
+          "modo": "cinta",
+          "enunciado": "Andrés te ha dejado `pendientes_proveedores.csv`. ¿Qué botón pulsas para llevarlo a Power Query?",
+          "ruta": [
+            "Datos",
+            "Obtener y transformar datos",
+            "De texto/CSV"
+          ],
+          "explicacion": "**Datos › Obtener y transformar datos › De texto/CSV**. Eliges el archivo, miras la vista previa y pulsas **Transformar datos** para limpiarlo antes de cargarlo."
+        },
+        {
+          "tipo": "texto",
+          "md": "En el **Editor de Power Query** hay tres zonas:\n\n- En el centro, una **vista previa** de los datos.\n- Arriba, sus pestañas con los botones de limpieza (**Inicio**, **Transformar**…).\n- A la derecha, la lista **Pasos aplicados**: cada clic que das se apunta ahí, en orden. El primero, **Origen**, es el archivo del que se leen los datos.\n\nNada de esto llega a tu hoja hasta que pulsas **Inicio › Cerrar y cargar**."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: el CSV de Andrés",
+          "pasos": [
+            {
+              "md": "**Datos › De texto/CSV**, eliges `pendientes_proveedores.csv` y pulsas **Transformar datos**. Se abre el editor."
+            },
+            {
+              "md": "Seleccionas las columnas que Andrés no usa (*Almacén* y *Usuario*; con [[Ctrl]] eliges varias) y pulsas **Inicio › Quitar columnas**. Aparece un paso nuevo en Pasos aplicados."
+            },
+            {
+              "md": "En la flecha del encabezado **Estado** desmarcas *Servido* y aceptas, igual que un filtro de Excel. Otro paso."
+            },
+            {
+              "md": "En la flecha de **Fecha pedido** ordenas de la más antigua a la más reciente. Otro paso."
+            },
+            {
+              "md": "**Inicio › Cerrar y cargar**. Excel crea una hoja nueva con el resultado en una **Tabla**:",
+              "hoja": {
+                "celdas": {
+                  "A1": "Proveedor",
+                  "B1": "Pedido",
+                  "C1": "Fecha pedido",
+                  "D1": "Estado",
+                  "E1": "Importe",
+                  "A2": "Lumitec Iberia",
+                  "B2": "PC-26-0811",
+                  "C2": {
+                    "fecha": "2026-10-27"
+                  },
+                  "D2": "Pendiente",
+                  "E2": 1240.5,
+                  "A3": "Cables del Ebro",
+                  "B3": "PC-26-0823",
+                  "C3": {
+                    "fecha": "2026-10-30"
+                  },
+                  "D3": "Parcial",
+                  "E3": 386.2,
+                  "A4": "Mecanismos Lur",
+                  "B4": "PC-26-0830",
+                  "C4": {
+                    "fecha": "2026-11-04"
+                  },
+                  "D4": "Pendiente",
+                  "E4": 2915
+                },
+                "formatos": {
+                  "C2:C4": "fecha",
+                  "E2:E4": "eur"
+                },
+                "anchos": {
+                  "A": 16,
+                  "B": 12,
+                  "C": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e3",
+          "modo": "ordenar",
+          "enunciado": "Ordena el recorrido completo, desde el CSV de Andrés hasta el lunes siguiente.",
+          "pasos": [
+            "Datos › De texto/CSV",
+            "Elegir pendientes_proveedores.csv en su carpeta",
+            "Pulsar Transformar datos",
+            "Limpiar en el editor: quitar columnas, filtrar y ordenar",
+            "Inicio › Cerrar y cargar",
+            "El lunes siguiente: guardar el CSV nuevo con el mismo nombre y pulsar Actualizar todo"
+          ],
+          "explicacion": "Primero se elige el origen, luego se limpia en el editor y al final se carga. Desde ese día, cada lunes solo queda el último paso."
+        },
+        {
+          "tipo": "texto",
+          "md": "La lista **Pasos aplicados** es tu receta, y se puede revisar:\n\n- Haz clic en un paso y verás cómo estaban los datos en ese momento.\n- La **X** que aparece a la izquierda de un paso lo borra.\n- Si te equivocas, borra el paso y repítelo: equivocarse aquí es gratis.\n\nY lo más tranquilizador: Power Query **lee** el archivo original, pero **nunca lo modifica**. El CSV de Andrés queda tal cual."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Nuria avisa: no corrijas la Tabla cargada",
+          "md": "Si cambias a mano un dato de la Tabla que ha cargado Power Query, al **actualizar** se pierde: la Tabla se vuelve a escribir con lo que dice la consulta. Las correcciones se hacen **en la consulta**, como un paso más."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e4",
+          "modo": "test",
+          "pregunta": "En la Tabla cargada ves que el proveedor «Lumitec Iberia» aparece en dos filas como «LUMITEC IBERIA SL». ¿Dónde lo corriges para que no vuelva a salir mal?",
+          "opciones": [
+            {
+              "texto": "En el Editor de Power Query, con un paso más que lo corrija",
+              "correcta": true,
+              "porque": "Así la corrección forma parte de la receta y se repite sola cada lunes."
+            },
+            {
+              "texto": "Directamente en la Tabla cargada",
+              "correcta": false,
+              "porque": "Al actualizar el lunes, la Tabla se reescribe desde la consulta y tu cambio desaparece."
+            },
+            {
+              "texto": "En el CSV original, cada lunes",
+              "correcta": false,
+              "porque": "Funcionaría, pero volverías a limpiar a mano cada semana. Además, Andrés quiere el CSV intacto."
+            }
+          ],
+          "explicacion": "Regla de oro: los arreglos van en la consulta, nunca en el resultado. En la próxima lección verás los pasos de limpieza más útiles."
+        },
+        {
+          "tipo": "texto",
+          "md": "Desde que pulsas **Cerrar y cargar**, el trabajo de cada lunes se reduce a esto:\n\n1. Guardar el CSV nuevo **con el mismo nombre y en la misma carpeta**, sustituyendo el anterior.\n2. Abrir tu libro y pulsar **Datos › Actualizar todo**.\n\nPower Query vuelve a leer el archivo y repite cada paso. Sin copiar ni pegar.\n\nSi cambias el nombre del CSV o lo mueves de carpeta, la consulta no lo encontrará y dará un error."
+        },
+        {
+          "tipo": "atajos",
+          "atajos": [
+            {
+              "teclas": "Ctrl+Alt+F5",
+              "accion": "Actualizar todo: todas las consultas y tablas dinámicas del libro"
+            },
+            {
+              "teclas": "Alt+F12",
+              "accion": "Abrir el Editor de Power Query"
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e5",
+          "modo": "formula",
+          "enunciado": "Andrés quiere poder fiarse del resultado. El ERP dice que el total pendiente es el de **G2**. En **G3** escribe una fórmula que calcule la **suma de la columna Importe (E2:E7) menos G2**. Si sale **0**, no falta ni sobra nada.",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Pedido",
+              "C1": "Fecha pedido",
+              "D1": "Estado",
+              "E1": "Importe",
+              "A2": "Lumitec Iberia",
+              "B2": "PC-26-0811",
+              "C2": {
+                "fecha": "2026-10-27"
+              },
+              "D2": "Pendiente",
+              "E2": 1240.5,
+              "A3": "Cables del Ebro",
+              "B3": "PC-26-0823",
+              "C3": {
+                "fecha": "2026-10-30"
+              },
+              "D3": "Parcial",
+              "E3": 386.2,
+              "A4": "Mecanismos Lur",
+              "B4": "PC-26-0830",
+              "C4": {
+                "fecha": "2026-11-04"
+              },
+              "D4": "Pendiente",
+              "E4": 2915,
+              "A5": "Bridas Moncayo",
+              "B5": "PC-26-0841",
+              "C5": {
+                "fecha": "2026-11-09"
+              },
+              "D5": "Pendiente",
+              "E5": 148.75,
+              "A6": "Protecciones Segre",
+              "B6": "PC-26-0852",
+              "C6": {
+                "fecha": "2026-11-11"
+              },
+              "D6": "Parcial",
+              "E6": 760,
+              "A7": "Lumitec Iberia",
+              "B7": "PC-26-0858",
+              "C7": {
+                "fecha": "2026-11-13"
+              },
+              "D7": "Pendiente",
+              "E7": 1033.4,
+              "F2": "Total ERP",
+              "G2": 6483.85,
+              "F3": "Diferencia"
+            },
+            "formatos": {
+              "C2:C7": "fecha",
+              "E2:E7": "eur",
+              "G2:G3": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 12,
+              "C": 12,
+              "F": 11
+            }
+          },
+          "objetivo": "G3",
+          "solucion": "=SUMA(E2:E7)-G2",
+          "alternativas": [
+            "=SUMA(E2:E7)-$G$2",
+            "=(E2+E3+E4+E5+E6+E7)-G2"
+          ],
+          "errores_tipicos": [
+            "=SUMA(E2:E7)",
+            "=SUMA(E2:E6)-G2"
+          ],
+          "variantes": [
+            {
+              "E4": 2195
+            },
+            {
+              "G2": 6500
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero suma la columna Importe: SUMA(E2:E7).",
+            "Al resultado réstale la celda del ERP: … -G2.",
+            "=SUMA(E2:E7)-G2"
+          ],
+          "explicacion": "Da **0**: lo que has cargado cuadra con el ERP. Esta **celda de control** junto a la Tabla te avisará el lunes en que falte o sobre algo. En tu libro real usa la columna entera de la Tabla, por ejemplo `=SUMA(Pendientes[Importe])-G2`, para que la fórmula crezca con los datos."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Andrés Molina",
+          "puesto": "Jefe de compras y almacén",
+          "md": "¡Una hora menos cada lunes! Una cosa: el lunes que viene estoy en Pamplona y lo actualiza Nuria, que no ha visto la consulta. Déjale las instrucciones claras, por favor."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l1-e6",
+          "modo": "abierta",
+          "pregunta": "Escribe a Nuria, en tres pasos cortos, qué tiene que hacer el lunes para tener la lista de pendientes limpia y comprobada.",
+          "modelo": "1) Saca del ERP «pendientes_proveedores.csv» y guárdalo con ese mismo nombre en la carpeta de siempre, sustituyendo el anterior. 2) Abre el libro y pulsa Datos › Actualizar todo (Ctrl+Alt+F5). 3) Mira la celda de control: si la diferencia es 0, cuadra y se puede enviar; si no, avísame antes.",
+          "criterios": [
+            "Guardar el CSV nuevo con el mismo nombre y en la misma carpeta",
+            "Pulsar Actualizar todo (botón o Ctrl+Alt+F5)",
+            "Revisar la celda de control antes de dar por bueno el resultado",
+            "No pide limpiar a mano ni tocar la Tabla cargada"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m1l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cómo se llama la lista del Editor de Power Query donde queda apuntado cada cambio que haces?",
+          "aceptadas": [
+            "Pasos aplicados",
+            "pasos aplicados",
+            "Pasos",
+            "los pasos aplicados"
+          ],
+          "explicacion": "**Pasos aplicados**, a la derecha del editor. Es la receta que se repite al actualizar."
+        },
+        {
+          "id": "n4m1l1-q2",
+          "modo": "test",
+          "pregunta": "¿Qué le pasa al CSV original cuando Power Query lo limpia?",
+          "opciones": [
+            {
+              "texto": "Nada: Power Query lo lee, pero no lo cambia",
+              "correcta": true,
+              "porque": "La limpieza vive en la consulta; el archivo de origen queda intacto."
+            },
+            {
+              "texto": "Se guarda limpio encima del original",
+              "correcta": false,
+              "porque": "Power Query nunca escribe en el origen; el resultado va a una Tabla de tu libro."
+            },
+            {
+              "texto": "Se borra para que no se cargue dos veces",
+              "correcta": false,
+              "porque": "Al contrario: lo necesita para leerlo cada vez que actualizas."
+            }
+          ]
+        },
+        {
+          "id": "n4m1l1-q3",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué atajo de teclado actualiza todas las consultas del libro?",
+          "aceptadas": [
+            "Ctrl+Alt+F5",
+            "Control+Alt+F5",
+            "Ctrl Alt F5",
+            "ctrl+alt+f5",
+            "Ctrl + Alt + F5"
+          ],
+          "explicacion": "[[Ctrl]]+[[Alt]]+[[F5]], lo mismo que **Datos › Actualizar todo**."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una consulta de Power Query?",
+          "dorso": "La receta guardada: de dónde vienen los datos y qué pasos se les aplican. Se repite con Actualizar."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Actualizar todas las consultas del libro",
+          "dorso": "Ctrl+Alt+F5 (o Datos › Actualizar todo)."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Abrir el Editor de Power Query",
+          "dorso": "Alt+F12."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Corriges a mano un dato de la Tabla que cargó Power Query. ¿Qué pasa al actualizar?",
+          "dorso": "Se pierde: la Tabla se reescribe desde la consulta. Corrige con un paso en el editor."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l2",
+      "titulo": "Limpiar con pasos: tipos, región, dividir, rellenar y filtrar",
+      "minutos": 16,
+      "objetivo": "Arreglar en Power Query los fallos típicos de una exportación: títulos encima, filas de totales, tipos de dato equivocados, fechas de otro país y columnas mal separadas.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "Lumitec, el proveedor de luminarias, nos manda cada mes su informe de envíos desde un programa en inglés: dos líneas de título arriba, fechas al estilo americano y subtotales por medio. Lo uso para cuadrar sus facturas. ¿Me montas la consulta que lo deje limpio?",
+        "logro": "Ya sabes limpiar con Power Query una exportación con títulos, totales, tipos equivocados y fechas de otro país."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Cada columna de Power Query tiene un **tipo de dato**, y lo ves en el **icono** a la izquierda del encabezado: **ABC** es texto, **123** es número entero y un calendario es fecha.\n\nAl importar, Power Query **adivina** los tipos y lo apunta como un paso más. Casi siempre acierta, pero no siempre. Y el tipo importa: un texto no se puede sumar, y una fecha guardada como texto no se puede agrupar por meses."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e1",
+          "modo": "test",
+          "pregunta": "En el editor, la columna **Unidades** lleva el icono **ABC**. ¿Qué significa?",
+          "opciones": [
+            {
+              "texto": "Que Power Query la trata como texto",
+              "correcta": true,
+              "porque": "ABC = texto. Para poder sumarla tendrás que cambiarla a número."
+            },
+            {
+              "texto": "Que tiene letras en mayúscula",
+              "correcta": false,
+              "porque": "El icono no habla del contenido, sino del tipo de dato que Power Query le ha puesto."
+            },
+            {
+              "texto": "Que es una fecha",
+              "correcta": false,
+              "porque": "Las fechas llevan el icono del calendario."
+            }
+          ],
+          "explicacion": "Antes de cargar, recorre los iconos de los encabezados: es la revisión más rápida que existe."
+        },
+        {
+          "tipo": "texto",
+          "md": "El fallo más típico: los **códigos con ceros delante**. Lumitec manda el código `000457` y Power Query, al adivinar el tipo, lo convierte en el número **457**. Los ceros se pierden y el código ya no casa con tu lista.\n\nEl arreglo no es poner Texto **después**, porque el paso automático ya se comió los ceros. Hay que **sustituirlo**: borra ese paso de tipo en Pasos aplicados (la X a su izquierda) y pon tú el tipo **Texto** desde el icono de la columna."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Nuria: «di que sí a reemplazar»",
+          "md": "Si el último paso de la lista es el de tipo, al cambiar el tipo Power Query te pregunta si quieres **reemplazar el paso actual** o añadir uno nuevo. Elige **reemplazar**: es lo mismo que borrar el automático y ponerlo bien."
+        },
+        {
+          "tipo": "texto",
+          "md": "Segundo fallo típico: **fechas de otro país**. En Estados Unidos se escribe primero el mes: `04/12/2026` es el **12 de abril**. Power Query, con la configuración de España, lo lee como día/mes: **4 de diciembre**.\n\nY cuando el día pasa de 12, como en `04/25/2026`, no existe el mes 25: la celda sale como **Error**. Ese Error no es un desastre: es Power Query avisándote de que el tipo no encaja."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e2",
+          "modo": "test",
+          "pregunta": "Llega `03/11/2026` desde el programa en inglés de Lumitec (mes/día/año). Si no haces nada, ¿qué fecha guarda Power Query con la configuración de España?",
+          "opciones": [
+            {
+              "texto": "El 3 de noviembre de 2026",
+              "correcta": true,
+              "porque": "Lo lee como día/mes, la costumbre española. La fecha real era el 11 de marzo: casi ocho meses de diferencia, y sin ningún aviso."
+            },
+            {
+              "texto": "El 11 de marzo de 2026",
+              "correcta": false,
+              "porque": "Eso es lo que quería decir Lumitec, pero Power Query no lo sabe si no se lo dices."
+            },
+            {
+              "texto": "Error",
+              "correcta": false,
+              "porque": "Solo sale Error cuando el supuesto mes pasa de 12. Aquí el 11 es un mes válido."
+            }
+          ],
+          "explicacion": "Lo peligroso no son los Error, que se ven, sino las fechas cambiadas que parecen buenas."
+        },
+        {
+          "tipo": "texto",
+          "md": "La solución es decirle a Power Query **de qué país** es el archivo. A eso se le llama **configuración regional**: las costumbres de cada país para escribir fechas y decimales.\n\nHaz clic en el icono de tipo de la columna de fecha y, al final de la lista, elige **Usar configuración regional**. En el cuadro **Cambiar tipo con configuración regional** pon el tipo **Fecha** y la configuración **Inglés (Estados Unidos)**. Acepta y reemplaza el paso de tipo automático."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e3",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para que Power Query lea bien las fechas del archivo americano.",
+          "pasos": [
+            "Clic en el icono de tipo de la columna de fecha",
+            "Elegir Usar configuración regional",
+            "En el cuadro, elegir el tipo Fecha y la configuración Inglés (Estados Unidos)",
+            "Aceptar y reemplazar el paso de tipo automático",
+            "Comprobar que ya no quedan Error y que los meses tienen sentido"
+          ],
+          "explicacion": "Con eso, `03/11/2026` pasa a ser el 11 de marzo y `04/25/2026`, el 25 de abril. Y como es un paso, el mes que viene se aplica solo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Muchas exportaciones traen **líneas de título** encima de los datos. Power Query las toma por datos y los encabezados se quedan como *Column1*, *Column2*…\n\n- **Inicio › Quitar filas › Quitar filas superiores**: escribes cuántas filas sobran.\n- **Usar la primera fila como encabezado**: la primera fila que queda pasa a dar nombre a las columnas.\n\nSiempre en ese orden: primero quitas lo que sobra y después subes los encabezados."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así llega el informe de Lumitec",
+          "hoja": {
+            "celdas": {
+              "A1": "LUMITEC IBERIA · Shipments report",
+              "A2": "Customer: Electro Cierzo Suministros, S.L.",
+              "A3": "Date",
+              "B3": "Item",
+              "C3": "Description",
+              "D3": "Qty",
+              "E3": "Amount",
+              "A4": {
+                "texto": "11/03/2026"
+              },
+              "B4": {
+                "texto": "000457"
+              },
+              "C4": "LED panel 60x60 40W",
+              "D4": 10,
+              "E4": 320,
+              "A5": {
+                "texto": "11/09/2026"
+              },
+              "B5": {
+                "texto": "000512"
+              },
+              "C5": "LED downlight 18W",
+              "D5": 24,
+              "E5": 357.6,
+              "A6": {
+                "texto": "11/16/2026"
+              },
+              "B6": {
+                "texto": "000533"
+              },
+              "C6": "LED tube T8 18W",
+              "D6": 40,
+              "E6": 198
+            },
+            "formatos": {
+              "E4:E6": "eur"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 9,
+              "C": 22,
+              "D": 6,
+              "E": 11
+            }
+          },
+          "pie": "Las filas 1 y 2 sobran: los encabezados de verdad están en la fila 3. Y fíjate en las fechas: 11/16/2026 es el 16 de noviembre."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e4",
+          "modo": "respuesta_corta",
+          "pregunta": "En el informe de Lumitec de arriba, ¿cuántas filas superiores tienes que quitar antes de usar la primera fila como encabezado?",
+          "aceptadas": [
+            "2",
+            "dos",
+            "Dos",
+            "2 filas",
+            "dos filas"
+          ],
+          "explicacion": "Las filas 1 y 2 son títulos. Al quitarlas, la fila de *Date, Item…* queda la primera y ya puedes subirla como encabezado."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Síntoma → paso de Power Query",
+          "cabecera": [
+            "Lo que ves",
+            "El paso",
+            "Dónde está"
+          ],
+          "filas": [
+            [
+              "Código y descripción en la misma columna: «000457 - Panel LED»",
+              "Dividir columna › Por delimitador (el signo que separa las partes, aquí « - »)",
+              "Inicio o Transformar"
+            ],
+            [
+              "Espacios de más al principio o al final del texto",
+              "Formato › Recortar",
+              "Transformar"
+            ],
+            [
+              "«Zgz» en unas filas y «Zaragoza» en otras",
+              "Reemplazar valores",
+              "Inicio o Transformar"
+            ],
+            [
+              "La familia solo está en la primera fila de cada grupo; debajo, null (vacío)",
+              "Rellenar › Hacia abajo",
+              "Transformar"
+            ],
+            [
+              "Filas de «Subtotal» o «Total» entre los datos",
+              "Filtrar con la flecha del encabezado",
+              "En la propia columna"
+            ]
+          ],
+          "pie": "Ojo: Recortar quita los espacios del principio y del final, pero no los dobles de en medio (la función ESPACIOS sí los deja en uno)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e5",
+          "modo": "test",
+          "pregunta": "En otro informe, la columna **Familia** solo trae el nombre en la primera fila de cada grupo; las de debajo salen *null* (vacías). ¿Qué paso usas?",
+          "opciones": [
+            {
+              "texto": "Transformar › Rellenar › Hacia abajo",
+              "correcta": true,
+              "porque": "Copia cada familia en las celdas vacías de debajo, hasta que aparece la siguiente."
+            },
+            {
+              "texto": "Reemplazar valores",
+              "correcta": false,
+              "porque": "Tendrías que escribir cada familia a mano, y el mes que viene los huecos estarían en otras filas."
+            },
+            {
+              "texto": "Formato › Recortar",
+              "correcta": false,
+              "porque": "Recortar quita espacios sobrantes; no rellena huecos."
+            },
+            {
+              "texto": "Quitar filas superiores",
+              "correcta": false,
+              "porque": "Eso quita títulos de arriba. Aquí las filas son buenas: solo les falta el dato."
+            }
+          ],
+          "explicacion": "Rellenar hacia abajo es el arreglo clásico para los informes «bonitos» que solo escriben la categoría una vez."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e6",
+          "modo": "formula",
+          "enunciado": "Antes de filtrar, Andrés quiere saber cuántas filas van a desaparecer. En **G2** cuenta cuántas celdas de **A2:A11** contienen la palabra «total» en cualquier parte (los subtotales también cuentan).",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Código",
+              "C1": "Descripción",
+              "D1": "Uds",
+              "E1": "Importe",
+              "A2": {
+                "fecha": "2026-11-03"
+              },
+              "B2": {
+                "texto": "000457"
+              },
+              "C2": "Panel LED 60×60 40 W",
+              "D2": 10,
+              "E2": 320,
+              "A3": {
+                "fecha": "2026-11-03"
+              },
+              "B3": {
+                "texto": "000512"
+              },
+              "C3": "Downlight LED 18 W",
+              "D3": 24,
+              "E3": 357.6,
+              "A4": {
+                "fecha": "2026-11-05"
+              },
+              "B4": {
+                "texto": "000533"
+              },
+              "C4": "Tubo LED T8 18 W",
+              "D4": 40,
+              "E4": 198,
+              "A5": "Subtotal semana 45",
+              "D5": 74,
+              "E5": 875.6,
+              "A6": {
+                "fecha": "2026-11-09"
+              },
+              "B6": {
+                "texto": "000457"
+              },
+              "C6": "Panel LED 60×60 40 W",
+              "D6": 6,
+              "E6": 192,
+              "A7": {
+                "fecha": "2026-11-12"
+              },
+              "B7": {
+                "texto": "000618"
+              },
+              "C7": "Proyector LED 36 W",
+              "D7": 8,
+              "E7": 220,
+              "A8": {
+                "fecha": "2026-11-13"
+              },
+              "B8": {
+                "texto": "000512"
+              },
+              "C8": "Downlight LED 18 W",
+              "D8": 12,
+              "E8": 178.8,
+              "A9": "Subtotal semana 46",
+              "D9": 26,
+              "E9": 590.8,
+              "A10": {
+                "fecha": "2026-11-16"
+              },
+              "B10": {
+                "texto": "000533"
+              },
+              "C10": "Tubo LED T8 18 W",
+              "D10": 20,
+              "E10": 99,
+              "A11": "Total noviembre",
+              "D11": 120,
+              "E11": 1565.4,
+              "F2": "Filas de total"
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "E2:E11": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 8,
+              "C": 20,
+              "D": 5,
+              "E": 10,
+              "F": 12
+            }
+          },
+          "objetivo": "G2",
+          "solucion": "=CONTAR.SI(A2:A11;\"*total*\")",
+          "alternativas": [
+            "=CONTAR.SI(A2:A11;\"*Total*\")",
+            "=CONTAR.SI($A$2:$A$11;\"*total*\")"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(A2:A11;\"Total\")",
+            "=CONTAR.SI(A2:A11;\"Total*\")",
+            "=CONTARA(A2:A11)"
+          ],
+          "variantes": [
+            {
+              "A4": "Subtotal parcial"
+            },
+            {
+              "A11": "Fin del informe"
+            }
+          ],
+          "pistas": [
+            "Para contar celdas que cumplen una condición: CONTAR.SI(rango;criterio).",
+            "El asterisco * vale por «cualquier texto». Para «contiene total», pon la palabra entre asteriscos: \"*total*\".",
+            "=CONTAR.SI(A2:A11;\"*total*\")"
+          ],
+          "explicacion": "Salen **3**: dos subtotales y el total. La lista tiene 10 filas, así que después de filtrar deben quedar **7**. Saber cuántas filas esperas es la forma más rápida de comprobar que el filtro de Power Query no se ha llevado nada de más."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l2-e7",
+          "modo": "ordenar",
+          "enunciado": "La misión de Andrés: ordena la limpieza completa del informe de Lumitec para que cada mes salga sola. (Si Power Query añade por su cuenta pasos automáticos de encabezados o de tipo, los borras: los encabezados y los tipos los pones tú, cada uno en su momento.)",
+          "pasos": [
+            "Datos › De texto/CSV › Transformar datos",
+            "Inicio › Quitar filas › Quitar filas superiores (2)",
+            "Usar la primera fila como encabezado",
+            "Filtrar la columna Date para quitar subtotales y total",
+            "Poner los tipos: fecha con configuración regional Inglés (Estados Unidos) y código como Texto",
+            "Inicio › Cerrar y cargar"
+          ],
+          "explicacion": "Primero se quita lo que sobra arriba, luego se suben los encabezados y después se quitan los totales; si conviertes antes la columna a fecha, esas filas darían Error. Los tipos, al final, sobre datos ya limpios. Desde hoy, cada mes: archivo nuevo y **Actualizar todo**."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m1l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué configuración regional eliges en Power Query para un archivo con fechas mes/día/año de Estados Unidos?",
+          "aceptadas": [
+            "Inglés (Estados Unidos)",
+            "Ingles (Estados Unidos)",
+            "inglés (Estados Unidos)",
+            "Inglés Estados Unidos",
+            "Inglés (EE. UU.)",
+            "Inglés (EE.UU.)",
+            "Inglés de Estados Unidos"
+          ],
+          "explicacion": "**Inglés (Estados Unidos)**, desde el icono de tipo › Usar configuración regional, con el tipo Fecha."
+        },
+        {
+          "id": "n4m1l2-q2",
+          "modo": "test",
+          "pregunta": "Los encabezados salen como *Column1, Column2…* y la primera fila dice «LUMITEC IBERIA · Shipments report». ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Quitar filas superiores y después Usar la primera fila como encabezado",
+              "correcta": true,
+              "porque": "Primero fuera los títulos; después, la fila buena sube a encabezado."
+            },
+            {
+              "texto": "Usar la primera fila como encabezado y después quitar filas",
+              "correcta": false,
+              "porque": "Subirías el título como encabezado y perderías los nombres de verdad."
+            },
+            {
+              "texto": "Cambiar el nombre de cada columna a mano",
+              "correcta": false,
+              "porque": "Los nombres quedarían bien, pero las filas de título seguirían ahí, mezcladas con los datos."
+            }
+          ]
+        },
+        {
+          "id": "n4m1l2-q3",
+          "modo": "test",
+          "pregunta": "Los nombres de cliente llegan con espacios al final («Montajes Arga, S.L.   ») y no casan con tu lista. ¿Qué paso de Power Query los quita?",
+          "opciones": [
+            {
+              "texto": "Transformar › Formato › Recortar",
+              "correcta": true,
+              "porque": "Recortar quita los espacios del principio y del final."
+            },
+            {
+              "texto": "Transformar › Rellenar › Hacia abajo",
+              "correcta": false,
+              "porque": "Rellena celdas vacías con el valor de arriba; no toca los espacios."
+            },
+            {
+              "texto": "Dividir columna › Por delimitador",
+              "correcta": false,
+              "porque": "Partiría el texto en varias columnas, no lo limpiaría."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué indican los iconos ABC, 123 y el calendario en un encabezado de Power Query?",
+          "dorso": "El tipo de dato de la columna: texto, número entero y fecha."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Los códigos 000457 salen como 457 en Power Query. ¿Qué haces?",
+          "dorso": "Sustituir el paso de tipo automático (borrarlo o reemplazarlo) por el tipo Texto."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Fechas mes/día/año de EE. UU. en Power Query",
+          "dorso": "Icono de tipo › Usar configuración regional › Fecha + Inglés (Estados Unidos)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Títulos encima de los datos en Power Query",
+          "dorso": "Quitar filas superiores y, después, Usar la primera fila como encabezado."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l3",
+      "titulo": "Unir los archivos de todos los meses: anexar y carpeta",
+      "minutos": 16,
+      "objetivo": "Unir en una sola consulta tablas con las mismas columnas (Anexar) o todos los archivos de una carpeta, y comprobar que no falta ni sobra nada.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Tengo un CSV de ventas por mes, de noviembre del año pasado a octubre, en la carpeta Ventas_ERP. Para la reunión del jueves lo quiero todo en una tabla. Y no me digas que vas a copiar y pegar: el mes que viene quiero dejar el archivo y que se actualice solo.",
+        "logro": "Ya sabes unir todos los archivos de una carpeta en una tabla que crece sola cada mes, y comprobar que no falta nada."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "**Anexar** es poner una tabla **debajo** de otra, como grapar dos listados uno detrás de otro. Sirve cuando las dos tienen **las mismas columnas**: por ejemplo, las ventas de Pamplona y las de Lleida.\n\nEn el editor: **Inicio › Anexar consultas** y eliges la otra tabla (o varias, con **Tres o más tablas**). Si no quieres tocar las originales, usa la flecha del botón y **Anexar consultas como nuevas**: crea una consulta aparte con el resultado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e1",
+          "modo": "test",
+          "pregunta": "Tienes dos consultas, **Ventas_Pamplona** y **Ventas_Lleida**, con las mismas columnas. Javier quiere una sola lista con todo. ¿Qué usas?",
+          "opciones": [
+            {
+              "texto": "Anexar consultas",
+              "correcta": true,
+              "porque": "Pone las filas de una debajo de las de la otra, y se repite sola al actualizar."
+            },
+            {
+              "texto": "Combinar consultas",
+              "correcta": false,
+              "porque": "Combinar empareja filas de dos tablas por una columna común, como BUSCARX; no las apila. Lo verás en la próxima lección."
+            },
+            {
+              "texto": "Copiar y pegar una debajo de la otra",
+              "correcta": false,
+              "porque": "Sirve una vez. El mes que viene tendrías que repetirlo, y ahí es donde se cuelan filas de menos o de más."
+            }
+          ],
+          "explicacion": "Anexar = una debajo de otra. Es el primer paso para dejar de copiar y pegar listados."
+        },
+        {
+          "tipo": "texto",
+          "md": "Power Query empareja las columnas **por su nombre**, no por su posición. Si en un archivo la columna se llama `Importe` y en el otro `Importe neto`, para él son dos columnas distintas: en el resultado salen **las dos**, cada una con huecos en las filas del otro archivo. Esos huecos se ven como *null*, que es como Power Query llama a una celda vacía.\n\nArreglo: antes de anexar, cambia el nombre en una de las consultas (doble clic en el encabezado) para que coincidan."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Pamplona y Lleida anexadas con nombres distintos",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "D1": "Importe neto",
+              "A2": {
+                "fecha": "2026-10-05"
+              },
+              "B2": "Montajes Arga, S.L.",
+              "C2": 812.4,
+              "D2": "null",
+              "A3": {
+                "fecha": "2026-10-06"
+              },
+              "B3": "Electro Bardenas, S.L.",
+              "C3": 455,
+              "D3": "null",
+              "A4": {
+                "fecha": "2026-10-05"
+              },
+              "B4": "Instalaciones Segre 2010, S.L.",
+              "C4": "null",
+              "D4": 1290.15,
+              "A5": {
+                "fecha": "2026-10-07"
+              },
+              "B5": "Montajes Eléctricos Cinca, S.L.",
+              "C5": "null",
+              "D5": 367.8
+            },
+            "formatos": {
+              "A2:A5": "fecha",
+              "C2:D5": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 28,
+              "C": 10,
+              "D": 12
+            }
+          },
+          "pie": "Las filas de Lleida traen su importe en otra columna: Power Query no sabe que es lo mismo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e2",
+          "modo": "test",
+          "pregunta": "Anexas **enero** (columnas Fecha, Cliente, Importe) y **febrero** (Fecha, Cliente, Importe, Comercial). ¿Qué sale?",
+          "opciones": [
+            {
+              "texto": "Cuatro columnas; en las filas de enero, Comercial sale null",
+              "correcta": true,
+              "porque": "La columna que solo existe en una tabla aparece igual, vacía en las filas de la otra."
+            },
+            {
+              "texto": "Un error, porque las tablas no tienen las mismas columnas",
+              "correcta": false,
+              "porque": "Power Query anexa igualmente y rellena con null lo que falta."
+            },
+            {
+              "texto": "Tres columnas: Comercial se pierde",
+              "correcta": false,
+              "porque": "Anexar no quita columnas: se queda con todas las de las dos tablas."
+            }
+          ],
+          "explicacion": "Por eso, después de anexar, conviene mirar si alguna columna sale medio vacía: suele ser un nombre que no coincide."
+        },
+        {
+          "tipo": "texto",
+          "md": "Si hay **un archivo por mes**, anexarlos a mano cada mes sería volver a empezar. Para eso está la **carpeta**:\n\n**Datos › Obtener datos › Del archivo › De la carpeta**, eliges la carpeta y, en la ventana que sale, **Combinar › Combinar y transformar datos**.\n\nPower Query toma un **archivo de ejemplo** (normalmente, el primero de la lista), aprende con él cómo es cada archivo y aplica los mismos pasos a **todos**. Resultado: una sola tabla con las filas de todos los meses."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e3",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para unir los CSV mensuales de Javier.",
+          "pasos": [
+            "Guardar todos los CSV de ventas, y solo esos, en una carpeta",
+            "Datos › Obtener datos › Del archivo › De la carpeta",
+            "Elegir la carpeta Ventas_ERP",
+            "Combinar › Combinar y transformar datos",
+            "Revisar el archivo de ejemplo y aceptar",
+            "Limpiar y poner los tipos en el editor",
+            "Inicio › Cerrar y cargar"
+          ],
+          "explicacion": "La carpeta se prepara antes; la consulta se monta una vez. A partir de ahí, cada archivo nuevo entra solo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Lo mejor llega el mes que viene: Javier deja `ventas_2026_11.csv` en la carpeta, pulsa **Actualizar todo** y noviembre aparece en la tabla. Sin tocar la consulta.\n\nPara que funcione, la carpeta tiene que estar **limpia**: Power Query se trae **todo** lo que hay dentro, también lo de las subcarpetas. Una copia olvidada (`ventas_2026_09 - copia.csv`) hace que septiembre cuente dos veces."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Una carpeta solo para la consulta",
+          "md": "Pon un nombre fijo a los archivos (`ventas_AAAA_MM.csv`), no guardes nada más en esa carpeta y deja las copias y pruebas en otra. Así cualquiera del equipo puede actualizar el informe sin romperlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e4",
+          "modo": "cinta",
+          "enunciado": "Javier ya ha dejado el CSV de noviembre en la carpeta. ¿Qué botón pulsas para que entre en la tabla?",
+          "ruta": [
+            "Datos",
+            "Consultas y conexiones",
+            "Actualizar todo"
+          ],
+          "explicacion": "**Datos › Consultas y conexiones › Actualizar todo** (o [[Ctrl]]+[[Alt]]+[[F5]]). La consulta vuelve a leer la carpeta y noviembre entra solo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e5",
+          "modo": "test",
+          "pregunta": "Después de actualizar, **septiembre** sale con el doble de ventas que los demás meses. En la carpeta ves `ventas_2026_09.csv` y `ventas_2026_09 - copia.csv`. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Sacar la copia de la carpeta y volver a actualizar",
+              "correcta": true,
+              "porque": "La consulta lee todo lo que hay en la carpeta: sin la copia, septiembre vuelve a contar una sola vez."
+            },
+            {
+              "texto": "Borrar a mano las filas repetidas en la Tabla cargada",
+              "correcta": false,
+              "porque": "Al próximo Actualizar todo volverían, porque la Tabla se reescribe desde la consulta."
+            },
+            {
+              "texto": "Dividir septiembre entre dos con una fórmula",
+              "correcta": false,
+              "porque": "Taparías el síntoma y esconderías el problema; el mes que la copia ya no esté, septiembre saldría a la mitad."
+            }
+          ],
+          "explicacion": "Cuando un mes sale raro, mira primero la carpeta: casi siempre hay un archivo de más o con otra forma."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para saber de qué archivo viene cada fila, Power Query añade al combinar la carpeta una columna con el **nombre del archivo** (suele llamarse `Source.Name`). No la quites: es tu herramienta de control.\n\nCon ella puedes sumar lo cargado de cada archivo y compararlo con el total que da el ERP. Si un archivo no cuadra, sabes exactamente dónde mirar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e6",
+          "modo": "formula",
+          "enunciado": "Ya has combinado la carpeta. En **A:B** tienes lo cargado (archivo e importe) y en **E:F**, el total de cada archivo según el ERP. En **G2** calcula la **diferencia**: lo cargado de ese archivo menos su total del ERP. Tu fórmula se copiará a G3:G4, así que fija lo que no debe moverse.",
+          "hoja": {
+            "celdas": {
+              "A1": "Source.Name",
+              "B1": "Importe",
+              "A2": "ventas_2026_08.csv",
+              "B2": 1250.4,
+              "A3": "ventas_2026_08.csv",
+              "B3": 830,
+              "A4": "ventas_2026_08.csv",
+              "B4": 415.6,
+              "A5": "ventas_2026_09.csv",
+              "B5": 960.25,
+              "A6": "ventas_2026_09.csv",
+              "B6": 1120,
+              "A7": "ventas_2026_09.csv",
+              "B7": 705.75,
+              "A8": "ventas_2026_10.csv",
+              "B8": 1430.8,
+              "A9": "ventas_2026_10.csv",
+              "B9": 419.5,
+              "A10": "ventas_2026_10.csv",
+              "B10": 610,
+              "E1": "Archivo",
+              "F1": "Total ERP",
+              "G1": "Diferencia",
+              "E2": "ventas_2026_10.csv",
+              "F2": 2710.3,
+              "E3": "ventas_2026_09.csv",
+              "F3": 2786,
+              "E4": "ventas_2026_08.csv",
+              "F4": 2496
+            },
+            "formatos": {
+              "B2:B10": "eur",
+              "F2:G4": "eur"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 10,
+              "E": 18,
+              "F": 10,
+              "G": 10
+            }
+          },
+          "objetivo": "G2",
+          "copiar_a": [
+            "G3:G4"
+          ],
+          "solucion": "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)-F2",
+          "alternativas": [
+            "=SUMAR.SI(A$2:A$10;E2;B$2:B$10)-F2",
+            "=SUMAR.SI.CONJUNTO($B$2:$B$10;$A$2:$A$10;E2)-F2"
+          ],
+          "errores_tipicos": [
+            "=SUMAR.SI(A2:A10;E2;B2:B10)-F2",
+            "=SUMA($B$2:$B$10)-F2",
+            "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)"
+          ],
+          "variantes": [
+            {
+              "B9": 500
+            },
+            {
+              "F3": 2700
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Para sumar solo las filas de un archivo: SUMAR.SI(dónde buscar; qué buscar; qué sumar).",
+            "SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10) y réstale F2. Los rangos llevan $ para que no se muevan al copiar.",
+            "=SUMAR.SI($A$2:$A$10;E2;$B$2:$B$10)-F2"
+          ],
+          "explicacion": "Agosto y septiembre dan 0, pero **octubre da −250 €**: falta en lo cargado una línea de 250 €. Sin esta columna nadie lo habría visto. Así se trabaja en una oficina: cada vez que actualizas, miras los controles antes de enviar nada."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ojo con los archivos que **no son iguales**. El **archivo de ejemplo** decide las columnas: lo que no esté en él, no entra.\n\n- Si un mes llama a una columna de otra forma (`Importe neto` en vez de `Importe`), esa columna sale **vacía (null) en todas las filas de ese mes**.\n- Si un mes trae una columna **de más**, esa columna no aparece en el resultado.\n\nPor eso, después de combinar, mira las columnas importantes: si un mes entero sale vacío, abre su archivo y compara los encabezados."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Javier Ortega",
+          "puesto": "Director comercial",
+          "md": "Ya está la carpeta con los 12 archivos, de noviembre de 2025 a octubre de 2026. Antes de la reunión dime solo una cosa: ¿están todas las filas?"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l3-e7",
+          "modo": "formula",
+          "enunciado": "En **E2** escribe una fórmula que muestre **OK** si la suma de filas de los 12 archivos según el ERP (**B2:B13**) es igual a las filas que tiene la tabla cargada (**D2**), y **REVISAR** si no.",
+          "hoja": {
+            "celdas": {
+              "A1": "Archivo",
+              "B1": "Filas en el ERP",
+              "D1": "Filas cargadas",
+              "E1": "Control",
+              "A2": "ventas_2025_11.csv",
+              "B2": 412,
+              "A3": "ventas_2025_12.csv",
+              "B3": 398,
+              "A4": "ventas_2026_01.csv",
+              "B4": 365,
+              "A5": "ventas_2026_02.csv",
+              "B5": 371,
+              "A6": "ventas_2026_03.csv",
+              "B6": 402,
+              "A7": "ventas_2026_04.csv",
+              "B7": 437,
+              "A8": "ventas_2026_05.csv",
+              "B8": 420,
+              "A9": "ventas_2026_06.csv",
+              "B9": 455,
+              "A10": "ventas_2026_07.csv",
+              "B10": 431,
+              "A11": "ventas_2026_08.csv",
+              "B11": 389,
+              "A12": "ventas_2026_09.csv",
+              "B12": 418,
+              "A13": "ventas_2026_10.csv",
+              "B13": 441,
+              "D2": 4939
+            },
+            "formatos": {
+              "B2:B13": "num",
+              "D2": "num"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 14,
+              "D": 14,
+              "E": 10
+            }
+          },
+          "objetivo": "E2",
+          "solucion": "=SI(SUMA(B2:B13)=D2;\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(D2=SUMA(B2:B13);\"OK\";\"REVISAR\")",
+            "=SI(SUMA(B2:B13)<>D2;\"REVISAR\";\"OK\")",
+            "=SI(D2-SUMA(B2:B13)=0;\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(SUMA(B2:B12)=D2;\"OK\";\"REVISAR\")",
+            "=SUMA(B2:B13)-D2",
+            "=SI(SUMA(B2:B13)=D2;\"REVISAR\";\"OK\")"
+          ],
+          "variantes": [
+            {
+              "D2": 4520
+            },
+            {
+              "B8": 300
+            }
+          ],
+          "pistas": [
+            "Necesitas una decisión: SI(condición; si se cumple; si no).",
+            "La condición compara la suma de B2:B13 con D2: SUMA(B2:B13)=D2. Los textos van entre comillas.",
+            "=SI(SUMA(B2:B13)=D2;\"OK\";\"REVISAR\")"
+          ],
+          "explicacion": "Sale **OK**: las 4.939 filas de los doce archivos están en tu tabla, y ya puedes contestar a Javier con seguridad. Deja este control en todos tus informes que se actualizan: cada mes, un vistazo y sabes si puedes enviarlo."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m1l3-q1",
+          "modo": "test",
+          "pregunta": "Tras combinar la carpeta, la columna **Importe** sale *null* en todas las filas de **marzo** y en ningún otro mes. ¿Qué es lo más probable?",
+          "opciones": [
+            {
+              "texto": "En el CSV de marzo esa columna se llama de otra forma",
+              "correcta": true,
+              "porque": "Power Query busca la columna por su nombre; si en marzo se llama distinto, sus filas se quedan vacías."
+            },
+            {
+              "texto": "Marzo no tuvo ventas",
+              "correcta": false,
+              "porque": "Entonces no habría filas de marzo. Aquí hay filas, pero sin importe."
+            },
+            {
+              "texto": "Power Query ha borrado los importes al actualizar",
+              "correcta": false,
+              "porque": "Power Query no cambia los archivos: lee lo que hay. El problema está en el archivo de marzo."
+            }
+          ],
+          "explicacion": "Abre el CSV de marzo con el Bloc de notas y mira la primera línea: ahí están los nombres de las columnas."
+        },
+        {
+          "id": "n4m1l3-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "Al combinar una carpeta, ¿cómo se llama el archivo que Power Query usa como modelo para saber cómo son todos?",
+          "aceptadas": [
+            "Archivo de ejemplo",
+            "archivo de ejemplo",
+            "El archivo de ejemplo",
+            "el archivo de ejemplo",
+            "ejemplo"
+          ],
+          "explicacion": "El **archivo de ejemplo**: normalmente el primero de la lista, aunque puedes elegir otro en la ventana Combinar archivos."
+        },
+        {
+          "id": "n4m1l3-q3",
+          "modo": "test",
+          "pregunta": "Llega el CSV de diciembre. ¿Qué haces con tu consulta de carpeta?",
+          "opciones": [
+            {
+              "texto": "Guardarlo en la carpeta con el mismo patrón de nombre y pulsar Actualizar todo",
+              "correcta": true,
+              "porque": "La consulta lee la carpeta entera cada vez: diciembre entra solo."
+            },
+            {
+              "texto": "Abrirlo, copiar sus filas y pegarlas debajo de la Tabla",
+              "correcta": false,
+              "porque": "Al actualizar, la Tabla se reescribe y lo pegado se pierde o se duplica."
+            },
+            {
+              "texto": "Crear otra consulta De la carpeta solo para diciembre",
+              "correcta": false,
+              "porque": "No hace falta: la consulta que ya tienes recoge todos los archivos de la carpeta."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué hace Anexar consultas?",
+          "dorso": "Pone una tabla debajo de otra. Empareja las columnas por su nombre; lo que no coincide sale con null."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Unir todos los archivos de una carpeta con Power Query",
+          "dorso": "Datos › Obtener datos › Del archivo › De la carpeta › Combinar › Combinar y transformar datos."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Un mes sale el doble tras actualizar la consulta de carpeta. ¿Qué miras?",
+          "dorso": "La carpeta: casi seguro hay una copia del archivo (también cuentan las subcarpetas)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué decide el archivo de ejemplo al combinar una carpeta?",
+          "dorso": "Qué columnas hay y qué pasos se aplican a todos los archivos."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l4",
+      "titulo": "Combinar consultas y anular la dinamización",
+      "minutos": 16,
+      "objetivo": "Traer columnas de otra tabla con Combinar consultas eligiendo el tipo de combinación, encontrar lo que falta con Anti izquierda y pasar a filas las tablas con meses en columnas.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Las ventas vienen con el código de producto, pero yo las quiero ver por familia, y la familia está en el maestro de productos. Y dime qué códigos vendidos no están en el maestro: alguien los da de alta mal y luego no cuadran los informes.",
+        "logro": "Ya sabes cruzar dos consultas como un BUSCARX, encontrar lo que falta y dejar las tablas listas para analizarlas."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "**Combinar consultas** es el BUSCARX de Power Query. Para cada venta, busca su pareja en el **maestro de productos** (la lista de referencia, con una fila por producto) usando una columna común, la **clave**: aquí, `CodProducto`.\n\nEn el editor: **Inicio › Combinar consultas**, eliges el maestro, haces clic en la clave de cada tabla y aceptas. Sale una columna nueva con la palabra *Table*: pulsa su botón **Expandir** y marca lo que quieres traer, como `Familia`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e1",
+          "modo": "test",
+          "pregunta": "Javier quiere la **familia** de cada venta, y la familia está en el maestro de productos. ¿Qué herramienta de Power Query usas?",
+          "opciones": [
+            {
+              "texto": "Combinar consultas",
+              "correcta": true,
+              "porque": "Busca cada código en el maestro y trae su familia, igual que haría BUSCARX."
+            },
+            {
+              "texto": "Anexar consultas",
+              "correcta": false,
+              "porque": "Anexar pone una tabla debajo de otra; aquí hay que emparejar filas."
+            },
+            {
+              "texto": "Rellenar hacia abajo",
+              "correcta": false,
+              "porque": "Rellena huecos con el valor de arriba; no busca nada en otra tabla."
+            }
+          ],
+          "explicacion": "Anexar apila; Combinar empareja. Con esas dos ideas unes casi cualquier par de tablas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Al combinar eliges el **tipo de combinación**, es decir, qué filas quieres en el resultado:\n\n- **Externa izquierda**: todas las de la primera tabla, con lo que encuentre en la segunda. Es la más habitual.\n- **Interna**: solo las filas que están en las dos.\n- **Anti izquierda**: solo las filas de la primera que **no** tienen pareja en la segunda. Perfecta para ver lo que falta.\n\nHay más tipos, pero con estos tres resolverás casi todo."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Mismo tipo, otro nombre",
+          "md": "La ayuda de Microsoft a veces los llama con nombres largos: «Combinación externa izquierda», «Combinación interna», «Izquierda anti unión» o «Anticombinación izquierda». Son los mismos."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Las mismas ventas, tres resultados",
+          "cabecera": [
+            "Tipo de combinación",
+            "Filas que salen",
+            "Qué pasa con LED-PAN60 (no está en el maestro)"
+          ],
+          "filas": [
+            [
+              "Externa izquierda",
+              "6 de 6",
+              "Sale, con la familia vacía (null)"
+            ],
+            [
+              "Interna",
+              "5",
+              "Desaparece: el total de ventas ya no cuadra con el ERP"
+            ],
+            [
+              "Anti izquierda",
+              "1",
+              "Es la única fila que sale"
+            ]
+          ],
+          "pie": "Ventas: 6 líneas. Maestro: todos los códigos vendidos menos LED-PAN60."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e2",
+          "modo": "test",
+          "pregunta": "Javier quiere **todas** las ventas con su familia, aunque algún código no esté en el maestro. ¿Qué tipo de combinación eliges?",
+          "opciones": [
+            {
+              "texto": "Externa izquierda",
+              "correcta": true,
+              "porque": "Conserva todas las ventas. Las que no encuentran pareja quedan con la familia vacía, a la vista."
+            },
+            {
+              "texto": "Interna",
+              "correcta": false,
+              "porque": "Las ventas sin pareja desaparecerían sin avisar y el total ya no cuadraría con el ERP."
+            },
+            {
+              "texto": "Anti izquierda",
+              "correcta": false,
+              "porque": "Solo sacaría las ventas sin pareja: sirve para la lista de lo que falta, no para el informe."
+            }
+          ],
+          "explicacion": "En un informe de ventas, Externa izquierda: no se pierde ni un euro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e3",
+          "modo": "respuesta_corta",
+          "pregunta": "Ahora Javier quiere **solo** las ventas cuyo código **no está** en el maestro. ¿Qué tipo de combinación eliges?",
+          "aceptadas": [
+            "Anti izquierda",
+            "anti izquierda",
+            "Anti-izquierda",
+            "anti-izquierda",
+            "Izquierda anti unión",
+            "Anticombinación izquierda",
+            "Anti izquierda (solo filas de la primera)"
+          ],
+          "explicacion": "**Anti izquierda** deja solo las filas de la primera tabla sin pareja: la lista de lo que hay que dar de alta. Con fórmulas lo hacías con CONTAR.SI(…)=0; aquí se repite solo cada mes. Para no tocar la consulta de ventas, hazla con **Combinar consultas como nuevas** (la flecha del botón)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuidado con las **claves repetidas**. Si en el maestro un código aparece **dos veces**, cada venta de ese código encuentra dos parejas y, al expandir, **se duplica**. El total de ventas sube sin que nadie lo note.\n\nAntes de combinar, revisa el maestro: selecciona la columna clave y usa **Inicio › Quitar filas › Quitar duplicados**. Y después de combinar, comprueba que la tabla de ventas tiene **las mismas filas** que antes."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e4",
+          "modo": "formula",
+          "enunciado": "Antes de combinar, revisa el maestro. En **D2** cuenta cuántas veces aparece el código de **A2** en toda la lista **A2:A9**. Tu fórmula se copiará a D3:D9: el código que dé 2 está repetido.",
+          "hoja": {
+            "celdas": {
+              "A1": "CodProducto",
+              "B1": "Descripción",
+              "C1": "Familia",
+              "D1": "Veces",
+              "A2": "CAB-15",
+              "B2": "Cable 1,5 mm² (rollo 100 m)",
+              "C2": "Cableado",
+              "A3": "CAN-25",
+              "B3": "Canaleta 25×16 (2 m)",
+              "C3": "Canalización",
+              "A4": "INT-SIM",
+              "B4": "Interruptor simple",
+              "C4": "Mecanismos",
+              "A5": "MAG-216",
+              "B5": "Magnetotérmico 2P 16 A",
+              "C5": "Protección",
+              "A6": "LED-DL18",
+              "B6": "Downlight LED 18 W",
+              "C6": "Iluminación",
+              "A7": "DIF-240",
+              "B7": "Diferencial 2P 40 A 30 mA",
+              "C7": "Protección",
+              "A8": "MAG-216",
+              "B8": "Magnetotérmico 2P 16 A",
+              "C8": "Protección",
+              "A9": "TUB-16",
+              "B9": "Tubo corrugado 16 mm (100 m)",
+              "C9": "Canalización"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 27,
+              "C": 13,
+              "D": 7
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D9"
+          ],
+          "solucion": "=CONTAR.SI($A$2:$A$9;A2)",
+          "alternativas": [
+            "=CONTAR.SI(A$2:A$9;A2)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(A2:A9;A2)",
+            "=CONTARA($A$2:$A$9)",
+            "=CONTAR.SI($A$2:$A$9;\"MAG-216\")"
+          ],
+          "variantes": [
+            {
+              "A3": "CAB-15"
+            }
+          ],
+          "pistas": [
+            "Para contar cuántas veces aparece algo en una lista: CONTAR.SI(lista; lo que buscas).",
+            "La lista es $A$2:$A$9, fija para que no se mueva al copiar, y lo que buscas es A2.",
+            "=CONTAR.SI($A$2:$A$9;A2)"
+          ],
+          "explicacion": "**MAG-216 sale 2 veces**: si combinaras así, cada venta de ese magnetotérmico se duplicaría. Ya sabes que en la consulta del maestro toca **Quitar duplicados** antes de combinar. Revisar la clave antes de cruzar es lo que distingue un informe fiable."
+        },
+        {
+          "tipo": "texto",
+          "md": "Muchas tablas llegan **a lo ancho**: un comercial por fila y un mes por columna. Se leen bien, pero no se pueden analizar: no puedes filtrar por mes ni hacer una dinámica por meses.\n\nPara pasarlas **a lo largo**, una fila por comercial y mes, selecciona las columnas que **no** son meses (`Comercial`) y usa **Transformar › Anular dinamización de otras columnas**. Salen dos columnas: una con el nombre del mes y otra con la cifra. Llámalas `Mes` y `Objetivo`."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Objetivos de venta: así llegan, a lo ancho",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "May",
+              "C1": "Jun",
+              "D1": "Jul",
+              "E1": "Ago",
+              "F1": "Sep",
+              "G1": "Oct",
+              "A2": "Pilar Ibáñez",
+              "B2": 42000,
+              "C2": 44000,
+              "D2": 40000,
+              "E2": 30000,
+              "F2": 43000,
+              "G2": 46000,
+              "A3": "Sergio Lacasa",
+              "B3": 38000,
+              "C3": 39000,
+              "D3": 36000,
+              "E3": 27000,
+              "F3": 39000,
+              "G3": 41000,
+              "A4": "Irene Goñi",
+              "B4": 35000,
+              "C4": 36000,
+              "D4": 33000,
+              "E4": 25000,
+              "F4": 36000,
+              "G4": 38000,
+              "A5": "Marc Vidal",
+              "B5": 31000,
+              "C5": 32000,
+              "D5": 30000,
+              "E5": 22000,
+              "F5": 32000,
+              "G5": 34000
+            },
+            "formatos": {
+              "B2:G5": "#.##0 €"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "pie": "Para Power Query, «Comercial» es la columna que se queda; los seis meses pasan a filas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e5",
+          "modo": "test",
+          "pregunta": "La tabla de objetivos de arriba tiene 4 comerciales y 6 meses en columnas. Después de **Anular dinamización de otras columnas**, ¿cuántas filas tendrá?",
+          "opciones": [
+            {
+              "texto": "24",
+              "correcta": true,
+              "porque": "Una fila por cada comercial y mes: 4 × 6 = 24."
+            },
+            {
+              "texto": "4",
+              "correcta": false,
+              "porque": "Así está ahora, a lo ancho: una fila por comercial."
+            },
+            {
+              "texto": "10",
+              "correcta": false,
+              "porque": "Has sumado 4 + 6; al pasar a lo largo, comerciales y meses se multiplican."
+            },
+            {
+              "texto": "6",
+              "correcta": false,
+              "porque": "Esos son los meses, pero cada mes se repite para cada comercial."
+            }
+          ],
+          "explicacion": "24 filas con tres columnas: Comercial, Mes y Objetivo. Y si el mes que viene la tabla trae una columna **Nov**, este paso también la pasa a filas, sin tocar nada."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿**Power Query** o **fórmulas**? Power Query brilla con lo que **se repite**: importar la exportación de cada mes, limpiarla, unir archivos y cruzar listas largas. Se monta una vez y se actualiza con un clic.\n\nLas fórmulas son mejores cuando el resultado debe cambiar **al instante** al escribir un dato: un precio, el tipo de IVA, una simulación. Power Query no reacciona hasta que pulsas **Actualizar**.\n\nEn la práctica se combinan: Power Query prepara los datos y las fórmulas o las dinámicas calculan encima."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Consultas de apoyo, sin hoja",
+          "md": "Una consulta que solo sirve para combinar (como el maestro) no necesita su propia hoja: **Cerrar y cargar en… › Solo crear conexión**. Queda disponible para las demás consultas y no llena el libro de hojas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para darle a Javier las ventas con su familia, sin duplicados y comprobadas.",
+          "pasos": [
+            "Maestro: clic dentro de la Tabla › Datos › De una tabla o rango",
+            "En el maestro, seleccionar CodProducto › Quitar duplicados",
+            "Cerrar y cargar en… › Solo crear conexión",
+            "En la consulta de ventas: Combinar consultas con el maestro por CodProducto, tipo Externa izquierda",
+            "Expandir la columna nueva y marcar Familia",
+            "Cerrar y cargar, y comprobar que las ventas tienen las mismas filas que antes"
+          ],
+          "explicacion": "Primero se prepara el maestro (sin duplicados y como conexión), después se combina y se expande, y al final se comprueba el número de filas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n4m1l4-e7",
+          "modo": "abierta",
+          "pregunta": "Tu consulta con **Anti izquierda** devuelve 5 ventas, todas del código **LED-PAN60** (panel LED 60×60), por 1.536,00 €, vendidas desde septiembre. Escribe a Javier un mensaje breve: qué has hecho, qué falta y qué propones.",
+          "modelo": "Javier: ya tienes las ventas por familia; se ponen al día solas con Actualizar todo. Al cruzarlas con el maestro sale un código vendido que no está dado de alta: LED-PAN60 (panel LED 60×60), 5 ventas desde septiembre por 1.536,00 €, que ahora aparecen sin familia. Propongo que Andrés lo dé de alta en el maestro como Iluminación; al actualizar, entrará solo en su familia.",
+          "criterios": [
+            "Dice qué ha hecho (ventas por familia que se actualizan con un clic)",
+            "Da el dato concreto de lo que falta (código, número de ventas o importe)",
+            "Propone una acción (dar de alta el código en el maestro) y quién la hace",
+            "Es breve y se entiende sin conocer Power Query"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n4m1l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Seleccionas la columna Comercial de una tabla con los meses en columnas. ¿Qué comando de Power Query pasa los meses a filas?",
+          "aceptadas": [
+            "Anular dinamización de otras columnas",
+            "anular dinamización de otras columnas",
+            "Anular la dinamización de otras columnas",
+            "Anular dinamizacion de otras columnas"
+          ],
+          "explicacion": "**Transformar › Anular dinamización de otras columnas**: deja fija la columna elegida y pasa a filas todas las demás, incluidas las que lleguen en el futuro."
+        },
+        {
+          "id": "n4m1l4-q2",
+          "modo": "test",
+          "pregunta": "Quieres poner las ventas de Lleida **debajo** de las de Pamplona y, en otra consulta, traer el **precio** del maestro a cada venta. ¿Qué usas en cada caso?",
+          "opciones": [
+            {
+              "texto": "Anexar para lo primero; Combinar para lo segundo",
+              "correcta": true,
+              "porque": "Anexar apila tablas con las mismas columnas; Combinar empareja filas por una clave."
+            },
+            {
+              "texto": "Combinar para lo primero; Anexar para lo segundo",
+              "correcta": false,
+              "porque": "Está al revés: para apilar se anexa y para buscar se combina."
+            },
+            {
+              "texto": "Combinar para las dos cosas",
+              "correcta": false,
+              "porque": "Combinar no pone unas filas debajo de otras: para eso está Anexar."
+            }
+          ]
+        },
+        {
+          "id": "n4m1l4-q3",
+          "modo": "test",
+          "pregunta": "Marta cambia el tipo de IVA en una celda y quiere ver los totales nuevos al momento. ¿Power Query o fórmula?",
+          "opciones": [
+            {
+              "texto": "Fórmula",
+              "correcta": true,
+              "porque": "Las fórmulas se recalculan al instante cuando cambia un dato."
+            },
+            {
+              "texto": "Power Query",
+              "correcta": false,
+              "porque": "Solo cambiaría al pulsar Actualizar. Para ver el efecto al momento, fórmula."
+            },
+            {
+              "texto": "Da igual, las dos reaccionan igual",
+              "correcta": false,
+              "porque": "No: Power Query espera a que actualices; las fórmulas, no."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Combinar consultas: ¿a qué fórmula se parece?",
+          "dorso": "A BUSCARX: trae columnas de otra tabla emparejando por una clave."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Tipo de combinación para ver lo que falta",
+          "dorso": "Anti izquierda: solo las filas de la primera tabla sin pareja en la segunda."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Después de combinar, la tabla de ventas tiene más filas que antes. ¿Por qué?",
+          "dorso": "La clave está repetida en el maestro. Quitar duplicados en el maestro antes de combinar."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Meses en columnas → una fila por mes",
+          "dorso": "Selecciona las columnas que no son meses › Transformar › Anular dinamización de otras columnas."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Consulta que solo sirve para combinar con otras",
+          "dorso": "Cerrar y cargar en… › Solo crear conexión."
+        }
+      ]
+    }
+  ]
+}

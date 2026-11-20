@@ -1,0 +1,43 @@
+{
+ "saldo_banco_31_10": 61482.19,
+ "saldo_libros_31_10": 61924.13,
+ "banco_sin_pareja": 11,
+ "libros_sin_pareja": 5,
+ "cargos_banco_sin_contabilizar": 4492.44,
+ "saldo_ajustado": 54854.69,
+ "intereses_cuota_19": 229.56,
+ "capital_cuota_19": 1727.93,
+ "pendientes_a_noviembre": -6627.5,
+ "parejas_uno_a_uno": 173,
+ "noviembre": {
+  "saldo_banco": 55969.13,
+  "saldo_libros": 53003.13,
+  "ajustado": 52823.13,
+  "movimientos_banco": 12,
+  "apuntes_libros": 9
+ },
+ "estado": {
+  "saldo_banco": 61482.19,
+  "transito": 5445.0,
+  "pendientes_cargo": -12072.5,
+  "ajustado_banco": 54854.69,
+  "saldo_libros": 61924.13,
+  "cargos": -4492.44,
+  "abonos": 1089.0,
+  "duplicado": -3630.0,
+  "importe": -36.0,
+  "ajustado_libros": 54854.69,
+  "diferencia": 0.0
+ },
+ "asiento": {
+  "c626": 114.95,
+  "c662": 229.56,
+  "c520": 1727.93,
+  "c430": 2420.0,
+  "c555": 1089.0,
+  "duplicado": 3630.0,
+  "transposicion": 36.0
+ },
+ "fechas_texto": 10,
+ "fechas_texto_con_espacio": 2
+}

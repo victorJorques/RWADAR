@@ -1,0 +1,2062 @@
+{
+ "id": "n3m4",
+ "nivel": "n3",
+ "titulo": "Tablas dinámicas",
+ "intro": "Con una tabla dinámica, miles de líneas de ventas se convierten en un informe por zona, mes o familia en un par de minutos, sin escribir fórmulas. En este módulo aprenderás a crearlas, a mostrar porcentajes y márgenes, a filtrarlas con botones y, sobre todo, a entregarlas actualizadas y comprobadas: el informe mensual que te pedirán en cualquier empresa.",
+ "repaso_inicial": [
+  {
+   "id": "n3m4-r1",
+   "modo": "formula",
+   "enunciado": "Javier pregunta cuántas ventas de la zona que pone en **E2** han superado el importe de **F2** (más de, no «igual o más»). Escribe en **G2** una fórmula que lo cuente con los datos de A1:B9.",
+   "hoja": {
+    "celdas": {
+     "A1": "Zona",
+     "B1": "Importe",
+     "E1": "Zona",
+     "F1": "Más de",
+     "G1": "Nº de ventas",
+     "A2": "Pamplona",
+     "B2": 1250,
+     "A3": "Zaragoza",
+     "B3": 980,
+     "A4": "Pamplona",
+     "B4": 640,
+     "A5": "Lleida",
+     "B5": 1430,
+     "A6": "Pamplona",
+     "B6": 1000,
+     "A7": "Pamplona",
+     "B7": 2100,
+     "A8": "Zaragoza",
+     "B8": 1500,
+     "A9": "Lleida",
+     "B9": 720,
+     "E2": "Pamplona",
+     "F2": 1000
+    },
+    "formatos": {
+     "B2:B9": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "E": 11,
+     "F": 11,
+     "G": 13
+    }
+   },
+   "objetivo": "G2",
+   "solucion": "=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">\"&F2)",
+   "alternativas": [
+    "=CONTAR.SI.CONJUNTO(B2:B9;\">\"&F2;A2:A9;E2)",
+    "=CONTAR.SI.CONJUNTO($A$2:$A$9;E2;$B$2:$B$9;\">\"&F2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">=\"&F2)",
+    "=CONTAR.SI(A2:A9;E2)",
+    "=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">F2\")"
+   ],
+   "variantes": [
+    {
+     "E2": "Zaragoza"
+    },
+    {
+     "F2": 600
+    }
+   ],
+   "pistas": [
+    "Dos condiciones a la vez (zona e importe) y quieres contar, no sumar: la versión «de varios criterios» de CONTAR.SI.",
+    "Parejas rango; criterio: A2:A9 con E2, y B2:B9 con `\">\"&F2` (el signo entre comillas, unido a la celda con &).",
+    "`=CONTAR.SI.CONJUNTO(A2:A9;E2;B2:B9;\">\"&F2)`"
+   ],
+   "explicacion": "2 ventas: las de 1.250 € y 2.100 €. La de 1.000 € justos no cuenta, porque «más de» es `>`. Hoy verás que una tabla dinámica hace estos recuentos por todas las zonas a la vez."
+  },
+  {
+   "id": "n3m4-r2",
+   "modo": "test",
+   "pregunta": "Tu listado de ventas está convertido en **Tabla** ([[Ctrl]]+[[T]]). Escribes una venta nueva en la primera fila vacía, justo debajo. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "La Tabla se amplía sola y la nueva fila pasa a formar parte de ella",
+     "correcta": true,
+     "porque": "Eso es: la Tabla crece con cada fila nueva, con su formato y sus columnas calculadas. Por eso es el mejor origen para una tabla dinámica."
+    },
+    {
+     "texto": "La fila queda fuera hasta que vuelvas a crear la Tabla",
+     "correcta": false,
+     "porque": "Eso pasaría con un rango fijo, no con una Tabla: la Tabla se extiende sola."
+    },
+    {
+     "texto": "Excel avisa de que la Tabla está llena",
+     "correcta": false,
+     "porque": "Una Tabla no tiene un número fijo de filas: crece cuanto haga falta."
+    },
+    {
+     "texto": "Se borra el formato de la Tabla",
+     "correcta": false,
+     "porque": "Al contrario: la fila nueva hereda el formato de la Tabla."
+    }
+   ],
+   "explicacion": "Tabla que crece + dinámica hecha desde la Tabla: así ninguna venta nueva se queda fuera del informe."
+  },
+  {
+   "id": "n3m4-r3",
+   "modo": "test",
+   "pregunta": "En la columna Importe de una exportación, algunas cifras salen alineadas a la izquierda y con un triangulito verde en la esquina. ¿Qué son?",
+   "opciones": [
+    {
+     "texto": "Números guardados como texto: SUMA no los tiene en cuenta",
+     "correcta": true,
+     "porque": "Eso es: parecen números, pero Excel los trata como texto. Hay que convertirlos (VALOR.NUMERO, Texto en columnas…) antes de resumir."
+    },
+    {
+     "texto": "Números negativos",
+     "correcta": false,
+     "porque": "Un negativo lleva el signo menos y se alinea a la derecha, como cualquier número."
+    },
+    {
+     "texto": "Celdas con formato de euros",
+     "correcta": false,
+     "porque": "El formato de euros no cambia la alineación ni pone el triangulito verde."
+    },
+    {
+     "texto": "Cifras con decimales",
+     "correcta": false,
+     "porque": "Los decimales no cambian la alineación: un número de verdad va a la derecha, tenga o no decimales."
+    }
+   ],
+   "explicacion": "Ojo con ellos en este módulo: en una tabla dinámica, una columna con textos hace que Excel cuente en vez de sumar."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "**Práctica del módulo: el informe de ventas 2026.** Javier y Carmen quieren el informe de enero a octubre. Descarga **n3-ventas-2026.xlsx** (una Tabla «Ventas» de 1.200 líneas) y sigue la hoja «Instrucciones». Todo se hace con tablas dinámicas, sin fórmulas:\n\n1. Anota el total de la columna Importe (selecciónala y míralo en la barra de estado): es tu total de control.\n2. Dinámica «Zona y mes»: Zona en Filas, Fecha en Columnas agrupada por meses, Importe en Valores con formato de euros.\n3. Los 5 productos que más venden: Producto en Filas, Importe en Valores, ordenado de mayor a menor.\n4. Peso de cada familia: Familia en Filas e Importe mostrado como % del total general.\n5. Campo calculado **Margen** = Importe − Coste, con Importe (en euros), Coste y Margen en Valores.\n6. Segmentación de Comercial conectada a todas las dinámicas y un gráfico dinámico de «Zona y mes». Al terminar, déjala sin filtro.\n7. Copia las 12 ventas de la hoja «Ventas nuevas», pégalas en la primera fila vacía debajo de la Tabla y pulsa **Actualizar todo** ([[Ctrl]]+[[Alt]]+[[F5]]).\n\nIntenta hacer cada dinámica en menos de 5 minutos. Los controles 3 a 6 se miden con las ventas nuevas ya dentro.",
+  "archivo": "n3-ventas-2026.xlsx",
+  "controles": [
+   {
+    "pregunta": "Total general de Importe ANTES de añadir las ventas nuevas (€)",
+    "respuesta": 244538.12,
+    "tolerancia": 0.01,
+    "pista": "Es el total de la columna Importe que ves en la barra de estado. Si tu dinámica da otra cifra, revisa que salga de la Tabla «Ventas» y que no tenga ningún filtro ni segmentación marcada."
+   },
+   {
+    "pregunta": "Total general DESPUÉS de pegar las 12 ventas nuevas y actualizar (€)",
+    "respuesta": 247239.73,
+    "tolerancia": 0.01,
+    "pista": "Si sigue saliendo 244.538,12 €, no has actualizado (Ctrl+Alt+F5) o pegaste las ventas dejando una fila en blanco y quedaron fuera de la Tabla. La diferencia tiene que ser 2.701,61 €."
+   },
+   {
+    "pregunta": "Ventas de Zaragoza en marzo (€)",
+    "respuesta": 11047.27,
+    "tolerancia": 0.01,
+    "pista": "En «Zona y mes», cruza la fila Zaragoza con la columna «mar». Si no hay columnas por meses, clic derecho en una fecha › Agrupar › Meses. Comprueba que la segmentación no tenga un comercial marcado."
+   },
+   {
+    "pregunta": "Importe del producto que queda en 5.º lugar (€)",
+    "respuesta": 19673.05,
+    "tolerancia": 0.01,
+    "pista": "Producto en Filas, Importe en Valores; clic derecho en una cifra › Ordenar › Ordenar de mayor a menor, y cuenta cinco filas. Si las cifras son pequeñas y enteras, estás viendo una Cuenta: cambia a Suma."
+   },
+   {
+    "pregunta": "Peso de Iluminación sobre el total general, en % con dos decimales (escribe solo el número, por ejemplo 12,34)",
+    "respuesta": 26.48,
+    "tolerancia": 0.01,
+    "pista": "Familia en Filas, Importe en Valores › Configuración de campo de valor › Mostrar valores como › % del total general. Hazlo después de actualizar con las ventas nuevas."
+   },
+   {
+    "pregunta": "Margen de la familia Protección: Importe − Coste (€)",
+    "respuesta": 5569.94,
+    "tolerancia": 0.01,
+    "pista": "Campo calculado Margen con la fórmula =Importe-Coste (Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado), con Familia en Filas. Mira la fila Protección."
+   }
+  ],
+  "solucion_md": "### Cómo se hace\n\n1. **Total de control**: selecciona la columna Importe de la Tabla y lee la Suma en la barra de estado: 244.538,12 €.\n2. **Zona y mes**: clic en la Tabla › Insertar › Tabla dinámica › Nueva hoja de cálculo. Zona a Filas, Fecha a Columnas (si Excel añade Años y Trimestres, quítalos y deja Meses: todo es de 2026), Importe a Valores. Configuración de campo de valor › Formato de número › Moneda.\n3. **Top 5**: Producto a Filas, Importe a Valores; clic derecho en una cifra › Ordenar › Ordenar de mayor a menor. Los cinco primeros son la manguera 3G2,5, el proyector LED 36 W, el downlight LED 18 W, el panel LED 60×60 y el cable de 2,5 mm².\n4. **% por familia**: Familia a Filas, Importe a Valores › Mostrar valores como › % del total general. Iluminación pesa el 26,48 %.\n5. **Margen**: Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. Nombre: Margen; fórmula: =Importe-Coste › Aceptar. Como el campo calculado trabaja con las sumas de cada familia, Margen ÷ Importe da el margen real.\n6. **Segmentación y gráfico**: Analizar tabla dinámica › Insertar segmentación de datos › Comercial; pestaña Segmentación › Conexiones de informe › marca todas las dinámicas. Gráfico: Analizar tabla dinámica › Gráfico dinámico › Columna agrupada. Antes de entregar, Borrar filtro.\n7. **Ventas nuevas**: pégalas justo debajo de la última fila de la Tabla (sin dejar filas en blanco) y pulsa Datos › Actualizar todo. El total pasa a 247.239,73 € (+2.701,61 €).\n\nEn **n3-ventas-2026-solucion.xlsx** tienes los pasos en la hoja «Cómo se hace» y las mismas cifras rehechas con fórmulas (SUMAR.SI.CONJUNTO y compañía) para comparar con tus dinámicas, más una hoja de controles.",
+  "archivo_solucion": "n3-ventas-2026-solucion.xlsx"
+ },
+ "lecciones": [
+  {
+   "id": "n3m4l1",
+   "titulo": "Qué es una tabla dinámica y cómo se crea",
+   "minutos": 15,
+   "objetivo": "Crear una tabla dinámica desde una Tabla, colocar cada campo en su área para responder una pregunta de negocio y comprobar que el resultado cuadra con el listado.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Mañana tengo reunión con los comerciales y quiero ver cuánto hemos vendido en cada zona en octubre y lo que va de noviembre. No me mandes el listado del programa, que no hay quien lo lea: mándame el resumen y dime que está comprobado.",
+    "logro": "Ya sabes convertir un listado largo en un resumen por zona con una tabla dinámica y comprobar que cuadra con el listado."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Javier no quiere cientos de líneas: quiere **una cifra por zona**. Para eso está la **tabla dinámica**, un resumen que Excel monta solo a partir de un listado. Cada columna del listado se convierte en un **campo** (Zona, Importe…) y tú eliges qué quieres ver arrastrando esos campos. Excel suma por ti.\n\nDos cosas tranquilizan: **no cambia los datos originales** (el resumen va aparte, normalmente en otra hoja) y, si te equivocas, vuelves a arrastrar."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "El listado de partida (en la realidad, cientos de filas)",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Comercial",
+       "C1": "Zona",
+       "D1": "Familia",
+       "E1": "Importe",
+       "A2": {
+        "fecha": "2026-10-05"
+       },
+       "B2": "Raúl Gimeno",
+       "C2": "Zaragoza",
+       "D2": "Cableado",
+       "E2": 1240,
+       "A3": {
+        "fecha": "2026-10-08"
+       },
+       "B3": "Elena Sanz",
+       "C3": "Pamplona",
+       "D3": "Iluminación",
+       "E3": 860,
+       "A4": {
+        "fecha": "2026-10-14"
+       },
+       "B4": "Jordi Vidal",
+       "C4": "Lleida",
+       "D4": "Protección",
+       "E4": 530,
+       "A5": {
+        "fecha": "2026-10-20"
+       },
+       "B5": "Raúl Gimeno",
+       "C5": "Zaragoza",
+       "D5": "Iluminación",
+       "E5": 975,
+       "A6": {
+        "fecha": "2026-10-27"
+       },
+       "B6": "Elena Sanz",
+       "C6": "Pamplona",
+       "D6": "Cableado",
+       "E6": 1410,
+       "A7": {
+        "fecha": "2026-10-30"
+       },
+       "B7": "Pilar Lasheras",
+       "C7": "Zaragoza",
+       "D7": "Mecanismos",
+       "E7": 320,
+       "A8": {
+        "fecha": "2026-11-03"
+       },
+       "B8": "Jordi Vidal",
+       "C8": "Lleida",
+       "D8": "Cableado",
+       "E8": 1150,
+       "A9": {
+        "fecha": "2026-11-06"
+       },
+       "B9": "Pilar Lasheras",
+       "C9": "Zaragoza",
+       "D9": "Protección",
+       "E9": 690,
+       "A10": {
+        "fecha": "2026-11-10"
+       },
+       "B10": "Raúl Gimeno",
+       "C10": "Zaragoza",
+       "D10": "Cableado",
+       "E10": 880,
+       "A11": {
+        "fecha": "2026-11-12"
+       },
+       "B11": "Elena Sanz",
+       "C11": "Pamplona",
+       "D11": "Mecanismos",
+       "E11": 415,
+       "A12": {
+        "fecha": "2026-11-13"
+       },
+       "B12": "Jordi Vidal",
+       "C12": "Lleida",
+       "D12": "Iluminación",
+       "E12": 1020,
+       "A13": {
+        "fecha": "2026-11-16"
+       },
+       "B13": "Pilar Lasheras",
+       "C13": "Zaragoza",
+       "D13": "Cableado",
+       "E13": 760
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "E2:E13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 10,
+       "D": 12,
+       "E": 11
+      }
+     },
+     "pie": "Cada fila es una venta. Fecha, Comercial, Zona, Familia e Importe serán los campos de la dinámica."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e1",
+     "modo": "test",
+     "pregunta": "Creas una tabla dinámica con este listado de ventas. ¿Qué le pasa al listado original?",
+     "opciones": [
+      {
+       "texto": "Nada: sigue igual y el resumen va aparte",
+       "correcta": true,
+       "porque": "Exacto. La dinámica lee el listado y monta el resumen en otro sitio. Puedes probar sin miedo a estropear los datos."
+      },
+      {
+       "texto": "Se ordena por zona",
+       "correcta": false,
+       "porque": "La dinámica no toca el orden de tus filas. Ordenar el listado es otra herramienta (Datos › Ordenar)."
+      },
+      {
+       "texto": "Se borran las filas repetidas",
+       "correcta": false,
+       "porque": "No borra nada. Eso lo hace Quitar duplicados, que usaste al limpiar datos."
+      }
+     ],
+     "explicacion": "La tabla dinámica es un informe aparte: tus datos se quedan exactamente como estaban."
+    },
+    {
+     "tipo": "texto",
+     "md": "La dinámica es tan buena como el listado del que sale. Antes de crearla, revisa tres cosas:\n\n- **Una sola fila de títulos**, sin celdas combinadas y con un título distinto en cada columna.\n- **Sin filas vacías** en medio ni **filas de totales** dentro: la dinámica las trataría como ventas.\n- **Convertido en Tabla** ([[Ctrl]]+[[T]], lo viste en el nivel 2). Así, cuando pegues ventas debajo, la Tabla crece y la dinámica las recoge. Con un rango fijo como A1:E13, la fila 14 se quedaría fuera."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "La fila TOTAL del programa",
+     "md": "Nuria: «El programa de gestión añade al final una fila TOTAL. Si no la borras, la dinámica la suma como una venta más y el total general sale el doble. Me pasó en mi primer cierre».\n"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e2",
+     "modo": "test",
+     "pregunta": "Las ventas del listado suman 10.250 €, pero el programa ha añadido al final una fila «TOTAL» con 10.250 € en Importe y la zona vacía. Creas la dinámica sin borrarla. ¿Qué total general te sale?",
+     "opciones": [
+      {
+       "texto": "20.500 €, con una fila de más sin nombre de zona",
+       "correcta": true,
+       "porque": "Eso es: la dinámica no sabe que esa fila es un total y la suma como si fuera una venta. Bórrala del origen antes de crear la dinámica."
+      },
+      {
+       "texto": "10.250 €, porque la dinámica reconoce los totales",
+       "correcta": false,
+       "porque": "La dinámica no distingue una venta de una fila de totales: suma todo lo que hay en la columna Importe."
+      },
+      {
+       "texto": "Un error, porque la zona está vacía",
+       "correcta": false,
+       "porque": "No da error: junta las filas sin zona en una fila aparte y las suma igualmente. Por eso el fallo pasa desapercibido."
+      }
+     ],
+     "explicacion": "Sumar un total que está dentro de los datos es uno de los errores más caros de las hojas de empresa: el resultado parece normal y es el doble."
+    },
+    {
+     "tipo": "pasos",
+     "titulo": "Ejemplo resuelto: la dinámica de Javier",
+     "pasos": [
+      {
+       "md": "Haz clic en **cualquier celda** de la Tabla de ventas. No hace falta seleccionarla entera: Excel la reconoce sola."
+      },
+      {
+       "md": "Ve a **Insertar › Tabla dinámica**. Si el botón despliega un menú, elige **Desde una tabla o rango**.",
+       "ruta": [
+        "Insertar",
+        "Tablas",
+        "Tabla dinámica"
+       ]
+      },
+      {
+       "md": "En la ventana que se abre, comprueba que el origen es el **nombre de tu Tabla** (por ejemplo, *Ventas*) y deja marcada **Nueva hoja de cálculo**. Pulsa **Aceptar**."
+      },
+      {
+       "md": "Aparece una hoja nueva. A la derecha verás el panel **Campos de tabla dinámica**: arriba, la lista de campos; abajo, cuatro cuadros llamados **áreas**."
+      },
+      {
+       "md": "Arrastra **Zona** al área **Filas** e **Importe** al área **Valores**. El resumen aparece al momento: una fila por zona con su suma."
+      }
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e3",
+     "modo": "cinta",
+     "enunciado": "Tienes una celda de la Tabla de ventas seleccionada. ¿Dónde está el botón para crear la **tabla dinámica**?",
+     "ruta": [
+      "Insertar",
+      "Tablas",
+      "Tabla dinámica"
+     ],
+     "explicacion": "Insertar › Tablas › Tabla dinámica. Desde dentro de una Tabla también tienes Diseño de tabla › Resumir con tabla dinámica, que hace lo mismo."
+    },
+    {
+     "tipo": "texto",
+     "md": "Cada área hace una cosa:\n\n- **Filas**: lo que quieres ver hacia abajo, una fila por elemento (una por zona).\n- **Columnas**: lo que quieres ver hacia la derecha (una columna por familia).\n- **Valores**: los números que se suman o se cuentan (Importe).\n- **Filtros**: un filtro encima de todo el informe (solo un comercial, por ejemplo).\n\nPiensa primero la pregunta. En «ventas **por** zona **y** familia», lo que va detrás de «ventas» va a Valores; detrás de «por», a Filas; detrás de «y», a Columnas."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Resultado: ventas por zona y familia",
+     "cabecera": [
+      "Zona",
+      "Cableado",
+      "Iluminación",
+      "Mecanismos",
+      "Protección",
+      "Total general"
+     ],
+     "filas": [
+      [
+       "Lleida",
+       "1.150,00 €",
+       "1.020,00 €",
+       "",
+       "530,00 €",
+       "2.700,00 €"
+      ],
+      [
+       "Pamplona",
+       "1.410,00 €",
+       "860,00 €",
+       "415,00 €",
+       "",
+       "2.685,00 €"
+      ],
+      [
+       "Zaragoza",
+       "2.880,00 €",
+       "975,00 €",
+       "320,00 €",
+       "690,00 €",
+       "4.865,00 €"
+      ],
+      [
+       "Total general",
+       "5.440,00 €",
+       "2.855,00 €",
+       "735,00 €",
+       "1.220,00 €",
+       "10.250,00 €"
+      ]
+     ],
+     "pie": "Zona en Filas, Familia en Columnas, Importe en Valores. Las zonas salen por orden alfabético, una casilla vacía significa «no hubo ventas» y el total general (10.250,00 €) es la suma de todo el listado."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e4",
+     "modo": "test",
+     "pregunta": "Ahora Javier pregunta: «¿Cuánto ha vendido cada comercial en cada zona?». Quieres una fila por comercial y una columna por zona. ¿Cómo colocas los campos?",
+     "opciones": [
+      {
+       "texto": "Comercial en Filas, Zona en Columnas, Importe en Valores",
+       "correcta": true,
+       "porque": "Correcto: ventas (Valores) por comercial (Filas) y zona (Columnas). La propia frase te dice dónde va cada campo."
+      },
+      {
+       "texto": "Importe en Filas y Comercial en Valores",
+       "correcta": false,
+       "porque": "Al revés. Importe en Filas haría una fila por cada cifra distinta, y Comercial en Valores contaría nombres en lugar de sumar euros."
+      },
+      {
+       "texto": "Comercial y Zona en Valores",
+       "correcta": false,
+       "porque": "En Valores van los números que quieres sumar. Comercial y Zona son las etiquetas que ordenan el resumen: van en Filas y Columnas."
+      },
+      {
+       "texto": "Zona en Filtros, Comercial en Filas, Importe en Valores",
+       "correcta": false,
+       "porque": "Así verías una sola zona cada vez (la que elijas en el filtro), no todas a la vez en columnas. Responde a otra pregunta: «ventas de cada comercial en Lleida»."
+      }
+     ],
+     "explicacion": "Antes de arrastrar nada, traduce la pregunta: qué se suma (Valores), por qué se desglosa hacia abajo (Filas) y hacia la derecha (Columnas)."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e5",
+     "modo": "ordenar",
+     "enunciado": "Ordena los pasos para crear la dinámica de ventas por zona y entregarla comprobada.",
+     "pasos": [
+      "Revisar que el listado no tiene filas vacías ni una fila TOTAL",
+      "Hacer clic en una celda de la Tabla de ventas",
+      "Insertar › Tabla dinámica, Nueva hoja de cálculo y Aceptar",
+      "Arrastrar Zona a Filas e Importe a Valores",
+      "Comparar el total general con la suma de la columna Importe del listado"
+     ],
+     "explicacion": "Primero el origen limpio; después crear y colocar los campos; al final, comprobar. Ese último paso es el que separa un informe fiable de uno que solo lo parece."
+    },
+    {
+     "tipo": "texto",
+     "md": "La mayoría de las hojas de empresa tienen errores, y una dinámica hecha con un origen mal preparado da cifras falsas con muy buena cara. Antes de enviar nada, **comprueba al menos una cifra por otro camino**:\n\n- El **total general** tiene que ser igual a la suma de la columna Importe del listado.\n- Una cifra concreta, la de Zaragoza, tiene que coincidir con una fórmula que ya conoces: `SUMAR.SI`.\n\nSi las dos cuadran, puedes enviarla tranquila."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e6",
+     "modo": "formula",
+     "enunciado": "La dinámica dice que **Zaragoza** vendió **4.865,00 €**. Compruébalo con una fórmula: en **H2** suma el Importe (columna E) de las filas cuya Zona (columna C) es la que pone en **G2**. Si sale 4.865,00 €, la dinámica está bien.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Comercial",
+       "C1": "Zona",
+       "D1": "Familia",
+       "E1": "Importe",
+       "G1": "Zona",
+       "H1": "Comprobación",
+       "A2": {
+        "fecha": "2026-10-05"
+       },
+       "B2": "Raúl Gimeno",
+       "C2": "Zaragoza",
+       "D2": "Cableado",
+       "E2": 1240,
+       "A3": {
+        "fecha": "2026-10-08"
+       },
+       "B3": "Elena Sanz",
+       "C3": "Pamplona",
+       "D3": "Iluminación",
+       "E3": 860,
+       "A4": {
+        "fecha": "2026-10-14"
+       },
+       "B4": "Jordi Vidal",
+       "C4": "Lleida",
+       "D4": "Protección",
+       "E4": 530,
+       "A5": {
+        "fecha": "2026-10-20"
+       },
+       "B5": "Raúl Gimeno",
+       "C5": "Zaragoza",
+       "D5": "Iluminación",
+       "E5": 975,
+       "A6": {
+        "fecha": "2026-10-27"
+       },
+       "B6": "Elena Sanz",
+       "C6": "Pamplona",
+       "D6": "Cableado",
+       "E6": 1410,
+       "A7": {
+        "fecha": "2026-10-30"
+       },
+       "B7": "Pilar Lasheras",
+       "C7": "Zaragoza",
+       "D7": "Mecanismos",
+       "E7": 320,
+       "A8": {
+        "fecha": "2026-11-03"
+       },
+       "B8": "Jordi Vidal",
+       "C8": "Lleida",
+       "D8": "Cableado",
+       "E8": 1150,
+       "A9": {
+        "fecha": "2026-11-06"
+       },
+       "B9": "Pilar Lasheras",
+       "C9": "Zaragoza",
+       "D9": "Protección",
+       "E9": 690,
+       "A10": {
+        "fecha": "2026-11-10"
+       },
+       "B10": "Raúl Gimeno",
+       "C10": "Zaragoza",
+       "D10": "Cableado",
+       "E10": 880,
+       "A11": {
+        "fecha": "2026-11-12"
+       },
+       "B11": "Elena Sanz",
+       "C11": "Pamplona",
+       "D11": "Mecanismos",
+       "E11": 415,
+       "A12": {
+        "fecha": "2026-11-13"
+       },
+       "B12": "Jordi Vidal",
+       "C12": "Lleida",
+       "D12": "Iluminación",
+       "E12": 1020,
+       "A13": {
+        "fecha": "2026-11-16"
+       },
+       "B13": "Pilar Lasheras",
+       "C13": "Zaragoza",
+       "D13": "Cableado",
+       "E13": 760,
+       "G2": "Zaragoza"
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "E2:E13": "eur",
+       "H2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 14,
+       "C": 10,
+       "D": 11,
+       "E": 11,
+       "G": 10,
+       "H": 13
+      }
+     },
+     "objetivo": "H2",
+     "solucion": "=SUMAR.SI(C2:C13;G2;E2:E13)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(E2:E13;C2:C13;G2)",
+      "=SUMAR.SI($C$2:$C$13;G2;$E$2:$E$13)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI(C2:C13;\"Zaragoza\";E2:E13)",
+      "=SUMA(E2:E13)",
+      "=CONTAR.SI(C2:C13;G2)"
+     ],
+     "variantes": [
+      {
+       "G2": "Lleida"
+      },
+      {
+       "E2": 2000
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Quieres sumar solo algunas filas, las de una zona: es trabajo de SUMAR.SI (dónde mirar; qué buscar; qué sumar).",
+      "Mira en C2:C13, busca lo que hay en G2 y suma E2:E13.",
+      "Escribe `=SUMAR.SI(C2:C13;G2;E2:E13)`."
+     ],
+     "explicacion": "4.865,00 €: la dinámica cuadra. Como apuntas a G2 en vez de escribir «Zaragoza», cambias la zona y la comprobación se rehace sola. Comprobar una cifra por otro camino es lo que hace que tus informes sean de fiar."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l1-e7",
+     "modo": "abierta",
+     "pregunta": "Escribe el mensaje para Javier con el resumen por zona. Usa la tabla de resultados: Zaragoza 4.865 €, Lleida 2.700 € y Pamplona 2.685 €; total 10.250 €. Que se lea en diez segundos y diga cómo lo has comprobado.",
+     "modelo": "Hola, Javier: ventas de octubre y lo que va de noviembre por zona: Zaragoza 4.865 €, Lleida 2.700 € y Pamplona 2.685 €; total 10.250 €. Zaragoza se lleva casi la mitad. Está comprobado: el total coincide con el listado del programa y la cifra de Zaragoza la he sacado también con una fórmula aparte. Te adjunto la tabla. Un saludo.",
+     "criterios": [
+      "Da la cifra de cada zona y el total",
+      "Destaca lo importante en una frase (qué zona vende más)",
+      "Dice cómo lo ha comprobado (total de control o fórmula)",
+      "Es breve y no adjunta el listado entero"
+     ]
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m4l1-q1",
+     "modo": "test",
+     "pregunta": "Tu dinámica sale de un rango normal, A1:E13 (no es una Tabla). Pegas diez ventas nuevas en las filas 14 a 23. ¿Qué pasa con la dinámica?",
+     "opciones": [
+      {
+       "texto": "Las ventas nuevas se quedan fuera, porque el origen acaba en la fila 13",
+       "correcta": true,
+       "porque": "Eso es: un rango fijo no crece. Por eso el origen debe ser una Tabla, que se amplía sola al pegar justo debajo."
+      },
+      {
+       "texto": "Las recoge solas, porque están justo debajo",
+       "correcta": false,
+       "porque": "Un rango normal no se amplía al escribir debajo; una Tabla, sí."
+      },
+      {
+       "texto": "Se borran, porque la dinámica no admite cambios",
+       "correcta": false,
+       "porque": "La dinámica nunca borra tus datos: sencillamente no los ve."
+      }
+     ],
+     "explicacion": "Origen = Tabla, siempre. En la lección 3 verás además que, tras añadir datos, hay que pulsar Actualizar."
+    },
+    {
+     "id": "n3m4l1-q2",
+     "modo": "test",
+     "pregunta": "¿Qué pregunta responde una dinámica con **Familia** en Filas, **Zona** en Filtros e **Importe** en Valores?",
+     "opciones": [
+      {
+       "texto": "Ventas de cada familia, de todas las zonas o de la que elijas en el filtro",
+       "correcta": true,
+       "porque": "Correcto: Filas desglosa por familia, Valores suma el importe y el filtro de Zona decide qué zonas entran."
+      },
+      {
+       "texto": "Ventas de cada familia en cada zona, todas a la vez",
+       "correcta": false,
+       "porque": "Para ver todas las zonas a la vez, una al lado de otra, Zona iría en Columnas."
+      },
+      {
+       "texto": "Cuántas ventas hay de cada familia",
+       "correcta": false,
+       "porque": "Un campo de números en Valores se suma: verías euros, no el número de ventas."
+      }
+     ],
+     "explicacion": "Filas y Columnas desglosan; Valores calcula; Filtros decide qué datos entran en todo el informe."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué es una tabla dinámica?",
+     "dorso": "Un resumen que Excel monta solo a partir de un listado, arrastrando campos. No cambia los datos originales."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo se crea una tabla dinámica?",
+     "dorso": "Clic dentro de la Tabla › Insertar › Tablas › Tabla dinámica › Nueva hoja de cálculo › Aceptar."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Las cuatro áreas de una tabla dinámica",
+     "dorso": "Filas (hacia abajo), Columnas (hacia la derecha), Valores (lo que se suma o cuenta) y Filtros (filtro de todo el informe)."
+    },
+    {
+     "tipo": "error",
+     "frente": "El total general de la dinámica sale el doble. ¿Causa típica?",
+     "dorso": "El origen tiene dentro una fila de totales (la fila TOTAL del programa). Bórrala antes de crear la dinámica."
+    }
+   ]
+  },
+  {
+   "id": "n3m4l2",
+   "titulo": "Valores: suma, recuento, porcentaje del total y fechas agrupadas",
+   "minutos": 15,
+   "objetivo": "Elegir qué calcula una tabla dinámica (suma, recuento, promedio), mostrar sus cifras como porcentaje, agrupar las fechas por meses, darle formato, ordenarla y comprobar una de sus cifras con SUMAR.SI.CONJUNTO.",
+   "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Para el comité del lunes quiero una página con el peso de cada familia en las ventas, en porcentaje y de más a menos, y cómo ha ido cada mes. Y comprobado, por favor: la última vez una cifra no cuadraba.",
+    "logro": "Ya sabes decidir qué calcula una tabla dinámica, mostrarla en porcentajes, agrupar las fechas por meses, ordenarla y comprobar sus cifras antes de entregarla."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Cuando arrastras **Importe** al área **Valores**, la dinámica lo **suma**: por eso el título dice «Suma de Importe». Pero con el mismo campo puede hacer otras cuentas:\n\n- **Suma**: cuántos euros.\n- **Cuenta**: cuántas filas hay (cuántas ventas).\n- **Promedio**: la venta media.\n- **Máx.** y **Mín.**: la venta mayor y la menor.\n\nSe cambia así: clic derecho sobre cualquier cifra › **Configuración de campo de valor** › pestaña **Resumir valores por** › eliges › **Aceptar**."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e1",
+     "modo": "test",
+     "pregunta": "Javier no quiere saber cuántos euros ha vendido cada comercial, sino **cuántas ventas** ha hecho (cuántas líneas tiene cada uno en el listado). ¿Qué eliges en *Resumir valores por*?",
+     "opciones": [
+      {
+       "texto": "Cuenta",
+       "correcta": true,
+       "porque": "Exacto: Cuenta dice cuántas filas hay de cada comercial, sin mirar cuánto vale cada una. Es la forma rápida de contar operaciones."
+      },
+      {
+       "texto": "Suma",
+       "correcta": false,
+       "porque": "Suma da los euros vendidos, no el número de ventas: tres ventas de 1.000 € darían 3.000, no 3."
+      },
+      {
+       "texto": "Promedio",
+       "correcta": false,
+       "porque": "Promedio da la venta media de cada comercial (euros por venta), no cuántas ha hecho."
+      },
+      {
+       "texto": "Máx.",
+       "correcta": false,
+       "porque": "Máx. da la venta más grande de cada uno, no cuántas son."
+      }
+     ],
+     "explicacion": "La misma columna responde a preguntas distintas según lo que elijas. Por eso, antes de leer una cifra, lee el título: «Cuenta de Importe» no son euros."
+    },
+    {
+     "tipo": "texto",
+     "md": "A veces Excel elige **Cuenta** sin que se lo pidas. Pasa cuando la columna tiene **algún texto**: un «pendiente» escrito a mano o números guardados como texto, como los de las exportaciones sucias del módulo anterior. Con textos no se puede sumar, así que Excel cuenta.\n\nLa pista está en el título: verás **«Cuenta de Importe»** y cifras pequeñas (12, 35, 40…) donde esperabas euros. El arreglo: limpia esa columna en el listado, actualiza la dinámica (lo verás a fondo en la próxima lección) y cambia a **Suma**."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Lee siempre el título del campo",
+     "md": "Nuria: «Antes de mandar una dinámica, mira la esquina de arriba: tiene que poner *Suma de Importe*. Una compañera mandó una vez al banco el número de facturas creyendo que eran euros.»"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e2",
+     "modo": "test",
+     "pregunta": "Haces la dinámica de ventas por zona y sale esto:\n\n| Zona | Cuenta de Importe |\n|---|---|\n| Lleida | 205 |\n| Pamplona | 198 |\n| Zaragoza | 412 |\n\nJavier esperaba unos 90.000 € en Zaragoza. ¿Qué ha pasado?",
+     "opciones": [
+      {
+       "texto": "La columna Importe tiene algún texto y Excel ha contado filas en vez de sumar",
+       "correcta": true,
+       "porque": "Eso es: «Cuenta de Importe» delata que hay texto en la columna. Busca esas celdas, conviértelas en número, actualiza y cambia a Suma."
+      },
+      {
+       "texto": "Zaragoza solo ha vendido 412 €",
+       "correcta": false,
+       "porque": "412 no son euros: el título dice Cuenta. Son 412 filas, es decir, 412 ventas."
+      },
+      {
+       "texto": "La dinámica no está actualizada",
+       "correcta": false,
+       "porque": "Una dinámica sin actualizar enseña cifras viejas, pero seguiría diciendo Suma. Aquí el problema es que cuenta."
+      },
+      {
+       "texto": "Falta dar formato de euros a las cifras",
+       "correcta": false,
+       "porque": "El formato solo cambia cómo se ve: 412 con formato de euros sería 412,00 €, igual de falso."
+      }
+     ],
+     "explicacion": "Ante una cifra rara, primero el título del campo y después los datos de origen. Así encuentras el fallo en segundos."
+    },
+    {
+     "tipo": "texto",
+     "md": "Carmen no quiere euros: quiere **porcentajes**. En el mismo cuadro, la pestaña **Mostrar valores como** cambia cómo se enseña cada cifra:\n\n- **% del total general**: qué parte del total de la dinámica es cada cifra. Todo suma 100 %.\n- **% del total de filas**: qué parte del total de su fila. Cada fila suma 100 %.\n- **% del total de columnas**: lo mismo, por columnas.\n\nTruco de oficina: arrastra **Importe dos veces** a Valores; deja uno en euros y pon el otro en porcentaje."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Ventas de octubre por zona, en euros y en % del total general",
+     "cabecera": [
+      "Zona",
+      "Suma de Importe",
+      "% del total"
+     ],
+     "filas": [
+      [
+       "Zaragoza",
+       "30.510,00 €",
+       "54,00%"
+      ],
+      [
+       "Pamplona",
+       "13.560,00 €",
+       "24,00%"
+      ],
+      [
+       "Lleida",
+       "12.430,00 €",
+       "22,00%"
+      ],
+      [
+       "Total general",
+       "56.500,00 €",
+       "100,00%"
+      ]
+     ],
+     "pie": "Zaragoza vende algo más de la mitad: 30.510 entre 56.500 da 0,54, es decir, el 54 %."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e3",
+     "modo": "formula",
+     "enunciado": "Vas a comprobar los porcentajes de la dinámica de Carmen. Nuria empezó en **C2** con `=B2/B7` (la venta de la familia entre el total general), pero al copiarla hasta C6 salen errores. **Arregla la fórmula de C2** para que, copiada a C3:C6, dé el % de cada familia sobre el total de **B7**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Familia",
+       "B1": "Suma de Importe",
+       "C1": "% del total",
+       "A2": "Cableado",
+       "B2": 18420.5,
+       "A3": "Canalización",
+       "B3": 6135.2,
+       "A4": "Mecanismos",
+       "B4": 7980,
+       "A5": "Iluminación",
+       "B5": 14760.8,
+       "A6": "Protección",
+       "B6": 9203.5,
+       "A7": "Total general",
+       "B7": "=SUMA(B2:B6)"
+      },
+      "formatos": {
+       "B2:B7": "eur",
+       "C2:C6": "0,00%"
+      },
+      "anchos": {
+       "A": 14,
+       "B": 16,
+       "C": 12
+      }
+     },
+     "objetivo": "C2",
+     "inicial": "=B2/B7",
+     "solucion": "=B2/$B$7",
+     "copiar_a": [
+      "C3:C6"
+     ],
+     "alternativas": [
+      "=B2/B$7",
+      "=B2/SUMA($B$2:$B$6)"
+     ],
+     "errores_tipicos": [
+      "=B2/B7",
+      "=B2*100/$B$7",
+      "=$B$7/B2"
+     ],
+     "variantes": [
+      {
+       "B2": 20000
+      },
+      {
+       "B5": 10000
+      }
+     ],
+     "formato_resultado": "0,00%",
+     "pistas": [
+      "Al copiar hacia abajo, B2 debe pasar a B3, B4…, pero el total tiene que seguir siendo B7. Ahora mismo, en C3 pone B3/B8, y B8 está vacía.",
+      "Fija el total con $: pon el cursor sobre B7 dentro de la fórmula y pulsa F4.",
+      "Escribe `=B2/$B$7`."
+     ],
+     "explicacion": "32,60 % para Cableado, y entre las cinco familias suman el 100 %. Es lo mismo que hace «% del total general»: cada cifra entre el total. Ahora sabes de dónde sale ese porcentaje y puedes comprobarlo cuando alguien lo ponga en duda."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e4",
+     "modo": "test",
+     "pregunta": "Esta dinámica tiene Zona en Filas, Familia en Columnas e Importe mostrado como **% del total de filas**:\n\n| Zona | Cableado | Iluminación | Resto | Total general |\n|---|---|---|---|---|\n| Pamplona | 28,00% | 38,00% | 34,00% | 100,00% |\n| Zaragoza | 35,00% | 25,00% | 40,00% | 100,00% |\n\n¿Qué quiere decir el **38,00%** de Pamplona en Iluminación?",
+     "opciones": [
+      {
+       "texto": "De todo lo que vende Pamplona, el 38 % es Iluminación",
+       "correcta": true,
+       "porque": "Eso es: con % del total de filas, cada fila suma 100 %, así que cada cifra es una parte de lo que vende esa zona."
+      },
+      {
+       "texto": "Pamplona vende el 38 % de toda la Iluminación de la empresa",
+       "correcta": false,
+       "porque": "Eso lo diría «% del total de columnas»: ahí cada columna (cada familia) suma 100 %."
+      },
+      {
+       "texto": "El 38 % de todas las ventas de la empresa es Iluminación de Pamplona",
+       "correcta": false,
+       "porque": "Eso lo diría «% del total general»: ahí suma 100 % la tabla entera, no cada fila."
+      },
+      {
+       "texto": "Pamplona ha vendido 38 € de Iluminación",
+       "correcta": false,
+       "porque": "Son porcentajes, no euros: la columna Total general marca 100,00% en cada fila."
+      }
+     ],
+     "explicacion": "Antes de leer un porcentaje, pregúntate dónde está el 100 %: en cada fila, en cada columna o en el total general."
+    },
+    {
+     "tipo": "texto",
+     "md": "Si arrastras **Fecha** a Filas sin más, podrías tener una fila por día: doscientas filas. Lo útil es **agrupar**: un total por mes, por trimestre o por año.\n\nMicrosoft 365 suele agrupar él solo al arrastrar la fecha (verás aparecer **Meses**, y a veces **Trimestres** y **Años**). Si no lo hace o quieres cambiarlo: clic derecho sobre una fecha de la dinámica › **Agrupar** › en la lista **Por**, marca lo que quieras (puedes marcar varios) › **Aceptar**."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Meses solos mezclan años",
+     "md": "Si el listado tiene ventas de 2025 y de 2026 y marcas solo **Meses**, la fila «ene» suma enero de los dos años. Marca **Meses** y **Años** a la vez."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e5",
+     "modo": "cinta",
+     "enunciado": "Tienes seleccionada una fecha dentro de la dinámica. ¿Dónde está en la cinta el botón para **agrupar** las fechas por meses?",
+     "ruta": [
+      "Analizar tabla dinámica",
+      "Agrupar",
+      "Agrupar selección"
+     ],
+     "explicacion": "Analizar tabla dinámica › Agrupar › Agrupar selección abre el mismo cuadro que clic derecho › Agrupar. La pestaña Analizar tabla dinámica solo aparece cuando tienes seleccionada una celda de la dinámica."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e6",
+     "modo": "test",
+     "pregunta": "Intentas agrupar por meses las fechas de una exportación del programa de gestión y Excel avisa de que no puede agrupar la selección. ¿Qué es lo más probable?",
+     "opciones": [
+      {
+       "texto": "Alguna «fecha» de la columna es un texto, no una fecha de verdad",
+       "correcta": true,
+       "porque": "Eso es: basta con que alguna sea texto (por ejemplo, 05.11.2026 o con un espacio delante) para que no agrupe. Conviértelas en fechas en el listado, como en el módulo de limpieza, y actualiza."
+      },
+      {
+       "texto": "Hay demasiadas fechas para agrupar",
+       "correcta": false,
+       "porque": "Excel agrupa sin problema miles de fechas. El número de filas no es el problema."
+      },
+      {
+       "texto": "Primero hay que agrupar por días",
+       "correcta": false,
+       "porque": "No hace falta ningún paso previo: con fechas de verdad, Meses funciona a la primera."
+      },
+      {
+       "texto": "Las dinámicas no agrupan fechas de años distintos",
+       "correcta": false,
+       "porque": "Sí las agrupan; precisamente por eso conviene marcar Meses y Años a la vez."
+      }
+     ],
+     "explicacion": "Si una dinámica no agrupa fechas, sospecha del origen: fechas escritas como texto. Es el mismo problema de limpieza que ya sabes resolver."
+    },
+    {
+     "tipo": "texto",
+     "md": "Dos retoques antes de entregar:\n\n- **Formato de número**: en **Configuración de campo de valor**, botón **Formato de número** › Moneda (o Número con separador de miles). Así el formato va con el campo y no se pierde al mover campos.\n- **Ordenar de mayor a menor**: clic derecho sobre una cifra › **Ordenar** › **Ordenar de mayor a menor**. La familia que más vende sube arriba.\n\nCon eso, Carmen ve de un vistazo qué familias pesan más."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Nuria Campos",
+     "puesto": "Administración",
+     "md": "Antes de mandarle nada a Carmen, comprueba una cifra por otro camino. Tu dinámica dice que Iluminación vendió 5.960 € en octubre: si tu SUMAR.SI.CONJUNTO da lo mismo, te puedes fiar del resto."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l2-e7",
+     "modo": "formula",
+     "enunciado": "La dinámica dice que **Iluminación** vendió **5.960,00 €** en **octubre**. Compruébalo: en **I2** suma el Importe (columna D) de las filas de la familia que pone en **F2** cuya fecha esté entre **G2** y **H2**, las dos incluidas. Si sale 5.960,00 €, la dinámica cuadra.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Zona",
+       "C1": "Familia",
+       "D1": "Importe",
+       "F1": "Familia",
+       "G1": "Desde",
+       "H1": "Hasta",
+       "I1": "Comprobación",
+       "A2": {
+        "fecha": "2026-09-29"
+       },
+       "B2": "Zaragoza",
+       "C2": "Iluminación",
+       "D2": 640,
+       "A3": {
+        "fecha": "2026-10-01"
+       },
+       "B3": "Pamplona",
+       "C3": "Iluminación",
+       "D3": 1180,
+       "A4": {
+        "fecha": "2026-10-02"
+       },
+       "B4": "Zaragoza",
+       "C4": "Cableado",
+       "D4": 1450,
+       "A5": {
+        "fecha": "2026-10-07"
+       },
+       "B5": "Lleida",
+       "C5": "Iluminación",
+       "D5": 920,
+       "A6": {
+        "fecha": "2026-10-09"
+       },
+       "B6": "Zaragoza",
+       "C6": "Mecanismos",
+       "D6": 385,
+       "A7": {
+        "fecha": "2026-10-15"
+       },
+       "B7": "Zaragoza",
+       "C7": "Iluminación",
+       "D7": 2310,
+       "A8": {
+        "fecha": "2026-10-21"
+       },
+       "B8": "Pamplona",
+       "C8": "Protección",
+       "D8": 760,
+       "A9": {
+        "fecha": "2026-10-26"
+       },
+       "B9": "Lleida",
+       "C9": "Iluminación",
+       "D9": 455,
+       "A10": {
+        "fecha": "2026-10-30"
+       },
+       "B10": "Zaragoza",
+       "C10": "Iluminación",
+       "D10": 1095,
+       "A11": {
+        "fecha": "2026-11-02"
+       },
+       "B11": "Pamplona",
+       "C11": "Iluminación",
+       "D11": 830,
+       "A12": {
+        "fecha": "2026-11-04"
+       },
+       "B12": "Lleida",
+       "C12": "Cableado",
+       "D12": 1270,
+       "A13": {
+        "fecha": "2026-11-06"
+       },
+       "B13": "Zaragoza",
+       "C13": "Iluminación",
+       "D13": 515,
+       "F2": "Iluminación",
+       "G2": {
+        "fecha": "2026-10-01"
+       },
+       "H2": {
+        "fecha": "2026-10-31"
+       }
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "D2:D13": "eur",
+       "G2:H2": "fecha",
+       "I2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 10,
+       "C": 12,
+       "D": 11,
+       "F": 12,
+       "G": 11,
+       "H": 11,
+       "I": 13
+      }
+     },
+     "objetivo": "I2",
+     "solucion": "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(D2:D13;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2;C2:C13;F2)",
+      "=SUMAR.SI.CONJUNTO($D$2:$D$13;$C$2:$C$13;F2;$A$2:$A$13;\">=\"&G2;$A$2:$A$13;\"<=\"&H2)",
+      "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&FIN.MES(G2;0))"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI(C2:C13;F2;D2:D13)",
+      "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">\"&G2;A2:A13;\"<=\"&H2)",
+      "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=G2\";A2:A13;\"<=H2\")",
+      "=SUMAR.SI.CONJUNTO(D2:D13;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)"
+     ],
+     "debe_usar": [
+      "SUMAR.SI.CONJUNTO"
+     ],
+     "variantes": [
+      {
+       "F2": "Cableado"
+      },
+      {
+       "D10": 2000
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Hay tres condiciones a la vez (familia, desde y hasta): es trabajo de SUMAR.SI.CONJUNTO, que empieza por el rango que se suma, D2:D13.",
+      "Para las fechas, une el signo con la celda: `\">=\"&G2` y `\"<=\"&H2`, las dos sobre A2:A13. La familia: C2:C13 con F2.",
+      "`=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)`"
+     ],
+     "explicacion": "5.960,00 €: la dinámica cuadra y ya puedes mandarle el informe a Carmen con tranquilidad. Si no hubiera cuadrado, buscarías fechas escritas como texto o una dinámica sin actualizar. Dos caminos distintos que dan lo mismo: eso es un informe de fiar."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m4l2-q1",
+     "modo": "respuesta_corta",
+     "pregunta": "La dinámica pone «Cuenta de Importe» y tú quieres euros. ¿Cómo se llama el cuadro donde cambias la operación a Suma?",
+     "aceptadas": [
+      "Configuración de campo de valor",
+      "Configuracion de campo de valor",
+      "Configuración del campo de valor",
+      "Configuración de campo",
+      "Resumir valores por"
+     ],
+     "explicacion": "Clic derecho sobre una cifra › Configuración de campo de valor › Resumir valores por › Suma. Y si salió Cuenta sin pedirlo, revisa que la columna no tenga textos."
+    },
+    {
+     "id": "n3m4l2-q2",
+     "modo": "test",
+     "pregunta": "Carmen quiere ver qué parte de **toda** la venta de la empresa corresponde a cada familia, de forma que la tabla entera sume 100 %. ¿Qué eliges?",
+     "opciones": [
+      {
+       "texto": "Mostrar valores como › % del total general",
+       "correcta": true,
+       "porque": "Eso es: cada cifra entre el total de toda la dinámica. Todo suma 100 %."
+      },
+      {
+       "texto": "Mostrar valores como › % del total de filas",
+       "correcta": false,
+       "porque": "Ese hace que cada fila sume 100 %: sirve para ver el reparto dentro de cada fila, no el peso sobre el total."
+      },
+      {
+       "texto": "Resumir valores por › Cuenta",
+       "correcta": false,
+       "porque": "Cuenta dice cuántas ventas hay, no qué parte de los euros es de cada familia."
+      },
+      {
+       "texto": "Agrupar las familias",
+       "correcta": false,
+       "porque": "Agrupar junta elementos (fechas por meses, por ejemplo); no calcula porcentajes."
+      }
+     ],
+     "explicacion": "Resumir valores por decide qué se calcula; Mostrar valores como decide cómo se enseña. Para «qué parte del total», % del total general."
+    },
+    {
+     "id": "n3m4l2-q3",
+     "modo": "test",
+     "pregunta": "El listado tiene ventas de 2025 y de 2026. Agrupas la fecha **solo por Meses**. ¿Qué verás en la fila «ene»?",
+     "opciones": [
+      {
+       "texto": "Enero de 2025 y enero de 2026 sumados juntos",
+       "correcta": true,
+       "porque": "Eso es: sin Años, todos los eneros caen en la misma fila. Marca Meses y Años a la vez."
+      },
+      {
+       "texto": "Solo enero de 2026, el más reciente",
+       "correcta": false,
+       "porque": "Excel no descarta ningún año: si no los separas, los junta."
+      },
+      {
+       "texto": "Un error, porque hay dos años",
+       "correcta": false,
+       "porque": "No da error, y eso es lo peligroso: la cifra parece normal pero mezcla dos años."
+      },
+      {
+       "texto": "Dos filas «ene», una por año",
+       "correcta": false,
+       "porque": "Para eso tendrías que marcar también Años en el cuadro Agrupar."
+      }
+     ],
+     "explicacion": "Con datos de varios años, agrupa siempre por Meses y Años. Un error silencioso es el más caro."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Dónde cambias Suma por Cuenta o Promedio en una dinámica?",
+     "dorso": "Clic derecho en una cifra › Configuración de campo de valor › Resumir valores por."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo muestras cada cifra como parte del total?",
+     "dorso": "Configuración de campo de valor › Mostrar valores como › % del total general (o % del total de filas / de columnas)."
+    },
+    {
+     "tipo": "error",
+     "frente": "La dinámica dice «Cuenta de Importe» sin que lo pidieras. ¿Por qué?",
+     "dorso": "La columna tiene algún texto (números guardados como texto o palabras). Límpiala, actualiza y cambia a Suma."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo agrupas las fechas de una dinámica por meses?",
+     "dorso": "Clic derecho en una fecha › Agrupar › marca Meses (y Años si hay varios años) › Aceptar."
+    }
+   ]
+  },
+  {
+   "id": "n3m4l3",
+   "titulo": "Segmentaciones, escala de tiempo y Actualizar",
+   "minutos": 15,
+   "objetivo": "Filtrar un informe dinámico con segmentaciones y escala de tiempo, conectarlas a varias dinámicas, actualizarlo cuando llegan datos nuevos y comprobar que está al día antes de entregarlo.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "En la reunión del jueves quiero ir pulsando el nombre de cada comercial y ver sus ventas, sin filtros raros. Y ojo, que Andrés ha metido esta mañana los albaranes del viernes que faltaban: que salgan en el informe.",
+    "logro": "Ya sabes poner botones de filtro a un informe dinámico, actualizarlo cuando llegan datos nuevos y comprobar que está al día antes de entregarlo."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Una **segmentación de datos** es un panel de botones, uno por cada elemento de un campo: uno por comercial, por ejemplo. Pulsas «Elena Sanz» y la dinámica enseña solo sus ventas. Es un filtro, pero se ve a simple vista qué está filtrado.\n\nPara ponerla: haz clic dentro de la dinámica › pestaña **Analizar tabla dinámica** › **Insertar segmentación de datos** › marca **Comercial** › **Aceptar**. Si marcas varios campos, sale un panel para cada uno."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e1",
+     "modo": "cinta",
+     "enunciado": "Javier quiere botones con los nombres de los comerciales. Tienes seleccionada una celda de la dinámica. ¿Qué botón pulsas?",
+     "ruta": [
+      "Analizar tabla dinámica",
+      "Filtrar",
+      "Insertar segmentación de datos"
+     ],
+     "explicacion": "Analizar tabla dinámica › Filtrar › Insertar segmentación de datos. También está en Insertar › Filtros › Segmentación de datos."
+    },
+    {
+     "tipo": "texto",
+     "md": "Cómo se usa el panel:\n\n- **Clic** en un nombre: solo ese.\n- [[Ctrl]] + **clic**: añades o quitas otro (Elena e Iñaki a la vez).\n- **Borrar filtro**: el botón del embudo con un aspa, arriba a la derecha del panel. Vuelven todos.\n\nLos botones elegidos se ven en color y los demás, más claros. Así, quien lea el informe sabe siempre qué está viendo."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "No lo entregues filtrado",
+     "md": "Nuria: «Si guardas el libro con un comercial marcado, quien lo abra verá solo sus ventas y creerá que es el total. Antes de enviarlo, pulsa Borrar filtro.»"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e2",
+     "modo": "test",
+     "pregunta": "Carmen abre el informe que le mandaste y te escribe: «¿Solo 18.430 € en octubre? El mes pasado fueron 96.000». En la segmentación de Comercial, el botón de **Elena Sanz** está en color y los demás se ven claros. ¿Qué ha pasado?",
+     "opciones": [
+      {
+       "texto": "El informe se guardó filtrado: enseña solo las ventas de Elena",
+       "correcta": true,
+       "porque": "Exacto: los 18.430 € son de Elena. Pulsa Borrar filtro, comprueba el total y vuelve a mandarlo."
+      },
+      {
+       "texto": "Las ventas han caído en picado",
+       "correcta": false,
+       "porque": "Antes de alarmar a nadie, mira los filtros: un botón marcado en la segmentación lo explica."
+      },
+      {
+       "texto": "La dinámica está mal hecha y hay que crearla de nuevo",
+       "correcta": false,
+       "porque": "La dinámica está bien; solo está filtrada. Con Borrar filtro vuelve a enseñarlo todo."
+      },
+      {
+       "texto": "Faltan datos en el listado de origen",
+       "correcta": false,
+       "porque": "Podría pasar, pero aquí la pista está a la vista: Elena en color y el resto en claro."
+      }
+     ],
+     "explicacion": "La segmentación es cómoda precisamente porque se ve. Acostúmbrate a mirarla antes de leer cualquier cifra, y a dejarla sin filtro antes de entregar."
+    },
+    {
+     "tipo": "texto",
+     "md": "La **escala de tiempo** es una segmentación para fechas: una barra de meses que arrastras para elegir un periodo, por ejemplo de julio a septiembre. Arriba a la derecha eliges el nivel: **años**, **trimestres**, **meses** o **días**.\n\nSe pone igual: **Analizar tabla dinámica** › **Insertar escala de tiempo** › marca **Fecha** › **Aceptar**. En la lista solo salen los campos que son fechas de verdad: si tu fecha no aparece, sospecha que es texto."
+    },
+    {
+     "tipo": "texto",
+     "md": "Un informe suele tener varias dinámicas: por zona, por familia, por mes. Lo cómodo es que **una sola segmentación** las filtre todas a la vez.\n\nPara eso: haz clic en la segmentación › pestaña **Segmentación** › **Conexiones de informe** › marca todas las dinámicas que debe filtrar › **Aceptar**. La escala de tiempo se conecta igual.\n\nCondición: solo se pueden conectar dinámicas que salen **del mismo origen** (la misma Tabla)."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e3",
+     "modo": "test",
+     "pregunta": "Tienes tres dinámicas (por zona, por familia y por mes) y una segmentación de Comercial. Pulsas «Iñaki Goñi» y solo cambia la de zona. ¿Qué haces?",
+     "opciones": [
+      {
+       "texto": "Segmentación › Conexiones de informe, y marco las tres dinámicas",
+       "correcta": true,
+       "porque": "Eso es: la segmentación solo filtra las dinámicas conectadas, y al crearla se conecta a la que tenías seleccionada."
+      },
+      {
+       "texto": "Inserto una segmentación de Comercial en cada dinámica",
+       "correcta": false,
+       "porque": "Funcionaría, pero tendrías tres paneles y habría que pulsar en los tres: un descuido y el informe mezcla comerciales."
+      },
+      {
+       "texto": "Pulso Actualizar",
+       "correcta": false,
+       "porque": "Actualizar trae los datos nuevos del origen, pero no conecta la segmentación con otras dinámicas."
+      },
+      {
+       "texto": "Vuelvo a crear las tres dinámicas",
+       "correcta": false,
+       "porque": "No hace falta: las dinámicas están bien, lo que falta es conectarlas."
+      }
+     ],
+     "explicacion": "Una segmentación, todas las dinámicas conectadas: Javier pulsa un nombre y cambia el informe entero."
+    },
+    {
+     "tipo": "texto",
+     "md": "Lo más importante de la lección: la tabla dinámica es una **foto** de los datos. Si cambias o añades ventas en el listado, la dinámica **no se entera** hasta que la actualizas:\n\n- **Actualizar** ([[Alt]]+[[F5]]): la dinámica en la que estás. Está en Analizar tabla dinámica › Datos.\n- **Actualizar todo** ([[Ctrl]]+[[Alt]]+[[F5]]): todas las del libro. Está en Datos › Consultas y conexiones.\n\nEn el día a día, usa **Actualizar todo**: así no se te queda ninguna atrás."
+    },
+    {
+     "tipo": "atajos",
+     "atajos": [
+      {
+       "teclas": "Alt+F5",
+       "accion": "Actualizar la tabla dinámica seleccionada"
+      },
+      {
+       "teclas": "Ctrl+Alt+F5",
+       "accion": "Actualizar todo el libro"
+      }
+     ]
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "dato",
+     "titulo": "¿Y las que se actualizan solas?",
+     "md": "Microsoft está probando que las dinámicas hechas con datos del mismo libro se actualicen solas, pero por ahora solo en versiones de prueba (Microsoft 365 Insider). En el Excel de la oficina, cuenta con tener que pulsar Actualizar."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e4",
+     "modo": "respuesta_corta",
+     "pregunta": "Andrés ha corregido varias líneas del listado y tu informe tiene cuatro dinámicas. ¿Qué atajo de teclado las actualiza todas de una vez?",
+     "aceptadas": [
+      "Ctrl+Alt+F5",
+      "Control+Alt+F5",
+      "Ctrl Alt F5",
+      "Ctrl + Alt + F5",
+      "Alt+Ctrl+F5"
+     ],
+     "explicacion": "[[Ctrl]]+[[Alt]]+[[F5]] es Actualizar todo (Datos › Consultas y conexiones › Actualizar todo). [[Alt]]+[[F5]] actualiza solo la dinámica en la que estás."
+    },
+    {
+     "tipo": "texto",
+     "md": "Si la dinámica se hizo desde un **rango fijo** (por ejemplo, `Ventas!$A$1:$H$500`), las filas que pegues a partir de la 501 se quedan **fuera**, aunque actualices.\n\nDos arreglos:\n\n- **Cambiar origen de datos** (Analizar tabla dinámica › Datos) y ampliar el rango. Sirve hoy, pero el mes que viene te pasará igual.\n- Mejor: convierte el listado en **Tabla** ([[Ctrl]]+[[T]]) y pon la Tabla como origen. La Tabla crece con cada fila nueva y la dinámica la sigue al actualizar."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e5",
+     "modo": "test",
+     "pregunta": "Pegas 12 ventas nuevas debajo del listado y pulsas Actualizar todo, pero el total general no cambia. En **Cambiar origen de datos** pone `Ventas!$A$1:$H$1201`, y las ventas nuevas están en las filas 1202 a 1213. ¿Qué pasa?",
+     "opciones": [
+      {
+       "texto": "El origen es un rango fijo que acaba en la fila 1201: las ventas nuevas se quedan fuera",
+       "correcta": true,
+       "porque": "Eso es. Amplía el rango o, mejor, convierte el listado en Tabla y usa la Tabla como origen: así crecerá sola."
+      },
+      {
+       "texto": "Hay que pulsar Actualizar todo dos veces",
+       "correcta": false,
+       "porque": "Actualizar relee el origen, y el origen acaba en la fila 1201: por muchas veces que pulses, lo de debajo no entra."
+      },
+      {
+       "texto": "Las ventas nuevas tienen otro formato",
+       "correcta": false,
+       "porque": "El formato no impide que entren: el problema es que están fuera del rango de origen."
+      },
+      {
+       "texto": "Una dinámica no admite más de 1.200 filas",
+       "correcta": false,
+       "porque": "Admite muchísimas más: el límite lo puso el rango que se eligió al crearla."
+      }
+     ],
+     "explicacion": "Origen como Tabla + Actualizar todo: con esas dos costumbres, las ventas nuevas siempre entran en el informe."
+    },
+    {
+     "tipo": "texto",
+     "md": "Javier señala una cifra y pregunta: «¿Y esto de dónde sale?». Haz **doble clic** sobre ella: Excel abre una **hoja nueva** con las filas del listado que forman esa cifra. Lo mismo hace clic derecho › **Mostrar detalles**.\n\nEsa hoja es una copia: puedes mirarla, filtrarla y borrarla cuando acabes. Cambiarla no toca ni el listado original ni la dinámica."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "La dinámica guarda los datos",
+     "md": "Una dinámica guarda dentro del libro una copia de sus datos de origen, también los que no se ven. Si mandas el libro a un cliente, con un doble clic puede ver el detalle. Fuera de la empresa, envía solo lo que deban ver (por ejemplo, un PDF)."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e6",
+     "modo": "ordenar",
+     "enunciado": "Es fin de mes y toca mandar el informe dinámico. Ordena los pasos.",
+     "pasos": [
+      "Pegar las ventas que faltan en la primera fila vacía debajo de la Tabla",
+      "Pulsar Actualizar todo (Ctrl+Alt+F5)",
+      "Comparar el total general de la dinámica con el total del listado",
+      "Borrar los filtros de las segmentaciones",
+      "Guardar y enviar el informe"
+     ],
+     "explicacion": "Primero los datos, después actualizar, después comprobar, y al final dejarlo sin filtros. Si actualizas antes de pegar, mandas un informe de ayer."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Andrés Molina",
+     "puesto": "Jefe de compras y almacén",
+     "md": "Ya he metido en el listado los dos albaranes del viernes 13 que faltaban, uno de Elena y otro de Jordi. Están al final. ¡Que no se te escapen del informe de Javier!"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l3-e7",
+     "modo": "formula",
+     "enunciado": "La dinámica de Javier marca **7.175,00 €** de total general (lo has anotado en **G2**). En **G3** calcula la diferencia entre el total del listado (**D2:D11**, ya con los albaranes de Andrés) y el total de la dinámica. Si no da 0, el informe no está al día.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Comercial",
+       "C1": "Zona",
+       "D1": "Importe",
+       "F1": "Comprobación",
+       "G1": "Importe",
+       "A2": {
+        "fecha": "2026-11-09"
+       },
+       "B2": "Raúl Gimeno",
+       "C2": "Zaragoza",
+       "D2": 1240,
+       "A3": {
+        "fecha": "2026-11-09"
+       },
+       "B3": "Elena Sanz",
+       "C3": "Pamplona",
+       "D3": 860,
+       "A4": {
+        "fecha": "2026-11-10"
+       },
+       "B4": "Jordi Vidal",
+       "C4": "Lleida",
+       "D4": 530,
+       "A5": {
+        "fecha": "2026-11-10"
+       },
+       "B5": "Pilar Lasheras",
+       "C5": "Zaragoza",
+       "D5": 975,
+       "A6": {
+        "fecha": "2026-11-11"
+       },
+       "B6": "Iñaki Goñi",
+       "C6": "Pamplona",
+       "D6": 1410,
+       "A7": {
+        "fecha": "2026-11-12"
+       },
+       "B7": "Sergio Bueno",
+       "C7": "Zaragoza",
+       "D7": 320,
+       "A8": {
+        "fecha": "2026-11-12"
+       },
+       "B8": "Montse Pujol",
+       "C8": "Lleida",
+       "D8": 1150,
+       "A9": {
+        "fecha": "2026-11-13"
+       },
+       "B9": "Raúl Gimeno",
+       "C9": "Zaragoza",
+       "D9": 690,
+       "A10": {
+        "fecha": "2026-11-13"
+       },
+       "B10": "Elena Sanz",
+       "C10": "Pamplona",
+       "D10": 1325,
+       "A11": {
+        "fecha": "2026-11-13"
+       },
+       "B11": "Jordi Vidal",
+       "C11": "Lleida",
+       "D11": 480.5,
+       "F2": "Total de la dinámica",
+       "G2": 7175,
+       "F3": "Diferencia"
+      },
+      "formatos": {
+       "A2:A11": "fecha",
+       "D2:D11": "eur",
+       "G2:G3": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 14,
+       "C": 10,
+       "D": 11,
+       "F": 19,
+       "G": 12
+      }
+     },
+     "objetivo": "G3",
+     "solucion": "=SUMA(D2:D11)-G2",
+     "alternativas": [
+      "=SUMA(D2:D11)-$G$2",
+      "=-G2+SUMA(D2:D11)",
+      "=SUMA($D$2:$D$11)-G2"
+     ],
+     "errores_tipicos": [
+      "=SUMA(D2:D9)-G2",
+      "=G2-SUMA(D2:D11)",
+      "=SUMA(D2:D11)"
+     ],
+     "variantes": [
+      {
+       "D11": 600
+      },
+      {
+       "G2": 8980.5
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Primero el total del listado entero; después réstale lo que dice la dinámica.",
+      "`SUMA(D2:D11)` menos `G2`. Ojo: el rango tiene que llegar hasta la fila 11, donde están los albaranes nuevos.",
+      "`=SUMA(D2:D11)-G2`"
+     ],
+     "explicacion": "1.805,50 €: justo los dos albaranes de Andrés (1.325,00 + 480,50). La dinámica no los ve porque no se ha actualizado. Pulsa Actualizar todo y la diferencia pasará a 0: esa es tu señal de que el informe para Javier está al día."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m4l3-q1",
+     "modo": "test",
+     "pregunta": "Javier quiere saber de dónde salen los 3.240 € de Pamplona en marzo, línea a línea. ¿Qué es lo más rápido?",
+     "opciones": [
+      {
+       "texto": "Doble clic sobre la cifra en la dinámica",
+       "correcta": true,
+       "porque": "Eso es: Excel abre una hoja nueva con justo las filas que forman esa cifra."
+      },
+      {
+       "texto": "Filtrar el listado a mano por zona y por fechas",
+       "correcta": false,
+       "porque": "Llegarías a lo mismo, pero con varios pasos y riesgo de equivocarte de fechas."
+      },
+      {
+       "texto": "Una fórmula SUMAR.SI.CONJUNTO",
+       "correcta": false,
+       "porque": "Sirve para comprobar el total, pero no te enseña las líneas. El doble clic sí."
+      },
+      {
+       "texto": "Crear otra dinámica solo para Pamplona",
+       "correcta": false,
+       "porque": "Demasiado trabajo: seguirías viendo totales, no las líneas."
+      }
+     ],
+     "explicacion": "Doble clic (o clic derecho › Mostrar detalles) para ver el detalle de cualquier cifra. Cuando acabes, borra esa hoja."
+    },
+    {
+     "id": "n3m4l3-q2",
+     "modo": "cinta",
+     "enunciado": "Sin usar el teclado: ¿dónde está **Actualizar todo** en la pestaña Datos?",
+     "ruta": [
+      "Datos",
+      "Consultas y conexiones",
+      "Actualizar todo"
+     ],
+     "explicacion": "Datos › Consultas y conexiones › Actualizar todo, o [[Ctrl]]+[[Alt]]+[[F5]]. Actualiza todas las dinámicas del libro."
+    },
+    {
+     "id": "n3m4l3-q3",
+     "modo": "test",
+     "pregunta": "Javier quiere ver solo el **tercer trimestre** en las tres dinámicas del informe, y cambiar de periodo con un clic durante la reunión. ¿Qué le preparas?",
+     "opciones": [
+      {
+       "texto": "Una escala de tiempo de Fecha conectada a las tres dinámicas (Conexiones de informe)",
+       "correcta": true,
+       "porque": "Eso es: arrastra sobre julio-septiembre (o elige el nivel Trimestres) y cambian las tres a la vez."
+      },
+      {
+       "texto": "Agrupar las fechas por trimestres",
+       "correcta": false,
+       "porque": "Agrupar enseña un total por trimestre, pero no filtra: seguirían saliendo los cuatro trimestres."
+      },
+      {
+       "texto": "Una segmentación de Comercial",
+       "correcta": false,
+       "porque": "Esa filtra por comercial, no por fechas."
+      },
+      {
+       "texto": "Borrar del listado las ventas de los otros meses",
+       "correcta": false,
+       "porque": "¡Nunca! Perderías datos. Filtrar no borra nada; borrar, sí."
+      }
+     ],
+     "explicacion": "Segmentación para elegir elementos (comercial, zona); escala de tiempo para elegir periodos. Y las dos, conectadas a todas las dinámicas."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "atajo",
+     "frente": "Actualizar la tabla dinámica seleccionada",
+     "dorso": "Alt+F5 (Analizar tabla dinámica › Datos › Actualizar)."
+    },
+    {
+     "tipo": "atajo",
+     "frente": "Actualizar todas las dinámicas del libro",
+     "dorso": "Ctrl+Alt+F5 (Datos › Consultas y conexiones › Actualizar todo)."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo haces que una segmentación filtre varias dinámicas?",
+     "dorso": "Clic en la segmentación › pestaña Segmentación › Conexiones de informe › marca las dinámicas (deben salir del mismo origen)."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo ves las filas que forman una cifra de la dinámica?",
+     "dorso": "Doble clic sobre la cifra (o clic derecho › Mostrar detalles): sale una hoja nueva con esas filas."
+    }
+   ]
+  },
+  {
+   "id": "n3m4l4",
+   "titulo": "Campo calculado, diseño de informe y gráfico dinámico",
+   "minutos": 16,
+   "objetivo": "Añadir a una dinámica un campo calculado de margen, presentarla en formato tabular con los subtotales adecuados, crear su gráfico dinámico y enlazar sus cifras sin copiarlas a mano.",
+   "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Carmen quiere ver el margen de cada familia, no solo lo vendido: añádelo a tu dinámica y ponle un gráfico. Y revisa la celda del margen total del informe del mes pasado, que lo hizo alguien que ya no está y no me cuadra con contabilidad.",
+    "logro": "Ya sabes calcular márgenes dentro de una dinámica, presentarla como un informe limpio con su gráfico y detectar un margen total mal calculado."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "El listado tiene **Importe** y **Coste**, pero no **Margen**. No hace falta añadir una columna: la dinámica puede calcularlo con un **campo calculado**, un campo nuevo hecho con una fórmula sobre otros campos.\n\nClic en la dinámica › **Analizar tabla dinámica** › **Cálculos** › **Campos, elementos y conjuntos** › **Campo calculado**. En **Nombre** escribe `Margen`; en **Fórmula**, `=Importe-Coste` (con doble clic en la lista de campos los insertas) › **Aceptar**. El campo aparece en la lista: arrástralo a Valores."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e1",
+     "modo": "cinta",
+     "enunciado": "Quieres añadir a la dinámica el campo calculado **Margen**. ¿Qué botón abre el menú donde está *Campo calculado*?",
+     "ruta": [
+      "Analizar tabla dinámica",
+      "Cálculos",
+      "Campos, elementos y conjuntos"
+     ],
+     "explicacion": "Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. El campo nuevo vive dentro de la dinámica: el listado no cambia."
+    },
+    {
+     "tipo": "texto",
+     "md": "Ojo con cómo calcula: el campo calculado trabaja con las **sumas** de cada grupo. Para Cableado, Margen = suma del Importe de Cableado − suma del Coste de Cableado.\n\nPara restar y dividir es justo lo que quieres. Un **Margen %** con la fórmula `=(Importe-Coste)/Importe` da el margen real de cada familia: margen total entre ventas totales. Es lo que vas a hacer ahora con una fórmula normal, para ver qué calcula la dinámica por dentro."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Multiplicar no funciona igual",
+     "md": "Un campo calculado `=Unidades*Precio` multiplica la **suma** de unidades por la **suma** de precios: un disparate. Lo que se calcula fila a fila, calcúlalo en el listado (una columna calculada de la Tabla) y súmalo después en la dinámica."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e2",
+     "modo": "formula",
+     "enunciado": "Esta es la dinámica de octubre con Importe y Coste por familia. En **D2** calcula el **margen %** de Cableado: (importe − coste) ÷ importe. Tu fórmula se copiará a D3:D6.",
+     "hoja": {
+      "celdas": {
+       "A1": "Familia",
+       "B1": "Suma de Importe",
+       "C1": "Suma de Coste",
+       "D1": "Margen %",
+       "A2": "Cableado",
+       "B2": 18420.5,
+       "C2": 14370,
+       "A3": "Canalización",
+       "B3": 6135.2,
+       "C3": 4290,
+       "A4": "Mecanismos",
+       "B4": 7980,
+       "C4": 5265,
+       "A5": "Iluminación",
+       "B5": 14760.8,
+       "C5": 9450,
+       "A6": "Protección",
+       "B6": 9203.5,
+       "C6": 6810
+      },
+      "formatos": {
+       "B2:C6": "eur",
+       "D2:D6": "0,00%"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 16,
+       "C": 15,
+       "D": 11
+      }
+     },
+     "objetivo": "D2",
+     "solucion": "=(B2-C2)/B2",
+     "copiar_a": [
+      "D3:D6"
+     ],
+     "alternativas": [
+      "=1-C2/B2",
+      "=(B2-C2)/$B2"
+     ],
+     "errores_tipicos": [
+      "=B2-C2/B2",
+      "=(B2-C2)/C2",
+      "=B2-C2"
+     ],
+     "variantes": [
+      {
+       "C2": 15000
+      },
+      {
+       "B4": 9000
+      }
+     ],
+     "formato_resultado": "0,00%",
+     "pistas": [
+      "Primero el margen en euros, entre paréntesis: (B2-C2). Después divídelo entre el importe.",
+      "Sin paréntesis, Excel divide antes de restar: `B2-C2/B2` no es lo mismo.",
+      "`=(B2-C2)/B2`"
+     ],
+     "explicacion": "21,99 % para Cableado y 35,98 % para Iluminación. Es exactamente lo que hace el campo calculado Margen %, familia a familia. Con esto puedes decirle a Carmen qué familias dejan más dinero, no solo cuáles venden más."
+    },
+    {
+     "tipo": "texto",
+     "md": "La trampa más común: el listado trae una columna **% margen** por línea y alguien la pone en Valores como **Promedio**. Eso es la media de las líneas: una venta de 20 € pesa lo mismo que una de 5.000 €.\n\nEl margen real de un grupo es **margen total ÷ ventas totales**. Por eso se calcula con un campo calculado (que trabaja con sumas), no promediando porcentajes. Y lo mismo para el total de la empresa: nunca la media de los porcentajes de cada familia."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e3",
+     "modo": "test",
+     "pregunta": "Una familia tiene solo dos ventas: una de **5.000 €** con un 10 % de margen (500 €) y otra de **100 €** con un 50 % (50 €). La dinámica, con *Promedio de % margen*, dice 30 %. ¿Cuál es el margen real de la familia?",
+     "opciones": [
+      {
+       "texto": "10,78 %: (500 + 50) ÷ (5.000 + 100)",
+       "correcta": true,
+       "porque": "Exacto: 550 € de margen sobre 5.100 € vendidos. La venta grande manda, igual que en las cuentas de la empresa."
+      },
+      {
+       "texto": "30 %: la media de 10 % y 50 %",
+       "correcta": false,
+       "porque": "Es lo que da el Promedio, pero trata igual la venta de 100 € que la de 5.000 €. La empresa no ganó un 30 % de lo que vendió."
+      },
+      {
+       "texto": "60 %: 10 % + 50 %",
+       "correcta": false,
+       "porque": "Es lo que daría Suma de % margen: sumar porcentajes de líneas distintas no tiene sentido."
+      },
+      {
+       "texto": "50 %: el margen más alto",
+       "correcta": false,
+       "porque": "Ese es el de la venta pequeña; casi todo el dinero vino de la grande, que deja un 10 %."
+      }
+     ],
+     "explicacion": "Margen real = margen total ÷ ventas totales. Un campo calculado `=(Importe-Coste)/Importe` lo hace bien porque trabaja con sumas."
+    },
+    {
+     "tipo": "texto",
+     "md": "Por defecto, la dinámica usa el diseño **compacto**: si pones Zona y Familia en Filas, las dos van en la misma columna, con sangría. Para mirar en pantalla está bien; para filtrar, copiar o imprimir, mejor el formato **tabular**: cada campo en su columna.\n\n**Diseño** › **Diseño de informe** › elige la opción **tabular** y después **Repetir todas las etiquetas de elementos**, para que la zona salga en todas las filas y no solo en la primera."
+    },
+    {
+     "tipo": "comparar",
+     "izq": "Compacto (el de serie)",
+     "der": "Tabular con etiquetas repetidas",
+     "filas": [
+      [
+       "Una sola columna, «Etiquetas de fila», con zonas y familias",
+       "Una columna para Zona y otra para Familia"
+      ],
+      [
+       "La zona aparece una vez, encima de sus familias",
+       "La zona se repite en cada fila"
+      ],
+      [
+       "Cómodo para mirar en pantalla",
+       "Cómodo para filtrar, copiar a otra hoja o imprimir"
+      ]
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e4",
+     "modo": "cinta",
+     "enunciado": "Marta quiere la dinámica con Zona y Familia en columnas separadas para imprimirla. ¿Qué botón abre las opciones de formato tabular y de repetir etiquetas?",
+     "ruta": [
+      "Diseño",
+      "Diseño",
+      "Diseño de informe"
+     ],
+     "explicacion": "Diseño › Diseño › Diseño de informe. La pestaña Diseño de la dinámica aparece, como Analizar tabla dinámica, al seleccionar una celda de la dinámica."
+    },
+    {
+     "tipo": "texto",
+     "md": "En el mismo grupo están los **Subtotales** (una fila «Total Zaragoza» al acabar cada zona) y los **Totales generales** (la fila y la columna del final).\n\n- Para leer, los subtotales ayudan.\n- Para trabajar con las cifras (filtrar, copiar), suelen estorbar: **Diseño** › **Subtotales** › **No mostrar subtotales**.\n\nY una regla de oro: si sumas tú a mano celdas de una dinámica con subtotales, sumarás cosas dos veces."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e5",
+     "modo": "test",
+     "pregunta": "Junto a una dinámica con Zona y Familia en Filas (con subtotales por zona), un compañero escribe `=SUMA(C5:C22)` para «comprobar» el total, sin incluir la fila Total general. Le sale **el doble** del total general. ¿Por qué?",
+     "opciones": [
+      {
+       "texto": "El rango incluye las filas de subtotal: cada zona se suma dos veces (sus familias y su total)",
+       "correcta": true,
+       "porque": "Eso es. Para comprobar, compara con el Total general o quita los subtotales antes de sumar."
+      },
+      {
+       "texto": "La dinámica no está actualizada",
+       "correcta": false,
+       "porque": "Una dinámica sin actualizar no daría justo el doble en la SUMA: aquí sale doble porque se suman también los subtotales."
+      },
+      {
+       "texto": "SUMA no funciona con tablas dinámicas",
+       "correcta": false,
+       "porque": "SUMA suma las celdas de una dinámica como cualquier otra; el problema es qué celdas entran en el rango."
+      },
+      {
+       "texto": "Hay ventas repetidas en el listado",
+       "correcta": false,
+       "porque": "Ventas repetidas cambiarían también el total de la propia dinámica; no harían que tu SUMA saliera justo el doble."
+      }
+     ],
+     "explicacion": "Cuidado con sumar a mano un informe que ya trae totales: es el clásico «sumar los totales dos veces»."
+    },
+    {
+     "tipo": "texto",
+     "md": "Un **gráfico dinámico** es un gráfico unido a una dinámica. Clic en la dinámica › **Analizar tabla dinámica** › **Gráfico dinámico** › elige, por ejemplo, **Columna agrupada** › **Aceptar**.\n\nLo bueno: va siempre a la par con su dinámica. Si filtras con la segmentación, mueves campos o actualizas, el gráfico cambia solo. Carmen pulsa «Lleida» y ve el gráfico de Lleida."
+    },
+    {
+     "tipo": "texto",
+     "md": "En una hoja de resumen, si escribes `=` y **haces clic** en una cifra de la dinámica, Excel no pone `=B5`, sino algo así:\n\n`=IMPORTARDATOSDINAMICOS(\"Importe\";$A$3;\"Familia\";\"Cableado\")`\n\nNo es un error: busca la cifra **por su nombre** (el Importe de Cableado de la dinámica que empieza en A3), así que sigue trayendo la buena aunque la dinámica cambie de orden o de tamaño. Si prefieres `=B5`, escribe la referencia con el teclado en vez de hacer clic. Lo que nunca debes hacer: **copiar las cifras a mano**."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e6",
+     "modo": "test",
+     "pregunta": "Para el resumen de Carmen, un compañero **tecleó a mano** en otra hoja las cifras de la dinámica. Llegan ventas nuevas y actualizas. ¿Qué pasa con su resumen?",
+     "opciones": [
+      {
+       "texto": "Se queda con las cifras viejas, y nada avisa de que ya no cuadran",
+       "correcta": true,
+       "porque": "Exacto: un número tecleado no se entera de nada. Con una fórmula que apunte a la dinámica (IMPORTARDATOSDINAMICOS o =B5), el resumen se actualiza con ella."
+      },
+      {
+       "texto": "Se actualiza también, porque las cifras salen de la dinámica",
+       "correcta": false,
+       "porque": "Salieron de ella, pero al teclearlas son números sueltos: no tienen ningún vínculo."
+      },
+      {
+       "texto": "Excel avisa de que hay cifras desactualizadas",
+       "correcta": false,
+       "porque": "Excel no puede saber que esos números los tecleaste mirando la dinámica."
+      },
+      {
+       "texto": "Da el error #¡REF!",
+       "correcta": false,
+       "porque": "No hay fórmula, así que no puede dar error: da cifras viejas en silencio, que es peor."
+      }
+     ],
+     "explicacion": "Las cifras de un informe, siempre con fórmula. Si al hacer clic en la dinámica sale IMPORTARDATOSDINAMICOS, déjala: es tu enlace con los datos."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Marta Ruiz",
+     "puesto": "Directora financiera",
+     "md": "Esta es la hoja del mes pasado. En D7 tendría que estar el margen total de la empresa, pero no me cuadra con contabilidad. Mírala, por favor."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m4l4-e7",
+     "modo": "formula",
+     "enunciado": "En **D7** está el margen total con la fórmula `=PROMEDIO(D2:D6)`: la media de los márgenes de cada familia. **Arréglala**: el margen total es (importe total − coste total) ÷ importe total, con los totales de la fila 7.",
+     "hoja": {
+      "celdas": {
+       "A1": "Familia",
+       "B1": "Suma de Importe",
+       "C1": "Suma de Coste",
+       "D1": "Margen %",
+       "A2": "Cableado",
+       "B2": 18420.5,
+       "C2": 14370,
+       "D2": "=(B2-C2)/B2",
+       "A3": "Canalización",
+       "B3": 6135.2,
+       "C3": 4290,
+       "D3": "=(B3-C3)/B3",
+       "A4": "Mecanismos",
+       "B4": 7980,
+       "C4": 5265,
+       "D4": "=(B4-C4)/B4",
+       "A5": "Iluminación",
+       "B5": 14760.8,
+       "C5": 9450,
+       "D5": "=(B5-C5)/B5",
+       "A6": "Protección",
+       "B6": 9203.5,
+       "C6": 6810,
+       "D6": "=(B6-C6)/B6",
+       "A7": "Total general",
+       "B7": "=SUMA(B2:B6)",
+       "C7": "=SUMA(C2:C6)"
+      },
+      "formatos": {
+       "B2:C7": "eur",
+       "D2:D7": "0,00%"
+      },
+      "anchos": {
+       "A": 13,
+       "B": 16,
+       "C": 15,
+       "D": 11
+      }
+     },
+     "objetivo": "D7",
+     "inicial": "=PROMEDIO(D2:D6)",
+     "solucion": "=(B7-C7)/B7",
+     "alternativas": [
+      "=1-C7/B7",
+      "=(SUMA(B2:B6)-SUMA(C2:C6))/SUMA(B2:B6)"
+     ],
+     "errores_tipicos": [
+      "=PROMEDIO(D2:D6)",
+      "=(B7-C7)/C7",
+      "=SUMA(D2:D6)",
+      "=B7-C7/B7"
+     ],
+     "no_usar": [
+      "PROMEDIO"
+     ],
+     "variantes": [
+      {
+       "B2": 30000
+      },
+      {
+       "C5": 12000
+      }
+     ],
+     "formato_resultado": "0,00%",
+     "pistas": [
+      "La media de porcentajes trata igual a la familia que vende 6.000 € y a la que vende 18.000 €. El total no se promedia: se divide.",
+      "Usa los totales de la fila 7: margen total (B7 − C7) entre importe total (B7).",
+      "`=(B7-C7)/B7`"
+     ],
+     "explicacion": "28,88 %, no el 29,62 % que daba la media. Parece poco, pero sobre 56.500 € de ventas son unos 417 € de margen que no existen. Ya puedes decirle a Marta por qué no le cuadraba con contabilidad y cómo se calcula bien: totales entre totales."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m4l4-q1",
+     "modo": "test",
+     "pregunta": "Un compañero crea el campo calculado `=Unidades*Precio` y le salen importes enormes. ¿Por qué?",
+     "opciones": [
+      {
+       "texto": "Multiplica la suma de unidades por la suma de precios de cada grupo",
+       "correcta": true,
+       "porque": "Eso es: el campo calculado trabaja con sumas. Para multiplicar fila a fila, hazlo en el listado y suma después."
+      },
+      {
+       "texto": "Le falta el signo $",
+       "correcta": false,
+       "porque": "En un campo calculado no hay celdas que fijar: se escriben nombres de campos."
+      },
+      {
+       "texto": "La dinámica no está actualizada",
+       "correcta": false,
+       "porque": "Actualizar no cambia cómo calcula: seguiría multiplicando sumas."
+      },
+      {
+       "texto": "Los campos calculados solo pueden restar",
+       "correcta": false,
+       "porque": "Pueden sumar, restar, multiplicar y dividir; el problema es que lo hacen sobre las sumas."
+      }
+     ],
+     "explicacion": "Campo calculado = fórmula sobre las sumas de cada grupo. Perfecto para márgenes; un disparate para multiplicar fila a fila."
+    },
+    {
+     "id": "n3m4l4-q2",
+     "modo": "respuesta_corta",
+     "pregunta": "Escribes `=` y haces clic en una cifra de la dinámica. ¿Cómo se llama la función que aparece en la fórmula?",
+     "aceptadas": [
+      "IMPORTARDATOSDINAMICOS",
+      "importardatosdinamicos",
+      "IMPORTARDATOSDINÁMICOS",
+      "Importardatosdinamicos"
+     ],
+     "explicacion": "IMPORTARDATOSDINAMICOS(campo_de_datos; tabla_dinámica; [campo1; elemento1]; …) trae una cifra de la dinámica por su nombre. Existe en todas las versiones de Excel."
+    },
+    {
+     "id": "n3m4l4-q3",
+     "modo": "cinta",
+     "enunciado": "Con una celda de la dinámica seleccionada, ¿dónde creas un gráfico unido a ella?",
+     "ruta": [
+      "Analizar tabla dinámica",
+      "Herramientas",
+      "Gráfico dinámico"
+     ],
+     "explicacion": "Analizar tabla dinámica › Herramientas › Gráfico dinámico. También está en Insertar › Gráficos › Gráfico dinámico."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo añades un campo calculado a una dinámica?",
+     "dorso": "Analizar tabla dinámica › Cálculos › Campos, elementos y conjuntos › Campo calculado. Nombre (Margen) y fórmula (=Importe-Coste)."
+    },
+    {
+     "tipo": "error",
+     "frente": "¿Por qué no se promedian los % de margen para sacar el margen total?",
+     "dorso": "Porque cada línea o familia pesa igual. Margen real = margen total ÷ ventas totales."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "¿Qué es IMPORTARDATOSDINAMICOS?",
+     "dorso": "La fórmula que crea Excel al hacer clic en una cifra de la dinámica: la trae por su nombre. IMPORTARDATOSDINAMICOS(campo_de_datos; tabla_dinámica; [campo1; elemento1]; …)"
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Cómo pones una dinámica con cada campo en su columna?",
+     "dorso": "Diseño › Diseño de informe › formato tabular + Repetir todas las etiquetas de elementos."
+    }
+   ]
+  }
+ ]
+}

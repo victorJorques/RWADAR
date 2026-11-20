@@ -1,0 +1,317 @@
+{
+  "id": "n0m1l1",
+  "titulo": "Qué es Excel y para qué lo usarás",
+  "minutos": 12,
+  "objetivo": "Explicar con tus palabras qué es Excel, qué son un libro, una hoja y una celda, y hacer que Excel calcule una cuenta por ti.",
+  "mision": {
+    "de": "Andrés Molina",
+    "puesto": "Jefe de compras y almacén",
+    "texto": "Bienvenida a Electro Cierzo. Te toca la primera: en el almacén tenemos cajas de bridas en tres estanterías, 14 en una, 9 en otra y 6 en la última. Apúntame el total en Excel, que de cabeza siempre alguien se equivoca.",
+    "logro": "Ya sabes qué es un libro de Excel y has hecho tu primera cuenta en una hoja, como se hace en el almacén de verdad."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Imagina un **cuaderno de cuadros** enorme, como los del colegio. En cada cuadrito escribes una cosa: un nombre, un precio, una fecha.\n\n**Excel es eso, pero que además hace las cuentas solo.** Si apuntas lo que vende cada comercial, Excel te dice el total. Y si mañana cambia un número, el total se corrige al momento, sin borrar ni volver a sumar."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e1",
+      "modo": "test",
+      "pregunta": "Con lo que acabas de leer, ¿qué es Excel?",
+      "opciones": [
+        {
+          "texto": "Un cuaderno de cuadros en el ordenador que además hace las cuentas solo.",
+          "correcta": true,
+          "porque": "Eso es. Escribes datos en casillas y Excel calcula con ellos. Ya tienes la idea principal de todo el curso."
+        },
+        {
+          "texto": "Un programa para escribir cartas y documentos largos.",
+          "correcta": false,
+          "porque": "Para cartas y documentos se usa Word. Excel es para datos en casillas: listas, cuentas y tablas."
+        },
+        {
+          "texto": "Una calculadora que solo usan los contables.",
+          "correcta": false,
+          "porque": "Calcula, sí, pero también guarda listas, fechas y nombres, y lo usan todos los departamentos, no solo contabilidad."
+        }
+      ],
+      "explicacion": "Primera pantalla superada. Quédate con la imagen del cuaderno de cuadros: te servirá durante todo el curso."
+    },
+    {
+      "tipo": "texto",
+      "md": "Tres palabras que oirás todos los días en la oficina:\n\n- **Libro**: el archivo entero, el que guardas y envías por correo. Por ejemplo, `Pedidos 2026.xlsx`.\n- **Hoja**: cada página del libro. Un libro puede tener varias: «Enero», «Febrero», «Marzo»…\n- **Celda**: cada casilla de una hoja. En una celda va **un solo dato**.\n\nComo un archivador: el libro es el archivador, las hojas son sus páginas y las celdas, los cuadritos de cada página."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e2",
+      "modo": "ordenar",
+      "enunciado": "Ordena de **lo más grande a lo más pequeño**: lo que contiene a lo demás va primero.",
+      "pasos": [
+        "Libro (el archivo que guardas y envías)",
+        "Hoja (cada página del libro)",
+        "Celda (cada casilla de una hoja)"
+      ],
+      "explicacion": "Un libro tiene hojas y cada hoja tiene celdas. Cuando Marta te diga «te mando el libro de cobros, mira la hoja de octubre», ya sabes de qué habla."
+    },
+    {
+      "tipo": "pantalla",
+      "md": "Así se ve Excel cuando abres un libro. **Toca cualquier parte** para curiosear qué es. No te preocupes por memorizarlo: en la próxima lección las verás una a una. Por ahora fíjate en la cuadrícula del centro: esas son las celdas."
+    },
+    {
+      "tipo": "texto",
+      "md": "¿Para qué se usa Excel en una empresa como Electro Cierzo? **En todos los departamentos**:\n\n- **Listas**: clientes, proveedores, la plantilla, el material del almacén.\n- **Cuentas**: el importe de una factura, las ventas del mes, las horas extra.\n- **Informes**: el resumen que Carmen, la directora, lee el lunes.\n\nNo es una herramienta de contables: la usan comerciales, recursos humanos, compras y, desde hoy, tú."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e3",
+      "modo": "test",
+      "pregunta": "Lucía, de Recursos Humanos, dice: «Yo no necesito Excel, eso es cosa de contabilidad». ¿Qué le contestarías?",
+      "opciones": [
+        {
+          "texto": "Que también le sirve: para la lista de la plantilla, las vacaciones o las horas de cada persona.",
+          "correcta": true,
+          "porque": "Bien visto. Recursos Humanos vive de listas y fechas, justo lo que Excel ordena y cuenta mejor."
+        },
+        {
+          "texto": "Que tiene razón: Excel es solo para cuentas de dinero.",
+          "correcta": false,
+          "porque": "Es un error muy común. Excel guarda y cuenta cualquier dato: nombres, fechas, horas, unidades… no solo euros."
+        },
+        {
+          "texto": "Que solo le hace falta si sabe muchas matemáticas.",
+          "correcta": false,
+          "porque": "No hace falta saber matemáticas: Excel hace las cuentas. Tú solo le dices qué cuenta quieres."
+        }
+      ],
+      "explicacion": "Excel sirve en cada departamento. Por eso saber usarlo bien es de lo más pedido en las ofertas de empleo de oficina."
+    },
+    {
+      "tipo": "texto",
+      "md": "**No hace falta saber matemáticas.** Tú decides qué cuenta quieres y Excel la hace sin equivocarse.\n\nPara pedirle una cuenta, escribes en una celda el signo **igual** (`=`) y después la cuenta. Por ejemplo, `=2+3`.\n\nEl `=` es como decirle a Excel: «esto no es para copiarlo tal cual, **calcúlalo**». Al pulsar **Intro** (la tecla grande de salto de línea), en la celda aparece el resultado: **5**."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: tu primera cuenta",
+      "pasos": [
+        {
+          "md": "Haz clic en una celda vacía. Queda rodeada por un recuadro: es la celda donde vas a escribir."
+        },
+        {
+          "md": "Escribe `=2+3`. Fíjate: empieza por el signo igual."
+        },
+        {
+          "md": "Pulsa **Intro**. En la celda ya no ves `=2+3`, ves el resultado: **5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cuenta",
+              "A2": "=2+3"
+            },
+            "columnas": 3,
+            "filas": 3
+          }
+        },
+        {
+          "md": "La cuenta sigue guardada «por dentro» de la celda. Cuando vuelvas a seleccionarla, Excel te la enseña en la parte de arriba. Eso lo verás en la próxima lección."
+        }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e4",
+      "modo": "formula",
+      "enunciado": "Te toca. Haz clic en la celda **B2** (la que está marcada) y escribe exactamente `=2+3`. Después pulsa **Intro**. Debe salir **5**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Prueba",
+          "B1": "Resultado",
+          "A2": "Mi primera cuenta"
+        },
+        "anchos": {
+          "A": 18
+        },
+        "columnas": 3,
+        "filas": 3
+      },
+      "objetivo": "B2",
+      "solucion": "=2+3",
+      "alternativas": [
+        "=3+2"
+      ],
+      "errores_tipicos": [
+        "=2*3",
+        "=2-3",
+        "=23"
+      ],
+      "pistas": [
+        "Todo lo que escribas en B2 tiene que empezar por el signo igual.",
+        "El signo igual está en la tecla del 0, en la fila de arriba del teclado: mantén pulsada Mayús (la tecla de las mayúsculas, con una flecha hacia arriba) y pulsa el 0.",
+        "Escribe en B2, sin espacios: =2+3 y pulsa Intro."
+      ],
+      "explicacion": "Excel acaba de calcular por ti. Has escrito una **fórmula**: una cuenta que empieza por `=`. Todo lo que harás en este curso, desde una factura hasta un informe para la dirección, se basa en esto."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e5",
+      "modo": "predice",
+      "enunciado": "Andrés ha recibido **120** rollos de cable esta mañana y **35** esta tarde. En C1 alguien ha escrito `=120+35`. Antes de verlo, ¿qué número aparecerá en la celda?",
+      "hoja": {
+        "celdas": {
+          "A1": "Rollos recibidos hoy"
+        },
+        "anchos": {
+          "A": 20
+        },
+        "columnas": 3,
+        "filas": 2
+      },
+      "celda": "C1",
+      "formula": "=120+35",
+      "explicacion": "120 + 35 = 155. En la celda se ve el resultado, no la cuenta: por eso conviene saber que detrás de un número puede haber una fórmula.",
+      "respuesta": "155"
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Un consejo de compañera para tu primer día: **no tengas miedo a tocar.** Si borras algo sin querer o te sale algo raro, pulsa [[Ctrl]]+[[Z]] y Excel deshace lo último que hiciste. Puedes pulsarlo varias veces para ir hacia atrás. Yo lo uso veinte veces al día."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "atajo",
+      "titulo": "Deshacer",
+      "md": "[[Ctrl]]+[[Z]]: deshace lo último. Mantén pulsada la tecla **Ctrl** (abajo a la izquierda) y, sin soltarla, pulsa la **Z**."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e6",
+      "modo": "test",
+      "pregunta": "Estabas mirando la lista de pedidos y, sin querer, has borrado el nombre de un cliente. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Pulso [[Ctrl]]+[[Z]] para deshacer y el nombre vuelve.",
+          "correcta": true,
+          "porque": "Así se hace. Deshacer recupera lo que acabas de cambiar. Casi todo en Excel tiene vuelta atrás."
+        },
+        {
+          "texto": "Cierro Excel sin guardar y pido que me manden el archivo otra vez.",
+          "correcta": false,
+          "porque": "Funcionaría, pero perderías todo lo demás que hubieras hecho y molestarías a un compañero. [[Ctrl]]+[[Z]] lo arregla en un segundo."
+        },
+        {
+          "texto": "Lo dejo así: ya no se puede recuperar.",
+          "correcta": false,
+          "porque": "Sí se puede. Con [[Ctrl]]+[[Z]] Excel deshace lo último que hiciste, y puedes pulsarlo varias veces."
+        }
+      ],
+      "explicacion": "Recuerda [[Ctrl]]+[[Z]]: es tu red de seguridad. Con ella puedes probar sin miedo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l1-e7",
+      "modo": "formula",
+      "enunciado": "**El encargo de Andrés.** Hay cajas de bridas en tres estanterías: **14**, **9** y **6**. En la celda **B5** escribe una fórmula que sume las tres cantidades. Debe salir **29**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Ubicación",
+          "B1": "Cajas de bridas",
+          "A2": "Estantería 1",
+          "B2": 14,
+          "A3": "Estantería 2",
+          "B3": 9,
+          "A4": "Estantería 3",
+          "B4": 6,
+          "A5": "Total"
+        },
+        "anchos": {
+          "A": 14,
+          "B": 16
+        },
+        "columnas": 3,
+        "filas": 6
+      },
+      "objetivo": "B5",
+      "solucion": "=14+9+6",
+      "alternativas": [
+        "=B2+B3+B4",
+        "=6+9+14"
+      ],
+      "errores_tipicos": [
+        "=14+9",
+        "=14+6",
+        "=1496"
+      ],
+      "pistas": [
+        "Empieza como en el ejercicio anterior: con el signo igual.",
+        "Tienes que sumar los tres números, uno detrás de otro, con el signo + entre ellos.",
+        "Escribe en B5: =14+9+6 y pulsa Intro."
+      ],
+      "explicacion": "Total: **29 cajas**. Acabas de resolver tu primer encargo real con Excel: un recuento de almacén. En el módulo 3 aprenderás a que la fórmula use las celdas, para que el total cambie solo cuando cambie una cantidad."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n0m1l1-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "Sin mirar arriba: ¿cómo se llama cada casilla de una hoja de Excel, donde va un solo dato?",
+      "aceptadas": ["celda", "una celda", "la celda", "celdas"],
+      "explicacion": "Celda. Libro = el archivo; hoja = cada página; celda = cada casilla."
+    },
+    {
+      "id": "n0m1l1-q2",
+      "modo": "test",
+      "pregunta": "Marta te dice: «Te mando por correo el libro de cobros». ¿Qué vas a recibir?",
+      "opciones": [
+        {
+          "texto": "Un archivo de Excel entero, que puede tener varias hojas dentro.",
+          "correcta": true,
+          "porque": "Eso es: en Excel, «libro» es el archivo completo."
+        },
+        {
+          "texto": "Una sola casilla con el total de cobros.",
+          "correcta": false,
+          "porque": "Una casilla es una celda. El libro es el archivo entero, con todas sus hojas y celdas."
+        },
+        {
+          "texto": "Un libro en papel sobre cómo cobrar a los clientes.",
+          "correcta": false,
+          "porque": "En la oficina, «libro» casi siempre significa «archivo de Excel»."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l1-q3",
+      "modo": "predice",
+      "enunciado": "En la celda B1 hay escrito `=40+15`. ¿Qué número se ve en la celda?",
+      "hoja": {
+        "celdas": {
+          "A1": "Cajas"
+        },
+        "columnas": 2,
+        "filas": 2
+      },
+      "celda": "B1",
+      "formula": "=40+15",
+      "explicacion": "40 + 15 = 55. El signo igual hace que Excel calcule y enseñe el resultado.",
+      "respuesta": "55"
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "Libro, hoja y celda: ¿qué es cada uno?",
+      "dorso": "Libro = el archivo. Hoja = cada página del libro. Celda = cada casilla de una hoja (un dato por celda)."
+    },
+    {
+      "tipo": "atajo",
+      "frente": "Deshacer lo último que has hecho",
+      "dorso": "Ctrl+Z (puedes pulsarlo varias veces)"
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Con qué signo empieza una cuenta en Excel?",
+      "dorso": "Con el signo igual: =2+3 muestra 5."
+    }
+  ]
+}

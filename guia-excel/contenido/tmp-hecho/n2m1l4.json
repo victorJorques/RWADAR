@@ -1,0 +1,183 @@
+{
+ "id": "n2m1l4",
+ "titulo": "Formato condicional y pegado especial",
+ "minutos": 16,
+ "objetivo": "Resaltar automáticamente los datos importantes con formato condicional, añadir minigráficos y pasar resultados a otro sitio con Pegar valores.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "En la lista de facturas pendientes quiero ver de un vistazo las que pasan de 3.000 €, y que se marquen solas cuando cambie algo. Luego pásame los importes a mi libro de tesorería, solo los números: mi libro no tiene tus fórmulas.",
+  "logro": "Ya sabes hacer que Excel marque solo lo importante con formato condicional y pasar resultados a otro libro con Pegar valores."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Marta quiere ver de un vistazo las facturas de más de 3.000 €. Podrías pintarlas de rojo a mano, pero mañana un cliente paga, otro importe cambia… y tus colores siguen donde estaban, mintiendo.\n\nEl **formato condicional** es una **regla**: «si el importe es mayor que 3.000, píntalo». Excel la vuelve a mirar cada vez que cambia un dato, así que el color siempre dice la verdad."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e1",
+   "modo": "test",
+   "pregunta": "Ayer pintaste a mano de rojo las facturas de más de 3.000 €. Hoy una de 2.800 € se ha corregido a 3.400 €. ¿Qué pasa con su color?",
+   "opciones": [
+    { "texto": "Sigue sin color: el relleno a mano no sabe que el importe ha cambiado", "correcta": true, "porque": "Exacto. Un color puesto a mano es una foto de ayer. Por eso se usa formato condicional." },
+    { "texto": "Se pone roja sola, porque Excel recuerda por qué la pintaste", "correcta": false, "porque": "Excel no sabe por qué pintaste nada. Solo una regla de formato condicional se actualiza sola." },
+    { "texto": "Sale un aviso de que el color ya no es correcto", "correcta": false, "porque": "No hay ningún aviso: el color equivocado se queda ahí sin que nadie lo note." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "El botón está en **Inicio › Estilos › Formato condicional**. Al pulsarlo verás cinco familias de reglas:\n\n- **Reglas para resaltar celdas**: mayor que, menor que, entre, texto que contiene, valores duplicados.\n- **Reglas superiores e inferiores**: los 10 mayores, por encima del promedio…\n- **Barras de datos**: una barra dentro de cada celda, más larga cuanto mayor es el número.\n- **Escalas de color**: de verde a rojo según el valor.\n- **Conjuntos de iconos**: flechas, semáforos…"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e2",
+   "modo": "cinta",
+   "enunciado": "Abre el menú de formato condicional.",
+   "ruta": ["Inicio", "Estilos", "Formato condicional"],
+   "explicacion": "Inicio › Estilos › Formato condicional. Antes de pulsarlo, selecciona las celdas a las que se aplicará la regla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e3",
+   "modo": "test",
+   "pregunta": "Para marcar en rojo las facturas de **más de 3.000 €**, ¿qué regla eliges?",
+   "opciones": [
+    { "texto": "Reglas para resaltar celdas › Mayor que…", "correcta": true, "porque": "Es la regla directa: escribes el límite (o eliges la celda donde está) y el formato." },
+    { "texto": "Reglas superiores e inferiores › 10 superiores", "correcta": false, "porque": "Marcaría las 10 más altas, pasen o no de 3.000 €. Sirve para un ranking, no para un límite." },
+    { "texto": "Escalas de color", "correcta": false, "porque": "Pinta todas las celdas en degradado. Sirve para ver tendencias, no para separar las que pasan de un límite." },
+    { "texto": "Reglas para resaltar celdas › Valores duplicados", "correcta": false, "porque": "Esa marca importes repetidos, muy útil para detectar facturas metidas dos veces, pero no compara con 3.000 €." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "Dos detalles que separan a una novata de una profesional:\n\n- **El límite, en una celda.** En el cuadro *Mayor que*, en lugar de teclear 3000, haz clic en la celda donde está el límite (queda `=$G$1`). Si Marta lo cambia a 2.500, los colores se actualizan solos.\n- **El color no cambia el valor.** Una celda roja sigue valiendo lo mismo y las sumas no se enteran. Y si el informe se imprime en blanco y negro, el color desaparece: conviene una marca escrita además del color."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e4",
+   "modo": "formula",
+   "enunciado": "La marca escrita para cuando Marta imprima en blanco y negro. En **D2** escribe una fórmula que ponga «Revisar» si el importe de C2 es **mayor** que el límite de **G1**, y que deje la celda vacía (`\"\"`) si no. Tu fórmula se copiará a D3:D7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura", "B1": "Cliente", "C1": "Importe", "D1": "Aviso", "F1": "Límite", "G1": 3000,
+     "A2": "FV-26/0812", "B2": "Instalaciones Ebro, S.L.", "C2": 2450,
+     "A3": "FV-26/0815", "B3": "Electricidad Hnos. Lacasa", "C3": 3820.5,
+     "A4": "FV-26/0821", "B4": "Montajes Delicias, S.L.", "C4": 1275,
+     "A5": "FV-26/0826", "B5": "Climatización Moncayo", "C5": 5310,
+     "A6": "FV-26/0830", "B6": "Reformas Actur, S.L.", "C6": 980.4,
+     "A7": "FV-26/0833", "B7": "Instalaciones Ebro, S.L.", "C7": 3000
+    },
+    "formatos": { "C2:C7": "eur", "G1": "eur" },
+    "anchos": { "A": 11, "B": 25, "C": 12, "D": 9 }
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D7"],
+   "solucion": "=SI(C2>$G$1;\"Revisar\";\"\")",
+   "alternativas": ["=SI(C2>G$1;\"Revisar\";\"\")", "=SI(C2<=$G$1;\"\";\"Revisar\")"],
+   "errores_tipicos": ["=SI(C2>G1;\"Revisar\";\"\")", "=SI(C2>=$G$1;\"Revisar\";\"\")", "=SI(C2>3000;\"Revisar\";\"\")"],
+   "variantes": [{ "G1": 2000 }],
+   "pistas": [
+    "Es una decisión: usa SI(condición; si se cumple; si no).",
+    "La condición es `C2>$G$1`. Fija G1 con $ para que no se mueva al copiar, y pon los textos entre comillas.",
+    "Escribe `=SI(C2>$G$1;\"Revisar\";\"\")`."
+   ],
+   "explicacion": "Dos facturas marcadas: 3.820,50 € y 5.310 €. Fíjate en la de 3.000 € justos: no sale, porque «mayor que» no incluye el propio límite. Y como el límite está en G1, si Marta lo cambia, las marcas se recalculan solas. Esta misma idea es la del formato condicional."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e5",
+   "modo": "test",
+   "pregunta": "Javier quiere comparar de un vistazo las ventas de sus seis comerciales, dentro de las mismas celdas y viendo quién vende más que quién. ¿Qué formato condicional le pones?",
+   "opciones": [
+    { "texto": "Barras de datos", "correcta": true, "porque": "Cada celda lleva una barra proporcional a su valor: se compara de un vistazo, como un gráfico dentro de la tabla." },
+    { "texto": "Reglas para resaltar celdas › Mayor que", "correcta": false, "porque": "Solo separa en dos grupos (pasa o no pasa un límite). No deja ver cuánto vende cada uno respecto a los demás." },
+    { "texto": "Conjuntos de iconos con semáforos", "correcta": false, "porque": "Agrupa en tres colores; dos comerciales con ventas muy distintas pueden tener el mismo semáforo." }
+   ],
+   "explicacion": "Regla rápida: para un límite, **Mayor que**; para comparar cantidades, **barras de datos**; para ver tendencias en una tabla grande, **escalas de color**. Y con moderación: si todo tiene color, nada destaca."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para revisar o quitar reglas, en el mismo menú tienes **Administrar reglas** (las ves todas y puedes editarlas) y **Borrar reglas** (de las celdas seleccionadas o de toda la hoja). Si heredas un libro con colores raros, empieza por Administrar reglas.\n\nY un extra muy vistoso: los **minigráficos**, gráficos diminutos dentro de una celda que enseñan la tendencia de una fila, por ejemplo las ventas de enero a junio de cada comercial. Están en **Insertar › Minigráficos**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e6",
+   "modo": "cinta",
+   "enunciado": "Javier quiere, al final de cada fila de su informe, una línea pequeña con la evolución de ventas de enero a junio de cada comercial. ¿Qué botón usas?",
+   "ruta": ["Insertar", "Minigráficos", "Línea"],
+   "explicacion": "Insertar › Minigráficos › Línea. Excel te pide el rango de datos (las ventas de la fila) y dónde ponerlo (la celda de la derecha). Para comparar cantidades sueltas, mejor **Columna**."
+  },
+  {
+   "tipo": "texto",
+   "md": "Última herramienta: **pegar solo valores**. Cuando copias una celda con fórmula y la pegas normal, pegas **la fórmula**. Si la pegas en otro libro, la fórmula busca celdas que allí no existen y se rompe, o se queda enlazada a tu archivo.\n\nCon **Pegado especial › Valores** pegas **el resultado**, el número tal cual, sin fórmula. Se usa para mandar cifras a otro libro, para guardar la foto de un cierre o para enviar datos a alguien que no debe ver tus cálculos."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    { "teclas": "Ctrl+C", "accion": "Copiar" },
+    { "teclas": "Ctrl+Alt+V", "accion": "Abrir Pegado especial (después, V = Valores y Aceptar)" }
+   ]
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Lo mismo, con el ratón, y un extra",
+   "md": "También en **Inicio › Portapapeles**, flechita de **Pegar** › **Pegar valores**. Y en el cuadro de Pegado especial hay una casilla **Transponer**: pega las filas como columnas y al revés. Muy útil cuando te pasan los meses en vertical y los necesitas en horizontal."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l4-e7",
+   "modo": "ordenar",
+   "enunciado": "La misión de Marta completa. Ordena los pasos: primero marcar las facturas de más de 3.000 € y después pasar los importes a su libro de tesorería sin fórmulas.",
+   "pasos": [
+    "Selecciona los importes de las facturas pendientes",
+    "Ve a Inicio › Formato condicional › Reglas para resaltar celdas › Mayor que",
+    "Haz clic en la celda del límite (3.000 €), elige el formato y pulsa Aceptar",
+    "Copia los importes con Ctrl+C",
+    "En el libro de tesorería, haz clic en la celda de destino y pulsa Ctrl+Alt+V",
+    "Elige Valores y pulsa Aceptar"
+   ],
+   "explicacion": "Misión cumplida: Marta ve en rojo lo que pasa del límite, los colores se actualizan solos y en su libro solo hay números, sin fórmulas que se rompan. Haz siempre la prueba final: haz clic en una celda pegada y mira la barra de fórmulas; debe salir un número, no una fórmula."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m1l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre el cuadro de **Pegado especial**?",
+   "aceptadas": ["Ctrl+Alt+V", "Control+Alt+V", "Ctrl Alt V", "Ctrl + Alt + V"],
+   "explicacion": "Ctrl+Alt+V. Dentro, la V marca Valores."
+  },
+  {
+   "id": "n2m1l4-q2",
+   "modo": "predice",
+   "enunciado": "La factura de C2 es de 3.000 € justos. ¿Qué escribe esta fórmula?",
+   "hoja": {
+    "celdas": { "A1": "Factura", "C1": "Importe", "A2": "FV-26/0833", "C2": 3000 },
+    "formatos": { "C2": "eur" }
+   },
+   "celda": "D2",
+   "formula": "=SI(C2>3000;\"Revisar\";\"OK\")",
+   "explicacion": "«OK»: 3.000 no es **mayor** que 3.000. Si Marta quisiera incluirla, la condición sería `>=`. Lo mismo pasa con la regla *Mayor que* del formato condicional.",
+   "respuesta": ""
+  },
+  {
+   "id": "n2m1l4-q3",
+   "modo": "test",
+   "pregunta": "Una celda con 4.200 € está en rojo por una regla de formato condicional. ¿Cuánto suma esa celda en `=SUMA(C2:C10)`?",
+   "opciones": [
+    { "texto": "4.200 €, como cualquier otra", "correcta": true, "porque": "El formato condicional solo cambia el aspecto, nunca el valor." },
+    { "texto": "Nada: las celdas marcadas se excluyen", "correcta": false, "porque": "SUMA no mira colores. Si quieres dejar fuera algunas celdas, hace falta una condición en la fórmula." },
+    { "texto": "Depende del color elegido", "correcta": false, "porque": "El color no influye en ningún cálculo." }
+   ]
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "concepto", "frente": "Ruta del formato condicional", "dorso": "Inicio › Estilos › Formato condicional" },
+  { "tipo": "atajo", "frente": "Pegar solo el resultado, sin la fórmula", "dorso": "Ctrl+Alt+V › Valores › Aceptar (o Inicio › Pegar › Pegar valores)" },
+  { "tipo": "concepto", "frente": "¿Qué regla para marcar importes por encima de un límite?", "dorso": "Reglas para resaltar celdas › Mayor que, con el límite en una celda" },
+  { "tipo": "concepto", "frente": "¿Dónde se insertan los minigráficos?", "dorso": "Insertar › Minigráficos › Línea, Columna o Ganancia o pérdida" }
+ ]
+}

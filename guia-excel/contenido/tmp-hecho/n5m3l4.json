@@ -1,0 +1,618 @@
+{
+ "id": "n5m3l4",
+ "titulo": "Presupuestos y modelos: entradas, cálculos, salidas y comprobaciones",
+ "minutos": 18,
+ "objetivo": "Montar un presupuesto frente a real con los supuestos a la vista, la desviación en euros y en porcentaje (con el signo y la división entre cero controlados), una valoración de favorable o desfavorable y una celda de comprobación.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Necesito el presupuesto frente a real de octubre de Lleida para el lunes: desviación en euros y en %, y que se vea a simple vista qué es bueno y qué es malo. Ponle también una comprobación contra contabilidad: no quiero otro informe que no cuadre.",
+  "logro": "Ya sabes montar un presupuesto frente a real con desviaciones bien calculadas, valoración automática y una celda que avisa si no cuadra."
+ },
+ "funciones": [
+  "SI",
+  "ABS",
+  "SUMA",
+  "SI.ERROR"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Entradas, cálculos y salidas\nUn presupuesto es un **modelo**: entran unos supuestos, se calculan y salen cifras. Tres reglas evitan disgustos:\n\n- Los **supuestos** (subida de precios, objetivos, IVA) van en una hoja **Entradas**, con un **color de relleno propio** (por ejemplo, amarillo claro) para que se vea qué se puede tocar.\n- **Una fórmula por fila**, igual en toda la columna, y **ningún número escrito dentro de una fórmula**.\n- Una **celda de comprobación** que avisa si algo no cuadra."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e1",
+   "modo": "test",
+   "pregunta": "Marta prevé que las ventas de 2027 suban un 4 %. ¿Cómo lo metes en el presupuesto?",
+   "opciones": [
+    {
+     "texto": "En una celda de la hoja Entradas, con su color, y las fórmulas la leen: `=C2*(1+Entradas!B3)`",
+     "correcta": true,
+     "porque": "Así el supuesto se ve, se explica y se cambia en un solo sitio."
+    },
+    {
+     "texto": "Dentro de cada fórmula: `=C2*1,04`",
+     "correcta": false,
+     "porque": "Es un supuesto escondido: si Marta lo cambia al 3 %, tendrás que buscarlo fórmula a fórmula, y siempre se escapa alguna."
+    },
+    {
+     "texto": "Escribo las cifras ya subidas, calculadas aparte con la calculadora",
+     "correcta": false,
+     "porque": "Nadie sabrá de dónde salen ni podrá cambiarlas: son números a mano."
+    }
+   ],
+   "explicacion": "Los supuestos a la vista y en un solo sitio: es lo primero que mira quien revisa un presupuesto."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La desviación en euros\nEn un presupuesto frente a real, cada concepto tiene su **Presupuesto** (lo previsto) y su **Real** (lo que ha pasado). La **desviación** es:\n\n**Desviación = Real − Presupuesto**\n\nSiempre en ese orden y en todas las filas: así, positivo significa siempre «ha salido más de lo previsto». Si cada uno resta a su manera, nadie sabe leer el signo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e2",
+   "modo": "formula",
+   "enunciado": "Lleida, octubre. En **E2** calcula la **desviación en euros** de las ventas: real menos presupuesto. Tu fórmula se copiará hasta E8. En E2 debe salir **5.250,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Tipo",
+     "C1": "Presupuesto",
+     "D1": "Real",
+     "E1": "Desv. €",
+     "F1": "Desv. %",
+     "G1": "Valoración",
+     "A2": "Ventas",
+     "B2": "Ingreso",
+     "C2": 96000,
+     "D2": 101250,
+     "A3": "Compras de mercancía",
+     "B3": "Gasto",
+     "C3": 70100,
+     "D3": 73400,
+     "A4": "Personal",
+     "B4": "Gasto",
+     "C4": 21800,
+     "D4": 21800,
+     "A5": "Alquiler",
+     "B5": "Gasto",
+     "C5": 3900,
+     "D5": 3900,
+     "A6": "Transporte",
+     "B6": "Gasto",
+     "C6": 2600,
+     "D6": 2985,
+     "A7": "Formación",
+     "B7": "Gasto",
+     "C7": 0,
+     "D7": 450,
+     "A8": "Resultado",
+     "B8": "Resultado",
+     "C8": "=C2-SUMA(C3:C7)",
+     "D8": "=D2-SUMA(D3:D7)"
+    },
+    "formatos": {
+     "C2:E8": "eur",
+     "F2:F8": "pct1",
+     "D10": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 10,
+     "C": 12,
+     "D": 12,
+     "E": 12,
+     "F": 15,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E8"
+   ],
+   "solucion": "=D2-C2",
+   "alternativas": [
+    "=-(C2-D2)",
+    "=-C2+D2"
+   ],
+   "errores_tipicos": [
+    "=C2-D2",
+    "=D2/C2"
+   ],
+   "variantes": [
+    {
+     "D2": 94000
+    },
+    {
+     "C6": 3100
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Real está en la columna D y Presupuesto en la C.",
+    "Real menos presupuesto: D2 menos C2.",
+    "`=D2-C2`"
+   ],
+   "explicacion": "Ventas: **+5.250 €**, se vendió más de lo previsto. Mira también la fila 8: se preveía perder 2.400 € y se han perdido 1.285 €, así que la desviación es **+1.115 €**: se perdió menos de lo previsto."
+  },
+  {
+   "tipo": "texto",
+   "md": "### ¿Buena o mala? Depende de la fila\nEl signo dice si salió **más o menos** de lo previsto. Si eso es bueno, depende de qué sea:\n\n- **Ingresos y resultado**: positiva es **favorable** (más ventas, menos pérdida).\n- **Gastos**: positiva es **desfavorable** (has gastado más).\n\nY «desfavorable» no siempre es mala noticia: en Lleida se compró 3.300 € más… porque se vendió 5.250 € más. Por eso las desviaciones se comentan, no solo se colorean."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e3",
+   "modo": "test",
+   "pregunta": "En Lleida, **Transporte** tiene una desviación de **+385 €**. ¿Cómo la valoras?",
+   "opciones": [
+    {
+     "texto": "Desfavorable: es un gasto y se ha gastado más de lo previsto",
+     "correcta": true,
+     "porque": "Eso es: en los gastos, positivo significa gastar más."
+    },
+    {
+     "texto": "Favorable: la desviación es positiva",
+     "correcta": false,
+     "porque": "El signo solo no basta: mira si la fila es un ingreso o un gasto."
+    },
+    {
+     "texto": "No se puede saber sin el porcentaje",
+     "correcta": false,
+     "porque": "El porcentaje dice cuánto pesa; si es bueno o malo lo dicen el signo y el tipo de fila."
+    }
+   ],
+   "explicacion": "Signo + tipo de fila = valoración. Lo automatizarás con un SI dentro de un momento."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e4",
+   "modo": "predice",
+   "enunciado": "Ahora el porcentaje. Se preveía **perder 2.000 €** y se han perdido **1.500 €**: desviación +500 €, buena noticia. ¿Qué número devuelve `=D2/B2` (sin formato de porcentaje)?",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Presupuesto",
+     "C1": "Real",
+     "D1": "Desv. €",
+     "A2": "Resultado",
+     "B2": -2000,
+     "C2": -1500,
+     "D2": "=C2-B2"
+    },
+    "formatos": {
+     "B2:D2": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 12,
+     "C": 12,
+     "D": 12
+    }
+   },
+   "celda": "E2",
+   "formula": "=D2/B2",
+   "explicacion": "−0,25, es decir, −25 %: parece que ha ido peor, cuando se ha perdido menos. Al dividir entre un presupuesto negativo, el signo se da la vuelta."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Desviación en %, sin trampas\nLa desviación en % es **desviación ÷ presupuesto**: +385 € pesan mucho en transporte y poco en ventas. Dos trampas:\n\n- Si el presupuesto es **negativo**, el signo se invierte (lo acabas de ver). Divide entre `ABS(presupuesto)`, el valor sin signo: `ABS(-2000)` da 2.000.\n- Si el presupuesto es **0**, sale `#¡DIV/0!`. Pregunta antes con SI y, si es 0, escribe un aviso en vez de dividir."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e5",
+   "modo": "formula",
+   "enunciado": "La columna F de Nuria calcula la **desviación %** con `=E2/C2`, copiada hasta F8, y falla dos veces: Formación (presupuesto 0) da `#¡DIV/0!` y el Resultado sale negativo aunque se perdió menos. Arregla **F2**: si el presupuesto es 0, el texto **«Sin presupuesto»**; si no, la desviación ÷ el presupuesto **sin signo**. Se copiará a F3:F8; en F8 debe salir **46,5 %**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Tipo",
+     "C1": "Presupuesto",
+     "D1": "Real",
+     "E1": "Desv. €",
+     "F1": "Desv. %",
+     "G1": "Valoración",
+     "A2": "Ventas",
+     "B2": "Ingreso",
+     "C2": 96000,
+     "D2": 101250,
+     "A3": "Compras de mercancía",
+     "B3": "Gasto",
+     "C3": 70100,
+     "D3": 73400,
+     "A4": "Personal",
+     "B4": "Gasto",
+     "C4": 21800,
+     "D4": 21800,
+     "A5": "Alquiler",
+     "B5": "Gasto",
+     "C5": 3900,
+     "D5": 3900,
+     "A6": "Transporte",
+     "B6": "Gasto",
+     "C6": 2600,
+     "D6": 2985,
+     "A7": "Formación",
+     "B7": "Gasto",
+     "C7": 0,
+     "D7": 450,
+     "A8": "Resultado",
+     "B8": "Resultado",
+     "C8": "=C2-SUMA(C3:C7)",
+     "D8": "=D2-SUMA(D3:D7)",
+     "E2": "=D2-C2",
+     "E3": "=D3-C3",
+     "E4": "=D4-C4",
+     "E5": "=D5-C5",
+     "E6": "=D6-C6",
+     "E7": "=D7-C7",
+     "E8": "=D8-C8"
+    },
+    "formatos": {
+     "C2:E8": "eur",
+     "F2:F8": "pct1",
+     "D10": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 10,
+     "C": 12,
+     "D": 12,
+     "E": 12,
+     "F": 15,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F8"
+   ],
+   "inicial": "=E2/C2",
+   "solucion": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+   "alternativas": [
+    "=SI.ERROR(E2/ABS(C2);\"Sin presupuesto\")",
+    "=SI(C2<>0;E2/ABS(C2);\"Sin presupuesto\")",
+    "=SI(C2=0;\"Sin presupuesto\";(D2-C2)/ABS(C2))"
+   ],
+   "errores_tipicos": [
+    "=E2/C2",
+    "=E2/ABS(C2)",
+    "=SI(C2=0;\"Sin presupuesto\";E2/C2)",
+    "=SI.ERROR(E2/C2;\"Sin presupuesto\")",
+    "=SI(C2=0;0;E2/ABS(C2))"
+   ],
+   "debe_usar": [
+    "ABS"
+   ],
+   "variantes": [
+    {
+     "D2": 92000
+    },
+    {
+     "C3": 0
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Son dos arreglos: el cero (con SI) y el signo (con ABS).",
+    "Primero pregunta si el presupuesto es 0: `SI(C2=0;\"Sin presupuesto\";…)`. En el «si no», divide E2 entre `ABS(C2)`.",
+    "`=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))`"
+   ],
+   "explicacion": "Ahora el Resultado sale **+46,5 %** (se perdió bastante menos de lo previsto) y Formación avisa «Sin presupuesto» en vez de dar error. También valdría `SI.ERROR(E2/ABS(C2);\"Sin presupuesto\")`, pero SI.ERROR tapa **cualquier** error, también los que no esperas; preguntar por el 0 es más seguro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e6",
+   "modo": "formula",
+   "enunciado": "En **G2** escribe la **valoración**: «Favorable» o «Desfavorable». En los **gastos** (columna B = «Gasto») es favorable gastar lo previsto o menos (desviación ≤ 0); en **ingresos y resultado**, lo previsto o más (desviación ≥ 0). Se copiará a G3:G8. En G2 debe salir «Favorable».",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Tipo",
+     "C1": "Presupuesto",
+     "D1": "Real",
+     "E1": "Desv. €",
+     "F1": "Desv. %",
+     "G1": "Valoración",
+     "A2": "Ventas",
+     "B2": "Ingreso",
+     "C2": 96000,
+     "D2": 101250,
+     "A3": "Compras de mercancía",
+     "B3": "Gasto",
+     "C3": 70100,
+     "D3": 73400,
+     "A4": "Personal",
+     "B4": "Gasto",
+     "C4": 21800,
+     "D4": 21800,
+     "A5": "Alquiler",
+     "B5": "Gasto",
+     "C5": 3900,
+     "D5": 3900,
+     "A6": "Transporte",
+     "B6": "Gasto",
+     "C6": 2600,
+     "D6": 2985,
+     "A7": "Formación",
+     "B7": "Gasto",
+     "C7": 0,
+     "D7": 450,
+     "A8": "Resultado",
+     "B8": "Resultado",
+     "C8": "=C2-SUMA(C3:C7)",
+     "D8": "=D2-SUMA(D3:D7)",
+     "E2": "=D2-C2",
+     "E3": "=D3-C3",
+     "E4": "=D4-C4",
+     "E5": "=D5-C5",
+     "E6": "=D6-C6",
+     "E7": "=D7-C7",
+     "E8": "=D8-C8",
+     "F2": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+     "F3": "=SI(C3=0;\"Sin presupuesto\";E3/ABS(C3))",
+     "F4": "=SI(C4=0;\"Sin presupuesto\";E4/ABS(C4))",
+     "F5": "=SI(C5=0;\"Sin presupuesto\";E5/ABS(C5))",
+     "F6": "=SI(C6=0;\"Sin presupuesto\";E6/ABS(C6))",
+     "F7": "=SI(C7=0;\"Sin presupuesto\";E7/ABS(C7))",
+     "F8": "=SI(C8=0;\"Sin presupuesto\";E8/ABS(C8))"
+    },
+    "formatos": {
+     "C2:E8": "eur",
+     "F2:F8": "pct1",
+     "D10": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 10,
+     "C": 12,
+     "D": 12,
+     "E": 12,
+     "F": 15,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 8
+   },
+   "objetivo": "G2",
+   "copiar_a": [
+    "G3:G8"
+   ],
+   "solucion": "=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+   "alternativas": [
+    "=SI(B2<>\"Gasto\";SI(E2>=0;\"Favorable\";\"Desfavorable\");SI(E2<=0;\"Favorable\";\"Desfavorable\"))",
+    "=SI(O(Y(B2=\"Gasto\";E2<=0);Y(B2<>\"Gasto\";E2>=0));\"Favorable\";\"Desfavorable\")",
+    "=SI(B2=\"Gasto\";SI(E2>0;\"Desfavorable\";\"Favorable\");SI(E2<0;\"Desfavorable\";\"Favorable\"))"
+   ],
+   "errores_tipicos": [
+    "=SI(E2>=0;\"Favorable\";\"Desfavorable\")",
+    "=SI(B2=\"Gasto\";SI(E2<0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+    "=SI(B2=\"Ingreso\";SI(E2>=0;\"Favorable\";\"Desfavorable\");SI(E2<=0;\"Favorable\";\"Desfavorable\"))"
+   ],
+   "variantes": [
+    {
+     "D6": 2500
+    },
+    {
+     "D2": 95000
+    }
+   ],
+   "pistas": [
+    "Antes de mirar el signo, mira qué tipo de fila es: ¿B2 es \"Gasto\"?",
+    "Si es gasto, favorable cuando E2<=0; si no (ingreso o resultado), favorable cuando E2>=0. Son dos SI, uno dentro del otro.",
+    "`=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))`"
+   ],
+   "explicacion": "Tu valoración mira el tipo de fila antes que el signo: Compras sale «Desfavorable» (+3.300 €) y el Resultado, «Favorable» (+1.115 €). Con un formato condicional encima tendrás el color, y la palabra hará que se entienda también en blanco y negro."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La celda que avisa\nUn presupuesto puede tener todas las fórmulas bien y no cuadrar con contabilidad: falta una factura, una fila se pegó dos veces… La defensa es una **celda de comprobación**: compara tu total con el de la fuente y dice **«OK»** o **«Revisar»**.\n\nSe mira la **diferencia** con un margen: `ABS(total − fuente) < 0,01`. ABS quita el signo, y el margen de 0,01 € evita falsas alarmas por diferencias diminutas en los decimales."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Mi regla: ningún informe sale de mi mesa sin su celda de comprobación en «OK». La pongo arriba, junto al título, para verla nada más abrir el libro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l4-e7",
+   "modo": "formula",
+   "enunciado": "Último paso del encargo de Marta. Según contabilidad, los **gastos reales** de Lleida en octubre suman **102.535 €** (celda **D10**). En **D11** escribe la comprobación: si la suma de los gastos reales de la tabla (D3:D7) coincide con D10 (diferencia menor que 0,01), «OK»; si no, «Revisar». Ahora debe salir «OK».",
+   "hoja": {
+    "celdas": {
+     "A1": "Concepto",
+     "B1": "Tipo",
+     "C1": "Presupuesto",
+     "D1": "Real",
+     "E1": "Desv. €",
+     "F1": "Desv. %",
+     "G1": "Valoración",
+     "A2": "Ventas",
+     "B2": "Ingreso",
+     "C2": 96000,
+     "D2": 101250,
+     "A3": "Compras de mercancía",
+     "B3": "Gasto",
+     "C3": 70100,
+     "D3": 73400,
+     "A4": "Personal",
+     "B4": "Gasto",
+     "C4": 21800,
+     "D4": 21800,
+     "A5": "Alquiler",
+     "B5": "Gasto",
+     "C5": 3900,
+     "D5": 3900,
+     "A6": "Transporte",
+     "B6": "Gasto",
+     "C6": 2600,
+     "D6": 2985,
+     "A7": "Formación",
+     "B7": "Gasto",
+     "C7": 0,
+     "D7": 450,
+     "A8": "Resultado",
+     "B8": "Resultado",
+     "C8": "=C2-SUMA(C3:C7)",
+     "D8": "=D2-SUMA(D3:D7)",
+     "E2": "=D2-C2",
+     "E3": "=D3-C3",
+     "E4": "=D4-C4",
+     "E5": "=D5-C5",
+     "E6": "=D6-C6",
+     "E7": "=D7-C7",
+     "E8": "=D8-C8",
+     "F2": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+     "F3": "=SI(C3=0;\"Sin presupuesto\";E3/ABS(C3))",
+     "F4": "=SI(C4=0;\"Sin presupuesto\";E4/ABS(C4))",
+     "F5": "=SI(C5=0;\"Sin presupuesto\";E5/ABS(C5))",
+     "F6": "=SI(C6=0;\"Sin presupuesto\";E6/ABS(C6))",
+     "F7": "=SI(C7=0;\"Sin presupuesto\";E7/ABS(C7))",
+     "F8": "=SI(C8=0;\"Sin presupuesto\";E8/ABS(C8))",
+     "G2": "=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+     "G3": "=SI(B3=\"Gasto\";SI(E3<=0;\"Favorable\";\"Desfavorable\");SI(E3>=0;\"Favorable\";\"Desfavorable\"))",
+     "G4": "=SI(B4=\"Gasto\";SI(E4<=0;\"Favorable\";\"Desfavorable\");SI(E4>=0;\"Favorable\";\"Desfavorable\"))",
+     "G5": "=SI(B5=\"Gasto\";SI(E5<=0;\"Favorable\";\"Desfavorable\");SI(E5>=0;\"Favorable\";\"Desfavorable\"))",
+     "G6": "=SI(B6=\"Gasto\";SI(E6<=0;\"Favorable\";\"Desfavorable\");SI(E6>=0;\"Favorable\";\"Desfavorable\"))",
+     "G7": "=SI(B7=\"Gasto\";SI(E7<=0;\"Favorable\";\"Desfavorable\");SI(E7>=0;\"Favorable\";\"Desfavorable\"))",
+     "G8": "=SI(B8=\"Gasto\";SI(E8<=0;\"Favorable\";\"Desfavorable\");SI(E8>=0;\"Favorable\";\"Desfavorable\"))",
+     "A10": "Gastos según contabilidad",
+     "D10": 102535,
+     "A11": "Comprobación"
+    },
+    "formatos": {
+     "C2:E8": "eur",
+     "F2:F8": "pct1",
+     "D10": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 10,
+     "C": 12,
+     "D": 12,
+     "E": 12,
+     "F": 15,
+     "G": 13
+    },
+    "columnas": 7,
+    "filas": 11
+   },
+   "objetivo": "D11",
+   "solucion": "=SI(ABS(SUMA(D3:D7)-D10)<0,01;\"OK\";\"Revisar\")",
+   "alternativas": [
+    "=SI(ABS(D10-SUMA(D3:D7))<0,01;\"OK\";\"Revisar\")",
+    "=SI(REDONDEAR(SUMA(D3:D7)-D10;2)=0;\"OK\";\"Revisar\")",
+    "=SI(SUMA(D3:D7)=D10;\"OK\";\"Revisar\")",
+    "=SI(ABS(D2-D8-D10)<0,01;\"OK\";\"Revisar\")"
+   ],
+   "errores_tipicos": [
+    "=SI(SUMA(D3:D7)-D10;\"OK\";\"Revisar\")",
+    "=SUMA(D3:D7)-D10",
+    "=SI(SUMA(D3:D7)-D10<0,01;\"OK\";\"Revisar\")",
+    "=SI(ABS(SUMA(D3:D8)-D10)<0,01;\"OK\";\"Revisar\")"
+   ],
+   "variantes": [
+    {
+     "D10": 103000
+    },
+    {
+     "D10": 102085
+    },
+    {
+     "D6": 2535
+    }
+   ],
+   "pistas": [
+    "Primero la diferencia: `SUMA(D3:D7)-D10`. Si todo cuadra, da 0.",
+    "Quítale el signo con ABS y compárala con 0,01 dentro de un SI: `SI(ABS(…)<0,01;\"OK\";\"Revisar\")`.",
+    "`=SI(ABS(SUMA(D3:D7)-D10)<0,01;\"OK\";\"Revisar\")`"
+   ],
+   "explicacion": "**OK**: tu tabla cuadra con contabilidad. Si mañana alguien cambia un gasto o falta una factura, la celda dirá «Revisar» antes de que lo vea Marta. Sin ABS, una tabla que se queda corta (diferencia negativa) diría «OK»: por eso se quita el signo."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n5m3l4-q1",
+   "modo": "test",
+   "pregunta": "Para que no salga ningún `#¡DIV/0!`, alguien propone envolver todas las fórmulas del presupuesto en `SI.ERROR(…;0)`. ¿Qué riesgo tiene?",
+   "opciones": [
+    {
+     "texto": "Tapa cualquier error y lo convierte en 0: un fallo de verdad pasaría por una cifra correcta",
+     "correcta": true,
+     "porque": "Eso es: un error te está avisando de algo. Mejor preguntar por el caso concreto (presupuesto = 0) y dejar que los demás errores se vean."
+    },
+    {
+     "texto": "Ninguno: un 0 queda más limpio que un error",
+     "correcta": false,
+     "porque": "Más limpio, pero engañoso: un 0 parece un dato y suma como un dato."
+    },
+    {
+     "texto": "Que la hoja calcula más despacio",
+     "correcta": false,
+     "porque": "Eso no es lo grave: el problema es que esconde errores."
+    }
+   ]
+  },
+  {
+   "id": "n5m3l4-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "Presupuesto en C2 y real en D2. Escribe la fórmula de la desviación en euros.",
+   "aceptadas": [
+    "=D2-C2",
+    "D2-C2",
+    "=-C2+D2",
+    "=d2-c2"
+   ],
+   "explicacion": "Real menos presupuesto, siempre en ese orden: así el signo se lee igual en todas las filas."
+  },
+  {
+   "id": "n5m3l4-q3",
+   "modo": "predice",
+   "enunciado": "Presupuesto −500 € (una pérdida prevista) y desviación +100 €. ¿Qué número devuelve la fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Presupuesto",
+     "B1": "Desv. €",
+     "A2": -500,
+     "B2": 100
+    },
+    "formatos": {
+     "A2:B2": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 12
+    }
+   },
+   "celda": "C2",
+   "formula": "=B2/ABS(A2)",
+   "explicacion": "100 ÷ 500 = 0,2, es decir, +20 %: con ABS el signo dice la verdad (se perdió menos de lo previsto)."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Desviación en € y en %",
+   "dorso": "€: Real − Presupuesto. %: desviación ÷ ABS(presupuesto); si el presupuesto es 0, un aviso en vez de dividir."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Una desviación positiva es buena?",
+   "dorso": "En ingresos y resultado, sí. En gastos, no: has gastado más de lo previsto."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Celda de comprobación OK / Revisar",
+   "dorso": "=SI(ABS(total−fuente)<0,01;\"OK\";\"Revisar\")"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde van los supuestos de un modelo?",
+   "dorso": "En una hoja Entradas, con un color propio. Nunca escritos dentro de las fórmulas."
+  }
+ ]
+}

@@ -1,0 +1,260 @@
+{
+ "id": "n0m3l4",
+ "titulo": "Rellena una plantilla sin romperla y envíala en PDF",
+ "minutos": 15,
+ "objetivo": "Rellenar una plantilla escribiendo solo en las celdas de datos, reconocer las celdas con fórmula, reparar un total roto, comprobarlo y enviar la hoja en PDF.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "Te paso la plantilla del parte de horas de Diego, el mozo de refuerzo del almacén. Faltan el jueves (8 h) y el viernes (6,5 h). Ojo, que creo que la semana pasada alguien escribió encima del total. Compruébalo y mándamelo en PDF, que es lo que firma Andrés.",
+  "logro": "Ya sabes rellenar una plantilla de la empresa sin romperla, comprobar el total y entregarla en PDF."
+ },
+ "funciones": ["SUMA"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En la oficina casi nunca empezarás una hoja de cero. Te darán una **plantilla**: una hoja ya preparada que se reutiliza cada semana o cada mes.\n\nUna plantilla tiene dos tipos de celdas:\n\n- **Celdas para escribir**: los datos de esta semana. Suelen estar vacías o de otro color.\n- **Celdas con fórmulas**: los totales. Se calculan solas y **no se tocan**."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Parte de horas de Diego, semana del 16/11/2026",
+   "hoja": {
+    "celdas": {
+     "A1": "Día",
+     "B1": "Fecha",
+     "C1": "Horas",
+     "A2": "Lunes",
+     "B2": {"fecha": "2026-11-16"},
+     "C2": 8,
+     "A3": "Martes",
+     "B3": {"fecha": "2026-11-17"},
+     "C3": 8,
+     "A4": "Miércoles",
+     "B4": {"fecha": "2026-11-18"},
+     "C4": 7.5,
+     "A5": "Jueves",
+     "B5": {"fecha": "2026-11-19"},
+     "A6": "Viernes",
+     "B6": {"fecha": "2026-11-20"},
+     "A8": "Total horas",
+     "C8": "=SUMA(C2:C6)"
+    },
+    "formatos": {"B2:B6": "fecha"},
+    "anchos": {"A": 12, "B": 12}
+   },
+   "resaltar": ["C5:C6"],
+   "pie": "Las celdas marcadas (C5 y C6) esperan las horas del jueves y el viernes. C8 tiene una fórmula: el total se calcula solo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e1",
+   "modo": "test",
+   "pregunta": "En el parte de Diego, los días van en la columna A (el jueves, en la fila 5), las fechas en la B y las horas en la C. El total de horas está en C8. Tienes que apuntar las **8 horas del jueves**: ¿en qué celda escribes?",
+   "opciones": [
+    {"texto": "C5", "correcta": true, "porque": "Correcto: la fila del jueves (5) y la columna de las horas (C). Es una celda vacía, preparada para eso."},
+    {"texto": "C8", "correcta": false, "porque": "C8 es el total y tiene una fórmula. Si escribes encima, la borras y el total deja de calcularse."},
+    {"texto": "B5", "correcta": false, "porque": "B5 es la fecha del jueves. Si escribes ahí, borras la fecha y las horas no quedan apuntadas."}
+   ],
+   "explicacion": "Primera regla de una plantilla: escribe solo en las celdas de datos. Las demás ya hacen su trabajo."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Cómo sabes si una celda tiene fórmula? A simple vista no se nota: la celda solo enseña el resultado.\n\nHaz **un clic** en ella y mira la **barra de fórmulas**:\n\n- Si empieza por `=`, como `=SUMA(C2:C6)`, es una **fórmula**: no la toques.\n- Si es un número suelto, como `8`, es un **dato**: puedes cambiarlo si hace falta.\n\nUn clic no cambia nada: es solo mirar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e2",
+   "modo": "predice",
+   "enunciado": "Ya has escrito **8** en C5 (jueves) y **6,5** en C6 (viernes). C8 tiene `=SUMA(C2:C6)`. ¿Qué número mostrará el total?",
+   "hoja": {
+    "celdas": {
+     "A1": "Día",
+     "C1": "Horas",
+     "A2": "Lunes",
+     "C2": 8,
+     "A3": "Martes",
+     "C3": 8,
+     "A4": "Miércoles",
+     "C4": 7.5,
+     "A5": "Jueves",
+     "C5": 8,
+     "A6": "Viernes",
+     "C6": 6.5,
+     "A8": "Total horas"
+    },
+    "anchos": {"A": 12}
+   },
+   "celda": "C8",
+   "formula": "=SUMA(C2:C6)",
+   "explicacion": "8 + 8 + 7,5 + 8 + 6,5 = 38. Tú solo has escrito dos datos y la plantilla ha calculado el total sola. Para eso sirven."
+  },
+  {
+   "tipo": "texto",
+   "md": "El error que más daño hace en una plantilla: **escribir un número encima de una fórmula**.\n\nPasa así: el total no te cuadra, lo calculas de cabeza y escribes `38` encima. Hoy se ve bien. Pero la fórmula ha **desaparecido**: si mañana Lucía corrige una hora, el total se queda en 38 y nadie se da cuenta.\n\nSi te equivocas y escribes encima, [[Ctrl]]+[[Z]] lo deshace al momento."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e3",
+   "modo": "test",
+   "pregunta": "Alguien escribió **38** encima de la fórmula del total. Después, Lucía corrige el martes de 8 a **6** horas. ¿Qué muestra el total?",
+   "opciones": [
+    {"texto": "38, aunque el total real ahora es 36", "correcta": true, "porque": "Exacto: el 38 es un número fijo, no una cuenta. No se entera del cambio y el parte queda mal sin que nada avise."},
+    {"texto": "36, porque Excel lo recalcula", "correcta": false, "porque": "Excel recalcula las fórmulas, pero en esa celda ya no hay fórmula: hay un 38 escrito a mano."},
+    {"texto": "Un mensaje de error", "correcta": false, "porque": "Eso sería casi mejor, porque se vería. Lo peligroso es que no sale ningún aviso: el número parece correcto."}
+   ],
+   "explicacion": "Por eso un total escrito a mano es tan peligroso: falla en silencio. Y Diego cobraría horas que no ha hecho."
+  },
+  {
+   "tipo": "texto",
+   "md": "Antes de enviar cualquier hoja, **comprueba el total**. Dos maneras rápidas:\n\n1. **Haz clic en el total** y mira la barra de fórmulas: ¿hay una fórmula y su rango coge todas las filas?\n2. **Selecciona los datos** y mira la **Suma** de la barra de estado: ¿coincide con el total?\n\nSi las dos cosas cuadran, puedes enviarla tranquila."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e4",
+   "modo": "test",
+   "pregunta": "Seleccionas las horas de lunes a viernes y la barra de estado dice **Suma 38**. Pero el total de la plantilla dice **31,5**. ¿Qué es lo más probable?",
+   "opciones": [
+    {"texto": "La fórmula del total no coge todas las filas", "correcta": true, "porque": "Eso es: 38 − 31,5 = 6,5, justo las horas del viernes. El rango del total se queda corto (seguramente acaba en C5)."},
+    {"texto": "La barra de estado está mal", "correcta": false, "porque": "La barra de estado suma exactamente lo que seleccionas. Si no cuadra, el problema está en la fórmula, no en la barra."},
+    {"texto": "Es normal: siempre hay algo de diferencia", "correcta": false, "porque": "Un total no tiene «algo de diferencia». Si no cuadra, hay un error, y se busca antes de enviar."}
+   ],
+   "explicacion": "Buena pista de detective: la diferencia (6,5) te dice qué fila falta. Haz clic en el total y lo confirmarás en la barra de fórmulas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cuando te piden una hoja «en **PDF**», no envíes el archivo de Excel. Un PDF se ve igual en cualquier ordenador o móvil, no se puede cambiar sin querer y se puede firmar.\n\nPara crearlo: **Archivo › Exportar › Crear documento PDF/XPS**. Eliges carpeta y nombre, y pulsas **Publicar**.\n\nAntes, mira cómo quedará en papel con la **vista previa de impresión**: [[Ctrl]]+[[P]]."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Excel o PDF, según para qué",
+   "md": "**PDF** cuando la hoja es para leer, firmar o archivar (un parte, una factura, un informe). **Excel** cuando la otra persona tiene que seguir trabajando con los datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e5",
+   "modo": "cinta",
+   "enunciado": "El parte está comprobado. Abre la pestaña **Archivo** y busca la opción para **exportar** la hoja (desde ahí se crea el PDF).",
+   "ruta": ["Archivo", "Archivo", "Exportar"],
+   "explicacion": "Archivo › Exportar. Dentro verás **Crear documento PDF/XPS**: un clic, eliges carpeta y nombre, y Publicar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para entregar el parte en PDF **sin sorpresas**.",
+   "pasos": [
+    "Comprueba el total con la barra de fórmulas y la barra de estado",
+    "Guarda el libro con Ctrl+G",
+    "Mira la vista previa de impresión con Ctrl+P",
+    "Ve a Archivo › Exportar › Crear documento PDF/XPS",
+    "Elige la carpeta, escribe el nombre y pulsa Publicar",
+    "Adjunta el PDF al correo para Lucía"
+   ],
+   "explicacion": "Primero se comprueba, luego se guarda y al final se exporta y se envía. Si exportas antes de comprobar, mandarás un PDF con el error dentro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l4-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Lucía.** Ya has apuntado el jueves y el viernes, pero Lucía tenía razón: en **C8** alguien escribió `38` encima del total. Pon en C8 la fórmula que **suma las horas de C2 a C6**, para que el total vuelva a calcularse solo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Día",
+     "B1": "Fecha",
+     "C1": "Horas",
+     "A2": "Lunes",
+     "B2": {"fecha": "2026-11-16"},
+     "C2": 8,
+     "A3": "Martes",
+     "B3": {"fecha": "2026-11-17"},
+     "C3": 8,
+     "A4": "Miércoles",
+     "B4": {"fecha": "2026-11-18"},
+     "C4": 7.5,
+     "A5": "Jueves",
+     "B5": {"fecha": "2026-11-19"},
+     "C5": 8,
+     "A6": "Viernes",
+     "B6": {"fecha": "2026-11-20"},
+     "C6": 6.5,
+     "A8": "Total horas"
+    },
+    "formatos": {"B2:B6": "fecha"},
+    "anchos": {"A": 12, "B": 12}
+   },
+   "objetivo": "C8",
+   "inicial": "38",
+   "solucion": "=SUMA(C2:C6)",
+   "debe_usar": ["SUMA"],
+   "errores_tipicos": ["=38", "=SUMA(C2:C5)", "=SUMA(C2:C8)"],
+   "variantes": [{"C3": 6}, {"C6": 4}],
+   "pistas": [
+    "Borra el 38: ahí tiene que ir una fórmula, no un número.",
+    "Usa SUMA con el rango de las horas, de C2 a C6, sin la celda del total (si la incluyes, aquí verás #¡REF!; en Excel, el aviso de referencia circular).",
+    "La fórmula es `=SUMA(C2:C6)`."
+   ],
+   "explicacion": "Plantilla reparada: 38 horas, y ahora sí se recalcula si alguien corrige un día. Solo te queda exportarla a PDF y enviársela a Lucía. Revisar que los totales tienen fórmula antes de enviar es lo que distingue a quien trabaja con cuidado."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m3l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: ¿qué atajo abre la **vista previa de impresión** para ver cómo quedará la hoja en papel?",
+   "aceptadas": ["Ctrl+P", "Control+P", "Ctrl P", "Ctrl + P", "ctrl+p"],
+   "explicacion": "[[Ctrl]]+[[P]] (de «imprimir»). Úsalo antes de exportar a PDF para ver si cabe en la página."
+  },
+  {
+   "id": "n0m3l4-q2",
+   "modo": "test",
+   "pregunta": "Haces clic en una celda de una plantilla y la barra de fórmulas muestra `=SUMA(D2:D9)`. ¿Qué haces con esa celda?",
+   "opciones": [
+    {"texto": "No escribir en ella: es una fórmula que calcula sola", "correcta": true, "porque": "Correcto: empieza por =, así que es una fórmula. Escribir encima la borraría."},
+    {"texto": "Escribir el total que te sale con la calculadora", "correcta": false, "porque": "Borrarías la fórmula y el total dejaría de actualizarse. Es el error más dañino en una plantilla."},
+    {"texto": "Borrarla con Supr para que quede más limpia", "correcta": false, "porque": "Te quedarías sin total. Las celdas con fórmula son parte de la plantilla: se dejan como están."}
+   ],
+   "explicacion": "Clic, mira la barra de fórmulas: si empieza por =, no se toca."
+  },
+  {
+   "id": "n0m3l4-q3",
+   "modo": "formula",
+   "enunciado": "Repaso mezclado. Gasto de gasoil de las furgonetas: en **B6** suma los cuatro repostajes de **B2 a B5**. Debe salir **343,30 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Furgoneta",
+     "B1": "Gasoil",
+     "A2": "Furgoneta 1",
+     "B2": 86.4,
+     "A3": "Furgoneta 2",
+     "B3": 92.15,
+     "A4": "Furgoneta 3",
+     "B4": 78.5,
+     "A5": "Furgoneta 4",
+     "B5": 86.25,
+     "A6": "Total"
+    },
+    "formatos": {"B2:B6": "eur"},
+    "anchos": {"A": 14}
+   },
+   "objetivo": "B6",
+   "solucion": "=SUMA(B2:B5)",
+   "debe_usar": ["SUMA"],
+   "errores_tipicos": ["=SUMA(B2:B4)", "=343,3", "=SUMA(B2:B6)"],
+   "variantes": [{"B3": 100}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Una columna que sumar: función SUMA.",
+    "El rango va de B2 a B5; el total (B6) no entra.",
+    "La fórmula es `=SUMA(B2:B5)`."
+   ],
+   "explicacion": "343,30 €, con fórmula y con el rango justo. Ya lo haces sin pensar."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Cómo sabes si una celda tiene fórmula?", "dorso": "Haz clic y mira la barra de fórmulas: si empieza por =, es una fórmula (no escribas encima)."},
+  {"tipo": "error", "frente": "¿Qué pasa si escribes un número encima del total de una plantilla?", "dorso": "Borras la fórmula: el total ya no se actualiza y falla sin avisar. Ctrl+Z lo deshace al momento."},
+  {"tipo": "concepto", "frente": "Cómo guardar una hoja en PDF", "dorso": "Archivo › Exportar › Crear documento PDF/XPS › carpeta y nombre › Publicar."},
+  {"tipo": "atajo", "frente": "Vista previa de impresión", "dorso": "Ctrl+P"}
+ ]
+}

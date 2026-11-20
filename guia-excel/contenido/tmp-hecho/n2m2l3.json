@@ -1,0 +1,682 @@
+{
+ "id": "n2m2l3",
+ "titulo": "CONTAR.SI y SUMAR.SI: resúmenes por categoría",
+ "minutos": 16,
+ "objetivo": "Contar y sumar solo las filas que cumplen una condición (un comercial, una delegación, un importe mínimo) y montar un resumen que se copia sin romperse.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Para la reunión del lunes necesito cuánto ha vendido cada comercial esta quincena. Ponme al lado de la lista de pedidos un resumen con un total por persona. Y que cuadre con el total, que Carmen lo mira todo.",
+  "logro": "Ya sabes montar un resumen por comercial, delegación o lo que haga falta con CONTAR.SI y SUMAR.SI, y comprobar que cuadra."
+ },
+ "funciones": [
+  "CONTAR.SI",
+  "SUMAR.SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Ya sabes contar todo con CONTAR o CONTARA. Pero lo que te piden en la oficina suele ser: «¿cuántos pedidos son **de Pamplona**?». Para contar solo lo que cumple una condición está **CONTAR.SI**:\n\n`=CONTAR.SI(rango; criterio)`\n\n- **rango**: dónde mira (la columna de delegaciones).\n- **criterio**: qué tiene que poner para contar (\"Pamplona\", entre comillas porque es texto).\n\nNo distingue mayúsculas: \"pamplona\" cuenta igual."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Cuántos pedidos hay de Zaragoza",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Delegación",
+     "A2": "P-2650",
+     "B2": "Zaragoza",
+     "A3": "P-2651",
+     "B3": "Pamplona",
+     "A4": "P-2652",
+     "B4": "Lleida",
+     "A5": "P-2653",
+     "B5": "Zaragoza",
+     "D1": "De Zaragoza",
+     "D2": "=CONTAR.SI(B2:B5;\"Zaragoza\")"
+    },
+    "anchos": {
+     "B": 11,
+     "D": 12
+    }
+   },
+   "resaltar": [
+    "D2"
+   ],
+   "mostrar_formulas": true
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e1",
+   "modo": "formula",
+   "enunciado": "La fórmula de **F2** cuenta los pedidos de Zaragoza, pero Javier quiere saber cuántos son de **Pamplona**. Cámbiala para que cuente los de Pamplona.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "A2": "P-2650",
+     "B2": "Pablo",
+     "C2": "Zaragoza",
+     "D2": 1250,
+     "A3": "P-2651",
+     "B3": "Irene",
+     "C3": "Pamplona",
+     "D3": 500,
+     "A4": "P-2652",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2653",
+     "B5": "Pablo",
+     "C5": "Zaragoza",
+     "D5": 760,
+     "A6": "P-2654",
+     "B6": "Irene",
+     "C6": "Pamplona",
+     "D6": 1000,
+     "A7": "P-2655",
+     "B7": "Sergio",
+     "C7": "Zaragoza",
+     "D7": 3150,
+     "A8": "P-2656",
+     "B8": "Pablo",
+     "C8": "Lleida",
+     "D8": 395,
+     "A9": "P-2657",
+     "B9": "Irene",
+     "C9": "Zaragoza",
+     "D9": 1890,
+     "A10": "P-2658",
+     "B10": "Sergio",
+     "C10": "Lleida",
+     "D10": 620,
+     "A11": "P-2659",
+     "B11": "Pablo",
+     "C11": "Pamplona",
+     "D11": 1475,
+     "F1": "Pedidos de Pamplona"
+    },
+    "formatos": {
+     "D2:D11": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 24
+    }
+   },
+   "objetivo": "F2",
+   "inicial": "=CONTAR.SI(C2:C11;\"Zaragoza\")",
+   "solucion": "=CONTAR.SI(C2:C11;\"Pamplona\")",
+   "alternativas": [
+    "=CONTAR.SI(C2:C11;\"pamplona\")",
+    "=CONTAR.SI($C$2:$C$11;\"Pamplona\")"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(C2:C11;\"Zaragoza\")",
+    "=CONTARA(C2:C11)"
+   ],
+   "variantes": [
+    {
+     "C4": "Pamplona"
+    }
+   ],
+   "debe_usar": [
+    "CONTAR.SI"
+   ],
+   "pistas": [
+    "Solo tienes que cambiar el criterio, lo que va entre comillas.",
+    "Sustituye \"Zaragoza\" por \"Pamplona\". Las comillas se quedan.",
+    "`=CONTAR.SI(C2:C11;\"Pamplona\")`"
+   ],
+   "explicacion": "Tres pedidos de Pamplona. Con esto ya respondes en segundos a la pregunta más repetida de cualquier reunión: «¿cuántos hay de…?»."
+  },
+  {
+   "tipo": "texto",
+   "md": "El criterio también puede ser una **comparación**. Entonces el signo y el número van **juntos y entre comillas**:\n\n- `=CONTAR.SI(D2:D11;\">1000\")` cuenta los importes mayores que 1.000.\n- `\">=500\"` mayor o igual; `\"<200\"` menor que 200.\n\nY si lo que buscas ya está escrito en una celda, pon la celda **sin comillas**: `=CONTAR.SI(C2:C11;F2)` cuenta lo que diga F2. Así cambias F2 y el resultado se actualiza solo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e2",
+   "modo": "formula",
+   "enunciado": "Marta pregunta: **¿cuántos pedidos pasan de 1.000 €?** (1.000 justos no cuentan). Escribe la respuesta con una fórmula en **F2**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "A2": "P-2650",
+     "B2": "Pablo",
+     "C2": "Zaragoza",
+     "D2": 1250,
+     "A3": "P-2651",
+     "B3": "Irene",
+     "C3": "Pamplona",
+     "D3": 500,
+     "A4": "P-2652",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2653",
+     "B5": "Pablo",
+     "C5": "Zaragoza",
+     "D5": 760,
+     "A6": "P-2654",
+     "B6": "Irene",
+     "C6": "Pamplona",
+     "D6": 1000,
+     "A7": "P-2655",
+     "B7": "Sergio",
+     "C7": "Zaragoza",
+     "D7": 3150,
+     "A8": "P-2656",
+     "B8": "Pablo",
+     "C8": "Lleida",
+     "D8": 395,
+     "A9": "P-2657",
+     "B9": "Irene",
+     "C9": "Zaragoza",
+     "D9": 1890,
+     "A10": "P-2658",
+     "B10": "Sergio",
+     "C10": "Lleida",
+     "D10": 620,
+     "A11": "P-2659",
+     "B11": "Pablo",
+     "C11": "Pamplona",
+     "D11": 1475,
+     "F1": "Pedidos de más de 1.000 €"
+    },
+    "formatos": {
+     "D2:D11": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 24
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=CONTAR.SI(D2:D11;\">1000\")",
+   "alternativas": [
+    "=CONTAR.SI($D$2:$D$11;\">1000\")"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(D2:D11;\">=1000\")",
+    "=CONTAR(D2:D11)",
+    "=5"
+   ],
+   "variantes": [
+    {
+     "D3": 1800
+    }
+   ],
+   "debe_usar": [
+    "CONTAR.SI"
+   ],
+   "pistas": [
+    "Quieres **contar** filas que cumplen una condición sobre el importe (columna D).",
+    "`=CONTAR.SI(D2:D11; criterio)`. El criterio es «mayor que 1.000», con el signo entre comillas.",
+    "`=CONTAR.SI(D2:D11;\">1000\")`"
+   ],
+   "explicacion": "Cinco pedidos. El de 1.000 € justos se queda fuera porque usas `>` y no `>=`: lee siempre con cuidado si el encargo dice «más de» o «desde». Las comillas son obligatorias: sin ellas Excel no acepta la fórmula."
+  },
+  {
+   "tipo": "texto",
+   "md": "Contar está bien, pero Javier quiere **euros**. Para sumar solo lo que cumple una condición está **SUMAR.SI**:\n\n`=SUMAR.SI(rango; criterio; rango_suma)`\n\n- **rango**: dónde busca (los nombres de los comerciales).\n- **criterio**: qué busca (\"Irene\").\n- **rango_suma**: qué suma de esas filas (los importes).\n\nPiensa en «busca aquí, esto, y suma de allí»."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Lo que ha vendido Irene",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Importe",
+     "A2": "Irene",
+     "B2": 500,
+     "A3": "Pablo",
+     "B3": 1250,
+     "A4": "Irene",
+     "B4": 1000,
+     "A5": "Sergio",
+     "B5": 2310,
+     "D1": "Irene",
+     "D2": "=SUMAR.SI(A2:A5;\"Irene\";B2:B5)"
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "D2": "eur"
+    }
+   },
+   "resaltar": [
+    "D2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Busca «Irene» en A2:A5 y suma de B2:B5 los importes de esas filas: 500 + 1.000."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e3",
+   "modo": "predice",
+   "enunciado": "¿Qué resultado dará la fórmula en **D2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Importe",
+     "A2": "Pablo",
+     "B2": 1250,
+     "A3": "Sergio",
+     "B3": 2310,
+     "A4": "Pablo",
+     "B4": 760,
+     "A5": "Pablo",
+     "B5": 395
+    },
+    "formatos": {
+     "B2:B5": "eur"
+    }
+   },
+   "celda": "D2",
+   "formula": "=SUMAR.SI(A2:A5;\"Pablo\";B2:B5)",
+   "explicacion": "Las filas de Pablo son la 2, la 4 y la 5: 1.250 + 760 + 395 = 2.405. La de Sergio se salta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e4",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber **cuánto suman los pedidos de más de 500 €** (los de 500 € justos no). Escríbelo en **F2**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "A2": "P-2650",
+     "B2": "Pablo",
+     "C2": "Zaragoza",
+     "D2": 1250,
+     "A3": "P-2651",
+     "B3": "Irene",
+     "C3": "Pamplona",
+     "D3": 500,
+     "A4": "P-2652",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2653",
+     "B5": "Pablo",
+     "C5": "Zaragoza",
+     "D5": 760,
+     "A6": "P-2654",
+     "B6": "Irene",
+     "C6": "Pamplona",
+     "D6": 1000,
+     "A7": "P-2655",
+     "B7": "Sergio",
+     "C7": "Zaragoza",
+     "D7": 3150,
+     "A8": "P-2656",
+     "B8": "Pablo",
+     "C8": "Lleida",
+     "D8": 395,
+     "A9": "P-2657",
+     "B9": "Irene",
+     "C9": "Zaragoza",
+     "D9": 1890,
+     "A10": "P-2658",
+     "B10": "Sergio",
+     "C10": "Lleida",
+     "D10": 620,
+     "A11": "P-2659",
+     "B11": "Pablo",
+     "C11": "Pamplona",
+     "D11": 1475,
+     "F1": "Importe pedidos > 500 €"
+    },
+    "formatos": {
+     "D2:D11": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 24
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SUMAR.SI(D2:D11;\">500\")",
+   "alternativas": [
+    "=SUMAR.SI(D2:D11;\">500\";D2:D11)",
+    "=SUMAR.SI($D$2:$D$11;\">500\")"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(D2:D11;\">=500\")",
+    "=SUMA(D2:D11)",
+    "=CONTAR.SI(D2:D11;\">500\")"
+   ],
+   "variantes": [
+    {
+     "D8": 900
+    }
+   ],
+   "formato_resultado": "eur",
+   "debe_usar": [
+    "SUMAR.SI"
+   ],
+   "pistas": [
+    "Esta vez hay que **sumar**, no contar. Y la condición está en la misma columna que se suma.",
+    "Cuando el rango donde buscas y el que sumas son el mismo, puedes omitir el tercer argumento: `=SUMAR.SI(D2:D11; criterio)`.",
+    "`=SUMAR.SI(D2:D11;\">500\")`"
+   ],
+   "explicacion": "12.455 €. Si la condición y la suma están en la misma columna, basta con dos argumentos. El pedido de 500 € y el de 395 € se quedan fuera. Este tipo de cálculo sirve, por ejemplo, para saber cuánto pesan los pedidos grandes en las ventas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para montar un resumen con una fila por delegación escribes la fórmula una vez y la copias hacia abajo. Pero cuidado: al copiar, **los rangos se mueven** igual que cualquier referencia.\n\n`C2:C11` pasaría a `C3:C12`, luego a `C4:C13`… y se va dejando filas fuera por arriba. La solución es la de siempre: **fija los rangos con $** (`$C$2:$C$11`) y deja sin fijar la celda del criterio, que sí debe bajar."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Nuria avisa",
+   "md": "El rango donde buscas y el rango que sumas tienen que tener el **mismo tamaño** y **empezar en la misma fila** (C2:C11 con D2:D11). Si los desalineas, Excel no da error: suma importes de otras filas y no te enteras."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e5",
+   "modo": "formula",
+   "enunciado": "En **G2** hay una fórmula que cuenta los pedidos de la delegación de F2. Al copiarla a G3:G4 da números que no cuadran. Arréglala para que se pueda copiar.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "A2": "P-2650",
+     "B2": "Pablo",
+     "C2": "Zaragoza",
+     "D2": 1250,
+     "A3": "P-2651",
+     "B3": "Irene",
+     "C3": "Pamplona",
+     "D3": 500,
+     "A4": "P-2652",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2653",
+     "B5": "Pablo",
+     "C5": "Zaragoza",
+     "D5": 760,
+     "A6": "P-2654",
+     "B6": "Irene",
+     "C6": "Pamplona",
+     "D6": 1000,
+     "A7": "P-2655",
+     "B7": "Sergio",
+     "C7": "Zaragoza",
+     "D7": 3150,
+     "A8": "P-2656",
+     "B8": "Pablo",
+     "C8": "Lleida",
+     "D8": 395,
+     "A9": "P-2657",
+     "B9": "Irene",
+     "C9": "Zaragoza",
+     "D9": 1890,
+     "A10": "P-2658",
+     "B10": "Sergio",
+     "C10": "Lleida",
+     "D10": 620,
+     "A11": "P-2659",
+     "B11": "Pablo",
+     "C11": "Pamplona",
+     "D11": 1475,
+     "F1": "Delegación",
+     "G1": "Pedidos",
+     "F2": "Lleida",
+     "F3": "Pamplona",
+     "F4": "Zaragoza"
+    },
+    "formatos": {
+     "D2:D11": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 24
+    }
+   },
+   "objetivo": "G2",
+   "copiar_a": [
+    "G3:G4"
+   ],
+   "inicial": "=CONTAR.SI(C2:C11;F2)",
+   "solucion": "=CONTAR.SI($C$2:$C$11;F2)",
+   "alternativas": [
+    "=CONTAR.SI(C$2:C$11;F2)",
+    "=CONTAR.SI($C$2:$C$11;$F2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(C2:C11;F2)",
+    "=CONTAR.SI($C$2:$C$11;$F$2)"
+   ],
+   "variantes": [
+    {
+     "C11": "Zaragoza"
+    }
+   ],
+   "debe_usar": [
+    "CONTAR.SI"
+   ],
+   "pistas": [
+    "Mira qué pasa en G4 al copiar: el rango ya no empieza en la fila 2.",
+    "El rango C2:C11 debe quedarse quieto; F2 sí tiene que bajar a F3 y F4.",
+    "`=CONTAR.SI($C$2:$C$11;F2)`"
+   ],
+   "explicacion": "Ahora cuadra: 3 + 3 + 4 = 10 pedidos, los mismos que tiene la lista. Esa suma es tu **comprobación**: si el resumen no da el total de filas, algo falla. El rango fijo y el criterio móvil es el patrón de todos los resúmenes."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e6",
+   "modo": "test",
+   "pregunta": "Un compañero ha escrito `=SUMAR.SI(B2:B11;\"Irene\";D3:D12)`. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "Suma importes que no son de Irene, sin dar ningún aviso",
+     "correcta": true,
+     "porque": "Eso es: el rango_suma empieza una fila más abajo, así que para cada fila de Irene suma el importe de la fila siguiente. No sale error y el resultado parece normal."
+    },
+    {
+     "texto": "Excel da un error y avisa",
+     "correcta": false,
+     "porque": "Ojalá. Excel la calcula sin quejarse; por eso este error pasa desapercibido en muchas hojas."
+    },
+    {
+     "texto": "Suma bien, porque Excel ajusta los rangos solo",
+     "correcta": false,
+     "porque": "Excel no sabe que te has equivocado: empareja la primera fila de un rango con la primera del otro, aunque no se correspondan."
+    }
+   ],
+   "explicacion": "Revisa siempre que los dos rangos empiecen en la misma fila. Y comprueba con un caso que conozcas: si sabes que Irene vendió 3.390 €, mira que salga eso."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Javier Ortega",
+   "puesto": "Director comercial",
+   "md": "Te he dejado los nombres en la columna F. Rellena la G con lo vendido por cada uno y avísame. Acuérdate de que tiene que cuadrar con el total de la lista."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l3-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** En **G2** calcula cuánto ha vendido el comercial de **F2** (suma de sus importes). Tu fórmula se copiará a G3:G4. Luego comprueba que los tres suman lo mismo que toda la columna D.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Comercial",
+     "C1": "Delegación",
+     "D1": "Importe",
+     "A2": "P-2650",
+     "B2": "Pablo",
+     "C2": "Zaragoza",
+     "D2": 1250,
+     "A3": "P-2651",
+     "B3": "Irene",
+     "C3": "Pamplona",
+     "D3": 500,
+     "A4": "P-2652",
+     "B4": "Sergio",
+     "C4": "Lleida",
+     "D4": 2310,
+     "A5": "P-2653",
+     "B5": "Pablo",
+     "C5": "Zaragoza",
+     "D5": 760,
+     "A6": "P-2654",
+     "B6": "Irene",
+     "C6": "Pamplona",
+     "D6": 1000,
+     "A7": "P-2655",
+     "B7": "Sergio",
+     "C7": "Zaragoza",
+     "D7": 3150,
+     "A8": "P-2656",
+     "B8": "Pablo",
+     "C8": "Lleida",
+     "D8": 395,
+     "A9": "P-2657",
+     "B9": "Irene",
+     "C9": "Zaragoza",
+     "D9": 1890,
+     "A10": "P-2658",
+     "B10": "Sergio",
+     "C10": "Lleida",
+     "D10": 620,
+     "A11": "P-2659",
+     "B11": "Pablo",
+     "C11": "Pamplona",
+     "D11": 1475,
+     "F1": "Comercial",
+     "G1": "Ventas",
+     "F2": "Irene",
+     "F3": "Pablo",
+     "F4": "Sergio"
+    },
+    "formatos": {
+     "D2:D11": "eur",
+     "G2:G4": "eur"
+    },
+    "anchos": {
+     "C": 11,
+     "F": 24
+    }
+   },
+   "objetivo": "G2",
+   "copiar_a": [
+    "G3:G4"
+   ],
+   "solucion": "=SUMAR.SI($B$2:$B$11;F2;$D$2:$D$11)",
+   "alternativas": [
+    "=SUMAR.SI(B$2:B$11;F2;D$2:D$11)",
+    "=SUMAR.SI($B$2:$B$11;$F2;$D$2:$D$11)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B11;F2;D2:D11)",
+    "=SUMAR.SI($B$2:$B$11;\"Irene\";$D$2:$D$11)",
+    "=CONTAR.SI($B$2:$B$11;F2)",
+    "=SUMAR.SI($B$2:$B$11;F2;$D$3:$D$12)"
+   ],
+   "variantes": [
+    {
+     "D2": 2000
+    },
+    {
+     "B11": "Sergio"
+    }
+   ],
+   "formato_resultado": "eur",
+   "debe_usar": [
+    "SUMAR.SI"
+   ],
+   "pistas": [
+    "Busca en la columna de comerciales (B), el nombre de F2, y suma de la columna de importes (D).",
+    "`=SUMAR.SI(rango_comerciales; F2; rango_importes)`. Los dos rangos, fijados con $ para poder copiar.",
+    "`=SUMAR.SI($B$2:$B$11;F2;$D$2:$D$11)`"
+   ],
+   "explicacion": "Misión cumplida: Irene 3.390 €, Pablo 3.880 € y Sergio 6.080 €. Suman 13.350 €, justo el total de la columna D: el resumen **cuadra**. Ese cuadre es lo que te permite enviarlo con tranquilidad. Con este mismo patrón harás resúmenes por cliente, por producto o por mes."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m2l3-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En `=SUMAR.SI(B2:B11;\"Irene\";D2:D11)`, ¿qué rango es el que se **suma**?",
+   "aceptadas": [
+    "D2:D11",
+    "D2:D11.",
+    "$D$2:$D$11"
+   ],
+   "explicacion": "El tercero, D2:D11 (rango_suma). B2:B11 es donde se busca a Irene."
+  },
+  {
+   "id": "n2m2l3-q2",
+   "modo": "test",
+   "pregunta": "En una lista de facturas quieres saber cuántas son del cliente «Reformas Delicias, S.L.». ¿Qué función usas?",
+   "opciones": [
+    {
+     "texto": "CONTAR.SI",
+     "correcta": true,
+     "porque": "Correcto: cuenta solo las filas que cumplen un criterio, en este caso un nombre de cliente."
+    },
+    {
+     "texto": "CONTARA",
+     "correcta": false,
+     "porque": "CONTARA cuenta todas las celdas no vacías, sean del cliente que sean."
+    },
+    {
+     "texto": "SUMAR.SI",
+     "correcta": false,
+     "porque": "SUMAR.SI sumaría importes; aquí te piden cuántas facturas, no cuántos euros."
+    }
+   ]
+  },
+  {
+   "id": "n2m2l3-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve la fórmula en **C1**?",
+   "hoja": {
+    "celdas": {
+     "A1": 480,
+     "A2": 1500,
+     "A3": 620,
+     "A4": 2000
+    }
+   },
+   "celda": "C1",
+   "formula": "=CONTAR.SI(A1:A4;\">=620\")",
+   "explicacion": "Cuenta 1.500, 620 y 2.000: tres valores mayores o iguales que 620. El 620 entra por el «=»."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "CONTAR.SI: sintaxis",
+   "dorso": "=CONTAR.SI(rango; criterio). Ej.: =CONTAR.SI(C2:C11;\"Pamplona\")"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "SUMAR.SI: sintaxis",
+   "dorso": "=SUMAR.SI(rango; criterio; rango_suma): busca aquí, esto, y suma de allí."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Cómo se escribe el criterio «mayor que 1.000»?",
+   "dorso": "Entre comillas, signo y número juntos: \">1000\""
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Resumen que se copia hacia abajo: ¿qué se fija con $?",
+   "dorso": "Los rangos ($B$2:$B$11). La celda del criterio (F2) se deja sin fijar."
+  }
+ ]
+}

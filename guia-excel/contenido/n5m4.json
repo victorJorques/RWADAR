@@ -1,0 +1,1304 @@
+{
+  "id": "n5m4",
+  "nivel": "n5",
+  "titulo": "Automatizar y usar la IA con criterio",
+  "intro": "La IA y la automatización ya están en la oficina: bien usadas te ahorran horas, y mal usadas cuelan errores con cara de verdad o sacan datos que no deberían salir de la empresa. Aquí aprendes a pedir y comprobar, a proteger los datos y a saber cuándo dar el salto a scripts, Python o Power BI.",
+  "repaso_inicial": [
+    {
+      "id": "n5m4-r1",
+      "modo": "formula",
+      "enunciado": "Repaso de cuadres. En **B4** escribe una comprobación: si la diferencia entre B2 y B3, **sin importar el signo**, es menor de 0,01 €, que salga «OK»; si no, «REVISAR».",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Importe",
+          "A2": "Facturas cobradas en noviembre",
+          "B2": 18450.75,
+          "A3": "Ingresos en el banco en noviembre",
+          "B3": 18450.75,
+          "A4": "Comprobación"
+        },
+        "formatos": {
+          "B2:B3": "eur"
+        },
+        "anchos": {
+          "A": 32,
+          "B": 13
+        }
+      },
+      "objetivo": "B4",
+      "solucion": "=SI(ABS(B2-B3)<0,01;\"OK\";\"REVISAR\")",
+      "alternativas": [
+        "=SI(ABS(B3-B2)<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(B2-B3)>=0,01;\"REVISAR\";\"OK\")"
+      ],
+      "errores_tipicos": [
+        "=SI(B2-B3<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(B2-B3)>0,01;\"OK\";\"REVISAR\")"
+      ],
+      "variantes": [
+        {
+          "B3": 18460.75
+        },
+        {
+          "B3": 18440.75
+        }
+      ],
+      "pistas": [
+        "«Sin importar el signo» es el valor absoluto: la función ABS.",
+        "La condición es ABS(B2-B3)<0,01; dentro de un SI, con «OK» y «REVISAR» entre comillas.",
+        "Queda así: `=SI(ABS(B2-B3)<0,01;\"OK\";\"REVISAR\")`."
+      ],
+      "explicacion": "Una celda de comprobación que avisa sola: si el banco y las facturas dejan de cuadrar, lo ves al momento, falte o sobre dinero."
+    },
+    {
+      "id": "n5m4-r2",
+      "modo": "test",
+      "pregunta": "Has grabado una macro en un libro y quieres conservarla. ¿Cómo lo guardas?",
+      "opciones": [
+        {
+          "texto": "Como Libro de Excel habilitado para macros (.xlsm)",
+          "correcta": true,
+          "porque": "Eso es: es el formato que guarda el código de la macro junto al libro."
+        },
+        {
+          "texto": "Como Libro de Excel (.xlsx), el de siempre",
+          "correcta": false,
+          "porque": "El .xlsx no admite macros: al guardar así, la macro se pierde."
+        },
+        {
+          "texto": "Como CSV, que lo abre cualquier programa",
+          "correcta": false,
+          "porque": "Un CSV solo guarda los datos de una hoja, sin fórmulas, formato ni macros."
+        }
+      ]
+    },
+    {
+      "id": "n5m4-r3",
+      "modo": "test",
+      "pregunta": "¿Para qué sirve LET en una fórmula?",
+      "opciones": [
+        {
+          "texto": "Para poner nombre a los pasos intermedios y calcular cada uno una sola vez",
+          "correcta": true,
+          "porque": "Así es: la fórmula se lee mejor y no repite cálculos."
+        },
+        {
+          "texto": "Para crear una función nueva que se puede usar en todo el libro",
+          "correcta": false,
+          "porque": "Eso es LAMBDA guardada con un nombre definido. LET solo vive dentro de su fórmula."
+        },
+        {
+          "texto": "Para bloquear la celda y que nadie la cambie",
+          "correcta": false,
+          "porque": "Eso se hace protegiendo la hoja, no con una función."
+        }
+      ]
+    },
+    {
+      "id": "n5m4-r4",
+      "modo": "test",
+      "pregunta": "Carmen quiere saber cuántos clientes **distintos** compraron en 2026 en cada provincia. Tu tabla dinámica sale del modelo de datos y tiene CodCliente (de Ventas) en Valores. ¿Cómo resumes ese campo?",
+      "opciones": [
+        {
+          "texto": "Recuento distinto",
+          "correcta": true,
+          "porque": "Eso es: cuenta cada cliente una sola vez aunque tenga muchas ventas. Solo aparece en las tablas dinámicas del modelo de datos."
+        },
+        {
+          "texto": "Cuenta",
+          "correcta": false,
+          "porque": "Cuenta líneas de venta: un cliente con 30 líneas contaría 30 veces."
+        },
+        {
+          "texto": "Suma",
+          "correcta": false,
+          "porque": "CodCliente es un código: sumarlo no tiene sentido y no dice cuántos clientes hay."
+        }
+      ],
+      "explicacion": "Clientes distintos = Recuento distinto en la dinámica del modelo, o CONTARA(UNICOS(…)) con fórmula para comprobarlo."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n5m4l1",
+      "titulo": "Copilot y otras IA: pedir bien y comprobar siempre",
+      "minutos": 16,
+      "objetivo": "Pedir a una IA una fórmula con el contexto adecuado, adaptarla al Excel en español y comprobarla con casos conocidos antes de entregarla.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Le he pedido a un chat la fórmula de las comisiones de noviembre: 3 % de lo vendido a partir de 5.000 €. La pego en Excel y no la acepta. ¿Me la dejas funcionando y comprobada? Las pagamos el viernes.",
+        "logro": "Ya sabes pedirle una fórmula a una IA, adaptarla a tu Excel en español y comprobarla con casos conocidos antes de entregarla."
+      },
+      "funciones": [
+        "SI",
+        "SUMAR.SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "La **IA** (inteligencia artificial) es un programa al que le escribes con tus palabras y te contesta con frases, fórmulas o tablas. En la oficina la verás de dos formas: **Copilot**, el asistente de Microsoft que vive dentro de Excel, y los **chats de IA** de una página web. Las dos ahorran tiempo. Y las dos se equivocan a veces **con total seguridad**: la respuesta suena perfecta y está mal. Hoy aprendes a pedir bien y a comprobar siempre."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Lo dice el propio Microsoft",
+          "md": "La ayuda oficial de Copilot en Excel pide **revisar y comprobar todo lo que crea antes de fiarte**, y no usarlo sin revisión para decisiones delicadas de finanzas o temas legales."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e1",
+          "modo": "test",
+          "pregunta": "Copilot te propone una fórmula que parece perfecta. ¿Qué haces antes de usarla en un informe?",
+          "opciones": [
+            {
+              "texto": "La pruebo con algunos datos cuyo resultado ya conozco",
+              "correcta": true,
+              "porque": "Eso es. Si da lo que esperas en casos que sabes calcular, puedes empezar a fiarte. Si no, has cazado el error antes que tu jefe."
+            },
+            {
+              "texto": "La uso tal cual: la ha hecho Microsoft",
+              "correcta": false,
+              "porque": "El propio Microsoft pide revisar y comprobar todo lo que crea Copilot. Que venga de una gran empresa no la hace correcta."
+            },
+            {
+              "texto": "Le pregunto a Copilot si está seguro",
+              "correcta": false,
+              "porque": "Te dirá que sí con la misma seguridad. Quien confirma una fórmula son los datos de prueba, no la propia IA."
+            }
+          ],
+          "explicacion": "La IA es un ayudante rápido, no un revisor. La comprobación es tu parte del trabajo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Copilot es bueno **proponiendo fórmulas** a partir de una descripción, **explicando** una fórmula que no entiendes, **resumiendo o clasificando** textos, y creando tablas, gráficos y tablas dinámicas. Si tu licencia lo incluye, se abre con el botón **Copilot** de la pestaña **Inicio** (según la versión, puede estar en una esquina de la ventana) o con [[Alt]]+[[C]], y aparece como un **panel** a la derecha de la hoja. Tiene tres modos: **chat** (solo te responde), **planificar** (te propone un plan antes de tocar nada) y **editar** (cambia el libro)."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "La función COPILOT ya no existe",
+          "md": "En internet aún verás explicada una función COPILOT que se escribía dentro de una celda. **Se retiró el 14/09/2026**: en un libro antiguo, al recalcular da **#¿NOMBRE?**. Hoy Copilot se usa solo desde su panel."
+        },
+        {
+          "tipo": "texto",
+          "md": "Su punto débil: **se equivoca con seguridad**. En una prueba de referencia con 912 tareas de hojas de cálculo, Microsoft midió que su modo de edición acertaba unas 6 de cada 10. Puede proponer una función que no existe (Excel responde #¿NOMBRE?), confundir «mayor que» con «mayor o igual que» o sumar la columna equivocada. Lo más peligroso son los **errores silenciosos**: sale un número, no salta ningún aviso… y el número está mal. Excel avisa de lo que no puede calcular, no de lo que está mal pensado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e2",
+          "modo": "predice",
+          "enunciado": "La regla de Electro Cierzo: 3 % de comisión **a partir de** 5.000 € vendidos. Una IA propuso `=SI(B2>5000;B2*0,03;0)`. Irene vendió **justo 5.000 €**. ¿Qué número devolverá la fórmula en C2?",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas nov.",
+              "C1": "Comisión",
+              "A2": "Irene Sanz",
+              "B2": 5000
+            },
+            "formatos": {
+              "B2": "eur"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "celda": "C2",
+          "formula": "=SI(B2>5000;B2*0,03;0)",
+          "explicacion": "Devuelve **0**, y según la regla Irene debería cobrar 150 €. El signo `>` significa «mayor que», y 5.000 no es mayor que 5.000. «A partir de» incluye el límite: se escribe `>=`. La fórmula no da ningún error: es un **error silencioso**, y solo lo destapa probar el valor justo del límite.",
+          "respuesta": "0"
+        },
+        {
+          "tipo": "texto",
+          "md": "Muchas fórmulas que te da un chat general, o que encuentras en foros y vídeos, están escritas para el **Excel en inglés**: otro nombre de función, **comas** entre argumentos y **punto** decimal. Tu Excel en español no las entiende: el nombre en inglés da **#¿NOMBRE?** y la coma no la acepta como separador. La traducción es mecánica: nombre en español, `;` entre argumentos y coma decimal (`0.03` pasa a ser `0,03`)."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Diccionario de bolsillo",
+          "md": "- SUM → SUMA\n- IF → SI\n- SUMIF → SUMAR.SI\n- COUNTIF → CONTAR.SI\n- XLOOKUP → BUSCARX\n- VLOOKUP → BUSCARV\n\nY mejor todavía: pide la fórmula desde el principio «para Excel en español, con punto y coma»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e3",
+          "modo": "formula",
+          "enunciado": "Nuria encontró en un foro esta fórmula para sumar las ventas de **Pamplona**, pero está escrita para el Excel en inglés. Arréglala en **E2** para tu Excel en español. Si está bien, saldrá **3.470,00 €** (lo calculó Nuria a mano: 1.260 + 1.530 + 680).",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Delegación",
+              "C1": "Importe",
+              "E1": "Total Pamplona",
+              "A2": "PV-26-1101",
+              "B2": "Zaragoza",
+              "C2": 1840,
+              "A3": "PV-26-1102",
+              "B3": "Pamplona",
+              "C3": 1260,
+              "A4": "PV-26-1103",
+              "B4": "Lleida",
+              "C4": 975,
+              "A5": "PV-26-1104",
+              "B5": "Pamplona",
+              "C5": 1530,
+              "A6": "PV-26-1105",
+              "B6": "Zaragoza",
+              "C6": 2210,
+              "A7": "PV-26-1106",
+              "B7": "Pamplona",
+              "C7": 680,
+              "A8": "PV-26-1107",
+              "B8": "Lleida",
+              "C8": 1415
+            },
+            "formatos": {
+              "C2:C8": "eur",
+              "E2": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12,
+              "E": 15
+            }
+          },
+          "objetivo": "E2",
+          "inicial": "=SUMIF(B2:B8,\"Pamplona\",C2:C8)",
+          "solucion": "=SUMAR.SI(B2:B8;\"Pamplona\";C2:C8)",
+          "alternativas": [
+            "=SUMAR.SI.CONJUNTO(C2:C8;B2:B8;\"Pamplona\")"
+          ],
+          "errores_tipicos": [
+            "=SUMIF(B2:B8;\"Pamplona\";C2:C8)",
+            "=SUMAR.SI(B2:B8;\"Zaragoza\";C2:C8)",
+            "=SUMA(C2:C8)",
+            "=C3+C5+C7"
+          ],
+          "no_usar": [
+            "SUMIF"
+          ],
+          "variantes": [
+            {
+              "C3": 2000
+            },
+            {
+              "B4": "Pamplona"
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Hay dos cosas que cambiar: el nombre de la función y lo que separa los argumentos.",
+            "SUMIF en español es SUMAR.SI, y entre argumentos va punto y coma. Ojo: aunque la hoja de práctica entendiera SUMIF, tu Excel en español daría #¿NOMBRE?.",
+            "Queda así: `=SUMAR.SI(B2:B8;\"Pamplona\";C2:C8)`."
+          ],
+          "explicacion": "Ya habla español: SUMAR.SI con `;`. Y has hecho algo más importante: comprobar que da lo que esperabas, 3.470,00 €. Esta traducción la harás a menudo con fórmulas de foros, vídeos y chats."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una fórmula ajena (de la IA, de un foro o de un compañero) no está bien solo porque dé un número. Pruébala con **casos cuyo resultado sabes calcular de cabeza**. Para la comisión del 3 % a partir de 5.000 €:\n- un caso normal: 8.000 € → 240 €;\n- el **caso frontera**, justo en el límite: 5.000 € → 150 €;\n- uno por debajo: 4.999 € → 0 €.\n\nSi los tres salen bien, puedes empezar a fiarte. Si falla uno, está mal aunque «parezca» bien."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e4",
+          "modo": "ordenar",
+          "enunciado": "Ordena el proceso para usar con seguridad una fórmula que te da una IA.",
+          "pasos": [
+            "Escribe la petición con el contexto, las columnas y «Excel en español, con punto y coma»",
+            "Copia la fórmula que te propone en una celda de prueba, fuera del informe",
+            "Pruébala con casos cuyo resultado conoces, incluido el caso frontera",
+            "Si algún caso falla, corrígela y vuelve a probar todos los casos",
+            "Cuando todos salen bien, cópiala al informe"
+          ],
+          "explicacion": "Primero se pide bien, luego se prueba aparte y solo al final entra en el informe. Así un error de la IA nunca llega a la mesa de Javier."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una buena petición tiene cuatro piezas:\n1. **Contexto**: qué estás haciendo y para qué.\n2. **Dónde están los datos**: qué hay en cada columna y en qué filas.\n3. **Un ejemplo del resultado**: «si vende 8.000 €, la comisión es 240 €».\n4. **Tu Excel**: «Excel en español, argumentos separados con punto y coma».\n\nY un extra que vale oro: «explícame la fórmula paso a paso». Cuanto más concreta es la petición, menos tiene que adivinar la IA."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Petición vaga",
+          "der": "Petición que funciona",
+          "filas": [
+            [
+              "«Hazme la fórmula de comisiones»",
+              "«Trabajo con Excel en español (separador ;). En B2:B7 están las ventas de noviembre de cada comercial.»"
+            ],
+            [
+              "La IA no sabe qué columnas hay",
+              "«Quiero en C2 la comisión: 3 % de las ventas si son de 5.000 € o más; si no, 0.»"
+            ],
+            [
+              "Ni la regla exacta",
+              "«Ejemplos: 8.000 € → 240 €; 5.000 € → 150 €; 4.999 € → 0 €.»"
+            ],
+            [
+              "Ni para qué Excel la quieres",
+              "«Dame la fórmula para C2, que copiaré hacia abajo, y explícamela.»"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e5",
+          "modo": "abierta",
+          "pregunta": "Marta necesita en la columna E los **días de retraso** de cada factura: la fecha de hoy menos la fecha de vencimiento (columna D, filas 2 a 60), y 0 si la factura aún no ha vencido. Escribe la petición que le harías a Copilot.",
+          "modelo": "Trabajo con Excel en español (los argumentos se separan con punto y coma). En D2:D60 están las fechas de vencimiento de las facturas pendientes. Quiero en E2 los días de retraso: la fecha de hoy menos la fecha de vencimiento, y 0 si la factura todavía no ha vencido. Ejemplos: si venció hace 10 días, 10; si vence mañana, 0. Dame la fórmula para E2, que copiaré hacia abajo, y explícamela paso a paso.",
+          "criterios": [
+            "Da el contexto y dice en qué columna y filas están los datos",
+            "Describe la regla completa, incluido qué pasa si la factura aún no ha vencido",
+            "Incluye al menos un ejemplo con su resultado",
+            "Pide la fórmula para el Excel en español, con punto y coma",
+            "Pide que se la explique o dice cómo la va a comprobar"
+          ]
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Mi regla de oro: **si no entiendes una fórmula, no la entregas**. Si mañana Javier te pregunta por qué Irene cobra 0, tienes que saber explicarlo. Pídele a la IA que te la explique parte por parte, o usa **Fórmulas › Evaluar fórmula** para verla calcular paso a paso. Y las cifras, siempre de la hoja: nunca copies un número que un chat ha «calculado» en su respuesta."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e6",
+          "modo": "test",
+          "pregunta": "Javier le pregunta al chat de Copilot cuánto se vendió en noviembre y la respuesta dice: «Las ventas de noviembre suman 48.215 €». Quiere copiar esa cifra tal cual en el informe para Carmen. ¿Qué le dices?",
+          "opciones": [
+            {
+              "texto": "Que lo calculemos en la hoja con SUMA y comparemos: al informe va la cifra de la fórmula",
+              "correcta": true,
+              "porque": "Así es. La cifra sale de una fórmula que cualquiera puede revisar. Si coincide con la del chat, perfecto; si no, ya sabes cuál vale."
+            },
+            {
+              "texto": "Que la copie: Copilot lee el libro, así que no se equivoca",
+              "correcta": false,
+              "porque": "Leer el libro no es acertar: puede sumar una columna de más o dejarse filas, y en el informe no quedaría rastro de cómo se calculó."
+            },
+            {
+              "texto": "Que le pida a Copilot que lo repita para estar seguros",
+              "correcta": false,
+              "porque": "Si repite la misma cifra solo sabes que es constante, no que sea correcta. La comprobación tiene que venir de fuera de la IA."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l1-e7",
+          "modo": "formula",
+          "enunciado": "Este es el «regalo» del chat que Javier pegó en **C2**. Déjalo bien para tu Excel y para la regla: **3 % de las ventas a partir de 5.000 €** (el umbral está en F1 y el porcentaje en F2). Tu fórmula se copiará a C3:C7. Control: Irene (fila 2, justo 5.000 €) debe cobrar **150 €**, y la columna C debe sumar **960,45 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas nov.",
+              "C1": "Comisión",
+              "E1": "Umbral",
+              "F1": 5000,
+              "E2": "Comisión",
+              "F2": 0.03,
+              "A2": "Irene Sanz",
+              "B2": 5000,
+              "A3": "Óscar Gil",
+              "B3": 8240,
+              "A4": "Pilar Navarro",
+              "B4": 4990,
+              "A5": "Raúl Herrero",
+              "B5": 12650,
+              "A6": "Elena Lozano",
+              "B6": 3870,
+              "A7": "Daniel Vidal",
+              "B7": 6125
+            },
+            "formatos": {
+              "B2:B7": "eur",
+              "C2:C7": "eur",
+              "F1": "eur",
+              "F2": "pct"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 12,
+              "C": 12
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C7"
+          ],
+          "inicial": "=IF(B2>$F$1,B2*$F$2,0)",
+          "solucion": "=SI(B2>=$F$1;B2*$F$2;0)",
+          "alternativas": [
+            "=SI(B2<$F$1;0;B2*$F$2)",
+            "=SI(B2>=F$1;B2*F$2;0)"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>$F$1;B2*$F$2;0)",
+            "=SI(B2>=F1;B2*F2;0)",
+            "=IF(B2>=$F$1;B2*$F$2;0)",
+            "=SI(B2>=5000;B2*0,03;0)"
+          ],
+          "debe_usar": [
+            "SI"
+          ],
+          "variantes": [
+            {
+              "F1": 6000,
+              "B3": 6000
+            },
+            {
+              "F2": 0.04
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero el idioma: IF en español es SI, y las comas que separan argumentos pasan a ser punto y coma.",
+            "Ahora la regla: «a partir de 5.000 €» incluye el 5.000. Prueba de cabeza la fila de Irene: con `>` cobraría 0. ¿Qué signo incluye el límite?",
+            "Queda así: `=SI(B2>=$F$1;B2*$F$2;0)`. Los $ ya venían bien: el umbral y el porcentaje no se mueven al copiar."
+          ],
+          "explicacion": "Comisiones listas: Irene cobra sus 150 € y el total cuadra con los 960,45 € de control. Has hecho las dos cosas que separan a quien usa bien la IA de quien la usa mal: **adaptar la fórmula a tu Excel** y **probar el caso frontera**. Javier puede pagar el viernes sin reclamaciones."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m4l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Un chat te da una fórmula con la función IF. ¿Cómo se llama esa función en tu Excel en español?",
+          "aceptadas": [
+            "SI",
+            "=SI",
+            "SI()"
+          ],
+          "explicacion": "IF es SI. Si la escribes en inglés, tu Excel en español responde #¿NOMBRE?."
+        },
+        {
+          "id": "n5m4l1-q2",
+          "modo": "test",
+          "pregunta": "Regla de Marta: 2 % de descuento en pedidos **de 1.000 € o más**. ¿Qué pedido de prueba destapa mejor si la fórmula usa `>` en lugar de `>=`?",
+          "opciones": [
+            {
+              "texto": "Uno de 1.000 € justos",
+              "correcta": true,
+              "porque": "Es el caso frontera: con `>=` lleva descuento y con `>` no. Es el único que distingue las dos fórmulas."
+            },
+            {
+              "texto": "Uno de 25.000 €",
+              "correcta": false,
+              "porque": "Con las dos fórmulas lleva descuento, así que no ves la diferencia."
+            },
+            {
+              "texto": "Uno de 80 €",
+              "correcta": false,
+              "porque": "Con las dos fórmulas se queda sin descuento: tampoco destapa el error."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es el caso frontera al probar una fórmula?",
+          "dorso": "El valor justo en el límite de la regla (5.000 € si la regla es «a partir de 5.000 €»). Es el que más errores destapa: `>` frente a `>=`."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Las cuatro piezas de una buena petición a la IA",
+          "dorso": "Contexto, dónde están los datos (columnas y filas), un ejemplo del resultado y «Excel en español, con punto y coma»."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Pegas una fórmula de internet y sale #¿NOMBRE?. ¿Qué miras primero?",
+          "dorso": "Si está en inglés: traduce el nombre (IF → SI, SUMIF → SUMAR.SI), cambia las comas por punto y coma y el punto decimal por coma."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Abrir el panel de Copilot en Excel",
+          "dorso": "Alt+C (en Microsoft 365, si tu licencia incluye Copilot)."
+        }
+      ]
+    },
+    {
+      "id": "n5m4l2",
+      "titulo": "Datos confidenciales e IA: lo que no se pega en un chat",
+      "minutos": 14,
+      "objetivo": "Decidir qué datos se pueden enseñar a una IA y preparar una copia sin datos personales: quitar columnas, poner códigos y comprobar que no se escapa nada.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "Quiero usar Copilot para el informe de antigüedad de la plantilla, pero el listado lleva nombres y NIF. ¿Me preparas una copia que se pueda usar sin problemas? Que no salga nadie con nombre, por favor, que luego me llaman de todas partes.",
+        "logro": "Ya sabes decidir qué datos se pueden enseñar a una IA, cambiar nombres por códigos y comprobar que no se escapa ningún dato personal."
+      },
+      "funciones": [
+        "TEXTO",
+        "CONTAR.SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Todo lo que escribes o pegas en un chat de IA sale de tu ordenador y llega a los servidores de otra empresa. Si es un chat de internet con tu cuenta personal, Electro Cierzo no controla dónde acaba ni para qué se usa. Por eso, antes de pegar nada, la pregunta no es «¿me ayudará?», sino **«¿puedo enseñarle estos datos?»**. En esta lección aprendes a contestarla en segundos y a preparar una copia segura."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Solo la IA autorizada",
+          "md": "En Electro Cierzo la IA autorizada es **Copilot con tu cuenta de trabajo**. Con esa cuenta, Microsoft aplica su protección de datos para empresas: lo que le pides no se usa para entrenar sus modelos. Es también lo que recomienda la **AEPD** (Agencia Española de Protección de Datos): en el trabajo, usa solo los asistentes que autorice tu organización, y nunca con tu cuenta personal."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e1",
+          "modo": "test",
+          "pregunta": "Para entender un concepto, alguien de la oficina quiere pegar la nómina de un trabajador en un chat público de internet. ¿Qué le aconsejas?",
+          "opciones": [
+            {
+              "texto": "Que no lo haga: es un dato personal y confidencial. Que pregunte con una nómina inventada",
+              "correcta": true,
+              "porque": "Eso es. La duda se resuelve igual con datos de ejemplo, y la nómina de esa persona no sale de la empresa."
+            },
+            {
+              "texto": "Que puede hacerlo si después borra la conversación",
+              "correcta": false,
+              "porque": "Borrarla de tu pantalla no garantiza que se borre en los servidores del chat. El dato ya ha salido."
+            },
+            {
+              "texto": "Que puede hacerlo si tapa solo el nombre",
+              "correcta": false,
+              "porque": "Quedan el NIF, el sueldo, la fecha de alta…: con eso es fácil saber de quién es. Y además es un chat no autorizado."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "Un **dato personal** es cualquier dato que permite saber de quién se habla: nombre y apellidos, NIF, dirección, teléfono, correo, número de cuenta (IBAN), sueldo o una baja médica. Además hay datos **confidenciales** de la empresa, aunque no sean de personas: márgenes, precios pactados con cada cliente, contraseñas, una compra que aún no es pública. El **RGPD** (Reglamento General de Protección de Datos, la ley europea) obliga a tratar los datos personales con cuidado. Y tú los tratas cada vez que abres un Excel con ellos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e2",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "¿Cuáles de estos datos son **datos personales**? Puede haber más de una respuesta.",
+          "opciones": [
+            {
+              "texto": "El NIF de una trabajadora",
+              "correcta": true,
+              "porque": "Sí: identifica a una persona concreta sin ninguna duda."
+            },
+            {
+              "texto": "El correo de una clienta, pilar.navarro@…",
+              "correcta": true,
+              "porque": "Sí: un correo con nombre y apellido apunta directamente a una persona."
+            },
+            {
+              "texto": "El sueldo bruto anual de un trabajador",
+              "correcta": true,
+              "porque": "Sí, y de los más delicados: va unido a una persona concreta."
+            },
+            {
+              "texto": "El total vendido por la delegación de Lleida en octubre",
+              "correcta": false,
+              "porque": "No dice nada de una persona: es un dato interno de la empresa. Es confidencial, pero no personal."
+            },
+            {
+              "texto": "El tipo general del IVA, 21 %",
+              "correcta": false,
+              "porque": "Es un dato público: lo puede consultar cualquiera."
+            }
+          ],
+          "explicacion": "La pregunta clave es: «¿con esto se puede saber de quién se habla?». Si la respuesta es sí, es un dato personal."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "El semáforo de Nuria: ¿se puede pegar en una IA?",
+          "cabecera": [
+            "Color",
+            "Ejemplos",
+            "Dónde se puede usar"
+          ],
+          "filas": [
+            [
+              "Verde",
+              "Datos inventados, datos públicos o solo la estructura («tengo las columnas Fecha, Cliente e Importe»)",
+              "En cualquier IA"
+            ],
+            [
+              "Ámbar",
+              "Datos internos sin personas: ventas por zona, costes, stock",
+              "Solo en la IA autorizada (Copilot con tu cuenta de trabajo)"
+            ],
+            [
+              "Rojo",
+              "Datos personales (nombres, NIF, sueldos, salud, IBAN), datos de clientes, contraseñas",
+              "Nunca en una IA no autorizada. En la autorizada, solo con permiso expreso y mejor con códigos"
+            ]
+          ],
+          "pie": "Es la norma interna de Electro Cierzo. Se apoya en el RGPD y en las recomendaciones de la AEPD."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e3",
+          "modo": "test",
+          "pregunta": "Andrés quiere que Copilot, con su cuenta de trabajo, le resuma el stock por familia de producto (cable, mecanismos, luminarias LED…). ¿Qué color tiene en el semáforo y puede hacerlo?",
+          "opciones": [
+            {
+              "texto": "Ámbar: es un dato interno sin personas. Sí, en la IA autorizada",
+              "correcta": true,
+              "porque": "Eso es. El stock es información de la empresa, así que no sale de la herramienta autorizada; dentro de ella, adelante."
+            },
+            {
+              "texto": "Verde: lo puede pegar en cualquier chat de internet",
+              "correcta": false,
+              "porque": "El stock no es público: a un competidor le encantaría verlo. Fuera de la herramienta autorizada no sale."
+            },
+            {
+              "texto": "Rojo: no puede usar ninguna IA",
+              "correcta": false,
+              "porque": "En esos datos no hay ninguna persona. El rojo es para datos personales, de clientes o muy confidenciales."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "El RGPD tiene una idea que te salva casi siempre: la **minimización**. Pide que los datos sean «limitados a lo necesario» para lo que vas a hacer (artículo 5.1.c). En Excel se traduce así: antes de compartir, **quita las columnas que no hacen falta**. Para proponerte una fórmula de antigüedad, la IA necesita la fecha de alta; no necesita el nombre, el NIF ni el sueldo. Y a menudo le basta con la **estructura**: qué columnas hay y dos filas inventadas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuando necesitas distinguir a cada persona, **seudonimiza**: cambia el nombre por un código (CLI-001, CLI-002…) y guarda la tabla que une códigos y nombres **aparte y protegida**. Quien vea la copia no sabe quién es quién; tú sí puedes deshacerlo. El código se fabrica con lo que ya sabes: `&` para unir textos y `TEXTO(A2;\"000\")`, que escribe el número de A2 con tres cifras (7 → 007)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e4",
+          "modo": "formula",
+          "enunciado": "Javier quiere que Copilot analice las ventas por cliente sin que salgan sus nombres. En **C2** está la fórmula de código que empezó Nuria, pero da «CLI-5» en vez de **CLI-005**. Arréglala para que el número salga siempre con tres cifras. Tu fórmula se copiará a C3:C6.",
+          "hoja": {
+            "celdas": {
+              "A1": "Nº",
+              "B1": "Cliente",
+              "C1": "Código",
+              "A2": 5,
+              "B2": "Instalaciones Lacasa y Royo, S.L.",
+              "A3": 18,
+              "B3": "Electromontajes Valdejalón, S.L.",
+              "A4": 42,
+              "B4": "Climatización Ribagorza Norte, S.L.",
+              "A5": 7,
+              "B5": "Montajes Eléctricos Bardenas, S.L.",
+              "A6": 130,
+              "B6": "Reformas y Electricidad Gállego, S.L."
+            },
+            "anchos": {
+              "A": 6,
+              "B": 34,
+              "C": 12
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C6"
+          ],
+          "inicial": "=\"CLI-\"&A2",
+          "solucion": "=\"CLI-\"&TEXTO(A2;\"000\")",
+          "alternativas": [
+            "=CONCAT(\"CLI-\";TEXTO(A2;\"000\"))"
+          ],
+          "errores_tipicos": [
+            "=\"CLI-\"&A2",
+            "=\"CLI-00\"&A2",
+            "=\"CLI-\"&TEXTO(A2;\"0\")"
+          ],
+          "variantes": [
+            {
+              "A2": 9
+            }
+          ],
+          "pistas": [
+            "Lo que falla es cómo se escribe el número: tiene que salir con tres cifras.",
+            "Cambia `A2` por `TEXTO(A2;\"000\")`: el formato \"000\" rellena con ceros a la izquierda.",
+            "Queda así: `=\"CLI-\"&TEXTO(A2;\"000\")`."
+          ],
+          "explicacion": "Cada cliente tiene ya un código limpio: CLI-005, CLI-018, CLI-130… Con tres cifras los códigos se ordenan bien y todos miden lo mismo. Javier puede pedir su análisis a Copilot con los códigos, y luego traducirlos a nombres con la tabla que guarda él."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Antes de pegar nada, busca lo que se te escapa. En las observaciones del programa de gestión los comerciales escriben cosas como «llamar a Marisa, m.lopez@…». Un truco: el comodín `*` que ya usaste con CONTAR.SI significa «cualquier texto», así que `\"*@*\"` quiere decir «tiene una @ en alguna parte». Si el recuento no da 0, la copia aún no está lista."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e5",
+          "modo": "formula",
+          "enunciado": "Antes de enviar a Copilot esta copia de las incidencias, comprueba en **F2** cuántas observaciones (D2:D7) contienen un correo electrónico, es decir, una **@**. Debe salir un número de celdas; si no es 0, toca limpiar.",
+          "hoja": {
+            "celdas": {
+              "A1": "Incidencia",
+              "B1": "Cliente",
+              "C1": "Fecha",
+              "D1": "Observaciones",
+              "F1": "Celdas con @",
+              "A2": "INC-0412",
+              "B2": "CLI-005",
+              "C2": {
+                "fecha": "2026-11-09"
+              },
+              "D2": "Faltan 3 cajas de bridas en el albarán",
+              "A3": "INC-0413",
+              "B3": "CLI-018",
+              "C3": {
+                "fecha": "2026-11-10"
+              },
+              "D3": "Devolver el abono a compras@valdejalon-montajes.es",
+              "A4": "INC-0414",
+              "B4": "CLI-042",
+              "C4": {
+                "fecha": "2026-11-11"
+              },
+              "D4": "Luminaria LED rota al desembalar",
+              "A5": "INC-0415",
+              "B5": "CLI-005",
+              "C5": {
+                "fecha": "2026-11-12"
+              },
+              "D5": "Contacto: Marisa, m.lopez@lacasayroyo-inst.es",
+              "A6": "INC-0416",
+              "B6": "CLI-007",
+              "C6": {
+                "fecha": "2026-11-13"
+              },
+              "D6": "Factura duplicada, pendiente de abono",
+              "A7": "INC-0417",
+              "B7": "CLI-130",
+              "C7": {
+                "fecha": "2026-11-16"
+              },
+              "D7": "Enviar presupuesto a obras@gallego-reformas.es"
+            },
+            "formatos": {
+              "C2:C7": "fecha"
+            },
+            "anchos": {
+              "A": 10,
+              "C": 11,
+              "D": 44,
+              "F": 13
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=CONTAR.SI(D2:D7;\"*@*\")",
+          "errores_tipicos": [
+            "=CONTAR.SI(D2:D7;\"@\")",
+            "=CONTARA(D2:D7)",
+            "=CONTAR.SI(D2:D7;\"*@\")"
+          ],
+          "variantes": [
+            {
+              "D2": "Escribir a info@bardenas-montajes.es"
+            },
+            {
+              "D7": "Enviar presupuesto por correo"
+            }
+          ],
+          "pistas": [
+            "Quieres contar celdas que cumplen una condición: la función es CONTAR.SI.",
+            "La condición es «tiene una @ en cualquier parte»: un asterisco delante y otro detrás, entre comillas.",
+            "Queda así: `=CONTAR.SI(D2:D7;\"*@*\")`."
+          ],
+          "explicacion": "Salen **3** correos escondidos en las observaciones: la copia aún no se puede enviar. Esta comprobación de un segundo es la que separa un descuido de una fuga de datos. Funciona igual con miles de filas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuando uses IA en un trabajo, déjalo escrito en la hoja **Léeme** del libro (la hoja que explica qué hay en el archivo y cómo se usa):\n- qué parte hizo la IA,\n- con qué datos se lo pediste (inventados, con códigos…),\n- y **cómo lo comprobaste**.\n\nAsí, quien abra el libro dentro de seis meses (o tú misma) sabrá qué se revisó y de qué fiarse. No es desconfianza: es lo mismo que firmar un cuadre."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "¿Y si ya lo has pegado?",
+          "md": "No lo escondas ni lo borres en silencio. Pegar datos personales donde no se debe puede ser una **brecha de seguridad** (una fuga de datos): avisa enseguida a tu responsable o a quien lleve la protección de datos. Si hay que notificarla a la AEPD, la empresa tiene en general un máximo de **72 horas** desde que lo sabe."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e6",
+          "modo": "abierta",
+          "pregunta": "Recuerda la fórmula de comisiones que arreglaste para Javier: la propuso un chat, la adaptaste al Excel en español, cambiaste `>` por `>=` y la probaste. Escribe la nota de 2-3 líneas que pondrías en la hoja **Léeme** del libro de comisiones.",
+          "modelo": "Columna C (comisión): fórmula propuesta por un chat de IA a partir de una descripción, sin datos reales. La adapté al Excel en español y cambié «>» por «>=» para cumplir la regla «a partir de 5.000 €». Comprobada el 18/11/2026 con tres casos calculados a mano (5.000 €, 4.990 € y 8.240 €) y con el total de control de 960,45 €.",
+          "criterios": [
+            "Dice qué parte del libro salió de la IA",
+            "Dice con qué datos se pidió (sin datos reales o con códigos)",
+            "Explica qué se corrigió",
+            "Dice cómo se comprobó (casos conocidos, total de control) y cuándo"
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l2-e7",
+          "modo": "formula",
+          "enunciado": "Prepara la copia para Lucía. En **E2** escribe la fórmula que convierte el número de empleado de A2 en un código como **EMP-007** (siempre «EMP-» y el número con tres cifras). Tu fórmula se copiará a E3:E7. Después pegarás los códigos como valores y borrarás las columnas de Nº, nombre y NIF.",
+          "hoja": {
+            "celdas": {
+              "A1": "Nº",
+              "B1": "Nombre",
+              "C1": "NIF",
+              "D1": "Fecha de alta",
+              "E1": "Código",
+              "A2": 7,
+              "B2": "Ana Belén Royo Sancho",
+              "C2": "25471836H",
+              "D2": {
+                "fecha": "2014-03-03"
+              },
+              "A3": 12,
+              "B3": "Sergio Lahoz Gimeno",
+              "C3": "72984510M",
+              "D3": {
+                "fecha": "2016-09-12"
+              },
+              "A4": 25,
+              "B4": "Laura Cebrián Pardo",
+              "C4": "17639428R",
+              "D4": {
+                "fecha": "2019-01-14"
+              },
+              "A5": 31,
+              "B5": "Miguel Ángel Tena Bello",
+              "C5": "29384715Q",
+              "D5": {
+                "fecha": "2020-06-01"
+              },
+              "A6": 48,
+              "B6": "Rocío Abad Marcén",
+              "C6": "73029164T",
+              "D6": {
+                "fecha": "2023-02-20"
+              },
+              "A7": 56,
+              "B7": "Iván Lorente Casas",
+              "C7": "18476253F",
+              "D7": {
+                "fecha": "2025-10-06"
+              }
+            },
+            "formatos": {
+              "D2:D7": "fecha"
+            },
+            "anchos": {
+              "A": 6,
+              "B": 24,
+              "C": 11,
+              "D": 13,
+              "E": 11
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "solucion": "=\"EMP-\"&TEXTO(A2;\"000\")",
+          "alternativas": [
+            "=CONCAT(\"EMP-\";TEXTO(A2;\"000\"))"
+          ],
+          "errores_tipicos": [
+            "=\"EMP-\"&A2",
+            "=\"EMP-0\"&A2",
+            "=\"EMP-\"&TEXTO(B2;\"000\")",
+            "=\"EMP-\"&TEXTO($A$2;\"000\")"
+          ],
+          "variantes": [
+            {
+              "A2": 104
+            },
+            {
+              "A3": 3
+            }
+          ],
+          "pistas": [
+            "Une el texto fijo «EMP-» con el número de A2 usando &.",
+            "Para que el 7 salga como 007, pásalo por TEXTO con el formato \"000\".",
+            "Queda así: `=\"EMP-\"&TEXTO(A2;\"000\")`."
+          ],
+          "explicacion": "Cada persona tiene ya su código: EMP-007, EMP-012… Ahora copia la columna E y pégala como valores (**Pegado especial › Valores**), y en la copia borra Nº, nombre y NIF; el original, con la correspondencia, se queda guardado y protegido. Lucía puede usar Copilot sin que salga nadie con nombre: has aplicado **minimización** y **seudonimización**, dos medidas que cita el RGPD."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m4l2-q1",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para preparar una copia sin datos personales que puedas enseñar a la IA.",
+          "pasos": [
+            "Haz una copia del archivo y trabaja solo en la copia",
+            "Añade una columna con la fórmula que fabrica el código de cada persona",
+            "Convierte esa columna en valores con Pegado especial › Valores",
+            "Borra las columnas de Nº, nombre, NIF y sueldo",
+            "Revisa la copia buscando datos personales que se hayan escapado"
+          ],
+          "explicacion": "La copia protege el original. Los valores van antes de borrar: si borras la columna de Nº con la fórmula viva, los códigos se convierten en #¡REF!. Y la revisión, al final, cuando la copia ya está como la vas a enseñar."
+        },
+        {
+          "id": "n5m4l2-q2",
+          "modo": "test",
+          "pregunta": "Te das cuenta de que has pegado en un chat de internet un listado con nombres y teléfonos de clientes. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Aviso enseguida a mi responsable o a quien lleve la protección de datos",
+              "correcta": true,
+              "porque": "Es lo correcto: puede ser una brecha de seguridad, y si hay que notificarla, la empresa tiene en general como mucho 72 horas."
+            },
+            {
+              "texto": "Borro la conversación y no digo nada para no liarla",
+              "correcta": false,
+              "porque": "Borrarla no deshace la fuga, y callar le quita a la empresa el tiempo que necesita para actuar."
+            },
+            {
+              "texto": "Espero unos días a ver si pasa algo",
+              "correcta": false,
+              "porque": "Cada hora cuenta: si hay que notificar a la AEPD, el plazo empieza a correr cuando la empresa lo sabe."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un dato personal?",
+          "dorso": "Cualquier dato que permite saber de quién se habla: nombre, NIF, dirección, teléfono, correo, IBAN, sueldo, salud."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es la minimización de datos (RGPD, art. 5.1.c)?",
+          "dorso": "Usar solo los datos necesarios para lo que vas a hacer. En Excel: quitar las columnas que sobran antes de compartir."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Fórmula para convertir el número 7 de A2 en el código EMP-007",
+          "dorso": "`=\"EMP-\"&TEXTO(A2;\"000\")`"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "El semáforo de datos para la IA",
+          "dorso": "Verde: inventados, públicos o solo la estructura (cualquier IA). Ámbar: internos sin personas (solo la IA autorizada). Rojo: personales, de clientes o contraseñas (nunca en una IA no autorizada)."
+        }
+      ]
+    },
+    {
+      "id": "n5m4l3",
+      "titulo": "Office Scripts, Python en Excel y Power BI: qué son y cuándo dar el salto",
+      "minutos": 15,
+      "objetivo": "Saber qué hacen Office Scripts, Power Automate, Python en Excel y Power BI, qué necesitan y cuándo conviene cada uno.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "Me dicen que deberíamos «automatizar con scripts» y «pasarnos a Power BI». Tú eres la de Excel: ¿qué nos conviene para el informe de ventas de cada lunes y para el cuadro de mando que quieren ver los 12 comerciales, cada uno con lo suyo? Dos líneas por cosa.",
+        "logro": "Ya sabes qué hacen Office Scripts, Python en Excel y Power BI, y cuándo conviene dar el salto (y cuándo no)."
+      },
+      "funciones": [
+        "REDONDEAR.MENOS"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Ya eres la referencia de Excel de la oficina, y te van a llegar palabras nuevas: «script», «Python», «Power BI». No hace falta que las domines hoy. Sí que sepas **qué son, qué necesitan y cuándo merecen la pena**, para decidir con criterio y no por moda. Empezamos por la que tienes más a mano: la pestaña **Automatizar** de Excel."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un **Office Script** es una lista de pasos de Excel guardada para repetirla con un clic: como una macro, pero moderna. Se graba con **Automatizar › Grabar acciones**: haces los pasos una vez, paras la grabación y Excel los escribe en un lenguaje de programación llamado TypeScript. El script se guarda en tu **OneDrive** (no dentro del libro) y funciona en Excel para la web, en Windows y en Mac."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Qué necesita",
+          "md": "Una licencia de Microsoft 365 de empresa (Business, E3, E5…) y OneDrive para la Empresa; en Windows, la versión 2210 o posterior. En las cuentas Personal y Familia solo está como versión de prueba. Si no ves la pestaña **Automatizar**, puede que tu administrador lo tenga desactivado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e1",
+          "modo": "cinta",
+          "enunciado": "Vas a grabar tu primer Office Script. ¿Dónde está el botón para empezar a grabar?",
+          "ruta": [
+            "Automatizar",
+            "Herramientas de scripts de Office",
+            "Grabar acciones"
+          ],
+          "explicacion": "Automatizar › Herramientas de scripts de Office › Grabar acciones. Desde ese momento, Excel apunta cada paso que das hasta que paras la grabación."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Macro (VBA)",
+          "der": "Office Script",
+          "filas": [
+            [
+              "Funciona en Excel de escritorio (Windows y Mac)",
+              "Funciona en Excel para la web, Windows y Mac"
+            ],
+            [
+              "En Excel para la web no se puede crear, ejecutar ni editar",
+              "Pensado también para el navegador"
+            ],
+            [
+              "Vive dentro del libro (.xlsm)",
+              "Vive en tu OneDrive, aparte del libro"
+            ],
+            [
+              "Se escribe en VBA",
+              "Se escribe en TypeScript"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e2",
+          "modo": "test",
+          "pregunta": "El informe de stock de Andrés se abre siempre en **Excel para la web**, desde el navegador. Quieres automatizar el formato que le das cada mañana. ¿Qué eliges?",
+          "opciones": [
+            {
+              "texto": "Un Office Script",
+              "correcta": true,
+              "porque": "Eso es: funciona en Excel para la web (y también en Windows y Mac). Es la opción moderna para libros que viven en la nube."
+            },
+            {
+              "texto": "Una macro VBA",
+              "correcta": false,
+              "porque": "En Excel para la web no se pueden crear, ejecutar ni editar macros VBA. Para el navegador, no sirve."
+            },
+            {
+              "texto": "Nada: en el navegador no se puede automatizar",
+              "correcta": false,
+              "porque": "Sí se puede: los Office Scripts están pensados justo para eso."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "Los scripts tienen un compañero: **Power Automate**, la herramienta de Microsoft 365 para encadenar tareas automáticas. Con ella puedes **programar** un script, es decir, decirle cuándo se ejecuta solo: por ejemplo, «cada lunes a las 7:00, ejecuta el script de formato en el libro de ventas». Así el informe está listo cuando llegas. Lo monta una vez quien sabe (tú, o informática) y después funciona sin que nadie pulse nada."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "No automatices lo que aún cambia",
+          "md": "Grabar un proceso que cambia cada semana (columnas nuevas, criterios que dirección todavía discute) es grabar un error que se repetirá solo. Primero haz el proceso a mano unas semanas hasta que esté estable; después, grábalo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e3",
+          "modo": "test",
+          "pregunta": "¿Cuál de estas tareas conviene automatizar **ya**?",
+          "opciones": [
+            {
+              "texto": "El formato del informe semanal de ventas, que lleva un año igual",
+              "correcta": true,
+              "porque": "Es estable y se repite cada semana: cada minuto que ahorra se multiplica por 52."
+            },
+            {
+              "texto": "El informe nuevo de márgenes, que Carmen cambia cada semana",
+              "correcta": false,
+              "porque": "Si los pasos cambian cada semana, grabarías un proceso que mañana ya no vale. Primero que se estabilice."
+            },
+            {
+              "texto": "Un cuadre que haces una vez al año y te lleva cinco minutos",
+              "correcta": false,
+              "porque": "Preparar, probar y mantener el script costaría más tiempo del que ahorra."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "**Python en Excel** permite escribir código de Python (un lenguaje de programación muy usado para analizar datos) dentro de una celda: escribes `=PY` y se abre un editor. El código se ejecuta **en la nube de Microsoft**, no en tu ordenador, con herramientas de análisis ya preparadas. Sirve para estadística avanzada, gráficos especiales o limpiezas de datos complicadas. Es un tema opcional: basta con que sepas que existe y qué necesita."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Qué necesita Python en Excel",
+          "md": "Microsoft 365 de empresa (Windows, Mac o web). No funciona en las versiones de compra única (Excel 2021 o 2024), ni en el móvil (las celdas de Python dan error al recalcular), ni con la activación en equipo compartido que usan muchos escritorios remotos. Como el código va a la nube, no lo uses con datos sensibles sin permiso de la empresa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e4",
+          "modo": "test",
+          "pregunta": "Marta abre en el móvil, de camino a una reunión, un libro con celdas de Python. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "El libro se abre, pero las celdas de Python dan error al recalcular",
+              "correcta": true,
+              "porque": "Así es: Python en Excel no funciona en el móvil. Si un informe se va a mirar en el móvil, que no dependa de Python."
+            },
+            {
+              "texto": "Funciona igual que en el ordenador, porque el código se ejecuta en la nube",
+              "correcta": false,
+              "porque": "Se ejecuta en la nube, sí, pero Excel para móvil no lo admite: las celdas dan error al recalcular."
+            },
+            {
+              "texto": "El libro no se puede abrir",
+              "correcta": false,
+              "porque": "Se abre sin problema; lo que falla son las celdas de Python cuando se recalculan."
+            }
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "**Power BI** es el programa de Microsoft para cuadros de mando que consultan muchas personas: el informe se publica en un servicio web y cada uno lo abre desde el navegador o el móvil. Usa el mismo **Power Query** y el mismo **modelo de datos** que ya manejas en Excel, así que lo que sabes te sirve para dar el salto. Excel no desaparece: sigue siendo el **taller** donde se analiza, se prueba y se cuadra."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Señales de que Excel se queda pequeño:**\n- Los datos se acercan al límite de **1.048.576 filas** por hoja, o el libro va lento aunque esté bien hecho.\n- Hay que combinar muchas fuentes y actualizarlas solas, a una hora fija.\n- Lo consultan muchas personas y cada una solo debe ver lo suyo (en Power BI se llama **seguridad de nivel de fila**).\n- Muchas personas escriben datos a la vez: eso pide un formulario o una base de datos, no una hoja compartida."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "El paso intermedio",
+          "md": "Si el problema es solo el volumen, antes de cambiar de programa carga los datos con **Power Query** al **modelo de datos**: ahí no rige el límite de filas de la hoja."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e5",
+          "modo": "formula",
+          "enunciado": "Andrés pega cada mes en la misma hoja los movimientos del almacén que exporta el programa de gestión. En **B6** calcula cuántos **meses completos** más caben antes de llegar al límite: las filas libres (B2 menos B3) entre las filas nuevas de cada mes (B4), **redondeado hacia abajo** (un mes a medias no cabe).",
+          "hoja": {
+            "celdas": {
+              "A1": "Dato",
+              "B1": "Valor",
+              "A2": "Límite de filas de una hoja",
+              "B2": 1048576,
+              "A3": "Filas ya ocupadas",
+              "B3": 742300,
+              "A4": "Filas nuevas cada mes",
+              "B4": 61500,
+              "A6": "Meses completos que caben"
+            },
+            "formatos": {
+              "B2:B4": "#.##0"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 12
+            }
+          },
+          "objetivo": "B6",
+          "solucion": "=REDONDEAR.MENOS((B2-B3)/B4;0)",
+          "alternativas": [
+            "=ENTERO((B2-B3)/B4)",
+            "=TRUNCAR((B2-B3)/B4)",
+            "=COCIENTE(B2-B3;B4)"
+          ],
+          "errores_tipicos": [
+            "=REDONDEAR((B2-B3)/B4;0)",
+            "=REDONDEAR.MAS((B2-B3)/B4;0)",
+            "=(B2-B3)/B4",
+            "=REDONDEAR.MENOS(B2-B3/B4;0)"
+          ],
+          "variantes": [
+            {
+              "B3": 820000,
+              "B4": 45000
+            },
+            {
+              "B3": 1000000,
+              "B4": 20000
+            }
+          ],
+          "pistas": [
+            "Primero las filas libres: B2-B3. Ponlas entre paréntesis para que se resten antes de dividir.",
+            "Divide entre B4 y redondea hacia abajo con REDONDEAR.MENOS y 0 decimales.",
+            "Queda así: `=REDONDEAR.MENOS((B2-B3)/B4;0)`."
+          ],
+          "explicacion": "Caben **4 meses** más: en el quinto, el histórico ya no entra en la hoja. Esta cuenta de servilleta convierte una sensación («el archivo va pesado») en un plazo para decidir: cargar los datos con Power Query al modelo de datos, o pasar a Power BI, antes de quedarte sin sitio."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e6",
+          "modo": "test",
+          "pregunta": "¿En cuál de estos casos tiene más sentido dar el salto a **Power BI**?",
+          "opciones": [
+            {
+              "texto": "Un cuadro de mando que consultarán 40 personas, y cada delegación solo debe ver sus datos",
+              "correcta": true,
+              "porque": "Muchas personas y cada una con permiso solo para lo suyo: justo para eso está Power BI, con su seguridad de nivel de fila."
+            },
+            {
+              "texto": "El presupuesto que usa solo Marta y que retoca cada día",
+              "correcta": false,
+              "porque": "Una persona, supuestos que cambian a diario: eso es trabajo de taller, y el taller es Excel."
+            },
+            {
+              "texto": "La lista de los 300 clientes activos con su delegación",
+              "correcta": false,
+              "porque": "300 filas no son nada para Excel. El tamaño solo es motivo cuando te acercas al límite de la hoja."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m4l3-e7",
+          "modo": "abierta",
+          "pregunta": "Contesta a Carmen en dos líneas por cosa: ¿qué conviene para el **informe de ventas de cada lunes** (siempre los mismos pasos desde hace meses) y para el **cuadro de mando de los 12 comerciales**, en el que cada uno debe ver solo lo suyo?",
+          "modelo": "Informe de los lunes: como los pasos son siempre los mismos, lo grabaría como Office Script (Automatizar › Grabar acciones) y lo programaría con Power Automate para que esté listo a primera hora; antes lo probaría un par de semanas. Cuadro de mando de los comerciales: como lo consultan 12 personas y cada una solo debe ver lo suyo, conviene Power BI con seguridad de nivel de fila, aprovechando el Power Query y el modelo de datos que ya tenemos en Excel.",
+          "criterios": [
+            "Para el informe semanal propone un Office Script (y Power Automate para programarlo)",
+            "Lo justifica porque el proceso es estable y repetitivo, o propone probarlo antes",
+            "Para el cuadro de mando propone Power BI",
+            "Lo justifica porque lo consultan muchas personas y cada una debe ver solo lo suyo",
+            "Es breve y clara, como un mensaje a dirección"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m4l3-q1",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para grabar un Office Script y empezar a usarlo con seguridad.",
+          "pasos": [
+            "Abre el libro, guardado en OneDrive",
+            "Pulsa Automatizar › Grabar acciones",
+            "Haz los pasos una sola vez, sin prisa",
+            "Para la grabación: el script queda guardado en tu OneDrive",
+            "Pruébalo en una copia del libro y revisa el resultado antes de usarlo en el bueno"
+          ],
+          "explicacion": "Se graba una vez con calma y se prueba en una copia: un script repite también los errores, y los repite cada vez."
+        },
+        {
+          "id": "n5m4l3-q2",
+          "modo": "test",
+          "pregunta": "¿Dónde se ejecuta el código de una celda de Python en Excel?",
+          "opciones": [
+            {
+              "texto": "En la nube de Microsoft",
+              "correcta": true,
+              "porque": "Eso es: por eso necesita conexión y Microsoft 365, y por eso no se usa con datos sensibles sin permiso."
+            },
+            {
+              "texto": "En tu ordenador, como una macro",
+              "correcta": false,
+              "porque": "Las macros VBA sí se ejecutan en tu equipo; Python en Excel no, va a la nube de Microsoft."
+            },
+            {
+              "texto": "Dentro de Power BI",
+              "correcta": false,
+              "porque": "Power BI es otro programa, para publicar cuadros de mando. Python en Excel funciona dentro de Excel y se calcula en la nube."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Office Script: ¿dónde se graba y dónde se guarda?",
+          "dorso": "Se graba con Automatizar › Grabar acciones y se guarda en tu OneDrive, no dentro del libro. Funciona en la web, Windows y Mac."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Para qué sirve Power Automate con un Office Script?",
+          "dorso": "Para programarlo: que se ejecute solo, por ejemplo cada lunes a una hora fija."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Python en Excel: cómo se empieza y qué necesita",
+          "dorso": "Se escribe =PY en una celda. Se ejecuta en la nube de Microsoft y necesita Microsoft 365 de empresa; no funciona en el móvil."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cuántas filas caben como máximo en una hoja de Excel?",
+          "dorso": "1.048.576 filas."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Señales para pasar de Excel a Power BI",
+          "dorso": "Muchas personas consultando y cada una con lo suyo; muchas fuentes con actualización programada; volumen cerca del límite de filas."
+        }
+      ]
+    }
+  ]
+}

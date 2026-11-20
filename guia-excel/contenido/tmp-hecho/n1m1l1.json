@@ -1,0 +1,220 @@
+{
+ "id": "n1m1l1",
+ "titulo": "Copiar fórmulas hacia abajo: el controlador de relleno",
+ "minutos": 14,
+ "objetivo": "Escribir una fórmula en la primera fila y copiarla a toda la columna con el controlador de relleno, entendiendo por qué las direcciones cambian solas, y crear series (días, meses, números y fechas).",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "Buenos días. Te dejo el pedido a Conductores del Ebro con seis líneas. Me falta el importe de cada una (precio por unidades) y el total. Lo necesito antes de las doce para mandarlo.",
+  "logro": "Ya sabes calcular una columna entera de importes escribiendo la fórmula una sola vez y copiándola en un segundo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Esta semana vas a ver listas largas: pedidos, facturas, ventas. Si cada fila necesita el mismo cálculo, **no lo escribas fila a fila**. Escribes la fórmula **una vez**, en la primera fila, y la **copias** hacia abajo.\n\nEs como hacer una receta para una persona y decirle a Excel: «haz lo mismo para todas las demás». Ahorras tiempo y, sobre todo, **errores**: cuantas menos fórmulas escribes a mano, menos te puedes equivocar."
+  },
+  {
+   "tipo": "pantalla",
+   "md": "Cuando seleccionas una celda, en su esquina de abajo a la derecha aparece un **cuadradito**. Se llama **controlador de relleno**. Si pones el ratón encima, el puntero se convierte en una **cruz negra y fina**: ahí puedes arrastrar para copiar.",
+   "resaltar": "controlador_relleno"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e1",
+   "modo": "senala",
+   "pregunta": "Toca el **controlador de relleno**: el cuadradito con el que copiarás fórmulas hacia abajo.",
+   "zona": "controlador_relleno",
+   "explicacion": "Ese cuadradito es tu herramienta más usada a partir de hoy. Arrastrándolo copias una fórmula a diez, cien o mil filas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Mira qué pasa al copiar. En **D2** está `=B2*C2`. Al arrastrarla una fila abajo, en **D3** aparece `=B3*C3`, y en **D4**, `=B4*C4`.\n\nExcel no copia «la celda B2», sino la idea: «la celda de **dos columnas a la izquierda**, en **mi misma fila**». Por eso cada fila usa sus propios datos. A esto se le llama **referencia relativa**: la dirección se mueve con la fórmula."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La misma fórmula, copiada",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Precio", "C1": "Uds", "D1": "Importe",
+     "A2": "Bridas 200 mm (bolsa)", "B2": 3.2, "C2": 50, "D2": "=B2*C2",
+     "A3": "Caja de empalme", "B3": 1.85, "C3": 40, "D3": "=B3*C3",
+     "A4": "Base de enchufe", "B4": 4.6, "C4": 30, "D4": "=B4*C4"
+    },
+    "formatos": {"B2:B4": "eur", "D2:D4": "eur"},
+    "anchos": {"A": 22}
+   },
+   "resaltar": ["D2:D4"],
+   "mostrar_formulas": true,
+   "pie": "Fíjate: solo cambia el número de fila. La letra de la columna se queda igual porque has copiado hacia abajo, no hacia un lado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e2",
+   "modo": "test",
+   "pregunta": "En **D2** tienes `=B2*C2`. La copias con el controlador de relleno a **D3**. ¿Qué fórmula queda en D3?",
+   "opciones": [
+    {"texto": "=B3*C3", "correcta": true, "porque": "Correcto: has bajado una fila, así que las dos direcciones bajan una fila. Cada línea multiplica sus propios datos."},
+    {"texto": "=B2*C2", "correcta": false, "porque": "Si fuera así, todas las filas darían el mismo importe que la primera. Excel mueve las direcciones al copiar."},
+    {"texto": "=C2*D2", "correcta": false, "porque": "Al copiar hacia abajo cambia la fila, no la columna. Las letras solo cambian si copias hacia la derecha o la izquierda."},
+    {"texto": "=B3*C2", "correcta": false, "porque": "Las dos direcciones son relativas y se mueven igual. No hay motivo para que una cambie y la otra no."}
+   ],
+   "explicacion": "Al copiar hacia abajo, los números de fila suben de uno en uno: 2, 3, 4… Por eso una sola fórmula sirve para toda la lista."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: copiar arrastrando",
+   "pasos": [
+    {"md": "Haz clic en **D2** y escribe `=B2*C2`. Pulsa [[Intro]]."},
+    {"md": "Vuelve a hacer clic en **D2** para seleccionarla."},
+    {"md": "Lleva el ratón al **cuadradito** de la esquina inferior derecha hasta que veas la **cruz negra y fina**."},
+    {"md": "Mantén pulsado el botón izquierdo y **arrastra hacia abajo** hasta la última fila de datos. Suelta."},
+    {"md": "Comprueba una fila al azar: haz clic en ella y mira la **barra de fórmulas**. Debe usar los datos de su propia fila."}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e3",
+   "modo": "formula",
+   "enunciado": "Tu turno, con la ayuda puesta. En **D2** escribe `=B2*C2` (precio por unidades). Al comprobar, la app copiará tu fórmula a **D3:D4**, como si arrastraras el cuadradito. Debe salir **160,00 €** en D2.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Precio", "C1": "Uds", "D1": "Importe",
+     "A2": "Bridas 200 mm (bolsa)", "B2": 3.2, "C2": 50,
+     "A3": "Caja de empalme", "B3": 1.85, "C3": 40,
+     "A4": "Base de enchufe", "B4": 4.6, "C4": 30
+    },
+    "formatos": {"B2:B4": "eur", "D2:D4": "eur"},
+    "anchos": {"A": 22}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D4"],
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=B2+C2", "=3,2*50"],
+   "variantes": [{"B2": 3.5, "C3": 25}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza siempre por el signo igual `=`.",
+    "Haz clic en la celda del precio (B2), escribe el asterisco `*` y haz clic en las unidades (C2).",
+    "La fórmula completa es `=B2*C2`."
+   ],
+   "explicacion": "Una fórmula, tres importes correctos. Con esto ya puedes calcular cualquier columna de importes de un pedido o una factura, tenga 3 filas o 300."
+  },
+  {
+   "tipo": "texto",
+   "md": "Arrastrar está bien para pocas filas. Para listas largas hay algo mejor: **doble clic en el controlador de relleno**.\n\nExcel copia la fórmula hacia abajo **solo**, hasta la última fila que tenga datos la columna de al lado. Si la columna de al lado tiene un hueco (una fila vacía), se para ahí: revisa siempre el final de la lista."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "Rellenar hacia abajo con el teclado",
+   "md": "Selecciona desde la celda con la fórmula hasta la última fila y pulsa [[Ctrl]]+[[J]]. En el Excel en español es la **J**; [[Ctrl]]+[[D]] rellena hacia la derecha."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e4",
+   "modo": "test",
+   "pregunta": "Tienes una lista de 200 facturas. Escribes la fórmula en la fila 2 y haces **doble clic** en el controlador de relleno. Solo se rellena hasta la fila 57. ¿Qué ha pasado lo más probable?",
+   "opciones": [
+    {"texto": "La columna de al lado tiene una celda vacía en la fila 58", "correcta": true, "porque": "Correcto: el doble clic copia hasta donde encuentra datos seguidos en la columna vecina. Un hueco lo para. Rellena el resto arrastrando o con Ctrl+J."},
+    {"texto": "Excel solo copia 56 filas cada vez", "correcta": false, "porque": "No hay límite así. El doble clic llega hasta el final de los datos, sean 50 o 50 000 filas."},
+    {"texto": "La fórmula está mal escrita", "correcta": false, "porque": "Si la fórmula estuviera mal, fallaría también en las filas copiadas, no se pararía en una fila concreta."}
+   ],
+   "explicacion": "Por eso, después de rellenar, baja al final de la lista ([[Ctrl]]+[[↓]]) y comprueba que la última fila también tiene su fórmula."
+  },
+  {
+   "tipo": "texto",
+   "md": "El controlador de relleno también sabe **continuar series**. Escribe el primer elemento, arrastra y Excel sigue la secuencia:\n\n- `lunes` → martes, miércoles, jueves…\n- `enero` → febrero, marzo, abril…\n- Una fecha, `16/11/2026` → 17/11/2026, 18/11/2026…\n- `1` y `2` en dos celdas, **seleccionadas juntas** → 3, 4, 5…\n\nOjo con los números: si escribes solo un `1` y arrastras, Excel copia el 1 en todas las celdas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e5",
+   "modo": "test",
+   "pregunta": "Lucía, de RRHH, te pide numerar del 1 al 30 la columna A de una lista de turnos. ¿Cuál es la forma más rápida y segura?",
+   "opciones": [
+    {"texto": "Escribir 1 en A2 y 2 en A3, seleccionar las dos y arrastrar el controlador hasta A31", "correcta": true, "porque": "Correcto: con dos números Excel entiende el paso (de uno en uno) y continúa la serie: 3, 4, 5… hasta 30."},
+    {"texto": "Escribir 1 en A2 y arrastrar el controlador hasta A31", "correcta": false, "porque": "Con un solo número, Excel lo copia: saldrían treinta unos. Puedes arreglarlo con el botón de opciones que aparece al soltar, pero es más fácil darle dos números."},
+    {"texto": "Escribir los 30 números a mano", "correcta": false, "porque": "Funciona, pero es lento y es fácil saltarse uno. Para eso existe el controlador de relleno."}
+   ],
+   "explicacion": "Con días, meses y fechas basta un elemento; con números, dale dos para que Excel vea el ritmo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un aviso de compañera: la persona que había antes en tu puesto escribía la fórmula **fila a fila**. En la fila 34 puso `=B34*C33` sin darse cuenta y el pedido salió mal. Una fórmula copiada no se equivoca de fila. Una fórmula escrita a mano, a veces sí."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e6",
+   "modo": "respuesta_corta",
+   "pregunta": "En **D2** tienes `=B2*C2`. La copias hacia abajo hasta **D5**. ¿Qué fórmula queda en **D5**? Escríbela.",
+   "aceptadas": ["=B5*C5", "=b5*c5", "= B5*C5", "B5*C5"],
+   "explicacion": "De la fila 2 a la 5 hay tres filas, así que las dos direcciones bajan tres filas: `=B5*C5`. Si en una fila copiada te sale un número raro, haz clic y mira su fórmula: así se encuentran los errores."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l1-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Andrés.** En **D2** escribe la fórmula del importe de la primera línea (precio por unidades). La app la copiará a **D3:D7**. Debe salir **586,80 €** en D2, y el total de **D9** se llenará solo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Precio", "C1": "Uds", "D1": "Importe",
+     "A2": "Cable 2,5 mm² (rollo 100 m)", "B2": 48.9, "C2": 12,
+     "A3": "Canaleta 40×60 (tramo 2 m)", "B3": 6.35, "C3": 40,
+     "A4": "Tubo corrugado 20 mm (rollo)", "B4": 21.8, "C4": 15,
+     "A5": "Bridas 200 mm (bolsa 100)", "B5": 3.2, "C5": 50,
+     "A6": "Magnetotérmico 2P 16 A", "B6": 9.75, "C6": 30,
+     "A7": "Panel LED 60×60", "B7": 27.4, "C7": 18,
+     "A9": "Total pedido", "D9": "=SUMA(D2:D7)"
+    },
+    "formatos": {"B2:B7": "eur", "D2:D9": "eur"},
+    "anchos": {"A": 28}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D7"],
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=B2+C2", "=48,9*12", "=B2*C3"],
+   "variantes": [{"B2": 50, "C7": 20}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es el mismo cálculo de antes: precio por unidades, en la fila 2.",
+    "Usa las direcciones de las celdas, no los números: así, si Andrés cambia una cantidad, el importe se actualiza solo.",
+    "Escribe `=B2*C2`."
+   ],
+   "explicacion": "Pedido calculado: seis importes y el total en segundos. Si mañana Andrés cambia una cantidad, todo se recalcula solo. Esto es exactamente lo que harás con cualquier pedido, albarán o factura."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m1l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: ¿cómo se llama el cuadradito de la esquina de la celda que sirve para copiar fórmulas?",
+   "aceptadas": ["controlador de relleno", "el controlador de relleno", "Controlador de relleno", "controlador relleno"],
+   "explicacion": "**Controlador de relleno.** Arrástralo para copiar o haz doble clic para rellenar hasta el final de la lista."
+  },
+  {
+   "id": "n1m1l1-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "En **E3** tienes `=C3*D3`. La copias hacia abajo hasta **E9**. ¿Qué fórmula queda en **E9**?",
+   "aceptadas": ["=C9*D9", "=c9*d9", "C9*D9", "= C9*D9"],
+   "explicacion": "Del 3 al 9 hay seis filas: las dos direcciones bajan seis filas y quedan `=C9*D9`."
+  },
+  {
+   "id": "n1m1l1-q3",
+   "modo": "cinta",
+   "enunciado": "Sin teclado ni ratón en la esquina: ¿dónde está el botón **Rellenar** de la cinta, el que copia hacia abajo lo que has seleccionado?",
+   "ruta": ["Inicio", "Edición", "Rellenar"],
+   "explicacion": "Inicio › Edición › Rellenar › Hacia abajo. Hace lo mismo que [[Ctrl]]+[[J]]."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Qué es una referencia relativa?", "dorso": "Una dirección sin $ (como B2) que se mueve al copiar la fórmula: copiada una fila abajo, pasa a B3."},
+  {"tipo": "atajo", "frente": "Rellenar hacia abajo con el teclado (Excel en español)", "dorso": "Ctrl+J (Ctrl+D rellena hacia la derecha)."},
+  {"tipo": "concepto", "frente": "¿Hasta dónde llega el doble clic en el controlador de relleno?", "dorso": "Hasta la última fila con datos seguidos de la columna de al lado. Un hueco lo para."},
+  {"tipo": "concepto", "frente": "¿Cómo numeras 1, 2, 3… con el controlador de relleno?", "dorso": "Escribe 1 y 2, selecciona las dos celdas y arrastra. Con un solo 1, Excel lo copia."}
+ ]
+}

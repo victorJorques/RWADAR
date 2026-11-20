@@ -1,0 +1,226 @@
+{
+ "id": "n1m2l3",
+ "titulo": "REDONDEAR: lo que ves no siempre es lo que hay",
+ "minutos": 15,
+ "objetivo": "Distinguir lo que una celda muestra de lo que vale de verdad, y usar REDONDEAR, REDONDEAR.MAS y REDONDEAR.MENOS para que los importes cuadren al céntimo.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "La factura de Instalaciones Moncayo no cuadra: si sumas a mano el IVA que se ve en las líneas, no coincide por unos céntimos con el total de la hoja. Arréglala para que el IVA de cada línea vaya redondeado a céntimos, como en el programa de facturación.",
+  "logro": "Ya sabes redondear importes a céntimos para que una factura cuadre, y redondear siempre hacia arriba cuando hace falta (cajas, palés, envíos)."
+ },
+ "funciones": ["REDONDEAR", "REDONDEAR.MAS", "REDONDEAR.MENOS"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una celda puede **mostrar** 4,20 € y **valer** 4,2042 €. Lo que ves depende del **formato**, que es solo el aspecto, como el envoltorio de un paquete. Lo que hay dentro no cambia.\n\nPara ver el valor de verdad, haz clic en la celda y mira la **barra de fórmulas**, la franja larga encima de las columnas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e1",
+   "modo": "senala",
+   "pregunta": "La celda muestra 4,20 €, pero quieres comprobar cuánto vale de verdad. Toca la parte de la ventana donde lo ves.",
+   "zona": "barra_formulas",
+   "explicacion": "La barra de fórmulas enseña el contenido real de la celda: el número con todos sus decimales o la fórmula que lo calcula."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e2",
+   "modo": "predice",
+   "enunciado": "La columna C calcula el IVA (21 %) de cada línea y se ve con dos decimales: **4,20**, **6,30** y **8,10**. A ojo suman 18,60. ¿Qué mostrará Excel en `=SUMA(C2:C4)`, también con dos decimales? Escribe el número con coma.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Base", "C1": "IVA",
+     "A2": "Bridas 200 mm", "B2": 20.02, "C2": "=B2*$F$2",
+     "A3": "Canaleta 40x60", "B3": 30.02, "C3": "=B3*$F$2",
+     "A4": "Regleta LED", "B4": 38.59, "C4": "=B4*$F$2",
+     "E2": "IVA", "F2": 0.21
+    },
+    "formatos": {"B2:C4": "num2", "F2": "pct"},
+    "anchos": {"A": 15}
+   },
+   "celda": "C6",
+   "formula": "=SUMA(C2:C4)",
+   "formato_resultado": "num2",
+   "explicacion": "Sale **18,61**, no 18,60. Excel suma los valores de verdad (4,2042 + 6,3042 + 8,1039 = 18,6123) y luego lo muestra con dos decimales. Ese es el céntimo «que no cuadra» de tantas facturas."
+  },
+  {
+   "tipo": "texto",
+   "md": "La solución es **redondear el valor**, no solo el aspecto:\n\n`=REDONDEAR(número; decimales)`\n\n- **número**: la celda o el cálculo que quieres redondear.\n- **decimales**: cuántos dejas. Para euros, **2** (céntimos). Con **0**, queda un número entero.\n\n`=REDONDEAR(C2;2)` convierte 4,2042 en **4,20** de verdad. Si la tercera cifra decimal es 5 o más, sube: 4,2051 pasaría a 4,21."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e3",
+   "modo": "formula",
+   "enunciado": "En **D2** escribe `=REDONDEAR(C2;2)` para dejar el IVA de la primera línea a céntimos. Tu fórmula se copiará a D3:D4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Base", "C1": "IVA", "D1": "IVA redondeado",
+     "A2": "Bridas 200 mm", "B2": 20.02, "C2": "=B2*$F$2",
+     "A3": "Canaleta 40x60", "B3": 30.02, "C3": "=B3*$F$2",
+     "A4": "Regleta LED", "B4": 38.59, "C4": "=B4*$F$2",
+     "E2": "IVA", "F2": 0.21
+    },
+    "formatos": {"B2:B4": "num2", "F2": "pct"},
+    "anchos": {"A": 15, "D": 15}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D4"],
+   "solucion": "=REDONDEAR(C2;2)",
+   "debe_usar": ["REDONDEAR"],
+   "alternativas": ["=REDONDEAR(B2*$F$2;2)"],
+   "errores_tipicos": ["=C2", "=REDONDEAR(C2;0)", "=REDONDEAR(C2;3)"],
+   "variantes": [{"B2": 47.83}],
+   "pistas": [
+    "La función es REDONDEAR y necesita dos argumentos: qué redondear y cuántos decimales.",
+    "El primer argumento es C2. El segundo, los decimales de los céntimos.",
+    "=REDONDEAR(C2;2)"
+   ],
+   "explicacion": "Ahora la columna D vale exactamente 4,20, 6,30 y 8,10, y su suma da 18,60. Lo que se ve y lo que hay coinciden: así se trabaja con dinero."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "El botón de quitar decimales no redondea",
+   "md": "En **Inicio › Número** hay dos botones: **Aumentar decimales** y **Disminuir decimales**. Solo cambian lo que se ve. La celda sigue valiendo 4,2042 y las sumas siguen usando ese valor."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e4",
+   "modo": "test",
+   "pregunta": "Nuria pulsa **Disminuir decimales** en una celda que vale 6,3042 y ahora se ve **6,30**. ¿Cuánto vale la celda?",
+   "opciones": [
+    {"texto": "6,3042: el botón solo cambia lo que se ve.", "correcta": true, "porque": "Eso es. El valor no se toca; las sumas seguirán usando 6,3042."},
+    {"texto": "6,30: el botón ha redondeado.", "correcta": false, "porque": "Es la confusión más habitual. Para cambiar el valor hace falta REDONDEAR."},
+    {"texto": "6: ha quitado todos los decimales.", "correcta": false, "porque": "Ni se ven ni se quitan todos; y aunque se vieran 0 decimales, el valor seguiría siendo 6,3042."}
+   ],
+   "explicacion": "Formato = aspecto. REDONDEAR = valor. Si una suma «no cuadra» por céntimos, sospecha de esto."
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces no quieres el redondeo normal, sino ir **siempre en la misma dirección**:\n\n- `=REDONDEAR.MAS(número; decimales)` redondea **siempre hacia arriba** (2,1 cajas → 3 cajas).\n- `=REDONDEAR.MENOS(número; decimales)` redondea **siempre hacia abajo** (7,9 palés completos → 7).\n\nEn el almacén es lo normal: si necesitas 2,1 cajas, compras 3, porque nadie vende una décima de caja."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e5",
+   "modo": "predice",
+   "enunciado": "Andrés necesita **230 bridas** y vienen en cajas de **100**. ¿Qué devuelve `=REDONDEAR.MAS(B2/C2;0)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Artículo", "B1": "Necesarias", "C1": "Por caja",
+     "A2": "Bridas 200 mm", "B2": 230, "C2": 100
+    },
+    "anchos": {"A": 15, "B": 11}
+   },
+   "celda": "D2",
+   "formula": "=REDONDEAR.MAS(B2/C2;0)",
+   "explicacion": "230 / 100 = 2,3 cajas. REDONDEAR.MAS sube siempre: **3** cajas. Con REDONDEAR normal saldrían 2 y te faltarían 30 bridas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e6",
+   "modo": "formula",
+   "enunciado": "En **D2** calcula **cuántas cajas** hay que pedir de cada artículo: unidades necesarias entre unidades por caja, **siempre hacia arriba** y sin decimales. Tu fórmula se copiará a D3:D5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Artículo", "B1": "Necesarias", "C1": "Por caja", "D1": "Cajas",
+     "A2": "Bridas 200 mm", "B2": 125, "C2": 50,
+     "A3": "Bornas de empalme", "B3": 230, "C3": 100,
+     "A4": "Cajas de registro", "B4": 400, "C4": 100,
+     "A5": "Tacos de nailon", "B5": 75, "C5": 20
+    },
+    "anchos": {"A": 18, "B": 11}
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D5"],
+   "solucion": "=REDONDEAR.MAS(B2/C2;0)",
+   "debe_usar": ["REDONDEAR.MAS"],
+   "errores_tipicos": ["=REDONDEAR(B2/C2;0)", "=REDONDEAR.MENOS(B2/C2;0)", "=B2/C2"],
+   "variantes": [{"B2": 101}],
+   "pistas": [
+    "Primero el cálculo: B2/C2 te da las cajas con decimales.",
+    "Mete ese cálculo dentro de la función que redondea siempre hacia arriba, con 0 decimales.",
+    "=REDONDEAR.MAS(B2/C2;0)"
+   ],
+   "explicacion": "3, 3, 4 y 4 cajas. Fíjate en las bornas: 2,3 cajas con REDONDEAR habrían sido 2, y el almacén se habría quedado corto. Ya puedes preparar un pedido a proveedor sin quedarte nunca por debajo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "En las facturas, cada línea de IVA va redondeada a céntimos y el total es la suma de esas líneas. Si redondeas solo al final, tu hoja y el programa de facturación no coincidirán, y tendré a Instalaciones Moncayo al teléfono."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l3-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Marta.** Factura de Instalaciones Moncayo. En **C2** calcula el **IVA de la primera línea ya redondeado a céntimos**: base por el tipo de IVA de **F2**. Tu fórmula se copiará a C3:C5, así que fija lo que no debe moverse.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Base", "C1": "IVA",
+     "A2": "Bridas 200 mm", "B2": 20.02,
+     "A3": "Canaleta 40x60", "B3": 30.02,
+     "A4": "Regleta LED", "B4": 38.59,
+     "A5": "Magnetotérmico 2P 16 A", "B5": 12.45,
+     "A6": "TOTAL", "B6": "=SUMA(B2:B5)", "C6": "=SUMA(C2:C5)",
+     "E2": "Tipo IVA", "F2": 0.21
+    },
+    "formatos": {"B2:C6": "eur", "F2": "pct"},
+    "anchos": {"A": 22, "E": 9}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C5"],
+   "solucion": "=REDONDEAR(B2*$F$2;2)",
+   "debe_usar": ["REDONDEAR"],
+   "alternativas": ["=REDONDEAR(B2*F$2;2)", "=REDONDEAR($F$2*B2;2)"],
+   "errores_tipicos": ["=B2*$F$2", "=REDONDEAR(B2*F2;2)", "=REDONDEAR(B2*$F$2;0)", "=REDONDEAR.MAS(B2*$F$2;2)"],
+   "variantes": [{"B2": 47.83}, {"F2": 0.1}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Primero el IVA sin redondear: la base por el tipo. Fija F2 con $ porque al copiar no debe moverse.",
+    "Mete ese cálculo dentro de REDONDEAR, con 2 decimales para los céntimos.",
+    "=REDONDEAR(B2*$F$2;2)"
+   ],
+   "explicacion": "Ahora cada línea vale lo que se ve (4,20 · 6,30 · 8,10 · 2,61) y el total de IVA, 21,21 €, cuadra con la suma a mano. Has combinado tres cosas: un cálculo, el $ y REDONDEAR. Es exactamente lo que hace un programa de facturación."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m2l3-q1",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta fórmula? Escribe el número con coma.",
+   "hoja": {"celdas": {"A1": "Precio", "B1": 7.456}},
+   "celda": "B3",
+   "formula": "=REDONDEAR(B1;1)",
+   "explicacion": "Con 1 decimal, 7,456 queda en 7,5: la segunda cifra decimal es un 5, así que la primera sube."
+  },
+  {
+   "id": "n1m2l3-q2",
+   "modo": "test",
+   "pregunta": "En A1 tienes 9,6: la mercancía de hoy da para 9,6 palés, y solo se envían palés **completos**. ¿Qué fórmula te dice cuántos palés completos salen hoy?",
+   "opciones": [
+    {"texto": "=REDONDEAR.MENOS(A1;0), que da 9", "correcta": true, "porque": "Correcto: solo cuentan los palés completos, así que siempre hacia abajo."},
+    {"texto": "=REDONDEAR(A1;0), que da 10", "correcta": false, "porque": "El redondeo normal sube a 10, pero no tienes 10 palés completos."},
+    {"texto": "=REDONDEAR.MAS(A1;0), que da 10", "correcta": false, "porque": "REDONDEAR.MAS sirve para «cuántos necesito», no para «cuántos completos tengo»."}
+   ],
+   "explicacion": "¿Cuántos necesito? → hacia arriba (MAS). ¿Cuántos completos tengo? → hacia abajo (MENOS)."
+  },
+  {
+   "id": "n1m2l3-q3",
+   "modo": "test",
+   "pregunta": "Las líneas de IVA de una factura no cuadran con el total por un céntimo. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Redondear el IVA de cada línea a 2 decimales con REDONDEAR.", "correcta": true, "porque": "Así lo que se ve es lo que vale y la suma cuadra."},
+    {"texto": "Pulsar Disminuir decimales en el total.", "correcta": false, "porque": "Solo cambia el aspecto: el céntimo de diferencia sigue ahí."},
+    {"texto": "Escribir el total a mano.", "correcta": false, "porque": "Romperías la fórmula: si cambia una línea, el total ya no se actualiza."},
+    {"texto": "Calcular el PROMEDIO de las líneas.", "correcta": false, "porque": "La media no tiene nada que ver con el problema del redondeo."}
+   ]
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "funcion", "frente": "Redondear un importe a céntimos", "dorso": "=REDONDEAR(número; 2). Ejemplo: =REDONDEAR(B2*$F$2;2)"},
+  {"tipo": "funcion", "frente": "Redondear siempre hacia arriba / siempre hacia abajo", "dorso": "=REDONDEAR.MAS(número; decimales) / =REDONDEAR.MENOS(número; decimales)"},
+  {"tipo": "concepto", "frente": "¿El botón Disminuir decimales redondea el valor?", "dorso": "No. Solo cambia lo que se ve. Para cambiar el valor, REDONDEAR."},
+  {"tipo": "concepto", "frente": "¿Dónde ves el valor real de una celda?", "dorso": "En la barra de fórmulas, al seleccionar la celda."}
+ ]
+}

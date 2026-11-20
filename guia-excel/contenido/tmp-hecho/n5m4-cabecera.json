@@ -1,0 +1,122 @@
+{
+  "id": "n5m4",
+  "nivel": "n5",
+  "titulo": "Automatizar y usar la IA con criterio",
+  "intro": "La IA y la automatización ya están en la oficina: bien usadas te ahorran horas, y mal usadas cuelan errores con cara de verdad o sacan datos que no deberían salir de la empresa. Aquí aprendes a pedir y comprobar, a proteger los datos y a saber cuándo dar el salto a scripts, Python o Power BI.",
+  "repaso_inicial": [
+    {
+      "id": "n5m4-r1",
+      "modo": "formula",
+      "enunciado": "Repaso de cuadres. En **B4** escribe una comprobación: si la diferencia entre B2 y B3, **sin importar el signo**, es menor de 0,01 €, que salga «OK»; si no, «REVISAR».",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Importe",
+          "A2": "Facturas cobradas en noviembre",
+          "B2": 18450.75,
+          "A3": "Ingresos en el banco en noviembre",
+          "B3": 18450.75,
+          "A4": "Comprobación"
+        },
+        "formatos": {
+          "B2:B3": "eur"
+        },
+        "anchos": {
+          "A": 32,
+          "B": 13
+        }
+      },
+      "objetivo": "B4",
+      "solucion": "=SI(ABS(B2-B3)<0,01;\"OK\";\"REVISAR\")",
+      "alternativas": [
+        "=SI(ABS(B3-B2)<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(B2-B3)>=0,01;\"REVISAR\";\"OK\")"
+      ],
+      "errores_tipicos": [
+        "=SI(B2-B3<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(B2-B3)>0,01;\"OK\";\"REVISAR\")"
+      ],
+      "variantes": [
+        {
+          "B3": 18460.75
+        },
+        {
+          "B3": 18440.75
+        }
+      ],
+      "pistas": [
+        "«Sin importar el signo» es el valor absoluto: la función ABS.",
+        "La condición es ABS(B2-B3)<0,01; dentro de un SI, con «OK» y «REVISAR» entre comillas.",
+        "Queda así: `=SI(ABS(B2-B3)<0,01;\"OK\";\"REVISAR\")`."
+      ],
+      "explicacion": "Una celda de comprobación que avisa sola: si el banco y las facturas dejan de cuadrar, lo ves al momento, falte o sobre dinero."
+    },
+    {
+      "id": "n5m4-r2",
+      "modo": "test",
+      "pregunta": "Has grabado una macro en un libro y quieres conservarla. ¿Cómo lo guardas?",
+      "opciones": [
+        {
+          "texto": "Como Libro de Excel habilitado para macros (.xlsm)",
+          "correcta": true,
+          "porque": "Eso es: es el formato que guarda el código de la macro junto al libro."
+        },
+        {
+          "texto": "Como Libro de Excel (.xlsx), el de siempre",
+          "correcta": false,
+          "porque": "El .xlsx no admite macros: al guardar así, la macro se pierde."
+        },
+        {
+          "texto": "Como CSV, que lo abre cualquier programa",
+          "correcta": false,
+          "porque": "Un CSV solo guarda los datos de una hoja, sin fórmulas, formato ni macros."
+        }
+      ]
+    },
+    {
+      "id": "n5m4-r3",
+      "modo": "test",
+      "pregunta": "¿Para qué sirve LET en una fórmula?",
+      "opciones": [
+        {
+          "texto": "Para poner nombre a los pasos intermedios y calcular cada uno una sola vez",
+          "correcta": true,
+          "porque": "Así es: la fórmula se lee mejor y no repite cálculos."
+        },
+        {
+          "texto": "Para crear una función nueva que se puede usar en todo el libro",
+          "correcta": false,
+          "porque": "Eso es LAMBDA guardada con un nombre definido. LET solo vive dentro de su fórmula."
+        },
+        {
+          "texto": "Para bloquear la celda y que nadie la cambie",
+          "correcta": false,
+          "porque": "Eso se hace protegiendo la hoja, no con una función."
+        }
+      ]
+    },
+    {
+      "id": "n5m4-r4",
+      "modo": "test",
+      "pregunta": "En el modelo de datos de ventas, la tabla con una fila por cada línea de pedido (fecha, código de cliente, producto, unidades, importe) es…",
+      "opciones": [
+        {
+          "texto": "Una tabla de hechos",
+          "correcta": true,
+          "porque": "Correcto: recoge lo que pasa (cada venta), crece cada día y tiene los importes que se suman."
+        },
+        {
+          "texto": "Una tabla de dimensiones",
+          "correcta": false,
+          "porque": "Las dimensiones describen: una fila por cliente, por producto o por día. Aquí hay una fila por cada venta."
+        },
+        {
+          "texto": "Una tabla dinámica",
+          "correcta": false,
+          "porque": "La tabla dinámica es el resumen que se construye encima del modelo, no los datos de partida."
+        }
+      ]
+    }
+  ],
+  "practica_excel": null
+}

@@ -1,0 +1,527 @@
+{
+ "id": "n4m3l2",
+ "titulo": "Escenarios y tablas de datos",
+ "minutos": 16,
+ "objetivo": "Montar un modelo con los supuestos separados del cálculo, guardar escenarios (pesimista, base y optimista) y construir un cuadro de sensibilidad precio × unidades.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "En Navidad lanzamos la tira LED de 5 m. No sé si venderemos 800 o 1.500 unidades, ni si aguantaremos el precio de 24 €. Quiero ver el beneficio en tres casos (malo, normal y bueno) y un cuadro con precios y unidades cruzados. El lunes decidimos el precio.",
+  "logro": "Ya sabes separar los supuestos del cálculo, guardar escenarios y montar un cuadro de sensibilidad que responde a «¿y si…?» de un vistazo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Un modelo: supuestos arriba, cálculos abajo\nUn **modelo** es una hoja que calcula un resultado a partir de datos que todavía no sabes seguros. Esos datos se llaman **supuestos** (o **entradas**): el precio, las unidades, el coste.\n\nLa regla de oro: cada supuesto en **su propia celda**, todos juntos y a la vista. Debajo, los cálculos, hechos solo con fórmulas que apuntan a esas celdas. Así, para probar otro caso, cambias una celda y todo se recalcula."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "El modelo de la tira LED",
+   "hoja": {
+    "celdas": {
+     "A1": "Tira LED 5 m · campaña de Navidad",
+     "B1": "Valor",
+     "A2": "Precio de venta",
+     "B2": 24,
+     "A3": "Unidades",
+     "B3": 1200,
+     "A4": "Coste por unidad",
+     "B4": 14.5,
+     "A5": "Gastos de campaña",
+     "B5": 6000,
+     "A7": "Ingresos",
+     "B7": "=B2*B3",
+     "A8": "Costes",
+     "B8": "=B3*B4+B5",
+     "A9": "Beneficio",
+     "B9": "=B7-B8"
+    },
+    "formatos": {
+     "B2": "eur",
+     "B3": "#.##0",
+     "B4:B5": "eur",
+     "B7:B9": "eur"
+    },
+    "anchos": {
+     "A": 32,
+     "B": 14
+    }
+   },
+   "resaltar": [
+    "B2:B5"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Resaltados, los supuestos: lo único que se cambia. Debajo, los cálculos: solo fórmulas, ni un número escrito a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e1",
+   "modo": "formula",
+   "enunciado": "Empieza por lo fácil. En **B9** calcula el **beneficio**: los ingresos de B7 menos los costes de B8. Debe salir **5.400,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tira LED 5 m · campaña de Navidad",
+     "B1": "Valor",
+     "A2": "Precio de venta",
+     "B2": 24,
+     "A3": "Unidades",
+     "B3": 1200,
+     "A4": "Coste por unidad",
+     "B4": 14.5,
+     "A5": "Gastos de campaña",
+     "B5": 6000,
+     "A7": "Ingresos",
+     "B7": "=B2*B3",
+     "A8": "Costes",
+     "B8": "=B3*B4+B5",
+     "A9": "Beneficio"
+    },
+    "formatos": {
+     "B2": "eur",
+     "B3": "#.##0",
+     "B4:B5": "eur",
+     "B7:B9": "eur"
+    },
+    "anchos": {
+     "A": 32,
+     "B": 14
+    }
+   },
+   "objetivo": "B9",
+   "solucion": "=B7-B8",
+   "alternativas": [
+    "=B2*B3-(B3*B4+B5)",
+    "=B2*B3-B3*B4-B5"
+   ],
+   "errores_tipicos": [
+    "=B7+B8",
+    "=B8-B7",
+    "=5400"
+   ],
+   "variantes": [
+    {
+     "B2": 22,
+     "B3": 800
+    },
+    {
+     "B4": 15
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El beneficio es lo que te queda de lo que ingresas después de pagar lo que cuesta.",
+    "Los ingresos están en B7 y los costes en B8: réstalos.",
+    "Escribe `=B7-B8`."
+   ],
+   "explicacion": "5.400 € de beneficio en el caso normal. Fíjate en que tu fórmula no lleva ningún número escrito, solo celdas: cuando Javier cambie el precio o las unidades, el beneficio se recalculará solo. Ese es el corazón de cualquier simulación."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El error que lo estropea todo\nMuchas hojas de empresa esconden los supuestos **dentro de las fórmulas**: `=B3*24` en lugar de `=B2*B3`. Funciona… hasta que cambia el precio. Entonces hay que buscar cada 24 escondido, y el que se te escape te dará un beneficio falso sin ningún aviso.\n\nUn número escrito dentro de una fórmula es un **supuesto escondido**. Sácalo a una celda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e2",
+   "modo": "formula",
+   "enunciado": "Un compañero dejó en **B7** la fórmula `=B3*24`. Javier ha cambiado el precio de B2 a **22 €**, pero los ingresos no se mueven. Arregla **B7** para que use el precio de B2. Debe salir **26.400,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tira LED 5 m · campaña de Navidad",
+     "B1": "Valor",
+     "A2": "Precio de venta",
+     "B2": 22,
+     "A3": "Unidades",
+     "B3": 1200,
+     "A4": "Coste por unidad",
+     "B4": 14.5,
+     "A5": "Gastos de campaña",
+     "B5": 6000,
+     "A7": "Ingresos",
+     "A8": "Costes",
+     "B8": "=B3*B4+B5",
+     "A9": "Beneficio",
+     "B9": "=B7-B8"
+    },
+    "formatos": {
+     "B2": "eur",
+     "B3": "#.##0",
+     "B4:B5": "eur",
+     "B7:B9": "eur"
+    },
+    "anchos": {
+     "A": 32,
+     "B": 14
+    }
+   },
+   "objetivo": "B7",
+   "inicial": "=B3*24",
+   "solucion": "=B2*B3",
+   "alternativas": [
+    "=B3*B2"
+   ],
+   "errores_tipicos": [
+    "=B3*24",
+    "=B3*22",
+    "=26400"
+   ],
+   "variantes": [
+    {
+     "B2": 25
+    },
+    {
+     "B3": 900
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El precio ya está en una celda. ¿En cuál?",
+    "Cambia el 24 de la fórmula por la celda del precio, B2.",
+    "Escribe `=B2*B3`."
+   ],
+   "explicacion": "Ahora B7 sigue al precio: si mañana es 25 €, cambias B2 y ya está. Acabas de convertir un supuesto escondido en uno a la vista, que es lo primero que hay que revisar en cualquier hoja que heredes."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Escenarios: cada «¿y si…?» guardado con nombre\nJavier quiere tres casos: **pesimista**, **base** y **optimista**. Un **escenario** es un juego de valores para tus supuestos, guardado con un nombre: «Pesimista: precio 22 €, 800 unidades».\n\nLo que *no* hay que hacer: cambiar B2 y B3 a mano, apuntar el beneficio en un papel y volver a teclear. Al final nadie sabe qué números se quedaron en la hoja. El **Administrador de escenarios** guarda los casos y te deja pasar de uno a otro con un clic."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e3",
+   "modo": "cinta",
+   "enunciado": "El Administrador de escenarios está en el mismo menú que Buscar objetivo. Toca el botón que abre ese menú.",
+   "ruta": [
+    "Datos",
+    "Previsión",
+    "Análisis de hipótesis"
+   ],
+   "explicacion": "Datos › Previsión › **Análisis de hipótesis** despliega tres herramientas: **Administrador de escenarios**, **Buscar objetivo** y **Tabla de datos**. Al acabar esta lección conocerás las tres."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: los tres casos de Javier",
+   "pasos": [
+    {
+     "md": "Selecciona **B2:B3**: las celdas que cambian de un caso a otro (precio y unidades)."
+    },
+    {
+     "md": "Abre **Análisis de hipótesis › Administrador de escenarios** y pulsa **Agregar**.",
+     "ruta": [
+      "Datos",
+      "Previsión",
+      "Análisis de hipótesis"
+     ]
+    },
+    {
+     "md": "Primero guarda lo que ya tienes. **Nombre del escenario**: `Base`. En **Celdas cambiantes** ya aparece `B2:B3`. En **Comentario**, de dónde salen los números. Pulsa **Aceptar**."
+    },
+    {
+     "md": "Excel te enseña los **valores del escenario**: 24 y 1.200, los de ahora. **Aceptar**."
+    },
+    {
+     "md": "Pulsa **Agregar** otra vez y crea `Pesimista` (22 y 800) y `Optimista` (25 y 1.500)."
+    },
+    {
+     "md": "Para ver un caso, elígelo en la lista y pulsa **Mostrar**: Excel escribe sus valores en B2:B3 y todo el modelo se recalcula. Por eso guardaste primero el Base: así siempre puedes volver a él."
+    }
+   ]
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un truco que me ha salvado más de una reunión: en el **Comentario** de cada escenario apunta de dónde sale cada número («precio de la competencia en octubre», «ventas de la campaña de 2025»). Dentro de tres meses nadie se acordará… y Javier te lo preguntará."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e4",
+   "modo": "predice",
+   "enunciado": "Pulsas **Mostrar** en el escenario **Pesimista**: Excel escribe 22 € en B2 y 800 en B3. Antes de mirar, ¿cuántos euros de beneficio salen en **B9**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Tira LED 5 m · campaña de Navidad",
+     "B1": "Valor",
+     "A2": "Precio de venta",
+     "B2": 22,
+     "A3": "Unidades",
+     "B3": 800,
+     "A4": "Coste por unidad",
+     "B4": 14.5,
+     "A5": "Gastos de campaña",
+     "B5": 6000,
+     "A7": "Ingresos",
+     "B7": "=B2*B3",
+     "A8": "Costes",
+     "B8": "=B3*B4+B5",
+     "A9": "Beneficio"
+    },
+    "formatos": {
+     "B2": "eur",
+     "B3": "#.##0",
+     "B4:B5": "eur",
+     "B7:B9": "eur"
+    },
+    "anchos": {
+     "A": 32,
+     "B": 14
+    }
+   },
+   "celda": "B9",
+   "formula": "=B7-B8",
+   "explicacion": "Ingresos: 22 × 800 = 17.600 €. Costes: 800 × 14,50 + 6.000 = 17.600 €. Beneficio: **0**. El caso malo ni gana ni pierde: está justo en el punto de equilibrio que viste en la lección anterior. Es exactamente lo que Javier necesita saber antes de bajar el precio."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El informe resumen: los casos en una tabla\nEn el Administrador de escenarios, el botón **Resumen** te pide las **Celdas de resultado** (aquí, B9, el beneficio). Excel crea una hoja nueva con una columna por escenario: arriba los supuestos de cada caso, abajo el resultado.\n\nOjo: ese informe es una **foto**. Si después cambias el coste o los gastos, no se actualiza solo: vuelve a pulsar **Resumen**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e5",
+   "modo": "test",
+   "pregunta": "Este es el resumen que has sacado para Javier:\n\n| | Valores actuales | Pesimista | Base | Optimista |\n|---|---|---|---|---|\n| Precio | 24,00 € | 22,00 € | 24,00 € | 25,00 € |\n| Unidades | 1.200 | 800 | 1.200 | 1.500 |\n| **Beneficio** | 5.400 € | 0 € | 5.400 € | 9.750 € |\n\nJavier pregunta: «¿Qué conclusión saco?». ¿Cuál es la lectura correcta?",
+   "opciones": [
+    {
+     "texto": "En el peor caso no perdemos dinero, y en el mejor el beneficio es casi el doble que en el caso base.",
+     "correcta": true,
+     "porque": "Eso es: pesimista 0 € (ni gana ni pierde) y optimista 9.750 €, casi el doble de 5.400 €. Un resumen se lee comparando columnas."
+    },
+    {
+     "texto": "Ganaremos 5.400 € seguro, porque es lo que pone en «Valores actuales».",
+     "correcta": false,
+     "porque": "«Valores actuales» solo enseña lo que había en la hoja al crear el resumen. No es una predicción: es uno de los casos."
+    },
+    {
+     "texto": "Conviene bajar el precio a 22 € para vender más.",
+     "correcta": false,
+     "porque": "El resumen no dice eso: en el pesimista el precio baja *y además* se venden menos unidades. Para ver qué pasa cambiando solo el precio hace falta un cuadro de sensibilidad (lo verás enseguida)."
+    },
+    {
+     "texto": "El escenario optimista tiene un error, porque gana mucho más que los otros.",
+     "correcta": false,
+     "porque": "Ganar más es lo esperable en el caso optimista: precio algo más alto y más unidades. No hay error."
+    }
+   ],
+   "explicacion": "El resumen pone los casos uno al lado del otro para que quien decide vea el abanico: de 0 € a 9.750 €."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Tabla de datos: Excel prueba muchos valores por ti\nLos escenarios sirven para tres o cuatro casos. Si quieres ver **muchos**, usa **Análisis de hipótesis › Tabla de datos**.\n\nCon **una variable**: en una columna escribes los valores que quieres probar (800, 1.000, 1.200, 1.500 unidades); en la celda de encima y a la derecha de esa lista, una fórmula que apunta al resultado: `=B9`. Seleccionas todo, indicas la **celda de entrada** (B3, las unidades) y Excel rellena el beneficio de cada valor."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Con dos variables: precio × unidades\nPara cruzar dos supuestos: los **precios** en una fila, las **unidades** en una columna y, en la esquina donde se cruzan, `=B9`. Seleccionas el cuadro entero y en **Tabla de datos** indicas:\n- **Celda de entrada (fila)**: B2, el precio, porque los precios van en fila.\n- **Celda de entrada (columna)**: B3, las unidades.\n\nExcel calcula el beneficio de cada combinación."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Dos manías de la Tabla de datos",
+   "md": "Las celdas de entrada (B2 y B3) tienen que estar **en la misma hoja** que la tabla. Y los resultados no se pueden borrar ni cambiar de uno en uno: si quieres quitarla, selecciona la tabla entera."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para montar la tabla de datos de dos variables (precio × unidades) que quiere Javier.",
+   "pasos": [
+    "Prepara el cuadro: precios en C12:F12, unidades en B13:B16 y =B9 en la esquina, B12",
+    "Selecciona el cuadro entero, B12:F16",
+    "Abre Datos › Análisis de hipótesis › Tabla de datos",
+    "Celda de entrada (fila): B2 · Celda de entrada (columna): B3",
+    "Pulsa Aceptar y comprueba un caso que ya conoces (24 € y 1.200 unidades deben dar 5.400 €)"
+   ],
+   "explicacion": "Primero se prepara el cuadro, después se selecciona y por último se le dice a Excel qué celda del modelo sustituye la fila y cuál la columna. El último paso es tu comprobación: un caso conocido tiene que dar lo mismo que el modelo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El mismo cuadro, con fórmulas y $\nTambién puedes montar el cuadro con una fórmula normal copiada a todas sus celdas. Ventaja: se ve cómo calcula cada celda y la puedes revisar una a una.\n\nEl truco son las **referencias mixtas** que ya conoces: `B$4` fija la **fila** de los precios y `$A5` fija la **columna** de las unidades. Al copiar, cada celda cruza su precio con sus unidades."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Comprueba con un caso conocido",
+   "md": "En el cuadro, 24 € y 1.200 unidades tienen que dar **5.400 €**, el mismo beneficio del modelo. Si no, alguna referencia está mal fijada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l2-e7",
+   "modo": "formula",
+   "enunciado": "Monta el cuadro de Javier. En **B5** calcula el beneficio con el precio de la **fila 4** y las unidades de la **columna A**: (precio − coste por unidad) × unidades − gastos de campaña. Tu fórmula se copiará a todo el cuadro **B5:E8**, así que pon $ donde haga falta. En B5 debe salir **0,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Coste por unidad",
+     "B1": 14.5,
+     "A2": "Gastos de campaña",
+     "B2": 6000,
+     "A4": "Uds. / Precio",
+     "B4": 22,
+     "C4": 23,
+     "D4": 24,
+     "E4": 25,
+     "A5": 800,
+     "A6": 1000,
+     "A7": 1200,
+     "A8": 1500
+    },
+    "formatos": {
+     "B1:B2": "eur",
+     "B4:E4": "eur",
+     "A5:A8": "#.##0",
+     "B5:E8": "eur"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 13,
+     "C": 13,
+     "D": 13,
+     "E": 13
+    }
+   },
+   "objetivo": "B5",
+   "copiar_a": [
+    "C5:E5",
+    "B6:E8"
+   ],
+   "solucion": "=(B$4-$B$1)*$A5-$B$2",
+   "alternativas": [
+    "=$A5*(B$4-$B$1)-$B$2",
+    "=B$4*$A5-$A5*$B$1-$B$2"
+   ],
+   "errores_tipicos": [
+    "=(B4-B1)*A5-B2",
+    "=(B$4-$B$1)*A5-$B$2",
+    "=(B4-$B$1)*$A5-$B$2",
+    "=($B$4-$B$1)*$A5-$B$2"
+   ],
+   "variantes": [
+    {
+     "B1": 15,
+     "B2": 5000
+    },
+    {
+     "B4": 21,
+     "A5": 900
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Piensa solo en B5: precio en B4, coste en B1, unidades en A5 y gastos en B2. Primero consigue que B5 dé 0.",
+    "Al copiar a la derecha cambia el precio: fija su **fila** con `B$4`. Al copiar hacia abajo cambian las unidades: fija su **columna** con `$A5`. Coste y gastos no se mueven nunca: `$B$1` y `$B$2`.",
+    "Escribe `=(B$4-$B$1)*$A5-$B$2`."
+   ],
+   "explicacion": "Cuadro listo, y cuadra: 24 € con 1.200 unidades da 5.400 €, igual que el modelo. Javier ve de un vistazo que a 22 € necesita vender más de 800 unidades para ganar algo, y que a 25 € con 1.500 llega a 9.750 €. Esto es un **análisis de sensibilidad**, y en tu Excel lo puedes hacer igual con Tabla de datos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m3l2-q1",
+   "modo": "test",
+   "pregunta": "Le preparas a Marta un modelo de préstamo para que pruebe casos. ¿Dónde pones el tipo de interés del 6 %?",
+   "opciones": [
+    {
+     "texto": "En su propia celda, junto a los demás supuestos, y las fórmulas apuntan a ella",
+     "correcta": true,
+     "porque": "Así se ve, se cambia en un solo sitio y los escenarios y las tablas de datos pueden tocarlo."
+    },
+    {
+     "texto": "Dentro de cada fórmula, como `*6%`, para que nadie lo cambie sin querer",
+     "correcta": false,
+     "porque": "Es un supuesto escondido: si el tipo cambia hay que buscarlo fórmula a fórmula, y los escenarios no pueden cambiarlo. Para evitar cambios sin querer está la protección de hojas."
+    },
+    {
+     "texto": "En un comentario de la celda del resultado",
+     "correcta": false,
+     "porque": "Un comentario no entra en ningún cálculo: el modelo no lo usaría."
+    }
+   ]
+  },
+  {
+   "id": "n4m3l2-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "En una tabla de datos de dos variables, los **precios** van en una fila y las **unidades** en una columna. La celda del precio del modelo, ¿en qué casilla la indicas? Escribe **fila** o **columna**.",
+   "aceptadas": [
+    "fila",
+    "Fila",
+    "Celda de entrada (fila)",
+    "la fila",
+    "en la fila"
+   ],
+   "explicacion": "En **Celda de entrada (fila)**: los valores que están en fila (los precios) sustituyen a esa celda. Las unidades, que van en columna, sustituyen a la de **Celda de entrada (columna)**."
+  },
+  {
+   "id": "n4m3l2-q3",
+   "modo": "formula",
+   "enunciado": "Cuadro de importes para un presupuesto: en **B2** calcula precio (fila 1) × unidades (columna A) con una fórmula que se pueda copiar a todo **B2:D4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Uds. / Precio",
+     "B1": 9.5,
+     "C1": 12,
+     "D1": 14.75,
+     "A2": 10,
+     "A3": 25,
+     "A4": 40
+    },
+    "formatos": {
+     "B1:D1": "eur",
+     "B2:D4": "eur"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 12,
+     "C": 12,
+     "D": 12
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "C2:D2",
+    "B3:D4"
+   ],
+   "solucion": "=B$1*$A2",
+   "alternativas": [
+    "=$A2*B$1"
+   ],
+   "errores_tipicos": [
+    "=B1*A2",
+    "=$B$1*$A2",
+    "=B$1*A2",
+    "=B1*$A2"
+   ],
+   "variantes": [
+    {
+     "B1": 10,
+     "A3": 30
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El precio está en la fila 1 y las unidades en la columna A.",
+    "Fija la fila del precio (`B$1`) y la columna de las unidades (`$A2`).",
+    "Escribe `=B$1*$A2`."
+   ],
+   "explicacion": "Una sola fórmula para nueve celdas. Es el mismo patrón del cuadro de sensibilidad: fila fija para lo que va arriba, columna fija para lo que va a la izquierda."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es un supuesto (o entrada) de un modelo?",
+   "dorso": "Un dato que no sabes seguro (precio, unidades, coste). Va en su propia celda, a la vista, y las fórmulas apuntan a él."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Escenarios o tabla de datos?",
+   "dorso": "Escenarios: pocos casos con nombre (pesimista, base, optimista) y un informe resumen. Tabla de datos: muchos valores de una o dos entradas a la vez."
+  },
+  {
+   "tipo": "error",
+   "frente": "El informe resumen de escenarios no refleja un cambio que acabas de hacer. ¿Por qué?",
+   "dorso": "Es una foto fija: no se actualiza solo. Vuelve a pulsar Resumen."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Cuadro con precios en la fila 4 y unidades en la columna A: ¿qué referencias usas en B5?",
+   "dorso": "`B$4` (fila fija) y `$A5` (columna fija); lo que no se mueve nunca, con dos $: `$B$1`."
+  }
+ ]
+}

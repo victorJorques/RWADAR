@@ -1,0 +1,143 @@
+{
+ "id": "n3m2",
+ "nivel": "n3",
+ "titulo": "Búsquedas avanzadas y cruces de listas",
+ "intro": "Buena parte del trabajo de oficina consiste en poner un dato al lado de otro: el porcentaje de comisión junto a las ventas, el precio junto al código, el cobro del banco junto a la factura. En este módulo aprenderás a buscar por tramos, a buscar en cualquier versión de Excel y a cruzar dos listas para decir qué falta en cada una, que es como se cierra cada mes.",
+ "repaso_inicial": [
+  {
+   "id": "n3m2-r1",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber cuánto ha vendido la delegación escrita en **E2** en la familia escrita en **F2**. Escribe en **G2** una fórmula que lo calcule con los datos de A1:C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Familia",
+     "C1": "Importe",
+     "E1": "Delegación",
+     "F1": "Familia",
+     "G1": "Total",
+     "A2": "Zaragoza",
+     "B2": "Cable",
+     "C2": 1840.5,
+     "A3": "Pamplona",
+     "B3": "Cable",
+     "C3": 920.3,
+     "A4": "Pamplona",
+     "B4": "Luminarias",
+     "C4": 1310,
+     "A5": "Lleida",
+     "B5": "Cable",
+     "C5": 655.2,
+     "A6": "Pamplona",
+     "B6": "Cable",
+     "C6": 412.75,
+     "A7": "Zaragoza",
+     "B7": "Mecanismos",
+     "C7": 730,
+     "E2": "Pamplona",
+     "F2": "Cable"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "G2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "E": 11,
+     "F": 11,
+     "G": 11
+    },
+    "columnas": 7,
+    "filas": 7
+   },
+   "objetivo": "G2",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2;B2:B7;F2)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;E2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(A2:A7;E2;C2:C7)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2)",
+    "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\"Pamplona\";B2:B7;\"Cable\")"
+   ],
+   "variantes": [
+    {
+     "E2": "Zaragoza"
+    },
+    {
+     "F2": "Luminarias"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay dos condiciones a la vez (delegación y familia): necesitas la versión de «varios criterios».",
+    "SUMAR.SI.CONJUNTO empieza por lo que se suma (C2:C7) y sigue con parejas rango; criterio.",
+    "`=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;E2;B2:B7;F2)`"
+   ],
+   "explicacion": "1.333,05 €: las dos ventas de cable de Pamplona. Y como los criterios están en celdas, Javier puede cambiar la delegación o la familia sin tocar la fórmula."
+  },
+  {
+   "id": "n3m2-r2",
+   "modo": "test",
+   "pregunta": "Buscas el precio del código de A2 en la tarifa con BUSCARV. ¿Qué escribes en el último argumento para que nunca te traiga el precio de otro producto?",
+   "opciones": [
+    {
+     "texto": "FALSO",
+     "correcta": true,
+     "porque": "FALSO pide coincidencia exacta: si el código no está, sale #N/D en vez de un precio equivocado."
+    },
+    {
+     "texto": "VERDADERO",
+     "correcta": false,
+     "porque": "VERDADERO es coincidencia aproximada: si el código no está, trae el de otro producto sin avisar."
+    },
+    {
+     "texto": "Nada: se puede dejar vacío",
+     "correcta": false,
+     "porque": "Si lo omites, BUSCARV usa VERDADERO (aproximada) por defecto. Es el error más caro de BUSCARV."
+    }
+   ],
+   "explicacion": "Para códigos, siempre FALSO. En la primera lección de este módulo verás el único caso en que la aproximada es justo lo que quieres."
+  },
+  {
+   "id": "n3m2-r3",
+   "modo": "predice",
+   "enunciado": "Escala de descuentos con SI.CONJUNTO. El pedido es de **2.000 €** justos. ¿Qué descuento devuelve? Escríbelo como porcentaje.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "C1": "% dto.",
+     "A2": "PC-26/298",
+     "B2": 2000
+    },
+    "formatos": {
+     "B2": "eur",
+     "C2": "pct"
+    },
+    "columnas": 3,
+    "filas": 2
+   },
+   "celda": "C2",
+   "formula": "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)",
+   "formato_resultado": "pct",
+   "explicacion": "5 %: 2.000 no llega a 5.000, pero sí cumple «>=2000», y SI.CONJUNTO se queda con la primera condición que se cumple. Hoy aprenderás a sacar esta escala de la fórmula a una tabla.",
+   "respuesta": "5%"
+  },
+  {
+   "id": "n3m2-r4",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué error devuelve BUSCARX cuando no encuentra el valor y no le has dicho qué hacer en ese caso?",
+   "aceptadas": [
+    "#N/D",
+    "N/D",
+    "#n/d",
+    "n/d"
+   ],
+   "explicacion": "#N/D, «no disponible»: el valor no está en la lista. Se cambia por un aviso con el cuarto hueco de BUSCARX o con SI.ND, nunca por un 0."
+  }
+ ],
+ "practica_excel": null
+}

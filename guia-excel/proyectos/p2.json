@@ -1,0 +1,313 @@
+{
+  "id": "p2",
+  "titulo": "Vacaciones, ausencias y plantilla",
+  "departamento": "Recursos Humanos",
+  "nivel_requerido": "n3",
+  "horas": 6,
+  "resumen": "Unificas los cuatro Excel de vacaciones en un archivo que calcula los días que le quedan a cada persona, avisa si un departamento se queda corto y no se estropea, y sacas aparte, solo para RRHH, el absentismo por departamento sin datos de salud.",
+  "habilidades": [
+    "Limpieza de un maestro",
+    "Tablas",
+    "DIAS.LAB.INTL con festivos por delegación",
+    "MULTIPLO.SUPERIOR",
+    "CONTAR.SI.CONJUNTO con fechas",
+    "Formato condicional con fórmula",
+    "Validación con fórmula",
+    "Proteger hoja",
+    "Tabla dinámica",
+    "RGPD y datos de salud",
+    "Controles"
+  ],
+  "correo": {
+    "de": "Lucía Fernández (Responsable de RRHH)",
+    "para": "ti",
+    "asunto": "Vacaciones (socorro)",
+    "cuerpo": "Hola:\n\nEste año las vacaciones han sido un caos: cada responsable lleva su Excel y no hay manera de saber cuántos días le quedan a cada uno. Quiero un archivo único para lo que queda de 2026 que sirva también para 2027. Que me diga los días que le quedan a cada persona, que avise si en un departamento se van demasiados a la vez y que los responsables puedan apuntar las vacaciones de su gente sin estropearlo.\n\nTe paso la exportación del programa de nóminas, los Excel de los cuatro responsables y el listado de ausencias. Aprovecha y sácame también las bajas por departamento, que Carmen me pide el absentismo para el comité.\n\nLo necesito antes del puente de diciembre.\n\nLucía\n\n(lunes, 16/11/2026)"
+  },
+  "preguntas_previas": {
+    "pregunta": "Antes de abrir Excel, escribe las preguntas que le harías a Lucía. Piensa en qué cuenta como «día de vacaciones», qué pasa con quien entró o salió este año, qué es «demasiados a la vez», qué festivos se usan, qué es exactamente el absentismo y quién va a ver cada cosa.",
+    "modelo": "Hola, Lucía:\n\nAntes de empezar, para no rehacerlo luego:\n1. ¿Cuántos días de vacaciones hay por convenio y se cuentan como naturales o como laborables?\n2. Quien entró o se fue en 2026, ¿tiene la parte proporcional? ¿Cómo se redondea? ¿Y la persona que se fue y volvió?\n3. ¿Hay días de 2025 pendientes que se puedan disfrutar este año?\n4. ¿Qué es «demasiados a la vez» en cada departamento?\n5. ¿Qué festivos uso? Cada delegación está en una comunidad distinta.\n6. Un periodo que empieza en diciembre y acaba en enero, ¿de qué año descuenta?\n7. Para el comité, ¿qué cuenta como absentismo (solo bajas o también permisos)? ¿Por persona o agregado? ¿Quién lo va a ver?\n8. ¿Los asuntos propios descuentan vacaciones?\n9. ¿Cómo lo abrirán los responsables: en el navegador o en Excel de escritorio?\n10. «Antes del puente»: ¿qué día exactamente?\n\nUna cosa más: el listado de ausencias trae bajas médicas. Te propongo dos archivos: uno de vacaciones para los responsables y otro de absentismo solo para RRHH, sin nombres en lo que vea el comité.\n\nGracias.",
+    "criterios": [
+      "Pregunta si los días son naturales o laborables y cuántos son.",
+      "Pregunta por el prorrateo de altas y bajas y por el redondeo.",
+      "Pide la definición de «demasiados a la vez» por departamento.",
+      "Pregunta qué festivos se usan en cada delegación.",
+      "Pide la definición de absentismo y quién verá ese informe, y propone separar los datos de salud.",
+      "Pregunta la fecha de entrega concreta."
+    ]
+  },
+  "aclaraciones": [
+    {
+      "pregunta": "¿Cuántos días de vacaciones hay? ¿Naturales o laborables?",
+      "respuesta": "Por convenio de la empresa, 22 días laborables (de lunes a viernes, sin festivos de su delegación) por año completo. La ley dice un mínimo de 30 días naturales (Estatuto de los Trabajadores, art. 38.1); nuestro convenio lo cuenta en laborables."
+    },
+    {
+      "pregunta": "¿Y quien entró o salió durante el año?",
+      "respuesta": "En proporción a los días naturales de alta en 2026, redondeando al medio día superior: 22 × días de alta / 365. Ejemplo: alta el 01/03/2026 → 306 días → 18,44 → 18,5. La persona que se fue y volvió (E0047): cuenta solo el contrato actual; el primero se liquidó en su finiquito."
+    },
+    {
+      "pregunta": "¿Se arrastran días de 2025?",
+      "respuesta": "No, salvo un caso: E0031 no pudo disfrutar 6 días por una baja y los tiene reconocidos. El ET (art. 38.3) lo permite hasta 18 meses después de terminar el año."
+    },
+    {
+      "pregunta": "¿Las personas a media jornada tienen menos días?",
+      "respuesta": "No. Aquí la jornada parcial es todos los días con menos horas: tienen los mismos 22 días; lo que cambia es lo que cobran. Lo confirmó la gestoría."
+    },
+    {
+      "pregunta": "¿Qué es «demasiados a la vez»?",
+      "respuesta": "Administración: como máximo 2 personas a la vez. Comercial de Zaragoza: 2. Almacén: el 25 % de la plantilla de almacén de cada delegación, redondeando hacia abajo y como mínimo 1. Dirección y Comercial de Pamplona y Lleida: sin límite."
+    },
+    {
+      "pregunta": "¿Qué festivos uso? Cada delegación está en una comunidad distinta.",
+      "respuesta": "Los de la hoja de la gestoría: nacionales, autonómicos y locales. Creo que la de Lleida tiene algún fallo: compruébalos en el BOE y en el boletín de cada comunidad. De 2027 solo tenemos enero; el resto llegará en diciembre."
+    },
+    {
+      "pregunta": "Un periodo que empieza en diciembre y acaba en enero, ¿de qué año descuenta?",
+      "respuesta": "Cada día descuenta del año al que pertenece."
+    },
+    {
+      "pregunta": "En las hojas de los responsables hay fechas raras: un Hasta anterior al Desde, un año 2062…",
+      "respuesta": "Son errores al teclear: si Hasta es anterior a Desde, están cruzadas; el 2062 es 2026. Y no te fíes de la columna Días: la rellenan a mano."
+    },
+    {
+      "pregunta": "¿Los asuntos propios descuentan vacaciones?",
+      "respuesta": "No. Apúntalos para que conste, pero no restan días de vacaciones. En el cuadrante, de momento, solo las vacaciones."
+    },
+    {
+      "pregunta": "¿Qué es disfrutado y qué es planificado?",
+      "respuesta": "Tenemos cerrados los meses hasta octubre: lo que es hasta el 31/10/2026, disfrutado; lo posterior, planificado."
+    },
+    {
+      "pregunta": "¿Qué es absentismo para el comité? ¿Por persona? ¿Quién lo ve?",
+      "respuesta": "Días laborables de baja (IT por enfermedad común y por accidente de trabajo) entre los días laborables teóricos de la plantilla de ese mes. Teórico: para cada contrato en alta el día 15, los laborables del mes en el calendario de su delegación. Los permisos van aparte y NO son absentismo. Solo agregado por departamento y mes, de enero a octubre, sin nombres. El archivo de bajas solo lo ve RRHH."
+    },
+    {
+      "pregunta": "Las bajas que siguen abiertas, ¿hasta cuándo las cuento?",
+      "respuesta": "Hasta la fecha de corte, el 31/10/2026."
+    },
+    {
+      "pregunta": "¿Y la plantilla? ¿Qué cifras quiere Carmen?",
+      "respuesta": "Personas y FTE a 31/10/2026 por departamento, altas y bajas de 2026 (por contrato, como salen en nóminas), rotación (bajas entre plantilla media) y antigüedad media."
+    },
+    {
+      "pregunta": "«Antes del puente»: ¿qué día?",
+      "respuesta": "El viernes 04/12/2026."
+    },
+    {
+      "pregunta": "¿Cómo lo van a abrir los responsables?",
+      "respuesta": "Desde Teams o SharePoint: unos en el navegador y otros en Excel de escritorio."
+    }
+  ],
+  "datos_md": "Te llegan dos libros:\n\n- **p2-datos.xlsx** (para trabajar las vacaciones):\n  - **Nomina_export**: la exportación del programa de nóminas pegada tal cual, **todo como texto**. 62 filas para 58 personas: sobra algo y falta poner orden (códigos, nombres, departamentos, fechas y jornada vienen como a cada uno le dio).\n  - **Vac_Administracion**: una cuadrícula con una «V» por día de vacaciones (365 columnas).\n  - **Vac_Comercial** y **Vac_Almacen**: periodos Desde-Hasta con nombres abreviados, días contados a mano y el tipo escrito de varias maneras. Almacén, además, con subtotales y celdas combinadas.\n  - **Vac_Direccion**: lo que contestó cada directivo, en texto libre.\n  - **Festivos_gestoria**: la lista de la gestoría. Lucía sospecha de Lleida.\n- **p2-ausencias.xlsx** (solo RRHH): 134 ausencias de 2026 (bajas y permisos), con una columna de observaciones que no debería existir.\n\nProblemas que vas a encontrar (no están todos): duplicados que lo son y otros que no, filas de total, fechas en tres formatos, nombres que no casan con el maestro, días mal sumados, fechas imposibles y festivos que no cuadran con el BOE. Apunta cada uno en una hoja «Calidad de datos» con las filas afectadas y lo que decides.\n\n> Hoy es el lunes 16/11/2026. Meses cerrados: enero-octubre.",
+  "archivos": [
+    {
+      "archivo": "p2-datos.xlsx",
+      "titulo": "Datos de partida (vacaciones y plantilla)",
+      "descripcion": "Exportación de nóminas, las cuatro hojas de los responsables y los festivos de la gestoría."
+    },
+    {
+      "archivo": "p2-ausencias.xlsx",
+      "titulo": "Ausencias de 2026 (solo RRHH)",
+      "descripcion": "Bajas y permisos del año. Contiene datos de salud: no se comparte."
+    }
+  ],
+  "pasos": [
+    {
+      "titulo": "1. Preguntas y plan",
+      "md": "Lee el correo, escribe tus preguntas y decide la estructura **antes** de tocar los datos. Decisión de cumplimiento: **dos archivos**. `Vacaciones_2026-2027.xlsx`, compartido con los responsables (solo vacaciones y asuntos propios, sin NIF ni jornada). `Absentismo_2026_RRHH.xlsx`, solo para RRHH (bajas y permisos, sin observaciones).",
+      "pista": "Las bajas por enfermedad son datos de salud, una categoría especial (RGPD, art. 9.1), y solo deben tratarse los datos necesarios (art. 5.1.c). Por eso no van en el archivo que ven los responsables."
+    },
+    {
+      "titulo": "2. Perfilar los datos",
+      "md": "Cuenta filas y personas, busca filas que no son datos, duplicados, formatos de fecha, grafías distintas del mismo departamento y valores imposibles. Anótalo en «Calidad de datos» (problema, filas afectadas, decisión).",
+      "pista": "Filtra cada columna (Datos > Ordenar y filtrar > Filtro) y mira la lista de valores: ahí salen «Admón.», «almacen» o «Zgz». Para los duplicados, compara la fila entera, no solo el código: hay una persona con dos contratos que NO es un duplicado."
+    },
+    {
+      "titulo": "3. Maestro de empleados limpio (Tabla Empleados)",
+      "md": "Una fila por contrato con: código `E0000`, apellidos y nombre bien escritos, departamento y delegación normalizados, fechas de verdad y jornada entre 0 y 1. Quita la fila del total y los 2 duplicados exactos. **Control: 58 personas por NIF y 55 en plantilla a 31/10/2026.**",
+      "pista": "Código: `=\"E\"&TEXTO(VALOR(SUSTITUIR(A2;\"E\";\"\"));\"0000\")`. Nombre: `=NOMPROPIO(ESPACIOS(TEXTODESPUES(C2;\",\")))`. Departamento: una tabla Equivalencias y `BUSCARX(ESPACIOS(D2);…)`. Fechas: Datos > Herramientas de datos > Texto en columnas, paso 3, formato de columna DMA o AMD según el bloque, y comprueba con `ESNUMERO`."
+    },
+    {
+      "titulo": "4. Parámetros y festivos por delegación",
+      "md": "Hoja Parámetros con nombres definidos: año, fecha de corte (31/10/2026), días de convenio (22), límites por departamento y arrastres. Tabla Festivos con una columna Delegación («Todas» para los nacionales). Compara la lista de la gestoría con el BOE y los boletines autonómicos y corrige lo que no cuadre.",
+      "pista": "Cada delegación tiene 14 festivos en 2026 (en Navarra son 13 forales y 1 local). Si a Zaragoza o a Lleida no te salen 14, o te salen pero con una fecha que no es, revisa la lista. Para DIAS.LAB.INTL, la forma segura es una columna por delegación (la fecha si vale allí, 0 si no) con un nombre cada una: FestZGZ, FestPAM y FestLLE."
+    },
+    {
+      "titulo": "5. Tabla Periodos",
+      "md": "Pasa las cuatro hojas de los responsables a una sola Tabla: una fila por periodo con Código, Tipo (Vacaciones o Asuntos propios), Desde y Hasta. Calcula los días laborables totales, los del año y los disfrutados hasta el corte, con los festivos de la delegación de cada persona.",
+      "pista": "`=DIAS.LAB.INTL([@Desde];[@Hasta];1;ELEGIR([@DelegN];FestZGZ;FestPAM;FestLLE))`. Días del año: `MAX(0;DIAS.LAB.INTL(MAX([@Desde];InicioAnio);MIN([@Hasta];FinAnio);1;…))`. La cuadrícula de Administración: cada racha de «V» es un periodo; comprueba que las «V» de cada persona (`CONTAR.SI(fila;\"V\")`) suman lo mismo que sus días."
+    },
+    {
+      "titulo": "6. Saldos",
+      "md": "Una fila por persona: días de alta en el año, derecho, arrastre, disfrutados, planificados y saldo. Rojo si es negativo; ámbar si le quedan más de 5 días.",
+      "pista": "Días de alta: `=MIN(SI([@Baja]=\"\";FinAnio;[@Baja]);FinAnio)-MAX([@Alta];InicioAnio)+1`. Derecho: `=MULTIPLO.SUPERIOR(DiasConvenio*[@[Días de alta]]/365;0,5)`. La jornada NO multiplica el derecho."
+    },
+    {
+      "titulo": "7. Cuadrante mensual con alertas",
+      "md": "Selector de mes (noviembre de 2026 a diciembre de 2027), una fila de fechas, las personas ordenadas por departamento y una «V» en cada día de vacaciones. Fines de semana en gris, festivos marcados y una fila de recuento por grupo que se pone en rojo si supera su límite. Inmoviliza paneles e imprime títulos.",
+      "pista": "Fechas: `=SECUENCIA(1;DIA(FIN.MES(B2;0));B2)` (365) o la primera fecha y `=anterior+1`. En cada celda: `=SI(CONTAR.SI.CONJUNTO(Periodos[Código];$A6;Periodos[Desde];\"<=\"&F$4;Periodos[Hasta];\">=\"&F$4)>0;\"V\";\"\")`. Formato condicional con fórmula: `=DIASEM(F$4;2)>5`."
+    },
+    {
+      "titulo": "8. Validación y protección",
+      "md": "En Periodos: Tipo con lista; Desde dentro de 2026-2027; Hasta ≥ Desde y sin solaparse con otro periodo de la misma persona. Desbloquea solo las columnas de entrada y protege la hoja (permitiendo ordenar y filtrar).",
+      "pista": "La validación no acepta referencias estructuradas: usa rangos normales. Hasta: `=Y(D2>=C2;CONTAR.SI.CONJUNTO($A$2:$A$301;$A2;$C$2:$C$301;\"<=\"&$D2;$D$2:$D$301;\">=\"&$C2)=1)`. Con la hoja protegida la Tabla no crece al escribir debajo: déjala dimensionada con filas vacías."
+    },
+    {
+      "titulo": "9. Absentismo (archivo de RRHH)",
+      "md": "Borra la columna Observaciones. Calcula los días laborables de IT de cada baja en cada mes (las abiertas, hasta el 31/10/2026) y los días teóricos. Tasa por departamento y mes, y la de la empresa con los totales. Tabla dinámica y gráfico de líneas. Marca los permisos más largos de lo que dice el ET 37.3, sin corregirlos.",
+      "pista": "IT de un mes: `=MAX(0;DIAS.LAB.INTL(MAX([@Desde];InicioMes);MIN([@HastaEf];FIN.MES(InicioMes;0));1;festivos))`. Teórico: si el contrato está de alta el día 15, los laborables del mes de su delegación. Permisos (ET 37.3): matrimonio 15 días naturales; traslado 1 día."
+    },
+    {
+      "titulo": "10. Plantilla a 31/10/2026",
+      "md": "Por departamento: personas y FTE, altas y bajas de 2026, plantilla media, rotación y antigüedad media.",
+      "pista": "Activos: `=CONTAR.SI.CONJUNTO(Alta;\"<=\"&Corte;Baja;\"\";Dpto;A5)+CONTAR.SI.CONJUNTO(Alta;\"<=\"&Corte;Baja;\">\"&Corte;Dpto;A5)`. FTE: lo mismo con SUMAR.SI.CONJUNTO de la jornada. Antigüedad: `SIFECHA(Alta;Corte;\"Y\")`."
+    },
+    {
+      "titulo": "11. Controles",
+      "md": "Hoja Controles en cada archivo, con el control maestro en verde. Comprueba los totales de control de abajo.",
+      "pista": "Los más útiles: personas únicas, suma por departamento = total, «V» de la cuadrícula = días transcritos, Σ días de Periodos = Σ disfrutados + planificados en Saldos, saldos negativos = 0, IT por departamento = IT total."
+    },
+    {
+      "titulo": "12. Cierre y entrega",
+      "md": "Inspecciona los dos documentos, comprueba la accesibilidad, guarda el de RRHH en su carpeta con permisos, escribe un Léame de 5 líneas para los responsables y el correo a Lucía. PDF de una página del absentismo para Carmen.",
+      "pista": "Archivo > Información > Comprobar si hay problemas > Inspeccionar documento. Revisar > Accesibilidad > Comprobar accesibilidad. Intenta escribir el correo en menos de 15 minutos."
+    }
+  ],
+  "controles": [
+    {
+      "pregunta": "Personas distintas en el maestro de empleados limpio",
+      "respuesta": 58,
+      "tolerancia": 0,
+      "pista": "Quita la fila del total y los 2 duplicados exactos, pero no la recontratación: cuenta NIF distintos, no filas."
+    },
+    {
+      "pregunta": "Personas en plantilla a 31/10/2026",
+      "respuesta": 55,
+      "tolerancia": 0,
+      "pista": "Alta hasta el 31/10/2026 y sin baja (o con baja posterior). Tres personas se fueron en 2026; E0047 se fue y volvió."
+    },
+    {
+      "pregunta": "Días laborables de vacaciones de 2026 de toda la empresa (disfrutados y planificados; sin asuntos propios; solo los días de 2026)",
+      "respuesta": 1072,
+      "tolerancia": 0,
+      "pista": "Recalcula los días con DIAS.LAB.INTL y los festivos corregidos de cada delegación (no uses la columna Días de los responsables). Quita los subtotales de Almacén, cruza bien el periodo de Hasta < Desde, cambia el 2062 por 2026 y deja fuera la parte de 2027. Con la lista de la gestoría sin corregir salen 4 días de más (1.076)."
+    },
+    {
+      "pregunta": "Suma del derecho de vacaciones de 2026 de las 55 personas en plantilla",
+      "respuesta": 1189.0,
+      "tolerancia": 0,
+      "pista": "22 × días de alta / 365 y MULTIPLO.SUPERIOR(…;0,5). Comprueba tres casos: alta el 01/03/2026 → 18,5; alta el 01/07/2026 → 11,5; E0047, solo el contrato desde el 04/05/2026 → 15."
+    },
+    {
+      "pregunta": "Suma de los saldos pendientes a 31/12/2026 de esas 55 personas (días)",
+      "respuesta": 153.0,
+      "tolerancia": 0,
+      "pista": "Saldo = derecho + arrastre (E0031: 6) − días de vacaciones de 2026. Si te sale 149, revisa los festivos: falta un lunes de diciembre en Aragón y hay una fecha mal en Lleida."
+    },
+    {
+      "pregunta": "Días laborables de IT de enero a octubre de 2026 (toda la empresa)",
+      "respuesta": 737,
+      "tolerancia": 0,
+      "pista": "Solo IT_EC e IT_AT. Laborables, no naturales, con los festivos de su delegación. Las bajas abiertas, hasta el 31/10; la de E0031, solo desde el 01/01/2026."
+    },
+    {
+      "pregunta": "Tasa de absentismo por IT de la empresa, enero-octubre de 2026 (%, con dos decimales)",
+      "respuesta": 6.35,
+      "tolerancia": 0.01,
+      "pista": "Total de días de IT entre el total de días teóricos (11.599). No es la media de las tasas de los departamentos ni de los meses."
+    },
+    {
+      "pregunta": "Observaciones con datos de salud que has borrado",
+      "respuesta": 11,
+      "tolerancia": 0,
+      "pista": "Cuenta las que mencionan una enfermedad, un síntoma o una lesión. Luego borra la columna entera: no hace falta para el absentismo."
+    }
+  ],
+  "entregables": [
+    "Vacaciones_2026-2027.xlsx (compartido con los responsables): Léame, Parámetros, Festivos, Empleados, Periodos, Saldos, Cuadrante, Controles y Calidad de datos.",
+    "Absentismo_2026_RRHH.xlsx (solo RRHH): maestro limpio, ausencias sin observaciones, absentismo por departamento y mes, plantilla y controles.",
+    "Léame para los responsables: 5 líneas (cómo apuntar, qué no tocar, a quién llamar).",
+    "PDF de una página con el absentismo agregado para Carmen, sin nombres.",
+    "Correo de entrega a Lucía."
+  ],
+  "rubrica": [
+    {
+      "criterio": "Exactitud",
+      "niveles": [
+        "En desarrollo: saldos con días naturales, sin festivos o con los de otra comunidad.",
+        "Aceptable: los laborables están bien, pero fallan el prorrateo, el redondeo o el periodo que cruza el año.",
+        "Bien: los dos recuentos coinciden (Periodos y cuadrícula o cuadrante), prorrateo y festivos por delegación correctos, y los 8 controles cuadran.",
+        "Excelente: además, detecta el festivo erróneo y el que falta (y su efecto: 5 días), los dos permisos incoherentes con el ET y los 6 días mal calculados a mano."
+      ]
+    },
+    {
+      "criterio": "Estructura",
+      "niveles": [
+        "En desarrollo: una hoja por responsable, como estaba, o datos y cálculos mezclados.",
+        "Aceptable: un archivo único, pero sin Tablas ni parámetros, o con 22 y 31/10/2026 escritos dentro de las fórmulas.",
+        "Bien: Empleados, Festivos, Periodos, Saldos, Cuadrante, Parámetros y Controles separados, con Tablas y nombres definidos.",
+        "Excelente: además, Equivalencias y Festivos como tablas que se mantienen solas, flujo de izquierda a derecha y un Léame con el que un responsable entiende el archivo en 5 minutos."
+      ]
+    },
+    {
+      "criterio": "Automatización y mantenimiento",
+      "niveles": [
+        "En desarrollo: para 2027 hay que rehacerlo.",
+        "Aceptable: sirve para 2027 cambiando muchas celdas a mano.",
+        "Bien: cambiando el año y añadiendo los festivos sirve para 2027, y el cuadrante cambia con el selector de mes.",
+        "Excelente: además, la validación impide solapes y fechas fuera de rango, la protección deja trabajar a los responsables y el «cambio inesperado» se resuelve en menos de 30 minutos."
+      ]
+    },
+    {
+      "criterio": "Presentación",
+      "niveles": [
+        "En desarrollo: cuadrante ilegible o que solo usa colores.",
+        "Aceptable: legible, pero sin fines de semana ni festivos marcados, o se imprime mal.",
+        "Bien: cuadrante claro, que se imprime con títulos; las alertas de departamento se ven a la primera.",
+        "Excelente: además, accesible (letra «V» y no solo color, gráfico con texto alternativo) y PDF de absentismo de una página."
+      ]
+    },
+    {
+      "criterio": "Comunicación",
+      "niveles": [
+        "En desarrollo: mezcla bajas y vacaciones en el archivo de todos, o entrega sin explicar nada.",
+        "Aceptable: separa los archivos, pero no explica por qué ni qué definición de absentismo usa.",
+        "Bien: explica los dos archivos (RGPD), la definición de absentismo, las cifras clave y las alertas que hay que resolver.",
+        "Excelente: además, propone el procedimiento («los responsables apuntan; RRHH valida»), avisa de los festivos erróneos de la gestoría y del riesgo de identificar a alguien en un departamento pequeño."
+      ]
+    }
+  ],
+  "correo_entrega": {
+    "pregunta": "Escribe el correo con el que entregas los dos archivos a Lucía (máximo 15 líneas).",
+    "modelo": "Asunto: Vacaciones 2026-2027 y absentismo: entrega\n\nHola, Lucía:\n\nTe dejo los dos archivos en la carpeta de RRHH:\n1. Vacaciones_2026-2027.xlsx, para compartir con los responsables. Solo lleva vacaciones y asuntos propios, sin NIF ni bajas. Cada responsable apunta en Periodos (celdas amarillas) y el archivo no le deja meter fechas al revés ni solapes.\n2. Absentismo_2026_RRHH.xlsx, solo para RRHH. He quitado las observaciones con diagnósticos: no hacen falta y son datos de salud.\n\nCifras a 31/10/2026: 55 personas en plantilla. Entre todos, 1.072 días de vacaciones de 2026 entre disfrutados y planificados; a la plantilla actual le quedan 153 días por planificar, y a 11 personas les quedan más de 5 (están en ámbar en Saldos).\nAbsentismo por IT de enero a octubre: 6,35 % (737 días de 11.599 teóricos). Almacén es el más alto (7,20 %).\n\nTres avisos:\n- La lista de la gestoría tenía dos fallos: Sant Miquel de Lleida es el 29/09, no el 29/10, y faltaba el 07/12 en Aragón. Con su lista se descontaban 4 días de más. Conviene decírselo.\n- Del 28 al 31/12 hay 3 personas de Administración de vacaciones y el límite es 2.\n- En el PDF para Carmen, Dirección son 4 personas: aun sin nombres, se podría saber quién estuvo de baja. Te propongo dar Dirección junto con Administración.\n\nPropongo que los responsables solo apunten y que RRHH valide cada viernes. Para 2027 basta con añadir los festivos y cambiar el año en Parámetros.\n\nUn saludo.",
+    "criterios": [
+      "Explica por qué hay dos archivos y qué lleva cada uno (RGPD: datos de salud y minimización).",
+      "Da las cifras clave (plantilla, días y saldos, tasa de absentismo) y coinciden con las del libro.",
+      "Dice qué definición de absentismo ha usado.",
+      "Avisa de los errores de los festivos de la gestoría y de las alertas de diciembre.",
+      "Propone cómo se va a mantener (quién apunta, quién valida, qué hacer en 2027)."
+    ]
+  },
+  "solucion_md": "### 1. La decisión de los dos archivos\nLas bajas por enfermedad son datos de salud (RGPD, art. 9.1) y solo se tratan los datos necesarios (art. 5.1.c). Por eso: **Vacaciones_2026-2027.xlsx** (en la solución, `p2-solucion.xlsx`) para los responsables, sin NIF, sin jornada y sin ausencias; y **Absentismo_2026_RRHH.xlsx** (`p2-solucion-rrhh.xlsx`) solo para RRHH, sin la columna de observaciones. Los dos se descargan resueltos; el de RRHH está en la misma carpeta de libros que el resto.\n\n### 2. Perfilado: lo que hay en los datos\n| Origen | Problema | Filas | Decisión |\n|---|---|---|---|\n| Nomina_export | Fila «Total empleados: 61» | 1 | Fuera |\n| Nomina_export | Duplicados exactos (la exportación se solapa) | 2 | Fuera, tras comprobar la fila entera |\n| Nomina_export | E0047 dos veces con fechas distintas | 2 | Se quedan: son 2 contratos |\n| Nomina_export | Códigos sin prefijo («12») | 9 | `=\"E\"&TEXTO(VALOR(SUSTITUIR(A2;\"E\";\"\"));\"0000\")` |\n| Nomina_export | Espacios de más en el nombre | 14 | ESPACIOS y NOMPROPIO |\n| Nomina_export | Departamento en 6 grafías; «Zgz» | 18 + 3 | Tabla Equivalencias |\n| Nomina_export | Fechas en aaaa-mm-dd y en dd-mm-aa | 15 + 5 | Texto en columnas o FECHA |\n| Nomina_export | Jornada «100», «50%», «0,75»… | 59 | Número entre 0 y 1 |\n| Vac_Comercial | Días a mano mal sumados | 6 | Se recalculan |\n| Vac_Comercial | Hasta < Desde | 1 | Se intercambian |\n| Vac_Almacen | Subtotales «Total …: n» | 7 | Fuera |\n| Vac_Almacen | Año 2062 | 1 | 2026 |\n| Festivos_gestoria | Sant Miquel de Lleida el 29/10 | 1 | 29/09/2026 |\n| Festivos_gestoria | Falta el 07/12/2026 de Aragón | 1 | Se añade |\n| Ausencias | Observaciones con diagnósticos | 11 | Columna borrada |\n| Ausencias | Permisos más largos que el ET 37.3 | 2 | Marcados para revisar |\n\n### 3. Maestro de empleados\n1. Pega la exportación en una hoja **Nomina_origen** y no la toques. En otra hoja, una fila por cada fila de origen:\n   - Código: `=\"E\"&TEXTO(VALOR(SUSTITUIR(Nomina_origen!A2;\"E\";\"\"));\"0000\")` (vacío si empieza por «Total»).\n   - Apellidos: `=NOMPROPIO(ESPACIOS(TEXTOANTES(C2;\",\")))`; nombre: `=NOMPROPIO(ESPACIOS(TEXTODESPUES(C2;\",\")))`. Sin TEXTOANTES (Excel 2021 o anterior): `IZQUIERDA(C2;HALLAR(\",\";C2)-1)` y `EXTRAE(C2;HALLAR(\",\";C2)+1;100)`.\n   - Departamento: `=BUSCARX(ESPACIOS(D2);Equivalencias[Origen];Equivalencias[Departamento];\"SIN EQUIVALENCIA\")`. «ALMACÉN » con ESPACIOS ya encuentra «Almacén» (no distingue mayúsculas); «almacen», sin tilde, necesita su propia fila.\n   - Fecha: `=SI(EXTRAE(F2;5;1)=\"-\";FECHA(IZQUIERDA(F2;4);EXTRAE(F2;6;2);DERECHA(F2;2));SI(LARGO(F2)=8;FECHA(2000+DERECHA(F2;2);EXTRAE(F2;4;2);IZQUIERDA(F2;2));FECHA(DERECHA(F2;4);EXTRAE(F2;4;2);IZQUIERDA(F2;2))))`.\n   - Jornada: `=SI(DERECHA(H2;1)=\"%\";VALOR.NUMERO(IZQUIERDA(H2;LARGO(H2)-1);\",\")/100;SI(VALOR.NUMERO(H2;\",\")>1;VALOR.NUMERO(H2;\",\")/100;VALOR.NUMERO(H2;\",\")))`.\n2. Duplicados: une todas las columnas en una clave y marca `=CONTAR.SI(K$2:K2;K2)>1`. Así salen los 2 duplicados y no la recontratación.\n3. Comprobación: `=CONTARA(UNICOS(FILTRAR(Empleados[NIF];Empleados[Incluir]=1)))` → **58**. Activos a 31/10/2026 → **55** (Dirección 4, Administración 9, Comercial 17, Almacén 25).\n\n### 4. Festivos\nFuente: BOE-A-2025-21667 (fiestas laborales de 2026) y los calendarios de Navarra, Zaragoza y Lleida. Zaragoza: 8 nacionales + 4 de Aragón (02/04, 23/04, 02/11 y **07/12**) + San Valero y Cincomarzada. Pamplona: 13 forales (con San José, Lunes de Pascua, 02/11 y San Francisco Javier) + San Fermín. Lleida: 8 + 4 de Cataluña (06/04, 24/06, 11/09 y 26/12) + Sant Anastasi y Sant Miquel (**29/09**). Son 14 en cada una.\n\nEn la Tabla Festivos, tres columnas: `=SI(O([@Delegación]=\"Todas\";[@Delegación]=\"Zaragoza\");[@Fecha];0)` y las equivalentes para Pamplona y Lleida, con los nombres **FestZGZ**, **FestPAM** y **FestLLE**. El 0 no estorba: es una fecha de 1900.\n\n### 5. Periodos y saldos\nPeriodos tiene 208 filas: 36 de la cuadrícula de Administración (sus 176 «V»), 72 de Comercial, 90 de Almacén y 10 de Dirección. De las 208, 6 son asuntos propios.\n\n- Días laborables: `=DIAS.LAB.INTL([@Desde];[@Hasta];1;ELEGIR([@DelegN];FestZGZ;FestPAM;FestLLE))`.\n- Días del año: `=MAX(0;DIAS.LAB.INTL(MAX([@Desde];InicioAnio);MIN([@Hasta];FinAnio);1;ELEGIR(…)))`. El periodo de Javier Ortega del 21/12/2026 al 08/01/2027 da **12** = **8** en 2026 + **4** en 2027.\n- Disfrutados: lo mismo con `MIN([@Hasta];FechaCorte)`.\n- Días de alta: `=MIN(SI([@Baja]=\"\";FinAnio;[@Baja]);FinAnio)-MAX([@Alta];InicioAnio)+1`; derecho: `=MULTIPLO.SUPERIOR(DiasConvenio*[@[Días de alta]]/DiasAnio;0,5)`. Paco Gil (baja el 15/06): 166 días → 10,005 → **10,5**.\n- Saldo = derecho + arrastre − disfrutados − planificados.\n\nResultado: **1.072** días de vacaciones de 2026; derecho de la plantilla activa **1.189**; saldo pendiente **153** días; 11 personas con más de 5; ningún saldo negativo. Con los festivos de la gestoría sin corregir salen 1.076 días (4 de más: a cada una de las cuatro personas que se cogen el puente de diciembre en Zaragoza se le descuenta un día de más; en Lleida, a una se le descuenta uno de más y a otra uno de menos, y se compensan).\n\n### 6. Cuadrante\n- Mes elegido en B2 (validación con lista de noviembre de 2026 a diciembre de 2027). Fila 4: la primera fecha es B2 y las demás `=SI(E4+1>FIN.MES($B$2;0);\"\";E4+1)` (en 365, `=SECUENCIA(1;DIA(FIN.MES(B2;0));B2)`).\n- En cada celda: `=SI(DIASEM(F$4;2)>5;\"\";SI(CONTAR.SI(ELEGIR($E6;FestZGZ;FestPAM;FestLLE);F$4)>0;\"F\";SI(CONTAR.SI.CONJUNTO(P_Cod;$A6;P_Tipo;\"Vacaciones\";P_Desde;\"<=\"&F$4;P_Hasta;\">=\"&F$4)>0;\"V\";\"\")))`.\n- Alertas: `=CONTAR.SI.CONJUNTO($C$6:$C$65;\"Almacén\";$D$6:$D$65;\"Pamplona\";F$6:F$65;\"V\")` y formato condicional en rojo si supera el límite. Salen dos: Almacén de Pamplona del 9 al 13/11 (3 y 2 personas, límite 1; ya pasado) y **Administración del 28 al 31/12 (3 personas, límite 2)**.\n- Comprobación: el número de «V» del mes es igual a la suma de los días de ese mes en Periodos.\n\n### 7. Validación y protección\nDatos > Herramientas de datos > Validación de datos, con fórmula y rangos normales: Desde `=Y(C2>=FECHA(Anio;1;1);C2<=FECHA(Anio+1;12;31))`; Hasta `=Y(D2>=C2;D2<=FECHA(Anio+1;12;31);CONTAR.SI.CONJUNTO($A$2:$A$301;$A2;$C$2:$C$301;\"<=\"&$D2;$D$2:$D$301;\">=\"&$C2)=1)`. Desbloquea las columnas de entrada (Formato de celdas > Proteger) y Revisar > Proteger hoja, permitiendo ordenar y usar Autofiltro. La Tabla Periodos va con 300 filas porque protegida no crece.\n\n### 8. Absentismo y plantilla (archivo de RRHH)\n- Hasta efectiva: `=SI([@Hasta]=\"\";FechaCorte;[@Hasta])`. IT de cada mes: `=SI([@EsIT]<>1;0;MAX(0;DIAS.LAB.INTL(MAX([@Desde];B$1);MIN([@HastaEf];FIN.MES(B$1;0));1;ELEGIR(…))))`.\n- Teórico de cada contrato y mes: `=SI(Y(Alta<=B$1+14;O(Baja=\"\";Baja>=B$1+14));DIAS.LAB.INTL(B$1;FIN.MES(B$1;0);1;ELEGIR(…));0)`.\n- Resultado de enero a octubre: **737** días de IT entre **11.599** teóricos = **6,35 %**. Por departamento: Dirección 3,12 %, Administración 5,67 %, Comercial 6,29 % y Almacén 7,20 %. La media de esas cuatro tasas daría 5,57 %: no vale.\n- Tabla dinámica: Insertar > Tabla dinámica con Departamento en filas y los meses en valores; gráfico de líneas con texto alternativo.\n- Permisos para revisar: el matrimonio de 20 días (el ET da 15 naturales) y el traslado de 3 (el ET da 1).\n- Plantilla a 31/10/2026: 55 personas y 53,25 FTE; 3 altas y 4 bajas de 2026 por contrato (la recontratación cuenta una de cada); rotación 7,2 % sobre una plantilla media de 55,4.\n\n### 9. Controles y entrega\nCada libro tiene su hoja Controles con el control maestro en VERDADERO: 58 personas, 55 activas, suma por departamento = total, 176 «V» = 176 días transcritos, días de Periodos = disfrutados + planificados, 0 saldos negativos, 14 festivos por delegación, 0 columnas de observaciones, 2 permisos para revisar, IT por departamento = IT total. Después: Inspeccionar documento, Comprobar accesibilidad, PDF de la hoja Absentismo y el correo.",
+  "archivo_solucion": "p2-solucion.xlsx",
+  "errores_tipicos": [
+    "Contar días naturales en vez de laborables, o restar Hasta − Desde sin sumar 1.",
+    "Usar DIAS.LAB sin festivos, con los de otra comunidad, o con la lista de la gestoría sin comprobarla.",
+    "Fiarse de la columna Días que rellenaron los responsables a mano.",
+    "Multiplicar el derecho por la jornada (a media jornada son los mismos días).",
+    "Quitar con «Quitar duplicados» por código o NIF la recontratación de E0047: son 2 contratos.",
+    "Sumar la columna Días de Almacén con los subtotales dentro (se cuentan dos veces).",
+    "No cortar el periodo que cruza el año: los 4 días de enero de Javier no son de 2026.",
+    "Dejar los diagnósticos, o las bajas, en el archivo compartido con los responsables.",
+    "Calcular la tasa de absentismo como media de las tasas de los departamentos o de los meses.",
+    "Escribir la validación con referencias estructuradas (no funciona) o proteger la hoja y que la Tabla no crezca.",
+    "Escribir 22 o 31/10/2026 dentro de las fórmulas en lugar de usar Parámetros."
+  ],
+  "ampliaciones": [
+    "Cambio inesperado (llega el 01/12): entra una persona en Lleida el 01/12/2026 con jornada del 50 %; la gestoría manda el calendario de 2027 con 2 festivos locales nuevos; y Lucía quiere ver los asuntos propios en el cuadrante con otra letra. Con un libro bien hecho es una fila en Empleados, unas filas en Festivos y una condición más en la fórmula del cuadrante, con su regla de formato. Avisa de cuánto le corresponde (22 × 31 / 365 = 1,87 → 2 días).",
+    "Power Query: pasa la cuadrícula de Administración a periodos con Anular dinamización de columnas, filtra las «V» y agrupa los días seguidos.",
+    "Desplegable dependiente Departamento → Empleado con FILTRAR y una referencia desbordada en la validación (solo Microsoft 365; compruébalo en tu versión).",
+    "Valida la letra de los DNI: `=EXTRAE(\"TRWAGMYFPDXBNJZSQVHLCKE\";RESIDUO(IZQUIERDA(B2;8);23)+1;1)=DERECHA(B2;1)`.",
+    "Control de jornada (ET art. 34.9): horas como fracción del día y horas extra mensuales."
+  ]
+}

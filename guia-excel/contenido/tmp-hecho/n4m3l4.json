@@ -1,0 +1,240 @@
+{
+ "id": "n4m3l4",
+ "titulo": "Gráficos especiales: cascada, histograma y compañía",
+ "minutos": 15,
+ "objetivo": "Elegir el gráfico especial que responde a cada pregunta (cascada, histograma, embudo, cajas y bigotes), preparar sus datos y saber cuándo no conviene usarlo.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "El jueves presento las cuentas del año al consejo. Quiero un gráfico que se entienda de un vistazo: cómo pasamos de las ventas al resultado, partida a partida. Prepárame los datos y dime qué gráfico usarías.",
+  "logro": "Ya sabes elegir el gráfico especial que responde a cada pregunta, preparar sus datos y montar una cascada que explica las cuentas en un vistazo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Gráficos para preguntas concretas\nLas columnas, las líneas y los circulares que ya sabes hacer responden a «¿cuánto?» y «¿cómo evoluciona?». Hay preguntas que piden otro gráfico:\n- «¿Cómo pasamos de las ventas al resultado?» → **cascada**.\n- «¿Cómo se reparten los importes?» → **histograma**.\n- «¿En qué etapa se nos pierden los clientes?» → **embudo**.\n- «¿Qué proveedor es más regular?» → **cajas y bigotes**.\n\nEl gráfico se elige por la pregunta, no por lo vistoso que queda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e1",
+   "modo": "test",
+   "pregunta": "Carmen quiere enseñar al consejo **cómo pasamos de las ventas al resultado**, partida a partida. ¿Qué gráfico eliges?",
+   "opciones": [
+    { "texto": "Cascada", "correcta": true, "porque": "Eso es: la cascada parte de las ventas y va restando cada gasto hasta llegar al resultado. Se ve qué partida se come más." },
+    { "texto": "Circular", "correcta": false, "porque": "Un circular reparte un total en trozos, pero no enseña cómo se suma y se resta hasta llegar a otro total." },
+    { "texto": "Líneas", "correcta": false, "porque": "Las líneas enseñan cómo evoluciona algo en el tiempo (las ventas mes a mes), no cómo se llega de una cifra a otra." },
+    { "texto": "Histograma", "correcta": false, "porque": "El histograma cuenta cuántos valores caen en cada tramo. No suma ni resta partidas." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "### La cascada, barra a barra\nLa primera barra es el punto de partida (las ventas). Cada partida **sube** o **baja** desde donde acabó la anterior: las positivas suben, las negativas bajan. La última barra es el total, apoyada en el suelo.\n\nPor eso los datos se preparan así: los **ingresos en positivo**, los **gastos en negativo** y, al final, el **resultado**."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Los datos de la cascada de Carmen",
+   "hoja": {
+    "celdas": {
+     "A1": "Partida (miles de €)", "B1": "Importe",
+     "A2": "Ventas", "B2": 14200,
+     "A3": "Compras de material", "B3": -10650,
+     "A4": "Personal", "B4": -2380,
+     "A5": "Transporte y otros gastos", "B5": -850,
+     "A6": "Resultado", "B6": "=SUMA(B2:B5)"
+    },
+    "formatos": { "B2:B6": "#.##0" },
+    "anchos": { "A": 28, "B": 12 }
+   },
+   "resaltar": ["B3:B5"],
+   "mostrar_formulas": true,
+   "pie": "Los gastos van en negativo: así la cascada sabe que bajan."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e2",
+   "modo": "cinta",
+   "enunciado": "Con los datos seleccionados, toca el botón que inserta un gráfico de **cascada**.",
+   "ruta": ["Insertar", "Gráficos", "Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial"],
+   "explicacion": "Insertar › Gráficos › **Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial** y, dentro, **Cascada**. En ese mismo botón está el embudo."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: la cascada de Carmen",
+   "pasos": [
+    { "md": "Selecciona **A1:B6**: partidas e importes, con el resultado al final." },
+    { "md": "Inserta el gráfico: botón de cascada y embudo › **Cascada**.", "ruta": ["Insertar", "Gráficos", "Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial"] },
+    { "md": "Sorpresa: la barra **Resultado** aparece flotando, como si fuera otra subida de 320. Excel no sabe que es un total." },
+    { "md": "Haz clic en esa barra y otro clic más para seleccionarla **solo a ella**. Botón derecho › **Establecer como total**. Ahora baja hasta el suelo y mide 320." },
+    { "md": "Cambia el título por la conclusión: «De 14,2 millones de ventas a 320.000 € de resultado». Quien lo mire sabrá qué buscar." }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e3",
+   "modo": "test",
+   "pregunta": "Haces una cascada de la tesorería del mes y la barra **Saldo final** sale flotando en el aire, encima de las demás. ¿Qué falta?",
+   "opciones": [
+    { "texto": "Seleccionar solo esa barra y marcar «Establecer como total»", "correcta": true, "porque": "Eso es: sin esa marca, Excel trata el saldo final como un movimiento más y lo apila sobre los anteriores." },
+    { "texto": "Escribir los gastos en negativo", "correcta": false, "porque": "Si los gastos estuvieran en positivo subirían en vez de bajar, pero aquí lo que falla es la última barra: Excel no sabe que es un total." },
+    { "texto": "Ordenar las partidas de mayor a menor", "correcta": false, "porque": "En una cascada el orden es el de la historia (de dónde partes y adónde llegas), no el tamaño. Ordenar no arregla el total." },
+    { "texto": "Cambiar a un gráfico de columnas apiladas", "correcta": false, "porque": "Las columnas apiladas no enseñan cómo se llega de una cifra a otra. La cascada está bien elegida; solo falta marcar el total." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "### Histograma: cómo se reparten los valores\nAndrés tiene 300 pedidos y quiere saber si casi todos son pequeños o hay muchos grandes. Un **histograma** corta los importes en **tramos** (0-500 €, 500-1.000 €…) y dibuja una barra por tramo, tan alta como **cuántos pedidos** caen en él. Las barras van pegadas porque los tramos son seguidos.\n\nEstá en Insertar › Gráficos › **Insertar gráfico estadístico** › Histograma. Excel elige los tramos; puedes cambiar su ancho en el formato del eje horizontal."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e4",
+   "modo": "formula",
+   "enunciado": "Cada barra de un histograma es un recuento. Hazlo tú: en **F2** cuenta cuántos pedidos de **B2:B11** están en el tramo de la fila 2: desde D2 (incluido) hasta E2 (sin incluir). Copiarás la fórmula a **F3:F4**. En F2 deben salir **5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Importe", "D1": "Desde", "E1": "Hasta", "F1": "N.º pedidos",
+     "A2": "P-4101", "B2": 1290,
+     "A3": "P-4102", "B3": 845,
+     "A4": "P-4103", "B4": 120,
+     "A5": "P-4104", "B5": 310,
+     "A6": "P-4105", "B6": 1420,
+     "A7": "P-4106", "B7": 75,
+     "A8": "P-4107", "B8": 460,
+     "A9": "P-4108", "B9": 980,
+     "A10": "P-4109", "B10": 230,
+     "A11": "P-4110", "B11": 640,
+     "D2": 0, "E2": 500,
+     "D3": 500, "E3": 1000,
+     "D4": 1000, "E4": 1500
+    },
+    "formatos": { "B2:B11": "eur", "D2:E4": "eur" },
+    "anchos": { "A": 9, "B": 12, "C": 3, "D": 11, "E": 11, "F": 12 }
+   },
+   "objetivo": "F2",
+   "copiar_a": ["F3:F4"],
+   "solucion": "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=\"&D2;$B$2:$B$11;\"<\"&E2)",
+   "alternativas": ["=CONTAR.SI.CONJUNTO(B$2:B$11;\">=\"&D2;B$2:B$11;\"<\"&E2)", "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">\"&D2;$B$2:$B$11;\"<=\"&E2)"],
+   "errores_tipicos": ["=CONTAR.SI.CONJUNTO(B2:B11;\">=\"&D2;B2:B11;\"<\"&E2)", "=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=D2\";$B$2:$B$11;\"<E2\")", "=CONTAR.SI(B2:B11;\"<500\")", "=5"],
+   "debe_usar": ["CONTAR.SI.CONJUNTO"],
+   "variantes": [{ "B4": 700 }, { "E2": 400, "D3": 400 }],
+   "pistas": [
+    "Necesitas contar con **dos condiciones** sobre el mismo rango: mayor o igual que D2 y menor que E2.",
+    "Usa CONTAR.SI.CONJUNTO con el rango dos veces. Un criterio con celda se escribe uniendo: `\">=\"&D2`. Fija el rango con $ para poder copiar.",
+    "Escribe `=CONTAR.SI.CONJUNTO($B$2:$B$11;\">=\"&D2;$B$2:$B$11;\"<\"&E2)`."
+   ],
+   "explicacion": "5 pedidos de menos de 500 €, 3 entre 500 y 1.000 y 2 entre 1.000 y 1.500. Eso es justo lo que dibuja un histograma: una barra por tramo, tan alta como su recuento. Y te sirve de comprobación: 5 + 3 + 2 = 10, no se ha quedado ningún pedido fuera."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Gráfico de barras o columnas",
+   "der": "Histograma",
+   "filas": [
+    ["Una barra por cada cosa: cada comercial, cada mes", "Una barra por cada tramo de valores: 0-500 €, 500-1.000 €…"],
+    ["La altura es el valor de esa cosa (sus ventas)", "La altura es cuántos datos caen en ese tramo"],
+    ["Las barras van separadas", "Las barras van pegadas: los tramos son seguidos"],
+    ["Responde «¿cuánto vende cada uno?»", "Responde «¿cómo se reparten los importes?»"]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e5",
+   "modo": "test",
+   "pregunta": "Lucía quiere saber si las horas extra de la plantilla están repartidas o se concentran en unos pocos: cuántas personas hacen de 0 a 5 horas, de 5 a 10, de 10 a 15… ¿Qué gráfico usa?",
+   "opciones": [
+    { "texto": "Un histograma de las horas extra", "correcta": true, "porque": "Eso es: cada barra cuenta cuántas personas caen en un tramo de horas. Se ve de un golpe si la mayoría está abajo o arriba." },
+    { "texto": "Columnas, una por persona", "correcta": false, "porque": "Con 58 personas saldrían 58 columnas: verías quién hace más, pero no cuántas personas hay en cada tramo. Es la confusión típica entre barras e histograma." },
+    { "texto": "Un circular con las horas de cada persona", "correcta": false, "porque": "58 trozos de tarta no se leen, y tampoco agrupa por tramos." },
+    { "texto": "Una cascada", "correcta": false, "porque": "La cascada explica cómo se llega de un total a otro sumando y restando. Aquí no hay partidas que sumar." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "### Embudo: etapas que van perdiendo\nUn **embudo** dibuja las etapas de un proceso, de la más grande a la más pequeña, centradas una debajo de otra. Javier lo usa para ver dónde se le escapan las ventas: 120 presupuestos enviados → 70 aceptados → 64 pedidos servidos → 58 cobrados. El escalón más grande es donde más se pierde (aquí, entre enviados y aceptados).\n\nEstá en el mismo botón que la cascada."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Cajas y bigotes: comparar cómo varían\nAndrés quiere saber qué proveedor es más **regular** con los plazos de entrega. El gráfico de **cajas y bigotes** dibuja, para cada proveedor, una **caja** donde cae la mitad central de sus plazos. La raya de dentro es la **mediana** (el valor del medio si los ordenas), los **bigotes** llegan hasta el resto, y los puntos sueltos son **valores atípicos** (datos muy alejados del resto). Caja corta: proveedor regular.\n\nEstá en **Insertar gráfico estadístico**, junto al histograma."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Versiones",
+   "md": "Cascada, histograma y cajas y bigotes existen desde Excel 2016; el embudo, desde Excel 2019 y en Microsoft 365. En versiones anteriores esos gráficos no se ven."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e6",
+   "modo": "respuesta_corta",
+   "pregunta": "Andrés tiene los plazos de entrega de todos los pedidos de sus tres proveedores de cable y quiere ver **cuál es más regular**. ¿Qué gráfico le recomiendas? Escribe su nombre.",
+   "aceptadas": ["cajas y bigotes", "Cajas y bigotes", "gráfico de cajas y bigotes", "caja y bigotes", "de cajas y bigotes", "diagrama de cajas y bigotes", "cajas y bigote"],
+   "explicacion": "**Cajas y bigotes**: una caja por proveedor. El de la caja más corta es el más regular, y los puntos sueltos señalan los pedidos que llegaron fuera de lo normal."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Cuándo NO usarlos\nUn gráfico especial que nadie entiende no sirve. Antes de usarlo, piensa en quién lo va a leer: si el consejo nunca ha visto unas cajas y bigotes, quizá unas columnas con el plazo medio de cada proveedor digan lo suficiente.\n\nY si usas uno especial, ponle un **título que diga la conclusión** («Cables Pirineo es el proveedor más regular») y explica en una frase cómo se lee."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l4-e7",
+   "modo": "formula",
+   "enunciado": "Prepara los datos de la cascada de Carmen. Contabilidad te ha pasado las partidas con los gastos ya en negativo. En **B6** calcula el **Resultado**: la última barra, la que marcarás como total. Debe salir **320** (miles de €).",
+   "hoja": {
+    "celdas": {
+     "A1": "Partida (miles de €)", "B1": "Importe",
+     "A2": "Ventas", "B2": 14200,
+     "A3": "Compras de material", "B3": -10650,
+     "A4": "Personal", "B4": -2380,
+     "A5": "Transporte y otros gastos", "B5": -850,
+     "A6": "Resultado"
+    },
+    "formatos": { "B2:B6": "#.##0" },
+    "anchos": { "A": 28, "B": 12 }
+   },
+   "objetivo": "B6",
+   "solucion": "=SUMA(B2:B5)",
+   "alternativas": ["=B2+B3+B4+B5"],
+   "errores_tipicos": ["=B2-SUMA(B3:B5)", "=SUMA(B3:B5)", "=B2-B3-B4-B5", "=320"],
+   "variantes": [{ "B4": -2500 }, { "B2": 15000 }],
+   "formato_resultado": "#.##0",
+   "pistas": [
+    "Los gastos ya vienen con signo menos. ¿Qué operación junta ingresos y gastos así?",
+    "Si lo sumas todo, los negativos restan solos.",
+    "Escribe `=SUMA(B2:B5)`."
+   ],
+   "explicacion": "320 mil euros de resultado. Como los gastos ya son negativos, basta con sumar: si los hubieras restado, se volverían positivos y el resultado se dispararía. Esta celda es además tu comprobación: la última barra de la cascada tiene que medir esto. Selecciona A1:B6, inserta la cascada, marca Resultado como total y Carmen tiene su gráfico para el consejo."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m3l4-q1",
+   "modo": "cinta",
+   "enunciado": "¿Dónde está el botón para insertar un **histograma**?",
+   "ruta": ["Insertar", "Gráficos", "Insertar gráfico estadístico"],
+   "explicacion": "Insertar › Gráficos › **Insertar gráfico estadístico**: ahí están el histograma y las cajas y bigotes. La cascada y el embudo están en otro botón."
+  },
+  {
+   "id": "n4m3l4-q2",
+   "modo": "test",
+   "pregunta": "Javier quiere ver cuántos de los presupuestos del trimestre llegan a cada etapa: enviados, aceptados, servidos y cobrados. ¿Qué gráfico usa?",
+   "opciones": [
+    { "texto": "Embudo", "correcta": true, "porque": "Eso es: etapas de un proceso que van perdiendo por el camino, de la más grande a la más pequeña." },
+    { "texto": "Cascada", "correcta": false, "porque": "La cascada suma y resta partidas hasta un total. Aquí cada etapa es una parte de la anterior, no algo que se suma o se resta." },
+    { "texto": "Histograma", "correcta": false, "porque": "El histograma reparte valores en tramos numéricos. Las etapas de venta no son tramos." },
+    { "texto": "Cajas y bigotes", "correcta": false, "porque": "Sirve para comparar cómo varían los valores de varios grupos, no para seguir un proceso por etapas." }
+   ]
+  },
+  {
+   "id": "n4m3l4-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "En los datos de una cascada, ¿cómo se escriben los gastos: en **positivo** o en **negativo**?",
+   "aceptadas": ["negativo", "en negativo", "negativos", "Negativo", "con signo menos"],
+   "explicacion": "En **negativo**: así la cascada los dibuja bajando. Los ingresos, en positivo, suben."
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "concepto", "frente": "¿Qué gráfico usas para «cómo pasamos de las ventas al resultado»?", "dorso": "Cascada: ingresos en positivo, gastos en negativo y el resultado marcado con «Establecer como total»." },
+  { "tipo": "concepto", "frente": "Histograma frente a gráfico de barras", "dorso": "Barras: una por cada cosa, con su valor. Histograma: una por tramo de valores, con cuántos datos caen en él." },
+  { "tipo": "concepto", "frente": "¿Para qué sirve un gráfico de cajas y bigotes?", "dorso": "Para comparar cómo varían los valores de varios grupos: caja = mitad central, raya = mediana, puntos sueltos = valores atípicos." },
+  { "tipo": "error", "frente": "La barra del resultado de tu cascada sale flotando. ¿Qué haces?", "dorso": "Selecciónala sola › botón derecho › Establecer como total." }
+ ]
+}

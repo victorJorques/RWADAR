@@ -1,0 +1,821 @@
+[
+ {
+  "pestana": "Archivo",
+  "grupos": [
+   {
+    "grupo": "Archivo",
+    "comandos": [
+     "Inicio",
+     "Nuevo",
+     "Abrir",
+     "Información",
+     "Guardar",
+     "Guardar como",
+     "Guardar una copia",
+     "Imprimir",
+     "Compartir",
+     "Exportar",
+     "Publicar",
+     "Cerrar",
+     "Cuenta",
+     "Comentarios",
+     "Opciones"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Inicio",
+  "grupos": [
+   {
+    "grupo": "Portapapeles",
+    "comandos": [
+     "Pegar",
+     "Cortar",
+     "Copiar",
+     "Copiar formato"
+    ]
+   },
+   {
+    "grupo": "Fuente",
+    "comandos": [
+     "Fuente",
+     "Tamaño de fuente",
+     "Aumentar tamaño de fuente",
+     "Disminuir tamaño de fuente",
+     "Negrita",
+     "Cursiva",
+     "Subrayado",
+     "Bordes",
+     "Color de relleno",
+     "Color de fuente"
+    ]
+   },
+   {
+    "grupo": "Alineación",
+    "comandos": [
+     "Alinear en la parte superior",
+     "Alinear en el medio",
+     "Alinear en la parte inferior",
+     "Alinear a la izquierda",
+     "Centrar",
+     "Alinear a la derecha",
+     "Orientación",
+     "Disminuir sangría",
+     "Aumentar sangría",
+     "Ajustar texto",
+     "Combinar y centrar"
+    ]
+   },
+   {
+    "grupo": "Número",
+    "comandos": [
+     "Formato de número",
+     "Formato de número de contabilidad",
+     "Estilo porcentual",
+     "Estilo millares",
+     "Aumentar decimales",
+     "Disminuir decimales"
+    ]
+   },
+   {
+    "grupo": "Estilos",
+    "comandos": [
+     "Formato condicional",
+     "Dar formato como tabla",
+     "Estilos de celda"
+    ]
+   },
+   {
+    "grupo": "Celdas",
+    "comandos": [
+     "Insertar",
+     "Eliminar",
+     "Formato"
+    ]
+   },
+   {
+    "grupo": "Edición",
+    "comandos": [
+     "Autosuma",
+     "Rellenar",
+     "Borrar",
+     "Ordenar y filtrar",
+     "Buscar y seleccionar"
+    ]
+   },
+   {
+    "grupo": "Complementos",
+    "comandos": [
+     "Analizar datos",
+     "Complementos"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Insertar",
+  "grupos": [
+   {
+    "grupo": "Tablas",
+    "comandos": [
+     "Tabla dinámica",
+     "Tablas dinámicas recomendadas",
+     "Tabla"
+    ]
+   },
+   {
+    "grupo": "Ilustraciones",
+    "comandos": [
+     "Imágenes",
+     "Formas",
+     "Iconos",
+     "Modelos 3D",
+     "SmartArt",
+     "Captura"
+    ]
+   },
+   {
+    "grupo": "Controles",
+    "comandos": [
+     "Casilla"
+    ]
+   },
+   {
+    "grupo": "Complementos",
+    "comandos": [
+     "Obtener complementos",
+     "Mis complementos"
+    ]
+   },
+   {
+    "grupo": "Gráficos",
+    "comandos": [
+     "Gráficos recomendados",
+     "Insertar gráfico de columnas o de barras",
+     "Insertar gráfico de líneas o áreas",
+     "Insertar gráfico circular o de anillos",
+     "Insertar gráfico de jerarquía",
+     "Insertar gráfico estadístico",
+     "Insertar gráfico de dispersión (X, Y) o de burbujas",
+     "Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial",
+     "Insertar gráfico combinado",
+     "Mapas",
+     "Gráfico dinámico"
+    ]
+   },
+   {
+    "grupo": "Paseos",
+    "comandos": [
+     "Mapa 3D"
+    ]
+   },
+   {
+    "grupo": "Minigráficos",
+    "comandos": [
+     "Línea",
+     "Columna",
+     "Ganancia o pérdida"
+    ]
+   },
+   {
+    "grupo": "Filtros",
+    "comandos": [
+     "Segmentación de datos",
+     "Escala de tiempo"
+    ]
+   },
+   {
+    "grupo": "Vínculos",
+    "comandos": [
+     "Vínculo"
+    ]
+   },
+   {
+    "grupo": "Comentarios",
+    "comandos": [
+     "Comentario"
+    ]
+   },
+   {
+    "grupo": "Texto",
+    "comandos": [
+     "Cuadro de texto",
+     "Encabezado y pie de página",
+     "WordArt",
+     "Línea de firma",
+     "Objeto"
+    ]
+   },
+   {
+    "grupo": "Símbolos",
+    "comandos": [
+     "Ecuación",
+     "Símbolo"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Dibujar",
+  "grupos": [
+   {
+    "grupo": "Herramientas de dibujo",
+    "comandos": [
+     "Seleccionar",
+     "Borrador",
+     "Lápiz / Rotulador / Marcador de resaltado"
+    ]
+   },
+   {
+    "grupo": "Convertir",
+    "comandos": [
+     "Entrada de lápiz a forma",
+     "Entrada de lápiz a matemáticas"
+    ]
+   },
+   {
+    "grupo": "Reproducir",
+    "comandos": [
+     "Repetición de lápiz"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Disposición de página",
+  "grupos": [
+   {
+    "grupo": "Temas",
+    "comandos": [
+     "Temas",
+     "Colores",
+     "Fuentes",
+     "Efectos"
+    ]
+   },
+   {
+    "grupo": "Configurar página",
+    "comandos": [
+     "Márgenes",
+     "Orientación",
+     "Tamaño",
+     "Área de impresión",
+     "Saltos",
+     "Fondo",
+     "Imprimir títulos"
+    ]
+   },
+   {
+    "grupo": "Ajustar área de impresión",
+    "comandos": [
+     "Ancho",
+     "Alto",
+     "Escala"
+    ]
+   },
+   {
+    "grupo": "Opciones de la hoja",
+    "comandos": [
+     "Líneas de cuadrícula: Ver / Imprimir",
+     "Encabezados: Ver / Imprimir"
+    ]
+   },
+   {
+    "grupo": "Organizar",
+    "comandos": [
+     "Traer adelante",
+     "Enviar atrás",
+     "Panel de selección",
+     "Alinear",
+     "Agrupar",
+     "Girar"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Fórmulas",
+  "grupos": [
+   {
+    "grupo": "Biblioteca de funciones",
+    "comandos": [
+     "Insertar función",
+     "Autosuma",
+     "Usadas recientemente",
+     "Financieras",
+     "Lógicas",
+     "Texto",
+     "Fecha y hora",
+     "Búsqueda y referencia",
+     "Matemáticas y trigonométricas",
+     "Más funciones"
+    ]
+   },
+   {
+    "grupo": "Nombres definidos",
+    "comandos": [
+     "Administrador de nombres",
+     "Asignar nombre",
+     "Utilizar en la fórmula",
+     "Crear desde la selección"
+    ]
+   },
+   {
+    "grupo": "Auditoría de fórmulas",
+    "comandos": [
+     "Rastrear precedentes",
+     "Rastrear dependientes",
+     "Quitar flechas",
+     "Mostrar fórmulas",
+     "Comprobación de errores",
+     "Evaluar fórmula",
+     "Ventana Inspección"
+    ]
+   },
+   {
+    "grupo": "Cálculo",
+    "comandos": [
+     "Opciones para el cálculo",
+     "Calcular ahora",
+     "Calcular hoja"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Datos",
+  "grupos": [
+   {
+    "grupo": "Obtener y transformar datos",
+    "comandos": [
+     "Obtener datos",
+     "De texto/CSV",
+     "De la web",
+     "De una tabla o rango",
+     "Orígenes recientes",
+     "Conexiones existentes"
+    ]
+   },
+   {
+    "grupo": "Consultas y conexiones",
+    "comandos": [
+     "Actualizar todo",
+     "Consultas y conexiones",
+     "Propiedades",
+     "Vínculos de libro"
+    ]
+   },
+   {
+    "grupo": "Tipos de datos",
+    "comandos": [
+     "Cotizaciones",
+     "Geografía"
+    ]
+   },
+   {
+    "grupo": "Ordenar y filtrar",
+    "comandos": [
+     "Ordenar de A a Z",
+     "Ordenar de Z a A",
+     "Ordenar",
+     "Filtro",
+     "Borrar",
+     "Volver a aplicar",
+     "Avanzadas"
+    ]
+   },
+   {
+    "grupo": "Herramientas de datos",
+    "comandos": [
+     "Texto en columnas",
+     "Relleno rápido",
+     "Quitar duplicados",
+     "Validación de datos",
+     "Consolidar",
+     "Relaciones",
+     "Administrar modelo de datos"
+    ]
+   },
+   {
+    "grupo": "Previsión",
+    "comandos": [
+     "Análisis de hipótesis",
+     "Hoja de previsión"
+    ]
+   },
+   {
+    "grupo": "Esquema",
+    "comandos": [
+     "Agrupar",
+     "Desagrupar",
+     "Subtotal"
+    ]
+   },
+   {
+    "grupo": "Análisis",
+    "comandos": [
+     "Análisis de datos",
+     "Solver"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Revisar",
+  "grupos": [
+   {
+    "grupo": "Revisión",
+    "comandos": [
+     "Ortografía",
+     "Sinónimos",
+     "Estadísticas del libro"
+    ]
+   },
+   {
+    "grupo": "Rendimiento",
+    "comandos": [
+     "Comprobar rendimiento"
+    ]
+   },
+   {
+    "grupo": "Accesibilidad",
+    "comandos": [
+     "Comprobar accesibilidad"
+    ]
+   },
+   {
+    "grupo": "Conclusiones",
+    "comandos": [
+     "Búsqueda inteligente"
+    ]
+   },
+   {
+    "grupo": "Idioma",
+    "comandos": [
+     "Traducir"
+    ]
+   },
+   {
+    "grupo": "Comentarios",
+    "comandos": [
+     "Nuevo comentario",
+     "Eliminar",
+     "Anterior",
+     "Siguiente",
+     "Mostrar comentarios"
+    ]
+   },
+   {
+    "grupo": "Notas",
+    "comandos": [
+     "Notas"
+    ]
+   },
+   {
+    "grupo": "Proteger",
+    "comandos": [
+     "Proteger hoja",
+     "Proteger libro",
+     "Permitir editar rangos"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Vista",
+  "grupos": [
+   {
+    "grupo": "Vista de hoja",
+    "comandos": [
+     "Predeterminada",
+     "Nueva",
+     "Opciones"
+    ]
+   },
+   {
+    "grupo": "Vistas de libro",
+    "comandos": [
+     "Normal",
+     "Ver salt. Pág.",
+     "Diseño de página",
+     "Vistas personalizadas"
+    ]
+   },
+   {
+    "grupo": "Mostrar",
+    "comandos": [
+     "Regla",
+     "Líneas de cuadrícula",
+     "Barra de fórmulas",
+     "Encabezados"
+    ]
+   },
+   {
+    "grupo": "Zoom",
+    "comandos": [
+     "Zoom",
+     "100%",
+     "Ampliar selección"
+    ]
+   },
+   {
+    "grupo": "Ventana",
+    "comandos": [
+     "Nueva ventana",
+     "Organizar todo",
+     "Inmovilizar",
+     "Dividir",
+     "Ocultar",
+     "Mostrar",
+     "Ver en paralelo",
+     "Desplazamiento sincrónico",
+     "Cambiar ventanas"
+    ]
+   },
+   {
+    "grupo": "Macros",
+    "comandos": [
+     "Macros"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Automatizar",
+  "grupos": [
+   {
+    "grupo": "Herramientas de scripts de Office",
+    "comandos": [
+     "Grabar acciones",
+     "Nuevo script",
+     "Todos los scripts"
+    ]
+   },
+   {
+    "grupo": "Flujos de trabajo",
+    "comandos": [
+     "Automatizar trabajo"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Programador",
+  "grupos": [
+   {
+    "grupo": "Código",
+    "comandos": [
+     "Visual Basic",
+     "Macros",
+     "Grabar macro",
+     "Usar referencias relativas",
+     "Seguridad de macros"
+    ]
+   },
+   {
+    "grupo": "Complementos",
+    "comandos": [
+     "Complementos",
+     "Complementos de Excel",
+     "Complementos COM"
+    ]
+   },
+   {
+    "grupo": "Controles",
+    "comandos": [
+     "Insertar",
+     "Modo Diseño",
+     "Propiedades",
+     "Ver código",
+     "Ejecutar cuadro de diálogo"
+    ]
+   },
+   {
+    "grupo": "XML",
+    "comandos": [
+     "Origen",
+     "Importar",
+     "Exportar"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Ayuda",
+  "grupos": [
+   {
+    "grupo": "Ayuda",
+    "comandos": [
+     "Ayuda",
+     "Contactar con soporte técnico",
+     "Comentarios",
+     "Mostrar aprendizaje"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Diseño de tabla",
+  "contextual": true,
+  "grupos": [
+   {
+    "grupo": "Propiedades",
+    "comandos": [
+     "Nombre de la tabla",
+     "Cambiar tamaño de la tabla"
+    ]
+   },
+   {
+    "grupo": "Herramientas",
+    "comandos": [
+     "Resumir con tabla dinámica",
+     "Quitar duplicados",
+     "Convertir en rango",
+     "Insertar segmentación de datos"
+    ]
+   },
+   {
+    "grupo": "Opciones de estilo de tabla",
+    "comandos": [
+     "Fila de encabezado",
+     "Fila de totales",
+     "Filas con bandas",
+     "Primera columna",
+     "Última columna",
+     "Columnas con bandas",
+     "Botón de filtro"
+    ]
+   },
+   {
+    "grupo": "Estilos de tabla",
+    "comandos": [
+     "Estilos rápidos"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Analizar tabla dinámica",
+  "contextual": true,
+  "grupos": [
+   {
+    "grupo": "Tabla dinámica",
+    "comandos": [
+     "Opciones",
+     "Nombre de tabla dinámica"
+    ]
+   },
+   {
+    "grupo": "Campo activo",
+    "comandos": [
+     "Configuración de campo",
+     "Expandir campo",
+     "Contraer campo"
+    ]
+   },
+   {
+    "grupo": "Agrupar",
+    "comandos": [
+     "Agrupar selección",
+     "Desagrupar",
+     "Agrupar campos"
+    ]
+   },
+   {
+    "grupo": "Filtrar",
+    "comandos": [
+     "Insertar segmentación de datos",
+     "Insertar escala de tiempo",
+     "Conexiones de filtro"
+    ]
+   },
+   {
+    "grupo": "Datos",
+    "comandos": [
+     "Actualizar",
+     "Cambiar origen de datos"
+    ]
+   },
+   {
+    "grupo": "Acciones",
+    "comandos": [
+     "Borrar",
+     "Seleccionar",
+     "Mover tabla dinámica"
+    ]
+   },
+   {
+    "grupo": "Cálculos",
+    "comandos": [
+     "Campos, elementos y conjuntos",
+     "Relaciones"
+    ]
+   },
+   {
+    "grupo": "Herramientas",
+    "comandos": [
+     "Gráfico dinámico",
+     "Tablas dinámicas recomendadas"
+    ]
+   },
+   {
+    "grupo": "Mostrar",
+    "comandos": [
+     "Lista de campos",
+     "Botones +/-",
+     "Encabezados de campo"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Diseño",
+  "contextual": true,
+  "grupos": [
+   {
+    "grupo": "Diseño",
+    "comandos": [
+     "Subtotales",
+     "Totales generales",
+     "Diseño de informe",
+     "Filas en blanco"
+    ]
+   },
+   {
+    "grupo": "Opciones de estilo de tabla dinámica",
+    "comandos": [
+     "Encabezados de fila",
+     "Encabezados de columna",
+     "Filas con bandas",
+     "Columnas con bandas"
+    ]
+   },
+   {
+    "grupo": "Estilos de tabla dinámica",
+    "comandos": [
+     "Estilos de tabla dinámica"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Diseño de gráfico",
+  "contextual": true,
+  "grupos": [
+   {
+    "grupo": "Diseños de gráfico",
+    "comandos": [
+     "Agregar elemento de gráfico",
+     "Diseño rápido"
+    ]
+   },
+   {
+    "grupo": "Estilos de diseño",
+    "comandos": [
+     "Cambiar colores",
+     "Estilos de diseño"
+    ]
+   },
+   {
+    "grupo": "Datos",
+    "comandos": [
+     "Cambiar entre filas y columnas",
+     "Seleccionar datos"
+    ]
+   },
+   {
+    "grupo": "Tipo",
+    "comandos": [
+     "Cambiar tipo de gráfico"
+    ]
+   },
+   {
+    "grupo": "Ubicación",
+    "comandos": [
+     "Mover gráfico"
+    ]
+   }
+  ]
+ },
+ {
+  "pestana": "Formato",
+  "contextual": true,
+  "grupos": [
+   {
+    "grupo": "Selección actual",
+    "comandos": [
+     "Formato de la selección"
+    ]
+   },
+   {
+    "grupo": "Estilos de forma",
+    "comandos": [
+     "Relleno de forma",
+     "Contorno de forma",
+     "Efectos de forma"
+    ]
+   }
+  ]
+ }
+]

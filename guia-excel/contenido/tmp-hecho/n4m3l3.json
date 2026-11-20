@@ -1,0 +1,334 @@
+{
+ "id": "n4m3l3",
+ "titulo": "Préstamos: la cuota y el cuadro de amortización",
+ "minutos": 18,
+ "objetivo": "Calcular la cuota de un préstamo con PAGO, separar intereses y capital con PAGOINT y PAGOPRIN, montar y comprobar el cuadro de amortización y calcular un ahorro con VF.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "El banco nos ofrece 20.000 € para la furgoneta de reparto de Pamplona: 5 años, al 6 % anual, con cuota mensual. Necesito la cuota, el cuadro de amortización para contabilidad y cuánto pagaremos de intereses en total. Antes del viernes, por favor.",
+  "logro": "Ya sabes calcular la cuota de cualquier préstamo de cuota fija, montar su cuadro de amortización, comprobar que cuadra y decir cuánto cuesta de verdad."
+ },
+ "funciones": ["PAGO", "PAGOINT", "PAGOPRIN", "VF"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Un préstamo de cuota fija\nCuatro palabras que vas a oír en cuanto se hable de préstamos:\n- **Capital** o **importe**: lo que te presta el banco (20.000 €).\n- **Interés**: lo que cobra el banco por prestártelo, en % al año.\n- **Plazo**: cuánto tardas en devolverlo.\n- **Cuota**: lo que pagas cada mes.\n\nEn el préstamo de cuota fija (también llamado *sistema francés*), la cuota es siempre la misma: una parte paga intereses y el resto devuelve deuda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e1",
+   "modo": "test",
+   "pregunta": "El préstamo de la furgoneta es a **5 años** con cuotas **mensuales**. ¿Cuántas cuotas pagará Electro Cierzo?",
+   "opciones": [
+    { "texto": "60", "correcta": true, "porque": "Eso es: 5 años × 12 meses = 60 cuotas. Este número es el que Excel llama **nper**." },
+    { "texto": "5", "correcta": false, "porque": "5 es el número de años. Si pagas cada mes, hay 12 cuotas por año." },
+    { "texto": "12", "correcta": false, "porque": "12 son las cuotas de un solo año; el préstamo dura cinco." }
+   ]
+  },
+  {
+   "tipo": "texto",
+   "md": "### PAGO: la cuota en una fórmula\n`=PAGO(tasa; nper; va)` calcula la cuota fija:\n- **tasa**: el interés **de cada periodo**. Si pagas cada mes, el interés anual entre 12: `6%/12`.\n- **nper**: el número de cuotas: 5 años × 12 = 60.\n- **va**: el importe que te prestan, 20.000 €.\n\nLa regla de oro: tasa y nper en la **misma unidad**. Cuotas mensuales, tasa mensual."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "El error más caro: tasa anual con cuotas mensuales",
+   "md": "`=PAGO(6%;60;20000)` calcula como si el banco cobrara un 6 % **cada mes**: sale una cuota de más de 1.200 €. Si la cuota es mensual, divide la tasa entre 12."
+  },
+  {
+   "tipo": "texto",
+   "md": "### ¿Por qué sale en negativo?\nExcel mira el dinero desde tu caja: los 20.000 € del préstamo **entran** (positivo) y la cuota **sale** (negativo). Por eso `PAGO` devuelve **−386,66 €**. No es un error.\n\nPara verla en positivo en un informe, pon un signo menos delante de la función: `=-PAGO(B2/12;B3*12;B1)`."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La cuota de la furgoneta",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe del préstamo", "B1": 20000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Años", "B3": 5,
+     "A4": "Cuota (como sale)", "B4": "=PAGO(B2/12;B3*12;B1)",
+     "A5": "Cuota en positivo", "B5": "=-PAGO(B2/12;B3*12;B1)"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B4:B5": "eur" },
+    "anchos": { "A": 24, "B": 16 }
+   },
+   "resaltar": ["B4:B5"],
+   "mostrar_formulas": true,
+   "pie": "Misma cuota, distinto signo. Fíjate en el /12 de la tasa y el *12 de los años."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e2",
+   "modo": "formula",
+   "enunciado": "Un compañero calculó la cuota en **B4** con `=-PAGO(B2;B3;B1)` y le sale **4.747,93 €**: demasiado para una furgoneta. La cuota es **mensual**. Arregla la fórmula para que dé la cuota mensual en positivo: **386,66 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe del préstamo", "B1": 20000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Años", "B3": 5,
+     "A4": "Cuota mensual"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B4": "eur" },
+    "anchos": { "A": 24, "B": 16 }
+   },
+   "objetivo": "B4",
+   "inicial": "=-PAGO(B2;B3;B1)",
+   "solucion": "=-PAGO(B2/12;B3*12;B1)",
+   "alternativas": ["=PAGO(B2/12;B3*12;-B1)", "=-PAGO(B2/12;12*B3;B1)"],
+   "errores_tipicos": ["=-PAGO(B2;B3;B1)", "=-PAGO(B2;B3*12;B1)", "=-PAGO(B2/12;B3;B1)", "=PAGO(B2/12;B3*12;B1)"],
+   "debe_usar": ["PAGO"],
+   "variantes": [{ "B1": 15000, "B3": 3 }, { "B2": 0.045 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "La fórmula usa el interés anual y los años, pero la cuota es de cada mes.",
+    "Pasa las dos cosas a meses: el interés entre 12 (`B2/12`) y los años por 12 (`B3*12`).",
+    "Escribe `=-PAGO(B2/12;B3*12;B1)`."
+   ],
+   "explicacion": "386,66 € al mes durante 60 meses. Lo que había calculado tu compañero era la cuota de un único pago **al año**. Moraleja para siempre: tasa y número de cuotas en la misma unidad. Ya puedes calcular la cuota de cualquier préstamo de cuota fija."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Cada cuota tiene dos trozos\nDe los 386,66 € de cada mes, una parte son **intereses** (lo que gana el banco) y el resto es **capital** (deuda que devuelves). Al principio debes mucho y pagas muchos intereses; cada mes debes un poco menos, así que el interés baja y el capital sube.\n- `PAGOINT(tasa; período; nper; va)`: los intereses de la cuota número *período*.\n- `PAGOPRIN(tasa; período; nper; va)`: el capital de esa cuota.\n\nLas dos salen en negativo, como PAGO."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e3",
+   "modo": "formula",
+   "enunciado": "Marta quiere saber cuánto de la **primera cuota** son intereses. En **B5** usa **PAGOINT** con el período **1** y ponle un signo menos para verlo en positivo. Debe salir **100,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe del préstamo", "B1": 20000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Años", "B3": 5,
+     "A4": "Cuota mensual", "B4": "=-PAGO(B2/12;B3*12;B1)",
+     "A5": "Intereses de la cuota 1"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B4:B5": "eur" },
+    "anchos": { "A": 24, "B": 16 }
+   },
+   "objetivo": "B5",
+   "solucion": "=-PAGOINT(B2/12;1;B3*12;B1)",
+   "alternativas": ["=PAGOINT(B2/12;1;B3*12;-B1)", "=-PAGOINT(B2/12;1;12*B3;B1)"],
+   "errores_tipicos": ["=PAGOINT(B2/12;1;B3*12;B1)", "=-PAGOINT(B2;1;B3*12;B1)", "=-PAGOINT(B2;1;B3;B1)"],
+   "debe_usar": ["PAGOINT"],
+   "variantes": [{ "B1": 30000 }, { "B2": 0.048, "B3": 4 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Los argumentos son los de PAGO con uno nuevo en segundo lugar: el número de la cuota (aquí, 1).",
+    "`PAGOINT(B2/12; 1; B3*12; B1)`, con un signo menos delante.",
+    "Escribe `=-PAGOINT(B2/12;1;B3*12;B1)`."
+   ],
+   "explicacion": "100 € de intereses en la primera cuota: 20.000 × 6 % ÷ 12. El resto, 286,66 €, devuelve deuda; es lo que daría `PAGOPRIN` con el período 1. Interés + capital = cuota, siempre. Con esto ya puedes contestar «¿cuánto de esta cuota es gasto?», que es lo que contabilidad apunta como gasto financiero."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Antes de firmar, Carmen pregunta otra cosa: «¿Y si, en vez de pedir el préstamo, apartamos **500 € al mes** en una cuenta al **2 %** anual durante **3 años**? ¿Cuánto tendríamos?». ¿Me lo miras?"
+  },
+  {
+   "tipo": "texto",
+   "md": "### VF: cuánto tendrás al final\n`=VF(tasa; nper; pago)` calcula el **valor futuro**: cuánto dinero tendrás al final si aportas lo mismo cada periodo. Mismas reglas que PAGO: tasa y nper en meses, y el signo visto desde tu caja: los 500 € que aportas **salen** (negativo) y lo que recuperas al final **entra** (positivo).\n\nSu pareja es `VA` (**valor actual**): cuánto vale hoy una serie de pagos futuros."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e4",
+   "modo": "formula",
+   "enunciado": "En **B5** calcula con **VF** cuánto tendrá la empresa al cabo de 3 años: aporta **500 €** al mes (B1) a un **2 %** anual (B2) durante **3** años (B3). Debe salir en positivo: unos **18.535 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Aportación mensual", "B1": 500,
+     "A2": "Interés anual", "B2": 0.02,
+     "A3": "Años", "B3": 3,
+     "A5": "Ahorro al final"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B5": "eur" },
+    "anchos": { "A": 22, "B": 16 }
+   },
+   "objetivo": "B5",
+   "solucion": "=VF(B2/12;B3*12;-B1)",
+   "alternativas": ["=-VF(B2/12;B3*12;B1)", "=VF(B2/12;12*B3;-B1)"],
+   "errores_tipicos": ["=VF(B2/12;B3*12;B1)", "=VF(B2;B3;-B1)", "=B1*B3*12"],
+   "debe_usar": ["VF"],
+   "variantes": [{ "B1": 300 }, { "B2": 0.03, "B3": 2 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Igual que en PAGO: el interés entre 12 y los años por 12.",
+    "Los 500 € salen de la caja: ponlos en negativo, `-B1`, y el resultado saldrá positivo.",
+    "Escribe `=VF(B2/12;B3*12;-B1)`."
+   ],
+   "explicacion": "18.535,05 €: 18.000 € que aportas más 535,05 € de intereses. Con VF contestas en un minuto a «¿cuánto tendremos si ahorramos tanto al mes?», y Carmen puede comparar esa opción con la de pedir el préstamo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El cuadro de amortización\nContabilidad te pedirá el **cuadro de amortización**: una fila por cuota con lo que debes al empezar el mes (**saldo inicial**), la **cuota**, su **interés**, su **capital** y lo que debes al acabar (**saldo final**).\n\nCada fila sale de la anterior: el saldo final de un mes es el saldo inicial del siguiente. Así, con una fila bien hecha, el resto se copia hacia abajo."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Los tres primeros meses",
+   "hoja": {
+    "celdas": {
+     "A1": "Mes", "B1": "Saldo inicial", "C1": "Cuota", "D1": "Interés", "E1": "Capital", "F1": "Saldo final",
+     "A2": 1, "B2": 20000, "C2": 386.66, "D2": 100, "E2": 286.66, "F2": 19713.34,
+     "A3": 2, "B3": 19713.34, "C3": 386.66, "D3": 98.57, "E3": 288.09, "F3": 19425.25,
+     "A4": 3, "B4": 19425.25, "C4": 386.66, "D4": 97.13, "E4": 289.53, "F4": 19135.72
+    },
+    "formatos": { "B2:F4": "eur" },
+    "anchos": { "A": 6, "B": 14, "C": 11, "D": 11, "E": 11, "F": 14 }
+   },
+   "pie": "Interés = saldo inicial × interés anual ÷ 12 · Capital = cuota − interés · Saldo final = saldo inicial − capital. El interés baja cada mes y el capital sube."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e5",
+   "modo": "formula",
+   "enunciado": "Monta la columna de intereses del cuadro. En **D7** calcula el interés del mes 1: **saldo inicial** (B7) × **interés anual** (B2) ÷ 12. Tu fórmula se copiará a **D8:D10**, así que fija lo que no debe moverse. Debe salir **100,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe", "B1": 20000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Meses", "B3": 60,
+     "A4": "Cuota", "B4": "=-PAGO(B2/12;B3;B1)",
+     "A6": "Mes", "B6": "Saldo inicial", "C6": "Cuota", "D6": "Interés", "E6": "Capital", "F6": "Saldo final",
+     "A7": 1, "B7": "=B1", "C7": "=$B$4", "E7": "=C7-D7", "F7": "=B7-E7",
+     "A8": 2, "B8": "=F7", "C8": "=$B$4", "E8": "=C8-D8", "F8": "=B8-E8",
+     "A9": 3, "B9": "=F8", "C9": "=$B$4", "E9": "=C9-D9", "F9": "=B9-E9",
+     "A10": 4, "B10": "=F9", "C10": "=$B$4", "E10": "=C10-D10", "F10": "=B10-E10"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B4": "eur", "B7:F10": "eur" },
+    "anchos": { "A": 13, "B": 14, "C": 11, "D": 11, "E": 11, "F": 14 }
+   },
+   "objetivo": "D7",
+   "copiar_a": ["D8:D10"],
+   "solucion": "=B7*$B$2/12",
+   "alternativas": ["=B7*($B$2/12)", "=B7*B$2/12", "=-PAGOINT($B$2/12;A7;$B$3;$B$1)"],
+   "errores_tipicos": ["=B7*B2/12", "=$B$1*$B$2/12", "=B7*$B$2"],
+   "variantes": [{ "B1": 15000 }, { "B2": 0.045 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El interés de cada mes se calcula sobre lo que debes al empezarlo: el saldo inicial de esa fila.",
+    "El saldo inicial (B7) tiene que bajar de fila al copiar; el interés anual (B2) no: fíjalo con `$B$2`.",
+    "Escribe `=B7*$B$2/12`."
+   ],
+   "explicacion": "Mira cómo baja el interés: 100,00 €, 98,57 €, 97,13 €… porque cada mes debes un poco menos. Y el capital sube en la misma medida. Copia esta fila hasta el mes 60 y tendrás el cuadro que pide contabilidad."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La comprobación: el último saldo es 0\nUn cuadro bien hecho termina con el **saldo final del último mes en 0,00 €**: has devuelto toda la deuda. Dos comprobaciones más que hace cualquier contable:\n- La suma de la columna **Capital** es el importe prestado (20.000 €).\n- La suma de la columna **Interés** es el coste total del préstamo.\n\nSi el último saldo no es 0, el cuadro tiene un error: no lo entregues."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Un cero que no lo parece",
+   "md": "A veces el último saldo aparece como algo parecido a `-3,6E-12`, es decir, −0,0000000000036. Son restos de redondeo internos de Excel: ese saldo es 0."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e6",
+   "modo": "test",
+   "pregunta": "Terminas el cuadro y el **saldo final del mes 60 sale 8.412,55 €**, no 0. ¿Qué haces?",
+   "opciones": [
+    { "texto": "Revisar las fórmulas (tasa entre 12, número de cuotas, $ al copiar) y no entregarlo hasta que dé 0", "correcta": true, "porque": "Eso es: el saldo final es tu total de control. Si no da 0, alguna fórmula está mal, y casi siempre es una de esas tres cosas." },
+    { "texto": "Entregarlo: son restos del redondeo", "correcta": false, "porque": "Los restos del redondeo son números diminutos, como 0,0000000001. Más de 8.000 € es un error de verdad." },
+    { "texto": "Escribir un 0 a mano en esa celda", "correcta": false, "porque": "Eso tapa el síntoma y deja el error dentro: los intereses y el capital de todo el cuadro seguirían mal." },
+    { "texto": "Quitar los decimales del formato", "correcta": false, "porque": "El formato solo cambia cómo se ve el número, no lo que vale. Seguirían faltando más de 8.000 €." }
+   ],
+   "explicacion": "Comprobar antes de entregar es lo que separa una hoja fiable de una que un día le cuesta dinero a la empresa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m3l3-e7",
+   "modo": "formula",
+   "enunciado": "Último dato para Marta: **cuánto pagaremos de intereses en total**. En **B6** calcúlalo con lo que ya está en la hoja: la cuota (B4), el número de cuotas (B3) y el importe (B1). Debe salir **3.199,36 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe", "B1": 20000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Meses", "B3": 60,
+     "A4": "Cuota", "B4": "=-PAGO(B2/12;B3;B1)",
+     "A6": "Total de intereses"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B4": "eur", "B6": "eur" },
+    "anchos": { "A": 22, "B": 16 }
+   },
+   "objetivo": "B6",
+   "solucion": "=B4*B3-B1",
+   "alternativas": ["=B3*B4-B1", "=-PAGO(B2/12;B3;B1)*B3-B1"],
+   "errores_tipicos": ["=B4*B3", "=B1*B2*B3/12", "=B1*B2", "=3199,36"],
+   "variantes": [{ "B1": 15000, "B3": 36 }, { "B2": 0.045 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Primero piensa cuánto pagas en total: la cuota, tantas veces como cuotas hay.",
+    "A ese total pagado réstale lo que te prestaron: lo que sobra son los intereses.",
+    "Escribe `=B4*B3-B1`."
+   ],
+   "explicacion": "3.199,36 € de intereses: 386,66 × 60 = 23.199,36 € pagados por 20.000 € prestados. Fíjate en que no es 6 % × 5 años = 6.000 €: como cada mes debes menos, pagas intereses sobre una deuda que se va reduciendo. Con la cuota, el cuadro y este total, Marta tiene todo lo que pidió."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m3l3-q1",
+   "modo": "formula",
+   "enunciado": "Otro préstamo: **12.000 €** (B1) al **4,5 %** anual (B2) a **4 años** (B3), con cuota mensual. En **B4** calcula la cuota en positivo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Importe", "B1": 12000,
+     "A2": "Interés anual", "B2": 0.045,
+     "A3": "Años", "B3": 4,
+     "A4": "Cuota mensual"
+    },
+    "formatos": { "B1": "eur", "B2": "pct1", "B4": "eur" },
+    "anchos": { "A": 18, "B": 14 }
+   },
+   "objetivo": "B4",
+   "solucion": "=-PAGO(B2/12;B3*12;B1)",
+   "alternativas": ["=PAGO(B2/12;B3*12;-B1)", "=-PAGO(B2/12;12*B3;B1)"],
+   "errores_tipicos": ["=-PAGO(B2;B3;B1)", "=-PAGO(B2;B3*12;B1)", "=PAGO(B2/12;B3*12;B1)"],
+   "debe_usar": ["PAGO"],
+   "variantes": [{ "B1": 9000 }, { "B3": 3 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "PAGO necesita la tasa de cada mes, el número de cuotas y el importe.",
+    "Tasa: `B2/12`. Cuotas: `B3*12`. Y un signo menos delante para verla en positivo.",
+    "Escribe `=-PAGO(B2/12;B3*12;B1)`."
+   ],
+   "explicacion": "273,64 € al mes. Interés anual entre 12, años por 12 y el signo menos: la receta de siempre."
+  },
+  {
+   "id": "n4m3l3-q2",
+   "modo": "test",
+   "pregunta": "En un préstamo de cuota fija, según pasan los meses, ¿qué ocurre dentro de cada cuota?",
+   "opciones": [
+    { "texto": "Los intereses bajan y el capital que devuelves sube", "correcta": true, "porque": "Eso es: el interés se calcula sobre lo que aún debes, que es cada vez menos. Como la cuota no cambia, lo que deja de ir a intereses va a capital." },
+    { "texto": "Los intereses y el capital son iguales todos los meses", "correcta": false, "porque": "Lo que no cambia es la cuota entera. Su reparto entre intereses y capital cambia cada mes." },
+    { "texto": "Los intereses suben y el capital baja", "correcta": false, "porque": "Es al revés: cuanto menos debes, menos intereses te cobran." }
+   ]
+  },
+  {
+   "id": "n4m3l3-q3",
+   "modo": "predice",
+   "enunciado": "Te quedan **30.000 €** por devolver y el interés es del **6 %** anual. ¿Cuántos euros de intereses te cobrarán este mes?",
+   "hoja": {
+    "celdas": {
+     "A1": "Saldo pendiente", "B1": 30000,
+     "A2": "Interés anual", "B2": 0.06,
+     "A3": "Interés del mes"
+    },
+    "formatos": { "B1": "eur", "B2": "pct", "B3": "eur" },
+    "anchos": { "A": 18, "B": 14 }
+   },
+   "celda": "B3",
+   "formula": "=B1*B2/12",
+   "formato_resultado": "eur",
+   "explicacion": "30.000 × 6 % = 1.800 € al año; entre 12 meses, **150 €** este mes. Es la misma cuenta que hace cada fila del cuadro de amortización."
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "funcion", "frente": "PAGO: sintaxis y regla de oro", "dorso": "`=PAGO(tasa; nper; va)`. Tasa y nper en la misma unidad: cuota mensual → interés anual/12 y años×12. Sale negativa: `=-PAGO(…)` para verla en positivo." },
+  { "tipo": "funcion", "frente": "PAGOINT y PAGOPRIN", "dorso": "Intereses y capital de la cuota número «período»: `PAGOINT(tasa; período; nper; va)`. Interés + capital = cuota." },
+  { "tipo": "concepto", "frente": "¿Cómo compruebas un cuadro de amortización?", "dorso": "El saldo final de la última cuota es 0, y la suma de la columna Capital es el importe prestado." },
+  { "tipo": "funcion", "frente": "VF", "dorso": "`=VF(tasa; nper; pago)`: cuánto tendrás al final aportando lo mismo cada periodo. La aportación, en negativo, para que el resultado salga positivo." }
+ ]
+}

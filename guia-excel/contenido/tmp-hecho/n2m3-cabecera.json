@@ -1,0 +1,116 @@
+{
+ "id": "n2m3",
+ "nivel": "n2",
+ "titulo": "Trabajar con textos",
+ "intro": "Casi todo lo que llega a una oficina pasa por textos: nombres de clientes, códigos de artículo, NIF, importes exportados de otro programa. Aquí aprenderás a unirlos, cortarlos y limpiarlos con fórmulas, para que tus listados salgan bien y tus totales cuadren sin retocar nada a mano.",
+ "repaso_inicial": [
+  {
+   "id": "n2m3-r1",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber cuánto ha vendido **Irene** esta semana. En **E2** escribe una fórmula que sume los importes de B2:B7 solo de las filas de Irene (debe salir **2.990,00 €**).",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Importe",
+     "A2": "Irene",
+     "B2": 500,
+     "A3": "Pablo",
+     "B3": 1250,
+     "A4": "Irene",
+     "B4": 1890,
+     "A5": "Sergio",
+     "B5": 620,
+     "A6": "Irene",
+     "B6": 600,
+     "A7": "Pablo",
+     "B7": 395,
+     "D1": "Comercial",
+     "D2": "Irene",
+     "E1": "Vendido"
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "E2": "eur"
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=SUMAR.SI(A2:A7;\"Irene\";B2:B7)",
+   "alternativas": [
+    "=SUMAR.SI(A2:A7;D2;B2:B7)",
+    "=SUMAR.SI($A$2:$A$7;D2;$B$2:$B$7)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(A2:A7;\"Irene\")",
+    "=SUMA(B2:B7)",
+    "=SUMAR.SI(B2:B7;\"Irene\";A2:A7)"
+   ],
+   "variantes": [
+    {
+     "B6": 900
+    }
+   ],
+   "pistas": [
+    "Sumar solo lo que cumple una condición: SUMAR.SI.",
+    "«Busca aquí, esto, y suma de allí»: busca en A2:A7, \"Irene\" (o D2), suma B2:B7.",
+    "`=SUMAR.SI(A2:A7;D2;B2:B7)`"
+   ],
+   "explicacion": "Bien recordado. En este módulo verás por qué a veces un SUMAR.SI como este se deja filas fuera: espacios invisibles y números que son texto."
+  },
+  {
+   "id": "n2m3-r2",
+   "modo": "predice",
+   "enunciado": "El envío es gratis si el pedido llega a 1.000 € **y** es de Zaragoza. ¿Qué devuelve la fórmula de **C1**?",
+   "hoja": {
+    "celdas": {
+     "A1": 1250,
+     "B1": "Pamplona"
+    },
+    "formatos": {
+     "A1": "eur"
+    }
+   },
+   "celda": "C1",
+   "formula": "=SI(Y(A1>=1000;B1=\"Zaragoza\");\"Gratis\";\"Con portes\")",
+   "explicacion": "Y exige que se cumplan las dos condiciones. El importe llega, pero es de Pamplona: «Con portes»."
+  },
+  {
+   "id": "n2m3-r3",
+   "modo": "test",
+   "pregunta": "Quieres contar los pedidos de **más de 1.000 €** de D2:D11. ¿Qué fórmula es correcta?",
+   "opciones": [
+    {
+     "texto": "=CONTAR.SI(D2:D11;\">1000\")",
+     "correcta": true,
+     "porque": "Correcto: el signo y el número van juntos y entre comillas."
+    },
+    {
+     "texto": "=CONTAR.SI(D2:D11;>1000)",
+     "correcta": false,
+     "porque": "Sin comillas, Excel no acepta la fórmula: el criterio con un signo va siempre entre comillas."
+    },
+    {
+     "texto": "=CONTAR.SI(D2:D11;\">=1000\")",
+     "correcta": false,
+     "porque": "Ese criterio incluye los de 1.000 € justos, y se pedían los de más de 1.000."
+    },
+    {
+     "texto": "=CONTAR(D2:D11)",
+     "correcta": false,
+     "porque": "CONTAR cuenta todos los números, sin condición."
+    }
+   ]
+  },
+  {
+   "id": "n2m3-r4",
+   "modo": "cinta",
+   "enunciado": "Quieres que los importes vencidos se pongan en rojo solos. ¿Dónde está el botón?",
+   "ruta": [
+    "Inicio",
+    "Estilos",
+    "Formato condicional"
+   ],
+   "explicacion": "Inicio › Estilos › Formato condicional. Úsalo como alarma visual en cualquier listado que entregues."
+  }
+ ],
+ "practica_excel": null
+}

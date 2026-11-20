@@ -1,0 +1,2162 @@
+{
+ "id": "n6m1",
+ "nivel": "n6",
+ "titulo": "Del encargo al plan",
+ "intro": "En una empresa casi nadie te pedirá «haz una SUMA»: te pedirán «prepárame algo de ventas para el comité», y lo difícil es entender qué quieren de verdad. En este módulo aprendes a convertir ese encargo en un plan: preguntar lo justo, revisar los datos antes de construir y diseñar un libro que sirva también el mes que viene.",
+ "repaso_inicial": [
+  {
+   "id": "n6m1-r1",
+   "modo": "formula",
+   "enunciado": "Javier escribe en **F1** la delegación que quiere ver. En **F2** calcula sus ventas (columna C), de forma que si cambia F1 la cifra cambie sola.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Delegación",
+     "C1": "Base (€)",
+     "E1": "Delegación elegida",
+     "F1": "Pamplona",
+     "E2": "Ventas",
+     "A2": "FV26-1180",
+     "B2": "Zaragoza",
+     "C2": 2340,
+     "A3": "FV26-1181",
+     "B3": "Pamplona",
+     "C3": 1820.4,
+     "A4": "FV26-1182",
+     "B4": "Lleida",
+     "C4": 960.75,
+     "A5": "FV26-1183",
+     "B5": "Pamplona",
+     "C5": 2105.1,
+     "A6": "FV26-1184",
+     "B6": "Zaragoza",
+     "C6": 3410.25,
+     "A7": "FV26-1185",
+     "B7": "Lleida",
+     "C7": 1530
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "D": 3,
+     "E": 18,
+     "F": 12
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SUMAR.SI(B2:B7;F1;C2:C7)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F1)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B7;\"Pamplona\";C2:C7)",
+    "=SUMA(C2:C7)",
+    "=SUMAR.SI(B2:B7;F1)"
+   ],
+   "variantes": [
+    {
+     "F1": "Lleida"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Quieres sumar solo las filas cuya delegación coincide con la de F1.",
+    "SUMAR.SI(rango_del_criterio; criterio; rango_a_sumar): el criterio es la celda F1, no el texto escrito.",
+    "=SUMAR.SI(B2:B7;F1;C2:C7)"
+   ],
+   "explicacion": "3.925,50 € para Pamplona, y si Javier escribe «Lleida» en F1, la cifra cambia sola. Criterio en una celda: la base de todo lo que diseñarás en este módulo."
+  },
+  {
+   "id": "n6m1-r2",
+   "modo": "predice",
+   "enunciado": "¿Cuántos clientes distintos te dirá esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "A2": "Instalaciones Segre, S.L.",
+     "A3": "Montajes Noguera, S.L.",
+     "A4": "Instalaciones Segre, S.L.",
+     "A5": "Climatización Ilerda, S.L.",
+     "A6": "Montajes Noguera, S.L.",
+     "A7": "Instalaciones Segre, S.L."
+    },
+    "anchos": {
+     "A": 27
+    }
+   },
+   "celda": "C2",
+   "formula": "=CONTARA(UNICOS(A2:A7))",
+   "explicacion": "UNICOS deja Segre, Noguera e Ilerda, y CONTARA cuenta 3. Seis filas, tres clientes: lo usarás para detectar repetidos.",
+   "respuesta": "3"
+  },
+  {
+   "id": "n6m1-r3",
+   "modo": "test",
+   "pregunta": "Te llega un listado con una fila en blanco entre mes y mes, subtotales intercalados y la cabecera repartida en dos filas. ¿Qué pasa si haces una tabla dinámica con él?",
+   "opciones": [
+    {
+     "texto": "Saldrá mal: los subtotales se sumarán dos veces, la segunda fila de cabecera se leerá como un dato y las filas en blanco darán problemas.",
+     "correcta": true,
+     "porque": "Una tabla de datos necesita una fila por registro, una cabecera en una sola fila y nada más. Lo bonito se hace después, en otra hoja."
+    },
+    {
+     "texto": "Saldrá bien: la tabla dinámica ignora los subtotales.",
+     "correcta": false,
+     "porque": "No los distingue: para ella un subtotal es una fila más, y lo suma con el resto."
+    },
+    {
+     "texto": "Saldrá bien si antes le doy formato de moneda.",
+     "correcta": false,
+     "porque": "El formato solo cambia cómo se ve. El problema es la estructura."
+    }
+   ],
+   "explicacion": "Datos planos primero; informe después."
+  },
+  {
+   "id": "n6m1-r4",
+   "modo": "cinta",
+   "enunciado": "¿Dónde está el botón **Quitar duplicados**?",
+   "ruta": [
+    "Datos",
+    "Herramientas de datos",
+    "Quitar duplicados"
+   ],
+   "explicacion": "Datos › Herramientas de datos › Quitar duplicados. Ojo: borra las filas repetidas en el momento, sin enseñarte cuáles. En este módulo verás por qué primero se cuentan los repetidos, se pregunta y se trabaja sobre una copia."
+  }
+ ],
+ "practica_excel": null,
+ "lecciones": [
+  {
+   "id": "n6m1l1",
+   "titulo": "Entender el encargo: las preguntas que evitan rehacer el trabajo",
+   "minutos": 15,
+   "objetivo": "Convertir un encargo ambiguo en un plan claro: hacer las preguntas que importan, estimar el tiempo y confirmarlo todo por escrito en un correo breve.",
+   "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "¿Cómo va la delegación de Lleida? Prepárame algo con los números para el comité de dirección del día 1. Gracias.",
+    "logro": "Ya sabes convertir un encargo ambiguo en un plan: las preguntas clave, una estimación del tiempo con fundamento y la confirmación por escrito."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Ya llevas tiempo en Electro Cierzo y empiezan a llegarte **proyectos enteros**. Lee otra vez el correo de Carmen y fíjate en lo que **no dice**: qué significa «ir bien», de qué periodo, «algo» con qué forma.\n\nSi abres Excel ahora, lo más probable es que hagas un informe impecable… de otra cosa. En este nivel no hay funciones nuevas: aprendes el **método** para que el trabajo salga bien a la primera."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e1",
+     "modo": "test",
+     "pregunta": "Acabas de leer el correo de Carmen. ¿Qué haces primero?",
+     "opciones": [
+      {
+       "texto": "Apunto lo que no está claro y le hago unas pocas preguntas antes de empezar.",
+       "correcta": true,
+       "porque": "Eso es. Cinco minutos de preguntas te ahorran rehacer el informe. Carmen prefiere una pregunta hoy a una sorpresa el día del comité."
+      },
+      {
+       "texto": "Abro Excel y saco las ventas de Lleida de este año, que será lo que quiere.",
+       "correcta": false,
+       "porque": "Es suponer en silencio. Quizá quiere compararla con Pamplona, o ver solo el último trimestre: si aciertas, es suerte."
+      },
+      {
+       "texto": "Espero a que Carmen me mande más detalles.",
+       "correcta": false,
+       "porque": "No llegarán solos: para Carmen el encargo está claro. Aclararlo es parte de tu trabajo, y cuanto antes preguntes, más tiempo tendrás."
+      },
+      {
+       "texto": "Preparo tres versiones distintas para que elija.",
+       "correcta": false,
+       "porque": "Triplicas el trabajo y quizá ninguna sea la buena. Una pregunta a tiempo sale mucho más barata."
+      }
+     ],
+     "explicacion": "Antes de construir, se entiende. Esa costumbre separa a quien sabe Excel de quien lleva proyectos."
+    },
+    {
+     "tipo": "texto",
+     "md": "De todas las preguntas, la primera es: **¿para quién es y qué decisión se va a tomar con esto?** La respuesta lo cambia todo.\n\nSi Carmen quiere decidir si contrata un segundo comercial en Lleida, necesita ver cómo evolucionan las ventas y compararlas con otra delegación. Si quiere decidir si cierra la delegación, necesitará también los gastos. Mismo correo, dos informes distintos.\n\nCuando sabes la decisión, sabes qué cifras sobran y cuáles faltan."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Las preguntas que evitan rehacer el trabajo",
+     "cabecera": [
+      "Tema",
+      "Qué preguntas",
+      "Por qué importa"
+     ],
+     "filas": [
+      [
+       "Decisión",
+       "¿Para quién es? ¿Qué se va a decidir con esto?",
+       "Marca qué cifras hacen falta y cuáles sobran."
+      ],
+      [
+       "Alcance",
+       "¿Qué periodo? ¿Qué delegaciones? ¿Con qué detalle: por mes, por cliente, por comercial?",
+       "Evita que el informe se quede corto o sea un muro de cifras."
+      ],
+      [
+       "Definiciones",
+       "¿Con o sin IVA? ¿Por fecha de factura o de cobro? ¿Se restan los abonos (las facturas que restan por una devolución o un descuento)?",
+       "La misma palabra puede dar cifras distintas."
+      ],
+      [
+       "Datos",
+       "¿De dónde salen? ¿Quién responde por ellos? ¿Con qué cifra oficial deben cuadrar?",
+       "Sabrás a quién preguntar cuando algo no cuadre."
+      ],
+      [
+       "Entrega",
+       "¿Para cuándo? ¿En qué formato? ¿Se repetirá cada mes?",
+       "Decide cuánto tiempo tienes y cómo montarlo."
+      ]
+     ],
+     "pie": "No hace falta hacerlas todas siempre: pregunta lo que el encargo no deja claro."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e2",
+     "modo": "test",
+     "multiple": true,
+     "pregunta": "Con el correo de Carmen delante, ¿qué preguntas tienes que hacerle sí o sí? Marca todas las necesarias.",
+     "opciones": [
+      {
+       "texto": "¿Qué quieres decidir con este informe?",
+       "correcta": true,
+       "porque": "Imprescindible: de la decisión depende qué cifras le enseñas."
+      },
+      {
+       "texto": "¿De qué periodo lo quieres y comparado con qué?",
+       "correcta": true,
+       "porque": "«Ir bien» siempre es comparado con algo: el año pasado, el presupuesto u otra delegación."
+      },
+      {
+       "texto": "¿Las ventas, con o sin IVA? ¿Restando los abonos?",
+       "correcta": true,
+       "porque": "Son definiciones que cambian la cifra. El IVA no es dinero de la empresa (se ingresa a Hacienda), así que lo habitual es analizar sin IVA, pero se confirma."
+      },
+      {
+       "texto": "¿Qué fórmulas prefieres que use?",
+       "correcta": false,
+       "porque": "Eso lo decides tú. A Carmen le importan las cifras y la conclusión, no la herramienta."
+      },
+      {
+       "texto": "¿De qué color quieres los gráficos?",
+       "correcta": false,
+       "porque": "Es un detalle que puedes decidir tú, con los colores de la empresa. No gastes una pregunta en eso."
+      }
+     ],
+     "explicacion": "Pregunta por la decisión, el alcance y las definiciones. El cómo (fórmulas, colores, diseño) es tu terreno."
+    },
+    {
+     "tipo": "texto",
+     "md": "Las palabras de todos los días esconden trampas. «Ventas» puede ser con IVA o sin IVA, por fecha de factura o de cobro, restando los **abonos** (facturas que restan, por una devolución o un descuento) o sin restarlos.\n\nMira la hoja: es un listado de Lleida y ya salen dos cifras distintas. Si entregas una y Carmen esperaba otra, todo el informe queda en duda.\n\nPor eso cada cifra importante se **define antes** de calcularla."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Un listado, dos «ventas»",
+     "hoja": {
+      "celdas": {
+       "A1": "Documento",
+       "B1": "Tipo",
+       "C1": "Base (€)",
+       "D1": "Total con IVA (€)",
+       "F1": "Cifra",
+       "G1": "Importe",
+       "F2": "Suma con IVA",
+       "G2": "=SUMA(D2:D7)",
+       "F3": "Suma sin IVA",
+       "G3": "=SUMA(C2:C7)",
+       "A2": "L26-0405",
+       "B2": "Factura",
+       "C2": 2480,
+       "D2": 3000.8,
+       "A3": "L26-0406",
+       "B3": "Factura",
+       "C3": 1150.5,
+       "D3": 1392.11,
+       "A4": "R26-0029",
+       "B4": "Abono",
+       "C4": 210,
+       "D4": 254.1,
+       "A5": "L26-0407",
+       "B5": "Factura",
+       "C5": 3320.75,
+       "D5": 4018.11,
+       "A6": "L26-0408",
+       "B6": "Factura",
+       "C6": 980.4,
+       "D6": 1186.28,
+       "A7": "R26-0030",
+       "B7": "Abono",
+       "C7": 95.6,
+       "D7": 115.68
+      },
+      "formatos": {
+       "C2:D7": "eur",
+       "G2:G4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 9,
+       "C": 11,
+       "D": 15,
+       "F": 24,
+       "G": 12
+      }
+     },
+     "resaltar": [
+      "G2:G3"
+     ],
+     "mostrar_formulas": true,
+     "pie": "Y las dos sumas tratan los abonos como si fueran ventas. ¿Cuál es «la» cifra? Depende de la definición."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e3",
+     "modo": "formula",
+     "enunciado": "Carmen ha confirmado la definición: **ventas sin IVA, restando los abonos**. En este listado los abonos vienen en positivo y se distinguen por la columna **Tipo**. En **G4** calcula esas ventas: las facturas de la columna C menos los abonos de la columna C.",
+     "hoja": {
+      "celdas": {
+       "A1": "Documento",
+       "B1": "Tipo",
+       "C1": "Base (€)",
+       "D1": "Total con IVA (€)",
+       "F1": "Cifra",
+       "G1": "Importe",
+       "F2": "Suma con IVA",
+       "G2": "=SUMA(D2:D7)",
+       "F3": "Suma sin IVA",
+       "G3": "=SUMA(C2:C7)",
+       "A2": "L26-0405",
+       "B2": "Factura",
+       "C2": 2480,
+       "D2": 3000.8,
+       "A3": "L26-0406",
+       "B3": "Factura",
+       "C3": 1150.5,
+       "D3": 1392.11,
+       "A4": "R26-0029",
+       "B4": "Abono",
+       "C4": 210,
+       "D4": 254.1,
+       "A5": "L26-0407",
+       "B5": "Factura",
+       "C5": 3320.75,
+       "D5": 4018.11,
+       "A6": "L26-0408",
+       "B6": "Factura",
+       "C6": 980.4,
+       "D6": 1186.28,
+       "A7": "R26-0030",
+       "B7": "Abono",
+       "C7": 95.6,
+       "D7": 115.68,
+       "F4": "Ventas (definición de Carmen)"
+      },
+      "formatos": {
+       "C2:D7": "eur",
+       "G2:G4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 9,
+       "C": 11,
+       "D": 15,
+       "F": 24,
+       "G": 12
+      }
+     },
+     "objetivo": "G4",
+     "solucion": "=SUMAR.SI(B2:B7;\"Factura\";C2:C7)-SUMAR.SI(B2:B7;\"Abono\";C2:C7)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Factura\")-SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Abono\")",
+      "=SUMA(C2:C7)-2*SUMAR.SI(B2:B7;\"Abono\";C2:C7)"
+     ],
+     "errores_tipicos": [
+      "=SUMA(C2:C7)",
+      "=SUMAR.SI(B2:B7;\"Factura\";C2:C7)",
+      "=SUMAR.SI(B2:B7;\"Factura\";D2:D7)-SUMAR.SI(B2:B7;\"Abono\";D2:D7)"
+     ],
+     "variantes": [
+      {
+       "C4": 500
+      },
+      {
+       "B6": "Abono"
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Necesitas dos sumas por categoría, las dos sobre la columna C (sin IVA): lo de tipo «Factura» y lo de tipo «Abono».",
+      "SUMAR.SI(rango_del_criterio; criterio; rango_a_sumar) suma solo las filas que cumplen la condición. Haz una para «Factura» y réstale otra para «Abono».",
+      "=SUMAR.SI(B2:B7;\"Factura\";C2:C7)-SUMAR.SI(B2:B7;\"Abono\";C2:C7)"
+     ],
+     "explicacion": "7.626,05 €: la cifra con la definición acordada. Con los mismos datos tenías 9.967,08 € y 8.237,25 €. Tres «ventas» distintas: por eso las definiciones se pactan **antes** de calcular, y se escriben."
+    },
+    {
+     "tipo": "texto",
+     "md": "Pregunta también **de dónde salen los datos y quién responde por ellos**. ¿Del programa de gestión? ¿De una hoja que lleva un comercial? Quien responde por ellos te dirá si una cifra rara es un error o es real.\n\nY pregunta si hay una **cifra oficial con la que cuadrar**: el listado de ventas del programa o el cierre de Marta. Si tu total no coincide con esa cifra, nadie se fiará del resto del informe."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "No prometas un plazo sin ver los datos",
+     "md": "Nuria lo aprendió por las malas: «Prometí un informe *para mañana* y los datos venían con medio mes repetido. Ahora contesto: *te digo el plazo en cuanto vea los datos, hoy antes de las dos*». Mira primero cómo llegan; después, compromete la fecha."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e4",
+     "modo": "abierta",
+     "pregunta": "Escribe las preguntas que le mandarías a Carmen para aclarar su encargo («¿Cómo va la delegación de Lleida? Prepárame algo con los números para el comité de dirección del día 1»). Entre tres y cinco, cortas y concretas.",
+     "modelo": "Hola, Carmen. Para prepararte lo de Lleida, ¿me confirmas cuatro cosas?\n1. ¿Qué quieres decidir en el comité con estos datos?\n2. ¿Qué periodo miramos y comparado con qué (el año pasado, el presupuesto, otras delegaciones)?\n3. ¿Ventas sin IVA y restando los abonos, por fecha de factura?\n4. ¿Lo quieres en una página en PDF o en el Excel? ¿Es para una vez o se repetirá?\nGracias.",
+     "criterios": [
+      "Pregunta por la decisión o el uso que se dará al informe",
+      "Pregunta por el periodo o con qué se compara",
+      "Aclara al menos una definición (IVA, abonos, tipo de fecha)",
+      "Pregunta por el formato, el plazo o si se repetirá",
+      "Son preguntas breves y concretas, fáciles de contestar"
+     ]
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Carmen Soler",
+     "puesto": "Directora general",
+     "md": "Buenas preguntas. Es para decidir si contratamos un segundo comercial en Lleida. Quiero las ventas sin IVA y descontando abonos, de enero a octubre de 2026, comparadas con el mismo periodo de 2025 y con Pamplona. Una página en PDF para el comité del martes 1. Y si sale bien, lo querré cada mes."
+    },
+    {
+     "tipo": "texto",
+     "md": "Ahora sí puedes **estimar el tiempo**. Divide el trabajo en fases (conseguir los datos, revisarlos, construir, comprobar, presentar) y piensa tres cifras para cada una: **optimista** (todo sale bien), **probable** y **pesimista** (los datos llegan mal).\n\nUna técnica clásica de gestión de proyectos (PERT) las combina así:\n\n`(optimista + 4 × probable + pesimista) ÷ 6`\n\nEjemplo: 2, 3 y 8 horas → (2 + 12 + 8) ÷ 6 ≈ **3,7 horas**. El caso malo pesa, pero no manda."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e5",
+     "modo": "formula",
+     "enunciado": "En **E2** calcula la estimación de la fase «Conseguir los datos» con la fórmula de tres puntos: (optimista + 4 × probable + pesimista) ÷ 6. Tu fórmula se copiará hasta E6, y E7 ya suma el total. Cuidado con los paréntesis.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fase",
+       "B1": "Optimista (h)",
+       "C1": "Probable (h)",
+       "D1": "Pesimista (h)",
+       "E1": "Estimación (h)",
+       "A7": "Total",
+       "E7": "=SUMA(E2:E6)",
+       "A2": "Conseguir los datos",
+       "B2": 1,
+       "C2": 2,
+       "D2": 4,
+       "A3": "Revisar y limpiar",
+       "B3": 2,
+       "C3": 3,
+       "D3": 8,
+       "A4": "Construir el informe",
+       "B4": 3,
+       "C4": 4,
+       "D4": 6,
+       "A5": "Comprobar",
+       "B5": 1,
+       "C5": 1.5,
+       "D5": 3,
+       "A6": "Presentar y documentar",
+       "B6": 1,
+       "C6": 1.5,
+       "D6": 2
+      },
+      "formatos": {
+       "B2:E7": "num2"
+      },
+      "anchos": {
+       "A": 22,
+       "B": 13,
+       "C": 12,
+       "D": 13,
+       "E": 14
+      }
+     },
+     "objetivo": "E2",
+     "copiar_a": [
+      "E3:E6"
+     ],
+     "solucion": "=(B2+4*C2+D2)/6",
+     "alternativas": [
+      "=(B2+C2*4+D2)/6",
+      "=SUMA(B2;4*C2;D2)/6"
+     ],
+     "errores_tipicos": [
+      "=B2+4*C2+D2/6",
+      "=(B2+C2+D2)/3",
+      "=PROMEDIO(B2:D2)"
+     ],
+     "variantes": [
+      {
+       "C2": 3,
+       "D3": 10
+      }
+     ],
+     "formato_resultado": "num2",
+     "pistas": [
+      "Suma el optimista, cuatro veces el probable y el pesimista, y divide el resultado entre 6.",
+      "Sin paréntesis, Excel divide primero: B2+4*C2+D2/6 solo divide el pesimista. Encierra la suma entre paréntesis.",
+      "=(B2+4*C2+D2)/6"
+     ],
+     "explicacion": "El total sale unas 13,2 horas: casi dos jornadas. Ya puedes dar un plazo con fundamento («borrador el jueves 26, versión final el lunes 30»), y si los datos llegan mal sabes qué fase se alarga."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e6",
+     "modo": "ordenar",
+     "enunciado": "Ordena cómo arrancas un encargo, desde que llega el correo hasta que empiezas a construir.",
+     "pasos": [
+      "Leer el encargo y apuntar lo que no está claro",
+      "Preguntar a quien lo encarga: decisión, alcance, definiciones, datos y entrega",
+      "Echar un primer vistazo a los datos",
+      "Estimar el tiempo por fases",
+      "Confirmar por escrito lo acordado y el plazo",
+      "Empezar a construir"
+     ],
+     "explicacion": "El plazo se promete después de ver los datos, y se construye después de confirmar. Así, si algo estaba mal entendido, se descubre cuando arreglarlo cuesta cinco minutos."
+    },
+    {
+     "tipo": "texto",
+     "md": "Cuando lo tengas claro, **confírmalo por escrito** en un correo breve:\n\n1. Lo que has entendido: la pregunta y la decisión.\n2. Las definiciones y los **supuestos**: lo que das por hecho sin que nadie te lo haya dicho.\n3. Qué entregas y cuándo.\n4. Qué necesitas de los demás.\n\nTermina pidiendo que te lo confirmen. Si algo estaba mal entendido, sale ahora y no el día del comité. Y queda constancia de lo acordado."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "dato",
+     "titulo": "No es una manía tuya",
+     "md": "El manual de calidad de los análisis del Gobierno británico (*AQuA Book*, edición de 2025) pide lo mismo: acordar al principio la pregunta, el plazo, las fuentes de datos y lo que se entrega, y dejarlo por escrito."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l1-e7",
+     "modo": "abierta",
+     "pregunta": "**Misión:** escribe a Carmen el correo de confirmación con lo que te ha contestado: segundo comercial en Lleida; ventas sin IVA y descontando abonos; enero a octubre de 2026 frente a 2025 y frente a Pamplona; una página en PDF para el comité del martes 1 de diciembre. Has estimado unas 13 horas y aún te falta la exportación de datos que te tiene que pasar Marta. Máximo 8 líneas.",
+     "modelo": "Asunto: Informe de Lleida para el comité del 1/12 · confirmación\n\nHola, Carmen:\nTe resumo lo acordado para que lo confirmes:\n- Objetivo: ayudarte a decidir si contratamos un segundo comercial en Lleida.\n- Cifras: ventas sin IVA y descontando abonos, por fecha de factura, de enero a octubre de 2026, comparadas con 2025 y con Pamplona.\n- Supuesto: la fuente es el listado de ventas del programa de gestión.\n- Entrega: una página en PDF. Borrador el jueves 26 y versión final el lunes 30, si Marta me pasa la exportación el lunes 23.\n¿Lo ves bien así? Gracias.",
+     "criterios": [
+      "Resume el objetivo: la decisión que se tomará",
+      "Recoge las definiciones y el periodo acordados",
+      "Deja claro al menos un supuesto o una dependencia (por ejemplo, los datos de Marta)",
+      "Da un plazo concreto, con borrador previo si procede",
+      "Es breve y termina pidiendo confirmación"
+     ]
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n6m1l1-q1",
+     "modo": "test",
+     "pregunta": "Javier te escribe: «Pásame los clientes que más compran, para mañana». ¿Qué le preguntas primero?",
+     "opciones": [
+      {
+       "texto": "¿Para qué lo vas a usar?",
+       "correcta": true,
+       "porque": "Si es para repartir visitas, quizá quiera los de cada zona; si es para revisar condiciones, el año completo. El uso decide el periodo, el detalle y la forma."
+      },
+      {
+       "texto": "¿Lo hago con tabla dinámica o con fórmulas?",
+       "correcta": false,
+       "porque": "La herramienta es cosa tuya; a Javier le da igual cómo lo calcules."
+      },
+      {
+       "texto": "¿Cuántas columnas quieres?",
+       "correcta": false,
+       "porque": "Es un detalle que se deduce cuando sabes para qué es."
+      },
+      {
+       "texto": "Ninguna: saco los diez primeros del año y listo.",
+       "correcta": false,
+       "porque": "¿Diez o cincuenta? ¿Del año o del trimestre? ¿Con IVA? Suponer en silencio es lo que más trabajo hace repetir."
+      }
+     ],
+     "explicacion": "Primero, para qué y qué decisión. Lo demás se ordena solo."
+    },
+    {
+     "id": "n6m1l1-q2",
+     "modo": "predice",
+     "enunciado": "Una fase tiene 2, 4 y 12 horas (optimista, probable y pesimista). ¿Qué estimación da esta fórmula?",
+     "hoja": {
+      "celdas": {
+       "A1": "Optimista",
+       "B1": "Probable",
+       "C1": "Pesimista",
+       "D1": "Estimación",
+       "A2": 2,
+       "B2": 4,
+       "C2": 12
+      },
+      "anchos": {
+       "A": 11,
+       "B": 10,
+       "C": 11,
+       "D": 11
+      }
+     },
+     "celda": "D2",
+     "formula": "=(A2+4*B2+C2)/6",
+     "explicacion": "(2 + 16 + 12) ÷ 6 = 30 ÷ 6 = 5 horas. El pesimista (12) tira hacia arriba, pero el probable pesa cuatro veces.",
+     "respuesta": "5"
+    },
+    {
+     "id": "n6m1l1-q3",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Cómo se llama lo que das por hecho en un encargo sin que nadie te lo haya confirmado, y que debes escribir en el correo de confirmación? (Una palabra)",
+     "aceptadas": [
+      "supuesto",
+      "supuestos",
+      "los supuestos",
+      "un supuesto",
+      "suposición",
+      "suposiciones",
+      "una suposición",
+      "hipótesis",
+      "las suposiciones"
+     ],
+     "explicacion": "Los **supuestos** se escriben: si están mal, alguien te avisa a tiempo; si nadie los corrige, quedan aceptados."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Cuál es la primera pregunta ante cualquier encargo?",
+     "dorso": "¿Para quién es y qué decisión se va a tomar con ello?"
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Tres definiciones que cambian la cifra de «ventas»",
+     "dorso": "Con o sin IVA; por fecha de factura, de pedido o de cobro; restando o no los abonos."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Estimación de tres puntos (PERT)",
+     "dorso": "(optimista + 4 × probable + pesimista) ÷ 6, fase a fase."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué lleva el correo de confirmación de un encargo?",
+     "dorso": "Lo entendido, definiciones y supuestos, qué entregas y cuándo, qué necesitas. Y pide que te lo confirmen."
+    }
+   ]
+  },
+  {
+   "id": "n6m1l2",
+   "titulo": "Conoce los datos antes de tocarlos",
+   "minutos": 16,
+   "objetivo": "Perfilar una exportación antes de usarla: contar filas, vacíos y repetidos, revisar fechas e importes extremos, cuadrar el total con la fuente y avisar de los problemas antes de corregir nada.",
+   "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Te paso la exportación de facturas de Lleida de octubre; si está bien, te saco el resto del año igual. El listado del programa de gestión dice 12 documentos y 19.090,25 € sin IVA. Antes de montar nada, dime si cuadra y qué problemas ves.",
+    "logro": "Ya sabes perfilar unos datos en cinco minutos, cuadrarlos con la fuente y avisar de los problemas antes de que te exploten el día de la entrega."
+   },
+   "funciones": [
+    "CONTARA",
+    "CONTAR.BLANCO",
+    "UNICOS",
+    "MIN",
+    "MAX",
+    "SUMA",
+    "CONTAR.SI"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Cuando llega un pedido al almacén, Andrés cuenta las cajas y mira que no venga nada roto **antes** de firmar el albarán. Con los datos se hace lo mismo y se llama **perfilar**: una revisión de cinco minutos antes de usarlos.\n\nCinco preguntas: ¿cuántas filas hay?, ¿hay huecos?, ¿hay repetidos?, ¿las fechas y los importes son razonables?, ¿el total cuadra con la fuente? Lo que encuentres hoy no te explotará el día de la entrega."
+    },
+    {
+     "tipo": "texto",
+     "md": "Antes de tocar nada, **guarda el original**. Deja la exportación de Marta tal cual, en su archivo o en una hoja llamada, por ejemplo, «Datos_originales», y trabaja siempre en una copia.\n\nSi te equivocas al limpiar, o Marta te pregunta «¿esto venía así?», podrás comprobarlo. Recuerda que [[Ctrl]]+[[Z]] deja de servir en cuanto cierras el libro."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "empresa",
+     "titulo": "La foto de lo que recibiste",
+     "md": "Los datos de verdad están en el programa de gestión, pero cambian: mañana alguien puede corregir una factura. El archivo que te pasaron, intacto, es la prueba de con qué datos trabajaste y de qué día eran."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e1",
+     "modo": "formula",
+     "enunciado": "Esta es la exportación de Lleida. Empieza por lo fácil: en **G2** cuenta cuántas filas de datos hay. Usa la columna A (el número de factura), que nunca debería estar vacía.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G7": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G2",
+     "solucion": "=CONTARA(A2:A14)",
+     "alternativas": [
+      "=CONTARA(B2:B14)",
+      "=CONTARA(D2:D14)",
+      "=CONTAR(D2:D14)"
+     ],
+     "errores_tipicos": [
+      "=CONTARA(A1:A14)",
+      "=CONTARA(C2:C14)",
+      "=CONTAR(A2:A14)"
+     ],
+     "variantes": [
+      {
+       "A14": null,
+       "B14": null,
+       "C14": null,
+       "D14": null
+      }
+     ],
+     "pistas": [
+      "Quieres saber cuántas celdas de A2 a A14 tienen algo escrito, sin contar la cabecera.",
+      "CONTARA cuenta las celdas que no están vacías, tengan texto o números. CONTAR solo cuenta números, y los números de factura son texto.",
+      "=CONTARA(A2:A14)"
+     ],
+     "explicacion": "13 filas. Primer dato de tu ficha, y ya te dice algo: el programa de gestión habla de **12** documentos. Sobra una fila. ¿Cuál? Sigue investigando."
+    },
+    {
+     "tipo": "texto",
+     "md": "Segunda pregunta: **¿hay huecos?** Un cliente vacío parece poca cosa, pero esa factura desaparecerá de cualquier resumen por cliente, y nadie lo notará.\n\nPara contarlos está `CONTAR.BLANCO(rango)`: devuelve cuántas celdas del rango están vacías. Úsalo en las columnas por las que vas a agrupar o filtrar: cliente, delegación, comercial, fecha."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Vacía no es lo mismo que «parece vacía»",
+     "md": "Una celda con un espacio se ve en blanco, pero para Excel tiene texto y `CONTAR.BLANCO` no la cuenta. Si te salen menos vacíos de los que ves, sospecha de los espacios."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e2",
+     "modo": "formula",
+     "enunciado": "En **G3** cuenta cuántas facturas no tienen cliente (celdas vacías en la columna C).",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas",
+       "G2": "=CONTARA(A2:A14)",
+       "F3": "Clientes vacíos"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G7": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G3",
+     "solucion": "=CONTAR.BLANCO(C2:C14)",
+     "alternativas": [
+      "=CONTARA(A2:A14)-CONTARA(C2:C14)"
+     ],
+     "errores_tipicos": [
+      "=CONTAR.BLANCO(A2:A14)",
+      "=CONTARA(C2:C14)"
+     ],
+     "variantes": [
+      {
+       "C5": "Instalaciones Segre, S.L."
+      },
+      {
+       "C10": null
+      }
+     ],
+     "pistas": [
+      "Mira la columna C, de C2 a C14.",
+      "CONTAR.BLANCO(rango) devuelve cuántas celdas del rango están vacías.",
+      "=CONTAR.BLANCO(C2:C14)"
+     ],
+     "explicacion": "Una factura sin cliente: la L26-0415, de 1.980,40 €. En un resumen por cliente, esos casi 2.000 € se habrían esfumado. No la rellenes con «el que parece»: se anota y se pregunta."
+    },
+    {
+     "tipo": "texto",
+     "md": "Tercera pregunta: **¿hay repetidos?** Para saberlo necesitas una **clave**: la columna que identifica cada fila sin confusión, como el DNI a una persona. Aquí, el número de factura.\n\nSi hay menos claves distintas que filas, algo se repite. Ojo: en una exportación **por líneas** (un producto por fila), la misma factura sale varias veces y es normal. Antes de contar, averigua qué es una fila."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "truco",
+     "titulo": "En Excel 2019 o anterior",
+     "md": "`UNICOS` existe desde Excel 2021. En versiones anteriores, escribe en una columna auxiliar `=CONTAR.SI($A$2:$A$14;A2)` y cópiala hacia abajo: las filas con un número mayor que 1 están repetidas."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e3",
+     "modo": "formula",
+     "enunciado": "En **G4** queremos cuántos números de factura **distintos** hay. Ya tienes `=CONTARA(A2:A14)`, que los cuenta todos. Complétala para que cuente solo los distintos.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas",
+       "G2": "=CONTARA(A2:A14)",
+       "F3": "Clientes vacíos",
+       "G3": "=CONTAR.BLANCO(C2:C14)",
+       "F4": "Facturas distintas"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G7": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G4",
+     "inicial": "=CONTARA(A2:A14)",
+     "solucion": "=CONTARA(UNICOS(A2:A14))",
+     "errores_tipicos": [
+      "=CONTARA(A2:A14)",
+      "=CONTARA(UNICOS(C2:C14))"
+     ],
+     "variantes": [
+      {
+       "A9": "L26-0423"
+      }
+     ],
+     "debe_usar": [
+      "UNICOS"
+     ],
+     "pistas": [
+      "UNICOS(rango) devuelve la lista sin repetidos. Mete esa lista dentro de CONTARA.",
+      "Donde pone A2:A14, pon UNICOS(A2:A14).",
+      "=CONTARA(UNICOS(A2:A14))"
+     ],
+     "explicacion": "12 números distintos en 13 filas: hay una fila repetida, la L26-0418 de Reformas Balaguer (filas 8 y 9). Y 12 es justo lo que dice el programa de gestión: buena señal."
+    },
+    {
+     "tipo": "texto",
+     "md": "Cuarta pregunta: **¿las fechas y los importes son razonables?** No hace falta mirar fila por fila: mira los extremos.\n\n- `MIN` y `MAX` de la fecha dicen dónde empieza y dónde acaba el periodo. Si pediste octubre y asoma septiembre, o el último día es el 15, falta o sobra algo.\n- `MIN` y `MAX` del importe sacan a la luz lo raro: un negativo, un cero, una cifra con un cero de más."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e4",
+     "modo": "formula",
+     "enunciado": "En **G5** saca la **primera fecha** de la exportación (columna B).",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas",
+       "G2": "=CONTARA(A2:A14)",
+       "F3": "Clientes vacíos",
+       "G3": "=CONTAR.BLANCO(C2:C14)",
+       "F4": "Facturas distintas",
+       "G4": "=CONTARA(UNICOS(A2:A14))",
+       "F5": "Primera fecha"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G5": "fecha",
+       "G7": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G5",
+     "solucion": "=MIN(B2:B14)",
+     "errores_tipicos": [
+      "=MAX(B2:B14)",
+      "=B2",
+      "=MIN(D2:D14)"
+     ],
+     "variantes": [
+      {
+       "B6": {
+        "fecha": "2026-09-28"
+       }
+      }
+     ],
+     "formato_resultado": "fecha",
+     "pistas": [
+      "La primera fecha es la más pequeña: para Excel, las fechas son números que crecen día a día.",
+      "MIN(rango) devuelve el valor más pequeño. Úsalo sobre la columna B.",
+      "=MIN(B2:B14)"
+     ],
+     "explicacion": "02/10/2026. Y con `=MAX(B2:B14)` sale el 30/10/2026 (el 31 era sábado): octubre está completo y no se ha colado otro mes. No todas las comprobaciones encuentran algo, y eso también es información. Si en tu Excel te sale 46297, es la fecha sin formato: dale formato de fecha."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e5",
+     "modo": "predice",
+     "enunciado": "Ahora los importes. Antes de que Excel lo calcule: ¿qué devolverá `=MIN(D2:D14)`?",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas",
+       "G2": "=CONTARA(A2:A14)",
+       "F3": "Clientes vacíos",
+       "G3": "=CONTAR.BLANCO(C2:C14)",
+       "F4": "Facturas distintas",
+       "G4": "=CONTARA(UNICOS(A2:A14))",
+       "F5": "Primera fecha",
+       "G5": "=MIN(B2:B14)",
+       "F6": "Importe más bajo"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G5": "fecha",
+       "G6": "eur",
+       "G7": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "celda": "G6",
+     "formula": "=MIN(D2:D14)",
+     "explicacion": "−320: un importe negativo. Es el R26-0031, de otra serie: un **abono**, una factura que resta (por ejemplo, por una devolución). Puede ser correcto, pero hay que confirmarlo: ¿entra en los 12 documentos de Marta? Carmen pidió restar los abonos, así que este se queda… si Marta lo confirma.",
+     "respuesta": "-320"
+    },
+    {
+     "tipo": "texto",
+     "md": "Última pregunta, la más importante: **¿cuadra con la fuente?** Marta te ha dado el **total de control**, lo que dice el listado del programa de gestión: 12 documentos y 19.090,25 € sin IVA. Tu exportación tiene que sumar lo mismo.\n\nSi coincide, puedes construir tranquila. Si no, la **diferencia** es una pista: un importe concreto suele delatar qué fila sobra o falta."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e6",
+     "modo": "formula",
+     "enunciado": "En **G8** calcula la diferencia: el total de la columna D **menos** el total del programa (G7). Intenta hacerlo en menos de un minuto.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Filas",
+       "G2": "=CONTARA(A2:A14)",
+       "F3": "Clientes vacíos",
+       "G3": "=CONTAR.BLANCO(C2:C14)",
+       "F4": "Facturas distintas",
+       "G4": "=CONTARA(UNICOS(A2:A14))",
+       "F5": "Primera fecha",
+       "G5": "=MIN(B2:B14)",
+       "F6": "Importe más bajo",
+       "G6": "=MIN(D2:D14)",
+       "F7": "Total del programa",
+       "G7": 19090.25,
+       "F8": "Diferencia"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur",
+       "G5": "fecha",
+       "G6": "eur",
+       "G7": "eur",
+       "G8": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G8",
+     "solucion": "=SUMA(D2:D14)-G7",
+     "errores_tipicos": [
+      "=SUMA(D2:D13)-G7",
+      "=SUMA(D2:D14)",
+      "=SUMA(D2:D14)-19090,25"
+     ],
+     "variantes": [
+      {
+       "G7": 19500
+      }
+     ],
+     "debe_usar": [
+      "SUMA"
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Primero el total de la columna D; después réstale lo que dice el programa.",
+      "SUMA(D2:D14) es el total de la exportación. Réstale la celda G7.",
+      "=SUMA(D2:D14)-G7"
+     ],
+     "explicacion": "Sobran 2.075,90 €: exactamente el importe de la factura repetida L26-0418. Misterio resuelto: sin la fila duplicada, la exportación cuadra al céntimo con el programa. Esto es un **total de control**, y te permite decir «los datos están bien» con pruebas."
+    },
+    {
+     "tipo": "texto",
+     "md": "Has encontrado tres cosas: una fila repetida, una factura sin cliente y un abono. La tentación es arreglarlo «a ojo» y seguir. No lo hagas: **anota cada problema y pregunta** a quien responde por los datos.\n\n¿La fila repetida viene del programa o la duplicó alguien al copiar? ¿El cliente vacío es una venta de mostrador? Lo sabe Marta, no tú. Corregir sin avisar es cambiar en silencio los datos de otra persona."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Tu ficha de perfilado",
+     "cabecera": [
+      "Comprobación",
+      "Resultado",
+      "¿Problema?"
+     ],
+     "filas": [
+      [
+       "Filas",
+       "13",
+       "Sí: el programa dice 12 documentos"
+      ],
+      [
+       "Clientes vacíos",
+       "1",
+       "Sí: L26-0415 sin cliente"
+      ],
+      [
+       "Facturas distintas",
+       "12",
+       "Sí: L26-0418 repetida"
+      ],
+      [
+       "Fechas",
+       "02/10/2026 a 30/10/2026",
+       "No: octubre completo"
+      ],
+      [
+       "Importe más bajo",
+       "−320,00 €",
+       "Confirmar: abono R26-0031"
+      ],
+      [
+       "Diferencia con el programa",
+       "2.075,90 €",
+       "Se explica por la fila repetida"
+      ]
+     ],
+     "pie": "Cinco minutos de fórmulas sencillas y ya sabes más de estos datos que nadie en la oficina."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l2-e7",
+     "modo": "abierta",
+     "pregunta": "**Misión:** escribe a Marta un mensaje breve (máximo 6 líneas) con el resultado del perfilado: si cuadra, qué problemas has visto y qué le preguntas antes de corregir nada.",
+     "modelo": "Hola, Marta. He revisado la exportación de Lleida de octubre:\n- Tiene 13 filas y el programa dice 12: la L26-0418 está repetida. Sin ella, el total cuadra al céntimo (19.090,25 €).\n- La L26-0415 (1.980,40 €) no tiene cliente. ¿Sabes de quién es?\n- Hay un abono, el R26-0031, de −320 €. Entiendo que es uno de los 12 documentos y que se resta, ¿correcto?\nNo he tocado nada: trabajo en una copia y espero tu respuesta para corregir.",
+     "criterios": [
+      "Dice si cuadra con el total del programa y por qué",
+      "Enumera los problemas con datos concretos (número de factura, importe)",
+      "Pregunta antes de corregir, sin haber cambiado nada por su cuenta",
+      "Menciona que conserva el original o que trabaja en una copia",
+      "Es breve y fácil de contestar"
+     ]
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n6m1l2-q1",
+     "modo": "test",
+     "pregunta": "Perfilando la lista de plantilla de Lucía, ves dos filas con el mismo nombre y la misma fecha de alta. ¿Qué haces?",
+     "opciones": [
+      {
+       "texto": "Miro si tienen el mismo número de empleado, lo anoto y le pregunto a Lucía.",
+       "correcta": true,
+       "porque": "El número de empleado es la clave. Dos personas pueden llamarse igual; quien responde por los datos te dirá si es un repetido."
+      },
+      {
+       "texto": "Borro una: está claro que es un repetido.",
+       "correcta": false,
+       "porque": "Si eran dos personas, acabas de quitar a alguien de la plantilla en tu informe. Nunca se corrige a ojo sin avisar."
+      },
+      {
+       "texto": "Lo dejo así y no digo nada.",
+       "correcta": false,
+       "porque": "Si el informe sale con un empleado de más, la cifra lleva tu nombre. Avisar es parte del trabajo."
+      },
+      {
+       "texto": "Uso Quitar duplicados sobre el archivo original.",
+       "correcta": false,
+       "porque": "Doble error: decides sin preguntar y, además, sobre el único original."
+      }
+     ],
+     "explicacion": "Clave, nota y pregunta. Y siempre sobre una copia."
+    },
+    {
+     "id": "n6m1l2-q2",
+     "modo": "formula",
+     "enunciado": "Sin mirar la lección: en **G2** cuenta cuántos importes de la columna D son negativos.",
+     "hoja": {
+      "celdas": {
+       "A1": "Factura",
+       "B1": "Fecha",
+       "C1": "Cliente",
+       "D1": "Base (€)",
+       "A2": "L26-0412",
+       "B2": {
+        "fecha": "2026-10-02"
+       },
+       "D2": 1245.8,
+       "C2": "Instalaciones Segre, S.L.",
+       "A3": "L26-0413",
+       "B3": {
+        "fecha": "2026-10-05"
+       },
+       "D3": 2310,
+       "C3": "Electricidad Pujol e Hijos, S.L.",
+       "A4": "L26-0414",
+       "B4": {
+        "fecha": "2026-10-06"
+       },
+       "D4": 845.25,
+       "C4": "Montajes Noguera, S.L.",
+       "A5": "L26-0415",
+       "B5": {
+        "fecha": "2026-10-09"
+       },
+       "D5": 1980.4,
+       "A6": "L26-0416",
+       "B6": {
+        "fecha": "2026-10-13"
+       },
+       "D6": 3125.6,
+       "C6": "Instalaciones Segre, S.L.",
+       "A7": "L26-0417",
+       "B7": {
+        "fecha": "2026-10-15"
+       },
+       "D7": 1460,
+       "C7": "Climatización Ilerda, S.L.",
+       "A8": "L26-0418",
+       "B8": {
+        "fecha": "2026-10-19"
+       },
+       "D8": 2075.9,
+       "C8": "Reformas Balaguer, S.L.",
+       "A9": "L26-0418",
+       "B9": {
+        "fecha": "2026-10-19"
+       },
+       "D9": 2075.9,
+       "C9": "Reformas Balaguer, S.L.",
+       "A10": "R26-0031",
+       "B10": {
+        "fecha": "2026-10-21"
+       },
+       "D10": -320,
+       "C10": "Electricidad Pujol e Hijos, S.L.",
+       "A11": "L26-0419",
+       "B11": {
+        "fecha": "2026-10-23"
+       },
+       "D11": 1738.45,
+       "C11": "Montajes Noguera, S.L.",
+       "A12": "L26-0420",
+       "B12": {
+        "fecha": "2026-10-27"
+       },
+       "D12": 2540.15,
+       "C12": "Talleres Mollerussa, S.L.",
+       "A13": "L26-0421",
+       "B13": {
+        "fecha": "2026-10-29"
+       },
+       "D13": 985.3,
+       "C13": "Instalaciones Segre, S.L.",
+       "A14": "L26-0422",
+       "B14": {
+        "fecha": "2026-10-30"
+       },
+       "D14": 1103.4,
+       "C14": "Climatización Ilerda, S.L.",
+       "F1": "Comprobación",
+       "G1": "Resultado",
+       "F2": "Importes negativos"
+      },
+      "formatos": {
+       "B2:B14": "fecha",
+       "D2:D14": "eur"
+      },
+      "anchos": {
+       "A": 10,
+       "B": 11,
+       "C": 29,
+       "D": 11,
+       "E": 3,
+       "F": 22,
+       "G": 13
+      }
+     },
+     "objetivo": "G2",
+     "solucion": "=CONTAR.SI(D2:D14;\"<0\")",
+     "alternativas": [
+      "=CONTAR.SI.CONJUNTO(D2:D14;\"<0\")"
+     ],
+     "errores_tipicos": [
+      "=CONTAR(D2:D14)",
+      "=MIN(D2:D14)"
+     ],
+     "variantes": [
+      {
+       "D3": -50
+      }
+     ],
+     "pistas": [
+      "Quieres contar solo las celdas que cumplen una condición: ser menores que 0.",
+      "CONTAR.SI(rango; criterio). El criterio va entre comillas: \"<0\".",
+      "=CONTAR.SI(D2:D14;\"<0\")"
+     ],
+     "explicacion": "Uno: el abono. Con `CONTAR.SI` cuentas cualquier valor raro: importes en cero (`0`), cifras enormes (`\">10000\"`) o una delegación mal escrita."
+    },
+    {
+     "id": "n6m1l2-q3",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Qué función cuenta las celdas vacías de un rango? (Solo el nombre)",
+     "aceptadas": [
+      "CONTAR.BLANCO",
+      "=CONTAR.BLANCO",
+      "CONTAR.BLANCO()",
+      "contar.blanco"
+     ],
+     "explicacion": "`CONTAR.BLANCO(rango)`. Recuerda: una celda con un espacio no cuenta como vacía."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "Contar las celdas vacías de C2:C14",
+     "dorso": "=CONTAR.BLANCO(C2:C14). Una celda con un espacio no cuenta como vacía."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Contar los valores distintos de A2:A14 (Excel 2021 o posterior)",
+     "dorso": "=CONTARA(UNICOS(A2:A14))"
+    },
+    {
+     "tipo": "concepto",
+     "frente": "¿Qué es un total de control?",
+     "dorso": "La cifra de la fuente (n.º de filas, importe total) con la que tus datos tienen que cuadrar antes de usarlos."
+    },
+    {
+     "tipo": "error",
+     "frente": "Encuentras un problema en los datos de otra persona. ¿Qué no debes hacer?",
+     "dorso": "Corregirlo a ojo sin avisar. Guarda el original, anota el problema y pregunta a quien responde por los datos."
+    }
+   ]
+  },
+  {
+   "id": "n6m1l3",
+   "titulo": "Diseñar antes de construir",
+   "minutos": 15,
+   "objetivo": "Diseñar un libro antes de construirlo: boceto del resultado, herramienta proporcionada, hojas con una función clara y preparado para actualizarse el mes que viene.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Carmen quiere el informe de ventas de las tres delegaciones todos los meses. Antes de ponerte, cuéntame en cuatro líneas cómo lo vas a montar, que no quiero que el mes que viene empieces de cero.",
+    "logro": "Ya sabes diseñar un libro antes de construirlo: boceto del resultado, herramienta adecuada, hojas con una función clara y listo para el mes que viene."
+   },
+   "funciones": [],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Ningún electricista tira cable sin el esquema de la instalación. Con un libro de Excel pasa igual: diez minutos de diseño ahorran una tarde de rehacer.\n\nEmpieza por un **boceto en papel del resultado**: la tabla o el gráfico que verá Carmen, con sus filas y columnas. Después trabaja hacia atrás: ¿qué cálculos lo producen?, ¿qué datos necesitan esos cálculos? Así no construyes nada que sobre ni te falta nada a última hora."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e1",
+     "modo": "test",
+     "pregunta": "Vas a montar el informe mensual de las tres delegaciones. ¿Qué dibujas primero en el boceto?",
+     "opciones": [
+      {
+       "texto": "El resultado: la página que verá Carmen, con sus filas, columnas y cifras clave.",
+       "correcta": true,
+       "porque": "Eso es. El resultado marca qué cálculos y qué datos hacen falta; todo lo demás se deduce de ahí."
+      },
+      {
+       "texto": "La hoja de datos, con todas las columnas que exporta el programa.",
+       "correcta": false,
+       "porque": "Empezar por los datos lleva a calcular de todo «por si acaso». Primero, qué hay que enseñar."
+      },
+      {
+       "texto": "Las fórmulas más difíciles, para quitármelas de encima.",
+       "correcta": false,
+       "porque": "Sin saber el resultado, no sabes qué fórmulas hacen falta. Podrías resolver un problema que nadie tiene."
+      },
+      {
+       "texto": "Los colores y la portada.",
+       "correcta": false,
+       "porque": "La presentación es lo último. Primero, que las cifras sean las que hacen falta."
+      }
+     ],
+     "explicacion": "Del resultado hacia atrás: resultado → cálculos → datos."
+    },
+    {
+     "tipo": "texto",
+     "md": "Ya conoces muchas herramientas: fórmulas, Tablas, tablas dinámicas, Power Query y el modelo de datos. Ahora el riesgo no es no saber, sino **elegir mal**: montar Power Query para sumar ocho facturas una sola vez, o hacer a mano cada mes lo que Power Query haría solo.\n\nLa regla: **la herramienta más sencilla que resuelva el problema de hoy y el del mes que viene**. Si se repite, automatiza. Si es pequeño y de una vez, fórmulas."
+    },
+    {
+     "tipo": "tabla",
+     "titulo": "Qué herramienta para qué encargo",
+     "cabecera": [
+      "Si el encargo es…",
+      "Usa…"
+     ],
+     "filas": [
+      [
+       "Un cálculo pequeño, de una sola vez",
+       "Fórmulas en una hoja"
+      ],
+      [
+       "Una lista que crece cada semana y se filtra",
+       "Una Tabla de Excel: los rangos crecen solos"
+      ],
+      [
+       "Resumir miles de filas por cliente, mes o delegación",
+       "Una tabla dinámica (o SUMAR.SI.CONJUNTO)"
+      ],
+      [
+       "El mismo archivo sucio llega cada mes y se limpia igual",
+       "Power Query: los pasos se repiten con Actualizar"
+      ],
+      [
+       "Varias tablas relacionadas: ventas, clientes, productos",
+       "El modelo de datos, con relaciones"
+      ]
+     ],
+     "pie": "Se combinan: Power Query limpia, la tabla dinámica resume y las fórmulas comprueban."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e2",
+     "modo": "test",
+     "pregunta": "Andrés te pide el total de ocho facturas de un proveedor para reclamarle un error. Es algo de una sola vez. ¿Qué usas?",
+     "opciones": [
+      {
+       "texto": "Una SUMA en una hoja, y listo.",
+       "correcta": true,
+       "porque": "Proporcionado: dos minutos y fácil de revisar. No todo encargo merece una construcción."
+      },
+      {
+       "texto": "Una consulta de Power Query con el archivo de facturas.",
+       "correcta": false,
+       "porque": "Funcionaría, pero es desproporcionado para algo de una vez: tardas más en montarla que en sumar."
+      },
+      {
+       "texto": "Un modelo de datos con la tabla de proveedores relacionada.",
+       "correcta": false,
+       "porque": "El modelo de datos es para varias tablas que se analizan a menudo. Aquí hay ocho filas."
+      },
+      {
+       "texto": "Una tabla dinámica con segmentación por proveedor.",
+       "correcta": false,
+       "porque": "Para ocho filas de un solo proveedor, sobra. Tendría sentido para resumir muchos proveedores."
+      }
+     ],
+     "explicacion": "La herramienta más sencilla que resuelva el problema. Aquí, una SUMA."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e3",
+     "modo": "cinta",
+     "enunciado": "El informe mensual partirá del CSV que exporta el programa de gestión, y cada mes habrá que limpiarlo igual. ¿Dónde empiezas la consulta de Power Query que lo importa?",
+     "ruta": [
+      "Datos",
+      "Obtener y transformar datos",
+      "De texto/CSV"
+     ],
+     "explicacion": "Datos › Obtener y transformar datos › De texto/CSV. Como se repite cada mes, es la herramienta proporcionada: el mes que viene guardas el CSV nuevo con el mismo nombre y en la misma carpeta, pulsas **Actualizar todo** y los pasos de limpieza se repiten solos."
+    },
+    {
+     "tipo": "texto",
+     "md": "Un libro que otra persona pueda entender tiene **cada cosa en su hoja**, como un almacén con cada material en su estantería:\n\n- **Léeme**: qué es, de dónde salen los datos y cómo se actualiza.\n- **Parámetros** (o Entradas): lo que se cambia a mano (el mes, el IVA, las listas).\n- **Datos**: la exportación tal cual, sin retoques.\n- **Cálculos**: las fórmulas o tablas dinámicas intermedias.\n- **Informe**: lo que ve Carmen.\n- **Comprobaciones**: las celdas que confirman que todo cuadra."
+    },
+    {
+     "tipo": "comparar",
+     "izq": "Todo en una hoja",
+     "der": "Cada cosa en su hoja",
+     "filas": [
+      [
+       "Datos, fórmulas e informe mezclados en la Hoja1",
+       "Seis hojas con nombre y una función cada una"
+      ],
+      [
+       "El mes está escrito dentro de veinte fórmulas",
+       "El mes se cambia en una sola celda de Parámetros"
+      ],
+      [
+       "Nadie sabe qué celdas se pueden tocar",
+       "Las entradas tienen su propio estilo y hay una leyenda"
+      ],
+      [
+       "Para actualizarlo hay que preguntarte a ti",
+       "El Léeme explica cómo actualizarlo"
+      ]
+     ]
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e4",
+     "modo": "ordenar",
+     "enunciado": "Ordena los pasos del diseño, del primero al último.",
+     "pasos": [
+      "Dibujar un boceto del resultado que verá Carmen",
+      "Anotar qué cálculos producen cada cifra del boceto",
+      "Anotar qué datos necesitan esos cálculos y de dónde salen",
+      "Elegir la herramienta según los datos y cada cuánto se repite",
+      "Crear las hojas con nombre y empezar a construir"
+     ],
+     "explicacion": "Del resultado hacia atrás, y la herramienta cuando ya sabes cómo llegan los datos y cada cuánto. Construir es lo último."
+    },
+    {
+     "tipo": "texto",
+     "md": "Diseña para **el mes que viene**, no solo para hoy. Tres costumbres:\n\n1. El mes del informe va en **una celda de Parámetros**, y las fórmulas la leen. Nunca «octubre» escrito dentro de una fórmula.\n2. Los datos, en una **Tabla** o en Power Query, para que las filas nuevas entren solas.\n3. En la hoja Datos, una fila por registro y nada más.\n\nLa prueba: el mes que viene, ¿te bastaría con poner los datos nuevos y cambiar una celda?"
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "truco",
+     "titulo": "Que se vea qué se puede tocar",
+     "md": "Nuria marca las celdas de entrada con **Inicio › Estilos › Estilos de celda › Entrada** y explica el código de colores en el Léeme. No hay un color universal: lo importante es usar siempre el mismo y que haya una leyenda."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e5",
+     "modo": "formula",
+     "enunciado": "La fórmula de **F3** suma las ventas de octubre, pero lleva octubre escrito dentro. Arréglala para que sume las ventas del mes que haya en **F2**, la celda de parámetros (contiene la fecha 01/10/2026, que se ve como «octubre 2026»). Si mañana escribes 01/11/2026 en F2, F3 debe cambiar sola.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Delegación",
+       "C1": "Base (€)",
+       "E1": "Parámetro",
+       "F1": "Valor",
+       "E2": "Mes del informe",
+       "F2": {
+        "fecha": "2026-10-01"
+       },
+       "E3": "Ventas del mes",
+       "A2": {
+        "fecha": "2026-09-28"
+       },
+       "B2": "Zaragoza",
+       "C2": 4210.5,
+       "A3": {
+        "fecha": "2026-09-30"
+       },
+       "B3": "Lleida",
+       "C3": 1875.2,
+       "A4": {
+        "fecha": "2026-10-02"
+       },
+       "B4": "Pamplona",
+       "C4": 2950,
+       "A5": {
+        "fecha": "2026-10-09"
+       },
+       "B5": "Lleida",
+       "C5": 1245.8,
+       "A6": {
+        "fecha": "2026-10-16"
+       },
+       "B6": "Zaragoza",
+       "C6": 5320.4,
+       "A7": {
+        "fecha": "2026-10-30"
+       },
+       "B7": "Pamplona",
+       "C7": 3140.75,
+       "A8": {
+        "fecha": "2026-11-03"
+       },
+       "B8": "Zaragoza",
+       "C8": 4780.1,
+       "A9": {
+        "fecha": "2026-11-10"
+       },
+       "B9": "Lleida",
+       "C9": 2015.65,
+       "A10": {
+        "fecha": "2026-11-13"
+       },
+       "B10": "Pamplona",
+       "C10": 2690.3
+      },
+      "formatos": {
+       "A2:A10": "fecha",
+       "C2:C10": "eur",
+       "F2": "mmmm aaaa",
+       "F3": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "C": 11,
+       "D": 3,
+       "E": 16,
+       "F": 15
+      }
+     },
+     "objetivo": "F3",
+     "inicial": "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&FECHA(2026;10;1);A2:A10;\"<=\"&FECHA(2026;10;31))",
+     "solucion": "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<\"&FECHA.MES(F2;1))",
+      "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<\"&FECHA(AÑO(F2);MES(F2)+1;1))"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&FECHA(2026;10;1);A2:A10;\"<=\"&FECHA(2026;10;31))",
+      "=SUMA(C4:C7)",
+      "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2)"
+     ],
+     "variantes": [
+      {
+       "F2": {
+        "fecha": "2026-11-01"
+       }
+      },
+      {
+       "F2": {
+        "fecha": "2026-09-01"
+       }
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "El problema son las dos FECHA(2026;10;…): son el mes escrito a mano. Cámbialas por algo que salga de F2.",
+      "El primer día del mes es F2 tal cual (\">=\"&F2). El último día lo da FIN.MES(F2;0).",
+      "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F2;A2:A10;\"<=\"&FIN.MES(F2;0))"
+     ],
+     "explicacion": "12.656,95 € en octubre, y ahora sirve para cualquier mes: cambias F2 y todo se recalcula. Es la diferencia entre un informe que se rehace cada mes y uno que se actualiza en un minuto."
+    },
+    {
+     "tipo": "texto",
+     "md": "Antes de construir, cuenta tu diseño en pocas líneas a quien lo pidió. Si algo no le encaja, lo cambias en una frase y no en una tarde. Cuatro puntos bastan:\n\n1. **Qué verá**: la tabla o el gráfico final.\n2. **Con qué herramienta**, y por qué.\n3. **Qué hojas** tendrá el libro.\n4. **Qué se toca cada mes** y cómo sabrás que cuadra."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n6m1l3-e6",
+     "modo": "abierta",
+     "pregunta": "**Misión:** contesta a Javier en 4-6 líneas cómo vas a montar el informe mensual de ventas de las tres delegaciones (Zaragoza, Pamplona y Lleida), sin IVA y descontando abonos, a partir del CSV que exporta cada mes el programa de gestión.",
+     "modelo": "Hola, Javier. Te cuento cómo lo monto:\n1. Resultado: una página con las ventas del mes y del año por delegación, comparadas con el año anterior, y un gráfico.\n2. Herramienta: Power Query importa y limpia el CSV, porque llega igual cada mes; una tabla dinámica resume por delegación y mes.\n3. Hojas: Léeme, Parámetros (el mes), Datos, Cálculos, Informe y Comprobaciones.\n4. Cada mes: guardo el CSV nuevo, cambio el mes, pulso Actualizar todo y miro que Comprobaciones cuadre con el listado del programa.\n¿Te encaja?",
+     "criterios": [
+      "Describe el resultado final que se va a ver",
+      "Elige una herramienta proporcionada y dice por qué (se repite cada mes)",
+      "Separa el libro en hojas con una función clara",
+      "Explica qué se cambia cada mes y cómo se comprueba que cuadra",
+      "Es breve y pide su opinión antes de construir"
+     ]
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n6m1l3-q1",
+     "modo": "test",
+     "pregunta": "Heredas el libro de un compañero: datos, fórmulas e informe en la misma hoja, y el mes escrito dentro de veinte fórmulas. ¿Cuál es el mayor riesgo el mes que viene?",
+     "opciones": [
+      {
+       "texto": "Que al actualizarlo se quede alguna fórmula con el mes antiguo y nadie lo note.",
+       "correcta": true,
+       "porque": "Cambiar veinte fórmulas a mano es fácil de hacer mal y difícil de ver. Con el mes en una celda de Parámetros, sería un solo cambio."
+      },
+      {
+       "texto": "Que el archivo ocupe demasiado.",
+       "correcta": false,
+       "porque": "El desorden no hace el archivo más pesado. El problema es mantenerlo sin errores."
+      },
+      {
+       "texto": "Que no se pueda imprimir.",
+       "correcta": false,
+       "porque": "Se puede imprimir; lo que no se puede es actualizar con seguridad."
+      },
+      {
+       "texto": "Ninguno, si las fórmulas están bien hoy.",
+       "correcta": false,
+       "porque": "Hoy sí. El riesgo llega el mes que viene, cuando haya que tocarlas una a una."
+      }
+     ],
+     "explicacion": "Diseñar solo para hoy sale caro el mes que viene."
+    },
+    {
+     "id": "n6m1l3-q2",
+     "modo": "test",
+     "pregunta": "Lucía lleva la lista de vacaciones de la plantilla. Crece cada semana y la filtra por departamento. ¿Qué le conviene como base?",
+     "opciones": [
+      {
+       "texto": "Una Tabla de Excel.",
+       "correcta": true,
+       "porque": "Las filas nuevas entran solas en los filtros y en las fórmulas que la usan, sin ampliar rangos a mano."
+      },
+      {
+       "texto": "Power Query.",
+       "correcta": false,
+       "porque": "No hay un archivo externo que importar y limpiar: los datos los escribe ella."
+      },
+      {
+       "texto": "El modelo de datos.",
+       "correcta": false,
+       "porque": "Es una sola lista: no hay tablas que relacionar."
+      },
+      {
+       "texto": "Un rango normal con fórmulas.",
+       "correcta": false,
+       "porque": "Funciona hoy, pero cada fila nueva puede quedarse fuera de los rangos de las fórmulas."
+      }
+     ],
+     "explicacion": "Lista que crece y se filtra: Tabla."
+    },
+    {
+     "id": "n6m1l3-q3",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Cómo se llama la hoja que explica qué es el libro, de dónde salen los datos y cómo se actualiza?",
+     "aceptadas": [
+      "Léeme",
+      "Leeme",
+      "hoja Léeme",
+      "la hoja Léeme",
+      "Léame",
+      "Leame"
+     ],
+     "explicacion": "**Léeme**: la primera hoja del libro. En el módulo siguiente aprenderás a escribirla bien."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "¿Por dónde empieza el diseño de un libro?",
+     "dorso": "Por un boceto del resultado. Después, hacia atrás: cálculos, datos y herramienta."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Las seis hojas de un libro bien diseñado",
+     "dorso": "Léeme, Parámetros, Datos, Cálculos, Informe y Comprobaciones."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Regla para elegir herramienta",
+     "dorso": "La más sencilla que resuelva el problema de hoy y el del mes que viene."
+    },
+    {
+     "tipo": "error",
+     "frente": "Diseñar solo para hoy: ¿cómo se reconoce y cómo se evita?",
+     "dorso": "Meses escritos dentro de las fórmulas y rangos fijos. Se evita con el mes en Parámetros y los datos en una Tabla o en Power Query."
+    }
+   ]
+  }
+ ]
+}

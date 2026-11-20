@@ -1,0 +1,582 @@
+{
+ "id": "n2m4l3",
+ "titulo": "Vencimientos y días laborables",
+ "minutos": 16,
+ "objetivo": "Calcular vencimientos por meses y a fin de mes, días laborables y fechas de entrega descontando festivos, y la antigüedad exacta en años.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "Carmen quiere tener un detalle en la comida de Navidad con quien lleve 10 años o más en la casa. ¿Me sacas la antigüedad en años cumplidos de la gente del almacén a fecha de hoy? Que sea exacta, que a nadie le gusta que le quiten un año… ni que se lo regalen.",
+  "logro": "Ya sabes calcular vencimientos por meses y a fin de mes, plazos en días laborables con festivos y la antigüedad exacta de una plantilla."
+ },
+ "funciones": [
+  "FECHA.MES",
+  "FIN.MES",
+  "DIAS.LAB",
+  "DIA.LAB",
+  "SIFECHA"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Error clásico: sumar 30 días creyendo que es «un mes». Los meses tienen 28, 30 o 31 días, y la fecha se va corriendo. Para sumar **meses de verdad** está `=FECHA.MES(fecha; meses)`: da el **mismo día** tantos meses después. Sobre el 15/01/2026, `=FECHA.MES(B2;1)` da el 15/02/2026, y con 3, el 15/04/2026. Con meses negativos va hacia atrás. Si ese día no existe (31 de febrero), da el **último día** de ese mes."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e1",
+   "modo": "predice",
+   "enunciado": "Un contrato de mantenimiento de las carretillas empieza el **15/11/2026** y dura **2 meses**. ¿Qué fecha de fin da **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Inicio",
+     "B1": {
+      "fecha": "2026-11-15"
+     },
+     "A2": "Fin"
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "B": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=FECHA.MES(B1;2)",
+   "formato_resultado": "fecha",
+   "explicacion": "El **15/01/2027**: el mismo día, dos meses después, aunque cambie de año. Si hubieras sumado 60 días, te habría salido el 14/01/2027."
+  },
+  {
+   "tipo": "texto",
+   "md": "`=FIN.MES(fecha; meses)` da el **último día del mes**: con 0, el de ese mismo mes; con 1, el del mes siguiente. Es la fórmula de las condiciones «a fin de mes»: muchos clientes pagan todas las facturas de un mes de golpe, el último día del mes siguiente. Factura del 12/10/2026: `=FIN.MES(B2;1)` da el **30/11/2026**. Si te sale un número como 46356, solo le falta el formato de Fecha."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e2",
+   "modo": "formula",
+   "enunciado": "Marta te avisa: «Instalaciones Moncayo paga el **último día del mes siguiente** a la factura». En **C2** calcula ese día de cobro para la factura de B2. Se copiará a C3:C6. En C2 debe salir **30/11/2026**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Fecha factura",
+     "C1": "Cobro previsto",
+     "A2": "FV-0871",
+     "B2": {
+      "fecha": "2026-10-12"
+     },
+     "A3": "FV-0886",
+     "B3": {
+      "fecha": "2026-10-31"
+     },
+     "A4": "FV-0895",
+     "B4": {
+      "fecha": "2026-11-02"
+     },
+     "A5": "FV-0902",
+     "B5": {
+      "fecha": "2026-11-16"
+     },
+     "A6": "FV-0911",
+     "B6": {
+      "fecha": "2026-12-30"
+     }
+    },
+    "formatos": {
+     "B2:C6": "fecha"
+    },
+    "anchos": {
+     "B": 13,
+     "C": 15
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=FIN.MES(B2;1)",
+   "errores_tipicos": [
+    "=FIN.MES(B2;0)",
+    "=B2+30",
+    "=FECHA.MES(B2;1)",
+    "=FIN.MES(B2;2)"
+   ],
+   "variantes": [
+    {
+     "B2": {
+      "fecha": "2026-01-31"
+     }
+    }
+   ],
+   "debe_usar": [
+    "FIN.MES"
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "Necesitas el último día de un mes: la función FIN.MES.",
+    "El segundo argumento dice cuántos meses avanzas: 0 es este mes y 1, el siguiente.",
+    "`=FIN.MES(B2;1)`"
+   ],
+   "explicacion": "Las facturas de octubre se cobran el 30/11, las de noviembre el 31/12 y la de diciembre el 31/01/2027. Con esto Marta prevé cuánto dinero entra a final de cada mes: es la base de una previsión de tesorería."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para plazos de trabajo, los fines de semana no cuentan. `=DIAS.LAB(inicio; fin; festivos)` cuenta los **días laborables** (de lunes a viernes) entre dos fechas, **contando las dos**. El tercer argumento es opcional: un rango con la lista de **festivos**, que también se descuentan. En la empresa esa lista la mantiene RRHH con el calendario laboral del año."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Del 16/11 al 31/12, con y sin festivos",
+   "hoja": {
+    "celdas": {
+     "A1": "Inicio",
+     "B1": "Fin",
+     "C1": "Sin festivos",
+     "D1": "Con festivos",
+     "F1": "Festivos",
+     "A2": {
+      "fecha": "2026-11-16"
+     },
+     "B2": {
+      "fecha": "2026-12-31"
+     },
+     "C2": "=DIAS.LAB(A2;B2)",
+     "D2": "=DIAS.LAB(A2;B2;F2:F3)",
+     "F2": {
+      "fecha": "2026-12-08"
+     },
+     "F3": {
+      "fecha": "2026-12-25"
+     }
+    },
+    "formatos": {
+     "A2:B2": "fecha",
+     "F2:F3": "fecha"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 13,
+     "D": 13,
+     "F": 11
+    }
+   },
+   "resaltar": [
+    "C2:D2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "34 días laborables sin festivos; 32 si quitas el 8 y el 25 de diciembre."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e3",
+   "modo": "formula",
+   "enunciado": "Andrés planifica tres trabajos de almacén. En **D2** calcula los **días laborables** de cada trabajo entre su inicio (B2) y su fin (C2), descontando los festivos de **G2:G5**. Se copiará a D3:D4. En D2 debe salir **15**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Trabajo",
+     "B1": "Inicio",
+     "C1": "Fin",
+     "D1": "Días laborables",
+     "A2": "Reorganizar estanterías",
+     "B2": {
+      "fecha": "2026-11-16"
+     },
+     "C2": {
+      "fecha": "2026-12-04"
+     },
+     "A3": "Recuento de cable",
+     "B3": {
+      "fecha": "2026-12-01"
+     },
+     "C3": {
+      "fecha": "2026-12-11"
+     },
+     "A4": "Inventario anual",
+     "B4": {
+      "fecha": "2026-12-21"
+     },
+     "C4": {
+      "fecha": "2027-01-08"
+     },
+     "G1": "Festivos",
+     "G2": {
+      "fecha": "2026-12-08"
+     },
+     "G3": {
+      "fecha": "2026-12-25"
+     },
+     "G4": {
+      "fecha": "2027-01-01"
+     },
+     "G5": {
+      "fecha": "2027-01-06"
+     }
+    },
+    "formatos": {
+     "B2:C4": "fecha",
+     "G2:G5": "fecha",
+     "D2:D4": "0"
+    },
+    "anchos": {
+     "A": 23,
+     "B": 11,
+     "C": 11,
+     "D": 15,
+     "G": 11
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D4"
+   ],
+   "solucion": "=DIAS.LAB(B2;C2;$G$2:$G$5)",
+   "alternativas": [
+    "=DIAS.LAB(B2;C2;G$2:G$5)"
+   ],
+   "errores_tipicos": [
+    "=DIAS.LAB(B2;C2)",
+    "=DIAS.LAB(B2;C2;G2:G5)",
+    "=C2-B2"
+   ],
+   "variantes": [
+    {
+     "C2": {
+      "fecha": "2026-12-18"
+     }
+    }
+   ],
+   "debe_usar": [
+    "DIAS.LAB"
+   ],
+   "formato_resultado": "0",
+   "pistas": [
+    "DIAS.LAB necesita el inicio, el fin y la lista de festivos.",
+    "La lista de festivos es la misma para todas las filas: fíjala con $ para que no se mueva al copiar.",
+    "`=DIAS.LAB(B2;C2;$G$2:$G$5)`"
+   ],
+   "explicacion": "15 días para las estanterías, 8 para el recuento (el 8 de diciembre no cuenta) y 12 para el inventario, que pierde Navidad, Año Nuevo y Reyes. Con esto Andrés sabe cuántas jornadas de trabajo tiene de verdad, no cuántos días de calendario."
+  },
+  {
+   "tipo": "texto",
+   "md": "La pregunta contraria: «si el proveedor tarda 5 días laborables, ¿qué día llega?». `=DIA.LAB(inicio; días; festivos)` cuenta hacia delante esos días saltándose sábados, domingos y festivos, y te da la **fecha**. Fíjate en la diferencia: DIA**S**.LAB, en plural, devuelve un **número** de días; DIA.LAB, en singular, devuelve una **fecha**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e4",
+   "modo": "predice",
+   "enunciado": "El lunes **07/12/2026** haces un pedido con entrega en **1 día laborable**. El 8 de diciembre es festivo y está en B2. ¿Qué fecha devuelve **B3**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": {
+      "fecha": "2026-12-07"
+     },
+     "A2": "Festivo",
+     "B2": {
+      "fecha": "2026-12-08"
+     },
+     "A3": "Entrega"
+    },
+    "formatos": {
+     "B1:B2": "fecha"
+    },
+    "anchos": {
+     "B": 12
+    }
+   },
+   "celda": "B3",
+   "formula": "=DIA.LAB(B1;1;B2)",
+   "formato_resultado": "fecha",
+   "explicacion": "El **09/12/2026**: el martes 8 es festivo y se lo salta. Sin la lista de festivos, Excel te habría dicho el 8, y el cliente se habría quedado esperando el material un día de fiesta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e5",
+   "modo": "formula",
+   "enunciado": "Cada proveedor entrega en un número de días laborables (columna C). En **D2** calcula la **fecha de entrega prevista** del pedido, sin contar fines de semana ni los festivos de **G2:G5**. Se copiará a D3:D5. En D2 debe salir **23/11/2026**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha pedido",
+     "C1": "Plazo (días lab.)",
+     "D1": "Entrega prevista",
+     "A2": "OC-1190",
+     "B2": {
+      "fecha": "2026-11-16"
+     },
+     "C2": 5,
+     "A3": "OC-1194",
+     "B3": {
+      "fecha": "2026-12-02"
+     },
+     "C3": 5,
+     "A4": "OC-1201",
+     "B4": {
+      "fecha": "2026-12-21"
+     },
+     "C4": 10,
+     "A5": "OC-1206",
+     "B5": {
+      "fecha": "2026-12-30"
+     },
+     "C5": 3,
+     "G1": "Festivos",
+     "G2": {
+      "fecha": "2026-12-08"
+     },
+     "G3": {
+      "fecha": "2026-12-25"
+     },
+     "G4": {
+      "fecha": "2027-01-01"
+     },
+     "G5": {
+      "fecha": "2027-01-06"
+     }
+    },
+    "formatos": {
+     "B2:B5": "fecha",
+     "D2:D5": "fecha",
+     "G2:G5": "fecha"
+    },
+    "anchos": {
+     "B": 12,
+     "C": 16,
+     "D": 16,
+     "G": 11
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D5"
+   ],
+   "solucion": "=DIA.LAB(B2;C2;$G$2:$G$5)",
+   "alternativas": [
+    "=DIA.LAB(B2;C2;G$2:G$5)"
+   ],
+   "errores_tipicos": [
+    "=DIA.LAB(B2;C2)",
+    "=B2+C2",
+    "=DIA.LAB(B2;C2;G2:G5)",
+    "=DIAS.LAB(B2;C2;$G$2:$G$5)"
+   ],
+   "variantes": [
+    {
+     "C2": 8
+    }
+   ],
+   "debe_usar": [
+    "DIA.LAB"
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "Esta vez quieres una fecha, no un número de días: la función en singular.",
+    "`DIA.LAB(inicio; días; festivos)`. Fija la lista de festivos con $.",
+    "`=DIA.LAB(B2;C2;$G$2:$G$5)`"
+   ],
+   "explicacion": "El pedido del 16/11 llega el lunes 23/11 y el del 02/12, el 10/12, porque se salta el puente. El de Navidad no llega hasta el 07/01/2027. Ahora Andrés puede decir a cada cliente una fecha creíble."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para la **antigüedad** o la edad, restar fechas y dividir entre 365 falla por culpa de los años bisiestos. Usa `=SIFECHA(inicio; fin; unidad)`, que cuenta **periodos completos**: con \"Y\", años cumplidos; con \"M\", meses completos; con \"D\", días. Las unidades van **en inglés** (Y de *year*) aunque tu Excel esté en español. Es una función **oculta**: Excel no te la sugiere al escribir, así que escríbela entera."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Dos errores que dan #¡NUM!",
+   "md": "La unidad de los años es **\"Y\"**, no \"A\" de «años»: con \"A\" la fórmula da **#¡NUM!**. Y la fecha más antigua va **primero**: si las pones al revés, también da #¡NUM!."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e6",
+   "modo": "test",
+   "pregunta": "Una persona entró el **20/11/2019** (en B2). Hoy es el **16/11/2026** (en G2). ¿Qué fórmula da sus años cumplidos?",
+   "opciones": [
+    {
+     "texto": "=SIFECHA(B2;$G$2;\"Y\")",
+     "correcta": true,
+     "porque": "Correcto: da 6. Cuenta solo años completos, y el séptimo no lo cumple hasta el día 20."
+    },
+    {
+     "texto": "=AÑO($G$2)-AÑO(B2)",
+     "correcta": false,
+     "porque": "Da 7: resta los años sin mirar si ya ha pasado el aniversario. Le regala un año que aún no ha cumplido."
+    },
+    {
+     "texto": "=SIFECHA(B2;$G$2;\"A\")",
+     "correcta": false,
+     "porque": "Da #¡NUM!: las unidades de SIFECHA van en inglés, \"Y\" y no \"A\"."
+    },
+    {
+     "texto": "=($G$2-B2)/365",
+     "correcta": false,
+     "porque": "Da 6,99…: salen decimales y, por los años bisiestos, cerca del aniversario puede equivocarse de año."
+    }
+   ],
+   "explicacion": "Para años cumplidos, SIFECHA con \"Y\". Es lo que se usa en RRHH para antigüedades y edades."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l3-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Lucía.** En **D2** calcula la **antigüedad en años cumplidos** de la persona a fecha de hoy (celda **G2**), a partir de su fecha de alta (C2). Se copiará a D3:D7. En D2 debe salir **11**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Persona",
+     "B1": "Puesto",
+     "C1": "Fecha de alta",
+     "D1": "Años",
+     "G1": "Hoy",
+     "A2": "Rosa Gimeno Lahoz",
+     "B2": "Mozo de almacén",
+     "C2": {
+      "fecha": "2015-03-02"
+     },
+     "A3": "Iván Royo Sanz",
+     "B3": "Carretillero",
+     "C3": {
+      "fecha": "2016-11-20"
+     },
+     "A4": "Pilar Ainsa Marco",
+     "B4": "Jefa de turno",
+     "C4": {
+      "fecha": "2016-11-16"
+     },
+     "A5": "Hugo Bernal Pueyo",
+     "B5": "Mozo de almacén",
+     "C5": {
+      "fecha": "2021-09-01"
+     },
+     "A6": "Elena Casas Ibort",
+     "B6": "Administrativa de almacén",
+     "C6": {
+      "fecha": "2006-11-18"
+     },
+     "A7": "Óscar Lafuente Gil",
+     "B7": "Repartidor",
+     "C7": {
+      "fecha": "2026-01-14"
+     },
+     "G2": {
+      "fecha": "2026-11-16"
+     }
+    },
+    "formatos": {
+     "C2:C7": "fecha",
+     "G2": "fecha",
+     "D2:D7": "0"
+    },
+    "anchos": {
+     "A": 19,
+     "B": 24,
+     "C": 13,
+     "G": 11
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D7"
+   ],
+   "solucion": "=SIFECHA(C2;$G$2;\"Y\")",
+   "alternativas": [
+    "=SIFECHA(C2;G$2;\"Y\")",
+    "=SIFECHA(C2;$G$2;\"y\")"
+   ],
+   "errores_tipicos": [
+    "=AÑO($G$2)-AÑO(C2)",
+    "=SIFECHA(C2;G2;\"Y\")",
+    "=ENTERO(($G$2-C2)/365)",
+    "=SIFECHA(C2;$G$2;\"A\")",
+    "=SIFECHA($G$2;C2;\"Y\")"
+   ],
+   "variantes": [
+    {
+     "G2": {
+      "fecha": "2026-11-20"
+     }
+    }
+   ],
+   "debe_usar": [
+    "SIFECHA"
+   ],
+   "formato_resultado": "0",
+   "pistas": [
+    "Años cumplidos entre dos fechas: SIFECHA con la unidad de años.",
+    "Primero la fecha de alta, después hoy (fijada con $) y la unidad \"Y\" entre comillas.",
+    "`=SIFECHA(C2;$G$2;\"Y\")`"
+   ],
+   "explicacion": "Lista exacta: Rosa 11, Pilar 10 (los cumple hoy) y Elena 19. Fíjate en Iván: entró el 20/11/2016 y hoy tiene **9**; los 10 los cumple el viernes. Una resta de años le habría dado 10, y a Elena, 20. Con SIFECHA, Carmen tiene la lista sin errores. Misión cumplida."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m4l3-q1",
+   "modo": "predice",
+   "enunciado": "¿Qué fecha devuelve la fórmula de **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Inicio",
+     "B1": {
+      "fecha": "2026-01-31"
+     },
+     "A2": "Un mes después"
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=FECHA.MES(B1;1)",
+   "formato_resultado": "fecha",
+   "explicacion": "El 28/02/2026: febrero no tiene día 31, así que FECHA.MES da el último día de febrero."
+  },
+  {
+   "id": "n2m4l3-q2",
+   "modo": "cinta",
+   "enunciado": "Quieres ver la lista de funciones de fecha que trae Excel. ¿Dónde está?",
+   "ruta": [
+    "Fórmulas",
+    "Biblioteca de funciones",
+    "Fecha y hora"
+   ],
+   "explicacion": "Fórmulas › Biblioteca de funciones › Fecha y hora. Ahí están HOY, FECHA.MES, FIN.MES, DIAS.LAB… pero no SIFECHA, que es oculta."
+  },
+  {
+   "id": "n2m4l3-q3",
+   "modo": "abierta",
+   "pregunta": "Andrés calcula los vencimientos «a un mes» con `=B2+30`. Explícale en dos o tres frases por qué no siempre acierta y qué usarías tú.",
+   "modelo": "Porque los meses no tienen siempre 30 días: de un 31 de enero o de un 1 de febrero, sumar 30 no cae el mismo día del mes siguiente. Para sumar meses de verdad usaría =FECHA.MES(B2;1), que da el mismo día un mes después (o el último día del mes si ese día no existe). Si el vencimiento es a fin de mes, =FIN.MES(B2;1).",
+   "criterios": [
+    "Dice que los meses tienen distinto número de días (28, 30 o 31)",
+    "Propone FECHA.MES con el número de meses",
+    "Lo explica con palabras sencillas o con un ejemplo",
+    "Menciona FIN.MES si el plazo es a fin de mes (valorable)"
+   ]
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "FECHA.MES: sintaxis y para qué",
+   "dorso": "=FECHA.MES(fecha; meses). El mismo día n meses después (negativo: antes). Sumar 30 no es un mes."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "FIN.MES: sintaxis",
+   "dorso": "=FIN.MES(fecha; meses). Último día del mes: 0 este mes, 1 el siguiente."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "DIAS.LAB frente a DIA.LAB",
+   "dorso": "DIAS.LAB(inicio; fin; festivos) → número de días laborables. DIA.LAB(inicio; días; festivos) → fecha."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "SIFECHA: años cumplidos",
+   "dorso": "=SIFECHA(alta; hoy; \"Y\"). Unidades en inglés: \"Y\", \"M\", \"D\". Con \"A\" da #¡NUM!."
+  }
+ ]
+}

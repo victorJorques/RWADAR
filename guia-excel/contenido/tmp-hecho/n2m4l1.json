@@ -1,0 +1,515 @@
+{
+ "id": "n2m4l1",
+ "titulo": "Las fechas son números: HOY y restar fechas",
+ "minutos": 15,
+ "objetivo": "Entender que una fecha es un número de días y usarlo para calcular días entre fechas, vencimientos y días de retraso.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Te paso las facturas que nos deben. Necesito saber cuántos días de retraso lleva cada una a fecha de hoy; el plazo de pago es de 30 días desde la factura. Así sé a quién llamo primero.",
+  "logro": "Ya sabes calcular días entre fechas, vencimientos y días de retraso, y montar la lista de cobros pendientes que te pedirá cualquier departamento financiero."
+ },
+ "funciones": [
+  "HOY"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Vencimientos de facturas, plazos de entrega, antigüedad de la plantilla: en una oficina, media vida va de fechas. Y Excel guarda un secreto que lo hace todo fácil: **una fecha es un número**. Excel cuenta los días desde el 01/01/1900, que es el día **1**; el 02/01/1900 es el 2, y así hasta hoy. A ese número se le llama **número de serie**. Lo que ves en la celda («16/11/2026») es solo su disfraz: el **formato de fecha**."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La misma fecha, con y sin disfraz",
+   "hoja": {
+    "celdas": {
+     "A1": "Lo que ves",
+     "B1": "Lo que hay debajo",
+     "A2": {
+      "fecha": "2026-11-16"
+     },
+     "B2": "=A2",
+     "A3": {
+      "fecha": "2026-11-17"
+     },
+     "B3": "=A3",
+     "A4": {
+      "fecha": "2026-12-31"
+     },
+     "B4": "=A4"
+    },
+    "formatos": {
+     "A2:A4": "fecha",
+     "B2:B4": "0"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 18
+    }
+   },
+   "resaltar": [
+    "B2:B4"
+   ],
+   "pie": "La columna B tiene formato de número: enseña el número de serie que Excel guarda. El 16/11/2026 es el día 46342."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e1",
+   "modo": "predice",
+   "enunciado": "Andrés pidió cable el **16/11/2026** y llega el **17/11/2026**. Si una fecha es un número, ¿qué número da la resta de **B3**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": {
+      "fecha": "2026-11-16"
+     },
+     "A2": "Entrega",
+     "B2": {
+      "fecha": "2026-11-17"
+     },
+     "A3": "Días"
+    },
+    "formatos": {
+     "B1:B2": "fecha"
+    },
+    "anchos": {
+     "A": 10,
+     "B": 12
+    }
+   },
+   "celda": "B3",
+   "formula": "=B2-B1",
+   "explicacion": "46343 − 46342 = **1**. Restar dos fechas da los **días** que hay entre ellas. Esa es toda la magia de este módulo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Por eso, **restar dos fechas da días**. Entrega menos pedido, `=D2-C2`, dice cuántos días ha tardado un proveedor. Pon siempre la fecha **más reciente primero**; al revés, sale el mismo número pero en negativo. Este cálculo vale oro para Andrés: con él sabe qué proveedor cumple y cuál no, y puede negociar con datos en lugar de con impresiones."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e2",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber cuánto tarda cada proveedor. En **E2** calcula los **días** entre la fecha del pedido (C2) y la de entrega (D2). Tu fórmula se copiará a E3:E6. En E2 debe salir **4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Proveedor",
+     "C1": "Fecha pedido",
+     "D1": "Entrega",
+     "E1": "Días",
+     "A2": "OC-1180",
+     "B2": "Cables Pirineo",
+     "C2": {
+      "fecha": "2026-11-02"
+     },
+     "D2": {
+      "fecha": "2026-11-06"
+     },
+     "A3": "OC-1181",
+     "B3": "Luminarias Moncayo",
+     "C3": {
+      "fecha": "2026-11-03"
+     },
+     "D3": {
+      "fecha": "2026-11-13"
+     },
+     "A4": "OC-1182",
+     "B4": "Mecanismos Segre",
+     "C4": {
+      "fecha": "2026-11-04"
+     },
+     "D4": {
+      "fecha": "2026-11-09"
+     },
+     "A5": "OC-1183",
+     "B5": "Tubos Bardenas",
+     "C5": {
+      "fecha": "2026-11-05"
+     },
+     "D5": {
+      "fecha": "2026-11-16"
+     },
+     "A6": "OC-1184",
+     "B6": "Fijaciones Aneto",
+     "C6": {
+      "fecha": "2026-11-09"
+     },
+     "D6": {
+      "fecha": "2026-11-12"
+     }
+    },
+    "formatos": {
+     "C2:D6": "fecha",
+     "E2:E6": "0"
+    },
+    "anchos": {
+     "B": 18,
+     "C": 12,
+     "D": 11
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E6"
+   ],
+   "solucion": "=D2-C2",
+   "alternativas": [
+    "=-(C2-D2)"
+   ],
+   "errores_tipicos": [
+    "=C2-D2",
+    "=D2-C2+1",
+    "=D2+C2"
+   ],
+   "variantes": [
+    {
+     "D2": {
+      "fecha": "2026-11-10"
+     }
+    }
+   ],
+   "formato_resultado": "0",
+   "pistas": [
+    "Es una resta de dos fechas: la más reciente menos la más antigua.",
+    "La entrega (D2) es posterior al pedido (C2), así que va primero.",
+    "`=D2-C2`"
+   ],
+   "explicacion": "Cuatro días para Cables Pirineo y once para Tubos Bardenas, el más lento. Con una columna así, Andrés ve de un vistazo qué proveedor cumple sus plazos y cuál le hace esperar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e3",
+   "modo": "test",
+   "pregunta": "Haces una resta de fechas y en la celda aparece **01/02/1900**. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "La celda tiene formato de fecha: el resultado es 32 días y solo hay que cambiar el formato a General.",
+     "correcta": true,
+     "porque": "Exacto: la cuenta está bien, solo lleva el disfraz equivocado. El 01/02/1900 es el día 32 de la cuenta de Excel (31 de enero + 1)."
+    },
+    {
+     "texto": "La fórmula está mal y hay que escribirla de nuevo.",
+     "correcta": false,
+     "porque": "La resta está bien. Si la repites en la misma celda, volverá a salir igual, porque el problema es el formato, no la fórmula."
+    },
+    {
+     "texto": "Una de las dos fechas es del año 1900.",
+     "correcta": false,
+     "porque": "No: Excel enseña como fecha un número pequeño (32), y los números pequeños caen en 1900. Las fechas originales están bien."
+    },
+    {
+     "texto": "Excel no sabe restar fechas.",
+     "correcta": false,
+     "porque": "Sí sabe: restar fechas es restar sus números de serie. El resultado es correcto; solo se ve mal."
+    }
+   ],
+   "explicacion": "Cuando un resultado en días sale con aspecto de fecha, cambia el formato a **General** o **Número** (Inicio › Número › Formato de número)."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al revés también funciona: **sumar un número a una fecha da otra fecha**. `=C2+30` devuelve el día que cae 30 días después de C2. Es la fórmula del **vencimiento**: una factura del 05/10/2026 que se paga a 30 días vence el 04/11/2026. Excel cuenta por ti los meses de 30 y de 31 días, sin calendario en la mano."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "El plazo legal de pago entre empresas",
+   "md": "Según la Ley 3/2004 de morosidad, si el contrato no fija otro plazo, se paga en **30 días naturales** desde que se reciben las mercancías o servicios. Se puede pactar más, pero **nunca más de 60 días naturales**. «Naturales» significa que cuentan todos los días, también sábados, domingos y festivos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e4",
+   "modo": "formula",
+   "enunciado": "Marta lleva el control de cobros. En **D2** calcula el **vencimiento** de la factura: la fecha que cae 30 días después de la fecha de factura (C2). Se copiará a D3:D6. En D2 debe salir **04/11/2026**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Fecha factura",
+     "D1": "Vencimiento",
+     "A2": "FV-0871",
+     "B2": "Instalaciones Moncayo",
+     "C2": {
+      "fecha": "2026-10-05"
+     },
+     "A3": "FV-0874",
+     "B3": "Montajes Delicias",
+     "C3": {
+      "fecha": "2026-10-12"
+     },
+     "A4": "FV-0880",
+     "B4": "Electricidad Lacasa",
+     "C4": {
+      "fecha": "2026-10-20"
+     },
+     "A5": "FV-0886",
+     "B5": "Reformas Actur",
+     "C5": {
+      "fecha": "2026-10-31"
+     },
+     "A6": "FV-0891",
+     "B6": "Climatización Ribera",
+     "C6": {
+      "fecha": "2026-11-03"
+     }
+    },
+    "formatos": {
+     "C2:D6": "fecha"
+    },
+    "anchos": {
+     "B": 20,
+     "C": 13,
+     "D": 13
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "solucion": "=C2+30",
+   "alternativas": [
+    "=30+C2"
+   ],
+   "errores_tipicos": [
+    "=C2+31",
+    "=C2+1",
+    "=C2-30"
+   ],
+   "variantes": [
+    {
+     "C3": {
+      "fecha": "2026-02-10"
+     }
+    }
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "A una fecha le puedes sumar días como a cualquier número.",
+    "Fecha de factura más 30.",
+    "`=C2+30`"
+   ],
+   "explicacion": "Cinco vencimientos en un segundo, con octubre de 31 días bien contado. Así sabe Marta qué cobros esperar cada semana. Si alguna vez te sale un número como 46330, no está mal: dale formato de **Fecha**."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para calcular retrasos te falta un dato: la fecha de hoy. `=HOY()` la escribe sola y **se actualiza** cada vez que abres el libro. Lleva los paréntesis vacíos: no necesita nada dentro. Si quieres una fecha que **no cambie** (el día en que registras un pedido), escríbela a mano o pulsa [[Ctrl]]+[[,]] (la coma), que pone la fecha de hoy fija."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Una sola celda «Hoy» para todo el informe",
+   "md": "En los informes, la fecha de cálculo se pone en **una celda** aparte (con `=HOY()` o escrita a mano) y todas las fórmulas apuntan a ella con `$`. Si Marta te pide el informe «a 31 de octubre», cambias esa celda y listo. En los ejercicios de esta guía esa celda lleva una fecha fija, el 16/11/2026, para que los resultados no cambien cada día."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e5",
+   "modo": "respuesta_corta",
+   "pregunta": "Escribe la fórmula que devuelve la fecha de hoy y se actualiza sola cada día.",
+   "aceptadas": [
+    "=HOY()",
+    "HOY()",
+    "=hoy()",
+    "hoy()",
+    "=Hoy()"
+   ],
+   "explicacion": "`=HOY()`, con los paréntesis vacíos. Úsala en la celda «Hoy» de tus informes; para registrar una fecha que no debe cambiar, [[Ctrl]]+[[,]]."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un aviso de veterana: cuando un proveedor de fuera te manda un fichero, a veces las fechas llegan como **texto**. Se notan porque se quedan pegadas a la **izquierda** de la celda; las fechas de verdad, como los números, se alinean a la derecha. Y con esas fechas falsas las restas no funcionan. Mira lo que pasa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e6",
+   "modo": "predice",
+   "enunciado": "En **B2** hay un vencimiento que ha llegado como texto, escrito al estilo americano (mes/día/año). ¿Qué devuelve la resta de **B3**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Hoy",
+     "B1": {
+      "fecha": "2026-11-16"
+     },
+     "A2": "Vencimiento",
+     "B2": {
+      "texto": "11/25/2026"
+     },
+     "A3": "Días que faltan"
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 12
+    }
+   },
+   "celda": "B3",
+   "formula": "=B2-B1",
+   "explicacion": "**#¡VALOR!**: Excel no puede restar un texto. En español no existe el mes 25, así que «11/25/2026» no se convierte en fecha y se queda como texto. Cuando una resta de fechas dé #¡VALOR!, busca primero la fecha alineada a la izquierda. Más adelante aprenderás a convertirlas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l1-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Marta.** El plazo de pago es de 30 días. En **D2** calcula los **días de retraso** de la factura a fecha de hoy (celda **G2**): hoy menos el vencimiento, y el vencimiento es la fecha de factura (C2) más 30. Se copiará a D3:D6, así que fija lo que no debe moverse. En D2 debe salir **46**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Fecha factura",
+     "D1": "Días de retraso",
+     "G1": "Hoy",
+     "A2": "FV-0852",
+     "B2": "Instalaciones Moncayo",
+     "C2": {
+      "fecha": "2026-09-01"
+     },
+     "A3": "FV-0860",
+     "B3": "Montajes Delicias",
+     "C3": {
+      "fecha": "2026-09-15"
+     },
+     "A4": "FV-0871",
+     "B4": "Electricidad Lacasa",
+     "C4": {
+      "fecha": "2026-10-06"
+     },
+     "A5": "FV-0880",
+     "B5": "Reformas Actur",
+     "C5": {
+      "fecha": "2026-10-14"
+     },
+     "A6": "FV-0893",
+     "B6": "Climatización Ribera",
+     "C6": {
+      "fecha": "2026-10-30"
+     },
+     "G2": {
+      "fecha": "2026-11-16"
+     }
+    },
+    "formatos": {
+     "C2:C6": "fecha",
+     "G2": "fecha",
+     "D2:D6": "0"
+    },
+    "anchos": {
+     "B": 20,
+     "C": 13,
+     "D": 15,
+     "G": 11
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "solucion": "=$G$2-(C2+30)",
+   "alternativas": [
+    "=$G$2-C2-30",
+    "=G$2-C2-30",
+    "=$G$2-30-C2",
+    "=G$2-(C2+30)"
+   ],
+   "errores_tipicos": [
+    "=G2-(C2+30)",
+    "=$G$2-C2",
+    "=(C2+30)-$G$2",
+    "=$G$2-C2+30"
+   ],
+   "variantes": [
+    {
+     "G2": {
+      "fecha": "2026-11-30"
+     }
+    },
+    {
+     "C3": {
+      "fecha": "2026-10-01"
+     }
+    }
+   ],
+   "formato_resultado": "0",
+   "pistas": [
+    "Dos pasos: el vencimiento es C2+30; los días de retraso son hoy menos ese vencimiento.",
+    "Pon el vencimiento entre paréntesis: `G2-(C2+30)`. Como G2 es la misma para todas las filas, fíjala con $ (tecla F4).",
+    "`=$G$2-(C2+30)`"
+   ],
+   "explicacion": "Moncayo lleva **46** días de retraso y Delicias **32**: son las dos primeras llamadas de Marta. Un número negativo, como el −13 de Climatización Ribera, significa que **aún no ha vencido**: le quedan 13 días. Acabas de montar una lista de cobros pendientes como las que se revisan cada semana en cualquier empresa."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m4l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Para Excel, el 01/01/1900 es el número 1. ¿Qué número guarda para el **05/01/1900**?",
+   "aceptadas": [
+    "5",
+    "5,0"
+   ],
+   "explicacion": "El 5: es el quinto día de la cuenta. Toda fecha es el número de días desde el 01/01/1900."
+  },
+  {
+   "id": "n2m4l1-q2",
+   "modo": "predice",
+   "enunciado": "Una factura es del **30/11/2026** y se paga a 31 días. ¿Qué fecha devuelve **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": {
+      "fecha": "2026-11-30"
+     },
+     "A2": "Vence"
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "B": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=B1+31",
+   "formato_resultado": "fecha",
+   "explicacion": "Fecha + días = otra fecha: el 31/12/2026. Excel sabe que noviembre tiene 30 días."
+  },
+  {
+   "id": "n2m4l1-q3",
+   "modo": "cinta",
+   "enunciado": "La columna «Días» sale con aspecto de fecha (01/02/1900). ¿Dónde cambias el formato a General?",
+   "ruta": [
+    "Inicio",
+    "Número",
+    "Formato de número"
+   ],
+   "explicacion": "Inicio › Número › Formato de número, y eliges **General**. El número que había debajo (32) aparece tal cual."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es una fecha para Excel?",
+   "dorso": "Un número: los días desde el 01/01/1900 (día 1). El 16/11/2026 es el 46342. Lo que ves es el formato."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué da restar dos fechas? ¿Y sumar 30 a una fecha?",
+   "dorso": "Restar: los días entre ellas (=D2-C2). Sumar: la fecha 30 días después (=C2+30)."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "HOY: cómo se escribe y qué hace",
+   "dorso": "=HOY(), con paréntesis vacíos. Da la fecha de hoy y se actualiza sola al abrir el libro."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Escribir la fecha de hoy fija, que no cambie",
+   "dorso": "Ctrl+, (coma)"
+  },
+  {
+   "tipo": "error",
+   "frente": "Una resta de fechas da #¡VALOR!. ¿Qué miras primero?",
+   "dorso": "Si alguna fecha es texto (por ejemplo, en formato americano). Se ve pegada a la izquierda de la celda."
+  }
+ ]
+}

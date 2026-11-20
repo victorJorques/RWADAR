@@ -1,0 +1,179 @@
+{
+  "id": "n5",
+  "nombre": "Modelos, cuadros de mando y automatización",
+  "lema": "Varias tablas que se entienden entre sí, una página que dirección lee en un minuto y tareas que se hacen solas.",
+  "horas": 18,
+  "equivale_a": "ICAEW Creator (con algo de Developer); ofertas de analista o controller con Power Query y Power BI; FUNDAE IFCT153; temas de MO-220 y MO-230 (paneles, previsión, presupuesto frente a real); MO-211 4.1 (gráficos avanzados) y 3.6 (macros); puente al PL-300",
+  "puede_hacer_sola": [
+    "Junta, recorta y reordena matrices con APILARV, TOMAR, EXCLUIR y ELEGIRCOLS, y resume con AGRUPARPOR y PIVOTARPOR si su Excel lo tiene.",
+    "Crea funciones propias con LAMBDA y sabe cuándo no merece la pena.",
+    "Monta un modelo de datos con una tabla de hechos, tablas de clientes, productos y calendario, y sus relaciones.",
+    "Escribe medidas DAX básicas (totales, márgenes, comparación con el año anterior) y las usa en tablas dinámicas.",
+    "Define con quien lo pide 4-6 indicadores con su fórmula, su fuente y su meta.",
+    "Elige y hace gráficos de cascada, Pareto, histograma o cajas y bigotes, y una previsión con sentido crítico.",
+    "Monta un cuadro de mando de una página, accesible, controlado por segmentaciones y que se actualiza con un clic.",
+    "Graba y retoca una macro sencilla, sabe qué son Office Scripts, Power Automate, Python en Excel y Power BI, y cuándo usar cada uno."
+  ],
+  "modulos": [
+    {
+      "id": "n5m1",
+      "titulo": "Matrices modernas y funciones propias",
+      "objetivos": [
+        "es capaz de juntar, recortar y elegir partes de matrices",
+        "es capaz de resumir con AGRUPARPOR y PIVOTARPOR o con su plan B",
+        "es capaz de crear y documentar una función propia con LAMBDA"
+      ],
+      "lecciones": [
+        {
+          "id": "n5m1l1",
+          "titulo": "Juntar y recortar matrices",
+          "minutos": 14,
+          "conceptos": ["APILARV y APILARH: poner rangos uno debajo o al lado del otro", "TOMAR y EXCLUIR: quedarse con las primeras o últimas filas, o quitarlas", "ELEGIRCOLS y ELEGIRFILAS: escoger columnas por posición", "DIVIDIRTEXTO: un texto en varias celdas", "combinarlas con ORDENAR, UNICOS y FILTRAR", "desde Excel 2024 y Microsoft 365; plan B: Power Query (Anexar, Dividir columna)", "operador de rango desbordado (D2#)"],
+          "funciones": ["APILARV", "APILARH", "TOMAR", "EXCLUIR", "ELEGIRCOLS", "ELEGIRFILAS", "DIVIDIRTEXTO", "ORDENAR", "UNICOS", "FILTRAR"],
+          "errores_conceptuales": ["Apilar rangos con las columnas en distinto orden", "Usar estas funciones en un libro que abrirá alguien con Excel 2021 o anterior", "Incluir los encabezados dos veces al apilar"],
+          "ejercicios_vivos": ["=APILARV(A2:C5;E2:G4) ventas de dos delegaciones", "=TOMAR(ORDENAR(A2:C12;3;-1);5) top 5", "=EXCLUIR(A1:C12;1) los datos sin la fila de títulos", "=ELEGIRCOLS(A2:E12;1;5) cliente e importe", "=DIVIDIRTEXTO(A2;\";\")", "=UNICOS(ELEGIRCOLS(APILARV(A2:C5;E2:G4);1)) clientes de las dos listas", "arregla el error: APILARV que incluye los títulos de la segunda tabla"],
+          "otros_ejercicios": ["test: tu destinatario tiene Excel 2021: ¿qué plan B usas para APILARV?", "recuerda: escribe un top 3 con TOMAR y ORDENAR"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n5m1l2",
+          "titulo": "Resúmenes con fórmula: AGRUPARPOR y PIVOTARPOR",
+          "minutos": 13,
+          "conceptos": ["AGRUPARPOR(filas; valores; función): un resumen tipo tabla dinámica que se recalcula solo", "PIVOTARPOR(filas; columnas; valores; función): tabla de doble entrada", "solo en Microsoft 365; en otras versiones da #¿NOMBRE?", "plan B que funciona en todas: UNICOS + SUMAR.SI.CONJUNTO, o la tabla dinámica", "cuándo una fórmula de resumen es mejor que una tabla dinámica (se actualiza sin pulsar Actualizar, alimenta otros cálculos) y cuándo no"],
+          "funciones": ["AGRUPARPOR", "PIVOTARPOR", "UNICOS", "SUMAR.SI.CONJUNTO"],
+          "errores_conceptuales": ["Prometer un resumen con AGRUPARPOR a quien usa Excel 2024 de pago único", "Rehacer a mano lo que la tabla dinámica ya hace bien"],
+          "ejercicios_vivos": ["plan B en vivo: =UNICOS(B2:B12) y al lado =SUMAR.SI.CONJUNTO($D$2:$D$12;$B$2:$B$12;G2#) (resumen por zona que crece solo)", "=ORDENAR(UNICOS(C2:C12)) cabecera de familias para un resumen de doble entrada"],
+          "otros_ejercicios": ["test: AGRUPARPOR frente a tabla dinámica frente a SUMAR.SI.CONJUNTO (elige la herramienta)", "test: ¿en qué versiones funciona PIVOTARPOR?", "test: qué devuelve AGRUPARPOR en Excel 2021", "ordenar: argumentos de AGRUPARPOR para ventas por zona", "recuerda: test plan B compatible"],
+          "practica_excel_real": "En Microsoft 365: resumen de ventas por delegación con AGRUPARPOR y matriz delegación × familia con PIVOTARPOR; comprobar que coinciden con la tabla dinámica del nivel 3 y hacer el plan B con UNICOS + SUMAR.SI.CONJUNTO."
+        },
+        {
+          "id": "n5m1l3",
+          "titulo": "Funciones propias con LAMBDA",
+          "minutos": 13,
+          "conceptos": ["LAMBDA(parámetros; cálculo): una fórmula con nombre que se reutiliza", "se prueba primero en una celda: =LAMBDA(base;tipo;base*(1+tipo))(B2;$F$1)", "se guarda en el Administrador de nombres (p. ej. TOTAL_CON_IVA) con un comentario que explica qué hace", "desde Excel 2024 y Microsoft 365", "documentarla en el Léame; cuándo no conviene (la usarán personas que no la conocen)", "LET primero, LAMBDA solo si se repite mucho"],
+          "funciones": ["LAMBDA", "LET"],
+          "errores_conceptuales": ["Crear funciones propias que nadie más sabe mantener", "No documentar qué espera cada parámetro"],
+          "ejercicios_vivos": ["=LET(base;B2;tipo;$F$1;base*(1+tipo)) la versión LET que después se convierte en LAMBDA (LAMBDA se practica en Excel real)", "=LET(v;C2;p;D2;SI(p=0;0;(v-p)/p)) desviación % lista para convertir en función"],
+          "otros_ejercicios": ["cinta: Fórmulas > Nombres definidos > Administrador de nombres", "test: qué hace =LAMBDA(x;x*2)(5)", "ordenar: probar una LAMBDA en una celda, guardarla con nombre, documentarla y usarla", "test: LAMBDA frente a LET frente a columna auxiliar", "recuerda: test dónde se guarda una LAMBDA"],
+          "practica_excel_real": "Crear en Excel 2024 o Microsoft 365 la función DESVIACION_PCT(real; presupuesto) con LAMBDA en el Administrador de nombres, documentarla y usarla en el control presupuestario."
+        }
+      ],
+      "practica_excel": "Libro n5-matrices.xlsx: unir con APILARV las ventas de tres delegaciones, sacar el top 10 de clientes con TOMAR y ORDENARPOR, el resumen por familia con AGRUPARPOR (o su plan B) y una LAMBDA documentada para el margen %. Controles: Σ ventas apiladas = Σ de las tres hojas; ventas del cliente n.º 1."
+    },
+    {
+      "id": "n5m2",
+      "titulo": "Modelo de datos y Power Pivot",
+      "objetivos": [
+        "es capaz de crear un modelo de datos en estrella con su tabla calendario",
+        "es capaz de escribir medidas DAX básicas",
+        "es capaz de calcular márgenes, comparaciones con el año anterior y saldos sin errores de agregación"
+      ],
+      "lecciones": [
+        {
+          "id": "n5m2l1",
+          "titulo": "Varias tablas que se entienden: el modelo de datos",
+          "minutos": 15,
+          "conceptos": ["tabla de hechos (ventas: una fila por línea) y tablas de dimensiones (clientes, productos, calendario)", "relaciones de uno a varios por una clave única", "esquema en estrella en vez de una tabla gigante con BUSCARX", "cargar en el Modelo de datos desde Power Query o desde una Tabla", "Datos > Herramientas de datos > Relaciones / Administrar modelo de datos; Power Pivot (complemento COM) solo en Excel para Windows", "tabla calendario continua (todos los días del periodo) marcada como tabla de fechas", "tabla dinámica desde el modelo de datos"],
+          "funciones": [],
+          "errores_conceptuales": ["Relación de varios a varios por una clave repetida", "No tener tabla calendario y no poder comparar periodos", "Mac o Excel para la web: no hay Power Pivot (plan B: una tabla única con Power Query)"],
+          "ejercicios_vivos": ["=CONTAR.SI($A$2:$A$20;A2)>1 comprobar que la clave de la dimensión es única antes de relacionar", "=SECUENCIA(30;1;FECHA(2026;11;1)) días de un mes para entender la tabla calendario"],
+          "otros_ejercicios": ["cinta: Datos > Herramientas de datos > Relaciones", "cinta: Datos > Herramientas de datos > Administrar modelo de datos", "test: tabla de hechos frente a dimensión (clasificar seis tablas)", "test: por qué la clave de clientes debe ser única", "ordenar: pasos para montar un modelo en estrella", "recuerda: test tabla calendario"],
+          "practica_excel_real": "Cargar en el Modelo de datos las tablas Ventas, Clientes, Productos y Calendario (Power Query), relacionarlas en estrella y hacer una tabla dinámica de ventas por familia y trimestre desde el modelo. Requiere Excel para Windows."
+        },
+        {
+          "id": "n5m2l2",
+          "titulo": "Medidas DAX básicas",
+          "minutos": 15,
+          "conceptos": ["medida = cálculo que se evalúa con los filtros de la tabla dinámica", "funciones DAX en inglés aunque Excel esté en español: SUM, DIVIDE, CALCULATE, COUNTROWS, DISTINCTCOUNT", "Ventas := SUM(Ventas[Importe]); Margen % := DIVIDE([Margen]; [Ventas])", "comprobar en tu equipo si DAX separa con «;» o «,» (depende de la configuración)", "medida frente a columna calculada", "dar formato a la medida y documentarla"],
+          "funciones": [],
+          "errores_conceptuales": ["Hacer columnas calculadas para lo que debe ser una medida (porcentajes que se suman)", "Dividir sin DIVIDE y obtener errores con ceros", "Escribir los nombres de DAX en español"],
+          "ejercicios_vivos": ["contraste en vivo: =SUMA(D2:D12)/SUMA(C2:C12) (margen % de un grupo) frente a =PROMEDIO(E2:E12) (media de márgenes): por qué la medida divide totales"],
+          "otros_ejercicios": ["test: medida o columna calculada para «margen % por familia»", "test: por qué DIVIDE en vez de «/»", "ordenar: crear la medida Margen % y usarla en una tabla dinámica", "respuesta_corta: función DAX que suma una columna (SUM)", "test: CALCULATE para «ventas de la delegación Norte»", "recuerda: test medida frente a columna", "recuerda: respuesta_corta DIVIDE"],
+          "practica_excel_real": "Crear las medidas Ventas, Coste, Margen, Margen %, N.º de clientes (DISTINCTCOUNT) y Ventas Norte (CALCULATE) y comprobar cada una con SUMAR.SI.CONJUNTO en una hoja de controles."
+        },
+        {
+          "id": "n5m2l3",
+          "titulo": "Comparar periodos y no sumar lo que no se suma",
+          "minutos": 14,
+          "conceptos": ["comparar con el año anterior gracias a la tabla calendario (SAMEPERIODLASTYEAR o CALCULATE con el calendario)", "acumulado del año", "variación en € y en %", "medidas semiaditivas: el saldo de clientes o el stock no se suman entre meses (se toma el último)", "recuentos distintos (clientes) que no se suman entre delegaciones", "calcular sobre totales: Σ margen / Σ ventas"],
+          "funciones": ["SUMAR.SI.CONJUNTO", "FECHA.MES"],
+          "errores_conceptuales": ["Sumar tres fotos de saldo de fin de mes y dar 5,4 M€ en vez de 1,8 M€", "Sumar clientes únicos por delegación para obtener el total de clientes", "Comparar con el año anterior con meses incompletos"],
+          "ejercicios_vivos": ["=SUMAR.SI.CONJUNTO(C2:C30;A2:A30;\">=\"&FECHA.MES($H$1;-12);A2:A30;\"<\"&FECHA.MES($H$2;-12)) ventas del mismo periodo del año anterior", "=(H4-H5)/H5 variación % con el año anterior", "=MAX.SI.CONJUNTO(A2:A30;B2:B30;G2) fecha del último saldo para tomar la foto final", "predice: suma de tres saldos de fin de mes frente al último"],
+          "otros_ejercicios": ["test: el saldo del trimestre sale el triple: ¿qué pasa?", "test: por qué no se suman los clientes únicos de cada delegación", "recuerda: escribe la variación % con el año anterior"],
+          "practica_excel_real": "Añadir al modelo las medidas Ventas año anterior, Variación %, Ventas acumuladas del año y Saldo de clientes (último de cada periodo) y comprobar dos cifras a mano."
+        }
+      ],
+      "practica_excel": "Libro n5-modelo-ventas.xlsx: modelo en estrella con calendario, medidas DAX documentadas (ventas, margen %, clientes, año anterior, variación) y hoja de controles que cuadra cada medida con SUMAR.SI.CONJUNTO. Controles: ventas 2026, margen % de una familia, variación % de octubre."
+    },
+    {
+      "id": "n5m3",
+      "titulo": "Cuadros de mando y automatización",
+      "objetivos": [
+        "es capaz de definir indicadores con quien los pide",
+        "es capaz de elegir y hacer gráficos avanzados y una previsión prudente",
+        "es capaz de montar un cuadro de mando de una página que se actualiza",
+        "es capaz de grabar y retocar una macro sencilla",
+        "es capaz de decidir entre Power Query, macro, Office Scripts, Python en Excel o Power BI"
+      ],
+      "lecciones": [
+        {
+          "id": "n5m3l1",
+          "titulo": "Indicadores que sirven: el diccionario de KPI",
+          "minutos": 13,
+          "conceptos": ["un KPI responde a una decisión: ¿qué hará dirección con él?", "4-6 indicadores, no 25", "diccionario de indicadores: nombre, definición exacta, fórmula, fuente, frecuencia, responsable, meta y semáforo", "pactar la definición antes de calcular (ventas con o sin devoluciones, margen sobre coste real o de tarifa)", "comparar siempre con algo: meta, año anterior, mes anterior", "indicadores con datos personales: solo agregados"],
+          "funciones": ["SI.CONJUNTO", "SUMAR.SI.CONJUNTO"],
+          "errores_conceptuales": ["Medir lo que es fácil en vez de lo que importa", "Indicador sin definición: cada director lo calcula distinto", "Semáforos con umbrales escritos dentro de la fórmula"],
+          "ejercicios_vivos": ["=SI.CONJUNTO(B2>=$F$1;\"Verde\";B2>=$F$2;\"Ámbar\";VERDADERO;\"Rojo\") semáforo con umbrales de la meta", "=SUMA(C2:C12)/SUMA(B2:B12) margen % sobre totales", "=B2/C2-1 cumplimiento frente a objetivo"],
+          "otros_ejercicios": ["abierta: redacta la definición del KPI «ticket medio» con su fórmula, fuente y meta", "test: ¿cuál es un buen KPI para la reunión de comerciales?", "test: qué falta en «Ventas: las del mes»", "recuerda: test cuántos indicadores"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n5m3l2",
+          "titulo": "Gráficos avanzados y previsión",
+          "minutos": 14,
+          "conceptos": ["Cascada: del resultado presupuestado al real paso a paso", "Pareto (gráfico estadístico): pocos clientes hacen casi todas las ventas", "Histograma y Cajas y bigotes: cómo se reparten los importes o los plazos de cobro", "Embudo y Proyección solar: cuándo sí y cuándo no", "Hoja de previsión (Datos > Previsión): intervalo de confianza y estacionalidad, con sentido crítico", "accesibilidad: texto alternativo, contraste, etiquetas directas"],
+          "funciones": [],
+          "errores_conceptuales": ["Gráfico vistoso que no responde a ninguna pregunta", "Tomar la previsión como una promesa (sin datos suficientes o con un mes atípico)", "Ejes cortados que exageran"],
+          "ejercicios_vivos": ["=SUMA($B$2:B2)/SUMA($B$2:$B$12) % acumulado para entender el Pareto (copiar_a)"],
+          "otros_ejercicios": ["cinta: Insertar > Gráficos > Insertar gráfico de cascada, embudo, cotizaciones, superficie o radial", "cinta: Insertar > Gráficos > Insertar gráfico estadístico", "cinta: Datos > Previsión > Hoja de previsión", "test: elige el gráfico para cinco mensajes", "test: qué no te dice una previsión", "recuerda: test cascada"],
+          "practica_excel_real": "Hacer un gráfico de cascada del presupuesto al resultado real, un Pareto de clientes y una Hoja de previsión de ventas para 6 meses, con texto alternativo en los tres."
+        },
+        {
+          "id": "n5m3l3",
+          "titulo": "Montar el cuadro de mando",
+          "minutos": 15,
+          "conceptos": ["boceto en papel antes de construir", "estructura: datos (Power Query), modelo o cálculos, y una hoja de presentación", "tarjetas de indicador con valor, comparación y semáforo", "segmentaciones conectadas a todas las tablas dinámicas (Conexiones de filtro)", "títulos dinámicos con & y TEXTO", "minigráficos de tendencia", "lo importante arriba a la izquierda; sin 3D ni adornos", "una página A4 apaisada, PDF para quien use Mac o iPad", "Actualizar todo y la comprobación maestra visible («Controles: OK»)"],
+          "funciones": ["TEXTO", "SI"],
+          "errores_conceptuales": ["Diez gráficos en una página", "Depender solo del color para el semáforo", "Panel que solo sabe actualizar quien lo hizo"],
+          "ejercicios_vivos": ["=\"Ventas de \"&TEXTO($H$1;\"mmmm aaaa\")&\": \"&TEXTO(B2;\"#.##0 €\") título dinámico", "=SI(B5;\"Controles: OK\";\"Controles: REVISAR\") aviso en la cabecera"],
+          "otros_ejercicios": ["cinta: Analizar tabla dinámica > Filtrar > Conexiones de filtro", "cinta: Insertar > Minigráficos > Línea", "test: qué va arriba a la izquierda", "ordenar: pasos para montar el cuadro de mando", "test: la directora usa iPad: ¿qué le entregas?", "recuerda: test accesibilidad del semáforo"],
+          "practica_excel_real": "Montar un cuadro de mando comercial de una página (ventas, margen %, clientes, ticket medio, comparación con el año anterior y top 10) desde el modelo del módulo anterior, con segmentaciones de delegación y escala de tiempo, títulos dinámicos, texto alternativo y PDF."
+        },
+        {
+          "id": "n5m3l4",
+          "titulo": "Grabar y retocar una macro",
+          "minutos": 15,
+          "conceptos": ["mostrar la pestaña Programador (Archivo > Opciones > Personalizar cinta de opciones)", "Grabar macro: nombre sin espacios, descripción, dónde guardarla", "Usar referencias relativas", "guardar como Libro de Excel habilitado para macros (.xlsm)", "Seguridad de macros y Habilitar contenido: no abrir macros de origen desconocido", "asignar la macro a un botón o forma", "Editor de Visual Basic (Alt+F11): cambiar un rango o un texto; copiar un módulo a otro libro", "una macro no se deshace con Ctrl+Z: copia antes", "un Excel con macros que genera los libros registro de facturas sería un sistema de facturación (VERI*FACTU): no montarlo"],
+          "funciones": [],
+          "errores_conceptuales": ["Guardar la macro en .xlsx y perderla", "Grabar con referencias absolutas una tarea que debe aplicarse a la fila activa", "Macro que sobrescribe datos sin copia de seguridad"],
+          "ejercicios_vivos": [],
+          "otros_ejercicios": ["cinta: Programador > Código > Grabar macro", "cinta: Programador > Código > Usar referencias relativas", "cinta: Programador > Código > Seguridad de macros", "test: guardas con macros como .xlsx: ¿qué pasa?", "test: llega un adjunto con macros de un remitente desconocido", "ordenar: grabar una macro que da formato al informe y exporta a PDF, y asignarla a un botón", "respuesta_corta: atajo del Editor de Visual Basic (Alt+F11)", "recuerda: test .xlsm"],
+          "practica_excel_real": "Grabar una macro que aplica el formato estándar al informe mensual y lo exporta a PDF, guardarla en .xlsm, asignarla a un botón y retocar en el editor la ruta o el nombre del PDF."
+        },
+        {
+          "id": "n5m3l5",
+          "titulo": "¿Macro, Power Query, Office Scripts, Python o Power BI?",
+          "minutos": 13,
+          "conceptos": ["Power Query para traer y limpiar datos repetidamente (sin programar)", "macro VBA para tareas de escritorio sobre el propio libro", "Office Scripts (pestaña Automatizar: Grabar acciones) y Power Automate para tareas en la nube o programadas; requieren Microsoft 365 de empresa o educación con OneDrive para la Empresa; no en Excel 2021/2024 de pago único", "Python en Excel (=PY): análisis avanzado en la nube de Microsoft; no en móvil ni en equipos con activación compartida", "Power BI o una base de datos cuando: más de un millón de filas, muchas fuentes, muchas personas escribiendo, permisos por persona o auditoría obligatoria", "Excel tiene 1.048.576 filas como máximo"],
+          "funciones": [],
+          "errores_conceptuales": ["Programar una macro para lo que Power Query hace sin código", "Forzar Excel cuando ya no es la herramienta (principio n.º 4 del ICAEW)"],
+          "ejercicios_vivos": [],
+          "otros_ejercicios": ["cinta: Automatizar > Herramientas de scripts de Office > Grabar acciones", "test: elige la herramienta para seis encargos (limpiar CSV cada mes, formato y PDF, enviar un correo cada lunes, 3 millones de filas, análisis estadístico, varias personas escribiendo a la vez)", "test: ¿tienes Office Scripts con Excel 2024 de pago único?", "test: Python en Excel en un escritorio remoto compartido", "test: cuándo pasar a Power BI", "respuesta_corta: n.º máximo de filas de una hoja (1.048.576)", "recuerda: test elige la herramienta"],
+          "practica_excel_real": null
+        }
+      ],
+      "practica_excel": "Proyecto de salida del nivel (≈ 6 h, con rúbrica y defensa breve): cuadro de mando comercial mensual a partir de tres fuentes relacionadas (ventas, clientes, productos) con Power Query, modelo de datos, medidas DAX, segmentaciones, gráfico avanzado, controles, PDF de una página y un botón (macro) o un script que exporta el PDF. Controles: ventas del mes, margen %, n.º de clientes, variación con el año anterior."
+    }
+  ],
+  "examen_nivel": "45 min, sin pistas, 80 % a la primera: APILARV/TOMAR/ORDENARPOR/DIVIDIRTEXTO en vivo, plan B de AGRUPARPOR con UNICOS + SUMAR.SI.CONJUNTO, LET convertible en LAMBDA, cálculos sobre totales y del mismo periodo del año anterior; preguntas de criterio sobre hechos y dimensiones, relaciones, medida frente a columna, semiaditivas, KPI bien definidos, elegir gráfico avanzado, previsión, .xlsm y seguridad de macros, y elegir entre Power Query, macro, Office Scripts, Python y Power BI."
+}

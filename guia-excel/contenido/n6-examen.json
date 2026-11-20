@@ -1,0 +1,575 @@
+{
+ "nivel": "n6",
+ "titulo": "Examen del nivel 6",
+ "intro": "Un proyecto de principio a fin, a prueba: quince situaciones reales de Electro Cierzo, del encargo a la entrega, sin pistas. Con 12 aciertos de 15 (80 %) consigues la insignia y el certificado del nivel 6.",
+ "umbral": 0.8,
+ "preguntas": [
+  {
+   "id": "n6-x1",
+   "modo": "test",
+   "leccion": "n6m1l1",
+   "multiple": true,
+   "pregunta": "Lucía te escribe: «¿Me preparas las horas extra del trimestre para la reunión del jueves con el comité de empresa?». Marca las preguntas que tienes que hacerle **sí o sí** antes de empezar.",
+   "opciones": [
+    {
+     "texto": "¿Qué se va a decidir o a explicar en esa reunión con estas cifras?",
+     "correcta": true,
+     "porque": "Imprescindible: de la decisión depende qué cifras llevas y cuáles sobran."
+    },
+    {
+     "texto": "¿Qué trimestre miramos, y lo quieres por departamento o por persona?",
+     "correcta": true,
+     "porque": "Es el alcance. «El trimestre» puede ser julio-septiembre o los últimos tres meses, y el detalle cambia todo el informe."
+    },
+    {
+     "texto": "¿Cuento todas las horas extra o solo las pagadas, sin las compensadas con descanso?",
+     "correcta": true,
+     "porque": "Es una definición: con una u otra regla sale una cifra distinta. Se pacta antes de calcular."
+    },
+    {
+     "texto": "¿Prefieres un gráfico de barras o de columnas?",
+     "correcta": false,
+     "porque": "Es un detalle que decides tú. No gastes una pregunta en eso."
+    },
+    {
+     "texto": "¿Lo hago con una tabla dinámica o con fórmulas?",
+     "correcta": false,
+     "porque": "La herramienta es cosa tuya: a Lucía le importan las cifras y lo que significan."
+    }
+   ],
+   "explicacion": "Decisión, alcance y definiciones: eso se pregunta. El cómo (herramienta, colores) es tu terreno."
+  },
+  {
+   "id": "n6-x2",
+   "modo": "formula",
+   "leccion": "n6m1l1",
+   "enunciado": "Andrés te encarga revisar las tarifas de los proveedores y quieres darle un plazo con fundamento. En **E2** calcula la estimación de tres puntos de la fase «Recoger las tarifas» a partir de sus horas optimista, probable y pesimista. Tu fórmula se copiará a E3:E4, y E5 suma el total.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fase",
+     "B1": "Optimista (h)",
+     "C1": "Probable (h)",
+     "D1": "Pesimista (h)",
+     "E1": "Estimación (h)",
+     "A2": "Recoger las tarifas",
+     "B2": 2,
+     "C2": 4,
+     "D2": 9,
+     "A3": "Comparar con las compras del año",
+     "B3": 1,
+     "C3": 2,
+     "D3": 5,
+     "A4": "Preparar el resumen para Andrés",
+     "B4": 3,
+     "C4": 5,
+     "D4": 13,
+     "A5": "Total",
+     "E5": "=SUMA(E2:E4)"
+    },
+    "formatos": {
+     "B2:E5": "num2"
+    },
+    "anchos": {
+     "A": 30
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E4"
+   ],
+   "solucion": "=(B2+4*C2+D2)/6",
+   "alternativas": [
+    "=(B2+C2*4+D2)/6",
+    "=(4*C2+B2+D2)/6"
+   ],
+   "errores_tipicos": [
+    "=B2+4*C2+D2/6",
+    "=(B2+C2+D2)/3",
+    "=PROMEDIO(B2:D2)",
+    "=(B2+4*C2+D2)/3"
+   ],
+   "variantes": [
+    {
+     "C2": 6
+    },
+    {
+     "D4": 20
+    }
+   ],
+   "formato_resultado": "num2",
+   "explicacion": "4,50 h, 2,33 h y 6,00 h: unas 12,8 horas en total. Optimista + 4 × probable + pesimista, todo entre 6, con la suma entre paréntesis."
+  },
+  {
+   "id": "n6-x3",
+   "modo": "formula",
+   "leccion": "n6m1l2",
+   "enunciado": "Andrés te pasa la exportación de pedidos a proveedores de octubre, con una fila por pedido. En **G2** calcula cuántos números de pedido **distintos** hay (columna A).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Proveedor",
+     "D1": "Importe",
+     "F1": "Comprobación",
+     "G1": "Resultado",
+     "F2": "Pedidos distintos",
+     "A2": "PC26-0381",
+     "B2": {
+      "fecha": "2026-10-01"
+     },
+     "C2": "Cables del Ebro, S.A.",
+     "D2": 1840.5,
+     "A3": "PC26-0382",
+     "B3": {
+      "fecha": "2026-10-02"
+     },
+     "C3": "Iluminación Moncayo, S.L.",
+     "D3": 2615,
+     "A4": "PC26-0383",
+     "B4": {
+      "fecha": "2026-10-06"
+     },
+     "C4": "Mecanismos Aragón, S.L.",
+     "D4": 930.4,
+     "A5": "PC26-0384",
+     "B5": {
+      "fecha": "2026-10-08"
+     },
+     "C5": "Cables del Ebro, S.A.",
+     "D5": 1275,
+     "A6": "PC26-0385",
+     "B6": {
+      "fecha": "2026-10-13"
+     },
+     "C6": "Tubos y Canal Norte, S.L.",
+     "D6": 688.9,
+     "A7": "PC26-0385",
+     "B7": {
+      "fecha": "2026-10-13"
+     },
+     "C7": "Tubos y Canal Norte, S.L.",
+     "D7": 688.9,
+     "A8": "PC26-0386",
+     "B8": {
+      "fecha": "2026-10-16"
+     },
+     "C8": "Iluminación Moncayo, S.L.",
+     "D8": 3120.75,
+     "A9": "PC26-0387",
+     "B9": {
+      "fecha": "2026-10-21"
+     },
+     "C9": "Protecciones Eléctricas Jalón, S.L.",
+     "D9": 1490,
+     "A10": "PC26-0388",
+     "B10": {
+      "fecha": "2026-10-27"
+     },
+     "C10": "Mecanismos Aragón, S.L.",
+     "D10": 754.2,
+     "A11": "PC26-0389",
+     "B11": {
+      "fecha": "2026-10-29"
+     },
+     "C11": "Cables del Ebro, S.A.",
+     "D11": 2205.6
+    },
+    "formatos": {
+     "B2:B11": "fecha",
+     "D2:D11": "eur"
+    },
+    "anchos": {
+     "C": 30
+    }
+   },
+   "objetivo": "G2",
+   "solucion": "=CONTARA(UNICOS(A2:A11))",
+   "errores_tipicos": [
+    "=CONTARA(A2:A11)",
+    "=CONTAR(A2:A11)",
+    "=CONTARA(UNICOS(C2:C11))"
+   ],
+   "variantes": [
+    {
+     "A7": "PC26-0390"
+    }
+   ],
+   "explicacion": "9 pedidos distintos en 10 filas: el PC26-0385 está dos veces. Se anota y se pregunta a Andrés antes de quitar nada, y siempre en una copia."
+  },
+  {
+   "id": "n6-x4",
+   "modo": "test",
+   "leccion": "n6m1l2",
+   "pregunta": "Pediste los pedidos de octubre. Al perfilar la exportación, la primera fecha es el 29/09/2026 y la última, el 30/10/2026. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Anoto que se han colado pedidos de septiembre y pregunto a quien hizo la exportación si deben estar, sin tocar el original.",
+     "correcta": true,
+     "porque": "Eso es: la primera fecha te ha avisado de que el periodo no es el pedido. Quien responde por los datos te dirá si es un error de la exportación o algo que hay que tener en cuenta."
+    },
+    {
+     "texto": "Borro las filas de septiembre del archivo que me han pasado y sigo.",
+     "correcta": false,
+     "porque": "Corriges sin avisar y, además, sobre el original: si resulta que debían estar, ya no tienes con qué comprobarlo."
+    },
+    {
+     "texto": "Nada: son pocas filas y no cambian mucho el total.",
+     "correcta": false,
+     "porque": "No sabes cuánto cambian hasta mirarlo, y el total ya no cuadrará con el del programa. Lo que se ve hoy no explota el día de la entrega."
+    },
+    {
+     "texto": "Cambio esas fechas a octubre para que el periodo quede completo.",
+     "correcta": false,
+     "porque": "Es inventarse datos: esos pedidos son de septiembre. Se anota y se pregunta."
+    }
+   ],
+   "explicacion": "Los extremos de las fechas dicen si el periodo es el que pediste. Si no lo es: anotar, preguntar y trabajar en una copia."
+  },
+  {
+   "id": "n6-x5",
+   "modo": "test",
+   "leccion": "n6m1l3",
+   "pregunta": "Cada lunes llega el mismo CSV del stock del almacén, siempre con los mismos problemas (espacios de más y fechas como texto), y Andrés quiere el resumen esa misma mañana. ¿Sobre qué montas el informe?",
+   "opciones": [
+    {
+     "texto": "Power Query: importa y limpia el CSV, y cada lunes basta con Actualizar todo.",
+     "correcta": true,
+     "porque": "Proporcionado: el problema se repite igual cada semana, y los pasos de limpieza se repiten solos."
+    },
+    {
+     "texto": "Copiar y pegar el CSV cada lunes y limpiarlo con fórmulas nuevas.",
+     "correcta": false,
+     "porque": "Funciona, pero haces a mano cada semana lo que Power Query haría solo, y cada repetición es una ocasión de equivocarte."
+    },
+    {
+     "texto": "El modelo de datos con relaciones.",
+     "correcta": false,
+     "porque": "El modelo de datos es para varias tablas relacionadas. Aquí hay un solo archivo que limpiar."
+    },
+    {
+     "texto": "Una tabla dinámica directamente sobre el CSV, sin limpiar.",
+     "correcta": false,
+     "porque": "Con espacios de más y fechas como texto, la tabla dinámica separará productos iguales y no podrá agrupar por fechas. Primero se limpia."
+    }
+   ],
+   "explicacion": "La herramienta más sencilla que resuelva el problema de hoy y el de la semana que viene. Si se repite, automatiza."
+  },
+  {
+   "id": "n6-x6",
+   "modo": "formula",
+   "leccion": "n6m1l3",
+   "enunciado": "Andrés quiere cada mes el total de compras del mes que indica **F2** (el día 1 del mes; ahora, octubre de 2026). En **F3** calcula ese total de forma que, si mañana escribe 01/11/2026 en F2, F3 cambie sola. No escribas el mes dentro de la fórmula.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Proveedor",
+     "C1": "Importe",
+     "E1": "Parámetro",
+     "F1": "Valor",
+     "E2": "Mes del informe",
+     "F2": {
+      "fecha": "2026-10-01"
+     },
+     "E3": "Compras del mes",
+     "A2": {
+      "fecha": "2026-09-29"
+     },
+     "B2": "Cables del Ebro, S.A.",
+     "C2": 1520,
+     "A3": {
+      "fecha": "2026-10-01"
+     },
+     "B3": "Iluminación Moncayo, S.L.",
+     "C3": 2340.5,
+     "A4": {
+      "fecha": "2026-10-14"
+     },
+     "B4": "Mecanismos Aragón, S.L.",
+     "C4": 815.3,
+     "A5": {
+      "fecha": "2026-10-30"
+     },
+     "B5": "Cables del Ebro, S.A.",
+     "C5": 1960,
+     "A6": {
+      "fecha": "2026-11-02"
+     },
+     "B6": "Tubos y Canal Norte, S.L.",
+     "C6": 640.75,
+     "A7": {
+      "fecha": "2026-11-16"
+     },
+     "B7": "Iluminación Moncayo, S.L.",
+     "C7": 2875.2,
+     "A8": {
+      "fecha": "2026-11-30"
+     },
+     "B8": "Protecciones Eléctricas Jalón, S.L.",
+     "C8": 1105.4,
+     "A9": {
+      "fecha": "2026-12-01"
+     },
+     "B9": "Cables del Ebro, S.A.",
+     "C9": 990
+    },
+    "formatos": {
+     "A2:A9": "fecha",
+     "C2:C9": "eur",
+     "F2": "mmmm aaaa",
+     "F3": "eur"
+    },
+    "anchos": {
+     "B": 30,
+     "E": 16
+    }
+   },
+   "objetivo": "F3",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&F2;A2:A9;\"<=\"&FIN.MES(F2;0))",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&F2;A2:A9;\"<\"&FECHA.MES(F2;1))",
+    "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&F2;A2:A9;\"<\"&FECHA(AÑO(F2);MES(F2)+1;1))"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&FECHA(2026;10;1);A2:A9;\"<=\"&FECHA(2026;10;31))",
+    "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&F2)",
+    "=SUMAR.SI.CONJUNTO(C2:C9;A2:A9;\">=\"&F2;A2:A9;\"<\"&FIN.MES(F2;0))",
+    "=SUMA(C3:C5)"
+   ],
+   "variantes": [
+    {
+     "F2": {
+      "fecha": "2026-11-01"
+     }
+    },
+    {
+     "F2": {
+      "fecha": "2026-09-01"
+     }
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "5.115,80 € en octubre y 4.621,35 € en noviembre, con la misma fórmula: desde el día 1 (F2) hasta el último día del mes (FIN.MES(F2;0)). Así el informe se actualiza cambiando una sola celda."
+  },
+  {
+   "id": "n6-x7",
+   "modo": "test",
+   "leccion": "n6m2l1",
+   "pregunta": "Revisas la hoja de comisiones. De D2 a D7 las fórmulas son `=C2*$G$2`, `=C3*$G$2`…, pero **D8** tiene `=C8*0,035`. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Preguntas a Javier por qué esa fila es distinta. Si esa persona tiene otra comisión pactada, la pones en una celda a la vista; si no, copias a D8 la fórmula de la columna.",
+     "correcta": true,
+     "porque": "Rompe dos reglas: una fórmula distinta en una sola fila y un número escrito a mano. Antes de tocarla se pregunta: puede ser un error o un acuerdo que no está escrito en ningún sitio."
+    },
+    {
+     "texto": "Nada: si D8 da la cifra correcta, la hoja está bien.",
+     "correcta": false,
+     "porque": "Hoy quizá. Cuando G2 cambie, D8 se quedará con su 3,5 % y nadie lo verá."
+    },
+    {
+     "texto": "La cambias a `=C8*$G$2` sin decir nada: está claro que es un error.",
+     "correcta": false,
+     "porque": "Quizá era una comisión pactada con ese comercial. Corregir en silencio puede crear otro error; se pregunta y se anota."
+    },
+    {
+     "texto": "La pintas de amarillo para que se note.",
+     "correcta": false,
+     "porque": "El color avisa a quien mira la hoja, pero el número sigue escondido dentro de la fórmula y no cambiará con G2."
+    }
+   ],
+   "explicacion": "La misma fórmula en toda la columna y ningún número que pueda cambiar dentro de una fórmula. Lo que se sale de la regla, se pregunta."
+  },
+  {
+   "id": "n6-x9",
+   "modo": "formula",
+   "leccion": "n6m2l2",
+   "enunciado": "Antes de enviar a Marta el informe de cobros de noviembre, en **F5** escribe una sola celda de control que diga «OK» solo si se cumplen las tres cosas: el total del informe (C9) se separa del programa (F2) menos de un céntimo, hay tantas facturas en A2:A8 como dice F3 y ninguna fila de B2:B8 se ha quedado sin cliente. Si falla cualquiera, «REVISAR».",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Cobrado",
+     "B9": "Total informe",
+     "C9": "=SUMA(C2:C8)",
+     "E2": "Total según el programa",
+     "F2": 12342.55,
+     "E3": "Facturas según el programa",
+     "F3": 7,
+     "E5": "Control",
+     "A2": "FV-2026-0431",
+     "B2": "Instalaciones Moncayo, S.L.",
+     "C2": 2420,
+     "A3": "FV-2026-0436",
+     "B3": "Electricidad Arrabal, S.L.",
+     "C3": 1331.55,
+     "A4": "FV-2026-0440",
+     "B4": "Montajes Ribera, S.L.",
+     "C4": 3025,
+     "A5": "FV-2026-0443",
+     "B5": "Electro Pirineo, S.L.",
+     "C5": 786.5,
+     "A6": "FV-2026-0447",
+     "B6": "Clima y Luz Huesca, S.L.",
+     "C6": 1694,
+     "A7": "FV-2026-0452",
+     "B7": "Reformas Delicias, S.L.",
+     "C7": 968,
+     "A8": "FV-2026-0455",
+     "B8": "Instalaciones Segre, S.L.",
+     "C8": 2117.5
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "B": 28,
+     "E": 26
+    }
+   },
+   "objetivo": "F5",
+   "solucion": "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0);\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(Y(ABS(F2-C9)<0,01;CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0);\"OK\";\"REVISAR\")",
+    "=SI(Y(CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0;ABS(C9-F2)<0,01);\"OK\";\"REVISAR\")",
+    "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3;CONTARA(B2:B8)=CONTARA(A2:A8));\"OK\";\"REVISAR\")"
+   ],
+   "errores_tipicos": [
+    "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+    "=SI(O(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0);\"OK\";\"REVISAR\")",
+    "=SI(Y(C9=F2;CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0);\"OK\";\"REVISAR\")",
+    "=SI(Y(C9-F2<0,01;CONTARA(A2:A8)=F3;CONTAR.BLANCO(B2:B8)=0);\"OK\";\"REVISAR\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "B5": null
+    },
+    {
+     "B5": "Electro Pirineo, S.L.",
+     "F2": 12342.554
+    },
+    {
+     "F2": 20000
+    },
+    {
+     "F2": 12342.55,
+     "F3": 8
+    }
+   ],
+   "explicacion": "OK: 7 facturas, todas con cliente, y 12.342,55 € como el programa. `Y` exige las tres a la vez, `ABS(…)<0,01` da la tolerancia de un céntimo y `CONTAR.BLANCO(…)=0` vigila los huecos."
+  },
+  {
+   "id": "n6-x10",
+   "modo": "test",
+   "leccion": "n6m2l2",
+   "pregunta": "Tu informe de cobros cuadra al céntimo con el total del programa. ¿Por qué comprobar además el **número** de facturas?",
+   "opciones": [
+    {
+     "texto": "Porque dos errores pueden compensarse: una factura que falta y otra contada dos veces por el mismo importe dan el mismo total.",
+     "correcta": true,
+     "porque": "Exacto: el total no lo ve, el recuento sí (sale una factura de más o de menos según cuál sea el caso, y con la clave encuentras cuál)."
+    },
+    {
+     "texto": "No hace falta: si el total cuadra al céntimo, es imposible que falte una factura.",
+     "correcta": false,
+     "porque": "Es posible: basta con que otro error la compense. Por eso se controlan el importe y el recuento."
+    },
+    {
+     "texto": "Porque el programa de gestión suele contar mal las facturas.",
+     "correcta": false,
+     "porque": "El programa es la referencia con la que cuadras. El recuento no es para vigilar al programa, sino a tu informe."
+    }
+   ],
+   "explicacion": "Importe y recuento, siempre juntos: cada uno atrapa errores que el otro no ve."
+  },
+  {
+   "id": "n6-x11",
+   "modo": "test",
+   "leccion": "n6m2l3",
+   "multiple": true,
+   "pregunta": "Marta decide que, desde diciembre, cada cobro cuente en el mes en que entra en el banco y no en el de la factura. Ya has cambiado las fórmulas. ¿Qué más tienes que hacer en el libro? Marca todo lo necesario.",
+   "opciones": [
+    {
+     "texto": "Cambiar el supuesto en el Léeme.",
+     "correcta": true,
+     "porque": "Sí: un Léeme que dice una cosa y una hoja que hace otra es peor que no tener Léeme."
+    },
+    {
+     "texto": "Añadir una línea al registro de cambios: fecha, qué ha cambiado y por qué, y quién.",
+     "correcta": true,
+     "porque": "Sí: cuando en marzo alguien pregunte por qué noviembre y diciembre no se comparan igual, la respuesta estará escrita."
+    },
+    {
+     "texto": "Nada más: el cambio ya está en las fórmulas.",
+     "correcta": false,
+     "porque": "Las fórmulas no explican por qué. Quien herede el libro no sabrá que la regla cambió."
+    },
+    {
+     "texto": "Guardar una copia del libro llamada «Cobros_NUEVO» para no perder la anterior.",
+     "correcta": false,
+     "porque": "Las copias sueltas acaban en «final_BUENO». En OneDrive o SharePoint, el Historial de versiones guarda las anteriores; el nombre con fecha y versión es para lo que entregas."
+    }
+   ],
+   "explicacion": "Si cambia un supuesto, cambian la fórmula, el Léeme y el registro de cambios. Los tres a la vez."
+  },
+  {
+   "id": "n6-x12",
+   "modo": "test",
+   "leccion": "n6m3l1",
+   "pregunta": "Andrés te pidió analizar qué proveedores entregan tarde. ¿Cuál es la mejor primera línea del correo de entrega?",
+   "opciones": [
+    {
+     "texto": "«De los 412 pedidos de octubre, 37 llegaron tarde, y 21 de ellos son de Tubos y Canal Norte.»",
+     "correcta": true,
+     "porque": "La respuesta en la primera línea, con cifras y con nombre: si Andrés solo lee eso, ya sabe qué pasa y con quién tiene que hablar."
+    },
+    {
+     "texto": "«Te adjunto el análisis de plazos de entrega. Cualquier duda, me dices.»",
+     "correcta": false,
+     "porque": "Le pasa a él el trabajo de sacar las conclusiones."
+    },
+    {
+     "texto": "«He cruzado los pedidos con los albaranes con BUSCARX y he calculado los días de retraso.»",
+     "correcta": false,
+     "porque": "Cuenta cómo lo has hecho, no qué ha salido. Las herramientas interesan a quien mantenga el libro."
+    },
+    {
+     "texto": "«Los resultados están en la celda F12 de la hoja Cálculos.»",
+     "correcta": false,
+     "porque": "Una celda no es una conclusión, y le obliga a abrir el libro para saber qué pasa."
+    }
+   ],
+   "explicacion": "Primero las conclusiones, con su cifra y en lenguaje de negocio; después, el detalle."
+  },
+  {
+   "id": "n6-x13",
+   "modo": "test",
+   "leccion": "n6m3l2",
+   "pregunta": "La gestoría externa que hace las nóminas necesita las horas extra de noviembre de cada persona, con su nombre. ¿Cómo se las envías?",
+   "opciones": [
+    {
+     "texto": "Una copia solo con las columnas que necesita, cifrada con Archivo › Información › Proteger libro › Cifrar con contraseña, y la contraseña por teléfono.",
+     "correcta": true,
+     "porque": "Eso es: solo los datos necesarios, un archivo que sin contraseña no se abre y la llave por otro canal."
+    },
+    {
+     "texto": "El libro completo por correo, con las columnas de DNI y salario ocultas.",
+     "correcta": false,
+     "porque": "Ocultar no es quitar: se muestran con dos clics. Y le mandas datos que no necesita."
+    },
+    {
+     "texto": "Un enlace «Cualquiera» con permiso de edición, para que no tengan problemas al abrirlo.",
+     "correcta": false,
+     "porque": "Lo abre cualquiera que tenga el enlace, también si se lo reenvían, y además puede cambiarlo. Microsoft recomienda evitarlo salvo que sea absolutamente necesario."
+    },
+    {
+     "texto": "La copia cifrada, con la contraseña al final del mismo correo.",
+     "correcta": false,
+     "porque": "Si el correo llega a quien no debe, lleva juntos el archivo y la llave."
+    }
+   ],
+   "explicacion": "Primero, solo lo necesario; después, cifrado con contraseña, y la contraseña por otro canal."
+  }
+ ]
+}

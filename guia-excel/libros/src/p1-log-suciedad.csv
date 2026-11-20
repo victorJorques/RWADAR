@@ -1,0 +1,45 @@
+fila_excel;proveedor;codigo_correcto;texto;precio_tal_cual;unidad;problemas;precio_base_2027_sin_iva
+2;Arnedo;CAB-RZ1K-3G25;Cable RZ1-K 0,6/1 kV 3G2,5;1.12;m;Q08;1.12
+3;Arnedo;CAB-RZ1K-3G15;Cable RZ1-K 0,6/1 kV 3G1,5;0.78;m;Q08;0.78
+4;Arnedo;CAB-H07Z1-6;Cable H07Z1-K 6 mm2;0.69;m;Q08;0.69
+5;Arnedo;CAB-H07Z1-25;Cable H07Z1-K 2,5 mm2;0.31;m;Q08;0.31
+6;Arnedo;CAB-H07Z1-15;Cable H07Z1-K 1,5 mm2;0.21;m;Q08;0.21
+7;Arnedo;CAN-40X60;Canaleta PVC 40x60 (tramo 2 m);3.95;tramo;Q08;3.95
+8;Arnedo;CAN-60X100;Canaleta PVC 60x100 (tramo 2 m);7.6;tramo;Q08;7.6
+9;Arnedo;TUB-M20;Tubo corrugado M20 (rollo 100 m);14.2;rollo;Q08;14.2
+10;Arnedo;CAJ-100;Caja registro 100x100;0.88;ud;Q08;0.88
+11;Arnedo;BRI-200;Bridas 200 mm (bolsa 100);2.35;bolsa;Q08;2.35
+12;Elecvía;CAB-RZ1K-3G15;Manguera RZ1-K 3x1,5 libre de halógenos;89,54 €;rollo 100 m;Q08 Q06 Q15-rollo Q15-IVA;0.74
+13;Elecvía;CAB-RZ1K-3G25;Manguera RZ1-K 3x2,5 libre de halógenos;128,26 €;rollo 100 m;Q08 Q06 Q15-rollo Q15-IVA;1.06
+14;Elecvía;CAJ-100;Caja de registro estanca 100x100;25,41 €;caja 25 ud;Q08 Q06 Q15-caja Q15-IVA empate;0.84
+15;Elecvía;CAN-40X60;Canal PVC blanco 40x60;2,36 €;metro;Q08 Q06 Q15-metro Q15-IVA casi-empate;3.900826
+16;Elecvía;CAB-H07Z1-15;Unipolar H07Z1-K 1x1,5;23,60 €;rollo 100 m;Q08 Q06 Q15-rollo Q15-IVA;0.195041
+17;Elecvía;CAB-H07Z1-6;Unipolar H07Z1-K 1x6;79,86 €;rollo 100 m;Q08 Q06 Q15-rollo Q15-IVA;0.66
+18;Elecvía;TUB-M20;Tubo corrugado reforzado diámetro 20 (rollo 100 m);16,70 €;rollo;Q08 Q06 Q15-IVA;13.801653
+19;Elecvía;CAN-60X100;Canal PVC blanco 60x100;4,48 €;metro;Q08 Q06 Q15-metro Q15-IVA;7.404959
+20;Elecvía;BRI-200;Brida de nailon 200x4,8 (bolsa 100 uds);2,66 €;bolsa;Q08 Q06 Q15-IVA;2.198347
+21;Elecvía;CAB-H07Z1-25;Unipolar H07Z1-K 1x2,5;35,09 €;rollo 100 m;Q08 Q06 Q15-rollo Q15-IVA;0.29
+22;Tormes;CAB-RZ1K-3G15;RZ1K 3G1.5;345.00;bobina 500 m;Q08 Q05 Q15-bobina;0.69
+23;Tormes;TUB-M20;Corrugado M20;consultar;rollo;Q08 Q09-consultar;
+24;Tormes;BRI-200;Bridas 200;;bolsa;Q08 Q09-vacío;
+25;Tormes;CAB-H07Z1-6;H07Z1 6mm;310.00;bobina 500 m;Q08 Q05 Q15-bobina;0.62
+26;Tormes;CAN-40X60;Canaleta 40x60;3.90;tramo;Q08 Q05 casi-empate;3.9
+27;Tormes;CAB-H07Z1-15;H07Z1 1.5mm;92.50;bobina 500 m;Q08 Q05 Q15-bobina;0.185
+28;Tormes;CAN-60X100;Canaleta 60x100;7.55;tramo;Q08 Q05;7.55
+29;Tormes;CAB-RZ1K-3G25;RZ1K 3G2.5;490.00;bobina 500 m;Q08 Q05 Q15-bobina;0.98
+30;Tormes;CAB-H07Z1-25;H07Z1 2.5mm;135.00;bobina 500 m;Q08 Q05 Q15-bobina;0.27
+31;Tormes;CAJ-100;Caja 100x100;0.84;ud;Q08 Q05 empate;0.84
+32;Yesa;CAB-RZ1K-3G15;CABLE RZ1-K 0,6/1KV 3X1,5;760;km;Q08 Q15-km validez;0.7828
+33;Yesa;CAB-RZ1K-3G25;CABLE RZ1-K 0,6/1KV 3X2,5;1090;km;Q08 Q15-km validez;1.1227
+34;Yesa;CAB-H07Z1-25;CABLE H07Z1-K 1X2,5;305;km;Q08 Q15-km validez;0.31415
+35;Yesa;CAN-40X60;CANAL PVC 40X60 TRAMO 2M;3.85;tramo;Q08 validez;3.9655
+36;Yesa;TUB-M20;TUBO CORRUGADO M-20 R/100M;13.9;rollo;Q08 validez;14.317
+37;Yesa;CAB-H07Z1-6;CABLE H07Z1-K 1X6;700;km;Q08 Q15-km validez;0.721
+38;Yesa;CAB-H07Z1-15;CABLE H07Z1-K 1X1,5;205;km;Q08 Q15-km validez;0.21115
+39;Yesa;CAN-60X100;CANAL PVC 60X100 TRAMO 2M;7.4;tramo;Q08 validez;7.622
+40;Yesa;CAJ-100;CAJA REGISTRO 100X100;0.86;ud;Q08 validez;0.8858
+41;Yesa;BRI-200;BRIDA 200MM B/100;2.3;bolsa;Q08 validez;2.369
+44;Arnedo;;Arnedo: portes pagados.;;;Q10 condiciones en texto libre bajo la tabla;
+45;Elecvía;;Elecvía: dto. 5 % si el pedido anual supera 15.000 € (base imponible) · portes 2 % del importe.;;;Q10 condiciones en texto libre bajo la tabla;
+46;Tormes;;Tormes: portes 90 € por envío.;;;Q10 condiciones en texto libre bajo la tabla;
+47;Yesa;;Yesa: portes pagados · precios válidos hasta el 31/12/2026.;;;Q10 condiciones en texto libre bajo la tabla;

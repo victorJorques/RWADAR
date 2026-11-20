@@ -1,0 +1,1466 @@
+[
+ {
+  "id": "curriculo-1",
+  "archivo": "curriculo.md",
+  "items": [
+   {
+    "archivo": "curriculo.md",
+    "linea": 6,
+    "texto": "Leyenda: **[VERIFICADO: url]** = comprobado en fuente primaria (página o PDF oficial leídos el 14/11/2026). **[SIN VERIFICAR]** = dato de fuente secundaria, de un extracto de buscador o deducción propia.",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 56,
+    "texto": "- **Corrección:** se puntúa el estado final del archivo, no los pasos que se siguieron [SIN VERIFICAR: guías de terceros].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 57,
+    "texto": "- **Nota mínima:** 700 sobre 1.000 [SIN VERIFICAR: open-exam-prep.com, Lynda/LinkedIn Learning y otras; Microsoft no lo publica en las páginas consultadas].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 61,
+    "texto": "- **Precio en España:** Microsoft solo indica «Price based on the country or region». No he encontrado un precio oficial en euros [SIN VERIFICAR]. Hay cursos con examen incluido desde unos 100 € (Inesem) [SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 68,
+    "texto": "Nombres de funciones en español es-ES entre paréntesis [SIN VERIFICAR en esta línea: confirmar con la tabla de funciones de la guía y con HyperFormula esES].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 136,
+    "texto": "**Uso en la guía:** sus bloques son un **guion casi literal para los casos prácticos de los niveles 4 a 6**: conciliación, antigüedad de saldos, nómina simplificada, amortizaciones, presupuesto frente a real y previsión de tesorería. Hay que adaptarlos a España: IVA, IRPF y Seguridad Social los aporta otra línea de investigación [SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 145,
+    "texto": "| **Power Pivot / modelo de datos / DAX** | No | FUNDAE tiene una especialidad propia (IFCT153, 60 h) [SIN VERIFICAR: ficha no descargable]; es la base de los cuadros de mando y del paso a Power BI |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 146,
+    "texto": "| **LAMBDA**, funciones de matriz modernas (APILARV, TOMAR, ELEGIRCOLS, DIVIDIRTEXTO, AGRUPARPOR, PIVOTARPOR…) | No (solo LET) | El ICAEW 2026 actualiza la sección de cálculo con «dynamic arrays and LAMBDA» [VERIFICADO: https://www.icaew.com/technical/technology/excel-community/spreadsheet-competency-framework]. Los nombres en español de AGRUPARPOR y PIVOTARPOR están [SIN VERIFICAR] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 148,
+    "texto": "| **IA en Excel (Copilot)** | No | ICAEW 2026 añade **6 competencias sobre uso seguro y eficaz de la IA** [VERIFICADO]. **La función `=COPILOT()` se retiró el 14/09/2026** (MC1454373) y la ayuda queda en el panel de Copilot. **No hay que enseñar esa función.** [SIN VERIFICAR en el Centro de mensajes; consta en https://mc.merill.net/message/MC1454373 y en Windows Central, Neowin y TechRadar] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 151,
+    "texto": "| **Configuración regional** (CSV con `;`, coma decimal, fechas DD/MM, codificación UTF-8 o ANSI al importar) | No | Es un problema diario en España con las exportaciones de ERP y bancos [SIN VERIFICAR: experiencia práctica] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 165,
+    "texto": "- **No he encontrado ningún estudio público y cuantitativo** que mida qué funciones o herramientas de Excel piden las ofertas en España, ni de InfoJobs, ni de Adecco o Infoempleo, ni de Randstad. El informe Infoempleo Adecco de diciembre de 2025 trata de IA y transformación digital, no de Excel [VERIFICADO: https://www.adeccogroup.com/-/media/project/adecco-group/adeccogroup/spain-content/2025-press-releases/2025-12-02-ndp-informe-infoempleo-adecco-ia-transformacion-digital.pdf]. Se han citado cifras como «el 92 % de las ofertas administrativas piden Office avanzado» (atribuida al Informe Infoempleo-Adecco 2025) o «el 78 % de las empresas…» (atribuida a InfoJobs 2025), pero **solo aparecen en webs de academias y no las he encontrado en la fuente original** [SIN VERIFICAR: no usar].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 172,
+    "texto": "- InfoJobs, según extractos de buscador sin fecha: «nivel avanzado excel» 910; «excel alto» 1.009; «excel profesional» 2.281; «conocimientos avanzados excel» 89; «nivel avanzado excel conocimientos power bi» 59; «powerbi» 115; «excel» en Administración de empresas 1.695 [SIN VERIFICAR: InfoJobs bloquea la consulta].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 174,
+    "texto": "- Internacional: Course Report, con más de 12 millones de ofertas tecnológicas de Indeed en EE. UU., encontró Excel en **531.000**, frente a 67.000 de Python y 60.000 de SQL (Infobae, 08/09/2025) [SIN VERIFICAR: fuente secundaria; no he visto el estudio original].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 198,
+    "texto": "| 19 | Analista de Datos Junior y Soporte Funcional · Madrid, remoto (Manpower, jul.–ago. 2026) | Avanzado (**tablas dinámicas, fórmulas complejas**), **Power Query**; **macros/VBA muy valorables**, no obligatorias; Power BI | Power BI | [SIN VERIFICAR: extracto; la página de JobTeaser da 403] |",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "curriculo-2",
+  "archivo": "curriculo.md",
+  "items": [
+   {
+    "archivo": "curriculo.md",
+    "linea": 199,
+    "texto": "| 20 | Analista de datos SAP, logística · Madrid (Helphone) | «Excel avanzado, **Power Query**, o herramientas de extracción SAP como SE16/SQVI» | SAP | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 200,
+    "texto": "| 21 | Analista de Datos Junior · Madrid (XTART) | «Nivel avanzado de Excel (tablas dinámicas, fórmulas complejas…)» y SQL | SQL | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 201,
+    "texto": "| 22 | Técnico/a Jr IT – Excel avanzado / Power BI · Madrid (Baoss) | Tablas dinámicas y fórmulas complejas; **macros valorables** | Power BI | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 202,
+    "texto": "| 23 | Finance Transformation Analyst (Michael Page) | «Strong Excel skills. **Power Query, Power BI** or data mapping experience is a plus» | — | [SIN VERIFICAR: extracto; la oferta da 410] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 203,
+    "texto": "| 24 | Finance Business Partner Southern Europe (Michael Page) | «Advanced Excel skills» | SAP FI&CO; SAP BW, Tableau, Anaplan | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 204,
+    "texto": "| 25 | Controller de Gestión (Hays, vía Jooble) | Informes y visualizaciones con Power BI y Excel; «Dominio de Excel y conocimientos de Power BI» | Power BI | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 205,
+    "texto": "| 26 | Auxiliar administrativo/a · Valencia (Randstad) | «manejo avanzado de excel (tablas dinámicas, fórmulas, informes)»; solo FP Básica | — | [SIN VERIFICAR: la oferta caducó, 410] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 206,
+    "texto": "| 27 | Técnico de aprovisionamiento · Marcilla (Randstad) | «Buen manejo del paquete Excel: análisis, fórmulas, tablas dinámicas» | Business Central | [SIN VERIFICAR: caducada] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 207,
+    "texto": "| 28 | Secretario/a administrativo/a · Oviedo (Randstad) | «Excel avanzado, Word avanzado» | Contaplus / Navision | [SIN VERIFICAR: caducada] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 208,
+    "texto": "| 29 | Administrativo/a con Excel avanzado · Alcobendas (InfoJobs) | Nivel AVANZADO (tablas dinámicas, gráficos, funciones); 2 años de experiencia | — | [SIN VERIFICAR: extracto; InfoJobs bloquea] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 209,
+    "texto": "| 30 | Administrativo/a · El Prat (Jobtoday, extracto) | BUSCARV e **INDICE+COINCIDIR**, tablas dinámicas; **prueba técnica** | — | [SIN VERIFICAR: extracto] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 222,
+    "texto": "| «Excel a nivel usuario», «manejo de Excel», «ofimática a nivel usuario», «Excel u otras hojas de cálculo» | Abrir, rellenar y mantener una hoja; formato; sumas y promedios; ordenar y filtrar; imprimir. Es probable que «nivel usuario» venga de la rejilla de autoevaluación de Europass («usuario básico / independiente / competente») [SIN VERIFICAR] | Recepción, auxiliar, comercial, atención al cliente, almacén | **N1** |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 232,
+    "texto": "- Análisis de Jobsolv sobre 12.842 ofertas de analista de marketing: tablas dinámicas en el 67 %, BUSCARV o INDICE-COINCIDIR en el 54 %, visualización en el 48 % [SIN VERIFICAR: jobsolv.com, metodología poco clara].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 233,
+    "texto": "- ITJobsWatch (Reino Unido, seis meses hasta mayo de 2025): de las ofertas TI que citan PowerPivot, el 92,86 % citan también Power Query [SIN VERIFICAR: extracto].",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "curriculo-3",
+  "archivo": "curriculo.md",
+  "items": [
+   {
+    "archivo": "curriculo.md",
+    "linea": 234,
+    "texto": "- TestGorilla (proveedor de tests, sus propios datos): basándose en Schmidt y Oh, las pruebas de muestra de trabajo predicen el rendimiento mejor (0,54) que las entrevistas no estructuradas (0,38) [SIN VERIFICAR: https://www.testgorilla.com/blog/assess-excel-proficiency/]. Esto apoya que la guía evalúe con tareas reales.",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 245,
+    "texto": "| **TestGorilla «Microsoft Excel (Advanced)»** | 10 min | Opción múltiple; **existe en español** | Formato condicional, fórmulas y referencias avanzadas, **Power Query**, gráficos, grandes volúmenes de datos, automatización, integración | [VERIFICADO: https://testgorilla.com/test-library/role-specific-skills-tests/microsoft-excel-advanced-test]. Catálogo en español: [SIN VERIFICAR: https://www.testgorilla.com/es/catalogo-de-pruebas/habilidades-especificas-del-rol/prueba-de-microsoft-excel-avanzado/] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 247,
+    "texto": "| **SHL «Microsoft Excel 365 (New)»** | unos 35 min | Simulación | Crear y analizar datos, presentar datos de forma visual, compartir, mantener y proteger libros | [SIN VERIFICAR: la URL del catálogo SHL redirige] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 248,
+    "texto": "| **SHL Excel 365 Essentials** | 25 min permitidos, unos 15 de media | Simulación, hasta 20 preguntas | Ordenar y filtrar, funciones y fórmulas simples, formato | [SIN VERIFICAR: revendedor y psychometric-success] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 249,
+    "texto": "| **IBM Kenexa Prove It! Excel** (Normal User / Power User) | Variable | Simulación de Excel, unas 25–30 tareas | Básico, intermedio y avanzado según el nivel; parece que IBM lo está retirando | [SIN VERIFICAR: webs de preparación] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 250,
+    "texto": "| **Prueba práctica propia de empresa o ETT** | 30–60 min | Archivo con datos e instrucciones | Limpiar datos; BUSCARV o BUSCARX; SI; SUMAR.SI.CONJUNTO o CONTAR.SI.CONJUNTO; **tabla dinámica desde la base de datos dada**; gráfico; formato condicional; **dejar la tabla ordenada, sin errores y fácil de entender** | [SIN VERIFICAR: guías de formadores (hashtagcapacitaciones, ninjadelexcel); Jobtoday y Jobitur citan «prueba técnica» o «prueba práctica»] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 251,
+    "texto": "| **Caso o modelo para finanzas** (FP&A, controller, banca) | 60–90 min, a veces hasta 3 h o para casa | Modelo desde cero o completar uno | Búsquedas, sumas con condiciones, **PAGO, VNA, TIR**, **tablas de datos para sensibilidad**, escenarios, cuadres; previsión a 5 años con comprobación de balance en menos de 90 min | [SIN VERIFICAR: guías de preparación y foros (r/excel cuenta una prueba de 1 hora para pricing analyst)] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 258,
+    "texto": "- **«Intermedio» (equivale a N2):** a partir de una tabla de 50 a 100 filas, poner formato de moneda y %, calcular con referencias absolutas (IVA, total), SI para clasificar, SUMAR.SI o CONTAR.SI por categoría, un gráfico de columnas, ordenar y filtrar [SIN VERIFICAR: síntesis de guías].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 259,
+    "texto": "- **«Avanzado» de administración (equivale a N3):** cruzar dos listados (BUSCARX o BUSCARV con coincidencia exacta y control de #N/D), totales con varios criterios, **tabla dinámica** por mes y comercial con porcentajes, **segmentación**, gráfico dinámico, quitar duplicados y separar columnas, **formato condicional** de alertas. En la tabla dinámica se suele pedir una columna nueva o un acumulado [SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 260,
+    "texto": "- **Analista o finanzas (equivale a N4–N5):** Power Query para unir varios archivos, desviación entre presupuesto y real, escenarios, cuadro de amortización, sensibilidad, panel con KPI [SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 261,
+    "texto": "- **Diagnóstico de errores:** encontrar por qué una búsqueda da #N/D (espacios, número guardado como texto) o por qué una tabla dinámica no se actualiza [SIN VERIFICAR: blog de TestGorilla].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 307,
+    "texto": "- La lista completa de las 82 competencias solo está en un panel interactivo de Power BI que no se ha podido leer [SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 324,
+    "texto": "- **ADGG020PO** Excel básico-intermedio, unas 40 h [SIN VERIFICAR: oie.es].",
+    "contexto": "- **Especialidades FUNDAE/SEPE** (catálogo de formación para el empleo):"
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 325,
+    "texto": "- **ADGG021PO** Excel avanzado, **20 h** según la ficha de FUNDAE; otras webs dicen 60 h [SIN VERIFICAR: ficha no descargable, FUNDAE devolvió 503].",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "curriculo-4",
+  "archivo": "curriculo.md",
+  "items": [
+   {
+    "archivo": "curriculo.md",
+    "linea": 326,
+    "texto": "- **ADGG20** «MS Excel 2016 avanzado (accesible)», 25 h, diciembre de 2022 [SIN VERIFICAR].",
+    "contexto": "- **ADGG021PO** Excel avanzado, **20 h** según la ficha de FUNDAE; otras webs dicen 60 h [SIN VERIFICAR: ficha no descargable, FUNDAE devolvió 503]."
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 327,
+    "texto": "- **IFCT153** «Análisis de datos con Excel: Power Query, Power Pivot y Power BI», **60 h**, teleformación, mayo de 2022 [SIN VERIFICAR: https://www.fundae.es/docs/default-source/convocatorias-de-subvenciones/turismo-2023/especialidades-formativas/IFCT153.pdf no se pudo descargar].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 329,
+    "texto": "- **ACTIC (Generalitat de Catalunya):** acreditación oficial de competencias TIC con niveles básico, medio y avanzado. Incluye una competencia de tratamiento de información numérica (hoja de cálculo); en el nivel medio entran rangos, ordenación, filtros, gráficos y «la hoja de cálculo como base de datos» [SIN VERIFICAR: solo materiales de cursos, no la norma].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 339,
+    "texto": "- **CFI, «Excel Skills for Professionals»**, unas 11–12 h: fundamentos, fórmulas para finanzas, preparación de datos y visualización, cuadros de mando. Etiqueta los cursos como «Level 1–4» [VERIFICADO: https://corporatefinanceinstitute.com/specializations/excel-skills-for-professionals; el nivel 3 del curso de fórmulas avanzadas, SIN VERIFICAR].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 521,
+    "texto": "- Matrices modernas: **APILARV, APILARH, ELEGIRCOLS, TOMAR, EXCLUIR, DIVIDIRTEXTO, TEXTOANTES y TEXTODESPUES**, y **AGRUPARPOR y PIVOTARPOR** si están disponibles [nombres en español, SIN VERIFICAR]; **LAMBDA** con nombre (función propia reutilizable, por ejemplo IVA_INCLUIDO).",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 524,
+    "texto": "- **Automatización**: macros VBA sencillas editadas a mano (bucle por las hojas, exportar PDF por cliente) **o** Office Scripts en Excel para la web; saber cuándo conviene Power Query y cuándo una macro [SIN VERIFICAR: disponibilidad de Office Scripts según la licencia].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 554,
+    "texto": "8. **Cuidar el riesgo y el cumplimiento**: datos personales (RGPD: minimizar, no compartir de más, quitar columnas sensibles antes de enviar) [SIN VERIFICAR: detalle legal en otra línea]; vínculos y macros; copias de seguridad; uso responsable de la IA (ICAEW 2026).",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 616,
+    "texto": "- **Hoja en vivo de la web (fórmulas en español):** N0–N3 en lo que se refiere a fórmulas (operadores, referencias, SUMA… SI, SUMAR.SI.CONJUNTO, BUSCARV, INDICE/COINCIDIR, fechas, texto). **Antes de prometer ejercicios en vivo, comprobar en HyperFormula 3.5.0 esES** si BUSCARX, FILTRAR, ORDENAR, UNICOS, SECUENCIA, LET, SI.CONJUNTO, CAMBIAR, MAX.SI.CONJUNTO, DIA.LAB y UNIRCADENAS existen y con qué nombre, y cómo trata el desbordamiento de las matrices dinámicas [SIN VERIFICAR: es tarea de la línea técnica].",
+    "contexto": ""
+   },
+   {
+    "archivo": "curriculo.md",
+    "linea": 683,
+    "texto": "**Secundarias o no verificadas (citadas con [SIN VERIFICAR]):**",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "pedagogia-1",
+  "archivo": "pedagogia.md",
+  "items": [
+   {
+    "archivo": "pedagogia.md",
+    "linea": 6,
+    "texto": "Leyenda: **[VERIFICADO: url]** = comprobado en la fuente primaria (artículo, PDF del autor o página oficial leídos hoy). **[VERIFICADO-MOTOR]** = probado hoy en la hoja de práctica real (`app/motor.js` + HyperFormula 3.5.0, scripts en `research/work/ped_probe*.cjs`). **[SIN VERIFICAR]** = dato de resumen secundario, de un extracto de buscador o deducción propia.",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 23,
+    "texto": "10. **Una pantalla, una idea, y las instrucciones junto a la hoja.** Tener que ir y venir entre instrucciones y programa carga la memoria de trabajo (atención dividida). [SIN VERIFICAR: Chandler y Sweller 1996] La hoja en vivo debe estar en la misma pantalla que el enunciado. En el Excel real, las instrucciones van dentro del propio libro (hoja «Instrucciones»).",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 24,
+    "texto": "11. **Tareas completas de oficina desde el nivel 1.** Cada nivel acaba en una tarea con encargo real: un correo con ambigüedades, unos datos con problemas y una entrega con correo. La práctica de piezas sueltas (atajos, funciones) va en el repaso, no en lugar de la tarea. [SIN VERIFICAR: 4C/ID, van Merriënboer y Kirschner; minimalismo de Carroll]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 26,
+    "texto": "13. **Pedir su seguridad antes de comprobar.** Una pregunta de un toque: «¿Qué seguridad tienes? Poca / Bastante / Total». Los errores cometidos con mucha seguridad se corrigen mejor cuando se explican (efecto de hipercorrección). [SIN VERIFICAR: Butterfield y Metcalfe 2001] Además, así se le puede enseñar su calibración.",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 28,
+    "texto": "15. **Motivación adulta.** Explicar para qué le sirve en el trabajo, darle autonomía para saltar lo que ya sabe, y que el progreso visible sea de **habilidades** («ya sabes cruzar dos listados»), no de puntos. Evitar lo infantil. Las rachas diarias desmotivan cuando se rompen, así que conviene más una meta semanal con «comodín». [SIN VERIFICAR: Silverman y Barasch 2023]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 29,
+    "texto": "16. **Plan «si-entonces» desde el primer día.** Por ejemplo: «Si son las 21:00 de lunes, miércoles o jueves, entonces hago una lección». Las intenciones de implementación tienen d = 0,65 en 94 estudios. [VERIFICADO: Gollwitzer 2006 citando a Gollwitzer y Sheeran 2006] Una revisión de 2024 con 642 pruebas, corregida por sesgo, da efectos menores (d de 0,15 a 0,35). [SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 47,
+    "texto": "- [VERIFICADO parcial: https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html (confirma alta para tests y distribuida, y baja para resumir, subrayar y releer); el resto de la clasificación está SIN VERIFICAR en el texto completo]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 48,
+    "texto": "- Pretest: intentar responder antes de que se explique mejora el aprendizaje posterior, aunque se falle. [SIN VERIFICAR: Richland, Kornell y Kao 2009, *J. Exp. Psych.: Applied* 15(3); Kornell, Hays y Bjork 2009]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 63,
+    "texto": "- Reaprendizaje sucesivo: practicar hasta acertar varias veces en una sesión y repetir en sesiones espaciadas. Es la combinación más potente para cursos reales. [SIN VERIFICAR: Rawson, Dunlosky y Sciartelli 2013, *Educ. Psych. Review* 25(4)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 94,
+    "texto": "- Autoexplicación: pedir que explique por qué funciona un paso. Metaanálisis con 64 informes: g = 0,55. [SIN VERIFICAR: Bisra et al. 2018, *Educ. Psych. Review* 30(3)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 115,
+    "texto": "- En aprendizaje de un programa informático, integrar las instrucciones en un solo soporte evita la atención dividida entre manual y pantalla. Un manual modificado sin ordenador llegó a ser el doble de rápido sin pérdida de rendimiento. [SIN VERIFICAR: Chandler y Sweller 1996, *Applied Cognitive Psychology* 10(1); Martin-Michiellot y Mendelsohn 2001]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 121,
+    "texto": "- [SIN VERIFICAR: Mayer, *Cambridge Handbook of Multimedia Learning*, 2.ª ed. 2014]",
+    "contexto": "- Señalización: resaltar lo importante."
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 122,
+    "texto": "- Vídeos para enseñar programas: 8 pautas, con mejor motivación, destreza y retención a la semana. Por ejemplo: vídeos cortos, que ella controle el ritmo, que imiten la interfaz real y que pueda practicar justo después. [SIN VERIFICAR: van der Meij y van der Meij 2013, *Technical Communication* 60(3)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 136,
+    "texto": "- Van der Kleij, Feskens y Eggen (2015), *Review of Educational Research* 85(4). Feedback en entornos informáticos: explicativo 0,49, dar la respuesta correcta 0,32, solo «bien/mal» 0,05. El inmediato fue mejor para aprendizaje de bajo nivel. [SIN VERIFICAR: cifras del resumen, vía resúmenes secundarios]",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "pedagogia-2",
+  "archivo": "pedagogia.md",
+  "items": [
+   {
+    "archivo": "pedagogia.md",
+    "linea": 138,
+    "texto": "- Hipercorrección: los errores cometidos con mucha seguridad se corrigen más a menudo tras el feedback, porque la sorpresa capta la atención. [SIN VERIFICAR: Butterfield y Metcalfe 2001, *JEP: LMC* 27(6)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 154,
+    "texto": "- **Fallo productivo** (Sinha y Kapur 2021, *Review of Educational Research*). Resolver primero y recibir la explicación después, frente a recibirla primero: g = 0,36 en 53 estudios y 166 comparaciones. Es mayor si se aplica con fidelidad. **Favorece explicar primero** en niños pequeños y en habilidades generales. [SIN VERIFICAR: resúmenes de https://www.x-mol.com/paper/1406031499744456704 y phys.org]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 166,
+    "texto": "- Programas de aprendizaje por dominio: efectos positivos en 108 evaluaciones controladas, con un efecto medio de unas 0,5 desviaciones típicas. [SIN VERIFICAR la cifra: Kulik, Kulik y Bangert-Drowns 1990, *Review of Educational Research* 60(2)] Otras síntesis dan de 0,04 a 0,60, así que no hay una cifra estable. [SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 182,
+    "texto": "- Ericsson, Krampe y Tesch-Römer (1993). La práctica deliberada tiene objetivo concreto, nivel justo por encima del actual, feedback inmediato y repetición con corrección. [SIN VERIFICAR en esta sesión]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 183,
+    "texto": "- La práctica deliberada explica bastante menos de lo que se decía: el 26 % de la varianza en juegos, el 21 % en música, el 18 % en deportes, el 4 % en educación y menos del 1 % en profesiones. Son 88 estudios con más de 11.000 participantes. [SIN VERIFICAR: Macnamara, Hambrick y Oswald 2014, *Psychological Science*, vía ScienceDaily]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 198,
+    "texto": "- **Minimalismo de Carroll**, nacido de formar a gente en programas de oficina: orientarse a la acción (que haga tareas reales pronto), anclar en tareas de su trabajo, apoyar el reconocer y recuperarse de errores, y apoyar el «leer para hacer». [SIN VERIFICAR: van der Meij y Carroll 1995, *Technical Communication* 42(2), vía resúmenes]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 228,
+    "texto": "- **Predecir antes de pulsar Intro** (`predice`). Obliga a tener un modelo mental de lo que hará Excel y deja al descubierto los errores de concepto. Es el «predecir-observar-explicar» clásico. [SIN VERIFICAR: White y Gunstone 1992]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 233,
+    "texto": "- **Estilos de aprendizaje** (visual, auditivo…): sin respaldo. No se usan para personalizar. [SIN VERIFICAR en esta sesión; consenso: Pashler et al. 2008]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 254,
+    "texto": "| Duración total N0-N6 | Unas 100-140 h, incluidos proyectos [SIN VERIFICAR; estimación propia] | La especialización de Macquarie son 107 h para 4 cursos y no llega a autonomía en proyectos. [VERIFICADO: https://www.coursera.org/specializations/excel] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 313,
+    "texto": "| **Chandoo** (Excel School) | 6 módulos de Excel avanzado más 1 de cuadros de mando. Unos 70 vídeos y más de 50-60 libros de ejemplo. Deberes con soluciones y «class projects». Recomienda seguir el orden. [SIN VERIFICAR: páginas comerciales de chandoo.org] | Aprender **desmontando libros reales** y proyectos de cuadro de mando | Libros de solución con fórmulas reales para «desmontar» (el `-solucion.xlsx`) y un proyecto de cuadro de mando en N5 |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 314,
+    "texto": "| **MyOnlineTrainingHub** (Mynda Treacy) | Curso *Excel Expert* por sesiones numeradas, con «piezas pequeñas de 2-5 minutos», libros y datos de práctica, foro y certificado. [SIN VERIFICAR: myonlinetraininghub.com, páginas comerciales] | Lecciones cortas, foro de dudas y rutas separadas: Excel, Power Query, cuadros de mando y Power BI | Ruta clara después de N4 (Power Query y Power Pivot) y la «Consulta» de la app como foro |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 315,
+    "texto": "| **Leila Gharani** (XelPlus) | *Excel Essentials for the Real World* para empezar, más un curso aparte de ejercicios. Cubre fórmulas, tablas dinámicas y Power Query, y los últimos temarios incluyen Copilot. [SIN VERIFICAR: courses.xelplus.com, Udemy, listados universitarios] | «Mundo real»: casos de oficina y ejercicios separados de la teoría | Un banco de ejercicios aparte (la «hoja libre» y los retos) y relevancia laboral explícita |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 317,
+    "texto": "| **GCFGlobal / LearnFree** | Tutorial por lecciones: interfaz, celdas, formato, fórmulas, gráficos, tablas… [SIN VERIFICAR: no se pudo leer el índice actual; el sitio redirige a learnfree.org] | Gratuito y **muy de cero** | El nivel de detalle de N0: abrir, guardar, seleccionar, filas y columnas |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 318,
+    "texto": "| **Ken Puls** (Excelguru; libro con Miguel Escobar *Master Your Data with Power Query in Excel and Power BI*, 2.ª ed. 2021) | 20 capítulos, de «Power Query Fundamentals» a lógica condicional (cap. 14), fechas y horas (18), optimización (19) y actualización automática (20). [SIN VERIFICAR: índice parcial, perlego.com y muestra del editor] | Power Query enseñado como **flujo repetible**: importar, transformar, cargar y actualizar el mes siguiente | En N4-N5, que cada práctica de Power Query termine con «llega el mes siguiente: sustituye el archivo y pulsa Actualizar» |",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "pedagogia-3",
+  "archivo": "pedagogia.md",
+  "items": [
+   {
+    "archivo": "pedagogia.md",
+    "linea": 319,
+    "texto": "| **CFI** (Corporate Finance Institute) | Cursos de Excel para finanzas, como *Excel Fundamentals: Formulas for Finance* (unas 2 h 14 min: SUMAR.SI.CONJUNTO, INDICE y COINCIDIR, BUSCARX, SI, VNA y TIR). Evaluación final con test, rellenar huecos y preguntas en Excel en los cursos avanzados. Test gratuito de 20 preguntas con un 80 % de referencia. [SIN VERIFICAR: corporatefinanceinstitute.com] | Orientación a puesto (finanzas) y evaluación con preguntas en Excel | Variantes de proyecto por departamento y examen con tareas en el libro |",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 411,
+    "texto": "- **Datos oficiales**: el triángulo verde aparece al importar o al escribir en celdas con formato texto. [SIN VERIFICAR, extracto de «Fix text-formatted numbers by applying a number format»] Al ordenar, los números guardados como texto se colocan mal. [VERIFICADO: https://support.microsoft.com/en-us/office/sort-data-in-a-range-or-table-62d0b95d-2a90-4610-a6ae-2e545c4a4654]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 437,
+    "texto": "- **Motor**: [SIN VERIFICAR] si `formatear` soporta `[h]:mm`. Si no, hacerlo en Excel real.",
+    "contexto": "- **Explicación**: «Una hora es 1/24 de día. Para pagar horas: =B2*24*precio. Para ver más de 24 h, el formato es [h]:mm.»"
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 442,
+    "texto": "- **Datos oficiales**: al combinar solo queda el contenido de la celda superior izquierda y el de las demás «se elimina». [VERIFICADO: https://support.microsoft.com/en-us/office/merge-and-unmerge-cells-5cbd15d5-9375-4540-907f-c673a93fcedf] El error al ordenar con celdas combinadas de distinto tamaño está documentado en el artículo KB 813974. [SIN VERIFICAR: texto exacto del mensaje en es-ES; https://learn.microsoft.com/en-us/troubleshoot/office/excel/error-sort-a-range-merged-cell]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 451,
+    "texto": "- **Datos oficiales**: si se ordena un rango dentro de otro mayor, Excel avisa y recomienda **ampliar la selección**. Las filas ocultas no se mueven al ordenar. [VERIFICADO: página de ordenar, arriba] Nombre del cuadro en es-ES: [SIN VERIFICAR] «Advertencia antes de ordenar» con «Ampliar la selección» / «Continuar con la selección actual».",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 465,
+    "texto": "- **Caso real**: en el estudio de Reinhart y Rogoff la media cubría las filas 30-44 en lugar de las 30-49, y dejaba fuera a Australia, Austria, Bélgica, Canadá y Dinamarca. [SIN VERIFICAR: coberturas secundarias de Herndon, Ash y Pollin 2013]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 482,
+    "texto": "- **Motor**: ⚠️ con datos **desordenados** y coincidencia aproximada, el motor puede devolver algo distinto de Excel. En la prueba, `=BUSCARV(\"Bilbao\";…)` sobre Zaragoza, Bilbao, Madrid devolvió el valor de Madrid. Excel hace una búsqueda binaria no documentada. [VERIFICADO-MOTOR el resultado del motor; SIN VERIFICAR qué daría Excel] **No hacer `predice` con aproximada sobre datos desordenados.**",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 507,
+    "texto": "- JPMorgan 2012: una fórmula dividía entre la suma en lugar de la media, la volatilidad se infravaloró y el riesgo declarado se redujo a la mitad. [SIN VERIFICAR: prensa sobre el informe del Task Force de 2013]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 508,
+    "texto": "- Salud Pública de Inglaterra, octubre de 2020: 15.841 casos de COVID quedaron fuera del informe diario y del rastreo inmediato. [SIN VERIFICAR: Healthcare IT News y Fetzer y Graeber; el límite de 65.536 filas del .xls tampoco está verificado]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 523,
+    "texto": "- **Motor**: ⚠️ `=CONTAR.SI(E1:E3;\">A2\")` da **#¡VALOR!** en el motor. En Excel da 0, porque compara con el texto \"A2\". [VERIFICADO-MOTOR; SIN VERIFICAR el resultado de Excel, aunque es su comportamiento documentado con criterios de texto] Usarlo como `errores_tipicos`, que debe fallar y falla igual, pero **no como `predice`**.",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 559,
+    "texto": "- **Datos oficiales**: «De forma predeterminada, Excel copia las celdas ocultas o filtradas además de las visibles». La solución es Inicio › Buscar y seleccionar › Ir a Especial › **Solo celdas visibles**. En Excel para la web no existe esa opción, salvo si el rango es una tabla con filtro aplicado. [VERIFICADO: https://support.microsoft.com/en-us/office/copy-visible-cells-only-6e3a1f01-2884-4332-b262-8b814412847e] Atajo Alt+; en es-ES: [SIN VERIFICAR]. Con Autofiltro, Excel de escritorio suele copiar solo lo visible, y las filas ocultas a mano sí se copian. [SIN VERIFICAR: comportamiento exacto por versión; comprobarlo en el `.xlsx` de práctica]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 566,
+    "texto": "- **Datos oficiales**: Excel 365 y 2024 tienen en **Archivo › Opciones › Datos › Conversión automática de datos** cuatro conversiones que se pueden desactivar: quitar ceros a la izquierda, quedarse con 15 cifras y mostrar notación científica, convertir dígitos alrededor de «E» y convertir letras y números seguidos en fecha. Se aplican al abrir .csv/.txt, al escribir y al pegar desde fuera. **No afectan a Power Query.** [VERIFICADO: https://support.microsoft.com/en-us/excel/set-automatic-data-conversions; el nombre exacto del menú en es-ES está SIN VERIFICAR] Excel trabaja con 15 cifras de precisión. [VERIFICADO: artículo de coma flotante]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 567,
+    "texto": "- **Caso real**: el 30,9 % de los artículos científicos con listas de genes en Excel tenían nombres de genes convertidos en fechas (PubMed Central 2014-2020). [SIN VERIFICAR: Abeysooriya et al. 2021, *PLoS Comput. Biol.* 17(7), vía DOAJ]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 573,
+    "texto": "- **Causa**: cree que la tabla dinámica es una fórmula viva. No sabe que se basa en una caché que se actualiza (Datos › Actualizar todo) ni que el origen debe ser una tabla para crecer. [SIN VERIFICAR: que una columna con texto o vacíos haga que el campo vaya por defecto a «Cuenta»; es un comportamiento conocido, sin fuente leída hoy]",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "pedagogia-4",
+  "archivo": "pedagogia.md",
+  "items": [
+   {
+    "archivo": "pedagogia.md",
+    "linea": 580,
+    "texto": "- **Diagnóstico**: `ordenar` los pasos de la consulta, `test` de «¿qué paso cambiarías?» y `excel` con un CSV en formato de EE. UU. y la instrucción «usar Cambiar tipo › Usar configuración regional». [SIN VERIFICAR la etiqueta exacta en es-ES; mirar `excel-moderno.md` y `localizacion.md`]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 591,
+    "texto": "- **Diagnóstico**: «encuentra el error» con 6 filas en las que una tiene `=B5*1,21` y las demás `=B2*(1+$E$1)`. La pista lleva a Mostrar fórmulas (Ctrl+`) o al triángulo verde de «fórmula incoherente». [SIN VERIFICAR el nombre exacto del aviso en es-ES]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 651,
+    "texto": "- **Evidencia**: en programación, los problemas de Parsons (ordenar líneas dadas) son **más rápidos** que escribir o arreglar código y dan aprendizaje similar. [SIN VERIFICAR: Ericson, Margulieux y Rick 2017, Koli Calling]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 658,
+    "texto": "- **Cuidado**: no abusar. Saber *qué* comando hace falta importa más que *dónde* está, porque también se puede buscar con «Buscar» (Alt+Q en Microsoft 365 [SIN VERIFICAR en es-ES]). Desde N2, combinar: «¿Qué comando usarías y dónde está?».",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 761,
+    "texto": "- **Adultos** (andragogía de Knowles): necesitan saber **para qué**, quieren autodirigirse, traen experiencia y se orientan a problemas de su vida y su trabajo. [SIN VERIFICAR: resúmenes de Knowles, *The Adult Learner*]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 762,
+    "texto": "- **Autodeterminación**: la motivación de calidad depende de autonomía, competencia y relación con otras personas. [SIN VERIFICAR en esta sesión: Ryan y Deci 2000]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 763,
+    "texto": "- **Gamificación**: efectos pequeños pero positivos. Cognitivo g = 0,49, motivacional g = 0,36 y conductual g = 0,25. Solo el cognitivo es estable en los estudios rigurosos. [SIN VERIFICAR: Sailer y Homner 2020, *Educ. Psych. Review* 32(1)] En un estudio de 16 semanas, el curso con **clasificación e insignias** tuvo menos motivación intrínseca, satisfacción y nota final que el curso sin ellas. [SIN VERIFICAR: Hanus y Fox 2015, *Computers & Education* 80] Las recompensas sin información pueden minar la motivación intrínseca. [VERIFICADO: Wisniewski et al. 2020, citando a Hattie y Timperley 2007]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 764,
+    "texto": "- **Rachas**: una racha mantenida aumenta la constancia, pero **romperla reduce el compromiso más que si nunca hubiera existido**. El efecto se atenúa si la racha se puede «reparar». [SIN VERIFICAR: Silverman y Barasch 2023, *J. Consumer Research* 49(6)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 765,
+    "texto": "- **Gradiente de meta**: cuanto más cerca se ve la meta, más esfuerzo. Una tarjeta de 12 sellos con 2 ya puestos se completa antes que una de 10 vacía. [SIN VERIFICAR: Kivetz, Urminsky y Zheng 2006, *J. Marketing Research* 43]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 766,
+    "texto": "- **Barras de progreso**: en 32 experimentos de encuestas, una barra constante **no** redujo el abandono. Las que avanzaban rápido al principio sí, y las lentas al principio lo aumentaron. [SIN VERIFICAR: Villar, Callegaro y Yang 2013, *Social Science Computer Review* 31(6)]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 768,
+    "texto": "- **Hábito**: mediana de 66 días para que un hábito diario sea automático, con mucha variación entre personas. [SIN VERIFICAR: Lally et al. 2010, *Eur. J. Social Psychology* 40(6); 66 días es la mediana del subgrupo con buen ajuste]",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 896,
+    "texto": "=CONTAR.SI(E1:E3;\">A2\") → #¡VALOR! en el motor; Excel: 0 [SIN VERIFICAR en Excel]",
+    "contexto": "=FECHA(1900;2;29)→ 61 en el motor; Excel: 60 (falso 29/02/1900)"
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 917,
+    "texto": "12. **Las cifras de estudios marcadas [SIN VERIFICAR]** (Dunlosky completo, Van der Kleij, Sailer y Homner, Hanus y Fox, Mayer, Kulik, Lally…) no deben aparecer como cifras exactas en el texto que lee la alumna. Si se citan, mejor sin número («la investigación muestra que…»).",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 918,
+    "texto": "13. **Casos reales de errores famosos** (JPMorgan, PHE 2020, Reinhart y Rogoff, genes convertidos en fechas) motivan mucho, pero sus detalles están [SIN VERIFICAR] en fuente primaria. Si se usan, contarlos con prudencia y sin cifras dudosas (por ejemplo, el límite de 65.536 filas en el caso PHE).",
+    "contexto": ""
+   },
+   {
+    "archivo": "pedagogia.md",
+    "linea": 962,
+    "texto": "**Solo resúmenes, extractos o fuentes secundarias ([SIN VERIFICAR])**",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "excel-moderno-1",
+  "archivo": "excel-moderno.md",
+  "items": [
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 6,
+    "texto": "Leyenda: **[VERIFICADO: url]** = leído en fuente primaria (Microsoft Learn, support.microsoft.com, blog oficial de Excel en techcommunity, Centro de mensajes de Microsoft 365 a través del espejo mc.merill.net, BOE, INE, AEPD, Comisión Europea) el 14/11/2026. **[SIN VERIFICAR]** = dato de prensa o blog secundario, extracto de buscador o deducción propia.",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 15,
+    "texto": "2. **Excepción importante: los PC con Windows 10.** Microsoft 365 Apps en Windows 10 recibe funciones nuevas y Copilot **solo hasta la versión 2608**; después se queda en 2608 y recibe solo parches de seguridad hasta el **10/10/2028**. [VERIFICADO: https://learn.microsoft.com/en-us/microsoft-365-apps/end-of-support/windows-10-support (27/07/2026)]. En España, Windows 10 seguía en torno al 27–31 % de los PC con Windows a mediados de 2026 [SIN VERIFICAR: extractos de StatCounter, mayo–agosto de 2026].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 19,
+    "texto": "6. **El propio Microsoft avisa de que Copilot se equivoca.** Su página de preguntas frecuentes dice: «Review, edit, and verify anything Copilot creates before you rely on it» y «Avoid using Copilot for decisions in sensitive areas such as finance, legal, or medical topics». [VERIFICADO: https://support.microsoft.com/en-us/Excel/copilot/frequently-asked-questions-about-copilot-in-excel]. En SpreadsheetBench (912 tareas), Agent Mode acertó el **57,2 %** [VERIFICADO: https://techcommunity.microsoft.com/blog/excelblog/building-agent-mode-in-excel/4457320]; las personas, el **71,3 %** [SIN VERIFICAR en primaria: Computerworld].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 20,
+    "texto": "7. **No todo el mundo tiene Copilot dentro de Excel.** Desde el 15/04/2026, en organizaciones de más de 2.000 puestos, quien no tiene licencia de pago perdió Copilot dentro de Word, Excel, PowerPoint y OneNote. En las más pequeñas sigue con «acceso estándar» (Copilot Chat «Basic»), más lento en horas punta. [SIN VERIFICAR en primaria: Computerworld y Office Watch citan MC1253858 y MC1253863; la FAQ oficial confirma las etiquetas «M365 Copilot (Basic)» y «(Premium)»]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 24,
+    "texto": "11. **Un archivo con BUSCARX abierto en Excel 2016 o 2019** enseña la fórmula como `=_xlfn.XLOOKUP(...)` y mantiene el último resultado guardado, pero en cuanto se recalcula da **#¿NOMBRE?**. Borrar el prefijo `_xlfn.` no lo arregla. Las fórmulas de matriz dinámica se ven como fórmulas matriciales antiguas `{=...}`, que no se redimensionan. [VERIFICADO (CSE): https://support.microsoft.com/en-us/excel/dynamic-array-formulas-in-non-dynamic-aware-excel · SIN VERIFICAR en primaria el detalle `_xlfn` → #¿NOMBRE?: Microsoft Q&A y guías; la antigua página de soporte sobre `_xlfn` ahora redirige a la de errores generales]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 25,
+    "texto": "12. **Los archivos guardan las fórmulas en inglés.** El Excel en español las traduce al abrirlas. Por eso un libro hecho en español funciona en un Excel en inglés, pero una fórmula copiada de internet o de ChatGPT en inglés y con comas no funciona si se pega tal cual en un Excel es-ES. [SIN VERIFICAR en primaria: Office Watch 2026; es el comportamiento conocido del formato OOXML]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 30,
+    "texto": "17. **No existe un «editor de fórmulas nuevo» GA en Excel.** Lo que sí hay es el autocompletado de fórmulas con Copilot (desde septiembre de 2025, al principio solo en la web y en inglés de EE. UU.), el complemento gratuito Excel Labs (Advanced Formula Environment) y las tarjetas de error descriptivas (en Insider). [SIN VERIFICAR la ausencia: búsquedas sin resultado el 14/11/2026]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 32,
+    "texto": "19. **En la administración pública conviven Microsoft 365 y el software libre.** La Junta de Andalucía está extendiendo Microsoft 365 con Copilot Chat a sus 44.500 empleados (antes de julio de 2027) [SIN VERIFICAR: Europa Press]. La Xunta de Galicia mantiene un «Plan de Migración do Posto de Traballo a Software Libre» y forma a su personal en LibreOffice en 2026 [VERIFICADO: https://egap.xunta.gal/fichacurso/pdf/FC26158]. La norma estatal de interoperabilidad admite `.ods`, `.xlsx` (ISO/IEC 29500 Strict) y `.csv` [VERIFICADO: BOE-A-2012-13501].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 63,
+    "texto": "| Sep. 2025 | **Autocompletado de fórmulas con Copilot** al escribir «=», al principio solo en Excel para la web y en inglés de EE. UU. | [SIN VERIFICAR: Neowin; anuncio en techcommunity «Introducing formula completion»] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 70,
+    "texto": "| Mar. 2026 | Hoja de ruta: Agent Mode con archivos locales en escritorio y Mac (RM557564, GA prevista para marzo de 2026) | [VERIFICADO el anuncio; SIN VERIFICAR su estado final: https://mc.merill.net/message/RM557564] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 71,
+    "texto": "| 15/04/2026 | En organizaciones de más de 2.000 puestos, los usuarios sin licencia pierden Copilot dentro de Excel. En las más pequeñas queda el «acceso estándar» | [SIN VERIFICAR en primaria: Computerworld y Office Watch, MC1253858 y MC1253863] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 75,
+    "texto": "| Jul. 2026 | Citas en línea, Power BI como fuente, habilidades @brand-kit y @theme-design, y libros con Autoguardado desactivado | [SIN VERIFICAR: espejo de Elevenforum y Windows Report] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 92,
+    "texto": "- **Precio en España (orientativo):** Microsoft 365 Copilot Business, complemento para pymes de hasta 300 usuarios, unos **18,20 €/usuario/mes** sin IVA con pago anual (promoción de 15,60 € hasta el 31/12/2026). Para grandes empresas, unos 26 € [SIN VERIFICAR: blogs y revendedores; la web de Microsoft España devolvió error 503 el 14/11/2026].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 105,
+    "texto": "- Funciona peor en español que en inglés (FAQ). Hay casos documentados de fórmulas con **coma en vez de punto y coma** en configuraciones regionales europeas [SIN VERIFICAR: blog wisechecker; conviene probarlo en un Excel es-ES real antes de afirmarlo en la guía].",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "excel-moderno-2",
+  "archivo": "excel-moderno.md",
+  "items": [
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 109,
+    "texto": "**Qué no enseñar:** la función `=COPILOT()` (retirada), el botón «Copilot» del clic derecho (eliminado por MC1282571), «App Skills» (retirado en febrero de 2026), los nombres de modelos concretos y la «Analizar datos» antigua como si fuera la vía principal (no he encontrado aviso de retirada; su estado en noviembre de 2026 está [SIN VERIFICAR]).",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 124,
+    "texto": "- **Seguridad:** contenedor aislado por libro, **sin acceso a la red** ni al equipo. Solo lee las celdas que se le pasan con `xl()` y solo devuelve valores o imágenes. Los contenedores se destruyen y no guardan datos entre sesiones. Cumple el RGPD y el EU Data Boundary, y los contenedores de clientes de la UE se ejecutan en la UE. En Vista protegida, las fórmulas de Python no se ejecutan por defecto. [VERIFICADO: página de seguridad]. Hay una vulnerabilidad publicada en 2026 (CVE-2026-45459) por la que una imagen generada podía forzar una petición de red [SIN VERIFICAR: un solo blog secundario].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 132,
+    "texto": "| **Casillas de verificación en celda** (Insertar > Casilla; espacio para marcar; guardan VERDADERO/FALSO) | **GA**. Producción desde junio de 2024. Despliegue completo en Canal actual, MEC y SAEC según la actualización de enero de 2026. Web y móvil en producción | Windows, Mac, web, iPad, iOS, Android | **No** (en versiones antiguas se usan controles de formulario de la pestaña Programador) | [VERIFICADO: https://techcommunity.microsoft.com/blog/excelblog/introducing-checkboxes-in-excel/4173561 (nota del 29/01/2026)] · [SIN VERIFICAR la ausencia en 2024: DataCamp y Microsoft Q&A; no figura en las novedades de 2024] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 133,
+    "texto": "| **AGRUPARPOR / PIVOTARPOR / PERCENTOF** | **GA** en el Canal actual desde el 25/09/2024. El blog de octubre de 2024 la da por GA en Windows, Mac y web | Windows, Mac, web | **No** | [SIN VERIFICAR la fecha exacta: extracto del blog oficial · VERIFICADO que no figura en las novedades de Excel 2024] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 134,
+    "texto": "| **RECORTARRANGO** y **referencias recortadas** (`A1:.E10` quita las filas vacías del final; `A1.:E10`, las del principio; `A1.:.E10`, ambas; `A:.A`, una columna entera recortada) | **GA** (desplegada en el Canal actual y el MEC de Windows en marzo de 2025). No admite rangos 3D. En tablas dinámicas se elimina el punto | Microsoft 365 | **No** | [VERIFICADO (sintaxis): https://support.microsoft.com/en-us/excel/functions/trimrange-function · SIN VERIFICAR (fecha y límites): extractos del blog de marzo de 2025 y de My Online Training Hub] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 135,
+    "texto": "| **REGEXPRUEBA / REGEXEXTRACCION / REGEXREEMPLAZAR** (motor PCRE2) | **GA** en Microsoft 365. Vista previa en mayo de 2024; en el Canal actual desde principios de 2025. La opción regex en BUSCARX y COINCIDIRX se anunció «próximamente» | Windows, Mac, web | **No** | [VERIFICADO (vista previa): https://techcommunity.microsoft.com/blog/microsoft365insiderblog/new-regular-expression-regex-functions-in-excel/4226334 · SIN VERIFICAR la fecha de GA: comentarios de usuarios] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 145,
+    "texto": "| **Modo oscuro de la cuadrícula** | Insider (enero de 2025); estado actual [SIN VERIFICAR] | Windows | No | [VERIFICADO: blog de enero de 2025] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 153,
+    "texto": "- **No he encontrado un editor de fórmulas nuevo con disponibilidad general** en 2025–2026 [SIN VERIFICAR la ausencia]. Lo que hay:",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 154,
+    "texto": "- **Autocompletado de fórmulas con Copilot** (formula completion): propone una fórmula entera al escribir «=». Empezó en septiembre de 2025 en la web y en inglés de EE. UU.; al principio no proponía fórmulas que miraran otras hojas. Su llegada a escritorio y a otros idiomas está [SIN VERIFICAR] (blog de Chris Menard: en escritorio y solo con licencia de pago de Copilot).",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 155,
+    "texto": "- **Excel Labs**, complemento gratuito de Microsoft Garage con el «Advanced Formula Environment» (editor con sangrías y nombres) [SIN VERIFICAR su estado en 2026].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 158,
+    "texto": "- **Duplicados:** no existe una función nueva de «detección automática de duplicados» [SIN VERIFICAR la ausencia]. Lo de siempre: Inicio > Formato condicional > Reglas para resaltar celdas > Valores duplicados; Datos > Quitar duplicados; UNICOS (2021 o posterior); CONTAR.SI para marcar repetidos; y Power Query > Quitar duplicados. La habilidad de limpiar datos de Copilot **no menciona duplicados**.",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 162,
+    "texto": "- **Cotizaciones** (Stocks), **Geografía** y **Monedas**, en Datos > Tipos de datos. Solo Excel para Microsoft 365 y Excel para la web; en otras versiones dan **#¡VALOR!**. El español está entre los idiomas admitidos. Los tipos de Wolfram ya no existen. [SIN VERIFICAR en primaria: extracto de https://support.microsoft.com/en-us/excel/linked-data-types-faq-and-tips; Wolfram según una guía secundaria]. HISTORIALCOTIZACIONES necesita conexión y puede dar #¡CONECTAR! u #OCUPADO (`work/funciones.json`).",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 170,
+    "texto": "- **Office Scripts frente a VBA:** VBA solo funciona en escritorio (Windows y Mac); Excel para la web **no ejecuta macros VBA** [SIN VERIFICAR en primaria la frase exacta; la descripción del servicio de Excel para la web y la experiencia general lo confirman]. Office Scripts (TypeScript) funciona en web y escritorio con libros en la nube, y se puede programar con Power Automate.",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 171,
+    "texto": "- **Para la guía (nivel alto):** grabar un script con «Grabar acciones», ejecutarlo y entender que vive en OneDrive, no dentro del libro. Las macros VBA de archivos descargados de internet se **bloquean por defecto** desde 2022 [SIN VERIFICAR en esta sesión; política conocida de Microsoft]. Los .xlsx de práctica de la guía **no deben llevar macros**.",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "excel-moderno-3",
+  "archivo": "excel-moderno.md",
+  "items": [
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 196,
+    "texto": "- La página «Where is Power Pivot» se aplica a Excel para Microsoft 365, 2024, 2021, 2019 y 2016, **todas de Windows**. [VERIFICADO: https://support.microsoft.com/en-us/excel/where-is-power-pivot]. En Excel 2016 solo venía en algunas ediciones (Professional Plus y Excel independiente); desde 2019 y en Microsoft 365, en todas las de Windows [SIN VERIFICAR el detalle por edición].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 197,
+    "texto": "- **En Mac no hay Power Pivot ni Modelo de datos**, y Microsoft dice que no tiene fecha [extracto de la página de Power Query para Mac; SIN VERIFICAR la redacción actual]. Excel para la web puede usar libros con Modelo de datos, pero no crearlo ni actualizar consultas cargadas en él. [VERIFICADO (actualización): tabla de orígenes de datos]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 209,
+    "texto": "- **Web:** gratis con una cuenta Microsoft (con limitaciones) y completo con cualquier plan Microsoft 365. **Business Basic solo incluye la web y el móvil**, sin aplicaciones de escritorio [SIN VERIFICAR en primaria: extracto de microsoft.com]. En la web hay Power Query completo (desde enero de 2026), Office Scripts, Python (empresas), Copilot (los tres modos) y matrices dinámicas. No hay Power Pivot, ni ejecución de VBA, ni creación de conexiones a datos externos fuera de Power Query, y las firmas digitales impiden abrir el libro. [SIN VERIFICAR: extractos de https://support.microsoft.com/en-us/office/differences-between-using-a-workbook-in-the-browser-and-in-excel-f0dc28ed-b85d-4e1d-be6d-5878005db3b6 y de la descripción del servicio]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 231,
+    "texto": "| Vistas de hoja | ✗ | ✗ | ✓ retail / ✗ LTSC 2021 | [SIN VERIFICAR] | ✓ |",
+    "contexto": "| IMAGEN, gráficos con matrices dinámicas | ✗ | ✗ | ✗ | ✓ | ✓ |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 239,
+    "texto": "| Coautoría en tiempo real | ✗ | ✗ | ✓ retail [SIN VERIFICAR] / ✗ LTSC | ✗ LTSC («no real-time collaboration») | ✓ |",
+    "contexto": "| Python (PY), Copilot | ✗ | ✗ | ✗ | ✗ | ✓ (con licencia) |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 240,
+    "texto": "| Compatible con ODF | ODF 1.2 | 1.2/1.3 [SIN VERIFICAR] | 1.3 [SIN VERIFICAR] | **ODF 1.4** | 1.4 |",
+    "contexto": "| Coautoría en tiempo real | ✗ | ✗ | ✓ retail [SIN VERIFICAR] / ✗ LTSC | ✗ LTSC («no real-time collaboration») | ✓ |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 242,
+    "texto": "Fuentes: [VERIFICADO: https://support.microsoft.com/office/faee26b6-ad74-40a8-9304-aa6db716553f (Excel 2024: matrices dinámicas en gráficos, 14 funciones de texto y matrices, IMAGEN, LAMBDA, ODF 1.4) · https://support.microsoft.com/en-US/Excel/what-s-new-in-excel-2021-for-windows (BUSCARX, matrices dinámicas, LET, COINCIDIRX, vistas de hoja no en LTSC 2021) · https://learn.microsoft.com/en-us/office/ltsc/2024/overview · versiones de cada función en `work/funciones.json`]. Los nombres ENFILA, AJUSTARCOLS y ELEGIRFILAS siguen el patrón de sus funciones gemelas: [SIN VERIFICAR] en es-ES.",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 244,
+    "texto": "**Mac:** Excel para Mac con Microsoft 365 tiene las mismas funciones de hoja, pero **no tiene Power Pivot ni Modelo de datos**, y Power Query va con menos conectores. Excel 2021 y 2024 para Mac siguen el mismo corte de funciones que en Windows [SIN VERIFICAR el detalle].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 250,
+    "texto": "| Celda con `=BUSCARX(...)` | La barra de fórmulas enseña `=_xlfn.XLOOKUP(...)` y la celda conserva el último valor guardado. **En cuanto se recalcula** (al cambiar un dato del que depende, al editarla o con un recálculo completo) aparece **#¿NOMBRE?**. Quitar el `_xlfn.` no sirve: esa versión no conoce la función | [SIN VERIFICAR en primaria: Microsoft Q&A https://learn.microsoft.com/en-us/answers/questions/5646692/an-xlfn-prefix-is-displayed-in-front-of-a-function y guías; coincide con lo que la página es-ES de COPILOT describe para una función retirada] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 251,
+    "texto": "| `=FILTRAR(...)` o `=ORDENAR(...)` | Prefijo `_xlfn._xlws.`; el resto, igual | [SIN VERIFICAR: hilo de Tech Community] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 252,
+    "texto": "| `=LET(x;...)` | `_xlfn.LET` y nombres internos con el prefijo `_xlpm.` | [SIN VERIFICAR: hilo de Tech Community] |",
+    "contexto": "| `=FILTRAR(...)` o `=ORDENAR(...)` | Prefijo `_xlfn._xlws.`; el resto, igual | [SIN VERIFICAR: hilo de Tech Community] |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 255,
+    "texto": "| Tipos de datos vinculados | **#¡VALOR!** | [SIN VERIFICAR en primaria: FAQ de tipos de datos] |",
+    "contexto": "| Fórmulas antiguas abiertas en Microsoft 365 | A veces aparece un `@` (intersección implícita) delante de un rango o una función | [VERIFICADO de forma parcial: la misma página remite a «Implicit intersection operator: @»] |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 256,
+    "texto": "| Casillas en celda | En versiones antiguas no se ven como casillas (se ve VERDADERO/FALSO) [SIN VERIFICAR] | — |",
+    "contexto": "| Tipos de datos vinculados | **#¡VALOR!** | [SIN VERIFICAR en primaria: FAQ de tipos de datos] |"
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 260,
+    "texto": "**Herramienta oficial:** Archivo > Información > Comprobar si hay problemas > **Comprobar compatibilidad**. Microsoft recomienda usarla antes de compartir y «avoid using functions and features that aren't available in that version». [VERIFICADO (recomendación): página de matrices dinámicas · SIN VERIFICAR la ruta exacta de menús en es-ES]",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "excel-moderno-4",
+  "archivo": "excel-moderno.md",
+  "items": [
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 268,
+    "texto": "| **Office 2021 y Office LTSC 2021** (también Visio y Project 2021) | **13/10/2026** | Sin parches desde hace un mes. Sin ESU [SIN VERIFICAR] | [VERIFICADO: https://learn.microsoft.com/en-us/lifecycle/announcements/office-ltsc-2021-end-of-support (22/04/2026)] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 276,
+    "texto": "3. **Tamaño del problema (dato indirecto):** en una encuesta alemana de septiembre de 2025 a 104 empresas de 10 a 49 empleados **sin** Microsoft 365, el 36 % usaba Office 2016, el 29 % Office 2019 y el 12 % Office 2010 o 2013. Solo el 8 % tenía la última versión de compra única. El 77 % se quedaba sin parches. [SIN VERIFICAR: Intra2net, citada por heise y euro-security]. **No hay un dato equivalente para España**, pero sirve como aviso: en la pequeña empresa sin suscripción, Office 2016 y 2019 abundan.",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 299,
+    "texto": "- **Eurostat 2025:** el 52,7 % de las empresas de la UE compra nube de pago. Entre ellas, el 71,7 % la usa para software de oficina (procesador de textos, hojas de cálculo). España, 41,7 %. [SIN VERIFICAR: extractos de prensa (EUbusiness, ppc.land) sobre Statistics Explained; la página de Eurostat no cargó]. Según el INE, el 82,8 % de las empresas españolas que usan la nube la usan para software de oficina [SIN VERIFICAR: ppc.land].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 305,
+    "texto": "- **No existe un dato público fiable** sobre la cuota de Microsoft 365 frente a Google Workspace en las empresas españolas (busqué en INE, ONTSI, CNMC y prensa). El estudio de la CNMC sobre la nube (aprobado el 21/07/2026) cubre IaaS y PaaS, no SaaS: no mide suites ofimáticas. [SIN VERIFICAR: ppc.land, sobre el expediente E/CNMC/001/23]. Las cifras tipo «Google 50 %, Microsoft 45 %» que circulan no citan fuente ni país: **no usarlas.**",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 306,
+    "texto": "- **Lo que sí se puede afirmar:** en las ofertas de empleo españolas se pide «Excel», casi nunca «Google Sheets» (ver `curriculo.md`, muestra de Jooble). En startups y en algunas pymes de servicios se usa Google Workspace, y ahí la alumna tendrá Google Sheets [SIN VERIFICAR: observación general].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 308,
+    "texto": "- **Junta de Andalucía:** protocolo con Microsoft (firmado por la ADA y Microsoft Ibérica) para extender Microsoft 365 (Teams, SharePoint, OneDrive y **Copilot Chat**) a sus **44.500 empleados** antes de julio de 2027. En marzo de 2026 ya lo usaban 8.500. En julio de 2025 se lanzó un acuerdo marco de 53,2 M€ para productos Microsoft. [SIN VERIFICAR: Europa Press en Última Hora, 13/03/2026 y 25/07/2025]",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 311,
+    "texto": "- **Tendencia europea de «soberanía digital»:** Schleswig-Holstein (Alemania) pasa 30.000 puestos de Office a LibreOffice, con fin del proyecto en 2027; Euro-Office, primera versión estable el 09/06/2026; Francia, plan para dejar Windows [SIN VERIFICAR: MuyComputer, blogs]. LibreOffice 26.8 se presenta como suite «sin IA generativa» [SIN VERIFICAR]. **LibreOffice Calc tiene XLOOKUP (BUSCARX), XMATCH y LET desde la versión 24.8** [VERIFICADO de forma parcial: extractos de help.libreoffice.org/latest/…/func_xlookup.html].",
+    "contexto": ""
+   },
+   {
+    "archivo": "excel-moderno.md",
+    "linea": 359,
+    "texto": "1. **El archivo guarda las fórmulas en inglés** y cada Excel las enseña en su idioma. Un libro hecho en es-ES funciona en un Excel en inglés. Lo que no funciona es **pegar** como texto una fórmula en inglés en un Excel en español. [SIN VERIFICAR en primaria: Office Watch]",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "empresa-1",
+  "archivo": "empresa.md",
+  "items": [
+   {
+    "archivo": "empresa.md",
+    "linea": 4,
+    "texto": "Convenciones: fórmulas en español con `;` y coma decimal; **[VERIFICADO: url]** = comprobado en fuente primaria en esta sesión; **[VERIFICADO-sec: url]** = comprobado solo en prensa o fuente secundaria fiable; **[SIN VERIFICAR]** = dato conocido o razonable que no se pudo comprobar hoy.",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 65,
+    "texto": "**EuSpRIG** (European Spreadsheet Risks Interest Group) mantiene la lista de «horror stories» en https://eusprig.org/research-info/horror-stories/ (no se pudo abrir: 403) [SIN VERIFICAR el contenido actual].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 81,
+    "texto": "| 1994 | Fidelity Magellan (fondo de inversión, EE. UU.) | Una pérdida neta de capital de 1.300 M$ se anotó **sin el signo menos** y contó como ganancia | Error de 2.600 M$ en la estimación. El dividendo anunciado de 4,32 $ por participación se canceló | **Convención de signos clara y escrita**; comprobación de razonabilidad («¿tiene sentido repartir esto en un año malo?») | El error de cálculo y la cancelación: [VERIFICADO-sec: https://www.deseret.com/1994/12/7/19146703/fidelity-says-calculation-error-means-no-dividend-for-investors]. El signo menos y los 2.600 M$: [SIN VERIFICAR en primaria: Wikipedia cita RISKS Digest] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 83,
+    "texto": "| 2005 | Kodak | Ceros de más tecleados en la indemnización de un empleado | ~11 M$ de corrección | **Validación de datos** (máximos razonables), comprobaciones de valores atípicos | [SIN VERIFICAR: Wikipedia, «List of spreadsheet mistakes», cita MarketWatch] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 86,
+    "texto": "| 2011 | MI5 (Reino Unido) | Un error de formato cambió los 3 últimos dígitos de números de teléfono por «000» | 134 números intervenidos por error | **Los números largos y los códigos son texto** (teléfonos, IBAN, cuentas) | [SIN VERIFICAR: Wikipedia cita The Guardian, 2011] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 88,
+    "texto": "| 2012 | Departamento de Transporte del Reino Unido (franquicia West Coast Main Line) | Fallos en el modelo financiero hecho con hojas de cálculo y en el dimensionado de un préstamo subordinado, con un equipo junior y roles poco claros. Se anuló la adjudicación | Coste para el contribuyente de decenas de millones de libras [SIN VERIFICAR la cifra]. Dio lugar a la revisión Macpherson (2013) y al **AQuA Book** | **Roles claros** (quien encarga, quien hace, quien revisa); garantía de calidad proporcional al riesgo | [VERIFICADO-sec: https://www.gov.uk/government/news/west-coast-main-line-final-report-of-the-laidlaw-inquiry]. Origen del AQuA en la revisión Macpherson: [VERIFICADO: https://best-practice-and-impact.github.io/aqua_book_revision] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 90,
+    "texto": "| 2016 | Lazard (fusión Tesla–SolarCity) | Una deuda contada dos veces en un descuento de flujos | Valor infravalorado en ~400 M$ | **Calcular una sola vez** cada partida y enlazar a ella | [SIN VERIFICAR: Wikipedia cita Reuters] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 93,
+    "texto": "| 2021 | Crypto.com (Australia) | Al hacer un reembolso se tecleó un número de cuenta en el campo del importe | 10,47 M$ transferidos en lugar de 100 $ | **Validación de datos** y doble control en pagos | [SIN VERIFICAR: Wikipedia cita The Guardian, 2023] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 97,
+    "texto": "| 2024–2025 | Casos de la AEPD (España) | Gimnasio que adjunta a un correo un archivo con los datos de sus clientes; empresa cuya hoja de candidatos (respuestas de un formulario) era **accesible para cualquiera con el enlace** e incluía a quienes no habían dado su consentimiento | 3.000 € (9.293 clientes) y **35.000 €** (nombre y DNI de 10.837 personas, art. 5.1.f RGPD, 12/06/2025) | **Enlaces «solo personas concretas»**, revisar permisos y plazos de conservación | [VERIFICADO-sec: https://www.economistjurist.es/?p=229395]. Lo del gimnasio solo aparece en el extracto de búsqueda [SIN VERIFICAR la resolución] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 133,
+    "texto": "| **FAST Standard** (*Flexible, Appropriate, Structured, Transparent*) | FAST Standard Organisation | **02c, julio de 2019** (no consta otra más reciente) [SIN VERIFICAR que no exista una 03] | Reglas muy concretas y numeradas (p. ej., FAST 3.03-01 «Do not write a formula longer than your thumb») | [VERIFICADO: copia del PDF oficial https://www.stl-training.co.uk/download/forum/40296_FAST-Standard-02c-July-2019.pdf] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 135,
+    "texto": "| **Twenty principles for good spreadsheet practice** | ICAEW | La base del Código; los números se citan en él | Principios generales para cualquier hoja | Lista completa [SIN VERIFICAR: la página dio 404]; números citados en el Código [VERIFICADO] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 140,
+    "texto": "#4 *Determine if a spreadsheet is a suitable tool* · #5 *Focus on the purposes of the spreadsheet* · #7 *Make the spreadsheet easy to use, providing supporting guidance where helpful* · #8 *Design with adaptability in mind to minimise future manual intervention* · #9 *Structure workbooks with a clear flow of inputs, processes, and outputs* · #11 *Structure worksheets to avoid inconsistent logic and layout* · #12 *Keep formulas consistent across ranges* · #13 *Use the simplest features, functions, or formulas for the task* · #14 *Avoid using fixed values within formulas* · #15 *Refer to existing calculated results instead of reperforming the calculation* · #17 *Build in checks, controls, and alerts from the outset* · #18 *Test and review to reduce the risk of error and identify inefficiencies* · #20 *Manage access levels and protection to reduce the risk of accidental or malicious changes*. (Los n.º 1–3, 6, 10, 16 y 19 [SIN VERIFICAR].)",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 192,
+    "texto": "- Costumbre en banca y consultoría: azul = dato escrito a mano, negro = fórmula, verde = enlace a otra hoja [SIN VERIFICAR: es una práctica extendida, no una norma].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 193,
+    "texto": "- **Recomendación para la guía**: usar los **estilos de celda integrados** (Inicio > Estilos de celda: «Entrada», «Cálculo», «Salida», «Celda de comprobación», «Celda vinculada», «Nota», «Texto de advertencia», «Texto explicativo») [la ruta está VERIFICADA; los nombres en español, SIN VERIFICAR en la página], más una leyenda en `Léeme`. Así cumple el ICAEW (relleno y no solo fuente) y lo reconoce cualquiera.",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "empresa-2",
+  "archivo": "empresa.md",
+  "items": [
+   {
+    "archivo": "empresa.md",
+    "linea": 207,
+    "texto": "- Límite: la validación **no impide pegar** datos que no la cumplen; hay que comprobar con «Rodear con un círculo datos no válidos» [SIN VERIFICAR el nombre exacto] o con una comprobación.",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 214,
+    "texto": "- Cita literal: **«La protección a nivel de hoja de cálculo no está pensada como característica de seguridad.»** Sirve para evitar errores, no para guardar secretos (hay programas que la quitan en segundos [SIN VERIFICAR, pero es conocido]).",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 217,
+    "texto": "- Regla de la guía: **la contraseña nunca va en el mismo correo que el archivo** (enviarla por otro canal) [buena práctica, SIN VERIFICAR en fuente oficial española].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 225,
+    "texto": "- **Ir a > Especial** (F5 o Ctrl+G > Especial): constantes, fórmulas, celdas en blanco, diferencias de fila, solo celdas visibles. Para encontrar números tecleados en una zona de fórmulas. [F5 y Ctrl+G VERIFICADOS en la lista de atajos; los nombres de las opciones, SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 230,
+    "texto": "- Funciones volátiles según Microsoft: **NOW, TODAY, RANDBETWEEN, OFFSET, INDIRECT, INFO y CELL** (según los argumentos) y SUMIF en algunos casos. En español: AHORA, HOY, ALEATORIO.ENTRE, DESREF, INDIRECTO, INFO, CELDA y SUMAR.SI. ALEATORIO y MATRIZALEAT también lo son [SIN VERIFICAR en esa página]. Se recalculan en cada cambio con todas sus dependientes: «Use them sparingly». [VERIFICADO: https://learn.microsoft.com/en-us/office/client-developer/excel/excel-recalculation]",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 239,
+    "texto": "- **Comprobar rendimiento** (*Check Performance*, Revisar > Check Performance; en Windows desde 2024): limpia el formato sobrante, los estilos sin usar y los metadatos. [VERIFICADO en inglés: https://support.microsoft.com/en-us/excel/cleanup-cells-in-your-workbook · nombre en español SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 264,
+    "texto": "- [ ] Nada oculto que no deba ir; Inspeccionar documento hecho sobre una copia; sin vínculos externos rotos (Datos > Consultas y conexiones > Vínculos del libro [nombre en español SIN VERIFICAR]).",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 276,
+    "texto": "- **SharePoint**: archivos del equipo o del departamento (el informe mensual, la plantilla de presupuestos). **Los archivos de un canal de Teams se guardan en el sitio de SharePoint del equipo**; los que se comparten en un chat, en el OneDrive de quien los envía [SIN VERIFICAR en esta sesión; comportamiento documentado de Microsoft 365].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 286,
+    "texto": "- **Vista de hoja** (Vista > Vista de hoja > Nueva): ordenar y filtrar para uno mismo sin desordenar a los demás en un archivo compartido [SIN VERIFICAR en esta sesión: no se encontró la página de Microsoft].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 299,
+    "texto": "| Control | No se puede retirar | Se pueden **cambiar o quitar los permisos** y, según la configuración, poner caducidad [SIN VERIFICAR la caducidad] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 300,
+    "texto": "| Datos personales | Riesgo alto (casos de la AEPD; MoD) | Menor, si el enlace es **«Personas específicas»** y no «Cualquier persona» [nombres de las opciones SIN VERIFICAR] |",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 305,
+    "texto": "- Panel: **Datos > Consultas y conexiones > Vínculos del libro** (*Workbook Links*): actualizar, cambiar el origen, romper. [VERIFICADO en inglés: https://support.microsoft.com/en-us/office/find-links-external-references-in-a-workbook-fcbf4576-3aab-4029-ba25-54313a532ff1; nombre en español SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 323,
+    "texto": "- Gimnasio que adjuntó a un correo un fichero con datos de 9.293 clientes: 3.000 €, aunque después pidió que se borrara [SIN VERIFICAR: solo en el extracto del buscador].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 352,
+    "texto": "3. Buscar tablas dinámicas: su **caché guarda todos los datos de origen** aunque se borre la hoja de datos. Doble clic en un valor recrea el detalle [SIN VERIFICAR en fuente oficial; es el comportamiento de «Mostrar detalles»]. Solución: copiar y pegar como valores en un libro nuevo.",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "empresa-3",
+  "archivo": "empresa.md",
+  "items": [
+   {
+    "archivo": "empresa.md",
+    "linea": 407,
+    "texto": "- **Art. 19**: conservar las facturas recibidas y las copias de las emitidas durante el plazo de la Ley General Tributaria [4 años de prescripción, LGT art. 66; el Código de Comercio pide 6 años para los libros y la documentación: SIN VERIFICAR en esta sesión].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 429,
+    "texto": "- **Formato**: mensaje estructurado según la norma europea **EN 16931**, en **UBL, CII, EDIFACT o Facturae** (la solución pública usa UBL). Los estados se envían **en un máximo de 4 días naturales** (sin contar sábados, domingos ni festivos nacionales). El plazo de pago se rige por el art. 4 de la Ley 3/2004 de morosidad [VERIFICADO: RD 238/2026]. Plazo legal: 30 días, ampliable por pacto hasta 60 [SIN VERIFICAR en esta sesión].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 448,
+    "texto": "- **Cotización de solidaridad** (desde 2025) sobre lo que supera la base máxima, por tramos (escala final del 5,5 %, 6 % y 7 %, con un periodo transitorio). [VERIFICADO: LGSS; los porcentajes transitorios de 2026, SIN VERIFICAR]",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 450,
+    "texto": "- **Coste de empresa aproximado** (para presupuestos de personal; cálculo propio): 23,60 + 5,50 + 0,20 + 0,60 + 0,75 = **30,65 %** de la base de cotización, más accidentes de trabajo y enfermedades profesionales (en oficinas suele rondar el 1,5 % [SIN VERIFICAR]). En Excel: `=MIN(MAX(BaseMensual;BaseMin);BaseMax)*TipoEmpresa`, donde `BaseMensual` = bruto anual ÷ 12 (las pagas extra, prorrateadas) y los tres parámetros van en `Entradas`. **Con el aviso** de que es una estimación: las nóminas se hacen con software de nóminas (a3nom, Sage, etc.) o la gestoría.",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 456,
+    "texto": "- Lista de tareas con fecha límite (D+1, D+3…), responsable y estado; conciliaciones (bancos, clientes, proveedores, IVA, nóminas); periodificaciones; comparación con el mes anterior y con el presupuesto; explicación de desviaciones. Excel se usa como **checklist** y **papeles de trabajo** con comprobaciones [práctica profesional, SIN VERIFICAR en norma].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 457,
+    "texto": "- Plazos fiscales que marcan el calendario: IVA (modelo 303) mensual o trimestral; retenciones (modelos 111 y 115); SII para quien esté obligado. Nombres de los modelos: [SIN VERIFICAR en esta sesión, pero muy conocidos].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 489,
+    "texto": "- **Exportaciones de ERP** (problemas típicos; [SIN VERIFICAR en documentación de cada fabricante salvo Odoo]):",
+    "contexto": "- **Cambiar el separador**: en Windows, Configuración de región > Configuración adicional > Números > «Separador de listas» (afecta a todos los programas), o solo en Excel quitando «Usar separadores del sistema» en Opciones > Avanzadas. [VERIFICADO: misma página de importar y exportar]"
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 533,
+    "texto": "- Desglosar: conseguir los datos, limpiarlos, construir, comprobar, presentar y documentar. **Los datos y su limpieza suelen llevar la mayor parte** [SIN VERIFICAR como cifra; experiencia común].",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 553,
+    "texto": "- **Una página. La conclusión primero.** Estructura propuesta (inspirada en el «principio de la pirámide» de Barbara Minto [SIN VERIFICAR en fuente primaria]):",
+    "contexto": ""
+   },
+   {
+    "archivo": "empresa.md",
+    "linea": 576,
+    "texto": "- **Muchas personas consultando** con vistas distintas o **permisos por persona** (p. ej., que cada comercial vea solo lo suyo) → Power BI (seguridad por filas) [SIN VERIFICAR en esta sesión].",
+    "contexto": ""
+   }
+  ]
+ },
+ {
+  "id": "proyectos-1",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 6,
+    "texto": "Leyenda: **[VERIFICADO: url]** = comprobado hoy en fuente primaria (página oficial, PDF o norma). **[VERIFICADO local: archivo]** = fuente primaria descargada en `research/raw/` y leída. **[SIN VERIFICAR]** = fuente secundaria, deducción o criterio propio. **[DISEÑO]** = dato inventado a propósito para la empresa ficticia; no es un dato del mundo real.",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 46,
+    "texto": "| **Criteria «Microsoft Excel 365»** y SHL, Kenexa | Tests de 5 a 35 min; los interactivos incluyen simulaciones | Ver `curriculo.md` §3.1 [VERIFICADO allí: Criteria; SIN VERIFICAR: SHL y Kenexa]. |",
+    "contexto": "| **TestGorilla «Microsoft Excel (Advanced)»** | Test de selección de **10 min**, disponible en español | Temas: organización de datos, fórmulas avanzadas, informes y visualizaciones, funciones avanzadas. [VERIFICADO: https://www.testgorilla.com/test-library/role-specific-skills-tests/microsoft-exce"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 47,
+    "texto": "| **Pruebas prácticas propias de empresas y ETT** | Archivo con datos e instrucciones, de 30 a 60 min | Limpiar, BUSCARV o BUSCARX, SI, SUMAR.SI.CONJUNTO, tabla dinámica, gráfico, formato condicional, «dejar la tabla ordenada y entendible» [SIN VERIFICAR: guías de formadores, ver `curriculo.md` §3.1-3.2] → examen final, parte B. |",
+    "contexto": "| **Criteria «Microsoft Excel 365»** y SHL, Kenexa | Tests de 5 a 35 min; los interactivos incluyen simulaciones | Ver `curriculo.md` §3.1 [VERIFICADO allí: Criteria; SIN VERIFICAR: SHL y Kenexa]. |"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 55,
+    "texto": "| **Norma 43 (AEB/CECA), «Información normalizada de cuenta corriente»**, junio de 2012 | Formato de los extractos bancarios españoles | Registro de movimientos: fecha de operación y fecha valor en formato AAMMDD, concepto común de 2 posiciones (02 ingresos, 03 recibos, 04 transferencias y cheques, 05 préstamos, 06 remesas, 14 devoluciones e impagados, 15 nóminas y seguros sociales, 17 intereses y comisiones…), **clave Debe/Haber** (1 = Debe, 2 = Haber), importe de 14 posiciones (12 enteros y 2 decimales, sin coma). [VERIFICADO local: raw/empresa/n43.pdf; URL oficial SIN VERIFICAR] → P4 (ampliación N43). |",
+    "contexto": "| **Microsoft, Hoja de previsión** | Ayuda oficial es-ES | Datos > Previsión > Hoja de previsión. Intervalos constantes. Admite hasta un 30 % de puntos que faltan. Algoritmo ETS AAA. Intervalo de confianza del 95 % por defecto. Con menos de dos ciclos, la estacionalidad no es fiable. [VERIFICADO: ht"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 76,
+    "texto": "- **CIF ficticio:** el generador calcula el dígito de control correcto de un CIF «B» y **pone otro distinto**. Así el CIF tiene formato real, pero no puede coincidir con el de ninguna empresa [criterio propio]. Antes de publicar, comprobar en el BORME que no existe una sociedad con ese nombre [SIN VERIFICAR: no se ha podido buscar].",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 156,
+    "texto": "| Q04 | Espacios sobrantes y caracteres invisibles | Espacios al final; espacio duro CARACTER(160), que viene de webs y PDF | ESPACIOS no quita el CARACTER(160): `=ESPACIOS(SUSTITUIR(A2;CARACTER(160);\" \"))`; LIMPIAR para los caracteres de control; en Power Query, Recortar y Limpiar [SIN VERIFICAR en esta línea: el detalle de 160 viene de la ayuda de ESPACIOS] |",
+    "contexto": "| Q03 | **Falsos duplicados** | Filas iguales que son legítimas: el mismo artículo en dos ubicaciones, o dos cobros del mismo importe el mismo día | No se quitan, se suman (Agrupar por o SUMAR.SI.CONJUNTO). En conciliaciones se numera cada repetición (clave + nº de ocurrencia) |"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 419,
+    "texto": "- Versión: Microsoft 365 o 2021+ para SECUENCIA y FILTRAR, con alternativa clásica (columnas auxiliares). La protección y la validación funcionan también en Excel para la web, aunque algunas opciones solo se configuran en escritorio [SIN VERIFICAR].",
+    "contexto": "- Duración: **5-7 h**."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 433,
+    "texto": "| ¿Cuántos días de vacaciones hay y se cuentan como naturales o laborables? | Por convenio de la empresa, **22 días laborables** (lunes a viernes, sin festivos) por año completo. [DISEÑO; el mínimo legal son 30 días naturales, ET art. 38.1 VERIFICADO. Equivaler 30 naturales a 22 laborables es habitual, pero depende del convenio: SIN VERIFICAR] |",
+    "contexto": "|---|---|"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 450,
+    "texto": "| `festivos_2026.xlsx` (de la gestoría) | unas 40 | Fecha, Descripción, Ámbito (Nacional, Aragón, Navarra, Cataluña, Local Zaragoza, Local Pamplona, Local Lleida) | **1 fecha errónea** (el generador elige cuál y lo deja en el log) y **1 festivo autonómico que falta**. La verdad sale del BOE y del boletín autonómico en el momento de generar los datos [SIN VERIFICAR aquí: no se han descargado las resoluciones de fiestas de 2026 y 2027] |",
+    "contexto": "| `ausencias_2026.csv` | unas 140 | CodEmpleado, Tipo (IT_EC, IT_AT, PR_MAT, PR_FALL, PR_ENF, PR_TRAS, PNR), Desde, Hasta (vacía si sigue abierta), DíasNaturales, **Observaciones** | **Q20: 11 observaciones con información de salud** («lumbalgia», «ansiedad»…) que hay que borrar · 3 bajas abiertas ("
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 468,
+    "texto": "- En Microsoft 365, el último argumento puede ser `FILTRAR(Festivos[Fecha];(Festivos[Delegación]=[@Delegación])+(Festivos[Delegación]=\"Todas\"))` [SIN VERIFICAR que DIAS.LAB.INTL admita una matriz desbordada como festivos; alternativa segura: tres rangos con nombre, FestZGZ, FestPAM y FestLLE, elegidos con SI o CAMBIAR].",
+    "contexto": "`=DIAS.LAB.INTL([@Desde];[@Hasta];1;festivos_de_su_delegación)`."
+   }
+  ]
+ },
+ {
+  "id": "proyectos-2",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 476,
+    "texto": "- Cuidado: a tiempo parcial con jornada reducida **todos los días**, los días de vacaciones son los mismos; no se multiplica por la jornada (en el pago sí cuenta) [SIN VERIFICAR: principio de igualdad del ET art. 12.4.d; confirmarlo con la gestoría].",
+    "contexto": "- Formato condicional: saldo < 0 en rojo; saldo > 5 a 1 de diciembre en ámbar."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 485,
+    "texto": "7. **Validación en `Periodos`** (rangos normales, no referencias estructuradas: la validación de datos no las acepta [SIN VERIFICAR; limitación conocida]): Desde ≤ Hasta, dentro de 2026-2027 y **sin solape** con otro periodo de la misma persona: `=CONTAR.SI.CONJUNTO($A:$A;$A2;$F:$F;\"<=\"&$G2;$G:$G;\">=\"&$F2)=1`.",
+    "contexto": "- Inmovilizar paneles e imprimir títulos."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 490,
+    "texto": "- **Ojo:** en una hoja protegida la Tabla no crece al escribir debajo. Por eso se deja la Tabla dimensionada con filas vacías (por ejemplo, 300) o se deja `Periodos` sin proteger pero con validación [SIN VERIFICAR el comportamiento exacto en Excel para la web].",
+    "contexto": "- Proteger libro (estructura)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 552,
+    "texto": "- Desplegable dependiente Departamento → Empleado, con `FILTRAR` y una referencia desbordada `=$X$2#` en la validación (solo 365) [SIN VERIFICAR: las referencias desbordadas en la validación].",
+    "contexto": "- **Power Query** para pasar la cuadrícula de Administración a periodos (Anular dinamización + Agrupar por)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 625,
+    "texto": "- (b) Agrupados: tabla `Aplicaciones` (IdCobro, NumFactura, Importe) con las referencias extraídas del concepto (Relleno rápido, HALLAR o EXTRAE; en 365, `REGEXEXTRACCION(Concepto;\"F2[56]-\\d{6}\";1)` [SIN VERIFICAR: modo «todas las coincidencias» = 1]). Regla: el cobro cubre lo citado y, si no llega, se aplica primero a la factura más antigua.",
+    "contexto": "- (a) Directos: `=SUMAR.SI.CONJUNTO(Cobros[Importe];Cobros[NumFactura];[@NumFactura];Cobros[FechaCobro];\"<=\"&Corte)`. Incluye las devoluciones, que restan."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 677,
+    "texto": "- La regla fiscal del IS para que el deterioro sea deducible (más de 6 meses desde el vencimiento) está [SIN VERIFICAR en esta línea: confirmar el art. 13.1 de la LIS].",
+    "contexto": "- **Deterioro de clientes** (MO-220, «bad debt expense»): porcentaje por tramo, en la cuenta 694 contra la 490 [VERIFICADO local: PGC]."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 781,
+    "texto": "- Alternativa (N4): Power Query, columna de índice por grupo de importe y **Combinar consultas**, con «Externa completa» para ver las dos caras y «Anti izquierda» para lo que no casa [SIN VERIFICAR: rótulos literales en es-ES].",
+    "contexto": "- después BUSCARX de la clave en el otro lado, con control de fecha (|diferencia| ≤ 5 días)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 835,
+    "texto": "- Versión: Microsoft 365 o 2016+ en Windows (Power Query). En Mac, Power Query existe, pero con conectores limitados [VERIFICADO en `excel-moderno.md` §0.13; el conector de carpeta en Mac está SIN VERIFICAR].",
+    "contexto": "- Duración: **8-10 h**, más 1 h del cambio inesperado."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 899,
+    "texto": "10. **Segmentaciones** de Delegación y Familia conectadas a todas las tablas dinámicas (Conexiones de informe) y **escala de tiempo** por mes [SIN VERIFICAR: rótulo literal «Conexiones de informe»].",
+    "contexto": "- (d) top 20 clientes y **Pareto** (% acumulado)."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 907,
+    "texto": "- Título dinámico: `=\"Ventas acumuladas a \"&TEXTO(MAX(Ventas[Fecha]);\"mmmm \\de aaaa\")` [SIN VERIFICAR el escape `\\de` en es-ES; alternativa: dos celdas].",
+    "contexto": "- «Dirección»: completa."
+   }
+  ]
+ },
+ {
+  "id": "proyectos-3",
+  "archivo": "proyectos.md",
+  "items": [
+   {
+    "archivo": "proyectos.md",
+    "linea": 964,
+    "texto": "La actualización falla con un error de Power Query del tipo «No se encontró la columna…» [SIN VERIFICAR el texto literal en es-ES]. Solución: paso de renombrado tolerante o pedir al ERP que mantenga el nombre; añadir Logroño al mapa y los objetivos; anotar el cambio. Javier recibe un aviso de que Logroño no tiene comparación con 2025.",
+    "contexto": ""
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1033,
+    "texto": "7. **ABC**: consumo valorado anualizado → ORDENAR de mayor a menor → % acumulado → `SI.CONJUNTO(Acum<=80%;\"A\";Acum<=95%;\"B\";VERDADERO;\"C\")`. Gráfico de **Pareto** (Insertar > gráfico estadístico) [SIN VERIFICAR: ubicación literal del Pareto en la cinta es-ES].",
+    "contexto": "Cobertura (días) = Stock / d. Rotación = consumo anualizado / stock medio."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1085,
+    "texto": "- Cantidad económica de pedido (fórmula de Wilson) [SIN VERIFICAR: fórmula de manual de operaciones, no de fuente primaria].",
+    "contexto": "- Clasificación XYZ (coeficiente de variación) cruzada con ABC."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1307,
+    "texto": "4. **Medidas DAX** (los nombres de las medidas en español; las funciones DAX se escriben **en inglés** en cualquier idioma de Excel; el separador de argumentos en un Power Pivot configurado para España está [SIN VERIFICAR]: probar `;` y `,`):",
+    "contexto": "- Sin relaciones de varios a varios."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1409,
+    "texto": "- Seguridad Social e impuestos (IVA e IRPF trimestrales en enero) con las fechas que dé la asesoría [SIN VERIFICAR: calendario fiscal de 2027; no se escribe en la guía sin comprobarlo en la AEAT];",
+    "contexto": "- nóminas a fin de mes y paga extra (dato del convenio);"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1419,
+    "texto": "- **No se recomienda** para la guía sin una línea legal propia. Los tipos de cotización de 2026, las bases máximas y mínimas, el MEI y las retenciones de IRPF cambian cada año y por normativa [SIN VERIFICAR: Orden de cotización de 2026 en el BOE]. Si se hace, con parámetros en una hoja y la fuente oficial citada en cada uno.",
+    "contexto": "- Cubre el objetivo del MO-220 «Calculate gross and net pay for multiple employees; employer payroll tax liabilities» [VERIFICADO]."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1547,
+    "texto": "3. **Festivos sin verificar.** Antes de generar los datos de P2 (y los días laborables de P3, P5 y P6) hay que sacar del BOE la resolución de fiestas laborales de 2026 y de 2027, los boletines de Aragón, Navarra y Cataluña y los festivos locales de Zaragoza, Pamplona y Lleida. En este documento solo se usan como seguros el 25/12, el 01/01, el 06/01, el 08/12 y el 01/05 (nacionales), y la Pascua: domingo 05/04/2026 y domingo 28/03/2027 [SIN VERIFICAR en BOE].",
+    "contexto": "2. **La ayuda de Microsoft en español tiene errores de traducción** también en limpieza de datos: la página «Diez formas principales de limpiar los datos» llama **RECORTAR** a la función de quitar espacios; en Excel en español es **ESPACIOS** [VERIFICADO]. No hay que copiar nombres de esa página (ve"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1549,
+    "texto": "5. **DAX en un Excel en español**: las funciones DAX van en inglés (CALCULATE, DIVIDE…). El **separador de argumentos** (`;` o `,`) en Power Pivot con la configuración de España está [SIN VERIFICAR]. Probarlo antes de publicar P8.",
+    "contexto": "4. **Rótulos del editor de Power Query en es-ES** sin verificar uno a uno: «Usar configuración regional», «Quitar filas superiores», «Usar la primera fila como encabezado», tipos de combinación («Externa izquierda», «Anti izquierda», «Externa completa»), «Anular dinamización de otras columnas», y ta"
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1551,
+    "texto": "7. **Error silencioso probable en Power Query**: un texto «1234.56» convertido a número con la configuración es-ES puede acabar como 123456 (el punto se lee como separador de miles) [SIN VERIFICAR, hay que probarlo]. Por eso P3 pide el control «Σ Total ≈ Σ Base × (1 + IVA)», que lo delata.",
+    "contexto": "6. **Power Pivot solo en Windows.** P8 necesita plan B (tabla única + SUMAR.SI.CONJUNTO o AGRUPARPOR) y entregar en PDF a quien use Mac o iPad."
+   },
+   {
+    "archivo": "proyectos.md",
+    "linea": 1552,
+    "texto": "8. **La validación de datos no acepta referencias estructuradas**, y una **Tabla no crece en una hoja protegida** [SIN VERIFICAR los dos, limitaciones conocidas]. P2 da la alternativa (rangos normales, Tabla dimensionada de antemano). Comprobarlo en Excel 365 y en Excel para la web.",
+    "contexto": "7. **Error silencioso probable en Power Query**: un texto «1234.56» convertido a número con la configuración es-ES puede acabar como 123456 (el punto se lee como separador de miles) [SIN VERIFICAR, hay que probarlo]. Por eso P3 pide el control «Σ Total ≈ Σ Base × (1 + IVA)», que lo delata."
+   }
+  ]
+ }
+]

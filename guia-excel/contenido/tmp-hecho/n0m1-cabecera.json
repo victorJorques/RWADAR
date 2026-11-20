@@ -1,0 +1,39 @@
+{
+  "id": "n0m1",
+  "nivel": "n0",
+  "titulo": "Conoce Excel",
+  "intro": "En casi cualquier oficina, los pedidos, las facturas, los turnos y los informes viven en hojas de Excel, y lo primero que te pedirán es que encuentres un dato o mires una celda concreta. En este módulo pierdes el miedo a la pantalla: sabrás cómo se llama cada parte, cómo se nombra cada casilla y cómo moverte rápido por una hoja.",
+  "repaso_inicial": [
+    {
+      "id": "n0m1-r1",
+      "modo": "respuesta_corta",
+      "pregunta": "Antes de empezar, una cuenta de las de toda la vida. En el almacén piden **3 cajas** de bridas y cada caja cuesta **10 €**. ¿Cuántos euros cuesta el pedido? (Escribe solo el número.)",
+      "aceptadas": ["30", "30 €", "30€", "30 euros", "30,00", "30,00 €", "treinta"],
+      "explicacion": "3 cajas × 10 € = 30 €. Esta cuenta la sabes hacer de cabeza; en este curso aprenderás a que Excel la haga por ti con cientos de pedidos a la vez."
+    },
+    {
+      "id": "n0m1-r2",
+      "modo": "test",
+      "pregunta": "Tienes que apuntar 20 proveedores con su nombre, su teléfono y su ciudad. ¿Qué forma de organizarlo es más fácil de leer y de revisar?",
+      "opciones": [
+        {
+          "texto": "Una tabla: una fila por proveedor y una columna para cada dato (nombre, teléfono, ciudad).",
+          "correcta": true,
+          "porque": "Exacto. Cada dato en su sitio: mirando hacia abajo ves todos los teléfonos, y mirando de lado ves todo sobre un proveedor. Así funciona Excel por dentro."
+        },
+        {
+          "texto": "Un párrafo seguido con todos los datos separados por comas.",
+          "correcta": false,
+          "porque": "Se puede leer, pero para encontrar un teléfono tendrías que repasarlo todo. Un texto corrido no se puede ordenar ni contar."
+        },
+        {
+          "texto": "Cada proveedor en una nota adhesiva distinta.",
+          "correcta": false,
+          "porque": "Las notas se pierden y no se pueden ordenar ni comparar de un vistazo. Una tabla lo junta todo en un mismo sitio."
+        }
+      ],
+      "explicacion": "Una fila por cosa y una columna por dato: esa es la idea que vas a usar en cada hoja de Excel de tu vida laboral."
+    }
+  ],
+  "practica_excel": null
+}

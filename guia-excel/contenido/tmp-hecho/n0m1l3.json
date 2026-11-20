@@ -1,0 +1,260 @@
+{
+  "id": "n0m1l3",
+  "titulo": "Celdas, filas y columnas: la dirección de cada casilla",
+  "minutos": 14,
+  "objetivo": "Dar la dirección de cualquier celda (C5), leer un rango (A1:C10) y saber cuántas celdas tiene.",
+  "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Te he dejado la hoja de cobros pendientes. Cuando te diga «revisa D4» o «el rango C2:C6», necesito que vayas directa, sin buscar. Para empezar: ¿en qué celda está el importe pendiente de Electricidad Moncayo?",
+    "logro": "Ya sabes dar la dirección de cualquier celda y leer un rango, el idioma con el que se habla de Excel en la oficina."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "La cuadrícula de Excel se organiza en **columnas** y **filas**:\n\n- Las **columnas** van de arriba abajo y se nombran con **letras**: A, B, C…\n- Las **filas** van de izquierda a derecha y se nombran con **números**: 1, 2, 3…\n\nLas letras y los números están en los bordes de la hoja, en gris: son los **encabezados**. Truco para recordarlo: una columna es alta, como la de un edificio; una fila es como la fila de gente en la caja del súper."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Hoja de cobros pendientes de Marta",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "B1": "Factura",
+          "C1": "Importe pendiente",
+          "D1": "Vence",
+          "A2": "Instalaciones Ebro, S.L.",
+          "B2": "F-2026-0412",
+          "C2": 1250.4,
+          "D2": {"fecha": "2026-11-20"},
+          "A3": "Electricidad Moncayo",
+          "B3": "F-2026-0398",
+          "C3": 860,
+          "D3": {"fecha": "2026-11-25"},
+          "A4": "Montajes Aragón Sur",
+          "B4": "F-2026-0420",
+          "C4": 2315.75,
+          "D4": {"fecha": "2026-11-30"},
+          "A5": "Reformas Delicias",
+          "B5": "F-2026-0377",
+          "C5": 497.2,
+          "D5": {"fecha": "2026-12-02"},
+          "A6": "Climatización Huesca",
+          "B6": "F-2026-0431",
+          "C6": 3020,
+          "D6": {"fecha": "2026-12-05"}
+        },
+        "formatos": {
+          "C2:C6": "eur",
+          "D2:D6": "fecha"
+        },
+        "anchos": {
+          "A": 24,
+          "B": 13,
+          "C": 18,
+          "D": 12
+        },
+        "columnas": 5,
+        "filas": 7
+      },
+      "resaltar": ["C1:C6"],
+      "pie": "La columna C (resaltada) guarda los importes. Cada fila, del 2 al 6, es una factura."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e1",
+      "modo": "senala",
+      "pregunta": "Toca la **letra de una columna**: los encabezados grises que hay encima de la cuadrícula.",
+      "zona": "encabezado_columna",
+      "explicacion": "Esas letras nombran las columnas. Al hacer clic en una, además, seleccionas la columna entera (lo practicarás en la lección siguiente)."
+    },
+    {
+      "tipo": "texto",
+      "md": "Cada celda tiene una **dirección**: la letra de su columna y el número de su fila. Como en el juego de hundir la flota.\n\n- La celda de la columna **C** y la fila **3** es la **C3**.\n- **Primero la letra, después el número**: se dice C3, nunca 3C.\n\nEn la hoja de Marta, la C3 tiene **860,00 €**: el importe de Electricidad Moncayo. Cuando alguien te diga «mira la C3», ya sabes ir directa."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e2",
+      "modo": "respuesta_corta",
+      "pregunta": "Esta es la hoja de cobros de Marta, con sus letras y números:\n\n| | A | B | C |\n|---|---|---|---|\n| **1** | Cliente | Factura | Importe pendiente |\n| **2** | Instalaciones Ebro, S.L. | F-2026-0412 | 1.250,40 € |\n| **3** | Electricidad Moncayo | F-2026-0398 | 860,00 € |\n| **4** | Montajes Aragón Sur | F-2026-0420 | 2.315,75 € |\n| **5** | Reformas Delicias | F-2026-0377 | 497,20 € |\n\n¿En qué celda está el nombre **Reformas Delicias**? (Escribe la dirección, por ejemplo B2.)",
+      "aceptadas": ["A5", "a5", "la A5", "celda A5"],
+      "explicacion": "A5: columna A (la de los clientes) y fila 5. Primero miras la letra de arriba, después el número de la izquierda."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e3",
+      "modo": "test",
+      "pregunta": "Javier te dice deprisa: «Corrige el dato de la columna B, fila 4». ¿Qué celda es?",
+      "opciones": [
+        {
+          "texto": "B4",
+          "correcta": true,
+          "porque": "Eso es: primero la letra de la columna, después el número de la fila."
+        },
+        {
+          "texto": "4B",
+          "correcta": false,
+          "porque": "Excel no entiende «4B». Las direcciones siempre empiezan por la letra: B4."
+        },
+        {
+          "texto": "D2",
+          "correcta": false,
+          "porque": "Aquí se han cambiado la fila y la columna. Columna B (letra) y fila 4 (número): B4."
+        }
+      ],
+      "explicacion": "Letra + número. Si dudas, piensa en hundir la flota: «B4», nunca «4B»."
+    },
+    {
+      "tipo": "texto",
+      "md": "La **celda activa** es la celda en la que estás ahora. Se reconoce porque tiene un **recuadro grueso** alrededor.\n\n- Lo que escribas irá **a esa celda**.\n- Su dirección aparece en el **cuadro de nombres** (arriba a la izquierda), y los encabezados de su fila y su columna se colorean.\n\nAntes de escribir, mira siempre qué celda está activa: es la forma más sencilla de no escribir encima de un dato que no tocaba."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e4",
+      "modo": "senala",
+      "pregunta": "Toca la **celda activa**: la que tiene el recuadro grueso alrededor.",
+      "zona": "celda_activa",
+      "explicacion": "Esa es. Todo lo que teclees ahora irá a parar ahí, así que conviene mirarla antes de escribir."
+    },
+    {
+      "tipo": "texto",
+      "md": "Muchas veces no hablamos de una celda, sino de un **bloque de celdas**: un **rango**.\n\nSe escribe con **dos puntos** entre la primera y la última celda. Los dos puntos se leen **«hasta»**:\n\n- `C2:C6` = de C2 **hasta** C6: los cinco importes de Marta.\n- `A1:C10` = el rectángulo que va de A1 (arriba a la izquierda) **hasta** C10 (abajo a la derecha)."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "El rango C2:C6",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "C1": "Importe pendiente",
+          "A2": "Instalaciones Ebro, S.L.",
+          "C2": 1250.4,
+          "A3": "Electricidad Moncayo",
+          "C3": 860,
+          "A4": "Montajes Aragón Sur",
+          "C4": 2315.75,
+          "A5": "Reformas Delicias",
+          "C5": 497.2,
+          "A6": "Climatización Huesca",
+          "C6": 3020
+        },
+        "formatos": {
+          "C2:C6": "eur"
+        },
+        "anchos": {
+          "A": 24,
+          "C": 18
+        },
+        "columnas": 4,
+        "filas": 7
+      },
+      "resaltar": ["C2:C6"],
+      "pie": "C2:C6 son cinco celdas: C2, C3, C4, C5 y C6."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e5",
+      "modo": "test",
+      "pregunta": "Marta te pide: «Revisa el rango **B2:B5**». ¿Qué celdas tienes que revisar?",
+      "opciones": [
+        {
+          "texto": "B2, B3, B4 y B5",
+          "correcta": true,
+          "porque": "Correcto: los dos puntos significan «hasta», así que es de B2 hasta B5, todas las de en medio incluidas."
+        },
+        {
+          "texto": "Solo B2 y B5",
+          "correcta": false,
+          "porque": "Es el fallo más típico al leer un rango. Los dos puntos no significan «y»: significan «hasta». Entran también B3 y B4."
+        },
+        {
+          "texto": "B2, C2, D2, E2 y F2",
+          "correcta": false,
+          "porque": "Eso sería avanzar por la fila 2. En B2:B5 la letra no cambia (siempre B): se baja por la columna B, de la fila 2 a la 5."
+        }
+      ],
+      "explicacion": "Dos puntos = «hasta». Al leer un rango, piensa: ¿dónde empieza?, ¿dónde acaba? Todo lo de en medio está dentro."
+    },
+    {
+      "tipo": "texto",
+      "md": "¿Cuántas celdas tiene un rango? Cuenta **columnas × filas**.\n\nEjemplo: `A1:C10`\n- Columnas: A, B y C → **3**.\n- Filas: de la 1 a la 10 → **10**.\n- Celdas: 3 × 10 = **30**.\n\nSaberlo te sirve para comprobar que has seleccionado lo que querías: si esperabas 5 facturas y tu rango tiene 4 celdas, falta una."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e6",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cuántas celdas tiene el rango **B2:D6**? (Escribe solo el número.)",
+      "aceptadas": ["15", "15 celdas", "quince"],
+      "explicacion": "Columnas B, C y D = 3. Filas de la 2 a la 6 = 5 (2, 3, 4, 5 y 6). 3 × 5 = 15. Cuidado con restar 6 − 2 = 4: las filas se cuentan incluyendo la primera y la última."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l3-e7",
+      "modo": "respuesta_corta",
+      "pregunta": "**El encargo de Marta.** En su hoja de cobros:\n\n| | A | B | C | D |\n|---|---|---|---|---|\n| **1** | Cliente | Factura | Importe pendiente | Vence |\n| **2** | Instalaciones Ebro, S.L. | F-2026-0412 | 1.250,40 € | 20/11/2026 |\n| **3** | Electricidad Moncayo | F-2026-0398 | 860,00 € | 25/11/2026 |\n| **4** | Montajes Aragón Sur | F-2026-0420 | 2.315,75 € | 30/11/2026 |\n\n¿En qué celda está el **importe pendiente** de **Electricidad Moncayo**?",
+      "aceptadas": ["C3", "c3", "la C3", "celda C3"],
+      "explicacion": "C3: la columna C es la de los importes y la fila 3 es la de Electricidad Moncayo. Ya puedes contestar a Marta con su mismo idioma: «Está en C3, son 860 €»."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n0m1l3-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "Escribe la dirección de la celda que está en la **columna D** y la **fila 7**.",
+      "aceptadas": ["D7", "d7"],
+      "explicacion": "D7: primero la letra de la columna, después el número de la fila."
+    },
+    {
+      "id": "n0m1l3-q2",
+      "modo": "test",
+      "pregunta": "¿Cuántas celdas tiene el rango **A1:B3**?",
+      "opciones": [
+        {
+          "texto": "6",
+          "correcta": true,
+          "porque": "2 columnas (A y B) × 3 filas (1, 2 y 3) = 6."
+        },
+        {
+          "texto": "2",
+          "correcta": false,
+          "porque": "Esas serían solo A1 y B3, las esquinas. Los dos puntos significan «hasta»: entra todo el rectángulo."
+        },
+        {
+          "texto": "4",
+          "correcta": false,
+          "porque": "Seguramente has restado 3 − 1 = 2 filas. Las filas se cuentan incluyendo la primera: 1, 2 y 3 son tres."
+        }
+      ]
+    },
+    {
+      "id": "n0m1l3-q3",
+      "modo": "senala",
+      "pregunta": "Toca el **número de una fila**: los encabezados grises de la izquierda.",
+      "zona": "encabezado_fila",
+      "explicacion": "Los números de la izquierda nombran las filas. Columnas = letras arriba; filas = números a la izquierda."
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "¿Cómo se escribe la dirección de una celda?",
+      "dorso": "Letra de la columna + número de la fila: C5 (nunca 5C)."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué significan los dos puntos en A1:C10?",
+      "dorso": "«Hasta»: todas las celdas del rectángulo de A1 hasta C10."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Cuántas celdas tiene un rango?",
+      "dorso": "Columnas × filas, contando la primera y la última. B2:D6 = 3 × 5 = 15."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué es la celda activa?",
+      "dorso": "La celda en la que estás: tiene el recuadro grueso y su dirección sale en el cuadro de nombres."
+    }
+  ]
+}

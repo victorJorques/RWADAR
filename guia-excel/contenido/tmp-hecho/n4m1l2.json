@@ -1,0 +1,459 @@
+{
+  "id": "n4m1l2",
+  "titulo": "Limpiar con pasos: tipos, región, dividir, rellenar y filtrar",
+  "minutos": 16,
+  "objetivo": "Arreglar en Power Query los fallos típicos de una exportación: títulos encima, filas de totales, tipos de dato equivocados, fechas de otro país y columnas mal separadas.",
+  "mision": {
+    "de": "Andrés Molina",
+    "puesto": "Jefe de compras y almacén",
+    "texto": "Lumitec, el proveedor de luminarias, nos manda cada mes su informe de envíos desde un programa en inglés: dos líneas de título arriba, fechas al estilo americano y subtotales por medio. Lo uso para cuadrar sus facturas. ¿Me montas la consulta que lo deje limpio?",
+    "logro": "Ya sabes limpiar con Power Query una exportación con títulos, totales, tipos equivocados y fechas de otro país."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Cada columna de Power Query tiene un **tipo de dato**, y lo ves en el **icono** a la izquierda del encabezado: **ABC** es texto, **123** es número entero y un calendario es fecha.\n\nAl importar, Power Query **adivina** los tipos y lo apunta como un paso más. Casi siempre acierta, pero no siempre. Y el tipo importa: un texto no se puede sumar, y una fecha guardada como texto no se puede agrupar por meses."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e1",
+      "modo": "test",
+      "pregunta": "En el editor, la columna **Unidades** lleva el icono **ABC**. ¿Qué significa?",
+      "opciones": [
+        {
+          "texto": "Que Power Query la trata como texto",
+          "correcta": true,
+          "porque": "ABC = texto. Para poder sumarla tendrás que cambiarla a número."
+        },
+        {
+          "texto": "Que tiene letras en mayúscula",
+          "correcta": false,
+          "porque": "El icono no habla del contenido, sino del tipo de dato que Power Query le ha puesto."
+        },
+        {
+          "texto": "Que es una fecha",
+          "correcta": false,
+          "porque": "Las fechas llevan el icono del calendario."
+        }
+      ],
+      "explicacion": "Antes de cargar, recorre los iconos de los encabezados: es la revisión más rápida que existe."
+    },
+    {
+      "tipo": "texto",
+      "md": "El fallo más típico: los **códigos con ceros delante**. Lumitec manda el código `000457` y Power Query, al adivinar el tipo, lo convierte en el número **457**. Los ceros se pierden y el código ya no casa con tu lista.\n\nEl arreglo no es poner Texto **después**, porque el paso automático ya se comió los ceros. Hay que **sustituirlo**: borra ese paso de tipo en Pasos aplicados (la X a su izquierda) y pon tú el tipo **Texto** desde el icono de la columna."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "truco",
+      "titulo": "Nuria: «di que sí a reemplazar»",
+      "md": "Si el último paso de la lista es el de tipo, al cambiar el tipo Power Query te pregunta si quieres **reemplazar el paso actual** o añadir uno nuevo. Elige **reemplazar**: es lo mismo que borrar el automático y ponerlo bien."
+    },
+    {
+      "tipo": "texto",
+      "md": "Segundo fallo típico: **fechas de otro país**. En Estados Unidos se escribe primero el mes: `04/12/2026` es el **12 de abril**. Power Query, con la configuración de España, lo lee como día/mes: **4 de diciembre**.\n\nY cuando el día pasa de 12, como en `04/25/2026`, no existe el mes 25: la celda sale como **Error**. Ese Error no es un desastre: es Power Query avisándote de que el tipo no encaja."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e2",
+      "modo": "test",
+      "pregunta": "Llega `03/11/2026` desde el programa en inglés de Lumitec (mes/día/año). Si no haces nada, ¿qué fecha guarda Power Query con la configuración de España?",
+      "opciones": [
+        {
+          "texto": "El 3 de noviembre de 2026",
+          "correcta": true,
+          "porque": "Lo lee como día/mes, la costumbre española. La fecha real era el 11 de marzo: casi ocho meses de diferencia, y sin ningún aviso."
+        },
+        {
+          "texto": "El 11 de marzo de 2026",
+          "correcta": false,
+          "porque": "Eso es lo que quería decir Lumitec, pero Power Query no lo sabe si no se lo dices."
+        },
+        {
+          "texto": "Error",
+          "correcta": false,
+          "porque": "Solo sale Error cuando el supuesto mes pasa de 12. Aquí el 11 es un mes válido."
+        }
+      ],
+      "explicacion": "Lo peligroso no son los Error, que se ven, sino las fechas cambiadas que parecen buenas."
+    },
+    {
+      "tipo": "texto",
+      "md": "La solución es decirle a Power Query **de qué país** es el archivo. A eso se le llama **configuración regional**: las costumbres de cada país para escribir fechas y decimales.\n\nHaz clic en el icono de tipo de la columna de fecha y, al final de la lista, elige **Usar configuración regional**. En el cuadro **Cambiar tipo con configuración regional** pon el tipo **Fecha** y la configuración **Inglés (Estados Unidos)**. Acepta y reemplaza el paso de tipo automático."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para que Power Query lea bien las fechas del archivo americano.",
+      "pasos": [
+        "Clic en el icono de tipo de la columna de fecha",
+        "Elegir Usar configuración regional",
+        "En el cuadro, elegir el tipo Fecha y la configuración Inglés (Estados Unidos)",
+        "Aceptar y reemplazar el paso de tipo automático",
+        "Comprobar que ya no quedan Error y que los meses tienen sentido"
+      ],
+      "explicacion": "Con eso, `03/11/2026` pasa a ser el 11 de marzo y `04/25/2026`, el 25 de abril. Y como es un paso, el mes que viene se aplica solo."
+    },
+    {
+      "tipo": "texto",
+      "md": "Muchas exportaciones traen **líneas de título** encima de los datos. Power Query las toma por datos y los encabezados se quedan como *Column1*, *Column2*…\n\n- **Inicio › Quitar filas › Quitar filas superiores**: escribes cuántas filas sobran.\n- **Usar la primera fila como encabezado**: la primera fila que queda pasa a dar nombre a las columnas.\n\nSiempre en ese orden: primero quitas lo que sobra y después subes los encabezados."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Así llega el informe de Lumitec",
+      "hoja": {
+        "celdas": {
+          "A1": "LUMITEC IBERIA · Shipments report",
+          "A2": "Customer: Electro Cierzo Suministros, S.L.",
+          "A3": "Date",
+          "B3": "Item",
+          "C3": "Description",
+          "D3": "Qty",
+          "E3": "Amount",
+          "A4": {
+            "texto": "11/03/2026"
+          },
+          "B4": {
+            "texto": "000457"
+          },
+          "C4": "LED panel 60x60 40W",
+          "D4": 10,
+          "E4": 320,
+          "A5": {
+            "texto": "11/09/2026"
+          },
+          "B5": {
+            "texto": "000512"
+          },
+          "C5": "LED downlight 18W",
+          "D5": 24,
+          "E5": 357.6,
+          "A6": {
+            "texto": "11/16/2026"
+          },
+          "B6": {
+            "texto": "000533"
+          },
+          "C6": "LED tube T8 18W",
+          "D6": 40,
+          "E6": 198
+        },
+        "formatos": {
+          "E4:E6": "eur"
+        },
+        "anchos": {
+          "A": 14,
+          "B": 9,
+          "C": 22,
+          "D": 6,
+          "E": 11
+        }
+      },
+      "pie": "Las filas 1 y 2 sobran: los encabezados de verdad están en la fila 3. Y fíjate en las fechas: 11/16/2026 es el 16 de noviembre."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e4",
+      "modo": "respuesta_corta",
+      "pregunta": "En el informe de Lumitec de arriba, ¿cuántas filas superiores tienes que quitar antes de usar la primera fila como encabezado?",
+      "aceptadas": [
+        "2",
+        "dos",
+        "Dos",
+        "2 filas",
+        "dos filas"
+      ],
+      "explicacion": "Las filas 1 y 2 son títulos. Al quitarlas, la fila de *Date, Item…* queda la primera y ya puedes subirla como encabezado."
+    },
+    {
+      "tipo": "tabla",
+      "titulo": "Síntoma → paso de Power Query",
+      "cabecera": [
+        "Lo que ves",
+        "El paso",
+        "Dónde está"
+      ],
+      "filas": [
+        [
+          "Código y descripción en la misma columna: «000457 - Panel LED»",
+          "Dividir columna › Por delimitador (el signo que separa las partes, aquí « - »)",
+          "Inicio o Transformar"
+        ],
+        [
+          "Espacios de más al principio o al final del texto",
+          "Formato › Recortar",
+          "Transformar"
+        ],
+        [
+          "«Zgz» en unas filas y «Zaragoza» en otras",
+          "Reemplazar valores",
+          "Inicio o Transformar"
+        ],
+        [
+          "La familia solo está en la primera fila de cada grupo; debajo, null (vacío)",
+          "Rellenar › Hacia abajo",
+          "Transformar"
+        ],
+        [
+          "Filas de «Subtotal» o «Total» entre los datos",
+          "Filtrar con la flecha del encabezado",
+          "En la propia columna"
+        ]
+      ],
+      "pie": "Ojo: Recortar quita los espacios del principio y del final, pero no los dobles de en medio (la función ESPACIOS sí los quita)."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e5",
+      "modo": "test",
+      "pregunta": "En otro informe, la columna **Familia** solo trae el nombre en la primera fila de cada grupo; las de debajo salen *null* (vacías). ¿Qué paso usas?",
+      "opciones": [
+        {
+          "texto": "Transformar › Rellenar › Hacia abajo",
+          "correcta": true,
+          "porque": "Copia cada familia en las celdas vacías de debajo, hasta que aparece la siguiente."
+        },
+        {
+          "texto": "Reemplazar valores",
+          "correcta": false,
+          "porque": "Tendrías que escribir cada familia a mano, y el mes que viene los huecos estarían en otras filas."
+        },
+        {
+          "texto": "Formato › Recortar",
+          "correcta": false,
+          "porque": "Recortar quita espacios sobrantes; no rellena huecos."
+        },
+        {
+          "texto": "Quitar filas superiores",
+          "correcta": false,
+          "porque": "Eso quita títulos de arriba. Aquí las filas son buenas: solo les falta el dato."
+        }
+      ],
+      "explicacion": "Rellenar hacia abajo es el arreglo clásico para los informes «bonitos» que solo escriben la categoría una vez."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e6",
+      "modo": "formula",
+      "enunciado": "Antes de filtrar, Andrés quiere saber cuántas filas van a desaparecer. En **G2** cuenta cuántas celdas de **A2:A11** contienen la palabra «total» en cualquier parte (los subtotales también cuentan).",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "B1": "Código",
+          "C1": "Descripción",
+          "D1": "Uds",
+          "E1": "Importe",
+          "A2": {
+            "fecha": "2026-11-03"
+          },
+          "B2": {
+            "texto": "000457"
+          },
+          "C2": "Panel LED 60×60 40 W",
+          "D2": 10,
+          "E2": 320,
+          "A3": {
+            "fecha": "2026-11-03"
+          },
+          "B3": {
+            "texto": "000512"
+          },
+          "C3": "Downlight LED 18 W",
+          "D3": 24,
+          "E3": 357.6,
+          "A4": {
+            "fecha": "2026-11-05"
+          },
+          "B4": {
+            "texto": "000533"
+          },
+          "C4": "Tubo LED T8 18 W",
+          "D4": 40,
+          "E4": 198,
+          "A5": "Subtotal semana 45",
+          "D5": 74,
+          "E5": 875.6,
+          "A6": {
+            "fecha": "2026-11-09"
+          },
+          "B6": {
+            "texto": "000457"
+          },
+          "C6": "Panel LED 60×60 40 W",
+          "D6": 6,
+          "E6": 192,
+          "A7": {
+            "fecha": "2026-11-12"
+          },
+          "B7": {
+            "texto": "000618"
+          },
+          "C7": "Proyector LED 36 W",
+          "D7": 8,
+          "E7": 220,
+          "A8": {
+            "fecha": "2026-11-13"
+          },
+          "B8": {
+            "texto": "000512"
+          },
+          "C8": "Downlight LED 18 W",
+          "D8": 12,
+          "E8": 178.8,
+          "A9": "Subtotal semana 46",
+          "D9": 26,
+          "E9": 590.8,
+          "A10": {
+            "fecha": "2026-11-16"
+          },
+          "B10": {
+            "texto": "000533"
+          },
+          "C10": "Tubo LED T8 18 W",
+          "D10": 20,
+          "E10": 99,
+          "A11": "Total noviembre",
+          "D11": 120,
+          "E11": 1565.4,
+          "F2": "Filas de total"
+        },
+        "formatos": {
+          "A2:A11": "fecha",
+          "E2:E11": "eur"
+        },
+        "anchos": {
+          "A": 18,
+          "B": 8,
+          "C": 20,
+          "D": 5,
+          "E": 10,
+          "F": 12
+        }
+      },
+      "objetivo": "G2",
+      "solucion": "=CONTAR.SI(A2:A11;\"*total*\")",
+      "alternativas": [
+        "=CONTAR.SI(A2:A11;\"*Total*\")",
+        "=CONTAR.SI($A$2:$A$11;\"*total*\")"
+      ],
+      "errores_tipicos": [
+        "=CONTAR.SI(A2:A11;\"Total\")",
+        "=CONTAR.SI(A2:A11;\"Total*\")",
+        "=CONTARA(A2:A11)"
+      ],
+      "variantes": [
+        {
+          "A4": "Subtotal parcial"
+        },
+        {
+          "A11": "Fin del informe"
+        }
+      ],
+      "pistas": [
+        "Para contar celdas que cumplen una condición: CONTAR.SI(rango;criterio).",
+        "El asterisco * vale por «cualquier texto». Para «contiene total», pon la palabra entre asteriscos: \"*total*\".",
+        "=CONTAR.SI(A2:A11;\"*total*\")"
+      ],
+      "explicacion": "Salen **3**: dos subtotales y el total. La lista tiene 10 filas, así que después de filtrar deben quedar **7**. Saber cuántas filas esperas es la forma más rápida de comprobar que el filtro de Power Query no se ha llevado nada de más."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m1l2-e7",
+      "modo": "ordenar",
+      "enunciado": "La misión de Andrés: ordena la limpieza completa del informe de Lumitec para que cada mes salga sola. (Cada vez que Power Query añade por su cuenta un paso de tipo, lo borras: los tipos los pones tú al final.)",
+      "pasos": [
+        "Datos › De texto/CSV › Transformar datos",
+        "Inicio › Quitar filas › Quitar filas superiores (2)",
+        "Usar la primera fila como encabezado",
+        "Filtrar la columna Date para quitar subtotales y total",
+        "Poner los tipos: fecha con configuración regional Inglés (Estados Unidos) y código como Texto",
+        "Inicio › Cerrar y cargar"
+      ],
+      "explicacion": "Primero se quita lo que sobra arriba, luego se suben los encabezados y después se quitan los totales; si conviertes antes la columna a fecha, esas filas darían Error. Los tipos, al final, sobre datos ya limpios. Desde hoy, cada mes: archivo nuevo y **Actualizar todo**."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n4m1l2-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué configuración regional eliges en Power Query para un archivo con fechas mes/día/año de Estados Unidos?",
+      "aceptadas": [
+        "Inglés (Estados Unidos)",
+        "Ingles (Estados Unidos)",
+        "inglés (Estados Unidos)",
+        "Inglés Estados Unidos",
+        "Inglés (EE. UU.)",
+        "Inglés (EE.UU.)",
+        "Inglés de Estados Unidos"
+      ],
+      "explicacion": "**Inglés (Estados Unidos)**, desde el icono de tipo › Usar configuración regional, con el tipo Fecha."
+    },
+    {
+      "id": "n4m1l2-q2",
+      "modo": "test",
+      "pregunta": "Los encabezados salen como *Column1, Column2…* y la primera fila dice «LUMITEC IBERIA · Shipments report». ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Quitar filas superiores y después Usar la primera fila como encabezado",
+          "correcta": true,
+          "porque": "Primero fuera los títulos; después, la fila buena sube a encabezado."
+        },
+        {
+          "texto": "Usar la primera fila como encabezado y después quitar filas",
+          "correcta": false,
+          "porque": "Subirías el título como encabezado y perderías los nombres de verdad."
+        },
+        {
+          "texto": "Cambiar el nombre de cada columna a mano",
+          "correcta": false,
+          "porque": "Los nombres quedarían bien, pero las filas de título seguirían ahí, mezcladas con los datos."
+        }
+      ]
+    },
+    {
+      "id": "n4m1l2-q3",
+      "modo": "test",
+      "pregunta": "Los nombres de cliente llegan con espacios al final («Montajes Arga, S.L.   ») y no casan con tu lista. ¿Qué paso de Power Query los quita?",
+      "opciones": [
+        {
+          "texto": "Transformar › Formato › Recortar",
+          "correcta": true,
+          "porque": "Recortar quita los espacios del principio y del final."
+        },
+        {
+          "texto": "Transformar › Rellenar › Hacia abajo",
+          "correcta": false,
+          "porque": "Rellena celdas vacías con el valor de arriba; no toca los espacios."
+        },
+        {
+          "texto": "Dividir columna › Por delimitador",
+          "correcta": false,
+          "porque": "Partiría el texto en varias columnas, no lo limpiaría."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué indican los iconos ABC, 123 y el calendario en un encabezado de Power Query?",
+      "dorso": "El tipo de dato de la columna: texto, número entero y fecha."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Los códigos 000457 salen como 457 en Power Query. ¿Qué haces?",
+      "dorso": "Sustituir el paso de tipo automático (borrarlo o reemplazarlo) por el tipo Texto."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Fechas mes/día/año de EE. UU. en Power Query",
+      "dorso": "Icono de tipo › Usar configuración regional › Fecha + Inglés (Estados Unidos)."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Títulos encima de los datos en Power Query",
+      "dorso": "Quitar filas superiores y, después, Usar la primera fila como encabezado."
+    }
+  ]
+}

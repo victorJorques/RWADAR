@@ -1,0 +1,554 @@
+archivo;fila_clave;columna;problema;valor_verdadero;valor_sembrado
+facturas;F26-000051;TotalFactura;Q17 redondeo ±0,01;;1601.28
+facturas;F26-000703;TotalFactura;Q17 redondeo ±0,01;;8769.42
+facturas;F26-001626;TotalFactura;Q17 redondeo ±0,01;;1987.13
+facturas;F26-001782;TotalFactura;Q17 redondeo ±0,01;;1621.14
+facturas;F26-001990;TotalFactura;Q17 +100,00 €;;1349.62
+facturas;F26-000553;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000553;FechaVencimiento;Q07 fecha ISO;08/04/2026;2026-04-08
+facturas;F26-000554;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000554;FechaVencimiento;Q07 fecha ISO;08/04/2026;2026-04-08
+facturas;F26-000555;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000555;FechaVencimiento;Q07 fecha ISO;23/04/2026;2026-04-23
+facturas;F26-000556;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000556;FechaVencimiento;Q07 fecha ISO;23/04/2026;2026-04-23
+facturas;F26-000557;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000557;FechaVencimiento;Q07 fecha ISO;23/04/2026;2026-04-23
+facturas;F26-000558;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000558;FechaVencimiento;Q07 fecha ISO;23/04/2026;2026-04-23
+facturas;F26-000559;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000559;FechaVencimiento;Q07 fecha ISO;23/05/2026;2026-05-23
+facturas;F26-000560;FechaFactura;Q07 fecha ISO;09/03/2026;2026-03-09
+facturas;F26-000560;FechaVencimiento;Q07 fecha ISO;23/04/2026;2026-04-23
+facturas;F26-000561;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000561;FechaVencimiento;Q07 fecha ISO;24/04/2026;2026-04-24
+facturas;F26-000562;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000562;FechaVencimiento;Q07 fecha ISO;09/04/2026;2026-04-09
+facturas;F26-000563;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000563;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000564;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000564;FechaVencimiento;Q07 fecha ISO;24/04/2026;2026-04-24
+facturas;F26-000565;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000565;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000566;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000566;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000567;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000567;FechaVencimiento;Q07 fecha ISO;09/04/2026;2026-04-09
+facturas;F26-000568;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000568;FechaVencimiento;Q07 fecha ISO;24/04/2026;2026-04-24
+facturas;F26-000569;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000569;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000570;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000570;FechaVencimiento;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000571;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000571;FechaVencimiento;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000572;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000572;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000573;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000573;FechaVencimiento;Q07 fecha ISO;09/04/2026;2026-04-09
+facturas;F26-000574;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000574;FechaVencimiento;Q07 fecha ISO;09/05/2026;2026-05-09
+facturas;F26-000575;FechaFactura;Q07 fecha ISO;10/03/2026;2026-03-10
+facturas;F26-000575;FechaVencimiento;Q07 fecha ISO;09/04/2026;2026-04-09
+facturas;F26-000576;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000576;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000577;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000577;FechaVencimiento;Q07 fecha ISO;25/04/2026;2026-04-25
+facturas;F26-000578;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000578;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000579;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000579;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000580;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000580;FechaVencimiento;Q07 fecha ISO;10/04/2026;2026-04-10
+facturas;F26-000581;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000581;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000582;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000582;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000583;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000583;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000584;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000584;FechaVencimiento;Q07 fecha ISO;10/04/2026;2026-04-10
+facturas;F26-000585;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000585;FechaVencimiento;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000586;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000586;FechaVencimiento;Q07 fecha ISO;25/04/2026;2026-04-25
+facturas;F26-000587;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000587;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000588;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000588;FechaVencimiento;Q07 fecha ISO;25/04/2026;2026-04-25
+facturas;F26-000589;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000589;FechaVencimiento;Q07 fecha ISO;10/05/2026;2026-05-10
+facturas;F26-000590;FechaFactura;Q07 fecha ISO;11/03/2026;2026-03-11
+facturas;F26-000590;FechaVencimiento;Q07 fecha ISO;10/04/2026;2026-04-10
+facturas;F26-000591;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000591;FechaVencimiento;Q07 fecha ISO;11/05/2026;2026-05-11
+facturas;F26-000592;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000592;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000593;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000593;FechaVencimiento;Q07 fecha ISO;26/04/2026;2026-04-26
+facturas;F26-000594;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000594;FechaVencimiento;Q07 fecha ISO;11/05/2026;2026-05-11
+facturas;F26-000595;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000595;FechaVencimiento;Q07 fecha ISO;11/05/2026;2026-05-11
+facturas;F26-000596;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000596;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000597;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000597;FechaVencimiento;Q07 fecha ISO;11/05/2026;2026-05-11
+facturas;F26-000598;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000598;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000599;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000599;FechaVencimiento;Q07 fecha ISO;26/04/2026;2026-04-26
+facturas;F26-000600;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000600;FechaVencimiento;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000601;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000601;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000602;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000602;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000603;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000603;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000604;FechaFactura;Q07 fecha ISO;12/03/2026;2026-03-12
+facturas;F26-000604;FechaVencimiento;Q07 fecha ISO;11/04/2026;2026-04-11
+facturas;F26-000605;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000605;FechaVencimiento;Q07 fecha ISO;11/06/2026;2026-06-11
+facturas;F26-000606;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000606;FechaVencimiento;Q07 fecha ISO;12/05/2026;2026-05-12
+facturas;F26-000607;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000607;FechaVencimiento;Q07 fecha ISO;12/05/2026;2026-05-12
+facturas;F26-000608;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000608;FechaVencimiento;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000609;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000609;FechaVencimiento;Q07 fecha ISO;12/04/2026;2026-04-12
+facturas;F26-000610;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000610;FechaVencimiento;Q07 fecha ISO;27/04/2026;2026-04-27
+facturas;F26-000611;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000611;FechaVencimiento;Q07 fecha ISO;12/05/2026;2026-05-12
+facturas;F26-000612;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000612;FechaVencimiento;Q07 fecha ISO;12/05/2026;2026-05-12
+facturas;F26-000613;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000613;FechaVencimiento;Q07 fecha ISO;12/05/2026;2026-05-12
+facturas;F26-000614;FechaFactura;Q07 fecha ISO;13/03/2026;2026-03-13
+facturas;F26-000614;FechaVencimiento;Q07 fecha ISO;27/04/2026;2026-04-27
+facturas;F26-000615;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000615;FechaVencimiento;Q07 fecha ISO;15/05/2026;2026-05-15
+facturas;F26-000616;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000616;FechaVencimiento;Q07 fecha ISO;15/05/2026;2026-05-15
+facturas;F26-000617;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000617;FechaVencimiento;Q07 fecha ISO;15/05/2026;2026-05-15
+facturas;F26-000618;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000618;FechaVencimiento;Q07 fecha ISO;15/04/2026;2026-04-15
+facturas;F26-000619;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000619;FechaVencimiento;Q07 fecha ISO;30/04/2026;2026-04-30
+facturas;F26-000620;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000620;FechaVencimiento;Q07 fecha ISO;15/04/2026;2026-04-15
+facturas;F26-000621;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000621;FechaVencimiento;Q07 fecha ISO;15/04/2026;2026-04-15
+facturas;F26-000622;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000622;FechaVencimiento;Q07 fecha ISO;15/05/2026;2026-05-15
+facturas;F26-000623;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000623;FechaVencimiento;Q07 fecha ISO;15/05/2026;2026-05-15
+facturas;F26-000624;FechaFactura;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000624;FechaVencimiento;Q07 fecha ISO;16/03/2026;2026-03-16
+facturas;F26-000625;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000625;FechaVencimiento;Q07 fecha ISO;16/04/2026;2026-04-16
+facturas;F26-000626;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000626;FechaVencimiento;Q07 fecha ISO;16/05/2026;2026-05-16
+facturas;F26-000627;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000627;FechaVencimiento;Q07 fecha ISO;16/05/2026;2026-05-16
+facturas;F26-000628;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000628;FechaVencimiento;Q07 fecha ISO;16/04/2026;2026-04-16
+facturas;F26-000629;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000629;FechaVencimiento;Q07 fecha ISO;16/04/2026;2026-04-16
+facturas;F26-000630;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000630;FechaVencimiento;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000631;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000631;FechaVencimiento;Q07 fecha ISO;16/05/2026;2026-05-16
+facturas;F26-000632;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000632;FechaVencimiento;Q07 fecha ISO;16/05/2026;2026-05-16
+facturas;F26-000633;FechaFactura;Q07 fecha ISO;17/03/2026;2026-03-17
+facturas;F26-000633;FechaVencimiento;Q07 fecha ISO;16/04/2026;2026-04-16
+facturas;F26-000634;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000634;FechaVencimiento;Q07 fecha ISO;17/05/2026;2026-05-17
+facturas;F26-000635;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000635;FechaVencimiento;Q07 fecha ISO;16/06/2026;2026-06-16
+facturas;F26-000636;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000636;FechaVencimiento;Q07 fecha ISO;17/04/2026;2026-04-17
+facturas;F26-000637;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000637;FechaVencimiento;Q07 fecha ISO;01/06/2026;2026-06-01
+facturas;F26-000638;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000638;FechaVencimiento;Q07 fecha ISO;17/04/2026;2026-04-17
+facturas;F26-000639;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000639;FechaVencimiento;Q07 fecha ISO;17/05/2026;2026-05-17
+facturas;F26-000640;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000640;FechaVencimiento;Q07 fecha ISO;02/05/2026;2026-05-02
+facturas;F26-000641;FechaFactura;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000641;FechaVencimiento;Q07 fecha ISO;18/03/2026;2026-03-18
+facturas;F26-000642;FechaFactura;Q07 fecha ISO;19/03/2026;2026-03-19
+facturas;F26-000642;FechaVencimiento;Q07 fecha ISO;18/04/2026;2026-04-18
+facturas;F26-000949;FechaVencimiento;Q09 vacío;22/06/2026;
+facturas;F26-001961;FechaVencimiento;Q09 vacío;25/09/2026;
+facturas;F26-000439;FechaVencimiento;Q09 vacío;26/03/2026;
+facturas;F26-000445;FechaVencimiento;Q09 vacío;26/04/2026;
+facturas;F26-000957;FechaVencimiento;Q09 vacío;24/04/2026;
+facturas;F26-000448;FechaVencimiento;Q09 vacío;26/04/2026;
+facturas;F26-001465;FechaVencimiento;Q09 vacío;19/07/2026;
+facturas;F26-001969;FechaVencimiento;Q09 vacío;27/10/2026;
+facturas;F26-001469;FechaVencimiento;Q09 vacío;19/07/2026;
+facturas;F25-002430;FechaVencimiento;Q09 vacío;17/02/2026;
+facturas;F25-002434;FechaVencimiento;Q09 vacío;23/01/2026;
+facturas;F26-000460;FechaVencimiento;Q09 vacío;28/03/2026;
+facturas;F26-001982;FechaVencimiento;Q09 vacío;30/09/2026;
+facturas;F26-000974;FechaVencimiento;Q09 vacío;27/05/2026;
+facturas;F26-002496;FechaVencimiento;Q09 vacío;11/12/2026;
+facturas;F26-001487;FechaVencimiento;Q09 vacío;23/07/2026;
+facturas;F26-001489;FechaVencimiento;Q09 vacío;22/08/2026;
+facturas;F26-000990;FechaVencimiento;Q09 vacío;29/05/2026;
+facturas;F26-002517;FechaVencimiento;Q09 vacío;28/12/2026;
+facturas;F26-002016;FechaVencimiento;Q09 vacío;04/10/2026;
+facturas;F26-001015;FechaVencimiento;Q09 vacío;30/05/2026;
+facturas;F26-001018;FechaVencimiento;Q09 vacío;18/06/2026;
+facturas;F26-001525;FechaVencimiento;Q09 vacío;25/08/2026;
+facturas;F26-000513;FechaVencimiento;Q09 vacío;02/05/2026;
+facturas;F26-001031;FechaVencimiento;Q09 vacío;04/07/2026;
+facturas;F26-001038;FechaVencimiento;Q09 vacío;04/07/2026;
+facturas;F26-000019;FechaVencimiento;Q09 vacío;04/02/2026;
+facturas;F26-000022;FechaVencimiento;Q09 vacío;04/02/2026;
+facturas;F26-002053;FechaVencimiento;Q09 vacío;08/11/2026;
+facturas;F26-000032;FechaVencimiento;Q09 vacío;08/03/2026;
+facturas;F26-001584;FechaVencimiento;Q09 vacío;17/08/2026;
+facturas;F26-001093;FechaVencimiento;Q09 vacío;10/07/2026;
+facturas;F26-002109;FechaVencimiento;Q09 vacío;14/09/2026;
+facturas;F26-001611;FechaVencimiento;Q09 vacío;07/07/2026;
+facturas;F26-001110;FechaVencimiento;Q09 vacío;11/07/2026;
+facturas;F26-000092;FechaVencimiento;Q09 vacío;28/02/2026;
+facturas;F26-000093;FechaVencimiento;Q09 vacío;15/03/2026;
+facturas;F26-000095;FechaVencimiento;Q09 vacío;28/02/2026;
+facturas;F26-001117;FechaVencimiento;Q09 vacío;13/06/2026;
+facturas;F26-001629;FechaVencimiento;Q09 vacío;23/08/2026;
+facturas;F26-002149;FechaVencimiento;Q09 vacío;18/10/2026;
+facturas;F26-001651;FechaVencimiento;Q09 vacío;12/09/2026;
+facturas;F26-001150;FechaVencimiento;Q09 vacío;17/07/2026;
+facturas;F26-001657;FechaVencimiento;Q09 vacío;13/08/2026;
+facturas;F26-000651;FechaVencimiento;Q09 vacío;03/05/2026;
+facturas;F26-000152;FechaVencimiento;Q09 vacío;22/03/2026;
+facturas;F26-001677;FechaVencimiento;Q09 vacío;14/09/2026;
+facturas;F26-000162;FechaVencimiento;Q09 vacío;23/03/2026;
+facturas;F26-001180;FechaVencimiento;Q09 vacío;18/08/2026;
+facturas;F26-002195;FechaVencimiento;Q09 vacío;08/11/2026;
+facturas;F26-000680;FechaVencimiento;Q09 vacío;08/05/2026;
+facturas;F26-001692;FechaVencimiento;Q09 vacío;16/08/2026;
+facturas;F26-001696;FechaVencimiento;Q09 vacío;15/09/2026;
+facturas;F26-001701;FechaVencimiento;Q09 vacío;18/09/2026;
+facturas;F26-002208;FechaVencimiento;Q09 vacío;25/10/2026;
+facturas;F26-001211;FechaVencimiento;Q09 vacío;22/05/2026;
+facturas;F26-001212;FechaVencimiento;Q09 vacío;21/06/2026;
+facturas;F26-001214;FechaVencimiento;Q09 vacío;21/07/2026;
+facturas;F26-000199;FechaVencimiento;Q09 vacío;26/02/2026;
+facturas;F26-002228;FechaVencimiento;Q09 vacío;28/11/2026;
+facturas;F26-002236;FechaVencimiento;Q09 vacío;30/09/2026;
+facturas;F26-000213;FechaVencimiento;Q09 vacío;15/03/2026;
+facturas;F26-001238;FechaVencimiento;Q09 vacío;10/07/2026;
+facturas;F26-000733;FechaVencimiento;Q09 vacío;29/04/2026;
+facturas;F26-002256;FechaVencimiento;Q09 vacío;01/10/2026;
+facturas;F26-000747;FechaVencimiento;Q09 vacío;30/05/2026;
+facturas;F26-000750;FechaVencimiento;Q09 vacío;30/04/2026;
+facturas;F26-001761;FechaVencimiento;Q09 vacío;23/08/2026;
+facturas;F26-001259;FechaVencimiento;Q09 vacío;26/07/2026;
+facturas;F26-002269;FechaVencimiento;Q09 vacío;31/10/2026;
+facturas;F26-000245;FechaVencimiento;Q09 vacío;03/04/2026;
+facturas;F26-001263;FechaVencimiento;Q09 vacío;28/05/2026;
+facturas;F26-000757;FechaVencimiento;Q09 vacío;31/05/2026;
+facturas;F26-000762;FechaVencimiento;Q09 vacío;01/05/2026;
+facturas;F26-000257;FechaVencimiento;Q09 vacío;05/03/2026;
+facturas;F26-000258;FechaVencimiento;Q09 vacío;04/04/2026;
+facturas;F26-002290;FechaVencimiento;Q09 vacío;04/11/2026;
+facturas;F26-001286;FechaVencimiento;Q09 vacío;13/07/2026;
+facturas;F26-000779;FechaVencimiento;Q09 vacío;21/05/2026;
+facturas;F26-000783;FechaVencimiento;Q09 vacío;06/06/2026;
+facturas;F26-001302;FechaVencimiento;Q09 vacío;31/07/2026;
+facturas;F26-002313;FechaVencimiento;Q09 vacío;05/11/2026;
+facturas;F26-000806;FechaVencimiento;Q09 vacío;24/05/2026;
+facturas;F26-001829;FechaVencimiento;Q09 vacío;03/10/2026;
+facturas;F26-001832;FechaVencimiento;Q09 vacío;04/09/2026;
+facturas;F26-001839;FechaVencimiento;Q09 vacío;04/10/2026;
+facturas;F26-002347;FechaVencimiento;Q09 vacío;08/12/2026;
+facturas;F26-002350;FechaVencimiento;Q09 vacío;08/12/2026;
+facturas;F26-000835;FechaVencimiento;Q09 vacío;10/05/2026;
+facturas;F26-001343;FechaVencimiento;Q09 vacío;04/08/2026;
+facturas;F26-002358;FechaVencimiento;Q09 vacío;08/12/2026;
+facturas;F26-001363;FechaVencimiento;Q09 vacío;23/07/2026;
+facturas;F26-000863;FechaVencimiento;Q09 vacío;14/05/2026;
+facturas;F26-000864;FechaVencimiento;Q09 vacío;13/06/2026;
+facturas;F26-002384;FechaVencimiento;Q09 vacío;13/12/2026;
+facturas;F26-000873;FechaVencimiento;Q09 vacío;15/06/2026;
+facturas;F26-000874;FechaVencimiento;Q09 vacío;15/07/2026;
+facturas;F26-001886;FechaVencimiento;Q09 vacío;11/10/2026;
+facturas;F26-001387;FechaVencimiento;Q09 vacío;09/08/2026;
+facturas;F26-000378;FechaVencimiento;Q09 vacío;19/03/2026;
+facturas;F26-001906;FechaVencimiento;Q09 vacío;01/10/2026;
+facturas;F26-000387;FechaVencimiento;Q09 vacío;20/03/2026;
+facturas;F26-000899;FechaVencimiento;Q09 vacío;20/05/2026;
+facturas;F26-002419;FechaVencimiento;Q09 vacío;18/12/2026;
+facturas;F26-000394;FechaVencimiento;Q09 vacío;20/03/2026;
+facturas;F26-000399;FechaVencimiento;Q09 vacío;21/03/2026;
+facturas;F26-000909;FechaVencimiento;Q09 vacío;21/04/2026;
+facturas;F26-001420;FechaVencimiento;Q09 vacío;15/06/2026;
+facturas;F26-001925;FechaVencimiento;Q09 vacío;18/10/2026;
+facturas;F26-000404;FechaVencimiento;Q09 vacío;21/03/2026;
+facturas;F26-000408;FechaVencimiento;Q09 vacío;21/03/2026;
+facturas;F26-001929;FechaVencimiento;Q09 vacío;19/10/2026;
+facturas;F26-002442;FechaVencimiento;Q09 vacío;20/12/2026;
+facturas;F26-001936;FechaVencimiento;Q09 vacío;20/09/2026;
+facturas;F26-000928;FechaVencimiento;Q09 vacío;21/06/2026;
+facturas;F26-002449;FechaVencimiento;Q09 vacío;22/10/2026;
+facturas;F26-000424;FechaVencimiento;Q09 vacío;23/02/2026;
+facturas;F26-001946;FechaVencimiento;Q09 vacío;23/10/2026;
+facturas;F26-000937;FechaVencimiento;Q09 vacío;21/06/2026;
+facturas;F26-001447;FechaVencimiento;Q09 vacío;17/07/2026;
+facturas;F26-002214;CodCliente;Q16 errata O por 0;C0045;C0O45
+facturas;F26-000682;CodCliente;Q16 errata O por 0;C0045;C0O45
+facturas;F26-000891;CodCliente;Q16 errata O por 0;C0045;C0O45
+facturas;F26-001655;CodCliente;Q04 espacios al final;C0055;C0055 
+facturas;F26-000460;CodCliente;Q04 espacios al final;C0317;C0317 
+facturas;F26-002324;CodCliente;Q04 espacios al final;C0177;C0177 
+facturas;F26-000182;CodCliente;Q04 espacios al final;C0294;C0294 
+facturas;F26-001418;CodCliente;Q04 espacios al final;C0310;C0310 
+facturas;F26-002141;CodCliente;Q04 espacios al final;C0143;C0143  
+facturas;F26-000756;CodCliente;Q04 espacios al final;C0273;C0273 
+facturas;F26-000192;CodCliente;Q04 espacios al final;C0199;C0199 
+facturas;F26-000414;CodCliente;Q04 espacios al final;C0030;C0030 
+facturas;F26-000334;CodCliente;Q04 espacios al final;C0087;C0087 
+facturas;F26-001231;CodCliente;Q04 espacios al final;C0310;C0310 
+facturas;F26-001769;CodCliente;Q04 espacios al final;C0119;C0119 
+facturas;F26-000415;CodCliente;Q04 espacios al final;C0200;C0200 
+facturas;F26-000733;CodCliente;Q04 espacios al final;C0025;C0025 
+facturas;F26-000963;CodCliente;Q04 espacios al final;C0310;C0310 
+facturas;F26-002085;CodCliente;Q04 espacios al final;C0310;C0310 
+facturas;F26-002168;CodCliente;Q04 espacios al final;C0138;C0138  
+facturas;F26-002283;CodCliente;Q04 espacios al final;C0030;C0030 
+facturas;F26-002501;CodCliente;Q04 espacios al final;C0272;C0272 
+facturas;F26-000541;CodCliente;Q04 espacios al final;C0091;C0091 
+facturas;F26-000023;CodCliente;Q04 espacios al final;C0317;C0317 
+facturas;F26-001984;CodCliente;Q04 espacios al final;C0242;C0242 
+facturas;F26-002481;CodCliente;Q04 espacios al final;C0242;C0242 
+facturas;F26-001587;CodCliente;Q04 espacios al final;C0081;C0081  
+facturas;F26-000823;CodCliente;Q04 espacios al final;C0249;C0249 
+facturas;F26-002184;CodCliente;Q04 espacios al final;C0023;C0023 
+facturas;F26-001689;CodCliente;Q04 espacios al final;C0122;C0122  
+facturas;F26-002304;CodCliente;Q04 espacios al final;C0261;C0261 
+facturas;F26-000058;CodCliente;Q04 espacios al final;C0246;C0246 
+facturas;F26-000586;CodCliente;Q04 espacios al final;C0294;C0294 
+facturas;F26-000211;CodCliente;Q04 espacios al final;C0087;C0087 
+facturas;F26-001253;CodCliente;Q04 espacios al final;C0070;C0070 
+facturas;F26-001924;CodCliente;Q04 espacios al final;C0081;C0081 
+facturas;F26-001777;CodCliente;Q04 espacios al final;C0181;C0181 
+facturas;F26-000948;CodCliente;Q04 espacios al final;C0143;C0143 
+facturas;F26-001807;CodCliente;Q04 espacios al final;C0175;C0175  
+facturas;F26-002494;CodCliente;Q04 espacios al final;C0312;C0312 
+facturas;F26-001562;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001563;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001564;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001565;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001566;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001567;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001568;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001569;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001570;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001571;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001572;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001573;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001574;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;F26-001575;(fila entera);Q01 duplicado exacto (exportación solapada);;
+facturas;TOTAL GENERAL;(fila entera);Q10 fila de total;;8374393.36
+cobros;CB-00008;CodCliente;CodCliente vacío;C0013;
+cobros;CB-00015;NumFactura;vacío (concepto);F26-000005;
+cobros;CB-00047;NumFactura;vacío (concepto);F25-002456;
+cobros;CB-00063;CodCliente;CodCliente vacío;C0317;
+cobros;CB-00069;NumFactura;vacío (concepto);F26-000123;
+cobros;CB-00075;CodCliente;CodCliente vacío;C0078;
+cobros;CB-00081;NumFactura;vacío (concepto);F26-000332;
+cobros;CB-00118;NumFactura;vacío (agrupado);F26-000012 F26-000102;
+cobros;CB-00121;CodCliente;CodCliente vacío;C0156;
+cobros;CB-00127;NumFactura;vacío (concepto);F26-000009;
+cobros;CB-00134;NumFactura;vacío (concepto);F26-000220;
+cobros;CB-00155;NumFactura;vacío (concepto);F26-000032;
+cobros;CB-00156;NumFactura;vacío (concepto);F26-000274;
+cobros;CB-00196;CodCliente;CodCliente vacío;C0025;
+cobros;CB-00197;Importe;Q14 devolución de recibo;;-4008,37
+cobros;CB-00237;NumFactura;vacío (concepto);F26-000086;
+cobros;CB-00250;NumFactura;vacío (concepto);F25-002446;
+cobros;CB-00267;NumFactura;vacío (agrupado);F26-000026 F26-000394;
+cobros;CB-00287;CodCliente;CodCliente vacío;C0229;
+cobros;CB-00292;NumFactura;vacío (agrupado);F26-000052 F26-000120 F26-000300 F26-000443;
+cobros;CB-00293;NumFactura;vacío (concepto);F26-000247;
+cobros;CB-00315;NumFactura;vacío (concepto);F26-000518;
+cobros;CB-00321;NumFactura;vacío (concepto);F26-000427;
+cobros;CB-00345;NumFactura;vacío (concepto);F26-000749;
+cobros;CB-00356;Importe;Q14 devolución de recibo;;-454,96
+cobros;CB-00362;CodCliente;CodCliente vacío;C0257;
+cobros;CB-00386;CodCliente;CodCliente vacío;C0143;
+cobros;CB-00387;Importe;Q14 devolución de recibo;;-636,84
+cobros;CB-00397;NumFactura;vacío (concepto);F26-000119;
+cobros;CB-00416;NumFactura;vacío (concepto);F26-000224;
+cobros;CB-00417;NumFactura;vacío (concepto);F26-000484;
+cobros;CB-00418;Importe;Q14 devolución de recibo;;-3988,16
+cobros;CB-00431;CodCliente;CodCliente vacío;C0310;
+cobros;CB-00444;NumFactura;vacío (concepto);F26-000333;
+cobros;CB-00452;Importe;Q14 devolución de recibo;;-10238,10
+cobros;CB-00469;NumFactura;vacío (agrupado);F26-000315 F26-000537;
+cobros;CB-00480;CodCliente;CodCliente vacío;C0124;
+cobros;CB-00502;NumFactura;vacío (concepto);F26-000555;
+cobros;CB-00503;NumFactura;vacío (concepto);F26-000685;
+cobros;CB-00512;CodCliente;CodCliente vacío;C0122;
+cobros;CB-00526;NumFactura;vacío (concepto);F26-000382;
+cobros;CB-00527;Importe;Q14 devolución de recibo;;-2665,98
+cobros;CB-00547;NumFactura;vacío (agrupado);F26-000021 F26-000029 F26-000153 F26-000184;
+cobros;CB-00555;NumFactura;vacío (concepto);F26-000235;
+cobros;CB-00563;NumFactura;vacío (agrupado);F26-000418 F26-000481 F26-000599 F26-000610;
+cobros;CB-00571;NumFactura;vacío (agrupado_parcial);F26-000438 F26-000497;
+cobros;CB-00572;NumFactura;vacío (concepto);F26-000335;
+cobros;CB-00603;NumFactura;vacío (concepto);F26-000534;
+cobros;CB-00620;NumFactura;vacío (agrupado_parcial);F26-000694 F26-000723;
+cobros;CB-00647;NumFactura;vacío (agrupado);F26-000849 R26-000005;
+cobros;CB-00648;NumFactura;vacío (concepto);F26-000589;
+cobros;CB-00655;NumFactura;vacío (agrupado);F26-000236 F26-000336;
+cobros;CB-00656;NumFactura;vacío (concepto);F26-000540;
+cobros;CB-00661;CodCliente;CodCliente vacío;C0294;
+cobros;CB-00684;NumFactura;vacío (agrupado);F26-000578 F26-000634;
+cobros;CB-00685;NumFactura;vacío (agrupado);F26-000863 F26-000890 F26-000899;
+cobros;CB-00686;NumFactura;vacío (concepto);F26-000211;
+cobros;CB-00687;NumFactura;vacío (concepto);F26-000914;
+cobros;CB-00710;NumFactura;vacío (agrupado);F26-000502 F26-000658;
+cobros;CB-00711;NumFactura;vacío (concepto);F26-000565;
+cobros;CB-00712;NumFactura;vacío (concepto);F26-000900;
+cobros;CB-00729;NumFactura;vacío (agrupado);F26-000586 F26-000593 F26-000719 F26-000730;
+cobros;CB-00743;NumFactura;vacío (agrupado);F26-000417 F26-000478 F26-000679;
+cobros;CB-00744;NumFactura;vacío (concepto);F26-000964;
+cobros;CB-00745;NumFactura;vacío (concepto);F26-001171;
+cobros;CB-00788;NumFactura;vacío (agrupado);F26-000166 F26-000419;
+cobros;CB-00799;NumFactura;vacío (concepto);F26-001283;
+cobros;CB-00812;NumFactura;vacío (agrupado);F26-000612 F26-000728;
+cobros;CB-00813;NumFactura;vacío (concepto);F26-000516;
+cobros;CB-00824;NumFactura;vacío (concepto);F26-000584;
+cobros;CB-00847;NumFactura;vacío (concepto);F26-000922;
+cobros;CB-00854;CodCliente;CodCliente vacío;C0020;
+cobros;CB-00870;CodCliente;CodCliente vacío;C0261;
+cobros;CB-00878;NumFactura;vacío (concepto);F26-000833;
+cobros;CB-00891;CodCliente;CodCliente vacío;C0143;
+cobros;CB-00892;NumFactura;vacío (agrupado);F26-000881 F26-000995 F26-001130 R26-000008;
+cobros;CB-00921;NumFactura;vacío (agrupado);F26-000661 F26-000704 F26-000789 F26-000859;
+cobros;CB-00922;NumFactura;vacío (concepto);F26-000752;
+cobros;CB-00937;Importe;Q14 devolución de recibo;;-1224,14
+cobros;CB-00945;NumFactura;vacío (agrupado);F26-000486 R26-000004;
+cobros;CB-00961;NumFactura;vacío (agrupado);F26-001245 F26-001432;
+cobros;CB-00962;CodCliente;CodCliente vacío;C0257;
+cobros;CB-00987;CodCliente;CodCliente vacío;C0052;
+cobros;CB-00994;NumFactura;vacío (agrupado);F26-000778 F26-000969;
+cobros;CB-01002;NumFactura;vacío (agrupado);F26-000929 F26-000928 R26-000013;
+cobros;CB-01024;CodCliente;CodCliente vacío;C0094;
+cobros;CB-01024;NumFactura;vacío (agrupado);F26-000989 R26-000011;
+cobros;CB-01043;CodCliente;CodCliente vacío;C0025;
+cobros;CB-01055;Importe;Q14 devolución de recibo;;-1016,84
+cobros;CB-01066;NumFactura;vacío (concepto);F26-001290;
+cobros;CB-01070;NumFactura;vacío (agrupado);F26-001001 F26-001131 F26-001201 R26-000009;
+cobros;CB-01071;NumFactura;vacío (agrupado);F26-001105 F26-001129 R26-000012;
+cobros;CB-01126;NumFactura;vacío (concepto);F26-001017;
+cobros;CB-01131;NumFactura;vacío (concepto);F26-000522;
+cobros;CB-01143;NumFactura;vacío (agrupado);F26-000782 F26-000924 F26-001078 F26-001119;
+cobros;CB-01144;NumFactura;vacío (concepto);F26-001307;
+cobros;CB-01151;CodCliente;CodCliente vacío;C0263;
+cobros;CB-01169;NumFactura;vacío (agrupado);F26-001179 F26-001390;
+cobros;CB-01170;NumFactura;vacío (concepto);F26-000362;
+cobros;CB-01186;CodCliente;CodCliente vacío;C0125;
+cobros;CB-01187;NumFactura;vacío (agrupado);F26-000947 F26-001193;
+cobros;CB-01197;NumFactura;vacío (agrupado);F26-001157 F26-001190;
+cobros;CB-01198;NumFactura;vacío (agrupado);F26-001009 F26-001033 F26-001111 F26-001145;
+cobros;CB-01199;NumFactura;vacío (concepto);F26-001286;
+cobros;CB-01214;CodCliente;CodCliente vacío;C0095;
+cobros;CB-01257;NumFactura;vacío (concepto);F26-001392;
+cobros;CB-01258;NumFactura;vacío (concepto);F26-001559;
+cobros;CB-01259;NumFactura;vacío (concepto);F26-001750;
+cobros;CB-01262;CodCliente;CodCliente vacío;C0153;
+cobros;CB-01273;NumFactura;vacío (concepto);F26-001253;
+cobros;CB-01274;NumFactura;vacío (concepto);F26-001530;
+cobros;CB-01295;NumFactura;vacío (concepto);F26-001407;
+cobros;CB-01311;NumFactura;vacío (agrupado);F26-001121 R26-000016;
+cobros;CB-01332;NumFactura;vacío (concepto);F26-001208;
+cobros;CB-01352;CodCliente;CodCliente vacío;C0125;
+cobros;CB-01359;NumFactura;vacío (agrupado);F26-001028 F26-001329 R26-000010;
+cobros;CB-01379;CodCliente;CodCliente vacío;C0113;
+cobros;CB-01401;NumFactura;vacío (agrupado);F26-000348 F26-000651;
+cobros;CB-01402;NumFactura;vacío (agrupado);F26-001497 F26-001529 F26-001648;
+cobros;CB-01403;NumFactura;vacío (concepto);F26-001712;
+cobros;CB-01413;CodCliente;CodCliente vacío;C0229;
+cobros;CB-01417;NumFactura;vacío (agrupado);F26-000203 F26-000250;
+cobros;CB-01426;NumFactura;vacío (concepto);F26-001680;
+cobros;CB-01452;NumFactura;vacío (agrupado);F26-001159 F26-001588 R26-000014;
+cobros;CB-01453;Importe;Q14 devolución de recibo;;-1695,09
+cobros;CB-01461;CodCliente;CodCliente vacío;C0057;
+cobros;CB-01470;NumFactura;vacío (agrupado);F26-001233 F26-001244 F26-001442 F26-001492;
+cobros;CB-01471;NumFactura;vacío (concepto);F26-001418;
+cobros;CB-01472;NumFactura;vacío (concepto);F26-001511;
+cobros;CB-01484;NumFactura;vacío (agrupado_parcial);F26-000887 F26-001036;
+cobros;CB-01516;Importe;Q14 devolución de recibo;;-1025,20
+cobros;CB-01517;Importe;Q14 devolución de recibo;;-4491,69
+cobros;CB-01523;NumFactura;vacío (agrupado);F26-001423 F26-001515 R26-000017;
+cobros;CB-01530;CodCliente;CodCliente vacío;C0280;
+cobros;CB-01543;NumFactura;vacío (concepto);F26-001067;
+cobros;CB-01544;NumFactura;vacío (concepto);F26-001554;
+cobros;CB-01558;NumFactura;vacío (a_cuenta);;
+cobros;CB-01566;NumFactura;vacío (concepto);F26-001252;
+cobros;CB-01567;NumFactura;vacío (concepto);F26-001381;
+cobros;CB-01578;NumFactura;vacío (concepto);F26-001580;
+cobros;CB-01581;Importe;Q14 devolución de recibo;;-1397,28
+cobros;CB-01588;NumFactura;vacío (agrupado);F26-001687 R26-000018;
+cobros;CB-01589;NumFactura;vacío (agrupado);F26-001205 F26-001409;
+cobros;CB-01591;CodCliente;CodCliente vacío;C0047;
+cobros;CB-01599;CodCliente;CodCliente vacío;C0265;
+cobros;CB-01604;NumFactura;vacío (agrupado);F26-001674 F26-001710 R26-000007;
+cobros;CB-01605;NumFactura;vacío (agrupado);F26-001483 F26-001491 F26-001601 F26-001625;
+cobros;CB-01606;Importe;Q14 devolución de recibo;;-1288,00
+cobros;CB-01618;NumFactura;vacío (a_cuenta);;
+cobros;CB-01619;Importe;Q14 devolución de recibo;;-2166,81
+cobros;CB-01628;NumFactura;vacío (concepto);F26-001705;
+cobros;CB-01639;NumFactura;vacío (a_cuenta);;
+cobros;CB-01640;NumFactura;vacío (agrupado);F26-001628 F26-001646;
+cobros;CB-01641;NumFactura;vacío (agrupado);F26-001780 F26-001912;
+cobros;CB-01672;NumFactura;vacío (agrupado_parcial);F26-001311 F26-001360 F26-001453;
+cobros;CB-01673;NumFactura;vacío (concepto);F26-001716;
+cobros;CB-01683;NumFactura;vacío (concepto);F26-001370;
+cobros;CB-01692;NumFactura;vacío (agrupado);F26-001703 F26-001736;
+cobros;CB-01693;NumFactura;vacío (agrupado);F26-001076 F26-001624;
+cobros;CB-01694;NumFactura;vacío (agrupado);F26-001405 F26-001771;
+cobros;CB-01695;NumFactura;vacío (agrupado_parcial);F26-001697 F26-001720;
+cobros;CB-01739;Importe;Q14 devolución de recibo;;-1757,88
+cobros;CB-01748;NumFactura;vacío (agrupado);F26-001373 F26-001547;
+cobros;CB-01774;NumFactura;vacío (a_cuenta);;
+cobros;CB-01775;NumFactura;vacío (a_cuenta);;
+cobros;CB-01776;NumFactura;vacío (concepto);F26-001664;
+cobros;CB-01791;NumFactura;vacío (a_cuenta);;
+cobros;CB-01792;NumFactura;vacío (a_cuenta);;
+cobros;CB-01793;NumFactura;vacío (agrupado);F26-001590 F26-001749 F26-001807;
+cobros;CB-01824;NumFactura;vacío (agrupado);F26-001149 F26-001330;
+cobros;CB-01825;CodCliente;CodCliente vacío;C0154;
+cobros;CB-01832;NumFactura;vacío (concepto);F26-001618;
+cobros;CB-01841;NumFactura;vacío (a_cuenta);;
+cobros;CB-01842;NumFactura;vacío (agrupado);F26-001641 R26-000021;
+cobros;CB-01845;NumFactura;vacío (agrupado);F26-001818 F26-001997 R26-000020;
+cobros;CB-01846;NumFactura;vacío (agrupado);F26-002154 F26-002256;
+cobros;CB-01847;NumFactura;vacío (concepto);F26-001522;
+cobros;CB-01848;Importe;Q14 devolución de recibo;;-9501,27
+cobros;CB-01893;NumFactura;vacío (agrupado);F26-001920 F26-002130;
+cobros;CB-01900;CodCliente;CodCliente vacío;C0317;
+cobros;CB-01929;CodCliente;CodCliente vacío;C0276;
+cobros;CB-01949;NumFactura;vacío (agrupado);F26-001783 F26-001945;
+cobros;CB-01962;NumFactura;vacío (a_cuenta);;
+cobros;CB-01963;NumFactura;vacío (agrupado);F26-001722 F26-001779 R26-000019;
+cobros;CB-01999;CodCliente;CodCliente vacío;C0265;
+cobros;CB-02002;NumFactura;vacío (concepto);F26-001972;
+cobros;CB-02003;NumFactura;vacío (concepto);F26-002269;
+cobros;CB-02004;NumFactura;vacío (concepto);F26-002276;
+cobros;CB-02010;NumFactura;vacío (concepto);F26-002046;
+cobros;CB-02019;Importe;Q14 devolución de recibo;;-1732,87
+cobros;CB-02048;Importe;Q14 devolución de recibo;;-1557,69
+cobros;CB-02078;NumFactura;vacío (concepto);F26-002129;
+cobros;CB-02108;CodCliente;CodCliente vacío;C0119;

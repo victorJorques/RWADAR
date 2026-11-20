@@ -1,0 +1,666 @@
+{
+ "id": "n3m5l4",
+ "titulo": "Alertas con fórmula y cómo revisar una hoja ajena",
+ "minutos": 16,
+ "objetivo": "Pintar la fila entera de lo que requiere atención con una regla de formato condicional con fórmula, entender qué dice cada error y revisar fórmulas ajenas con las herramientas de auditoría.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Te paso el libro de cobros que llevaba el chico de prácticas. Hay fórmulas que no me cuadran y no me fío. Revísalo, y quiero que las facturas vencidas y sin cobrar salgan en rojo, la fila entera. Fecha de corte: el lunes 16.",
+  "logro": "Ya sabes revisar una hoja ajena, entender y arreglar sus errores, y montar una alerta que pinta la fila entera de lo vencido."
+ },
+ "funciones": [
+  "SI.ERROR",
+  "Y",
+  "SUMAR.SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En el nivel 2 pintaste las facturas de más de 3.000 €. Esas reglas miran solo **la propia celda**. Marta quiere más: pintar **la fila entera** de cada factura cuyo vencimiento ya ha pasado.\n\nPara eso están las reglas con **fórmula**: **Inicio › Estilos › Formato condicional › Nueva regla** y, en la lista de tipos de regla, la última: *Utilizar una fórmula que determine las celdas para aplicar formato*.\n\nLa fórmula tiene que dar **VERDADERO** (se pinta) o **FALSO** (no se pinta)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e1",
+   "modo": "predice",
+   "enunciado": "Esta es la prueba que hará la regla en la fila 2. La factura vence el **30/10/2026** y la fecha de corte (H1) es el **16/11/2026**. ¿Qué devuelve? Escribe VERDADERO o FALSO.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Vencimiento",
+     "E1": "Estado",
+     "A2": "F-2026-0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1815,
+     "D2": {
+      "fecha": "2026-10-30"
+     },
+     "E2": "Pendiente",
+     "A3": "F-2026-0418",
+     "B3": "Montajes Arga",
+     "C3": 2420,
+     "D3": {
+      "fecha": "2026-11-05"
+     },
+     "E3": "Cobrada",
+     "A4": "F-2026-0425",
+     "B4": "Electricidad Moncayo",
+     "C4": 968,
+     "D4": {
+      "fecha": "2026-11-20"
+     },
+     "E4": "Pendiente",
+     "A5": "F-2026-0431",
+     "B5": "Riegos y Luz del Segre",
+     "C5": 3267,
+     "D5": {
+      "fecha": "2026-11-10"
+     },
+     "E5": "Pendiente",
+     "A6": "F-2026-0437",
+     "B6": "Talleres Huerva",
+     "C6": 605,
+     "D6": {
+      "fecha": "2026-11-25"
+     },
+     "E6": "Pendiente",
+     "A7": "F-2026-0440",
+     "B7": "Electro Baztán",
+     "C7": 1452,
+     "D7": {
+      "fecha": "2026-10-31"
+     },
+     "E7": "Cobrada",
+     "A8": "F-2026-0446",
+     "B8": "Instalaciones Noguera",
+     "C8": 2904,
+     "D8": {
+      "fecha": "2026-11-14"
+     },
+     "E8": "Pendiente",
+     "G1": "Fecha de corte",
+     "H1": {
+      "fecha": "2026-11-16"
+     }
+    },
+    "formatos": {
+     "C2:C8": "eur",
+     "D2:D8": "fecha",
+     "H1": "fecha"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 21,
+     "C": 10,
+     "D": 11,
+     "E": 10,
+     "F": 10,
+     "G": 14,
+     "H": 11
+    }
+   },
+   "celda": "F2",
+   "formula": "=$D2<$H$1",
+   "explicacion": "VERDADERO: el 30/10 es anterior al 16/11, así que la factura está vencida y la regla pintaría su fila. Las fechas son números y se comparan como números: la más antigua es la menor.",
+   "respuesta": "VERDADERO"
+  },
+  {
+   "tipo": "texto",
+   "md": "La regla se escribe **para la primera fila** del rango que has seleccionado (A2:E8), y Excel la aplica a cada celda moviendo las referencias, como si la copiara.\n\nEl truco está en el **$**:\n\n- `$D2`: la **columna D, fija** (todas las celdas de la fila miran el vencimiento) y la **fila, libre** (cada fila mira el suyo).\n- `$H$1`: la fecha de corte, **fija del todo**.\n\nAsí, `=$D2<$H$1` pinta las cinco celdas de cada factura vencida."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e2",
+   "modo": "test",
+   "pregunta": "Seleccionas A2:E8 para pintar la fila entera de las facturas vencidas. ¿Qué fórmula escribes en la regla?",
+   "opciones": [
+    {
+     "texto": "=$D2<$H$1",
+     "correcta": true,
+     "porque": "Columna fija, fila libre, y la fecha de corte fija del todo: cada fila mira su propio vencimiento."
+    },
+    {
+     "texto": "=D2<$H$1",
+     "correcta": false,
+     "porque": "Sin $ en la columna, la celda de A mira la D, la de B mira la E, la de C mira la F… Cada celda compara una columna distinta y se pintan celdas sueltas sin sentido."
+    },
+    {
+     "texto": "=$D$2<$H$1",
+     "correcta": false,
+     "porque": "Con D2 fija del todo, todas las filas miran el vencimiento de la primera factura: se pinta todo o nada."
+    },
+    {
+     "texto": "=$D2<H1",
+     "correcta": false,
+     "porque": "H1 sin $ se mueve: la fila 3 compararía con H2, que está vacía, y la regla fallaría a partir de la segunda factura."
+    }
+   ],
+   "explicacion": "La regla se escribe para la primera fila: columna fija ($D), fila libre (2) y la fecha de corte fija del todo ($H$1)."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Qué te dice cada error",
+   "cabecera": [
+    "Error",
+    "Qué significa",
+    "Ejemplo típico"
+   ],
+   "filas": [
+    [
+     "#N/D",
+     "No disponible: una búsqueda no encuentra lo que busca",
+     "BUSCARX de un código que no está en la tarifa"
+    ],
+    [
+     "#¡VALOR!",
+     "Tipo de dato equivocado: hay texto donde debería haber un número",
+     "«1.250 €» guardado como texto y multiplicado por 2"
+    ],
+    [
+     "#¡REF!",
+     "La fórmula apunta a una celda que ya no existe",
+     "Se borró la columna que usaba la fórmula"
+    ],
+    [
+     "#¡DIV/0!",
+     "División entre cero o entre una celda vacía",
+     "Cumplimiento de un comercial sin objetivo"
+    ],
+    [
+     "#¿NOMBRE?",
+     "Excel no reconoce un nombre",
+     "Función mal escrita o en inglés, o un texto sin comillas"
+    ],
+    [
+     "#¡NUM!",
+     "Un número imposible",
+     "SIFECHA con la fecha inicial posterior a la final"
+    ],
+    [
+     "#¡DESBORDAMIENTO!",
+     "Una fórmula que desborda no tiene sitio",
+     "Algo escrito debajo de un FILTRAR"
+    ]
+   ],
+   "pie": "Un error es un mensaje: léelo antes de tocar nada. Y al revés: que no salga ningún error no quiere decir que la hoja esté bien."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e3",
+   "modo": "test",
+   "pregunta": "El chico de prácticas **borró la columna de descuentos** porque «ya no se usaba». Desde entonces, el total de la hoja muestra **#¡REF!**. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "Alguna fórmula usaba esa columna y ahora apunta a una celda que ya no existe",
+     "correcta": true,
+     "porque": "Eso es. Si acabas de borrar, [[Ctrl]]+[[Z]] lo deshace. Si no, abre la fórmula: verás #¡REF! dentro, justo donde estaba la referencia, y la rehaces."
+    },
+    {
+     "texto": "Hay texto donde debería haber un número",
+     "correcta": false,
+     "porque": "Eso sería #¡VALOR!. #¡REF! habla de referencias: celdas a las que la fórmula ya no puede llegar."
+    },
+    {
+     "texto": "Se ha dividido entre cero",
+     "correcta": false,
+     "porque": "Eso daría #¡DIV/0!."
+    },
+    {
+     "texto": "La función está mal escrita",
+     "correcta": false,
+     "porque": "Eso daría #¿NOMBRE?. Aquí la fórmula estaba bien hasta que se borró la columna."
+    }
+   ],
+   "explicacion": "#¡REF! es una referencia perdida. Antes de borrar una fila o una columna en una hoja ajena, comprueba que ninguna fórmula la usa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e4",
+   "modo": "formula",
+   "enunciado": "El chico quería sumar en **G2** el importe de las facturas **Pendiente**, pero su fórmula da **#¿NOMBRE?**. Arréglala.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Vencimiento",
+     "E1": "Estado",
+     "A2": "F-2026-0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1815,
+     "D2": {
+      "fecha": "2026-10-30"
+     },
+     "E2": "Pendiente",
+     "A3": "F-2026-0418",
+     "B3": "Montajes Arga",
+     "C3": 2420,
+     "D3": {
+      "fecha": "2026-11-05"
+     },
+     "E3": "Cobrada",
+     "A4": "F-2026-0425",
+     "B4": "Electricidad Moncayo",
+     "C4": 968,
+     "D4": {
+      "fecha": "2026-11-20"
+     },
+     "E4": "Pendiente",
+     "A5": "F-2026-0431",
+     "B5": "Riegos y Luz del Segre",
+     "C5": 3267,
+     "D5": {
+      "fecha": "2026-11-10"
+     },
+     "E5": "Pendiente",
+     "A6": "F-2026-0437",
+     "B6": "Talleres Huerva",
+     "C6": 605,
+     "D6": {
+      "fecha": "2026-11-25"
+     },
+     "E6": "Pendiente",
+     "A7": "F-2026-0440",
+     "B7": "Electro Baztán",
+     "C7": 1452,
+     "D7": {
+      "fecha": "2026-10-31"
+     },
+     "E7": "Cobrada",
+     "A8": "F-2026-0446",
+     "B8": "Instalaciones Noguera",
+     "C8": 2904,
+     "D8": {
+      "fecha": "2026-11-14"
+     },
+     "E8": "Pendiente",
+     "G1": "Pendiente de cobro"
+    },
+    "formatos": {
+     "C2:C8": "eur",
+     "D2:D8": "fecha",
+     "G2": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 21,
+     "C": 10,
+     "D": 11,
+     "E": 10,
+     "F": 10,
+     "G": 14,
+     "H": 11
+    }
+   },
+   "objetivo": "G2",
+   "inicial": "=SUMAR.SI(E2:E8;Pendiente;C2:C8)",
+   "solucion": "=SUMAR.SI(E2:E8;\"Pendiente\";C2:C8)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(C2:C8;E2:E8;\"Pendiente\")"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(C2:C8;\"Pendiente\";E2:E8)",
+    "=SUMA(C2:C8)"
+   ],
+   "variantes": [
+    {
+     "E3": "Pendiente"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "#¿NOMBRE? quiere decir que Excel ha encontrado una palabra que no reconoce. ¿Cuál puede ser?",
+    "Pendiente es un texto: sin comillas, Excel cree que es el nombre de algo.",
+    "`=SUMAR.SI(E2:E8;\"Pendiente\";C2:C8)`"
+   ],
+   "explicacion": "9.559 € pendientes de cobro. Los textos de una fórmula van siempre entre comillas; sin ellas, Excel busca algo que se llame así, no lo encuentra y avisa con #¿NOMBRE?."
+  },
+  {
+   "tipo": "texto",
+   "md": "**SI.ERROR** cambia un error por lo que tú digas:\n\n`=SI.ERROR(valor; valor_si_error)`\n\nÚsala solo cuando **sabes** qué error va a salir y por qué es normal. Ejemplo: una comercial nueva aún no tiene objetivo, así que ventas ÷ objetivo da #¡DIV/0!. Ahí, «Sin objetivo» es una respuesta honesta.\n\nPero ojo: SI.ERROR tapa **todos** los errores, también un #¡REF! o una errata. Si la usas para que la hoja «quede bonita», esconderás justo lo que tenías que ver."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e5",
+   "modo": "formula",
+   "enunciado": "Javier calcula el **% de cumplimiento** (ventas ÷ objetivo). Nerea Arbizu es nueva y aún no tiene objetivo, así que su fila da #¡DIV/0!. Arregla **D2** para que calcule el cumplimiento y, si da error, muestre **Sin objetivo**. Se copiará hasta D7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas nov.",
+     "C1": "Objetivo",
+     "D1": "Cumplimiento",
+     "A2": "Sergio Bueno",
+     "B2": 41200,
+     "C2": 40000,
+     "A3": "Pilar Lasheras",
+     "B3": 28900,
+     "C3": 35000,
+     "A4": "Iñaki Goñi",
+     "B4": 37650,
+     "C4": 36000,
+     "A5": "Montse Pujol",
+     "B5": 30100,
+     "C5": 32000,
+     "A6": "Raúl Gimeno",
+     "B6": 46800,
+     "C6": 45000,
+     "A7": "Nerea Arbizu",
+     "B7": 12300
+    },
+    "formatos": {
+     "B2:C7": "#.##0 €",
+     "D2:D7": "pct1"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 11,
+     "C": 10,
+     "D": 13
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D7"
+   ],
+   "inicial": "=B2/C2",
+   "solucion": "=SI.ERROR(B2/C2;\"Sin objetivo\")",
+   "alternativas": [
+    "=SI(C2=0;\"Sin objetivo\";B2/C2)",
+    "=SI(C2=\"\";\"Sin objetivo\";B2/C2)"
+   ],
+   "errores_tipicos": [
+    "=SI.ERROR(B2/C2;0)",
+    "=SI.ERROR(B2/C2;\"\")"
+   ],
+   "variantes": [
+    {
+     "C3": 38000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Envuelve la división de siempre en SI.ERROR.",
+    "Primer argumento: B2/C2. Segundo: el texto que quieres ver, entre comillas.",
+    "`=SI.ERROR(B2/C2;\"Sin objetivo\")`"
+   ],
+   "explicacion": "Los cinco que tienen objetivo muestran su porcentaje y Nerea dice «Sin objetivo», que es la verdad. Aquí SI.ERROR está bien usada: sabías qué error salía y por qué."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para revisar una hoja ajena, ve a **Fórmulas › Auditoría de fórmulas**:\n\n- **Rastrear precedentes**: flechas desde las celdas que usa la fórmula. **Rastrear dependientes**: flechas hacia las fórmulas que usan esta celda. **Quitar flechas** las borra.\n- **Mostrar fórmulas**: enseña las fórmulas en lugar de los resultados (otro clic y vuelve).\n- **Comprobación de errores**: te lleva de un error a otro.\n- **Evaluar fórmula**: calcula una fórmula larga **paso a paso**, para ver dónde se tuerce."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Números escondidos",
+   "md": "El fallo más traicionero no da ningún aviso: un número escrito a mano dentro de una fórmula, como `=B2*0,21` o `=SUMA(C2:C8)+350`. Hoy cuadra; el día que cambie el dato, ya no. Con **Mostrar fórmulas** los verás enseguida: busca cifras sueltas dentro de las fórmulas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e6",
+   "modo": "cinta",
+   "enunciado": "Un total del libro tiene una fórmula larguísima y da un resultado raro. Quieres ver cómo la calcula Excel **paso a paso**. ¿Qué botón usas?",
+   "ruta": [
+    "Fórmulas",
+    "Auditoría de fórmulas",
+    "Evaluar fórmula"
+   ],
+   "explicacion": "Fórmulas › Auditoría de fórmulas › Evaluar fórmula. Cada vez que pulsas **Evaluar**, Excel calcula la parte subrayada y te enseña el resultado: así ves en qué paso se tuerce."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una regla mal escrita no da error: simplemente pinta lo que no es. Por eso, antes de crearla, **pruébala** en una columna auxiliar: escribe la fórmula en la primera fila, cópiala hacia abajo y mira los VERDADERO y FALSO.\n\nSi los VERDADERO caen justo en las filas que quieres pintar, copia esa misma fórmula en la regla. Después puedes borrar la columna auxiliar."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "La prueba de Nuria",
+   "md": "Cuando tengas la regla, cambia la fecha de corte y mira si los colores se mueven como esperas. Es la forma más rápida de pillar un $ mal puesto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l4-e7",
+   "modo": "formula",
+   "enunciado": "**Misión de Marta.** Antes de crear la regla, pruébala. En **F2** escribe la fórmula de la alerta: VERDADERO si la factura **vence antes de la fecha de corte** (H1) **y** está **Pendiente**. Se copiará hasta F8: pon los $ como irían en la regla.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "D1": "Vencimiento",
+     "E1": "Estado",
+     "A2": "F-2026-0412",
+     "B2": "Instalaciones Ebro",
+     "C2": 1815,
+     "D2": {
+      "fecha": "2026-10-30"
+     },
+     "E2": "Pendiente",
+     "A3": "F-2026-0418",
+     "B3": "Montajes Arga",
+     "C3": 2420,
+     "D3": {
+      "fecha": "2026-11-05"
+     },
+     "E3": "Cobrada",
+     "A4": "F-2026-0425",
+     "B4": "Electricidad Moncayo",
+     "C4": 968,
+     "D4": {
+      "fecha": "2026-11-20"
+     },
+     "E4": "Pendiente",
+     "A5": "F-2026-0431",
+     "B5": "Riegos y Luz del Segre",
+     "C5": 3267,
+     "D5": {
+      "fecha": "2026-11-10"
+     },
+     "E5": "Pendiente",
+     "A6": "F-2026-0437",
+     "B6": "Talleres Huerva",
+     "C6": 605,
+     "D6": {
+      "fecha": "2026-11-25"
+     },
+     "E6": "Pendiente",
+     "A7": "F-2026-0440",
+     "B7": "Electro Baztán",
+     "C7": 1452,
+     "D7": {
+      "fecha": "2026-10-31"
+     },
+     "E7": "Cobrada",
+     "A8": "F-2026-0446",
+     "B8": "Instalaciones Noguera",
+     "C8": 2904,
+     "D8": {
+      "fecha": "2026-11-14"
+     },
+     "E8": "Pendiente",
+     "F1": "¿Alerta?",
+     "G1": "Fecha de corte",
+     "H1": {
+      "fecha": "2026-11-16"
+     }
+    },
+    "formatos": {
+     "C2:C8": "eur",
+     "D2:D8": "fecha",
+     "H1": "fecha"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 21,
+     "C": 10,
+     "D": 11,
+     "E": 10,
+     "F": 10,
+     "G": 14,
+     "H": 11
+    }
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F8"
+   ],
+   "solucion": "=Y($D2<$H$1;$E2=\"Pendiente\")",
+   "alternativas": [
+    "=Y($E2=\"Pendiente\";$D2<$H$1)"
+   ],
+   "errores_tipicos": [
+    "=$D2<$H$1",
+    "=Y(D2<H1;E2=\"Pendiente\")",
+    "=O($D2<$H$1;$E2=\"Pendiente\")",
+    "=Y($D$2<$H$1;$E2=\"Pendiente\")"
+   ],
+   "variantes": [
+    {
+     "H1": {
+      "fecha": "2026-11-21"
+     }
+    }
+   ],
+   "pistas": [
+    "Son dos condiciones a la vez: usa Y, que ya conoces.",
+    "Vencida: `$D2<$H$1`. Pendiente: `$E2=\"Pendiente\"`. Columna fija, fila libre.",
+    "`=Y($D2<$H$1;$E2=\"Pendiente\")`"
+   ],
+   "explicacion": "Tres VERDADERO: las facturas de Instalaciones Ebro, Riegos y Luz del Segre e Instalaciones Noguera. Ahora selecciona A2:E8, crea la regla con esta misma fórmula y elige un relleno rojo. Marta tendrá sus vencidas en rojo, y cuando cambie la fecha de corte, los colores se moverán solos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m5l4-q1",
+   "modo": "formula",
+   "enunciado": "En **C2** el chico escribió `=B2*0,21`. Hoy funciona, pero esconde un número. Cámbiala para que use el tipo de IVA de **F1**. Se copiará hasta C6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Base",
+     "C1": "IVA",
+     "A2": "F-2026-0450",
+     "B2": 1200,
+     "A3": "F-2026-0451",
+     "B3": 845.5,
+     "A4": "F-2026-0452",
+     "B4": 2310,
+     "A5": "F-2026-0453",
+     "B5": 96.8,
+     "A6": "F-2026-0454",
+     "B6": 4075,
+     "E1": "Tipo de IVA",
+     "F1": 0.21
+    },
+    "formatos": {
+     "B2:C6": "eur",
+     "F1": "pct"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 10,
+     "C": 10,
+     "E": 11,
+     "F": 8
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "inicial": "=B2*0,21",
+   "solucion": "=B2*$F$1",
+   "alternativas": [
+    "=$F$1*B2",
+    "=B2*F$1"
+   ],
+   "errores_tipicos": [
+    "=B2*F1",
+    "=B2*21%"
+   ],
+   "variantes": [
+    {
+     "F1": 0.1
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El 0,21 tiene que salir de la fórmula: el dato ya está en F1.",
+    "Al copiar hacia abajo, F1 se movería: fíjalo con $ (tecla F4).",
+    "`=B2*$F$1`"
+   ],
+   "explicacion": "Ahora, si el tipo cambia, tocas F1 y todo se recalcula. Un número escondido en una fórmula es de los fallos que nunca dan aviso."
+  },
+  {
+   "id": "n3m5l4-q2",
+   "modo": "test",
+   "pregunta": "Un compañero trae el saldo de cada cliente con `=SI.ERROR(BUSCARX(A2;$G$2:$G$90;$H$2:$H$90);0)` y dice que el total cuadra «más o menos». ¿Qué riesgo tiene?",
+   "opciones": [
+    {
+     "texto": "Si un cliente no está en la lista de G, sale 0 en vez de #N/D y nadie se entera de que falta",
+     "correcta": true,
+     "porque": "Eso es. Ese #N/D era un aviso útil. Mejor `BUSCARX(…;\"No está\")` y contar cuántos «No está» hay."
+    },
+    {
+     "texto": "Ninguno: un 0 es más limpio que un error",
+     "correcta": false,
+     "porque": "Más limpio, pero falso: ese 0 esconde un cliente que no se ha encontrado, y el total sale corto."
+    },
+    {
+     "texto": "Que BUSCARX no se puede meter dentro de SI.ERROR",
+     "correcta": false,
+     "porque": "Sí se puede. El problema no es que funcione, sino lo que tapa."
+    },
+    {
+     "texto": "Que el total sale más alto de lo que es",
+     "correcta": false,
+     "porque": "Al revés: los no encontrados suman 0, así que el total sale más bajo, no más alto."
+    }
+   ],
+   "explicacion": "SI.ERROR con un 0 convierte un aviso útil en una cifra falsa. Tapa un error solo cuando sabes cuál es y por qué es normal."
+  },
+  {
+   "id": "n3m5l4-q3",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para que las facturas vencidas y pendientes salgan en rojo, la fila entera.",
+   "pasos": [
+    "Selecciona A2:E8, las filas de datos sin los títulos",
+    "Inicio › Estilos › Formato condicional › Nueva regla",
+    "Elige «Utilizar una fórmula que determine las celdas para aplicar formato»",
+    "Escribe =Y($D2<$H$1;$E2=\"Pendiente\")",
+    "Pulsa Formato, elige un relleno rojo y acepta"
+   ],
+   "explicacion": "Primero se selecciona dónde se aplica la regla, después se elige el tipo de regla, se escribe la fórmula de la primera fila y, al final, el formato."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Regla de formato condicional que pinta la fila entera",
+   "dorso": "Fórmula escrita para la primera fila, con la columna fija: =$D2<$H$1."
+  },
+  {
+   "tipo": "error",
+   "frente": "#¡REF!",
+   "dorso": "La fórmula apunta a una celda que ya no existe (se borró una fila o una columna). Deshacer o rehacer la referencia."
+  },
+  {
+   "tipo": "error",
+   "frente": "#¿NOMBRE?",
+   "dorso": "Excel no reconoce un nombre: función mal escrita o en inglés, o un texto sin comillas."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "SI.ERROR",
+   "dorso": "=SI.ERROR(valor; valor_si_error). Solo para errores que esperas y entiendes: los tapa todos."
+  },
+  {
+   "tipo": "truco",
+   "frente": "Ver una fórmula larga paso a paso",
+   "dorso": "Fórmulas › Auditoría de fórmulas › Evaluar fórmula."
+  }
+ ]
+}

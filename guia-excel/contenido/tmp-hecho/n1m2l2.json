@@ -1,0 +1,509 @@
+{
+ "id": "n1m2l2",
+ "titulo": "Contar: CONTAR, CONTARA y CONTAR.BLANCO",
+ "minutos": 13,
+ "objetivo": "Contar cuántas celdas tienen números, cuántas tienen algo escrito y cuántas están vacías, y elegir la función adecuada para cada pregunta.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "La semana que viene llamamos a los clientes de la zona de Lleida. Te paso el listado: ¿a cuántos les falta el teléfono? Quiero saber cuánto trabajo de búsqueda nos queda antes de empezar.",
+  "logro": "Ya sabes contar facturas, clientes y huecos de un listado, y elegir entre CONTAR, CONTARA y CONTAR.BLANCO según lo que te pregunten."
+ },
+ "funciones": [
+  "CONTAR",
+  "CONTARA",
+  "CONTAR.BLANCO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "**Sumar** y **contar** no son lo mismo:\n\n- **Sumar** responde a «¿cuántos euros?»: 3 facturas de 100 € suman 300 €.\n- **Contar** responde a «¿cuántas cosas?»: esas mismas facturas son 3.\n\nEn la oficina te preguntarán mucho lo segundo: cuántas facturas hay este mes, cuántos clientes tenemos en Huesca, cuántos pedidos faltan por servir."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e1",
+   "modo": "test",
+   "pregunta": "¿Cuál de estas preguntas se responde **contando**, no sumando?",
+   "opciones": [
+    {
+     "texto": "¿Cuántas facturas emitimos en octubre?",
+     "correcta": true,
+     "porque": "Exacto: te piden un número de facturas, no un importe."
+    },
+    {
+     "texto": "¿Cuánto facturamos en octubre?",
+     "correcta": false,
+     "porque": "«Cuánto facturamos» pide euros: eso es sumar los importes."
+    },
+    {
+     "texto": "¿Cuánto nos debe Instalaciones Moncayo?",
+     "correcta": false,
+     "porque": "Es un importe en euros: se suma lo pendiente."
+    },
+    {
+     "texto": "¿Cuántos euros gastamos en gasoil?",
+     "correcta": false,
+     "porque": "Aunque diga «cuántos», pide euros: se suma."
+    }
+   ],
+   "explicacion": "Truco: si la respuesta lleva «€», sumas. Si lleva «facturas», «clientes» o «pedidos», cuentas."
+  },
+  {
+   "tipo": "texto",
+   "md": "**CONTAR** cuenta las celdas que tienen **números**. Todo lo demás lo salta: textos y celdas vacías.\n\n`=CONTAR(C2:C8)` en una columna de importes te dice cuántas facturas tienen importe.\n\nOjo: las fechas también son números para Excel (lo viste al empezar el curso), así que CONTAR también las cuenta."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Facturas de la semana",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "A2": "F-2611",
+     "B2": "Electricidad Aranda",
+     "C2": 1240,
+     "A3": "F-2612",
+     "B3": "Montajes Cinca",
+     "C3": "anulada",
+     "A4": "F-2613",
+     "B4": "Instalaciones Moncayo",
+     "C4": 860,
+     "A5": "F-2614",
+     "B5": "Reformas Ebro",
+     "A6": "F-2615",
+     "B6": "Clima Segre",
+     "C6": 2310,
+     "E1": "Con importe",
+     "F1": "=CONTAR(C2:C6)"
+    },
+    "formatos": {
+     "C2:C6": "eur"
+    },
+    "anchos": {
+     "A": 9,
+     "B": 20,
+     "C": 11,
+     "E": 12
+    }
+   },
+   "resaltar": [
+    "F1"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Hay 5 facturas, pero CONTAR da 3: salta «anulada» (texto) y la celda vacía de la fila 5."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e2",
+   "modo": "predice",
+   "enunciado": "Columna de **teléfonos** de clientes. Unos tienen número, otros pone «pendiente» y uno está vacío. ¿Qué devolverá `=CONTAR(B2:B7)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Teléfono",
+     "A2": "Electricidad Aranda",
+     "B2": 976214580,
+     "A3": "Montajes Cinca",
+     "B3": "pendiente",
+     "A4": "Instalaciones Moncayo",
+     "B4": 948331207,
+     "A5": "Reformas Ebro",
+     "A6": "Clima Segre",
+     "B6": 973402116,
+     "A7": "Luz y Obra Tudela",
+     "B7": "pendiente"
+    },
+    "anchos": {
+     "A": 20,
+     "B": 12
+    }
+   },
+   "celda": "D2",
+   "formula": "=CONTAR(B2:B7)",
+   "explicacion": "Solo hay 3 celdas con números. CONTAR salta los dos «pendiente» (son texto) y la celda vacía."
+  },
+  {
+   "tipo": "texto",
+   "md": "Sus dos hermanas:\n\n- **CONTARA** cuenta las celdas que tienen **algo**: números, textos, lo que sea. Solo salta las vacías. Piensa en la A final como «**A**lgo escrito».\n- **CONTAR.BLANCO** cuenta las celdas **vacías** (en blanco).\n\nLas tres se escriben igual: el nombre y el rango entre paréntesis."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Qué cuenta cada una (columna de teléfonos de antes)",
+   "cabecera": [
+    "Función",
+    "Qué cuenta",
+    "Resultado"
+   ],
+   "filas": [
+    [
+     "`=CONTAR(B2:B7)`",
+     "Solo números",
+     "3"
+    ],
+    [
+     "`=CONTARA(B2:B7)`",
+     "Todo lo que no está vacío",
+     "5"
+    ],
+    [
+     "`=CONTAR.BLANCO(B2:B7)`",
+     "Solo las vacías",
+     "1"
+    ]
+   ],
+   "pie": "CONTARA + CONTAR.BLANCO = número de filas del rango (5 + 1 = 6)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e3",
+   "modo": "predice",
+   "enunciado": "Misma columna de pedidos, ahora con **CONTARA**. ¿Qué devolverá `=CONTARA(B2:B8)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "A2": "P-501",
+     "B2": 420,
+     "A3": "P-502",
+     "B3": "anulado",
+     "A4": "P-503",
+     "B4": 135,
+     "A5": "P-504",
+     "A6": "P-505",
+     "B6": 980,
+     "A7": "P-506",
+     "B7": "anulado",
+     "A8": "P-507"
+    }
+   },
+   "celda": "D2",
+   "formula": "=CONTARA(B2:B8)",
+   "explicacion": "CONTARA cuenta todo lo que tiene algo: 3 importes y 2 «anulado». Solo salta las 2 celdas vacías. Total, 5."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e4",
+   "modo": "formula",
+   "enunciado": "Marta quiere saber **cuántas facturas de la lista tienen importe** (las anuladas no cuentan). En **E2** escribe una fórmula que cuente las celdas con **números** de **C2:C9**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "A2": "F-2620",
+     "B2": "Electricidad Aranda",
+     "C2": 1580,
+     "A3": "F-2621",
+     "B3": "Montajes Cinca",
+     "C3": 342,
+     "A4": "F-2622",
+     "B4": "Reformas Ebro",
+     "C4": "anulada",
+     "A5": "F-2623",
+     "B5": "Clima Segre",
+     "C5": 2105,
+     "A6": "F-2624",
+     "B6": "Instalaciones Moncayo",
+     "C6": 760,
+     "A7": "F-2625",
+     "B7": "Luz y Obra Tudela",
+     "C7": "anulada",
+     "A8": "F-2626",
+     "B8": "Electro Huesca",
+     "C8": 415,
+     "A9": "F-2627",
+     "B9": "Montajes Cinca",
+     "C9": 1290,
+     "D2": "Con importe"
+    },
+    "formatos": {
+     "C2:C9": "eur"
+    },
+    "anchos": {
+     "A": 9,
+     "B": 20,
+     "C": 11,
+     "D": 12
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=CONTAR(C2:C9)",
+   "debe_usar": [
+    "CONTAR"
+   ],
+   "errores_tipicos": [
+    "=CONTARA(C2:C9)",
+    "=SUMA(C2:C9)",
+    "=CONTAR(B2:B9)"
+   ],
+   "variantes": [
+    {
+     "C4": 500
+    },
+    {
+     "C2": "anulada"
+    }
+   ],
+   "pistas": [
+    "Quieres contar solo las celdas con números.",
+    "La función que cuenta números es CONTAR, sin letras detrás.",
+    "=CONTAR(C2:C9)"
+   ],
+   "explicacion": "6 facturas válidas de 8. CONTAR se ha saltado las dos «anulada». Si mañana anulan otra y alguien lo escribe en su celda, el recuento baja solo."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Un espacio no es «vacío»",
+   "md": "Si alguien borra un teléfono pulsando la **barra espaciadora**, la celda parece vacía pero tiene un espacio, que es texto. CONTARA la contará y CONTAR.BLANCO no. Para vaciar una celda de verdad, selecciónala y pulsa **Supr**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e5",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber **cuántos proveedores** hay en la lista. En **E2** cuenta las celdas con algo escrito de la columna de nombres, **A2:A9**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Proveedor",
+     "B1": "Ciudad",
+     "C1": "Pedido mínimo",
+     "A2": "Cables del Norte",
+     "B2": "Bilbao",
+     "C2": 300,
+     "A3": "Luminia LED",
+     "B3": "Valencia",
+     "C3": 500,
+     "A4": "Mecanismos Arnal",
+     "B4": "Zaragoza",
+     "A5": "Tubos Gállego",
+     "B5": "Huesca",
+     "C5": 150,
+     "A6": "Protecciones Iberia",
+     "B6": "Madrid",
+     "C6": 400,
+     "A7": "Bridas y Fijaciones Sur",
+     "B7": "Sevilla",
+     "D2": "Proveedores"
+    },
+    "formatos": {
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 10,
+     "C": 14,
+     "D": 12
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=CONTARA(A2:A9)",
+   "debe_usar": [
+    "CONTARA"
+   ],
+   "alternativas": [
+    "=CONTARA(B2:B9)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR(A2:A9)",
+    "=CONTAR(C2:C9)",
+    "=CONTAR.BLANCO(A2:A9)"
+   ],
+   "variantes": [
+    {
+     "A8": "Iluminación Turia",
+     "B8": "Valencia"
+    }
+   ],
+   "pistas": [
+    "Los nombres son texto. ¿Qué función cuenta celdas con algo, sea número o texto?",
+    "No es CONTAR: con textos daría 0. Es la que lleva una A al final.",
+    "=CONTARA(A2:A9)"
+   ],
+   "explicacion": "6 proveedores. Con CONTAR habrías obtenido 0, porque los nombres no son números. Contar filas de un listado (clientes, proveedores, empleados) con CONTARA es de lo más útil que vas a hacer. Y como el rango llega hasta la fila 9, si añades un proveedor debajo, se cuenta solo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e6",
+   "modo": "test",
+   "pregunta": "Lucía cuenta los empleados con `=CONTAR(A2:A59)` sobre la columna de **nombres** y le sale **0**. ¿Qué le dices?",
+   "opciones": [
+    {
+     "texto": "Que use CONTARA: CONTAR solo cuenta números y los nombres son texto.",
+     "correcta": true,
+     "porque": "Eso es. CONTAR da 0 porque no hay ni un número en esa columna."
+    },
+    {
+     "texto": "Que la columna está vacía.",
+     "correcta": false,
+     "porque": "No está vacía: tiene 58 nombres. El problema es la función elegida."
+    },
+    {
+     "texto": "Que use SUMA en lugar de CONTAR.",
+     "correcta": false,
+     "porque": "SUMA suma números; con nombres también daría 0."
+    },
+    {
+     "texto": "Que use CONTAR.BLANCO.",
+     "correcta": false,
+     "porque": "CONTAR.BLANCO cuenta las celdas vacías, justo lo contrario de lo que busca."
+    }
+   ],
+   "explicacion": "Un 0 que no esperas es una señal: revisa si estás contando números o textos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l2-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** Listado de clientes de la zona de Lleida. En **F2** calcula **cuántos clientes no tienen teléfono** (su celda de la columna C está vacía).",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Localidad",
+     "C1": "Teléfono",
+     "A2": "Clima Segre",
+     "B2": "Lleida",
+     "C2": 973402116,
+     "A3": "Electricitat Pirineu",
+     "B3": "La Seu d'Urgell",
+     "A4": "Instal·lacions Noguera",
+     "B4": "Balaguer",
+     "C4": 973448190,
+     "A5": "Muntatges Tàrrega",
+     "B5": "Tàrrega",
+     "A6": "Reformes Mollerussa",
+     "B6": "Mollerussa",
+     "C6": 973600572,
+     "A7": "Llum i Obra Cervera",
+     "B7": "Cervera",
+     "A8": "Electro Solsona",
+     "B8": "Solsona",
+     "C8": 973481335,
+     "A9": "Instal·lacions Segarra",
+     "B9": "Guissona",
+     "A10": "Fred i Calor Lleida",
+     "B10": "Lleida",
+     "C10": 973270418,
+     "E2": "Sin teléfono"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 15,
+     "C": 12,
+     "E": 12
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=CONTAR.BLANCO(C2:C10)",
+   "debe_usar": [
+    "CONTAR.BLANCO"
+   ],
+   "errores_tipicos": [
+    "=CONTAR(C2:C10)",
+    "=CONTARA(C2:C10)",
+    "=CONTAR.BLANCO(B2:B10)"
+   ],
+   "variantes": [
+    {
+     "C3": 973350211
+    },
+    {
+     "C2": 973402116,
+     "C5": 973310998,
+     "C7": 973530664
+    }
+   ],
+   "pistas": [
+    "No te preguntan por los teléfonos que hay, sino por los huecos.",
+    "Hay una función que cuenta las celdas en blanco de un rango. Úsala sobre la columna de teléfonos, desde la fila 2.",
+    "=CONTAR.BLANCO(C2:C10)"
+   ],
+   "explicacion": "4 clientes sin teléfono de 9. Ya puedes decirle a Javier cuánto trabajo de búsqueda hay. Y cuando alguien rellene un teléfono, el número bajará solo: tu hoja hace de contador de tareas pendientes."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m2l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función cuenta las celdas que tienen **algo** escrito, sea número o texto? Escribe solo el nombre.",
+   "aceptadas": [
+    "CONTARA",
+    "contara",
+    "Contara"
+   ],
+   "explicacion": "CONTARA. La A final, de «Algo escrito». CONTAR solo cuenta números."
+  },
+  {
+   "id": "n1m2l2-q2",
+   "modo": "test",
+   "pregunta": "Tienes los importes de los pedidos en D2:D40. Te preguntan «¿cuál fue el pedido más grande?». ¿Qué usas?",
+   "opciones": [
+    {
+     "texto": "=MAX(D2:D40)",
+     "correcta": true,
+     "porque": "Correcto: te piden el importe más alto, no cuántos pedidos hay."
+    },
+    {
+     "texto": "=CONTAR(D2:D40)",
+     "correcta": false,
+     "porque": "CONTAR te diría cuántos pedidos tienen importe, no cuál es el mayor."
+    },
+    {
+     "texto": "=SUMA(D2:D40)",
+     "correcta": false,
+     "porque": "SUMA da el total de todos los pedidos."
+    },
+    {
+     "texto": "=CONTARA(D2:D40)",
+     "correcta": false,
+     "porque": "CONTARA cuenta celdas con algo; no busca el mayor."
+    }
+   ],
+   "explicacion": "Antes de escribir, pregúntate: ¿me piden un importe (SUMA, PROMEDIO, MAX, MIN) o un número de cosas (CONTAR, CONTARA, CONTAR.BLANCO)?"
+  },
+  {
+   "id": "n1m2l2-q3",
+   "modo": "predice",
+   "enunciado": "Horas extra de la semana. ¿Qué devuelve `=CONTAR.BLANCO(B2:B6)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "Horas extra",
+     "A2": "Ana Lasheras",
+     "B2": 3,
+     "A3": "Jorge Bielsa",
+     "A4": "Marina Oliván",
+     "B4": 0,
+     "A5": "Hugo Royo",
+     "A6": "Celia Pardo",
+     "B6": 5
+    }
+   },
+   "celda": "D2",
+   "formula": "=CONTAR.BLANCO(B2:B6)",
+   "explicacion": "2 celdas vacías (Jorge y Hugo). El 0 de Marina **no** está vacío: es un número."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Contar las celdas con números de un rango",
+   "dorso": "=CONTAR(C2:C9). Salta textos y vacías."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Contar las celdas que tienen algo (número o texto)",
+   "dorso": "=CONTARA(A2:A9). Solo salta las vacías."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Contar las celdas vacías de un rango",
+   "dorso": "=CONTAR.BLANCO(C2:C10)"
+  },
+  {
+   "tipo": "error",
+   "frente": "CONTAR sobre una columna de nombres da 0. ¿Por qué?",
+   "dorso": "CONTAR solo cuenta números. Para textos, usa CONTARA."
+  }
+ ]
+}

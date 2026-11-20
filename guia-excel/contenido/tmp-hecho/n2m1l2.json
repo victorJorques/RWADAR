@@ -1,0 +1,230 @@
+{
+ "id": "n2m1l2",
+ "titulo": "Columnas calculadas y referencias con nombre",
+ "minutos": 14,
+ "objetivo": "Crear una columna calculada en una Tabla, leer referencias como [@Cantidad] o Pedidos[Importe] y mantener una sola fórmula por columna.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "En la Tabla de pedidos falta el importe neto de cada línea: cantidad por precio, menos el descuento que nos hace el proveedor. Que sea una fórmula que no haya que arrastrar cada vez que entra un pedido, por favor.",
+  "logro": "Ya sabes crear columnas calculadas que se rellenan solas y leer las fórmulas con nombres de columna que verás en cualquier Tabla."
+ },
+ "funciones": ["SUMA"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En una Tabla, una columna con fórmula se llama **columna calculada**. Funciona así:\n\n1. Escribes un título nuevo justo a la derecha de la Tabla, por ejemplo *Importe*. La Tabla se amplía sola.\n2. Escribes la fórmula **solo en la primera fila** y pulsas **Intro**.\n3. Excel la copia a **toda la columna**, y también a las filas que añadas mañana.\n\nSe acabó arrastrar el controlador de relleno."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e1",
+   "modo": "formula",
+   "enunciado": "Calentamos con lo que ya sabes. En **D2** calcula el importe de la primera línea: cantidad (B2) por precio (C2). Tu fórmula se copiará a D3:D6, como haría la Tabla.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Cantidad", "C1": "Precio", "D1": "Importe",
+     "A2": "Cable 1,5 mm² (100 m)", "B2": 12, "C2": 39.9,
+     "A3": "Canaleta 40x60 (2 m)", "B3": 30, "C3": 6.85,
+     "A4": "Bridas 300 mm (100 ud.)", "B4": 25, "C4": 4.2,
+     "A5": "Luminaria estanca LED 18 W", "B5": 16, "C5": 21.5,
+     "A6": "Magnetotérmico 1P+N 10 A", "B6": 40, "C6": 8.75
+    },
+    "formatos": { "C2:D6": "eur" },
+    "anchos": { "A": 26 }
+   },
+   "objetivo": "D2",
+   "copiar_a": ["D3:D6"],
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=B2+C2", "=B2*$C$2"],
+   "variantes": [{ "C2": 41.5, "B4": 30 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Importe = cantidad × precio, de la misma fila.",
+    "Las celdas de la fila 2 son B2 y C2. El signo de multiplicar es *.",
+    "Escribe `=B2*C2`."
+   ],
+   "explicacion": "Perfecto: cinco importes con una sola fórmula. Ahora verás cómo escribe Excel esta misma fórmula dentro de una Tabla."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si haces lo mismo dentro de una Tabla y **haces clic** en las celdas en lugar de escribirlas, Excel no pone `=B2*C2`. Pone esto:\n\n`=[@Cantidad]*[@Precio]`\n\nEs una **referencia estructurada**: en vez de la dirección de la celda, usa el **nombre de la columna**. La @ significa «de esta fila». Se lee como una frase: «la Cantidad de esta fila por el Precio de esta fila»."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Lo mismo, dicho de dos formas",
+   "cabecera": ["Con celdas", "Con nombres (en una Tabla)", "Se lee"],
+   "filas": [
+    ["`=B2*C2`", "`=[@Cantidad]*[@Precio]`", "Cantidad por precio de esta fila"],
+    ["`=SUMA(D2:D6)`", "`=SUMA(Pedidos[Importe])`", "Suma de toda la columna Importe de la Tabla Pedidos"]
+   ],
+   "pie": "Las referencias estructuradas solo existen dentro de las Tablas de Excel. La hoja de práctica de esta guía no las calcula: aquí las vas a leer y escribir, y a calcular con celdas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e2",
+   "modo": "test",
+   "pregunta": "En la Tabla de Marta ves `=[@Cantidad]*[@Precio]` en la columna Importe. ¿Qué hace?",
+   "opciones": [
+    { "texto": "Multiplica la cantidad de esa fila por el precio de esa misma fila", "correcta": true, "porque": "Eso es: la @ quiere decir «esta fila». Es exactamente tu `=B2*C2`, pero con nombres." },
+    { "texto": "Multiplica la suma de toda la columna Cantidad por toda la columna Precio", "correcta": false, "porque": "Para referirse a la columna entera se escribe sin @: `Pedidos[Cantidad]`. Con @ es solo la fila actual." },
+    { "texto": "Nada: los corchetes indican que la fórmula tiene un error", "correcta": false, "porque": "Los corchetes son normales en las Tablas: rodean el nombre de una columna. Los errores empiezan por # (#¿NOMBRE?, #N/D…)." }
+   ],
+   "explicacion": "Leer referencias estructuradas es una habilidad de oficina: te van a llegar libros llenos de ellas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Sin la @ te refieres a la **columna entera**. Primero el nombre de la Tabla y, entre corchetes, el de la columna:\n\n`=SUMA(Pedidos[Importe])`\n\nSe lee: «suma la columna Importe de la Tabla Pedidos». Coge todas las filas de datos (sin el título ni la fila de totales) y, cuando la Tabla crece, la fórmula crece con ella. Además funciona desde cualquier hoja del libro: ideal para un resumen."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e3",
+   "modo": "test",
+   "pregunta": "En la hoja Resumen, Marta quiere el total de la columna **Importe** de la Tabla **Pedidos**, que no se quede corto cuando entren pedidos. ¿Qué fórmula pones?",
+   "opciones": [
+    { "texto": "=SUMA(Pedidos[Importe])", "correcta": true, "porque": "Nombre de la Tabla y, entre corchetes, la columna: suma todas las filas, también las que se añadan." },
+    { "texto": "=SUMA([@Importe])", "correcta": false, "porque": "La @ es «esta fila»: solo tendría sentido dentro de la Tabla y sumaría un único importe." },
+    { "texto": "=SUMA(Importe)", "correcta": false, "porque": "Sin el nombre de la Tabla ni los corchetes, Excel no sabe qué es «Importe» y devuelve #¿NOMBRE?." },
+    { "texto": "=SUMA(D2:D6)", "correcta": false, "porque": "Hoy daría bien, pero es un rango fijo: el pedido de mañana se quedaría fuera, como en la lección anterior." }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e4",
+   "modo": "respuesta_corta",
+   "pregunta": "Ahora escríbela tú. La Tabla **Pedidos** tiene una columna **Cantidad**. Escribe la fórmula que suma esa columna entera.",
+   "aceptadas": ["=SUMA(Pedidos[Cantidad])", "SUMA(Pedidos[Cantidad])", "=suma(Pedidos[Cantidad])", "=SUMA(pedidos[cantidad])"],
+   "explicacion": "`=SUMA(Pedidos[Cantidad])`: función, nombre de la Tabla y la columna entre corchetes. En Excel no hace falta escribirla entera: al teclear `Pedidos[` te ofrece la lista de columnas."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Una regla de oro: **una sola fórmula por columna**. Si en una fila alguien sobrescribe la fórmula con un número o con otra fórmula, el total sigue «saliendo», pero ya no es verdad. Excel lo marca con un triangulito verde en la esquina de la celda (su regla se llama «Fórmula de columna calculada incoherente en las tablas»). Cuando lo veas, no lo ignores."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e5",
+   "modo": "formula",
+   "enunciado": "Encuentra el error. El proveedor subió la canaleta de 6,50 € a 6,85 €, pero alguien escribió el precio viejo **dentro** de la fórmula de la fila 4. Arregla **D4** para que haga lo mismo que las demás filas: cantidad por precio de la columna C.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Cantidad", "C1": "Precio", "D1": "Importe",
+     "A2": "Cable 1,5 mm² (100 m)", "B2": 12, "C2": 39.9, "D2": "=B2*C2",
+     "A3": "Bridas 300 mm (100 ud.)", "B3": 25, "C3": 4.2, "D3": "=B3*C3",
+     "A4": "Canaleta 40x60 (2 m)", "B4": 30, "C4": 6.85,
+     "A5": "Luminaria estanca LED 18 W", "B5": 16, "C5": 21.5, "D5": "=B5*C5",
+     "A6": "Magnetotérmico 1P+N 10 A", "B6": 40, "C6": 8.75, "D6": "=B6*C6"
+    },
+    "formatos": { "C2:D6": "eur" },
+    "anchos": { "A": 26 }
+   },
+   "objetivo": "D4",
+   "inicial": "=B4*6,5",
+   "solucion": "=B4*C4",
+   "alternativas": ["=C4*B4"],
+   "errores_tipicos": ["=B4*6,5", "=B4*6,85"],
+   "variantes": [{ "C4": 7.1 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Mira la fórmula de D3 o de D5: ¿qué hacen con el precio?",
+    "El precio no se escribe en la fórmula: se coge de su celda, C4.",
+    "Escribe `=B4*C4`."
+   ],
+   "explicacion": "Arreglado, y además a prueba de futuro: si el proveedor vuelve a cambiar el precio, solo tocarás C4. Escribir `6,85` dentro también habría dado bien hoy, pero fallaría con la siguiente subida. En una Tabla, este error se evita dejando que la columna calculada ponga la misma fórmula en todas las filas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una cosa más para que los corchetes no te asusten. Si el título de la columna tiene **espacios** u otros signos, Excel lo envuelve en **doble corchete**:\n\n`=[@[Precio unidad]]*[@Cantidad]`\n\nNo es un error: es la forma de decir dónde empieza y dónde acaba un nombre con espacios. Por eso muchas empresas usan títulos cortos y sin espacios (*PrecioUd*, *Cantidad*)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e6",
+   "modo": "test",
+   "pregunta": "Abres un libro de compras y ves `=[@[Precio unidad]]*[@Cantidad]`. ¿Por qué Precio unidad lleva dos pares de corchetes y Cantidad uno?",
+   "opciones": [
+    { "texto": "Porque «Precio unidad» tiene un espacio y Excel necesita marcar dónde empieza y termina el nombre", "correcta": true, "porque": "Exacto. Los nombres con espacios o signos van entre doble corchete; los de una sola palabra, con uno." },
+    { "texto": "Porque Precio unidad es una columna más importante", "correcta": false, "porque": "Excel no da importancia a las columnas: los corchetes dependen solo de cómo está escrito el nombre." },
+    { "texto": "Porque la fórmula está mal escrita y hay que borrar un par de corchetes", "correcta": false, "porque": "Si quitas un par, Excel no entendería el nombre con espacio. La fórmula está bien." }
+   ]
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Te añado una columna: cada proveedor nos hace un **descuento** distinto. Necesito el importe **neto** por línea: cantidad por precio, menos su descuento."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m1l2-e7",
+   "modo": "formula",
+   "enunciado": "La misión de Marta. En **E2** calcula el importe neto de la primera línea: cantidad (B2) × precio (C2) × (1 − descuento de D2). Tu fórmula se copiará a E3:E6, igual que haría la columna calculada.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Cantidad", "C1": "Precio", "D1": "Descuento", "E1": "Neto",
+     "A2": "Cable 1,5 mm² (100 m)", "B2": 12, "C2": 39.9, "D2": 0.08,
+     "A3": "Canaleta 40x60 (2 m)", "B3": 30, "C3": 6.85, "D3": 0.05,
+     "A4": "Bridas 300 mm (100 ud.)", "B4": 25, "C4": 4.2, "D4": 0,
+     "A5": "Luminaria estanca LED 18 W", "B5": 16, "C5": 21.5, "D5": 0.12,
+     "A6": "Magnetotérmico 1P+N 10 A", "B6": 40, "C6": 8.75, "D6": 0.1
+    },
+    "formatos": { "C2:C6": "eur", "D2:D6": "pct", "E2:E6": "eur" },
+    "anchos": { "A": 26, "D": 11 }
+   },
+   "objetivo": "E2",
+   "copiar_a": ["E3:E6"],
+   "solucion": "=B2*C2*(1-D2)",
+   "alternativas": ["=B2*C2-B2*C2*D2", "=(B2*C2)*(1-D2)", "=C2*B2*(1-D2)"],
+   "errores_tipicos": ["=B2*C2*D2", "=B2*C2-D2", "=B2*C2*1-D2"],
+   "variantes": [{ "D2": 0.15, "C3": 7 }],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Si el descuento es del 8 %, pagas el 92 %: multiplica por (1 − descuento).",
+    "Primero cantidad por precio, `B2*C2`, y después por `(1-D2)`. Los paréntesis son obligatorios.",
+    "Escribe `=B2*C2*(1-D2)`."
+   ],
+   "explicacion": "Misión cumplida: 440,50 € netos en el cable, y la fórmula vale para todas las líneas. En la Tabla de Marta quedaría así: `=[@Cantidad]*[@Precio]*(1-[@Descuento])`, escrita una sola vez. Con esto calculas el neto de cualquier pedido con descuentos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m1l2-q1",
+   "modo": "test",
+   "pregunta": "¿Cuál de estas fórmulas se refiere a **toda** la columna Importe de la Tabla Ventas?",
+   "opciones": [
+    { "texto": "Ventas[Importe]", "correcta": true, "porque": "Nombre de la Tabla y columna entre corchetes, sin @: la columna entera." },
+    { "texto": "[@Importe]", "correcta": false, "porque": "Con @ es solo el importe de la fila en la que está la fórmula." },
+    { "texto": "Importe@Ventas", "correcta": false, "porque": "Esa forma no existe en Excel. El orden es Tabla[Columna]." }
+   ]
+  },
+  {
+   "id": "n2m1l2-q2",
+   "modo": "predice",
+   "enunciado": "Sin calculadora a mano: 10 rollos a 20 € con un 10 % de descuento. ¿Qué da la fórmula?",
+   "hoja": {
+    "celdas": { "A1": "Cantidad", "B1": "Precio", "C1": "Descuento", "A2": 10, "B2": 20, "C2": 0.1 },
+    "formatos": { "B2": "eur", "C2": "pct" }
+   },
+   "celda": "D2",
+   "formula": "=A2*B2*(1-C2)",
+   "explicacion": "10 × 20 = 200 €; con un 10 % menos se paga el 90 %: 180 €.",
+   "respuesta": ""
+  },
+  {
+   "id": "n2m1l2-q3",
+   "modo": "test",
+   "pregunta": "En una columna calculada, la fila 12 tiene un número escrito a mano en lugar de la fórmula. ¿Qué es lo correcto?",
+   "opciones": [
+    { "texto": "Volver a poner la fórmula de la columna en esa fila", "correcta": true, "porque": "Una sola fórmula por columna: así un cambio de precio o de cantidad se recalcula en todas las filas." },
+    { "texto": "Dejarlo si el número coincide con el resultado de hoy", "correcta": false, "porque": "Coincide hoy; cuando cambie la cantidad o el precio, esa fila se quedará con el valor viejo y nadie lo notará." },
+    { "texto": "Pintar la celda de amarillo para acordarte", "correcta": false, "porque": "El color no arregla el cálculo. Hay que recuperar la fórmula." }
+   ]
+  }
+ ],
+ "tarjetas": [
+  { "tipo": "concepto", "frente": "¿Qué significa la @ en =[@Cantidad]*[@Precio]?", "dorso": "«De esta fila»: la Cantidad y el Precio de la fila donde está la fórmula" },
+  { "tipo": "funcion", "frente": "Sumar la columna Importe de la Tabla Pedidos", "dorso": "=SUMA(Pedidos[Importe])" },
+  { "tipo": "concepto", "frente": "¿Qué es una columna calculada?", "dorso": "Una columna de una Tabla con una sola fórmula que Excel copia sola a todas las filas, también a las nuevas" },
+  { "tipo": "error", "frente": "¿Por qué sale [@[Precio unidad]] con doble corchete?", "dorso": "Porque el nombre de la columna tiene un espacio; no es un error" }
+ ]
+}

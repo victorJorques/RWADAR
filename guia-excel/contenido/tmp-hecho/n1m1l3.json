@@ -1,0 +1,384 @@
+{
+ "id": "n1m1l3",
+ "titulo": "El orden de las operaciones y los paréntesis",
+ "minutos": 14,
+ "objetivo": "Saber en qué orden calcula Excel (paréntesis, potencias, multiplicar y dividir, sumar y restar) y usar paréntesis para calcular bien una media a mano y un margen.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Mañana reviso precios con Carmen. Necesito el margen de estos cinco productos: qué parte del precio de venta nos queda después de pagar el coste. La hoja de la última vez daba márgenes de risa, así que mírala bien.",
+  "logro": "Ya sabes escribir fórmulas con varias operaciones que calculan lo que quieres, como medias y márgenes, sin caer en la trampa del orden."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Cuando una fórmula tiene varias operaciones, Excel **no** calcula de izquierda a derecha como una calculadora de bolsillo. Sigue un orden fijo, el mismo que en matemáticas:\n\n1. Lo que está entre **paréntesis** `( )`.\n2. Las **potencias** `^` (elevar a: `2^3` es 2×2×2).\n3. **Multiplicar** `*` y **dividir** `/`.\n4. **Sumar** `+` y **restar** `-`.\n\nSi hay dos del mismo nivel, de izquierda a derecha."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e1",
+   "modo": "predice",
+   "enunciado": "Aplica el orden: primero multiplicar, luego sumar. ¿Qué número devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Resultado"
+    }
+   },
+   "celda": "A2",
+   "formula": "=2+3*4",
+   "explicacion": "Primero 3 × 4 = 12, y después 2 + 12 = 14. Si te salía 20 es que has sumado primero, como una calculadora de bolsillo: Excel no lo hace."
+  },
+  {
+   "tipo": "texto",
+   "md": "Los **paréntesis mandan**. Lo que metes entre paréntesis se calcula antes que nada, así que con ellos decides tú el orden.\n\nEs como en la cocina: «mezcla la harina y el azúcar, y luego añade los huevos» no es lo mismo que «mezcla la harina con el azúcar y los huevos a la vez»."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Sin paréntesis",
+   "der": "Con paréntesis",
+   "filas": [
+    [
+     "`=2+3*4` da **14**",
+     "`=(2+3)*4` da **20**"
+    ],
+    [
+     "`=10-4/2` da **8**",
+     "`=(10-4)/2` da **3**"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e2",
+   "modo": "test",
+   "pregunta": "Quieres sumar 2 y 3 y **después** multiplicar por 4, para que salga 20. ¿Qué escribes?",
+   "opciones": [
+    {
+     "texto": "=(2+3)*4",
+     "correcta": true,
+     "porque": "Correcto: el paréntesis obliga a sumar primero (5) y luego multiplicar (20)."
+    },
+    {
+     "texto": "=2+3*4",
+     "correcta": false,
+     "porque": "Excel multiplica antes de sumar: 3 × 4 = 12, más 2, da 14."
+    },
+    {
+     "texto": "=2+(3*4)",
+     "correcta": false,
+     "porque": "Ese paréntesis no cambia nada: la multiplicación ya iba primero. Sigue dando 14."
+    }
+   ],
+   "explicacion": "Cuando dudes, pon paréntesis: no estropean nada y dejan claro qué va primero."
+  },
+  {
+   "tipo": "texto",
+   "md": "Donde más se nota es en la **media a mano**. Para la media de tres meses hay que **sumar los tres y dividir entre 3**.\n\nMuchas personas escriben `=B2+B3+B4/3`. Pero Excel divide primero: solo divide B4 entre 3, y luego le suma B2 y B3. Sale una cifra mucho más alta de lo normal.\n\nLo correcto: `=(B2+B3+B4)/3`. El paréntesis hace que primero se sume todo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e3",
+   "modo": "test",
+   "pregunta": "La hoja que preparó otra persona calcula la media de ventas de Pamplona con `=B2+B3+B4/3`. Los tres meses fueron **186.400 €**, **175.200 €** y **192.650 €**. Antes de verlo: ¿qué saldrá más o menos?",
+   "opciones": [
+    {
+     "texto": "Más de 400.000 €",
+     "correcta": true,
+     "porque": "Correcto: Excel divide solo los 192.650 entre 3 (unos 64.000) y luego le suma los otros dos meses enteros. Sale 425.816,67 €."
+    },
+    {
+     "texto": "Unos 184.750 €, la media de verdad",
+     "correcta": false,
+     "porque": "Eso saldría si primero sumara los tres meses. Pero sin paréntesis Excel divide antes de sumar."
+    },
+    {
+     "texto": "Un error, porque la fórmula está mal escrita",
+     "correcta": false,
+     "porque": "La fórmula es válida y Excel la calcula sin quejarse. Por eso este fallo es peligroso: no avisa."
+    }
+   ],
+   "explicacion": "Sale más de 425.000 €, cuando ningún mes llega a 200.000 €. Una media nunca puede ser mayor que el dato más alto: si lo es, la fórmula está mal. Ese vistazo de sentido común te salvará muchas veces."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e4",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** En **B5** está la media mal calculada. Corrígela para que sume los tres meses y divida entre 3. Debe salir **184.750,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Mes",
+     "B1": "Ventas Pamplona",
+     "A2": "Septiembre",
+     "B2": 186400,
+     "A3": "Octubre",
+     "B3": 175200,
+     "A4": "Noviembre",
+     "B4": 192650,
+     "A5": "Media"
+    },
+    "formatos": {
+     "B2:B5": "eur"
+    },
+    "anchos": {
+     "B": 16
+    }
+   },
+   "objetivo": "B5",
+   "inicial": "=B2+B3+B4/3",
+   "solucion": "=(B2+B3+B4)/3",
+   "alternativas": [
+    "=SUMA(B2:B4)/3",
+    "=B2/3+B3/3+B4/3"
+   ],
+   "errores_tipicos": [
+    "=B2+B3+B4/3",
+    "=B2+B3+B4",
+    "=184750"
+   ],
+   "variantes": [
+    {
+     "B2": 200000,
+     "B4": 150000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Primero hay que sumar los tres meses y solo después dividir.",
+    "Encierra la suma entre paréntesis y divide el paréntesis entre 3.",
+    "La fórmula es `=(B2+B3+B4)/3`."
+   ],
+   "explicacion": "Ahora sí: 184.750 €, una cifra entre el mes más bajo y el más alto. Has aprendido a desconfiar de un resultado raro y a arreglarlo, que es la mitad del trabajo con Excel."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cada paréntesis que abres hay que **cerrarlo**. Si escribes `=(B2+B3/2` y pulsas [[Intro]], Excel no la acepta tal cual: te avisa de que hay un problema y a veces te propone una corrección. **Léela antes de aceptar**: puede cerrar el paréntesis en un sitio que no es el que tú querías.\n\nMientras escribes, Excel pinta cada pareja de paréntesis del mismo color. Úsalo para comprobar que cada uno tiene su pareja."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e5",
+   "modo": "test",
+   "pregunta": "Escribes `=(B2+B3)/(B4-B5` y pulsas Intro. Excel te propone una corrección. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Leer dónde pone el paréntesis que falta y aceptar solo si es lo que quería",
+     "correcta": true,
+     "porque": "Correcto: aquí falta cerrar el segundo paréntesis después de B5. Si la propuesta lo pone ahí, acepta; si no, corrígelo tú."
+    },
+    {
+     "texto": "Aceptar siempre sin mirar, Excel sabe lo que hace",
+     "correcta": false,
+     "porque": "Excel adivina, no sabe qué querías calcular. Una corrección mal puesta da un resultado sin error pero equivocado."
+    },
+    {
+     "texto": "Borrar la fórmula y escribir el resultado a mano",
+     "correcta": false,
+     "porque": "Un número escrito a mano no se actualiza cuando cambian los datos. Arregla la fórmula."
+    }
+   ],
+   "explicacion": "Revisa siempre una corrección automática: tú eres quien sabe qué debe calcular la fórmula."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e6",
+   "modo": "formula",
+   "enunciado": "Ahora sin ayuda inicial. En **E2** calcula la **media de los tres meses** de Zaragoza (septiembre, octubre y noviembre). La app copiará tu fórmula a **E3:E4** para las otras delegaciones. Debe salir **414.316,67 €** en E2.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Septiembre",
+     "C1": "Octubre",
+     "D1": "Noviembre",
+     "E1": "Media",
+     "A2": "Zaragoza",
+     "B2": 412300,
+     "C2": 398750,
+     "D2": 431900,
+     "A3": "Pamplona",
+     "B3": 186400,
+     "C3": 175200,
+     "D3": 192650,
+     "A4": "Lleida",
+     "B4": 143900,
+     "C4": 151300,
+     "D4": 139800
+    },
+    "formatos": {
+     "B2:E4": "eur"
+    },
+    "anchos": {
+     "B": 14,
+     "C": 14,
+     "D": 14,
+     "E": 14
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E4"
+   ],
+   "solucion": "=(B2+C2+D2)/3",
+   "alternativas": [
+    "=SUMA(B2:D2)/3"
+   ],
+   "errores_tipicos": [
+    "=B2+C2+D2/3",
+    "=B2+C2+D2",
+    "=(B2+C2+D2)/2"
+   ],
+   "variantes": [
+    {
+     "B2": 300000,
+     "D3": 210000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Esta vez los tres meses están en la misma fila: B2, C2 y D2.",
+    "Suma los tres entre paréntesis y divide entre 3.",
+    "La fórmula es `=(B2+C2+D2)/3`. También vale `=SUMA(B2:D2)/3`."
+   ],
+   "explicacion": "Media trimestral de las tres delegaciones con una sola fórmula. En el próximo módulo verás la función PROMEDIO, que lo hace más corto, pero ya entiendes qué calcula por dentro."
+  },
+  {
+   "tipo": "texto",
+   "md": "Último caso, el de Javier: el **margen**. Es la parte del precio de venta que le queda a la empresa después de pagar lo que costó el producto.\n\nSe calcula así: **(precio de venta − coste) / precio de venta**.\n\nPor ejemplo, si vendes a 10 € algo que te costó 7,50 €, ganas 2,50 €, y 2,50 / 10 = 0,25. Con formato de porcentaje se ve **25 %** (el formato lo verás en el módulo 3 de este nivel). Sin el paréntesis, Excel dividiría solo el coste."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l3-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Javier.** En **D2** calcula el margen del panel LED: (precio de venta − coste) / precio de venta. La app copiará tu fórmula a **D3:D6**. La columna D ya tiene formato de porcentaje: debe salir **30 %** en D2.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio de venta",
+     "C1": "Coste",
+     "D1": "Margen",
+     "A2": "Panel LED 60×60",
+     "B2": 27.4,
+     "C2": 19.18,
+     "A3": "Magnetotérmico 2P 16 A",
+     "B3": 9.75,
+     "C3": 6.24,
+     "A4": "Canaleta 40×60 (tramo 2 m)",
+     "B4": 6.35,
+     "C4": 4.45,
+     "A5": "Cable 2,5 mm² (rollo 100 m)",
+     "B5": 48.9,
+     "C5": 39.12,
+     "A6": "Bridas 200 mm (bolsa 100)",
+     "B6": 3.2,
+     "C6": 1.6
+    },
+    "formatos": {
+     "B2:C6": "eur",
+     "D2:D6": "pct"
+    },
+    "anchos": {
+     "A": 28,
+     "B": 15
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "solucion": "=(B2-C2)/B2",
+   "alternativas": [
+    "=1-C2/B2"
+   ],
+   "errores_tipicos": [
+    "=B2-C2/B2",
+    "=(B2-C2)/C2",
+    "=B2-C2"
+   ],
+   "variantes": [
+    {
+     "B2": 30,
+     "C5": 30
+    }
+   ],
+   "formato_resultado": "pct",
+   "tolerancia": 0.0001,
+   "pistas": [
+    "Primero la resta (venta menos coste) y después la división entre la venta.",
+    "La resta tiene que ir entre paréntesis; si no, Excel dividiría solo el coste.",
+    "La fórmula es `=(B2-C2)/B2`."
+   ],
+   "explicacion": "Márgenes correctos: del 20 % del cable al 50 % de las bridas. Javier ya puede ver qué productos dejan más dinero. Y la próxima vez que una hoja dé «márgenes de risa», sabrás dónde mirar: en los paréntesis."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m1l3-q1",
+   "modo": "predice",
+   "enunciado": "Sin mirar las reglas: ¿qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Resultado"
+    }
+   },
+   "celda": "A2",
+   "formula": "=10-4/2",
+   "explicacion": "Primero se divide: 4 / 2 = 2. Después se resta: 10 − 2 = 8."
+  },
+  {
+   "id": "n1m1l3-q2",
+   "modo": "ordenar",
+   "enunciado": "Ordena cómo calcula Excel una fórmula, de lo primero a lo último.",
+   "pasos": [
+    "Lo que está entre paréntesis",
+    "Las potencias (^)",
+    "Multiplicar y dividir (* y /)",
+    "Sumar y restar (+ y -)"
+   ],
+   "explicacion": "Paréntesis, potencias, multiplicar y dividir, sumar y restar. Y si dudas, paréntesis."
+  },
+  {
+   "id": "n1m1l3-q3",
+   "modo": "test",
+   "pregunta": "Precio de venta en **B2** y coste en **C2**. ¿Qué fórmula da el margen sobre la venta?",
+   "opciones": [
+    {
+     "texto": "=(B2-C2)/B2",
+     "correcta": true,
+     "porque": "Correcto: primero lo que se gana (venta − coste) y después se divide entre la venta."
+    },
+    {
+     "texto": "=B2-C2/B2",
+     "correcta": false,
+     "porque": "Sin paréntesis, Excel divide primero C2 entre B2 y luego se lo resta a B2: sale un número sin sentido."
+    },
+    {
+     "texto": "=(B2-C2)/C2",
+     "correcta": false,
+     "porque": "Así divides entre el coste, no entre la venta. Es otro cálculo y da una cifra más alta que el margen."
+    }
+   ],
+   "explicacion": "El paréntesis decide qué se calcula primero; el divisor decide sobre qué se mide."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿En qué orden calcula Excel?",
+   "dorso": "Paréntesis → potencias (^) → multiplicar y dividir → sumar y restar. Del mismo nivel, de izquierda a derecha."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué falla en =B2+B3+B4/3?",
+   "dorso": "Solo divide B4 entre 3. La media correcta es =(B2+B3+B4)/3."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Fórmula del margen sobre la venta",
+   "dorso": "=(venta − coste)/venta, por ejemplo =(B2-C2)/B2."
+  },
+  {
+   "tipo": "truco",
+   "frente": "¿Cómo detectas una media mal calculada de un vistazo?",
+   "dorso": "Una media nunca es mayor que el dato más alto ni menor que el más bajo."
+  }
+ ]
+}

@@ -1,0 +1,619 @@
+{
+ "id": "n3m2l1",
+ "titulo": "Tramos con BUSCARX: comisiones y descuentos",
+ "minutos": 16,
+ "objetivo": "Calcular porcentajes e importes por tramos (comisiones, descuentos por volumen) con BUSCARX en modo -1 o BUSCARV con VERDADERO sobre una tabla de tramos que se cambia sin tocar las fórmulas.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Te paso las ventas de octubre de los comerciales. Las comisiones van por tramos: desde 10.000 € un 2 %, desde 20.000 € un 3,5 % y desde 40.000 € un 5 %. Quiero el importe de cada uno para la nómina, y que la escala se pueda cambiar sin tocar fórmulas.",
+  "logro": "Ya sabes calcular comisiones y descuentos por tramos con una tabla que se cambia sin tocar ninguna fórmula."
+ },
+ "funciones": [
+  "BUSCARX",
+  "BUSCARV"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Javier paga las comisiones por **tramos**, como los escalones de una escalera: cuanto más vende un comercial, más alto es su porcentaje.\n\nEn el nivel anterior, con SI.CONJUNTO, escribías los escalones **dentro** de la fórmula. Funciona, pero cada vez que cambia la escala hay que retocar todas las fórmulas, y alguna se queda sin cambiar.\n\nHoy lo harás como se hace en las empresas: la escala va en una **tabla de tramos** aparte, y una fórmula busca en ella el escalón de cada comercial."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La tabla de tramos de Javier",
+   "hoja": {
+    "celdas": {
+     "A1": "Desde",
+     "B1": "Comisión",
+     "A2": 0,
+     "B2": 0,
+     "A3": 10000,
+     "B3": 0.02,
+     "A4": 20000,
+     "B4": 0.035,
+     "A5": 40000,
+     "B5": 0.05
+    },
+    "formatos": {
+     "A2:A5": "eur",
+     "B2:B5": "pct1"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12
+    },
+    "columnas": 2,
+    "filas": 5
+   },
+   "pie": "Cada fila dice desde qué importe se aplica ese porcentaje: desde 10.000 €, el 2 %; desde 20.000 €, el 3,5 %; desde 40.000 €, el 5 %. Por debajo de 10.000 €, nada."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e1",
+   "modo": "test",
+   "pregunta": "Raúl Gimeno ha vendido **25.400 €** en octubre. Mirando la tabla de tramos, ¿qué comisión le toca?",
+   "opciones": [
+    {
+     "texto": "3,5 %",
+     "correcta": true,
+     "porque": "Eso es: 25.400 ya ha pasado el escalón de 20.000, pero no llega al de 40.000. Se queda en el escalón de 20.000."
+    },
+    {
+     "texto": "5 %",
+     "correcta": false,
+     "porque": "Para el 5 % tendría que llegar a 40.000 €, y aún le faltan 14.600 €."
+    },
+    {
+     "texto": "2 %",
+     "correcta": false,
+     "porque": "El 2 % es desde 10.000 €. Raúl ya ha subido un escalón más, el de 20.000 €."
+    },
+    {
+     "texto": "Ninguna: 25.400 no aparece en la tabla",
+     "correcta": false,
+     "porque": "No hace falta que aparezca: la tabla dice «desde». Buscas el escalón más alto que no pasa de sus ventas."
+    }
+   ],
+   "explicacion": "Lo que acabas de hacer de cabeza es justo lo que hará la fórmula: buscar el escalón más alto que no supera las ventas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ya conoces BUSCARX: busca un valor y trae el dato de al lado. Pero busca **exacto**: 25.400 no está en la columna «Desde», así que daría #N/D.\n\nPara los tramos le añades un quinto hueco, el **modo de coincidencia**, con el valor **-1**: «exacta o, si no está, la siguiente menor». Busca 25.400, no lo encuentra y se queda con el escalón de debajo, el de 20.000.\n\n`=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)`"
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "¿Por qué dos ; seguidos?",
+   "md": "El cuarto hueco es «si no se encuentra». Aquí sobra, porque la tabla empieza en 0 y siempre hay un escalón. Se deja vacío, pero hay que escribir su `;` para llegar al quinto: por eso ves `;;-1`.\n\nOtros valores del quinto hueco: **0**, solo exacta (lo que hace si lo dejas vacío), y **1**, exacta o la siguiente **mayor**."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: el porcentaje de Raúl",
+   "pasos": [
+    {
+     "md": "En **C2** escribe `=BUSCARX(` y haz clic en **B2**: es lo que buscas, las ventas de Raúl. Escribe `;`."
+    },
+    {
+     "md": "Selecciona **E2:E5** (la columna «Desde») y pulsa [[F4]] para fijarla: `$E$2:$E$5`. Escribe `;`."
+    },
+    {
+     "md": "Selecciona **F2:F5** (los porcentajes), pulsa [[F4]] y termina con `;;-1)`. Pulsa [[Intro]]."
+    },
+    {
+     "md": "Sale **3,5 %**. Copia la fórmula hasta C6 con el controlador de relleno: cada comercial recibe su porcentaje.",
+     "hoja": {
+      "celdas": {
+       "A1": "Comercial",
+       "B1": "Ventas oct.",
+       "C1": "% comisión",
+       "E1": "Desde",
+       "F1": "Comisión",
+       "A2": "Raúl Gimeno",
+       "B2": 25400,
+       "C2": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+       "A3": "Elena Sanz",
+       "B3": 9850,
+       "C3": "=BUSCARX(B3;$E$2:$E$5;$F$2:$F$5;;-1)",
+       "A4": "Iñaki Goñi",
+       "B4": 41200,
+       "C4": "=BUSCARX(B4;$E$2:$E$5;$F$2:$F$5;;-1)",
+       "A5": "Montse Pujol",
+       "B5": 20000,
+       "C5": "=BUSCARX(B5;$E$2:$E$5;$F$2:$F$5;;-1)",
+       "A6": "Sergio Bueno",
+       "B6": 15730,
+       "C6": "=BUSCARX(B6;$E$2:$E$5;$F$2:$F$5;;-1)",
+       "E2": 0,
+       "F2": 0,
+       "E3": 10000,
+       "F3": 0.02,
+       "E4": 20000,
+       "F4": 0.035,
+       "E5": 40000,
+       "F5": 0.05
+      },
+      "formatos": {
+       "B2:B6": "eur",
+       "C2:C6": "pct1",
+       "E2:E5": "eur",
+       "F2:F5": "pct1"
+      },
+      "anchos": {
+       "A": 17,
+       "B": 12,
+       "C": 11
+      },
+      "columnas": 6,
+      "filas": 6
+     }
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e2",
+   "modo": "predice",
+   "enunciado": "Montse Pujol ha vendido **20.000 €** justos, ni un euro más. ¿Qué porcentaje devuelve la fórmula de C2? Escríbelo como porcentaje (por ejemplo, 2%).",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "C1": "% comisión",
+     "E1": "Desde",
+     "F1": "Comisión",
+     "A2": "Montse Pujol",
+     "B2": 20000,
+     "E2": 0,
+     "F2": 0,
+     "E3": 10000,
+     "F3": 0.02,
+     "E4": 20000,
+     "F4": 0.035,
+     "E5": 40000,
+     "F5": 0.05
+    },
+    "formatos": {
+     "B2": "eur",
+     "C2": "pct1",
+     "E2:E5": "eur",
+     "F2:F5": "pct1"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12,
+     "C": 11
+    },
+    "columnas": 6,
+    "filas": 5
+   },
+   "celda": "C2",
+   "formula": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+   "formato_resultado": "pct1",
+   "explicacion": "«Exacta o la siguiente menor»: 20.000 **sí** está en la tabla, así que se queda con su fila, el 3,5 %. Quien llega justo al límite ya está en ese tramo, porque la tabla dice «desde». Es el caso que más discusiones da con los comerciales: compruébalo siempre.",
+   "respuesta": "3,5%"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e3",
+   "modo": "formula",
+   "enunciado": "Nuria ha empezado la columna de porcentajes, pero en **C2** le sale #N/D. **Arregla la fórmula** para que traiga el % de comisión de Raúl según la tabla de tramos (E1:F5). Después se copiará hasta **C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "C1": "% comisión",
+     "E1": "Desde",
+     "F1": "Comisión",
+     "A2": "Raúl Gimeno",
+     "B2": 25400,
+     "A3": "Elena Sanz",
+     "B3": 9850,
+     "A4": "Iñaki Goñi",
+     "B4": 41200,
+     "A5": "Montse Pujol",
+     "B5": 20000,
+     "A6": "Sergio Bueno",
+     "B6": 15730,
+     "E2": 0,
+     "F2": 0,
+     "E3": 10000,
+     "F3": 0.02,
+     "E4": 20000,
+     "F4": 0.035,
+     "E5": 40000,
+     "F5": 0.05
+    },
+    "formatos": {
+     "B2:B6": "eur",
+     "C2:C6": "pct1",
+     "E2:E5": "eur",
+     "F2:F5": "pct1"
+    },
+    "anchos": {
+     "A": 17,
+     "B": 12,
+     "C": 11
+    },
+    "columnas": 6,
+    "filas": 6
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "inicial": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5)",
+   "solucion": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+   "alternativas": [
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;0;-1)",
+    "=BUSCARX(B2;E$2:E$5;F$2:F$5;;-1)",
+    "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;1)",
+    "=BUSCARX(B2;E2:E5;F2:F5;;-1)"
+   ],
+   "variantes": [
+    {
+     "B2": 40000
+    },
+    {
+     "F4": 0.03
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Sin quinto hueco, BUSCARX busca el valor exacto, y 25.400 no está en la columna «Desde».",
+    "Añade dos huecos al final: el cuarto vacío y el quinto con el modo «exacta o la siguiente menor».",
+    "Termina la fórmula así: `…;$F$2:$F$5;;-1)`."
+   ],
+   "explicacion": "Cada comercial tiene ya su porcentaje, y el día que cambie la escala solo tocarás la tabla. Este patrón (BUSCARX con -1 sobre una tabla «Desde») te sirve para comisiones, descuentos por volumen, portes según el peso o categorías de cliente."
+  },
+  {
+   "tipo": "texto",
+   "md": "La tabla de tramos sigue tres reglas:\n\n1. Cada fila lleva el **límite inferior** del tramo: desde cuánto se aplica.\n2. Va **ordenada de menor a mayor**.\n3. La primera fila empieza en **0**, para que cualquier venta tenga escalón.\n\nEl error típico es copiar la escala tal como llega en un correo: «hasta 9.999 €, hasta 19.999 €…». Con el límite superior, el -1 baja al escalón de debajo y el comercial cobra **un tramo menos**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e4",
+   "modo": "predice",
+   "enunciado": "Alguien montó la tabla con el límite **superior** («Hasta»). Sergio ha vendido **15.730 €**, así que le toca el 2 %. ¿Qué devuelve la fórmula de C2? Escríbelo como porcentaje.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "C1": "% comisión",
+     "E1": "Hasta",
+     "F1": "Comisión",
+     "A2": "Sergio Bueno",
+     "B2": 15730,
+     "E2": 9999.99,
+     "F2": 0,
+     "E3": 19999.99,
+     "F3": 0.02,
+     "E4": 39999.99,
+     "F4": 0.035,
+     "E5": 9999999,
+     "F5": 0.05
+    },
+    "formatos": {
+     "B2": "eur",
+     "C2": "pct1",
+     "E2:E5": "eur",
+     "F2:F5": "pct1"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12,
+     "C": 11,
+     "E": 15
+    },
+    "columnas": 6,
+    "filas": 5
+   },
+   "celda": "C2",
+   "formula": "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+   "formato_resultado": "pct",
+   "explicacion": "Devuelve **0 %**. La fórmula busca 15.730, no lo encuentra y baja a la siguiente menor, 9.999,99, que es la fila del 0 %. Con «Hasta» le quitas un tramo a Sergio, y Excel no avisa de nada. Por eso la tabla siempre se escribe con «Desde»: 0, 10.000, 20.000, 40.000.",
+   "respuesta": "0%"
+  },
+  {
+   "tipo": "texto",
+   "md": "En Excel 2019 o anterior no hay BUSCARX. Para tramos, el equivalente de toda la vida es **BUSCARV con VERDADERO** al final:\n\n`=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)`\n\nAprendiste a poner siempre **FALSO** para buscar códigos. Los tramos son la excepción: VERDADERO significa «coincidencia aproximada», que aquí es justo el escalón de debajo.\n\nA cambio, BUSCARV exige que la primera columna de la tabla esté **ordenada de menor a mayor**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "VERDADERO, solo para tramos",
+   "md": "Si te dejas el cuarto argumento, BUSCARV usa VERDADERO sin avisar. Con códigos de producto eso trae el precio de **otro** producto. En los tramos, escríbelo igualmente: quien lea tu fórmula verá que la aproximada es a propósito."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e5",
+   "modo": "formula",
+   "enunciado": "El proveedor Cables Jalón nos hace **descuento por volumen**: desde 1.000 €, un 3 %; desde 3.000 €, un 5 %; desde 6.000 €, un 8 %. Andrés quiere la plantilla en el ordenador del almacén, que tiene **Excel 2019**. En **C2** trae el % de descuento del pedido de la fila 2 con **BUSCARV**, lista para copiar hasta **C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "C1": "% dto.",
+     "E1": "Desde",
+     "F1": "Descuento",
+     "A2": "PC-26/301",
+     "B2": 2450,
+     "A3": "PC-26/302",
+     "B3": 6800,
+     "A4": "PC-26/303",
+     "B4": 980,
+     "A5": "PC-26/304",
+     "B5": 3000,
+     "A6": "PC-26/305",
+     "B6": 5120,
+     "E2": 0,
+     "F2": 0,
+     "E3": 1000,
+     "F3": 0.03,
+     "E4": 3000,
+     "F4": 0.05,
+     "E5": 6000,
+     "F5": 0.08
+    },
+    "formatos": {
+     "B2:B6": "eur",
+     "C2:C6": "pct",
+     "E2:E5": "eur",
+     "F2:F5": "pct"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 12
+    },
+    "columnas": 6,
+    "filas": 6
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)",
+   "debe_usar": [
+    "BUSCARV"
+   ],
+   "alternativas": [
+    "=BUSCARV(B2;E$2:F$5;2;VERDADERO)"
+   ],
+   "errores_tipicos": [
+    "=BUSCARV(B2;$E$2:$F$5;2;FALSO)",
+    "=BUSCARV(B2;E2:F5;2;VERDADERO)",
+    "=BUSCARV(B2;$E$2:$F$5;1;VERDADERO)"
+   ],
+   "variantes": [
+    {
+     "B2": 6000
+    },
+    {
+     "F3": 0.04
+    }
+   ],
+   "formato_resultado": "pct",
+   "pistas": [
+    "BUSCARV necesita: qué buscas, la tabla entera, el número de columna que traes y el tipo de coincidencia.",
+    "La tabla es E2:F5 (fíjala con [[F4]]) y el descuento está en su columna 2.",
+    "`=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)`"
+   ],
+   "explicacion": "Mismo resultado que BUSCARX con -1, y funciona en cualquier Excel: 3 % para el pedido de 2.450 €, 8 % para el de 6.800 €. Ya tienes las dos herramientas: BUSCARX para los libros modernos y BUSCARV con VERDADERO cuando el archivo tiene que abrirse en un Excel antiguo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Javier Ortega",
+   "puesto": "Director comercial",
+   "md": "Cambio de última hora: dirección ha aprobado subir el último tramo, desde 40.000 €, al **6 %**. Y quiero ver ya el **importe** de la comisión en euros, no solo el porcentaje."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e6",
+   "modo": "test",
+   "pregunta": "Con la escala en una tabla de tramos, ¿qué tienes que cambiar para aplicar el 6 %?",
+   "opciones": [
+    {
+     "texto": "Solo la celda del 5 % en la tabla de tramos: escribes 6 %",
+     "correcta": true,
+     "porque": "Exacto: todas las fórmulas leen la tabla, así que se actualizan solas. Esta es la gran ventaja de no meter los tramos en la fórmula."
+    },
+    {
+     "texto": "Todas las fórmulas de la columna de comisión",
+     "correcta": false,
+     "porque": "Eso pasaría con los tramos escritos dentro de un SI anidado. Con la tabla, las fórmulas no se tocan."
+    },
+    {
+     "texto": "Añadir al final una fila nueva: 40.000 € y 6 %",
+     "correcta": false,
+     "porque": "Tendrías dos filas «desde 40.000» con dos porcentajes distintos: una tabla contradictoria con la que la fórmula puede seguir aplicando el 5 %. Un tramo, una fila: basta con cambiar la celda."
+    },
+    {
+     "texto": "Reescribir la tabla con «Hasta» para que quepa el nuevo tramo",
+     "correcta": false,
+     "porque": "Con «Hasta» el -1 baja un escalón y todos cobrarían un tramo menos. La tabla se queda con «Desde»."
+    }
+   ],
+   "explicacion": "Un cambio de escala, una celda. Diez segundos de trabajo y cero fórmulas tocadas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l1-e7",
+   "modo": "formula",
+   "enunciado": "**Misión de Javier.** La tabla ya tiene el 6 %. En **C2** calcula el **importe de la comisión** de Raúl en euros: sus ventas por el porcentaje que le toca según la tabla de tramos. Todo en **una sola fórmula**, lista para copiar hasta **C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas oct.",
+     "C1": "Comisión (€)",
+     "E1": "Desde",
+     "F1": "Comisión",
+     "A2": "Raúl Gimeno",
+     "B2": 25400,
+     "A3": "Elena Sanz",
+     "B3": 9850,
+     "A4": "Iñaki Goñi",
+     "B4": 41200,
+     "A5": "Montse Pujol",
+     "B5": 20000,
+     "A6": "Sergio Bueno",
+     "B6": 15730,
+     "E2": 0,
+     "F2": 0,
+     "E3": 10000,
+     "F3": 0.02,
+     "E4": 20000,
+     "F4": 0.035,
+     "E5": 40000,
+     "F5": 0.06
+    },
+    "formatos": {
+     "B2:B6": "eur",
+     "C2:C6": "eur",
+     "E2:E5": "eur",
+     "F2:F5": "pct1"
+    },
+    "anchos": {
+     "A": 17,
+     "B": 12,
+     "C": 13
+    },
+    "columnas": 6,
+    "filas": 6
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+   "alternativas": [
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)*B2",
+    "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;0;-1)",
+    "=B2*BUSCARV(B2;$E$2:$F$5;2;VERDADERO)"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)",
+    "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5)",
+    "=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;1)",
+    "=B2*0,035"
+   ],
+   "variantes": [
+    {
+     "B2": 40000
+    },
+    {
+     "F5": 0.055
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El importe es ventas × porcentaje, y el porcentaje ya sabes traerlo de la tabla.",
+    "Multiplica B2 por la fórmula de BUSCARX con -1 que has usado antes.",
+    "`=B2*BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)`"
+   ],
+   "explicacion": "Comisiones de octubre listas para la nómina: 889 € para Raúl, 2.472 € para Iñaki (ya con el 6 %), 0 € para Elena. Compruébalo con un caso a mano: Montse, 20.000 × 3,5 % = 700 €. Y si el año que viene cambia la escala, Javier solo tendrá que tocar la tabla."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m2l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En BUSCARX, ¿qué valor escribes en el quinto hueco (modo de coincidencia) para que busque «exacta o la siguiente menor»?",
+   "aceptadas": [
+    "-1",
+    "−1",
+    "menos 1",
+    "menos uno"
+   ],
+   "explicacion": "-1: si no encuentra el valor exacto, se queda con el siguiente menor, que en una tabla «Desde» es el escalón que toca."
+  },
+  {
+   "id": "n3m2l1-q2",
+   "modo": "test",
+   "pregunta": "La escala de descuentos dice: «menos de 500 €, sin descuento; desde 500 €, un 2 %; desde 2.000 €, un 4 %». ¿Cómo la escribes en la tabla de tramos?",
+   "opciones": [
+    {
+     "texto": "Desde 0 → 0 % · desde 500 → 2 % · desde 2.000 → 4 %",
+     "correcta": true,
+     "porque": "Límite inferior, de menor a mayor y empezando en 0: las tres reglas de una tabla de tramos."
+    },
+    {
+     "texto": "Hasta 499,99 → 0 % · hasta 1.999,99 → 2 % · hasta 999.999 → 4 %",
+     "correcta": false,
+     "porque": "Es el límite superior: con -1 o con VERDADERO, la fórmula bajaría un escalón y aplicaría un tramo menos."
+    },
+    {
+     "texto": "Desde 2.000 → 4 % · desde 500 → 2 % · desde 0 → 0 %",
+     "correcta": false,
+     "porque": "Los límites son buenos, pero el orden no: BUSCARV con VERDADERO exige la primera columna de menor a mayor. Ordénala siempre así."
+    },
+    {
+     "texto": "Desde 500 → 2 % · desde 2.000 → 4 %",
+     "correcta": false,
+     "porque": "Falta la fila del 0: un pedido de 300 € no tendría escalón y la fórmula daría #N/D."
+    }
+   ],
+   "explicacion": "Una tabla de tramos se escribe siempre igual: el límite inferior de cada tramo («Desde»), de menor a mayor y empezando en 0. Así cualquier importe encuentra su escalón, con BUSCARX o con BUSCARV."
+  },
+  {
+   "id": "n3m2l1-q3",
+   "modo": "predice",
+   "enunciado": "Un pedido de **6.000 €** justos. ¿Qué descuento devuelve esta fórmula? Escríbelo como porcentaje.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "C1": "% dto.",
+     "E1": "Desde",
+     "F1": "Descuento",
+     "A2": "PC-26/310",
+     "B2": 6000,
+     "E2": 0,
+     "F2": 0,
+     "E3": 1000,
+     "F3": 0.03,
+     "E4": 3000,
+     "F4": 0.05,
+     "E5": 6000,
+     "F5": 0.08
+    },
+    "formatos": {
+     "B2": "eur",
+     "C2": "pct",
+     "E2:E5": "eur",
+     "F2:F5": "pct"
+    },
+    "columnas": 6,
+    "filas": 5
+   },
+   "celda": "C2",
+   "formula": "=BUSCARV(B2;$E$2:$F$5;2;VERDADERO)",
+   "formato_resultado": "pct",
+   "explicacion": "8 %: 6.000 está en la tabla y la coincidencia aproximada también acepta el valor exacto. Llegar justo al límite ya da derecho a ese tramo.",
+   "respuesta": "8%"
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "BUSCARX para tramos: ¿cómo se escribe?",
+   "dorso": "=BUSCARX(valor; columna Desde; columna resultado;;-1). El -1 significa «exacta o la siguiente menor»."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Las tres reglas de una tabla de tramos",
+   "dorso": "Límite inferior («Desde»), ordenada de menor a mayor y empezando en 0."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Tramos en Excel 2019 o anterior",
+   "dorso": "=BUSCARV(valor; tabla; columna; VERDADERO), con la primera columna ordenada de menor a mayor."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué pasa si la tabla de tramos usa el límite superior («Hasta»)?",
+   "dorso": "La fórmula baja un escalón y aplica un tramo menos, sin dar ningún error."
+  }
+ ]
+}

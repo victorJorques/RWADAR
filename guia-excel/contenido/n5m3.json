@@ -1,0 +1,2381 @@
+{
+  "id": "n5m3",
+  "nivel": "n5",
+  "titulo": "El cuadro de mando",
+  "intro": "Un cuadro de mando es la página que dirección mira cada mes para decidir: pocas cifras, bien definidas y siempre comparadas. Aquí aprendes a elegirlas, a montarlas para que se actualicen solas, a presentarlas para que se entiendan en diez segundos y a construir un presupuesto que avisa cuando algo no cuadra.",
+  "repaso_inicial": [
+    {
+      "id": "n5m3-r1",
+      "modo": "formula",
+      "enunciado": "En **F5** suma las ventas de la zona que pone **F2** entre las fechas de **F3** y **F4** (las dos incluidas). Ahora, Pamplona en octubre: debe salir **4.155,85 €**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "B1": "Zona",
+          "C1": "Importe",
+          "A2": {
+            "fecha": "2026-10-02"
+          },
+          "B2": "Pamplona",
+          "C2": 1250,
+          "A3": {
+            "fecha": "2026-10-08"
+          },
+          "B3": "Zaragoza",
+          "C3": 2310.4,
+          "A4": {
+            "fecha": "2026-10-15"
+          },
+          "B4": "Pamplona",
+          "C4": 860.75,
+          "A5": {
+            "fecha": "2026-10-22"
+          },
+          "B5": "Lleida",
+          "C5": 1475,
+          "A6": {
+            "fecha": "2026-10-29"
+          },
+          "B6": "Pamplona",
+          "C6": 2045.1,
+          "A7": {
+            "fecha": "2026-11-03"
+          },
+          "B7": "Pamplona",
+          "C7": 990,
+          "E1": "Filtro",
+          "F1": "Valor",
+          "E2": "Zona",
+          "F2": "Pamplona",
+          "E3": "Desde",
+          "F3": {
+            "fecha": "2026-10-01"
+          },
+          "E4": "Hasta",
+          "F4": {
+            "fecha": "2026-10-31"
+          },
+          "E5": "Ventas"
+        },
+        "formatos": {
+          "A2:A7": "fecha",
+          "C2:C7": "eur",
+          "F3:F4": "fecha",
+          "F5": "eur"
+        },
+        "anchos": {
+          "A": 11,
+          "B": 10,
+          "C": 11,
+          "D": 2,
+          "E": 8,
+          "F": 12
+        },
+        "columnas": 6,
+        "filas": 7
+      },
+      "objetivo": "F5",
+      "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)",
+      "alternativas": [
+        "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4;B2:B7;F2)"
+      ],
+      "errores_tipicos": [
+        "=SUMAR.SI(B2:B7;F2;C2:C7)",
+        "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Pamplona\";A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)",
+        "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3)"
+      ],
+      "variantes": [
+        {
+          "F2": "Lleida"
+        },
+        {
+          "F4": {
+            "fecha": "2026-11-30"
+          }
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Son tres condiciones: la zona y dos sobre la fecha (desde y hasta).",
+        "Primero el rango que se suma (C2:C7); después las parejas rango-criterio: B2:B7 con F2, A2:A7 con \">=\"&F3 y A2:A7 con \"<=\"&F4.",
+        "`=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;\">=\"&F3;A2:A7;\"<=\"&F4)`"
+      ],
+      "explicacion": "Es la fórmula que hay detrás de casi cualquier indicador mensual: suma con condiciones que leen celdas, para que cambiar la zona o el mes no obligue a tocar la fórmula."
+    },
+    {
+      "id": "n5m3-r2",
+      "modo": "test",
+      "pregunta": "En un modelo de datos de ventas, ¿cuál es la tabla de **hechos**?",
+      "opciones": [
+        {
+          "texto": "Ventas: una fila por línea de factura, con fecha, cliente, producto e importe",
+          "correcta": true,
+          "porque": "Sí: registra lo que pasa, una fila por operación, y es la que más crece."
+        },
+        {
+          "texto": "Clientes: una fila por cliente, con su provincia y su tipo",
+          "correcta": false,
+          "porque": "Es una dimensión: describe quién compra, y cada cliente aparece una sola vez."
+        },
+        {
+          "texto": "Calendario: una fila por día, con su mes y su trimestre",
+          "correcta": false,
+          "porque": "Es una dimensión: sirve para agrupar los hechos por fechas."
+        }
+      ]
+    },
+    {
+      "id": "n5m3-r3",
+      "modo": "predice",
+      "enunciado": "¿Qué número devuelve esta fórmula con LET?",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Importe",
+          "A2": "Ventas",
+          "B2": 15600,
+          "A3": "Objetivo",
+          "B3": 15000
+        },
+        "formatos": {
+          "B2:B3": "eur"
+        },
+        "anchos": {
+          "A": 10,
+          "B": 12
+        }
+      },
+      "celda": "B5",
+      "formula": "=LET(ventas;B2;objetivo;B3;ventas/objetivo-1)",
+      "explicacion": "LET pone nombre a B2 y B3: 15.600 ÷ 15.000 − 1 = 0,04, un 4 % por encima del objetivo.",
+      "respuesta": "0,04"
+    },
+    {
+      "id": "n5m3-r4",
+      "modo": "cinta",
+      "enunciado": "Llegan datos nuevos. ¿Qué botón actualiza de una vez todas las consultas y tablas dinámicas del libro?",
+      "ruta": [
+        "Datos",
+        "Consultas y conexiones",
+        "Actualizar todo"
+      ],
+      "explicacion": "Datos › Consultas y conexiones › Actualizar todo ([[Ctrl]]+[[Alt]]+[[F5]]). Será el paso de cada mes en tu cuadro de mando."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "**Práctica del módulo: el cuadro de mando del comité.** Carmen quiere su página de cada mes. Descarga **n5-cuadro-de-mando.xlsx** (805 líneas de factura de enero a octubre de 2026 y los objetivos por mes y zona) y sigue la hoja «Instrucciones»:\n\n1. Comprueba el total de control: la columna Importe suma **158.685,54 €**.\n2. Crea las hojas Léeme, Cuadro, Parámetros y Cálculos. En Parámetros, celda B2, el mes del informe: 01/10/2026.\n3. En Cálculos, los cuatro indicadores de octubre con fórmulas que lean ese mes: ventas (sin IVA), cumplimiento del objetivo, ticket medio (ventas ÷ facturas **distintas**) y clientes activos.\n4. Una tabla de enero a octubre con ventas, objetivo, cumplimiento y «¿Alcanzado?».\n5. Dos tablas dinámicas (productos ordenados de mayor a menor y ventas por familia) con **una** segmentación de Zona conectada a las dos.\n6. El Cuadro: título con la conclusión hecho con fórmula, cuatro tarjetas, gráfico de ventas frente a objetivo por mes, top 5 y segmentación. Texto alternativo en el gráfico y todo en una página horizontal.\n7. Una celda de comprobación que diga «OK» o «Revisar».\n\nIntenta hacerlo en menos de 45 minutos. Al terminar, deja la segmentación sin filtro.",
+    "archivo": "n5-cuadro-de-mando.xlsx",
+    "controles": [
+      {
+        "pregunta": "Ventas de octubre de 2026, sin IVA (€)",
+        "respuesta": 14924.49,
+        "tolerancia": 0.01,
+        "pista": "Suma de la columna Importe (no «Importe con IVA») con fecha entre el 01/10 y el 31/10: SUMAR.SI.CONJUNTO con \">=\"&Parámetros!B2 y \"<=\"&FIN.MES(Parámetros!B2;0). Si te sale 18.058,65 €, has sumado con IVA."
+      },
+      {
+        "pregunta": "Cumplimiento del objetivo de octubre, en % con dos decimales (escribe solo el número, por ejemplo 98,76)",
+        "respuesta": 102.93,
+        "tolerancia": 0.01,
+        "pista": "Ventas de octubre ÷ la suma de los objetivos de octubre de las tres zonas (SUMAR.SI.CONJUNTO sobre la Tabla Objetivos con el mes de Parámetros). Si sale muy por encima o por debajo, mira si has sumado solo una zona."
+      },
+      {
+        "pregunta": "Ticket medio de octubre (€)",
+        "respuesta": 324.45,
+        "tolerancia": 0.01,
+        "pista": "Ventas de octubre ÷ número de facturas distintas: CONTARA(UNICOS(FILTRAR(columna Factura; fechas de octubre))). Si te sale 191,34 €, has dividido entre las 78 líneas en lugar de entre las 46 facturas."
+      },
+      {
+        "pregunta": "Clientes activos en octubre (clientes distintos)",
+        "respuesta": 31,
+        "tolerancia": 0,
+        "pista": "Como las facturas distintas, pero con la columna Cliente. Si te sale 78, has contado líneas: falta UNICOS."
+      },
+      {
+        "pregunta": "¿En cuántos meses, de enero a octubre, se alcanzó el objetivo de la empresa?",
+        "respuesta": 4,
+        "tolerancia": 0,
+        "pista": "En la tabla mes a mes, «¿Alcanzado?» = SI(Ventas>=Objetivo;\"Sí\";\"No\"), y cuenta los «Sí» con CONTAR.SI. El objetivo de cada mes es la suma de las tres zonas."
+      },
+      {
+        "pregunta": "Con la segmentación de Zona en «Pamplona», importe del producto que encabeza el top 5 (€)",
+        "respuesta": 6658.1,
+        "tolerancia": 0.01,
+        "pista": "En la dinámica de productos (Producto en Filas, Importe en Valores, ordenada de mayor a menor), marca Pamplona en la segmentación y lee la primera fila. Si no cambia nada al marcarla, la segmentación no está conectada: Segmentación › Conexiones de informe."
+      }
+    ],
+    "solucion_md": "### Cómo se hace\n\n1. **Total de control**: selecciona la columna Importe de la Tabla Ventas y lee la Suma en la barra de estado: 158.685,54 € (805 líneas).\n2. **Parámetros**: en B2, 01/10/2026, con relleno amarillo claro (celda de entrada).\n3. **Indicadores en Cálculos** (con B2 = `=Parámetros!B2` y B3 = `=FIN.MES(B2;0)`):\n   - Ventas: `=SUMAR.SI.CONJUNTO(Ventas[Importe];Ventas[Fecha];\">=\"&B2;Ventas[Fecha];\"<=\"&B3)` → **14.924,49 €**.\n   - Objetivo: `=SUMAR.SI.CONJUNTO(Objetivos[Objetivo];Objetivos[Mes];B2)` → 14.500 €. Cumplimiento: ventas ÷ objetivo → **102,93 %**.\n   - Facturas distintas: `=CONTARA(UNICOS(FILTRAR(Ventas[Factura];(Ventas[Fecha]>=B2)*(Ventas[Fecha]<=B3))))` → 46. Ticket medio: ventas ÷ 46 → **324,45 €**.\n   - Clientes activos: lo mismo con Ventas[Cliente] → **31**.\n4. **Mes a mes**: en A12:A21 el día 1 de cada mes; ventas con SUMAR.SI.CONJUNTO y FIN.MES, objetivo con SUMAR.SI.CONJUNTO, cumplimiento y `=SI(B12>=C12;\"Sí\";\"No\")`. `=CONTAR.SI(E12:E21;\"Sí\")` → **4** meses (enero, febrero, septiembre y octubre).\n5. **Dinámicas y segmentación**: Insertar › Tabla dinámica desde la Tabla Ventas: Producto a Filas, Importe a Valores, clic derecho › Ordenar › Ordenar de mayor a menor; otra con Familia a Filas. Analizar tabla dinámica › Insertar segmentación de datos › Zona; Segmentación › Conexiones de informe › marca las dos. Con Pamplona, el primero es la manguera 3G2,5 con **6.658,10 €**.\n6. **Cuadro**: título `=\"Ventas de \"&TEXTO(Parámetros!B2;\"mmmm\")&\": \"&SI(Cálculos!B6>=1;\"se alcanza\";\"no se alcanza\")&\" el objetivo\"`; tarjetas con `=Cálculos!B4`, etc.; gráfico combinado (Insertar › Insertar gráfico combinado: ventas en columnas, objetivo en línea) sobre la tabla mes a mes; clic derecho › Ver texto alternativo; Disposición de página › Ajustar área de impresión › Ancho 1 página y Alto 1 página, horizontal.\n7. **Comprobación**: `=SI(ABS(SUMA(B12:B21)-SUMA(Ventas[Importe]))<0,01;\"OK\";\"Revisar\")`.\n\nEn **n5-cuadro-de-mando-solucion.xlsx** tienes el libro hecho (Léeme, Parámetros, Cálculos con comprobaciones, Cuadro de una página con el gráfico y su texto alternativo) y en «Cómo se hace» los pasos de las dinámicas y la segmentación, que hay que crear a mano.",
+    "archivo_solucion": "n5-cuadro-de-mando-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n5m3l1",
+      "titulo": "Indicadores: qué medir y para quién",
+      "minutos": 16,
+      "objetivo": "Elegir pocos indicadores ligados a una decisión, definirlos sin ambigüedad (fórmula, fuente y periodo) y calcular el ticket medio, los clientes activos y el cumplimiento del objetivo.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "Quiero abrir el comité de cada mes con una sola página: cómo vamos. Propónme cuatro o cinco cifras, no veinte, y deja escrito cómo se calcula cada una. No quiero volver a ver a Marta y a Javier discutiendo porque sus ventas no coinciden.",
+        "logro": "Ya sabes elegir los indicadores de un cuadro de mando, definirlos sin dudas y calcular ticket medio, clientes activos y cumplimiento del objetivo."
+      },
+      "funciones": [
+        "CONTARA",
+        "UNICOS"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Un salpicadero, no una sábana\nUn **indicador clave** (en inglés, *KPI*) es una cifra que se mira cada mes para **decidir algo**. Piensa en el salpicadero del coche: velocidad, gasolina y poco más. Si tuviera cuarenta relojes, no verías el que importa.\n\nUn cuadro de mando funciona igual: **pocos indicadores, de cuatro a seis**, y cada uno responde a una pregunta de dirección: «¿vendemos lo previsto?», «¿ganamos dinero con lo que vendemos?»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e1",
+          "modo": "test",
+          "pregunta": "Carmen quiere ver «cómo va el negocio» cada mes en el comité. ¿Qué le preparas?",
+          "opciones": [
+            {
+              "texto": "Cuatro o cinco cifras clave, cada una comparada con su objetivo",
+              "correcta": true,
+              "porque": "Eso es: pocas cifras que responden a preguntas de dirección, y con una referencia para saber si son buenas o malas."
+            },
+            {
+              "texto": "Todas las cifras que saca el programa de gestión, para que no falte nada",
+              "correcta": false,
+              "porque": "Con veinte cifras nadie ve la que importa. Es el error más común: indicadores que nadie mira."
+            },
+            {
+              "texto": "La exportación completa de ventas, para que ella filtre lo que quiera",
+              "correcta": false,
+              "porque": "Carmen no tiene tiempo de analizar datos: te pide la conclusión. El detalle va aparte, por si alguien lo quiere."
+            }
+          ],
+          "explicacion": "Un cuadro de mando es un resumen para decidir. Lo que no ayuda a decidir, sobra."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Los indicadores de una distribuidora\nEn Electro Cierzo, como en casi cualquier empresa que vende, se repiten estos:\n\n- **Ventas**: cuánto hemos facturado. *¿Vendemos?*\n- **Cumplimiento**: ventas ÷ objetivo. *¿Llegamos a lo previsto?*\n- **Margen**: ventas − coste de lo vendido. *¿Ganamos con lo que vendemos?*\n- **Ticket medio**: ventas ÷ número de facturas. *¿Nos compran más o menos cada vez?*\n- **Clientes activos**: clientes distintos que han comprado. *¿Ganamos o perdemos clientes?*"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e2",
+          "modo": "test",
+          "pregunta": "Javier sospecha que sus clientes siguen comprando igual de a menudo, pero **pedidos cada vez más pequeños**. ¿Qué indicador se lo enseña?",
+          "opciones": [
+            {
+              "texto": "El ticket medio",
+              "correcta": true,
+              "porque": "Sí: ventas ÷ número de facturas es lo que se gasta de media en cada compra. Si baja mes a mes, los pedidos encogen."
+            },
+            {
+              "texto": "Los clientes activos",
+              "correcta": false,
+              "porque": "Dice cuántos clientes compran, no cuánto compra cada uno. Podrían ser los mismos clientes con pedidos más pequeños."
+            },
+            {
+              "texto": "El cumplimiento del objetivo",
+              "correcta": false,
+              "porque": "Compara el total con lo previsto, pero no dice si el total baja por menos pedidos o por pedidos más pequeños."
+            }
+          ],
+          "explicacion": "Cada indicador responde a una pregunta distinta. Antes de calcular, pregunta qué decisión hay detrás."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Definir es la mitad del trabajo\n«Ventas de octubre» parece claro, pero esconde tres preguntas:\n\n- **¿Con o sin IVA?** El IVA que se cobra al cliente no es venta de la empresa: se declara a Hacienda.\n- **¿Qué fecha?** La de la factura, la del pedido o la del cobro dan cifras distintas.\n- **¿Qué periodo?** ¿Del 1 al 31, o hasta ayer?\n\nCada indicador se deja escrito con su **fórmula**, su **fuente** (de qué tabla sale) y su **periodo**. Así todos calculan lo mismo."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "La semana pasada Marta y Javier estuvieron veinte minutos discutiendo por las ventas de un comercial. Los dos tenían razón: uno contaba con IVA y el otro sin. Desde entonces, en el comité las ventas van **sin IVA**, y lo pone debajo de la cifra."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e3",
+          "modo": "test",
+          "pregunta": "Octubre de **Raúl Aznar**, comercial. Javier dice que vendió **15.133,55 €** y Marta, **18.311,60 €**. Los dos sacan la cifra de la misma exportación. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "Uno suma la base imponible (sin IVA) y el otro el total de las facturas (con IVA)",
+              "correcta": true,
+              "porque": "Exacto: 15.133,55 × 1,21 = 18.311,60. Las dos sumas están bien hechas; lo que falla es la definición."
+            },
+            {
+              "texto": "Uno de los dos se ha equivocado al sumar",
+              "correcta": false,
+              "porque": "Las dos sumas son correctas. Cuando dos cifras no cuadran, mira primero si miden lo mismo."
+            },
+            {
+              "texto": "Marta ha sumado también las facturas de noviembre",
+              "correcta": false,
+              "porque": "Podría pasar (por eso se define el periodo), pero aquí la diferencia es justo el 21 %: 18.311,60 ÷ 15.133,55 = 1,21."
+            }
+          ],
+          "explicacion": "Truco de oficina: cuando dos cifras no coinciden, divide una entre la otra. Si sale 1,21 (o 1,10, o 1,04), casi seguro que es el IVA."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El panel de indicadores\nJavier te pasa las 10 facturas de octubre de **Raúl Aznar** para probar tus definiciones. La columna **D** es la base imponible (sin IVA) y la **E**, el total con IVA.\n\nA la derecha montas el panel: una fila por indicador. Las **ventas** ya están: `=SUMA(D2:D11)`, la columna **sin** IVA. El resto lo calculas tú."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Las facturas de Raúl y el panel",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "E1": "Total (con IVA)",
+              "G1": "Indicador",
+              "H1": "Octubre",
+              "A2": {
+                "fecha": "2026-10-01"
+              },
+              "B2": "F26-0841",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1840.5,
+              "E2": 2227.01,
+              "A3": {
+                "fecha": "2026-10-05"
+              },
+              "B3": "F26-0842",
+              "C3": "Electricidad Arga",
+              "D3": 965,
+              "E3": 1167.65,
+              "A4": {
+                "fecha": "2026-10-07"
+              },
+              "B4": "F26-0843",
+              "C4": "Montajes Segre",
+              "D4": 2310.4,
+              "E4": 2795.58,
+              "A5": {
+                "fecha": "2026-10-09"
+              },
+              "B5": "F26-0844",
+              "C5": "Instalaciones Moncayo",
+              "D5": 712.3,
+              "E5": 861.88,
+              "A6": {
+                "fecha": "2026-10-14"
+              },
+              "B6": "F26-0845",
+              "C6": "Reformas Delicias",
+              "D6": 1488,
+              "E6": 1800.48,
+              "A7": {
+                "fecha": "2026-10-16"
+              },
+              "B7": "F26-0846",
+              "C7": "Electricidad Arga",
+              "D7": 530.75,
+              "E7": 642.21,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0847",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "E8": 3775.2,
+              "A9": {
+                "fecha": "2026-10-23"
+              },
+              "B9": "F26-0848",
+              "C9": "Montajes Segre",
+              "D9": 845.6,
+              "E9": 1023.18,
+              "A10": {
+                "fecha": "2026-10-28"
+              },
+              "B10": "F26-0849",
+              "C10": "Instalaciones Moncayo",
+              "D10": 1275.9,
+              "E10": 1543.84,
+              "A11": {
+                "fecha": "2026-10-30"
+              },
+              "B11": "F26-0850",
+              "C11": "Electricidad Arga",
+              "D11": 2045.1,
+              "E11": 2474.57,
+              "G2": "Ventas (sin IVA)",
+              "H2": "=SUMA(D2:D11)",
+              "G3": "Ticket medio",
+              "G4": "Clientes activos",
+              "G5": "Objetivo",
+              "H5": 16000,
+              "G6": "Cumplimiento"
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "D2:E11": "eur",
+              "H2:H3": "eur",
+              "H5": "eur",
+              "H6": "pct1"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 13,
+              "F": 2,
+              "G": 16,
+              "H": 12
+            },
+            "columnas": 8,
+            "filas": 11
+          },
+          "resaltar": [
+            "H2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "H2 suma la columna D (sin IVA), no la E."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e4",
+          "modo": "formula",
+          "enunciado": "Nuria empezó el **ticket medio** en **H3** (ventas ÷ número de facturas), pero sale `#¡DIV/0!`. Arregla la fórmula: debe salir **1.513,36 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "E1": "Total (con IVA)",
+              "G1": "Indicador",
+              "H1": "Octubre",
+              "A2": {
+                "fecha": "2026-10-01"
+              },
+              "B2": "F26-0841",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1840.5,
+              "E2": 2227.01,
+              "A3": {
+                "fecha": "2026-10-05"
+              },
+              "B3": "F26-0842",
+              "C3": "Electricidad Arga",
+              "D3": 965,
+              "E3": 1167.65,
+              "A4": {
+                "fecha": "2026-10-07"
+              },
+              "B4": "F26-0843",
+              "C4": "Montajes Segre",
+              "D4": 2310.4,
+              "E4": 2795.58,
+              "A5": {
+                "fecha": "2026-10-09"
+              },
+              "B5": "F26-0844",
+              "C5": "Instalaciones Moncayo",
+              "D5": 712.3,
+              "E5": 861.88,
+              "A6": {
+                "fecha": "2026-10-14"
+              },
+              "B6": "F26-0845",
+              "C6": "Reformas Delicias",
+              "D6": 1488,
+              "E6": 1800.48,
+              "A7": {
+                "fecha": "2026-10-16"
+              },
+              "B7": "F26-0846",
+              "C7": "Electricidad Arga",
+              "D7": 530.75,
+              "E7": 642.21,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0847",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "E8": 3775.2,
+              "A9": {
+                "fecha": "2026-10-23"
+              },
+              "B9": "F26-0848",
+              "C9": "Montajes Segre",
+              "D9": 845.6,
+              "E9": 1023.18,
+              "A10": {
+                "fecha": "2026-10-28"
+              },
+              "B10": "F26-0849",
+              "C10": "Instalaciones Moncayo",
+              "D10": 1275.9,
+              "E10": 1543.84,
+              "A11": {
+                "fecha": "2026-10-30"
+              },
+              "B11": "F26-0850",
+              "C11": "Electricidad Arga",
+              "D11": 2045.1,
+              "E11": 2474.57,
+              "G2": "Ventas (sin IVA)",
+              "H2": "=SUMA(D2:D11)",
+              "G3": "Ticket medio",
+              "G4": "Clientes activos",
+              "G5": "Objetivo",
+              "H5": 16000,
+              "G6": "Cumplimiento"
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "D2:E11": "eur",
+              "H2:H3": "eur",
+              "H5": "eur",
+              "H6": "pct1"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 13,
+              "F": 2,
+              "G": 16,
+              "H": 12
+            },
+            "columnas": 8,
+            "filas": 11
+          },
+          "objetivo": "H3",
+          "inicial": "=H2/CONTAR(B2:B11)",
+          "solucion": "=H2/CONTARA(B2:B11)",
+          "alternativas": [
+            "=SUMA(D2:D11)/CONTARA(B2:B11)",
+            "=PROMEDIO(D2:D11)",
+            "=H2/CONTARA(C2:C11)",
+            "=H2/CONTAR(D2:D11)"
+          ],
+          "errores_tipicos": [
+            "=H2/CONTAR(B2:B11)",
+            "=PROMEDIO(E2:E11)",
+            "=H2/CONTARA(UNICOS(C2:C11))"
+          ],
+          "variantes": [
+            {
+              "D2": 2500
+            },
+            {
+              "D7": 980.4
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "`#¡DIV/0!` quiere decir que divides entre cero: `CONTAR(B2:B11)` da 0.",
+            "CONTAR solo cuenta números, y los números de factura (F26-0841…) son texto.",
+            "Cambia CONTAR por CONTARA, que cuenta todas las celdas que no están vacías: `=H2/CONTARA(B2:B11)`."
+          ],
+          "explicacion": "Ticket medio: **1.513,36 €** por factura. CONTARA cuenta las facturas aunque sean texto. Con este indicador Javier verá mes a mes si los pedidos crecen o encogen."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e5",
+          "modo": "formula",
+          "enunciado": "En **H4**, los **clientes activos**: cuántos clientes **distintos** han comprado en octubre (la misma cuenta con la que comprobaste el Recuento distinto del modelo de datos). Ojo: varios clientes repiten. Debe salir **5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "E1": "Total (con IVA)",
+              "G1": "Indicador",
+              "H1": "Octubre",
+              "A2": {
+                "fecha": "2026-10-01"
+              },
+              "B2": "F26-0841",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1840.5,
+              "E2": 2227.01,
+              "A3": {
+                "fecha": "2026-10-05"
+              },
+              "B3": "F26-0842",
+              "C3": "Electricidad Arga",
+              "D3": 965,
+              "E3": 1167.65,
+              "A4": {
+                "fecha": "2026-10-07"
+              },
+              "B4": "F26-0843",
+              "C4": "Montajes Segre",
+              "D4": 2310.4,
+              "E4": 2795.58,
+              "A5": {
+                "fecha": "2026-10-09"
+              },
+              "B5": "F26-0844",
+              "C5": "Instalaciones Moncayo",
+              "D5": 712.3,
+              "E5": 861.88,
+              "A6": {
+                "fecha": "2026-10-14"
+              },
+              "B6": "F26-0845",
+              "C6": "Reformas Delicias",
+              "D6": 1488,
+              "E6": 1800.48,
+              "A7": {
+                "fecha": "2026-10-16"
+              },
+              "B7": "F26-0846",
+              "C7": "Electricidad Arga",
+              "D7": 530.75,
+              "E7": 642.21,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0847",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "E8": 3775.2,
+              "A9": {
+                "fecha": "2026-10-23"
+              },
+              "B9": "F26-0848",
+              "C9": "Montajes Segre",
+              "D9": 845.6,
+              "E9": 1023.18,
+              "A10": {
+                "fecha": "2026-10-28"
+              },
+              "B10": "F26-0849",
+              "C10": "Instalaciones Moncayo",
+              "D10": 1275.9,
+              "E10": 1543.84,
+              "A11": {
+                "fecha": "2026-10-30"
+              },
+              "B11": "F26-0850",
+              "C11": "Electricidad Arga",
+              "D11": 2045.1,
+              "E11": 2474.57,
+              "G2": "Ventas (sin IVA)",
+              "H2": "=SUMA(D2:D11)",
+              "G3": "Ticket medio",
+              "G4": "Clientes activos",
+              "G5": "Objetivo",
+              "H5": 16000,
+              "G6": "Cumplimiento",
+              "H3": "=H2/CONTARA(B2:B11)"
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "D2:E11": "eur",
+              "H2:H3": "eur",
+              "H5": "eur",
+              "H6": "pct1"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 13,
+              "F": 2,
+              "G": 16,
+              "H": 12
+            },
+            "columnas": 8,
+            "filas": 11
+          },
+          "objetivo": "H4",
+          "solucion": "=CONTARA(UNICOS(C2:C11))",
+          "alternativas": [
+            "=FILAS(UNICOS(C2:C11))"
+          ],
+          "errores_tipicos": [
+            "=CONTARA(C2:C11)",
+            "=CONTAR(UNICOS(C2:C11))"
+          ],
+          "debe_usar": [
+            "UNICOS"
+          ],
+          "variantes": [
+            {
+              "C2": "Electricidad Valdejalón"
+            },
+            {
+              "C8": "Reformas Delicias"
+            }
+          ],
+          "pistas": [
+            "`CONTARA(C2:C11)` da 10: cuenta facturas, no clientes.",
+            "Primero saca la lista sin repetidos con `UNICOS(C2:C11)` y después cuéntala.",
+            "`=CONTARA(UNICOS(C2:C11))`"
+          ],
+          "explicacion": "**5 clientes activos.** UNICOS quita los repetidos y CONTARA cuenta lo que queda. Si el mes que viene salen 3, Javier sabrá que pierde clientes aunque las ventas aguanten."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Una cifra sola no dice nada\n¿15.133,55 € es mucho o poco? Depende. Un indicador **siempre se compara** con algo:\n\n- **Con el objetivo**: cumplimiento = real ÷ objetivo. El 100 % es justo el objetivo; por encima, se supera.\n- **Con el mismo mes del año anterior**: variación = real ÷ año anterior − 1. Se compara el mismo mes porque agosto siempre vende menos que octubre.\n\nSin comparación, nadie sabe si celebrar o preocuparse."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e6",
+          "modo": "formula",
+          "enunciado": "El objetivo de Raúl para octubre está en **H5** (16.000 €). En **H6** calcula el **cumplimiento**: qué parte del objetivo ha vendido. Con formato de porcentaje debe salir **94,6 %**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "E1": "Total (con IVA)",
+              "G1": "Indicador",
+              "H1": "Octubre",
+              "A2": {
+                "fecha": "2026-10-01"
+              },
+              "B2": "F26-0841",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1840.5,
+              "E2": 2227.01,
+              "A3": {
+                "fecha": "2026-10-05"
+              },
+              "B3": "F26-0842",
+              "C3": "Electricidad Arga",
+              "D3": 965,
+              "E3": 1167.65,
+              "A4": {
+                "fecha": "2026-10-07"
+              },
+              "B4": "F26-0843",
+              "C4": "Montajes Segre",
+              "D4": 2310.4,
+              "E4": 2795.58,
+              "A5": {
+                "fecha": "2026-10-09"
+              },
+              "B5": "F26-0844",
+              "C5": "Instalaciones Moncayo",
+              "D5": 712.3,
+              "E5": 861.88,
+              "A6": {
+                "fecha": "2026-10-14"
+              },
+              "B6": "F26-0845",
+              "C6": "Reformas Delicias",
+              "D6": 1488,
+              "E6": 1800.48,
+              "A7": {
+                "fecha": "2026-10-16"
+              },
+              "B7": "F26-0846",
+              "C7": "Electricidad Arga",
+              "D7": 530.75,
+              "E7": 642.21,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0847",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "E8": 3775.2,
+              "A9": {
+                "fecha": "2026-10-23"
+              },
+              "B9": "F26-0848",
+              "C9": "Montajes Segre",
+              "D9": 845.6,
+              "E9": 1023.18,
+              "A10": {
+                "fecha": "2026-10-28"
+              },
+              "B10": "F26-0849",
+              "C10": "Instalaciones Moncayo",
+              "D10": 1275.9,
+              "E10": 1543.84,
+              "A11": {
+                "fecha": "2026-10-30"
+              },
+              "B11": "F26-0850",
+              "C11": "Electricidad Arga",
+              "D11": 2045.1,
+              "E11": 2474.57,
+              "G2": "Ventas (sin IVA)",
+              "H2": "=SUMA(D2:D11)",
+              "G3": "Ticket medio",
+              "G4": "Clientes activos",
+              "G5": "Objetivo",
+              "H5": 16000,
+              "G6": "Cumplimiento",
+              "H3": "=H2/CONTARA(B2:B11)",
+              "H4": "=CONTARA(UNICOS(C2:C11))"
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "D2:E11": "eur",
+              "H2:H3": "eur",
+              "H5": "eur",
+              "H6": "pct1"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 13,
+              "F": 2,
+              "G": 16,
+              "H": 12
+            },
+            "columnas": 8,
+            "filas": 11
+          },
+          "objetivo": "H6",
+          "solucion": "=H2/H5",
+          "alternativas": [
+            "=SUMA(D2:D11)/H5"
+          ],
+          "errores_tipicos": [
+            "=H5/H2",
+            "=H2-H5",
+            "=H2/16000",
+            "=SUMA(E2:E11)/H5"
+          ],
+          "variantes": [
+            {
+              "H5": 15000
+            },
+            {
+              "D3": 1500
+            }
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "Cumplimiento = lo vendido ÷ lo que tenía que vender.",
+            "Lo vendido (sin IVA) está en H2 y el objetivo en H5.",
+            "`=H2/H5`. Si te sale 105,7 %, has dividido al revés."
+          ],
+          "explicacion": "**94,6 %**: a Raúl le faltan 866,45 € para llegar. Y no has escrito 16.000 dentro de la fórmula: si Javier cambia el objetivo, el cumplimiento se recalcula solo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l1-e7",
+          "modo": "abierta",
+          "pregunta": "Escribe a Carmen tu propuesta: **cuatro indicadores** para el comité mensual. De cada uno, di: nombre, cómo se calcula (fórmula y de qué datos sale), periodo y con qué se compara.",
+          "modelo": "1) **Ventas del mes**: suma de la base imponible (sin IVA) de las facturas con fecha de ese mes, de la exportación del programa de gestión. Se compara con el objetivo y con el mismo mes del año anterior.\n2) **Cumplimiento**: ventas del mes ÷ objetivo del mes. Se compara con el 100 %.\n3) **Ticket medio**: ventas del mes ÷ número de facturas del mes. Se compara con el mismo mes del año anterior.\n4) **Clientes activos**: clientes distintos con al menos una factura en el mes. Se compara con el mismo mes del año anterior.",
+          "criterios": [
+            "Propone cuatro indicadores útiles para decidir, no una lista larga",
+            "Dice si las ventas van con o sin IVA",
+            "Da la fórmula y la fuente de cada indicador",
+            "Fija el periodo (el mes, por fecha de factura)",
+            "Cada indicador tiene su comparación (objetivo o año anterior)"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m3l1-q1",
+          "modo": "test",
+          "pregunta": "En un cuadro de mando ves la tarjeta «**Ventas: 48.200 €**» y nada más. ¿Qué le falta?",
+          "opciones": [
+            {
+              "texto": "Con qué se compara (objetivo o año anterior) y si lleva IVA",
+              "correcta": true,
+              "porque": "Sin comparación no se sabe si es buena o mala, y sin definición no se sabe qué mide."
+            },
+            {
+              "texto": "Los céntimos",
+              "correcta": false,
+              "porque": "Para dirección se redondea: nadie decide por los céntimos."
+            },
+            {
+              "texto": "Un color más llamativo",
+              "correcta": false,
+              "porque": "El color no dice si 48.200 € es mucho o poco. La comparación, sí."
+            }
+          ]
+        },
+        {
+          "id": "n5m3l1-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "Escribe la fórmula que cuenta los clientes **distintos** que hay en C2:C40.",
+          "aceptadas": [
+            "=CONTARA(UNICOS(C2:C40))",
+            "CONTARA(UNICOS(C2:C40))",
+            "=contara(unicos(c2:c40))",
+            "=FILAS(UNICOS(C2:C40))",
+            "FILAS(UNICOS(C2:C40))"
+          ],
+          "explicacion": "UNICOS deja cada cliente una sola vez y CONTARA cuenta los que quedan."
+        },
+        {
+          "id": "n5m3l1-q3",
+          "modo": "predice",
+          "enunciado": "Ventas de octubre en B2 y del mismo mes del año pasado en C2. ¿Qué número devuelve la fórmula (sin formato de porcentaje)?",
+          "hoja": {
+            "celdas": {
+              "A1": "Mes",
+              "B1": "2026",
+              "C1": "2025",
+              "A2": "Octubre",
+              "B2": 12600,
+              "C2": 12000
+            },
+            "formatos": {
+              "B2:C2": "eur"
+            }
+          },
+          "celda": "D2",
+          "formula": "=B2/C2-1",
+          "explicacion": "12.600 ÷ 12.000 = 1,05; menos 1, 0,05: un 5 % más que el año pasado.",
+          "respuesta": "0,05"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un KPI o indicador clave?",
+          "dorso": "Una cifra que se mira cada mes para decidir algo. Pocos (de 4 a 6) y siempre comparados con el objetivo o con el año anterior."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Contar los valores distintos de una columna",
+          "dorso": "=CONTARA(UNICOS(rango))"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Cumplimiento del objetivo",
+          "dorso": "Real ÷ objetivo. 100 % es justo el objetivo."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Dos cifras de ventas no cuadran y una es 1,21 veces la otra",
+          "dorso": "Una lleva IVA y la otra no. Define siempre si el indicador va con o sin IVA."
+        }
+      ]
+    },
+    {
+      "id": "n5m3l2",
+      "titulo": "Estructura: datos, cálculos y presentación separados",
+      "minutos": 16,
+      "objetivo": "Organizar un cuadro de mando en hojas de datos, parámetros, cálculos y presentación, para que el mes que viene se actualice cambiando una sola celda.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "El cuadro de ventas que hacía mi antecesor había que rehacerlo cada mes y siempre fallaba algo. Quiero uno que el mes que viene se actualice cambiando el mes y poco más. Y que, si estás de vacaciones, lo pueda sacar otra persona.",
+        "logro": "Ya sabes organizar un cuadro de mando en capas, hacer que sus cifras dependan de una sola celda con el mes y dejar escrito cómo se actualiza."
+      },
+      "funciones": [
+        "SUMAR.SI.CONJUNTO",
+        "CONTAR.SI.CONJUNTO",
+        "FIN.MES",
+        "TEXTO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Tres capas, como en un restaurante\nUn restaurante tiene **despensa**, **cocina** y **comedor**, y nadie cocina en el comedor. Un buen cuadro de mando, igual:\n\n- **Datos**: la exportación tal como llega. No se toca.\n- **Cálculos**: las fórmulas y las tablas dinámicas que resumen.\n- **Presentación**: la página que ve Carmen. Solo **lee** de Cálculos.\n\nY dos hojas pequeñas: **Parámetros** (lo que se cambia a mano: el mes, los objetivos) y **Léeme** (las instrucciones)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e1",
+          "modo": "test",
+          "pregunta": "Llega la exportación de ventas de noviembre del programa de gestión. ¿En qué hoja la pegas?",
+          "opciones": [
+            {
+              "texto": "En Datos, debajo de las ventas que ya había",
+              "correcta": true,
+              "porque": "Eso es: los datos van juntos y tal cual llegan. Las fórmulas de Cálculos los leerán desde ahí."
+            },
+            {
+              "texto": "En Presentación, para que Carmen la vea",
+              "correcta": false,
+              "porque": "La presentación solo enseña el resumen. Si mezclas datos y presentación, ni se lee bien ni se puede resumir."
+            },
+            {
+              "texto": "En Cálculos, al lado de las fórmulas",
+              "correcta": false,
+              "porque": "Cálculos es la cocina: transforma datos, pero no los guarda. Si pegas ahí, el mes que viene no sabrás qué es dato y qué es fórmula."
+            }
+          ],
+          "explicacion": "Cada cosa en su hoja: así sabes dónde mirar cuando algo falla."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La presentación solo lee\nEn la hoja de presentación **no se escribe ni un número**. Cada cifra es una fórmula que apunta a Cálculos, por ejemplo `=Cálculos!B4` (nombre de la hoja, signo de exclamación y celda).\n\n¿Por qué? Un número tecleado no se actualiza: el mes que viene seguirá igual y nadie se dará cuenta. Es de los errores más caros, porque la cifra parece buena… y es del mes pasado."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Cazar números tecleados",
+          "md": "**Fórmulas › Mostrar fórmulas** enseña las fórmulas en lugar de los resultados. En la hoja de presentación, todo lo que no empiece por `=` es sospechoso. Vuelve a pulsarlo para dejarlo como estaba."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e2",
+          "modo": "test",
+          "pregunta": "En el cuadro del antecesor de Javier, la tarjeta de ventas muestra **48.200 €**. Haces clic y en la barra de fórmulas pone `48200`. ¿Qué problema hay?",
+          "opciones": [
+            {
+              "texto": "Es un número tecleado: no cambiará aunque cambien los datos",
+              "correcta": true,
+              "porque": "Exacto. El mes que viene seguirá diciendo 48.200 € y parecerá una cifra correcta."
+            },
+            {
+              "texto": "Ninguno, si la cifra de este mes está bien",
+              "correcta": false,
+              "porque": "Hoy puede estar bien. El problema llega el mes que viene, cuando alguien actualice los datos y esta celda se quede igual."
+            },
+            {
+              "texto": "Que le falta el formato de euros",
+              "correcta": false,
+              "porque": "El formato no es el problema: la cifra no está conectada a nada."
+            }
+          ],
+          "explicacion": "Sustitúyelo por una fórmula que lea de Cálculos, como `=Cálculos!B4`."
+        },
+        {
+          "tipo": "texto",
+          "md": "### El mes vive en una sola celda\nPara que el cuadro funcione el mes que viene **sin tocar fórmulas**, el mes del informe se escribe **una vez**, en Parámetros, como el día 1 del mes (01/10/2026). Todas las fórmulas lo leen de ahí.\n\nPara las ventas del mes, se suma desde ese día hasta el último día del mes, que te da `FIN.MES(G2;0)`. En noviembre cambias 01/10 por 01/11 y todo se recalcula. Aquí, para practicar, el mes está en G2, al lado de los datos."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Ejemplo resuelto: las ventas del mes leen G2",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "F1": "Panel",
+              "G1": "Valor",
+              "F2": "Mes del informe",
+              "G2": {
+                "fecha": "2026-10-01"
+              },
+              "F3": "Ventas del mes",
+              "F4": "Facturas del mes",
+              "A2": {
+                "fecha": "2026-09-08"
+              },
+              "B2": "F26-0702",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1320.4,
+              "A3": {
+                "fecha": "2026-09-15"
+              },
+              "B3": "F26-0718",
+              "C3": "Montajes Segre",
+              "D3": 2210,
+              "A4": {
+                "fecha": "2026-09-22"
+              },
+              "B4": "F26-0733",
+              "C4": "Reformas Delicias",
+              "D4": 389.9,
+              "A5": {
+                "fecha": "2026-09-30"
+              },
+              "B5": "F26-0760",
+              "C5": "Electricidad Arga",
+              "D5": 1750,
+              "A6": {
+                "fecha": "2026-10-06"
+              },
+              "B6": "F26-0866",
+              "C6": "Electricidad Arga",
+              "D6": 965,
+              "A7": {
+                "fecha": "2026-10-14"
+              },
+              "B7": "F26-0881",
+              "C7": "Reformas Delicias",
+              "D7": 1488,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0897",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "A9": {
+                "fecha": "2026-10-27"
+              },
+              "B9": "F26-0912",
+              "C9": "Instalaciones Moncayo",
+              "D9": 712.3,
+              "A10": {
+                "fecha": "2026-10-30"
+              },
+              "B10": "F26-0925",
+              "C10": "Electricidad Arga",
+              "D10": 2045.1,
+              "A11": {
+                "fecha": "2026-11-04"
+              },
+              "B11": "F26-0940",
+              "C11": "Instalaciones Moncayo",
+              "D11": 845.6,
+              "A12": {
+                "fecha": "2026-11-11"
+              },
+              "B12": "F26-0957",
+              "C12": "Montajes Segre",
+              "D12": 1102.35,
+              "G3": "=SUMAR.SI.CONJUNTO(D2:D12;A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))"
+            },
+            "formatos": {
+              "A2:A12": "fecha",
+              "D2:D12": "eur",
+              "G2": "fecha",
+              "G3": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 2,
+              "F": 16,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 12
+          },
+          "resaltar": [
+            "G2",
+            "G3"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Desde el día 1 (\">=\"&G2) hasta el último día del mes (\"<=\"&FIN.MES(G2;0)). Resultado: 8.330,40 €."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e3",
+          "modo": "formula",
+          "enunciado": "Ahora tú. En **G4**, el **número de facturas del mes** de G2, con el mismo truco de fechas. En octubre debe salir **5**; si alguien cambia G2 a septiembre, tiene que salir 4 sin tocar tu fórmula.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Factura",
+              "C1": "Cliente",
+              "D1": "Base (sin IVA)",
+              "F1": "Panel",
+              "G1": "Valor",
+              "F2": "Mes del informe",
+              "G2": {
+                "fecha": "2026-10-01"
+              },
+              "F3": "Ventas del mes",
+              "F4": "Facturas del mes",
+              "A2": {
+                "fecha": "2026-09-08"
+              },
+              "B2": "F26-0702",
+              "C2": "Instalaciones Moncayo",
+              "D2": 1320.4,
+              "A3": {
+                "fecha": "2026-09-15"
+              },
+              "B3": "F26-0718",
+              "C3": "Montajes Segre",
+              "D3": 2210,
+              "A4": {
+                "fecha": "2026-09-22"
+              },
+              "B4": "F26-0733",
+              "C4": "Reformas Delicias",
+              "D4": 389.9,
+              "A5": {
+                "fecha": "2026-09-30"
+              },
+              "B5": "F26-0760",
+              "C5": "Electricidad Arga",
+              "D5": 1750,
+              "A6": {
+                "fecha": "2026-10-06"
+              },
+              "B6": "F26-0866",
+              "C6": "Electricidad Arga",
+              "D6": 965,
+              "A7": {
+                "fecha": "2026-10-14"
+              },
+              "B7": "F26-0881",
+              "C7": "Reformas Delicias",
+              "D7": 1488,
+              "A8": {
+                "fecha": "2026-10-21"
+              },
+              "B8": "F26-0897",
+              "C8": "Climatización Ebro",
+              "D8": 3120,
+              "A9": {
+                "fecha": "2026-10-27"
+              },
+              "B9": "F26-0912",
+              "C9": "Instalaciones Moncayo",
+              "D9": 712.3,
+              "A10": {
+                "fecha": "2026-10-30"
+              },
+              "B10": "F26-0925",
+              "C10": "Electricidad Arga",
+              "D10": 2045.1,
+              "A11": {
+                "fecha": "2026-11-04"
+              },
+              "B11": "F26-0940",
+              "C11": "Instalaciones Moncayo",
+              "D11": 845.6,
+              "A12": {
+                "fecha": "2026-11-11"
+              },
+              "B12": "F26-0957",
+              "C12": "Montajes Segre",
+              "D12": 1102.35,
+              "G3": "=SUMAR.SI.CONJUNTO(D2:D12;A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))"
+            },
+            "formatos": {
+              "A2:A12": "fecha",
+              "D2:D12": "eur",
+              "G2": "fecha",
+              "G3": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 10,
+              "C": 21,
+              "D": 13,
+              "E": 2,
+              "F": 16,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 12
+          },
+          "objetivo": "G4",
+          "solucion": "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))",
+          "alternativas": [
+            "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<\"&FECHA.MES(G2;1))",
+            "=CONTAR.SI.CONJUNTO(A2:A12;\"<=\"&FIN.MES(G2;0);A2:A12;\">=\"&G2)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(A2:A12;\">=\"&G2)",
+            "=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<\"&FIN.MES(G2;0))",
+            "=CONTARA(B6:B10)"
+          ],
+          "variantes": [
+            {
+              "G2": {
+                "fecha": "2026-09-01"
+              }
+            },
+            {
+              "G2": {
+                "fecha": "2026-11-01"
+              }
+            }
+          ],
+          "pistas": [
+            "Contar con dos condiciones sobre la misma columna de fechas: CONTAR.SI.CONJUNTO.",
+            "Primera condición: `A2:A12;\">=\"&G2`. Segunda: `A2:A12;\"<=\"&FIN.MES(G2;0)`.",
+            "`=CONTAR.SI.CONJUNTO(A2:A12;\">=\"&G2;A2:A12;\"<=\"&FIN.MES(G2;0))`"
+          ],
+          "explicacion": "**5 facturas.** Y lo importante: cambia G2 y la cifra cambia sola. Con `<=FIN.MES` entra también la factura del último día (la del 30/09 en septiembre); con `<` se perdería."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e4",
+          "modo": "predice",
+          "enunciado": "Hasta el título del cuadro puede leer el mes. ¿Qué texto mostrará esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Parámetro",
+              "B1": "Valor",
+              "A2": "Mes del informe",
+              "B2": {
+                "fecha": "2026-10-01"
+              }
+            },
+            "formatos": {
+              "B2": "fecha"
+            },
+            "anchos": {
+              "A": 16,
+              "B": 12
+            }
+          },
+          "celda": "A4",
+          "formula": "=\"Cuadro de mando de \"&TEXTO(B2;\"mmmm aaaa\")",
+          "explicacion": "TEXTO convierte la fecha en el nombre del mes y el año, y `&` lo une al resto. En noviembre el título cambiará solo.",
+          "respuesta": "Cuadro de mando de octubre 2026"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Gráficos y segmentaciones que no se rompen\nDos trampas típicas:\n\n- **Gráfico sobre un rango fijo** (A2:B11): lo que pegues debajo se queda fuera. Hazlo sobre una **Tabla** o una **tabla dinámica**, que crecen solas.\n- **Una segmentación por dinámica**: Carmen pulsa «Lleida» y solo cambia medio cuadro. Usa una sola, conectada a todas: **Segmentación › Conexiones de informe**. Solo se conectan dinámicas que salen **del mismo origen** de datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e5",
+          "modo": "cinta",
+          "enunciado": "La segmentación de Zona no filtra la dinámica de familias. Con esa dinámica seleccionada, ¿dónde ves y marcas las segmentaciones conectadas a ella?",
+          "ruta": [
+            "Analizar tabla dinámica",
+            "Filtrar",
+            "Conexiones de filtro"
+          ],
+          "explicacion": "Analizar tabla dinámica › Filtrar › Conexiones de filtro: marca la segmentación de Zona y Aceptar. Desde la segmentación, el camino es Segmentación › Conexiones de informe."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La hoja Léeme\nLa primera hoja del libro se lo explica a quien lo abra (también a ti dentro de seis meses):\n\n- **Qué es** y para quién.\n- **De dónde salen los datos** (qué exportación, con qué filtro).\n- **Las definiciones** de cada indicador.\n- **Cómo se actualiza**, paso a paso.\n\nCon un buen Léeme, si te vas de vacaciones otra persona saca el cuadro sin llamarte."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena cómo se construye el cuadro de mando, del primer paso al último.",
+          "pasos": [
+            "Hoja Datos: la exportación tal cual, convertida en Tabla",
+            "Hoja Cálculos: fórmulas y dinámicas que resumen los datos",
+            "Hoja Presentación: tarjetas y gráficos que leen de Cálculos",
+            "Revisar que la celda de comprobación diga «OK»",
+            "Exportar la presentación a PDF y enviarla"
+          ],
+          "explicacion": "Se construye de abajo arriba: sin datos no hay cálculos, y sin cálculos la presentación no tiene qué leer. Comprobar va siempre antes de enviar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l2-e7",
+          "modo": "abierta",
+          "pregunta": "Escribe la sección **«Cómo se actualiza»** del Léeme del cuadro de Javier: los pasos que seguirá quien lo saque el mes que viene (de 4 a 6 pasos numerados).",
+          "modelo": "Cómo se actualiza (primer día laborable de cada mes):\n1. Exporta del programa de gestión las ventas del mes y pégalas debajo de la Tabla de la hoja Datos.\n2. En Parámetros, cambia el mes del informe (día 1 del mes, por ejemplo 01/11/2026).\n3. Pulsa Datos › Actualizar todo.\n4. Comprueba que la celda de control de Cálculos dice «OK» y que el total coincide con el del programa.\n5. Deja las segmentaciones sin filtro y exporta la hoja Presentación a PDF.",
+          "criterios": [
+            "Dice dónde se pegan los datos nuevos",
+            "El mes se cambia solo en Parámetros",
+            "Incluye actualizar las dinámicas (Actualizar todo)",
+            "Incluye una comprobación antes de enviar",
+            "Son pasos numerados que entiende otra persona"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m3l2-q1",
+          "modo": "test",
+          "pregunta": "¿Qué hoja no debe llevar **ningún** número escrito a mano?",
+          "opciones": [
+            {
+              "texto": "Presentación",
+              "correcta": true,
+              "porque": "Sí: solo lee de Cálculos, así que cada cifra es una fórmula."
+            },
+            {
+              "texto": "Datos",
+              "correcta": false,
+              "porque": "Datos está lleno de números, pero son la fuente: llegan así del programa."
+            },
+            {
+              "texto": "Parámetros",
+              "correcta": false,
+              "porque": "Es justo donde se escriben a mano el mes y los objetivos."
+            }
+          ]
+        },
+        {
+          "id": "n5m3l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "La fecha 01/10/2026 está en G2. Escribe la fórmula que devuelve el último día de ese mes.",
+          "aceptadas": [
+            "=FIN.MES(G2;0)",
+            "FIN.MES(G2;0)",
+            "=fin.mes(g2;0)"
+          ],
+          "explicacion": "`FIN.MES(G2;0)`: el 0 significa «este mismo mes». Con 1 daría el último día del mes siguiente."
+        },
+        {
+          "id": "n5m3l2-q3",
+          "modo": "test",
+          "pregunta": "¿Qué tienen que cumplir dos tablas dinámicas para conectarlas a la misma segmentación?",
+          "opciones": [
+            {
+              "texto": "Salir del mismo origen de datos",
+              "correcta": true,
+              "porque": "Eso es: la segmentación filtra un campo del origen, así que las dinámicas tienen que compartirlo."
+            },
+            {
+              "texto": "Estar en la misma hoja",
+              "correcta": false,
+              "porque": "Pueden estar en hojas distintas; lo que cuenta es el origen."
+            },
+            {
+              "texto": "Tener los mismos campos en Filas",
+              "correcta": false,
+              "porque": "Una puede mostrar productos y otra familias: basta con que salgan de la misma Tabla."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Las capas de un cuadro de mando",
+          "dorso": "Datos (no se tocan) · Cálculos (fórmulas y dinámicas) · Presentación (solo lee). Más Parámetros y Léeme."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Sumar las ventas del mes cuyo día 1 está en G2",
+          "dorso": "=SUMAR.SI.CONJUNTO(Importes;Fechas;\">=\"&G2;Fechas;\"<=\"&FIN.MES(G2;0))"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Conectar una segmentación a varias dinámicas",
+          "dorso": "Segmentación › Conexiones de informe. Desde la dinámica: Analizar tabla dinámica › Filtrar › Conexiones de filtro."
+        }
+      ]
+    },
+    {
+      "id": "n5m3l3",
+      "titulo": "Diseño que se entiende en diez segundos",
+      "minutos": 15,
+      "objetivo": "Diseñar la página de un cuadro de mando que se entiende en diez segundos: lo importante primero, cifras grandes, poco color, títulos con la conclusión, accesible y lista para imprimir en una página.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "He visto el borrador del cuadro. Hay colores por todas partes, un velocímetro en 3D y cifras que no leo sin gafas. Necesito saber en diez segundos si vamos bien o mal. Arréglalo antes del comité.",
+        "logro": "Ya sabes diseñar una página para dirección clara y accesible, con títulos que cuentan la conclusión y lista para imprimir."
+      },
+      "funciones": [
+        "SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### La regla de los diez segundos\nCarmen mirará la página unos segundos antes de que empiece el comité. En ese tiempo tiene que saber **si vamos bien o mal**.\n\nLeemos como un libro: de izquierda a derecha y de arriba abajo. Por eso **lo más importante va arriba a la izquierda** (las ventas frente al objetivo) y el detalle, debajo. Lo que pongas abajo a la derecha es lo último que se mira, si es que se mira."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e1",
+          "modo": "test",
+          "pregunta": "¿Dónde colocas la tarjeta «Ventas del mes frente al objetivo», la cifra que más le importa a Carmen?",
+          "opciones": [
+            {
+              "texto": "Arriba a la izquierda",
+              "correcta": true,
+              "porque": "Es donde empieza a leer: lo primero que verá es lo que más importa."
+            },
+            {
+              "texto": "En el centro, con un recuadro de colores para que destaque",
+              "correcta": false,
+              "porque": "La vista no empieza en el centro, y un recuadro llamativo distrae del resto. La posición hace el trabajo."
+            },
+            {
+              "texto": "Abajo, como conclusión final",
+              "correcta": false,
+              "porque": "En una página para dirección la conclusión va primero, no al final de un recorrido."
+            }
+          ],
+          "explicacion": "Primero la respuesta, después el detalle: es la forma de presentar a dirección."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Cifras grandes y pocos gráficos\nArriba van las **tarjetas**: cuatro cifras grandes (ventas, cumplimiento, ticket medio, clientes activos), cada una con su comparación debajo en letra normal: «Objetivo: 16.000 €».\n\nDebajo, **uno o dos gráficos** como mucho y una tabla corta (el top 5 de productos). Redondea para presentar: euros sin céntimos y porcentajes con un decimal. Nadie decide nada por los céntimos."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "Un color distinto en cada barra (arcoíris)",
+              "Gris para todo y un solo color para lo que importa"
+            ],
+            [
+              "Gráficos en 3D, con sombras y brillos",
+              "Columnas o líneas planas, sin adornos"
+            ],
+            [
+              "Un velocímetro para el cumplimiento",
+              "Una cifra grande: «94,6 % del objetivo»"
+            ],
+            [
+              "Letra de 8 puntos para que quepa todo",
+              "Letra de 11 (la normal de Excel) o más, y quitar lo que sobra"
+            ],
+            [
+              "Título «Ventas por mes»",
+              "Título «Las ventas superan el objetivo en 5 de 10 meses»"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e2",
+          "modo": "ordenar",
+          "enunciado": "Ordena los elementos de la página de Carmen, de arriba abajo.",
+          "pasos": [
+            "Título con la conclusión del mes",
+            "Las cuatro tarjetas de cifras clave",
+            "El gráfico de ventas frente a objetivo por mes",
+            "La tabla de los cinco productos que más venden",
+            "La nota con la fuente de los datos y la fecha de actualización"
+          ],
+          "explicacion": "De lo general al detalle: conclusión, cifras, evolución, detalle y, al pie, de dónde sale todo."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Color solo para lo que importa\nSi todo tiene color, nada destaca. Usa gris o azul oscuro para todo y **un color de aviso** solo donde hay que mirar (el mes que no llega al objetivo).\n\nY **no dependas solo del color**: hay personas que no distinguen bien el rojo del verde, y muchos informes se imprimen en blanco y negro. Acompaña el color con **símbolo y palabra** («▲ Cumple», «▼ No llega») y cuida el **contraste**: texto oscuro sobre fondo claro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e3",
+          "modo": "test",
+          "pregunta": "El cuadro del antecesor marca cada zona con un círculo verde o rojo, sin nada más. ¿Qué cambias?",
+          "opciones": [
+            {
+              "texto": "Añado junto al círculo un símbolo y una palabra: «▲ Cumple» o «▼ No llega»",
+              "correcta": true,
+              "porque": "Así se entiende aunque no distingas el rojo del verde o lo imprimas en blanco y negro."
+            },
+            {
+              "texto": "Pongo un rojo más intenso para que se vea mejor",
+              "correcta": false,
+              "porque": "Quien no distingue el rojo del verde seguirá sin verlo, y en blanco y negro los dos salen grises."
+            },
+            {
+              "texto": "Quito el color: con los números basta",
+              "correcta": false,
+              "porque": "El color ayuda a ver de un vistazo dónde mirar. Lo malo no es el color, es que sea la única pista."
+            }
+          ],
+          "explicacion": "La regla: el color ayuda, pero la información tiene que estar también en el texto."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Títulos que dicen la conclusión\n«Ventas por mes» describe el gráfico. «Las ventas no alcanzan el objetivo en octubre» dice **lo que hay que saber**: Carmen lee el título y ya tiene la conclusión.\n\nEl problema: si lo escribes a mano, el mes que viene mentirá. La solución es un **título con fórmula**: unes textos con `&` y eliges la frase con `SI`, según lo que digan los datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e4",
+          "modo": "formula",
+          "enunciado": "En **A1** escribe el título del cuadro con una fórmula que una el mes de **B3** con la conclusión. Si las ventas (B4) llegan al objetivo (B5) o lo superan, debe decir **«Octubre: las ventas alcanzan el objetivo»**; si no, **«Octubre: las ventas no alcanzan el objetivo»**. Ahora debe salir la segunda.",
+          "hoja": {
+            "celdas": {
+              "A3": "Mes",
+              "B3": "Octubre",
+              "A4": "Ventas (sin IVA)",
+              "B4": 15133.55,
+              "A5": "Objetivo",
+              "B5": 16000
+            },
+            "formatos": {
+              "B4:B5": "eur"
+            },
+            "anchos": {
+              "A": 46,
+              "B": 12
+            },
+            "columnas": 2,
+            "filas": 5
+          },
+          "objetivo": "A1",
+          "solucion": "=B3&\": las ventas \"&SI(B4>=B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"",
+          "alternativas": [
+            "=SI(B4>=B5;B3&\": las ventas alcanzan el objetivo\";B3&\": las ventas no alcanzan el objetivo\")",
+            "=B3&SI(B4>=B5;\": las ventas alcanzan el objetivo\";\": las ventas no alcanzan el objetivo\")",
+            "=SI(B4<B5;B3&\": las ventas no alcanzan el objetivo\";B3&\": las ventas alcanzan el objetivo\")"
+          ],
+          "errores_tipicos": [
+            "=\"Octubre: las ventas no alcanzan el objetivo\"",
+            "=B3&\": las ventas \"&SI(B4>B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"",
+            "=B3&\": las ventas \"&SI(B4<B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\""
+          ],
+          "variantes": [
+            {
+              "B4": 17250
+            },
+            {
+              "B4": 16000
+            },
+            {
+              "B3": "Noviembre"
+            }
+          ],
+          "pistas": [
+            "Son tres trozos unidos con `&`: el mes (B3), el texto `\": las ventas \"` y la palabra que cambia, más `\" el objetivo\"` al final.",
+            "La palabra que cambia la elige un SI: `SI(B4>=B5;\"alcanzan\";\"no alcanzan\")`. Cuidado con los espacios dentro de las comillas.",
+            "`=B3&\": las ventas \"&SI(B4>=B5;\"alcanzan\";\"no alcanzan\")&\" el objetivo\"`"
+          ],
+          "explicacion": "Tu título cambia solo con los datos: si en noviembre se llega al objetivo, dirá «alcanzan» sin que nadie lo toque. Con `>=`, llegar justo al objetivo también cuenta."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Que quepa en una página\nEl cuadro de mando es **una página**. Para que no se parta al imprimir o al pasarlo a PDF: **Disposición de página** (en algunas versiones, «Diseño de página») › **Ajustar área de impresión** › **Ancho: 1 página** y **Alto: 1 página**, y orientación **horizontal**.\n\nExcel reduce la escala lo justo para que quepa. Si así la letra queda diminuta, el problema no es la impresora: sobra contenido."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e5",
+          "modo": "test",
+          "pregunta": "Al pasar el cuadro a PDF, la última columna sale sola en una segunda página. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Disposición de página › Ajustar área de impresión › Ancho: 1 página",
+              "correcta": true,
+              "porque": "Excel reduce la escala lo justo para que el ancho quepa en una página. Si queda demasiado pequeño, quita contenido."
+            },
+            {
+              "texto": "Bajo toda la letra a 7 puntos",
+              "correcta": false,
+              "porque": "Cabría, pero nadie lo leería: es el error de la letra diminuta. Deja que Excel ajuste la escala y, si aun así no cabe, quita cosas."
+            },
+            {
+              "texto": "Lo dejo en dos páginas y que Carmen las junte",
+              "correcta": false,
+              "porque": "Un cuadro de mando es una página: lo que no cabe sobra o va a un anexo."
+            }
+          ],
+          "explicacion": "Ajustar el ancho y el alto a una página es el último paso antes de cada envío."
+        },
+        {
+          "tipo": "texto",
+          "md": "### Texto alternativo: el gráfico contado con palabras\nEl **texto alternativo** son una o dos frases que describen un gráfico para quien no puede verlo: un lector de pantalla las lee en voz alta. Mejor si dicen la conclusión: «Ventas de enero a octubre frente al objetivo; se alcanza en 5 de 10 meses».\n\nSe pone con clic derecho en el **borde** del gráfico › **Ver texto alternativo** (en Excel 2016 a 2024, «Editar texto alternativo»). Y antes de enviar, Excel puede revisar lo que falta."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e6",
+          "modo": "cinta",
+          "enunciado": "¿Dónde le pides a Excel que revise si falta texto alternativo u otros problemas de accesibilidad antes de enviar el cuadro?",
+          "ruta": [
+            "Revisar",
+            "Accesibilidad",
+            "Comprobar accesibilidad"
+          ],
+          "explicacion": "Revisar › Comprobar accesibilidad abre un panel con lo que falla (por ejemplo, gráficos sin texto alternativo) y cómo arreglarlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l3-e7",
+          "modo": "abierta",
+          "pregunta": "Carmen quiere arreglado el gráfico de ventas frente a objetivo por mes. Datos: de enero a octubre se alcanza el objetivo en **6 meses**, y el peor es **agosto**, con el **88 %** del objetivo. Escribe: **1)** el título del gráfico, que diga la conclusión, y **2)** su texto alternativo (una o dos frases).",
+          "modelo": "1) Título: «Las ventas alcanzan el objetivo en 6 de 10 meses; agosto, el peor (88 %)».\n2) Texto alternativo: «Gráfico de columnas y línea con las ventas de enero a octubre de 2026 frente al objetivo de cada mes. Se alcanza el objetivo en 6 meses; el peor es agosto, con el 88 % del objetivo».",
+          "criterios": [
+            "El título dice la conclusión, no solo el tema",
+            "El título cabe en una línea",
+            "El texto alternativo dice qué tipo de gráfico es y qué muestra",
+            "El texto alternativo incluye la conclusión principal",
+            "No depende de colores («la barra roja…»)"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m3l3-q1",
+          "modo": "test",
+          "pregunta": "Javier propone un velocímetro en 3D para el cumplimiento del objetivo. ¿Qué le propones?",
+          "opciones": [
+            {
+              "texto": "Una cifra grande con su comparación: «94,6 % del objetivo»",
+              "correcta": true,
+              "porque": "Se lee en un segundo, ocupa poco y no distorsiona nada."
+            },
+            {
+              "texto": "El mismo velocímetro, pero en 2D",
+              "correcta": false,
+              "porque": "Mejor sin 3D, pero sigue ocupando mucho sitio para enseñar una sola cifra."
+            },
+            {
+              "texto": "Un gráfico circular con lo vendido y lo que falta",
+              "correcta": false,
+              "porque": "Los circulares se leen mal y, si se supera el objetivo, ya no tienen sentido."
+            }
+          ]
+        },
+        {
+          "id": "n5m3l3-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "¿En qué zona de la página va lo más importante del cuadro de mando?",
+          "aceptadas": [
+            "arriba a la izquierda",
+            "Arriba a la izquierda",
+            "arriba izquierda",
+            "arriba, a la izquierda",
+            "esquina superior izquierda",
+            "la esquina superior izquierda"
+          ],
+          "explicacion": "Arriba a la izquierda: es donde empieza la lectura."
+        },
+        {
+          "id": "n5m3l3-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué texto devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Indicador",
+              "B1": "Valor",
+              "A2": "Ventas",
+              "B2": 15200,
+              "A3": "Objetivo",
+              "B3": 16000
+            },
+            "formatos": {
+              "B2:B3": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12
+            }
+          },
+          "celda": "A5",
+          "formula": "=\"Ventas \"&SI(B2>=B3;\"por encima\";\"por debajo\")&\" del objetivo\"",
+          "explicacion": "15.200 no llega a 16.000, así que SI elige «por debajo». Un título así se actualiza solo.",
+          "respuesta": "Ventas por debajo del objetivo"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "La regla de los diez segundos",
+          "dorso": "Lo importante arriba a la izquierda, cifras grandes con su comparación y un título que dice la conclusión."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Que el cuadro quepa en una página",
+          "dorso": "Disposición de página › Ajustar área de impresión › Ancho: 1 página y Alto: 1 página; orientación horizontal."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Añadir texto alternativo a un gráfico",
+          "dorso": "Clic derecho en el borde › Ver texto alternativo (Excel 2016-2024: Editar texto alternativo). Revisar › Comprobar accesibilidad avisa de lo que falta."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Semáforo hecho solo con colores",
+          "dorso": "Añade símbolo y palabra («▲ Cumple»): no todos distinguen el rojo del verde y en blanco y negro no se ve."
+        }
+      ]
+    },
+    {
+      "id": "n5m3l4",
+      "titulo": "Presupuestos y modelos: entradas, cálculos, salidas y comprobaciones",
+      "minutos": 18,
+      "objetivo": "Montar un presupuesto frente a real con los supuestos a la vista, la desviación en euros y en porcentaje (con el signo y la división entre cero controlados), una valoración de favorable o desfavorable y una celda de comprobación.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Necesito el presupuesto frente a real de octubre de Lleida para el lunes: desviación en euros y en %, y que se vea a simple vista qué es bueno y qué es malo. Ponle también una comprobación contra contabilidad: no quiero otro informe que no cuadre.",
+        "logro": "Ya sabes montar un presupuesto frente a real con desviaciones bien calculadas, valoración automática y una celda que avisa si no cuadra."
+      },
+      "funciones": [
+        "SI",
+        "ABS",
+        "SUMA",
+        "SI.ERROR"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "### Entradas, cálculos y salidas\nUn presupuesto es un **modelo**: entran unos supuestos, se calculan y salen cifras. Tres reglas evitan disgustos:\n\n- Los **supuestos** (subida de precios, objetivos, IVA) van en una hoja **Entradas**, con un **color de relleno propio** (por ejemplo, amarillo claro) para que se vea qué se puede tocar.\n- **Una fórmula por fila**, igual en toda la columna, y **ningún número escrito dentro de una fórmula**.\n- Una **celda de comprobación** que avisa si algo no cuadra."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e1",
+          "modo": "test",
+          "pregunta": "Marta prevé que las ventas de 2027 suban un 4 %. ¿Cómo lo metes en el presupuesto?",
+          "opciones": [
+            {
+              "texto": "En una celda de la hoja Entradas, con su color, y las fórmulas la leen: `=C2*(1+Entradas!B3)`",
+              "correcta": true,
+              "porque": "Así el supuesto se ve, se explica y se cambia en un solo sitio."
+            },
+            {
+              "texto": "Dentro de cada fórmula: `=C2*1,04`",
+              "correcta": false,
+              "porque": "Es un supuesto escondido: si Marta lo cambia al 3 %, tendrás que buscarlo fórmula a fórmula, y siempre se escapa alguna."
+            },
+            {
+              "texto": "Escribo las cifras ya subidas, calculadas aparte con la calculadora",
+              "correcta": false,
+              "porque": "Nadie sabrá de dónde salen ni podrá cambiarlas: son números a mano."
+            }
+          ],
+          "explicacion": "Los supuestos a la vista y en un solo sitio: es lo primero que mira quien revisa un presupuesto."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La desviación en euros\nEn un presupuesto frente a real, cada concepto tiene su **Presupuesto** (lo previsto) y su **Real** (lo que ha pasado). La **desviación** es:\n\n**Desviación = Real − Presupuesto**\n\nSiempre en ese orden y en todas las filas: así, positivo significa siempre «ha salido más de lo previsto». Si cada uno resta a su manera, nadie sabe leer el signo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e2",
+          "modo": "formula",
+          "enunciado": "Lleida, octubre. En **E2** calcula la **desviación en euros** de las ventas: real menos presupuesto. Tu fórmula se copiará hasta E8. En E2 debe salir **5.250,00 €**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Tipo",
+              "C1": "Presupuesto",
+              "D1": "Real",
+              "E1": "Desv. €",
+              "F1": "Desv. %",
+              "G1": "Valoración",
+              "A2": "Ventas",
+              "B2": "Ingreso",
+              "C2": 96000,
+              "D2": 101250,
+              "A3": "Compras de mercancía",
+              "B3": "Gasto",
+              "C3": 70100,
+              "D3": 73400,
+              "A4": "Personal",
+              "B4": "Gasto",
+              "C4": 21800,
+              "D4": 21800,
+              "A5": "Alquiler",
+              "B5": "Gasto",
+              "C5": 3900,
+              "D5": 3900,
+              "A6": "Transporte",
+              "B6": "Gasto",
+              "C6": 2600,
+              "D6": 2985,
+              "A7": "Formación",
+              "B7": "Gasto",
+              "C7": 0,
+              "D7": 450,
+              "A8": "Resultado",
+              "B8": "Resultado",
+              "C8": "=C2-SUMA(C3:C7)",
+              "D8": "=D2-SUMA(D3:D7)"
+            },
+            "formatos": {
+              "C2:E8": "eur",
+              "F2:F8": "pct1",
+              "D10": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 10,
+              "C": 12,
+              "D": 12,
+              "E": 12,
+              "F": 15,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 8
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E8"
+          ],
+          "solucion": "=D2-C2",
+          "alternativas": [
+            "=-(C2-D2)",
+            "=-C2+D2"
+          ],
+          "errores_tipicos": [
+            "=C2-D2",
+            "=D2/C2"
+          ],
+          "variantes": [
+            {
+              "D2": 94000
+            },
+            {
+              "C6": 3100
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Real está en la columna D y Presupuesto en la C.",
+            "Real menos presupuesto: D2 menos C2.",
+            "`=D2-C2`"
+          ],
+          "explicacion": "Ventas: **+5.250 €**, se vendió más de lo previsto. Mira también la fila 8: se preveía perder 2.400 € y se han perdido 1.285 €, así que la desviación es **+1.115 €**: se perdió menos de lo previsto."
+        },
+        {
+          "tipo": "texto",
+          "md": "### ¿Buena o mala? Depende de la fila\nEl signo dice si salió **más o menos** de lo previsto. Si eso es bueno, depende de qué sea:\n\n- **Ingresos y resultado**: positiva es **favorable** (más ventas, menos pérdida).\n- **Gastos**: positiva es **desfavorable** (has gastado más).\n\nY «desfavorable» no siempre es mala noticia: en Lleida se compró 3.300 € más… porque se vendió 5.250 € más. Por eso las desviaciones se comentan, no solo se colorean."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e3",
+          "modo": "test",
+          "pregunta": "En Lleida, **Transporte** tiene una desviación de **+385 €**. ¿Cómo la valoras?",
+          "opciones": [
+            {
+              "texto": "Desfavorable: es un gasto y se ha gastado más de lo previsto",
+              "correcta": true,
+              "porque": "Eso es: en los gastos, positivo significa gastar más."
+            },
+            {
+              "texto": "Favorable: la desviación es positiva",
+              "correcta": false,
+              "porque": "El signo solo no basta: mira si la fila es un ingreso o un gasto."
+            },
+            {
+              "texto": "No se puede saber sin el porcentaje",
+              "correcta": false,
+              "porque": "El porcentaje dice cuánto pesa; si es bueno o malo lo dicen el signo y el tipo de fila."
+            }
+          ],
+          "explicacion": "Signo + tipo de fila = valoración. Lo automatizarás con un SI dentro de un momento."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e4",
+          "modo": "predice",
+          "enunciado": "Ahora el porcentaje. Se preveía **perder 2.000 €** y se han perdido **1.500 €**: desviación +500 €, buena noticia. ¿Qué número devuelve `=D2/B2` (sin formato de porcentaje)?",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Presupuesto",
+              "C1": "Real",
+              "D1": "Desv. €",
+              "A2": "Resultado",
+              "B2": -2000,
+              "C2": -1500,
+              "D2": "=C2-B2"
+            },
+            "formatos": {
+              "B2:D2": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12,
+              "C": 12,
+              "D": 12
+            }
+          },
+          "celda": "E2",
+          "formula": "=D2/B2",
+          "explicacion": "−0,25, es decir, −25 %: parece que ha ido peor, cuando se ha perdido menos. Al dividir entre un presupuesto negativo, el signo se da la vuelta.",
+          "respuesta": "-0,25"
+        },
+        {
+          "tipo": "texto",
+          "md": "### Desviación en %, sin trampas\nLa desviación en % es **desviación ÷ presupuesto**: +385 € pesan mucho en transporte y poco en ventas. Dos trampas:\n\n- Si el presupuesto es **negativo**, el signo se invierte (lo acabas de ver). Divide entre `ABS(presupuesto)`, el valor sin signo: `ABS(-2000)` da 2.000.\n- Si el presupuesto es **0**, sale `#¡DIV/0!`. Pregunta antes con SI y, si es 0, escribe un aviso en vez de dividir."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e5",
+          "modo": "formula",
+          "enunciado": "La columna F de Nuria calcula la **desviación %** con `=E2/C2`, copiada hasta F8, y falla dos veces: Formación (presupuesto 0) da `#¡DIV/0!` y el Resultado sale negativo aunque se perdió menos. Arregla **F2**: si el presupuesto es 0, el texto **«Sin presupuesto»**; si no, la desviación ÷ el presupuesto **sin signo**. Se copiará a F3:F8; en F8 debe salir **46,5 %**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Tipo",
+              "C1": "Presupuesto",
+              "D1": "Real",
+              "E1": "Desv. €",
+              "F1": "Desv. %",
+              "G1": "Valoración",
+              "A2": "Ventas",
+              "B2": "Ingreso",
+              "C2": 96000,
+              "D2": 101250,
+              "A3": "Compras de mercancía",
+              "B3": "Gasto",
+              "C3": 70100,
+              "D3": 73400,
+              "A4": "Personal",
+              "B4": "Gasto",
+              "C4": 21800,
+              "D4": 21800,
+              "A5": "Alquiler",
+              "B5": "Gasto",
+              "C5": 3900,
+              "D5": 3900,
+              "A6": "Transporte",
+              "B6": "Gasto",
+              "C6": 2600,
+              "D6": 2985,
+              "A7": "Formación",
+              "B7": "Gasto",
+              "C7": 0,
+              "D7": 450,
+              "A8": "Resultado",
+              "B8": "Resultado",
+              "C8": "=C2-SUMA(C3:C7)",
+              "D8": "=D2-SUMA(D3:D7)",
+              "E2": "=D2-C2",
+              "E3": "=D3-C3",
+              "E4": "=D4-C4",
+              "E5": "=D5-C5",
+              "E6": "=D6-C6",
+              "E7": "=D7-C7",
+              "E8": "=D8-C8"
+            },
+            "formatos": {
+              "C2:E8": "eur",
+              "F2:F8": "pct1",
+              "D10": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 10,
+              "C": 12,
+              "D": 12,
+              "E": 12,
+              "F": 15,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 8
+          },
+          "objetivo": "F2",
+          "copiar_a": [
+            "F3:F8"
+          ],
+          "inicial": "=E2/C2",
+          "solucion": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+          "alternativas": [
+            "=SI.ERROR(E2/ABS(C2);\"Sin presupuesto\")",
+            "=SI(C2<>0;E2/ABS(C2);\"Sin presupuesto\")",
+            "=SI(C2=0;\"Sin presupuesto\";(D2-C2)/ABS(C2))"
+          ],
+          "errores_tipicos": [
+            "=E2/C2",
+            "=E2/ABS(C2)",
+            "=SI(C2=0;\"Sin presupuesto\";E2/C2)",
+            "=SI.ERROR(E2/C2;\"Sin presupuesto\")",
+            "=SI(C2=0;0;E2/ABS(C2))"
+          ],
+          "debe_usar": [
+            "ABS"
+          ],
+          "variantes": [
+            {
+              "D2": 92000
+            },
+            {
+              "C3": 0
+            }
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "Son dos arreglos: el cero (con SI) y el signo (con ABS).",
+            "Primero pregunta si el presupuesto es 0: `SI(C2=0;\"Sin presupuesto\";…)`. En el «si no», divide E2 entre `ABS(C2)`.",
+            "`=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))`"
+          ],
+          "explicacion": "Ahora el Resultado sale **+46,5 %** (se perdió bastante menos de lo previsto) y Formación avisa «Sin presupuesto» en vez de dar error. También valdría `SI.ERROR(E2/ABS(C2);\"Sin presupuesto\")`, pero SI.ERROR tapa **cualquier** error, también los que no esperas; preguntar por el 0 es más seguro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e6",
+          "modo": "formula",
+          "enunciado": "En **G2** escribe la **valoración**: «Favorable» o «Desfavorable». En los **gastos** (columna B = «Gasto») es favorable gastar lo previsto o menos (desviación ≤ 0); en **ingresos y resultado**, lo previsto o más (desviación ≥ 0). Se copiará a G3:G8. En G2 debe salir «Favorable».",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Tipo",
+              "C1": "Presupuesto",
+              "D1": "Real",
+              "E1": "Desv. €",
+              "F1": "Desv. %",
+              "G1": "Valoración",
+              "A2": "Ventas",
+              "B2": "Ingreso",
+              "C2": 96000,
+              "D2": 101250,
+              "A3": "Compras de mercancía",
+              "B3": "Gasto",
+              "C3": 70100,
+              "D3": 73400,
+              "A4": "Personal",
+              "B4": "Gasto",
+              "C4": 21800,
+              "D4": 21800,
+              "A5": "Alquiler",
+              "B5": "Gasto",
+              "C5": 3900,
+              "D5": 3900,
+              "A6": "Transporte",
+              "B6": "Gasto",
+              "C6": 2600,
+              "D6": 2985,
+              "A7": "Formación",
+              "B7": "Gasto",
+              "C7": 0,
+              "D7": 450,
+              "A8": "Resultado",
+              "B8": "Resultado",
+              "C8": "=C2-SUMA(C3:C7)",
+              "D8": "=D2-SUMA(D3:D7)",
+              "E2": "=D2-C2",
+              "E3": "=D3-C3",
+              "E4": "=D4-C4",
+              "E5": "=D5-C5",
+              "E6": "=D6-C6",
+              "E7": "=D7-C7",
+              "E8": "=D8-C8",
+              "F2": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+              "F3": "=SI(C3=0;\"Sin presupuesto\";E3/ABS(C3))",
+              "F4": "=SI(C4=0;\"Sin presupuesto\";E4/ABS(C4))",
+              "F5": "=SI(C5=0;\"Sin presupuesto\";E5/ABS(C5))",
+              "F6": "=SI(C6=0;\"Sin presupuesto\";E6/ABS(C6))",
+              "F7": "=SI(C7=0;\"Sin presupuesto\";E7/ABS(C7))",
+              "F8": "=SI(C8=0;\"Sin presupuesto\";E8/ABS(C8))"
+            },
+            "formatos": {
+              "C2:E8": "eur",
+              "F2:F8": "pct1",
+              "D10": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 10,
+              "C": 12,
+              "D": 12,
+              "E": 12,
+              "F": 15,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 8
+          },
+          "objetivo": "G2",
+          "copiar_a": [
+            "G3:G8"
+          ],
+          "solucion": "=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+          "alternativas": [
+            "=SI(B2<>\"Gasto\";SI(E2>=0;\"Favorable\";\"Desfavorable\");SI(E2<=0;\"Favorable\";\"Desfavorable\"))",
+            "=SI(O(Y(B2=\"Gasto\";E2<=0);Y(B2<>\"Gasto\";E2>=0));\"Favorable\";\"Desfavorable\")",
+            "=SI(B2=\"Gasto\";SI(E2>0;\"Desfavorable\";\"Favorable\");SI(E2<0;\"Desfavorable\";\"Favorable\"))"
+          ],
+          "errores_tipicos": [
+            "=SI(E2>=0;\"Favorable\";\"Desfavorable\")",
+            "=SI(B2=\"Gasto\";SI(E2<0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+            "=SI(B2=\"Ingreso\";SI(E2>=0;\"Favorable\";\"Desfavorable\");SI(E2<=0;\"Favorable\";\"Desfavorable\"))"
+          ],
+          "variantes": [
+            {
+              "D6": 2500
+            },
+            {
+              "D2": 95000
+            }
+          ],
+          "pistas": [
+            "Antes de mirar el signo, mira qué tipo de fila es: ¿B2 es \"Gasto\"?",
+            "Si es gasto, favorable cuando E2<=0; si no (ingreso o resultado), favorable cuando E2>=0. Son dos SI, uno dentro del otro.",
+            "`=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))`"
+          ],
+          "explicacion": "Tu valoración mira el tipo de fila antes que el signo: Compras sale «Desfavorable» (+3.300 €) y el Resultado, «Favorable» (+1.115 €). Con un formato condicional encima tendrás el color, y la palabra hará que se entienda también en blanco y negro."
+        },
+        {
+          "tipo": "texto",
+          "md": "### La celda que avisa\nUn presupuesto puede tener todas las fórmulas bien y no cuadrar con contabilidad: falta una factura, una fila se pegó dos veces… La defensa es una **celda de comprobación**: compara tu total con el de la fuente y dice **«OK»** o **«Revisar»**.\n\nSe mira la **diferencia** con un margen: `ABS(total − fuente) < 0,01`. ABS quita el signo, y el margen de 0,01 € evita falsas alarmas por diferencias diminutas en los decimales."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Mi regla: ningún informe sale de mi mesa sin su celda de comprobación en «OK». La pongo arriba, junto al título, para verla nada más abrir el libro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m3l4-e7",
+          "modo": "formula",
+          "enunciado": "Último paso del encargo de Marta. Según contabilidad, los **gastos reales** de Lleida en octubre suman **102.535 €** (celda **D10**). En **D11** escribe la comprobación: si la suma de los gastos reales de la tabla (D3:D7) coincide con D10 (diferencia menor que 0,01), «OK»; si no, «Revisar». Ahora debe salir «OK».",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Tipo",
+              "C1": "Presupuesto",
+              "D1": "Real",
+              "E1": "Desv. €",
+              "F1": "Desv. %",
+              "G1": "Valoración",
+              "A2": "Ventas",
+              "B2": "Ingreso",
+              "C2": 96000,
+              "D2": 101250,
+              "A3": "Compras de mercancía",
+              "B3": "Gasto",
+              "C3": 70100,
+              "D3": 73400,
+              "A4": "Personal",
+              "B4": "Gasto",
+              "C4": 21800,
+              "D4": 21800,
+              "A5": "Alquiler",
+              "B5": "Gasto",
+              "C5": 3900,
+              "D5": 3900,
+              "A6": "Transporte",
+              "B6": "Gasto",
+              "C6": 2600,
+              "D6": 2985,
+              "A7": "Formación",
+              "B7": "Gasto",
+              "C7": 0,
+              "D7": 450,
+              "A8": "Resultado",
+              "B8": "Resultado",
+              "C8": "=C2-SUMA(C3:C7)",
+              "D8": "=D2-SUMA(D3:D7)",
+              "E2": "=D2-C2",
+              "E3": "=D3-C3",
+              "E4": "=D4-C4",
+              "E5": "=D5-C5",
+              "E6": "=D6-C6",
+              "E7": "=D7-C7",
+              "E8": "=D8-C8",
+              "F2": "=SI(C2=0;\"Sin presupuesto\";E2/ABS(C2))",
+              "F3": "=SI(C3=0;\"Sin presupuesto\";E3/ABS(C3))",
+              "F4": "=SI(C4=0;\"Sin presupuesto\";E4/ABS(C4))",
+              "F5": "=SI(C5=0;\"Sin presupuesto\";E5/ABS(C5))",
+              "F6": "=SI(C6=0;\"Sin presupuesto\";E6/ABS(C6))",
+              "F7": "=SI(C7=0;\"Sin presupuesto\";E7/ABS(C7))",
+              "F8": "=SI(C8=0;\"Sin presupuesto\";E8/ABS(C8))",
+              "G2": "=SI(B2=\"Gasto\";SI(E2<=0;\"Favorable\";\"Desfavorable\");SI(E2>=0;\"Favorable\";\"Desfavorable\"))",
+              "G3": "=SI(B3=\"Gasto\";SI(E3<=0;\"Favorable\";\"Desfavorable\");SI(E3>=0;\"Favorable\";\"Desfavorable\"))",
+              "G4": "=SI(B4=\"Gasto\";SI(E4<=0;\"Favorable\";\"Desfavorable\");SI(E4>=0;\"Favorable\";\"Desfavorable\"))",
+              "G5": "=SI(B5=\"Gasto\";SI(E5<=0;\"Favorable\";\"Desfavorable\");SI(E5>=0;\"Favorable\";\"Desfavorable\"))",
+              "G6": "=SI(B6=\"Gasto\";SI(E6<=0;\"Favorable\";\"Desfavorable\");SI(E6>=0;\"Favorable\";\"Desfavorable\"))",
+              "G7": "=SI(B7=\"Gasto\";SI(E7<=0;\"Favorable\";\"Desfavorable\");SI(E7>=0;\"Favorable\";\"Desfavorable\"))",
+              "G8": "=SI(B8=\"Gasto\";SI(E8<=0;\"Favorable\";\"Desfavorable\");SI(E8>=0;\"Favorable\";\"Desfavorable\"))",
+              "A10": "Gastos según contabilidad",
+              "D10": 102535,
+              "A11": "Comprobación"
+            },
+            "formatos": {
+              "C2:E8": "eur",
+              "F2:F8": "pct1",
+              "D10": "eur"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 10,
+              "C": 12,
+              "D": 12,
+              "E": 12,
+              "F": 15,
+              "G": 13
+            },
+            "columnas": 7,
+            "filas": 11
+          },
+          "objetivo": "D11",
+          "solucion": "=SI(ABS(SUMA(D3:D7)-D10)<0,01;\"OK\";\"Revisar\")",
+          "alternativas": [
+            "=SI(ABS(D10-SUMA(D3:D7))<0,01;\"OK\";\"Revisar\")",
+            "=SI(REDONDEAR(SUMA(D3:D7)-D10;2)=0;\"OK\";\"Revisar\")",
+            "=SI(SUMA(D3:D7)=D10;\"OK\";\"Revisar\")",
+            "=SI(ABS(D2-D8-D10)<0,01;\"OK\";\"Revisar\")"
+          ],
+          "errores_tipicos": [
+            "=SI(SUMA(D3:D7)-D10;\"OK\";\"Revisar\")",
+            "=SUMA(D3:D7)-D10",
+            "=SI(SUMA(D3:D7)-D10<0,01;\"OK\";\"Revisar\")",
+            "=SI(ABS(SUMA(D3:D8)-D10)<0,01;\"OK\";\"Revisar\")"
+          ],
+          "variantes": [
+            {
+              "D10": 103000
+            },
+            {
+              "D10": 102085
+            },
+            {
+              "D6": 2535
+            }
+          ],
+          "pistas": [
+            "Primero la diferencia: `SUMA(D3:D7)-D10`. Si todo cuadra, da 0.",
+            "Quítale el signo con ABS y compárala con 0,01 dentro de un SI: `SI(ABS(…)<0,01;\"OK\";\"Revisar\")`.",
+            "`=SI(ABS(SUMA(D3:D7)-D10)<0,01;\"OK\";\"Revisar\")`"
+          ],
+          "explicacion": "**OK**: tu tabla cuadra con contabilidad. Si mañana alguien cambia un gasto o falta una factura, la celda dirá «Revisar» antes de que lo vea Marta. Sin ABS, una tabla que se queda corta (diferencia negativa) diría «OK»: por eso se quita el signo."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m3l4-q1",
+          "modo": "test",
+          "pregunta": "Para que no salga ningún `#¡DIV/0!`, alguien propone envolver todas las fórmulas del presupuesto en `SI.ERROR(…;0)`. ¿Qué riesgo tiene?",
+          "opciones": [
+            {
+              "texto": "Tapa cualquier error y lo convierte en 0: un fallo de verdad pasaría por una cifra correcta",
+              "correcta": true,
+              "porque": "Eso es: un error te está avisando de algo. Mejor preguntar por el caso concreto (presupuesto = 0) y dejar que los demás errores se vean."
+            },
+            {
+              "texto": "Ninguno: un 0 queda más limpio que un error",
+              "correcta": false,
+              "porque": "Más limpio, pero engañoso: un 0 parece un dato y suma como un dato."
+            },
+            {
+              "texto": "Que la hoja calcula más despacio",
+              "correcta": false,
+              "porque": "Eso no es lo grave: el problema es que esconde errores."
+            }
+          ]
+        },
+        {
+          "id": "n5m3l4-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "Presupuesto en C2 y real en D2. Escribe la fórmula de la desviación en euros.",
+          "aceptadas": [
+            "=D2-C2",
+            "D2-C2",
+            "=-C2+D2",
+            "=d2-c2"
+          ],
+          "explicacion": "Real menos presupuesto, siempre en ese orden: así el signo se lee igual en todas las filas."
+        },
+        {
+          "id": "n5m3l4-q3",
+          "modo": "predice",
+          "enunciado": "Presupuesto −500 € (una pérdida prevista) y desviación +100 €. ¿Qué número devuelve la fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Presupuesto",
+              "B1": "Desv. €",
+              "A2": -500,
+              "B2": 100
+            },
+            "formatos": {
+              "A2:B2": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12
+            }
+          },
+          "celda": "C2",
+          "formula": "=B2/ABS(A2)",
+          "explicacion": "100 ÷ 500 = 0,2, es decir, +20 %: con ABS el signo dice la verdad (se perdió menos de lo previsto).",
+          "respuesta": "0,2"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Desviación en € y en %",
+          "dorso": "€: Real − Presupuesto. %: desviación ÷ ABS(presupuesto); si el presupuesto es 0, un aviso en vez de dividir."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Una desviación positiva es buena?",
+          "dorso": "En ingresos y resultado, sí. En gastos, no: has gastado más de lo previsto."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Celda de comprobación OK / Revisar",
+          "dorso": "=SI(ABS(total−fuente)<0,01;\"OK\";\"Revisar\")"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde van los supuestos de un modelo?",
+          "dorso": "En una hoja Entradas, con un color propio. Nunca escritos dentro de las fórmulas."
+        }
+      ]
+    }
+  ]
+}

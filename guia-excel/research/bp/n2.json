@@ -1,0 +1,217 @@
+{
+  "id": "n2",
+  "nombre": "Usuaria intermedia",
+  "lema": "Listas que crecen solas, fórmulas que deciden y buscan, y libros que otros entienden.",
+  "horas": 14,
+  "equivale_a": "MO-210 Excel Associate (Microsoft 365 Apps) casi completo; ofertas «Excel intermedio» o «buen manejo»; ICAEW Basic sólido y parte de General (perfil Administrative)",
+  "puede_hacer_sola": [
+    "Convierte una lista en Tabla, le pone fila de totales y columnas calculadas, y sabe por qué crece sola.",
+    "Ordena por varios criterios y filtra por condición, color o los 10 primeros.",
+    "Resalta valores con formato condicional y añade minigráficos.",
+    "Clasifica con SI anidados, Y y O, y suma, cuenta y promedia por categoría con SUMAR.SI, CONTAR.SI y PROMEDIO.SI.",
+    "Cruza un pedido con la tarifa con BUSCARX (y con BUSCARV exacta si el Excel es antiguo) y entiende el #N/D.",
+    "Limpia y une textos (espacios, mayúsculas, nombres completos) y calcula con fechas.",
+    "Usa ORDENAR, UNICOS y SECUENCIA y entiende el desbordamiento; sabe qué Excel tiene y quién abrirá el archivo.",
+    "Importa un CSV del ERP o del banco sin que se estropeen fechas, decimales ni ceros a la izquierda.",
+    "Organiza el libro en entradas, cálculos y salidas, con nombres definidos y sin números escritos dentro de las fórmulas.",
+    "Traduce y comprueba una fórmula sacada de internet o de una IA antes de usarla.",
+    "Comparte con comentarios y notas, y revisa con Inspeccionar documento y Comprobar accesibilidad antes de enviar."
+  ],
+  "modulos": [
+    {
+      "id": "n2m1",
+      "titulo": "Tablas y listas que crecen",
+      "objetivos": [
+        "es capaz de convertir un rango en Tabla y usar su fila de totales y sus columnas calculadas",
+        "es capaz de ordenar por varios niveles y filtrar a fondo",
+        "es capaz de aplicar formato condicional integrado y minigráficos"
+      ],
+      "lecciones": [
+        {
+          "id": "n2m1l1",
+          "titulo": "Convertir una lista en Tabla",
+          "minutos": 14,
+          "conceptos": ["Tabla de Excel (Ctrl+T o Insertar > Tabla) y la pestaña Diseño de tabla", "nombre de la tabla (Ventas, no Tabla1)", "estilos y filas con bandas", "Fila de totales (usa SUBTOTALES: suma solo lo visible)", "columna calculada: una fórmula para toda la columna", "referencias estructuradas: =[@Cantidad]*[@Precio] y Ventas[Importe]", "la Tabla crece sola al añadir filas: las fórmulas y gráficos que la usan también", "Convertir en rango"],
+          "funciones": ["SUBTOTALES"],
+          "errores_conceptuales": ["E14 Rangos fijos que no se amplían al añadir datos", "Dejar filas vacías dentro de la lista", "Pensar que la Tabla es solo un formato bonito"],
+          "ejercicios_vivos": ["predice: =SUMA(B2:B6) no incluye la fila nueva añadida en B7 (por qué hace falta una Tabla)", "=SUBTOTALES(9;B2:B8) como la fila de totales"],
+          "otros_ejercicios": ["cinta: Insertar > Tablas > Tabla", "cinta: Diseño de tabla > Opciones de estilo de tabla > Fila de totales", "respuesta_corta: atajo para crear una tabla (Ctrl+T)", "test: qué significa =[@Cantidad]*[@Precio]", "test: añades 20 pedidos debajo de una Tabla: ¿qué pasa con el total?", "recuerda: test por qué usar Tablas", "recuerda: cinta Fila de totales"],
+          "practica_excel_real": "Convertir una lista de 80 pedidos en la Tabla «Pedidos», añadir la columna calculada Importe con referencias estructuradas, activar la fila de totales y añadir 5 pedidos nuevos para ver que todo crece."
+        },
+        {
+          "id": "n2m1l2",
+          "titulo": "Ordenar por varios criterios y filtrar a fondo",
+          "minutos": 12,
+          "conceptos": ["Datos > Ordenar: Agregar nivel (delegación, luego importe)", "orden personalizado (lunes, martes…)", "filtros de texto, número y fecha (entre, mayor que, este mes)", "filtrar por color", "Diez mejores", "la fila de totales de la Tabla solo suma lo filtrado", "borrar todos los filtros"],
+          "funciones": ["SUBTOTALES"],
+          "errores_conceptuales": ["Ordenar en dos pasadas en el orden equivocado", "Creer que SUMA de la columna da el total de lo filtrado (suma también lo oculto)", "E26 Copiar y pegar con filas filtradas sin comprobar qué se pega"],
+          "ejercicios_vivos": ["predice: con filas ocultas por el filtro, =SUMA frente a =SUBTOTALES(9;…) (se presenta con la tabla de valores visibles)"],
+          "otros_ejercicios": ["cinta: Datos > Ordenar y filtrar > Ordenar", "ordenar: ordenar por delegación y, dentro, por importe de mayor a menor", "test: quieres los 10 clientes que más compran: ¿qué filtro?", "test: el total de la fila de totales cambia al filtrar: ¿por qué?", "cinta: Datos > Ordenar y filtrar > Borrar", "test: copiar filas filtradas y pegar en otra hoja: qué comprobar", "recuerda: ordenar niveles", "recuerda: test SUMA frente a SUBTOTALES"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m1l3",
+          "titulo": "Formato condicional y minigráficos",
+          "minutos": 13,
+          "conceptos": ["Formato condicional: Reglas para resaltar celdas (mayor que, entre, texto que contiene, duplicados)", "Reglas superiores e inferiores", "Barras de datos, Escalas de color y Conjuntos de iconos", "el umbral en una celda, no escrito en la regla", "Borrar reglas", "Minigráficos de línea y columna (Insertar > Minigráficos)", "no depender solo del color (accesibilidad)"],
+          "funciones": [],
+          "errores_conceptuales": ["Pintar a mano las celdas que superan el límite (no se actualiza)", "Usar tantos colores que nada destaca", "Creer que el formato condicional cambia el valor"],
+          "ejercicios_vivos": [],
+          "otros_ejercicios": ["cinta: Inicio > Estilos > Formato condicional", "cinta: Insertar > Minigráficos > Línea", "test: qué regla usar para marcar facturas de más de 3.000 €", "test: pintar a mano frente a formato condicional", "test: barras de datos frente a escala de color para comparar ventas", "ordenar: crear una regla «mayor que» con el valor en una celda", "recuerda: cinta Formato condicional", "recuerda: test accesibilidad y color"],
+          "practica_excel_real": "En la Tabla de pedidos: resaltar importes mayores que el umbral de una celda, marcar duplicados de número de pedido, barras de datos en el margen y minigráficos de ventas mensuales por comercial."
+        }
+      ],
+      "practica_excel": "Libro n2-registro-incidencias.xlsx: convertir el registro en Tabla, ordenar por prioridad y fecha, filtrar las abiertas, resaltar las vencidas con formato condicional integrado (fecha anterior a…) y añadir minigráficos de incidencias por semana. Controles: n.º de incidencias abiertas, total de la fila de totales filtrada."
+    },
+    {
+      "id": "n2m2",
+      "titulo": "Decidir, contar y buscar",
+      "objetivos": [
+        "es capaz de clasificar con SI anidados combinados con Y y O",
+        "es capaz de sumar, contar y promediar por categoría",
+        "es capaz de traer datos de otra lista con BUSCARX y BUSCARV exacta",
+        "es capaz de adaptar y comprobar una fórmula sacada de internet o de una IA"
+      ],
+      "lecciones": [
+        {
+          "id": "n2m2l1",
+          "titulo": "SI anidados, Y y O",
+          "minutos": 15,
+          "conceptos": ["Y(…) exige todas las condiciones; O(…) basta una", "«entre dos valores» se escribe Y(A2>=10;A2<=20)", "SI dentro de SI para tres categorías", "el orden de las pruebas: de la más exigente a la menos", "los límites en celdas aparte"],
+          "funciones": ["SI", "Y", "O", "NO"],
+          "errores_conceptuales": ["E22 Escribir 10<A2<20 como en matemáticas", "E21 SI anidados en mal orden (la primera prueba se come a las demás)", "Olvidar el caso de la frontera exacta"],
+          "ejercicios_vivos": ["predice: =10<A2<20 con A2 = 15 (FALSO)", "=Y(B2>=1000;C2=\"Sí\")", "=SI(Y(B2>=$F$1;C2<=$F$2);\"Urgente\";\"Normal\")", "=SI(O(C2=\"Madrid\";C2=\"Barcelona\");\"Grande\";\"Resto\")", "=SI(B2>=$F$1;\"Alto\";SI(B2>=$F$2;\"Medio\";\"Bajo\")) con variantes en las fronteras", "arregla el error: SI anidado con las pruebas en orden inverso (siempre sale «Medio»)"],
+          "otros_ejercicios": ["test: Y frente a O en «cliente de Madrid con pedido mayor de 500 €»", "recuerda: escribe «entre 10 y 20» con Y"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m2l2",
+          "titulo": "Sumar, contar y promediar por categoría",
+          "minutos": 14,
+          "conceptos": ["SUMAR.SI(rango_criterio; criterio; rango_suma)", "CONTAR.SI y PROMEDIO.SI", "el criterio en una celda (D2) para cambiar de categoría sin tocar la fórmula", "criterios con operadores: \">1000\" y \">\"&F1", "no distingue mayúsculas", "resumen por zona con una fórmula copiada", "comprobar: la suma de todas las categorías = el total"],
+          "funciones": ["SUMAR.SI", "CONTAR.SI", "PROMEDIO.SI"],
+          "errores_conceptuales": ["Rangos de distinto tamaño en SUMAR.SI", "Escribir el criterio con el operador fuera de las comillas", "E17 «Norte » con espacio no cuenta como «Norte»", "No cuadrar el resumen con el total"],
+          "ejercicios_vivos": ["=SUMAR.SI(A2:A9;D2;B2:B9) (variantes: D2 = Sur)", "=CONTAR.SI(A2:A9;D2)", "=PROMEDIO.SI(A2:A9;D2;B2:B9)", "=CONTAR.SI(B2:B9;\">\"&$F$1) pedidos por encima del umbral", "=SUMAR.SI($A$2:$A$9;D2;$B$2:$B$9) copiada para todas las zonas (copiar_a)", "control: =SUMA(E2:E5)=SUMA(B2:B9) (VERDADERO)", "arregla el error: =SUMAR.SI(A2:A9;\"Norte\";B2:B8)"],
+          "otros_ejercicios": ["recuerda: escribe el total de la zona de D2 sin mirar", "recuerda: test por qué el criterio va en una celda"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m2l3",
+          "titulo": "Traer datos de otra lista: BUSCARX y BUSCARV",
+          "minutos": 15,
+          "conceptos": ["buscar un código en una lista y traer otro dato de su fila", "BUSCARX(valor; dónde buscar; qué devolver; si no se encuentra)", "BUSCARV(valor; tabla; columna; FALSO) para Excel 2019 o anterior", "sin FALSO, BUSCARV hace coincidencia aproximada y puede traer el dato de otro", "#N/D: no lo encuentra (código mal escrito, espacio, texto frente a número)", "fijar con $ los rangos de búsqueda antes de copiar", "BUSCARX funciona desde Excel 2021; en 2016/2019 da #¿NOMBRE?"],
+          "funciones": ["BUSCARX", "BUSCARV"],
+          "errores_conceptuales": ["E15 BUSCARV sin FALSO (aproximada por defecto)", "E16 Rango de búsqueda sin $ y número de columna escrito a mano que se desplaza", "Tapar el #N/D sin preguntarse por qué sale"],
+          "ejercicios_vivos": ["=BUSCARX(E2;$A$2:$A$8;$B$2:$B$8) precio del código", "=BUSCARX(E2;$A$2:$A$8;$B$2:$B$8;\"No existe\") (variantes: código inexistente)", "=BUSCARV(E2;$A$2:$C$8;3;FALSO)", "predice: =BUSCARV(250;tarifa;2) sin FALSO devuelve otro producto", "arregla el error: BUSCARV sin $ que falla al copiar", "mini-tarea: completar un pedido con descripción y precio desde la tarifa, copiado a 6 líneas"],
+          "otros_ejercicios": ["test: el código se ve en la tarifa pero sale #N/D: ¿qué compruebas primero? (espacios o número guardado como texto)", "recuerda: escribe BUSCARX con «No existe»"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m2l4",
+          "titulo": "Fórmulas de internet o de la IA: traducir y comprobar",
+          "minutos": 13,
+          "conceptos": ["las fórmulas de internet y de ChatGPT, Claude o Copilot suelen venir en inglés y con comas", "traducir nombres (VLOOKUP → BUSCARV, SUMIF → SUMAR.SI, IF → SI) y separadores (, → ; y . → , decimal)", "pedirla bien: «Excel para Microsoft 365 en español de España, con punto y coma», columnas y ejemplo", "probarla con 3-5 filas que puedas calcular de cabeza, incluido un caso raro", "semáforo de datos: verde (inventados o solo la estructura), ámbar (internos, solo en la herramienta que autorice la empresa), rojo (personales: nunca)", "si no puedes explicarla, no la entregues"],
+          "funciones": ["SUMAR.SI", "BUSCARV", "SI"],
+          "errores_conceptuales": ["Pegar tal cual =VLOOKUP(A2,B:C,2,FALSE) en un Excel español", "Fiarse porque «no da error» (E18)", "Pegar datos de clientes en una IA personal"],
+          "ejercicios_vivos": ["arregla el error: inicial =SUMIF(A2:A9,\"Norte\",B2:B9) → =SUMAR.SI(A2:A9;\"Norte\";B2:B9)", "arregla el error: inicial con coma decimal en inglés =B2*1.21 → con la celda del tipo =B2*(1+$F$1)", "arregla el error: fórmula «de la IA» que da un número creíble pero usa B2:B8 en vez de B2:B9 (se descubre con el control del total)", "=SI(C2>=$F$1;\"Sí\";\"No\") traducida de =IF(C2>=$F$1,\"Yes\",\"No\")"],
+          "otros_ejercicios": ["test: semáforo: ¿puedes pegar en una IA personal la lista de nóminas? (rojo)", "abierta: escribe la petición a la IA para obtener el total por comercial y mes, sin pegar datos personales", "recuerda: test pasos para comprobar una fórmula ajena"],
+          "practica_excel_real": null
+        }
+      ],
+      "practica_excel": "Libro n2-informe-comerciales.xlsx: en la Tabla de ventas, traer con BUSCARX la zona de cada comercial, clasificar los pedidos con SI y Y, y hacer el resumen por zona y por comercial con SUMAR.SI y CONTAR.SI, con una celda de control que compruebe que el resumen cuadra con el total. Controles: total de la zona Norte, n.º de pedidos grandes, control VERDADERO."
+    },
+    {
+      "id": "n2m3",
+      "titulo": "Textos, fechas y matrices",
+      "objetivos": [
+        "es capaz de limpiar y unir textos",
+        "es capaz de calcular con fechas sabiendo que son números",
+        "es capaz de usar ORDENAR, UNICOS y SECUENCIA y entender el desbordamiento",
+        "es capaz de comprobar qué versión de Excel tiene y quién abrirá el archivo"
+      ],
+      "lecciones": [
+        {
+          "id": "n2m3l1",
+          "titulo": "Limpiar y unir textos",
+          "minutos": 14,
+          "conceptos": ["ESPACIOS quita espacios sobrantes (al principio, al final y dobles)", "MAYUSC, MINUSC y NOMPROPIO", "LARGO para descubrir espacios invisibles", "unir con & y con CONCAT", "UNIRCADENAS con separador e ignorando vacíos", "columna auxiliar limpia y después pegar valores"],
+          "funciones": ["ESPACIOS", "MAYUSC", "MINUSC", "NOMPROPIO", "LARGO", "CONCAT", "UNIRCADENAS"],
+          "errores_conceptuales": ["E17 Comparar textos con espacios o mayúsculas distintas", "Corregir 500 nombres a mano", "Unir textos sin espacio entre ellos («AnaLópez»)"],
+          "ejercicios_vivos": ["predice: =LARGO(ESPACIOS(\"  Ana   López \")) (9)", "=NOMPROPIO(ESPACIOS(A2))", "=B2&\" \"&C2 nombre completo", "=CONCAT(B2;\" \";C2)", "=UNIRCADENAS(\", \";VERDADERO;A2:A5)", "=MAYUSC(ESPACIOS(A2)) códigos de provincia", "predice: =\"Ana \"=\"Ana\" (FALSO)"],
+          "otros_ejercicios": ["test: por qué el BUSCARX falla con «García » y cómo arreglarlo", "recuerda: escribe nombre y apellido unidos con espacio"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m3l2",
+          "titulo": "Calcular con fechas",
+          "minutos": 14,
+          "conceptos": ["una fecha es un número de días (14/11/2026 = 46340) con formato de fecha", "restar fechas da días", "DIA, MES y AÑO extraen partes", "FECHA(año; mes; día) construye una fecha segura", "DIAS(fin; inicio)", "HOY() cambia cada día: para informes, mejor una fecha de corte en una celda", "una fecha alineada a la izquierda es texto"],
+          "funciones": ["FECHA", "DIA", "MES", "AÑO", "DIAS", "HOY"],
+          "errores_conceptuales": ["E09 No entender que las fechas son números (sale 46340)", "Escribir la fecha dentro de la fórmula como texto \"14/11/2026\"", "Usar HOY() en un informe que hay que poder repetir"],
+          "ejercicios_vivos": ["=C2-B2 días entre pedido y entrega", "=FECHA(2026;12;25)-FECHA(2026;11;14) (41)", "=MES(B2) y =AÑO(B2)", "=DIAS(C2;B2)", "=B2+30 vencimiento a 30 días", "=FECHA(AÑO(B2);MES(B2);1) primer día del mes", "predice: fecha con formato General (46340)"],
+          "otros_ejercicios": ["test: por qué un informe a fecha de corte usa una celda y no HOY()", "recuerda: escribe el vencimiento a 60 días"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n2m3l3",
+          "titulo": "Fórmulas que se desbordan: ORDENAR, UNICOS y SECUENCIA",
+          "minutos": 13,
+          "conceptos": ["matriz dinámica: una fórmula que llena varias celdas (desbordamiento)", "#¡DESBORDAMIENTO! si algo tapa el hueco", "UNICOS para la lista de clientes sin repetir", "ORDENAR por una columna y en orden descendente (-1)", "SECUENCIA para numerar o crear filas", "ALEATORIO.ENTRE para datos de prueba (cambia en cada cálculo)", "¿qué Excel tengo? Archivo > Cuenta; estas funciones necesitan Excel 2021 o Microsoft 365; plan B: Quitar duplicados y Ordenar"],
+          "funciones": ["UNICOS", "ORDENAR", "SECUENCIA", "ALEATORIO.ENTRE"],
+          "errores_conceptuales": ["Escribir algo debajo de una fórmula que se desborda", "Mandar un libro con UNICOS a alguien con Excel 2016 (da #¿NOMBRE?)", "Usar ALEATORIO.ENTRE en datos que deben quedarse fijos"],
+          "ejercicios_vivos": ["=UNICOS(A2:A12) lista de clientes", "=ORDENAR(A2:B9;2;-1) ranking por importe", "=ORDENAR(UNICOS(A2:A12))", "=SECUENCIA(12) números del 1 al 12", "=CONTARA(UNICOS(A2:A12)) cuántos clientes distintos", "predice: qué pasa si D4 está ocupada bajo =UNICOS(…) en D2 (#¡DESBORDAMIENTO!)"],
+          "otros_ejercicios": ["cinta: Archivo > Archivo > Cuenta", "test: tu jefa tiene Excel 2019: ¿qué haces con UNICOS?", "recuerda: escribe la lista ordenada de clientes únicos"],
+          "practica_excel_real": null
+        }
+      ],
+      "practica_excel": "Libro n2-clientes-csv.xlsx (preparado): limpiar nombres y provincias con funciones de texto, unir nombre y apellidos, calcular días desde el último pedido a una fecha de corte, y sacar con UNICOS y ORDENAR la lista de provincias y un ranking de clientes. Controles: n.º de clientes únicos, n.º de clientes con más de 90 días sin pedir."
+    },
+    {
+      "id": "n2m4",
+      "titulo": "Datos de fuera y libros para compartir",
+      "objetivos": [
+        "es capaz de importar un CSV o TXT sin estropear los datos",
+        "es capaz de usar pegado especial",
+        "es capaz de organizar un libro en entradas, cálculos y salidas con nombres definidos",
+        "es capaz de comentar, revisar y preparar un libro antes de compartirlo"
+      ],
+      "lecciones": [
+        {
+          "id": "n2m4l1",
+          "titulo": "Importar un CSV sin estropearlo",
+          "minutos": 15,
+          "conceptos": ["qué es un CSV: texto con separadores (; en España, , en otros países)", "abrirlo con doble clic puede estropear fechas, decimales y ceros a la izquierda", "Datos > Obtener y transformar datos > De texto/CSV: origen del archivo (UTF-8), delimitador y vista previa", "códigos como texto (CP, NIF, cuenta)", "fechas americanas mm/dd: comprobar con un día mayor que 12", "Pegado especial (Ctrl+Alt+V): valores, formatos, transponer y operaciones (multiplicar por 1,05)", "guardar como CSV UTF-8 y qué se pierde (formato, fórmulas, otras hojas)"],
+          "funciones": [],
+          "errores_conceptuales": ["E27 Excel cambia los datos al abrirlos (08001 → 8001, MARCH1 → fecha)", "E08 Números importados como texto que no suman", "Pegar fórmulas cuando se querían valores"],
+          "ejercicios_vivos": ["predice: =SUMA(B2:B4) con un importe guardado como texto (no lo suma)", "predice: =ESNUMERO(B3) en el importe importado como texto (FALSO)"],
+          "otros_ejercicios": ["cinta: Datos > Obtener y transformar datos > De texto/CSV", "test: el CSV del banco sale todo en la columna A: ¿por qué?", "test: «04/03/2026» de un proveedor de EE. UU.: ¿qué fecha es?", "respuesta_corta: atajo de Pegado especial (Ctrl+Alt+V)", "ordenar: importar un CSV con delimitador ; y la columna de código como texto", "recuerda: test ceros a la izquierda"],
+          "practica_excel_real": "Importar export-clientes.csv (UTF-8, «;», códigos con ceros y fechas) con Datos > De texto/CSV conservando códigos y fechas; comparar con abrirlo con doble clic; pegar como valores una columna calculada."
+        },
+        {
+          "id": "n2m4l2",
+          "titulo": "Un libro ordenado: entradas, cálculos y salidas",
+          "minutos": 14,
+          "conceptos": ["separar en hojas: Entradas o Parámetros (tipos, umbrales, fecha de corte), Datos, Cálculos e Informe", "referencias a otra hoja: =Parámetros!B2", "nombres definidos (TipoIVA) desde el cuadro de nombres o Fórmulas > Asignar nombre; Administrador de nombres (Ctrl+F3)", "ningún número que pueda cambiar dentro de una fórmula", "colores de celdas de entrada con leyenda (estilo de celda Entrada)", "Mostrar fórmulas (Ctrl+`) y Rastrear precedentes para revisar", "índice con hipervínculos (Ctrl+Alt+K) y propiedades del libro"],
+          "funciones": [],
+          "errores_conceptuales": ["E19 y E25 Mezclar datos, cálculos y presentación en una sola hoja «bonita»", "Escribir 0,21 en 300 fórmulas", "Colores sin leyenda"],
+          "ejercicios_vivos": ["arregla el error: =B2*0,21 → =B2*$F$1 con el tipo en la celda de parámetros (variantes: F1 = 10 %)", "=SI(B2>=$F$2;\"Revisar\";\"\") con el umbral como parámetro"],
+          "otros_ejercicios": ["cinta: Fórmulas > Nombres definidos > Asignar nombre", "cinta: Fórmulas > Auditoría de fórmulas > Rastrear precedentes", "respuesta_corta: atajo de Mostrar fórmulas (Ctrl+`)", "test: =B2*TipoIVA frente a =B2*0,21", "ordenar: hojas de un libro bien organizado (Léame, Parámetros, Datos, Cálculos, Informe)", "recuerda: test dónde va el tipo de IVA"],
+          "practica_excel_real": "Reorganizar un libro desordenado de facturas en hojas Parámetros, Datos e Informe, con el tipo de IVA y la fecha de corte como nombres definidos, y revisar con Mostrar fórmulas que no queda ningún 0,21 escrito."
+        },
+        {
+          "id": "n2m4l3",
+          "titulo": "Comentar, revisar y compartir",
+          "minutos": 13,
+          "conceptos": ["Nota (anotación fija) frente a Comentario (conversación que se responde y se resuelve)", "@menciones en un comentario (archivo en OneDrive o SharePoint, cuenta de trabajo)", "compartir un enlace frente a adjuntar copias", "Archivo > Información > Comprobar si hay problemas > Inspeccionar documento (sobre una copia)", "Revisar > Comprobar accesibilidad y texto alternativo en gráficos", "PDF cuando el destinatario solo tiene que leer"],
+          "funciones": [],
+          "errores_conceptuales": ["Mandar cinco versiones adjuntas por correo", "Dejar comentarios internos o datos ocultos en lo que sale de la empresa", "Usar notas para preguntas que nadie contestará"],
+          "ejercicios_vivos": [],
+          "otros_ejercicios": ["cinta: Revisar > Comentarios > Nuevo comentario", "cinta: Revisar > Accesibilidad > Comprobar accesibilidad", "test: nota o comentario para «Fuente: ERP, 31/10/2026»", "test: adjuntar frente a compartir enlace", "ordenar: pasos antes de enviar un Excel fuera (mostrar hojas, quitar filtros, inspeccionar una copia, PDF si basta)", "test: qué hace Inspeccionar documento", "recuerda: test nota frente a comentario", "recuerda: ordenar antes de enviar"],
+          "practica_excel_real": "Dejar un libro listo para enviar a un cliente: notas de fuente, comentario con pregunta a la responsable, Comprobar accesibilidad, texto alternativo en el gráfico e Inspeccionar documento sobre una copia; exportar el informe a PDF."
+        }
+      ],
+      "practica_excel": "Libro n2-tarifa-pedidos.xlsx (prueba de salida en pequeño, tipo MOS, enunciados sin nombre de función, 35 min): importar el CSV de pedidos, convertirlo en Tabla, cruzarlo con la tarifa, calcular IVA desde Parámetros, resumir por familia, resaltar pedidos grandes y dejarlo listo para compartir. Controles: n.º de líneas, Σ base, Σ IVA, total de la familia Cables."
+    }
+  ],
+  "examen_nivel": "35 min, sin pistas, enunciados tipo MOS que no dicen la función, 80 % a la primera: SI anidado con Y/O y fronteras, SUMAR.SI/CONTAR.SI con el criterio en celda y control de cuadre, BUSCARX con «no existe» y BUSCARV exacta, limpiar y unir textos, restar y construir fechas, UNICOS/ORDENAR, predecir el BUSCARV sin FALSO y el número como texto; preguntas de cinta y criterio sobre Tablas, filtros (SUMA frente a SUBTOTALES), formato condicional, importar CSV, nombres definidos, nota frente a comentario y semáforo de datos con IA."
+}

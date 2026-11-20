@@ -1,0 +1,220 @@
+{
+  "lineas": 11953,
+  "ventas_total": 7841402.19,
+  "ventas_lleida": 1445388.57,
+  "sin_clasificar": 81635.34,
+  "huerfanos": 7,
+  "margen_total": 2156385.12,
+  "comerciales_margen_bajo": 2,
+  "var_6fam_pct": 7.0,
+  "cumpl_pamplona_pct": 90.4,
+  "noviembre": {
+    "lineas": 1305,
+    "ventas": 820437.1,
+    "logrono": 96469.88,
+    "comerciales_nuevos": [
+      "V13",
+      "V14"
+    ],
+    "sin_clasificar_nov": 27124.08
+  },
+  "analisis": {
+    "deleg": {
+      "Zaragoza": {
+        "ventas": 4230327.53,
+        "ventas6": 4199290.3,
+        "v2025": 3947665.19,
+        "var": 6.4,
+        "margen_pct": 26.5
+      },
+      "Pamplona": {
+        "ventas": 2165686.09,
+        "ventas6": 2156276.8,
+        "v2025": 2063447.29,
+        "var": 4.5,
+        "margen_pct": 28.7
+      },
+      "Lleida": {
+        "ventas": 1445388.57,
+        "ventas6": 1420483.16,
+        "v2025": 1256625.43,
+        "var": 13.0,
+        "margen_pct": 28.6
+      }
+    },
+    "familia": {
+      "Cable": {
+        "ventas": 2436778.35,
+        "margen_pct": 16.1,
+        "var": 7.2
+      },
+      "Iluminación": {
+        "ventas": 1696956.47,
+        "margen_pct": 35.7,
+        "var": 10.5
+      },
+      "Mecanismos": {
+        "ventas": 1359187.3,
+        "margen_pct": 38.4,
+        "var": 5.9
+      },
+      "Protección": {
+        "ventas": 1457766.09,
+        "margen_pct": 28.6,
+        "var": 6.1
+      },
+      "Canalización": {
+        "ventas": 713859.76,
+        "margen_pct": 26.1,
+        "var": 3.6
+      },
+      "Herramienta": {
+        "ventas": 111502.29,
+        "margen_pct": 28.2,
+        "var": 0.6
+      },
+      "Portes y servicios": {
+        "ventas": 6269.5,
+        "margen_pct": 13.2,
+        "var": null
+      },
+      "Ajustes": {
+        "ventas": -22552.91,
+        "margen_pct": 100.0,
+        "var": null
+      },
+      "Sin clasificar": {
+        "ventas": 81635.34,
+        "margen_pct": 27.7,
+        "var": null
+      }
+    },
+    "comercial": {
+      "V01": {
+        "nombre": "Raúl Lasheras Gimeno",
+        "ventas": 489489.66,
+        "objetivo": 477000.0,
+        "cumpl": 102.6,
+        "margen_pct": 27.6
+      },
+      "V02": {
+        "nombre": "Pilar Sanz Orós",
+        "ventas": 834727.63,
+        "objetivo": 830500.0,
+        "cumpl": 100.5,
+        "margen_pct": 30.3
+      },
+      "V03": {
+        "nombre": "Alberto Gracia Marín",
+        "ventas": 702622.55,
+        "objetivo": 721500.0,
+        "cumpl": 97.4,
+        "margen_pct": 17.9
+      },
+      "V04": {
+        "nombre": "Nuria Bielsa Lacasa",
+        "ventas": 820505.61,
+        "objetivo": 840500.0,
+        "cumpl": 97.6,
+        "margen_pct": 28.4
+      },
+      "V05": {
+        "nombre": "Óscar Lafuente Royo",
+        "ventas": 354455.52,
+        "objetivo": 339000.0,
+        "cumpl": 104.6,
+        "margen_pct": 29.7
+      },
+      "V06": {
+        "nombre": "Elena Sancho Ferrer",
+        "ventas": 1041273.8,
+        "objetivo": 1033500.0,
+        "cumpl": 100.8,
+        "margen_pct": 27.0
+      },
+      "V07": {
+        "nombre": "Iñaki Goñi Etxeberria",
+        "ventas": 416877.93,
+        "objetivo": 434500.0,
+        "cumpl": 95.9,
+        "margen_pct": 31.6
+      },
+      "V08": {
+        "nombre": "Maite Arbizu Lusarreta",
+        "ventas": 1494226.09,
+        "objetivo": 1680000.0,
+        "cumpl": 88.9,
+        "margen_pct": 29.6
+      },
+      "V09": {
+        "nombre": "David Ezcurra Moreno",
+        "ventas": 260568.77,
+        "objetivo": 287000.0,
+        "cumpl": 90.8,
+        "margen_pct": 20.7
+      },
+      "V10": {
+        "nombre": "Jordi Solé Vilalta",
+        "ventas": 700327.05,
+        "objetivo": 647000.0,
+        "cumpl": 108.2,
+        "margen_pct": 29.0
+      },
+      "V11": {
+        "nombre": "Montse Puig Farré",
+        "ventas": 465927.18,
+        "objetivo": 462500.0,
+        "cumpl": 100.7,
+        "margen_pct": 29.0
+      },
+      "V12": {
+        "nombre": "Sergio Badia Capdevila",
+        "ventas": 282953.31,
+        "objetivo": 267500.0,
+        "cumpl": 105.8,
+        "margen_pct": 28.0
+      }
+    },
+    "cumpl_deleg": {
+      "Zaragoza": 100.0,
+      "Pamplona": 90.4,
+      "Lleida": 105.2
+    },
+    "cumpl_total": 98.0,
+    "ventas6_2026": 7776050.26,
+    "ventas6_2025": 7267737.91,
+    "margen_pct": 27.5,
+    "ajustes": -22552.91,
+    "portes": 6269.5,
+    "devoluciones": -65929.08,
+    "n_devoluciones": 264,
+    "efecto_coste_julio": 89549.21,
+    "margen_pct_ene_jun": 28.6,
+    "margen_pct_jul_oct": 25.7,
+    "margen_pct_jul_oct_estandar": 30.7,
+    "media_pct_comerciales": 27.4,
+    "top20_pct": 36.4,
+    "clientes_activos": 298,
+    "n_clientes_80": 104,
+    "agosto_vs_media": -36.2,
+    "mes_ventas": {
+      "1": 742691.21,
+      "2": 759726.39,
+      "3": 832702.61,
+      "4": 808086.9,
+      "5": 849700.22,
+      "6": 838571.12,
+      "7": 785687.38,
+      "8": 519168.39,
+      "9": 833288.53,
+      "10": 871779.44
+    },
+    "marzo": 832702.61,
+    "mayo": 849700.22,
+    "septiembre": 833288.53,
+    "agosto_sin_ceros": 501743.7,
+    "total_con_ajustes_en_comerciales": 7841402.19,
+    "lineas_delegacion_mal_escrita": 6680,
+    "margen_solo_estandar": 2245934.33
+  }
+}

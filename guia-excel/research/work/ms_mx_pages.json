@@ -1,0 +1,1314 @@
+{
+ "aggregate-function": {
+  "title": "Función AGREGAR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "Forma de referencia AGREGAR(núm_función; opciones; ref1; [ref2]; …) Forma matricial AGREGAR(núm_función, opciones, matriz, [k]) La sintaxis de la función AGREGAR tiene los siguientes argumentos: Function_num Obligatorio. Un número de 1 a 19 que especifica la función que se usará. Núm_función Función 1 PROMEDIO 2 CONTAR 3"
+  ],
+  "len": 4293
+ },
+ "and-function": {
+  "title": "Función AND",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "Y (valor_lógico1, [valor_lógico2], ...) La sintaxis de la función Y tiene los siguientes argumentos: Argumento Descripción Valor_lógico1 Requerido. La primera condición que quiere probar que puede evaluarse como VERDADERO o FALSO. Valor_lógico2, ... Opcional. Las condiciones adicionales que desea probar que pueden evaluarse como VERDADERO o FALSO, hasta un máximo de 255 condiciones. Observaciones Los argumentos deben evaluarse como valores lógicos, como VERDADERO o FALSO, o bien deben ser matrices o referencias que contengan valores lógicos. Si un argumento matricial o de referencia contiene texto o celdas vacías, dichos valores se pasarán por alto."
+  ],
+  "len": 2863
+ },
+ "arraytotext-function": {
+  "title": "Función MATRIZATEXTO",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac"
+  ],
+  "syntax_ctx": [
+   "MATRIZATEXTO(matriz, [formato]) La sintaxis de la función MATRIZATEXTO tiene los siguientes argumentos: argumento Descripción matriz La matriz a devolver como texto. Obligatorio. formato El formato de los datos devueltos. Opcional. Puede ser uno de dos valores: 0 Predeterminado. Formato conciso y fácil de leer. El texto devuelto será el mismo que el texto representado en una celda con formato general. 1 Formato estricto que incluye caracteres de escape y delimitadores de fila. Genera una cadena que puede analizarse cuando se escribe en la barra de fórmulas. Envuelve las cadenas devueltas entre comillas, salvo para valores booleanos, números y errores. Nota El formato conciso devuelve una lista de valores de una celda, mientras que el formato estricto devuelve una matriz de igual tamaño y forma que la entrada."
+  ],
+  "len": 1959
+ },
+ "bycol-function": {
+  "title": "Función BYCOL",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=BYCOL (matriz, lambda(columna)) La sintaxis de la función BYCOL tiene los siguientes argumentos y parámetros: array Una matriz que se va a separar por columna. lambda LAMBDA que toma una columna como parámetro único y calcula un resultado. LAMBDA toma un parámetro: de datos Columna de la matriz. Errores Proporcionar una función LAMBDA no válida o un número incorrecto de parámetros devuelve un error #VALUE! llamado \"Parámetros incorrectos\". Si no se proporciona una función LAMBDA ni nada más que un valor único devuelto por la función LAMBDA, se devuelve un error #CALC. Ejemplos Ejemplo 1: Devolver el valor máximo de cada columna Escriba los datos de ejemplo en las celdas A1: C2 y, a continuación, copie la fórmula en la celda D4:"
+  ],
+  "len": 1337
+ },
+ "byrow-function": {
+  "title": "Función BYROW",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=BYROW(matriz, lambda(fila)) La sintaxis de la función BYROW tiene los siguientes argumentos: array Una matriz que se va a separar por fila. lambda Una función LAMBDA que toma una fila como parámetro único y calcula un resultado. LAMBDA toma un parámetro: fila Fila de la matriz. Errores Proporcionar una función LAMBDA no válida o un número incorrecto de parámetros devuelve un error #VALUE! llamado \"Parámetros incorrectos\". Si no se proporciona una función LAMBDA ni nada más que un valor único devuelto por la función LAMBDA, se devuelve un error #CALC. Ejemplos Ejemplo 1: Muestra el valor máximo de cada fila de datos Escriba los datos de ejemplo en las celdas A1:C2 y, a continuación, copie la fórmula en la celda D4:"
+  ],
+  "len": 1342
+ },
+ "ceiling-math-function": {
+  "title": "Función CEILING.MATH",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "DE TECHO. MATH( número , [ significancia ], [ moda ]) número Obligatorio. (debe estar entre -2.229E-308. y 9.99E+307.) Importancia Opcional. Es el número de dígitos significativos después del separador decimal al que se ha de redondear el número . de la partición"
+  ],
+  "len": 2916
+ },
+ "choosecols-function": {
+  "title": "Función CHOOSECOLS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=ELEGIRCOLS(matriz,col_num1,[col_num2],...) La sintaxis de la función ELEGIRCOLS tiene los siguientes argumentos: array Matriz que contiene las columnas que se van a devolver en la nueva matriz. Obligatorio. col_num1 La primera columna que se devolverá. Obligatorio. col_num2 Columnas adicionales que se devolverán. Opcional. Errores Excel devuelve un error #VALOR si el valor absoluto de cualquiera de los argumentos col_num es cero o supera el número de columnas de la matriz. Ejemplos Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Ejemplo 1 Devuelve una matriz de las columnas 1, 3, 5 y 1 de nuevo de la matriz en el intervalo A2:E7."
+  ],
+  "len": 1759
+ },
+ "chooserows-function": {
+  "title": "Función CHOOSEROWS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=CHOOSEROWS(matriz,row_num1,[row_num2],…) La sintaxis de la función CHOOSEROWS tiene los siguientes argumentos: array Matriz que contiene las columnas que se van a devolver en la nueva matriz. Obligatorio. row_num1 El primer número de fila que se va a devolver. Obligatorio. [row_num2] Números de fila adicionales que se devolverán. Opcional. Errores Excel devuelve un error #VALUE si el valor absoluto de cualquiera de los argumentos de row_num es cero o supera el número de filas de la matriz. Ejemplos Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Ejemplo 1 Devuelve de nuevo una matriz de las filas 1, 3, 5 y 1 de la matriz del rango A2:B7."
+  ],
+  "len": 1609
+ },
+ "columns-function": {
+  "title": "Función COLUMNS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "COLUMNAS(matriz) La sintaxis de la función COLUMNAS tiene el siguiente argumento: Matrices Obligatorio. Una fórmula matricial o de matriz, o una referencia a un rango de celdas para el que desea el número de columnas. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Fórmula Descripción Resultado =COLUMNAS(C1:E4) Número de columnas de la referencia C1:E4. 3 =COLUMNAS({1;2;3\\4;5;6}) Número de columnas de la constante matricial {1,2,3;4,5,6}. Hay dos filas de 3 columnas que contienen 1,2 y 3 en la primera fila y 4,5 y 6 en la segunda fila."
+  ],
+  "len": 1144
+ },
+ "concatenate-function": {
+  "title": "Función CONCATENATE",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [],
+  "len": 4144
+ },
+ "copilot-function": {
+  "title": "Función COPILOT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [],
+  "len": 2118
+ },
+ "count-function": {
+  "title": "Función COUNT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "CONTAR(valor1; [valor2]; ...) La sintaxis de la función CONTAR tiene los siguientes argumentos: valor1 Obligatorio. Primer elemento, referencia de celda o rango en el que desea contar números. valor2, ... Opcional. Hasta 255 elementos, celdas de referencia o rangos adicionales en los que desea contar números. Nota Los argumentos pueden contener o hacer referencia a una variedad de diferentes tipos de datos, pero solo se cuentan los números. Observaciones Se cuentan argumentos que son números, fechas o una representación de texto de los números (por ejemplo, un número entre comillas, como \"1\"). Se tienen en cuenta los valores lógicos y las representaciones textuales de números escritos directamente en la lista de argumentos. No se cuentan los argumentos que sean valores de error o texto que no se puedan traducir a números. Si un argumento es una matriz o una referencia, solo se considerarán los números de esa matriz o referencia. No se cuentan celdas vacías, valores lógicos, texto o valores de error de la matriz o de la referencia. Si desea contar valores lógicos, texto o valores de error, use la función"
+  ],
+  "len": 2537
+ },
+ "counta-function": {
+  "title": "Función COUNTA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "CONTARA(valor1; [valor2]; ...) La sintaxis de la función CONTARA tiene los siguientes argumentos: valor1 Obligatorio. Primer argumento que representa los valores que desea contar. valor2, ... Opcional. Argumentos adicionales que representan los valores que se desea contar, hasta un máximo de 255 argumentos. Observaciones La función CONTARA cuenta las celdas que contienen cualquier tipo de información, incluidos los valores de error y texto vacío ( \"\" ). Por ejemplo, si el rango contiene una fórmula que devuelve una cadena vacía, la función CONTARA cuenta ese valor. La función"
+  ],
+  "len": 1727
+ },
+ "datevalue-function": {
+  "title": "Función VALFECHA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "FECHANUMERO(texto_de_fecha) La sintaxis de la función FECHANUMERO tiene los siguientes argumentos: Date_text Obligatorio. Texto que representa una fecha en el formato de fechas de Excel o una TE000127027 a una celda que contiene texto que representa una fecha en un formato de fechas de Excel. Por ejemplo, \"30/1/2008\" o \"30-Ene-2008\" son cadenas de texto entre comillas que representan fechas. Usando el sistema de fechas predeterminado de Microsoft Excel para Windows, el argumento date_text debe representar una fecha comprendida entre el 1 de enero de 1900 y el 31 de diciembre de 9999. La función FECHANUMERO devuelve el valor de error #¡VALOR! valor de error si el valor del argumento date_text se encuentra fuera de este intervalo. Si se omite la parte de año del argumento date_text , la función"
+  ],
+  "len": 3345
+ },
+ "detectlanguage-function": {
+  "title": "Función DETECTARIDIOMA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel Mobile"
+  ],
+  "syntax_ctx": [
+   "La sintaxis de la función DETECTLANGUAGE() es la siguiente: =DETECTARIDIOMA(texto) La función tiene los siguientes argumentos: texto : texto o referencia a las celdas que contienen texto para evaluar. Se pueden encontrar los idiomas admitidos y sus respectivos códigos de idioma: Idiomas admitidos y códigos de idioma Ejemplo Supongamos que tiene el siguiente texto en la celda A1: \"¡Hola mundo!\" y desea averiguar cuál es el idioma del texto. Puede usar la función DETECTLANGUAGE() de la siguiente manera: =DETECTARIDIOMA(A1) De esta forma, se devolverá el idioma detectado para el texto de la celda A1. El código de idioma \"es\" para español se mostrará en la celda donde introdujo la fórmula. Errores comunes Texto demasiado largo Tiene demasiados caracteres en una celda. Reduce el tamaño de la celda y vuelve a intentarlo."
+  ],
+  "len": 1577
+ },
+ "dollar-function": {
+  "title": "Función MONEDA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "MONEDA(número, [núm_de_decimales]) La sintaxis de la función MONEDA tiene los siguientes argumentos: Número Obligatorio. Es un número, una referencia a una celda que contiene un número o una fórmula que se evalúa como un número. Decimales Opcional. Es el número de dígitos a la derecha del separador decimal. Si es negativo, el número se redondea hacia la izquierda del separador decimal. Si omite el argumento decimales, se calculará como 2. Observaciones Por lo general, debe usar el cuadro de diálogo Formato de celdas ( Ctrl+1 ) o la opción Formato de número de identificación para >"
+  ],
+  "len": 1498
+ },
+ "drop-function": {
+  "title": "Función DROP",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=EXCLUIR(matriz, filas,[columnas]) La sintaxis de la función EXCLUIR tiene los siguientes argumentos: array La matriz desde la que se van a quitar filas o columnas. filas El número de filas que se van a quitar. Un valor negativo se quita desde el final de la matriz. de almacenamiento El número de columnas que se van a excluir. Un valor negativo se quita desde el final de la matriz. Errores Excel devuelve un #CALC!  para indicar una matriz vacía cuando las filas o columnas son 0. Excel devuelve un #NUM cuando la matriz es demasiado grande. Ejemplos Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una nueva hoja de cálculo de Excel. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Ejemplo 1"
+  ],
+  "len": 1790
+ },
+ "encodeurl-function": {
+  "title": "Función ENCODEURL",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel 2024",
+   "Excel 2021",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "URLCODIF(texto) La sintaxis de la función ENCODEURL tiene el siguiente argumento. Argumento Descripción Texto Requerido Cadena que se va a codificar como dirección URL Ejemplos A continuación se muestra un ejemplo sencillo, que hace referencia a un archivo de Excel en un servidor de Microsoft SharePoint. =ENCODEURL(\"http://contoso.sharepoint.com/Finance/Profit y pérdida Statement.xlsx\") Lo que da como resultado: http%3A%2F%2Fcontoso.sharepoint.com%2FFinance%2FProfit%20and%20Loss%20Statement.xlsx También puede usar la función ENCODEURL junto con la función SERVICIOWEB"
+  ],
+  "len": 1835
+ },
+ "exact-function": {
+  "title": "Función EXACT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "IGUAL(texto1, texto2) La sintaxis de la función IGUAL tiene los siguientes argumentos: Texto1 Obligatorio. Es la primera cadena de texto. Texto 2 Obligatorio. Es la segunda cadena de texto. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Primera cadena Segunda cadena palabra palabra Palabra palabra"
+  ],
+  "len": 1434
+ },
+ "expand-function": {
+  "title": "Función EXPAND",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=EXPANDIR(matriz, filas, [columnas], [pad_with]) La sintaxis de la función EXPANDIR tiene los siguientes argumentos: array Matriz que se va a expandir. filas Número de filas de la matriz expandida. Si falta, las filas no se expandirán. de almacenamiento Número de columnas de la matriz expandida. Si falta, las columnas no se expandirán. pad_with Valor con el que se va a rellenar. El valor predeterminado es #N/D. Observaciones Si no se proporcionan filas o están vacías, el valor predeterminado es el número de filas del argumento de matriz. Si no se proporcionan columnas o están vacías, el valor predeterminado es el número de columnas del argumento de matriz. Errores"
+  ],
+  "len": 1806
+ },
+ "filterxml-function": {
+  "title": "Función FILTERXML",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel 2024",
+   "Excel 2021",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "XMLFILTRO(xml, xpath) La sintaxis de la función XMLFILTRO tiene los siguientes argumentos: Argumento Descripción XML Requerido Una cadena en formato XML válido XPath Requerido Una cadena en formato XPath estándar Nota Si xml no es válido, FILTERXML devuelve el #VALUE. error #¡NUM!. Si xml contiene un espacio de nombres con un prefijo que no es válido, FILTERXML devuelve el #VALUE. error #¡NUM!. Ejemplos"
+  ],
+  "len": 2868
+ },
+ "fixed-function": {
+  "title": "Función FIXED",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "DECIMAL(número, [decimales], [no_separar_millares]) La sintaxis de la función DECIMAL tiene los siguientes argumentos: Número Obligatorio. Es el número que desea redondear y convertir en texto. Decimales Opcional. Es el número de dígitos a la derecha del separador decimal. No_commas Opcional. Es un valor lógico que, si es VERDADERO, impide que DECIMAL incluya separadores de millares en el texto devuelto. Observaciones Los números en Microsoft Excel nunca pueden tener más de 15 dígitos significativos, pero el argumento decimales puede tener hasta 127 dígitos. Si decimales es negativo, el argumento número se redondea hacia la izquierda del separador decimal. Si omite el argumento decimales, se calculará como 2. Si omite el argumento no_separar_millares o es FALSO, el texto devuelto incluirá el separador de millares. La principal diferencia entre dar formato a una celda que contiene un número mediante un comando (en la pestaña"
+  ],
+  "len": 2473
+ },
+ "floor-math-function": {
+  "title": "Función MULTIPLO.INFERIOR.MAT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "MULTIPLO.INFERIOR.MAT(número, cifra_significativa, modo) La sintaxis de la función MULTIPLO.INFERIOR.MAT tiene los siguientes argumentos: Número Obligatorio. Es el número que desea redondear hacia abajo. Importancia Opcional. El múltiplo al que se desea redondear. con privilegios Opcional. Es la dirección (hacia el 0 o en dirección contraria) hacia la que va a redondear los números negativos. Observaciones De forma predeterminada, los números positivos con cifras decimales se redondean hacia abajo al entero más próximo. Por ejemplo, 6,3 se redondea hacia abajo a 6, con el valor predeterminado de (1) para cifra_significativa. De forma predeterminada, los números negativos con cifras decimales se redondean hacia arriba al entero más próximo. Por ejemplo, -6,7 se redondea a -7. Si usa 0 o un número negativo para el argumento moda, puede cambiar la dirección del redondeo de los números negativos. Por ejemplo, si desea redondear -6,3 con un valor de 1 para cifra_significativa y un valor de -1 para moda, redondeará hacia 0, a -6. El argumento cifra_significativa redondea el número hacia abajo al entero más próximo que sea múltiplo del valor especificado para él. Se produce una excepción cuando el número que va a redondear es un entero. Por ejemplo, para un valor de cifra_significativa igual a 3, el número se redondea hacia abajo al entero más próximo que sea múltiplo de 3. Si al dividir número entre un valor igual o mayor que 2 para cifra_significativa queda un resto, el resultado se redondea hacia abajo."
+  ],
+  "len": 2785
+ },
+ "forecast-ets-function": {
+  "title": "Función PRONOSTICO.ETS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "PRONOSTICO.ETS(fecha_destino, valores, línea de tiempo [estacionalidad], [llenado_datos], [agregación]) La sintaxis de la función PRONOSTICO.ETS tiene los siguientes argumentos: Target_date Obligatorio. Es el punto de datos cuyo valor se desea predecir. La fecha de destino puede ser fecha, hora o numérico. Si la fecha de destino es cronológicamente antes del final de la línea de tiempo histórica, PRONOSTICO.ETS devuelve el error #NUM! al escribir la fórmula =SUMA(C2:C3 E4:E6). Valores Obligatorio. Los valores son los valores históricos para los que desea pronosticar los puntos siguientes. Línea de tiempo Obligatorio. Es la matriz o el rango de datos numéricos independientes. Las fechas de la escala de tiempo deben tener un paso coherente entre ellas y no pueden ser cero. No es necesario ordenar la línea de tiempo, ya que PRONOSTICO.ETS la ordenará de forma implícita para los cálculos. Si no se puede identificar un paso constante en la escala de tiempo proporcionada, PRONOSTICO. ¡ETS devolverá el #NUM! al escribir la fórmula =SUMA(C2:C3 E4:E6). Si la escala de tiempo contiene valores duplicados, PRONOSTICO.ETS devolverá el error #¡VALOR! al escribir la fórmula =SUMA(C2:C3 E4:E6). Si los rangos de la escala de tiempo y los valores no son del mismo tamaño, PRONOSTICO.ETS devolverá el error #N/A. Estacionalidad Opcional. Un valor numérico. El valor predeterminado de 1 significa que Excel detecta la estacionalidad de forma automática para el pronóstico y usa números enteros positivos para la longitud del patrón estacional. 0 Indica que no hay estacionalidad, lo que significa que el pronóstico será lineal. Los números enteros positivos indicarán al algoritmo que use patrones de esta longitud, como la estacionalidad. Para cualquier otro valor, PRONOSTICO.ETS devolverá el error #NUM! al escribir la fórmula =SUMA(C2:C3 E4:E6). La estacionalidad máxima admitida es 8 760 (cantidad de horas en un año). Cualquier estacionalidad por encima de ese número producirá el error #NUM!. . Finalización de datos Opcional. Aunque la línea de tiempo requiere un paso constante entre los puntos de datos, FORECAST. ETS admite hasta un 30% de datos faltantes y se ajustará automáticamente. 0 indicará el algoritmo para tener en cuenta los puntos faltantes como ceros. El valor predeterminado de 1 corregirá los puntos que faltan convirtiéndolos en el promedio de los puntos adyacentes. Agregación"
+  ],
+  "len": 4007
+ },
+ "groupby-function": {
+  "title": "Función AGRUPARPOR",
+  "applies": [
+   "Excel para Microsoft 365"
+  ],
+  "syntax_ctx": [
+   "La función AGRUPARPOR permite agrupar, agregar, ordenar y filtrar datos en función de los campos que especifique. La sintaxis de la función AGRUPARPOR es: AGRUPARPOR(campos_fila,valores,función,[encabezados_fila],[profundidad_total],[criterio_ordenación],[matriz_filtro],[relación_campo]) argumento Descripción row_fields (obligatorio) Una matriz o rango orientado a columnas que contiene los valores que se utilizan para agrupar filas y generar encabezados de fila. La matriz o rango puede contener varias columnas. Si es así, la salida tendrá varios niveles de grupo de filas. valores"
+  ],
+  "len": 3774
+ },
+ "hstack-function": {
+  "title": "Función APILARH",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=APILARH(matriz1,[matriz2],...) La sintaxis de la función APILARH tiene el siguiente argumento: array Matrices que se van a anexar. Observaciones APILARH devuelve la matriz formada anexando cada uno de los argumentos de matriz de forma basada en columnas. La matriz resultante tendrá las dimensiones siguientes: Filas El número máximo de filas de cada uno de los argumentos de matriz. Columnas El recuento combinado de todas las columnas de cada uno de los argumentos de la matriz. Errores Si una matriz tiene menos filas que el ancho máximo de las matrices seleccionadas, Excel devuelve un error #N/D en las filas adicionales. Use APILARH dentro de la función SI.ERROR para reemplazar #N/D por el valor que prefiera."
+  ],
+  "len": 2074
+ },
+ "if-function": {
+  "title": "SI (función SI)",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "Use la función SI, una de las funciones lógicas , para devolver un valor si una condición es verdadera y otro si es falsa. SI(prueba_lógica; valor_si_verdadero; [valor_si_falso]) Por ejemplo: =SI(A2>B2;\"Presupuesto excedido\";\"Correcto\") =SI(A2=B2,B4-A4,\"\") Nombre del argumento Descripción prueba_lógica (requerido) El valor que quiere probar. valor_si_verdadero (obligatorio)"
+  ],
+  "len": 3407
+ },
+ "image-function": {
+  "title": "Función IMAGEN",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel para iPhone",
+   "Excel para teléfonos Android",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=IMAGEN(origen, [texto_alternativo], [dimensiones], [alto], [ancho]) La función IMAGEN toma los siguientes argumentos: El código La ruta de acceso URL, mediante un protocolo \"https\", del archivo de imagen. Obligatorio. Entre los formatos de archivo admitidos se incluyen BMP, JPG/JPEG, GIF, TIFF, PNG, ICO y también WEBP (WEBP no se admite en Web y Android). alt_text Texto alternativo que describe la imagen para accesibilidad. Opcional. Ajuste de tamaño Especifica las dimensiones de la imagen. Opcional. Hay varios valores posibles: 0 Ajuste la imagen en la celda y mantenga su relación de aspecto. 1 Rellene la celda con la imagen e ignore su relación de aspecto. 2 Mantenga el tamaño de la imagen original, que puede exceder el límite de la celda."
+  ],
+  "len": 5944
+ },
+ "int-function": {
+  "title": "Función ENTERO.",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "Int( número ) La sintaxis de la función ENTERO tiene los siguientes argumentos: Número Obligatorio. Es el número real que desea redondear al entero inferior más próximo. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Datos 19.5 Fórmula Descripción Resultado =ENTERO(8,9) Redondea 8,9 hacia abajo. 8"
+  ],
+  "len": 1108
+ },
+ "isomitted-function": {
+  "title": "Función ISOMITTED",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=ISOMITTED(argumento) La sintaxis de la función ISOMITTED tiene los siguientes argumentos: Argumento Valor que desea probar, como un parámetro LAMBDA. Ejemplos Ejemplo 1: Comprobar si falta un parámetro y devolver una cadena descriptiva Copie la fórmula siguiente en la celda B1. =LAMBDA(x,y, IF(ISOMITTED(y),\"Falta el segundo argumento\",x+y))(1,)"
+  ],
+  "len": 558
+ },
+ "isoweeknum-function": {
+  "title": "Función ISO.NUM.DE.SEMANA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "ISO.NUM.DE.SEMANA(fecha) La sintaxis de la función ISO.NUM.DE.SEMANA tiene los siguientes argumentos: Fecha Obligatorio. Fecha es el código de fecha-hora que Excel usa para los cálculos de fecha y hora. Observaciones Microsoft Excel almacena las fechas como números secuenciales para que se puedan usar en cálculos. De forma predeterminada, la fecha 1 de enero de 1900 es el número de serie 1 y la fecha 1 de enero de 2008 es el número de serie 39448, porque es 39.448 días después del 1 de enero de 1900. Si el argumento de fecha no es un número válido, ISO.NUM.DE.SEMANA devuelve el #NUM. error #¡NUM!. Si el argumento de fecha no es un tipo de fecha válido, ISOWEEKNUM devuelve el #VALUE. error #¡NUM!. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Fecha 9/3/2012 Fórmula Descripción"
+  ],
+  "len": 1601
+ },
+ "lambda-function": {
+  "title": "Función LAMBDA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=LAMBDA([parámetro1, parámetro2, …,] cálculo) argumento Descripción parámetro Un valor que quiere pasar a la función, como una referencia de celda, cadena o número. Puede especificar hasta 253 parámetros. Este argumento es opcional. cálculo La fórmula que quiere ejecutar y devolver como el resultado de la función. Debe ser el último argumento y debe devolver un resultado. Este argumento es obligatorio. Observaciones Los nombres y los parámetros de Lambda siguen las reglas sintácticas de Excel para las nomenclaturas, con una excepción: no use un punto (.) en un nombre de parámetro. Para más información, consulte Nombres en fórmulas. Asegúrese de que sigue las prácticas recomendadas cuando cree una función LAMBDA, tal y como hace con cualquier fórmula nativa de Excel, como pasar el número y tipo de argumentos correctos, hacer coincidir los paréntesis de apertura y cierre e introducir números sin formato. Además, al usar el comando Evaluar , Excel devuelve inmediatamente el resultado de la función LAMBDA y no puede entrar en él. Para más información, consulte Detectar errores en fórmulas."
+  ],
+  "len": 7658
+ },
+ "len-function": {
+  "title": "LEN (función)",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "LARGO(texto) La sintaxis de la función LEN tiene los siguientes argumentos: Texto Obligatorio. Es el texto cuya longitud desea obtener. Los espacios se cuentan como caracteres. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Datos Caracas, DF Fórmula =LEN(B1) =LEN(B2) =LEN(B3) Descripción Longitud de la primera cadena"
+  ],
+  "len": 1397
+ },
+ "let-function": {
+  "title": "Función LET",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac"
+  ],
+  "syntax_ctx": [
+   "= LET (nombre1, name_value1, calculation_or_name2, [name_value2, calculation_or_name3...]) argumento Descripción nombre1 Obligatorio El primer nombre para asignar. Debe empezar con una letra. No puede ser el resultado de una fórmula o tener conflicto con la sintaxis de intervalo. nombre_valor1 Obligatorio El valor que se asigna a nombre1. cálculo_o_nombre2 Obligatorio Uno de los siguientes:"
+  ],
+  "len": 3730
+ },
+ "lower-function": {
+  "title": "Función LOWER",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "MINUSC(texto) La sintaxis de la función MINUSC tiene los siguientes argumentos: Texto Obligatorio. Es el texto que desea convertir en minúsculas. MINUSC no cambia los caracteres de texto que no son letras. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Datos E. E. García Apt. 2B Fórmula Descripción Resultado =MINUSC(A2) La primera cadena en minúsculas (e. e. garcía)"
+  ],
+  "len": 1053
+ },
+ "makearray-function": {
+  "title": "Función MAKEARRAY",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "=MAKEARRAY(rows, cols, lambda(row, col)) La sintaxis de la función MAKEARRAY tiene los siguientes argumentos y parámetros: filas Número de filas de la matriz. Debe ser mayor que cero. cols Número de columnas de la matriz. Debe ser mayor que cero. lambda LAMBDA a la que se llama para crear la matriz. LAMBDA toma dos parámetros: fila Índice de fila de la matriz. col Índice de columna de la matriz. Errores Proporcionar una función LAMBDA no válida o un número incorrecto de parámetros devuelve un error #VALUE! llamado \"Parámetros incorrectos\"."
+  ],
+  "len": 1262
+ },
+ "map-function": {
+  "title": "Función MAP",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=MAP (matriz1, lambda_or_array<#>) La sintaxis de la función MAP tiene los siguientes argumentos y parámetros: matriz1 Una matriz que se va a asignar. lambda_or_array<#> LAMBDA que debe ser el último argumento y que debe tener un parámetro para cada matriz pasada o otra matriz que se va a asignar. Errores Proporcionar una función LAMBDA no válida o un número incorrecto de parámetros devuelve un error #VALUE! llamado \"Parámetros incorrectos\". Ejemplos Ejemplo 1: Números cuadrados por encima de un valor determinado Escriba los datos de ejemplo en las celdas A1:C2 y, a continuación, copie la fórmula en la celda D4: =MAP(A1:C2, LAMBDA(a, IF(a>4,a*a,a))) Ejemplo 2: Buscar valores de dos columnas de una fila que ambos sean TRUE Cree una tabla denominada “TablaA” con dos columnas denominadas “Col1” y “Col2” a partir de la celda D1. Agregue una columna denominada “BothTrue” en la celda G1. Copie la fórmula en la celda G2:"
+  ],
+  "len": 1675
+ },
+ "mid-function": {
+  "title": "MID (función)",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "EXTRAE(texto, posición_inicial, núm_de_caracteres) La sintaxis de la función EXTRAE tiene los siguientes argumentos: Texto Obligatorio. Es la cadena de texto que contiene los caracteres que desea extraer. Start_num Obligatorio. Es la posición del primer carácter que desea extraer del texto. posición_inicial para el primer carácter de texto es 1, y así sucesivamente. Si posición_inicial es mayor que la longitud de texto, EXTRAE devuelve “” (texto vacío). Si posición_inicial es menor que la longitud de texto, pero posición_inicial más núm_de_caracteres excede la longitud de texto, EXTRAE devuelve los caracteres hasta el final de texto. Si start_num es menor que 1, MID devuelve el #VALUE. valor de error. Num_chars Necesario para MID. Especifica el número de caracteres que desea que EXTRAE devuelva del argumento texto. Si num_chars es negativo, MID devuelve el #VALUE. error #¡NUM!. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos."
+  ],
+  "len": 2591
+ },
+ "networkdays-intl-function": {
+  "title": "Función DIASLABINTL",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "DIAS.LAB.INTL(fecha_inicial, fecha_final, [fin_de_semana], [vacaciones]) La sintaxis de la función DIAS.LAB.INTL tiene los siguientes argumentos: Start_date y end_date Obligatorio. Son las fechas para las que desea calcular la diferencia. El valor de fecha_inicial puede ser anterior, igual o posterior al de fecha_final. Fin de semana Opcional. Indica los días de la semana que son días de fin de semana y no están incluidos en el número de todos los días laborables entre fecha_inicial y fecha_final. Fin_de_semana es una cadena o un número de fin de semana que especifica cuándo tienen lugar los fines de semana. Los valores numéricos de fin de semana indican los siguientes días de fin de semana: Número de fin de semana Días de fin de semana 1 u omitido Sábado, domingo 2 Domingo, lunes 3"
+  ],
+  "len": 4097
+ },
+ "norm-dist-function": {
+  "title": "Función DISTR.NORM",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "DISTR.NORM.N(x,media,desv_estándar,acum) La sintaxis de la función DISTR.NORM.N tiene los siguientes argumentos: X Necesario. Es el valor cuya distribución desea obtener. Media Obligatorio. Es la media aritmética de la distribución. Standard_dev Obligatorio. Es la desviación estándar de la distribución. Acumulativo Obligatorio. Es un valor lógico que determina la forma de la función. Si acumulativo es VERDADERO, NORM. DIST devuelve la función de distribución acumulativa; si es FALSO, devuelve la función de densidad de probabilidad. Observaciones Si la media o standard_dev no es numérico, NORM. ¡DIST devuelve el #VALUE! error #¡NUM!. Si standard_dev ≤ 0, NORM. ¡DIST devuelve el #NUM! error #¡NUM!. Si el argumento media = 0, desv_estándar = 1 y acumulado = VERDADERO, la función DISTR.NORM.N devuelve la distribución normal estándar DISTR.NORM.ESTAND.N."
+  ],
+  "len": 2074
+ },
+ "norm-inv-function": {
+  "title": "Función DISTR.NORM.INV",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "INV.NORM(probabilidad,media,desv_estándar) La sintaxis de la función INV.NORM tiene los siguientes argumentos: Probabilidad Obligatorio. Es una probabilidad correspondiente a la distribución normal. Media Obligatorio. Es la media aritmética de la distribución. Standard_dev Obligatorio. Es la desviación estándar de la distribución. Observaciones Si cualquier argumento no es numérico, NORM. ¡INV devuelve el #VALUE! error #¡NUM!. Si probabilidad <= 0 o si probabilidad >= 1, NORM. ¡INV devuelve el #NUM! error #¡NUM!. Si standard_dev ≤ 0, NORM. ¡INV devuelve el #NUM! error #¡NUM!. Si media = 0 y desv_estándar = 1, INV.NORM usa la función de distribución normal estándar (vea DISTR.NORM.ESTAND.INV). Dado un valor de probabilidad, INV.NORM busca dicho valor x tal que DISTR.NORM.N(x, media, desv_estándar, VERDADERO) = probabilidad. Así, la precisión de INV.NORM depende de la precisión de DISTR.NORM.N."
+  ],
+  "len": 1797
+ },
+ "norm-s-dist-function": {
+  "title": "Función DISTR.NORM.ESTAND",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "Para una distribución normal estándar, esta es la sintaxis: DISTR.NORM.ESTAND.N(z,acumulado) Esta sintaxis de función usa los siguientes argumentos: z Obligatorio. Este es el valor para el que desea la distribución. acumulativo Obligatorio. El argumento acumulativo puede ser VERDADERO o FALSO. Este valor lógico determina la forma de la función. Si lo acumulativo es VERDADERO, entonces NORMA. S.DIST devuelve la función de distribución acumulativa"
+  ],
+  "len": 1609
+ },
+ "numbervalue-function": {
+  "title": "Función VALOR.NUMERO",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "VALOR.NUMERO(Texto, [Separador_decimal], [Separador_grupos]) La sintaxis de la función VALOR.NUMERO tiene los siguientes argumentos: Texto Obligatorio. Texto que se convertirá en número. Decimal_separator Opcional. Carácter usado para separar el entero y la parte fraccionaria del resultado. Group_separator Opcional. Carácter usado para separar agrupaciones de números, como millares de centenares y millones de millares. Observaciones Si no se especifican los argumentos Separador_decimal y Separador_grupos, se usarán los separadores de la configuración regional actual. Si se usan varios caracteres en los argumentos Separador_decimal o Separador_grupos, solo se usará el primer carácter. Si se especifica una cadena vacía (\"\") como argumento Texto, el resultado será 0. Los espacios vacíos en el argumento Texto se pasan por alto, incluso en medio del argumento. Por ejemplo, \" 3 000 \" se devuelve como 3000. Si se usa un separador decimal más de una vez en el argumento Texto, VALOR.NUMERO devuelve el #VALUE! error #¡NUM!."
+  ],
+  "len": 2894
+ },
+ "pearson-function": {
+  "title": "Función PEARSONn",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "PEARSON(matriz1, matriz2) La sintaxis de la función PEARSON tiene los siguientes argumentos: Matriz1 Obligatorio. Es un conjunto de valores independientes. Matriz2 Obligatorio. Es un conjunto de valores dependientes. Observaciones Los argumentos deben ser números o nombres, constantes de matriz o referencia que contengan números. Si el argumento de matriz o referencia contiene texto, valores lógicos o celdas vacías, estos valores se ignoran; sin embargo, se incluyen las celdas con el valor cero. Si los argumentos matriz1 y matriz2 están vacíos o contienen un número diferente de puntos de datos, PEARSON devuelve el valor de error #N/A. La fórmula para el coeficiente de correlación producto o momento r de Pearson es la siguiente: Donde x e y son las medias de muestra PROMEDIO(matriz1) y PROMEDIO(matriz2). Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos."
+  ],
+  "len": 1874
+ },
+ "percentof-function": {
+  "title": "Función PERCENTOF",
+  "applies": [
+   "Excel para Microsoft 365"
+  ],
+  "syntax_ctx": [
+   "La función PERCENTOF suma los valores del subconjunto y lo divide entre todos los valores. =PERCENTOF(data_subset,data_all) Argumento Descripción data_subset Requerido Los valores que se encuentran en el subconjunto de datos data_all Requerido Los valores que componen todo el conjunto. Ejemplo En el ejemplo 1 se usa PERCENTOF para calcular el porcentaje que componen Bib-Shorts y portabicicletas de todo el conjunto."
+  ],
+  "len": 733
+ },
+ "pivotby-function": {
+  "title": "Función PIVOTARPOR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac"
+  ],
+  "syntax_ctx": [
+   "La función DIVOTARPOR permite agrupar, agregar, ordenar y filtrar datos en función de los campos de fila y columna que especifique. La sintaxis de la función DINAMPOR.DINAMa es: PIVOTARPOR(row_fields,col_fields,valores,función,[field_headers],[row_total_depth],[row_sort_order],[col_total_depth],[col_sort_order],[filter_array],[relative_to]) argumento Descripción row_fields (obligatorio) Una matriz o rango orientado a columnas que contiene los valores que se utilizan para agrupar filas y generar encabezados de fila. La matriz o rango puede contener varias columnas. Si es así, la salida tendrá varios niveles de grupo de filas. col_fields (obligatorio) Una matriz o rango orientado a columnas que contiene los valores que se utilizan para agrupar columnas y generar encabezados de columna."
+  ],
+  "len": 5272
+ },
+ "rand-function": {
+  "title": "Función RAND",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "ALEATORIO La sintaxis de la función ALEATORIO no tiene argumentos. Observaciones Para generar un número real aleatorio entre a y b, use: =ALEAT()*(b-a)+a Si desea usar ALEAT para generar un número aleatorio, pero no desea que los números cambien cada vez que calcule la celda, puede escribir =ALEAT() en la barra de fórmulas y presionar F9 para cambiar la fórmula a un número aleatorio. La fórmula calculará y le dejará solo con un valor. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego Entrar . Puede ajustar los anchos de columna para ver todos los datos, si es necesario."
+  ],
+  "len": 1844
+ },
+ "randarray-function": {
+  "title": "Función MATRIZALEAT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel para iPad",
+   "Excel para iPhone",
+   "Excel para tabletas Android",
+   "Excel para teléfonos Android"
+  ],
+  "syntax_ctx": [
+   "=MATRIZALEAT([rows];[columns];[min];[max];[whole_number]) argumento Descripción [rows] Opcional El número de filas a devolver [columns] Opcional El número de columnas a devolver [min] Opcional El número mínimo que quiere que devuelva [max] Opcional"
+  ],
+  "len": 3035
+ },
+ "reduce-function": {
+  "title": "Función REDUCE",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "=REDUCE([initial_value], array, lambda(accumulator, value, body)) La sintaxis de la función REDUCE tiene los siguientes argumentos y parámetros: [initial_value] Establece el valor inicial del acumulador. array La matriz que se va a reducir. lambda LAMBDA a la que se llama para reducir la matriz. LAMBDA toma tres parámetros: Acumulador Valor total y devuelto como resultado final. de valor El valor actual de la matriz. Cuerpo Cálculo aplicado a cada elemento de la matriz."
+  ],
+  "len": 1872
+ },
+ "regexextract-function": {
+  "title": "Función REGEXEXTRACCION",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "La función REGEXEXTRACT extrae cadenas dentro del texto proporcionado que coincide con el patrón . La sintaxis de la función REGEXEXTRACT es: REGEXEXTRAE(texto, patrón, [return_mode], [case_sensitivity]) argumento Descripción text (obligatorio) El texto o la referencia a una celda que contiene el texto del que desea extraer cadenas."
+  ],
+  "len": 3248
+ },
+ "regexreplace-function": {
+  "title": "Función REGEXREEMPLAZAR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "La función REGEXREEMPLAZAR reemplaza las cadenas dentro del texto proporcionado que coincide con el patrón con el reemplazo . La sintaxis de la función REGEXEXTRACT es: REGEXREPLACE(texto, patrón, reemplazo, [ocurrencia], [case_sensitivity]) argumento Descripción text"
+  ],
+  "len": 3333
+ },
+ "regextest-function": {
+  "title": "Función REGEXPRUEBA",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "La función REGEXPRUEBA determina si alguna parte del texto coincide con el patrón . La sintaxis de la función REGEXTEST es: REGEXTEST(texto, patrón, [case_sensitivity]) argumento Descripción text (obligatorio) El texto o la referencia a una celda que contiene el texto con el que desea hacer coincidir."
+  ],
+  "len": 2840
+ },
+ "replace-function": {
+  "title": "REEMPLAZAR (función)",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "REEMPLAZAR(texto_original, núm_inicial, núm_de_caracteres, texto_nuevo) La sintaxis de la función REEMPLAZAR tiene los siguientes argumentos: Old_text Obligatorio. Es el texto en el que desea reemplazar algunos caracteres. Start_num Obligatorio. Es la posición del carácter dentro de texto_original que desea reemplazar por texto_nuevo. Num_chars Obligatorio. Es el número de caracteres de texto_original que se desea que REEMPLAZAR reemplace por texto_nuevo. New_text Obligatorio. Es el texto que reemplazará los caracteres de texto_original. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Datos abcdefghijk"
+  ],
+  "len": 2082
+ },
+ "round-function": {
+  "title": "Función ROUND",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "REDONDEAR(número; núm_decimales) La sintaxis de la función REDONDEAR tiene los siguientes argumentos: número Obligatorio. Es el número que desea redondear. num_digits Obligatorio. Es el número de decimales al que desea redondear el argumento número. Observaciones Si num_digits es mayor que 0 (cero), el número se redondea al número de decimales especificado. Si num_digits es 0, el número se redondea al número entero más próximo. Si"
+  ],
+  "len": 2110
+ },
+ "roundup-function": {
+  "title": "Función ROUNDUP",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "REDONDEAR.MAS(número; núm_decimales) La sintaxis de la función REDONDEAR.MAS tiene los siguientes argumentos: Número Obligatorio. Cualquier número real que se desea redondear hacia arriba. Num_digits Obligatorio. El número de dígitos al que se desea redondear el número. Observaciones La función REDONDEAR.MAS es similar a la función REDONDEAR, excepto que siempre redondea al número superior más próximo, alejándolo de cero. Si el argumento núm_decimales es mayor que 0 (cero), el número se redondea al valor superior (inferior para los números negativos) más próximo que contenga el número de lugares decimales especificado. Si núm_decimales es 0, número se redondeará hacia arriba al entero más próximo. Si el argumento núm_decimales es menor que 0, el número se redondea al valor superior (inferior si es negativo) más próximo a partir de la izquierda de la coma decimal. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Fórmula"
+  ],
+  "len": 2052
+ },
+ "row-function": {
+  "title": "Función ROW",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "FILA([ref]) La sintaxis de la función FILA tiene los siguientes argumentos: Referencia Opcional. Es la celda o el rango de celdas cuyo número de fila desea conocer. Si omite ref, se supone que es la referencia de la celda en la que aparece la función FILA. Si la referencia es un rango de celdas, y si FILA se especifica como una matriz vertical, FILA devuelve los números de fila de la referencia como una matriz vertical. Ref no puede referirse a varias áreas. Ejemplos Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una nueva hoja de cálculo de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Fórmula Descripción Resultado =FILA() Fila en la que aparece la fórmula."
+  ],
+  "len": 1203
+ },
+ "scan-function": {
+  "title": "Función SCAN",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac"
+  ],
+  "syntax_ctx": [
+   "=SCAN ([initial_value], array, lambda(accumulator, value, body)) La sintaxis de la función SCAN tiene los siguientes argumentos y parámetros: [initial_value] Establece el valor inicial del acumulador. array Una matriz que se va a examinar. lambda LAMBDA a la que se llama para reducir la matriz. LAMBDA toma tres parámetros: Acumulador Valor total y devuelto como resultado final. de valor El valor actual de la matriz. Cuerpo Cálculo aplicado a cada elemento de la matriz."
+  ],
+  "len": 1382
+ },
+ "search-function": {
+  "title": "SEARCH (función)",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "HALLAR(texto_buscado;dentro_del_texto;[núm_inicial]) La función BUSCAR tiene los siguientes argumentos: find_text Obligatorio. El texto que desea buscar. within_text Obligatorio. Texto en el que desea buscar el valor del argumento find_text . start_num Opcional. Es el número de caracteres del argumento within_text en el que desea empezar a buscar. Observación Las funciones"
+  ],
+  "len": 4801
+ },
+ "sortby-function": {
+  "title": "Función ORDENARPOR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel para iPad",
+   "Excel para iPhone",
+   "Excel para tabletas Android",
+   "Excel para teléfonos Android"
+  ],
+  "syntax_ctx": [
+   "= ORDENARPOR(array; by_array1; [sort_order1; by_array2]; [sort_order2];...) argumento Descripción matriz Requerido La matriz o rango para ordenar by_array1 Requerido La matriz o rango en la que ordenar [sort_order1] Opcional El orden utilizado. 1 para ascendente, -1 para descendente El valor predeterminado es ascendente. [by_array2] Opcional"
+  ],
+  "len": 2956
+ },
+ "stdev-p-function": {
+  "title": "Función DESVESTP",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "DESVEST.P(número1,[número2],...) El STDEV. La sintaxis de la función P tiene los siguientes argumentos: Número1 Obligatorio. Es el primer argumento numérico correspondiente a una población. Número 2, ... Opcional. De 2 a 254 argumentos numéricos correspondientes a una población. También puede usar una matriz única o una referencia de matriz en lugar de argumentos separados por comas. Observaciones DESVEST.P parte de la hipótesis de que los argumentos representan la población total. Si los datos representan una muestra de la población, use DESVEST para calcular la desviación estándar. Cuando el tamaño de las muestras es importante, las funciones DESVEST.M y DESVEST.P devuelven aproximadamente el mismo valor. La desviación estándar se calcula con el método \"n\". Los argumentos pueden ser números o nombres, matrices o referencias que contienen números. Se tienen en cuenta los valores lógicos y las representaciones textuales de números escritos directamente en la lista de argumentos. Si un argumento es una matriz o una referencia, solo se considerarán los números de esa matriz o referencia. Se pasan por alto las celdas vacías, valores lógicos, texto o valores de error de la matriz o de la referencia. Los argumentos que son valores de error o texto que no se pueden traducir a números provocan errores."
+  ],
+  "len": 2514
+ },
+ "stockhistory-function": {
+  "title": "Función HISTORIALCOTIZACIONES",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac"
+  ],
+  "syntax_ctx": [
+   "=HISTORIALCOTIZACIONES (cotizaciones, fecha_inicial, [fecha_final], [intervalo], [encabezados], [propiedad0], [propiedad1], [propiedad2], [propiedad3], [propiedad4], [propiedad5]) La sintaxis de la función HISTORIALCOTIZACIONES tiene los siguientes argumentos: argumento Descripción cotización La función devuelve datos históricos de precios del instrumento financiero correspondiente a este valor. Escriba un código bursátil entre comillas dobles (por ejemplo, \"MSFT\") o una referencia a una celda que contenga el tipo de dato Cotizaciones . Se extraerán los datos del intercambio predeterminado para el instrumento. También puede hacer referencia a un intercambio específico escribiendo un código de identificación de mercado (MIC) ISO de 4 caracteres, seguido de dos puntos, seguido del código bursátil (por ejemplo, \"XNAS:MSFT\"). Más información sobre los orígenes de datos. fecha_inicial La primera fecha a partir de la cual se recuperan los datos. Tenga en cuenta que si el intervalo no es 0 (diario), el primer punto de datos puede ser anterior a la fecha_inicial proporcionada. Será la primera fecha del período solicitado. fecha_final"
+  ],
+  "len": 6508
+ },
+ "t-test-function": {
+  "title": "Función PRUEBA.T",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "PRUEBA.T.N(matriz1,matriz2,colas,tipo) La sintaxis de la función PRUEBA.T.N tiene los siguientes argumentos: Matriz1 Obligatorio. Es el primer conjunto de datos. Matriz2 Obligatorio. Es el segundo conjunto de datos. Colas Obligatorio. Especifica el número de colas de la distribución. Si el argumento colas = 1, PRUEBA.T.N usa la distribución de una cola. Si colas = 2, PRUEBA.T.N usa la distribución de dos colas. Tipo Obligatorio. Es el tipo de prueba t realizada. Parámetros Si tipo es igual a La prueba se realiza 1"
+  ],
+  "len": 2454
+ },
+ "take-function": {
+  "title": "Función TOMAR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=TOMAR(matriz, filas,[columnas]) La sintaxis de la función TOMAR tiene los siguientes argumentos: array Matriz de la que se van a eliminar filas o columnas. filas Número de filas que se van a tomar. Un valor negativo se elimina del final de la matriz. de almacenamiento El número de columnas que se eliminarán. Un valor negativo se elimina del final de la matriz. Errores Excel devuelve un error #CALC! error que indica una matriz vacía cuando las filas o columnas son 0. Excel devuelve un #¡NUM! cuando la matriz es demasiado grande. Ejemplos Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una nueva hoja de cálculo de Excel. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Ejemplo 1"
+  ],
+  "len": 1627
+ },
+ "textafter-function": {
+  "title": "Función TEXTODESPUES",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=TEXTODESPUES(texto,delimitador,[núm_de_ocurrencia], [modo_de_coincidencia], [coincidencia_al_final], [si_no_se_encuentra]) La sintaxis de la función TEXTODESPUES tiene los siguientes argumentos: texto El texto en el que está buscando. No se permiten caracteres comodín. Obligatorio. delimitador Texto que marca el punto después del cual desea extraer. Obligatorio. núm_de_ocurrencia La instancia del delimitador después de la cual quiere extraer el texto. De forma predeterminada, núm_de_ocurrencia = 1. Un número negativo empieza a buscar texto desde el final. Opcional. modo_de_coincidencia Determina si la búsqueda de texto distingue mayúsculas de minúsculas. El valor predeterminado distingue mayúsculas de minúsculas. Opcional. Escribe una de las siguientes opciones: 0 Distingue mayúsculas de minúsculas. 1 No distingue mayúsculas de minúsculas."
+  ],
+  "len": 3282
+ },
+ "textbefore-function": {
+  "title": "Función TEXTBEFORE",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=TEXTBEFORE(text,delimiter,[instance_num], [match_mode], [match_end], [if_not_found]) La sintaxis de la función TEXTBEFORE tiene los siguientes argumentos: texto El texto en el que está buscando. No se permiten caracteres comodín. Si el texto es una cadena vacía, Excel devuelve texto vacío. Obligatorio. delimitador Texto que marca el punto antes del que desea extraer. Obligatorio. instance_num La instancia del delimitador después de la cual quiere extraer el texto. De forma predeterminada, instance_num = 1. Un número negativo empieza a buscar texto desde el final. Opcional. match_mode Determina si la búsqueda de texto distingue mayúsculas de minúsculas. El valor predeterminado distingue mayúsculas de minúsculas. Opcional. Escribe una de las siguientes opciones: 0 Distingue mayúsculas de minúsculas. 1 No distingue mayúsculas de minúsculas."
+  ],
+  "len": 3151
+ },
+ "textsplit-function": {
+  "title": "Función TEXTSPLIT",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=DIVIDIRTEXTO(text,col_delimiter,[row_delimiter],[ignore_empty], [match_mode], [pad_with]) La sintaxis de la función DIVIDIRTEXTO tiene los siguientes argumentos: texto El texto que desea dividir. Obligatorio. col_delimiter El texto que marca el punto donde se va desbordar el texto entre columnas. row_delimiter El texto que marca el punto donde se va desbordar el texto hacia las filas inferiores. Opcional. ignore_empty Especifique VERDADERO para omitir los delimitadores consecutivos. Vuelve al valor predeterminado FALSO, lo que crea una celda vacía. Opcional. match_mode Especifique 1 para realizar una coincidencia que no distinga entre mayúsculas y minúsculas. Vuelve al valor predeterminado 0, que realiza una coincidencia que distingue mayúsculas de minúsculas. Opcional. pad_with El valor con el que se va a rellenar el resultado. El valor predeterminado es #N/D."
+  ],
+  "len": 3142
+ },
+ "time-function": {
+  "title": "Función HORA.DET",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "HORA(hora, minuto, segundo) La sintaxis de la función NSHORA tiene los siguientes argumentos: Hora Obligatorio. Es un número entre 0 (cero) y 32767 que representa las horas. Todo valor mayor de 23 se dividirá por 24 y el resto se considerará como el valor horario. Por ejemplo, NSHORA(27,0,0) = NSHORA(3,0,0) = 0,125 o 3:00 a.m. minuto Obligatorio. Es un número entre 0 y 32767 que representa los minutos. Todo valor mayor de 59 se convertirá a horas y minutos. Por ejemplo, NSHORA(0,750,0) = NSHORA(12,30,0) = 0,520833 o 12:30 p.m. Segundo Obligatorio. Es un número entre 0 y 32767 que representa los segundos. Todo valor mayor de 59 se convertirá en horas, minutos y segundos. Por ejemplo, NSHORA(0,0,2000) = NSHORA(0,33,22) = 0,023148 o 12:33:20 a.m. Observación Los valores de hora son parte de un valor de fecha y se representan mediante un número decimal (por ejemplo, 0,5 representa las 12:00 p.m. porque es la mitad de un día). Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Hora Minuto"
+  ],
+  "len": 2204
+ },
+ "tocol-function": {
+  "title": "Función TOCOL",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=ENCOL(matriz, [ignorar], [buscar_por_columna]) La sintaxis de la función ENCOL tiene los siguientes argumentos: array Matriz o referencia que se va a devolver como una columna. Ignorar Si quiere omitir determinados tipos de valores. De forma predeterminada, no se omite ningún valor. Especifique una de las acciones siguientes: 0 Conservar todos los valores (predeterminado) 1 Omitir espacios en blanco Ignorar errores 3 Omitir espacios en blanco y errores"
+  ],
+  "len": 2395
+ },
+ "torow-function": {
+  "title": "Función TOROW",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=TOROW(matriz, [ignorar], [scan_by_column]) La sintaxis de la función TOROW tiene los siguientes argumentos: array Matriz o referencia que se va a devolver como una fila. Ignorar Si quiere omitir determinados tipos de valores. De forma predeterminada, no se omite ningún valor. Especifique una de las acciones siguientes: 0 Conservar todos los valores (predeterminado) 1 Omitir espacios en blanco Ignorar errores 3 Omitir espacios en blanco y errores"
+  ],
+  "len": 2368
+ },
+ "translate-function": {
+  "title": "Función TRADUCIR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel Mobile"
+  ],
+  "syntax_ctx": [
+   "La sintaxis de la función TRANSLATE() es la siguiente: =TRADUCIR(texto, [idioma de origen], [idioma de destino]) La función tiene los siguientes argumentos: Texto: El texto a traducir. Este valor debe estar entre comillas o ser una referencia a una celda que contiene el texto adecuado. source_language (opcional): El código de idioma del idioma de origen (por ejemplo, \"en\" para inglés o \"es\" para español). Si no se especifica, el idioma se detectará automáticamente en función del texto proporcionado. La detección automática es compatible con la mayoría de los idiomas. Para ver la lista completa, consulte Idiomas admitidos y Códigos de idioma. Se recomienda especificar el idioma si se conoce, especialmente para textos más cortos. target_language (opcional): El código de idioma del idioma de destino (por ejemplo, \"en\" para inglés o \"es\" para español). Si no se especifica, se usará el idioma del sistema como idioma de destino. Ejemplo Supongamos que tiene el texto siguiente en la celda A1: \"¡Hola, mundo!\" y quiere traducirlo al español. Puede usar la función TRANSLATE() de la siguiente manera: =TRADUCIR(A1, \"en\", \"es\")"
+  ],
+  "len": 2457
+ },
+ "trimrange-function": {
+  "title": "Función RECORTAR.RANGO",
+  "applies": [
+   "Excel para Microsoft 365"
+  ],
+  "syntax_ctx": [
+   "La función TRIMRANGE examina desde los bordes de un rango o matriz hasta que encuentra una celda (o valor) que no está en blanco y, a continuación, excluye esas filas o columnas en blanco. =RECORTARRANGO(rango,[trim_rows],[trim_cols]) Argumento Descripción intervalo Requerido El rango (o matriz) que se va a recortar trim_rows Determina las filas que se deben recortar 0 - Ninguno 1: recorta las filas en blanco iniciales 2: recorta las filas en blanco finales 3: recorta las filas en blanco iniciales y finales (predeterminado) trim_columns"
+  ],
+  "len": 1664
+ },
+ "true-function": {
+  "title": "Función VERDAD",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "VERDADERO() La sintaxis de la función VERDADERO no tiene argumentos."
+  ],
+  "len": 929
+ },
+ "unichar-function": {
+  "title": "Función UNICAR",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "UNICAR(número) La sintaxis de la función UNICAR tiene los siguientes argumentos: Número Obligatorio. Número es el número Unicode que representa el carácter. Observaciones El carácter Unicode devuelto puede ser una cadena de caracteres, por ejemplo, en código UTF-8 o UTF-16. Si los números Unicode son suplentes y tipos de datos parciales no válidos, UNICAR devuelve el valor de error #N/A. Si los números son valores numéricos que se encuentran fuera del rango permitido, UNICAR devuelve el #VALUE. error #¡NUM!. Si el número es cero (0), UNICAR devuelve el #VALUE. error #¡NUM!. Ejemplo Copie los datos de ejemplo en la tabla siguiente y péguelos en la celda A1 de una hoja de cálculo nueva de Excel. Para que las fórmulas muestren los resultados, selecciónelas, presione F2 y luego ENTRAR. Si lo necesita, puede ajustar el ancho de las columnas para ver todos los datos. Fórmula Descripción Resultado"
+  ],
+  "len": 1573
+ },
+ "unique-function": {
+  "title": "Función UNICOS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac"
+  ],
+  "syntax_ctx": [
+   "=UNIQUE(array,[by_col],[exactly_once]) La función UNIQUE tiene los siguientes argumentos: argumento Descripción matriz Requerido Rango o matriz desde el que se van a devolver filas o columnas únicas [by_col] Opcional El argumento by_col es un valor lógico que indica cómo comparar. TRUE comparará las columnas entre sí y devolverá las columnas únicas. FALSE (u omitido) comparará  las filas entre sí y devolverá las filas únicas."
+  ],
+  "len": 3454
+ },
+ "valuetotext-function": {
+  "title": "Función VALORATEXTO",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac"
+  ],
+  "syntax_ctx": [
+   "VALUETOTEXT(valor, [formato]) La sintaxis de la función VALUETOTEXT tiene los siguientes argumentos. argumento Descripción value El valor a devolver como texto. Obligatorio. formato El formato de los datos devueltos. Opcional. Puede ser uno de dos valores: 0 Predeterminado. Formato conciso y fácil de leer. El texto devuelto será el mismo que el texto representado en una celda con formato general. 1 Formato estricto que incluye caracteres de escape y delimitadores de fila. Genera una cadena que puede analizarse cuando se escribe en la barra de fórmulas. Envuelve las cadenas devueltas entre comillas, salvo para valores booleanos, números y errores. Nota ¡Si el formato es distinto de"
+  ],
+  "len": 1838
+ },
+ "var-p-function": {
+  "title": "Función VARP",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "VAR.P(número1,[número2],...) El VAR. La sintaxis de la función P tiene los siguientes argumentos: Número1 Obligatorio. Es el primer argumento numérico correspondiente a una población. Número 2, ... Opcional. De 2 a 254 argumentos numéricos correspondientes a una población. Observaciones VAR.P parte de la hipótesis de que los argumentos representan la población total. Si los datos representan una muestra de la población, use la función VAR.S para calcular la varianza. Los argumentos pueden ser números o nombres, matrices o referencias que contienen números. Se tienen en cuenta los valores lógicos y las representaciones textuales de números escritos directamente en la lista de argumentos. Si un argumento es una matriz o una referencia, solo se considerarán los números de esa matriz o referencia. Se pasan por alto las celdas vacías, valores lógicos, texto o valores de error de la matriz o de la referencia. Los argumentos que son valores de error o texto que no se pueden traducir a números provocan errores. Si desea incluir valores lógicos y representaciones textuales de números en una referencia como parte del cálculo, use la función VARPA. La ecuación de VAR.P es la siguiente:"
+  ],
+  "len": 2298
+ },
+ "vlookup-function": {
+  "title": "Función CONSULTAV",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "BUSCARV (valor_buscado, matriz_buscar_en, indicador_columnas, [ordenado]) Por ejemplo: =BUSCARV(A2;A10:C20;2;TRUE) =BUSCARV(\"Fontana\";B2:E7;2;FALSE) =BUSCARV(A2,'Detalles del cliente'! A:F,3,FALSE) Nombre del argumento Descripción valor_buscado (requerido) El valor que desea buscar. El valor que desea buscar debe estar en la primera columna del rango de celdas que especifique en el argumento table_array . Por ejemplo, si la matriz de la tabla"
+  ],
+  "len": 8404
+ },
+ "vstack-function": {
+  "title": "Función APILARV",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=APILARV(matriz1,[matriz2],...) La sintaxis de la función APILARV tiene el siguiente argumento: array Matrices que se van a anexar. Observaciones APILARV devuelve la matriz formada anexando cada uno de los argumentos de matriz de forma ordenada. La matriz resultante tendrá las dimensiones siguientes: Filas : el recuento combinado de todas las filas de cada uno de los argumentos de matriz. Columnas : el máximo del recuento de columnas de cada uno de los argumentos de la matriz. Errores Si una matriz tiene menos columnas que el ancho máximo de las matrices seleccionadas, Excel devuelve un error #N/A en las columnas adicionales. Use APILARV dentro de la función SI.ERROR para reemplazar #N/A por el valor que prefiera."
+  ],
+  "len": 1919
+ },
+ "webservice-function": {
+  "title": "Función SERVICIOWEB",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel 2024",
+   "Excel 2021",
+   "Excel 2019",
+   "Excel 2016"
+  ],
+  "syntax_ctx": [
+   "SERVICIOWEB(url) La sintaxis de la función SERVICIOWEB tiene el siguiente argumento. Argumento Descripción Dirección URL Requerido La dirección URL del servicio web al que se va a llamar Nota Si los argumentos no pueden devolver los datos, SERVICIOWEB devuelve un #VALUE. al escribir la fórmula =SUMA(C2:C3 E4:E6). Si los argumentos dan como resultado una cadena que no es válida o que contiene más del límite de celdas permitido de 32767 caracteres, SERVICIOWEB devuelve un #VALUE! al escribir la fórmula =SUMA(C2:C3 E4:E6). Si url es una cadena que contiene más de los 2048 caracteres permitidos para una solicitud GET, WEBSERVICE devuelve un #VALUE. al escribir la fórmula =SUMA(C2:C3 E4:E6). Para los protocolos que no son compatibles, como ftp:// o"
+  ],
+  "len": 1786
+ },
+ "wrapcols-function": {
+  "title": "Función WRAPCOLS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=WRAPCOLS(vector, wrap_count, [pad_with]) La sintaxis de la función WRAPCOLS tiene los siguientes argumentos: vector El vector o la referencia a ajustar. wrap_count Número máximo de valores para cada columna. pad_with Valor con el que se va a rellenar. El valor predeterminado es #N/D. Observaciones Los elementos del vector se colocan en una matriz bidimensional por columna. Cada columna tiene wrap_count elementos. La columna se rellena con pad_with si no hay elementos suficientes para rellenarla. Si wrap_count es mayor o igual que el número de elementos del vector, el vector simplemente se devuelve en una sola columna. Errores Excel devuelve #VALOR cuando el vector no es una matriz unidimensional. Excel devuelve #NUM cuando wrap_count es menor que 1. Excel devuelve un error #N/A para cada celda de la matriz devuelta que no tiene resultados."
+  ],
+  "len": 1880
+ },
+ "wraprows-function": {
+  "title": "Función WRAPROWS",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Notas de la versión",
+   "Canal actual",
+   "Canal mensual para empresas",
+   "Canal empresarial semestral",
+   "Canal semestral para empresas (versión preliminar)",
+   "Office para Mac"
+  ],
+  "syntax_ctx": [
+   "=WRAPROWS(vector, wrap_count, [pad_with]) La sintaxis de la función WRAPROWS tiene los siguientes argumentos: vector El vector o la referencia a ajustar. wrap_count El número máximo de valores para cada fila. pad_with Valor con el que se va a rellenar. El valor predeterminado es #N/D. Comentarios Los elementos del vector se colocan en una matriz bidimensional por fila. Cada fila tiene wrap_count elementos. La fila se rellena con pad_with si no hay elementos suficientes para rellenarla. Si wrap_count es mayor o igual que el número de elementos del vector, el vector simplemente se devuelve en una sola fila. Errores Excel devuelve #VALUE cuando el vector no es una matriz unidimensional. Excel devuelve un #NUM! cuando wrap_count es menor que 1. Excel devuelve un error #N/A para cada celda de la matriz devuelta que no tiene resultados."
+  ],
+  "len": 1873
+ },
+ "xlookup-function": {
+  "title": "Función BUSCARX",
+  "applies": [
+   "Excel para Microsoft 365",
+   "Excel para Microsoft 365 para Mac",
+   "Excel 2024",
+   "Excel 2024 para Mac",
+   "Excel 2021",
+   "Excel 2021 para Mac",
+   "Excel 2019",
+   "Excel 2016",
+   "Excel para iPad",
+   "Excel para iPhone",
+   "Excel para tabletas Android",
+   "Excel para teléfonos Android"
+  ],
+  "syntax_ctx": [
+   "La función BUSCARX busca en un rango o matriz y devuelve el elemento correspondiente a la primera coincidencia que encuentra. Si no existe ninguna coincidencia, BUSCARX puede devolver la coincidencia más cercana (aproximada). =BUSCARX(valor_buscado; matriz_buscada; matriz_devuelta; [si_no_se_encuentra]; [modo_de_coincidencia]; [modo_de_búsqueda]) argumento Descripción valor buscado Necesario* El valor que se va a buscar *Si se omite, BUSCARX devuelve celdas en blanco que encuentra en lookup_array . matriz_buscada Requerido La matriz o rango para buscar matriz_devuelta"
+  ],
+  "len": 6105
+ }
+}

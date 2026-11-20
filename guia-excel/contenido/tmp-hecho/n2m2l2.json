@@ -1,0 +1,267 @@
+{
+ "id": "n2m2l2",
+ "titulo": "Tramos: SI dentro de SI y SI.CONJUNTO",
+ "minutos": 15,
+ "objetivo": "Asignar un resultado por tramos (descuentos, categorías) con SI anidado o SI.CONJUNTO, con las condiciones en el orden correcto y un caso «resto».",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Desde el lunes aplicamos la nueva escala de descuentos: desde 5.000 € un 8 %, desde 2.000 € un 5 % y desde 500 € un 2 %. Por debajo de 500 €, nada. Ponme el descuento de cada pedido de esta semana, que los quiero revisar hoy.",
+  "logro": "Ya sabes asignar descuentos, categorías o cualquier escala por tramos con una sola fórmula que se copia a toda la lista."
+ },
+ "funciones": ["SI", "SI.CONJUNTO"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Muchas reglas de empresa funcionan por **tramos**, como los escalones de una escalera: según el importe, te toca un descuento u otro; según lo que compra un cliente, es de categoría A, B o C.\n\nUn SI solo tiene **dos salidas** (sí o no). Para tres o más escalones necesitas encadenar decisiones. Antes de escribir nada, ponte el ejemplo en la cabeza: ¿qué le toca a un pedido de 3.200 €?"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e1",
+   "modo": "test",
+   "pregunta": "Escala de descuentos: **desde 5.000 €**, 8 %; **desde 2.000 €**, 5 %; **desde 500 €**, 2 %; por debajo, 0 %. ¿Qué descuento tiene un pedido de **3.200 €**?",
+   "opciones": [
+    {"texto": "5 %", "correcta": true, "porque": "Eso es: no llega a 5.000, pero sí pasa de 2.000. Es el escalón más alto que alcanza."},
+    {"texto": "2 %", "correcta": false, "porque": "Es verdad que pasa de 500, pero también pasa de 2.000, que es un escalón más alto. Se queda con el mejor que alcanza."},
+    {"texto": "8 %", "correcta": false, "porque": "Para el 8 % tendría que llegar a 5.000 €, y se queda en 3.200 €."}
+   ],
+   "explicacion": "Lo has resuelto mirando primero el escalón más alto y bajando. Así es justo como hay que escribir la fórmula."
+  },
+  {
+   "tipo": "texto",
+   "md": "La forma clásica es meter **un SI dentro de otro**. El segundo SI va en el hueco del «si no» del primero:\n\n`=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))`\n\nSe lee así: «¿llega a 5.000? Grande. Si no, ¿llega a 1.000? Mediano. Si no, Pequeño». Cada SI añade un escalón. Cuenta los paréntesis: al final se cierran todos los SI que hayas abierto (aquí, dos)."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Tamaño de pedido con SI dentro de SI",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Importe", "C1": "Tamaño",
+     "A2": "P-2630", "B2": 6200, "C2": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+     "A3": "P-2631", "B3": 1800, "C3": "=SI(B3>=5000;\"Grande\";SI(B3>=1000;\"Mediano\";\"Pequeño\"))",
+     "A4": "P-2632", "B4": 450, "C4": "=SI(B4>=5000;\"Grande\";SI(B4>=1000;\"Mediano\";\"Pequeño\"))"
+    },
+    "formatos": {"B2:B4": "eur"},
+    "anchos": {"C": 12}
+   },
+   "resaltar": ["C2:C4"],
+   "mostrar_formulas": true
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e2",
+   "modo": "predice",
+   "enunciado": "Un pedido de 1.500 €. ¿Qué escribirá Excel en **C2**?",
+   "hoja": {"celdas": {"A1": "Pedido", "B1": "Importe", "A2": "P-2633", "B2": 1500}, "formatos": {"B2": "eur"}},
+   "celda": "C2",
+   "formula": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+   "explicacion": "No llega a 5.000, así que pasa al segundo SI. Sí llega a 1.000: Mediano."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora la regla de oro: **Excel se queda con la primera condición que se cumple** y ya no mira las demás.\n\nPor eso, con `>=`, los tramos se escriben **de mayor a menor**. Si empiezas por `B2>=1000`, un pedido de 6.000 € también cumple esa condición y se queda en «Mediano»: nunca llegará a «Grande»."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "El truco de Nuria",
+   "md": "Antes de escribir la fórmula, apunta los tramos en una lista de **mayor a menor**, con el «resto» al final. Luego solo tienes que copiarlos en ese orden."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e3",
+   "modo": "predice",
+   "enunciado": "Esta fórmula tiene los tramos al revés. El pedido es de **6.000 €**. ¿Qué escribirá Excel en **C2**?",
+   "hoja": {"celdas": {"A1": "Pedido", "B1": "Importe", "A2": "P-2634", "B2": 6000}, "formatos": {"B2": "eur"}},
+   "celda": "C2",
+   "formula": "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+   "explicacion": "6.000 cumple ya la primera condición (es mayor o igual que 1.000), así que sale «Mediano» y el segundo SI ni se mira. No da error: da un resultado **equivocado**, que es peor porque no se nota."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e4",
+   "modo": "formula",
+   "enunciado": "Andrés clasifica los pedidos para preparar el transporte: **Grande** desde 5.000 €, **Mediano** desde 1.000 €, **Pequeño** el resto. La fórmula de **C2** tiene los tramos en mal orden. Arréglala (se copiará a C3:C6).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido", "B1": "Importe", "C1": "Tamaño",
+     "A2": "P-2640", "B2": 6200,
+     "A3": "P-2641", "B3": 1800,
+     "A4": "P-2642", "B4": 450,
+     "A5": "P-2643", "B5": 5000,
+     "A6": "P-2644", "B6": 999
+    },
+    "formatos": {"B2:B6": "eur"},
+    "anchos": {"C": 12}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C6"],
+   "inicial": "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+   "solucion": "=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))",
+   "alternativas": [
+    "=SI.CONJUNTO(B2>=5000;\"Grande\";B2>=1000;\"Mediano\";VERDADERO;\"Pequeño\")",
+    "=SI(B2<1000;\"Pequeño\";SI(B2<5000;\"Mediano\";\"Grande\"))"
+   ],
+   "errores_tipicos": [
+    "=SI(B2>=1000;\"Mediano\";SI(B2>=5000;\"Grande\";\"Pequeño\"))",
+    "=SI(B2>5000;\"Grande\";SI(B2>1000;\"Mediano\";\"Pequeño\"))"
+   ],
+   "variantes": [{"B4": 7300}],
+   "pistas": [
+    "¿Qué condición tiene que ir primero: la más exigente o la más fácil de cumplir?",
+    "Intercambia los tramos: primero `B2>=5000` con «Grande» y, dentro, `B2>=1000` con «Mediano».",
+    "`=SI(B2>=5000;\"Grande\";SI(B2>=1000;\"Mediano\";\"Pequeño\"))`"
+   ],
+   "explicacion": "Ahora los pedidos de 6.200 € y de 5.000 € salen como «Grande». Has arreglado el error de tramos más frecuente en las oficinas, y además sabes por qué pasaba: gana la primera condición que se cumple."
+  },
+  {
+   "tipo": "texto",
+   "md": "En Excel moderno hay una forma más limpia: **SI.CONJUNTO**. Escribes parejas de **condición; resultado**, en orden, sin meter un SI dentro de otro:\n\n`=SI.CONJUNTO(B2>=5000;\"Grande\";B2>=1000;\"Mediano\";VERDADERO;\"Pequeño\")`\n\nEl último par, `VERDADERO;\"Pequeño\"`, es el **resto**: una condición que siempre se cumple y recoge todo lo que no ha entrado antes. La regla de oro sigue valiendo: gana la primera que se cumple."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Dos cosas que debes saber",
+   "md": "- Si **olvidas el resto** y ninguna condición se cumple, SI.CONJUNTO devuelve **#N/D**.\n- **Excel 2016** no tiene SI.CONJUNTO (está desde Excel 2019 y en Microsoft 365). Si el libro lo va a abrir alguien con Excel 2016, usa SI dentro de SI, que funciona en todas las versiones."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e5",
+   "modo": "ordenar",
+   "enunciado": "Vas a escribir la escala de descuentos con SI.CONJUNTO. Ordena las parejas **condición; resultado** tal como deben ir dentro de la fórmula.",
+   "pasos": [
+    "B2>=5000; 8 %",
+    "B2>=2000; 5 %",
+    "B2>=500; 2 %",
+    "VERDADERO; 0 %"
+   ],
+   "explicacion": "De mayor a menor y el resto al final. Si el 2 % fuera primero, todos los pedidos de más de 500 € se quedarían con el 2 %."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e6",
+   "modo": "formula",
+   "enunciado": "Javier clasifica a los clientes por lo que han comprado en el año: **A** desde 50.000 €, **B** desde 15.000 €, **C** el resto. En **C2** escribe la categoría del primer cliente. Puedes usar SI.CONJUNTO o SI dentro de SI. Se copiará a C3:C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente", "B1": "Compras 2026", "C1": "Categoría",
+     "A2": "Reformas Delicias, S.L.", "B2": 72400,
+     "A3": "Electricidad Monzón", "B3": 18900,
+     "A4": "Instalaciones Arrabal, S.L.", "B4": 9600,
+     "A5": "Climatización Bardenas", "B5": 50000,
+     "A6": "Montajes Segre, S.C.P.", "B6": 15000,
+     "A7": "Hogar Eléctrico Tudela", "B7": 4300
+    },
+    "formatos": {"B2:B7": "#.##0 €"},
+    "anchos": {"A": 26, "B": 13}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C7"],
+   "solucion": "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";VERDADERO;\"C\")",
+   "alternativas": [
+    "=SI(B2>=50000;\"A\";SI(B2>=15000;\"B\";\"C\"))",
+    "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";B2<15000;\"C\")"
+   ],
+   "errores_tipicos": [
+    "=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\")",
+    "=SI.CONJUNTO(B2>=15000;\"B\";B2>=50000;\"A\";VERDADERO;\"C\")",
+    "=SI.CONJUNTO(B2>50000;\"A\";B2>15000;\"B\";VERDADERO;\"C\")"
+   ],
+   "variantes": [{"B3": 61000}, {"B7": 15500}],
+   "pistas": [
+    "Tres categorías, de la más exigente a la menos: A, luego B y al final el resto (C).",
+    "Con SI.CONJUNTO: `=SI.CONJUNTO(B2>=50000;\"A\"; … ; VERDADERO;\"C\")`. Te falta la pareja de la B en medio.",
+    "`=SI.CONJUNTO(B2>=50000;\"A\";B2>=15000;\"B\";VERDADERO;\"C\")`"
+   ],
+   "explicacion": "Clasificación hecha: dos clientes A, dos B y dos C. Fíjate en Climatización Bardenas: compra **justo** 50.000 € y es A porque usas `>=`. Esta clasificación ABC sirve para decidir a qué clientes visita más el equipo comercial."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Javier Ortega",
+   "puesto": "Director comercial",
+   "md": "¿Cómo vas con los descuentos? Ojo con los pedidos que caen **justo** en 500 o en 2.000 €, que la semana pasada hubo lío con un cliente por eso."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l2-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** En **C2** calcula el porcentaje de descuento del primer pedido: **8 %** desde 5.000 €, **5 %** desde 2.000 €, **2 %** desde 500 € y **0 %** por debajo. Escribe los porcentajes como `0,08` o como `8%`. Se copiará a C3:C8.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente", "B1": "Importe", "C1": "Descuento",
+     "A2": "Reformas Delicias, S.L.", "B2": 6150,
+     "A3": "Electricidad Monzón", "B3": 2000,
+     "A4": "Instalaciones Arrabal, S.L.", "B4": 1340,
+     "A5": "Hogar Eléctrico Tudela", "B5": 499,
+     "A6": "Montajes Segre, S.C.P.", "B6": 500,
+     "A7": "Climatización Bardenas", "B7": 3780,
+     "A8": "Electro Huesca Instal., S.L.", "B8": 5000
+    },
+    "formatos": {"B2:B8": "eur", "C2:C8": "pct"},
+    "anchos": {"A": 26}
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C8"],
+   "solucion": "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)",
+   "alternativas": [
+    "=SI.CONJUNTO(B2>=5000;8%;B2>=2000;5%;B2>=500;2%;VERDADERO;0%)",
+    "=SI(B2>=5000;0,08;SI(B2>=2000;0,05;SI(B2>=500;0,02;0)))",
+    "=SI(B2>=5000;8%;SI(B2>=2000;5%;SI(B2>=500;2%;0)))"
+   ],
+   "errores_tipicos": [
+    "=SI.CONJUNTO(B2>=500;0,02;B2>=2000;0,05;B2>=5000;0,08;VERDADERO;0)",
+    "=SI.CONJUNTO(B2>5000;0,08;B2>2000;0,05;B2>500;0,02;VERDADERO;0)",
+    "=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02)",
+    "=SI.CONJUNTO(B2>=5000;8;B2>=2000;5;B2>=500;2;VERDADERO;0)"
+   ],
+   "variantes": [{"B2": 450}, {"B5": 2500}],
+   "formato_resultado": "pct",
+   "pistas": [
+    "Cuatro escalones: tres condiciones y un resto. Empieza por el más alto, 5.000 €.",
+    "`=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05; … ;VERDADERO;0)`. Falta el escalón de 500 €.",
+    "`=SI.CONJUNTO(B2>=5000;0,08;B2>=2000;0,05;B2>=500;0,02;VERDADERO;0)`"
+   ],
+   "explicacion": "Misión cumplida, y sin el lío de la semana pasada: el pedido de 2.000 € lleva un 5 % y el de 500 €, un 2 %, porque usas `>=`. Ojo: escribir `8` en vez de `0,08` daría un 800 %. Con esta misma estructura harás comisiones, portes o cualquier escala por tramos."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Si la escala cambia a menudo",
+   "md": "Aquí has escrito los tramos dentro de la fórmula, que vale para escalas pequeñas y estables. Más adelante aprenderás a poner la escala en una tablita aparte, para cambiarla sin tocar ninguna fórmula."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m2l2-q1",
+   "modo": "predice",
+   "enunciado": "A esta fórmula le falta el «resto». El cliente ha comprado 9.600 €. ¿Qué devuelve en **C1**?",
+   "hoja": {"celdas": {"A1": "Instalaciones Arrabal, S.L.", "B1": 9600}},
+   "celda": "C1",
+   "formula": "=SI.CONJUNTO(B1>=50000;\"A\";B1>=15000;\"B\")",
+   "explicacion": "Ninguna condición se cumple y no hay resto: SI.CONJUNTO devuelve #N/D. Se arregla añadiendo `;VERDADERO;\"C\"` al final."
+  },
+  {
+   "id": "n2m2l2-q2",
+   "modo": "test",
+   "pregunta": "Tienes tramos con `>=`: desde 1.000, desde 5.000 y desde 10.000. ¿En qué orden van dentro del SI anidado?",
+   "opciones": [
+    {"texto": "10.000, 5.000, 1.000 y luego el resto", "correcta": true, "porque": "Correcto: de mayor a menor, porque gana la primera condición que se cumple."},
+    {"texto": "1.000, 5.000, 10.000 y luego el resto", "correcta": false, "porque": "Un importe de 12.000 cumple ya «desde 1.000» y se quedaría en el tramo más bajo."},
+    {"texto": "Da igual: Excel busca el tramo correcto", "correcta": false, "porque": "No: Excel lee las condiciones en orden y se para en la primera verdadera. El orden lo pones tú."}
+   ]
+  },
+  {
+   "id": "n2m2l2-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "El libro lo va a usar la delegación de Lleida, que todavía tiene Excel 2016. ¿Qué usas para los tramos en lugar de SI.CONJUNTO? (respuesta breve)",
+   "aceptadas": ["SI anidado", "SI anidados", "SI dentro de SI", "un SI dentro de otro", "SI dentro de otro SI", "SI anidada", "SI"],
+   "explicacion": "SI dentro de SI (SI anidado) funciona en todas las versiones. SI.CONJUNTO existe desde Excel 2019."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "funcion", "frente": "SI.CONJUNTO: sintaxis con «resto»", "dorso": "=SI.CONJUNTO(cond1; valor1; cond2; valor2; VERDADERO; resto)"},
+  {"tipo": "concepto", "frente": "Tramos con >=: ¿en qué orden se escriben?", "dorso": "De mayor a menor. Excel se queda con la primera condición que se cumple."},
+  {"tipo": "error", "frente": "SI.CONJUNTO devuelve #N/D. ¿Causa más probable?", "dorso": "Ninguna condición se cumple y falta el resto: añade ;VERDADERO;valor al final."},
+  {"tipo": "concepto", "frente": "¿Desde qué versión existe SI.CONJUNTO?", "dorso": "Excel 2019 y Microsoft 365. En Excel 2016, SI dentro de SI."}
+ ]
+}

@@ -1,0 +1,369 @@
+{
+  "id": "n5m4l1",
+  "titulo": "Copilot y otras IA: pedir bien y comprobar siempre",
+  "minutos": 16,
+  "objetivo": "Pedir a una IA una fórmula con el contexto adecuado, adaptarla al Excel en español y comprobarla con casos conocidos antes de entregarla.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Le he pedido a un chat la fórmula de las comisiones de noviembre: 3 % de lo vendido a partir de 5.000 €. La pego en Excel y no la acepta. ¿Me la dejas funcionando y comprobada? Las pagamos el viernes.",
+    "logro": "Ya sabes pedirle una fórmula a una IA, adaptarla a tu Excel en español y comprobarla con casos conocidos antes de entregarla."
+  },
+  "funciones": ["SI", "SUMAR.SI"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "La **IA** (inteligencia artificial) es un programa al que le escribes con tus palabras y te contesta con frases, fórmulas o tablas. En la oficina la verás de dos formas: **Copilot**, el asistente de Microsoft que vive dentro de Excel, y los **chats de IA** de una página web. Las dos ahorran tiempo. Y las dos se equivocan a veces **con total seguridad**: la respuesta suena perfecta y está mal. Hoy aprendes a pedir bien y a comprobar siempre."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Lo dice el propio Microsoft",
+      "md": "La ayuda oficial de Copilot en Excel pide **revisar y comprobar todo lo que crea antes de fiarte**, y no usarlo sin revisión para decisiones delicadas de finanzas o temas legales."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e1",
+      "modo": "test",
+      "pregunta": "Copilot te propone una fórmula que parece perfecta. ¿Qué haces antes de usarla en un informe?",
+      "opciones": [
+        {
+          "texto": "La pruebo con algunos datos cuyo resultado ya conozco",
+          "correcta": true,
+          "porque": "Eso es. Si da lo que esperas en casos que sabes calcular, puedes empezar a fiarte. Si no, has cazado el error antes que tu jefe."
+        },
+        {
+          "texto": "La uso tal cual: la ha hecho Microsoft",
+          "correcta": false,
+          "porque": "El propio Microsoft pide revisar y comprobar todo lo que crea Copilot. Que venga de una gran empresa no la hace correcta."
+        },
+        {
+          "texto": "Le pregunto a Copilot si está seguro",
+          "correcta": false,
+          "porque": "Te dirá que sí con la misma seguridad. Quien confirma una fórmula son los datos de prueba, no la propia IA."
+        }
+      ],
+      "explicacion": "La IA es un ayudante rápido, no un revisor. La comprobación es tu parte del trabajo."
+    },
+    {
+      "tipo": "texto",
+      "md": "Copilot es bueno **proponiendo fórmulas** a partir de una descripción, **explicando** una fórmula que no entiendes, **resumiendo o clasificando** textos, y creando tablas, gráficos y tablas dinámicas. Si tu licencia lo incluye, se abre con el botón **Copilot** de la pestaña **Inicio** (o con [[Alt]]+[[C]]) y aparece como un **panel** a la derecha de la hoja. Tiene tres modos: **chat** (solo te responde), **planificar** (te propone un plan antes de tocar nada) y **editar** (cambia el libro)."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "La función COPILOT ya no existe",
+      "md": "En internet aún verás explicada una función COPILOT que se escribía dentro de una celda. **Se retiró el 14/09/2026**: en un libro antiguo, al recalcular da **#¿NOMBRE?**. Hoy Copilot se usa solo desde su panel."
+    },
+    {
+      "tipo": "texto",
+      "md": "Su punto débil: **se equivoca con seguridad**. En una prueba de referencia con 912 tareas de hojas de cálculo, Microsoft midió que su modo de edición acertaba unas 6 de cada 10. Puede proponer una función que no existe (Excel responde #¿NOMBRE?), confundir «mayor que» con «mayor o igual que» o sumar la columna equivocada. Lo más peligroso son los **errores silenciosos**: sale un número, no salta ningún aviso… y el número está mal. Excel avisa de lo que no puede calcular, no de lo que está mal pensado."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e2",
+      "modo": "predice",
+      "enunciado": "La regla de Electro Cierzo: 3 % de comisión **a partir de** 5.000 € vendidos. Una IA propuso `=SI(B2>5000;B2*0,03;0)`. Irene vendió **justo 5.000 €**. ¿Qué número devolverá la fórmula en C2?",
+      "hoja": {
+        "celdas": {
+          "A1": "Comercial",
+          "B1": "Ventas nov.",
+          "C1": "Comisión",
+          "A2": "Irene Sanz",
+          "B2": 5000
+        },
+        "formatos": {
+          "B2": "eur"
+        },
+        "anchos": {
+          "A": 14
+        }
+      },
+      "celda": "C2",
+      "formula": "=SI(B2>5000;B2*0,03;0)",
+      "explicacion": "Devuelve **0**, y según la regla Irene debería cobrar 150 €. El signo `>` significa «mayor que», y 5.000 no es mayor que 5.000. «A partir de» incluye el límite: se escribe `>=`. La fórmula no da ningún error: es un **error silencioso**, y solo lo destapa probar el valor justo del límite."
+    },
+    {
+      "tipo": "texto",
+      "md": "Muchas fórmulas que te da un chat general, o que encuentras en foros y vídeos, están escritas para el **Excel en inglés**: otro nombre de función, **comas** entre argumentos y **punto** decimal. Tu Excel en español no las entiende: el nombre en inglés da **#¿NOMBRE?** y la coma no la acepta como separador. La traducción es mecánica: nombre en español, `;` entre argumentos y coma decimal (`0.03` pasa a ser `0,03`)."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "truco",
+      "titulo": "Diccionario de bolsillo",
+      "md": "- SUM → SUMA\n- IF → SI\n- SUMIF → SUMAR.SI\n- COUNTIF → CONTAR.SI\n- XLOOKUP → BUSCARX\n- VLOOKUP → BUSCARV\n\nY mejor todavía: pide la fórmula desde el principio «para Excel en español, con punto y coma»."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e3",
+      "modo": "formula",
+      "enunciado": "Nuria encontró en un foro esta fórmula para sumar las ventas de **Pamplona**, pero está escrita para el Excel en inglés. Arréglala en **E2** para tu Excel en español. Si está bien, saldrá **3.470,00 €** (lo calculó Nuria a mano: 1.260 + 1.530 + 680).",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Delegación",
+          "C1": "Importe",
+          "E1": "Total Pamplona",
+          "A2": "PV-26-1101",
+          "B2": "Zaragoza",
+          "C2": 1840,
+          "A3": "PV-26-1102",
+          "B3": "Pamplona",
+          "C3": 1260,
+          "A4": "PV-26-1103",
+          "B4": "Lleida",
+          "C4": 975,
+          "A5": "PV-26-1104",
+          "B5": "Pamplona",
+          "C5": 1530,
+          "A6": "PV-26-1105",
+          "B6": "Zaragoza",
+          "C6": 2210,
+          "A7": "PV-26-1106",
+          "B7": "Pamplona",
+          "C7": 680,
+          "A8": "PV-26-1107",
+          "B8": "Lleida",
+          "C8": 1415
+        },
+        "formatos": {
+          "C2:C8": "eur",
+          "E2": "eur"
+        },
+        "anchos": {
+          "A": 12,
+          "B": 12,
+          "E": 15
+        }
+      },
+      "objetivo": "E2",
+      "inicial": "=SUMIF(B2:B8,\"Pamplona\",C2:C8)",
+      "solucion": "=SUMAR.SI(B2:B8;\"Pamplona\";C2:C8)",
+      "alternativas": [
+        "=SUMAR.SI.CONJUNTO(C2:C8;B2:B8;\"Pamplona\")"
+      ],
+      "errores_tipicos": [
+        "=SUMIF(B2:B8;\"Pamplona\";C2:C8)",
+        "=SUMAR.SI(B2:B8;\"Zaragoza\";C2:C8)",
+        "=SUMA(C2:C8)",
+        "=C3+C5+C7"
+      ],
+      "no_usar": ["SUMIF"],
+      "variantes": [
+        {
+          "C3": 2000
+        },
+        {
+          "B4": "Pamplona"
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Hay dos cosas que cambiar: el nombre de la función y lo que separa los argumentos.",
+        "SUMIF en español es SUMAR.SI, y entre argumentos va punto y coma. Ojo: aunque la hoja de práctica entendiera SUMIF, tu Excel en español daría #¿NOMBRE?.",
+        "Queda así: `=SUMAR.SI(B2:B8;\"Pamplona\";C2:C8)`."
+      ],
+      "explicacion": "Ya habla español: SUMAR.SI con `;`. Y has hecho algo más importante: comprobar que da lo que esperabas, 3.470,00 €. Esta traducción la harás a menudo con fórmulas de foros, vídeos y chats."
+    },
+    {
+      "tipo": "texto",
+      "md": "Una fórmula ajena (de la IA, de un foro o de un compañero) no está bien solo porque dé un número. Pruébala con **casos cuyo resultado sabes calcular de cabeza**. Para la comisión del 3 % a partir de 5.000 €:\n- un caso normal: 8.000 € → 240 €;\n- el **caso frontera**, justo en el límite: 5.000 € → 150 €;\n- uno por debajo: 4.999 € → 0 €.\n\nSi los tres salen bien, puedes empezar a fiarte. Si falla uno, está mal aunque «parezca» bien."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e4",
+      "modo": "ordenar",
+      "enunciado": "Ordena el proceso para usar con seguridad una fórmula que te da una IA.",
+      "pasos": [
+        "Escribe la petición con el contexto, las columnas y «Excel en español, con punto y coma»",
+        "Copia la fórmula que te propone en una celda de prueba, fuera del informe",
+        "Pruébala con casos cuyo resultado conoces, incluido el caso frontera",
+        "Si algún caso falla, corrígela y vuelve a probar todos los casos",
+        "Cuando todos salen bien, cópiala al informe"
+      ],
+      "explicacion": "Primero se pide bien, luego se prueba aparte y solo al final entra en el informe. Así un error de la IA nunca llega a la mesa de Javier."
+    },
+    {
+      "tipo": "texto",
+      "md": "Una buena petición tiene cuatro piezas:\n1. **Contexto**: qué estás haciendo y para qué.\n2. **Dónde están los datos**: qué hay en cada columna y en qué filas.\n3. **Un ejemplo del resultado**: «si vende 8.000 €, la comisión es 240 €».\n4. **Tu Excel**: «Excel en español, argumentos separados con punto y coma».\n\nY un extra que vale oro: «explícame la fórmula paso a paso». Cuanto más concreta es la petición, menos tiene que adivinar la IA."
+    },
+    {
+      "tipo": "comparar",
+      "izq": "Petición vaga",
+      "der": "Petición que funciona",
+      "filas": [
+        ["«Hazme la fórmula de comisiones»", "«Trabajo con Excel en español (separador ;). En B2:B7 están las ventas de noviembre de cada comercial.»"],
+        ["La IA no sabe qué columnas hay", "«Quiero en C2 la comisión: 3 % de las ventas si son de 5.000 € o más; si no, 0.»"],
+        ["Ni la regla exacta", "«Ejemplos: 8.000 € → 240 €; 5.000 € → 150 €; 4.999 € → 0 €.»"],
+        ["Ni para qué Excel la quieres", "«Dame la fórmula para C2, que copiaré hacia abajo, y explícamela.»"]
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e5",
+      "modo": "abierta",
+      "pregunta": "Marta necesita en la columna E los **días de retraso** de cada factura: la fecha de hoy menos la fecha de vencimiento (columna D, filas 2 a 60), y 0 si la factura aún no ha vencido. Escribe la petición que le harías a Copilot.",
+      "modelo": "Trabajo con Excel en español (los argumentos se separan con punto y coma). En D2:D60 están las fechas de vencimiento de las facturas pendientes. Quiero en E2 los días de retraso: la fecha de hoy menos la fecha de vencimiento, y 0 si la factura todavía no ha vencido. Ejemplos: si venció hace 10 días, 10; si vence mañana, 0. Dame la fórmula para E2, que copiaré hacia abajo, y explícamela paso a paso.",
+      "criterios": [
+        "Da el contexto y dice en qué columna y filas están los datos",
+        "Describe la regla completa, incluido qué pasa si la factura aún no ha vencido",
+        "Incluye al menos un ejemplo con su resultado",
+        "Pide la fórmula para el Excel en español, con punto y coma",
+        "Pide que se la explique o dice cómo la va a comprobar"
+      ]
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Mi regla de oro: **si no entiendes una fórmula, no la entregas**. Si mañana Javier te pregunta por qué Irene cobra 0, tienes que saber explicarlo. Pídele a la IA que te la explique parte por parte, o usa **Fórmulas › Evaluar fórmula** para verla calcular paso a paso. Y las cifras, siempre de la hoja: nunca copies un número que un chat ha «calculado» en su respuesta."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e6",
+      "modo": "test",
+      "pregunta": "Javier le pregunta al chat de Copilot cuánto se vendió en noviembre y la respuesta dice: «Las ventas de noviembre suman 48.215 €». Quiere copiar esa cifra tal cual en el informe para Carmen. ¿Qué le dices?",
+      "opciones": [
+        {
+          "texto": "Que lo calculemos en la hoja con SUMA y comparemos: al informe va la cifra de la fórmula",
+          "correcta": true,
+          "porque": "Así es. La cifra sale de una fórmula que cualquiera puede revisar. Si coincide con la del chat, perfecto; si no, ya sabes cuál vale."
+        },
+        {
+          "texto": "Que la copie: Copilot lee el libro, así que no se equivoca",
+          "correcta": false,
+          "porque": "Leer el libro no es acertar: puede sumar una columna de más o dejarse filas, y en el informe no quedaría rastro de cómo se calculó."
+        },
+        {
+          "texto": "Que le pida a Copilot que lo repita para estar seguros",
+          "correcta": false,
+          "porque": "Si repite la misma cifra solo sabes que es constante, no que sea correcta. La comprobación tiene que venir de fuera de la IA."
+        }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l1-e7",
+      "modo": "formula",
+      "enunciado": "Este es el «regalo» del chat que Javier pegó en **C2**. Déjalo bien para tu Excel y para la regla: **3 % de las ventas a partir de 5.000 €** (el umbral está en F1 y el porcentaje en F2). Tu fórmula se copiará a C3:C7. Control: Irene (fila 2, justo 5.000 €) debe cobrar **150 €**, y la columna C debe sumar **960,45 €**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Comercial",
+          "B1": "Ventas nov.",
+          "C1": "Comisión",
+          "E1": "Umbral",
+          "F1": 5000,
+          "E2": "Comisión",
+          "F2": 0.03,
+          "A2": "Irene Sanz",
+          "B2": 5000,
+          "A3": "Óscar Gil",
+          "B3": 8240,
+          "A4": "Pilar Navarro",
+          "B4": 4990,
+          "A5": "Raúl Herrero",
+          "B5": 12650,
+          "A6": "Elena Lozano",
+          "B6": 3870,
+          "A7": "Daniel Vidal",
+          "B7": 6125
+        },
+        "formatos": {
+          "B2:B7": "eur",
+          "C2:C7": "eur",
+          "F1": "eur",
+          "F2": "pct"
+        },
+        "anchos": {
+          "A": 14,
+          "B": 12,
+          "C": 12
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": ["C3:C7"],
+      "inicial": "=IF(B2>$F$1,B2*$F$2,0)",
+      "solucion": "=SI(B2>=$F$1;B2*$F$2;0)",
+      "alternativas": [
+        "=SI(B2<$F$1;0;B2*$F$2)",
+        "=SI(B2>=F$1;B2*F$2;0)"
+      ],
+      "errores_tipicos": [
+        "=SI(B2>$F$1;B2*$F$2;0)",
+        "=SI(B2>=F1;B2*F2;0)",
+        "=IF(B2>=$F$1;B2*$F$2;0)",
+        "=SI(B2>=5000;B2*0,03;0)"
+      ],
+      "debe_usar": ["SI"],
+      "variantes": [
+        {
+          "F1": 6000,
+          "B3": 6000
+        },
+        {
+          "F2": 0.04
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Primero el idioma: IF en español es SI, y las comas que separan argumentos pasan a ser punto y coma.",
+        "Ahora la regla: «a partir de 5.000 €» incluye el 5.000. Prueba de cabeza la fila de Irene: con `>` cobraría 0. ¿Qué signo incluye el límite?",
+        "Queda así: `=SI(B2>=$F$1;B2*$F$2;0)`. Los $ ya venían bien: el umbral y el porcentaje no se mueven al copiar."
+      ],
+      "explicacion": "Comisiones listas: Irene cobra sus 150 € y el total cuadra con los 960,45 € de control. Has hecho las dos cosas que separan a quien usa bien la IA de quien la usa mal: **adaptar la fórmula a tu Excel** y **probar el caso frontera**. Javier puede pagar el viernes sin reclamaciones."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m4l1-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "Un chat te da una fórmula con la función IF. ¿Cómo se llama esa función en tu Excel en español?",
+      "aceptadas": ["SI", "=SI", "SI()"],
+      "explicacion": "IF es SI. Si la escribes en inglés, tu Excel en español responde #¿NOMBRE?."
+    },
+    {
+      "id": "n5m4l1-q2",
+      "modo": "test",
+      "pregunta": "Regla de Marta: 2 % de descuento en pedidos **de 1.000 € o más**. ¿Qué pedido de prueba destapa mejor si la fórmula usa `>` en lugar de `>=`?",
+      "opciones": [
+        {
+          "texto": "Uno de 1.000 € justos",
+          "correcta": true,
+          "porque": "Es el caso frontera: con `>=` lleva descuento y con `>` no. Es el único que distingue las dos fórmulas."
+        },
+        {
+          "texto": "Uno de 25.000 €",
+          "correcta": false,
+          "porque": "Con las dos fórmulas lleva descuento, así que no ves la diferencia."
+        },
+        {
+          "texto": "Uno de 80 €",
+          "correcta": false,
+          "porque": "Con las dos fórmulas se queda sin descuento: tampoco destapa el error."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué es el caso frontera al probar una fórmula?",
+      "dorso": "El valor justo en el límite de la regla (5.000 € si la regla es «a partir de 5.000 €»). Es el que más errores destapa: `>` frente a `>=`."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Las cuatro piezas de una buena petición a la IA",
+      "dorso": "Contexto, dónde están los datos (columnas y filas), un ejemplo del resultado y «Excel en español, con punto y coma»."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Pegas una fórmula de internet y sale #¿NOMBRE?. ¿Qué miras primero?",
+      "dorso": "Si está en inglés: traduce el nombre (IF → SI, SUMIF → SUMAR.SI), cambia las comas por punto y coma y el punto decimal por coma."
+    },
+    {
+      "tipo": "atajo",
+      "frente": "Abrir el panel de Copilot en Excel",
+      "dorso": "Alt+C (en Microsoft 365, si tu licencia incluye Copilot)."
+    }
+  ]
+}

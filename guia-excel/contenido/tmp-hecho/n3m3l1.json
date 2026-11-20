@@ -1,0 +1,538 @@
+{
+ "id": "n3m3l1",
+ "titulo": "Diagnóstico: los siete pecados de una exportación",
+ "minutos": 14,
+ "objetivo": "Revisar una exportación antes de usarla: reconocer sus problemas típicos, medirlos con CONTARA, CONTAR, LARGO y CONTAR.SI, y apuntar las cifras de control antes de tocar nada.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Me ha llegado del programa la lista de clientes de Navarra para mandarles la tarifa 2027 antes de Navidad. Antes de usarla, revísala: dime qué le pasa y cuántos clientes hay de verdad. Con dos líneas me vale.",
+  "logro": "Ya sabes revisar una exportación antes de usarla: encontrar sus problemas, medirlos con fórmulas y decir cuántos registros buenos hay."
+ },
+ "funciones": [
+  "CONTARA",
+  "CONTAR",
+  "LARGO",
+  "CONTAR.SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Los listados que salen del **programa de gestión** (el ERP, el programa donde la empresa registra clientes, pedidos y facturas) casi nunca vienen listos. Traen espacios invisibles, nombres escritos de tres formas, filas repetidas…\n\nSi calculas sin mirar, el resultado sale mal **y no da error**: nadie se entera hasta que el informe llega a la jefa. Por eso el trabajo empieza con un **diagnóstico**: mirar los datos y medir sus problemas antes de tocar nada."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Lo primero: guarda el original",
+   "md": "Haz una copia de la hoja (clic derecho en la pestaña › **Mover o copiar** › casilla **Crear una copia**) y trabaja siempre en la copia. Si te equivocas limpiando, vuelves a empezar desde el original."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Los siete pecados de una exportación",
+   "cabecera": [
+    "Pecado",
+    "Cómo lo ves",
+    "Qué estropea"
+   ],
+   "filas": [
+    [
+     "1. Espacios de sobra",
+     "«Tudela » con un espacio detrás que no se ve",
+     "BUSCARX y CONTAR.SI no lo encuentran"
+    ],
+    [
+     "2. Mayúsculas y variantes",
+     "ZARAGOZA, Zaragoza, Zgz",
+     "Una misma ciudad aparece como varias, sobre todo con abreviaturas"
+    ],
+    [
+     "3. Números y fechas como texto",
+     "Pegados a la izquierda, a veces con un triángulo verde",
+     "SUMA se los salta sin avisar"
+    ],
+    [
+     "4. Duplicados",
+     "El mismo NIF en dos filas",
+     "Totales inflados y cartas repetidas"
+    ],
+    [
+     "5. Filas de totales o vacías",
+     "Una fila «TOTAL» o en blanco entre los datos",
+     "Sumas el doble; al filtrar se corta la lista"
+    ],
+    [
+     "6. Celdas combinadas y títulos en varias filas",
+     "Un título arriba y los encabezados en la fila 3",
+     "No se puede ordenar ni filtrar bien"
+    ],
+    [
+     "7. Varias cosas en una celda",
+     "«Pamplona (31008)»",
+     "No puedes filtrar por ciudad ni por código postal"
+    ]
+   ],
+   "pie": "No hace falta memorizarla: con la práctica los verás de un vistazo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e1",
+   "modo": "test",
+   "pregunta": "En la columna Población de una exportación aparecen **ZARAGOZA**, **Zaragoza** y **Zgz**. ¿Qué pecado es?",
+   "opciones": [
+    {
+     "texto": "Mayúsculas y variantes",
+     "correcta": true,
+     "porque": "Correcto: es la misma ciudad escrita de tres formas. Un CONTAR.SI de «Zaragoza» nunca contará «Zgz»."
+    },
+    {
+     "texto": "Duplicados",
+     "correcta": false,
+     "porque": "Un duplicado es un mismo registro (el mismo cliente) en dos filas. Aquí pueden ser clientes distintos que tienen la ciudad escrita de forma distinta."
+    },
+    {
+     "texto": "Números guardados como texto",
+     "correcta": false,
+     "porque": "Aquí no hay números: son textos. El problema es que un mismo dato se escribe de varias maneras."
+    }
+   ],
+   "explicacion": "Las mayúsculas molestan menos de lo que parece (CONTAR.SI y BUSCARX no las distinguen), pero una abreviatura como «Zgz» es otra palabra para Excel. Primer pecado localizado."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Números guardados como texto.** Parecen números, pero Excel los trata como palabras: se ven pegados a la izquierda y a veces con un triangulito verde en la esquina. SUMA se los salta sin avisar.\n\nPara medirlo tienes dos funciones que ya conoces:\n- `CONTARA` cuenta **todas** las celdas que tienen algo.\n- `CONTAR` cuenta **solo los números de verdad**.\n\nSi en una columna de importes no dan lo mismo, la diferencia son importes guardados como texto."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Dos recuentos que no coinciden",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Importe",
+     "D1": "Recuento",
+     "E1": "Resultado",
+     "A2": "FV26-004812",
+     "B2": 1061.15,
+     "A3": "FV26-004813",
+     "B3": "'285,41",
+     "A4": "FV26-004814",
+     "B4": 826.98,
+     "A5": "FV26-004815",
+     "B5": "'1.240,00",
+     "A6": "FV26-004816",
+     "B6": 312.4,
+     "A7": "FV26-004817",
+     "B7": 95.6,
+     "D2": "CONTARA",
+     "E2": "=CONTARA(B2:B7)",
+     "D3": "CONTAR",
+     "E3": "=CONTAR(B2:B7)"
+    },
+    "formatos": {
+     "B2:B7": "num2"
+    },
+    "anchos": {
+     "A": 13,
+     "D": 11
+    }
+   },
+   "resaltar": [
+    "B3",
+    "B5"
+   ],
+   "mostrar_formulas": true,
+   "pie": "B3 y B5 parecen importes, pero son texto: CONTARA da 6 y CONTAR, 4."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e2",
+   "modo": "predice",
+   "enunciado": "En esta columna de importes, B3 y B5 están guardados como texto. Antes de que Excel lo calcule: ¿qué devuelve `=SUMA(B2:B6)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe",
+     "A2": "Electricidad Goñi",
+     "B2": 100,
+     "A3": "Montajes Ega",
+     "B3": "'250",
+     "A4": "Reformas Bardenas",
+     "B4": 300,
+     "A5": "Automatismos Azcona",
+     "B5": "'50",
+     "A6": "Climatización Iriarte",
+     "B6": 150
+    },
+    "anchos": {
+     "A": 22
+    }
+   },
+   "celda": "B7",
+   "formula": "=SUMA(B2:B6)",
+   "explicacion": "SUMA se salta los dos textos (250 y 50): da 550 en vez de 850. Sin error y sin aviso. Por eso se mira antes de sumar.",
+   "respuesta": "550"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e3",
+   "modo": "formula",
+   "enunciado": "Marta quiere saber si puede fiarse de esta columna. En **E2** escribe una fórmula que diga **cuántos importes están guardados como texto** en B2:B9 (los que tienen algo pero no son números).",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Importe",
+     "D2": "Importes como texto:",
+     "A2": "FV26-004820",
+     "B2": 1450.2,
+     "A3": "FV26-004821",
+     "B3": "'385,00",
+     "A4": "FV26-004822",
+     "B4": 92.75,
+     "A5": "FV26-004823",
+     "B5": "'2.016,40",
+     "A6": "FV26-004824",
+     "B6": 640,
+     "A7": "FV26-004825",
+     "B7": 1203.9,
+     "A8": "FV26-004826",
+     "B8": "'48,30",
+     "A9": "FV26-004827",
+     "B9": 715.6
+    },
+    "formatos": {
+     "B2:B9": "num2"
+    },
+    "anchos": {
+     "A": 13,
+     "D": 20
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=CONTARA(B2:B9)-CONTAR(B2:B9)",
+   "alternativas": [
+    "=-CONTAR(B2:B9)+CONTARA(B2:B9)"
+   ],
+   "debe_usar": [
+    "CONTARA",
+    "CONTAR"
+   ],
+   "errores_tipicos": [
+    "=CONTAR(B2:B9)",
+    "=CONTARA(B2:B9)",
+    "=CONTAR(B2:B9)-CONTARA(B2:B9)"
+   ],
+   "variantes": [
+    {
+     "B3": 385
+    },
+    {
+     "B9": "'715,60"
+    }
+   ],
+   "pistas": [
+    "Piensa en dos recuentos: uno de todo lo que hay en la columna y otro solo de los números.",
+    "CONTARA(B2:B9) cuenta todo lo que tiene algo; CONTAR(B2:B9), solo los números. ¿Qué operación te da los que no son números?",
+    "Resta el segundo al primero: =CONTARA(B2:B9)-CONTAR(B2:B9)"
+   ],
+   "explicacion": "Has medido un problema que no se ve a simple vista. Con esta resta sabrás en segundos si una columna de importes trae textos: si da 0, puedes fiarte de su suma; si no, toca convertirlos (lo harás en la lección 3)."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Espacios de sobra.** Un espacio al final de «Tudela » no se ve, pero para Excel «Tudela » y «Tudela» son textos distintos. Por eso un BUSCARX o un CONTAR.SI «no encuentran» un dato que está ahí.\n\nPara cazarlos, `LARGO` cuenta los caracteres de una celda, **espacios incluidos**: «Tudela» tiene 6; «Tudela », 7. Si LARGO da más caracteres de los que ves, hay espacios escondidos."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "LARGO delata los espacios",
+   "hoja": {
+    "celdas": {
+     "A1": "Población",
+     "B1": "Caracteres",
+     "A2": "Pamplona",
+     "B2": "=LARGO(A2)",
+     "A3": "Tudela ",
+     "B3": "=LARGO(A3)",
+     "A4": " Burlada",
+     "B4": "=LARGO(A4)"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 11
+    }
+   },
+   "resaltar": [
+    "B3",
+    "B4"
+   ],
+   "mostrar_formulas": true,
+   "pie": "«Tudela» tiene 6 letras y «Burlada», 7: LARGO cuenta uno más porque hay un espacio detrás o delante."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e4",
+   "modo": "formula",
+   "enunciado": "En **C2** escribe la fórmula que cuente los caracteres de la población de A2. Se copiará hasta C6. Las filas en las que salga más de lo que ves esconden espacios.",
+   "hoja": {
+    "celdas": {
+     "A1": "Población",
+     "B1": "Letras que ves",
+     "C1": "LARGO",
+     "A2": "Pamplona",
+     "B2": 8,
+     "A3": "Tudela ",
+     "B3": 6,
+     "A4": "Burlada",
+     "B4": 7,
+     "A5": " Estella-Lizarra",
+     "B5": 15,
+     "A6": "Tafalla",
+     "B6": 7
+    },
+    "anchos": {
+     "A": 17,
+     "B": 14
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=LARGO(A2)",
+   "errores_tipicos": [
+    "=LARGO(ESPACIOS(A2))",
+    "=LARGO(B2)"
+   ],
+   "variantes": [
+    {
+     "A2": "Pamplona  "
+    }
+   ],
+   "pistas": [
+    "La función que cuenta caracteres es LARGO.",
+    "Solo necesita un argumento: la celda con el texto, A2.",
+    "=LARGO(A2)"
+   ],
+   "explicacion": "C3 da 7 y C5 da 16: «Tudela » y « Estella-Lizarra» llevan un espacio escondido. Ya sabes quitarlo con ESPACIOS (nivel 2); lo importante es **saber que está** antes de cruzar esta lista con otra."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Lo que más guerra da son los **duplicados**: el programa a veces saca el mismo cliente dos veces y, si no lo ves, le mandas dos tarifas y cuentas sus ventas doble. Mi truco: una columna al lado con `=CONTAR.SI($B$2:$B$9;B2)`. Cuenta cuántas veces aparece el NIF de esa fila en toda la lista. Si da **2 o más**, está repetido."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e5",
+   "modo": "formula",
+   "enunciado": "Usa el truco de Nuria. En **D2** escribe la fórmula que cuente cuántas veces aparece el NIF de B2 en toda la lista **B2:B9**. Se copiará hasta D9, así que fija el rango.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "NIF",
+     "C1": "Población",
+     "D1": "Veces",
+     "A2": "Electricidad Goñi, S.L.",
+     "B2": "B31245678",
+     "C2": "Pamplona",
+     "A3": "Instalaciones Arga, S.L.",
+     "B3": "B31877421",
+     "C3": "Burlada",
+     "A4": "Montajes Ega, S.L.",
+     "B4": "B31502296",
+     "C4": "Estella-Lizarra",
+     "A5": "Reformas Bardenas, S.L.",
+     "B5": "B31660118",
+     "C5": "Tudela",
+     "A6": "Climatización Iriarte, S.A.",
+     "B6": "A31409953",
+     "C6": "Pamplona",
+     "A7": "INSTALACIONES ARGA, S.L.",
+     "B7": "B31877421",
+     "C7": "Burlada",
+     "A8": "Automatismos Azcona, S.L.",
+     "B8": "B31733085",
+     "C8": "Tafalla",
+     "A9": "Electro Urdániz, S.L.",
+     "B9": "B31390264",
+     "C9": "Pamplona"
+    },
+    "anchos": {
+     "A": 27,
+     "B": 11,
+     "C": 15
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D9"
+   ],
+   "solucion": "=CONTAR.SI($B$2:$B$9;B2)",
+   "alternativas": [
+    "=CONTAR.SI(B$2:B$9;B2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(B2:B9;B2)",
+    "=CONTAR.SI($B$2:$B$9;$B$2)"
+   ],
+   "variantes": [
+    {
+     "B9": "B31245678"
+    }
+   ],
+   "pistas": [
+    "CONTAR.SI(rango; criterio): el rango es la lista de NIF y el criterio, el NIF de esta fila.",
+    "Al copiar hacia abajo, el rango no debe moverse: ponle $ (pulsa F4 con el cursor sobre él).",
+    "=CONTAR.SI($B$2:$B$9;B2)"
+   ],
+   "explicacion": "Las filas 3 y 7 dan 2: Instalaciones Arga está dos veces (una de ellas en mayúsculas). Esta columna auxiliar te señala qué filas revisar antes de quitar nada; en la lección siguiente las quitarás de golpe."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Pecados de estructura.** Una lista sana tiene **una sola fila de encabezados**, **un registro por fila** y **un dato por celda**. Las exportaciones la rompen con títulos combinados arriba, filas en blanco, filas de «TOTAL» en medio y celdas con dos datos, como «Pamplona (31008)».\n\nEn el diagnóstico no los arreglas todavía: los **anotas**, para saber qué tendrás que hacer después."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así llega",
+   "der": "Así la quieres",
+   "filas": [
+    [
+     "Título combinado en la fila 1 y encabezados en la fila 3",
+     "Encabezados en la fila 1"
+    ],
+    [
+     "Una fila «TOTAL» debajo de los datos",
+     "Solo datos; el total lo calculas tú, aparte"
+    ],
+    [
+     "«Pamplona (31008)» en una celda",
+     "Población y código postal en dos columnas"
+    ],
+    [
+     "Filas en blanco entre bloques",
+     "Lista seguida, sin huecos"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e6",
+   "modo": "test",
+   "pregunta": "La exportación de ventas trae al final una fila **TOTAL** con 18.240 €, justo debajo de los datos, y tú sumas la columna entera de importes. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "Sale 36.480 €: has sumado los datos y además su total",
+     "correcta": true,
+     "porque": "Correcto: la fila TOTAL ya es la suma de las demás, así que la cuentas dos veces. Quita esa fila o haz que tu rango acabe justo encima."
+    },
+    {
+     "texto": "SUMA se salta la fila TOTAL porque lleva texto",
+     "correcta": false,
+     "porque": "La palabra «TOTAL» está en otra columna; en la de importes hay un número, 18.240, y SUMA lo suma como cualquier otro."
+    },
+    {
+     "texto": "Excel avisa de una referencia circular",
+     "correcta": false,
+     "porque": "Habría referencia circular si tu fórmula se incluyera a sí misma. El total del programa es un número fijo: Excel suma sin avisar, y por eso es tan peligroso."
+    }
+   ],
+   "explicacion": "Las filas de totales dentro de los datos son el error que más dobla cifras en una oficina. En el diagnóstico, mira siempre el final de la lista."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Las cifras de control.** Antes de limpiar, apunta en un rincón dos cifras: el **número de filas** (`=CONTARA` de una columna que siempre está llena, como el NIF) y, si hay importes, su **total**. Compáralas con lo que dice el programa (por ejemplo, «312 clientes»).\n\nDespués de limpiar las vuelves a calcular. Si cambian, tiene que ser por algo que sabes explicar: «he quitado 4 duplicados y 1 fila TOTAL»."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Entrega con números",
+   "md": "Cuando entregues, di las cifras: «Venían 312 filas; quedan 307 clientes porque había 5 repetidos». Quien lo recibe se fía más y puede comprobarlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l1-e7",
+   "modo": "abierta",
+   "pregunta": "**El encargo de Javier.** Esta es la lista de Navarra que te ha pasado:\n\n| NIF | Cliente | Población | Ventas 2026 |\n|---|---|---|---|\n| B31245678 | Electricidad Goñi, S.L. | Pamplona | 12.480,50 |\n| B31877421 | INSTALACIONES ARGA, S.L. | Burlada | 8.115,00 |\n| B31502296 | Montajes Ega, S.L. | Estella-Lizarra (31200) | 3.920,75 |\n| B31245678 | Electricidad Goñi, S.L. | Pamplona | 12.480,50 |\n| B31660118 | Reformas Bardenas, S.L. | Tudela | 5.230,00 |\n| A31409953 | Climatización Iriarte, S.A. | Pamplona | 9.870,40 |\n| B31733085 | Automatismos Azcona, S.L. | Tafalla | 2.645,90 |\n|  | TOTAL |  | 54.743,05 |\n\nTus medidas: en Ventas 2026, CONTARA da 8 y CONTAR da 6; CONTAR.SI da 2 para el NIF B31245678. Escríbele a Javier, en dos o tres líneas, qué problemas tiene la lista y cuántos clientes hay de verdad.",
+   "modelo": "Javier: la lista trae 8 filas, pero una es la fila TOTAL y Electricidad Goñi está repetida, así que hay **6 clientes**. Además, un nombre está en mayúsculas, la población de Montajes Ega lleva el código postal dentro y 2 importes están guardados como texto (no sumarían). He guardado el original y la limpio en una copia antes de mandar la tarifa.",
+   "criterios": [
+    "Da el número correcto de clientes: 6",
+    "Explica de dónde sale: la fila TOTAL y el cliente repetido",
+    "Menciona al menos otro problema: mayúsculas, el código postal dentro de la población o los importes como texto",
+    "Es breve y dice el siguiente paso (limpiar en una copia)"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m3l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: ¿qué función cuenta **todas** las celdas que tienen algo, sean números o textos?",
+   "aceptadas": [
+    "CONTARA",
+    "=CONTARA",
+    "CONTARA()",
+    "contara"
+   ],
+   "explicacion": "CONTARA cuenta todo lo que no está vacío; CONTAR, solo los números. Si no coinciden en una columna de importes, hay números guardados como texto."
+  },
+  {
+   "id": "n3m3l1-q2",
+   "modo": "predice",
+   "enunciado": "En A1 pone «  Huesca» (con dos espacios delante). ¿Qué devuelve la fórmula de B1?",
+   "hoja": {
+    "celdas": {
+     "A1": "  Huesca"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "celda": "B1",
+   "formula": "=LARGO(A1)",
+   "explicacion": "Las 6 letras de «Huesca» más los 2 espacios de delante: 8. Si LARGO da más de lo que ves, hay espacios escondidos.",
+   "respuesta": "8"
+  },
+  {
+   "id": "n3m3l1-q3",
+   "modo": "test",
+   "pregunta": "Te llega una exportación y Marta necesita el total en diez minutos. ¿Qué haces primero?",
+   "opciones": [
+    {
+     "texto": "Copio la hoja, miro los datos y apunto el número de filas y el total",
+     "correcta": true,
+     "porque": "Correcto: son dos minutos y te evitan entregar una cifra doblada o incompleta."
+    },
+    {
+     "texto": "Sumo la columna de importes, que es lo que me piden",
+     "correcta": false,
+     "porque": "Si hay textos, duplicados o una fila TOTAL, la suma saldrá mal y no lo sabrás: no da error."
+    },
+    {
+     "texto": "Limpio directamente en la hoja original para ir más rápido",
+     "correcta": false,
+     "porque": "Si te equivocas no podrás volver atrás ni comparar con la fuente. Trabaja siempre en una copia."
+    }
+   ],
+   "explicacion": "Primero mirar y medir; después limpiar; al final, comprobar con las cifras de control."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo detectas importes guardados como texto en una columna?",
+   "dorso": "Compara =CONTARA(rango) con =CONTAR(rango): la diferencia son los textos."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "LARGO(texto)",
+   "dorso": "Cuenta los caracteres, espacios incluidos. Sirve para cazar espacios escondidos."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Marcar NIF repetidos con una columna auxiliar",
+   "dorso": "=CONTAR.SI($B$2:$B$100;B2): si da 2 o más, la fila está repetida."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Las dos cifras de control antes de limpiar",
+   "dorso": "El número de filas (CONTARA) y el total de importes, para compararlas con la fuente y después de limpiar."
+  }
+ ]
+}

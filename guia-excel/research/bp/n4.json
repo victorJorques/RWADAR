@@ -1,0 +1,438 @@
+{
+ "id": "n4",
+ "nombre": "Experta",
+ "lema": "El informe que se actualiza con un clic, las plantillas que otros no rompen y las preguntas «¿y si…?».",
+ "horas": 16,
+ "equivale_a": "MO-211 Excel Expert casi completo (salvo gráficos avanzados y macros, que van en el nivel 5); Power Query; ICAEW General → Creator; ofertas de analista con «Power Query valorable»; FUNDAE ADGG021PO y parte de IFCT153",
+ "puede_hacer_sola": [
+  "Importa con Power Query CSV, libros y carpetas enteras, con tipos y configuración regional correctos, y lo actualiza el mes siguiente con un clic.",
+  "Transforma con Power Query: dividir, rellenar, anular dinamización, combinar y anexar consultas.",
+  "Hace plantillas que otros rellenan sin romperlas: listas desplegables, validaciones, celdas desbloqueadas y hoja protegida.",
+  "Escribe fórmulas largas de forma legible con LET y formatos personalizados.",
+  "Resume y junta datos con Subtotal, esquemas y Consolidar, y sabe por qué evitar los vínculos entre libros.",
+  "Calcula cuotas de préstamos y monta un cuadro de amortización.",
+  "Responde «¿qué pasaría si…?» con Buscar objetivo, Administrador de escenarios y tablas de datos."
+ ],
+ "modulos": [
+  {
+   "id": "n4m1",
+   "titulo": "Power Query: el informe que se rehace solo",
+   "objetivos": [
+    "es capaz de importar con Power Query y fijar tipos con configuración regional",
+    "es capaz de combinar todos los archivos de una carpeta",
+    "es capaz de transformar tablas (dividir, rellenar, anular dinamización)",
+    "es capaz de combinar y anexar consultas"
+   ],
+   "lecciones": [
+    {
+     "id": "n4m1l1",
+     "titulo": "Importar con Power Query y actualizar",
+     "minutos": 15,
+     "conceptos": [
+      "Power Query (Datos > Obtener y transformar datos) graba los pasos de limpieza y los repite",
+      "De texto/CSV y De una tabla o rango",
+      "Editor de Power Query (Alt+F12): vista previa, Pasos aplicados",
+      "quitar filas superiores, usar la primera fila como encabezado, quitar columnas",
+      "Cambiar tipo > Usar configuración regional (Inglés (Estados Unidos) para «1234.56» y fechas mm/dd)",
+      "Cerrar y cargar en una Tabla",
+      "Actualizar todo (Ctrl+Alt+F5) el mes siguiente",
+      "Power Query en Windows, web y Mac (con limitaciones de conectores en Mac)"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E29 Tipos con configuración regional errónea: 1234.56 se convierte en 123456",
+      "Limpiar a mano después de cargar (se pierde al actualizar)",
+      "Cambiar el tipo antes de quitar las filas de cabecera basura"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Datos > Obtener y transformar datos > De texto/CSV",
+      "cinta: Datos > Consultas y conexiones > Actualizar todo",
+      "test: el importe 1.234,56 sale 123456: ¿qué paso falta?",
+      "test: para qué sirven los Pasos aplicados",
+      "ordenar: importar, quitar filas superiores, encabezados, tipos con configuración regional, cerrar y cargar",
+      "respuesta_corta: atajo de Actualizar todo (Ctrl+Alt+F5)",
+      "test: Power Query frente a limpiar con fórmulas cada mes",
+      "recuerda: ordenar el flujo de importación"
+     ],
+     "practica_excel_real": "Importar extracto-banco.csv (UTF-8, cabecera basura de 6 líneas, importes con punto decimal y fechas dd-mm-aaaa) con Power Query, fijar tipos con configuración regional, cargarlo en una Tabla y comprobar el total con el saldo del extracto."
+    },
+    {
+     "id": "n4m1l2",
+     "titulo": "Unir los archivos de una carpeta",
+     "minutos": 14,
+     "conceptos": [
+      "una carpeta solo para los archivos del mismo tipo",
+      "Obtener datos > Desde archivo > Desde carpeta > Combinar y transformar datos",
+      "el archivo de ejemplo define los pasos para todos",
+      "columna con el nombre del archivo para saber de qué mes viene cada fila",
+      "llega el mes siguiente: dejar el archivo nuevo en la carpeta y Actualizar todo",
+      "rutas: si se mueve la carpeta hay que cambiar el origen",
+      "alternativa peligrosa: vínculos y copiar y pegar a mano"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "E29 Ruta fija a la carpeta del Escritorio de otra persona",
+      "Dejar en la carpeta un archivo distinto (un resumen) que se mezcla con los datos",
+      "Copiar y pegar cada mes a mano (caso JPMorgan)"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Datos > Obtener y transformar datos > Obtener datos",
+      "ordenar: unir los CSV de cada mes con Power Query (carpeta, combinar, tipos, cerrar y cargar, mes siguiente: Actualizar todo)",
+      "test: el total sube el doble tras actualizar: ¿qué hay en la carpeta?",
+      "test: cambias la carpeta de sitio y falla: ¿qué haces?",
+      "test: cómo saber de qué archivo viene cada fila",
+      "recuerda: ordenar pasos de carpeta",
+      "recuerda: test archivo intruso"
+     ],
+     "practica_excel_real": "Combinar con Power Query los diez CSV mensuales de ventas de la carpeta ventas-2026, añadir la columna de origen, cargar y hacer una tabla dinámica; añadir noviembre a la carpeta y Actualizar todo. Control: n.º de filas y Σ ventas antes y después."
+    },
+    {
+     "id": "n4m1l3",
+     "titulo": "Transformar: dividir, rellenar y anular dinamización",
+     "minutos": 14,
+     "conceptos": [
+      "Dividir columna por delimitador",
+      "Reemplazar valores, Recortar y Limpiar, cambiar mayúsculas",
+      "Rellenar hacia abajo (celdas vacías bajo un encabezado de grupo)",
+      "Anular dinamización de otras columnas: de meses en columnas a filas (formato largo)",
+      "Agrupar por en Power Query",
+      "Columna condicional",
+      "por qué el formato largo sirve para tablas dinámicas y fórmulas"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Trabajar con los meses en columnas y no poder resumir",
+      "Anular dinamización de las columnas equivocadas",
+      "Rellenar hacia abajo sobre una columna que tenía vacíos de verdad"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "test: presupuesto con 12 columnas de meses: ¿qué transformación necesitas?",
+      "ordenar: pasar un presupuesto por meses a formato largo",
+      "test: Rellenar hacia abajo para qué caso",
+      "test: qué es una tabla en formato largo",
+      "test: Agrupar por en Power Query frente a tabla dinámica",
+      "test: elige la herramienta (Power Query, fórmula o tabla dinámica) para tres encargos",
+      "recuerda: test anular dinamización",
+      "recuerda: test formato largo"
+     ],
+     "practica_excel_real": "Transformar con Power Query un presupuesto por departamentos con meses en columnas y filas de grupo: rellenar hacia abajo el departamento, anular dinamización de los meses, tipos y carga. Control: Σ presupuesto igual al original."
+    },
+    {
+     "id": "n4m1l4",
+     "titulo": "Combinar y anexar consultas",
+     "minutos": 14,
+     "conceptos": [
+      "Anexar consultas: poner tablas una debajo de otra (delegaciones con las mismas columnas)",
+      "Combinar consultas: traer columnas de otra tabla por una clave (como un BUSCARX entre tablas)",
+      "tipos de combinación: externa izquierda (todas las de la primera), interna, anti izquierda (las que no tienen pareja)",
+      "expandir la columna combinada",
+      "las claves deben tener el mismo tipo y sin espacios",
+      "contar filas antes y después para detectar duplicados de clave",
+      "Solo crear conexión para consultas intermedias"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Clave con duplicados en la tabla de búsqueda que multiplica filas",
+      "Combinar texto «00123» con número 123",
+      "Anexar tablas con nombres de columna distintos (salen columnas vacías)"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "test: anexar frente a combinar",
+      "test: qué combinación da las facturas sin cobro (anti izquierda)",
+      "test: tras combinar hay más filas que antes: ¿por qué?",
+      "ordenar: combinar pedidos con el maestro de clientes y expandir zona y tipo",
+      "test: Combinar consultas frente a BUSCARX en la hoja",
+      "test: anexar tres delegaciones con «Importe» e «importe»",
+      "recuerda: test anti izquierda",
+      "recuerda: test duplicados de clave"
+     ],
+     "practica_excel_real": "Anexar las ventas de Zaragoza, Pamplona y Lleida, combinarlas con el maestro de productos para traer la familia y el coste, y sacar con una combinación anti izquierda los productos sin ficha. Controles: n.º de filas, Σ ventas, n.º de productos sin ficha."
+    }
+   ],
+   "practica_excel": "Libro n4-informe-automatico.xlsx + carpeta de CSV: informe mensual de ventas que se rehace solo (carpeta → combinar con maestros → anular dinamización del objetivo → tabla dinámica), con hoja Controles; después llega un CSV con una columna de más y se comprueba que el informe aguanta. Controles: Σ ventas, n.º de filas, ventas sin maestro."
+  },
+  {
+   "id": "n4m2",
+   "titulo": "Plantillas y libros robustos",
+   "objetivos": [
+    "es capaz de restringir lo que se puede escribir con validación de datos",
+    "es capaz de proteger hojas y libros sabiendo lo que la protección no hace",
+    "es capaz de escribir fórmulas legibles con LET y formatos personalizados",
+    "es capaz de resumir y juntar datos con Subtotal, esquemas y Consolidar"
+   ],
+   "lecciones": [
+    {
+     "id": "n4m2l1",
+     "titulo": "Listas desplegables y validación de datos",
+     "minutos": 14,
+     "conceptos": [
+      "Datos > Herramientas de datos > Validación de datos",
+      "Lista desde un rango de Parámetros (o «Sí;No»)",
+      "número entero, decimal, fecha dentro de un intervalo",
+      "Mensaje de entrada y Mensaje de error (Detener, Advertencia, Información)",
+      "validación personalizada con fórmula (sin duplicados, fecha no anterior a hoy)",
+      "lista dependiente (provincia según comunidad)",
+      "Rodear con un círculo datos no válidos para lo que ya estaba escrito",
+      "la validación no impide pegar encima"
+     ],
+     "funciones": [
+      "CONTAR.SI",
+      "Y"
+     ],
+     "errores_conceptuales": [
+      "Escribir la lista a mano en la validación y no poder ampliarla",
+      "Creer que la validación revisa lo que ya había escrito",
+      "Pegar datos encima de una celda validada (la validación se pierde)"
+     ],
+     "ejercicios_vivos": [
+      "=CONTAR.SI($A$2:$A$50;A2)=1 fórmula de validación sin duplicados, probada en una columna auxiliar",
+      "=Y(B2>=$H$1;B2<=$H$2) fecha dentro del ejercicio"
+     ],
+     "otros_ejercicios": [
+      "cinta: Datos > Herramientas de datos > Validación de datos",
+      "test: Detener frente a Advertencia",
+      "test: alguien pega datos y se salta la lista: ¿qué ha pasado?",
+      "ordenar: crear una lista desplegable de delegaciones desde Parámetros",
+      "recuerda: test lista desde rango",
+      "recuerda: escribe la fórmula sin duplicados"
+     ],
+     "practica_excel_real": "En una plantilla de solicitud de gastos de viaje: desplegable de departamento y tipo de gasto desde Parámetros, importe decimal positivo con mensaje de error, fecha dentro del ejercicio y lista dependiente de ciudad según delegación."
+    },
+    {
+     "id": "n4m2l2",
+     "titulo": "Proteger hojas y libros (y lo que no protege)",
+     "minutos": 13,
+     "conceptos": [
+      "todas las celdas están «Bloqueadas» por defecto: desbloquear antes las de entrada (Formato de celdas > Proteger)",
+      "Revisar > Proteger hoja: qué se permite hacer",
+      "Permitir editar rangos",
+      "ocultar fórmulas",
+      "Proteger libro: estructura (que no borren ni añadan hojas)",
+      "Microsoft: la protección de hoja no es una característica de seguridad; para impedir abrirlo, Archivo > Información > Proteger libro > Cifrar con contraseña",
+      "guardar como plantilla (.xltx)",
+      "una Tabla no crece en una hoja protegida (dimensionarla o desproteger)"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Proteger sin desbloquear antes las celdas de entrada",
+      "Creer que una hoja protegida es secreta",
+      "Perder la contraseña de un libro cifrado (no se recupera)"
+     ],
+     "ejercicios_vivos": [],
+     "otros_ejercicios": [
+      "cinta: Revisar > Proteger > Proteger hoja",
+      "cinta: Revisar > Proteger > Permitir editar rangos",
+      "test: proteges y nadie puede escribir en las celdas amarillas: ¿qué faltó?",
+      "test: ¿está seguro un salario en una hoja protegida?",
+      "ordenar: preparar una plantilla protegida (desbloquear entradas, ocultar fórmulas, proteger hoja, proteger estructura, guardar como .xltx)",
+      "test: proteger hoja frente a cifrar con contraseña",
+      "recuerda: test desbloquear antes",
+      "recuerda: test protección no es seguridad"
+     ],
+     "practica_excel_real": "Dejar la plantilla de gastos de viaje protegida: solo las celdas de entrada desbloqueadas, fórmulas ocultas, estructura protegida y guardada como .xltx; probar que un compañero no puede romperla."
+    },
+    {
+     "id": "n4m2l3",
+     "titulo": "Fórmulas legibles con LET y formatos personalizados",
+     "minutos": 14,
+     "conceptos": [
+      "LET(nombre; valor; …; cálculo): poner nombre a las partes de una fórmula larga",
+      "calcular una vez y reutilizar",
+      "LET existe desde Excel 2021; plan B: columnas auxiliares con títulos claros",
+      "formatos personalizados: #.##0,00 €;[Rojo]-#.##0,00 €",
+      "0\" días\", \"T\"0, dd/mm/aaaa, mmmm aaaa",
+      "TEXTO(valor; formato) para meter un número formateado en un texto",
+      "regla FAST: ninguna fórmula más larga que el pulgar"
+     ],
+     "funciones": [
+      "LET",
+      "TEXTO",
+      "REDONDEAR.MAS",
+      "RAIZ"
+     ],
+     "errores_conceptuales": [
+      "Fórmulas kilométricas que nadie puede revisar",
+      "Usar TEXTO para dar formato y después no poder sumar",
+      "Escribir códigos de formato en inglés (yyyy) en un Excel español"
+     ],
+     "ejercicios_vivos": [
+      "=LET(base;B2*C2;iva;base*$F$1;base+iva)",
+      "=LET(d;B2;L;B3;s;B4;z;B5;d*L+REDONDEAR.MAS(z*s*RAIZ(L);0)) punto de pedido (258)",
+      "=LET(vencidos;$J$1-F2;SI(vencidos>60;\"Más de 60\";\"Al día\"))",
+      "=\"Total: \"&TEXTO(B10;\"#.##0,00 €\")",
+      "=TEXTO(A2;\"mmmm aaaa\")",
+      "arregla el error: fórmula repetida tres veces dentro de un SI, reescrita con LET"
+     ],
+     "otros_ejercicios": [
+      "test: formato personalizado para que los negativos salgan en rojo",
+      "recuerda: escribe un LET con base e IVA"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n4m2l4",
+     "titulo": "Resumir y juntar: Subtotal, esquemas, Consolidar y vínculos",
+     "minutos": 14,
+     "conceptos": [
+      "Datos > Esquema > Subtotal (ordenar antes por el campo de corte)",
+      "niveles del esquema (1, 2, 3) y Agrupar/Desagrupar",
+      "copiar solo celdas visibles (Ir a > Especial > Solo celdas visibles)",
+      "Datos > Herramientas de datos > Consolidar varias hojas o libros",
+      "referencias a otros libros: se rompen al mover o renombrar; Datos > Consultas y conexiones > Vínculos del libro",
+      "romper un vínculo convierte las fórmulas en valores",
+      "Opciones para el cálculo: automático o manual (F9) en libros pesados",
+      "mejor alternativa: Power Query"
+     ],
+     "funciones": [
+      "SUBTOTALES"
+     ],
+     "errores_conceptuales": [
+      "Subtotal sin ordenar antes (cortes repetidos)",
+      "Copiar un resumen de esquema y pegar también lo oculto",
+      "Vínculos a libros en el Escritorio de otra persona",
+      "Dejar el cálculo en manual y entregar cifras sin recalcular"
+     ],
+     "ejercicios_vivos": [
+      "=SUBTOTALES(9;B2:B6) subtotal de un grupo",
+      "=SUMA(C2:C4) frente a =SUBTOTALES(9;C2:C4) en una lista sin subtotales anidados (dan lo mismo; la diferencia aparece al filtrar u ocultar)"
+     ],
+     "otros_ejercicios": [
+      "test: el rango tiene subtotales hechos con SUBTOTALES dentro: ¿qué hace el total general con ellos? (los ignora; se explica con tabla, no en la hoja en vivo)",
+      "cinta: Datos > Esquema > Subtotal",
+      "cinta: Datos > Herramientas de datos > Consolidar",
+      "cinta: Datos > Consultas y conexiones > Vínculos del libro",
+      "cinta: Fórmulas > Cálculo > Opciones para el cálculo",
+      "test: consolidar las hojas de tres delegaciones frente a Power Query",
+      "recuerda: test riesgos de los vínculos"
+     ],
+     "practica_excel_real": "Con las hojas de tres delegaciones: consolidar por familia, hacer un resumen con Subtotal por delegación y esquema, y localizar y romper (sobre una copia) un vínculo a un libro antiguo."
+    }
+   ],
+   "practica_excel": "Libro n4-plantilla-pedidos.xlsx: plantilla de pedidos para comerciales con desplegables y validaciones, cálculos con LET, formatos personalizados, celdas de entrada desbloqueadas, hoja protegida y estructura protegida, guardada como .xltx; más una hoja de resumen por delegación con Subtotal. Control: la plantilla calcula bien un pedido de prueba dado."
+  },
+  {
+   "id": "n4m3",
+   "titulo": "¿Y si…? Préstamos y análisis de hipótesis",
+   "objetivos": [
+    "es capaz de calcular cuotas, plazos y tipos de un préstamo y su cuadro de amortización",
+    "es capaz de usar Buscar objetivo y el Administrador de escenarios",
+    "es capaz de hacer tablas de datos de una y dos variables"
+   ],
+   "lecciones": [
+    {
+     "id": "n4m3l1",
+     "titulo": "Préstamos: cuota y cuadro de amortización",
+     "minutos": 15,
+     "conceptos": [
+      "PAGO(tasa; n.º de pagos; valor actual): tasa y plazo en la misma unidad (anual/12)",
+      "el signo: el dinero que sale es negativo",
+      "PAGOINT y PAGOPRIN: intereses y capital de cada cuota",
+      "NPER, TASA, VA y VF",
+      "cuadro de amortización (sistema francés): cuota, intereses, capital, pendiente",
+      "comprobaciones: Σ capital = préstamo; pendiente final = 0"
+     ],
+     "funciones": [
+      "PAGO",
+      "PAGOINT",
+      "PAGOPRIN",
+      "NPER",
+      "TASA",
+      "VA",
+      "VF",
+      "REDONDEAR"
+     ],
+     "errores_conceptuales": [
+      "Usar la tasa anual con cuotas mensuales",
+      "Cuota negativa sin entender por qué",
+      "No cuadrar el capital amortizado con el préstamo"
+     ],
+     "ejercicios_vivos": [
+      "=PAGO(B2/12;B3;-B1) cuota de 85.000 € al 5 % en 48 meses (1.957,49)",
+      "=PAGOINT($B$2/12;A6;$B$3;-$B$1) intereses de la cuota A6 (copiar_a)",
+      "=PAGOPRIN($B$2/12;A6;$B$3;-$B$1)",
+      "=E5-D6 capital pendiente (copiar_a)",
+      "=NPER(B2/12;-B4;B1) meses para devolverlo con una cuota dada",
+      "control: =ABS(SUMA(D6:D53)-B1)<0,01",
+      "arregla el error: =PAGO(B2;B3;-B1) con la tasa anual"
+     ],
+     "otros_ejercicios": [
+      "test: por qué PAGO sale negativo",
+      "recuerda: escribe la cuota mensual de un préstamo"
+     ],
+     "practica_excel_real": null
+    },
+    {
+     "id": "n4m3l2",
+     "titulo": "Buscar objetivo y escenarios",
+     "minutos": 13,
+     "conceptos": [
+      "Datos > Previsión > Análisis de hipótesis > Buscar objetivo: qué valor de entrada da el resultado que quiero",
+      "la celda objetivo debe ser una fórmula que dependa de la entrada",
+      "Administrador de escenarios: guardar juegos de entradas (pesimista, base, optimista)",
+      "Resumen de escenarios",
+      "modelo separado en entradas, cálculos y salidas para que funcione"
+     ],
+     "funciones": [],
+     "errores_conceptuales": [
+      "Buscar objetivo sobre una celda con un valor fijo en lugar de una fórmula",
+      "Dejar el modelo con el último escenario aplicado sin avisar",
+      "Escenarios con entradas dispersas por la hoja"
+     ],
+     "ejercicios_vivos": [
+      "=B1*(1-B2)-B3 margen del modelo que luego se usa en Buscar objetivo (se calcula en vivo; Buscar objetivo, en Excel real)",
+      "predice: el resultado del modelo con el escenario pesimista ya aplicado"
+     ],
+     "otros_ejercicios": [
+      "cinta: Datos > Previsión > Análisis de hipótesis",
+      "test: ¿qué celda pones en «Definir la celda»?",
+      "test: Buscar objetivo no cambia nada: ¿por qué?",
+      "ordenar: crear tres escenarios y su resumen",
+      "test: elige la herramienta: Buscar objetivo, escenarios o tabla de datos",
+      "recuerda: test celda objetivo con fórmula"
+     ],
+     "practica_excel_real": "En el simulador de precios: con Buscar objetivo, qué precio da un margen del 35 %; con el Administrador de escenarios, tres escenarios de coste y volumen y su resumen."
+    },
+    {
+     "id": "n4m3l3",
+     "titulo": "Tablas de datos de una y dos variables",
+     "minutos": 13,
+     "conceptos": [
+      "Análisis de hipótesis > Tabla de datos",
+      "una variable: la cuota para varios tipos de interés",
+      "dos variables: el margen según precio y volumen",
+      "celda de entrada de fila y de columna",
+      "la tabla de datos recalcula siempre (libros lentos: cálculo automático excepto tablas)",
+      "formato condicional sobre la tabla para ver zonas"
+     ],
+     "funciones": [
+      "PAGO"
+     ],
+     "errores_conceptuales": [
+      "Elegir las celdas de entrada al revés (fila/columna)",
+      "Poner la tabla de datos en otra hoja que la de las entradas",
+      "Intentar editar una celda de la tabla de datos"
+     ],
+     "ejercicios_vivos": [
+      "=PAGO($B$2/12;$B$3;-$B$1) la fórmula de la esquina de la tabla",
+      "=PAGO(A8/12;$B$3;-$B$1) versión con fórmulas copiadas para comprobar una fila de la tabla de datos"
+     ],
+     "otros_ejercicios": [
+      "cinta: Datos > Previsión > Análisis de hipótesis",
+      "test: celda de entrada de fila frente a columna",
+      "ordenar: construir una tabla de dos variables",
+      "test: el libro va lento tras añadir tablas de datos",
+      "recuerda: test qué celda va en la esquina",
+      "recuerda: test una frente a dos variables"
+     ],
+     "practica_excel_real": "Tabla de datos de la cuota del préstamo de 85.000 € para tipos del 3 % al 7 % y plazos de 36 a 84 meses, con formato condicional para cuotas por encima de 2.000 €."
+    }
+   ],
+   "practica_excel": "Libro n4-prestamos-escenarios.xlsx (prueba de salida tipo MO-211, 50 min): cuadro de amortización del préstamo con controles, comparativa de dos ofertas de préstamo, tabla de datos tipo × plazo, Buscar objetivo para la cuota máxima asumible y tres escenarios de ventas con resumen. Controles: cuota, intereses totales, plazo para una cuota dada."
+  }
+ ],
+ "examen_nivel": "50 min, sin pistas, tipo MO-211, 80 % a la primera: PAGO/PAGOINT/PAGOPRIN con controles, LET legible, TEXTO con formato español; ordenar el flujo de Power Query (CSV, carpeta, configuración regional, anular dinamización, combinar frente a anexar, actualizar), validación (lista, fórmula, lo que no impide), protección (desbloquear antes, no es seguridad, cifrar), Subtotal/Consolidar/vínculos, Buscar objetivo (celda con fórmula), escenarios y tablas de datos, y elegir la herramienta."
+}

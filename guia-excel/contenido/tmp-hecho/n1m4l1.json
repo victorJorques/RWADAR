@@ -1,0 +1,354 @@
+{
+ "id": "n1m4l1",
+ "titulo": "Ordenar y filtrar una lista sin estropearla",
+ "minutos": 15,
+ "objetivo": "Ordenar una lista por una o dos columnas sin descolocar las filas, filtrar para ver solo lo que interesa sabiendo que no se borra nada, y buscar y reemplazar un dato en toda la hoja.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "El jueves me reúno con el equipo de Pamplona. Sácame de la lista de clientes solo los de Pamplona, de más venta a menos, con el total abajo. Y no me rompas la lista, que la usa todo el departamento.",
+  "logro": "Ya sabes ordenar y filtrar una lista de clientes sin descolocar ni perder ningún dato, y comprobar con un total que todo cuadra."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una **lista** es una tabla de datos con una regla sencilla: **una fila por cosa** (un cliente, una factura) y **una columna por dato** (nombre, delegación, ventas).\n\nPara que Excel la entienda como un bloque:\n\n- **Una sola fila de títulos** arriba del todo.\n- **Ninguna fila ni columna vacía** en medio.\n- **Un dato por celda**: la ciudad en una columna, las ventas en otra.\n\nAsí Excel sabe dónde empieza y dónde acaba, y puede ordenarla y filtrarla."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Clientes de Electro Cierzo (ventas de enero a octubre de 2026)",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Ventas",
+     "A2": "Instalaciones Ebro",
+     "B2": "Zaragoza",
+     "C2": 31250,
+     "A3": "Reformas Arga",
+     "B3": "Pamplona",
+     "C3": 18450,
+     "A4": "Clima Segre",
+     "B4": "Lleida",
+     "C4": 22780,
+     "A5": "Iluminación Baztán",
+     "B5": "Pamplona",
+     "C5": 23900,
+     "A6": "Electricidad Aranda",
+     "B6": "Zaragoza",
+     "C6": 12640,
+     "A7": "Electricidad Txantrea",
+     "B7": "Pamplona",
+     "C7": 9870,
+     "A8": "Instalaciones Noguera",
+     "B8": "Lleida",
+     "C8": 15310,
+     "A9": "Montajes Ultzama",
+     "B9": "Pamplona",
+     "C9": 14200
+    },
+    "formatos": {
+     "C2:C9": "eur"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 12,
+     "C": 12
+    }
+   },
+   "pie": "Una fila de títulos, ocho clientes seguidos, un dato en cada celda: una lista bien hecha."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e1",
+   "modo": "test",
+   "pregunta": "Un compañero te pasa su lista de clientes. ¿Cuál de estas cosas **rompe** la lista y hará que Excel no la ordene entera?",
+   "opciones": [
+    {
+     "texto": "Una fila vacía entre el cliente 4 y el 5",
+     "correcta": true,
+     "porque": "Correcto. Excel cree que la lista termina en la fila vacía: al ordenar o filtrar, los clientes de debajo se quedan fuera."
+    },
+    {
+     "texto": "Que los títulos estén en negrita",
+     "correcta": false,
+     "porque": "La negrita es solo aspecto. No cambia nada: la lista sigue siendo un bloque."
+    },
+    {
+     "texto": "Que la columna Ventas tenga formato de euros",
+     "correcta": false,
+     "porque": "El formato de euros solo cambia cómo se ve el número. Al revés: es lo recomendable."
+    }
+   ],
+   "explicacion": "Las filas vacías parten la lista en dos trozos. Si te llega una lista con huecos, elimina esas filas antes de ordenar o filtrar."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Ordenar** es cambiar el orden de las filas: de la A a la Z, de más venta a menos…\n\nLo importante: Excel mueve **filas enteras**. Cada cliente viaja con su delegación y sus ventas.\n\nCómo se hace:\n\n1. Haz clic en **una sola celda** de la columna por la que quieres ordenar (por ejemplo, C3, en Ventas). No selecciones la columna entera.\n2. Ve a **Datos › Ordenar y filtrar** y pulsa **Ordenar de A a Z** o **Ordenar de Z a A**.\n\nCon números, «de A a Z» es de menor a mayor."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e2",
+   "modo": "cinta",
+   "enunciado": "Tienes el cursor en una celda de la columna **Ventas**. Javier quiere ver primero a los clientes que **más** compran. Toca el botón que ordena de mayor a menor.",
+   "ruta": [
+    "Datos",
+    "Ordenar y filtrar",
+    "Ordenar de Z a A"
+   ],
+   "explicacion": "Datos › Ordenar y filtrar › Ordenar de Z a A. Con números, de Z a A significa de mayor a menor. El mismo botón está también en Inicio › Edición › Ordenar y filtrar."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "El error más caro que he visto: alguien seleccionó **solo** la columna de ventas y la ordenó. Los nombres se quedaron quietos y los importes se movieron: cada cliente acabó con las ventas de otro, y no daba ningún error.\n\nSi seleccionas una columna, Excel te avisa y te pregunta. Elige siempre **Ampliar la selección**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e3",
+   "modo": "test",
+   "pregunta": "Has seleccionado la columna C entera y has pulsado Ordenar de Z a A. Excel te pregunta qué hacer. ¿Qué eliges?",
+   "opciones": [
+    {
+     "texto": "Ampliar la selección",
+     "correcta": true,
+     "porque": "Correcto. Excel incluye el resto de columnas de la lista y ordena filas enteras: cada cliente sigue con sus ventas."
+    },
+    {
+     "texto": "Continuar con la selección actual",
+     "correcta": false,
+     "porque": "Ordenaría solo la columna Ventas. Los importes cambiarían de cliente sin que nada lo avise: la lista quedaría revuelta."
+    },
+    {
+     "texto": "Cualquiera: el resultado es el mismo",
+     "correcta": false,
+     "porque": "No. Una mueve filas enteras y la otra solo una columna. La diferencia es tener la lista bien o estropeada."
+    }
+   ],
+   "explicacion": "Ampliar la selección mantiene juntos los datos de cada fila. Mejor aún: haz clic en una sola celda antes de ordenar y el aviso ni aparece."
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces hay que ordenar por **dos cosas**: primero por delegación y, dentro de cada delegación, por ventas.\n\nPara eso está el botón grande **Datos › Ordenar y filtrar › Ordenar**. Abre un cuadro donde pones:\n\n- **Ordenar por**: Delegación, de A a Z.\n- Pulsas **Agregar nivel**.\n- **Luego por**: Ventas, de mayor a menor.\n\nExcel aplica el primer criterio y usa el segundo para desempatar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e4",
+   "modo": "ordenar",
+   "enunciado": "Para otra reunión, Javier quiere la lista de clientes agrupada por delegación y, dentro de cada una, de más venta a menos. Pon los pasos en orden.",
+   "pasos": [
+    "Haz clic en una celda cualquiera de la lista",
+    "Datos › Ordenar y filtrar › Ordenar",
+    "En «Ordenar por» elige Delegación, de A a Z",
+    "Pulsa Agregar nivel",
+    "En «Luego por» elige Ventas, de mayor a menor",
+    "Pulsa Aceptar y revisa un par de filas"
+   ],
+   "explicacion": "Primero se dice dónde está la lista (una celda basta), después los criterios por orden de importancia. Y al final se mira: revisar un par de filas es la costumbre que evita sorpresas."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Filtrar** es ver solo las filas que te interesan, por ejemplo, los clientes de Pamplona.\n\n1. Haz clic en una celda de la lista.\n2. **Datos › Ordenar y filtrar › Filtro**. En cada título aparece una **flecha**.\n3. Abre la flecha de *Delegación*, desmarca **(Seleccionar todo)** y marca **Pamplona**. Aceptar.\n\nPara volver a verlo todo, abre la flecha y marca de nuevo (Seleccionar todo), o pulsa otra vez **Filtro** para quitar las flechas."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Ctrl+Mayús+L",
+     "accion": "Poner o quitar las flechas de filtro"
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e5",
+   "modo": "test",
+   "pregunta": "Has filtrado Pamplona y ahora solo ves 4 clientes. Los números de fila salen en azul y saltan: 3, 5, 7, 9. Marta se asusta: «¿Has borrado los demás?». ¿Qué le contestas?",
+   "opciones": [
+    {
+     "texto": "No: están ocultos. El filtro solo esconde filas; al quitarlo vuelven todas",
+     "correcta": true,
+     "porque": "Correcto. Filtrar no borra nada. Los números azules y los saltos son la señal de que hay un filtro puesto."
+    },
+    {
+     "texto": "Sí, pero se recuperan con Ctrl+Z",
+     "correcta": false,
+     "porque": "No se ha borrado nada, así que no hay nada que deshacer. Basta con quitar el filtro."
+    },
+    {
+     "texto": "Sí: para no perderlos hay que filtrar en una copia del libro",
+     "correcta": false,
+     "porque": "No hace falta copia: el filtro nunca elimina filas. Trabajar sobre la lista original es lo normal."
+    }
+   ],
+   "explicacion": "Filtrar es como mirar por una ventanita: lo demás sigue ahí. Fíjate siempre en los números de fila azules: te dicen que estás viendo solo una parte."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Buscar y reemplazar** sirve para encontrar un dato en una hoja larga o cambiarlo en todas partes de una vez.\n\n- **Buscar**: [[Ctrl]]+[[B]]. Escribes, por ejemplo, *Txantrea* y pulsas Buscar siguiente.\n- **Reemplazar**: [[Ctrl]]+[[L]]. En *Buscar* pones lo que hay y en *Reemplazar con* lo nuevo.\n\nCaso real: un cliente cambia de nombre y aparece en 60 filas. Con Reemplazar lo cambias en segundos, sin tocar las demás celdas."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Reemplazar todos cambia también los trozos",
+   "md": "Reemplazar busca el texto **dentro** de cada celda. Si cambias «Ebro» por otra palabra, también cambiará «Instalaciones Ebro» y «Reformas Ebro». Antes de pulsar **Reemplazar todos**, pulsa **Buscar todos** y mira la lista. En **Opciones** puedes marcar «Coincidir con el contenido de toda la celda»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e6",
+   "modo": "test",
+   "pregunta": "La delegación de Lleida pasa a llamarse **Lleida-Segrià**. En la columna Delegación pone «Lleida», pero en la columna Cliente hay un «Distribuciones Lleida Sur». ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Selecciono solo la columna Delegación y reemplazo ahí",
+     "correcta": true,
+     "porque": "Correcto. Si hay celdas seleccionadas, Reemplazar trabaja solo en ellas: el nombre del cliente no se toca."
+    },
+    {
+     "texto": "Ctrl+L con una sola celda seleccionada y Reemplazar todos",
+     "correcta": false,
+     "porque": "Con una sola celda seleccionada busca en toda la hoja: también cambiaría el cliente a «Distribuciones Lleida-Segrià Sur»."
+    },
+    {
+     "texto": "Lo cambio a mano celda por celda para ir seguro",
+     "correcta": false,
+     "porque": "Funciona en una lista corta, pero con cientos de filas es lento y es fácil saltarse alguna. Reemplazar sobre una selección es igual de seguro y mucho más rápido."
+    }
+   ],
+   "explicacion": "Primero se limita dónde buscar (seleccionando la columna) y después se reemplaza. Así cambias cientos de celdas sin efectos secundarios."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Ya tienes a los de Pamplona filtrados y ordenados de más venta a menos. Te los dejo abajo. Un truco antes de mandarlo: pon siempre el **total**. Si alguien pregunta «¿y esto cuadra?», el total es tu respuesta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l1-e7",
+   "modo": "formula",
+   "enunciado": "Termina el encargo de Javier. La lista ya muestra los clientes de Pamplona de más a menos venta. En **C6** calcula el **total de ventas** de los cuatro clientes (C2:C5).",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Ventas",
+     "A2": "Iluminación Baztán",
+     "B2": "Pamplona",
+     "C2": 23900,
+     "A3": "Reformas Arga",
+     "B3": "Pamplona",
+     "C3": 18450,
+     "A4": "Montajes Ultzama",
+     "B4": "Pamplona",
+     "C4": 14200,
+     "A5": "Electricidad Txantrea",
+     "B5": "Pamplona",
+     "C5": 9870,
+     "B6": "Total"
+    },
+    "formatos": {
+     "C2:C6": "eur"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 12,
+     "C": 12
+    }
+   },
+   "objetivo": "C6",
+   "solucion": "=SUMA(C2:C5)",
+   "debe_usar": [
+    "SUMA"
+   ],
+   "alternativas": [],
+   "errores_tipicos": [
+    "=SUMA(C2:C4)",
+    "=SUMA(C3:C5)"
+   ],
+   "variantes": [
+    {
+     "C4": 15000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es la función de sumar una columna que ya conoces.",
+    "SUMA con el rango de las cuatro ventas, de C2 a C5.",
+    "=SUMA(C2:C5)"
+   ],
+   "explicacion": "66.420 €. Encargo resuelto: lista filtrada, ordenada y con su total, y la lista original intacta debajo del filtro. Es justo lo que te pedirán antes de cada reunión comercial."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m4l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre **Reemplazar** en el Excel en español?",
+   "aceptadas": [
+    "Ctrl+L",
+    "Control+L",
+    "Ctrl L",
+    "Ctrl + L"
+   ],
+   "explicacion": "Ctrl+L (y Ctrl+B para Buscar). En los tutoriales en inglés verás Ctrl+H y Ctrl+F: en el Excel en español no son esos."
+  },
+  {
+   "id": "n1m4l1-q2",
+   "modo": "cinta",
+   "enunciado": "Sin mirar arriba: pon las **flechas de filtro** en los títulos de la lista.",
+   "ruta": [
+    "Datos",
+    "Ordenar y filtrar",
+    "Filtro"
+   ],
+   "explicacion": "Datos › Ordenar y filtrar › Filtro (o Ctrl+Mayús+L). Las flechas aparecen en cada título."
+  },
+  {
+   "id": "n1m4l1-q3",
+   "modo": "test",
+   "pregunta": "Después de ordenar, ves que «Clima Segre» tiene ahora las ventas de «Reformas Arga». ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "Se ordenó solo una columna y los datos se separaron de su fila",
+     "correcta": true,
+     "porque": "Correcto. Es el síntoma típico: los nombres se quedan y los importes se mueven. Deshaz con Ctrl+Z y ordena con una sola celda seleccionada."
+    },
+    {
+     "texto": "Había un filtro puesto",
+     "correcta": false,
+     "porque": "El filtro oculta filas, pero no cambia los datos de una fila a otra."
+    },
+    {
+     "texto": "La columna tenía formato de euros",
+     "correcta": false,
+     "porque": "El formato no influye al ordenar: solo cambia cómo se ve el número."
+    }
+   ]
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Las tres reglas de una lista bien hecha",
+   "dorso": "Una sola fila de títulos, ninguna fila vacía en medio y un dato por celda."
+  },
+  {
+   "tipo": "error",
+   "frente": "Al ordenar, Excel pregunta si ampliar la selección. ¿Qué eliges?",
+   "dorso": "Ampliar la selección: así mueve filas enteras y no separa los datos."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Buscar / Reemplazar en el Excel en español",
+   "dorso": "Ctrl+B / Ctrl+L"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Filtrar borra filas?",
+   "dorso": "No: las oculta. Los números de fila en azul avisan de que hay un filtro."
+  }
+ ]
+}

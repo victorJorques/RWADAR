@@ -1,0 +1,2720 @@
+archivo;fila;columna;problema;valor_original;valor_limpio
+p6-movimientos.csv;8;Cantidad;Q05 punto decimal;2261.5;2261,5
+p6-movimientos.csv;9;Cantidad;Q05 punto decimal;1991.5;1991,5
+p6-movimientos.csv;13;Cantidad;Q14 SAL en negativo;-32;32
+p6-movimientos.csv;16;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;20;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;21;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;21;Cantidad;Q14 SAL en negativo;-32;32
+p6-movimientos.csv;23;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;25;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;26;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;27;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;28;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;29;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;30;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;32;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;39;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;62;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;78;Cantidad;Q05 punto decimal;1822.5;1822,5
+p6-movimientos.csv;85;Cantidad;Q05 punto decimal;169.5;169,5
+p6-movimientos.csv;92;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;93;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;94;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;95;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;96;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;97;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;99;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;100;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;102;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;103;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;104;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;105;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;106;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;108;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;136;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;139;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;159;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;161;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;162;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;164;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;165;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;166;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;168;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;169;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;170;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;173;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;174;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;177;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;178;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;179;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;180;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;181;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;182;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;192;Cantidad;Q14 SAL en negativo;-26;26
+p6-movimientos.csv;195;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;235;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;247;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;253;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;255;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;256;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;257;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;258;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;260;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;293;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;312;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;315;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;316;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;317;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;318;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;319;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;320;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;324;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;325;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;326;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;329;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;332;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;334;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;336;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;348;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;365;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;367;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;370;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;389;Cantidad;Q05 punto decimal;1378.5;1378,5
+p6-movimientos.csv;391;Cantidad;Q05 punto decimal;5407.5;5407,5
+p6-movimientos.csv;401;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;402;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;405;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;408;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;409;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;410;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;411;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;413;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;414;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;416;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;417;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;420;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;421;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;422;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;423;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;425;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;426;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;445;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;477;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;478;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;480;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;481;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;482;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;483;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;484;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;485;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;486;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;488;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;489;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;491;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;492;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;493;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;495;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;496;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;498;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;499;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;507;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;527;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;538;Cantidad;Q14 SAL en negativo;-322;322
+p6-movimientos.csv;556;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;557;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;558;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;559;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;562;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;564;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;565;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;566;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;568;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;570;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;571;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;572;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;573;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;575;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;578;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;579;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;632;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;641;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;644;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;645;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;646;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;648;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;649;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;650;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;651;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;652;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;653;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;655;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;656;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;658;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;703;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;720;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;721;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;723;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;724;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;726;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;727;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;728;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;730;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;732;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;733;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;734;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;736;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;737;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;738;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;742;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;765;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;788;Cantidad;Q05 punto decimal;641.5;641,5
+p6-movimientos.csv;794;Cantidad;Q05 punto decimal;132.5;132,5
+p6-movimientos.csv;800;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;803;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;804;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;808;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;809;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;811;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;812;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;815;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;816;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;816;Cantidad;Q14 SAL en negativo;-75;75
+p6-movimientos.csv;817;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;818;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;866;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;868;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;869;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;870;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;872;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;875;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;878;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;879;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;880;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;882;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;885;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;886;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;894;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;899;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;936;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;942;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;943;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;946;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;947;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;948;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;949;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;951;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;952;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;955;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;956;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;957;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;958;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;959;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;981;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;986;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1011;Cantidad;Q05 punto decimal;1574.5;1574,5
+p6-movimientos.csv;1013;Cantidad;Q05 punto decimal;965.5;965,5
+p6-movimientos.csv;1023;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1025;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1028;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1031;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1032;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1033;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1034;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1035;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1037;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1039;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1040;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1042;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1044;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1045;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1049;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1079;Cantidad;Q14 SAL en negativo;-3097;3097
+p6-movimientos.csv;1080;Cantidad;Q14 SAL en negativo;-154;154
+p6-movimientos.csv;1081;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1099;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1101;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1103;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1104;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1106;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1107;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1108;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1109;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1110;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1130;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1147;Cantidad;Q05 punto decimal;481.5;481,5
+p6-movimientos.csv;1155;Cantidad;Q05 punto decimal;2693.5;2693,5
+p6-movimientos.csv;1173;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1175;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1176;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1177;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1179;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1180;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1182;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1183;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1184;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1187;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1202;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1242;Cantidad;Q14 SAL en negativo;-251.5;251,5
+p6-movimientos.csv;1242;Cantidad;Q05 punto decimal;-251.5;251,5
+p6-movimientos.csv;1246;Cantidad;Q05 punto decimal;1588.5;1588,5
+p6-movimientos.csv;1247;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1250;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1255;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1256;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1261;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1282;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1289;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1292;Cantidad;Q14 SAL en negativo;-47;47
+p6-movimientos.csv;1324;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1325;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1327;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1331;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1332;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1333;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1334;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1336;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1337;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1338;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1339;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1340;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1359;Cantidad;Q14 SAL en negativo;-258;258
+p6-movimientos.csv;1361;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1364;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1372;Cantidad;Q05 punto decimal;327.5;327,5
+p6-movimientos.csv;1390;Cantidad;Q05 punto decimal;2469.5;2469,5
+p6-movimientos.csv;1391;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1392;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1393;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1395;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1399;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1400;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1401;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1404;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1405;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1407;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1409;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1414;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1420;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1431;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1454;Cantidad;Q14 SAL en negativo;-105;105
+p6-movimientos.csv;1475;Cantidad;Q05 punto decimal;4751.5;4751,5
+p6-movimientos.csv;1479;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1480;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1481;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1483;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1487;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1488;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1489;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1491;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1548;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1549;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1553;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1554;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1557;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1558;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1559;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1560;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1561;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1562;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1563;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1565;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1567;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1568;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1571;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1572;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1573;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1625;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1629;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1630;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1631;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1632;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1637;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1638;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1639;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1641;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1679;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1694;Cantidad;Q05 punto decimal;1078.5;1078,5
+p6-movimientos.csv;1699;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1700;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1702;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1703;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1704;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1706;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1707;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1709;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1710;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1711;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1712;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1713;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1714;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1715;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1717;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1718;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1720;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1745;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1746;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1777;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1778;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1779;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1780;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1781;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1782;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1783;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1784;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1786;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1787;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1790;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1791;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1840;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1849;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1853;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1855;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1858;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1860;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1861;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1865;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1873;Cantidad;Q14 SAL en negativo;-9;9
+p6-movimientos.csv;1879;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1898;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1925;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1926;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1927;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1928;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1932;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1933;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1934;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1935;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1936;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1937;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1938;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1942;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;1984;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;1986;Cantidad;Q14 SAL en negativo;-2791;2791
+p6-movimientos.csv;1991;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2010;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2012;Cantidad;Q05 punto decimal;251.5;251,5
+p6-movimientos.csv;2016;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2017;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2018;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2021;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2024;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2026;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2028;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2029;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2080;Cantidad;Q05 punto decimal;3940.5;3940,5
+p6-movimientos.csv;2087;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2089;Cantidad;Q05 punto decimal;34.5;34,5
+p6-movimientos.csv;2096;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2097;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2098;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2099;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2100;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2101;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2104;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2129;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2131;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2145;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2176;Cantidad;Q05 punto decimal;1626.5;1626,5
+p6-movimientos.csv;2180;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2181;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2184;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2185;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2187;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2188;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2189;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2190;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2193;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2194;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2196;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2198;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2199;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2207;Cantidad;Q14 SAL en negativo;-48;48
+p6-movimientos.csv;2247;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2248;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2263;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2264;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2265;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2266;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2267;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2268;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2270;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2271;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2272;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2273;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2275;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2280;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2281;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2284;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2290;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2313;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2351;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2352;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2353;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2355;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2358;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2359;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2404;Cantidad;Q05 punto decimal;1563.5;1563,5
+p6-movimientos.csv;2410;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2411;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2412;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2414;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2416;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2417;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2419;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2420;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2421;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2440;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2456;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2478;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2479;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2480;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2481;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2482;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2483;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2486;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2488;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2489;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2490;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2544;Cantidad;Q05 punto decimal;1769.5;1769,5
+p6-movimientos.csv;2548;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2551;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2553;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2555;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2556;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2557;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2560;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2562;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2564;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2613;Cantidad;Q05 punto decimal;677.5;677,5
+p6-movimientos.csv;2617;Cantidad;Q05 punto decimal;585.5;585,5
+p6-movimientos.csv;2620;Cantidad;Q05 punto decimal;4795.5;4795,5
+p6-movimientos.csv;2622;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2628;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2629;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2633;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2634;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2635;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2637;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2638;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2639;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2639;Cantidad;Q14 SAL en negativo;-8;8
+p6-movimientos.csv;2641;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2642;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2643;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2644;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2646;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2647;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2648;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2665;Cantidad;Q14 SAL en negativo;-4976,5;4976,5
+p6-movimientos.csv;2686;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2707;Cantidad;Q05 punto decimal;5250.5;5250,5
+p6-movimientos.csv;2712;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2715;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2716;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2717;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2721;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2722;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2723;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2725;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2727;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2765;Cantidad;Q05 punto decimal;114.5;114,5
+p6-movimientos.csv;2770;Cantidad;Q05 punto decimal;1030.5;1030,5
+p6-movimientos.csv;2777;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2778;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2779;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2780;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2781;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2782;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2784;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2785;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2787;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2788;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2789;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2792;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2793;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2794;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2804;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2857;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2859;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2861;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2863;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2864;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2865;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2866;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2868;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2870;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2873;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2888;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2920;Cantidad;Q05 punto decimal;85.5;85,5
+p6-movimientos.csv;2923;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2924;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2929;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2930;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2936;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2937;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2938;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2939;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;2954;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;2996;Cantidad;Q05 punto decimal;1631.5;1631,5
+p6-movimientos.csv;3003;Cantidad;Q14 SAL en negativo;-6276;6276
+p6-movimientos.csv;3004;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3005;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3007;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3008;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3009;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3012;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3013;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3014;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3068;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3071;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3072;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3074;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3075;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3076;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3077;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3078;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3079;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3081;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3083;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3084;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3086;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3087;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3134;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3147;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3153;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3154;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3159;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3160;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3161;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3162;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3163;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3164;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3168;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3169;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3173;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3206;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3224;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3227;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3228;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3229;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3230;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3231;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3233;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3237;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3238;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3275;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3305;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3307;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3311;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3315;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3318;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3349;Cantidad;Q14 SAL en negativo;-21;21
+p6-movimientos.csv;3379;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3381;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3383;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3384;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3385;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3387;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3389;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3405;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3419;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3445;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3447;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3448;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3449;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3451;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3455;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3458;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3459;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3461;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3464;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3468;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3473;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3513;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3527;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3533;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3534;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3536;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3537;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3538;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3541;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3542;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3543;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3544;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3548;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3585;Cantidad;Q05 punto decimal;15.5;15,5
+p6-movimientos.csv;3587;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3588;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3590;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3592;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3594;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3597;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3654;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3655;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3658;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3659;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3661;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3674;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3697;Cantidad;Q05 punto decimal;1918.5;1918,5
+p6-movimientos.csv;3709;Cantidad;Q05 punto decimal;72.5;72,5
+p6-movimientos.csv;3710;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3712;Cantidad;Q05 punto decimal;95.5;95,5
+p6-movimientos.csv;3717;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3720;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3722;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3724;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3725;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3726;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3728;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3729;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3776;Cantidad;Q05 punto decimal;3745.5;3745,5
+p6-movimientos.csv;3782;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3784;Cantidad;Q05 punto decimal;3713.5;3713,5
+p6-movimientos.csv;3787;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3788;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3789;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3791;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3793;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3794;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3798;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3799;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3800;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3802;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3804;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3815;Cantidad;Q14 SAL en negativo;-1353;1353
+p6-movimientos.csv;3839;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3840;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3842;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3844;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3845;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3849;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3850;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3851;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3852;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3885;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3894;Cantidad;Q14 SAL en negativo;-92;92
+p6-movimientos.csv;3903;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3910;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3911;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3912;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3913;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3914;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3917;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3918;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;3919;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3920;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3922;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3923;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3977;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3982;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3984;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3988;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3989;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3990;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3991;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;3998;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4034;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4035;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4036;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4039;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4040;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4041;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4042;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4044;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4046;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4047;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4102;Cantidad;Q05 punto decimal;2244.5;2244,5
+p6-movimientos.csv;4107;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4108;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4111;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4112;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4113;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4114;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4115;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4116;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4117;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4176;Cantidad;Q05 punto decimal;332.5;332,5
+p6-movimientos.csv;4177;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4179;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4181;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4183;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4184;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4185;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4187;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4188;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4189;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4191;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4204;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4238;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4239;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4240;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4241;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4244;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4246;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4247;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4250;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4252;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4255;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4256;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4313;Cantidad;Q05 punto decimal;78.5;78,5
+p6-movimientos.csv;4314;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4315;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4316;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4317;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4319;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4321;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4324;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4325;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4327;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4329;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4346;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4353;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4366;Cantidad;Q05 punto decimal;98.5;98,5
+p6-movimientos.csv;4376;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4382;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4383;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4385;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4387;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4389;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4390;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4391;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4393;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4394;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4396;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4397;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4399;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4443;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4443;Cantidad;Q05 punto decimal;1478.5;1478,5
+p6-movimientos.csv;4450;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4451;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4454;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4455;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4456;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4459;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4463;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4464;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4482;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4504;Cantidad;Q05 punto decimal;552.5;552,5
+p6-movimientos.csv;4510;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4511;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4512;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4515;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4516;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4519;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4532;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4535;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4565;Cantidad;Q05 punto decimal;121.5;121,5
+p6-movimientos.csv;4569;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4570;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4574;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4576;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4578;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4579;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4581;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4582;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4583;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4595;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4613;Cantidad;Q14 SAL en negativo;-6;6
+p6-movimientos.csv;4623;Cantidad;Q05 punto decimal;3358.5;3358,5
+p6-movimientos.csv;4632;Cantidad;Q05 punto decimal;837.5;837,5
+p6-movimientos.csv;4636;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4637;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4638;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4640;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4641;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4643;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4644;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4646;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4647;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4647;Cantidad;Q14 SAL en negativo;-9;9
+p6-movimientos.csv;4649;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4660;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4676;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4691;Cantidad;Q05 punto decimal;333.5;333,5
+p6-movimientos.csv;4693;Cantidad;Q05 punto decimal;91.5;91,5
+p6-movimientos.csv;4696;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4699;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4701;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4702;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4704;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4705;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4706;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4730;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4752;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004243 línea 1;quitar
+p6-movimientos.csv;4752;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4753;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004244 línea 1;quitar
+p6-movimientos.csv;4753;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4754;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004244 línea 2;quitar
+p6-movimientos.csv;4754;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4754;Cantidad;Q05 punto decimal;333.5;333,5
+p6-movimientos.csv;4755;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004245 línea 1;quitar
+p6-movimientos.csv;4755;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4756;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004246 línea 1;quitar
+p6-movimientos.csv;4756;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4756;Cantidad;Q05 punto decimal;91.5;91,5
+p6-movimientos.csv;4757;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004246 línea 2;quitar
+p6-movimientos.csv;4757;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4758;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004247 línea 1;quitar
+p6-movimientos.csv;4758;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4759;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004247 línea 2;quitar
+p6-movimientos.csv;4759;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4759;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4760;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004248 línea 1;quitar
+p6-movimientos.csv;4760;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4761;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004248 línea 2;quitar
+p6-movimientos.csv;4761;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4762;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004248 línea 3;quitar
+p6-movimientos.csv;4762;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4762;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4763;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004249 línea 1;quitar
+p6-movimientos.csv;4763;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4764;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004249 línea 2;quitar
+p6-movimientos.csv;4764;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4764;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4765;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004249 línea 3;quitar
+p6-movimientos.csv;4765;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4765;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4766;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004250 línea 1;quitar
+p6-movimientos.csv;4766;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4767;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004250 línea 2;quitar
+p6-movimientos.csv;4767;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4767;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4768;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004251 línea 1;quitar
+p6-movimientos.csv;4768;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4768;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4769;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004251 línea 2;quitar
+p6-movimientos.csv;4769;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4769;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4770;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004252 línea 1;quitar
+p6-movimientos.csv;4770;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4771;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004252 línea 2;quitar
+p6-movimientos.csv;4771;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4772;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004252 línea 3;quitar
+p6-movimientos.csv;4772;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4773;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004252 línea 4;quitar
+p6-movimientos.csv;4773;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4774;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004253 línea 1;quitar
+p6-movimientos.csv;4774;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4775;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004253 línea 2;quitar
+p6-movimientos.csv;4775;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4776;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004253 línea 3;quitar
+p6-movimientos.csv;4776;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4777;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004253 línea 4;quitar
+p6-movimientos.csv;4777;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4778;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004253 línea 5;quitar
+p6-movimientos.csv;4778;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4779;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004254 línea 1;quitar
+p6-movimientos.csv;4779;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4780;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004254 línea 2;quitar
+p6-movimientos.csv;4780;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4781;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004254 línea 3;quitar
+p6-movimientos.csv;4781;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4782;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004254 línea 4;quitar
+p6-movimientos.csv;4782;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4783;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004254 línea 5;quitar
+p6-movimientos.csv;4783;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4784;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004255 línea 1;quitar
+p6-movimientos.csv;4784;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4785;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004255 línea 2;quitar
+p6-movimientos.csv;4785;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4786;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004255 línea 3;quitar
+p6-movimientos.csv;4786;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4787;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004255 línea 4;quitar
+p6-movimientos.csv;4787;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4788;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004255 línea 5;quitar
+p6-movimientos.csv;4788;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4789;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004256 línea 1;quitar
+p6-movimientos.csv;4789;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4790;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004256 línea 2;quitar
+p6-movimientos.csv;4790;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4791;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004256 línea 3;quitar
+p6-movimientos.csv;4791;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4792;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004256 línea 4;quitar
+p6-movimientos.csv;4792;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4793;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004256 línea 5;quitar
+p6-movimientos.csv;4793;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4793;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4794;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004257 línea 1;quitar
+p6-movimientos.csv;4794;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4795;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004257 línea 2;quitar
+p6-movimientos.csv;4795;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4796;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004257 línea 3;quitar
+p6-movimientos.csv;4796;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4797;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004258 línea 1;quitar
+p6-movimientos.csv;4797;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4798;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004258 línea 2;quitar
+p6-movimientos.csv;4798;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4799;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004258 línea 3;quitar
+p6-movimientos.csv;4799;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4800;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004258 línea 4;quitar
+p6-movimientos.csv;4800;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4801;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004259 línea 1;quitar
+p6-movimientos.csv;4801;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4802;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004259 línea 2;quitar
+p6-movimientos.csv;4802;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4803;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004259 línea 3;quitar
+p6-movimientos.csv;4803;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4804;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004259 línea 4;quitar
+p6-movimientos.csv;4804;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4805;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004260 línea 1;quitar
+p6-movimientos.csv;4805;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4806;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004260 línea 2;quitar
+p6-movimientos.csv;4806;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4807;Documento+Línea;Q22 solape 31/07 (fila repetida);ALB-26-004261 línea 1;quitar
+p6-movimientos.csv;4807;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4808;Documento+Línea;Q22 solape 31/07 (fila repetida);DEV-26-002476 línea 1;quitar
+p6-movimientos.csv;4808;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4809;Documento+Línea;Q22 solape 31/07 (fila repetida);DEV-26-002477 línea 1;quitar
+p6-movimientos.csv;4809;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4810;Documento+Línea;Q22 solape 31/07 (fila repetida);DEV-26-002477 línea 2;quitar
+p6-movimientos.csv;4810;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4811;Documento+Línea;Q22 solape 31/07 (fila repetida);REC-26-002894 línea 1;quitar
+p6-movimientos.csv;4811;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4812;Documento+Línea;Q22 solape 31/07 (fila repetida);REC-26-002895 línea 1;quitar
+p6-movimientos.csv;4812;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4813;Documento+Línea;Q22 solape 31/07 (fila repetida);TRA-26-002194 línea 1;quitar
+p6-movimientos.csv;4813;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4814;Documento+Línea;Q22 solape 31/07 (fila repetida);TRA-26-002194 línea 2;quitar
+p6-movimientos.csv;4814;Fecha;Q07 fecha AAAA-MM-DD;2026-07-31;31/07/2026
+p6-movimientos.csv;4815;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4816;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4816;Cantidad;Q05 punto decimal;971.5;971,5
+p6-movimientos.csv;4817;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4817;Cantidad;Q05 punto decimal;609.5;609,5
+p6-movimientos.csv;4818;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4819;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4820;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4821;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4822;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4822;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4823;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4823;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4824;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4825;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4826;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4826;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4827;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4827;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4828;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4829;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4830;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4831;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4831;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4832;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4832;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4833;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4834;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4835;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4835;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4836;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4836;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4837;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4837;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4838;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4839;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4840;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4841;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4842;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4843;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4843;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4844;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4845;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4846;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4847;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4848;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4849;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4850;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4851;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4852;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4853;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4854;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4855;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4856;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4857;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4858;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4859;Fecha;Q07 fecha AAAA-MM-DD;2026-08-03;03/08/2026
+p6-movimientos.csv;4860;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4861;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4862;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4863;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4863;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4864;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4864;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4865;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4866;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4866;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4867;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4867;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4868;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4869;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4869;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4870;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4870;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4871;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4871;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4872;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4873;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4874;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4875;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4876;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4877;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4878;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4879;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4880;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4881;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4882;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4883;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4883;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4884;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4885;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4886;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4887;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4888;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4889;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4890;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4891;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4892;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4893;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4894;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4895;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4896;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4897;Fecha;Q07 fecha AAAA-MM-DD;2026-08-04;04/08/2026
+p6-movimientos.csv;4898;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4899;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4900;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4901;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4902;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4903;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4904;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4905;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4906;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4907;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4908;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4909;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4909;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4910;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4911;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4911;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4912;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4912;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4913;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4914;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4914;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4915;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4915;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4916;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4917;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4918;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4919;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4920;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4921;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4922;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4923;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4924;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4925;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4926;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4927;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4928;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4929;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4930;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4931;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4932;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4933;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4934;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4935;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4936;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4937;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4938;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4939;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4940;Fecha;Q07 fecha AAAA-MM-DD;2026-08-05;05/08/2026
+p6-movimientos.csv;4941;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4942;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4942;Cantidad;Q05 punto decimal;355.5;355,5
+p6-movimientos.csv;4943;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4944;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4945;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4946;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4947;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4947;Cantidad;Q05 punto decimal;3260.5;3260,5
+p6-movimientos.csv;4948;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4949;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4950;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4951;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4951;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4952;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4953;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4953;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4954;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4954;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4955;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4956;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4956;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4957;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4957;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4958;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4959;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4960;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4961;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4961;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4962;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4962;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4963;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4963;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;4964;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4964;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;4965;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4966;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4967;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4968;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4969;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4970;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4971;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4972;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4973;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4974;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4975;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4976;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4977;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4978;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4979;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4980;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4981;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4982;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4983;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4984;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4985;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4986;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4987;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4988;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4989;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4990;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4991;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4992;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4993;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4994;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4995;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4996;Fecha;Q07 fecha AAAA-MM-DD;2026-08-06;06/08/2026
+p6-movimientos.csv;4997;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;4998;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;4999;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5000;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5001;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5002;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5003;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5004;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5005;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5006;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5006;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5007;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5008;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5009;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5010;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5011;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5011;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5012;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5012;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5013;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5013;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5014;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5014;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5015;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5015;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5016;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5016;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5017;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5018;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5019;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5020;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5021;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5022;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5023;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5024;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5025;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5026;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5027;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5028;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5029;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5030;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5031;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5032;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5033;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5034;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5035;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5036;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5037;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5038;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5039;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5039;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5040;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5041;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5042;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5043;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5044;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5045;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5046;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5047;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5048;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5049;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5050;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5051;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5052;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5053;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5054;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5055;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5056;Fecha;Q07 fecha AAAA-MM-DD;2026-08-07;07/08/2026
+p6-movimientos.csv;5057;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5058;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5059;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5060;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5060;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5061;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5062;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5062;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5063;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5064;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5064;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5065;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5066;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5066;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5067;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5068;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5068;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5069;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5070;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5071;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5072;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5073;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5074;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5075;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5075;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5076;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5077;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5078;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5079;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5080;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5081;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5082;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5083;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5084;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5085;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5086;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5087;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5088;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5089;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5090;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5091;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5092;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5093;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5094;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5095;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5096;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5097;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5098;Fecha;Q07 fecha AAAA-MM-DD;2026-08-10;10/08/2026
+p6-movimientos.csv;5099;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5100;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5101;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5101;Cantidad;Q05 punto decimal;690.5;690,5
+p6-movimientos.csv;5102;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5103;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5104;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5105;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5106;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5106;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5107;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5107;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5108;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5109;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5109;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5110;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5110;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5111;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5112;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5113;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5114;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5114;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5115;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5115;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5116;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5117;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5118;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5119;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5120;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5121;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5122;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5123;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5124;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5125;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5126;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5127;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5128;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5128;Cantidad;Q14 SAL en negativo;-97,5;97,5
+p6-movimientos.csv;5129;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5130;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5131;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5132;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5133;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5134;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5135;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5136;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5137;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5138;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5139;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5140;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5141;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5142;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5143;Fecha;Q07 fecha AAAA-MM-DD;2026-08-11;11/08/2026
+p6-movimientos.csv;5144;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5144;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5145;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5145;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5146;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5147;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5148;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5149;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5149;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5150;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5151;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5152;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5152;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5153;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5153;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5154;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5155;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5156;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5157;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5158;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5159;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5160;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5161;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5162;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5163;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5164;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5165;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5166;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5167;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5168;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5169;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5170;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5171;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5172;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5173;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5174;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5175;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5176;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5177;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5178;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5179;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5180;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5181;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5182;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5183;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5184;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5185;Fecha;Q07 fecha AAAA-MM-DD;2026-08-12;12/08/2026
+p6-movimientos.csv;5186;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5187;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5188;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5189;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5190;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5191;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5192;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5193;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5194;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5195;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5196;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5197;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5198;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5199;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5199;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5200;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5201;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5202;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5202;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5203;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5203;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5204;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5204;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5205;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5205;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5206;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5207;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5208;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5209;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5210;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5211;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5212;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5213;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5214;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5215;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5216;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5217;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5218;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5219;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5220;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5221;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5222;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5223;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5224;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5225;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5226;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5227;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5227;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5228;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5229;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5230;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5231;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5232;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5233;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5234;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5235;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5236;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5237;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5238;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5239;Fecha;Q07 fecha AAAA-MM-DD;2026-08-13;13/08/2026
+p6-movimientos.csv;5240;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5241;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5242;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5243;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5244;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5245;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5246;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5247;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5248;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5249;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5249;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5249;Cantidad;Q14 SAL en negativo;-36;36
+p6-movimientos.csv;5250;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5250;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5251;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5252;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5253;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5253;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5254;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5254;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5255;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5256;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5257;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5258;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5259;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5260;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5261;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5262;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5263;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5264;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5265;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5266;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5267;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5268;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5269;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5270;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5271;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5272;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5273;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5274;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5275;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5276;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5277;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5278;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5279;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5280;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5281;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5282;Fecha;Q07 fecha AAAA-MM-DD;2026-08-14;14/08/2026
+p6-movimientos.csv;5283;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5284;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5285;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5285;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5286;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5287;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5287;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5288;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5289;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5289;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5290;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5291;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5292;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5293;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5294;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5295;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5296;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5296;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5297;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5298;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5299;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5300;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5301;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5302;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5303;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5304;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5305;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5306;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5307;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5308;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5309;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5310;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5311;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5312;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5313;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5314;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5315;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5316;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5317;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5318;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5319;Fecha;Q07 fecha AAAA-MM-DD;2026-08-17;17/08/2026
+p6-movimientos.csv;5320;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5321;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5322;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5323;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5324;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5325;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5326;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5327;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5328;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5328;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5329;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5329;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5330;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5331;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5331;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5332;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5333;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5334;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5334;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5335;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5335;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5336;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5337;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5338;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5339;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5340;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5341;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5342;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5343;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5344;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5345;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5346;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5347;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5348;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5349;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5350;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5351;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5352;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5353;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5354;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5355;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5356;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5357;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5358;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5359;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5360;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5361;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5362;Fecha;Q07 fecha AAAA-MM-DD;2026-08-18;18/08/2026
+p6-movimientos.csv;5363;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5364;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5365;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5366;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5367;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5368;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5369;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5370;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5371;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5371;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5372;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5372;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5373;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5373;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5374;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5374;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5375;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5375;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5376;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5377;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5377;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5378;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5379;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5380;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5380;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5381;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5381;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5382;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5382;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5383;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5383;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5384;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5384;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5385;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5385;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5386;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5387;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5388;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5389;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5390;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5391;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5392;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5393;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5394;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5395;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5396;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5397;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5398;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5399;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5400;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5401;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5402;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5403;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5404;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5405;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5406;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5407;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5408;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5409;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5410;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5411;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5412;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5413;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5414;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5415;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5416;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5417;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5418;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5419;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5420;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5421;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5422;Fecha;Q07 fecha AAAA-MM-DD;2026-08-19;19/08/2026
+p6-movimientos.csv;5423;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5424;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5425;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5426;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5427;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5428;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5429;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5429;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5430;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5431;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5431;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5432;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5433;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5434;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5435;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5436;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5437;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5438;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5439;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5440;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5441;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5442;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5443;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5444;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5445;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5446;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5447;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5448;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5449;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5450;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5451;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5452;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5453;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5454;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5455;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5455;Cantidad;Q14 SAL en negativo;-146;146
+p6-movimientos.csv;5456;Fecha;Q07 fecha AAAA-MM-DD;2026-08-20;20/08/2026
+p6-movimientos.csv;5457;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5458;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5459;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5460;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5461;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5461;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5462;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5463;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5464;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5465;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5466;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5467;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5468;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5468;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5469;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5470;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5471;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5471;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5472;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5473;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5473;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5474;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5475;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5475;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5476;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5476;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5477;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5478;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5479;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5480;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5480;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5481;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5481;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5482;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5483;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5484;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5485;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5486;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5487;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5488;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5489;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5490;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5491;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5492;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5492;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5493;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5494;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5495;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5496;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5497;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5498;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5499;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5500;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5501;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5502;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5503;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5504;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5505;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5506;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5507;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5508;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5509;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5510;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5511;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5512;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5513;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5514;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5515;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5516;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5517;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5518;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5519;Fecha;Q07 fecha AAAA-MM-DD;2026-08-21;21/08/2026
+p6-movimientos.csv;5520;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5520;Cantidad;Q05 punto decimal;317.5;317,5
+p6-movimientos.csv;5521;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5522;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5523;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5524;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5525;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5526;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5527;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5527;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5528;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5528;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5529;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5530;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5530;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5531;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5531;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5532;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5533;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5534;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5534;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5535;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5536;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5537;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5538;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5539;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5540;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5541;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5542;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5543;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5544;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5545;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5545;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5546;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5547;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5548;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5549;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5550;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5550;Cantidad;Q14 SAL en negativo;-2142;2142
+p6-movimientos.csv;5551;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5552;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5553;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5554;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5555;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5556;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5557;Fecha;Q07 fecha AAAA-MM-DD;2026-08-24;24/08/2026
+p6-movimientos.csv;5558;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5559;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5559;Cantidad;Q05 punto decimal;520.5;520,5
+p6-movimientos.csv;5560;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5561;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5562;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5563;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5564;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5564;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5565;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5565;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5566;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5566;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5567;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5567;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5568;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5568;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5569;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5570;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5571;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5572;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5573;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5574;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5575;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5576;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5577;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5578;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5579;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5580;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5580;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5581;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5582;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5583;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5584;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5585;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5586;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5587;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5588;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5589;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5590;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5591;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5592;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5592;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5593;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5594;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5595;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5596;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5597;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5598;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5599;Fecha;Q07 fecha AAAA-MM-DD;2026-08-25;25/08/2026
+p6-movimientos.csv;5600;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5601;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5602;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5603;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5603;Cantidad;Q14 SAL en negativo;-138.5;138,5
+p6-movimientos.csv;5603;Cantidad;Q05 punto decimal;-138.5;138,5
+p6-movimientos.csv;5604;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5605;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5606;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5607;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5607;Cantidad;Q05 punto decimal;2223.5;2223,5
+p6-movimientos.csv;5608;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5609;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5610;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5611;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5612;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5612;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5613;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5614;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5614;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5615;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5615;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5616;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5617;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5617;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5618;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5619;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5619;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5620;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5620;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5621;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5621;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5622;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5623;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5624;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5624;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5625;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5626;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5627;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5628;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5629;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5630;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5631;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5632;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5633;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5634;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5634;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5635;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5636;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5637;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5638;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5639;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5640;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5641;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5642;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5643;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5644;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5645;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5646;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5647;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5648;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5649;Fecha;Q07 fecha AAAA-MM-DD;2026-08-26;26/08/2026
+p6-movimientos.csv;5650;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5651;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5652;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5653;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5654;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5655;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5656;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5656;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5657;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5657;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5658;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5659;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5659;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5660;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5660;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5661;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5662;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5662;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5663;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5664;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5665;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5665;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5666;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5667;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5667;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5668;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5669;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5670;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5671;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5672;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5673;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5674;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5675;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5676;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5676;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5677;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5678;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5679;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5680;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5681;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5682;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5683;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5684;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5685;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5686;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5687;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5688;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5689;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5690;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5691;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5692;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5693;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5694;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5695;Fecha;Q07 fecha AAAA-MM-DD;2026-08-27;27/08/2026
+p6-movimientos.csv;5696;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5697;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5697;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5698;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5699;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5700;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5701;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5702;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5703;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5703;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5704;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5704;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5705;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5705;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5706;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5706;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5707;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5708;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5708;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5709;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5709;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5710;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5710;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5711;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5711;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5712;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5713;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5714;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5715;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5716;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5717;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5718;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5719;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5720;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5721;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5722;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5723;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5724;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5725;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5726;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5727;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5728;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5729;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5730;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5731;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5732;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5733;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5734;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5735;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5736;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5737;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5738;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5739;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5740;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5741;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5742;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5743;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5744;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5745;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5746;Fecha;Q07 fecha AAAA-MM-DD;2026-08-28;28/08/2026
+p6-movimientos.csv;5747;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5748;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5749;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5750;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5750;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5751;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5752;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5752;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5753;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5753;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5754;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5755;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5756;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5757;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5757;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5758;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5759;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5760;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5761;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5762;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5763;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5764;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5765;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5766;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5767;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5767;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5768;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5769;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5770;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5771;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5772;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5773;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5774;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5775;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5776;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5777;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5778;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5779;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5780;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5781;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5782;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5783;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5784;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5785;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5786;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5787;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5788;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5789;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5790;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5791;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5792;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5793;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5794;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5795;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5796;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5797;Fecha;Q07 fecha AAAA-MM-DD;2026-08-31;31/08/2026
+p6-movimientos.csv;5798;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5810;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5811;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5814;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5816;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5817;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5818;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5819;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5820;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5822;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5823;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5829;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5830;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5883;Cantidad;Q05 punto decimal;152.5;152,5
+p6-movimientos.csv;5889;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5890;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5891;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5892;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5893;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5895;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5896;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5899;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5900;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5903;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5906;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5910;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;5944;Cantidad;Q14 SAL en negativo;-11;11
+p6-movimientos.csv;5964;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5965;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5966;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5967;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5968;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5970;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5975;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5978;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5979;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5980;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5981;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5982;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5983;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5984;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5985;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5986;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;5987;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6016;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6035;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6039;Cantidad;Q05 punto decimal;171.5;171,5
+p6-movimientos.csv;6041;Cantidad;Q05 punto decimal;4013.5;4013,5
+p6-movimientos.csv;6052;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6053;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6054;Cantidad;Q14 SAL en negativo;-28;28
+p6-movimientos.csv;6057;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6059;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6061;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6062;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6063;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6065;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6066;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6067;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6068;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6069;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6075;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6112;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6129;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6132;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6133;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6135;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6136;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6142;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6143;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6145;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6146;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6185;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6205;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6206;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6207;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6208;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6209;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6211;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6212;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6214;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6216;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6220;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6221;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6267;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6270;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6272;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6273;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6275;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6276;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6277;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6278;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6279;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6280;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6281;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6284;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6286;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6288;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6304;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6344;Cantidad;Q05 punto decimal;1355.5;1355,5
+p6-movimientos.csv;6356;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6358;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6360;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6361;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6362;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6363;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6364;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6365;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6369;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6370;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6371;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6372;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6373;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6374;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6375;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6376;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6418;Cantidad;Q14 SAL en negativo;-41;41
+p6-movimientos.csv;6427;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6436;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6438;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6439;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6440;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6441;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6442;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6447;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6480;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6503;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6504;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6505;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6506;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6508;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6509;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6510;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6512;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6514;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6515;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6516;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6517;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6518;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6586;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6587;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6588;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6589;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6590;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6591;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6592;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6594;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6596;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6597;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6599;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6600;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6601;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6602;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6604;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6609;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6633;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6666;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6667;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6668;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6673;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6674;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6675;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6676;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6677;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6698;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6744;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6747;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6748;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6750;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6751;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6753;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6755;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6756;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6758;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6759;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6760;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6761;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6764;Cantidad;Q14 SAL en negativo;-1456;1456
+p6-movimientos.csv;6806;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6808;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6809;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6812;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6816;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6820;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6822;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6847;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6879;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6880;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6882;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6883;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6884;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6885;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6887;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6888;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6890;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6892;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6893;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6895;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6896;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6897;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6900;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6917;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6938;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;6955;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6956;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6958;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6959;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;6960;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7023;Cantidad;Q05 punto decimal;1459.5;1459,5
+p6-movimientos.csv;7024;Cantidad;Q05 punto decimal;1256.5;1256,5
+p6-movimientos.csv;7032;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7035;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7035;Cantidad;Q14 SAL en negativo;-76;76
+p6-movimientos.csv;7037;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7042;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7044;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7045;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7046;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7049;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7050;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7051;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7066;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7106;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7107;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7108;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7111;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7114;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7117;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7118;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7120;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7121;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7122;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7180;Cantidad;Q05 punto decimal;1739.5;1739,5
+p6-movimientos.csv;7190;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7192;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7193;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7195;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7197;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7199;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7200;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7201;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7205;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7254;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7255;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7257;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7259;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7260;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7261;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7262;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7263;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7264;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7265;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7266;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7267;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7268;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7273;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7304;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7324;Cantidad;Q05 punto decimal;2643.5;2643,5
+p6-movimientos.csv;7325;Cantidad;Q05 punto decimal;6824.5;6824,5
+p6-movimientos.csv;7334;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7338;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7340;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7341;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7344;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7345;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7346;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7347;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7348;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7349;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7351;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7353;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7403;Cantidad;Q05 punto decimal;246.5;246,5
+p6-movimientos.csv;7405;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7406;Cantidad;Q05 punto decimal;2235.5;2235,5
+p6-movimientos.csv;7414;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7415;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7417;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7418;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7419;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7421;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7423;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7424;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7426;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7427;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7434;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7474;Cantidad;Q05 punto decimal;2125.5;2125,5
+p6-movimientos.csv;7483;Cantidad;Q05 punto decimal;84.5;84,5
+p6-movimientos.csv;7484;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7485;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7486;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7487;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7489;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7490;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7492;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7494;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7497;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7500;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7501;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7520;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7531;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7558;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7559;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7560;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7561;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7564;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7565;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7566;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7568;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7570;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7576;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7586;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7600;Cantidad;Q14 SAL en negativo;-129;129
+p6-movimientos.csv;7605;Cantidad;Q14 SAL en negativo;-11;11
+p6-movimientos.csv;7622;Cantidad;Q05 punto decimal;766.5;766,5
+p6-movimientos.csv;7632;Cantidad;Q05 punto decimal;386.5;386,5
+p6-movimientos.csv;7642;Cantidad;Q05 punto decimal;1379.5;1379,5
+p6-movimientos.csv;7643;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7647;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7652;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7654;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7655;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7657;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7680;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7692;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7725;Cantidad;Q14 SAL en negativo;-77.5;77,5
+p6-movimientos.csv;7725;Cantidad;Q05 punto decimal;-77.5;77,5
+p6-movimientos.csv;7737;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7738;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7739;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7740;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7741;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7742;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7743;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7746;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7748;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7750;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7751;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7753;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7756;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7758;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7759;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7761;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7767;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7783;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7799;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7800;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7806;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7808;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7812;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7816;Cantidad;Q14 SAL en negativo;-15;15
+p6-movimientos.csv;7817;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7834;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7837;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;7869;Cantidad;Q05 punto decimal;85.5;85,5
+p6-movimientos.csv;7877;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7881;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7882;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7884;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7887;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7888;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7889;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7890;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7891;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7950;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7951;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7953;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7956;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7957;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;7959;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8014;Cantidad;Q05 punto decimal;579.5;579,5
+p6-movimientos.csv;8017;Cantidad;Q05 punto decimal;2264.5;2264,5
+p6-movimientos.csv;8025;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8027;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8028;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8030;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8033;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8034;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8035;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8036;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8037;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8038;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8041;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8042;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8065;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8099;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8100;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8101;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8103;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8105;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8106;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8107;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8109;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8111;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8113;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8114;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8120;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8123;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8146;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8159;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8161;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8167;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8168;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8169;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8171;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8173;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8174;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8179;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8194;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8211;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8225;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8233;Cantidad;Q05 punto decimal;1539.5;1539,5
+p6-movimientos.csv;8235;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8238;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8239;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8240;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8241;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8250;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8299;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8307;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8309;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8313;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8314;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8316;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8317;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8319;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8320;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8321;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8327;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8335;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8357;Cantidad;Q14 SAL en negativo;-13;13
+p6-movimientos.csv;8383;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8385;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8387;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8388;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8389;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8391;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8393;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8395;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8396;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8398;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8400;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8401;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8402;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8404;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8405;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8406;Cantidad;Q14 SAL en negativo;-86;86
+p6-movimientos.csv;8430;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8444;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8456;Cantidad;Q05 punto decimal;31.5;31,5
+p6-movimientos.csv;8469;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8471;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8473;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8475;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8477;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8478;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8479;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8480;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8551;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8552;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8553;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8554;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8556;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8557;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8563;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8565;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8566;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8569;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8570;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8571;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8573;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8575;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8617;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8617;Cantidad;Q05 punto decimal;494.5;494,5
+p6-movimientos.csv;8620;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8622;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8623;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8625;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8626;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8627;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8628;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8629;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8630;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8631;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8632;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8633;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8637;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8638;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8647;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8675;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8707;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8713;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8714;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8715;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8716;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8717;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8718;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8721;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8776;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8781;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8785;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8786;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8793;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8794;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8798;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8811;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8840;Cantidad;Q05 punto decimal;129.5;129,5
+p6-movimientos.csv;8841;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8843;Cantidad;Q05 punto decimal;71.5;71,5
+p6-movimientos.csv;8856;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8858;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8859;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8862;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8863;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8864;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8866;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8867;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8870;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8871;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8872;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8888;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8923;Cantidad;Q05 punto decimal;4039.5;4039,5
+p6-movimientos.csv;8933;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8935;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8938;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8939;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8942;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8944;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8945;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8946;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8947;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8948;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8949;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8953;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;8970;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;8995;Cantidad;Q05 punto decimal;156.5;156,5
+p6-movimientos.csv;9002;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9003;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9004;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9005;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;9011;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9012;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9013;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9015;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9016;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9017;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9020;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9021;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9023;Tipo;Q08 tipo mal escrito;Salida;SAL
+p6-movimientos.csv;9031;Cantidad;Q14 SAL en negativo;-14;14
+p6-movimientos.csv;9050;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;9057;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;9058;Tipo;Q08 tipo mal escrito;salida ;SAL
+p6-movimientos.csv;9065;Cantidad;Q14 SAL en negativo;-29;29
+p6-datos.xlsx · Inventario_30-04;22;CodArticulo;Q13 código como número;000942;942
+p6-datos.xlsx · Inventario_30-04;32;CodArticulo;Q13 código como número;004870;4870
+p6-datos.xlsx · Inventario_30-04;35;CodArticulo;Q13 código como número;004827;4827
+p6-datos.xlsx · Inventario_30-04;40;CodArticulo;Q13 código como número;005822;5822
+p6-datos.xlsx · Inventario_30-04;53;CodArticulo;Q13 código como número;004851;4851
+p6-datos.xlsx · Inventario_30-04;65;CodArticulo;Q13 código como número;002816;2816
+p6-datos.xlsx · Inventario_30-04;73;CodArticulo;Q13 código como número;008982;8982
+p6-datos.xlsx · Inventario_30-04;87;CodArticulo;Q13 código como número;008358;8358
+p6-datos.xlsx · Inventario_30-04;94;CodArticulo;Q13 código como número;009848;9848
+p6-datos.xlsx · Inventario_30-04;107;CodArticulo;Q13 código como número;013924;13924
+p6-datos.xlsx · Inventario_30-04;113;CodArticulo;Q13 código como número;012534;12534
+p6-datos.xlsx · Inventario_30-04;117;CodArticulo;Q13 código como número;011880;11880
+p6-datos.xlsx · Inventario_30-04;126;CodArticulo;Q13 código como número;013928;13928
+p6-datos.xlsx · Inventario_30-04;127;CodArticulo;Q13 código como número;011868;11868
+p6-datos.xlsx · Inventario_30-04;130;CodArticulo;Q13 código como número;014884;14884
+p6-datos.xlsx · Inventario_30-04;132;CodArticulo;Q13 código como número;015133;15133
+p6-datos.xlsx · Inventario_30-04;168;CodArticulo;Q13 código como número;019453;19453
+p6-datos.xlsx · Inventario_30-04;173;CodArticulo;Q13 código como número;018389;18389
+p6-datos.xlsx · Inventario_30-04;183;CodArticulo;Q13 código como número;008350;8350
+p6-datos.xlsx · Inventario_30-04;190;CodArticulo;Q13 código como número;017445;17445
+p6-datos.xlsx · Inventario_30-04;192;CodArticulo;Q13 código como número;005024;5024
+p6-datos.xlsx · Inventario_30-04;195;CodArticulo;Q13 código como número;002007;2007
+p6-datos.xlsx · Inventario_30-04;162;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);016383;filas 162 y 187
+p6-datos.xlsx · Inventario_30-04;25;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);002059;filas 25 y 186
+p6-datos.xlsx · Inventario_30-04;72;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);007910;filas 72 y 194
+p6-datos.xlsx · Inventario_30-04;165;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);017445;filas 165 y 190
+p6-datos.xlsx · Inventario_30-04;54;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);004141;filas 54 y 188
+p6-datos.xlsx · Inventario_30-04;6;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);002499;filas 6 y 182
+p6-datos.xlsx · Inventario_30-04;9;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);002007;filas 9 y 195
+p6-datos.xlsx · Inventario_30-04;118;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);014745;filas 118 y 184
+p6-datos.xlsx · Inventario_30-04;81;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);008350;filas 81 y 183
+p6-datos.xlsx · Inventario_30-04;59;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);005024;filas 59 y 192
+p6-datos.xlsx · Inventario_30-04;135;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);012301;filas 135 y 197
+p6-datos.xlsx · Inventario_30-04;21;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);001543;filas 21 y 189
+p6-datos.xlsx · Inventario_30-04;177;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);018295;filas 177 y 185
+p6-datos.xlsx · Inventario_30-04;157;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);017911;filas 157 y 193
+p6-datos.xlsx · Inventario_30-04;137;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);014342;filas 137 y 191
+p6-datos.xlsx · Inventario_30-04;56;CodArticulo;Q03 artículo en dos ubicaciones (legítimo: sumar);006213;filas 56 y 196
+p6-datos.xlsx · Fichas;40;PlazoEntrega;Q09 plazo vacío (usar el del proveedor);;6
+p6-datos.xlsx · Fichas;2;PlazoEntrega;Q09 plazo vacío (usar el del proveedor);;2
+p6-datos.xlsx · Fichas;86;PlazoEntrega;Q09 plazo vacío (usar el del proveedor);;4
+p6-datos.xlsx · Fichas;105;PlazoEntrega;Q09 plazo vacío (usar el del proveedor);;5
+p6-datos.xlsx · Fichas;132;PlazoEntrega;Q09 plazo vacío (usar el del proveedor);;4
+p6-datos.xlsx · Fichas;;CodArticulo;Q16 artículo sin ficha;002458;Cable coaxial 75 Ω (rollo 100 m)
+p6-datos.xlsx · Fichas;;CodArticulo;Q16 artículo sin ficha;019601;Linterna frontal LED
+p6-datos.xlsx · Fichas;;CodArticulo;Q16 artículo sin ficha;017833;Abrazadera para tubo M20 (caja de 100)
+p6-datos.xlsx · Recuento_31-10;10;StockFísico;Diferencia de recuento;458;455
+p6-datos.xlsx · Recuento_31-10;11;StockFísico;Diferencia de recuento;4133,5;4121

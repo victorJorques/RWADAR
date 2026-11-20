@@ -1,0 +1,307 @@
+{
+  "id": "n5m4l3",
+  "titulo": "Office Scripts, Python en Excel y Power BI: qué son y cuándo dar el salto",
+  "minutos": 15,
+  "objetivo": "Saber qué hacen Office Scripts, Power Automate, Python en Excel y Power BI, qué necesitan y cuándo conviene cada uno.",
+  "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Me dicen que deberíamos «automatizar con scripts» y «pasarnos a Power BI». Tú eres la de Excel: ¿qué nos conviene para el informe de ventas de cada lunes y para el cuadro de mando que quieren ver los 12 comerciales, cada uno con lo suyo? Dos líneas por cosa.",
+    "logro": "Ya sabes qué hacen Office Scripts, Python en Excel y Power BI, y cuándo conviene dar el salto (y cuándo no)."
+  },
+  "funciones": ["REDONDEAR.MENOS"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Ya eres la referencia de Excel de la oficina, y te van a llegar palabras nuevas: «script», «Python», «Power BI». No hace falta que las domines hoy. Sí que sepas **qué son, qué necesitan y cuándo merecen la pena**, para decidir con criterio y no por moda. Empezamos por la que tienes más a mano: la pestaña **Automatizar** de Excel."
+    },
+    {
+      "tipo": "texto",
+      "md": "Un **Office Script** es una lista de pasos de Excel guardada para repetirla con un clic: como una macro, pero moderna. Se graba con **Automatizar › Grabar acciones**: haces los pasos una vez, paras la grabación y Excel los escribe en un lenguaje de programación llamado TypeScript. El script se guarda en tu **OneDrive** (no dentro del libro) y funciona en Excel para la web, en Windows y en Mac."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Qué necesita",
+      "md": "Una licencia de Microsoft 365 de empresa (Business, E3, E5…) y OneDrive para la Empresa; en Windows, la versión 2210 o posterior. En las cuentas Personal y Familia solo está como versión de prueba. Si no ves la pestaña **Automatizar**, puede que tu administrador lo tenga desactivado."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e1",
+      "modo": "cinta",
+      "enunciado": "Vas a grabar tu primer Office Script. ¿Dónde está el botón para empezar a grabar?",
+      "ruta": ["Automatizar", "Herramientas de scripts de Office", "Grabar acciones"],
+      "explicacion": "Automatizar › Herramientas de scripts de Office › Grabar acciones. Desde ese momento, Excel apunta cada paso que das hasta que paras la grabación."
+    },
+    {
+      "tipo": "comparar",
+      "izq": "Macro (VBA)",
+      "der": "Office Script",
+      "filas": [
+        ["Funciona en Excel de escritorio (Windows y Mac)", "Funciona en Excel para la web, Windows y Mac"],
+        ["En Excel para la web no se puede crear, ejecutar ni editar", "Pensado también para el navegador"],
+        ["Vive dentro del libro (.xlsm)", "Vive en tu OneDrive, aparte del libro"],
+        ["Se escribe en VBA", "Se escribe en TypeScript"]
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e2",
+      "modo": "test",
+      "pregunta": "El informe de stock de Andrés se abre siempre en **Excel para la web**, desde el navegador. Quieres automatizar el formato que le das cada mañana. ¿Qué eliges?",
+      "opciones": [
+        {
+          "texto": "Un Office Script",
+          "correcta": true,
+          "porque": "Eso es: funciona en Excel para la web (y también en Windows y Mac). Es la opción moderna para libros que viven en la nube."
+        },
+        {
+          "texto": "Una macro VBA",
+          "correcta": false,
+          "porque": "En Excel para la web no se pueden crear, ejecutar ni editar macros VBA. Para el navegador, no sirve."
+        },
+        {
+          "texto": "Nada: en el navegador no se puede automatizar",
+          "correcta": false,
+          "porque": "Sí se puede: los Office Scripts están pensados justo para eso."
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "md": "Los scripts tienen un compañero: **Power Automate**, la herramienta de Microsoft 365 para encadenar tareas automáticas. Con ella puedes **programar** un script, es decir, decirle cuándo se ejecuta solo: por ejemplo, «cada lunes a las 7:00, ejecuta el script de formato en el libro de ventas». Así el informe está listo cuando llegas. Lo monta una vez quien sabe (tú, o informática) y después funciona sin que nadie pulse nada."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "No automatices lo que aún cambia",
+      "md": "Grabar un proceso que cambia cada semana (columnas nuevas, criterios que dirección todavía discute) es grabar un error que se repetirá solo. Primero haz el proceso a mano unas semanas hasta que esté estable; después, grábalo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e3",
+      "modo": "test",
+      "pregunta": "¿Cuál de estas tareas conviene automatizar **ya**?",
+      "opciones": [
+        {
+          "texto": "El formato del informe semanal de ventas, que lleva un año igual",
+          "correcta": true,
+          "porque": "Es estable y se repite cada semana: cada minuto que ahorra se multiplica por 52."
+        },
+        {
+          "texto": "El informe nuevo de márgenes, que Carmen cambia cada semana",
+          "correcta": false,
+          "porque": "Si los pasos cambian cada semana, grabarías un proceso que mañana ya no vale. Primero que se estabilice."
+        },
+        {
+          "texto": "Un cuadre que haces una vez al año y te lleva cinco minutos",
+          "correcta": false,
+          "porque": "Preparar, probar y mantener el script costaría más tiempo del que ahorra."
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "md": "**Python en Excel** permite escribir código de Python (un lenguaje de programación muy usado para analizar datos) dentro de una celda: escribes `=PY` y se abre un editor. El código se ejecuta **en la nube de Microsoft**, no en tu ordenador, con herramientas de análisis ya preparadas. Sirve para estadística avanzada, gráficos especiales o limpiezas de datos complicadas. Es un tema opcional: basta con que sepas que existe y qué necesita."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Qué necesita Python en Excel",
+      "md": "Microsoft 365 de empresa (Windows, Mac o web). No funciona en las versiones de compra única (Excel 2021 o 2024), ni en el móvil (las celdas de Python dan error al recalcular), ni con la activación en equipo compartido que usan muchos escritorios remotos. Como el código va a la nube, no lo uses con datos sensibles sin permiso de la empresa."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e4",
+      "modo": "test",
+      "pregunta": "Marta abre en el móvil, de camino a una reunión, un libro con celdas de Python. ¿Qué pasa?",
+      "opciones": [
+        {
+          "texto": "El libro se abre, pero las celdas de Python dan error al recalcular",
+          "correcta": true,
+          "porque": "Así es: Python en Excel no funciona en el móvil. Si un informe se va a mirar en el móvil, que no dependa de Python."
+        },
+        {
+          "texto": "Funciona igual que en el ordenador, porque el código se ejecuta en la nube",
+          "correcta": false,
+          "porque": "Se ejecuta en la nube, sí, pero Excel para móvil no lo admite: las celdas dan error al recalcular."
+        },
+        {
+          "texto": "El libro no se puede abrir",
+          "correcta": false,
+          "porque": "Se abre sin problema; lo que falla son las celdas de Python cuando se recalculan."
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "md": "**Power BI** es el programa de Microsoft para cuadros de mando que consultan muchas personas: el informe se publica en un servicio web y cada uno lo abre desde el navegador o el móvil. Usa el mismo **Power Query** y el mismo **modelo de datos** que ya manejas en Excel, así que lo que sabes te sirve para dar el salto. Excel no desaparece: sigue siendo el **taller** donde se analiza, se prueba y se cuadra."
+    },
+    {
+      "tipo": "texto",
+      "md": "**Señales de que Excel se queda pequeño:**\n- Los datos se acercan al límite de **1.048.576 filas** por hoja, o el libro va lento aunque esté bien hecho.\n- Hay que combinar muchas fuentes y actualizarlas solas, a una hora fija.\n- Lo consultan muchas personas y cada una solo debe ver lo suyo (en Power BI se llama **seguridad de nivel de fila**).\n- Muchas personas escriben datos a la vez: eso pide un formulario o una base de datos, no una hoja compartida."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "truco",
+      "titulo": "El paso intermedio",
+      "md": "Si el problema es solo el volumen, antes de cambiar de programa carga los datos con **Power Query** al **modelo de datos**: ahí no rige el límite de filas de la hoja."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e5",
+      "modo": "formula",
+      "enunciado": "Andrés pega cada mes en la misma hoja los movimientos del almacén que exporta el programa de gestión. En **B6** calcula cuántos **meses completos** más caben antes de llegar al límite: las filas libres (B2 menos B3) entre las filas nuevas de cada mes (B4), **redondeado hacia abajo** (un mes a medias no cabe).",
+      "hoja": {
+        "celdas": {
+          "A1": "Dato",
+          "B1": "Valor",
+          "A2": "Límite de filas de una hoja",
+          "B2": 1048576,
+          "A3": "Filas ya ocupadas",
+          "B3": 742300,
+          "A4": "Filas nuevas cada mes",
+          "B4": 61500,
+          "A6": "Meses completos que caben"
+        },
+        "formatos": {
+          "B2:B4": "#.##0"
+        },
+        "anchos": {
+          "A": 28,
+          "B": 12
+        }
+      },
+      "objetivo": "B6",
+      "solucion": "=REDONDEAR.MENOS((B2-B3)/B4;0)",
+      "alternativas": [
+        "=ENTERO((B2-B3)/B4)",
+        "=TRUNCAR((B2-B3)/B4)",
+        "=COCIENTE(B2-B3;B4)"
+      ],
+      "errores_tipicos": [
+        "=REDONDEAR((B2-B3)/B4;0)",
+        "=REDONDEAR.MAS((B2-B3)/B4;0)",
+        "=(B2-B3)/B4",
+        "=REDONDEAR.MENOS(B2-B3/B4;0)"
+      ],
+      "variantes": [
+        {
+          "B3": 820000,
+          "B4": 45000
+        },
+        {
+          "B3": 1000000,
+          "B4": 20000
+        }
+      ],
+      "pistas": [
+        "Primero las filas libres: B2-B3. Ponlas entre paréntesis para que se resten antes de dividir.",
+        "Divide entre B4 y redondea hacia abajo con REDONDEAR.MENOS y 0 decimales.",
+        "Queda así: `=REDONDEAR.MENOS((B2-B3)/B4;0)`."
+      ],
+      "explicacion": "Caben **4 meses** más: en el quinto, el histórico ya no entra en la hoja. Esta cuenta de servilleta convierte una sensación («el archivo va pesado») en un plazo para decidir: cargar los datos con Power Query al modelo de datos, o pasar a Power BI, antes de quedarte sin sitio."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e6",
+      "modo": "test",
+      "pregunta": "¿En cuál de estos casos tiene más sentido dar el salto a **Power BI**?",
+      "opciones": [
+        {
+          "texto": "Un cuadro de mando que consultarán 40 personas, y cada delegación solo debe ver sus datos",
+          "correcta": true,
+          "porque": "Muchas personas y cada una con permiso solo para lo suyo: justo para eso está Power BI, con su seguridad de nivel de fila."
+        },
+        {
+          "texto": "El presupuesto que usa solo Marta y que retoca cada día",
+          "correcta": false,
+          "porque": "Una persona, supuestos que cambian a diario: eso es trabajo de taller, y el taller es Excel."
+        },
+        {
+          "texto": "La lista de los 300 clientes activos con su delegación",
+          "correcta": false,
+          "porque": "300 filas no son nada para Excel. El tamaño solo es motivo cuando te acercas al límite de la hoja."
+        }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l3-e7",
+      "modo": "abierta",
+      "pregunta": "Contesta a Carmen en dos líneas por cosa: ¿qué conviene para el **informe de ventas de cada lunes** (siempre los mismos pasos desde hace meses) y para el **cuadro de mando de los 12 comerciales**, en el que cada uno debe ver solo lo suyo?",
+      "modelo": "Informe de los lunes: como los pasos son siempre los mismos, lo grabaría como Office Script (Automatizar › Grabar acciones) y lo programaría con Power Automate para que esté listo a primera hora; antes lo probaría un par de semanas. Cuadro de mando de los comerciales: como lo consultan 12 personas y cada una solo debe ver lo suyo, conviene Power BI con seguridad de nivel de fila, aprovechando el Power Query y el modelo de datos que ya tenemos en Excel.",
+      "criterios": [
+        "Para el informe semanal propone un Office Script (y Power Automate para programarlo)",
+        "Lo justifica porque el proceso es estable y repetitivo, o propone probarlo antes",
+        "Para el cuadro de mando propone Power BI",
+        "Lo justifica porque lo consultan muchas personas y cada una debe ver solo lo suyo",
+        "Es breve y clara, como un mensaje a dirección"
+      ]
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m4l3-q1",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para grabar un Office Script y empezar a usarlo con seguridad.",
+      "pasos": [
+        "Abre el libro, guardado en OneDrive",
+        "Pulsa Automatizar › Grabar acciones",
+        "Haz los pasos una sola vez, sin prisa",
+        "Para la grabación: el script queda guardado en tu OneDrive",
+        "Pruébalo en una copia del libro y revisa el resultado antes de usarlo en el bueno"
+      ],
+      "explicacion": "Se graba una vez con calma y se prueba en una copia: un script repite también los errores, y los repite cada vez."
+    },
+    {
+      "id": "n5m4l3-q2",
+      "modo": "test",
+      "pregunta": "¿Dónde se ejecuta el código de una celda de Python en Excel?",
+      "opciones": [
+        {
+          "texto": "En la nube de Microsoft",
+          "correcta": true,
+          "porque": "Eso es: por eso necesita conexión y Microsoft 365, y por eso no se usa con datos sensibles sin permiso."
+        },
+        {
+          "texto": "En tu ordenador, como una macro",
+          "correcta": false,
+          "porque": "Las macros VBA sí se ejecutan en tu equipo; Python en Excel no, va a la nube de Microsoft."
+        },
+        {
+          "texto": "Dentro de Power BI",
+          "correcta": false,
+          "porque": "Power BI es otro programa, para publicar cuadros de mando. Python en Excel funciona dentro de Excel y se calcula en la nube."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "Office Script: ¿dónde se graba y dónde se guarda?",
+      "dorso": "Se graba con Automatizar › Grabar acciones y se guarda en tu OneDrive, no dentro del libro. Funciona en la web, Windows y Mac."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Para qué sirve Power Automate con un Office Script?",
+      "dorso": "Para programarlo: que se ejecute solo, por ejemplo cada lunes a una hora fija."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Python en Excel: cómo se empieza y qué necesita",
+      "dorso": "Se escribe =PY en una celda. Se ejecuta en la nube de Microsoft y necesita Microsoft 365 de empresa; no funciona en el móvil."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Cuántas filas caben como máximo en una hoja de Excel?",
+      "dorso": "1.048.576 filas."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Señales para pasar de Excel a Power BI",
+      "dorso": "Muchas personas consultando y cada una con lo suyo; muchas fuentes con actualización programada; volumen cerca del límite de filas."
+    }
+  ]
+}

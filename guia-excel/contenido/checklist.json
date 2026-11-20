@@ -1,0 +1,39 @@
+[
+  { "grupo": "Los datos", "puntos": [
+    "El **número de filas** y el **total** cuadran con el programa de origen (anótalo en la hoja Comprobaciones).",
+    "No hay **duplicados** en la clave (número de factura, NIF, código de empleado) ni vacíos en campos obligatorios.",
+    "Los números son números y las fechas son fechas (alineados a la derecha); los **códigos son texto**.",
+    "No quedan textos con espacios de más ni la misma cosa escrita de varias formas.",
+    "El **periodo** es el que te pidieron: ni un mes de más ni uno de menos."
+  ] },
+  { "grupo": "Los cálculos", "puntos": [
+    "Ningún número que pueda cambiar está escrito **dentro de una fórmula**: está en una celda con su nombre.",
+    "Hay **una sola fórmula por columna** (sin triángulos verdes de incoherencia).",
+    "Lo has probado con números fáciles y con **casos límite**: mes sin ventas, cliente nuevo, importe negativo, código que no existe.",
+    "Las **celdas de comprobación** dicen «OK».",
+    "Los resultados son **razonables**: orden de magnitud, signo y comparación con el mes anterior.",
+    "Si hay tablas dinámicas o consultas, has pulsado **Actualizar todo**."
+  ] },
+  { "grupo": "La presentación", "puntos": [
+    "La primera hoja es el **resumen**, con el título, el periodo y la fecha.",
+    "Cada cifra lleva su **unidad** (€, %, unidades) y los decimales justos.",
+    "Los gráficos tienen un **título que dice la conclusión** y no les sobra nada.",
+    "Se imprime bien en **una página** (compruébalo en la vista previa).",
+    "La hoja **Léeme** está al día: fuentes, supuestos, cómo se actualiza y quién responde."
+  ] },
+  { "grupo": "Seguridad y datos personales", "puntos": [
+    "Solo van los **datos personales necesarios**: quita las columnas que el destinatario no necesita.",
+    "No hay **hojas, filas o columnas ocultas** con información que no debe salir.",
+    "Has pasado **Archivo › Información › Inspeccionar documento** sobre una copia.",
+    "No quedan **vínculos** a archivos de tu ordenador.",
+    "Compartes con el **enlace y los permisos adecuados**, o un PDF si solo tienen que leerlo.",
+    "Si el archivo es sensible y va por correo, está **cifrado con contraseña** y la contraseña va por otro canal."
+  ] },
+  { "grupo": "El mensaje", "puntos": [
+    "El correo empieza por **las conclusiones** (dos o tres), no por «te adjunto el Excel».",
+    "Dices **qué incluye** el archivo y qué has supuesto.",
+    "Dices **lo que no has podido hacer** o lo que hay que vigilar.",
+    "El archivo tiene un **nombre claro con fecha** (2026-11 Informe de ventas.xlsx).",
+    "Si el encargo era importante, lo ha **revisado otra persona** o lo has repasado tú al día siguiente."
+  ] }
+]

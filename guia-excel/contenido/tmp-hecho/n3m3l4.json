@@ -1,0 +1,351 @@
+{
+ "id": "n3m3l4",
+ "titulo": "Importar un CSV sin estropearlo",
+ "minutos": 14,
+ "objetivo": "Importar un CSV con Datos › Obtener y transformar datos › De texto/CSV eligiendo codificación y delimitador, mantener como texto los códigos con ceros y los códigos largos, y reconocer por los síntomas qué ha fallado cuando se abre mal.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "El proveedor de cable nos manda la tarifa 2027 en CSV. Cuando la abro con doble clic, los códigos pierden los ceros, los EAN salen como 8,41235E+12 y las tildes salen rotas. ¿Me la metes en Excel bien?",
+  "logro": "Ya sabes importar un CSV sin perder ceros, códigos largos ni tildes, y reconocer por los síntomas qué ha fallado."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Un **CSV** es un archivo de texto: una fila por línea y las columnas separadas por un símbolo. Así se ve por dentro la tarifa del proveedor (ábrelo con el Bloc de notas y lo verás):\n\n`Codigo;EAN;Descripcion;Precio`\n`00412;8412345678905;Interruptor magnetotérmico 2P 16A;9,85`\n\nLos CSV españoles separan con **punto y coma** y usan **coma decimal**; los americanos, con **coma** y punto decimal. Los programas de gestión los usan porque cualquier sistema los lee."
+  },
+  {
+   "tipo": "texto",
+   "md": "**El doble clic es peligroso.** Si abres un CSV con doble clic, Excel adivina qué es cada dato y lo convierte sin preguntar:\n- «00412» pasa a 412: el código pierde los ceros.\n- Un EAN (el código de barras, de 13 cifras) se ve como 8,41235E+12: notación científica, una forma abreviada de escribir números grandes.\n- Un número de más de **15 cifras** pierde las últimas para siempre.\n- Las fechas pueden cambiar día por mes, y las tildes, salir rotas.\n\nY si luego guardas, el CSV queda estropeado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e1",
+   "modo": "test",
+   "pregunta": "Abres con doble clic el CSV de clientes y los códigos postales de Barcelona salen como **8001** en vez de 08001. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "Excel ha leído el código como número, y los números no llevan ceros delante",
+     "correcta": true,
+     "porque": "Correcto. Al abrirlo, Excel convierte en número todo lo que lo parece. El cero de delante desaparece."
+    },
+    {
+     "texto": "El archivo venía mal del programa",
+     "correcta": false,
+     "porque": "Ábrelo con el Bloc de notas y verás «08001». El archivo está bien: es Excel quien lo ha convertido al abrirlo."
+    },
+    {
+     "texto": "Es solo el formato: con Formato de celdas › Texto vuelve el cero",
+     "correcta": false,
+     "porque": "Cuando el cero ya se ha perdido, el formato Texto no lo devuelve: verás «8001». Hay que importar bien o rescatarlo con TEXTO(A2;\"00000\")."
+    }
+   ],
+   "explicacion": "El archivo está bien; lo que falla es cómo se abre. La solución es entrar por la puerta buena."
+  },
+  {
+   "tipo": "texto",
+   "md": "**La puerta buena: De texto/CSV.** Ve a **Datos › Obtener y transformar datos › De texto/CSV** y elige el archivo. Excel te enseña una **vista previa** con dos ajustes que importan:\n- **Origen del archivo**: la codificación, es decir, la tabla con la que se guardaron las letras. Para que tildes y eñes salgan bien, **65001: Unicode (UTF-8)**.\n- **Delimitador**: el separador de columnas. En los CSV españoles, **Punto y coma**.\n\nSi en la vista previa todo se ve bien, pulsa **Cargar**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Es la puerta de Power Query",
+   "md": "Esta ventana es la entrada a **Power Query**, la herramienta que verás a fondo en el nivel 4. Hoy solo la usas para importar bien."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e2",
+   "modo": "cinta",
+   "enunciado": "¿Dónde está el botón para importar un CSV sin que Excel lo estropee?",
+   "ruta": [
+    "Datos",
+    "Obtener y transformar datos",
+    "De texto/CSV"
+   ],
+   "explicacion": "**Datos › Obtener y transformar datos › De texto/CSV**. A partir de hoy, los CSV entran por aquí, no con doble clic."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Que los códigos sigan siendo texto.** Si en la vista previa los códigos ya salen sin ceros, no pulses Cargar: pulsa **Transformar datos** y se abre el editor de Power Query. En la columna de códigos, haz clic en el icono **123** de su encabezado y elige **Texto**. Si te pregunta qué hacer con el cambio de tipo que ya había, elige **reemplazarlo**, no añadir un paso nuevo: así se conservan los ceros. Haz lo mismo con el EAN. Al final, **Inicio › Cerrar y cargar**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e3",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para importar la tarifa de Andrés sin perder los ceros de los códigos.",
+   "pasos": [
+    "Datos › Obtener y transformar datos › De texto/CSV, y eliges el archivo",
+    "En la vista previa compruebas Origen del archivo y Delimitador",
+    "Pulsas Transformar datos",
+    "Cambias a Texto el tipo de las columnas Codigo y EAN",
+    "Inicio › Cerrar y cargar"
+   ],
+   "explicacion": "Primero se abre la puerta, se comprueba la vista previa y, si hace falta, se corrigen los tipos en el editor. Los datos llegan a una hoja nueva, como Tabla, con sus ceros."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Números largos.** Con el formato General, Excel muestra los números de 12 cifras o más en **notación científica**: 8412345678905 se ve como 8,41235E+12. Si tiene 15 cifras o menos, no se ha perdido nada: con formato Número sin decimales vuelve a verse entero.\n\nPero Excel **solo guarda 15 cifras**. En un código de 20 cifras, como una referencia bancaria, las que pasan de 15 se convierten en ceros para siempre. Por eso los códigos se importan como **Texto**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "Un ajuste que ayuda con el doble clic",
+   "md": "En Microsoft 365 y Excel 2024 puedes desactivar algunas conversiones en **Archivo › Opciones › Datos › Conversión automática de datos**, por ejemplo «Eliminar los ceros a la izquierda y convertir a número». Es un ajuste de tu equipo: en el de un compañero seguirá activo. La puerta buena sigue siendo De texto/CSV."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e4",
+   "modo": "test",
+   "pregunta": "Tras abrir la tarifa con doble clic, el EAN 8412345678905 se ve como **8,41235E+12**. ¿Se ha perdido el número?",
+   "opciones": [
+    {
+     "texto": "No: tiene 13 cifras, menos de 15. Con formato Número sin decimales vuelve a verse entero",
+     "correcta": true,
+     "porque": "Correcto. La notación científica es solo la forma de mostrarlo; el número está completo."
+    },
+    {
+     "texto": "Sí: la notación científica borra las últimas cifras",
+     "correcta": false,
+     "porque": "Solo se pierden las cifras que pasan de la 15.ª. Con 13 cifras, todas siguen guardadas."
+    },
+    {
+     "texto": "Sí, y hay que pedir el archivo otra vez",
+     "correcta": false,
+     "porque": "Con 13 cifras basta cambiar el formato. Lo de pedirlo otra vez (o importarlo bien desde el principio) pasa con códigos de más de 15 cifras."
+    }
+   ],
+   "explicacion": "Aun así, lo correcto es importarlo como Texto: un EAN es un código, no una cantidad. Como texto, no hay sustos."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Tildes rotas = codificación equivocada.** Si en vez de «magnetotérmico» ves «magnetotÃ©rmico», el archivo está guardado en **UTF-8** y Excel lo ha leído con otra codificación. No lo corrijas a mano, celda por celda: vuelve a importarlo con **Origen del archivo: 65001: Unicode (UTF-8)** y verás las tildes bien en la vista previa."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Síntoma → causa → arreglo",
+   "cabecera": [
+    "Lo que ves",
+    "Qué ha pasado",
+    "Arreglo"
+   ],
+   "filas": [
+    [
+     "412 en vez de 00412",
+     "El código se leyó como número",
+     "Importar con la columna como Texto; para rescatarlo, TEXTO(A2;\"00000\")"
+    ],
+    [
+     "8,41235E+12",
+     "Número de 12 cifras o más con formato General",
+     "Formato Número o, mejor, importar como Texto"
+    ],
+    [
+     "magnetotÃ©rmico",
+     "Codificación equivocada",
+     "Origen del archivo: 65001: Unicode (UTF-8)"
+    ],
+    [
+     "Todo en la columna A",
+     "Delimitador equivocado",
+     "Elegir el delimitador del archivo (punto y coma o coma)"
+    ],
+    [
+     "Unas fechas cambiadas y otras pegadas a la izquierda",
+     "Fechas mes/día leídas como día/mes",
+     "Comprobar el origen y reconstruirlas con FECHA, o importar con la configuración regional (nivel 4)"
+    ]
+   ],
+   "pie": "Guárdate esta tabla: es lo primero que mirar cuando un CSV «sale raro»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e5",
+   "modo": "formula",
+   "enunciado": "Un compañero ya abrió la tarifa con doble clic y guardó: los códigos han quedado como números (412). Los códigos del proveedor tienen siempre **5 cifras**. En **B2** recupera el código de A2 como texto. Se copiará a B3:B6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código (estropeado)",
+     "B1": "Código",
+     "C1": "Descripción",
+     "A2": 412,
+     "C2": "Interruptor magnetotérmico 2P 16A",
+     "A3": 1520,
+     "C3": "Cable H07V-K 1,5 mm² negro (100 m)",
+     "A4": 20316,
+     "C4": "Tubo corrugado 20 mm (100 m)",
+     "A5": 87,
+     "C5": "Canaleta PVC 40x60 (2 m)",
+     "A6": 3001,
+     "C6": "Bridas nailon 200 mm (100 uds)"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 9,
+     "C": 34
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B6"
+   ],
+   "solucion": "=TEXTO(A2;\"00000\")",
+   "alternativas": [
+    "=DERECHA(\"00000\"&A2;5)"
+   ],
+   "errores_tipicos": [
+    "=\"0\"&A2",
+    "=\"00\"&A2",
+    "=TEXTO(A2;\"0\")"
+   ],
+   "variantes": [
+    {
+     "A2": 9
+    }
+   ],
+   "pistas": [
+    "Es el mismo rescate de la lección anterior con los códigos postales.",
+    "TEXTO con un formato de cinco ceros pone delante los ceros que falten.",
+    "=TEXTO(A2;\"00000\")"
+   ],
+   "explicacion": "«00412», «00087», «20316»…: cada código vuelve a tener 5 cifras y ya cruzará con el programa. Es un rescate útil, pero la próxima vez, De texto/CSV y la columna como Texto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e6",
+   "modo": "test",
+   "pregunta": "El CSV de una plataforma de EE. UU. trae las fechas como mes/día/año. Al abrirlo con doble clic, **03/04/2026** sale como 3 de abril y **03/25/2026** se queda pegada a la izquierda. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "Excel ha leído día/mes: la primera la ha convertido mal y la segunda no ha podido (no existe el mes 25)",
+     "correcta": true,
+     "porque": "Correcto. La de día 25 se queda como texto; la de día 4 se convierte en otra fecha, sin aviso."
+    },
+    {
+     "texto": "Solo está mal la segunda; la primera es correcta",
+     "correcta": false,
+     "porque": "La primera también está mal: en el archivo era el 4 de marzo. Es la más peligrosa porque parece correcta."
+    },
+    {
+     "texto": "Las dos están bien: solo hay que darles formato de fecha",
+     "correcta": false,
+     "porque": "El formato cambia cómo se ve una fecha, no cuál es. 03/25/2026 es un texto y 03/04/2026 ya es el 3 de abril."
+    }
+   ],
+   "explicacion": "Mezcla de fechas «a la izquierda» y fechas que parecen buenas: síntoma clásico de mes/día leído como día/mes. Comprueba siempre con un día mayor que 12."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l4-e7",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "**El encargo de Andrés.** La tarifa trae Codigo («00412»), EAN (13 cifras), Descripcion (con tildes) y Precio («9,85»). Está separada por punto y coma y guardada en UTF-8. Marca **todo** lo que harás para importarla bien.",
+   "opciones": [
+    {
+     "texto": "Entrar por Datos › Obtener y transformar datos › De texto/CSV",
+     "correcta": true,
+     "porque": "Es la puerta que te deja decidir antes de que Excel convierta nada."
+    },
+    {
+     "texto": "Origen del archivo: 65001: Unicode (UTF-8)",
+     "correcta": true,
+     "porque": "El archivo está en UTF-8: así las tildes de la descripción salen bien."
+    },
+    {
+     "texto": "Delimitador: Punto y coma",
+     "correcta": true,
+     "porque": "Es el separador de columnas del archivo."
+    },
+    {
+     "texto": "En Transformar datos, poner Codigo y EAN como Texto",
+     "correcta": true,
+     "porque": "Son códigos: como texto conservan los ceros y todas sus cifras."
+    },
+    {
+     "texto": "Abrirlo con doble clic y luego dar formato Texto a los códigos",
+     "correcta": false,
+     "porque": "Cuando pones el formato, los ceros ya se han perdido al abrir."
+    },
+    {
+     "texto": "Delimitador: Coma, porque el precio lleva coma",
+     "correcta": false,
+     "porque": "Esa coma es el separador decimal. Si separas por coma, partirías cada precio en dos columnas."
+    }
+   ],
+   "explicacion": "La tarifa llega con sus ceros, sus EAN enteros y sus tildes, y el precio como número. Encargo resuelto: ya puedes decirle a Andrés que está lista y cuántas filas tiene."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m3l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En la vista previa de De texto/CSV, ¿qué **Origen del archivo** eliges para que las tildes y las eñes salgan bien en un archivo UTF-8?",
+   "aceptadas": [
+    "65001: Unicode (UTF-8)",
+    "65001 Unicode (UTF-8)",
+    "UTF-8",
+    "UTF8",
+    "65001",
+    "Unicode (UTF-8)",
+    "Unicode UTF-8"
+   ],
+   "explicacion": "**65001: Unicode (UTF-8)**. Si ves «Ã©» donde debería haber «é», la codificación elegida no es la del archivo."
+  },
+  {
+   "id": "n3m3l4-q2",
+   "modo": "test",
+   "pregunta": "Elige la herramienta: en una columna que se actualiza cada semana llegan importes como texto, «2.450,00 €». Quieres números que sumen.",
+   "opciones": [
+    {
+     "texto": "Una fórmula: =VALOR.NUMERO(SUSTITUIR(A2;\"€\";\"\");\",\";\".\")",
+     "correcta": true,
+     "porque": "Correcto. Quita el € y convierte; al ser fórmula, sirve también la semana que viene."
+    },
+    {
+     "texto": "Quitar duplicados",
+     "correcta": false,
+     "porque": "Quitar duplicados borra filas repetidas; no convierte textos en números."
+    },
+    {
+     "texto": "Relleno rápido",
+     "correcta": false,
+     "porque": "Relleno rápido deja textos fijos, copiados de tu ejemplo: no los convierte en números ni se actualiza la semana que viene."
+    }
+   ],
+   "explicacion": "Elegir la herramienta es la mitad del trabajo: fórmula para lo que se repite, herramienta para una limpieza de una vez, De texto/CSV para importar."
+  },
+  {
+   "id": "n3m3l4-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cuántas cifras de un número guarda Excel como máximo? (A partir de ahí, las demás se convierten en ceros.)",
+   "aceptadas": [
+    "15",
+    "quince",
+    "15 cifras"
+   ],
+   "explicacion": "15. Por eso un código más largo, como una referencia bancaria, se guarda siempre como texto."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Por dónde se importa un CSV sin que Excel lo estropee?",
+   "dorso": "Datos › Obtener y transformar datos › De texto/CSV (no con doble clic)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Ves «magnetotÃ©rmico» en vez de «magnetotérmico». ¿Qué cambias?",
+   "dorso": "Origen del archivo: 65001: Unicode (UTF-8)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Todo el CSV ha caído en la columna A. ¿Qué falla?",
+   "dorso": "El delimitador: el archivo separa con otro símbolo (coma o punto y coma)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cuántas cifras guarda Excel de un número?",
+   "dorso": "15. Los códigos largos (EAN, referencias) se importan como Texto."
+  }
+ ]
+}

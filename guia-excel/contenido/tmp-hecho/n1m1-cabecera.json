@@ -1,0 +1,49 @@
+{
+ "id": "n1m1",
+ "nivel": "n1",
+ "titulo": "Fórmulas que se copian bien",
+ "intro": "En una oficina casi nunca se calcula una sola fila: hay pedidos de veinte líneas, facturas de toda la semana y listas de cincuenta clientes. Aquí aprendes a escribir una fórmula una vez, copiarla sin que se descoloque y calcular IVA, descuentos y subidas como lo hace un departamento de administración.",
+ "repaso_inicial": [
+  {
+   "id": "n1m1-r1",
+   "modo": "test",
+   "pregunta": "Quieres que Excel multiplique el precio de **B2** por las unidades de **C2**. ¿Qué escribes en D2?",
+   "opciones": [
+    {"texto": "=B2*C2", "correcta": true, "porque": "Correcto: empieza por el signo igual y usa las direcciones de las celdas, así el resultado cambia solo si cambian los datos."},
+    {"texto": "B2*C2", "correcta": false, "porque": "Sin el signo igual delante, Excel lo toma como un texto y no calcula nada."},
+    {"texto": "=B2xC2", "correcta": false, "porque": "En Excel el signo de multiplicar es el asterisco `*`, no la letra x."},
+    {"texto": "=48,90*12", "correcta": false, "porque": "Da el número de hoy, pero si cambia el precio de B2 el resultado no se entera: has escrito los datos a mano dentro de la fórmula."}
+   ]
+  },
+  {
+   "id": "n1m1-r2",
+   "modo": "predice",
+   "enunciado": "Antes de que Excel lo calcule: ¿qué devuelve esta fórmula en A5?",
+   "hoja": {
+    "celdas": {"A1": "Importe", "A2": 120, "A3": 80, "A4": 45.5},
+    "formatos": {"A2:A4": "eur"}
+   },
+   "celda": "A5",
+   "formula": "=SUMA(A2:A4)",
+   "explicacion": "SUMA suma todas las celdas del rango A2:A4: 120 + 80 + 45,50 = 245,50."
+  },
+  {
+   "id": "n1m1-r3",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo de teclado guarda el libro en el Excel en español?",
+   "aceptadas": ["Ctrl+G", "Control+G", "Ctrl G", "Ctrl + G", "ctrl+g"],
+   "explicacion": "[[Ctrl]]+[[G]], de «Guardar». Úsalo cada pocos minutos: es tu seguro contra cortes de luz y cierres inesperados."
+  },
+  {
+   "id": "n1m1-r4",
+   "modo": "test",
+   "pregunta": "¿Qué celda es **D7**?",
+   "opciones": [
+    {"texto": "La de la columna D y la fila 7", "correcta": true, "porque": "Correcto: primero la letra de la columna y después el número de la fila, como en el juego de los barcos."},
+    {"texto": "La de la fila D y la columna 7", "correcta": false, "porque": "En Excel las filas son números y las columnas, letras. Nunca al revés."},
+    {"texto": "La séptima celda que has escrito", "correcta": false, "porque": "La dirección no depende del orden en que escribes: es un sitio fijo de la hoja."}
+   ]
+  }
+ ],
+ "practica_excel": null
+}

@@ -1,0 +1,708 @@
+{
+ "id": "n2m4l2",
+ "titulo": "DIA, MES, AÑO, FECHA y el nombre del mes",
+ "minutos": 15,
+ "objetivo": "Sacar el día, el mes, el año, el día de la semana y el trimestre de una fecha, construir fechas con FECHA y escribir el nombre del mes con TEXTO.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Para la revisión del año quiero ver los pedidos grandes agrupados por trimestre. Ponme al lado de cada uno el mes, con su nombre, y el trimestre (T1, T2…). Lo necesito antes de la reunión de las doce.",
+  "logro": "Ya sabes desmontar una fecha en día, mes, año, día de la semana y trimestre, y preparar una lista de ventas para resumirla por meses."
+ },
+ "funciones": [
+  "DIA",
+  "MES",
+  "AÑO",
+  "FECHA",
+  "TEXTO",
+  "DIASEM"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "A veces no quieres la fecha entera, sino un trozo. Tres funciones la desmontan: `=DIA(B2)` da el día, `=MES(B2)` da el mes y `=AÑO(B2)` da el año, siempre como números. ¿Para qué? Para resumir: con una columna «Mes» al lado de las ventas, un `SUMAR.SI` te dice en un segundo lo vendido en noviembre. Ojo al escribirlas: DIA va **sin tilde** y AÑO lleva **Ñ**."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Una fecha, tres trozos",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Día",
+     "C1": "Mes",
+     "D1": "Año",
+     "A2": {
+      "fecha": "2026-11-16"
+     },
+     "B2": "=DIA(A2)",
+     "C2": "=MES(A2)",
+     "D2": "=AÑO(A2)"
+    },
+    "formatos": {
+     "A2": "fecha"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "resaltar": [
+    "B2:D2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "16/11/2026 → día 16, mes 11, año 2026."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e1",
+   "modo": "formula",
+   "enunciado": "Javier tiene los pedidos grandes del año. En **E2** saca el **número del mes** de la fecha de B2. Se copiará a E3:E7. En E2 debe salir **2** (febrero).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Cliente",
+     "D1": "Importe",
+     "A2": "P-1022",
+     "B2": {
+      "fecha": "2026-02-13"
+     },
+     "C2": "Instalaciones Moncayo",
+     "D2": 4250,
+     "A3": "P-1180",
+     "B3": {
+      "fecha": "2026-03-21"
+     },
+     "C3": "Montajes Delicias",
+     "D3": 3180,
+     "A4": "P-1410",
+     "B4": {
+      "fecha": "2026-06-30"
+     },
+     "C4": "Electricidad Lacasa",
+     "D4": 5620,
+     "A5": "P-2235",
+     "B5": {
+      "fecha": "2026-10-17"
+     },
+     "C5": "Reformas Actur",
+     "D5": 3940,
+     "A6": "P-2711",
+     "B6": {
+      "fecha": "2026-11-08"
+     },
+     "C6": "Climatización Ribera",
+     "D6": 7315,
+     "A7": "P-2804",
+     "B7": {
+      "fecha": "2026-11-16"
+     },
+     "C7": "Instalaciones Moncayo",
+     "D7": 3075,
+     "E1": "Mes"
+    },
+    "formatos": {
+     "B2:B7": "fecha",
+     "D2:D7": "eur"
+    },
+    "anchos": {
+     "B": 11,
+     "C": 20
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E7"
+   ],
+   "solucion": "=MES(B2)",
+   "errores_tipicos": [
+    "=DIA(B2)",
+    "=AÑO(B2)"
+   ],
+   "variantes": [
+    {
+     "B2": {
+      "fecha": "2026-09-01"
+     }
+    }
+   ],
+   "debe_usar": [
+    "MES"
+   ],
+   "formato_resultado": "0",
+   "pistas": [
+    "Una de las tres funciones nuevas: la que saca el mes.",
+    "La función se llama igual que lo que buscas, y dentro va la celda de la fecha.",
+    "`=MES(B2)`"
+   ],
+   "explicacion": "Febrero es el 2, marzo el 3… y noviembre el 11. Con esta columna ya podrías escribir `=SUMAR.SI(E2:E7;11;D2:D7)` y saber cuánto se vendió en noviembre."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e2",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve la fórmula de **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Día",
+     "A2": {
+      "fecha": "2027-01-05"
+     }
+    },
+    "formatos": {
+     "A2": "fecha"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=DIA(A2)",
+   "explicacion": "**5**: DIA da el día del mes como número, sin el cero de delante. Con la misma fecha, MES daría 1 y AÑO, 2027."
+  },
+  {
+   "tipo": "texto",
+   "md": "Y al revés: `=FECHA(año; mes; día)` **construye** una fecha a partir de tres números, siempre en ese orden: año, mes, día. `=FECHA(2026;12;31)` da el 31/12/2026. Combinada con las anteriores es muy útil: `=FECHA(AÑO(B2);MES(B2);1)` da el **primer día del mes** de B2. Sirve para poner todas las ventas de un mes bajo una misma fecha, por ejemplo en un gráfico."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e3",
+   "modo": "formula",
+   "enunciado": "La fórmula de **E2** debería dar el **primer día del mes** de la fecha de B2, pero devuelve la misma fecha. Arréglala. Se copiará a E3:E7. En E2 debe salir **01/02/2026**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Cliente",
+     "D1": "Importe",
+     "A2": "P-1022",
+     "B2": {
+      "fecha": "2026-02-13"
+     },
+     "C2": "Instalaciones Moncayo",
+     "D2": 4250,
+     "A3": "P-1180",
+     "B3": {
+      "fecha": "2026-03-21"
+     },
+     "C3": "Montajes Delicias",
+     "D3": 3180,
+     "A4": "P-1410",
+     "B4": {
+      "fecha": "2026-06-30"
+     },
+     "C4": "Electricidad Lacasa",
+     "D4": 5620,
+     "A5": "P-2235",
+     "B5": {
+      "fecha": "2026-10-17"
+     },
+     "C5": "Reformas Actur",
+     "D5": 3940,
+     "A6": "P-2711",
+     "B6": {
+      "fecha": "2026-11-08"
+     },
+     "C6": "Climatización Ribera",
+     "D6": 7315,
+     "A7": "P-2804",
+     "B7": {
+      "fecha": "2026-11-16"
+     },
+     "C7": "Instalaciones Moncayo",
+     "D7": 3075,
+     "E1": "Mes (día 1)"
+    },
+    "formatos": {
+     "B2:B7": "fecha",
+     "D2:D7": "eur",
+     "E2:E7": "fecha"
+    },
+    "anchos": {
+     "B": 11,
+     "C": 20,
+     "E": 12
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E7"
+   ],
+   "inicial": "=FECHA(AÑO(B2);MES(B2);DIA(B2))",
+   "solucion": "=FECHA(AÑO(B2);MES(B2);1)",
+   "alternativas": [
+    "=B2-DIA(B2)+1"
+   ],
+   "errores_tipicos": [
+    "=FECHA(AÑO(B2);MES(B2);DIA(B2))",
+    "=FECHA(AÑO(B2);1;MES(B2))",
+    "=FECHA(MES(B2);AÑO(B2);1)"
+   ],
+   "variantes": [
+    {
+     "B3": {
+      "fecha": "2026-08-31"
+     }
+    }
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "El año y el mes ya están bien. Lo que sobra es el último argumento.",
+    "El tercer argumento de FECHA es el día. ¿Qué día quieres siempre?",
+    "`=FECHA(AÑO(B2);MES(B2);1)`"
+   ],
+   "explicacion": "Arreglado: con un 1 fijo como día, todas las ventas de un mes comparten la misma fecha (01/11/2026 para noviembre). Es la forma clásica de agrupar por meses sin perder que es una fecha."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Y si Javier quiere leer «noviembre» y no «11»? `TEXTO`, que ya usaste para unir textos, convierte una fecha en el texto que pidas con un **código de formato** entre comillas: `=TEXTO(B2;\"mmmm\")` da «noviembre» y `=TEXTO(B2;\"dddd\")` da «lunes». Los códigos van en español: **d** de día, **m** de mes y **a** de año. El resultado es texto: perfecto para títulos y etiquetas de informe."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "aaaa, no yyyy",
+   "md": "En tutoriales y foros en inglés verás `\"yyyy\"` para el año. En el Excel en español el código es **aaaa**: `=TEXTO(B2;\"dd/mm/aaaa\")`."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Códigos de formato para el 16/11/2026",
+   "cabecera": [
+    "Código",
+    "Resultado",
+    "Qué es"
+   ],
+   "filas": [
+    [
+     "dd",
+     "16",
+     "Día con dos cifras"
+    ],
+    [
+     "dddd",
+     "lunes",
+     "Nombre del día"
+    ],
+    [
+     "mm",
+     "11",
+     "Mes con dos cifras"
+    ],
+    [
+     "mmmm",
+     "noviembre",
+     "Nombre del mes"
+    ],
+    [
+     "aa",
+     "26",
+     "Año con dos cifras"
+    ],
+    [
+     "aaaa",
+     "2026",
+     "Año con cuatro cifras"
+    ],
+    [
+     "mmmm aaaa",
+     "noviembre 2026",
+     "Se pueden combinar"
+    ]
+   ],
+   "pie": "Siempre entre comillas dentro de TEXTO: =TEXTO(B2;\"mmmm aaaa\")."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e4",
+   "modo": "formula",
+   "enunciado": "Javier quiere el **nombre del mes** en letras. En **E2** escríbelo a partir de la fecha de B2. Se copiará a E3:E7. En E2 debe salir **febrero**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Cliente",
+     "D1": "Importe",
+     "A2": "P-1022",
+     "B2": {
+      "fecha": "2026-02-13"
+     },
+     "C2": "Instalaciones Moncayo",
+     "D2": 4250,
+     "A3": "P-1180",
+     "B3": {
+      "fecha": "2026-03-21"
+     },
+     "C3": "Montajes Delicias",
+     "D3": 3180,
+     "A4": "P-1410",
+     "B4": {
+      "fecha": "2026-06-30"
+     },
+     "C4": "Electricidad Lacasa",
+     "D4": 5620,
+     "A5": "P-2235",
+     "B5": {
+      "fecha": "2026-10-17"
+     },
+     "C5": "Reformas Actur",
+     "D5": 3940,
+     "A6": "P-2711",
+     "B6": {
+      "fecha": "2026-11-08"
+     },
+     "C6": "Climatización Ribera",
+     "D6": 7315,
+     "A7": "P-2804",
+     "B7": {
+      "fecha": "2026-11-16"
+     },
+     "C7": "Instalaciones Moncayo",
+     "D7": 3075,
+     "E1": "Mes"
+    },
+    "formatos": {
+     "B2:B7": "fecha",
+     "D2:D7": "eur"
+    },
+    "anchos": {
+     "B": 11,
+     "C": 20,
+     "E": 12
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E7"
+   ],
+   "solucion": "=TEXTO(B2;\"mmmm\")",
+   "errores_tipicos": [
+    "=TEXTO(B2;\"mm\")",
+    "=MES(B2)",
+    "=TEXTO(B2;\"dddd\")"
+   ],
+   "variantes": [
+    {
+     "B2": {
+      "fecha": "2026-05-04"
+     }
+    }
+   ],
+   "pistas": [
+    "Necesitas convertir la fecha en texto con un código de formato.",
+    "`TEXTO(fecha; \"código\")`. El nombre completo del mes son cuatro emes.",
+    "`=TEXTO(B2;\"mmmm\")`"
+   ],
+   "explicacion": "Febrero, marzo, junio… en letras y sin tocar la fecha original. Ya tienes la mitad del encargo de Javier."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e5",
+   "modo": "test",
+   "pregunta": "Copias de un tutorial en inglés esta fórmula: `=TEXTO(B2;\"dd/mm/yyyy\")`. ¿Qué tienes que cambiar para tu Excel en español?",
+   "opciones": [
+    {
+     "texto": "yyyy por aaaa",
+     "correcta": true,
+     "porque": "Correcto: en español el año se escribe con «a» (de año), no con «y» (de year)."
+    },
+    {
+     "texto": "Los ; por comas",
+     "correcta": false,
+     "porque": "Al revés: en el Excel en español el separador es el punto y coma, y la fórmula ya lo lleva."
+    },
+    {
+     "texto": "Nada: los códigos son iguales en todos los idiomas",
+     "correcta": false,
+     "porque": "No lo son: los códigos de fecha dependen del idioma de Excel. Por eso los tutoriales en inglés llevan «yyyy»."
+    },
+    {
+     "texto": "dd por aa",
+     "correcta": false,
+     "porque": "dd está bien: d de día. El que falla es el código del año."
+    }
+   ],
+   "explicacion": "Día **d**, mes **m**, año **a**. Cuando copies fórmulas de internet, revisa siempre los códigos de formato."
+  },
+  {
+   "tipo": "texto",
+   "md": "`=DIASEM(B2;2)` da el **día de la semana** como número: lunes 1, martes 2… domingo 7. Ese **2** final es importante: le dice a Excel que la semana empieza en lunes, como en España. Sin él, Excel cuenta al estilo americano (domingo 1, lunes 2…) y todo sale corrido un día. Con DIASEM y un `SI` marcas lo que cae en fin de semana: sábado (6) y domingo (7) son mayores que 5."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e6",
+   "modo": "formula",
+   "enunciado": "La tienda en línea recibe pedidos también en fin de semana, y Javier quiere verlos aparte. En **E2** escribe **Sí** si la fecha de B2 cae en sábado o domingo, y **No** si no. Se copiará a E3:E7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Cliente",
+     "D1": "Importe",
+     "A2": "P-1022",
+     "B2": {
+      "fecha": "2026-02-13"
+     },
+     "C2": "Instalaciones Moncayo",
+     "D2": 4250,
+     "A3": "P-1180",
+     "B3": {
+      "fecha": "2026-03-21"
+     },
+     "C3": "Montajes Delicias",
+     "D3": 3180,
+     "A4": "P-1410",
+     "B4": {
+      "fecha": "2026-06-30"
+     },
+     "C4": "Electricidad Lacasa",
+     "D4": 5620,
+     "A5": "P-2235",
+     "B5": {
+      "fecha": "2026-10-17"
+     },
+     "C5": "Reformas Actur",
+     "D5": 3940,
+     "A6": "P-2711",
+     "B6": {
+      "fecha": "2026-11-08"
+     },
+     "C6": "Climatización Ribera",
+     "D6": 7315,
+     "A7": "P-2804",
+     "B7": {
+      "fecha": "2026-11-16"
+     },
+     "C7": "Instalaciones Moncayo",
+     "D7": 3075,
+     "E1": "Fin de semana"
+    },
+    "formatos": {
+     "B2:B7": "fecha",
+     "D2:D7": "eur"
+    },
+    "anchos": {
+     "B": 11,
+     "C": 20,
+     "E": 14
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E7"
+   ],
+   "solucion": "=SI(DIASEM(B2;2)>5;\"Sí\";\"No\")",
+   "alternativas": [
+    "=SI(DIASEM(B2;2)>=6;\"Sí\";\"No\")",
+    "=SI(DIASEM(B2;2)<=5;\"No\";\"Sí\")",
+    "=SI(DIASEM(B2;2)<6;\"No\";\"Sí\")"
+   ],
+   "errores_tipicos": [
+    "=SI(DIASEM(B2)>5;\"Sí\";\"No\")",
+    "=SI(DIASEM(B2;2)>6;\"Sí\";\"No\")",
+    "=SI(DIASEM(B2;2)=6;\"Sí\";\"No\")"
+   ],
+   "variantes": [
+    {
+     "B7": {
+      "fecha": "2026-11-22"
+     }
+    }
+   ],
+   "pistas": [
+    "Primero averigua el día de la semana con DIASEM, con el 2 para que el lunes sea 1.",
+    "Sábado es 6 y domingo 7: los dos son mayores que 5. Mételo en un SI.",
+    "`=SI(DIASEM(B2;2)>5;\"Sí\";\"No\")`"
+   ],
+   "explicacion": "Tres pedidos en fin de semana: los de los sábados 21/03 y 17/10 y el del domingo 08/11. Sin el 2 en DIASEM, el viernes 13/02 habría salido como fin de semana y el domingo, no. Ese pequeño 2 evita un informe equivocado."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Otra trampa con fechas: los ficheros de proveedores de Estados Unidos escriben **mes/día/año**. Allí «03/04/2026» es el **4 de marzo**, pero tu Excel lo lee como **3 de abril**, sin avisar. Mi truco: busca alguna fecha con el primer número mayor que 12, como «04/25/2026». Si la encuentras, el fichero es americano y toca revisar todas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Último truco, muy pedido en informes: el **trimestre**. Divide el mes entre 3 y redondea hacia arriba con `REDONDEAR.MAS`: enero (1/3 = 0,33) da 1; abril (4/3 = 1,33) da 2; diciembre (12/3 = 4) da 4. Con `&` le pones la «T» delante: `=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)` da «T1» para una venta de febrero."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m4l2-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** El nombre del mes ya está en la columna E. En **F2** escribe el **trimestre** de la venta de B2 con el formato **T1** (una «T» y el número). Se copiará a F3:F7. En F2 debe salir **T1**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha",
+     "C1": "Cliente",
+     "D1": "Importe",
+     "A2": "P-1022",
+     "B2": {
+      "fecha": "2026-02-13"
+     },
+     "C2": "Instalaciones Moncayo",
+     "D2": 4250,
+     "A3": "P-1180",
+     "B3": {
+      "fecha": "2026-03-21"
+     },
+     "C3": "Montajes Delicias",
+     "D3": 3180,
+     "A4": "P-1410",
+     "B4": {
+      "fecha": "2026-06-30"
+     },
+     "C4": "Electricidad Lacasa",
+     "D4": 5620,
+     "A5": "P-2235",
+     "B5": {
+      "fecha": "2026-10-17"
+     },
+     "C5": "Reformas Actur",
+     "D5": 3940,
+     "A6": "P-2711",
+     "B6": {
+      "fecha": "2026-11-08"
+     },
+     "C6": "Climatización Ribera",
+     "D6": 7315,
+     "A7": "P-2804",
+     "B7": {
+      "fecha": "2026-11-16"
+     },
+     "C7": "Instalaciones Moncayo",
+     "D7": 3075,
+     "E1": "Mes",
+     "E2": "febrero",
+     "E3": "marzo",
+     "E4": "junio",
+     "E5": "octubre",
+     "E6": "noviembre",
+     "E7": "noviembre",
+     "F1": "Trimestre"
+    },
+    "formatos": {
+     "B2:B7": "fecha",
+     "D2:D7": "eur"
+    },
+    "anchos": {
+     "B": 11,
+     "C": 20,
+     "E": 11
+    }
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F7"
+   ],
+   "solucion": "=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)",
+   "alternativas": [
+    "=CONCAT(\"T\";REDONDEAR.MAS(MES(B2)/3;0))"
+   ],
+   "errores_tipicos": [
+    "=REDONDEAR.MAS(MES(B2)/3;0)",
+    "=\"T\"&REDONDEAR(MES(B2)/3;0)",
+    "=\"T\"&MES(B2)/3",
+    "=\"T\"&REDONDEAR.MENOS(MES(B2)/3;0)"
+   ],
+   "variantes": [
+    {
+     "B4": {
+      "fecha": "2026-07-01"
+     }
+    }
+   ],
+   "pistas": [
+    "Tres pasos: el mes de B2, dividido entre 3, redondeado hacia arriba sin decimales.",
+    "`REDONDEAR.MAS(MES(B2)/3;0)` da el número. Para ponerle la T delante, usa `\"T\"&`.",
+    "`=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)`"
+   ],
+   "explicacion": "Febrero y marzo en T1, junio en T2, octubre y noviembre en T4. Con las columnas Mes y Trimestre, Javier puede resumir las ventas por trimestre con un `SUMAR.SI` y llegar a la reunión con los números hechos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m4l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué código de formato pones dentro de TEXTO para obtener el nombre completo del mes, como «noviembre»?",
+   "aceptadas": [
+    "mmmm",
+    "\"mmmm\"",
+    "MMMM"
+   ],
+   "explicacion": "Cuatro emes: `=TEXTO(B2;\"mmmm\")`. Con «dddd» tendrías el nombre del día."
+  },
+  {
+   "id": "n2m4l2-q2",
+   "modo": "test",
+   "pregunta": "Un proveedor de Estados Unidos te manda «07/04/2026» como fecha de envío. ¿Qué día quiere decir él?",
+   "opciones": [
+    {
+     "texto": "El 4 de julio de 2026",
+     "correcta": true,
+     "porque": "Correcto: en Estados Unidos se escribe mes/día/año, así que 07 es el mes."
+    },
+    {
+     "texto": "El 7 de abril de 2026",
+     "correcta": false,
+     "porque": "Así lo leería tu Excel en español, y ese es justo el peligro: lo cambia sin avisar."
+    },
+    {
+     "texto": "Da igual: en los dos países es la misma fecha",
+     "correcta": false,
+     "porque": "No: el orden del día y el mes cambia según el país, y la diferencia aquí es de casi tres meses."
+    }
+   ]
+  },
+  {
+   "id": "n2m4l2-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué fecha devuelve la fórmula de **B2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Venta",
+     "B1": {
+      "fecha": "2026-11-23"
+     },
+     "A2": "Mes"
+    },
+    "formatos": {
+     "B1": "fecha"
+    },
+    "anchos": {
+     "B": 12
+    }
+   },
+   "celda": "B2",
+   "formula": "=FECHA(AÑO(B1);MES(B1);1)",
+   "formato_resultado": "fecha",
+   "explicacion": "El primer día del mes de la venta: 01/11/2026. FECHA recibe el año, el mes y un 1 fijo como día."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "DIA, MES y AÑO: qué devuelven",
+   "dorso": "Un trozo de la fecha como número. Para 16/11/2026: DIA 16, MES 11, AÑO 2026."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "FECHA: sintaxis",
+   "dorso": "=FECHA(año; mes; día). Primer día del mes: =FECHA(AÑO(B2);MES(B2);1)."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Nombre del mes y del día con TEXTO",
+   "dorso": "=TEXTO(B2;\"mmmm\") → noviembre; =TEXTO(B2;\"dddd\") → lunes. Año: aaaa, nunca yyyy."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "DIASEM con la semana española",
+   "dorso": "=DIASEM(B2;2): lunes 1 … domingo 7. Fin de semana: >5."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Trimestre de una fecha",
+   "dorso": "=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)"
+  }
+ ]
+}

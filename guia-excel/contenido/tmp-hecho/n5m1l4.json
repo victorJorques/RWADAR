@@ -1,0 +1,203 @@
+{
+  "id": "n5m1l4",
+  "titulo": "LAMBDA: crea tu propia función",
+  "minutos": 16,
+  "objetivo": "Crear una función propia con LAMBDA, probarla con casos conocidos, guardarla con nombre en el Administrador de nombres y documentarla para que la use todo el equipo.",
+  "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "En la hoja de presupuestos cada uno calcula el precio final a su manera y salen céntimos distintos para el mismo artículo. Quiero una función de la casa, PRECIO_FINAL, que aplique el descuento y el IVA y redondee siempre igual. ¿Te encargas tú? Eres la que más sabe de Excel en la oficina.",
+    "logro": "Ya sabes crear, probar y documentar una función propia con LAMBDA para que todo el equipo calcule igual."
+  },
+  "funciones": ["LAMBDA", "LET"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "### Tu propia función\n\nUsas a diario funciones que inventaron otros: SUMA, BUSCARX, TEXTOANTES… Con **LAMBDA** creas la tuya, con su nombre, para un cálculo de tu empresa.\n\nPiensa en una **receta con huecos**: «coge un importe y multiplícalo por 1 + el tipo de IVA». Los huecos (importe, tipo) se llaman **parámetros**: se rellenan cada vez que usas la función.\n\nUna vez guardada, en vez de repetir la cuenta escribirás `=IVA_INCLUIDO(B2;C2)`."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Cómo se escribe\n\n`=LAMBDA(parámetro1; parámetro2; …; cálculo)`\n\n- Primero, los **nombres de los huecos**.\n- El **último** argumento es la **cuenta**, hecha con esos nombres.\n\n`=LAMBDA(importe;tipo;importe*(1+tipo))`\n\nSe parece mucho a LET, que ya conoces: allí ponías nombre a pasos intermedios; aquí pones nombre a los datos que **llegarán de fuera** cuando alguien use la función."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e1",
+      "modo": "test",
+      "pregunta": "Lee esta función: `=LAMBDA(precio;dto;precio*(1-dto))`. ¿Qué hace?",
+      "opciones": [
+        { "texto": "Recibe un precio y un descuento, y devuelve el precio con el descuento aplicado", "correcta": true, "porque": "Eso es: dos parámetros (precio y dto) y una cuenta que multiplica el precio por lo que queda tras el descuento." },
+        { "texto": "Recibe tres datos: LAMBDA, precio y dto", "correcta": false, "porque": "LAMBDA es el nombre de la función. Los parámetros son precio y dto; lo último es la cuenta." },
+        { "texto": "Devuelve el descuento en euros", "correcta": false, "porque": "Eso sería precio*dto. Aquí se multiplica por (1 − dto): lo que queda después del descuento." },
+        { "texto": "Calcula el precio con IVA", "correcta": false, "porque": "No hay IVA por ningún lado: solo precio y descuento." }
+      ],
+      "explicacion": "Para leer una LAMBDA: todo menos lo último son los huecos; lo último es la receta."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Pruébala antes de guardarla\n\nSi escribes la LAMBDA sola en una celda, Excel devuelve un **error**: tienes la receta, pero no le has dado ingredientes.\n\nPara probarla, añade los valores **entre paréntesis justo detrás**:\n\n`=LAMBDA(importe;tipo;importe*(1+tipo))(100;0,21)` → **121**\n\nPrueba siempre con números cuyo resultado sepas de cabeza: 100 € al 21 % tienen que dar 121 €. Si no da eso, la receta está mal."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e2",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué devuelve esta prueba? `=LAMBDA(precio;dto;precio*(1-dto))(200;0,1)`",
+      "aceptadas": ["180", "180,00", "180 €", "180,00 €", "180€"],
+      "explicacion": "200 × (1 − 0,1) = 180. El primer valor entra en el primer hueco (precio) y el segundo en el segundo (dto). Con números redondos ves al instante si la función hace lo que debe."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: guarda tu función con nombre",
+      "pasos": [
+        { "md": "Copia la LAMBDA que ya has probado, **sin** los valores de prueba del final: `=LAMBDA(importe;tipo;importe*(1+tipo))`." },
+        { "md": "Ve a **Fórmulas › Administrador de nombres** ([[Ctrl]]+[[F3]]) y pulsa **Nuevo**.", "ruta": ["Fórmulas", "Nombres definidos", "Administrador de nombres"] },
+        { "md": "En **Nombre**, escribe `IVA_INCLUIDO` (sin espacios). Deja **Ámbito** en *Libro*, que viene marcado." },
+        { "md": "En **Comentario**, explica qué hace y qué datos pide, en ese orden (admite hasta 255 caracteres)." },
+        { "md": "En **Hace referencia a**, pega la LAMBDA. Pulsa **Aceptar** y luego **Cerrar**." },
+        { "md": "Ya puedes escribir `=IVA_INCLUIDO(B2;C2)` en cualquier hoja del libro, como una función más." }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para crear IVA_INCLUIDO y dejarla lista para el equipo.",
+      "pasos": [
+        "Escribir la LAMBDA en una celda y probarla con valores conocidos: con (100;0,21) debe dar 121",
+        "Copiar la LAMBDA sin los valores de prueba del final",
+        "Abrir Fórmulas › Administrador de nombres y pulsar Nuevo",
+        "Escribir el nombre IVA_INCLUIDO y un comentario que diga qué hace y qué datos pide",
+        "Pegar la LAMBDA en «Hace referencia a» y pulsar Aceptar",
+        "Usarla en la hoja: =IVA_INCLUIDO(B2;C2)"
+      ],
+      "explicacion": "Primero se prueba, después se guarda y al final se usa. Guardar una función sin probarla es repartir un error por todo el libro."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Una función sin explicar es una caja negra. Hace dos años alguien dejó una «CALC_PORTES» en la hoja de pedidos, se fue de la empresa y nadie sabía qué hacía ni si estaba bien. Escribe siempre el **Comentario**: Excel lo enseña como ayuda mientras alguien escribe la función. Y apunta en el libro los casos de prueba con su resultado."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Probar con casos conocidos\n\nAntes de compartir PRECIO_FINAL, pruébala con casos cuyo resultado sepas **sin Excel**, incluidos los raros:\n\n| Precio | Dto. | IVA | Debe dar |\n|---|---|---|---|\n| 100 € | 0 % | 21 % | 121,00 € |\n| 100 € | 10 % | 21 % | 108,90 € |\n| 0 € | 10 % | 21 % | 0,00 € |\n| 19,99 € | 5 % | 21 % | 22,98 € |\n\nSi un solo caso falla, no se comparte. Las funciones propias se equivocan igual que cualquier fórmula."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e4",
+      "modo": "formula",
+      "enunciado": "La hoja de práctica no calcula LAMBDA, pero el cálculo de dentro se escribe igual que una LET, así que vas a probar la receta con LET. En **E2** calcula el **precio final** de la fila 2 con LET y tres nombres: `precio` (B2), `dto` (C2) e `iva` (D2). La cuenta: precio × (1 − dto) × (1 + iva), **redondeada a 2 decimales**. Se copiará a E3:E5, y cada fila debe dar lo que dice la tabla de casos de prueba.",
+      "hoja": {
+        "celdas": {
+          "A1": "Caso",
+          "B1": "Precio",
+          "C1": "Dto.",
+          "D1": "IVA",
+          "E1": "Precio final",
+          "A2": "Sin descuento",
+          "B2": 100,
+          "C2": 0,
+          "D2": 0.21,
+          "A3": "Con 10 %",
+          "B3": 100,
+          "C3": 0.1,
+          "D3": 0.21,
+          "A4": "Precio cero",
+          "B4": 0,
+          "C4": 0.1,
+          "D4": 0.21,
+          "A5": "Céntimos",
+          "B5": 19.99,
+          "C5": 0.05,
+          "D5": 0.21
+        },
+        "formatos": { "B2:B5": "eur", "C2:D5": "pct", "E2:E5": "eur" },
+        "anchos": { "A": 14, "E": 13 }
+      },
+      "objetivo": "E2",
+      "copiar_a": ["E3:E5"],
+      "solucion": "=LET(precio;B2;dto;C2;iva;D2;REDONDEAR(precio*(1-dto)*(1+iva);2))",
+      "alternativas": [
+        "=LET(precio;B2;dto;C2;iva;D2;REDONDEAR(precio*(1+iva)*(1-dto);2))",
+        "=LET(precio;$B2;dto;$C2;iva;$D2;REDONDEAR(precio*(1-dto)*(1+iva);2))"
+      ],
+      "debe_usar": ["LET", "REDONDEAR"],
+      "errores_tipicos": [
+        "=LET(precio;B2;dto;C2;iva;D2;precio*(1-dto)*(1+iva))",
+        "=LET(precio;B2;dto;C2;iva;D2;REDONDEAR(precio*(1-dto)*1,21;2))",
+        "=LET(precio;B2;dto;C2;iva;D2;REDONDEAR(precio*dto*(1+iva);2))"
+      ],
+      "variantes": [{ "B2": 50, "D2": 0.1 }],
+      "formato_resultado": "eur",
+      "pistas": [
+        "LET va por parejas: nombre; valor; nombre; valor… y al final la cuenta. Empieza con `=LET(precio;B2;dto;C2;iva;D2;…`.",
+        "La cuenta es `precio*(1-dto)*(1+iva)`, y tiene que ir dentro de `REDONDEAR(…;2)`.",
+        "Escribe `=LET(precio;B2;dto;C2;iva;D2;REDONDEAR(precio*(1-dto)*(1+iva);2))`."
+      ],
+      "explicacion": "Los cuatro casos dan lo esperado: 121,00 €; 108,90 €; 0,00 € y 22,98 €. La receta está probada: ahora solo falta cambiar `LET(precio;B2;dto;C2;iva;D2;…)` por `LAMBDA(precio;dto;iva;…)` y guardarla con nombre."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Dónde funciona\n\nLAMBDA existe en **Excel 2024** y **Microsoft 365** (también en Mac y en la web). En **Excel 2021 o anterior**, las celdas que usan tu función darán **#¿NOMBRE?**.\n\nAdemás, la función vive **en el libro donde la creas**: en otro libro no existe hasta que la definas también allí.\n\nPor eso LAMBDA compensa en libros que se usan mucho y que abre gente con versiones recientes: la plantilla de presupuestos, la de pedidos…"
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e5",
+      "modo": "test",
+      "pregunta": "Creaste PRECIO_FINAL en el libro de presupuestos y allí funciona. Javier, que tiene Microsoft 365 como tú, la escribe en su propio libro de ofertas y le sale **#¿NOMBRE?**. ¿Por qué?",
+      "opciones": [
+        { "texto": "La función solo existe en el libro donde se creó; en el libro de Javier hay que definirla también", "correcta": true, "porque": "Correcto: un nombre definido pertenece a su libro. Javier tiene que crearla en el suyo con la misma LAMBDA." },
+        { "texto": "Javier la ha escrito en minúsculas", "correcta": false, "porque": "Excel no distingue mayúsculas de minúsculas en los nombres: precio_final y PRECIO_FINAL son lo mismo." },
+        { "texto": "Las funciones propias solo funcionan en la hoja donde se crearon", "correcta": false, "porque": "Con el Ámbito «Libro», que es el que viene marcado, funcionan en todas las hojas de ese libro." },
+        { "texto": "Falta pulsar Actualizar", "correcta": false, "porque": "Actualizar es para tablas dinámicas y Power Query. Las fórmulas se recalculan solas." }
+      ],
+      "explicacion": "Dos causas típicas de #¿NOMBRE? con una función propia: un Excel anterior a 2024 o un libro donde no está definida."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l4-e6",
+      "modo": "abierta",
+      "pregunta": "**El encargo de Marta.** Escribe lo que pondrías en el cuadro **Nuevo nombre** para crear la función de la casa:\n\n1. **Nombre**.\n2. **Comentario**: qué hace y qué datos pide, en una o dos frases.\n3. **Hace referencia a**: la LAMBDA con los parámetros `precio`, `dto` e `iva`, que aplique el descuento y el IVA y redondee a 2 decimales.",
+      "modelo": "1. Nombre: PRECIO_FINAL\n2. Comentario: Precio final de una línea: aplica el descuento, después el IVA, y redondea a 2 decimales. Pide precio, descuento (%) e IVA (%). Ejemplo: PRECIO_FINAL(100;10%;21%) = 108,90.\n3. Hace referencia a: =LAMBDA(precio;dto;iva;REDONDEAR(precio*(1-dto)*(1+iva);2))",
+      "criterios": [
+        "El nombre se entiende y no lleva espacios (usa _)",
+        "La LAMBDA tiene tres parámetros (precio, dto, iva) antes del cálculo",
+        "El cálculo aplica el descuento y el IVA y redondea con REDONDEAR(…;2)",
+        "El comentario dice qué hace y qué datos pide, en el orden en que se escriben",
+        "Incluye o menciona un caso de prueba con su resultado conocido"
+      ]
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m1l4-q1",
+      "modo": "cinta",
+      "enunciado": "Heredas un libro de presupuestos y quieres ver qué funciones propias tiene y qué hace cada una. ¿Qué botón abres?",
+      "ruta": ["Fórmulas", "Nombres definidos", "Administrador de nombres"],
+      "explicacion": "Fórmulas › Nombres definidos › Administrador de nombres ([[Ctrl]]+[[F3]]). Ahí ves cada nombre, su comentario y la LAMBDA a la que hace referencia."
+    },
+    {
+      "id": "n5m1l4-q2",
+      "modo": "test",
+      "pregunta": "Mezcla de todo el módulo. ¿Qué herramienta encaja con este problema: «En 40 hojas cada uno calcula los portes con su propia fórmula y salen resultados distintos»?",
+      "opciones": [
+        { "texto": "LAMBDA: una función de la casa con nombre, definida una sola vez", "correcta": true, "porque": "Eso es: una sola definición, probada y documentada, que todos usan igual." },
+        { "texto": "DIVIDIRTEXTO", "correcta": false, "porque": "DIVIDIRTEXTO separa textos en partes; no unifica un cálculo." },
+        { "texto": "AGRUPARPOR", "correcta": false, "porque": "AGRUPARPOR resume datos por grupos; no sirve para que todos calculen igual." },
+        { "texto": "TOMAR", "correcta": false, "porque": "TOMAR devuelve las primeras o últimas filas de una tabla." }
+      ]
+    },
+    {
+      "id": "n5m1l4-q3",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué devuelve esta prueba? `=LAMBDA(importe;tipo;importe*(1+tipo))(200;0,1)`",
+      "aceptadas": ["220", "220,00", "220 €", "220,00 €", "220€"],
+      "explicacion": "200 × (1 + 0,1) = 220. Los valores entre paréntesis rellenan los huecos en orden: importe = 200, tipo = 0,1."
+    }
+  ],
+  "tarjetas": [
+    { "tipo": "funcion", "frente": "Sintaxis de LAMBDA", "dorso": "=LAMBDA(parámetro1; parámetro2; …; cálculo). El último argumento es siempre la cuenta." },
+    { "tipo": "concepto", "frente": "¿Cómo pruebas una LAMBDA en una celda?", "dorso": "Con los valores entre paréntesis detrás: =LAMBDA(x;x*2)(5) devuelve 10." },
+    { "tipo": "concepto", "frente": "¿Dónde se guarda una función propia?", "dorso": "Fórmulas › Administrador de nombres › Nuevo: Nombre, Comentario y la LAMBDA en «Hace referencia a»." },
+    { "tipo": "error", "frente": "Tu función propia da #¿NOMBRE?. Dos causas típicas", "dorso": "Un Excel anterior a 2024 (no tiene LAMBDA) o un libro en el que la función no está definida." }
+  ]
+}

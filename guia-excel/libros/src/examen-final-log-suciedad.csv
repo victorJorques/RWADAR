@@ -1,0 +1,156 @@
+fila,columna,problema,valor
+2,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,27.00
+3,Fecha,Q07 Fecha ISO guardada como texto,2026-08-31
+18,Fecha,Q07 Fecha ISO guardada como texto,2026-08-31
+23,CodCliente,Q04 Espacio al final del código,'C1048 '
+24,CodCliente,Q04 Espacio al final del código,'C1048 '
+36,CodProducto,Q16 Producto descatalogado que no está en la tarifa,MEN-COP-12
+38,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.20
+42,Fecha,Q07 Fecha ISO guardada como texto,2026-09-01
+53,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,980.00
+73,Fecha,Q07 Fecha ISO guardada como texto,2026-09-02
+90,Fecha,Q07 Fecha ISO guardada como texto,2026-09-03
+93,Fecha,Q07 Fecha ISO guardada como texto,2026-09-03
+105,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,17.80
+110,Fecha,Q07 Fecha ISO guardada como texto,2026-09-03
+119,Fecha,Q07 Fecha ISO guardada como texto,2026-09-04
+121,Fecha,Q07 Fecha ISO guardada como texto,2026-09-04
+128,Fecha,Q07 Fecha ISO guardada como texto,2026-09-04
+131,Fecha,Q07 Fecha ISO guardada como texto,2026-09-07
+136,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,21.20
+150,Fecha,Q07 Fecha ISO guardada como texto,2026-09-07
+154,Fecha,Q07 Fecha ISO guardada como texto,2026-09-07
+161,Fecha,Q07 Fecha ISO guardada como texto,2026-09-07
+167,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,3.60
+170,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,12.60
+186,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,14.60
+197,Fecha,Q07 Fecha ISO guardada como texto,2026-09-08
+200,CodProducto,Q16 Producto descatalogado que no está en la tarifa,CAF-ETI-1K
+215,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,29.00
+229,Fecha,Q07 Fecha ISO guardada como texto,2026-09-10
+242,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,16.00
+249,Fecha,Q07 Fecha ISO guardada como texto,2026-09-11
+253,CodCliente,Q04 Espacio al final del código,'C1145 '
+259,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,16.50
+265,CodCliente,Q04 Espacio al final del código,'C1079 '
+271,CodProducto,Q16 Producto descatalogado que no está en la tarifa,MEN-COP-12
+272,CodCliente,Q04 Espacio al final del código,'C1074 '
+276,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,7.90
+277,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,32.00
+283,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,11.10
+288,Fecha,Q07 Fecha ISO guardada como texto,2026-09-14
+290,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,17.90
+319,Fecha,Q07 Fecha ISO guardada como texto,2026-09-15
+331,Fecha,Q07 Fecha ISO guardada como texto,2026-09-15
+336,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.80
+347,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,2150.00
+348,CodCliente,Q04 Espacio al final del código,'C1115 '
+352,Fecha,Q07 Fecha ISO guardada como texto,2026-09-16
+361,Fecha,Q07 Fecha ISO guardada como texto,2026-09-16
+374,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,32.00
+392,Fecha,Q07 Fecha ISO guardada como texto,2026-09-17
+395,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,41.70
+403,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,17.90
+407,CodCliente,Q04 Espacio al final del código,'C1043 '
+409,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,14.60
+417,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,38.00
+422,Fecha,Q07 Fecha ISO guardada como texto,2026-09-21
+440,CodProducto,Q16 Producto descatalogado que no está en la tarifa,CAF-ETI-1K
+446,CodProducto,Q16 Producto descatalogado que no está en la tarifa,CAF-ETI-1K
+451,CodCliente,Q04 Espacio al final del código,'C1059 '
+453,CodCliente,Q04 Espacio al final del código,'C1008 '
+458,CodCliente,Q04 Espacio al final del código,'C1084 '
+466,Fecha,Q07 Fecha ISO guardada como texto,2026-09-23
+469,Fecha,Q07 Fecha ISO guardada como texto,2026-09-23
+498,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,27.00
+500,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.80
+511,Fecha,Q07 Fecha ISO guardada como texto,2026-09-24
+516,CodCliente,Q04 Espacio al final del código,'C1095 '
+529,CodCliente,Q04 Espacio al final del código,'C1137 '
+534,CodCliente,Q04 Espacio al final del código,'C1018 '
+556,Fecha,Q07 Fecha ISO guardada como texto,2026-09-28
+603,CodCliente,Q04 Espacio al final del código,'C1133 '
+611,CodCliente,Q04 Espacio al final del código,'C1109 '
+622,Fecha,Q07 Fecha ISO guardada como texto,2026-10-01
+626,Fecha,Q07 Fecha ISO guardada como texto,2026-10-01
+628,Fecha,Q07 Fecha ISO guardada como texto,2026-10-01
+642,Fecha,Q07 Fecha ISO guardada como texto,2026-10-02
+645,Fecha,Q07 Fecha ISO guardada como texto,2026-10-02
+651,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,29.80
+659,Fecha,Q07 Fecha ISO guardada como texto,2026-10-02
+674,Fecha,Q07 Fecha ISO guardada como texto,2026-10-05
+675,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,13.80
+677,Fecha,Q07 Fecha ISO guardada como texto,2026-10-05
+699,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.25
+700,Fecha,Q07 Fecha ISO guardada como texto,2026-10-05
+704,Fecha,Q07 Fecha ISO guardada como texto,2026-10-06
+707,CodCliente,Q04 Espacio al final del código,'C1072 '
+712,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,5.30
+714,Fecha,Q07 Fecha ISO guardada como texto,2026-10-06
+724,Fecha,Q07 Fecha ISO guardada como texto,2026-10-06
+734,CodCliente,Q04 Espacio al final del código,'C1079 '
+755,CodCliente,Q04 Espacio al final del código,'C1019 '
+768,Fecha,Q07 Fecha ISO guardada como texto,2026-10-07
+772,Fecha,Q07 Fecha ISO guardada como texto,2026-10-07
+783,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,13.80
+788,Fecha,Q07 Fecha ISO guardada como texto,2026-10-07
+795,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,14.30
+798,Fecha,Q07 Fecha ISO guardada como texto,2026-10-08
+799,Fecha,Q07 Fecha ISO guardada como texto,2026-10-08
+801,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.50
+812,CodProducto,Q16 Producto descatalogado que no está en la tarifa,INF-JEN-100
+833,Fecha,Q07 Fecha ISO guardada como texto,2026-10-08
+835,CodCliente,Q04 Espacio al final del código,'C1054 '
+852,CodCliente,Q04 Espacio al final del código,'C1105 '
+878,Fecha,Q07 Fecha ISO guardada como texto,2026-10-13
+883,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,12.60
+889,Fecha,Q07 Fecha ISO guardada como texto,2026-10-14
+892,Fecha,Q07 Fecha ISO guardada como texto,2026-10-14
+895,CodCliente,Q04 Espacio al final del código,'C1033 '
+904,CodCliente,Q04 Espacio al final del código,'C1095 '
+923,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,40.40
+926,Fecha,Q07 Fecha ISO guardada como texto,2026-10-15
+929,Fecha,Q07 Fecha ISO guardada como texto,2026-10-15
+946,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,15.70
+971,Fecha,Q07 Fecha ISO guardada como texto,2026-10-19
+978,Fecha,Q07 Fecha ISO guardada como texto,2026-10-19
+988,Fecha,Q07 Fecha ISO guardada como texto,2026-10-19
+990,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,4.20
+997,CodProducto,Q16 Producto descatalogado que no está en la tarifa,CAF-ETI-1K
+1013,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04464 INF-ROO-50
+1014,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04465 AZU-SOB-1K
+1015,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04465 LEC-DES-6
+1016,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04466 MEN-JAR-6
+1017,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04466 CAF-MEZ-1K
+1018,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04466 CAF-ARA-1K
+1019,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04467 AZU-STI-500
+1020,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04467 MEN-TCA-12
+1021,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04467 CAF-MDE-250
+1022,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04468 AZU-SOB-1K
+1023,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04468 CAF-MEZ-1K
+1024,toda la fila,Q01 Duplicado exacto (la exportación repite el final del día),PV26-04468 MEN-TER-6
+1028,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,9.80
+1034,CodProducto,Q16 Producto descatalogado que no está en la tarifa,INF-JEN-100
+1057,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,8.90
+1069,Fecha,Q07 Fecha ISO guardada como texto,2026-10-22
+1071,Fecha,Q07 Fecha ISO guardada como texto,2026-10-22
+1092,CodCliente,Q04 Espacio al final del código,'C1146 '
+1100,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.80
+1116,CodCliente,Q04 Espacio al final del código,'C1019 '
+1131,Fecha,Q07 Fecha ISO guardada como texto,2026-10-26
+1132,Fecha,Q07 Fecha ISO guardada como texto,2026-10-26
+1155,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.75
+1171,Fecha,Q07 Fecha ISO guardada como texto,2026-10-27
+1181,PrecioUnitario,Q05 Precio con punto decimal guardado como texto,6.25
+1206,Fecha,Q07 Fecha ISO guardada como texto,2026-10-29
+1228,CodCliente,Q04 Espacio al final del código,'C1035 '
+1241,toda la fila,Q10 Fila de totales mezclada con los datos,Cantidad 8769
+Clientes C1001,Zona,Q08 Zona mal escrita,' Burgos'
+Clientes C1067,Zona,Q08 Zona mal escrita,'valladolid  capital'
+Clientes C1087,Zona,Q08 Zona mal escrita,'BURGOS '
+Clientes C1095,Zona,Q08 Zona mal escrita,'palencia'
+Clientes C1115,Zona,Q08 Zona mal escrita,'burgos'
+Clientes C1135,Zona,Q08 Zona mal escrita,'Palencia '
+Cobros FV26-01099,Cobrado,Q17 Cobrada de más (saldo a favor),37.50
+Cobros FV26-01112,Cobrado,Q17 Cobrada de más (saldo a favor),423.51
+Cobros FV26-01117,Cobrado,Q17 Cobrada de más (saldo a favor),100.00

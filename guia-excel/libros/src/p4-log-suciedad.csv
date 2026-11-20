@@ -1,0 +1,17 @@
+archivo;hoja;fila_excel;columna;problema;valor
+p4-datos.xlsx;Movimientos;13;A;Q07 fecha como texto;01/10/2026
+p4-datos.xlsx;Movimientos;17;A;Q07 fecha como texto;01/10/2026
+p4-datos.xlsx;Movimientos;47;A;Q07 fecha como texto;05/10/2026
+p4-datos.xlsx;Movimientos;51;A;Q07 fecha como texto;06/10/2026 
+p4-datos.xlsx;Movimientos;98;A;Q07 fecha como texto;15/10/2026
+p4-datos.xlsx;Movimientos;99;A;Q07 fecha como texto;15/10/2026
+p4-datos.xlsx;Movimientos;114;A;Q07 fecha como texto;16/10/2026
+p4-datos.xlsx;Movimientos;116;A;Q07 fecha como texto;20/10/2026 
+p4-datos.xlsx;Movimientos;160;A;Q07 fecha como texto;27/10/2026
+p4-datos.xlsx;Movimientos;182;A;Q07 fecha como texto;30/10/2026
+p4-datos.xlsx;Movimientos;1-7;-;Q11 6 filas de título antes de la tabla;
+p4-datos.xlsx;Movimientos (2);todas;-;Trampa: otra cuenta (Banco Sur, póliza);16
+p4-datos.xlsx;Mayor_572000001;4;C;Q10 fila «Saldo anterior» entre los apuntes;84985.37
+p4-datos.xlsx;Mayor_572000001;204;C;Q10 fila «Sumas del periodo» al final;493222.14 / 516283.38
+p4-datos.xlsx;Mayor_572000001;5-203;D:E;Q14 Debe y Haber en dos columnas;
+p4-noviembre.xlsx;Movimientos;-;-;Cambio inesperado: comisión trimestral −180,00 y A1-A3 cobrados;12

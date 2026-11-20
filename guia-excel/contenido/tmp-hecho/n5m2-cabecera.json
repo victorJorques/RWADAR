@@ -1,0 +1,99 @@
+{
+  "id": "n5m2",
+  "nivel": "n5",
+  "titulo": "Varias tablas: el modelo de datos",
+  "intro": "En la empresa los datos llegan en varias tablas (ventas, clientes, productos), y pegarlas en una tabla gigante con BUSCARX acaba en datos repetidos y cifras que no cuadran. Con un modelo de datos las relacionas una vez, cada informe cruza lo que necesites y se actualiza solo, y es la misma base que usa Power BI.",
+  "repaso_inicial": [
+    {
+      "id": "n5m2-r1",
+      "modo": "formula",
+      "enunciado": "Así cruzabas tablas hasta hoy. En **D2** trae la **provincia** del cliente de B2 desde la ficha de clientes (F2:G5). Tu fórmula se copiará a D3:D5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Línea", "B1": "CodCliente", "C1": "Importe", "D1": "Provincia", "F1": "CodCliente", "G1": "Provincia",
+          "A2": "L-01", "B2": "C-1088", "C2": 192,
+          "A3": "L-02", "B3": "C-1043", "C3": 449.1,
+          "A4": "L-03", "B4": "C-1102", "C4": 1180.5,
+          "A5": "L-04", "B5": "C-1017", "C5": 298,
+          "F2": "C-1017", "G2": "Navarra",
+          "F3": "C-1043", "G3": "Zaragoza",
+          "F4": "C-1088", "G4": "Lleida",
+          "F5": "C-1102", "G5": "Huesca"
+        },
+        "formatos": {"C2:C5": "eur"},
+        "anchos": {"B": 11, "D": 11, "F": 11, "G": 10},
+        "columnas": 7,
+        "filas": 5
+      },
+      "objetivo": "D2",
+      "copiar_a": ["D3:D5"],
+      "solucion": "=BUSCARX(B2;$F$2:$F$5;$G$2:$G$5)",
+      "alternativas": ["=BUSCARV(B2;$F$2:$G$5;2;FALSO)", "=INDICE($G$2:$G$5;COINCIDIR(B2;$F$2:$F$5;0))", "=BUSCARX(B2;F$2:F$5;G$2:G$5)"],
+      "errores_tipicos": ["=BUSCARX(B2;F2:F5;G2:G5)", "=BUSCARV(B2;$F$2:$G$5;1;FALSO)"],
+      "variantes": [{"G3": "Teruel"}],
+      "pistas": [
+        "Buscas el código de B2 en la columna de códigos de la ficha y devuelves la columna de provincias.",
+        "BUSCARX(lo que buscas; dónde lo buscas; qué devuelves). Fija los rangos de la ficha con $ para que no se muevan al copiar.",
+        "=BUSCARX(B2;$F$2:$F$5;$G$2:$G$5)"
+      ],
+      "explicacion": "Funciona, pero copia la provincia en cada venta: con 2.000 ventas, 2.000 copias del mismo dato. En este módulo aprenderás a cruzar tablas sin copiar nada."
+    },
+    {
+      "id": "n5m2-r2",
+      "modo": "test",
+      "pregunta": "Llevas Importe a Valores y la tabla dinámica muestra «Cuenta de Importe» en lugar de una suma. ¿Qué es lo más probable?",
+      "opciones": [
+        {"texto": "Hay importes guardados como texto en esa columna", "correcta": true, "porque": "Si Excel encuentra datos que no son números en un campo de valores, lo resume con Cuenta. Convierte esos textos en números y cambia a Suma en Configuración de campo de valor."},
+        {"texto": "La tabla dinámica no está actualizada", "correcta": false, "porque": "Actualizar trae los datos nuevos, pero no cambia Cuenta por Suma."},
+        {"texto": "Has arrastrado el campo a Filas en vez de a Valores", "correcta": false, "porque": "En Filas no saldría «Cuenta de Importe», sino cada importe como una fila."}
+      ],
+      "explicacion": "Cuenta en lugar de Suma suele delatar números guardados como texto. Revísalo siempre antes de entregar."
+    },
+    {
+      "id": "n5m2-r3",
+      "modo": "predice",
+      "enunciado": "Antes de que Excel lo calcule: ¿qué devuelve esta fórmula?",
+      "hoja": {
+        "celdas": {
+          "A1": "Provincia", "B1": "Familia", "C1": "Importe",
+          "A2": "Huesca", "B2": "Cableado", "C2": 420,
+          "A3": "Navarra", "B3": "Cableado", "C3": 310,
+          "A4": "Huesca", "B4": "Iluminación", "C4": 150,
+          "A5": "Huesca", "B5": "Cableado", "C5": 95.5,
+          "A6": "Lleida", "B6": "Cableado", "C6": 260
+        },
+        "formatos": {"C2:C6": "eur"},
+        "anchos": {"B": 12},
+        "columnas": 5,
+        "filas": 6
+      },
+      "celda": "E2",
+      "formula": "=SUMAR.SI.CONJUNTO(C2:C6;A2:A6;\"Huesca\";B2:B6;\"Cableado\")",
+      "explicacion": "515,5: solo suman las filas que cumplen las dos condiciones a la vez (Huesca y Cableado): 420 + 95,5. Es el cruce de una fila y una columna de una tabla dinámica."
+    },
+    {
+      "id": "n5m2-r4",
+      "modo": "test",
+      "pregunta": "En Power Query, ¿qué operación usas para añadir a la consulta de ventas la familia de cada producto, que está en la consulta del maestro de productos?",
+      "opciones": [
+        {"texto": "Combinar consultas", "correcta": true, "porque": "Combinar une dos consultas por una columna común (el código de producto) y trae columnas de la otra, como un BUSCARX."},
+        {"texto": "Anexar consultas", "correcta": false, "porque": "Anexar pone las filas de una consulta debajo de las de otra (por ejemplo, enero y febrero). No trae columnas."},
+        {"texto": "Anular dinamización de columnas", "correcta": false, "porque": "Eso convierte columnas en filas (meses en columnas → una fila por mes). No une dos tablas."}
+      ],
+      "explicacion": "Combinar consultas también copia la familia en cada venta. Hoy verás la alternativa: dejar las tablas separadas y relacionarlas."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "Carmen quiere para el comité las ventas por provincia y familia, los clientes distintos y el margen %, todo desde un modelo de datos. Descarga **n5-modelo-ventas.xlsx** (necesitas Excel para Windows: en Mac y en la web no hay modelo de datos), sigue la hoja Instrucciones y responde con tus cifras. Intenta hacerlo en menos de 25 minutos.\n\n1. Crea tres relaciones desde Ventas: con Clientes (CodCliente), con Productos (CodProducto) y con Calendario (Fecha).\n2. Tabla dinámica del modelo: Provincia en Filas, Familia en Columnas, Importe en Valores.\n3. Recuento distinto de CodCliente, con Año (de Calendario) como filtro.\n4. Medidas Total ventas, Total coste, Margen y Margen %, con Familia en Filas.",
+    "archivo": "n5-modelo-ventas.xlsx",
+    "controles": [
+      {"pregunta": "Ventas totales de todo el periodo (€)", "respuesta": 420046.48, "tolerancia": 0.01, "pista": "Es el total general de la tabla dinámica con Importe en Valores. Si no coincide, comprueba que el campo resume con Suma y no con Cuenta."},
+      {"pregunta": "Ventas de la familia Cableado en la provincia de Navarra, todo el periodo (€)", "respuesta": 24461.77, "tolerancia": 0.01, "pista": "Cruce de la fila Navarra con la columna Cableado. Si sale la misma cifra en todas las filas, falta la relación de Ventas con Clientes o con Productos."},
+      {"pregunta": "Clientes distintos que han comprado en todo el periodo", "respuesta": 109, "tolerancia": 0, "pista": "Recuento distinto de CodCliente de la tabla Ventas. Si te sale 2.000, cuentas líneas; si te sale 120, cuentas la ficha de Clientes, que incluye clientes sin compras."},
+      {"pregunta": "Clientes distintos de la provincia de Zaragoza con compras en 2026", "respuesta": 41, "tolerancia": 0, "pista": "Filtra Año = 2026 (de Calendario). Si te sale 309, es Cuenta (líneas), no Recuento distinto. Si el filtro no cambia nada, falta la relación Ventas[Fecha] → Calendario[Fecha]."},
+      {"pregunta": "Margen % de la familia Iluminación en todo el periodo (escribe el % con dos decimales, por ejemplo 28,15)", "respuesta": 32.64, "tolerancia": 0.01, "pista": "Medida Margen % = DIVIDE([Margen]; [Total ventas]) con Familia en Filas. Si te sale 32,53, has hecho la media de los % de cada línea en vez de margen total ÷ ventas totales."}
+    ],
+    "solucion_md": "### 1. Relaciones (Datos › Relaciones › Nuevo)\nTres relaciones de uno a varios, con la dimensión como principal:\n\n| Tabla | Columna (externa) | Tabla relacionada | Columna relacionada (principal) |\n|---|---|---|---|\n| Ventas | CodCliente | Clientes | CodCliente |\n| Ventas | CodProducto | Productos | CodProducto |\n| Ventas | Fecha | Calendario | Fecha |\n\nResultado: un esquema en estrella con Ventas en el centro.\n\n### 2. Tabla dinámica del modelo\nClic dentro de Ventas › **Insertar › Tabla dinámica** › marca **Agregar estos datos al modelo de datos** › Nueva hoja de cálculo. En Campos de tabla dinámica: Clientes[Provincia] a Filas, Productos[Familia] a Columnas y Ventas[Importe] a Valores. Total general: **420.046,48 €**; Cableado en Navarra: **24.461,77 €**.\n\n### 3. Clientes distintos\nVentas[CodCliente] a Valores › Configuración de campo de valor › **Recuento distinto**. Total: **109** (hay 120 fichas, pero 11 clientes no han comprado). Con Calendario[Año] = 2026 en Filtros, Zaragoza da **41** clientes (309 líneas: lo que daría Cuenta).\n\n### 4. Medidas (Power Pivot › Medidas › Nueva medida, en la tabla Ventas)\n- `Total ventas := SUM(Ventas[Importe])`\n- `Total coste := SUM(Ventas[Coste])`\n- `Margen := [Total ventas] - [Total coste]`\n- `Margen % := DIVIDE([Margen]; [Total ventas])`, con formato de porcentaje\n\nCon Familia en Filas, Iluminación da **32,64 %**. La media de los % de cada línea daría 32,53 %: parecido aquí, pero es otra cifra y en otros datos la diferencia es enorme.\n\n### 5. Comprobación\nEl archivo de solución rehace las cinco cifras con fórmulas clásicas (columnas «(aux)» con INDICE+COINCIDIR, SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO) en la hoja Controles, para que puedas cuadrar sin modelo de datos.",
+    "archivo_solucion": "n5-modelo-ventas-solucion.xlsx"
+  }
+}

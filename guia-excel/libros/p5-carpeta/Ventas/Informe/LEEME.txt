@@ -1,0 +1,2 @@
+﻿Guarda aquí tu libro del informe (por ejemplo P5_Informe_ventas_2026-10_v01.xlsx).
+No pongas nada en la carpeta ERP que no sea una exportación del ERP.

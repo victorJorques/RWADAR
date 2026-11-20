@@ -1,0 +1,176 @@
+{
+ "id": "n0m2l1",
+ "titulo": "Escribir, corregir y deshacer",
+ "minutos": 12,
+ "objetivo": "Escribir datos en una celda, confirmarlos, corregir una letra sin borrar lo demás y deshacer cualquier error con Ctrl+Z.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "Hola, bienvenida. En la lista de extensiones de teléfono hay dos fallos: el apellido de Sergio pone «Lázro» y a Pablo Gil le falta su extensión, la 214. ¿Me lo arreglas? Con cuidado, que esa lista la usa recepción todo el día.",
+  "logro": "Ya sabes escribir y corregir datos en una hoja de la empresa sin estropear lo que había, y deshacer cualquier error en un segundo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Escribir en Excel tiene tres pasos:\n\n1. **Haz clic** en la celda.\n2. **Escribe**.\n3. Pulsa **Intro** para confirmar.\n\nMientras escribes, el texto todavía no está dentro de la celda: está «en el aire». Al pulsar **Intro**, se queda guardado en la celda y Excel baja a la celda de abajo, listo para el siguiente dato."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La lista de extensiones de Lucía",
+   "hoja": {
+    "celdas": {
+     "A1": "Nombre", "B1": "Apellidos", "C1": "Departamento", "D1": "Extensión",
+     "A2": "Ana", "B2": "Beltrán Sanz", "C2": "Administración", "D2": 201,
+     "A3": "Sergio", "B3": "Lázro Pérez", "C3": "Almacén", "D3": 230,
+     "A4": "Pablo", "B4": "Gil Moreno", "C4": "Compras",
+     "A5": "Irene", "B5": "Cuesta Royo", "C5": "Comercial", "D5": 245
+    },
+    "anchos": {"A": 10, "B": 14, "C": 16, "D": 11}
+   },
+   "resaltar": ["B3", "D4"],
+   "pie": "Los dos fallos: el apellido de B3 y la extensión que falta en D4."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e1",
+   "modo": "test",
+   "pregunta": "Has hecho clic en **D4** y has escrito `214`. ¿Qué tecla pulsas para que se quede guardado en la celda?",
+   "opciones": [
+    {"texto": "[[Intro]]", "correcta": true, "porque": "Eso es: Intro confirma lo que has escrito y lo deja dentro de la celda."},
+    {"texto": "[[Esc]]", "correcta": false, "porque": "Esc hace lo contrario: cancela lo que estabas escribiendo y la celda se queda como estaba."},
+    {"texto": "[[Supr]]", "correcta": false, "porque": "Supr sirve para vaciar celdas, no para confirmar lo que escribes."}
+   ],
+   "explicacion": "Primer paso dado: ya sabes meter un dato en una hoja de la empresa. Con [[Tab]] (la tecla con dos flechas, encima de [[Bloq Mayús]]) también se confirma, pero Excel salta a la celda de la derecha en vez de bajar."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Te has equivocado de celda mientras escribías? Pulsa **Esc**: lo que estabas escribiendo desaparece y la celda queda **exactamente como estaba**.\n\nY un detalle importante: mientras escribes, Excel está «ocupado» y muchos botones de la cinta se ven en gris. Si algo no responde, casi siempre es porque te falta pulsar **Intro**."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {"teclas": "Intro", "accion": "Confirmar y bajar a la celda de abajo"},
+    {"teclas": "Tab", "accion": "Confirmar y pasar a la celda de la derecha"},
+    {"teclas": "Esc", "accion": "Cancelar lo que estás escribiendo"}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e2",
+   "modo": "test",
+   "pregunta": "Estás escribiendo `Comer` en **C3** y te das cuenta: esa celda era la de Sergio, que es de Almacén. Todavía no has pulsado nada más. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Pulso [[Esc]]", "correcta": true, "porque": "Correcto: Esc cancela lo que estabas escribiendo y C3 vuelve a decir «Almacén», sin daños."},
+    {"texto": "Pulso [[Intro]] y luego lo arreglo", "correcta": false, "porque": "Con Intro confirmarías «Comer» y borrarías «Almacén». Se podría deshacer, pero es dar un rodeo."},
+    {"texto": "Cierro Excel sin guardar", "correcta": false, "porque": "Demasiado drástico: perderías todo lo que hayas hecho desde la última vez que guardaste."}
+   ],
+   "explicacion": "Esc es tu freno de emergencia mientras escribes. Úsalo sin miedo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora, el error más típico del primer día: si haces clic en una celda que ya tiene algo y **empiezas a escribir**, lo nuevo **sustituye todo** lo que había.\n\nEs como grabar encima de un mensaje del contestador: lo anterior desaparece entero. Si en B3 («Lázro Pérez») escribes solo `Lázaro`, el «Pérez» se pierde."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Truco de veterana: para cambiar **una letra** no reescribas la celda. Pulsa **F2** (o haz doble clic en la celda) y entras «dentro» del texto, con el cursor parpadeando. Así tocas solo lo que está mal."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e3",
+   "modo": "test",
+   "pregunta": "En B3 pone `Lázro Pérez`. Haces clic en B3, escribes `Lázaro` y pulsas Intro. ¿Qué queda en B3?",
+   "opciones": [
+    {"texto": "`Lázaro`", "correcta": true, "porque": "Así es: al escribir directamente sobre una celda llena, lo nuevo sustituye todo. El «Pérez» se ha perdido."},
+    {"texto": "`Lázaro Pérez`", "correcta": false, "porque": "Eso solo pasaría si hubieras entrado con F2 o doble clic y corregido solo la palabra. Escribir encima borra todo lo anterior."},
+    {"texto": "`Lázro Pérez Lázaro`", "correcta": false, "porque": "Excel no añade lo nuevo al final: lo cambia por completo."}
+   ],
+   "explicacion": "Acabas de detectar el error más común de quien empieza. Por eso, para retocar una celda, se entra con F2 o doble clic."
+  },
+  {
+   "tipo": "pantalla",
+   "md": "Hay una tercera forma de corregir: haz clic en la celda y luego en la **barra de fórmulas**, la franja larga encima de las columnas. Ahí ves todo el contenido de la celda, aunque sea muy largo, y puedes editarlo con calma.",
+   "resaltar": "barra_formulas"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e4",
+   "modo": "senala",
+   "pregunta": "Toca la **barra de fórmulas**: el sitio donde ves y puedes corregir el contenido completo de la celda activa.",
+   "zona": "barra_formulas",
+   "explicacion": "Esa es. Cuando una celda tiene un texto largo que no se ve entero, míralo en la barra de fórmulas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para **vaciar** una celda: selecciónala y pulsa **Supr**. Si seleccionas varias celdas, Supr las vacía todas de golpe.\n\n¿Y si borras algo sin querer? Aquí viene la mejor noticia del día: **Ctrl+Z deshace** lo último que has hecho. Y si lo pulsas otra vez, deshace lo anterior, paso a paso. Si deshaces de más, **Ctrl+Y** lo rehace."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Equivocarse aquí es gratis",
+   "md": "Con [[Ctrl]]+[[Z]] a mano, puedes probar sin miedo. Si algo sale raro, deshaces y vuelves a intentarlo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e5",
+   "modo": "respuesta_corta",
+   "pregunta": "Acabas de pulsar Supr sin querer y has vaciado toda la columna de extensiones. ¿Qué atajo de teclado lo devuelve todo a su sitio?",
+   "aceptadas": ["Ctrl+Z", "Control+Z", "Ctrl Z", "Ctrl + Z", "Control Z"],
+   "explicacion": "Ctrl+Z, deshacer. Te acaba de salvar la mañana: recepción ni se habrá enterado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l1-e6",
+   "modo": "ordenar",
+   "enunciado": "Lucía te ha pasado su encargo. Ordena los pasos: **primero** corrige el apellido de Sergio («Lázro» → «Lázaro») sin perder el «Pérez», y **después** escribe la extensión 214 de Pablo en D4.",
+   "pasos": [
+    "Haz clic en B3",
+    "Pulsa F2 para entrar en la celda",
+    "Con las flechas, lleva el cursor entre la «z» y la «r»",
+    "Escribe la «a» que falta y pulsa Intro",
+    "Haz clic en D4, que está vacía",
+    "Escribe 214 y pulsa Intro"
+   ],
+   "explicacion": "Encargo resuelto: el apellido está bien, el «Pérez» sigue ahí y la extensión de Pablo ya está. Así se toca una lista que usan otros: solo lo necesario."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m2l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué tecla pulsas para corregir una celda sin borrar lo que ya tiene?",
+   "aceptadas": ["F2", "f2"],
+   "explicacion": "F2 (o doble clic en la celda): entras en el contenido y cambias solo lo que hace falta."
+  },
+  {
+   "id": "n0m2l1-q2",
+   "modo": "test",
+   "pregunta": "Has deshecho tres cambios con Ctrl+Z, pero el último sí estaba bien. ¿Cómo lo recuperas?",
+   "opciones": [
+    {"texto": "[[Ctrl]]+[[Y]]", "correcta": true, "porque": "Correcto: Ctrl+Y rehace lo que acabas de deshacer."},
+    {"texto": "[[Esc]]", "correcta": false, "porque": "Esc cancela lo que estás escribiendo en ese momento; no recupera cambios deshechos."},
+    {"texto": "Otra vez [[Ctrl]]+[[Z]]", "correcta": false, "porque": "Ctrl+Z deshace un paso más hacia atrás: te alejarías todavía más del cambio bueno."}
+   ],
+   "explicacion": "Ctrl+Z hacia atrás, Ctrl+Y hacia delante."
+  },
+  {
+   "id": "n0m2l1-q3",
+   "modo": "test",
+   "pregunta": "Escribes en una celda y, sin pulsar Intro, intentas usar un botón de la cinta, pero está en gris. ¿Por qué?",
+   "opciones": [
+    {"texto": "Porque Excel sigue esperando a que confirmes lo que escribes", "correcta": true, "porque": "Eso es: mientras escribes, muchos botones se desactivan. Pulsa Intro (o Esc) y vuelven."},
+    {"texto": "Porque el archivo está estropeado", "correcta": false, "porque": "No: es lo normal mientras estás escribiendo en una celda."},
+    {"texto": "Porque hay que guardar antes", "correcta": false, "porque": "Guardar no tiene nada que ver; falta confirmar la celda con Intro."}
+   ],
+   "explicacion": "Si algo no responde mientras escribes, primero Intro."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "Deshacer lo último que has hecho", "dorso": "Ctrl+Z (y Ctrl+Y para rehacer)"},
+  {"tipo": "atajo", "frente": "Corregir una celda sin borrar lo que tiene", "dorso": "F2 o doble clic en la celda"},
+  {"tipo": "concepto", "frente": "¿Qué pasa si escribes sobre una celda que ya tiene datos?", "dorso": "Lo nuevo sustituye todo lo anterior."},
+  {"tipo": "atajo", "frente": "Cancelar lo que estás escribiendo en una celda", "dorso": "Esc: la celda queda como estaba"}
+ ]
+}

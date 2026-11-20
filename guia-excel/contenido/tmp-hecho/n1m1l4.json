@@ -1,0 +1,486 @@
+{
+ "id": "n1m1l4",
+ "titulo": "Porcentajes de verdad: IVA, descuentos y subidas",
+ "minutos": 18,
+ "objetivo": "Calcular con porcentajes guardados en una celda: total con IVA, precio con descuento, base a partir de un total con IVA y variación entre dos periodos.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Instalaciones Moncayo nos pide presupuesto de cuatro productos. Tienen un 5 % de descuento por ser buenos clientes, y luego va el IVA. Necesito el total de cada línea y el del presupuesto, con el descuento y el IVA en celdas aparte por si negocian.",
+  "logro": "Ya sabes calcular IVA, descuentos, bases sin IVA y variaciones en porcentaje, que es lo que más se hace en un departamento de administración."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Un **porcentaje es un número** con otro aspecto. «Por ciento» significa «de cada cien»:\n\n- 21 % = 21 de cada 100 = **0,21**\n- 5 % = **0,05**\n- 100 % = **1**\n\nSi escribes `21%` en una celda, Excel guarda 0,21 y te lo enseña como 21 %. Para calcular el 21 % de algo, lo **multiplicas por 0,21**: el 21 % de 100 € es 100 × 0,21 = 21 €."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e1",
+   "modo": "test",
+   "pregunta": "Para Excel, ¿qué número es **10 %**?",
+   "opciones": [
+    {
+     "texto": "0,1",
+     "correcta": true,
+     "porque": "Correcto: 10 de cada 100 es 10 / 100 = 0,1."
+    },
+    {
+     "texto": "10",
+     "correcta": false,
+     "porque": "10 es diez unidades enteras. Si multiplicas un precio por 10, lo multiplicas por diez, no le calculas el 10 %."
+    },
+    {
+     "texto": "1,1",
+     "correcta": false,
+     "porque": "1,1 es el 110 %: sirve para subir un 10 %, pero no es el 10 % en sí."
+    }
+   ],
+   "explicacion": "Ten siempre presente esta equivalencia: 10 % es 0,1; 21 % es 0,21. Todo lo demás de la lección sale de aquí."
+  },
+  {
+   "tipo": "texto",
+   "md": "Con el **IVA** hay dos cálculos:\n\n- **Cuota de IVA** = base × tipo → `=B4*$B$1`\n- **Total con IVA** = base × (1 + tipo) → `=B4*(1+$B$1)`\n\n¿Por qué `1 +`? Porque el total es la base entera (el 100 %, que es 1) más su IVA (0,21). En total, 1,21 veces la base: 1.000 € de base son 1.210 € con IVA. El paréntesis hace que primero se sume 1 + 0,21."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e2",
+   "modo": "formula",
+   "enunciado": "En **D4** calcula el **total con IVA** de la primera factura: base × (1 + tipo de IVA). El tipo está en **B1**. La app copiará tu fórmula a **D5:D7**. Debe salir **1.512,50 €** en D4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.21,
+     "A3": "Factura",
+     "B3": "Base",
+     "C3": "IVA",
+     "D3": "Total",
+     "A4": "F26-0412",
+     "B4": 1250,
+     "C4": "=B4*$B$1",
+     "A5": "F26-0413",
+     "B5": 845.5,
+     "C5": "=B5*$B$1",
+     "A6": "F26-0414",
+     "B6": 2310,
+     "C6": "=B6*$B$1",
+     "A7": "F26-0415",
+     "B7": 96.8,
+     "C7": "=B7*$B$1"
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:D7": "eur"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "objetivo": "D4",
+   "copiar_a": [
+    "D5:D7"
+   ],
+   "solucion": "=B4*(1+$B$1)",
+   "alternativas": [
+    "=B4+C4",
+    "=B4+B4*$B$1",
+    "=B4*(1+B$1)"
+   ],
+   "errores_tipicos": [
+    "=B4+21%",
+    "=B4*(1+B1)",
+    "=B4*1,21",
+    "=B4+$B$1",
+    "=B4*1+$B$1"
+   ],
+   "variantes": [
+    {
+     "B1": 0.1
+    },
+    {
+     "B5": 1000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El total es la base más su IVA. En una sola multiplicación: base × (1 + tipo).",
+    "No olvides el paréntesis alrededor de `1+$B$1`, y fija B1 con F4.",
+    "La fórmula es `=B4*(1+$B$1)`. También vale `=B4+C4`, porque el IVA ya está en C."
+   ],
+   "explicacion": "Totales de factura correctos, y preparados para el día que cambie el tipo de IVA. Con esto ya puedes cuadrar cualquier factura: base + IVA = total."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Andrés Molina",
+   "puesto": "Compras y almacén",
+   "md": "Oye, el proveedor nos sube un 10 % la canaleta, que costaba 100 € la caja. Yo pondría `=A1+10%` y listo, ¿no?"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e3",
+   "modo": "predice",
+   "enunciado": "Antes de contestar a Andrés: con **100** en A1, ¿qué devuelve `=A1+10%`?",
+   "hoja": {
+    "celdas": {
+     "A1": 100
+    }
+   },
+   "celda": "B1",
+   "formula": "=A1+10%",
+   "explicacion": "Da **100,1**, no 110. El 10 % es 0,1, y 100 + 0,1 = 100,1. Para subir un 10 % hay que multiplicar: `=A1*(1+10%)`, o mejor con el 10 % en su propia celda. Es el error más típico con porcentajes: sumar el porcentaje en vez de aplicarlo."
+  },
+  {
+   "tipo": "texto",
+   "md": "El **descuento** es el caso contrario: en lugar de añadir, quitas.\n\n**Precio con descuento** = precio × (1 − descuento) → `=B4*(1-$B$1)`\n\nCon un 8 % de descuento, el cliente paga el 92 % del precio: 1 − 0,08 = 0,92. Un panel de 100 € se queda en 92 €. Otra vez el paréntesis: primero 1 − 0,08 y después la multiplicación."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e4",
+   "modo": "formula",
+   "enunciado": "Electricidad Arbués tiene un **8 % de descuento** (en **B1**). En **C4** calcula el precio neto del panel LED: precio de tarifa × (1 − descuento). La app copiará tu fórmula a **C5:C7**. Debe salir **25,21 €** en C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Descuento cliente",
+     "B1": 0.08,
+     "A3": "Producto",
+     "B3": "Precio tarifa",
+     "C3": "Precio neto",
+     "A4": "Panel LED 60×60",
+     "B4": 27.4,
+     "A5": "Magnetotérmico 2P 16 A",
+     "B5": 9.75,
+     "A6": "Cable 2,5 mm² (rollo 100 m)",
+     "B6": 48.9,
+     "A7": "Canaleta 40×60 (tramo 2 m)",
+     "B7": 6.35
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:C7": "eur"
+    },
+    "anchos": {
+     "A": 28,
+     "B": 13
+    }
+   },
+   "objetivo": "C4",
+   "copiar_a": [
+    "C5:C7"
+   ],
+   "solucion": "=B4*(1-$B$1)",
+   "alternativas": [
+    "=B4-B4*$B$1",
+    "=B4*(1-B$1)"
+   ],
+   "errores_tipicos": [
+    "=B4-$B$1",
+    "=B4*$B$1",
+    "=B4*(1-B1)",
+    "=B4-8%",
+    "=B4*0,92"
+   ],
+   "variantes": [
+    {
+     "B1": 0.15
+    },
+    {
+     "B6": 50
+    }
+   ],
+   "formato_resultado": "eur",
+   "tolerancia": 0.01,
+   "pistas": [
+    "Si el descuento es del 8 %, el cliente paga el 92 % del precio.",
+    "Multiplica el precio por (1 − la celda del descuento), y fija esa celda con F4.",
+    "La fórmula es `=B4*(1-$B$1)`."
+   ],
+   "explicacion": "Precios netos para Arbués en un momento. Si negocian un 10 %, solo cambias B1. Es exactamente lo que se hace al preparar una oferta o revisar una factura de proveedor."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora al revés: te dan un **total con IVA** (un ticket de gasolina, de papelería) y necesitas la **base**.\n\nLo correcto es **dividir**: base = total / (1 + tipo) → `=B4/(1+$B$1)`. 121 € / 1,21 = **100 €**.\n\nLa trampa: restar el 21 % del total. 121 − 21 % de 121 = **95,59 €**, y no es la base. El 21 % se calculó sobre la base, no sobre el total, así que hay que deshacer la multiplicación."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e5",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** Marta te pasa tres tickets de gastos con IVA del 21 % incluido. La fórmula de **C4** resta el 21 % al total y da una base equivocada. Corrígela para que divida entre (1 + tipo). La app la copiará a **C5:C6**. Debe salir **50,00 €** en C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.21,
+     "A3": "Ticket",
+     "B3": "Total pagado",
+     "C3": "Base",
+     "A4": "Gasolinera",
+     "B4": 60.5,
+     "A5": "Ferretería",
+     "B5": 145.2,
+     "A6": "Papelería",
+     "B6": 36.3
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:C6": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 13
+    }
+   },
+   "objetivo": "C4",
+   "inicial": "=B4-B4*$B$1",
+   "copiar_a": [
+    "C5:C6"
+   ],
+   "solucion": "=B4/(1+$B$1)",
+   "alternativas": [
+    "=B4/(1+B$1)"
+   ],
+   "errores_tipicos": [
+    "=B4-B4*$B$1",
+    "=B4*(1-$B$1)",
+    "=B4/(1+B1)",
+    "=B4/1+$B$1",
+    "=B4/1,21"
+   ],
+   "variantes": [
+    {
+     "B1": 0.1
+    },
+    {
+     "B5": 100
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El total es la base multiplicada por 1,21. Para volver a la base, deshaz esa multiplicación.",
+    "Lo contrario de multiplicar es dividir: divide el total entre (1 + tipo).",
+    "La fórmula es `=B4/(1+$B$1)`."
+   ],
+   "explicacion": "Bases exactas: 50, 120 y 30 €. Compruébalo al revés: 50 × 1,21 = 60,50, el total del ticket. Este cálculo lo harás cada vez que contabilices un gasto con el IVA incluido."
+  },
+  {
+   "tipo": "texto",
+   "md": "Por último, la pregunta que más hacen los jefes: «¿cuánto hemos subido o bajado?». Es la **variación**:\n\n**Variación** = (nuevo − antiguo) / antiguo → `=(C2-B2)/B2`\n\nSe divide entre el valor **antiguo** porque es el punto de partida. Si vendías 100 y ahora vendes 120, has subido 20 sobre 100: un **20 %**. Si sale en negativo, has bajado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e6",
+   "modo": "formula",
+   "enunciado": "Carmen quiere saber cuánto han variado las ventas de **noviembre** respecto a **octubre** en cada delegación. En **D2** calcula la variación de Zaragoza: (nuevo − antiguo) / antiguo. La app copiará tu fórmula a **D3:D4**. La columna D tiene formato de porcentaje con un decimal: debe salir **8,3 %** en D2.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Octubre",
+     "C1": "Noviembre",
+     "D1": "Variación",
+     "A2": "Zaragoza",
+     "B2": 398750,
+     "C2": 431900,
+     "A3": "Pamplona",
+     "B3": 175200,
+     "C3": 192650,
+     "A4": "Lleida",
+     "B4": 151300,
+     "C4": 139800
+    },
+    "formatos": {
+     "B2:C4": "eur",
+     "D2:D4": "pct1"
+    },
+    "anchos": {
+     "B": 14,
+     "C": 14
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D4"
+   ],
+   "solucion": "=(C2-B2)/B2",
+   "alternativas": [
+    "=C2/B2-1"
+   ],
+   "errores_tipicos": [
+    "=(C2-B2)/C2",
+    "=C2-B2/B2",
+    "=C2-B2",
+    "=(B2-C2)/B2"
+   ],
+   "variantes": [
+    {
+     "B2": 400000,
+     "C3": 150000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "tolerancia": 0.0001,
+   "pistas": [
+    "Nuevo es noviembre (columna C); antiguo es octubre (columna B).",
+    "Resta entre paréntesis y divide entre el valor de octubre.",
+    "La fórmula es `=(C2-B2)/B2`."
+   ],
+   "explicacion": "Zaragoza sube un 8,3 %, Pamplona un 10 % y Lleida baja un 7,6 %. Con esta fórmula responderás a la pregunta de cualquier reunión: «¿cómo vamos respecto al mes pasado?»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m1l4-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Marta.** El descuento está en **B1** (5 %) y el IVA en **B2** (21 %). En **D5** calcula el total de la primera línea: precio × unidades, con el descuento aplicado y el IVA sumado. La app copiará tu fórmula a **D6:D8**, y el total del presupuesto de **D10** se llenará solo. Debe salir **755,91 €** en D5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Descuento",
+     "B1": 0.05,
+     "A2": "IVA",
+     "B2": 0.21,
+     "A4": "Producto",
+     "B4": "Precio",
+     "C4": "Uds",
+     "D4": "Total con dto. e IVA",
+     "A5": "Panel LED 60×60",
+     "B5": 27.4,
+     "C5": 24,
+     "A6": "Magnetotérmico 2P 16 A",
+     "B6": 9.75,
+     "C6": 40,
+     "A7": "Cable 2,5 mm² (rollo 100 m)",
+     "B7": 48.9,
+     "C7": 10,
+     "A8": "Bridas 200 mm (bolsa 100)",
+     "B8": 3.2,
+     "C8": 30,
+     "A10": "Total presupuesto",
+     "D10": "=SUMA(D5:D8)"
+    },
+    "formatos": {
+     "B1:B2": "pct",
+     "B5:B8": "eur",
+     "D5:D10": "eur"
+    },
+    "anchos": {
+     "A": 28,
+     "D": 20
+    }
+   },
+   "objetivo": "D5",
+   "copiar_a": [
+    "D6:D8"
+   ],
+   "solucion": "=B5*C5*(1-$B$1)*(1+$B$2)",
+   "alternativas": [
+    "=B5*C5*(1+$B$2)*(1-$B$1)",
+    "=(B5*C5)*(1-$B$1)*(1+$B$2)",
+    "=B5*C5*(1-B$1)*(1+B$2)"
+   ],
+   "errores_tipicos": [
+    "=B5*C5*(1-B1)*(1+B2)",
+    "=B5*C5-$B$1+$B$2",
+    "=B5*C5*(1-$B$1)+$B$2",
+    "=B5*C5*0,95*1,21"
+   ],
+   "variantes": [
+    {
+     "B1": 0.1,
+     "B2": 0.1
+    },
+    {
+     "C7": 12
+    }
+   ],
+   "formato_resultado": "eur",
+   "tolerancia": 0.01,
+   "pistas": [
+    "Son tres pasos en cadena: importe (precio × uds), luego × (1 − descuento), luego × (1 + IVA).",
+    "Cada porcentaje va en su paréntesis, y las dos celdas de porcentaje llevan $: $B$1 y $B$2.",
+    "La fórmula es `=B5*C5*(1-$B$1)*(1+$B$2)`."
+   ],
+   "explicacion": "Presupuesto de Instalaciones Moncayo terminado: cuatro líneas y el total, con el descuento y el IVA en celdas que Marta puede cambiar si negocian. Has juntado todo el módulo en una fórmula: copiar, $, paréntesis y porcentajes. Esto ya es trabajo de administración de verdad."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m1l4-q1",
+   "modo": "test",
+   "pregunta": "Un ticket de **242 €** lleva el 21 % de IVA incluido. ¿Cuál es la base?",
+   "opciones": [
+    {
+     "texto": "200 €, porque 242 / 1,21 = 200",
+     "correcta": true,
+     "porque": "Correcto: se deshace la multiplicación dividiendo entre 1,21. Compruébalo: 200 × 1,21 = 242."
+    },
+    {
+     "texto": "191,18 €, porque 242 − 21 % de 242",
+     "correcta": false,
+     "porque": "Ese es el error típico: el 21 % se calculó sobre la base, no sobre el total. Restarlo del total quita de más."
+    },
+    {
+     "texto": "221 €, porque 242 − 21",
+     "correcta": false,
+     "porque": "Restar 21 € no tiene sentido: el IVA es un porcentaje, no una cantidad fija."
+    }
+   ],
+   "explicacion": "Para quitar el IVA, divide: total / (1 + tipo)."
+  },
+  {
+   "id": "n1m1l4-q2",
+   "modo": "predice",
+   "enunciado": "Las ventas de un comercial pasan de **80.000 €** (B1) a **100.000 €** (C1). ¿Qué número devuelve esta fórmula? Escríbelo con decimales (luego, con formato de porcentaje, se verá como %).",
+   "hoja": {
+    "celdas": {
+     "A1": "Ventas",
+     "B1": 80000,
+     "C1": 100000
+    },
+    "formatos": {
+     "B1:C1": "eur",
+     "D1": "pct"
+    }
+   },
+   "celda": "D1",
+   "formula": "=(C1-B1)/B1",
+   "explicacion": "Sube 20.000 sobre los 80.000 de partida: 20.000 / 80.000 = 0,25, es decir, un 25 %. Si hubieras dividido entre el nuevo (100.000), te saldría un 20 %, que es incorrecto."
+  },
+  {
+   "id": "n1m1l4-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "El precio está en **B4** y el descuento en **$B$1**. Escribe la fórmula del precio con descuento.",
+   "aceptadas": [
+    "=B4*(1-$B$1)",
+    "=b4*(1-$b$1)",
+    "B4*(1-$B$1)",
+    "=B4-B4*$B$1",
+    "=(1-$B$1)*B4"
+   ],
+   "explicacion": "`=B4*(1-$B$1)`: el cliente paga el precio por (1 − descuento)."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Total con IVA a partir de la base",
+   "dorso": "=base*(1+tipo), por ejemplo =B4*(1+$B$1)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Base a partir de un total con IVA",
+   "dorso": "=total/(1+tipo), por ejemplo =B4/(1+$B$1). Nunca restar el 21 % del total."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Precio con descuento",
+   "dorso": "=precio*(1-descuento), por ejemplo =B4*(1-$B$1)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Variación entre dos periodos",
+   "dorso": "=(nuevo-antiguo)/antiguo, por ejemplo =(C2-B2)/B2."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué da =A1+10% si A1 vale 100?",
+   "dorso": "100,1. Para subir un 10 %: =A1*(1+10%), mejor con el 10 % en una celda."
+  }
+ ]
+}

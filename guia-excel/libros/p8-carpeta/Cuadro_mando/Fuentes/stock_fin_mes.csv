@@ -1,0 +1,1081 @@
+﻿FinMes;CodArticulo;Descripcion;ClaseABC;Unidad;Unidades;CosteUnitario
+31/05/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;15292,5;0,2100
+31/05/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;321182;0,2100
+31/05/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;36239;0,2100
+31/05/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;85587;0,2100
+31/05/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;299240;0,2100
+31/05/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;22612,5;0,3100
+31/05/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;19981,5;0,3100
+31/05/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;12470;0,3100
+31/05/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;83262,5;0,3100
+31/05/2026;000942;Artículo 000942;B;ud;21229;0,3100
+31/05/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;11707;0,5200
+31/05/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;10195;0,5200
+31/05/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;36708;0,5200
+31/05/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;34459;0,6900
+31/05/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;12386;0,6900
+31/05/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;3967,5;0,6900
+31/05/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;7811;0,7800
+31/05/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4998;1,1200
+31/05/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;1940,5;1,6500
+31/05/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;1816;2,3500
+31/05/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;2215;1,8500
+31/05/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;5050,5;3,9000
+31/05/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1100;6,1000
+31/05/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;9022,5;1,0500
+31/05/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1287;3,1000
+31/05/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;83;
+31/05/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;2;89,0000
+31/05/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;6144;1,1500
+31/05/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5548;1,8000
+31/05/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;5041;2,7500
+31/05/2026;002672;Downlight LED 12 W 3000 K;C;ud;416;6,9000
+31/05/2026;002680;Downlight LED 12 W 4000 K;A;ud;2414;6,9000
+31/05/2026;002695;Downlight LED 18 W 3000 K;A;ud;1366;8,9000
+31/05/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;1485;8,9000
+31/05/2026;002816;Artículo 002816;C;ud;1053;12,5000
+31/05/2026;002947;Downlight LED 24 W 4000 K;B;ud;276;12,5000
+31/05/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;337;18,9000
+31/05/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1886;18,9000
+31/05/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;351;18,9000
+31/05/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;266;24,0000
+31/05/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;362;9,8000
+31/05/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;880;9,8000
+31/05/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;473;18,5000
+31/05/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;161;18,5000
+31/05/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;692;34,9000
+31/05/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;128;52,0000
+31/05/2026;004394;Campana industrial LED 100 W;C;ud;121;62,0000
+31/05/2026;004418;Campana industrial LED 150 W;B;ud;50;85,0000
+31/05/2026;004593;Campana industrial LED 200 W;C;ud;64;108,0000
+31/05/2026;004827;Artículo 004827;A;ud;4615;1,4500
+31/05/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;5742;1,4500
+31/05/2026;004851;Artículo 004851;B;ud;3930;1,9500
+31/05/2026;004870;Artículo 004870;A;ud;4911;1,9500
+31/05/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;2737;2,9000
+31/05/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;4473;2,9000
+31/05/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;4173;1,1000
+31/05/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;7721;1,6000
+31/05/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;3619;1,6000
+31/05/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1422;14,5000
+31/05/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;516;14,5000
+31/05/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;200;14,5000
+31/05/2026;005822;Artículo 005822;C;ud;290;18,0000
+31/05/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;540;26,5000
+31/05/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;20;39,0000
+31/05/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;322;16,8000
+31/05/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;174;21,5000
+31/05/2026;006213;Aplique LED exterior 10 W;B;ud;801;12,4000
+31/05/2026;006254;Baliza LED 7 W;B;ud;280;15,8000
+31/05/2026;006516;Emergencia LED 300 lm;B;ud;416;21,9000
+31/05/2026;006546;Emergencia LED 100 lm;A;ud;832;14,3000
+31/05/2026;006928;Interruptor simple serie Alba blanco;C;ud;5679;2,4000
+31/05/2026;006931;Conmutador serie Alba blanco;C;ud;645;2,7000
+31/05/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;5392;3,2000
+31/05/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;11727;1,1000
+31/05/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;6929;1,8000
+31/05/2026;007264;Interruptor simple serie Alba antracita;C;ud;5658;2,9000
+31/05/2026;007781;Conmutador serie Alba antracita;A;ud;2249;3,2000
+31/05/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;7107;3,7000
+31/05/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;1558;1,4000
+31/05/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;4041;2,2000
+31/05/2026;007943;Interruptor simple serie Alba plata;C;ud;809;3,1000
+31/05/2026;007974;Conmutador serie Alba plata;B;ud;1338;3,4000
+31/05/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;784;3,9000
+31/05/2026;008266;Marco 1 elemento serie Alba plata;C;ud;749;1,6000
+31/05/2026;008274;Marco 2 elementos serie Alba plata;B;ud;1671;2,5000
+31/05/2026;008350;Cruzamiento serie Alba blanco;C;ud;329;4,6000
+31/05/2026;008358;Artículo 008358;B;ud;611;3,4000
+31/05/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1730;5,6000
+31/05/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2205;7,9000
+31/05/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;2795;2,8000
+31/05/2026;008933;Regulador LED serie Alba blanco;C;ud;574;24,9000
+31/05/2026;008982;Artículo 008982;C;ud;63;19,5000
+31/05/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1880;3,9000
+31/05/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;890;6,1000
+31/05/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;1123;8,4000
+31/05/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2194;3,3000
+31/05/2026;009481;Regulador LED serie Alba antracita;C;ud;19;24,9000
+31/05/2026;009501;Detector de presencia serie Alba antracita;B;ud;163;19,5000
+31/05/2026;009848;Artículo 009848;B;ud;467;9,5000
+31/05/2026;009901;Caja de empotrar doble (caja de 25);C;caja;218;11,2000
+31/05/2026;010260;Clema 3 vías (caja de 100);B;caja;452;18,0000
+31/05/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;179;29,0000
+31/05/2026;010573;Base de superficie estanca IP55;C;ud;283;6,8000
+31/05/2026;010845;Interruptor estanco IP55;C;ud;798;7,4000
+31/05/2026;010954;Termostato digital;C;ud;175;34,0000
+31/05/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;852;6,8000
+31/05/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;2278;6,8000
+31/05/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;674;7,2000
+31/05/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;435;8,4000
+31/05/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;1460;9,5000
+31/05/2026;011868;Artículo 011868;C;ud;1308;13,0000
+31/05/2026;011880;Artículo 011880;C;ud;1838;14,6000
+31/05/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;597;17,2000
+31/05/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;367;21,0000
+31/05/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;21;48,0000
+31/05/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;102;54,0000
+31/05/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;241;71,0000
+31/05/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;68;95,0000
+31/05/2026;012534;Artículo 012534;C;ud;1138;21,8000
+31/05/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;99;22,5000
+31/05/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;42;38,9000
+31/05/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;116;58,0000
+31/05/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;44;89,0000
+31/05/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;52;125,0000
+31/05/2026;013413;Protector sobretensiones transitorias 2P;C;ud;41;42,0000
+31/05/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;44;96,0000
+31/05/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;40;145,0000
+31/05/2026;013830;Cuadro de superficie 4 módulos;C;ud;181;8,5000
+31/05/2026;013924;Artículo 013924;B;ud;413;12,9000
+31/05/2026;013928;Artículo 013928;C;ud;727;17,4000
+31/05/2026;014342;Cuadro de superficie 24 módulos;B;ud;215;34,0000
+31/05/2026;014683;Cuadro de superficie 36 módulos;C;ud;42;62,0000
+31/05/2026;014699;Cuadro de empotrar 12 módulos;C;ud;144;18,0000
+31/05/2026;014745;Cuadro de empotrar 24 módulos;C;ud;348;31,0000
+31/05/2026;014799;Cuadro de empotrar 36 módulos;C;ud;131;48,0000
+31/05/2026;014884;Artículo 014884;B;ud;299;24,0000
+31/05/2026;014912;Interruptor horario digital;B;ud;80;39,0000
+31/05/2026;015133;Artículo 015133;B;ud;872;4,2000
+31/05/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;2186;4,4000
+31/05/2026;015338;Base portafusibles 10x38 1P;B;ud;4628;3,1000
+31/05/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1560;9,8000
+31/05/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;133;13,9000
+31/05/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;92;18,5000
+31/05/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;276;27,0000
+31/05/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;1791;2,1000
+31/05/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3512;2,9000
+31/05/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1633;4,1000
+31/05/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;8456;0,9500
+31/05/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9920;1,9500
+31/05/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;6137;3,9000
+31/05/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1554;7,4000
+31/05/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;478;14,5000
+31/05/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;636;19,8000
+31/05/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;264;26,4000
+31/05/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;112;7,9000
+31/05/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;171;11,5000
+31/05/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;2412;0,8600
+31/05/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2572;2,1000
+31/05/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3314;4,9500
+31/05/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;2993;1,1000
+31/05/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;3876;2,3000
+31/05/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1743;4,2000
+31/05/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;172;
+31/05/2026;017880;Tubo flexible metálico M20;C;m;627;1,8500
+31/05/2026;017911;Manguito de unión M20 (caja de 50);C;caja;350;4,3000
+31/05/2026;017991;Crimpadora de terminales;C;ud;205;24,5000
+31/05/2026;018295;Pelacables automático;C;ud;174;18,9000
+31/05/2026;018389;Artículo 018389;C;ud;45;32,0000
+31/05/2026;018522;Multímetro digital;C;ud;24;39,0000
+31/05/2026;018573;Pinza amperimétrica;C;ud;14;54,0000
+31/05/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;505;46,0000
+31/05/2026;018790;Alicate universal aislado;C;ud;128;14,2000
+31/05/2026;018828;Alicate de corte aislado;C;ud;459;15,8000
+31/05/2026;019065;Tijera de electricista;C;ud;297;12,5000
+31/05/2026;019157;Guía pasacables 15 m;C;ud;784;16,4000
+31/05/2026;019243;Taladro percutor 18 V;C;ud;57;129,0000
+31/05/2026;019453;Artículo 019453;C;ud;160;28,5000
+31/05/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+31/05/2026;019601;Linterna frontal LED;Sin ficha;ud;375;
+31/05/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;2081;6,8000
+30/06/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;11353,5;0,2100
+30/06/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;301944;0,2100
+30/06/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;36528,5;0,2100
+30/06/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;83188,5;0,2100
+30/06/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;258103;0,2100
+30/06/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;19164;0,3100
+30/06/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;18459,5;0,3100
+30/06/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;13721,5;0,3100
+30/06/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;81656,5;0,3100
+30/06/2026;000942;Artículo 000942;B;ud;19613;0,3100
+30/06/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;11083;0,5200
+30/06/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;8911;0,5200
+30/06/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;33650;0,5200
+30/06/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;33955,5;0,6900
+30/06/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;11334;0,6900
+30/06/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;3452,5;0,6900
+30/06/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;6135,5;0,7800
+30/06/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4848;1,1200
+30/06/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;1341;1,6500
+30/06/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;1610;2,3500
+30/06/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;2132;1,8500
+30/06/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;4973,5;3,9000
+30/06/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1098;6,1000
+30/06/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;7971;1,0500
+30/06/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1253,5;3,1000
+30/06/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;81;
+30/06/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;2;89,0000
+30/06/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;5970,5;1,1500
+30/06/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5453;1,8000
+30/06/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;4951,5;2,7500
+30/06/2026;002672;Downlight LED 12 W 3000 K;C;ud;391;6,9000
+30/06/2026;002680;Downlight LED 12 W 4000 K;A;ud;2324;6,9000
+30/06/2026;002695;Downlight LED 18 W 3000 K;A;ud;1383;8,9000
+30/06/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;1271;8,9000
+30/06/2026;002816;Artículo 002816;C;ud;1032;12,5000
+30/06/2026;002947;Downlight LED 24 W 4000 K;B;ud;237;12,5000
+30/06/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;297;18,9000
+30/06/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1717;18,9000
+30/06/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;308;18,9000
+30/06/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;266;24,0000
+30/06/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;280;9,8000
+30/06/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;855;9,8000
+30/06/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;369;18,5000
+30/06/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;156;18,5000
+30/06/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;680;34,9000
+30/06/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;127;52,0000
+30/06/2026;004394;Campana industrial LED 100 W;C;ud;119;62,0000
+30/06/2026;004418;Campana industrial LED 150 W;B;ud;44;85,0000
+30/06/2026;004593;Campana industrial LED 200 W;C;ud;64;108,0000
+30/06/2026;004827;Artículo 004827;A;ud;3956;1,4500
+30/06/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;5002;1,4500
+30/06/2026;004851;Artículo 004851;B;ud;3802;1,9500
+30/06/2026;004870;Artículo 004870;A;ud;3927;1,9500
+30/06/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;2584;2,9000
+30/06/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;4037;2,9000
+30/06/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;4544;1,1000
+30/06/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;6931;1,6000
+30/06/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;3381;1,6000
+30/06/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1387;14,5000
+30/06/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;459;14,5000
+30/06/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;181;14,5000
+30/06/2026;005822;Artículo 005822;C;ud;285;18,0000
+30/06/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;526;26,5000
+30/06/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;19;39,0000
+30/06/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;276;16,8000
+30/06/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;129;21,5000
+30/06/2026;006213;Aplique LED exterior 10 W;B;ud;716;12,4000
+30/06/2026;006254;Baliza LED 7 W;B;ud;225;15,8000
+30/06/2026;006516;Emergencia LED 300 lm;B;ud;344;21,9000
+30/06/2026;006546;Emergencia LED 100 lm;A;ud;676;14,3000
+30/06/2026;006928;Interruptor simple serie Alba blanco;C;ud;5589;2,4000
+30/06/2026;006931;Conmutador serie Alba blanco;C;ud;516;2,7000
+30/06/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;5209;3,2000
+30/06/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;11472;1,1000
+30/06/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;6395;1,8000
+30/06/2026;007264;Interruptor simple serie Alba antracita;C;ud;5506;2,9000
+30/06/2026;007781;Conmutador serie Alba antracita;A;ud;1825;3,2000
+30/06/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;6915;3,7000
+30/06/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;1282;1,4000
+30/06/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;3964;2,2000
+30/06/2026;007943;Interruptor simple serie Alba plata;C;ud;668;3,1000
+30/06/2026;007974;Conmutador serie Alba plata;B;ud;1248;3,4000
+30/06/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;756;3,9000
+30/06/2026;008266;Marco 1 elemento serie Alba plata;C;ud;717;1,6000
+30/06/2026;008274;Marco 2 elementos serie Alba plata;B;ud;1448;2,5000
+30/06/2026;008350;Cruzamiento serie Alba blanco;C;ud;323;4,6000
+30/06/2026;008358;Artículo 008358;B;ud;509;3,4000
+30/06/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1680;5,6000
+30/06/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2170;7,9000
+30/06/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;2311;2,8000
+30/06/2026;008933;Regulador LED serie Alba blanco;C;ud;565;24,9000
+30/06/2026;008982;Artículo 008982;C;ud;61;19,5000
+30/06/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1856;3,9000
+30/06/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;762;6,1000
+30/06/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;1093;8,4000
+30/06/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2163;3,3000
+30/06/2026;009481;Regulador LED serie Alba antracita;C;ud;19;24,9000
+30/06/2026;009501;Detector de presencia serie Alba antracita;B;ud;146;19,5000
+30/06/2026;009848;Artículo 009848;B;ud;530;9,5000
+30/06/2026;009901;Caja de empotrar doble (caja de 25);C;caja;212;11,2000
+30/06/2026;010260;Clema 3 vías (caja de 100);B;caja;405;18,0000
+30/06/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;179;29,0000
+30/06/2026;010573;Base de superficie estanca IP55;C;ud;274;6,8000
+30/06/2026;010845;Interruptor estanco IP55;C;ud;778;7,4000
+30/06/2026;010954;Termostato digital;C;ud;174;34,0000
+30/06/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;660;6,8000
+30/06/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;2195;6,8000
+30/06/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;674;7,2000
+30/06/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;346;8,4000
+30/06/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;1148;9,5000
+30/06/2026;011868;Artículo 011868;C;ud;1270;13,0000
+30/06/2026;011880;Artículo 011880;C;ud;1803;14,6000
+30/06/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;547;17,2000
+30/06/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;358;21,0000
+30/06/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;21;48,0000
+30/06/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;99;54,0000
+30/06/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;200;71,0000
+30/06/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;68;95,0000
+30/06/2026;012534;Artículo 012534;C;ud;1119;21,8000
+30/06/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;81;22,5000
+30/06/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;39;38,9000
+30/06/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;114;58,0000
+30/06/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;43;89,0000
+30/06/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;52;125,0000
+30/06/2026;013413;Protector sobretensiones transitorias 2P;C;ud;42;42,0000
+30/06/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;43;96,0000
+30/06/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;40;145,0000
+30/06/2026;013830;Cuadro de superficie 4 módulos;C;ud;171;8,5000
+30/06/2026;013924;Artículo 013924;B;ud;324;12,9000
+30/06/2026;013928;Artículo 013928;C;ud;710;17,4000
+30/06/2026;014342;Cuadro de superficie 24 módulos;B;ud;198;34,0000
+30/06/2026;014683;Cuadro de superficie 36 módulos;C;ud;40;62,0000
+30/06/2026;014699;Cuadro de empotrar 12 módulos;C;ud;125;18,0000
+30/06/2026;014745;Cuadro de empotrar 24 módulos;C;ud;343;31,0000
+30/06/2026;014799;Cuadro de empotrar 36 módulos;C;ud;131;48,0000
+30/06/2026;014884;Artículo 014884;B;ud;262;24,0000
+30/06/2026;014912;Interruptor horario digital;B;ud;63;39,0000
+30/06/2026;015133;Artículo 015133;B;ud;771;4,2000
+30/06/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;2235;4,4000
+30/06/2026;015338;Base portafusibles 10x38 1P;B;ud;3985;3,1000
+30/06/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1532;9,8000
+30/06/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;129;13,9000
+30/06/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;91;18,5000
+30/06/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;270;27,0000
+30/06/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;1674;2,1000
+30/06/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3419;2,9000
+30/06/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1606;4,1000
+30/06/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;8156;0,9500
+30/06/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9763;1,9500
+30/06/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;5991;3,9000
+30/06/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1522;7,4000
+30/06/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;465;14,5000
+30/06/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;614;19,8000
+30/06/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;264;26,4000
+30/06/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;110;7,9000
+30/06/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;163;11,5000
+30/06/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;2129;0,8600
+30/06/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2533;2,1000
+30/06/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3259;4,9500
+30/06/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;2542;1,1000
+30/06/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;3289;2,3000
+30/06/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1525;4,2000
+30/06/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;166;
+30/06/2026;017880;Tubo flexible metálico M20;C;m;619;1,8500
+30/06/2026;017911;Manguito de unión M20 (caja de 50);C;caja;343;4,3000
+30/06/2026;017991;Crimpadora de terminales;C;ud;200;24,5000
+30/06/2026;018295;Pelacables automático;C;ud;139;18,9000
+30/06/2026;018389;Artículo 018389;C;ud;44;32,0000
+30/06/2026;018522;Multímetro digital;C;ud;24;39,0000
+30/06/2026;018573;Pinza amperimétrica;C;ud;14;54,0000
+30/06/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;496;46,0000
+30/06/2026;018790;Alicate universal aislado;C;ud;97;14,2000
+30/06/2026;018828;Alicate de corte aislado;C;ud;452;15,8000
+30/06/2026;019065;Tijera de electricista;C;ud;288;12,5000
+30/06/2026;019157;Guía pasacables 15 m;C;ud;769;16,4000
+30/06/2026;019243;Taladro percutor 18 V;C;ud;56;129,0000
+30/06/2026;019453;Artículo 019453;C;ud;157;28,5000
+30/06/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+30/06/2026;019601;Linterna frontal LED;Sin ficha;ud;366;
+30/06/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;2025;6,8000
+31/07/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;8478,5;0,2100
+31/07/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;273118;0,2100
+31/07/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;36181;0,2100
+31/07/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;90626,5;0,2100
+31/07/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;214569;0,2100
+31/07/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;15836,5;0,3100
+31/07/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;15435,5;0,3100
+31/07/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;14904;0,3100
+31/07/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;80227,5;0,3100
+31/07/2026;000942;Artículo 000942;B;ud;17461;0,3100
+31/07/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;9619,5;0,5200
+31/07/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;7821,5;0,5200
+31/07/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;30831;0,5200
+31/07/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;33456;0,6900
+31/07/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;10062,5;0,6900
+31/07/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;2789;0,6900
+31/07/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;5752,5;0,7800
+31/07/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4659,5;1,1200
+31/07/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;1003;1,6500
+31/07/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;1306;2,3500
+31/07/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;1953;1,8500
+31/07/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;4874;3,9000
+31/07/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1095,5;6,1000
+31/07/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;5571;1,0500
+31/07/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1211,5;3,1000
+31/07/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;80;
+31/07/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;1;89,0000
+31/07/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;5236;1,1500
+31/07/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5362;1,8000
+31/07/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;4286,5;2,7500
+31/07/2026;002672;Downlight LED 12 W 3000 K;C;ud;365;6,9000
+31/07/2026;002680;Downlight LED 12 W 4000 K;A;ud;2067;6,9000
+31/07/2026;002695;Downlight LED 18 W 3000 K;A;ud;1466;8,9000
+31/07/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;1071;8,9000
+31/07/2026;002816;Artículo 002816;C;ud;1017;12,5000
+31/07/2026;002947;Downlight LED 24 W 4000 K;B;ud;256;12,5000
+31/07/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;260;18,9000
+31/07/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1714;18,9000
+31/07/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;244;18,9000
+31/07/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;267;24,0000
+31/07/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;144;9,8000
+31/07/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;828;9,8000
+31/07/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;277;18,5000
+31/07/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;153;18,5000
+31/07/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;665;34,9000
+31/07/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;127;52,0000
+31/07/2026;004394;Campana industrial LED 100 W;C;ud;117;62,0000
+31/07/2026;004418;Campana industrial LED 150 W;B;ud;37;85,0000
+31/07/2026;004593;Campana industrial LED 200 W;C;ud;64;108,0000
+31/07/2026;004827;Artículo 004827;A;ud;2832;1,4500
+31/07/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;3637;1,4500
+31/07/2026;004851;Artículo 004851;B;ud;3999;1,9500
+31/07/2026;004870;Artículo 004870;A;ud;3281;1,9500
+31/07/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;1859;2,9000
+31/07/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;3326;2,9000
+31/07/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;4394;1,1000
+31/07/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;6031;1,6000
+31/07/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;3035;1,6000
+31/07/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1353;14,5000
+31/07/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;367;14,5000
+31/07/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;155;14,5000
+31/07/2026;005822;Artículo 005822;C;ud;280;18,0000
+31/07/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;514;26,5000
+31/07/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;19;39,0000
+31/07/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;214;16,8000
+31/07/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;120;21,5000
+31/07/2026;006213;Aplique LED exterior 10 W;B;ud;620;12,4000
+31/07/2026;006254;Baliza LED 7 W;B;ud;175;15,8000
+31/07/2026;006516;Emergencia LED 300 lm;B;ud;290;21,9000
+31/07/2026;006546;Emergencia LED 100 lm;A;ud;640;14,3000
+31/07/2026;006928;Interruptor simple serie Alba blanco;C;ud;5488;2,4000
+31/07/2026;006931;Conmutador serie Alba blanco;C;ud;361;2,7000
+31/07/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;5034;3,2000
+31/07/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;11246;1,1000
+31/07/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;5952;1,8000
+31/07/2026;007264;Interruptor simple serie Alba antracita;C;ud;5292;2,9000
+31/07/2026;007781;Conmutador serie Alba antracita;A;ud;1336;3,2000
+31/07/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;6696;3,7000
+31/07/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;1001;1,4000
+31/07/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;3906;2,2000
+31/07/2026;007943;Interruptor simple serie Alba plata;C;ud;538;3,1000
+31/07/2026;007974;Conmutador serie Alba plata;B;ud;1022;3,4000
+31/07/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;737;3,9000
+31/07/2026;008266;Marco 1 elemento serie Alba plata;C;ud;678;1,6000
+31/07/2026;008274;Marco 2 elementos serie Alba plata;B;ud;1237;2,5000
+31/07/2026;008350;Cruzamiento serie Alba blanco;C;ud;316;4,6000
+31/07/2026;008358;Artículo 008358;B;ud;368;3,4000
+31/07/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1643;5,6000
+31/07/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2135;7,9000
+31/07/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;1721;2,8000
+31/07/2026;008933;Regulador LED serie Alba blanco;C;ud;554;24,9000
+31/07/2026;008982;Artículo 008982;C;ud;60;19,5000
+31/07/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1832;3,9000
+31/07/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;638;6,1000
+31/07/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;1067;8,4000
+31/07/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2136;3,3000
+31/07/2026;009481;Regulador LED serie Alba antracita;C;ud;19;24,9000
+31/07/2026;009501;Detector de presencia serie Alba antracita;B;ud;119;19,5000
+31/07/2026;009848;Artículo 009848;B;ud;501;9,5000
+31/07/2026;009901;Caja de empotrar doble (caja de 25);C;caja;208;11,2000
+31/07/2026;010260;Clema 3 vías (caja de 100);B;caja;352;18,0000
+31/07/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;182;29,0000
+31/07/2026;010573;Base de superficie estanca IP55;C;ud;266;6,8000
+31/07/2026;010845;Interruptor estanco IP55;C;ud;754;7,4000
+31/07/2026;010954;Termostato digital;C;ud;173;34,0000
+31/07/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;494;6,8000
+31/07/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;2114;6,8000
+31/07/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;575;7,2000
+31/07/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;267;8,4000
+31/07/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;1013;9,5000
+31/07/2026;011868;Artículo 011868;C;ud;1242;13,0000
+31/07/2026;011880;Artículo 011880;C;ud;1772;14,6000
+31/07/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;509;17,2000
+31/07/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;344;21,0000
+31/07/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;20;48,0000
+31/07/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;94;54,0000
+31/07/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;152;71,0000
+31/07/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;67;95,0000
+31/07/2026;012534;Artículo 012534;C;ud;1101;21,8000
+31/07/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;59;22,5000
+31/07/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;35;38,9000
+31/07/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;112;58,0000
+31/07/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;42;89,0000
+31/07/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;51;125,0000
+31/07/2026;013413;Protector sobretensiones transitorias 2P;C;ud;37;42,0000
+31/07/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;43;96,0000
+31/07/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;40;145,0000
+31/07/2026;013830;Cuadro de superficie 4 módulos;C;ud;156;8,5000
+31/07/2026;013924;Artículo 013924;B;ud;249;12,9000
+31/07/2026;013928;Artículo 013928;C;ud;694;17,4000
+31/07/2026;014342;Cuadro de superficie 24 módulos;B;ud;180;34,0000
+31/07/2026;014683;Cuadro de superficie 36 módulos;C;ud;38;62,0000
+31/07/2026;014699;Cuadro de empotrar 12 módulos;C;ud;102;18,0000
+31/07/2026;014745;Cuadro de empotrar 24 módulos;C;ud;340;31,0000
+31/07/2026;014799;Cuadro de empotrar 36 módulos;C;ud;130;48,0000
+31/07/2026;014884;Artículo 014884;B;ud;238;24,0000
+31/07/2026;014912;Interruptor horario digital;B;ud;50;39,0000
+31/07/2026;015133;Artículo 015133;B;ud;645;4,2000
+31/07/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;1570;4,4000
+31/07/2026;015338;Base portafusibles 10x38 1P;B;ud;3649;3,1000
+31/07/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1509;9,8000
+31/07/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;126;13,9000
+31/07/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;89;18,5000
+31/07/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;266;27,0000
+31/07/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;2181;2,1000
+31/07/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3319;2,9000
+31/07/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1586;4,1000
+31/07/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;7236;0,9500
+31/07/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9595;1,9500
+31/07/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;5856;3,9000
+31/07/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1500;7,4000
+31/07/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;455;14,5000
+31/07/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;590;19,8000
+31/07/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;263;26,4000
+31/07/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;108;7,9000
+31/07/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;153;11,5000
+31/07/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;2000;0,8600
+31/07/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2493;2,1000
+31/07/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3203;4,9500
+31/07/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;2133;1,1000
+31/07/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;2605;2,3000
+31/07/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1394;4,2000
+31/07/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;161;
+31/07/2026;017880;Tubo flexible metálico M20;C;m;610,5;1,8500
+31/07/2026;017911;Manguito de unión M20 (caja de 50);C;caja;337;4,3000
+31/07/2026;017991;Crimpadora de terminales;C;ud;195;24,5000
+31/07/2026;018295;Pelacables automático;C;ud;104;18,9000
+31/07/2026;018389;Artículo 018389;C;ud;43;32,0000
+31/07/2026;018522;Multímetro digital;C;ud;23;39,0000
+31/07/2026;018573;Pinza amperimétrica;C;ud;13;54,0000
+31/07/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;487;46,0000
+31/07/2026;018790;Alicate universal aislado;C;ud;72;14,2000
+31/07/2026;018828;Alicate de corte aislado;C;ud;443;15,8000
+31/07/2026;019065;Tijera de electricista;C;ud;280;12,5000
+31/07/2026;019157;Guía pasacables 15 m;C;ud;751;16,4000
+31/07/2026;019243;Taladro percutor 18 V;C;ud;56;129,0000
+31/07/2026;019453;Artículo 019453;C;ud;154;28,5000
+31/07/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+31/07/2026;019601;Linterna frontal LED;Sin ficha;ud;358;
+31/07/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;1970;6,8000
+31/08/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;5853;0,2100
+31/08/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;262223,5;0,2100
+31/08/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;42143;0,2100
+31/08/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;91228;0,2100
+31/08/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;127942,5;0,2100
+31/08/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;12955;0,3100
+31/08/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;5868,5;0,3100
+31/08/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;16924,5;0,3100
+31/08/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;78780,5;0,3100
+31/08/2026;000942;Artículo 000942;B;ud;15204;0,3100
+31/08/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;8308;0,5200
+31/08/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;6823,5;0,5200
+31/08/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;23888;0,5200
+31/08/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;32795,5;0,6900
+31/08/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;9377,5;0,6900
+31/08/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;2168,5;0,6900
+31/08/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;5620,5;0,7800
+31/08/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4420,5;1,1200
+31/08/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;867;1,6500
+31/08/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;1215;2,3500
+31/08/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;1896,5;1,8500
+31/08/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;4817;3,9000
+31/08/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1093,5;6,1000
+31/08/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;4004;1,0500
+31/08/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1185,5;3,1000
+31/08/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;79;
+31/08/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;1;89,0000
+31/08/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;5505;1,1500
+31/08/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5260;1,8000
+31/08/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;4207;2,7500
+31/08/2026;002672;Downlight LED 12 W 3000 K;C;ud;332;6,9000
+31/08/2026;002680;Downlight LED 12 W 4000 K;A;ud;2184;6,9000
+31/08/2026;002695;Downlight LED 18 W 3000 K;A;ud;1452;8,9000
+31/08/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;811;8,9000
+31/08/2026;002816;Artículo 002816;C;ud;999;12,5000
+31/08/2026;002947;Downlight LED 24 W 4000 K;B;ud;221;12,5000
+31/08/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;221;18,9000
+31/08/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1595;18,9000
+31/08/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;189;18,9000
+31/08/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;268;24,0000
+31/08/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;190;9,8000
+31/08/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;802;9,8000
+31/08/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;198;18,5000
+31/08/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;149;18,5000
+31/08/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;652;34,9000
+31/08/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;127;52,0000
+31/08/2026;004394;Campana industrial LED 100 W;C;ud;115;62,0000
+31/08/2026;004418;Campana industrial LED 150 W;B;ud;30;85,0000
+31/08/2026;004593;Campana industrial LED 200 W;C;ud;65;108,0000
+31/08/2026;004827;Artículo 004827;A;ud;1937;1,4500
+31/08/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;4206;1,4500
+31/08/2026;004851;Artículo 004851;B;ud;3841;1,9500
+31/08/2026;004870;Artículo 004870;A;ud;1948;1,9500
+31/08/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;1771;2,9000
+31/08/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;2752;2,9000
+31/08/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;3664;1,1000
+31/08/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;5457;1,6000
+31/08/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;2740;1,6000
+31/08/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1317;14,5000
+31/08/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;287;14,5000
+31/08/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;137;14,5000
+31/08/2026;005822;Artículo 005822;C;ud;275;18,0000
+31/08/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;500;26,5000
+31/08/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;18;39,0000
+31/08/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;185;16,8000
+31/08/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;87;21,5000
+31/08/2026;006213;Aplique LED exterior 10 W;B;ud;539;12,4000
+31/08/2026;006254;Baliza LED 7 W;B;ud;109;15,8000
+31/08/2026;006516;Emergencia LED 300 lm;B;ud;227;21,9000
+31/08/2026;006546;Emergencia LED 100 lm;A;ud;550;14,3000
+31/08/2026;006928;Interruptor simple serie Alba blanco;C;ud;5400;2,4000
+31/08/2026;006931;Conmutador serie Alba blanco;C;ud;273;2,7000
+31/08/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;4889;3,2000
+31/08/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;10991;1,1000
+31/08/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;5171;1,8000
+31/08/2026;007264;Interruptor simple serie Alba antracita;C;ud;5128;2,9000
+31/08/2026;007781;Conmutador serie Alba antracita;A;ud;790;3,2000
+31/08/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;6498;3,7000
+31/08/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;739;1,4000
+31/08/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;3841;2,2000
+31/08/2026;007943;Interruptor simple serie Alba plata;C;ud;433;3,1000
+31/08/2026;007974;Conmutador serie Alba plata;B;ud;902;3,4000
+31/08/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;712;3,9000
+31/08/2026;008266;Marco 1 elemento serie Alba plata;C;ud;656;1,6000
+31/08/2026;008274;Marco 2 elementos serie Alba plata;B;ud;1054;2,5000
+31/08/2026;008350;Cruzamiento serie Alba blanco;C;ud;308;4,6000
+31/08/2026;008358;Artículo 008358;B;ud;285;3,4000
+31/08/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1599;5,6000
+31/08/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2093;7,9000
+31/08/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;1244;2,8000
+31/08/2026;008933;Regulador LED serie Alba blanco;C;ud;546;24,9000
+31/08/2026;008982;Artículo 008982;C;ud;59;19,5000
+31/08/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1809;3,9000
+31/08/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;507;6,1000
+31/08/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;1035;8,4000
+31/08/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2108;3,3000
+31/08/2026;009481;Regulador LED serie Alba antracita;C;ud;18;24,9000
+31/08/2026;009501;Detector de presencia serie Alba antracita;B;ud;93;19,5000
+31/08/2026;009848;Artículo 009848;B;ud;580;9,5000
+31/08/2026;009901;Caja de empotrar doble (caja de 25);C;caja;204;11,2000
+31/08/2026;010260;Clema 3 vías (caja de 100);B;caja;319;18,0000
+31/08/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;182;29,0000
+31/08/2026;010573;Base de superficie estanca IP55;C;ud;256;6,8000
+31/08/2026;010845;Interruptor estanco IP55;C;ud;732;7,4000
+31/08/2026;010954;Termostato digital;C;ud;173;34,0000
+31/08/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;365;6,8000
+31/08/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;2037;6,8000
+31/08/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;503;7,2000
+31/08/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;167;8,4000
+31/08/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;999;9,5000
+31/08/2026;011868;Artículo 011868;C;ud;1208;13,0000
+31/08/2026;011880;Artículo 011880;C;ud;1741;14,6000
+31/08/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;385;17,2000
+31/08/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;331;21,0000
+31/08/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;20;48,0000
+31/08/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;89;54,0000
+31/08/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;142;71,0000
+31/08/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;67;95,0000
+31/08/2026;012534;Artículo 012534;C;ud;1084;21,8000
+31/08/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;42;22,5000
+31/08/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;30;38,9000
+31/08/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;110;58,0000
+31/08/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;41;89,0000
+31/08/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;51;125,0000
+31/08/2026;013413;Protector sobretensiones transitorias 2P;C;ud;40;42,0000
+31/08/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;42;96,0000
+31/08/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;39;145,0000
+31/08/2026;013830;Cuadro de superficie 4 módulos;C;ud;146;8,5000
+31/08/2026;013924;Artículo 013924;B;ud;165;12,9000
+31/08/2026;013928;Artículo 013928;C;ud;680;17,4000
+31/08/2026;014342;Cuadro de superficie 24 módulos;B;ud;173;34,0000
+31/08/2026;014683;Cuadro de superficie 36 módulos;C;ud;37;62,0000
+31/08/2026;014699;Cuadro de empotrar 12 módulos;C;ud;83;18,0000
+31/08/2026;014745;Cuadro de empotrar 24 módulos;C;ud;336;31,0000
+31/08/2026;014799;Cuadro de empotrar 36 módulos;C;ud;129;48,0000
+31/08/2026;014884;Artículo 014884;B;ud;216;24,0000
+31/08/2026;014912;Interruptor horario digital;B;ud;38;39,0000
+31/08/2026;015133;Artículo 015133;B;ud;637;4,2000
+31/08/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;1156;4,4000
+31/08/2026;015338;Base portafusibles 10x38 1P;B;ud;2778;3,1000
+31/08/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1477;9,8000
+31/08/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;123;13,9000
+31/08/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;87;18,5000
+31/08/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;262;27,0000
+31/08/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;2167;2,1000
+31/08/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3230;2,9000
+31/08/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1561;4,1000
+31/08/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;7133;0,9500
+31/08/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9402;1,9500
+31/08/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;5714;3,9000
+31/08/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1467;7,4000
+31/08/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;441;14,5000
+31/08/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;568;19,8000
+31/08/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;262;26,4000
+31/08/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;106;7,9000
+31/08/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;145;11,5000
+31/08/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;1809;0,8600
+31/08/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2451;2,1000
+31/08/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3145;4,9500
+31/08/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;1873;1,1000
+31/08/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;2155;2,3000
+31/08/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1500;4,2000
+31/08/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;155;
+31/08/2026;017880;Tubo flexible metálico M20;C;m;602,5;1,8500
+31/08/2026;017911;Manguito de unión M20 (caja de 50);C;caja;330;4,3000
+31/08/2026;017991;Crimpadora de terminales;C;ud;189;24,5000
+31/08/2026;018295;Pelacables automático;C;ud;67;18,9000
+31/08/2026;018389;Artículo 018389;C;ud;43;32,0000
+31/08/2026;018522;Multímetro digital;C;ud;22;39,0000
+31/08/2026;018573;Pinza amperimétrica;C;ud;13;54,0000
+31/08/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;480;46,0000
+31/08/2026;018790;Alicate universal aislado;C;ud;53;14,2000
+31/08/2026;018828;Alicate de corte aislado;C;ud;436;15,8000
+31/08/2026;019065;Tijera de electricista;C;ud;273;12,5000
+31/08/2026;019157;Guía pasacables 15 m;C;ud;734;16,4000
+31/08/2026;019243;Taladro percutor 18 V;C;ud;56;129,0000
+31/08/2026;019453;Artículo 019453;C;ud;152;28,5000
+31/08/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+31/08/2026;019601;Linterna frontal LED;Sin ficha;ud;350;
+31/08/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;1916;6,8000
+30/09/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;4523;0,2100
+30/09/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;268918;0,2100
+30/09/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;40635,5;0,2100
+30/09/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;88154,5;0,2100
+30/09/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;77582;0,2100
+30/09/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;10717;0,3100
+30/09/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;3746,5;0,3100
+30/09/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;14403;0,3100
+30/09/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;77147;0,3100
+30/09/2026;000942;Artículo 000942;B;ud;13217;0,3100
+30/09/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;7175,5;0,5200
+30/09/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;5066,5;0,5200
+30/09/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;16018;0,5200
+30/09/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;32362;0,6900
+30/09/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;8083;0,6900
+30/09/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;1714;0,6900
+30/09/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;4502,5;0,7800
+30/09/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4187;1,1200
+30/09/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;231,5;1,6500
+30/09/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;1030;2,3500
+30/09/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;1743;1,8500
+30/09/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;4715,5;3,9000
+30/09/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1091,5;6,1000
+30/09/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;2051;1,0500
+30/09/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1145,5;3,1000
+30/09/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;77;
+30/09/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;1;89,0000
+30/09/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;5420,5;1,1500
+30/09/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5181;1,8000
+30/09/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;3224,5;2,7500
+30/09/2026;002672;Downlight LED 12 W 3000 K;C;ud;304;6,9000
+30/09/2026;002680;Downlight LED 12 W 4000 K;A;ud;1814;6,9000
+30/09/2026;002695;Downlight LED 18 W 3000 K;A;ud;1564;8,9000
+30/09/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;692;8,9000
+30/09/2026;002816;Artículo 002816;C;ud;981;12,5000
+30/09/2026;002947;Downlight LED 24 W 4000 K;B;ud;192;12,5000
+30/09/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;223;18,9000
+30/09/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1590;18,9000
+30/09/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;120;18,9000
+30/09/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;268;24,0000
+30/09/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;109;9,8000
+30/09/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;775;9,8000
+30/09/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;108;18,5000
+30/09/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;145;18,5000
+30/09/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;640;34,9000
+30/09/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;126;52,0000
+30/09/2026;004394;Campana industrial LED 100 W;C;ud;113;62,0000
+30/09/2026;004418;Campana industrial LED 150 W;B;ud;24;85,0000
+30/09/2026;004593;Campana industrial LED 200 W;C;ud;66;108,0000
+30/09/2026;004827;Artículo 004827;A;ud;870;1,4500
+30/09/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;2885;1,4500
+30/09/2026;004851;Artículo 004851;B;ud;3544;1,9500
+30/09/2026;004870;Artículo 004870;A;ud;1100;1,9500
+30/09/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;1234;2,9000
+30/09/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;2271;2,9000
+30/09/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;3625;1,1000
+30/09/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;4398;1,6000
+30/09/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;2333;1,6000
+30/09/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1283;14,5000
+30/09/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;225;14,5000
+30/09/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;124;14,5000
+30/09/2026;005822;Artículo 005822;C;ud;270;18,0000
+30/09/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;486;26,5000
+30/09/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;18;39,0000
+30/09/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;125;16,8000
+30/09/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;44;21,5000
+30/09/2026;006213;Aplique LED exterior 10 W;B;ud;445;12,4000
+30/09/2026;006254;Baliza LED 7 W;B;ud;56;15,8000
+30/09/2026;006516;Emergencia LED 300 lm;B;ud;157;21,9000
+30/09/2026;006546;Emergencia LED 100 lm;A;ud;286;14,3000
+30/09/2026;006928;Interruptor simple serie Alba blanco;C;ud;5290;2,4000
+30/09/2026;006931;Conmutador serie Alba blanco;C;ud;103;2,7000
+30/09/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;4740;3,2000
+30/09/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;10725;1,1000
+30/09/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;4668;1,8000
+30/09/2026;007264;Interruptor simple serie Alba antracita;C;ud;4953;2,9000
+30/09/2026;007781;Conmutador serie Alba antracita;A;ud;427;3,2000
+30/09/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;6293;3,7000
+30/09/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;424;1,4000
+30/09/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;3769;2,2000
+30/09/2026;007943;Interruptor simple serie Alba plata;C;ud;290;3,1000
+30/09/2026;007974;Conmutador serie Alba plata;B;ud;658;3,4000
+30/09/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;689;3,9000
+30/09/2026;008266;Marco 1 elemento serie Alba plata;C;ud;618;1,6000
+30/09/2026;008274;Marco 2 elementos serie Alba plata;B;ud;857;2,5000
+30/09/2026;008350;Cruzamiento serie Alba blanco;C;ud;300;4,6000
+30/09/2026;008358;Artículo 008358;B;ud;196;3,4000
+30/09/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1560;5,6000
+30/09/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2053;7,9000
+30/09/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;735;2,8000
+30/09/2026;008933;Regulador LED serie Alba blanco;C;ud;536;24,9000
+30/09/2026;008982;Artículo 008982;C;ud;57;19,5000
+30/09/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1786;3,9000
+30/09/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;384;6,1000
+30/09/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;1011;8,4000
+30/09/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2077;3,3000
+30/09/2026;009481;Regulador LED serie Alba antracita;C;ud;18;24,9000
+30/09/2026;009501;Detector de presencia serie Alba antracita;B;ud;82;19,5000
+30/09/2026;009848;Artículo 009848;B;ud;599;9,5000
+30/09/2026;009901;Caja de empotrar doble (caja de 25);C;caja;199;11,2000
+30/09/2026;010260;Clema 3 vías (caja de 100);B;caja;276;18,0000
+30/09/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;177;29,0000
+30/09/2026;010573;Base de superficie estanca IP55;C;ud;248;6,8000
+30/09/2026;010845;Interruptor estanco IP55;C;ud;707;7,4000
+30/09/2026;010954;Termostato digital;C;ud;172;34,0000
+30/09/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;255;6,8000
+30/09/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;1958;6,8000
+30/09/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;487;7,2000
+30/09/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;102;8,4000
+30/09/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;788;9,5000
+30/09/2026;011868;Artículo 011868;C;ud;1175;13,0000
+30/09/2026;011880;Artículo 011880;C;ud;1712;14,6000
+30/09/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;341;17,2000
+30/09/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;320;21,0000
+30/09/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;19;48,0000
+30/09/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;86;54,0000
+30/09/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;68;71,0000
+30/09/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;67;95,0000
+30/09/2026;012534;Artículo 012534;C;ud;1068;21,8000
+30/09/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;21;22,5000
+30/09/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;29;38,9000
+30/09/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;108;58,0000
+30/09/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;40;89,0000
+30/09/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;51;125,0000
+30/09/2026;013413;Protector sobretensiones transitorias 2P;C;ud;37;42,0000
+30/09/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;41;96,0000
+30/09/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;39;145,0000
+30/09/2026;013830;Cuadro de superficie 4 módulos;C;ud;135;8,5000
+30/09/2026;013924;Artículo 013924;B;ud;96;12,9000
+30/09/2026;013928;Artículo 013928;C;ud;662;17,4000
+30/09/2026;014342;Cuadro de superficie 24 módulos;B;ud;156;34,0000
+30/09/2026;014683;Cuadro de superficie 36 módulos;C;ud;35;62,0000
+30/09/2026;014699;Cuadro de empotrar 12 módulos;C;ud;58;18,0000
+30/09/2026;014745;Cuadro de empotrar 24 módulos;C;ud;330;31,0000
+30/09/2026;014799;Cuadro de empotrar 36 módulos;C;ud;129;48,0000
+30/09/2026;014884;Artículo 014884;B;ud;183;24,0000
+30/09/2026;014912;Interruptor horario digital;B;ud;19;39,0000
+30/09/2026;015133;Artículo 015133;B;ud;471;4,2000
+30/09/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;1214;4,4000
+30/09/2026;015338;Base portafusibles 10x38 1P;B;ud;2263;3,1000
+30/09/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1451;9,8000
+30/09/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;120;13,9000
+30/09/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;86;18,5000
+30/09/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;257;27,0000
+30/09/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;2360;2,1000
+30/09/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3139;2,9000
+30/09/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1541;4,1000
+30/09/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;6055;0,9500
+30/09/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9244;1,9500
+30/09/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;5598;3,9000
+30/09/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1442;7,4000
+30/09/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;429;14,5000
+30/09/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;535;19,8000
+30/09/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;262;26,4000
+30/09/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;104;7,9000
+30/09/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;136;11,5000
+30/09/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;1401;0,8600
+30/09/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2401;2,1000
+30/09/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3086;4,9500
+30/09/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;1400;1,1000
+30/09/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;1419;2,3000
+30/09/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1290;4,2000
+30/09/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;150;
+30/09/2026;017880;Tubo flexible metálico M20;C;m;594;1,8500
+30/09/2026;017911;Manguito de unión M20 (caja de 50);C;caja;321;4,3000
+30/09/2026;017991;Crimpadora de terminales;C;ud;185;24,5000
+30/09/2026;018295;Pelacables automático;C;ud;37;18,9000
+30/09/2026;018389;Artículo 018389;C;ud;42;32,0000
+30/09/2026;018522;Multímetro digital;C;ud;22;39,0000
+30/09/2026;018573;Pinza amperimétrica;C;ud;13;54,0000
+30/09/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;472;46,0000
+30/09/2026;018790;Alicate universal aislado;C;ud;16;14,2000
+30/09/2026;018828;Alicate de corte aislado;C;ud;428;15,8000
+30/09/2026;019065;Tijera de electricista;C;ud;265;12,5000
+30/09/2026;019157;Guía pasacables 15 m;C;ud;713;16,4000
+30/09/2026;019243;Taladro percutor 18 V;C;ud;55;129,0000
+30/09/2026;019453;Artículo 019453;C;ud;150;28,5000
+30/09/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+30/09/2026;019601;Linterna frontal LED;Sin ficha;ud;341;
+30/09/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;1859;6,8000
+31/10/2026;000144;Cable H07Z1-K 1,5 mm² azul;A;m;0;0,2100
+31/10/2026;000202;Cable H07Z1-K 1,5 mm² marrón;A;m;234359;0,2100
+31/10/2026;000218;Cable H07Z1-K 1,5 mm² negro;A;m;39085,5;0,2100
+31/10/2026;000259;Cable H07Z1-K 1,5 mm² gris;A;m;85726;0,2100
+31/10/2026;000452;Cable H07Z1-K 1,5 mm² amarillo-verde;A;m;0;0,2100
+31/10/2026;000769;Cable H07Z1-K 2,5 mm² azul;B;m;6328;0,3100
+31/10/2026;000876;Cable H07Z1-K 2,5 mm² marrón;A;m;3;0,3100
+31/10/2026;000879;Cable H07Z1-K 2,5 mm² negro;A;m;16225,5;0,3100
+31/10/2026;000889;Cable H07Z1-K 2,5 mm² gris;C;m;75635,5;0,3100
+31/10/2026;000942;Artículo 000942;B;ud;11206,5;0,3100
+31/10/2026;001021;Cable H07Z1-K 4 mm² azul;B;m;6171;0,5200
+31/10/2026;001462;Cable H07Z1-K 4 mm² marrón;B;m;4271,5;0,5200
+31/10/2026;001493;Cable H07Z1-K 4 mm² negro;A;m;12598,5;0,5200
+31/10/2026;001543;Cable H07Z1-K 6 mm² azul;C;m;31803,5;0,6900
+31/10/2026;001594;Cable H07Z1-K 6 mm² marrón;B;m;7496,5;0,6900
+31/10/2026;001707;Cable H07Z1-K 6 mm² negro;C;m;1075,5;0,6900
+31/10/2026;001814;Cable RZ1-K 0,6/1 kV 3G1,5 mm²;A;m;3983,5;0,7800
+31/10/2026;001929;Cable RZ1-K 0,6/1 kV 3G2,5 mm²;B;m;4121;1,1200
+31/10/2026;002007;Cable RZ1-K 0,6/1 kV 3G4 mm²;A;m;0;1,6500
+31/10/2026;002059;Cable RZ1-K 0,6/1 kV 3G6 mm²;B;m;828;2,3500
+31/10/2026;002147;Cable RZ1-K 0,6/1 kV 5G2,5 mm²;B;m;1625;1,8500
+31/10/2026;002193;Cable RZ1-K 0,6/1 kV 5G6 mm²;C;m;4640;3,9000
+31/10/2026;002258;Cable RZ1-K 0,6/1 kV 5G10 mm²;C;m;1089;6,1000
+31/10/2026;002283;Manguera RV-K 0,6/1 kV 3G2,5 mm²;A;m;0;1,0500
+31/10/2026;002296;Manguera RV-K 0,6/1 kV 4G6 mm²;C;m;1108,5;3,1000
+31/10/2026;002458;Cable coaxial 75 Ω (rollo 100 m);Sin ficha;rollo;76;
+31/10/2026;002499;Cable UTP Cat 6 LSZH (caja 305 m);C;caja;1;89,0000
+31/10/2026;002593;Cable ES07Z1-K 10 mm² amarillo-verde;A;m;5324,5;1,1500
+31/10/2026;002594;Cable ES07Z1-K 16 mm² amarillo-verde;C;m;5075,5;1,8000
+31/10/2026;002669;Cable ES07Z1-K 25 mm² amarillo-verde;A;m;2370;2,7500
+31/10/2026;002672;Downlight LED 12 W 3000 K;C;ud;278;6,9000
+31/10/2026;002680;Downlight LED 12 W 4000 K;A;ud;1514;6,9000
+31/10/2026;002695;Downlight LED 18 W 3000 K;A;ud;1630;8,9000
+31/10/2026;002796;Downlight LED 18 W 4000 K (ref. LED-0412);A;ud;455;8,9000
+31/10/2026;002816;Artículo 002816;C;ud;963;12,5000
+31/10/2026;002947;Downlight LED 24 W 4000 K;B;ud;206;12,5000
+31/10/2026;003024;Panel LED 60x60 40 W 3000 K;A;ud;131;18,9000
+31/10/2026;003136;Panel LED 60x60 40 W 4000 K;A;ud;1519;18,9000
+31/10/2026;003305;Panel LED 60x60 40 W 6000 K;B;ud;70;18,9000
+31/10/2026;003946;Panel LED 120x30 40 W 4000 K;C;ud;269;24,0000
+31/10/2026;003956;Proyector LED 20 W IP65 4000 K;A;ud;0;9,8000
+31/10/2026;004021;Proyector LED 20 W IP65 6000 K;C;ud;748;9,8000
+31/10/2026;004064;Proyector LED 50 W IP65 4000 K;B;ud;0;18,5000
+31/10/2026;004141;Proyector LED 50 W IP65 6000 K;C;ud;141;18,5000
+31/10/2026;004154;Proyector LED 100 W IP65 4000 K;C;ud;628;34,9000
+31/10/2026;004280;Proyector LED 150 W IP65 6000 K;C;ud;126;52,0000
+31/10/2026;004394;Campana industrial LED 100 W;C;ud;111;62,0000
+31/10/2026;004418;Campana industrial LED 150 W;B;ud;17;85,0000
+31/10/2026;004593;Campana industrial LED 200 W;C;ud;66;108,0000
+31/10/2026;004827;Artículo 004827;A;ud;0;1,4500
+31/10/2026;004850;Lámpara LED E27 9 W 4000 K;A;ud;2129;1,4500
+31/10/2026;004851;Artículo 004851;B;ud;3638;1,9500
+31/10/2026;004870;Artículo 004870;A;ud;117;1,9500
+31/10/2026;004888;Lámpara LED E27 15 W 2700 K;A;ud;1180;2,9000
+31/10/2026;004940;Lámpara LED E27 15 W 4000 K;A;ud;1628;2,9000
+31/10/2026;005024;Lámpara LED GU10 5 W 3000 K;A;ud;3193;1,1000
+31/10/2026;005098;Lámpara LED GU10 7 W 3000 K;B;ud;3557;1,6000
+31/10/2026;005547;Lámpara LED GU10 7 W 4000 K;B;ud;2047;1,6000
+31/10/2026;005712;Tira LED 24 V 14,4 W/m 3000 K (rollo 5 m);C;rollo;1251;14,5000
+31/10/2026;005752;Tira LED 24 V 14,4 W/m 4000 K (rollo 5 m);B;rollo;153;14,5000
+31/10/2026;005793;Tira LED 24 V 14,4 W/m 6000 K (rollo 5 m);C;rollo;115;14,5000
+31/10/2026;005822;Artículo 005822;C;ud;265;18,0000
+31/10/2026;005888;Fuente de alimentación LED 24 V 100 W;C;ud;475;26,5000
+31/10/2026;005993;Fuente de alimentación LED 24 V 150 W;C;ud;17;39,0000
+31/10/2026;006019;Pantalla estanca LED 1x36 W IP65;B;ud;74;16,8000
+31/10/2026;006031;Pantalla estanca LED 2x36 W IP65;A;ud;0;21,5000
+31/10/2026;006213;Aplique LED exterior 10 W;B;ud;357;12,4000
+31/10/2026;006254;Baliza LED 7 W;B;ud;0;15,8000
+31/10/2026;006516;Emergencia LED 300 lm;B;ud;101;21,9000
+31/10/2026;006546;Emergencia LED 100 lm;A;ud;205;14,3000
+31/10/2026;006928;Interruptor simple serie Alba blanco;C;ud;5189;2,4000
+31/10/2026;006931;Conmutador serie Alba blanco;C;ud;0;2,7000
+31/10/2026;007013;Base de enchufe schuko serie Alba blanco;C;ud;4571;3,2000
+31/10/2026;007036;Marco 1 elemento serie Alba blanco;C;ud;10493;1,1000
+31/10/2026;007198;Marco 2 elementos serie Alba blanco;B;ud;4250;1,8000
+31/10/2026;007264;Interruptor simple serie Alba antracita;C;ud;4787;2,9000
+31/10/2026;007781;Conmutador serie Alba antracita;A;ud;56;3,2000
+31/10/2026;007861;Base de enchufe schuko serie Alba antracita;C;ud;6084;3,7000
+31/10/2026;007908;Marco 1 elemento serie Alba antracita;B;ud;2;1,4000
+31/10/2026;007910;Marco 2 elementos serie Alba antracita;C;ud;3710;2,2000
+31/10/2026;007943;Interruptor simple serie Alba plata;C;ud;185;3,1000
+31/10/2026;007974;Conmutador serie Alba plata;B;ud;541;3,4000
+31/10/2026;008169;Base de enchufe schuko serie Alba plata;C;ud;667;3,9000
+31/10/2026;008266;Marco 1 elemento serie Alba plata;C;ud;584;1,6000
+31/10/2026;008274;Marco 2 elementos serie Alba plata;B;ud;647;2,5000
+31/10/2026;008350;Cruzamiento serie Alba blanco;C;ud;294;4,6000
+31/10/2026;008358;Artículo 008358;B;ud;58;3,4000
+31/10/2026;008537;Toma TV-R/SAT serie Alba blanco;C;ud;1517;5,6000
+31/10/2026;008582;Toma RJ45 Cat 6 serie Alba blanco;C;ud;2018;7,9000
+31/10/2026;008811;Marco 3 elementos serie Alba blanco;B;ud;358;2,8000
+31/10/2026;008933;Regulador LED serie Alba blanco;C;ud;526;24,9000
+31/10/2026;008982;Artículo 008982;C;ud;56;19,5000
+31/10/2026;009057;Pulsador timbre serie Alba antracita;C;ud;1761;3,9000
+31/10/2026;009066;Toma TV-R/SAT serie Alba antracita;B;ud;269;6,1000
+31/10/2026;009149;Toma RJ45 Cat 6 serie Alba antracita;C;ud;981;8,4000
+31/10/2026;009354;Marco 3 elementos serie Alba antracita;C;ud;2049;3,3000
+31/10/2026;009481;Regulador LED serie Alba antracita;C;ud;17;24,9000
+31/10/2026;009501;Detector de presencia serie Alba antracita;B;ud;58;19,5000
+31/10/2026;009848;Artículo 009848;B;ud;610;9,5000
+31/10/2026;009901;Caja de empotrar doble (caja de 25);C;caja;194;11,2000
+31/10/2026;010260;Clema 3 vías (caja de 100);B;caja;228;18,0000
+31/10/2026;010444;Borne de conexión rápida 3 polos (caja de 100);B;caja;173;29,0000
+31/10/2026;010573;Base de superficie estanca IP55;C;ud;239;6,8000
+31/10/2026;010845;Interruptor estanco IP55;C;ud;684;7,4000
+31/10/2026;010954;Termostato digital;C;ud;171;34,0000
+31/10/2026;010989;Magnetotérmico 1P+N 10 A 6 kA;B;ud;86;6,8000
+31/10/2026;011210;Magnetotérmico 1P+N 16 A 6 kA;C;ud;1877;6,8000
+31/10/2026;011262;Magnetotérmico 1P+N 20 A 6 kA;A;ud;407;7,2000
+31/10/2026;011497;Magnetotérmico 1P+N 25 A 6 kA;B;ud;0;8,4000
+31/10/2026;011552;Magnetotérmico 1P+N 32 A 6 kA;A;ud;787;9,5000
+31/10/2026;011868;Artículo 011868;C;ud;1140;13,0000
+31/10/2026;011880;Artículo 011880;C;ud;1680;14,6000
+31/10/2026;011923;Magnetotérmico 2P 32 A 6 kA;A;ud;279;17,2000
+31/10/2026;011952;Magnetotérmico 2P 40 A 6 kA;C;ud;308;21,0000
+31/10/2026;012023;Magnetotérmico 4P 16 A 10 kA;C;ud;19;48,0000
+31/10/2026;012268;Magnetotérmico 4P 25 A 10 kA;C;ud;81;54,0000
+31/10/2026;012301;Magnetotérmico 4P 40 A 10 kA;A;ud;0;71,0000
+31/10/2026;012446;Magnetotérmico 4P 63 A 10 kA;C;ud;67;95,0000
+31/10/2026;012534;Artículo 012534;C;ud;1050;21,8000
+31/10/2026;012667;Diferencial 2P 40 A 30 mA clase AC;C;ud;0;22,5000
+31/10/2026;012738;Diferencial 2P 40 A 30 mA clase A;C;ud;25;38,9000
+31/10/2026;012761;Diferencial superinmunizado 2P 40 A 30 mA;C;ud;106;58,0000
+31/10/2026;012912;Diferencial 4P 40 A 30 mA clase A;C;ud;39;89,0000
+31/10/2026;013146;Diferencial 4P 63 A 300 mA clase A;C;ud;51;125,0000
+31/10/2026;013413;Protector sobretensiones transitorias 2P;C;ud;37;42,0000
+31/10/2026;013456;Protector sobretensiones permanentes y transitorias 2P;C;ud;40;96,0000
+31/10/2026;013464;Limitador de sobretensiones tipo 1+2;C;ud;39;145,0000
+31/10/2026;013830;Cuadro de superficie 4 módulos;C;ud;109;8,5000
+31/10/2026;013924;Artículo 013924;B;ud;0;12,9000
+31/10/2026;013928;Artículo 013928;C;ud;646;17,4000
+31/10/2026;014342;Cuadro de superficie 24 módulos;B;ud;148;34,0000
+31/10/2026;014683;Cuadro de superficie 36 módulos;C;ud;33;62,0000
+31/10/2026;014699;Cuadro de empotrar 12 módulos;C;ud;36;18,0000
+31/10/2026;014745;Cuadro de empotrar 24 módulos;C;ud;325;31,0000
+31/10/2026;014799;Cuadro de empotrar 36 módulos;C;ud;128;48,0000
+31/10/2026;014884;Artículo 014884;B;ud;157;24,0000
+31/10/2026;014912;Interruptor horario digital;B;ud;7;39,0000
+31/10/2026;015133;Artículo 015133;B;ud;494;4,2000
+31/10/2026;015245;Fusible cilíndrico 10x38 16 A (caja de 10);A;caja;1101;4,4000
+31/10/2026;015338;Base portafusibles 10x38 1P;B;ud;1704;3,1000
+31/10/2026;015350;Tubo corrugado reforzado M16 (rollo 100 m);C;rollo;1423;9,8000
+31/10/2026;015717;Tubo corrugado reforzado M20 (rollo 100 m);C;rollo;117;13,9000
+31/10/2026;015739;Tubo corrugado reforzado M25 (rollo 100 m);C;rollo;84;18,5000
+31/10/2026;015852;Tubo corrugado reforzado M32 (rollo 100 m);C;rollo;252;27,0000
+31/10/2026;016001;Tubo rígido PVC M20 (barra 3 m);A;ud;2372;2,1000
+31/10/2026;016121;Tubo rígido PVC M25 (barra 3 m);C;ud;3035;2,9000
+31/10/2026;016188;Tubo rígido PVC M32 (barra 3 m);C;ud;1519;4,1000
+31/10/2026;016383;Canaleta PVC 16x16 (tramo 2 m);B;ud;5744;0,9500
+31/10/2026;016469;Canaleta PVC 25x40 (tramo 2 m);C;ud;9085;1,9500
+31/10/2026;016528;Canaleta PVC 40x60 (tramo 2 m);C;ud;5461;3,9000
+31/10/2026;016610;Canaleta PVC 60x100 (tramo 2 m);C;ud;1411;7,4000
+31/10/2026;016658;Bandeja perforada 60x100 (tramo 3 m);C;ud;417;14,5000
+31/10/2026;016826;Bandeja perforada 60x200 (tramo 3 m);C;ud;511;19,8000
+31/10/2026;016845;Bandeja perforada 60x300 (tramo 3 m);C;ud;261;26,4000
+31/10/2026;017445;Tapa bandeja 100 (tramo 3 m);C;ud;102;7,9000
+31/10/2026;017501;Tapa bandeja 200 (tramo 3 m);C;ud;126;11,5000
+31/10/2026;017509;Caja de registro estanca 100x100 IP55;B;ud;1342;0,8600
+31/10/2026;017658;Caja de registro estanca 150x110 IP55;C;ud;2359;2,1000
+31/10/2026;017732;Caja de registro estanca 220x170 IP55;C;ud;3036;4,9500
+31/10/2026;017741;Bridas de nailon 140 mm (caja de 100);C;caja;1007;1,1000
+31/10/2026;017751;Bridas de nailon 200 mm (caja de 100);A;caja;958;2,3000
+31/10/2026;017812;Bridas de nailon 300 mm (caja de 100);A;caja;1083;4,2000
+31/10/2026;017833;Abrazadera para tubo M20 (caja de 100);Sin ficha;caja;144;
+31/10/2026;017880;Tubo flexible metálico M20;C;m;585,5;1,8500
+31/10/2026;017911;Manguito de unión M20 (caja de 50);C;caja;315;4,3000
+31/10/2026;017991;Crimpadora de terminales;C;ud;180;24,5000
+31/10/2026;018295;Pelacables automático;C;ud;0;18,9000
+31/10/2026;018389;Artículo 018389;C;ud;41;32,0000
+31/10/2026;018522;Multímetro digital;C;ud;21;39,0000
+31/10/2026;018573;Pinza amperimétrica;C;ud;13;54,0000
+31/10/2026;018788;Juego de destornilladores aislados 1000 V (7 piezas);C;ud;464;46,0000
+31/10/2026;018790;Alicate universal aislado;C;ud;0;14,2000
+31/10/2026;018828;Alicate de corte aislado;C;ud;419;15,8000
+31/10/2026;019065;Tijera de electricista;C;ud;256;12,5000
+31/10/2026;019157;Guía pasacables 15 m;C;ud;698;16,4000
+31/10/2026;019243;Taladro percutor 18 V;C;ud;55;129,0000
+31/10/2026;019453;Artículo 019453;C;ud;147;28,5000
+31/10/2026;019514;Nivel láser de líneas;C;ud;74;89,0000
+31/10/2026;019601;Linterna frontal LED;Sin ficha;ud;333;
+31/10/2026;019657;Cinta aislante PVC 19 mm (caja de 10);C;caja;1807;6,8000

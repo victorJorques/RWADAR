@@ -1,0 +1,502 @@
+{
+ "id": "n2m2l4",
+ "titulo": "PROMEDIO.SI, comodines y «distinto de»",
+ "minutos": 16,
+ "objetivo": "Calcular medias por categoría con PROMEDIO.SI y escribir criterios más finos: textos que contienen algo (comodines), «distinto de» y umbrales que se leen de una celda.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Estoy preparando la revisión de riesgo de noviembre. Necesito saber cuánto suman los pedidos iguales o superiores al umbral que pongo en E2. Lo voy a ir cambiando (1.500, 3.000…), así que tiene que actualizarse solo.",
+  "logro": "Ya sabes hacer criterios que contienen un texto, que excluyen algo o que leen el umbral de una celda, y calcular medias por grupo."
+ },
+ "funciones": [
+  "PROMEDIO.SI",
+  "CONTAR.SI",
+  "SUMAR.SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Javier quiere el **ticket medio** de cada delegación: lo que gasta de media un cliente en cada pedido. Es la media de los importes, pero solo de las filas de esa delegación.\n\nPara eso está **PROMEDIO.SI**, que funciona igual que SUMAR.SI:\n\n`=PROMEDIO.SI(rango; criterio; rango_promedio)`\n\nBusca aquí, esto, y haz la media de allí. Si ya dominas SUMAR.SI, esta te sale sola."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e1",
+   "modo": "predice",
+   "enunciado": "¿Qué resultado dará la fórmula en **D2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Importe",
+     "A2": "Lleida",
+     "B2": 400,
+     "A3": "Zaragoza",
+     "B3": 1800,
+     "A4": "Lleida",
+     "B4": 600,
+     "A5": "Pamplona",
+     "B5": 900
+    },
+    "formatos": {
+     "B2:B5": "eur"
+    }
+   },
+   "celda": "D2",
+   "formula": "=PROMEDIO.SI(A2:A5;\"Lleida\";B2:B5)",
+   "explicacion": "Solo cuenta las filas de Lleida: (400 + 600) / 2 = 500."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e2",
+   "modo": "formula",
+   "enunciado": "En **F2** calcula el **ticket medio de Lleida**: la media de los importes de los pedidos de esa delegación.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Importe",
+     "A2": "Reformas Delicias, S.L.",
+     "B2": "Zaragoza",
+     "C2": 1840,
+     "A3": "Electricidad Monzón",
+     "B3": "Lleida",
+     "C3": 620,
+     "A4": "Instalaciones Arrabal, S.L.",
+     "B4": "Zaragoza",
+     "C4": 3150,
+     "A5": "Climatización Bardenas",
+     "B5": "Pamplona",
+     "C5": 1500,
+     "A6": "Montajes Segre, S.C.P.",
+     "B6": "Lleida",
+     "C6": 980,
+     "A7": "Hogar Eléctrico Tudela",
+     "B7": "Pamplona",
+     "C7": 410,
+     "A8": "Electro Huesca Instal., S.L.",
+     "B8": "Zaragoza",
+     "C8": 2275,
+     "A9": "Fontanería y Luz Balaguer",
+     "B9": "Lleida",
+     "C9": 1300,
+     "A10": "Proyectos Eléctricos Navarra, S.L.",
+     "B10": "Pamplona",
+     "C10": 4060,
+     "A11": "Antonio Lázaro Gil",
+     "B11": "Zaragoza",
+     "C11": 265,
+     "F1": "Ticket medio Lleida"
+    },
+    "formatos": {
+     "C2:C11": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 30,
+     "B": 11,
+     "E": 22
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=PROMEDIO.SI(B2:B11;\"Lleida\";C2:C11)",
+   "alternativas": [
+    "=PROMEDIO.SI($B$2:$B$11;\"Lleida\";$C$2:$C$11)",
+    "=SUMAR.SI(B2:B11;\"Lleida\";C2:C11)/CONTAR.SI(B2:B11;\"Lleida\")"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(C2:C11)",
+    "=SUMAR.SI(B2:B11;\"Lleida\";C2:C11)",
+    "=PROMEDIO.SI(B2:B11;\"Lleida\")"
+   ],
+   "variantes": [
+    {
+     "C3": 800
+    }
+   ],
+   "formato_resultado": "eur",
+   "tolerancia": 0.01,
+   "pistas": [
+    "Es una media, pero solo de algunas filas. ¿Qué función hace la media con condición?",
+    "`=PROMEDIO.SI(columna_delegación; \"Lleida\"; columna_importe)`",
+    "`=PROMEDIO.SI(B2:B11;\"Lleida\";C2:C11)`"
+   ],
+   "explicacion": "966,67 €. Si te olvidas del tercer argumento, Excel intenta hacer la media de los propios nombres de delegación y da #¡DIV/0!. El ticket medio es una de las cifras que más mira un director comercial."
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces no buscas un texto exacto, sino uno que **contenga** algo. Para eso están los **comodines**, símbolos que hacen de «lo que sea»:\n\n- `*` vale por **cualquier cantidad** de caracteres (o ninguno). `\"*S.L.*\"` = «contiene S.L.».\n- `?` vale por **un solo** carácter. `\"P-26??\"` = «P-26 y dos caracteres más».\n\nAsí cuentas, por ejemplo, cuántos clientes son sociedades limitadas sin revisarlos uno a uno."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e3",
+   "modo": "formula",
+   "enunciado": "Marta quiere saber **cuántos pedidos son de clientes cuyo nombre contiene «S.L.»**. Escribe la respuesta en **F2** con una fórmula.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Importe",
+     "A2": "Reformas Delicias, S.L.",
+     "B2": "Zaragoza",
+     "C2": 1840,
+     "A3": "Electricidad Monzón",
+     "B3": "Lleida",
+     "C3": 620,
+     "A4": "Instalaciones Arrabal, S.L.",
+     "B4": "Zaragoza",
+     "C4": 3150,
+     "A5": "Climatización Bardenas",
+     "B5": "Pamplona",
+     "C5": 1500,
+     "A6": "Montajes Segre, S.C.P.",
+     "B6": "Lleida",
+     "C6": 980,
+     "A7": "Hogar Eléctrico Tudela",
+     "B7": "Pamplona",
+     "C7": 410,
+     "A8": "Electro Huesca Instal., S.L.",
+     "B8": "Zaragoza",
+     "C8": 2275,
+     "A9": "Fontanería y Luz Balaguer",
+     "B9": "Lleida",
+     "C9": 1300,
+     "A10": "Proyectos Eléctricos Navarra, S.L.",
+     "B10": "Pamplona",
+     "C10": 4060,
+     "A11": "Antonio Lázaro Gil",
+     "B11": "Zaragoza",
+     "C11": 265,
+     "F1": "Pedidos de S.L."
+    },
+    "formatos": {
+     "C2:C11": "eur"
+    },
+    "anchos": {
+     "A": 30,
+     "B": 11,
+     "E": 22
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=CONTAR.SI(A2:A11;\"*S.L.*\")",
+   "alternativas": [
+    "=CONTAR.SI($A$2:$A$11;\"*S.L.*\")",
+    "=CONTAR.SI(A2:A11;\"*s.l.*\")",
+    "=CONTAR.SI(A2:A11;\"*S.L.\")"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(A2:A11;\"S.L.\")",
+    "=CONTARA(A2:A11)",
+    "=4"
+   ],
+   "variantes": [
+    {
+     "A3": "Electricidad Monzón, S.L."
+    }
+   ],
+   "debe_usar": [
+    "CONTAR.SI"
+   ],
+   "pistas": [
+    "Es contar con condición, pero la condición es «contiene», no «es igual a».",
+    "El asterisco vale por «cualquier cosa». Ponlo delante y detrás de S.L.",
+    "`=CONTAR.SI(A2:A11;\"*S.L.*\")`"
+   ],
+   "explicacion": "Cuatro. Sin asteriscos, `\"S.L.\"` solo contaría celdas que pongan exactamente «S.L.» y daría 0. Los comodines te salvan cuando los nombres vienen largos del programa de gestión."
+  },
+  {
+   "tipo": "texto",
+   "md": "Otro criterio muy útil: **distinto de**, que se escribe `<>`.\n\n- `=CONTAR.SI(B2:B11;\"<>Zaragoza\")` cuenta todo lo que **no** sea Zaragoza.\n- `=CONTAR.SI(B2:B11;\"<>\")` cuenta las celdas **no vacías**.\n\nOjo: «distinto de Zaragoza» también cuenta las celdas vacías, porque una celda vacía no dice Zaragoza."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e4",
+   "modo": "predice",
+   "enunciado": "Carmen pregunta cuántos pedidos vienen **de fuera de Zaragoza**. ¿Qué dará la fórmula en **F2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Importe",
+     "A2": "Reformas Delicias, S.L.",
+     "B2": "Zaragoza",
+     "C2": 1840,
+     "A3": "Electricidad Monzón",
+     "B3": "Lleida",
+     "C3": 620,
+     "A4": "Instalaciones Arrabal, S.L.",
+     "B4": "Zaragoza",
+     "C4": 3150,
+     "A5": "Climatización Bardenas",
+     "B5": "Pamplona",
+     "C5": 1500,
+     "A6": "Montajes Segre, S.C.P.",
+     "B6": "Lleida",
+     "C6": 980,
+     "A7": "Hogar Eléctrico Tudela",
+     "B7": "Pamplona",
+     "C7": 410,
+     "A8": "Electro Huesca Instal., S.L.",
+     "B8": "Zaragoza",
+     "C8": 2275,
+     "A9": "Fontanería y Luz Balaguer",
+     "B9": "Lleida",
+     "C9": 1300,
+     "A10": "Proyectos Eléctricos Navarra, S.L.",
+     "B10": "Pamplona",
+     "C10": 4060,
+     "A11": "Antonio Lázaro Gil",
+     "B11": "Zaragoza",
+     "C11": 265
+    },
+    "formatos": {
+     "C2:C11": "eur"
+    },
+    "anchos": {
+     "A": 30,
+     "B": 11,
+     "E": 22
+    }
+   },
+   "celda": "F2",
+   "formula": "=CONTAR.SI(B2:B11;\"<>Zaragoza\")",
+   "explicacion": "Hay 10 pedidos y 4 son de Zaragoza: 6 vienen de Pamplona y Lleida."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora el caso de la misión: el umbral está en una **celda** (E2) y Marta lo irá cambiando. El criterio es un texto, así que hay que **pegar** el signo con el valor de la celda usando `&` (el «pegamento» de Excel):\n\n`=SUMAR.SI(C2:C11;\">=\"&E2)`\n\nEl signo va entre comillas; la celda, fuera. Si E2 vale 1.500, Excel lo convierte en `\">=1500\"`."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "`\">=E2\"` (Excel compara con el texto «E2», no con su valor)",
+     "`\">=\"&E2`"
+    ],
+    [
+     "`>=E2` sin comillas (Excel no acepta la fórmula)",
+     "`\">=\"&E2`"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e5",
+   "modo": "test",
+   "pregunta": "Quieres contar los importes de C2:C11 **mayores que el valor de E2**. ¿Qué fórmula está bien?",
+   "opciones": [
+    {
+     "texto": "`=CONTAR.SI(C2:C11;\">\"&E2)`",
+     "correcta": true,
+     "porque": "Correcto: el signo entre comillas y la celda pegada con &. Si cambias E2, el resultado cambia."
+    },
+    {
+     "texto": "`=CONTAR.SI(C2:C11;\">E2\")`",
+     "correcta": false,
+     "porque": "Dentro de las comillas, E2 es solo texto: Excel no mira lo que hay en la celda E2. Es el error más típico con criterios."
+    },
+    {
+     "texto": "`=CONTAR.SI(C2:C11;E2)`",
+     "correcta": false,
+     "porque": "Así contarías los importes **iguales** a E2. Falta el signo «>»."
+    }
+   ],
+   "explicacion": "Regla para recordar: lo que es texto fijo va entre comillas; lo que es una celda va fuera, unido con &."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e6",
+   "modo": "test",
+   "pregunta": "Marta mira las devoluciones. **Pamplona**: 2 devoluciones de 100 pedidos (2 %). **Lleida**: 1 devolución de 2 pedidos (50 %). ¿Cuál es el porcentaje de devoluciones de las dos juntas?",
+   "opciones": [
+    {
+     "texto": "Unos 2,9 % (3 devoluciones de 102 pedidos)",
+     "correcta": true,
+     "porque": "Correcto: para un porcentaje global se divide el total entre el total: 3 / 102."
+    },
+    {
+     "texto": "26 %, la media de 2 % y 50 %",
+     "correcta": false,
+     "porque": "Promediar porcentajes da el mismo peso a 2 pedidos que a 100. Por eso sale un 26 % que no se parece a la realidad."
+    },
+    {
+     "texto": "52 %, la suma de los dos",
+     "correcta": false,
+     "porque": "Los porcentajes de grupos distintos no se suman: cada uno está calculado sobre una base diferente."
+    }
+   ],
+   "explicacion": "Error clásico de informe: **no hagas la media de porcentajes**. Suma los casos, suma los totales y divide. Con PROMEDIO.SI haz medias de importes, no de tasas."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Te he puesto el umbral en **E2**, de momento 1.500 €. «Iguales o superiores», que el de 1.500 justo también lo quiero. Mañana lo subo a 3.000 para ver cómo cambia."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m2l4-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Marta.** En **F2** calcula cuánto suman los pedidos **iguales o superiores** al umbral de **E2**. Si Marta cambia E2, el resultado tiene que cambiar solo.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Delegación",
+     "C1": "Importe",
+     "A2": "Reformas Delicias, S.L.",
+     "B2": "Zaragoza",
+     "C2": 1840,
+     "A3": "Electricidad Monzón",
+     "B3": "Lleida",
+     "C3": 620,
+     "A4": "Instalaciones Arrabal, S.L.",
+     "B4": "Zaragoza",
+     "C4": 3150,
+     "A5": "Climatización Bardenas",
+     "B5": "Pamplona",
+     "C5": 1500,
+     "A6": "Montajes Segre, S.C.P.",
+     "B6": "Lleida",
+     "C6": 980,
+     "A7": "Hogar Eléctrico Tudela",
+     "B7": "Pamplona",
+     "C7": 410,
+     "A8": "Electro Huesca Instal., S.L.",
+     "B8": "Zaragoza",
+     "C8": 2275,
+     "A9": "Fontanería y Luz Balaguer",
+     "B9": "Lleida",
+     "C9": 1300,
+     "A10": "Proyectos Eléctricos Navarra, S.L.",
+     "B10": "Pamplona",
+     "C10": 4060,
+     "A11": "Antonio Lázaro Gil",
+     "B11": "Zaragoza",
+     "C11": 265,
+     "E1": "Umbral",
+     "E2": 1500,
+     "F1": "Suma ≥ umbral"
+    },
+    "formatos": {
+     "C2:C11": "eur",
+     "E2": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 30,
+     "B": 11,
+     "E": 22
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=SUMAR.SI(C2:C11;\">=\"&E2)",
+   "alternativas": [
+    "=SUMAR.SI(C2:C11;\">=\"&E2;C2:C11)",
+    "=SUMAR.SI($C$2:$C$11;\">=\"&$E$2)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(C2:C11;\">=E2\")",
+    "=SUMAR.SI(C2:C11;\">\"&E2)",
+    "=SUMAR.SI(C2:C11;\">=1500\")",
+    "=CONTAR.SI(C2:C11;\">=\"&E2)"
+   ],
+   "variantes": [
+    {
+     "E2": 3000
+    },
+    {
+     "E2": 980
+    }
+   ],
+   "formato_resultado": "eur",
+   "debe_usar": [
+    "SUMAR.SI"
+   ],
+   "pistas": [
+    "Sumar con condición sobre la propia columna de importes. El criterio es «mayor o igual que lo que diga E2».",
+    "El signo va entre comillas y la celda fuera, unidos con &: `\">=\"&E2`.",
+    "`=SUMAR.SI(C2:C11;\">=\"&E2)`"
+   ],
+   "explicacion": "Misión cumplida: con 1.500 € suman 12.825 €, y si Marta pone 3.000 € la cifra baja sola a 7.210 €. Has construido un pequeño **panel con un control**: alguien cambia una celda y el informe responde. Así se hacen los análisis de «¿y si…?» en cualquier departamento financiero."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m2l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué comodín vale por **cualquier cantidad** de caracteres en un criterio?",
+   "aceptadas": [
+    "*",
+    "el asterisco",
+    "asterisco",
+    "\"*\""
+   ],
+   "explicacion": "El asterisco *. El signo ? vale solo por un carácter."
+  },
+  {
+   "id": "n2m2l4-q2",
+   "modo": "predice",
+   "enunciado": "Repaso de la primera lección. ¿Qué devuelve la fórmula en **C1**?",
+   "hoja": {
+    "celdas": {
+     "A1": 2400,
+     "B1": "Pamplona"
+    }
+   },
+   "celda": "C1",
+   "formula": "=SI(Y(A1>=2000;B1=\"Zaragoza\");\"Visita\";\"Llamada\")",
+   "explicacion": "El importe sí llega a 2.000, pero la delegación no es Zaragoza. Con Y falla una, así que «Llamada»."
+  },
+  {
+   "id": "n2m2l4-q3",
+   "modo": "test",
+   "pregunta": "Has hecho un resumen de ventas por delegación con SUMAR.SI. Antes de enviarlo, ¿cuál es la mejor comprobación?",
+   "opciones": [
+    {
+     "texto": "Que la suma del resumen coincida con el total de la columna de importes",
+     "correcta": true,
+     "porque": "Eso es un total de control: si no cuadra, falta o sobra alguna fila (un nombre mal escrito, un rango que no llega al final)."
+    },
+    {
+     "texto": "Que ninguna celda muestre un error",
+     "correcta": false,
+     "porque": "No basta: un rango desalineado o mal fijado da cifras sin error y equivocadas."
+    },
+    {
+     "texto": "Que los números tengan formato de euros",
+     "correcta": false,
+     "porque": "El formato cambia cómo se ve, no si el cálculo está bien."
+    }
+   ]
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "PROMEDIO.SI: sintaxis",
+   "dorso": "=PROMEDIO.SI(rango; criterio; rango_promedio)"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Criterio «contiene S.L.»",
+   "dorso": "\"*S.L.*\" (el * vale por cualquier cantidad de caracteres; ? por uno solo)"
+  },
+  {
+   "tipo": "error",
+   "frente": "Criterio «mayor o igual que lo que diga E2»",
+   "dorso": "\">=\"&E2. Nunca \">=E2\" (eso busca el texto E2)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Criterio «distinto de Zaragoza»",
+   "dorso": "\"<>Zaragoza\". Y \"<>\" solo = celdas no vacías."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Se puede hacer la media de dos porcentajes para el total?",
+   "dorso": "No. Divide total de casos entre total de la base (3/102), no promedies tasas."
+  }
+ ]
+}

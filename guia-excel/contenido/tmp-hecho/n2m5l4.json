@@ -1,0 +1,358 @@
+{
+ "id": "n2m5l4",
+ "titulo": "Nombres definidos: fórmulas que se leen solas",
+ "minutos": 13,
+ "objetivo": "Poner nombre a una celda o rango desde el cuadro de nombres, usarlo en fórmulas y revisarlo en el Administrador de nombres.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "La plantilla de presupuestos está llena de $B$1 y $B$2 y nadie sabe qué son. Ponles nombre a las celdas de arriba para que cualquiera entienda la fórmula del total.",
+  "logro": "Ya sabes poner nombre a las celdas clave de una hoja, escribir fórmulas que se entienden solas y comprobar a qué apunta cada nombre."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Mira esta fórmula: `=D5*(1+$B$1)`. ¿Qué es $B$1? Hay que ir a buscarlo.\n\nAhora esta: `=D5*(1+TipoIVA)`. Se entiende sola.\n\n**TipoIVA** es un **nombre definido**: una etiqueta que le pones a una celda, como cuando guardas un teléfono en la agenda con el nombre de la persona en vez de recordar el número. Donde escribas el nombre, Excel usa la celda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e1",
+   "modo": "senala",
+   "pregunta": "Los nombres se crean en el **cuadro de nombres**, la casilla que dice en qué celda estás. Tócalo.",
+   "zona": "cuadro_nombres",
+   "explicacion": "Es la casilla a la izquierda de la barra de fórmulas. Normalmente muestra la celda activa (B1); si escribes ahí un nombre y pulsas Intro, se lo pones a esa celda."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: ponerle nombre a la celda del IVA",
+   "pasos": [
+    {
+     "md": "Haz clic en la celda donde está el 21 %, por ejemplo **B1**."
+    },
+    {
+     "md": "Haz clic en el **cuadro de nombres**, donde pone «B1»."
+    },
+    {
+     "md": "Escribe **TipoIVA** y pulsa [[Intro]]. Sin Intro, el nombre no se guarda."
+    },
+    {
+     "md": "Ya puedes escribir en cualquier celda `=D5*(1+TipoIVA)`."
+    },
+    {
+     "md": "Otra forma: **Fórmulas › Nombres definidos › Asignar nombre**, que abre una ventana con más opciones.",
+     "ruta": [
+      "Fórmulas",
+      "Nombres definidos",
+      "Asignar nombre"
+     ]
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e2",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para que la celda del descuento se llame **Descuento**.",
+   "pasos": [
+    "Selecciona la celda del descuento",
+    "Haz clic en el cuadro de nombres",
+    "Escribe Descuento",
+    "Pulsa Intro",
+    "Úsalo en una fórmula: =D5*(1-Descuento)"
+   ],
+   "explicacion": "Primero se elige la celda, luego se le pone el nombre y se confirma con Intro. Solo entonces existe y se puede usar."
+  },
+  {
+   "tipo": "texto",
+   "md": "Los nombres tienen sus reglas:\n\n- **Sin espacios**: «Tipo IVA» no vale. Usa **TipoIVA** o **Tipo_IVA**.\n- Empiezan por **letra** o guion bajo, no por número.\n- **No pueden parecer una celda**: IVA1 es la celda de la columna IVA, fila 1 (Excel tiene columnas hasta la XFD).\n\nY una regla de oficina: que se **entiendan**. «Dato1» o «X» no ayudan a nadie; «TipoIVA», «Descuento», «PortesFijos» sí."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e3",
+   "modo": "test",
+   "pregunta": "¿Cuál de estos nombres puede usar Marta para la celda del IVA?",
+   "opciones": [
+    {
+     "texto": "TipoIVA",
+     "correcta": true,
+     "porque": "Correcto: sin espacios, empieza por letra, no parece una celda y se entiende."
+    },
+    {
+     "texto": "Tipo IVA",
+     "correcta": false,
+     "porque": "Los nombres no admiten espacios. Júntalo (TipoIVA) o usa guion bajo (Tipo_IVA)."
+    },
+    {
+     "texto": "IVA1",
+     "correcta": false,
+     "porque": "IVA1 es una celda de verdad (columna IVA, fila 1). Excel no lo acepta como nombre."
+    },
+    {
+     "texto": "21IVA",
+     "correcta": false,
+     "porque": "Un nombre no puede empezar por un número."
+    }
+   ],
+   "explicacion": "Sin espacios, empezando por letra, sin parecer una celda y que se entienda."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un nombre siempre apunta a **la misma celda**: funciona como una referencia **absoluta**, con sus $. Si copias `=B2*TipoIVA` hacia abajo, queda `=B3*TipoIVA`, `=B4*TipoIVA`…\n\nEs decir, `TipoIVA` hace lo mismo que `$F$2`, pero se lee mejor.\n\nLa hoja de práctica de esta guía no admite nombres, así que en el siguiente ejercicio escribirás la versión con $. Es lo mismo que hace el nombre por dentro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e4",
+   "modo": "formula",
+   "enunciado": "La celda **F2** tiene el tipo de IVA (en tu Excel se llamaría TipoIVA). En **C2** calcula el IVA de la base de B2 y prepara la fórmula para copiarla hasta **C6**. C2 debe dar **88,20 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Base",
+     "C1": "IVA",
+     "A2": "F-26-0871",
+     "B2": 420,
+     "A3": "F-26-0872",
+     "B3": 1250,
+     "A4": "F-26-0873",
+     "B4": 86.5,
+     "A5": "F-26-0874",
+     "B5": 2310,
+     "A6": "F-26-0875",
+     "B6": 640.8,
+     "E1": "Parámetro",
+     "F1": "Valor",
+     "E2": "TipoIVA",
+     "F2": 0.21
+    },
+    "formatos": {
+     "B2:C6": "eur",
+     "F2": "pct"
+    },
+    "anchos": {
+     "A": 11,
+     "E": 11
+    },
+    "columnas": 6,
+    "filas": 6
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=B2*$F$2",
+   "alternativas": [
+    "=B2*F$2",
+    "=$F$2*B2"
+   ],
+   "errores_tipicos": [
+    "=B2*F2",
+    "=B2*0,21",
+    "=B2*(1+$F$2)"
+   ],
+   "variantes": [
+    {
+     "F2": 0.1
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El IVA es la base por el tipo.",
+    "El tipo está en F2 y no debe moverse al copiar: fíjalo con $.",
+    "`=B2*$F$2` (en tu Excel, con el nombre: `=B2*TipoIVA`)"
+   ],
+   "explicacion": "Bien: $F$2 es exactamente lo que guarda el nombre TipoIVA. Y si el tipo cambia, tocas una sola celda y se recalculan todas las facturas."
+  },
+  {
+   "tipo": "texto",
+   "md": "A un **rango** también se le puede poner nombre. Selecciona G2:G41 de la tarifa y llámalo **Codigos**; H2:H41, **Precios**. La búsqueda queda así:\n\n`=BUSCARX(A2;Codigos;Precios)`\n\nSin $ y sin tener que mirar dónde está la tarifa. Para ver todos los nombres de un libro, a qué apuntan, cambiarlos o borrarlos, está el **Administrador de nombres** ([[Ctrl]]+[[F3]])."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Nombres a partir de los títulos",
+   "md": "Si seleccionas la tarifa con sus títulos y usas **Fórmulas › Nombres definidos › Crear desde la selección** ([[Ctrl]]+[[Mayús]]+[[F3]]), Excel le pone a cada columna el nombre de su título."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e5",
+   "modo": "cinta",
+   "enunciado": "Has heredado un libro lleno de nombres y quieres ver a qué celda apunta cada uno. ¿Qué botón abres?",
+   "ruta": [
+    "Fórmulas",
+    "Nombres definidos",
+    "Administrador de nombres"
+   ],
+   "explicacion": "Fórmulas › Nombres definidos › Administrador de nombres (o [[Ctrl]]+[[F3]]). Ahí ves cada nombre, su valor y la celda o rango al que apunta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e6",
+   "modo": "test",
+   "pregunta": "Abres un presupuesto de otra persona y ves `=D5*(1-Dto)`. El resultado te parece raro. ¿Qué haces primero?",
+   "opciones": [
+    {
+     "texto": "Abrir el Administrador de nombres y mirar a qué celda apunta Dto",
+     "correcta": true,
+     "porque": "Correcto: un nombre puede apuntar a una celda vieja o equivocada. Compruébalo antes de fiarte."
+    },
+    {
+     "texto": "Suponer que Dto es la columna D",
+     "correcta": false,
+     "porque": "Dto es un nombre definido, no una columna. Podría apuntar a cualquier celda del libro."
+    },
+    {
+     "texto": "Borrar el nombre y escribir el descuento a mano",
+     "correcta": false,
+     "porque": "Romperías el resto de fórmulas que lo usan y dejarías un número escondido dentro de la fórmula."
+    },
+    {
+     "texto": "No se puede saber: hay que preguntar a quien lo hizo",
+     "correcta": false,
+     "porque": "Sí se puede: el Administrador de nombres te lo dice en segundos."
+    }
+   ],
+   "explicacion": "Los nombres hacen las fórmulas legibles, pero hay que saber a qué apuntan. Un nombre que señala una celda equivocada da resultados falsos sin ningún error."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "La plantilla de presupuestos tiene arriba tres celdas que nadie entiende: B1 es el IVA (21 %), B2 el descuento del cliente (5 %) y B3 los portes fijos (90 €). En E5 está `=D5*(1-$B$2)*(1+$B$1)+$B$3`. Quiero que cualquiera que la abra sepa qué está calculando."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-e7",
+   "modo": "abierta",
+   "pregunta": "**Misión de Marta.** Escribe qué **nombre** le pondrías a cada una de las tres celdas (B1, B2 y B3) y cómo quedaría la fórmula de **E5** usando esos nombres.",
+   "modelo": "B1 → TipoIVA; B2 → Descuento; B3 → Portes (o PortesFijos). La fórmula de E5 queda: =D5*(1-Descuento)*(1+TipoIVA)+Portes",
+   "criterios": [
+    "Propone un nombre claro para cada una de las tres celdas",
+    "Ningún nombre tiene espacios ni empieza por número ni parece una celda",
+    "Reescribe la fórmula sustituyendo $B$1, $B$2 y $B$3 por los nombres",
+    "Mantiene la fórmula igual en todo lo demás (paréntesis y orden)"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre el **Administrador de nombres**?",
+   "aceptadas": [
+    "Ctrl+F3",
+    "Control+F3",
+    "Ctrl F3",
+    "ctrl+f3"
+   ],
+   "explicacion": "[[Ctrl]]+[[F3]], o Fórmulas › Nombres definidos › Administrador de nombres."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-q2",
+   "modo": "test",
+   "pregunta": "Copias `=B2*TipoIVA` de C2 a C3. ¿Qué queda en C3?",
+   "opciones": [
+    {
+     "texto": "=B3*TipoIVA",
+     "correcta": true,
+     "porque": "Correcto: B2 es relativa y baja una fila; el nombre siempre apunta a la misma celda."
+    },
+    {
+     "texto": "=B3*TipoIVA1",
+     "correcta": false,
+     "porque": "Los nombres no cambian al copiar: funcionan como una referencia con $."
+    },
+    {
+     "texto": "=B2*TipoIVA",
+     "correcta": false,
+     "porque": "B2 no tiene $, así que sí baja a B3."
+    },
+    {
+     "texto": "Da error",
+     "correcta": false,
+     "porque": "Copiar fórmulas con nombres es justo para lo que sirven."
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l4-q3",
+   "modo": "formula",
+   "enunciado": "Repaso de la lección 2: en **B2** trae el precio del código de A2 desde la tarifa D2:E5 y, si no está, que salga **Sin tarifa**. Se copiará hasta B3.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Precio",
+     "A2": "LED-18",
+     "A3": "LED-36",
+     "D1": "Código",
+     "E1": "Precio",
+     "D2": "LED-09",
+     "E2": 2.1,
+     "D3": "LED-18",
+     "E3": 14.6,
+     "D4": "LED-24",
+     "E4": 21.3,
+     "D5": "LED-40",
+     "E5": 34.9
+    },
+    "formatos": {
+     "B2:B3": "eur",
+     "E2:E5": "eur"
+    },
+    "columnas": 5,
+    "filas": 5
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3"
+   ],
+   "solucion": "=BUSCARX(A2;$D$2:$D$5;$E$2:$E$5;\"Sin tarifa\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(A2;$D$2:$D$5;$E$2:$E$5);\"Sin tarifa\")",
+    "=SI.ND(BUSCARV(A2;$D$2:$E$5;2;FALSO);\"Sin tarifa\")",
+    "=BUSCARX(A2;D$2:D$5;E$2:E$5;\"Sin tarifa\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(A2;$D$2:$D$5;$E$2:$E$5)",
+    "=SI.ERROR(BUSCARX(A2;$D$2:$D$5;$E$2:$E$5);0)"
+   ],
+   "variantes": [
+    {
+     "A2": "LED-24"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Búsqueda con aviso si no encuentra.",
+    "BUSCARX con cuarto hueco \"Sin tarifa\", y la tarifa fijada.",
+    "`=BUSCARX(A2;$D$2:$D$5;$E$2:$E$5;\"Sin tarifa\")`"
+   ],
+   "explicacion": "Recuperado sin mirar: búsqueda con aviso. Esta combinación la usarás casi a diario."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es un nombre definido?",
+   "dorso": "Una etiqueta para una celda o rango (TipoIVA) que se usa en las fórmulas en lugar de $B$1."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Abrir el Administrador de nombres",
+   "dorso": "Ctrl+F3 (o Fórmulas › Nombres definidos › Administrador de nombres)"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Tres reglas de los nombres",
+   "dorso": "Sin espacios, empiezan por letra o _, y no pueden parecer una celda (IVA1)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Un nombre es relativo o absoluto al copiar?",
+   "dorso": "Absoluto: siempre apunta a la misma celda, como si llevara $."
+  }
+ ]
+}

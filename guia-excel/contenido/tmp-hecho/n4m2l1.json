@@ -1,0 +1,539 @@
+{
+ "id": "n4m2l1",
+ "titulo": "LET: ponle nombre a los pasos de tu fórmula",
+ "minutos": 15,
+ "objetivo": "Escribir fórmulas largas por pasos con LET, poniendo nombre a cada resultado intermedio para calcularlo una sola vez y que cualquiera del equipo las entienda.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "La hoja de presupuestos tiene una fórmula que nadie se atreve a tocar: repite el mismo neto tres veces. ¿Me la dejas legible? Neto con descuento, el 3 % extra si la línea llega a 1.000 € y el total con IVA. La va a usar todo el equipo.",
+  "logro": "Ya sabes escribir fórmulas largas por pasos con LET: se leen, se revisan y se cambian en un solo sitio."
+ },
+ "funciones": [
+  "LET"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### La fórmula que nadie se atreve a tocar\n\nEn la hoja de presupuestos hay esto:\n\n`=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))`\n\nEl trozo `B2*C2*(1-D2)` (el **neto**: precio por unidades, menos el descuento) aparece **tres veces**. Si un día cambia la forma de calcular el neto, hay que tocarlo en tres sitios, y basta con olvidar uno para que el presupuesto salga mal. Además, quien la lee tiene que descifrarla."
+  },
+  {
+   "tipo": "texto",
+   "md": "### LET: un nombre para cada paso\n\n**LET** te deja ponerle **nombre** a un resultado intermedio y usar ese nombre en el resto de la fórmula. Es como apuntar en un pósit «neto = 210» y luego decir «al neto, quítale el descuento».\n\n`=LET(neto;B2*C2;neto*(1-D2))`\n\n1. `neto` es el **nombre** que eliges tú.\n2. `B2*C2` es su **valor**.\n3. `neto*(1-D2)` es el **cálculo final**, el que sale en la celda."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Así se ve",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "E1": "Neto",
+     "A2": "Bridas 200 mm (bolsa 100)",
+     "B2": 4.2,
+     "C2": 50,
+     "D2": 0.1,
+     "E2": "=LET(neto;B2*C2;neto*(1-D2))"
+    },
+    "formatos": {
+     "B2": "eur",
+     "D2": "pct",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 26
+    }
+   },
+   "resaltar": [
+    "E2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "4,20 × 50 = 210 €; con el 10 % de descuento quedan 189,00 €."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e1",
+   "modo": "predice",
+   "enunciado": "Calcula de cabeza antes que Excel: ¿qué devuelve esta fórmula en E2? (Precio 4 €, 25 unidades, 10 % de descuento.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "A2": "Bridas 200 mm (bolsa 100)",
+     "B2": 4,
+     "C2": 25,
+     "D2": 0.1
+    },
+    "formatos": {
+     "B2": "eur",
+     "D2": "pct"
+    },
+    "anchos": {
+     "A": 26
+    }
+   },
+   "celda": "E2",
+   "formula": "=LET(neto;B2*C2;neto*(1-D2))",
+   "explicacion": "`neto` vale 4 × 25 = 100, y el cálculo final es 100 × (1 − 0,10) = 90. Acabas de leer tu primera LET: nombre, valor y cálculo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Las reglas del juego\n\n- Los argumentos (lo que separas con `;`) van **por parejas**: nombre; valor; nombre; valor…\n- El **último** argumento es siempre el **cálculo final**: lo que sale en la celda.\n- Un nombre puede usar los anteriores: `=LET(base;B2*C2;dto;base*D2;base-dto)`.\n- Los nombres solo existen **dentro de esa fórmula**: en otra celda no significan nada.\n\nLET está en Excel 2021, Excel 2024 y Microsoft 365."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e2",
+   "modo": "formula",
+   "enunciado": "La fórmula de **E2** ya calcula el neto, pero se ha quedado a medias: devuelve el neto **sin IVA**. Arréglala para que el cálculo final sea el **neto con IVA** (el tipo está en **H1**). Se copiará a E3:E4, así que fija H1.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "E1": "Con IVA",
+     "G1": "IVA",
+     "H1": 0.21,
+     "A2": "Cable H07V-K 2,5 mm² (100 m)",
+     "B2": 38.9,
+     "C2": 6,
+     "D2": 0.1,
+     "A3": "Canaleta 40×60 (tramo 2 m)",
+     "B3": 7.35,
+     "C3": 20,
+     "D3": 0.05,
+     "A4": "Caja de empalme estanca",
+     "B4": 2.8,
+     "C4": 50,
+     "D4": 0
+    },
+    "formatos": {
+     "B2:B4": "eur",
+     "D2:D4": "pct",
+     "E2:E4": "eur",
+     "H1": "pct"
+    },
+    "anchos": {
+     "A": 28
+    }
+   },
+   "objetivo": "E2",
+   "inicial": "=LET(neto;B2*C2*(1-D2);neto)",
+   "copiar_a": [
+    "E3:E4"
+   ],
+   "solucion": "=LET(neto;B2*C2*(1-D2);neto*(1+$H$1))",
+   "alternativas": [
+    "=LET(neto;B2*C2*(1-D2);neto+neto*$H$1)",
+    "=LET(neto;B2*C2*(1-D2);neto*(1+H$1))"
+   ],
+   "errores_tipicos": [
+    "=LET(neto;B2*C2*(1-D2);neto*(1+H1))",
+    "=LET(neto;B2*C2*(1-D2);neto*1,21)"
+   ],
+   "variantes": [
+    {
+     "H1": 0.1,
+     "B3": 8
+    }
+   ],
+   "debe_usar": [
+    "LET"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "No toques la primera parte: el nombre `neto` y su valor ya están bien. Solo cambia el último argumento.",
+    "El cálculo final tiene que ser el neto por (1 + IVA).",
+    "Cambia el último `neto` por `neto*(1+$H$1)`. El $ evita que H1 se mueva al copiar."
+   ],
+   "explicacion": "Has completado tu primera LET: el neto se calcula una vez y el último argumento lo convierte en importe con IVA. Si mañana cambia el tipo, basta con tocar H1."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no: el neto se repite",
+   "der": "Así sí: con LET",
+   "filas": [
+    [
+     "`=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))`",
+     "`=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))`"
+    ],
+    [
+     "El neto se calcula 3 veces",
+     "El neto se calcula 1 vez"
+    ],
+    [
+     "Para cambiarlo, hay que tocar 3 sitios",
+     "Para cambiarlo, 1 sitio"
+    ],
+    [
+     "Hay que descifrarla",
+     "Se lee sola: «si el neto llega al mínimo, réstale el 3 %»"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e3",
+   "modo": "formula",
+   "enunciado": "Reescribe con LET la fórmula de la hoja de presupuestos. En **E2** calcula el **neto** de la línea (precio × unidades × (1 − descuento)). Si el neto llega a **H1** (1.000 €), réstale el descuento extra de **H2** (3 %); si no, deja el neto tal cual. Debe dar lo mismo que la fórmula antigua, pero calculando el neto **una sola vez**. Se copiará a E3:E5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "E1": "Neto final",
+     "G1": "Mínimo",
+     "H1": 1000,
+     "G2": "Dto. extra",
+     "H2": 0.03,
+     "A2": "Cable H07V-K 2,5 mm² (100 m)",
+     "B2": 38.9,
+     "C2": 30,
+     "D2": 0.1,
+     "A3": "Magnetotérmico 2P 16 A",
+     "B3": 9.75,
+     "C3": 40,
+     "D3": 0.15,
+     "A4": "Downlight LED 18 W",
+     "B4": 12.4,
+     "C4": 120,
+     "D4": 0.2,
+     "A5": "Tubo corrugado 20 mm (100 m)",
+     "B5": 14.6,
+     "C5": 25,
+     "D5": 0.05
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "D2:D5": "pct",
+     "E2:E5": "eur",
+     "H1": "eur",
+     "H2": "pct"
+    },
+    "anchos": {
+     "A": 28,
+     "G": 11
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E5"
+   ],
+   "solucion": "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))",
+   "alternativas": [
+    "=LET(neto;B2*C2*(1-D2);SI(neto<$H$1;neto;neto*(1-$H$2)))",
+    "=LET(neto;B2*C2*(1-D2);neto*SI(neto>=$H$1;1-$H$2;1))",
+    "=LET(neto;B2*C2*(1-D2);SI(neto>=H$1;neto*(1-H$2);neto))"
+   ],
+   "errores_tipicos": [
+    "=LET(neto;B2*C2*(1-D2);SI(neto>=H1;neto*(1-H2);neto))",
+    "=LET(neto;B2*C2*(1-D2);neto)",
+    "=SI(B2*C2*(1-D2)>=$H$1;B2*C2*(1-D2)*(1-$H$2);B2*C2*(1-D2))"
+   ],
+   "variantes": [
+    {
+     "H1": 1200,
+     "H2": 0.05
+    },
+    {
+     "B3": 10,
+     "C3": 125,
+     "D3": 0.2
+    }
+   ],
+   "debe_usar": [
+    "LET"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza con `=LET(neto;` y escribe como valor el cálculo del neto: `B2*C2*(1-D2)`.",
+    "El cálculo final es un SI que pregunta si `neto` llega a $H$1. Si sí: `neto*(1-$H$2)`. Si no: `neto`.",
+    "`=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))`"
+   ],
+   "explicacion": "El mismo resultado, la mitad de largo y se lee de corrido: «calcula el neto; si llega al mínimo, réstale el 3 %». Si un día cambia la forma de calcular el neto, solo hay que tocar un sitio."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Nombres que no confundan a Excel\n\nUn nombre de LET **empieza por una letra** y no lleva espacios (si quieres, usa `_`: `precio_final`). Y, sobre todo, **no puede parecer una celda**. La última columna de Excel es la XFD, así que `iva21` o `dto1` son direcciones de celda de verdad (columna IVA, fila 21; columna DTO, fila 1), y Excel no las admite como nombre.\n\nElige palabras cortas que digan lo que guardan: `neto`, `dto`, `iva`, `total`."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e4",
+   "modo": "test",
+   "pregunta": "¿Cuál de estos nombres **no** puedes usar dentro de LET?",
+   "opciones": [
+    {
+     "texto": "`iva21`",
+     "correcta": true,
+     "porque": "Exacto: IVA21 es una celda de verdad (columna IVA, fila 21). Excel no admite como nombre algo que parece una referencia."
+    },
+    {
+     "texto": "`neto`",
+     "correcta": false,
+     "porque": "Este sí vale: empieza por letra, no tiene espacios y no se parece a ninguna celda."
+    },
+    {
+     "texto": "`precio_final`",
+     "correcta": false,
+     "porque": "Este también vale: el guion bajo está permitido y es la forma de evitar el espacio."
+    },
+    {
+     "texto": "`dto`",
+     "correcta": false,
+     "porque": "Vale: son solo letras, sin número de fila, así que no es la dirección de ninguna celda."
+    }
+   ],
+   "explicacion": "Regla rápida: si tu nombre son letras seguidas de un número, probablemente es una celda. Usa solo palabras."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Fórmulas que se leen en vertical\n\nUna LET larga se lee mejor en varias líneas. Mientras la escribes en la barra de fórmulas, pulsa [[Alt]]+[[Intro]] para saltar de línea. El resultado no cambia:\n\n- `=LET(neto;B2*C2*(1-D2);`\n- `final;SI(neto>=$H$1;neto*(1-$H$2);neto);`\n- `final*(1+$H$3))`\n\nUna línea por paso y la última, el resultado. Si la barra se queda pequeña, amplíala con [[Ctrl]]+[[Mayús]]+[[U]]."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Alt+Intro",
+     "accion": "Saltar de línea dentro de la fórmula (o de la celda)"
+    },
+    {
+     "teclas": "Ctrl+Mayús+U",
+     "accion": "Ampliar o reducir la barra de fórmulas"
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e5",
+   "modo": "predice",
+   "enunciado": "Aquí un nombre usa otro. ¿Qué resultado sale en E2? (Precio 20 €, 50 unidades, 10 % de descuento.)",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "A2": "Regleta 6 tomas con interruptor",
+     "B2": 20,
+     "C2": 50,
+     "D2": 0.1
+    },
+    "formatos": {
+     "B2": "eur",
+     "D2": "pct"
+    },
+    "anchos": {
+     "A": 30
+    }
+   },
+   "celda": "E2",
+   "formula": "=LET(base;B2*C2;dto;base*D2;base-dto)",
+   "explicacion": "`base` = 20 × 50 = 1.000; `dto` = 1.000 × 0,10 = 100; y el cálculo final, `base-dto`, da 900. Cada nombre puede usar los que tiene antes."
+  },
+  {
+   "tipo": "texto",
+   "md": "### ¿Y si alguien tiene un Excel antiguo?\n\nLET funciona en Excel 2021, Excel 2024, Microsoft 365, Excel para la web y Mac (2021 o posterior). En **Excel 2019 o anterior** no existe: la fórmula aparece con el prefijo `_xlfn.` y, si alguien la edita, da `#¿NOMBRE?`.\n\nSi en tu empresa conviven versiones, la alternativa clásica es poner cada paso en una **columna auxiliar** (una columna «Neto») o guardar los datos fijos con un **nombre definido**."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Truco de la casa: antes de sustituir una fórmula antigua por tu LET, ponla al lado en una columna de prueba y comprueba que las dos dan lo mismo en todas las filas. Luego borras la vieja. Así nadie te puede decir que «el presupuesto ha cambiado»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l1-e6",
+   "modo": "formula",
+   "enunciado": "**El encargo de Marta.** En **E2** calcula el **total con IVA** de la línea con una sola LET de tres pasos:\n\n1. `neto`: precio × unidades × (1 − descuento).\n2. `final`: si `neto` llega a **H1**, réstale el descuento extra de **H2**; si no, `neto`.\n3. Cálculo final: `final` con el IVA de **H3**.\n\nSe copiará a E3:E5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Dto",
+     "E1": "Total con IVA",
+     "G1": "Mínimo",
+     "H1": 1000,
+     "G2": "Dto. extra",
+     "H2": 0.03,
+     "G3": "IVA",
+     "H3": 0.21,
+     "A2": "Cable H07V-K 2,5 mm² (100 m)",
+     "B2": 38.9,
+     "C2": 30,
+     "D2": 0.1,
+     "A3": "Magnetotérmico 2P 16 A",
+     "B3": 9.75,
+     "C3": 40,
+     "D3": 0.15,
+     "A4": "Downlight LED 18 W",
+     "B4": 12.4,
+     "C4": 120,
+     "D4": 0.2,
+     "A5": "Tubo corrugado 20 mm (100 m)",
+     "B5": 14.6,
+     "C5": 25,
+     "D5": 0.05
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "D2:D5": "pct",
+     "E2:E5": "eur",
+     "H1": "eur",
+     "H2:H3": "pct"
+    },
+    "anchos": {
+     "A": 28,
+     "E": 13,
+     "G": 11
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E5"
+   ],
+   "solucion": "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final*(1+$H$3))",
+   "alternativas": [
+    "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto)*(1+$H$3))",
+    "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final+final*$H$3)",
+    "=LET(neto;B2*C2*(1-D2);dtoextra;$H$2;iva;$H$3;final;SI(neto>=$H$1;neto*(1-dtoextra);neto);final*(1+iva))"
+   ],
+   "errores_tipicos": [
+    "=LET(neto;B2*C2*(1-D2);SI(neto>=$H$1;neto*(1-$H$2);neto))",
+    "=LET(neto;B2*C2*(1-D2);final;SI(neto>=H1;neto*(1-H2);neto);final*(1+H3))",
+    "=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);neto*(1+$H$3))"
+   ],
+   "variantes": [
+    {
+     "H3": 0.1
+    },
+    {
+     "H1": 1200,
+     "C3": 100
+    }
+   ],
+   "debe_usar": [
+    "LET"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza igual que antes, `=LET(neto;B2*C2*(1-D2);`, y añade la segunda pareja: `final;` seguido del SI del ejercicio anterior.",
+    "Después del SI va el último argumento, el cálculo final: `final*(1+$H$3)`. Ojo: con `final`, no con `neto`.",
+    "`=LET(neto;B2*C2*(1-D2);final;SI(neto>=$H$1;neto*(1-$H$2);neto);final*(1+$H$3))`"
+   ],
+   "explicacion": "Encargo cumplido: una fórmula que cualquiera del equipo lee paso a paso y que calcula cada cosa una sola vez. Con LET, las fórmulas largas de presupuestos, comisiones o márgenes dejan de ser una caja negra."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m2l1-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "En una LET, ¿qué es siempre el **último** argumento?",
+   "aceptadas": [
+    "el cálculo final",
+    "cálculo final",
+    "calculo final",
+    "el calculo final",
+    "el cálculo",
+    "el calculo",
+    "la fórmula final",
+    "el resultado",
+    "el cálculo que sale en la celda"
+   ],
+   "explicacion": "Los argumentos van por parejas (nombre; valor) y el último, suelto, es el cálculo final: lo que se ve en la celda."
+  },
+  {
+   "id": "n4m2l1-q2",
+   "modo": "test",
+   "pregunta": "Vas a enviar a la delegación de Lleida una hoja con LET y allí tienen Excel 2019. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Pasar cada paso a una columna auxiliar (o a un nombre definido) para que funcione en su versión",
+     "correcta": true,
+     "porque": "Eso es: Excel 2019 no conoce LET. Con columnas auxiliares el cálculo es el mismo y funciona en cualquier versión."
+    },
+    {
+     "texto": "Nada: al abrirla, Excel 2019 traduce LET a una fórmula que entiende",
+     "correcta": false,
+     "porque": "No la traduce: la verán con el prefijo `_xlfn.` y, si la editan, dará #¿NOMBRE?."
+    },
+    {
+     "texto": "Cambiar los ; por , para que la entienda",
+     "correcta": false,
+     "porque": "El separador no tiene nada que ver: el problema es que esa versión no tiene la función LET."
+    }
+   ],
+   "explicacion": "Antes de enviar una hoja con funciones modernas, pregunta qué versión tiene quien la va a usar."
+  },
+  {
+   "id": "n4m2l1-q3",
+   "modo": "formula",
+   "enunciado": "Sin mirar arriba: en **C2** calcula el **margen sobre la venta** con LET. Llama `margen` a venta − coste (B2 − A2) y, como cálculo final, divide `margen` entre la venta (B2).",
+   "hoja": {
+    "celdas": {
+     "A1": "Coste",
+     "B1": "Venta",
+     "C1": "Margen",
+     "A2": 62.4,
+     "B2": 89.9
+    },
+    "formatos": {
+     "A2:B2": "eur",
+     "C2": "pct1"
+    }
+   },
+   "objetivo": "C2",
+   "solucion": "=LET(margen;B2-A2;margen/B2)",
+   "alternativas": [
+    "=LET(venta;B2;coste;A2;(venta-coste)/venta)"
+   ],
+   "errores_tipicos": [
+    "=LET(margen;B2-A2;margen/A2)",
+    "=LET(margen;B2-A2;margen)"
+   ],
+   "variantes": [
+    {
+     "A2": 50,
+     "B2": 80
+    }
+   ],
+   "debe_usar": [
+    "LET"
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Estructura: `=LET(nombre;valor;cálculo)`.",
+    "El nombre es `margen` y su valor, `B2-A2`. El cálculo final divide entre la venta.",
+    "`=LET(margen;B2-A2;margen/B2)`"
+   ],
+   "explicacion": "(89,90 − 62,40) / 89,90 ≈ 30,6 %. Nombre, valor y cálculo final: ya lo escribes sin mirar."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Sintaxis de LET",
+   "dorso": "=LET(nombre; valor; [nombre2; valor2…]; cálculo final). El último argumento es lo que sale en la celda."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Para qué sirve LET en una fórmula larga?",
+   "dorso": "Cada paso tiene nombre y se calcula una sola vez: la fórmula se lee mejor y se cambia en un solo sitio."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no vale el nombre iva21 dentro de LET?",
+   "dorso": "Porque IVA21 es una celda (columna IVA, fila 21). Los nombres no pueden parecer referencias."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Saltar de línea mientras escribes una fórmula larga",
+   "dorso": "Alt+Intro. Y Ctrl+Mayús+U amplía la barra de fórmulas."
+  }
+ ]
+}

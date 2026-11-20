@@ -1,0 +1,317 @@
+{
+ "id": "n3m3l2",
+ "titulo": "Las herramientas: Quitar duplicados, Texto en columnas y Relleno rápido",
+ "minutos": 15,
+ "objetivo": "Limpiar una lista con las herramientas de la pestaña Datos: quitar repetidos eligiendo bien las columnas, separar una columna en varias, sacar datos con Relleno rápido y unificar variantes con Buscar y reemplazar, siempre sobre una copia.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "El programa me ha sacado el listado de proveedores con repetidos, la ciudad escrita de mil maneras y el contacto y el teléfono metidos en la misma celda. Lo necesito limpio para mañana: un proveedor por fila y el teléfono en su columna.",
+  "logro": "Ya sabes limpiar una lista con las herramientas de Excel: quitar repetidos sin perder filas buenas, separar columnas, sacar datos con Relleno rápido y unificar variantes."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En la lección anterior aprendiste a **encontrar** los problemas. Hoy los arreglas con tres herramientas de la pestaña **Datos**, grupo **Herramientas de datos**:\n- **Quitar duplicados**: borra las filas repetidas.\n- **Texto en columnas**: parte una celda en varias.\n- **Relleno rápido**: copia un patrón que le enseñas con un ejemplo.\n\nLas tres cambian tus datos de golpe, así que la regla de oro sigue en pie: **trabaja sobre una copia**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e1",
+   "modo": "cinta",
+   "enunciado": "Andrés quiere fuera los proveedores repetidos. ¿Dónde está el botón **Quitar duplicados**?",
+   "ruta": [
+    "Datos",
+    "Herramientas de datos",
+    "Quitar duplicados"
+   ],
+   "explicacion": "**Datos › Herramientas de datos › Quitar duplicados**. Junto a él están Texto en columnas y Relleno rápido: las tres herramientas de esta lección viven en el mismo grupo."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Quitar duplicados** borra las filas repetidas y deja la **primera** de cada grupo. Al pulsarlo, Excel te enseña las columnas de la lista, cada una con su casilla:\n- Con **todas** marcadas, solo borra las filas idénticas en todo.\n- Con **solo NIF** marcada, borra las filas que repiten NIF aunque cambie lo demás.\n\nDeja marcada **Mis datos tienen encabezados**, para que no trate los títulos como un dato. Al terminar, Excel te dice cuántos duplicados ha quitado y cuántos valores únicos quedan."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "¿Por qué columnas?",
+   "md": "Si quitas duplicados **solo por el nombre**, puedes borrar clientes distintos que se llaman igual: dos autónomos «Electricidad Lasheras», uno en Lleida y otro en Huesca. Marca la columna que identifica de verdad cada registro: el **NIF**, el código de cliente o el de producto. Si te equivocas, [[Ctrl]]+[[Z]] justo después lo deshace."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e2",
+   "modo": "test",
+   "pregunta": "Pulsas Quitar duplicados en esta lista con **solo la columna Cliente** marcada. ¿Cuántas filas de datos quedan?\n\n| Cliente | NIF | Población |\n|---|---|---|\n| Electricidad Lasheras | 40871236Y | Lleida |\n| Montajes Jalón, S.L. | B50318842 | Calatayud |\n| Electricidad Lasheras | 18043759Y | Huesca |\n| Montajes Jalón, S.L. | B50318842 | Calatayud |\n| Reformas Cinca, S.L. | B22604137 | Monzón |",
+   "opciones": [
+    {
+     "texto": "3: también ha borrado la Electricidad Lasheras de Huesca, que es otro cliente",
+     "correcta": true,
+     "porque": "Correcto. Con solo Cliente marcada, las dos «Electricidad Lasheras» cuentan como repetidas aunque tengan distinto NIF. Has perdido un cliente bueno."
+    },
+    {
+     "texto": "4: solo se va la segunda Montajes Jalón",
+     "correcta": false,
+     "porque": "Eso pasaría si marcaras la columna NIF. Con solo Cliente, Excel no mira el NIF ni la población."
+    },
+    {
+     "texto": "5: Quitar duplicados nunca borra filas que son distintas",
+     "correcta": false,
+     "porque": "Quitar duplicados solo compara las columnas que marcas. Si dos filas coinciden en ellas, borra la segunda aunque el resto sea distinto."
+    }
+   ],
+   "explicacion": "Por eso se quitan duplicados por la columna que identifica cada registro: aquí, el NIF. Así solo se va la Montajes Jalón repetida y quedan 4 filas."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Texto en columnas** parte cada celda de una columna en varias usando un **separador**: el punto y coma, la coma, el espacio o el carácter que tú digas. Por ejemplo, «Ramón Bielsa;976 512 340» pasa a «Ramón Bielsa» en una columna y «976 512 340» en la siguiente.\n\nEs un asistente de tres pasos: eliges **Delimitados**, marcas el separador y, al final, el tipo de cada columna nueva. Ojo: escribe **a la derecha**, encima de lo que haya. Deja antes columnas vacías."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e3",
+   "modo": "ordenar",
+   "enunciado": "En la columna B del listado de Andrés pone «Ramón Bielsa;976 512 340»: contacto y teléfono juntos. Ordena los pasos para separarlos.",
+   "pasos": [
+    "Inserta una columna vacía a la derecha de B",
+    "Selecciona las celdas de la columna B que tienen datos",
+    "Datos › Herramientas de datos › Texto en columnas",
+    "Elige Delimitados y pulsa Siguiente",
+    "Marca Punto y coma como separador y pulsa Siguiente",
+    "Elige Texto para la columna del teléfono y pulsa Finalizar"
+   ],
+   "explicacion": "Primero haces sitio (si no, el teléfono escribiría encima de la columna C), después seleccionas y lanzas el asistente. Elegir **Texto** para el teléfono evita que se convierta en número y pierda su forma."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Truco de veterana: Texto en columnas también **convierte números guardados como texto** en números de verdad. Seleccionas la columna de importes, abres Texto en columnas y pulsas **Finalizar** sin tocar nada más. Excel vuelve a leer cada celda y los textos que parecen números pasan a ser números. Lo uso cada mes con el extracto del banco."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Relleno rápido** aprende de un ejemplo. En la columna de al lado de tus datos escribes, en la primera fila, lo que quieres sacar (por ejemplo, solo el nombre de pila del contacto) y pulsas [[Ctrl]]+[[Mayús]]+[[E]]: Excel rellena el resto copiando tu patrón. También está en **Datos › Herramientas de datos › Relleno rápido**.\n\nDos cosas: el resultado son **valores fijos** (si cambia el original, no se actualiza) y a veces **adivina mal**. Revisa siempre unas cuantas filas."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Ctrl+Mayús+E",
+     "accion": "Relleno rápido (en inglés es Ctrl+E; en el Excel español, Ctrl+E selecciona todo)"
+    }
+   ]
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Así queda tras Ctrl+Mayús+E",
+   "hoja": {
+    "celdas": {
+     "A1": "Contacto",
+     "B1": "Nombre",
+     "A2": "Ramón Bielsa Royo",
+     "B2": "Ramón",
+     "A3": "Ainhoa Iriarte Goñi",
+     "B3": "Ainhoa",
+     "A4": "María José Sarasa Mairal",
+     "B4": "María",
+     "A5": "Pablo Castán Lorente",
+     "B5": "Pablo"
+    },
+    "anchos": {
+     "A": 26,
+     "B": 12
+    }
+   },
+   "resaltar": [
+    "B4"
+   ],
+   "pie": "B2 lo escribiste tú; el resto lo puso Excel. B4 debería decir «María José»: ha copiado «la primera palabra». Corrígela a mano."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e4",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo lanza **Relleno rápido** en el Excel en español?",
+   "aceptadas": [
+    "Ctrl+Mayús+E",
+    "Ctrl+Mayus+E",
+    "Control+Mayús+E",
+    "Ctrl Mayús E",
+    "Ctrl+Shift+E",
+    "Ctrl+Mayúsculas+E"
+   ],
+   "explicacion": "[[Ctrl]]+[[Mayús]]+[[E]]. Los tutoriales en inglés dicen Ctrl+E, pero aquí Ctrl+E selecciona todo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e5",
+   "modo": "test",
+   "pregunta": "Ayer sacaste con Relleno rápido el nombre de pila de cada contacto en la columna B. Hoy Andrés corrige en la columna A un contacto: «Pablo Castán» pasa a ser «Elena Ferrer». ¿Qué pasa en la columna B?",
+   "opciones": [
+    {
+     "texto": "Nada: sigue poniendo «Pablo», porque Relleno rápido deja valores fijos",
+     "correcta": true,
+     "porque": "Correcto. Relleno rápido escribe el resultado una vez, como si lo tecleases tú. Si el original cambia, hay que volver a lanzarlo o corregir a mano."
+    },
+    {
+     "texto": "Se actualiza sola a «Elena», como una fórmula",
+     "correcta": false,
+     "porque": "Eso haría una fórmula. Relleno rápido no deja fórmulas, solo valores."
+    },
+    {
+     "texto": "Sale un error porque el patrón ya no coincide",
+     "correcta": false,
+     "porque": "No hay nada que dé error: en B solo hay textos escritos. Por eso el fallo pasa desapercibido."
+    }
+   ],
+   "explicacion": "Relleno rápido es perfecto para una limpieza de una sola vez. Si la lista se actualiza cada semana, mejor una fórmula (lección siguiente), que se recalcula sola."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para las **variantes** de un mismo dato («Lérida», «LLEIDA» y «Lleida») tienes **Buscar y reemplazar** ([[Ctrl]]+[[L]]): en *Buscar* pones la variante y en *Reemplazar con*, la forma buena.\n\nSelecciona antes **solo la columna** que quieres cambiar y, en **Opciones**, marca «Coincidir con el contenido de toda la celda», para no cambiar trozos de otras palabras. Unifica las variantes **antes** de quitar duplicados: así las filas repetidas quedan idénticas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e6",
+   "modo": "test",
+   "pregunta": "En la columna Población del listado de Andrés hay «Lleida», «LLEIDA» y «Lérida». Quieres que todas digan «Lleida». ¿Qué herramienta usas?",
+   "opciones": [
+    {
+     "texto": "Buscar y reemplazar, con la columna Población seleccionada",
+     "correcta": true,
+     "porque": "Correcto: cambias cada variante por la forma buena solo en esa columna, de una vez."
+    },
+    {
+     "texto": "Quitar duplicados en la columna Población",
+     "correcta": false,
+     "porque": "Quitar duplicados borra filas: te quedarías con un solo proveedor de cada ciudad. Aquí no sobra nadie; lo que falla es cómo está escrita la ciudad."
+    },
+    {
+     "texto": "Texto en columnas",
+     "correcta": false,
+     "porque": "Texto en columnas parte una celda en varias. Aquí cada celda tiene un solo dato, solo que escrito de formas distintas."
+    },
+    {
+     "texto": "Relleno rápido",
+     "correcta": false,
+     "porque": "Relleno rápido saca un patrón en una columna nueva. Para cambiar una palabra por otra en toda una columna, Reemplazar es más directo y seguro."
+    }
+   ],
+   "explicacion": "Cada herramienta tiene su trabajo: Reemplazar unifica, Texto en columnas separa, Relleno rápido extrae y Quitar duplicados borra filas repetidas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l2-e7",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "**El encargo de Andrés.** Su listado tiene las columnas Proveedor, NIF, Contacto (con «nombre;teléfono») y Población (con «Lleida», «Lérida» y «LLEIDA»), y algunos proveedores salen dos veces. Ya has hecho la copia de la hoja. Marca **todo** lo que necesitas hacer.",
+   "opciones": [
+    {
+     "texto": "Texto en columnas en Contacto, con punto y coma como separador",
+     "correcta": true,
+     "porque": "Así el teléfono queda en su propia columna, como pide Andrés."
+    },
+    {
+     "texto": "Buscar y reemplazar en Población para dejar solo «Lleida»",
+     "correcta": true,
+     "porque": "Unifica la ciudad y deja idénticas las filas repetidas."
+    },
+    {
+     "texto": "Quitar duplicados marcando solo la columna NIF",
+     "correcta": true,
+     "porque": "El NIF identifica a cada proveedor: se van los repetidos y no se pierde ninguno distinto."
+    },
+    {
+     "texto": "Quitar duplicados marcando solo la columna Población",
+     "correcta": false,
+     "porque": "Dejarías un único proveedor por ciudad: perderías casi toda la lista."
+    },
+    {
+     "texto": "Relleno rápido para quitar las filas repetidas",
+     "correcta": false,
+     "porque": "Relleno rápido rellena una columna siguiendo un ejemplo; no borra filas."
+    }
+   ],
+   "explicacion": "Listado entregable: un proveedor por fila, el teléfono en su columna y la ciudad escrita igual en todas. Antes de mandarlo, cuenta las filas y dile a Andrés cuántos repetidos has quitado."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m3l2-q1",
+   "modo": "cinta",
+   "enunciado": "Sin mirar la lección: ¿dónde está **Texto en columnas**?",
+   "ruta": [
+    "Datos",
+    "Herramientas de datos",
+    "Texto en columnas"
+   ],
+   "explicacion": "**Datos › Herramientas de datos › Texto en columnas**, al lado de Relleno rápido y Quitar duplicados."
+  },
+  {
+   "id": "n3m3l2-q2",
+   "modo": "test",
+   "pregunta": "Pulsas Quitar duplicados con **todas** las columnas marcadas y siguen ahí dos filas del mismo cliente, con el mismo NIF. ¿Qué es lo más probable?",
+   "opciones": [
+    {
+     "texto": "En alguna columna no son idénticas: por ejemplo, un espacio de más en el nombre",
+     "correcta": true,
+     "porque": "Correcto. Con todas marcadas, basta un espacio para que no sean iguales. Limpia antes o marca solo el NIF."
+    },
+    {
+     "texto": "Quitar duplicados solo funciona con números",
+     "correcta": false,
+     "porque": "Funciona con textos, números y fechas."
+    },
+    {
+     "texto": "Había que ordenar la lista antes",
+     "correcta": false,
+     "porque": "No hace falta ordenar: compara todas las filas, estén donde estén."
+    }
+   ],
+   "explicacion": "Primero se limpia (espacios, variantes) y después se quitan duplicados por la columna que identifica cada registro."
+  },
+  {
+   "id": "n3m3l2-q3",
+   "modo": "test",
+   "pregunta": "Cada lunes llega el mismo listado nuevo del programa y hay que sacar de «Pamplona (31008)» solo la ciudad. ¿Qué te conviene más?",
+   "opciones": [
+    {
+     "texto": "Una fórmula, porque se recalcula sola cuando pegas los datos nuevos",
+     "correcta": true,
+     "porque": "Correcto. Lo que se repite cada semana se resuelve con fórmulas: las escribes una vez y sirven siempre."
+    },
+    {
+     "texto": "Relleno rápido, porque es lo más rápido",
+     "correcta": false,
+     "porque": "Lo es para una vez. Pero cada lunes tendrías que repetirlo y revisar sus aciertos, porque deja valores fijos."
+    },
+    {
+     "texto": "Quitar duplicados",
+     "correcta": false,
+     "porque": "Quitar duplicados borra filas repetidas; no saca un trozo de texto."
+    }
+   ],
+   "explicacion": "Herramientas para limpiezas de una vez; fórmulas para lo que se repite. En la lección siguiente aprendes las fórmulas de limpieza."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "atajo",
+   "frente": "Relleno rápido en el Excel español",
+   "dorso": "Ctrl+Mayús+E (o Datos › Herramientas de datos › Relleno rápido). Deja valores fijos: revísalos."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Quitar duplicados: ¿qué fila conserva y por qué columnas se hace?",
+   "dorso": "Conserva la primera de cada grupo. Marca la columna que identifica cada registro (NIF, código), no el nombre."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué hay que hacer antes de usar Texto en columnas?",
+   "dorso": "Dejar columnas vacías a la derecha: el resultado se escribe encima de lo que haya."
+  },
+  {
+   "tipo": "truco",
+   "frente": "Convertir números guardados como texto sin fórmulas",
+   "dorso": "Selecciona la columna › Datos › Texto en columnas › Finalizar."
+  }
+ ]
+}

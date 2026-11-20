@@ -1,0 +1,121 @@
+{
+ "id": "n6m3",
+ "nivel": "n6",
+ "titulo": "Entregar y mantener",
+ "intro": "Un buen trabajo que nadie entiende, que llega a quien no debe o que se para cuando tú no estás sirve de poco. En este módulo aprendes a entregar con las conclusiones delante, a compartir sin que se escape ningún dato personal y a mantener un informe mes a mes, avisando a tiempo cuando algo no llega.",
+ "repaso_inicial": [
+  {
+   "id": "n6m3-r1",
+   "modo": "formula",
+   "enunciado": "Repaso: comprobar antes de entregar. En **E4** escribe la celda de control: **OK** si la suma de los importes (C2:C6) coincide con el total que da el programa de gestión (**E2**), y **REVISAR** si no. Usa ABS y una tolerancia de 0,01 € para que los céntimos del redondeo no den falsas alarmas.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Total del programa",
+     "E3": "Control",
+     "A2": "F-2026-0811",
+     "B2": "Instalaciones Moncayo",
+     "C2": 1250.4,
+     "A3": "F-2026-0812",
+     "B3": "Montajes Cinca",
+     "C3": 3480,
+     "A4": "F-2026-0815",
+     "B4": "Reformas Jalón",
+     "C4": 912.35,
+     "A5": "F-2026-0817",
+     "B5": "Electro Huesca",
+     "C5": 2200,
+     "A6": "F-2026-0820",
+     "B6": "Electricidad Arga",
+     "C6": 615.25,
+     "E2": 8458
+    },
+    "formatos": {
+     "C2:C6": "eur",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 22,
+     "C": 11,
+     "D": 3,
+     "E": 18
+    }
+   },
+   "objetivo": "E4",
+   "solucion": "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")",
+   "alternativas": [
+    "=SI(ABS(E2-SUMA(C2:C6))<0,01;\"OK\";\"REVISAR\")",
+    "=SI(ABS(SUMA(C2:C6)-E2)>=0,01;\"REVISAR\";\"OK\")"
+   ],
+   "errores_tipicos": [
+    "=SI(SUMA(C2:C6)-E2<0,01;\"OK\";\"REVISAR\")",
+    "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"REVISAR\";\"OK\")",
+    "=\"OK\""
+   ],
+   "variantes": [
+    {
+     "C4": 900
+    },
+    {
+     "E2": 9000
+    }
+   ],
+   "pistas": [
+    "Empieza por la diferencia entre tu suma y el total del programa: `SUMA(C2:C6)-E2`.",
+    "ABS le quita el signo a esa diferencia; compárala con 0,01: `ABS(SUMA(C2:C6)-E2)<0,01`.",
+    "`=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")`"
+   ],
+   "explicacion": "Cuadra: 8.458 € en los dos lados. Esta celda es la que te deja entregar tranquila. En este módulo la usarás antes de cada entrega."
+  },
+  {
+   "id": "n6m3-r2",
+   "modo": "test",
+   "pregunta": "Javier te escribe: «Prepárame un informe de ventas para el lunes». ¿Qué le preguntas antes de empezar?",
+   "opciones": [
+    {
+     "texto": "Para qué lo quiere, de qué periodo y con qué detalle (por comercial, por cliente…)",
+     "correcta": true,
+     "porque": "Eso es: con el para qué, el periodo y el detalle evitas tener que rehacerlo el lunes."
+    },
+    {
+     "texto": "Nada: mejor no molestarle y hacerlo lo más completo posible",
+     "correcta": false,
+     "porque": "«Lo más completo posible» suele ser lo que no necesitaba. Dos minutos de preguntas ahorran horas de trabajo."
+    },
+    {
+     "texto": "Qué colores quiere en los gráficos",
+     "correcta": false,
+     "porque": "Puede importar al final, pero no decide qué hay que calcular. Primero, para qué y con qué datos."
+    }
+   ],
+   "explicacion": "Un encargo ambiguo se aclara antes de empezar, no después de entregar."
+  },
+  {
+   "id": "n6m3-r3",
+   "modo": "test",
+   "pregunta": "Quieres que una IA te ayude con una fórmula de la hoja de nóminas. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Usar la herramienta que autoriza la empresa, con tu cuenta de trabajo, y darle datos inventados con la misma estructura",
+     "correcta": true,
+     "porque": "Eso es: para ayudarte con una fórmula basta la estructura. Los datos de verdad no salen de donde deben estar."
+    },
+    {
+     "texto": "Pegar la hoja en una IA gratuita con tu cuenta personal, que va más rápida",
+     "correcta": false,
+     "porque": "Sacas datos personales de la plantilla a un servicio que la empresa no controla. Nunca datos personales ni confidenciales en una IA personal."
+    },
+    {
+     "texto": "Pegarla tal cual en la IA autorizada, con salarios y DNI incluidos, porque es de la empresa",
+     "correcta": false,
+     "porque": "Aunque la herramienta esté autorizada, no hace falta darle los datos de nadie: con datos inventados te ayuda igual."
+    }
+   ],
+   "explicacion": "Herramienta autorizada, cuenta de trabajo y solo los datos imprescindibles. Es la misma idea que verás en este módulo: no compartir de más."
+  }
+ ],
+ "practica_excel": null
+}

@@ -1,0 +1,279 @@
+{
+ "filas_csv": 2651,
+ "duplicados": 14,
+ "duplicados_eur": 30190.84,
+ "duplicados_fechas": [
+  "01/07/2026",
+  "02/07/2026"
+ ],
+ "n_docs": 2636,
+ "espacios": 37,
+ "o45": 3,
+ "iso": 90,
+ "venc_vacio": 120,
+ "altas_docs": 5,
+ "huerfanos_antes": [
+  "C0322",
+  "C0323"
+ ],
+ "anomalias": [
+  {
+   "NumFactura": "F26-000051",
+   "CodCliente": "C0096",
+   "Dif": 0.01
+  },
+  {
+   "NumFactura": "F26-000703",
+   "CodCliente": "C0188",
+   "Dif": -0.01
+  },
+  {
+   "NumFactura": "F26-001626",
+   "CodCliente": "C0257",
+   "Dif": 0.01
+  },
+  {
+   "NumFactura": "F26-001782",
+   "CodCliente": "C0317",
+   "Dif": 0.01
+  },
+  {
+   "NumFactura": "F26-001990",
+   "CodCliente": "C0092",
+   "Dif": 100.0
+  }
+ ],
+ "dif_total": 100.02,
+ "total_csv": 8374393.36,
+ "pendiente": 1896731.01,
+ "a_cuenta": 24500.0,
+ "a_cuenta_n": 9,
+ "saldo430": 1872231.01,
+ "cobrado": 6447471.51,
+ "por_tramo": {
+  "0 · No vencido": 1382832.59,
+  "1 · 1-30": 193293.73,
+  "2 · 31-60": 79407.35,
+  "3 · 61-90": 41270.72,
+  "4 · 91-180": 119756.58,
+  "5 · Más de 180": 80170.04
+ },
+ "pct_tramo": {
+  "0 · No vencido": 72.9,
+  "1 · 1-30": 10.2,
+  "2 · 31-60": 4.2,
+  "3 · 61-90": 2.2,
+  "4 · 91-180": 6.3,
+  "5 · Más de 180": 4.2
+ },
+ "vencido": 513898.42,
+ "pct_vencido": 27.1,
+ "venc60": 241197.34,
+ "pct_venc60": 12.7,
+ "top10": [
+  [
+   "C0257",
+   "Electricidad y Fontanería Bordeta, S. Coop.",
+   97722.16
+  ],
+  [
+   "C0055",
+   "Instalaciones Eléctricas Lasheras, S. Coop.",
+   22688.5
+  ],
+  [
+   "C0317",
+   "Automatismos Lacasa, S.L.",
+   16172.65
+  ],
+  [
+   "C0111",
+   "Automatismos Andía, S.L.",
+   11237.99
+  ],
+  [
+   "C0023",
+   "Electricidad Mijares, S.L.",
+   11213.11
+  ],
+  [
+   "C0294",
+   "Construcciones Aznar, S. Coop.",
+   8453.5
+  ],
+  [
+   "C0143",
+   "Construcciones Segre, S.L.",
+   7521.29
+  ],
+  [
+   "C0159",
+   "Construcciones Guadalope, S.L.",
+   6810.51
+  ],
+  [
+   "C0002",
+   "Telecomunicaciones Pilar, S.L.U.",
+   6537.44
+  ],
+  [
+   "C0316",
+   "Mantenimientos Industriales Tena, S.L.",
+   6426.29
+  ]
+ ],
+ "supera": [
+  [
+   "C0055",
+   "Instalaciones Eléctricas Lasheras, S. Coop.",
+   50983.6,
+   38000.0,
+   12983.6,
+   "Activo"
+  ],
+  [
+   "C0120",
+   "Servicios Técnicos Jota, S.L.",
+   32489.84,
+   20000.0,
+   12489.84,
+   "Activo"
+  ],
+  [
+   "C0023",
+   "Electricidad Mijares, S.L.",
+   70389.8,
+   60000.0,
+   10389.8,
+   "Bloqueado"
+  ],
+  [
+   "C0020",
+   "Construcciones Cappont, S.L.",
+   37590.1,
+   30000.0,
+   7590.1,
+   "Activo"
+  ]
+ ],
+ "ley": [
+  [
+   "C0004",
+   "Telecomunicaciones Queiles, S.L.",
+   75.0,
+   4836.78
+  ],
+  [
+   "C0029",
+   "Automatismos Berdún, S.L.",
+   75.0,
+   6325.46
+  ],
+  [
+   "C0057",
+   "Electricidad Guadalope, S.L.",
+   90.0,
+   28935.23
+  ],
+  [
+   "C0128",
+   "Construcciones Irati, S.L.",
+   90.0,
+   0.0
+  ],
+  [
+   "C0185",
+   "Reformas Rochapea, S.L.",
+   75.0,
+   9607.41
+  ],
+  [
+   "C0219",
+   "Iluminación Ansó, S.L.",
+   90.0,
+   5455.27
+  ],
+  [
+   "C0290",
+   "Iluminación Ensanche, S. Coop.",
+   90.0,
+   11143.08
+  ]
+ ],
+ "docs_plazo": 77,
+ "pend_plazo": 67303.23,
+ "favor": [
+  [
+   "C0298",
+   "Instalaciones Urgell, S. Coop.",
+   -2642.1
+  ],
+  [
+   "C0013",
+   "Instalaciones Arga, S.L.",
+   -2465.44
+  ]
+ ],
+ "fact_pmc": 2393611.1,
+ "pmc": 72.0,
+ "pmc_con_pendiente": 72.9,
+ "pmc_sin_iva": 86.9,
+ "bloqueado": [
+  "C0023",
+  "Electricidad Mijares, S.L.",
+  13,
+  61703.25,
+  61703.25
+ ],
+ "estados": {
+  "Cobrada": 2037,
+  "Pendiente": 556,
+  "Parcial": 35,
+  "Saldo a favor": 8
+ },
+ "n_cobros": 2143,
+ "cobros_nov": 125,
+ "cobros_nov_eur": 388459.89,
+ "tipos_cobro": {
+  "Directo": 1985,
+  "Factura en el concepto": 71,
+  "Agrupado": 60,
+  "Devolución": 18,
+  "A cuenta": 9
+ },
+ "devol_antes": 16,
+ "agrupados_parciales": 5,
+ "agrupados_con_abono": 16,
+ "filas_aplicaciones": 226,
+ "cod_vacio": 35,
+ "por_delegacion": {
+  "Zaragoza": 1013009.12,
+  "Pamplona": 475983.68,
+  "Lleida": 407738.21
+ },
+ "pend_sumado_duplicados": 1897956.75,
+ "venc60_desde_factura": 364155.16,
+ "favor_detalle": [
+  {
+   "NumFactura": "F25-002412",
+   "CodCliente": "C0298",
+   "Pendiente": 582.57
+  },
+  {
+   "NumFactura": "R26-000001",
+   "CodCliente": "C0298",
+   "Pendiente": -3224.67
+  },
+  {
+   "NumFactura": "R26-000024",
+   "CodCliente": "C0013",
+   "Pendiente": -2465.44
+  }
+ ],
+ "cien_cliente": [
+  "C0092",
+  "Construcciones Seca, S. Coop."
+ ],
+ "filas_auditor": 599,
+ "clientes_con_saldo": 184
+}

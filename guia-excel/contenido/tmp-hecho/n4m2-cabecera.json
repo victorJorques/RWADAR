@@ -1,0 +1,71 @@
+{
+ "id": "n4m2",
+ "nivel": "n4",
+ "titulo": "Fórmulas legibles y plantillas seguras",
+ "intro": "Cuando tus hojas las usan otras personas, no basta con que calculen bien: tienen que entenderse, verse como pide el informe y aguantar a quien las rellena con prisa. En este módulo aprendes a escribir fórmulas que se leen, a dar formato sin perder el número, a proteger plantillas y a juntar datos de varios libros sin vínculos rotos ni versiones «final_v7».",
+ "repaso_inicial": [
+  {
+   "id": "n4m2-r1",
+   "modo": "test",
+   "pregunta": "Montaste en Power Query la consulta que lee la carpeta de ventas mensuales. Llega el archivo de diciembre, con las mismas columnas que los demás. ¿Qué haces para que el informe lo incluya?",
+   "opciones": [
+    {"texto": "Guardarlo en esa carpeta y pulsar Datos › Actualizar todo", "correcta": true, "porque": "Eso es: la consulta ya sabe leer la carpeta entera. Archivo nuevo, actualizar, y listo."},
+    {"texto": "Copiar sus filas y pegarlas debajo de la tabla que cargó Power Query", "correcta": false, "porque": "Al actualizar, Power Query vuelve a cargar la tabla desde la carpeta y lo pegado a mano no forma parte de la consulta."},
+    {"texto": "Crear una consulta nueva desde cero para diciembre", "correcta": false, "porque": "Es trabajo repetido: la gracia de leer la carpeta es que los meses nuevos entran solos."}
+   ],
+   "explicacion": "El informe que se hace solo: archivo nuevo en la carpeta + Actualizar todo."
+  },
+  {
+   "id": "n4m2-r2",
+   "modo": "formula",
+   "enunciado": "En **F3** calcula el total vendido por la delegación de **F1** en la familia de **F2**. Sin escribir «Pamplona» ni «Cable» dentro de la fórmula: usa las celdas de criterio.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación", "B1": "Familia", "C1": "Importe", "E1": "Delegación", "F1": "Pamplona",
+     "A2": "Zaragoza", "B2": "Cable", "C2": 4820.5, "E2": "Familia", "F2": "Cable",
+     "A3": "Pamplona", "B3": "Cable", "C3": 2310, "E3": "Total",
+     "A4": "Pamplona", "B4": "Mecanismos", "C4": 1475.8,
+     "A5": "Lleida", "B5": "Cable", "C5": 1990.25,
+     "A6": "Pamplona", "B6": "Cable", "C6": 860.4,
+     "A7": "Zaragoza", "B7": "Mecanismos", "C7": 3120
+    },
+    "formatos": {"C2:C7": "eur", "F3": "eur"},
+    "anchos": {"A": 12, "B": 12, "E": 11, "F": 12}
+   },
+   "objetivo": "F3",
+   "solucion": "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;F1;B2:B7;F2)",
+   "alternativas": ["=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;F2;A2:A7;F1)"],
+   "errores_tipicos": ["=SUMAR.SI(A2:A7;F1;C2:C7)", "=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;\"Pamplona\";B2:B7;\"Cable\")"],
+   "variantes": [{"F1": "Zaragoza", "F2": "Mecanismos"}],
+   "debe_usar": ["SUMAR.SI.CONJUNTO"],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay dos condiciones a la vez: delegación y familia. Eso es SUMAR.SI.CONJUNTO.",
+    "Primero el rango que se suma (C2:C7); después, cada pareja rango de criterio; criterio.",
+    "`=SUMAR.SI.CONJUNTO(C2:C7;A2:A7;F1;B2:B7;F2)`"
+   ],
+   "explicacion": "2.310 + 860,40 = 3.170,40 €. Con los criterios en celdas, cambias F1 o F2 y el total se recalcula."
+  },
+  {
+   "id": "n4m2-r3",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta fórmula si A2 contiene la fecha 16/11/2026?",
+   "hoja": {"celdas": {"A1": "Fecha", "A2": {"fecha": "2026-11-16"}}, "formatos": {"A2": "fecha"}},
+   "celda": "B2",
+   "formula": "=TEXTO(A2;\"mmmm\")",
+   "explicacion": "El código `mmmm` saca el nombre completo del mes. En este módulo verás muchos más códigos como este."
+  },
+  {
+   "id": "n4m2-r4",
+   "modo": "test",
+   "pregunta": "Le pones el nombre definido **TipoIVA** a la celda H1. ¿Qué ganas al escribir `=B2*(1+TipoIVA)` en lugar de `=B2*(1+$H$1)`?",
+   "opciones": [
+    {"texto": "La fórmula se lee sola y TipoIVA sigue apuntando a H1 al copiarla", "correcta": true, "porque": "Eso es: un nombre definido se refiere siempre a la misma celda y dice qué hay en ella."},
+    {"texto": "Que el IVA se actualiza solo cuando cambia la ley", "correcta": false, "porque": "No: el valor de H1 lo sigues cambiando tú. El nombre solo hace la fórmula más clara."},
+    {"texto": "Nada: TipoIVA se mueve al copiar, como cualquier referencia sin $", "correcta": false, "porque": "Un nombre definido no se desplaza al copiar: siempre señala la misma celda."}
+   ],
+   "explicacion": "Ponerle nombre a las cosas hace las fórmulas legibles. En la primera lección verás cómo hacerlo dentro de una sola fórmula, con LET."
+  }
+ ],
+ "practica_excel": null
+}

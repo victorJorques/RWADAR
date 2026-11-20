@@ -1,0 +1,602 @@
+{
+  "titulo": "Prueba técnica de empresa · Tostadero Albada",
+  "resumen": "Una prueba de selección real de 120 minutos: criterio profesional, un libro con datos sucios que limpiar, cruzar, analizar y dejar preparado para mañana, y el correo de entrega.",
+  "duracion": 120,
+  "intro": "Te presentas al puesto de **Administrativa de gestión y análisis (Excel avanzado)** en **Tostadero Albada, S.L.**, una distribuidora de café, infusiones, leche y maquinaria para hostelería de Valladolid (inventada para este examen, para que no se pueda resolver de memoria). Así son las pruebas técnicas de las empresas: un libro con instrucciones, tareas que describen el resultado sin decirte qué función usar y tiempo limitado.\n\n- **Parte A · Criterio** (15 min, 15 puntos): 12 preguntas.\n- **Parte B · Libro** (75 min, 60 puntos): seis tareas en `examen-final.xlsx`. Lee primero su hoja **Instrucciones**, con los criterios ya pactados con la empresa. Al acabar cada tarea, escribe aquí sus totales de control.\n- **Parte C · Correo** (20 min, 25 puntos): el correo de entrega a Rodrigo Pardo, jefe de administración.\n\nPon un cronómetro a la vista. Puedes usar la ayuda de Excel ([[F1]]), pero no internet ni IA. **Variante «modo 2026»** (opcional): Copilot permitido, con la obligación de anotar cómo has comprobado cada fórmula que te proponga.\n\nNo abras la solución hasta entregar: en una prueba de verdad no la hay.",
+  "archivos": [
+    {
+      "archivo": "examen-final.xlsx",
+      "titulo": "Libro del examen",
+      "descripcion": "Instrucciones, Pedidos (tal como salen del programa), Clientes, Tarifa, Cobros y Parámetros."
+    },
+    {
+      "archivo": "examen-final-semana45.csv",
+      "titulo": "Pedidos de la semana 45",
+      "descripcion": "CSV para la tarea B6 (UTF-8, punto y coma, coma decimal)."
+    }
+  ],
+  "partes": [
+    {
+      "titulo": "Parte A · Criterio (15 min, 15 puntos)",
+      "md": "Doce situaciones que te encontrarás en cualquier oficina. Elige la respuesta que darías en tu primera semana de trabajo.",
+      "ejercicios": [
+        {
+          "id": "ef-a1",
+          "modo": "test",
+          "leccion": "n2m5l2",
+          "pregunta": "Rodrigo te pide el precio de CAF-ESP-1K. Lo ves en la Tarifa con tus propios ojos, pero tu búsqueda devuelve «no encontrado». ¿Qué compruebas primero?",
+          "opciones": [
+            {
+              "texto": "Si uno de los dos códigos tiene espacios de más, o si uno es número y el otro está guardado como texto.",
+              "correcta": true,
+              "porque": "Es la causa más frecuente. Para Excel, «CAF-ESP-1K » (con espacio) y «CAF-ESP-1K» son textos distintos, igual que 1001 y «1001». Compáralos con `=A2=B2` o mira su LARGO, y limpia el que esté mal."
+            },
+            {
+              "texto": "Cambiar la búsqueda a coincidencia aproximada para que encuentre algo.",
+              "correcta": false,
+              "porque": "Encontraría «algo», pero no lo que buscas: la coincidencia aproximada devuelve el valor más cercano y te daría un precio falso sin avisar. Es peor que el error."
+            },
+            {
+              "texto": "Ordenar la tarifa por código de producto.",
+              "correcta": false,
+              "porque": "Con búsqueda exacta el orden no importa. Ordenar no arregla un código que no es igual al que buscas."
+            },
+            {
+              "texto": "Cerrar Excel y volver a abrirlo, o repararlo.",
+              "correcta": false,
+              "porque": "No es un fallo del programa: Excel compara carácter a carácter y te está diciendo que los dos códigos no son iguales."
+            }
+          ],
+          "explicacion": "«No encontrado» casi nunca es un fallo de la fórmula: es una diferencia en los datos. Primero, espacios y tipo (texto o número); después, erratas como una O en lugar de un 0."
+        },
+        {
+          "id": "ef-a2",
+          "modo": "test",
+          "leccion": "n3m4l3",
+          "pregunta": "Tienes una tabla dinámica de ventas. Pegas debajo de los datos los pedidos de ayer y la tabla dinámica no cambia. ¿Qué ha pasado y cuál es la buena práctica?",
+          "opciones": [
+            {
+              "texto": "Su origen es un rango fijo que no incluye las filas nuevas, o falta actualizarla. Lo bueno es que el origen sea una Tabla ([[Ctrl]]+[[T]]) y actualizar al añadir datos.",
+              "correcta": true,
+              "porque": "Una tabla dinámica no se recalcula sola como una fórmula: hay que actualizarla (Datos > Actualizar todo). Y si su origen es un rango como A1:G1240, la fila 1241 no existe para ella. Con una Tabla, el origen crece solo."
+            },
+            {
+              "texto": "Las tablas dinámicas tienen un máximo de filas y se ha llenado.",
+              "correcta": false,
+              "porque": "El límite es el de la hoja, más de un millón de filas. No tiene nada que ver con unos cientos de pedidos."
+            },
+            {
+              "texto": "El cálculo está en manual: hay que ponerlo en automático en la pestaña Fórmulas.",
+              "correcta": false,
+              "porque": "El modo de cálculo afecta a las fórmulas, no a las tablas dinámicas: aunque esté en automático, la tabla dinámica no se entera hasta que la actualizas."
+            },
+            {
+              "texto": "Hay que borrar la tabla dinámica y crearla otra vez cada vez que lleguen datos.",
+              "correcta": false,
+              "porque": "Funciona, pero es rehacer el trabajo cada día y perder formatos y filtros. Con una Tabla como origen basta con actualizar."
+            }
+          ],
+          "explicacion": "Tabla como origen + Actualizar: así un informe aguanta los datos de mañana sin rehacerlo."
+        },
+        {
+          "id": "ef-a3",
+          "modo": "test",
+          "leccion": "n3m2l1",
+          "pregunta": "Vas a asignar a cada cliente su tramo de descuento con la búsqueda vertical clásica en modo de coincidencia aproximada (último argumento VERDADERO). ¿Cómo tiene que estar la tabla de tramos?",
+          "opciones": [
+            {
+              "texto": "Ordenada de menor a mayor por el límite inferior de cada tramo (0, 1.000, 5.000…).",
+              "correcta": true,
+              "porque": "La coincidencia aproximada busca el último límite que no supera el valor, y para eso da por hecho que los límites van de menor a mayor. Si no lo están, devuelve un tramo equivocado sin avisar."
+            },
+            {
+              "texto": "Ordenada de mayor a menor, para que encuentre antes los tramos altos.",
+              "correcta": false,
+              "porque": "Al revés no funciona: con el orden descendente, la búsqueda aproximada devuelve tramos equivocados o #N/D."
+            },
+            {
+              "texto": "Con el límite superior de cada tramo en la primera columna.",
+              "correcta": false,
+              "porque": "La búsqueda aproximada devuelve la fila del mayor límite que no supera el valor: necesita el límite inferior. Con el superior, cada cliente cae en el tramo de abajo."
+            },
+            {
+              "texto": "Da igual el orden, porque los límites son números.",
+              "correcta": false,
+              "porque": "Es el error que más cuesta: sale un resultado, pero no es el bueno. (La búsqueda moderna con «coincidencia exacta o siguiente menor» no necesita orden, pero ordenar sigue siendo buena práctica.)"
+            }
+          ],
+          "explicacion": "Tabla de tramos: límite inferior en la primera columna y de menor a mayor. Compruébalo con un caso en el límite (por ejemplo, justo 1.000)."
+        },
+        {
+          "id": "ef-a4",
+          "modo": "test",
+          "leccion": "n3m1l3",
+          "pregunta": "Rodrigo pregunta por el margen % de la familia Café. Tienes 480 líneas de café, cada una con su base y su margen. ¿Cómo lo calculas?",
+          "opciones": [
+            {
+              "texto": "Suma de los márgenes de Café dividida entre la suma de las bases de Café.",
+              "correcta": true,
+              "porque": "Así cada línea pesa lo que vende: una de 200 € cuenta diez veces más que una de 20 €. Es la cifra que cuadra con la cuenta de resultados."
+            },
+            {
+              "texto": "Promedio de los márgenes % de cada línea.",
+              "correcta": false,
+              "porque": "Da el mismo peso a una línea de 2 kg que a una de 200 kg. Si las líneas pequeñas tienen más margen, el promedio sale inflado."
+            },
+            {
+              "texto": "Suma de los márgenes de Café dividida entre la suma de los costes de Café.",
+              "correcta": false,
+              "porque": "Eso es el recargo sobre el coste, no el margen sobre ventas. Con un 40 % de margen, el recargo es del 66,7 %."
+            },
+            {
+              "texto": "Suma de los márgenes de Café dividida entre las ventas totales de la empresa.",
+              "correcta": false,
+              "porque": "Eso dice cuánto aporta el café al total (su contribución), no qué margen tiene el café."
+            }
+          ],
+          "explicacion": "Un porcentaje de grupo se calcula con sumas: Σ margen / Σ base. Nunca promedies porcentajes de líneas de distinto tamaño."
+        },
+        {
+          "id": "ef-a5",
+          "modo": "test",
+          "leccion": "n3m3l4",
+          "pregunta": "Un proveedor de Estados Unidos manda un CSV con fechas como «03/04/2026». ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Es ambiguo: lo importo indicando la configuración regional de origen (Estados Unidos) y lo compruebo con una fecha cuyo día sea mayor que 12.",
+              "correcta": true,
+              "porque": "En Estados Unidos se escribe mes/día: «03/04/2026» es el 4 de marzo. Un día mayor que 12 (por ejemplo «03/25/2026») delata el orden: si Excel lo deja como texto o lo lee mal, la importación está mal."
+            },
+            {
+              "texto": "Es el 3 de abril: Excel en español lo lee bien.",
+              "correcta": false,
+              "porque": "Excel lo lee con tu configuración (día/mes) y lo convierte en el 3 de abril, pero el proveedor quería decir el 4 de marzo. Y las fechas con día mayor que 12 se quedan como texto."
+            },
+            {
+              "texto": "Lo abro con doble clic y después cambio el formato de las celdas a dd/mm/aaaa.",
+              "correcta": false,
+              "porque": "El formato solo cambia cómo se ve la fecha, no qué fecha es. Si ya se ha leído como 3 de abril, sigue siendo el 3 de abril."
+            },
+            {
+              "texto": "Pido al proveedor que lo mande en PDF.",
+              "correcta": false,
+              "porque": "Un PDF no se analiza en Excel sin volver a teclearlo o convertirlo. El problema se resuelve al importar."
+            }
+          ],
+          "explicacion": "Fechas de otro país: se importan con la configuración regional del origen y se comprueban con un día mayor que 12."
+        },
+        {
+          "id": "ef-a6",
+          "modo": "test",
+          "leccion": "n4m1l3",
+          "pregunta": "Cada mes te llegan 3 CSV (uno por zona) con las mismas columnas y tienes que unirlos para el informe. ¿Qué montas?",
+          "opciones": [
+            {
+              "texto": "Una consulta de Power Query que lee la carpeta donde se guardan; cada mes copio allí los archivos nuevos y pulso Actualizar.",
+              "correcta": true,
+              "porque": "Se monta una vez: la consulta combina todos los archivos de la carpeta y les aplica los mismos pasos de limpieza. El mes siguiente es dejar los archivos y actualizar."
+            },
+            {
+              "texto": "Abrir los tres y copiarlos uno debajo de otro cada mes.",
+              "correcta": false,
+              "porque": "Funciona el primer mes, pero cada copia a mano es una ocasión de pegar dos veces el mismo archivo o dejarte uno. No es mantenible."
+            },
+            {
+              "texto": "Grabar una macro que copie y pegue.",
+              "correcta": false,
+              "porque": "Puede servir, pero una macro grabada se rompe si cambia el nombre de un archivo o el número de filas, y no todas las empresas permiten macros. Power Query hace lo mismo sin código."
+            },
+            {
+              "texto": "Vincular celdas de mi libro a cada CSV con fórmulas.",
+              "correcta": false,
+              "porque": "Los vínculos a otros archivos se rompen al moverlos o renombrarlos y no traen filas nuevas: si un mes hay más líneas, no las ves."
+            }
+          ],
+          "explicacion": "Tarea que se repite con archivos de la misma estructura = Power Query desde carpeta + Actualizar."
+        },
+        {
+          "id": "ef-a7",
+          "modo": "test",
+          "leccion": "n5m4l1",
+          "pregunta": "En la variante «modo 2026», Copilot te propone una fórmula para el margen por zona. ¿Qué haces antes de usarla?",
+          "opciones": [
+            {
+              "texto": "La pruebo con un caso que conozco, reviso que sus rangos cubren todas las filas y no pego datos personales de clientes en asistentes que la empresa no haya autorizado.",
+              "correcta": true,
+              "porque": "La IA acierta a menudo, pero no siempre, y no sabe qué es «correcto» en tu empresa (con o sin IVA, qué líneas cuentan). Un caso conocido y la revisión de rangos atrapan la mayoría de errores. Y los datos personales solo van a herramientas aprobadas."
+            },
+            {
+              "texto": "La uso tal cual: Copilot ha leído el libro, así que la fórmula es correcta.",
+              "correcta": false,
+              "porque": "Haber leído el libro no garantiza que haya entendido tu criterio. El resultado lo firmas tú."
+            },
+            {
+              "texto": "Le pido que me explique la fórmula y, si la explicación suena bien, la doy por buena.",
+              "correcta": false,
+              "porque": "Una explicación convincente no es una comprobación: puede describir muy bien una fórmula con un rango que se queda corto."
+            },
+            {
+              "texto": "No la uso nunca: en una empresa seria no se usa IA.",
+              "correcta": false,
+              "porque": "Muchas empresas la usan. Lo profesional es usarla con método: comprobar y respetar las normas de la empresa sobre datos."
+            }
+          ],
+          "explicacion": "Con IA o sin ella, una fórmula no está terminada hasta que la compruebas con un caso conocido."
+        },
+        {
+          "id": "ef-a8",
+          "modo": "test",
+          "leccion": "n3m1l2",
+          "pregunta": "En el resumen quieres sumar solo las ventas con fecha desde el 1 de octubre de 2026, incluido. ¿Qué escribes como criterio para la columna de fechas?",
+          "opciones": [
+            {
+              "texto": "`\">=\"&FECHA(2026;10;1)`",
+              "correcta": true,
+              "porque": "El operador va entre comillas y la fecha se calcula fuera y se une con &. Mejor aún si la fecha está en una celda de parámetros: `\">=\"&H1`."
+            },
+            {
+              "texto": "`\">=FECHA(2026;10;1)\"`",
+              "correcta": false,
+              "porque": "Todo va entre comillas, así que Excel no calcula FECHA: compara con el texto «FECHA(2026;10;1)» y no suma nada."
+            },
+            {
+              "texto": "`>=FECHA(2026;10;1)`",
+              "correcta": false,
+              "porque": "Sin comillas, el operador suelto no es un argumento válido: Excel no acepta la fórmula."
+            },
+            {
+              "texto": "`\"=\"&FECHA(2026;10;1)`",
+              "correcta": false,
+              "porque": "Solo suma las ventas de ese día exacto, no las de después."
+            }
+          ],
+          "explicacion": "Criterio con operador y fecha: el operador entre comillas, & y la fecha (mejor en una celda)."
+        },
+        {
+          "id": "ef-a9",
+          "modo": "test",
+          "leccion": "n1m2l3",
+          "pregunta": "El total de una factura de 40 líneas sale 0,01 € distinto de la suma de los totales de cada línea. ¿Qué pasa y qué haces?",
+          "opciones": [
+            {
+              "texto": "El IVA se ha redondeado en sitios distintos (línea a línea en un cálculo y sobre la suma en el otro). Se redondea en el mismo nivel en que se factura y se documenta la regla.",
+              "correcta": true,
+              "porque": "Redondear cada línea y sumar no da lo mismo que sumar y redondear. Ninguno es «el malo»: hay que elegir uno, el mismo que usa la factura, y escribirlo en el Léame para que todo cuadre."
+            },
+            {
+              "texto": "Es un error de decimales de Excel; se puede ignorar.",
+              "correcta": false,
+              "porque": "Los errores internos de Excel con decimales son de millonésimas, no de un céntimo. Un céntimo es una diferencia de criterio, y en una factura importa."
+            },
+            {
+              "texto": "Se quitan los decimales con el botón Disminuir decimales.",
+              "correcta": false,
+              "porque": "Eso solo cambia lo que se ve; el valor guardado es el mismo y la diferencia sigue en las sumas."
+            },
+            {
+              "texto": "Se cambia a mano el IVA de la última línea para que cuadre.",
+              "correcta": false,
+              "porque": "Un valor tecleado para cuadrar esconde el problema y se rompe en cuanto cambian los datos. Arregla la regla, no el resultado."
+            }
+          ],
+          "explicacion": "Los céntimos que bailan vienen de redondear en sitios distintos: una regla, en un solo nivel, y documentada."
+        },
+        {
+          "id": "ef-a10",
+          "modo": "test",
+          "leccion": "n2m5l4",
+          "pregunta": "Heredas una hoja con `=B2*1,21` copiada en 300 filas para calcular el total con IVA. ¿Qué problema tiene?",
+          "opciones": [
+            {
+              "texto": "Tiene el tipo de IVA escrito dentro de la fórmula: si cambia, hay que tocar 300 fórmulas. El tipo va en una celda de parámetros, con nombre, y la fórmula la usa.",
+              "correcta": true,
+              "porque": "Separar los datos que cambian de las fórmulas es la base de un libro mantenible: cambias una celda y se actualiza todo. Además, con un nombre (por ejemplo `TipoIVA`) la fórmula se lee sola."
+            },
+            {
+              "texto": "Ninguno: si da bien, está bien.",
+              "correcta": false,
+              "porque": "Da bien hoy. El día que cambie el tipo o haya productos al 10 %, alguien tendrá que encontrar y cambiar las 300 fórmulas sin dejarse ninguna."
+            },
+            {
+              "texto": "Debería ser `=B2+21%`.",
+              "correcta": false,
+              "porque": "Eso suma 0,21 a la base, no el 21 %. El total con IVA es base × (1 + tipo)."
+            },
+            {
+              "texto": "Le faltan los dólares: `=$B$2*1,21`.",
+              "correcta": false,
+              "porque": "Con $B$2 todas las filas usarían la base de la fila 2. La referencia a la base debe ser relativa; lo que debería ser fijo es el tipo, en su celda."
+            }
+          ],
+          "explicacion": "Ningún valor que pueda cambiar dentro de una fórmula: va en Parámetros, con nombre."
+        },
+        {
+          "id": "ef-a11",
+          "modo": "test",
+          "leccion": "n4m2l3",
+          "pregunta": "Vas a proteger la plantilla de pedidos para que los comerciales solo rellenen las celdas amarillas. ¿Qué haces antes de proteger la hoja?",
+          "opciones": [
+            {
+              "texto": "Desbloquear las celdas de entrada (Formato de celdas > Proteger, quitar «Bloqueada»).",
+              "correcta": true,
+              "porque": "Todas las celdas nacen bloqueadas, pero el bloqueo solo actúa al proteger la hoja. Si no desbloqueas antes las de entrada, nadie podrá escribir en ellas."
+            },
+            {
+              "texto": "Bloquear todas las celdas una a una.",
+              "correcta": false,
+              "porque": "Ya lo están por defecto. Si proteges así, tampoco se podrá escribir en las amarillas."
+            },
+            {
+              "texto": "Poner una contraseña de apertura al libro.",
+              "correcta": false,
+              "porque": "Eso decide quién abre el archivo, no qué celdas se pueden cambiar. Son protecciones distintas."
+            },
+            {
+              "texto": "Ocultar las columnas con fórmulas.",
+              "correcta": false,
+              "porque": "Ocultar no protege: cualquiera las vuelve a mostrar en dos clics y puede borrarlas."
+            }
+          ],
+          "explicacion": "Primero desbloquear lo que se rellena; después, Revisar > Proteger hoja."
+        },
+        {
+          "id": "ef-a12",
+          "modo": "test",
+          "leccion": "n6m3l2",
+          "pregunta": "Un cliente pide su extracto. Lo tienes en un libro con una hoja oculta que contiene los saldos de todos los clientes. ¿Lo mandas así?",
+          "opciones": [
+            {
+              "texto": "No. Le mando un PDF o una copia que solo tenga sus datos, y antes paso Inspeccionar documento.",
+              "correcta": true,
+              "porque": "Una hoja oculta se muestra con dos clics. Mandar datos de otros clientes es una fuga de información y va contra el principio de minimización del RGPD. Inspeccionar documento avisa de hojas ocultas, comentarios y propiedades."
+            },
+            {
+              "texto": "Sí, si protejo el libro con contraseña para que no se pueda mostrar la hoja.",
+              "correcta": false,
+              "porque": "La protección de Excel sirve para evitar cambios por error, no como medida de seguridad: los datos siguen dentro del archivo. Lo que el cliente no debe ver no debe ir en el archivo."
+            },
+            {
+              "texto": "Sí, porque es un cliente de confianza.",
+              "correcta": false,
+              "porque": "La confianza no cambia la norma: los datos de los demás clientes no son suyos."
+            },
+            {
+              "texto": "Sí, pero ocultando también las columnas de importes.",
+              "correcta": false,
+              "porque": "Ocultar no es borrar: siguen en el archivo y cualquiera puede mostrarlas."
+            }
+          ],
+          "explicacion": "A un tercero solo le llega lo suyo: PDF o copia limpia, y siempre Inspeccionar documento antes."
+        }
+      ]
+    },
+    {
+      "titulo": "Parte B · Libro (75 min, 60 puntos)",
+      "md": "Descarga `examen-final.xlsx` y lee su hoja **Instrucciones**. Las tareas B1 a B5 se hacen con las semanas 36 a 44; la semana 45 solo entra en B6. Cada tarea depende de la anterior: si un total no cuadra, revisa primero la limpieza.",
+      "ejercicios": [
+        {
+          "id": "ef-b1",
+          "modo": "excel",
+          "leccion": "n3m3l2",
+          "puntos": 10,
+          "minutos": 15,
+          "enunciado": "**B1 · Limpieza** (15 min, 10 puntos)\n\n> «Deja Pedidos lista para analizar: una fila por línea real, fechas e importes que Excel reconozca y códigos sin espacios. La hoja original no se toca.»\n\nEn tu libro, la limpieza que se pide abajo. Trabaja en una copia de la hoja Pedidos o en una hoja nueva (la original no se toca) y sigue los criterios de la hoja Instrucciones. Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final.xlsx",
+          "controles": [
+            {
+              "pregunta": "Número de líneas reales de pedido",
+              "respuesta": 1227,
+              "tolerancia": 0,
+              "pista": "Si te salen más, quedan filas repetidas o la fila de totales. Cuenta filas antes y después de cada paso."
+            },
+            {
+              "pregunta": "Suma de la columna Cantidad",
+              "respuesta": 8712,
+              "tolerancia": 0,
+              "pista": "Si sale casi el doble, has sumado también la fila «Total». Si sale algo más alto, quedan duplicados."
+            },
+            {
+              "pregunta": "Número de líneas con fecha de octubre de 2026",
+              "respuesta": 614,
+              "tolerancia": 0,
+              "pista": "Si te salen menos, hay fechas que siguen siendo texto (las que vienen como 2026-10-…): un filtro de fechas no las ve."
+            },
+            {
+              "pregunta": "Número de clientes distintos con pedidos en el periodo",
+              "respuesta": 109,
+              "tolerancia": 0,
+              "pista": "Si te salen más, hay códigos con un espacio al final que cuentan como clientes distintos."
+            }
+          ],
+          "explicacion": "Ya tienes una base limpia y comprobada: el resto del examen depende de esto."
+        },
+        {
+          "id": "ef-b2",
+          "modo": "excel",
+          "leccion": "n2m5l2",
+          "puntos": 15,
+          "minutos": 20,
+          "enunciado": "**B2 · Cálculos y cruces** (20 min, 15 puntos)\n\n> «Añade a cada línea la familia, el tipo de IVA, la zona y el tipo de cliente, y calcula base, IVA, total y margen. Si un producto no está en la tarifa, que se vea y que no rompa los totales.»\n\nSobre tus datos limpios. Recuerda los criterios 2 y 3 de Instrucciones: IVA redondeado a 2 decimales en cada línea y, en las líneas sin tarifa, base sí, pero IVA, coste y margen vacíos. Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final.xlsx",
+          "controles": [
+            {
+              "pregunta": "Σ Base de todas las líneas, incluidas las que no tienen tarifa (€)",
+              "respuesta": 135576.25,
+              "tolerancia": 0.01,
+              "pista": "Revisa que los precios con punto se han convertido bien (no ×100) y que las líneas sin tarifa cuentan en la base."
+            },
+            {
+              "pregunta": "Σ IVA al 4 % (€)",
+              "respuesta": 546.69,
+              "tolerancia": 0.01,
+              "pista": "El 4 % es solo la leche. Mira que el tipo sale de la Tarifa de cada producto."
+            },
+            {
+              "pregunta": "Σ IVA al 10 % (€)",
+              "respuesta": 7620.28,
+              "tolerancia": 0.01,
+              "pista": "Café, infusiones, azúcar y complementos. Las líneas sin tarifa no tienen IVA conocido: no las sumes aquí."
+            },
+            {
+              "pregunta": "Σ IVA al 21 % (€)",
+              "respuesta": 9452.73,
+              "tolerancia": 0.01,
+              "pista": "Maquinaria y menaje."
+            },
+            {
+              "pregunta": "Σ Margen (€)",
+              "respuesta": 45992.72,
+              "tolerancia": 0.01,
+              "pista": "Margen = Base − Cantidad × Coste. Las líneas sin tarifa no tienen coste: no cuentan."
+            },
+            {
+              "pregunta": "Número de líneas cuyo producto no está en la tarifa",
+              "respuesta": 8,
+              "tolerancia": 0,
+              "pista": "Busca los productos que no encuentra la búsqueda en la Tarifa, después de quitar espacios."
+            }
+          ],
+          "explicacion": "Cada línea ya sabe su familia, su IVA, su zona y su margen, y las líneas raras están a la vista sin romper los totales."
+        },
+        {
+          "id": "ef-b3",
+          "modo": "excel",
+          "leccion": "n3m4l2",
+          "puntos": 12,
+          "minutos": 15,
+          "enunciado": "**B3 · Análisis** (15 min, 12 puntos)\n\n> «Resumen de ventas (base) por zona y familia, con el peso de cada familia dentro de su zona, filtrable por tipo de cliente, y un gráfico que muestre qué familia pesa más en cada zona. ¿Cuáles son los 5 clientes con más margen?»\n\nCon tus datos limpios y calculados (semanas 36 a 44). Las zonas, ya corregidas. Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final.xlsx",
+          "controles": [
+            {
+              "pregunta": "Ventas (base) de la zona Burgos, con las zonas ya corregidas (€)",
+              "respuesta": 34142.05,
+              "tolerancia": 0.01,
+              "pista": "Si te sale menos, hay clientes con la zona mal escrita («burgos», «BURGOS ») o códigos de cliente con espacios que no encuentran su zona."
+            },
+            {
+              "pregunta": "Peso de Café en las ventas de Palencia, en % con dos decimales (por ejemplo, 41,37)",
+              "respuesta": 57.09,
+              "tolerancia": 0.01,
+              "pista": "Es la base de Café de Palencia entre la base total de Palencia, por 100."
+            },
+            {
+              "pregunta": "Margen del cliente con más margen (€)",
+              "respuesta": 2962.8,
+              "tolerancia": 0.01,
+              "pista": "Suma el margen por cliente (no el de una línea) y ordena de mayor a menor."
+            }
+          ],
+          "explicacion": "Tienes un resumen que se filtra, un gráfico que se entiende de un vistazo y el ranking de clientes que más aportan."
+        },
+        {
+          "id": "ef-b4",
+          "modo": "excel",
+          "leccion": "n2m4l3",
+          "puntos": 10,
+          "minutos": 10,
+          "enunciado": "**B4 · Cartera** (10 min, 10 puntos)\n\n> «A 31/10/2026: cuánto debe cada cliente y desde cuándo (sin vencer, 1-30, 31-60, más de 60), y marca a los que superan su límite.»\n\nCon la hoja Cobros y la fecha de corte de Parámetros. Criterios 5 y 6 de Instrucciones (los saldos a favor van aparte). Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final.xlsx",
+          "controles": [
+            {
+              "pregunta": "Deuda pendiente total a 31/10/2026, sin contar los saldos a favor (€)",
+              "respuesta": 162572.99,
+              "tolerancia": 0.01,
+              "pista": "Suma solo los saldos positivos (Importe − Cobrado > 0)."
+            },
+            {
+              "pregunta": "Importe vencido a más de 60 días (€)",
+              "respuesta": 23749.19,
+              "tolerancia": 0.01,
+              "pista": "Días vencidos = 31/10/2026 − Vencimiento. 60 días exactos van en «De 31 a 60»; 61 ya es «Más de 60»."
+            },
+            {
+              "pregunta": "Número de clientes cuya deuda pendiente supera su límite",
+              "respuesta": 7,
+              "tolerancia": 0,
+              "pista": "Compara la deuda pendiente total de cada cliente (vencida y sin vencer) con su Límite."
+            }
+          ],
+          "explicacion": "Sabes quién debe, cuánto y desde cuándo, y a quién hay que frenar los pedidos."
+        },
+        {
+          "id": "ef-b5",
+          "modo": "excel",
+          "leccion": "n4m3l1",
+          "puntos": 6,
+          "minutos": 10,
+          "enunciado": "**B5 · Qué pasaría si** (10 min, 6 puntos)\n\n> «El director quiere que el margen de Maquinaria en Burgos sea del 35 %. ¿A qué precio medio habría que vender MAQ-ESP-2G, sin tocar los demás productos?»\n\nCon tus datos de B2. «Margen de Maquinaria en Burgos» = Σ Margen / Σ Base de las líneas de Maquinaria de clientes de Burgos (semanas 36 a 44). Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final.xlsx",
+          "controles": [
+            {
+              "pregunta": "Margen % actual de Maquinaria en Burgos, con dos decimales (por ejemplo, 27,45)",
+              "respuesta": 28.5,
+              "tolerancia": 0.01,
+              "pista": "Σ Margen / Σ Base de las líneas de Maquinaria de clientes de Burgos, por 100."
+            },
+            {
+              "pregunta": "Precio medio al que habría que vender MAQ-ESP-2G en Burgos (€, dos decimales)",
+              "respuesta": 2404.48,
+              "tolerancia": 0.01,
+              "pista": "Solo cambia el precio de MAQ-ESP-2G en Burgos; el resto de la maquinaria de Burgos queda igual. Deja que Excel despeje el precio por ti."
+            }
+          ],
+          "explicacion": "Has respondido a un «¿y si…?» del director con una cifra exacta y comprobable."
+        },
+        {
+          "id": "ef-b6",
+          "modo": "excel",
+          "leccion": "n6m2l2",
+          "puntos": 7,
+          "minutos": 5,
+          "enunciado": "**B6 · Robustez** (5 min, 7 puntos)\n\n> «Haz que el libro avise si algo no cuadra y que mañana se puedan añadir los pedidos de la semana 45 sin rehacer nada. Añádelos y comprueba.»\n\nUsa examen-final-semana45.csv (UTF-8, separado por punto y coma, con coma decimal). Cuando termines, escribe tus totales de control.",
+          "archivo": "examen-final-semana45.csv",
+          "controles": [
+            {
+              "pregunta": "Número de líneas después de añadir la semana 45",
+              "respuesta": 1365,
+              "tolerancia": 0,
+              "pista": "Son las líneas reales de B1 más las del CSV. Si te salen menos, el CSV se ha importado mal o no se ha ampliado el rango."
+            },
+            {
+              "pregunta": "Número de líneas sin tarifa después de añadir la semana 45",
+              "respuesta": 11,
+              "tolerancia": 0,
+              "pista": "La semana 45 trae un producto que no está en la tarifa. Tu libro debería avisarte."
+            },
+            {
+              "pregunta": "Σ Base después de añadir la semana 45 (€)",
+              "respuesta": 152762.35,
+              "tolerancia": 0.01,
+              "pista": "Comprueba que el CSV se ha leído con coma decimal: un precio de 19,80 no puede convertirse en 1.980."
+            }
+          ],
+          "explicacion": "Tu libro aguanta los datos de mañana y avisa solo cuando algo no cuadra: eso es trabajar sola con garantías."
+        }
+      ]
+    },
+    {
+      "titulo": "Parte C · Correo de entrega (20 min, 25 puntos)",
+      "md": "Rodrigo lo leerá en el móvil entre dos reuniones: lo importante primero, cifras iguales a las del libro y nada de anexos innecesarios.",
+      "ejercicios": [
+        {
+          "id": "ef-c1",
+          "modo": "abierta",
+          "leccion": "n6m3l1",
+          "puntos": 25,
+          "pregunta": "Escribe a **Rodrigo Pardo** (jefe de administración) el correo con el que entregas el análisis. **Máximo 200 palabras.** Usa las cifras de tu libro.",
+          "modelo": "**Asunto:** Análisis de ventas S36-S44 y cartera a 31/10\n\nRodrigo:\n\nTe envío el análisis de ventas y la cartera. Todos los controles del libro cuadran.\n\n**Cifras clave.** Ventas: 135.576,25 € sin IVA (1.227 líneas); margen: 45.992,72 € (33,9 %). Deuda pendiente: 162.572,99 €, de la que 23.749,19 € está vencida a más de 60 días.\n\n**Conclusiones.**\n1. Valladolid capital es la primera zona (34,2 % de las ventas); Burgos pesa el 25,2 %.\n2. Café es la familia que más vende (43,9 %); en Palencia, el café supone el 57,09 %.\n3. 7 clientes superan su límite de crédito: propongo revisar sus pedidos.\n\nPara llegar al 35 % de margen en Maquinaria en Burgos, MAQ-ESP-2G tendría que venderse a 2.404,48 € de media (hoy, 2.150,00 €).\n\n**Riesgos.** 8 líneas (693,20 €) son de productos descatalogados sin tarifa: cuentan en ventas, no en margen. Hay 3 facturas cobradas de más (561,01 €) por devolver o compensar. La semana 45 trae un producto nuevo, CAF-COL-1K, sin tarifa.\n\n**Supuestos.** Antes de empezar te habría preguntado si las ventas llevan portes y si el margen es sobre el coste de tarifa o el real. He tomado ventas sin portes y coste de tarifa. ¿Me lo confirmas?\n\nUn saludo,\n[Tu nombre]",
+          "criterios": [
+            "Cifras clave correctas e iguales a las del libro (ventas, margen, deuda y vencido a más de 60 días).",
+            "Tres conclusiones con su cifra (por ejemplo: «Burgos pesa el X % de las ventas»).",
+            "Dos riesgos o límites de los datos: las líneas sin tarifa, las zonas mal escritas, los saldos a favor o el producto nuevo.",
+            "La pregunta que habría hecho antes de empezar (¿ventas con o sin portes? ¿margen sobre el coste de tarifa o el real?) y los supuestos que ha tomado.",
+            "Tono profesional y claro: asunto concreto, lo importante primero y sin pasar de 200 palabras."
+          ]
+        }
+      ]
+    }
+  ],
+  "rubrica": "### Puntuación (100 puntos)\n\n| Parte | Qué se evalúa | Tiempo | Puntos |\n|---|---|---|---|\n| A · Criterio | 12 preguntas (1,25 cada una) | 15 min | 15 |\n| B · Libro | 6 tareas con totales de control | 75 min | 60 |\n| C · Correo | Correo de entrega a Rodrigo | 20 min | 25 |\n\n**Parte B.** Cada tarea vale sus puntos (B1 10, B2 15, B3 12, B4 10, B5 6, B6 7), repartidos a partes iguales entre sus totales de control: un total cuadra si está dentro de la tolerancia (0,01 € en importes y porcentajes; 0 en recuentos).\n\n**Parte C.** Cinco criterios de 5 puntos: (1) cifras clave correctas e iguales a las del libro; (2) tres conclusiones con cifra; (3) dos riesgos o límites de los datos; (4) la pregunta que habrías hecho antes de empezar y los supuestos tomados; (5) tono profesional y claro. Cada criterio: 5 = lo cumple del todo; 3 = a medias; 0 = no aparece. La tutora lo comenta con este baremo; si no está disponible, compáralo tú con el correo modelo.\n\n### Para ser apta\n- **70 puntos o más**, con **36 de 60 o más en la Parte B**, y **ningún bloqueante**.\n- En esta web, el examen queda superado cuando aciertas el 80 % de las preguntas que se corrigen solas **y** cuadran todos los totales de control: sin un libro bien hecho no hay aprobado, igual que en una prueba real.\n\n### Bloqueantes (no apta aunque la suma salga)\n1. La Σ Base de B2 está mal y el libro no lo avisa en ningún sitio.\n2. Las cifras del correo no coinciden con las del libro.\n3. Has borrado o modificado la hoja Pedidos original.\n\n### Lo que mira una empresa además de las cifras\n| Criterio | Bien | Excelente |\n|---|---|---|\n| Exactitud | Todos los totales cuadran | Además, documentas los problemas de los datos con su impacto en € |\n| Estructura | Parámetros, datos, cálculos, informe y controles separados; Tablas | Además, un Léame con el que otra persona entiende el libro en 5 minutos |\n| Mantenimiento | La semana 45 entra sin rehacer nada | Además, los controles avisan solos (filas, totales, productos sin tarifa) |\n| Presentación | Formatos de €, % y fecha; gráfico adecuado | Además, lo importante primero y un gráfico que no depende solo del color |\n| Comunicación | Correo breve con cifras, conclusiones y supuestos | Además, propone decisiones y avisa de los límites de los datos |\n\nSi no la superas, repítela con calma al cabo de unos días: revisa antes las lecciones que te indica cada tarea.",
+  "solucion_md": "Abre **examen-final-solucion.xlsx**: tiene cada paso hecho con fórmulas, la hoja Controles (con tus totales del examen al lado de los del libro) y la hoja Calidad con los problemas sembrados.\n\n### Parte A · Criterio\n1. Espacios o texto frente a número. 2. Rango fijo o falta Actualizar: Tabla como origen. 3. De menor a mayor por el límite inferior. 4. Σ margen / Σ base. 5. Importar con la configuración regional de origen y probar con un día > 12. 6. Power Query desde carpeta. 7. Caso conocido, rangos y nada de datos personales en asistentes no autorizados. 8. `\">=\"&FECHA(2026;10;1)`. 9. Redondear en el mismo nivel en que se factura y documentarlo. 10. Valor fijo en la fórmula: el tipo, en Parámetros con nombre. 11. Desbloquear antes las celdas de entrada. 12. No: PDF o copia solo con sus datos e Inspeccionar documento.\n\n### B1 · Limpieza (1.227 líneas)\n1. Clic derecho en la pestaña **Pedidos** > **Mover o copiar** > **Crear una copia**. La original no se toca.\n2. En la copia, quita la fila «Total» (la última) y después **Datos > Herramientas de datos > Quitar duplicados** con todas las columnas: quita **12** filas (el final del 20/10/2026 sale dos veces).\n3. Columnas auxiliares y después **Pegado especial > Valores** sobre las originales:\n   - Fecha: `=SI(ESNUMERO(A2);A2;FECHANUMERO(A2))` con formato de fecha (60 fechas venían como texto «2026-09-14»). Si tu Excel no reconociera ese texto, `=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;6;2);DERECHA(A2;2))`.\n   - Precio: `=SI(ESNUMERO(F2);F2;VALOR.NUMERO(F2;\".\";\",\"))` (40 precios con punto como texto; VALOR a secas los leería mal con la configuración española).\n   - Cliente: `=ESPACIOS(C2)` (25 códigos con un espacio al final).\n4. Comprueba: `=CONTARA(A:A)-1` da 1.227 y `=CONTAR(A:A)` da lo mismo (todas las fechas son números).\n\nTotales: 1.227 líneas · Σ Cantidad 8.712 · 614 líneas de octubre · 109 clientes distintos.\n\n### B2 · Cálculos y cruces\nConvierte los datos en Tabla ([[Ctrl]]+[[T]]). Da nombre a las zonas válidas (ListaZonas = Parámetros!A16:A19) y en Clientes añade la zona corregida: `=BUSCARX(ESPACIOS(D2);ListaZonas;ListaZonas;\"REVISAR\")` (BUSCARX no distingue mayúsculas y devuelve la grafía de la lista). Columnas de la Tabla:\n- Familia: `=BUSCARX([@CodProducto];Tarifa!A:A;Tarifa!C:C;\"SIN TARIFA\")`; TipoIVA y CosteUnit igual, con `\"\"` si no está.\n- Zona: `=BUSCARX([@CodCliente];Clientes!A:A;Clientes!G:G;\"SIN CLIENTE\")`; TipoCliente, igual con la columna C.\n- Base: `=REDONDEAR([@Cantidad]*[@PrecioUnitario];2)`. IVA: `=SI([@TipoIVA]=\"\";\"\";REDONDEAR([@Base]*[@TipoIVA];2))`. Total: `=SI([@IVA]=\"\";\"\";[@Base]+[@IVA])`.\n- Margen: `=SI([@CosteUnit]=\"\";\"\";[@Base]-[@Cantidad]*[@CosteUnit])`. SinTarifa: `=SI([@Familia]=\"SIN TARIFA\";1;0)`.\n- Sin BUSCARX (Excel 2019 o anterior): `=SI.ERROR(INDICE(Tarifa!C:C;COINCIDIR(D2;Tarifa!A:A;0));\"SIN TARIFA\")`.\n\nTotales: Σ Base 135.576,25 € · IVA 4 % 546,69 € · IVA 10 % 7.620,28 € · IVA 21 % 9.452,73 € · Σ Margen 45.992,72 € (33,9 %) · 8 líneas sin tarifa (CAF-ETI-1K, INF-JEN-100 y MEN-COP-12; 693,20 € de base).\n\n### B3 · Análisis\nTabla dinámica desde la Tabla: Zona en filas, Familia en columnas y Suma de Base en valores. Añade Base otra vez y, en **Configuración de campo de valor > Mostrar valores como**, el porcentaje del total de la fila. **Insertar segmentación de datos** por TipoCliente y un **gráfico dinámico** de columnas 100 % apiladas. Para el top 5, una tabla dinámica por cliente con Suma de Margen ordenada de mayor a menor (o SUMAR.SI.CONJUNTO por cliente y K.ESIMO.MAYOR).\n\nVentas por zona: Valladolid capital 46.409,25 € (34,2 %); Valladolid provincia 32.201,75 € (23,8 %); Palencia 22.823,20 € (16,8 %); Burgos 34.142,05 € (25,2 %). Familia que más pesa en cada zona: Valladolid capital, Café; Valladolid provincia, Café; Palencia, Café; Burgos, Café.\n\n| Puesto | Cliente | Nombre | Zona | Margen |\n|---|---|---|---|---|\n| 1 | C1115 | Mesón La Estación | Burgos | 2.962,80 € |\n| 2 | C1015 | Hotel Arlanzón | Valladolid provincia | 1.852,18 € |\n| 3 | C1019 | Café-bar La Vega | Valladolid capital | 1.653,73 € |\n| 4 | C1006 | Asador El Mirador, S.L. | Burgos | 1.519,02 € |\n| 5 | C1095 | Café-bar La Plaza, S.L. | Palencia | 1.413,71 € |\n\nTotales: Base de Burgos 34.142,05 € · Café en Palencia 57,09 % · margen del primer cliente 2.962,80 €.\n\n### B4 · Cartera a 31/10/2026\nNombres definidos: FechaCorte = Parámetros!B2 y TablaTramos = Parámetros!A10:C13. En Cobros: Saldo `=E2-F2`; Días `=FechaCorte-D2`; Tramo `=SI(G2<0;\"Saldo a favor\";SI(G2=0;\"Cobrada\";BUSCARV(H2;TablaTramos;3;VERDADERO)))` (o BUSCARX con modo de coincidencia -1). Después, por cliente, SUMAR.SI.CONJUNTO del saldo por tramo (o una tabla dinámica Cliente × Tramo), y «supera el límite» = deuda pendiente > Límite.\n\nTramos: sin vencer 89.623,27 € · de 1 a 30 días 21.034,68 € · de 31 a 60 días 28.165,85 € · más de 60 días 23.749,19 €. Ojo con las fronteras: hay facturas con 0, 30, 31, 60 y 61 días vencidos. Saldos a favor: 3 facturas, 561,01 €, aparte.\n\n| Cliente | Nombre | Deuda pendiente | Límite |\n|---|---|---|---|\n| C1146 | Asador La Esquina | 8.874,83 € | 8.500 € |\n| C1115 | Mesón La Estación | 5.366,51 € | 5.000 € |\n| C1081 | Mesón El Castillo, S.L. | 4.248,53 € | 4.000 € |\n| C1060 | Posada Valle del Cuco | 4.134,86 € | 3.500 € |\n| C1145 | Asador Los Pinos, S.L. | 3.298,17 € | 3.000 € |\n| C1054 | Asador Los Soportales | 2.643,99 € | 2.000 € |\n| C1098 | Restaurante El Portalón | 2.085,62 € | 1.500 € |\n\nTotales: deuda pendiente 162.572,99 € · vencido a más de 60 días 23.749,19 € · 7 clientes por encima del límite.\n\n### B5 · Qué pasaría si\nEn una hoja aparte: base y margen de Maquinaria en Burgos (SUMAR.SI.CONJUNTO), unidades de MAQ-ESP-2G en Burgos (3), una celda con el precio de prueba y el margen % recalculado con ese precio. Después, **Datos > Previsión > Análisis de hipótesis > Buscar objetivo**: Definir la celda = margen %, Con el valor = 0,35, Cambiando la celda = precio de prueba. Comprobación a mano: precio = (Coste de la maquinaria de Burgos / (1 − 0,35) − Base del resto de maquinaria de Burgos) / unidades.\n\nTotales: margen actual 28,50 % · precio necesario **2.404,48 €** (hoy se vende a 2.150,00 € de media).\n\n### B6 · Robustez\n- **Datos > De texto/CSV**, con Origen del archivo 65001: Unicode (UTF-8) y delimitador punto y coma; las líneas se añaden a la Tabla (o a la consulta, y Actualizar todo con [[Ctrl]]+[[Alt]]+[[F5]]). Las columnas calculadas se extienden solas.\n- Hoja Controles: cada comprobación con esperado, obtenido, diferencia, tolerancia y VERDADERO/FALSO (filas = origen − Total − duplicados; Σ resumen = Σ datos; Σ tramos = deuda; fechas que no son fecha = 0; clientes sin ficha = 0). Control maestro `=Y(G5:G14)` repetido en el Resumen.\n- Aviso aparte: líneas con productos sin tarifa que no son los descatalogados conocidos. Con la semana 45 salta: **CAF-COL-1K** en 3 líneas. Hay que pedir su alta en la Tarifa.\n\nTotales: 1.365 líneas · 11 sin tarifa · Σ Base 152.762,35 €.\n\n### Parte C · Correo modelo (192 palabras)\n**Asunto:** Análisis de ventas S36-S44 y cartera a 31/10\n\nRodrigo:\n\nTe envío el análisis de ventas y la cartera. Todos los controles del libro cuadran.\n\n**Cifras clave.** Ventas: 135.576,25 € sin IVA (1.227 líneas); margen: 45.992,72 € (33,9 %). Deuda pendiente: 162.572,99 €, de la que 23.749,19 € está vencida a más de 60 días.\n\n**Conclusiones.**\n1. Valladolid capital es la primera zona (34,2 % de las ventas); Burgos pesa el 25,2 %.\n2. Café es la familia que más vende (43,9 %); en Palencia, el café supone el 57,09 %.\n3. 7 clientes superan su límite de crédito: propongo revisar sus pedidos.\n\nPara llegar al 35 % de margen en Maquinaria en Burgos, MAQ-ESP-2G tendría que venderse a 2.404,48 € de media (hoy, 2.150,00 €).\n\n**Riesgos.** 8 líneas (693,20 €) son de productos descatalogados sin tarifa: cuentan en ventas, no en margen. Hay 3 facturas cobradas de más (561,01 €) por devolver o compensar. La semana 45 trae un producto nuevo, CAF-COL-1K, sin tarifa.\n\n**Supuestos.** Antes de empezar te habría preguntado si las ventas llevan portes y si el margen es sobre el coste de tarifa o el real. He tomado ventas sin portes y coste de tarifa. ¿Me lo confirmas?\n\nUn saludo,\n[Tu nombre]",
+  "archivo_solucion": "examen-final-solucion.xlsx"
+}

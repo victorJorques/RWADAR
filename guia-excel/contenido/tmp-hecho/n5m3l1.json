@@ -1,0 +1,749 @@
+{
+ "id": "n5m3l1",
+ "titulo": "Indicadores: qué medir y para quién",
+ "minutos": 16,
+ "objetivo": "Elegir pocos indicadores ligados a una decisión, definirlos sin ambigüedad (fórmula, fuente y periodo) y calcular el ticket medio, los clientes activos y el cumplimiento del objetivo.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Quiero abrir el comité de cada mes con una sola página: cómo vamos. Propónme cuatro o cinco cifras, no veinte, y deja escrito cómo se calcula cada una. No quiero volver a ver a Marta y a Javier discutiendo porque sus ventas no coinciden.",
+  "logro": "Ya sabes elegir los indicadores de un cuadro de mando, definirlos sin dudas y calcular ticket medio, clientes activos y cumplimiento del objetivo."
+ },
+ "funciones": [
+  "CONTARA",
+  "UNICOS"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Un salpicadero, no una sábana\nUn **indicador clave** (en inglés, *KPI*) es una cifra que se mira cada mes para **decidir algo**. Piensa en el salpicadero del coche: velocidad, gasolina y poco más. Si tuviera cuarenta relojes, no verías el que importa.\n\nUn cuadro de mando funciona igual: **pocos indicadores, de cuatro a seis**, y cada uno responde a una pregunta de dirección: «¿vendemos lo previsto?», «¿ganamos dinero con lo que vendemos?»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e1",
+   "modo": "test",
+   "pregunta": "Carmen quiere ver «cómo va el negocio» cada mes en el comité. ¿Qué le preparas?",
+   "opciones": [
+    {
+     "texto": "Cuatro o cinco cifras clave, cada una comparada con su objetivo",
+     "correcta": true,
+     "porque": "Eso es: pocas cifras que responden a preguntas de dirección, y con una referencia para saber si son buenas o malas."
+    },
+    {
+     "texto": "Todas las cifras que saca el programa de gestión, para que no falte nada",
+     "correcta": false,
+     "porque": "Con veinte cifras nadie ve la que importa. Es el error más común: indicadores que nadie mira."
+    },
+    {
+     "texto": "La exportación completa de ventas, para que ella filtre lo que quiera",
+     "correcta": false,
+     "porque": "Carmen no tiene tiempo de analizar datos: te pide la conclusión. El detalle va aparte, por si alguien lo quiere."
+    }
+   ],
+   "explicacion": "Un cuadro de mando es un resumen para decidir. Lo que no ayuda a decidir, sobra."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Los indicadores de una distribuidora\nEn Electro Cierzo, como en casi cualquier empresa que vende, se repiten estos:\n\n- **Ventas**: cuánto hemos facturado. *¿Vendemos?*\n- **Cumplimiento**: ventas ÷ objetivo. *¿Llegamos a lo previsto?*\n- **Margen**: ventas − coste de lo vendido. *¿Ganamos con lo que vendemos?*\n- **Ticket medio**: ventas ÷ número de facturas. *¿Nos compran más o menos cada vez?*\n- **Clientes activos**: clientes distintos que han comprado. *¿Ganamos o perdemos clientes?*"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e2",
+   "modo": "test",
+   "pregunta": "Javier sospecha que sus clientes siguen comprando igual de a menudo, pero **pedidos cada vez más pequeños**. ¿Qué indicador se lo enseña?",
+   "opciones": [
+    {
+     "texto": "El ticket medio",
+     "correcta": true,
+     "porque": "Sí: ventas ÷ número de facturas es lo que se gasta de media en cada compra. Si baja mes a mes, los pedidos encogen."
+    },
+    {
+     "texto": "Los clientes activos",
+     "correcta": false,
+     "porque": "Dice cuántos clientes compran, no cuánto compra cada uno. Podrían ser los mismos clientes con pedidos más pequeños."
+    },
+    {
+     "texto": "El cumplimiento del objetivo",
+     "correcta": false,
+     "porque": "Compara el total con lo previsto, pero no dice si el total baja por menos pedidos o por pedidos más pequeños."
+    }
+   ],
+   "explicacion": "Cada indicador responde a una pregunta distinta. Antes de calcular, pregunta qué decisión hay detrás."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Definir es la mitad del trabajo\n«Ventas de octubre» parece claro, pero esconde tres preguntas:\n\n- **¿Con o sin IVA?** El IVA que se cobra al cliente no es venta de la empresa: se declara a Hacienda.\n- **¿Qué fecha?** La de la factura, la del pedido o la del cobro dan cifras distintas.\n- **¿Qué periodo?** ¿Del 1 al 31, o hasta ayer?\n\nCada indicador se deja escrito con su **fórmula**, su **fuente** (de qué tabla sale) y su **periodo**. Así todos calculan lo mismo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "La semana pasada Marta y Javier estuvieron veinte minutos discutiendo por las ventas de un comercial. Los dos tenían razón: uno contaba con IVA y el otro sin. Desde entonces, en el comité las ventas van **sin IVA**, y lo pone debajo de la cifra."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e3",
+   "modo": "test",
+   "pregunta": "Octubre de **Raúl Aznar**, comercial. Javier dice que vendió **15.133,55 €** y Marta, **18.311,60 €**. Los dos sacan la cifra de la misma exportación. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "Uno suma la base imponible (sin IVA) y el otro el total de las facturas (con IVA)",
+     "correcta": true,
+     "porque": "Exacto: 15.133,55 × 1,21 = 18.311,60. Las dos sumas están bien hechas; lo que falla es la definición."
+    },
+    {
+     "texto": "Uno de los dos se ha equivocado al sumar",
+     "correcta": false,
+     "porque": "Las dos sumas son correctas. Cuando dos cifras no cuadran, mira primero si miden lo mismo."
+    },
+    {
+     "texto": "Marta ha sumado también las facturas de noviembre",
+     "correcta": false,
+     "porque": "Podría pasar (por eso se define el periodo), pero aquí la diferencia es justo el 21 %: 18.311,60 ÷ 15.133,55 = 1,21."
+    }
+   ],
+   "explicacion": "Truco de oficina: cuando dos cifras no coinciden, divide una entre la otra. Si sale 1,21 (o 1,10, o 1,04), casi seguro que es el IVA."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El panel de indicadores\nJavier te pasa las 10 facturas de octubre de **Raúl Aznar** para probar tus definiciones. La columna **D** es la base imponible (sin IVA) y la **E**, el total con IVA.\n\nA la derecha montas el panel: una fila por indicador. Las **ventas** ya están: `=SUMA(D2:D11)`, la columna **sin** IVA. El resto lo calculas tú."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Las facturas de Raúl y el panel",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "E1": "Total (con IVA)",
+     "G1": "Indicador",
+     "H1": "Octubre",
+     "A2": {
+      "fecha": "2026-10-01"
+     },
+     "B2": "F26-0841",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1840.5,
+     "E2": 2227.01,
+     "A3": {
+      "fecha": "2026-10-05"
+     },
+     "B3": "F26-0842",
+     "C3": "Electricidad Arga",
+     "D3": 965.0,
+     "E3": 1167.65,
+     "A4": {
+      "fecha": "2026-10-07"
+     },
+     "B4": "F26-0843",
+     "C4": "Montajes Segre",
+     "D4": 2310.4,
+     "E4": 2795.58,
+     "A5": {
+      "fecha": "2026-10-09"
+     },
+     "B5": "F26-0844",
+     "C5": "Instalaciones Moncayo",
+     "D5": 712.3,
+     "E5": 861.88,
+     "A6": {
+      "fecha": "2026-10-14"
+     },
+     "B6": "F26-0845",
+     "C6": "Reformas Delicias",
+     "D6": 1488.0,
+     "E6": 1800.48,
+     "A7": {
+      "fecha": "2026-10-16"
+     },
+     "B7": "F26-0846",
+     "C7": "Electricidad Arga",
+     "D7": 530.75,
+     "E7": 642.21,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0847",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "E8": 3775.2,
+     "A9": {
+      "fecha": "2026-10-23"
+     },
+     "B9": "F26-0848",
+     "C9": "Montajes Segre",
+     "D9": 845.6,
+     "E9": 1023.18,
+     "A10": {
+      "fecha": "2026-10-28"
+     },
+     "B10": "F26-0849",
+     "C10": "Instalaciones Moncayo",
+     "D10": 1275.9,
+     "E10": 1543.84,
+     "A11": {
+      "fecha": "2026-10-30"
+     },
+     "B11": "F26-0850",
+     "C11": "Electricidad Arga",
+     "D11": 2045.1,
+     "E11": 2474.57,
+     "G2": "Ventas (sin IVA)",
+     "H2": "=SUMA(D2:D11)",
+     "G3": "Ticket medio",
+     "G4": "Clientes activos",
+     "G5": "Objetivo",
+     "H5": 16000,
+     "G6": "Cumplimiento"
+    },
+    "formatos": {
+     "A2:A11": "fecha",
+     "D2:E11": "eur",
+     "H2:H3": "eur",
+     "H5": "eur",
+     "H6": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 13,
+     "F": 2,
+     "G": 16,
+     "H": 12
+    },
+    "columnas": 8,
+    "filas": 11
+   },
+   "resaltar": [
+    "H2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "H2 suma la columna D (sin IVA), no la E."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e4",
+   "modo": "formula",
+   "enunciado": "Nuria empezó el **ticket medio** en **H3** (ventas ÷ número de facturas), pero sale `#¡DIV/0!`. Arregla la fórmula: debe salir **1.513,36 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "E1": "Total (con IVA)",
+     "G1": "Indicador",
+     "H1": "Octubre",
+     "A2": {
+      "fecha": "2026-10-01"
+     },
+     "B2": "F26-0841",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1840.5,
+     "E2": 2227.01,
+     "A3": {
+      "fecha": "2026-10-05"
+     },
+     "B3": "F26-0842",
+     "C3": "Electricidad Arga",
+     "D3": 965.0,
+     "E3": 1167.65,
+     "A4": {
+      "fecha": "2026-10-07"
+     },
+     "B4": "F26-0843",
+     "C4": "Montajes Segre",
+     "D4": 2310.4,
+     "E4": 2795.58,
+     "A5": {
+      "fecha": "2026-10-09"
+     },
+     "B5": "F26-0844",
+     "C5": "Instalaciones Moncayo",
+     "D5": 712.3,
+     "E5": 861.88,
+     "A6": {
+      "fecha": "2026-10-14"
+     },
+     "B6": "F26-0845",
+     "C6": "Reformas Delicias",
+     "D6": 1488.0,
+     "E6": 1800.48,
+     "A7": {
+      "fecha": "2026-10-16"
+     },
+     "B7": "F26-0846",
+     "C7": "Electricidad Arga",
+     "D7": 530.75,
+     "E7": 642.21,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0847",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "E8": 3775.2,
+     "A9": {
+      "fecha": "2026-10-23"
+     },
+     "B9": "F26-0848",
+     "C9": "Montajes Segre",
+     "D9": 845.6,
+     "E9": 1023.18,
+     "A10": {
+      "fecha": "2026-10-28"
+     },
+     "B10": "F26-0849",
+     "C10": "Instalaciones Moncayo",
+     "D10": 1275.9,
+     "E10": 1543.84,
+     "A11": {
+      "fecha": "2026-10-30"
+     },
+     "B11": "F26-0850",
+     "C11": "Electricidad Arga",
+     "D11": 2045.1,
+     "E11": 2474.57,
+     "G2": "Ventas (sin IVA)",
+     "H2": "=SUMA(D2:D11)",
+     "G3": "Ticket medio",
+     "G4": "Clientes activos",
+     "G5": "Objetivo",
+     "H5": 16000,
+     "G6": "Cumplimiento"
+    },
+    "formatos": {
+     "A2:A11": "fecha",
+     "D2:E11": "eur",
+     "H2:H3": "eur",
+     "H5": "eur",
+     "H6": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 13,
+     "F": 2,
+     "G": 16,
+     "H": 12
+    },
+    "columnas": 8,
+    "filas": 11
+   },
+   "objetivo": "H3",
+   "inicial": "=H2/CONTAR(B2:B11)",
+   "solucion": "=H2/CONTARA(B2:B11)",
+   "alternativas": [
+    "=SUMA(D2:D11)/CONTARA(B2:B11)",
+    "=PROMEDIO(D2:D11)",
+    "=H2/CONTARA(C2:C11)",
+    "=H2/CONTAR(D2:D11)"
+   ],
+   "errores_tipicos": [
+    "=H2/CONTAR(B2:B11)",
+    "=PROMEDIO(E2:E11)",
+    "=H2/CONTARA(UNICOS(C2:C11))"
+   ],
+   "variantes": [
+    {
+     "D2": 2500
+    },
+    {
+     "D7": 980.4
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "`#¡DIV/0!` quiere decir que divides entre cero: `CONTAR(B2:B11)` da 0.",
+    "CONTAR solo cuenta números, y los números de factura (F26-0841…) son texto.",
+    "Cambia CONTAR por CONTARA, que cuenta todas las celdas que no están vacías: `=H2/CONTARA(B2:B11)`."
+   ],
+   "explicacion": "Ticket medio: **1.513,36 €** por factura. CONTARA cuenta las facturas aunque sean texto. Con este indicador Javier verá mes a mes si los pedidos crecen o encogen."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e5",
+   "modo": "formula",
+   "enunciado": "En **H4**, los **clientes activos**: cuántos clientes **distintos** han comprado en octubre. Ojo: varios clientes repiten. Debe salir **5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "E1": "Total (con IVA)",
+     "G1": "Indicador",
+     "H1": "Octubre",
+     "A2": {
+      "fecha": "2026-10-01"
+     },
+     "B2": "F26-0841",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1840.5,
+     "E2": 2227.01,
+     "A3": {
+      "fecha": "2026-10-05"
+     },
+     "B3": "F26-0842",
+     "C3": "Electricidad Arga",
+     "D3": 965.0,
+     "E3": 1167.65,
+     "A4": {
+      "fecha": "2026-10-07"
+     },
+     "B4": "F26-0843",
+     "C4": "Montajes Segre",
+     "D4": 2310.4,
+     "E4": 2795.58,
+     "A5": {
+      "fecha": "2026-10-09"
+     },
+     "B5": "F26-0844",
+     "C5": "Instalaciones Moncayo",
+     "D5": 712.3,
+     "E5": 861.88,
+     "A6": {
+      "fecha": "2026-10-14"
+     },
+     "B6": "F26-0845",
+     "C6": "Reformas Delicias",
+     "D6": 1488.0,
+     "E6": 1800.48,
+     "A7": {
+      "fecha": "2026-10-16"
+     },
+     "B7": "F26-0846",
+     "C7": "Electricidad Arga",
+     "D7": 530.75,
+     "E7": 642.21,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0847",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "E8": 3775.2,
+     "A9": {
+      "fecha": "2026-10-23"
+     },
+     "B9": "F26-0848",
+     "C9": "Montajes Segre",
+     "D9": 845.6,
+     "E9": 1023.18,
+     "A10": {
+      "fecha": "2026-10-28"
+     },
+     "B10": "F26-0849",
+     "C10": "Instalaciones Moncayo",
+     "D10": 1275.9,
+     "E10": 1543.84,
+     "A11": {
+      "fecha": "2026-10-30"
+     },
+     "B11": "F26-0850",
+     "C11": "Electricidad Arga",
+     "D11": 2045.1,
+     "E11": 2474.57,
+     "G2": "Ventas (sin IVA)",
+     "H2": "=SUMA(D2:D11)",
+     "G3": "Ticket medio",
+     "G4": "Clientes activos",
+     "G5": "Objetivo",
+     "H5": 16000,
+     "G6": "Cumplimiento",
+     "H3": "=H2/CONTARA(B2:B11)"
+    },
+    "formatos": {
+     "A2:A11": "fecha",
+     "D2:E11": "eur",
+     "H2:H3": "eur",
+     "H5": "eur",
+     "H6": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 13,
+     "F": 2,
+     "G": 16,
+     "H": 12
+    },
+    "columnas": 8,
+    "filas": 11
+   },
+   "objetivo": "H4",
+   "solucion": "=CONTARA(UNICOS(C2:C11))",
+   "alternativas": [
+    "=FILAS(UNICOS(C2:C11))"
+   ],
+   "errores_tipicos": [
+    "=CONTARA(C2:C11)",
+    "=CONTAR(UNICOS(C2:C11))"
+   ],
+   "debe_usar": [
+    "UNICOS"
+   ],
+   "variantes": [
+    {
+     "C2": "Electricidad Valdejalón"
+    },
+    {
+     "C8": "Reformas Delicias"
+    }
+   ],
+   "pistas": [
+    "`CONTARA(C2:C11)` da 10: cuenta facturas, no clientes.",
+    "Primero saca la lista sin repetidos con `UNICOS(C2:C11)` y después cuéntala.",
+    "`=CONTARA(UNICOS(C2:C11))`"
+   ],
+   "explicacion": "**5 clientes activos.** UNICOS quita los repetidos y CONTARA cuenta lo que queda. Si el mes que viene salen 3, Javier sabrá que pierde clientes aunque las ventas aguanten."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Una cifra sola no dice nada\n¿15.133,55 € es mucho o poco? Depende. Un indicador **siempre se compara** con algo:\n\n- **Con el objetivo**: cumplimiento = real ÷ objetivo. El 100 % es justo el objetivo; por encima, se supera.\n- **Con el mismo mes del año anterior**: variación = real ÷ año anterior − 1. Se compara el mismo mes porque agosto siempre vende menos que octubre.\n\nSin comparación, nadie sabe si celebrar o preocuparse."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e6",
+   "modo": "formula",
+   "enunciado": "El objetivo de Raúl para octubre está en **H5** (16.000 €). En **H6** calcula el **cumplimiento**: qué parte del objetivo ha vendido. Con formato de porcentaje debe salir **94,6 %**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Factura",
+     "C1": "Cliente",
+     "D1": "Base (sin IVA)",
+     "E1": "Total (con IVA)",
+     "G1": "Indicador",
+     "H1": "Octubre",
+     "A2": {
+      "fecha": "2026-10-01"
+     },
+     "B2": "F26-0841",
+     "C2": "Instalaciones Moncayo",
+     "D2": 1840.5,
+     "E2": 2227.01,
+     "A3": {
+      "fecha": "2026-10-05"
+     },
+     "B3": "F26-0842",
+     "C3": "Electricidad Arga",
+     "D3": 965.0,
+     "E3": 1167.65,
+     "A4": {
+      "fecha": "2026-10-07"
+     },
+     "B4": "F26-0843",
+     "C4": "Montajes Segre",
+     "D4": 2310.4,
+     "E4": 2795.58,
+     "A5": {
+      "fecha": "2026-10-09"
+     },
+     "B5": "F26-0844",
+     "C5": "Instalaciones Moncayo",
+     "D5": 712.3,
+     "E5": 861.88,
+     "A6": {
+      "fecha": "2026-10-14"
+     },
+     "B6": "F26-0845",
+     "C6": "Reformas Delicias",
+     "D6": 1488.0,
+     "E6": 1800.48,
+     "A7": {
+      "fecha": "2026-10-16"
+     },
+     "B7": "F26-0846",
+     "C7": "Electricidad Arga",
+     "D7": 530.75,
+     "E7": 642.21,
+     "A8": {
+      "fecha": "2026-10-21"
+     },
+     "B8": "F26-0847",
+     "C8": "Climatización Ebro",
+     "D8": 3120.0,
+     "E8": 3775.2,
+     "A9": {
+      "fecha": "2026-10-23"
+     },
+     "B9": "F26-0848",
+     "C9": "Montajes Segre",
+     "D9": 845.6,
+     "E9": 1023.18,
+     "A10": {
+      "fecha": "2026-10-28"
+     },
+     "B10": "F26-0849",
+     "C10": "Instalaciones Moncayo",
+     "D10": 1275.9,
+     "E10": 1543.84,
+     "A11": {
+      "fecha": "2026-10-30"
+     },
+     "B11": "F26-0850",
+     "C11": "Electricidad Arga",
+     "D11": 2045.1,
+     "E11": 2474.57,
+     "G2": "Ventas (sin IVA)",
+     "H2": "=SUMA(D2:D11)",
+     "G3": "Ticket medio",
+     "G4": "Clientes activos",
+     "G5": "Objetivo",
+     "H5": 16000,
+     "G6": "Cumplimiento",
+     "H3": "=H2/CONTARA(B2:B11)",
+     "H4": "=CONTARA(UNICOS(C2:C11))"
+    },
+    "formatos": {
+     "A2:A11": "fecha",
+     "D2:E11": "eur",
+     "H2:H3": "eur",
+     "H5": "eur",
+     "H6": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 10,
+     "C": 21,
+     "D": 13,
+     "E": 13,
+     "F": 2,
+     "G": 16,
+     "H": 12
+    },
+    "columnas": 8,
+    "filas": 11
+   },
+   "objetivo": "H6",
+   "solucion": "=H2/H5",
+   "alternativas": [
+    "=SUMA(D2:D11)/H5"
+   ],
+   "errores_tipicos": [
+    "=H5/H2",
+    "=H2-H5",
+    "=H2/16000",
+    "=SUMA(E2:E11)/H5"
+   ],
+   "variantes": [
+    {
+     "H5": 15000
+    },
+    {
+     "D3": 1500
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Cumplimiento = lo vendido ÷ lo que tenía que vender.",
+    "Lo vendido (sin IVA) está en H2 y el objetivo en H5.",
+    "`=H2/H5`. Si te sale 105,7 %, has dividido al revés."
+   ],
+   "explicacion": "**94,6 %**: a Raúl le faltan 866,45 € para llegar. Y no has escrito 16.000 dentro de la fórmula: si Javier cambia el objetivo, el cumplimiento se recalcula solo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n5m3l1-e7",
+   "modo": "abierta",
+   "pregunta": "Escribe a Carmen tu propuesta: **cuatro indicadores** para el comité mensual. De cada uno, di: nombre, cómo se calcula (fórmula y de qué datos sale), periodo y con qué se compara.",
+   "modelo": "1) **Ventas del mes**: suma de la base imponible (sin IVA) de las facturas con fecha de ese mes, de la exportación del programa de gestión. Se compara con el objetivo y con el mismo mes del año anterior.\n2) **Cumplimiento**: ventas del mes ÷ objetivo del mes. Se compara con el 100 %.\n3) **Ticket medio**: ventas del mes ÷ número de facturas del mes. Se compara con el mismo mes del año anterior.\n4) **Clientes activos**: clientes distintos con al menos una factura en el mes. Se compara con el mismo mes del año anterior.",
+   "criterios": [
+    "Propone cuatro indicadores útiles para decidir, no una lista larga",
+    "Dice si las ventas van con o sin IVA",
+    "Da la fórmula y la fuente de cada indicador",
+    "Fija el periodo (el mes, por fecha de factura)",
+    "Cada indicador tiene su comparación (objetivo o año anterior)"
+   ]
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n5m3l1-q1",
+   "modo": "test",
+   "pregunta": "En un cuadro de mando ves la tarjeta «**Ventas: 48.200 €**» y nada más. ¿Qué le falta?",
+   "opciones": [
+    {
+     "texto": "Con qué se compara (objetivo o año anterior) y si lleva IVA",
+     "correcta": true,
+     "porque": "Sin comparación no se sabe si es buena o mala, y sin definición no se sabe qué mide."
+    },
+    {
+     "texto": "Los céntimos",
+     "correcta": false,
+     "porque": "Para dirección se redondea: nadie decide por los céntimos."
+    },
+    {
+     "texto": "Un color más llamativo",
+     "correcta": false,
+     "porque": "El color no dice si 48.200 € es mucho o poco. La comparación, sí."
+    }
+   ]
+  },
+  {
+   "id": "n5m3l1-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "Escribe la fórmula que cuenta los clientes **distintos** que hay en C2:C40.",
+   "aceptadas": [
+    "=CONTARA(UNICOS(C2:C40))",
+    "CONTARA(UNICOS(C2:C40))",
+    "=contara(unicos(c2:c40))",
+    "=FILAS(UNICOS(C2:C40))",
+    "FILAS(UNICOS(C2:C40))"
+   ],
+   "explicacion": "UNICOS deja cada cliente una sola vez y CONTARA cuenta los que quedan."
+  },
+  {
+   "id": "n5m3l1-q3",
+   "modo": "predice",
+   "enunciado": "Ventas de octubre en B2 y del mismo mes del año pasado en C2. ¿Qué número devuelve la fórmula (sin formato de porcentaje)?",
+   "hoja": {
+    "celdas": {
+     "A1": "Mes",
+     "B1": "2026",
+     "C1": "2025",
+     "A2": "Octubre",
+     "B2": 12600,
+     "C2": 12000
+    },
+    "formatos": {
+     "B2:C2": "eur"
+    }
+   },
+   "celda": "D2",
+   "formula": "=B2/C2-1",
+   "explicacion": "12.600 ÷ 12.000 = 1,05; menos 1, 0,05: un 5 % más que el año pasado."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué es un KPI o indicador clave?",
+   "dorso": "Una cifra que se mira cada mes para decidir algo. Pocos (de 4 a 6) y siempre comparados con el objetivo o con el año anterior."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Contar los valores distintos de una columna",
+   "dorso": "=CONTARA(UNICOS(rango))"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Cumplimiento del objetivo",
+   "dorso": "Real ÷ objetivo. 100 % es justo el objetivo."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Dos cifras de ventas no cuadran y una es 1,21 veces la otra",
+   "dorso": "Una lleva IVA y la otra no. Define siempre si el indicador va con o sin IVA."
+  }
+ ]
+}

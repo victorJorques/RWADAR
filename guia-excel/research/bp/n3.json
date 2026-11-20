@@ -1,0 +1,225 @@
+{
+  "id": "n3",
+  "nombre": "Análisis de datos",
+  "lema": "De una exportación sucia a un informe fiable: el «Excel avanzado» que piden las ofertas.",
+  "horas": 18,
+  "equivale_a": "Ofertas «Excel avanzado/alto» de administración, compras, logística, RRHH y facturación; ~70 % de MO-211 (2.3, 3.1-3.3, 3.5, 4.1 combinado, 4.2-4.3); ICAEW General; ICDL Spreadsheets advanced (análisis, búsquedas, auditoría)",
+  "puede_hacer_sola": [
+    "Suma, cuenta y promedia con varios criterios, también entre dos fechas.",
+    "Clasifica por tramos o categorías con SI.CONJUNTO, CAMBIAR o una tabla de tramos.",
+    "Resalta la fila entera de lo vencido o lo que no cuadra con formato condicional con fórmula.",
+    "Cruza dos listados con INDICE + COINCIDIR (y BUSCARX) y trata los #N/D sin esconder problemas.",
+    "Saca listados dinámicos con FILTRAR y ORDENARPOR.",
+    "Calcula vencimientos, días laborables y antigüedad de deuda.",
+    "Limpia una exportación del ERP o del banco: separa columnas, convierte texto en números y fechas, quita duplicados.",
+    "Revisa un libro con Rastrear precedentes, Evaluar fórmula y Ventana Inspección, y monta una hoja de controles con comprobación maestra.",
+    "Resume con tablas dinámicas: % del total, agrupación por meses, campo calculado, segmentaciones, escala de tiempo y gráfico dinámico.",
+    "Aprueba la prueba práctica de 45 minutos de un puesto administrativo con «Excel avanzado»."
+  ],
+  "modulos": [
+    {
+      "id": "n3m1",
+      "titulo": "Varias condiciones",
+      "objetivos": [
+        "es capaz de sumar y contar con varios criterios, incluidos los de fecha",
+        "es capaz de clasificar con SI.CONJUNTO y CAMBIAR",
+        "es capaz de resaltar filas completas con formato condicional con fórmula"
+      ],
+      "lecciones": [
+        {
+          "id": "n3m1l1",
+          "titulo": "Sumar y contar con varios criterios",
+          "minutos": 14,
+          "conceptos": ["SUMAR.SI.CONJUNTO(rango_suma; rango_criterio1; criterio1; …): el rango de suma va primero", "CONTAR.SI.CONJUNTO", "todas las condiciones a la vez (Y)", "criterios desde celdas", "comodines: \"*Madrid*\" y \"?\"", "tabla de resumen de dos entradas con referencias mixtas ($A2, B$1)"],
+          "funciones": ["SUMAR.SI.CONJUNTO", "CONTAR.SI.CONJUNTO"],
+          "errores_conceptuales": ["Poner el rango de suma al final como en SUMAR.SI", "Rangos de distinto tamaño", "Referencias mixtas mal fijadas en la tabla de doble entrada"],
+          "ejercicios_vivos": ["=SUMAR.SI.CONJUNTO(D2:D12;B2:B12;\"Norte\";C2:C12;\"Cables\")", "=SUMAR.SI.CONJUNTO(D2:D12;B2:B12;G2;C2:C12;H2) con criterios en celdas (variantes)", "=CONTAR.SI.CONJUNTO(B2:B12;G2;D2:D12;\">\"&H2)", "=SUMAR.SI.CONJUNTO($D$2:$D$12;$B$2:$B$12;$F3;$C$2:$C$12;G$2) copiada a la tabla zona × familia (copiar_a)", "=CONTAR.SI(A2:A12;\"*Madrid*\")", "arregla el error: =SUMAR.SI.CONJUNTO(B2:B12;\"Norte\";D2:D12)"],
+          "otros_ejercicios": ["predice: total de una zona con dos criterios", "recuerda: escribe ventas de un comercial en una familia"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m1l2",
+          "titulo": "Criterios de fecha y entre dos valores",
+          "minutos": 14,
+          "conceptos": ["criterio de fecha: \">=\"&FECHA(2026;10;1) o \">=\"&F1", "entre dos fechas: dos criterios sobre la misma columna", "fin de mes y mes siguiente como límites", "PROMEDIO.SI.CONJUNTO, MAX.SI.CONJUNTO y MIN.SI.CONJUNTO", "última fecha de compra de un cliente con MAX.SI.CONJUNTO", "media de porcentajes frente a porcentaje de totales"],
+          "funciones": ["SUMAR.SI.CONJUNTO", "PROMEDIO.SI.CONJUNTO", "MAX.SI.CONJUNTO", "MIN.SI.CONJUNTO", "FECHA"],
+          "errores_conceptuales": ["Escribir la fecha dentro de las comillas \">=01/10/2026\" o la celda dentro: \">=F1\"", "Olvidar el límite superior y sumar meses de más", "E23 Media de porcentajes en lugar de Σ margen / Σ ventas"],
+          "ejercicios_vivos": ["=SUMAR.SI.CONJUNTO(C2:C10;B2:B10;\"Norte\";A2:A10;\">=\"&FECHA(2026;10;1)) (variantes: cambia una fecha de septiembre a octubre)", "=SUMAR.SI.CONJUNTO(C2:C10;A2:A10;\">=\"&F1;A2:A10;\"<=\"&F2) entre dos fechas en celdas", "=MAX.SI.CONJUNTO(A2:A10;B2:B10;G2) última compra del cliente", "=PROMEDIO.SI.CONJUNTO(C2:C10;B2:B10;G2;C2:C10;\">0\")", "arregla el error: criterio \">=F1\" que no cuenta nada", "=SUMA(D2:D10)/SUMA(C2:C10) margen % correcto frente a PROMEDIO(E2:E10)"],
+          "otros_ejercicios": ["test: por qué \">=F1\" no funciona", "recuerda: escribe las ventas de octubre con dos criterios de fecha"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m1l3",
+          "titulo": "Clasificar con SI.CONJUNTO y CAMBIAR",
+          "minutos": 13,
+          "conceptos": ["SI.CONJUNTO(prueba1; valor1; prueba2; valor2; …; VERDADERO; valor por defecto)", "el orden de las pruebas importa", "CAMBIAR(expresión; valor1; resultado1; …; por defecto) para equivalencias exactas", "cuándo una tabla de tramos es mejor (los límites cambian)", "plan B en Excel 2016: SI anidados o BUSCARV en tabla auxiliar"],
+          "funciones": ["SI.CONJUNTO", "CAMBIAR", "SI"],
+          "errores_conceptuales": ["Olvidar el caso por defecto y obtener #N/D", "Escribir los límites dentro de la fórmula cuando cambian cada año"],
+          "ejercicios_vivos": ["=SI.CONJUNTO(B2>=$G$1;\"A\";B2>=$G$2;\"B\";VERDADERO;\"C\")", "=CAMBIAR(C2;\"Z\";\"Zaragoza\";\"P\";\"Pamplona\";\"L\";\"Lleida\";\"Otra\")", "arregla el error: SI.CONJUNTO sin caso por defecto que da #N/D", "predice: SI.CONJUNTO con pruebas en orden inverso", "=CAMBIAR(D2;\"Contado\";0;\"30 días\";30;\"60 días\";60;0) días de pago según la forma de pago", "mini-tarea: clasificar clientes por volumen con límites en parámetros"],
+          "otros_ejercicios": ["test: SI.CONJUNTO, CAMBIAR o tabla de tramos para cada caso (elige la herramienta)", "recuerda: escribe un CAMBIAR de códigos de delegación"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m1l4",
+          "titulo": "Resaltar la fila entera: formato condicional con fórmula",
+          "minutos": 13,
+          "conceptos": ["Nueva regla > Utilice una fórmula que determine las celdas para aplicar formato", "la fórmula se escribe para la primera fila y devuelve VERDADERO o FALSO", "el $ delante de la columna (=$F2<$J$1) para pintar la fila entera", "Administrar reglas: orden y rango «Se aplica a»", "probar la fórmula antes en una columna auxiliar"],
+          "funciones": ["Y", "O"],
+          "errores_conceptuales": ["Fórmula de la regla sin $ en la columna (solo se pinta una celda)", "Escribir la fórmula para la fila 1 cuando los datos empiezan en la 2", "Usar HOY() en la regla de un informe con fecha de corte"],
+          "ejercicios_vivos": ["=$F2<$J$1 probada en una columna auxiliar (VERDADERO si está vencida a la fecha de corte), copiada hacia abajo", "=Y($F2<$J$1;$G2=\"Pendiente\")", "=$D2>$E2 riesgo por encima del límite", "=CONTAR.SI($A$2:$A$20;$A2)>1 duplicados", "arregla el error: =F2<$J$1 que al copiar a la derecha cambia de columna"],
+          "otros_ejercicios": ["cinta: Inicio > Estilos > Formato condicional", "ordenar: crear la regla de fila entera para facturas vencidas", "recuerda: test por qué $F2 y no F2"],
+          "practica_excel_real": "En una lista de facturas, pintar la fila entera de las vencidas y pendientes a la fecha de corte de una celda, y en otro color las que superan el límite de riesgo; revisar el orden en Administrar reglas."
+        }
+      ],
+      "practica_excel": "Libro n3-ventas-criterios.xlsx: tabla de resumen zona × mes con SUMAR.SI.CONJUNTO y referencias mixtas, última compra por cliente, clasificación ABC con SI.CONJUNTO y límites en Parámetros, y formato condicional de fila entera para clientes sin compra en 90 días. Controles: suma de la tabla = total ventas, ventas Norte en octubre, n.º de clientes A."
+    },
+    {
+      "id": "n3m2",
+      "titulo": "Cruces, tramos y plazos",
+      "objetivos": [
+        "es capaz de cruzar listados con INDICE + COINCIDIR y tratar los #N/D",
+        "es capaz de clasificar por tramos con búsqueda aproximada",
+        "es capaz de sacar listados con FILTRAR y ORDENARPOR",
+        "es capaz de calcular vencimientos y días laborables"
+      ],
+      "lecciones": [
+        {
+          "id": "n3m2l1",
+          "titulo": "INDICE y COINCIDIR, y qué hacer con #N/D",
+          "minutos": 15,
+          "conceptos": ["COINCIDIR(valor; rango; 0) dice en qué posición está", "INDICE(rango; posición) devuelve lo que hay en esa posición", "INDICE+COINCIDIR busca hacia la izquierda y funciona en todas las versiones, LibreOffice y Google Sheets", "COINCIDIRX como versión moderna", "BUSCARV con COINCIDIR para no escribir el número de columna", "SI.ERROR tapa cualquier error; SI.ND solo el #N/D: mejor SI.ND", "contar los no encontrados en vez de esconderlos"],
+          "funciones": ["INDICE", "COINCIDIR", "COINCIDIRX", "SI.ERROR", "SI.ND", "ESNOD"],
+          "errores_conceptuales": ["E24 Esconder errores con SI.ERROR(…;0) y que sumen cero sin que nadie lo vea", "Olvidar el 0 de COINCIDIR (aproximada)", "Cruzar por un campo que no es único (duplicados)"],
+          "ejercicios_vivos": ["=COINCIDIR(E2;$A$2:$A$9;0)", "=INDICE($C$2:$C$9;COINCIDIR(E2;$A$2:$A$9;0))", "=SI.ND(INDICE($C$2:$C$9;COINCIDIR(E2;$A$2:$A$9;0));\"Sin tarifa\")", "=INDICE($A$2:$A$9;COINCIDIR(E2;$C$2:$C$9;0)) búsqueda hacia la izquierda", "=BUSCARV(E2;$A$1:$D$9;COINCIDIR(F1;$A$1:$D$1;0);FALSO)", "=CONTAR.SI(G2:G9;\"Sin tarifa\") control de no encontrados", "predice: SI.ERROR(…;0) frente a SI.ND con un error de #¡VALOR!"],
+          "otros_ejercicios": ["test: por qué SI.ND es más seguro que SI.ERROR", "recuerda: escribe INDICE+COINCIDIR para traer el precio"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m2l2",
+          "titulo": "Buscar por tramos",
+          "minutos": 13,
+          "conceptos": ["tabla de tramos con el límite inferior de cada tramo, ordenada de menor a mayor", "BUSCARV(…;VERDADERO) devuelve el tramo cuyo límite es el mayor que no supera el valor", "BUSCARX(…;;-1) (coincidencia exacta o el siguiente menor)", "tramos de antigüedad (0-30, 31-60, 61-90, más de 90), descuentos y comisiones", "fijar la tabla de tramos con $ y en Parámetros"],
+          "funciones": ["BUSCARV", "BUSCARX"],
+          "errores_conceptuales": ["Tabla de tramos desordenada (resultado falso sin error)", "Poner el límite superior en lugar del inferior", "Usar coincidencia aproximada en una búsqueda de códigos"],
+          "ejercicios_vivos": ["=BUSCARV(B2;$E$2:$F$5;2;VERDADERO) tramo de antigüedad (copiar_a)", "=BUSCARX(B2;$E$2:$E$5;$F$2:$F$5;;-1)", "=B2*BUSCARV(B2;$E$2:$F$5;2;VERDADERO) descuento por volumen", "predice: =BUSCARV(3200;tramos;2;VERDADERO) (0,02)", "arregla el error: tabla con límites superiores que clasifica mal", "mini-tarea: antigüedad de 6 facturas por tramos"],
+          "otros_ejercicios": ["test: ¿cómo debe estar ordenada la tabla de tramos?", "recuerda: escribe la búsqueda aproximada del tramo"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m2l3",
+          "titulo": "Listados que se hacen solos: FILTRAR y ORDENARPOR",
+          "minutos": 14,
+          "conceptos": ["FILTRAR(datos; condición; si está vacío)", "varias condiciones: (cond1)*(cond2) para «y», (cond1)+(cond2) para «o»", "#¡CALC! si no hay resultados y no se da el tercer argumento", "ORDENARPOR(datos; columna por la que ordenar; orden)", "combinar: FILTRAR + ORDENARPOR + TOMAR para un top 5", "plan B: Autofiltro, filtro avanzado o tabla dinámica"],
+          "funciones": ["FILTRAR", "ORDENARPOR", "ORDENAR", "TOMAR"],
+          "errores_conceptuales": ["Usar Y() dentro de FILTRAR (devuelve un solo valor)", "No prever el caso sin resultados", "Escribir debajo del resultado (#¡DESBORDAMIENTO!)"],
+          "ejercicios_vivos": ["=FILTRAR(A2:D12;B2:B12=G1;\"Sin datos\")", "=FILTRAR(A2:D12;(B2:B12=G1)*(D2:D12>G2);\"Sin datos\")", "=FILTRAR(A2:D12;(B2:B12=\"Norte\")+(B2:B12=\"Sur\"))", "=ORDENARPOR(A2:D12;D2:D12;-1)", "=TOMAR(ORDENARPOR(A2:D12;D2:D12;-1);5) top 5", "arregla el error: =FILTRAR(A2:D12;Y(B2:B12=G1;D2:D12>G2))", "predice: FILTRAR sin tercer argumento y sin resultados (#¡CALC!)"],
+          "otros_ejercicios": ["test: elige la herramienta: FILTRAR, Autofiltro o tabla dinámica según el caso", "recuerda: escribe FILTRAR con dos condiciones"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m2l4",
+          "titulo": "Vencimientos, días laborables y antigüedad",
+          "minutos": 14,
+          "conceptos": ["FIN.MES(fecha; meses) y FECHA.MES(fecha; meses)", "DIA.LAB(inicio; días; festivos) para plazos en días laborables", "DIAS.LAB e DIAS.LAB.INTL con fin de semana y lista de festivos", "DIASEM(fecha; 2) (lunes = 1)", "días vencidos a la fecha de corte: =MAX(0;$J$1-F2)", "SIFECHA(inicio; fin; \"Y\") para años completos (unidades en inglés: \"Y\", \"M\", \"D\")", "los festivos van en una lista en Parámetros"],
+          "funciones": ["FIN.MES", "FECHA.MES", "DIA.LAB", "DIAS.LAB", "DIAS.LAB.INTL", "DIASEM", "SIFECHA", "MAX"],
+          "errores_conceptuales": ["Sumar 30 al vencimiento cuando el plazo es «fin de mes» o en días laborables", "Olvidar los festivos", "Usar \"A\" para años en SIFECHA (es \"Y\")"],
+          "ejercicios_vivos": ["=FIN.MES(B2;0) último día del mes de la factura", "=FECHA.MES(B2;2)", "=DIA.LAB(B2;10;$H$2:$H$6)", "=DIAS.LAB(B2;C2;$H$2:$H$6)", "=MAX(0;$J$1-F2) días vencidos a la fecha de corte", "=SIFECHA(B2;$J$1;\"Y\") años de antigüedad de un empleado", "=DIASEM(B2;2)"],
+          "otros_ejercicios": ["test: «a 60 días fecha factura» frente a «fin de mes»", "recuerda: escribe los días laborables entre dos fechas con festivos"],
+          "practica_excel_real": null
+        }
+      ],
+      "practica_excel": "Libro n3-cruce-listados.xlsx: cruzar pedidos con el maestro de clientes y la tarifa (INDICE+COINCIDIR con control de no encontrados), calcular vencimientos y días vencidos a 31/10/2026, clasificar por tramos de antigüedad y sacar con FILTRAR la lista de facturas de más de 60 días de un cliente elegido. Controles: n.º de líneas sin tarifa, Σ vencido a más de 60 días."
+    },
+    {
+      "id": "n3m3",
+      "titulo": "Limpiar y comprobar",
+      "objetivos": [
+        "es capaz de separar y extraer partes de un texto con funciones y con herramientas",
+        "es capaz de convertir textos en números y fechas y de quitar duplicados",
+        "es capaz de auditar fórmulas y montar una hoja de controles con comprobación maestra"
+      ],
+      "lecciones": [
+        {
+          "id": "n3m3l1",
+          "titulo": "Separar y extraer: funciones de texto, Texto en columnas y Relleno rápido",
+          "minutos": 15,
+          "conceptos": ["IZQUIERDA, DERECHA y EXTRAE", "HALLAR (no distingue mayúsculas) y ENCONTRAR para localizar un separador", "TEXTOANTES y TEXTODESPUES (Excel 2024 y Microsoft 365; plan B EXTRAE+HALLAR)", "Datos > Texto en columnas para dividir de una vez", "Relleno rápido (Ctrl+Mayús+E) a partir de un ejemplo: comprobar siempre el resultado", "funciones (se actualizan) frente a herramientas (resultado fijo)"],
+          "funciones": ["IZQUIERDA", "DERECHA", "EXTRAE", "HALLAR", "ENCONTRAR", "TEXTOANTES", "TEXTODESPUES", "LARGO"],
+          "errores_conceptuales": ["Contar caracteres a mano en vez de buscar el separador", "Fiarse del Relleno rápido sin revisar las filas raras", "Texto en columnas que machaca la columna de al lado"],
+          "ejercicios_vivos": ["=IZQUIERDA(A2;3) prefijo del código", "=DERECHA(A2;4)", "=EXTRAE(A2;HALLAR(\"-\";A2)+1;3)", "=IZQUIERDA(A2;HALLAR(\" \";A2)-1) nombre", "=TEXTODESPUES(A2;\" \") apellidos", "=TEXTOANTES(B2;\"@\") usuario del correo", "arregla el error: EXTRAE con posición fija que falla con códigos de distinto largo"],
+          "otros_ejercicios": ["cinta: Datos > Herramientas de datos > Texto en columnas", "cinta: Datos > Herramientas de datos > Relleno rápido", "recuerda: test función frente a herramienta"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m3l2",
+          "titulo": "Números y fechas que llegan como texto, y duplicados",
+          "minutos": 15,
+          "conceptos": ["síntomas: alineado a la izquierda, triángulo verde, SUMA no lo cuenta", "VALOR.NUMERO(texto; decimal; miles) para «1234.56» o «1.234,56»", "SUSTITUIR para quitar símbolos y CARACTER(160) (espacio duro de las webs)", "signo menos al final («150-») de algunos ERP", "fechas «20261031» o «2026-10-31» como texto: FECHA(IZQUIERDA…) o FECHANUMERO", "detectar duplicados con CONTAR.SI y quitarlos con Datos > Quitar duplicados sobre una copia", "comprobar: n.º de filas y total antes y después"],
+          "funciones": ["VALOR.NUMERO", "VALOR", "SUSTITUIR", "CARACTER", "ESPACIOS", "FECHA", "FECHANUMERO", "ESNUMERO", "CONTAR.SI"],
+          "errores_conceptuales": ["E08 Números como texto que no suman y nadie lo nota", "Convertir «1234.56» y obtener 123456", "Quitar duplicados sobre el original sin contar antes"],
+          "ejercicios_vivos": ["=VALOR.NUMERO(A2;\".\";\",\") importe con punto decimal", "=VALOR.NUMERO(SUSTITUIR(A2;\" €\";\"\"))", "=SUSTITUIR(A2;CARACTER(160);\"\")", "=SI(DERECHA(A2;1)=\"-\";-VALOR.NUMERO(IZQUIERDA(A2;LARGO(A2)-1));VALOR.NUMERO(A2))", "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))", "=CONTAR.SI($A$2:$A$20;A2)>1 marcar duplicados", "predice: =SUMA(B2:B5) con un importe como texto"],
+          "otros_ejercicios": ["cinta: Datos > Herramientas de datos > Quitar duplicados", "recuerda: escribe la conversión de un importe con punto decimal"],
+          "practica_excel_real": null
+        },
+        {
+          "id": "n3m3l3",
+          "titulo": "Comprobar antes de entregar: auditoría y controles",
+          "minutos": 15,
+          "conceptos": ["si no da error no quiere decir que esté bien", "leer los errores: #N/D, #¡VALOR!, #¡REF!, #¡DIV/0!, #¿NOMBRE?, #¡DESBORDAMIENTO!, #¡NUM!, #¡CALC!", "Rastrear precedentes y dependientes, Evaluar fórmula, Ventana Inspección, Comprobación de errores (triángulo verde de fórmula incoherente)", "Ir a > Especial > Constantes para cazar números escritos a mano", "hoja Controles: cada control con esperado, obtenido, diferencia y VERDADERO/FALSO", "comprobación maestra =Y(rango de controles)", "probar con números que puedas calcular de cabeza"],
+          "funciones": ["Y", "ABS", "SUMA", "CONTARA", "REDONDEAR"],
+          "errores_conceptuales": ["E18 Fiarse de que «no sale error»", "E13 Sumar totales dos veces (subtotales dentro del rango)", "E31 Una fórmula distinta en una fila de fórmulas iguales", "E30 Referencia circular"],
+          "ejercicios_vivos": ["arregla el error: =SUMA(B2:B8) que incluye dos subtotales (total doble) → suma solo las líneas", "=ABS(SUMA(D2:D20)-$H$1)<=0,01 control de cuadre con el total del ERP", "=CONTARA(A2:A20)=$H$2 control de n.º de filas", "=Y(J2:J5) comprobación maestra", "=SI(Y(J2:J5);\"TODO CUADRA\";\"REVISAR\")", "arregla el error: (B2-B1)/(B1+B2) que da la mitad de la variación (caso JPMorgan en pequeño)"],
+          "otros_ejercicios": ["cinta: Fórmulas > Auditoría de fórmulas > Evaluar fórmula", "cinta: Fórmulas > Auditoría de fórmulas > Ventana Inspección", "test: qué significa cada error (#¡REF! al borrar una columna)"],
+          "practica_excel_real": "Libro n3-caza-el-error.xlsx: ocho hojas con un error cada una (rango corto, suma frente a media, signo, columna ordenada sola, número a mano, fórmula incoherente, código sin ceros, fecha convertida): encontrarlos con las herramientas de auditoría y anotar la corrección."
+        }
+      ],
+      "practica_excel": "Libro n3-export-erp.xlsx: limpiar una exportación de 500 filas (códigos con espacios, importes con punto y signo al final, fechas AAAAMMDD, duplicados exactos, una fila de total) en una hoja Datos sin tocar el original, y montar la hoja Controles con cuadre de filas e importe frente al total del ERP y comprobación maestra. Controles: n.º de filas limpias, Σ importe, n.º de duplicados quitados."
+    },
+    {
+      "id": "n3m4",
+      "titulo": "Tablas dinámicas",
+      "objetivos": [
+        "es capaz de crear una tabla dinámica desde una Tabla y elegir cómo resume cada campo",
+        "es capaz de mostrar porcentajes, agrupar fechas y añadir campos calculados",
+        "es capaz de filtrar con segmentaciones y escala de tiempo y presentar con gráficos dinámicos y combinados"
+      ],
+      "lecciones": [
+        {
+          "id": "n3m4l1",
+          "titulo": "Tu primera tabla dinámica",
+          "minutos": 14,
+          "conceptos": ["origen: una Tabla limpia (una fila por registro, títulos únicos, sin totales ni filas vacías)", "Insertar > Tabla dinámica en una hoja nueva", "panel Campos de tabla dinámica: Filas, Columnas, Valores y Filtros", "Configuración de campo de valor: suma, recuento, promedio, máximo", "formato de número del campo de valor", "Actualizar (y Actualizar todo) cuando cambian los datos", "Cambiar origen de datos", "diseño en forma tabular y totales generales"],
+          "funciones": [],
+          "errores_conceptuales": ["E28 La tabla dinámica no se actualiza sola y «cuenta en vez de sumar» porque hay textos en la columna", "Origen con rango fijo que deja fuera filas nuevas", "Arrastrar el campo de importe a Filas"],
+          "ejercicios_vivos": ["comprobación cruzada: =SUMAR.SI.CONJUNTO(D2:D12;B2:B12;\"Norte\") debe coincidir con la celda de la tabla dinámica"],
+          "otros_ejercicios": ["cinta: Insertar > Tablas > Tabla dinámica", "cinta: Analizar tabla dinámica > Datos > Actualizar", "test: la tabla dinámica muestra «Cuenta de Importe»: ¿por qué?", "test: añades pedidos y no aparecen: ¿qué pasa?", "ordenar: crear una tabla dinámica de ventas por zona y mes", "test: qué campo va en Filas, Columnas y Valores para «ventas por zona y familia»", "recuerda: test actualizar"],
+          "practica_excel_real": "Crear desde la Tabla de ventas una tabla dinámica de ventas por delegación y familia, en euros, en forma tabular; añadir pedidos nuevos a la Tabla y Actualizar."
+        },
+        {
+          "id": "n3m4l2",
+          "titulo": "Porcentajes, agrupaciones y campos calculados",
+          "minutos": 14,
+          "conceptos": ["Mostrar valores como: % del total general, % del total de fila o de columna, diferencia respecto al mes anterior", "agrupar fechas por meses, trimestres y años", "agrupar números por intervalos", "ordenar por valor y filtrar los 10 primeros", "campo calculado (margen = ventas − coste) y su límite: calcula sobre las sumas", "el mismo campo dos veces en Valores (euros y %)", "IMPORTARDATOSDINAMICOS al hacer clic en una celda (y cómo evitarlo si molesta)"],
+          "funciones": [],
+          "errores_conceptuales": ["Calcular el % a mano fuera de la tabla con referencias que se descolocan", "Promediar porcentajes de margen en vez de dividir totales", "Agrupar fechas que en realidad son texto (no deja)"],
+          "ejercicios_vivos": ["comprobación cruzada: =SUMA(D2:D12)/SUMA(C2:C12) frente al campo calculado de margen %"],
+          "otros_ejercicios": ["cinta: Analizar tabla dinámica > Agrupar > Agrupar selección", "cinta: Analizar tabla dinámica > Cálculos > Campos, elementos y conjuntos", "test: ¿qué opción muestra el peso de cada familia dentro de su zona? (% del total de fila o de columna según el diseño)", "test: no deja agrupar por meses: ¿por qué?", "test: campo calculado margen % frente a promedio de los márgenes %", "ordenar: mostrar el mismo importe en euros y en % del total", "recuerda: test Mostrar valores como"],
+          "practica_excel_real": "En la tabla dinámica de ventas: agrupar por meses y trimestres, mostrar el % de cada familia sobre el total de su delegación, añadir el campo calculado de margen y el top 10 de clientes."
+        },
+        {
+          "id": "n3m4l3",
+          "titulo": "Segmentaciones, gráficos dinámicos y gráficos combinados",
+          "minutos": 15,
+          "conceptos": ["Segmentación de datos y Escala de tiempo para filtrar con un clic", "Conexiones de filtro: una segmentación para varias tablas dinámicas", "Gráfico dinámico y profundizar en el detalle", "gráfico combinado con eje secundario (ventas en € y margen en %)", "modificar gráficos: Seleccionar datos, agregar series, Cambiar entre filas y columnas, mover a una hoja de gráfico", "título que dice la conclusión, ejes honestos (empezar en 0 en columnas), sin 3D", "texto alternativo y no depender solo del color"],
+          "funciones": [],
+          "errores_conceptuales": ["Escala del eje que exagera diferencias", "Mezclar euros y porcentajes en el mismo eje", "Segmentaciones que solo filtran una de las tablas"],
+          "ejercicios_vivos": [],
+          "otros_ejercicios": ["cinta: Analizar tabla dinámica > Filtrar > Insertar segmentación de datos", "cinta: Analizar tabla dinámica > Filtrar > Insertar escala de tiempo", "cinta: Analizar tabla dinámica > Filtrar > Conexiones de filtro", "cinta: Insertar > Gráficos > Insertar gráfico combinado", "cinta: Diseño de gráfico > Datos > Cambiar entre filas y columnas", "test: ventas en € y margen en %: ¿qué gráfico?", "test: el eje empieza en 95.000 €: ¿qué problema hay?", "recuerda: cinta segmentación"],
+          "practica_excel_real": "Montar una hoja Resumen con dos tablas dinámicas controladas por la misma segmentación de delegación y una escala de tiempo, un gráfico dinámico y un gráfico combinado de ventas y margen % con eje secundario y texto alternativo."
+        }
+      ],
+      "practica_excel": "Libro n3-prueba-administrativa.xlsx (prueba de salida del nivel, 45 min, ~500 filas sucias, enunciados sin nombre de función): limpiar, cruzar con el maestro, totales con varios criterios, tabla dinámica con segmentación y % del total, gráfico combinado, formato condicional de alertas, hoja Resumen legible y hoja Controles. Controles: n.º de filas limpias, Σ ventas, ventas de una delegación en un mes, % de una familia."
+    }
+  ],
+  "examen_nivel": "45 min, sin pistas, enunciados sin nombre de función, 80 % a la primera: SUMAR.SI.CONJUNTO con criterios de fecha concatenados, tabla de doble entrada con referencias mixtas, SI.CONJUNTO o CAMBIAR, INDICE+COINCIDIR con SI.ND y recuento de no encontrados, búsqueda por tramos, FILTRAR con dos condiciones, días vencidos y DIA.LAB, convertir texto en número y fecha, control de cuadre y comprobación maestra; preguntas de criterio y cinta sobre tablas dinámicas (actualizar, recuento frente a suma, % del total, agrupar fechas, segmentaciones), formato condicional con fórmula ($), auditoría y elegir la herramienta."
+}

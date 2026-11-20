@@ -1,0 +1,319 @@
+{
+ "id": "n1m4l3",
+ "titulo": "Imprimir, PDF y CSV sin sorpresas",
+ "minutos": 16,
+ "objetivo": "Preparar una hoja para imprimirla en una página de ancho, con los títulos repetidos y número de página, y saber cuándo enviar un PDF y cuándo un CSV y qué se pierde en cada caso.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Mañana llevo al banco el listado de cobros pendientes, impreso: que quepa de ancho en la hoja y que cada página lleve los títulos y su número. Después mándale el mismo listado a la gestoría en CSV, que lo cargan en su programa.",
+  "logro": "Ya sabes dejar un listado listo para imprimir o enviar en PDF sin páginas sueltas, y exportar los datos en CSV sabiendo qué se pierde."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En pantalla una hoja parece perfecta, y al imprimir sale en 14 páginas con una columna suelta en cada una. Para evitarlo hay una regla: **antes de imprimir, mira la vista previa**.\n\nPulsa [[Ctrl]]+[[P]] (o **Archivo › Imprimir**). A la derecha ves cómo quedará cada página, y abajo cuántas páginas salen: «1 de 14» es la señal de alarma. Aquí mismo lo arreglas antes de gastar papel."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo abre la **vista previa de impresión**?",
+   "aceptadas": [
+    "Ctrl+P",
+    "Control+P",
+    "Ctrl P",
+    "Ctrl + P"
+   ],
+   "explicacion": "Ctrl+P, de «imprimir». Úsalo siempre antes de imprimir o de exportar a PDF: lo que ves ahí es lo que sale."
+  },
+  {
+   "tipo": "texto",
+   "md": "Tres ajustes arreglan casi todo. Están en la pestaña **Disposición de página** (en algunas versiones se llama *Diseño de página*), grupo **Configurar página**, y también en la vista previa:\n\n- **Orientación**: *Vertical* u *Horizontal*. Si la lista es ancha, horizontal.\n- **Márgenes**: el blanco alrededor. *Estrechos* deja más sitio.\n- **Ajustar**: en la vista previa, cambia *Sin escalado* por **Ajustar todas las columnas en una página**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e2",
+   "modo": "cinta",
+   "enunciado": "El listado de Marta tiene 8 columnas y en vertical no cabe. Toca el botón para ponerlo en **horizontal**.",
+   "ruta": [
+    "Disposición de página",
+    "Configurar página",
+    "Orientación"
+   ],
+   "explicacion": "Disposición de página › Configurar página › Orientación › Horizontal. Con listas anchas es lo primero que se prueba."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e3",
+   "modo": "test",
+   "pregunta": "El listado de cobros tiene 200 filas. La vista previa dice «1 de 14»: siete páginas con casi todo y siete con solo la columna *Importe*. ¿Qué eliges en la vista previa?",
+   "opciones": [
+    {
+     "texto": "Ajustar todas las columnas en una página",
+     "correcta": true,
+     "porque": "Correcto. Todas las columnas caben de ancho y las filas siguen en las páginas que hagan falta, con letra legible."
+    },
+    {
+     "texto": "Ajustar hoja en una página",
+     "correcta": false,
+     "porque": "Metería las 200 filas en un solo folio: la letra saldría tan pequeña que no se podría leer."
+    },
+    {
+     "texto": "Bajar la letra de toda la hoja a tamaño 6",
+     "correcta": false,
+     "porque": "Estropea la hoja para trabajar en pantalla y no garantiza que quepa. El ajuste de impresión hace lo mismo sin tocar los datos."
+    }
+   ],
+   "explicacion": "Con listas largas: todas las columnas en una página de ancho, y que las filas ocupen las páginas que necesiten. Con una hoja pequeña (una factura), sí puedes usar «Ajustar hoja en una página»."
+  },
+  {
+   "tipo": "texto",
+   "md": "Dos ajustes más para documentos de varias páginas:\n\n- **Imprimir títulos**: repite la fila de títulos arriba de cada página. Sin esto, en la página 3 nadie sabe qué es cada columna. **Disposición de página › Configurar página › Imprimir títulos**, y en *Repetir filas en extremo superior* indicas la fila 1 (`$1:$1`).\n- **Área de impresión**: si solo quieres imprimir una parte, selecciónala y ve a **Área de impresión › Establecer área de impresión**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e4",
+   "modo": "cinta",
+   "enunciado": "Marta quiere que **cada página** del listado lleve arriba la fila de títulos (Factura, Cliente, Vencimiento…). Toca el botón donde se configura.",
+   "ruta": [
+    "Disposición de página",
+    "Configurar página",
+    "Imprimir títulos"
+   ],
+   "explicacion": "Disposición de página › Configurar página › Imprimir títulos. En «Repetir filas en extremo superior» pones $1:$1 y la fila 1 sale en todas las páginas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si un documento tiene varias páginas, **numéralas**. Si se caen al suelo o falta una, se nota.\n\n**Insertar › Texto › Encabezado y pie de página**. Excel muestra la hoja tal como se imprimirá, con tres cajitas arriba (encabezado) y tres abajo (pie). Haz clic en la del centro de abajo y pulsa **Número de página**.\n\nEn el encabezado puedes poner el nombre del documento: «Cobros pendientes a 16/11/2026»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e5",
+   "modo": "formula",
+   "enunciado": "Antes de enviar el listado, apunta cuántas facturas lleva, para que la gestoría compruebe que le llega todo. En **B11** cuenta cuántas facturas hay en A2:A9.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Vencimiento",
+     "D1": "Importe",
+     "A2": "F-2026-1184",
+     "B2": "Instalaciones Ebro",
+     "C2": {
+      "fecha": "2026-11-20"
+     },
+     "D2": 4235.6,
+     "A3": "F-2026-1191",
+     "B3": "Clima Segre",
+     "C3": {
+      "fecha": "2026-11-25"
+     },
+     "D3": 1870.25,
+     "A4": "F-2026-1203",
+     "B4": "Reformas Arga",
+     "C4": {
+      "fecha": "2026-11-30"
+     },
+     "D4": 962.8,
+     "A5": "F-2026-1210",
+     "B5": "Electricidad Aranda",
+     "C5": {
+      "fecha": "2026-12-05"
+     },
+     "D5": 3410,
+     "A6": "F-2026-1218",
+     "B6": "Iluminación Baztán",
+     "C6": {
+      "fecha": "2026-12-10"
+     },
+     "D6": 2588.4,
+     "A7": "F-2026-1225",
+     "B7": "Montajes Ultzama",
+     "C7": {
+      "fecha": "2026-12-15"
+     },
+     "D7": 745.15,
+     "A8": "F-2026-1231",
+     "B8": "Instalaciones Noguera",
+     "C8": {
+      "fecha": "2026-12-20"
+     },
+     "D8": 5120,
+     "A9": "F-2026-1240",
+     "B9": "Electricidad Txantrea",
+     "C9": {
+      "fecha": "2026-12-28"
+     },
+     "D9": 1306.9,
+     "A11": "Nº de facturas",
+     "C11": "Total",
+     "D11": "=SUMA(D2:D9)"
+    },
+    "formatos": {
+     "C2:C9": "fecha",
+     "D2:D11": "eur"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 21,
+     "C": 12,
+     "D": 12
+    }
+   },
+   "objetivo": "B11",
+   "solucion": "=CONTARA(A2:A9)",
+   "alternativas": [
+    "=CONTAR(D2:D9)",
+    "=CONTARA(B2:B9)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR(A2:A9)",
+    "=CONTARA(A1:A9)"
+   ],
+   "variantes": [
+    {
+     "A5": null,
+     "B5": null,
+     "C5": null,
+     "D5": null
+    }
+   ],
+   "pistas": [
+    "Los números de factura llevan letras: no son números. ¿Qué función cuenta celdas con cualquier cosa escrita?",
+    "CONTARA cuenta las celdas que no están vacías. Sin la fila de títulos.",
+    "=CONTARA(A2:A9)"
+   ],
+   "explicacion": "8 facturas por 20.239,10 €. Con el número de registros y el total en el correo, la gestoría comprueba en un minuto que su programa ha cargado todo. Es un total de control, y lo usarás en cada envío de datos."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para enviar el archivo tienes dos formatos, y no sirven para lo mismo:\n\n- **PDF**: una foto de lo que se imprimiría. Se ve igual en cualquier ordenador y no se puede cambiar. Para clientes, bancos y jefes. **Archivo › Exportar › Crear documento PDF/XPS**.\n- **CSV**: solo los datos, en texto, para cargarlos en otro programa. **Archivo › Guardar como** y en el tipo eliges **CSV UTF-8 (delimitado por comas)**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Lo que se pierde en un CSV",
+   "md": "Un CSV guarda **solo la hoja que tienes abierta** y **solo los valores**: donde había una fórmula queda su resultado. Se pierden las fórmulas, los colores, los bordes, los anchos de columna y el resto de hojas. Guarda siempre primero tu libro como *.xlsx* y haz el CSV como una copia aparte."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e6",
+   "modo": "test",
+   "pregunta": "Guardaste el listado como CSV y lo enviaste. Al día siguiente lo abres para seguir trabajando: el total ya no se recalcula al cambiar un importe y los euros salen sin color ni bordes. ¿Qué ha pasado?",
+   "opciones": [
+    {
+     "texto": "El CSV solo guarda valores: la fórmula del total se convirtió en un número fijo",
+     "correcta": true,
+     "porque": "Correcto. Es lo normal en un CSV. Por eso se trabaja en el .xlsx y el CSV es solo una copia para enviar."
+    },
+    {
+     "texto": "Excel se ha estropeado y hay que reinstalarlo",
+     "correcta": false,
+     "porque": "Excel funciona bien: el formato CSV no puede guardar fórmulas ni formato."
+    },
+    {
+     "texto": "La gestoría ha cambiado tu archivo",
+     "correcta": false,
+     "porque": "Tu copia está en tu ordenador. La pérdida ocurrió al guardar como CSV, no al enviarlo."
+    }
+   ],
+   "explicacion": "Regla de oficina: el trabajo vive en el .xlsx. El PDF es para que lo lean; el CSV, para que otro programa cargue los datos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l3-e7",
+   "modo": "ordenar",
+   "enunciado": "Resuelve el encargo de Marta de principio a fin. Ordena los pasos.",
+   "pasos": [
+    "Guarda el libro (.xlsx) con Ctrl+G",
+    "Disposición de página › Orientación › Horizontal",
+    "Imprimir títulos: repetir la fila 1 en cada página",
+    "Insertar › Encabezado y pie de página: número de página en el pie",
+    "Ctrl+P: elige «Ajustar todas las columnas en una página», revisa cada página e imprime",
+    "Archivo › Guardar como › CSV UTF-8 (delimitado por comas) y envíalo con el nº de facturas y el total"
+   ],
+   "explicacion": "Primero se protege el original, después se prepara la página, se comprueba en la vista previa y se imprime. El CSV va al final, como copia, y con sus totales de control. Encargo completo."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m4l3-q1",
+   "modo": "test",
+   "pregunta": "Tienes que mandar una factura a un cliente para que la vea y la pague. ¿En qué formato?",
+   "opciones": [
+    {
+     "texto": "PDF",
+     "correcta": true,
+     "porque": "Correcto. Se ve igual en cualquier ordenador o móvil y el cliente no puede cambiar las cifras sin querer."
+    },
+    {
+     "texto": "CSV",
+     "correcta": false,
+     "porque": "El CSV es para cargar datos en otro programa: perdería el formato y se vería como texto sin presentación."
+    },
+    {
+     "texto": "El .xlsx con tus fórmulas",
+     "correcta": false,
+     "porque": "El cliente podría cambiar celdas sin darse cuenta y vería tus fórmulas internas. Para leer, PDF."
+    }
+   ]
+  },
+  {
+   "id": "n1m4l3-q2",
+   "modo": "cinta",
+   "enunciado": "Quieres imprimir solo un trozo de la hoja. Ya lo has seleccionado. Toca el botón donde se fija lo que se imprime.",
+   "ruta": [
+    "Disposición de página",
+    "Configurar página",
+    "Área de impresión"
+   ],
+   "explicacion": "Disposición de página › Configurar página › Área de impresión › Establecer área de impresión."
+  },
+  {
+   "id": "n1m4l3-q3",
+   "modo": "test",
+   "pregunta": "Imprimes un listado de 5 páginas y desde la página 2 nadie sabe qué es cada columna. ¿Qué faltó?",
+   "opciones": [
+    {
+     "texto": "Imprimir títulos (repetir la fila 1 arriba de cada página)",
+     "correcta": true,
+     "porque": "Correcto. Así la fila de títulos sale en todas las páginas."
+    },
+    {
+     "texto": "Poner la hoja en horizontal",
+     "correcta": false,
+     "porque": "La orientación cambia el ancho que cabe, pero los títulos seguirían saliendo solo en la primera página."
+    },
+    {
+     "texto": "Inmovilizar la fila 1",
+     "correcta": false,
+     "porque": "Inmovilizar fija la fila en la pantalla, no en el papel. Para imprimir hace falta Imprimir títulos."
+    }
+   ]
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "atajo",
+   "frente": "Vista previa de impresión",
+   "dorso": "Ctrl+P (Archivo › Imprimir)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Lista larga y ancha: ¿qué ajuste de impresión?",
+   "dorso": "Horizontal + «Ajustar todas las columnas en una página»."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde se repite la fila de títulos en cada página impresa?",
+   "dorso": "Disposición de página › Imprimir títulos › Repetir filas en extremo superior ($1:$1)."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué se pierde al guardar como CSV?",
+   "dorso": "Fórmulas (queda el resultado), formato y el resto de hojas. Solo guarda los valores de la hoja activa."
+  }
+ ]
+}

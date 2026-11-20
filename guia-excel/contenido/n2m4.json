@@ -1,0 +1,1935 @@
+{
+  "id": "n2m4",
+  "nivel": "n2",
+  "titulo": "Fechas y plazos",
+  "intro": "En una empresa casi todo tiene fecha: cuándo vence una factura, cuántos días tarda un proveedor, cuántos años lleva alguien en la casa. En este módulo aprendes a calcular esos plazos con exactitud, con meses de verdad, fines de semana y festivos, sin sacar el calendario del cajón.",
+  "repaso_inicial": [
+    {
+      "id": "n2m4-r1",
+      "modo": "formula",
+      "enunciado": "Javier quiere saber cuánto se ha vendido en **Pamplona**. En **F2** suma los importes de la columna D solo de las filas cuya delegación (columna C) sea Pamplona. Debe salir **2.975,00 €**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Comercial",
+          "C1": "Delegación",
+          "D1": "Importe",
+          "F1": "Ventas Pamplona",
+          "A2": "P-2801",
+          "B2": "Irene",
+          "C2": "Pamplona",
+          "D2": 1250,
+          "A3": "P-2802",
+          "B3": "Pablo",
+          "C3": "Zaragoza",
+          "D3": 860,
+          "A4": "P-2803",
+          "B4": "Sergio",
+          "C4": "Lleida",
+          "D4": 2310,
+          "A5": "P-2804",
+          "B5": "Irene",
+          "C5": "Pamplona",
+          "D5": 1725,
+          "A6": "P-2805",
+          "B6": "Pablo",
+          "C6": "Zaragoza",
+          "D6": 540
+        },
+        "formatos": {
+          "D2:D6": "eur",
+          "F2": "eur"
+        },
+        "anchos": {
+          "C": 11,
+          "F": 17
+        }
+      },
+      "objetivo": "F2",
+      "solucion": "=SUMAR.SI(C2:C6;\"Pamplona\";D2:D6)",
+      "alternativas": [
+        "=SUMAR.SI($C$2:$C$6;\"Pamplona\";$D$2:$D$6)"
+      ],
+      "errores_tipicos": [
+        "=CONTAR.SI(C2:C6;\"Pamplona\")",
+        "=SUMAR.SI(D2:D6;\"Pamplona\";C2:C6)",
+        "=SUMA(D2:D6)"
+      ],
+      "variantes": [
+        {
+          "D5": 100
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Es una suma con condición: la función que suma solo las filas que cumplen algo.",
+        "`SUMAR.SI(dónde miro; qué busco; qué sumo)`. Miras en C, buscas \"Pamplona\" y sumas D.",
+        "`=SUMAR.SI(C2:C6;\"Pamplona\";D2:D6)`"
+      ],
+      "explicacion": "Bien recordado: 1.250 + 1.725. En este módulo vas a añadir a tus resúmenes una pieza nueva, la fecha, para poder responder a «¿cuánto se vendió en noviembre?»."
+    },
+    {
+      "id": "n2m4-r2",
+      "modo": "predice",
+      "enunciado": "El código de cada albarán empieza por las tres letras de la delegación. ¿Qué devuelve la fórmula de **B2**?",
+      "hoja": {
+        "celdas": {
+          "A1": "Albarán",
+          "B1": "Delegación",
+          "A2": "PAM-0458"
+        },
+        "anchos": {
+          "A": 12,
+          "B": 12
+        }
+      },
+      "celda": "B2",
+      "formula": "=IZQUIERDA(A2;3)",
+      "explicacion": "IZQUIERDA toma los primeros caracteres de un texto: aquí, los 3 primeros, «PAM». Hoy vas a ver que con las fechas pasa algo parecido: también se pueden desmontar en trozos.",
+      "respuesta": "PAM"
+    },
+    {
+      "id": "n2m4-r3",
+      "modo": "test",
+      "pregunta": "Lucía quiere marcar con **Sí** a quien tenga contrato fijo **y** más de 20 días de vacaciones pendientes. El tipo de contrato está en B2 y los días en C2. ¿Qué fórmula usas?",
+      "opciones": [
+        {
+          "texto": "=SI(Y(B2=\"Fijo\";C2>20);\"Sí\";\"No\")",
+          "correcta": true,
+          "porque": "Correcto: Y exige que se cumplan las dos condiciones a la vez."
+        },
+        {
+          "texto": "=SI(O(B2=\"Fijo\";C2>20);\"Sí\";\"No\")",
+          "correcta": false,
+          "porque": "O da Sí con que se cumpla una sola de las dos: marcaría a todos los fijos, tengan los días que tengan."
+        },
+        {
+          "texto": "=SI(B2=\"Fijo\";\"Sí\";\"No\")",
+          "correcta": false,
+          "porque": "Solo mira el contrato y se olvida de los días pendientes."
+        },
+        {
+          "texto": "=Y(SI(B2=\"Fijo\";C2>20))",
+          "correcta": false,
+          "porque": "El orden está al revés: primero va SI y, dentro, Y con las dos condiciones."
+        }
+      ]
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n2m4l1",
+      "titulo": "Las fechas son números: HOY y restar fechas",
+      "minutos": 15,
+      "objetivo": "Entender que una fecha es un número de días y usarlo para calcular días entre fechas, vencimientos y días de retraso.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Te paso las facturas que nos deben. Necesito saber cuántos días de retraso lleva cada una a fecha de hoy; el plazo de pago es de 30 días desde la factura. Así sé a quién llamo primero.",
+        "logro": "Ya sabes calcular días entre fechas, vencimientos y días de retraso, y montar la lista de cobros pendientes que te pedirá cualquier departamento financiero."
+      },
+      "funciones": [
+        "HOY"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Vencimientos de facturas, plazos de entrega, antigüedad de la plantilla: en una oficina, media vida va de fechas. Y Excel guarda un secreto que lo hace todo fácil: **una fecha es un número**. Excel cuenta los días desde el 01/01/1900, que es el día **1**; el 02/01/1900 es el 2, y así hasta hoy. A ese número se le llama **número de serie**. Lo que ves en la celda («16/11/2026») es solo su disfraz: el **formato de fecha**."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La misma fecha, con y sin disfraz",
+          "hoja": {
+            "celdas": {
+              "A1": "Lo que ves",
+              "B1": "Lo que hay debajo",
+              "A2": {
+                "fecha": "2026-11-16"
+              },
+              "B2": "=A2",
+              "A3": {
+                "fecha": "2026-11-17"
+              },
+              "B3": "=A3",
+              "A4": {
+                "fecha": "2026-12-31"
+              },
+              "B4": "=A4"
+            },
+            "formatos": {
+              "A2:A4": "fecha",
+              "B2:B4": "0"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 18
+            }
+          },
+          "resaltar": [
+            "B2:B4"
+          ],
+          "pie": "La columna B tiene formato de número: enseña el número de serie que Excel guarda. El 16/11/2026 es el día 46342."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e1",
+          "modo": "predice",
+          "enunciado": "Andrés pidió cable el **16/11/2026** y llega el **17/11/2026**. Si una fecha es un número, ¿qué número da la resta de **B3**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": {
+                "fecha": "2026-11-16"
+              },
+              "A2": "Entrega",
+              "B2": {
+                "fecha": "2026-11-17"
+              },
+              "A3": "Días"
+            },
+            "formatos": {
+              "B1:B2": "fecha"
+            },
+            "anchos": {
+              "A": 10,
+              "B": 12
+            }
+          },
+          "celda": "B3",
+          "formula": "=B2-B1",
+          "explicacion": "46343 − 46342 = **1**. Restar dos fechas da los **días** que hay entre ellas. Esa es toda la magia de este módulo.",
+          "respuesta": "1"
+        },
+        {
+          "tipo": "texto",
+          "md": "Por eso, **restar dos fechas da días**. Entrega menos pedido, `=D2-C2`, dice cuántos días ha tardado un proveedor. Pon siempre la fecha **más reciente primero**; al revés, sale el mismo número pero en negativo. Este cálculo vale oro para Andrés: con él sabe qué proveedor cumple y cuál no, y puede negociar con datos en lugar de con impresiones."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e2",
+          "modo": "formula",
+          "enunciado": "Andrés quiere saber cuánto tarda cada proveedor. En **E2** calcula los **días** entre la fecha del pedido (C2) y la de entrega (D2). Tu fórmula se copiará a E3:E6. En E2 debe salir **4**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Proveedor",
+              "C1": "Fecha pedido",
+              "D1": "Entrega",
+              "E1": "Días",
+              "A2": "OC-1180",
+              "B2": "Cables Pirineo",
+              "C2": {
+                "fecha": "2026-11-02"
+              },
+              "D2": {
+                "fecha": "2026-11-06"
+              },
+              "A3": "OC-1181",
+              "B3": "Luminarias Moncayo",
+              "C3": {
+                "fecha": "2026-11-03"
+              },
+              "D3": {
+                "fecha": "2026-11-13"
+              },
+              "A4": "OC-1182",
+              "B4": "Mecanismos Segre",
+              "C4": {
+                "fecha": "2026-11-04"
+              },
+              "D4": {
+                "fecha": "2026-11-09"
+              },
+              "A5": "OC-1183",
+              "B5": "Tubos Bardenas",
+              "C5": {
+                "fecha": "2026-11-05"
+              },
+              "D5": {
+                "fecha": "2026-11-16"
+              },
+              "A6": "OC-1184",
+              "B6": "Fijaciones Aneto",
+              "C6": {
+                "fecha": "2026-11-09"
+              },
+              "D6": {
+                "fecha": "2026-11-12"
+              }
+            },
+            "formatos": {
+              "C2:D6": "fecha",
+              "E2:E6": "0"
+            },
+            "anchos": {
+              "B": 18,
+              "C": 12,
+              "D": 11
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E6"
+          ],
+          "solucion": "=D2-C2",
+          "alternativas": [
+            "=-(C2-D2)"
+          ],
+          "errores_tipicos": [
+            "=C2-D2",
+            "=D2-C2+1",
+            "=D2+C2"
+          ],
+          "variantes": [
+            {
+              "D2": {
+                "fecha": "2026-11-10"
+              }
+            }
+          ],
+          "formato_resultado": "0",
+          "pistas": [
+            "Es una resta de dos fechas: la más reciente menos la más antigua.",
+            "La entrega (D2) es posterior al pedido (C2), así que va primero.",
+            "`=D2-C2`"
+          ],
+          "explicacion": "Cuatro días para Cables Pirineo y once para Tubos Bardenas, el más lento. Con una columna así, Andrés ve de un vistazo qué proveedor cumple sus plazos y cuál le hace esperar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e3",
+          "modo": "test",
+          "pregunta": "Haces una resta de fechas y en la celda aparece **01/02/1900**. ¿Qué ha pasado?",
+          "opciones": [
+            {
+              "texto": "La celda tiene formato de fecha: el resultado es 32 días y solo hay que cambiar el formato a General.",
+              "correcta": true,
+              "porque": "Exacto: la cuenta está bien, solo lleva el disfraz equivocado. El 01/02/1900 es el día 32 de la cuenta de Excel (31 de enero + 1)."
+            },
+            {
+              "texto": "La fórmula está mal y hay que escribirla de nuevo.",
+              "correcta": false,
+              "porque": "La resta está bien. Si la repites en la misma celda, volverá a salir igual, porque el problema es el formato, no la fórmula."
+            },
+            {
+              "texto": "Una de las dos fechas es del año 1900.",
+              "correcta": false,
+              "porque": "No: Excel enseña como fecha un número pequeño (32), y los números pequeños caen en 1900. Las fechas originales están bien."
+            },
+            {
+              "texto": "Excel no sabe restar fechas.",
+              "correcta": false,
+              "porque": "Sí sabe: restar fechas es restar sus números de serie. El resultado es correcto; solo se ve mal."
+            }
+          ],
+          "explicacion": "Cuando un resultado en días sale con aspecto de fecha, cambia el formato a **General** o **Número** (Inicio › Número › Formato de número)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Al revés también funciona: **sumar un número a una fecha da otra fecha**. `=C2+30` devuelve el día que cae 30 días después de C2. Es la fórmula del **vencimiento**: una factura del 05/10/2026 que se paga a 30 días vence el 04/11/2026. Excel cuenta por ti los meses de 30 y de 31 días, sin calendario en la mano."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "El plazo legal de pago entre empresas",
+          "md": "Según la Ley 3/2004 de morosidad, si el contrato no fija otro plazo, se paga en **30 días naturales** desde que se reciben las mercancías o servicios. Se puede pactar más, pero **nunca más de 60 días naturales**. «Naturales» significa que cuentan todos los días, también sábados, domingos y festivos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e4",
+          "modo": "formula",
+          "enunciado": "Marta lleva el control de cobros. En **D2** calcula el **vencimiento** de la factura: la fecha que cae 30 días después de la fecha de factura (C2). Se copiará a D3:D6. En D2 debe salir **04/11/2026**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Fecha factura",
+              "D1": "Vencimiento",
+              "A2": "FV-0871",
+              "B2": "Instalaciones Moncayo",
+              "C2": {
+                "fecha": "2026-10-05"
+              },
+              "A3": "FV-0874",
+              "B3": "Montajes Delicias",
+              "C3": {
+                "fecha": "2026-10-12"
+              },
+              "A4": "FV-0880",
+              "B4": "Electricidad Lacasa",
+              "C4": {
+                "fecha": "2026-10-20"
+              },
+              "A5": "FV-0886",
+              "B5": "Reformas Actur",
+              "C5": {
+                "fecha": "2026-10-31"
+              },
+              "A6": "FV-0891",
+              "B6": "Climatización Ribera",
+              "C6": {
+                "fecha": "2026-11-03"
+              }
+            },
+            "formatos": {
+              "C2:D6": "fecha"
+            },
+            "anchos": {
+              "B": 20,
+              "C": 13,
+              "D": 13
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D6"
+          ],
+          "solucion": "=C2+30",
+          "alternativas": [
+            "=30+C2"
+          ],
+          "errores_tipicos": [
+            "=C2+31",
+            "=C2+1",
+            "=C2-30"
+          ],
+          "variantes": [
+            {
+              "C3": {
+                "fecha": "2026-02-10"
+              }
+            }
+          ],
+          "formato_resultado": "fecha",
+          "pistas": [
+            "A una fecha le puedes sumar días como a cualquier número.",
+            "Fecha de factura más 30.",
+            "`=C2+30`"
+          ],
+          "explicacion": "Cinco vencimientos en un segundo, con octubre de 31 días bien contado. Así sabe Marta qué cobros esperar cada semana. Si alguna vez te sale un número como 46330, no está mal: dale formato de **Fecha**."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para calcular retrasos te falta un dato: la fecha de hoy. `=HOY()` la escribe sola y **se actualiza** cada vez que abres el libro. Lleva los paréntesis vacíos: no necesita nada dentro. Si quieres una fecha que **no cambie** (el día en que registras un pedido), escríbela a mano o pulsa [[Ctrl]]+[[,]] (la coma), que pone la fecha de hoy fija."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Una sola celda «Hoy» para todo el informe",
+          "md": "En los informes, la fecha de cálculo se pone en **una celda** aparte (con `=HOY()` o escrita a mano) y todas las fórmulas apuntan a ella con `$`. Si Marta te pide el informe «a 31 de octubre», cambias esa celda y listo. En los ejercicios de esta guía esa celda lleva una fecha fija, el 16/11/2026, para que los resultados no cambien cada día."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e5",
+          "modo": "respuesta_corta",
+          "pregunta": "Escribe la fórmula que devuelve la fecha de hoy y se actualiza sola cada día.",
+          "aceptadas": [
+            "=HOY()",
+            "HOY()",
+            "=hoy()",
+            "hoy()",
+            "=Hoy()"
+          ],
+          "explicacion": "`=HOY()`, con los paréntesis vacíos. Úsala en la celda «Hoy» de tus informes; para registrar una fecha que no debe cambiar, [[Ctrl]]+[[,]]."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un aviso de veterana: cuando un proveedor de fuera te manda un fichero, a veces las fechas llegan como **texto**. Se notan porque se quedan pegadas a la **izquierda** de la celda; las fechas de verdad, como los números, se alinean a la derecha. Y con esas fechas falsas las restas no funcionan. Mira lo que pasa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e6",
+          "modo": "predice",
+          "enunciado": "En **B2** hay un vencimiento que ha llegado como texto, escrito al estilo americano (mes/día/año). ¿Qué devuelve la resta de **B3**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Hoy",
+              "B1": {
+                "fecha": "2026-11-16"
+              },
+              "A2": "Vencimiento",
+              "B2": {
+                "texto": "11/25/2026"
+              },
+              "A3": "Días que faltan"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "A": 16,
+              "B": 12
+            }
+          },
+          "celda": "B3",
+          "formula": "=B2-B1",
+          "explicacion": "**#¡VALOR!**: Excel no puede restar un texto. En español no existe el mes 25, así que «11/25/2026» no se convierte en fecha y se queda como texto. Cuando una resta de fechas dé #¡VALOR!, busca primero la fecha alineada a la izquierda. Más adelante aprenderás a convertirlas.",
+          "respuesta": "#¡VALOR!"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l1-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Marta.** El plazo de pago es de 30 días. En **D2** calcula los **días de retraso** de la factura a fecha de hoy (celda **G2**): hoy menos el vencimiento, y el vencimiento es la fecha de factura (C2) más 30. Se copiará a D3:D6, así que fija lo que no debe moverse. En D2 debe salir **46**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Fecha factura",
+              "D1": "Días de retraso",
+              "G1": "Hoy",
+              "A2": "FV-0852",
+              "B2": "Instalaciones Moncayo",
+              "C2": {
+                "fecha": "2026-09-01"
+              },
+              "A3": "FV-0860",
+              "B3": "Montajes Delicias",
+              "C3": {
+                "fecha": "2026-09-15"
+              },
+              "A4": "FV-0871",
+              "B4": "Electricidad Lacasa",
+              "C4": {
+                "fecha": "2026-10-06"
+              },
+              "A5": "FV-0880",
+              "B5": "Reformas Actur",
+              "C5": {
+                "fecha": "2026-10-14"
+              },
+              "A6": "FV-0893",
+              "B6": "Climatización Ribera",
+              "C6": {
+                "fecha": "2026-10-30"
+              },
+              "G2": {
+                "fecha": "2026-11-16"
+              }
+            },
+            "formatos": {
+              "C2:C6": "fecha",
+              "G2": "fecha",
+              "D2:D6": "0"
+            },
+            "anchos": {
+              "B": 20,
+              "C": 13,
+              "D": 15,
+              "G": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D6"
+          ],
+          "solucion": "=$G$2-(C2+30)",
+          "alternativas": [
+            "=$G$2-C2-30",
+            "=G$2-C2-30",
+            "=$G$2-30-C2",
+            "=G$2-(C2+30)"
+          ],
+          "errores_tipicos": [
+            "=G2-(C2+30)",
+            "=$G$2-C2",
+            "=(C2+30)-$G$2",
+            "=$G$2-C2+30"
+          ],
+          "variantes": [
+            {
+              "G2": {
+                "fecha": "2026-11-30"
+              }
+            },
+            {
+              "C3": {
+                "fecha": "2026-10-01"
+              }
+            }
+          ],
+          "formato_resultado": "0",
+          "pistas": [
+            "Dos pasos: el vencimiento es C2+30; los días de retraso son hoy menos ese vencimiento.",
+            "Pon el vencimiento entre paréntesis: `G2-(C2+30)`. Como G2 es la misma para todas las filas, fíjala con $ (tecla F4).",
+            "`=$G$2-(C2+30)`"
+          ],
+          "explicacion": "Moncayo lleva **46** días de retraso y Delicias **32**: son las dos primeras llamadas de Marta. Un número negativo, como el −13 de Climatización Ribera, significa que **aún no ha vencido**: le quedan 13 días. Acabas de montar una lista de cobros pendientes como las que se revisan cada semana en cualquier empresa."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m4l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "Para Excel, el 01/01/1900 es el número 1. ¿Qué número guarda para el **05/01/1900**?",
+          "aceptadas": [
+            "5",
+            "5,0"
+          ],
+          "explicacion": "El 5: es el quinto día de la cuenta. Toda fecha es el número de días desde el 01/01/1900."
+        },
+        {
+          "id": "n2m4l1-q2",
+          "modo": "predice",
+          "enunciado": "Una factura es del **30/11/2026** y se paga a 31 días. ¿Qué fecha devuelve **B2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": {
+                "fecha": "2026-11-30"
+              },
+              "A2": "Vence"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "B": 12
+            }
+          },
+          "celda": "B2",
+          "formula": "=B1+31",
+          "formato_resultado": "fecha",
+          "explicacion": "Fecha + días = otra fecha: el 31/12/2026. Excel sabe que noviembre tiene 30 días.",
+          "respuesta": "31/12/2026"
+        },
+        {
+          "id": "n2m4l1-q3",
+          "modo": "cinta",
+          "enunciado": "La columna «Días» sale con aspecto de fecha (01/02/1900). ¿Dónde cambias el formato a General?",
+          "ruta": [
+            "Inicio",
+            "Número",
+            "Formato de número"
+          ],
+          "explicacion": "Inicio › Número › Formato de número, y eliges **General**. El número que había debajo (32) aparece tal cual."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una fecha para Excel?",
+          "dorso": "Un número: los días desde el 01/01/1900 (día 1). El 16/11/2026 es el 46342. Lo que ves es el formato."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué da restar dos fechas? ¿Y sumar 30 a una fecha?",
+          "dorso": "Restar: los días entre ellas (=D2-C2). Sumar: la fecha 30 días después (=C2+30)."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "HOY: cómo se escribe y qué hace",
+          "dorso": "=HOY(), con paréntesis vacíos. Da la fecha de hoy y se actualiza sola al abrir el libro."
+        },
+        {
+          "tipo": "atajo",
+          "frente": "Escribir la fecha de hoy fija, que no cambie",
+          "dorso": "Ctrl+, (coma)"
+        },
+        {
+          "tipo": "error",
+          "frente": "Una resta de fechas da #¡VALOR!. ¿Qué miras primero?",
+          "dorso": "Si alguna fecha es texto (por ejemplo, en formato americano). Se ve pegada a la izquierda de la celda."
+        }
+      ]
+    },
+    {
+      "id": "n2m4l2",
+      "titulo": "DIA, MES, AÑO, FECHA y el nombre del mes",
+      "minutos": 15,
+      "objetivo": "Sacar el día, el mes, el año, el día de la semana y el trimestre de una fecha, construir fechas con FECHA y escribir el nombre del mes con TEXTO.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Para la revisión del año quiero ver los pedidos grandes agrupados por trimestre. Ponme al lado de cada uno el mes, con su nombre, y el trimestre (T1, T2…). Lo necesito antes de la reunión de las doce.",
+        "logro": "Ya sabes desmontar una fecha en día, mes, año, día de la semana y trimestre, y preparar una lista de ventas para resumirla por meses."
+      },
+      "funciones": [
+        "DIA",
+        "MES",
+        "AÑO",
+        "FECHA",
+        "TEXTO",
+        "DIASEM"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "A veces no quieres la fecha entera, sino un trozo. Tres funciones la desmontan: `=DIA(B2)` da el día, `=MES(B2)` da el mes y `=AÑO(B2)` da el año, siempre como números. ¿Para qué? Para resumir: con una columna «Mes» al lado de las ventas, un `SUMAR.SI` te dice en un segundo lo vendido en noviembre. Ojo al escribirlas: DIA va **sin tilde** y AÑO lleva **Ñ**."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Una fecha, tres trozos",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Día",
+              "C1": "Mes",
+              "D1": "Año",
+              "A2": {
+                "fecha": "2026-11-16"
+              },
+              "B2": "=DIA(A2)",
+              "C2": "=MES(A2)",
+              "D2": "=AÑO(A2)"
+            },
+            "formatos": {
+              "A2": "fecha"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "resaltar": [
+            "B2:D2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "16/11/2026 → día 16, mes 11, año 2026."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e1",
+          "modo": "formula",
+          "enunciado": "Javier tiene los pedidos grandes del año. En **E2** saca el **número del mes** de la fecha de B2. Se copiará a E3:E7. En E2 debe salir **2** (febrero).",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Cliente",
+              "D1": "Importe",
+              "A2": "P-1022",
+              "B2": {
+                "fecha": "2026-02-13"
+              },
+              "C2": "Instalaciones Moncayo",
+              "D2": 4250,
+              "A3": "P-1180",
+              "B3": {
+                "fecha": "2026-03-21"
+              },
+              "C3": "Montajes Delicias",
+              "D3": 3180,
+              "A4": "P-1410",
+              "B4": {
+                "fecha": "2026-06-30"
+              },
+              "C4": "Electricidad Lacasa",
+              "D4": 5620,
+              "A5": "P-2235",
+              "B5": {
+                "fecha": "2026-10-17"
+              },
+              "C5": "Reformas Actur",
+              "D5": 3940,
+              "A6": "P-2711",
+              "B6": {
+                "fecha": "2026-11-08"
+              },
+              "C6": "Climatización Ribera",
+              "D6": 7315,
+              "A7": "P-2804",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Instalaciones Moncayo",
+              "D7": 3075,
+              "E1": "Mes"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "D2:D7": "eur"
+            },
+            "anchos": {
+              "B": 11,
+              "C": 20
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "solucion": "=MES(B2)",
+          "errores_tipicos": [
+            "=DIA(B2)",
+            "=AÑO(B2)"
+          ],
+          "variantes": [
+            {
+              "B2": {
+                "fecha": "2026-09-01"
+              }
+            }
+          ],
+          "debe_usar": [
+            "MES"
+          ],
+          "formato_resultado": "0",
+          "pistas": [
+            "Una de las tres funciones nuevas: la que saca el mes.",
+            "La función se llama igual que lo que buscas, y dentro va la celda de la fecha.",
+            "`=MES(B2)`"
+          ],
+          "explicacion": "Febrero es el 2, marzo el 3… y noviembre el 11. Con esta columna ya podrías escribir `=SUMAR.SI(E2:E7;11;D2:D7)` y saber cuánto se vendió en noviembre."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e2",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve la fórmula de **B2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Día",
+              "A2": {
+                "fecha": "2027-01-05"
+              }
+            },
+            "formatos": {
+              "A2": "fecha"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "celda": "B2",
+          "formula": "=DIA(A2)",
+          "explicacion": "**5**: DIA da el día del mes como número, sin el cero de delante. Con la misma fecha, MES daría 1 y AÑO, 2027.",
+          "respuesta": "5"
+        },
+        {
+          "tipo": "texto",
+          "md": "Y al revés: `=FECHA(año; mes; día)` **construye** una fecha a partir de tres números, siempre en ese orden: año, mes, día. `=FECHA(2026;12;31)` da el 31/12/2026. Combinada con las anteriores es muy útil: `=FECHA(AÑO(B2);MES(B2);1)` da el **primer día del mes** de B2. Sirve para poner todas las ventas de un mes bajo una misma fecha, por ejemplo en un gráfico."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e3",
+          "modo": "formula",
+          "enunciado": "La fórmula de **E2** debería dar el **primer día del mes** de la fecha de B2, pero devuelve la misma fecha. Arréglala. Se copiará a E3:E7. En E2 debe salir **01/02/2026**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Cliente",
+              "D1": "Importe",
+              "A2": "P-1022",
+              "B2": {
+                "fecha": "2026-02-13"
+              },
+              "C2": "Instalaciones Moncayo",
+              "D2": 4250,
+              "A3": "P-1180",
+              "B3": {
+                "fecha": "2026-03-21"
+              },
+              "C3": "Montajes Delicias",
+              "D3": 3180,
+              "A4": "P-1410",
+              "B4": {
+                "fecha": "2026-06-30"
+              },
+              "C4": "Electricidad Lacasa",
+              "D4": 5620,
+              "A5": "P-2235",
+              "B5": {
+                "fecha": "2026-10-17"
+              },
+              "C5": "Reformas Actur",
+              "D5": 3940,
+              "A6": "P-2711",
+              "B6": {
+                "fecha": "2026-11-08"
+              },
+              "C6": "Climatización Ribera",
+              "D6": 7315,
+              "A7": "P-2804",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Instalaciones Moncayo",
+              "D7": 3075,
+              "E1": "Mes (día 1)"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "D2:D7": "eur",
+              "E2:E7": "fecha"
+            },
+            "anchos": {
+              "B": 11,
+              "C": 20,
+              "E": 12
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "inicial": "=FECHA(AÑO(B2);MES(B2);DIA(B2))",
+          "solucion": "=FECHA(AÑO(B2);MES(B2);1)",
+          "alternativas": [
+            "=B2-DIA(B2)+1"
+          ],
+          "errores_tipicos": [
+            "=FECHA(AÑO(B2);MES(B2);DIA(B2))",
+            "=FECHA(AÑO(B2);1;MES(B2))",
+            "=FECHA(MES(B2);AÑO(B2);1)"
+          ],
+          "variantes": [
+            {
+              "B3": {
+                "fecha": "2026-08-31"
+              }
+            }
+          ],
+          "formato_resultado": "fecha",
+          "pistas": [
+            "El año y el mes ya están bien. Lo que sobra es el último argumento.",
+            "El tercer argumento de FECHA es el día. ¿Qué día quieres siempre?",
+            "`=FECHA(AÑO(B2);MES(B2);1)`"
+          ],
+          "explicacion": "Arreglado: con un 1 fijo como día, todas las ventas de un mes comparten la misma fecha (01/11/2026 para noviembre). Es la forma clásica de agrupar por meses sin perder que es una fecha."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Y si Javier quiere leer «noviembre» y no «11»? `TEXTO`, que ya usaste para unir textos, convierte una fecha en el texto que pidas con un **código de formato** entre comillas: `=TEXTO(B2;\"mmmm\")` da «noviembre» y `=TEXTO(B2;\"dddd\")` da «lunes». Los códigos van en español: **d** de día, **m** de mes y **a** de año. El resultado es texto: perfecto para títulos y etiquetas de informe."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "aaaa, no yyyy",
+          "md": "En tutoriales y foros en inglés verás `\"yyyy\"` para el año. En el Excel en español el código es **aaaa**: `=TEXTO(B2;\"dd/mm/aaaa\")`."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Códigos de formato para el 16/11/2026",
+          "cabecera": [
+            "Código",
+            "Resultado",
+            "Qué es"
+          ],
+          "filas": [
+            [
+              "dd",
+              "16",
+              "Día con dos cifras"
+            ],
+            [
+              "dddd",
+              "lunes",
+              "Nombre del día"
+            ],
+            [
+              "mm",
+              "11",
+              "Mes con dos cifras"
+            ],
+            [
+              "mmmm",
+              "noviembre",
+              "Nombre del mes"
+            ],
+            [
+              "aa",
+              "26",
+              "Año con dos cifras"
+            ],
+            [
+              "aaaa",
+              "2026",
+              "Año con cuatro cifras"
+            ],
+            [
+              "mmmm aaaa",
+              "noviembre 2026",
+              "Se pueden combinar"
+            ]
+          ],
+          "pie": "Siempre entre comillas dentro de TEXTO: =TEXTO(B2;\"mmmm aaaa\")."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e4",
+          "modo": "formula",
+          "enunciado": "Javier quiere el **nombre del mes** en letras. En **E2** escríbelo a partir de la fecha de B2. Se copiará a E3:E7. En E2 debe salir **febrero**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Cliente",
+              "D1": "Importe",
+              "A2": "P-1022",
+              "B2": {
+                "fecha": "2026-02-13"
+              },
+              "C2": "Instalaciones Moncayo",
+              "D2": 4250,
+              "A3": "P-1180",
+              "B3": {
+                "fecha": "2026-03-21"
+              },
+              "C3": "Montajes Delicias",
+              "D3": 3180,
+              "A4": "P-1410",
+              "B4": {
+                "fecha": "2026-06-30"
+              },
+              "C4": "Electricidad Lacasa",
+              "D4": 5620,
+              "A5": "P-2235",
+              "B5": {
+                "fecha": "2026-10-17"
+              },
+              "C5": "Reformas Actur",
+              "D5": 3940,
+              "A6": "P-2711",
+              "B6": {
+                "fecha": "2026-11-08"
+              },
+              "C6": "Climatización Ribera",
+              "D6": 7315,
+              "A7": "P-2804",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Instalaciones Moncayo",
+              "D7": 3075,
+              "E1": "Mes"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "D2:D7": "eur"
+            },
+            "anchos": {
+              "B": 11,
+              "C": 20,
+              "E": 12
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "solucion": "=TEXTO(B2;\"mmmm\")",
+          "errores_tipicos": [
+            "=TEXTO(B2;\"mm\")",
+            "=MES(B2)",
+            "=TEXTO(B2;\"dddd\")"
+          ],
+          "variantes": [
+            {
+              "B2": {
+                "fecha": "2026-05-04"
+              }
+            }
+          ],
+          "pistas": [
+            "Necesitas convertir la fecha en texto con un código de formato.",
+            "`TEXTO(fecha; \"código\")`. El nombre completo del mes son cuatro emes.",
+            "`=TEXTO(B2;\"mmmm\")`"
+          ],
+          "explicacion": "Febrero, marzo, junio… en letras y sin tocar la fecha original. Ya tienes la mitad del encargo de Javier."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e5",
+          "modo": "test",
+          "pregunta": "Copias de un tutorial en inglés esta fórmula: `=TEXTO(B2;\"dd/mm/yyyy\")`. ¿Qué tienes que cambiar para tu Excel en español?",
+          "opciones": [
+            {
+              "texto": "yyyy por aaaa",
+              "correcta": true,
+              "porque": "Correcto: en español el año se escribe con «a» (de año), no con «y» (de year)."
+            },
+            {
+              "texto": "Los ; por comas",
+              "correcta": false,
+              "porque": "Al revés: en el Excel en español el separador es el punto y coma, y la fórmula ya lo lleva."
+            },
+            {
+              "texto": "Nada: los códigos son iguales en todos los idiomas",
+              "correcta": false,
+              "porque": "No lo son: los códigos de fecha dependen del idioma de Excel. Por eso los tutoriales en inglés llevan «yyyy»."
+            },
+            {
+              "texto": "dd por aa",
+              "correcta": false,
+              "porque": "dd está bien: d de día. El que falla es el código del año."
+            }
+          ],
+          "explicacion": "Día **d**, mes **m**, año **a**. Cuando copies fórmulas de internet, revisa siempre los códigos de formato."
+        },
+        {
+          "tipo": "texto",
+          "md": "`=DIASEM(B2;2)` da el **día de la semana** como número: lunes 1, martes 2… domingo 7. Ese **2** final es importante: le dice a Excel que la semana empieza en lunes, como en España. Sin él, Excel cuenta al estilo americano (domingo 1, lunes 2…) y todo sale corrido un día. Con DIASEM y un `SI` marcas lo que cae en fin de semana: sábado (6) y domingo (7) son mayores que 5."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e6",
+          "modo": "formula",
+          "enunciado": "La tienda en línea recibe pedidos también en fin de semana, y Javier quiere verlos aparte. En **E2** escribe **Sí** si la fecha de B2 cae en sábado o domingo, y **No** si no. Se copiará a E3:E7.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Cliente",
+              "D1": "Importe",
+              "A2": "P-1022",
+              "B2": {
+                "fecha": "2026-02-13"
+              },
+              "C2": "Instalaciones Moncayo",
+              "D2": 4250,
+              "A3": "P-1180",
+              "B3": {
+                "fecha": "2026-03-21"
+              },
+              "C3": "Montajes Delicias",
+              "D3": 3180,
+              "A4": "P-1410",
+              "B4": {
+                "fecha": "2026-06-30"
+              },
+              "C4": "Electricidad Lacasa",
+              "D4": 5620,
+              "A5": "P-2235",
+              "B5": {
+                "fecha": "2026-10-17"
+              },
+              "C5": "Reformas Actur",
+              "D5": 3940,
+              "A6": "P-2711",
+              "B6": {
+                "fecha": "2026-11-08"
+              },
+              "C6": "Climatización Ribera",
+              "D6": 7315,
+              "A7": "P-2804",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Instalaciones Moncayo",
+              "D7": 3075,
+              "E1": "Fin de semana"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "D2:D7": "eur"
+            },
+            "anchos": {
+              "B": 11,
+              "C": 20,
+              "E": 14
+            }
+          },
+          "objetivo": "E2",
+          "copiar_a": [
+            "E3:E7"
+          ],
+          "solucion": "=SI(DIASEM(B2;2)>5;\"Sí\";\"No\")",
+          "alternativas": [
+            "=SI(DIASEM(B2;2)>=6;\"Sí\";\"No\")",
+            "=SI(DIASEM(B2;2)<=5;\"No\";\"Sí\")",
+            "=SI(DIASEM(B2;2)<6;\"No\";\"Sí\")"
+          ],
+          "errores_tipicos": [
+            "=SI(DIASEM(B2)>5;\"Sí\";\"No\")",
+            "=SI(DIASEM(B2;2)>6;\"Sí\";\"No\")",
+            "=SI(DIASEM(B2;2)=6;\"Sí\";\"No\")"
+          ],
+          "variantes": [
+            {
+              "B7": {
+                "fecha": "2026-11-22"
+              }
+            }
+          ],
+          "pistas": [
+            "Primero averigua el día de la semana con DIASEM, con el 2 para que el lunes sea 1.",
+            "Sábado es 6 y domingo 7: los dos son mayores que 5. Mételo en un SI.",
+            "`=SI(DIASEM(B2;2)>5;\"Sí\";\"No\")`"
+          ],
+          "explicacion": "Tres pedidos en fin de semana: los de los sábados 21/03 y 17/10 y el del domingo 08/11. Sin el 2 en DIASEM, el viernes 13/02 habría salido como fin de semana y el domingo, no. Ese pequeño 2 evita un informe equivocado."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Otra trampa con fechas: los ficheros de proveedores de Estados Unidos escriben **mes/día/año**. Allí «03/04/2026» es el **4 de marzo**, pero tu Excel lo lee como **3 de abril**, sin avisar. Mi truco: busca alguna fecha con el primer número mayor que 12, como «04/25/2026». Si la encuentras, el fichero es americano y toca revisar todas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Último truco, muy pedido en informes: el **trimestre**. Divide el mes entre 3 y redondea hacia arriba con `REDONDEAR.MAS`: enero (1/3 = 0,33) da 1; abril (4/3 = 1,33) da 2; diciembre (12/3 = 4) da 4. Con `&` le pones la «T» delante: `=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)` da «T1» para una venta de febrero."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l2-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** El nombre del mes ya está en la columna E. En **F2** escribe el **trimestre** de la venta de B2 con el formato **T1** (una «T» y el número). Se copiará a F3:F7. En F2 debe salir **T1**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha",
+              "C1": "Cliente",
+              "D1": "Importe",
+              "A2": "P-1022",
+              "B2": {
+                "fecha": "2026-02-13"
+              },
+              "C2": "Instalaciones Moncayo",
+              "D2": 4250,
+              "A3": "P-1180",
+              "B3": {
+                "fecha": "2026-03-21"
+              },
+              "C3": "Montajes Delicias",
+              "D3": 3180,
+              "A4": "P-1410",
+              "B4": {
+                "fecha": "2026-06-30"
+              },
+              "C4": "Electricidad Lacasa",
+              "D4": 5620,
+              "A5": "P-2235",
+              "B5": {
+                "fecha": "2026-10-17"
+              },
+              "C5": "Reformas Actur",
+              "D5": 3940,
+              "A6": "P-2711",
+              "B6": {
+                "fecha": "2026-11-08"
+              },
+              "C6": "Climatización Ribera",
+              "D6": 7315,
+              "A7": "P-2804",
+              "B7": {
+                "fecha": "2026-11-16"
+              },
+              "C7": "Instalaciones Moncayo",
+              "D7": 3075,
+              "E1": "Mes",
+              "E2": "febrero",
+              "E3": "marzo",
+              "E4": "junio",
+              "E5": "octubre",
+              "E6": "noviembre",
+              "E7": "noviembre",
+              "F1": "Trimestre"
+            },
+            "formatos": {
+              "B2:B7": "fecha",
+              "D2:D7": "eur"
+            },
+            "anchos": {
+              "B": 11,
+              "C": 20,
+              "E": 11
+            }
+          },
+          "objetivo": "F2",
+          "copiar_a": [
+            "F3:F7"
+          ],
+          "solucion": "=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)",
+          "alternativas": [
+            "=CONCAT(\"T\";REDONDEAR.MAS(MES(B2)/3;0))"
+          ],
+          "errores_tipicos": [
+            "=REDONDEAR.MAS(MES(B2)/3;0)",
+            "=\"T\"&REDONDEAR(MES(B2)/3;0)",
+            "=\"T\"&MES(B2)/3",
+            "=\"T\"&REDONDEAR.MENOS(MES(B2)/3;0)"
+          ],
+          "variantes": [
+            {
+              "B4": {
+                "fecha": "2026-07-01"
+              }
+            }
+          ],
+          "pistas": [
+            "Tres pasos: el mes de B2, dividido entre 3, redondeado hacia arriba sin decimales.",
+            "`REDONDEAR.MAS(MES(B2)/3;0)` da el número. Para ponerle la T delante, usa `\"T\"&`.",
+            "`=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)`"
+          ],
+          "explicacion": "Febrero y marzo en T1, junio en T2, octubre y noviembre en T4. Con las columnas Mes y Trimestre, Javier puede resumir las ventas por trimestre con un `SUMAR.SI` y llegar a la reunión con los números hechos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m4l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué código de formato pones dentro de TEXTO para obtener el nombre completo del mes, como «noviembre»?",
+          "aceptadas": [
+            "mmmm",
+            "\"mmmm\"",
+            "MMMM"
+          ],
+          "explicacion": "Cuatro emes: `=TEXTO(B2;\"mmmm\")`. Con «dddd» tendrías el nombre del día."
+        },
+        {
+          "id": "n2m4l2-q2",
+          "modo": "test",
+          "pregunta": "Un proveedor de Estados Unidos te manda «07/04/2026» como fecha de envío. ¿Qué día quiere decir él?",
+          "opciones": [
+            {
+              "texto": "El 4 de julio de 2026",
+              "correcta": true,
+              "porque": "Correcto: en Estados Unidos se escribe mes/día/año, así que 07 es el mes."
+            },
+            {
+              "texto": "El 7 de abril de 2026",
+              "correcta": false,
+              "porque": "Así lo leería tu Excel en español, y ese es justo el peligro: lo cambia sin avisar."
+            },
+            {
+              "texto": "Da igual: en los dos países es la misma fecha",
+              "correcta": false,
+              "porque": "No: el orden del día y el mes cambia según el país, y la diferencia aquí es de casi tres meses."
+            }
+          ]
+        },
+        {
+          "id": "n2m4l2-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué fecha devuelve la fórmula de **B2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Venta",
+              "B1": {
+                "fecha": "2026-11-23"
+              },
+              "A2": "Mes"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "B": 12
+            }
+          },
+          "celda": "B2",
+          "formula": "=FECHA(AÑO(B1);MES(B1);1)",
+          "formato_resultado": "fecha",
+          "explicacion": "El primer día del mes de la venta: 01/11/2026. FECHA recibe el año, el mes y un 1 fijo como día.",
+          "respuesta": "01/11/2026"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "DIA, MES y AÑO: qué devuelven",
+          "dorso": "Un trozo de la fecha como número. Para 16/11/2026: DIA 16, MES 11, AÑO 2026."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "FECHA: sintaxis",
+          "dorso": "=FECHA(año; mes; día). Primer día del mes: =FECHA(AÑO(B2);MES(B2);1)."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Nombre del mes y del día con TEXTO",
+          "dorso": "=TEXTO(B2;\"mmmm\") → noviembre; =TEXTO(B2;\"dddd\") → lunes. Año: aaaa, nunca yyyy."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "DIASEM con la semana española",
+          "dorso": "=DIASEM(B2;2): lunes 1 … domingo 7. Fin de semana: >5."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Trimestre de una fecha",
+          "dorso": "=\"T\"&REDONDEAR.MAS(MES(B2)/3;0)"
+        }
+      ]
+    },
+    {
+      "id": "n2m4l3",
+      "titulo": "Vencimientos y días laborables",
+      "minutos": 16,
+      "objetivo": "Calcular vencimientos por meses y a fin de mes, días laborables y fechas de entrega descontando festivos, y la antigüedad exacta en años.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "Carmen quiere tener un detalle en la comida de Navidad con quien lleve 10 años o más en la casa. ¿Me sacas la antigüedad en años cumplidos de la gente del almacén a fecha de hoy? Que sea exacta, que a nadie le gusta que le quiten un año… ni que se lo regalen.",
+        "logro": "Ya sabes calcular vencimientos por meses y a fin de mes, plazos en días laborables con festivos y la antigüedad exacta de una plantilla."
+      },
+      "funciones": [
+        "FECHA.MES",
+        "FIN.MES",
+        "DIAS.LAB",
+        "DIA.LAB",
+        "SIFECHA"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Error clásico: sumar 30 días creyendo que es «un mes». Los meses tienen 28, 30 o 31 días, y la fecha se va corriendo. Para sumar **meses de verdad** está `=FECHA.MES(fecha; meses)`: da el **mismo día** tantos meses después. Sobre el 15/01/2026, `=FECHA.MES(B2;1)` da el 15/02/2026, y con 3, el 15/04/2026. Con meses negativos va hacia atrás. Si ese día no existe (31 de febrero), da el **último día** de ese mes."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e1",
+          "modo": "predice",
+          "enunciado": "Un contrato de mantenimiento de las carretillas empieza el **15/11/2026** y dura **2 meses**. ¿Qué fecha de fin da **B2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Inicio",
+              "B1": {
+                "fecha": "2026-11-15"
+              },
+              "A2": "Fin"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "B": 12
+            }
+          },
+          "celda": "B2",
+          "formula": "=FECHA.MES(B1;2)",
+          "formato_resultado": "fecha",
+          "explicacion": "El **15/01/2027**: el mismo día, dos meses después, aunque cambie de año. Si hubieras sumado 60 días, te habría salido el 14/01/2027.",
+          "respuesta": "15/01/2027"
+        },
+        {
+          "tipo": "texto",
+          "md": "`=FIN.MES(fecha; meses)` da el **último día del mes**: con 0, el de ese mismo mes; con 1, el del mes siguiente. Es la fórmula de las condiciones «a fin de mes»: muchos clientes pagan todas las facturas de un mes de golpe, el último día del mes siguiente. Factura del 12/10/2026: `=FIN.MES(B2;1)` da el **30/11/2026**. Si te sale un número como 46356, solo le falta el formato de Fecha."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e2",
+          "modo": "formula",
+          "enunciado": "Marta te avisa: «Instalaciones Moncayo paga el **último día del mes siguiente** a la factura». En **C2** calcula ese día de cobro para la factura de B2. Se copiará a C3:C6. En C2 debe salir **30/11/2026**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Fecha factura",
+              "C1": "Cobro previsto",
+              "A2": "FV-0871",
+              "B2": {
+                "fecha": "2026-10-12"
+              },
+              "A3": "FV-0886",
+              "B3": {
+                "fecha": "2026-10-31"
+              },
+              "A4": "FV-0895",
+              "B4": {
+                "fecha": "2026-11-02"
+              },
+              "A5": "FV-0902",
+              "B5": {
+                "fecha": "2026-11-16"
+              },
+              "A6": "FV-0911",
+              "B6": {
+                "fecha": "2026-12-30"
+              }
+            },
+            "formatos": {
+              "B2:C6": "fecha"
+            },
+            "anchos": {
+              "B": 13,
+              "C": 15
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C6"
+          ],
+          "solucion": "=FIN.MES(B2;1)",
+          "errores_tipicos": [
+            "=FIN.MES(B2;0)",
+            "=B2+30",
+            "=FECHA.MES(B2;1)",
+            "=FIN.MES(B2;2)"
+          ],
+          "variantes": [
+            {
+              "B2": {
+                "fecha": "2026-01-31"
+              }
+            }
+          ],
+          "debe_usar": [
+            "FIN.MES"
+          ],
+          "formato_resultado": "fecha",
+          "pistas": [
+            "Necesitas el último día de un mes: la función FIN.MES.",
+            "El segundo argumento dice cuántos meses avanzas: 0 es este mes y 1, el siguiente.",
+            "`=FIN.MES(B2;1)`"
+          ],
+          "explicacion": "Las facturas de octubre se cobran el 30/11, las de noviembre el 31/12 y la de diciembre el 31/01/2027. Con esto Marta prevé cuánto dinero entra a final de cada mes: es la base de una previsión de tesorería."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para plazos de trabajo, los fines de semana no cuentan. `=DIAS.LAB(inicio; fin; festivos)` cuenta los **días laborables** (de lunes a viernes) entre dos fechas, **contando las dos**. El tercer argumento es opcional: un rango con la lista de **festivos**, que también se descuentan. En la empresa esa lista la mantiene RRHH con el calendario laboral del año."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Del 16/11 al 31/12, con y sin festivos",
+          "hoja": {
+            "celdas": {
+              "A1": "Inicio",
+              "B1": "Fin",
+              "C1": "Sin festivos",
+              "D1": "Con festivos",
+              "F1": "Festivos",
+              "A2": {
+                "fecha": "2026-11-16"
+              },
+              "B2": {
+                "fecha": "2026-12-31"
+              },
+              "C2": "=DIAS.LAB(A2;B2)",
+              "D2": "=DIAS.LAB(A2;B2;F2:F3)",
+              "F2": {
+                "fecha": "2026-12-08"
+              },
+              "F3": {
+                "fecha": "2026-12-25"
+              }
+            },
+            "formatos": {
+              "A2:B2": "fecha",
+              "F2:F3": "fecha"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 11,
+              "C": 13,
+              "D": 13,
+              "F": 11
+            }
+          },
+          "resaltar": [
+            "C2:D2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "34 días laborables sin festivos; 32 si quitas el 8 y el 25 de diciembre."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e3",
+          "modo": "formula",
+          "enunciado": "Andrés planifica tres trabajos de almacén. En **D2** calcula los **días laborables** de cada trabajo entre su inicio (B2) y su fin (C2), descontando los festivos de **G2:G5**. Se copiará a D3:D4. En D2 debe salir **15**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Trabajo",
+              "B1": "Inicio",
+              "C1": "Fin",
+              "D1": "Días laborables",
+              "A2": "Reorganizar estanterías",
+              "B2": {
+                "fecha": "2026-11-16"
+              },
+              "C2": {
+                "fecha": "2026-12-04"
+              },
+              "A3": "Recuento de cable",
+              "B3": {
+                "fecha": "2026-12-01"
+              },
+              "C3": {
+                "fecha": "2026-12-11"
+              },
+              "A4": "Inventario anual",
+              "B4": {
+                "fecha": "2026-12-21"
+              },
+              "C4": {
+                "fecha": "2027-01-08"
+              },
+              "G1": "Festivos",
+              "G2": {
+                "fecha": "2026-12-08"
+              },
+              "G3": {
+                "fecha": "2026-12-25"
+              },
+              "G4": {
+                "fecha": "2027-01-01"
+              },
+              "G5": {
+                "fecha": "2027-01-06"
+              }
+            },
+            "formatos": {
+              "B2:C4": "fecha",
+              "G2:G5": "fecha",
+              "D2:D4": "0"
+            },
+            "anchos": {
+              "A": 23,
+              "B": 11,
+              "C": 11,
+              "D": 15,
+              "G": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=DIAS.LAB(B2;C2;$G$2:$G$5)",
+          "alternativas": [
+            "=DIAS.LAB(B2;C2;G$2:G$5)"
+          ],
+          "errores_tipicos": [
+            "=DIAS.LAB(B2;C2)",
+            "=DIAS.LAB(B2;C2;G2:G5)",
+            "=C2-B2"
+          ],
+          "variantes": [
+            {
+              "C2": {
+                "fecha": "2026-12-18"
+              }
+            }
+          ],
+          "debe_usar": [
+            "DIAS.LAB"
+          ],
+          "formato_resultado": "0",
+          "pistas": [
+            "DIAS.LAB necesita el inicio, el fin y la lista de festivos.",
+            "La lista de festivos es la misma para todas las filas: fíjala con $ para que no se mueva al copiar.",
+            "`=DIAS.LAB(B2;C2;$G$2:$G$5)`"
+          ],
+          "explicacion": "15 días para las estanterías, 8 para el recuento (el 8 de diciembre no cuenta) y 12 para el inventario, que pierde Navidad, Año Nuevo y Reyes. Con esto Andrés sabe cuántas jornadas de trabajo tiene de verdad, no cuántos días de calendario."
+        },
+        {
+          "tipo": "texto",
+          "md": "La pregunta contraria: «si el proveedor tarda 5 días laborables, ¿qué día llega?». `=DIA.LAB(inicio; días; festivos)` cuenta hacia delante esos días saltándose sábados, domingos y festivos, y te da la **fecha**. Fíjate en la diferencia: DIA**S**.LAB, en plural, devuelve un **número** de días; DIA.LAB, en singular, devuelve una **fecha**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e4",
+          "modo": "predice",
+          "enunciado": "El lunes **07/12/2026** haces un pedido con entrega en **1 día laborable**. El 8 de diciembre es festivo y está en B2. ¿Qué fecha devuelve **B3**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": {
+                "fecha": "2026-12-07"
+              },
+              "A2": "Festivo",
+              "B2": {
+                "fecha": "2026-12-08"
+              },
+              "A3": "Entrega"
+            },
+            "formatos": {
+              "B1:B2": "fecha"
+            },
+            "anchos": {
+              "B": 12
+            }
+          },
+          "celda": "B3",
+          "formula": "=DIA.LAB(B1;1;B2)",
+          "formato_resultado": "fecha",
+          "explicacion": "El **09/12/2026**: el martes 8 es festivo y se lo salta. Sin la lista de festivos, Excel te habría dicho el 8, y el cliente se habría quedado esperando el material un día de fiesta.",
+          "respuesta": "09/12/2026"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e5",
+          "modo": "formula",
+          "enunciado": "Cada proveedor entrega en un número de días laborables (columna C). En **D2** calcula la **fecha de entrega prevista** del pedido, sin contar fines de semana ni los festivos de **G2:G5**. Se copiará a D3:D5. En D2 debe salir **23/11/2026**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Fecha pedido",
+              "C1": "Plazo (días lab.)",
+              "D1": "Entrega prevista",
+              "A2": "OC-1190",
+              "B2": {
+                "fecha": "2026-11-16"
+              },
+              "C2": 5,
+              "A3": "OC-1194",
+              "B3": {
+                "fecha": "2026-12-02"
+              },
+              "C3": 5,
+              "A4": "OC-1201",
+              "B4": {
+                "fecha": "2026-12-21"
+              },
+              "C4": 10,
+              "A5": "OC-1206",
+              "B5": {
+                "fecha": "2026-12-30"
+              },
+              "C5": 3,
+              "G1": "Festivos",
+              "G2": {
+                "fecha": "2026-12-08"
+              },
+              "G3": {
+                "fecha": "2026-12-25"
+              },
+              "G4": {
+                "fecha": "2027-01-01"
+              },
+              "G5": {
+                "fecha": "2027-01-06"
+              }
+            },
+            "formatos": {
+              "B2:B5": "fecha",
+              "D2:D5": "fecha",
+              "G2:G5": "fecha"
+            },
+            "anchos": {
+              "B": 12,
+              "C": 16,
+              "D": 16,
+              "G": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D5"
+          ],
+          "solucion": "=DIA.LAB(B2;C2;$G$2:$G$5)",
+          "alternativas": [
+            "=DIA.LAB(B2;C2;G$2:G$5)"
+          ],
+          "errores_tipicos": [
+            "=DIA.LAB(B2;C2)",
+            "=B2+C2",
+            "=DIA.LAB(B2;C2;G2:G5)",
+            "=DIAS.LAB(B2;C2;$G$2:$G$5)"
+          ],
+          "variantes": [
+            {
+              "C2": 8
+            }
+          ],
+          "debe_usar": [
+            "DIA.LAB"
+          ],
+          "formato_resultado": "fecha",
+          "pistas": [
+            "Esta vez quieres una fecha, no un número de días: la función en singular.",
+            "`DIA.LAB(inicio; días; festivos)`. Fija la lista de festivos con $.",
+            "`=DIA.LAB(B2;C2;$G$2:$G$5)`"
+          ],
+          "explicacion": "El pedido del 16/11 llega el lunes 23/11 y el del 02/12, el 10/12, porque se salta el puente. El de Navidad no llega hasta el 07/01/2027. Ahora Andrés puede decir a cada cliente una fecha creíble."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para la **antigüedad** o la edad, restar fechas y dividir entre 365 falla por culpa de los años bisiestos. Usa `=SIFECHA(inicio; fin; unidad)`, que cuenta **periodos completos**: con \"Y\", años cumplidos; con \"M\", meses completos; con \"D\", días. Las unidades van **en inglés** (Y de *year*) aunque tu Excel esté en español. Es una función **oculta**: Excel no te la sugiere al escribir, así que escríbela entera."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Dos errores que dan #¡NUM!",
+          "md": "La unidad de los años es **\"Y\"**, no \"A\" de «años»: con \"A\" la fórmula da **#¡NUM!**. Y la fecha más antigua va **primero**: si las pones al revés, también da #¡NUM!."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e6",
+          "modo": "test",
+          "pregunta": "Una persona entró el **20/11/2019** (en B2). Hoy es el **16/11/2026** (en G2). ¿Qué fórmula da sus años cumplidos?",
+          "opciones": [
+            {
+              "texto": "=SIFECHA(B2;$G$2;\"Y\")",
+              "correcta": true,
+              "porque": "Correcto: da 6. Cuenta solo años completos, y el séptimo no lo cumple hasta el día 20."
+            },
+            {
+              "texto": "=AÑO($G$2)-AÑO(B2)",
+              "correcta": false,
+              "porque": "Da 7: resta los años sin mirar si ya ha pasado el aniversario. Le regala un año que aún no ha cumplido."
+            },
+            {
+              "texto": "=SIFECHA(B2;$G$2;\"A\")",
+              "correcta": false,
+              "porque": "Da #¡NUM!: las unidades de SIFECHA van en inglés, \"Y\" y no \"A\"."
+            },
+            {
+              "texto": "=($G$2-B2)/365",
+              "correcta": false,
+              "porque": "Da 6,99…: salen decimales y, por los años bisiestos, cerca del aniversario puede equivocarse de año."
+            }
+          ],
+          "explicacion": "Para años cumplidos, SIFECHA con \"Y\". Es lo que se usa en RRHH para antigüedades y edades."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m4l3-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Lucía.** En **D2** calcula la **antigüedad en años cumplidos** de la persona a fecha de hoy (celda **G2**), a partir de su fecha de alta (C2). Se copiará a D3:D7. En D2 debe salir **11**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Persona",
+              "B1": "Puesto",
+              "C1": "Fecha de alta",
+              "D1": "Años",
+              "G1": "Hoy",
+              "A2": "Rosa Gimeno Lahoz",
+              "B2": "Mozo de almacén",
+              "C2": {
+                "fecha": "2015-03-02"
+              },
+              "A3": "Iván Royo Sanz",
+              "B3": "Carretillero",
+              "C3": {
+                "fecha": "2016-11-20"
+              },
+              "A4": "Pilar Ainsa Marco",
+              "B4": "Jefa de turno",
+              "C4": {
+                "fecha": "2016-11-16"
+              },
+              "A5": "Hugo Bernal Pueyo",
+              "B5": "Mozo de almacén",
+              "C5": {
+                "fecha": "2021-09-01"
+              },
+              "A6": "Elena Casas Ibort",
+              "B6": "Administrativa de almacén",
+              "C6": {
+                "fecha": "2006-11-18"
+              },
+              "A7": "Óscar Lafuente Gil",
+              "B7": "Repartidor",
+              "C7": {
+                "fecha": "2026-01-14"
+              },
+              "G2": {
+                "fecha": "2026-11-16"
+              }
+            },
+            "formatos": {
+              "C2:C7": "fecha",
+              "G2": "fecha",
+              "D2:D7": "0"
+            },
+            "anchos": {
+              "A": 19,
+              "B": 24,
+              "C": 13,
+              "G": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D7"
+          ],
+          "solucion": "=SIFECHA(C2;$G$2;\"Y\")",
+          "alternativas": [
+            "=SIFECHA(C2;G$2;\"Y\")",
+            "=SIFECHA(C2;$G$2;\"y\")"
+          ],
+          "errores_tipicos": [
+            "=AÑO($G$2)-AÑO(C2)",
+            "=SIFECHA(C2;G2;\"Y\")",
+            "=ENTERO(($G$2-C2)/365)",
+            "=SIFECHA(C2;$G$2;\"A\")",
+            "=SIFECHA($G$2;C2;\"Y\")"
+          ],
+          "variantes": [
+            {
+              "G2": {
+                "fecha": "2026-11-20"
+              }
+            }
+          ],
+          "debe_usar": [
+            "SIFECHA"
+          ],
+          "formato_resultado": "0",
+          "pistas": [
+            "Años cumplidos entre dos fechas: SIFECHA con la unidad de años.",
+            "Primero la fecha de alta, después hoy (fijada con $) y la unidad \"Y\" entre comillas.",
+            "`=SIFECHA(C2;$G$2;\"Y\")`"
+          ],
+          "explicacion": "Lista exacta: Rosa 11, Pilar 10 (los cumple hoy) y Elena 19. Fíjate en Iván: entró el 20/11/2016 y hoy tiene **9**; los 10 los cumple el viernes. Una resta de años le habría dado 10, y a Elena, 20. Con SIFECHA, Carmen tiene la lista sin errores. Misión cumplida."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m4l3-q1",
+          "modo": "predice",
+          "enunciado": "¿Qué fecha devuelve la fórmula de **B2**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Inicio",
+              "B1": {
+                "fecha": "2026-01-31"
+              },
+              "A2": "Un mes después"
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "A": 16,
+              "B": 12
+            }
+          },
+          "celda": "B2",
+          "formula": "=FECHA.MES(B1;1)",
+          "formato_resultado": "fecha",
+          "explicacion": "El 28/02/2026: febrero no tiene día 31, así que FECHA.MES da el último día de febrero.",
+          "respuesta": "28/02/2026"
+        },
+        {
+          "id": "n2m4l3-q2",
+          "modo": "cinta",
+          "enunciado": "Quieres ver la lista de funciones de fecha que trae Excel. ¿Dónde está?",
+          "ruta": [
+            "Fórmulas",
+            "Biblioteca de funciones",
+            "Fecha y hora"
+          ],
+          "explicacion": "Fórmulas › Biblioteca de funciones › Fecha y hora. Ahí están HOY, FECHA.MES, FIN.MES, DIAS.LAB… pero no SIFECHA, que es oculta."
+        },
+        {
+          "id": "n2m4l3-q3",
+          "modo": "abierta",
+          "pregunta": "Andrés calcula los vencimientos «a un mes» con `=B2+30`. Explícale en dos o tres frases por qué no siempre acierta y qué usarías tú.",
+          "modelo": "Porque los meses no tienen siempre 30 días: de un 31 de enero o de un 1 de febrero, sumar 30 no cae el mismo día del mes siguiente. Para sumar meses de verdad usaría =FECHA.MES(B2;1), que da el mismo día un mes después (o el último día del mes si ese día no existe). Si el vencimiento es a fin de mes, =FIN.MES(B2;1).",
+          "criterios": [
+            "Dice que los meses tienen distinto número de días (28, 30 o 31)",
+            "Propone FECHA.MES con el número de meses",
+            "Lo explica con palabras sencillas o con un ejemplo",
+            "Menciona FIN.MES si el plazo es a fin de mes (valorable)"
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "FECHA.MES: sintaxis y para qué",
+          "dorso": "=FECHA.MES(fecha; meses). El mismo día n meses después (negativo: antes). Sumar 30 no es un mes."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "FIN.MES: sintaxis",
+          "dorso": "=FIN.MES(fecha; meses). Último día del mes: 0 este mes, 1 el siguiente."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "DIAS.LAB frente a DIA.LAB",
+          "dorso": "DIAS.LAB(inicio; fin; festivos) → número de días laborables. DIA.LAB(inicio; días; festivos) → fecha."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "SIFECHA: años cumplidos",
+          "dorso": "=SIFECHA(alta; hoy; \"Y\"). Unidades en inglés: \"Y\", \"M\", \"D\". Con \"A\" da #¡NUM!."
+        }
+      ]
+    }
+  ]
+}

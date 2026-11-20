@@ -1,0 +1,310 @@
+{
+ "id": "n0m3l2",
+ "titulo": "Fórmulas con celdas: la idea más importante de Excel",
+ "minutos": 14,
+ "objetivo": "Escribir fórmulas que usan direcciones de celda (=B2*C2) en lugar de números, para que el resultado se actualice solo cuando cambian los datos.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Te paso el pedido de Instalaciones Ebro: precio y unidades de cada línea. Calcúlame el importe de la línea de las luminarias con fórmula, que el cliente todavía puede cambiar las unidades y no quiero rehacer la cuenta cada vez.",
+  "logro": "Ya sabes hacer cálculos que se actualizan solos cuando cambian los datos: la base de todo lo que harás en Excel."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "En la lección anterior escribías los números dentro de la fórmula: `=38,9*4`. Funciona, pero tiene trampa: si el precio cambia, la fórmula no se entera.\n\nLa idea más importante de Excel es esta: en vez de los números, escribe **dónde están**. Si el precio está en **B2** y las unidades en **C2**, la fórmula es `=B2*C2`.\n\nEs como una receta: «multiplica lo que haya en B2 por lo que haya en C2»."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Así se ve",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Cable 1,5 mm² (rollo 100 m)",
+     "B2": 38.9,
+     "C2": 4,
+     "D2": "=B2*C2"
+    },
+    "formatos": {"B2": "eur", "D2": "eur"},
+    "anchos": {"A": 26}
+   },
+   "resaltar": ["D2"],
+   "mostrar_formulas": true,
+   "pie": "D2 no contiene 38,9 ni 4: contiene las direcciones B2 y C2. Excel va a mirar qué hay en ellas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e1",
+   "modo": "formula",
+   "enunciado": "Tu primera fórmula con celdas. En **D2**, escribe `=B2*C2` para multiplicar el precio por las unidades. Debe salir **155,60 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Cable 1,5 mm² (rollo 100 m)",
+     "B2": 38.9,
+     "C2": 4
+    },
+    "formatos": {"B2": "eur", "D2": "eur"},
+    "anchos": {"A": 26}
+   },
+   "objetivo": "D2",
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=38,9*4", "=B2+C2", "=B2*B2"],
+   "variantes": [{"B2": 40, "C2": 5}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza por `=` y en vez de números escribe las direcciones de las celdas.",
+    "El precio está en B2 y las unidades en C2. Multiplícalas con `*`.",
+    "Escribe `=B2*C2` y pulsa Intro."
+   ],
+   "explicacion": "Ya está: 155,60 €. Y lo mejor no se ve: si mañana cambia el precio de B2, D2 se recalcula solo. Así funcionan todas las facturas y pedidos de la empresa."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora viene la magia. Imagina que el cliente pide **6 rollos** en vez de 4. Haces clic en **C2**, escribes `6` y pulsas Intro.\n\nNo tienes que tocar la fórmula: D2 pasa sola de 155,60 € a **233,40 €**, porque sigue diciendo «multiplica B2 por C2» y C2 ahora vale 6.\n\nPor eso en una empresa los datos van en celdas y los cálculos apuntan a ellas: cambias un dato y todo se pone al día."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e2",
+   "modo": "predice",
+   "enunciado": "En D2 está la fórmula `=B2*C2`. Javier llama: el cliente quiere **30 luminarias** y has cambiado C2 a 30. Sin tocar la fórmula, ¿qué número mostrará D2?",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Luminaria LED 18 W",
+     "B2": 12.4,
+     "C2": 30
+    },
+    "anchos": {"A": 20}
+   },
+   "celda": "D2",
+   "formula": "=B2*C2",
+   "explicacion": "12,40 × 30 = 372. La fórmula mira lo que hay ahora en C2, así que el importe se actualiza solo. No has tenido que hacer ninguna cuenta."
+  },
+  {
+   "tipo": "texto",
+   "md": "No hace falta teclear las direcciones. Hay una forma más cómoda y con menos errores: **hacer clic** en las celdas mientras escribes la fórmula. Excel pone la dirección por ti."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: la fórmula a golpe de clic",
+   "pasos": [
+    {"md": "Haz clic en **D2** (donde quieres el resultado) y escribe `=`."},
+    {"md": "Haz clic en **B2**. En la fórmula aparece `=B2`, y B2 se rodea de un borde de color."},
+    {"md": "Escribe `*` y haz clic en **C2**. La fórmula ya es `=B2*C2`."},
+    {"md": "Pulsa **Intro**. D2 muestra el resultado."}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e3",
+   "modo": "formula",
+   "enunciado": "Factura de Electricidad Moncayo con descuento. En **D2** calcula lo que queda por pagar: el **total** (B2) **menos** el **descuento** (C2). Prueba a hacerlo con clics. Debe salir **1.137,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Total",
+     "C1": "Descuento",
+     "D1": "A pagar",
+     "A2": "Electricidad Moncayo",
+     "B2": 1240,
+     "C2": 103
+    },
+    "formatos": {"B2:D2": "eur"},
+    "anchos": {"A": 22, "B": 12, "C": 12, "D": 12}
+   },
+   "objetivo": "D2",
+   "solucion": "=B2-C2",
+   "errores_tipicos": ["=1240-103", "=C2-B2", "=B2+C2"],
+   "variantes": [{"B2": 980, "C2": 49}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una resta: al total le quitas el descuento.",
+    "Empieza por `=`, haz clic en B2, escribe `-` y haz clic en C2.",
+    "La fórmula es `=B2-C2`."
+   ],
+   "explicacion": "Correcto: 1.137,00 €. Primero el total y luego lo que se resta: en una resta el orden importa (`=C2-B2` daría un número negativo)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e4",
+   "modo": "formula",
+   "enunciado": "La comida de Navidad del almacén cuesta lo que hay en **B2** y van las personas de **C2**. En **D2** calcula cuánto toca **por persona**. Debe salir **27,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Evento",
+     "B1": "Importe",
+     "C1": "Personas",
+     "D1": "Por persona",
+     "A2": "Comida de Navidad",
+     "B2": 486,
+     "C2": 18
+    },
+    "formatos": {"B2": "eur", "D2": "eur"},
+    "anchos": {"A": 20, "D": 12}
+   },
+   "objetivo": "D2",
+   "solucion": "=B2/C2",
+   "errores_tipicos": ["=486/18", "=C2/B2", "=B2*C2"],
+   "variantes": [{"B2": 540, "C2": 20}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "«Por persona» es repartir: una división.",
+    "Lo que se reparte (el importe, B2) va primero; luego la barra `/` y entre cuántos (C2).",
+    "La fórmula es `=B2/C2`."
+   ],
+   "explicacion": "27,00 € por persona. Si al final se apunta alguien más, cambias C2 y el reparto se recalcula solo."
+  },
+  {
+   "tipo": "texto",
+   "md": "La regla de oro, que te ahorrará muchos disgustos: **si un número ya está en una celda, no lo escribas dentro de la fórmula**. Apunta a su celda.\n\n- Mal: `=12,4*25`. Hoy da bien, pero si cambian las unidades, el importe se queda viejo.\n- Bien: `=B2*C2`. Siempre al día.\n\nEn las hojas de empresa este fallo es de los más comunes, y de los más difíciles de ver: el resultado parece correcto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e5",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** En **D2** alguien escribió `=12,4*25` con los números a mano. Hoy da bien, pero si cambian el precio o las unidades no se actualizará. Cámbiala por una fórmula que **apunte a las celdas**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Luminaria LED 18 W",
+     "B2": 12.4,
+     "C2": 25
+    },
+    "formatos": {"B2": "eur", "D2": "eur"},
+    "anchos": {"A": 20}
+   },
+   "objetivo": "D2",
+   "inicial": "=12,4*25",
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=310", "=B2*25", "=12,4*C2"],
+   "variantes": [{"B2": 13.1, "C2": 40}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El 12,4 ya está escrito en una celda, y el 25 en otra. ¿En cuáles?",
+    "El precio está en B2 y las unidades en C2: cambia cada número por su dirección.",
+    "La fórmula es `=B2*C2`."
+   ],
+   "explicacion": "Arreglado. Ahora el importe depende de las celdas y nunca se quedará viejo. Revisar las fórmulas en busca de números escritos a mano es una de las primeras cosas que hace una buena administrativa."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Truco para no apuntar a la celda equivocada: haz doble clic en una celda con fórmula. Excel pinta cada dirección de la fórmula de un color y rodea esa celda con un borde del mismo color. Así ves de un vistazo a qué celdas mira."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e6",
+   "modo": "test",
+   "pregunta": "En la fila 3 está el tubo corrugado: precio en B3 y unidades en C3. ¿Qué fórmula pones en **D3** para su importe?",
+   "opciones": [
+    {"texto": "`=B3*C3`", "correcta": true, "porque": "Correcto: las dos celdas de su misma fila, la 3."},
+    {"texto": "`=B2*C2`", "correcta": false, "porque": "Esas celdas son de la fila 2, la del producto de arriba. Darías el importe de otro producto: un error que no avisa."},
+    {"texto": "`=B3*C2`", "correcta": false, "porque": "Mezcla el precio del tubo con las unidades de otra línea. Cada fórmula debe mirar a su propia fila."},
+    {"texto": "`=D3*C3`", "correcta": false, "porque": "D3 es la propia celda del importe, no el precio. Una fórmula no puede usarse a sí misma."}
+   ],
+   "explicacion": "Mira siempre que la fórmula apunta a las celdas de su fila. Apuntar a la celda equivocada da un número que parece bueno y no lo es."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l2-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Marta.** Pedido de Instalaciones Ebro. En **D3** calcula el importe de la línea de las **luminarias**: su precio por sus unidades, con una fórmula que apunte a las celdas de su fila. Debe salir **372,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Cable 2,5 mm² (rollo 100 m)",
+     "B2": 59.8,
+     "C2": 3,
+     "D2": "=B2*C2",
+     "A3": "Luminaria LED 18 W",
+     "B3": 12.4,
+     "C3": 30,
+     "A4": "Bridas 200 mm (bolsa 100)",
+     "B4": 3.15,
+     "C4": 10,
+     "D4": "=B4*C4"
+    },
+    "formatos": {"B2:B4": "eur", "D2:D4": "eur"},
+    "anchos": {"A": 26}
+   },
+   "objetivo": "D3",
+   "solucion": "=B3*C3",
+   "alternativas": ["=C3*B3"],
+   "errores_tipicos": ["=12,4*30", "=B2*C2", "=B4*C4", "=B3*C2"],
+   "variantes": [{"C3": 45}, {"B3": 11.9, "C3": 20}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Las luminarias están en la fila 3. ¿Dónde están su precio y sus unidades?",
+    "Precio en B3, unidades en C3: multiplícalas, sin escribir números.",
+    "La fórmula es `=B3*C3`."
+   ],
+   "explicacion": "Encargo resuelto: 372,00 €. Si el cliente cambia las unidades, Marta solo tiene que tocar C3 y el importe se actualiza. Esta idea, que la fórmula mire a las celdas, es la base de todo lo que harás en Excel."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m3l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: escribe la fórmula que multiplica lo que hay en **B4** por lo que hay en **C4**.",
+   "aceptadas": ["=B4*C4", "=C4*B4", "=b4*c4", "=c4*b4"],
+   "explicacion": "`=B4*C4`: signo igual, las direcciones de las celdas y el asterisco entre ellas."
+  },
+  {
+   "id": "n0m3l2-q2",
+   "modo": "predice",
+   "enunciado": "En D2 está `=B2-C2`. Marta cambia el descuento de C2 a **50**. ¿Qué mostrará D2?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Total",
+     "C1": "Descuento",
+     "D1": "A pagar",
+     "A2": "Montajes Arnedo",
+     "B2": 820,
+     "C2": 50
+    },
+    "anchos": {"A": 18}
+   },
+   "celda": "D2",
+   "formula": "=B2-C2",
+   "explicacion": "820 − 50 = 770. La fórmula toma el valor nuevo de C2 sin que la toques."
+  },
+  {
+   "id": "n0m3l2-q3",
+   "modo": "test",
+   "pregunta": "¿Por qué es mejor `=B2*C2` que `=12,4*25`, si hoy las dos dan 310?",
+   "opciones": [
+    {"texto": "Porque si cambia un dato de B2 o C2, el resultado se actualiza solo", "correcta": true, "porque": "Exacto: la fórmula con celdas sigue a los datos; la de números a mano se queda con los de hoy."},
+    {"texto": "Porque Excel calcula más rápido con letras", "correcta": false, "porque": "La velocidad es la misma. La diferencia es que una se actualiza y la otra no."},
+    {"texto": "Da igual, si el resultado es el mismo", "correcta": false, "porque": "Hoy sí, pero en cuanto cambie el precio o las unidades, `=12,4*25` dará un importe viejo sin avisar."}
+   ],
+   "explicacion": "Si el dato está en una celda, la fórmula apunta a la celda. Siempre."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Qué hace =B2*C2?", "dorso": "Multiplica lo que haya en B2 por lo que haya en C2. Si cambian, el resultado se actualiza solo."},
+  {"tipo": "error", "frente": "¿Qué tiene de malo =12,4*25 si 12,4 está en B2 y 25 en C2?", "dorso": "Los números van a mano: si cambian los datos, el resultado se queda viejo. Mejor =B2*C2."},
+  {"tipo": "truco", "frente": "Cómo poner una dirección en la fórmula sin teclearla", "dorso": "Mientras escribes la fórmula, haz clic en la celda: Excel escribe su dirección."},
+  {"tipo": "truco", "frente": "¿Cómo ves a qué celdas mira una fórmula?", "dorso": "Doble clic en la celda: cada dirección sale de un color y su celda, con un borde del mismo color."}
+ ]
+}

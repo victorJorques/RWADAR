@@ -1,0 +1,320 @@
+{
+ "id": "n3m5l3",
+ "titulo": "El gráfico adecuado y el gráfico combinado",
+ "minutos": 14,
+ "objetivo": "Elegir el gráfico según lo que se quiere contar, montar un gráfico combinado con eje secundario y presentarlo de forma honesta y clara.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Para el comité del jueves quiero ver en un solo gráfico cómo van las ventas de cada mes y qué margen nos dejan. Que se entienda en cinco segundos y que el título me diga lo que tengo que ver.",
+  "logro": "Ya sabes elegir el gráfico según lo que quieres contar y hacer un gráfico combinado con eje secundario, con un título que da la conclusión."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Antes de tocar un gráfico, contesta: **¿qué quiero que se vea?** Casi siempre es una de estas cuatro cosas:\n\n| Quiero enseñar… | Gráfico |\n|---|---|\n| **Comparar** cifras (delegaciones, comerciales) | Columnas o barras |\n| **Evolución** en el tiempo (meses) | Líneas |\n| **Composición**: partes de un total | Circular (pocas partes) o columnas apiladas |\n| **Relación** entre dos medidas | Dispersión (puntos) |\n\nEl tipo no se elige por bonito: se elige por la pregunta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e1",
+   "modo": "test",
+   "pregunta": "Lucía quiere enseñar cómo ha cambiado **la plantilla mes a mes** desde enero: 52 personas en enero, 53, 55… hasta las 58 de octubre. ¿Qué gráfico?",
+   "opciones": [
+    {
+     "texto": "Líneas",
+     "correcta": true,
+     "porque": "Eso es: una medida que cambia en el tiempo. La línea deja ver de un vistazo si sube, baja o se estanca."
+    },
+    {
+     "texto": "Circular",
+     "correcta": false,
+     "porque": "El circular es para partes de un total. Los meses no son partes de nada: son momentos distintos."
+    },
+    {
+     "texto": "Dispersión",
+     "correcta": false,
+     "porque": "La dispersión enseña la relación entre dos medidas distintas. Aquí hay una sola medida a lo largo del tiempo."
+    },
+    {
+     "texto": "Columnas apiladas",
+     "correcta": false,
+     "porque": "Las apiladas enseñan de qué se compone un total. Aquí no hay partes que sumar."
+    }
+   ],
+   "explicacion": "Evolución en el tiempo, líneas: de un vistazo se ve si la plantilla crece, baja o se estanca."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e2",
+   "modo": "test",
+   "pregunta": "Andrés sospecha que **los pedidos más grandes tardan más en servirse**. De cada pedido tiene el importe y los días que tardó. ¿Qué gráfico le ayuda a comprobarlo?",
+   "opciones": [
+    {
+     "texto": "Dispersión",
+     "correcta": true,
+     "porque": "Eso es: cada pedido es un punto, con el importe en un eje y los días en el otro. Si la nube de puntos sube hacia la derecha, Andrés tiene razón."
+    },
+    {
+     "texto": "Líneas",
+     "correcta": false,
+     "porque": "Las líneas unen puntos en orden, normalmente el del tiempo. Aquí los pedidos no tienen un orden natural: unirlos dibujaría un garabato."
+    },
+    {
+     "texto": "Columnas",
+     "correcta": false,
+     "porque": "Tendrías una columna por pedido y no verías la relación entre el importe y los días."
+    },
+    {
+     "texto": "Circular",
+     "correcta": false,
+     "porque": "El circular reparte un total en porciones; no relaciona dos medidas."
+    }
+   ],
+   "explicacion": "Para ver si dos medidas van juntas (más importe, más días), dispersión: cada pedido es un punto."
+  },
+  {
+   "tipo": "texto",
+   "md": "Carmen quiere ventas y margen en el mismo gráfico; cada uno es una **serie** (un grupo de datos del gráfico). Pero las ventas rondan **400.000 €** al mes y el margen es un **22 %** (0,22): en el mismo eje, la línea del margen queda aplastada contra el cero.\n\nLa solución es un **gráfico combinado con eje secundario**. Las ventas, en columnas con su escala a la izquierda; el margen, en una línea con **su propia escala a la derecha**: ese segundo eje vertical es el **eje secundario**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e3",
+   "modo": "formula",
+   "enunciado": "Primero, los datos. En **D2** calcula el **margen %** de mayo: el margen en euros (C2) entre las ventas (B2). La fórmula se copiará hasta D7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Mes",
+     "B1": "Ventas",
+     "C1": "Margen €",
+     "D1": "Margen %",
+     "A2": "Mayo",
+     "B2": 412300,
+     "C2": 99360,
+     "A3": "Junio",
+     "B3": 398750,
+     "C3": 93710,
+     "A4": "Julio",
+     "B4": 455900,
+     "C4": 103950,
+     "A5": "Agosto",
+     "B5": 301200,
+     "C5": 77110,
+     "A6": "Septiembre",
+     "B6": 468400,
+     "C6": 102580,
+     "A7": "Octubre",
+     "B7": 489150,
+     "C7": 103700
+    },
+    "formatos": {
+     "B2:C7": "#.##0 €",
+     "D2:D7": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "C": 11,
+     "D": 10
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D7"
+   ],
+   "solucion": "=C2/B2",
+   "errores_tipicos": [
+    "=B2/C2",
+    "=C2/$B$2",
+    "=C2/B2*100"
+   ],
+   "variantes": [
+    {
+     "C2": 120000,
+     "B5": 350000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Margen % = margen en euros ÷ ventas.",
+    "Divide C2 entre B2. No multipliques por 100: el formato de porcentaje ya lo hace.",
+    "`=C2/B2`"
+   ],
+   "explicacion": "Ya tienes la serie que irá en el eje secundario: del 24,1 % de mayo al 21,2 % de octubre. Sin eje secundario, esos 0,24 desaparecerían al lado de los 400.000 € de ventas."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para crearlo:\n\n1. Selecciona los datos **con sus títulos**: los meses, las ventas y el margen % (para saltarte una columna, mantén pulsada [[Ctrl]] mientras seleccionas).\n2. **Insertar › Gráficos › Insertar gráfico combinado** y elige el modelo de **columnas con una línea en el eje secundario**.\n\nSi el gráfico ya está hecho, haz clic en él y ve a **Diseño de gráfico › Cambiar tipo de gráfico**. En la opción del gráfico combinado, eliges el tipo de cada serie y marcas la casilla **Eje secundario** en la del margen."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e4",
+   "modo": "cinta",
+   "enunciado": "Ya tienes seleccionados los meses, las ventas y el margen %. Toca el botón que crea el **gráfico combinado**.",
+   "ruta": [
+    "Insertar",
+    "Gráficos",
+    "Insertar gráfico combinado"
+   ],
+   "explicacion": "Insertar › Gráficos › Insertar gráfico combinado. Desde ahí eliges el modelo de columnas con una línea en el eje secundario."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un gráfico para la dirección tiene que ser **honesto** y **limpio**:\n\n- **Eje desde cero** en columnas y barras: el ojo compara alturas; si el eje empieza en 300.000, una diferencia pequeña parece enorme.\n- **Título que dice la conclusión**: no «Ventas 2026», sino «Vendemos más, pero el margen baja».\n- **Quita lo que sobra**: 3D, sombras y la leyenda (el cuadro que dice qué color es cada serie) si solo hay una.\n- **Pocas series**: con más de cuatro o cinco líneas, nadie ve nada."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "Título: «Gráfico 1»",
+     "Título: «Vendemos más, pero el margen baja desde julio»"
+    ],
+    [
+     "Eje de las columnas que empieza en 300.000 €",
+     "Eje que empieza en 0 €"
+    ],
+    [
+     "Ventas y margen % en el mismo eje: la línea, pegada al cero",
+     "Margen % en el eje secundario, con su escala a la derecha"
+    ],
+    [
+     "Columnas en 3D con sombras",
+     "Columnas planas con la cifra encima"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e5",
+   "modo": "test",
+   "pregunta": "Un compañero manda un gráfico de columnas con las ventas del trimestre por delegación: Zaragoza 512.000 €, Pamplona 498.000 € y Lleida 489.000 €. El eje vertical empieza en **485.000 €**, y la columna de Zaragoza parece **casi siete veces** más alta que la de Lleida. ¿Qué le dices?",
+   "opciones": [
+    {
+     "texto": "Que el eje empiece en 0: en realidad, Zaragoza vende menos de un 5 % más que Lleida",
+     "correcta": true,
+     "porque": "Eso es. Con el eje cortado, la altura ya no es la cifra: 27.000 € por encima de 485.000 frente a 4.000 parece una diferencia enorme, y no lo es."
+    },
+    {
+     "texto": "Que lo cambie a un gráfico circular",
+     "correcta": false,
+     "porque": "El circular es para partes de un total y con cifras tan parecidas no se leería mejor. El problema aquí es el eje, no el tipo."
+    },
+    {
+     "texto": "Que está bien: así se ven mejor las diferencias",
+     "correcta": false,
+     "porque": "Se ven más, pero falsas. En columnas, la altura tiene que ser la cifra; si cortas el eje, el gráfico exagera."
+    },
+    {
+     "texto": "Que añada un eje secundario",
+     "correcta": false,
+     "porque": "El eje secundario es para una segunda serie con otra escala (como el margen %). Aquí solo hay una serie."
+    }
+   ],
+   "explicacion": "En columnas y barras el eje empieza en 0, porque la altura tiene que ser la cifra. Si una diferencia pequeña importa, dila en el título en vez de exagerarla con el eje."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e6",
+   "modo": "abierta",
+   "pregunta": "Escribe el **título** del gráfico de Carmen. Ventas de mayo a octubre en columnas: suben de 412.300 € a 489.150 €, con un bache en agosto. Margen % en línea: baja del 24,1 % al 21,2 %. Que diga la conclusión en una frase.",
+   "modelo": "Vendemos más cada mes, pero el margen ha bajado del 24 % al 21 %",
+   "criterios": [
+    "Dice la conclusión, no solo el tema («Ventas y margen» no basta)",
+    "Habla de las dos cosas: las ventas y el margen",
+    "Es una frase corta, que se lee de un vistazo",
+    "Si da cifras, son correctas"
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m5l3-e7",
+   "modo": "ordenar",
+   "enunciado": "**Misión de Carmen.** Ordena los pasos para dejarle el gráfico listo para el comité.",
+   "pasos": [
+    "Selecciona los meses, las ventas y el margen %, con sus títulos",
+    "Insertar › Gráficos › Insertar gráfico combinado",
+    "Elige el modelo de columnas con una línea en el eje secundario",
+    "Cambia el título por la conclusión: «Vendemos más, pero el margen baja»",
+    "Revisa antes de enviar: eje de las columnas desde 0, sin 3D y cifras legibles"
+   ],
+   "explicacion": "Misión cumplida: un solo gráfico en el que Carmen ve en cinco segundos que las ventas suben y el margen baja. Primero los datos, luego el tipo y, al final, el mensaje y la revisión."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m5l3-q1",
+   "modo": "test",
+   "pregunta": "Javier quiere un gráfico de líneas con la evolución mensual de sus **12 comerciales**, una línea por cada uno. ¿Qué le aconsejas?",
+   "opciones": [
+    {
+     "texto": "Que no meta las 12: mejor unas barras ordenadas con el total de cada uno, o solo las líneas de los que le interesan",
+     "correcta": true,
+     "porque": "Eso es. Con 12 líneas cruzadas no se distingue ninguna; un gráfico tiene que dejar ver una idea."
+    },
+    {
+     "texto": "Un gráfico combinado con eje secundario",
+     "correcta": false,
+     "porque": "El eje secundario sirve para dos medidas con escalas distintas, no para muchas series de la misma medida."
+    },
+    {
+     "texto": "Un gráfico circular por cada mes",
+     "correcta": false,
+     "porque": "Doce circulares de doce porciones: ilegible. El circular solo funciona con pocas partes de un total."
+    },
+    {
+     "texto": "Que lo haga en 3D para que quepan mejor",
+     "correcta": false,
+     "porque": "El 3D deforma las cifras y no hace sitio a nada: complica la lectura."
+    }
+   ],
+   "explicacion": "Un gráfico tiene que dejar ver una idea. Con muchas series, elige las importantes o cambia de gráfico."
+  },
+  {
+   "id": "n3m5l3-q2",
+   "modo": "cinta",
+   "enunciado": "Ya tienes un gráfico de columnas con las ventas y el margen %, y el margen se ve pegado al cero. Con el gráfico seleccionado, ¿qué botón usas para pasar el margen a una línea en el eje secundario?",
+   "ruta": [
+    "Diseño de gráfico",
+    "Tipo",
+    "Cambiar tipo de gráfico"
+   ],
+   "explicacion": "Diseño de gráfico › Cambiar tipo de gráfico. En la opción del gráfico combinado eliges «Línea» para el margen y marcas «Eje secundario»."
+  },
+  {
+   "id": "n3m5l3-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cómo se llama el segundo eje vertical, el de la derecha, que tiene su propia escala?",
+   "aceptadas": [
+    "eje secundario",
+    "el eje secundario",
+    "secundario",
+    "eje vertical secundario"
+   ],
+   "explicacion": "El eje secundario. Se usa cuando dos series tienen escalas muy distintas, como euros y porcentajes."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Comparar, evolución, composición, relación: ¿qué gráfico para cada una?",
+   "dorso": "Columnas o barras; líneas; circular (pocas partes) o columnas apiladas; dispersión."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cuándo usas un gráfico combinado con eje secundario?",
+   "dorso": "Cuando dos series tienen escalas muy distintas, como las ventas en € y el margen en %."
+  },
+  {
+   "tipo": "error",
+   "frente": "Columnas con el eje empezando en 485.000 €",
+   "dorso": "Exagera las diferencias. En columnas y barras, el eje empieza en 0."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué título le pones a un gráfico para la dirección?",
+   "dorso": "La conclusión en una frase: «Vendemos más, pero el margen baja»."
+  }
+ ]
+}

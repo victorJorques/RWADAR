@@ -1,0 +1,503 @@
+{
+ "id": "n3m3l3",
+ "titulo": "Limpiar con fórmulas: SUSTITUIR, VALOR.NUMERO y compañía",
+ "minutos": 16,
+ "objetivo": "Limpiar con fórmulas en una columna auxiliar: cambiar trozos de texto con SUSTITUIR, convertir importes de cualquier formato con VALOR.NUMERO, reconstruir fechas pegadas con FECHA, recuperar los ceros con TEXTO y dejar el resultado como valores.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "La pasarela de pago de la tienda online (el servicio que cobra las tarjetas en la web) exporta los cobros con la fecha pegada (20261114) y los importes a la americana (1,234.56). Así no puedo cuadrarlos con el banco. ¿Me los pasas a fecha y número de verdad? El banco dice 3.912,40 € esta semana.",
+  "logro": "Ya sabes convertir con fórmulas fechas e importes que llegan como texto, en el formato que sea, y dejar el resultado como valores."
+ },
+ "funciones": [
+  "SUSTITUIR",
+  "VALOR.NUMERO",
+  "VALOR",
+  "FECHA",
+  "EXTRAE",
+  "ESPACIOS",
+  "NOMPROPIO",
+  "TEXTO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Las herramientas de la lección anterior son rápidas, pero hay que repetirlas cada vez. Con **fórmulas**, la limpieza queda escrita: el mes que viene pegas los datos nuevos y sale sola.\n\nEl método es siempre el mismo: una **columna auxiliar** al lado de la sucia, con la fórmula que limpia la primera fila, copiada hacia abajo. Las fórmulas se pueden **encadenar**: una dentro de otra, como en `=NOMPROPIO(ESPACIOS(A2))`, que ya conoces."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Una columna auxiliar con dos fórmulas encadenadas",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente (sucio)",
+     "B1": "Cliente (limpio)",
+     "A2": "  INSTALACIONES  ARGA, S.L. ",
+     "B2": "=NOMPROPIO(ESPACIOS(A2))",
+     "A3": "montajes ega, s.l.",
+     "B3": "=NOMPROPIO(ESPACIOS(A3))"
+    },
+    "anchos": {
+     "A": 30,
+     "B": 26
+    }
+   },
+   "resaltar": [
+    "B2",
+    "B3"
+   ],
+   "mostrar_formulas": true,
+   "pie": "ESPACIOS quita los espacios de sobra y NOMPROPIO pone mayúscula inicial. Primero se calcula la de dentro."
+  },
+  {
+   "tipo": "texto",
+   "md": "`SUSTITUIR(texto; texto_original; texto_nuevo)` cambia un trozo de texto por otro **dentro de la celda**:\n- `=SUSTITUIR(A2;\"-\";\"\")` convierte «LED-0045» en «LED0045»: cambia el guion por nada (dos comillas seguidas).\n- `=SUSTITUIR(A2;\"_\";\" \")` convierte «CABLE_FLEXIBLE» en «CABLE FLEXIBLE».\n\nEs como Buscar y reemplazar, pero en una fórmula que se copia y se recalcula. Distingue mayúsculas: para SUSTITUIR, «led» no es «LED»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e1",
+   "modo": "formula",
+   "enunciado": "La tarifa del proveedor escribe los códigos con guion (LED-0045) y nuestro programa sin él (LED0045). En **B2** escribe la fórmula que quite el guion del código de A2. Se copiará a B3:B5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código proveedor",
+     "B1": "Código nuestro",
+     "C1": "Descripción",
+     "A2": "LED-0045",
+     "C2": "Panel LED 60x60 40 W",
+     "A3": "MAG-2163",
+     "C3": "Magnetotérmico 2P 16 A",
+     "A4": "CAB-1520",
+     "C4": "Cable H07V-K 1,5 mm² (100 m)",
+     "A5": "BRI-0300",
+     "C5": "Bridas nailon 300 mm (100 uds)"
+    },
+    "anchos": {
+     "A": 16,
+     "B": 15,
+     "C": 30
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=SUSTITUIR(A2;\"-\";\"\")",
+   "errores_tipicos": [
+    "=SUSTITUIR(A2;\"-\";\" \")",
+    "=SUSTITUIR(A2;\"_\";\"\")"
+   ],
+   "variantes": [
+    {
+     "A2": "TUB-0020"
+    }
+   ],
+   "pistas": [
+    "Usa SUSTITUIR: el texto es A2, lo viejo es el guion y lo nuevo, nada.",
+    "«Nada» se escribe con dos comillas seguidas: \"\". El guion va entre comillas: \"-\".",
+    "=SUSTITUIR(A2;\"-\";\"\")"
+   ],
+   "explicacion": "Los códigos ya tienen el mismo formato que en nuestro programa, así que BUSCARX los encontrará. Cada vez que dos listas escriban un código distinto, SUSTITUIR es el puente."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un importe que llega como texto («1.234,56 €») no suma. `VALOR.NUMERO` lo convierte en número, y tú le dices **cómo viene escrito**:\n\n`VALOR.NUMERO(texto; separador_decimal; separador_de_miles)`\n\n- Formato español, «1.234,56»: `=VALOR.NUMERO(A2;\",\";\".\")`\n- Formato americano, «1,234.56»: `=VALOR.NUMERO(A2;\".\";\",\")`\n\nSe salta los espacios, pero **no** entiende el símbolo €: quítalo antes con SUSTITUIR."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "¿VALOR o VALOR.NUMERO?",
+   "md": "`VALOR` (nivel 2) entiende los números escritos como los escribe tu Excel, en español. `VALOR.NUMERO` entiende cualquier formato porque tú le dices los separadores: para archivos que vienen de fuera, usa esta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e2",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** Un proveedor manda sus importes como texto y con el euro: «1.234,56 €». La fórmula de **C2** da #¡VALOR!. Corrígela para que C2 dé el número. Se copiará a C3:C5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Proveedor",
+     "B1": "Importe (texto)",
+     "C1": "Importe",
+     "A2": "Cables Moncayo, S.L.",
+     "B2": "'1.234,56 €",
+     "A3": "Iluminación Segre, S.L.",
+     "B3": "'845,00 €",
+     "A4": "Suministros Arga, S.A.",
+     "B4": "'12.050,90 €",
+     "A5": "Bridas del Cinca, S.L.",
+     "B5": "'99,95 €"
+    },
+    "formatos": {
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 16,
+     "C": 13
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "inicial": "=VALOR.NUMERO(B2;\",\";\".\")",
+   "solucion": "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")",
+   "alternativas": [
+    "=VALOR(SUSTITUIR(B2;\"€\";\"\"))",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\" €\";\"\");\",\";\".\")"
+   ],
+   "debe_usar": [
+    "SUSTITUIR"
+   ],
+   "errores_tipicos": [
+    "=SUSTITUIR(B2;\"€\";\"\")",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\".\";\",\")"
+   ],
+   "variantes": [
+    {
+     "B2": "'2.500,00 €"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El problema es el símbolo €: VALOR.NUMERO no lo entiende.",
+    "Quita el € con SUSTITUIR(B2;\"€\";\"\") y pon eso como primer argumento de VALOR.NUMERO, en lugar de B2.",
+    "=VALOR.NUMERO(SUSTITUIR(B2;\"€\";\"\");\",\";\".\")"
+   ],
+   "explicacion": "Has encadenado dos funciones: SUSTITUIR limpia y VALOR.NUMERO convierte. Ahora estos importes suman y puedes cuadrar las facturas del proveedor."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Fechas que llegan como texto.** Muchos programas exportan la fecha pegada: «20261114» (año, mes y día). Para Excel es un texto: no puedes restar días ni ordenar por fecha.\n\nLa reconstruyes con `FECHA(año; mes; día)` y las funciones de cortar texto del nivel 2:\n\n`=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))`\n\nIZQUIERDA saca «2026»; EXTRAE, «11» (2 caracteres desde el 5.º), y DERECHA, «14»."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "De texto a fecha",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha (texto)",
+     "B1": "Fecha",
+     "A2": "'20261114",
+     "B2": "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))"
+    },
+    "formatos": {
+     "B2": "fecha"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 44
+    }
+   },
+   "resaltar": [
+    "B2"
+   ],
+   "mostrar_formulas": true,
+   "pie": "Sin fórmulas a la vista, B2 muestra 14/11/2026: una fecha de verdad."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e3",
+   "modo": "formula",
+   "enunciado": "Los cobros de la pasarela de Marta traen la fecha pegada. En **B2** convierte el texto de A2 en una fecha de verdad. Se copiará a B3:B6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha (texto)",
+     "B1": "Fecha",
+     "C1": "Pedido",
+     "A2": "'20261109",
+     "C2": "WEB-10231",
+     "A3": "'20261110",
+     "C3": "WEB-10232",
+     "A4": "'20261111",
+     "C4": "WEB-10233",
+     "A5": "'20261113",
+     "C5": "WEB-10234",
+     "A6": "'20261114",
+     "C6": "WEB-10235"
+    },
+    "formatos": {
+     "B2:B6": "fecha"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12,
+     "C": 11
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B6"
+   ],
+   "solucion": "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))",
+   "alternativas": [
+    "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);EXTRAE(A2;7;2))"
+   ],
+   "debe_usar": [
+    "FECHA"
+   ],
+   "errores_tipicos": [
+    "=FECHA(IZQUIERDA(A2;4);DERECHA(A2;2);EXTRAE(A2;5;2))",
+    "=FECHA(DERECHA(A2;4);EXTRAE(A2;5;2);IZQUIERDA(A2;2))"
+   ],
+   "variantes": [
+    {
+     "A2": "'20261231"
+    }
+   ],
+   "formato_resultado": "fecha",
+   "pistas": [
+    "FECHA necesita tres trozos, en este orden: año, mes y día.",
+    "El año son los 4 primeros caracteres (IZQUIERDA), el mes son 2 caracteres desde el 5.º (EXTRAE) y el día, los 2 últimos (DERECHA).",
+    "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))"
+   ],
+   "explicacion": "Ya son fechas de verdad: puedes ordenarlas, filtrarlas por semana y compararlas con el extracto del banco. Sirve para cualquier fecha pegada; solo cambian las posiciones de cada trozo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e4",
+   "modo": "test",
+   "pregunta": "En otro archivo, de una plataforma de EE. UU., aparece la fecha **03/04/2026**. ¿Qué día es?",
+   "opciones": [
+    {
+     "texto": "Depende de dónde se hizo el archivo: en EE. UU. el mes va primero, así que sería el 4 de marzo",
+     "correcta": true,
+     "porque": "Correcto. En España se escribe día/mes; en EE. UU., mes/día. Busca en la columna una fecha con el primer número mayor que 12 (por ejemplo, 03/25/2026): si existe, el archivo es mes/día."
+    },
+    {
+     "texto": "El 3 de abril, como siempre",
+     "correcta": false,
+     "porque": "Eso es en formato español. Si el archivo viene de un sistema de EE. UU., 03/04 es el 4 de marzo. No des el formato por hecho: compruébalo."
+    },
+    {
+     "texto": "Excel lo sabe y lo corrige solo",
+     "correcta": false,
+     "porque": "Excel lee las fechas según la configuración de tu equipo (día/mes en España). Si el archivo es mes/día, la leerá mal sin avisarte."
+    }
+   ],
+   "explicacion": "Una fecha ambigua no da error: da **otra fecha**. Antes de fiarte, busca un día mayor que 12 que te diga el formato."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Códigos que han perdido los ceros.** Si un código postal se guardó como número, «08001» se queda en 8001. Para recuperarlo, `TEXTO` le da forma con las cifras que quieras:\n\n`=TEXTO(A2;\"00000\")` → «08001»\n\nCada 0 del formato es una cifra obligatoria: si faltan, pone ceros delante. El resultado es **texto**, justo lo que debe ser un código: nadie suma códigos postales."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e5",
+   "modo": "formula",
+   "enunciado": "Los códigos postales de esta lista se guardaron como números y han perdido el cero. En **C2** recupera el código postal de 5 cifras a partir de B2. Se copiará a C3:C6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Población",
+     "B1": "CP (número)",
+     "C1": "CP",
+     "A2": "Barcelona",
+     "B2": 8001,
+     "A3": "Vitoria-Gasteiz",
+     "B3": 1008,
+     "A4": "Burgos",
+     "B4": 9003,
+     "A5": "Pamplona",
+     "B5": 31008,
+     "A6": "Sabadell",
+     "B6": 8202
+    },
+    "anchos": {
+     "A": 16,
+     "B": 12,
+     "C": 9
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=TEXTO(B2;\"00000\")",
+   "alternativas": [
+    "=DERECHA(\"0000\"&B2;5)"
+   ],
+   "errores_tipicos": [
+    "=\"0\"&B2",
+    "=TEXTO(B2;\"0\")"
+   ],
+   "variantes": [
+    {
+     "B2": 8040
+    }
+   ],
+   "pistas": [
+    "TEXTO(número; formato) convierte un número en texto con la forma que le digas.",
+    "Un código postal tiene 5 cifras: el formato son cinco ceros entre comillas.",
+    "=TEXTO(B2;\"00000\")"
+   ],
+   "explicacion": "Cada código vuelve a tener su cero, y Pamplona sigue con sus 5 cifras. Como texto, BUSCARX y CONTAR.SI los encontrarán en otras listas y las etiquetas de envío saldrán bien."
+  },
+  {
+   "tipo": "texto",
+   "md": "**De fórmula a dato.** Cuando la columna auxiliar está bien, conviértela en valores para poder borrar la sucia:\n1. Copia la columna auxiliar ([[Ctrl]]+[[C]]).\n2. Encima de ella misma: **Pegado especial › Valores** ([[Ctrl]]+[[Alt]]+[[V]]).\n3. Ya no depende de la columna sucia: puedes borrarla.\n\nSi borras la sucia **antes**, todas tus fórmulas darán #¡REF!, porque apuntaban a celdas que ya no existen."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e6",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para limpiar la columna de clientes con una columna auxiliar y quedarte solo con los datos limpios.",
+   "pasos": [
+    "Inserta una columna vacía al lado de la columna sucia",
+    "Escribe la fórmula de limpieza en la primera fila de datos",
+    "Copia la fórmula hacia abajo hasta la última fila",
+    "Copia la columna auxiliar y pégala encima de sí misma con Pegado especial › Valores",
+    "Borra la columna sucia"
+   ],
+   "explicacion": "La columna sucia se borra la última: mientras haya fórmulas que la usan, la necesitan. Pegar como valores corta ese hilo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m3l3-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Marta.** La pasarela trae el importe como texto y a la americana: «1,234.56» (coma para los miles y punto para los decimales). En **C2** conviértelo en número. Se copiará a C3:C6, y la SUMA de **C7** tiene que dar lo mismo que el banco: **3.912,40 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha",
+     "B1": "Importe (texto)",
+     "C1": "Importe",
+     "A2": {
+      "fecha": "2026-11-09"
+     },
+     "B2": "'1,234.56",
+     "A3": {
+      "fecha": "2026-11-10"
+     },
+     "B3": "'845.00",
+     "A4": {
+      "fecha": "2026-11-11"
+     },
+     "B4": "'1,050.30",
+     "A5": {
+      "fecha": "2026-11-13"
+     },
+     "B5": "'512.79",
+     "A6": {
+      "fecha": "2026-11-14"
+     },
+     "B6": "'269.75",
+     "A7": "Total",
+     "C7": "=SUMA(C2:C6)"
+    },
+    "formatos": {
+     "A2:A6": "fecha",
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 16,
+     "C": 13
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=VALOR.NUMERO(B2;\".\";\",\")",
+   "debe_usar": [
+    "VALOR.NUMERO"
+   ],
+   "errores_tipicos": [
+    "=VALOR.NUMERO(B2;\",\";\".\")",
+    "=VALOR(B2)",
+    "=VALOR.NUMERO(B2)"
+   ],
+   "variantes": [
+    {
+     "B2": "'2,000.00"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Aquí el separador decimal es el punto y el de miles, la coma: al revés que en España.",
+    "VALOR.NUMERO(texto; separador_decimal; separador_de_miles): primero \".\" y después \",\".",
+    "=VALOR.NUMERO(B2;\".\";\",\")"
+   ],
+   "explicacion": "C7 da 3.912,40 €, lo mismo que el banco: cobros cuadrados. Con VALOR.NUMERO lees importes de cualquier país cambiando solo los dos separadores. Y fíjate en «845.00»: leído a la española serían 84.500 €. Por eso se cuadra siempre con otra fuente."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m3l3-q1",
+   "modo": "predice",
+   "enunciado": "Un archivo americano trae «845.00» y alguien lo convierte con los separadores españoles. ¿Qué devuelve la fórmula de B1?",
+   "hoja": {
+    "celdas": {
+     "A1": "'845.00"
+    },
+    "anchos": {
+     "A": 10
+    }
+   },
+   "celda": "B1",
+   "formula": "=VALOR.NUMERO(A1;\",\";\".\")",
+   "explicacion": "Con «.» como separador de miles, «845.00» se lee como 84.500: cien veces más, y sin error. Los separadores se eligen mirando el archivo.",
+   "respuesta": "84500"
+  },
+  {
+   "id": "n3m3l3-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función usas dentro de una fórmula para quitar el símbolo € de un texto?",
+   "aceptadas": [
+    "SUSTITUIR",
+    "=SUSTITUIR",
+    "SUSTITUIR()",
+    "sustituir"
+   ],
+   "explicacion": "`SUSTITUIR(B2;\"€\";\"\")` cambia el € por nada. Después, VALOR.NUMERO convierte el resto en número."
+  },
+  {
+   "id": "n3m3l3-q3",
+   "modo": "test",
+   "pregunta": "Has limpiado una columna con fórmulas, borras la columna original y todas tus fórmulas dan #¡REF!. ¿Qué faltó?",
+   "opciones": [
+    {
+     "texto": "Pegar la columna auxiliar como valores antes de borrar la original",
+     "correcta": true,
+     "porque": "Correcto. Las fórmulas apuntaban a la columna borrada. Deshaz con Ctrl+Z, pega como valores y borra después."
+    },
+    {
+     "texto": "Fijar las referencias con $",
+     "correcta": false,
+     "porque": "El $ evita que una referencia se mueva al copiar, pero no salva una celda borrada."
+    },
+    {
+     "texto": "Usar VALOR en vez de VALOR.NUMERO",
+     "correcta": false,
+     "porque": "La función no importa: cualquier fórmula que apunte a una celda borrada da #¡REF!."
+    }
+   ],
+   "explicacion": "Orden de trabajo: fórmula auxiliar, comprobar, pegar valores y, al final, borrar la original."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "SUSTITUIR: sintaxis",
+   "dorso": "SUSTITUIR(texto; texto_original; texto_nuevo). Ej.: =SUSTITUIR(A2;\"-\";\"\") quita los guiones. Distingue mayúsculas."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "VALOR.NUMERO con importes españoles y americanos",
+   "dorso": "«1.234,56» → =VALOR.NUMERO(A2;\",\";\".\") · «1,234.56» → =VALOR.NUMERO(A2;\".\";\",\")"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Fecha pegada «20261114» a fecha de verdad",
+   "dorso": "=FECHA(IZQUIERDA(A2;4);EXTRAE(A2;5;2);DERECHA(A2;2))"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Recuperar el cero de un código postal guardado como número",
+   "dorso": "=TEXTO(A2;\"00000\") → 8001 pasa a «08001»."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué haces antes de borrar la columna sucia?",
+   "dorso": "Copiar la columna auxiliar y pegarla como Valores (Ctrl+Alt+V)."
+  }
+ ]
+}

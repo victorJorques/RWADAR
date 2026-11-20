@@ -1,0 +1,56 @@
+{
+ "id": "n1m2",
+ "nivel": "n1",
+ "titulo": "Las funciones de cada día",
+ "intro": "Media, máximo, mínimo, cuántos hay, redondear a céntimos y decidir con SI: son las preguntas que te harán todas las semanas en Electro Cierzo. Con estas siete funciones resolverás la mayoría de los encargos de una oficina sin hacer cuentas a mano.",
+ "repaso_inicial": [
+  {
+   "id": "n1m2-r1",
+   "modo": "formula",
+   "enunciado": "Calentamos. En **B6** calcula el **total** de los cuatro albaranes (notas de entrega) de B2:B5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Albarán", "B1": "Importe",
+     "A2": "A-3301", "B2": 412,
+     "A3": "A-3302", "B3": 1260,
+     "A4": "A-3303", "B4": 87.5,
+     "A5": "A-3304", "B5": 640,
+     "A6": "Total"
+    },
+    "formatos": {"B2:B6": "eur"}
+   },
+   "objetivo": "B6",
+   "solucion": "=SUMA(B2:B5)",
+   "alternativas": ["=B2+B3+B4+B5"],
+   "errores_tipicos": ["=SUMA(B2:B4)", "=SUMA(B3:B5)"],
+   "variantes": [{"B3": 1500}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es la función que ya conoces para sumar una columna.",
+    "SUMA con el rango de los cuatro importes.",
+    "=SUMA(B2:B5)"
+   ],
+   "explicacion": "2.399,50 €. SUMA y su forma, nombre(rango), es la puerta de entrada a todas las funciones de este módulo."
+  },
+  {
+   "id": "n1m2-r2",
+   "modo": "test",
+   "pregunta": "En C2 tienes `=B2*$F$1` y la copias a C3. ¿Qué fórmula queda en C3?",
+   "opciones": [
+    {"texto": "=B3*$F$1", "correcta": true, "porque": "B2 no tiene $ y baja una fila; $F$1 está fijada y no se mueve."},
+    {"texto": "=B3*$F$2", "correcta": false, "porque": "Los $ impiden que F1 cambie de fila al copiar."},
+    {"texto": "=B2*$F$1", "correcta": false, "porque": "B2 no lleva $, así que sí cambia al copiar hacia abajo."}
+   ]
+  },
+  {
+   "id": "n1m2-r3",
+   "modo": "predice",
+   "enunciado": "Orden de las operaciones. ¿Qué devuelve esta fórmula?",
+   "hoja": {"celdas": {"A1": 100, "B1": 20, "C1": 2}},
+   "celda": "D1",
+   "formula": "=A1-B1*C1",
+   "explicacion": "Primero la multiplicación (20 × 2 = 40) y después la resta: 100 − 40 = 60. Si quisieras restar primero, necesitarías paréntesis: =(A1-B1)*C1."
+  }
+ ],
+ "practica_excel": null
+}

@@ -1,0 +1,445 @@
+{
+ "id": "n2m3l3",
+ "titulo": "Limpiar textos y números que llegan mal",
+ "minutos": 16,
+ "objetivo": "Detectar y limpiar los datos que llegan mal de otros programas: espacios de más, mayúsculas desordenadas y números guardados como texto.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "He sumado los cobros de esta semana que saca el programa y me salen 2.104,90 €, pero el banco dice bastante más. Algunos importes aparecen pegados a la izquierda, con un triangulito verde. ¿Me pones una columna con los importes bien y me dices el total real?",
+  "logro": "Ya sabes detectar y limpiar espacios invisibles, mayúsculas desordenadas y números que llegan como texto, y comprobar que el total cuadra."
+ },
+ "funciones": [
+  "ESPACIOS",
+  "MAYUSC",
+  "MINUSC",
+  "NOMPROPIO",
+  "VALOR",
+  "LARGO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Los datos que llegan de otros programas, de un CSV o de lo que escribe cada compañero traen **suciedad invisible**: un espacio al final de «Zaragoza », mayúsculas a medias, números que en realidad son texto.\n\nNo se ven, pero rompen los cálculos: un CONTAR.SI de \"Zaragoza\" no cuenta «Zaragoza » con espacio.\n\nPrimera herramienta para cazarla: `LARGO`. «Zaragoza» tiene 8 letras; si LARGO dice 9, hay algo de más."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e1",
+   "modo": "formula",
+   "enunciado": "Javier sospecha de la columna de delegaciones. En **B2** escribe una fórmula que cuente los **caracteres** de A2. Se copiará a B3:B5 y verás cuáles tienen algo de más.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Caracteres",
+     "A2": "Zaragoza",
+     "A3": "Zaragoza ",
+     "A4": " Pamplona",
+     "A5": "Lleida"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 11
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=LARGO(A2)",
+   "errores_tipicos": [
+    "=CONTARA(A2)",
+    "=8"
+   ],
+   "variantes": [
+    {
+     "A2": "Lleida "
+    }
+   ],
+   "pistas": [
+    "Es la función que cuenta caracteres, de la lección anterior.",
+    "`LARGO(texto)`: el texto es A2.",
+    "`=LARGO(A2)`"
+   ],
+   "explicacion": "8, 9, 9 y 6. «Zaragoza» con 9 y «Pamplona» con 9 (debería tener 8) esconden un espacio. Has encontrado en un segundo lo que a ojo no se ve."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e2",
+   "modo": "predice",
+   "enunciado": "En A1 hay «Zaragoza » (con un espacio al final) y en A2, «Zaragoza». ¿Qué devuelve la comparación de **B1**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Zaragoza ",
+     "A2": "Zaragoza"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "celda": "B1",
+   "formula": "=A1=A2",
+   "explicacion": "FALSO: para Excel son textos distintos, porque uno lleva un carácter más. Comparar con `=` es una forma rápida de descubrir diferencias invisibles. Curiosidad: `=` no distingue mayúsculas, así que «zaragoza» y «Zaragoza» sí darían VERDADERO."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para quitar la suciedad de los espacios está **ESPACIOS**:\n\n`=ESPACIOS(A2)`\n\n- Quita **todos** los espacios del principio y del final.\n- Deja **uno solo** entre palabras: «Montajes   Arga» (con tres espacios) pasa a «Montajes Arga».\n\nSe usa en una columna auxiliar al lado: la fórmula limpia el dato y la columna original queda intacta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e3",
+   "modo": "formula",
+   "enunciado": "Los nombres de clientes llegan con espacios de más. En **B2** escribe una fórmula que deje el nombre de A2 limpio: debe salir **Instalaciones Ebro**. Se copiará a B3:B4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente (como llega)",
+     "B1": "Cliente (limpio)",
+     "A2": "  Instalaciones Ebro",
+     "A3": "Montajes  Arga ",
+     "A4": "Reformas Segre"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 20
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B4"
+   ],
+   "solucion": "=ESPACIOS(A2)",
+   "errores_tipicos": [
+    "=A2",
+    "=NOMPROPIO(A2)"
+   ],
+   "variantes": [
+    {
+     "A4": " Reformas   Segre  "
+    }
+   ],
+   "pistas": [
+    "Hay una función que quita los espacios sobrantes.",
+    "`ESPACIOS(texto)`: el texto es A2.",
+    "`=ESPACIOS(A2)`"
+   ],
+   "explicacion": "Tres nombres limpios. A partir de ahora, un CONTAR.SI o un SUMAR.SI sobre la columna B no se dejará a nadie fuera por un espacio."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Cuando ESPACIOS no funciona",
+   "md": "Si después de ESPACIOS el LARGO sigue saliendo de más, el dato viene de una web y trae un **espacio especial** que ESPACIOS no quita. Lo arreglarás en el módulo de limpieza de datos."
+  },
+  {
+   "tipo": "texto",
+   "md": "Otra suciedad típica: las mayúsculas. Tres funciones lo ordenan:\n\n- `MAYUSC`: todo en mayúsculas.\n- `MINUSC`: todo en minúsculas (útil para correos electrónicos).\n- `NOMPROPIO`: la primera letra de cada palabra en mayúscula y el resto en minúscula.\n\nY se pueden **anidar** (meter una dentro de otra): `=NOMPROPIO(ESPACIOS(A2))` primero quita espacios y después arregla las mayúsculas."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Las tres funciones con el mismo nombre",
+   "hoja": {
+    "celdas": {
+     "A1": "Como llega",
+     "B1": "MAYUSC",
+     "C1": "MINUSC",
+     "D1": "NOMPROPIO",
+     "A2": "jorge IBÁÑEZ sola",
+     "B2": "=MAYUSC(A2)",
+     "C2": "=MINUSC(A2)",
+     "D2": "=NOMPROPIO(A2)"
+    },
+    "anchos": {
+     "A": 18,
+     "B": 18,
+     "C": 18,
+     "D": 18
+    }
+   },
+   "resaltar": [
+    "B2:D2"
+   ],
+   "mostrar_formulas": false
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e4",
+   "modo": "formula",
+   "enunciado": "Lucía prepara las tarjetas de la plantilla. La fórmula de **B2** arregla las mayúsculas, pero deja los espacios de más. Corrígela para que salga **Elena Marco Lafuente**, sin espacios sobrantes. Se copiará a B3:B4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Nombre (como llega)",
+     "B1": "Para la tarjeta",
+     "A2": "  ELENA   marco lafuente ",
+     "A3": "jorge IBÁÑEZ sola",
+     "A4": "ROSA  garcés úbeda"
+    },
+    "anchos": {
+     "A": 26,
+     "B": 22
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B4"
+   ],
+   "inicial": "=NOMPROPIO(A2)",
+   "solucion": "=NOMPROPIO(ESPACIOS(A2))",
+   "alternativas": [
+    "=ESPACIOS(NOMPROPIO(A2))"
+   ],
+   "errores_tipicos": [
+    "=NOMPROPIO(A2)",
+    "=ESPACIOS(A2)",
+    "=MAYUSC(ESPACIOS(A2))"
+   ],
+   "variantes": [
+    {
+     "A3": "  PILAR   sánchez"
+    }
+   ],
+   "debe_usar": [
+    "NOMPROPIO",
+    "ESPACIOS"
+   ],
+   "pistas": [
+    "NOMPROPIO ya hace su parte; falta quitar los espacios.",
+    "Mete ESPACIOS(A2) dentro de NOMPROPIO, en lugar de A2.",
+    "`=NOMPROPIO(ESPACIOS(A2))`"
+   ],
+   "explicacion": "Nombres impecables para las tarjetas. Acabas de anidar dos funciones: Excel resuelve primero la de dentro (ESPACIOS) y pasa el resultado a la de fuera (NOMPROPIO)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e5",
+   "modo": "test",
+   "pregunta": "Aplicas NOMPROPIO al cliente «CLIMATIZACIÓN DEL HUERVA SL» y sale **Climatización Del Huerva Sl**. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Revisar a mano los nombres con siglas y palabras como «del», o dejar los nombres de empresa en MAYUSC.",
+     "correcta": true,
+     "porque": "Correcto: NOMPROPIO no sabe qué es una sigla ni qué palabras van en minúscula. En nombres de empresa, revisa siempre el resultado."
+    },
+    {
+     "texto": "Nada: NOMPROPIO siempre deja los nombres bien escritos.",
+     "correcta": false,
+     "porque": "No: pone en mayúscula la primera letra de cada palabra sin más, y por eso «SL» queda «Sl» y «del» queda «Del»."
+    },
+    {
+     "texto": "Usar MINUSC, que respeta las siglas.",
+     "correcta": false,
+     "porque": "MINUSC lo pasaría todo a minúsculas, siglas incluidas: «climatización del huerva sl»."
+    },
+    {
+     "texto": "Usar ESPACIOS, que corrige las mayúsculas.",
+     "correcta": false,
+     "porque": "ESPACIOS solo quita espacios sobrantes; no toca las mayúsculas."
+    }
+   ],
+   "explicacion": "Las funciones hacen casi todo el trabajo, pero el último vistazo es tuyo. En una factura, «Sl» queda poco profesional."
+  },
+  {
+   "tipo": "texto",
+   "md": "La suciedad más peligrosa: **números guardados como texto**. Llegan así de muchos programas. Se reconocen porque:\n\n- se alinean a la **izquierda** (los números van a la derecha);\n- suelen llevar un **triángulo verde** en la esquina de la celda.\n\nParecen números, pero **SUMA no los suma**: los salta sin avisar. El total sale más bajo y nadie se da cuenta. Fíjate en el siguiente ejercicio."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e6",
+   "modo": "predice",
+   "enunciado": "En B2 y B4 los importes son **texto** (están pegados a la izquierda). B3 y B5 son números. ¿Qué devuelve la fórmula de **B6**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Importe",
+     "A2": "F-1024",
+     "B2": "'1250",
+     "A3": "F-1031",
+     "B3": 486.4,
+     "A4": "F-1037",
+     "B4": "'2310,75",
+     "A5": "F-1042",
+     "B5": 98.5,
+     "A6": "Total"
+    },
+    "formatos": {
+     "B3": "num2",
+     "B5": "num2"
+    }
+   },
+   "celda": "B6",
+   "formula": "=SUMA(B2:B5)",
+   "explicacion": "Solo suma los dos números de verdad: 486,40 + 98,50 = 584,90. Los 1.250 y 2.310,75 «de texto» se quedan fuera sin ningún error. Por eso siempre hay que cuadrar el total con otra fuente."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para convertir un texto que parece número en un **número de verdad** está **VALOR**:\n\n`=VALOR(B2)`\n\nCon «1250» (texto) en B2, devuelve 1250 (número), alineado a la derecha y listo para sumar. Si B2 ya era un número, lo deja igual, así que puedes copiar la fórmula a toda la columna sin miedo.\n\nTambién te sirve para lo que sacas con IZQUIERDA o EXTRAE: `=VALOR(EXTRAE(A2;4;4))` da el año como número."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un consejo: cuando arregles una columna de importes, pon el total viejo y el nuevo uno al lado del otro. Si cambian, sabes que había texto escondido; si cuadran con el banco, ya puedes entregar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l3-e7",
+   "modo": "formula",
+   "enunciado": "El encargo de Marta. En **C2** convierte el importe de B2 en un **número de verdad** (debe salir **1250**). Se copiará a C3:C7. En la fila 8 verás el total viejo (B8, el de Marta) y el nuevo (C8): el nuevo tiene que dar **6.425,65**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe (como llega)",
+     "C1": "Importe (número)",
+     "A2": "Instalaciones Ebro",
+     "B2": "'1250",
+     "A3": "Electricidad Moncayo",
+     "B3": 486.4,
+     "A4": "Montajes Arga",
+     "B4": "'2310,75",
+     "A5": "Reformas Segre",
+     "B5": 98.5,
+     "A6": "Grupo Electro Tudela",
+     "B6": "'760",
+     "A7": "Climatización Huerva",
+     "B7": 1520,
+     "A8": "Total",
+     "B8": "=SUMA(B2:B7)",
+     "C8": "=SUMA(C2:C7)"
+    },
+    "formatos": {
+     "C2:C8": "num2",
+     "B3": "num2",
+     "B5": "num2",
+     "B7": "num2",
+     "B8": "num2"
+    },
+    "anchos": {
+     "A": 20,
+     "B": 18,
+     "C": 16
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C7"
+   ],
+   "solucion": "=VALOR(B2)",
+   "alternativas": [
+    "=B2*1"
+   ],
+   "errores_tipicos": [
+    "=B2",
+    "=ESPACIOS(B2)",
+    "=SUMA(B2)"
+   ],
+   "variantes": [
+    {
+     "B2": "'1300"
+    },
+    {
+     "B6": "'815,30"
+    }
+   ],
+   "pistas": [
+    "Necesitas convertir texto en número.",
+    "La función se llama VALOR y solo necesita la celda: VALOR(B2).",
+    "`=VALOR(B2)`"
+   ],
+   "explicacion": "Total real: 6.425,65 € frente a los 2.104,90 € de antes. Faltaban 4.320,75 € de tres facturas «de texto». Acabas de evitar que Marta diera por bueno un cobro mal sumado: esa comprobación vale oro en cualquier departamento de finanzas."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m3l3-q1",
+   "modo": "test",
+   "pregunta": "Una columna de importes sale pegada a la izquierda, con triángulos verdes, y la SUMA da menos de lo esperado. ¿Qué función usas para arreglarlo?",
+   "opciones": [
+    {
+     "texto": "VALOR",
+     "correcta": true,
+     "porque": "Correcto: son números guardados como texto y VALOR los convierte en números de verdad."
+    },
+    {
+     "texto": "ESPACIOS",
+     "correcta": false,
+     "porque": "ESPACIOS quita espacios sobrantes de un texto, pero el resultado sigue siendo texto."
+    },
+    {
+     "texto": "NOMPROPIO",
+     "correcta": false,
+     "porque": "NOMPROPIO cambia mayúsculas y minúsculas; no convierte en número."
+    },
+    {
+     "texto": "LARGO",
+     "correcta": false,
+     "porque": "LARGO cuenta caracteres: sirve para detectar problemas, no para arreglarlos."
+    }
+   ]
+  },
+  {
+   "id": "n2m3l3-q2",
+   "modo": "formula",
+   "enunciado": "Mezcla de todo el módulo. En **C2** une el código de cliente (A2) con su nombre **ya limpio** (B2 trae espacios de más), separados por un espacio: debe salir **CL-0412 Instalaciones Ebro**. Se copiará a C3.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Nombre (como llega)",
+     "C1": "Para la etiqueta",
+     "A2": "CL-0412",
+     "B2": "  Instalaciones   Ebro ",
+     "A3": "CL-0087",
+     "B3": "Montajes Arga  "
+    },
+    "anchos": {
+     "B": 24,
+     "C": 28
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3"
+   ],
+   "solucion": "=A2&\" \"&ESPACIOS(B2)",
+   "alternativas": [
+    "=ESPACIOS(A2&\" \"&B2)",
+    "=CONCAT(A2;\" \";ESPACIOS(B2))",
+    "=UNIRCADENAS(\" \";VERDADERO;A2;ESPACIOS(B2))"
+   ],
+   "errores_tipicos": [
+    "=A2&\" \"&B2",
+    "=A2&ESPACIOS(B2)"
+   ],
+   "variantes": [
+    {
+     "B3": " Reformas  Segre"
+    }
+   ],
+   "pistas": [
+    "Dos herramientas: & para unir y ESPACIOS para limpiar.",
+    "Limpia B2 con ESPACIOS(B2) y únelo a A2 con un espacio en medio.",
+    "`=A2&\" \"&ESPACIOS(B2)`"
+   ],
+   "explicacion": "Limpiar y unir en una sola fórmula: así se preparan etiquetas, listados y cartas con datos que llegan sucios."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Quitar espacios sobrantes de A2",
+   "dorso": "=ESPACIOS(A2): quita los del principio y el final y deja uno solo entre palabras."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo reconoces un número guardado como texto?",
+   "dorso": "Alineado a la izquierda, a menudo con triángulo verde, y SUMA no lo suma."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Convertir en número un texto que parece número",
+   "dorso": "=VALOR(B2)"
+  },
+  {
+   "tipo": "error",
+   "frente": "NOMPROPIO(\"ELECTRO SL\") da «Electro Sl». ¿Qué haces?",
+   "dorso": "Revisar a mano siglas y palabras como «del», o dejar los nombres de empresa en MAYUSC."
+  }
+ ]
+}

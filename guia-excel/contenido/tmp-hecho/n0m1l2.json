@@ -1,0 +1,185 @@
+{
+  "id": "n0m1l2",
+  "titulo": "La ventana de Excel: cada cosa en su sitio",
+  "minutos": 14,
+  "objetivo": "Encontrar y nombrar las partes de la ventana de Excel: cinta de opciones, Archivo, cuadro de nombres, barra de fórmulas, pestañas de hoja y barra de estado.",
+  "mision": {
+    "de": "Nuria Campos",
+    "puesto": "Administración",
+    "texto": "Mañana Marta te dirá cosas como «mira la barra de fórmulas» o «ve a la pestaña Inicio», y no espera a nadie. Hoy aprende dónde está cada cosa. Y de paso, ponme en negrita el título del listado de proveedores, que no se distingue.",
+    "logro": "Ya sabes encontrar cada parte de la ventana de Excel cuando te la nombren, y poner un título en negrita."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Arriba del todo está la **cinta de opciones**: la franja ancha llena de botones. Es como un mueble con cajones.\n\n- Las **pestañas** (Inicio, Insertar, Disposición de página (o «Diseño de página», según la versión), Fórmulas, Datos…) son los **cajones**: haces clic en una y cambian los botones de debajo.\n- Los botones van en **grupos**, con su nombre en pequeño debajo (por ejemplo, el grupo **Fuente**).\n\nLa que más usarás es **Inicio**. La primera, **Archivo**, es especial: abre una pantalla entera para guardar, abrir o imprimir."
+    },
+    {
+      "tipo": "pantalla",
+      "md": "Mira la fila de nombres de arriba: Archivo, Inicio, Insertar… Son las **pestañas de la cinta**. Toca algunas partes para ver qué son.",
+      "resaltar": "pestanas_cinta"
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e1",
+      "modo": "senala",
+      "pregunta": "Toca las **pestañas de la cinta** (la fila con Inicio, Insertar, Fórmulas…).",
+      "zona": "pestanas_cinta",
+      "explicacion": "Ahí están. Cada pestaña abre un «cajón» distinto de botones. Si alguien te dice «ve a Datos», es una de estas."
+    },
+    {
+      "tipo": "texto",
+      "md": "Vamos con un botón concreto. Para poner un texto en **negrita** (letra más gruesa, como los títulos):\n\n1. Haz clic en la celda del texto.\n2. Ve a la pestaña **Inicio**.\n3. Busca el grupo **Fuente** y pulsa el botón **N** (Negrita).\n\nEn la oficina lo escribimos así, con flechas: **Inicio › Fuente › Negrita**. Es la «dirección» de un botón: pestaña, grupo y botón."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "atajo",
+      "titulo": "Negrita con el teclado",
+      "md": "[[Ctrl]]+[[N]] pone o quita la negrita. Es la **N** de «negrita» (en los tutoriales en inglés verás Ctrl+B: en el Excel en español, Ctrl+B sirve para buscar)."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e2",
+      "modo": "cinta",
+      "enunciado": "Encuentra el botón **Negrita** en la cinta: pestaña Inicio, grupo Fuente.",
+      "ruta": ["Inicio", "Fuente", "Negrita"],
+      "explicacion": "Inicio › Fuente › Negrita. Has encontrado tu primer botón por su «dirección». Así encontrarás cualquier otro cuando te lo indiquen."
+    },
+    {
+      "tipo": "texto",
+      "md": "Justo debajo de la cinta hay una fila con dos cosas que se confunden mucho:\n\n- A la **izquierda**, un cuadro pequeño: el **cuadro de nombres**. Te dice **en qué celda estás** (por ejemplo, `B5`).\n- A la **derecha**, una barra larga: la **barra de fórmulas**. Te enseña **qué hay de verdad dentro** de la celda.\n\nTruco para no confundirlas: el cuadro de nombres dice **dónde**; la barra de fórmulas dice **qué**."
+    },
+    {
+      "tipo": "comparar",
+      "izq": "Cuadro de nombres (izquierda)",
+      "der": "Barra de fórmulas (derecha)",
+      "filas": [
+        ["Dice DÓNDE estás: `B5`", "Dice QUÉ hay dentro: `=14+9+6`"],
+        ["Es pequeño", "Es larga, ocupa casi todo el ancho"],
+        ["Puedes escribir una dirección y pulsar Intro para ir allí", "Puedes escribir o corregir lo que hay en la celda"]
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e3",
+      "modo": "senala",
+      "pregunta": "Quieres saber **en qué celda estás**. Toca la parte de la ventana que te lo dice.",
+      "zona": "cuadro_nombres",
+      "explicacion": "El cuadro de nombres, a la izquierda de la barra de fórmulas. Te dice dónde estás: muy útil cuando la hoja es grande."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e4",
+      "modo": "test",
+      "pregunta": "En la celda B5 se ve **29**. Marta te pregunta: «¿Ese 29 está escrito a mano o sale de una cuenta?». Haces clic en B5. ¿Dónde lo miras?",
+      "opciones": [
+        {
+          "texto": "En la barra de fórmulas: si pone `=14+9+6`, es una cuenta; si pone `29`, está escrito a mano.",
+          "correcta": true,
+          "porque": "Exacto. La barra de fórmulas enseña lo que hay de verdad dentro de la celda, aunque en la celda solo veas el resultado."
+        },
+        {
+          "texto": "En el cuadro de nombres.",
+          "correcta": false,
+          "porque": "Es la confusión más típica. El cuadro de nombres solo dice dónde estás (B5), no lo que hay dentro."
+        },
+        {
+          "texto": "En la propia celda: si se ve 29, es que está escrito 29.",
+          "correcta": false,
+          "porque": "La celda enseña el resultado. Detrás de un 29 puede haber una cuenta: solo la barra de fórmulas te lo dice."
+        }
+      ],
+      "explicacion": "Mirar la barra de fórmulas antes de fiarte de un número es un hábito de profesional: así descubrirás totales escritos a mano que no se actualizan."
+    },
+    {
+      "tipo": "texto",
+      "md": "Ahora mira **abajo del todo**:\n\n- Las **pestañas de hoja**: «Hoja1», «Proveedores», «Octubre»… Cada una es una página del libro. Haz clic en una para verla. A su lado, un botón **+** crea una hoja nueva.\n- La **barra de estado**: la franja final. Cuando seleccionas varios números, ahí aparecen su suma y su promedio.\n\nOjo: las pestañas **de la cinta** están arriba y tienen botones; las pestañas **de hoja** están abajo y tienen tus datos."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e5",
+      "modo": "test",
+      "pregunta": "Lucía te escribe: «Abre el libro de la plantilla y ve a la pestaña **Vacaciones**». ¿Dónde la buscas?",
+      "opciones": [
+        {
+          "texto": "Abajo, entre las pestañas de hoja (junto a «Plantilla», «Horas»…).",
+          "correcta": true,
+          "porque": "Muy bien. «Vacaciones» no es una pestaña de Excel, es el nombre que Lucía ha puesto a una hoja de su libro. Las hojas están abajo."
+        },
+        {
+          "texto": "Arriba, en la cinta, junto a Inicio e Insertar.",
+          "correcta": false,
+          "porque": "Arriba solo están las pestañas de Excel (Inicio, Insertar, Datos…), que son iguales en todos los libros. Los nombres que pone la gente a sus páginas están abajo."
+        },
+        {
+          "texto": "En la barra de fórmulas.",
+          "correcta": false,
+          "porque": "La barra de fórmulas enseña lo que hay dentro de una celda, no las páginas del libro."
+        }
+      ],
+      "explicacion": "Regla rápida: si el nombre lo ha inventado alguien de la oficina («Vacaciones», «Octubre»), es una pestaña de hoja, abajo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e6",
+      "modo": "senala",
+      "pregunta": "Toca la **barra de estado**, donde Excel enseña la suma de los números que seleccionas.",
+      "zona": "barra_estado",
+      "explicacion": "La barra de estado, abajo del todo. En la lección 4 la usarás para sumar sin escribir nada."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n0m1l2-e7",
+      "modo": "ordenar",
+      "enunciado": "**El encargo de Nuria.** El título del listado de proveedores está en la celda A1. Ordena los pasos para ponerlo en negrita con la cinta.",
+      "pasos": [
+        "Haz clic en la celda A1, la del título",
+        "Haz clic en la pestaña Inicio de la cinta",
+        "En el grupo Fuente, pulsa el botón Negrita (N)",
+        "Comprueba que el título se ve con la letra más gruesa"
+      ],
+      "explicacion": "Primero eliges **dónde** (la celda) y después **qué** le haces (el botón). Este orden vale para casi todo en Excel. Encargo de Nuria, resuelto."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n0m1l2-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Cómo se llama la barra larga, encima de la cuadrícula, que enseña lo que hay de verdad dentro de la celda?",
+      "aceptadas": ["barra de fórmulas", "la barra de fórmulas", "barra de formulas", "la barra de formulas", "barra de fórmula"],
+      "explicacion": "La barra de fórmulas dice QUÉ hay; el cuadro de nombres, a su izquierda, dice DÓNDE estás."
+    },
+    {
+      "id": "n0m1l2-q2",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué atajo de teclado pone un texto en negrita en el Excel en español?",
+      "aceptadas": ["Ctrl+N", "Control+N", "Ctrl N", "Ctrl+2"],
+      "explicacion": "Ctrl+N, de «negrita». Ctrl+B, el de los tutoriales en inglés, aquí abre Buscar."
+    },
+    {
+      "id": "n0m1l2-q3",
+      "modo": "senala",
+      "pregunta": "Quieres guardar, abrir o imprimir el libro. Toca **Archivo**.",
+      "zona": "archivo",
+      "explicacion": "Archivo, la primera pestaña. No abre botones como las demás: abre una pantalla entera para guardar, abrir, imprimir o compartir el libro."
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "Cuadro de nombres frente a barra de fórmulas",
+      "dorso": "Cuadro de nombres (izquierda): DÓNDE estás (B5). Barra de fórmulas (derecha): QUÉ hay dentro de la celda."
+    },
+    {
+      "tipo": "atajo",
+      "frente": "Poner o quitar negrita",
+      "dorso": "Ctrl+N (o Inicio › Fuente › Negrita)"
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Pestañas de la cinta frente a pestañas de hoja",
+      "dorso": "Cinta: arriba, botones de Excel (Inicio, Insertar…). Hoja: abajo, las páginas de tu libro («Octubre», «Vacaciones»)."
+    }
+  ]
+}

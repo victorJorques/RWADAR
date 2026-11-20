@@ -1,0 +1,167 @@
+{
+ "id": "n3m3",
+ "nivel": "n3",
+ "titulo": "Limpiar datos que llegan sucios",
+ "intro": "Casi todo lo que te llegue del programa de gestión, del banco o de un proveedor vendrá sucio: espacios invisibles, filas repetidas, importes que no suman y fechas al revés. En este módulo aprendes a diagnosticarlo, limpiarlo e importarlo bien, para que tus informes partan de datos en los que se puede confiar.",
+ "repaso_inicial": [
+  {
+   "id": "n3m3-r1",
+   "modo": "formula",
+   "enunciado": "Repaso del nivel 2. En **B2** deja el nombre del cliente de A2 sin espacios de más y con mayúscula inicial en cada palabra. Se copiará a B3:B4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente (sucio)",
+     "B1": "Cliente",
+     "A2": "  INSTALACIONES  ARGA, S.L. ",
+     "A3": "montajes ega, s.l.",
+     "A4": "Reformas  Bardenas, S.L."
+    },
+    "anchos": {
+     "A": 30,
+     "B": 26
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B4"
+   ],
+   "solucion": "=NOMPROPIO(ESPACIOS(A2))",
+   "alternativas": [
+    "=ESPACIOS(NOMPROPIO(A2))"
+   ],
+   "errores_tipicos": [
+    "=NOMPROPIO(A2)",
+    "=ESPACIOS(A2)"
+   ],
+   "variantes": [
+    {
+     "A2": "  ELECTRO  URDÁNIZ, S.L."
+    }
+   ],
+   "pistas": [
+    "Hay dos arreglos: quitar espacios (ESPACIOS) y poner mayúscula inicial (NOMPROPIO).",
+    "Mete una función dentro de la otra: NOMPROPIO( ESPACIOS(A2) ).",
+    "=NOMPROPIO(ESPACIOS(A2))"
+   ],
+   "explicacion": "Dos funciones encadenadas, una dentro de otra: así se limpia con fórmulas. En este módulo encadenarás más."
+  },
+  {
+   "id": "n3m3-r2",
+   "modo": "test",
+   "pregunta": "Repaso de búsquedas. BUSCARX da #N/D con el NIF «B31245678», y tú lo ves en la tabla. ¿Qué es lo más probable?",
+   "opciones": [
+    {
+     "texto": "Uno de los dos NIF tiene un espacio escondido",
+     "correcta": true,
+     "porque": "Correcto: «B31245678 » y «B31245678» son textos distintos para Excel. Compruébalo con LARGO y límpialo con ESPACIOS."
+    },
+    {
+     "texto": "BUSCARX distingue mayúsculas y minúsculas",
+     "correcta": false,
+     "porque": "BUSCARX no distingue mayúsculas: «b31245678» lo encontraría igual."
+    },
+    {
+     "texto": "La tabla tiene que estar ordenada",
+     "correcta": false,
+     "porque": "BUSCARX busca la coincidencia exacta por defecto y no necesita la tabla ordenada."
+    }
+   ],
+   "explicacion": "Cuando un dato «está ahí» y no se encuentra, sospecha de los espacios. Este módulo va de eso: datos que parecen iguales y no lo son."
+  },
+  {
+   "id": "n3m3-r3",
+   "modo": "formula",
+   "enunciado": "Repaso de cruces de listas. En A están los NIF de los clientes de Javier y en D, los NIF de las ventas de octubre (uno por venta). En **B2** cuenta cuántas ventas tiene el NIF de A2 (0 = no ha comprado). Se copiará a B3:B6.",
+   "hoja": {
+    "celdas": {
+     "A1": "NIF cliente",
+     "B1": "Ventas",
+     "D1": "NIF de la venta",
+     "A2": "B50437718",
+     "A3": "B50290156",
+     "A4": "B22618804",
+     "A5": "B31877421",
+     "A6": "B25093367",
+     "D2": "B25093367",
+     "D3": "B50437718",
+     "D4": "B31877421",
+     "D5": "B50437718",
+     "D6": "B26044512",
+     "D7": "B31877421",
+     "D8": "B50437718"
+    },
+    "anchos": {
+     "A": 12,
+     "D": 15
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B6"
+   ],
+   "solucion": "=CONTAR.SI($D$2:$D$8;A2)",
+   "alternativas": [
+    "=CONTAR.SI(D$2:D$8;A2)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR.SI(D2:D8;A2)",
+    "=CONTAR.SI($A$2:$A$6;D2)"
+   ],
+   "variantes": [
+    {
+     "D8": "B50290156"
+    }
+   ],
+   "pistas": [
+    "CONTAR.SI(dónde busco; qué busco): busco en la lista de ventas el NIF de esta fila.",
+    "El rango de ventas no debe moverse al copiar: fíjalo con $.",
+    "=CONTAR.SI($D$2:$D$8;A2)"
+   ],
+   "explicacion": "B3 y B4 dan 0: esos clientes no han comprado en octubre. Es el cruce que harás en la práctica del módulo, pero con 300 clientes y datos sucios."
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "**Encargo de Javier Ortega:** «Quiero saber cuántos clientes tenemos de verdad, cuánto crédito les damos y quién no nos ha comprado nada en octubre. El listado sale del programa hecho un desastre.»\n\n1. Descarga y descomprime `n3-clientes-sucios.zip`. Dentro están el libro `n3-clientes-sucios.xlsx` (instrucciones y la hoja «Clientes», con 300 filas) y el archivo `n3-ventas-export.csv` (ventas de octubre de 2026). Guarda el libro con otro nombre y copia la hoja «Clientes»: la original no se toca.\n2. **Diagnostica**: apunta el recuento de filas y mira qué pecados tiene cada columna.\n3. En la copia, borra las filas de título (1 y 2) para que los encabezados queden en la fila 1.\n4. **Limpia** con columnas auxiliares: NIF con `=MAYUSC(ESPACIOS(A2))`, nombre con `=NOMPROPIO(ESPACIOS(B2))`, CP con `=TEXTO(E2;\"00000\")` y límite de crédito con `=VALOR.NUMERO(SUSTITUIR(G2;\"€\";\"\");\",\";\".\")`. Después, Pegado especial › Valores.\n5. **Quita los duplicados reales**: Datos › Quitar duplicados marcando **solo el NIF limpio**. Ojo: hay clientes distintos que se llaman igual.\n6. **Importa el CSV** con Datos › Obtener y transformar datos › De texto/CSV (no con doble clic): revisa Origen del archivo y Delimitador.\n7. **Cruza** las dos listas por NIF con CONTAR.SI, en las dos direcciones.\n\nIntenta hacerlo en menos de 40 minutos. Después, contesta los controles.",
+  "archivo": "n3-clientes-sucios.zip",
+  "controles": [
+   {
+    "pregunta": "Número de clientes únicos (un cliente = un NIF) después de limpiar y quitar los duplicados reales",
+    "respuesta": 276,
+    "tolerancia": 0,
+    "pista": "La exportación trae 300 filas. Si te quedan 290, has quitado duplicados sin limpiar antes el NIF: «B50…» y «B50… » (con espacio) no son iguales para Excel. Si te quedan 274, lo has hecho por el nombre del cliente y te has llevado por delante clientes distintos que se llaman igual (dos autónomos «Electricidad Martínez», en Huesca y en Logroño, por ejemplo). Hazlo con el NIF limpio (ESPACIOS y MAYUSC)."
+   },
+   {
+    "pregunta": "Suma del límite de crédito de los clientes únicos (€)",
+    "respuesta": 2752500,
+    "tolerancia": 0.01,
+    "pista": "Si te sale bastante menos, la suma se está saltando los límites guardados como texto («6.000,00 €», «6000»). Conviértelos con VALOR.NUMERO(SUSTITUIR(G2;\"€\";\"\");\",\";\".\") o con Texto en columnas. Si te sale más, aún quedan clientes repetidos."
+   },
+   {
+    "pregunta": "¿Cuántos clientes únicos tienen un código postal que empieza por 0 (Barcelona, Álava y Burgos)?",
+    "respuesta": 37,
+    "tolerancia": 0,
+    "pista": "Si te sale 0, el código postal sigue siendo un número y ha perdido el cero. Recupéralo con =TEXTO(E2;\"00000\") y cuenta con CONTAR.SI(rango;\"0*\")."
+   },
+   {
+    "pregunta": "Importe neto total de las ventas de octubre del CSV (€)",
+    "respuesta": 356196.69,
+    "tolerancia": 0.01,
+    "pista": "El CSV tiene 473 líneas de ventas. Impórtalo con Datos › Obtener y transformar datos › De texto/CSV, Origen del archivo 65001: Unicode (UTF-8) y Delimitador Punto y coma. Si te sale una cifra enorme o redonda, los importes no se han leído con la coma decimal."
+   },
+   {
+    "pregunta": "¿Cuántos clientes únicos no tienen ninguna venta en octubre?",
+    "respuesta": 46,
+    "tolerancia": 0,
+    "pista": "Cruza por NIF con CONTAR.SI(NIF de las ventas; NIF del cliente) y cuenta los 0. Si te salen 67, todavía hay NIF con un espacio al final en tu lista de clientes: límpialos antes de cruzar."
+   },
+   {
+    "pregunta": "Importe de las ventas cuyo NIF no está en tu lista de clientes (€)",
+    "respuesta": 4490.9,
+    "tolerancia": 0.01,
+    "pista": "Es el cruce al revés: para cada venta, CONTAR.SI(NIF de los clientes limpios; NIF de la venta). Las de resultado 0 son de 3 clientes nuevos que aún no están en la exportación (9 líneas). Si te sale más, tus NIF de clientes aún tienen espacios."
+   }
+  ],
+  "solucion_md": "**Solución comentada** (libro `n3-clientes-sucios-solucion.xlsx`, con las hojas Original, Limpieza, Clientes, Ventas y Comprobaciones).\n\n1. **Diagnóstico**: 300 filas; título combinado en la fila 1 y encabezados en la 3; NIF, nombres y poblaciones con espacios de más y mayúsculas; CP de Barcelona, Álava y Burgos sin el 0; parte de los límites de crédito guardados como texto («6.000,00 €», «6000»).\n2. **Limpieza** (hoja Limpieza): `=MAYUSC(ESPACIOS(A2))`, `=NOMPROPIO(ESPACIOS(B2))`, `=ESPACIOS(C2)`, `=TEXTO(E2;\"00000\")` y `=VALOR.NUMERO(SUSTITUIR(G2;\"€\";\"\");\",\";\".\")`, que sirve para toda la columna, números y textos. Una columna `=CONTAR.SI($A$2:A2;A2)>1` marca cada NIF desde su segunda aparición. Pegado especial › Valores.\n3. **Duplicados**: Quitar duplicados con solo el NIF limpio marcado. De 300 filas quedan **276 clientes** (24 repetidos, 14 de ellos con espacios o mayúsculas distintas). Hay dos autónomos «Electricidad Martínez» (Huesca y Logroño) y dos «Instalaciones Pérez» (Pamplona y Lleida): son clientes distintos y se quedan.\n4. **Controles de clientes**: límite de crédito total **2.752.500,00 €**; **37** clientes con CP que empieza por 0 (`=CONTAR.SI(rango;\"0*\")` sobre el CP ya en texto).\n5. **CSV**: De texto/CSV con Origen del archivo 65001: Unicode (UTF-8) y Delimitador Punto y coma. 473 líneas y **356.196,69 €**.\n6. **Cruces**: en Clientes, `=CONTAR.SI(NIF de las ventas;A2)`: **46** clientes con 0 ventas. En Ventas, `=CONTAR.SI(NIF de los clientes;C2)`: 9 líneas de 3 NIF que aún no están en la exportación, por **4.490,90 €**.\n7. **Cuadre final**: ventas de clientes conocidos + ventas de NIF nuevos = total del CSV. Si cuadra, el cruce no ha perdido nada.",
+  "archivo_solucion": "n3-clientes-sucios-solucion.xlsx"
+ }
+}

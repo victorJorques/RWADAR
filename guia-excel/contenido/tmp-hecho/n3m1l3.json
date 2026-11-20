@@ -1,0 +1,744 @@
+{
+ "id": "n3m1l3",
+ "titulo": "Medias, máximos y porcentajes por grupo",
+ "minutos": 15,
+ "objetivo": "Calcular la media, el máximo y el mínimo de cada grupo con PROMEDIO.SI.CONJUNTO, MAX.SI.CONJUNTO y MIN.SI.CONJUNTO, y el peso de cada grupo sobre el total, comprobando que todo suma 100 %.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Para el comité del jueves quiero una tabla por delegación: ticket medio, pedido más grande y qué parte de las ventas hace cada una. Los porcentajes tienen que sumar 100 %; lo miraré.",
+  "logro": "Ya sabes resumir una lista por grupos con medias, máximos y porcentajes del total, y comprobar que el resumen cuadra antes de entregarlo."
+ },
+ "funciones": [
+  "PROMEDIO.SI.CONJUNTO",
+  "MAX.SI.CONJUNTO",
+  "MIN.SI.CONJUNTO",
+  "SUMAR.SI.CONJUNTO"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Con la misma receta que SUMAR.SI.CONJUNTO puedes sacar **la media, el máximo y el mínimo** de cada grupo:\n\n- `PROMEDIO.SI.CONJUNTO(qué promedio; dónde miro; qué busco…)`\n- `MAX.SI.CONJUNTO(de dónde saco el mayor; dónde miro; qué busco…)`\n- `MIN.SI.CONJUNTO(…)`: igual, pero el menor.\n\nPrimero el rango con los números; después, las parejas de siempre. El **ticket medio**, que Carmen pide a menudo, es el importe medio por pedido: ventas ÷ número de pedidos."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Pedidos de noviembre",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11
+    }
+   }
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e1",
+   "modo": "predice",
+   "enunciado": "Mira los pedidos de **Lleida** (filas 4, 8 y 11). ¿Qué devolverá esta fórmula en **E2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11
+    }
+   },
+   "celda": "E2",
+   "formula": "=MAX.SI.CONJUNTO(C2:C13;A2:A13;\"Lleida\")",
+   "explicacion": "2.310: el pedido más grande de Lleida. MAX.SI.CONJUNTO solo mira las filas que cumplen la condición y se queda con el mayor. El 3.120,50 de Zaragoza no cuenta, aunque sea el mayor de toda la lista.",
+   "respuesta": "2310"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e2",
+   "modo": "formula",
+   "enunciado": "En **F2** calcula el **ticket medio** (importe medio por pedido) de la delegación que hay en **F1**. Usa la celda F1, no escribas el nombre. Para Pamplona debe salir **1.095,80 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "E1": "Delegación",
+     "F1": "Pamplona",
+     "E2": "Ticket medio",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11,
+     "E": 13,
+     "F": 12
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;F1)",
+   "alternativas": [
+    "=PROMEDIO.SI(A2:A13;F1;C2:C13)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;F1)/CONTAR.SI.CONJUNTO(A2:A13;F1)"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(C2:C13)",
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;F1)",
+    "=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;\"Pamplona\")"
+   ],
+   "variantes": [
+    {
+     "F1": "Lleida"
+    },
+    {
+     "C6": 2000
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una media con condición: PROMEDIO.SI.CONJUNTO.",
+    "Primero los importes (C2:C13); después la pareja: dónde está la delegación (A2:A13) y qué delegación (F1).",
+    "`=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;F1)`"
+   ],
+   "explicacion": "1.095,80 €: los 4.383,20 € de Pamplona entre sus 4 pedidos. Cambia F1 y tienes el ticket medio de cualquier delegación. Es uno de los indicadores que más mira una dirección comercial."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un aviso antes de que te llegue algún libro antiguo: **MAX.SI.CONJUNTO y MIN.SI.CONJUNTO no existen en Excel 2016** (el de compra única). Ahí la fórmula sale como **#¿NOMBRE?**. PROMEDIO.SI.CONJUNTO, SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO sí funcionan. Si alguien trabaja con 2016, el máximo por grupo se saca con una tabla dinámica, que verás pronto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e3",
+   "modo": "formula",
+   "enunciado": "Javier quiere el **pedido más grande de cada comercial**. Escribe en **F2** el mayor importe del comercial de **E2**. La fórmula se copiará a **F3:F5**, así que fija los rangos con `$`. En F2 debe salir **1.875,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "E1": "Comercial",
+     "F1": "Pedido mayor",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "E2": "Raúl Gimeno",
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "E3": "Pilar Lasheras",
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "E4": "Elena Sanz",
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "E5": "Jordi Vidal",
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur",
+     "F2:F5": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11,
+     "E": 15,
+     "F": 13
+    }
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F5"
+   ],
+   "solucion": "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;E2)",
+   "alternativas": [
+    "=MAX.SI.CONJUNTO(C$2:C$13;B$2:B$13;E2)",
+    "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;$E2)"
+   ],
+   "errores_tipicos": [
+    "=MAX.SI.CONJUNTO(C2:C13;B2:B13;E2)",
+    "=MAX(C2:C13)",
+    "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;\"Raúl Gimeno\")"
+   ],
+   "variantes": [
+    {
+     "C12": 2500
+    },
+    {
+     "C4": 800
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es MAX.SI.CONJUNTO: primero los importes, después dónde está el comercial y cuál buscas (E2).",
+    "Al copiar hacia abajo, los rangos de datos no deben moverse: `$C$2:$C$13` y `$B$2:$B$13`. E2 sí debe bajar a E3, E4…",
+    "`=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;E2)`"
+   ],
+   "explicacion": "Raúl 1.875,00 €, Pilar 3.120,50 €, Elena 1.780,00 € y Jordi 2.310,00 €. Una fórmula, cuatro respuestas. Sin los `$`, el rango bajaría al copiar y en la última fila se perdería el pedido de 2.310,00 € de Jordi: un error que no da ningún aviso."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Qué parte de las ventas hace cada delegación? Se calcula **parte ÷ total** y se le da formato de porcentaje: `=B2/B5`.\n\nComo la fórmula se copia hacia abajo, el total tiene que quedarse quieto: `=B2/$B$5`. Sin el `$`, en la fila de abajo Excel dividiría entre B6, una celda vacía, y saldría **#¡DIV/0!**.\n\nY la comprobación de oro: **los porcentajes de todas las partes suman 100 %**. Si no suman 100 %, algo falla."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e4",
+   "modo": "formula",
+   "enunciado": "Alguien escribió `=B2/B5` en **C2** y al copiarla hacia abajo sale #¡DIV/0!. Arregla la fórmula de **C2** para que, copiada a **C3:C4**, cada delegación se divida siempre entre el total de **B5**. Cuando esté bien, la comprobación de **C5** marcará **100,0 %**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Ventas",
+     "C1": "% del total",
+     "A2": "Zaragoza",
+     "B2": 7351.25,
+     "A3": "Pamplona",
+     "B3": 4383.2,
+     "A4": "Lleida",
+     "B4": 3783.3,
+     "A5": "Total",
+     "B5": "=SUMA(B2:B4)",
+     "C5": "=SUMA(C2:C4)"
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "C2:C5": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 12,
+     "C": 12
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "inicial": "=B2/B5",
+   "solucion": "=B2/$B$5",
+   "alternativas": [
+    "=B2/B$5",
+    "=B2/SUMA($B$2:$B$4)"
+   ],
+   "errores_tipicos": [
+    "=B2/B5",
+    "=B2/B5*100"
+   ],
+   "variantes": [
+    {
+     "B2": 8000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Al copiar `=B2/B5` a la fila 3 queda `=B3/B6`. ¿Cuál de las dos referencias no debería moverse?",
+    "El total está siempre en B5: fíjalo con `$` (pulsa [[F4]] con el cursor sobre B5).",
+    "`=B2/$B$5`"
+   ],
+   "explicacion": "Zaragoza 47,4 %, Pamplona 28,2 % y Lleida 24,4 %, y la comprobación en 100,0 %. Fijar el total es la diferencia entre un informe que cuadra y uno lleno de #¡DIV/0!."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e5",
+   "modo": "test",
+   "pregunta": "Has calculado el peso de cada delegación y la comprobación da **104,2 %** en vez de 100 %. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Revisar el total y las partes: o al total le falta alguna fila, o alguna venta se cuenta dos veces",
+     "correcta": true,
+     "porque": "Correcto: si las partes suman más que el todo, el total se ha quedado corto o hay algo duplicado. Hay que encontrarlo antes de enviar nada."
+    },
+    {
+     "texto": "Nada: son cosas del redondeo",
+     "correcta": false,
+     "porque": "El redondeo de lo que se ve en pantalla puede dar 99,9 % o 100,1 %, nunca un 4 % de diferencia."
+    },
+    {
+     "texto": "Quitar los decimales para que no se note tanto",
+     "correcta": false,
+     "porque": "El formato solo cambia cómo se ve el número, no el número. Seguiría sumando 104 % y el error seguiría ahí."
+    },
+    {
+     "texto": "Enviarlo: el porcentaje de cada delegación está bien",
+     "correcta": false,
+     "porque": "Si el total está mal, todos los porcentajes están mal, porque todos se dividen entre él."
+    }
+   ],
+   "explicacion": "La celda de comprobación existe para esto: avisarte antes que la directora. Muchas hojas de empresa tienen errores; las tuyas se revisan antes de salir."
+  },
+  {
+   "tipo": "texto",
+   "md": "Carmen quiere el **% de pedidos con incidencia** de toda la empresa. Tienes el porcentaje de cada delegación.\n\nLa tentación es hacer la media: (2 % + 2 % + 12 %) ÷ 3. Antes de hacerlo, piensa: ¿debe pesar igual Lleida, con 50 pedidos, que Zaragoza, con 300?"
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Incidencias de octubre por delegación",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Pedidos",
+     "C1": "Con incidencia",
+     "D1": "% incidencias",
+     "A2": "Zaragoza",
+     "B2": 300,
+     "C2": 6,
+     "D2": "=C2/B2",
+     "A3": "Pamplona",
+     "B3": 150,
+     "C3": 3,
+     "D3": "=C3/B3",
+     "A4": "Lleida",
+     "B4": 50,
+     "C4": 6,
+     "D4": "=C4/B4"
+    },
+    "formatos": {
+     "D2:D4": "pct"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 9,
+     "C": 14,
+     "D": 13
+    }
+   }
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e6",
+   "modo": "test",
+   "pregunta": "¿Cuál es el % de pedidos con incidencia de **toda la empresa**?",
+   "opciones": [
+    {
+     "texto": "3 %: 15 incidencias ÷ 500 pedidos",
+     "correcta": true,
+     "porque": "Correcto: total de la parte entre total del todo. Cada pedido pesa lo mismo, sea de la delegación que sea."
+    },
+    {
+     "texto": "5,3 %: la media de los tres porcentajes",
+     "correcta": false,
+     "porque": "Es la trampa: la media da el mismo peso a Lleida (50 pedidos) que a Zaragoza (300). Como la más pequeña tiene el porcentaje más alto, el dato sale inflado."
+    },
+    {
+     "texto": "16 %: la suma de los tres porcentajes",
+     "correcta": false,
+     "porque": "Los porcentajes de grupos distintos no se suman: cada uno está calculado sobre su propio total."
+    }
+   ],
+   "explicacion": "El porcentaje de un total se calcula con **totales**: `=SUMA(C2:C4)/SUMA(B2:B4)`. La media de porcentajes solo coincide cuando todos los grupos tienen el mismo tamaño. Ahora sabes detectar este error en cualquier informe."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m1l3-e7",
+   "modo": "formula",
+   "enunciado": "**La misión de Carmen.** El ticket medio y el pedido mayor ya están. En **H2** calcula qué parte de **todas** las ventas hace la delegación de **E2**, directamente desde la lista de pedidos: sus ventas ÷ la suma de toda la columna C. Se copiará a **H3:H4**. En H2 debe salir **47,4 %** y la comprobación de **H5**, **100,0 %**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "E1": "Delegación",
+     "F1": "Ticket medio",
+     "G1": "Pedido mayor",
+     "H1": "% de ventas",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "E2": "Zaragoza",
+     "F2": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)",
+     "G2": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)",
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "E3": "Pamplona",
+     "F3": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E3)",
+     "G3": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E3)",
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "E4": "Lleida",
+     "F4": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E4)",
+     "G4": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E4)",
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "E5": "Comprobación",
+     "H5": "=SUMA(H2:H4)",
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur",
+     "F2:G4": "eur",
+     "H2:H5": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11,
+     "E": 13,
+     "F": 12,
+     "G": 13,
+     "H": 11
+    }
+   },
+   "objetivo": "H2",
+   "copiar_a": [
+    "H3:H4"
+   ],
+   "solucion": "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)",
+   "alternativas": [
+    "=SUMAR.SI($A$2:$A$13;E2;$C$2:$C$13)/SUMA($C$2:$C$13)",
+    "=SUMAR.SI.CONJUNTO(C$2:C$13;A$2:A$13;E2)/SUMA(C$2:C$13)",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;$E2)/SUMA($C$2:$C$13)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;E2)/SUMA(C2:C13)",
+    "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)*100",
+    "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)"
+   ],
+   "variantes": [
+    {
+     "C2": 2000
+    },
+    {
+     "C13": 900
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Arriba va lo que vende la delegación de E2 (SUMAR.SI.CONJUNTO) y abajo, lo que vende toda la empresa (SUMA de la columna C).",
+    "Los dos rangos de datos con `$` para que no bajen al copiar. E2 sin `$`, para que pase a E3 y E4.",
+    "`=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)`"
+   ],
+   "explicacion": "Zaragoza 47,4 %, Pamplona 28,2 %, Lleida 24,4 %, y la comprobación en 100,0 %. Ya tienes la tabla del comité: ticket medio, pedido mayor y peso de cada delegación, todo calculado desde la lista y comprobado. Sin el `*100`: el formato de porcentaje ya se encarga de mostrarlo."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m1l3-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función usarías para encontrar el pedido **más pequeño** de un comercial concreto?",
+   "aceptadas": [
+    "MIN.SI.CONJUNTO",
+    "=MIN.SI.CONJUNTO",
+    "min.si.conjunto",
+    "MIN.SI.CONJUNTO()"
+   ],
+   "explicacion": "MIN.SI.CONJUNTO: primero el rango de importes, después la pareja comercial-nombre. Recuerda que no existe en Excel 2016."
+  },
+  {
+   "id": "n3m1l3-q2",
+   "modo": "formula",
+   "enunciado": "En **D5** calcula el % de pedidos con incidencia de **toda la empresa**, sin promediar porcentajes. Debe salir **3,0 %**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Pedidos",
+     "C1": "Con incidencia",
+     "D1": "% incidencias",
+     "A2": "Zaragoza",
+     "B2": 300,
+     "C2": 6,
+     "D2": "=C2/B2",
+     "A3": "Pamplona",
+     "B3": 150,
+     "C3": 3,
+     "D3": "=C3/B3",
+     "A4": "Lleida",
+     "B4": 50,
+     "C4": 6,
+     "D4": "=C4/B4",
+     "A5": "Empresa"
+    },
+    "formatos": {
+     "D2:D5": "pct1"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 9,
+     "C": 14,
+     "D": 13
+    }
+   },
+   "objetivo": "D5",
+   "solucion": "=SUMA(C2:C4)/SUMA(B2:B4)",
+   "alternativas": [
+    "=(C2+C3+C4)/(B2+B3+B4)"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(D2:D4)",
+    "=SUMA(D2:D4)"
+   ],
+   "variantes": [
+    {
+     "C4": 10
+    },
+    {
+     "B2": 400
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "Total de incidencias entre total de pedidos.",
+    "Arriba, la suma de la columna C; abajo, la suma de la columna B.",
+    "`=SUMA(C2:C4)/SUMA(B2:B4)`"
+   ],
+   "explicacion": "3,0 %: 15 incidencias de 500 pedidos. La media de la columna D habría dicho 5,3 %."
+  },
+  {
+   "id": "n3m1l3-q3",
+   "modo": "predice",
+   "enunciado": "¿Cuántos pedidos de **Zaragoza** pasan de 1.000 €? ¿Qué devuelve la fórmula de **E2**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Comercial",
+     "C1": "Importe",
+     "A2": "Zaragoza",
+     "B2": "Raúl Gimeno",
+     "C2": 1250,
+     "A3": "Pamplona",
+     "B3": "Elena Sanz",
+     "C3": 860.4,
+     "A4": "Lleida",
+     "B4": "Jordi Vidal",
+     "C4": 2310,
+     "A5": "Zaragoza",
+     "B5": "Raúl Gimeno",
+     "C5": 415.75,
+     "A6": "Pamplona",
+     "B6": "Elena Sanz",
+     "C6": 1780,
+     "A7": "Zaragoza",
+     "B7": "Pilar Lasheras",
+     "C7": 3120.5,
+     "A8": "Lleida",
+     "B8": "Jordi Vidal",
+     "C8": 945,
+     "A9": "Pamplona",
+     "B9": "Elena Sanz",
+     "C9": 1430.2,
+     "A10": "Zaragoza",
+     "B10": "Pilar Lasheras",
+     "C10": 690,
+     "A11": "Lleida",
+     "B11": "Jordi Vidal",
+     "C11": 528.3,
+     "A12": "Zaragoza",
+     "B12": "Raúl Gimeno",
+     "C12": 1875,
+     "A13": "Pamplona",
+     "B13": "Elena Sanz",
+     "C13": 312.6
+    },
+    "formatos": {
+     "C2:C13": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 15,
+     "C": 11
+    }
+   },
+   "celda": "E2",
+   "formula": "=CONTAR.SI.CONJUNTO(A2:A13;\"Zaragoza\";C2:C13;\">1000\")",
+   "explicacion": "3: los pedidos de 1.250,00, 3.120,50 y 1.875,00 €. Los de 415,75 y 690,00 € son de Zaragoza pero no pasan de 1.000 €. Para contar, CONTAR.SI.CONJUNTO; para sumar, SUMAR.SI.CONJUNTO; para la media, PROMEDIO.SI.CONJUNTO.",
+   "respuesta": "3"
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Media de un grupo con condiciones",
+   "dorso": "=PROMEDIO.SI.CONJUNTO(rango_promedio; rango_criterios1; criterios1; …)"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Mayor y menor valor de un grupo",
+   "dorso": "=MAX.SI.CONJUNTO(rango_máximo; rango_criterios1; criterios1; …) y MIN.SI.CONJUNTO igual. No existen en Excel 2016."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Peso de cada parte sobre el total, con una fórmula que se copia",
+   "dorso": "=B2/$B$5 (total fijado con $) y formato de porcentaje. Comprueba que todo suma 100 %."
+  },
+  {
+   "tipo": "error",
+   "frente": "% de toda la empresa a partir de los % de cada delegación",
+   "dorso": "No promedies porcentajes: suma de la parte ÷ suma del total (=SUMA(C2:C4)/SUMA(B2:B4))."
+  }
+ ]
+}

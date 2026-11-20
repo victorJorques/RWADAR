@@ -1,0 +1,246 @@
+{
+  "id": "n5m2l2",
+  "titulo": "Relaciones, tabla dinámica del modelo y medidas",
+  "minutos": 18,
+  "objetivo": "Relacionar las tablas de ventas en un modelo de datos, hacer una tabla dinámica con campos de varias tablas, contar clientes distintos y leer medidas DAX sencillas como el margen %.",
+  "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Para el comité del lunes quiero ver por provincia cuánto vendemos, cuántos clientes distintos nos compran y con qué margen. Javier dice que ya tienes las tablas ordenadas. Y que el mes que viene se actualice solo, por favor.",
+    "logro": "Ya sabes relacionar tablas en un modelo de datos y sacar de él ventas, clientes distintos y margen % que se actualizan solos."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Ya tienes la estrella: Ventas en el centro y Clientes, Productos y Calendario alrededor. Ahora toca unirlas con **relaciones**.\n\nUna relación es un hilo entre la clave de una dimensión, `Clientes[CodCliente]` (tabla Clientes, columna CodCliente), y la misma columna en la tabla de hechos, `Ventas[CodCliente]`. Hace lo que hacías con BUSCARX, pero **sin copiar columnas**: la provincia sigue escrita una sola vez en Clientes y Excel la encuentra desde cada venta.\n\nLas tablas relacionadas forman el **modelo de datos** del libro."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e1",
+      "modo": "test",
+      "pregunta": "Quieres ver las ventas por **familia**. ¿Qué dos columnas unes con una relación?",
+      "opciones": [
+        {"texto": "Ventas[CodProducto] con Productos[CodProducto]", "correcta": true, "porque": "Eso es: la misma clave en las dos tablas. En Productos es única; en Ventas se repite en cada venta del artículo."},
+        {"texto": "Ventas[Importe] con Productos[PrecioTarifa]", "correcta": false, "porque": "Son números distintos (el importe lleva unidades y descuentos). Una relación une claves, no importes."},
+        {"texto": "Ventas[CodProducto] con Productos[Familia]", "correcta": false, "porque": "Las dos columnas tienen que contener el mismo dato. El código CAB-025 nunca aparecerá en la columna Familia."}
+      ],
+      "explicacion": "Una relación siempre une la clave de la dimensión con la misma clave en la tabla de hechos. La familia llega sola a través de ese hilo."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: relacionar Ventas con Clientes",
+      "pasos": [
+        {"md": "Comprueba que cada lista es una **Tabla** con su nombre: Ventas, Clientes, Productos y Calendario. El nombre se pone en **Diseño de tabla › Nombre de la tabla**.", "ruta": ["Diseño de tabla", "Propiedades", "Nombre de la tabla"]},
+        {"md": "Ve a **Datos › Relaciones**. Si el botón está en gris, el libro solo tiene una Tabla.", "ruta": ["Datos", "Herramientas de datos", "Relaciones"]},
+        {"md": "En el cuadro **Administrar relaciones**, pulsa **Nuevo**."},
+        {"md": "En **Crear relación**: **Tabla** = Ventas y **Columna (externa)** = CodCliente (el lado que repite el código). **Tabla relacionada** = Clientes y **Columna relacionada (principal)** = CodCliente (el lado con valores únicos). Pulsa **Aceptar**."},
+        {"md": "Repite con Productos (CodProducto) y con Calendario (Fecha). Administrar relaciones mostrará las tres: tu modelo está listo."}
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e2",
+      "modo": "cinta",
+      "enunciado": "Las cuatro Tablas ya tienen nombre. ¿Dónde está el botón para crear las relaciones entre ellas?",
+      "ruta": ["Datos", "Herramientas de datos", "Relaciones"],
+      "explicacion": "Datos › Herramientas de datos › Relaciones abre Administrar relaciones; desde ahí, Nuevo. Al lado tienes Administrar modelo de datos, que abre la ventana de Power Pivot."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e3",
+      "modo": "test",
+      "pregunta": "Andrés quiere cruzar las ventas con los pedidos a proveedor e intenta relacionar `Ventas[CodProducto]` con `PedidosProveedor[CodProducto]`. Excel no le deja. ¿Por qué?",
+      "opciones": [
+        {"texto": "Porque en ninguna de las dos tablas el código es único: un producto sale en muchas ventas y en muchos pedidos", "correcta": true, "porque": "Es una relación de **varios a varios**, y Excel solo crea la relación si una de las dos columnas tiene valores únicos. La solución: relacionar Ventas con Productos y PedidosProveedor con Productos. La dimensión queda en medio y sirve a las dos."},
+        {"texto": "Porque las dos tablas tienen que tener el mismo número de filas", "correcta": false, "porque": "No hace falta: lo normal es que la dimensión tenga pocas filas y la tabla de hechos, miles."},
+        {"texto": "Porque cada tabla solo se puede relacionar una vez", "correcta": false, "porque": "Ventas se relaciona a la vez con Clientes, Productos y Calendario, y una dimensión puede servir a varias tablas de hechos."}
+      ],
+      "explicacion": "Regla práctica: cada relación une una tabla de hechos (el lado de «varios») con una dimensión (el lado de «uno», con clave única). Si intentas unir dos tablas de hechos, falta la dimensión en medio."
+    },
+    {
+      "tipo": "texto",
+      "md": "Con el modelo listo, la tabla dinámica se hace como en el nivel 3, con un cambio: en **Insertar › Tabla dinámica**, marca la casilla **Agregar estos datos al modelo de datos**.\n\nEn **Campos de tabla dinámica** verás todas las tablas del modelo. Arrastra Provincia (de Clientes) a Filas, Familia (de Productos) a Columnas e Importe (de Ventas) a Valores: Excel sigue las relaciones para cruzarlos.\n\nSi aparece el aviso «Pueden ser necesarias relaciones entre tablas», falta una relación: revísalo en Datos › Relaciones."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e4",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para que Carmen vea las ventas por provincia y familia desde el modelo.",
+      "pasos": [
+        "Haz clic dentro de la Tabla Ventas",
+        "Insertar › Tabla dinámica",
+        "Marca «Agregar estos datos al modelo de datos» y elige Nueva hoja de cálculo",
+        "En Campos de tabla dinámica, lleva Provincia a Filas, Familia a Columnas e Importe a Valores",
+        "Comprueba que el total general coincide con la suma de la columna Importe de Ventas"
+      ],
+      "explicacion": "El último paso no es opcional: si el total general no coincide con la suma de Ventas, alguna relación falla o hay ventas con códigos que no existen en su dimensión."
+    },
+    {
+      "tipo": "texto",
+      "md": "Carmen quiere saber **cuántos clientes distintos** compran en cada provincia. Si pones CodCliente en Valores, la tabla dinámica te da *Cuenta*: cuenta **líneas de venta**, y un cliente con 30 líneas cuenta 30 veces.\n\nEn una tabla dinámica del modelo tienes otra opción: clic derecho sobre la cifra › **Configuración de campo de valor** › **Resumir valores por** › **Recuento distinto**. Cuenta cada cliente una sola vez.\n\nEsta opción solo aparece si la tabla dinámica sale del modelo de datos."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e5",
+      "modo": "formula",
+      "enunciado": "Compruebas a mano las ventas de octubre antes de fiarte del Recuento distinto. Una compañera ha puesto en **E2** `=CONTARA(B2:B11)` y le sale 10, pero eso son líneas, no clientes. Arregla la fórmula de E2 para que devuelva **cuántos clientes distintos** hay en B2:B11.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha", "B1": "CodCliente", "C1": "Importe", "E1": "Clientes distintos",
+          "A2": {"fecha": "2026-10-01"}, "B2": "C-1043", "C2": 449.1,
+          "A3": {"fecha": "2026-10-02"}, "B3": "C-1017", "C3": 298,
+          "A4": {"fecha": "2026-10-06"}, "B4": "C-1043", "C4": 154,
+          "A5": {"fecha": "2026-10-08"}, "B5": "C-1088", "C5": 192,
+          "A6": {"fecha": "2026-10-09"}, "B6": "C-1102", "C6": 1180.5,
+          "A7": {"fecha": "2026-10-14"}, "B7": "C-1043", "C7": 92,
+          "A8": {"fecha": "2026-10-16"}, "B8": "C-1017", "C8": 635.4,
+          "A9": {"fecha": "2026-10-21"}, "B9": "C-1110", "C9": 87.6,
+          "A10": {"fecha": "2026-10-27"}, "B10": "C-1125", "C10": 410,
+          "A11": {"fecha": "2026-10-30"}, "B11": "C-1088", "C11": 256.8
+        },
+        "formatos": {"A2:A11": "fecha", "C2:C11": "eur"},
+        "anchos": {"A": 11, "B": 11, "C": 11, "E": 17},
+        "columnas": 5,
+        "filas": 11
+      },
+      "objetivo": "E2",
+      "inicial": "=CONTARA(B2:B11)",
+      "solucion": "=CONTARA(UNICOS(B2:B11))",
+      "alternativas": ["=FILAS(UNICOS(B2:B11))"],
+      "errores_tipicos": ["=CONTARA(B2:B11)", "=CONTAR(B2:B11)", "=CONTAR(UNICOS(B2:B11))"],
+      "variantes": [{"B11": "C-1131"}, {"B6": "C-1043", "B9": "C-1043"}],
+      "pistas": [
+        "CONTARA cuenta todas las celdas llenas, repetidas o no. Primero tienes que quedarte con la lista sin repetidos.",
+        "UNICOS(B2:B11) devuelve cada código una sola vez. Cuenta lo que devuelve.",
+        "=CONTARA(UNICOS(B2:B11))"
+      ],
+      "explicacion": "6 clientes distintos en 10 líneas. Es la cifra que debe darte Recuento distinto en la tabla dinámica del modelo: si no coincide, algo falla. Acabas de montar un total de control, y además esta fórmula funciona en cualquier Excel con UNICOS (2021 o posterior), por si quien recibe el archivo no tiene modelo de datos."
+    },
+    {
+      "tipo": "texto",
+      "md": "Una **medida** es un cálculo con nombre que vive en el modelo y se recalcula en **cada celda** de la tabla dinámica. Se escribe en **DAX**, el lenguaje de fórmulas del modelo:\n\n`Total ventas := SUM(Ventas[Importe])`\n\nSe lee: la medida *Total ventas* es (`:=`) la suma de la columna Importe de la tabla Ventas. En la fila de Huesca suma solo Huesca; en la de Cableado, solo Cableado.\n\nSe crea en **Power Pivot › Medidas › Nueva medida**: el nombre va en *Nombre de medida* y `=SUM(Ventas[Importe])` en *Fórmula*."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Dónde funciona Power Pivot",
+      "md": "**Power Pivot** es la parte de Excel que guarda el modelo de datos y sus medidas. Solo está en **Excel para Windows** (en Microsoft 365, con las aplicaciones de escritorio; en versiones antiguas depende de la edición). En Mac y en Excel para la web no lo tienes. Si no ves su pestaña: **Archivo › Opciones › Complementos**, en *Administrar* elige **Complementos COM**, pulsa **Ir** y marca la casilla de **Power Pivot**."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e6",
+      "modo": "test",
+      "pregunta": "Javier ha creado estas medidas en la tabla Ventas:\n\n`Total ventas := SUM(Ventas[Importe])`\n\n`Total coste := SUM(Ventas[Coste])`\n\n`Margen := [Total ventas] - [Total coste]`\n\nEn la tabla dinámica, con Provincia en Filas, ¿qué muestra *Margen* en la fila de **Navarra**?",
+      "opciones": [
+        {"texto": "Lo vendido en Navarra menos lo que costó lo vendido en Navarra", "correcta": true, "porque": "Exacto: cada medida se recalcula con el filtro de su fila. Los corchetes solos, como [Total ventas], llaman a otra medida ya creada."},
+        {"texto": "El margen de toda la empresa, repetido en cada provincia", "correcta": false, "porque": "Eso pasaría con un número escrito a mano. La medida se recalcula en cada celda con lo que filtra esa celda: en la fila de Navarra, solo Navarra."},
+        {"texto": "Un error, porque la tabla Ventas no tiene ninguna columna llamada Margen", "correcta": false, "porque": "No hace falta esa columna: una medida puede usar otras medidas, que se escriben entre corchetes sin el nombre de la tabla."}
+      ],
+      "explicacion": "Leer una medida es leer una receta: nombre, `:=` y el cálculo. Y recuerda que se calcula de nuevo en cada celda, con el filtro de esa fila y esa columna."
+    },
+    {
+      "tipo": "texto",
+      "md": "Falta el margen %. La tentación es añadir a Ventas una columna con el % de cada línea y pedir el promedio. **Error**: una línea de 9 € pesaría lo mismo que una de 900 €.\n\nEl margen % bueno es **margen total ÷ ventas totales**, y eso hace esta medida:\n\n`Margen % := DIVIDE([Margen]; [Total ventas])`\n\n**DIVIDE** divide sin dar error aunque las ventas sean 0 (deja la celda vacía). Como se recalcula en cada fila, el % de cada provincia y el del total salen bien."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "El separador en DAX",
+      "md": "Las funciones DAX no se traducen: SUM y DIVIDE se escriben siempre en inglés. El separador entre argumentos depende de la configuración de Windows: si al escribir DIVIDE Excel marca un error de sintaxis, cambia el `;` por una `,`."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m2l2-e7",
+      "modo": "formula",
+      "enunciado": "La misión de Carmen. Antes de enviarle el cuadro, compruebas con una fórmula lo que dirá tu medida Margen %. En **H2** calcula el **margen % de la provincia escrita en G2** con estas líneas: margen total (importe − coste) ÷ importe total de esa provincia. Si cambias G2 por otra provincia, tu fórmula tiene que seguir valiendo.",
+      "hoja": {
+        "celdas": {
+          "A1": "Línea", "B1": "Provincia", "C1": "Importe", "D1": "Coste", "E1": "Margen % línea", "G1": "Provincia", "H1": "Margen %",
+          "A2": "L-01", "B2": "Huesca", "C2": 1250, "D2": 940, "E2": "=(C2-D2)/C2",
+          "A3": "L-02", "B3": "Navarra", "C3": 380, "D3": 250.8, "E3": "=(C3-D3)/C3",
+          "A4": "L-03", "B4": "Huesca", "C4": 86, "D4": 48.16, "E4": "=(C4-D4)/C4",
+          "A5": "L-04", "B5": "Zaragoza", "C5": 2140, "D5": 1562.2, "E5": "=(C5-D5)/C5",
+          "A6": "L-05", "B6": "Huesca", "C6": 64.5, "D6": 34.83, "E6": "=(C6-D6)/C6",
+          "A7": "L-06", "B7": "Navarra", "C7": 912, "D7": 656.64, "E7": "=(C7-D7)/C7",
+          "A8": "L-07", "B8": "Huesca", "C8": 2310, "D8": 1801.8, "E8": "=(C8-D8)/C8",
+          "A9": "L-08", "B9": "Zaragoza", "C9": 145, "D9": 92.8, "E9": "=(C9-D9)/C9",
+          "G2": "Huesca"
+        },
+        "formatos": {"C2:D9": "eur", "E2:E9": "pct1", "H2": "pct1"},
+        "anchos": {"B": 10, "C": 11, "D": 11, "E": 14, "G": 10, "H": 11},
+        "columnas": 8,
+        "filas": 9
+      },
+      "objetivo": "H2",
+      "solucion": "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMAR.SI(B2:B9;G2;C2:C9)",
+      "alternativas": [
+        "=1-SUMAR.SI(B2:B9;G2;D2:D9)/SUMAR.SI(B2:B9;G2;C2:C9)",
+        "=(SUMAR.SI.CONJUNTO(C2:C9;B2:B9;G2)-SUMAR.SI.CONJUNTO(D2:D9;B2:B9;G2))/SUMAR.SI.CONJUNTO(C2:C9;B2:B9;G2)",
+        "=LET(v;SUMAR.SI(B2:B9;G2;C2:C9);c;SUMAR.SI(B2:B9;G2;D2:D9);(v-c)/v)"
+      ],
+      "errores_tipicos": [
+        "=PROMEDIO.SI(B2:B9;G2;E2:E9)",
+        "=SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9)",
+        "=SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9)/SUMAR.SI(B2:B9;G2;C2:C9)",
+        "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMA(C2:C9)",
+        "=(SUMAR.SI(B2:B9;\"Huesca\";C2:C9)-SUMAR.SI(B2:B9;\"Huesca\";D2:D9))/SUMAR.SI(B2:B9;\"Huesca\";C2:C9)"
+      ],
+      "variantes": [{"G2": "Navarra"}, {"C8": 1650, "D8": 1320}],
+      "formato_resultado": "pct1",
+      "tolerancia": 0.0001,
+      "pistas": [
+        "Necesitas tres sumas con condición: el importe de la provincia de G2, el coste de esa provincia y, otra vez, el importe para dividir.",
+        "SUMAR.SI(B2:B9;G2;C2:C9) suma el importe de la provincia de G2. Cambia C por D para el coste. Ojo con los paréntesis: primero la resta, después la división.",
+        "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMAR.SI(B2:B9;G2;C2:C9)"
+      ],
+      "explicacion": "Huesca: 23,9 %. La media de los % de sus líneas habría dicho 34,2 %, diez puntos de más, porque las líneas pequeñas pesan igual que las grandes. Tu fórmula hace lo mismo que la medida Margen %, así que ya puedes enviar a Carmen el cuadro sabiendo que cuadra. Y lo que has montado (relaciones, medidas y DAX) es la base de Power BI: allí se trabaja igual."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m2l2-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "En una tabla dinámica del modelo de datos, ¿qué opción de *Resumir valores por* cuenta cada cliente una sola vez aunque tenga muchas ventas?",
+      "aceptadas": ["Recuento distinto", "recuento distinto", "el recuento distinto", "Recuento Distinto"],
+      "explicacion": "Recuento distinto. *Cuenta* contaría líneas de venta. Y solo aparece si la tabla dinámica sale del modelo de datos."
+    },
+    {
+      "id": "n5m2l2-q2",
+      "modo": "test",
+      "pregunta": "Añades Familia (de Productos) a tu tabla dinámica del modelo y aparece «Pueden ser necesarias relaciones entre tablas». ¿Qué haces?",
+      "opciones": [
+        {"texto": "Crear la relación Ventas[CodProducto] → Productos[CodProducto] en Datos › Relaciones", "correcta": true, "porque": "El aviso dice que falta un hilo entre las tablas que estás cruzando. Con la relación, cada venta encuentra su familia."},
+        {"texto": "Copiar la columna Familia a Ventas con BUSCARX", "correcta": false, "porque": "Funcionaría, pero vuelves a la tabla gigante con datos repetidos. La relación hace lo mismo sin copiar nada."},
+        {"texto": "Actualizar la tabla dinámica", "correcta": false, "porque": "Actualizar vuelve a leer los datos, pero no crea las relaciones que faltan."}
+      ]
+    },
+    {
+      "id": "n5m2l2-q3",
+      "modo": "predice",
+      "enunciado": "Dos líneas: una con un 20 % de margen y otra con un 60 %. ¿Qué margen % total da esta fórmula, que calcula lo mismo que la medida Margen %?",
+      "hoja": {
+        "celdas": {
+          "A1": "Línea", "B1": "Importe", "C1": "Coste", "D1": "Margen % línea",
+          "A2": "L-1", "B2": 900, "C2": 720, "D2": "=(B2-C2)/B2",
+          "A3": "L-2", "B3": 100, "C3": 40, "D3": "=(B3-C3)/B3"
+        },
+        "formatos": {"B2:C3": "eur", "D2:D3": "pct"},
+        "anchos": {"D": 15},
+        "columnas": 6,
+        "filas": 3
+      },
+      "celda": "F2",
+      "formula": "=(SUMA(B2:B3)-SUMA(C2:C3))/SUMA(B2:B3)",
+      "formato_resultado": "pct",
+      "explicacion": "24 %: (1.000 − 760) ÷ 1.000. La media de los dos % daría un 40 %, muy lejos de la realidad, porque la línea de 100 € pesaría igual que la de 900 €."
+    }
+  ],
+  "tarjetas": [
+    {"tipo": "concepto", "frente": "¿Qué es una relación en el modelo de datos?", "dorso": "Un hilo entre la clave única de una dimensión y la misma columna de la tabla de hechos. Cruza tablas sin copiar columnas."},
+    {"tipo": "concepto", "frente": "¿Dónde se crean las relaciones entre Tablas?", "dorso": "Datos › Herramientas de datos › Relaciones › Nuevo. Tabla = hechos (varios); Tabla relacionada = dimensión (principal, valores únicos)."},
+    {"tipo": "concepto", "frente": "¿Qué cuenta «Recuento distinto»?", "dorso": "Cada valor una sola vez (por ejemplo, clientes distintos). Solo en tablas dinámicas del modelo de datos."},
+    {"tipo": "funcion", "frente": "Medida DAX del margen %", "dorso": "Margen % := DIVIDE([Margen]; [Total ventas]). Margen total ÷ ventas totales, nunca la media de los % de cada línea."},
+    {"tipo": "concepto", "frente": "¿Dónde funcionan Power Pivot y el modelo de datos?", "dorso": "Solo en Excel para Windows; no en Mac ni en Excel para la web. Power BI usa el mismo tipo de modelo y el mismo DAX."}
+  ]
+}

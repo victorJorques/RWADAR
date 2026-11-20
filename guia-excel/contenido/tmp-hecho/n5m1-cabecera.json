@@ -1,0 +1,90 @@
+{
+  "id": "n5m1",
+  "nivel": "n5",
+  "titulo": "Funciones modernas y tus propias funciones",
+  "intro": "Ser la referencia de Excel de la oficina significa resolver con una fórmula lo que otros hacen a mano cada semana: separar textos, montar listas, resumir por grupos y calcular todos igual. En este módulo aprendes las funciones modernas que lo hacen posible, incluso a crear las tuyas, y también a saber cuándo no usarlas porque el Excel de quien abre el libro no las tiene.",
+  "repaso_inicial": [
+    {
+      "id": "n5m1-r1",
+      "modo": "predice",
+      "enunciado": "Repaso del nivel 2. ¿Qué devuelve esta fórmula? Escríbelo tal cual saldría en la celda.",
+      "hoja": {
+        "celdas": {
+          "A1": "Correo",
+          "A2": "compras@elecmoncayo.com"
+        },
+        "anchos": { "A": 28 }
+      },
+      "celda": "B2",
+      "formula": "=IZQUIERDA(A2;ENCONTRAR(\"@\";A2)-1)",
+      "explicacion": "ENCONTRAR da la posición de la @ (la 8.ª letra) e IZQUIERDA coge los 7 caracteres anteriores: `compras`. Hoy verás una forma más corta de hacer lo mismo."
+    },
+    {
+      "id": "n5m1-r2",
+      "modo": "formula",
+      "enunciado": "Repaso del nivel 3. En **D2** devuelve la tabla A2:B6 **ordenada por importe, de mayor a menor**. Deben llenarse D2:E6.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480.5,
+          "A3": "Electricidad Oroel",
+          "B3": 615.2,
+          "A4": "Montajes Bardenas",
+          "B4": 4150,
+          "A5": "Reformas Jaca",
+          "B5": 980.75,
+          "A6": "Elec Moncayo",
+          "B6": 3320.4,
+          "D1": "Cliente",
+          "E1": "Importe"
+        },
+        "formatos": { "B2:B6": "eur", "E2:E6": "eur" },
+        "anchos": { "A": 20, "D": 20 }
+      },
+      "objetivo": "D2",
+      "solucion": "=ORDENAR(A2:B6;2;-1)",
+      "alternativas": ["=ORDENARPOR(A2:B6;B2:B6;-1)"],
+      "errores_tipicos": ["=ORDENAR(A2:B6;2)", "=ORDENAR(A2:B6;1;-1)", "=ORDENAR(A2:B6)"],
+      "variantes": [{ "B3": 5000 }],
+      "pistas": [
+        "ORDENAR pide la matriz, la columna por la que ordenar y el sentido.",
+        "El importe es la 2.ª columna de A2:B6, y de mayor a menor se indica con -1.",
+        "Escribe `=ORDENAR(A2:B6;2;-1)`."
+      ],
+      "explicacion": "Lista ordenada que se rehace sola. En este módulo la combinarás con otras funciones para sacar un top que no hay que tocar nunca más."
+    },
+    {
+      "id": "n5m1-r3",
+      "modo": "test",
+      "pregunta": "Repaso del nivel 3. Has corregido varios importes en los datos de origen y tu tabla dinámica sigue mostrando los totales de antes. ¿Qué pasa?",
+      "opciones": [
+        { "texto": "La tabla dinámica no se recalcula sola: hay que pulsar Actualizar", "correcta": true, "porque": "Correcto: guarda una copia de los datos y solo la renueva cuando pulsas Actualizar (o Actualizar todo)." },
+        { "texto": "Los importes nuevos tienen un formato distinto", "correcta": false, "porque": "El formato no impide que se sumen. El problema es que la tabla no se ha actualizado." },
+        { "texto": "Hay que borrar la tabla dinámica y crearla otra vez", "correcta": false, "porque": "No hace falta: basta con Actualizar. Rehacerla es perder tiempo y el diseño." },
+        { "texto": "El cálculo de Excel está en manual", "correcta": false, "porque": "Eso afectaría a las fórmulas. Las tablas dinámicas, incluso con cálculo automático, necesitan Actualizar." }
+      ]
+    },
+    {
+      "id": "n5m1-r4",
+      "modo": "predice",
+      "enunciado": "Repaso del nivel 4. ¿Qué devuelve esta LET? (Precio 20 €, 5 unidades, IVA 21 %.)",
+      "hoja": {
+        "celdas": {
+          "A1": "Precio",
+          "B1": "Uds",
+          "C1": "IVA",
+          "A2": 20,
+          "B2": 5,
+          "C2": 0.21
+        },
+        "formatos": { "A2": "eur", "C2": "pct" }
+      },
+      "celda": "D2",
+      "formula": "=LET(neto;A2*B2;neto*(1+C2))",
+      "explicacion": "`neto` vale 20 × 5 = 100; después 100 × 1,21 = 121. En este módulo verás que LAMBDA se escribe de forma muy parecida."
+    }
+  ],
+  "practica_excel": null
+}

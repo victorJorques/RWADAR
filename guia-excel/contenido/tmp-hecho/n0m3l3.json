@@ -1,0 +1,300 @@
+{
+ "id": "n0m3l3",
+ "titulo": "Sumar una columna: SUMA y Autosuma",
+ "minutos": 15,
+ "objetivo": "Sumar una columna con la función SUMA y con el botón Autosuma, revisar que el rango coge todas las filas y comprobar el total con la barra de estado.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Javier ha pasado los tickets de su viaje a Lleida y Pamplona de esta semana. Necesito el total para cuadrarlo con el cargo de la tarjeta de empresa. Con fórmula, por favor, y compruébalo antes de mandármelo.",
+  "logro": "Ya sabes sumar una columna entera en segundos con SUMA y comprobar que el total está bien."
+ },
+ "funciones": ["SUMA"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una **función** es una fórmula que Excel ya trae hecha y tiene un **nombre**. La más usada de todas es **SUMA**.\n\n`=SUMA(B2:B6)` significa: «suma todo lo que hay **de B2 a B6**». Lo de dentro del paréntesis es un **rango**: un bloque de celdas seguidas. Los **dos puntos** se leen «hasta».\n\nCon SUMA da igual que sean 5 filas o 500: la fórmula es igual de corta."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Así se ve",
+   "hoja": {
+    "celdas": {
+     "A1": "Gasto",
+     "B1": "Importe",
+     "A2": "Gasolina",
+     "B2": 62.4,
+     "A3": "Peaje AP-68",
+     "B3": 18.95,
+     "A4": "Comida",
+     "B4": 24.5,
+     "A5": "Aparcamiento",
+     "B5": 9.6,
+     "A6": "Hotel Lleida",
+     "B6": 78,
+     "A7": "Total",
+     "B7": "=SUMA(B2:B6)"
+    },
+    "formatos": {"B2:B7": "eur"},
+    "anchos": {"A": 16}
+   },
+   "resaltar": ["B7"],
+   "mostrar_formulas": true,
+   "pie": "El rango B2:B6 son las cinco celdas de importes. El total va justo debajo, fuera del rango."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e1",
+   "modo": "formula",
+   "enunciado": "Gastos de material de oficina de noviembre. En **B7** escribe `=SUMA(B2:B6)` para sumar los cinco importes. Debe salir **214,85 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Gasto",
+     "B1": "Importe",
+     "A2": "Papel A4 (5 paquetes)",
+     "B2": 23.75,
+     "A3": "Tóner impresora",
+     "B3": 89.9,
+     "A4": "Archivadores",
+     "B4": 31.2,
+     "A5": "Bolígrafos y rotuladores",
+     "B5": 14.5,
+     "A6": "Etiquetas almacén",
+     "B6": 55.5,
+     "A7": "Total"
+    },
+    "formatos": {"B2:B7": "eur"},
+    "anchos": {"A": 24}
+   },
+   "objetivo": "B7",
+   "solucion": "=SUMA(B2:B6)",
+   "alternativas": ["=SUMA(B6:B2)"],
+   "debe_usar": ["SUMA"],
+   "errores_tipicos": ["=SUMA(B2:B5)", "=SUMA(B3:B6)", "=214,85"],
+   "variantes": [{"B4": 40, "B6": 60}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Empieza por `=` y escribe el nombre de la función: SUMA.",
+    "Entre paréntesis, la primera celda, dos puntos y la última: B2 hasta B6.",
+    "Escribe `=SUMA(B2:B6)` y pulsa Intro."
+   ],
+   "explicacion": "Primera función, hecha: 214,85 €. Con SUMA sumarás gastos, ventas, horas o facturas, tengan las filas que tengan."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Y no vale `=B2+B3+B4+B5+B6`? Da lo mismo, pero:\n\n- Con 40 filas es una fórmula larguísima y es muy fácil **saltarse una**.\n- Si más adelante **insertas una fila** en medio del rango, `SUMA(B2:B6)` la incluye sola (pasa a B2:B7). La suma con `+` no se entera.\n\nPor eso, para sumar una columna, siempre **SUMA con un rango**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e2",
+   "modo": "test",
+   "pregunta": "Tienes importes de **B2 a B30**. ¿Qué fórmula es la buena para sumarlos todos?",
+   "opciones": [
+    {"texto": "`=SUMA(B2:B30)`", "correcta": true, "porque": "Correcto: los dos puntos dicen «de B2 hasta B30», las 29 celdas."},
+    {"texto": "`=SUMA(B2;B30)`", "correcta": false, "porque": "El punto y coma separa celdas sueltas: solo suma B2 y B30, dos celdas. Las de en medio se quedan fuera."},
+    {"texto": "`=SUMA(B2+B30)`", "correcta": false, "porque": "También suma solo B2 y B30. Dentro de SUMA no se usa `+`: se pone el rango con dos puntos."},
+    {"texto": "`=B2+B3+B4…` hasta B30", "correcta": false, "porque": "Da bien si no te saltas ninguna, pero son 29 celdas a mano: lenta y fácil de equivocar."}
+   ],
+   "explicacion": "Dos puntos = «hasta». Es el detalle que más se confunde al empezar, y ahora ya lo tienes claro."
+  },
+  {
+   "tipo": "texto",
+   "md": "Aún más rápido: el botón **Autosuma** (el símbolo **Σ**, la letra griega sigma, que parece una E) en **Inicio › Edición**.\n\n1. Haz clic en la celda **justo debajo** de los números.\n2. Pulsa **Autosuma**. Excel escribe `=SUMA(…)` y marca con una línea de puntos el rango que cree que quieres.\n3. **Mira el rango**. Si es correcto, pulsa **Intro**.\n\nTambién está en **Fórmulas › Biblioteca de funciones**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "Autosuma con el teclado",
+   "md": "[[Alt]]+[[=]]. En el teclado español el `=` se hace con [[Mayús]]+[[0]], así que pulsa a la vez [[Alt]]+[[Mayús]]+[[0]]."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e3",
+   "modo": "cinta",
+   "enunciado": "Estás debajo de una columna de importes y quieres que Excel escriba la suma por ti. Busca el botón **Autosuma** en la pestaña **Inicio**.",
+   "ruta": ["Inicio", "Edición", "Autosuma"],
+   "explicacion": "Inicio › Edición › Autosuma, a la derecha del todo de la cinta. Un clic y la suma está escrita; solo te queda revisar el rango."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e4",
+   "modo": "predice",
+   "enunciado": "En la lista de cobros, uno no tiene importe todavía: alguien escribió «pendiente». ¿Qué número mostrará `=SUMA(B2:B5)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Cobrado",
+     "A2": "Instalaciones Ebro",
+     "B2": 450,
+     "A3": "Electricidad Moncayo",
+     "B3": 1200,
+     "A4": "Montajes Arnedo",
+     "B4": "pendiente",
+     "A5": "Reformas Delicias",
+     "B5": 300
+    },
+    "anchos": {"A": 22}
+   },
+   "celda": "B6",
+   "formula": "=SUMA(B2:B5)",
+   "explicacion": "1.950. SUMA no da error con textos: simplemente los **salta**. Útil, pero ojo: «pendiente» no cuenta, así que el total no incluye ese cobro."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e5",
+   "modo": "formula",
+   "enunciado": "**Arregla el error.** Esta lista de pedidos tenía 5 filas y luego se añadió una sexta (Reformas Delicias, fila 7). El total de **B8** sigue diciendo `=SUMA(B2:B6)` y se la deja fuera. Corrige el rango para que sume **todas** las filas. Debe salir **3.145,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Pedido",
+     "A2": "Instalaciones Ebro",
+     "B2": 640,
+     "A3": "Electricidad Moncayo",
+     "B3": 1125,
+     "A4": "Montajes Arnedo",
+     "B4": 380,
+     "A5": "Clima Huesca",
+     "B5": 510,
+     "A6": "Luz y Obra Tudela",
+     "B6": 215,
+     "A7": "Reformas Delicias",
+     "B7": 275,
+     "A8": "Total"
+    },
+    "formatos": {"B2:B8": "eur"},
+    "anchos": {"A": 22}
+   },
+   "objetivo": "B8",
+   "inicial": "=SUMA(B2:B6)",
+   "solucion": "=SUMA(B2:B7)",
+   "debe_usar": ["SUMA"],
+   "errores_tipicos": ["=SUMA(B3:B7)", "=SUMA(B2:B6)+275"],
+   "variantes": [{"B7": 500}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Mira hasta qué fila llegan los datos.",
+    "Los datos empiezan en B2 y terminan en B7. El total (B8) no entra.",
+    "La fórmula es `=SUMA(B2:B7)`."
+   ],
+   "explicacion": "Corregido: 3.145,00 €. Un rango que se queda corto no da ningún error: simplemente suma de menos. Por eso, cuando añadas filas, revisa siempre hasta dónde llega el total."
+  },
+  {
+   "tipo": "texto",
+   "md": "Otro despiste típico: meter la celda del **total** dentro de su propio rango. Si en **B7** escribes `=SUMA(B2:B7)`, le pides al total que se sume a sí mismo. Es como intentar medir una regla con ella misma.\n\nExcel lo llama **referencia circular**: te muestra un aviso y el total sale a 0 o mal. El rango termina **en la fila de encima** del total."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e6",
+   "modo": "test",
+   "pregunta": "Los gastos están de B2 a B9 y el total va en **B10**. Al escribir la fórmula, Excel te avisa de una **referencia circular**. ¿Qué has escrito, seguramente?",
+   "opciones": [
+    {"texto": "`=SUMA(B2:B10)`", "correcta": true, "porque": "Eso es: el rango llega hasta B10, la propia celda del total. Debe acabar en B9."},
+    {"texto": "`=SUMA(B2:B9)`", "correcta": false, "porque": "Esta es la buena: suma los gastos y deja fuera la celda del total. No daría ningún aviso."},
+    {"texto": "`=SUMA(B3:B9)`", "correcta": false, "porque": "Esta se deja fuera B2 y sumaría de menos, pero no es circular: no incluye B10."}
+   ],
+   "explicacion": "Si ves el aviso de referencia circular, mira si el rango incluye la celda donde estás escribiendo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Antes de dar un total por bueno, **compruébalo**. Tienes un truco que ya conoces: selecciona los importes (sin el total) y mira la **barra de estado**, abajo a la derecha. Ahí verás **Suma**.\n\nSi la Suma de la barra coincide con tu fórmula, el rango está bien. Si no, a tu fórmula le falta o le sobra algo. Diez segundos que evitan pasar un total equivocado a tu jefa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m3l3-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Marta.** Tickets del viaje de Javier. En **B9** calcula el total de los siete gastos con **SUMA** (o con Autosuma). Debe salir **366,80 €**. Después compruébalo: seleccionarías B2:B8 y mirarías la Suma de la barra de estado.",
+   "hoja": {
+    "celdas": {
+     "A1": "Gasto",
+     "B1": "Importe",
+     "A2": "Gasolina ida",
+     "B2": 62.4,
+     "A3": "Peaje AP-68",
+     "B3": 18.95,
+     "A4": "Comida Lleida",
+     "B4": 24.5,
+     "A5": "Hotel Lleida",
+     "B5": 78,
+     "A6": "Aparcamiento Pamplona",
+     "B6": 9.6,
+     "A7": "Cena con cliente",
+     "B7": 112.35,
+     "A8": "Gasolina vuelta",
+     "B8": 61,
+     "A9": "Total"
+    },
+    "formatos": {"B2:B9": "eur"},
+    "anchos": {"A": 24}
+   },
+   "objetivo": "B9",
+   "solucion": "=SUMA(B2:B8)",
+   "debe_usar": ["SUMA"],
+   "errores_tipicos": ["=SUMA(B2:B7)", "=SUMA(B3:B8)", "=366,8", "=SUMA(B2;B8)"],
+   "variantes": [{"B7": 98.4}, {"B2": 70, "B8": 55.25}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Los importes van de B2 a B8. El total está en B9 y no entra en el rango (si lo metes, aquí verás #¡REF!; en Excel, el aviso de referencia circular).",
+    "Escribe `=SUMA(` y selecciona con el ratón de B2 a B8, o escribe el rango con dos puntos.",
+    "La fórmula es `=SUMA(B2:B8)`."
+   ],
+   "explicacion": "Encargo resuelto: 366,80 €, listo para cuadrar con el cargo de la tarjeta. Sumar una columna y comprobarla con la barra de estado es algo que harás todas las semanas."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m3l3-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Sin mirar: escribe la fórmula que suma todos los importes **de C2 a C20**.",
+   "aceptadas": ["=SUMA(C2:C20)", "=suma(c2:c20)", "=Suma(C2:C20)", "=SUMA(c2:c20)"],
+   "explicacion": "`=SUMA(C2:C20)`: el nombre de la función y, entre paréntesis, el rango con dos puntos (de C2 hasta C20)."
+  },
+  {
+   "id": "n0m3l3-q2",
+   "modo": "test",
+   "pregunta": "Quieres saber al momento cuánto suman unas celdas, **sin escribir ninguna fórmula**. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Seleccionarlas y mirar Suma en la barra de estado", "correcta": true, "porque": "Correcto: la barra de estado, abajo a la derecha, suma lo que seleccionas. Perfecto para comprobar."},
+    {"texto": "Pulsar Autosuma", "correcta": false, "porque": "Autosuma escribe una fórmula SUMA en una celda. Es útil, pero sí escribe una fórmula."},
+    {"texto": "Sumarlas con la calculadora del móvil", "correcta": false, "porque": "Lenta y con riesgo de teclear mal. La barra de estado lo hace sola y sin errores."}
+   ],
+   "explicacion": "La barra de estado es tu comprobación rápida de cualquier total."
+  },
+  {
+   "id": "n0m3l3-q3",
+   "modo": "formula",
+   "enunciado": "Repaso mezclado. En **D2** calcula el importe de la línea: **precio** (B2) por **unidades** (C2). Debe salir **285,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Precio",
+     "C1": "Uds",
+     "D1": "Importe",
+     "A2": "Magnetotérmico 2P 16 A",
+     "B2": 11.4,
+     "C2": 25
+    },
+    "formatos": {"B2": "eur", "D2": "eur"},
+    "anchos": {"A": 24}
+   },
+   "objetivo": "D2",
+   "solucion": "=B2*C2",
+   "alternativas": ["=C2*B2"],
+   "errores_tipicos": ["=SUMA(B2:C2)", "=11,4*25", "=B2+C2"],
+   "variantes": [{"B2": 12, "C2": 10}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Aquí no se suma una columna: se multiplican dos celdas.",
+    "Precio por unidades: B2 por C2, con el asterisco.",
+    "La fórmula es `=B2*C2`."
+   ],
+   "explicacion": "Bien elegido: SUMA es para sumar muchas celdas; para precio por unidades, una multiplicación. Saber qué herramienta usar es la mitad del trabajo."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "funcion", "frente": "Sintaxis de SUMA para sumar de B2 a B6", "dorso": "=SUMA(B2:B6) (los dos puntos significan «hasta»)."},
+  {"tipo": "atajo", "frente": "Autosuma con el teclado español", "dorso": "Alt+= (en el teclado español: Alt+Mayús+0). En la cinta: Inicio › Edición › Autosuma."},
+  {"tipo": "error", "frente": "¿Qué pasa si escribes =SUMA(B2:B7) en la propia celda B7?", "dorso": "Referencia circular: el total se incluye a sí mismo. El rango debe acabar en B6."},
+  {"tipo": "error", "frente": "=SUMA(B2;B30) frente a =SUMA(B2:B30)", "dorso": "Con ; solo suma B2 y B30. Con : suma todo de B2 hasta B30."}
+ ]
+}

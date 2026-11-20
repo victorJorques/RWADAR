@@ -64,6 +64,8 @@
 
 # La documentación del proyecto
 !/CLAUDE.md
+# Guía de Excel «Hoja a hoja» (proyecto aparte, solo en su rama; no es parte de RWAdar)
+!/guia-excel/
 
 # Dentro de esas carpetas, lo que nunca se versiona
 node_modules/

@@ -1,0 +1,432 @@
+{
+  "id": "n5m1l1",
+  "titulo": "Separar textos sin sufrir: TEXTOANTES, TEXTODESPUES y DIVIDIRTEXTO",
+  "minutos": 15,
+  "objetivo": "Separar correos, nombres y códigos en sus partes con TEXTOANTES, TEXTODESPUES y DIVIDIRTEXTO, y saber qué usar si el Excel de otra persona no las tiene.",
+  "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Me ha llegado del programa de gestión la lista de contactos de clientes: el nombre viene como «Gimeno Sanz, Laura» y el correo al lado. Para la campaña de enero necesito el nombre de pila y la empresa de cada uno, que es lo que va entre la @ y el punto del correo. Son 600 filas: con fórmula, por favor.",
+    "logro": "Ya sabes separar correos, nombres y códigos en sus partes con fórmulas que se copian a miles de filas."
+  },
+  "funciones": [
+    "TEXTOANTES",
+    "TEXTODESPUES",
+    "DIVIDIRTEXTO"
+  ],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "### Cortar por una marca\n\nEn el nivel 2 cortaste textos contando caracteres: `=IZQUIERDA(A2;ENCONTRAR(\"@\";A2)-1)`. Funciona, pero hay que pensar mucho.\n\nExcel 2024 y Microsoft 365 traen una forma más directa: decirle **por dónde cortar**. Esa marca se llama **delimitador**: el carácter que separa las partes, como la línea de puntos de un cupón. En un correo, el delimitador es la **@**.\n\n`=TEXTOANTES(A2;\"@\")` devuelve todo lo que hay **antes** de la @."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Así se ve",
+      "hoja": {
+        "celdas": {
+          "A1": "Correo",
+          "B1": "Usuario",
+          "A2": "laura.gimeno@instalacionesebro.es",
+          "B2": "=TEXTOANTES(A2;\"@\")",
+          "A3": "s.lafuente@elecmoncayo.com",
+          "B3": "=TEXTOANTES(A3;\"@\")"
+        },
+        "anchos": {
+          "A": 34,
+          "B": 16
+        }
+      },
+      "resaltar": [
+        "B2:B3"
+      ],
+      "mostrar_formulas": true,
+      "pie": "La misma fórmula sirve para cualquier correo, sea cual sea la longitud del usuario."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e1",
+      "modo": "formula",
+      "enunciado": "En **B2** escribe la fórmula que saca el **usuario** del correo de A2 (todo lo que va antes de la @). Debe salir `pilar.esteban`. La fórmula se copiará sola a B3:B4.",
+      "hoja": {
+        "celdas": {
+          "A1": "Correo",
+          "B1": "Usuario",
+          "A2": "pilar.esteban@montajesbardenas.es",
+          "A3": "info@electricidadoroel.com",
+          "A4": "j.casanova@instalacionesegre.cat"
+        },
+        "anchos": {
+          "A": 34,
+          "B": 16
+        }
+      },
+      "objetivo": "B2",
+      "copiar_a": [
+        "B3:B4"
+      ],
+      "solucion": "=TEXTOANTES(A2;\"@\")",
+      "alternativas": [
+        "=IZQUIERDA(A2;ENCONTRAR(\"@\";A2)-1)"
+      ],
+      "errores_tipicos": [
+        "=TEXTODESPUES(A2;\"@\")",
+        "=TEXTOANTES(A2;\".\")"
+      ],
+      "variantes": [
+        {
+          "A2": "compras@reformasjaca.es"
+        }
+      ],
+      "pistas": [
+        "La función que corta lo que hay antes de una marca es TEXTOANTES.",
+        "Necesita dos cosas: el texto (A2) y el delimitador, entre comillas porque es texto.",
+        "Escribe `=TEXTOANTES(A2;\"@\")`."
+      ],
+      "explicacion": "Acabas de separar el usuario de tres correos con una sola fórmula. En la lista de Javier la copiarás hacia abajo y tendrás 600 usuarios en un segundo."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Lo que va detrás: TEXTODESPUES\n\n**TEXTODESPUES** es la gemela: devuelve lo que hay **después** del delimitador. Se escribe igual:\n\n`=TEXTODESPUES(A2;\"@\")` → `instalacionesebro.es`\n\nEl delimitador puede ser un carácter o varios: un guion, una barra, una coma, o una coma con su espacio detrás. Siempre va **entre comillas**."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e2",
+      "modo": "formula",
+      "enunciado": "En **B2** saca el **dominio** del correo de A2: todo lo que va después de la @. Debe salir `montajesbardenas.es`. Se copiará a B3:B4.",
+      "hoja": {
+        "celdas": {
+          "A1": "Correo",
+          "B1": "Dominio",
+          "A2": "pilar.esteban@montajesbardenas.es",
+          "A3": "info@electricidadoroel.com",
+          "A4": "j.casanova@instalacionesegre.cat"
+        },
+        "anchos": {
+          "A": 34,
+          "B": 22
+        }
+      },
+      "objetivo": "B2",
+      "copiar_a": [
+        "B3:B4"
+      ],
+      "solucion": "=TEXTODESPUES(A2;\"@\")",
+      "alternativas": [
+        "=EXTRAE(A2;ENCONTRAR(\"@\";A2)+1;LARGO(A2))"
+      ],
+      "errores_tipicos": [
+        "=TEXTOANTES(A2;\"@\")",
+        "=TEXTODESPUES(A2;\".\")"
+      ],
+      "variantes": [
+        {
+          "A2": "compras@reformasjaca.es"
+        }
+      ],
+      "pistas": [
+        "Ahora quieres lo que va detrás de la @, no lo de delante.",
+        "Es la gemela de TEXTOANTES, con los mismos dos argumentos.",
+        "Escribe `=TEXTODESPUES(A2;\"@\")`."
+      ],
+      "explicacion": "El dominio dice de qué empresa es cada contacto. Con él podrás agrupar a todas las personas de una misma empresa, aunque cada una escriba desde su propio correo."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Cuando el delimitador se repite\n\nLos pedidos de Electro Cierzo llevan códigos como `ZGZ-2026-0412`: delegación, año y número. Hay **dos** guiones.\n\nEl tercer argumento dice **en cuál** cortar:\n- `=TEXTOANTES(A2;\"-\")` corta en el 1.º: `ZGZ`.\n- `=TEXTOANTES(A2;\"-\";2)` corta en el 2.º: `ZGZ-2026`.\n- Con **-1** cuenta **desde el final**: `=TEXTODESPUES(A2;\"-\";-1)` → `0412`, tenga el código los guiones que tenga."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e3",
+      "modo": "predice",
+      "enunciado": "En A2 está el código de pedido `PAM-2026-0157`. Antes de que Excel lo calcule: ¿qué devuelve esta fórmula? Escríbelo tal cual saldría en la celda.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "A2": "PAM-2026-0157"
+        },
+        "anchos": {
+          "A": 16,
+          "B": 14
+        }
+      },
+      "celda": "B2",
+      "formula": "=TEXTODESPUES(A2;\"-\")",
+      "explicacion": "Sin tercer argumento, TEXTODESPUES corta en el **primer** guion y se lleva todo lo demás: `2026-0157`. Para quedarte solo con el número usarías `-1`, que corta en el último guion."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Ojo con las comas. El programa exporta «Gimeno Sanz, Laura» y después de la coma hay un **espacio**. Si cortas solo por la coma, el nombre sale como « Laura», con un espacio delante que no se ve… y luego BUSCARX no lo encuentra. A mí me pasó con una remesa de cartas."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e4",
+      "modo": "formula",
+      "enunciado": "Javier quiere el **nombre de pila** de cada contacto. La fórmula de **B2** parece funcionar, pero deja un espacio invisible delante del nombre. Arréglala para que salga `Laura`, sin espacios (se copiará a B3:B4).",
+      "hoja": {
+        "celdas": {
+          "A1": "Contacto",
+          "B1": "Nombre",
+          "A2": "Gimeno Sanz, Laura",
+          "A3": "Lafuente Royo, Sergio",
+          "A4": "Casanova Puig, Jordi"
+        },
+        "anchos": {
+          "A": 24,
+          "B": 14
+        }
+      },
+      "objetivo": "B2",
+      "copiar_a": [
+        "B3:B4"
+      ],
+      "inicial": "=TEXTODESPUES(A2;\",\")",
+      "solucion": "=TEXTODESPUES(A2;\", \")",
+      "alternativas": [
+        "=ESPACIOS(TEXTODESPUES(A2;\",\"))"
+      ],
+      "errores_tipicos": [
+        "=TEXTODESPUES(A2;\",\")",
+        "=TEXTOANTES(A2;\", \")"
+      ],
+      "variantes": [
+        {
+          "A2": "Royo Ariño, Pilar"
+        }
+      ],
+      "pistas": [
+        "Mira con atención qué hay justo después de la coma en A2.",
+        "El delimitador puede tener más de un carácter: la coma **y** el espacio.",
+        "Escribe `=TEXTODESPUES(A2;\", \")`."
+      ],
+      "explicacion": "Con `\", \"` como delimitador, el nombre sale limpio. Un espacio de más es el error invisible más caro: BUSCARX y CONTAR.SI dejarían de encontrar a «Laura». Ya tienes la primera columna del encargo."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Todas las partes de una vez: DIVIDIRTEXTO\n\nSi quieres **todas** las piezas, no hace falta una fórmula por pieza. **DIVIDIRTEXTO** corta en cada delimitador y reparte los trozos en celdas seguidas hacia la derecha: se **derraman**, como el resultado de FILTRAR.\n\n`=DIVIDIRTEXTO(A2;\"-\")` con `ZGZ-2026-0412` llena tres celdas: `ZGZ`, `2026` y `0412`.\n\nDeja libres las celdas de la derecha: si hay algo escrito, sale #¡DESBORDAMIENTO!."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "Una fórmula, tres columnas",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Delegación",
+          "C1": "Año",
+          "D1": "Número",
+          "A2": "ZGZ-2026-0412",
+          "B2": "=DIVIDIRTEXTO(A2;\"-\")",
+          "A3": "LLE-2026-0098",
+          "B3": "=DIVIDIRTEXTO(A3;\"-\")"
+        },
+        "anchos": {
+          "A": 16,
+          "B": 12
+        }
+      },
+      "resaltar": [
+        "B2:D3"
+      ],
+      "pie": "Solo hay fórmula en B2 y en B3. Las columnas C y D se rellenan solas."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e5",
+      "modo": "formula",
+      "enunciado": "En **B2** separa el código de pedido de A2 en sus tres partes (delegación, año y número) con **una sola** fórmula. Deben llenarse B2, C2 y D2: `PAM`, `2026` y `0157`.",
+      "hoja": {
+        "celdas": {
+          "A1": "Pedido",
+          "B1": "Delegación",
+          "C1": "Año",
+          "D1": "Número",
+          "A2": "PAM-2026-0157"
+        },
+        "anchos": {
+          "A": 16,
+          "B": 12
+        }
+      },
+      "objetivo": "B2",
+      "solucion": "=DIVIDIRTEXTO(A2;\"-\")",
+      "debe_usar": [
+        "DIVIDIRTEXTO"
+      ],
+      "errores_tipicos": [
+        "=TEXTOANTES(A2;\"-\")",
+        "=DIVIDIRTEXTO(A2;\" \")"
+      ],
+      "variantes": [
+        {
+          "A2": "ZGZ-2025-1180"
+        }
+      ],
+      "pistas": [
+        "Quieres todas las partes a la vez: eso es DIVIDIRTEXTO.",
+        "Necesita el texto y el delimitador que separa las partes.",
+        "Escribe `=DIVIDIRTEXTO(A2;\"-\")`."
+      ],
+      "explicacion": "Una fórmula, tres columnas. Hace lo mismo que Datos › Texto en columnas, con una ventaja: si cambia el código de A2, las partes se actualizan solas. En la lista real la copiarías hacia abajo y cada fila se repartiría en sus tres columnas."
+    },
+    {
+      "tipo": "texto",
+      "md": "### ¿Y si quien abre el libro tiene un Excel antiguo?\n\nTEXTOANTES, TEXTODESPUES y DIVIDIRTEXTO existen en **Excel 2024** y **Microsoft 365** (también en Mac y en la web). En **Excel 2021 o anterior** no existen, y la celda muestra **#¿NOMBRE?**.\n\nSi el libro va a alguien con un Excel antiguo, usa lo clásico:\n- `IZQUIERDA`, `EXTRAE` y `ENCONTRAR`, como en el nivel 2.\n- O, para una limpieza de una sola vez, **Datos › Texto en columnas**."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "empresa",
+      "titulo": "Pregunta antes de usar lo nuevo",
+      "md": "En la delegación de Lleida aún trabajan con Excel 2021. Microsoft dejó de darle soporte el 13/10/2026, pero lo seguirás viendo en muchas oficinas. Antes de mandar un libro con funciones nuevas, pregunta qué versión tiene quien lo va a abrir."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e6",
+      "modo": "test",
+      "pregunta": "Mandas a Lleida (Excel 2021) un libro con `=TEXTOANTES(A2;\"@\")` en toda una columna. ¿Qué verán al abrirlo?",
+      "opciones": [
+        {
+          "texto": "#¿NOMBRE? en esas celdas",
+          "correcta": true,
+          "porque": "Exacto: para Excel 2021, TEXTOANTES es un nombre que no conoce. Para ellos, usa IZQUIERDA con ENCONTRAR."
+        },
+        {
+          "texto": "El mismo resultado que tú, porque la fórmula viaja con el archivo",
+          "correcta": false,
+          "porque": "Viaja la fórmula, pero la calcula el Excel de quien abre el libro. Si no conoce la función, no puede calcularla."
+        },
+        {
+          "texto": "#N/D, porque no encuentra la @",
+          "correcta": false,
+          "porque": "#N/D sale cuando el delimitador no está en el texto. Aquí el problema es que falta la función entera."
+        },
+        {
+          "texto": "La fórmula se cambia sola por IZQUIERDA y ENCONTRAR",
+          "correcta": false,
+          "porque": "Excel no traduce unas funciones en otras. La versión compatible la tienes que escribir tú."
+        }
+      ],
+      "explicacion": "Antes de usar una función moderna, piensa en quién abrirá el libro."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Una función dentro de otra\n\nA veces hay que cortar **dos veces**. Ejemplo: el **año** de `ZGZ-2026-0412` está entre los dos guiones.\n\n`=TEXTOANTES(TEXTODESPUES(A2;\"-\");\"-\")`\n\n1. La de dentro devuelve `2026-0412`.\n2. La de fuera corta eso antes del guion: `2026`.\n\nExcel calcula primero la función de dentro y le pasa el resultado a la de fuera, como cuando metías un SI dentro de otro."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m1l1-e7",
+      "modo": "formula",
+      "enunciado": "**El encargo de Javier.** El nombre ya lo tienes; falta la empresa. En **C2** saca lo que va **entre la @ y el punto** del correo de B2: de `laura.gimeno@instalacionesebro.es` debe salir `instalacionesebro`. Se copiará a C3:C5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Contacto",
+          "B1": "Correo",
+          "C1": "Empresa",
+          "A2": "Gimeno Sanz, Laura",
+          "B2": "laura.gimeno@instalacionesebro.es",
+          "A3": "Lafuente Royo, Sergio",
+          "B3": "s.lafuente@elecmoncayo.com",
+          "A4": "Casanova Puig, Jordi",
+          "B4": "jordi@instalacionesegre.cat",
+          "A5": "Esteban Lasheras, Pilar",
+          "B5": "pilar.esteban@montajesbardenas.es"
+        },
+        "anchos": {
+          "A": 22,
+          "B": 34,
+          "C": 20
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": [
+        "C3:C5"
+      ],
+      "solucion": "=TEXTOANTES(TEXTODESPUES(B2;\"@\");\".\")",
+      "alternativas": [
+        "=TEXTOANTES(TEXTODESPUES(B2;\"@\");\".\";-1)",
+        "=LET(dominio;TEXTODESPUES(B2;\"@\");TEXTOANTES(dominio;\".\"))",
+        "=EXTRAE(B2;ENCONTRAR(\"@\";B2)+1;ENCONTRAR(\".\";B2;ENCONTRAR(\"@\";B2))-ENCONTRAR(\"@\";B2)-1)"
+      ],
+      "errores_tipicos": [
+        "=TEXTOANTES(B2;\".\")",
+        "=TEXTODESPUES(B2;\"@\")",
+        "=TEXTODESPUES(TEXTOANTES(B2;\".\");\"@\")"
+      ],
+      "variantes": [
+        {
+          "B2": "compras@reformasjaca.es"
+        }
+      ],
+      "pistas": [
+        "Son dos cortes: primero lo que va después de la @; después, de eso, lo que va antes del punto.",
+        "Cuidado: el usuario también puede llevar un punto (laura.gimeno). Por eso no vale cortar el correo entero por el punto: primero quita lo que hay antes de la @.",
+        "Escribe `=TEXTOANTES(TEXTODESPUES(B2;\"@\");\".\")`."
+      ],
+      "explicacion": "Encargo resuelto: cada contacto con su empresa en una columna, lista para ordenar o agrupar. Y has encadenado dos cortes en una fórmula, que es como se resuelven casi todos los textos raros que llegan de un programa de gestión."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m1l1-q1",
+      "modo": "predice",
+      "enunciado": "Un contacto no tiene correo: en A2 pone `pendiente`. ¿Qué devuelve esta fórmula?",
+      "hoja": {
+        "celdas": {
+          "A1": "Correo",
+          "A2": "pendiente"
+        },
+        "anchos": {
+          "A": 20
+        }
+      },
+      "celda": "B2",
+      "formula": "=TEXTOANTES(A2;\"@\")",
+      "explicacion": "Si el delimitador no está en el texto, TEXTOANTES y TEXTODESPUES dan **#N/D**. Para filas así, envuelve la fórmula con SI.ND: `=SI.ND(TEXTOANTES(A2;\"@\");\"Revisar\")`."
+    },
+    {
+      "id": "n5m1l1-q2",
+      "modo": "respuesta_corta",
+      "pregunta": "¿Qué función reparte un texto en varias columnas de una sola vez, cortando en cada delimitador?",
+      "aceptadas": [
+        "DIVIDIRTEXTO",
+        "=DIVIDIRTEXTO",
+        "DIVIDIRTEXTO()",
+        "=DIVIDIRTEXTO()"
+      ],
+      "explicacion": "DIVIDIRTEXTO(texto; delimitador) derrama cada trozo en una celda hacia la derecha. Si solo quieres un trozo, TEXTOANTES o TEXTODESPUES."
+    },
+    {
+      "id": "n5m1l1-q3",
+      "modo": "cinta",
+      "enunciado": "Tu compañera de Lleida, con Excel 2021, tiene que separar **una sola vez** una columna de códigos en tres columnas, sin fórmulas. ¿Qué botón usa?",
+      "ruta": [
+        "Datos",
+        "Herramientas de datos",
+        "Texto en columnas"
+      ],
+      "explicacion": "Datos › Herramientas de datos › Texto en columnas funciona en cualquier versión. Eso sí: el resultado no se actualiza si cambian los códigos; para eso hace falta una fórmula."
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "funcion",
+      "frente": "TEXTOANTES y TEXTODESPUES: ¿cómo se escriben?",
+      "dorso": "=TEXTOANTES(texto; delimitador; [núm_de_instancia]). TEXTODESPUES igual. Con -1 cuentan desde el final."
+    },
+    {
+      "tipo": "funcion",
+      "frente": "¿Qué devuelve =TEXTODESPUES(\"ZGZ-2026-0412\";\"-\";-1)?",
+      "dorso": "0412: lo que hay detrás del último guion."
+    },
+    {
+      "tipo": "error",
+      "frente": "TEXTOANTES devuelve #N/D. ¿Por qué?",
+      "dorso": "El delimitador no está en ese texto. Envuélvela con SI.ND(…;\"Revisar\")."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Separar textos en Excel 2021 o anterior",
+      "dorso": "IZQUIERDA, EXTRAE y ENCONTRAR, o Datos › Texto en columnas (una sola vez)."
+    }
+  ]
+}

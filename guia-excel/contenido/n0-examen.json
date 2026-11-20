@@ -1,0 +1,325 @@
+{
+ "nivel": "n0",
+ "titulo": "Examen del nivel 0",
+ "intro": "Tu primer día en Electro Cierzo, en 15 preguntas y sin pistas: demuestra que ya te mueves por Excel, escribes datos que se pueden usar y haces totales que cuadran.",
+ "umbral": 0.8,
+ "preguntas": [
+  {
+   "id": "n0-x1",
+   "leccion": "n0m1l1",
+   "modo": "test",
+   "pregunta": "Carmen te manda por correo **Ventas 2026.xlsx**. Al abrirlo, abajo ves tres pestañas: «Zaragoza», «Pamplona» y «Lleida». ¿Qué es «Pamplona»?",
+   "opciones": [
+    {
+     "texto": "Una hoja del libro",
+     "correcta": true,
+     "porque": "Correcto: el archivo es el libro y cada pestaña de abajo es una de sus hojas, aquí una por delegación."
+    },
+    {
+     "texto": "Un libro distinto",
+     "correcta": false,
+     "porque": "El libro es el archivo entero (Ventas 2026.xlsx). Las pestañas de abajo son páginas de ese mismo libro."
+    },
+    {
+     "texto": "Una celda con el nombre de la ciudad",
+     "correcta": false,
+     "porque": "Una celda es una casilla de la cuadrícula. Las pestañas de abajo son hojas completas."
+    }
+   ],
+   "explicacion": "Libro = archivo; hoja = cada pestaña de abajo; celda = cada casilla."
+  },
+  {
+   "id": "n0-x2",
+   "leccion": "n0m1l2",
+   "modo": "senala",
+   "pregunta": "Marta te dice: «Ve a la celda H250». Quieres llegar escribiendo la dirección, sin desplazarte. Toca dónde la escribes.",
+   "zona": "cuadro_nombres",
+   "explicacion": "En el cuadro de nombres: escribes H250, pulsas Intro y Excel te lleva allí."
+  },
+  {
+   "id": "n0-x4",
+   "leccion": "n0m1l4",
+   "modo": "test",
+   "pregunta": "Estás en **E2** de un listado de clientes de 3.000 filas, sin huecos en la columna E. Quieres ver cuál es el último cliente. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Pulso [[Ctrl]]+[[↓]]",
+     "correcta": true,
+     "porque": "Correcto: Ctrl+flecha abajo salta hasta la última celda con datos de la columna."
+    },
+    {
+     "texto": "Pulso [[Ctrl]]+[[Inicio]]",
+     "correcta": false,
+     "porque": "Ctrl+Inicio te lleva a A1, al principio de la hoja, no al final."
+    },
+    {
+     "texto": "Pulso [[Intro]] hasta llegar abajo",
+     "correcta": false,
+     "porque": "Intro baja de una en una: tardarías 3.000 pulsaciones."
+    },
+    {
+     "texto": "Pulso [[Mayús]]+[[↓]]",
+     "correcta": false,
+     "porque": "Mayús+flecha amplía la selección una celda; no salta al final."
+    }
+   ],
+   "explicacion": "Ctrl+flecha para ir al final de los datos; Ctrl+Inicio para volver a A1."
+  },
+  {
+   "id": "n0-x5",
+   "leccion": "n0m2l1",
+   "modo": "test",
+   "pregunta": "En **B6** pone `Materiales Ebro S.L.` y falta la coma: debe ser `Materiales Ebro, S.L.`. ¿Cuál es la forma más segura de corregirlo?",
+   "opciones": [
+    {
+     "texto": "Selecciono B6, pulso [[F2]], llevo el cursor detrás de «Ebro», escribo la coma y pulso [[Intro]]",
+     "correcta": true,
+     "porque": "Correcto: con F2 entras en la celda y cambias solo lo que falta, sin tocar el resto."
+    },
+    {
+     "texto": "Selecciono B6 y escribo solo la coma",
+     "correcta": false,
+     "porque": "Escribir sobre una celda llena sustituye todo: B6 quedaría con una coma y nada más."
+    },
+    {
+     "texto": "Selecciono B6, escribo la coma y pulso [[Esc]]",
+     "correcta": false,
+     "porque": "Esc cancela lo que escribes: la celda se queda como estaba, sin la coma."
+    }
+   ],
+   "explicacion": "F2 (o doble clic) para retocar; escribir encima, para sustituir del todo."
+  },
+  {
+   "id": "n0-x6",
+   "leccion": "n0m2l2",
+   "modo": "test",
+   "multiple": true,
+   "pregunta": "Estás apuntando una tarifa de proveedor. Marca **todas** las entradas que Excel en español entenderá como número o fecha para poder calcular con ellas.",
+   "opciones": [
+    {
+     "texto": "`3,15`",
+     "correcta": true,
+     "porque": "Bien: número con coma decimal."
+    },
+    {
+     "texto": "`07/01/2026`",
+     "correcta": true,
+     "porque": "Bien: fecha con barras y año completo."
+    },
+    {
+     "texto": "`10%`",
+     "correcta": true,
+     "porque": "Bien: porcentaje; Excel guarda 0,1."
+    },
+    {
+     "texto": "`3.15`",
+     "correcta": false,
+     "porque": "Con punto, el Excel en español no lo entiende como 3,15: puede quedar como texto o como fecha."
+    },
+    {
+     "texto": "`25 uds`",
+     "correcta": false,
+     "porque": "Con letras es texto: la unidad va en la cabecera, «Cantidad (uds)»."
+    }
+   ],
+   "explicacion": "Coma decimal, fechas con barras y año entero, porcentajes con %, y nada de letras junto al número."
+  },
+  {
+   "id": "n0-x7",
+   "leccion": "n0m2l2",
+   "modo": "test",
+   "pregunta": "Los números de la columna de cantidades están a la derecha, pero el **75** de B5 está pegado a la izquierda y nadie ha tocado la alineación. ¿Qué deberías sospechar?",
+   "opciones": [
+    {
+     "texto": "Que está guardado como texto y no sumará bien",
+     "correcta": true,
+     "porque": "Correcto: un número alineado a la izquierda sin que nadie lo cambie es señal de texto."
+    },
+    {
+     "texto": "Que es una fecha",
+     "correcta": false,
+     "porque": "Las fechas, cuando Excel las reconoce, también se alinean a la derecha."
+    },
+    {
+     "texto": "Nada, es estética",
+     "correcta": false,
+     "porque": "No es estética: un número guardado como texto da problemas al sumar y al ordenar."
+    }
+   ],
+   "explicacion": "La alineación es tu detector rápido de números que en realidad son texto."
+  },
+  {
+   "id": "n0-x8",
+   "leccion": "n0m2l3",
+   "modo": "ordenar",
+   "enunciado": "La columna de teléfonos de proveedores está en **G2:G15** y hay que **moverla** a la columna D, que está vacía, sin que quede duplicada. Ordena los pasos.",
+   "pasos": [
+    "Selecciona G2:G15",
+    "Pulsa Ctrl+X",
+    "Haz clic en D2",
+    "Pulsa Ctrl+V"
+   ],
+   "explicacion": "Mover es cortar (Ctrl+X) y pegar (Ctrl+V): el dato se muda y G queda libre. Con Ctrl+C quedaría duplicado."
+  },
+  {
+   "id": "n0-x9",
+   "leccion": "n0m2l4",
+   "modo": "test",
+   "pregunta": "Marta quiere probar recortes en **2026 Presupuesto.xlsx** sin tocar el original. ¿Qué haces antes de cambiar nada?",
+   "opciones": [
+    {
+     "texto": "[[F12]] (Guardar como) y le pongo otro nombre, por ejemplo `2026 Presupuesto prueba recortes`",
+     "correcta": true,
+     "porque": "Correcto: Guardar como crea una copia y el original queda intacto."
+    },
+    {
+     "texto": "[[Ctrl]]+[[G]]",
+     "correcta": false,
+     "porque": "Ctrl+G guarda en el mismo archivo: los cambios acabarían en el original."
+    },
+    {
+     "texto": "[[Ctrl]]+[[S]]",
+     "correcta": false,
+     "porque": "En el Excel en español, Ctrl+S es subrayado: no guarda nada."
+    }
+   ],
+   "explicacion": "Ctrl+G guarda el mismo archivo; F12 (Guardar como) crea uno nuevo."
+  },
+  {
+   "id": "n0-x10",
+   "leccion": "n0m3l1",
+   "modo": "test",
+   "pregunta": "Hay que repartir **450 €** de material entre **9 obras**. ¿Qué escribes en la celda?",
+   "opciones": [
+    {
+     "texto": "`=450/9`",
+     "correcta": true,
+     "porque": "Correcto: signo igual y la barra para dividir. Mostrará 50."
+    },
+    {
+     "texto": "`=450:9`",
+     "correcta": false,
+     "porque": "Los dos puntos no dividen en Excel: sirven para rangos (B2:B9)."
+    },
+    {
+     "texto": "`450/9`",
+     "correcta": false,
+     "porque": "Sin el signo igual, Excel no calcula: lo guarda tal cual."
+    },
+    {
+     "texto": "`=450x9`",
+     "correcta": false,
+     "porque": "La x no es un operador de Excel, y además esto sería multiplicar."
+    }
+   ],
+   "explicacion": "Las fórmulas empiezan por = y usan + - * /."
+  },
+  {
+   "id": "n0-x11",
+   "leccion": "n0m3l2",
+   "modo": "formula",
+   "enunciado": "Control de stock de canaleta. En **E2** calcula las existencias al final de la semana: lo que había al empezar (**B2**), **más** lo que ha entrado (**C2**), **menos** lo que ha salido (**D2**). Debe salir **175**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto",
+     "B1": "Stock inicial",
+     "C1": "Entradas",
+     "D1": "Salidas",
+     "E1": "Stock final",
+     "A2": "Canaleta 40x60 mm (tramo 2 m)",
+     "B2": 120,
+     "C2": 200,
+     "D2": 145
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=B2+C2-D2",
+   "alternativas": [
+    "=C2+B2-D2",
+    "=B2-D2+C2"
+   ],
+   "errores_tipicos": [
+    "=120+200-145",
+    "=175",
+    "=B2+C2+D2",
+    "=B2-C2-D2"
+   ],
+   "variantes": [
+    {
+     "B2": 80,
+     "C2": 50,
+     "D2": 30
+    },
+    {
+     "D2": 0
+    }
+   ],
+   "explicacion": "Correcto: con las celdas en la fórmula, el stock final se recalcula cada vez que cambien las entradas o las salidas."
+  },
+  {
+   "id": "n0-x12",
+   "leccion": "n0m3l3",
+   "modo": "formula",
+   "enunciado": "Cobros de la semana de la delegación de Pamplona. En **B8** escribe el total de los cobros de **B2 a B7**. Debe salir **4.316,35 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Cobrado",
+     "A2": "Instalaciones Irati",
+     "B2": 1250,
+     "A3": "Electro Txantrea",
+     "B3": 486.4,
+     "A4": "Montajes Baztán",
+     "B4": 912.75,
+     "A5": "Reformas Ezcaba",
+     "B5": 330,
+     "A6": "Climatización Ribera",
+     "B6": 1047.2,
+     "A7": "Luz y Obra Tudela",
+     "B7": 290,
+     "A8": "Total"
+    },
+    "formatos": {
+     "B2:B8": "eur"
+    }
+   },
+   "objetivo": "B8",
+   "solucion": "=SUMA(B2:B7)",
+   "alternativas": [
+    "=SUMA(B7:B2)"
+   ],
+   "errores_tipicos": [
+    "=SUMA(B2:B6)",
+    "=SUMA(B3:B7)",
+    "=SUMA(B2;B7)",
+    "=4316,35"
+   ],
+   "variantes": [
+    {
+     "B4": 1000
+    },
+    {
+     "B7": 0,
+     "B2": 1500
+    }
+   ],
+   "debe_usar": [
+    "SUMA"
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "SUMA con el rango completo, de la primera a la última fila de datos y sin la celda del total."
+  },
+  {
+   "id": "n0-x13",
+   "leccion": "n0m3l3",
+   "modo": "cinta",
+   "enunciado": "Quieres que Excel escriba la suma por ti con el botón **Autosuma**, pero desde la pestaña **Fórmulas**. ¿Dónde está?",
+   "ruta": [
+    "Fórmulas",
+    "Biblioteca de funciones",
+    "Autosuma"
+   ],
+   "explicacion": "Fórmulas › Biblioteca de funciones › Autosuma (también está en Inicio › Edición)."
+  }
+ ]
+}

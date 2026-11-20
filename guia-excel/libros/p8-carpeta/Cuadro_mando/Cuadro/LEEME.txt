@@ -1,0 +1,2 @@
+Guarda aquí tu libro: P8_Cuadro_mando_2026-10_v01.xlsx (y las versiones siguientes _v02, _v03…).
+Las consultas de Power Query deben leer de ..\Fuentes con un parámetro de ruta.

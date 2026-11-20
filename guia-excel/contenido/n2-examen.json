@@ -1,0 +1,570 @@
+{
+ "nivel": "n2",
+ "titulo": "Examen del nivel 2",
+ "intro": "Tu primer mes en Electro Cierzo a prueba: quince encargos reales de todos los departamentos, sin pistas. Con 12 aciertos de 15 (80 %) consigues la insignia y el certificado del nivel 2.",
+ "umbral": 0.8,
+ "preguntas": [
+  {
+   "id": "n2-x1",
+   "modo": "respuesta_corta",
+   "leccion": "n2m1l2",
+   "pregunta": "Los cobros del mes están en una **Tabla** llamada **Cobros**, con una columna **Importe**. Escribe la fórmula que da el **importe medio** de todos los cobros y que siga siendo correcta cuando se añadan cobros nuevos debajo de la Tabla.",
+   "aceptadas": [
+    "=PROMEDIO(Cobros[Importe])",
+    "PROMEDIO(Cobros[Importe])",
+    "=promedio(Cobros[Importe])",
+    "=PROMEDIO(cobros[importe])",
+    "=promedio(cobros[importe])",
+    "= PROMEDIO(Cobros[Importe])"
+   ],
+   "explicacion": "`=PROMEDIO(Cobros[Importe])`: nombre de la Tabla y la columna entre corchetes, sin @. Como apunta a la columna de la Tabla, incluye sola los cobros que se añadan; un rango fijo como C2:C40 se quedaría corto."
+  },
+  {
+   "id": "n2-x2",
+   "modo": "test",
+   "leccion": "n2m1l3",
+   "pregunta": "Andrés quiere que en la columna **Entrega prevista** solo se puedan escribir fechas de **diciembre de 2026**, y que si alguien escribe otra cosa, Excel **no lo deje**. ¿Qué regla pones?",
+   "opciones": [
+    {
+     "texto": "Validación de datos: Permitir Fecha, entre 01/12/2026 y 31/12/2026, con mensaje de error de estilo Detener",
+     "correcta": true,
+     "porque": "Correcto: «Fecha» con «entre» limita el periodo y Detener es el único estilo que bloquea el dato."
+    },
+    {
+     "texto": "Validación de datos: Permitir Fecha, entre 01/12/2026 y 31/12/2026, con mensaje de error de estilo Advertencia",
+     "correcta": false,
+     "porque": "El periodo está bien, pero Advertencia deja seguir si la persona pulsa Sí: la fecha equivocada acabaría entrando."
+    },
+    {
+     "texto": "Validación de datos: Permitir Lista, con las 31 fechas de diciembre en la hoja Listas",
+     "correcta": false,
+     "porque": "Funcionaría a medias y es un rodeo: para fechas está la regla Fecha con «entre», más sencilla y clara."
+    },
+    {
+     "texto": "Formato condicional que pinte en rojo las fechas fuera de diciembre",
+     "correcta": false,
+     "porque": "El formato condicional solo avisa con un color: no impide escribir nada."
+    }
+   ],
+   "explicacion": "La validación de datos decide qué se puede escribir; el estilo del mensaje de error decide si se bloquea (Detener), se avisa (Advertencia) o solo se informa (Información)."
+  },
+  {
+   "id": "n2-x3",
+   "modo": "test",
+   "leccion": "n2m1l4",
+   "pregunta": "Andrés sospecha que en la tarifa hay **códigos de artículo repetidos** y quiere verlos marcados de un vistazo, y que la marca se actualice sola si alguien añade otro. ¿Qué usas?",
+   "opciones": [
+    {
+     "texto": "Formato condicional › Reglas para resaltar celdas › Valores duplicados",
+     "correcta": true,
+     "porque": "Correcto: marca cada código que aparece más de una vez y se actualiza solo al añadir o corregir códigos."
+    },
+    {
+     "texto": "Formato condicional › Reglas superiores e inferiores › 10 superiores",
+     "correcta": false,
+     "porque": "Marca los valores más altos de la lista, no los que se repiten."
+    },
+    {
+     "texto": "Pintar a mano de amarillo los códigos repetidos que encuentres",
+     "correcta": false,
+     "porque": "Un color puesto a mano no se entera de los cambios: el código que se repita mañana no saldrá marcado."
+    },
+    {
+     "texto": "Formato condicional › Barras de datos",
+     "correcta": false,
+     "porque": "Las barras comparan cantidades dentro de cada celda; con códigos de texto no sirven para encontrar repetidos."
+    }
+   ],
+   "explicacion": "Valores duplicados es la forma rápida de revisar una clave antes de buscar en ella: un código repetido hace que una búsqueda traiga un precio viejo sin avisar."
+  },
+  {
+   "id": "n2-x4",
+   "modo": "formula",
+   "leccion": "n2m2l1",
+   "enunciado": "Lucía revisa la plantilla del mes. En **D2** tiene que salir **Revisar** si la persona ha hecho **más de 20** horas extra (columna B) **o** tiene **3 o más** días de ausencia (columna C); si no, la celda debe quedar vacía (`\"\"`). Tu fórmula se copiará a **D3:D6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Persona",
+     "B1": "Horas extra",
+     "C1": "Días de ausencia",
+     "D1": "Aviso",
+     "A2": "Rosa Gimeno Lahoz",
+     "B2": 12,
+     "C2": 4,
+     "A3": "Hugo Bernal Pueyo",
+     "B3": 24,
+     "C3": 0,
+     "A4": "Pilar Ainsa Marco",
+     "B4": 20,
+     "C4": 2,
+     "A5": "Iván Royo Sanz",
+     "B5": 8,
+     "C5": 1,
+     "A6": "Elena Casas Ibort",
+     "B6": 15,
+     "C6": 3
+    },
+    "anchos": {
+     "A": 20
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D6"
+   ],
+   "solucion": "=SI(O(B2>20;C2>=3);\"Revisar\";\"\")",
+   "alternativas": [
+    "=SI(O(C2>=3;B2>20);\"Revisar\";\"\")",
+    "=SI(Y(B2<=20;C2<3);\"\";\"Revisar\")",
+    "=SI(O(B2>20;C2>2);\"Revisar\";\"\")"
+   ],
+   "errores_tipicos": [
+    "=SI(Y(B2>20;C2>=3);\"Revisar\";\"\")",
+    "=SI(O(B2>=20;C2>=3);\"Revisar\";\"\")",
+    "=SI(O(B2>20;C2>3);\"Revisar\";\"\")"
+   ],
+   "variantes": [
+    {
+     "C5": 3
+    },
+    {
+     "B4": 21
+    }
+   ],
+   "explicacion": "`=SI(O(B2>20;C2>=3);\"Revisar\";\"\")`: basta con que se cumpla una de las dos cosas, así que va O dentro del SI. Pilar, con 20 horas justas, no sale: «más de 20» no incluye el 20; Elena sí, por sus 3 días."
+  },
+  {
+   "id": "n2-x5",
+   "modo": "formula",
+   "leccion": "n2m2l2",
+   "enunciado": "Javier paga la comisión por tramos de ventas: **3 %** desde 30.000 €, **2 %** desde 15.000 € y **1 %** por debajo. En **C2** escribe el porcentaje de comisión del primer comercial (como `0,03` o `3%`). Tu fórmula se copiará a **C3:C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Comercial",
+     "B1": "Ventas",
+     "C1": "Comisión",
+     "A2": "Pablo Lasheras",
+     "B2": 32500,
+     "A3": "Irene Gracia",
+     "B3": 15000,
+     "A4": "Sergio Aznar",
+     "B4": 9800,
+     "A5": "Elena Beltrán",
+     "B5": 30000,
+     "A6": "Óscar Lafuente",
+     "B6": 14999
+    },
+    "formatos": {
+     "B2:B6": "eur",
+     "C2:C6": "pct"
+    },
+    "anchos": {
+     "A": 16
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=SI.CONJUNTO(B2>=30000;0,03;B2>=15000;0,02;VERDADERO;0,01)",
+   "alternativas": [
+    "=SI(B2>=30000;0,03;SI(B2>=15000;0,02;0,01))",
+    "=SI.CONJUNTO(B2>=30000;3%;B2>=15000;2%;VERDADERO;1%)",
+    "=SI(B2>=30000;3%;SI(B2>=15000;2%;1%))",
+    "=SI(B2<15000;0,01;SI(B2<30000;0,02;0,03))"
+   ],
+   "errores_tipicos": [
+    "=SI.CONJUNTO(B2>=15000;0,02;B2>=30000;0,03;VERDADERO;0,01)",
+    "=SI.CONJUNTO(B2>30000;0,03;B2>15000;0,02;VERDADERO;0,01)",
+    "=SI.CONJUNTO(B2>=30000;0,03;B2>=15000;0,02)",
+    "=SI.CONJUNTO(B2>=30000;3;B2>=15000;2;VERDADERO;1)"
+   ],
+   "variantes": [
+    {
+     "B2": 14000
+    },
+    {
+     "B4": 31000
+    }
+   ],
+   "formato_resultado": "pct",
+   "explicacion": "Tramos de mayor a menor y un resto al final: `=SI.CONJUNTO(B2>=30000;0,03;B2>=15000;0,02;VERDADERO;0,01)` (o SI dentro de SI). Elena, con 30.000 € justos, lleva el 3 %, e Irene, con 15.000 €, el 2 %, porque se usa `>=`."
+  },
+  {
+   "id": "n2-x6",
+   "modo": "formula",
+   "leccion": "n2m2l3",
+   "enunciado": "Marta quiere el **importe pendiente de cobro de cada cliente**. En **F2** calcula cuánto debe el cliente de **E2**, sumando sus facturas de la lista. Tu fórmula se copiará a **F3:F4**. Comprobación: los tres clientes tienen que sumar **10.399,95 €**, el total de la columna C.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Pendiente",
+     "A2": "FV-0901",
+     "B2": "Montajes Arga",
+     "C2": 860.5,
+     "A3": "FV-0904",
+     "B3": "Reformas Segre",
+     "C3": 498,
+     "A4": "FV-0907",
+     "B4": "Instalaciones Ebro",
+     "C4": 1250,
+     "A5": "FV-0910",
+     "B5": "Instalaciones Ebro",
+     "C5": 2310.75,
+     "A6": "FV-0912",
+     "B6": "Montajes Arga",
+     "C6": 1720,
+     "A7": "FV-0915",
+     "B7": "Instalaciones Ebro",
+     "C7": 615.2,
+     "A8": "FV-0918",
+     "B8": "Reformas Segre",
+     "C8": 3045.6,
+     "A9": "FV-0921",
+     "B9": "Montajes Arga",
+     "C9": 99.9,
+     "E1": "Cliente",
+     "F1": "Pendiente",
+     "E2": "Instalaciones Ebro",
+     "E3": "Montajes Arga",
+     "E4": "Reformas Segre"
+    },
+    "formatos": {
+     "C2:C9": "eur",
+     "F2:F4": "eur"
+    },
+    "anchos": {
+     "B": 18,
+     "E": 18
+    }
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F4"
+   ],
+   "solucion": "=SUMAR.SI($B$2:$B$9;E2;$C$2:$C$9)",
+   "alternativas": [
+    "=SUMAR.SI(B$2:B$9;E2;C$2:C$9)",
+    "=SUMAR.SI($B$2:$B$9;$E2;$C$2:$C$9)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B9;E2;C2:C9)",
+    "=CONTAR.SI($B$2:$B$9;E2)",
+    "=SUMAR.SI($B$2:$B$9;E2;$C$3:$C$10)",
+    "=SUMAR.SI($B$2:$B$9;\"Instalaciones Ebro\";$C$2:$C$9)"
+   ],
+   "variantes": [
+    {
+     "C4": 1500
+    },
+    {
+     "B9": "Reformas Segre"
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=SUMAR.SI($B$2:$B$9;E2;$C$2:$C$9)`: rangos fijos con $ y el cliente que baja. Ebro debe 4.175,95 €, Arga 2.680,40 € y Segre 3.543,60 €: suman 10.399,95 €, así que el resumen cuadra."
+  },
+  {
+   "id": "n2-x8",
+   "modo": "formula",
+   "leccion": "n2m4l2",
+   "enunciado": "Javier quiere títulos automáticos para su informe. En **C2** construye a partir de la fecha de A2 y el importe de B2 la frase **Ventas de febrero: 4.250,00 €** (el mes con su nombre en letras y el importe con formato de euros). Se copiará a **C3:C4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cierre de mes",
+     "B1": "Ventas",
+     "C1": "Título",
+     "A2": {
+      "fecha": "2026-02-28"
+     },
+     "B2": 4250,
+     "A3": {
+      "fecha": "2026-03-31"
+     },
+     "B3": 3180.4,
+     "A4": {
+      "fecha": "2026-06-30"
+     },
+     "B4": 12620.75
+    },
+    "formatos": {
+     "A2:A4": "fecha",
+     "B2:B4": "eur"
+    },
+    "anchos": {
+     "C": 32
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "solucion": "=\"Ventas de \"&TEXTO(A2;\"mmmm\")&\": \"&TEXTO(B2;\"#.##0,00 €\")",
+   "alternativas": [
+    "=CONCAT(\"Ventas de \";TEXTO(A2;\"mmmm\");\": \";TEXTO(B2;\"#.##0,00 €\"))",
+    "=\"Ventas de \"&TEXTO(A2;\"mmmm\")&\": \"&TEXTO(B2;\"#.##0,00\")&\" €\""
+   ],
+   "errores_tipicos": [
+    "=\"Ventas de \"&TEXTO(A2;\"mmmm\")&\": \"&B2",
+    "=\"Ventas de \"&TEXTO(A2;\"mm\")&\": \"&TEXTO(B2;\"#.##0,00 €\")",
+    "=\"Ventas de \"&MES(A2)&\": \"&TEXTO(B2;\"#.##0,00 €\")",
+    "=\"Ventas de\"&TEXTO(A2;\"mmmm\")&\":\"&TEXTO(B2;\"#.##0,00 €\")"
+   ],
+   "variantes": [
+    {
+     "A2": {
+      "fecha": "2026-11-30"
+     },
+     "B2": 15400
+    }
+   ],
+   "explicacion": "Al unir textos, la fecha y el importe pierden su formato; TEXTO se lo devuelve: «mmmm» da el nombre del mes y «#.##0,00 €» escribe 12.620,75 €. Los espacios y los dos puntos van dentro de las comillas."
+  },
+  {
+   "id": "n2-x9",
+   "modo": "formula",
+   "leccion": "n2m3l2",
+   "enunciado": "El programa de visitas exporta en una sola celda la delegación y el comercial, separados por dos puntos: «Zaragoza: Pilar Gimeno». En **B2** saca **solo la delegación**, todo lo que hay **antes de los dos puntos** (debe salir **Zaragoza**; en la fila 4, **Lleida**). Se copiará a **B3:B5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Visita",
+     "B1": "Delegación",
+     "A2": "Zaragoza: Pilar Gimeno",
+     "A3": "Pamplona: Íñigo Sarasa",
+     "A4": "Lleida: Jordi Puig",
+     "A5": "Zaragoza: Ana Lacambra"
+    },
+    "anchos": {
+     "A": 26
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=IZQUIERDA(A2;ENCONTRAR(\":\";A2)-1)",
+   "alternativas": [
+    "=EXTRAE(A2;1;ENCONTRAR(\":\";A2)-1)",
+    "=TEXTOANTES(A2;\":\")"
+   ],
+   "errores_tipicos": [
+    "=IZQUIERDA(A2;8)",
+    "=IZQUIERDA(A2;ENCONTRAR(\":\";A2))",
+    "=IZQUIERDA(A2;ENCONTRAR(\":\";A2)+1)"
+   ],
+   "variantes": [
+    {
+     "A3": "Lleida: Marc Solé"
+    }
+   ],
+   "explicacion": "`=IZQUIERDA(A2;ENCONTRAR(\":\";A2)-1)`: ENCONTRAR dice dónde están los dos puntos y te quedas con uno menos, así que funciona con Zaragoza (8 letras) y con Lleida (6). Un número fijo fallaría en cuanto cambia el largo."
+  },
+  {
+   "id": "n2-x10",
+   "modo": "formula",
+   "leccion": "n2m3l3",
+   "enunciado": "Los códigos de cliente llegan del programa con espacios sobrantes y en minúsculas. En **B2** deja el código de A2 **sin espacios sobrantes y todo en mayúsculas**: debe salir **CL-0412**. Se copiará a **B3:B4**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código (como llega)",
+     "B1": "Código limpio",
+     "A2": "  cl-0412 ",
+     "A3": "Cl-0087",
+     "A4": "cl-1135   "
+    },
+    "anchos": {
+     "A": 20
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B4"
+   ],
+   "solucion": "=MAYUSC(ESPACIOS(A2))",
+   "alternativas": [
+    "=ESPACIOS(MAYUSC(A2))"
+   ],
+   "errores_tipicos": [
+    "=MAYUSC(A2)",
+    "=ESPACIOS(A2)",
+    "=NOMPROPIO(ESPACIOS(A2))"
+   ],
+   "variantes": [
+    {
+     "A3": " cl-0087"
+    }
+   ],
+   "explicacion": "Dos limpiezas a la vez, una dentro de otra: ESPACIOS quita los espacios del principio y del final y MAYUSC pone todo en mayúsculas. Con los códigos así, una búsqueda o un CONTAR.SI ya no fallan."
+  },
+  {
+   "id": "n2-x11",
+   "modo": "formula",
+   "leccion": "n2m4l1",
+   "enunciado": "Andrés mide si los proveedores cumplen. Cada pedido tiene su fecha (B), el plazo prometido en días naturales (C) y la fecha en que llegó de verdad (D). En **E2** calcula los **días de retraso** respecto a lo prometido (si llegó antes, saldrá negativo). Se copiará a **E3:E5**. En E2 debe salir **2**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Fecha pedido",
+     "C1": "Plazo (días)",
+     "D1": "Llegó",
+     "E1": "Retraso",
+     "A2": "OC-1210",
+     "B2": {
+      "fecha": "2026-10-26"
+     },
+     "C2": 7,
+     "D2": {
+      "fecha": "2026-11-04"
+     },
+     "A3": "OC-1214",
+     "B3": {
+      "fecha": "2026-10-28"
+     },
+     "C3": 10,
+     "D3": {
+      "fecha": "2026-11-06"
+     },
+     "A4": "OC-1219",
+     "B4": {
+      "fecha": "2026-11-02"
+     },
+     "C4": 5,
+     "D4": {
+      "fecha": "2026-11-13"
+     },
+     "A5": "OC-1223",
+     "B5": {
+      "fecha": "2026-11-05"
+     },
+     "C5": 3,
+     "D5": {
+      "fecha": "2026-11-08"
+     }
+    },
+    "formatos": {
+     "B2:B5": "fecha",
+     "D2:D5": "fecha",
+     "E2:E5": "0"
+    }
+   },
+   "objetivo": "E2",
+   "copiar_a": [
+    "E3:E5"
+   ],
+   "solucion": "=D2-(B2+C2)",
+   "alternativas": [
+    "=D2-B2-C2",
+    "=D2-C2-B2"
+   ],
+   "errores_tipicos": [
+    "=D2-B2",
+    "=(B2+C2)-D2",
+    "=D2-B2+C2"
+   ],
+   "variantes": [
+    {
+     "D2": {
+      "fecha": "2026-11-10"
+     }
+    }
+   ],
+   "formato_resultado": "0",
+   "explicacion": "La fecha prometida es pedido + plazo (B2+C2) y el retraso, la llegada menos esa fecha. OC-1210 llegó 2 días tarde, OC-1219 seis, OC-1223 justo a tiempo (0) y OC-1214 un día antes (−1)."
+  },
+  {
+   "id": "n2-x12",
+   "modo": "formula",
+   "leccion": "n2m4l3",
+   "enunciado": "Lucía calcula la parte proporcional de un plus según los **meses completos** que lleva cada persona contratada a fecha de hoy (**G1**). En **D2** calcula esos meses completos a partir de la fecha de alta (C2). Se copiará a **D3:D5**. En D2 debe salir **8**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Persona",
+     "C1": "Fecha de alta",
+     "D1": "Meses completos",
+     "F1": "Hoy",
+     "G1": {
+      "fecha": "2026-11-16"
+     },
+     "A2": "Marina Lahoz Gil",
+     "C2": {
+      "fecha": "2026-03-02"
+     },
+     "A3": "Daniel Sola Pérez",
+     "C3": {
+      "fecha": "2026-05-20"
+     },
+     "A4": "Nerea Ibort Sanz",
+     "C4": {
+      "fecha": "2025-11-16"
+     },
+     "A5": "Álex Royo Marco",
+     "C5": {
+      "fecha": "2026-10-17"
+     }
+    },
+    "formatos": {
+     "C2:C5": "fecha",
+     "G1": "fecha",
+     "D2:D5": "0"
+    },
+    "anchos": {
+     "A": 18
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D5"
+   ],
+   "solucion": "=SIFECHA(C2;$G$1;\"M\")",
+   "alternativas": [
+    "=SIFECHA(C2;G$1;\"M\")",
+    "=SIFECHA(C2;$G$1;\"m\")"
+   ],
+   "errores_tipicos": [
+    "=SIFECHA(C2;G1;\"M\")",
+    "=MES($G$1)-MES(C2)",
+    "=SIFECHA(C2;$G$1;\"Y\")",
+    "=SIFECHA($G$1;C2;\"M\")"
+   ],
+   "variantes": [
+    {
+     "G1": {
+      "fecha": "2026-11-20"
+     }
+    }
+   ],
+   "formato_resultado": "0",
+   "explicacion": "`=SIFECHA(C2;$G$1;\"M\")` cuenta meses completos: Marina 8, Daniel 5 (el sexto lo cumple el día 20), Nerea 12 y Álex 0. Restar los números de mes daría 6 a Daniel y fallaría al cambiar de año."
+  },
+  {
+   "id": "n2-x14",
+   "modo": "test",
+   "leccion": "n2m5l3",
+   "pregunta": "La tabla de artículos ocupa **F2:I80**: Código (F), Descripción (G), Proveedor (H) y Stock (I). En **B2** quieres el stock del código de A2, con una fórmula que funcione en **Excel 2016**, busque el código **exacto** y se pueda copiar hacia abajo. ¿Cuál eliges?",
+   "opciones": [
+    {
+     "texto": "=BUSCARV(A2;$F$2:$I$80;4;FALSO)",
+     "correcta": true,
+     "porque": "Correcto: Stock es la cuarta columna de la tabla (F=1, G=2, H=3, I=4), FALSO busca exacto y la tabla va fijada."
+    },
+    {
+     "texto": "=BUSCARV(A2;$F$2:$I$80;9;FALSO)",
+     "correcta": false,
+     "porque": "El 9 cuenta desde la columna A de la hoja; BUSCARV cuenta desde la primera columna de la tabla, F. Con una tabla de 4 columnas da #¡REF!."
+    },
+    {
+     "texto": "=BUSCARV(A2;$F$2:$I$80;4)",
+     "correcta": false,
+     "porque": "Sin FALSO la búsqueda es aproximada: si el código no está, puede traer el stock de otro artículo sin avisar."
+    },
+    {
+     "texto": "=BUSCARX(A2;$F$2:$F$80;$I$2:$I$80)",
+     "correcta": false,
+     "porque": "Sería perfecta en Excel 2021 o Microsoft 365, pero en Excel 2016 BUSCARX no existe y saldría #¿NOMBRE?."
+    }
+   ],
+   "explicacion": "BUSCARV con FALSO es la búsqueda que funciona en cualquier versión. Cuenta la columna desde el principio de la tabla y fija la tabla con $."
+  }
+ ]
+}

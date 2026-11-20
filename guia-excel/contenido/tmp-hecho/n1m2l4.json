@@ -1,0 +1,505 @@
+{
+ "id": "n1m2l4",
+ "titulo": "Tu primera decisión: la función SI",
+ "minutos": 15,
+ "objetivo": "Usar SI para que Excel decida entre dos resultados según una comparación, escribiendo bien los signos, las comillas de los textos y los cálculos.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "Desde el lunes, los pedidos de 300 € o más van sin portes; los demás pagan 12 €. Pon en la lista de pedidos de hoy cuánto paga cada uno de portes, que el almacén lo necesita para los albaranes.",
+  "logro": "Ya sabes hacer que Excel tome decisiones por ti: etiquetar pedidos, aplicar descuentos y calcular portes según una regla de la empresa."
+ },
+ "funciones": [
+  "SI"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Hasta ahora tus fórmulas calculaban siempre lo mismo. Con **SI** Excel **decide**, como haces tú cada día: «si llueve, cojo el paraguas; si no, no».\n\nEn la oficina: si el pedido pasa de 1.000 €, es «Grande»; si no, «Normal». Si llega a 300 €, los portes (lo que cuesta el envío) son gratis; si no, se cobran. Una regla, dos resultados posibles."
+  },
+  {
+   "tipo": "texto",
+   "md": "SI tiene tres partes, separadas por `;`:\n\n`=SI(prueba; valor si se cumple; valor si no se cumple)`\n\nEjemplo: `=SI(B2>=1000;\"Grande\";\"Normal\")`\n\n1. **Prueba**: `B2>=1000`, ¿el importe es 1.000 o más?\n2. Si **se cumple**, escribe «Grande».\n3. Si **no se cumple**, escribe «Normal»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e1",
+   "modo": "predice",
+   "enunciado": "El pedido de Clima Segre es de **1.450 €**. ¿Qué escribirá Excel en C2 con `=SI(B2>=1000;\"Grande\";\"Normal\")`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe",
+     "C1": "Tipo",
+     "A2": "Clima Segre",
+     "B2": 1450
+    },
+    "formatos": {
+     "B2": "eur"
+    },
+    "anchos": {
+     "A": 13
+    }
+   },
+   "celda": "C2",
+   "formula": "=SI(B2>=1000;\"Grande\";\"Normal\")",
+   "explicacion": "1.450 es 1.000 o más: la prueba se cumple y Excel escribe el segundo argumento, «Grande»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e7",
+   "modo": "ordenar",
+   "enunciado": "Monta la fórmula de los portes pieza a pieza: «si el pedido es de 300 € o más, 0; si no, 12». Ordena las piezas de izquierda a derecha.",
+   "pasos": [
+    "=SI(",
+    "B2>=300  (la prueba)",
+    ";0  (si se cumple)",
+    ";12  (si no se cumple)",
+    ")"
+   ],
+   "explicacion": "=SI(B2>=300;0;12): nombre y paréntesis, la prueba, lo que sale si se cumple, lo que sale si no, y se cierra. Siempre en ese orden."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Los signos para comparar",
+   "cabecera": [
+    "Signo",
+    "Significa",
+    "Ejemplo",
+    "¿Se cumple si B2 vale 300?"
+   ],
+   "filas": [
+    [
+     "`>`",
+     "mayor que",
+     "`B2>300`",
+     "No"
+    ],
+    [
+     "`<`",
+     "menor que",
+     "`B2<300`",
+     "No"
+    ],
+    [
+     "`>=`",
+     "mayor o igual que",
+     "`B2>=300`",
+     "Sí"
+    ],
+    [
+     "`<=`",
+     "menor o igual que",
+     "`B2<=300`",
+     "Sí"
+    ],
+    [
+     "`=`",
+     "igual a",
+     "`B2=300`",
+     "Sí"
+    ],
+    [
+     "`<>`",
+     "distinto de",
+     "`B2<>300`",
+     "No"
+    ]
+   ],
+   "pie": "En «mayor o igual» el = va siempre detrás: >= y <=. Al revés (=>) Excel no lo acepta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e2",
+   "modo": "formula",
+   "enunciado": "En **C2** marca el pedido como **\"Grande\"** si el importe de B2 es **1.000 € o más**, y como **\"Normal\"** si no. Tu fórmula se copiará a C3:C6.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe",
+     "C1": "Tipo",
+     "A2": "Clima Segre",
+     "B2": 1450,
+     "A3": "Reformas Ebro",
+     "B3": 380,
+     "A4": "Electricidad Aranda",
+     "B4": 1000,
+     "A5": "Montajes Cinca",
+     "B5": 925,
+     "A6": "Electro Huesca",
+     "B6": 2210
+    },
+    "formatos": {
+     "B2:B6": "eur"
+    },
+    "anchos": {
+     "A": 20
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=SI(B2>=1000;\"Grande\";\"Normal\")",
+   "debe_usar": [
+    "SI"
+   ],
+   "alternativas": [
+    "=SI(B2<1000;\"Normal\";\"Grande\")"
+   ],
+   "errores_tipicos": [
+    "=SI(B2>1000;\"Grande\";\"Normal\")",
+    "=SI(B2>=1000;\"Normal\";\"Grande\")",
+    "=SI(B2<=1000;\"Grande\";\"Normal\")"
+   ],
+   "variantes": [
+    {
+     "B3": 1200
+    }
+   ],
+   "pistas": [
+    "La prueba es: ¿B2 es mayor o igual que 1000? Se escribe B2>=1000.",
+    "Después, el texto si se cumple y el texto si no, los dos entre comillas.",
+    "=SI(B2>=1000;\"Grande\";\"Normal\")"
+   ],
+   "explicacion": "Tu primera decisión automática. Mira Electricidad Aranda: justo 1.000 €, y sale «Grande» gracias al >=. Con > a secas se habría quedado en «Normal». Cambia un importe y la etiqueta cambia sola."
+  },
+  {
+   "tipo": "texto",
+   "md": "Una regla de oro:\n\n- Los **textos** van **entre comillas**: `\"Grande\"`, `\"Apto\"`.\n- Los **números** van **sin comillas**: `0`, `12`.\n- Las **celdas** van sin comillas: `B2`, `$F$2`.\n\nSin comillas, Excel cree que `Grande` es el nombre de algo que no conoce y devuelve el error **#¿NOMBRE?**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e3",
+   "modo": "formula",
+   "enunciado": "Andrés puntúa a los proveedores de 0 a 10. Con **5 o más** son **\"Apto\"**; si no, **\"Revisar\"**. La fórmula de **C2** da #¿NOMBRE?. Arréglala (se copiará a C3:C5).",
+   "hoja": {
+    "celdas": {
+     "A1": "Proveedor",
+     "B1": "Nota",
+     "C1": "Resultado",
+     "A2": "Cables del Norte",
+     "B2": 8,
+     "A3": "Luminia LED",
+     "B3": 4,
+     "A4": "Mecanismos Arnal",
+     "B4": 5,
+     "A5": "Tubos Gállego",
+     "B5": 6
+    },
+    "anchos": {
+     "A": 17,
+     "C": 11
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "inicial": "=SI(B2>=5;Apto;Revisar)",
+   "solucion": "=SI(B2>=5;\"Apto\";\"Revisar\")",
+   "debe_usar": [
+    "SI"
+   ],
+   "alternativas": [
+    "=SI(B2<5;\"Revisar\";\"Apto\")"
+   ],
+   "errores_tipicos": [
+    "=SI(B2>=5;Apto;Revisar)",
+    "=SI(B2>5;\"Apto\";\"Revisar\")"
+   ],
+   "variantes": [
+    {
+     "B3": 9
+    }
+   ],
+   "pistas": [
+    "La prueba está bien. El problema está en las palabras Apto y Revisar.",
+    "Son textos: tienen que ir entre comillas.",
+    "=SI(B2>=5;\"Apto\";\"Revisar\")"
+   ],
+   "explicacion": "Arreglado. Cada vez que veas #¿NOMBRE? en un SI, busca primero un texto sin comillas (o un nombre de función mal escrito). Ya sabes leer ese error."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e4",
+   "modo": "test",
+   "pregunta": "Quieres marcar los pedidos de **500 € o más**. ¿Qué prueba está bien escrita?",
+   "opciones": [
+    {
+     "texto": "B2>=500",
+     "correcta": true,
+     "porque": "Correcto: primero el > y luego el =."
+    },
+    {
+     "texto": "B2=>500",
+     "correcta": false,
+     "porque": "El orden está al revés. Excel no acepta => y te avisa de que hay un problema con la fórmula."
+    },
+    {
+     "texto": "B2>500",
+     "correcta": false,
+     "porque": "Así un pedido de 500 € justos se quedaría fuera."
+    },
+    {
+     "texto": "B2>=\"500\"",
+     "correcta": false,
+     "porque": "Con comillas, 500 pasa a ser un texto y la comparación con un número no funciona como esperas."
+    }
+   ],
+   "explicacion": "«Mayor o igual» se escribe >= (como se lee: mayor, igual). Y los números, sin comillas."
+  },
+  {
+   "tipo": "texto",
+   "md": "SI no solo devuelve textos: también puede devolver **un número o un cálculo**.\n\nLos pedidos de 1.000 € o más tienen un **3 % de descuento**. El 3 % está en **F2**:\n\n`=SI(B2>=1000;B2*$F$2;0)`\n\nSi se cumple, calcula el descuento. Si no, pone 0. Como en el módulo anterior: el porcentaje en su celda y fijado con $."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e5",
+   "modo": "formula",
+   "enunciado": "En **C2** calcula el **descuento** del pedido: si el importe es **1.000 € o más**, el importe por el porcentaje de **F2**; si no, **0**. Tu fórmula se copiará a C3:C5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe",
+     "C1": "Descuento",
+     "A2": "Clima Segre",
+     "B2": 1450,
+     "A3": "Reformas Ebro",
+     "B3": 380,
+     "A4": "Electricidad Aranda",
+     "B4": 1000,
+     "A5": "Electro Huesca",
+     "B5": 2210,
+     "E2": "Descuento",
+     "F2": 0.03
+    },
+    "formatos": {
+     "B2:C5": "eur",
+     "F2": "pct"
+    },
+    "anchos": {
+     "A": 20,
+     "E": 10
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=SI(B2>=1000;B2*$F$2;0)",
+   "debe_usar": [
+    "SI"
+   ],
+   "alternativas": [
+    "=SI(B2>=1000;B2*F$2;0)",
+    "=SI(B2<1000;0;B2*$F$2)"
+   ],
+   "errores_tipicos": [
+    "=SI(B2>=1000;B2*F2;0)",
+    "=SI(B2>1000;B2*$F$2;0)",
+    "=SI(B2>=1000;\"B2*$F$2\";0)",
+    "=SI(B2>=1000;$F$2;0)"
+   ],
+   "variantes": [
+    {
+     "F2": 0.05
+    },
+    {
+     "B3": 1100
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "La prueba es la misma de antes: B2>=1000.",
+    "Si se cumple, el resultado es un cálculo: B2 por el porcentaje de F2, fijado con $. Si no, 0. Sin comillas en ninguno.",
+    "=SI(B2>=1000;B2*$F$2;0)"
+   ],
+   "explicacion": "43,50 €, 0, 30 € y 66,30 €. SI ha decidido y, cuando tocaba, ha calculado. Si Javier sube el descuento al 5 %, cambias F2 y todo se recalcula."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un aviso que me costó una tarde: si escribes los números del SI entre comillas, como `\"12\"`, Excel los guarda como **texto**. Se ven igual, pero luego **SUMA se los salta** y el total de portes sale 0. Números siempre sin comillas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m2l4-e6",
+   "modo": "formula",
+   "enunciado": "**La misión de Javier.** En **C2** calcula los **portes** del pedido: **0** si el importe es de **300 € o más**; si no, lo que diga **F2** (12 €). Tu fórmula se copiará a C3:C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Importe",
+     "C1": "Portes",
+     "A2": "Reformas Ebro",
+     "B2": 380,
+     "A3": "Luz y Obra Tudela",
+     "B3": 145,
+     "A4": "Montajes Cinca",
+     "B4": 300,
+     "A5": "Instalaciones Moncayo",
+     "B5": 299.5,
+     "A6": "Electro Huesca",
+     "B6": 2210,
+     "A7": "Clima Segre",
+     "B7": 64.8,
+     "A8": "TOTAL",
+     "B8": "=SUMA(B2:B7)",
+     "C8": "=SUMA(C2:C7)",
+     "E2": "Portes",
+     "F2": 12
+    },
+    "formatos": {
+     "B2:C8": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 22,
+     "E": 8
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C7"
+   ],
+   "solucion": "=SI(B2>=300;0;$F$2)",
+   "debe_usar": [
+    "SI"
+   ],
+   "alternativas": [
+    "=SI(B2<300;$F$2;0)",
+    "=SI(B2>=300;0;F$2)"
+   ],
+   "errores_tipicos": [
+    "=SI(B2>300;0;$F$2)",
+    "=SI(B2>=300;0;F2)",
+    "=SI(B2>=300;\"0\";\"12\")",
+    "=SI(B2>=300;0;12)",
+    "=SI(B2>=300;$F$2;0)"
+   ],
+   "variantes": [
+    {
+     "F2": 15
+    },
+    {
+     "B3": 450
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "La prueba: ¿el importe es 300 o más? Fíjate en Montajes Cinca, que tiene 300 justos.",
+    "Si se cumple, 0. Si no, la celda F2, fijada con $ para que no se mueva al copiar.",
+    "=SI(B2>=300;0;$F$2)"
+   ],
+   "explicacion": "Misión cumplida: tres pedidos sin portes y tres que pagan 12 €, 36 € en total. Montajes Cinca, con 300 € justos, no paga gracias al >=. Y si el transportista sube la tarifa, solo cambias F2. El almacén ya puede preparar los albaranes (los papeles que acompañan a cada envío)."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m2l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Cómo se escribe en Excel el signo **«distinto de»**?",
+   "aceptadas": [
+    "<>"
+   ],
+   "explicacion": "<>: menor y mayor juntos. Por ejemplo, B2<>\"Zaragoza\" se cumple con cualquier ciudad que no sea Zaragoza."
+  },
+  {
+   "id": "n1m2l4-q2",
+   "modo": "predice",
+   "enunciado": "Los pedidos que no son de Zaragoza se envían; los de Zaragoza se recogen en el almacén. ¿Qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "Ciudad",
+     "A2": "Electricitat Pirineu",
+     "B2": "Lleida"
+    },
+    "anchos": {
+     "A": 20
+    }
+   },
+   "celda": "C2",
+   "formula": "=SI(B2<>\"Zaragoza\";\"Envío\";\"Recogida\")",
+   "explicacion": "Lleida es distinto de Zaragoza: la prueba se cumple y sale «Envío»."
+  },
+  {
+   "id": "n1m2l4-q3",
+   "modo": "formula",
+   "enunciado": "Repaso mezclado. Lucía tiene las horas extra de noviembre en B2:B6. En **E2** escribe una fórmula que diga **\"Revisar\"** si la **mayor** de esas horas pasa de **20**, y **\"OK\"** si no.",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "Horas extra",
+     "A2": "Ana Lasheras",
+     "B2": 12,
+     "A3": "Jorge Bielsa",
+     "B3": 22,
+     "A4": "Marina Oliván",
+     "B4": 8,
+     "A5": "Hugo Royo",
+     "B5": 15,
+     "A6": "Celia Pardo",
+     "B6": 19,
+     "D2": "Control"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=SI(MAX(B2:B6)>20;\"Revisar\";\"OK\")",
+   "debe_usar": [
+    "SI",
+    "MAX"
+   ],
+   "alternativas": [
+    "=SI(MAX(B2:B6)<=20;\"OK\";\"Revisar\")"
+   ],
+   "errores_tipicos": [
+    "=SI(MIN(B2:B6)>20;\"Revisar\";\"OK\")",
+    "=SI(B2>20;\"Revisar\";\"OK\")",
+    "=SI(PROMEDIO(B2:B6)>20;\"Revisar\";\"OK\")"
+   ],
+   "variantes": [
+    {
+     "B3": 18
+    },
+    {
+     "B6": 25
+    }
+   ],
+   "pistas": [
+    "Primero averigua la mayor de las horas: ¿con qué función?",
+    "Esa función va dentro de la prueba del SI: MAX(B2:B6)>20.",
+    "=SI(MAX(B2:B6)>20;\"Revisar\";\"OK\")"
+   ],
+   "explicacion": "Has metido una función dentro de otra: MAX busca la mayor y SI decide. Así se montan los controles de una hoja: una celda que avisa sola cuando algo se sale de lo normal."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "Forma de la función SI",
+   "dorso": "=SI(prueba; valor si se cumple; valor si no se cumple). Ejemplo: =SI(B2>=1000;\"Grande\";\"Normal\")"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Signos «mayor o igual», «menor o igual» y «distinto de»",
+   "dorso": ">=   <=   <>  (el = siempre detrás)"
+  },
+  {
+   "tipo": "error",
+   "frente": "Un SI devuelve #¿NOMBRE?. ¿Qué miras primero?",
+   "dorso": "Que los textos estén entre comillas: \"Apto\", no Apto."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no hay que poner comillas a los números en un SI?",
+   "dorso": "Con comillas se guardan como texto y SUMA se los salta."
+  }
+ ]
+}

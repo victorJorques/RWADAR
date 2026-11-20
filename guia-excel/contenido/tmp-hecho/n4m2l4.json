@@ -1,0 +1,195 @@
+{
+ "id": "n4m2l4",
+ "titulo": "Varios libros: vínculos, consolidar y versiones",
+ "minutos": 16,
+ "objetivo": "Reconocer y gestionar fórmulas que apuntan a otros libros, juntar hojas iguales con Consolidar o con una fórmula 3D, recuperar versiones anteriores, vigilar el cálculo manual y comprobar que el total cuadra.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Para el comité del jueves quiero las ventas de octubre de toda la empresa: Zaragoza, Pamplona y Lleida juntas. Que cuadre con lo que dice cada delegación, y que no me llegue otro «resumen_final_v7_bueno.xlsx».",
+  "logro": "Ya sabes juntar datos de varias hojas o libros, vigilar los vínculos, recuperar versiones y demostrar que el total cuadra."
+ },
+ "funciones": ["SUMA"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Una fórmula que mira a otro libro\n\nSi en tu libro escribes `=` y haces clic en una celda de **otro libro abierto**, Excel crea un **vínculo** (una referencia externa):\n\n`=[Ventas_Pamplona.xlsx]Octubre!$B$5`\n\nSe lee así: el libro va entre **corchetes**, la hoja antes del **!** y la celda al final. Cuando cierras el libro de origen, Excel añade delante la **ruta completa** de la carpeta donde está guardado."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e1",
+   "modo": "test",
+   "pregunta": "En `=[Ventas_Pamplona.xlsx]Octubre!$B$5`, ¿qué es **Octubre**?",
+   "opciones": [
+    {"texto": "La hoja del libro de Pamplona", "correcta": true, "porque": "Eso es: va justo antes del !, que es donde siempre se escribe la hoja."},
+    {"texto": "El libro", "correcta": false, "porque": "El libro es lo que va entre corchetes: Ventas_Pamplona.xlsx."},
+    {"texto": "La celda", "correcta": false, "porque": "La celda es lo último, detrás del !: $B$5."}
+   ],
+   "explicacion": "[libro] hoja ! celda. Con eso ya sabes leer de dónde saca el dato cualquier vínculo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Por qué se rompen\n\nUn vínculo guarda **dónde estaba** el otro archivo. Da problemas cuando:\n\n- alguien **cambia el nombre** del archivo o lo **mueve** de carpeta;\n- envías tu libro por correo y el vínculo apunta a **tu** ordenador, al que nadie más llega;\n- se decide no actualizar: el libro enseña cifras viejas y nadie se entera.\n\nPor eso conviene evitarlos. Tú ya tienes la alternativa: **Power Query**, que lee los archivos y se actualiza con un clic."
+  },
+  {
+   "tipo": "texto",
+   "md": "### El panel Vínculos de libro\n\nPara ver de qué archivos depende tu libro: **Datos** › **Consultas y conexiones** › **Vínculos de libro** (en versiones anteriores, «Editar vínculos»).\n\n- **Actualizar** (o **Actualizar todo**): trae las cifras nuevas.\n- En **Más comandos (…)**, junto a cada archivo: **Cambiar origen**, para apuntar al archivo en su nueva carpeta o con su nuevo nombre, y **Romper vínculos**, que convierte las fórmulas en sus **valores actuales**. En el escritorio no se puede deshacer: hazlo en una copia."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e2",
+   "modo": "cinta",
+   "enunciado": "¿Dónde abres el panel para revisar los vínculos con otros libros?",
+   "ruta": ["Datos", "Consultas y conexiones", "Vínculos del libro"],
+   "explicacion": "Datos › Consultas y conexiones. La ayuda de Microsoft lo llama casi siempre «Vínculos de libro», y en los Excel antiguos era «Editar vínculos». Revísalo antes de enviar cualquier libro."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Antes de mandar un libro fuera, abre Vínculos de libro. Si aparece una ruta tipo `C:\\Users\\…`, ese archivo solo existe en tu ordenador. O rompes el vínculo en una copia, o mandas un PDF con lo justo."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Consolidar: juntar hojas con la misma forma\n\nLas tres delegaciones usan la misma hoja: familias de producto en filas, ventas en columnas. Para sumarlas, ve a una hoja vacía y abre **Datos** › **Herramientas de datos** › **Consolidar**. Eliges la función (**Suma**), añades el rango de cada delegación con **Agregar** y marcas **Fila superior** y **Columna izquierda** para que junte por los rótulos.\n\nFunciona bien con hojas de la misma estructura. Si los datos cambian cada mes, Power Query es mejor."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e3",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para consolidar las ventas de las tres delegaciones con **Consolidar**.",
+   "pasos": [
+    "Ir a una hoja vacía «Total» y seleccionar la celda A1",
+    "Datos › Herramientas de datos › Consolidar",
+    "Elegir Suma, agregar los rangos de Zaragoza, Pamplona y Lleida y marcar Fila superior y Columna izquierda",
+    "Pulsar Aceptar",
+    "Comprobar que el total coincide con la suma de los totales de cada delegación"
+   ],
+   "explicacion": "Primero dónde va el resultado, luego el cuadro, sus opciones y Aceptar. Y siempre, al final, la comprobación: un consolidado que no cuadra no se entrega."
+  },
+  {
+   "tipo": "texto",
+   "md": "### La fórmula 3D: la misma celda en muchas hojas\n\nSi las hojas están en el **mismo libro**, una a continuación de otra, hay un atajo:\n\n`=SUMA(Zaragoza:Lleida!B5)`\n\nSuma la celda **B5** de **todas** las hojas que hay desde la pestaña Zaragoza hasta la pestaña Lleida, ambas incluidas. Con una hoja por mes, `=SUMA(Enero:Diciembre!B5)` da el total del año.\n\nCuidado: si mueves otra hoja dentro de ese tramo de pestañas, también entra en la suma."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e4",
+   "modo": "test",
+   "pregunta": "El libro de ventas tiene, en este orden, las pestañas **Zaragoza**, **Pamplona**, **Lleida** y **Total**. En la hoja Total escribes `=SUMA(Zaragoza:Lleida!C8)`. ¿Qué suma?",
+   "opciones": [
+    {"texto": "La celda C8 de Zaragoza, Pamplona y Lleida", "correcta": true, "porque": "Eso es: los dos puntos significan «desde… hasta», así que entra también la hoja de en medio."},
+    {"texto": "Solo la C8 de Zaragoza y la de Lleida", "correcta": false, "porque": "Los dos puntos no son «y»: es un tramo, y Pamplona está dentro."},
+    {"texto": "La C8 de todas las hojas, Total incluida", "correcta": false, "porque": "Total está fuera del tramo: solo cuentan las pestañas desde Zaragoza hasta Lleida."}
+   ],
+   "explicacion": "Hoja inicial:hoja final!celda. Es la forma más corta de sumar la misma celda en hojas iguales."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Adiós a «final_v7_bueno»\n\nSi el archivo vive en **OneDrive** o **SharePoint**, no hace falta guardar copias con nombres cada vez más largos: Excel guarda las versiones solo. Para volver atrás: **Archivo** › **Información** › **Historial de versiones**, abres la versión que quieras y la restauras.\n\nRestaura cuando nadie más esté editando. Y para marcar una entrega, guarda un PDF o una copia en una carpeta «Entregas»."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e5",
+   "modo": "test",
+   "pregunta": "Javier ha pegado datos encima de la hoja de comisiones, que está en SharePoint, y se ha perdido lo que había ayer. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Archivo › Información › Historial de versiones y restaurar la versión de ayer", "correcta": true, "porque": "Eso es: el historial guarda las versiones del propio archivo, sin que nadie haya tenido que hacer copias."},
+    {"texto": "Buscar en el correo la última copia que alguien mandó", "correcta": false, "porque": "Puede estar desfasada o incompleta. El historial tiene la versión exacta de ayer."},
+    {"texto": "Pulsar Ctrl+Z hasta que vuelva", "correcta": false, "porque": "Deshacer sirve para tus propios cambios, no para lo que pegó otra persona en su ordenador."}
+   ],
+   "explicacion": "Con OneDrive o SharePoint, el historial de versiones es tu red de seguridad. Por eso los archivos de equipo se comparten con un enlace y no como copias adjuntas."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Cálculo manual: las cifras que no se mueven\n\nEn **Fórmulas** › **Cálculo** › **Opciones para el cálculo** se puede pasar de **Automático** a **Manual**. Algunos libros muy pesados vienen así para ir más rápido. En manual, cambias un dato y los totales **no se recalculan** hasta que pulsas [[F9]] (todos los libros abiertos) o [[Mayús]]+[[F9]] (solo la hoja activa).\n\nSi heredas un libro y las cifras «no cuadran», mira esto lo primero."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {"teclas": "F9", "accion": "Calcular todos los libros abiertos"},
+    {"teclas": "Mayús+F9", "accion": "Calcular la hoja activa"}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e6",
+   "modo": "respuesta_corta",
+   "pregunta": "El libro de pedidos que te ha pasado Andrés está en cálculo manual. Cambias una cantidad y el total no se mueve. ¿Qué tecla pulsas para recalcular todo?",
+   "aceptadas": ["F9", "f9", "La tecla F9", "la tecla F9"],
+   "explicacion": "[[F9]] recalcula todos los libros abiertos ([[Mayús]]+[[F9]], solo la hoja activa). Si el libro no tiene por qué ir en manual, vuelve a ponerlo en Automático: Fórmulas › Cálculo › Opciones para el cálculo."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l4-e7",
+   "modo": "formula",
+   "enunciado": "**El encargo de Carmen.** Ya tienes las ventas de octubre consolidadas: la columna E suma las tres delegaciones de cada familia. La fila 7 recoge el total que **cada delegación** dio en su correo. En **E8** escribe la comprobación: si la suma de **E2:E6** es igual a la suma de **B7:D7**, que salga **Cuadra**; si no, **Revisar**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Familia", "B1": "Zaragoza", "C1": "Pamplona", "D1": "Lleida", "E1": "Empresa",
+     "A2": "Cable", "B2": 84250, "C2": 41380, "D2": 29640, "E2": "=SUMA(B2:D2)",
+     "A3": "Mecanismos", "B3": 31480, "C3": 15920, "D3": 12750, "E3": "=SUMA(B3:D3)",
+     "A4": "Iluminación LED", "B4": 52940, "C4": 23610, "D4": 19870, "E4": "=SUMA(B4:D4)",
+     "A5": "Protección", "B5": 27310, "C5": 13240, "D5": 9860, "E5": "=SUMA(B5:D5)",
+     "A6": "Canalización", "B6": 18620, "C6": 9470, "D6": 7130, "E6": "=SUMA(B6:D6)",
+     "A7": "Total según delegación", "B7": 214600, "C7": 103620, "D7": 79250,
+     "A8": "Comprobación"
+    },
+    "formatos": {"B2:E7": "#.##0 €"},
+    "anchos": {"A": 22, "B": 11, "C": 11, "D": 11, "E": 12}
+   },
+   "objetivo": "E8",
+   "solucion": "=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Cuadra\";\"Revisar\")",
+   "alternativas": [
+    "=SI(SUMA(B7:D7)=SUMA(E2:E6);\"Cuadra\";\"Revisar\")",
+    "=SI(SUMA(E2:E6)<>SUMA(B7:D7);\"Revisar\";\"Cuadra\")",
+    "=SI(REDONDEAR(SUMA(E2:E6)-SUMA(B7:D7);2)=0;\"Cuadra\";\"Revisar\")"
+   ],
+   "errores_tipicos": [
+    "=\"Cuadra\"",
+    "=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Revisar\";\"Cuadra\")",
+    "=SI(SUMA(E2:E6)=SUMA(E2:E6);\"Cuadra\";\"Revisar\")"
+   ],
+   "variantes": [{"C4": 23160}, {"B7": 214000}],
+   "pistas": [
+    "Es un SI: la prueba compara dos sumas con `=`.",
+    "La prueba es `SUMA(E2:E6)=SUMA(B7:D7)`. Si es verdad, \"Cuadra\"; si no, \"Revisar\".",
+    "`=SI(SUMA(E2:E6)=SUMA(B7:D7);\"Cuadra\";\"Revisar\")`"
+   ],
+   "explicacion": "Celda de comprobación lista: si alguien toca una cifra o una delegación da mal su total, la hoja avisa con «Revisar» antes de que lo vea Carmen. Con importes con céntimos, compara mejor con `REDONDEAR(…;2)=0`, para que una diferencia invisible de decimales no te dé un falso «Revisar»."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m2l4-q1",
+   "modo": "test",
+   "pregunta": "El archivo de Lleida se ha movido a otra carpeta y tu vínculo ya no se actualiza. En Vínculos de libro, ¿qué eliges?",
+   "opciones": [
+    {"texto": "Cambiar origen", "correcta": true, "porque": "Eso es: le dices a Excel dónde está ahora el archivo y el vínculo vuelve a funcionar."},
+    {"texto": "Romper vínculos", "correcta": false, "porque": "Convertiría las fórmulas en valores: no se actualizarían nunca más, y en el escritorio no se puede deshacer."},
+    {"texto": "Actualizar", "correcta": false, "porque": "Actualizar busca el archivo donde estaba; si ya no está ahí, no lo encuentra."}
+   ],
+   "explicacion": "Archivo movido o renombrado → Cambiar origen. Quiero cifras fijas → Romper vínculos (en una copia)."
+  },
+  {
+   "id": "n4m2l4-q2",
+   "modo": "cinta",
+   "enunciado": "¿Dónde está el botón **Consolidar**?",
+   "ruta": ["Datos", "Herramientas de datos", "Consolidar"],
+   "explicacion": "Datos › Herramientas de datos › Consolidar, junto a Quitar duplicados y Validación de datos."
+  },
+  {
+   "id": "n4m2l4-q3",
+   "modo": "respuesta_corta",
+   "pregunta": "Escribe la fórmula que suma la celda **B5** de todas las hojas desde **Enero** hasta **Diciembre**.",
+   "aceptadas": ["=SUMA(Enero:Diciembre!B5)", "SUMA(Enero:Diciembre!B5)", "=suma(enero:diciembre!b5)", "=SUMA(enero:diciembre!B5)", "=Suma(Enero:Diciembre!B5)"],
+   "explicacion": "`=SUMA(Enero:Diciembre!B5)`: hoja inicial, dos puntos, hoja final, exclamación y la celda."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "Partes de =[Ventas.xlsx]Octubre!$B$5", "dorso": "[libro] · hoja antes del ! · celda al final."},
+  {"tipo": "concepto", "frente": "Vínculos de libro: dónde está y qué ofrece", "dorso": "Datos › Consultas y conexiones. Actualizar, Cambiar origen y Romper vínculos (convierte en valores; en el escritorio no se deshace)."},
+  {"tipo": "funcion", "frente": "Fórmula 3D para sumar la misma celda en varias hojas", "dorso": "=SUMA(Enero:Diciembre!B5): suma B5 de todas las hojas entre Enero y Diciembre."},
+  {"tipo": "atajo", "frente": "Recalcular un libro en cálculo manual", "dorso": "F9: todos los libros abiertos. Mayús+F9: solo la hoja activa."},
+  {"tipo": "concepto", "frente": "Recuperar una versión anterior en OneDrive o SharePoint", "dorso": "Archivo › Información › Historial de versiones. Restaura cuando nadie más esté editando."}
+ ]
+}

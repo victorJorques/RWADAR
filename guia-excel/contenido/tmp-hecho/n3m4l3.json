@@ -1,0 +1,219 @@
+{
+ "id": "n3m4l3",
+ "titulo": "Segmentaciones, escala de tiempo y Actualizar",
+ "minutos": 15,
+ "objetivo": "Filtrar un informe dinámico con segmentaciones y escala de tiempo, conectarlas a varias dinámicas, actualizarlo cuando llegan datos nuevos y comprobar que está al día antes de entregarlo.",
+ "mision": {
+  "de": "Javier Ortega",
+  "puesto": "Director comercial",
+  "texto": "En la reunión del jueves quiero ir pulsando el nombre de cada comercial y ver sus ventas, sin filtros raros. Y ojo, que Andrés ha metido esta mañana los albaranes del viernes que faltaban: que salgan en el informe.",
+  "logro": "Ya sabes poner botones de filtro a un informe dinámico, actualizarlo cuando llegan datos nuevos y comprobar que está al día antes de entregarlo."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una **segmentación de datos** es un panel de botones, uno por cada elemento de un campo: uno por comercial, por ejemplo. Pulsas «Elena Sanz» y la dinámica enseña solo sus ventas. Es un filtro, pero se ve a simple vista qué está filtrado.\n\nPara ponerla: haz clic dentro de la dinámica › pestaña **Analizar tabla dinámica** › **Insertar segmentación de datos** › marca **Comercial** › **Aceptar**. Si marcas varios campos, sale un panel para cada uno."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e1",
+   "modo": "cinta",
+   "enunciado": "Javier quiere botones con los nombres de los comerciales. Tienes seleccionada una celda de la dinámica. ¿Qué botón pulsas?",
+   "ruta": ["Analizar tabla dinámica", "Filtrar", "Insertar segmentación de datos"],
+   "explicacion": "Analizar tabla dinámica › Filtrar › Insertar segmentación de datos. También está en Insertar › Filtros › Segmentación de datos."
+  },
+  {
+   "tipo": "texto",
+   "md": "Cómo se usa el panel:\n\n- **Clic** en un nombre: solo ese.\n- [[Ctrl]] + **clic**: añades o quitas otro (Elena e Iñaki a la vez).\n- **Borrar filtro**: el botón del embudo con un aspa, arriba a la derecha del panel. Vuelven todos.\n\nLos botones elegidos se ven en color y los demás, más claros. Así, quien lea el informe sabe siempre qué está viendo."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "No lo entregues filtrado",
+   "md": "Nuria: «Si guardas el libro con un comercial marcado, quien lo abra verá solo sus ventas y creerá que es el total. Antes de enviarlo, pulsa Borrar filtro.»"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e2",
+   "modo": "test",
+   "pregunta": "Carmen abre el informe que le mandaste y te escribe: «¿Solo 18.430 € en octubre? El mes pasado fueron 96.000». En la segmentación de Comercial, el botón de **Elena Sanz** está en color y los demás se ven claros. ¿Qué ha pasado?",
+   "opciones": [
+    {"texto": "El informe se guardó filtrado: enseña solo las ventas de Elena", "correcta": true, "porque": "Exacto: los 18.430 € son de Elena. Pulsa Borrar filtro, comprueba el total y vuelve a mandarlo."},
+    {"texto": "Las ventas han caído en picado", "correcta": false, "porque": "Antes de alarmar a nadie, mira los filtros: un botón marcado en la segmentación lo explica."},
+    {"texto": "La dinámica está mal hecha y hay que crearla de nuevo", "correcta": false, "porque": "La dinámica está bien; solo está filtrada. Con Borrar filtro vuelve a enseñarlo todo."},
+    {"texto": "Faltan datos en el listado de origen", "correcta": false, "porque": "Podría pasar, pero aquí la pista está a la vista: Elena en color y el resto en claro."}
+   ],
+   "explicacion": "La segmentación es cómoda precisamente porque se ve. Acostúmbrate a mirarla antes de leer cualquier cifra, y a dejarla sin filtro antes de entregar."
+  },
+  {
+   "tipo": "texto",
+   "md": "La **escala de tiempo** es una segmentación para fechas: una barra de meses que arrastras para elegir un periodo, por ejemplo de julio a septiembre. Arriba a la derecha eliges el nivel: **años**, **trimestres**, **meses** o **días**.\n\nSe pone igual: **Analizar tabla dinámica** › **Insertar escala de tiempo** › marca **Fecha** › **Aceptar**. En la lista solo salen los campos que son fechas de verdad: si tu fecha no aparece, sospecha que es texto."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un informe suele tener varias dinámicas: por zona, por familia, por mes. Lo cómodo es que **una sola segmentación** las filtre todas a la vez.\n\nPara eso: haz clic en la segmentación › pestaña **Segmentación** › **Conexiones de informe** › marca todas las dinámicas que debe filtrar › **Aceptar**. La escala de tiempo se conecta igual.\n\nCondición: solo se pueden conectar dinámicas que salen **del mismo origen** (la misma Tabla)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e3",
+   "modo": "test",
+   "pregunta": "Tienes tres dinámicas (por zona, por familia y por mes) y una segmentación de Comercial. Pulsas «Iñaki Goñi» y solo cambia la de zona. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Segmentación › Conexiones de informe, y marco las tres dinámicas", "correcta": true, "porque": "Eso es: la segmentación solo filtra las dinámicas conectadas, y al crearla se conecta a la que tenías seleccionada."},
+    {"texto": "Inserto una segmentación de Comercial en cada dinámica", "correcta": false, "porque": "Funcionaría, pero tendrías tres paneles y habría que pulsar en los tres: un descuido y el informe mezcla comerciales."},
+    {"texto": "Pulso Actualizar", "correcta": false, "porque": "Actualizar trae los datos nuevos del origen, pero no conecta la segmentación con otras dinámicas."},
+    {"texto": "Vuelvo a crear las tres dinámicas", "correcta": false, "porque": "No hace falta: las dinámicas están bien, lo que falta es conectarlas."}
+   ],
+   "explicacion": "Una segmentación, todas las dinámicas conectadas: Javier pulsa un nombre y cambia el informe entero."
+  },
+  {
+   "tipo": "texto",
+   "md": "Lo más importante de la lección: la tabla dinámica es una **foto** de los datos. Si cambias o añades ventas en el listado, la dinámica **no se entera** hasta que la actualizas:\n\n- **Actualizar** ([[Alt]]+[[F5]]): la dinámica en la que estás. Está en Analizar tabla dinámica › Datos.\n- **Actualizar todo** ([[Ctrl]]+[[Alt]]+[[F5]]): todas las del libro. Está en Datos › Consultas y conexiones.\n\nEn el día a día, usa **Actualizar todo**: así no se te queda ninguna atrás."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {"teclas": "Alt+F5", "accion": "Actualizar la tabla dinámica seleccionada"},
+    {"teclas": "Ctrl+Alt+F5", "accion": "Actualizar todo el libro"}
+   ]
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "dato",
+   "titulo": "¿Y las que se actualizan solas?",
+   "md": "Microsoft está probando que las dinámicas hechas con datos del mismo libro se actualicen solas, pero por ahora solo en versiones de prueba (Microsoft 365 Insider). En el Excel de la oficina, cuenta con tener que pulsar Actualizar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e4",
+   "modo": "respuesta_corta",
+   "pregunta": "Andrés ha corregido varias líneas del listado y tu informe tiene cuatro dinámicas. ¿Qué atajo de teclado las actualiza todas de una vez?",
+   "aceptadas": ["Ctrl+Alt+F5", "Control+Alt+F5", "Ctrl Alt F5", "Ctrl + Alt + F5", "Alt+Ctrl+F5"],
+   "explicacion": "[[Ctrl]]+[[Alt]]+[[F5]] es Actualizar todo (Datos › Consultas y conexiones › Actualizar todo). [[Alt]]+[[F5]] actualiza solo la dinámica en la que estás."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si la dinámica se hizo desde un **rango fijo** (por ejemplo, `Ventas!$A$1:$H$500`), las filas que pegues a partir de la 501 se quedan **fuera**, aunque actualices.\n\nDos arreglos:\n\n- **Cambiar origen de datos** (Analizar tabla dinámica › Datos) y ampliar el rango. Sirve hoy, pero el mes que viene te pasará igual.\n- Mejor: convierte el listado en **Tabla** ([[Ctrl]]+[[T]]) y pon la Tabla como origen. La Tabla crece con cada fila nueva y la dinámica la sigue al actualizar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e5",
+   "modo": "test",
+   "pregunta": "Pegas 12 ventas nuevas debajo del listado y pulsas Actualizar todo, pero el total general no cambia. En **Cambiar origen de datos** pone `Ventas!$A$1:$H$1201`, y las ventas nuevas están en las filas 1202 a 1213. ¿Qué pasa?",
+   "opciones": [
+    {"texto": "El origen es un rango fijo que acaba en la fila 1201: las ventas nuevas se quedan fuera", "correcta": true, "porque": "Eso es. Amplía el rango o, mejor, convierte el listado en Tabla y usa la Tabla como origen: así crecerá sola."},
+    {"texto": "Hay que pulsar Actualizar todo dos veces", "correcta": false, "porque": "Actualizar relee el origen, y el origen acaba en la fila 1201: por muchas veces que pulses, lo de debajo no entra."},
+    {"texto": "Las ventas nuevas tienen otro formato", "correcta": false, "porque": "El formato no impide que entren: el problema es que están fuera del rango de origen."},
+    {"texto": "Una dinámica no admite más de 1.200 filas", "correcta": false, "porque": "Admite muchísimas más: el límite lo puso el rango que se eligió al crearla."}
+   ],
+   "explicacion": "Origen como Tabla + Actualizar todo: con esas dos costumbres, las ventas nuevas siempre entran en el informe."
+  },
+  {
+   "tipo": "texto",
+   "md": "Javier señala una cifra y pregunta: «¿Y esto de dónde sale?». Haz **doble clic** sobre ella: Excel abre una **hoja nueva** con las filas del listado que forman esa cifra. Lo mismo hace clic derecho › **Mostrar detalles**.\n\nEsa hoja es una copia: puedes mirarla, filtrarla y borrarla cuando acabes. Cambiarla no toca ni el listado original ni la dinámica."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "La dinámica guarda los datos",
+   "md": "Una dinámica guarda dentro del libro una copia de sus datos de origen, también los que no se ven. Si mandas el libro a un cliente, con un doble clic puede ver el detalle. Fuera de la empresa, envía solo lo que deban ver (por ejemplo, un PDF)."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e6",
+   "modo": "ordenar",
+   "enunciado": "Es fin de mes y toca mandar el informe dinámico. Ordena los pasos.",
+   "pasos": [
+    "Pegar las ventas que faltan en la primera fila vacía debajo de la Tabla",
+    "Pulsar Actualizar todo (Ctrl+Alt+F5)",
+    "Comparar el total general de la dinámica con el total del listado",
+    "Borrar los filtros de las segmentaciones",
+    "Guardar y enviar el informe"
+   ],
+   "explicacion": "Primero los datos, después actualizar, después comprobar, y al final dejarlo sin filtros. Si actualizas antes de pegar, mandas un informe de ayer."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Andrés Molina",
+   "puesto": "Jefe de compras y almacén",
+   "md": "Ya he metido en el listado los dos albaranes del viernes 13 que faltaban, uno de Elena y otro de Jordi. Están al final. ¡Que no se te escapen del informe de Javier!"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l3-e7",
+   "modo": "formula",
+   "enunciado": "La dinámica de Javier marca **7.175,00 €** de total general (lo has anotado en **G2**). En **G3** calcula la diferencia entre el total del listado (**D2:D11**, ya con los albaranes de Andrés) y el total de la dinámica. Si no da 0, el informe no está al día.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Comercial", "C1": "Zona", "D1": "Importe", "F1": "Comprobación", "G1": "Importe",
+     "A2": {"fecha": "2026-11-09"}, "B2": "Raúl Gimeno", "C2": "Zaragoza", "D2": 1240,
+     "A3": {"fecha": "2026-11-09"}, "B3": "Elena Sanz", "C3": "Pamplona", "D3": 860,
+     "A4": {"fecha": "2026-11-10"}, "B4": "Jordi Vidal", "C4": "Lleida", "D4": 530,
+     "A5": {"fecha": "2026-11-10"}, "B5": "Pilar Lasheras", "C5": "Zaragoza", "D5": 975,
+     "A6": {"fecha": "2026-11-11"}, "B6": "Iñaki Goñi", "C6": "Pamplona", "D6": 1410,
+     "A7": {"fecha": "2026-11-12"}, "B7": "Sergio Bueno", "C7": "Zaragoza", "D7": 320,
+     "A8": {"fecha": "2026-11-12"}, "B8": "Montse Pujol", "C8": "Lleida", "D8": 1150,
+     "A9": {"fecha": "2026-11-13"}, "B9": "Raúl Gimeno", "C9": "Zaragoza", "D9": 690,
+     "A10": {"fecha": "2026-11-13"}, "B10": "Elena Sanz", "C10": "Pamplona", "D10": 1325,
+     "A11": {"fecha": "2026-11-13"}, "B11": "Jordi Vidal", "C11": "Lleida", "D11": 480.5,
+     "F2": "Total de la dinámica", "G2": 7175,
+     "F3": "Diferencia"
+    },
+    "formatos": {"A2:A11": "fecha", "D2:D11": "eur", "G2:G3": "eur"},
+    "anchos": {"A": 11, "B": 14, "C": 10, "D": 11, "F": 19, "G": 12}
+   },
+   "objetivo": "G3",
+   "solucion": "=SUMA(D2:D11)-G2",
+   "alternativas": ["=SUMA(D2:D11)-$G$2", "=-G2+SUMA(D2:D11)", "=SUMA($D$2:$D$11)-G2"],
+   "errores_tipicos": ["=SUMA(D2:D9)-G2", "=G2-SUMA(D2:D11)", "=SUMA(D2:D11)"],
+   "variantes": [{"D11": 600}, {"G2": 8980.5}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Primero el total del listado entero; después réstale lo que dice la dinámica.",
+    "`SUMA(D2:D11)` menos `G2`. Ojo: el rango tiene que llegar hasta la fila 11, donde están los albaranes nuevos.",
+    "`=SUMA(D2:D11)-G2`"
+   ],
+   "explicacion": "1.805,50 €: justo los dos albaranes de Andrés (1.325,00 + 480,50). La dinámica no los ve porque no se ha actualizado. Pulsa Actualizar todo y la diferencia pasará a 0: esa es tu señal de que el informe para Javier está al día."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m4l3-q1",
+   "modo": "test",
+   "pregunta": "Javier quiere saber de dónde salen los 3.240 € de Pamplona en marzo, línea a línea. ¿Qué es lo más rápido?",
+   "opciones": [
+    {"texto": "Doble clic sobre la cifra en la dinámica", "correcta": true, "porque": "Eso es: Excel abre una hoja nueva con justo las filas que forman esa cifra."},
+    {"texto": "Filtrar el listado a mano por zona y por fechas", "correcta": false, "porque": "Llegarías a lo mismo, pero con varios pasos y riesgo de equivocarte de fechas."},
+    {"texto": "Una fórmula SUMAR.SI.CONJUNTO", "correcta": false, "porque": "Sirve para comprobar el total, pero no te enseña las líneas. El doble clic sí."},
+    {"texto": "Crear otra dinámica solo para Pamplona", "correcta": false, "porque": "Demasiado trabajo: seguirías viendo totales, no las líneas."}
+   ],
+   "explicacion": "Doble clic (o clic derecho › Mostrar detalles) para ver el detalle de cualquier cifra. Cuando acabes, borra esa hoja."
+  },
+  {
+   "id": "n3m4l3-q2",
+   "modo": "cinta",
+   "enunciado": "Sin usar el teclado: ¿dónde está **Actualizar todo** en la pestaña Datos?",
+   "ruta": ["Datos", "Consultas y conexiones", "Actualizar todo"],
+   "explicacion": "Datos › Consultas y conexiones › Actualizar todo, o [[Ctrl]]+[[Alt]]+[[F5]]. Actualiza todas las dinámicas del libro."
+  },
+  {
+   "id": "n3m4l3-q3",
+   "modo": "test",
+   "pregunta": "Javier quiere ver solo el **tercer trimestre** en las tres dinámicas del informe, y cambiar de periodo con un clic durante la reunión. ¿Qué le preparas?",
+   "opciones": [
+    {"texto": "Una escala de tiempo de Fecha conectada a las tres dinámicas (Conexiones de informe)", "correcta": true, "porque": "Eso es: arrastra sobre julio-septiembre (o elige el nivel Trimestres) y cambian las tres a la vez."},
+    {"texto": "Agrupar las fechas por trimestres", "correcta": false, "porque": "Agrupar enseña un total por trimestre, pero no filtra: seguirían saliendo los cuatro trimestres."},
+    {"texto": "Una segmentación de Comercial", "correcta": false, "porque": "Esa filtra por comercial, no por fechas."},
+    {"texto": "Borrar del listado las ventas de los otros meses", "correcta": false, "porque": "¡Nunca! Perderías datos. Filtrar no borra nada; borrar, sí."}
+   ],
+   "explicacion": "Segmentación para elegir elementos (comercial, zona); escala de tiempo para elegir periodos. Y las dos, conectadas a todas las dinámicas."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "Actualizar la tabla dinámica seleccionada", "dorso": "Alt+F5 (Analizar tabla dinámica › Datos › Actualizar)."},
+  {"tipo": "atajo", "frente": "Actualizar todas las dinámicas del libro", "dorso": "Ctrl+Alt+F5 (Datos › Consultas y conexiones › Actualizar todo)."},
+  {"tipo": "concepto", "frente": "¿Cómo haces que una segmentación filtre varias dinámicas?", "dorso": "Clic en la segmentación › pestaña Segmentación › Conexiones de informe › marca las dinámicas (deben salir del mismo origen)."},
+  {"tipo": "concepto", "frente": "¿Cómo ves las filas que forman una cifra de la dinámica?", "dorso": "Doble clic sobre la cifra (o clic derecho › Mostrar detalles): sale una hoja nueva con esas filas."}
+ ]
+}

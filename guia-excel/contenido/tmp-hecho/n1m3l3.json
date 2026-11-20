@@ -1,0 +1,328 @@
+{
+ "id": "n1m3l3",
+ "titulo": "Filas, columnas y hojas: insertar, eliminar, ocultar e inmovilizar",
+ "minutos": 16,
+ "objetivo": "Reorganizar una hoja (insertar y eliminar filas y columnas, ocultar, copiar hojas e inmovilizar los títulos) sin dejar ningún total sin cuadrar.",
+ "mision": {
+  "de": "Lucía Fernández",
+  "puesto": "Responsable de RRHH",
+  "texto": "Te paso el cuadrante de vacaciones de diciembre. Hay que meter a Sergio, que entró el lunes, y la columna del DNI no debe verse cuando lo imprima para el tablón. Y cuando bajo por la lista pierdo los títulos… ¿me echas una mano? Voy fatal.",
+  "logro": "Ya sabes reorganizar una hoja: insertar y eliminar filas sin descuadrar los totales, ocultar columnas, duplicar hojas e inmovilizar los títulos."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Las hojas cambian: llega una persona nueva, otra se va, falta una columna. Para **insertar una fila**, haz clic derecho en su **número** (el encabezado gris de la izquierda) y elige **Insertar**. La fila nueva aparece **encima** de la que elegiste.\n\nCon las columnas, igual: clic derecho en la **letra** › Insertar, y la nueva aparece **a la izquierda**.\n\nPara quitar una, clic derecho › **Eliminar**. Los mismos botones están en **Inicio › Celdas**."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {
+     "teclas": "Ctrl++",
+     "accion": "Insertar fila o columna (con ella seleccionada). Sin teclado numérico: Ctrl+Mayús++"
+    },
+    {
+     "teclas": "Ctrl+-",
+     "accion": "Eliminar fila o columna (con ella seleccionada)"
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e1",
+   "modo": "test",
+   "pregunta": "Haces clic derecho en el número de la fila **5** y eliges **Insertar**. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "Aparece una fila vacía en la 5, y lo que había en la 5 baja a la 6.",
+     "correcta": true,
+     "porque": "Eso es: la fila nueva entra encima de la que elegiste y todo lo de debajo baja un puesto."
+    },
+    {
+     "texto": "Aparece una fila vacía en la 6, debajo de la que elegiste.",
+     "correcta": false,
+     "porque": "Es al revés: Excel inserta siempre encima. Si la quieres debajo de la 5, elige la 6."
+    },
+    {
+     "texto": "Se borra lo que había en la fila 5 para dejarla vacía.",
+     "correcta": false,
+     "porque": "Insertar nunca borra nada: hace sitio empujando hacia abajo."
+    }
+   ],
+   "explicacion": "Filas nuevas, encima; columnas nuevas, a la izquierda. Con eso sabrás siempre dónde hacer clic."
+  },
+  {
+   "tipo": "texto",
+   "md": "Lo bueno: **las fórmulas se adaptan solas**. Si B10 tenía `=SUMA(B2:B9)` e insertas una fila **en medio** de los datos, la fórmula baja a B11 y pasa a ser `=SUMA(B2:B10)`. No tienes que tocar nada.\n\nLo peligroso: si insertas la fila **justo debajo del último dato**, encima del total, queda **fuera** del rango. Puede que Excel marque la celda con un triangulito verde, pero no te fíes: **mira siempre el rango del total**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e2",
+   "modo": "predice",
+   "enunciado": "Lucía insertó la fila 6, justo encima del total, y escribió las horas extra de Sergio. La fórmula del total sigue diciendo `=SUMA(B2:B5)`. ¿Qué resultado da?",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "Horas extra",
+     "A2": "Ana Gil",
+     "B2": 12,
+     "A3": "Rubén Sanz",
+     "B3": 8,
+     "A4": "Elena Pardo",
+     "B4": 15,
+     "A5": "Carlos Aznar",
+     "B5": 4,
+     "A6": "Sergio Lahoz",
+     "B6": 6,
+     "A7": "Total"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 12
+    }
+   },
+   "celda": "B7",
+   "formula": "=SUMA(B2:B5)",
+   "explicacion": "Da **39**, no 45: las 6 horas de Sergio están fuera del rango B2:B5. La hoja no da ningún error, simplemente suma de menos. Es uno de los fallos más caros de las oficinas, y se evita mirando el rango después de insertar."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al **eliminar** una fila, las fórmulas también se adaptan… salvo si usaban justo una celda de esa fila. Entonces aparece **#¡REF!**, que significa «referencia no válida»: la celda que buscaba la fórmula ya no existe.\n\n- `=SUMA(B2:B6)` y eliminas la fila 4: el rango encoge a B2:B5. Sin error.\n- `=B2+B3+B4` y eliminas la fila 3: queda `=B2+#¡REF!+B3` y el resultado es #¡REF!.\n\nSi te pasa, [[Ctrl]]+[[Z]] lo deshace al momento."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e3",
+   "modo": "test",
+   "pregunta": "En D2 está `=B2+B3+B4`. Eliminas la fila 3 entera. ¿Qué se ve ahora en la celda del total?",
+   "opciones": [
+    {
+     "texto": "#¡REF!",
+     "correcta": true,
+     "porque": "Correcto: la fórmula usaba B3, que ya no existe. Excel lo marca como referencia no válida."
+    },
+    {
+     "texto": "La suma de B2 y B4, sin la fila borrada",
+     "correcta": false,
+     "porque": "Eso pasaría con un rango como SUMA(B2:B4), que encoge solo. Una suma celda a celda no se recoloca: se rompe."
+    },
+    {
+     "texto": "0",
+     "correcta": false,
+     "porque": "Excel no pone un cero: avisa con un error para que no pase desapercibido."
+    }
+   ],
+   "explicacion": "Moraleja de oficina: `=SUMA(B2:B4)` aguanta mejor los cambios que `=B2+B3+B4`. Y si ves un #¡REF! justo después de eliminar algo, [[Ctrl]]+[[Z]]."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Ocultar** quita de la vista filas o columnas sin borrarlas: clic derecho en el número o la letra › **Ocultar**. Atajos: [[Ctrl]]+[[9]] para filas y [[Ctrl]]+[[0]] para columnas.\n\nSe nota porque los encabezados **saltan**: 3, 5… o A, B, D. Para volver a verlas, selecciona las de los dos lados (la 3 y la 5), clic derecho › **Mostrar**.\n\nLo oculto **sigue ahí**: SUMA lo cuenta y viaja dentro del archivo."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Ocultar no es proteger",
+   "md": "Una columna oculta con DNI o sueldos sigue dentro del archivo: quien lo reciba puede mostrarla en dos clics. Ocultar sirve para imprimir o para trabajar más cómoda. Si un dato no debe salir de RRHH, bórralo de la copia que envías."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e4",
+   "modo": "test",
+   "pregunta": "En la hoja de gastos de Andrés ves tres importes que suman **1.000 €**, pero el total dice **1.300 €**. Los números de fila van 2, 3, 5, 6. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "La fila 4 está oculta y tiene 300 €; el total la incluye.",
+     "correcta": true,
+     "porque": "Exacto: el salto de 3 a 5 delata una fila oculta. SUMA cuenta las filas ocultas aunque no las veas."
+    },
+    {
+     "texto": "La fórmula del total está mal y hay que reescribirla.",
+     "correcta": false,
+     "porque": "La fórmula probablemente esté bien. Antes de tocarla, mira los encabezados: el salto de números es la pista."
+    },
+    {
+     "texto": "Excel ha sumado mal.",
+     "correcta": false,
+     "porque": "Excel no se equivoca sumando: suma lo que hay, también lo que está oculto."
+    }
+   ],
+   "explicacion": "Cuando un total «no cuadra» con lo que ves, mira si los números de fila o las letras de columna saltan. Selecciona la 3 y la 5, clic derecho › Mostrar, y verás el dato escondido."
+  },
+  {
+   "tipo": "texto",
+   "md": "Las **pestañas** de abajo son las hojas del libro. Con clic derecho en una pestaña tienes casi todo:\n\n- **Cambiar nombre** (o doble clic en la pestaña).\n- **Mover o copiar…**: marca **Crear una copia** para duplicarla. Por ejemplo, el cuadrante de noviembre para empezar el de diciembre.\n- **Ocultar** y **Mostrar**, igual que con las filas.\n\nPara una hoja nueva, pulsa el **+** junto a las pestañas o [[Mayús]]+[[F11]]."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e5",
+   "modo": "ordenar",
+   "enunciado": "Lucía quiere empezar el cuadrante de diciembre a partir del de noviembre, sin tocar el de noviembre. Ordena los pasos.",
+   "pasos": [
+    "Haz clic derecho en la pestaña Noviembre",
+    "Elige Mover o copiar…",
+    "Marca la casilla Crear una copia y pulsa Aceptar",
+    "Haz doble clic en la pestaña nueva, Noviembre (2)",
+    "Escribe Diciembre y pulsa Intro"
+   ],
+   "explicacion": "Sin marcar **Crear una copia**, Excel solo movería la hoja de sitio. Con la copia, noviembre queda intacto y diciembre arranca con el mismo formato y las mismas fórmulas."
+  },
+  {
+   "tipo": "texto",
+   "md": "En una lista de 58 personas, al bajar desaparece la fila de títulos y ya no sabes qué es cada columna. Solución: **Vista › Ventana › Inmovilizar › Inmovilizar fila superior**. La fila 1 se queda quieta mientras el resto se desplaza.\n\nEn el mismo menú están **Inmovilizar primera columna** e **Inmovilizar paneles**, que fija lo que queda encima y a la izquierda de la celda seleccionada. Para quitarlo, vuelve al mismo botón."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e6",
+   "modo": "cinta",
+   "enunciado": "Lucía pierde los títulos al bajar por la lista. ¿Dónde está el botón para dejar quieta la fila 1?",
+   "ruta": [
+    "Vista",
+    "Ventana",
+    "Inmovilizar"
+   ],
+   "explicacion": "Vista › Ventana › Inmovilizar › Inmovilizar fila superior. A partir de ahí, la cabecera la acompaña hasta la última fila."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Lucía Fernández",
+   "puesto": "Responsable de RRHH",
+   "md": "He metido a Sergio en la fila 7, justo encima del total, con sus 3 días. Pero el total de días sigue saliendo lo mismo que antes… ¿lo miras tú?"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m3l3-e7",
+   "modo": "formula",
+   "enunciado": "Misión de Lucía. La fórmula del total en **C8** se ha quedado sin Sergio. Arréglala para que sume los días de **todas** las personas, de C2 a C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "Delegación",
+     "C1": "Días diciembre",
+     "A2": "Ana Gil",
+     "B2": "Zaragoza",
+     "C2": 5,
+     "A3": "Rubén Sanz",
+     "B3": "Pamplona",
+     "C3": 3,
+     "A4": "Elena Pardo",
+     "B4": "Lleida",
+     "C4": 8,
+     "A5": "Carlos Aznar",
+     "B5": "Zaragoza",
+     "C5": 2,
+     "A6": "Marina López",
+     "B6": "Zaragoza",
+     "C6": 4,
+     "A7": "Sergio Lahoz",
+     "B7": "Pamplona",
+     "C7": 3,
+     "A8": "Total"
+    },
+    "anchos": {
+     "A": 14,
+     "B": 11,
+     "C": 14
+    }
+   },
+   "objetivo": "C8",
+   "inicial": "=SUMA(C2:C6)",
+   "solucion": "=SUMA(C2:C7)",
+   "alternativas": [
+    "=C2+C3+C4+C5+C6+C7"
+   ],
+   "errores_tipicos": [
+    "=SUMA(C2:C6)",
+    "=SUMA(C3:C7)",
+    "=SUMA(C2:C8)"
+   ],
+   "variantes": [
+    {
+     "C7": 5,
+     "C2": 6
+    }
+   ],
+   "pistas": [
+    "Mira el rango de la fórmula: ¿hasta qué fila llega? ¿En qué fila está Sergio?",
+    "El rango tiene que empezar en C2 y terminar en la última persona, C7.",
+    "=SUMA(C2:C7)"
+   ],
+   "explicacion": "Ahora el total da **25** días, con los 3 de Sergio. Has hecho lo que hace una buena administrativa después de insertar una fila: **revisar el rango del total**. Lucía ya puede imprimir el cuadrante para el tablón (con la columna del DNI oculta)."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m3l3-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "Eliminas una fila y una fórmula que usaba una celda de esa fila muestra un error. ¿Cuál? Escríbelo tal cual.",
+   "aceptadas": [
+    "#¡REF!",
+    "#REF!",
+    "#¡REF",
+    "#REF",
+    "REF"
+   ],
+   "explicacion": "**#¡REF!**: referencia no válida. La celda a la que apuntaba la fórmula ya no existe. [[Ctrl]]+[[Z]] lo deshace."
+  },
+  {
+   "id": "n1m3l3-q2",
+   "modo": "cinta",
+   "enunciado": "Sin usar el clic derecho, ¿qué botón de la cinta inserta una fila o columna nueva?",
+   "ruta": [
+    "Inicio",
+    "Celdas",
+    "Insertar"
+   ],
+   "explicacion": "Inicio › Celdas › Insertar. Su compañero **Eliminar** está justo al lado."
+  },
+  {
+   "id": "n1m3l3-q3",
+   "modo": "test",
+   "pregunta": "Repaso mezclado: insertas una columna para las fechas de alta, a la derecha de la columna «Días», que tiene formato de número. Al escribir 16/11/2026 en la columna nueva ves **46342**. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Le pongo formato Fecha corta a la columna.",
+     "correcta": true,
+     "porque": "La fecha está bien guardada; se ve como número porque la columna nueva ha copiado el formato de número de la de al lado."
+    },
+    {
+     "texto": "Deshago la inserción: la columna está estropeada.",
+     "correcta": false,
+     "porque": "La columna no tiene nada roto. Basta con cambiar el formato."
+    },
+    {
+     "texto": "Escribo la fecha como texto, «16 de noviembre».",
+     "correcta": false,
+     "porque": "Como texto ya no podrías restar fechas ni ordenarlas bien. Mejor fecha de verdad con formato de fecha."
+    }
+   ],
+   "explicacion": "Una fecha es un número con formato de fecha. Si ves el número, cambia el formato, no el dato."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "¿Dónde aparece una fila insertada? ¿Y una columna?",
+   "dorso": "La fila, encima de la elegida. La columna, a su izquierda."
+  },
+  {
+   "tipo": "error",
+   "frente": "Insertas una fila justo encima del total y el total no cambia. ¿Por qué?",
+   "dorso": "La fila nueva ha quedado fuera del rango de la SUMA. Revisa y amplía el rango."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué significa #¡REF!?",
+   "dorso": "Referencia no válida: se eliminó una celda que usaba la fórmula. Ctrl+Z lo deshace."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Ocultar filas / ocultar columnas",
+   "dorso": "Ctrl+9 / Ctrl+0. Para mostrar: selecciona las de los lados, clic derecho › Mostrar."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Cómo dejar fija la fila de títulos al bajar?",
+   "dorso": "Vista › Ventana › Inmovilizar › Inmovilizar fila superior."
+  }
+ ]
+}

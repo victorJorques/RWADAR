@@ -1,0 +1,5512 @@
+{
+ "festivos": [
+  [
+   "2026-01-01",
+   "Año Nuevo",
+   "Nacional"
+  ],
+  [
+   "2026-01-06",
+   "Epifanía del Señor",
+   "Nacional"
+  ],
+  [
+   "2026-04-03",
+   "Viernes Santo",
+   "Nacional"
+  ],
+  [
+   "2026-05-01",
+   "Fiesta del Trabajo",
+   "Nacional"
+  ],
+  [
+   "2026-08-15",
+   "Asunción de la Virgen",
+   "Nacional"
+  ],
+  [
+   "2026-10-12",
+   "Fiesta Nacional de España",
+   "Nacional"
+  ],
+  [
+   "2026-12-08",
+   "Inmaculada Concepción",
+   "Nacional"
+  ],
+  [
+   "2026-12-25",
+   "Natividad del Señor",
+   "Nacional"
+  ],
+  [
+   "2026-04-02",
+   "Jueves Santo",
+   "Aragón"
+  ],
+  [
+   "2026-04-23",
+   "San Jorge / Día de Aragón",
+   "Aragón"
+  ],
+  [
+   "2026-11-02",
+   "Día siguiente a Todos los Santos",
+   "Aragón"
+  ],
+  [
+   "2026-12-07",
+   "Lunes siguiente al Día de la Constitución Española",
+   "Aragón"
+  ],
+  [
+   "2026-03-19",
+   "San José",
+   "Navarra"
+  ],
+  [
+   "2026-04-02",
+   "Jueves Santo",
+   "Navarra"
+  ],
+  [
+   "2026-04-06",
+   "Lunes de Pascua",
+   "Navarra"
+  ],
+  [
+   "2026-11-02",
+   "Día siguiente a Todos los Santos",
+   "Navarra"
+  ],
+  [
+   "2026-12-03",
+   "San Francisco Javier",
+   "Navarra"
+  ],
+  [
+   "2026-04-06",
+   "Lunes de Pascua",
+   "Cataluña"
+  ],
+  [
+   "2026-06-24",
+   "Sant Joan",
+   "Cataluña"
+  ],
+  [
+   "2026-09-11",
+   "Diada Nacional de Catalunya",
+   "Cataluña"
+  ],
+  [
+   "2026-12-26",
+   "Sant Esteve",
+   "Cataluña"
+  ],
+  [
+   "2026-01-29",
+   "San Valero",
+   "Local Zaragoza"
+  ],
+  [
+   "2026-03-05",
+   "Cincomarzada",
+   "Local Zaragoza"
+  ],
+  [
+   "2026-07-07",
+   "San Fermín",
+   "Local Pamplona"
+  ],
+  [
+   "2026-05-11",
+   "Sant Anastasi",
+   "Local Lleida"
+  ],
+  [
+   "2026-09-29",
+   "Sant Miquel",
+   "Local Lleida"
+  ],
+  [
+   "2027-01-01",
+   "Año Nuevo",
+   "Nacional"
+  ],
+  [
+   "2027-01-06",
+   "Epifanía del Señor",
+   "Nacional"
+  ]
+ ],
+ "personas": [
+  {
+   "cod": "E0001",
+   "n": 1,
+   "nombre": "Carmen",
+   "ap1": "Soler",
+   "ap2": "Ibáñez",
+   "sexo": "F",
+   "dept": "Dirección",
+   "deleg": "Zaragoza",
+   "puesto": "Directora general",
+   "nif": "38235051N"
+  },
+  {
+   "cod": "E0002",
+   "n": 2,
+   "nombre": "Marta",
+   "ap1": "Ruiz",
+   "ap2": "Ferrer",
+   "sexo": "F",
+   "dept": "Dirección",
+   "deleg": "Zaragoza",
+   "puesto": "Directora financiera",
+   "nif": "38718177T"
+  },
+  {
+   "cod": "E0003",
+   "n": 3,
+   "nombre": "Javier",
+   "ap1": "Ortega",
+   "ap2": "Lasheras",
+   "sexo": "M",
+   "dept": "Dirección",
+   "deleg": "Zaragoza",
+   "puesto": "Director comercial",
+   "nif": "64294780M"
+  },
+  {
+   "cod": "E0004",
+   "n": 4,
+   "nombre": "Andrés",
+   "ap1": "Molina",
+   "ap2": "Royo",
+   "sexo": "M",
+   "dept": "Dirección",
+   "deleg": "Zaragoza",
+   "puesto": "Jefe de compras y almacén",
+   "nif": "55276285V"
+  },
+  {
+   "cod": "E0005",
+   "n": 5,
+   "nombre": "Lucía",
+   "ap1": "Fernández",
+   "ap2": "Arnal",
+   "sexo": "F",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Responsable de RRHH",
+   "nif": "77677932D"
+  },
+  {
+   "cod": "E0006",
+   "n": 6,
+   "nombre": "Francisco",
+   "ap1": "Gil",
+   "ap2": "Bielsa",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Administrativo",
+   "nif": "53179440J"
+  },
+  {
+   "cod": "E0007",
+   "n": 7,
+   "nombre": "Carlos",
+   "ap1": "Urrea",
+   "ap2": "García",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Recepcionista",
+   "nif": "79927021C"
+  },
+  {
+   "cod": "E0008",
+   "n": 8,
+   "nombre": "Rocío",
+   "ap1": "Aragüés",
+   "ap2": "Delgado",
+   "sexo": "F",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Técnica de contabilidad",
+   "nif": "68344749L"
+  },
+  {
+   "cod": "E0009",
+   "n": 9,
+   "nombre": "Lorena",
+   "ap1": "Escartín",
+   "ap2": "Torres",
+   "sexo": "F",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Técnica de administración",
+   "nif": "34692890N"
+  },
+  {
+   "cod": "E0010",
+   "n": 10,
+   "nombre": "Jorge",
+   "ap1": "García",
+   "ap2": "Calvo",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Administrativo de compras",
+   "nif": "31175316N"
+  },
+  {
+   "cod": "E0011",
+   "n": 11,
+   "nombre": "Miguel",
+   "ap1": "Torres",
+   "ap2": "Castillo",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Administrativo de compras",
+   "nif": "32274956E"
+  },
+  {
+   "cod": "E0012",
+   "n": 12,
+   "nombre": "Fernando",
+   "ap1": "Marín",
+   "ap2": "Lorente",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Técnico de administración",
+   "nif": "66036732Y"
+  },
+  {
+   "cod": "E0013",
+   "n": 13,
+   "nombre": "Natalia",
+   "ap1": "Torres",
+   "ap2": "Zubiri",
+   "sexo": "F",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Administrativa de compras",
+   "nif": "72301027K"
+  },
+  {
+   "cod": "E0014",
+   "n": 14,
+   "nombre": "Hugo",
+   "ap1": "Pardo",
+   "ap2": "Elizalde",
+   "sexo": "M",
+   "dept": "Administración",
+   "deleg": "Zaragoza",
+   "puesto": "Administrativo de cobros",
+   "nif": "41726452J"
+  },
+  {
+   "cod": "E0015",
+   "n": 15,
+   "nombre": "Jorge",
+   "ap1": "Pérez",
+   "ap2": "Elizalde",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Delegado comercial",
+   "nif": "14148709Y"
+  },
+  {
+   "cod": "E0016",
+   "n": 16,
+   "nombre": "Daniel",
+   "ap1": "Lasierra",
+   "ap2": "Castillo",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Técnico comercial",
+   "nif": "37556368J"
+  },
+  {
+   "cod": "E0017",
+   "n": 17,
+   "nombre": "Elena",
+   "ap1": "Casas",
+   "ap2": "Arregui",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Técnica comercial",
+   "nif": "67901640M"
+  },
+  {
+   "cod": "E0018",
+   "n": 18,
+   "nombre": "Pablo",
+   "ap1": "Pérez",
+   "ap2": "Navarro",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Comercial de cuentas clave",
+   "nif": "66857267Q"
+  },
+  {
+   "cod": "E0019",
+   "n": 19,
+   "nombre": "Óscar",
+   "ap1": "Cebrián",
+   "ap2": "Erro",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Comercial de cuentas clave",
+   "nif": "79174619V"
+  },
+  {
+   "cod": "E0020",
+   "n": 20,
+   "nombre": "Pilar",
+   "ap1": "Gracia",
+   "ap2": "Martín",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Técnica comercial",
+   "nif": "14818811A"
+  },
+  {
+   "cod": "E0021",
+   "n": 21,
+   "nombre": "Óscar",
+   "ap1": "Urrea",
+   "ap2": "Pujol",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Comercial de mostrador",
+   "nif": "28657044X"
+  },
+  {
+   "cod": "E0022",
+   "n": 22,
+   "nombre": "Isabel",
+   "ap1": "Urrea",
+   "ap2": "Garcés",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Técnica comercial",
+   "nif": "70348750F"
+  },
+  {
+   "cod": "E0023",
+   "n": 23,
+   "nombre": "Héctor",
+   "ap1": "Rubio",
+   "ap2": "Urrea",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Comercial de zona",
+   "nif": "10989930R"
+  },
+  {
+   "cod": "E0024",
+   "n": 24,
+   "nombre": "Alejandro",
+   "ap1": "Sánchez",
+   "ap2": "Roca",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Zaragoza",
+   "puesto": "Comercial de cuentas clave",
+   "nif": "17481032C"
+  },
+  {
+   "cod": "E0025",
+   "n": 25,
+   "nombre": "Itziar",
+   "ap1": "Zubiri",
+   "ap2": "Blasco",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Pamplona",
+   "puesto": "Delegada comercial",
+   "nif": "32723194J"
+  },
+  {
+   "cod": "E0026",
+   "n": 26,
+   "nombre": "Unai",
+   "ap1": "Garcés",
+   "ap2": "Cebrián",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Pamplona",
+   "puesto": "Comercial de mostrador",
+   "nif": "52737328F"
+  },
+  {
+   "cod": "E0027",
+   "n": 27,
+   "nombre": "Unai",
+   "ap1": "Elizalde",
+   "ap2": "Lafuente",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Pamplona",
+   "puesto": "Comercial de mostrador",
+   "nif": "59185074W"
+  },
+  {
+   "cod": "E0028",
+   "n": 28,
+   "nombre": "Mikel",
+   "ap1": "Zubiri",
+   "ap2": "García",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Pamplona",
+   "puesto": "Comercial de mostrador",
+   "nif": "13402427M"
+  },
+  {
+   "cod": "E0029",
+   "n": 29,
+   "nombre": "Oriol",
+   "ap1": "Pujol",
+   "ap2": "Esteban",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Lleida",
+   "puesto": "Delegado comercial",
+   "nif": "24833515R"
+  },
+  {
+   "cod": "E0030",
+   "n": 30,
+   "nombre": "José Luis",
+   "ap1": "Navarro",
+   "ap2": "Mas",
+   "sexo": "M",
+   "dept": "Comercial",
+   "deleg": "Lleida",
+   "puesto": "Comercial de cuentas clave",
+   "nif": "18357220T"
+  },
+  {
+   "cod": "E0031",
+   "n": 31,
+   "nombre": "Mireia",
+   "ap1": "Font",
+   "ap2": "Puig",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Lleida",
+   "puesto": "Comercial de mostrador",
+   "nif": "51516759W"
+  },
+  {
+   "cod": "E0032",
+   "n": 32,
+   "nombre": "Núria",
+   "ap1": "Roca",
+   "ap2": "Urrea",
+   "sexo": "F",
+   "dept": "Comercial",
+   "deleg": "Lleida",
+   "puesto": "Comercial de zona",
+   "nif": "75345130M"
+  },
+  {
+   "cod": "E0033",
+   "n": 33,
+   "nombre": "Ramón",
+   "ap1": "Bernal",
+   "ap2": "Garcés",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Jefe de almacén",
+   "nif": "11507668D"
+  },
+  {
+   "cod": "E0034",
+   "n": 34,
+   "nombre": "Fernando",
+   "ap1": "Lasierra",
+   "ap2": "Calvo",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Mozo de almacén",
+   "nif": "78698059V"
+  },
+  {
+   "cod": "E0035",
+   "n": 35,
+   "nombre": "Alba",
+   "ap1": "Aragüés",
+   "ap2": "Ramos",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Preparadora de pedidos",
+   "nif": "63819902P"
+  },
+  {
+   "cod": "E0036",
+   "n": 36,
+   "nombre": "Héctor",
+   "ap1": "Esteban",
+   "ap2": "Muñoz",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Mozo de almacén",
+   "nif": "56509762G"
+  },
+  {
+   "cod": "E0037",
+   "n": 37,
+   "nombre": "Hugo",
+   "ap1": "Domínguez",
+   "ap2": "Escartín",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidor",
+   "nif": "57483585F"
+  },
+  {
+   "cod": "E0038",
+   "n": 38,
+   "nombre": "Luis",
+   "ap1": "Ramos",
+   "ap2": "Mas",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Mozo de almacén",
+   "nif": "62528960X"
+  },
+  {
+   "cod": "E0039",
+   "n": 39,
+   "nombre": "Sergio",
+   "ap1": "Serrano",
+   "ap2": "Iriarte",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Preparador de pedidos",
+   "nif": "65648462E"
+  },
+  {
+   "cod": "E0040",
+   "n": 40,
+   "nombre": "Teresa",
+   "ap1": "Pardo",
+   "ap2": "Delgado",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidora",
+   "nif": "36990713C"
+  },
+  {
+   "cod": "E0041",
+   "n": 41,
+   "nombre": "Álvaro",
+   "ap1": "Tello",
+   "ap2": "Solé",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidor",
+   "nif": "78698265Q"
+  },
+  {
+   "cod": "E0042",
+   "n": 42,
+   "nombre": "Raquel",
+   "ap1": "Urrea",
+   "ap2": "Bernal",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Moza de almacén",
+   "nif": "49726846H"
+  },
+  {
+   "cod": "E0043",
+   "n": 43,
+   "nombre": "Alberto",
+   "ap1": "López",
+   "ap2": "Gracia",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Preparador de pedidos",
+   "nif": "29988391W"
+  },
+  {
+   "cod": "E0044",
+   "n": 44,
+   "nombre": "Clara",
+   "ap1": "Tello",
+   "ap2": "Lafuente",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Moza de almacén",
+   "nif": "50679017N"
+  },
+  {
+   "cod": "E0045",
+   "n": 45,
+   "nombre": "Rubén",
+   "ap1": "Muñoz",
+   "ap2": "Sánchez",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Oficial de almacén",
+   "nif": "14043485F"
+  },
+  {
+   "cod": "E0046",
+   "n": 46,
+   "nombre": "Sara",
+   "ap1": "Bernal",
+   "ap2": "Sanz",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidora",
+   "nif": "39155924B"
+  },
+  {
+   "cod": "E0047",
+   "n": 47,
+   "nombre": "Gonzalo",
+   "ap1": "Pardo",
+   "ap2": "Jiménez",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Mozo de almacén",
+   "nif": "71669849D"
+  },
+  {
+   "cod": "E0048",
+   "n": 48,
+   "nombre": "Cristina",
+   "ap1": "Muñoz",
+   "ap2": "Álvarez",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidora",
+   "nif": "25907371X"
+  },
+  {
+   "cod": "E0049",
+   "n": 49,
+   "nombre": "Beatriz",
+   "ap1": "Gracia",
+   "ap2": "Ramos",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Preparadora de pedidos",
+   "nif": "71832993Z"
+  },
+  {
+   "cod": "E0050",
+   "n": 50,
+   "nombre": "Irene",
+   "ap1": "Lasierra",
+   "ap2": "López",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Zaragoza",
+   "puesto": "Repartidora",
+   "nif": "75407130C"
+  },
+  {
+   "cod": "E0051",
+   "n": 51,
+   "nombre": "Xabier",
+   "ap1": "Iriarte",
+   "ap2": "Tello",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Pamplona",
+   "puesto": "Jefe de almacén",
+   "nif": "70376808M"
+  },
+  {
+   "cod": "E0052",
+   "n": 52,
+   "nombre": "Leire",
+   "ap1": "Echeverría",
+   "ap2": "Moreno",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Pamplona",
+   "puesto": "Carretillera",
+   "nif": "45532881B"
+  },
+  {
+   "cod": "E0053",
+   "n": 53,
+   "nombre": "Iñaki",
+   "ap1": "Elizalde",
+   "ap2": "Mas",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Pamplona",
+   "puesto": "Oficial de almacén",
+   "nif": "15124223K"
+  },
+  {
+   "cod": "E0054",
+   "n": 54,
+   "nombre": "Itziar",
+   "ap1": "Goñi",
+   "ap2": "Zubiri",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Pamplona",
+   "puesto": "Carretillera",
+   "nif": "76834460Q"
+  },
+  {
+   "cod": "E0055",
+   "n": 55,
+   "nombre": "Pablo",
+   "ap1": "Domínguez",
+   "ap2": "Benedí",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Lleida",
+   "puesto": "Jefe de almacén",
+   "nif": "37681498T"
+  },
+  {
+   "cod": "E0056",
+   "n": 56,
+   "nombre": "Núria",
+   "ap1": "Casals",
+   "ap2": "Ortiz",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Lleida",
+   "puesto": "Oficiala de almacén",
+   "nif": "17828109G"
+  },
+  {
+   "cod": "E0057",
+   "n": 57,
+   "nombre": "Montserrat",
+   "ap1": "Puig",
+   "ap2": "Pérez",
+   "sexo": "F",
+   "dept": "Almacén",
+   "deleg": "Lleida",
+   "puesto": "Oficiala de almacén",
+   "nif": "49661003R"
+  },
+  {
+   "cod": "E0058",
+   "n": 58,
+   "nombre": "Joaquín",
+   "ap1": "Pérez",
+   "ap2": "Casals",
+   "sexo": "M",
+   "dept": "Almacén",
+   "deleg": "Lleida",
+   "puesto": "Preparador de pedidos",
+   "nif": "75874482N"
+  }
+ ],
+ "contratos": [
+  {
+   "cod": "E0001",
+   "alta": "2009-03-02",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0002",
+   "alta": "2014-09-01",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0003",
+   "alta": "2012-01-16",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0004",
+   "alta": "2011-05-09",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0005",
+   "alta": "2016-02-01",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0006",
+   "alta": "1990-10-01",
+   "baja": "2026-06-15",
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0007",
+   "alta": "2008-12-12",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0008",
+   "alta": "2019-09-02",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0009",
+   "alta": "2006-12-20",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0010",
+   "alta": "2010-12-08",
+   "baja": null,
+   "jornada": 0.75,
+   "contrato": 1
+  },
+  {
+   "cod": "E0011",
+   "alta": "2015-05-05",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0012",
+   "alta": "2017-09-21",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0013",
+   "alta": "2024-11-19",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0014",
+   "alta": "2021-02-25",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0015",
+   "alta": "2007-08-19",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0016",
+   "alta": "2010-02-01",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0017",
+   "alta": "2021-01-20",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0018",
+   "alta": "2018-04-07",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0019",
+   "alta": "2017-03-17",
+   "baja": null,
+   "jornada": 0.75,
+   "contrato": 1
+  },
+  {
+   "cod": "E0020",
+   "alta": "2015-05-06",
+   "baja": "2026-09-30",
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0021",
+   "alta": "2018-04-29",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0022",
+   "alta": "2004-08-26",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0023",
+   "alta": "2014-05-04",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0024",
+   "alta": "2014-03-05",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0025",
+   "alta": "2014-09-26",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0026",
+   "alta": "2019-05-02",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0027",
+   "alta": "2004-09-20",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0028",
+   "alta": "2010-05-02",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0029",
+   "alta": "2004-09-19",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0030",
+   "alta": "2007-01-16",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0031",
+   "alta": "2021-01-23",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0032",
+   "alta": "2015-10-27",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0033",
+   "alta": "2023-04-28",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0034",
+   "alta": "2010-03-19",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0035",
+   "alta": "2025-02-02",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0036",
+   "alta": "2007-12-05",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0037",
+   "alta": "2009-06-24",
+   "baja": null,
+   "jornada": 0.75,
+   "contrato": 1
+  },
+  {
+   "cod": "E0038",
+   "alta": "2006-03-21",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0039",
+   "alta": "2010-07-10",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0040",
+   "alta": "2018-09-22",
+   "baja": "2026-03-31",
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0041",
+   "alta": "2021-10-09",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0042",
+   "alta": "2004-08-17",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0043",
+   "alta": "2024-09-29",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0044",
+   "alta": "2021-07-29",
+   "baja": null,
+   "jornada": 0.5,
+   "contrato": 1
+  },
+  {
+   "cod": "E0045",
+   "alta": "2015-09-17",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0046",
+   "alta": "2025-04-12",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0047",
+   "alta": "2024-02-01",
+   "baja": "2026-02-28",
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0047",
+   "alta": "2026-05-04",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 2
+  },
+  {
+   "cod": "E0048",
+   "alta": "2015-12-30",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0049",
+   "alta": "2026-03-01",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0050",
+   "alta": "2013-09-11",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0051",
+   "alta": "2020-03-03",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0052",
+   "alta": "2009-07-17",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0053",
+   "alta": "2012-02-01",
+   "baja": null,
+   "jornada": 0.5,
+   "contrato": 1
+  },
+  {
+   "cod": "E0054",
+   "alta": "2010-08-11",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0055",
+   "alta": "2013-04-28",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0056",
+   "alta": "2005-10-23",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0057",
+   "alta": "2013-01-06",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  },
+  {
+   "cod": "E0058",
+   "alta": "2026-07-01",
+   "baja": null,
+   "jornada": 1.0,
+   "contrato": 1
+  }
+ ],
+ "periodos": [
+  {
+   "cod": "E0001",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-21",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0001",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-28",
+   "hasta": "2026-12-31",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0002",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-06",
+   "hasta": "2026-04-10",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0002",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-21",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0002",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-07",
+   "hasta": "2026-12-11",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0003",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-24",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0003",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-21",
+   "hasta": "2027-01-08",
+   "deleg": "Zaragoza",
+   "dl_total": 12,
+   "dl_2026": 8,
+   "dl_2027": 4,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0004",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-28",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0004",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-30",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0004",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-23",
+   "hasta": "2026-12-24",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0005",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-02",
+   "hasta": "2026-02-02",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0005",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-18",
+   "hasta": "2026-05-20",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0005",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-25",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0005",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-23",
+   "hasta": "2026-11-24",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0006",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-23",
+   "hasta": "2026-03-27",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0006",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-07",
+   "hasta": "2026-04-08",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0006",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-01",
+   "hasta": "2026-06-03",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0007",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-25",
+   "hasta": "2026-06-25",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0007",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-06",
+   "hasta": "2026-07-17",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0007",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-28",
+   "hasta": "2026-12-31",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0008",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-02",
+   "hasta": "2026-03-06",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0008",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-08",
+   "hasta": "2026-05-08",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0008",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-24",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0008",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-26",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0008",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-04",
+   "hasta": "2026-11-06",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0009",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-03",
+   "hasta": "2026-06-03",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0009",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-14",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0009",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-28",
+   "hasta": "2026-12-31",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0010",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-16",
+   "hasta": "2026-03-20",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0010",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-08",
+   "hasta": "2026-06-10",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0010",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-23",
+   "hasta": "2026-06-25",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0010",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0011",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-11",
+   "hasta": "2026-03-13",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0011",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-24",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0011",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-05",
+   "hasta": "2026-11-06",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0011",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-07",
+   "hasta": "2026-12-11",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0012",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0012",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-30",
+   "hasta": "2026-12-02",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0012",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-28",
+   "hasta": "2026-12-31",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0013",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-13",
+   "hasta": "2026-04-16",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0013",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-28",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0013",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-22",
+   "hasta": "2026-09-23",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0013",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-11",
+   "hasta": "2026-12-17",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0014",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-02",
+   "hasta": "2026-02-03",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0014",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-28",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0014",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-15",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0015",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-18",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0015",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-30",
+   "hasta": "2026-12-03",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0016",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0016",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-18",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0016",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-28",
+   "hasta": "2027-01-05",
+   "deleg": "Zaragoza",
+   "dl_total": 6,
+   "dl_2026": 4,
+   "dl_2027": 2,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0017",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-26",
+   "hasta": "2026-02-26",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0017",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-08",
+   "hasta": "2026-04-10",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0017",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-18",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0017",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-23",
+   "hasta": "2026-11-27",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0017",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-07",
+   "hasta": "2026-12-11",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0018",
+   "tipo": "Asuntos propios",
+   "desde": "2026-03-13",
+   "hasta": "2026-03-13",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0018",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0018",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-19",
+   "hasta": "2026-11-24",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-18",
+   "hasta": "2026-02-18",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-09",
+   "hasta": "2026-03-09",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-24",
+   "hasta": "2026-09-04",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-10",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-21",
+   "hasta": "2026-10-21",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0019",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-21",
+   "hasta": "2026-12-24",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0020",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-13",
+   "hasta": "2026-04-14",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0020",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-18",
+   "hasta": "2026-06-22",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0020",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-14",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0021",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-26",
+   "hasta": "2026-02-26",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0021",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-12",
+   "hasta": "2026-06-12",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0021",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0021",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-22",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0022",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-05",
+   "hasta": "2026-02-06",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0022",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-09",
+   "hasta": "2026-02-09",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0022",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-06",
+   "hasta": "2026-04-09",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0022",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-17",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0023",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-02",
+   "hasta": "2026-03-06",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0023",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-04",
+   "hasta": "2026-05-07",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0023",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0023",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-03",
+   "hasta": "2026-11-04",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0024",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0024",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-05",
+   "hasta": "2026-10-09",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0024",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-28",
+   "hasta": "2026-10-28",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0025",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-05",
+   "hasta": "2026-02-09",
+   "deleg": "Pamplona",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0025",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-03",
+   "hasta": "2026-06-03",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0025",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-24",
+   "deleg": "Pamplona",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0025",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-14",
+   "hasta": "2026-09-17",
+   "deleg": "Pamplona",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-23",
+   "hasta": "2026-04-23",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Asuntos propios",
+   "desde": "2026-05-22",
+   "hasta": "2026-05-22",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-18",
+   "deleg": "Pamplona",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-21",
+   "hasta": "2026-09-21",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-14",
+   "hasta": "2026-10-15",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0026",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-15",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0027",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-01",
+   "hasta": "2026-04-08",
+   "deleg": "Pamplona",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0027",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-27",
+   "hasta": "2026-08-07",
+   "deleg": "Pamplona",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0027",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-22",
+   "hasta": "2026-09-22",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0027",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-20",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0027",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-18",
+   "deleg": "Pamplona",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0028",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-10",
+   "hasta": "2026-03-10",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0028",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-01",
+   "hasta": "2026-06-04",
+   "deleg": "Pamplona",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0028",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-28",
+   "deleg": "Pamplona",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0029",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-13",
+   "hasta": "2026-05-14",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0029",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-08-07",
+   "deleg": "Lleida",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0029",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-17",
+   "deleg": "Lleida",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0030",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-14",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0030",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-28",
+   "hasta": "2026-10-02",
+   "deleg": "Lleida",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0031",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-09",
+   "hasta": "2026-02-11",
+   "deleg": "Lleida",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0031",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-14",
+   "hasta": "2026-04-14",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0031",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-08-07",
+   "deleg": "Lleida",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0031",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-06",
+   "hasta": "2026-10-07",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0031",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-23",
+   "deleg": "Lleida",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-18",
+   "hasta": "2026-03-20",
+   "deleg": "Lleida",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-20",
+   "hasta": "2026-05-21",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-24",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-05",
+   "hasta": "2026-10-08",
+   "deleg": "Lleida",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Asuntos propios",
+   "desde": "2026-10-16",
+   "hasta": "2026-10-16",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-23",
+   "hasta": "2026-10-23",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0032",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-30",
+   "hasta": "2026-12-01",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0033",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-13",
+   "hasta": "2026-04-17",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0033",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-18",
+   "hasta": "2026-05-19",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0033",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-17",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0034",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-08-07",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0034",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-22",
+   "hasta": "2026-10-23",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0034",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-09",
+   "hasta": "2026-12-10",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0035",
+   "tipo": "Asuntos propios",
+   "desde": "2026-02-20",
+   "hasta": "2026-02-20",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0035",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-06",
+   "hasta": "2026-04-09",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0035",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-06",
+   "hasta": "2026-07-24",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0035",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-07",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0036",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-26",
+   "hasta": "2026-06-29",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0036",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-21",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0036",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-08",
+   "hasta": "2026-09-08",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0036",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-07",
+   "hasta": "2026-12-11",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0037",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-23",
+   "hasta": "2026-02-27",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0037",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-18",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0037",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-28",
+   "hasta": "2026-09-28",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0038",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-08-07",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0038",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-17",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0039",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-05",
+   "hasta": "2026-02-06",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0039",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-01",
+   "hasta": "2026-06-04",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0039",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-10",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0040",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-03",
+   "hasta": "2026-02-05",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0040",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-20",
+   "hasta": "2026-03-23",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0041",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-20",
+   "hasta": "2026-02-23",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0041",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-06",
+   "hasta": "2026-07-17",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0041",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-16",
+   "hasta": "2026-11-18",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0042",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-18",
+   "hasta": "2026-05-22",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0042",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-10",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0042",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-01",
+   "hasta": "2026-09-02",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0042",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-07",
+   "hasta": "2026-12-11",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0042",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-21",
+   "hasta": "2026-12-22",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-04",
+   "hasta": "2026-05-04",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-11",
+   "hasta": "2026-05-15",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-02",
+   "hasta": "2026-06-02",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-11",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-28",
+   "hasta": "2026-09-28",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0043",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-28",
+   "hasta": "2026-10-29",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0044",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-08-07",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0044",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-04",
+   "hasta": "2026-09-04",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0044",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-09",
+   "hasta": "2026-11-12",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0045",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-09",
+   "hasta": "2026-02-10",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0045",
+   "tipo": "Asuntos propios",
+   "desde": "2026-06-12",
+   "hasta": "2026-06-12",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0045",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0045",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-28",
+   "hasta": "2026-09-30",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0046",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-24",
+   "hasta": "2026-09-04",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0046",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-22",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0047",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-11",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0047",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-23",
+   "deleg": "Zaragoza",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0048",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-25",
+   "hasta": "2026-02-25",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0048",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-06",
+   "hasta": "2026-07-24",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0048",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-14",
+   "hasta": "2026-10-14",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0048",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-23",
+   "hasta": "2026-11-25",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0049",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-07",
+   "hasta": "2026-04-07",
+   "deleg": "Zaragoza",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0049",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-27",
+   "hasta": "2026-05-28",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0049",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-11",
+   "hasta": "2026-06-12",
+   "deleg": "Zaragoza",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0049",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-28",
+   "deleg": "Zaragoza",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0050",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-03",
+   "hasta": "2026-08-21",
+   "deleg": "Zaragoza",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0050",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-29",
+   "deleg": "Zaragoza",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0050",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-10",
+   "hasta": "2026-11-12",
+   "deleg": "Zaragoza",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0051",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-13",
+   "hasta": "2026-04-16",
+   "deleg": "Pamplona",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0051",
+   "tipo": "Vacaciones",
+   "desde": "2026-07-20",
+   "hasta": "2026-07-31",
+   "deleg": "Pamplona",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0051",
+   "tipo": "Vacaciones",
+   "desde": "2026-12-14",
+   "hasta": "2026-12-15",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0052",
+   "tipo": "Vacaciones",
+   "desde": "2026-03-20",
+   "hasta": "2026-03-20",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0052",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-28",
+   "deleg": "Pamplona",
+   "dl_total": 15,
+   "dl_2026": 15,
+   "dl_2027": 0,
+   "disfrutados": 15
+  },
+  {
+   "cod": "E0052",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-20",
+   "hasta": "2026-10-20",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0052",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-09",
+   "hasta": "2026-11-13",
+   "deleg": "Pamplona",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0053",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-08",
+   "hasta": "2026-04-09",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0053",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-01",
+   "hasta": "2026-06-04",
+   "deleg": "Pamplona",
+   "dl_total": 4,
+   "dl_2026": 4,
+   "dl_2027": 0,
+   "disfrutados": 4
+  },
+  {
+   "cod": "E0053",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-21",
+   "deleg": "Pamplona",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0053",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-09",
+   "hasta": "2026-11-13",
+   "deleg": "Pamplona",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0053",
+   "tipo": "Asuntos propios",
+   "desde": "2026-11-20",
+   "hasta": "2026-11-20",
+   "deleg": "Pamplona",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0054",
+   "tipo": "Vacaciones",
+   "desde": "2026-05-27",
+   "hasta": "2026-05-28",
+   "deleg": "Pamplona",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0054",
+   "tipo": "Vacaciones",
+   "desde": "2026-06-15",
+   "hasta": "2026-06-17",
+   "deleg": "Pamplona",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 3
+  },
+  {
+   "cod": "E0054",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-24",
+   "hasta": "2026-09-04",
+   "deleg": "Pamplona",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0054",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-03",
+   "hasta": "2026-11-09",
+   "deleg": "Pamplona",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0055",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-13",
+   "hasta": "2026-02-16",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0055",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-14",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0055",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-20",
+   "hasta": "2026-11-23",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0056",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-25",
+   "hasta": "2026-02-25",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0056",
+   "tipo": "Vacaciones",
+   "desde": "2026-04-09",
+   "hasta": "2026-04-09",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  },
+  {
+   "cod": "E0056",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-21",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0056",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-30",
+   "deleg": "Lleida",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0056",
+   "tipo": "Vacaciones",
+   "desde": "2026-11-16",
+   "hasta": "2026-11-18",
+   "deleg": "Lleida",
+   "dl_total": 3,
+   "dl_2026": 3,
+   "dl_2027": 0,
+   "disfrutados": 0
+  },
+  {
+   "cod": "E0057",
+   "tipo": "Vacaciones",
+   "desde": "2026-02-23",
+   "hasta": "2026-02-27",
+   "deleg": "Lleida",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0057",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-14",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0057",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-21",
+   "hasta": "2026-09-25",
+   "deleg": "Lleida",
+   "dl_total": 5,
+   "dl_2026": 5,
+   "dl_2027": 0,
+   "disfrutados": 5
+  },
+  {
+   "cod": "E0057",
+   "tipo": "Vacaciones",
+   "desde": "2026-10-02",
+   "hasta": "2026-10-05",
+   "deleg": "Lleida",
+   "dl_total": 2,
+   "dl_2026": 2,
+   "dl_2027": 0,
+   "disfrutados": 2
+  },
+  {
+   "cod": "E0058",
+   "tipo": "Vacaciones",
+   "desde": "2026-08-10",
+   "hasta": "2026-08-21",
+   "deleg": "Lleida",
+   "dl_total": 10,
+   "dl_2026": 10,
+   "dl_2027": 0,
+   "disfrutados": 10
+  },
+  {
+   "cod": "E0058",
+   "tipo": "Vacaciones",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-07",
+   "deleg": "Lleida",
+   "dl_total": 1,
+   "dl_2026": 1,
+   "dl_2027": 0,
+   "disfrutados": 1
+  }
+ ],
+ "ausencias": [
+  {
+   "cod": "E0031",
+   "tipo": "IT_EC",
+   "desde": "2025-11-10",
+   "hasta": "2026-01-16",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0017",
+   "tipo": "PNR",
+   "desde": "2026-01-02",
+   "hasta": "2026-01-11",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0051",
+   "tipo": "PR_ENF",
+   "desde": "2026-01-05",
+   "hasta": "2026-01-09",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0016",
+   "tipo": "IT_EC",
+   "desde": "2026-01-06",
+   "hasta": "2026-02-04",
+   "obs": "Dice que es operación de rodilla",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0040",
+   "tipo": "IT_EC",
+   "desde": "2026-01-08",
+   "hasta": "2026-01-12",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0007",
+   "tipo": "IT_EC",
+   "desde": "2026-01-14",
+   "hasta": "2026-04-05",
+   "obs": "Dice que es bronquitis",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0018",
+   "tipo": "IT_EC",
+   "desde": "2026-01-15",
+   "hasta": "2026-02-08",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0027",
+   "tipo": "IT_EC",
+   "desde": "2026-01-16",
+   "hasta": "2026-01-18",
+   "obs": "Avisó por teléfono",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0002",
+   "tipo": "IT_EC",
+   "desde": "2026-01-19",
+   "hasta": "2026-01-22",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0004",
+   "tipo": "IT_EC",
+   "desde": "2026-01-19",
+   "hasta": "2026-01-20",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0026",
+   "tipo": "IT_EC",
+   "desde": "2026-01-19",
+   "hasta": "2026-04-05",
+   "obs": "Documentación completa",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0057",
+   "tipo": "IT_EC",
+   "desde": "2026-01-20",
+   "hasta": "2026-01-24",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0001",
+   "tipo": "PNR",
+   "desde": "2026-01-21",
+   "hasta": "2026-01-26",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0052",
+   "tipo": "PR_FALL",
+   "desde": "2026-01-22",
+   "hasta": "2026-01-25",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0017",
+   "tipo": "PR_FALL",
+   "desde": "2026-01-26",
+   "hasta": "2026-01-27",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0035",
+   "tipo": "PR_ENF",
+   "desde": "2026-01-26",
+   "hasta": "2026-01-30",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0010",
+   "tipo": "IT_EC",
+   "desde": "2026-01-27",
+   "hasta": "2026-01-30",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0008",
+   "tipo": "PNR",
+   "desde": "2026-01-28",
+   "hasta": "2026-02-01",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0054",
+   "tipo": "IT_AT",
+   "desde": "2026-02-02",
+   "hasta": "2026-02-22",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0051",
+   "tipo": "IT_EC",
+   "desde": "2026-02-03",
+   "hasta": "2026-02-03",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0029",
+   "tipo": "PNR",
+   "desde": "2026-02-05",
+   "hasta": "2026-02-06",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0038",
+   "tipo": "IT_EC",
+   "desde": "2026-02-06",
+   "hasta": "2026-02-10",
+   "obs": "Baja por esguince de tobillo",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0052",
+   "tipo": "IT_EC",
+   "desde": "2026-02-06",
+   "hasta": "2026-02-10",
+   "obs": "Dice que es gastroenteritis",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0010",
+   "tipo": "PR_ENF",
+   "desde": "2026-02-09",
+   "hasta": "2026-02-13",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0044",
+   "tipo": "IT_AT",
+   "desde": "2026-02-09",
+   "hasta": "2026-03-01",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0033",
+   "tipo": "PR_FALL",
+   "desde": "2026-02-12",
+   "hasta": "2026-02-13",
+   "obs": "Parte de confirmación recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0008",
+   "tipo": "IT_EC",
+   "desde": "2026-02-13",
+   "hasta": "2026-02-16",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0040",
+   "tipo": "IT_EC",
+   "desde": "2026-02-13",
+   "hasta": "2026-02-21",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0052",
+   "tipo": "PR_ENF",
+   "desde": "2026-02-16",
+   "hasta": "2026-02-20",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0013",
+   "tipo": "PR_FALL",
+   "desde": "2026-02-17",
+   "hasta": "2026-02-18",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0010",
+   "tipo": "IT_EC",
+   "desde": "2026-02-19",
+   "hasta": "2026-02-28",
+   "obs": "Documentación completa",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0046",
+   "tipo": "IT_EC",
+   "desde": "2026-02-20",
+   "hasta": "2026-03-17",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0018",
+   "tipo": "PR_ENF",
+   "desde": "2026-02-23",
+   "hasta": "2026-02-27",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0033",
+   "tipo": "PR_ENF",
+   "desde": "2026-02-23",
+   "hasta": "2026-02-27",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0040",
+   "tipo": "IT_EC",
+   "desde": "2026-02-27",
+   "hasta": "2026-02-27",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0042",
+   "tipo": "IT_AT",
+   "desde": "2026-03-04",
+   "hasta": "2026-03-21",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0049",
+   "tipo": "IT_AT",
+   "desde": "2026-03-04",
+   "hasta": "2026-03-26",
+   "obs": "Parte de alta entregado",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0033",
+   "tipo": "IT_EC",
+   "desde": "2026-03-09",
+   "hasta": "2026-03-09",
+   "obs": "Dice que es fractura de muñeca",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0043",
+   "tipo": "IT_EC",
+   "desde": "2026-03-10",
+   "hasta": "2026-03-11",
+   "obs": "Documentación completa",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0001",
+   "tipo": "PR_MAT",
+   "desde": "2026-03-11",
+   "hasta": "2026-03-25",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0048",
+   "tipo": "IT_EC",
+   "desde": "2026-03-16",
+   "hasta": "2026-06-21",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0025",
+   "tipo": "IT_EC",
+   "desde": "2026-03-17",
+   "hasta": "2026-05-14",
+   "obs": "Avisó por teléfono",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0036",
+   "tipo": "IT_EC",
+   "desde": "2026-03-17",
+   "hasta": "2026-04-09",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0028",
+   "tipo": "IT_EC",
+   "desde": "2026-03-23",
+   "hasta": "2026-03-26",
+   "obs": "Parte de confirmación recibido",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0056",
+   "tipo": "PR_ENF",
+   "desde": "2026-03-23",
+   "hasta": "2026-03-27",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0012",
+   "tipo": "IT_EC",
+   "desde": "2026-03-25",
+   "hasta": "2026-04-26",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0039",
+   "tipo": "PR_FALL",
+   "desde": "2026-03-25",
+   "hasta": "2026-03-28",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0016",
+   "tipo": "PR_FALL",
+   "desde": "2026-03-30",
+   "hasta": "2026-04-02",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0051",
+   "tipo": "PR_FALL",
+   "desde": "2026-04-07",
+   "hasta": "2026-04-08",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0044",
+   "tipo": "IT_EC",
+   "desde": "2026-04-08",
+   "hasta": "2026-04-10",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0011",
+   "tipo": "PR_FALL",
+   "desde": "2026-04-09",
+   "hasta": "2026-04-10",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0039",
+   "tipo": "IT_EC",
+   "desde": "2026-04-09",
+   "hasta": "2026-04-10",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0026",
+   "tipo": "PNR",
+   "desde": "2026-04-10",
+   "hasta": "2026-04-19",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0019",
+   "tipo": "PR_FALL",
+   "desde": "2026-04-14",
+   "hasta": "2026-04-17",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0057",
+   "tipo": "IT_EC",
+   "desde": "2026-04-17",
+   "hasta": "2026-04-17",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0023",
+   "tipo": "PR_FALL",
+   "desde": "2026-04-21",
+   "hasta": "2026-04-22",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0014",
+   "tipo": "IT_EC",
+   "desde": "2026-04-23",
+   "hasta": "2026-04-29",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0038",
+   "tipo": "PR_ENF",
+   "desde": "2026-04-27",
+   "hasta": "2026-05-01",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0054",
+   "tipo": "PR_ENF",
+   "desde": "2026-04-27",
+   "hasta": "2026-05-01",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0013",
+   "tipo": "IT_EC",
+   "desde": "2026-04-29",
+   "hasta": "2026-05-22",
+   "obs": "Dice que es migrañas",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0020",
+   "tipo": "PR_ENF",
+   "desde": "2026-05-04",
+   "hasta": "2026-05-08",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0030",
+   "tipo": "PR_ENF",
+   "desde": "2026-05-04",
+   "hasta": "2026-05-08",
+   "obs": "Justificante entregado",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0019",
+   "tipo": "IT_EC",
+   "desde": "2026-05-06",
+   "hasta": "2026-05-08",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0022",
+   "tipo": "PR_FALL",
+   "desde": "2026-05-14",
+   "hasta": "2026-05-15",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0051",
+   "tipo": "PR_MAT",
+   "desde": "2026-05-14",
+   "hasta": "2026-06-02",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0012",
+   "tipo": "PR_FALL",
+   "desde": "2026-05-15",
+   "hasta": "2026-05-16",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0047",
+   "tipo": "IT_AT",
+   "desde": "2026-05-15",
+   "hasta": "2026-06-11",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0036",
+   "tipo": "IT_EC",
+   "desde": "2026-05-19",
+   "hasta": "2026-05-23",
+   "obs": "Dice que es depresión",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0009",
+   "tipo": "PR_FALL",
+   "desde": "2026-05-20",
+   "hasta": "2026-05-21",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0038",
+   "tipo": "PNR",
+   "desde": "2026-05-20",
+   "hasta": "2026-05-26",
+   "obs": "Parte de confirmación recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0055",
+   "tipo": "IT_AT",
+   "desde": "2026-05-20",
+   "hasta": "2026-06-11",
+   "obs": "Parte de confirmación recibido",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0057",
+   "tipo": "PR_ENF",
+   "desde": "2026-06-01",
+   "hasta": "2026-06-05",
+   "obs": "Justificante entregado",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0001",
+   "tipo": "IT_EC",
+   "desde": "2026-06-02",
+   "hasta": "2026-06-13",
+   "obs": "Lumbalgia, según el parte",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0004",
+   "tipo": "IT_EC",
+   "desde": "2026-06-04",
+   "hasta": "2026-06-12",
+   "obs": "Baja por gripe con fiebre alta",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0044",
+   "tipo": "PR_FALL",
+   "desde": "2026-06-12",
+   "hasta": "2026-06-13",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0003",
+   "tipo": "PR_FALL",
+   "desde": "2026-06-15",
+   "hasta": "2026-06-16",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0038",
+   "tipo": "IT_EC",
+   "desde": "2026-06-19",
+   "hasta": "2026-06-21",
+   "obs": "Parte de confirmación recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0027",
+   "tipo": "PR_ENF",
+   "desde": "2026-06-22",
+   "hasta": "2026-06-26",
+   "obs": "",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0043",
+   "tipo": "IT_AT",
+   "desde": "2026-06-26",
+   "hasta": "2026-07-27",
+   "obs": "Parte de baja recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0017",
+   "tipo": "IT_EC",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-08",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0023",
+   "tipo": "IT_EC",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-05",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0044",
+   "tipo": "IT_EC",
+   "desde": "2026-06-29",
+   "hasta": "2026-07-03",
+   "obs": "Hernia discal, según el parte",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0020",
+   "tipo": "IT_EC",
+   "desde": "2026-07-01",
+   "hasta": "2026-07-04",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0037",
+   "tipo": "IT_EC",
+   "desde": "2026-07-06",
+   "hasta": "2026-07-20",
+   "obs": "Parte de baja recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0014",
+   "tipo": "PR_FALL",
+   "desde": "2026-07-13",
+   "hasta": "2026-07-14",
+   "obs": "Justificante entregado",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0034",
+   "tipo": "PR_TRAS",
+   "desde": "2026-07-16",
+   "hasta": "2026-07-16",
+   "obs": "Parte de alta entregado",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0047",
+   "tipo": "IT_EC",
+   "desde": "2026-07-17",
+   "hasta": "2026-07-17",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0050",
+   "tipo": "PR_FALL",
+   "desde": "2026-07-17",
+   "hasta": "2026-07-18",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0047",
+   "tipo": "IT_EC",
+   "desde": "2026-07-21",
+   "hasta": "2026-08-26",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0058",
+   "tipo": "PR_TRAS",
+   "desde": "2026-07-28",
+   "hasta": "2026-07-28",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0032",
+   "tipo": "PR_FALL",
+   "desde": "2026-07-29",
+   "hasta": "2026-07-30",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0016",
+   "tipo": "IT_EC",
+   "desde": "2026-08-11",
+   "hasta": "2026-08-13",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0032",
+   "tipo": "IT_EC",
+   "desde": "2026-08-12",
+   "hasta": "2026-08-15",
+   "obs": "Documentación completa",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0023",
+   "tipo": "PR_ENF",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-21",
+   "obs": "Parte de alta entregado",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0032",
+   "tipo": "PR_ENF",
+   "desde": "2026-08-17",
+   "hasta": "2026-08-21",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0045",
+   "tipo": "IT_EC",
+   "desde": "2026-08-19",
+   "hasta": "2026-08-21",
+   "obs": "Parte de baja recibido",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0034",
+   "tipo": "PR_FALL",
+   "desde": "2026-08-20",
+   "hasta": "2026-08-21",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0022",
+   "tipo": "PR_ENF",
+   "desde": "2026-08-24",
+   "hasta": "2026-08-28",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0023",
+   "tipo": "PR_TRAS",
+   "desde": "2026-08-26",
+   "hasta": "2026-08-26",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0049",
+   "tipo": "IT_EC",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-03",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0058",
+   "tipo": "IT_EC",
+   "desde": "2026-08-31",
+   "hasta": "2026-09-04",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0007",
+   "tipo": "IT_EC",
+   "desde": "2026-09-01",
+   "hasta": "2026-09-03",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0002",
+   "tipo": "IT_EC",
+   "desde": "2026-09-04",
+   "hasta": "2026-09-04",
+   "obs": "Parte de alta entregado",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0020",
+   "tipo": "IT_EC",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-10",
+   "obs": "Baja por ansiedad",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0021",
+   "tipo": "PR_FALL",
+   "desde": "2026-09-07",
+   "hasta": "2026-09-10",
+   "obs": "Parte de alta entregado",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0008",
+   "tipo": "PR_FALL",
+   "desde": "2026-09-10",
+   "hasta": "2026-09-13",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0032",
+   "tipo": "IT_EC",
+   "desde": "2026-09-14",
+   "hasta": "2026-09-28",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0039",
+   "tipo": "IT_AT",
+   "desde": "2026-09-14",
+   "hasta": null,
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0001",
+   "tipo": "IT_EC",
+   "desde": "2026-09-16",
+   "hasta": "2026-09-17",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0042",
+   "tipo": "IT_EC",
+   "desde": "2026-09-16",
+   "hasta": "2026-09-19",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0014",
+   "tipo": "PR_ENF",
+   "desde": "2026-09-21",
+   "hasta": "2026-09-25",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0028",
+   "tipo": "IT_EC",
+   "desde": "2026-09-21",
+   "hasta": "2026-09-22",
+   "obs": "Parte de alta entregado",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0036",
+   "tipo": "PR_TRAS",
+   "desde": "2026-09-22",
+   "hasta": "2026-09-22",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0023",
+   "tipo": "IT_EC",
+   "desde": "2026-09-23",
+   "hasta": "2026-10-19",
+   "obs": "Parte de baja recibido",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0046",
+   "tipo": "PR_TRAS",
+   "desde": "2026-09-24",
+   "hasta": "2026-09-24",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0028",
+   "tipo": "IT_EC",
+   "desde": "2026-09-28",
+   "hasta": "2026-09-28",
+   "obs": "Documentación completa",
+   "deleg": "Pamplona",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0047",
+   "tipo": "IT_EC",
+   "desde": "2026-09-29",
+   "hasta": "2026-10-03",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0055",
+   "tipo": "IT_EC",
+   "desde": "2026-09-30",
+   "hasta": "2026-10-01",
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0053",
+   "tipo": "PR_TRAS",
+   "desde": "2026-10-02",
+   "hasta": "2026-10-04",
+   "obs": "Justificante entregado",
+   "deleg": "Pamplona",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0022",
+   "tipo": "IT_EC",
+   "desde": "2026-10-05",
+   "hasta": null,
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0029",
+   "tipo": "IT_EC",
+   "desde": "2026-10-05",
+   "hasta": "2026-10-10",
+   "obs": "Justificante entregado",
+   "deleg": "Lleida",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0035",
+   "tipo": "IT_EC",
+   "desde": "2026-10-06",
+   "hasta": "2026-10-08",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0037",
+   "tipo": "PR_FALL",
+   "desde": "2026-10-06",
+   "hasta": "2026-10-09",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0044",
+   "tipo": "PR_TRAS",
+   "desde": "2026-10-07",
+   "hasta": "2026-10-07",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0045",
+   "tipo": "PR_TRAS",
+   "desde": "2026-10-09",
+   "hasta": "2026-10-09",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0007",
+   "tipo": "PR_MAT",
+   "desde": "2026-10-14",
+   "hasta": "2026-10-28",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0021",
+   "tipo": "IT_EC",
+   "desde": "2026-10-14",
+   "hasta": "2026-10-16",
+   "obs": "Documentación completa",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0012",
+   "tipo": "IT_EC",
+   "desde": "2026-10-19",
+   "hasta": "2026-10-21",
+   "obs": "Pendiente de justificante",
+   "deleg": "Zaragoza",
+   "dept": "Administración"
+  },
+  {
+   "cod": "E0057",
+   "tipo": "IT_EC",
+   "desde": "2026-10-19",
+   "hasta": null,
+   "obs": "",
+   "deleg": "Lleida",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0001",
+   "tipo": "IT_EC",
+   "desde": "2026-10-21",
+   "hasta": "2026-10-21",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Dirección"
+  },
+  {
+   "cod": "E0038",
+   "tipo": "IT_EC",
+   "desde": "2026-10-23",
+   "hasta": "2026-10-24",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0018",
+   "tipo": "IT_EC",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-30",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  },
+  {
+   "cod": "E0036",
+   "tipo": "PR_ENF",
+   "desde": "2026-10-26",
+   "hasta": "2026-10-30",
+   "obs": "Avisó por teléfono",
+   "deleg": "Zaragoza",
+   "dept": "Almacén"
+  },
+  {
+   "cod": "E0017",
+   "tipo": "PR_TRAS",
+   "desde": "2026-10-30",
+   "hasta": "2026-10-30",
+   "obs": "",
+   "deleg": "Zaragoza",
+   "dept": "Comercial"
+  }
+ ],
+ "saldos": [
+  {
+   "cod": "E0001",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 4,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0002",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 3,
+   "saldo": 4.0,
+   "activo": true
+  },
+  {
+   "cod": "E0003",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 10,
+   "planificados": 8,
+   "saldo": 4.0,
+   "activo": true
+  },
+  {
+   "cod": "E0004",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 2,
+   "saldo": 5.0,
+   "activo": true
+  },
+  {
+   "cod": "E0005",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 19,
+   "planificados": 2,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0006",
+   "dias_alta": 166,
+   "derecho": 10.5,
+   "arrastre": 0,
+   "disfrutados": 10,
+   "planificados": 0,
+   "saldo": 0.5,
+   "activo": false
+  },
+  {
+   "cod": "E0007",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 11,
+   "planificados": 4,
+   "saldo": 7.0,
+   "activo": true
+  },
+  {
+   "cod": "E0008",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 3,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0009",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 11,
+   "planificados": 4,
+   "saldo": 7.0,
+   "activo": true
+  },
+  {
+   "cod": "E0010",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 21,
+   "planificados": 0,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0011",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 13,
+   "planificados": 5,
+   "saldo": 4.0,
+   "activo": true
+  },
+  {
+   "cod": "E0012",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 7,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0013",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 5,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0014",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 12,
+   "planificados": 2,
+   "saldo": 8.0,
+   "activo": true
+  },
+  {
+   "cod": "E0015",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 4,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0016",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 10,
+   "planificados": 9,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0017",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 14,
+   "planificados": 8,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0018",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 10,
+   "planificados": 4,
+   "saldo": 8.0,
+   "activo": true
+  },
+  {
+   "cod": "E0019",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 4,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0020",
+   "dias_alta": 273,
+   "derecho": 16.5,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 0,
+   "saldo": 1.5,
+   "activo": false
+  },
+  {
+   "cod": "E0021",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 21,
+   "planificados": 0,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0022",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 22,
+   "planificados": 0,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0023",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 18,
+   "planificados": 2,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0024",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 21,
+   "planificados": 0,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0025",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 18,
+   "planificados": 0,
+   "saldo": 4.0,
+   "activo": true
+  },
+  {
+   "cod": "E0026",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 19,
+   "planificados": 2,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0027",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 5,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0028",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 20,
+   "planificados": 0,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0029",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 4,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0030",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 14,
+   "planificados": 0,
+   "saldo": 8.0,
+   "activo": true
+  },
+  {
+   "cod": "E0031",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 6,
+   "disfrutados": 26,
+   "planificados": 0,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0032",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 20,
+   "planificados": 2,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0033",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 22,
+   "planificados": 0,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0034",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 2,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0035",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 20,
+   "planificados": 0,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0036",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 18,
+   "planificados": 3,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0037",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 21,
+   "planificados": 0,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0038",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 4,
+   "saldo": 3.0,
+   "activo": true
+  },
+  {
+   "cod": "E0039",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 0,
+   "saldo": 6.0,
+   "activo": true
+  },
+  {
+   "cod": "E0040",
+   "dias_alta": 90,
+   "derecho": 5.5,
+   "arrastre": 0,
+   "disfrutados": 5,
+   "planificados": 0,
+   "saldo": 0.5,
+   "activo": false
+  },
+  {
+   "cod": "E0041",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 12,
+   "planificados": 3,
+   "saldo": 7.0,
+   "activo": true
+  },
+  {
+   "cod": "E0042",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 5,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0043",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 20,
+   "planificados": 0,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0044",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 4,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0045",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 0,
+   "saldo": 7.0,
+   "activo": true
+  },
+  {
+   "cod": "E0046",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 14,
+   "planificados": 0,
+   "saldo": 8.0,
+   "activo": true
+  },
+  {
+   "cod": "E0047",
+   "dias_alta": 242,
+   "derecho": 15.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 0,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0048",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 3,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0049",
+   "dias_alta": 306,
+   "derecho": 18.5,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 0,
+   "saldo": 3.5,
+   "activo": true
+  },
+  {
+   "cod": "E0050",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 19,
+   "planificados": 3,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0051",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 14,
+   "planificados": 2,
+   "saldo": 6.0,
+   "activo": true
+  },
+  {
+   "cod": "E0052",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 5,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0053",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 16,
+   "planificados": 5,
+   "saldo": 1.0,
+   "activo": true
+  },
+  {
+   "cod": "E0054",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 15,
+   "planificados": 5,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0055",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 12,
+   "planificados": 2,
+   "saldo": 8.0,
+   "activo": true
+  },
+  {
+   "cod": "E0056",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 17,
+   "planificados": 3,
+   "saldo": 2.0,
+   "activo": true
+  },
+  {
+   "cod": "E0057",
+   "dias_alta": 365,
+   "derecho": 22.0,
+   "arrastre": 0,
+   "disfrutados": 22,
+   "planificados": 0,
+   "saldo": 0.0,
+   "activo": true
+  },
+  {
+   "cod": "E0058",
+   "dias_alta": 184,
+   "derecho": 11.5,
+   "arrastre": 0,
+   "disfrutados": 11,
+   "planificados": 0,
+   "saldo": 0.5,
+   "activo": true
+  }
+ ],
+ "activos": [
+  "E0001",
+  "E0002",
+  "E0003",
+  "E0004",
+  "E0005",
+  "E0007",
+  "E0008",
+  "E0009",
+  "E0010",
+  "E0011",
+  "E0012",
+  "E0013",
+  "E0014",
+  "E0015",
+  "E0016",
+  "E0017",
+  "E0018",
+  "E0019",
+  "E0021",
+  "E0022",
+  "E0023",
+  "E0024",
+  "E0025",
+  "E0026",
+  "E0027",
+  "E0028",
+  "E0029",
+  "E0030",
+  "E0031",
+  "E0032",
+  "E0033",
+  "E0034",
+  "E0035",
+  "E0036",
+  "E0037",
+  "E0038",
+  "E0039",
+  "E0041",
+  "E0042",
+  "E0043",
+  "E0044",
+  "E0045",
+  "E0046",
+  "E0047",
+  "E0048",
+  "E0049",
+  "E0050",
+  "E0051",
+  "E0052",
+  "E0053",
+  "E0054",
+  "E0055",
+  "E0056",
+  "E0057",
+  "E0058"
+ ],
+ "arrastre": {
+  "E0031": 6
+ },
+ "controles": {
+  "personas": 58,
+  "activos": 55,
+  "vac2026": 1072,
+  "derecho_activos": 1189.0,
+  "saldo_activos": 153.0,
+  "it_dias": 737,
+  "teorico": 11599,
+  "tasa_pct": 6.35,
+  "tasa_exacta": 6.3539960341408745,
+  "obs_salud": 11,
+  "admin_v": 176
+ },
+ "it_mes": {
+  "Comercial|1": 49,
+  "Comercial|2": 28,
+  "Comercial|3": 35,
+  "Comercial|4": 20,
+  "Comercial|5": 12,
+  "Comercial|6": 4,
+  "Comercial|7": 12,
+  "Comercial|8": 6,
+  "Comercial|9": 24,
+  "Comercial|10": 44,
+  "Almacén|1": 7,
+  "Almacén|2": 50,
+  "Almacén|3": 65,
+  "Almacén|4": 30,
+  "Almacén|5": 43,
+  "Almacén|6": 39,
+  "Almacén|7": 43,
+  "Almacén|8": 23,
+  "Almacén|9": 26,
+  "Almacén|10": 38,
+  "Administración|1": 15,
+  "Administración|2": 29,
+  "Administración|3": 26,
+  "Administración|4": 22,
+  "Administración|5": 15,
+  "Administración|6": 0,
+  "Administración|7": 0,
+  "Administración|8": 0,
+  "Administración|9": 3,
+  "Administración|10": 3,
+  "Dirección|1": 6,
+  "Dirección|2": 0,
+  "Dirección|3": 0,
+  "Dirección|4": 0,
+  "Dirección|5": 0,
+  "Dirección|6": 16,
+  "Dirección|7": 0,
+  "Dirección|8": 0,
+  "Dirección|9": 3,
+  "Dirección|10": 1
+ },
+ "teo_mes": {
+  "Dirección|1": 76,
+  "Dirección|2": 80,
+  "Dirección|3": 84,
+  "Dirección|4": 76,
+  "Dirección|5": 80,
+  "Dirección|6": 88,
+  "Dirección|7": 92,
+  "Dirección|8": 84,
+  "Dirección|9": 88,
+  "Dirección|10": 84,
+  "Administración|1": 190,
+  "Administración|2": 200,
+  "Administración|3": 210,
+  "Administración|4": 190,
+  "Administración|5": 200,
+  "Administración|6": 220,
+  "Administración|7": 207,
+  "Administración|8": 189,
+  "Administración|9": 198,
+  "Administración|10": 189,
+  "Comercial|1": 350,
+  "Comercial|2": 360,
+  "Comercial|3": 382,
+  "Comercial|4": 346,
+  "Comercial|5": 356,
+  "Comercial|6": 392,
+  "Comercial|7": 410,
+  "Comercial|8": 378,
+  "Comercial|9": 388,
+  "Comercial|10": 357,
+  "Almacén|1": 463,
+  "Almacén|2": 480,
+  "Almacén|3": 507,
+  "Almacén|4": 440,
+  "Almacén|5": 477,
+  "Almacén|6": 525,
+  "Almacén|7": 571,
+  "Almacén|8": 525,
+  "Almacén|9": 542,
+  "Almacén|10": 525
+ },
+ "etiqueta_adm": {
+  "E0005": "Lucía Fernández",
+  "E0006": "Paco Gil",
+  "E0007": "Carlos Urrea",
+  "E0008": "Rocío Aragüés",
+  "E0009": "Lorena Escartín",
+  "E0010": "Jorge García",
+  "E0011": "Miguel Torres",
+  "E0012": "Fernando Marín",
+  "E0013": "Natalia Torres",
+  "E0014": "Hugo Pardo"
+ },
+ "texto_dir": {
+  "E0001": "Del 3 al 21 de agosto. Y del 28 al 31 de diciembre",
+  "E0002": "6-10 abril, del 10 al 21 de agosto y el puente de diciembre (7 al 11)",
+  "E0003": "13/07 al 24/07 y del 21/12 al 8/01 (ya de 2027)",
+  "E0004": "Del 17 al 28 de agosto; semana del 26 al 30 de octubre; 23 y 24 de diciembre"
+ }
+}

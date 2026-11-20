@@ -1,0 +1,251 @@
+{
+ "id": "n4m2l2",
+ "titulo": "Formatos personalizados: que el número se vea como quieres",
+ "minutos": 15,
+ "objetivo": "Crear formatos de número personalizados (ceros delante, miles y euros, negativos, palabras y fechas) sin que el número deje de serlo, y usar TEXTO solo cuando hay que meterlo en una frase.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "El informe de cobros que le paso a Carmen tiene que verse como siempre: los días de retraso con la palabra «días», los saldos negativos entre paréntesis y un titular con la fecha y el total pendiente. Y ojo, que las columnas se tienen que poder seguir sumando.",
+  "logro": "Ya sabes dar a los números el aspecto que pide un informe sin dejar de poder calcular con ellos."
+ },
+ "funciones": ["TEXTO"],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "### Lo que ves y lo que hay\n\nYa sabes que el formato cambia **cómo se ve** un número, no **lo que vale**: 1234,5 puede verse como 1.234,50 € y sigue valiendo 1234,5. Cuando ningún formato de la lista te sirve, creas el tuyo:\n\n1. Selecciona las celdas.\n2. Pulsa [[Ctrl]]+[[1]] para abrir **Formato de celdas**.\n3. Pestaña **Número** › categoría **Personalizada**.\n4. Escribe el código en el cuadro **Tipo** y mira la **Muestra**."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [{"teclas": "Ctrl+1", "accion": "Abrir Formato de celdas"}]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e1",
+   "modo": "respuesta_corta",
+   "pregunta": "Para empezar: ¿qué atajo abre el cuadro **Formato de celdas**, donde están los formatos personalizados?",
+   "aceptadas": ["Ctrl+1", "Control+1", "Ctrl 1", "Ctrl + 1", "ctrl+1", "Control + 1"],
+   "explicacion": "[[Ctrl]]+[[1]] abre Formato de celdas desde cualquier celda. Lo usarás a diario: números, fechas, bordes y, en la próxima lección, la protección."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Los códigos básicos: 0 y #\n\n- `0` es una cifra **obligatoria**: si no hay cifra, pone un cero. Con `000`, el 7 se ve **007**.\n- `#` es una cifra **opcional**: solo aparece si hace falta.\n- El **punto** separa los miles y la **coma** los decimales, como escribes en España.\n- El símbolo ` €` se muestra tal cual.\n\nAsí, `#.##0,00 €` es el formato de euros de toda la vida."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "El mismo número con códigos distintos",
+   "hoja": {
+    "celdas": {
+     "A1": "Código", "B1": "Se ve así",
+     "A2": {"texto": "000"}, "B2": 7,
+     "A3": "#.##0", "B3": 1234.5,
+     "A4": "#.##0,00 €", "B4": 1234.5,
+     "A5": "0,0", "B5": 1234.5
+    },
+    "formatos": {"B2": "000", "B3": "#.##0", "B4": "#.##0,00 €", "B5": "0,0"},
+    "anchos": {"A": 14, "B": 14}
+   },
+   "pie": "B3, B4 y B5 valen exactamente 1234,5: solo cambia su aspecto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e2",
+   "modo": "predice",
+   "enunciado": "Andrés quiere los códigos de artículo siempre con cuatro cifras. TEXTO aplica un código de formato a un número. ¿Qué devuelve esta fórmula? (A2 = 45)",
+   "hoja": {"celdas": {"A1": "Código", "A2": 45}},
+   "celda": "B2",
+   "formula": "=TEXTO(A2;\"0000\")",
+   "explicacion": "Cada 0 es una cifra obligatoria: 45 tiene dos, así que se rellenan dos ceros delante y sale 0045. TEXTO entiende los mismos códigos que pondrías en Formato de celdas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e3",
+   "modo": "test",
+   "pregunta": "Quieres que los importes de un informe se vean como **12.500 €**: con punto de miles y sin decimales. ¿Qué código pones?",
+   "opciones": [
+    {"texto": "`#.##0 €`", "correcta": true, "porque": "Eso es: el punto marca los miles, el 0 asegura al menos una cifra y, sin coma, no hay decimales."},
+    {"texto": "`0 €`", "correcta": false, "porque": "Saldría 12500 €: sin el punto no hay separador de miles."},
+    {"texto": "`#.##0,00 €`", "correcta": false, "porque": "Saldría 12.500,00 €: los dos ceros detrás de la coma piden dos decimales."},
+    {"texto": "`#,##0 €`", "correcta": false, "porque": "Es la forma inglesa. En el Excel español la coma marca los decimales, no los miles."}
+   ],
+   "explicacion": "Punto para los miles, coma para los decimales: igual que escribes los números a mano."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Positivo; negativo; cero\n\nUn código puede tener **secciones separadas por punto y coma**: la primera para los positivos, la segunda para los negativos y la tercera para el cero.\n\n`#.##0,00 €;(#.##0,00 €);\"-\"`\n\n- 1.250,50 → **1.250,50 €**\n- −320 → **(320,00 €)**, como en contabilidad\n- 0 → **-**\n\nOjo: en cuanto escribes una sección de negativos, Excel ya no pone el signo menos. Lo pones tú, o los paréntesis."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Saldos de clientes",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente", "B1": "Saldo",
+     "A2": "Instalaciones Moncayo, S.L.", "B2": 1250.5,
+     "A3": "Electricidad Hnos. Lasheras", "B3": -320,
+     "A4": "Reformas Delicias, S.L.", "B4": 0,
+     "A5": "Total", "B5": "=SUMA(B2:B4)"
+    },
+    "formatos": {"B2:B5": "#.##0,00 €;(#.##0,00 €);\"-\""},
+    "anchos": {"A": 28, "B": 14}
+   },
+   "resaltar": ["B3"],
+   "pie": "El total es 930,50 €: los paréntesis solo cambian el aspecto, el −320 sigue restando."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e4",
+   "modo": "predice",
+   "enunciado": "Un compañero escribió la sección de negativos **sin** signo ni paréntesis. ¿Qué muestra esta fórmula con el saldo de B3 (−320)?",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente", "B1": "Saldo",
+     "A2": "Instalaciones Moncayo, S.L.", "B2": 1250.5,
+     "A3": "Electricidad Hnos. Lasheras", "B3": -320
+    },
+    "anchos": {"A": 28}
+   },
+   "celda": "C3",
+   "formula": "=TEXTO(B3;\"#.##0,00;#.##0,00\")",
+   "explicacion": "Muestra 320,00, sin signo. Al escribir la sección de negativos, el signo pasa a ser cosa tuya. Un saldo deudor que parece a favor es un error caro: pon siempre `-` o paréntesis en la segunda sección."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Palabras dentro del formato\n\nPara que se vea «45 días», **no escribas** «45 días» en la celda: sería texto y ya no se podría sumar ni comparar. Deja el 45 y ponle este código:\n\n`0\" días\"`\n\nLo que va **entre comillas** se muestra tal cual. La celda sigue valiendo 45: puedes sumarla, sacar la media o usarla en un SI."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Retraso de cobro con el formato 0\" días\"",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura", "B1": "Retraso",
+     "A2": "F-2026-0412", "B2": 45,
+     "A3": "F-2026-0438", "B3": 12,
+     "A4": "F-2026-0455", "B4": 30,
+     "A5": "Total", "B5": "=SUMA(B2:B4)"
+    },
+    "formatos": {"B2:B5": "0\" días\""},
+    "anchos": {"A": 14}
+   },
+   "pie": "Se lee «45 días» y la suma funciona: 87 días."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e5",
+   "modo": "predice",
+   "enunciado": "En otra hoja, alguien escribió los retrasos a mano, con la palabra incluida. ¿Qué devuelve `=SUMA(B2:B4)`?",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura", "B1": "Retraso",
+     "A2": "F-2026-0412", "B2": "45 días",
+     "A3": "F-2026-0438", "B3": "12 días",
+     "A4": "F-2026-0455", "B4": "30 días"
+    },
+    "anchos": {"A": 14}
+   },
+   "celda": "B5",
+   "formula": "=SUMA(B2:B4)",
+   "explicacion": "Da 0: «45 días» escrito así es texto, y SUMA no suma textos. Con el formato `0\" días\"` se ve igual y sigue sumando 87. Esa es la diferencia entre formato y contenido."
+  },
+  {
+   "tipo": "texto",
+   "md": "### Fechas a tu manera\n\nLas fechas también tienen sus códigos: `d` para el día, `m` para el mes y `aaaa` para el año.\n\n- `dd/mm/aaaa` → 16/11/2026\n- `mmmm aaaa` → noviembre 2026\n- `dddd` → lunes\n- `mmm` → nov\n\nUsa siempre **aaaa**. El `yyyy` que verás en tutoriales en inglés es para el Excel en inglés: en el tuyo no sirve como año."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e6",
+   "modo": "formula",
+   "enunciado": "En **B3** escribe una fórmula que muestre el mes del informe como **noviembre 2026**, a partir de la fecha de **B1**. Servirá para el título: cuando cambie la fecha, cambiará solo.",
+   "hoja": {
+    "celdas": {"A1": "Fecha del informe", "B1": {"fecha": "2026-11-16"}, "A3": "Mes del informe"},
+    "formatos": {"B1": "fecha"},
+    "anchos": {"A": 18, "B": 16}
+   },
+   "objetivo": "B3",
+   "solucion": "=TEXTO(B1;\"mmmm aaaa\")",
+   "alternativas": ["=TEXTO(B1;\"mmmm\")&\" \"&TEXTO(B1;\"aaaa\")"],
+   "errores_tipicos": ["=TEXTO(B1;\"mm aaaa\")", "=TEXTO(B1;\"mmm aaaa\")", "=B1"],
+   "variantes": [{"B1": {"fecha": "2027-01-08"}}],
+   "debe_usar": ["TEXTO"],
+   "pistas": [
+    "Usa TEXTO: primero la celda con la fecha y, después, el código entre comillas.",
+    "El mes con su nombre completo es `mmmm`; el año, `aaaa`. Entre los dos, un espacio.",
+    "`=TEXTO(B1;\"mmmm aaaa\")`"
+   ],
+   "explicacion": "Ya tienes el mes del informe escrito como lo diría una persona. Cambia la fecha de B1 y el título se pone al día solo: una tarea menos cada mes."
+  },
+  {
+   "tipo": "texto",
+   "md": "### ¿Formato o TEXTO?\n\n- **Formato de celdas** ([[Ctrl]]+[[1]]): para las columnas de números. Cambia el aspecto y **el número sigue siendo número**.\n- **TEXTO**: solo cuando el número va **dentro de una frase** o de un título, unido con `&`. El resultado es **texto**: se ve perfecto, pero ya no se puede sumar.\n\nRegla de oficina: las columnas, con formato; los titulares, con TEXTO."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n4m2l2-e7",
+   "modo": "formula",
+   "enunciado": "**El titular de Marta.** En **B4** escribe la frase que encabeza el informe, con la fecha de **B1** y el total pendiente de **B2**. Tiene que salir exactamente así, con sus espacios y sus dos puntos:\n\n`Pendiente de cobro a 16/11/2026: 48.215,40 €`",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha del informe", "B1": {"fecha": "2026-11-16"},
+     "A2": "Pendiente de cobro", "B2": 48215.4,
+     "A4": "Titular"
+    },
+    "formatos": {"B1": "fecha", "B2": "eur"},
+    "anchos": {"A": 18, "B": 16}
+   },
+   "objetivo": "B4",
+   "solucion": "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00 €\")",
+   "alternativas": [
+    "=CONCAT(\"Pendiente de cobro a \";TEXTO(B1;\"dd/mm/aaaa\");\": \";TEXTO(B2;\"#.##0,00 €\"))",
+    "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00\")&\" €\""
+   ],
+   "errores_tipicos": [
+    "=\"Pendiente de cobro a \"&B1&\": \"&B2",
+    "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&B2",
+    "=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"0,00\")&\" €\""
+   ],
+   "variantes": [{"B1": {"fecha": "2026-12-31"}, "B2": 1234.5}],
+   "debe_usar": ["TEXTO"],
+   "pistas": [
+    "Une con `&` cuatro piezas: el texto fijo, la fecha, los dos puntos con su espacio y el importe.",
+    "La fecha: `TEXTO(B1;\"dd/mm/aaaa\")`. El importe: `TEXTO(B2;\"#.##0,00 €\")`. Cuida los espacios dentro de las comillas: `\"Pendiente de cobro a \"` y `\": \"`.",
+    "`=\"Pendiente de cobro a \"&TEXTO(B1;\"dd/mm/aaaa\")&\": \"&TEXTO(B2;\"#.##0,00 €\")`"
+   ],
+   "explicacion": "Titular listo: cambia la fecha o el total y la frase se actualiza sola. Sin TEXTO, la frase mostraría el número de serie de la fecha (46342) y el importe sin puntos ni euros. Con esto, tus informes se presentan solos."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n4m2l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué código de formato muestra el número 7 como **007**?",
+   "aceptadas": ["000", "\"000\""],
+   "explicacion": "Tres ceros = tres cifras obligatorias. Muy útil para códigos de artículo, de cliente o de delegación."
+  },
+  {
+   "id": "n4m2l2-q2",
+   "modo": "test",
+   "pregunta": "Aplicas a una columna de importes el formato `#.##0,00 €`. ¿Qué les pasa a los valores?",
+   "opciones": [
+    {"texto": "Nada: solo cambia cómo se ven, y se siguen sumando", "correcta": true, "porque": "Eso es: el formato es la ropa del número, no el número."},
+    {"texto": "Se convierten en texto", "correcta": false, "porque": "Eso lo hace TEXTO, no el formato de celdas."},
+    {"texto": "Se redondean de verdad a dos decimales", "correcta": false, "porque": "Solo se muestran con dos decimales; la celda guarda todos. Para redondear el valor, REDONDEAR."}
+   ],
+   "explicacion": "Formato = aspecto. TEXTO = convertir en texto. REDONDEAR = cambiar el valor."
+  },
+  {
+   "id": "n4m2l2-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué muestra esta fórmula con el saldo de B2 (−1520,75)?",
+   "hoja": {"celdas": {"A1": "Cliente", "B1": "Saldo", "A2": "Montajes Arga, S.L.", "B2": -1520.75}, "anchos": {"A": 22}},
+   "celda": "C2",
+   "formula": "=TEXTO(B2;\"#.##0,00;(#.##0,00);0\")",
+   "explicacion": "Es negativo, así que usa la segunda sección: entre paréntesis y sin signo menos, con punto de miles: (1.520,75)."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "¿Dónde se crea un formato personalizado?", "dorso": "Ctrl+1 › Número › Personalizada › cuadro Tipo."},
+  {"tipo": "concepto", "frente": "Diferencia entre 0 y # en un código de formato", "dorso": "0 = cifra obligatoria (000 muestra 7 como 007). # = cifra opcional, solo si hace falta."},
+  {"tipo": "concepto", "frente": "Las tres secciones de un formato", "dorso": "positivo;negativo;cero. Ejemplo: #.##0,00 €;(#.##0,00 €);\"-\""},
+  {"tipo": "error", "frente": "¿Por qué no escribir «45 días» en la celda?", "dorso": "Porque es texto y no suma. Escribe 45 y usa el formato 0\" días\"."},
+  {"tipo": "funcion", "frente": "TEXTO: sintaxis y cuándo usarla", "dorso": "=TEXTO(valor; \"código\"). Solo para meter números o fechas en frases: el resultado es texto."}
+ ]
+}

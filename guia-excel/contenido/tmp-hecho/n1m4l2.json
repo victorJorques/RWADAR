@@ -1,0 +1,367 @@
+{
+ "id": "n1m4l2",
+ "titulo": "Tu primer gráfico",
+ "minutos": 15,
+ "objetivo": "Elegir el gráfico que cuenta el mensaje (columnas, líneas o circular), crearlo seleccionando los datos con sus títulos y dejarlo listo para enseñar con título y etiquetas de datos.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "El lunes, en el comité, quiero ver de un vistazo cuánto ha vendido cada delegación en el tercer trimestre. Un gráfico, por favor: nadie lee tablas de números a las nueve de la mañana.",
+  "logro": "Ya sabes elegir el gráfico adecuado para cada mensaje y crearlo con título y cifras, listo para una reunión de dirección."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Una tabla obliga a leer número a número. Un **gráfico** cuenta lo mismo en cinco segundos: quién vende más, si algo sube o baja.\n\nAntes de crear uno, hazte una pregunta: **¿qué quiero que se vea?** Según la respuesta, el gráfico es uno u otro. Con tres tipos resolverás casi todo lo que te pidan en la oficina."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Qué gráfico usar",
+   "cabecera": [
+    "Quiero enseñar…",
+    "Gráfico",
+    "Ejemplo en Electro Cierzo"
+   ],
+   "filas": [
+    [
+     "**Comparar** cantidades entre sí",
+     "Columnas (o barras, si los nombres son largos)",
+     "Ventas de cada delegación"
+    ],
+    [
+     "Cómo **evoluciona** algo en el tiempo",
+     "Líneas",
+     "Cobros de cada mes del año"
+    ],
+    [
+     "Cómo se **reparte** un todo, en pocas partes",
+     "Circular",
+     "Plantilla por delegación: Zaragoza, Pamplona, Lleida"
+    ]
+   ],
+   "pie": "Primero el mensaje, después el gráfico."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e1",
+   "modo": "test",
+   "pregunta": "Carmen quiere **comparar** las ventas del trimestre de Zaragoza, Pamplona y Lleida. ¿Qué gráfico usas?",
+   "opciones": [
+    {
+     "texto": "Columnas",
+     "correcta": true,
+     "porque": "Correcto. Una columna por delegación: la más alta salta a la vista y se comparan de un golpe."
+    },
+    {
+     "texto": "Líneas",
+     "correcta": false,
+     "porque": "Las líneas unen puntos en el tiempo. Unir Zaragoza con Pamplona no tiene sentido: no hay un «antes» y un «después»."
+    },
+    {
+     "texto": "Ninguno: mejor la tabla de números",
+     "correcta": false,
+     "porque": "Carmen ha pedido justo lo contrario: verlo de un vistazo. Con tres cifras, un gráfico de columnas se entiende al instante."
+    }
+   ],
+   "explicacion": "Comparar cantidades = columnas. Es el gráfico que más usarás en tu vida laboral."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e2",
+   "modo": "test",
+   "pregunta": "Marta quiere enseñar al banco cómo han ido los **cobros mes a mes**, de enero a octubre. ¿Qué gráfico eliges?",
+   "opciones": [
+    {
+     "texto": "Líneas",
+     "correcta": true,
+     "porque": "Correcto. Los meses van seguidos en el tiempo y la línea muestra de un vistazo si sube, baja o se mantiene."
+    },
+    {
+     "texto": "Circular",
+     "correcta": false,
+     "porque": "Un circular con diez porciones de meses no enseña la evolución: no se ve si el dinero sube o baja."
+    },
+    {
+     "texto": "Columnas, una por mes, ordenadas de mayor a menor",
+     "correcta": false,
+     "porque": "Al ordenar por importe se pierde el orden de los meses, que es justo lo que interesa. Columnas en orden de meses valdrían; ordenadas por importe, no."
+    }
+   ],
+   "explicacion": "Tiempo = líneas. Si en el eje de abajo hay meses, días o años, piensa primero en una línea."
+  },
+  {
+   "tipo": "texto",
+   "md": "El gráfico **circular** (de «quesitos») es el que más se usa mal. Sirve solo si se cumplen dos cosas:\n\n1. Las porciones son **partes de un todo** que suma el 100 %.\n2. Son **pocas**: dos, tres, cuatro o cinco.\n\nCon doce porciones el ojo no distingue cuál es mayor y los colores se confunden. Para muchas categorías, usa **barras ordenadas** de mayor a menor."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e3",
+   "modo": "test",
+   "pregunta": "Javier te pide un circular con las ventas de sus **12 comerciales** para la reunión. ¿Qué le propones?",
+   "opciones": [
+    {
+     "texto": "Un gráfico de barras con los 12 comerciales ordenados de más venta a menos",
+     "correcta": true,
+     "porque": "Correcto. Con 12 nombres, las barras se leen bien y el orden dice quién va primero. Es lo que Javier quiere saber."
+    },
+    {
+     "texto": "El circular que pide, con 12 colores distintos",
+     "correcta": false,
+     "porque": "Doce porciones parecidas no se distinguen: nadie sabrá quién vende más. Se puede proponer algo mejor con amabilidad."
+    },
+    {
+     "texto": "Un circular en 3D para que se vea más vistoso",
+     "correcta": false,
+     "porque": "El 3D deforma las porciones: las de delante parecen más grandes de lo que son. Engaña al que mira."
+    }
+   ],
+   "explicacion": "Proponer el gráfico adecuado es parte del trabajo. «Te lo hago en barras ordenadas, que con doce se lee mejor» es una respuesta profesional."
+  },
+  {
+   "tipo": "texto",
+   "md": "Crear el gráfico son dos pasos:\n\n1. **Selecciona los datos con sus títulos**: los nombres de la columna A y las cifras de la columna B, títulos incluidos (A1:B4). No selecciones la fila del total.\n2. **Insertar › Gráficos** y elige el tipo. Si dudas, **Gráficos recomendados** te propone opciones.\n\nExcel lo dibuja encima de la hoja. Puedes moverlo arrastrándolo por el borde."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Ventas del tercer trimestre de 2026",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Ventas 3T",
+     "A2": "Zaragoza",
+     "B2": 412300,
+     "A3": "Pamplona",
+     "B3": 186750,
+     "A4": "Lleida",
+     "B4": 143900,
+     "A5": "Total",
+     "B5": "=SUMA(B2:B4)"
+    },
+    "formatos": {
+     "B2:B5": "eur"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 14
+    }
+   },
+   "resaltar": [
+    "A1:B4"
+   ],
+   "pie": "Lo resaltado es lo que se selecciona para el gráfico: nombres y cifras con sus títulos, sin el total."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "atajo",
+   "titulo": "Gráfico en un segundo",
+   "md": "Con los datos seleccionados, [[Alt]]+[[F1]] crea al momento un gráfico de columnas en la misma hoja. [[F11]] lo crea en una hoja nueva."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e4",
+   "modo": "test",
+   "pregunta": "Con la hoja de arriba, ¿qué seleccionas antes de insertar el gráfico de Carmen?",
+   "opciones": [
+    {
+     "texto": "A1:B4",
+     "correcta": true,
+     "porque": "Correcto. Nombres, cifras y títulos: Excel pone «Zaragoza», «Pamplona» y «Lleida» debajo de cada columna."
+    },
+    {
+     "texto": "B2:B4",
+     "correcta": false,
+     "porque": "Sin la columna A, Excel no sabe los nombres y pone 1, 2, 3 debajo de las columnas. Nadie sabrá cuál es cuál."
+    },
+    {
+     "texto": "A1:B5",
+     "correcta": false,
+     "porque": "Incluye la fila del total: saldría una columna «Total» que dobla a las demás y las hace parecer pequeñas."
+    }
+   ],
+   "explicacion": "Etiquetas + cifras + títulos, y nada de totales. Si la selección es buena, el gráfico sale casi hecho."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e5",
+   "modo": "cinta",
+   "enunciado": "Ya tienes seleccionado A1:B4. Toca el botón para insertar un **gráfico de columnas**.",
+   "ruta": [
+    "Insertar",
+    "Gráficos",
+    "Insertar gráfico de columnas o de barras"
+   ],
+   "explicacion": "Insertar › Gráficos › Insertar gráfico de columnas o de barras. Elige la primera opción, «Columna agrupada», la más sencilla."
+  },
+  {
+   "tipo": "texto",
+   "md": "Un gráfico para enseñar necesita dos cosas:\n\n- **Título que diga el mensaje**. No «Gráfico 1»: mejor «Ventas del 3T por delegación» o incluso «Zaragoza vende más que Pamplona y Lleida juntas».\n- **Etiquetas de datos**: la cifra encima de cada columna, para no adivinar.\n\nHaz clic en el gráfico y pulsa el botón **+** que aparece a su lado (**Elementos de gráfico**). Marca *Título del gráfico* y *Etiquetas de datos*."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    [
+     "Sin título o con «Título del gráfico»",
+     "Un título que diga qué se ve"
+    ],
+    [
+     "Columnas en 3D con sombras",
+     "Columnas planas: se comparan sin engaños"
+    ],
+    [
+     "Circular con 12 porciones",
+     "Barras ordenadas de mayor a menor"
+    ],
+    [
+     "Hay que adivinar las cifras",
+     "Etiquetas de datos encima de cada columna"
+    ]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e6",
+   "modo": "formula",
+   "enunciado": "Carmen querrá saber qué parte del total vende cada delegación, para decirlo en el comité. En **C2** calcula el **porcentaje** de Zaragoza sobre el total (ventas de B2 entre el total de B5). Tu fórmula se copiará a C3:C4, así que fija el total.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Ventas 3T",
+     "C1": "% del total",
+     "A2": "Zaragoza",
+     "B2": 412300,
+     "A3": "Pamplona",
+     "B3": 186750,
+     "A4": "Lleida",
+     "B4": 143900,
+     "A5": "Total",
+     "B5": "=SUMA(B2:B4)"
+    },
+    "formatos": {
+     "B2:B5": "eur",
+     "C2:C4": "pct1"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 14,
+     "C": 12
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "solucion": "=B2/$B$5",
+   "alternativas": [
+    "=B2/B$5"
+   ],
+   "errores_tipicos": [
+    "=B2/B5",
+    "=B5/B2",
+    "=$B$2/$B$5"
+   ],
+   "variantes": [
+    {
+     "B3": 200000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "pistas": [
+    "La parte de un total es: la parte entre el total.",
+    "La parte es B2 y el total está en B5. Al copiar hacia abajo, B5 no debe moverse.",
+    "=B2/$B$5"
+   ],
+   "explicacion": "Zaragoza hace el 55,5 % de las ventas. Has mezclado lo que ya sabías (el $ y los porcentajes) con el gráfico: ahora Carmen tiene la imagen y la cifra que la acompaña."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n1m4l2-e7",
+   "modo": "ordenar",
+   "enunciado": "Hazle a Carmen su gráfico para el comité. Ordena los pasos.",
+   "pasos": [
+    "Selecciona A1:B4: delegaciones y ventas con sus títulos, sin el total",
+    "Insertar › Gráficos › Insertar gráfico de columnas o de barras › Columna agrupada",
+    "Haz clic en el gráfico y pulsa el botón + (Elementos de gráfico)",
+    "Marca Etiquetas de datos para ver la cifra de cada columna",
+    "Escribe el título: «Ventas del 3T de 2026 por delegación»",
+    "Comprueba que las cifras del gráfico coinciden con las de la tabla"
+   ],
+   "explicacion": "Seleccionar, insertar, completar y comprobar. Un gráfico con título y cifras, revisado antes de enviarlo: listo para el comité de dirección."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n1m4l2-q1",
+   "modo": "test",
+   "pregunta": "Lucía quiere enseñar cómo se reparten las 58 personas de la plantilla entre **Zaragoza, Pamplona y Lleida**. ¿Qué gráfico encaja?",
+   "opciones": [
+    {
+     "texto": "Circular",
+     "correcta": true,
+     "porque": "Correcto. Son partes de un todo (la plantilla entera) y solo tres porciones: el caso perfecto para un circular."
+    },
+    {
+     "texto": "Líneas",
+     "correcta": false,
+     "porque": "No hay evolución en el tiempo: son tres sedes en un mismo momento."
+    },
+    {
+     "texto": "Circular en 3D",
+     "correcta": false,
+     "porque": "El tipo es bueno, pero el 3D deforma las porciones. Siempre plano."
+    }
+   ]
+  },
+  {
+   "id": "n1m4l2-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué tipo de gráfico usas para enseñar cómo **evolucionan** las ventas mes a mes? (una palabra)",
+   "aceptadas": [
+    "líneas",
+    "lineas",
+    "línea",
+    "linea",
+    "de líneas",
+    "de lineas",
+    "gráfico de líneas",
+    "grafico de lineas"
+   ],
+   "explicacion": "Líneas: el tiempo va en el eje de abajo y la línea muestra si sube o baja."
+  },
+  {
+   "id": "n1m4l2-q3",
+   "modo": "cinta",
+   "enunciado": "Si no sabes qué gráfico elegir, deja que Excel te proponga. Toca ese botón.",
+   "ruta": [
+    "Insertar",
+    "Gráficos",
+    "Gráficos recomendados"
+   ],
+   "explicacion": "Insertar › Gráficos › Gráficos recomendados. Te enseña opciones con tus datos; tú decides cuál cuenta mejor el mensaje."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "concepto",
+   "frente": "Comparar / evolución en el tiempo / partes de un todo: ¿qué gráfico?",
+   "dorso": "Columnas / líneas / circular (solo con pocas porciones)."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Por qué no se usa un gráfico en 3D?",
+   "dorso": "Deforma los tamaños: lo de delante parece más grande de lo que es."
+  },
+  {
+   "tipo": "atajo",
+   "frente": "Crear un gráfico al momento con los datos seleccionados",
+   "dorso": "Alt+F1 (en la misma hoja) o F11 (en una hoja nueva)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué seleccionas antes de insertar un gráfico?",
+   "dorso": "Los nombres y las cifras con sus títulos, sin la fila del total."
+  }
+ ]
+}

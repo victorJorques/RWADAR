@@ -1,0 +1,622 @@
+{
+ "id": "n2m5l2",
+ "titulo": "Cuando no lo encuentra: #N/D",
+ "minutos": 15,
+ "objetivo": "Entender el #N/D, avisar con «Sin tarifa» de los códigos que faltan y arreglar los cruces que fallan por espacios o por números guardados como texto.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "El presupuesto de Montajes Delicias me sale con #N/D en varias líneas y el total no se calcula. No quiero que esas líneas desaparezcan: quiero ver cuáles no tienen precio y cuántas son.",
+  "logro": "Ya sabes leer un #N/D, avisar de los productos sin tarifa, limpiar los códigos que llegan con espacios y contar los avisos antes de entregar."
+ },
+ "funciones": [
+  "BUSCARX",
+  "SI.ERROR",
+  "SI.ND",
+  "ESPACIOS"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "**#N/D** significa **no disponible**. BUSCARX ha recorrido toda la columna de códigos y no ha encontrado el que le pides.\n\nNo es que la fórmula esté mal escrita: es un **mensaje**. Te dice «este código no está en la tarifa».\n\nOjo, porque los errores contagian: si una línea da #N/D, el total que la suma también da #N/D."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Un código que no está",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Uds",
+     "C1": "Precio",
+     "A2": "CAB-15",
+     "B2": 4,
+     "A3": "TUB-25",
+     "B3": 10,
+     "A4": "LED-18",
+     "B4": 12,
+     "G1": "Código",
+     "H1": "Precio",
+     "G2": "CAB-15",
+     "H2": 32.5,
+     "G3": "CAB-25",
+     "H3": 49.9,
+     "G4": "CAN-40",
+     "H4": 4.8,
+     "G5": "TUB-20",
+     "H5": 18.9,
+     "G6": "BRI-200",
+     "H6": 3.2,
+     "G7": "MEC-INT",
+     "H7": 4.15,
+     "G8": "LED-18",
+     "H8": 14.6,
+     "G9": "MAG-16",
+     "H9": 7.85,
+     "C2": "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9)",
+     "C3": "=BUSCARX(A3;$G$2:$G$9;$H$2:$H$9)",
+     "C4": "=BUSCARX(A4;$G$2:$G$9;$H$2:$H$9)",
+     "B5": "Total",
+     "C5": "=SUMA(C2:C4)"
+    },
+    "formatos": {
+     "H2:H9": "eur",
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "G": 10
+    },
+    "columnas": 8,
+    "filas": 9
+   },
+   "resaltar": [
+    "C3",
+    "C5"
+   ],
+   "mostrar_formulas": false,
+   "pie": "TUB-25 no está en la tarifa (solo hay TUB-20): C3 da #N/D y el total de C5 también."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e1",
+   "modo": "predice",
+   "enunciado": "Esta tarifa tiene la canaleta de 40 (CAN-40), pero no la de 60. ¿Qué devuelve la búsqueda de **CAN-60**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Precio",
+     "A2": "CAB-15",
+     "B2": 32.5,
+     "A3": "CAN-40",
+     "B3": 4.8,
+     "A4": "TUB-20",
+     "B4": 18.9,
+     "A5": "LED-18",
+     "B5": 14.6,
+     "A6": "MAG-16",
+     "B6": 7.85
+    },
+    "formatos": {
+     "B2:B6": "eur"
+    },
+    "columnas": 4,
+    "filas": 6
+   },
+   "celda": "D2",
+   "formula": "=BUSCARX(\"CAN-60\";A2:A6;B2:B6)",
+   "explicacion": "#N/D: CAN-60 no aparece en A2:A6. BUSCARX busca el código **exacto**: no se conforma con el CAN-40, que se le parece."
+  },
+  {
+   "tipo": "texto",
+   "md": "BUSCARX tiene un **cuarto hueco**, opcional: **si_no_se_encuentra**. Ahí pones lo que quieres ver cuando el código no está:\n\n`=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")`\n\n- Si encuentra el código, trae el precio.\n- Si no, escribe «Sin tarifa».\n\nEl aviso sigue a la vista, pero ahora cualquiera lo entiende. Los textos dentro de una fórmula van siempre **entre comillas**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e2",
+   "modo": "formula",
+   "enunciado": "Marta quiere ver «Sin tarifa» en lugar de #N/D. En **C2** trae el precio del código de A2 y, si no está en la tarifa, que salga el texto **Sin tarifa**. La fórmula se copiará hasta **C6**. C2 debe dar **14,60 €** y C3, **Sin tarifa**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Uds",
+     "C1": "Precio",
+     "A2": "LED-18",
+     "B2": 12,
+     "A3": "CAN-60",
+     "B3": 20,
+     "A4": "MAG-16",
+     "B4": 10,
+     "A5": "BRI-200",
+     "B5": 5,
+     "A6": "CAB-25",
+     "B6": 3,
+     "G1": "Código",
+     "H1": "Precio",
+     "G2": "CAB-15",
+     "H2": 32.5,
+     "G3": "CAB-25",
+     "H3": 49.9,
+     "G4": "CAN-40",
+     "H4": 4.8,
+     "G5": "TUB-20",
+     "H5": 18.9,
+     "G6": "BRI-200",
+     "H6": 3.2,
+     "G7": "MEC-INT",
+     "H7": 4.15,
+     "G8": "LED-18",
+     "H8": 14.6,
+     "G9": "MAG-16",
+     "H9": 7.85
+    },
+    "formatos": {
+     "H2:H9": "eur",
+     "C2:C6": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "G": 10
+    },
+    "columnas": 8,
+    "filas": 9
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C6"
+   ],
+   "solucion": "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(A2;$G$2:$G$9;$H$2:$H$9);\"Sin tarifa\")",
+    "=BUSCARX(A2;G$2:G$9;H$2:H$9;\"Sin tarifa\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9)",
+    "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;0)",
+    "=BUSCARX(A2;G2:G9;H2:H9;\"Sin tarifa\")"
+   ],
+   "variantes": [
+    {
+     "A2": "DIF-40",
+     "A3": "TUB-20"
+    }
+   ],
+   "debe_usar": [
+    "BUSCARX"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es la búsqueda de siempre con un cuarto hueco al final.",
+    "Después de $H$2:$H$9 pon un punto y coma y el texto entre comillas.",
+    "`=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")`"
+   ],
+   "explicacion": "Ahora el presupuesto se lee de un vistazo: los precios que hay y un aviso claro donde falta uno. Así se entrega a la jefa, no con #N/D."
+  },
+  {
+   "tipo": "texto",
+   "md": "Hay fórmulas sin ese cuarto hueco, como BUSCARV (la verás en la lección siguiente). Para ellas hay dos funciones que **envuelven** la fórmula:\n\n- `SI.ND(fórmula; \"Sin tarifa\")` cambia **solo** el #N/D por tu texto.\n- `SI.ERROR(fórmula; \"Sin tarifa\")` cambia **cualquier** error: el #N/D, pero también un #¿NOMBRE? por una función mal escrita o un #¡VALOR!.\n\nEs decir, SI.ERROR también esconde **tus propios fallos**. Para búsquedas, mejor SI.ND."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Te cuento una que vi el año pasado. Alguien puso `SI.ERROR(…;0)` en todas las búsquedas «para que no salieran esos # tan feos». Los productos sin tarifa pasaron a valer 0 €, el total cuadraba… y facturamos un pedido entero sin cobrar tres líneas. Un #N/D es una alarma: no la apagues, léela."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e3",
+   "modo": "test",
+   "pregunta": "Tu búsqueda de precios da #N/D en dos líneas del presupuesto. ¿Qué es lo correcto?",
+   "opciones": [
+    {
+     "texto": "Poner «Sin tarifa» en el cuarto hueco de BUSCARX y revisar esos dos códigos",
+     "correcta": true,
+     "porque": "Correcto: el aviso queda visible y averiguas por qué faltan (código mal escrito o producto nuevo)."
+    },
+    {
+     "texto": "Envolver la fórmula en `SI.ERROR(…;0)` para que el total salga",
+     "correcta": false,
+     "porque": "El total saldría, pero sin esas dos líneas: un presupuesto más barato de lo que es, y nadie se entera."
+    },
+    {
+     "texto": "Escribir el precio a mano encima de la fórmula",
+     "correcta": false,
+     "porque": "Esa celda ya no se actualiza cuando cambie la tarifa, y nadie sabrá que es un número puesto a mano."
+    },
+    {
+     "texto": "Borrar esas dos líneas del presupuesto",
+     "correcta": false,
+     "porque": "El cliente las ha pedido: desaparecerían del presupuesto sin que nadie lo decida."
+    }
+   ],
+   "explicacion": "Un #N/D bien tratado se convierte en una pregunta útil: ¿por qué falta este código?"
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces el código **sí está** en la tarifa y aun así sale #N/D. Las dos causas más típicas:\n\n1. **Espacios invisibles.** El programa de gestión exporta «CAB-15 » con un espacio al final. Para Excel, «CAB-15 » y «CAB-15» son textos distintos.\n2. **Número frente a texto.** En una lista, 430012 es un número; en la otra, el texto «430012». Se ven iguales, pero no lo son."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "truco",
+   "titulo": "Cómo cazar el espacio",
+   "md": "`=LARGO(A2)` cuenta los caracteres. «CAB-15» tiene 6; si sale 7, sobra un espacio. Y `ESPACIOS(A2)` lo quita, como viste en el módulo de textos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e4",
+   "modo": "formula",
+   "enunciado": "Los códigos de la columna A llegan del programa de gestión con un **espacio al final**, y la fórmula de C2 da #N/D aunque el producto está en la tarifa. Arréglala para que busque el código **sin espacios** y cópiala hasta **C5**. C2 debe dar **49,90 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Uds",
+     "C1": "Precio",
+     "A2": "CAB-25 ",
+     "B2": 2,
+     "A3": "MEC-INT ",
+     "B3": 40,
+     "A4": "LED-18 ",
+     "B4": 16,
+     "A5": "TUB-20 ",
+     "B5": 5,
+     "G1": "Código",
+     "H1": "Precio",
+     "G2": "CAB-15",
+     "H2": 32.5,
+     "G3": "CAB-25",
+     "H3": 49.9,
+     "G4": "CAN-40",
+     "H4": 4.8,
+     "G5": "TUB-20",
+     "H5": 18.9,
+     "G6": "BRI-200",
+     "H6": 3.2,
+     "G7": "MEC-INT",
+     "H7": 4.15,
+     "G8": "LED-18",
+     "H8": 14.6,
+     "G9": "MAG-16",
+     "H9": 7.85
+    },
+    "formatos": {
+     "H2:H9": "eur",
+     "C2:C5": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "G": 10
+    },
+    "columnas": 8,
+    "filas": 9
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "inicial": "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9)",
+   "solucion": "=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9)",
+   "alternativas": [
+    "=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+    "=BUSCARX(ESPACIOS(A2);G$2:G$9;H$2:H$9)"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9)",
+    "=SI.ERROR(BUSCARX(A2;$G$2:$G$9;$H$2:$H$9);0)",
+    "=ESPACIOS(BUSCARX(A2;$G$2:$G$9;$H$2:$H$9))"
+   ],
+   "variantes": [
+    {
+     "A2": "MAG-16 "
+    }
+   ],
+   "debe_usar": [
+    "BUSCARX",
+    "ESPACIOS"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "El problema está en lo que buscas (A2), no en la tarifa.",
+    "Limpia A2 antes de buscarlo: ESPACIOS(A2) va en el primer hueco.",
+    "`=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9)`"
+   ],
+   "explicacion": "Has encontrado la causa en lugar de tapar el síntoma. Las funciones se pueden meter unas dentro de otras: primero limpias, luego buscas. Es el arreglo más útil con datos exportados de un programa de gestión."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e5",
+   "modo": "test",
+   "pregunta": "En el listado de pedidos, el nº de cliente 430012 sale **pegado a la izquierda** y con un triangulito verde. En la lista de clientes, el mismo número sale a la derecha. BUSCARX da #N/D. ¿Qué está pasando?",
+   "opciones": [
+    {
+     "texto": "En el pedido es un **texto** que parece número; en la lista, un número de verdad",
+     "correcta": true,
+     "porque": "Correcto: alineado a la izquierda con triángulo verde = número guardado como texto. Se arregla con VALOR, como en el módulo de textos: `BUSCARX(VALOR(B2);…)`."
+    },
+    {
+     "texto": "Hay un espacio al final",
+     "correcta": false,
+     "porque": "Podría ser, pero el triángulo verde y la alineación a la izquierda apuntan a otra cosa: número guardado como texto."
+    },
+    {
+     "texto": "El cliente 430012 no existe en la lista",
+     "correcta": false,
+     "porque": "Está en la lista: lo que no coincide es el tipo de dato."
+    },
+    {
+     "texto": "Falta fijar la lista con $",
+     "correcta": false,
+     "porque": "Sin $ fallarían las filas copiadas, no por la forma en que se ve el número."
+    }
+   ],
+   "explicacion": "Para Excel, el número 430012 y el texto «430012» son dos cosas distintas. Mira la alineación: los números van a la derecha."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Marta Ruiz",
+   "puesto": "Directora financiera",
+   "md": "Este es el de Montajes Delicias. Los códigos vienen del programa, con sus espacios de siempre, y sé que hay algún producto nuevo sin tarifa. Lo quiero limpio y con el aviso donde falte precio."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e6",
+   "modo": "formula",
+   "enunciado": "**Misión de Marta.** En **C2** trae el precio del código de A2: búscalo **sin espacios** y, si no está en la tarifa, que salga **Sin tarifa**. Cópiala hasta **C7**. C2 debe dar **7,85 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Uds",
+     "C1": "Precio",
+     "A2": "MAG-16 ",
+     "B2": 12,
+     "A3": "LED-36",
+     "B3": 6,
+     "A4": "CAN-40",
+     "B4": 30,
+     "A5": "BRI-200 ",
+     "B5": 10,
+     "A6": "DIF-40",
+     "B6": 2,
+     "A7": "CAB-15",
+     "B7": 5,
+     "G1": "Código",
+     "H1": "Precio",
+     "G2": "CAB-15",
+     "H2": 32.5,
+     "G3": "CAB-25",
+     "H3": 49.9,
+     "G4": "CAN-40",
+     "H4": 4.8,
+     "G5": "TUB-20",
+     "H5": 18.9,
+     "G6": "BRI-200",
+     "H6": 3.2,
+     "G7": "MEC-INT",
+     "H7": 4.15,
+     "G8": "LED-18",
+     "H8": 14.6,
+     "G9": "MAG-16",
+     "H9": 7.85
+    },
+    "formatos": {
+     "H2:H9": "eur",
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "G": 10
+    },
+    "columnas": 8,
+    "filas": 9
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C7"
+   ],
+   "solucion": "=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+   "alternativas": [
+    "=SI.ND(BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9);\"Sin tarifa\")",
+    "=BUSCARX(ESPACIOS(A2);G$2:G$9;H$2:H$9;\"Sin tarifa\")"
+   ],
+   "errores_tipicos": [
+    "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+    "=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9)",
+    "=SI.ERROR(BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9);0)"
+   ],
+   "variantes": [
+    {
+     "A3": "LED-18",
+     "H2": 33
+    }
+   ],
+   "debe_usar": [
+    "BUSCARX",
+    "ESPACIOS"
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Junta las dos cosas de esta lección: ESPACIOS en lo que buscas y el cuarto hueco.",
+    "Primer hueco: ESPACIOS(A2). Cuarto hueco: \"Sin tarifa\". La tarifa, fijada con $.",
+    "`=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")`"
+   ],
+   "explicacion": "Presupuesto limpio: los códigos con espacios ya encuentran su precio y los dos productos nuevos quedan señalados. Esta fórmula la usarás tal cual con casi cualquier exportación."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-e7",
+   "modo": "formula",
+   "enunciado": "Antes de enviarlo, cuenta los avisos. En **F2** escribe una fórmula que diga **cuántas líneas** del presupuesto (C2:C7) no tienen tarifa. Debe salir **2**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Uds",
+     "C1": "Precio",
+     "A2": "MAG-16 ",
+     "B2": 12,
+     "A3": "LED-36",
+     "B3": 6,
+     "A4": "CAN-40",
+     "B4": 30,
+     "A5": "BRI-200 ",
+     "B5": 10,
+     "A6": "DIF-40",
+     "B6": 2,
+     "A7": "CAB-15",
+     "B7": 5,
+     "G1": "Código",
+     "H1": "Precio",
+     "G2": "CAB-15",
+     "H2": 32.5,
+     "G3": "CAB-25",
+     "H3": 49.9,
+     "G4": "CAN-40",
+     "H4": 4.8,
+     "G5": "TUB-20",
+     "H5": 18.9,
+     "G6": "BRI-200",
+     "H6": 3.2,
+     "G7": "MEC-INT",
+     "H7": 4.15,
+     "G8": "LED-18",
+     "H8": 14.6,
+     "G9": "MAG-16",
+     "H9": 7.85,
+     "C2": "=BUSCARX(ESPACIOS(A2);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "C3": "=BUSCARX(ESPACIOS(A3);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "C4": "=BUSCARX(ESPACIOS(A4);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "C5": "=BUSCARX(ESPACIOS(A5);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "C6": "=BUSCARX(ESPACIOS(A6);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "C7": "=BUSCARX(ESPACIOS(A7);$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")",
+     "E1": "Comprobación",
+     "F1": "Sin tarifa",
+     "E2": "Líneas"
+    },
+    "formatos": {
+     "H2:H9": "eur",
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 10,
+     "E": 12,
+     "G": 10
+    },
+    "columnas": 8,
+    "filas": 9
+   },
+   "objetivo": "F2",
+   "solucion": "=CONTAR.SI(C2:C7;\"Sin tarifa\")",
+   "alternativas": [
+    "=CONTAR.SI(C2:C7;F1)",
+    "=CONTAR.SI($C$2:$C$7;\"Sin tarifa\")"
+   ],
+   "errores_tipicos": [
+    "=CONTARA(C2:C7)",
+    "=CONTAR(C2:C7)",
+    "=CONTAR.BLANCO(C2:C7)"
+   ],
+   "variantes": [
+    {
+     "A4": "CAN-60"
+    }
+   ],
+   "pistas": [
+    "Quieres contar las celdas que cumplen una condición: lo viste en el módulo de condiciones.",
+    "CONTAR.SI(dónde; qué): dónde = C2:C7, qué = \"Sin tarifa\".",
+    "`=CONTAR.SI(C2:C7;\"Sin tarifa\")`"
+   ],
+   "explicacion": "Tienes un total de control: «2 líneas sin tarifa». Es lo primero que pones en el correo a Marta, y si mañana alguien añade el precio, el contador baja solo."
+  }
+ ],
+ "recuerda": [
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-q1",
+   "modo": "test",
+   "pregunta": "Quieres que una búsqueda con BUSCARV muestre «No está» cuando no encuentra el código, pero que **cualquier otro error** siga viéndose. ¿Qué usas?",
+   "opciones": [
+    {
+     "texto": "SI.ND",
+     "correcta": true,
+     "porque": "Correcto: SI.ND solo cambia el #N/D; si te equivocas al escribir algo, el error sigue a la vista."
+    },
+    {
+     "texto": "SI.ERROR",
+     "correcta": false,
+     "porque": "SI.ERROR también taparía errores como #¿NOMBRE? o #¡VALOR!, y no te enterarías de tus fallos."
+    },
+    {
+     "texto": "ESPACIOS",
+     "correcta": false,
+     "porque": "ESPACIOS limpia el texto que buscas, pero no cambia el error por un aviso."
+    },
+    {
+     "texto": "SI",
+     "correcta": false,
+     "porque": "SI decide entre dos valores según una condición; para errores de búsqueda está SI.ND."
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué significa **#N/D** en una búsqueda? (dos palabras)",
+   "aceptadas": [
+    "no disponible",
+    "No disponible",
+    "no disponibles",
+    "no encontrado",
+    "No encontrado"
+   ],
+   "explicacion": "#N/D = no disponible: el valor buscado no está en la columna donde buscas. Revisa espacios, número frente a texto o si de verdad falta."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m5l2-q3",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta búsqueda?",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Precio",
+     "A2": "MEC-INT",
+     "B2": 4.15,
+     "A3": "MEC-ENC",
+     "B3": 3.95,
+     "A4": "MEC-MAR",
+     "B4": 1.35,
+     "A5": "MEC-USB",
+     "B5": 19.8
+    },
+    "formatos": {
+     "B2:B5": "eur"
+    },
+    "columnas": 4,
+    "filas": 5
+   },
+   "celda": "D2",
+   "formula": "=BUSCARX(\"MEC-CON\";A2:A5;B2:B5;\"Pedir precio\")",
+   "explicacion": "MEC-CON no está en la lista, así que sale el cuarto hueco: «Pedir precio»."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "error",
+   "frente": "¿Qué significa #N/D?",
+   "dorso": "No disponible: lo que buscas no está en la columna de búsqueda."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "BUSCARX con aviso si no encuentra",
+   "dorso": "=BUSCARX(A2;$G$2:$G$9;$H$2:$H$9;\"Sin tarifa\")"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "SI.ND frente a SI.ERROR",
+   "dorso": "SI.ND solo cambia el #N/D; SI.ERROR cambia cualquier error (y puede tapar tus fallos)."
+  },
+  {
+   "tipo": "error",
+   "frente": "El código está en la tarifa pero sale #N/D. Dos causas típicas",
+   "dorso": "Espacios invisibles (usa ESPACIOS) o número guardado como texto (usa VALOR)."
+  }
+ ]
+}

@@ -1,0 +1,417 @@
+{
+ "nivel": "n1",
+ "titulo": "Examen del nivel 1",
+ "intro": "Tu primera semana en Electro Cierzo a prueba: quince encargos reales, sin pistas. Con 12 aciertos de 15 (80 %) consigues la insignia y el certificado del nivel 1.",
+ "umbral": 0.8,
+ "preguntas": [
+  {
+   "id": "n1-x1",
+   "modo": "formula",
+   "enunciado": "Lucía paga las **dietas** de los viajes: días fuera por el importe por día de **B1**. En **C4** calcula la dieta de Rosa. Tu fórmula se copiará a **C5:C7**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Dieta por día",
+     "B1": 53.34,
+     "A3": "Empleado",
+     "B3": "Días fuera",
+     "C3": "Dieta",
+     "A4": "Rosa Bielsa",
+     "B4": 3,
+     "A5": "Iñaki Goñi",
+     "B5": 5,
+     "A6": "Elena Abadía",
+     "B6": 2,
+     "A7": "Pablo Lasheras",
+     "B7": 4
+    },
+    "formatos": {
+     "B1": "eur",
+     "C4:C7": "eur"
+    }
+   },
+   "objetivo": "C4",
+   "copiar_a": [
+    "C5:C7"
+   ],
+   "solucion": "=B4*$B$1",
+   "alternativas": [
+    "=$B$1*B4",
+    "=B4*B$1"
+   ],
+   "errores_tipicos": [
+    "=B4*B1",
+    "=B4*53,34",
+    "=$B$4*$B$1"
+   ],
+   "variantes": [
+    {
+     "B1": 60
+    },
+    {
+     "B6": 7
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "`=B4*$B$1`: los días cambian de fila en fila; el importe por día, fijado con $, es el mismo para todos.",
+   "leccion": "n1m1l2"
+  },
+  {
+   "id": "n1-x2",
+   "modo": "respuesta_corta",
+   "pregunta": "En **D3** tienes `=B3*$G$1`. La copias hacia abajo hasta **D12**. ¿Qué fórmula queda en **D12**?",
+   "aceptadas": [
+    "=B12*$G$1",
+    "=b12*$g$1",
+    "B12*$G$1",
+    "= B12*$G$1"
+   ],
+   "explicacion": "B3 no lleva $ y baja nueve filas hasta B12; $G$1 está fijada: `=B12*$G$1`.",
+   "leccion": "n1m1l1"
+  },
+  {
+   "id": "n1-x3",
+   "modo": "formula",
+   "enunciado": "Marta te pasa tickets de restaurante con el IVA del **10 %** incluido (el tipo está en **B1**). En **C4** calcula la **base sin IVA** del primer ticket. Tu fórmula se copiará a **C5:C6**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Tipo de IVA",
+     "B1": 0.1,
+     "A3": "Ticket",
+     "B3": "Total pagado",
+     "C3": "Base",
+     "A4": "Comida con cliente",
+     "B4": 66,
+     "A5": "Menú en ruta",
+     "B5": 15.4,
+     "A6": "Cena en viaje",
+     "B6": 41.8
+    },
+    "formatos": {
+     "B1": "pct",
+     "B4:C6": "eur"
+    }
+   },
+   "objetivo": "C4",
+   "copiar_a": [
+    "C5:C6"
+   ],
+   "solucion": "=B4/(1+$B$1)",
+   "alternativas": [
+    "=B4/(1+B$1)"
+   ],
+   "errores_tipicos": [
+    "=B4-B4*$B$1",
+    "=B4*(1-$B$1)",
+    "=B4/(1+B1)",
+    "=B4/1,1"
+   ],
+   "variantes": [
+    {
+     "B1": 0.21
+    },
+    {
+     "B5": 22
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "Para quitar el IVA se divide: total / (1 + tipo). 66 / 1,1 = 60 €. Restar el 10 % del total quitaría de más.",
+   "leccion": "n1m1l4"
+  },
+  {
+   "id": "n1-x4",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": 200,
+     "A2": 0.1,
+     "A3": 15
+    }
+   },
+   "celda": "B1",
+   "formula": "=A1*(1-A2)+A3",
+   "explicacion": "Primero el paréntesis (1 − 0,1 = 0,9), después la multiplicación (200 × 0,9 = 180) y al final la suma: 180 + 15 = 195.",
+   "leccion": "n1m1l3",
+   "respuesta": "195"
+  },
+  {
+   "id": "n1-x5",
+   "modo": "formula",
+   "enunciado": "Carmen quiere saber cuánto han variado las ventas de cada familia de productos de **2025** a **2026**. En **D2** calcula la variación de la primera familia. La columna D tiene formato de porcentaje con un decimal. Tu fórmula se copiará a **D3:D5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Familia",
+     "B1": "Ventas 2025",
+     "C1": "Ventas 2026",
+     "D1": "Variación",
+     "A2": "Cable",
+     "B2": 512000,
+     "C2": 547840,
+     "A3": "Luminarias LED",
+     "B3": 284000,
+     "C3": 326600,
+     "A4": "Mecanismos",
+     "B4": 198500,
+     "C4": 186590,
+     "A5": "Magnetotérmicos",
+     "B5": 143200,
+     "C5": 150360
+    },
+    "formatos": {
+     "B2:C5": "eur",
+     "D2:D5": "pct1"
+    }
+   },
+   "objetivo": "D2",
+   "copiar_a": [
+    "D3:D5"
+   ],
+   "solucion": "=(C2-B2)/B2",
+   "alternativas": [
+    "=C2/B2-1"
+   ],
+   "errores_tipicos": [
+    "=(C2-B2)/C2",
+    "=C2-B2/B2",
+    "=C2-B2",
+    "=(B2-C2)/B2"
+   ],
+   "variantes": [
+    {
+     "B2": 500000
+    },
+    {
+     "C4": 210000
+    }
+   ],
+   "formato_resultado": "pct1",
+   "tolerancia": 0.0001,
+   "explicacion": "(nuevo − antiguo) / antiguo: el cable sube un 7 % y los mecanismos bajan un 6 %. Se divide entre el valor de partida.",
+   "leccion": "n1m1l4"
+  },
+  {
+   "id": "n1-x6",
+   "modo": "formula",
+   "enunciado": "Andrés quiere el **importe medio** de los pedidos a proveedores de esta semana. En **E2** calcúlalo con los cinco pedidos de la lista (el total de la fila 7 no es un pedido).",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Importe",
+     "A2": "PC-0871",
+     "B2": 1840,
+     "A3": "PC-0872",
+     "B3": 625.5,
+     "A4": "PC-0873",
+     "B4": 2310,
+     "A5": "PC-0874",
+     "B5": 418,
+     "A6": "PC-0875",
+     "B6": 956.5,
+     "A7": "TOTAL",
+     "B7": "=SUMA(B2:B6)",
+     "D2": "Media"
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "E2": "eur"
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=PROMEDIO(B2:B6)",
+   "alternativas": [
+    "=SUMA(B2:B6)/5",
+    "=B7/5"
+   ],
+   "errores_tipicos": [
+    "=PROMEDIO(B2:B7)",
+    "=SUMA(B2:B6)",
+    "=PROMEDIO(B3:B7)"
+   ],
+   "variantes": [
+    {
+     "B4": 3000
+    }
+   ],
+   "formato_resultado": "eur",
+   "explicacion": "1.230 € de media. El rango acaba en la fila 6: si incluyes el total, la media se dispara.",
+   "leccion": "n1m2l1"
+  },
+  {
+   "id": "n1-x7",
+   "modo": "formula",
+   "enunciado": "Marta quiere saber **cuántas facturas siguen sin cobrar**: son las que tienen vacía la fecha de cobro (columna C). Escribe el resultado en **F2**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Importe",
+     "C1": "Fecha de cobro",
+     "A2": "F-2026-1184",
+     "B2": 4235.6,
+     "C2": {
+      "fecha": "2026-11-10"
+     },
+     "A3": "F-2026-1191",
+     "B3": 1870.25,
+     "A4": "F-2026-1203",
+     "B4": 962.8,
+     "C4": {
+      "fecha": "2026-11-12"
+     },
+     "A5": "F-2026-1210",
+     "B5": 3410,
+     "A6": "F-2026-1218",
+     "B6": 2588.4,
+     "A7": "F-2026-1225",
+     "B7": 745.15,
+     "C7": {
+      "fecha": "2026-11-13"
+     },
+     "A8": "F-2026-1231",
+     "B8": 5120,
+     "A9": "F-2026-1240",
+     "B9": 1306.9,
+     "C9": {
+      "fecha": "2026-11-16"
+     },
+     "E2": "Sin cobrar"
+    },
+    "formatos": {
+     "B2:B9": "eur",
+     "C2:C9": "fecha"
+    }
+   },
+   "objetivo": "F2",
+   "solucion": "=CONTAR.BLANCO(C2:C9)",
+   "alternativas": [
+    "=CONTARA(A2:A9)-CONTAR(C2:C9)"
+   ],
+   "errores_tipicos": [
+    "=CONTAR(C2:C9)",
+    "=CONTARA(C2:C9)",
+    "=CONTAR.BLANCO(B2:B9)"
+   ],
+   "variantes": [
+    {
+     "C3": {
+      "fecha": "2026-11-17"
+     }
+    },
+    {
+     "C9": null
+    }
+   ],
+   "explicacion": "4 facturas pendientes: se cuentan los huecos de la columna de cobro. Cuando se apunte un cobro, el número baja solo.",
+   "leccion": "n1m2l2"
+  },
+  {
+   "id": "n1-x10",
+   "modo": "test",
+   "pregunta": "Una celda vale **1249,6** y le das formato de euros **sin decimales**. ¿Qué se ve y con qué número calculan las fórmulas que la usan?",
+   "opciones": [
+    {
+     "texto": "Se ve 1.250 € y las fórmulas usan 1249,6",
+     "correcta": true,
+     "porque": "Correcto: el formato redondea solo lo que se ve; el valor guardado no cambia."
+    },
+    {
+     "texto": "Se ve 1.250 € y las fórmulas usan 1250",
+     "correcta": false,
+     "porque": "Es la confusión típica: el formato no cambia el valor. Para cambiarlo de verdad hace falta REDONDEAR."
+    },
+    {
+     "texto": "Se ve 1.249 € porque quita los decimales",
+     "correcta": false,
+     "porque": "El formato no corta: redondea a la vista. 1249,6 se muestra como 1.250 €."
+    }
+   ],
+   "explicacion": "Formato = aspecto; el valor está en la barra de fórmulas.",
+   "leccion": "n1m3l1"
+  },
+  {
+   "id": "n1-x11",
+   "modo": "test",
+   "pregunta": "Javier quiere el título «Clientes de Lleida» centrado sobre las columnas A-E, y después ordenará la lista de debajo. ¿Qué haces?",
+   "opciones": [
+    {
+     "texto": "Escribo el título en A1 y uso Centrar en la selección (Ctrl+1 › Alineación › Horizontal)",
+     "correcta": true,
+     "porque": "Correcto: se ve centrado y cada celda sigue siendo independiente, así que nada falla al ordenar."
+    },
+    {
+     "texto": "Combinar y centrar A1:E1",
+     "correcta": false,
+     "porque": "Se ve igual, pero las celdas combinadas son la costumbre que da problemas al ordenar y filtrar."
+    },
+    {
+     "texto": "Escribo el título en C1 con espacios delante",
+     "correcta": false,
+     "porque": "Los espacios se quedan dentro del dato y el título se descuadra en cuanto cambia el ancho de una columna."
+    }
+   ],
+   "explicacion": "Centrar en la selección: el aspecto de combinar sin sus problemas.",
+   "leccion": "n1m3l2"
+  },
+  {
+   "id": "n1-x12",
+   "modo": "test",
+   "pregunta": "El total de B10 es `=SUMA(B2:B9)`. Insertas una fila nueva entre la 4 y la 5 (en medio de los datos). ¿Qué pasa con el total?",
+   "opciones": [
+    {
+     "texto": "Baja a B11 y pasa a ser =SUMA(B2:B10)",
+     "correcta": true,
+     "porque": "Correcto: al insertar en medio del rango, la fórmula se adapta sola."
+    },
+    {
+     "texto": "Sigue en B10 con =SUMA(B2:B9) y deja fuera la última fila",
+     "correcta": false,
+     "porque": "Las fórmulas se mueven y se ajustan al insertar filas. El peligro está en insertar justo encima del total, no en medio."
+    },
+    {
+     "texto": "Sale #¡REF!",
+     "correcta": false,
+     "porque": "#¡REF! aparece al eliminar una celda que la fórmula usaba, no al insertar."
+    }
+   ],
+   "explicacion": "En medio de los datos, el rango crece solo. Justo encima del total, no: revisa siempre el rango.",
+   "leccion": "n1m3l3"
+  },
+  {
+   "id": "n1-x13",
+   "modo": "ordenar",
+   "enunciado": "Javier quiere ver solo los clientes de **Lleida** en la lista. Ordena los pasos.",
+   "pasos": [
+    "Haz clic en una celda cualquiera de la lista",
+    "Datos › Ordenar y filtrar › Filtro",
+    "Abre la flecha del título Delegación",
+    "Desmarca (Seleccionar todo)",
+    "Marca Lleida y pulsa Aceptar"
+   ],
+   "explicacion": "Primero se ponen las flechas y después se elige qué ver. Las demás filas no se borran: solo se esconden.",
+   "leccion": "n1m4l1"
+  },
+  {
+   "id": "n1-x14",
+   "modo": "test",
+   "pregunta": "Lucía tiene que enseñar al comité cómo han ido las **horas extra de cada mes**, de enero a octubre. ¿Qué gráfico usa?",
+   "opciones": [
+    {
+     "texto": "Líneas",
+     "correcta": true,
+     "porque": "Correcto: es una evolución en el tiempo, y la línea muestra de un vistazo si sube o baja."
+    },
+    {
+     "texto": "Circular con diez porciones",
+     "correcta": false,
+     "porque": "Los meses no son partes de un todo que interese repartir, y diez porciones no se distinguen."
+    },
+    {
+     "texto": "Columnas ordenadas de más horas a menos",
+     "correcta": false,
+     "porque": "Al ordenar por cantidad se pierde el orden de los meses, que es justo lo que se quiere ver."
+    }
+   ],
+   "explicacion": "Tiempo en el eje de abajo = líneas.",
+   "leccion": "n1m4l2"
+  }
+ ]
+}

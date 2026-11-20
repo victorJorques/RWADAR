@@ -1,0 +1,1808 @@
+[
+{
+"en": "SUM",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sum-function",
+"href": "functions/sum-function"
+},
+{
+"en": "SUMIF",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sumif-function",
+"href": "functions/sumif-function"
+},
+{
+"en": "SUMIFS",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sumifs-function",
+"href": "functions/sumifs-function"
+},
+{
+"en": "SUMPRODUCT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sumproduct-function",
+"href": "functions/sumproduct-function"
+},
+{
+"en": "PRODUCT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "product-function",
+"href": "functions/product-function"
+},
+{
+"en": "ROUND",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "round-function",
+"href": "functions/round-function"
+},
+{
+"en": "ROUNDUP",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "roundup-function",
+"href": "functions/roundup-function"
+},
+{
+"en": "ROUNDDOWN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "rounddown-function",
+"href": "functions/rounddown-function"
+},
+{
+"en": "MROUND",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "mround-function",
+"href": "functions/mround-function"
+},
+{
+"en": "CEILING.MATH",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "ceiling-math-function",
+"href": "functions/ceiling-math-function"
+},
+{
+"en": "FLOOR.MATH",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "floor-math-function",
+"href": "functions/floor-math-function"
+},
+{
+"en": "CEILING",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "ceiling-function",
+"href": "functions/ceiling-function"
+},
+{
+"en": "FLOOR",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "floor-function",
+"href": "functions/floor-function"
+},
+{
+"en": "INT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "int-function",
+"href": "functions/int-function"
+},
+{
+"en": "TRUNC",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "trunc-function",
+"href": "functions/trunc-function"
+},
+{
+"en": "MOD",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "mod-function",
+"href": "functions/mod-function"
+},
+{
+"en": "QUOTIENT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "quotient-function",
+"href": "functions/quotient-function"
+},
+{
+"en": "ABS",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "abs-function",
+"href": null
+},
+{
+"en": "SIGN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sign-function",
+"href": "functions/sign-function"
+},
+{
+"en": "POWER",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "power-function",
+"href": "functions/power-function"
+},
+{
+"en": "SQRT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sqrt-function",
+"href": "functions/sqrt-function"
+},
+{
+"en": "EXP",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "exp-function",
+"href": "functions/exp-function"
+},
+{
+"en": "LN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "ln-function",
+"href": "functions/ln-function"
+},
+{
+"en": "LOG",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "log-function",
+"href": "functions/log-function"
+},
+{
+"en": "LOG10",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "log10-function",
+"href": "functions/log10-function"
+},
+{
+"en": "PI",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "pi-function",
+"href": "functions/pi-function"
+},
+{
+"en": "RAND",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "rand-function",
+"href": "functions/rand-function"
+},
+{
+"en": "RANDBETWEEN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "randbetween-function",
+"href": "functions/randbetween-function"
+},
+{
+"en": "RANDARRAY",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "randarray-function",
+"href": "functions/randarray-function"
+},
+{
+"en": "SEQUENCE",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sequence-function",
+"href": "functions/sequence-function"
+},
+{
+"en": "SUBTOTAL",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "subtotal-function",
+"href": "functions/subtotal-function"
+},
+{
+"en": "AGGREGATE",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "aggregate-function",
+"href": "functions/aggregate-function"
+},
+{
+"en": "FACT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "fact-function",
+"href": null
+},
+{
+"en": "COMBIN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "combin-function",
+"href": "functions/combin-function"
+},
+{
+"en": "GCD",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "gcd-function",
+"href": "functions/gcd-function"
+},
+{
+"en": "LCM",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "lcm-function",
+"href": "functions/lcm-function"
+},
+{
+"en": "EVEN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "even-function",
+"href": "functions/even-function"
+},
+{
+"en": "ODD",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "odd-function",
+"href": "functions/odd-function"
+},
+{
+"en": "ROMAN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "roman-function",
+"href": "functions/roman-function"
+},
+{
+"en": "ARABIC",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "arabic-function",
+"href": "functions/arabic-function"
+},
+{
+"en": "SUMSQ",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sumsq-function",
+"href": "functions/sumsq-function"
+},
+{
+"en": "MMULT",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "mmult-function",
+"href": "functions/mmult-function"
+},
+{
+"en": "MDETERM",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "mdeterm-function",
+"href": "functions/mdeterm-function"
+},
+{
+"en": "MINVERSE",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "minverse-function",
+"href": "functions/minverse-function"
+},
+{
+"en": "RADIANS",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "radians-function",
+"href": null
+},
+{
+"en": "DEGREES",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "degrees-function",
+"href": "functions/degrees-function"
+},
+{
+"en": "SIN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "sin-function",
+"href": "functions/sin-function"
+},
+{
+"en": "COS",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "cos-function",
+"href": "functions/cos-function"
+},
+{
+"en": "TAN",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "tan-function",
+"href": "functions/tan-function"
+},
+{
+"en": "BASE",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "base-function",
+"href": "functions/base-function"
+},
+{
+"en": "DECIMAL",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "decimal-function",
+"href": "functions/decimal-function"
+},
+{
+"en": "PERCENTOF",
+"cat": "Matem\u00e1ticas y trigonometr\u00eda",
+"slug": "percentof-function",
+"href": "functions/percentof-function"
+},
+{
+"en": "AVERAGE",
+"cat": "Estad\u00edsticas",
+"slug": "average-function",
+"href": "functions/average-function"
+},
+{
+"en": "AVERAGEA",
+"cat": "Estad\u00edsticas",
+"slug": "averagea-function",
+"href": "functions/averagea-function"
+},
+{
+"en": "AVERAGEIF",
+"cat": "Estad\u00edsticas",
+"slug": "averageif-function",
+"href": "functions/averageif-function"
+},
+{
+"en": "AVERAGEIFS",
+"cat": "Estad\u00edsticas",
+"slug": "averageifs-function",
+"href": "functions/averageifs-function"
+},
+{
+"en": "COUNT",
+"cat": "Estad\u00edsticas",
+"slug": "count-function",
+"href": "functions/count-function"
+},
+{
+"en": "COUNTA",
+"cat": "Estad\u00edsticas",
+"slug": "counta-function",
+"href": "functions/counta-function"
+},
+{
+"en": "COUNTBLANK",
+"cat": "Estad\u00edsticas",
+"slug": "countblank-function",
+"href": "functions/countblank-function"
+},
+{
+"en": "COUNTIF",
+"cat": "Estad\u00edsticas",
+"slug": "countif-function",
+"href": "get-started/use-the-countif-function-in-microsoft-excel"
+},
+{
+"en": "COUNTIFS",
+"cat": "Estad\u00edsticas",
+"slug": "countifs-function",
+"href": "functions/countifs-function"
+},
+{
+"en": "MAX",
+"cat": "Estad\u00edsticas",
+"slug": "max-function",
+"href": "functions/max-function"
+},
+{
+"en": "MAXA",
+"cat": "Estad\u00edsticas",
+"slug": "maxa-function",
+"href": "functions/maxa-function"
+},
+{
+"en": "MIN",
+"cat": "Estad\u00edsticas",
+"slug": "min-function",
+"href": "functions/min-function"
+},
+{
+"en": "MINA",
+"cat": "Estad\u00edsticas",
+"slug": "mina-function",
+"href": "functions/mina-function"
+},
+{
+"en": "MAXIFS",
+"cat": "Estad\u00edsticas",
+"slug": "maxifs-function",
+"href": "functions/maxifs-function"
+},
+{
+"en": "MINIFS",
+"cat": "Estad\u00edsticas",
+"slug": "minifs-function",
+"href": "functions/minifs-function"
+},
+{
+"en": "MEDIAN",
+"cat": "Estad\u00edsticas",
+"slug": "median-function",
+"href": "functions/median-function"
+},
+{
+"en": "MODE.SNGL",
+"cat": "Estad\u00edsticas",
+"slug": "mode-sngl-function",
+"href": "functions/mode-sngl-function"
+},
+{
+"en": "MODE.MULT",
+"cat": "Estad\u00edsticas",
+"slug": "mode-mult-function",
+"href": "functions/mode-mult-function"
+},
+{
+"en": "LARGE",
+"cat": "Estad\u00edsticas",
+"slug": "large-function",
+"href": "functions/large-function"
+},
+{
+"en": "SMALL",
+"cat": "Estad\u00edsticas",
+"slug": "small-function",
+"href": "functions/small-function"
+},
+{
+"en": "RANK.EQ",
+"cat": "Estad\u00edsticas",
+"slug": "rank-eq-function",
+"href": "functions/rank-eq-function"
+},
+{
+"en": "RANK.AVG",
+"cat": "Estad\u00edsticas",
+"slug": "rank-avg-function",
+"href": "functions/rank-avg-function"
+},
+{
+"en": "PERCENTILE.INC",
+"cat": "Estad\u00edsticas",
+"slug": "percentile-inc-function",
+"href": "functions/percentile-inc-function"
+},
+{
+"en": "PERCENTILE.EXC",
+"cat": "Estad\u00edsticas",
+"slug": "percentile-exc-function",
+"href": "functions/percentile-exc-function"
+},
+{
+"en": "QUARTILE.INC",
+"cat": "Estad\u00edsticas",
+"slug": "quartile-inc-function",
+"href": "functions/quartile-inc-function"
+},
+{
+"en": "QUARTILE.EXC",
+"cat": "Estad\u00edsticas",
+"slug": "quartile-exc-function",
+"href": "functions/quartile-exc-function"
+},
+{
+"en": "PERCENTRANK.INC",
+"cat": "Estad\u00edsticas",
+"slug": "percentrank-inc-function",
+"href": "functions/percentrank-inc-function"
+},
+{
+"en": "STDEV.S",
+"cat": "Estad\u00edsticas",
+"slug": "stdev-s-function",
+"href": "functions/stdev-s-function"
+},
+{
+"en": "STDEV.P",
+"cat": "Estad\u00edsticas",
+"slug": "stdev-p-function",
+"href": "functions/stdev-p-function"
+},
+{
+"en": "VAR.S",
+"cat": "Estad\u00edsticas",
+"slug": "var-s-function",
+"href": "functions/var-s-function"
+},
+{
+"en": "VAR.P",
+"cat": "Estad\u00edsticas",
+"slug": "var-p-function",
+"href": "functions/var-p-function"
+},
+{
+"en": "CORREL",
+"cat": "Estad\u00edsticas",
+"slug": "correl-function",
+"href": "functions/correl-function"
+},
+{
+"en": "PEARSON",
+"cat": "Estad\u00edsticas",
+"slug": "pearson-function",
+"href": "functions/pearson-function"
+},
+{
+"en": "SLOPE",
+"cat": "Estad\u00edsticas",
+"slug": "slope-function",
+"href": "functions/slope-function"
+},
+{
+"en": "INTERCEPT",
+"cat": "Estad\u00edsticas",
+"slug": "intercept-function",
+"href": "functions/intercept-function"
+},
+{
+"en": "RSQ",
+"cat": "Estad\u00edsticas",
+"slug": "rsq-function",
+"href": "functions/rsq-function"
+},
+{
+"en": "FORECAST.LINEAR",
+"cat": "Estad\u00edsticas",
+"slug": "forecast-and-forecast-linear-functions",
+"href": "forecasting-functions-reference#_forecast.linear"
+},
+{
+"en": "FORECAST.ETS",
+"cat": "Estad\u00edsticas",
+"slug": "forecast-ets-function",
+"href": "forecasting-functions-reference#_forecast.ets"
+},
+{
+"en": "TREND",
+"cat": "Estad\u00edsticas",
+"slug": "trend-function",
+"href": "functions/trend-function"
+},
+{
+"en": "GROWTH",
+"cat": "Estad\u00edsticas",
+"slug": "growth-function",
+"href": "functions/growth-function"
+},
+{
+"en": "LINEST",
+"cat": "Estad\u00edsticas",
+"slug": "linest-function",
+"href": "functions/linest-function"
+},
+{
+"en": "FREQUENCY",
+"cat": "Estad\u00edsticas",
+"slug": "frequency-function",
+"href": "functions/frequency-function"
+},
+{
+"en": "GEOMEAN",
+"cat": "Estad\u00edsticas",
+"slug": "geomean-function",
+"href": "functions/geomean-function"
+},
+{
+"en": "HARMEAN",
+"cat": "Estad\u00edsticas",
+"slug": "harmean-function",
+"href": null
+},
+{
+"en": "TRIMMEAN",
+"cat": "Estad\u00edsticas",
+"slug": "trimmean-function",
+"href": "functions/trimmean-function"
+},
+{
+"en": "AVEDEV",
+"cat": "Estad\u00edsticas",
+"slug": "avedev-function",
+"href": "functions/avedev-function"
+},
+{
+"en": "NORM.DIST",
+"cat": "Estad\u00edsticas",
+"slug": "norm-dist-function",
+"href": "functions/norm-dist-function"
+},
+{
+"en": "NORM.INV",
+"cat": "Estad\u00edsticas",
+"slug": "norm-inv-function",
+"href": "functions/norm-inv-function"
+},
+{
+"en": "NORM.S.DIST",
+"cat": "Estad\u00edsticas",
+"slug": "norm-s-dist-function",
+"href": "functions/norm-s-dist-function"
+},
+{
+"en": "STANDARDIZE",
+"cat": "Estad\u00edsticas",
+"slug": "standardize-function",
+"href": "functions/standardize-function"
+},
+{
+"en": "CONFIDENCE.NORM",
+"cat": "Estad\u00edsticas",
+"slug": "confidence-norm-function",
+"href": "functions/confidence-norm-function"
+},
+{
+"en": "CONFIDENCE.T",
+"cat": "Estad\u00edsticas",
+"slug": "confidence-t-function",
+"href": "functions/confidence-t-function"
+},
+{
+"en": "T.TEST",
+"cat": "Estad\u00edsticas",
+"slug": "t-test-function",
+"href": "functions/t-test-function"
+},
+{
+"en": "COVARIANCE.S",
+"cat": "Estad\u00edsticas",
+"slug": "covariance-s-function",
+"href": "functions/covariance-s-function"
+},
+{
+"en": "COVARIANCE.P",
+"cat": "Estad\u00edsticas",
+"slug": "covariance-p-function",
+"href": "functions/covariance-p-function"
+},
+{
+"en": "RANK",
+"cat": "Compatibilidad",
+"slug": "rank-function",
+"href": "functions/rank-function"
+},
+{
+"en": "MODE",
+"cat": "Compatibilidad",
+"slug": "mode-function",
+"href": "functions/mode-function"
+},
+{
+"en": "STDEV",
+"cat": "Compatibilidad",
+"slug": "stdev-function",
+"href": "functions/stdev-function"
+},
+{
+"en": "STDEVP",
+"cat": "Compatibilidad",
+"slug": "stdevp-function",
+"href": "functions/stdevp-function"
+},
+{
+"en": "VAR",
+"cat": "Compatibilidad",
+"slug": "var-function",
+"href": "functions/var-function"
+},
+{
+"en": "VARP",
+"cat": "Compatibilidad",
+"slug": "varp-function",
+"href": "functions/varp-function"
+},
+{
+"en": "PERCENTILE",
+"cat": "Compatibilidad",
+"slug": "percentile-function",
+"href": "functions/percentile-function"
+},
+{
+"en": "QUARTILE",
+"cat": "Compatibilidad",
+"slug": "quartile-function",
+"href": null
+},
+{
+"en": "FORECAST",
+"cat": "Compatibilidad",
+"slug": "forecast-and-forecast-linear-functions",
+"href": "forecast-and-forecast-linear-functions"
+},
+{
+"en": "CONCATENATE",
+"cat": "Compatibilidad",
+"slug": "concatenate-function",
+"href": "functions/concatenate-function"
+},
+{
+"en": "IF",
+"cat": "L\u00f3gicas",
+"slug": "if-function",
+"href": null
+},
+{
+"en": "IFS",
+"cat": "L\u00f3gicas",
+"slug": "ifs-function",
+"href": "functions/ifs-function"
+},
+{
+"en": "AND",
+"cat": "L\u00f3gicas",
+"slug": "and-function",
+"href": "functions/and-function"
+},
+{
+"en": "OR",
+"cat": "L\u00f3gicas",
+"slug": "or-function",
+"href": "functions/or-function"
+},
+{
+"en": "NOT",
+"cat": "L\u00f3gicas",
+"slug": "not-function",
+"href": "functions/not-function"
+},
+{
+"en": "XOR",
+"cat": "L\u00f3gicas",
+"slug": "xor-function",
+"href": "functions/xor-function"
+},
+{
+"en": "IFERROR",
+"cat": "L\u00f3gicas",
+"slug": "iferror-function",
+"href": "functions/iferror-function"
+},
+{
+"en": "IFNA",
+"cat": "L\u00f3gicas",
+"slug": "ifna-function",
+"href": "functions/ifna-function"
+},
+{
+"en": "SWITCH",
+"cat": "L\u00f3gicas",
+"slug": "switch-function",
+"href": "functions/switch-function"
+},
+{
+"en": "TRUE",
+"cat": "L\u00f3gicas",
+"slug": "true-function",
+"href": "functions/true-function"
+},
+{
+"en": "FALSE",
+"cat": "L\u00f3gicas",
+"slug": "false-function",
+"href": "functions/false-function"
+},
+{
+"en": "LET",
+"cat": "L\u00f3gicas",
+"slug": "let-function",
+"href": "functions/let-function"
+},
+{
+"en": "LAMBDA",
+"cat": "L\u00f3gicas",
+"slug": "lambda-function",
+"href": null
+},
+{
+"en": "MAP",
+"cat": "L\u00f3gicas",
+"slug": "map-function",
+"href": "functions/map-function"
+},
+{
+"en": "REDUCE",
+"cat": "L\u00f3gicas",
+"slug": "reduce-function",
+"href": "functions/reduce-function"
+},
+{
+"en": "SCAN",
+"cat": "L\u00f3gicas",
+"slug": "scan-function",
+"href": "functions/scan-function"
+},
+{
+"en": "BYROW",
+"cat": "L\u00f3gicas",
+"slug": "byrow-function",
+"href": "functions/byrow-function"
+},
+{
+"en": "BYCOL",
+"cat": "L\u00f3gicas",
+"slug": "bycol-function",
+"href": "functions/bycol-function"
+},
+{
+"en": "MAKEARRAY",
+"cat": "L\u00f3gicas",
+"slug": "makearray-function",
+"href": "functions/makearray-function"
+},
+{
+"en": "ISOMITTED",
+"cat": "L\u00f3gicas",
+"slug": "isomitted-function",
+"href": "functions/isomitted-function"
+},
+{
+"en": "CONCAT",
+"cat": "Texto",
+"slug": "concat-function",
+"href": "functions/concat-function"
+},
+{
+"en": "TEXTJOIN",
+"cat": "Texto",
+"slug": "textjoin-function",
+"href": "functions/textjoin-function"
+},
+{
+"en": "LEFT",
+"cat": "Texto",
+"slug": "left-function",
+"href": null
+},
+{
+"en": "RIGHT",
+"cat": "Texto",
+"slug": "right-function",
+"href": null
+},
+{
+"en": "MID",
+"cat": "Texto",
+"slug": "mid-function",
+"href": null
+},
+{
+"en": "LEN",
+"cat": "Texto",
+"slug": "len-function",
+"href": null
+},
+{
+"en": "FIND",
+"cat": "Texto",
+"slug": "find-function",
+"href": null
+},
+{
+"en": "SEARCH",
+"cat": "Texto",
+"slug": "search-function",
+"href": null
+},
+{
+"en": "REPLACE",
+"cat": "Texto",
+"slug": "replace-function",
+"href": null
+},
+{
+"en": "SUBSTITUTE",
+"cat": "Texto",
+"slug": "substitute-function",
+"href": "functions/substitute-function"
+},
+{
+"en": "TRIM",
+"cat": "Texto",
+"slug": "trim-function",
+"href": "functions/trim-function"
+},
+{
+"en": "CLEAN",
+"cat": "Texto",
+"slug": "clean-function",
+"href": "functions/clean-function"
+},
+{
+"en": "UPPER",
+"cat": "Texto",
+"slug": "upper-function",
+"href": "functions/upper-function"
+},
+{
+"en": "LOWER",
+"cat": "Texto",
+"slug": "lower-function",
+"href": "functions/lower-function"
+},
+{
+"en": "PROPER",
+"cat": "Texto",
+"slug": "proper-function",
+"href": "functions/proper-function"
+},
+{
+"en": "TEXT",
+"cat": "Texto",
+"slug": "text-function",
+"href": "functions/text-function"
+},
+{
+"en": "VALUE",
+"cat": "Texto",
+"slug": "value-function",
+"href": null
+},
+{
+"en": "NUMBERVALUE",
+"cat": "Texto",
+"slug": "numbervalue-function",
+"href": "functions/numbervalue-function"
+},
+{
+"en": "FIXED",
+"cat": "Texto",
+"slug": "fixed-function",
+"href": "functions/fixed-function"
+},
+{
+"en": "DOLLAR",
+"cat": "Texto",
+"slug": "dollar-function",
+"href": "functions/dollar-function"
+},
+{
+"en": "REPT",
+"cat": "Texto",
+"slug": "rept-function",
+"href": "functions/rept-function"
+},
+{
+"en": "EXACT",
+"cat": "Texto",
+"slug": "exact-function",
+"href": "functions/exact-function"
+},
+{
+"en": "CHAR",
+"cat": "Texto",
+"slug": "char-function",
+"href": "functions/char-function"
+},
+{
+"en": "CODE",
+"cat": "Texto",
+"slug": "code-function",
+"href": "functions/code-function"
+},
+{
+"en": "UNICHAR",
+"cat": "Texto",
+"slug": "unichar-function",
+"href": null
+},
+{
+"en": "UNICODE",
+"cat": "Texto",
+"slug": "unicode-function",
+"href": "functions/unicode-function"
+},
+{
+"en": "T",
+"cat": "Texto",
+"slug": "t-function",
+"href": null
+},
+{
+"en": "TEXTBEFORE",
+"cat": "Texto",
+"slug": "textbefore-function",
+"href": "functions/textbefore-function"
+},
+{
+"en": "TEXTAFTER",
+"cat": "Texto",
+"slug": "textafter-function",
+"href": "functions/textafter-function"
+},
+{
+"en": "TEXTSPLIT",
+"cat": "Texto",
+"slug": "textsplit-function",
+"href": "functions/textsplit-function"
+},
+{
+"en": "ARRAYTOTEXT",
+"cat": "Texto",
+"slug": "arraytotext-function",
+"href": "functions/arraytotext-function"
+},
+{
+"en": "VALUETOTEXT",
+"cat": "Texto",
+"slug": "valuetotext-function",
+"href": "functions/valuetotext-function"
+},
+{
+"en": "REGEXTEST",
+"cat": "Texto",
+"slug": "regextest-function",
+"href": "functions/regextest-function"
+},
+{
+"en": "REGEXEXTRACT",
+"cat": "Texto",
+"slug": "regexextract-function",
+"href": "functions/regexextract-function"
+},
+{
+"en": "REGEXREPLACE",
+"cat": "Texto",
+"slug": "regexreplace-function",
+"href": "functions/regexreplace-function"
+},
+{
+"en": "TRANSLATE",
+"cat": "Texto",
+"slug": "translate-function",
+"href": "functions/translate-function"
+},
+{
+"en": "DETECTLANGUAGE",
+"cat": "Texto",
+"slug": "detectlanguage-function",
+"href": "functions/detectlanguage-function"
+},
+{
+"en": "TODAY",
+"cat": "Fecha y hora",
+"slug": "today-function",
+"href": "functions/today-function"
+},
+{
+"en": "NOW",
+"cat": "Fecha y hora",
+"slug": "now-function",
+"href": "functions/now-function"
+},
+{
+"en": "DATE",
+"cat": "Fecha y hora",
+"slug": "date-function",
+"href": null
+},
+{
+"en": "TIME",
+"cat": "Fecha y hora",
+"slug": "time-function",
+"href": "functions/time-function"
+},
+{
+"en": "YEAR",
+"cat": "Fecha y hora",
+"slug": "year-function",
+"href": null
+},
+{
+"en": "MONTH",
+"cat": "Fecha y hora",
+"slug": "month-function",
+"href": "functions/month-function"
+},
+{
+"en": "DAY",
+"cat": "Fecha y hora",
+"slug": "day-function",
+"href": "functions/day-function"
+},
+{
+"en": "HOUR",
+"cat": "Fecha y hora",
+"slug": "hour-function",
+"href": "functions/hour-function"
+},
+{
+"en": "MINUTE",
+"cat": "Fecha y hora",
+"slug": "minute-function",
+"href": "functions/minute-function"
+},
+{
+"en": "SECOND",
+"cat": "Fecha y hora",
+"slug": "second-function",
+"href": "functions/second-function"
+},
+{
+"en": "WEEKDAY",
+"cat": "Fecha y hora",
+"slug": "weekday-function",
+"href": "functions/weekday-function"
+},
+{
+"en": "WEEKNUM",
+"cat": "Fecha y hora",
+"slug": "weeknum-function",
+"href": "functions/weeknum-function"
+},
+{
+"en": "ISOWEEKNUM",
+"cat": "Fecha y hora",
+"slug": "isoweeknum-function",
+"href": "functions/isoweeknum-function"
+},
+{
+"en": "EDATE",
+"cat": "Fecha y hora",
+"slug": "edate-function",
+"href": null
+},
+{
+"en": "EOMONTH",
+"cat": "Fecha y hora",
+"slug": "eomonth-function",
+"href": "functions/eomonth-function"
+},
+{
+"en": "WORKDAY",
+"cat": "Fecha y hora",
+"slug": "workday-function",
+"href": "functions/workday-function"
+},
+{
+"en": "WORKDAY.INTL",
+"cat": "Fecha y hora",
+"slug": "workday-intl-function",
+"href": "functions/workday-intl-function"
+},
+{
+"en": "NETWORKDAYS",
+"cat": "Fecha y hora",
+"slug": "networkdays-function",
+"href": "functions/networkdays-function"
+},
+{
+"en": "NETWORKDAYS.INTL",
+"cat": "Fecha y hora",
+"slug": "networkdays-intl-function",
+"href": "functions/networkdays-intl-function"
+},
+{
+"en": "DATEDIF",
+"cat": "Fecha y hora",
+"slug": "datedif-function",
+"href": "functions/datedif-function"
+},
+{
+"en": "DAYS",
+"cat": "Fecha y hora",
+"slug": "days-function",
+"href": "functions/days-function"
+},
+{
+"en": "DAYS360",
+"cat": "Fecha y hora",
+"slug": "days360-function",
+"href": "functions/days360-function"
+},
+{
+"en": "YEARFRAC",
+"cat": "Fecha y hora",
+"slug": "yearfrac-function",
+"href": "functions/yearfrac-function"
+},
+{
+"en": "DATEVALUE",
+"cat": "Fecha y hora",
+"slug": "datevalue-function",
+"href": "functions/datevalue-function"
+},
+{
+"en": "TIMEVALUE",
+"cat": "Fecha y hora",
+"slug": "timevalue-function",
+"href": "functions/timevalue-function"
+},
+{
+"en": "VLOOKUP",
+"cat": "B\u00fasqueda y referencia",
+"slug": "vlookup-function",
+"href": "functions/vlookup-function"
+},
+{
+"en": "HLOOKUP",
+"cat": "B\u00fasqueda y referencia",
+"slug": "hlookup-function",
+"href": "functions/hlookup-function"
+},
+{
+"en": "LOOKUP",
+"cat": "B\u00fasqueda y referencia",
+"slug": "lookup-function",
+"href": "functions/lookup-function"
+},
+{
+"en": "XLOOKUP",
+"cat": "B\u00fasqueda y referencia",
+"slug": "xlookup-function",
+"href": "functions/xlookup-function"
+},
+{
+"en": "MATCH",
+"cat": "B\u00fasqueda y referencia",
+"slug": "match-function",
+"href": null
+},
+{
+"en": "XMATCH",
+"cat": "B\u00fasqueda y referencia",
+"slug": "xmatch-function",
+"href": "functions/xmatch-function"
+},
+{
+"en": "INDEX",
+"cat": "B\u00fasqueda y referencia",
+"slug": "index-function",
+"href": "functions/index-function"
+},
+{
+"en": "OFFSET",
+"cat": "B\u00fasqueda y referencia",
+"slug": "offset-function",
+"href": "functions/offset-function"
+},
+{
+"en": "INDIRECT",
+"cat": "B\u00fasqueda y referencia",
+"slug": "indirect-function",
+"href": "functions/indirect-function"
+},
+{
+"en": "ADDRESS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "address-function",
+"href": "functions/address-function"
+},
+{
+"en": "ROW",
+"cat": "B\u00fasqueda y referencia",
+"slug": "row-function",
+"href": "functions/row-function"
+},
+{
+"en": "ROWS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "rows-function",
+"href": "functions/rows-function"
+},
+{
+"en": "COLUMN",
+"cat": "B\u00fasqueda y referencia",
+"slug": "column-function",
+"href": "functions/column-function"
+},
+{
+"en": "COLUMNS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "columns-function",
+"href": "functions/columns-function"
+},
+{
+"en": "CHOOSE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "choose-function",
+"href": "functions/choose-function"
+},
+{
+"en": "TRANSPOSE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "transpose-function",
+"href": "functions/transpose-function"
+},
+{
+"en": "FILTER",
+"cat": "B\u00fasqueda y referencia",
+"slug": "filter-function",
+"href": "functions/filter-function"
+},
+{
+"en": "SORT",
+"cat": "B\u00fasqueda y referencia",
+"slug": "sort-function",
+"href": "functions/sort-function"
+},
+{
+"en": "SORTBY",
+"cat": "B\u00fasqueda y referencia",
+"slug": "sortby-function",
+"href": "functions/sortby-function"
+},
+{
+"en": "UNIQUE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "unique-function",
+"href": "functions/unique-function"
+},
+{
+"en": "VSTACK",
+"cat": "B\u00fasqueda y referencia",
+"slug": "vstack-function",
+"href": "functions/vstack-function"
+},
+{
+"en": "HSTACK",
+"cat": "B\u00fasqueda y referencia",
+"slug": "hstack-function",
+"href": "functions/hstack-function"
+},
+{
+"en": "TOROW",
+"cat": "B\u00fasqueda y referencia",
+"slug": "torow-function",
+"href": "functions/torow-function"
+},
+{
+"en": "TOCOL",
+"cat": "B\u00fasqueda y referencia",
+"slug": "tocol-function",
+"href": "functions/tocol-function"
+},
+{
+"en": "WRAPROWS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "wraprows-function",
+"href": "functions/wraprows-function"
+},
+{
+"en": "WRAPCOLS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "wrapcols-function",
+"href": "functions/wrapcols-function"
+},
+{
+"en": "TAKE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "take-function",
+"href": "functions/take-function"
+},
+{
+"en": "DROP",
+"cat": "B\u00fasqueda y referencia",
+"slug": "drop-function",
+"href": "functions/drop-function"
+},
+{
+"en": "CHOOSEROWS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "chooserows-function",
+"href": "functions/chooserows-function"
+},
+{
+"en": "CHOOSECOLS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "choosecols-function",
+"href": "functions/choosecols-function"
+},
+{
+"en": "EXPAND",
+"cat": "B\u00fasqueda y referencia",
+"slug": "expand-function",
+"href": "functions/expand-function"
+},
+{
+"en": "GROUPBY",
+"cat": "B\u00fasqueda y referencia",
+"slug": "groupby-function",
+"href": "functions/groupby-function"
+},
+{
+"en": "PIVOTBY",
+"cat": "B\u00fasqueda y referencia",
+"slug": "pivotby-function",
+"href": "functions/pivotby-function"
+},
+{
+"en": "TRIMRANGE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "trimrange-function",
+"href": "functions/trimrange-function"
+},
+{
+"en": "HYPERLINK",
+"cat": "B\u00fasqueda y referencia",
+"slug": "hyperlink-function",
+"href": "functions/hyperlink-function"
+},
+{
+"en": "FORMULATEXT",
+"cat": "B\u00fasqueda y referencia",
+"slug": "formulatext-function",
+"href": "functions/formulatext-function"
+},
+{
+"en": "GETPIVOTDATA",
+"cat": "B\u00fasqueda y referencia",
+"slug": "getpivotdata-function",
+"href": "functions/getpivotdata-function"
+},
+{
+"en": "IMAGE",
+"cat": "B\u00fasqueda y referencia",
+"slug": "image-function",
+"href": "functions/image-function"
+},
+{
+"en": "AREAS",
+"cat": "B\u00fasqueda y referencia",
+"slug": "areas-function",
+"href": "functions/areas-function"
+},
+{
+"en": "PMT",
+"cat": "Financieras",
+"slug": "pmt-function",
+"href": "functions/pmt-function"
+},
+{
+"en": "IPMT",
+"cat": "Financieras",
+"slug": "ipmt-function",
+"href": "functions/ipmt-function"
+},
+{
+"en": "PPMT",
+"cat": "Financieras",
+"slug": "ppmt-function",
+"href": "functions/ppmt-function"
+},
+{
+"en": "FV",
+"cat": "Financieras",
+"slug": "fv-function",
+"href": "functions/fv-function"
+},
+{
+"en": "PV",
+"cat": "Financieras",
+"slug": "pv-function",
+"href": "functions/pv-function"
+},
+{
+"en": "NPV",
+"cat": "Financieras",
+"slug": "npv-function",
+"href": "functions/npv-function"
+},
+{
+"en": "XNPV",
+"cat": "Financieras",
+"slug": "xnpv-function",
+"href": "functions/xnpv-function"
+},
+{
+"en": "IRR",
+"cat": "Financieras",
+"slug": "irr-function",
+"href": "functions/irr-function"
+},
+{
+"en": "XIRR",
+"cat": "Financieras",
+"slug": "xirr-function",
+"href": null
+},
+{
+"en": "MIRR",
+"cat": "Financieras",
+"slug": "mirr-function",
+"href": "functions/mirr-function"
+},
+{
+"en": "RATE",
+"cat": "Financieras",
+"slug": "rate-function",
+"href": "functions/rate-function"
+},
+{
+"en": "NPER",
+"cat": "Financieras",
+"slug": "nper-function",
+"href": "functions/nper-function"
+},
+{
+"en": "EFFECT",
+"cat": "Financieras",
+"slug": "effect-function",
+"href": "functions/effect-function"
+},
+{
+"en": "NOMINAL",
+"cat": "Financieras",
+"slug": "nominal-function",
+"href": "functions/nominal-function"
+},
+{
+"en": "SLN",
+"cat": "Financieras",
+"slug": "sln-function",
+"href": "functions/sln-function"
+},
+{
+"en": "DB",
+"cat": "Financieras",
+"slug": "db-function",
+"href": "functions/db-function"
+},
+{
+"en": "DDB",
+"cat": "Financieras",
+"slug": "ddb-function",
+"href": "functions/ddb-function"
+},
+{
+"en": "SYD",
+"cat": "Financieras",
+"slug": "syd-function",
+"href": "functions/syd-function"
+},
+{
+"en": "VDB",
+"cat": "Financieras",
+"slug": "vdb-function",
+"href": "functions/vdb-function"
+},
+{
+"en": "CUMIPMT",
+"cat": "Financieras",
+"slug": "cumipmt-function",
+"href": "functions/cumipmt-function"
+},
+{
+"en": "CUMPRINC",
+"cat": "Financieras",
+"slug": "cumprinc-function",
+"href": "functions/cumprinc-function"
+},
+{
+"en": "RRI",
+"cat": "Financieras",
+"slug": "rri-function",
+"href": "functions/rri-function"
+},
+{
+"en": "PDURATION",
+"cat": "Financieras",
+"slug": "pduration-function",
+"href": null
+},
+{
+"en": "FVSCHEDULE",
+"cat": "Financieras",
+"slug": "fvschedule-function",
+"href": "functions/fvschedule-function"
+},
+{
+"en": "ISBLANK",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISERROR",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISERR",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISNA",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISNUMBER",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISTEXT",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISNONTEXT",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISLOGICAL",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISREF",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "ISFORMULA",
+"cat": "Informaci\u00f3n",
+"slug": "isformula-function",
+"href": "functions/isformula-function"
+},
+{
+"en": "ISEVEN",
+"cat": "Informaci\u00f3n",
+"slug": "iseven-function",
+"href": "functions/iseven-function"
+},
+{
+"en": "ISODD",
+"cat": "Informaci\u00f3n",
+"slug": "is-functions",
+"href": "is-functions"
+},
+{
+"en": "N",
+"cat": "Informaci\u00f3n",
+"slug": "n-function",
+"href": null
+},
+{
+"en": "NA",
+"cat": "Informaci\u00f3n",
+"slug": "na-function",
+"href": "functions/na-function"
+},
+{
+"en": "TYPE",
+"cat": "Informaci\u00f3n",
+"slug": "type-function",
+"href": "functions/type-function"
+},
+{
+"en": "ERROR.TYPE",
+"cat": "Informaci\u00f3n",
+"slug": "error-type-function",
+"href": "functions/error-type-function"
+},
+{
+"en": "CELL",
+"cat": "Informaci\u00f3n",
+"slug": "cell-function",
+"href": "functions/cell-function"
+},
+{
+"en": "INFO",
+"cat": "Informaci\u00f3n",
+"slug": "info-function",
+"href": "functions/info-function"
+},
+{
+"en": "SHEET",
+"cat": "Informaci\u00f3n",
+"slug": "sheet-function",
+"href": "functions/sheet-function"
+},
+{
+"en": "SHEETS",
+"cat": "Informaci\u00f3n",
+"slug": "sheets-function",
+"href": "functions/sheets-function"
+},
+{
+"en": "DSUM",
+"cat": "Base de datos",
+"slug": "dsum-function",
+"href": "functions/dsum-function"
+},
+{
+"en": "DAVERAGE",
+"cat": "Base de datos",
+"slug": "daverage-function",
+"href": "functions/daverage-function"
+},
+{
+"en": "DCOUNT",
+"cat": "Base de datos",
+"slug": "dcount-function",
+"href": "functions/dcount-function"
+},
+{
+"en": "DCOUNTA",
+"cat": "Base de datos",
+"slug": "dcounta-function",
+"href": "functions/dcounta-function"
+},
+{
+"en": "DMAX",
+"cat": "Base de datos",
+"slug": "dmax-function",
+"href": "functions/dmax-function"
+},
+{
+"en": "DMIN",
+"cat": "Base de datos",
+"slug": "dmin-function",
+"href": "functions/dmin-function"
+},
+{
+"en": "DGET",
+"cat": "Base de datos",
+"slug": "dget-function",
+"href": "functions/dget-function"
+},
+{
+"en": "DPRODUCT",
+"cat": "Base de datos",
+"slug": "dproduct-function",
+"href": "functions/dproduct-function"
+},
+{
+"en": "DSTDEV",
+"cat": "Base de datos",
+"slug": "dstdev-function",
+"href": "functions/dstdev-function"
+},
+{
+"en": "DVAR",
+"cat": "Base de datos",
+"slug": "dvar-function",
+"href": "functions/dvar-function"
+},
+{
+"en": "COPILOT",
+"cat": "Web y otras",
+"slug": "copilot-function",
+"href": null
+},
+{
+"en": "STOCKHISTORY",
+"cat": "Web y otras",
+"slug": "stockhistory-function",
+"href": "functions/stockhistory-function"
+},
+{
+"en": "PY",
+"cat": "Web y otras",
+"slug": "py-function",
+"href": null
+},
+{
+"en": "ENCODEURL",
+"cat": "Web y otras",
+"slug": "encodeurl-function",
+"href": "functions/encodeurl-function"
+},
+{
+"en": "WEBSERVICE",
+"cat": "Web y otras",
+"slug": "webservice-function",
+"href": null
+},
+{
+"en": "FILTERXML",
+"cat": "Web y otras",
+"slug": "filterxml-function",
+"href": "functions/filterxml-function"
+},
+{
+"en": "CUBEVALUE",
+"cat": "Web y otras",
+"slug": "cubevalue-function",
+"href": "functions/cubevalue-function"
+},
+{
+"en": "CUBEMEMBER",
+"cat": "Web y otras",
+"slug": "cubemember-function",
+"href": "functions/cubemember-function"
+},
+{
+"en": "CONVERT",
+"cat": "Web y otras",
+"slug": "convert-function",
+"href": "functions/convert-function"
+}
+]

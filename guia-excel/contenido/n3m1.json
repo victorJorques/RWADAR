@@ -1,0 +1,2568 @@
+{
+ "id": "n3m1",
+ "nivel": "n3",
+ "titulo": "Sumar y contar con varios criterios",
+ "intro": "Ya eres del equipo, y las preguntas dejan de ser «¿cuánto hemos vendido?» para convertirse en «¿cuánto ha vendido Pamplona en luminarias este trimestre?». Con SUMAR.SI.CONJUNTO y sus hermanas respondes a cualquiera de ellas con una sola fórmula, sin filtrar ni sumar a mano, y el resultado se recalcula solo cuando cambian los datos.",
+ "repaso_inicial": [
+  {
+   "id": "n3m1-r1",
+   "modo": "formula",
+   "enunciado": "Calentamiento. En **E2** suma los importes de la delegación que aparece en **E1**. Usa la celda E1, no escribas el nombre. Para Pamplona debe salir **2.953,00 €**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Importe",
+     "D1": "Delegación",
+     "E1": "Pamplona",
+     "D2": "Ventas",
+     "A2": "Zaragoza",
+     "B2": 1250,
+     "A3": "Pamplona",
+     "B3": 860.4,
+     "A4": "Lleida",
+     "B4": 2310,
+     "A5": "Pamplona",
+     "B5": 1780,
+     "A6": "Zaragoza",
+     "B6": 690,
+     "A7": "Pamplona",
+     "B7": 312.6
+    },
+    "formatos": {
+     "B2:B7": "eur",
+     "E2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11,
+     "D": 11,
+     "E": 12
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=SUMAR.SI(A2:A7;E1;B2:B7)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(B2:B7;A2:A7;E1)"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(B2:B7;E1;A2:A7)",
+    "=SUMA(B2:B7)",
+    "=SUMAR.SI(A2:A7;\"Pamplona\";B2:B7)"
+   ],
+   "variantes": [
+    {
+     "E1": "Zaragoza"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Es una suma con una condición: SUMAR.SI.",
+    "En SUMAR.SI van, por este orden: dónde miro (A2:A7), qué busco (E1) y qué sumo (B2:B7).",
+    "`=SUMAR.SI(A2:A7;E1;B2:B7)`"
+   ],
+   "explicacion": "2.953,00 €: los tres pedidos de Pamplona. Fíjate en el orden de SUMAR.SI (lo que se suma va al final): en este módulo verás una función parecida que lo pone al principio."
+  },
+  {
+   "id": "n3m1-r2",
+   "modo": "test",
+   "pregunta": "En **C2** tienes `=$A2*B$1`. La copias una columna a la derecha y una fila hacia abajo, a **D3**. ¿Qué fórmula queda?",
+   "opciones": [
+    {
+     "texto": "`=$A3*C$1`",
+     "correcta": true,
+     "porque": "Correcto: $A2 tiene la columna fija, así que solo cambia la fila (A3); B$1 tiene la fila fija, así que solo cambia la columna (C$1)."
+    },
+    {
+     "texto": "`=$A2*C$1`",
+     "correcta": false,
+     "porque": "El $ de $A2 solo fija la columna. La fila 2 no tiene $, así que al bajar pasa a 3."
+    },
+    {
+     "texto": "`=$B3*C$2`",
+     "correcta": false,
+     "porque": "Lo que va detrás de un $ no cambia nunca: la A de $A2 y el 1 de B$1 se quedan como están."
+    },
+    {
+     "texto": "`=$A2*B$1`",
+     "correcta": false,
+     "porque": "Eso pasaría con todo fijado ($A$2 y $B$1). Aquí cada referencia tiene una parte libre."
+    }
+   ],
+   "explicacion": "El $ fija solo lo que tiene justo detrás: la columna o la fila. Este truco es la base del cuadro resumen de la primera lección."
+  },
+  {
+   "id": "n3m1-r3",
+   "modo": "predice",
+   "enunciado": "¿Qué devolverá esta fórmula en **D1**?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Importe",
+     "A2": "Zaragoza",
+     "B2": 1250,
+     "A3": "Pamplona",
+     "B3": 860.4,
+     "A4": "Lleida",
+     "B4": 2310,
+     "A5": "Pamplona",
+     "B5": 1780,
+     "A6": "Zaragoza",
+     "B6": 690,
+     "A7": "Pamplona",
+     "B7": 312.6
+    },
+    "formatos": {
+     "B2:B7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 11
+    }
+   },
+   "celda": "D1",
+   "formula": "=CONTAR.SI(B2:B7;\">1000\")",
+   "explicacion": "3: los pedidos de 1.250, 2.310 y 1.780 €. CONTAR.SI cuenta las celdas que cumplen la condición; el criterio con signo va entre comillas.",
+   "respuesta": "3"
+  },
+  {
+   "id": "n3m1-r4",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función devuelve el **último día del mes** de una fecha? (Solo el nombre).",
+   "aceptadas": [
+    "FIN.MES",
+    "=FIN.MES",
+    "fin.mes",
+    "FIN.MES()"
+   ],
+   "explicacion": "FIN.MES: `=FIN.MES(A2;0)` da el último día del mes de A2. La usarás en este módulo para sumar meses enteros."
+  }
+ ],
+ "practica_excel": null,
+ "lecciones": [
+  {
+   "id": "n3m1l1",
+   "titulo": "SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO",
+   "minutos": 15,
+   "objetivo": "Sumar y contar las filas que cumplen varias condiciones a la vez con SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO, y montar con una sola fórmula un cuadro resumen de doble entrada.",
+   "mision": {
+    "de": "Javier Ortega",
+    "puesto": "Director comercial",
+    "texto": "Para la reunión del lunes necesito lo vendido este mes por delegación y familia: Zaragoza, Pamplona y Lleida en filas; cable, luminarias y mecanismos en columnas. Y que cuadre con el total, que la última vez no cuadraba.",
+    "logro": "Ya sabes sumar y contar con varias condiciones a la vez y montar un cuadro de doble entrada con una sola fórmula copiada."
+   },
+   "funciones": [
+    "SUMAR.SI.CONJUNTO",
+    "CONTAR.SI.CONJUNTO"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Con **SUMAR.SI** ya sabes sumar las ventas de una delegación. Pero Javier pregunta por **dos cosas a la vez**: delegación **y** familia de producto.\n\nPara eso está **SUMAR.SI.CONJUNTO**: suma solo las filas que cumplen **todas** las condiciones que le pongas. Su hermana, **CONTAR.SI.CONJUNTO**, en vez de sumar esas filas, las **cuenta**.\n\n«Conjunto» quiere decir eso: un grupo de condiciones que se cumplen juntas, como cuando filtras por dos columnas a la vez."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Pedidos de noviembre (exportados del programa de gestión)",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Comercial",
+       "D1": "Estado",
+       "E1": "Importe",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": "Raúl Gimeno",
+       "D2": "Servido",
+       "E2": 1250,
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": "Elena Sanz",
+       "D3": "Pendiente",
+       "E3": 860.4,
+       "A4": "Lleida",
+       "B4": "Cable",
+       "C4": "Jordi Vidal",
+       "D4": "Servido",
+       "E4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Mecanismos",
+       "C5": "Raúl Gimeno",
+       "D5": "Pendiente",
+       "E5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Cable",
+       "C6": "Elena Sanz",
+       "D6": "Servido",
+       "E6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Luminarias",
+       "C7": "Pilar Lasheras",
+       "D7": "Servido",
+       "E7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Luminarias",
+       "C8": "Jordi Vidal",
+       "D8": "Pendiente",
+       "E8": 945,
+       "A9": "Pamplona",
+       "B9": "Luminarias",
+       "C9": "Elena Sanz",
+       "D9": "Servido",
+       "E9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Cable",
+       "C10": "Pilar Lasheras",
+       "D10": "Pendiente",
+       "E10": 690,
+       "A11": "Lleida",
+       "B11": "Mecanismos",
+       "C11": "Jordi Vidal",
+       "D11": "Servido",
+       "E11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Luminarias",
+       "C12": "Raúl Gimeno",
+       "D12": "Pendiente",
+       "E12": 1875,
+       "A13": "Pamplona",
+       "B13": "Mecanismos",
+       "C13": "Elena Sanz",
+       "D13": "Pendiente",
+       "E13": 312.6
+      },
+      "formatos": {
+       "E2:E13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 15,
+       "D": 10,
+       "E": 11
+      }
+     },
+     "resaltar": [
+      "A3:E3",
+      "A9:E9"
+     ],
+     "pie": "Las dos filas marcadas son de Pamplona **y** de Luminarias a la vez."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e1",
+     "modo": "test",
+     "pregunta": "Javier quiere saber cuánto ha vendido **Pamplona** en **Luminarias**. ¿Qué filas tiene que sumar Excel?",
+     "opciones": [
+      {
+       "texto": "Solo las filas que son de Pamplona y, además, de Luminarias",
+       "correcta": true,
+       "porque": "Exacto: las dos condiciones se cumplen a la vez. Son las filas 3 y 9: 860,40 + 1.430,20 = 2.290,60 €."
+      },
+      {
+       "texto": "Todas las de Pamplona más todas las de Luminarias",
+       "correcta": false,
+       "porque": "Eso sería «Pamplona **o** Luminarias»: sumarías también el cable de Pamplona y las luminarias de Zaragoza y Lleida. Aquí se piden las dos cosas a la vez."
+      },
+      {
+       "texto": "Todas las filas de la lista",
+       "correcta": false,
+       "porque": "Eso es el total general, lo que harías con SUMA. Javier pide solo un trozo: una delegación y una familia concretas."
+      }
+     ],
+     "explicacion": "SUMAR.SI.CONJUNTO trabaja así: una fila entra en la suma solo si cumple **todas** las condiciones. Ya sabes qué tiene que hacer; ahora, cómo se escribe."
+    },
+    {
+     "tipo": "texto",
+     "md": "La receta tiene siempre la misma forma:\n\n`=SUMAR.SI.CONJUNTO(qué sumo; dónde miro; qué busco; dónde miro; qué busco…)`\n\n1. **Primero**, el rango que se suma (los importes).\n2. **Después**, parejas: un rango donde mirar y lo que tiene que haber en él.\n\nPuedes poner tantas parejas como necesites. La de Javier:\n\n`=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Pamplona\";B2:B13;\"Luminarias\")` → 2.290,60 €"
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Nuria avisa: el orden cambia",
+     "md": "En **SUMAR.SI** lo que se suma va **al final**: `=SUMAR.SI(A2:A13;\"Lleida\";E2:E13)`. En **SUMAR.SI.CONJUNTO** va **al principio**. Es el error más típico al pasar de una a otra."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e2",
+     "modo": "formula",
+     "enunciado": "La fórmula de **H2** ya suma los importes de **Zaragoza**, pero Javier quiere solo el **cable** de Zaragoza. Añade la segunda pareja (columna B y \"Cable\") antes del paréntesis final. Debe salir **1.940,00 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Comercial",
+       "D1": "Estado",
+       "E1": "Importe",
+       "G1": "Pregunta",
+       "H1": "Resultado",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": "Raúl Gimeno",
+       "D2": "Servido",
+       "E2": 1250,
+       "G2": "Zaragoza · Cable",
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": "Elena Sanz",
+       "D3": "Pendiente",
+       "E3": 860.4,
+       "A4": "Lleida",
+       "B4": "Cable",
+       "C4": "Jordi Vidal",
+       "D4": "Servido",
+       "E4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Mecanismos",
+       "C5": "Raúl Gimeno",
+       "D5": "Pendiente",
+       "E5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Cable",
+       "C6": "Elena Sanz",
+       "D6": "Servido",
+       "E6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Luminarias",
+       "C7": "Pilar Lasheras",
+       "D7": "Servido",
+       "E7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Luminarias",
+       "C8": "Jordi Vidal",
+       "D8": "Pendiente",
+       "E8": 945,
+       "A9": "Pamplona",
+       "B9": "Luminarias",
+       "C9": "Elena Sanz",
+       "D9": "Servido",
+       "E9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Cable",
+       "C10": "Pilar Lasheras",
+       "D10": "Pendiente",
+       "E10": 690,
+       "A11": "Lleida",
+       "B11": "Mecanismos",
+       "C11": "Jordi Vidal",
+       "D11": "Servido",
+       "E11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Luminarias",
+       "C12": "Raúl Gimeno",
+       "D12": "Pendiente",
+       "E12": 1875,
+       "A13": "Pamplona",
+       "B13": "Mecanismos",
+       "C13": "Elena Sanz",
+       "D13": "Pendiente",
+       "E13": 312.6
+      },
+      "formatos": {
+       "E2:E13": "eur",
+       "H2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 15,
+       "D": 10,
+       "E": 11,
+       "G": 17,
+       "H": 12
+      }
+     },
+     "objetivo": "H2",
+     "inicial": "=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Zaragoza\")",
+     "solucion": "=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Zaragoza\";B2:B13;\"Cable\")",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(E2:E13;B2:B13;\"Cable\";A2:A13;\"Zaragoza\")",
+      "=SUMAR.SI.CONJUNTO($E$2:$E$13;$A$2:$A$13;\"Zaragoza\";$B$2:$B$13;\"Cable\")"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Zaragoza\")",
+      "=SUMAR.SI(B2:B13;\"Cable\";E2:E13)"
+     ],
+     "variantes": [
+      {
+       "E2": 2000
+      },
+      {
+       "B10": "Luminarias"
+      }
+     ],
+     "debe_usar": [
+      "SUMAR.SI.CONJUNTO"
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Ahora mismo la fórmula tiene una sola pareja: A2:A13 y \"Zaragoza\". Falta otra igual para la familia.",
+      "La familia está en la columna B. La nueva pareja es un rango de la columna B y el texto \"Cable\", separados por punto y coma.",
+      "Escribe `;B2:B13;\"Cable\"` justo antes del último paréntesis: `=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Zaragoza\";B2:B13;\"Cable\")`."
+     ],
+     "explicacion": "1.940,00 €: las filas 2 y 10, las únicas que son de Zaragoza **y** de cable. Has añadido una condición con solo una pareja más. Así se responde a cualquier pregunta de «cuánto de esto en aquello» sin filtrar ni sumar a mano."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e3",
+     "modo": "cinta",
+     "enunciado": "Si un día no recuerdas cómo se escribe una función, puedes elegirla de una lista en la cinta. **SUMAR.SI.CONJUNTO** está entre las funciones **matemáticas**. Toca el botón donde la buscarías.",
+     "ruta": [
+      "Fórmulas",
+      "Biblioteca de funciones",
+      "Matemáticas y trigonométricas"
+     ],
+     "explicacion": "Fórmulas › Biblioteca de funciones › Matemáticas y trigonométricas. Al elegirla se abre la ventana **Argumentos de función**, que te pide cada dato por su nombre (rango_suma, rango_criterios1, criterios1…). Muy útil para no equivocarte de orden."
+    },
+    {
+     "tipo": "texto",
+     "md": "**CONTAR.SI.CONJUNTO** cuenta cuántas filas cumplen todas las condiciones. Como no suma nada, **no lleva rango de suma**: empieza directamente por las parejas.\n\n`=CONTAR.SI.CONJUNTO(dónde miro; qué busco; dónde miro; qué busco…)`\n\nPor ejemplo, cuántos pedidos de Lleida siguen pendientes:\n\n`=CONTAR.SI.CONJUNTO(A2:A13;\"Lleida\";D2:D13;\"Pendiente\")` → **1**"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e4",
+     "modo": "formula",
+     "enunciado": "Javier quiere saber cuántos pedidos tiene **pendientes** el comercial **Raúl Gimeno**. Escribe en **H2** una fórmula que los cuente (comercial en la columna C, estado en la D). Debe salir **2**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Comercial",
+       "D1": "Estado",
+       "E1": "Importe",
+       "G1": "Pregunta",
+       "H1": "Resultado",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": "Raúl Gimeno",
+       "D2": "Servido",
+       "E2": 1250,
+       "G2": "Pendientes de Raúl",
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": "Elena Sanz",
+       "D3": "Pendiente",
+       "E3": 860.4,
+       "A4": "Lleida",
+       "B4": "Cable",
+       "C4": "Jordi Vidal",
+       "D4": "Servido",
+       "E4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Mecanismos",
+       "C5": "Raúl Gimeno",
+       "D5": "Pendiente",
+       "E5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Cable",
+       "C6": "Elena Sanz",
+       "D6": "Servido",
+       "E6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Luminarias",
+       "C7": "Pilar Lasheras",
+       "D7": "Servido",
+       "E7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Luminarias",
+       "C8": "Jordi Vidal",
+       "D8": "Pendiente",
+       "E8": 945,
+       "A9": "Pamplona",
+       "B9": "Luminarias",
+       "C9": "Elena Sanz",
+       "D9": "Servido",
+       "E9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Cable",
+       "C10": "Pilar Lasheras",
+       "D10": "Pendiente",
+       "E10": 690,
+       "A11": "Lleida",
+       "B11": "Mecanismos",
+       "C11": "Jordi Vidal",
+       "D11": "Servido",
+       "E11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Luminarias",
+       "C12": "Raúl Gimeno",
+       "D12": "Pendiente",
+       "E12": 1875,
+       "A13": "Pamplona",
+       "B13": "Mecanismos",
+       "C13": "Elena Sanz",
+       "D13": "Pendiente",
+       "E13": 312.6
+      },
+      "formatos": {
+       "E2:E13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 15,
+       "D": 10,
+       "E": 11,
+       "G": 19,
+       "H": 11
+      }
+     },
+     "objetivo": "H2",
+     "solucion": "=CONTAR.SI.CONJUNTO(C2:C13;\"Raúl Gimeno\";D2:D13;\"Pendiente\")",
+     "alternativas": [
+      "=CONTAR.SI.CONJUNTO(D2:D13;\"Pendiente\";C2:C13;\"Raúl Gimeno\")"
+     ],
+     "errores_tipicos": [
+      "=CONTAR.SI(D2:D13;\"Pendiente\")",
+      "=CONTAR.SI(C2:C13;\"Raúl Gimeno\")",
+      "=SUMAR.SI.CONJUNTO(E2:E13;C2:C13;\"Raúl Gimeno\";D2:D13;\"Pendiente\")"
+     ],
+     "variantes": [
+      {
+       "D12": "Servido"
+      },
+      {
+       "C10": "Raúl Gimeno"
+      }
+     ],
+     "pistas": [
+      "Hay dos condiciones: el comercial tiene que ser Raúl Gimeno y el estado tiene que ser Pendiente. Usa CONTAR.SI.CONJUNTO.",
+      "No lleva rango de suma: empieza por la primera pareja, `C2:C13;\"Raúl Gimeno\"`, y sigue con la del estado.",
+      "`=CONTAR.SI.CONJUNTO(C2:C13;\"Raúl Gimeno\";D2:D13;\"Pendiente\")`"
+     ],
+     "explicacion": "2 pedidos: las filas 5 y 12. Con esto Javier puede llamar a Raúl con el dato exacto. Fíjate en que la fórmula cuenta filas, no euros: si quisieras el importe pendiente, sería SUMAR.SI.CONJUNTO con E2:E13 delante."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e5",
+     "modo": "formula",
+     "enunciado": "Un compañero quería el importe **servido en Lleida**, pero su fórmula de **H2** da error: escribió los argumentos en el orden de SUMAR.SI. Corrígela. Debe salir **2.838,30 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Comercial",
+       "D1": "Estado",
+       "E1": "Importe",
+       "G1": "Pregunta",
+       "H1": "Resultado",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": "Raúl Gimeno",
+       "D2": "Servido",
+       "E2": 1250,
+       "G2": "Lleida · Servido",
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": "Elena Sanz",
+       "D3": "Pendiente",
+       "E3": 860.4,
+       "A4": "Lleida",
+       "B4": "Cable",
+       "C4": "Jordi Vidal",
+       "D4": "Servido",
+       "E4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Mecanismos",
+       "C5": "Raúl Gimeno",
+       "D5": "Pendiente",
+       "E5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Cable",
+       "C6": "Elena Sanz",
+       "D6": "Servido",
+       "E6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Luminarias",
+       "C7": "Pilar Lasheras",
+       "D7": "Servido",
+       "E7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Luminarias",
+       "C8": "Jordi Vidal",
+       "D8": "Pendiente",
+       "E8": 945,
+       "A9": "Pamplona",
+       "B9": "Luminarias",
+       "C9": "Elena Sanz",
+       "D9": "Servido",
+       "E9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Cable",
+       "C10": "Pilar Lasheras",
+       "D10": "Pendiente",
+       "E10": 690,
+       "A11": "Lleida",
+       "B11": "Mecanismos",
+       "C11": "Jordi Vidal",
+       "D11": "Servido",
+       "E11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Luminarias",
+       "C12": "Raúl Gimeno",
+       "D12": "Pendiente",
+       "E12": 1875,
+       "A13": "Pamplona",
+       "B13": "Mecanismos",
+       "C13": "Elena Sanz",
+       "D13": "Pendiente",
+       "E13": 312.6
+      },
+      "formatos": {
+       "E2:E13": "eur",
+       "H2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 15,
+       "D": 10,
+       "E": 11,
+       "G": 17,
+       "H": 12
+      }
+     },
+     "objetivo": "H2",
+     "inicial": "=SUMAR.SI.CONJUNTO(A2:A13;\"Lleida\";D2:D13;\"Servido\";E2:E13)",
+     "solucion": "=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Lleida\";D2:D13;\"Servido\")",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(E2:E13;D2:D13;\"Servido\";A2:A13;\"Lleida\")"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI(A2:A13;\"Lleida\";E2:E13)",
+      "=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Lleida\")"
+     ],
+     "variantes": [
+      {
+       "D8": "Servido"
+      },
+      {
+       "E11": 600
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Mira qué hay justo después del paréntesis: ¿es el rango que se suma?",
+      "En SUMAR.SI.CONJUNTO el rango de importes (E2:E13) va el primero. Muévelo del final al principio.",
+      "`=SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Lleida\";D2:D13;\"Servido\")`"
+     ],
+     "explicacion": "2.838,30 €: el cable (2.310,00) y los mecanismos (528,30) servidos en Lleida. Acabas de arreglar el error más típico de esta función. Cuando una fórmula ajena falle, mira primero el orden de los argumentos."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e6",
+     "modo": "predice",
+     "enunciado": "Fíjate bien en los rangos de esta fórmula antes de contestar. ¿Qué resultado dará?",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Importe",
+       "A2": "Lleida",
+       "B2": 2310,
+       "A3": "Zaragoza",
+       "B3": 1250,
+       "A4": "Lleida",
+       "B4": 945,
+       "A5": "Lleida",
+       "B5": 528.3
+      },
+      "formatos": {
+       "B2:B5": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11
+      }
+     },
+     "celda": "D2",
+     "formula": "=SUMAR.SI.CONJUNTO(B2:B5;A2:A4;\"Lleida\")",
+     "explicacion": "**#¡VALOR!**: el rango que se suma tiene 4 filas (B2:B5) y el de criterios solo 3 (A2:A4). En SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO **todos los rangos tienen que tener el mismo tamaño**. Si ves este error, compara los números de fila de cada rango.",
+     "respuesta": "#¡VALOR!"
+    },
+    {
+     "tipo": "texto",
+     "md": "Javier quiere un **cuadro de doble entrada**: delegaciones en filas y familias en columnas. No hacen falta nueve fórmulas: se escribe **una** que lee los criterios de las cabeceras y se copia a todo el cuadro.\n\n- `$E2`: la delegación. El `$` fija la columna E al copiar a la derecha; la fila sí cambia al bajar.\n- `F$1`: la familia. El `$` fija la fila 1 al bajar; la columna sí cambia.\n- Los rangos de datos, fijos del todo: `$C$2:$C$13`."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Así queda la fórmula en las cuatro primeras casillas",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Importe",
+       "E1": "Ventas",
+       "F1": "Cable",
+       "G1": "Luminarias",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": 1250,
+       "E2": "Zaragoza",
+       "F2": "=SUMAR.SI.CONJUNTO($C$2:$C$7;$A$2:$A$7;$E2;$B$2:$B$7;F$1)",
+       "G2": "=SUMAR.SI.CONJUNTO($C$2:$C$7;$A$2:$A$7;$E2;$B$2:$B$7;G$1)",
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": 860.4,
+       "E3": "Pamplona",
+       "F3": "=SUMAR.SI.CONJUNTO($C$2:$C$7;$A$2:$A$7;$E3;$B$2:$B$7;F$1)",
+       "G3": "=SUMAR.SI.CONJUNTO($C$2:$C$7;$A$2:$A$7;$E3;$B$2:$B$7;G$1)",
+       "A4": "Zaragoza",
+       "B4": "Luminarias",
+       "C4": 3120.5,
+       "A5": "Pamplona",
+       "B5": "Cable",
+       "C5": 1780,
+       "A6": "Zaragoza",
+       "B6": "Cable",
+       "C6": 690,
+       "A7": "Pamplona",
+       "B7": "Luminarias",
+       "C7": 1430.2
+      },
+      "formatos": {
+       "C2:C7": "eur",
+       "F2:G3": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 11,
+       "E": 10,
+       "F": 12,
+       "G": 12
+      }
+     },
+     "resaltar": [
+      "F2:G3"
+     ],
+     "mostrar_formulas": true,
+     "pie": "Es la misma fórmula en las cuatro casillas: solo cambian E2/E3 y F1/G1, que es justo lo que queremos."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l1-e7",
+     "modo": "formula",
+     "enunciado": "**La misión de Javier.** Escribe en **F2** las ventas de la delegación de **E2** en la familia de **F1**, tomando las dos de las cabeceras. Tu fórmula se copiará a todo el cuadro (**F2:H4**), así que pon bien los `$`. En F2 debe salir **1.940,00 €**; cuando el cuadro esté completo, la comprobación de **F6** dará **0**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Familia",
+       "C1": "Importe",
+       "E1": "Ventas",
+       "F1": "Cable",
+       "G1": "Luminarias",
+       "H1": "Mecanismos",
+       "A2": "Zaragoza",
+       "B2": "Cable",
+       "C2": 1250,
+       "E2": "Zaragoza",
+       "A3": "Pamplona",
+       "B3": "Luminarias",
+       "C3": 860.4,
+       "E3": "Pamplona",
+       "A4": "Lleida",
+       "B4": "Cable",
+       "C4": 2310,
+       "E4": "Lleida",
+       "A5": "Zaragoza",
+       "B5": "Mecanismos",
+       "C5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Cable",
+       "C6": 1780,
+       "E6": "Comprobación",
+       "F6": "=SUMA(F2:H4)-SUMA(C2:C13)",
+       "A7": "Zaragoza",
+       "B7": "Luminarias",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Luminarias",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Luminarias",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Cable",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Mecanismos",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Luminarias",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Mecanismos",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur",
+       "F2:H4": "eur",
+       "F6": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 11,
+       "E": 13,
+       "F": 12,
+       "G": 12,
+       "H": 12
+      }
+     },
+     "objetivo": "F2",
+     "copiar_a": [
+      "G2:H2",
+      "F3:H4"
+     ],
+     "solucion": "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;$E2;$B$2:$B$13;F$1)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;F$1;$A$2:$A$13;$E2)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;E2;B2:B13;F1)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2;$B$2:$B$13;F1)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;\"Zaragoza\";$B$2:$B$13;\"Cable\")"
+     ],
+     "variantes": [
+      {
+       "C2": 1500
+      },
+      {
+       "C13": 400
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Es SUMAR.SI.CONJUNTO con los importes (C) delante y dos parejas: delegación (A) con E2, y familia (B) con F1.",
+      "Rangos de datos con `$` completo. E2 solo puede moverse hacia abajo: `$E2`. F1 solo hacia la derecha: `F$1`.",
+      "`=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;$E2;$B$2:$B$13;F$1)`"
+     ],
+     "explicacion": "Cuadro completo con una sola fórmula, y la comprobación de F6 a 0: las nueve casillas suman exactamente lo mismo que la lista de pedidos (15.517,75 €). Este es el resumen que piden en cualquier reunión comercial. Y cuando cambien los datos, el cuadro se actualiza solo."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m1l1-q1",
+     "modo": "test",
+     "pregunta": "¿Cuál de estas fórmulas suma los importes (E) del **cable** (B) que ya está **servido** (D)?",
+     "opciones": [
+      {
+       "texto": "`=SUMAR.SI.CONJUNTO(E2:E13;B2:B13;\"Cable\";D2:D13;\"Servido\")`",
+       "correcta": true,
+       "porque": "Correcta: primero lo que se suma y después las dos parejas rango-criterio."
+      },
+      {
+       "texto": "`=SUMAR.SI.CONJUNTO(B2:B13;\"Cable\";D2:D13;\"Servido\";E2:E13)`",
+       "correcta": false,
+       "porque": "Es el orden de SUMAR.SI, con lo que se suma al final. En SUMAR.SI.CONJUNTO va el primero."
+      },
+      {
+       "texto": "`=CONTAR.SI.CONJUNTO(E2:E13;B2:B13;\"Cable\";D2:D13;\"Servido\")`",
+       "correcta": false,
+       "porque": "CONTAR.SI.CONJUNTO cuenta filas, no suma euros, y no lleva rango de suma."
+      },
+      {
+       "texto": "`=SUMAR.SI.CONJUNTO(E2:E13;B2:B13;\"Cable\";D2:D10;\"Servido\")`",
+       "correcta": false,
+       "porque": "D2:D10 tiene menos filas que E2:E13: daría #¡VALOR!. Todos los rangos deben tener el mismo tamaño."
+      }
+     ],
+     "explicacion": "Qué sumo; dónde miro y qué busco; dónde miro y qué busco. Siempre en ese orden."
+    },
+    {
+     "id": "n3m1l1-q2",
+     "modo": "formula",
+     "enunciado": "¿Cuántos pedidos de **Lleida** pasan de **1.000 €**? (Los de 1.000 € justos no cuentan). Escribe la fórmula en **E2**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Importe",
+       "D1": "Pregunta",
+       "E1": "Resultado",
+       "D2": "Lleida > 1.000 €",
+       "A2": "Lleida",
+       "B2": 2310,
+       "A3": "Zaragoza",
+       "B3": 1250,
+       "A4": "Lleida",
+       "B4": 945,
+       "A5": "Lleida",
+       "B5": 1180,
+       "A6": "Pamplona",
+       "B6": 1780,
+       "A7": "Lleida",
+       "B7": 1000
+      },
+      "formatos": {
+       "B2:B7": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "D": 16,
+       "E": 10
+      }
+     },
+     "objetivo": "E2",
+     "solucion": "=CONTAR.SI.CONJUNTO(A2:A7;\"Lleida\";B2:B7;\">1000\")",
+     "alternativas": [
+      "=CONTAR.SI.CONJUNTO(B2:B7;\">1000\";A2:A7;\"Lleida\")"
+     ],
+     "errores_tipicos": [
+      "=CONTAR.SI.CONJUNTO(A2:A7;\"Lleida\";B2:B7;\">=1000\")",
+      "=CONTAR.SI(A2:A7;\"Lleida\")",
+      "=CONTAR.SI(B2:B7;\">1000\")"
+     ],
+     "variantes": [
+      {
+       "B4": 1500
+      }
+     ],
+     "pistas": [
+      "Dos condiciones a la vez: delegación Lleida e importe mayor que 1.000.",
+      "El criterio del importe va entre comillas con el signo delante: `\">1000\"`.",
+      "`=CONTAR.SI.CONJUNTO(A2:A7;\"Lleida\";B2:B7;\">1000\")`"
+     ],
+     "explicacion": "2 pedidos (2.310 y 1.180 €). El de 1.000 € justos se queda fuera porque `>` no incluye el propio 1.000. Los criterios con signos que ya usabas en CONTAR.SI funcionan igual aquí."
+    },
+    {
+     "id": "n3m1l1-q3",
+     "modo": "abierta",
+     "pregunta": "Un compañero de Pamplona te escribe: «He cambiado mi SUMAR.SI por SUMAR.SI.CONJUNTO para añadir otra condición y ahora me da error». Contéstale en dos o tres frases qué le pasa y cómo lo arregla.",
+     "modelo": "Seguramente has dejado los argumentos en el orden de SUMAR.SI. En SUMAR.SI.CONJUNTO el rango que se suma va el primero y después van las parejas rango-criterio, por ejemplo =SUMAR.SI.CONJUNTO(E2:E13;A2:A13;\"Pamplona\";B2:B13;\"Cable\"). Revisa también que todos los rangos tengan las mismas filas, porque si no da #¡VALOR!.",
+     "criterios": [
+      "Dice que en SUMAR.SI.CONJUNTO el rango de suma va el primero (en SUMAR.SI, al final)",
+      "Explica que después van parejas de rango y criterio",
+      "Menciona que los rangos deben tener el mismo tamaño o da un ejemplo correcto",
+      "Lo explica con claridad y en pocas frases"
+     ]
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "Sintaxis de SUMAR.SI.CONJUNTO",
+     "dorso": "=SUMAR.SI.CONJUNTO(rango_suma; rango_criterios1; criterios1; [rango_criterios2; criterios2]…). Lo que se suma va el primero."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Sintaxis de CONTAR.SI.CONJUNTO",
+     "dorso": "=CONTAR.SI.CONJUNTO(rango_criterios1; criterios1; [rango_criterios2; criterios2]…). Sin rango de suma."
+    },
+    {
+     "tipo": "error",
+     "frente": "SUMAR.SI.CONJUNTO da #¡VALOR!: ¿qué miras primero?",
+     "dorso": "El orden de los argumentos (lo que se suma, delante) y que todos los rangos tengan el mismo tamaño."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Cuadro de doble entrada: ¿qué $ llevan los criterios?",
+     "dorso": "La cabecera de las filas, la columna fija ($E2); la de las columnas, la fila fija (F$1); los rangos de datos, fijos del todo."
+    }
+   ]
+  },
+  {
+   "id": "n3m1l2",
+   "titulo": "Entre dos fechas y con criterios en celdas",
+   "minutos": 15,
+   "objetivo": "Sumar y contar por periodos (entre dos fechas, un mes entero) con SUMAR.SI.CONJUNTO, leyendo las fechas y el resto de criterios de celdas que se pueden cambiar.",
+   "mision": {
+    "de": "Marta Ruiz",
+    "puesto": "Directora financiera",
+    "texto": "Instalaciones Moncayo dice que no le cuadra el tercer trimestre. Necesito lo que les facturamos del 1 de julio al 30 de septiembre, ambos incluidos. Deja las fechas y el cliente en celdas, que luego lo usaré con otros clientes.",
+    "logro": "Ya sabes sumar y contar por periodos, entre dos fechas o en un mes entero, con criterios que se cambian desde una celda."
+   },
+   "funciones": [
+    "SUMAR.SI.CONJUNTO",
+    "CONTAR.SI.CONJUNTO",
+    "FIN.MES",
+    "FECHA"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Marta casi nunca pregunta «cuánto en total». Pregunta «cuánto **entre** tal fecha y tal fecha»: del trimestre, de octubre, desde el día 1.\n\nRecuerda que para Excel una fecha es un **número** (los días que han pasado desde el 1/1/1900). Por eso puede comprobar si una fecha es mayor o menor que otra:\n\n- `>=` significa «desde», **incluido** ese día.\n- `<=` significa «hasta», **incluido** ese día."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Facturas emitidas (base imponible)",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "A2": {
+        "fecha": "2026-06-24"
+       },
+       "B2": "Instalaciones Moncayo",
+       "C2": 1840,
+       "A3": {
+        "fecha": "2026-07-01"
+       },
+       "B3": "Electricidad Arga",
+       "C3": 2350.5,
+       "A4": {
+        "fecha": "2026-07-15"
+       },
+       "B4": "Instalaciones Moncayo",
+       "C4": 980,
+       "A5": {
+        "fecha": "2026-07-31"
+       },
+       "B5": "Montajes Segre",
+       "C5": 1275.4,
+       "A6": {
+        "fecha": "2026-08-05"
+       },
+       "B6": "Instalaciones Moncayo",
+       "C6": 2105.25,
+       "A7": {
+        "fecha": "2026-08-28"
+       },
+       "B7": "Electricidad Arga",
+       "C7": 640,
+       "A8": {
+        "fecha": "2026-09-10"
+       },
+       "B8": "Montajes Segre",
+       "C8": 3410,
+       "A9": {
+        "fecha": "2026-09-30"
+       },
+       "B9": "Instalaciones Moncayo",
+       "C9": 1560.8,
+       "A10": {
+        "fecha": "2026-10-01"
+       },
+       "B10": "Instalaciones Moncayo",
+       "C10": 725,
+       "A11": {
+        "fecha": "2026-10-14"
+       },
+       "B11": "Electricidad Arga",
+       "C11": 1990,
+       "A12": {
+        "fecha": "2026-10-31"
+       },
+       "B12": "Montajes Segre",
+       "C12": 860.3,
+       "A13": {
+        "fecha": "2026-11-03"
+       },
+       "B13": "Instalaciones Moncayo",
+       "C13": 1215.6
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "C2:C13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 21,
+       "C": 11
+      }
+     },
+     "pie": "Fíjate en las facturas de los días 1 y último de cada mes: son las que se pierden cuando el signo está mal."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e1",
+     "modo": "test",
+     "pregunta": "Marta pide lo facturado **desde el 1 de julio**. ¿Qué signo pones delante de la fecha para que entren también las facturas del mismo 1 de julio?",
+     "opciones": [
+      {
+       "texto": ">=",
+       "correcta": true,
+       "porque": "Correcto: «mayor o igual» incluye el propio 1 de julio. Entra la factura de 2.350,50 € de Electricidad Arga."
+      },
+      {
+       "texto": ">",
+       "correcta": false,
+       "porque": "«Mayor que» empieza el 2 de julio: dejarías fuera los 2.350,50 € facturados el día 1 a Electricidad Arga."
+      },
+      {
+       "texto": "=",
+       "correcta": false,
+       "porque": "«Igual» solo suma lo facturado ese día exacto, no lo que viene después."
+      }
+     ],
+     "explicacion": "En contabilidad «desde el día 1» siempre incluye el día 1. Por eso los periodos se escriben con `>=` y `<=`."
+    },
+    {
+     "tipo": "texto",
+     "md": "Lo profesional es poner la fecha **en una celda** y que la fórmula la lea. Así, el mes que viene Marta solo cambia la celda.\n\nEl criterio se forma **uniendo** el signo con la celda mediante `&`:\n\n`\">=\"&F1`\n\nEl signo va **entre comillas**, porque es texto, y la celda **fuera**, porque es una referencia. Si escribes `\">=F1\"`, todo queda dentro de las comillas y Excel compara con el texto «F1», no con la fecha que hay en esa celda."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e2",
+     "modo": "formula",
+     "enunciado": "La fórmula de **F3** debería sumar lo facturado **desde la fecha de F1** (01/10/2026), pero tiene la celda metida dentro de las comillas. Arréglala. Debe salir **4.790,90 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "E1": "Desde",
+       "F1": {
+        "fecha": "2026-10-01"
+       },
+       "E3": "Facturado",
+       "A2": {
+        "fecha": "2026-06-24"
+       },
+       "B2": "Instalaciones Moncayo",
+       "C2": 1840,
+       "A3": {
+        "fecha": "2026-07-01"
+       },
+       "B3": "Electricidad Arga",
+       "C3": 2350.5,
+       "A4": {
+        "fecha": "2026-07-15"
+       },
+       "B4": "Instalaciones Moncayo",
+       "C4": 980,
+       "A5": {
+        "fecha": "2026-07-31"
+       },
+       "B5": "Montajes Segre",
+       "C5": 1275.4,
+       "A6": {
+        "fecha": "2026-08-05"
+       },
+       "B6": "Instalaciones Moncayo",
+       "C6": 2105.25,
+       "A7": {
+        "fecha": "2026-08-28"
+       },
+       "B7": "Electricidad Arga",
+       "C7": 640,
+       "A8": {
+        "fecha": "2026-09-10"
+       },
+       "B8": "Montajes Segre",
+       "C8": 3410,
+       "A9": {
+        "fecha": "2026-09-30"
+       },
+       "B9": "Instalaciones Moncayo",
+       "C9": 1560.8,
+       "A10": {
+        "fecha": "2026-10-01"
+       },
+       "B10": "Instalaciones Moncayo",
+       "C10": 725,
+       "A11": {
+        "fecha": "2026-10-14"
+       },
+       "B11": "Electricidad Arga",
+       "C11": 1990,
+       "A12": {
+        "fecha": "2026-10-31"
+       },
+       "B12": "Montajes Segre",
+       "C12": 860.3,
+       "A13": {
+        "fecha": "2026-11-03"
+       },
+       "B13": "Instalaciones Moncayo",
+       "C13": 1215.6
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "C2:C13": "eur",
+       "F1": "fecha",
+       "F3": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 21,
+       "C": 11,
+       "E": 11,
+       "F": 12
+      }
+     },
+     "objetivo": "F3",
+     "inicial": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=F1\")",
+     "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)",
+     "alternativas": [
+      "=SUMAR.SI(A2:A13;\">=\"&F1;C2:C13)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&$F$1)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">\"&F1)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=F1\")"
+     ],
+     "variantes": [
+      {
+       "F1": {
+        "fecha": "2026-09-01"
+       }
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "El problema está en el criterio: `\">=F1\"`. La F1 no puede ir dentro de las comillas.",
+      "Cierra las comillas justo después del signo y une la celda con `&`.",
+      "El criterio correcto es `\">=\"&F1`: `=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)`"
+     ],
+     "explicacion": "4.790,90 €: todo lo facturado desde el 1 de octubre, incluida la factura de ese mismo día. Y ahora la fórmula **lee** la fecha: cambia F1 y se recalcula sola."
+    },
+    {
+     "tipo": "texto",
+     "md": "Para un periodo hacen falta **dos condiciones sobre la misma columna**: desde y hasta. SUMAR.SI.CONJUNTO lo permite: repites el rango de fechas en dos parejas.\n\n`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`\n\nSe lee: suma los importes de las filas cuya fecha es mayor o igual que F1 **y** menor o igual que F2."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e3",
+     "modo": "predice",
+     "enunciado": "Andrés quería lo facturado en **septiembre** (fechas de E1 a E2), pero su fórmula solo tiene el «desde». Antes de verlo calculado: ¿qué número saldrá en **E4**?",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Importe",
+       "D1": "Desde",
+       "E1": {
+        "fecha": "2026-09-01"
+       },
+       "D2": "Hasta",
+       "E2": {
+        "fecha": "2026-09-30"
+       },
+       "D4": "Facturado",
+       "A2": {
+        "fecha": "2026-09-15"
+       },
+       "B2": 450,
+       "A3": {
+        "fecha": "2026-09-30"
+       },
+       "B3": 1200,
+       "A4": {
+        "fecha": "2026-10-01"
+       },
+       "B4": 830,
+       "A5": {
+        "fecha": "2026-10-20"
+       },
+       "B5": 2100
+      },
+      "formatos": {
+       "A2:A5": "fecha",
+       "B2:B5": "eur",
+       "E1:E2": "fecha"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 11,
+       "D": 10,
+       "E": 11
+      }
+     },
+     "celda": "E4",
+     "formula": "=SUMAR.SI.CONJUNTO(B2:B5;A2:A5;\">=\"&E1)",
+     "explicacion": "Ha sumado septiembre **y** octubre (450 + 1.200 + 830 + 2.100), porque solo había «desde». Con el «hasta» (`;A2:A5;\"<=\"&E2`) habría dado 1.650, que es lo que se pedía. Es un error silencioso: no sale ningún aviso, solo un número demasiado grande.",
+     "respuesta": "4580"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e4",
+     "modo": "formula",
+     "enunciado": "En **F4** suma lo facturado **entre la fecha de F1 y la de F2**, las dos incluidas (ahora, el tercer trimestre). Debe salir **12.321,95 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "E1": "Desde",
+       "F1": {
+        "fecha": "2026-07-01"
+       },
+       "E2": "Hasta",
+       "F2": {
+        "fecha": "2026-09-30"
+       },
+       "E4": "Facturado",
+       "A2": {
+        "fecha": "2026-06-24"
+       },
+       "B2": "Instalaciones Moncayo",
+       "C2": 1840,
+       "A3": {
+        "fecha": "2026-07-01"
+       },
+       "B3": "Electricidad Arga",
+       "C3": 2350.5,
+       "A4": {
+        "fecha": "2026-07-15"
+       },
+       "B4": "Instalaciones Moncayo",
+       "C4": 980,
+       "A5": {
+        "fecha": "2026-07-31"
+       },
+       "B5": "Montajes Segre",
+       "C5": 1275.4,
+       "A6": {
+        "fecha": "2026-08-05"
+       },
+       "B6": "Instalaciones Moncayo",
+       "C6": 2105.25,
+       "A7": {
+        "fecha": "2026-08-28"
+       },
+       "B7": "Electricidad Arga",
+       "C7": 640,
+       "A8": {
+        "fecha": "2026-09-10"
+       },
+       "B8": "Montajes Segre",
+       "C8": 3410,
+       "A9": {
+        "fecha": "2026-09-30"
+       },
+       "B9": "Instalaciones Moncayo",
+       "C9": 1560.8,
+       "A10": {
+        "fecha": "2026-10-01"
+       },
+       "B10": "Instalaciones Moncayo",
+       "C10": 725,
+       "A11": {
+        "fecha": "2026-10-14"
+       },
+       "B11": "Electricidad Arga",
+       "C11": 1990,
+       "A12": {
+        "fecha": "2026-10-31"
+       },
+       "B12": "Montajes Segre",
+       "C12": 860.3,
+       "A13": {
+        "fecha": "2026-11-03"
+       },
+       "B13": "Instalaciones Moncayo",
+       "C13": 1215.6
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "C2:C13": "eur",
+       "F1:F2": "fecha",
+       "F4": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 21,
+       "C": 11,
+       "E": 11,
+       "F": 12
+      }
+     },
+     "objetivo": "F4",
+     "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\"<=\"&F2;A2:A13;\">=\"&F1)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;\">=\"&$F$1;$A$2:$A$13;\"<=\"&$F$2)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">\"&F1;A2:A13;\"<\"&F2)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&F2)"
+     ],
+     "variantes": [
+      {
+       "F1": {
+        "fecha": "2026-10-01"
+       },
+       "F2": {
+        "fecha": "2026-10-31"
+       }
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Dos condiciones sobre la columna de fechas (A): una con F1 y otra con F2.",
+      "Primera pareja: `A2:A13;\">=\"&F1`. Segunda: `A2:A13;\"<=\"&F2`. Delante de todo, los importes C2:C13.",
+      "`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`"
+     ],
+     "explicacion": "12.321,95 €: el trimestre completo, con las facturas del 1 de julio y del 30 de septiembre dentro y la del 1 de octubre fuera. Cambiando F1 y F2 tienes cualquier periodo: una semana, un mes o un año."
+    },
+    {
+     "tipo": "texto",
+     "md": "¿Y si te piden «octubre»? No hace falta escribir dos fechas. Pon en F1 el **día 1 del mes** y deja que **FIN.MES** calcule el último:\n\n`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))`\n\n`FIN.MES(F1;0)` da el último día del mismo mes: 31/10/2026. Si no quieres celdas de apoyo, la fecha también puede ir dentro con **FECHA**: `\">=\"&FECHA(2026;10;1)`."
+    },
+    {
+     "tipo": "aviso",
+     "estilo": "cuidado",
+     "titulo": "Nunca escribas la fecha dentro de las comillas",
+     "md": "Con `\">=01/10/2026\"`, la fecha va como **texto** y Excel la interpreta según la configuración regional del ordenador que abre el libro: en uno configurado con el formato de EE. UU. (mes/día) podría leerse como el 10 de enero. Además, cada mes tendrías que reescribir la fórmula. Usa una celda o FECHA."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e5",
+     "modo": "formula",
+     "enunciado": "En **F1** está el día 1 del mes que quiere Marta. En **F3** suma lo facturado **en todo ese mes**, del día 1 al último (calcúlalo con FIN.MES). Para octubre debe salir **3.575,30 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "E1": "Mes (día 1)",
+       "F1": {
+        "fecha": "2026-10-01"
+       },
+       "E3": "Facturado",
+       "A2": {
+        "fecha": "2026-06-24"
+       },
+       "B2": "Instalaciones Moncayo",
+       "C2": 1840,
+       "A3": {
+        "fecha": "2026-07-01"
+       },
+       "B3": "Electricidad Arga",
+       "C3": 2350.5,
+       "A4": {
+        "fecha": "2026-07-15"
+       },
+       "B4": "Instalaciones Moncayo",
+       "C4": 980,
+       "A5": {
+        "fecha": "2026-07-31"
+       },
+       "B5": "Montajes Segre",
+       "C5": 1275.4,
+       "A6": {
+        "fecha": "2026-08-05"
+       },
+       "B6": "Instalaciones Moncayo",
+       "C6": 2105.25,
+       "A7": {
+        "fecha": "2026-08-28"
+       },
+       "B7": "Electricidad Arga",
+       "C7": 640,
+       "A8": {
+        "fecha": "2026-09-10"
+       },
+       "B8": "Montajes Segre",
+       "C8": 3410,
+       "A9": {
+        "fecha": "2026-09-30"
+       },
+       "B9": "Instalaciones Moncayo",
+       "C9": 1560.8,
+       "A10": {
+        "fecha": "2026-10-01"
+       },
+       "B10": "Instalaciones Moncayo",
+       "C10": 725,
+       "A11": {
+        "fecha": "2026-10-14"
+       },
+       "B11": "Electricidad Arga",
+       "C11": 1990,
+       "A12": {
+        "fecha": "2026-10-31"
+       },
+       "B12": "Montajes Segre",
+       "C12": 860.3,
+       "A13": {
+        "fecha": "2026-11-03"
+       },
+       "B13": "Instalaciones Moncayo",
+       "C13": 1215.6
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "C2:C13": "eur",
+       "F1": "fecha",
+       "F3": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 21,
+       "C": 11,
+       "E": 12,
+       "F": 12
+      }
+     },
+     "objetivo": "F3",
+     "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&FIN.MES(F1;0)+1)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\"<=\"&FIN.MES(F1;0);A2:A13;\">=\"&F1)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<\"&FIN.MES(F1;0))",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F1+30)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1)"
+     ],
+     "variantes": [
+      {
+       "F1": {
+        "fecha": "2026-09-01"
+       }
+      },
+      {
+       "F1": {
+        "fecha": "2026-07-01"
+       }
+      }
+     ],
+     "debe_usar": [
+      "FIN.MES"
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Es la fórmula de «entre dos fechas», pero el «hasta» no está en una celda: lo calcula FIN.MES a partir de F1.",
+      "El «hasta» es `\"<=\"&FIN.MES(F1;0)`: el 0 significa «el mismo mes de F1».",
+      "`=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&FIN.MES(F1;0))`"
+     ],
+     "explicacion": "3.575,30 €, incluida la factura del 31 de octubre. Con una sola celda (el día 1) tienes el mes completo, tenga 28, 30 o 31 días. Es la base de cualquier informe mensual: cambia F1 y tienes otro mes."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e6",
+     "modo": "test",
+     "pregunta": "Importas las facturas del programa de gestión y la columna de fechas sale **alineada a la izquierda**. Tu fórmula del trimestre da menos de lo que esperabas. ¿Qué es lo más probable?",
+     "opciones": [
+      {
+       "texto": "Esas fechas son texto: un criterio como \">=\"&F1 compara números, y las filas con fecha-texto se quedan fuera sin avisar",
+       "correcta": true,
+       "porque": "Exacto. Excel alinea a la derecha los números y las fechas de verdad. Una «fecha» a la izquierda suele ser texto, y la fórmula la ignora en silencio."
+      },
+      {
+       "texto": "Falta el $ en los rangos",
+       "correcta": false,
+       "porque": "El $ solo importa al copiar la fórmula a otras celdas. Aquí la fórmula está bien: el problema está en los datos."
+      },
+      {
+       "texto": "SUMAR.SI.CONJUNTO no admite fechas",
+       "correcta": false,
+       "porque": "Sí las admite, siempre que sean fechas de verdad (números con formato de fecha), como en todos los ejercicios de esta lección."
+      }
+     ],
+     "explicacion": "Cuando un total te parezca bajo, mira primero si los datos son lo que parecen. Cómo convertir esas fechas-texto en fechas de verdad lo verás en el módulo de limpieza de datos."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l2-e7",
+     "modo": "formula",
+     "enunciado": "**La misión de Marta.** En **F5** suma lo facturado **al cliente de F3** entre la fecha de **F1** y la de **F2**, las dos incluidas. Usa las tres celdas, no escribas el nombre ni las fechas en la fórmula. Debe salir **4.646,05 €**. Reto: intenta hacerlo en menos de 3 minutos.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "C1": "Importe",
+       "E1": "Desde",
+       "F1": {
+        "fecha": "2026-07-01"
+       },
+       "E2": "Hasta",
+       "F2": {
+        "fecha": "2026-09-30"
+       },
+       "E3": "Cliente",
+       "F3": "Instalaciones Moncayo",
+       "E5": "Facturado",
+       "A2": {
+        "fecha": "2026-06-24"
+       },
+       "B2": "Instalaciones Moncayo",
+       "C2": 1840,
+       "A3": {
+        "fecha": "2026-07-01"
+       },
+       "B3": "Electricidad Arga",
+       "C3": 2350.5,
+       "A4": {
+        "fecha": "2026-07-15"
+       },
+       "B4": "Instalaciones Moncayo",
+       "C4": 980,
+       "A5": {
+        "fecha": "2026-07-31"
+       },
+       "B5": "Montajes Segre",
+       "C5": 1275.4,
+       "A6": {
+        "fecha": "2026-08-05"
+       },
+       "B6": "Instalaciones Moncayo",
+       "C6": 2105.25,
+       "A7": {
+        "fecha": "2026-08-28"
+       },
+       "B7": "Electricidad Arga",
+       "C7": 640,
+       "A8": {
+        "fecha": "2026-09-10"
+       },
+       "B8": "Montajes Segre",
+       "C8": 3410,
+       "A9": {
+        "fecha": "2026-09-30"
+       },
+       "B9": "Instalaciones Moncayo",
+       "C9": 1560.8,
+       "A10": {
+        "fecha": "2026-10-01"
+       },
+       "B10": "Instalaciones Moncayo",
+       "C10": 725,
+       "A11": {
+        "fecha": "2026-10-14"
+       },
+       "B11": "Electricidad Arga",
+       "C11": 1990,
+       "A12": {
+        "fecha": "2026-10-31"
+       },
+       "B12": "Montajes Segre",
+       "C12": 860.3,
+       "A13": {
+        "fecha": "2026-11-03"
+       },
+       "B13": "Instalaciones Moncayo",
+       "C13": 1215.6
+      },
+      "formatos": {
+       "A2:A13": "fecha",
+       "C2:C13": "eur",
+       "F1:F2": "fecha",
+       "F5": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 21,
+       "C": 11,
+       "E": 10,
+       "F": 21
+      }
+     },
+     "objetivo": "F5",
+     "solucion": "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+     "alternativas": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2;B2:B13;F3)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;$F$3;$A$2:$A$13;\">=\"&$F$1;$A$2:$A$13;\"<=\"&$F$2)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;\"Instalaciones Moncayo\";A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)"
+     ],
+     "variantes": [
+      {
+       "F3": "Electricidad Arga"
+      },
+      {
+       "F1": {
+        "fecha": "2026-10-01"
+       },
+       "F2": {
+        "fecha": "2026-12-31"
+       }
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Son tres condiciones: el cliente (columna B) y las dos fechas (columna A, dos veces).",
+      "La pareja del cliente es `B2:B13;F3`: cuando el criterio es «igual a», basta con la celda, sin comillas ni &.",
+      "`=SUMAR.SI.CONJUNTO(C2:C13;B2:B13;F3;A2:A13;\">=\"&F1;A2:A13;\"<=\"&F2)`"
+     ],
+     "explicacion": "4.646,05 €: las tres facturas de Instalaciones Moncayo del trimestre (980,00 + 2.105,25 + 1.560,80). La del 24 de junio y la del 1 de octubre quedan fuera, como debe ser. Marta ya puede cuadrarlo con el cliente, y la hoja le sirve para cualquier otro cambiando F1, F2 y F3."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m1l2-q1",
+     "modo": "respuesta_corta",
+     "pregunta": "Escribe el criterio para «**hasta la fecha de G2**, incluido ese día» (solo el criterio, como iría dentro de SUMAR.SI.CONJUNTO).",
+     "aceptadas": [
+      "\"<=\"&G2",
+      "\"<=\" & G2",
+      "\"<=\"&$G$2",
+      "\"<=\" &G2",
+      "\"<=\"& G2"
+     ],
+     "explicacion": "`\"<=\"&G2`: el signo entre comillas, la celda fuera y el & uniéndolos. Con `<=` el propio día de G2 entra en la suma."
+    },
+    {
+     "id": "n3m1l2-q2",
+     "modo": "formula",
+     "enunciado": "Andrés quiere saber **cuántos pedidos** hizo el cliente de **E3** entre las fechas de **E1** y **E2** (ambas incluidas). Escríbelo en **E5**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Fecha",
+       "B1": "Cliente",
+       "D1": "Desde",
+       "E1": {
+        "fecha": "2026-04-01"
+       },
+       "D2": "Hasta",
+       "E2": {
+        "fecha": "2026-06-30"
+       },
+       "D3": "Cliente",
+       "E3": "Montajes Segre",
+       "D5": "Pedidos",
+       "A2": {
+        "fecha": "2026-03-30"
+       },
+       "B2": "Montajes Segre",
+       "A3": {
+        "fecha": "2026-04-01"
+       },
+       "B3": "Montajes Segre",
+       "A4": {
+        "fecha": "2026-04-17"
+       },
+       "B4": "Electricidad Arga",
+       "A5": {
+        "fecha": "2026-05-12"
+       },
+       "B5": "Montajes Segre",
+       "A6": {
+        "fecha": "2026-06-02"
+       },
+       "B6": "Electricidad Arga",
+       "A7": {
+        "fecha": "2026-06-30"
+       },
+       "B7": "Montajes Segre",
+       "A8": {
+        "fecha": "2026-07-01"
+       },
+       "B8": "Montajes Segre"
+      },
+      "formatos": {
+       "A2:A8": "fecha",
+       "E1:E2": "fecha"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 18,
+       "D": 9,
+       "E": 16
+      }
+     },
+     "objetivo": "E5",
+     "solucion": "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2)",
+     "alternativas": [
+      "=CONTAR.SI.CONJUNTO(A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2;B2:B8;E3)"
+     ],
+     "errores_tipicos": [
+      "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1)",
+      "=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">\"&E1;A2:A8;\"<\"&E2)",
+      "=CONTAR.SI(B2:B8;E3)"
+     ],
+     "variantes": [
+      {
+       "E3": "Electricidad Arga"
+      }
+     ],
+     "pistas": [
+      "Se piden pedidos (contar), con tres condiciones: cliente, desde y hasta.",
+      "CONTAR.SI.CONJUNTO no lleva rango de suma. Parejas: `B2:B8;E3`, `A2:A8;\">=\"&E1` y `A2:A8;\"<=\"&E2`.",
+      "`=CONTAR.SI.CONJUNTO(B2:B8;E3;A2:A8;\">=\"&E1;A2:A8;\"<=\"&E2)`"
+     ],
+     "explicacion": "3 pedidos en el segundo trimestre: el del 1 de abril y el del 30 de junio entran; los del 30 de marzo y el 1 de julio, no. Contar entre fechas funciona igual que sumar."
+    },
+    {
+     "id": "n3m1l2-q3",
+     "modo": "test",
+     "pregunta": "¿Cuál es el criterio correcto para «desde la fecha que hay en **B1**»?",
+     "opciones": [
+      {
+       "texto": "`\">=\"&B1`",
+       "correcta": true,
+       "porque": "Correcto: el signo entre comillas, la celda fuera y unidos con &."
+      },
+      {
+       "texto": "`\">=B1\"`",
+       "correcta": false,
+       "porque": "Con B1 dentro de las comillas, Excel compara con el texto «B1», no con la fecha de la celda."
+      },
+      {
+       "texto": "`>=B1`",
+       "correcta": false,
+       "porque": "Sin comillas, Excel no lo entiende como criterio: el signo tiene que ir entre comillas."
+      },
+      {
+       "texto": "`\">=\"B1`",
+       "correcta": false,
+       "porque": "Falta el & que une el signo con la celda: Excel no aceptará la fórmula."
+      }
+     ],
+     "explicacion": "Signo entre comillas + & + celda. Es el mismo patrón para `\">\"&`, `\"<=\"&` o `\"<>\"&`."
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "concepto",
+     "frente": "Criterio «desde la fecha de F1», incluida",
+     "dorso": "\">=\"&F1 (signo entre comillas, celda fuera, unidos con &)."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Sumar entre dos fechas (F1 y F2) con SUMAR.SI.CONJUNTO",
+     "dorso": "=SUMAR.SI.CONJUNTO(importes; fechas; \">=\"&F1; fechas; \"<=\"&F2). El rango de fechas se repite."
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Último día del mes de la fecha de F1",
+     "dorso": "=FIN.MES(F1;0)"
+    },
+    {
+     "tipo": "error",
+     "frente": "¿Por qué no escribir \">=01/10/2026\" en el criterio?",
+     "dorso": "Depende de cómo lea las fechas cada ordenador y hay que reescribirlo cada vez. Usa una celda o FECHA(2026;10;1)."
+    }
+   ]
+  },
+  {
+   "id": "n3m1l3",
+   "titulo": "Medias, máximos y porcentajes por grupo",
+   "minutos": 15,
+   "objetivo": "Calcular la media, el máximo y el mínimo de cada grupo con PROMEDIO.SI.CONJUNTO, MAX.SI.CONJUNTO y MIN.SI.CONJUNTO, y el peso de cada grupo sobre el total, comprobando que todo suma 100 %.",
+   "mision": {
+    "de": "Carmen Soler",
+    "puesto": "Directora general",
+    "texto": "Para el comité del jueves quiero una tabla por delegación: ticket medio, pedido más grande y qué parte de las ventas hace cada una. Los porcentajes tienen que sumar 100 %; lo miraré.",
+    "logro": "Ya sabes resumir una lista por grupos con medias, máximos y porcentajes del total, y comprobar que el resumen cuadra antes de entregarlo."
+   },
+   "funciones": [
+    "PROMEDIO.SI.CONJUNTO",
+    "MAX.SI.CONJUNTO",
+    "MIN.SI.CONJUNTO",
+    "SUMAR.SI.CONJUNTO"
+   ],
+   "bloques": [
+    {
+     "tipo": "texto",
+     "md": "Con la misma receta que SUMAR.SI.CONJUNTO puedes sacar **la media, el máximo y el mínimo** de cada grupo:\n\n- `PROMEDIO.SI.CONJUNTO(qué promedio; dónde miro; qué busco…)`\n- `MAX.SI.CONJUNTO(de dónde saco el mayor; dónde miro; qué busco…)`\n- `MIN.SI.CONJUNTO(…)`: igual, pero el menor.\n\nPrimero el rango con los números; después, las parejas de siempre. El **ticket medio**, que Carmen pide a menudo, es el importe medio por pedido: ventas ÷ número de pedidos."
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Pedidos de noviembre",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11
+      }
+     }
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e1",
+     "modo": "predice",
+     "enunciado": "Mira los pedidos de **Lleida** (filas 4, 8 y 11). ¿Qué devolverá esta fórmula en **E2**?",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11
+      }
+     },
+     "celda": "E2",
+     "formula": "=MAX.SI.CONJUNTO(C2:C13;A2:A13;\"Lleida\")",
+     "explicacion": "2.310: el pedido más grande de Lleida. MAX.SI.CONJUNTO solo mira las filas que cumplen la condición y se queda con el mayor. El 3.120,50 de Zaragoza no cuenta, aunque sea el mayor de toda la lista.",
+     "respuesta": "2310"
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e2",
+     "modo": "formula",
+     "enunciado": "En **F2** calcula el **ticket medio** (importe medio por pedido) de la delegación que hay en **F1**. Usa la celda F1, no escribas el nombre. Para Pamplona debe salir **1.095,80 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "E1": "Delegación",
+       "F1": "Pamplona",
+       "E2": "Ticket medio",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur",
+       "F2": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11,
+       "E": 13,
+       "F": 12
+      }
+     },
+     "objetivo": "F2",
+     "solucion": "=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;F1)",
+     "alternativas": [
+      "=PROMEDIO.SI(A2:A13;F1;C2:C13)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;F1)/CONTAR.SI.CONJUNTO(A2:A13;F1)"
+     ],
+     "errores_tipicos": [
+      "=PROMEDIO(C2:C13)",
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;F1)",
+      "=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;\"Pamplona\")"
+     ],
+     "variantes": [
+      {
+       "F1": "Lleida"
+      },
+      {
+       "C6": 2000
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Es una media con condición: PROMEDIO.SI.CONJUNTO.",
+      "Primero los importes (C2:C13); después la pareja: dónde está la delegación (A2:A13) y qué delegación (F1).",
+      "`=PROMEDIO.SI.CONJUNTO(C2:C13;A2:A13;F1)`"
+     ],
+     "explicacion": "1.095,80 €: los 4.383,20 € de Pamplona entre sus 4 pedidos. Cambia F1 y tienes el ticket medio de cualquier delegación. Es uno de los indicadores que más mira una dirección comercial."
+    },
+    {
+     "tipo": "mensaje",
+     "de": "Nuria Campos",
+     "puesto": "Administración",
+     "md": "Un aviso antes de que te llegue algún libro antiguo: **MAX.SI.CONJUNTO y MIN.SI.CONJUNTO no existen en Excel 2016** (el de compra única). Ahí la fórmula sale como **#¿NOMBRE?**. PROMEDIO.SI.CONJUNTO, SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO sí funcionan. Si alguien trabaja con 2016, el máximo por grupo se saca con una tabla dinámica, que verás pronto."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e3",
+     "modo": "formula",
+     "enunciado": "Javier quiere el **pedido más grande de cada comercial**. Escribe en **F2** el mayor importe del comercial de **E2**. La fórmula se copiará a **F3:F5**, así que fija los rangos con `$`. En F2 debe salir **1.875,00 €**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "E1": "Comercial",
+       "F1": "Pedido mayor",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "E2": "Raúl Gimeno",
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "E3": "Pilar Lasheras",
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "E4": "Elena Sanz",
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "E5": "Jordi Vidal",
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur",
+       "F2:F5": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11,
+       "E": 15,
+       "F": 13
+      }
+     },
+     "objetivo": "F2",
+     "copiar_a": [
+      "F3:F5"
+     ],
+     "solucion": "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;E2)",
+     "alternativas": [
+      "=MAX.SI.CONJUNTO(C$2:C$13;B$2:B$13;E2)",
+      "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;$E2)"
+     ],
+     "errores_tipicos": [
+      "=MAX.SI.CONJUNTO(C2:C13;B2:B13;E2)",
+      "=MAX(C2:C13)",
+      "=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;\"Raúl Gimeno\")"
+     ],
+     "variantes": [
+      {
+       "C12": 2500
+      },
+      {
+       "C4": 800
+      }
+     ],
+     "formato_resultado": "eur",
+     "pistas": [
+      "Es MAX.SI.CONJUNTO: primero los importes, después dónde está el comercial y cuál buscas (E2).",
+      "Al copiar hacia abajo, los rangos de datos no deben moverse: `$C$2:$C$13` y `$B$2:$B$13`. E2 sí debe bajar a E3, E4…",
+      "`=MAX.SI.CONJUNTO($C$2:$C$13;$B$2:$B$13;E2)`"
+     ],
+     "explicacion": "Raúl 1.875,00 €, Pilar 3.120,50 €, Elena 1.780,00 € y Jordi 2.310,00 €. Una fórmula, cuatro respuestas. Sin los `$`, el rango bajaría al copiar y en la última fila se perdería el pedido de 2.310,00 € de Jordi: un error que no da ningún aviso."
+    },
+    {
+     "tipo": "texto",
+     "md": "¿Qué parte de las ventas hace cada delegación? Se calcula **parte ÷ total** y se le da formato de porcentaje: `=B2/B5`.\n\nComo la fórmula se copia hacia abajo, el total tiene que quedarse quieto: `=B2/$B$5`. Sin el `$`, en la fila de abajo Excel dividiría entre B6, una celda vacía, y saldría **#¡DIV/0!**.\n\nY la comprobación de oro: **los porcentajes de todas las partes suman 100 %**. Si no suman 100 %, algo falla."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e4",
+     "modo": "formula",
+     "enunciado": "Alguien escribió `=B2/B5` en **C2** y al copiarla hacia abajo sale #¡DIV/0!. Arregla la fórmula de **C2** para que, copiada a **C3:C4**, cada delegación se divida siempre entre el total de **B5**. Cuando esté bien, la comprobación de **C5** marcará **100,0 %**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Ventas",
+       "C1": "% del total",
+       "A2": "Zaragoza",
+       "B2": 7351.25,
+       "A3": "Pamplona",
+       "B3": 4383.2,
+       "A4": "Lleida",
+       "B4": 3783.3,
+       "A5": "Total",
+       "B5": "=SUMA(B2:B4)",
+       "C5": "=SUMA(C2:C4)"
+      },
+      "formatos": {
+       "B2:B5": "eur",
+       "C2:C5": "pct1"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 12,
+       "C": 12
+      }
+     },
+     "objetivo": "C2",
+     "copiar_a": [
+      "C3:C4"
+     ],
+     "inicial": "=B2/B5",
+     "solucion": "=B2/$B$5",
+     "alternativas": [
+      "=B2/B$5",
+      "=B2/SUMA($B$2:$B$4)"
+     ],
+     "errores_tipicos": [
+      "=B2/B5",
+      "=B2/B5*100"
+     ],
+     "variantes": [
+      {
+       "B2": 8000
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Al copiar `=B2/B5` a la fila 3 queda `=B3/B6`. ¿Cuál de las dos referencias no debería moverse?",
+      "El total está siempre en B5: fíjalo con `$` (pulsa [[F4]] con el cursor sobre B5).",
+      "`=B2/$B$5`"
+     ],
+     "explicacion": "Zaragoza 47,4 %, Pamplona 28,2 % y Lleida 24,4 %, y la comprobación en 100,0 %. Fijar el total es la diferencia entre un informe que cuadra y uno lleno de #¡DIV/0!."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e5",
+     "modo": "test",
+     "pregunta": "Has calculado el peso de cada delegación y la comprobación da **104,2 %** en vez de 100 %. ¿Qué haces?",
+     "opciones": [
+      {
+       "texto": "Revisar el total y las partes: o al total le falta alguna fila, o alguna venta se cuenta dos veces",
+       "correcta": true,
+       "porque": "Correcto: si las partes suman más que el todo, el total se ha quedado corto o hay algo duplicado. Hay que encontrarlo antes de enviar nada."
+      },
+      {
+       "texto": "Nada: son cosas del redondeo",
+       "correcta": false,
+       "porque": "El redondeo de lo que se ve en pantalla puede dar 99,9 % o 100,1 %, nunca un 4 % de diferencia."
+      },
+      {
+       "texto": "Quitar los decimales para que no se note tanto",
+       "correcta": false,
+       "porque": "El formato solo cambia cómo se ve el número, no el número. Seguiría sumando 104 % y el error seguiría ahí."
+      },
+      {
+       "texto": "Enviarlo: el porcentaje de cada delegación está bien",
+       "correcta": false,
+       "porque": "Si el total está mal, todos los porcentajes están mal, porque todos se dividen entre él."
+      }
+     ],
+     "explicacion": "La celda de comprobación existe para esto: avisarte antes que la directora. Muchas hojas de empresa tienen errores; las tuyas se revisan antes de salir."
+    },
+    {
+     "tipo": "texto",
+     "md": "Carmen quiere el **% de pedidos con incidencia** de toda la empresa. Tienes el porcentaje de cada delegación.\n\nLa tentación es hacer la media: (2 % + 2 % + 12 %) ÷ 3. Antes de hacerlo, piensa: ¿debe pesar igual Lleida, con 50 pedidos, que Zaragoza, con 300?"
+    },
+    {
+     "tipo": "hoja",
+     "titulo": "Incidencias de octubre por delegación",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Pedidos",
+       "C1": "Con incidencia",
+       "D1": "% incidencias",
+       "A2": "Zaragoza",
+       "B2": 300,
+       "C2": 6,
+       "D2": "=C2/B2",
+       "A3": "Pamplona",
+       "B3": 150,
+       "C3": 3,
+       "D3": "=C3/B3",
+       "A4": "Lleida",
+       "B4": 50,
+       "C4": 6,
+       "D4": "=C4/B4"
+      },
+      "formatos": {
+       "D2:D4": "pct"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 9,
+       "C": 14,
+       "D": 13
+      }
+     }
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e6",
+     "modo": "test",
+     "pregunta": "¿Cuál es el % de pedidos con incidencia de **toda la empresa**?",
+     "opciones": [
+      {
+       "texto": "3 %: 15 incidencias ÷ 500 pedidos",
+       "correcta": true,
+       "porque": "Correcto: total de la parte entre total del todo. Cada pedido pesa lo mismo, sea de la delegación que sea."
+      },
+      {
+       "texto": "5,3 %: la media de los tres porcentajes",
+       "correcta": false,
+       "porque": "Es la trampa: la media da el mismo peso a Lleida (50 pedidos) que a Zaragoza (300). Como la más pequeña tiene el porcentaje más alto, el dato sale inflado."
+      },
+      {
+       "texto": "16 %: la suma de los tres porcentajes",
+       "correcta": false,
+       "porque": "Los porcentajes de grupos distintos no se suman: cada uno está calculado sobre su propio total."
+      }
+     ],
+     "explicacion": "El porcentaje de un total se calcula con **totales**: `=SUMA(C2:C4)/SUMA(B2:B4)`. La media de porcentajes solo coincide cuando todos los grupos tienen el mismo tamaño. Ahora sabes detectar este error en cualquier informe."
+    },
+    {
+     "tipo": "ejercicio",
+     "id": "n3m1l3-e7",
+     "modo": "formula",
+     "enunciado": "**La misión de Carmen.** El ticket medio y el pedido mayor ya están. En **H2** calcula qué parte de **todas** las ventas hace la delegación de **E2**, directamente desde la lista de pedidos: sus ventas ÷ la suma de toda la columna C. Se copiará a **H3:H4**. En H2 debe salir **47,4 %** y la comprobación de **H5**, **100,0 %**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "E1": "Delegación",
+       "F1": "Ticket medio",
+       "G1": "Pedido mayor",
+       "H1": "% de ventas",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "E2": "Zaragoza",
+       "F2": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)",
+       "G2": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)",
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "E3": "Pamplona",
+       "F3": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E3)",
+       "G3": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E3)",
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "E4": "Lleida",
+       "F4": "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E4)",
+       "G4": "=MAX.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E4)",
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "E5": "Comprobación",
+       "H5": "=SUMA(H2:H4)",
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur",
+       "F2:G4": "eur",
+       "H2:H5": "pct1"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11,
+       "E": 13,
+       "F": 12,
+       "G": 13,
+       "H": 11
+      }
+     },
+     "objetivo": "H2",
+     "copiar_a": [
+      "H3:H4"
+     ],
+     "solucion": "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)",
+     "alternativas": [
+      "=SUMAR.SI($A$2:$A$13;E2;$C$2:$C$13)/SUMA($C$2:$C$13)",
+      "=SUMAR.SI.CONJUNTO(C$2:C$13;A$2:A$13;E2)/SUMA(C$2:C$13)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;$E2)/SUMA($C$2:$C$13)"
+     ],
+     "errores_tipicos": [
+      "=SUMAR.SI.CONJUNTO(C2:C13;A2:A13;E2)/SUMA(C2:C13)",
+      "=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)*100",
+      "=PROMEDIO.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)"
+     ],
+     "variantes": [
+      {
+       "C2": 2000
+      },
+      {
+       "C13": 900
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Arriba va lo que vende la delegación de E2 (SUMAR.SI.CONJUNTO) y abajo, lo que vende toda la empresa (SUMA de la columna C).",
+      "Los dos rangos de datos con `$` para que no bajen al copiar. E2 sin `$`, para que pase a E3 y E4.",
+      "`=SUMAR.SI.CONJUNTO($C$2:$C$13;$A$2:$A$13;E2)/SUMA($C$2:$C$13)`"
+     ],
+     "explicacion": "Zaragoza 47,4 %, Pamplona 28,2 %, Lleida 24,4 %, y la comprobación en 100,0 %. Ya tienes la tabla del comité: ticket medio, pedido mayor y peso de cada delegación, todo calculado desde la lista y comprobado. Sin el `*100`: el formato de porcentaje ya se encarga de mostrarlo."
+    }
+   ],
+   "recuerda": [
+    {
+     "id": "n3m1l3-q1",
+     "modo": "respuesta_corta",
+     "pregunta": "¿Qué función usarías para encontrar el pedido **más pequeño** de un comercial concreto?",
+     "aceptadas": [
+      "MIN.SI.CONJUNTO",
+      "=MIN.SI.CONJUNTO",
+      "min.si.conjunto",
+      "MIN.SI.CONJUNTO()"
+     ],
+     "explicacion": "MIN.SI.CONJUNTO: primero el rango de importes, después la pareja comercial-nombre. Recuerda que no existe en Excel 2016."
+    },
+    {
+     "id": "n3m1l3-q2",
+     "modo": "formula",
+     "enunciado": "En **D5** calcula el % de pedidos con incidencia de **toda la empresa**, sin promediar porcentajes. Debe salir **3,0 %**.",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Pedidos",
+       "C1": "Con incidencia",
+       "D1": "% incidencias",
+       "A2": "Zaragoza",
+       "B2": 300,
+       "C2": 6,
+       "D2": "=C2/B2",
+       "A3": "Pamplona",
+       "B3": 150,
+       "C3": 3,
+       "D3": "=C3/B3",
+       "A4": "Lleida",
+       "B4": 50,
+       "C4": 6,
+       "D4": "=C4/B4",
+       "A5": "Empresa"
+      },
+      "formatos": {
+       "D2:D5": "pct1"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 9,
+       "C": 14,
+       "D": 13
+      }
+     },
+     "objetivo": "D5",
+     "solucion": "=SUMA(C2:C4)/SUMA(B2:B4)",
+     "alternativas": [
+      "=(C2+C3+C4)/(B2+B3+B4)"
+     ],
+     "errores_tipicos": [
+      "=PROMEDIO(D2:D4)",
+      "=SUMA(D2:D4)"
+     ],
+     "variantes": [
+      {
+       "C4": 10
+      },
+      {
+       "B2": 400
+      }
+     ],
+     "formato_resultado": "pct1",
+     "pistas": [
+      "Total de incidencias entre total de pedidos.",
+      "Arriba, la suma de la columna C; abajo, la suma de la columna B.",
+      "`=SUMA(C2:C4)/SUMA(B2:B4)`"
+     ],
+     "explicacion": "3,0 %: 15 incidencias de 500 pedidos. La media de la columna D habría dicho 5,3 %."
+    },
+    {
+     "id": "n3m1l3-q3",
+     "modo": "predice",
+     "enunciado": "¿Cuántos pedidos de **Zaragoza** pasan de 1.000 €? ¿Qué devuelve la fórmula de **E2**?",
+     "hoja": {
+      "celdas": {
+       "A1": "Delegación",
+       "B1": "Comercial",
+       "C1": "Importe",
+       "A2": "Zaragoza",
+       "B2": "Raúl Gimeno",
+       "C2": 1250,
+       "A3": "Pamplona",
+       "B3": "Elena Sanz",
+       "C3": 860.4,
+       "A4": "Lleida",
+       "B4": "Jordi Vidal",
+       "C4": 2310,
+       "A5": "Zaragoza",
+       "B5": "Raúl Gimeno",
+       "C5": 415.75,
+       "A6": "Pamplona",
+       "B6": "Elena Sanz",
+       "C6": 1780,
+       "A7": "Zaragoza",
+       "B7": "Pilar Lasheras",
+       "C7": 3120.5,
+       "A8": "Lleida",
+       "B8": "Jordi Vidal",
+       "C8": 945,
+       "A9": "Pamplona",
+       "B9": "Elena Sanz",
+       "C9": 1430.2,
+       "A10": "Zaragoza",
+       "B10": "Pilar Lasheras",
+       "C10": 690,
+       "A11": "Lleida",
+       "B11": "Jordi Vidal",
+       "C11": 528.3,
+       "A12": "Zaragoza",
+       "B12": "Raúl Gimeno",
+       "C12": 1875,
+       "A13": "Pamplona",
+       "B13": "Elena Sanz",
+       "C13": 312.6
+      },
+      "formatos": {
+       "C2:C13": "eur"
+      },
+      "anchos": {
+       "A": 11,
+       "B": 15,
+       "C": 11
+      }
+     },
+     "celda": "E2",
+     "formula": "=CONTAR.SI.CONJUNTO(A2:A13;\"Zaragoza\";C2:C13;\">1000\")",
+     "explicacion": "3: los pedidos de 1.250,00, 3.120,50 y 1.875,00 €. Los de 415,75 y 690,00 € son de Zaragoza pero no pasan de 1.000 €. Para contar, CONTAR.SI.CONJUNTO; para sumar, SUMAR.SI.CONJUNTO; para la media, PROMEDIO.SI.CONJUNTO.",
+     "respuesta": "3"
+    }
+   ],
+   "tarjetas": [
+    {
+     "tipo": "funcion",
+     "frente": "Media de un grupo con condiciones",
+     "dorso": "=PROMEDIO.SI.CONJUNTO(rango_promedio; rango_criterios1; criterios1; …)"
+    },
+    {
+     "tipo": "funcion",
+     "frente": "Mayor y menor valor de un grupo",
+     "dorso": "=MAX.SI.CONJUNTO(rango_máximo; rango_criterios1; criterios1; …) y MIN.SI.CONJUNTO igual. No existen en Excel 2016."
+    },
+    {
+     "tipo": "concepto",
+     "frente": "Peso de cada parte sobre el total, con una fórmula que se copia",
+     "dorso": "=B2/$B$5 (total fijado con $) y formato de porcentaje. Comprueba que todo suma 100 %."
+    },
+    {
+     "tipo": "error",
+     "frente": "% de toda la empresa a partir de los % de cada delegación",
+     "dorso": "No promedies porcentajes: suma de la parte ÷ suma del total (=SUMA(C2:C4)/SUMA(B2:B4))."
+    }
+   ]
+  }
+ ]
+}

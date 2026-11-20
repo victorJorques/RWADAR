@@ -1,0 +1,702 @@
+{
+ "id": "n3m2l2",
+ "titulo": "INDICE y COINCIDIR: la búsqueda que funciona en cualquier Excel",
+ "minutos": 16,
+ "objetivo": "Buscar con INDICE y COINCIDIR (y COINCIDIRX) en cualquier versión de Excel, hacia cualquier lado y en tablas de doble entrada.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Para el comité del lunes quiero una casilla donde escriba una delegación y un mes y me salga lo que vendimos. Sin perderme en la tabla. Y que funcione también en el portátil viejo de la sala de juntas.",
+  "logro": "Ya sabes buscar con INDICE y COINCIDIR en cualquier versión de Excel, hacia cualquier lado y en tablas de doble entrada."
+ },
+ "funciones": [
+  "INDICE",
+  "COINCIDIR",
+  "COINCIDIRX"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "BUSCARX es cómoda, pero tiene dos límites en la oficina: **no existe en Excel 2019** ni anteriores, y BUSCARV, su alternativa antigua, solo trae columnas que estén a la **derecha** de la que busca.\n\nLa pareja **INDICE + COINCIDIR** funciona en cualquier versión y busca hacia cualquier lado. La verás en muchos libros de empresa antiguos.\n\nLa idea es partir la búsqueda en dos pasos, como con los buzones de un portal: primero averiguas **en qué buzón** está (la posición) y luego miras **qué hay dentro** (el valor)."
+  },
+  {
+   "tipo": "texto",
+   "md": "**COINCIDIR** responde a «¿en qué posición está?». Devuelve un número, no el dato.\n\n`=COINCIDIR(\"LED-T120\";A2:A7;0)` → **3**\n\nTres huecos: qué buscas; dónde lo buscas (una sola columna o fila); y un **0**, que significa «coincidencia exacta».\n\nOjo: la posición se cuenta **desde el principio del rango**, no es el número de fila. LED-T120 está en la fila 4 de la hoja, pero es el **tercero** del rango A2:A7."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Tarifa de Iluminación Moncayo",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "A2": "LED-P60",
+     "B2": "Panel LED 60×60 40 W",
+     "C2": 24.9,
+     "A3": "LED-DL18",
+     "B3": "Downlight LED 18 W",
+     "C3": 8.75,
+     "A4": "LED-T120",
+     "B4": "Tubo LED 120 cm 18 W",
+     "C4": 4.6,
+     "A5": "LED-PR50",
+     "B5": "Proyector LED 50 W",
+     "C5": 19.4,
+     "A6": "LED-CA100",
+     "B6": "Campana LED 100 W",
+     "C6": 58,
+     "A7": "LED-RG36",
+     "B7": "Regleta LED estanca 36 W",
+     "C7": 16.3
+    },
+    "formatos": {
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 24,
+     "C": 10
+    },
+    "columnas": 3,
+    "filas": 7
+   },
+   "resaltar": [
+    "A4"
+   ],
+   "pie": "LED-T120 está en la fila 4 de la hoja, pero en la posición 3 del rango A2:A7."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "El 0 no es opcional",
+   "md": "Si omites el tercer hueco, COINCIDIR usa **1**: coincidencia aproximada, que exige la lista ordenada de menor a mayor. Con códigos desordenados devuelve posiciones equivocadas **sin avisar**. Es el mismo peligro que BUSCARV sin FALSO."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e1",
+   "modo": "predice",
+   "enunciado": "Con la misma tarifa, ¿qué número devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "A2": "LED-P60",
+     "B2": "Panel LED 60×60 40 W",
+     "C2": 24.9,
+     "A3": "LED-DL18",
+     "B3": "Downlight LED 18 W",
+     "C3": 8.75,
+     "A4": "LED-T120",
+     "B4": "Tubo LED 120 cm 18 W",
+     "C4": 4.6,
+     "A5": "LED-PR50",
+     "B5": "Proyector LED 50 W",
+     "C5": 19.4,
+     "A6": "LED-CA100",
+     "B6": "Campana LED 100 W",
+     "C6": 58,
+     "A7": "LED-RG36",
+     "B7": "Regleta LED estanca 36 W",
+     "C7": 16.3
+    },
+    "formatos": {
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 24,
+     "C": 10
+    },
+    "columnas": 5,
+    "filas": 7
+   },
+   "celda": "E2",
+   "formula": "=COINCIDIR(\"LED-CA100\";A2:A7;0)",
+   "explicacion": "5: LED-CA100 es el quinto código del rango A2:A7, aunque esté en la fila 6 de la hoja. COINCIDIR te da la posición; en un momento la usarás para traer el dato.",
+   "respuesta": "5"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e2",
+   "modo": "formula",
+   "enunciado": "Andrés quiere saber en qué posición de la tarifa está el código que ha escrito en **E2**. En **F2** escribe una fórmula que devuelva esa **posición** dentro de la lista de códigos A2:A7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "E1": "Código buscado",
+     "F1": "Posición",
+     "A2": "LED-P60",
+     "B2": "Panel LED 60×60 40 W",
+     "C2": 24.9,
+     "A3": "LED-DL18",
+     "B3": "Downlight LED 18 W",
+     "C3": 8.75,
+     "A4": "LED-T120",
+     "B4": "Tubo LED 120 cm 18 W",
+     "C4": 4.6,
+     "A5": "LED-PR50",
+     "B5": "Proyector LED 50 W",
+     "C5": 19.4,
+     "A6": "LED-CA100",
+     "B6": "Campana LED 100 W",
+     "C6": 58,
+     "A7": "LED-RG36",
+     "B7": "Regleta LED estanca 36 W",
+     "C7": 16.3,
+     "E2": "LED-PR50"
+    },
+    "formatos": {
+     "C2:C7": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 24,
+     "C": 10,
+     "E": 15
+    },
+    "columnas": 6,
+    "filas": 7
+   },
+   "objetivo": "F2",
+   "solucion": "=COINCIDIR(E2;A2:A7;0)",
+   "alternativas": [
+    "=COINCIDIR(E2;$A$2:$A$7;0)",
+    "=COINCIDIRX(E2;A2:A7)"
+   ],
+   "errores_tipicos": [
+    "=COINCIDIR(E2;A2:A7)",
+    "=COINCIDIR(E2;A1:A7;0)",
+    "=COINCIDIR(E2;A2:A7;1)"
+   ],
+   "variantes": [
+    {
+     "E2": "LED-DL18"
+    },
+    {
+     "E2": "LED-RG36"
+    }
+   ],
+   "pistas": [
+    "COINCIDIR necesita tres cosas: qué buscas, dónde lo buscas y el tipo de coincidencia.",
+    "Lo que buscas está en E2 y la lista de códigos es A2:A7. Para «exacta», el tercer hueco es 0.",
+    "`=COINCIDIR(E2;A2:A7;0)`"
+   ],
+   "explicacion": "4: LED-PR50 es el cuarto código de la tarifa. Y como la fórmula lee E2, si Andrés escribe otro código, la posición cambia sola. Ya tienes la mitad de la búsqueda."
+  },
+  {
+   "tipo": "texto",
+   "md": "**INDICE** hace lo contrario: le das una posición y te devuelve lo que hay en ella.\n\n`=INDICE(C2:C7;3)` → **4,60 €**, el tercer precio del rango.\n\nDos huecos: el rango donde está el dato que quieres traer y la posición. Igual que antes, la posición se cuenta desde el principio del rango.\n\nPor separado parecen poco útiles. Juntas forman una búsqueda completa: COINCIDIR averigua la posición e INDICE la usa para traer el dato."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para traer el precio del código de E2, metes COINCIDIR dentro de INDICE:\n\n`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`\n\nSe lee **de dentro afuera**: COINCIDIR busca el código en A2:A7 y dice «posición 4»; INDICE va a C2:C7 y trae el cuarto precio.\n\nLos dos rangos tienen que estar **alineados**: empezar y terminar en las mismas filas (de la 2 a la 7). Si uno empieza en la fila 3, todo se desplaza y traes el precio del producto de al lado."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "La búsqueda completa",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "E1": "Código buscado",
+     "F1": "Precio",
+     "A2": "LED-P60",
+     "B2": "Panel LED 60×60 40 W",
+     "C2": 24.9,
+     "A3": "LED-DL18",
+     "B3": "Downlight LED 18 W",
+     "C3": 8.75,
+     "A4": "LED-T120",
+     "B4": "Tubo LED 120 cm 18 W",
+     "C4": 4.6,
+     "A5": "LED-PR50",
+     "B5": "Proyector LED 50 W",
+     "C5": 19.4,
+     "A6": "LED-CA100",
+     "B6": "Campana LED 100 W",
+     "C6": 58,
+     "A7": "LED-RG36",
+     "B7": "Regleta LED estanca 36 W",
+     "C7": 16.3,
+     "E2": "LED-PR50",
+     "F2": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 24,
+     "C": 10,
+     "E": 15,
+     "F": 10
+    },
+    "columnas": 6,
+    "filas": 7
+   },
+   "resaltar": [
+    "F2"
+   ],
+   "pie": "COINCIDIR da 4; INDICE trae el cuarto precio de C2:C7: 19,40 €."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e3",
+   "modo": "formula",
+   "enunciado": "Nuria ha copiado esta búsqueda en **F2**, pero para LED-PR50 trae **58,00 €**, el precio del producto de debajo. **Arréglala** para que traiga el precio correcto del código de E2.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Precio",
+     "E1": "Código buscado",
+     "F1": "Precio",
+     "A2": "LED-P60",
+     "B2": "Panel LED 60×60 40 W",
+     "C2": 24.9,
+     "A3": "LED-DL18",
+     "B3": "Downlight LED 18 W",
+     "C3": 8.75,
+     "A4": "LED-T120",
+     "B4": "Tubo LED 120 cm 18 W",
+     "C4": 4.6,
+     "A5": "LED-PR50",
+     "B5": "Proyector LED 50 W",
+     "C5": 19.4,
+     "A6": "LED-CA100",
+     "B6": "Campana LED 100 W",
+     "C6": 58,
+     "A7": "LED-RG36",
+     "B7": "Regleta LED estanca 36 W",
+     "C7": 16.3,
+     "E2": "LED-PR50"
+    },
+    "formatos": {
+     "C2:C7": "eur",
+     "F2": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 24,
+     "C": 10,
+     "E": 15,
+     "F": 10
+    },
+    "columnas": 6,
+    "filas": 7
+   },
+   "objetivo": "F2",
+   "inicial": "=INDICE(C3:C8;COINCIDIR(E2;A2:A7;0))",
+   "solucion": "=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))",
+   "debe_usar": [
+    "INDICE"
+   ],
+   "alternativas": [
+    "=INDICE($C$2:$C$7;COINCIDIR(E2;$A$2:$A$7;0))",
+    "=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))"
+   ],
+   "errores_tipicos": [
+    "=INDICE(C2:C7;COINCIDIR(E2;A3:A8;0))",
+    "=INDICE(C1:C7;COINCIDIR(E2;A2:A7;0))"
+   ],
+   "variantes": [
+    {
+     "E2": "LED-P60"
+    },
+    {
+     "C5": 21.9
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Compara los dos rangos de la fórmula: ¿empiezan en la misma fila?",
+    "COINCIDIR cuenta desde A2, pero INDICE cuenta desde C3: van desfasados una fila.",
+    "Haz que INDICE use C2:C7: `=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`."
+   ],
+   "explicacion": "19,40 €, el precio bueno. Un rango desfasado no da ningún error: trae un dato que parece correcto y no lo es. Cuando revises una búsqueda ajena, mira siempre que los dos rangos empiecen y terminen en las mismas filas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e4",
+   "modo": "formula",
+   "enunciado": "La tarifa nueva llega con el **código en la última columna** (C), y Andrés necesita la **descripción**, que está a la izquierda. En **F2** trae la descripción del código de E2, con la fórmula lista para copiar hasta **F5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Descripción",
+     "B1": "Precio",
+     "C1": "Código",
+     "E1": "Código",
+     "F1": "Descripción",
+     "A2": "Panel LED 60×60 40 W",
+     "B2": 24.9,
+     "C2": "LED-P60",
+     "A3": "Downlight LED 18 W",
+     "B3": 8.75,
+     "C3": "LED-DL18",
+     "A4": "Tubo LED 120 cm 18 W",
+     "B4": 4.6,
+     "C4": "LED-T120",
+     "A5": "Proyector LED 50 W",
+     "B5": 19.4,
+     "C5": "LED-PR50",
+     "A6": "Campana LED 100 W",
+     "B6": 58,
+     "C6": "LED-CA100",
+     "A7": "Regleta LED estanca 36 W",
+     "B7": 16.3,
+     "C7": "LED-RG36",
+     "E2": "LED-T120",
+     "E3": "LED-P60",
+     "E4": "LED-RG36",
+     "E5": "LED-DL18"
+    },
+    "formatos": {
+     "B2:B7": "eur"
+    },
+    "anchos": {
+     "A": 24,
+     "B": 10,
+     "C": 11,
+     "E": 11,
+     "F": 24
+    },
+    "columnas": 6,
+    "filas": 7
+   },
+   "objetivo": "F2",
+   "copiar_a": [
+    "F3:F5"
+   ],
+   "solucion": "=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7;0))",
+   "debe_usar": [
+    "INDICE"
+   ],
+   "alternativas": [
+    "=INDICE(A$2:A$7;COINCIDIR(E2;C$2:C$7;0))",
+    "=INDICE($A$2:$A$7;COINCIDIRX(E2;$C$2:$C$7))"
+   ],
+   "errores_tipicos": [
+    "=INDICE(A2:A7;COINCIDIR(E2;C2:C7;0))",
+    "=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7))",
+    "=INDICE($B$2:$B$7;COINCIDIR(E2;$C$2:$C$7;0))"
+   ],
+   "variantes": [
+    {
+     "E3": "LED-PR50"
+    }
+   ],
+   "pistas": [
+    "COINCIDIR busca el código en su columna (C); INDICE trae el dato de la columna de descripciones (A).",
+    "Como vas a copiar, fija los dos rangos con [[F4]]: `$A$2:$A$7` y `$C$2:$C$7`.",
+    "`=INDICE($A$2:$A$7;COINCIDIR(E2;$C$2:$C$7;0))`"
+   ],
+   "explicacion": "Has buscado **hacia la izquierda**, algo que BUSCARV no sabe hacer. Con INDICE + COINCIDIR da igual dónde esté cada columna, y la fórmula funciona en cualquier Excel."
+  },
+  {
+   "tipo": "texto",
+   "md": "Desde Excel 2021 existe **COINCIDIRX**, la versión moderna de COINCIDIR. Busca **exacto por defecto**, así que el 0 ya no hace falta:\n\n`=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))`\n\nComo BUSCARX, no existe en Excel 2019 ni anteriores: allí sale #¿NOMBRE?.\n\n¿Cuál usar? En un libro que solo se abre en Microsoft 365, lo más claro es BUSCARX. Si el archivo va a un Excel antiguo, INDICE + COINCIDIR con su 0. Y cuando abras un libro ajeno, sabrás leer las tres."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e5",
+   "modo": "test",
+   "pregunta": "La plantilla de pedidos va al portátil de la sala de juntas, que tiene **Excel 2019**. ¿Qué fórmula usas para traer el precio del código de E2?",
+   "opciones": [
+    {
+     "texto": "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7;0))`",
+     "correcta": true,
+     "porque": "Funciona en todas las versiones y busca exacto gracias al 0."
+    },
+    {
+     "texto": "`=INDICE(C2:C7;COINCIDIRX(E2;A2:A7))`",
+     "correcta": false,
+     "porque": "COINCIDIRX es de Excel 2021: en Excel 2019 saldría #¿NOMBRE?."
+    },
+    {
+     "texto": "`=BUSCARX(E2;A2:A7;C2:C7)`",
+     "correcta": false,
+     "porque": "BUSCARX también es de Excel 2021 en adelante: en 2019 no existe."
+    },
+    {
+     "texto": "`=INDICE(C2:C7;COINCIDIR(E2;A2:A7))`",
+     "correcta": false,
+     "porque": "Funciona en Excel 2019, pero sin el 0 la búsqueda es aproximada y, con códigos desordenados, trae precios equivocados sin avisar."
+    }
+   ],
+   "explicacion": "Antes de elegir la función, pregunta quién va a abrir el archivo y con qué Excel."
+  },
+  {
+   "tipo": "texto",
+   "md": "INDICE admite un tercer hueco: la **columna**. En una tabla de doble entrada (delegaciones en filas, meses en columnas) buscas la fila con un COINCIDIR y la columna con otro:\n\n`=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))`\n\n- El primer COINCIDIR busca la delegación en la columna A: da la fila.\n- El segundo busca el mes en la fila 1: da la columna.\n- INDICE cruza las dos, como en «hundir la flota»."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Ventas por delegación y mes",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Julio",
+     "C1": "Agosto",
+     "D1": "Septiembre",
+     "E1": "Octubre",
+     "A2": "Zaragoza",
+     "B2": 412350,
+     "C2": 298140,
+     "D2": 436920,
+     "E2": 451780,
+     "A3": "Pamplona",
+     "B3": 186420,
+     "C3": 121300,
+     "D3": 192760,
+     "E3": 204150,
+     "A4": "Lleida",
+     "B4": 143980,
+     "C4": 97450,
+     "D4": 151200,
+     "E4": 158630,
+     "G2": "Delegación",
+     "H2": "Lleida",
+     "G3": "Mes",
+     "H3": "Septiembre",
+     "G4": "Venta",
+     "H4": "=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))"
+    },
+    "formatos": {
+     "B2:E4": "eur",
+     "H4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 13,
+     "C": 13,
+     "D": 13,
+     "E": 13,
+     "G": 11,
+     "H": 13
+    },
+    "columnas": 8,
+    "filas": 4
+   },
+   "resaltar": [
+    "H4",
+    "D4"
+   ],
+   "pie": "Lleida es la fila 3 del rango y Septiembre, la columna 3: INDICE trae 151.200 €."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e6",
+   "modo": "predice",
+   "enunciado": "Sin COINCIDIR, con los números a mano: ¿qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Julio",
+     "C1": "Agosto",
+     "D1": "Septiembre",
+     "E1": "Octubre",
+     "A2": "Zaragoza",
+     "B2": 412350,
+     "C2": 298140,
+     "D2": 436920,
+     "E2": 451780,
+     "A3": "Pamplona",
+     "B3": 186420,
+     "C3": 121300,
+     "D3": 192760,
+     "E3": 204150,
+     "A4": "Lleida",
+     "B4": 143980,
+     "C4": 97450,
+     "D4": 151200,
+     "E4": 158630
+    },
+    "formatos": {
+     "B2:E4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 13,
+     "C": 13,
+     "D": 13,
+     "E": 13
+    },
+    "columnas": 6,
+    "filas": 4
+   },
+   "celda": "F6",
+   "formula": "=INDICE(B2:E4;3;2)",
+   "formato_resultado": "eur",
+   "explicacion": "97.450 €: la fila 3 del rango B2:E4 es Lleida y la columna 2 es Agosto (B es la primera). Cuenta siempre desde la esquina del rango, no desde A1.",
+   "respuesta": "97.450,00 €"
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Un truco para lo de Carmen: no escribas «Pamplona» ni «Octubre» dentro de la fórmula. Ponlos en dos celdas aparte y que la fórmula las lea. Así Carmen cambia la celda y ve otra cifra sin tocar nada más."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m2l2-e7",
+   "modo": "formula",
+   "enunciado": "**Misión de Carmen.** En **H4** escribe una fórmula que devuelva la venta de la delegación escrita en **H2** en el mes escrito en **H3**, buscando en la tabla A1:E4. Tiene que funcionar para cualquier delegación y mes que escriba Carmen.",
+   "hoja": {
+    "celdas": {
+     "A1": "Delegación",
+     "B1": "Julio",
+     "C1": "Agosto",
+     "D1": "Septiembre",
+     "E1": "Octubre",
+     "A2": "Zaragoza",
+     "B2": 412350,
+     "C2": 298140,
+     "D2": 436920,
+     "E2": 451780,
+     "A3": "Pamplona",
+     "B3": 186420,
+     "C3": 121300,
+     "D3": 192760,
+     "E3": 204150,
+     "A4": "Lleida",
+     "B4": 143980,
+     "C4": 97450,
+     "D4": 151200,
+     "E4": 158630,
+     "G2": "Delegación",
+     "H2": "Pamplona",
+     "G3": "Mes",
+     "H3": "Octubre",
+     "G4": "Venta"
+    },
+    "formatos": {
+     "B2:E4": "eur",
+     "H4": "eur"
+    },
+    "anchos": {
+     "A": 11,
+     "B": 13,
+     "C": 13,
+     "D": 13,
+     "E": 13,
+     "G": 11,
+     "H": 13
+    },
+    "columnas": 8,
+    "filas": 4
+   },
+   "objetivo": "H4",
+   "solucion": "=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))",
+   "debe_usar": [
+    "INDICE"
+   ],
+   "alternativas": [
+    "=INDICE($B$2:$E$4;COINCIDIR(H2;$A$2:$A$4;0);COINCIDIR(H3;$B$1:$E$1;0))",
+    "=INDICE(B2:E4;COINCIDIRX(H2;A2:A4);COINCIDIRX(H3;B1:E1))"
+   ],
+   "errores_tipicos": [
+    "=INDICE(B2:E4;COINCIDIR(H2;A1:A4;0);COINCIDIR(H3;B1:E1;0))",
+    "=INDICE(B2:E4;COINCIDIR(H3;B1:E1;0);COINCIDIR(H2;A2:A4;0))",
+    "=INDICE(B2:E4;2;4)",
+    "=INDICE(A1:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))"
+   ],
+   "variantes": [
+    {
+     "H2": "Lleida",
+     "H3": "Julio"
+    },
+    {
+     "H2": "Zaragoza",
+     "H3": "Septiembre"
+    }
+   ],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Necesitas INDICE con tres huecos: el bloque de cifras (B2:E4), la fila y la columna.",
+    "La fila sale de buscar H2 en A2:A4; la columna, de buscar H3 en B1:E1. Las dos con COINCIDIR y su 0.",
+    "`=INDICE(B2:E4;COINCIDIR(H2;A2:A4;0);COINCIDIR(H3;B1:E1;0))`"
+   ],
+   "explicacion": "Carmen ya tiene su consulta: cambia la delegación o el mes y la cifra se actualiza sola, también en el portátil viejo. Compruébala mirando la tabla: Pamplona en octubre, 204.150 €. Esta casilla de «elige y mira» es la base de muchos informes de dirección."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m2l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué número escribes en el tercer hueco de COINCIDIR para que busque el valor exacto?",
+   "aceptadas": [
+    "0",
+    "cero"
+   ],
+   "explicacion": "0 = coincidencia exacta. Sin él, COINCIDIR hace una búsqueda aproximada que con datos desordenados falla sin avisar."
+  },
+  {
+   "id": "n3m2l2-q2",
+   "modo": "predice",
+   "enunciado": "Lucía, de RRHH, consulta los días de vacaciones que le quedan a cada persona. ¿Qué devuelve esta fórmula?",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "Días pendientes",
+     "A2": "Pilar Gascón",
+     "B2": 12,
+     "A3": "Óscar Lafuente",
+     "B3": 4,
+     "A4": "Ainhoa Zubiri",
+     "B4": 9,
+     "A5": "Jordi Vallès",
+     "B5": 15
+    },
+    "anchos": {
+     "A": 16,
+     "B": 15
+    },
+    "columnas": 4,
+    "filas": 5
+   },
+   "celda": "D2",
+   "formula": "=INDICE(B2:B5;COINCIDIR(\"Ainhoa Zubiri\";A2:A5;0))",
+   "explicacion": "COINCIDIR encuentra a Ainhoa en la posición 3 de A2:A5, e INDICE trae el tercer valor de B2:B5: 9 días.",
+   "respuesta": "9"
+  },
+  {
+   "id": "n3m2l2-q3",
+   "modo": "cinta",
+   "enunciado": "Quieres insertar INDICE con su ventana de ayuda, que te va pidiendo cada hueco. ¿Dónde está la lista de funciones de búsqueda en la cinta?",
+   "ruta": [
+    "Fórmulas",
+    "Biblioteca de funciones",
+    "Búsqueda y referencia"
+   ],
+   "explicacion": "Fórmulas › Biblioteca de funciones › Búsqueda y referencia. Ahí están BUSCARV, BUSCARX, COINCIDIR, INDICE y compañía."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "COINCIDIR para buscar exacto: ¿cómo se escribe y qué devuelve?",
+   "dorso": "=COINCIDIR(valor; rango; 0). Devuelve la posición (un número), contada desde el principio del rango."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "INDICE: ¿qué hace?",
+   "dorso": "=INDICE(rango; fila; [columna]). Devuelve lo que hay en esa posición del rango."
+  },
+  {
+   "tipo": "funcion",
+   "frente": "La búsqueda que funciona en cualquier Excel",
+   "dorso": "=INDICE(columna que traes; COINCIDIR(valor; columna donde buscas; 0)). Los dos rangos, alineados."
+  },
+  {
+   "tipo": "error",
+   "frente": "¿Qué pasa si omites el 0 de COINCIDIR?",
+   "dorso": "Hace una búsqueda aproximada: con datos desordenados devuelve posiciones equivocadas sin avisar."
+  }
+ ]
+}

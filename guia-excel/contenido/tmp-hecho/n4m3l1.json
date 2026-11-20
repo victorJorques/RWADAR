@@ -1,0 +1,440 @@
+{
+  "id": "n4m3l1",
+  "titulo": "Buscar objetivo: que Excel despeje por ti",
+  "minutos": 15,
+  "objetivo": "Usar Buscar objetivo para encontrar el dato que da el resultado que quieres (punto de equilibrio, precio para un margen) y entender qué hace por dentro con una fórmula directa.",
+  "mision": {
+    "de": "Andrés Molina",
+    "puesto": "Jefe de compras y almacén",
+    "texto": "Nos ofrecen alquilar una máquina para cortar cable a medida: 1.800 € al mes, más 180 € de mantenimiento. Cobraríamos 6 € por bobina cortada y cada una nos cuesta 2,40 € entre material y mano de obra. ¿Cuántas bobinas al mes tenemos que cortar para no perder dinero?",
+    "logro": "Ya sabes calcular el punto de equilibrio de un proyecto y pedirle a Excel que despeje cualquier dato con Buscar objetivo."
+  },
+  "funciones": [],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Hasta ahora siempre ibas en el mismo sentido: **pones los datos y la fórmula da el resultado**.\n\nEn la empresa muchas preguntas van **al revés**: sabes el resultado que quieres y te falta el dato. «¿Cuántas bobinas hay que cortar para no perder dinero?» «¿A qué precio vendo para ganar un 30 %?»\n\nPara eso Excel tiene **Buscar objetivo**: tú le dices el resultado y él prueba valores en una celda hasta conseguirlo. Como tantear con la calculadora, pero en un segundo."
+    },
+    {
+      "tipo": "hoja",
+      "titulo": "El modelo de la máquina de cortar cable",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Valor",
+          "A2": "Precio por bobina",
+          "B2": 6,
+          "A3": "Coste por bobina",
+          "B3": 2.4,
+          "A4": "Alquiler mensual",
+          "B4": 1800,
+          "A5": "Bobinas al mes",
+          "B5": 400,
+          "A6": "Beneficio del mes",
+          "B6": "=B5*(B2-B3)-B4"
+        },
+        "formatos": {
+          "B2:B4": "eur",
+          "B6": "eur"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "resaltar": [
+        "B6"
+      ],
+      "mostrar_formulas": true,
+      "pie": "Cada bobina deja 6 − 2,40 = 3,60 €. El beneficio es lo que dejan todas las bobinas menos el alquiler."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e1",
+      "modo": "predice",
+      "enunciado": "Calentamiento. Con **400 bobinas** al mes, ¿qué número saldrá en **B6**? Calcúlalo de cabeza: cada bobina deja 3,60 €.",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Valor",
+          "A2": "Precio por bobina",
+          "B2": 6,
+          "A3": "Coste por bobina",
+          "B3": 2.4,
+          "A4": "Alquiler mensual",
+          "B4": 1800,
+          "A5": "Bobinas al mes",
+          "B5": 400,
+          "A6": "Beneficio del mes"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "celda": "B6",
+      "formula": "=B5*(B2-B3)-B4",
+      "explicacion": "400 × 3,60 = 1.440 €, y 1.440 − 1.800 = **−360 €**. Con 400 bobinas la máquina **pierde** 360 € al mes. La pregunta de Andrés es justo la contraria: ¿con cuántas bobinas el beneficio llega a 0?"
+    },
+    {
+      "tipo": "texto",
+      "md": "### Las tres casillas de Buscar objetivo\n\n- **Definir la celda**: la celda del **resultado**. Tiene que contener una **fórmula** (aquí, B6).\n- **Con el valor**: el número que quieres que salga (aquí, **0**: ni ganar ni perder).\n- **Cambiando la celda**: el **dato** que Excel puede tocar para conseguirlo (aquí, B5, las bobinas).\n\nExcel prueba valores en B5 hasta que B6 vale 0."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "dato",
+      "titulo": "Solo cambia una celda",
+      "md": "Buscar objetivo trabaja con **un único dato** variable. Si necesitas mover varios a la vez, existe un complemento llamado **Solver** (Datos › Análisis), que es para modelos más avanzados."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e2",
+      "modo": "cinta",
+      "enunciado": "¿Dónde está **Buscar objetivo**? Toca el botón que lo contiene.",
+      "ruta": [
+        "Datos",
+        "Previsión",
+        "Análisis de hipótesis"
+      ],
+      "explicacion": "Datos › Previsión › **Análisis de hipótesis**. Es un desplegable con tres herramientas: Administrador de escenarios, Buscar objetivo y Tabla de datos. Las dos últimas las verás en la próxima lección."
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Ejemplo resuelto: ¿cuántas bobinas para no perder dinero?",
+      "pasos": [
+        {
+          "md": "Haz clic en **B6**, la celda del beneficio (la que tiene la fórmula)."
+        },
+        {
+          "md": "Abre **Buscar objetivo**.",
+          "ruta": [
+            "Datos",
+            "Previsión",
+            "Análisis de hipótesis"
+          ]
+        },
+        {
+          "md": "Rellena: **Definir la celda** `B6` · **Con el valor** `0` · **Cambiando la celda** `B5`. Pulsa **Aceptar**."
+        },
+        {
+          "md": "Excel tantea y deja **500** en B5; B6 pasa a 0,00 €. Si a veces ves algo como 499,9999, es normal: llega por aproximación."
+        },
+        {
+          "md": "Excel te enseña la solución en una ventana: **Aceptar** la deja escrita en B5; **Cancelar** devuelve B5 a su valor de antes (400)."
+        }
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e3",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para usar Buscar objetivo.",
+      "pasos": [
+        "Comprueba que la celda del resultado tiene una fórmula",
+        "Datos › Previsión › Análisis de hipótesis › Buscar objetivo",
+        "En «Definir la celda», pon la celda del resultado",
+        "En «Con el valor», escribe el número que quieres conseguir",
+        "En «Cambiando la celda», pon el dato que Excel puede mover",
+        "Pulsa Aceptar y decide si te quedas con la solución"
+      ],
+      "explicacion": "Primero se mira que el resultado salga de una fórmula; si no, Excel no tiene nada que despejar. Después, las tres casillas en orden: resultado, valor deseado y dato que cambia."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Lo que hace por dentro: despejar\n\nEl **punto de equilibrio** es la cantidad con la que no ganas ni pierdes. Tiene fórmula directa:\n\n> unidades = costes fijos ÷ (precio − coste por unidad)\n\n**Costes fijos**: los que pagas igual hagas 1 bobina o 1.000 (el alquiler). Cada bobina deja 3,60 €, así que hacen falta 1.800 ÷ 3,60 = **500** bobinas.\n\nBuscar objetivo llega a lo mismo tanteando; te salva cuando la fórmula es tan larga que no sabes despejarla."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e4",
+      "modo": "formula",
+      "enunciado": "Nuria escribió en **B7** el punto de equilibrio, pero le sale **297,6** bobinas y eso no cuadra con Buscar objetivo, que dio 500. **Arregla la fórmula de B7** para que dé las bobinas que necesitamos para no perder dinero.",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Valor",
+          "A2": "Precio por bobina",
+          "B2": 6,
+          "A3": "Coste por bobina",
+          "B3": 2.4,
+          "A4": "Alquiler mensual",
+          "B4": 1800,
+          "A7": "Bobinas de equilibrio"
+        },
+        "formatos": {
+          "B2:B4": "eur"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "B7",
+      "inicial": "=B4/B2-B3",
+      "solucion": "=B4/(B2-B3)",
+      "alternativas": [
+        "=B4/(-B3+B2)"
+      ],
+      "errores_tipicos": [
+        "=B4/B2-B3",
+        "=B4/B2",
+        "=B4/(B3-B2)",
+        "=1800/3,6"
+      ],
+      "variantes": [
+        {
+          "B4": 2400,
+          "B2": 7
+        },
+        {
+          "B3": 3
+        }
+      ],
+      "pistas": [
+        "Excel hace primero las divisiones y después las restas. ¿Qué está dividiendo ahora?",
+        "Hay que dividir el alquiler entre lo que deja **cada bobina**: precio menos coste.",
+        "Encierra la resta entre paréntesis: `=B4/(B2-B3)`."
+      ],
+      "explicacion": "Sin paréntesis, Excel calculaba 1.800 ÷ 6 = 300 y luego restaba 2,40. Con `(B2-B3)` divide entre lo que deja cada bobina: **500**. Acabas de comprobar un resultado de Buscar objetivo con una fórmula directa: dos caminos que dan lo mismo son la mejor señal de que está bien."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Dos trampas de Buscar objetivo que he visto mil veces:\n1. En «Definir la celda» pones una celda con un **número escrito**, no una fórmula: Excel te avisa de que tiene que contener una fórmula.\n2. En «Cambiando la celda» pones un dato **del que no depende** el resultado: Excel tantea y tantea, y no encuentra solución."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e5",
+      "modo": "test",
+      "pregunta": "Javier copió el modelo de la máquina y pegó solo los **valores** para enviarlo por correo. Ahora B6 contiene el número −360 escrito, sin fórmula. Lanza Buscar objetivo con Definir la celda B6, valor 0, cambiando B5. ¿Qué pasa?",
+      "opciones": [
+        {
+          "texto": "Excel avisa de que la celda tiene que contener una fórmula",
+          "correcta": true,
+          "porque": "Eso es. Buscar objetivo necesita una fórmula que dependa del dato que cambia; un número fijo no reacciona a nada. Solución: volver a poner la fórmula en B6."
+        },
+        {
+          "texto": "Excel pone 500 en B5, como siempre",
+          "correcta": false,
+          "porque": "Para llegar a 500, B6 tendría que recalcularse al cambiar B5. Con un número escrito, B6 no se mueve nunca."
+        },
+        {
+          "texto": "Excel cambia B6 a 0 y listo",
+          "correcta": false,
+          "porque": "Buscar objetivo no escribe en la celda del resultado: mueve la celda que cambia y mira cómo responde la fórmula."
+        }
+      ],
+      "explicacion": "Regla de oro: la celda de «Definir la celda» siempre tiene fórmula, y la de «Cambiando la celda» siempre es un dato escrito del que esa fórmula depende."
+    },
+    {
+      "tipo": "texto",
+      "md": "### Otro uso: el precio para un margen\n\nYa conoces el **margen sobre la venta**: (precio − coste) ÷ precio. Con Buscar objetivo: Definir la celda del margen, Con el valor **0,3** (30 %), Cambiando la celda del precio.\n\nDespejado a mano queda:\n\n> precio = coste ÷ (1 − margen)\n\nOjo con el atajo de sumar un 30 % al coste: 84 € × 1,3 = 109,20 €, y ese precio solo deja un 23 % de margen sobre la venta."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e6",
+      "modo": "formula",
+      "enunciado": "Javier quiere un **margen sobre la venta del 30 %** para la campana LED de 150 W. En **B5** calcula el **precio de venta** que lo consigue, con el coste de B2 y el margen deseado de B3. Debe salir **120,00 €**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Campana LED 150 W",
+          "B1": "Valor",
+          "A2": "Coste de compra",
+          "B2": 84,
+          "A3": "Margen deseado",
+          "B3": 0.3,
+          "A5": "Precio de venta"
+        },
+        "formatos": {
+          "B2": "eur",
+          "B3": "pct",
+          "B5": "eur"
+        },
+        "anchos": {
+          "A": 20
+        }
+      },
+      "objetivo": "B5",
+      "solucion": "=B2/(1-B3)",
+      "alternativas": [
+        "=B2/(100%-B3)"
+      ],
+      "errores_tipicos": [
+        "=B2*(1+B3)",
+        "=B2*1,3",
+        "=B2/1-B3",
+        "=B2+B3"
+      ],
+      "variantes": [
+        {
+          "B2": 50,
+          "B3": 0.25
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "El margen se calcula sobre el **precio**, no sobre el coste. Por eso no vale sumar un 30 % al coste.",
+        "Si el margen es el 30 % del precio, el coste es el 70 % restante: precio × (1 − B3) = coste.",
+        "Despeja el precio: `=B2/(1-B3)`."
+      ],
+      "explicacion": "120 € − 84 € = 36 €, y 36 ÷ 120 = 30 %. Con esta fórmula puedes fijar el precio de cualquier artículo a partir del margen que pide Dirección. Si la pruebas con Buscar objetivo, el resultado es el mismo."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n4m3l1-e7",
+      "modo": "formula",
+      "enunciado": "**El encargo de Andrés.** A los 1.800 € de alquiler se suman **180 € de mantenimiento**. En **B7** calcula cuántas bobinas al mes hay que cortar para **no perder dinero**. Debe salir **550**.",
+      "hoja": {
+        "celdas": {
+          "A1": "Máquina de corte",
+          "B1": "Valor",
+          "A2": "Precio por bobina",
+          "B2": 6,
+          "A3": "Coste por bobina",
+          "B3": 2.4,
+          "A4": "Alquiler mensual",
+          "B4": 1800,
+          "A5": "Mantenimiento mensual",
+          "B5": 180,
+          "A7": "Bobinas de equilibrio"
+        },
+        "formatos": {
+          "B2:B5": "eur"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "B7",
+      "solucion": "=(B4+B5)/(B2-B3)",
+      "alternativas": [
+        "=SUMA(B4:B5)/(B2-B3)",
+        "=B4/(B2-B3)+B5/(B2-B3)"
+      ],
+      "errores_tipicos": [
+        "=B4/(B2-B3)",
+        "=B4+B5/(B2-B3)",
+        "=(B4+B5)/B2-B3",
+        "=550"
+      ],
+      "variantes": [
+        {
+          "B5": 360,
+          "B2": 6.5
+        },
+        {
+          "B3": 2
+        }
+      ],
+      "pistas": [
+        "Los costes fijos ahora son dos: alquiler y mantenimiento.",
+        "Súmalos entre paréntesis y divide entre lo que deja cada bobina.",
+        "`=(B4+B5)/(B2-B3)`"
+      ],
+      "explicacion": "1.980 € ÷ 3,60 € = **550 bobinas al mes**. Ya puedes contestar a Andrés: por debajo de 550 la máquina pierde dinero; por encima, gana. Este cálculo (el punto de equilibrio) es de lo primero que pide Dirección antes de aprobar cualquier inversión."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n4m3l1-q1",
+      "modo": "respuesta_corta",
+      "pregunta": "En el cuadro de Buscar objetivo, ¿cómo se llama la casilla donde pones el **dato que Excel puede mover**?",
+      "aceptadas": [
+        "Cambiando la celda",
+        "cambiando la celda",
+        "Cambiando celda",
+        "Cambiando la celda:"
+      ],
+      "explicacion": "**Cambiando la celda**. Las otras dos son «Definir la celda» (el resultado, con fórmula) y «Con el valor» (el número que quieres)."
+    },
+    {
+      "id": "n4m3l1-q2",
+      "modo": "test",
+      "pregunta": "Marta te pide: «¿Qué descuento máximo puedo darle a Instalaciones Moncayo para que el pedido siga dejando 2.000 € de margen?». Tienes un modelo con el descuento en una celda y el margen calculado con fórmula. ¿Qué herramienta usas?",
+      "opciones": [
+        {
+          "texto": "Buscar objetivo",
+          "correcta": true,
+          "porque": "Sabes el resultado (2.000 € de margen) y buscas el dato (el descuento). Es justo su trabajo."
+        },
+        {
+          "texto": "BUSCARX",
+          "correcta": false,
+          "porque": "Se parece en el nombre, pero BUSCARX trae un dato de otra tabla (un precio de la tarifa). No despeja nada."
+        },
+        {
+          "texto": "Un filtro en la columna del margen",
+          "correcta": false,
+          "porque": "Filtrar oculta filas de una lista; no calcula qué valor hay que poner en una celda."
+        },
+        {
+          "texto": "Probar descuentos a mano hasta que salga",
+          "correcta": false,
+          "porque": "Funciona, pero tardas más y es fácil quedarte cerca sin llegar. Buscar objetivo hace ese tanteo por ti."
+        }
+      ]
+    },
+    {
+      "id": "n4m3l1-q3",
+      "modo": "formula",
+      "enunciado": "Sin mirar arriba. Una caja de 100 bridas se vende a 15 € y nos cuesta 9 €. La campaña para lanzarla cuesta 4.200 €. En **B5** calcula cuántas cajas hay que vender para cubrir la campaña (beneficio 0).",
+      "hoja": {
+        "celdas": {
+          "A1": "Bridas en caja",
+          "B1": "Valor",
+          "A2": "Precio por caja",
+          "B2": 15,
+          "A3": "Coste por caja",
+          "B3": 9,
+          "A4": "Coste de la campaña",
+          "B4": 4200,
+          "A5": "Cajas de equilibrio"
+        },
+        "formatos": {
+          "B2:B4": "eur"
+        },
+        "anchos": {
+          "A": 20
+        }
+      },
+      "objetivo": "B5",
+      "solucion": "=B4/(B2-B3)",
+      "errores_tipicos": [
+        "=B4/B2-B3",
+        "=B4/B2",
+        "=700"
+      ],
+      "variantes": [
+        {
+          "B4": 6000,
+          "B3": 10
+        }
+      ],
+      "pistas": [
+        "¿Cuánto deja cada caja?",
+        "Divide el coste fijo (la campaña) entre lo que deja cada caja.",
+        "`=B4/(B2-B3)`"
+      ],
+      "explicacion": "4.200 ÷ 6 = **700 cajas**. Costes fijos entre lo que deja cada unidad: la fórmula del punto de equilibrio sirve para cualquier producto."
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "¿Dónde está Buscar objetivo?",
+      "dorso": "Datos › Previsión › Análisis de hipótesis › Buscar objetivo."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "Las tres casillas de Buscar objetivo",
+      "dorso": "Definir la celda (el resultado, con fórmula) · Con el valor (lo que quieres) · Cambiando la celda (el dato que se mueve)."
+    },
+    {
+      "tipo": "funcion",
+      "frente": "Punto de equilibrio en unidades",
+      "dorso": "Costes fijos ÷ (precio − coste por unidad). Ej.: =B4/(B2-B3)"
+    },
+    {
+      "tipo": "error",
+      "frente": "Buscar objetivo dice que la celda debe contener una fórmula. ¿Qué pasa?",
+      "dorso": "En «Definir la celda» hay un número escrito. Pon la celda que calcula el resultado con fórmula."
+    }
+  ]
+}

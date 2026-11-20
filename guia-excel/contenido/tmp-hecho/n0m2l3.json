@@ -1,0 +1,186 @@
+{
+ "id": "n0m2l3",
+ "titulo": "Copiar, cortar, pegar y ensanchar columnas",
+ "minutos": 12,
+ "objetivo": "Copiar o mover datos con Ctrl+C, Ctrl+X y Ctrl+V sin pisar nada, y ensanchar una columna cuando aparece ######.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "En la hoja del pedido semanal, la columna de proveedores se quedó en la F, lejísimos. Muévela a la C, que está vacía. Y la columna de importes sale llena de almohadillas: déjala que se lea, que la reviso en diez minutos.",
+  "logro": "Ya sabes copiar y mover datos sin pisar nada y arreglar una columna que no deja ver los importes."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Tres atajos que usarás cien veces al día:\n\n- **Copiar** (Ctrl+C): como una **fotocopia**. El original se queda donde estaba.\n- **Cortar** (Ctrl+X): como una **mudanza**. El dato se va del sitio de origen.\n- **Pegar** (Ctrl+V): coloca lo copiado o cortado donde tú digas.\n\nSirven igual en Word, en el correo y en casi cualquier programa."
+  },
+  {
+   "tipo": "atajos",
+   "atajos": [
+    {"teclas": "Ctrl+C", "accion": "Copiar"},
+    {"teclas": "Ctrl+X", "accion": "Cortar"},
+    {"teclas": "Ctrl+V", "accion": "Pegar"}
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e1",
+   "modo": "test",
+   "pregunta": "Quieres el nombre de un producto **en dos sitios**: donde está y también en otra celda. ¿Qué usas?",
+   "opciones": [
+    {"texto": "Copiar ([[Ctrl]]+[[C]]) y pegar", "correcta": true, "porque": "Correcto: copiar es una fotocopia. El original se queda y aparece otro igual donde pegues."},
+    {"texto": "Cortar ([[Ctrl]]+[[X]]) y pegar", "correcta": false, "porque": "Cortar es una mudanza: el dato desaparecería de su sitio original."},
+    {"texto": "Solo pegar ([[Ctrl]]+[[V]])", "correcta": false, "porque": "Pegar sin copiar antes no sirve: Excel no sabe qué tiene que poner."}
+   ],
+   "explicacion": "Copiar duplica, cortar mueve. Con esto ya no tendrás que reescribir nada dos veces."
+  },
+  {
+   "tipo": "pasos",
+   "titulo": "Ejemplo resuelto: copiar un producto",
+   "pasos": [
+    {
+     "md": "Haz clic en **A2** y pulsa [[Ctrl]]+[[C]]. Alrededor de la celda aparece un **borde discontinuo que se mueve**: Excel te dice «tengo esto copiado».",
+     "hoja": {
+      "celdas": {"A1": "Producto", "B1": "Uds", "A2": "Magnetotérmico 2P 16 A", "B2": 30},
+      "anchos": {"A": 24, "B": 8}
+     }
+    },
+    {
+     "md": "Haz clic en la celda de destino, **A3**, y pulsa [[Ctrl]]+[[V]]. El producto aparece también en A3 y el original sigue en A2.",
+     "hoja": {
+      "celdas": {"A1": "Producto", "B1": "Uds", "A2": "Magnetotérmico 2P 16 A", "B2": 30, "A3": "Magnetotérmico 2P 16 A"},
+      "anchos": {"A": 24, "B": 8}
+     }
+    },
+    {
+     "md": "Mientras el borde se siga moviendo, puedes pegar en más celdas. Cuando acabes, pulsa [[Esc]] para quitarlo."
+    }
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e2",
+   "modo": "ordenar",
+   "enunciado": "Ordena los pasos para copiar la cantidad de B2 a B3.",
+   "pasos": [
+    "Haz clic en B2",
+    "Pulsa Ctrl+C",
+    "Haz clic en B3",
+    "Pulsa Ctrl+V",
+    "Pulsa Esc para quitar el borde que se mueve"
+   ],
+   "explicacion": "Siempre igual: primero eliges qué copias, luego adónde va. Este gesto lo repetirás a diario."
+  },
+  {
+   "tipo": "texto",
+   "md": "**Cortar** funciona igual, pero con [[Ctrl]]+[[X]]: seleccionas, cortas, haces clic en el destino y pegas. El dato **se muda**: la celda de origen se queda vacía.\n\nSirve para recolocar una columna que está en mal sitio. Si quieres que el dato se quede también donde estaba, no cortes: copia."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e3",
+   "modo": "respuesta_corta",
+   "pregunta": "Quieres **mover** unos datos a otro sitio (que desaparezcan de donde están). ¿Qué atajo pulsas **antes** de pegar con Ctrl+V?",
+   "aceptadas": ["Ctrl+X", "Control+X", "Ctrl X", "Ctrl + X", "Control X"],
+   "explicacion": "Ctrl+X, cortar. Después, Ctrl+V en el destino."
+  },
+  {
+   "tipo": "cinta",
+   "md": "Si prefieres el ratón, los tres botones están en **Inicio**, a la izquierda del todo, en el grupo **Portapapeles**: Pegar (el grande), Cortar (las tijeras) y Copiar.",
+   "ruta": ["Inicio", "Portapapeles", "Copiar"]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e4",
+   "modo": "cinta",
+   "enunciado": "Sin teclado: ¿dónde está el botón **Cortar**?",
+   "ruta": ["Inicio", "Portapapeles", "Cortar"],
+   "explicacion": "Inicio › Portapapeles › Cortar. Teclado o ratón: elige lo que te resulte más cómodo."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Cuidado con una cosa: si pegas sobre celdas que ya tienen datos, Excel **los sustituye sin preguntar**. Antes de pegar, mira que el destino esté vacío. Y si te pasa, [[Ctrl]]+[[Z]] al momento."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e5",
+   "modo": "test",
+   "pregunta": "Has pegado una lista de precios y, al mirar, ves que has tapado la columna de cantidades, que estaba llena. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Pulso [[Ctrl]]+[[Z]] para deshacer el pegado", "correcta": true, "porque": "Correcto: deshacer devuelve las cantidades a su sitio. Luego pegas donde toca."},
+    {"texto": "Vuelvo a escribir las cantidades de memoria", "correcta": false, "porque": "Es lento y arriesgado: puedes equivocarte en algún número. Ctrl+Z lo arregla en un segundo y sin errores."},
+    {"texto": "Pulso [[Esc]]", "correcta": false, "porque": "Esc solo quita el borde de copiado; lo pegado se queda donde está."}
+   ],
+   "explicacion": "Pegar encima es un clásico. Ahora sabes repararlo antes de que nadie lo note."
+  },
+  {
+   "tipo": "texto",
+   "md": "Te encontrarás esto en una celda: `########`. **No es un error** ni has roto nada: el número o la fecha **no cabe** en la columna, y Excel prefiere enseñar almohadillas antes que un número cortado (que te haría leer mal un importe).\n\nLa solución: **ensanchar la columna**."
+  },
+  {
+   "tipo": "texto",
+   "md": "Para ensanchar, ve a la fila de las letras de las columnas. Pon el ratón en la **línea de la derecha** de la letra (por ejemplo, entre la D y la E). El puntero cambia a una flecha doble.\n\n- **Arrastra** hacia la derecha para darle el ancho que quieras.\n- O haz **doble clic**: Excel ajusta la columna al dato más largo que contiene."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e6",
+   "modo": "senala",
+   "pregunta": "Toca la zona donde está la línea que hay que arrastrar (o en la que hacer doble clic) para ensanchar una columna.",
+   "zona": "encabezado_columna",
+   "explicacion": "Ahí, en los encabezados de columna, entre una letra y la siguiente. Doble clic y la columna se ajusta sola."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l3-e7",
+   "modo": "ordenar",
+   "enunciado": "Resuelve el encargo de Andrés. Ordena los pasos: **primero** mueve los proveedores de la columna F (F1:F8) a la columna C, y **después** arregla las almohadillas de la columna D.",
+   "pasos": [
+    "Selecciona F1:F8",
+    "Pulsa Ctrl+X",
+    "Haz clic en C1, que está vacía",
+    "Pulsa Ctrl+V",
+    "Pon el ratón en la línea entre las letras D y E",
+    "Haz doble clic para que la columna D se ajuste"
+   ],
+   "explicacion": "Encargo cumplido: los proveedores están donde deben, la columna F ha quedado libre y los importes se leen enteros. Andrés no tendrá nada que corregir."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m2l3-q1",
+   "modo": "test",
+   "pregunta": "Una celda con un importe muestra `#######`. ¿Qué pasa?",
+   "opciones": [
+    {"texto": "La columna es demasiado estrecha para el número", "correcta": true, "porque": "Correcto: ensancha la columna (doble clic en el borde de su letra) y el número aparece."},
+    {"texto": "El importe se ha borrado", "correcta": false, "porque": "El número sigue ahí; solo es que no cabe a la vista."},
+    {"texto": "El archivo tiene un virus", "correcta": false, "porque": "Nada que ver: las almohadillas solo indican falta de espacio."}
+   ],
+   "explicacion": "Almohadillas = columna estrecha. Doble clic en el borde y listo."
+  },
+  {
+   "id": "n0m2l3-q2",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo pega lo que has copiado?",
+   "aceptadas": ["Ctrl+V", "Control+V", "Ctrl V", "Ctrl + V", "Control V"],
+   "explicacion": "Ctrl+V, pegar."
+  },
+  {
+   "id": "n0m2l3-q3",
+   "modo": "test",
+   "pregunta": "Repaso de la lección anterior: en una celda de cantidades alguien ha escrito `30 uds`. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Dejo solo `30` y pongo «(uds)» en la cabecera", "correcta": true, "porque": "Eso es: una celda, un dato. Así Excel puede calcular con el 30."},
+    {"texto": "Lo dejo, se entiende perfectamente", "correcta": false, "porque": "Lo entiendes tú, pero Excel lo guarda como texto y no podrá sumarlo."},
+    {"texto": "Ensancho la columna", "correcta": false, "porque": "El ancho no cambia el tipo de dato: seguiría siendo texto."}
+   ],
+   "explicacion": "Mezclar lo aprendido es la mejor forma de que se quede."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "Copiar, cortar y pegar", "dorso": "Ctrl+C copiar · Ctrl+X cortar · Ctrl+V pegar"},
+  {"tipo": "concepto", "frente": "Diferencia entre copiar y cortar", "dorso": "Copiar duplica (el original se queda); cortar mueve (el origen queda vacío)."},
+  {"tipo": "error", "frente": "Una celda muestra ######", "dorso": "La columna es estrecha: doble clic en el borde derecho de la letra de la columna."}
+ ]
+}

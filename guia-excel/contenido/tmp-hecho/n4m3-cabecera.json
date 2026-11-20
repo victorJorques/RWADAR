@@ -1,0 +1,71 @@
+{
+ "id": "n4m3",
+ "nivel": "n4",
+ "titulo": "Simular: ¿y si…?",
+ "intro": "En una empresa casi ningún número es seguro: el precio puede bajar, las ventas pueden no llegar y cada banco ofrece condiciones distintas. En este módulo aprenderás a preguntarle a Excel «¿y si…?», a calcular un préstamo de principio a fin y a enseñar el resultado con el gráfico adecuado, para que quien decide lo haga con todos los casos sobre la mesa.",
+ "repaso_inicial": [
+  {
+   "id": "n4m3-r1",
+   "modo": "formula",
+   "enunciado": "Javier quiere marcar los productos con poco margen. En **C2** escribe una fórmula que muestre **Revisar** si el margen de B2 es menor que el mínimo de **E2**, y **OK** si no. Se copiará a **C3:C5**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Producto", "B1": "Margen", "C1": "Revisión", "E1": "Margen mínimo",
+     "A2": "Tira LED 5 m", "B2": 0.3, "E2": 0.25,
+     "A3": "Canaleta 40x60", "B3": 0.18,
+     "A4": "Magnetotérmico 2P 16 A", "B4": 0.27,
+     "A5": "Bridas 200 mm (100 uds.)", "B5": 0.22
+    },
+    "formatos": { "B2:B5": "pct", "E2": "pct" },
+    "anchos": { "A": 26, "B": 10, "C": 11, "D": 3, "E": 15 }
+   },
+   "objetivo": "C2",
+   "copiar_a": ["C3:C5"],
+   "solucion": "=SI(B2<$E$2;\"Revisar\";\"OK\")",
+   "alternativas": ["=SI(B2>=$E$2;\"OK\";\"Revisar\")", "=SI(B2<E$2;\"Revisar\";\"OK\")"],
+   "errores_tipicos": ["=SI(B2<E2;\"Revisar\";\"OK\")", "=SI(B2>$E$2;\"Revisar\";\"OK\")", "=SI(B2<0,25;\"Revisar\";\"OK\")"],
+   "debe_usar": ["SI"],
+   "variantes": [{ "E2": 0.2 }],
+   "pistas": [
+    "SI tiene tres partes: la prueba, lo que sale si se cumple y lo que sale si no.",
+    "La prueba es `B2<$E$2`. Fija E2 con $: al copiar hacia abajo no debe moverse.",
+    "Escribe `=SI(B2<$E$2;\"Revisar\";\"OK\")`."
+   ],
+   "explicacion": "La canaleta y las bridas quedan marcadas. Y como el mínimo está en su propia celda (un supuesto a la vista), si Dirección lo sube al 28 % solo hay que cambiar E2: justo la idea que vas a usar en todo este módulo."
+  },
+  {
+   "id": "n4m3-r2",
+   "modo": "test",
+   "pregunta": "En Power Query quitaste dos columnas, cambiaste tipos y filtraste las devoluciones. El mes que viene, ¿dónde estarán esos cambios para repetirlos?",
+   "opciones": [
+    { "texto": "En los **Pasos aplicados** de la consulta: se repiten solos al pulsar Actualizar", "correcta": true, "porque": "Eso es: la consulta guarda la receta paso a paso y la vuelve a aplicar a los datos nuevos." },
+    { "texto": "En ningún sitio: hay que repetirlos a mano cada mes", "correcta": false, "porque": "Justo para evitar eso existe Power Query: cada clic queda apuntado como un paso." },
+    { "texto": "En el historial de Deshacer de Excel", "correcta": false, "porque": "Deshacer solo recuerda lo que has hecho en la sesión y se pierde al cerrar. Los pasos de la consulta se guardan con el libro." }
+   ]
+  },
+  {
+   "id": "n4m3-r3",
+   "modo": "test",
+   "pregunta": "Vas a proteger una plantilla de gastos de viaje. ¿Qué haces **antes** de proteger la hoja para que tus compañeros puedan escribir en las celdas de entrada?",
+   "opciones": [
+    { "texto": "Seleccionar esas celdas, [[Ctrl]]+[[1]] › pestaña Proteger › desmarcar **Bloqueada**", "correcta": true, "porque": "Eso es: todas las celdas vienen bloqueadas de fábrica. Se desbloquean las de entrada y después se protege la hoja." },
+    { "texto": "Nada: al proteger la hoja, Excel deja escribir en las celdas vacías", "correcta": false, "porque": "No distingue entre vacías y llenas: con la hoja protegida, toda celda que siga marcada como Bloqueada queda cerrada." },
+    { "texto": "Proteger primero y desbloquear después las celdas de entrada", "correcta": false, "porque": "Con la hoja ya protegida no puedes cambiar el formato de las celdas. El orden es: desbloquear y luego proteger." }
+   ]
+  }
+ ],
+ "practica_excel": {
+  "enunciado": "Descarga el libro y sigue la hoja «Instrucciones» (intenta hacerlo en menos de 40 minutos). **Parte 1**: Marta va a pedir 35.000 € al 5,4 % anual a 4 años, con cuota mensual, para una carretilla elevadora del almacén. Calcula la cuota con PAGO, monta el cuadro de amortización de 48 meses y comprueba que el saldo final es 0. **Parte 2**: completa el modelo de margen del panel LED 60x60 40 W con los supuestos separados, busca con Buscar objetivo el precio de equilibrio y crea los escenarios Pesimista, Base y Optimista con su resumen. Después escribe aquí tus totales de control.",
+  "archivo": "n4-simulador.xlsx",
+  "controles": [
+   { "pregunta": "Cuota mensual del préstamo (€)", "respuesta": 812.38, "tolerancia": 0.01, "pista": "`=-PAGO(C5/12;C6*12;C4)`. Si te sale casi 10.000 €, has usado la tasa anual y los años sin pasarlos a meses." },
+   { "pregunta": "Total de intereses del préstamo (€)", "respuesta": 3994.36, "tolerancia": 0.01, "pista": "Suma la columna Interés del cuadro, o calcula cuota × 48 − 35.000. Si te sale 7.560 €, has calculado 5,4 % × 4 años sobre los 35.000 €, como si la deuda no bajara." },
+   { "pregunta": "Intereses pagados el primer año, meses 1 a 12 (€)", "respuesta": 1692.55, "tolerancia": 0.01, "pista": "`=SUMA(E12:E23)`. El interés del mes 1 tiene que ser 157,50 € (35.000 × 5,4 % ÷ 12)." },
+   { "pregunta": "Precio de equilibrio del panel LED (€)", "respuesta": 29, "tolerancia": 0.01, "pista": "Buscar objetivo: Definir la celda C15, Con el valor 0, Cambiando la celda C5. Compruébalo: coste por unidad + costes fijos ÷ unidades." },
+   { "pregunta": "Beneficio en el escenario pesimista (€)", "respuesta": -2800, "tolerancia": 0.01, "pista": "Con 30 € y 3.200 unidades: (30 − 21,50) × 3.200 − 30.000. Sale negativo: en ese caso la línea pierde dinero." },
+   { "pregunta": "Beneficio en el escenario optimista (€)", "respuesta": 22900, "tolerancia": 0.01, "pista": "Con 33 € y 4.600 unidades. Si no coincide, revisa que el beneficio (C15) se calcule solo con fórmulas que apunten a C5:C8." }
+  ],
+  "solucion_md": "### Parte 1 · Préstamo\n- **C7** `=-PAGO(C5/12;C6*12;C4)` → 812,38 €.\n- Fila del mes 1 (fila 12): saldo inicial `=C4`; cuota `=$C$7`; interés `=C12*$C$5/12`; capital `=D12-E12`; saldo final `=C12-F12`. Mes 2: saldo inicial `=G12`. Copia hasta la fila 59.\n- **C61** `=G59` → 0 (puede salir algo como -1,1E-11: es 0). **C62** `=SUMA(F12:F59)` → 35.000,00 €.\n- **C8** `=SUMA(E12:E59)` → 3.994,36 € (o `=C7*C6*12-C4`). **C9** `=SUMA(E12:E23)` → 1.692,55 €.\n\n### Parte 2 · Margen\n- Cálculos: `=C5*C6`, `=C6*C7`, `=C11-C12`, `=C8`, `=C13-C14`. Beneficio del caso base: 12.000,00 €.\n- Buscar objetivo (C15 a 0 cambiando C5): **29,00 €**.\n- Escenarios (celdas cambiantes C5:C6): Pesimista, 30 € y 3.200 uds. → **−2.800 €**; Base → **12.000 €**; Optimista, 33 € y 4.600 uds. → **22.900 €**. Resumen con C15 como celda de resultado.\n\nLectura para Marta: con las ventas previstas, el precio puede bajar hasta 29 € sin perder dinero; si además las ventas caen como en el caso pesimista, la línea pierde 2.800 €.",
+  "archivo_solucion": "n4-simulador-solucion.xlsx"
+ }
+}

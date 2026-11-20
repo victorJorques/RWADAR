@@ -1,0 +1,2014 @@
+{
+  "id": "n1m2",
+  "nivel": "n1",
+  "titulo": "Las funciones de cada día",
+  "intro": "Media, máximo, mínimo, cuántos hay, redondear a céntimos y decidir con SI: son las preguntas que te harán todas las semanas en Electro Cierzo. Con estas funciones resolverás la mayoría de los encargos de una oficina sin hacer cuentas a mano.",
+  "repaso_inicial": [
+    {
+      "id": "n1m2-r1",
+      "modo": "formula",
+      "enunciado": "Calentamos. En **B6** calcula el **total** de los cuatro albaranes (notas de entrega) de B2:B5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Albarán",
+          "B1": "Importe",
+          "A2": "A-3301",
+          "B2": 412,
+          "A3": "A-3302",
+          "B3": 1260,
+          "A4": "A-3303",
+          "B4": 87.5,
+          "A5": "A-3304",
+          "B5": 640,
+          "A6": "Total"
+        },
+        "formatos": {
+          "B2:B6": "eur"
+        }
+      },
+      "objetivo": "B6",
+      "solucion": "=SUMA(B2:B5)",
+      "alternativas": [
+        "=B2+B3+B4+B5"
+      ],
+      "errores_tipicos": [
+        "=SUMA(B2:B4)",
+        "=SUMA(B3:B5)"
+      ],
+      "variantes": [
+        {
+          "B3": 1500
+        }
+      ],
+      "formato_resultado": "eur",
+      "pistas": [
+        "Es la función que ya conoces para sumar una columna.",
+        "SUMA con el rango de los cuatro importes.",
+        "=SUMA(B2:B5)"
+      ],
+      "explicacion": "2.399,50 €. SUMA y su forma, nombre(rango), es la puerta de entrada a todas las funciones de este módulo."
+    },
+    {
+      "id": "n1m2-r2",
+      "modo": "test",
+      "pregunta": "En C2 tienes `=B2*$F$1` y la copias a C3. ¿Qué fórmula queda en C3?",
+      "opciones": [
+        {
+          "texto": "=B3*$F$1",
+          "correcta": true,
+          "porque": "B2 no tiene $ y baja una fila; $F$1 está fijada y no se mueve."
+        },
+        {
+          "texto": "=B3*$F$2",
+          "correcta": false,
+          "porque": "Los $ impiden que F1 cambie de fila al copiar."
+        },
+        {
+          "texto": "=B2*$F$1",
+          "correcta": false,
+          "porque": "B2 no lleva $, así que sí cambia al copiar hacia abajo."
+        }
+      ]
+    },
+    {
+      "id": "n1m2-r3",
+      "modo": "predice",
+      "enunciado": "Orden de las operaciones. ¿Qué devuelve esta fórmula?",
+      "hoja": {
+        "celdas": {
+          "A1": 100,
+          "B1": 20,
+          "C1": 2
+        }
+      },
+      "celda": "D1",
+      "formula": "=A1-B1*C1",
+      "explicacion": "Primero la multiplicación (20 × 2 = 40) y después la resta: 100 − 40 = 60. Si quisieras restar primero, necesitarías paréntesis: =(A1-B1)*C1.",
+      "respuesta": "60"
+    },
+    {
+      "id": "n1m2-r4",
+      "modo": "predice",
+      "enunciado": "Porcentajes. La base de la factura está en **A2** y el tipo de IVA en **B1**. ¿Qué total con IVA devuelve esta fórmula?",
+      "hoja": {
+        "celdas": {
+          "A1": "Tipo de IVA",
+          "B1": 0.21,
+          "A2": 200
+        },
+        "formatos": {
+          "B1": "pct",
+          "A2": "eur"
+        }
+      },
+      "celda": "B2",
+      "formula": "=A2*(1+B1)",
+      "explicacion": "200 × 1,21 = 242. El total es la base entera (1) más su IVA (0,21), por eso se multiplica por (1 + tipo).",
+      "respuesta": "242"
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n1m2l1",
+      "titulo": "PROMEDIO, MAX y MIN",
+      "minutos": 14,
+      "objetivo": "Calcular la media, el valor más alto y el más bajo de una lista con PROMEDIO, MAX y MIN, escribiendo bien los argumentos y sin meter el total en el cálculo.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Para la reunión del lunes quiero las ventas de octubre de mis seis comerciales resumidas: la media, la mejor y la peor. Y dime cuánto separa al mejor del peor, que quiero ver si el equipo está muy desigual.",
+        "logro": "Ya sabes resumir cualquier lista de importes con su media, su máximo y su mínimo, y calcular la distancia entre el mejor y el peor."
+      },
+      "funciones": [
+        "PROMEDIO",
+        "MAX",
+        "MIN"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Ya conoces **SUMA**. Hoy aprendes tres funciones más que se escriben igual:\n\n- **PROMEDIO**: la media (suma todo y divide entre cuántos hay).\n- **MAX**: el número más alto.\n- **MIN**: el número más bajo.\n\nUna **función** es una receta que Excel ya sabe hacer. Tú solo le das los ingredientes, que se llaman **argumentos**, entre paréntesis: `=PROMEDIO(B2:B7)`. Primero el nombre, luego el paréntesis con los datos."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Ventas de la semana por delegación",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Ventas",
+              "A2": "Zaragoza",
+              "B2": 12400,
+              "A3": "Pamplona",
+              "B3": 8300,
+              "A4": "Lleida",
+              "B4": 7100,
+              "A6": "Media",
+              "B6": "=PROMEDIO(B2:B4)",
+              "A7": "Máxima",
+              "B7": "=MAX(B2:B4)",
+              "A8": "Mínima",
+              "B8": "=MIN(B2:B4)"
+            },
+            "formatos": {
+              "B2:B8": "eur"
+            },
+            "anchos": {
+              "A": 13,
+              "B": 13
+            }
+          },
+          "resaltar": [
+            "B6:B8"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Las tres fórmulas usan el mismo rango, B2:B4. Solo cambia el nombre de la función."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e1",
+          "modo": "test",
+          "pregunta": "Javier quiere saber **la venta más alta** de la lista B2:B7. ¿Qué fórmula escribes?",
+          "opciones": [
+            {
+              "texto": "=MAX(B2:B7)",
+              "correcta": true,
+              "porque": "Eso es. MAX devuelve el número más alto del rango."
+            },
+            {
+              "texto": "=MIN(B2:B7)",
+              "correcta": false,
+              "porque": "MIN da justo lo contrario: la venta más baja."
+            },
+            {
+              "texto": "=PROMEDIO(B2:B7)",
+              "correcta": false,
+              "porque": "PROMEDIO da la media, un valor intermedio, no el más alto."
+            },
+            {
+              "texto": "=SUMA(B2:B7)",
+              "correcta": false,
+              "porque": "SUMA da el total de todas las ventas, no la mayor."
+            }
+          ],
+          "explicacion": "MAX = máximo, el más alto. MIN = mínimo, el más bajo. Fácil de recordar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e2",
+          "modo": "formula",
+          "enunciado": "Estas son las ventas de octubre de los seis comerciales. Haz clic en **B9** y escribe exactamente `=PROMEDIO(B2:B7)`. Debe salir la **venta media** por comercial.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas oct.",
+              "A2": "Pablo Herrero",
+              "B2": 18450,
+              "A3": "Elena Gil",
+              "B3": 22310,
+              "A4": "Sergio Lahoz",
+              "B4": 15980,
+              "A5": "Raquel Sanz",
+              "B5": 24120,
+              "A6": "Daniel Pueyo",
+              "B6": 19760,
+              "A7": "Irene Marco",
+              "B7": 17340,
+              "A9": "Media"
+            },
+            "formatos": {
+              "B2:B9": "eur"
+            },
+            "anchos": {
+              "A": 15,
+              "B": 13
+            }
+          },
+          "objetivo": "B9",
+          "solucion": "=PROMEDIO(B2:B7)",
+          "debe_usar": [
+            "PROMEDIO"
+          ],
+          "errores_tipicos": [
+            "=PROMEDIO(B2:B6)",
+            "=SUMA(B2:B7)"
+          ],
+          "variantes": [
+            {
+              "B3": 25000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Empieza por el signo =, como todas las fórmulas.",
+            "Después el nombre de la función, PROMEDIO, y abre paréntesis.",
+            "Dentro del paréntesis va el rango de las ventas: B2:B7. Cierra el paréntesis y pulsa Intro."
+          ],
+          "explicacion": "Tu primera media: 19.660 € por comercial. Excel ha sumado las seis ventas y ha dividido entre 6. Con esta misma fórmula sacarás la media de cualquier lista: facturas, pedidos, horas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Excel te ayuda mientras escribes. Al teclear `=PRO` aparece una **lista de funciones** que empiezan así. Baja con las flechas y pulsa **Tab**: Excel escribe el nombre y abre el paréntesis por ti.\n\nDespués aparece debajo una **etiqueta** con la forma de la función: `PROMEDIO(número1; [número2]; ...)`. Lo que va entre corchetes `[ ]` es **opcional**: puedes ponerlo o no."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Sin escribir nada",
+          "md": "La flechita del botón **Autosuma** (Inicio › Edición) despliega **Promedio**, **Contar números**, **Máx.** y **Mín.** Excel propone el rango y tú pulsas Intro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e3",
+          "modo": "cinta",
+          "enunciado": "Nuria te dice: «Si no te acuerdas de cómo se escribe, búscala en el botón de la suma, el de la letra griega Σ». Toca ese botón en la pestaña **Inicio**.",
+          "ruta": [
+            "Inicio",
+            "Edición",
+            "Autosuma"
+          ],
+          "explicacion": "Inicio › Edición › Autosuma. Su flechita guarda las funciones más usadas: Suma, Promedio, Contar números, Máx. y Mín."
+        },
+        {
+          "tipo": "texto",
+          "md": "Los argumentos se separan con **punto y coma** `;`. En España la **coma** es la de los decimales (19,5), así que Excel no puede usarla para separar.\n\nCon `;` puedes dar **varios rangos** a la vez:\n\n`=MAX(B2:B7;D2:D7)` busca el número más alto **entre las dos columnas juntas**."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "`=MAX(B2:B7,D2:D7)` (coma: Excel no lo entiende)",
+              "`=MAX(B2:B7;D2:D7)`"
+            ],
+            [
+              "`=AVERAGE(B2:B7)` (nombre en inglés: sale #¿NOMBRE?)",
+              "`=PROMEDIO(B2:B7)`"
+            ],
+            [
+              "`=PROMEDIO B2:B7` (sin paréntesis)",
+              "`=PROMEDIO(B2:B7)`"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e4",
+          "modo": "formula",
+          "enunciado": "Andrés tiene el stock (lo que queda en el almacén) de cable de Zaragoza en **B2:B5** y el de Pamplona en **D2:D5**. En **G2** calcula el **stock más alto de los dos almacenes juntos** (una sola cifra).",
+          "hoja": {
+            "celdas": {
+              "A1": "Cable Zgz",
+              "B1": "Rollos",
+              "A2": "1,5 mm²",
+              "B2": 140,
+              "A3": "2,5 mm²",
+              "B3": 96,
+              "A4": "4 mm²",
+              "B4": 42,
+              "A5": "6 mm²",
+              "B5": 18,
+              "C1": "Cable Pam",
+              "D1": "Rollos",
+              "C2": "1,5 mm²",
+              "D2": 85,
+              "C3": "2,5 mm²",
+              "D3": 152,
+              "C4": "4 mm²",
+              "D4": 30,
+              "C5": "6 mm²",
+              "D5": 12,
+              "F2": "Más alto"
+            },
+            "anchos": {
+              "A": 11,
+              "C": 11,
+              "F": 10
+            }
+          },
+          "objetivo": "G2",
+          "solucion": "=MAX(B2:B5;D2:D5)",
+          "debe_usar": [
+            "MAX"
+          ],
+          "alternativas": [
+            "=MAX(D2:D5;B2:B5)",
+            "=MAX(B2:D5)"
+          ],
+          "errores_tipicos": [
+            "=MAX(B2:B5)",
+            "=MIN(B2:B5;D2:D5)",
+            "=MAX(D2:D5)"
+          ],
+          "variantes": [
+            {
+              "B2": 200
+            },
+            {
+              "D4": 300
+            }
+          ],
+          "pistas": [
+            "La función del más alto es MAX.",
+            "Puedes darle dos rangos separados por punto y coma: uno por almacén.",
+            "Escribe =MAX(B2:B5;D2:D5) y pulsa Intro."
+          ],
+          "explicacion": "152 rollos, en Pamplona. Con dos rangos y un `;` has mirado dos almacenes de una vez. También vale `=MAX(B2:D5)`, porque MAX ignora las celdas con texto de la columna C."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e5",
+          "modo": "predice",
+          "enunciado": "Elena estuvo de baja en octubre y su celda está **vacía** (no tiene un 0). ¿Qué media dará `=PROMEDIO(B2:B5)`? Escribe el número sin el símbolo €.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas",
+              "A2": "Pablo",
+              "B2": 18000,
+              "A3": "Elena",
+              "A4": "Sergio",
+              "B4": 16000,
+              "A5": "Raquel",
+              "B5": 23000
+            }
+          },
+          "celda": "B7",
+          "formula": "=PROMEDIO(B2:B5)",
+          "explicacion": "PROMEDIO **ignora las celdas vacías**: suma 18.000 + 16.000 + 23.000 = 57.000 y divide entre 3, no entre 4: **19.000**. Si hubieras escrito un 0, sí contaría y la media bajaría a 14.250. Vacío y cero no son lo mismo.",
+          "respuesta": "19000"
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Ojo con la fila de **TOTAL**. Si la metes en el rango del PROMEDIO o del MAX, Excel la trata como un comercial más. El MAX te devolverá el propio total (siempre es el número más alto) y la media se dispara. Mira siempre dónde acaba tu rango."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e6",
+          "modo": "formula",
+          "enunciado": "Esta media de **E2** sale demasiado alta. La fórmula que hay está mal: corrígela para que calcule la **media de los cuatro proveedores** sin el total.",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Compras nov.",
+              "A2": "Cables del Norte",
+              "B2": 8200,
+              "A3": "Luminia LED",
+              "B3": 5400,
+              "A4": "Mecanismos Arnal",
+              "B4": 3100,
+              "A5": "Tubos Gállego",
+              "B5": 2900,
+              "A6": "TOTAL",
+              "B6": "=SUMA(B2:B5)",
+              "D2": "Media"
+            },
+            "formatos": {
+              "B2:B6": "eur",
+              "E2": "eur"
+            },
+            "anchos": {
+              "A": 17,
+              "B": 13
+            }
+          },
+          "objetivo": "E2",
+          "inicial": "=PROMEDIO(B2:B6)",
+          "solucion": "=PROMEDIO(B2:B5)",
+          "debe_usar": [
+            "PROMEDIO"
+          ],
+          "errores_tipicos": [
+            "=PROMEDIO(B2:B6)",
+            "=PROMEDIO(B3:B6)"
+          ],
+          "variantes": [
+            {
+              "B2": 10000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Mira qué hay en la fila 6: es el total, no un proveedor.",
+            "El rango tiene que acabar en la última fila de datos.",
+            "Cambia B6 por B5: =PROMEDIO(B2:B5)."
+          ],
+          "explicacion": "Ahora sí: 4.900 € de media. Antes salía 7.840 € porque el total contaba como un quinto proveedor. Este error aparece muchísimo en hojas de empresa; acabas de aprender a detectarlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l1-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** En **E2** calcula **cuántos euros separan al comercial que más vendió del que menos vendió** en octubre. Una sola fórmula, sin escribir cifras a mano.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Ventas oct.",
+              "A2": "Pablo Herrero",
+              "B2": 18450,
+              "A3": "Elena Gil",
+              "B3": 22310,
+              "A4": "Sergio Lahoz",
+              "B4": 15980,
+              "A5": "Raquel Sanz",
+              "B5": 24120,
+              "A6": "Daniel Pueyo",
+              "B6": 19760,
+              "A7": "Irene Marco",
+              "B7": 17340,
+              "A8": "TOTAL",
+              "B8": "=SUMA(B2:B7)",
+              "D2": "Diferencia"
+            },
+            "formatos": {
+              "B2:B8": "eur",
+              "E2": "eur"
+            },
+            "anchos": {
+              "A": 15,
+              "B": 13,
+              "D": 11
+            }
+          },
+          "objetivo": "E2",
+          "solucion": "=MAX(B2:B7)-MIN(B2:B7)",
+          "debe_usar": [
+            "MAX",
+            "MIN"
+          ],
+          "errores_tipicos": [
+            "=MAX(B2:B8)-MIN(B2:B8)",
+            "=MIN(B2:B7)-MAX(B2:B7)",
+            "=MAX(B2:B7)"
+          ],
+          "variantes": [
+            {
+              "B4": 12000
+            },
+            {
+              "B5": 30000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Necesitas dos cifras: la venta más alta y la más baja. Luego restas.",
+            "Una con MAX y otra con MIN, las dos sobre B2:B7 (sin el TOTAL de la fila 8).",
+            "=MAX(B2:B7)-MIN(B2:B7)"
+          ],
+          "explicacion": "8.140 € entre Raquel y Sergio. Has metido dos funciones en una fórmula y has dejado fuera el total. Si mañana cambia una venta, la diferencia se actualiza sola. Con esto y la media de antes, Javier ya tiene su resumen para el lunes."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m2l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cómo se llama en el Excel español la función que calcula la **media**? Escribe solo el nombre.",
+          "aceptadas": [
+            "PROMEDIO",
+            "promedio",
+            "Promedio"
+          ],
+          "explicacion": "PROMEDIO. Su nombre en inglés, AVERAGE, en el Excel español da el error #¿NOMBRE?."
+        },
+        {
+          "id": "n1m2l1-q2",
+          "modo": "test",
+          "pregunta": "Quieres la venta más baja de dos columnas, B2:B7 y D2:D7. ¿Cuál está bien escrita?",
+          "opciones": [
+            {
+              "texto": "=MIN(B2:B7;D2:D7)",
+              "correcta": true,
+              "porque": "Correcto: dos rangos separados por punto y coma."
+            },
+            {
+              "texto": "=MIN(B2:B7,D2:D7)",
+              "correcta": false,
+              "porque": "En el Excel español la coma es para decimales; los argumentos van con ;."
+            },
+            {
+              "texto": "=MIN(B2:B7)+MIN(D2:D7)",
+              "correcta": false,
+              "porque": "Eso suma los dos mínimos, no busca el más bajo de todos."
+            },
+            {
+              "texto": "=MAX(B2:B7;D2:D7)",
+              "correcta": false,
+              "porque": "MAX da el más alto, no el más bajo."
+            }
+          ]
+        },
+        {
+          "id": "n1m2l1-q3",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve esta fórmula? La celda B3 tiene el texto «sin datos».",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "A2": "P-101",
+              "B2": 340,
+              "A3": "P-102",
+              "B3": "sin datos",
+              "A4": "P-103",
+              "B4": 95,
+              "A5": "P-104",
+              "B5": 210
+            }
+          },
+          "celda": "B7",
+          "formula": "=MIN(B2:B5)",
+          "explicacion": "MIN mira solo los números y se salta el texto: el más bajo es 95.",
+          "respuesta": "95"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Media de un rango en Excel español",
+          "dorso": "=PROMEDIO(B2:B7). Ignora las celdas vacías y el texto, pero cuenta los ceros."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "El valor más alto y el más bajo de un rango",
+          "dorso": "=MAX(B2:B7) y =MIN(B2:B7)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Con qué se separan los argumentos de una función en el Excel español?",
+          "dorso": "Con punto y coma: =MAX(B2:B7;D2:D7). La coma es para los decimales."
+        },
+        {
+          "tipo": "error",
+          "frente": "La media sale demasiado alta y el MAX devuelve el total de la lista. ¿Qué ha pasado?",
+          "dorso": "El rango incluye la fila del total. Acórtalo hasta la última fila de datos."
+        }
+      ]
+    },
+    {
+      "id": "n1m2l2",
+      "titulo": "Contar: CONTAR, CONTARA y CONTAR.BLANCO",
+      "minutos": 13,
+      "objetivo": "Contar cuántas celdas tienen números, cuántas tienen algo escrito y cuántas están vacías, y elegir la función adecuada para cada pregunta.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "La semana que viene llamamos a los clientes de la zona de Lleida. Te paso el listado: ¿a cuántos les falta el teléfono? Quiero saber cuánto trabajo de búsqueda nos queda antes de empezar.",
+        "logro": "Ya sabes contar facturas, clientes y huecos de un listado, y elegir entre CONTAR, CONTARA y CONTAR.BLANCO según lo que te pregunten."
+      },
+      "funciones": [
+        "CONTAR",
+        "CONTARA",
+        "CONTAR.BLANCO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "**Sumar** y **contar** no son lo mismo:\n\n- **Sumar** responde a «¿cuántos euros?»: 3 facturas de 100 € suman 300 €.\n- **Contar** responde a «¿cuántas cosas?»: esas mismas facturas son 3.\n\nEn la oficina te preguntarán mucho lo segundo: cuántas facturas hay este mes, cuántos clientes tenemos en Huesca, cuántos pedidos faltan por servir."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e1",
+          "modo": "test",
+          "pregunta": "¿Cuál de estas preguntas se responde **contando**, no sumando?",
+          "opciones": [
+            {
+              "texto": "¿Cuántas facturas emitimos en octubre?",
+              "correcta": true,
+              "porque": "Exacto: te piden un número de facturas, no un importe."
+            },
+            {
+              "texto": "¿Cuánto facturamos en octubre?",
+              "correcta": false,
+              "porque": "«Cuánto facturamos» pide euros: eso es sumar los importes."
+            },
+            {
+              "texto": "¿Cuánto nos debe Instalaciones Moncayo?",
+              "correcta": false,
+              "porque": "Es un importe en euros: se suma lo pendiente."
+            },
+            {
+              "texto": "¿Cuántos euros gastamos en gasoil?",
+              "correcta": false,
+              "porque": "Aunque diga «cuántos», pide euros: se suma."
+            }
+          ],
+          "explicacion": "Truco: si la respuesta lleva «€», sumas. Si lleva «facturas», «clientes» o «pedidos», cuentas."
+        },
+        {
+          "tipo": "texto",
+          "md": "**CONTAR** cuenta las celdas que tienen **números**. Todo lo demás lo salta: textos y celdas vacías.\n\n`=CONTAR(C2:C8)` en una columna de importes te dice cuántas facturas tienen importe.\n\nOjo: las fechas también son números para Excel (lo viste al empezar el curso), así que CONTAR también las cuenta."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Facturas de la semana",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "A2": "F-2611",
+              "B2": "Electricidad Aranda",
+              "C2": 1240,
+              "A3": "F-2612",
+              "B3": "Montajes Cinca",
+              "C3": "anulada",
+              "A4": "F-2613",
+              "B4": "Instalaciones Moncayo",
+              "C4": 860,
+              "A5": "F-2614",
+              "B5": "Reformas Ebro",
+              "A6": "F-2615",
+              "B6": "Clima Segre",
+              "C6": 2310,
+              "E1": "Con importe",
+              "F1": "=CONTAR(C2:C6)"
+            },
+            "formatos": {
+              "C2:C6": "eur"
+            },
+            "anchos": {
+              "A": 9,
+              "B": 20,
+              "C": 11,
+              "E": 12
+            }
+          },
+          "resaltar": [
+            "F1"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Hay 5 facturas, pero CONTAR da 3: salta «anulada» (texto) y la celda vacía de la fila 5."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e2",
+          "modo": "predice",
+          "enunciado": "Columna de **teléfonos** de clientes. Unos tienen número, otros pone «pendiente» y uno está vacío. ¿Qué devolverá `=CONTAR(B2:B7)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Teléfono",
+              "A2": "Electricidad Aranda",
+              "B2": 976214580,
+              "A3": "Montajes Cinca",
+              "B3": "pendiente",
+              "A4": "Instalaciones Moncayo",
+              "B4": 948331207,
+              "A5": "Reformas Ebro",
+              "A6": "Clima Segre",
+              "B6": 973402116,
+              "A7": "Luz y Obra Tudela",
+              "B7": "pendiente"
+            },
+            "anchos": {
+              "A": 20,
+              "B": 12
+            }
+          },
+          "celda": "D2",
+          "formula": "=CONTAR(B2:B7)",
+          "explicacion": "Solo hay 3 celdas con números. CONTAR salta los dos «pendiente» (son texto) y la celda vacía.",
+          "respuesta": "3"
+        },
+        {
+          "tipo": "texto",
+          "md": "Sus dos hermanas:\n\n- **CONTARA** cuenta las celdas que tienen **algo**: números, textos, lo que sea. Solo salta las vacías. Piensa en la A final como «**A**lgo escrito».\n- **CONTAR.BLANCO** cuenta las celdas **vacías** (en blanco).\n\nLas tres se escriben igual: el nombre y el rango entre paréntesis."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Qué cuenta cada una (columna de teléfonos de antes)",
+          "cabecera": [
+            "Función",
+            "Qué cuenta",
+            "Resultado"
+          ],
+          "filas": [
+            [
+              "`=CONTAR(B2:B7)`",
+              "Solo números",
+              "3"
+            ],
+            [
+              "`=CONTARA(B2:B7)`",
+              "Todo lo que no está vacío",
+              "5"
+            ],
+            [
+              "`=CONTAR.BLANCO(B2:B7)`",
+              "Solo las vacías",
+              "1"
+            ]
+          ],
+          "pie": "CONTARA + CONTAR.BLANCO = número de filas del rango (5 + 1 = 6)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e3",
+          "modo": "predice",
+          "enunciado": "Ahora, la columna de importes de unos pedidos: unos tienen importe, otros «anulado» y otros están vacíos. Con **CONTARA**: ¿Qué devolverá `=CONTARA(B2:B8)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Importe",
+              "A2": "P-501",
+              "B2": 420,
+              "A3": "P-502",
+              "B3": "anulado",
+              "A4": "P-503",
+              "B4": 135,
+              "A5": "P-504",
+              "A6": "P-505",
+              "B6": 980,
+              "A7": "P-506",
+              "B7": "anulado",
+              "A8": "P-507"
+            }
+          },
+          "celda": "D2",
+          "formula": "=CONTARA(B2:B8)",
+          "explicacion": "CONTARA cuenta todo lo que tiene algo: 3 importes y 2 «anulado». Solo salta las 2 celdas vacías. Total, 5.",
+          "respuesta": "5"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e4",
+          "modo": "formula",
+          "enunciado": "Marta quiere saber **cuántas facturas de la lista tienen importe** (las anuladas no cuentan). En **E2** escribe una fórmula que cuente las celdas con **números** de **C2:C9**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "A2": "F-2620",
+              "B2": "Electricidad Aranda",
+              "C2": 1580,
+              "A3": "F-2621",
+              "B3": "Montajes Cinca",
+              "C3": 342,
+              "A4": "F-2622",
+              "B4": "Reformas Ebro",
+              "C4": "anulada",
+              "A5": "F-2623",
+              "B5": "Clima Segre",
+              "C5": 2105,
+              "A6": "F-2624",
+              "B6": "Instalaciones Moncayo",
+              "C6": 760,
+              "A7": "F-2625",
+              "B7": "Luz y Obra Tudela",
+              "C7": "anulada",
+              "A8": "F-2626",
+              "B8": "Electro Huesca",
+              "C8": 415,
+              "A9": "F-2627",
+              "B9": "Montajes Cinca",
+              "C9": 1290,
+              "D2": "Con importe"
+            },
+            "formatos": {
+              "C2:C9": "eur"
+            },
+            "anchos": {
+              "A": 9,
+              "B": 20,
+              "C": 11,
+              "D": 12
+            }
+          },
+          "objetivo": "E2",
+          "solucion": "=CONTAR(C2:C9)",
+          "debe_usar": [
+            "CONTAR"
+          ],
+          "errores_tipicos": [
+            "=CONTARA(C2:C9)",
+            "=SUMA(C2:C9)",
+            "=CONTAR(B2:B9)"
+          ],
+          "variantes": [
+            {
+              "C4": 500
+            },
+            {
+              "C2": "anulada"
+            }
+          ],
+          "pistas": [
+            "Quieres contar solo las celdas con números.",
+            "La función que cuenta números es CONTAR, sin letras detrás.",
+            "=CONTAR(C2:C9)"
+          ],
+          "explicacion": "6 facturas válidas de 8. CONTAR se ha saltado las dos «anulada». Si mañana anulan otra y alguien lo escribe en su celda, el recuento baja solo."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Un espacio no es «vacío»",
+          "md": "Si alguien borra un teléfono pulsando la **barra espaciadora**, la celda parece vacía pero tiene un espacio, que es texto. CONTARA la contará y CONTAR.BLANCO no. Para vaciar una celda de verdad, selecciónala y pulsa **Supr**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e5",
+          "modo": "formula",
+          "enunciado": "Andrés quiere saber **cuántos proveedores** hay en la lista. En **E2** cuenta las celdas con algo escrito de la columna de nombres, **A2:A9**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Ciudad",
+              "C1": "Pedido mínimo",
+              "A2": "Cables del Norte",
+              "B2": "Bilbao",
+              "C2": 300,
+              "A3": "Luminia LED",
+              "B3": "Valencia",
+              "C3": 500,
+              "A4": "Mecanismos Arnal",
+              "B4": "Zaragoza",
+              "A5": "Tubos Gállego",
+              "B5": "Huesca",
+              "C5": 150,
+              "A6": "Protecciones Iberia",
+              "B6": "Madrid",
+              "C6": 400,
+              "A7": "Bridas y Fijaciones Sur",
+              "B7": "Sevilla",
+              "D2": "Proveedores"
+            },
+            "formatos": {
+              "C2:C7": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 10,
+              "C": 14,
+              "D": 12
+            }
+          },
+          "objetivo": "E2",
+          "solucion": "=CONTARA(A2:A9)",
+          "debe_usar": [
+            "CONTARA"
+          ],
+          "alternativas": [
+            "=CONTARA(B2:B9)"
+          ],
+          "errores_tipicos": [
+            "=CONTAR(A2:A9)",
+            "=CONTAR(C2:C9)",
+            "=CONTAR.BLANCO(A2:A9)"
+          ],
+          "variantes": [
+            {
+              "A8": "Iluminación Turia",
+              "B8": "Valencia"
+            }
+          ],
+          "pistas": [
+            "Los nombres son texto. ¿Qué función cuenta celdas con algo, sea número o texto?",
+            "No es CONTAR: con textos daría 0. Es la que lleva una A al final.",
+            "=CONTARA(A2:A9)"
+          ],
+          "explicacion": "6 proveedores. Con CONTAR habrías obtenido 0, porque los nombres no son números. Contar filas de un listado (clientes, proveedores, empleados) con CONTARA es de lo más útil que vas a hacer. Y como el rango llega hasta la fila 9, si añades un proveedor debajo, se cuenta solo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e6",
+          "modo": "test",
+          "pregunta": "Lucía cuenta los empleados con `=CONTAR(A2:A59)` sobre la columna de **nombres** y le sale **0**. ¿Qué le dices?",
+          "opciones": [
+            {
+              "texto": "Que use CONTARA: CONTAR solo cuenta números y los nombres son texto.",
+              "correcta": true,
+              "porque": "Eso es. CONTAR da 0 porque no hay ni un número en esa columna."
+            },
+            {
+              "texto": "Que la columna está vacía.",
+              "correcta": false,
+              "porque": "No está vacía: tiene 58 nombres. El problema es la función elegida."
+            },
+            {
+              "texto": "Que use SUMA en lugar de CONTAR.",
+              "correcta": false,
+              "porque": "SUMA suma números; con nombres también daría 0."
+            },
+            {
+              "texto": "Que use CONTAR.BLANCO.",
+              "correcta": false,
+              "porque": "CONTAR.BLANCO cuenta las celdas vacías, justo lo contrario de lo que busca."
+            }
+          ],
+          "explicacion": "Un 0 que no esperas es una señal: revisa si estás contando números o textos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l2-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** Listado de clientes de la zona de Lleida. En **F2** calcula **cuántos clientes no tienen teléfono** (su celda de la columna C está vacía).",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Localidad",
+              "C1": "Teléfono",
+              "A2": "Clima Segre",
+              "B2": "Lleida",
+              "C2": 973402116,
+              "A3": "Electricitat Pirineu",
+              "B3": "La Seu d'Urgell",
+              "A4": "Instal·lacions Noguera",
+              "B4": "Balaguer",
+              "C4": 973448190,
+              "A5": "Muntatges Tàrrega",
+              "B5": "Tàrrega",
+              "A6": "Reformes Mollerussa",
+              "B6": "Mollerussa",
+              "C6": 973600572,
+              "A7": "Llum i Obra Cervera",
+              "B7": "Cervera",
+              "A8": "Electro Solsona",
+              "B8": "Solsona",
+              "C8": 973481335,
+              "A9": "Instal·lacions Segarra",
+              "B9": "Guissona",
+              "A10": "Fred i Calor Lleida",
+              "B10": "Lleida",
+              "C10": 973270418,
+              "E2": "Sin teléfono"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 15,
+              "C": 12,
+              "E": 12
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=CONTAR.BLANCO(C2:C10)",
+          "debe_usar": [
+            "CONTAR.BLANCO"
+          ],
+          "errores_tipicos": [
+            "=CONTAR(C2:C10)",
+            "=CONTARA(C2:C10)",
+            "=CONTAR.BLANCO(B2:B10)"
+          ],
+          "variantes": [
+            {
+              "C3": 973350211
+            },
+            {
+              "C2": 973402116,
+              "C5": 973310998,
+              "C7": 973530664
+            }
+          ],
+          "pistas": [
+            "No te preguntan por los teléfonos que hay, sino por los huecos.",
+            "Hay una función que cuenta las celdas en blanco de un rango. Úsala sobre la columna de teléfonos, desde la fila 2.",
+            "=CONTAR.BLANCO(C2:C10)"
+          ],
+          "explicacion": "4 clientes sin teléfono de 9. Ya puedes decirle a Javier cuánto trabajo de búsqueda hay. Y cuando alguien rellene un teléfono, el número bajará solo: tu hoja hace de contador de tareas pendientes."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m2l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué función cuenta las celdas que tienen **algo** escrito, sea número o texto? Escribe solo el nombre.",
+          "aceptadas": [
+            "CONTARA",
+            "contara",
+            "Contara"
+          ],
+          "explicacion": "CONTARA. La A final, de «Algo escrito». CONTAR solo cuenta números."
+        },
+        {
+          "id": "n1m2l2-q2",
+          "modo": "test",
+          "pregunta": "Tienes los importes de los pedidos en D2:D40. Te preguntan «¿cuál fue el pedido más grande?». ¿Qué usas?",
+          "opciones": [
+            {
+              "texto": "=MAX(D2:D40)",
+              "correcta": true,
+              "porque": "Correcto: te piden el importe más alto, no cuántos pedidos hay."
+            },
+            {
+              "texto": "=CONTAR(D2:D40)",
+              "correcta": false,
+              "porque": "CONTAR te diría cuántos pedidos tienen importe, no cuál es el mayor."
+            },
+            {
+              "texto": "=SUMA(D2:D40)",
+              "correcta": false,
+              "porque": "SUMA da el total de todos los pedidos."
+            },
+            {
+              "texto": "=CONTARA(D2:D40)",
+              "correcta": false,
+              "porque": "CONTARA cuenta celdas con algo; no busca el mayor."
+            }
+          ],
+          "explicacion": "Antes de escribir, pregúntate: ¿me piden un importe (SUMA, PROMEDIO, MAX, MIN) o un número de cosas (CONTAR, CONTARA, CONTAR.BLANCO)?"
+        },
+        {
+          "id": "n1m2l2-q3",
+          "modo": "predice",
+          "enunciado": "Horas extra de la semana. ¿Qué devuelve `=CONTAR.BLANCO(B2:B6)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Empleado",
+              "B1": "Horas extra",
+              "A2": "Ana Lasheras",
+              "B2": 3,
+              "A3": "Jorge Bielsa",
+              "A4": "Marina Oliván",
+              "B4": 0,
+              "A5": "Hugo Royo",
+              "A6": "Celia Pardo",
+              "B6": 5
+            }
+          },
+          "celda": "D2",
+          "formula": "=CONTAR.BLANCO(B2:B6)",
+          "explicacion": "2 celdas vacías (Jorge y Hugo). El 0 de Marina **no** está vacío: es un número.",
+          "respuesta": "2"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Contar las celdas con números de un rango",
+          "dorso": "=CONTAR(C2:C9). Salta textos y vacías."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Contar las celdas que tienen algo (número o texto)",
+          "dorso": "=CONTARA(A2:A9). Solo salta las vacías."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Contar las celdas vacías de un rango",
+          "dorso": "=CONTAR.BLANCO(C2:C10)"
+        },
+        {
+          "tipo": "error",
+          "frente": "CONTAR sobre una columna de nombres da 0. ¿Por qué?",
+          "dorso": "CONTAR solo cuenta números. Para textos, usa CONTARA."
+        }
+      ]
+    },
+    {
+      "id": "n1m2l3",
+      "titulo": "REDONDEAR: lo que ves no siempre es lo que hay",
+      "minutos": 15,
+      "objetivo": "Distinguir lo que una celda muestra de lo que vale de verdad, y usar REDONDEAR, REDONDEAR.MAS y REDONDEAR.MENOS para que los importes cuadren al céntimo.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "La factura de Instalaciones Moncayo no cuadra: si sumas a mano el IVA que se ve en las líneas, no coincide por unos céntimos con el total de la hoja. Arréglala para que el IVA de cada línea vaya redondeado a céntimos, como en el programa de facturación.",
+        "logro": "Ya sabes redondear importes a céntimos para que una factura cuadre, y redondear siempre hacia arriba cuando hace falta (cajas, palés, envíos)."
+      },
+      "funciones": [
+        "REDONDEAR",
+        "REDONDEAR.MAS",
+        "REDONDEAR.MENOS"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Una celda puede **mostrar** 4,20 € y **valer** 4,2042 €. Lo que ves depende del **formato**, que es solo el aspecto, como el envoltorio de un paquete. Lo que hay dentro no cambia.\n\nPara ver el valor de verdad, haz clic en la celda y mira la **barra de fórmulas**, la franja larga encima de las columnas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e1",
+          "modo": "senala",
+          "pregunta": "La celda muestra 4,20 €, pero quieres comprobar cuánto vale de verdad. Toca la parte de la ventana donde lo ves.",
+          "zona": "barra_formulas",
+          "explicacion": "La barra de fórmulas enseña el contenido real de la celda: el número con todos sus decimales o la fórmula que lo calcula."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e2",
+          "modo": "predice",
+          "enunciado": "La columna C calcula el IVA (21 %) de cada línea y se ve con dos decimales: **4,20**, **6,30** y **8,10**. A ojo suman 18,60. ¿Qué mostrará Excel en `=SUMA(C2:C4)`, también con dos decimales? Escribe el número con coma.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Base",
+              "C1": "IVA",
+              "A2": "Bridas 200 mm",
+              "B2": 20.02,
+              "C2": "=B2*$F$2",
+              "A3": "Canaleta 40x60",
+              "B3": 30.02,
+              "C3": "=B3*$F$2",
+              "A4": "Regleta LED",
+              "B4": 38.59,
+              "C4": "=B4*$F$2",
+              "E2": "IVA",
+              "F2": 0.21
+            },
+            "formatos": {
+              "B2:C4": "num2",
+              "F2": "pct"
+            },
+            "anchos": {
+              "A": 15
+            }
+          },
+          "celda": "C6",
+          "formula": "=SUMA(C2:C4)",
+          "formato_resultado": "num2",
+          "explicacion": "Sale **18,61**, no 18,60. Excel suma los valores de verdad (4,2042 + 6,3042 + 8,1039 = 18,6123) y luego lo muestra con dos decimales. Ese es el céntimo «que no cuadra» de tantas facturas.",
+          "respuesta": "18,61"
+        },
+        {
+          "tipo": "texto",
+          "md": "La solución es **redondear el valor**, no solo el aspecto:\n\n`=REDONDEAR(número; decimales)`\n\n- **número**: la celda o el cálculo que quieres redondear.\n- **decimales**: cuántos dejas. Para euros, **2** (céntimos). Con **0**, queda un número entero.\n\n`=REDONDEAR(C2;2)` convierte 4,2042 en **4,20** de verdad. Si la tercera cifra decimal es 5 o más, sube: 4,2051 pasaría a 4,21."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e3",
+          "modo": "formula",
+          "enunciado": "En **D2** escribe `=REDONDEAR(C2;2)` para dejar el IVA de la primera línea a céntimos. Tu fórmula se copiará a D3:D4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Base",
+              "C1": "IVA",
+              "D1": "IVA redondeado",
+              "A2": "Bridas 200 mm",
+              "B2": 20.02,
+              "C2": "=B2*$F$2",
+              "A3": "Canaleta 40x60",
+              "B3": 30.02,
+              "C3": "=B3*$F$2",
+              "A4": "Regleta LED",
+              "B4": 38.59,
+              "C4": "=B4*$F$2",
+              "E2": "IVA",
+              "F2": 0.21
+            },
+            "formatos": {
+              "B2:B4": "num2",
+              "F2": "pct"
+            },
+            "anchos": {
+              "A": 15,
+              "D": 15
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=REDONDEAR(C2;2)",
+          "debe_usar": [
+            "REDONDEAR"
+          ],
+          "alternativas": [
+            "=REDONDEAR(B2*$F$2;2)"
+          ],
+          "errores_tipicos": [
+            "=C2",
+            "=REDONDEAR(C2;0)",
+            "=REDONDEAR(C2;3)"
+          ],
+          "variantes": [
+            {
+              "B2": 47.83
+            }
+          ],
+          "pistas": [
+            "La función es REDONDEAR y necesita dos argumentos: qué redondear y cuántos decimales.",
+            "El primer argumento es C2. El segundo, los decimales de los céntimos.",
+            "=REDONDEAR(C2;2)"
+          ],
+          "explicacion": "Ahora la columna D vale exactamente 4,20, 6,30 y 8,10, y su suma da 18,60. Lo que se ve y lo que hay coinciden: así se trabaja con dinero."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "El botón de quitar decimales no redondea",
+          "md": "En **Inicio › Número** hay dos botones: **Aumentar decimales** y **Disminuir decimales**. Solo cambian lo que se ve. La celda sigue valiendo 4,2042 y las sumas siguen usando ese valor."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e4",
+          "modo": "test",
+          "pregunta": "Nuria pulsa **Disminuir decimales** en una celda que vale 6,3042 y ahora se ve **6,30**. ¿Cuánto vale la celda?",
+          "opciones": [
+            {
+              "texto": "6,3042: el botón solo cambia lo que se ve.",
+              "correcta": true,
+              "porque": "Eso es. El valor no se toca; las sumas seguirán usando 6,3042."
+            },
+            {
+              "texto": "6,30: el botón ha redondeado.",
+              "correcta": false,
+              "porque": "Es la confusión más habitual. Para cambiar el valor hace falta REDONDEAR."
+            },
+            {
+              "texto": "6: ha quitado todos los decimales.",
+              "correcta": false,
+              "porque": "Ni se ven ni se quitan todos; y aunque se vieran 0 decimales, el valor seguiría siendo 6,3042."
+            }
+          ],
+          "explicacion": "Formato = aspecto. REDONDEAR = valor. Si una suma «no cuadra» por céntimos, sospecha de esto."
+        },
+        {
+          "tipo": "texto",
+          "md": "A veces no quieres el redondeo normal, sino ir **siempre en la misma dirección**:\n\n- `=REDONDEAR.MAS(número; decimales)` redondea **siempre hacia arriba** (2,1 cajas → 3 cajas).\n- `=REDONDEAR.MENOS(número; decimales)` redondea **siempre hacia abajo** (7,9 palés completos → 7).\n\nEn el almacén es lo normal: si necesitas 2,1 cajas, compras 3, porque nadie vende una décima de caja."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e5",
+          "modo": "predice",
+          "enunciado": "Andrés necesita **230 bridas** y vienen en cajas de **100**. ¿Qué devuelve `=REDONDEAR.MAS(B2/C2;0)`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Artículo",
+              "B1": "Necesarias",
+              "C1": "Por caja",
+              "A2": "Bridas 200 mm",
+              "B2": 230,
+              "C2": 100
+            },
+            "anchos": {
+              "A": 15,
+              "B": 11
+            }
+          },
+          "celda": "D2",
+          "formula": "=REDONDEAR.MAS(B2/C2;0)",
+          "explicacion": "230 / 100 = 2,3 cajas. REDONDEAR.MAS sube siempre: **3** cajas. Con REDONDEAR normal saldrían 2 y te faltarían 30 bridas.",
+          "respuesta": "3"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e6",
+          "modo": "formula",
+          "enunciado": "En **D2** calcula **cuántas cajas** hay que pedir de cada artículo: unidades necesarias entre unidades por caja, **siempre hacia arriba** y sin decimales. Tu fórmula se copiará a D3:D5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Artículo",
+              "B1": "Necesarias",
+              "C1": "Por caja",
+              "D1": "Cajas",
+              "A2": "Bridas 200 mm",
+              "B2": 125,
+              "C2": 50,
+              "A3": "Bornas de empalme",
+              "B3": 230,
+              "C3": 100,
+              "A4": "Cajas de registro",
+              "B4": 400,
+              "C4": 100,
+              "A5": "Tacos de nailon",
+              "B5": 75,
+              "C5": 20
+            },
+            "anchos": {
+              "A": 18,
+              "B": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D5"
+          ],
+          "solucion": "=REDONDEAR.MAS(B2/C2;0)",
+          "debe_usar": [
+            "REDONDEAR.MAS"
+          ],
+          "errores_tipicos": [
+            "=REDONDEAR(B2/C2;0)",
+            "=REDONDEAR.MENOS(B2/C2;0)",
+            "=B2/C2"
+          ],
+          "variantes": [
+            {
+              "B2": 101
+            }
+          ],
+          "pistas": [
+            "Primero el cálculo: B2/C2 te da las cajas con decimales.",
+            "Mete ese cálculo dentro de la función que redondea siempre hacia arriba, con 0 decimales.",
+            "=REDONDEAR.MAS(B2/C2;0)"
+          ],
+          "explicacion": "3, 3, 4 y 4 cajas. Fíjate en las bornas: 2,3 cajas con REDONDEAR habrían sido 2, y el almacén se habría quedado corto. Ya puedes preparar un pedido a proveedor sin quedarte nunca por debajo."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Marta Ruiz",
+          "puesto": "Directora financiera",
+          "md": "En las facturas, cada línea de IVA va redondeada a céntimos y el total es la suma de esas líneas. Si redondeas solo al final, tu hoja y el programa de facturación no coincidirán, y tendré a Instalaciones Moncayo al teléfono."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l3-e7",
+          "modo": "formula",
+          "enunciado": "**La misión de Marta.** Factura de Instalaciones Moncayo. En **C2** calcula el **IVA de la primera línea ya redondeado a céntimos**: base por el tipo de IVA de **F2**. Tu fórmula se copiará a C3:C5, así que fija lo que no debe moverse.",
+          "hoja": {
+            "celdas": {
+              "A1": "Producto",
+              "B1": "Base",
+              "C1": "IVA",
+              "A2": "Bridas 200 mm",
+              "B2": 20.02,
+              "A3": "Canaleta 40x60",
+              "B3": 30.02,
+              "A4": "Regleta LED",
+              "B4": 38.59,
+              "A5": "Magnetotérmico 2P 16 A",
+              "B5": 12.45,
+              "A6": "TOTAL",
+              "B6": "=SUMA(B2:B5)",
+              "C6": "=SUMA(C2:C5)",
+              "E2": "Tipo IVA",
+              "F2": 0.21
+            },
+            "formatos": {
+              "B2:C6": "eur",
+              "F2": "pct"
+            },
+            "anchos": {
+              "A": 22,
+              "E": 9
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C5"
+          ],
+          "solucion": "=REDONDEAR(B2*$F$2;2)",
+          "debe_usar": [
+            "REDONDEAR"
+          ],
+          "alternativas": [
+            "=REDONDEAR(B2*F$2;2)",
+            "=REDONDEAR($F$2*B2;2)"
+          ],
+          "errores_tipicos": [
+            "=B2*$F$2",
+            "=REDONDEAR(B2*F2;2)",
+            "=REDONDEAR(B2*$F$2;0)",
+            "=REDONDEAR.MAS(B2*$F$2;2)"
+          ],
+          "variantes": [
+            {
+              "B2": 47.83
+            },
+            {
+              "F2": 0.1
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Primero el IVA sin redondear: la base por el tipo. Fija F2 con $ porque al copiar no debe moverse.",
+            "Mete ese cálculo dentro de REDONDEAR, con 2 decimales para los céntimos.",
+            "=REDONDEAR(B2*$F$2;2)"
+          ],
+          "explicacion": "Ahora cada línea vale lo que se ve (4,20 · 6,30 · 8,10 · 2,61) y el total de IVA, 21,21 €, cuadra con la suma a mano. Has combinado tres cosas: un cálculo, el $ y REDONDEAR. Es exactamente lo que hace un programa de facturación."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m2l3-q1",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve esta fórmula? Escribe el número con coma.",
+          "hoja": {
+            "celdas": {
+              "A1": "Precio",
+              "B1": 7.456
+            }
+          },
+          "celda": "B3",
+          "formula": "=REDONDEAR(B1;1)",
+          "explicacion": "Con 1 decimal, 7,456 queda en 7,5: la segunda cifra decimal es un 5, así que la primera sube.",
+          "respuesta": "7,5"
+        },
+        {
+          "id": "n1m2l3-q2",
+          "modo": "test",
+          "pregunta": "En A1 tienes 9,6: la mercancía de hoy da para 9,6 palés, y solo se envían palés **completos**. ¿Qué fórmula te dice cuántos palés completos salen hoy?",
+          "opciones": [
+            {
+              "texto": "=REDONDEAR.MENOS(A1;0), que da 9",
+              "correcta": true,
+              "porque": "Correcto: solo cuentan los palés completos, así que siempre hacia abajo."
+            },
+            {
+              "texto": "=REDONDEAR(A1;0), que da 10",
+              "correcta": false,
+              "porque": "El redondeo normal sube a 10, pero no tienes 10 palés completos."
+            },
+            {
+              "texto": "=REDONDEAR.MAS(A1;0), que da 10",
+              "correcta": false,
+              "porque": "REDONDEAR.MAS sirve para «cuántos necesito», no para «cuántos completos tengo»."
+            }
+          ],
+          "explicacion": "¿Cuántos necesito? → hacia arriba (MAS). ¿Cuántos completos tengo? → hacia abajo (MENOS)."
+        },
+        {
+          "id": "n1m2l3-q3",
+          "modo": "test",
+          "pregunta": "Las líneas de IVA de una factura no cuadran con el total por un céntimo. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Redondear el IVA de cada línea a 2 decimales con REDONDEAR.",
+              "correcta": true,
+              "porque": "Así lo que se ve es lo que vale y la suma cuadra."
+            },
+            {
+              "texto": "Pulsar Disminuir decimales en el total.",
+              "correcta": false,
+              "porque": "Solo cambia el aspecto: el céntimo de diferencia sigue ahí."
+            },
+            {
+              "texto": "Escribir el total a mano.",
+              "correcta": false,
+              "porque": "Romperías la fórmula: si cambia una línea, el total ya no se actualiza."
+            },
+            {
+              "texto": "Calcular el PROMEDIO de las líneas.",
+              "correcta": false,
+              "porque": "La media no tiene nada que ver con el problema del redondeo."
+            }
+          ]
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Redondear un importe a céntimos",
+          "dorso": "=REDONDEAR(número; 2). Ejemplo: =REDONDEAR(B2*$F$2;2)"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Redondear siempre hacia arriba / siempre hacia abajo",
+          "dorso": "=REDONDEAR.MAS(número; decimales) / =REDONDEAR.MENOS(número; decimales)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿El botón Disminuir decimales redondea el valor?",
+          "dorso": "No. Solo cambia lo que se ve. Para cambiar el valor, REDONDEAR."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde ves el valor real de una celda?",
+          "dorso": "En la barra de fórmulas, al seleccionar la celda."
+        }
+      ]
+    },
+    {
+      "id": "n1m2l4",
+      "titulo": "Tu primera decisión: la función SI",
+      "minutos": 15,
+      "objetivo": "Usar SI para que Excel decida entre dos resultados según una comparación, escribiendo bien los signos, las comillas de los textos y los cálculos.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Desde el lunes, los pedidos de 300 € o más van sin portes; los demás pagan 12 €. Pon en la lista de pedidos de hoy cuánto paga cada uno de portes, que el almacén lo necesita para los albaranes.",
+        "logro": "Ya sabes hacer que Excel tome decisiones por ti: etiquetar pedidos, aplicar descuentos y calcular portes según una regla de la empresa."
+      },
+      "funciones": [
+        "SI"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Hasta ahora tus fórmulas calculaban siempre lo mismo. Con **SI** Excel **decide**, como haces tú cada día: «si llueve, cojo el paraguas; si no, no».\n\nEn la oficina: si el pedido pasa de 1.000 €, es «Grande»; si no, «Normal». Si llega a 300 €, los portes (lo que cuesta el envío) son gratis; si no, se cobran. Una regla, dos resultados posibles."
+        },
+        {
+          "tipo": "texto",
+          "md": "SI tiene tres partes, separadas por `;`:\n\n`=SI(prueba; valor si se cumple; valor si no se cumple)`\n\nEjemplo: `=SI(B2>=1000;\"Grande\";\"Normal\")`\n\n1. **Prueba**: `B2>=1000`, ¿el importe es 1.000 o más?\n2. Si **se cumple**, escribe «Grande».\n3. Si **no se cumple**, escribe «Normal»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e1",
+          "modo": "predice",
+          "enunciado": "El pedido de Clima Segre es de **1.450 €**. ¿Qué escribirá Excel en C2 con `=SI(B2>=1000;\"Grande\";\"Normal\")`?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe",
+              "C1": "Tipo",
+              "A2": "Clima Segre",
+              "B2": 1450
+            },
+            "formatos": {
+              "B2": "eur"
+            },
+            "anchos": {
+              "A": 13
+            }
+          },
+          "celda": "C2",
+          "formula": "=SI(B2>=1000;\"Grande\";\"Normal\")",
+          "explicacion": "1.450 es 1.000 o más: la prueba se cumple y Excel escribe el segundo argumento, «Grande».",
+          "respuesta": "Grande"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e7",
+          "modo": "ordenar",
+          "enunciado": "Monta la fórmula de los portes pieza a pieza: «si el pedido es de 300 € o más, 0; si no, 12». Ordena las piezas de izquierda a derecha.",
+          "pasos": [
+            "=SI(",
+            "B2>=300  (la prueba)",
+            ";0  (si se cumple)",
+            ";12  (si no se cumple)",
+            ")"
+          ],
+          "explicacion": "=SI(B2>=300;0;12): nombre y paréntesis, la prueba, lo que sale si se cumple, lo que sale si no, y se cierra. Siempre en ese orden."
+        },
+        {
+          "tipo": "tabla",
+          "titulo": "Los signos para comparar",
+          "cabecera": [
+            "Signo",
+            "Significa",
+            "Ejemplo",
+            "¿Se cumple si B2 vale 300?"
+          ],
+          "filas": [
+            [
+              "`>`",
+              "mayor que",
+              "`B2>300`",
+              "No"
+            ],
+            [
+              "`<`",
+              "menor que",
+              "`B2<300`",
+              "No"
+            ],
+            [
+              "`>=`",
+              "mayor o igual que",
+              "`B2>=300`",
+              "Sí"
+            ],
+            [
+              "`<=`",
+              "menor o igual que",
+              "`B2<=300`",
+              "Sí"
+            ],
+            [
+              "`=`",
+              "igual a",
+              "`B2=300`",
+              "Sí"
+            ],
+            [
+              "`<>`",
+              "distinto de",
+              "`B2<>300`",
+              "No"
+            ]
+          ],
+          "pie": "En «mayor o igual» el = va siempre detrás: >= y <=. Al revés (=>) está mal escrito: Excel te avisa de que hay un problema."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e2",
+          "modo": "formula",
+          "enunciado": "En **C2** marca el pedido como **\"Grande\"** si el importe de B2 es **1.000 € o más**, y como **\"Normal\"** si no. Tu fórmula se copiará a C3:C6.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe",
+              "C1": "Tipo",
+              "A2": "Clima Segre",
+              "B2": 1450,
+              "A3": "Reformas Ebro",
+              "B3": 380,
+              "A4": "Electricidad Aranda",
+              "B4": 1000,
+              "A5": "Montajes Cinca",
+              "B5": 925,
+              "A6": "Electro Huesca",
+              "B6": 2210
+            },
+            "formatos": {
+              "B2:B6": "eur"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C6"
+          ],
+          "solucion": "=SI(B2>=1000;\"Grande\";\"Normal\")",
+          "debe_usar": [
+            "SI"
+          ],
+          "alternativas": [
+            "=SI(B2<1000;\"Normal\";\"Grande\")"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>1000;\"Grande\";\"Normal\")",
+            "=SI(B2>=1000;\"Normal\";\"Grande\")",
+            "=SI(B2<=1000;\"Grande\";\"Normal\")"
+          ],
+          "variantes": [
+            {
+              "B3": 1200
+            }
+          ],
+          "pistas": [
+            "La prueba es: ¿B2 es mayor o igual que 1000? Se escribe B2>=1000.",
+            "Después, el texto si se cumple y el texto si no, los dos entre comillas.",
+            "=SI(B2>=1000;\"Grande\";\"Normal\")"
+          ],
+          "explicacion": "Tu primera decisión automática. Mira Electricidad Aranda: justo 1.000 €, y sale «Grande» gracias al >=. Con > a secas se habría quedado en «Normal». Cambia un importe y la etiqueta cambia sola."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una regla de oro:\n\n- Los **textos** van **entre comillas**: `\"Grande\"`, `\"Apto\"`.\n- Los **números** van **sin comillas**: `0`, `12`.\n- Las **celdas** van sin comillas: `B2`, `$F$2`.\n\nSin comillas, Excel cree que `Grande` es el nombre de algo que no conoce y devuelve el error **#¿NOMBRE?**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e3",
+          "modo": "formula",
+          "enunciado": "Andrés puntúa a los proveedores de 0 a 10. Con **5 o más** son **\"Apto\"**; si no, **\"Revisar\"**. La fórmula de **C2** da #¿NOMBRE?. Arréglala (se copiará a C3:C5).",
+          "hoja": {
+            "celdas": {
+              "A1": "Proveedor",
+              "B1": "Nota",
+              "C1": "Resultado",
+              "A2": "Cables del Norte",
+              "B2": 8,
+              "A3": "Luminia LED",
+              "B3": 4,
+              "A4": "Mecanismos Arnal",
+              "B4": 5,
+              "A5": "Tubos Gállego",
+              "B5": 6
+            },
+            "anchos": {
+              "A": 17,
+              "C": 11
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C5"
+          ],
+          "inicial": "=SI(B2>=5;Apto;Revisar)",
+          "solucion": "=SI(B2>=5;\"Apto\";\"Revisar\")",
+          "debe_usar": [
+            "SI"
+          ],
+          "alternativas": [
+            "=SI(B2<5;\"Revisar\";\"Apto\")"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>=5;Apto;Revisar)",
+            "=SI(B2>5;\"Apto\";\"Revisar\")"
+          ],
+          "variantes": [
+            {
+              "B3": 9
+            }
+          ],
+          "pistas": [
+            "La prueba está bien. El problema está en las palabras Apto y Revisar.",
+            "Son textos: tienen que ir entre comillas.",
+            "=SI(B2>=5;\"Apto\";\"Revisar\")"
+          ],
+          "explicacion": "Arreglado. Cada vez que veas #¿NOMBRE? en un SI, busca primero un texto sin comillas (o un nombre de función mal escrito). Ya sabes leer ese error."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e4",
+          "modo": "test",
+          "pregunta": "Quieres marcar los pedidos de **500 € o más**. ¿Qué prueba está bien escrita?",
+          "opciones": [
+            {
+              "texto": "B2>=500",
+              "correcta": true,
+              "porque": "Correcto: primero el > y luego el =."
+            },
+            {
+              "texto": "B2=>500",
+              "correcta": false,
+              "porque": "El orden está al revés. Escrito así, Excel te avisa de que hay un problema con la fórmula (a veces te propone corregirlo a >=)."
+            },
+            {
+              "texto": "B2>500",
+              "correcta": false,
+              "porque": "Así un pedido de 500 € justos se quedaría fuera."
+            },
+            {
+              "texto": "B2>=\"500\"",
+              "correcta": false,
+              "porque": "Con comillas, 500 pasa a ser un texto y la comparación con un número no funciona como esperas."
+            }
+          ],
+          "explicacion": "«Mayor o igual» se escribe >= (como se lee: mayor, igual). Y los números, sin comillas."
+        },
+        {
+          "tipo": "texto",
+          "md": "SI no solo devuelve textos: también puede devolver **un número o un cálculo**.\n\nLos pedidos de 1.000 € o más tienen un **3 % de descuento**. El 3 % está en **F2**:\n\n`=SI(B2>=1000;B2*$F$2;0)`\n\nSi se cumple, calcula el descuento. Si no, pone 0. Como en el módulo anterior: el porcentaje en su celda y fijado con $."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e5",
+          "modo": "formula",
+          "enunciado": "En **C2** calcula el **descuento** del pedido: si el importe es **1.000 € o más**, el importe por el porcentaje de **F2**; si no, **0**. Tu fórmula se copiará a C3:C5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe",
+              "C1": "Descuento",
+              "A2": "Clima Segre",
+              "B2": 1450,
+              "A3": "Reformas Ebro",
+              "B3": 380,
+              "A4": "Electricidad Aranda",
+              "B4": 1000,
+              "A5": "Electro Huesca",
+              "B5": 2210,
+              "E2": "Descuento",
+              "F2": 0.03
+            },
+            "formatos": {
+              "B2:C5": "eur",
+              "F2": "pct"
+            },
+            "anchos": {
+              "A": 20,
+              "E": 10
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C5"
+          ],
+          "solucion": "=SI(B2>=1000;B2*$F$2;0)",
+          "debe_usar": [
+            "SI"
+          ],
+          "alternativas": [
+            "=SI(B2>=1000;B2*F$2;0)",
+            "=SI(B2<1000;0;B2*$F$2)"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>=1000;B2*F2;0)",
+            "=SI(B2>1000;B2*$F$2;0)",
+            "=SI(B2>=1000;\"B2*$F$2\";0)",
+            "=SI(B2>=1000;$F$2;0)"
+          ],
+          "variantes": [
+            {
+              "F2": 0.05
+            },
+            {
+              "B3": 1100
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "La prueba es la misma de antes: B2>=1000.",
+            "Si se cumple, el resultado es un cálculo: B2 por el porcentaje de F2, fijado con $. Si no, 0. Sin comillas en ninguno.",
+            "=SI(B2>=1000;B2*$F$2;0)"
+          ],
+          "explicacion": "43,50 €, 0, 30 € y 66,30 €. SI ha decidido y, cuando tocaba, ha calculado. Si Javier sube el descuento al 5 %, cambias F2 y todo se recalcula."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un aviso que me costó una tarde: si escribes los números del SI entre comillas, como `\"12\"`, Excel los guarda como **texto**. Se ven igual, pero luego **SUMA se los salta** y el total de portes sale 0. Números siempre sin comillas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n1m2l4-e6",
+          "modo": "formula",
+          "enunciado": "**La misión de Javier.** En **C2** calcula los **portes** del pedido: **0** si el importe es de **300 € o más**; si no, lo que diga **F2** (12 €). Tu fórmula se copiará a C3:C7.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe",
+              "C1": "Portes",
+              "A2": "Reformas Ebro",
+              "B2": 380,
+              "A3": "Luz y Obra Tudela",
+              "B3": 145,
+              "A4": "Montajes Cinca",
+              "B4": 300,
+              "A5": "Instalaciones Moncayo",
+              "B5": 299.5,
+              "A6": "Electro Huesca",
+              "B6": 2210,
+              "A7": "Clima Segre",
+              "B7": 64.8,
+              "A8": "TOTAL",
+              "B8": "=SUMA(B2:B7)",
+              "C8": "=SUMA(C2:C7)",
+              "E2": "Portes",
+              "F2": 12
+            },
+            "formatos": {
+              "B2:C8": "eur",
+              "F2": "eur"
+            },
+            "anchos": {
+              "A": 22,
+              "E": 8
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C7"
+          ],
+          "solucion": "=SI(B2>=300;0;$F$2)",
+          "debe_usar": [
+            "SI"
+          ],
+          "alternativas": [
+            "=SI(B2<300;$F$2;0)",
+            "=SI(B2>=300;0;F$2)"
+          ],
+          "errores_tipicos": [
+            "=SI(B2>300;0;$F$2)",
+            "=SI(B2>=300;0;F2)",
+            "=SI(B2>=300;\"0\";\"12\")",
+            "=SI(B2>=300;0;12)",
+            "=SI(B2>=300;$F$2;0)"
+          ],
+          "variantes": [
+            {
+              "F2": 15
+            },
+            {
+              "B3": 450
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "La prueba: ¿el importe es 300 o más? Fíjate en Montajes Cinca, que tiene 300 justos.",
+            "Si se cumple, 0. Si no, la celda F2, fijada con $ para que no se mueva al copiar.",
+            "=SI(B2>=300;0;$F$2)"
+          ],
+          "explicacion": "Misión cumplida: tres pedidos sin portes y tres que pagan 12 €, 36 € en total. Montajes Cinca, con 300 € justos, no paga gracias al >=. Y si el transportista sube la tarifa, solo cambias F2. El almacén ya puede preparar los albaranes (los papeles que acompañan a cada envío)."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n1m2l4-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cómo se escribe en Excel el signo **«distinto de»**?",
+          "aceptadas": [
+            "<>"
+          ],
+          "explicacion": "<>: menor y mayor juntos. Por ejemplo, B2<>\"Zaragoza\" se cumple con cualquier ciudad que no sea Zaragoza."
+        },
+        {
+          "id": "n1m2l4-q2",
+          "modo": "predice",
+          "enunciado": "Los pedidos que no son de Zaragoza se envían; los de Zaragoza se recogen en el almacén. ¿Qué devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Ciudad",
+              "A2": "Electricitat Pirineu",
+              "B2": "Lleida"
+            },
+            "anchos": {
+              "A": 20
+            }
+          },
+          "celda": "C2",
+          "formula": "=SI(B2<>\"Zaragoza\";\"Envío\";\"Recogida\")",
+          "explicacion": "Lleida es distinto de Zaragoza: la prueba se cumple y sale «Envío».",
+          "respuesta": "Envío"
+        },
+        {
+          "id": "n1m2l4-q3",
+          "modo": "formula",
+          "enunciado": "Repaso mezclado. Lucía tiene las horas extra de noviembre en B2:B6. En **E2** escribe una fórmula que diga **\"Revisar\"** si la **mayor** de esas horas pasa de **20**, y **\"OK\"** si no.",
+          "hoja": {
+            "celdas": {
+              "A1": "Empleado",
+              "B1": "Horas extra",
+              "A2": "Ana Lasheras",
+              "B2": 12,
+              "A3": "Jorge Bielsa",
+              "B3": 22,
+              "A4": "Marina Oliván",
+              "B4": 8,
+              "A5": "Hugo Royo",
+              "B5": 15,
+              "A6": "Celia Pardo",
+              "B6": 19,
+              "D2": "Control"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 12
+            }
+          },
+          "objetivo": "E2",
+          "solucion": "=SI(MAX(B2:B6)>20;\"Revisar\";\"OK\")",
+          "debe_usar": [
+            "SI",
+            "MAX"
+          ],
+          "alternativas": [
+            "=SI(MAX(B2:B6)<=20;\"OK\";\"Revisar\")"
+          ],
+          "errores_tipicos": [
+            "=SI(MIN(B2:B6)>20;\"Revisar\";\"OK\")",
+            "=SI(B2>20;\"Revisar\";\"OK\")",
+            "=SI(PROMEDIO(B2:B6)>20;\"Revisar\";\"OK\")"
+          ],
+          "variantes": [
+            {
+              "B3": 18
+            },
+            {
+              "B6": 25
+            }
+          ],
+          "pistas": [
+            "Primero averigua la mayor de las horas: ¿con qué función?",
+            "Esa función va dentro de la prueba del SI: MAX(B2:B6)>20.",
+            "=SI(MAX(B2:B6)>20;\"Revisar\";\"OK\")"
+          ],
+          "explicacion": "Has metido una función dentro de otra: MAX busca la mayor y SI decide. Así se montan los controles de una hoja: una celda que avisa sola cuando algo se sale de lo normal."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Forma de la función SI",
+          "dorso": "=SI(prueba; valor si se cumple; valor si no se cumple). Ejemplo: =SI(B2>=1000;\"Grande\";\"Normal\")"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Signos «mayor o igual», «menor o igual» y «distinto de»",
+          "dorso": ">=   <=   <>  (el = siempre detrás)"
+        },
+        {
+          "tipo": "error",
+          "frente": "Un SI devuelve #¿NOMBRE?. ¿Qué miras primero?",
+          "dorso": "Que los textos estén entre comillas: \"Apto\", no Apto."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no hay que poner comillas a los números en un SI?",
+          "dorso": "Con comillas se guardan como texto y SUMA se los salta."
+        }
+      ]
+    }
+  ]
+}

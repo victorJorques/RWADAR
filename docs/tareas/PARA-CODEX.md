@@ -6,6 +6,37 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (33) · Claude · Guía de Excel «Hoja a hoja» guardada en su rama · NO ES RWADAR, NO UNIR A MAIN
+
+- **Encargo de Víctor:** una guía interactiva de Excel, del nivel 0 a llevar
+  proyectos sola en una empresa, con juego y método basado en investigación.
+  Se publicó como página privada de claude.ai (versión 6); no toca RWAdar, ni
+  Supabase, ni la web, ni la app.
+- **Qué hay en esta rama:**
+  - la carpeta `guia-excel/` con el código, el contenido, los libros de Excel
+    y la investigación (unos 31 MB, explicado en `guia-excel/README.md`);
+  - la línea `!/guia-excel/` en `.gitignore`.
+  - Vive solo en `claude/fervent-darwin-a1rmid`: **no se une a `main`** ni
+    necesita PR.
+- **Último cambio (versión 6):** la guía comprueba de verdad si puede guardar
+  el progreso en la cuenta de quien la usa.
+  - Antes, quien la tenía compartida solo para ver perdía el progreso sin
+    aviso, porque la página decía que se guardaba en la cuenta.
+  - Ahora, si no puede guardar en la cuenta, lo dice en el mapa y ofrece
+    descargar y cargar una copia.
+  - Además sube lo pendiente al cerrar la pestaña.
+- **Pruebas:**
+  - `node validar.cjs`: 0 errores;
+  - el robot jugó 3 lecciones, todas con 3 estrellas;
+  - `probar-guardado.cjs` simuló tres casos: con permiso, sin permiso y fuera
+    de claude.ai.
+  - La versión anterior ya había pasado el robot completo: 98 lecciones y
+    7 exámenes.
+- **Pendiente de Víctor:**
+  - probar dentro de claude.ai una descarga, la tutora y el guardado;
+  - compartir la página con la alumna invitándola por correo con permiso para
+    editar, para que su progreso se guarde en su cuenta.
+
 ## 14 de noviembre de 2026 (32) · Claude · Noticias del 14/11, recuadro «Activa los avisos» y notificaciones sin cuenta · TODO PUBLICADO Y ENCENDIDO
 
 - **Encargos de la dirección (14/11):** «publícalo todo: las notificaciones,

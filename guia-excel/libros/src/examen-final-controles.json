@@ -1,0 +1,150 @@
+{
+ "controles": {
+  "b1_lineas": 1227,
+  "b1_cantidad": 8712,
+  "b1_octubre": 614,
+  "b1_clientes": 109,
+  "b2_base": 135576.25,
+  "b2_iva4": 546.69,
+  "b2_iva10": 7620.28,
+  "b2_iva21": 9452.73,
+  "b2_margen": 45992.72,
+  "b2_sin_tarifa": 8,
+  "b3_base_burgos": 34142.05,
+  "b3_pct_cafe_palencia": 57.09,
+  "b3_margen_top": 2962.8,
+  "b4_pendiente": 162572.99,
+  "b4_mas60": 23749.19,
+  "b4_sobre_limite": 7,
+  "b5_margen_actual": 28.5,
+  "b5_precio": 2404.48,
+  "b6_lineas": 1365,
+  "b6_sin_tarifa": 11,
+  "b6_base": 152762.35
+ },
+ "aux": {
+  "margen_pct": 33.9,
+  "pct_zona": {
+   "Valladolid capital": 34.2,
+   "Valladolid provincia": 23.8,
+   "Palencia": 16.8,
+   "Burgos": 25.2
+  },
+  "base_zona": {
+   "Valladolid capital": 46409.25,
+   "Valladolid provincia": 32201.75,
+   "Palencia": 22823.2,
+   "Burgos": 34142.05
+  },
+  "base_sin": 693.2,
+  "favor": 561.01,
+  "pct_fam": {
+   "Café": 43.9,
+   "Infusiones": 5.1,
+   "Leche": 10.1,
+   "Azúcar y complementos": 7.1,
+   "Maquinaria": 23.4,
+   "Menaje": 9.8
+  },
+  "fam_top_zona": {
+   "Valladolid capital": "Café",
+   "Valladolid provincia": "Café",
+   "Palencia": "Café",
+   "Burgos": "Café"
+  },
+  "precio_actual": 2150.0,
+  "q": 3,
+  "dup_cant": 57,
+  "dup_base": 918.5,
+  "dia_dup": "20/10/2026",
+  "venc_total": 72949.72,
+  "tramos": {
+   "Sin vencer": 89623.27,
+   "De 1 a 30 días": 21034.68,
+   "De 31 a 60 días": 28165.85,
+   "Más de 60 días": 23749.19
+  },
+  "sobre": [
+   [
+    "C1146",
+    "Asador La Esquina",
+    8874.83,
+    8500
+   ],
+   [
+    "C1115",
+    "Mesón La Estación",
+    5366.51,
+    5000
+   ],
+   [
+    "C1081",
+    "Mesón El Castillo, S.L.",
+    4248.53,
+    4000
+   ],
+   [
+    "C1060",
+    "Posada Valle del Cuco",
+    4134.86,
+    3500
+   ],
+   [
+    "C1145",
+    "Asador Los Pinos, S.L.",
+    3298.17,
+    3000
+   ],
+   [
+    "C1054",
+    "Asador Los Soportales",
+    2643.99,
+    2000
+   ],
+   [
+    "C1098",
+    "Restaurante El Portalón",
+    2085.62,
+    1500
+   ]
+  ],
+  "base_iso_oct": 32
+ },
+ "top5": [
+  [
+   "C1115",
+   "Mesón La Estación",
+   "Burgos",
+   2962.8,
+   8622.3
+  ],
+  [
+   "C1015",
+   "Hotel Arlanzón",
+   "Valladolid provincia",
+   1852.18,
+   5841.6
+  ],
+  [
+   "C1019",
+   "Café-bar La Vega",
+   "Valladolid capital",
+   1653.73,
+   5262.85
+  ],
+  [
+   "C1006",
+   "Asador El Mirador, S.L.",
+   "Burgos",
+   1519.02,
+   4505.2
+  ],
+  [
+   "C1095",
+   "Café-bar La Plaza, S.L.",
+   "Palencia",
+   1413.71,
+   3947.6
+  ]
+ ]
+}

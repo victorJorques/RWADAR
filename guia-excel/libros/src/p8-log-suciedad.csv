@@ -1,0 +1,16 @@
+﻿archivo;ubicacion;codigo;problema;decision
+ventas_lineas_2025_2026.csv;Delegacion;Q08;«Lérida» hasta el 30/09/2025 (1723 líneas) y «Lleida» desde el 01/10/2025;Lleida
+ventas_lineas_2025_2026.csv;Delegacion;Q08;«Pamplona/Iruña» en ventas (6805 líneas) y «Pamplona» en el resto de fuentes;Pamplona
+Llega_en_diciembre/ventas_lineas_2025_2026.csv;Delegacion;Q16;«Logroño» desde el 02/11/2026: sin presupuesto ni año anterior;sin dato
+presupuesto_ventas_2026.xlsx;filas 1-2;Q11;Título y fila vacía antes del encabezado;quitar 2 filas
+presupuesto_ventas_2026.xlsx;Ene..Dic;Q12;Meses en columnas;Anular dinamización
+presupuesto_ventas_2026.xlsx;última fila;Q10;Fila TOTAL (9.480.000);quitar
+presupuesto_ventas_2026.xlsx;grano;Q18;Delegación × familia × mes: no se relaciona con Ventas;dimensiones
+saldos_clientes_fin_mes.csv;FinMes;Q22;Falta el 31/08/2026 (agosto no se cerró);sin dato
+stock_fin_mes.csv;FinMes;Q22;Empieza el 31/05/2026;sin dato antes de mayo
+stock_fin_mes.csv;CodArticulo;Q13;Códigos con ceros a la izquierda;texto
+stock_fin_mes.csv;CosteUnitario;Q09;3 artículos «Sin ficha» con coste vacío;0 (como en P6)
+plantilla_fin_mes.csv;archivo;Q19;Codificación Windows-1252 (ANSI);Origen del archivo 1252
+pyg_mensual.csv;Real;Q09;Vacío en meses no cerrados;sin dato
+pyg_mensual.csv;Real/Ppto;Q14;"Gastos en positivo; el signo lo da Grupo";signo por Grupo
+p8-datos.xlsx/Clientes;NIF;Q20;42 NIF son DNI de autónomos;fuera del modelo

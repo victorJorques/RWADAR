@@ -1,0 +1,1390 @@
+{
+  "id": "n2m3",
+  "nivel": "n2",
+  "titulo": "Trabajar con textos",
+  "intro": "Casi todo lo que llega a una oficina pasa por textos: nombres de clientes, códigos de artículo, NIF, importes exportados de otro programa. Aquí aprenderás a unirlos, cortarlos y limpiarlos con fórmulas, para que tus listados salgan bien y tus totales cuadren sin retocar nada a mano.",
+  "repaso_inicial": [
+    {
+      "id": "n2m3-r1",
+      "modo": "formula",
+      "enunciado": "Javier quiere saber cuánto ha vendido **Irene** esta semana. En **E2** escribe una fórmula que sume los importes de B2:B7 solo de las filas de Irene (debe salir **2.990,00 €**).",
+      "hoja": {
+        "celdas": {
+          "A1": "Comercial",
+          "B1": "Importe",
+          "A2": "Irene",
+          "B2": 500,
+          "A3": "Pablo",
+          "B3": 1250,
+          "A4": "Irene",
+          "B4": 1890,
+          "A5": "Sergio",
+          "B5": 620,
+          "A6": "Irene",
+          "B6": 600,
+          "A7": "Pablo",
+          "B7": 395,
+          "D1": "Comercial",
+          "D2": "Irene",
+          "E1": "Vendido"
+        },
+        "formatos": {
+          "B2:B7": "eur",
+          "E2": "eur"
+        }
+      },
+      "objetivo": "E2",
+      "solucion": "=SUMAR.SI(A2:A7;\"Irene\";B2:B7)",
+      "alternativas": [
+        "=SUMAR.SI(A2:A7;D2;B2:B7)",
+        "=SUMAR.SI($A$2:$A$7;D2;$B$2:$B$7)"
+      ],
+      "errores_tipicos": [
+        "=CONTAR.SI(A2:A7;\"Irene\")",
+        "=SUMA(B2:B7)",
+        "=SUMAR.SI(B2:B7;\"Irene\";A2:A7)"
+      ],
+      "variantes": [
+        {
+          "B6": 900
+        }
+      ],
+      "pistas": [
+        "Sumar solo lo que cumple una condición: SUMAR.SI.",
+        "«Busca aquí, esto, y suma de allí»: busca en A2:A7, \"Irene\" (o D2), suma B2:B7.",
+        "`=SUMAR.SI(A2:A7;D2;B2:B7)`"
+      ],
+      "explicacion": "Bien recordado. En este módulo verás por qué a veces un SUMAR.SI como este se deja filas fuera: espacios invisibles y números que son texto."
+    },
+    {
+      "id": "n2m3-r2",
+      "modo": "predice",
+      "enunciado": "El envío es gratis si el pedido llega a 1.000 € **y** es de Zaragoza. ¿Qué devuelve la fórmula de **C1**?",
+      "hoja": {
+        "celdas": {
+          "A1": 1250,
+          "B1": "Pamplona"
+        },
+        "formatos": {
+          "A1": "eur"
+        }
+      },
+      "celda": "C1",
+      "formula": "=SI(Y(A1>=1000;B1=\"Zaragoza\");\"Gratis\";\"Con portes\")",
+      "explicacion": "Y exige que se cumplan las dos condiciones. El importe llega, pero es de Pamplona: «Con portes».",
+      "respuesta": "Con portes"
+    },
+    {
+      "id": "n2m3-r3",
+      "modo": "test",
+      "pregunta": "Quieres contar los pedidos de **más de 1.000 €** de D2:D11. ¿Qué fórmula es correcta?",
+      "opciones": [
+        {
+          "texto": "=CONTAR.SI(D2:D11;\">1000\")",
+          "correcta": true,
+          "porque": "Correcto: el signo y el número van juntos y entre comillas."
+        },
+        {
+          "texto": "=CONTAR.SI(D2:D11;>1000)",
+          "correcta": false,
+          "porque": "Sin comillas, Excel no acepta la fórmula: el criterio con un signo va siempre entre comillas."
+        },
+        {
+          "texto": "=CONTAR.SI(D2:D11;\">=1000\")",
+          "correcta": false,
+          "porque": "Ese criterio incluye los de 1.000 € justos, y se pedían los de más de 1.000."
+        },
+        {
+          "texto": "=CONTAR(D2:D11)",
+          "correcta": false,
+          "porque": "CONTAR cuenta todos los números, sin condición."
+        }
+      ]
+    },
+    {
+      "id": "n2m3-r4",
+      "modo": "cinta",
+      "enunciado": "Quieres que los importes vencidos se pongan en rojo solos. ¿Dónde está el botón?",
+      "ruta": [
+        "Inicio",
+        "Estilos",
+        "Formato condicional"
+      ],
+      "explicacion": "Inicio › Estilos › Formato condicional. Úsalo como alarma visual en cualquier listado que entregues."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n2m3l1",
+      "titulo": "Unir textos: &, CONCAT y UNIRCADENAS",
+      "minutos": 15,
+      "objetivo": "Unir textos y datos de varias celdas en una frase lista para usar, con los importes y las fechas bien escritos gracias a TEXTO.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Mañana mando los recordatorios de cobro. Necesito al lado de cada factura la frase lista para pegar en el correo, tipo «Instalaciones Ebro: factura F-1024 por 1.250,00 €». Con el importe bien escrito, por favor, no un 1250 a secas.",
+        "logro": "Ya sabes montar frases automáticas con los datos de la hoja, con importes y fechas bien escritos, para correos, etiquetas o informes."
+      },
+      "funciones": [
+        "CONCAT",
+        "UNIRCADENAS",
+        "TEXTO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Muchas veces la información está repartida: el nombre en una columna y los apellidos en otra. Para **unir** textos se usa el signo `&` (se lee «y»; en el teclado está en [[Mayús]]+[[6]]). Ya lo usaste para pegar el signo de un criterio con su celda; aquí pega textos.\n\n`=A2&B2` pega lo que hay en A2 y en B2… pero **sin nada en medio**: «PabloLasheras Gil».\n\nEl espacio también hay que añadirlo, como un trozo más entre comillas: `=A2&\" \"&B2` → «Pablo Lasheras Gil»."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Unir con un espacio en medio",
+          "hoja": {
+            "celdas": {
+              "A1": "Nombre",
+              "B1": "Apellidos",
+              "C1": "Unido",
+              "A2": "Lucía",
+              "B2": "Fernández Royo",
+              "C2": "=A2&\" \"&B2"
+            },
+            "anchos": {
+              "B": 16,
+              "C": 24
+            }
+          },
+          "resaltar": [
+            "C2"
+          ],
+          "mostrar_formulas": true,
+          "pie": "Cada trozo se une con &. El espacio es un texto más: \" \"."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e1",
+          "modo": "formula",
+          "enunciado": "Javier quiere el nombre completo de cada comercial para el cartel de la reunión. En **C2** une el nombre (A2) y los apellidos (B2) con un espacio en medio, para que salga **Pablo Lasheras Gil**. Tu fórmula se copiará a C3:C5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Nombre",
+              "B1": "Apellidos",
+              "C1": "Nombre completo",
+              "A2": "Pablo",
+              "B2": "Lasheras Gil",
+              "A3": "Irene",
+              "B3": "Sanz Ochoa",
+              "A4": "Sergio",
+              "B4": "Bueno Pardo",
+              "A5": "Ainhoa",
+              "B5": "Elizalde Mur"
+            },
+            "anchos": {
+              "B": 14,
+              "C": 24
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C5"
+          ],
+          "solucion": "=A2&\" \"&B2",
+          "alternativas": [
+            "=CONCAT(A2;\" \";B2)",
+            "=CONCATENAR(A2;\" \";B2)"
+          ],
+          "errores_tipicos": [
+            "=A2&B2",
+            "=A2&\"\"&B2",
+            "=B2&\" \"&A2"
+          ],
+          "variantes": [
+            {
+              "A3": "Marta"
+            }
+          ],
+          "pistas": [
+            "Empieza con = y haz clic en A2.",
+            "Tres trozos: A2, un espacio entre comillas y B2, unidos con &.",
+            "`=A2&\" \"&B2`"
+          ],
+          "explicacion": "Ya tienes los cuatro nombres completos con una sola fórmula. Este truco lo usarás para etiquetas, listados de personal y cartas: nadie vuelve a escribir un nombre a mano."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e2",
+          "modo": "formula",
+          "enunciado": "Javier ha dejado una fórmula en **C2** para el código de cliente de la campaña 2026, pero sale **CL-04122026**. Tiene que salir **CL-0412-2026** (con un guion antes del año). Arréglala; se copiará a C3:C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Campaña",
+              "C1": "Código de campaña",
+              "A2": "CL-0412",
+              "B2": 2026,
+              "A3": "CL-0087",
+              "B3": 2026,
+              "A4": "CL-1135",
+              "B4": 2027
+            },
+            "anchos": {
+              "C": 20
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C4"
+          ],
+          "inicial": "=A2&B2",
+          "solucion": "=A2&\"-\"&B2",
+          "alternativas": [
+            "=CONCAT(A2;\"-\";B2)"
+          ],
+          "errores_tipicos": [
+            "=A2&B2",
+            "=A2&\" \"&B2",
+            "=A2&\"-2026\""
+          ],
+          "variantes": [
+            {
+              "B2": 2028
+            }
+          ],
+          "pistas": [
+            "Falta un trozo entre el código y el año.",
+            "Ese trozo es un guion, y como es texto va entre comillas: \"-\".",
+            "`=A2&\"-\"&B2`"
+          ],
+          "explicacion": "El guion entra como un texto más entre comillas, igual que el espacio. Y fíjate en que el año 2026 era un número: & lo convierte en texto sin problema."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuando unes muchos trozos, los `&` se acumulan. Dos funciones te ahorran trabajo:\n\n- `CONCAT(texto1; texto2; …)` une todo lo que le des, en orden. `=CONCAT(A2;\" \";B2)` es lo mismo que `=A2&\" \"&B2`.\n- `UNIRCADENAS(separador; ignorar_vacías; textos)` pone el **separador** entre cada trozo. Con `VERDADERO` en el segundo argumento se salta las celdas vacías.\n\n`=UNIRCADENAS(\", \";VERDADERO;A2:A4)` → «Zaragoza, Pamplona, Lleida»."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Si en tu empresa tienen Excel 2016",
+          "md": "CONCAT y UNIRCADENAS existen desde Excel 2019. En Excel 2016 usa `&` o la función antigua `CONCATENAR`, que hace lo mismo que CONCAT pero no admite rangos (hay que darle las celdas una a una)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e3",
+          "modo": "test",
+          "pregunta": "Andrés quiere en una sola celda los códigos de A2:A4 separados por coma y espacio: «CAB-0425, MAG-1016, LED-2203». ¿Qué fórmula lo consigue?",
+          "opciones": [
+            {
+              "texto": "=UNIRCADENAS(\", \";VERDADERO;A2:A4)",
+              "correcta": true,
+              "porque": "Correcto: pone «, » entre cada código y se saltaría cualquier celda vacía."
+            },
+            {
+              "texto": "=CONCAT(A2:A4)",
+              "correcta": false,
+              "porque": "CONCAT une el rango, pero sin nada en medio: «CAB-0425MAG-1016LED-2203»."
+            },
+            {
+              "texto": "=A2&A3&A4",
+              "correcta": false,
+              "porque": "Mismo problema: & no añade separadores si no los escribes tú."
+            },
+            {
+              "texto": "=SUMA(A2:A4)",
+              "correcta": false,
+              "porque": "SUMA es para números; con textos da 0."
+            }
+          ],
+          "explicacion": "Para listas con separador, UNIRCADENAS es la herramienta: separador, VERDADERO y el rango."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e4",
+          "modo": "formula",
+          "enunciado": "Andrés tiene que pedir al proveedor los artículos que se han agotado (A2:A6; la celda A4 está vacía). En **C2** escribe una fórmula que los junte separados por **coma y espacio**, sin dejar huecos: debe salir **Cable 2,5 mm² (100 m), Canaleta 40x25, Magnetotérmico 2P 16 A, Tubo corrugado 20 mm**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Agotados",
+              "A2": "Cable 2,5 mm² (100 m)",
+              "A3": "Canaleta 40x25",
+              "A5": "Magnetotérmico 2P 16 A",
+              "A6": "Tubo corrugado 20 mm",
+              "C1": "Texto para el correo al proveedor"
+            },
+            "anchos": {
+              "A": 24,
+              "C": 40
+            }
+          },
+          "objetivo": "C2",
+          "solucion": "=UNIRCADENAS(\", \";VERDADERO;A2:A6)",
+          "errores_tipicos": [
+            "=UNIRCADENAS(\", \";FALSO;A2:A6)",
+            "=CONCAT(A2:A6)",
+            "=UNIRCADENAS(\",\";VERDADERO;A2:A6)"
+          ],
+          "variantes": [
+            {
+              "A4": "Bridas 200 mm"
+            }
+          ],
+          "debe_usar": [
+            "UNIRCADENAS"
+          ],
+          "pistas": [
+            "Necesitas la función que pone un separador entre cada trozo.",
+            "`UNIRCADENAS(separador; ignorar_vacías; rango)`. El separador es \", \" (coma y espacio).",
+            "`=UNIRCADENAS(\", \";VERDADERO;A2:A6)`"
+          ],
+          "explicacion": "Lista lista para pegar en el correo. Con `VERDADERO` la celda vacía no deja un «, ,» feo, y si alguien rellena A4 mañana, la lista se actualiza sola."
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora, una sorpresa. Al unir, Excel **olvida el formato** de los números y las fechas. Unido a un texto:\n\n- 1.250,00 € pasa a «1250».\n- La fecha 30/11/2026 pasa a «46356».\n\n¿Por qué? Por dentro, una fecha es un número (los días que han pasado desde 1900) y el formato era solo el «disfraz». Al unir, el disfraz se cae. Compruébalo en la siguiente pantalla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e5",
+          "modo": "predice",
+          "enunciado": "En B1 hay una fecha (se ve 30/11/2026). ¿Qué texto saldrá en **C1** con esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "F-1024",
+              "B1": {
+                "fecha": "2026-11-30"
+              }
+            },
+            "formatos": {
+              "B1": "fecha"
+            },
+            "anchos": {
+              "B": 12
+            }
+          },
+          "celda": "C1",
+          "formula": "=\"Vence el \"&B1",
+          "explicacion": "Sale el número de serie de la fecha, no la fecha. Con la función TEXTO lo arreglas: le pones el formato que quieres ver.",
+          "respuesta": "Vence el 46356"
+        },
+        {
+          "tipo": "texto",
+          "md": "La función **TEXTO** convierte un número o una fecha en texto **con el formato que tú digas**:\n\n`TEXTO(valor; \"formato\")`\n\n| Quieres ver | Fórmula |\n|---|---|\n| 1.250,00 € | `TEXTO(C2;\"#.##0,00 €\")` |\n| 30/11/2026 | `TEXTO(B2;\"dd/mm/aaaa\")` |\n| 21% | `TEXTO(D2;\"0%\")` |\n\nEl formato va entre comillas. En Excel en español, los años son «aaaa», el punto separa miles y la coma, decimales."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e6",
+          "modo": "formula",
+          "enunciado": "La fórmula de **C2** da «Vence el 46356». Arréglala con TEXTO para que salga **Vence el 30/11/2026**. Se copiará a C3:C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Vencimiento",
+              "C1": "Aviso",
+              "A2": "F-1024",
+              "B2": {
+                "fecha": "2026-11-30"
+              },
+              "A3": "F-1031",
+              "B3": {
+                "fecha": "2026-12-05"
+              },
+              "A4": "F-1037",
+              "B4": {
+                "fecha": "2026-12-15"
+              }
+            },
+            "formatos": {
+              "B2:B4": "fecha"
+            },
+            "anchos": {
+              "B": 12,
+              "C": 22
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C4"
+          ],
+          "inicial": "=\"Vence el \"&B2",
+          "solucion": "=\"Vence el \"&TEXTO(B2;\"dd/mm/aaaa\")",
+          "alternativas": [
+            "=CONCAT(\"Vence el \";TEXTO(B2;\"dd/mm/aaaa\"))"
+          ],
+          "errores_tipicos": [
+            "=\"Vence el \"&B2",
+            "=\"Vence el \"&TEXTO(B2;\"mm/dd/aaaa\")",
+            "=\"Vence el\"&TEXTO(B2;\"dd/mm/aaaa\")"
+          ],
+          "variantes": [
+            {
+              "B2": {
+                "fecha": "2027-01-08"
+              }
+            }
+          ],
+          "debe_usar": [
+            "TEXTO"
+          ],
+          "pistas": [
+            "La fecha necesita un «disfraz» antes de unirla: la función TEXTO.",
+            "Cambia `B2` por `TEXTO(B2;\"dd/mm/aaaa\")`. El formato va entre comillas.",
+            "`=\"Vence el \"&TEXTO(B2;\"dd/mm/aaaa\")`"
+          ],
+          "explicacion": "Ahora la fecha se lee como una fecha. Ojo con el orden: «dd/mm» es día/mes, como en España; «mm/dd» es el orden de Estados Unidos y confunde a cualquiera."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Te aviso: Marta copia esas frases tal cual en el correo al cliente. Si le llega un «por 2310,75» sin punto ni euro, te la devuelve. Mira bien el importe antes de darlo por bueno."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l1-e7",
+          "modo": "formula",
+          "enunciado": "El encargo de Marta. En **D2** escribe una fórmula que construya: **Instalaciones Ebro: factura F-1024 por 1.250,00 €** (cliente, dos puntos y espacio, «factura », el número, « por » y el importe con formato de euros). Se copiará a D3:D5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "D1": "Frase para el correo",
+              "A2": "F-1024",
+              "B2": "Instalaciones Ebro",
+              "C2": 1250,
+              "A3": "F-1031",
+              "B3": "Electricidad Moncayo",
+              "C3": 486.4,
+              "A4": "F-1037",
+              "B4": "Montajes Arga",
+              "C4": 2310.75,
+              "A5": "F-1042",
+              "B5": "Reformas Segre",
+              "C5": 98.5
+            },
+            "formatos": {
+              "C2:C5": "eur"
+            },
+            "anchos": {
+              "B": 20,
+              "C": 11,
+              "D": 46
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D5"
+          ],
+          "solucion": "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")",
+          "alternativas": [
+            "=CONCAT(B2;\": factura \";A2;\" por \";TEXTO(C2;\"#.##0,00 €\"))",
+            "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00\")&\" €\""
+          ],
+          "errores_tipicos": [
+            "=B2&\": factura \"&A2&\" por \"&C2",
+            "=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"0,00 €\")",
+            "=B2&\":factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")"
+          ],
+          "variantes": [
+            {
+              "C3": 15400,
+              "B3": "Grupo Electro Tudela"
+            }
+          ],
+          "debe_usar": [
+            "TEXTO"
+          ],
+          "pistas": [
+            "Son cinco trozos unidos con &: B2, \": factura \", A2, \" por \" y el importe.",
+            "El importe va con TEXTO y el formato de euros: `TEXTO(C2;\"#.##0,00 €\")`. Cuida los espacios dentro de las comillas.",
+            "`=B2&\": factura \"&A2&\" por \"&TEXTO(C2;\"#.##0,00 €\")`"
+          ],
+          "explicacion": "Cuatro frases listas para el correo, con el importe como lo escribiría una persona: 2.310,75 €. Si cambia un importe, la frase cambia sola. Esta misma técnica sirve para asuntos de correo, etiquetas de envío o el pie de un informe."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m3l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué símbolo se usa en una fórmula para unir dos textos, por ejemplo el nombre y los apellidos?",
+          "aceptadas": [
+            "&",
+            "ampersand",
+            "y comercial",
+            "el &"
+          ],
+          "explicacion": "El & une trozos: `=A2&\" \"&B2`. El espacio, como texto entre comillas."
+        },
+        {
+          "id": "n2m3l1-q2",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve esta fórmula? (D1 está vacía)",
+          "hoja": {
+            "celdas": {
+              "A1": "ZA",
+              "B1": 2026,
+              "C1": "'0412"
+            }
+          },
+          "celda": "E1",
+          "formula": "=UNIRCADENAS(\"-\";VERDADERO;A1:D1)",
+          "explicacion": "Une A1, B1 y C1 con un guion entre cada uno y se salta D1 porque está vacía. Así se arman los códigos de pedido que vas a aprender a desmontar en la siguiente lección.",
+          "respuesta": "ZA-2026-0412"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Unir nombre (A2) y apellidos (B2) con un espacio",
+          "dorso": "=A2&\" \"&B2"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "UNIRCADENAS: sintaxis",
+          "dorso": "=UNIRCADENAS(separador; ignorar_vacías; textos). Ej.: =UNIRCADENAS(\", \";VERDADERO;A2:A6)"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Unir un importe con formato de euros",
+          "dorso": "TEXTO(C2;\"#.##0,00 €\") → 1.250,00 €"
+        },
+        {
+          "tipo": "error",
+          "frente": "Al unir una fecha sale un número como 46356. ¿Por qué y cómo se arregla?",
+          "dorso": "La fecha es un número por dentro y al unir pierde el formato. Usa TEXTO(B2;\"dd/mm/aaaa\")."
+        }
+      ]
+    },
+    {
+      "id": "n2m3l2",
+      "titulo": "Cortar textos: IZQUIERDA, DERECHA, EXTRAE y LARGO",
+      "minutos": 16,
+      "objetivo": "Sacar una parte de un código (los primeros caracteres, los últimos, los de en medio o lo que hay antes de un guion) para poder agrupar y contar por ella.",
+      "mision": {
+        "de": "Andrés Molina",
+        "puesto": "Jefe de compras y almacén",
+        "texto": "El programa me exporta el código del artículo con la familia delante: CAB-0425, MAG-1016… Para el inventario necesito la familia en su propia columna. Ojo, que no todas tienen tres letras: hay CANAL, TUBO, BR…",
+        "logro": "Ya sabes partir códigos, referencias y NIF para quedarte con el trozo que necesitas, aunque cada código tenga una longitud distinta."
+      },
+      "funciones": [
+        "IZQUIERDA",
+        "DERECHA",
+        "EXTRAE",
+        "LARGO",
+        "ENCONTRAR"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Los códigos de empresa llevan información escondida. En un código postal, **los dos primeros dígitos son la provincia**: 50 es Zaragoza, 31 Navarra, 25 Lleida.\n\nPara quedarte con el principio de un texto está **IZQUIERDA**:\n\n`IZQUIERDA(texto; cuántos)`\n\n`=IZQUIERDA(B2;2)` con 50012 en B2 da «50». Cuenta los caracteres desde la izquierda y se queda con esos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e1",
+          "modo": "formula",
+          "enunciado": "Javier quiere repartir los clientes entre delegaciones según la provincia. En **C2** saca los **dos primeros dígitos** del código postal de B2: debe salir **50**. Los códigos postales están guardados como texto, como debe ser. Se copiará a C3:C5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "C. postal",
+              "C1": "Provincia",
+              "A2": "Instalaciones Ebro",
+              "B2": "'50012",
+              "A3": "Montajes Arga",
+              "B3": "'31008",
+              "A4": "Reformas Segre",
+              "B4": "'25003",
+              "A5": "Electricidad Moncayo",
+              "B5": "'50500"
+            },
+            "anchos": {
+              "A": 20,
+              "B": 10
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C5"
+          ],
+          "solucion": "=IZQUIERDA(B2;2)",
+          "alternativas": [
+            "=EXTRAE(B2;1;2)"
+          ],
+          "errores_tipicos": [
+            "=DERECHA(B2;2)",
+            "=IZQUIERDA(B2;3)",
+            "=IZQUIERDA(A2;2)"
+          ],
+          "variantes": [
+            {
+              "B3": "'22004"
+            }
+          ],
+          "pistas": [
+            "Quieres el principio del texto: la función IZQUIERDA.",
+            "`IZQUIERDA(texto; cuántos)`: el texto es B2 y quieres 2 caracteres.",
+            "`=IZQUIERDA(B2;2)`"
+          ],
+          "explicacion": "50, 31, 25 y 50: Zaragoza, Navarra, Lleida y otra vez Zaragoza. Con esta columna Javier ya puede contar clientes por provincia con CONTAR.SI."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Los códigos postales que empiezan por 0",
+          "md": "Si el código postal se guarda como número, Excel borra el cero inicial: 08001 (Barcelona) queda en 8001 y `IZQUIERDA` daría «80». Los códigos postales, los NIF y los teléfonos se guardan siempre como **texto**."
+        },
+        {
+          "tipo": "texto",
+          "md": "**DERECHA** hace lo mismo desde el final:\n\n`DERECHA(texto; cuántos)`\n\nEl NIF de una persona (su DNI) tiene 8 números y una **letra de control** al final. `=DERECHA(B2;1)` con 17456823F en B2 da «F».\n\nTruco para no liarte: piensa en qué lado del texto está lo que quieres y cuántos caracteres ocupa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e2",
+          "modo": "formula",
+          "enunciado": "Lucía revisa los NIF de la plantilla. En **C2** saca la **letra final** del NIF de B2 (debe salir **F**). Se copiará a C3:C4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Empleado",
+              "B1": "NIF",
+              "C1": "Letra",
+              "A2": "Elena Marco Lafuente",
+              "B2": "17456823F",
+              "A3": "Jorge Ibáñez Sola",
+              "B3": "72981034X",
+              "A4": "Rosa Garcés Úbeda",
+              "B4": "25390117A"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 12
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C4"
+          ],
+          "solucion": "=DERECHA(B2;1)",
+          "alternativas": [
+            "=EXTRAE(B2;9;1)",
+            "=DERECHA(B2)"
+          ],
+          "errores_tipicos": [
+            "=IZQUIERDA(B2;1)",
+            "=DERECHA(B2;2)"
+          ],
+          "variantes": [
+            {
+              "B3": "29110455E"
+            }
+          ],
+          "pistas": [
+            "La letra está al final, a la derecha.",
+            "`DERECHA(texto; cuántos)`: B2 y 1 carácter.",
+            "`=DERECHA(B2;1)`"
+          ],
+          "explicacion": "F, X y A. Con IZQUIERDA y DERECHA ya sacas el principio o el final de cualquier código: prefijos, sufijos, letras de control."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Y si lo que quieres está **en medio**? Para eso está **EXTRAE**:\n\n`EXTRAE(texto; posición_inicial; cuántos)`\n\nEn el código de pedido «ZA-2026-0412», el año empieza en el carácter 4. Cuenta cada letra, número y guion:\n\n| Z | A | - | 2 | 0 | 2 | 6 |\n|---|---|---|---|---|---|---|\n| 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n\n`=EXTRAE(A2;4;4)` → «2026»: empieza en el 4 y coge 4."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e3",
+          "modo": "predice",
+          "enunciado": "Una compañera ha escrito esta fórmula para sacar el año de «ZA-2026-0412», pero se ha equivocado al contar. ¿Qué devuelve?",
+          "hoja": {
+            "celdas": {
+              "A1": "ZA-2026-0412"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "celda": "B1",
+          "formula": "=EXTRAE(A1;3;4)",
+          "explicacion": "Empieza en el carácter 3, que es el guion, y coge 4: «-202». El error más típico al cortar textos es contar mal las posiciones: los guiones y los espacios también cuentan.",
+          "respuesta": "-202"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e4",
+          "modo": "formula",
+          "enunciado": "Javier quiere saber de qué año es cada pedido. En **B2** saca el **año** del código de A2 (debe salir **2026**). Se copiará a B3:B5.",
+          "hoja": {
+            "celdas": {
+              "A1": "Pedido",
+              "B1": "Año",
+              "A2": "ZA-2026-0412",
+              "A3": "PA-2025-1187",
+              "A4": "LL-2026-0033",
+              "A5": "ZA-2025-0950"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "objetivo": "B2",
+          "copiar_a": [
+            "B3:B5"
+          ],
+          "solucion": "=EXTRAE(A2;4;4)",
+          "errores_tipicos": [
+            "=EXTRAE(A2;3;4)",
+            "=EXTRAE(A2;4;5)",
+            "=DERECHA(A2;4)"
+          ],
+          "variantes": [
+            {
+              "A3": "PA-2027-0001"
+            }
+          ],
+          "debe_usar": [
+            "EXTRAE"
+          ],
+          "pistas": [
+            "El año está en medio: la función EXTRAE.",
+            "Mira la tabla de posiciones: el año empieza en el carácter 4 y ocupa 4.",
+            "`=EXTRAE(A2;4;4)`"
+          ],
+          "explicacion": "2026, 2025, 2026 y 2025. Con EXTRAE sacas cualquier trozo de en medio si sabes dónde empieza y cuánto mide."
+        },
+        {
+          "tipo": "texto",
+          "md": "Hasta aquí todos los trozos medían lo mismo. Pero en los códigos de artículo la familia cambia de largo: «CAB-0425», «CANAL-4025», «BR-0200». Dos ayudantes:\n\n- `LARGO(texto)` cuenta los caracteres: `=LARGO(\"BR-0200\")` → 7.\n- `ENCONTRAR(lo_que_buscas; texto)` dice **en qué posición** está: `=ENCONTRAR(\"-\";\"BR-0200\")` → 3.\n\nENCONTRAR es la pieza clave: te dice dónde cortar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e5",
+          "modo": "predice",
+          "enunciado": "¿En qué posición está el guion? Calcula qué devuelve la fórmula de **B1**.",
+          "hoja": {
+            "celdas": {
+              "A1": "CANAL-4025"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "celda": "B1",
+          "formula": "=ENCONTRAR(\"-\";A1)",
+          "explicacion": "C-A-N-A-L son 5 caracteres, así que el guion es el sexto. Si quieres lo que hay antes del guion, coges uno menos: 5.",
+          "respuesta": "6"
+        },
+        {
+          "tipo": "texto",
+          "md": "Ahora junta las piezas. «Lo que hay antes del guion» es: desde la izquierda, tantos caracteres como la posición del guion **menos uno** (para no llevarte el guion).\n\n`=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)`\n\nUna función dentro de otra: Excel calcula primero ENCONTRAR (6 en «CANAL-4025») y luego IZQUIERDA(A2;5) → «CANAL». Funciona igual con familias de 2, 3 o 5 letras."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Antes del guion, sea cual sea su largo",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "B1": "Posición del guion",
+              "C1": "Antes del guion",
+              "A2": "CANAL-4025",
+              "B2": "=ENCONTRAR(\"-\";A2)",
+              "C2": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)",
+              "A3": "BR-0200",
+              "B3": "=ENCONTRAR(\"-\";A3)",
+              "C3": "=IZQUIERDA(A3;ENCONTRAR(\"-\";A3)-1)"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 18,
+              "C": 30
+            }
+          },
+          "resaltar": [
+            "C2:C3"
+          ],
+          "mostrar_formulas": true
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e6",
+          "modo": "test",
+          "pregunta": "En C2 tienes `=IZQUIERDA(B2;2)` y sale **50**, pero pegado a la izquierda de la celda. En otra celda, `=C2=50` da **FALSO**. ¿Qué pasa?",
+          "opciones": [
+            {
+              "texto": "IZQUIERDA siempre devuelve texto: «50» parece un número pero es texto, y para Excel no es igual que el número 50.",
+              "correcta": true,
+              "porque": "Correcto. Todas las funciones de esta lección devuelven texto. Por eso se alinea a la izquierda. En la próxima lección verás cómo convertirlo en número con VALOR."
+            },
+            {
+              "texto": "La fórmula está mal: debería ser DERECHA.",
+              "correcta": false,
+              "porque": "La fórmula está bien: el 50 es justo lo que se quería. El problema es el tipo de dato, no el trozo cortado."
+            },
+            {
+              "texto": "Hay un espacio delante del 50.",
+              "correcta": false,
+              "porque": "No hay espacio: IZQUIERDA coge exactamente 2 caracteres, «5» y «0»."
+            },
+            {
+              "texto": "Excel compara mal los números de dos cifras.",
+              "correcta": false,
+              "porque": "Excel compara bien; lo que pasa es que está comparando un texto con un número."
+            }
+          ],
+          "explicacion": "Pista visual que te servirá siempre: los números se alinean a la derecha y los textos, a la izquierda. Si un «número» sale a la izquierda, sospecha que es texto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l2-e7",
+          "modo": "formula",
+          "enunciado": "El encargo de Andrés. En **C2** saca la **familia** del código de A2: todo lo que hay **antes del guion** (debe salir **CAB**; en la fila 3, **CANAL**; en la 4, **BR**). Se copiará a C3:C7.",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "B1": "Descripción",
+              "C1": "Familia",
+              "A2": "CAB-0425",
+              "B2": "Cable 2,5 mm² rollo 100 m",
+              "A3": "CANAL-4025",
+              "B3": "Canaleta 40x25 tramo 2 m",
+              "A4": "BR-0200",
+              "B4": "Bridas 200 mm bolsa 100",
+              "A5": "MAG-1016",
+              "B5": "Magnetotérmico 2P 16 A",
+              "A6": "LED-2203",
+              "B6": "Panel LED 60x60 40 W",
+              "A7": "TUBO-2020",
+              "B7": "Tubo corrugado 20 mm"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 26,
+              "C": 10
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C7"
+          ],
+          "solucion": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)",
+          "alternativas": [
+            "=EXTRAE(A2;1;ENCONTRAR(\"-\";A2)-1)"
+          ],
+          "errores_tipicos": [
+            "=IZQUIERDA(A2;3)",
+            "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2))",
+            "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)+1)"
+          ],
+          "variantes": [
+            {
+              "A4": "MEC-1102"
+            }
+          ],
+          "debe_usar": [
+            "ENCONTRAR"
+          ],
+          "pistas": [
+            "Una cantidad fija (3) falla con CANAL o BR. Necesitas saber dónde está el guion: ENCONTRAR.",
+            "Dentro de IZQUIERDA, en lugar de un número, pon la posición del guion menos 1: `ENCONTRAR(\"-\";A2)-1`.",
+            "`=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)`"
+          ],
+          "explicacion": "Seis familias bien sacadas, sean de 2, 3 o 5 letras. Andrés ya puede contar artículos por familia. Esta fórmula (cortar por un separador) es de las más usadas con exportaciones de programas de gestión."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m3l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Qué función cuenta cuántos caracteres tiene un texto, incluidos los espacios?",
+          "aceptadas": [
+            "LARGO",
+            "=LARGO",
+            "LARGO()"
+          ],
+          "explicacion": "`=LARGO(A2)`. Cuenta letras, números, guiones y también los espacios: en la próxima lección la usarás para cazar espacios invisibles."
+        },
+        {
+          "id": "n2m3l2-q2",
+          "modo": "predice",
+          "enunciado": "¿Qué devuelve la fórmula de **B1**?",
+          "hoja": {
+            "celdas": {
+              "A1": "PA-2025-1187"
+            },
+            "anchos": {
+              "A": 14
+            }
+          },
+          "celda": "B1",
+          "formula": "=DERECHA(A1;4)",
+          "explicacion": "Los 4 últimos caracteres: el número de pedido. Y recuerda: aunque parezca un número, es texto.",
+          "respuesta": "1187"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "EXTRAE: sintaxis",
+          "dorso": "=EXTRAE(texto; posición_inicial; cuántos). Ej.: =EXTRAE(\"ZA-2026-0412\";4;4) → 2026"
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Lo que hay antes del guion en A2",
+          "dorso": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)"
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué tipo de dato devuelven IZQUIERDA, DERECHA y EXTRAE?",
+          "dorso": "Siempre texto, aunque parezca un número (sale alineado a la izquierda)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Provincia en un código postal español",
+          "dorso": "Los dos primeros dígitos: =IZQUIERDA(B2;2). 50 = Zaragoza."
+        }
+      ]
+    },
+    {
+      "id": "n2m3l3",
+      "titulo": "Limpiar textos y números que llegan mal",
+      "minutos": 16,
+      "objetivo": "Detectar y limpiar los datos que llegan mal de otros programas: espacios de más, mayúsculas desordenadas y números guardados como texto.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "He sumado los cobros de esta semana que saca el programa y me salen 2.104,90 €, pero el banco dice bastante más. Algunos importes aparecen pegados a la izquierda, con un triangulito verde. ¿Me pones una columna con los importes bien y me dices el total real?",
+        "logro": "Ya sabes detectar y limpiar espacios invisibles, mayúsculas desordenadas y números que llegan como texto, y comprobar que el total cuadra."
+      },
+      "funciones": [
+        "ESPACIOS",
+        "MAYUSC",
+        "MINUSC",
+        "NOMPROPIO",
+        "VALOR",
+        "LARGO"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Los datos que llegan de otros programas, de un CSV o de lo que escribe cada compañero traen **suciedad invisible**: un espacio al final de «Zaragoza », mayúsculas a medias, números que en realidad son texto.\n\nNo se ven, pero rompen los cálculos: un CONTAR.SI de \"Zaragoza\" no cuenta «Zaragoza » con espacio.\n\nPrimera herramienta para cazarla: `LARGO`. «Zaragoza» tiene 8 letras; si LARGO dice 9, hay algo de más."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e1",
+          "modo": "formula",
+          "enunciado": "Javier sospecha de la columna de delegaciones. En **B2** escribe una fórmula que cuente los **caracteres** de A2. Se copiará a B3:B5 y verás cuáles tienen algo de más.",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Caracteres",
+              "A2": "Zaragoza",
+              "A3": "Zaragoza ",
+              "A4": " Pamplona",
+              "A5": "Lleida"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 11
+            }
+          },
+          "objetivo": "B2",
+          "copiar_a": [
+            "B3:B5"
+          ],
+          "solucion": "=LARGO(A2)",
+          "errores_tipicos": [
+            "=CONTARA(A2)",
+            "=8"
+          ],
+          "variantes": [
+            {
+              "A2": "Lleida "
+            }
+          ],
+          "pistas": [
+            "Es la función que cuenta caracteres, de la lección anterior.",
+            "`LARGO(texto)`: el texto es A2.",
+            "`=LARGO(A2)`"
+          ],
+          "explicacion": "8, 9, 9 y 6. «Zaragoza» con 9 y «Pamplona» con 9 (debería tener 8) esconden un espacio. Has encontrado en un segundo lo que a ojo no se ve."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e2",
+          "modo": "predice",
+          "enunciado": "En A1 hay «Zaragoza » (con un espacio al final) y en A2, «Zaragoza». ¿Qué devuelve la comparación de **B1**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Zaragoza ",
+              "A2": "Zaragoza"
+            },
+            "anchos": {
+              "A": 12
+            }
+          },
+          "celda": "B1",
+          "formula": "=A1=A2",
+          "explicacion": "FALSO: para Excel son textos distintos, porque uno lleva un carácter más. Comparar con `=` es una forma rápida de descubrir diferencias invisibles. Curiosidad: `=` no distingue mayúsculas, así que «zaragoza» y «Zaragoza» sí darían VERDADERO.",
+          "respuesta": "FALSO"
+        },
+        {
+          "tipo": "texto",
+          "md": "Para quitar la suciedad de los espacios está **ESPACIOS**:\n\n`=ESPACIOS(A2)`\n\n- Quita **todos** los espacios del principio y del final.\n- Deja **uno solo** entre palabras: «Montajes   Arga» (con tres espacios) pasa a «Montajes Arga».\n\nSe usa en una columna auxiliar al lado: la fórmula limpia el dato y la columna original queda intacta."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e3",
+          "modo": "formula",
+          "enunciado": "Los nombres de clientes llegan con espacios de más. En **B2** escribe una fórmula que deje el nombre de A2 limpio: debe salir **Instalaciones Ebro**. Se copiará a B3:B4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente (como llega)",
+              "B1": "Cliente (limpio)",
+              "A2": "  Instalaciones Ebro",
+              "A3": "Montajes  Arga ",
+              "A4": "Reformas Segre"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 20
+            }
+          },
+          "objetivo": "B2",
+          "copiar_a": [
+            "B3:B4"
+          ],
+          "solucion": "=ESPACIOS(A2)",
+          "errores_tipicos": [
+            "=A2",
+            "=NOMPROPIO(A2)"
+          ],
+          "variantes": [
+            {
+              "A4": " Reformas   Segre  "
+            }
+          ],
+          "pistas": [
+            "Hay una función que quita los espacios sobrantes.",
+            "`ESPACIOS(texto)`: el texto es A2.",
+            "`=ESPACIOS(A2)`"
+          ],
+          "explicacion": "Tres nombres limpios. A partir de ahora, un CONTAR.SI o un SUMAR.SI sobre la columna B no se dejará a nadie fuera por un espacio."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Cuando ESPACIOS no funciona",
+          "md": "Si después de ESPACIOS el LARGO sigue saliendo de más, el dato viene de una web y trae un **espacio especial** que ESPACIOS no quita. Lo arreglarás en el módulo de limpieza de datos."
+        },
+        {
+          "tipo": "texto",
+          "md": "Otra suciedad típica: las mayúsculas. Tres funciones lo ordenan:\n\n- `MAYUSC`: todo en mayúsculas.\n- `MINUSC`: todo en minúsculas (útil para correos electrónicos).\n- `NOMPROPIO`: la primera letra de cada palabra en mayúscula y el resto en minúscula.\n\nY se pueden **anidar** (meter una dentro de otra): `=NOMPROPIO(ESPACIOS(A2))` primero quita espacios y después arregla las mayúsculas."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Las tres funciones con el mismo nombre",
+          "hoja": {
+            "celdas": {
+              "A1": "Como llega",
+              "B1": "MAYUSC",
+              "C1": "MINUSC",
+              "D1": "NOMPROPIO",
+              "A2": "jorge IBÁÑEZ sola",
+              "B2": "=MAYUSC(A2)",
+              "C2": "=MINUSC(A2)",
+              "D2": "=NOMPROPIO(A2)"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 18,
+              "C": 18,
+              "D": 18
+            }
+          },
+          "resaltar": [
+            "B2:D2"
+          ],
+          "mostrar_formulas": false
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e4",
+          "modo": "formula",
+          "enunciado": "Lucía prepara las tarjetas de la plantilla. La fórmula de **B2** arregla las mayúsculas, pero deja los espacios de más. Corrígela para que salga **Elena Marco Lafuente**, sin espacios sobrantes. Se copiará a B3:B4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Nombre (como llega)",
+              "B1": "Para la tarjeta",
+              "A2": "  ELENA   marco lafuente ",
+              "A3": "jorge IBÁÑEZ sola",
+              "A4": "ROSA  garcés úbeda"
+            },
+            "anchos": {
+              "A": 26,
+              "B": 22
+            }
+          },
+          "objetivo": "B2",
+          "copiar_a": [
+            "B3:B4"
+          ],
+          "inicial": "=NOMPROPIO(A2)",
+          "solucion": "=NOMPROPIO(ESPACIOS(A2))",
+          "alternativas": [
+            "=ESPACIOS(NOMPROPIO(A2))"
+          ],
+          "errores_tipicos": [
+            "=NOMPROPIO(A2)",
+            "=ESPACIOS(A2)",
+            "=MAYUSC(ESPACIOS(A2))"
+          ],
+          "variantes": [
+            {
+              "A3": "  PILAR   sánchez"
+            }
+          ],
+          "debe_usar": [
+            "NOMPROPIO",
+            "ESPACIOS"
+          ],
+          "pistas": [
+            "NOMPROPIO ya hace su parte; falta quitar los espacios.",
+            "Mete ESPACIOS(A2) dentro de NOMPROPIO, en lugar de A2.",
+            "`=NOMPROPIO(ESPACIOS(A2))`"
+          ],
+          "explicacion": "Nombres impecables para las tarjetas. Acabas de anidar dos funciones: Excel resuelve primero la de dentro (ESPACIOS) y pasa el resultado a la de fuera (NOMPROPIO)."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e5",
+          "modo": "test",
+          "pregunta": "Aplicas NOMPROPIO al cliente «CLIMATIZACIÓN DEL HUERVA SL» y sale **Climatización Del Huerva Sl**. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Revisar a mano los nombres con siglas y palabras como «del», o dejar los nombres de empresa en MAYUSC.",
+              "correcta": true,
+              "porque": "Correcto: NOMPROPIO no sabe qué es una sigla ni qué palabras van en minúscula. En nombres de empresa, revisa siempre el resultado."
+            },
+            {
+              "texto": "Nada: NOMPROPIO siempre deja los nombres bien escritos.",
+              "correcta": false,
+              "porque": "No: pone en mayúscula la primera letra de cada palabra sin más, y por eso «SL» queda «Sl» y «del» queda «Del»."
+            },
+            {
+              "texto": "Usar MINUSC, que respeta las siglas.",
+              "correcta": false,
+              "porque": "MINUSC lo pasaría todo a minúsculas, siglas incluidas: «climatización del huerva sl»."
+            },
+            {
+              "texto": "Usar ESPACIOS, que corrige las mayúsculas.",
+              "correcta": false,
+              "porque": "ESPACIOS solo quita espacios sobrantes; no toca las mayúsculas."
+            }
+          ],
+          "explicacion": "Las funciones hacen casi todo el trabajo, pero el último vistazo es tuyo. En una factura, «Sl» queda poco profesional."
+        },
+        {
+          "tipo": "texto",
+          "md": "La suciedad más peligrosa: **números guardados como texto**. Llegan así de muchos programas. Se reconocen porque:\n\n- se alinean a la **izquierda** (los números van a la derecha);\n- suelen llevar un **triángulo verde** en la esquina de la celda.\n\nParecen números, pero **SUMA no los suma**: los salta sin avisar. El total sale más bajo y nadie se da cuenta. Fíjate en el siguiente ejercicio."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e6",
+          "modo": "predice",
+          "enunciado": "En B2 y B4 los importes son **texto** (están pegados a la izquierda). B3 y B5 son números. ¿Qué devuelve la fórmula de **B6**?",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Importe",
+              "A2": "F-1024",
+              "B2": "'1250",
+              "A3": "F-1031",
+              "B3": 486.4,
+              "A4": "F-1037",
+              "B4": "'2310,75",
+              "A5": "F-1042",
+              "B5": 98.5,
+              "A6": "Total"
+            },
+            "formatos": {
+              "B3": "num2",
+              "B5": "num2"
+            }
+          },
+          "celda": "B6",
+          "formula": "=SUMA(B2:B5)",
+          "explicacion": "Solo suma los dos números de verdad: 486,40 + 98,50 = 584,90. Los 1.250 y 2.310,75 «de texto» se quedan fuera sin ningún error. Por eso siempre hay que cuadrar el total con otra fuente.",
+          "respuesta": "584,9"
+        },
+        {
+          "tipo": "texto",
+          "md": "Para convertir un texto que parece número en un **número de verdad** está **VALOR**:\n\n`=VALOR(B2)`\n\nCon «1250» (texto) en B2, devuelve 1250 (número), alineado a la derecha y listo para sumar. Si B2 ya era un número, lo deja igual, así que puedes copiar la fórmula a toda la columna sin miedo.\n\nTambién te sirve para lo que sacas con IZQUIERDA o EXTRAE: `=VALOR(EXTRAE(A2;4;4))` da el año como número."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Un consejo: cuando arregles una columna de importes, pon el total viejo y el nuevo uno al lado del otro. Si cambian, sabes que había texto escondido; si cuadran con el banco, ya puedes entregar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n2m3l3-e7",
+          "modo": "formula",
+          "enunciado": "El encargo de Marta. En **C2** convierte el importe de B2 en un **número de verdad** (debe salir **1250**). Se copiará a C3:C7. En la fila 8 verás el total viejo (B8, el de Marta) y el nuevo (C8): el nuevo tiene que dar **6.425,65**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Cliente",
+              "B1": "Importe (como llega)",
+              "C1": "Importe (número)",
+              "A2": "Instalaciones Ebro",
+              "B2": "'1250",
+              "A3": "Electricidad Moncayo",
+              "B3": 486.4,
+              "A4": "Montajes Arga",
+              "B4": "'2310,75",
+              "A5": "Reformas Segre",
+              "B5": 98.5,
+              "A6": "Grupo Electro Tudela",
+              "B6": "'760",
+              "A7": "Climatización Huerva",
+              "B7": 1520,
+              "A8": "Total",
+              "B8": "=SUMA(B2:B7)",
+              "C8": "=SUMA(C2:C7)"
+            },
+            "formatos": {
+              "C2:C8": "num2",
+              "B3": "num2",
+              "B5": "num2",
+              "B7": "num2",
+              "B8": "num2"
+            },
+            "anchos": {
+              "A": 20,
+              "B": 18,
+              "C": 16
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3:C7"
+          ],
+          "solucion": "=VALOR(B2)",
+          "alternativas": [
+            "=B2*1"
+          ],
+          "errores_tipicos": [
+            "=B2",
+            "=ESPACIOS(B2)",
+            "=SUMA(B2)"
+          ],
+          "variantes": [
+            {
+              "B2": "'1300"
+            },
+            {
+              "B6": "'815,30"
+            }
+          ],
+          "pistas": [
+            "Necesitas convertir texto en número.",
+            "La función se llama VALOR y solo necesita la celda: VALOR(B2).",
+            "`=VALOR(B2)`"
+          ],
+          "explicacion": "Total real: 6.425,65 € frente a los 2.104,90 € de antes. Faltaban 4.320,75 € de tres facturas «de texto». Acabas de evitar que Marta diera por bueno un cobro mal sumado: esa comprobación vale oro en cualquier departamento de finanzas."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n2m3l3-q1",
+          "modo": "test",
+          "pregunta": "Una columna de importes sale pegada a la izquierda, con triángulos verdes, y la SUMA da menos de lo esperado. ¿Qué función usas para arreglarlo?",
+          "opciones": [
+            {
+              "texto": "VALOR",
+              "correcta": true,
+              "porque": "Correcto: son números guardados como texto y VALOR los convierte en números de verdad."
+            },
+            {
+              "texto": "ESPACIOS",
+              "correcta": false,
+              "porque": "ESPACIOS quita espacios sobrantes de un texto, pero el resultado sigue siendo texto."
+            },
+            {
+              "texto": "NOMPROPIO",
+              "correcta": false,
+              "porque": "NOMPROPIO cambia mayúsculas y minúsculas; no convierte en número."
+            },
+            {
+              "texto": "LARGO",
+              "correcta": false,
+              "porque": "LARGO cuenta caracteres: sirve para detectar problemas, no para arreglarlos."
+            }
+          ]
+        },
+        {
+          "id": "n2m3l3-q2",
+          "modo": "formula",
+          "enunciado": "Mezcla de todo el módulo. En **C2** une el código de cliente (A2) con su nombre **ya limpio** (B2 trae espacios de más), separados por un espacio: debe salir **CL-0412 Instalaciones Ebro**. Se copiará a C3.",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "B1": "Nombre (como llega)",
+              "C1": "Para la etiqueta",
+              "A2": "CL-0412",
+              "B2": "  Instalaciones   Ebro ",
+              "A3": "CL-0087",
+              "B3": "Montajes Arga  "
+            },
+            "anchos": {
+              "B": 24,
+              "C": 28
+            }
+          },
+          "objetivo": "C2",
+          "copiar_a": [
+            "C3"
+          ],
+          "solucion": "=A2&\" \"&ESPACIOS(B2)",
+          "alternativas": [
+            "=ESPACIOS(A2&\" \"&B2)",
+            "=CONCAT(A2;\" \";ESPACIOS(B2))",
+            "=UNIRCADENAS(\" \";VERDADERO;A2;ESPACIOS(B2))"
+          ],
+          "errores_tipicos": [
+            "=A2&\" \"&B2",
+            "=A2&ESPACIOS(B2)"
+          ],
+          "variantes": [
+            {
+              "B3": " Reformas  Segre"
+            }
+          ],
+          "pistas": [
+            "Dos herramientas: & para unir y ESPACIOS para limpiar.",
+            "Limpia B2 con ESPACIOS(B2) y únelo a A2 con un espacio en medio.",
+            "`=A2&\" \"&ESPACIOS(B2)`"
+          ],
+          "explicacion": "Limpiar y unir en una sola fórmula: así se preparan etiquetas, listados y cartas con datos que llegan sucios."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Quitar espacios sobrantes de A2",
+          "dorso": "=ESPACIOS(A2): quita los del principio y el final y deja uno solo entre palabras."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo reconoces un número guardado como texto?",
+          "dorso": "Alineado a la izquierda, a menudo con triángulo verde, y SUMA no lo suma."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Convertir en número un texto que parece número",
+          "dorso": "=VALOR(B2)"
+        },
+        {
+          "tipo": "error",
+          "frente": "NOMPROPIO(\"ELECTRO SL\") da «Electro Sl». ¿Qué haces?",
+          "dorso": "Revisar a mano siglas y palabras como «del», o dejar los nombres de empresa en MAYUSC."
+        }
+      ]
+    }
+  ]
+}

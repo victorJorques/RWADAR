@@ -1,0 +1,105 @@
+{
+  "precios_texto_en_origen": 19,
+  "precios_numericos": 38,
+  "base_elecvia_cab_rz1k_3g25": 1.06,
+  "base_tormes_cab_rz1k_3g25": 0.98,
+  "base_yesa_cab_rz1k_3g25": 1.1227,
+  "base_elecvia_can40": 3.9008264462809916,
+  "coste_base": {
+    "Arnedo": 79990.0,
+    "Elecvía": 76193.05785123968,
+    "Tormes": 59290.0,
+    "Yesa": 80685.05
+  },
+  "elecvia_descuento": -3809.652892561984,
+  "elecvia_portes": 1447.6680991735539,
+  "tormes_portes": 1080,
+  "total": {
+    "Arnedo": 79990.0,
+    "Elecvía": 73831.07305785124,
+    "Tormes": 60370.0,
+    "Yesa": 80685.05
+  },
+  "incompletos": [
+    "Tormes"
+  ],
+  "mejor_unico": "Elecvía",
+  "reparto": {
+    "tormes_base": 44040.0,
+    "tormes_portes": 1080,
+    "tormes_total": 45120.0,
+    "elecvia_base": 28912.066115702484,
+    "elecvia_dto": -1445.6033057851243,
+    "elecvia_portes": 549.3292561983473,
+    "elecvia_total": 28015.792066115708,
+    "total": 73135.79206611571
+  },
+  "ahorro_reparto": 695.2809917355335,
+  "ahorro_pct": 0.9417186598259754,
+  "puntuacion": {
+    "Arnedo": 92.38022732180366,
+    "Elecvía": 84.0,
+    "Yesa": 77.61744786726292
+  },
+  "mejor_puntuacion": "Arnedo",
+  "mas_barato_por_articulo": {
+    "CAB-RZ1K-3G25": [
+      "Tormes"
+    ],
+    "CAB-RZ1K-3G15": [
+      "Tormes"
+    ],
+    "CAB-H07Z1-6": [
+      "Tormes"
+    ],
+    "CAB-H07Z1-25": [
+      "Tormes"
+    ],
+    "CAB-H07Z1-15": [
+      "Tormes"
+    ],
+    "CAN-40X60": [
+      "Tormes"
+    ],
+    "CAN-60X100": [
+      "Elecvía"
+    ],
+    "TUB-M20": [
+      "Elecvía"
+    ],
+    "CAJ-100": [
+      "Elecvía",
+      "Tormes"
+    ],
+    "BRI-200": [
+      "Elecvía"
+    ]
+  },
+  "errores": {
+    "elecvia_con_iva_base": 92193.6,
+    "elecvia_con_iva_total": 89335.59840000002,
+    "elecvia_redondeo2_base": 76310.0,
+    "elecvia_redondeo2_total": 73944.39,
+    "yesa_sin_subida": 78335.0,
+    "elecvia_sin_descuento": 77716.91900826446,
+    "canaleta_elecvia_bien": 11775.20661157025,
+    "canaleta_elecvia_metro_como_tramo": 5887.603305785125,
+    "tormes_total_8_articulos": 60370.0,
+    "arnedo_puntuacion_con_tormes": 73.94982706171604
+  },
+  "porque_reparto": {
+    "coef_elecvia": 0.969,
+    "cables_elecvia_efectivo": 45815.28099173553,
+    "cables_tormes_con_portes": 45120.0
+  },
+  "cambio_inesperado": {
+    "elecvia_unico": 72276.73467768595,
+    "reparto_mismo": 72545.98591735537,
+    "optimo": 72276.73467768593,
+    "optimo_es_elecvia_sola": true
+  },
+  "ampliaciones": {
+    "dto_arnedo_para_igualar": 0.07699621130327239,
+    "envios_equilibrio": 19.72534435261708
+  }
+}

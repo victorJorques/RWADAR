@@ -1,0 +1,246 @@
+{
+ "id": "n3m4l2",
+ "titulo": "Valores: suma, recuento, porcentaje del total y fechas agrupadas",
+ "minutos": 15,
+ "objetivo": "Elegir qué calcula una tabla dinámica (suma, recuento, promedio), mostrar sus cifras como porcentaje, agrupar las fechas por meses, darle formato, ordenarla y comprobar una de sus cifras con SUMAR.SI.CONJUNTO.",
+ "mision": {
+  "de": "Carmen Soler",
+  "puesto": "Directora general",
+  "texto": "Para el comité del lunes quiero una página con el peso de cada familia en las ventas, en porcentaje y de más a menos, y cómo ha ido cada mes. Y comprobado, por favor: la última vez una cifra no cuadraba.",
+  "logro": "Ya sabes decidir qué calcula una tabla dinámica, mostrarla en porcentajes, agrupar las fechas por meses, ordenarla y comprobar sus cifras antes de entregarla."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Cuando arrastras **Importe** al área **Valores**, la dinámica lo **suma**: por eso el título dice «Suma de Importe». Pero con el mismo campo puede hacer otras cuentas:\n\n- **Suma**: cuántos euros.\n- **Cuenta**: cuántas filas hay (cuántas ventas).\n- **Promedio**: la venta media.\n- **Máx.** y **Mín.**: la venta mayor y la menor.\n\nSe cambia así: clic derecho sobre cualquier cifra › **Configuración de campo de valor** › pestaña **Resumir valores por** › eliges › **Aceptar**."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e1",
+   "modo": "test",
+   "pregunta": "Javier no quiere saber cuántos euros ha vendido cada comercial, sino **cuántas ventas** ha hecho (cuántas líneas tiene cada uno en el listado). ¿Qué eliges en *Resumir valores por*?",
+   "opciones": [
+    {"texto": "Cuenta", "correcta": true, "porque": "Exacto: Cuenta dice cuántas filas hay de cada comercial, sin mirar cuánto vale cada una. Es la forma rápida de contar operaciones."},
+    {"texto": "Suma", "correcta": false, "porque": "Suma da los euros vendidos, no el número de ventas: tres ventas de 1.000 € darían 3.000, no 3."},
+    {"texto": "Promedio", "correcta": false, "porque": "Promedio da la venta media de cada comercial (euros por venta), no cuántas ha hecho."},
+    {"texto": "Máx.", "correcta": false, "porque": "Máx. da la venta más grande de cada uno, no cuántas son."}
+   ],
+   "explicacion": "La misma columna responde a preguntas distintas según lo que elijas. Por eso, antes de leer una cifra, lee el título: «Cuenta de Importe» no son euros."
+  },
+  {
+   "tipo": "texto",
+   "md": "A veces Excel elige **Cuenta** sin que se lo pidas. Pasa cuando la columna tiene **algún texto**: un «pendiente» escrito a mano o números guardados como texto, como los de las exportaciones sucias del módulo anterior. Con textos no se puede sumar, así que Excel cuenta.\n\nLa pista está en el título: verás **«Cuenta de Importe»** y cifras pequeñas (12, 35, 40…) donde esperabas euros. El arreglo: limpia esa columna en el listado, actualiza la dinámica (lo verás a fondo en la próxima lección) y cambia a **Suma**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Lee siempre el título del campo",
+   "md": "Nuria: «Antes de mandar una dinámica, mira la esquina de arriba: tiene que poner *Suma de Importe*. Una compañera mandó una vez al banco el número de facturas creyendo que eran euros.»"
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e2",
+   "modo": "test",
+   "pregunta": "Haces la dinámica de ventas por zona y sale esto:\n\n| Zona | Cuenta de Importe |\n|---|---|\n| Lleida | 205 |\n| Pamplona | 198 |\n| Zaragoza | 412 |\n\nJavier esperaba unos 90.000 € en Zaragoza. ¿Qué ha pasado?",
+   "opciones": [
+    {"texto": "La columna Importe tiene algún texto y Excel ha contado filas en vez de sumar", "correcta": true, "porque": "Eso es: «Cuenta de Importe» delata que hay texto en la columna. Busca esas celdas, conviértelas en número, actualiza y cambia a Suma."},
+    {"texto": "Zaragoza solo ha vendido 412 €", "correcta": false, "porque": "412 no son euros: el título dice Cuenta. Son 412 filas, es decir, 412 ventas."},
+    {"texto": "La dinámica no está actualizada", "correcta": false, "porque": "Una dinámica sin actualizar enseña cifras viejas, pero seguiría diciendo Suma. Aquí el problema es que cuenta."},
+    {"texto": "Falta dar formato de euros a las cifras", "correcta": false, "porque": "El formato solo cambia cómo se ve: 412 con formato de euros sería 412,00 €, igual de falso."}
+   ],
+   "explicacion": "Ante una cifra rara, primero el título del campo y después los datos de origen. Así encuentras el fallo en segundos."
+  },
+  {
+   "tipo": "texto",
+   "md": "Carmen no quiere euros: quiere **porcentajes**. En el mismo cuadro, la pestaña **Mostrar valores como** cambia cómo se enseña cada cifra:\n\n- **% del total general**: qué parte del total de la dinámica es cada cifra. Todo suma 100 %.\n- **% del total de filas**: qué parte del total de su fila. Cada fila suma 100 %.\n- **% del total de columnas**: lo mismo, por columnas.\n\nTruco de oficina: arrastra **Importe dos veces** a Valores; deja uno en euros y pon el otro en porcentaje."
+  },
+  {
+   "tipo": "tabla",
+   "titulo": "Ventas de octubre por zona, en euros y en % del total general",
+   "cabecera": ["Zona", "Suma de Importe", "% del total"],
+   "filas": [
+    ["Zaragoza", "30.510,00 €", "54,00%"],
+    ["Pamplona", "13.560,00 €", "24,00%"],
+    ["Lleida", "12.430,00 €", "22,00%"],
+    ["Total general", "56.500,00 €", "100,00%"]
+   ],
+   "pie": "Zaragoza vende algo más de la mitad: 30.510 entre 56.500 da 0,54, es decir, el 54 %."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e3",
+   "modo": "formula",
+   "enunciado": "Vas a comprobar los porcentajes de la dinámica de Carmen. Nuria empezó en **C2** con `=B2/B7` (la venta de la familia entre el total general), pero al copiarla hasta C6 salen errores. **Arregla la fórmula de C2** para que, copiada a C3:C6, dé el % de cada familia sobre el total de **B7**.",
+   "hoja": {
+    "celdas": {
+     "A1": "Familia", "B1": "Suma de Importe", "C1": "% del total",
+     "A2": "Cableado", "B2": 18420.5,
+     "A3": "Canalización", "B3": 6135.2,
+     "A4": "Mecanismos", "B4": 7980,
+     "A5": "Iluminación", "B5": 14760.8,
+     "A6": "Protección", "B6": 9203.5,
+     "A7": "Total general", "B7": "=SUMA(B2:B6)"
+    },
+    "formatos": {"B2:B7": "eur", "C2:C6": "0,00%"},
+    "anchos": {"A": 14, "B": 16, "C": 12}
+   },
+   "objetivo": "C2",
+   "inicial": "=B2/B7",
+   "solucion": "=B2/$B$7",
+   "copiar_a": ["C3:C6"],
+   "alternativas": ["=B2/B$7", "=B2/SUMA($B$2:$B$6)"],
+   "errores_tipicos": ["=B2/B7", "=B2*100/$B$7", "=$B$7/B2"],
+   "variantes": [{"B2": 20000}, {"B5": 10000}],
+   "formato_resultado": "0,00%",
+   "pistas": [
+    "Al copiar hacia abajo, B2 debe pasar a B3, B4…, pero el total tiene que seguir siendo B7. Ahora mismo, en C3 pone B3/B8, y B8 está vacía.",
+    "Fija el total con $: pon el cursor sobre B7 dentro de la fórmula y pulsa F4.",
+    "Escribe `=B2/$B$7`."
+   ],
+   "explicacion": "32,60 % para Cableado, y entre las cinco familias suman el 100 %. Es lo mismo que hace «% del total general»: cada cifra entre el total. Ahora sabes de dónde sale ese porcentaje y puedes comprobarlo cuando alguien lo ponga en duda."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e4",
+   "modo": "test",
+   "pregunta": "Esta dinámica tiene Zona en Filas, Familia en Columnas e Importe mostrado como **% del total de filas**:\n\n| Zona | Cableado | Iluminación | Resto | Total general |\n|---|---|---|---|---|\n| Pamplona | 28,00% | 38,00% | 34,00% | 100,00% |\n| Zaragoza | 35,00% | 25,00% | 40,00% | 100,00% |\n\n¿Qué quiere decir el **38,00%** de Pamplona en Iluminación?",
+   "opciones": [
+    {"texto": "De todo lo que vende Pamplona, el 38 % es Iluminación", "correcta": true, "porque": "Eso es: con % del total de filas, cada fila suma 100 %, así que cada cifra es una parte de lo que vende esa zona."},
+    {"texto": "Pamplona vende el 38 % de toda la Iluminación de la empresa", "correcta": false, "porque": "Eso lo diría «% del total de columnas»: ahí cada columna (cada familia) suma 100 %."},
+    {"texto": "El 38 % de todas las ventas de la empresa es Iluminación de Pamplona", "correcta": false, "porque": "Eso lo diría «% del total general»: ahí suma 100 % la tabla entera, no cada fila."},
+    {"texto": "Pamplona ha vendido 38 € de Iluminación", "correcta": false, "porque": "Son porcentajes, no euros: la columna Total general marca 100,00% en cada fila."}
+   ],
+   "explicacion": "Antes de leer un porcentaje, pregúntate dónde está el 100 %: en cada fila, en cada columna o en el total general."
+  },
+  {
+   "tipo": "texto",
+   "md": "Si arrastras **Fecha** a Filas sin más, podrías tener una fila por día: doscientas filas. Lo útil es **agrupar**: un total por mes, por trimestre o por año.\n\nMicrosoft 365 suele agrupar él solo al arrastrar la fecha (verás aparecer **Meses**, y a veces **Trimestres** y **Años**). Si no lo hace o quieres cambiarlo: clic derecho sobre una fecha de la dinámica › **Agrupar** › en la lista **Por**, marca lo que quieras (puedes marcar varios) › **Aceptar**."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Meses solos mezclan años",
+   "md": "Si el listado tiene ventas de 2025 y de 2026 y marcas solo **Meses**, la fila «ene» suma enero de los dos años. Marca **Meses** y **Años** a la vez."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e5",
+   "modo": "cinta",
+   "enunciado": "Tienes seleccionada una fecha dentro de la dinámica. ¿Dónde está en la cinta el botón para **agrupar** las fechas por meses?",
+   "ruta": ["Analizar tabla dinámica", "Agrupar", "Agrupar selección"],
+   "explicacion": "Analizar tabla dinámica › Agrupar › Agrupar selección abre el mismo cuadro que clic derecho › Agrupar. La pestaña Analizar tabla dinámica solo aparece cuando tienes seleccionada una celda de la dinámica."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e6",
+   "modo": "test",
+   "pregunta": "Intentas agrupar por meses las fechas de una exportación del programa de gestión y Excel avisa de que no puede agrupar la selección. ¿Qué es lo más probable?",
+   "opciones": [
+    {"texto": "Alguna «fecha» de la columna es un texto, no una fecha de verdad", "correcta": true, "porque": "Eso es: basta con que alguna sea texto (por ejemplo, 05.11.2026 o con un espacio delante) para que no agrupe. Conviértelas en fechas en el listado, como en el módulo de limpieza, y actualiza."},
+    {"texto": "Hay demasiadas fechas para agrupar", "correcta": false, "porque": "Excel agrupa sin problema miles de fechas. El número de filas no es el problema."},
+    {"texto": "Primero hay que agrupar por días", "correcta": false, "porque": "No hace falta ningún paso previo: con fechas de verdad, Meses funciona a la primera."},
+    {"texto": "Las dinámicas no agrupan fechas de años distintos", "correcta": false, "porque": "Sí las agrupan; precisamente por eso conviene marcar Meses y Años a la vez."}
+   ],
+   "explicacion": "Si una dinámica no agrupa fechas, sospecha del origen: fechas escritas como texto. Es el mismo problema de limpieza que ya sabes resolver."
+  },
+  {
+   "tipo": "texto",
+   "md": "Dos retoques antes de entregar:\n\n- **Formato de número**: en **Configuración de campo de valor**, botón **Formato de número** › Moneda (o Número con separador de miles). Así el formato va con el campo y no se pierde al mover campos.\n- **Ordenar de mayor a menor**: clic derecho sobre una cifra › **Ordenar** › **Ordenar de mayor a menor**. La familia que más vende sube arriba.\n\nCon eso, Carmen ve de un vistazo qué familias pesan más."
+  },
+  {
+   "tipo": "mensaje",
+   "de": "Nuria Campos",
+   "puesto": "Administración",
+   "md": "Antes de mandarle nada a Carmen, comprueba una cifra por otro camino. Tu dinámica dice que Iluminación vendió 5.960 € en octubre: si tu SUMAR.SI.CONJUNTO da lo mismo, te puedes fiar del resto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n3m4l2-e7",
+   "modo": "formula",
+   "enunciado": "La dinámica dice que **Iluminación** vendió **5.960,00 €** en **octubre**. Compruébalo: en **I2** suma el Importe (columna D) de las filas de la familia que pone en **F2** cuya fecha esté entre **G2** y **H2**, las dos incluidas. Si sale 5.960,00 €, la dinámica cuadra.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fecha", "B1": "Zona", "C1": "Familia", "D1": "Importe",
+     "F1": "Familia", "G1": "Desde", "H1": "Hasta", "I1": "Comprobación",
+     "A2": {"fecha": "2026-09-29"}, "B2": "Zaragoza", "C2": "Iluminación", "D2": 640,
+     "A3": {"fecha": "2026-10-01"}, "B3": "Pamplona", "C3": "Iluminación", "D3": 1180,
+     "A4": {"fecha": "2026-10-02"}, "B4": "Zaragoza", "C4": "Cableado", "D4": 1450,
+     "A5": {"fecha": "2026-10-07"}, "B5": "Lleida", "C5": "Iluminación", "D5": 920,
+     "A6": {"fecha": "2026-10-09"}, "B6": "Zaragoza", "C6": "Mecanismos", "D6": 385,
+     "A7": {"fecha": "2026-10-15"}, "B7": "Zaragoza", "C7": "Iluminación", "D7": 2310,
+     "A8": {"fecha": "2026-10-21"}, "B8": "Pamplona", "C8": "Protección", "D8": 760,
+     "A9": {"fecha": "2026-10-26"}, "B9": "Lleida", "C9": "Iluminación", "D9": 455,
+     "A10": {"fecha": "2026-10-30"}, "B10": "Zaragoza", "C10": "Iluminación", "D10": 1095,
+     "A11": {"fecha": "2026-11-02"}, "B11": "Pamplona", "C11": "Iluminación", "D11": 830,
+     "A12": {"fecha": "2026-11-04"}, "B12": "Lleida", "C12": "Cableado", "D12": 1270,
+     "A13": {"fecha": "2026-11-06"}, "B13": "Zaragoza", "C13": "Iluminación", "D13": 515,
+     "F2": "Iluminación", "G2": {"fecha": "2026-10-01"}, "H2": {"fecha": "2026-10-31"}
+    },
+    "formatos": {"A2:A13": "fecha", "D2:D13": "eur", "G2:H2": "fecha", "I2": "eur"},
+    "anchos": {"A": 11, "B": 10, "C": 12, "D": 11, "F": 12, "G": 11, "H": 11, "I": 13}
+   },
+   "objetivo": "I2",
+   "solucion": "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)",
+   "alternativas": [
+    "=SUMAR.SI.CONJUNTO(D2:D13;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2;C2:C13;F2)",
+    "=SUMAR.SI.CONJUNTO($D$2:$D$13;$C$2:$C$13;F2;$A$2:$A$13;\">=\"&G2;$A$2:$A$13;\"<=\"&H2)",
+    "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&FIN.MES(G2;0))"
+   ],
+   "errores_tipicos": [
+    "=SUMAR.SI(C2:C13;F2;D2:D13)",
+    "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">\"&G2;A2:A13;\"<=\"&H2)",
+    "=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=G2\";A2:A13;\"<=H2\")",
+    "=SUMAR.SI.CONJUNTO(D2:D13;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)"
+   ],
+   "debe_usar": ["SUMAR.SI.CONJUNTO"],
+   "variantes": [{"F2": "Cableado"}, {"D10": 2000}],
+   "formato_resultado": "eur",
+   "pistas": [
+    "Hay tres condiciones a la vez (familia, desde y hasta): es trabajo de SUMAR.SI.CONJUNTO, que empieza por el rango que se suma, D2:D13.",
+    "Para las fechas, une el signo con la celda: `\">=\"&G2` y `\"<=\"&H2`, las dos sobre A2:A13. La familia: C2:C13 con F2.",
+    "`=SUMAR.SI.CONJUNTO(D2:D13;C2:C13;F2;A2:A13;\">=\"&G2;A2:A13;\"<=\"&H2)`"
+   ],
+   "explicacion": "5.960,00 €: la dinámica cuadra y ya puedes mandarle el informe a Carmen con tranquilidad. Si no hubiera cuadrado, buscarías fechas escritas como texto o una dinámica sin actualizar. Dos caminos distintos que dan lo mismo: eso es un informe de fiar."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n3m4l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "La dinámica pone «Cuenta de Importe» y tú quieres euros. ¿Cómo se llama el cuadro donde cambias la operación a Suma?",
+   "aceptadas": ["Configuración de campo de valor", "Configuracion de campo de valor", "Configuración del campo de valor", "Configuración de campo", "Resumir valores por"],
+   "explicacion": "Clic derecho sobre una cifra › Configuración de campo de valor › Resumir valores por › Suma. Y si salió Cuenta sin pedirlo, revisa que la columna no tenga textos."
+  },
+  {
+   "id": "n3m4l2-q2",
+   "modo": "test",
+   "pregunta": "Carmen quiere ver qué parte de **toda** la venta de la empresa corresponde a cada familia, de forma que la tabla entera sume 100 %. ¿Qué eliges?",
+   "opciones": [
+    {"texto": "Mostrar valores como › % del total general", "correcta": true, "porque": "Eso es: cada cifra entre el total de toda la dinámica. Todo suma 100 %."},
+    {"texto": "Mostrar valores como › % del total de filas", "correcta": false, "porque": "Ese hace que cada fila sume 100 %: sirve para ver el reparto dentro de cada fila, no el peso sobre el total."},
+    {"texto": "Resumir valores por › Cuenta", "correcta": false, "porque": "Cuenta dice cuántas ventas hay, no qué parte de los euros es de cada familia."},
+    {"texto": "Agrupar las familias", "correcta": false, "porque": "Agrupar junta elementos (fechas por meses, por ejemplo); no calcula porcentajes."}
+   ],
+   "explicacion": "Resumir valores por decide qué se calcula; Mostrar valores como decide cómo se enseña. Para «qué parte del total», % del total general."
+  },
+  {
+   "id": "n3m4l2-q3",
+   "modo": "test",
+   "pregunta": "El listado tiene ventas de 2025 y de 2026. Agrupas la fecha **solo por Meses**. ¿Qué verás en la fila «ene»?",
+   "opciones": [
+    {"texto": "Enero de 2025 y enero de 2026 sumados juntos", "correcta": true, "porque": "Eso es: sin Años, todos los eneros caen en la misma fila. Marca Meses y Años a la vez."},
+    {"texto": "Solo enero de 2026, el más reciente", "correcta": false, "porque": "Excel no descarta ningún año: si no los separas, los junta."},
+    {"texto": "Un error, porque hay dos años", "correcta": false, "porque": "No da error, y eso es lo peligroso: la cifra parece normal pero mezcla dos años."},
+    {"texto": "Dos filas «ene», una por año", "correcta": false, "porque": "Para eso tendrías que marcar también Años en el cuadro Agrupar."}
+   ],
+   "explicacion": "Con datos de varios años, agrupa siempre por Meses y Años. Un error silencioso es el más caro."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "concepto", "frente": "¿Dónde cambias Suma por Cuenta o Promedio en una dinámica?", "dorso": "Clic derecho en una cifra › Configuración de campo de valor › Resumir valores por."},
+  {"tipo": "concepto", "frente": "¿Cómo muestras cada cifra como parte del total?", "dorso": "Configuración de campo de valor › Mostrar valores como › % del total general (o % del total de filas / de columnas)."},
+  {"tipo": "error", "frente": "La dinámica dice «Cuenta de Importe» sin que lo pidieras. ¿Por qué?", "dorso": "La columna tiene algún texto (números guardados como texto o palabras). Límpiala, actualiza y cambia a Suma."},
+  {"tipo": "concepto", "frente": "¿Cómo agrupas las fechas de una dinámica por meses?", "dorso": "Clic derecho en una fecha › Agrupar › marca Meses (y Años si hay varios años) › Aceptar."}
+ ]
+}

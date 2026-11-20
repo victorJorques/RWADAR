@@ -1,0 +1,181 @@
+﻿Ejercicio;Mes;Cuenta;Partida;Grupo;Real;Ppto
+2026;1;70;Ventas netas;Ventas;742691,21;711000,00
+2026;2;70;Ventas netas;Ventas;759726,39;739440,00
+2026;3;70;Ventas netas;Ventas;832702,61;834240,00
+2026;4;70;Ventas netas;Ventas;808086,90;815280,00
+2026;5;70;Ventas netas;Ventas;849700,22;853200,00
+2026;6;70;Ventas netas;Ventas;838571,12;872160,00
+2026;7;70;Ventas netas;Ventas;785687,38;796320,00
+2026;8;70;Ventas netas;Ventas;519168,39;549840,00
+2026;9;70;Ventas netas;Ventas;833288,53;834240,00
+2026;10;70;Ventas netas;Ventas;871779,44;872160,00
+2026;11;70;Ventas netas;Ventas;820437,10;834240,00
+2026;12;70;Ventas netas;Ventas;;767880,00
+2026;1;60;Coste de ventas;Coste de ventas;534508,19;511920,00
+2026;2;60;Coste de ventas;Coste de ventas;548307,87;532397,00
+2026;3;60;Coste de ventas;Coste de ventas;607473,00;600653,00
+2026;4;60;Coste de ventas;Coste de ventas;586516,48;587002,00
+2026;5;60;Coste de ventas;Coste de ventas;620331,05;614304,00
+2026;6;60;Coste de ventas;Coste de ventas;607690,46;627955,00
+2026;7;60;Coste de ventas;Coste de ventas;568491,61;573350,00
+2026;8;60;Coste de ventas;Coste de ventas;373572,26;395885,00
+2026;9;60;Coste de ventas;Coste de ventas;608377,48;600653,00
+2026;10;60;Coste de ventas;Coste de ventas;629748,67;627955,00
+2026;11;60;Coste de ventas;Coste de ventas;620904,40;600653,00
+2026;12;60;Coste de ventas;Coste de ventas;;552873,00
+2026;1;640;Sueldos y salarios;Personal;108539,90;107333,33
+2026;2;640;Sueldos y salarios;Personal;108512,41;107333,33
+2026;3;640;Sueldos y salarios;Personal;108191,48;107333,33
+2026;4;640;Sueldos y salarios;Personal;109063,83;107333,33
+2026;5;640;Sueldos y salarios;Personal;108725,18;107333,33
+2026;6;640;Sueldos y salarios;Personal;109933,07;107333,33
+2026;7;640;Sueldos y salarios;Personal;108623,81;107333,33
+2026;8;640;Sueldos y salarios;Personal;109633,48;107333,33
+2026;9;640;Sueldos y salarios;Personal;113576,56;107333,33
+2026;10;640;Sueldos y salarios;Personal;113000,28;107333,33
+2026;11;640;Sueldos y salarios;Personal;113756,50;107333,33
+2026;12;640;Sueldos y salarios;Personal;;107333,37
+2026;1;642;Seguridad Social a cargo de la empresa;Personal;34443,71;34167,00
+2026;2;642;Seguridad Social a cargo de la empresa;Personal;34432,23;34167,00
+2026;3;642;Seguridad Social a cargo de la empresa;Personal;34329,88;34167,00
+2026;4;642;Seguridad Social a cargo de la empresa;Personal;34607,93;34167,00
+2026;5;642;Seguridad Social a cargo de la empresa;Personal;34504,17;34167,00
+2026;6;642;Seguridad Social a cargo de la empresa;Personal;34888,52;34167,00
+2026;7;642;Seguridad Social a cargo de la empresa;Personal;34460,28;34167,00
+2026;8;642;Seguridad Social a cargo de la empresa;Personal;34790,74;34167,00
+2026;9;642;Seguridad Social a cargo de la empresa;Personal;36039,14;34167,00
+2026;10;642;Seguridad Social a cargo de la empresa;Personal;35853,40;34167,00
+2026;11;642;Seguridad Social a cargo de la empresa;Personal;36194,37;34167,00
+2026;12;642;Seguridad Social a cargo de la empresa;Personal;;34163,00
+2026;1;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;2;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;3;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;4;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;5;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;6;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;7;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;8;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;9;621;Arrendamientos y cánones;Otros gastos de explotación;9494,00;11500,00
+2026;10;621;Arrendamientos y cánones;Otros gastos de explotación;29494,00;11500,00
+2026;11;621;Arrendamientos y cánones;Otros gastos de explotación;11163,94;11500,00
+2026;12;621;Arrendamientos y cánones;Otros gastos de explotación;;11500,00
+2026;1;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;2;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;3;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;4;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;5;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;6;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;7;622;Reparaciones y conservación;Otros gastos de explotación;6060,00;1500,00
+2026;8;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;9;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;10;622;Reparaciones y conservación;Otros gastos de explotación;1460,00;1500,00
+2026;11;622;Reparaciones y conservación;Otros gastos de explotación;1456,14;1500,00
+2026;12;622;Reparaciones y conservación;Otros gastos de explotación;;1500,00
+2026;1;623;Servicios de profesionales independientes;Otros gastos de explotación;1650,00;4500,00
+2026;2;623;Servicios de profesionales independientes;Otros gastos de explotación;5850,00;4500,00
+2026;3;623;Servicios de profesionales independientes;Otros gastos de explotación;9000,00;4500,00
+2026;4;623;Servicios de profesionales independientes;Otros gastos de explotación;1650,00;4500,00
+2026;5;623;Servicios de profesionales independientes;Otros gastos de explotación;6950,00;4500,00
+2026;6;623;Servicios de profesionales independientes;Otros gastos de explotación;1650,00;4500,00
+2026;7;623;Servicios de profesionales independientes;Otros gastos de explotación;1650,00;4500,00
+2026;8;623;Servicios de profesionales independientes;Otros gastos de explotación;1650,00;4500,00
+2026;9;623;Servicios de profesionales independientes;Otros gastos de explotación;8050,00;4500,00
+2026;10;623;Servicios de profesionales independientes;Otros gastos de explotación;6550,00;4500,00
+2026;11;623;Servicios de profesionales independientes;Otros gastos de explotación;4547,20;4500,00
+2026;12;623;Servicios de profesionales independientes;Otros gastos de explotación;;4500,00
+2026;1;624;Transportes;Otros gastos de explotación;9613,48;10500,00
+2026;2;624;Transportes;Otros gastos de explotación;9833,98;10500,00
+2026;3;624;Transportes;Otros gastos de explotación;10778,60;10500,00
+2026;4;624;Transportes;Otros gastos de explotación;10459,97;10500,00
+2026;5;624;Transportes;Otros gastos de explotación;10998,62;10500,00
+2026;6;624;Transportes;Otros gastos de explotación;10854,56;10500,00
+2026;7;624;Transportes;Otros gastos de explotación;10170,03;10500,00
+2026;8;624;Transportes;Otros gastos de explotación;6720,17;10500,00
+2026;9;624;Transportes;Otros gastos de explotación;10786,18;10500,00
+2026;10;624;Transportes;Otros gastos de explotación;21084,41;10500,00
+2026;11;624;Transportes;Otros gastos de explotación;10910,73;10500,00
+2026;12;624;Transportes;Otros gastos de explotación;;10500,00
+2026;1;625;Primas de seguros;Otros gastos de explotación;14400,00;1200,00
+2026;2;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;3;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;4;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;5;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;6;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;7;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;8;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;9;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;10;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;11;625;Primas de seguros;Otros gastos de explotación;0,00;1200,00
+2026;12;625;Primas de seguros;Otros gastos de explotación;;1200,00
+2026;1;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;2;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;3;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;4;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;5;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;6;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;7;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;8;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;9;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;10;626;Servicios bancarios;Otros gastos de explotación;843,00;800,00
+2026;11;626;Servicios bancarios;Otros gastos de explotación;829,08;800,00
+2026;12;626;Servicios bancarios;Otros gastos de explotación;;800,00
+2026;1;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;2;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;3;627;Publicidad y ferias;Otros gastos de explotación;5550,00;4500,00
+2026;4;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;5;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;6;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;7;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;8;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;9;627;Publicidad y ferias;Otros gastos de explotación;1450,00;1950,00
+2026;10;627;Publicidad y ferias;Otros gastos de explotación;16250,00;6000,00
+2026;11;627;Publicidad y ferias;Otros gastos de explotación;1926,08;1950,00
+2026;12;627;Publicidad y ferias;Otros gastos de explotación;;1950,00
+2026;1;628;Suministros;Otros gastos de explotación;4303,07;4410,00
+2026;2;628;Suministros;Otros gastos de explotación;4720,52;3990,00
+2026;3;628;Suministros;Otros gastos de explotación;3483,43;3570,00
+2026;4;628;Suministros;Otros gastos de explotación;3900,89;3150,00
+2026;5;628;Suministros;Otros gastos de explotación;2868,71;2940,00
+2026;6;628;Suministros;Otros gastos de explotación;4066,35;3150,00
+2026;7;628;Suministros;Otros gastos de explotación;3483,44;3570,00
+2026;8;628;Suministros;Otros gastos de explotación;4353,99;3360,00
+2026;9;628;Suministros;Otros gastos de explotación;2868,71;2940,00
+2026;10;628;Suministros;Otros gastos de explotación;3900,89;3150,00
+2026;11;628;Suministros;Otros gastos de explotación;3908,23;3780,00
+2026;12;628;Suministros;Otros gastos de explotación;;3990,00
+2026;1;629;Otros servicios;Otros gastos de explotación;8534,96;6700,00
+2026;2;629;Otros servicios;Otros gastos de explotación;8495,00;6700,00
+2026;3;629;Otros servicios;Otros gastos de explotación;8548,92;6700,00
+2026;4;629;Otros servicios;Otros gastos de explotación;8522,38;6700,00
+2026;5;629;Otros servicios;Otros gastos de explotación;8495,00;6700,00
+2026;6;629;Otros servicios;Otros gastos de explotación;8553,12;6700,00
+2026;7;629;Otros servicios;Otros gastos de explotación;8512,14;6700,00
+2026;8;629;Otros servicios;Otros gastos de explotación;8550,21;6700,00
+2026;9;629;Otros servicios;Otros gastos de explotación;16948,64;6700,00
+2026;10;629;Otros servicios;Otros gastos de explotación;1476,03;6700,00
+2026;11;629;Otros servicios;Otros gastos de explotación;13414,90;6700,00
+2026;12;629;Otros servicios;Otros gastos de explotación;;6700,00
+2026;1;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;2;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;3;681;Amortización del inmovilizado;Amortización;24000,00;8000,00
+2026;4;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;5;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;6;681;Amortización del inmovilizado;Amortización;24000,00;8000,00
+2026;7;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;8;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;9;681;Amortización del inmovilizado;Amortización;24000,00;8000,00
+2026;10;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;11;681;Amortización del inmovilizado;Amortización;0,00;8000,00
+2026;12;681;Amortización del inmovilizado;Amortización;;8000,00
+2026;1;662;Intereses de deudas;Gastos financieros;3375,91;3417,00
+2026;2;662;Intereses de deudas;Gastos financieros;3217,65;3417,00
+2026;3;662;Intereses de deudas;Gastos financieros;3342,44;3417,00
+2026;4;662;Intereses de deudas;Gastos financieros;3359,25;3417,00
+2026;5;662;Intereses de deudas;Gastos financieros;3483,81;3417,00
+2026;6;662;Intereses de deudas;Gastos financieros;3345,25;3417,00
+2026;7;662;Intereses de deudas;Gastos financieros;3339,71;3417,00
+2026;8;662;Intereses de deudas;Gastos financieros;3295,04;3417,00
+2026;9;662;Intereses de deudas;Gastos financieros;3301,88;3417,00
+2026;10;662;Intereses de deudas;Gastos financieros;3321,96;3417,00
+2026;11;662;Intereses de deudas;Gastos financieros;3336,14;3417,00
+2026;12;662;Intereses de deudas;Gastos financieros;;3413,00

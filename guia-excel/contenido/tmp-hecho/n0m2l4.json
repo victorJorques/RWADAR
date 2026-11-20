@@ -1,0 +1,177 @@
+{
+ "id": "n0m2l4",
+ "titulo": "Guardar, cerrar y volver a abrir",
+ "minutos": 13,
+ "objetivo": "Guardar un libro con un nombre con sentido en la carpeta correcta, cerrarlo sin perder nada, volver a abrirlo y organizar sus hojas.",
+ "mision": {
+  "de": "Marta Ruiz",
+  "puesto": "Directora financiera",
+  "texto": "Gracias por empezar la hoja de gastos de la oficina de noviembre. Guárdala en la carpeta de Administración con un nombre que se entienda, nada de «Libro1». Y ponle a la hoja el nombre «Noviembre», que en diciembre añadiremos otra.",
+  "logro": "Ya sabes guardar tu trabajo con un nombre que cualquiera entiende, encontrarlo después y organizar las hojas de un libro."
+ },
+ "funciones": [],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Un archivo de Excel se llama **libro**. Al crearlo, Excel le pone un nombre provisional, «Libro1», y mientras no lo guardes vive solo en la memoria del ordenador: si se va la luz, se pierde.\n\nPara guardar, pulsa **Ctrl+G** (G de Guardar). La primera vez, Excel te pregunta **dónde** y **con qué nombre**. Después, cada Ctrl+G guarda los cambios en ese mismo archivo, sin preguntar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué atajo guarda el libro en el Excel en español?",
+   "aceptadas": ["Ctrl+G", "Control+G", "Ctrl G", "Ctrl + G", "Control G"],
+   "explicacion": "Ctrl+G. Acostúmbrate a pulsarlo cada pocos minutos, sin pensarlo, como quien mira por el retrovisor."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Ctrl+S no guarda (aquí)",
+   "md": "En los vídeos en inglés verás [[Ctrl]]+[[S]] para guardar. En el Excel en español, [[Ctrl]]+[[S]] es **subrayado**: no guarda nada. El tuyo es [[Ctrl]]+[[G]]."
+  },
+  {
+   "tipo": "texto",
+   "md": "Hay dos formas de guardar:\n\n- **Guardar** (Ctrl+G): actualiza el mismo archivo.\n- **Guardar como** (F12): te deja elegir **otra carpeta u otro nombre**. Se usa la primera vez o para hacer una **copia** sin tocar el original.\n\nLos libros se guardan como archivos **.xlsx**, el formato normal de Excel. Lo verás al final del nombre."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e2",
+   "modo": "test",
+   "pregunta": "Marta te pide una copia del presupuesto para probar cambios **sin tocar el original**. ¿Qué haces?",
+   "opciones": [
+    {"texto": "Guardar como ([[F12]]) con otro nombre", "correcta": true, "porque": "Correcto: Guardar como crea un archivo nuevo con el nombre que elijas, y el original queda intacto."},
+    {"texto": "Guardar ([[Ctrl]]+[[G]]) y luego cambiar las cosas", "correcta": false, "porque": "Ctrl+G guarda en el mismo archivo: los cambios de prueba acabarían en el original."},
+    {"texto": "[[Ctrl]]+[[S]]", "correcta": false, "porque": "En el Excel en español, Ctrl+S pone el texto subrayado; no guarda."}
+   ],
+   "explicacion": "Guardar como es tu red de seguridad para probar sin riesgo. En una empresa, nunca trabajes sobre el único original."
+  },
+  {
+   "tipo": "texto",
+   "md": "El nombre del archivo tiene que decir **qué es** a quien lo vea dentro de seis meses. Una buena receta: **año-mes y de qué trata**.\n\nPor ejemplo: `2026-11 Gastos oficina.xlsx`. Poner el año y el mes delante hace que, en la carpeta, los archivos salgan **ordenados por fecha** solos. Usa guiones: la barra `/` no se permite en los nombres de archivo."
+  },
+  {
+   "tipo": "comparar",
+   "izq": "Así no",
+   "der": "Así sí",
+   "filas": [
+    ["Libro1.xlsx", "2026-11 Gastos oficina.xlsx"],
+    ["final_final2.xlsx", "2026-11 Cobros clientes.xlsx"],
+    ["cosas marta.xlsx", "2026-11 Pedido semanal almacén.xlsx"]
+   ]
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e3",
+   "modo": "test",
+   "pregunta": "¿Qué nombre pondrías al listado de vacaciones de diciembre de 2026 que te ha pedido Lucía?",
+   "opciones": [
+    {"texto": "`2026-12 Vacaciones plantilla.xlsx`", "correcta": true, "porque": "Perfecto: dice de cuándo es y de qué trata, y se ordenará bien en la carpeta."},
+    {"texto": "`Vacaciones definitivo bueno.xlsx`", "correcta": false, "porque": "«Definitivo» y «bueno» no dicen nada: ¿de qué año? Pronto habrá un «definitivo2»."},
+    {"texto": "`12/2026 Vacaciones.xlsx`", "correcta": false, "porque": "La barra «/» no está permitida en los nombres de archivo. Usa guiones: 2026-12."},
+    {"texto": "`Libro1.xlsx`", "correcta": false, "porque": "Es el nombre provisional de Excel: nadie sabrá qué contiene."}
+   ],
+   "explicacion": "Un buen nombre te ahorra tiempo a ti y a todo el equipo: el archivo se encuentra a la primera."
+  },
+  {
+   "tipo": "texto",
+   "md": "Tan importante como el nombre es **dónde** lo guardas. En Electro Cierzo, los archivos de cada departamento están en una **carpeta compartida en la nube** (OneDrive o SharePoint), no en el escritorio de tu ordenador.\n\nCuando un archivo está ahí, arriba a la izquierda verás el interruptor **Autoguardado** activado: Excel guarda solo cada pocos segundos."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "empresa",
+   "titulo": "Antes de guardar, mira la carpeta",
+   "md": "El fallo típico no es no guardar, sino no saber **dónde** se guardó. Antes de aceptar, fíjate en qué carpeta estás."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e4",
+   "modo": "senala",
+   "pregunta": "Si prefieres el ratón: toca el botón **Guardar** (el disquete de la esquina de arriba).",
+   "zona": "guardar",
+   "explicacion": "Ese botón hace lo mismo que Ctrl+G. Siempre está a mano, arriba del todo."
+  },
+  {
+   "tipo": "texto",
+   "md": "Al **cerrar** un libro con cambios sin guardar, Excel pregunta si quieres guardarlos. Tres botones:\n\n- **Guardar**: guarda y cierra.\n- **No guardar**: cierra y **pierde** los cambios.\n- **Cancelar**: no cierra; vuelves al libro.\n\nPara **volver a abrirlo**: Archivo › Abrir (o Ctrl+A). Ahí verás la lista de archivos **recientes** y podrás buscar en tus carpetas."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e5",
+   "modo": "test",
+   "pregunta": "Llevas una hora con la hoja de gastos, cierras Excel y aparece la pregunta de guardar los cambios. No estás segura de qué hacer. ¿Qué pulsas?",
+   "opciones": [
+    {"texto": "Cancelar, y reviso con calma antes de cerrar", "correcta": true, "porque": "Bien pensado: Cancelar no cierra ni pierde nada. Vuelves al libro y decides tranquila."},
+    {"texto": "No guardar", "correcta": false, "porque": "Cerraría el libro y perderías la hora de trabajo desde la última vez que guardaste."},
+    {"texto": "Cualquiera, Excel lo recupera todo", "correcta": false, "porque": "No te fíes: lo que cierras sin guardar puede perderse. Y Ctrl+Z no sirve una vez cerrado el libro."}
+   ],
+   "explicacion": "Ante la duda, Cancelar. Y si estás segura de que los cambios valen, Guardar."
+  },
+  {
+   "tipo": "pantalla",
+   "md": "Un libro puede tener varias **hojas**, como las pestañas de un archivador. Están abajo a la izquierda.\n\n- **Añadir** una hoja: botón **+** que hay a su derecha.\n- **Cambiar el nombre**: doble clic en la pestaña, escribe y pulsa Intro.\n- **Eliminar**: clic derecho en la pestaña › Eliminar.",
+   "resaltar": "pestanas_hoja"
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Eliminar una hoja no se deshace",
+   "md": "Si eliminas una hoja, [[Ctrl]]+[[Z]] **no** la recupera. Antes de borrar una, asegúrate de que no la necesita nadie."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e6",
+   "modo": "senala",
+   "pregunta": "En diciembre habrá que añadir otra hoja al libro de gastos. Toca el botón para **añadir una hoja nueva**.",
+   "zona": "nueva_hoja",
+   "explicacion": "El **+** junto a las pestañas. Cada clic añade una hoja vacía; luego le pones nombre con doble clic en su pestaña."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n0m2l4-e7",
+   "modo": "ordenar",
+   "enunciado": "Resuelve el encargo de Marta. Ordena los pasos: **primero** pon a la hoja el nombre «Noviembre» y **después** guarda el libro por primera vez en la carpeta de Administración.",
+   "pasos": [
+    "Haz doble clic en la pestaña de la hoja",
+    "Escribe Noviembre y pulsa Intro",
+    "Pulsa F12 para abrir Guardar como",
+    "Ve a la carpeta de Administración",
+    "Escribe el nombre 2026-11 Gastos oficina",
+    "Pulsa Guardar"
+   ],
+   "explicacion": "Encargo terminado: la hoja se llama «Noviembre» y el libro está en su carpeta con un nombre que cualquiera entiende. Marta lo encontrará a la primera."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n0m2l4-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué tecla abre **Guardar como** para guardar con otro nombre o en otra carpeta?",
+   "aceptadas": ["F12", "f12"],
+   "explicacion": "F12, Guardar como."
+  },
+  {
+   "id": "n0m2l4-q2",
+   "modo": "senala",
+   "pregunta": "Toca la zona donde están las **pestañas de las hojas** del libro.",
+   "zona": "pestanas_hoja",
+   "explicacion": "Abajo a la izquierda. Doble clic en una para cambiarle el nombre."
+  },
+  {
+   "id": "n0m2l4-q3",
+   "modo": "test",
+   "pregunta": "Repaso del módulo: en la celda B3 pone `Gil Moreno` y quieres que ponga `Gil Moreno Sanz`. ¿Cuál es la forma más segura?",
+   "opciones": [
+    {"texto": "Seleccionar B3, pulsar [[F2]], escribir « Sanz» al final y pulsar [[Intro]]", "correcta": true, "porque": "Correcto: con F2 entras en la celda con el cursor al final y solo añades lo que falta."},
+    {"texto": "Seleccionar B3 y escribir `Sanz`", "correcta": false, "porque": "Escribir encima sustituye todo: B3 pasaría a decir solo «Sanz»."},
+    {"texto": "Seleccionar B3 y pulsar [[Supr]]", "correcta": false, "porque": "Supr vacía la celda: perderías «Gil Moreno»."}
+   ],
+   "explicacion": "F2 para retocar, Intro para confirmar, Ctrl+Z si algo sale mal."
+  }
+ ],
+ "tarjetas": [
+  {"tipo": "atajo", "frente": "Guardar en el Excel en español", "dorso": "Ctrl+G (Ctrl+S es subrayado)"},
+  {"tipo": "atajo", "frente": "Guardar como (otro nombre u otra carpeta)", "dorso": "F12"},
+  {"tipo": "concepto", "frente": "¿Cómo se pone nombre a un archivo de trabajo?", "dorso": "Año-mes y de qué trata, con guiones: 2026-11 Gastos oficina.xlsx"},
+  {"tipo": "concepto", "frente": "¿Cómo se cambia el nombre de una hoja?", "dorso": "Doble clic en su pestaña, escribir el nombre e Intro."}
+ ]
+}

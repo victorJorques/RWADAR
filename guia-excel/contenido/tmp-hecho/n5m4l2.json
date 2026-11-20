@@ -1,0 +1,412 @@
+{
+  "id": "n5m4l2",
+  "titulo": "Datos confidenciales e IA: lo que no se pega en un chat",
+  "minutos": 14,
+  "objetivo": "Decidir qué datos se pueden enseñar a una IA y preparar una copia sin datos personales: quitar columnas, poner códigos y comprobar que no se escapa nada.",
+  "mision": {
+    "de": "Lucía Fernández",
+    "puesto": "Responsable de RRHH",
+    "texto": "Quiero usar Copilot para el informe de antigüedad de la plantilla, pero el listado lleva nombres y NIF. ¿Me preparas una copia que se pueda usar sin problemas? Que no salga nadie con nombre, por favor, que luego me llaman de todas partes.",
+    "logro": "Ya sabes decidir qué datos se pueden enseñar a una IA, cambiar nombres por códigos y comprobar que no se escapa ningún dato personal."
+  },
+  "funciones": ["TEXTO", "CONTAR.SI"],
+  "bloques": [
+    {
+      "tipo": "texto",
+      "md": "Todo lo que escribes o pegas en un chat de IA sale de tu ordenador y llega a los servidores de otra empresa. Si es un chat de internet con tu cuenta personal, Electro Cierzo no controla dónde acaba ni para qué se usa. Por eso, antes de pegar nada, la pregunta no es «¿me ayudará?», sino **«¿puedo enseñarle estos datos?»**. En esta lección aprendes a contestarla en segundos y a preparar una copia segura."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "empresa",
+      "titulo": "Solo la IA autorizada",
+      "md": "En Electro Cierzo la IA autorizada es **Copilot con tu cuenta de trabajo**. Con esa cuenta, Microsoft aplica su protección de datos para empresas: lo que le pides no se usa para entrenar sus modelos. Es también lo que recomienda la **AEPD** (Agencia Española de Protección de Datos): en el trabajo, usa solo los asistentes que autorice tu organización, y nunca con tu cuenta personal."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e1",
+      "modo": "test",
+      "pregunta": "Para entender un concepto, alguien de la oficina quiere pegar la nómina de un trabajador en un chat público de internet. ¿Qué le aconsejas?",
+      "opciones": [
+        {
+          "texto": "Que no lo haga: es un dato personal y confidencial. Que pregunte con una nómina inventada",
+          "correcta": true,
+          "porque": "Eso es. La duda se resuelve igual con datos de ejemplo, y la nómina de esa persona no sale de la empresa."
+        },
+        {
+          "texto": "Que puede hacerlo si después borra la conversación",
+          "correcta": false,
+          "porque": "Borrarla de tu pantalla no garantiza que se borre en los servidores del chat. El dato ya ha salido."
+        },
+        {
+          "texto": "Que puede hacerlo si tapa solo el nombre",
+          "correcta": false,
+          "porque": "Quedan el NIF, el sueldo, la fecha de alta…: con eso es fácil saber de quién es. Y además es un chat no autorizado."
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "md": "Un **dato personal** es cualquier dato que permite saber de quién se habla: nombre y apellidos, NIF, dirección, teléfono, correo, número de cuenta (IBAN), sueldo o una baja médica. Además hay datos **confidenciales** de la empresa, aunque no sean de personas: márgenes, precios pactados con cada cliente, contraseñas, una compra que aún no es pública. El **RGPD** (Reglamento General de Protección de Datos, la ley europea) obliga a tratar los datos personales con cuidado. Y tú los tratas cada vez que abres un Excel con ellos."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e2",
+      "modo": "test",
+      "multiple": true,
+      "pregunta": "¿Cuáles de estos datos son **datos personales**? Puede haber más de una respuesta.",
+      "opciones": [
+        {
+          "texto": "El NIF de una trabajadora",
+          "correcta": true,
+          "porque": "Sí: identifica a una persona concreta sin ninguna duda."
+        },
+        {
+          "texto": "El correo de una clienta, pilar.navarro@…",
+          "correcta": true,
+          "porque": "Sí: un correo con nombre y apellido apunta directamente a una persona."
+        },
+        {
+          "texto": "El sueldo bruto anual de un trabajador",
+          "correcta": true,
+          "porque": "Sí, y de los más delicados: va unido a una persona concreta."
+        },
+        {
+          "texto": "El total vendido por la delegación de Lleida en octubre",
+          "correcta": false,
+          "porque": "No dice nada de una persona: es un dato interno de la empresa. Es confidencial, pero no personal."
+        },
+        {
+          "texto": "El tipo general del IVA, 21 %",
+          "correcta": false,
+          "porque": "Es un dato público: lo puede consultar cualquiera."
+        }
+      ],
+      "explicacion": "La pregunta clave es: «¿con esto se puede saber de quién se habla?». Si la respuesta es sí, es un dato personal."
+    },
+    {
+      "tipo": "tabla",
+      "titulo": "El semáforo de Nuria: ¿se puede pegar en una IA?",
+      "cabecera": ["Color", "Ejemplos", "Dónde se puede usar"],
+      "filas": [
+        ["Verde", "Datos inventados, datos públicos o solo la estructura («tengo las columnas Fecha, Cliente e Importe»)", "En cualquier IA"],
+        ["Ámbar", "Datos internos sin personas: ventas por zona, costes, stock", "Solo en la IA autorizada (Copilot con tu cuenta de trabajo)"],
+        ["Rojo", "Datos personales (nombres, NIF, sueldos, salud, IBAN), datos de clientes, contraseñas", "Nunca en una IA no autorizada. En la autorizada, solo con permiso expreso y mejor con códigos"]
+      ],
+      "pie": "Es la norma interna de Electro Cierzo. Se apoya en el RGPD y en las recomendaciones de la AEPD."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e3",
+      "modo": "test",
+      "pregunta": "Andrés quiere que Copilot, con su cuenta de trabajo, le resuma el stock por familia de producto (cable, mecanismos, luminarias LED…). ¿Qué color tiene en el semáforo y puede hacerlo?",
+      "opciones": [
+        {
+          "texto": "Ámbar: es un dato interno sin personas. Sí, en la IA autorizada",
+          "correcta": true,
+          "porque": "Eso es. El stock es información de la empresa, así que no sale de la herramienta autorizada; dentro de ella, adelante."
+        },
+        {
+          "texto": "Verde: lo puede pegar en cualquier chat de internet",
+          "correcta": false,
+          "porque": "El stock no es público: a un competidor le encantaría verlo. Fuera de la herramienta autorizada no sale."
+        },
+        {
+          "texto": "Rojo: no puede usar ninguna IA",
+          "correcta": false,
+          "porque": "En esos datos no hay ninguna persona. El rojo es para datos personales, de clientes o muy confidenciales."
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "md": "El RGPD tiene una idea que te salva casi siempre: la **minimización**. Pide que los datos sean «limitados a lo necesario» para lo que vas a hacer (artículo 5.1.c). En Excel se traduce así: antes de compartir, **quita las columnas que no hacen falta**. Para proponerte una fórmula de antigüedad, la IA necesita la fecha de alta; no necesita el nombre, el NIF ni el sueldo. Y a menudo le basta con la **estructura**: qué columnas hay y dos filas inventadas."
+    },
+    {
+      "tipo": "texto",
+      "md": "Cuando necesitas distinguir a cada persona, **seudonimiza**: cambia el nombre por un código (CLI-001, CLI-002…) y guarda la tabla que une códigos y nombres **aparte y protegida**. Quien vea la copia no sabe quién es quién; tú sí puedes deshacerlo. El código se fabrica con lo que ya sabes: `&` para unir textos y `TEXTO(A2;\"000\")`, que escribe el número de A2 con tres cifras (7 → 007)."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e4",
+      "modo": "formula",
+      "enunciado": "Javier quiere que Copilot analice las ventas por cliente sin que salgan sus nombres. En **C2** está la fórmula de código que empezó Nuria, pero da «CLI-5» en vez de **CLI-005**. Arréglala para que el número salga siempre con tres cifras. Tu fórmula se copiará a C3:C6.",
+      "hoja": {
+        "celdas": {
+          "A1": "Nº",
+          "B1": "Cliente",
+          "C1": "Código",
+          "A2": 5,
+          "B2": "Instalaciones Lacasa y Royo, S.L.",
+          "A3": 18,
+          "B3": "Electromontajes Valdejalón, S.L.",
+          "A4": 42,
+          "B4": "Climatización Ribagorza Norte, S.L.",
+          "A5": 7,
+          "B5": "Montajes Eléctricos Bardenas, S.L.",
+          "A6": 130,
+          "B6": "Reformas y Electricidad Gállego, S.L."
+        },
+        "anchos": {
+          "A": 6,
+          "B": 34,
+          "C": 12
+        }
+      },
+      "objetivo": "C2",
+      "copiar_a": ["C3:C6"],
+      "inicial": "=\"CLI-\"&A2",
+      "solucion": "=\"CLI-\"&TEXTO(A2;\"000\")",
+      "alternativas": [
+        "=CONCAT(\"CLI-\";TEXTO(A2;\"000\"))"
+      ],
+      "errores_tipicos": [
+        "=\"CLI-\"&A2",
+        "=\"CLI-00\"&A2",
+        "=\"CLI-\"&TEXTO(A2;\"0\")"
+      ],
+      "variantes": [
+        {
+          "A2": 9
+        }
+      ],
+      "pistas": [
+        "Lo que falla es cómo se escribe el número: tiene que salir con tres cifras.",
+        "Cambia `A2` por `TEXTO(A2;\"000\")`: el formato \"000\" rellena con ceros a la izquierda.",
+        "Queda así: `=\"CLI-\"&TEXTO(A2;\"000\")`."
+      ],
+      "explicacion": "Cada cliente tiene ya un código limpio: CLI-005, CLI-018, CLI-130… Con tres cifras los códigos se ordenan bien y todos miden lo mismo. Javier puede pedir su análisis a Copilot con los códigos, y luego traducirlos a nombres con la tabla que guarda él."
+    },
+    {
+      "tipo": "mensaje",
+      "de": "Nuria Campos",
+      "puesto": "Administración",
+      "md": "Antes de pegar nada, busca lo que se te escapa. En las observaciones del programa de gestión los comerciales escriben cosas como «llamar a Marisa, m.lopez@…». Un truco: el comodín `*` que ya usaste con CONTAR.SI significa «cualquier texto», así que `\"*@*\"` quiere decir «tiene una @ en alguna parte». Si el recuento no da 0, la copia aún no está lista."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e5",
+      "modo": "formula",
+      "enunciado": "Antes de enviar a Copilot esta copia de las incidencias, comprueba en **F2** cuántas observaciones (D2:D7) contienen un correo electrónico, es decir, una **@**. Debe salir un número de celdas; si no es 0, toca limpiar.",
+      "hoja": {
+        "celdas": {
+          "A1": "Incidencia",
+          "B1": "Cliente",
+          "C1": "Fecha",
+          "D1": "Observaciones",
+          "F1": "Celdas con @",
+          "A2": "INC-0412",
+          "B2": "CLI-005",
+          "C2": {"fecha": "2026-11-09"},
+          "D2": "Faltan 3 cajas de bridas en el albarán",
+          "A3": "INC-0413",
+          "B3": "CLI-018",
+          "C3": {"fecha": "2026-11-10"},
+          "D3": "Devolver el abono a compras@valdejalon-montajes.es",
+          "A4": "INC-0414",
+          "B4": "CLI-042",
+          "C4": {"fecha": "2026-11-11"},
+          "D4": "Luminaria LED rota al desembalar",
+          "A5": "INC-0415",
+          "B5": "CLI-005",
+          "C5": {"fecha": "2026-11-12"},
+          "D5": "Contacto: Marisa, m.lopez@lacasayroyo-inst.es",
+          "A6": "INC-0416",
+          "B6": "CLI-007",
+          "C6": {"fecha": "2026-11-13"},
+          "D6": "Factura duplicada, pendiente de abono",
+          "A7": "INC-0417",
+          "B7": "CLI-130",
+          "C7": {"fecha": "2026-11-16"},
+          "D7": "Enviar presupuesto a obras@gallego-reformas.es"
+        },
+        "formatos": {
+          "C2:C7": "fecha"
+        },
+        "anchos": {
+          "A": 10,
+          "C": 11,
+          "D": 44,
+          "F": 13
+        }
+      },
+      "objetivo": "F2",
+      "solucion": "=CONTAR.SI(D2:D7;\"*@*\")",
+      "errores_tipicos": [
+        "=CONTAR.SI(D2:D7;\"@\")",
+        "=CONTARA(D2:D7)",
+        "=CONTAR.SI(D2:D7;\"*@\")"
+      ],
+      "variantes": [
+        {
+          "D2": "Escribir a info@bardenas-montajes.es"
+        },
+        {
+          "D7": "Enviar presupuesto por correo"
+        }
+      ],
+      "pistas": [
+        "Quieres contar celdas que cumplen una condición: la función es CONTAR.SI.",
+        "La condición es «tiene una @ en cualquier parte»: un asterisco delante y otro detrás, entre comillas.",
+        "Queda así: `=CONTAR.SI(D2:D7;\"*@*\")`."
+      ],
+      "explicacion": "Salen **3** correos escondidos en las observaciones: la copia aún no se puede enviar. Esta comprobación de un segundo es la que separa un descuido de una fuga de datos. Funciona igual con miles de filas."
+    },
+    {
+      "tipo": "texto",
+      "md": "Cuando uses IA en un trabajo, déjalo escrito en la hoja **Léeme** del libro (la hoja que explica qué hay en el archivo y cómo se usa):\n- qué parte hizo la IA,\n- con qué datos se lo pediste (inventados, con códigos…),\n- y **cómo lo comprobaste**.\n\nAsí, quien abra el libro dentro de seis meses (o tú misma) sabrá qué se revisó y de qué fiarse. No es desconfianza: es lo mismo que firmar un cuadre."
+    },
+    {
+      "tipo": "aviso",
+      "estilo": "cuidado",
+      "titulo": "¿Y si ya lo has pegado?",
+      "md": "No lo escondas ni lo borres en silencio. Pegar datos personales donde no se debe puede ser una **brecha de seguridad** (una fuga de datos): avisa enseguida a tu responsable o a quien lleve la protección de datos. Si hay que notificarla a la AEPD, la empresa tiene en general un máximo de **72 horas** desde que lo sabe."
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e6",
+      "modo": "abierta",
+      "pregunta": "Recuerda la fórmula de comisiones que arreglaste para Javier: la propuso un chat, la adaptaste al Excel en español, cambiaste `>` por `>=` y la probaste. Escribe la nota de 2-3 líneas que pondrías en la hoja **Léeme** del libro de comisiones.",
+      "modelo": "Columna C (comisión): fórmula propuesta por un chat de IA a partir de una descripción, sin datos reales. La adapté al Excel en español y cambié «>» por «>=» para cumplir la regla «a partir de 5.000 €». Comprobada el 18/11/2026 con tres casos calculados a mano (5.000 €, 4.990 € y 8.240 €) y con el total de control de 960,45 €.",
+      "criterios": [
+        "Dice qué parte del libro salió de la IA",
+        "Dice con qué datos se pidió (sin datos reales o con códigos)",
+        "Explica qué se corrigió",
+        "Dice cómo se comprobó (casos conocidos, total de control) y cuándo"
+      ]
+    },
+    {
+      "tipo": "ejercicio",
+      "id": "n5m4l2-e7",
+      "modo": "formula",
+      "enunciado": "Prepara la copia para Lucía. En **E2** escribe la fórmula que convierte el número de empleado de A2 en un código como **EMP-007** (siempre «EMP-» y el número con tres cifras). Tu fórmula se copiará a E3:E7. Después pegarás los códigos como valores y borrarás las columnas de Nº, nombre y NIF.",
+      "hoja": {
+        "celdas": {
+          "A1": "Nº",
+          "B1": "Nombre",
+          "C1": "NIF",
+          "D1": "Fecha de alta",
+          "E1": "Código",
+          "A2": 7,
+          "B2": "Ana Belén Royo Sancho",
+          "C2": "25471836H",
+          "D2": {"fecha": "2014-03-03"},
+          "A3": 12,
+          "B3": "Sergio Lahoz Gimeno",
+          "C3": "72984510M",
+          "D3": {"fecha": "2016-09-12"},
+          "A4": 25,
+          "B4": "Laura Cebrián Pardo",
+          "C4": "17639428R",
+          "D4": {"fecha": "2019-01-14"},
+          "A5": 31,
+          "B5": "Miguel Ángel Tena Bello",
+          "C5": "29384715Q",
+          "D5": {"fecha": "2020-06-01"},
+          "A6": 48,
+          "B6": "Rocío Abad Marcén",
+          "C6": "73029164T",
+          "D6": {"fecha": "2023-02-20"},
+          "A7": 56,
+          "B7": "Iván Lorente Casas",
+          "C7": "18476253F",
+          "D7": {"fecha": "2025-10-06"}
+        },
+        "formatos": {
+          "D2:D7": "fecha"
+        },
+        "anchos": {
+          "A": 6,
+          "B": 24,
+          "C": 11,
+          "D": 13,
+          "E": 11
+        }
+      },
+      "objetivo": "E2",
+      "copiar_a": ["E3:E7"],
+      "solucion": "=\"EMP-\"&TEXTO(A2;\"000\")",
+      "alternativas": [
+        "=CONCAT(\"EMP-\";TEXTO(A2;\"000\"))"
+      ],
+      "errores_tipicos": [
+        "=\"EMP-\"&A2",
+        "=\"EMP-0\"&A2",
+        "=\"EMP-\"&TEXTO(B2;\"000\")",
+        "=\"EMP-\"&TEXTO($A$2;\"000\")"
+      ],
+      "variantes": [
+        {
+          "A2": 104
+        },
+        {
+          "A3": 3
+        }
+      ],
+      "pistas": [
+        "Une el texto fijo «EMP-» con el número de A2 usando &.",
+        "Para que el 7 salga como 007, pásalo por TEXTO con el formato \"000\".",
+        "Queda así: `=\"EMP-\"&TEXTO(A2;\"000\")`."
+      ],
+      "explicacion": "Cada persona tiene ya su código: EMP-007, EMP-012… Ahora copia la columna E y pégala como valores (**Pegado especial › Valores**), y en la copia borra Nº, nombre y NIF; el original, con la correspondencia, se queda guardado y protegido. Lucía puede usar Copilot sin que salga nadie con nombre: has aplicado **minimización** y **seudonimización**, dos medidas que cita el RGPD."
+    }
+  ],
+  "recuerda": [
+    {
+      "id": "n5m4l2-q1",
+      "modo": "ordenar",
+      "enunciado": "Ordena los pasos para preparar una copia sin datos personales que puedas enseñar a la IA.",
+      "pasos": [
+        "Haz una copia del archivo y trabaja solo en la copia",
+        "Añade una columna con la fórmula que fabrica el código de cada persona",
+        "Convierte esa columna en valores con Pegado especial › Valores",
+        "Borra las columnas de Nº, nombre, NIF y sueldo",
+        "Revisa la copia buscando datos personales que se hayan escapado"
+      ],
+      "explicacion": "La copia protege el original. Los valores van antes de borrar: si borras la columna de Nº con la fórmula viva, los códigos se convierten en #¡REF!. Y la revisión, al final, cuando la copia ya está como la vas a enseñar."
+    },
+    {
+      "id": "n5m4l2-q2",
+      "modo": "test",
+      "pregunta": "Te das cuenta de que has pegado en un chat de internet un listado con nombres y teléfonos de clientes. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Aviso enseguida a mi responsable o a quien lleve la protección de datos",
+          "correcta": true,
+          "porque": "Es lo correcto: puede ser una brecha de seguridad, y si hay que notificarla, la empresa tiene en general como mucho 72 horas."
+        },
+        {
+          "texto": "Borro la conversación y no digo nada para no liarla",
+          "correcta": false,
+          "porque": "Borrarla no deshace la fuga, y callar le quita a la empresa el tiempo que necesita para actuar."
+        },
+        {
+          "texto": "Espero unos días a ver si pasa algo",
+          "correcta": false,
+          "porque": "Cada hora cuenta: si hay que notificar a la AEPD, el plazo empieza a correr cuando la empresa lo sabe."
+        }
+      ]
+    }
+  ],
+  "tarjetas": [
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué es un dato personal?",
+      "dorso": "Cualquier dato que permite saber de quién se habla: nombre, NIF, dirección, teléfono, correo, IBAN, sueldo, salud."
+    },
+    {
+      "tipo": "concepto",
+      "frente": "¿Qué es la minimización de datos (RGPD, art. 5.1.c)?",
+      "dorso": "Usar solo los datos necesarios para lo que vas a hacer. En Excel: quitar las columnas que sobran antes de compartir."
+    },
+    {
+      "tipo": "funcion",
+      "frente": "Fórmula para convertir el número 7 de A2 en el código EMP-007",
+      "dorso": "`=\"EMP-\"&TEXTO(A2;\"000\")`"
+    },
+    {
+      "tipo": "concepto",
+      "frente": "El semáforo de datos para la IA",
+      "dorso": "Verde: inventados, públicos o solo la estructura (cualquier IA). Ámbar: internos sin personas (solo la IA autorizada). Rojo: personales, de clientes o contraseñas (nunca en una IA no autorizada)."
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+ "id": "n6m2",
+ "nivel": "n6",
+ "titulo": "Construir bien y comprobar",
+ "intro": "La mayoría de las hojas de empresa tienen errores, y uno solo puede costar mucho dinero o tu credibilidad. En este módulo aprendes las reglas que evitan los errores caros, las celdas que comprueban solas si todo cuadra y la documentación que permite que otra persona continúe tu trabajo.",
+ "repaso_inicial": [
+  {
+   "id": "n6m2-r1",
+   "modo": "formula",
+   "enunciado": "Antes de montar el informe, revisas la exportación. En **E2** calcula **cuántas facturas no tienen cliente** (la celda de la columna B está vacía).",
+   "hoja": {
+    "celdas": {
+     "A1": "Factura",
+     "B1": "Cliente",
+     "C1": "Importe",
+     "E1": "Sin cliente",
+     "A2": "F-2026-0412",
+     "B2": "Instalaciones Ebro, S.L.",
+     "C2": 1250.4,
+     "A3": "F-2026-0413",
+     "B3": "Electricidad Moncayo",
+     "C3": 380,
+     "A4": "F-2026-0414",
+     "C4": 96.8,
+     "A5": "F-2026-0415",
+     "B5": "Montajes Jalón, S.L.",
+     "C5": 2140,
+     "A6": "F-2026-0416",
+     "B6": "Reformas Delicias",
+     "C6": 455.25,
+     "A7": "F-2026-0417",
+     "C7": 1023.1,
+     "A8": "F-2026-0418",
+     "B8": "Instalaciones Ebro, S.L.",
+     "C8": 312.6,
+     "A9": "F-2026-0419",
+     "B9": "Climatización Arga",
+     "C9": 789
+    },
+    "formatos": {
+     "C2:C9": "eur"
+    },
+    "anchos": {
+     "A": 13,
+     "B": 26,
+     "C": 12,
+     "D": 3,
+     "E": 12
+    },
+    "columnas": 5,
+    "filas": 9
+   },
+   "objetivo": "E2",
+   "solucion": "=CONTAR.BLANCO(B2:B9)",
+   "errores_tipicos": [
+    "=CONTARA(B2:B9)",
+    "=CONTAR(B2:B9)",
+    "=CONTAR.BLANCO(C2:C9)"
+   ],
+   "variantes": [
+    {
+     "B4": "Electricidad Moncayo"
+    }
+   ],
+   "pistas": [
+    "Buscas las celdas vacías de B2:B9.",
+    "Hay una función que cuenta justo las celdas en blanco de un rango.",
+    "Escribe `=CONTAR.BLANCO(B2:B9)`."
+   ],
+   "explicacion": "Dos facturas sin cliente: eso se aclara con quien exportó los datos **antes** de construir nada. Contar huecos es el primer vistazo a cualquier exportación."
+  },
+  {
+   "id": "n6m2-r2",
+   "modo": "test",
+   "pregunta": "Vas a montar el libro de comisiones con sus hojas Parámetros, Datos, Cálculos e Informe. ¿Dónde pones el tipo de comisión del 3 %?",
+   "opciones": [
+    {
+     "texto": "En una celda de la hoja Parámetros, y las fórmulas la usan",
+     "correcta": true,
+     "porque": "Eso es: un dato que puede cambiar va en un solo sitio, a la vista. Cuando suba al 3,5 %, cambias una celda."
+    },
+    {
+     "texto": "Dentro de cada fórmula: =C2*0,03",
+     "correcta": false,
+     "porque": "Cuando cambie el tipo habrá que tocar fórmula por fórmula, y alguna se quedará sin cambiar."
+    },
+    {
+     "texto": "En la hoja Datos, en una columna junto a las ventas",
+     "correcta": false,
+     "porque": "Datos guarda lo que llega del programa de gestión, sin tocar. Si mezclas ahí tus parámetros, se pierden o se pisan al cargar el mes siguiente."
+    },
+    {
+     "texto": "En la hoja Informe, al lado del total",
+     "correcta": false,
+     "porque": "El Informe es lo que lee la dirección: solo resultados. Los parámetros van en Parámetros, donde se ven y se cambian sin riesgo."
+    }
+   ],
+   "explicacion": "Parámetros (las entradas) → Datos (tal como llegan) → Cálculos → Informe. Cada cosa en su sitio y cada dato en un solo lugar."
+  },
+  {
+   "id": "n6m2-r3",
+   "modo": "formula",
+   "enunciado": "Lucía te pide un plazo para cuadrar las vacaciones de 2027. Para la fase «Recoger las peticiones» calculas 2 horas si todo va bien (**B2**), 3 lo más probable (**C2**) y 10 si las peticiones llegan tarde (**D2**). En **E2** calcula la estimación de tres puntos de esa fase.",
+   "hoja": {
+    "celdas": {
+     "A1": "Fase",
+     "B1": "Optimista (h)",
+     "C1": "Probable (h)",
+     "D1": "Pesimista (h)",
+     "E1": "Estimación (h)",
+     "A2": "Recoger las peticiones",
+     "B2": 2,
+     "C2": 3,
+     "D2": 10
+    },
+    "formatos": {
+     "B2:E2": "num2"
+    },
+    "anchos": {
+     "A": 24
+    }
+   },
+   "objetivo": "E2",
+   "solucion": "=(B2+4*C2+D2)/6",
+   "alternativas": [
+    "=(B2+C2*4+D2)/6",
+    "=(4*C2+B2+D2)/6"
+   ],
+   "errores_tipicos": [
+    "=B2+4*C2+D2/6",
+    "=(B2+C2+D2)/3",
+    "=PROMEDIO(B2:D2)",
+    "=(B2+4*C2+D2)/3"
+   ],
+   "variantes": [
+    {
+     "D2": 16
+    },
+    {
+     "C2": 4
+    }
+   ],
+   "formato_resultado": "num2",
+   "pistas": [
+    "El caso probable cuenta cuatro veces; el optimista y el pesimista, una vez cada uno.",
+    "Suma optimista + 4 × probable + pesimista y divide entre 6. Ojo con los paréntesis.",
+    "=(B2+4*C2+D2)/6"
+   ],
+   "explicacion": "4 horas: (2 + 12 + 10) ÷ 6. El caso malo pesa, pero el probable cuenta cuatro veces. Con esa cifra le das a Lucía un plazo con fundamento, no a ojo."
+  }
+ ],
+ "practica_excel": null
+}

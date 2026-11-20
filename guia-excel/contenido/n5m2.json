@@ -1,0 +1,1242 @@
+{
+  "id": "n5m2",
+  "nivel": "n5",
+  "titulo": "Varias tablas: el modelo de datos",
+  "intro": "En la empresa los datos llegan en varias tablas (ventas, clientes, productos), y pegarlas en una tabla gigante con BUSCARX acaba en datos repetidos y cifras que no cuadran. Con un modelo de datos las relacionas una vez, cada informe cruza lo que necesites y se actualiza solo, y es la misma base que usa Power BI.",
+  "repaso_inicial": [
+    {
+      "id": "n5m2-r1",
+      "modo": "formula",
+      "enunciado": "Así cruzabas tablas hasta hoy. En **D2** trae la **provincia** del cliente de B2 desde la ficha de clientes (F2:G5). Tu fórmula se copiará a D3:D5.",
+      "hoja": {
+        "celdas": {
+          "A1": "Línea",
+          "B1": "CodCliente",
+          "C1": "Importe",
+          "D1": "Provincia",
+          "F1": "CodCliente",
+          "G1": "Provincia",
+          "A2": "L-01",
+          "B2": "C-1088",
+          "C2": 192,
+          "A3": "L-02",
+          "B3": "C-1043",
+          "C3": 449.1,
+          "A4": "L-03",
+          "B4": "C-1102",
+          "C4": 1180.5,
+          "A5": "L-04",
+          "B5": "C-1017",
+          "C5": 298,
+          "F2": "C-1017",
+          "G2": "Navarra",
+          "F3": "C-1043",
+          "G3": "Zaragoza",
+          "F4": "C-1088",
+          "G4": "Lleida",
+          "F5": "C-1102",
+          "G5": "Huesca"
+        },
+        "formatos": {
+          "C2:C5": "eur"
+        },
+        "anchos": {
+          "B": 11,
+          "D": 11,
+          "F": 11,
+          "G": 10
+        },
+        "columnas": 7,
+        "filas": 5
+      },
+      "objetivo": "D2",
+      "copiar_a": [
+        "D3:D5"
+      ],
+      "solucion": "=BUSCARX(B2;$F$2:$F$5;$G$2:$G$5)",
+      "alternativas": [
+        "=BUSCARV(B2;$F$2:$G$5;2;FALSO)",
+        "=INDICE($G$2:$G$5;COINCIDIR(B2;$F$2:$F$5;0))",
+        "=BUSCARX(B2;F$2:F$5;G$2:G$5)"
+      ],
+      "errores_tipicos": [
+        "=BUSCARX(B2;F2:F5;G2:G5)",
+        "=BUSCARV(B2;$F$2:$G$5;1;FALSO)"
+      ],
+      "variantes": [
+        {
+          "G3": "Teruel"
+        }
+      ],
+      "pistas": [
+        "Buscas el código de B2 en la columna de códigos de la ficha y devuelves la columna de provincias.",
+        "BUSCARX(lo que buscas; dónde lo buscas; qué devuelves). Fija los rangos de la ficha con $ para que no se muevan al copiar.",
+        "=BUSCARX(B2;$F$2:$F$5;$G$2:$G$5)"
+      ],
+      "explicacion": "Funciona, pero copia la provincia en cada venta: con 2.000 ventas, 2.000 copias del mismo dato. En este módulo aprenderás a cruzar tablas sin copiar nada."
+    },
+    {
+      "id": "n5m2-r2",
+      "modo": "test",
+      "pregunta": "Llevas Importe a Valores y la tabla dinámica muestra «Cuenta de Importe» en lugar de una suma. ¿Qué es lo más probable?",
+      "opciones": [
+        {
+          "texto": "Hay importes guardados como texto en esa columna",
+          "correcta": true,
+          "porque": "Si Excel encuentra datos que no son números en un campo de valores, lo resume con Cuenta. Convierte esos textos en números y cambia a Suma en Configuración de campo de valor."
+        },
+        {
+          "texto": "La tabla dinámica no está actualizada",
+          "correcta": false,
+          "porque": "Actualizar trae los datos nuevos, pero no cambia Cuenta por Suma."
+        },
+        {
+          "texto": "Has arrastrado el campo a Filas en vez de a Valores",
+          "correcta": false,
+          "porque": "En Filas no saldría «Cuenta de Importe», sino cada importe como una fila."
+        }
+      ],
+      "explicacion": "Cuenta en lugar de Suma suele delatar números guardados como texto. Revísalo siempre antes de entregar."
+    },
+    {
+      "id": "n5m2-r3",
+      "modo": "predice",
+      "enunciado": "Repaso del módulo anterior. El programa de gestión exporta el cliente con el código y el nombre pegados en una sola celda. ¿Qué devuelve esta fórmula? Escríbelo tal cual saldría en la celda.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente",
+          "A2": "C-1043 | Instalaciones Moncayo"
+        },
+        "anchos": {
+          "A": 30
+        }
+      },
+      "celda": "B2",
+      "formula": "=TEXTOANTES(A2;\" | \")",
+      "explicacion": "`C-1043`: TEXTOANTES corta delante del delimitador « | » (con sus espacios) y deja solo el código. Hoy verás por qué ese código, y no el nombre, es lo que une las tablas.",
+      "respuesta": "C-1043"
+    },
+    {
+      "id": "n5m2-r4",
+      "modo": "test",
+      "pregunta": "En Power Query, ¿qué operación usas para añadir a la consulta de ventas la familia de cada producto, que está en la consulta del maestro de productos?",
+      "opciones": [
+        {
+          "texto": "Combinar consultas",
+          "correcta": true,
+          "porque": "Combinar une dos consultas por una columna común (el código de producto) y trae columnas de la otra, como un BUSCARX."
+        },
+        {
+          "texto": "Anexar consultas",
+          "correcta": false,
+          "porque": "Anexar pone las filas de una consulta debajo de las de otra (por ejemplo, enero y febrero). No trae columnas."
+        },
+        {
+          "texto": "Anular dinamización de columnas",
+          "correcta": false,
+          "porque": "Eso convierte columnas en filas (meses en columnas → una fila por mes). No une dos tablas."
+        }
+      ],
+      "explicacion": "Combinar consultas también copia la familia en cada venta. Hoy verás la alternativa: dejar las tablas separadas y relacionarlas."
+    }
+  ],
+  "practica_excel": {
+    "enunciado": "Carmen quiere para el comité las ventas por provincia y familia, los clientes distintos y el margen %, todo desde un modelo de datos. Descarga **n5-modelo-ventas.xlsx** (necesitas Excel para Windows: en Mac y en la web no se puede crear el modelo de datos), sigue la hoja Instrucciones y responde con tus cifras. Intenta hacerlo en menos de 25 minutos.\n\n1. Crea tres relaciones desde Ventas: con Clientes (CodCliente), con Productos (CodProducto) y con Calendario (Fecha).\n2. Tabla dinámica del modelo: Provincia en Filas, Familia en Columnas, Importe en Valores.\n3. Recuento distinto de CodCliente, con Año (de Calendario) como filtro.\n4. Medidas Total ventas, Total coste, Margen y Margen %, con Familia en Filas.",
+    "archivo": "n5-modelo-ventas.xlsx",
+    "controles": [
+      {
+        "pregunta": "Ventas totales de todo el periodo (€)",
+        "respuesta": 420046.48,
+        "tolerancia": 0.01,
+        "pista": "Es el total general de la tabla dinámica con Importe en Valores. Si no coincide, comprueba que el campo resume con Suma y no con Cuenta."
+      },
+      {
+        "pregunta": "Ventas de la familia Cableado en la provincia de Navarra, todo el periodo (€)",
+        "respuesta": 24461.77,
+        "tolerancia": 0.01,
+        "pista": "Cruce de la fila Navarra con la columna Cableado. Si sale la misma cifra en todas las filas, falta la relación de Ventas con Clientes o con Productos."
+      },
+      {
+        "pregunta": "Clientes distintos que han comprado en todo el periodo",
+        "respuesta": 109,
+        "tolerancia": 0,
+        "pista": "Recuento distinto de CodCliente de la tabla Ventas. Si te sale 2.000, cuentas líneas; si te sale 120, cuentas la ficha de Clientes, que incluye clientes sin compras."
+      },
+      {
+        "pregunta": "Clientes distintos de la provincia de Zaragoza con compras en 2026",
+        "respuesta": 41,
+        "tolerancia": 0,
+        "pista": "Filtra Año = 2026 (de Calendario). Si te sale 309, es Cuenta (líneas), no Recuento distinto. Si el filtro no cambia nada, falta la relación Ventas[Fecha] → Calendario[Fecha]."
+      },
+      {
+        "pregunta": "Margen % de la familia Iluminación en todo el periodo (escribe el % con dos decimales, por ejemplo 28,15)",
+        "respuesta": 32.64,
+        "tolerancia": 0.01,
+        "pista": "Medida Margen % = DIVIDE([Margen]; [Total ventas]) con Familia en Filas. Si te sale 32,53, has hecho la media de los % de cada línea en vez de margen total ÷ ventas totales."
+      }
+    ],
+    "solucion_md": "### 1. Relaciones (Datos › Relaciones › Nuevo)\nTres relaciones de uno a varios, con la dimensión como principal:\n\n| Tabla | Columna (externa) | Tabla relacionada | Columna relacionada (principal) |\n|---|---|---|---|\n| Ventas | CodCliente | Clientes | CodCliente |\n| Ventas | CodProducto | Productos | CodProducto |\n| Ventas | Fecha | Calendario | Fecha |\n\nResultado: un esquema en estrella con Ventas en el centro.\n\n### 2. Tabla dinámica del modelo\nClic dentro de Ventas › **Insertar › Tabla dinámica** › marca **Agregar estos datos al modelo de datos** › Nueva hoja de cálculo. En Campos de tabla dinámica: Clientes[Provincia] a Filas, Productos[Familia] a Columnas y Ventas[Importe] a Valores. Total general: **420.046,48 €**; Cableado en Navarra: **24.461,77 €**.\n\n### 3. Clientes distintos\nVentas[CodCliente] a Valores › Configuración de campo de valor › **Recuento distinto**. Total: **109** (hay 120 fichas, pero 11 clientes no han comprado). Con Calendario[Año] = 2026 en Filtros, Zaragoza da **41** clientes (309 líneas: lo que daría Cuenta).\n\n### 4. Medidas (Power Pivot › Medidas › Nueva medida, en la tabla Ventas)\n- `Total ventas := SUM(Ventas[Importe])`\n- `Total coste := SUM(Ventas[Coste])`\n- `Margen := [Total ventas] - [Total coste]`\n- `Margen % := DIVIDE([Margen]; [Total ventas])`, con formato de porcentaje\n\nCon Familia en Filas, Iluminación da **32,64 %**. La media de los % de cada línea daría 32,53 %: parecido aquí, pero es otra cifra y en otros datos la diferencia es enorme.\n\n### 5. Comprobación\nEl archivo de solución rehace las cinco cifras con fórmulas clásicas (columnas «(aux)» con INDICE+COINCIDIR, SUMAR.SI.CONJUNTO y CONTAR.SI.CONJUNTO) en la hoja Controles, para que puedas cuadrar sin modelo de datos.",
+    "archivo_solucion": "n5-modelo-ventas-solucion.xlsx"
+  },
+  "lecciones": [
+    {
+      "id": "n5m2l1",
+      "titulo": "Hechos y dimensiones: ordenar los datos como un profesional",
+      "minutos": 15,
+      "objetivo": "Separar un listado de ventas en una tabla de hechos y sus dimensiones (clientes, productos y calendario), cada una con una clave única comprobada con una fórmula.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "El programa de gestión me saca las ventas en una sola hoja: cada línea repite el cliente, su provincia, el producto y la familia. Cuando un cliente se muda hay que tocar cuarenta filas y siempre se escapa alguna. ¿Me lo ordenas como se debe antes del informe por provincia y familia?",
+        "logro": "Ya sabes ordenar los datos de un negocio en una tabla de hechos y sus dimensiones, y comprobar con una fórmula que cada clave es única antes de relacionarlas."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Javier te reenvía la exportación de ventas del programa de gestión. Cada fila es una línea de albarán (el documento que acompaña a la mercancía) y repite **todo**: el código y el nombre del cliente, su provincia, el producto y su familia.\n\nParece cómodo, pero tiene trampa: el mismo dato está escrito muchas veces. Si Instalaciones Moncayo se muda, hay que corregir todas sus filas, y basta con olvidar una para que el informe por provincia salga mal."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "La exportación de Javier (5 de sus 2.000 filas)",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "CodCliente",
+              "C1": "Cliente",
+              "D1": "Provincia",
+              "E1": "Producto",
+              "F1": "Familia",
+              "G1": "Importe",
+              "A2": {
+                "fecha": "2026-11-03"
+              },
+              "B2": "C-1043",
+              "C2": "Instalaciones Moncayo",
+              "D2": "Zaragoza",
+              "E2": "Cable 2,5 mm²",
+              "F2": "Cableado",
+              "G2": 449.1,
+              "A3": {
+                "fecha": "2026-11-03"
+              },
+              "B3": "C-1017",
+              "C3": "Electricidad Arga S.L.",
+              "D3": "Navarra",
+              "E3": "Downlight LED 18 W",
+              "F3": "Iluminación",
+              "G3": 298,
+              "A4": {
+                "fecha": "2026-11-04"
+              },
+              "B4": "C-1043",
+              "C4": "Instalaciones Moncayo",
+              "D4": "Zaragoza",
+              "E4": "Diferencial 2P 40 A",
+              "F4": "Protección",
+              "G4": 154,
+              "A5": {
+                "fecha": "2026-11-05"
+              },
+              "B5": "C-1088",
+              "C5": "Montajes Segre S.L.",
+              "D5": "Lleida",
+              "E5": "Canaleta 40×25",
+              "F5": "Canalización",
+              "G5": 192,
+              "A6": {
+                "fecha": "2026-11-06"
+              },
+              "B6": "C-1043",
+              "C6": "Instalaciones Moncayo",
+              "D6": "Zaragoza",
+              "E6": "Interruptor simple",
+              "F6": "Mecanismos",
+              "G6": 92
+            },
+            "formatos": {
+              "A2:A6": "fecha",
+              "G2:G6": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 11,
+              "C": 22,
+              "D": 10,
+              "E": 20,
+              "F": 13,
+              "G": 11
+            },
+            "columnas": 7,
+            "filas": 6
+          },
+          "resaltar": [
+            "B2:D2",
+            "B4:D4",
+            "B6:D6"
+          ],
+          "pie": "Moncayo y su provincia aparecen tres veces en solo cinco filas. En la exportación entera, decenas de veces."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e1",
+          "modo": "test",
+          "pregunta": "Instalaciones Moncayo se traslada a Huesca. Con la exportación tal como está, ¿qué tienes que hacer para que el informe por provincia salga bien?",
+          "opciones": [
+            {
+              "texto": "Cambiar «Zaragoza» por «Huesca» en todas las filas de Moncayo, sin dejarte ninguna",
+              "correcta": true,
+              "porque": "Exacto: el dato está repetido en cada venta, así que hay que corregirlo en cada fila. Con 2.000 filas, es fácil que se escape alguna. Por eso los profesionales lo guardan en un solo sitio."
+            },
+            {
+              "texto": "Cambiarlo solo en la primera fila: Excel copia el cambio a las demás",
+              "correcta": false,
+              "porque": "Excel no sabe que esas filas hablan del mismo cliente: cada celda es independiente. Las demás seguirían diciendo Zaragoza."
+            },
+            {
+              "texto": "Nada: al actualizar la tabla dinámica, la provincia se corrige sola",
+              "correcta": false,
+              "porque": "Actualizar vuelve a leer los datos tal como están. Si las filas dicen Zaragoza, el informe dirá Zaragoza."
+            }
+          ],
+          "explicacion": "Un dato escrito muchas veces acaba escrito de varias formas. La solución es escribirlo una sola vez, y eso es lo que vas a aprender ahora."
+        },
+        {
+          "tipo": "texto",
+          "md": "La solución profesional es separar los datos en dos clases de tablas:\n\n- **Tabla de hechos**: lo que *pasa* en el negocio. Cada venta, cada pedido o cada fichaje es una fila. Tiene muchas filas, crece cada día y guarda sobre todo fechas, códigos y números.\n- **Tablas de dimensiones**: *quién, qué y cuándo*. Una ficha por cliente, por producto o por día, con sus datos descriptivos: nombre, provincia, familia.\n\nPiénsalo así: los tiques de una tienda son hechos; la agenda de clientes es una dimensión."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e2",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "Andrés Molina te enseña cuatro listas del almacén. ¿Cuáles son tablas de **dimensiones**? Marca todas las que lo sean.",
+          "opciones": [
+            {
+              "texto": "Proveedores: un proveedor por fila, con su CIF, su ciudad y su plazo de entrega",
+              "correcta": true,
+              "porque": "Sí: describe *quién* nos vende. Una fila por proveedor y cambia poco."
+            },
+            {
+              "texto": "Productos: un artículo por fila, con su familia y su precio de tarifa",
+              "correcta": true,
+              "porque": "Sí: describe *qué* vendemos y compramos. Cada artículo aparece una sola vez."
+            },
+            {
+              "texto": "Entradas de almacén: cada recepción de mercancía con fecha, proveedor, artículo y unidades",
+              "correcta": false,
+              "porque": "Es una tabla de hechos: cada fila es algo que *pasa* (una recepción), crece cada día y lleva unidades."
+            },
+            {
+              "texto": "Pedidos a proveedor: cada línea de pedido con fecha, artículo y unidades",
+              "correcta": false,
+              "porque": "También son hechos: cada línea es un pedido que ocurre en una fecha. Se unirá a Proveedores y a Productos."
+            }
+          ],
+          "explicacion": "Truco para clasificar: si la tabla crece cada día con cosas que ocurren y lleva fechas e importes o unidades, es de hechos. Si es una ficha que describe a alguien o algo, es una dimensión."
+        },
+        {
+          "tipo": "texto",
+          "md": "Para unir hechos y dimensiones hace falta una **clave**: una columna que identifica cada ficha sin dudas, como el DNI a una persona. En Clientes, la clave es **CodCliente**.\n\nLa regla de oro: en la dimensión, cada clave aparece **una sola vez**. En la tabla de hechos, en cambio, se repite en cada venta de ese cliente.\n\nNo uses el nombre como clave: «Electricidad Arga S.L.» y «Electricidad Arga, S.L.» parecen el mismo cliente, pero para Excel son dos textos distintos."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Dimensión Clientes",
+          "hoja": {
+            "celdas": {
+              "A1": "CodCliente",
+              "B1": "Cliente",
+              "C1": "Provincia",
+              "D1": "Tipo",
+              "A2": "C-1017",
+              "B2": "Electricidad Arga S.L.",
+              "C2": "Navarra",
+              "D2": "Instalador",
+              "A3": "C-1043",
+              "B3": "Instalaciones Moncayo",
+              "C3": "Zaragoza",
+              "D3": "Instalador",
+              "A4": "C-1088",
+              "B4": "Montajes Segre S.L.",
+              "C4": "Lleida",
+              "D4": "Empresa",
+              "A5": "C-1102",
+              "B5": "Reformas Cinca S.L.U.",
+              "C5": "Huesca",
+              "D5": "Constructora"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 22,
+              "C": 10,
+              "D": 12
+            },
+            "columnas": 4,
+            "filas": 5
+          },
+          "resaltar": [
+            "A2:A5"
+          ],
+          "pie": "Cuatro clientes, cuatro códigos distintos: la clave es única. La provincia de Moncayo está escrita una sola vez."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e3",
+          "modo": "predice",
+          "enunciado": "Nuria ha montado a mano la dimensión Clientes copiando filas de la exportación. Antes de que Excel lo calcule: ¿qué devuelve esta fórmula en E2?",
+          "hoja": {
+            "celdas": {
+              "A1": "CodCliente",
+              "B1": "Cliente",
+              "C1": "Provincia",
+              "A2": "C-1017",
+              "B2": "Electricidad Arga S.L.",
+              "C2": "Navarra",
+              "A3": "C-1043",
+              "B3": "Instalaciones Moncayo",
+              "C3": "Zaragoza",
+              "A4": "C-1088",
+              "B4": "Montajes Segre S.L.",
+              "C4": "Lleida",
+              "A5": "C-1102",
+              "B5": "Reformas Cinca S.L.U.",
+              "C5": "Huesca",
+              "A6": "C-1043",
+              "B6": "Instalaciones Moncayo",
+              "C6": "Huesca",
+              "A7": "C-1110",
+              "B7": "Electro Jalón S.L.",
+              "C7": "Zaragoza",
+              "E1": "Veces que sale C-1043"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 22,
+              "C": 10,
+              "E": 20
+            },
+            "columnas": 6,
+            "filas": 7
+          },
+          "celda": "E2",
+          "formula": "=CONTAR.SI(A2:A7;\"C-1043\")",
+          "explicacion": "Devuelve 2: la clave C-1043 está dos veces, una con Zaragoza y otra con Huesca. Con una clave repetida, Excel no puede unir esta tabla con las ventas: no sabría a cuál de las dos fichas asignar cada venta de Moncayo.",
+          "respuesta": "2"
+        },
+        {
+          "tipo": "texto",
+          "md": "Al separar así los datos sale un dibujo de **estrella**: la tabla de hechos en el centro y cada dimensión alrededor, unida a ella por su clave.\n\n- **Ventas** (el centro): fecha, CodCliente, CodProducto, unidades e importe.\n- **Clientes**: CodCliente, nombre, provincia.\n- **Productos**: CodProducto, descripción, familia.\n- **Calendario**: fecha, mes, trimestre, año.\n\nCada nombre, provincia o familia se escribe **una sola vez**. Este *esquema en estrella* es como ordenan los datos Power Pivot y Power BI, las herramientas de análisis de Microsoft."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e4",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para convertir la exportación gigante de Javier en una estrella.",
+          "pasos": [
+            "Decide qué es una fila de la tabla de hechos: una línea de albarán",
+            "Decide las dimensiones: quién (clientes), qué (productos) y cuándo (calendario)",
+            "Crea cada dimensión con sus datos descriptivos y su clave",
+            "Comprueba que ninguna clave de las dimensiones está repetida",
+            "Une cada dimensión con la tabla de hechos por su clave"
+          ],
+          "explicacion": "Primero lo que pasa (los hechos), después quién, qué y cuándo (las dimensiones), luego las claves comprobadas y, al final, las uniones. Unir sin comprobar las claves es el error que más tiempo hace perder."
+        },
+        {
+          "tipo": "texto",
+          "md": "Hay una dimensión que casi nunca viene en la exportación: el **Calendario**. Es una tabla con **una fila por día**, sin saltarse ninguno, y columnas que describen cada día: año, mes, trimestre.\n\n¿Para qué, si la venta ya tiene fecha? Para que cualquier informe agrupe por mes o por trimestre sin añadir columnas a la tabla de hechos. Además, los cálculos que comparan un año con el anterior necesitan un calendario completo: sin él, no salen.\n\nSe construye con fórmulas que ya conoces."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Así empieza un Calendario",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Año",
+              "C1": "Mes",
+              "D1": "Nombre del mes",
+              "A2": {
+                "fecha": "2026-01-01"
+              },
+              "B2": "=AÑO(A2)",
+              "C2": "=MES(A2)",
+              "D2": "=TEXTO(A2;\"mmmm\")",
+              "A3": "=A2+1",
+              "B3": "=AÑO(A3)",
+              "C3": "=MES(A3)",
+              "D3": "=TEXTO(A3;\"mmmm\")",
+              "A4": "=A3+1",
+              "B4": "=AÑO(A4)",
+              "C4": "=MES(A4)",
+              "D4": "=TEXTO(A4;\"mmmm\")",
+              "A5": "=A4+1",
+              "B5": "=AÑO(A5)",
+              "C5": "=MES(A5)",
+              "D5": "=TEXTO(A5;\"mmmm\")"
+            },
+            "formatos": {
+              "A2:A5": "fecha"
+            },
+            "anchos": {
+              "A": 12,
+              "D": 16
+            },
+            "columnas": 4,
+            "filas": 5
+          },
+          "mostrar_formulas": true,
+          "pie": "Cada día es el anterior + 1: así no se salta ninguno. Se copia hacia abajo hasta el 31/12 del último año."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e5",
+          "modo": "formula",
+          "enunciado": "Completa tu Calendario. En **D2** calcula el **trimestre** (1, 2, 3 o 4) de la fecha de A2: enero, febrero y marzo son el 1; abril, mayo y junio, el 2… Tienes el mes ya calculado en C2. Tu fórmula se copiará hasta D8.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Año",
+              "C1": "Mes",
+              "D1": "Trimestre",
+              "A2": {
+                "fecha": "2026-01-15"
+              },
+              "B2": "=AÑO(A2)",
+              "C2": "=MES(A2)",
+              "A3": {
+                "fecha": "2026-02-28"
+              },
+              "B3": "=AÑO(A3)",
+              "C3": "=MES(A3)",
+              "A4": {
+                "fecha": "2026-04-01"
+              },
+              "B4": "=AÑO(A4)",
+              "C4": "=MES(A4)",
+              "A5": {
+                "fecha": "2026-05-20"
+              },
+              "B5": "=AÑO(A5)",
+              "C5": "=MES(A5)",
+              "A6": {
+                "fecha": "2026-07-31"
+              },
+              "B6": "=AÑO(A6)",
+              "C6": "=MES(A6)",
+              "A7": {
+                "fecha": "2026-08-14"
+              },
+              "B7": "=AÑO(A7)",
+              "C7": "=MES(A7)",
+              "A8": {
+                "fecha": "2026-11-16"
+              },
+              "B8": "=AÑO(A8)",
+              "C8": "=MES(A8)"
+            },
+            "formatos": {
+              "A2:A8": "fecha"
+            },
+            "anchos": {
+              "A": 12,
+              "D": 11
+            },
+            "columnas": 4,
+            "filas": 8
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D8"
+          ],
+          "solucion": "=REDONDEAR.MAS(C2/3;0)",
+          "alternativas": [
+            "=REDONDEAR.MAS(MES(A2)/3;0)",
+            "=ENTERO((C2+2)/3)",
+            "=ENTERO((MES(A2)+2)/3)"
+          ],
+          "errores_tipicos": [
+            "=C2/3",
+            "=REDONDEAR(C2/3;0)",
+            "=REDONDEAR.MENOS(C2/3;0)"
+          ],
+          "variantes": [
+            {
+              "A2": {
+                "fecha": "2026-12-31"
+              },
+              "A5": {
+                "fecha": "2026-03-09"
+              }
+            }
+          ],
+          "pistas": [
+            "El trimestre es el mes dividido entre 3 y redondeado siempre hacia arriba: febrero es 2 ÷ 3 = 0,67, y eso es el trimestre 1.",
+            "Para redondear siempre hacia arriba tienes REDONDEAR.MAS(número;0). REDONDEAR a secas fallaría con abril: 4 ÷ 3 = 1,33 daría 1.",
+            "Escribe =REDONDEAR.MAS(C2/3;0) y cópiala hasta D8."
+          ],
+          "explicacion": "Tu Calendario ya tiene Año, Mes y Trimestre. Cuando lo unas a las ventas, cualquier informe podrá agrupar por trimestre sin tocar la tabla de hechos: el trabajo se hace una vez, en la dimensión, y sirve para siempre."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e6",
+          "modo": "abierta",
+          "pregunta": "Lucía Fernández (RRHH) lleva los **fichajes** en una sola hoja: cada fila tiene la fecha, la hora de entrada y la de salida, y además el número de empleado, el nombre, el departamento y la delegación de la persona. Diseña su modelo: ¿qué tabla es de hechos, qué dimensiones harías, con qué clave cada una y qué columnas pondrías en cada tabla?",
+          "modelo": "Hechos: Fichajes, una fila por fichaje, con Fecha, NumEmpleado, Entrada y Salida. Dimensiones: Empleados (clave NumEmpleado, única) con nombre, departamento y delegación; y Calendario (clave Fecha, una fila por día) con año, mes y trimestre. En Fichajes no se repiten ni el nombre ni el departamento: solo la clave del empleado.",
+          "criterios": [
+            "Identifica Fichajes como la tabla de hechos (una fila por fichaje)",
+            "Propone una dimensión Empleados con una clave única (el número de empleado), no el nombre",
+            "Incluye una dimensión Calendario unida por la fecha",
+            "Deja en la tabla de hechos solo la fecha, las horas y la clave del empleado; lo descriptivo va a las dimensiones"
+          ]
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Me pasó el año pasado: monté la tabla de clientes copiando del programa de gestión y se coló un código repetido. Excel no quiso crear la unión y perdí una mañana buscando por qué. Desde entonces pongo junto a cada dimensión una celda que cuenta las claves repetidas. Si no da 0, no sigo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l1-e7",
+          "modo": "formula",
+          "enunciado": "La misión de Javier. Has sacado la dimensión **Clientes** de la exportación. Antes de unirla a las ventas, en **E2** escribe la celda de control de Nuria: debe devolver **cuántas claves sobran** en A2:A9, es decir, el número de códigos menos el número de códigos distintos. Si todo está bien, da 0.",
+          "hoja": {
+            "celdas": {
+              "A1": "CodCliente",
+              "B1": "Cliente",
+              "C1": "Provincia",
+              "E1": "Claves repetidas",
+              "A2": "C-1017",
+              "B2": "Electricidad Arga S.L.",
+              "C2": "Navarra",
+              "A3": "C-1043",
+              "B3": "Instalaciones Moncayo",
+              "C3": "Zaragoza",
+              "A4": "C-1088",
+              "B4": "Montajes Segre S.L.",
+              "C4": "Lleida",
+              "A5": "C-1102",
+              "B5": "Reformas Cinca S.L.U.",
+              "C5": "Huesca",
+              "A6": "C-1110",
+              "B6": "Electro Jalón S.L.",
+              "C6": "Zaragoza",
+              "A7": "C-1115",
+              "B7": "Mantenimientos Tudela S.L.",
+              "C7": "Navarra",
+              "A8": "C-1119",
+              "B8": "Iluminación Noguera S.A.",
+              "C8": "Lleida",
+              "A9": "C-1043",
+              "B9": "Instalaciones Moncayo",
+              "C9": "Huesca"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 25,
+              "C": 10,
+              "E": 16
+            },
+            "columnas": 5,
+            "filas": 9
+          },
+          "objetivo": "E2",
+          "solucion": "=CONTARA(A2:A9)-CONTARA(UNICOS(A2:A9))",
+          "alternativas": [
+            "=FILAS(A2:A9)-FILAS(UNICOS(A2:A9))",
+            "=CONTARA(A2:A9)-FILAS(UNICOS(A2:A9))"
+          ],
+          "errores_tipicos": [
+            "=CONTAR.SI(A2:A9;\"C-1043\")",
+            "=CONTARA(UNICOS(A2:A9))",
+            "=CONTARA(A2:A9)",
+            "=CONTAR(A2:A9)-CONTAR(UNICOS(A2:A9))"
+          ],
+          "variantes": [
+            {
+              "A9": "C-1120"
+            },
+            {
+              "A5": "C-1017"
+            }
+          ],
+          "pistas": [
+            "Necesitas dos cuentas: cuántos códigos hay y cuántos códigos distintos hay. La diferencia son los que sobran.",
+            "CONTARA cuenta celdas con texto (CONTAR solo cuenta números). Para los distintos, mete UNICOS(A2:A9) dentro de CONTARA.",
+            "=CONTARA(A2:A9)-CONTARA(UNICOS(A2:A9))"
+          ],
+          "explicacion": "Tu control da 1: C-1043 está dos veces, Moncayo en Zaragoza y en Huesca, justo el lío de la tabla gigante. Pregunta a Javier cuál es la buena, corrige la ficha y el control bajará a 0. Ya puedes entregarle una dimensión limpia, y esta celda te avisará cada vez que alguien cuele un duplicado."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m2l1-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "¿Cómo se llama la tabla que guarda lo que *pasa* en el negocio (cada venta, cada pedido), con muchas filas que crecen cada día?",
+          "aceptadas": [
+            "tabla de hechos",
+            "hechos",
+            "la tabla de hechos",
+            "de hechos",
+            "tabla de hecho"
+          ],
+          "explicacion": "La tabla de hechos. Las fichas que describen quién, qué y cuándo (clientes, productos, días) son las tablas de dimensiones."
+        },
+        {
+          "id": "n5m2l1-q2",
+          "modo": "test",
+          "pregunta": "En la dimensión Productos, ¿cuántas veces puede aparecer el código CAB-025?",
+          "opciones": [
+            {
+              "texto": "Una sola vez",
+              "correcta": true,
+              "porque": "Es la clave de la dimensión: una ficha por artículo. Si se repite, no se puede unir con las ventas."
+            },
+            {
+              "texto": "Tantas como ventas tenga ese artículo",
+              "correcta": false,
+              "porque": "Eso pasa en la tabla de hechos (Ventas), no en la dimensión."
+            },
+            {
+              "texto": "Una vez por cada cambio de precio",
+              "correcta": false,
+              "porque": "Si cambia el precio, se corrige en su única fila. Repetir la clave impide unir la tabla con las ventas."
+            }
+          ]
+        },
+        {
+          "id": "n5m2l1-q3",
+          "modo": "predice",
+          "enunciado": "Celda de control junto a la dimensión Productos. ¿Qué devuelve?",
+          "hoja": {
+            "celdas": {
+              "A1": "CodProducto",
+              "B1": "Familia",
+              "A2": "CAB-015",
+              "B2": "Cableado",
+              "A3": "CAB-025",
+              "B3": "Cableado",
+              "A4": "LED-018",
+              "B4": "Iluminación",
+              "A5": "PRO-216",
+              "B5": "Protección",
+              "A6": "MEC-101",
+              "B6": "Mecanismos"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12
+            },
+            "columnas": 4,
+            "filas": 6
+          },
+          "celda": "D2",
+          "formula": "=CONTARA(A2:A6)-CONTARA(UNICOS(A2:A6))",
+          "explicacion": "0: hay 5 códigos y 5 distintos. Ninguna clave sobra, así que la dimensión Productos está lista para unirse a las ventas. Que Cableado se repita no importa: la familia no es la clave.",
+          "respuesta": "0"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una tabla de hechos?",
+          "dorso": "La que guarda lo que pasa (ventas, pedidos, fichajes): muchas filas, crece cada día, lleva fechas, claves y números."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una tabla de dimensión?",
+          "dorso": "Una ficha por cliente, producto o día, con sus datos descriptivos y una clave que no se repite."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un esquema en estrella?",
+          "dorso": "La tabla de hechos en el centro y las dimensiones alrededor, unidas por sus claves. Cada dato descriptivo se escribe una sola vez."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Celda de control: ¿cuántas claves repetidas hay en A2:A200?",
+          "dorso": "=CONTARA(A2:A200)-CONTARA(UNICOS(A2:A200)). Tiene que dar 0."
+        }
+      ]
+    },
+    {
+      "id": "n5m2l2",
+      "titulo": "Relaciones, tabla dinámica del modelo y medidas",
+      "minutos": 18,
+      "objetivo": "Relacionar las tablas de ventas en un modelo de datos, hacer una tabla dinámica con campos de varias tablas, contar clientes distintos y leer medidas DAX sencillas como el margen %.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "Para el comité del lunes quiero ver por provincia cuánto vendemos, cuántos clientes distintos nos compran y con qué margen. Javier dice que ya tienes las tablas ordenadas. Y que el mes que viene se actualice solo, por favor.",
+        "logro": "Ya sabes relacionar tablas en un modelo de datos y sacar de él ventas, clientes distintos y margen % que se actualizan solos."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Ya tienes la estrella: Ventas en el centro y Clientes, Productos y Calendario alrededor. Ahora toca unirlas con **relaciones**.\n\nUna relación es un hilo entre la clave de una dimensión, `Clientes[CodCliente]` (tabla Clientes, columna CodCliente), y la misma columna en la tabla de hechos, `Ventas[CodCliente]`. Hace lo que hacías con BUSCARX, pero **sin copiar columnas**: la provincia sigue escrita una sola vez en Clientes y Excel la encuentra desde cada venta.\n\nLas tablas relacionadas forman el **modelo de datos** del libro."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e1",
+          "modo": "test",
+          "pregunta": "Quieres ver las ventas por **familia**. ¿Qué dos columnas unes con una relación?",
+          "opciones": [
+            {
+              "texto": "Ventas[CodProducto] con Productos[CodProducto]",
+              "correcta": true,
+              "porque": "Eso es: la misma clave en las dos tablas. En Productos es única; en Ventas se repite en cada venta del artículo."
+            },
+            {
+              "texto": "Ventas[Importe] con Productos[PrecioTarifa]",
+              "correcta": false,
+              "porque": "Son números distintos (el importe lleva unidades y descuentos). Una relación une claves, no importes."
+            },
+            {
+              "texto": "Ventas[CodProducto] con Productos[Familia]",
+              "correcta": false,
+              "porque": "Las dos columnas tienen que contener el mismo dato. El código CAB-025 nunca aparecerá en la columna Familia."
+            }
+          ],
+          "explicacion": "Una relación siempre une la clave de la dimensión con la misma clave en la tabla de hechos. La familia llega sola a través de ese hilo."
+        },
+        {
+          "tipo": "pasos",
+          "titulo": "Ejemplo resuelto: relacionar Ventas con Clientes",
+          "pasos": [
+            {
+              "md": "Comprueba que cada lista es una **Tabla** con su nombre: Ventas, Clientes, Productos y Calendario. El nombre se pone en **Diseño de tabla › Nombre de la tabla**.",
+              "ruta": [
+                "Diseño de tabla",
+                "Propiedades",
+                "Nombre de la tabla"
+              ]
+            },
+            {
+              "md": "Ve a **Datos › Relaciones**. Si el botón está en gris, el libro solo tiene una Tabla.",
+              "ruta": [
+                "Datos",
+                "Herramientas de datos",
+                "Relaciones"
+              ]
+            },
+            {
+              "md": "En el cuadro **Administrar relaciones**, pulsa **Nuevo**."
+            },
+            {
+              "md": "En **Crear relación**: **Tabla** = Ventas y **Columna (externa)** = CodCliente (el lado que repite el código). **Tabla relacionada** = Clientes y **Columna relacionada (principal)** = CodCliente (el lado con valores únicos). Pulsa **Aceptar**."
+            },
+            {
+              "md": "Repite con Productos (CodProducto) y con Calendario (Fecha). Administrar relaciones mostrará las tres: tu modelo está listo."
+            }
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e2",
+          "modo": "cinta",
+          "enunciado": "Las cuatro Tablas ya tienen nombre. ¿Dónde está el botón para crear las relaciones entre ellas?",
+          "ruta": [
+            "Datos",
+            "Herramientas de datos",
+            "Relaciones"
+          ],
+          "explicacion": "Datos › Herramientas de datos › Relaciones abre Administrar relaciones; desde ahí, Nuevo. Al lado tienes Administrar modelo de datos, que abre la ventana de Power Pivot."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e3",
+          "modo": "test",
+          "pregunta": "Andrés quiere cruzar las ventas con los pedidos a proveedor e intenta relacionar `Ventas[CodProducto]` con `PedidosProveedor[CodProducto]`. Excel no le deja. ¿Por qué?",
+          "opciones": [
+            {
+              "texto": "Porque en ninguna de las dos tablas el código es único: un producto sale en muchas ventas y en muchos pedidos",
+              "correcta": true,
+              "porque": "Es una relación de **varios a varios**, y Excel solo crea la relación si una de las dos columnas tiene valores únicos. La solución: relacionar Ventas con Productos y PedidosProveedor con Productos. La dimensión queda en medio y sirve a las dos."
+            },
+            {
+              "texto": "Porque las dos tablas tienen que tener el mismo número de filas",
+              "correcta": false,
+              "porque": "No hace falta: lo normal es que la dimensión tenga pocas filas y la tabla de hechos, miles."
+            },
+            {
+              "texto": "Porque cada tabla solo se puede relacionar una vez",
+              "correcta": false,
+              "porque": "Ventas se relaciona a la vez con Clientes, Productos y Calendario, y una dimensión puede servir a varias tablas de hechos."
+            }
+          ],
+          "explicacion": "Regla práctica: cada relación une una tabla de hechos (el lado de «varios») con una dimensión (el lado de «uno», con clave única). Si intentas unir dos tablas de hechos, falta la dimensión en medio."
+        },
+        {
+          "tipo": "texto",
+          "md": "Con el modelo listo, la tabla dinámica se hace como en el nivel 3, con un cambio: en **Insertar › Tabla dinámica**, marca la casilla **Agregar estos datos al modelo de datos**.\n\nEn **Campos de tabla dinámica** verás todas las tablas del modelo. Arrastra Provincia (de Clientes) a Filas, Familia (de Productos) a Columnas e Importe (de Ventas) a Valores: Excel sigue las relaciones para cruzarlos.\n\nSi aparece el aviso «Pueden ser necesarias relaciones entre tablas», falta una relación: revísalo en Datos › Relaciones."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e4",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos para que Carmen vea las ventas por provincia y familia desde el modelo.",
+          "pasos": [
+            "Haz clic dentro de la Tabla Ventas",
+            "Insertar › Tabla dinámica",
+            "Marca «Agregar estos datos al modelo de datos» y elige Nueva hoja de cálculo",
+            "En Campos de tabla dinámica, lleva Provincia a Filas, Familia a Columnas e Importe a Valores",
+            "Comprueba que el total general coincide con la suma de la columna Importe de Ventas"
+          ],
+          "explicacion": "El último paso no es opcional: si el total general no coincide con la suma de Ventas, alguna relación falla o hay ventas con códigos que no existen en su dimensión."
+        },
+        {
+          "tipo": "texto",
+          "md": "Carmen quiere saber **cuántos clientes distintos** compran en cada provincia. Si pones CodCliente en Valores, la tabla dinámica te da *Cuenta*: cuenta **líneas de venta**, y un cliente con 30 líneas cuenta 30 veces.\n\nEn una tabla dinámica del modelo tienes otra opción: clic derecho sobre la cifra › **Configuración de campo de valor** › **Resumir valores por** › **Recuento distinto**. Cuenta cada cliente una sola vez.\n\nEsta opción solo aparece si la tabla dinámica sale del modelo de datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e5",
+          "modo": "formula",
+          "enunciado": "Compruebas a mano las ventas de octubre antes de fiarte del Recuento distinto. Una compañera ha puesto en **E2** `=CONTARA(B2:B11)` y le sale 10, pero eso son líneas, no clientes. Arregla la fórmula de E2 para que devuelva **cuántos clientes distintos** hay en B2:B11.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "CodCliente",
+              "C1": "Importe",
+              "E1": "Clientes distintos",
+              "A2": {
+                "fecha": "2026-10-01"
+              },
+              "B2": "C-1043",
+              "C2": 449.1,
+              "A3": {
+                "fecha": "2026-10-02"
+              },
+              "B3": "C-1017",
+              "C3": 298,
+              "A4": {
+                "fecha": "2026-10-06"
+              },
+              "B4": "C-1043",
+              "C4": 154,
+              "A5": {
+                "fecha": "2026-10-08"
+              },
+              "B5": "C-1088",
+              "C5": 192,
+              "A6": {
+                "fecha": "2026-10-09"
+              },
+              "B6": "C-1102",
+              "C6": 1180.5,
+              "A7": {
+                "fecha": "2026-10-14"
+              },
+              "B7": "C-1043",
+              "C7": 92,
+              "A8": {
+                "fecha": "2026-10-16"
+              },
+              "B8": "C-1017",
+              "C8": 635.4,
+              "A9": {
+                "fecha": "2026-10-21"
+              },
+              "B9": "C-1110",
+              "C9": 87.6,
+              "A10": {
+                "fecha": "2026-10-27"
+              },
+              "B10": "C-1125",
+              "C10": 410,
+              "A11": {
+                "fecha": "2026-10-30"
+              },
+              "B11": "C-1088",
+              "C11": 256.8
+            },
+            "formatos": {
+              "A2:A11": "fecha",
+              "C2:C11": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 11,
+              "C": 11,
+              "E": 17
+            },
+            "columnas": 5,
+            "filas": 11
+          },
+          "objetivo": "E2",
+          "inicial": "=CONTARA(B2:B11)",
+          "solucion": "=CONTARA(UNICOS(B2:B11))",
+          "alternativas": [
+            "=FILAS(UNICOS(B2:B11))"
+          ],
+          "errores_tipicos": [
+            "=CONTARA(B2:B11)",
+            "=CONTAR(B2:B11)",
+            "=CONTAR(UNICOS(B2:B11))"
+          ],
+          "variantes": [
+            {
+              "B11": "C-1131"
+            },
+            {
+              "B6": "C-1043",
+              "B9": "C-1043"
+            }
+          ],
+          "pistas": [
+            "CONTARA cuenta todas las celdas llenas, repetidas o no. Primero tienes que quedarte con la lista sin repetidos.",
+            "UNICOS(B2:B11) devuelve cada código una sola vez. Cuenta lo que devuelve.",
+            "=CONTARA(UNICOS(B2:B11))"
+          ],
+          "explicacion": "6 clientes distintos en 10 líneas. Es la cifra que debe darte Recuento distinto en la tabla dinámica del modelo: si no coincide, algo falla. Acabas de montar un total de control, y además esta fórmula funciona en cualquier Excel con UNICOS (2021 o posterior), por si quien recibe el archivo no tiene modelo de datos."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una **medida** es un cálculo con nombre que vive en el modelo y se recalcula en **cada celda** de la tabla dinámica. Se escribe en **DAX**, el lenguaje de fórmulas del modelo:\n\n`Total ventas := SUM(Ventas[Importe])`\n\nSe lee: la medida *Total ventas* es (`:=`) la suma de la columna Importe de la tabla Ventas. En la fila de Huesca suma solo Huesca; en la de Cableado, solo Cableado.\n\nSe crea en **Power Pivot › Medidas › Nueva medida**: el nombre va en *Nombre de medida* y `=SUM(Ventas[Importe])` en *Fórmula*."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Dónde funciona Power Pivot",
+          "md": "**Power Pivot** es la parte de Excel que guarda el modelo de datos y sus medidas. Solo está en **Excel para Windows** (en Microsoft 365, con las aplicaciones de escritorio; en versiones antiguas depende de la edición). En Mac y en Excel para la web no lo tienes. Si no ves su pestaña: **Archivo › Opciones › Complementos**, en *Administrar* elige **Complementos COM**, pulsa **Ir** y marca la casilla de **Power Pivot**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e6",
+          "modo": "test",
+          "pregunta": "Javier ha creado estas medidas en la tabla Ventas:\n\n`Total ventas := SUM(Ventas[Importe])`\n\n`Total coste := SUM(Ventas[Coste])`\n\n`Margen := [Total ventas] - [Total coste]`\n\nEn la tabla dinámica, con Provincia en Filas, ¿qué muestra *Margen* en la fila de **Navarra**?",
+          "opciones": [
+            {
+              "texto": "Lo vendido en Navarra menos lo que costó lo vendido en Navarra",
+              "correcta": true,
+              "porque": "Exacto: cada medida se recalcula con el filtro de su fila. Los corchetes solos, como [Total ventas], llaman a otra medida ya creada."
+            },
+            {
+              "texto": "El margen de toda la empresa, repetido en cada provincia",
+              "correcta": false,
+              "porque": "Eso pasaría con un número escrito a mano. La medida se recalcula en cada celda con lo que filtra esa celda: en la fila de Navarra, solo Navarra."
+            },
+            {
+              "texto": "Un error, porque la tabla Ventas no tiene ninguna columna llamada Margen",
+              "correcta": false,
+              "porque": "No hace falta esa columna: una medida puede usar otras medidas, que se escriben entre corchetes sin el nombre de la tabla."
+            }
+          ],
+          "explicacion": "Leer una medida es leer una receta: nombre, `:=` y el cálculo. Y recuerda que se calcula de nuevo en cada celda, con el filtro de esa fila y esa columna."
+        },
+        {
+          "tipo": "texto",
+          "md": "Falta el margen %. La tentación es añadir a Ventas una columna con el % de cada línea y pedir el promedio. **Error**: una línea de 9 € pesaría lo mismo que una de 900 €.\n\nEl margen % bueno es **margen total ÷ ventas totales**, y eso hace esta medida:\n\n`Margen % := DIVIDE([Margen]; [Total ventas])`\n\n**DIVIDE** divide sin dar error aunque las ventas sean 0 (deja la celda vacía). Como se recalcula en cada fila, el % de cada provincia y el del total salen bien."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "El separador en DAX",
+          "md": "Las funciones DAX no se traducen: SUM y DIVIDE se escriben siempre en inglés. El separador entre argumentos depende de la configuración de Windows: si al escribir DIVIDE Excel marca un error de sintaxis, cambia el `;` por una `,`."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n5m2l2-e7",
+          "modo": "formula",
+          "enunciado": "La misión de Carmen. Antes de enviarle el cuadro, compruebas con una fórmula lo que dirá tu medida Margen %. En **H2** calcula el **margen % de la provincia escrita en G2** con estas líneas: margen total (importe − coste) ÷ importe total de esa provincia. Si cambias G2 por otra provincia, tu fórmula tiene que seguir valiendo.",
+          "hoja": {
+            "celdas": {
+              "A1": "Línea",
+              "B1": "Provincia",
+              "C1": "Importe",
+              "D1": "Coste",
+              "E1": "Margen % línea",
+              "G1": "Provincia",
+              "H1": "Margen %",
+              "A2": "L-01",
+              "B2": "Huesca",
+              "C2": 1250,
+              "D2": 940,
+              "E2": "=(C2-D2)/C2",
+              "A3": "L-02",
+              "B3": "Navarra",
+              "C3": 380,
+              "D3": 250.8,
+              "E3": "=(C3-D3)/C3",
+              "A4": "L-03",
+              "B4": "Huesca",
+              "C4": 86,
+              "D4": 48.16,
+              "E4": "=(C4-D4)/C4",
+              "A5": "L-04",
+              "B5": "Zaragoza",
+              "C5": 2140,
+              "D5": 1562.2,
+              "E5": "=(C5-D5)/C5",
+              "A6": "L-05",
+              "B6": "Huesca",
+              "C6": 64.5,
+              "D6": 34.83,
+              "E6": "=(C6-D6)/C6",
+              "A7": "L-06",
+              "B7": "Navarra",
+              "C7": 912,
+              "D7": 656.64,
+              "E7": "=(C7-D7)/C7",
+              "A8": "L-07",
+              "B8": "Huesca",
+              "C8": 2310,
+              "D8": 1801.8,
+              "E8": "=(C8-D8)/C8",
+              "A9": "L-08",
+              "B9": "Zaragoza",
+              "C9": 145,
+              "D9": 92.8,
+              "E9": "=(C9-D9)/C9",
+              "G2": "Huesca"
+            },
+            "formatos": {
+              "C2:D9": "eur",
+              "E2:E9": "pct1",
+              "H2": "pct1"
+            },
+            "anchos": {
+              "B": 10,
+              "C": 11,
+              "D": 11,
+              "E": 14,
+              "G": 10,
+              "H": 11
+            },
+            "columnas": 8,
+            "filas": 9
+          },
+          "objetivo": "H2",
+          "solucion": "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMAR.SI(B2:B9;G2;C2:C9)",
+          "alternativas": [
+            "=1-SUMAR.SI(B2:B9;G2;D2:D9)/SUMAR.SI(B2:B9;G2;C2:C9)",
+            "=(SUMAR.SI.CONJUNTO(C2:C9;B2:B9;G2)-SUMAR.SI.CONJUNTO(D2:D9;B2:B9;G2))/SUMAR.SI.CONJUNTO(C2:C9;B2:B9;G2)",
+            "=LET(v;SUMAR.SI(B2:B9;G2;C2:C9);c;SUMAR.SI(B2:B9;G2;D2:D9);(v-c)/v)"
+          ],
+          "errores_tipicos": [
+            "=PROMEDIO.SI(B2:B9;G2;E2:E9)",
+            "=SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9)",
+            "=SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9)/SUMAR.SI(B2:B9;G2;C2:C9)",
+            "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMA(C2:C9)",
+            "=(SUMAR.SI(B2:B9;\"Huesca\";C2:C9)-SUMAR.SI(B2:B9;\"Huesca\";D2:D9))/SUMAR.SI(B2:B9;\"Huesca\";C2:C9)"
+          ],
+          "variantes": [
+            {
+              "G2": "Navarra"
+            },
+            {
+              "C8": 1650,
+              "D8": 1320
+            }
+          ],
+          "formato_resultado": "pct1",
+          "tolerancia": 0.0001,
+          "pistas": [
+            "Necesitas tres sumas con condición: el importe de la provincia de G2, el coste de esa provincia y, otra vez, el importe para dividir.",
+            "SUMAR.SI(B2:B9;G2;C2:C9) suma el importe de la provincia de G2. Cambia C por D para el coste. Ojo con los paréntesis: primero la resta, después la división.",
+            "=(SUMAR.SI(B2:B9;G2;C2:C9)-SUMAR.SI(B2:B9;G2;D2:D9))/SUMAR.SI(B2:B9;G2;C2:C9)"
+          ],
+          "explicacion": "Huesca: 23,9 %. La media de los % de sus líneas habría dicho 34,2 %, diez puntos de más, porque las líneas pequeñas pesan igual que las grandes. Tu fórmula hace lo mismo que la medida Margen %, así que ya puedes enviar a Carmen el cuadro sabiendo que cuadra. Y lo que has montado (relaciones, medidas y DAX) es la base de Power BI: allí se trabaja igual."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n5m2l2-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En una tabla dinámica del modelo de datos, ¿qué opción de *Resumir valores por* cuenta cada cliente una sola vez aunque tenga muchas ventas?",
+          "aceptadas": [
+            "Recuento distinto",
+            "recuento distinto",
+            "el recuento distinto",
+            "Recuento Distinto"
+          ],
+          "explicacion": "Recuento distinto. *Cuenta* contaría líneas de venta. Y solo aparece si la tabla dinámica sale del modelo de datos."
+        },
+        {
+          "id": "n5m2l2-q2",
+          "modo": "test",
+          "pregunta": "Añades Familia (de Productos) a tu tabla dinámica del modelo y aparece «Pueden ser necesarias relaciones entre tablas». ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Crear la relación Ventas[CodProducto] → Productos[CodProducto] en Datos › Relaciones",
+              "correcta": true,
+              "porque": "El aviso dice que falta un hilo entre las tablas que estás cruzando. Con la relación, cada venta encuentra su familia."
+            },
+            {
+              "texto": "Copiar la columna Familia a Ventas con BUSCARX",
+              "correcta": false,
+              "porque": "Funcionaría, pero vuelves a la tabla gigante con datos repetidos. La relación hace lo mismo sin copiar nada."
+            },
+            {
+              "texto": "Actualizar la tabla dinámica",
+              "correcta": false,
+              "porque": "Actualizar vuelve a leer los datos, pero no crea las relaciones que faltan."
+            }
+          ]
+        },
+        {
+          "id": "n5m2l2-q3",
+          "modo": "predice",
+          "enunciado": "Dos líneas: una con un 20 % de margen y otra con un 60 %. ¿Qué margen % total da esta fórmula, que calcula lo mismo que la medida Margen %?",
+          "hoja": {
+            "celdas": {
+              "A1": "Línea",
+              "B1": "Importe",
+              "C1": "Coste",
+              "D1": "Margen % línea",
+              "A2": "L-1",
+              "B2": 900,
+              "C2": 720,
+              "D2": "=(B2-C2)/B2",
+              "A3": "L-2",
+              "B3": 100,
+              "C3": 40,
+              "D3": "=(B3-C3)/B3"
+            },
+            "formatos": {
+              "B2:C3": "eur",
+              "D2:D3": "pct"
+            },
+            "anchos": {
+              "D": 15
+            },
+            "columnas": 6,
+            "filas": 3
+          },
+          "celda": "F2",
+          "formula": "=(SUMA(B2:B3)-SUMA(C2:C3))/SUMA(B2:B3)",
+          "formato_resultado": "pct",
+          "explicacion": "24 %: (1.000 − 760) ÷ 1.000. La media de los dos % daría un 40 %, muy lejos de la realidad, porque la línea de 100 € pesaría igual que la de 900 €.",
+          "respuesta": "24%"
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es una relación en el modelo de datos?",
+          "dorso": "Un hilo entre la clave única de una dimensión y la misma columna de la tabla de hechos. Cruza tablas sin copiar columnas."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde se crean las relaciones entre Tablas?",
+          "dorso": "Datos › Herramientas de datos › Relaciones › Nuevo. Tabla = hechos (varios); Tabla relacionada = dimensión (principal, valores únicos)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué cuenta «Recuento distinto»?",
+          "dorso": "Cada valor una sola vez (por ejemplo, clientes distintos). Solo en tablas dinámicas del modelo de datos."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Medida DAX del margen %",
+          "dorso": "Margen % := DIVIDE([Margen]; [Total ventas]). Margen total ÷ ventas totales, nunca la media de los % de cada línea."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde funcionan Power Pivot y el modelo de datos?",
+          "dorso": "Para crearlos, solo Excel para Windows: en Mac y en Excel para la web no se puede montar el modelo ni crear medidas. Power BI usa el mismo tipo de modelo y el mismo DAX."
+        }
+      ]
+    }
+  ]
+}

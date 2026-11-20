@@ -1,0 +1,383 @@
+{
+ "id": "n2m3l2",
+ "titulo": "Cortar textos: IZQUIERDA, DERECHA, EXTRAE y LARGO",
+ "minutos": 16,
+ "objetivo": "Sacar una parte de un código (los primeros caracteres, los últimos, los de en medio o lo que hay antes de un guion) para poder agrupar y contar por ella.",
+ "mision": {
+  "de": "Andrés Molina",
+  "puesto": "Jefe de compras y almacén",
+  "texto": "El programa me exporta el código del artículo con la familia delante: CAB-0425, MAG-1016… Para el inventario necesito la familia en su propia columna. Ojo, que no todas tienen tres letras: hay CANAL, TUBO, BR…",
+  "logro": "Ya sabes partir códigos, referencias y NIF para quedarte con el trozo que necesitas, aunque cada código tenga una longitud distinta."
+ },
+ "funciones": [
+  "IZQUIERDA",
+  "DERECHA",
+  "EXTRAE",
+  "LARGO",
+  "ENCONTRAR"
+ ],
+ "bloques": [
+  {
+   "tipo": "texto",
+   "md": "Los códigos de empresa llevan información escondida. En un código postal, **los dos primeros dígitos son la provincia**: 50 es Zaragoza, 31 Navarra, 25 Lleida.\n\nPara quedarte con el principio de un texto está **IZQUIERDA**:\n\n`IZQUIERDA(texto; cuántos)`\n\n`=IZQUIERDA(B2;2)` con 50012 en B2 da «50». Cuenta los caracteres desde la izquierda y se queda con esos."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e1",
+   "modo": "formula",
+   "enunciado": "Javier quiere repartir los clientes entre delegaciones según la provincia. En **C2** saca los **dos primeros dígitos** del código postal de B2 (debe salir **50**). Se copiará a C3:C5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Cliente",
+     "B1": "C. postal",
+     "C1": "Provincia",
+     "A2": "Instalaciones Ebro",
+     "B2": 50012,
+     "A3": "Montajes Arga",
+     "B3": 31008,
+     "A4": "Reformas Segre",
+     "B4": 25003,
+     "A5": "Electricidad Moncayo",
+     "B5": 50500
+    },
+    "anchos": {
+     "A": 20,
+     "B": 10
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C5"
+   ],
+   "solucion": "=IZQUIERDA(B2;2)",
+   "alternativas": [
+    "=EXTRAE(B2;1;2)"
+   ],
+   "errores_tipicos": [
+    "=DERECHA(B2;2)",
+    "=IZQUIERDA(B2;3)",
+    "=IZQUIERDA(A2;2)"
+   ],
+   "variantes": [
+    {
+     "B3": 22004
+    }
+   ],
+   "pistas": [
+    "Quieres el principio del texto: la función IZQUIERDA.",
+    "`IZQUIERDA(texto; cuántos)`: el texto es B2 y quieres 2 caracteres.",
+    "`=IZQUIERDA(B2;2)`"
+   ],
+   "explicacion": "50, 31, 25 y 50: Zaragoza, Navarra, Lleida y otra vez Zaragoza. Con esta columna Javier ya puede contar clientes por provincia con CONTAR.SI."
+  },
+  {
+   "tipo": "aviso",
+   "estilo": "cuidado",
+   "titulo": "Los códigos postales que empiezan por 0",
+   "md": "Si el código postal se guarda como número, Excel borra el cero inicial: 08001 (Barcelona) queda en 8001 y `IZQUIERDA` daría «80». Los códigos postales, los NIF y los teléfonos se guardan siempre como **texto**."
+  },
+  {
+   "tipo": "texto",
+   "md": "**DERECHA** hace lo mismo desde el final:\n\n`DERECHA(texto; cuántos)`\n\nEl NIF de una persona (su DNI) tiene 8 números y una **letra de control** al final. `=DERECHA(B2;1)` con 17456823F en B2 da «F».\n\nTruco para no liarte: piensa en qué lado del texto está lo que quieres y cuántos caracteres ocupa."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e2",
+   "modo": "formula",
+   "enunciado": "Lucía revisa los NIF de la plantilla. En **C2** saca la **letra final** del NIF de B2 (debe salir **F**). Se copiará a C3:C4.",
+   "hoja": {
+    "celdas": {
+     "A1": "Empleado",
+     "B1": "NIF",
+     "C1": "Letra",
+     "A2": "Elena Marco Lafuente",
+     "B2": "17456823F",
+     "A3": "Jorge Ibáñez Sola",
+     "B3": "72981034X",
+     "A4": "Rosa Garcés Úbeda",
+     "B4": "25390117A"
+    },
+    "anchos": {
+     "A": 22,
+     "B": 12
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C4"
+   ],
+   "solucion": "=DERECHA(B2;1)",
+   "alternativas": [
+    "=EXTRAE(B2;9;1)",
+    "=DERECHA(B2)"
+   ],
+   "errores_tipicos": [
+    "=IZQUIERDA(B2;1)",
+    "=DERECHA(B2;2)"
+   ],
+   "variantes": [
+    {
+     "B3": "29110455E"
+    }
+   ],
+   "pistas": [
+    "La letra está al final, a la derecha.",
+    "`DERECHA(texto; cuántos)`: B2 y 1 carácter.",
+    "`=DERECHA(B2;1)`"
+   ],
+   "explicacion": "F, X y A. Con IZQUIERDA y DERECHA ya sacas el principio o el final de cualquier código: prefijos, sufijos, letras de control."
+  },
+  {
+   "tipo": "texto",
+   "md": "¿Y si lo que quieres está **en medio**? Para eso está **EXTRAE**:\n\n`EXTRAE(texto; posición_inicial; cuántos)`\n\nEn el código de pedido «ZA-2026-0412», el año empieza en el carácter 4. Cuenta cada letra, número y guion:\n\n| Z | A | - | 2 | 0 | 2 | 6 | - | 0 | 4 | 1 | 2 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n\n`=EXTRAE(A2;4;4)` → «2026»: empieza en el 4 y coge 4."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e3",
+   "modo": "predice",
+   "enunciado": "Una compañera ha escrito esta fórmula para sacar el año de «ZA-2026-0412», pero se ha equivocado al contar. ¿Qué devuelve?",
+   "hoja": {
+    "celdas": {
+     "A1": "ZA-2026-0412"
+    },
+    "anchos": {
+     "A": 14
+    }
+   },
+   "celda": "B1",
+   "formula": "=EXTRAE(A1;3;4)",
+   "explicacion": "Empieza en el carácter 3, que es el guion, y coge 4: «-202». El error más típico al cortar textos es contar mal las posiciones: los guiones y los espacios también cuentan."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e4",
+   "modo": "formula",
+   "enunciado": "Javier quiere saber de qué año es cada pedido. En **B2** saca el **año** del código de A2 (debe salir **2026**). Se copiará a B3:B5.",
+   "hoja": {
+    "celdas": {
+     "A1": "Pedido",
+     "B1": "Año",
+     "A2": "ZA-2026-0412",
+     "A3": "PA-2025-1187",
+     "A4": "LL-2026-0033",
+     "A5": "ZA-2025-0950"
+    },
+    "anchos": {
+     "A": 14
+    }
+   },
+   "objetivo": "B2",
+   "copiar_a": [
+    "B3:B5"
+   ],
+   "solucion": "=EXTRAE(A2;4;4)",
+   "errores_tipicos": [
+    "=EXTRAE(A2;3;4)",
+    "=EXTRAE(A2;4;5)",
+    "=DERECHA(A2;4)"
+   ],
+   "variantes": [
+    {
+     "A3": "PA-2027-0001"
+    }
+   ],
+   "debe_usar": [
+    "EXTRAE"
+   ],
+   "pistas": [
+    "El año está en medio: la función EXTRAE.",
+    "Mira la tabla de posiciones: el año empieza en el carácter 4 y ocupa 4.",
+    "`=EXTRAE(A2;4;4)`"
+   ],
+   "explicacion": "2026, 2025, 2026 y 2025. Con EXTRAE sacas cualquier trozo de en medio si sabes dónde empieza y cuánto mide."
+  },
+  {
+   "tipo": "texto",
+   "md": "Hasta aquí todos los trozos medían lo mismo. Pero en los códigos de artículo la familia cambia de largo: «CAB-0425», «CANAL-4025», «BR-0200». Dos ayudantes:\n\n- `LARGO(texto)` cuenta los caracteres: `=LARGO(\"BR-0200\")` → 7.\n- `ENCONTRAR(lo_que_buscas; texto)` dice **en qué posición** está: `=ENCONTRAR(\"-\";\"BR-0200\")` → 3.\n\nENCONTRAR es la pieza clave: te dice dónde cortar."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e5",
+   "modo": "predice",
+   "enunciado": "¿En qué posición está el guion? Calcula qué devuelve la fórmula de **B1**.",
+   "hoja": {
+    "celdas": {
+     "A1": "CANAL-4025"
+    },
+    "anchos": {
+     "A": 12
+    }
+   },
+   "celda": "B1",
+   "formula": "=ENCONTRAR(\"-\";A1)",
+   "explicacion": "C-A-N-A-L son 5 caracteres, así que el guion es el sexto. Si quieres lo que hay antes del guion, coges uno menos: 5."
+  },
+  {
+   "tipo": "texto",
+   "md": "Ahora junta las piezas. «Lo que hay antes del guion» es: desde la izquierda, tantos caracteres como la posición del guion **menos uno** (para no llevarte el guion).\n\n`=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)`\n\nUna función dentro de otra: Excel calcula primero ENCONTRAR (6 en «CANAL-4025») y luego IZQUIERDA(A2;5) → «CANAL». Funciona igual con familias de 2, 3 o 5 letras."
+  },
+  {
+   "tipo": "hoja",
+   "titulo": "Antes del guion, sea cual sea su largo",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Posición del guion",
+     "C1": "Antes del guion",
+     "A2": "CANAL-4025",
+     "B2": "=ENCONTRAR(\"-\";A2)",
+     "C2": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)",
+     "A3": "BR-0200",
+     "B3": "=ENCONTRAR(\"-\";A3)",
+     "C3": "=IZQUIERDA(A3;ENCONTRAR(\"-\";A3)-1)"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 18,
+     "C": 30
+    }
+   },
+   "resaltar": [
+    "C2:C3"
+   ],
+   "mostrar_formulas": true
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e6",
+   "modo": "test",
+   "pregunta": "En C2 tienes `=IZQUIERDA(B2;2)` y sale **50**, pero pegado a la izquierda de la celda. En otra celda, `=C2=50` da **FALSO**. ¿Qué pasa?",
+   "opciones": [
+    {
+     "texto": "IZQUIERDA siempre devuelve texto: «50» parece un número pero es texto, y para Excel no es igual que el número 50.",
+     "correcta": true,
+     "porque": "Correcto. Todas las funciones de esta lección devuelven texto. Por eso se alinea a la izquierda. En la próxima lección verás cómo convertirlo en número con VALOR."
+    },
+    {
+     "texto": "La fórmula está mal: debería ser DERECHA.",
+     "correcta": false,
+     "porque": "La fórmula está bien: el 50 es justo lo que se quería. El problema es el tipo de dato, no el trozo cortado."
+    },
+    {
+     "texto": "Hay un espacio delante del 50.",
+     "correcta": false,
+     "porque": "No hay espacio: IZQUIERDA coge exactamente 2 caracteres, «5» y «0»."
+    },
+    {
+     "texto": "Excel compara mal los números de dos cifras.",
+     "correcta": false,
+     "porque": "Excel compara bien; lo que pasa es que está comparando un texto con un número."
+    }
+   ],
+   "explicacion": "Pista visual que te servirá siempre: los números se alinean a la derecha y los textos, a la izquierda. Si un «número» sale a la izquierda, sospecha que es texto."
+  },
+  {
+   "tipo": "ejercicio",
+   "id": "n2m3l2-e7",
+   "modo": "formula",
+   "enunciado": "El encargo de Andrés. En **C2** saca la **familia** del código de A2: todo lo que hay **antes del guion** (debe salir **CAB**; en la fila 3, **CANAL**; en la 4, **BR**). Se copiará a C3:C7.",
+   "hoja": {
+    "celdas": {
+     "A1": "Código",
+     "B1": "Descripción",
+     "C1": "Familia",
+     "A2": "CAB-0425",
+     "B2": "Cable 2,5 mm² rollo 100 m",
+     "A3": "CANAL-4025",
+     "B3": "Canaleta 40x25 tramo 2 m",
+     "A4": "BR-0200",
+     "B4": "Bridas 200 mm bolsa 100",
+     "A5": "MAG-1016",
+     "B5": "Magnetotérmico 2P 16 A",
+     "A6": "LED-2203",
+     "B6": "Panel LED 60x60 40 W",
+     "A7": "TUBO-2020",
+     "B7": "Tubo corrugado 20 mm"
+    },
+    "anchos": {
+     "A": 12,
+     "B": 26,
+     "C": 10
+    }
+   },
+   "objetivo": "C2",
+   "copiar_a": [
+    "C3:C7"
+   ],
+   "solucion": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)",
+   "alternativas": [
+    "=EXTRAE(A2;1;ENCONTRAR(\"-\";A2)-1)"
+   ],
+   "errores_tipicos": [
+    "=IZQUIERDA(A2;3)",
+    "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2))",
+    "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)+1)"
+   ],
+   "variantes": [
+    {
+     "A4": "MEC-1102"
+    }
+   ],
+   "debe_usar": [
+    "ENCONTRAR"
+   ],
+   "pistas": [
+    "Una cantidad fija (3) falla con CANAL o BR. Necesitas saber dónde está el guion: ENCONTRAR.",
+    "Dentro de IZQUIERDA, en lugar de un número, pon la posición del guion menos 1: `ENCONTRAR(\"-\";A2)-1`.",
+    "`=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)`"
+   ],
+   "explicacion": "Seis familias bien sacadas, sean de 2, 3 o 5 letras. Andrés ya puede contar artículos por familia. Esta fórmula (cortar por un separador) es de las más usadas con exportaciones de programas de gestión."
+  }
+ ],
+ "recuerda": [
+  {
+   "id": "n2m3l2-q1",
+   "modo": "respuesta_corta",
+   "pregunta": "¿Qué función cuenta cuántos caracteres tiene un texto, incluidos los espacios?",
+   "aceptadas": [
+    "LARGO",
+    "=LARGO",
+    "LARGO()"
+   ],
+   "explicacion": "`=LARGO(A2)`. Cuenta letras, números, guiones y también los espacios: en la próxima lección la usarás para cazar espacios invisibles."
+  },
+  {
+   "id": "n2m3l2-q2",
+   "modo": "predice",
+   "enunciado": "¿Qué devuelve la fórmula de **B1**?",
+   "hoja": {
+    "celdas": {
+     "A1": "PA-2025-1187"
+    },
+    "anchos": {
+     "A": 14
+    }
+   },
+   "celda": "B1",
+   "formula": "=DERECHA(A1;4)",
+   "explicacion": "Los 4 últimos caracteres: el número de pedido. Y recuerda: aunque parezca un número, es texto."
+  }
+ ],
+ "tarjetas": [
+  {
+   "tipo": "funcion",
+   "frente": "EXTRAE: sintaxis",
+   "dorso": "=EXTRAE(texto; posición_inicial; cuántos). Ej.: =EXTRAE(\"ZA-2026-0412\";4;4) → 2026"
+  },
+  {
+   "tipo": "funcion",
+   "frente": "Lo que hay antes del guion en A2",
+   "dorso": "=IZQUIERDA(A2;ENCONTRAR(\"-\";A2)-1)"
+  },
+  {
+   "tipo": "concepto",
+   "frente": "¿Qué tipo de dato devuelven IZQUIERDA, DERECHA y EXTRAE?",
+   "dorso": "Siempre texto, aunque parezca un número (sale alineado a la izquierda)."
+  },
+  {
+   "tipo": "concepto",
+   "frente": "Provincia en un código postal español",
+   "dorso": "Los dos primeros dígitos: =IZQUIERDA(B2;2). 50 = Zaragoza."
+  }
+ ]
+}
