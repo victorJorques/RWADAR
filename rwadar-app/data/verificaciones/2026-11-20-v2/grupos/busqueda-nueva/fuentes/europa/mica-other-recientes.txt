@@ -1,0 +1,31 @@
+ESMA · registro provisional MiCA (OTHER.csv), white papers actualizados desde el 25/10/2026
+Fuente: https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv
+Consulta: 2026-11-20T20:58:48Z (UTC) · SHA-256 del crudo 9cc2839bd13ff8822e892278bfe1bf14de226070ff6e91e4e6f065a9a2cadfae · 256050 bytes
+
+02/12/2026 | DELOREAN TECHNOLOGIES GLOBAL, INC. | ES | España no | https://ws.onehub.com/secure_share/336eogep
+https://ws.onehub.com/secure_share/1
+20/11/2026 | Asimov Ltd | NL | España sí | https://genlayer.micarwhitepapers.eu
+13/11/2026 | Heldfor GmbH | DE | España sí | https://www.heldfor.com/whitepaper
+13/11/2026 | CANOPY NETWORK CORP. | NL | España sí | https://canopy.micarwhitepapers.eu
+12/11/2026 | Bright Signal Invest AS | NO | España sí | https://disclosuretoken.com
+10/11/2026 | Crypto Risk Metrics GmbH | DE | España sí | https://white-paper.crypto-risk-metrics.com/de/awe-network-ffg-l305txrs8/index.h
+10/11/2026 | Crypto Risk Metrics GmbH | DE | España sí | https://white-paper.crypto-risk-metrics.com/en/caldera-ffg-fbj51gpw2/index.html
+10/11/2026 | Knowledge Process SA | FR | España sí | https://kno.academy/whitepaper
+10/11/2026 | Bera Chain Foundation | MT | España no | https://my.okx.com/whitepaper/berachain-bera.xhtml
+10/11/2026 | Layer 69 Inc. | MT | España no | https://docs.dogeos.com/token
+10/11/2026 | Kor Technologies Issuer Inc. | MT | España no | https://www.korprotocol.io/mica
+06/11/2026 | Teroxx Rewards Ltd | CY | España no | https://abloxx.com/en
+06/11/2026 | SELF Technology Limited | IE | España no | https://docs.self.app/micawhitepaper
+06/11/2026 | BitUtility S.A. | IE | España no | bitutility.micarwhitepapers.eu
+06/11/2026 | Strato Foundation | IE | España no | https://strato.nexus/mica
+02/11/2026 | Theo Research Ltd | IE | España no | https://theo.eunice.ai/mica_whitepaper
+02/11/2026 | The AntSeed Foundation | IE | España no | https://antseed.com/mika/whitepaper.xhtml
+02/11/2026 | Anoma Foundation | IE | España no | https://docs.anoma.foundation/mica-whitepaper-2.pdf
+02/11/2026 | Anoma Foundation | IE | España no | https://docs.anoma.foundation/mica-whitepaper-1.pdf
+02/11/2026 | Pairo Foundation | IE | España no | https://www.pairofoundation.com/white-paper/
+02/11/2026 | Pairo Foundation | IE | España no | https://www.pairofoundation.com/white-paper/
+02/11/2026 | PVP Group Limited | IE | España no | https://c8ntinuum.com/whitepaper
+02/11/2026 | infinifi Foundation | NL | España sí | https://www.infinifi.micarwhitepapers.eu
+27/10/2026 | Biogena GmbH & Co KG | AT | España no | www.biogena.com/biox
+26/10/2026 | Saturn Holdings (BVI) Limited | NL | España no | https://whitepaper.saturn-holdings.com
+ARTZZ.csv: 0 filas (vacío).

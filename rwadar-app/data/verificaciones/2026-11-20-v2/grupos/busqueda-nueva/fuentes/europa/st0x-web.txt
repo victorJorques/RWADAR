@@ -1,0 +1,9 @@
+ST0x · web del emisor
+Fuente: https://st0x.io/legal (y https://st0x.io/, /sitemap.xml, /llms.txt)
+Consulta: 2026-11-20T20:48:53Z (UTC) · HTTP 451 · SHA-256 5253e86462e7c9e9ce657da24d6429b8234a6154ba53f5bee19945e9274f7b6c
+
+Respuesta literal: «ST0x is not available in your country» / «This site is not available to visitors from your country.»
+Bloqueo geográfico del emisor desde nuestra salida (no es España). No se intentó otra vía.
+docs.st0x.io: el proxy no pudo conectar (502, sin DNS público).
+
+Contexto del 10/11 (copia de ese ciclo, grupos/ampliacion/fuentes/novedades/st0x-legal.txt): «Minting and redemption with the issuer require an account with an Eligible Broker»; oferta pública «in Liechtenstein, Germany, Luxembourg, France, Spain and Italy».
