@@ -177,7 +177,27 @@ fichas; 14 tarjetas cambian). En llano:
 
 ### 5.3 Ensayo «después de aplicar» en una copia aparte
 
-Ver `ensayo-despues.json` (resultado de cada paso, con su salida real).
+Copia con `git clone --local` y la carpeta del ciclo y el SQL copiados encima;
+el REST de Supabase simulado con lo que exportó PGlite. Resultado de cada paso
+en `ensayo-despues.json` (logs en
+`/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/`):
+
+- `preparar-entrega.mjs --repetir`: exit 0, mismo SHA `4380fcf3…`.
+- `comprobar-entrega.mjs --exportar`: exit 0, «correcto», 19 pruebas y 6 casos.
+- `despues-de-aplicar.mjs` antes de sincronizar: exit 1, se niega como debe
+  («el catálogo sincronizado no es la revisión c8727d7d-…»).
+- `sincronizar.js` (REST simulado): «25 plataformas verificadas, 5 descartadas y
+  22 ofertas clasificadas», CSV de 30 filas.
+- `despues-de-aplicar.mjs`: exit 0; transparencia al 20/11, 43 de 44 (mTBILL
+  «supervisada» se queda con su fecha del 10/11); 11 títulos de puntos fuertes al
+  20/11; mínimos cortos de Brickwise (Pottendorfer 81 €, Cohotel 110 €). Otra
+  vez: «Nada que cambiar: ya estaba hecho.»
+- `volcar-seed.js`: «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13
+  fuentes», sin diferencias.
+- `transparencia.mjs`: «22 ofertas con transparencia». `rwadar-fichas.js`:
+  «Archivos actualizados: 55».
+- `npm test` (raíz): exit 0 en 6 min 20 s; 11/11, 22/22, 79/79, 693 de 695 (2
+  omitidas), 367/367; 0 fallos.
 
 ## 6. Lo que no se aplicó tal cual (y por qué)
 
@@ -205,6 +225,11 @@ Ver `ensayo-despues.json` (resultado de cada paso, con su salida real).
    cita nada), el claim del expediente de Smart Cash (no se editan expedientes)
    y los textos de tarjeta que proponen los expedientes y DECISIONES no recoge.
    El punto «VL del 20/11» del montaje anterior desaparece: ya está aplicado.
+
+7. **DECISIONES §8 (A22, mTBILL `main-DOxid0Zj.js` con 404) y §9 (A23–A25,
+   radar por `cambios-radar.json`)** se añadieron a DECISIONES a las 20:46 y
+   20:53 UTC, con este re-montaje ya en marcha, y el encargo era solo §6: no
+   están en este SQL. Hay que relanzar el montaje con ellos.
 
 ## 7. Pasos para aplicarla
 

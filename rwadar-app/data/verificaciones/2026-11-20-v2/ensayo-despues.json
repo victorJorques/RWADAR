@@ -1,81 +1,101 @@
 {
   "tipo": "ensayo_despues_de_aplicar",
-  "ejecutadoEl": "2026-11-20T17:19:41Z–2026-11-20T17:25:41Z",
-  "como": "Copia aparte del repositorio (git clone --local de la carpeta de trabajo, en ee03e44, a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-2026-11-20), con toda la carpeta del ciclo 2026-11-20-v2 y el SQL de catalogo-2026-11-20-v2 copiados encima y node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción (lotes del 22/10 a la 2026-11-13) y guarda lo que leería un visitante (DIR = /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/rest-ensayo-2026-11-20); ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Como lectura «después de aplicar» (la que usa la prueba de la app ofertas-presentacion.test.cjs) se usaron esas vistas exportadas, copiadas en lectura-despues-de-aplicar/ SOLO en la copia y marcadas como simuladas. Nada sale a la red ni toca Supabase. TMPDIR apuntaba al scratchpad.",
-  "revision": "a513851a-c3ce-26b1-5dfa-4be8c359f8f8",
-  "huella": "a513851ac3ce26b15dfa4be8c359f8f8a31b25f129fe8140c57b8cce2f939978",
-  "sha256AplicarYAprobar": "4418ad20bafb5d186dc7f9639121b7f9a70d0822bb991d2f08fa2468fd75ef2f",
+  "ejecutadoEl": "2026-11-20T20:50:52Z–2026-11-20T20:57:40Z",
+  "como": "Copia aparte del repositorio (git clone --local, commit 4fcc35f, en /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-2026-11-20) con la carpeta del ciclo 2026-11-20-v2 y el SQL de catalogo-2026-11-20-v2 copiados encima y node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción y guarda lo que leería un visitante (DIR = /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/rest-ensayo2-2026-11-20); ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Para npm test, la lectura «después de aplicar» se simuló SOLO en la copia con esas vistas exportadas (lectura-despues-de-aplicar/, marcada como simulada). Nada sale a la red ni toca Supabase. TMPDIR en el scratchpad. Paso 03 falla a propósito (aún no sincronizado).",
+  "revision": "c8727d7d-cd09-d2cf-d3dc-da3158fe6812",
+  "huella": "c8727d7dcd09d2cfd3dcda3158fe68120294c835434408e2ab7934419052348a",
+  "sha256AplicarYAprobar": "4380fcf33f557b1b3e3771bb4071b457fc2de03700352d38320da978208dffe6",
   "pasos": [
     {
+      "paso": "01-preparar",
       "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/preparar-entrega.mjs --repetir",
-      "inicio": "2026-11-20T17:19:41Z",
-      "fin": "2026-11-20T17:19:42Z",
+      "inicio": "2026-11-20T20:50:52Z",
+      "fin": "2026-11-20T20:50:52Z",
       "exit": 0,
-      "salida": "misma revisión a513851a-c3ce-26b1-5dfa-4be8c359f8f8 y mismo SHA 4418ad20…ef2f; «repetido»: «mismos SHA-256 las dos veces»"
+      "salida": "  \"contraste-2026-11-20.json\": \"6f97934366c8228d5b49d3007e2bfb0a831b1b34826e9a4ec955ced619086f0a\", |   \"aplicar-y-aprobar.sql\": \"4380fcf33f557b1b3e3771bb4071b457fc2de03700352d38320da978208dffe6\", |   \"catalogo.sql\": \"9d13840fdb259fdee7183a3eed483310a975ea0d4c58544c9d910ac577cda0e5\", |   \"revision.json\": \"d2cb514faca8053bc88f093a8707c762ad601cf561ff02a0a788e97bc26315e2\" |  } | }",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/01-preparar.out"
     },
     {
-      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/comprobar-entrega.mjs --exportar=DIR",
-      "inicio": "2026-11-20T17:19:42Z",
-      "fin": "2026-11-20T17:20:02Z",
+      "paso": "02-comprobar",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/comprobar-entrega.mjs --exportar=<scratchpad>/rest-ensayo2-2026-11-20",
+      "inicio": "2026-11-20T20:50:52Z",
+      "fin": "2026-11-20T20:51:18Z",
       "exit": 0,
-      "salida": "«resultado: correcto» · 19 comprobaciones y 6 casos de fallo · 288 sentencias · 87 cambios en 20 fichas comprobados en lo que lee un visitante · 14 tarjetas cambian · sincronizador interno: CSV de 30 filas idéntico; 52 fichas web, ninguna nueva ni retirada"
+      "salida": " \"resultado\": \"correcto\", |  \"pruebas\": 19, |  \"casosDeFallo\": 6",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/02-comprobar.out"
     },
     {
-      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/despues-de-aplicar.mjs (antes de sincronizar)",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
-      "exit": 1,
-      "salida": "se niega, como debe: «NO: el catálogo sincronizado no es la revisión a513851a-c3ce-26b1-5dfa-4be8c359f8f8: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js»"
-    },
-    {
-      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-20-v2/ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
-      "exit": 0,
-      "salida": "«[REST simulado] catalogo_plataformas_publicas_v2 … -> 25 filas» · «descartada … -> 5 filas» · «catalogo_ofertas_publicas_v2 … -> 22 filas» · «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.» · «rwadar.csv regenerado: 30 filas.»"
-    },
-    {
+      "paso": "03-despues-antes-de-sincronizar",
       "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/despues-de-aplicar.mjs",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
-      "exit": 0,
-      "salida": "transparencia.json al 20/11: 13 mínimos cortos (11 de Brickwise, Switzerlend «1 acción (68,01 CHF, 20/11)», Hausera «Desde 100 € en Alicante 3 (20/11)»), 1 texto con fecha (motivo de Hausera: «el 20/11/2026 la emisión aún no estaba inscrita»); comprobaciones al 20/11: 43 de 44 (se queda mTBILL «supervisada», 10/11: el expediente de hoy no reabrió esa página de la BaFin); 11 de 11 títulos de puntos fuertes al 20/11"
+      "inicio": "2026-11-20T20:51:18Z",
+      "fin": "2026-11-20T20:51:18Z",
+      "exit": 1,
+      "salida": "NO: el catálogo sincronizado no es la revisión c8727d7d-cd09-d2cf-d3dc-da3158fe6812: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js + actual - expected (se niega, como debe: aún no se ha sincronizado)",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/03-despues-antes-de-sincronizar.out"
     },
     {
-      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/despues-de-aplicar.mjs (otra vez)",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
+      "paso": "04-sincronizar",
+      "orden": "RWADAR_REST_SIMULADO=<scratchpad>/rest-ensayo2-2026-11-20 node -r ./rwadar-app/data/verificaciones/2026-11-20-v2/ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "inicio": "2026-11-20T20:51:18Z",
+      "fin": "2026-11-20T20:51:19Z",
       "exit": 0,
-      "salida": "«Nada que cambiar: ya estaba hecho.»"
+      "salida": "[REST simulado] catalogo_plataformas_publicas_v2?select=*&limit=257 -> 25 filas | [REST simulado] plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(ur -> 5 filas | [REST simulado] catalogo_ofertas_publicas_v2?select=*&limit=1001 -> 22 filas | Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas. | rwadar.csv regenerado: 30 filas.",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/04-sincronizar.out"
     },
     {
-      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-20-v2/ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
+      "paso": "05-despues",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/despues-de-aplicar.mjs",
+      "inicio": "2026-11-20T20:51:19Z",
+      "fin": "2026-11-20T20:51:19Z",
       "exit": 0,
-      "salida": "«02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» Sin diferencias en 02_seed.sql (git status no lo da como cambiado)"
+      "salida": "Comprobaciones de transparencia al 20/11: 43 de 44. Con su fecha anterior: | Títulos de puntos fuertes con fecha de consulta: 11 de 11 pasan al 20/11. | Mínimos cortos: apartamento-vacacional-hinterstoder-50 «Desde 75 € la participación (20/11)», drautalresidenz-paternion «Desde 70 € la participación (20/11)», fotovoltaica-cohotel «Desde 110 € la participación (20/11)», fotovoltaica-greenpoint «Desde 102 € la participación (20/11)», randhartingergasse-9-viena «Desde 78 € la participación (20/11)», local-de-estanco-klagenfurt «Desde 95 € la partici | hausera-proximas-ofertas · documentoEspana.motivo: «El documento de emisión de Alicante 3 es público, pero no es un folleto ni un KID: la CNMV no lo ha revisado y el 20/11/2026 la emisión aún no estaba inscrita. Además, sus documentos no coinciden en cuánto hay que colocar para que la emisión siga adelante.»",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/05-despues.out"
     },
     {
+      "paso": "06-despues-otra-vez",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20-v2/despues-de-aplicar.mjs",
+      "inicio": "2026-11-20T20:51:19Z",
+      "fin": "2026-11-20T20:51:19Z",
+      "exit": 0,
+      "salida": "Nada que cambiar: ya estaba hecho. | Comprobaciones de transparencia al 20/11: 43 de 44. Con su fecha anterior: | Títulos de puntos fuertes con fecha de consulta: 0 de 0 pasan al 20/11. | Mínimos cortos: apartamento-vacacional-hinterstoder-50 «Desde 75 € la participación (20/11)», drautalresidenz-paternion «Desde 70 € la participación (20/11)», fotovoltaica-cohotel «Desde 110 € la participación (20/11)», fotovoltaica-greenpoint «Desde 102 € la participación (20/11)», randhartingergasse-9-viena «Desde 78 € la participación (20/11)», local-de-estanco-klagenfurt «Desde 95 € la partici | hausera-proximas-ofertas · documentoEspana.motivo: «El documento de emisión de Alicante 3 es público, pero no es un folleto ni un KID: la CNMV no lo ha revisado y el 20/11/2026 la emisión aún no estaba inscrita. Además, sus documentos no coinciden en cuánto hay que colocar para que la emisión siga adelante.»",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/06-despues-otra-vez.out"
+    },
+    {
+      "paso": "07-volcar-seed",
+      "orden": "RWADAR_REST_SIMULADO=<scratchpad>/rest-ensayo2-2026-11-20 node -r ./rwadar-app/data/verificaciones/2026-11-20-v2/ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js && git status --short rwadar-app/db/02_seed.sql && echo seed-status-fin",
+      "inicio": "2026-11-20T20:51:19Z",
+      "fin": "2026-11-20T20:51:20Z",
+      "exit": 0,
+      "salida": "[REST simulado] categorias?select=*&order=orden -> 6 filas | [REST simulado] regiones?select=*&order=slug -> 8 filas | [REST simulado] radar_publico?select=* -> 25 filas | [REST simulado] plataformas?estado=eq.descartada&select=slug,nombre,etiqueta_descarte,motivo_descarte,verif -> 5 filas | 02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes. | seed-status-fin",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/07-volcar-seed.out"
+    },
+    {
+      "paso": "08-transparencia",
       "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:02Z",
+      "inicio": "2026-11-20T20:51:20Z",
+      "fin": "2026-11-20T20:51:20Z",
       "exit": 0,
-      "salida": "«Transparencia escrita: 22 ofertas con transparencia»"
+      "salida": "Transparencia escrita: 22 ofertas con transparencia",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/08-transparencia.out"
     },
     {
+      "paso": "09-fichas",
       "orden": "node rwadar-fichas.js",
-      "inicio": "2026-11-20T17:20:02Z",
-      "fin": "2026-11-20T17:20:03Z",
+      "inicio": "2026-11-20T20:51:20Z",
+      "fin": "2026-11-20T20:51:20Z",
       "exit": 0,
-      "salida": "«Archivos actualizados: 55» (22 fichas de oferta, 25 de plataforma, 5 de descartadas, cambios.html, metodologia.html y sitemap.xml)"
+      "salida": "Archivos actualizados: 55",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/09-fichas.out"
     },
     {
-      "orden": "npm test (raíz; con la lectura «después de aplicar» simulada en la copia)",
-      "inicio": "2026-11-20T17:20:03Z",
-      "fin": "2026-11-20T17:25:41Z",
+      "paso": "10-npm-test",
+      "orden": "npm test",
+      "inicio": "2026-11-20T20:51:20Z",
+      "fin": "2026-11-20T20:57:40Z",
       "exit": 0,
-      "salida": "exit 0 en 5 min 38 s: test:db, test:web, test:qr, test:mobile, test:tools y test:acceso pasan enteros (resúmenes node --test: 11, 22, 79, 119, 693 y 367 pruebas, 0 fallos); incluye motor.test.mjs y flujo.test.mjs"
+      "salida": "exit 0 en 6 min 20 s (20:51:20–20:57:40 UTC): seis suites node --test con 11/11, 22/22, 79/79, 693 de 695 (2 omitidas, 0 fallos) y 367/367 pruebas que pasan, 0 fallos; incluye motor.test.mjs y flujo.test.mjs",
+      "log": "/tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/ensayo-log2/10-npm-test.out"
     }
   ],
-  "archivosQueCambian": "En la copia, después de todo: transparencia.json, rwadar-movil/lib/transparencia-contenido.js, 2 de rwadar-site/assets (catálogo sincronizado y CSV), 22 fichas de oferta, 25 de plataforma, 5 de descartadas, index.html, cambios.html, metodologia.html y sitemap.xml (60 archivos, 469 líneas cambiadas). 02_seed.sql no cambia."
+  "archivosQueCambian": "En la copia, después de todo: 71 entradas en git status (67 files changed, 1279 insertions(+), 1104 deletions(-)); 02_seed.sql sin diferencias."
 }
