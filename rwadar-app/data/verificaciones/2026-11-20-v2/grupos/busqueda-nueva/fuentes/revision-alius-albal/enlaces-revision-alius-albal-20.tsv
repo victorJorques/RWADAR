@@ -1,0 +1,22 @@
+hora	url	HEAD_final	HEAD_redirs	GET_final	GET_bytes	GET_redirs	ct	sha
+2026-11-20T21:28:22Z	https://aliuscap.com/projects/albal	200	0	200	4371	0	text/html	4cbaba0dd2e0bec8
+2026-11-20T21:28:24Z	https://chainid.network/chains_mini.json	200	0	200	778383	0	application/json; charset=utf-8	f4403f9fcee38c73
+2026-11-20T21:28:25Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334	404	0	200	341010	0	application/pdf	9f082cc43e8ac669
+2026-11-20T21:28:28Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336	404	0	200	6396690	0	application/pdf	df8e1f1bfc8c50a0
+2026-11-20T21:28:32Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/tabs	404	0	200	7148	0	application/json; charset=UTF-8	959bb021f7204cb7
+2026-11-20T21:28:34Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed	404	0	200	83	0	application/json; charset=UTF-8	e48d31944a0e9adb
+2026-11-20T21:28:37Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress	404	0	200	20489	0	application/json; charset=UTF-8	f155958fc91aa8ef
+2026-11-20T21:28:39Z	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRE_CAMPAIGN/expand/images,type,asset,campaign,campaign_progress,extra_fields,asset_issuance_relational	404	0	200	19889	0	application/json; charset=UTF-8	d6a6c0fd83113474
+2026-11-20T21:28:41Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees	200	0	200	211458	0	text/html; charset=utf-8	b7549956654c40a0
+2026-11-20T21:28:45Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius	200	0	200	211326	0	text/html; charset=utf-8	7a9b9710329e4a9e
+2026-11-20T21:28:49Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gardum	200	0	200	211348	0	text/html; charset=utf-8	41fc2ad0898dcbea
+2026-11-20T21:28:53Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini	200	0	200	216914	0	text/html; charset=utf-8	5fca61f265e8495a
+2026-11-20T21:28:57Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Nouval	200	0	200	211348	0	text/html; charset=utf-8	12012f33da62a006
+2026-11-20T21:29:00Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Smartnex	200	0	200	211392	0	text/html; charset=utf-8	5117369ebe629392
+2026-11-20T21:29:04Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20Flip	200	0	200	211436	0	text/html; charset=utf-8	24d996bccd310ba0
+2026-11-20T21:29:08Z	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenFlip	200	0	200	211414	0	text/html; charset=utf-8	4877e6a3d6fdc8f6
+2026-11-20T21:29:11Z	https://www.cnmv.es/portal/consultas/esi/erir.aspx?lang=es	403	3	403	12239	3	text/html; charset=utf-8	c8df9862e561588e
+2026-11-20T21:29:15Z	https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es	200	0	200	152454	0	text/html; charset=utf-8	12ac95b9d7dc3a31
+2026-11-20T21:29:18Z	https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793	200	1	200	154642	1	text/html; charset=utf-8	62cd4c3f276aee41
+2026-11-20T21:29:21Z	https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es	200	1	200	165165	1	text/html; charset=utf-8	3c4be31459315381
+2026-11-20T21:29:24Z	https://www.token-flip.com/	200	1	200	48654	1	text/html; charset=UTF-8	3ee482131e464f53

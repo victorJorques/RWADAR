@@ -1,0 +1,64 @@
+
+=== A · tal cual (coleccion null = principales, estadoRevision no_verificable)
+{
+ "lineaTarjeta": "Mínimo No verificado · España Sin confirmar",
+ "loEsencial": {
+  "minimo": "Sin mínimo vigente en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida no documentada",
+  "salidaCorta": "Sin documentar"
+ },
+ "estado": "No se pudo confirmar la apertura",
+ "cifrasVigentes": false,
+ "vencida": false
+}
+
+=== B · como «Próximas» (en_camino, no_verificable), como Hausera
+{
+ "lineaTarjeta": "Mínimo 500 € (1 token) · España Sin confirmar",
+ "loEsencial": {
+  "minimo": "No documentado en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida no documentada",
+  "salidaCorta": "Sin documentar"
+ },
+ "estado": "Anuncio documentado · apertura sin confirmar",
+ "cifrasVigentes": false,
+ "vencida": false
+}
+
+=== C · hipotético principales «actual»
+{
+ "lineaTarjeta": "Mínimo 500 € (1 token) · España Sin confirmar",
+ "loEsencial": {
+  "minimo": "No documentado en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida no documentada",
+  "salidaCorta": "Sin documentar"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones",
+ "cifrasVigentes": true,
+ "vencida": false
+}
+
+=== D · próximas con salida y acceso redactados (hipotético)
+{
+ "lineaTarjeta": "Mínimo 500 € (1 token) · España Sí",
+ "loEsencial": {
+  "minimo": "No documentado en euros",
+  "espana": "Sí, según la fuente",
+  "salida": "Salida: Sin mercado secundario: se cobra al vencimiento, 15 meses después del cierre",
+  "salidaCorta": "Sin mercado secundario: se cobra al…"
+ },
+ "estado": "Anuncio documentado · apertura sin confirmar",
+ "cifrasVigentes": false,
+ "vencida": false
+}
+
+=== claves del modelo ausentes en la prueba: (ninguna)
+
+=== textos
+titulo: 39 caracteres · idioma «» · sin «por …» · sin palabras vigiladas · fechas: -
+resumen: 133 caracteres · idioma «es» · sin «por …» · sin palabras vigiladas · fechas: 20/11/2026
+minimo: 15 caracteres · idioma «» · sin «por …» · sin palabras vigiladas · fechas: -
+resumenCorto: 118 caracteres · idioma «es» · sin «por …» · sin palabras vigiladas · fechas: -
