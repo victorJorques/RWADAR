@@ -8,9 +8,10 @@
      bash tal cual salen del YAML, con un doble de psql que pasa cada orden
      a PGlite (y después hace de pg_net), y dobles de node (la siembra),
      sleep y curl: ensayo-35 (no deja nada), aplicar-35, verificar-35,
-     probar-coingecko, sembrar, encender, estado, apagar y deshacer; sin
-     DIRECTO, las que cambian no hacen nada; con las dos copias de la 35
-     distintas, para.
+     ensayo-37 (no deja nada), aplicar-37, verificar-37 (el arreglo de la
+     secuencia de tokens, 20/11), probar-coingecko, sembrar, encender,
+     estado, apagar y deshacer; sin DIRECTO, las que cambian no hacen nada;
+     con las dos copias de la 35 (o de la 37) distintas, para.
    - El paso nuevo del flujo diario («Comprobar el gráfico en directo»).
        node probar-mercado-directo-flujo.mjs
    ===================================================================== */
@@ -98,7 +99,7 @@ const fetchPega = ({ falla = [], falla5m = [], sinDiaria = false } = {}) => asyn
 /* ---------- 2 · Revisión del flujo ---------- */
 {
   const opciones = FLUJO.match(/options:\n((?: {10}- .+\n)+)/)[1].trim().split('\n').map((l) => l.trim().slice(2));
-  paso('el flujo tiene exactamente sus 9 acciones', isDeepStrictEqual(opciones, ['ensayo-35', 'verificar-35', 'aplicar-35', 'probar-coingecko', 'sembrar', 'encender', 'apagar', 'deshacer', 'estado']));
+  paso('el flujo tiene exactamente sus 12 acciones', isDeepStrictEqual(opciones, ['ensayo-35', 'verificar-35', 'aplicar-35', 'ensayo-37', 'verificar-37', 'aplicar-37', 'probar-coingecko', 'sembrar', 'encender', 'apagar', 'deshacer', 'estado']));
   const codigo = sinAlmohadillas(FLUJO);
   const pasos = [...codigo.matchAll(/\n {6}- name: (.+)/g)].map((m) => m[1]);
   paso('primero «Solo desde main»; solo lectura del repositorio; la cola de las escrituras; TLS; acciones por SHA; sin credenciales de git',
@@ -257,7 +258,7 @@ const esquema = () => valor(db, "select to_regnamespace('rwadar_mercado') is not
 
 if (hayBash) {
   /* ---------- 4 · Las acciones, de verdad ---------- */
-  for (const a of ['aplicar-35', 'probar-coingecko', 'sembrar', 'encender', 'apagar', 'deshacer']) {
+  for (const a of ['aplicar-35', 'aplicar-37', 'probar-coingecko', 'sembrar', 'encender', 'apagar', 'deshacer']) {
     const r = await accion(a, '');
     paso(`sin DIRECTO, «${a}» se para antes de tocar nada`, r.comprobar.estado !== 0 && /escribe DIRECTO/.test(r.comprobar.texto) && r.comprobar.llamadas.length === 0);
   }
@@ -269,6 +270,12 @@ if (hayBash) {
     fs.writeFileSync(path.join(copia, 'rwadar-app/supabase/migrations/20261114090000_mercado_directo.sql'), leer('db/35_mercado_directo.sql') + '-- otra\n');
     const r = await correPaso(FLUJO, 'Comprobar la acción', { ACCION: 'verificar-35', CONFIRMAR: '' }, copia);
     paso('con las dos copias de la 35 distintas, se para', r.estado !== 0 && /no coinciden/.test(r.texto));
+    // Las de la 35 iguales y las de la 37 distintas: también se para.
+    fs.copyFileSync(path.join(raiz, 'db/35_mercado_directo.sql'), path.join(copia, 'rwadar-app/supabase/migrations/20261114090000_mercado_directo.sql'));
+    for (const f of fs.readdirSync(path.join(raiz, 'db')).filter((n) => n.startsWith('37_'))) fs.copyFileSync(path.join(raiz, 'db', f), path.join(copia, 'rwadar-app/db', f));
+    fs.writeFileSync(path.join(copia, 'rwadar-app/supabase/migrations/20261120180000_mercado_directo_secuencia.sql'), leer('db/37_mercado_directo_secuencia.sql') + '-- otra\n');
+    const r37 = await correPaso(FLUJO, 'Comprobar la acción', { ACCION: 'verificar-37', CONFIRMAR: '' }, copia);
+    paso('con las dos copias de la 37 distintas, se para', r37.estado !== 0 && /copias de la 37 no coinciden/.test(r37.texto));
   }
   const ensayo = await accion('ensayo-35', '');
   paso(`ensayo-35: la 35 y su verificador pasan y no queda nada (${ensayo.pasos.map((p) => p.estado).join(',')})`,
@@ -276,6 +283,22 @@ if (hayBash) {
   const aplicar = await accion('aplicar-35');
   paso('aplicar-35 (con DIRECTO): aplica y el verificador pasa (apagado, sin relojes)', aplicar.bien && aplicar.comprobar.salida.COPIA === 'si' && (await esquema())
     && /RWAdar 35 OK: directo apagado, 0 relojes/.test(aplicar.pasos.at(-1).texto));
+  // La 37 (el arreglo de la secuencia de tokens): ensayo sin dejar nada, aplicar con copia y verificar.
+  const cuerpo37 = () => valor(db, "select position('RWAdar 37' in prosrc) > 0 from pg_proc where oid = to_regprocedure('rwadar_mercado.guardar_mercados(text,timestamp with time zone)')");
+  const ensayo37 = await accion('ensayo-37', '');
+  paso(`ensayo-37: la 37 y su verificador pasan y no queda nada (${ensayo37.pasos.map((p) => p.estado).join(',')})`,
+    ensayo37.bien && ensayo37.pasos.length === 1 && /ENSAYO CORRECTO: 37_mercado_directo_secuencia\.sql/.test(ensayo37.pasos[0].texto)
+    && /RWAdar 37 OK/.test(ensayo37.pasos[0].texto) && !(await cuerpo37()));
+  const verificar37antes = await accion('verificar-37', '');
+  paso('verificar-37 antes de aplicarla: falla (sigue el alta de la 35) y no cambia nada', !verificar37antes.bien
+    && /sigue con el alta de la 35/.test(verificar37antes.pasos.at(-1).texto) && !(await cuerpo37()));
+  const aplicar37 = await accion('aplicar-37');
+  paso('aplicar-37 (con DIRECTO): copia antes, aplica y pasan los verificadores de la 35 y de la 37',
+    aplicar37.bien && aplicar37.comprobar.salida.COPIA === 'si' && aplicar37.pasos.map((p) => p.paso).join('|') === 'Aplicar|Verificar'
+    && /RWAdar 35 OK/.test(aplicar37.pasos.at(-1).texto) && /RWAdar 37 OK/.test(aplicar37.pasos.at(-1).texto) && (await cuerpo37()));
+  const verificar37 = await accion('verificar-37', '');
+  paso('verificar-37: solo lee y pasan los dos verificadores', verificar37.bien && verificar37.pasos.map((p) => p.paso).join('|') === 'Verificar'
+    && /RWAdar 35 OK/.test(verificar37.pasos[0].texto) && /RWAdar 37 OK/.test(verificar37.pasos[0].texto));
   respuestasCG = [{ status: 429, contenido: '{}', headers: { 'retry-after': '40' } }];
   const prueba = await accion('probar-coingecko');
   paso(`probar-coingecko: una llamada desde la base, apagada, y dice qué respondió, también de la diaria publicada (${prueba.pasos[0]?.stdout.trim()})`,
