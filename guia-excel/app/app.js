@@ -72,7 +72,8 @@
 
   /* ================= progreso ================= */
   const CLAVE = 'hoja-a-hoja-progreso-v1';
-  let P = { v: 1, actualizado: 0, lecciones: {}, ej: {}, tarjetas: {}, proyectos: {}, checklist: {}, prueba: null, examen: null, ultima: null, tema: null, xp: 0, dias: {}, meta: 50, estrellas: {}, logros: {}, examenes: {}, nombre: '', sonido: true, mejorRacha: 0, repasos: 0, examenFinal: null, certificado: null };
+  const progresoVacio = () => ({ v: 1, actualizado: 0, lecciones: {}, ej: {}, tarjetas: {}, proyectos: {}, checklist: {}, prueba: null, examen: null, ultima: null, tema: null, xp: 0, dias: {}, meta: 50, estrellas: {}, logros: {}, examenes: {}, nombre: '', sonido: true, mejorRacha: 0, repasos: 0, examenFinal: null, certificado: null, cofres: {} });
+  let P = progresoVacio();
   try { const g = JSON.parse(localStorage.getItem(CLAVE) || 'null'); if (g && g.v === 1) P = Object.assign(P, g); } catch (e) { /* sin almacenamiento */ }
   let dbDoc = null; let temporizador = null;
   // Dónde queda guardado el progreso: 'comprobando' mientras el visor responde, 'cuenta' cuando una escritura
@@ -134,13 +135,16 @@
       h('div', { class: 'fila' }, boton, h('a', { class: 'boton fantasma peq', href: '#perfil' }, 'Cargar una copia')));
   }
   function fusionar(a, b) { // une dos progresos quedándose con lo más avanzado
+    // «Empezar de cero» deja la marca «reinicio»: lo guardado antes de esa fecha (otro navegador, la cuenta) ya no vuelve.
+    if ((a.reinicio || 0) > (b.actualizado || 0)) return JSON.parse(JSON.stringify(a));
+    if ((b.reinicio || 0) > (a.actualizado || 0)) return JSON.parse(JSON.stringify(b));
     const r = JSON.parse(JSON.stringify(a.actualizado >= b.actualizado ? a : b));
     const otro = a.actualizado >= b.actualizado ? b : a;
     for (const [k, v] of Object.entries(otro.lecciones || {})) if (!r.lecciones[k] || (r.lecciones[k].estado !== 'hecha' && v.estado === 'hecha')) r.lecciones[k] = v;
     for (const [k, v] of Object.entries(otro.ej || {})) if (!r.ej[k] || (!r.ej[k].ok && v.ok)) r.ej[k] = v;
     for (const [k, v] of Object.entries(otro.tarjetas || {})) if (!r.tarjetas[k]) r.tarjetas[k] = v;
     r.xp = Math.max(a.xp || 0, b.xp || 0); r.dias = { ...(otro.dias || {}), ...(r.dias || {}) };
-    for (const k of ['estrellas', 'logros', 'examenes', 'proyectos']) r[k] = { ...(otro[k] || {}), ...(r[k] || {}) };
+    for (const k of ['estrellas', 'logros', 'examenes', 'proyectos', 'cofres']) r[k] = { ...(otro[k] || {}), ...(r[k] || {}) };
     return r;
   }
   function estadoLeccion(id) { return (P.lecciones[id] || {}).estado || 'pendiente'; }
@@ -1006,7 +1010,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     silencio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="m16 9.5 5 5m0-5-5 5"/></svg>',
   };
   const icono = (n, cls) => { const s = h('span', { class: cls || '', html: ICO[n] }); s.style.display = 'inline-grid'; return s; };
-  const COLORES_NIVEL = ['#5b7083', '#1f4fd1', '#0f8a6a', '#7a4bd1', '#c9572a', '#b0157a', '#c98a00'];
+  const COLORES_NIVEL = ['#0b8a9a', '#1f4fd1', '#0f8a6a', '#7a4bd1', '#c9572a', '#b0157a', '#c98a00'];
   function svgInsignia(i, gris) {
     const c = COLORES_NIVEL[i % COLORES_NIVEL.length];
     return `<svg class="insignia-nivel${gris ? ' gris' : ''}" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 57 17.5v29L32 61 7 46.5v-29Z" fill="${c}"/><path d="M32 9.5 51.5 20.8v22.4L32 54.5 12.5 43.2V20.8Z" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><text x="32" y="40" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="22" fill="#fff">${i}</text></svg>`;
@@ -1033,11 +1037,12 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   let xpSesion = 0;
   function ganarXP(n, origen) {
     if (!n) return;
-    const rAntes = rango(P.xp).n;
+    const rAntes = rango(P.xp).n; const hoyAntes = xpHoy(); const meta = P.meta || 50;
     P.xp = (P.xp || 0) + n; P.dias = P.dias || {}; P.dias[hoy()] = (P.dias[hoy()] || 0) + n; xpSesion += n;
     P.mejorRacha = Math.max(P.mejorRacha || 0, rachaActual());
     if (origen) { const r = origen.getBoundingClientRect ? origen.getBoundingClientRect() : null; if (r) { const f = h('div', { class: 'xp-flotante', style: { left: (r.left + r.width / 2 - 20) + 'px', top: (r.top - 10) + 'px' } }, '+' + n + ' XP'); document.body.append(f); setTimeout(() => f.remove(), 1200); } }
     if (rango(P.xp).n > rAntes) { ascensos.push(rango(P.xp).nombre); if (!document.body.classList.contains('jugando')) { toast('¡Ascenso! Ahora eres ' + rango(P.xp).nombre); sonidoFin(); } }
+    if (hoyAntes < meta && xpHoy() >= meta) { metaHoyCumplida = true; if (!document.body.classList.contains('jugando')) { toast('¡Meta de hoy cumplida!'); confeti(); } }
     pintarHUD(true);
   }
   let ascensos = [];
@@ -1060,6 +1065,132 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const ps = Array.from({ length: 110 }, (_, i) => ({ x: W / 2 + (Math.random() - .5) * 120, y: H * 0.35, vx: (Math.random() - .5) * 13, vy: -Math.random() * 13 - 4, r: Math.random() * 6 + 4, a: Math.random() * 6, c: cols[i % cols.length] }));
     let t = 0; (function paso() { ctx.clearRect(0, 0, W, H); for (const p of ps) { p.vy += 0.42; p.x += p.vx; p.y += p.vy; p.a += 0.2; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore(); } if (++t < 95) requestAnimationFrame(paso); else c.remove(); })();
   }
+
+  /* ================= capa de diversión: A1, la mascota ================= */
+  // A1 es la celda seleccionada del logotipo (borde azul y controlador de relleno en la esquina) con cara.
+  function svgMascota(estado) {
+    const bocas = {
+      normal: '<path d="M25 37q7 5.5 14 0" fill="none" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/>',
+      feliz: '<path d="M23 34.5q9 12 18 0z" fill="var(--tinta)"/><path d="M27 39.5q5 3 10 0" fill="none" stroke="var(--fuego)" stroke-width="2.4" stroke-linecap="round"/>',
+      fiesta: '<path d="M22 33.5q10 14 20 0z" fill="var(--tinta)"/><path d="M26.5 39.5q5.5 3.4 11 0" fill="none" stroke="var(--fuego)" stroke-width="2.4" stroke-linecap="round"/>',
+      animo: '<path d="M26.5 38.5q5.5 3 11 0" fill="none" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/><path d="M50 19q2 4 0 5.5q-2-1.5 0-5.5z" fill="var(--entrada)" opacity=".55"/>',
+      pensando: '<path d="M27 38.5h9" fill="none" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/>',
+    };
+    const ojoY = estado === 'pensando' ? 25 : 27.5;
+    const mejillas = ['feliz', 'fiesta'].includes(estado) ? '<circle cx="17.5" cy="35" r="3.4" fill="var(--fuego)" opacity=".3"/><circle cx="46.5" cy="35" r="3.4" fill="var(--fuego)" opacity=".3"/>' : '';
+    const brazos = estado === 'fiesta' ? '<path d="M9 30L2.5 17M55 30l6.5-13" stroke="var(--entrada)" stroke-width="4" stroke-linecap="round"/>'
+      : estado === 'feliz' ? '<path d="M9 33L3 25M55 33l6-8" stroke="var(--entrada)" stroke-width="4" stroke-linecap="round"/>'
+      : '<path d="M9 35L4 42M55 35l5 7" stroke="var(--entrada)" stroke-width="4" stroke-linecap="round"/>';
+    const chispas = estado === 'fiesta' ? '<path class="m-chispa" d="M6 4l1.6 3.4L11 9l-3.4 1.6L6 14l-1.6-3.4L1 9l3.4-1.6z" fill="var(--oro)"/><path class="m-chispa b" d="M58 0l1.3 2.7L62 4l-2.7 1.3L58 8l-1.3-2.7L54 4l2.7-1.3z" fill="var(--oro)"/>' : '';
+    const cejas = estado === 'animo' ? '<path d="M19.5 21.5l7-2.6M44.5 21.5l-7-2.6" stroke="var(--tinta)" stroke-width="2.4" stroke-linecap="round"/>' : '';
+    return `<svg viewBox="0 0 64 64" aria-hidden="true">${chispas}<g class="m-cuerpo">${brazos}<path d="M23 50v7M37 50v7" stroke="var(--entrada)" stroke-width="4" stroke-linecap="round"/><rect x="9" y="12" width="46" height="38" rx="9" fill="var(--hoja)" stroke="var(--entrada)" stroke-width="4"/><rect x="48.5" y="43.5" width="11" height="11" rx="2" fill="var(--entrada)" stroke="var(--hoja)" stroke-width="2"/>${mejillas}${cejas}<g class="m-ojos"><ellipse cx="24" cy="${ojoY}" rx="3.6" ry="4.4" fill="var(--tinta)"/><ellipse cx="40" cy="${ojoY}" rx="3.6" ry="4.4" fill="var(--tinta)"/><circle cx="25.2" cy="${ojoY - 1.6}" r="1.2" fill="var(--hoja)"/><circle cx="41.2" cy="${ojoY - 1.6}" r="1.2" fill="var(--hoja)"/></g>${bocas[estado] || bocas.normal}</g></svg>`;
+  }
+  function mascota(estado, clase) { return h('span', { class: 'mascota ' + (estado || 'normal') + (clase ? ' ' + clase : ''), html: svgMascota(estado || 'normal') }); }
+  function dice(estado, texto, clase) { return h('div', { class: 'mascota-dice' + (clase ? ' ' + clase : '') }, mascota(estado), h('div', { class: 'bocadillo' }, h('span', { html: enLinea(texto) }))); }
+  const al = (lista) => lista[Math.floor(Math.random() * lista.length)];
+  const VITORES = ['¡Eso es!', '¡Exacto!', '¡Bordado!', '¡Perfecto!', '¡Muy bien!', '¡Toma ya!', '¡Clavado!', '¡Así se hace!'];
+  const ANIMOS = ['Casi', 'Uy, por poco', 'Tranquila', 'Se aprende fallando'];
+  function flotar(texto, el) {
+    if (!el || !el.getBoundingClientRect) return;
+    const r = el.getBoundingClientRect();
+    const f = h('div', { class: 'xp-flotante' }, texto);
+    f.style.left = (r.left + r.width / 2 - 24) + 'px'; f.style.top = (r.top - 12) + 'px';
+    document.body.append(f); setTimeout(() => f.remove(), 1200);
+  }
+  function contarHasta(el, fin, ms) { // número que sube hasta su valor
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = fin; return; }
+    const t0 = performance.now(); const pre = el.dataset.pre || '';
+    (function paso(t) { const k = Math.min(1, (t - t0) / ms); el.textContent = pre + Math.round(fin * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(paso); })(t0);
+  }
+  // Barra inferior de los tres modos de juego (lección, examen, entrenamiento): un solo botón grande.
+  // Mientras hay que responder dice «Comprobar» (y pulsa el «Comprobar» del ejercicio); después, «Continuar».
+  function crearBarraJuego(alContinuar, conMascota) {
+    const cara = h('span', { class: 'msj-cara', 'aria-hidden': 'true' });
+    const tit = h('b', { class: 'msj-tit' }); const sub = h('span', { class: 'msj-sub' });
+    const msj = h('div', { class: 'msj-barra', role: 'status' }, tit, sub);
+    const extra = h('div', { class: 'msj-extra' });
+    const btn = h('button', { class: 'boton primario gigante', type: 'button' }, 'Continuar');
+    const barra = h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, h('div', { class: 'msj-caja' }, cara, msj, extra), btn));
+    let modo = 'continuar'; let interno = null; let zonaEj = null; let etiqueta = 'Comprobar';
+    btn.addEventListener('click', () => { if (btn.disabled) return; if (modo === 'comprobar' && interno) interno.click(); else alContinuar(); });
+    function estado(clase, titulo, subtitulo, habilitado) {
+      barra.className = 'barra-continuar' + (clase ? ' ' + clase : '');
+      tit.textContent = titulo || ''; sub.textContent = subtitulo || '';
+      cara.replaceChildren(conMascota !== false && clase ? mascota(clase === 'bien' ? 'feliz' : 'animo') : '');
+      btn.disabled = !habilitado;
+      if (clase === 'mal' && zonaEj) { const s = zonaEj.querySelector('section.ejercicio'); if (s) { s.classList.remove('tiembla'); void s.offsetWidth; s.classList.add('tiembla'); } }
+    }
+    function ejercicio(zona, ej, yaResuelto) { // prepara la barra para un ejercicio nuevo
+      zonaEj = zona; modo = 'continuar'; interno = null; btn.textContent = 'Continuar';
+      if (!yaResuelto && !['excel', 'abierta'].includes(ej.modo)) {
+        interno = [...zona.querySelectorAll('section.ejercicio button.boton.primario')].find((b) => /^(Comprobar|Ver qué pasa)/.test(b.textContent.trim())) || null;
+        if (interno) { etiqueta = interno.textContent.trim(); interno.classList.add('comprobar-en-barra'); modo = 'comprobar'; btn.textContent = etiqueta; }
+      }
+      return modo === 'comprobar';
+    }
+    function resuelto(sigueComprobando) { // tras una respuesta: «Continuar», o «Comprobar» si puede reintentar (fórmulas)
+      if (sigueComprobando && interno) { modo = 'comprobar'; btn.textContent = etiqueta; btn.disabled = false; }
+      else { modo = 'continuar'; btn.textContent = 'Continuar'; }
+    }
+    function texto(t) { btn.textContent = t; modo = 'continuar'; }
+    return { barra, btn, extra, estado, ejercicio, resuelto, texto };
+  }
+
+  /* ================= cofres: un premio al terminar cada módulo ================= */
+  const ICO_COFRE = (abierto) => abierto
+    ? '<svg viewBox="0 0 96 84" aria-hidden="true"><g class="c-brillo"><path d="M48 6v14M24 14l7 11M72 14l-7 11M12 30l11 5M84 30l-11 5" stroke="var(--oro)" stroke-width="4" stroke-linecap="round"/></g><path d="M14 44h68v30a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="var(--oro)" stroke="var(--tinta)" stroke-width="3.5"/><path d="M14 44l6-16h56l6 16z" fill="color-mix(in srgb, var(--oro) 55%, var(--tinta))" stroke="var(--tinta)" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 58h68" stroke="var(--tinta)" stroke-width="3.5"/><rect x="42" y="52" width="12" height="13" rx="2" fill="var(--hoja)" stroke="var(--tinta)" stroke-width="3"/></svg>'
+    : '<svg viewBox="0 0 96 84" aria-hidden="true"><path d="M14 40h68v34a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6z" fill="var(--oro)" stroke="var(--tinta)" stroke-width="3.5"/><path d="M14 40v-8c0-11 9-18 20-18h28c11 0 20 7 20 18v8z" fill="var(--oro)" stroke="var(--tinta)" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 40h68M30 14v66M66 14v66" stroke="var(--tinta)" stroke-width="3.5"/><rect x="41" y="33" width="14" height="16" rx="3" fill="var(--hoja)" stroke="var(--tinta)" stroke-width="3"/><circle cx="48" cy="40" r="2.2" fill="var(--tinta)"/><path d="M48 42v3" stroke="var(--tinta)" stroke-width="2.4" stroke-linecap="round"/></svg>';
+  function premioCofre() { const r = Math.random(); return r < 0.3 ? 15 : r < 0.6 ? 20 : r < 0.8 ? 25 : r < 0.95 ? 30 : 50; }
+  function vistaCofre(modId) {
+    const mod = MOD[modId]; if (!mod) return vistaMapa();
+    titulo('Cofre'); document.body.classList.add('jugando');
+    const id = 'cofre-' + modId; P.cofres = P.cofres || {};
+    const pendientes = mod.lecciones.filter((l) => !['hecha', 'saltada'].includes(estadoLeccion(l.id)));
+    const trucos = mod.lecciones.flatMap((l) => l.tarjetas || []);
+    const seguir = () => { const { actual } = estadoNodos(); location.hash = actual ? actual.href : '#inicio'; };
+    const cofre = h('div', { class: 'cofre', html: ICO_COFRE(!!P.cofres[id]) });
+    const zona = h('div', { class: 'pila', style: { alignItems: 'center', textAlign: 'center', gap: '1rem' } });
+    const cab = h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Volver al mapa' }, '✕'), h('div'), h('span'));
+    const cont = h('div', { class: 'jugar' }, cab, h('div', { class: 'resultado cofre-pantalla' }, h('div', { class: 'sobretitulo' }, 'Módulo terminado · ' + mod.titulo), cofre, zona));
+    if (pendientes.length) {
+      zona.append(h('h1', null, 'Este cofre aún está cerrado'), h('p', { class: 'entradilla' }, `Se abre al terminar las lecciones del módulo. Te ${pendientes.length === 1 ? 'queda 1' : 'quedan ' + pendientes.length}.`), h('a', { class: 'boton primario gigante', href: '#jugar-' + pendientes[0].id }, 'Ir a la lección'));
+    } else if (P.cofres[id]) {
+      zona.append(h('h1', null, 'Cofre abierto'), h('p', { class: 'entradilla' }, `Tenía +${P.cofres[id].xp} XP. Lo abriste el ${P.cofres[id].fecha.split('-').reverse().join('/')}.`), h('button', { class: 'boton primario gigante', type: 'button', onclick: seguir }, 'Seguir'));
+    } else {
+      const abrir = h('button', { class: 'boton primario gigante', type: 'button' }, 'Abrir el cofre');
+      zona.append(dice('feliz', '¡Has terminado el módulo entero! Esto se merece un premio. Ábrelo.'), abrir);
+      abrir.addEventListener('click', () => {
+        abrir.disabled = true; cofre.classList.add('agita'); tono([[392, 0.08], [440, 0.08], [494, 0.08], [523, 0.08]]);
+        setTimeout(() => {
+          const xp = premioCofre(); P.cofres[id] = { xp, fecha: hoy() };
+          cofre.classList.remove('agita'); cofre.classList.add('abierto'); cofre.innerHTML = ICO_COFRE(true);
+          ganarXP(xp); comprobarLogros(); guardar(); sonidoFin(); confeti();
+          const num = h('b', { 'data-pre': '+' }, '+0');
+          const truco = trucos.length ? al(trucos) : null;
+          zona.replaceChildren(h('div', { class: 'premio-xp' }, num, h('span', null, 'XP')), h('h1', null, xp >= 50 ? '¡Premio gordo!' : xp >= 30 ? '¡Buen botín!' : '¡Premio!'),
+            truco ? h('div', { class: 'truco-regalo' }, h('div', { class: 'sobretitulo' }, 'Y un truco de regalo'), h('b', { html: enLinea(truco.frente) }), h('span', { html: enLinea(truco.dorso) })) : null,
+            h('button', { class: 'boton primario gigante', type: 'button', onclick: seguir }, 'Seguir'));
+          contarHasta(num, xp, 900);
+        }, 900);
+      });
+    }
+    vista().replaceChildren(cont);
+  }
+
+  /* ================= tarjeta de empleada ================= */
+  function tarjetaEmpleada() {
+    const nombre = (P.nombre || 'Nueva incorporación').trim();
+    const iniciales = nombre.split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase();
+    const desde = (P.bienvenida || hoy()).split('-').reverse().join('/');
+    let num = 7; for (const c of nombre + desde) num = (num * 31 + c.charCodeAt(0)) % 9000;
+    return h('div', { class: 'tarjeta-empleada', role: 'img', 'aria-label': `Tarjeta de empleada de ${nombre}, ${rango(P.xp).nombre}` },
+      h('div', { class: 'te-agujero', 'aria-hidden': 'true' }),
+      h('div', { class: 'te-cab' }, h('span', { class: 'marca-celda' }, 'A1'), h('div', null, h('b', null, 'Electro Cierzo'), h('span', null, 'Suministros, S.L. · Zaragoza'))),
+      h('div', { class: 'te-cuerpo' }, h('div', { class: 'te-foto' }, iniciales || 'A1'),
+        h('div', { class: 'te-datos' }, h('span', { class: 'te-etq' }, 'Nombre'), h('b', { class: 'te-nombre' }, nombre), h('span', { class: 'te-etq' }, 'Puesto'), h('span', null, rango(P.xp).nombre + ' · Administración'))),
+      h('div', { class: 'te-pie' }, h('span', null, 'Desde ' + desde), h('span', { class: 'mono' }, 'Nº ' + String(1000 + num))));
+  }
+  let metaHoyCumplida = false;
 
   const LOGROS = [
     { id: 'primer_paso', t: 'Primer paso', d: 'Terminar tu primera lección', ok: (s) => s.lecciones >= 1 },
@@ -1116,6 +1247,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
         const mod = MOD[m.id]; if (!mod) continue;
         mod.lecciones.forEach((l, li) => nodos.push({ tipo: 'leccion', id: l.id, titulo: l.titulo, num: nodos.filter((x) => x.tipo === 'leccion').length + 1, href: '#jugar-' + l.id }));
         if (mod.practica_excel) nodos.push({ tipo: 'reto', id: mod.id + '-excel', titulo: 'Reto en tu Excel: ' + mod.titulo, href: '#reto-' + mod.id });
+        nodos.push({ tipo: 'cofre', id: 'cofre-' + mod.id, titulo: 'Cofre: ' + mod.titulo, href: '#cofre-' + mod.id });
       }
       if ((D.examenes_nivel || {})[n.id]) nodos.push({ tipo: 'examen', id: 'examen-' + n.id, titulo: 'Examen del nivel ' + ni, href: '#examen-' + n.id, nivel: n.id });
       mundos.push({ nivel: n, idx: ni, nodos });
@@ -1133,6 +1265,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     if (nd.tipo === 'examen') return !!(P.examenes && P.examenes[nd.nivel] && P.examenes[nd.nivel].aprobado);
     if (nd.tipo === 'proyecto') return !!(P.proyectos[nd.id] && P.proyectos[nd.id].terminado);
     if (nd.tipo === 'final') return !!(P.certificado && P.certificado.fecha);
+    if (nd.tipo === 'cofre') return !!(P.cofres && P.cofres[nd.id]);
     return false;
   }
   function estadoNodos() {
@@ -1165,11 +1298,13 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       const p = pts[i]; const izq = p.x > 50;
       const clases = ['nodo', nd.tipo, nd.hecho ? 'hecho' : '', !nd.abierto ? 'bloqueado' : '', nd.actual ? 'actual' : '', izq ? 'izq' : ''].join(' ');
       const est = P.estrellas && P.estrellas[nd.id];
-      const contenido = !nd.abierto ? icono('candado') : nd.tipo === 'leccion' ? (nd.hecho ? icono('check') : String(nd.num)) : nd.tipo === 'reto' ? icono('libro') : nd.tipo === 'examen' ? icono('bandera') : nd.tipo === 'proyecto' ? icono('maletin') : icono('trofeo');
+      const contenido = nd.tipo === 'cofre' ? h('span', { class: 'mini-cofre', html: ICO_COFRE(nd.hecho) }) : !nd.abierto ? icono('candado') : nd.tipo === 'leccion' ? (nd.hecho ? icono('check') : String(nd.num)) : nd.tipo === 'reto' ? icono('libro') : nd.tipo === 'examen' ? icono('bandera') : nd.tipo === 'proyecto' ? icono('maletin') : icono('trofeo');
       const etiquetaTexto = `${nd.titulo}${nd.hecho ? ' (completado)' : !nd.abierto ? ' (bloqueado)' : ''}`;
       const bola = nd.abierto ? h('a', { class: 'bola', href: nd.href, 'aria-label': etiquetaTexto }, contenido) : h('button', { class: 'bola', type: 'button', 'aria-label': etiquetaTexto, onclick: (e) => mostrarBloqueado(e, nd) }, contenido);
       const etq = h('div', { class: 'etiqueta' }, nd.titulo, nd.tipo === 'leccion' && nd.hecho && est ? h('div', { class: 'estrellas', 'aria-label': `${est} estrellas` }, [1, 2, 3].map((k) => icono('estrella', 'estrella' + (k <= est ? ' si' : '')))) : null);
-      camino.append(h('li', { class: clases, style: { left: p.x + '%', top: p.y + 'px' } }, bola, etq));
+      const globo = nd.actual ? h('div', { class: 'globo-actual', 'aria-hidden': 'true' }, nd.tipo === 'cofre' ? '¡Ábrelo!' : nd.tipo === 'examen' ? '¡A por el examen!' : estadoLeccion(nd.id) === 'empezada' ? 'Sigue aquí' : '¡Empieza!') : null;
+      const guia = nd.actual ? mascota(nd.tipo === 'cofre' ? 'feliz' : 'normal', 'mascota-mapa') : null;
+      camino.append(h('li', { class: clases, style: { left: p.x + '%', top: p.y + 'px' } }, globo, bola, guia, etq));
     });
     return camino;
   }
@@ -1207,7 +1342,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     for (const w of mundos) {
       const p = w.final ? { pct: w.nodos.filter((n) => n.hecho).length / Math.max(1, w.nodos.length), hechas: w.nodos.filter((n) => n.hecho).length, total: w.nodos.length } : progresoNivel(w.nivel);
       const aprobado = !w.final && P.examenes && P.examenes[w.nivel.id] && P.examenes[w.nivel.id].aprobado;
-      lista.append(h('section', { class: 'mundo', id: 'mundo-' + w.nivel.id },
+      lista.append(h('section', { class: 'mundo', id: 'mundo-' + w.nivel.id, style: { '--c': w.final ? 'var(--oro)' : COLORES_NIVEL[w.idx % COLORES_NIVEL.length] } },
         h('header', { class: 'mundo-cab' }, h('div', { html: w.final ? `<svg class="insignia-nivel${(P.certificado && P.certificado.fecha) ? '' : ' gris'}" viewBox="0 0 24 24" style="color:var(--oro)">${ICO.trofeo.replace(/^<svg[^>]*>|<\/svg>$/g, '')}</svg>` : svgInsignia(w.idx, !aprobado) }),
           h('div', { class: 'pila', style: { gap: '.35rem' } }, h('div', { class: 'sobretitulo' }, w.final ? 'Nivel final' : `Nivel ${w.idx}`), h('h2', null, w.nivel.nombre), h('p', null, w.nivel.lema || ''),
             h('div', { class: 'barra-prog' + (p.pct === 1 ? ' bien' : '') }, h('i', { style: { width: Math.round(p.pct * 100) + '%' } })),
@@ -1248,15 +1383,16 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const pantallas = pantallasDe(l);
     const repetidos = new Set(); const resultados = {}; let i = 0; xpSesion = 0; logrosNuevos = []; ascensos = []; let combo = 0;
     const barraProg = h('div', { class: 'progreso-leccion', role: 'progressbar', 'aria-label': 'Progreso de la lección' }, h('i', { style: { width: '0%' } }));
+    const chipCombo = h('span', { class: 'combo', hidden: true, 'aria-live': 'polite' });
+    function pintarCombo() { chipCombo.hidden = combo < 2; chipCombo.replaceChildren(icono('fuego'), h('b', null, '×' + combo)); chipCombo.classList.remove('pop'); void chipCombo.offsetWidth; chipCombo.classList.add('pop'); barraProg.classList.toggle('en-racha', combo >= 3); }
     const btnSonido = h('button', { class: 'cerrar', type: 'button', 'aria-label': 'Sonido', title: 'Sonido', onclick: () => { P.sonido = P.sonido === false; guardar(); btnSonido.replaceChildren(icono(P.sonido === false ? 'silencio' : 'sonido')); } }, icono(P.sonido === false ? 'silencio' : 'sonido'));
-    const cab = h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Salir al mapa', title: 'Salir al mapa' }, '✕'), barraProg, btnSonido);
+    const cab = h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Salir al mapa', title: 'Salir al mapa' }, '✕'), h('div', { class: 'prog-y-combo' }, barraProg, chipCombo), btnSonido);
     const zona = h('div', { class: 'pantalla-jugar' });
-    const msj = h('span', { class: 'msj-barra', role: 'status' });
-    const btn = h('button', { class: 'boton primario gigante', type: 'button' }, 'Continuar');
-    const saltar = h('button', { class: 'boton fantasma peq', type: 'button', hidden: true }, 'Hacerlo luego');
-    const barra = h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, h('div', { class: 'fila' }, msj, saltar), btn));
+    const JB = crearBarraJuego(() => siguiente());
+    const btn = JB.btn; const barra = JB.barra;
+    const saltar = h('button', { class: 'boton fantasma peq', type: 'button', hidden: true }, 'Hacerlo luego'); JB.extra.append(saltar);
     const cont = h('div', { class: 'jugar' }, cab, zona, barra);
-    function estadoBarra(clase, texto, habilitado) { barra.className = 'barra-continuar' + (clase ? ' ' + clase : ''); msj.textContent = texto || ''; btn.disabled = !habilitado; }
+    function estadoBarra(clase, texto, habilitado, subtitulo) { JB.estado(clase, texto, subtitulo, habilitado); }
     function pintar() {
       const p = pantallas[i];
       barraProg.firstChild.style.width = Math.round(i / pantallas.length * 100) + '%';
@@ -1267,17 +1403,17 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
           l.objetivo ? h('p', { class: 'entradilla' }, l.objetivo) : null,
           h('div', { class: 'fila' }, h('span', { class: 'chip' }, `${l.minutos || 12} min`), h('span', { class: 'chip' }, `${pantallas.filter((x) => x.tipo === 'ej').length} ejercicios`), (l.funciones || []).map((f) => h('span', { class: 'chip fn' }, f))),
           h('p', { class: 'tenue' }, 'Ve a tu ritmo. Si fallas algo, no pasa nada: lo repasamos al final.')));
-        estadoBarra('', '', true); btn.textContent = 'Empezar';
+        estadoBarra('', '', true); JB.texto('Empezar');
       } else if (p.tipo === 'explica') {
         zona.append(h('div', { class: 'pila', style: { gap: '1rem' } }, p.bloques.map((b) => renderBloque(b, ctx))));
-        estadoBarra('', '', true); btn.textContent = 'Continuar';
+        estadoBarra('', '', true); JB.texto('Continuar');
       } else if (p.tipo === 'ej') {
         const ej = p.ej; const yaResuelto = resultados[ej.id + (p.rep ? '-r' : '')];
         if (p.etq || p.rep) zona.append(h('div', { class: 'etq-pantalla' }, p.rep ? 'Otra vez: este se te resistió' : p.etq));
         zona.append(renderEjercicio(ej, ctx));
-        btn.textContent = 'Continuar';
         const libre = ['abierta', 'excel'].includes(ej.modo);
-        estadoBarra('', libre ? '' : 'Responde para seguir', libre || !!yaResuelto);
+        const conComprobar = JB.ejercicio(zona, ej, !!yaResuelto);
+        estadoBarra('', libre || yaResuelto || conComprobar ? '' : 'Elige una respuesta', libre || !!yaResuelto || conComprobar);
         if (ej.modo === 'excel') { saltar.hidden = false; saltar.onclick = () => { registrarEj(ej.id, false, { saltado: true }); siguiente(); }; }
         escuchaEj = (id, ok, info) => {
           if (id !== ej.id) return;
@@ -1286,22 +1422,24 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
           if (primera) resultados[clave] = ok;
           if (ok) {
             if (primera) combo++; let extra = '';
-            if (primera && [3, 5, 8, 12].includes(combo)) { ganarXP(combo, btn); extra = ` · ¡${combo} seguidas! +${combo} XP`; tono([[784, 0.1], [988, 0.1], [1319, 0.25]]); } else sonidoBien();
-            estadoBarra('bien', (info && info.xp ? `¡Bien! +${info.xp} XP` : '¡Bien!') + extra, true);
+            if (primera && [3, 5, 8, 12].includes(combo)) { ganarXP(combo, btn); extra = ` · ¡${combo} seguidas! +${combo} XP extra`; tono([[784, 0.1], [988, 0.1], [1319, 0.25]]); } else sonidoBien();
+            JB.resuelto(false);
+            estadoBarra('bien', al(VITORES), true, (info && info.xp ? `+${info.xp} XP` : '') + extra);
+            if (info && info.xp) flotar('+' + info.xp + ' XP', btn);
           }
-          else if (info && info.vista) { combo = 0; estadoBarra('mal', 'Mira la solución y sigue', true); }
+          else if (info && info.vista) { combo = 0; JB.resuelto(false); estadoBarra('mal', 'Mírala con calma', true, 'Te la volveremos a preguntar otro día'); }
           else {
             combo = 0; sonidoMal();
-            if (ej.modo === 'formula') estadoBarra('mal', 'Casi. Prueba otra vez o pide una pista', false);
-            else { estadoBarra('mal', 'No pasa nada: lo repasamos al final', true); if (primera && !p.rep && REPETIBLES.includes(ej.modo) && !repetidos.has(ej.id)) { repetidos.add(ej.id); pantallas.push({ tipo: 'ej', ej, rep: true }); } }
+            if (ej.modo === 'formula') { JB.resuelto(true); estadoBarra('mal', al(ANIMOS), true, 'Prueba otra vez o pide una pista'); }
+            else { JB.resuelto(false); estadoBarra('mal', al(ANIMOS), true, 'Lo repasamos al final de la lección'); if (primera && !p.rep && REPETIBLES.includes(ej.modo) && !repetidos.has(ej.id)) { repetidos.add(ej.id); pantallas.push({ tipo: 'ej', ej, rep: true }); } }
           }
+          pintarCombo();
         };
       }
       btn.focus({ preventScroll: true });
       window.scrollTo(0, 0);
     }
     function siguiente() { i++; if (i >= pantallas.length) return terminar(); pintar(); }
-    btn.addEventListener('click', () => { if (!btn.disabled) siguiente(); });
     function terminar() {
       escuchaEj = null;
       const propios = [...l.bloques.filter((b) => b.tipo === 'ejercicio'), ...(l.recuerda || [])].filter((e) => !['abierta', 'excel'].includes(e.modo));
@@ -1315,16 +1453,22 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       const { actual } = estadoNodos();
       const destino = actual ? actual.href : '#inicio';
       const meta = P.meta || 50;
+      [1, 2, 3].slice(0, estrellas).forEach((k) => setTimeout(() => tono([[523 * Math.pow(1.26, k - 1), 0.18]]), 350 + k * 260));
+      const numXP = h('b', { 'data-pre': '+' }, '+0'); setTimeout(() => contarHasta(numXP, xpSesion, 900), 500);
+      const meta1 = metaHoyCumplida; metaHoyCumplida = false;
+      const etqSig = destino.startsWith('#cofre-') ? 'Abrir el cofre' : sig && destino === '#jugar-' + sig.id ? 'Siguiente lección' : 'Seguir';
       cont.replaceChildren(h('div', { class: 'resultado' },
-        h('div', { class: 'estrellas-grandes', 'aria-label': `${estrellas} de 3 estrellas` }, [1, 2, 3].map((k) => h('span', { class: '', html: ICO.estrella.replace('<svg ', `<svg class="${k <= estrellas ? 'si' : ''}" `) }))),
+        mascota(estrellas === 3 ? 'fiesta' : 'feliz', 'grande'),
+        h('div', { class: 'estrellas-grandes', 'aria-label': `${estrellas} de 3 estrellas` }, [1, 2, 3].map((k) => h('span', { class: 'estrella-pop', style: { '--d': (350 + k * 260) + 'ms' }, html: ICO.estrella.replace('<svg ', `<svg class="${k <= estrellas ? 'si' : ''}" `) }))),
         h('h1', null, estrellas === 3 ? '¡Lección perfecta!' : estrellas === 2 ? '¡Muy bien!' : '¡Lección completada!'),
         l.mision && l.mision.logro ? h('div', { class: 'logro-nuevo', style: { borderColor: 'var(--bien)', background: 'var(--bien-suave)' } }, h('span', { style: { color: 'var(--bien)', width: '2.4rem' }, html: ICO.check }), h('div', null, h('b', null, 'Misión cumplida'), h('div', null, l.mision.logro))) : null,
         ascensos.map((a) => h('div', { class: 'logro-nuevo' }, h('span', { style: { color: 'var(--oro)', width: '2.4rem' }, html: ICO.trofeo }), h('div', null, h('b', null, '¡Ascenso!'), h('div', { class: 'tenue' }, 'Ahora eres ' + a)))),
         h('p', { class: 'entradilla' }, estrellas === 3 ? 'Todo a la primera y sin pistas. Esto ya es tuyo.' : `Has acertado a la primera ${limpios} de ${propios.length}. ${estrellas < 3 ? 'Repítela cuando quieras para conseguir las 3 estrellas.' : ''}`),
-        h('div', { class: 'recuadros' }, h('div', { class: 'recuadro oro' }, h('b', null, '+' + xpSesion), h('span', null, 'XP')), h('div', { class: 'recuadro fuego' }, h('b', null, rachaActual()), h('span', null, 'días de racha')), h('div', { class: 'recuadro verde' }, h('b', null, `${Math.min(100, Math.round(xpHoy() / meta * 100))}%`), h('span', null, 'meta de hoy'))),
+        h('div', { class: 'recuadros' }, h('div', { class: 'recuadro oro' }, numXP, h('span', null, 'XP')), h('div', { class: 'recuadro fuego' }, h('b', null, rachaActual()), h('span', null, 'días de racha')), h('div', { class: 'recuadro verde' }, h('b', null, `${Math.min(100, Math.round(xpHoy() / meta * 100))}%`), h('span', null, 'meta de hoy'))),
+        meta1 ? h('div', { class: 'logro-nuevo', style: { borderColor: 'var(--fuego)' } }, h('span', { style: { color: 'var(--fuego)', width: '2.4rem' }, html: ICO.fuego }), h('div', null, h('b', null, '¡Meta de hoy cumplida!'), h('div', { class: 'tenue' }, 'Has llegado a tus ' + meta + ' XP. Mañana, a por otra.'))) : null,
         logrosNuevos.map((g) => h('div', { class: 'logro-nuevo' }, h('span', { html: svgLogro(g, true) }), h('div', null, h('b', null, 'Logro: ' + g.t), h('div', { class: 'tenue' }, g.d)))),
         (l.tarjetas || []).length ? h('p', { class: 'tenue' }, `${l.tarjetas.length} tarjeta${l.tarjetas.length > 1 ? 's' : ''} nueva${l.tarjetas.length > 1 ? 's' : ''} en tu repaso.`) : null,
-        h('div', { class: 'fila', style: { justifyContent: 'center' } }, h('a', { class: 'boton primario gigante', href: destino }, sig && destino === '#jugar-' + sig.id ? 'Siguiente lección' : 'Seguir'), h('a', { class: 'boton', href: '#inicio' }, 'Volver al mapa'), h('a', { class: 'boton fantasma', href: '#leccion-' + l.id }, 'Ver la lección entera'))));
+        h('div', { class: 'fila', style: { justifyContent: 'center' } }, h('a', { class: 'boton primario gigante', href: destino }, etqSig), h('a', { class: 'boton', href: '#inicio' }, 'Volver al mapa'), h('a', { class: 'boton fantasma', href: '#leccion-' + l.id }, 'Ver la lección entera'))));
       window.scrollTo(0, 0);
     }
     vista().replaceChildren(cont);
@@ -1358,20 +1502,19 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       const res = {}; let i = 0;
       const barraProg = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: '0%' } }));
       const zona = h('div', { class: 'pantalla-jugar' });
-      const msj = h('span', { class: 'msj-barra', role: 'status' });
-      const btn = h('button', { class: 'boton primario gigante', type: 'button', disabled: true }, 'Continuar');
-      const barra = h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, msj, btn));
+      const JB = crearBarraJuego(() => { i++; if (i < preguntas.length) pintar(); else fin(); }, false);
+      const barra = JB.barra;
       const cont = h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Abandonar', onclick: () => { modoExamen = false; } }, '✕'), barraProg, h('span', { class: 'tenue mono' }, '')), zona, barra);
       function pintar() {
         const q = { ...preguntas[i], id: `ex-${nid}-${preguntas[i].id || i}` };
         barraProg.firstChild.style.width = Math.round(i / preguntas.length * 100) + '%';
         cont.querySelector('.jugar-cab .mono').textContent = `${i + 1}/${preguntas.length}`;
         zona.replaceChildren(renderEjercicio(q, { titulo: 'examen' }));
-        barra.className = 'barra-continuar'; msj.textContent = ''; btn.disabled = true;
-        escuchaEj = (id, ok) => { if (id !== q.id || (i in res)) return; res[i] = ok; btn.disabled = false; barra.className = 'barra-continuar ' + (ok ? 'bien' : 'mal'); msj.textContent = ok ? 'Correcta' : 'Incorrecta'; ok ? sonidoBien() : sonidoMal(); };
+        const conComprobar = JB.ejercicio(zona, q, false);
+        JB.estado('', '', '', conComprobar);
+        escuchaEj = (id, ok) => { if (id !== q.id || (i in res)) return; res[i] = ok; JB.resuelto(false); JB.estado(ok ? 'bien' : 'mal', ok ? 'Correcta' : 'Incorrecta', '', true); ok ? sonidoBien() : sonidoMal(); };
         window.scrollTo(0, 0);
       }
-      btn.addEventListener('click', () => { i++; if (i < preguntas.length) pintar(); else fin(); });
       function fin() {
         modoExamen = false; modoSesion = false; escuchaEj = null; document.body.classList.remove('jugando');
         const aciertos = Object.values(res).filter(Boolean).length; const nota = aciertos / preguntas.length; const aprobado = nota >= umbral;
@@ -1411,7 +1554,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     nombre.addEventListener('change', () => { P.nombre = nombre.value.trim(); guardar(); toast('Guardado'); });
     const metas = h('div', { class: 'fila' }, METAS.map(([v, t, d]) => h('button', { class: 'boton' + ((P.meta || 50) === v ? ' primario' : ''), type: 'button', onclick: () => { P.meta = v; guardar(); vistaPerfil(); } }, `${t} · ${v} XP`, h('span', { class: 'oculto-visual' }, d))));
     const exp = niveles.map((n, i) => { const p = progresoNivel(n); const e = P.examenes && P.examenes[n.id]; return h('tr', null, h('td', null, h('b', null, `Nivel ${i}`), ' · ', n.nombre), h('td', null, `${p.hechas}/${p.total}`), h('td', null, e ? `${Math.round(e.nota * 100)} %` : '—'), h('td', null, e && e.aprobado ? h('span', { style: { color: 'var(--bien)', fontWeight: 700 } }, 'Superado') : p.pct === 1 ? 'Examen pendiente' : 'En curso')); });
-    const archivo = h('input', { type: 'file', accept: 'application/json,.json', class: 'oculto-visual', id: 'importar', onchange: async (e) => { const f = e.target.files[0]; if (!f) return; try { const datos = JSON.parse(await f.text()); if (datos.v !== 1) throw new Error(); P = fusionar(P, datos); guardar(); toast('Progreso cargado'); vistaPerfil(); } catch (x) { toast('Ese archivo no es un progreso de Hoja a hoja.'); } } });
+    const archivo = h('input', { type: 'file', accept: 'application/json,.json', class: 'oculto-visual', id: 'importar', onchange: async (e) => { const f = e.target.files[0]; if (!f) return; try { const datos = JSON.parse(await f.text()); if (datos.v !== 1) throw new Error(); P = fusionar({ ...P, reinicio: 0 }, { ...datos, reinicio: 0 }); guardar(); toast('Progreso cargado'); vistaPerfil(); } catch (x) { toast('Ese archivo no es un progreso de Hoja a hoja.'); } } });
     vista().replaceChildren(h('div', { class: 'pila-g' },
       h('section', { class: 'panel-hoy' }, h('div', { class: 'pila' }, h('div', { class: 'sobretitulo' }, 'Mi progreso · ' + rango(P.xp).nombre), h('h1', null, P.nombre || 'Tu perfil'), h('div', { class: 'stats' },
         h('div', { class: 'stat', style: { color: 'var(--fuego)' } }, icono('fuego'), h('div', null, h('b', null, rachaActual()), h('span', null, `racha · mejor: ${P.mejorRacha || 0}`))),
@@ -1419,6 +1562,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
         h('div', { class: 'stat' }, h('div', null, h('b', null, s.lecciones), h('span', null, 'lecciones'))),
         h('div', { class: 'stat' }, h('div', null, h('b', null, Object.values(P.ej || {}).filter((e) => e.ok).length), h('span', null, 'ejercicios resueltos'))))),
         h('div', { class: 'pila' }, nombre, h('label', { class: 'fila tenue' }, h('input', { type: 'checkbox', checked: P.sonido !== false, onchange: (e) => { P.sonido = e.target.checked; guardar(); } }), 'Sonidos al acertar'))),
+      h('section', { class: 'pila', style: { alignItems: 'center' } }, tarjetaEmpleada()),
       h('section', { class: 'pila' }, h('h2', null, 'Meta diaria'), h('p', { class: 'tenue' }, 'Mejor poco cada día que mucho un día suelto: la constancia es lo que hace que se quede.'), metas),
       h('section', { class: 'pila' }, h('h2', null, 'Insignias de nivel'), h('div', { class: 'insignias' }, niveles.map((n, i) => { const ok = P.examenes && P.examenes[n.id] && P.examenes[n.id].aprobado; return h('div', { class: 'logro' + (ok ? '' : ' no') }, h('span', { html: svgInsignia(i, !ok) }), h('b', null, n.nombre), h('span', null, ok ? 'Conseguida ' + P.examenes[n.id].fecha.split('-').reverse().join('/') : 'Aprueba el examen del nivel'), ok ? h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => descargarCertificado({ tipo: 'nivel', nivel: i }) }, 'Certificado') : null); }))),
       h('section', { class: 'pila' }, h('h2', null, 'Logros'), h('div', { class: 'logros' }, LOGROS.map((l) => { const ok = P.logros && P.logros[l.id]; return h('div', { class: 'logro' + (ok ? '' : ' no') }, h('span', { html: svgLogro(l, !!ok) }), h('b', null, l.t), h('span', null, l.d)); }))),
@@ -1428,7 +1572,26 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
           : guardadoEn === 'comprobando' ? h('p', { class: 'tenue' }, 'Comprobando si se puede guardar en tu cuenta…')
           : avisoGuardado(),
         h('p', { class: 'tenue' }, P.copia ? `Última copia descargada: ${fechaCorta(P.copia)}.` : 'Aún no has descargado ninguna copia.', ' La copia es un archivo pequeño (.json) con todo tu avance: lecciones, puntos, racha, exámenes y certificados.'),
-        h('div', { class: 'fila' }, h('button', { class: 'boton', type: 'button', onclick: async () => { if (await guardarCopia()) vistaPerfil(); } }, 'Descargar una copia'), h('label', { class: 'boton', for: 'importar' }, 'Cargar una copia'), archivo))));
+        h('div', { class: 'fila' }, h('button', { class: 'boton', type: 'button', onclick: async () => { if (await guardarCopia()) vistaPerfil(); } }, 'Descargar una copia'), h('label', { class: 'boton', for: 'importar' }, 'Cargar una copia'), archivo)),
+      seccionEmpezarDeCero()));
+  }
+  function seccionEmpezarDeCero() { // borra todo el avance, con confirmación dentro de la página (el visor no muestra confirm())
+    const caja = h('div', { class: 'pila' });
+    const pintarCaja = (confirmando) => caja.replaceChildren(...(confirmando
+      ? [h('div', { class: 'aviso cuidado', role: 'alertdialog', 'aria-label': 'Confirmar' }, h('div', { class: 't' }, h('span', { class: 'etq' }, 'Seguro'), 'Se borrará todo tu avance'),
+          h('p', null, 'Lecciones, puntos, racha, cofres, exámenes y certificados. No se puede deshacer. Si quieres conservarlo, descarga antes una copia.'),
+          h('div', { class: 'fila' }, h('button', { class: 'boton peligro', type: 'button', id: 'borrar-todo', onclick: empezarDeCero }, 'Sí, borrar todo y empezar'), h('button', { class: 'boton', type: 'button', onclick: () => pintarCaja(false) }, 'Cancelar')))]
+      : [h('p', { class: 'tenue' }, 'Vuelve a la bienvenida con todo a cero, como el primer día.'), h('div', null, h('button', { class: 'boton', type: 'button', id: 'empezar-de-cero', onclick: () => pintarCaja(true) }, 'Empezar de cero'))]));
+    pintarCaja(false);
+    return h('section', { class: 'pila' }, h('h2', null, 'Empezar de cero'), caja);
+  }
+  function empezarDeCero() {
+    const sonido = P.sonido;
+    P = progresoVacio(); P.sonido = sonido; P.reinicio = Date.now(); P.actualizado = P.reinicio;
+    try { localStorage.setItem(CLAVE, JSON.stringify(P)); localStorage.removeItem('hoja-libre'); } catch (e) { /* */ }
+    if (dbDoc) { clearTimeout(temporizador); subir(); }
+    pintarHUD(); pintarInsignias();
+    location.hash = '#bienvenida';
   }
 
   /* ================= certificado ================= */
@@ -1593,9 +1756,8 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const cola = ids.map((id) => ({ id })); const res = {}; let i = 0; let xp0 = P.xp || 0;
     const barraProg = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: '0%' } }));
     const zona = h('div', { class: 'pantalla-jugar' });
-    const msj = h('span', { class: 'msj-barra', role: 'status' });
-    const btn = h('button', { class: 'boton primario gigante', type: 'button', disabled: true }, 'Continuar');
-    const barra = h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, msj, btn));
+    const JB = crearBarraJuego(() => { i++; if (i < cola.length) pintar(); else fin(); });
+    const btn = JB.btn; const barra = JB.barra;
     const cont = h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Salir' }, '✕'), barraProg, h('span', { class: 'tenue mono' }, '')), zona, barra);
     function pintar() {
       const item = cola[i]; const orig = EJ_INDEX[item.id]; const lec = LEC[item.id.replace(/-(e|q|r|s)\d+$/, '')];
@@ -1604,7 +1766,8 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       barraProg.firstChild.style.width = Math.round(i / cola.length * 100) + '%';
       cont.querySelector('.jugar-cab .mono').textContent = `${i + 1}/${cola.length}`;
       zona.replaceChildren(h('div', { class: 'etq-pantalla' }, item.rep ? 'Otra vez: a por él' : 'De una lección anterior' + (lec ? ': ' + lec.titulo : '')), renderEjercicio(q, { titulo: lec ? lec.titulo : 'entrenamiento' }));
-      barra.className = 'barra-continuar'; msj.textContent = 'Recuerda cómo se hacía antes de mirar nada'; btn.disabled = true;
+      const conComprobar = JB.ejercicio(zona, q, false);
+      JB.estado('', '', 'Recuerda cómo se hacía antes de mirar nada', conComprobar);
       let primerIntento = true;
       escuchaEj = (id, ok, info) => {
         if (id !== q.id) return;
@@ -1616,13 +1779,12 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
           else { m.caja = 1; m.prox = sumarDias(1); if (AUTO.includes(orig.modo)) cola.push({ id: item.id, rep: true }); }
         }
         primerIntento = false;
-        if (ok) { sonidoBien(); barra.className = 'barra-continuar bien'; msj.textContent = limpio ? '¡Lo recuerdas! +5 XP' : '¡Bien!'; btn.disabled = false; }
-        else if (info && info.vista) { barra.className = 'barra-continuar mal'; msj.textContent = 'Mira la solución: mañana vuelve'; btn.disabled = false; }
-        else { sonidoMal(); barra.className = 'barra-continuar mal'; if (orig.modo === 'formula') msj.textContent = 'Casi. Inténtalo otra vez o pide una pista'; else { msj.textContent = 'Mañana vuelve a salirte'; btn.disabled = false; } }
+        if (ok) { sonidoBien(); JB.resuelto(false); JB.estado('bien', limpio ? '¡Lo recuerdas!' : al(VITORES), limpio ? '+5 XP' : '', true); }
+        else if (info && info.vista) { JB.resuelto(false); JB.estado('mal', 'Mírala con calma', 'Mañana vuelve a salirte', true); }
+        else { sonidoMal(); if (orig.modo === 'formula') { JB.resuelto(true); JB.estado('mal', al(ANIMOS), 'Inténtalo otra vez o pide una pista', true); } else { JB.resuelto(false); JB.estado('mal', al(ANIMOS), 'Mañana vuelve a salirte', true); } }
       };
       window.scrollTo(0, 0);
     }
-    btn.addEventListener('click', () => { i++; if (i < cola.length) pintar(); else fin(); });
     function fin() {
       modoSesion = false; escuchaEj = null; document.body.classList.remove('jugando');
       P.entreno = hoy(); ganarXP(10); comprobarLogros(); guardar(); sonidoFin();
@@ -1682,41 +1844,54 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   function vistaBienvenida() {
     titulo('Bienvenida');
     let paso = 0; const datos = { nombre: P.nombre || '', meta: P.meta || 50, experiencia: null, plan: P.plan || null };
-    const PASOS = 4;
-    const cont = h('div', { class: 'jugar' });
+    const PASOS = 5; // nombre, meta, momento, experiencia y la tarjeta de empleada
+    const cont = h('div', { class: 'jugar bienvenida' });
+    const op = (marcada, onclick, ...hijos) => h('button', { class: 'opcion', type: 'button', 'aria-pressed': marcada ? 'true' : 'false', onclick }, h('span', { class: 'letra' }, marcada ? '●' : '○'), h('span', null, ...hijos));
     function pintar() {
-      const prog = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: Math.round(paso / PASOS * 100) + '%' } }));
-      let cuerpo; let listo = true; const btn = h('button', { class: 'boton primario gigante', type: 'button' }, paso < PASOS - 1 ? 'Continuar' : 'Empezar');
+      const prog = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: Math.round(paso / (PASOS - 1) * 100) + '%' } }));
+      let cuerpo; let listo = true; const btn = h('button', { class: 'boton primario gigante', type: 'button' }, paso < PASOS - 2 ? 'Continuar' : paso === PASOS - 2 ? 'Terminar' : 'Empezar mi primer día');
       if (paso === 0) {
-        const inp = h('input', { class: 'entrada-corta', type: 'text', id: 'bienvenida-nombre', placeholder: 'Tu nombre', value: datos.nombre, autocomplete: 'given-name', style: { fontSize: '1.2rem', maxWidth: '20rem' } });
-        inp.addEventListener('input', () => { datos.nombre = inp.value.trim(); });
-        inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') btn.click(); });
-        cuerpo = h('div', { class: 'pila', style: { gap: '1rem', paddingTop: '1.5rem' } }, h('div', { class: 'marca-celda', style: { width: '3rem', height: '2.3rem', fontSize: '1rem' } }, 'A1'), h('h1', null, 'Bienvenida a Electro Cierzo. Hoy es tu primer día.'), h('p', { class: 'entradilla' }, 'Eres la nueva administrativa de una empresa de material eléctrico de Zaragoza. Tus compañeras te irán pidiendo cosas, y con cada encargo aprenderás Excel: de cero a llevar tus propios proyectos. ¿Cómo te llamas?'), inp, h('p', { class: 'tenue' }, 'Saldrá en tus certificados. Puedes cambiarlo cuando quieras.'));
+        listo = datos.nombre.length >= 2;
+        const inp = h('input', { class: 'entrada-corta', type: 'text', id: 'bienvenida-nombre', placeholder: 'Escribe tu nombre', value: datos.nombre, autocomplete: 'given-name', maxlength: 40, style: { fontSize: '1.2rem', maxWidth: '22rem' } });
+        inp.addEventListener('input', () => { datos.nombre = inp.value.trim(); btn.disabled = datos.nombre.length < 2; });
+        inp.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !btn.disabled) btn.click(); });
+        cuerpo = h('div', { class: 'pila', style: { gap: '1.1rem' } }, dice('normal', 'Hola, soy **A1**, la primera celda de cualquier hoja de Excel. Te acompaño desde hoy.'),
+          h('h1', null, 'Bienvenida a Electro Cierzo. Hoy es tu primer día.'),
+          h('p', { class: 'entradilla' }, 'Eres la nueva administrativa de una empresa de material eléctrico de Zaragoza. Tus compañeras te irán pidiendo cosas, y con cada encargo aprenderás Excel: de cero a llevar tus propios proyectos.'),
+          h('label', { for: 'bienvenida-nombre', class: 'etq-pantalla' }, '¿Cómo te llamas?'), inp, h('p', { class: 'tenue' }, 'Saldrá en tu tarjeta de empleada y en tus certificados.'));
         setTimeout(() => inp.focus(), 50);
       } else if (paso === 1) {
-        cuerpo = h('div', { class: 'pila', style: { gap: '1rem', paddingTop: '1.5rem' } }, h('h1', null, `${datos.nombre ? datos.nombre + ', ¿' : '¿'}cuánto quieres practicar al día?`), h('p', { class: 'entradilla' }, 'Mejor poco cada día que mucho un día suelto. Lo puedes cambiar luego.'),
-          h('div', { class: 'opciones' }, METAS.map(([v, t, d]) => { const b = h('button', { class: 'opcion', type: 'button', 'aria-pressed': datos.meta === v ? 'true' : 'false', onclick: () => { datos.meta = v; pintar(); } }, h('span', { class: 'letra' }, datos.meta === v ? '●' : '○'), h('span', null, h('b', null, t), ` · ${v} XP al día · ${d}`)); return b; })));
+        cuerpo = h('div', { class: 'pila', style: { gap: '1.1rem' } }, dice('feliz', `¡Qué bien tenerte aquí, ${datos.nombre}!`), h('h1', null, '¿Cuánto quieres practicar al día?'), h('p', { class: 'entradilla' }, 'Mejor poco cada día que mucho un día suelto. Lo puedes cambiar luego.'),
+          h('div', { class: 'opciones' }, METAS.map(([v, t, d]) => op(datos.meta === v, () => { datos.meta = v; pintar(); }, h('b', null, t), ` · ${v} XP al día · ${d}`))));
       } else if (paso === 2) {
         listo = !!datos.plan;
         const momentos = ['con el café de la mañana', 'a la hora de comer', 'al salir del trabajo', 'después de cenar'];
-        cuerpo = h('div', { class: 'pila', style: { gap: '1rem', paddingTop: '1.5rem' } }, h('h1', null, '¿En qué momento del día vas a practicar?'), h('p', { class: 'entradilla' }, 'Quien decide de antemano el momento cumple mucho más. Elige el tuyo.'),
-          h('div', { class: 'opciones' }, momentos.map((t) => h('button', { class: 'opcion', type: 'button', 'aria-pressed': datos.plan === t ? 'true' : 'false', onclick: () => { datos.plan = t; pintar(); } }, h('span', { class: 'letra' }, datos.plan === t ? '●' : '○'), h('span', null, t[0].toUpperCase() + t.slice(1))))),
+        cuerpo = h('div', { class: 'pila', style: { gap: '1.1rem' } }, dice('pensando', 'Un truco que funciona: decidir antes en qué momento vas a practicar.'), h('h1', null, '¿Cuándo vas a practicar?'),
+          h('div', { class: 'opciones' }, momentos.map((t) => op(datos.plan === t, () => { datos.plan = t; pintar(); }, t[0].toUpperCase() + t.slice(1)))),
           datos.plan ? h('aside', { class: 'aviso atajo' }, h('div', { class: 't' }, h('span', { class: 'etq' }, 'Tu plan')), h('p', null, `«Cada día, ${datos.plan}, abro Hoja a hoja y hago una lección.»`)) : null);
-      } else {
+      } else if (paso === 3) {
         listo = datos.experiencia !== null;
         const ops = [['nunca', 'Nunca lo he usado, o casi nunca'], ['algo', 'Lo he usado para cosas sencillas (sumar, hacer listas)'], ['bastante', 'Lo uso a menudo y sé hacer fórmulas']];
-        cuerpo = h('div', { class: 'pila', style: { gap: '1rem', paddingTop: '1.5rem' } }, h('h1', null, '¿Has usado Excel alguna vez?'), h('p', { class: 'entradilla' }, 'Sin vergüenza: aquí todo el mundo empieza por algún sitio.'),
-          h('div', { class: 'opciones' }, ops.map(([k, t]) => h('button', { class: 'opcion', type: 'button', 'aria-pressed': datos.experiencia === k ? 'true' : 'false', onclick: () => { datos.experiencia = k; pintar(); } }, h('span', { class: 'letra' }, datos.experiencia === k ? '●' : '○'), h('span', null, t)))),
+        cuerpo = h('div', { class: 'pila', style: { gap: '1.1rem' } }, dice('normal', 'Sin vergüenza: aquí todo el mundo empieza por algún sitio.'), h('h1', null, '¿Has usado Excel alguna vez?'),
+          h('div', { class: 'opciones' }, ops.map(([k, t]) => op(datos.experiencia === k, () => { datos.experiencia = k; pintar(); }, t))),
           datos.experiencia && datos.experiencia !== 'nunca' && D.prueba_nivel ? h('p', { class: 'tenue' }, 'Te propondremos una prueba de nivel de 15 minutos para saltarte lo que ya sabes.') : null);
+      } else {
+        cuerpo = h('div', { class: 'pila', style: { gap: '1.25rem', alignItems: 'center', textAlign: 'center' } }, dice('fiesta', `¡Ya eres del equipo, ${datos.nombre}!`, 'centrado'),
+          h('h1', null, 'Aquí tienes tu tarjeta'), tarjetaEmpleada(),
+          h('p', { class: 'entradilla' }, 'Tu puesto sube a medida que ganas experiencia: de recién llegada a responsable de informes.'));
       }
       btn.disabled = !listo;
       btn.addEventListener('click', () => {
-        if (paso < PASOS - 1) { paso++; pintar(); return; }
-        P.nombre = datos.nombre; P.meta = datos.meta; P.plan = datos.plan; P.bienvenida = hoy(); guardar();
-        tono([[523, 0.1], [784, 0.25]]);
-        location.hash = datos.experiencia !== 'nunca' && D.prueba_nivel ? '#prueba' : (LECCIONES[0] ? '#jugar-' + LECCIONES[0].id : '#inicio');
+        if (btn.disabled) return;
+        if (paso === PASOS - 2) { // se guarda al terminar las preguntas y se celebra con la tarjeta
+          P.nombre = datos.nombre; P.meta = datos.meta; P.plan = datos.plan; P.experiencia = datos.experiencia; P.bienvenida = hoy(); guardar();
+          paso++; pintar(); sonidoFin(); confeti(); return;
+        }
+        if (paso < PASOS - 1) { paso++; pintar(); tono([[660, 0.08]]); return; }
+        location.hash = P.experiencia && P.experiencia !== 'nunca' && D.prueba_nivel ? '#prueba' : (LECCIONES[0] ? '#jugar-' + LECCIONES[0].id : '#inicio');
       });
-      cont.replaceChildren(h('div', { class: 'jugar-cab' }, h('span'), prog, h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => { P.bienvenida = hoy(); guardar(); location.hash = '#inicio'; } }, 'Saltar')), cuerpo, h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, h('span'), btn)));
+      const atras = paso > 0 && paso < PASOS - 1 ? h('button', { class: 'cerrar', type: 'button', 'aria-label': 'Volver al paso anterior', title: 'Atrás', onclick: () => { paso--; pintar(); } }, '←') : h('span');
+      cont.replaceChildren(h('div', { class: 'jugar-cab' }, atras, prog, h('span')), cuerpo, h('div', { class: 'barra-continuar' }, h('div', { class: 'in' }, h('span'), btn)));
     }
     document.body.classList.add('jugando');
     pintar();
@@ -1738,6 +1913,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   const RUTAS = [
     [/^#?$|^#inicio$|^#mapa$/, () => (!P.bienvenida && !P.xp && !Object.keys(P.ej || {}).length ? vistaBienvenida() : vistaMapa()), 'inicio'],
     [/^#bienvenida$/, () => vistaBienvenida(), 'inicio'],
+    [/^#cofre-([\w-]+)$/, (m) => vistaCofre(m[1]), 'inicio'],
     [/^#jugar-([\w-]+)$/, (m) => vistaJugar(m[1]), 'inicio'],
     [/^#examen-([\w-]+)$/, (m) => vistaExamenNivel(m[1]), 'inicio'],
     [/^#reto-([\w-]+)$/, (m) => vistaReto(m[1]), 'inicio'],

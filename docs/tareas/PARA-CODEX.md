@@ -6,6 +6,29 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (34) · Claude · Guía de Excel: capa de juego y «Empezar de cero» (versión 7) · NO ES RWADAR, NO UNIR A MAIN
+
+- **Encargo de Víctor:**
+  - «que empiece de 0 otra vez», porque al pulsar «Saltar» en el nombre entró
+    directamente;
+  - «mejora la interfaz, que de verdad sea divertido usarla».
+- **Hecho (solo en `guia-excel/`, explicado en su README):**
+  - la bienvenida ya no se puede saltar y el nombre es obligatorio;
+  - «Empezar de cero» en «Mi progreso»;
+  - la mascota A1;
+  - un solo botón en la barra de abajo;
+  - combos, cofres por módulo y tarjeta de empleada;
+  - mundos con color propio.
+  - Publicada como versión 7 de la misma página.
+- **Pruebas:**
+  - el robot completo: 98 lecciones a 3 estrellas y 7 exámenes aprobados;
+  - `validar.cjs`: 0 errores;
+  - `probar-reinicio`, `probar-entreno` y `probar-guardado`, sin errores de
+    página;
+  - capturas en móvil (claro y oscuro) y en escritorio.
+- **Pendiente de Víctor:** pulsar «Empezar de cero» en «Mi progreso» para
+  rehacer la bienvenida.
+
 ## 20 de noviembre de 2026 (33) · Claude · Guía de Excel «Hoja a hoja» guardada en su rama · NO ES RWADAR, NO UNIR A MAIN
 
 - **Encargo de Víctor:** una guía interactiva de Excel, del nivel 0 a llevar

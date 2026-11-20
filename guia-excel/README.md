@@ -36,7 +36,28 @@ node validar.cjs                # comprueba todo el contenido: debe salir «0 er
 node robot.cjs dist/hoja-a-hoja.html            # juega las 98 lecciones y los 7 exámenes
 node robot.cjs dist/hoja-a-hoja.html n0m1l1     # o solo las lecciones que digas
 node probar-guardado.cjs        # prueba dónde se guarda el progreso (con y sin permiso)
+node capturar-pantallas.cjs     # capturas en capturas/ (bienvenida, mapa, cofre, perfil) y crea dist/_v7.html
+node probar-reinicio.cjs dist/_v7.html   # «Empezar de cero» y nombre obligatorio en la bienvenida
+node probar-entreno.cjs dist/_v7.html    # una tanda de entrenamiento diario con fallos
+ANCHO=390 CAPTURAS=capturas node robot.cjs dist/hoja-a-hoja.html n0m3l1   # el robot también hace capturas
 ```
+
+## La capa de juego (versión 7)
+
+- **A1, la mascota:** la celda seleccionada del logotipo, con cara. Presenta la
+  bienvenida, reacciona en la barra de abajo (contenta al acertar, dando ánimo
+  al fallar), celebra en los resultados y señala en el mapa la lección que toca.
+- **Un solo botón abajo:** «Comprobar» (o «Ver qué pasa») mientras hay que
+  responder y «Continuar» después; el botón del propio ejercicio queda oculto.
+- **Al jugar:** combos de aciertos seguidos con llama y XP extra, y estrellas y
+  puntos que aparecen con animación en los resultados.
+- **Cofres:** uno al acabar cada módulo, con XP al azar y un truco de regalo.
+- **Tarjeta de empleada:** con el nombre y el puesto, que sube con la
+  experiencia; sale al final de la bienvenida y en «Mi progreso».
+- **Mapa:** cada nivel tiene su color.
+- **Bienvenida:** el nombre es obligatorio y no se puede saltar.
+- **«Empezar de cero»:** en «Mi progreso», con confirmación. Deja una marca para
+  que ninguna copia anterior (de otro navegador o de la cuenta) vuelva a colarse.
 
 El robot y las pruebas usan Playwright con Chromium.
 
