@@ -1,0 +1,158 @@
+Ondo Global Markets · Ondo Stocks · revisión independiente · 20/11/2026
+Extractos literales de fuentes primarias consultadas hoy por el revisor (horas UTC
+de `date -u`). Crudos en ../crudo/revision-ondo-stocks/ (fuera de Git), con
+registro de horas, código, tamaño y SHA-256 en consultas.log y enlaces.log.
+Sin nombres de personas.
+
+1. ESMA · folletos por LEI (Solr público)
+   https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc
+   21:25:41Z · HTTP 200 · 6.016 B
+   numFound 4: BPWO-89 (2026-11-11, LIECHTENSTEIN, first_passporting_date
+   2026-11-11T15:13:27Z, 29 Estados con SPAIN, lengua English), SUPP 2026-08-28,
+   SUPP 2026-05-05, BPWO-68 (2025-11-11).
+   Condiciones finales (document_type:FTWS, rows=400) · 21:25:42Z · HTTP 200 ·
+   451.315 B · numFound 276: 274 cuelgan de BPWO-68 (fk 41888) y 2 de BPWO-89
+   (fk 44512): FTWS-2876 (VGG7001APH19) y FTWS-2877 (VGG7001APJ74), 2026-11-13,
+   pasaporte 2026-11-17T08:22:39Z, con SPAIN y «Spanish» entre las lenguas.
+   Ninguna de las 276 está sin SPAIN. Los dos ISIN nuevos no aparecen en
+   https://app.ondo.finance/legal-documentation (21:26:11Z).
+
+2. CNMV · pasaportes recibidos (por LEI) · 21:25:45Z · HTTP 200 · SHA-256
+   1351fccf…01e5a4 (igual que el analista)
+   «11/11/2026 Ondo Global Markets (BVI) Limited LIECHTENSTEIN BPWO-89 11/11/2026»
+   «12/11/2025 Ondo Global Markets (BVI) Limited LIECHTENSTEIN BPWO-68 11/11/2025 Sí»
+
+3. Folleto base BPWO-89 (MFSA) · 21:26:32Z · HTTP 200 · 8.891.281 B · 200 pp ·
+   SHA-256 7f323e24…68bf (igual que el analista)
+   Copia del emisor (https://cdn.sanity.io/files/8k2tqa6n/production/49482dccf9f491b39f367098ce26de37b61fcdd9.pdf)
+   · 21:27:13Z · HTTP 200 · 8.904.277 B · SHA-256 3763635b…4367: archivo
+   distinto (ModDate 10/11/2026 frente a 09/11/2026), mismo texto (diff 0 líneas
+   sin la cabecera «Docusign Envelope ID: 11DACC73-AC85-8180-83D4-09157EC08775»).
+   p. 1: «The validity of this Base Prospectus will expire on 11.11.2027.»
+   p. 2: «This Base Prospectus has been approved by the FMA on 11.11.2026»
+   p. 4: «will operate without supervision by any authority in any jurisdiction»
+   p. 18: «As at December 31, 2025, the Issuer had a shareholders’ deficit
+   (negative equity) of USD 1,262,231 ... As at June 30, 2026, the shareholders’
+   deficit amounted to USD 3,119,568 (unaudited). The Issuer’s liabilities
+   therefore exceed its assets. If its shareholders and Affiliates cease to
+   provide financial support, the Issuer may be unable to continue as a going
+   concern» · «The Issuer has been established on April 9, 2025» · «the Issuer
+   is currently not profitable» · «Risk rating: high».
+   p. 43: custodio «Alpaca Securities LLC ... registered with the U.S.
+   Securities and Exchange Commission» (también BitGo Trust Company).
+   p. 95 (cláusula XXXIII): «(iii) who are not otherwise in prohibited
+   jurisdictions as described in the Issuer’s eligibility criteria» y «c. to
+   retail or professional investors within the EU and the EEA ... Spain».
+   p. 111 (modelo de condiciones finales): «The minimum subscription amount is
+   up to USD 0.01.»
+   p. 141 (20.2): leyenda de prohibición a minoristas solo si la ponen las
+   condiciones finales.
+
+4. Condiciones finales NFLXon (MFSA, 26/03/2026) · 21:26:33Z · HTTP 200 ·
+   1.312.233 B · SHA-256 390d4aba…b19d
+   p. 1-2: «An offer of the Products may be made by the Issuer ... on an ongoing
+   basis on every calendar day ("Offer Period") through the website of the Issuer»
+   p. 3: «The minimum subscription amount is USDC 0.01.»; «Purchaser Fees ...
+   up to 0.1% ... at the sole discretion of the Issuer» (emisión y reembolso)
+   p. 6: «c. to both retail and professional investors within the EU and the EEA ... Spain»
+   p. 11: «the Issuer may redeem all outstanding securities at any time, inter
+   alia, for certain tax reasons»; «The investor is subject solely to the
+   payment of Purchase Fees; no additional costs or charges will be borne by the
+   Investors.»
+   Condiciones finales vigentes de AAPLon en la web del emisor
+   (https://cdn.sanity.io/files/8k2tqa6n/production/befcd4d259a28673cba3d5af508a10b72bcc5c01.pdf)
+   · 21:27:14Z · HTTP 200 · SHA-256 8b307e13…d889: «IMPORTANT NOTICE ... The
+   offer of the Products to the public will continue on the basis of the
+   Successor Base Prospectus ... in accordance with Article 8(11)»; «The minimum
+   subscription amount is USDC 0.01.»; «c. to both retail and professional
+   investors within the EU and the EEA».
+
+5. Página pública de documentos del emisor · https://app.ondo.finance/legal-documentation
+   21:26:11Z · HTTP 200 · 522.539 B · SHA-256 db1f83d2…e5a4 (cambia en cada carga)
+   493 tokens (481 «stocks»); 272 con «Final Terms» y «Key Information
+   Document»; 220 sin ningún documento.
+   Documentos comunes con estado «current»: «Current Base Prospectus - November
+   11 2026», «Current Supplement to the Base Prospectus - August 28 2026» (es del
+   folleto anterior) y «Sales Terms» (asOfDate 2026-01-16).
+   AAPLon: además de condiciones finales y KID, «Admission to Trading Notice on
+   Binance MTF in Abu Dhabi Global Market».
+
+6. Sales Terms del emisor · https://cdn.sanity.io/files/8k2tqa6n/production/f22c30e6d14a8000abc4e1ad6f62d6cb41dc3da0.pdf
+   21:27:14Z · HTTP 200 · 1.658.752 B · 173 pp · SHA-256 b1111538…6194
+   Portada: «CONFIDENTIAL · Sales Terms ... dated 17 July 2025».
+   p. 6: «(ii) in the EU and the EEA to qualified investors as defined in the
+   Prospectus Regulation» (se repite en las restricciones de transmisión).
+   Docs «Legal & Regulatory» (21:26:09Z): «Tokenholder rights and obligations
+   are governed by Swiss law under the Issuer's Sales Terms.»
+
+7. KID de AAPLon en español (ZIP) · 21:26:33Z · HTTP 200 · 3.452.316 B ·
+   SHA-256 335f8c12…de90; PDF «(ES)» 19a398f3…11f1
+   «Fecha de elaboración del KID 11.11.2025» · «Este Producto está clasificado
+   en el nivel 6 de 7» · «Si el Emisor no puede efectuar los pagos adeudados,
+   usted podría perder la totalidad del capital invertido.» · Comisión de
+   entrada y de salida «Hasta un 0.1 %» con la nota «Actualmente, no se cobran
+   comisiones a los inversores» · «Los inversores no asumirán ningún otro coste
+   que los expresamente revelados» · «Usted puede, en cualquier momento,
+   presentar una solicitud de reembolso al Emisor» · «El Producto no está
+   actualmente cotizado ni admitido a negociación en ninguna bolsa de valores,
+   sistema multilateral de negociación ("MTF") ni sistema organizado de
+   negociación ("OTF"), tanto dentro como fuera de la Unión Europea o de Suiza.»
+   El pie de cada página del KID en español dice «DOCUMENT D’INFORMATIONS CLÉS
+   ("KID")» (francés) y la ficha del subyacente lleva «US0378331005; and».
+
+8. Documentación del emisor (docs.ondo.finance), 21:26:07Z-21:27:51Z, HTTP 200,
+   mismos SHA-256 que el analista en las 8 páginas que él guardó.
+   Eligibility: «Any Member State of the European Economic Area | "Professional
+   Client" under MiFID II, Annex II, Section I; or "Qualified Investor"» ...
+   «in order to be issued Ondo Stocks». La versión HTML
+   (https://docs.ondo.finance/ondo-stocks/eligibility, 21:30:43Z) dice lo mismo.
+   Important Notes: «making many Ondo Stocks available to both professional and
+   retail investors, though certain Ondo Stocks are only available to
+   professional investors in the EEA/EU.»
+   Onboarding & KYC: «open to institutional participants and retail
+   users/individuals in supported jurisdictions».
+   Investing & Redeeming: «The minimum is just $1.00 USD.» · «Purchasing Ondo
+   tokenized stocks directly via bank wire is not currently supported.» ·
+   «Redemptions to USD via bank wire are not currently supported.» · «we are only
+   able to provide such materials to investors who successfully complete our
+   onboarding process».
+   Página del token AAPLon (https://app.ondo.finance/assets/aaplon, 21:29:24Z):
+   «Minimum Amount | $1».
+   Fees & Taxes: «There is no fee to mint and a 0.05% (5bps) fee for each
+   redemption. Additionally, ... the price displayed may be slightly more or less
+   than the price at which Ondo Stocks buys or sells the underlying stocks, with
+   any difference being retained by Ondo Stocks.» · retención del 30 % a los
+   dividendos de EE. UU.
+   Token & Quote Pricing (21:27:46Z, SHA-256 dd0d6157…c9ee): «How do you
+   determine the spread to apply on a quote? This is based upon a number of
+   factors, including quote size, target profit, and several other proprietary
+   considerations.»
+   Secondary Market Restrictions: «The Issuer does not guarantee that any
+   secondary market exists» · «the Issuer may refuse any redemption».
+   Trust & Transparency (21:27:51Z): agente de garantías y de verificación
+   Ankura Trust Company; «Annual Audits: Full financial audits will be conducted
+   annually».
+   Ondo Private Client (21:27:51Z): programa de fidelidad por saldo o volumen
+   operado («gifts, early access to new features, and events»).
+
+9. CNMV · advertencias (tipo 1, No autorizadas), 21:28:10Z-21:28:16Z, HTTP 200
+   «Ondo»: solo nombres ajenos por parecido (HTTPS://BANKLONDONGROUP.UK/,
+   GESTIONFONDOENDOWMENT.FR (CLON), HTTPS://LONDONCAPITALFX.EU (CLON), LONDON
+   CAPITAL GROUP LTD, HTTPS://LONDONEX.COM/, CONDOR RESEARCH, LONDONBANK DIGITAL
+   CREDIT). «Ondo Global Markets», «Ondo Finance», «Ondo Stocks»: «No hay datos
+   disponibles».
+
+10. CNMV · ESI del EEE en libre prestación · 21:28:06Z · HTTP 200 (301 a
+    /Portal/Consultas/listadoentidad) · 1.993.103 B · SHA-256 35807bda…ede41
+    «ASSETERA GmbH Número y fecha de registro oficial: 5216 - 26/10/2023».
+    No aparecen Blockchain, Bitget, Binance, Bybit, Alpaca ni Kraken. Sí
+    ROBINHOOD EUROPE, UAB (5299).
+    Assetera: /fees, /pricing, /faq → 404 (21:29:45Z); marketplace 200
+    (21:29:46Z): «fee rate is not available yet, so it is not shown»; aviso legal:
+    «Some documents ... are restricted to "Professional Investors" only».
+
+11. BOE · Ley 6/2023 · https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053
+    21:29:01Z · HTTP 200. Art. 36: la intervención obligatoria de una entidad
+    autorizada se exige en colocaciones «no sujetas a la obligación de publicar
+    folleto»; aquí hay folleto pasaportado, así que la ley no obliga a que venda
+    un intermediario.

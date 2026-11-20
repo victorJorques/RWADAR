@@ -1,0 +1,37 @@
+
+=== A · propuestaTarjeta tal cual
+{
+ "lineaTarjeta": "Mínimo Desde 250 € (1 bono), más 1,25 % de… · España Sin confirmar",
+ "loEsencial": {
+  "minimo": "Desde 250 € (1 bono), más 1,25 % de entrada",
+  "espana": "Sin confirmar",
+  "salida": "Salida: Sin mercado secundario: se cobra al vencimiento, el 15/11/2028",
+  "salidaCorta": "Sin mercado secundario: se cobra al…"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones",
+ "costes": "Costes no documentados"
+}
+minimo  -> {"texto":"No documentado en euros","fuente":"https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf","consultadaEl":"2026-11-20","fechaDato":"2026-07-03","unidadDocumentada":"Desde 250 € (1 bono), más 1,25 % de entrada"}
+acceso  -> {"texto":"Sin comprobar si se puede contratar desde España","estado":"sin_comprobar"}
+
+=== B · textos que sí entiende resumenOferta (solo para ver la forma; no es propuesta de publicación)
+{
+ "lineaTarjeta": "Mínimo 250 € · España Sí",
+ "loEsencial": {
+  "minimo": "250 €",
+  "espana": "Sí, según la fuente",
+  "salida": "Salida: Sin reventa: se cobra al vencimiento, el 15/11/2028",
+  "salidaCorta": "Sin reventa: se cobra al vencimiento, el…"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones",
+ "costes": "Costes no documentados"
+}
+minimo  -> {"texto":"250 €","fuente":"https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf","consultadaEl":"2026-11-20","fechaDato":"2026-07-03","euros":250}
+acceso  -> {"texto":"Disponible desde España según la fuente","fuente":"https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001","consultadaEl":"2026-11-20","fechaDato":"2022-09-01","estado":"si"}
+
+=== Comprobaciones de normas sobre los textos propuestos
+titulo          40 ok
+resumen        146 > 120 caracteres, texto interno en el resumen público
+minimo          43 lleva %
+accesoEspana    73 ok
+salida          62 ok

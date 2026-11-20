@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-14",
+  "actualizadoEl": "2026-11-20",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Avisos sin cuenta (#157)",
+  "nota": "Catálogo del 20/11/2026 (revisión eca89db7) con auditoría completa, radar corregido (38), mercado en directo arreglado (37), noticias del 20/11 y web al día",
   "revisionAprobada": {
-    "commit": "0459aa431fe65add2789775e124ca68696f569fe",
-    "contenidoSha256": "sha256:6bf9e13d9b663da357182354ffa6a0aa2d2bf4d1d5a1ffcc100fd01dafa59036",
+    "commit": "b8e6dc5daa5b95c4fe813841efcb04999e572430",
+    "contenidoSha256": "sha256:30496667a245ede8119f0fb09044d1f07fed39834859505423db6b9b455a0e41",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

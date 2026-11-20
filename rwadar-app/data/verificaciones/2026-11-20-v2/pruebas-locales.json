@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-20T21:30:21.660Z",
+  "ejecutadoEl": "2026-11-20T21:31:46.367Z",
   "etiqueta": "2026-11-20",
   "revisionAnterior": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
   "revisionNueva": "eca89db7-aac5-35fa-f792-5bffbe8795e2",
@@ -17,7 +17,7 @@
     "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 20/11 y el 27/11 y lo da por caducado el 28/11; las 22 tarjetas ocultan cifras desde el 28/11; el lector de la app (adaptarCatalogoV2) lo acepta (25/22, 1 en camino)",
     "tarjetas (resumenOferta, 20/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el estado no cambia en ninguna; cambian 14 (las que tienen un dato de tarjeta cambiado, y en cada una enseña el texto nuevo): boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas",
     "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas), todas de la revisión nueva y verificadas el 20/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y, frente a las de antes de aplicar, cambian 52 (22 de oferta, 25 de plataforma y 5 de descartadas) por la revisión, las fechas y los textos; en las fichas web, lo esperado de spiko-smart-cash-euro, spiko-letras-del-tesoro-euro, fotovoltaica-cohotel, vivienda-pottendorfer-stra-e-62-wr-neustadt, kraken-xstocks, hausera-proximas-ofertas, spiko-letras-del-tesoro-dolar, robinhood-classic-stock-tokens, randhartingergasse-9-viena, vivienda-pluddemanngasse-101-graz",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/exportado-2026-11-20c lo que leería un visitante después de aplicar",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/exportado-auditor lo que leería un visitante después de aplicar",
     "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
     "falla y no deja nada: la publicada no es la 434217eb (es la anterior, a58dd22d) → Publicación distinta de la revisión anterior prevista: a58dd22d-98a3-f94e-ba66-46898162215a. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
