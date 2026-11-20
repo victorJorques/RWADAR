@@ -1,0 +1,1492 @@
+{
+  "formato": 1,
+  "etiqueta": "2026-11-20.2",
+  "fecha": "2026-11-20",
+  "desde": "2026-11-20",
+  "previa": {
+    "revisionId": "eca89db7-aac5-35fa-f792-5bffbe8795e2",
+    "hash": "eca89db7aac535faf7925bffbe8795e2edf8096c80af6789c7ab59b960a5af43",
+    "ultimoDia": "2026-11-27"
+  },
+  "vigenciaDias": 7,
+  "ultimoDia": "2026-11-27",
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  },
+  "plataformas": 25,
+  "cadena": [
+    "2026-10-22",
+    "2026-10-23",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-03.2",
+    "2026-11-03.3",
+    "2026-11-03.4",
+    "2026-11-03.5",
+    "2026-11-03.6",
+    "2026-11-03.7",
+    "2026-11-04",
+    "2026-11-04.2",
+    "2026-11-05",
+    "2026-11-05.2",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13",
+    "2026-11-20"
+  ],
+  "pedido": "puesta al día pedida por el responsable del proyecto",
+  "orden": "Lo viejo que no valga obviamente quítalo",
+  "lecturaPublica": {
+    "hora": "2026-11-20T22:32:56Z – 2026-11-20T22:32:59Z",
+    "descartadas": 5
+  },
+  "radar": {
+    "fuentes": 69,
+    "manuales": [
+      "spiko-regafi-pasaporte-es"
+    ],
+    "alcanceNota": "la de pasaportes del registro REGAFI de la ACPR, por su API pública, porque la página cargaba sin esos datos",
+    "copias": [
+      {
+        "archivo": "radar-manual/regafi-spiko-pasaporte-espagne.json",
+        "sha256": "fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6",
+        "contiene": [
+          "\"type_passeport\": \"Libre prestation de services\"",
+          "\"pays\": \"ESPAGNE\"",
+          "\"date_debut\": \"2026-01-08\""
+        ]
+      }
+    ],
+    "literales": [
+      {
+        "id": "paxg-occ",
+        "contiene": [
+          "Trust Banks Active As of 10/31/2026"
+        ],
+        "patron": [
+          "25379 Paxos Trust Company"
+        ]
+      }
+    ]
+  },
+  "candidatas": [
+    "candidata-alius-albal-token-flip",
+    "candidata-cando1-token-city",
+    "candidata-crowdedhero-bonos-dlt",
+    "candidata-crowdedhero-simpleros-bonos-dlt",
+    "candidata-cryptocom-tokenized-stocks-eee",
+    "candidata-franklin-templeton-onchain-euro-liquidity",
+    "candidata-hausera-alicante-3",
+    "candidata-lise-st-group",
+    "candidata-midas-mwin",
+    "candidata-ondo-global-markets-stocks",
+    "candidata-profitus-axiology-bonos",
+    "candidata-prosegur-cash-pagares",
+    "candidata-securitize-stocks",
+    "candidata-valorix-bit2me-stx"
+  ],
+  "sinCambios": [
+    "kraken-xstocks",
+    "robinhood-classic-stock-tokens",
+    "prosegur-digital-gold",
+    "hausera-proximas-ofertas"
+  ],
+  "ofertas": {
+    "spiko-letras-del-tesoro-euro": {
+      "cambios": [
+        {
+          "tipo": "tarjetaFecha",
+          "etiqueta": "Acceso desde España",
+          "antes": {
+            "valor": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+            "fechaDato": "2026-11-06"
+          },
+          "despues": {
+            "fechaDato": "2026-11-13"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "con `fechaDato` **2026-11-13**"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "«Last updated: November 13, 2026.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-euro · «Acceso desde España» con fecha del dato 13/11/2026"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "Latest NAV 1.0620 · 2026-11-01 ; amount 1.062032 EUR, updatedAt 2026-10-30T16:02:10Z",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-euro · quita «Precio · consulta 01/11/2026: Latest NAV 1.0620 · 2026-11-01 ; amount 1.062032 E»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Rentabilidad publicada · 31 días\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Acceso desde España · consulta 01/11/2026",
+          "antes": "🇪🇸 Spain ✅ (Smart Cash) ✅ (T-Bills Euro) ✅ (T-Bills Dollar) ❌ (T-Bills Pound) · Last updated: October 23, 2026",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-euro · quita «Acceso desde España · consulta 01/11/2026: 🇪🇸 Spain ✅ (Smart Cash) ✅ (T-Bills Euro) ✅ (T-Bill»"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "«Last updated: November 13, 2026.»"
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado).",
+        "rentabilidad": "El expediente (leído antes de las 17:18 UTC) da la cifra con la VL del 19/11; la auditoría completa (A1/A2 de DECISIONES §6) la sustituye por la de la VL del 20/11.",
+        "rentabilidad.literal": "El literal del expediente es de la VL del 19/11; DECISIONES §6 (A1/A2) lo sustituye por el de la VL del 20/11 que da el informe de auditoría.",
+        "metricas": "DECISIONES §6 cambia la rentabilidad (VL del 20/11, A1/A2) y el «Supervisor» (A5) respecto a lo que propone el expediente."
+      }
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "cambios": [
+        {
+          "tipo": "tarjetaFecha",
+          "etiqueta": "Acceso desde España",
+          "antes": {
+            "valor": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+            "fechaDato": "2026-11-06"
+          },
+          "despues": {
+            "fechaDato": "2026-11-13"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "con `fechaDato` **2026-11-13**"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "«Last updated: November 13, 2026.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-dolar · «Acceso desde España» con fecha del dato 13/11/2026"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "amount 1.101207 USD · day 2026-10-30",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-dolar · quita «Precio · consulta 01/11/2026: amount 1.101207 USD · day 2026-10-30»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Rentabilidad publicada · 31 días\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Acceso desde España · consulta 01/11/2026",
+          "antes": "🇪🇸 Spain ✅ ✅ ✅ ❌ (columna T-Bills Dollar ✅)",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-letras-del-tesoro-dolar · quita «Acceso desde España · consulta 01/11/2026: 🇪🇸 Spain ✅ ✅ ✅ ❌ (columna T-Bills Dollar ✅)»"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "«Last updated: November 13, 2026.»"
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado).",
+        "rentabilidad": "El expediente (leído antes de las 17:18 UTC) da la cifra con la VL del 19/11; la auditoría completa (A1/A2 de DECISIONES §6) la sustituye por la de la VL del 20/11.",
+        "rentabilidad.literal": "El literal del expediente es de la VL del 19/11; DECISIONES §6 (A1/A2) lo sustituye por el de la VL del 20/11 que da el informe de auditoría.",
+        "metricas": "DECISIONES §6 cambia la rentabilidad (VL del 20/11, A1/A2) y el «Supervisor» (A5) respecto a lo que propone el expediente."
+      }
+    },
+    "spiko-smart-cash-euro": {
+      "cambios": [
+        {
+          "tipo": "fuenteQuita",
+          "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+          "prueba": [
+            {
+              "documento": "partida-2026-11-20/DECISIONES-COORDINADOR.md",
+              "contiene": "la URL de la ficha GECO c124199, que ya no se publica"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "`{\"idInterne\":0,…,\"published\":false}`"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-smart-cash-euro · quita de las fuentes de la ficha https://geco.amf-france.org/produit-d-epargne/c124199"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjetaFecha",
+          "etiqueta": "Acceso desde España",
+          "antes": {
+            "valor": "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+            "fechaDato": "2026-11-06"
+          },
+          "despues": {
+            "fechaDato": "2026-11-13",
+            "alcance": "Tabla de disponibilidad de Spiko (13/11/2026): España marcada en la columna Smart Cash, que cubre Spiko Euro. La CNMV no publica los compartimentos de los fondos extranjeros y la AMF ya no muestra la ficha del fondo: no consta en ningún supervisor."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "con `fechaDato` **2026-11-13**"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "«Last updated: November 13, 2026.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "spiko-smart-cash-euro · «Acceso desde España» con fecha del dato 13/11/2026"
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "metricas": "El expediente propone «autorizado el 17/02/2026 según el certificado de la AMF y el folleto» en «Supervisor»; el revisor lo corrige (ningún documento da esa fecha) y DECISIONES §2 y §4 fijan su texto.",
+        "tarjeta": "El expediente propone textos nuevos para el acceso y la salida de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "mtbill": {
+      "cambios": [
+        {
+          "tipo": "fuenteQuita",
+          "url": "https://midas.app/assets/main-DOxid0Zj.js",
+          "prueba": [
+            {
+              "documento": "partida-2026-11-20/DECISIONES-COORDINADOR.md",
+              "contiene": "https://midas.app/assets/main-DOxid0Zj.js da **404**"
+            },
+            {
+              "documento": "partida-2026-11-20/AUDITORIA-FINAL.md",
+              "contiene": "Está declarado en `noAplicado` y ya no la cita ninguna referencia."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "mtbill · quita de las fuentes de la ficha https://midas.app/assets/main-DOxid0Zj.js"
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "La ficha publicada no tiene datos de tarjeta y DECISIONES no los añade (el motor no añade datos de tarjeta); además, en «fuentes_en_conflicto», la web y la app los ocultan.",
+        "avisos": "El expediente propone el aviso del conflicto de reembolso sin las comisiones; DECISIONES §6 (A10, auditoría completa) le añade «Las comisiones tampoco coinciden…»."
+      }
+    },
+    "kraken-xstocks": {
+      "cambios": [],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para el mínimo y el acceso de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge (Kraken: «el aviso se mantiene»): se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "robinhood-classic-stock-tokens": {
+      "cambios": [],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "prosegur-digital-gold": {
+      "cambios": [],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado).",
+        "metricas": "DECISIONES §6 (A12, auditoría completa) cambia la métrica «Custodia» respecto a lo que propone el expediente."
+      }
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "84 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pluddemanngasse-101-graz · quita «Precio desde anunciado: 84 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 80,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pluddemanngasse-101-graz · quita «Precio por participación · 22/10/2026: desde 80,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":333",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pluddemanngasse-101-graz · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":76",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pluddemanngasse-101-graz · quita «Precio · consulta 01/11/2026: \"sharePrice\":76»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "21 órdenes de venta abiertas, 333 participaciones, la más barata a 80 €; 3 órdenes de compra, la mejor a 20 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pluddemanngasse-101-graz · quita «Precio · consulta 01/11/2026: 21 órdenes de venta abiertas, 333 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "75 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Precio desde anunciado: 75 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+          "antes": "75,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Precio más bajo en mercado secundario (API) · 22/10/2026: 75,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
+          "antes": "0 de 2.350",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Participaciones disponibles en emisión (API) · 22/10/2026: 0 de 2.350»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Participaciones en venta · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":96",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":80",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Precio · consulta 01/11/2026: \"sharePrice\":80»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "38 órdenes de venta abiertas, 96 participaciones, la más barata a 75 €; 10 órdenes de compra, la mejor a 69 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-sonnleithnergasse-2-viena · quita «Precio · consulta 01/11/2026: 38 órdenes de venta abiertas, 96 participaciones, »"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "local-de-estanco-klagenfurt": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "95 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "local-de-estanco-klagenfurt · quita «Precio desde anunciado: 95 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 95,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "local-de-estanco-klagenfurt · quita «Precio por participación · 22/10/2026: desde 95,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":301",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "local-de-estanco-klagenfurt · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":95",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "local-de-estanco-klagenfurt · quita «Precio · consulta 01/11/2026: \"sharePrice\":95»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "46 órdenes de venta abiertas, 301 participaciones, la más barata a 95 €; 4 órdenes de compra, la mejor a 88 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "local-de-estanco-klagenfurt · quita «Precio · consulta 01/11/2026: 46 órdenes de venta abiertas, 301 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "65 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-stallhofstra-e-28-gratwein · quita «Precio desde anunciado: 65 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 69,96 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-stallhofstra-e-28-gratwein · quita «Precio por participación · 22/10/2026: desde 69,96 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":309",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-stallhofstra-e-28-gratwein · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":69.96",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-stallhofstra-e-28-gratwein · quita «Precio · consulta 01/11/2026: \"sharePrice\":69.96»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "83 órdenes de venta abiertas, 309 participaciones, la más barata a 69.9 €; 12 órdenes de compra, la mejor a 30 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-stallhofstra-e-28-gratwein · quita «Precio · consulta 01/11/2026: 83 órdenes de venta abiertas, 309 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "70 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-schwarzer-weg-18-graz · quita «Precio desde anunciado: 70 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 70,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-schwarzer-weg-18-graz · quita «Precio por participación · 22/10/2026: desde 70,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":274",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-schwarzer-weg-18-graz · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":65",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-schwarzer-weg-18-graz · quita «Precio · consulta 01/11/2026: \"sharePrice\":65»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "73 órdenes de venta abiertas, 274 participaciones, la más barata a 69.9 €; 8 órdenes de compra, la mejor a 60 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-schwarzer-weg-18-graz · quita «Precio · consulta 01/11/2026: 73 órdenes de venta abiertas, 274 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "drautalresidenz-paternion": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "55 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "drautalresidenz-paternion · quita «Precio desde anunciado: 55 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 70,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "drautalresidenz-paternion · quita «Precio por participación · 22/10/2026: desde 70,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":150",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "drautalresidenz-paternion · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":67.8",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "drautalresidenz-paternion · quita «Precio · consulta 01/11/2026: \"sharePrice\":67.8»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "32 órdenes de venta abiertas, 150 participaciones, la más barata a 70 €; 9 órdenes de compra, la mejor a 54 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "drautalresidenz-paternion · quita «Precio · consulta 01/11/2026: 32 órdenes de venta abiertas, 150 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "randhartingergasse-9-viena": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "60 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "randhartingergasse-9-viena · quita «Precio desde anunciado: 60 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+          "antes": "75,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "randhartingergasse-9-viena · quita «Precio más bajo en mercado secundario (API) · 22/10/2026: 75,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":75",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "randhartingergasse-9-viena · quita «Precio · consulta 01/11/2026: \"sharePrice\":75»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "30 órdenes de venta abiertas, 183 participaciones, la más barata a 78 €; 8 órdenes de compra, la mejor a 40.5 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "randhartingergasse-9-viena · quita «Precio · consulta 01/11/2026: 30 órdenes de venta abiertas, 183 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "75 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "apartamento-vacacional-hinterstoder-50 · quita «Precio desde anunciado: 75 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 72,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "apartamento-vacacional-hinterstoder-50 · quita «Precio por participación · 22/10/2026: desde 72,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":253",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "apartamento-vacacional-hinterstoder-50 · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":85",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "apartamento-vacacional-hinterstoder-50 · quita «Precio · consulta 01/11/2026: \"sharePrice\":85»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "36 órdenes de venta abiertas, 253 participaciones, la más barata a 72 €; 7 órdenes de compra, la mejor a 65 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "apartamento-vacacional-hinterstoder-50 · quita «Precio · consulta 01/11/2026: 36 órdenes de venta abiertas, 253 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "80 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Precio desde anunciado: 80 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+          "antes": "80,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Precio más bajo en mercado secundario (API) · 22/10/2026: 80,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
+          "antes": "0 de 1.410",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Participaciones disponibles en emisión (API) · 22/10/2026: 0 de 1.410»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Participaciones en venta · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":106",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":72",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Precio · consulta 01/11/2026: \"sharePrice\":72»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "19 órdenes de venta abiertas, 106 participaciones, la más barata a 80 €; 15 órdenes de compra, la mejor a 63 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "vivienda-pottendorfer-stra-e-62-wr-neustadt · quita «Precio · consulta 01/11/2026: 19 órdenes de venta abiertas, 106 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "fotovoltaica-greenpoint": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "100 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-greenpoint · quita «Precio desde anunciado: 100 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 100,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-greenpoint · quita «Precio por participación · 22/10/2026: desde 100,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":351",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-greenpoint · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":95",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-greenpoint · quita «Precio · consulta 01/11/2026: \"sharePrice\":95»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "16 órdenes de venta abiertas, 351 participaciones, la más barata a 100 €; 10 órdenes de compra, la mejor a 90 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-greenpoint · quita «Precio · consulta 01/11/2026: 16 órdenes de venta abiertas, 351 participaciones,»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "fotovoltaica-cohotel": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio desde anunciado",
+          "antes": "110 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-cohotel · quita «Precio desde anunciado: 110 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio por participación · 22/10/2026",
+          "antes": "desde 110,00 EUR",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-cohotel · quita «Precio por participación · 22/10/2026: desde 110,00 EUR»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar también «Precio desde anunciado» (27/09) y «Precio por participación · 22/10/2026»"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":65",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-cohotel · quita «Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"available»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "\"sharePrice\":120",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-cohotel · quita «Precio · consulta 01/11/2026: \"sharePrice\":120»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "5 órdenes de venta abiertas, 65 participaciones, la más barata a 110 €; 5 órdenes de compra, la mejor a 3 €",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "fotovoltaica-cohotel · quita «Precio · consulta 01/11/2026: 5 órdenes de venta abiertas, 65 participaciones, l»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Venta más barata · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "aktionariat": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "Price per DAKS 7.25 CHF",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "aktionariat · quita «Precio · consulta 01/11/2026: Price per DAKS 7.25 CHF»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Precio del emisor · 20/11/2026\""
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "Direct Investment – Invest in Aktionariat AG by buying tokenized shares directly from the issuer at a fixed price.",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "aktionariat · quita «Estado de la oferta · consulta 01/11/2026: Direct Investment – Invest in Aktionariat AG by bu»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Precio del emisor · 20/11/2026\""
+            }
+          ]
+        }
+      ]
+    },
+    "boss-info": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "Buy BOSS at 8.502 CHF · bank transfer or crypto",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "boss-info · quita «Estado de la oferta · consulta 01/11/2026: Buy BOSS at 8.502 CHF · bank transfer or crypto»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Última operación · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Hoy `getTrades` y la portada enseñan la del 05/11/2026"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "Price per BOSS 8.5 CHF",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "boss-info · quita «Precio · consulta 01/11/2026: Price per BOSS 8.5 CHF»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Última operación · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Hoy `getTrades` y la portada enseñan la del 05/11/2026"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "boss-info · quita «Precio · consulta 01/11/2026: 28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 »"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Última operación · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Hoy `getTrades` y la portada enseñan la del 05/11/2026"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Último cruce documentado",
+          "antes": "8,44 CHF",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "boss-info · quita «Último cruce documentado: 8,44 CHF»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "\"etiqueta\": \"Última operación · 20/11/2026\""
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Hoy `getTrades` y la portada enseñan la del 05/11/2026"
+            }
+          ]
+        }
+      ]
+    },
+    "switzerlend": {
+      "cambios": [
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+          "antes": "Buy LENDS at 68.0105 CHF · bank transfer or crypto",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "switzerlend · quita «Estado de la oferta · consulta 01/11/2026: Buy LENDS at 68.0105 CHF · bank transfer or crypto»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "1 acción (68,01 CHF el 20/11)"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Precio · consulta 01/11/2026",
+          "antes": "Price per LENDS 68.01 CHF",
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "switzerlend · quita «Precio · consulta 01/11/2026: Price per LENDS 68.01 CHF»"
+            },
+            {
+              "documento": "lectura-publica/ofertas-v2.json",
+              "contiene": "1 acción (68,01 CHF el 20/11)"
+            }
+          ]
+        }
+      ]
+    },
+    "hausera-proximas-ofertas": {
+      "cambios": [],
+      "difiere": {
+        "resumen": "El expediente dice «la suscripción empieza el 25/11/2026», que quedaría viejo el 25/11, dentro de la vigencia; DECISIONES §6 (A17) fija «la suscripción anunciada del 25/11/2026 al 30/06/2027» (documento de emisión)."
+      }
+    }
+  },
+  "prohibidos": [
+    {
+      "en": "mtbill",
+      "patron": "lista blanca|greenlist|whitelist",
+      "flags": "i",
+      "motivo": "mTBILL: sin «lista blanca»"
+    },
+    {
+      "en": "cambios",
+      "patron": "países permitidos|Permitted Jurisdictions",
+      "flags": "i",
+      "motivo": "ni el acceso de mTBILL según la web de Midas"
+    },
+    {
+      "en": "spiko-smart-cash-euro",
+      "patron": "autorizad[oa] (?:por la AMF )?el 17/02/2026",
+      "motivo": "Spiko Euro: la fecha 17/02/2026 solo venía de la ficha GECO que ya no se publica (corrección del revisor)"
+    },
+    {
+      "en": "spiko-letras-del-tesoro-euro",
+      "patron": "2,35 %",
+      "motivo": "Letras Euro: 2,35 % era la VL del 19/11; A1 la sustituye por 2,45 %"
+    },
+    {
+      "en": "spiko-letras-del-tesoro-dolar",
+      "patron": "3,97 %",
+      "motivo": "Letras Dólar: 3,97 % era la VL del 19/11; A2 la sustituye por 4,00 %"
+    }
+  ],
+  "fuentesNuevas": [],
+  "noAplicado": [],
+  "contraste": {
+    "cifras": {},
+    "condicionHora": {},
+    "sinCambios": [
+      "kraken-xstocks",
+      "robinhood-classic-stock-tokens",
+      "prosegur-digital-gold",
+      "hausera-proximas-ofertas"
+    ]
+  },
+  "transparencia": {
+    "reventaDe": [
+      "brickwise"
+    ]
+  },
+  "comprobar": {
+    "ausentes": [
+      "main-DOxid0Zj.js",
+      "produit-d-epargne/c124199"
+    ]
+  }
+}

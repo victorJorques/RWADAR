@@ -333,6 +333,51 @@ export function preparar(opciones = {}) {
       conFuente(slug, r.fuente);
       (tarjetaNuevas[slug] ||= []).push(c.etiqueta);
     },
+    // Solo la fecha del dato de la tarjeta (y, si se da, la nota del alcance): el valor no cambia. «antes» = lo publicado
+    // (valor y fechaDato, también en lo leído hoy como visitante).
+    tarjetaFecha(slug, c) {
+      assert.ok(CANONICA.test(c.etiqueta || ''), `${slug}: «${c.etiqueta}» no es una etiqueta fija de la tarjeta`);
+      assert.ok(c.antes && typeof c.antes.valor === 'string' && 'fechaDato' in c.antes, `${slug}: tarjetaFecha: antes { valor, fechaDato }`);
+      assert.ok(c.despues && Object.keys(c.despues).every(k => ['fechaDato', 'alcance'].includes(k)) && 'fechaDato' in c.despues,
+        `${slug}: tarjetaFecha: despues { fechaDato, alcance? } (el valor no cambia)`);
+      const d = documentos[slug], i = unico(d.referencias, x => x.etiqueta === c.etiqueta, `${slug}: dato de tarjeta «${c.etiqueta}»`);
+      const previo = d.referencias[i];
+      assert.equal(previo.valor, c.antes.valor, `${slug}: «${c.etiqueta}» publicado (valor)`);
+      assert.equal(previo.fechaDato, c.antes.fechaDato, `${slug}: «${c.etiqueta}» publicado (fechaDato)`);
+      const leida = pubO.find(o => o.slug === slug).documentacion.referencias.filter(r => r.etiqueta === c.etiqueta);
+      assert.ok(leida.length === 1 && leida[0].valor === c.antes.valor && leida[0].fechaDato === c.antes.fechaDato,
+        `${slug}: «${c.etiqueta}» = lo leído hoy como visitante (valor y fechaDato)`);
+      assert.ok(c.despues.fechaDato === null || /^\d{4}-\d{2}-\d{2}$/.test(c.despues.fechaDato), `${slug}: «${c.etiqueta}»: fechaDato`);
+      assert.ok(c.despues.fechaDato === null || c.despues.fechaDato <= FECHA, `${slug}: «${c.etiqueta}»: fechaDato posterior a hoy`);
+      const notaAntes = previo.alcance.replace(PREFIJO, '');
+      if ('alcance' in c.despues) {
+        assert.ok(typeof c.despues.alcance === 'string' && c.despues.alcance.length >= 10 && !PREFIJO.test(c.despues.alcance),
+          `${slug}: «${c.etiqueta}»: alcance nuevo sin el prefijo de fecha (lo pone el motor)`);
+        assert.notEqual(c.despues.alcance, notaAntes, `${slug}: «${c.etiqueta}»: el alcance no cambia`);
+      }
+      assert.ok(c.despues.fechaDato !== c.antes.fechaDato || 'alcance' in c.despues, `${slug}: «${c.etiqueta}»: ni la fecha ni el alcance cambian`);
+      const nota = c.despues.alcance ?? notaAntes;
+      d.referencias[i] = { ...previo, fechaDato: c.despues.fechaDato, alcance: `Comprobado de nuevo en la fuente el ${FES}. ${nota}`.trim() };
+      anota(slug, 'tarjeta (fecha del dato)', `${c.etiqueta}: ${previo.valor} · dato del ${c.antes.fechaDato ?? 'sin fecha'}`,
+        `${c.etiqueta}: ${previo.valor} · dato del ${c.despues.fechaDato ?? 'sin fecha'}`);
+    },
+    // Quitar una dirección de la lista «fuentes» de la ficha, solo si nada de la ficha ni de la oferta la cita.
+    fuenteQuita(slug, c) {
+      const d = documentos[slug], o = oferta(slug);
+      assert.ok(typeof c.url === 'string' && /^https:\/\/\S+$/.test(c.url), `${slug}: fuenteQuita: url https`);
+      assert.equal(d.fuentes.filter(u => u === c.url).length, 1, `${slug}: ${c.url} no está una vez en las fuentes de la ficha`);
+      assert.ok(pubO.find(x => x.slug === slug).documentacion.fuentes.includes(c.url), `${slug}: ${c.url} no está en lo leído hoy como visitante`);
+      const citan = [
+        ...d.referencias.filter(r => r.fuente === c.url || JSON.stringify(r).includes(c.url)).map(r => `referencia «${r.etiqueta}»`),
+        ...(d.caracteristicas || []).filter(x => JSON.stringify(x).includes(c.url)).map(x => `característica «${x.etiqueta}»`),
+        ...(JSON.stringify(d.descripcion ?? '').includes(c.url) ? ['descripción'] : []),
+        ...(o.url === c.url || o.fuentesActuales.includes(c.url) ? ['fuentes de la oferta'] : []),
+        ...(JSON.stringify({ ...o, url: null, fuentesActuales: null }).includes(c.url) ? ['la oferta'] : []),
+      ];
+      assert.deepEqual(citan, [], `${slug}: ${c.url} la cita aún: ${citan.join(', ')} (no se quita)`);
+      d.fuentes = d.fuentes.filter(u => u !== c.url);
+      anota(slug, 'fuente de la ficha', c.url, null);
+    },
     // El resumen de la tarjeta. Si la descripción de la ficha empieza por él (así la genera la documentación), cambia igual.
     resumen(slug, c) {
       const o = oferta(slug), d = documentos[slug];
@@ -416,7 +461,10 @@ export function preparar(opciones = {}) {
     for (const o of ofertas) {
       const prop = new Set((expedientes[o.slug].propuestaTarjeta.avisos || []).map(textoAviso));
       o.avisos = o.avisos.map((a, i) => {
-        if ((i === 0 && a.texto === EDITORIAL) || prop.has(a.texto) || AVISOS_NUEVOS.has(`${o.slug}\n${a.texto}`)) return { ...a, verificadaEl: FECHA };
+        // Segunda entrega del mismo día («desde» de hoy): un aviso que la entrega publicada de hoy ya comprobó (verificadaEl de
+        // hoy en la base, con su prueba en aquella entrega) sigue comprobado hoy.
+        const deHoyEnLaBase = DESDE_FECHA === FECHA && a.verificadaEl === FECHA;
+        if ((i === 0 && a.texto === EDITORIAL) || prop.has(a.texto) || AVISOS_NUEVOS.has(`${o.slug}\n${a.texto}`) || deHoyEnLaBase) return { ...a, verificadaEl: FECHA };
         sinComprobar.push(`${o.slug}: ${a.texto}`); return a;
       });
     }
@@ -449,7 +497,7 @@ export function preparar(opciones = {}) {
   assert.deepEqual([...new Set(todas({ e: ofertas, d: documentos }).filter(u => APIRX.test(u) && !antesApi.has(u) && !FUENTES_NUEVAS.has(u)))], [],
     'fuente técnica nueva (API, JSON o .js) que decisiones.json no admite (fuentesNuevas)');
   assert.deepEqual([...FUENTES_DE_OFERTA].filter(u => !FUENTES_NUEVAS.has(u)), [], 'fuente nueva de una oferta que decisiones.json no admite (fuentesNuevas)');
-  assert.deepEqual(CAMBIOS.filter(c => c.campo === 'fuente de la ficha' && !FUENTES_NUEVAS.has(c.despues)).map(c => `${c.slug}: ${c.despues}`), [],
+  assert.deepEqual(CAMBIOS.filter(c => c.campo === 'fuente de la ficha' && c.despues && !FUENTES_NUEVAS.has(c.despues)).map(c => `${c.slug}: ${c.despues}`), [],
     'fuente nueva en una ficha que decisiones.json no admite (fuentesNuevas)');
   assert.ok(!CSP.test(JSON.stringify(documentos)) && !CSP.test(JSON.stringify(ofertas)), 'texto que la compuerta CSP rechazaría');
   // Ningún aviso ni dato de tarjeta nuevo arrastra la fecha de la entrega anterior como si fuera de hoy.
@@ -501,7 +549,8 @@ export function preparar(opciones = {}) {
         assert.deepEqual(d.caracteristicas, db.caracteristicas === undefined ? undefined
           : db.caracteristicas.map(x => cambiadas.has(x.etiqueta) ? { ...x, valor: cambiadas.get(x.etiqueta) } : x), `${o.slug}: documentación.caracteristicas`);
       }
-      assert.deepEqual(d.fuentes.filter(u => !c.some(x => x.campo === 'fuente de la ficha' && x.despues === u)), db.fuentes, `${o.slug}: documentación.fuentes`);
+      assert.deepEqual(d.fuentes.filter(u => !c.some(x => x.campo === 'fuente de la ficha' && x.despues === u)),
+        db.fuentes.filter(u => !c.some(x => x.campo === 'fuente de la ficha' && x.antes === u && !x.despues)), `${o.slug}: documentación.fuentes`);
       assert.deepEqual(Object.keys(d), Object.keys(db));
       // Referencias: sin contar la fecha de consulta y el alcance de las de la tarjeta conservadas.
       const clave = r => `${r.etiqueta}: ${r.valor}`;

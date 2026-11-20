@@ -267,6 +267,7 @@ export async function comprobar(opciones = {}) {
         const ver = slug => enmascaradas.includes(slug) ? { ...o1.get(slug), ...tabla.get(slug) } : o1.get(slug);
         const textosDe = o => { const d = o.documentacion; return { aviso: o.avisos.map(a => a.texto), 'métrica': o.metricas.map(m => `${m.etiqueta}: ${m.valor}`),
           'referencia de la ficha': d.referencias.map(r => `${r.etiqueta}: ${r.valor}`), tarjeta: d.referencias.map(r => `${r.etiqueta}: ${r.valor}`),
+          'tarjeta (fecha del dato)': d.referencias.map(r => `${r.etiqueta}: ${r.valor} · dato del ${r.fechaDato ?? 'sin fecha'}`),
           'fuente de la ficha': d.fuentes, 'característica': (d.caracteristicas || []).map(x => `${x.etiqueta}: ${x.valor}`) }; };
         const comprobados = [];
         for (const c of contraste.cambios) {
@@ -282,7 +283,7 @@ export async function comprobar(opciones = {}) {
           }
           comprobados.push(c.slug);
         }
-        for (const c of contraste.cambios.filter(x => x.antes && ['aviso', 'métrica', 'referencia de la ficha', 'tarjeta', 'característica'].includes(x.campo))) {
+        for (const c of contraste.cambios.filter(x => x.antes && ['aviso', 'métrica', 'referencia de la ficha', 'tarjeta', 'tarjeta (fecha del dato)', 'característica', 'fuente de la ficha'].includes(x.campo))) {
           const l = textosDe(ver(c.slug))[c.campo];
           if (c.antes !== c.despues) assert.ok(!l.includes(c.antes), `${c.slug}: sigue publicado «${c.antes}»`);
         }
