@@ -1,0 +1,58 @@
+Revisión independiente · Midas mWIN · extractos de mis consultas del 20/11/2026 (horas UTC)
+Crudos en ../crudo/revision-midas-mwin/ (fuera de Git).
+
+ESMA, registro de folletos (Solr público), HTTP 200
+  21:17:10Z q=party_name:*391200M2JHLV9OZAZN78* → numFound 0 (SHA-256 a4a999bb…51f6)
+  21:17:11Z q=party_name:*Aureum* → 0 · q=party_name:*AUREUM* → 0
+  21:17:12Z q=party_name:*984500BB00BN6D2B7C48* → 41 (Midas Software GmbH). Los cinco más recientes: FTWS 26/10 DE000A4AYDK3;
+            30/09 DE000A4AXQV4, DE000A4AXS50, DE000A4AXS43; 16/09 DE000A4AXH53; party_name «Midas Software GmbH - 984500BB00BN6D2B7C48»,
+            member_states con SPAIN.
+  21:17:13Z q=*mWIN* → 0
+
+GLEIF, HTTP 200
+  21:17:14Z https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78 (SHA-256 efaca145…b504, igual que el analista)
+            «Aureum Securitisation Fund» · legalForm other «Fonds de titrisation» · registeredAt RA000432 · registeredAs «O136» ·
+            5, Avenue Gaston Diderich, Luxembourg · category FUND · ACTIVE · creationDate 2025-11-24 · alta LEI 2026-01-16 · FULLY_CORROBORATED
+  21:17:15Z https://api.gleif.org/api/v1/lei-records/391200LLEN2M7MS50Z79 «Aureum Manco S.à r.l.» · B301171 · creationDate 2025-11-05
+
+CNMV (HTTP 200; mismos SHA-256 que el analista)
+  21:18:52Z Pasaportes ?denominacion=&lei=391200M2JHLV9OZAZN78 → «No se han encontrado datos disponibles»
+  21:18:53Z Pasaportes ?denominacion=Aureum&lei= → «No se han encontrado datos disponibles»
+  21:18:54Z Pasaportes ?denominacion=&lei=984500BB00BN6D2B7C48 (control) → BPWO-84, BPWO-63, BPWO-45
+  21:18:56Z–21:19:02Z Advertencias (No autorizadas): Midas, Midas Software, Aureum, mWIN → «No hay datos disponibles»;
+            Wellington → «WELLINGTON MANAGEMENT EUROPE (CLON) … NO GUARDA RELACIÓN CON WELLINGTON MANAGEMENT EUROPE GMBH, DEBIDAMENTE
+            REGISTRADA EN LA CNMV CON EL NÚMERO 4799 …» y webs WELLINGTON-INVESTMENTS.COM / WELLINGTONINV.COM (clones).
+
+Ethereum, nodo público https://ethereum-rpc.publicnode.com, eth_call de solo lectura (bloque 26458942, 21:18:11Z; consulta 21:18:18Z)
+  Token 0x4E72…B67A: name «Midas Wellington Income Opportunities», symbol «mWIN», totalSupply 32,480487649 mWIN, paused 0
+  Oráculo 0x1725…9517 «mWIN/USD», 8 decimales: ronda 93 = 131.827,97219477 USD (updatedAt 2026-11-20T10:27:59Z)
+     ronda 1 = 1,0 (2026-06-04T12:49:59Z) · ronda 10 = 1,00175916 (2026-07-16) · ronda 20 = 130.433,44727172 (2026-08-10T13:09:23Z)
+     ronda 80 = 131.841,424824 (2026-11-03) · ronda 90 = 131.779,37850637 (2026-11-17) · ronda 92 = 131.797,5345597 (2026-11-19)
+  Bóveda de suscripción 0xF7F1…7db4: paused 0 · greenlistEnabled 1 · minMTokenAmountForFirstDeposit 1e18 (1 mWIN) · minAmount 0 ·
+     instantDailyLimit 155 mWIN · instantFee 0
+  Bóveda de reembolso 0x6057…7924: paused 0 · greenlistEnabled 1 · minAmount 7,6923e-6 mWIN · instantDailyLimit 4 mWIN · instantFee 50
+  Contraste mTBILL, bóveda 0x9936…6683: greenlistEnabled 0 · paused 0 · minMTokenAmountForFirstDeposit 0
+  USDC (21:22:09Z, bloque 26458961): contrato de liquidez interna 0x14fE…9fca = 0,10 USDC; bóveda de reembolso = 0 USDC
+  Selectores calculados con keccak-256 propio; paused 0x5c975abb, latestRoundData 0xfeaf968c y transfer 0xa9059cbb coinciden con los conocidos.
+
+Avalanche, nodo público https://avalanche-c-chain-rpc.publicnode.com (bloque 100915219, 21:18:37Z)
+  Token 0x61da…f314 totalSupply 0,00004 mWIN · bóvedas de suscripción y reembolso: greenlistEnabled 1 · oráculo ronda 70, mismo valor.
+
+Documentación de Midas
+  21:17:37Z https://docs.midas.app/llms-full.txt → 403 de Cloudflare (cuerpo «{}»); también docs.midas.app/resources/legal-product-documentation
+            y midas.app/mwin → 403. No se insistió.
+  Se usa la copia de hoy del grupo acciones-oro-tesoro (16:55Z), SHA-256 3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76
+  (comprobado: coincide). Literales:
+   - «Legal Product Documentation»: 25 productos (mArb … mTBILL, mXRP), sin mWIN; «The documents below pertain to Midas Software GmbH
+     as the legal issuer of the applicable mTOKENs.»
+   - «certain strategies operate on a restricted basis. This is typically the case when an underlying strategy is legally limited to
+     professional investors. … Only wallets that have been explicitly whitelisted by our team are authorised to interact with the smart
+     contracts for these restricted tokens.»
+   - «Certain products operate on a whitelist basis, which restricts who can subscribe or redeem directly through Midas. This does not
+     affect the transferability of the token itself.»
+   - «mWIN Smart Contracts»: token, oráculo, «Issuance vault», «Redemption Vault swapper» y «Redemption Vault swapper internal liquidity».
+
+Otros
+  21:17:37Z thedefiant.io (nota de lanzamiento, secundaria) → 403 «Attention Required! | Cloudflare». No se insistió.
+  21:19:10Z–21:19:17Z CSSF: el buscador de entidades edesk.apps.cssf.lu solo carga con JavaScript y su código devolvió respuesta vacía;
+            el buscador de www.cssf.lu («Aureum») no da resultados de entidad en el HTML. No se pudo comprobar el registro de la CSSF.

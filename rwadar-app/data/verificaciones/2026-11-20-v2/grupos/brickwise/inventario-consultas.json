@@ -1,0 +1,812 @@
+{
+ "grupo": "brickwise",
+ "ciclo": "2026-11-20-v2",
+ "nota": "Crudos en fuentes/crudo/ (fuera de Git). Entradas con segunVigia=true: no leídas por el investigador; re-fechadas con vigia.json.",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "fuentes/crudo/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:47Z",
+   "bytes": 235461,
+   "sha256": "895fcaef61e2638ae2441f79b2675cce60dda3f93ed03f6a15b0cbd5672d026b"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/crudo/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:47Z",
+   "bytes": 53972,
+   "sha256": "db1b9ef9d2cad994ed0c2b6fb5870bf90cad0660d2540b3510df831031715a9b"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "archivo": "fuentes/web/api-v1-utils-fees.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:48Z",
+   "bytes": 49,
+   "sha256": "f4d671a12c51e2caf42835630be0a6f1f31ea5c9a7fc97dc7472aacc17b90449"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2RAH5.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:49Z",
+   "bytes": 8776,
+   "sha256": "0a4afb6ef94b72ffb274a980f34da98a9384ddaa9b3ff9d6dd11b6d986396d33"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2T4D7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:49Z",
+   "bytes": 9139,
+   "sha256": "312dfccf3c330f2ae71b45d7bc36d35e2bc90612d51cf6df1814f41db5a3ccc2"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2U5V3.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:49Z",
+   "bytes": 9447,
+   "sha256": "e4da56d4b97f412670928b960a5fa9a3f8b224aae79bfdc54b552f8a67d71d23"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCD0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:50Z",
+   "bytes": 8491,
+   "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCE8.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:50Z",
+   "bytes": 8566,
+   "sha256": "dfefeee2684d619d1285bde065239e5e15c581a2da543822b01d8eecd41342cb"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2YPQ0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:50Z",
+   "bytes": 9653,
+   "sha256": "07624b059c1c3e0d0c90640707fe5e1a944c056f9c2a6b1836357115789713de"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2ZT84.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:50Z",
+   "bytes": 10670,
+   "sha256": "23bdcc55dbbc49c3bcfb834367501ebe2e22d0fad0da70f2446e5bde9a508c23"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A31KP7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:50Z",
+   "bytes": 9881,
+   "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A324B4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:51Z",
+   "bytes": 12167,
+   "sha256": "16cf851beead10c3ec242d16f58dd76946e5e71ba15753a8b1a9a8ab5d118dcc"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J32.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:51Z",
+   "bytes": 7969,
+   "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J40.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:52Z",
+   "bytes": 6614,
+   "sha256": "45f816ccbb087fb3b6a22d8f6edbae0ffa1add90b3fd93492babd5e1e4a265c8"
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "fuentes/crudo/web-faq-land.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:52Z",
+   "bytes": 55846,
+   "sha256": "d652644e63dce0a863cc8f490b57f224903587b6cfff5f7d4b7196984207133e"
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "fuentes/crudo/web-faq-handel.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:53Z",
+   "bytes": 56675,
+   "sha256": "52d2e52750799577afca08ece7cd54c2cb3bb9699c66b9e6cdfcdf4cfe941e80"
+  },
+  {
+   "url": "https://www.brickwise.at/imprint",
+   "archivo": "fuentes/crudo/web-imprint.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:53Z",
+   "bytes": 41447,
+   "sha256": "5ee85c3b7971bfe55eab23eeb2e9ef072262312034ca45e085a98c8db5846308"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?numero=5003&tipo=CLP",
+   "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:53Z",
+   "bytes": 218036,
+   "sha256": "d09b2b2f3bf8b17ececa9778bf430903ce3dea5811306f5c32c2b25cd226e34f"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:55Z",
+   "bytes": 218752,
+   "sha256": "53894596abc5e7e4dd4c514416e803890ffe91c3c2f8813007fac8593fc10c29"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:56Z",
+   "bytes": 218234,
+   "sha256": "9eaf08661f118919dfd17f6400f0950a79e6838165e2302a6b9366e75ad08687"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "fuentes/crudo/bafin-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:58Z",
+   "bytes": 26540,
+   "sha256": "4fad64f9b74eb40542610dcee42f7a07bb322bd783d9ea89d3e1612b6e75a541"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise)",
+   "archivo": "fuentes/crudo/bafin-vgv-brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:54:59Z",
+   "bytes": 27150,
+   "sha256": "18f2ff83908e41e5be2dcf008ea697d2dc0be46018952a72a007a2d8e3673390"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "archivo": "fuentes/crudo/fma-buscar-brickwise.html",
+   "http": 403,
+   "consultadoUtc": "2026-11-20T16:56:54Z",
+   "bytes": 5410,
+   "sha256": "534f3fcc213c6b94e85eaac190cdae39f803bb8b0c94e7f247eae8f6811860aa"
+  },
+  {
+   "url": "https://cdn.brickwise.at/1aec57d6-3aa3-473a-ae33-2a0fbdf4a1c5.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:02Z",
+   "bytes": 246360,
+   "sha256": "ac03e06460c1a7522a7713167b8697dfc06d0e1d8ea13e8ce96994828a4d49ac"
+  },
+  {
+   "url": "https://cdn.brickwise.at/c372686c-443c-445b-9747-a87cdc8844de.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:02Z",
+   "bytes": 246126,
+   "sha256": "e22f98856be7d3ee2f1e472c411ab9d194f643aac6d0f233f1acc79ca8b85c38"
+  },
+  {
+   "url": "https://cdn.brickwise.at/2439beca-ac29-466c-b038-6c7689e7a5a7.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:02Z",
+   "bytes": 244352,
+   "sha256": "71f55ebf5927a7660af368bf9811a5cbecf116aab6a6bf62e19920e6aaa2e41b"
+  },
+  {
+   "url": "https://cdn.brickwise.at/3254e2f8-2426-4c15-8f4d-12da298060a9.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:03Z",
+   "bytes": 212480,
+   "sha256": "f602f699d6fe47c79e790fa8da1a7e7581707e88141828ab079745df7524ce1a"
+  },
+  {
+   "url": "https://cdn.brickwise.at/36cfe50a-2527-45f9-85d9-23aaab647847.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:03Z",
+   "bytes": 212260,
+   "sha256": "0124232ae6afee97d3f0e15c614fd68f3049303aa61a3ba1f2ed8573abbeaea2"
+  },
+  {
+   "url": "https://cdn.brickwise.at/f82e5244-dc70-45af-9a41-3a40b5390442.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:03Z",
+   "bytes": 213054,
+   "sha256": "8d2ba1cca96e9fb334d89a331352a154cead31d627a4d8f45a9f56ff644d6b07"
+  },
+  {
+   "url": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:04Z",
+   "bytes": 228984,
+   "sha256": "fdf2ed79e9c2377111a8d41b771ab014241da39812925c3653f6af2b07b8baf5"
+  },
+  {
+   "url": "https://cdn.brickwise.at/04f3f1d5-71a1-4629-8e5f-dcc45ef4fb15.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:04Z",
+   "bytes": 220687,
+   "sha256": "b25ece9e355d627f132b14a93c296a921ff5ea98198b2a81611a013d7a59a48f"
+  },
+  {
+   "url": "https://cdn.brickwise.at/a847b550-48f2-4971-aec9-19684c6cca4f.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:05Z",
+   "bytes": 355071,
+   "sha256": "6feb6d254c9ea0ec691276caebfc76e1897e0a909c4d473367bc3fa5d25fb32d"
+  },
+  {
+   "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:05Z",
+   "bytes": 456752,
+   "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72"
+  },
+  {
+   "url": "https://cdn.brickwise.at/8dfb7e84-2f99-4de7-9e49-c5a43fa76537.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:05Z",
+   "bytes": 410115,
+   "sha256": "b98ac9fe99249337dace974450357b18d768d346399323bead9aaa515b4f52e5"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "fuentes/crudo/relectura/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:56Z",
+   "bytes": 235461,
+   "sha256": "895fcaef61e2638ae2441f79b2675cce60dda3f93ed03f6a15b0cbd5672d026b"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/crudo/relectura/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:59:57Z",
+   "bytes": 53972,
+   "sha256": "db1b9ef9d2cad994ed0c2b6fb5870bf90cad0660d2540b3510df831031715a9b"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/web/web-app-marketplace-2026-11-20.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:56:25Z",
+   "bytes": 3704,
+   "sha256": "0cdebe01222465ef259679b9a419a77b0689f4450aac1684d350b140a8e5baa7",
+   "nota": "Playwright sin sesión; captura en web-app-marketplace-2026-11-20.png"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/web/web-app-marketplace-2026-11-20.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:56:25Z",
+   "bytes": 2114090,
+   "sha256": "e608270e8101db34ac74a705258c009bbd80019d600f1c5db22228a68a176f00"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/bafin-effecta-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2454,
+   "sha256": "8d51effbe6a1eab9b056de9ffff61d85ea1f91d8dafb018fb0d763ea1797505c",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/bafin-vgv-brickwise-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1151,
+   "sha256": "e601fe9fb1ab75df8def149a12d4ea660e24df5f59be898ebf3d4da9d105b533",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-agentes-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14232,
+   "sha256": "e407df9789b63adc3a27f9d8c2baaebb921e6c22b4ab55710743de8ed6934e05",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-lp-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14293,
+   "sha256": "c14f4f82dd4988d1f09d80fdb8e097b4fd063b76a85aa32bd178452a5f88c68b",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-programa-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14440,
+   "sha256": "d0d0a8d0a1ad81007969f7ec60e9b7a2111986f4502b163191e7201b6bf1bbab",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-handel-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16624,
+   "sha256": "95a458e931307b7cd54167ebeb42612c58ad45dac131e2e00c32ea8df410f0eb",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-land-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15908,
+   "sha256": "536b0b43e2f12bacd596cb5e7338f62c6b1e50b32f0f5d91323c211b6d76bb2b",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-imprint-2026-11-20.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15451,
+   "sha256": "7e5b5d61d9adc698131945858548c7abd81ee5debf584a509828015fc1f567b3",
+   "nota": "Texto extraído del HTML de crudo/ (nombres de personas recortados)"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/libro-ordenes-resumen-2026-11-20.json",
+   "http": null,
+   "consultadoUtc": "2026-11-20T16:54:47Z",
+   "bytes": 32083,
+   "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+   "nota": "Resumen sin direcciones"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/libro-relectura.json",
+   "http": null,
+   "consultadoUtc": "2026-11-20T16:59:56Z",
+   "bytes": 32083,
+   "sha256": "914ebdda48b276f4b5dce94cb8baa98223cbbfa23fb9dc9c115000d60549a4ae",
+   "nota": "Resumen sin direcciones"
+  },
+  {
+   "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:20Z",
+   "bytes": 181670,
+   "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:21Z",
+   "bytes": 138297,
+   "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:22Z",
+   "bytes": 30692,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:23Z",
+   "bytes": 64476,
+   "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=BrickOne",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:41Z",
+   "bytes": null,
+   "sha256": "fa7dbde1d11e070927a9333ad6d519be741bcea4427f45c00f1faa9f1a11d7ad",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:23Z",
+   "bytes": null,
+   "sha256": "18f7131b28fbac094c0e354a7a790192e527d9d4da4e9f8e2218a02045be0bc8",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:24Z",
+   "bytes": null,
+   "sha256": "3fe33c877f9f4f91aa1217e6f766f69ce65fa2136e1b1149d7f5bce29b37d175",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:23Z",
+   "bytes": 138157,
+   "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:22Z",
+   "bytes": 180825,
+   "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:24Z",
+   "bytes": 64426,
+   "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Sagarmatha",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": null,
+   "sha256": "1f1d49cad5b2334e55cd5886868fb197af003a7e74ae564fc956b3bdbb6b821c",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:23Z",
+   "bytes": 223374,
+   "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:24Z",
+   "bytes": 138294,
+   "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 64514,
+   "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": null,
+   "sha256": "deb78ce752b75ae5cf73c070b3f06a659319c850c3cc8436cdc71f838969cf5d",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:24Z",
+   "bytes": 138935,
+   "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:24Z",
+   "bytes": 190996,
+   "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 64521,
+   "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 190968,
+   "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 139764,
+   "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 64710,
+   "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 138356,
+   "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:25Z",
+   "bytes": 192682,
+   "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 64873,
+   "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 191910,
+   "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 128786,
+   "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 64605,
+   "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 139587,
+   "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:26Z",
+   "bytes": 247203,
+   "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 64520,
+   "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 146611,
+   "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 259949,
+   "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 63599,
+   "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:28Z",
+   "bytes": null,
+   "sha256": "7fcc97bf6c12a69b7efcd57cafb1bb231c95e3a571ee2b20d83ab4bbd3665fa4",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:28Z",
+   "bytes": 550355,
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:28Z",
+   "bytes": 360088,
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": 64702,
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:29Z",
+   "bytes": 557605,
+   "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:29Z",
+   "bytes": 396631,
+   "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:28Z",
+   "bytes": 64712,
+   "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+   "segunVigia": true,
+   "nota": "No releído: el vigía del 20/11 da el mismo SHA-256 que lo publicado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cohotel",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T16:52:27Z",
+   "bytes": null,
+   "sha256": "54416497fc5dc87cdedbd356b9b7dfa96aa5b56d17bb1338d32c6cbc92df8967",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV re-fechada con el vigía: «sin advertencias», igual que lo publicado"
+  }
+ ]
+}

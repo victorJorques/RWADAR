@@ -1,0 +1,468 @@
+[
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+  "archivo": "fuentes/mtbill-ft.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:50Z",
+  "bytes": 1248073,
+  "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "archivo": "fuentes/crudo/midas-docs-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5675,
+  "sha256": "1f656d425ca9b97c9887a5785d146a9d3fbb54b05315a97d72dbbd4835134376",
+  "nota": "bloqueo (403), no se insistió"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "archivo": "fuentes/mtbill-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "archivo": "fuentes/crudo/midas-app-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5492,
+  "sha256": "71690048a41c1d7b040e11f135040c134180d786eaf156e9f2ef702e529078b4",
+  "nota": "bloqueo (403), no se insistió"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents",
+  "archivo": "fuentes/crudo/midas-docs-issuer.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5726,
+  "sha256": "de971a073c2c2dc0a5dec7de62a244a57186f7ec1f1beb2b7d435d539a3de49d",
+  "nota": "bloqueo (403), no se insistió"
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "archivo": "fuentes/crudo/midas-docs-llms-full.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 219438,
+  "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76",
+  "nota": "lleva enlaces con token: solo en crudo/"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL",
+  "archivo": "fuentes/fmali-midas.json",
+  "http": 400,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 11,
+  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa",
+  "nota": "API de la FMA-LI responde 400 Bad Request: bloqueo registrado"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-isin-mtbill.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 4417,
+  "sha256": "01d2531aefc72bb2232a1fdbf3e3d5e47f30cde188f3fbfeddcf03c34432c321"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-emisor-midas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 57761,
+  "sha256": "d28bbf2cda17220e40daf625f36d89e28499a49810b28d128edfb6f523ee624d"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+  "archivo": "fuentes/cnmv-pasaportes-midas.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 217221,
+  "sha256": "e9f91dc4e47aa0615c9dadd00a4a642271a4cf956e756c610551e1fb7e3d319b"
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_es.pdf",
+  "archivo": "fuentes/robinhood-dos-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 308722,
+  "sha256": "75f905ae83716a4532611023a931dce9e8f6efb3a60918598f76eb7443ac748f"
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+  "archivo": "fuentes/robinhood-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 191487,
+  "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-faq",
+  "archivo": "fuentes/kraken-support-xstocks-faq.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1054713,
+  "sha256": "1a7f3efb19ed6e6033de424b704510d6999c3412b5f055f84d318fc48e418f94"
+ },
+ {
+  "url": "https://robinhood.com/eu/en/invest",
+  "archivo": "fuentes/robinhood-invest-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 252541,
+  "sha256": "36ac3a92d1b1e5d51da96925f6aa5576db9ba9620ed3cb1e62415985aa2339f8"
+ },
+ {
+  "url": "https://www.kraken.com/legal/xstocks",
+  "archivo": "fuentes/kraken-legal-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 622189,
+  "sha256": "6e187dcb882211820a6a94775f321c1c9192be4a82f3df6bb002a626ec8e0f2e"
+ },
+ {
+  "url": "https://www.kraken.com/features/fee-schedule",
+  "archivo": "fuentes/kraken-fee-schedule.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 664138,
+  "sha256": "a90d6464255de4ce7074ca280edaa41cbdf611f9b814a9ad2950e05b348eef54"
+ },
+ {
+  "url": "https://eu.kraken.com/legal/risk-disclosure",
+  "archivo": "fuentes/kraken-eu-risk-disclosure.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 224172,
+  "sha256": "7fed5ba5f1da41e2bf1d1e5373d6fe5e0aa38be4016f07d98e77d01df6b89591"
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "archivo": "fuentes/robinhood-invest-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 257218,
+  "sha256": "59148f3cc52fea8cb6e5814d19dce72a2d513ecea85d4710a03f1735370a8205"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-availability",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-availability.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 5421584,
+  "sha256": "5f26efa15d2f90a9a357c98e34e62c4886e985fa87a32e41833fa77b7cbfdd9b",
+  "nota": "movido a crudo/ por tamaño"
+ },
+ {
+  "url": "https://xstocks.fi/us",
+  "archivo": "fuentes/xstocks-fi-us.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 143552,
+  "sha256": "36071bef35909b3a83449d23e7a87e3d03a9c533e582115125670cee6dff773e"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "archivo": "fuentes/esma-casps.csv",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 201660,
+  "sha256": "d6ba26963008959098964bea92ead7409b6ff8284eea86d17237bdc5aad65134"
+ },
+ {
+  "url": "https://assets.backed.fi/legal-documentation",
+  "archivo": "fuentes/backed-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 10606,
+  "sha256": "3128f1c6a096cf65d418fe1c44d1f308c2f386ea6a9e89c7c8f1139d89d3c768"
+ },
+ {
+  "url": "https://eu.kraken.com/xstocks",
+  "archivo": "fuentes/kraken-eu-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1407105,
+  "sha256": "ac14ca8d99078bdf6f13454ce71bd5f453d9600335f46a730159e63a069cf1c7"
+ },
+ {
+  "url": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+  "archivo": "fuentes/lb-robinhood-europe-uab.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 156631,
+  "sha256": "0fe9bef7bdb743959ecd9c013fce48e56e14c852514feed6756cdd2f82b52645"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-CH1436219716.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 228277,
+  "sha256": "37bb464a1206b469c2593d0f6a9016a9f7b4f39fd803226b2a8ae510fee69268"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+  "archivo": "fuentes/cnmv-pasaportes-backed.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 215530,
+  "sha256": "bfdadeec5ccd1f2602d1753971f2ebdc2ea471ebf1b399635decc990097bf0cb"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-CH1436219195.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 225709,
+  "sha256": "4b7a96a98cd5d60e326664d7c4e44d1cd3fc714ed63cfe580682e1651e98c805"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667225/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1588667225.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1084724,
+  "sha256": "5297cd90dc1d736da0256f677b5696f8f02f6d0ab36b1d2457199eb1697e1f75"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1580494602/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1580494602.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1083726,
+  "sha256": "65ccdd4d560d3940abc348fca9e054173f0e82ab2a2d08d9f4ffa502665625ff"
+ },
+ {
+  "url": "https://www.kraken.com/es-es/features/fee-schedule",
+  "archivo": "fuentes/kraken-fee-schedule-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 673649,
+  "sha256": "02cfe7affe297258ded3615bba59644cf397a28b384ebee27d0acc14661656be"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1436219195.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1040803,
+  "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+  "archivo": "fuentes/cnmv-esi-5299.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 218078,
+  "sha256": "cd36b27873857b29fc972378abf883cd0c17ab0e1900c9279d1b922849b9ef89"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1436219716.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1049054,
+  "sha256": "280159d434561e538f9bac487b0aac8da34f5962f740a3cac12d844fea82a653"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1588667175.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1087150,
+  "sha256": "9ad0819cc4fbbc7441236e38cdd928909562d38eac0aa792880648718ffb6b69"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1436219187.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 1040640,
+  "sha256": "ad7f3be6ef79bd590e67d7b545227166bf4425808612f95be2734102373cd575"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-CH1436219187.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 225778,
+  "sha256": "1db674666d2f1e1785b098dc96688fd92c6d4cccd325f1ababa39a3fb87b31b5"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299&vista=17",
+  "archivo": "fuentes/cnmv-esi-5299-vista17.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 232956,
+  "sha256": "b9e27cd8631aa269ccedbe05af33ceb50f01d0334c8681a9b654703afe22a930"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474&vista=17",
+  "archivo": "fuentes/cnmv-esi-4474-vista17.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 252943,
+  "sha256": "3f1b32d252dd677035c0b8564a8fc6fa49d282b3ac11be0e5f83147d5db26c83"
+ },
+ {
+  "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf",
+  "archivo": "fuentes/cnmv-listado-casp.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 482698,
+  "sha256": "0dea9e14f8f7aacb3d76021afe8b91b8aac8896e597fc4012a8d9a19f6c4f7e7"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-backed-todos.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 81076,
+  "sha256": "76c416ff6adcc8541e103a4ec984401470bf41c8f088912f8f567e2ab7a191c8"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-backed-noft.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 21244,
+  "sha256": "3937981e2df0b8910d74d536f389f93ad8f9ab8cd96fafcebfa44a3bc1e2dc7b"
+ },
+ {
+  "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+  "archivo": "fuentes/cysec-payward-45914.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:46Z",
+  "bytes": 651841,
+  "sha256": "d376f77bd10051c9970f62b933262a85a7d7b345ea980482e8324ab32388196d"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-CH1588667217.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:10Z",
+  "bytes": 1085449,
+  "sha256": "116a61b3204d37edfcab3b53ea6d0a720b49428907cd1ba36c8992470eb72300"
+ },
+ {
+  "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-availability-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:41Z",
+  "bytes": 5421661,
+  "sha256": "8d2d7d6f3777f79945285ff024d509f37329419102a12a81249b04f757ec9b39",
+  "nota": "movido a crudo/ por tamaño"
+ },
+ {
+  "url": "https://eu.kraken.com/es-es/xstocks",
+  "archivo": "fuentes/kraken-eu-xstocks-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:41Z",
+  "bytes": 1405369,
+  "sha256": "d28bb718a08634405d1f8cb23fcba0d7dda9ed2fed0c4de69bbad7cc967aa64e"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/fmali-midas-2.json",
+  "http": 400,
+  "consultadoUtc": "2026-11-20T16:58:38Z",
+  "bytes": 11,
+  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa",
+  "nota": "API de la FMA-LI responde 400 Bad Request: bloqueo registrado"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "archivo": "fuentes/crudo/prosegur-digital-gold-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:15Z",
+  "bytes": 8677,
+  "sha256": "92797c3c6224d52f25d27d942417287f57342fa371c7aa76ddd13f6a4d1c222a",
+  "nota": "render es-ES; nombres de personas recortados tras la lectura"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "archivo": "fuentes/crudo/prosegur-terms-service-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 73274,
+  "sha256": "ac9bcc5177427e932765bad0690c7ef0cb9672bc821bcf386ca93c256be23e96",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "archivo": "fuentes/crudo/prosegur-transparency-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 2400,
+  "sha256": "518864008f1cdf5a0f8202ac32b7f00934b85c926b1d9e185eabf29fde8a1dea",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/about-us/faqs",
+  "archivo": "fuentes/crudo/prosegur-faqs-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 2060,
+  "sha256": "a26005106fa116ca14f40d9202ed8fb30cb4d701ec8b9a75bd1870fbba7b62b7",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/home",
+  "archivo": "fuentes/crudo/prosegur-app-home-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:12Z",
+  "bytes": 1131,
+  "sha256": "5cad7958ff9e194c7dbd1ba02c9f6674c0930378c368ef6af2e2967baa36fe99",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "archivo": "fuentes/crudo/robinhood-invest-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:13Z",
+  "bytes": 11695,
+  "sha256": "73f035739cc02de5ae6196cc7b54f37b82a86778d42f98bd4a8acf81e1a892eb",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://eu.kraken.com/es-es/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:25Z",
+  "bytes": 11678,
+  "sha256": "9086de58615734eaf186b0ad912ec248e8add582effb2696ffcd6daa0db2917f",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://eu.kraken.com/es-es/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-es-faq-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:58:04Z",
+  "bytes": 6338,
+  "sha256": "64d3739ea84177ca9aa8ab25b87d2c98cea6c3e35963e08b044271bcc9a9c4b0",
+  "nota": "render es-ES con preguntas frecuentes desplegadas"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (eth_call oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b, rondas 468–498)",
+  "archivo": "fuentes/crudo/onchain-mtbill-oraculo-20261120.json",
+  "http": null,
+  "consultadoUtc": "2026-11-20T16:54:23Z",
+  "bytes": 6084,
+  "sha256": "8de97f439fd58d7dfb9ab3cbff801348467e99bc9b631db3507fcaac8b6c47b5",
+  "nota": "bloque 26457629"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (paused() y totalSupply() de mTBILL)",
+  "archivo": "fuentes/crudo/onchain-mtbill-pausas-20261120.json",
+  "http": null,
+  "consultadoUtc": "2026-11-20T16:55:19Z",
+  "bytes": 373,
+  "sha256": "be9ad21b352ec3715f50d407e9f522e35f228512647f1d9a0e9bfb94a64be0f7",
+  "nota": "bloque 26457633"
+ }
+]

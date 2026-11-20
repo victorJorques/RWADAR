@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 · Claude (montador) · Re-montaje de la entrega 2026-11-20 con la auditoría completa · SIN APLICAR NI PUBLICAR
+
+- `rwadar-app/data/verificaciones/2026-11-20-v2/decisiones.json`: se conserva el
+  montaje de las 17:19 UTC y se añaden las correcciones A1–A21 de
+  `DECISIONES-COORDINADOR.md` §6 (Spiko con la VL del 20/11: 2,45 % y 4,00 %;
+  avisos de pérdida total; Brickwise sin rentabilidades en «Datos con su fecha»;
+  citas del KID; número fiscal austriaco; Kraken, mTBILL, Robinhood, Prosegur,
+  Boss Info y Hausera). Serie de VL de Spiko leída a las 20:43 UTC en
+  `grupos/spiko/fuentes/api-20-11-tarde/`.
+- Revisión `c8727d7d-cd09-d2cf-d3dc-da3158fe6812`, SQL `4380fcf3…dffe6`
+  (sustituye al `4418ad20…`). `preparar --repetir`, `comprobar` (PGlite, 19 + 6
+  casos) y el ensayo «después de aplicar» en una copia aparte: ver
+  `INFORME-ENTREGA.md` y `ensayo-despues.json`.
+- No montables con el motor tal cual (en `noAplicado`): A3 (solo la fecha del
+  dato de una tarjeta) y la tarjeta de A21 (la web enseña «Sin comprobar…» para
+  cualquier «Sin confirmar…»). Sin commits: los hace el coordinador.
 ## 20 de noviembre de 2026 · Claude · Textos del radar corregidos (migración 38) · PREPARADO, SIN APLICAR
 
 - **Encargo (orden de la dirección del 20/11, 17:40 UTC):** «Todo lo falso

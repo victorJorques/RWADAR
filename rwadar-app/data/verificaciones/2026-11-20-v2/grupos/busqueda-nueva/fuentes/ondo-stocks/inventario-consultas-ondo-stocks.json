@@ -1,0 +1,233 @@
+{
+ "grupo": "busqueda-nueva",
+ "slug": "candidata-ondo-global-markets-stocks",
+ "consultas": [
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "archivo": "crudo/ondo-stocks/esma-ondo-folletos.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:07:48Z",
+   "bytes": 6016,
+   "sha256": "7039d17b11f0d8e17a03595ca19e6e5cf6e4b2e4176ffa9b98004edd0d0e81ab"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20document_type:FTWS&wt=json&rows=20&sort=approval_filing_date%20desc",
+   "archivo": "crudo/ondo-stocks/esma-ondo-condiciones-finales.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:07:57Z",
+   "bytes": 32997,
+   "sha256": "81e6825220c6137b7eadd72c7d62f9c47bc79d7017d8eb92c7b1686d8c6eba6b"
+  },
+  {
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf",
+   "archivo": "crudo/ondo-stocks/ondo-folleto-base-2026-11-11-mfsa.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:09Z",
+   "bytes": 8891281,
+   "sha256": "7f323e249a9dc593c97a42652e4fb0a6c86d5ab390dc92d2247d9e1e1d7b68bf"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "archivo": "ondo-stocks/ondo-docs-eligibility-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:09Z",
+   "bytes": 9153,
+   "sha256": "5c21e9c9b2be9d3600988b4a9cc5dbd2fad5221125480c7f62fae6aa3e7adbdf"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-global-markets/eligibility",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:43Z",
+   "nota": "(redirige a /ondo-stocks/eligibility; no guardado)"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/legal-and-regulatory.md",
+   "archivo": "ondo-stocks/ondo-docs-legal-and-regulatory-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:51Z",
+   "bytes": 4843,
+   "sha256": "c7c4c122fedf7a73937681aa792332d0215b6654484f6d813fb3e808c6bb87b0"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+   "archivo": "ondo-stocks/ondo-docs-secondary-market-restrictions-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:51Z",
+   "bytes": 7972,
+   "sha256": "f186c2fd6998ced290715ca8bffcb67a5aa844fd1e18efcbb0bf2097c4f01a0a"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/investing-and-redeeming.md",
+   "archivo": "ondo-stocks/ondo-docs-investing-and-redeeming-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:51Z",
+   "bytes": 6388,
+   "sha256": "bf5f7012eb520d186f2713fc4e93e9c1d5c1af81898af77b4d54d4a36fa6a605"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/onboarding-and-kyc.md",
+   "archivo": "ondo-stocks/ondo-docs-onboarding-and-kyc-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:52Z",
+   "bytes": 4886,
+   "sha256": "1484924438ea7feef45e7c8e5849f464367452eca34260345f316cb276945e4a"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/fees-and-taxes.md",
+   "archivo": "ondo-stocks/ondo-docs-fees-and-taxes-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:52Z",
+   "bytes": 3355,
+   "sha256": "fda021ab7bac69ebbfb13e1aea20045dba677d26625c29e54b4cb4841957244e"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/important-notes.md",
+   "archivo": "ondo-stocks/ondo-docs-important-notes-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:52Z",
+   "bytes": 9269,
+   "sha256": "c8244e625f61e2e84801511da2c311c1da137bd25c067d3808ae28a761c876f9"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/overview.md",
+   "archivo": "ondo-stocks/ondo-docs-overview-2026-11-20.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:08:53Z",
+   "bytes": 8363,
+   "sha256": "d5ab7aba8169264becae60cf98a12aa7c8543f42d0d6f16b0477755d645d74be"
+  },
+  {
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Ondo-Global-Markets-BVI-Limited-Final-Terms-Document-dated-26-March-2026-REF-NFLXon.pdf",
+   "archivo": "crudo/ondo-stocks/ondo-ft-nflxon-2026-03-26-mfsa.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:09:11Z",
+   "bytes": 1312233,
+   "sha256": "390d4aba5bd6d74c7d6a326b91d6b9976f0b0cbf87d8018c51db4a4953e6b19d"
+  },
+  {
+   "url": "https://ondo.finance/global-markets",
+   "archivo": "crudo/ondo-stocks/ondo-finance-ondo-stocks.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:09:28Z",
+   "bytes": 3926007,
+   "sha256": "ff7b898a38aa5ce86bca5e0d23a2b6265fee15cb1afee6994b6b0288c74faa2b"
+  },
+  {
+   "url": "https://app.ondo.finance/legal-documentation",
+   "archivo": "crudo/ondo-stocks/ondo-app-legal-documentation.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:09:40Z",
+   "bytes": 522539,
+   "sha256": "018cc2c8ad882a6fedff68bc79971ca1dd56129cd025001e036dc9fae24a0f1a"
+  },
+  {
+   "url": "https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip",
+   "archivo": "crudo/ondo-stocks/ondo-kid-aaplon.zip",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:10:08Z",
+   "bytes": 3452316,
+   "sha256": "335f8c129d97e7a562073107d424f4fbc8a33f52a6b3fc6dd53839466686de90"
+  },
+  {
+   "url": "https://cdn.sanity.io/files/8k2tqa6n/production/b8de3e1d21654e65b43806a573bf003eb26caba5.pdf",
+   "archivo": "crudo/ondo-stocks/ondo-kid-nflxon.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:10:09Z",
+   "bytes": 110346,
+   "sha256": "17c19d188bb76c59a58d1141332beb61852b3ef81166b8f215a40e21d73e5a36"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+   "archivo": "crudo/ondo-stocks/cnmv-pasaportes-ondo.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:09Z",
+   "bytes": 215735,
+   "sha256": "1351fccf7459e3a7cc79984710f2f6e6d46b4cc20040a1496fa21d2b4701e5a4"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo",
+   "archivo": "crudo/ondo-stocks/cnmv-adv-Ondo.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:18Z",
+   "bytes": 227315,
+   "sha256": "311c052318ac268297b8ff4b7e4712a9ee26b5a4751e218816001dc9b5335c46"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo%20Global%20Markets",
+   "archivo": "crudo/ondo-stocks/cnmv-adv-Ondo20Global20Markets.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:20Z",
+   "bytes": 211634,
+   "sha256": "82559820e51c46426ffced02f9ea1d0adea12fbc359fee41a9f991a5653ee4d0"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo%20Finance",
+   "archivo": "crudo/ondo-stocks/cnmv-adv-Ondo20Finance.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:22Z",
+   "bytes": 211480,
+   "sha256": "5e93e173b024ffbcd46effc43a801ce4fe07988bdf4289f433dde3e5c55a57e3"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "archivo": "crudo/ondo-stocks/cnmv-esi-eee-libre-prestacion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:44Z",
+   "bytes": 1993103,
+   "sha256": "35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en",
+   "archivo": "crudo/ondo-stocks/assetera-marketplace.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:11:55Z",
+   "bytes": 350379,
+   "sha256": "0226032e90f6b4adb389d8fd3ff90450bcb937d1f61cc18d445a4228e5ab89cf"
+  },
+  {
+   "url": "https://www.assetera.com/fees",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-20T21:12:17Z",
+   "nota": "(404; no guardado)"
+  },
+  {
+   "url": "https://www.assetera.com/pricing",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-20T21:12:17Z",
+   "nota": "(404; no guardado)"
+  },
+  {
+   "url": "https://www.assetera.com/faq",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-20T21:12:17Z",
+   "nota": "(404; no guardado)"
+  },
+  {
+   "url": "https://www.assetera.com/legal-notice",
+   "archivo": "crudo/ondo-stocks/assetera-legal-notice.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:26Z",
+   "bytes": 59869,
+   "sha256": "3a8f54e63dc57fb09e092575b61b6d843f3fac6f6626e023a952acbea3e8a388"
+  },
+  {
+   "url": "https://docs.ondo.finance/legal/terms-of-service.md",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:38Z",
+   "nota": "(texto en el borrador del analista; no guardado)"
+  },
+  {
+   "url": "(dentro de ondo-kid-aaplon.zip) AAPLon_KID_Ondo_Lexify_12.12.2025 (ES).pdf",
+   "archivo": "ondo-stocks/ondo-kid-aaplon-es-2026-11-20.txt (texto extraído)",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:10:08Z",
+   "sha256": "19a398f394746da0bb666a075e4188977761b8fb342f0f2d217d36106cbe11f1",
+   "nota": "SHA-256 del PDF en español dentro del ZIP"
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+Ondo Global Markets · Ondo Stocks · análisis de la candidata · 20/11/2026
+Extractos literales de fuentes primarias leídas hoy por el analista (horas UTC
+de `date -u`). Los crudos están en ../crudo/ondo-stocks/ (fuera de Git) y su
+SHA-256 en inventario-consultas-ondo-stocks.json. Sin nombres de personas.
+
+======================================================================
+1. ESMA · registro de folletos (Solr público), consulta por LEI
+======================================================================
+URL: https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc
+Hora: 2026-11-20T21:07:48Z · HTTP 200 · sha256 7039d17b…81ab
+  BPWO-89 · «Base prospectus without Final terms» · approval_filing_date
+  2026-11-11 · home_member_state LIECHTENSTEIN · first_passporting_date
+  2026-11-11T15:13:27Z · member_states incluye SPAIN (29 Estados).
+  Anteriores: SUPP 2026-08-28, SUPP 2026-05-05, BPWO-68 2025-11-11.
+
+Condiciones finales (misma consulta con document_type:FTWS):
+Hora: 2026-11-20T21:07:57Z · HTTP 200 · sha256 81e68252…ba6b · 276 registros
+  FTWS-2876 · 2026-11-13 · ISIN VGG7001APH19 · pasaporte 2026-11-17T08:22:39Z
+  FTWS-2877 · 2026-11-13 · ISIN VGG7001APJ74 · pasaporte 2026-11-17T08:22:39Z
+  Ambas cuelgan de BPWO-89 (prospetus_id_fk 44512), con SPAIN y con nota de
+  síntesis en 19 lenguas, «Spanish» incluida.
+
+======================================================================
+2. CNMV · pasaportes de folletos recibidos (por LEI)
+======================================================================
+URL: https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61
+Hora: 2026-11-20T21:11:09Z · HTTP 200 · sha256 1351fccf…01e5a4
+  «11/11/2026 Ondo Global Markets (BVI) Limited LIECHTENSTEIN BPWO-89
+  11/11/2026» y «12/11/2025 Ondo Global Markets (BVI) Limited LIECHTENSTEIN
+  BPWO-68 11/11/2025 Sí».
+
+======================================================================
+3. Folleto base del 11/11/2026 (copia publicada en la MFSA)
+======================================================================
+URL: https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf
+Hora: 2026-11-20T21:08:09Z · HTTP 200 · 200 páginas · sha256 7f323e24…68bf
+(el mismo PDF figura como «Current Base Prospectus - November 11 2026» en
+https://app.ondo.finance/legal-documentation)
+  p. 1: «The validity of this Base Prospectus will expire on 11.11.2027.»
+  p. 2: «This Base Prospectus is a succeeding base prospectus within the meaning
+  of Art. 8(11) of the Prospectus Regulation ... approved by the FMA on
+  11.11.2026».
+  p. 2: «The Security Tokens and the Underlyings ... are highly speculative and
+  involve a high degree of risk, including the risk of a total loss of all
+  capital invested. The Security Tokens will be obligations solely of the
+  Issuer».
+  p. 2: «The Issuer is not and will not be regulated by the Liechtenstein FMA or
+  any regulator as a result of issuing the Security Tokens.»
+  p. 3: venta solo a personas «who are not otherwise in prohibited jurisdictions
+  as described in the Issuer's eligibility criteria (available at:
+  https://docs.ondo.finance/ondo-global-markets/eligibility)».
+  p. 4: «Neither the Issuer nor the Security Tokens have been registered with
+  the British Virgin Islands Financial Services Commission» y «will operate
+  without supervision by any authority in any jurisdiction».
+  Ap. 4.4.1 (p. 50): «Purchasers may subscribe directly to the Issuer.
+  Redemptions are made through the Issuer.» «Any issuance process, redemption
+  process and payment flow ... is subject to the Purchaser's successful
+  completion of the Issuer's KYC/AML procedures».
+  Ap. 4.4.4: reembolso «Up to the fifth Business Day following the receipt of
+  the Purchaser's Tokens (i.e. T+5)».
+  Cláusula XXXIII (Selling Restrictions): «c. to retail or professional
+  investors within the EU and the EEA ... particularly in the following
+  countries: ... Spain ("Spain") and Sweden ("Sweden").»
+  Modelo de condiciones finales: «The minimum subscription amount is up to USD
+  0.01.»
+  Ap. 20.2: si las condiciones finales llevan la leyenda de prohibición, los
+  tokens «shall not be offered to any retail investor in such jurisdiction(s)».
+  KID: la única mención de KID está en el anexo suizo («Security Tokens may
+  only be offered in Switzerland to retail clients ... if ... a key information
+  document»). No hay apartado de KID PRIIPs para el EEE en el folleto base.
+
+======================================================================
+4. Condiciones finales de ejemplo · NFLXon (26/03/2026, folleto anterior)
+======================================================================
+URL: https://www.mfsa.mt/wp-content/uploads/2026/05/Ondo-Global-Markets-BVI-Limited-Final-Terms-Document-dated-26-March-2026-REF-NFLXon.pdf
+Hora: 2026-11-20T21:09:11Z · HTTP 200 · 141 páginas · sha256 390d4aba…b19d
+  «An offer of the Products may be made by the Issuer ... on an ongoing basis
+  on every calendar day ("Offer Period") through the website of the Issuer».
+  «The minimum subscription amount is USDC 0.01.»
+  «Offeror of the Tokens ... c. to both retail and professional investors
+  within the EU and the EEA, particularly in the following countries: ... Spain
+  ("Spain") and Sweden ("Sweden").»
+  «The Security Tokens are not yet listed or admitted to trading at any stock
+  exchange, authorized multilateral trading facility ("MTF") or organized
+  trading facility ("OTF")».
+  Lleva nota de síntesis en español («En caso de quiebra o insolvencia, los
+  inversores pueden sufrir la pérdida total o parcial del capital invertido»).
+
+======================================================================
+5. Página pública de documentos del emisor
+======================================================================
+URL: https://app.ondo.finance/legal-documentation
+Hora: 2026-11-20T21:09:40Z · HTTP 200 · sha256 018cc2c8…24a0f1a (sin sesión)
+  493 tokens; 272 con «Final Terms» y «Key Information Document».
+  «Current Base Prospectus - November 11 2026» (asOfDate 2026-11-11T14:40:20Z).
+  Aviso: «In the EEA/EU, a base prospectus ... notified ... making many Ondo
+  Stocks available to both professional and retail investors, though certain
+  Ondo Stocks are only available to professional investors in the EEA/EU.»
+
+KID de AAPLon (ZIP con 23 lenguas):
+URL: https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip
+Hora: 2026-11-20T21:10:08Z · HTTP 200 · sha256 335f8c12…de90
+  Archivo «AAPLon_KID_Ondo_Lexify_12.12.2025 (ES).pdf» (sha256 19a398f3…11f1):
+  «Fabricante del PRIIP: Ondo Global Markets (BVI) Limited» · «ISIN:
+  VGG7001AAB04» · «Fecha de elaboración del KID 11.11.2025».
+  «Está a punto de adquirir un producto que no es sencillo y que puede ser
+  difícil de comprender.»
+  «Este Producto está clasificado en el nivel 6 de 7».
+  «Si el Emisor no puede efectuar los pagos adeudados, usted podría perder la
+  totalidad del capital invertido.»
+  «Comisión de entrada: Hasta un 0.1 % ...» / «Comisión de salida: Hasta un
+  0.1 % ...» (nota: «Actualmente, no se cobran comisiones a los inversores»).
+  «El período de tenencia recomendado es de 5 años. Usted puede, en cualquier
+  momento, presentar una solicitud de reembolso al Emisor ... De forma
+  alternativa, usted podrá vender el Producto en operaciones extrabursátiles
+  ("OTC") a terceros ... El Producto no está actualmente cotizado ni admitido a
+  negociación en ninguna bolsa de valores, ... MTF ni ... OTF».
+KID de NFLXon (inglés):
+URL: https://cdn.sanity.io/files/8k2tqa6n/production/b8de3e1d21654e65b43806a573bf003eb26caba5.pdf
+Hora: 2026-11-20T21:10:09Z · HTTP 200 · 4 páginas · sha256 17c19d18…5a36
+
+======================================================================
+6. Documentación del emisor (docs.ondo.finance), leída hoy
+======================================================================
+Eligibility · https://docs.ondo.finance/ondo-stocks/eligibility.md
+Hora: 2026-11-20T21:08:09Z · HTTP 200 · sha256 5c21e9c9…7adbdf
+  (la URL que cita el folleto, /ondo-global-markets/eligibility, redirige aquí:
+  21:08:43Z, HTTP 200)
+  «Any Member State of the European Economic Area | "Professional Client" under
+  MiFID II, Annex II, Section I; or "Qualified Investor" under article 2(1)(e)
+  of Prospectus Regulation» ... «must satisfy one or more of the eligibility
+  requirements ... in order to be issued Ondo Stocks».
+  Frente al 10/11 solo añade «Venezuela» a los prohibidos.
+Onboarding & KYC (21:08:52Z, sha256 14849244…5e4a):
+  «Onboarding to the Ondo Stocks platform is open to institutional participants
+  and retail users/individuals in supported jurisdictions. For a list of
+  jurisdiction-based prohibitions and restrictions, see Eligibility».
+Important Notes (21:08:52Z, sha256 c8244e62…76f9):
+  «making many Ondo Stocks available to both professional and retail investors,
+  though certain Ondo Stocks are only available to professional investors in
+  the EEA/EU.»
+Investing & Redeeming (21:08:51Z, sha256 bf5f7012…a6a605):
+  «The minimum is just $1.00 USD.» «All Ondo tokenized stocks purchased from the
+  Ondo Stocks platform are purchased with USDon». «The redemption to USDon will
+  always be instant». «Redemptions to USD via bank wire are not currently
+  supported.» «Are there offering documents ...? ... we are only able to provide
+  such materials to investors who successfully complete our onboarding process».
+Fees & Taxes (21:08:52Z, sha256 fda021ab…244e):
+  «There is no fee to mint and a 0.05% (5bps) fee for each redemption.»
+  Dividendos de EE. UU.: retención del 30 % al emisor (sociedad de las BVI).
+Secondary Market Restrictions (21:08:51Z, sha256 f186c2fd…1a0a):
+  «The Issuer does not guarantee that any secondary market exists or will
+  exist for the Tokens». «there is a risk that a person acquiring Tokens on
+  secondary markets will not meet such due diligence requirements and therefore
+  may not be able to redeem any or all of its Tokens.»
+Legal & Regulatory (21:08:51Z, sha256 c7c4c122…87b0):
+  «An Ondo tokenized stock is a structured note: a debt instrument issued by
+  Ondo Global Markets (BVI) Limited ... organized in the British Virgin
+  Islands». «you do not have shareholder voting rights».
+Terms of Service (21:12:38Z, sha256 e8f39e55…5241):
+  la app es «solely a technical interface and does not determine eligibility».
+
+======================================================================
+7. CNMV · advertencias (entidades no autorizadas)
+======================================================================
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo
+  21:11:18Z · HTTP 200 · solo coincidencias ajenas por parecido de texto
+  (BANKLONDONGROUP.UK, GESTIONFONDOENDOWMENT.FR, LONDONCAPITALFX.EU, LONDON
+  CAPITAL GROUP LTD, LONDONEX LLC, CONDOR RESEARCH).
+...nombre=Ondo%20Global%20Markets · 21:11:20Z · «No hay datos disponibles».
+...nombre=Ondo%20Finance · 21:11:22Z · «No hay datos disponibles».
+
+======================================================================
+8. Distribuidores regulados con pasaporte en España
+======================================================================
+CNMV · ESI del EEE en libre prestación:
+https://www.cnmv.es/Portal/Consultas/listadoentidad?id=1&tipoent=4
+  21:11:44Z · HTTP 200 (tras redirección 301) · sha256 35807bda…efede41
+  «ASSETERA GmbH ... Número y fecha de registro oficial: 5216 - 26/10/2023».
+  Sin ninguna entidad «Blockchain», «Bitget», «Binance», «Bybit», «HTX» ni
+  «Alpaca».
+Assetera (marketplace público, https://marketplace.assetera.com/en):
+  21:11:55Z · HTTP 200 · sha256 0226032e…89cf · «623 RWAs available»; fichas
+  «(Ondo Tokenized)» con «Market Primary» y precio en USDC; el campo de
+  comisión dice «This offer's fee rate is not available yet, so it is not
+  shown». Sin mínimo.
+  https://www.assetera.com/fees, /pricing, /faq y /legal: HTTP 404 (21:12:17Z).
+  Aviso legal (https://www.assetera.com/legal-notice, 21:12:26Z): «Some
+  documents displayed on this website ... are restricted to "Professional
+  Investors" only and are not intended for retail investors.»
+  Alcance de la licencia en España (expediente assetera-ondo-stocks del
+  05/11/2026, no re-leído hoy): recepción y transmisión de órdenes, gestión de
+  carteras y asesoramiento; sin custodia.

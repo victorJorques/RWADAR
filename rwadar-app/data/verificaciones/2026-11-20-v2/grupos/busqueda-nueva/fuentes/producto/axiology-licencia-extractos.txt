@@ -1,0 +1,10 @@
+Fuente: https://www.axiologyfinance.com/post/axiology-licence-extension-tokenised-money-market-funds
+Consultado (UTC): 2026-11-20T21:00:37Z
+HTTP: 200 · bytes: 1181133 · SHA-256 del crudo: d779514a15722879542019bdbfc745c78a4ce1f82cda346277ef6bc2878c669e
+Crudo: fuentes/crudo/producto/axiology-post-licence-mmf.html (fuera de Git)
+
+Extractos literales:
+
+«Treasurers can now subscribe to and redeem tokenised money market funds directly through Axiology. Axiology, a regulated European capital markets infrastructure provider, has received approval from the Bank of Lithuania to extend its EU investment firm authorisation, allowing it to provide additional brokerage services alongside its existing trading and settlement infrastructure. The expansion is designed to simplify institutional access to tokenised financial instruments, including money market funds ( MMFs ). The expanded licence authorises Axiology to receive and transmit orders and execute them on behalf of clients, adding two significant investment services to its existing licence. These permissions allow Axiology»
+
+«Axiology and Orchestrate Funds launch fund and bond placement services for professional investors»

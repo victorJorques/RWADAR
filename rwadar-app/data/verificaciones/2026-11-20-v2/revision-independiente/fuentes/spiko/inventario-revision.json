@@ -1,0 +1,274 @@
+[
+ {
+  "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+  "archivo": "yield-EUTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 259,
+  "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+  "archivo": "yield-USTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 258,
+  "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+  "archivo": "yield-eurSAFO.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 259,
+  "sha256": "0cc6c7fcc2af635336ee0964bc805f776d6956ed27b7d3c1dd5a4d6e13ba0687"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+  "archivo": "navlatest-EUTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 218,
+  "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+  "archivo": "navlatest-USTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 218,
+  "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO/latest",
+  "archivo": "navlatest-eurSAFO.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:04:52Z",
+  "bytes": 218,
+  "sha256": "9b7f78668c7cde3883b3998d7929bdef40dcdeabae7dd4cc269e7436186e7486"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-20",
+  "archivo": "series-EUTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:02Z",
+  "bytes": 9411,
+  "sha256": "e02579d129eca1f426b20567f7b92343ebd956d8db994feebd67d5b4019cb46a"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL?startDay=2026-09-20",
+  "archivo": "series-USTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:02Z",
+  "bytes": 9197,
+  "sha256": "a323e99d158b83d39a117a0dcbdf336ed41b424293ba3e1b8c41a9015ccc4fd5"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO?startDay=2026-09-20",
+  "archivo": "series-eurSAFO.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:02Z",
+  "bytes": 9850,
+  "sha256": "62fe78ae28b002a8c1ceffc3ebae8b097de5b81d52b6836b8227f3fe5285f955"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/compartment/c124199",
+  "archivo": "geco-api-c124199.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:12Z",
+  "bytes": 107,
+  "sha256": "61df956efd994b7de628a902a603f041b1d2ec400e13b10130698e14c5762b66"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/compartment/c124199/shares",
+  "archivo": "geco-api-c124199-shares.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:12Z",
+  "bytes": 2,
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+  "archivo": "geco-api-c79399.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:12Z",
+  "bytes": 4072,
+  "sha256": "f31892ba466c850ba39ef9a9d8df64c578c1470959735dd9a3fccad411aac103"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/compartment/c79398",
+  "archivo": "geco-api-c79398.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:12Z",
+  "bytes": 4087,
+  "sha256": "cedf54eabce18138b5d697c3bbcbff0c51a5d1fb7142733805971e2fdfda7216"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/search?keyword=spiko (POST)",
+  "archivo": "geco-search-spiko.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:32Z",
+  "bytes": 14717,
+  "sha256": "b055ef887ec87f68d6cfbf5e6de29258175efca9a84b68fda2983b775ebe0c4f"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/search?keyword=FR0014015LD3 (POST)",
+  "archivo": "geco-search-FR0014015LD3.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:32Z",
+  "bytes": 54,
+  "sha256": "4a68b0b39e228a5f20e80e9a195a6d10c6bff4f7d2d75dcde2dfc1997985e271"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/search?keyword=overnight%20swap (POST)",
+  "archivo": "geco-search-overnight_swap.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:32Z",
+  "bytes": 54,
+  "sha256": "4a68b0b39e228a5f20e80e9a195a6d10c6bff4f7d2d75dcde2dfc1997985e271"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/funds/search?keyword=SCV20260075 (POST)",
+  "archivo": "geco-search-SCV20260075.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:32Z",
+  "bytes": 54,
+  "sha256": "4a68b0b39e228a5f20e80e9a195a6d10c6bff4f7d2d75dcde2dfc1997985e271"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+  "archivo": "pdf/KID_EUTBL_ES.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 130290,
+  "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+  "archivo": "pdf/KID_USTBL_ES.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 146264,
+  "sha256": "c1ce5400bf18617ef34925eed121335ca4bcd9b3d4a11f265f80ffce5a7e92f6"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+  "archivo": "pdf/KID_eurSAFO_ES.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 135012,
+  "sha256": "53effea21c5fd26ddc78cb7e1e877c3f9f74d965013bd4e1b051fbf46907a322"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+  "archivo": "pdf/SAFO_Letter_EN.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 82462,
+  "sha256": "709e0585259a5e461710633ae97475c2273c985aa99ae96d7c8fda746cd96c77"
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/document/download/438274",
+  "archivo": "pdf/geco-438274-prospectus-fr.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 2150362,
+  "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+  "archivo": "pdf/Prospectus_Spiko_SICAV_EN.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:05:42Z",
+  "bytes": 1734485,
+  "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/Prospectus_Spiko_SICAV_ES.pdf",
+  "archivo": "Prospectus_Spiko_SICAV_ES-403.xml",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T17:05:43Z",
+  "bytes": 111,
+  "sha256": "a824bc7739e226e1b40ea0f8c4e4f4c6f796fc3b4abfa6e9abe3bd119a30d938"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+  "archivo": "cnmv-advertencias-Spiko.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:23Z",
+  "bytes": 212159,
+  "sha256": "1499ce99c6de2cb332a9c21ea34151d6234943f262080b04fd9b84884469cc8c"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aldana",
+  "archivo": "cnmv-advertencias-Aldana.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:23Z",
+  "bytes": 212181,
+  "sha256": "6a3b1b7918bf6fd9f7bb5695edadf552a1acc96cf8ccd7b0b0c424e0f392ae9b"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital",
+  "archivo": "cnmv-advertencias-Twenty_First_Capital.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:23Z",
+  "bytes": 212489,
+  "sha256": "b397c4e453f0d6e6b5602352ef413ead72acee9202ecc673a64c3fd4c20ca266"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Amundi",
+  "archivo": "cnmv-advertencias-Amundi.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:23Z",
+  "bytes": 212181,
+  "sha256": "913485cb1c7487ac87bf25d871b9357d00aa9a421b3247e4ed9a07b190875793"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+  "archivo": "cnmv-iicextranjera-spiko-sicav.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:27Z",
+  "bytes": 151927,
+  "sha256": "2fd0cf16e0ad9fd13a797743dba3743e6e632eb87e4914efbc8784ee33c51678"
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-euro",
+  "archivo": "web-spiko-euro.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:40Z",
+  "bytes": 276753,
+  "sha256": "37f6c566506793f46d18bff06d2c8edcfbfe21ff76af61bfe3c5d39c659c3189"
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+  "archivo": "web-spiko-letras-del-tesoro-euro.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:40Z",
+  "bytes": 191383,
+  "sha256": "a0e3a18719f56f33f9faafedc90ea865ef563028f892e5ab998b78cb8389d55b"
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+  "archivo": "web-spiko-letras-del-tesoro-dollar.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:40Z",
+  "bytes": 197989,
+  "sha256": "418c1eaaeb81bf0a8cd405b1ebab82a463e4e311edabd08cf15d7d24e08bd8ca"
+ },
+ {
+  "url": "https://www.spiko.io/es/usos-principales/particulares (nombres de personas retirados de la copia)",
+  "archivo": "web-usos-principales_particulares.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:40Z",
+  "bytes": 162606,
+  "sha256": "f96c301754b466f1ecc34a2c30a64fe1898ff549ac0cd24b4a8cf5ddc73b6fab"
+ },
+ {
+  "url": "https://docs.spiko.io/documentation/product_overview/fund_availability/",
+  "archivo": "docs-fund_availability.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T17:06:44Z",
+  "bytes": 31920,
+  "sha256": "179ef546fc7f2beae3ef6715826b4046a2ceee7e6df69959590108c8171d8fc5"
+ }
+]

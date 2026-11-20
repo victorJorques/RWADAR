@@ -1,0 +1,260 @@
+{
+ "grupo": "busqueda-nueva",
+ "slug": "candidata-crowdedhero-simpleros-bonos-dlt",
+ "fecha": "2026-11-20",
+ "herramienta": "curl con su agente por defecto, solo GET, TLS normal; CNMV con accept-language: es",
+ "copiaTexto": "fuentes/europa/simpleros-analista-2026-11-20.txt",
+ "nota": "Los crudos no entran en Git (grupos/**/crudo/). Traen nombres de personas físicas: no se publican. No se intentó ver la KIIS por ninguna vía.",
+ "consultas": [
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=50",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/p50.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:01Z",
+   "bytes": 77705,
+   "sha256": "c0d34547edaea4689dc7f9765307ef702bf99817bf4d165527c01877cdc85488"
+  },
+  {
+   "url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/terminos.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:02Z",
+   "bytes": 99476,
+   "sha256": "c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056"
+  },
+  {
+   "url": "https://www.nyala.de/en/products/electronic-securities",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/nyala-es.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:03Z",
+   "bytes": 206104,
+   "sha256": "f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427"
+  },
+  {
+   "url": "https://de000a4exnm2.register.nyala.de/",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/registro-nyala-raiz.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:03Z",
+   "bytes": 534,
+   "sha256": "d25e051ae893e6333735b81be886bd871706b4c060b5752de1a49f9a81720ac5"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-psfp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:04Z",
+   "bytes": 150697,
+   "sha256": "fe578b1438a90bc3b73be8193d9506f516cf4b195b1712a552e245e5cc3be4fb"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/esma-upreg.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:05Z",
+   "bytes": 1486,
+   "sha256": "8648122fa7b3793230a5a7c55ba216a3daaa6279b4fa0184e26831edd6a56701"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-adv-simpleros.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:06Z",
+   "bytes": 211414,
+   "sha256": "846fd4f53e29d33eaa40ffa928c58a1a45bfda80eaead63f24b15a4451670a78"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-adv-crowdedhero.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:07Z",
+   "bytes": 211458,
+   "sha256": "cca22352f701f1d6332d2b1f4aa598e76692935d9e6a92066de95a6d332b866b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-adv-control.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:08Z",
+   "bytes": 236466,
+   "sha256": "379f05a4ec550d78d92a7ce9db00f94a87c98e03c1b35deccd4a5a09b0049529"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=dlt",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/legal-dlt.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:10Z",
+   "bytes": 91606,
+   "sha256": "fd1bd716494e44be4be61a91ee689922714d00e0f10d643862f0875a3580f412"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=terms",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/legal-terms.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:11Z",
+   "bytes": 146005,
+   "sha256": "a27e5c6bcb762433573e56c69f435b7dba96586ab3d882572c4079519afb8974"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=risk",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/legal-risk.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:12Z",
+   "bytes": 77548,
+   "sha256": "881e26bc4748781b36d10e96168620030da53e579c65315322ffa574156fe1c8"
+  },
+  {
+   "url": "https://www.crowdedhero.com/faq?category=investor",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/faq-investor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:12Z",
+   "bytes": 92028,
+   "sha256": "a75d142416d0a94d9dc2ee9b505f09e0cd1c9c566f26c436671c68cd76648208"
+  },
+  {
+   "url": "https://www.crowdedhero.com/pricelist/investor-pricelist",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/pricelist.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:13Z",
+   "bytes": 43367,
+   "sha256": "e953fc3a229595b80b4be70bc4e5ddbefaee68eb063241ed6870f592e1acdfd9"
+  },
+  {
+   "url": "https://www.crowdedhero.com/secondary-market",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/secundario.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:14Z",
+   "bytes": 77696,
+   "sha256": "9d1b4a783f84712a56a2f5484d8c5e61f708e14bf61588c81c4aadc6cc9aa9c6"
+  },
+  {
+   "url": "https://simpleros.es/condiciones-generales",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/simpleros-cg.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:15Z",
+   "bytes": 65596,
+   "sha256": "08c039b0c26359e5310377c4ef9b95ae4d1b0cb07856b65e1130f2511d6b73f0"
+  },
+  {
+   "url": "https://simpleros.es/",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/simpleros-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:16Z",
+   "bytes": 29100,
+   "sha256": "7ca26af4f7015bead5d5155a869e79b36a6715effb31069005aa5989e62286ff"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/bafin-smartregistry.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:17Z",
+   "bytes": 25984,
+   "sha256": "e808105621b4df7ac457a8cc863d509b8af51433e0c4c30b5c4a6ccee34edbe6"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2269545}",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/lv-balance-ch-2025.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:18Z",
+   "bytes": 1946,
+   "sha256": "fc2fcb0969749b63073ff043f7e26db66923212ab4b4602f606ce310104508b0"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=d5fd17ef-d32e-40cb-8399-82b780095af0&filters={\"statement_id\":2269545}",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/lv-pyg-ch-2025.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:19Z",
+   "bytes": 3127,
+   "sha256": "c442187952d2786d8a20c134b99cd5f83930281112d6defba4b6f136e361c65d"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&q=50203309441",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/lv-registro-ch.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:12:21Z",
+   "bytes": 2002,
+   "sha256": "4e18bebd877a2deec360657f3ec089900a28c4dcf04d698680fb266f75767de8"
+  },
+  {
+   "url": "https://ariregister.rik.ee/eng/company/16250495",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/ee-audacia.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:13:22Z",
+   "bytes": 297317,
+   "sha256": "1ed1344847287a0899f301ba2f6558ddf6201b450352ea69f03622bb00a73ab8"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/index",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/project-index.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:13:52Z",
+   "bytes": 58552,
+   "sha256": "80b98dcfeba10c81d4afe016d74571cab159a848b62d7e35b194c312bea52fab"
+  },
+  {
+   "url": "https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-20T21:13:53Z",
+   "nota": "Redirige a https://www.bank.lv/ y la conexión se corta (curl 92): enlace del pie de la ficha roto."
+  },
+  {
+   "url": "https://www.crowdedhero.com/es/project/view?id=50",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-20T21:13:55Z",
+   "nota": "No hay versión en español de la ficha."
+  },
+  {
+   "url": "https://www.crowdedhero.com/de/project/view?id=50",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:13:56Z"
+  },
+  {
+   "url": "https://www.crowdedhero.com/user/register",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:13:57Z"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=44",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/p44.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:14:11Z",
+   "bytes": 75492,
+   "sha256": "a4361b7613e476385d67e62a10b5055ab52fb5d491aebc01e7073841a06b4088"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=45",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/p45.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:14:13Z",
+   "bytes": 96620,
+   "sha256": "ee8ca7fbf1562a089c054613248257c326dc1215414fa27ebae732740bcc6a96"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=41",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/p41.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:14:14Z",
+   "bytes": 125544,
+   "sha256": "2360b94cb7b5a09c17cbd86df88b391f5be66626f5f1ba98faa25421073e46a0"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Audacia%20Capital",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-adv-audaciacapital.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:14:27Z",
+   "bytes": 211546,
+   "sha256": "5efae2ba151859b43561406e807af74a435f0d050a47ac389929b616abeda1ce"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lemonway",
+   "archivo": "fuentes/crudo/europa/simpleros-analista/cnmv-adv-lemonway.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:14:29Z",
+   "bytes": 211392,
+   "sha256": "658a86c27ef221439eedbe99e341baa21c663c7f954e7e3caf18b6049c46ffef"
+  }
+ ]
+}

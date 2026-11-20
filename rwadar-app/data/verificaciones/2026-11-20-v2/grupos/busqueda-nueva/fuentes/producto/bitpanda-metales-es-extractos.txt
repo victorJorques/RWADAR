@@ -1,0 +1,10 @@
+Fuente: https://www.bitpanda.com/es/metals-metales-preciosos
+Consultado (UTC): 2026-11-20T20:54:57Z
+HTTP: 200 · bytes: 376475 · SHA-256 del crudo: 554176ee594de1bd8b04ceaef09eefaa47cf98b2bec4bcbbac1bcdd1fe3421d6
+Crudo: fuentes/crudo/producto/bitpanda-es-metales-preciosos.html (fuera de Git)
+
+Extractos literales:
+
+«desde 1 euro Invierte en oro, plata y otros metales preciosos desde tan solo 1 euro. Todos los metales preciosos tienen forma de lingotes investment-grade acreditados por el LBMA. Posee lo que compras Eres propietario de tu lingote en el acto. Es tu propiedad legal, almacenada en una cámara acorazada del mercado de ling»
+
+«solo ofrecemos la opción de mantener Bitpanda Metals en tu monedero de Bitpanda. Los metales físicos, de los que tú eres el propietario legal, se almacenan de forma segura»

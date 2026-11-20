@@ -1,0 +1,1703 @@
+[
+ {
+  "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+  "estado": 200,
+  "bytes": 191383,
+  "final": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+  "ms": 356,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·url",
+   "spiko-letras-del-tesoro-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-euro·fuentes"
+  ]
+ },
+ {
+  "url": "https://data.spiko.io/eutbl/",
+  "estado": 200,
+  "bytes": 51499,
+  "final": "https://data.spiko.io/eutbl/",
+  "ms": 431,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "estado": 403,
+  "bytes": 5696,
+  "final": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "ms": 471,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·fuentesActuales",
+   "mtbill·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "estado": 200,
+  "bytes": 201660,
+  "final": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "ms": 545,
+  "cf": "",
+  "usadoEn": [
+   "prosegur-digital-gold·fuentesActuales",
+   "prosegur-digital-gold·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+  "estado": 200,
+  "bytes": 1365826,
+  "final": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+  "ms": 568,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "estado": 403,
+  "bytes": 5492,
+  "final": "https://midas.app/mtbill",
+  "ms": 596,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·url",
+   "mtbill·fuentesActuales",
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+  "estado": 200,
+  "bytes": 177536,
+  "final": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+  "ms": 708,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentesActuales",
+   "robinhood-classic-stock-tokens·fuentes",
+   "robinhood-classic-stock-tokens·fuente"
+  ]
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+  "estado": 200,
+  "bytes": 197989,
+  "final": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+  "ms": 48,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-dolar·url",
+   "spiko-letras-del-tesoro-dolar·fuentesActuales",
+   "spiko-letras-del-tesoro-dolar·fuentes"
+  ]
+ },
+ {
+  "url": "https://eu.kraken.com/xstocks",
+  "estado": 200,
+  "bytes": 1407133,
+  "final": "https://eu.kraken.com/xstocks",
+  "ms": 733,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·url",
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://www.aktionariat.com/disclaimer",
+  "estado": 200,
+  "bytes": 39058,
+  "final": "https://www.aktionariat.com/disclaimer",
+  "ms": 754,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentesActuales",
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://geco.amf-france.org/produit-d-epargne/c79398",
+  "estado": 200,
+  "bytes": 37542,
+  "final": "https://geco.amf-france.org/produit-d-epargne/c79398",
+  "ms": 784,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-dolar·fuentesActuales",
+   "spiko-letras-del-tesoro-dolar·fuentes",
+   "spiko-letras-del-tesoro-dolar·fuente"
+  ]
+ },
+ {
+  "url": "https://data.spiko.io/ustbl/",
+  "estado": 200,
+  "bytes": 52364,
+  "final": "https://data.spiko.io/ustbl/",
+  "ms": 103,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-dolar·fuentesActuales",
+   "spiko-letras-del-tesoro-dolar·fuentes",
+   "spiko-letras-del-tesoro-dolar·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2rah5",
+  "estado": 200,
+  "bytes": 59721,
+  "final": "https://www.brickwise.at/assets/at0000a2rah5",
+  "ms": 950,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentesActuales",
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "estado": 200,
+  "bytes": 11832,
+  "final": "https://app.prosegurdigitalgold.com/",
+  "ms": 1002,
+  "cf": "",
+  "usadoEn": [
+   "prosegur-digital-gold·fuentesActuales",
+   "prosegur-digital-gold·fuentes",
+   "prosegur-digital-gold·fuente"
+  ]
+ },
+ {
+  "url": "https://midas.app/products",
+  "estado": 403,
+  "bytes": 5519,
+  "final": "https://midas.app/products",
+  "ms": 25,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+  "estado": 200,
+  "bytes": 156631,
+  "final": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+  "ms": 1104,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentesActuales",
+   "robinhood-classic-stock-tokens·fuentes"
+  ]
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "estado": 200,
+  "bytes": 219438,
+  "final": "https://docs.midas.app/llms-full.txt",
+  "ms": 258,
+  "cf": "",
+  "usadoEn": [
+   "mtbill·fuentesActuales",
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "estado": 200,
+  "bytes": 2692,
+  "final": "https://app.brickwise.at/desktopWeb/marketplace",
+  "ms": 1127,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·url",
+   "vivienda-pluddemanngasse-101-graz·fuentesActuales",
+   "vivienda-sonnleithnergasse-2-viena·url",
+   "vivienda-sonnleithnergasse-2-viena·fuentesActuales",
+   "local-de-estanco-klagenfurt·url",
+   "local-de-estanco-klagenfurt·fuentesActuales"
+  ]
+ },
+ {
+  "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+  "estado": 200,
+  "bytes": 31920,
+  "final": "https://docs.spiko.io/documentation/product_overview/fund_availability/",
+  "ms": 1154,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-dolar·fuentesActuales",
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente",
+   "spiko-letras-del-tesoro-dolar·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+  "estado": 200,
+  "bytes": 130290,
+  "final": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+  "ms": 1172,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "estado": 200,
+  "bytes": 256348,
+  "final": "https://robinhood.com/eu/es/invest/",
+  "ms": 1179,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·url",
+   "robinhood-classic-stock-tokens·fuentesActuales",
+   "robinhood-classic-stock-tokens·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-euro",
+  "estado": 200,
+  "bytes": 276753,
+  "final": "https://www.spiko.io/es/spiko-euro",
+  "ms": 56,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·url",
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://www.kraken.com/features/fee-schedule",
+  "estado": 200,
+  "bytes": 664339,
+  "final": "https://www.kraken.com/features/fee-schedule",
+  "ms": 1172,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://eu.kraken.com/legal/risk-disclosure",
+  "estado": 200,
+  "bytes": 224172,
+  "final": "https://eu.kraken.com/legal/risk-disclosure",
+  "ms": 56,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.aktionariat.com/terms-of-service",
+  "estado": 200,
+  "bytes": 52129,
+  "final": "https://www.aktionariat.com/terms-of-service",
+  "ms": 51,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-faq",
+  "estado": 200,
+  "bytes": 1054713,
+  "final": "https://support.kraken.com/articles/xstocks-faq",
+  "ms": 1200,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+  "estado": 200,
+  "bytes": 7969,
+  "final": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+  "ms": 1205,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-greenpoint·fuentes",
+   "fotovoltaica-greenpoint·fuente"
+  ]
+ },
+ {
+  "url": "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+  "estado": 200,
+  "bytes": 207302,
+  "final": "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+  "ms": 1313,
+  "cf": "",
+  "usadoEn": [
+   "mtbill·fuentesActuales",
+   "kraken-xstocks·fuentesActuales",
+   "mtbill·fuentes",
+   "kraken-xstocks·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+  "estado": 200,
+  "bytes": 1428039,
+  "final": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+  "ms": 1302,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+  "estado": 200,
+  "bytes": 77204,
+  "final": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+  "ms": 303,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentesActuales",
+   "robinhood-classic-stock-tokens·fuentes",
+   "robinhood-classic-stock-tokens·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2t4d7",
+  "estado": 200,
+  "bytes": 59544,
+  "final": "https://www.brickwise.at/assets/at0000a2t4d7",
+  "ms": 42,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentesActuales",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+  "estado": 200,
+  "bytes": 92701,
+  "final": "https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_/edit",
+  "ms": 1406,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentesActuales",
+   "hausera-proximas-ofertas·fuentes",
+   "hausera-proximas-ofertas·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+  "estado": 200,
+  "bytes": 181670,
+  "final": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+  "ms": 1441,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentesActuales",
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "estado": 200,
+  "bytes": 2385113,
+  "final": "https://hausera.io/oportunidades/",
+  "ms": 1461,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·url",
+   "hausera-proximas-ofertas·fuentesActuales",
+   "hausera-proximas-ofertas·fuentes"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com/invest",
+  "estado": 200,
+  "bytes": 19622,
+  "final": "https://shares.aktionariat.com/invest",
+  "ms": 1474,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·url",
+   "aktionariat·fuentesActuales",
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://midas.app/llms.txt",
+  "estado": 200,
+  "bytes": 8256,
+  "final": "https://midas.app/llms.txt",
+  "ms": 93,
+  "cf": "",
+  "usadoEn": [
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://docs.midas.app/legal/eligibility-and-compliance",
+  "estado": 403,
+  "bytes": 5660,
+  "final": "https://docs.midas.app/legal/eligibility-and-compliance",
+  "ms": 47,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·fuentes"
+  ]
+ },
+ {
+  "url": "https://data.spiko.io/safo-eur",
+  "estado": 200,
+  "bytes": 50944,
+  "final": "https://data.spiko.io/safo-eur/",
+  "ms": 295,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://www.spiko.io/es/usos-principales/particulares",
+  "estado": 200,
+  "bytes": 162708,
+  "final": "https://www.spiko.io/es/usos-principales/particulares",
+  "ms": 48,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/consultas/iic/iicextranjera.aspx",
+  "ms": 1703,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://api.app.brickwise.at/api/v2/assets",
+  "estado": 200,
+  "bytes": 53969,
+  "final": "https://api.app.brickwise.at/api/v2/assets",
+  "ms": 1714,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentesActuales",
+   "randhartingergasse-9-viena·fuentesActuales",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentesActuales",
+   "fotovoltaica-greenpoint·fuentesActuales",
+   "fotovoltaica-cohotel·fuentesActuales",
+   "vivienda-pluddemanngasse-101-graz·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+  "estado": 200,
+  "bytes": 290018,
+  "final": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+  "ms": 46,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+  "estado": 200,
+  "bytes": 6614,
+  "final": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+  "ms": 157,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-cohotel·fuentes",
+   "fotovoltaica-cohotel·fuente"
+  ]
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-availability",
+  "estado": 200,
+  "bytes": 5421548,
+  "final": "https://support.kraken.com/articles/xstocks-availability",
+  "ms": 221,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2u5v3",
+  "estado": 200,
+  "bytes": 59763,
+  "final": "https://www.brickwise.at/assets/at0000a2u5v3",
+  "ms": 36,
+  "cf": "",
+  "usadoEn": [
+   "local-de-estanco-klagenfurt·fuentesActuales",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+  "estado": 200,
+  "bytes": 246294,
+  "final": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+  "ms": 1870,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentesActuales",
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://robinhood.com/eu/en/invest",
+  "estado": 200,
+  "bytes": 252541,
+  "final": "https://robinhood.com/eu/en/invest/",
+  "ms": 337,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentes",
+   "robinhood-classic-stock-tokens·fuente"
+  ]
+ },
+ {
+  "url": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+  "estado": 200,
+  "bytes": 30181,
+  "final": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals/",
+  "ms": 400,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://geco.amf-france.org/back-office/document/download/438274",
+  "estado": 200,
+  "bytes": 2150362,
+  "final": "https://geco.amf-france.org/back-office/document/download/438274",
+  "ms": 792,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.lend.ch/",
+  "estado": 200,
+  "bytes": 60344,
+  "final": "https://shares.lend.ch/",
+  "ms": 1957,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·url",
+   "switzerlend·fuentesActuales",
+   "switzerlend·fuentes",
+   "switzerlend·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+  "estado": 200,
+  "bytes": 455843,
+  "final": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+  "ms": 1994,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·fuentesActuales",
+   "switzerlend·fuentes",
+   "switzerlend·fuente"
+  ]
+ },
+ {
+  "url": "https://midas.app/assets/main-DOxid0Zj.js",
+  "estado": 404,
+  "bytes": 83,
+  "final": "https://midas.app/assets/main-DOxid0Zj.js",
+  "ms": 103,
+  "cf": "",
+  "usadoEn": [
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+  "estado": 200,
+  "bytes": 138297,
+  "final": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+  "ms": 172,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentesActuales",
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://docs.midas.app/tokens/mtbill",
+  "estado": 403,
+  "bytes": 5560,
+  "final": "https://docs.midas.app/tokens/mtbill",
+  "ms": 52,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+  "estado": 200,
+  "bytes": 280879,
+  "final": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+  "ms": 279,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentes",
+   "robinhood-classic-stock-tokens·fuente"
+  ]
+ },
+ {
+  "url": "https://hausera.io/propiedad/alicante_3/",
+  "estado": 200,
+  "bytes": 2304436,
+  "final": "https://hausera.io/propiedad/alicante_3/",
+  "ms": 319,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentesActuales",
+   "hausera-proximas-ofertas·fuentes"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com/",
+  "estado": 200,
+  "bytes": 74100,
+  "final": "https://shares.bossinfo.com/",
+  "ms": 2267,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·url",
+   "boss-info·fuentesActuales",
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2wcd0",
+  "estado": 200,
+  "bytes": 59463,
+  "final": "https://www.brickwise.at/assets/at0000a2wcd0",
+  "ms": 46,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-stallhofstra-e-28-gratwein·fuentesActuales",
+   "vivienda-stallhofstra-e-28-gratwein·fuentes",
+   "vivienda-stallhofstra-e-28-gratwein·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+  "estado": 200,
+  "bytes": 146264,
+  "final": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+  "ms": 795,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-dolar·fuentesActuales",
+   "spiko-letras-del-tesoro-dolar·fuentes",
+   "spiko-letras-del-tesoro-dolar·fuente"
+  ]
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "estado": 200,
+  "bytes": 27713,
+  "final": "https://prosegurdigitalgold.com/transparency",
+  "ms": 2413,
+  "cf": "",
+  "usadoEn": [
+   "prosegur-digital-gold·fuentesActuales",
+   "prosegur-digital-gold·fuentes"
+  ]
+ },
+ {
+  "url": "https://midas.app/",
+  "estado": 403,
+  "bytes": 5474,
+  "final": "https://midas.app/",
+  "ms": 23,
+  "cf": "challenge",
+  "usadoEn": [
+   "mtbill·fuentes",
+   "mtbill·fuente"
+  ]
+ },
+ {
+  "url": "https://geco.amf-france.org/produit-d-epargne/c79399",
+  "estado": 200,
+  "bytes": 37542,
+  "final": "https://geco.amf-france.org/produit-d-epargne/c79399",
+  "ms": 131,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+  "estado": 200,
+  "bytes": 180825,
+  "final": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+  "ms": 163,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentesActuales",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2wce8",
+  "estado": 200,
+  "bytes": 59691,
+  "final": "https://www.brickwise.at/assets/at0000a2wce8",
+  "ms": 51,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-schwarzer-weg-18-graz·fuentesActuales",
+   "vivienda-schwarzer-weg-18-graz·fuentes",
+   "vivienda-schwarzer-weg-18-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://hausera.io/terms/",
+  "estado": 200,
+  "bytes": 2344845,
+  "final": "https://hausera.io/terms/",
+  "ms": 179,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentesActuales",
+   "hausera-proximas-ofertas·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/Consultas/esi/esisextranjeraslp.aspx",
+  "ms": 688,
+  "cf": "",
+  "usadoEn": [
+   "robinhood-classic-stock-tokens·fuentesActuales",
+   "robinhood-classic-stock-tokens·fuentes",
+   "robinhood-classic-stock-tokens·fuente"
+  ]
+ },
+ {
+  "url": "https://api.app.brickwise.at/api/v1/assets",
+  "estado": 200,
+  "bytes": 235458,
+  "final": "https://api.app.brickwise.at/api/v1/assets",
+  "ms": 737,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+  "estado": 200,
+  "bytes": 37542,
+  "final": "https://geco.amf-france.org/produit-d-epargne/c124199",
+  "ms": 125,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+  "estado": 200,
+  "bytes": 317532,
+  "final": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+  "ms": 642,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.lend.ch/invest",
+  "estado": 200,
+  "bytes": 19002,
+  "final": "https://shares.lend.ch/invest",
+  "ms": 715,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·fuentesActuales",
+   "switzerlend·fuentes",
+   "switzerlend·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+  "estado": 200,
+  "bytes": 138157,
+  "final": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+  "ms": 168,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentesActuales",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2ypq0",
+  "estado": 200,
+  "bytes": 59894,
+  "final": "https://www.brickwise.at/assets/at0000a2ypq0",
+  "ms": 40,
+  "cf": "",
+  "usadoEn": [
+   "drautalresidenz-paternion·fuentesActuales",
+   "drautalresidenz-paternion·fuentes",
+   "drautalresidenz-paternion·fuente"
+  ]
+ },
+ {
+  "url": "https://hausera.io/",
+  "estado": 200,
+  "bytes": 2529208,
+  "final": "https://hausera.io/",
+  "ms": 37,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentes",
+   "hausera-proximas-ofertas·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com/invest",
+  "estado": 200,
+  "bytes": 18110,
+  "final": "https://shares.bossinfo.com/invest",
+  "ms": 702,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentesActuales",
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+  "estado": 200,
+  "bytes": 135012,
+  "final": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+  "ms": 823,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes",
+   "spiko-smart-cash-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com/trade",
+  "estado": 200,
+  "bytes": 120732,
+  "final": "https://shares.aktionariat.com/trade",
+  "ms": 1727,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentesActuales",
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a2zt84",
+  "estado": 200,
+  "bytes": 60194,
+  "final": "https://www.brickwise.at/assets/at0000a2zt84",
+  "ms": 53,
+  "cf": "",
+  "usadoEn": [
+   "randhartingergasse-9-viena·fuentesActuales",
+   "randhartingergasse-9-viena·fuentes",
+   "randhartingergasse-9-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+  "estado": 200,
+  "bytes": 223374,
+  "final": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+  "ms": 162,
+  "cf": "",
+  "usadoEn": [
+   "local-de-estanco-klagenfurt·fuentesActuales",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64476,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+  "ms": 289,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://hausera.io/faq/",
+  "estado": 200,
+  "bytes": 2320315,
+  "final": "https://hausera.io/faq/",
+  "ms": 197,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a31kp7",
+  "estado": 200,
+  "bytes": 59699,
+  "final": "https://www.brickwise.at/assets/at0000a31kp7",
+  "ms": 39,
+  "cf": "",
+  "usadoEn": [
+   "apartamento-vacacional-hinterstoder-50·fuentesActuales",
+   "apartamento-vacacional-hinterstoder-50·fuentes",
+   "apartamento-vacacional-hinterstoder-50·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com/investor-page-terms",
+  "estado": 200,
+  "bytes": 26190,
+  "final": "https://shares.aktionariat.com/investor-page-terms",
+  "ms": 138,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentesActuales",
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.lend.ch/trade",
+  "estado": 200,
+  "bytes": 44212,
+  "final": "https://shares.lend.ch/trade",
+  "ms": 701,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·fuentesActuales",
+   "switzerlend·fuentes",
+   "switzerlend·fuente"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/Consultas/esi/esisextranjeraslp.aspx",
+  "ms": 1018,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+  "estado": 200,
+  "bytes": 138294,
+  "final": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+  "ms": 166,
+  "cf": "",
+  "usadoEn": [
+   "local-de-estanco-klagenfurt·fuentesActuales",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "estado": 200,
+  "bytes": 75252,
+  "final": "https://www.prosegurcrypto.com/digital-gold",
+  "ms": 4288,
+  "cf": "",
+  "usadoEn": [
+   "prosegur-digital-gold·url",
+   "prosegur-digital-gold·fuentesActuales",
+   "prosegur-digital-gold·fuentes",
+   "prosegur-digital-gold·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64426,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+  "ms": 286,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com/trade",
+  "estado": 200,
+  "bytes": 57058,
+  "final": "https://shares.bossinfo.com/trade",
+  "ms": 646,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentesActuales",
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/assets/at0000a324b4",
+  "estado": 200,
+  "bytes": 59297,
+  "final": "https://www.brickwise.at/assets/at0000a324b4",
+  "ms": 41,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentesActuales",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentes",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+  "estado": 200,
+  "bytes": 82462,
+  "final": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+  "ms": 840,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentesActuales",
+   "spiko-smart-cash-euro·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+  "estado": 200,
+  "bytes": 190996,
+  "final": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+  "ms": 163,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-stallhofstra-e-28-gratwein·fuentesActuales",
+   "vivienda-stallhofstra-e-28-gratwein·fuentes",
+   "vivienda-stallhofstra-e-28-gratwein·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+  "estado": 200,
+  "bytes": 55846,
+  "final": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+  "ms": 69,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64514,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+  "ms": 276,
+  "cf": "",
+  "usadoEn": [
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/Consultas/Folletos/Pasaportes.aspx",
+  "ms": 585,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com",
+  "estado": 200,
+  "bytes": 145401,
+  "final": "https://shares.aktionariat.com/",
+  "ms": 686,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentes"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com",
+  "estado": 200,
+  "bytes": 74100,
+  "final": "https://shares.bossinfo.com/",
+  "ms": 437,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+  "estado": 200,
+  "bytes": 138935,
+  "final": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+  "ms": 163,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-stallhofstra-e-28-gratwein·fuentesActuales",
+   "vivienda-stallhofstra-e-28-gratwein·fuentes",
+   "vivienda-stallhofstra-e-28-gratwein·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/imprint",
+  "estado": 200,
+  "bytes": 41447,
+  "final": "https://www.brickwise.at/imprint",
+  "ms": 52,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64521,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+  "ms": 285,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-stallhofstra-e-28-gratwein·fuentes",
+   "vivienda-stallhofstra-e-28-gratwein·fuente"
+  ]
+ },
+ {
+  "url": "https://www.brickwise.at/marketplace",
+  "estado": 200,
+  "bytes": 98713,
+  "final": "https://www.brickwise.at/marketplace",
+  "ms": 44,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente",
+   "randhartingergasse-9-viena·fuentes",
+   "randhartingergasse-9-viena·fuente",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentes",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+  "estado": 200,
+  "bytes": 190968,
+  "final": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+  "ms": 172,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-schwarzer-weg-18-graz·fuentesActuales",
+   "vivienda-schwarzer-weg-18-graz·fuentes",
+   "vivienda-schwarzer-weg-18-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+  "estado": 200,
+  "bytes": 1682,
+  "final": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+  "ms": 474,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com/",
+  "estado": 200,
+  "bytes": 145401,
+  "final": "https://shares.aktionariat.com/",
+  "ms": 633,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64710,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+  "ms": 283,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-schwarzer-weg-18-graz·fuentes",
+   "vivienda-schwarzer-weg-18-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.lend.ch",
+  "estado": 200,
+  "bytes": 60344,
+  "final": "https://shares.lend.ch/",
+  "ms": 1919,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·fuentes"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/consultas/esi/erir_esi.aspx",
+  "ms": 938,
+  "cf": "",
+  "usadoEn": [
+   "hausera-proximas-ofertas·fuentesActuales",
+   "hausera-proximas-ofertas·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+  "estado": 200,
+  "bytes": 139764,
+  "final": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+  "ms": 168,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-schwarzer-weg-18-graz·fuentesActuales",
+   "vivienda-schwarzer-weg-18-graz·fuentes",
+   "vivienda-schwarzer-weg-18-graz·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+  "estado": 200,
+  "bytes": 1734485,
+  "final": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+  "ms": 1350,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente",
+   "spiko-letras-del-tesoro-dolar·fuentes",
+   "spiko-letras-del-tesoro-dolar·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.bossinfo.com/investor-page-terms",
+  "estado": 200,
+  "bytes": 26190,
+  "final": "https://shares.bossinfo.com/investor-page-terms",
+  "ms": 158,
+  "cf": "",
+  "usadoEn": [
+   "boss-info·fuentes",
+   "boss-info·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+  "estado": 200,
+  "bytes": 192682,
+  "final": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+  "ms": 171,
+  "cf": "",
+  "usadoEn": [
+   "drautalresidenz-paternion·fuentesActuales",
+   "drautalresidenz-paternion·fuentes",
+   "drautalresidenz-paternion·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64873,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+  "ms": 279,
+  "cf": "",
+  "usadoEn": [
+   "drautalresidenz-paternion·fuentes",
+   "drautalresidenz-paternion·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.lend.ch/investor-page-terms",
+  "estado": 200,
+  "bytes": 26190,
+  "final": "https://shares.lend.ch/investor-page-terms",
+  "ms": 263,
+  "cf": "",
+  "usadoEn": [
+   "switzerlend·fuentes",
+   "switzerlend·fuente"
+  ]
+ },
+ {
+  "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+  "estado": 200,
+  "bytes": 1543,
+  "final": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+  "ms": 536,
+  "cf": "",
+  "usadoEn": [
+   "aktionariat·fuentes",
+   "aktionariat·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+  "estado": 200,
+  "bytes": 282841,
+  "final": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+  "ms": 488,
+  "cf": "",
+  "usadoEn": [
+   "spiko-letras-del-tesoro-euro·fuentes",
+   "spiko-letras-del-tesoro-euro·fuente"
+  ]
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es",
+  "estado": 500,
+  "bytes": 1795,
+  "final": "https://www.cnmv.es/Portal/Error?aspxerrorpath=/Portal/consultas/esi/esisextranjeraslp.aspx",
+  "ms": 605,
+  "cf": "",
+  "usadoEn": [
+   "spiko-smart-cash-euro·fuentes"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+  "estado": 200,
+  "bytes": 138356,
+  "final": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+  "ms": 174,
+  "cf": "",
+  "usadoEn": [
+   "drautalresidenz-paternion·fuentesActuales",
+   "drautalresidenz-paternion·fuentes",
+   "drautalresidenz-paternion·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64605,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+  "ms": 270,
+  "cf": "",
+  "usadoEn": [
+   "randhartingergasse-9-viena·fuentes",
+   "randhartingergasse-9-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+  "estado": 200,
+  "bytes": 191910,
+  "final": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+  "ms": 164,
+  "cf": "",
+  "usadoEn": [
+   "randhartingergasse-9-viena·fuentesActuales",
+   "randhartingergasse-9-viena·fuentes",
+   "randhartingergasse-9-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64520,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+  "ms": 266,
+  "cf": "",
+  "usadoEn": [
+   "apartamento-vacacional-hinterstoder-50·fuentes",
+   "apartamento-vacacional-hinterstoder-50·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+  "estado": 200,
+  "bytes": 128786,
+  "final": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+  "ms": 166,
+  "cf": "",
+  "usadoEn": [
+   "randhartingergasse-9-viena·fuentesActuales",
+   "randhartingergasse-9-viena·fuentes",
+   "randhartingergasse-9-viena·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 63599,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+  "ms": 196,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentes",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+  "estado": 200,
+  "bytes": 247203,
+  "final": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+  "ms": 173,
+  "cf": "",
+  "usadoEn": [
+   "apartamento-vacacional-hinterstoder-50·fuentesActuales",
+   "apartamento-vacacional-hinterstoder-50·fuentes",
+   "apartamento-vacacional-hinterstoder-50·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64702,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+  "ms": 281,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-greenpoint·fuentes",
+   "fotovoltaica-greenpoint·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+  "estado": 200,
+  "bytes": 139587,
+  "final": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+  "ms": 154,
+  "cf": "",
+  "usadoEn": [
+   "apartamento-vacacional-hinterstoder-50·fuentesActuales",
+   "apartamento-vacacional-hinterstoder-50·fuentes",
+   "apartamento-vacacional-hinterstoder-50·fuente"
+  ]
+ },
+ {
+  "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+  "estado": 200,
+  "bytes": 651841,
+  "final": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+  "ms": 10309,
+  "cf": "",
+  "usadoEn": [
+   "kraken-xstocks·fuentesActuales",
+   "kraken-xstocks·fuentes",
+   "kraken-xstocks·fuente"
+  ]
+ },
+ {
+  "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+  "estado": 200,
+  "bytes": 64712,
+  "final": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+  "ms": 285,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-cohotel·fuentes",
+   "fotovoltaica-cohotel·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+  "estado": 200,
+  "bytes": 259949,
+  "final": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+  "ms": 171,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentesActuales",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentes",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+  "estado": 200,
+  "bytes": 146611,
+  "final": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+  "ms": 168,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentesActuales",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuentes",
+   "vivienda-pottendorfer-stra-e-62-wr-neustadt·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+  "estado": 200,
+  "bytes": 550355,
+  "final": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+  "ms": 168,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-greenpoint·fuentesActuales",
+   "fotovoltaica-greenpoint·fuentes",
+   "fotovoltaica-greenpoint·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+  "estado": 200,
+  "bytes": 360088,
+  "final": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+  "ms": 164,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-greenpoint·fuentesActuales",
+   "fotovoltaica-greenpoint·fuentes",
+   "fotovoltaica-greenpoint·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+  "estado": 200,
+  "bytes": 557605,
+  "final": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+  "ms": 156,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-cohotel·fuentesActuales",
+   "fotovoltaica-cohotel·fuentes",
+   "fotovoltaica-cohotel·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+  "estado": 200,
+  "bytes": 396631,
+  "final": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+  "ms": 156,
+  "cf": "",
+  "usadoEn": [
+   "fotovoltaica-cohotel·fuentesActuales",
+   "fotovoltaica-cohotel·fuentes",
+   "fotovoltaica-cohotel·fuente"
+  ]
+ },
+ {
+  "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+  "estado": 200,
+  "bytes": 30692,
+  "final": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+  "ms": 175,
+  "cf": "",
+  "usadoEn": [
+   "vivienda-pluddemanngasse-101-graz·fuentes",
+   "vivienda-pluddemanngasse-101-graz·fuente",
+   "vivienda-sonnleithnergasse-2-viena·fuentes",
+   "vivienda-sonnleithnergasse-2-viena·fuente",
+   "local-de-estanco-klagenfurt·fuentes",
+   "local-de-estanco-klagenfurt·fuente"
+  ]
+ }
+]

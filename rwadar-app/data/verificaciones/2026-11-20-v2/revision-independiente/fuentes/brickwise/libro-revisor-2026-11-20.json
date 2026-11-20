@@ -1,0 +1,440 @@
+[
+ {
+  "isin": "AT0000A2RAH5",
+  "title": "Wohnung, Plüddemanngasse 101, Graz",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 335,
+  "sellMin": 75,
+  "qtyAtMin": 2,
+  "ordersAtMin": [
+   [
+    2,
+    "2026-11-04"
+   ]
+  ],
+  "smallest": [
+   1,
+   99,
+   100.48,
+   "2026-07-15"
+  ],
+  "totalSell": 335,
+  "bestBuy": [
+   20,
+   1,
+   "2026-04-23"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-04-23"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2T4D7",
+  "title": "Wohnung, Sonnleithnergasse 2, Wien 10.",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 97,
+  "sellMin": 75,
+  "qtyAtMin": 11,
+  "ordersAtMin": [
+   [
+    11,
+    "2026-04-28"
+   ]
+  ],
+  "smallest": [
+   1,
+   80,
+   81.2,
+   "2026-11-05"
+  ],
+  "totalSell": 97,
+  "bestBuy": [
+   65,
+   1,
+   "2026-10-16"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-10-16"
+   ],
+   [
+    1,
+    "2026-11-16"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2U5V3",
+  "title": "Trafik, Kohldorfer Straße 102, Klagenfurt",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 299,
+  "sellMin": 95,
+  "qtyAtMin": 16,
+  "ordersAtMin": [
+   [
+    5,
+    "2026-03-21"
+   ],
+   [
+    10,
+    "2026-03-30"
+   ],
+   [
+    1,
+    "2026-11-05"
+   ]
+  ],
+  "smallest": [
+   1,
+   95,
+   96.42,
+   "2026-11-05"
+  ],
+  "totalSell": 299,
+  "bestBuy": [
+   15,
+   1,
+   "2026-09-21"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-09-21"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2WCD0",
+  "title": "Wohnung, Stallhofstraße 28, Gratwein",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 315,
+  "sellMin": 68.8,
+  "qtyAtMin": 1,
+  "ordersAtMin": [
+   [
+    1,
+    "2026-11-08"
+   ]
+  ],
+  "smallest": [
+   1,
+   68.8,
+   69.83,
+   "2026-11-08"
+  ],
+  "totalSell": 315,
+  "bestBuy": [
+   30,
+   1,
+   "2026-07-01"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-07-01"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2WCE8",
+  "title": "Wohnung, Schwarzer Weg 18, Graz",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 298,
+  "sellMin": 69.9,
+  "qtyAtMin": 1,
+  "ordersAtMin": [
+   [
+    1,
+    "2026-10-27"
+   ]
+  ],
+  "smallest": [
+   1,
+   69.9,
+   70.95,
+   "2026-10-27"
+  ],
+  "totalSell": 298,
+  "bestBuy": [
+   62,
+   1,
+   "2026-11-17"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-11-17"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2YPQ0",
+  "title": "Drautalresidenz, Paternion",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 147,
+  "sellMin": 70,
+  "qtyAtMin": 1,
+  "ordersAtMin": [
+   [
+    1,
+    "2026-11-17"
+   ]
+  ],
+  "smallest": [
+   1,
+   70,
+   71.05,
+   "2026-11-17"
+  ],
+  "totalSell": 147,
+  "bestBuy": [
+   50,
+   1,
+   "2026-09-29"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-09-29"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A2ZT84",
+  "title": "Randhartingergasse 9, Wien",
+  "stage": "secondary",
+  "avail": 374,
+  "avail2": 188,
+  "sellMin": 78,
+  "qtyAtMin": 20,
+  "ordersAtMin": [
+   [
+    20,
+    "2026-06-29"
+   ]
+  ],
+  "smallest": [
+   1,
+   85,
+   86.27,
+   "2026-11-06"
+  ],
+  "totalSell": 188,
+  "bestBuy": [
+   64,
+   1,
+   "2026-11-12"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-11-12"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A31KP7",
+  "title": "Ferien-Appartement, Hinterstoder 50",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 252,
+  "sellMin": 75,
+  "qtyAtMin": 5,
+  "ordersAtMin": [
+   [
+    5,
+    "2026-11-08"
+   ]
+  ],
+  "smallest": [
+   1,
+   82,
+   83.23,
+   "2026-11-15"
+  ],
+  "totalSell": 252,
+  "bestBuy": [
+   20,
+   1,
+   "2025-05-19"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2025-05-19"
+   ],
+   [
+    3,
+    "2026-09-29"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A324B4",
+  "title": "Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr.",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 96,
+  "sellMin": 81,
+  "qtyAtMin": 1,
+  "ordersAtMin": [
+   [
+    1,
+    "2026-11-15"
+   ]
+  ],
+  "smallest": [
+   1,
+   81,
+   82.21,
+   "2026-11-15"
+  ],
+  "totalSell": 96,
+  "bestBuy": [
+   64,
+   1,
+   "2026-11-17"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2026-11-17"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A35A42",
+  "title": "Investieren in eine Ferienimmobilie mit Fixpa",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 68,
+  "sellMin": 94.9,
+  "qtyAtMin": 1,
+  "ordersAtMin": [
+   [
+    1,
+    "2026-11-10"
+   ]
+  ],
+  "smallest": [
+   1,
+   94.9,
+   96.32,
+   "2026-11-10"
+  ],
+  "totalSell": 68,
+  "bestBuy": [
+   90,
+   2,
+   "2026-11-04"
+  ],
+  "buysAtBest": [
+   [
+    2,
+    "2026-11-04"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A38J32",
+  "title": "Photovoltaik Anlage GreenPoint mit Überschuss",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 347,
+  "sellMin": 102,
+  "qtyAtMin": 8,
+  "ordersAtMin": [
+   [
+    5,
+    "2026-09-05"
+   ],
+   [
+    2,
+    "2026-09-28"
+   ],
+   [
+    1,
+    "2026-11-11"
+   ]
+  ],
+  "smallest": [
+   1,
+   102,
+   103.53,
+   "2026-11-11"
+  ],
+  "totalSell": 347,
+  "bestBuy": [
+   29,
+   1,
+   "2024-08-10"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2024-08-10"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A38J40",
+  "title": "Photovoltaik Anlage Cohotel mit Überschussbet",
+  "stage": "secondary",
+  "avail": 0,
+  "avail2": 59,
+  "sellMin": 110,
+  "qtyAtMin": 35,
+  "ordersAtMin": [
+   [
+    31,
+    "2025-02-07"
+   ],
+   [
+    4,
+    "2026-05-07"
+   ]
+  ],
+  "smallest": [
+   1,
+   120,
+   121.8,
+   "2026-11-15"
+  ],
+  "totalSell": 59,
+  "bestBuy": [
+   3,
+   1,
+   "2024-11-23"
+  ],
+  "buysAtBest": [
+   [
+    1,
+    "2024-11-23"
+   ]
+  ]
+ },
+ {
+  "isin": "AT0000A3E842",
+  "title": "Photovoltaik Anlage mit Schnellladestation im",
+  "stage": "secondary",
+  "avail": 218,
+  "avail2": 0,
+  "sellMin": null,
+  "qtyAtMin": 0,
+  "ordersAtMin": [],
+  "smallest": null,
+  "totalSell": 0,
+  "bestBuy": null,
+  "buysAtBest": []
+ }
+]

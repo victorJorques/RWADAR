@@ -1,0 +1,113 @@
+Revisión independiente · candidata-lise-st-group · 20/11/2026
+Consultas propias entre 2026-11-20T21:16:08Z y 2026-11-20T21:22:06Z. Peticiones normales:
+curl con su agente por defecto, TLS verificado; en la CNMV, accept-language: es.
+Crudos (fuera de Git): grupos/busqueda-nueva/fuentes/crudo/revision-lise/ (consultas.log y enlaces.log).
+Sin nombres de personas físicas.
+
+== REGAFI (ACPR) ==
+2026-11-20T21:16:08Z https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227
+  HTTP 200, 784 B, sha256 602705541e2b06bceadc57f86c569739ca1fee0e0628d075052ef78fc0d3c5f3
+  "cib": "[{\"code\": \"18883\", \"date\": \"2025-10-13\"}]", "lei": "894500LNKGRT1I5QBU56", "denomination": "LISE",
+  "siren": "938642709", "categorie": ["Entreprise d'Investissement"], "nature_autorisation": "Agrément"
+2026-11-20T21:16:09Z .../prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100
+  HTTP 200, 33 B, sha256 b40a5ce424590aa2d85084c9a423d90252d3ba8a22202193a62874533698a3a3 -> total_count 0
+2026-11-20T21:16:10Z .../prd-banque-passeports-sortants/records?where=pays%3D%22ESPAGNE%22%20and%20indicateur_psi%3D%22True%22&limit=1
+  HTTP 200 -> total_count 172 (control positivo)
+2026-11-20T21:16:22Z .../prd-banque-passeports-sortants/records?where=pays%3D%22ESPAGNE%22%20and%20categorie%3D%22Entreprise%20d%27Investissement%22&limit=1&select=id_referentiel
+  HTTP 200 -> total_count 75 (empresas de inversión francesas con pasaporte a España)
+2026-11-20T21:16:21Z mismo conjunto, date_debut>=2025-06-01, orden descendente: 11 pasaportes; el más reciente
+  "date_debut": "2026-09-28" (Libre prestation de services). El registro está al día y LISE no aparece.
+2026-11-20T21:16:20Z .../prd-banque-autorisations/records?where=id_referentiel%3D749227&limit=100
+  HTTP 200, sha256 f7d4a31a99f62e48d16c3fc9d10d728823e9a6079e8147e08cba2fb7dea60d9d
+  "date_debut": "2025-10-13", "situation": "ACTIF", "pays_exercice": "FRANCE", "si_keys": ",7:C1,8:C1,"
+  (servicios 7 y 8 sobre instrumentos C1; en la numeración de la MiFID: colocación sin compromiso firme y gestión de un SMN, sobre valores negociables)
+
+== CNMV ==
+2026-11-20T21:16:43Z https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4
+  HTTP 200, 1.993.103 B, sha256 35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41 (igual que el analista)
+  812 entidades; la más reciente «NAPERTE DESIGNATED ACTIVITY COMPANY · 5372 - 10/11/2026 · IRLANDA».
+  59 de Francia; la francesa más reciente «EDMOND DE ROTHSCHILD CORPORATE FINANCE · 5364 - 05/10/2026».
+  «UAB AXIOLOGY DLT · Número y fecha de registro oficial: 5350 - 16/06/2026 · LITUANIA».
+  LISE, KRIPTOWN, LIGHTNING: sin coincidencias (la única coincidencia de «lise» es una dirección: «Rue Montagne de l'Eglise 11»).
+Advertencias (tipo No autorizadas):
+  21:17:03Z ResultadoBusqueda?tipo=1&nombre=Lise         sha256 b3739e07… «Criterios de consulta: por tipo No autorizadas, de nombre Lise. No hay datos disponibles.»
+  21:17:05Z ResultadoBusqueda?tipo=1&nombre=ST%20GROUP    sha256 6f3d9317… «No hay datos disponibles.»
+  21:17:06Z ResultadoBusqueda?tipo=1&nombre=Kriptown      sha256 c2474586… «No hay datos disponibles.»
+  21:17:07Z ResultadoBusqueda?tipo=1&nombre=Lightning%20Stock sha256 ff0a083e… «No hay datos disponibles.»
+  21:17:09Z ResultadoBusqueda?tipo=1&nombre=Trading (control) -> «Página 1 de 16», primera fila «10/11/2026 LEZTRUVINTRADING».
+
+== ESMA ==
+2026-11-20T21:18:45Z https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf
+  HTTP 200, 229.280 B, sha256 8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc, PDF creado 04/11/2026
+  «LISE SA · LISE DLT TSS · DLT Trading & Settlement System · France · Autorité de Contrôle Prudentiel et de [Résolution] · 13 October 2025»
+2026-11-20T21:21:58Z https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=LISE&wt=json&rows=20
+  2 registros: 'ae_entityTypeLabel': 'Multilateral trading facility', 'ae_micLeiEsmaId': 'LISE', 'ae_isSme': 'Yes',
+  'ae_commercialName': 'Lightning Stock Exchange', 'ae_homeMemberState': 'FRANCE', 'ae_hostMemberState': '';
+  y 'Investment firm', ACPR, 'ae_authorisationNotificationDateStr': '13/10/2025'. (Este registro no recoge pasaportes.)
+
+== AMF ==
+2026-11-20T21:21:35Z https://www.amf-france.org/fr/reglementation/regles-professionnelles-approuvees/decision-dapprobation-des-modifications-de-regles-du-systeme-multilateral-de-negociation-lise
+  HTTP 200, sha256 e71ca3b0eae2d6d36c2feaa3c79f8f789f7e6625f4506c1af83e5633272e991b
+  «Décision d'approbation des modifications de règles du système multilatéral de négociation LISE, concernant notamment
+  l'enregistrement de LISE en qualité de marché de croissance des PME» · 31 mars 2026
+
+== Registro mercantil francés (API pública recherche-entreprises.api.gouv.fr) ==
+2026-11-20T21:21:36Z https://recherche-entreprises.api.gouv.fr/search?q=477869994
+  ST GROUP: 'date_creation': '2004-07-01', 'etat_administratif': 'A', 'activite_principale': '70.10Z' (sociedad holding),
+  'finances': {'2025': {'ca': 274429, 'resultat_net': -350603}} (cuentas individuales de la holding)
+2026-11-20T21:21:36Z https://recherche-entreprises.api.gouv.fr/search?q=938642709
+  LISE: 'date_creation': '2024-12-12', 'etat_administratif': 'A', 'activite_principale': '66.11Z'
+
+== LISE · web ==
+2026-11-20T21:17:24Z https://www.lise.com/en/support  HTTP 200, 809.653 B, sha256 b36738cf…1328 (igual que el analista)
+  «Any investor, retail or institutional, can invest on Lise after creating an account, completing the KYC process, and
+  passing the suitability test. Lise is open to residents of France, Europe, the United Kingdom, and Switzerland.»
+  «Withdrawals to your bank account may take up to 48 business hours.»
+  «There is no minimum or maximum amount required to deposit funds into your Lise account.»
+  «Your funds, held in a segregated account with our banking partner, are covered by the French Deposit Guarantee Scheme
+  (FGDR) up to €100,000 per depositor. Your securities are protected by the Securities Guarantee Scheme up to €70,000 per investor.»
+  Cadena de la interfaz (alta de empresas): «Lise est disponible dans plus de 200 pays.»:«Lise is available in over 200 countries.»
+  Pie: «Before making any decision, please consult the issuer's prospectus available at www.lise.com» (no hay folleto).
+  Pie: «This website is not intended for residents of the United States of America, Canada, Australia or Japan.»
+2026-11-20T21:17:25Z https://www.lise.com/fr/support  HTTP 200, sha256 64871fba…df89
+  «Lise est ouverte aux résidents français, européens, du Royaume Uni et de Suisse.»
+2026-11-20T21:17:27Z https://www.lise.com/en/exchange/STGRP  HTTP 200, 542.669 B, sha256 09058231…87df (página dinámica)
+  «Market open 24/7»; «Capitalization €9,062,361.20»; últimas operaciones (createdAt, precio en céntimos, acciones):
+  2026-11-16T17:17:30Z 1640 x1; 2026-11-13T17:40:17Z 1550 x1 y x1; 2026-11-13T17:36:26Z 1600 x1; 2026-11-01T01:40:30Z 1650 x1;
+  2026-10-31T06:37:27Z 1650 x4; 2026-10-30T14:46:02Z 1650 x15; 2026-10-24T14:05:18Z 1450 x2 y x8; 2026-10-19T18:15:05Z 1660 x6.
+  "totalCount":551 (operaciones desde la salida).
+  Libro de órdenes: mejor compra €14.50 (1 acción); mejor venta €16.00 (132 acciones).
+  Lado comprador entero: 786 acciones, €3,765.74. Lado vendedor entero: 1.843 acciones, €38,034.84.
+  Compras: 14,50x1 · 14,47x1 · 14,00x7 · 13,50x15 · 13,02x59 · 12,02x85 · 12,00x26 · 11,87x5 · 11,60x1 · 10,80x3 · 7,21x4 ·
+  7,20x1 · 5,00x8 · 4,00x20 · 2,05x500 · 1,00x50.
+2026-11-20T21:17:28Z https://www.lise.com/en/primary-market/st-group  HTTP 200, sha256 e4352c1e…2691
+  «Unit price €18.25 · Number of shares 142,950 · Base bid amount €2,608,837.50 · Amount following the extension clause
+  €3,000,154.00 · Lock-up on existing shareholder(s) 365 days»; "status":"SUCCEEDED", "amount":207183125,
+  "targetAmount":260883750, "targetAmountMin":195663725, "startingDate":"2026-04-09T14:00:00Z", "endingDate":"2026-04-24T16:00:03Z"
+  (importes en céntimos: recaudado 2.071.831,25 €, 79 % del objetivo base, por encima del mínimo de 1.956.637,25 €)
+
+== LISE · documentos (descarga pública) ==
+21:18:16Z Règles de fonctionnement (84 p.), sha256 5f692328…aa67. Art. 9.3.1.2: criterios de admisión de Membres
+  Investisseurs sin requisito de residencia. Art. 20.4.1.2 «Toutes les quantités sont négociables».
+21:18:20Z Politique de transparence tarifaire (8 p.), sha256 6882ad23…ea67: «Entre 0,10 % et 0,25 % du volume de la
+  transaction» · «0 à 6 000 : 0,25%» · «6 000 à 24 000 : 0,20%» · «24 000 à 120 000 : 0,15%» · «≥ 120 000 : 0,10%».
+21:18:23Z Conditions générales d'utilisation, «Date : mars 2026» (20 p.), sha256 985325db…b161: sin cláusula de países.
+21:18:28Z Document d'information ST GROUP Lise-DI-2026-001 (79 p., 23,5 MB), sha256 ba3a3815…52cf:
+  «L'offre décrite dans le présent Document d'Information est exemptée de l'obligation de publier un prospectus en vertu
+  de l'article 3, paragraphe 2, du Règlement Prospectus.»
+  5.3: «Risque de perte totale ou partielle du capital investi.» · «la revente des titres n'est pas garantie, elle peut être
+  incertaine, partielle, voire impossible. La Société a mandaté All Invest, en tant que prestataire de service
+  d'investissement, pour animer le marché de ses actions dans le cadre d'un contrat de liquidité» · el fundador y presidente
+  «a souscrit un engagement de conservation portant sur la totalité de ses actions ST GROUP pendant douze (12) mois puis
+  sur la moitié de ses actions ST GROUP pendant les douze (12) mois suivants» · «absence de leur valorisation par une
+  "expertise indépendante"» · «Seule la première version des smart contracts utilisés par Lise ... a été auditée. Ces
+  smart contracts ne sont pas assurés.»
+  3.x (cuentas combinadas, K€): cifra de negocio 3 007 (2025) / 2 533 (2024); resultado neto -365 (2025) / -143 (2024);
+  capitales propios 2 198 (2025) tras «retraitement de l'impôt différé» (+1 656); deudas financieras 2 945 y créditos
+  bancarios a corto 1 061. «Au 31 décembre 2024, ST GROUP affichait des pertes cumulées de 2 418 155 euros»; reducción de
+  capital del 06/03/2026 para imputar 1 778 400 € de pérdidas.
+21:18:30Z Premier supplément Lise-DI-2026-001-S1 (4 p.), sha256 3259ed8d…a9fd8.
+
+== Enlaces del expediente (23 URL, HEAD y GET con -L) ==
+21:18:16Z–21:19:06Z: las 23 dan 200. Las tres de lise.com/rules/* redirigen (1 salto) al visor de Google Drive
+(«Règles de fonctionnement de Lise.pdf - Google Drive», etc.), sin pedir acceso.

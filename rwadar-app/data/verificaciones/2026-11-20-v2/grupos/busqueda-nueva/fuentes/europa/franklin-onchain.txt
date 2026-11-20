@@ -1,0 +1,31 @@
+ESMA · comercialización transfronteriza de fondos (cbdif), Franklin Templeton OnChain Funds
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*
+Consulta: 2026-11-20T20:54:04Z (UTC) · SHA-256 del crudo d0f5698e606b4ec3f55ad84a8f84b4d867e395caf03d098c2e3b560110a4d840 · 5494 bytes
+
+FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN U.S. GOVERNMENT LIQUIDITY FUND | LEI 254900GTFOL2DLE7D868 | alta 2026-06-15 | última act. 2026-06-18 | países ['NL', 'IT', 'ES', 'FR', 'AT', 'DE', 'LI', 'PT', 'CY'] | notificaciones ['2024-11-25', '2024-11-26', '2025-09-05', '2026-02-04']
+FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN EURO LIQUIDITY FUND | LEI 254900SUVJD9ISB77M29 | alta 2026-11-09 | última act. 2026-11-09 | países ['ES', 'DE', 'FR', 'PT', 'AT', 'IT', 'NL'] | notificaciones ['2026-11-09']
+
+Folleto de Franklin Templeton OnChain Funds (inglés, septiembre de 2026)
+Fuente: https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf
+Consulta: 2026-11-20T20:54:08Z (UTC) · SHA-256 del crudo ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9 · 1288473 bytes
+
+Mismo SHA-256 que el 03/11 y el 05/11 (expediente franklin-templeton-grbenji).
+2.    Franklin OnChain Euro Liquidity Fund
+
+Minimum Investment
+The minimum initial investment in the Shares of each Fund on Stellar is USD 20 for Class AB Shares and for Class WB Shares (or its
+equivalent in another currency, as applicable). The minimum initial investment for Class IB Shares on Stellar is USD 1,000,000 (or its
+equivalent in another currency, as applicable). Transactions on other blockchain networks may be subject to a different or higher investment
+
+Class AB Shares are available for subscription to retail investors as well as Institutional Investors.
+Class IB Shares are only offered to Institutional Investors as defined from time to time by the guidelines or recommendations of the
+competent Luxembourg financial supervisory authority (please refer below for the list of qualifying Institutional Investors).
+Class WB Shares are primarily offered for subscription to retail Investors and are also available to Institutional Investors and/or are intended
+to be offered through intermediaries, distributors, platforms and/or Brokers/Dealers which,
+
+As at the date of this Prospectus, the App may not yet be available to retail Investors. When the App will be available to retail Investors,
+the Prospectus will be updated accordingly.
+
+App Store, lookup id=1551677725 country=es: 0 resultado(s) [] (2026-11-20T20:54:23Z)
+App Store, lookup id=1551677725 country=lu: 0 resultado(s) [] (2026-11-20T20:54:23Z)
+App Store, lookup id=1551677725 country=us: 1 resultado(s) ['Benji Investments'] (2026-11-20T20:54:23Z)

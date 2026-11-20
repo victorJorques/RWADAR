@@ -1,0 +1,35 @@
+Optima Financial · portada (datos estructurados de la propia web)
+Fuente: https://optima.financial/
+Consulta: 2026-11-20T20:50:34Z (UTC) · SHA-256 del crudo 5f0c71982a24f4737f1c0eb30fc938794347bf44c157410216e99fdc580b3cdb · 13346 bytes
+
+… "description": "Tokenized investment portfolios providing actively managed exposure to crypto assets. Investment certificates issued under a base prospectus approved by FMA Liechtenstein and passported to 16 more European countries. Our strategies have been running since October 2025; tokens launched from 2026.", "provider …
+… "feesAndCommissionsSpecification": "Daily management fee of up to 0.0274% (about 10% a year) and the strategy's own trading fees are paid from its performance, so the token price is net of them. Platform fee of up to 0.5% on each sell, none on buys. Each buy and sell also pays the exchange's trading fee for that order (about 0.0 …
+… "description": "Minimum investment from $10; the AI baskets have higher minimums, shown in the app.", "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } </script> <!-- Schema.org JSON-LD: FAQPage (improves search snippets) --> <script type="application/ld+json"> {  …
+… The portfolios hold their assets at KuCoin and Hyperliquid, and deposits and withdrawals go through BitGo wallets, so these are counterparties." } }, { "@type": "Question", "name": "What are the fees?", "acceptedAnswer": { "@type": "Answer", "text":  …
+
+Optima · API pública /api/v1/strategies
+Fuente: https://optima.financial/api/v1/strategies
+Consulta: 2026-11-20T20:50:49Z (UTC) · SHA-256 del crudo 6c582e8378de268ed2a785b576e375a9522d052777d572118888dcce1590b596 · 3558 bytes
+
+OPSBTC | Enhanced BTC Long Short Momentum - MAIN | NAV 139421 USD | clase ACTIVE | MAIN AUTO_DISCOVERY strategy for OPSBTC2
+OPSAI | Optima AI Stocks Bear (MAIN) | NAV 16126 USD | clase BASKET | A rule-based inverse basket of the AI infrastructure supply chain, built from the equity perpetuals listed on Hyperliquid. The hyper-scalers are deliberately ex
+OPSETH | Enhanced ETH Long Short Momentum - MAIN | NAV 17 USD | clase ACTIVE | MAIN strategy for OPSETH
+OPSSOL | Enhanced SOL Long Short Momentum (MAIN) | NAV 67495 USD | clase ACTIVE | MAIN CFGI_DROP_DETECTION strategy for SOL
+OPSXRP | Enhanced XRP Long Short Momentum - MAIN | NAV 30 USD | clase ACTIVE | MAIN AUTO_DISCOVERY strategy for OPSXRP2
+OPLAI | Optima AI Stocks Bull (MAIN) | NAV 11006 USD | clase BASKET | A rule-based basket of the AI infrastructure supply chain, built from the equity perpetuals listed on Hyperliquid. The hyper-scalers are deliberately excluded, 
+
+Optima · folleto base aprobado por la FMA (22/05/2026), copia de la MFSA
+Fuente: https://www.mfsa.mt/wp-content/uploads/2026/05/Optima-Financial-UG-Base-Prospectus-Document-dated-22-May-2026.pdf
+Consulta: 2026-11-20T20:50:24Z (UTC) · SHA-256 del crudo 9d5cec2ee1f87f3b1ed6d72b3256fb6c96f400a6f0e56d4c726bb67089c6ae35 · 567510 bytes
+
+The Products are Blockchain-based Certificates linked to Baskets consisting of digital assets, digital
+asset derivatives, real-world securities and/or a yield-bearing investment strategy related to digital
+assets constructed and rebalanced in accordance with predefined rules as defined in the applicable Final
+Terms (the "Underlying"). An Underlying may include any set of digital assets, including but not
+limited to cryptocurrency tokens, tokenized securities, tokenized real-world assets, digital asset
+derivatives, real-world securities such as publicly traded shares, debt securities, and exchange traded
+funds (ETFs) as well as a yield-bearing decentralized finance (DeFi) investment strategy (the "Basket
+Components"). The Redemption Amount and the value of the Products depend on the performance of
+the Basket Components. The Blockchain-based Certificates are debt instruments. Neither the Products
+hereof, the share capital of the Issuer in the amount of EUR 500 is fully paid in; it is divided into
+500 shares.

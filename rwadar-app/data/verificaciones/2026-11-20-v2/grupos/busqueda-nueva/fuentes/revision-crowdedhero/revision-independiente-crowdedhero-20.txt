@@ -1,0 +1,168 @@
+CrowdedHero · bonos digitales DLT · lecturas propias del revisor independiente · 20/11/2026
+Crudos en fuentes/crudo/revision-crowdedhero/ (fuera de Git; traen nombres de personas, no se publican).
+Horas en UTC, tomadas con date -u. Peticiones GET normales con curl (agente por defecto), TLS verificado.
+A la CNMV, con «accept-language: es». Sin cuenta, sin sesión, sin KYC. La KIIS no se buscó por ninguna vía.
+Aquí no se copian nombres de personas físicas (ni del equipo, ni de quien constituye la prenda, ni de la notaría).
+
+1) Fichas de las ofertas (crowdedhero.com)
+   https://www.crowdedhero.com/project/view?id=50 · 2026-11-20T21:19:33Z · HTTP 200 · 77705 B · SHA-256 a8deea07…8838cfcb
+     «Simpleros 10,5% Fixed Digital Bonds – €200,000 Round (2nd)» · «Raising now» · «6 Days left»
+     «€82 500.00 raised» · «82.3%» · «of min. target» · «Min target €100 250.00» · «Max target €200 000.00»
+     «Annual interest 10.50%» · «Maturity term 30 months» · «Minimum investment €250.00» · «Investors 4»
+     «Proven Profitability 2025 revenue €1.96M with net profit of €202,505.» · «Fixed Yield Dividends»
+     «Target Raise €200,000 (Minimum threshold €50,000)» · «Maturity: 15 November 2028» · «Minimum Investment €250 (1 bond)»
+     «Key Risks for Investors • Capital loss risk – You may lose all your invested capital • Subordinated bonds – In case of
+      insolvency, you are paid after senior creditors • No secondary market – High liquidity risk • No deposit guarantee or
+      investor compensation scheme • Regulatory and credit risk in consumer lending sector»
+     «Documents (h2 - can be used multiple times accross one text)» · «Moneyz.csv» · «Please note, that only registered and
+      Verified investors could access the restricted Project campaign documents.» · «Apraksts par dokumenta failu Lorem ipsum
+      dolor sit amet…» (las tres fichas: 3 apariciones de «Lorem» en cada una). Los «Moneyz.csv» no tienen enlace propio.
+     «Read the Key Investment Information Sheet before investing.» · «Expected annual return: 10.5%»
+     Pie: «AGENT NAME is registered in the REGAFI under the number REGAFI NUMBER…» (sin rellenar)
+   Copia del 10/11 (2026-11-10-v2/grupos/ampliacion/fuentes/crowdedhero/project-50.txt): «4 Days remaining», «Raised €82 500.00»,
+     «€100 250.00 Min target», «4 Shareholders». El 11/11 (ACCESO-FUENTES 2.5 c, 15:23 UTC): 82.500 €, «3 días restantes».
+     Hoy, «6 Days left»: el plazo de la campaña se ha alargado y no hay ni dinero ni inversores nuevos desde el 10/11.
+
+   https://www.crowdedhero.com/project/view?id=44 · 2026-11-20T21:26:03Z · HTTP 200 · 75492 B · SHA-256 35fef605…86ecd02e
+     Primera ronda: «Simpleros | 10,5% Fixed Yield Digital Bonds – €200,000 Round» · «Funded» · «€50 250.00 raised» ·
+     «Min target €50 000.00» · «Max target €200 000.00» · «Investors 9» · «Maturity: 15 November 2028».
+     Lectura del revisor: 100.250 € (mínimo de la 2.ª ronda) = 50.250 € (1.ª ronda) + 50.000 € (umbral de los términos).
+     Es una deducción: ninguna página ni documento público lo explica.
+
+   https://www.crowdedhero.com/project/view?id=49 · 2026-11-20T21:19:31Z · HTTP 200 · 108817 B · SHA-256 4298bb88…4a611a74
+     «Amber Hostelis — an investment in accommodation development» · «SIA “BALVORA Group”» · «Raising now» · «25 Days left»
+     «€1 000.00 raised» · «2.0%» · «Min target €50 000.00» · «Max target €200 000.00» · «12.00%» · «42 months» ·
+     «Minimum investment €500.00» · «Investors 1»
+     «The nominal value of one bond is €250. The minimum investment is two bonds, or €500.»
+     «SIA “BALVORA Group” Operator of Amber Hostelis and issuer of the digital bonds.» · «direct issuance without an SPV.»
+     «Detailed use of funds [TO BE COMPLETED AFTER FINAL BUDGET APPROVAL: specific renovation works, equipment and amounts.]»
+     «Planned for September 2026 Bond issuance» · «15 March 2030 Repayment of principal»
+     «The company’s equity remained negative at the end of 2025.» · «The business is concentrated in one main accommodation
+      property.» · «The property is leased.» · «There is no active secondary market for the digital bonds.»
+
+   https://www.crowdedhero.com/project/view?id=51 · 2026-11-20T21:19:33Z · HTTP 200 · 92464 B · SHA-256 3f1b0035…bb222cda
+     «Bolivar Logistic — investment in cargo++ logistics growth» · «Coming soon» · «€0.00 raised» · «Min target €100 000.00»
+     · «14.00%» · «24 months» · «Minimum investment €100.00» · «Investors 0». Misma sección de documentos de relleno.
+
+   https://www.crowdedhero.com/project/index · 2026-11-20T21:25:05Z · HTTP 200 · 58552 B · SHA-256 4b433f5a…5be769c9
+     «15 projects». Abiertas: Simpleros (2.ª), Amber, Padures (acciones). Antiguas de Simpleros en la plataforma: acciones
+     («Automated online lending», 216.100 €, 55 inversores) y 1.ª ronda de bonos (50.250 €, 9 inversores).
+     Ojo: «Restoration of Zentene Manor» aparece como «Funded» con «€450 of €32,040 min. target 1.4%» (ficha 41,
+     2026-11-20T21:26:04Z, HTTP 200: «Funded» · «€450.00 raised» · «1.4% of min. target» · «Investors 2»).
+   https://www.crowdedhero.com/projects · 2026-11-20T21:19:57Z · HTTP 404 · 22817 B («404 Back to civilization»)
+   https://www.crowdedhero.com/es/project/view?id=50 · 2026-11-20T21:24:56Z · HTTP 404 (no hay versión en español)
+
+2) Documentos legales y tarifas (crowdedhero.com)
+   https://www.crowdedhero.com/legal?category=dlt · 2026-11-20T21:19:53Z · HTTP 200 · 91606 B · SHA-256 33bc97ea…d4638049
+     «This Agreement is effective as of 1 July 2026 | Version 1.0»
+     «"Digital Bonds" DLT-based transferable securities (Kryptowertpapiere) are issued by “NYALA Digital Asset” AG pursuant to
+      §16 of the German Electronic Securities Act (eWpG) in the form of single aggregate entry (Einzeleintragung)…»
+     «"KIIS" … available in Latvian, English and German on the Platform.»
+     2.2: «To read and accept the Key Investment Information Sheet (KIIS) for all the Offers within the platfrom…»
+     3.3: «The Digital Bonds are registered in the Investor's name in the electronic crypto securities register. Registration
+      constitutes legal ownership pursuant to §24 eWpG.»
+     5.2[b]: «there is no secondary market for Digital Bonds; they are issued under a 'buy and hold' model»
+     7.2: «Transfers of Digital Bonds between investors are technically possible only through the Platform, subject to prior
+      KYC/AML verification of the transferee by CrowdedHero. A transfer fee applies as specified in the KIIS.»
+     9.1: «(b) record-keeper of individual Investor entitlements under the Einzeleintragung structure; (c) Security Trustee»
+     10.1: orden de prevalencia «(1) Bond Conditions … (2) This DLT Bond Subscription Agreement (3) … Terms and Conditions (4) KIIS»
+   https://www.crowdedhero.com/legal?category=terms · 2026-11-20T21:19:54Z · HTTP 200 · 146005 B · SHA-256 11ce23f3…9fa9b581
+     «This version of the Terms is effective as of August 1st, 2026»
+     6.1.6: «be residing and/or registered in a Member State or in a third-party country imposing equivalent obligations…»
+     11.5: «We may offer different content and services on the Platform to the Investors depending on their residence country.»
+   https://www.crowdedhero.com/legal?category=risk · 2026-11-20T21:19:55Z · HTTP 200 · 77548 B · SHA-256 c2ec6090…1a013b91
+     «The version of this Risk Warning is effective as of 1st of August, 2023.»
+   https://www.crowdedhero.com/faq?category=investor · 2026-11-20T21:19:55Z · HTTP 200 · 92028 B · SHA-256 cc572cb7…cdeeb46c
+     «Investors residing outside Latvia can invest in offers available on CrowdedHero, with the exception of investors based
+      in the United States, who cannot invest for regulatory reasons.»
+     «3.5% when an investor receives dividends.» (la tabla de tarifas dice 5,5 %)
+   https://www.crowdedhero.com/pricelist/investor-pricelist · 2026-11-20T21:19:56Z · HTTP 200 · 43367 B · SHA-256 8c0fe921…d76c82aa
+     «Administration* 1.25% Of the amount invested per project» · «Equity model On success & dividends 5.5%»
+     «Bond model Digital Asset Fee (annual) 0.35% … deducted directly from the investor’s account.»
+     «Bond model Interest (semi-annual) 0.55% Of the interest (coupon) amount due to the investor»
+   https://www.crowdedhero.com/secondary-market · 2026-11-20T21:19:56Z · HTTP 200 · 77696 B · SHA-256 8bc7ff4c…96a799c6
+     «A bulletin board where CrowdedHero investors sell shares they already own» · «Showing 1–7 of 7 listings» (Padures muiža,
+      Simpleros Invest AS, TheGeGe: todo acciones; ningún bono). «Get in touch directly with the other party».
+
+3) Registrador alemán y términos de Simpleros
+   https://www.nyala.de/en/products/electronic-securities · 2026-11-20T21:19:57Z · HTTP 200 · 206104 B · SHA-256 f91f3a67…76d04427
+     (el mismo hash que el analista). «Simpleros Bonds X» · «EUR 500.000,00 Total issuance amount» · «DE000A4EXNM2» · «10,5 %»
+     · «EUR 250» · «July 1, 2026 Date of Issuance» · «November 15, 2028 Date of Maturity». 31 ISIN en la página; ninguno de
+     BALVORA/Amber ni de Bolivar. Enlace «Open on Blockchain»: polygonscan.com/address/0xA418489C389038E0C0BF045Fe32D4C6f1438B5F2
+   https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf · 2026-11-20T21:19:58Z · HTTP 200 ·
+     99476 B · application/pdf · 5 páginas · creado 03/07/2026 · SHA-256 c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056
+     (el mismo que el analista y que el 11/11).
+     «Instrument Subordinated DLT Digital Bonds (Kryptowertpapiere, eWpG §16)» · «Total Volume EUR 500,000 (2,000 units × EUR 250
+      nominal)» · «First Campaign EUR 200,000 (min. EUR 50,000)» · «Interest Rate 10.50% p.a. (5.25% per half-year, 30E/360)» ·
+      «Subscription 01.07.2026 – 30.06.2027»
+     2.1: «registered as a single aggregate entry in the electronic securities register maintained by Smart Registry GmbH. The
+      individual entitlements of each Bondholder are recorded by the Platform on its own books»
+     2.3: «The minimum subscription amount is EUR 250 (one Digital Bond).»
+     3.4: «Interest accrues from and including the Issue Date (01 July 2026)…»
+     4.1: «redeemed at 100% of their nominal value … on 15 November 2028» · 4.2: «The Issuer may redeem the Digital Bonds early
+      (in whole but not in part) at any time after 15 November 2027»
+     5.3: «A commission of 5.5% of each interest payment is deducted by the Platform before distribution to Bondholders,
+      commencing from the second year after the Fundraising completion date.»
+     5.4: «An annual Digital Asset Fee of 35 basis points (0.35%) on the outstanding nominal value … deducted from interest payments.»
+     6.2: «The Fundraising shall be deemed successful if at least EUR 50,000 … by the end of the Subscription Period.»
+     6.4: «The entry fee of 1.25% of the invested amount is payable by the subscriber at the time of subscription.»
+     7.1–7.5: prenda sobre «3 bonds issued by Audacia Capital OÜ (Estonia), ISIN EE3300002252, nominal value EUR 100,000 each»,
+      constituida por una persona física a favor de los bonistas, con la plataforma como «Security Trustee»; «coverage ratio
+      of at least 150%» (calculado sobre el nominal).
+     8.1: «No secondary market is provided by the Issuer or the Platform.»
+   Contrato del token en Polygon (nodo público, solo lectura, eth_call) · https://polygon-bor-rpc.publicnode.com · 2026-11-20T21:20:51Z
+     totalSupply() = 2000 (18 decimales) · name() = «Simpleros Token // ISIN: DE000A4EXNM2» · symbol() = «SMPTK» · bloque 97669456.
+     Es decir, están creados los 2.000 bonos (500.000 € nominales), aunque la plataforma solo ha colocado unos 82.500 €.
+     eth_getLogs (quién tiene cada token): el nodo pide token personal → no se usa.
+   https://polygonscan.com/address/0xA418489C389038E0C0BF045Fe32D4C6f1438B5F2 · 2026-11-20T21:21:11Z · HTTP 403 · «Just a moment...»
+     (desafío de Cloudflare). Se anota y no se insiste: el dato se leyó por el nodo público.
+
+4) Supervisores y registros
+   ESMA (crowdfunding) https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json
+     2026-11-20T21:21:08Z · HTTP 200 · 1486 B · «ae_entityName»: «SIA CrowdedHero Latvia» · «ae_competentAuthority»: «Latvijas Banka»
+     · «ae_status»: «Active» · «ae_authorisationNotificationDateStr»: «16/08/2022» · «ae_hostMemberState»: «EUROPEAN UNION» ·
+     «ae_lastUpdateStr»: «22/02/2024»
+   ESMA (sanciones) …/esma_registers_sanctions/select?q=sn_entityLEI:984500B08DG03M3EA171 · 21:26:57Z · numFound 0;
+     por nombre (*CrowdedHero*, *CROWDEDHERO*) 21:26:48–21:26:50Z · 0; control q=*:* · 21:26:51Z · 1315 registros.
+   CNMV https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001
+     2026-11-20T21:21:09Z · HTTP 200 · 150697 B · SHA-256 fe578b14…cc3be4fb (el mismo que el 11/11 y que el analista)
+     «CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA) · Proveedores de servicios de financiación participativa europeos que
+      prestan servicios en España · Nº Registro oficial 1 · 01/09/2022»
+   CNMV, entidades advertidas (ResultadoBusqueda?tipo=1&nombre=…), «No hay datos disponibles» en todas:
+     CrowdedHero 21:21:24Z · Balvora 21:21:27Z · Simpleros 21:21:29Z · Bolivar Logistic 21:21:31Z · Amber Hostelis 21:21:32Z ·
+     Audacia 21:21:35Z · Smart Registry 21:21:38Z. Control OKX 21:21:40Z: sí da filas («OKX», «AAYOKX»).
+   BaFin https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639
+     2026-11-20T21:21:10Z · HTTP 200 · 25984 B · «Smart Registry GmbH» · «Kryptowertpapierregisterführer, Sehr kleines Institut»
+     · «Kryptowertpapierregisterführung (§ 1 Abs. 1a Satz 2 Nr. 8 KWG) 19.08.2026»
+   Enlace del pie de la plataforma a su supervisor: https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/
+     21:24:54Z → redirige a https://www.bank.lv/ (portada, no la ficha) y bank.lv no respondió (respuesta vacía) a esta red.
+
+5) Cuentas en registros mercantiles
+   Letonia (data.gov.lv, API CKAN pública)
+     Lista de cuentas de la plataforma (q=50203309441) · 21:21:55Z · HTTP 200: 2025 presentada el 26/05/2026, «employees»: 2.
+     Balance 2025 (statement_id 2269545) · 21:21:59Z · HTTP 200 · «cash»: 2121 · «total_assets»: 35150 ·
+      «current_liabilities»: 86235 · «equity»: -51085
+     Resultados 2025 (mismo statement) · 21:22:00Z · HTTP 200 · «net_turnover»: 39322 · «net_income»: -68723
+     BALVORA (statement_id 2340045) · 21:22:01Z · HTTP 200 · «total_assets»: 546973 · «equity»: -150078 ·
+      «non_current_liabilities»: 447999
+   Estonia (e-Äriregister, ficha pública) https://ariregister.rik.ee/eng/company/16250495 · 2026-11-20T21:22:33Z · HTTP 200
+     Audacia Capital OÜ (sociedad cuyos bonos se dan en prenda): «Capital is 20 000 € Established without making contribution»
+     · «Registered 14.06.2021» · «Legal person has non-submitted annual reports.» · 2025: «Not submitted (due date 30.06.2026)»
+     · actividad «Business and other management consultancy activities» · ingresos 2024 «30 200» · beneficio 2021–2024:
+     «-2 914», «-29 798», «-20 455», «10 558».
+
+6) Web del emisor Simpleros (simpleros.es)
+   https://simpleros.es/informacion-sobre-prestamo · 2026-11-20T21:22:14Z · HTTP 200 · 40664 B · SHA-256 332eefd0…88a46a2e
+     «INFORMACIÓN NORMALIZADA EUROPEA SOBRE EL CRÉDITO AL CONSUMO» · «Simpleros, S.L.» · «CIF: B-01787720»
+     «En este ejemplo representativo el crédito es de 650€» · «la duración es de 30 días naturales» · «Importe total para pagar
+      … 845.00 €» · «Tipo de Interés Nominal (TIN) 365%» · «TAE 2321%» · «Interés de demora: 3% diario a partir del primer día
+      (1) de retraso…» · «Autoridad de supervisión: No está sujeto a supervisión por parte del Banco de España.»
+   https://simpleros.es/ · 2026-11-20T21:22:13Z · HTTP 200 · «obtén un préstamo de hasta 1300€ y hasta 365 días» ·
+     «Tu primer crédito de hasta 300€» · «Historial crediticio no importa»
+   https://simpleros.es/condiciones-generales · 2026-11-20T21:22:12Z · HTTP 200 · «N.I.F.) B-01787720, inscrita en el Registro
+     Mercantil de Barcelona, al Tomo 47434, Folio 134, Hoja 551677»
+
+7) Prueba de todos los enlaces del expediente (GET normal, redirecciones seguidas) · 21:24:19Z–21:24:41Z
+   200: fichas 49, 50 y 51; PDF de NYALA (99476 B); legal dlt, terms y risk; FAQ; tarifas; tablón; NYALA; CNMV nº 1;
+   ESMA; BaFin; 6 búsquedas de advertencias de la CNMV; 2 consultas de data.gov.lv.
+   404: https://www.crowdedhero.com/projects (21:24:39Z, 22817 B). El listado bueno es /project/index (200).

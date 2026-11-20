@@ -1,31 +1,55 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-14",
+  "actualizadoEl": "2026-11-20",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
-      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
-      "fecha": "2026-11-11",
+      "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
+      "fecha": "2026-11-18",
       "seccion": "importante",
       "categoria": "riesgo",
       "ambito": "UE",
-      "titulo": "11 firmas sin registro: compruébalas antes de invertir",
-      "resumen": "La CNMV difunde los avisos de supervisores de Austria (seis), Países Bajos (cuatro) y Alemania (uno) sobre 11 entidades no registradas. El supervisor alemán prohibió a una de ellas ofrecer acciones al público por no haber publicado el folleto.",
-      "porQueImporta": "Ofrecer valores al público sin el folleto exigido es una señal de alarma, también en las emisiones tokenizadas. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
+      "titulo": "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+      "resumen": "La CNMV difunde tres avisos del supervisor alemán (BaFin). Prohibió a una firma ofrecer oro físico al público y suspendió la oferta de acciones de otra, ambas sin el folleto exigido. De la tercera tiene indicios de que ofrece un producto de inversión sin él.",
+      "porQueImporta": "El oro es uno de los activos que también se venden tokenizados. Ofrecer al público sin el folleto exigido es una señal de alarma: antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
       "en": {
-        "titulo": "11 unregistered firms: check them before you invest",
-        "resumen": "The CNMV relays warnings from supervisors in Austria (six), the Netherlands (four) and Germany (one) about 11 unregistered entities. Germany's supervisor barred one of them from offering shares to the public for not publishing a prospectus.",
-        "porQueImporta": "Offering securities to the public without a required prospectus is a red flag, tokenised issues included. Before investing, look the firm up in the CNMV's search tool for warnings.",
-        "tituloInformativo": "Spain's CNMV relays EU supervisors' warnings about 11 unregistered entities"
+        "titulo": "Gold and shares with no prospectus: three German alerts",
+        "resumen": "The CNMV relays three alerts from Germany's supervisor (BaFin). It barred one firm from offering physical gold to the public and suspended another's share offer, both without the required prospectus. It has signs that the third offers an investment product without one.",
+        "porQueImporta": "Gold is one of the assets also sold in tokenised form. A public offer without the required prospectus is a red flag: before investing, look the firm up in the CNMV's search tool for warnings.",
+        "tituloInformativo": "Spain's CNMV relays three German alerts on offers without a prospectus, one of physical gold"
       },
       "fuente": {
-        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 11/11/2026",
-        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 18/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-14",
-      "tituloInformativo": "La CNMV difunde advertencias de supervisores europeos sobre 11 entidades no registradas",
-      "imagen": "alerta-fraude-3"
+      "consultadaEl": "2026-11-20",
+      "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico",
+      "imagen": "alerta-fraude"
+    },
+    {
+      "id": "cnmv-advertencias-9-entidades-dos-clones",
+      "fecha": "2026-11-16",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "9 firmas sin registro; dos imitan a firmas registradas",
+      "resumen": "La CNMV advierte de 9 entidades que no figuran en sus registros ni están autorizadas para prestar servicios de inversión. Dos son clones: imitan a una empresa de asesoramiento financiero y a una sociedad de capital riesgo, ambas registradas en España.",
+      "porQueImporta": "Un nombre o una web parecidos a los de una firma registrada no bastan. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV y comprueba que la web es la que figura en su registro.",
+      "en": {
+        "titulo": "9 unregistered firms; two pose as registered ones",
+        "resumen": "The CNMV warns about 9 entities that are not on its registers and are not authorised to provide investment services. Two are clones: they imitate a financial advisory firm and a venture capital company, both registered in Spain.",
+        "porQueImporta": "A name or website that looks like a registered firm's is not enough. Before investing, look the firm up in the CNMV's search tool for warnings and check that the website is the one on its register.",
+        "tituloInformativo": "Spain's CNMV warns about 9 unregistered entities, two of them clones of registered firms"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas del 16/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-20",
+      "tituloInformativo": "La CNMV advierte de 9 entidades no registradas, dos de ellas clones de firmas registradas",
+      "imagen": "pago-online"
     },
     {
       "id": "robinhood-stock-tokens-suplemento",
@@ -47,7 +71,7 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-14",
+      "consultadaEl": "2026-11-20",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
       "imagen": "acciones-movil"
     },
@@ -71,7 +95,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-14",
+      "consultadaEl": "2026-11-20",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
       "imagen": "instituciones-ue-2"
     },
@@ -95,33 +119,9 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-14",
+      "consultadaEl": "2026-11-20",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
       "imagen": "bolsa-madrid"
-    },
-    {
-      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
-      "fecha": "2026-10-15",
-      "seccion": "importante",
-      "categoria": "regulacion",
-      "ambito": "España",
-      "titulo": "La CNMV propone atender tus quejas contra plataformas cripto",
-      "resumen": "La CNMV somete a consulta un proyecto de Circular que amplía su servicio de reclamaciones a los proveedores de servicios de criptoactivos y a las plataformas de financiación participativa. Comentarios hasta el 16/11.",
-      "porQueImporta": "Algunas emisiones tokenizadas se venden por estas plataformas. Si sale adelante, podrías reclamar ante la CNMV. Por ahora es un proyecto.",
-      "en": {
-        "titulo": "Spain's CNMV proposes taking your crypto platform complaints",
-        "resumen": "The CNMV opened a consultation on a draft Circular extending its complaints service to crypto-asset service providers and crowdfunding platforms. Comments are accepted until 16 November.",
-        "porQueImporta": "Some tokenised issues are sold through these platforms. If adopted, you could complain to the CNMV. For now it is only a draft.",
-        "tituloInformativo": "Spain's CNMV proposes handling complaints against crowdfunding and crypto providers"
-      },
-      "fuente": {
-        "nombre": "CNMV, nota de prensa del 15/10/2026",
-        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-14",
-      "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
-      "imagen": "documentos-consulta"
     }
   ]
 }

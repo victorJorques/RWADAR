@@ -1,0 +1,671 @@
+{
+ "grupo": "busqueda-nueva",
+ "angulo": "europa-registros",
+ "fecha": "2026-11-20",
+ "reglas": "Peticiones normales con curl (agente por defecto) y TLS verificado; sin sesión, KYC, wallets ni formularios. 451, 403 y 502 anotados y no reintentados por otra vía.",
+ "textos": [
+  "cnmv-advertencias.txt",
+  "conda-campanas.txt",
+  "crowdedhero-fichas.txt",
+  "dlt-21x-seturion-lise.txt",
+  "esma-ecsp-espana.txt",
+  "esma-es-desde-2026-10-15.txt",
+  "esma-liechtenstein-espana.txt",
+  "esma-ondo.txt",
+  "esma-s01-st0x.txt",
+  "franklin-onchain.txt",
+  "inventario-europa.json",
+  "mica-other-recientes.txt",
+  "nyala-registro.txt",
+  "ondo-eligibility.txt",
+  "optima.txt",
+  "rhj-service-providers.txt",
+  "st0x-web.txt"
+ ],
+ "crudos": [
+  {
+   "archivo": "crudo/europa/esma-folletos-es-desde-0111.json",
+   "horaUtc": "2026-11-20T20:46:50Z",
+   "bytes": 1710392,
+   "sha256": "9b6a082f899e0fa5d1ae2c92b9720ef346b888600d9804c28acb8e3c4eee82c1",
+   "nota": "ESMA priii_documents: notificados a España desde el 01/11/2026 (5.000 primeros por fecha)"
+  },
+  {
+   "archivo": "crudo/europa/esma-folletos-es-desde-0111-facet.json",
+   "horaUtc": "2026-11-20T20:47:17Z",
+   "bytes": 193,
+   "sha256": "25e9fbabffaafa2d21fb0bd6f4a17bbf8692b0a76f939ea0d1e284a519f9dc35",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-es-0111-no-ft.json",
+   "horaUtc": "2026-11-20T20:47:24Z",
+   "bytes": 20032,
+   "sha256": "74d827fe5ea1fb70dcd15ca641490e4d9d1d4752cb93e2e96c6ee2515f2e3043",
+   "nota": "ESMA priii_documents: notificados a España desde el 15/10/2026 sin condiciones finales"
+  },
+  {
+   "archivo": "crudo/europa/esma-es-ft-otros.json",
+   "horaUtc": "2026-11-20T20:47:38Z",
+   "bytes": 1039090,
+   "sha256": "1c855ac55f48b0abcf52c8451b9a96f3456c495b7f94708326e79f1d645b4075",
+   "nota": "ESMA priii_documents: condiciones finales a España desde el 15/10 sin bancos alemanes ni Mintos"
+  },
+  {
+   "archivo": "crudo/europa/esma-es-ft-otros2.json",
+   "horaUtc": "2026-11-20T20:47:51Z",
+   "bytes": 1741838,
+   "sha256": "1695f19523c53c56248f27e6c89adf7f7aef270fb29611dfadcebfaf72eda95c",
+   "nota": "ESMA priii_documents: condiciones finales a España desde el 01/10 sin bancos, ETP grandes ni Mintos"
+  },
+  {
+   "archivo": "crudo/europa/esma-li-es-2026.json",
+   "horaUtc": "2026-11-20T20:48:01Z",
+   "bytes": 779971,
+   "sha256": "b873ad9fe8e299115a902af25cf1ae82a9285948d67656cc3ce917ffe4f0121c",
+   "nota": "ESMA priii_documents: FMA Liechtenstein con España desde el 01/06/2025"
+  },
+  {
+   "archivo": "crudo/europa/esma-ondo-gm.json",
+   "horaUtc": "2026-11-20T20:48:20Z",
+   "bytes": 6015,
+   "sha256": "88f81ed297f50d2c08fa929f93973028d982ba5abb37c93b5c6eeca89a57bc6b",
+   "nota": "ESMA priii_documents: Ondo Global Markets sin condiciones finales"
+  },
+  {
+   "archivo": "crudo/europa/esma-s01.json",
+   "horaUtc": "2026-11-20T20:48:48Z",
+   "bytes": 14999,
+   "sha256": "87ec352c338647a0413651c1c506b79106157fe85b5025b03fe2b6d12f5b1961",
+   "nota": "ESMA priii_documents: S01 Issuer GmbH"
+  },
+  {
+   "archivo": "crudo/europa/st0x/st0x_io_",
+   "horaUtc": "2026-11-20T20:48:52Z",
+   "bytes": 2029,
+   "sha256": "5253e86462e7c9e9ce657da24d6429b8234a6154ba53f5bee19945e9274f7b6c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/st0x/st0x_io_legal",
+   "horaUtc": "2026-11-20T20:48:53Z",
+   "bytes": 2029,
+   "sha256": "5253e86462e7c9e9ce657da24d6429b8234a6154ba53f5bee19945e9274f7b6c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/st0x/st0x_io_sitemap_xml",
+   "horaUtc": "2026-11-20T20:48:54Z",
+   "bytes": 2029,
+   "sha256": "5253e86462e7c9e9ce657da24d6429b8234a6154ba53f5bee19945e9274f7b6c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/st0x/st0x_io_llms_txt",
+   "horaUtc": "2026-11-20T20:48:55Z",
+   "bytes": 2029,
+   "sha256": "5253e86462e7c9e9ce657da24d6429b8234a6154ba53f5bee19945e9274f7b6c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/st0x/afm-12257.html",
+   "horaUtc": "2026-11-20T20:49:15Z",
+   "bytes": 48934,
+   "sha256": "e47b3dbe895790f186f5529735a48ee22b223e39783d10e9ddd5cc97cce8fb97",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/ondo/docs_ondo_finance_llms_txt",
+   "horaUtc": "2026-11-20T20:49:33Z",
+   "bytes": 20644,
+   "sha256": "6834dfef71c1da7be1eb645999c35d92ced0a3014bb4329cbc3e6ff01cc9b1ac",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/ondo/docs_ondo_finance_ondo-stocks_eligibility_md",
+   "horaUtc": "2026-11-20T20:49:33Z",
+   "bytes": 9153,
+   "sha256": "5c21e9c9b2be9d3600988b4a9cc5dbd2fad5221125480c7f62fae6aa3e7adbdf",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/rhj/docs_robinhood_com_rhj_service-providers",
+   "horaUtc": "2026-11-20T20:49:51Z",
+   "bytes": 16615,
+   "sha256": "6bca7ea681bf46fd3ea9c51b01bf64e1a3ce0fb86e0c48a6499bfffa7a43e517",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/rhj/docs_robinhood_com_llms_txt",
+   "horaUtc": "2026-11-20T20:49:52Z",
+   "bytes": 93382,
+   "sha256": "7840d436c2d3868f239f84a1d611d1b87d9961091dde87f29b60a56ef1eb6a7c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/rhj/robinhood_com_eu_en_legal_rhj_",
+   "horaUtc": "2026-11-20T20:49:52Z",
+   "bytes": 363851,
+   "sha256": "9b5941aabfbedd1e22605c063863f05fc4e56f4ca4348a94483c5571928a3d03",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/Optima-Financial-UG-Base-Prospectus-Document-dated-22-May-2026.pdf",
+   "horaUtc": "2026-11-20T20:50:24Z",
+   "bytes": 567510,
+   "sha256": "9d5cec2ee1f87f3b1ed6d72b3256fb6c96f400a6f0e56d4c726bb67089c6ae35",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/Optima-Financial-UG-Base-Prospectus-Document-dated-23-May-2025.pdf",
+   "horaUtc": "2026-11-20T20:50:25Z",
+   "bytes": 961378,
+   "sha256": "630d3615ef0efe475e7016c655c38fd4a5b970a75b4a9a74cdf7ca00228d9aac",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/o26.txt",
+   "horaUtc": "2026-11-20T20:50:28Z",
+   "bytes": 174209,
+   "sha256": "8a38b25920e98c77a01f712dd801b5a2e471da3853de2d14371160a5637bac68",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/optima-home.html",
+   "horaUtc": "2026-11-20T20:50:34Z",
+   "bytes": 13346,
+   "sha256": "5f0c71982a24f4737f1c0eb30fc938794347bf44c157410216e99fdc580b3cdb",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/optima-portfolios.html",
+   "horaUtc": "2026-11-20T20:50:43Z",
+   "bytes": 13346,
+   "sha256": "5f0c71982a24f4737f1c0eb30fc938794347bf44c157410216e99fdc580b3cdb",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/optima/optima-strategies.json",
+   "horaUtc": "2026-11-20T20:50:49Z",
+   "bytes": 3558,
+   "sha256": "6c582e8378de268ed2a785b576e375a9522d052777d572118888dcce1590b596",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/dlt-pilot.html",
+   "horaUtc": "2026-11-20T20:51:15Z",
+   "bytes": 64077,
+   "sha256": "0bcc1fe2d0cadc6d7cba586c8c4664351793ff06edc785c1715cd0dc542c5df9",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/dlt.pdf",
+   "horaUtc": "2026-11-20T20:51:20Z",
+   "bytes": 229280,
+   "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/home.html",
+   "horaUtc": "2026-11-20T20:52:01Z",
+   "bytes": 79077,
+   "sha256": "35ed00bc342bc5b0c6b6373074e45cc06be685510ed4cd1885fdf443cf68321a",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/projects.html",
+   "horaUtc": "2026-11-20T20:52:02Z",
+   "bytes": 58552,
+   "sha256": "d89f68d5f3a7d543a4ce1ed77c6c5fc4954c3c410e73ef717b2a52328d741536",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/p49.html",
+   "horaUtc": "2026-11-20T20:52:08Z",
+   "bytes": 108817,
+   "sha256": "84536be42732d289ed16225983545323d26fd48f804785d820c97974e6e08596",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/p50.html",
+   "horaUtc": "2026-11-20T20:52:08Z",
+   "bytes": 77705,
+   "sha256": "e78dd4a8497301976c1044b16351f2bfa1b32c63ddd06d7419740d19847d183e",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/p51.html",
+   "horaUtc": "2026-11-20T20:52:09Z",
+   "bytes": 92464,
+   "sha256": "5c29b3eec53e7cdc343776a74dbe5838b725ca856541a1fdfc808c9acea40552",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/p52.html",
+   "horaUtc": "2026-11-20T20:52:10Z",
+   "bytes": 22826,
+   "sha256": "f3ab8eb777a7ef0ca3d98a548399bcdff2c4252e41be6160289e28a2cd2348a8",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/p53.html",
+   "horaUtc": "2026-11-20T20:52:11Z",
+   "bytes": 22826,
+   "sha256": "45b3ad3e340a079b12012fc1c584922e74dd6b66d4f02bb514c945d307efb5b6",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/crowdedhero/nyala-electronic-securities.html",
+   "horaUtc": "2026-11-20T20:52:23Z",
+   "bytes": 206104,
+   "sha256": "f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-ecsp-invesdor.json",
+   "horaUtc": "2026-11-20T20:52:53Z",
+   "bytes": 96,
+   "sha256": "bcde9ea372f1255bb53751e10ca622f745be0670ee67214afd4cb1859c45f24e",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-upreg-csp.json",
+   "horaUtc": "2026-11-20T20:52:58Z",
+   "bytes": 1476359,
+   "sha256": "d68bc4b716384ecbdadde11beb1bd3fc9a7a319ec3369e7cb7e571d06aabc063",
+   "nota": "ESMA upreg: proveedores de financiación participativa"
+  },
+  {
+   "archivo": "crudo/europa/conda/www_conda_eu_",
+   "horaUtc": "2026-11-20T20:53:16Z",
+   "bytes": 252248,
+   "sha256": "846fc482b9a118baf63d0b8d400ff49409ba4463a32c393baaf6fda9ec52362f",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/www_conda_eu_projekte_",
+   "horaUtc": "2026-11-20T20:53:18Z",
+   "bytes": 252248,
+   "sha256": "e8ac60e3c748f881f48c16f407f40b131ee12fb2d097e75dbac3da43b8e14c29",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/conda-capital_com_",
+   "horaUtc": "2026-11-20T20:53:20Z",
+   "bytes": 252248,
+   "sha256": "b2c1b7a17c59de8729ce4b4b50011407bdfd3396544f101839dd53a6e1b51e43",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/www_conda_eu_sitemap_xml",
+   "horaUtc": "2026-11-20T20:53:22Z",
+   "bytes": 118903,
+   "sha256": "1e9eb3a5e7a0f1148d63c9394d44e88c70001ba9bcacbd2d1f08a28856adbaaf",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/kampagnen_devolo-solutions-gmbh-anleihe.html",
+   "horaUtc": "2026-11-20T20:53:38Z",
+   "bytes": 362908,
+   "sha256": "9c865d0e6e204afc947c912f8846b9aae234edbbba041fa70000b69b54fef7ce",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/en_kampagnen_devolo-solutions-gmbh-anleihe.html",
+   "horaUtc": "2026-11-20T20:53:39Z",
+   "bytes": 354,
+   "sha256": "d44fdff8ba3c6c20e1355f3b0b59b9069ad489baacacfd6c8749b177ec835625",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/conda/kampagnen_mediashop-nachrangige-anleihe-der-one-spot-gmbh.html",
+   "horaUtc": "2026-11-20T20:53:41Z",
+   "bytes": 270151,
+   "sha256": "79d9a81e625c521c5f31652c5374e9f876c1126514dc432e6a5dd9a34de823de",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-sample.json",
+   "horaUtc": "2026-11-20T20:53:45Z",
+   "bytes": 2317,
+   "sha256": "1111dc53dc2d0931335fb94d746ed13f322a358adafffb21bb4f5a23ebbe8e5a",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-onchain.json",
+   "horaUtc": "2026-11-20T20:53:51Z",
+   "bytes": 1606,
+   "sha256": "2e65f4a0df9f5fe092b85d0b7a762bf48ef71b82a2ddbdc6385439655f272fec",
+   "nota": "ESMA funds_cbdif: nombre *onchain* con ES"
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-token.json",
+   "horaUtc": "2026-11-20T20:53:51Z",
+   "bytes": 1064,
+   "sha256": "20ddcc45b2903a24041a36f007badaf80dcf3238178bdee95853c993d69d6575",
+   "nota": "ESMA funds_cbdif: nombre *token* con ES"
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-blockchain.json",
+   "horaUtc": "2026-11-20T20:53:52Z",
+   "bytes": 6230,
+   "sha256": "2ed8b84196740fd96e529ce0d9b05c8fc39ef27e34442ba211d388fd5d0a0da0",
+   "nota": "ESMA funds_cbdif: nombre *blockchain* con ES"
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-on-chain.json",
+   "horaUtc": "2026-11-20T20:53:52Z",
+   "bytes": 518,
+   "sha256": "e78236dd0b20ba4dbe7d974c9ac576b480a741e808ba15c2a110d41b732f18bf",
+   "nota": "ESMA funds_cbdif: nombre *on-chain* con ES"
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-DLT.json",
+   "horaUtc": "2026-11-20T20:53:53Z",
+   "bytes": 502,
+   "sha256": "83b5c6677978f0386c545a11c4219f8d06984c846b171e63b6f28256ff4ac253",
+   "nota": "ESMA funds_cbdif: nombre *DLT* con ES"
+  },
+  {
+   "archivo": "crudo/europa/esma-cbdif-digital.json",
+   "horaUtc": "2026-11-20T20:53:53Z",
+   "bytes": 34300,
+   "sha256": "2356fb1635fe7580a2c39e05bf0257a87f71c6b7e8e1288032cbd72d9e003101",
+   "nota": "ESMA funds_cbdif: nombre *digital* con ES"
+  },
+  {
+   "archivo": "crudo/europa/franklin/esma-cbdif-ft-onchain.json",
+   "horaUtc": "2026-11-20T20:54:04Z",
+   "bytes": 5494,
+   "sha256": "d0f5698e606b4ec3f55ad84a8f84b4d867e395caf03d098c2e3b560110a4d840",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/ft-prospectus-en.pdf",
+   "horaUtc": "2026-11-20T20:54:08Z",
+   "bytes": 1288473,
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/ft.txt",
+   "horaUtc": "2026-11-20T20:54:12Z",
+   "bytes": 446462,
+   "sha256": "8d73f11ba82ff948d387347bc8aadd360cb264756795b9e828d6db8e00439789",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/itunes-es-benji.json",
+   "horaUtc": "2026-11-20T20:54:19Z",
+   "bytes": 42,
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/itunes-us-benji.json",
+   "horaUtc": "2026-11-20T20:54:19Z",
+   "bytes": 12144,
+   "sha256": "945f9ad87e5a49f21117b13f3461e234f01f13f9e6e60de9c5343689b3fbd622",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/itunes-lookup-es.json",
+   "horaUtc": "2026-11-20T20:54:23Z",
+   "bytes": 42,
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/itunes-lookup-lu.json",
+   "horaUtc": "2026-11-20T20:54:23Z",
+   "bytes": 42,
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/franklin/itunes-lookup-us.json",
+   "horaUtc": "2026-11-20T20:54:23Z",
+   "bytes": 7215,
+   "sha256": "e10f20699d9ef374ececaff11efb0404320fac27fa66d2946343a7b62f1d25be",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/www_lise_fr_",
+   "horaUtc": "2026-11-20T20:55:08Z",
+   "bytes": 74313,
+   "sha256": "9001f1b72b756719d2399e873cd9be43a3a9b7532a64901aab76eba0cf9392e9",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/lise_fr_",
+   "horaUtc": "2026-11-20T20:55:10Z",
+   "bytes": 74313,
+   "sha256": "b6e320a6f405fbd21777d692a8259e190d3ae2e6b78160fd5a2bf7289fd4bb61",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/www_21x_eu_",
+   "horaUtc": "2026-11-20T20:55:13Z",
+   "bytes": 232344,
+   "sha256": "85befa50007736c015e91f193cb6cd1eb3123114d095bb3cd61489b44ad50f93",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/www_seturion_com_",
+   "horaUtc": "2026-11-20T20:55:14Z",
+   "bytes": 290779,
+   "sha256": "1e16e53ec55f50d3081a0d0365dfb10cb06b1a339506fea8c2cb2e36df7e05a9",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/www_360x_com_",
+   "horaUtc": "2026-11-20T20:55:15Z",
+   "bytes": 777497,
+   "sha256": "ceb2998304b5514767c8c295c45f3310500ac633ab1b742d6e4b1e7d1fd1829d",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/www_axiology_xyz_",
+   "horaUtc": "2026-11-20T20:55:15Z",
+   "bytes": 1564070,
+   "sha256": "fcbcc0338dac397a6cb55cb3c6924607111297e82487b864eee3b052340ffcee",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/21x-announcements.html",
+   "horaUtc": "2026-11-20T20:55:29Z",
+   "bytes": 135998,
+   "sha256": "183e41f59ee12bcd04e2c726f8541a83e275fc80243404eb4623c158aabebb5e",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/21x-posts.json",
+   "horaUtc": "2026-11-20T20:55:30Z",
+   "bytes": 3462,
+   "sha256": "a12cc1b0b9f38897d5e408b660dd4893c453c767c83abd4eaec160d6dc9fc0dc",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/firds-sample.json",
+   "horaUtc": "2026-11-20T20:55:47Z",
+   "bytes": 1973,
+   "sha256": "b49179a678356f01eeab7edae564fdfdf4edc709e50ed3ff21c6f72756eaa5ab",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/mic-21x.json",
+   "horaUtc": "2026-11-20T20:55:47Z",
+   "bytes": 96,
+   "sha256": "bcde9ea372f1255bb53751e10ca622f745be0670ee67214afd4cb1859c45f24e",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/firds-token-facet.json",
+   "horaUtc": "2026-11-20T20:55:59Z",
+   "bytes": 1316,
+   "sha256": "f33fe62499df55e50022d72e4fe0b23da969f2d7581c833d57304a0aff6d9fd1",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/dlt/firds-token-list.json",
+   "horaUtc": "2026-11-20T20:56:12Z",
+   "bytes": 66624,
+   "sha256": "490d68cc85490cb2cd5bf50573df4f3135894f55c1b1b8dfe868b3caaffe40d4",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-tokenizadores.json",
+   "horaUtc": "2026-11-20T20:56:40Z",
+   "bytes": 49937,
+   "sha256": "9d8b73f1aeb0738c4a1f801b5638f7b6cbe685664c6e7ef862feb85ee0159002",
+   "nota": "ESMA priii_documents: emisores ligados a tokenización (NYALA, Finexity, Bitbond, Cashlink, Swarm, Bitpanda…)"
+  },
+  {
+   "archivo": "crudo/europa/esma-midas.json",
+   "horaUtc": "2026-11-20T20:57:00Z",
+   "bytes": 7704,
+   "sha256": "ab6437432d442b6b582fa9b0a4516187bf192aa3bd0ad0dc60bc4e19d9a12214",
+   "nota": "ESMA priii_documents: Midas Software GmbH (41 documentos)"
+  },
+  {
+   "archivo": "crudo/europa/midas/llms.txt",
+   "horaUtc": "2026-11-20T20:57:12Z",
+   "bytes": 2,
+   "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/midas/llms-full.txt",
+   "horaUtc": "2026-11-20T20:57:13Z",
+   "bytes": 2,
+   "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/midas/mfsa-media-midas.json",
+   "horaUtc": "2026-11-20T20:57:27Z",
+   "bytes": 5657,
+   "sha256": "db4c57049dde918c2da5465b51f286d99c477ab2555525f1d5592c8fc3132243",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/midas/afm-12445.html",
+   "horaUtc": "2026-11-20T20:57:36Z",
+   "bytes": 48872,
+   "sha256": "f9210a02e13aa6a47e740adbcebbd2d91a95cb48cc31629beec16845d5454d4f",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/midas/afm-12467.html",
+   "horaUtc": "2026-11-20T20:57:38Z",
+   "bytes": 49016,
+   "sha256": "058825470426664b3214186f77e6545c74299eda7907a6e30c70c4ec8f5fd63a",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/midas/afm-12508.html",
+   "horaUtc": "2026-11-20T20:57:39Z",
+   "bytes": 49016,
+   "sha256": "5ba19d653c8b15874cf3a00e7cd0a28e3f7a4a97ad47ac92a108b0f1b387c2f4",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/ecsp/october_eu_fr_",
+   "horaUtc": "2026-11-20T20:57:55Z",
+   "bytes": 52306,
+   "sha256": "f39747baaeea14a80b6330389fdc91a25b5d30e58e7227d7d9d3ce514698f11c",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/ecsp/www_fagura_ro_",
+   "horaUtc": "2026-11-20T20:57:56Z",
+   "bytes": 5308,
+   "sha256": "9a81f4c4c13a517b25c806a6336bd9fd68033c2a4e633b58e1660d7f58c84d5b",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/ecsp/www_kapitaalopmaat_nl_",
+   "horaUtc": "2026-11-20T20:57:57Z",
+   "bytes": 38560,
+   "sha256": "b28283aa76641d4cd37f307513c97637c21aa9a6a97e8946dbfa4913e27ef652",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/esma-otros-paises.json",
+   "horaUtc": "2026-11-20T20:58:23Z",
+   "bytes": 375923,
+   "sha256": "96cf25789fecd287bee8cc6d2b367dffe9ab2b84801bf368b50ab821a97c3952",
+   "nota": "ESMA priii_documents: España desde el 01/05 con origen en otros 22 Estados"
+  },
+  {
+   "archivo": "crudo/europa/mica/ARTZZ.csv",
+   "horaUtc": "2026-11-20T20:58:48Z",
+   "bytes": 276,
+   "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/mica/OTHER.csv",
+   "horaUtc": "2026-11-20T20:58:48Z",
+   "bytes": 256050,
+   "sha256": "9cc2839bd13ff8822e892278bfe1bf14de226070ff6e91e4e6f065a9a2cadfae",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/mica/heldfor-home.html",
+   "horaUtc": "2026-11-20T20:58:57Z",
+   "bytes": 58408,
+   "sha256": "59cf8f6ff998d4e43e28878eb5c64c7fdba7228bd8579b63a30d2148aeb7ccab",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/issuance-swiss/home.html",
+   "horaUtc": "2026-11-20T20:59:06Z",
+   "bytes": 274940,
+   "sha256": "74ea3377ead0ec48aa32c9566fefa046929a5d73befc2d248a26d66e4011542b",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-CrowdedHero.html",
+   "horaUtc": "2026-11-20T20:59:19Z",
+   "bytes": 211458,
+   "sha256": "cca22352f701f1d6332d2b1f4aa598e76692935d9e6a92066de95a6d332b866b",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-ST0x.html",
+   "horaUtc": "2026-11-20T20:59:21Z",
+   "bytes": 211304,
+   "sha256": "96dcdb3ca99408d8e4ca7bd401fb8a11abe3bd30321ef72a6e1f15d20c643607",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-S01_Issuer.html",
+   "horaUtc": "2026-11-20T20:59:22Z",
+   "bytes": 211436,
+   "sha256": "00b9ec9f836ab73b47a4db33c1167409f986e23155eb9e735c415c0880f49b91",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-Franklin_Templeton.html",
+   "horaUtc": "2026-11-20T20:59:24Z",
+   "bytes": 211612,
+   "sha256": "154b8a79ff54ffeb0441724fff0009a7f71b1695707d7c226585e7ea3a939161",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-Optima.html",
+   "horaUtc": "2026-11-20T20:59:26Z",
+   "bytes": 226564,
+   "sha256": "5d187299ca0764ff8390b971ed923eb85921870e6b45dc59bbc97aa3350db76b",
+   "nota": null
+  },
+  {
+   "archivo": "crudo/europa/cnmv/adv-Trading.html",
+   "horaUtc": "2026-11-20T20:59:27Z",
+   "bytes": 236466,
+   "sha256": "379f05a4ec550d78d92a7ce9db00f94a87c98e03c1b35deccd4a5a09b0049529",
+   "nota": null
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+Robinhood RHJ · Service Provider Details
+Fuente: https://docs.robinhood.com/rhj/service-providers
+Consulta: 2026-11-20T20:49:51Z (UTC) · SHA-256 del crudo 6bca7ea681bf46fd3ea9c51b01bf64e1a3ce0fb86e0c48a6499bfffa7a43e517 · 16615 bytes
+
+Authorised Participant: Bitstamp Global Ltd, Floor 4, Banco Popular Building, Road Town, Tortola VG1110, British Virgin Islands. Broker and Custodian: Alpaca Se
+
+Mismo texto que la copia del 10/11 (grupos/ampliacion/fuentes/novedades/rhj-service-providers.txt).
