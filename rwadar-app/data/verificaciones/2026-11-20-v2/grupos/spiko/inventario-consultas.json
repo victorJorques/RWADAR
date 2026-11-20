@@ -408,7 +408,7 @@
  },
  {
   "url": "https://www.spiko.io/es/usos-principales/particulares",
-  "archivo": "fuentes/spiko-web-es-particulares-render.json",
+  "archivo": "fuentes/crudo/spiko-web-es-particulares-render.json",
   "http": 200,
   "consultadoUtc": "2026-11-20T16:56:56Z",
   "bytes": 4404,
