@@ -208,3 +208,39 @@ entrega:** esos textos no son de la revisión del catálogo, sino de la tabla
 base `plataformas` de Supabase (`rwadar-app/db/02_seed.sql`). Cambiarlos es
 SQL fuera de «Aplicar catálogo», que esta orden no cubre. Se lo explico a
 Víctor con la propuesta para hacerlo en cuanto lo autorice.
+
+**Brickwise (`auditoria/brickwise-a.md` y `brickwise-b.md`; 303 datos de las
+11 fichas):**
+- A18 · En las 11 fichas de reventa, quitar de las referencias («Datos con su
+  fecha») las de rentabilidad y reparto: «Distribución anual prevista
+  anunciada», «Distribución anual esperada · 22/10/2026», «Rentabilidad por
+  alquiler esperada (API de la app) · 22/10/2026», «Rentabilidad · consulta
+  01/11/2026» y «Próxima distribución esperada · 22/10/2026» (que daba el
+  15/11/2026, ya pasado; hoy la app dice 15.12.2026), donde estén. La reventa
+  no lleva rentabilidad (norma de las tarjetas) y varias fichas tienen el
+  aviso «la rentabilidad no se muestra», que esas referencias contradicen.
+- A19 · Randhartingergasse: quitar la referencia «Participaciones disponibles
+  en emisión (API) · 22/10/2026: 374 de 2.670» (la emisión cerró el
+  15/09/2022; la API da `stage: secondary`).
+- A20 · Citas del KID en alemán mal copiadas, en las fichas donde estén
+  (`auditoria/brickwise-a.md`): «Custodia · consulta 01/11/2026» pasa al
+  literal del KID «Die Verwaltung und Übertragung der Token hat
+  eigenverantwortlich durch den Anleger zu erfolgen.» y «Qué se adquiere ·
+  consulta 01/11/2026» empieza por «Das Produkt läuft endlos/ewig
+  ("Perpetual")…» (el KID no dice «Genussscheine»). Y la errata «comprobado
+  el30/09/2026» → «comprobado el 30/09/2026» donde esté.
+- A21 · Randhartingergasse y Hinterstoder (productos de capital,
+  `participationRightEquity`): tarjeta «Acceso desde España» → «Sin
+  confirmar: cuenta para residentes del EEE (España incluida); esta emisión
+  pide número fiscal austriaco.» y aviso nuevo: «Para comprar esta emisión,
+  quien no tributa en Austria debe dar antes un número fiscal austriaco: las
+  rentas tributan en Austria y la ganancia al vender paga allí el impuesto
+  inmobiliario (ImmoESt).» Fuente: ayuda de Brickwise «Wie sind die Erträge zu
+  versteuern?» (17:23:20 UTC) y la app pública («Um in dieses Produkt
+  investieren zu können, wird eine österreichische Steuernummer benötigt.»).
+
+No entran (claridad o información adicional sin dato falso): avisos de la
+retención KESt, mínimos «en lote de N», nueva redacción del aviso de
+subordinación, vida útil de Cohotel, piso vacío de Randhartingergasse, «Precio
+de emisión original» de Plüddemanngasse y la fuente del «Plazo» de GreenPoint
+y Cohotel. Quedan anotadas para el próximo ciclo.
