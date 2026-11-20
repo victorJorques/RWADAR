@@ -1,0 +1,10 @@
+Fuente: https://www.seturion.com/
+Consultado (UTC): 2026-11-20T20:56:32Z
+HTTP: 200 · bytes: 290779 · SHA-256 del crudo: 28b2036b5a4e6e453e03d06b41b81f5811a6d6d1bfaccf27a771b08854b08b90
+Crudo: fuentes/crudo/producto/seturion-home.html (fuera de Git)
+
+Extractos literales:
+
+«20.10.2026 Boerse Stuttgart Group obtains DLT TSS license and lays regulatory basis for Seturion Today marks a major milestone for us: Boerse Stuttgart Group, which initiated Seturion, is the first exchange group in Europe to obtain the DLT Trading and Settlement System (TSS) license under the DLT Pilot Regime. The license provides the regulatory foundati»
+
+«21.05.2026 Seturion welcomes flatexDEGIRO, Société Générale, and SG-FORGE as strategic partners We are proud to announce a landmark collaboration th»

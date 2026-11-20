@@ -1,0 +1,5 @@
+Ondo Stocks · Eligibility (fila del EEE)
+Fuente: https://docs.ondo.finance/ondo-stocks/eligibility.md
+Consulta: 2026-11-20T20:49:33Z (UTC) · SHA-256 del crudo 5c21e9c9b2be9d3600988b4a9cc5dbd2fad5221125480c7f62fae6aa3e7adbdf · 9153 bytes
+
+| **Any Member State of the European Economic Area** | "Professional Client" under MiFID II, Annex II, Section I; or "Qualified Investor" under article 2(1)(e) of Prospectus Regulation (EU) 2017/1129 | Applicable for entities or individuals: Fulfill 2 of the 3 below criteria: EUR 500,000 financial portfolio; 10 significant transactions/quarter over the previous 4 quarters; or 1 year of financial sector experience | Certain regulated financial institutions, or large undertakings that meet two of the following three size requirements: balance sheet total of at least EUR 20 million; net turnover of at least EUR 40 million; or own funds of at least EUR 2 million |

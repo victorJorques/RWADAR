@@ -1,0 +1,52 @@
+NYALA / Smart Registry · publicación de criptovalores registrados (art. 5 eWpG), extracto
+Fuente: https://www.nyala.de/en/products/electronic-securities
+Consulta: 2026-11-20T20:52:23Z (UTC) · SHA-256 del crudo f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427 · 206104 bytes
+
+DE000A5GS1A0 | DEVOLO solutions - Anleihe 2026 sz | 2.000.000,00 EUR | interés 10 %
+DE000A5GS1B8 | DEVOLO solutions - Anleihe 2026 gz | 2.000.000,00 EUR | interés 7 %
+DE000A42PG13 | Acalta 2026 | 99.999,00 EUR | interés — %
+DE000A4E19M9 | Re-nxt Invest - Neubaugasse 70 | 1.050.000,00 EUR | interés 8.75 %
+DE000A4E19L1 | Ahertaja Yrityspalvelut Oy | 600.000,00 EUR | interés 7.25 %
+DE000A4E1E16 | Resonandina Hollanda BV | 2.061.000,00 EUR | interés 9,2 %
+DE000A4E0QJ3 | AEP2 FNZ GmbH | 1.137.500,00 EUR | interés 8 %
+DE000A5GS305 | Beets and Roots GmbH 2026 EUR | 750.000,00 EUR | interés 8.75 %
+DE000A46ZXZ4 | TRIQBRIQ AG | 500.000,00 EUR | interés 7,5 %
+AT0000A3WD68 | HEROSAN Healthcare GmbH | 759.250,00 EUR | interés 9.0 %
+DE000A5GS073 | FOX Living - Apartments Braunschweig II | 2.144.000,00 EUR | interés 7.75 %
+FI4000614813 | ACS-Infinity Ab | 400.000,00 EUR | interés 8 %
+FI4000609599 | HirviForest Oy | 370.000,00 EUR | interés 7.25 %
+DE000A4AVXX0 | Stripe Bond | 5.000.000,00 EUR | interés — %
+DE000A42HT00 | Jawbuddy 2026 | 80.111,00 EUR | interés — %
+DE000A46ZZW6 | FOX Living - Apartments Braunschweig | 1.530.000,00 EUR | interés 8.75 %
+AT0000A3UL29 | Familux Nachranganleihe 2026 - Sachzins | 4.334.000,00 EUR | interés 7 %
+AT0000A3T394 | we are travel INVEST GmbH - Sachzins | 703.500,00 EUR | interés 7 %
+AT0000A3T386 | we are travel INVEST GmbH - Geldzins | 307.500,00 EUR | interés 5 %
+DE000A46ZYN8 | DN Group - Tranche B | 110.000.000,00 EUR | interés 10 %
+FI4000606249 | Nordic Urban Oy | 1.112.750,00 EUR | interés 8.75 %
+AT0000A3UL11 | Familux Nachranganleihe 2026 - Geldzins | 566.000,00 EUR | interés 5 %
+DE000A4EYJA3 | Nordic Foods 1 OÜ Bond | 1.250.000,00 EUR | interés — %
+DE000A4EXNM2 | Simpleros Bonds X | 500.000,00 EUR | interés 10,5 %
+DE000A4AU208 | Anthropic Bond | 2.112.750,00 EUR | interés — %
+AT0000A3RGG2 | KAPO Fenster und Türen GmbH | 588.000,00 EUR | interés 8 %
+DE000A460FM0 | EWIA Nachranganleihe Impact Ghana Portfolio 1 - 26 | 350.000,00 EUR | interés 8 %
+AT0000A3SEA8 | My Gym Nachranganleihe 2026 - Sachzins | 237.250,00 EUR | interés 9 %
+AT0000A3SE97 | My Gym Nachranganleihe 2026 - Geldzins | 122.250,00 EUR | interés 6.5 %
+DE000A4AU1A3 | GEG Via Pellizzo 14 2036 | 557.420,00 EUR | interés — %
+DE000A46ZYQ1 | Wohngenossenschaft Fleur de Selent eG | 1.125.000,00 EUR | interés 6.5 %
+AT0000A3T1T8 | Übergossene Alm 2026 - Geldzins | 566.000,00 EUR | interés — %
+AT0000A3T1U6 | Übergossene Alm 2026 - Sachzins | 1.027.000,00 EUR | interés — %
+AT0000A3R4K3 | Super Power Generation GmbH 2025 | 1.500.000,00 EUR | interés 9 %
+AT0000A3PGJ0 | EWIA Zweckgesellschaft 1 GmbH - EWIA SPV 2025 Genussschein | 2.000.000,00 EUR | interés — %
+DE000A4AVXR2 | Cometum: Stripe Bond | 401.000,00 EUR | interés — %
+DE000A4AVXP6 | Polymarket Bond | 50.000.00,00 EUR | interés — %
+DE000A4AVXN1 | PerplexityAI Bond | 50.000.000,00 EUR | interés — %
+DE000A4AU9L3 | Cometum: Anthropic Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXM3 | OpenAI Bond | 50.000.00,00 EUR | interés — %
+DE000A4AVXL5 | Neuralink Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXK7 | Mistral AI Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXQ4 | Cometum: ShieldAI Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXJ9 | Kraken Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXH3 | Higgsfield AI Bond | 50.000.000,00 EUR | interés — %
+DE000A4AVXG5 | Anduril Bond | 50.000.000,00 EUR | interés — %
+
+Ni Amber Hostelis ni Bolivar Logistic figuran registrados; de CrowdedHero solo «Simpleros Bonds X» (DE000A4EXNM2).

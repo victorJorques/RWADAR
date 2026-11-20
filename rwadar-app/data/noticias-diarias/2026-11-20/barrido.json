@@ -1,0 +1,459 @@
+{
+  "version": 1,
+  "fecha": "2026-11-20",
+  "inicioUtc": "2026-11-20T16:54:07.552Z",
+  "finUtc": "2026-11-20T16:54:17.458Z",
+  "desde": "2026-11-14",
+  "fuentes": [
+    {
+      "id": "cnmv-notas",
+      "nombre": "CNMV, notas de prensa",
+      "url": "https://www.cnmv.es/portal/aldia/notasprensa",
+      "critica": true,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 242754,
+      "sha256": "32b867e68408390f1b47471b67e8d434542bc7bb891362043e81e3f527ff78d7",
+      "horaUtc": "2026-11-20T16:54:07.552Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 10,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-18",
+          "hora": "13:30",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d"
+        },
+        {
+          "fecha": "2026-11-16",
+          "hora": "11:50",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d"
+        },
+        {
+          "fecha": "2026-11-11",
+          "hora": "13:00",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d"
+        },
+        {
+          "fecha": "2026-11-10",
+          "hora": "12:20",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d"
+        },
+        {
+          "fecha": "2026-11-06",
+          "hora": "11:40",
+          "titulo": "La CNMV destaca la fortaleza de los mercados financieros en un entorno de incertidumbre y subidas de tipos de interés",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0c4d3fda-18b5-4d32-995e-2638faec6d24%7d"
+        },
+        {
+          "fecha": "2026-11-03",
+          "hora": "14:00",
+          "titulo": "La CNMV inicia la consulta pública del proyecto de actualización del Código de gobierno de las sociedades cotizadas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b0444aa7b-6689-4475-8a68-d2d2d6bfbadb%7d"
+        },
+        {
+          "fecha": "2026-11-03",
+          "hora": "11:35",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4aab4e0b-415a-4960-9c25-30fd7772ed44%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "13:06",
+          "titulo": "La CNMV autoriza Bit2MeSTX, un Sistema de Negociación y Liquidación (SNL) basado en Tecnología de Registros Distribuidos (TRD)",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "13:05",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b5ceeb2a9-ed98-4136-ba9d-49b94a9a1c78%7d"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hora": "10:55",
+          "titulo": "La CNMV publica el nuevo documento de preguntas y respuestas sobre el régimen de folletos a publicar en las ofertas públicas y admisiones a cotización en mercados regulados",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb85b6ac4-b856-4277-aba7-b57fc6a37ac0%7d"
+        }
+      ],
+      "nuevos": [
+        {
+          "fecha": "2026-11-18",
+          "hora": "13:30",
+          "titulo": "Advertencias de entidades no registradas en supervisores internacionales",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d"
+        },
+        {
+          "fecha": "2026-11-16",
+          "hora": "11:50",
+          "titulo": "Advertencias de la CNMV de entidades no registradas",
+          "enlace": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d"
+        }
+      ]
+    },
+    {
+      "id": "esma-rss",
+      "nombre": "ESMA, noticias (RSS)",
+      "url": "https://www.esma.europa.eu/rss.xml",
+      "critica": true,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 55240,
+      "sha256": "dd34df8a6b4a2e82064d2fa70dddc4bb65773bda77da0450888e96338f5c7343",
+      "horaUtc": "2026-11-20T16:54:07.600Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 10,
+      "fueraDelSector": 2,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-18",
+          "hora": "09:51",
+          "titulo": "DRSP supervisory responsibilities remain unchanged following ESMA assessment",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/drsp-supervisory-responsibilities-remain-unchanged-following-esma-assessment"
+        },
+        {
+          "fecha": "2026-11-09",
+          "hora": "09:54",
+          "titulo": "EU seeks nominations for stakeholder group on tokenisation standards in finance",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/eu-seeks-nominations-stakeholder-group-tokenisation-standards-finance"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "14:26",
+          "titulo": "ESMA publishes latest edition of its newsletter",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-publishes-latest-edition-its-newsletter-45"
+        },
+        {
+          "fecha": "2026-10-29",
+          "hora": "10:05",
+          "titulo": "ESMA proposes simpler EU Taxonomy reporting",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-proposes-simpler-eu-taxonomy-reporting"
+        },
+        {
+          "fecha": "2026-10-22",
+          "hora": "16:51",
+          "titulo": "ESMA streamlines several Q&As as part of simplification efforts",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-streamlines-several-qas-part-simplification-efforts"
+        },
+        {
+          "fecha": "2026-10-20",
+          "hora": "14:34",
+          "titulo": "ESMA specifies requirements to facilitate safe use of post-trade risk reduction services",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-specifies-requirements-facilitate-safe-use-post-trade-risk-reduction"
+        },
+        {
+          "fecha": "2026-10-16",
+          "hora": "12:21",
+          "titulo": "ESMA finalises the review of guidelines on the delay in disclosure of inside information",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-finalises-review-guidelines-delay-disclosure-inside-information"
+        },
+        {
+          "fecha": "2026-10-15",
+          "hora": "15:17",
+          "titulo": "ESMA updates its manual on transparency with new guidance for OTC derivatives and tick-size regime",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-manual-transparency-new-guidance-otc-derivatives-and-tick"
+        }
+      ],
+      "nuevos": [
+        {
+          "fecha": "2026-11-18",
+          "hora": "09:51",
+          "titulo": "DRSP supervisory responsibilities remain unchanged following ESMA assessment",
+          "enlace": "https://www.esma.europa.eu/press-news/esma-news/drsp-supervisory-responsibilities-remain-unchanged-following-esma-assessment"
+        }
+      ]
+    },
+    {
+      "id": "boe-sumario",
+      "nombre": "BOE, sumario del día (API de datos abiertos)",
+      "url": "https://www.boe.es/datosabiertos/api/boe/sumario/20261120",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/xml",
+      "bytes": 227699,
+      "sha256": "854bd4c93a21b8f82faf6756cd4f28a14cbc1e2ad26ea5cee01a9a156d68ffe9",
+      "horaUtc": "2026-11-20T16:54:07.601Z",
+      "error": null,
+      "sinEdicion": false,
+      "cambia": true,
+      "leidos": 282,
+      "fueraDelSector": 271,
+      "omitidosPorNombre": 0,
+      "elementos": [
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Resolución de 12 de noviembre de 2026, de ICEX España Exportación e Inversiones, E.P.E., por la que se publica el Convenio con DHV Tecnología Espacial Avanzada Malagueña, SL, para la organización de una misión inversa de compradores y/o pre",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24423"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Resolución de 12 de noviembre de 2026, de la Dirección General del Tesoro y Política Financiera, por la que se publican los resultados de las subastas de Letras del Tesoro a tres y nueve meses correspondientes a las emisiones de fecha 13 de",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24424"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Programación y Gestión Económica del Servicio Público de Justicia. Objeto: Servicio de mudanza en Lorca. Expediente: ASE/2026/112.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38114"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Adquisición buque multipropósito clase Carnota con capacidad de remolque de altura. Expediente: 2026/AR40U/0000",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38116"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de repuestos para las consolas del sistema de combate y del sistema de navegación en los buques de l",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38119"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de equipos Katua Cipher. Expediente: 2026/AR40U/00002951E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38121"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección del Servicio de Gestión Económica de la Agencia Estatal de la Administración Tributaria. Objeto: Plan Global mantenimiento preventivo, correctivo y adquisición de repuestos Hidrojets Hamil",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38147"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Planificación y Gestión Económica. Objeto: Servicio de Transporte de personal al centro penitenciario de Albolote. Expediente: 020120260107.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38149"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Renovación de la suscripción de una licencia de software de análisis de fuentes abiertas. Expediente: Z26DT007/M20.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38151"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Contratación de servicios electorales en modalidad cloud 'on premise' para la realización de Elecciones Sindicales al Consejo de Po",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38152"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de licitación de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Mantenimiento de cabinas almacenamiento Huawei 2027/2028. Expediente: Z27IN006/P40.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38153"
+        }
+      ],
+      "nuevos": [
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Resolución de 12 de noviembre de 2026, de ICEX España Exportación e Inversiones, E.P.E., por la que se publica el Convenio con DHV Tecnología Espacial Avanzada Malagueña, SL, para la organización de una misión inversa de compradores y/o pre",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24423"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Resolución de 12 de noviembre de 2026, de la Dirección General del Tesoro y Política Financiera, por la que se publican los resultados de las subastas de Letras del Tesoro a tres y nueve meses correspondientes a las emisiones de fecha 13 de",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-24424"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Programación y Gestión Económica del Servicio Público de Justicia. Objeto: Servicio de mudanza en Lorca. Expediente: ASE/2026/112.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38114"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Adquisición buque multipropósito clase Carnota con capacidad de remolque de altura. Expediente: 2026/AR40U/0000",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38116"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de repuestos para las consolas del sistema de combate y del sistema de navegación en los buques de l",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38119"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada. Objeto: Suministro de equipos Katua Cipher. Expediente: 2026/AR40U/00002951E.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38121"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Dirección del Servicio de Gestión Económica de la Agencia Estatal de la Administración Tributaria. Objeto: Plan Global mantenimiento preventivo, correctivo y adquisición de repuestos Hidrojets Hamil",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38147"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: Subdirección General de Planificación y Gestión Económica. Objeto: Servicio de Transporte de personal al centro penitenciario de Albolote. Expediente: 020120260107.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38149"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Renovación de la suscripción de una licencia de software de análisis de fuentes abiertas. Expediente: Z26DT007/M20.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38151"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de formalización de contratos de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Contratación de servicios electorales en modalidad cloud 'on premise' para la realización de Elecciones Sindicales al Consejo de Po",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38152"
+        },
+        {
+          "fecha": "2026-11-20",
+          "hora": null,
+          "titulo": "Anuncio de licitación de: División Económica y Técnica (Cuerpo Nacional de Policía). Objeto: Mantenimiento de cabinas almacenamiento Huawei 2027/2028. Expediente: Z27IN006/P40.",
+          "enlace": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-38153"
+        }
+      ]
+    },
+    {
+      "id": "consejo-rss",
+      "nombre": "Consejo de la UE, comunicados (RSS)",
+      "url": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/xml; charset=utf-8",
+      "bytes": 13436,
+      "sha256": "9b71c95ca98688624ab749c5af0620c0502a58cac4f8d05ba8b4acf5b689ec6c",
+      "horaUtc": "2026-11-20T16:54:07.602Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 20,
+      "fueraDelSector": 20,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "bce-rss",
+      "nombre": "BCE, prensa (RSS)",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml",
+      "bytes": 5783,
+      "sha256": "6b3a5ddee3fcab48800464dcdb23e0ee57da0e6d62cdbff94f2419c4e47627cb",
+      "horaUtc": "2026-11-20T16:54:07.603Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 15,
+      "fueraDelSector": 15,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "eba-rss",
+      "nombre": "EBA, noticias (RSS)",
+      "url": "https://www.eba.europa.eu/rss.xml",
+      "critica": false,
+      "http": 200,
+      "tipo": "application/rss+xml; charset=utf-8",
+      "bytes": 21079,
+      "sha256": "b5b3258331ee54fcbb34d3ad1b96ed517ec9eaa80e17dc7c311bfa4e0f055a58",
+      "horaUtc": "2026-11-20T16:54:07.604Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 10,
+      "fueraDelSector": 10,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    },
+    {
+      "id": "comision-fisma",
+      "nombre": "Comisión Europea, noticias de finanzas (DG FISMA)",
+      "url": "https://finance.ec.europa.eu/finance-news_en",
+      "critica": false,
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 174329,
+      "sha256": "fdba00d558acaf88ff5c67e93db3257e0ac79a02c817115bf5e25e2d0ce3d15f",
+      "horaUtc": "2026-11-20T16:54:07.605Z",
+      "error": null,
+      "cambia": true,
+      "leidos": 0,
+      "fueraDelSector": 0,
+      "omitidosPorNombre": 0,
+      "elementos": [],
+      "nuevos": []
+    }
+  ],
+  "deNoticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 140108,
+      "sha256": "e781ed720cec86116e08e0c4f26140f1befd67a519aee0caaf0998c237ca4782",
+      "horaUtc": "2026-11-20T16:54:11.307Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2208721,
+      "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
+      "horaUtc": "2026-11-20T16:54:07.605Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2824126,
+      "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
+      "horaUtc": "2026-11-20T16:54:07.606Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 97216,
+      "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
+      "horaUtc": "2026-11-20T16:54:14.031Z",
+      "error": null,
+      "igualQuePublicada": true
+    },
+    {
+      "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 126383,
+      "sha256": "289265b26b53f727c54ce701024533e4dafdcd1a90189dea9601cb127eaece58",
+      "horaUtc": "2026-11-20T16:54:16.683Z",
+      "error": null,
+      "igualQuePublicada": true
+    }
+  ],
+  "caidas": [],
+  "criticasCaidas": []
+}

@@ -1,0 +1,43 @@
+ESMA · infraestructuras DLT autorizadas (PDF)
+Fuente: https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf
+Consulta: 2026-11-20T20:51:20Z (UTC) · SHA-256 del crudo 8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc · 229280 bytes
+
+PDF creado el 04/11/2026 17:04 UTC y modificado el 05/11/2026 08:45 UTC (metadatos). Mismas 8 infraestructuras que el 10/11: CSD Prague, 21X, 360X, Axiology, LISE, Securitize Europe, Seturion y Bit2Me STX.
+
+21X · últimas entradas (API pública de WordPress)
+Fuente: https://21x.eu/wp-json/wp/v2/posts?per_page=15
+Consulta: 2026-11-20T20:55:30Z (UTC) · SHA-256 del crudo a12cc1b0b9f38897d5e408b660dd4893c453c767c83abd4eaec160d6dc9fc0dc · 3462 bytes
+
+2026-11-18 | 21X ​partners​ with Utila to connect institutional wallets to its regulated onchain venue
+2026-11-12 | Beyond the Prompt: Why AI Agents Are Redefining B2B Marketing
+2026-11-10 | Who Are the Early Adopters of DTCC Tokenized Equity?
+2026-11-04 | 21X AG and LayerZero deliver institutional-grade onchain trading pilot on private-permissioned deployment of Zero
+2026-10-20 | The re-fragmentation of capital markets
+2026-10-01 | 21X Group announces collaboration with Circle as it joins Arc as a  Day-1 Launch Partner
+2026-09-29 | 21X LLC seeks regulatory approvals to be a US broker-dealer that will operate an alternative trading system, and appoint
+2026-09-09 | Investre and 21X partner to bring natively tokenized funds to a regulated exchange
+2026-08-27 | AI in finance marketing – From content creation to accountable growth
+2026-08-26 | The market isn’t waiting for consensus. It’s already compounding without it.
+2026-07-28 | A beginner’s guide to…. digital wallets – the new backbone of global trading
+2026-07-16 | Tokenized markets have democratized finance.
+2026-06-11 | Why Every Asset Manager Needs a Digital Twin
+2026-05-06 | 21X achieves multi-chain milestone as trading and settlement system goes live on Stellar
+2026-05-06 | Tokenization without atomic settlement is just digitization
+
+21X · anuncios regulatorios
+Fuente: https://21x.eu/regulatory/announcements
+Consulta: 2026-11-20T20:55:29Z (UTC) · SHA-256 del crudo 183e41f59ee12bcd04e2c726f8541a83e275fc80243404eb4623c158aabebb5e · 135998 bytes
+
+Regulatory Compliance All Regulatory Compliance 21X AG Privacy Notice Published We have published our Privacy Notice, which explains how 21X AG processes personal data in connection with its DLT Trading... 15 Oct 2026 | 11:48 (CEST) Read → Document Amendments 21X AG GDPR Processor List Update – Announcement 21X AG GDPR Processor List Update – Key changes: This update enhances transparency around how personal data is processed and... 15 Oct 2026 | 11:16 (CEST) Read → Document Amendments 21X AG Fee Schedule Amendment Announcement – October 2026 We would like to inform you of updates to the Fee Schedule. These amendments introduce certain fee-related changes and clarifications,... 12 Oct 2026 | 17:50 (CEST) Read → Product Updates Post-Trade Data Update Please note that the location of the grBENJI / USDC post-trade data feed has changed: Prior 13 October: Link From... 12 Oct 2026 | 17:11 (CEST) Read → Document Amendments 21X AG Rulebook Amendment Announcement – August 2026 21X AG hereby confirms the publication of amendments to the 21X AG Rulebook. This Rulebook release introduces the new Order... 04 Aug 2026 | 17:56 (CEST) Read → Product Removal Product removal – Delisting of US Money – Black Manta USD Short Term Yield (Series 1) 21X hereby announces the delisting of the following f
+
+Seturion · portada
+Fuente: https://www.seturion.com/
+Consulta: 2026-11-20T20:55:14Z (UTC) · SHA-256 del crudo 1e16e53ec55f50d3081a0d0365dfb10cb06b1a339506fea8c2cb2e36df7e05a9 · 290779 bytes
+
+Latest Updates News 20.10.2026 Boerse Stuttgart Group obtains DLT TSS license and lays regulatory basis for Seturion Today marks a major milestone for us: Boerse Stuttgart Group, which initiated Seturion, is the first exchange group in Europe to obtain the DLT Trading and Settlement System (TSS) lic
+
+lise.fr · portada
+Fuente: https://www.lise.fr/
+Consulta: 2026-11-20T20:55:08Z (UTC) · SHA-256 del crudo 9001f1b72b756719d2399e873cd9be43a3a9b7532a64901aab76eba0cf9392e9 · 74313 bytes
+
+ Lise — lise.fr — Accueil Contact Membres Français Français English Nederlands Español Deutsch Lise.fr Découvrez Lise Nous contacter Laissez-nous un message, nous vous répondrons rapidement. Anti-robo … (sitio de otra sociedad; ya no es la web de LISE SA)

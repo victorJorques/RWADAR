@@ -1,0 +1,8 @@
+ESMA · Ondo Global Markets (BVI) Limited, documentos sin condiciones finales
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS
+Consulta: 2026-11-20T20:48:20Z (UTC) · SHA-256 del crudo 88f81ed297f50d2c08fa929f93973028d982ba5abb37c93b5c6eeca89a57bc6b · 6015 bytes
+
+2026-11-11 | BPWO | BPWO-89 | pasaporte 2026-11-11 | España sí
+2026-08-28 | SUPP | SUPP-63 | pasaporte 2026-08-28 | España sí
+2026-05-05 | SUPP | SUPP-56 | pasaporte 2026-05-05 | España sí
+2025-11-11 | BPWO | BPWO-68 | pasaporte 2025-11-12 | España sí

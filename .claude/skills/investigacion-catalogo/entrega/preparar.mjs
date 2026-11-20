@@ -89,7 +89,7 @@ export function preparar(opciones = {}) {
 
   // ------------------------------------------------------------ 1 · radar
   const contrasteRuta = path.join(DIR, `radar-contraste-${FECHA}.json`), cambiosRadarRuta = path.join(DIR, 'cambios-radar.json');
-  const contraste = leer(contrasteRuta), cambiosRadar = leer(cambiosRadarRuta);
+  const contraste = leer(contrasteRuta), cambiosRadar = opciones.cambiosRadar || leer(cambiosRadarRuta); // cambiosRadar: solo para las pruebas
   const radar = structuredClone(radarBase);
   assert.equal(radar.fuentes.length, D.radar.fuentes, 'número de fuentes del radar');
   assert.ok(contraste.fecha === FECHA && contraste.fuentes === radar.fuentes.length && contraste.correctas === radar.fuentes.length &&
@@ -138,7 +138,19 @@ export function preparar(opciones = {}) {
     const p = radar.plataformas.find(x => x.slug === slug);
     assert.ok(p, `cambios-radar.json: plataforma desconocida ${slug}`);
     for (const [campo, c] of Object.entries(campos)) {
-      assert.ok(['estadoOperativo', 'licenciaRegistro', 'acceso'].includes(campo), `${slug}.${campo}: el motor solo cambia estadoOperativo, licenciaRegistro o acceso`);
+      if (campo === 'alertas') { // Avisos de la plataforma, por código: { <codigo>: { antes, detalle, motivo } }. Solo el texto.
+        assert.ok(c && typeof c === 'object' && Object.keys(c).length, `${slug}.alertas: al menos un código`);
+        for (const [codigo, a] of Object.entries(c)) {
+          const alerta = p.alertasCriticas.filter(x => x.codigo === codigo);
+          assert.equal(alerta.length, 1, `${slug}.alertas.${codigo}: aviso desconocido`);
+          assert.deepEqual(Object.keys(a).sort(), ['antes', 'detalle', 'motivo'], `${slug}.alertas.${codigo}: solo antes, detalle y motivo`);
+          assert.equal(alerta[0].detalle, a.antes, `${slug}.alertas.${codigo}: «antes» = lo publicado`);
+          assert.ok(a.detalle && a.motivo && a.detalle !== a.antes, `${slug}.alertas.${codigo}: detalle nuevo y motivo`);
+          alerta[0].detalle = a.detalle;
+        }
+        continue;
+      }
+      assert.ok(['estadoOperativo', 'licenciaRegistro', 'acceso'].includes(campo), `${slug}.${campo}: el motor solo cambia estadoOperativo, licenciaRegistro, acceso o alertas`);
       assert.equal(p[campo].detalle, c.antes, `${slug}.${campo}: «antes» = lo publicado`);
       if (c.fuentesAntes) assert.deepEqual(p[campo].fuentes, c.fuentesAntes, `${slug}.${campo}: fuentes de antes`);
       assert.ok(c.detalle && c.motivo, `${slug}.${campo}: detalle y motivo`);
@@ -157,7 +169,7 @@ export function preparar(opciones = {}) {
       ...(cambiosFuentes[f.id] ? { url: cambiosFuentes[f.id].antes.url, titulo: cambiosFuentes[f.id].antes.titulo } : {}) }));
     for (const [slug, campos] of Object.entries(cambiosPlataformas)) {
       const p = r.plataformas.find(x => x.slug === slug), b = radarBase.plataformas.find(x => x.slug === slug);
-      for (const campo of Object.keys(campos)) p[campo] = b[campo];
+      for (const campo of Object.keys(campos)) { if (campo === 'alertas') p.alertasCriticas = b.alertasCriticas; else p[campo] = b[campo]; }
     }
     assert.deepEqual(r, radarBase, 'radar: solo la fecha, el alcance, la consulta de las fuentes y cambios-radar.json');
   }
@@ -500,9 +512,10 @@ export function preparar(opciones = {}) {
       for (const r of d.referencias) if (!tocadas.has(r.etiqueta)) assert.ok(db.referencias.some(x => comp(x) === comp(r)), `${o.slug}: referencia «${clave(r)}» nueva sin anotar`);
       const nuevasR = refsC.filter(x => !x.antes).length, quitadasR = refsC.filter(x => !x.despues).length;
       assert.equal(d.referencias.length, db.referencias.length + nuevasR - quitadasR, `${o.slug}: número de referencias`);
-      const nuevasE = new Set(refsC.filter(x => !x.antes).map(x => x.despues.split(': ')[0])), quitadasE = new Set(refsC.filter(x => !x.despues).map(x => x.antes.split(': ')[0]));
-      assert.deepEqual(d.referencias.filter(r => !nuevasE.has(r.etiqueta)).map(r => r.etiqueta.replace(/\d{2}\/\d{2}\/\d{4}/, 'F')),
-        db.referencias.filter(r => !quitadasE.has(r.etiqueta)).map(r => r.etiqueta.replace(/\d{2}\/\d{2}\/\d{4}/, 'F')), `${o.slug}: orden de las referencias`);
+      // Por etiqueta y valor: dos referencias pueden tener la misma etiqueta y quitarse solo una.
+      const nuevasE = new Set(refsC.filter(x => !x.antes).map(x => x.despues)), quitadasE = new Set(refsC.filter(x => !x.despues).map(x => x.antes));
+      assert.deepEqual(d.referencias.filter(r => !nuevasE.has(clave(r))).map(r => r.etiqueta.replace(/\d{2}\/\d{2}\/\d{4}/, 'F')),
+        db.referencias.filter(r => !quitadasE.has(clave(r))).map(r => r.etiqueta.replace(/\d{2}\/\d{2}\/\d{4}/, 'F')), `${o.slug}: orden de las referencias`);
     }
   }
   // Las ofertas que decisiones.json da por «sin cambios»: solo las fechas.

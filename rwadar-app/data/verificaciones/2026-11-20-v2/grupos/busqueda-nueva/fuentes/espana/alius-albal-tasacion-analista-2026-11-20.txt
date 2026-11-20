@@ -1,0 +1,49 @@
+# Tasación del proyecto ALBAL (documento 336 de la emisión 182 en la API pública de Alius)
+# URL: https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336
+# Re-descargado 2026-11-20T21:10:10Z, HTTP 200, 6.396.690 B, 55 páginas,
+# SHA-256 df8e1f1bfc8c50a034f9fe066d8fed253d2c97ce6e96585f7b3557bbe05b58ab (idéntico al de 20:59:19Z).
+# Crudo: crudo/espana/analista/doc336.pdf (fuera de Git). Texto con pdftotext -layout.
+# Solo se copian literales de sociedades y cifras; el documento trae nombres de personas físicas
+# (técnico tasador, etc.) que NO se copian.
+
+Entidad tasadora: «ENTIDAD TASADORA: Técnicos en Tasación S.A. Inscrita en el Banco de España con nº 4315»
+Solicitante: «SOLICITANTE: GARDUM 2016 SL N.I.F: B19430941»
+Finalidad: «FINALIDAD DE LA TASACIÓN: INFORMACION VALOR DE MERCADO»
+Objeto: «OBJETO DE VALORACIÓN: SOLAR DE USO RESIDENCIAL, CON EDIFICACIÓN A DEMOLER»
+Alcance: «ESTA TASACIÓN SE HA REALIZADO DE ACUERDO CON LAS DISPOSICIONES Y METODOLOGÍA CONTENIDAS EN LA ORDEN
+  MINISTERIAL ECO/805/2003, SI BIEN SU FINALIDAD NO ESTÁ INCLUIDA ENTRE LAS MENCIONADAS EN SU ART. 2 [...]
+  ESTE INFORME DE TASACIÓN NO ESTÁ SOMETIDO A SUPERVISIÓN POR PARTE DE BANCO DE ESPAÑA SEGÚN EL ART. 15.1 DEL RD 775/1997.»
+Valor: «VALOR DE TASACIÓN: 401.111,35 €» · «Valor Tasación: 401.111,35€ Fecha Tasación: 13.11.2026»
+Método: «valor de tasación del objeto de valoración, obtenido por el método residual estático»
+Titular registral (hoja 3/4 del certificado):
+  «Titular registral: *Ver desglose de propietarios · El inmueble se encuentra actualmente sin uso.
+   PROPIETARIOS · FINCA-CRU NOMBRE NIF % PROPIEDAD · 1307 SMARTNEX 4 S.L. B55479091 100,00»
+Cargas: «Observaciones: - En la documentación registral utilizada para la redacción del presente informe de
+  tasación, se reflejan cargas que gravan la finca valorada. Del valor obtenido no se ha deducido ninguna
+  cantidad debido a esta carga.»
+Hipótesis: «- El cálculo del valor se ha realizado en la hipótesis de demolición de las edificaciones existentes,
+  por lo que en caso de variar esta condición, la tasación deberá ser objeto de revisión.»
+DANA: «A.7.Otras advertencias. Se ADVIERTE que se trata de inmueble situado en un municipio afectado por la
+  DANA del 29 de octubre de 2024, según Real Decreto-ley 6/2024, pero sin aparente afección significativa.»
+Cédula: «A.6.1. No se ha dispuesto de la Cédula Urbanística del terreno [...]»
+Inundación costera: «-Riesgo inundación costera: Zona No Inundable»
+Validez: «Se ADVIERTE que esta tasación es sólo válida para la finalidad para la que se ha realizado y que el valor
+  de tasación podría variar, en el caso de realizarse el presente informe para cualquiera de las finalidades
+  que contempla la ECO 805/2003»
+Hipótesis de edificio terminado (promoción más probable, no el proyecto de la ficha):
+  «J.12. VALOR DE MERCADO PARA LA HIPOTESIS DE EDIFICIO TERMINADO DE LA PROMOCION INMOBILIARIA MAS PROBABLE ...
+   TOTAL 2.086.943,84» · «J.13. BENEFICIO DEL PROMOTOR Y VALOR DE MERCADO DEL TERRENO · TERRENO 20,03 405,80 401.111,35»
+
+Cálculos de RWAdar (no son del documento):
+- 350.000 € / 401.111,35 € = 87,3 % del valor de tasación del solar (la ficha deja el LTV en «[…?]%»).
+- La ficha da «LTV sobre coste 59,32 %» = 350.000 / 590.000 (coste total del proyecto, no tasación).
+- La ficha da «3,71 veces» = 1.300.000 € de ventas futuras previstas / 350.000 €.
+- 350.000 € × (1 + 13 % × 14/12) = 403.083,33 € (el «umbral» de la ficha usa 14 meses; el plazo es 15;
+  a 15 meses serían 406.875 €). La página web dice «al cabo de los 15 meses» con la misma cifra 403.083,33 €.
+
+Contradicciones con la ficha (doc. 334) y la web del proyecto:
+- Propiedad: ficha «El solar ... es propiedad de Gardum 2016, S.L.»; la tasación da como titular registral
+  al 100 % a SMARTNEX 4 S.L.; la garantía la «aporta la Sociedad» (Token Flip S.A., el emisor).
+- Cargas: web «libre de cargas»; tasación «se reflejan cargas que gravan la finca valorada».
+- Obra: web «el edificio ya existe ... uso ... almacén ... Cambio de Uso con Segregación»; ficha «se construirá
+  un edificio residencial»; tasación «SOLAR ... CON EDIFICACIÓN A DEMOLER» e «hipótesis de demolición».

@@ -1,0 +1,234 @@
+{
+ "grupo": "busqueda-nueva",
+ "slug": "candidata-crowdedhero-bonos-dlt",
+ "fecha": "2026-11-20",
+ "herramienta": "curl con su agente por defecto, solo GET; CNMV con accept-language: es",
+ "copiaTexto": "fuentes/europa/crowdedhero-analista-2026-11-20.txt",
+ "nota": "Los crudos no entran en Git (grupos/**/crudo/). Traen nombres de personas físicas: no se publican.",
+ "consultas": [
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=49",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/p49.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:03:31Z",
+   "bytes": 108817,
+   "sha256": "4e326192a5e8f13c7cc4cd52d9e7cb60fe82717de5c3a583d14ebdd34b855eaf"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=50",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/p50.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:03:32Z",
+   "bytes": 77705,
+   "sha256": "92234725d3bc2247e1d87ecb3c4adaaf70750acd463e7688381c5241948cd50e"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=51",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/p51.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:03:33Z",
+   "bytes": 92464,
+   "sha256": "d2c35f7eb42bcc5ac7279eb373c6643145b9624f9e6279fe7325d197ac398375"
+  },
+  {
+   "url": "https://www.crowdedhero.com/projects",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/projects.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-20T21:03:34Z",
+   "bytes": 22817,
+   "sha256": "7933e632a6518b69687ac34f3d281c62ae5face98ec00adab086099295906138"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=terms",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/legal-terms.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:02Z",
+   "bytes": 146005,
+   "sha256": "054389ae4c89c0560793613ba06a772ece487bc178c59cd002f094248e6e5abc"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=risk",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/legal-risk.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:03Z",
+   "bytes": 77548,
+   "sha256": "e7b54f8b5de21880b63ae5e26cf1c241134e11557a9f0bbc331e632dd7d589e2"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=dlt",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/legal-dlt.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:04Z",
+   "bytes": 91606,
+   "sha256": "28f8763ccbd57cf4a7588b481a98f5dba7a28f174d558c518a16d78fc5c8b3b1"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=icp",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/legal-icp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:05Z",
+   "bytes": 71294,
+   "sha256": "4e6670ce54c82d1a4ca3cf995a394853c972c4bd6abde94a4c480b00ba20d9b9"
+  },
+  {
+   "url": "https://www.crowdedhero.com/faq?category=investor",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/faq-investor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:05Z",
+   "bytes": 92028,
+   "sha256": "75a73106f58ccbc22b376b99b362b29043d2d3482c204674f9da1bc8409507a5"
+  },
+  {
+   "url": "https://www.crowdedhero.com/pricelist/investor-pricelist",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/pricelist.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:06Z",
+   "bytes": 43367,
+   "sha256": "0d8bc8eec89adb8cf3e5c8c3c06847506abab2bd0ac5df1b6b3cfcace41d2160"
+  },
+  {
+   "url": "https://www.crowdedhero.com/secondary-market",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/secondary-market.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:07Z",
+   "bytes": 77696,
+   "sha256": "65a5ee8ff5a2fcab5cf272b334b732d9b9b061debfeee42c195337fe182cd3fa"
+  },
+  {
+   "url": "https://www.crowdedhero.com/",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:08Z",
+   "bytes": 79077,
+   "sha256": "ffbea1d8e19a0a3b3d188ec780ba9dbfcbe107429a6b49fe5fc9fa1f48be3d4d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/cnmv-psfp-ue1.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:47Z",
+   "bytes": 150697,
+   "sha256": "fe578b1438a90bc3b73be8193d9506f516cf4b195b1712a552e245e5cc3be4fb"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/esma.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:48Z",
+   "bytes": 1486,
+   "sha256": "8648122fa7b3793230a5a7c55ba216a3daaa6279b4fa0184e26831edd6a56701"
+  },
+  {
+   "url": "https://www.nyala.de/en/products/electronic-securities",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/nyala.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:54Z",
+   "bytes": 206104,
+   "sha256": "f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427"
+  },
+  {
+   "url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/simpleros-terms.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:04:55Z",
+   "bytes": 99476,
+   "sha256": "c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=27fcc5ec-c63b-4bfd-bb08-01f073a52d04&q=50203309441",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/lv-cuentas-plataforma.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:27Z",
+   "bytes": 2879,
+   "sha256": "59b8d9866b1e551e6d7ca331a1482fd3d0af7fcd5a4fde276d33e2f8f219890a"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=27fcc5ec-c63b-4bfd-bb08-01f073a52d04&q=42103079662",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/lv-cuentas-balvora.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:30Z",
+   "bytes": 4258,
+   "sha256": "c4be4350d5626277237ab417a0dd318f21cd40a62e67365fef92cc35d5a86693"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2269545}",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/lv-balance-plataforma-2025.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:37Z",
+   "bytes": 1946,
+   "sha256": "fc2fcb0969749b63073ff043f7e26db66923212ab4b4602f606ce310104508b0"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2076497}",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/lv-balance-plataforma-2024.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:38Z",
+   "bytes": 1950,
+   "sha256": "c9e7d80529dd7288e637da804515830fa0a9f6b848907968e076ae86f3319084"
+  },
+  {
+   "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2340045}",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/lv-balance-balvora-2025.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:40Z",
+   "bytes": 1971,
+   "sha256": "89feb69ade38a609ea619e6f60adfd3395103f7576002f528310255494f37b38"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-CrowdedHero.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:48Z",
+   "bytes": 211458,
+   "sha256": "cca22352f701f1d6332d2b1f4aa598e76692935d9e6a92066de95a6d332b866b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Balvora",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-Balvora.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:49Z",
+   "bytes": 211370,
+   "sha256": "37fb10018aa8768a00036a2e7b729060e5c27e9d9c65d0985e4657f1375a9902"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-Simpleros.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:51Z",
+   "bytes": 211414,
+   "sha256": "846fd4f53e29d33eaa40ffa928c58a1a45bfda80eaead63f24b15a4451670a78"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bolivar%20Logistic",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-Bolivar_Logistic.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:53Z",
+   "bytes": 211568,
+   "sha256": "b90df3e7e7b672fb4a04e33ad6184e67ee0801e38027497eb700cd4f2e502f65"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Amber%20Hostelis",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-Amber_Hostelis.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:55Z",
+   "bytes": 211524,
+   "sha256": "6229a1b65f03504ffe007b61f9403fad2f70201126e7e7b8f2fb9d6bd45324e4"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OKX",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/adv-OKX.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:05:58Z",
+   "bytes": 216759,
+   "sha256": "0e31471430916036350b61ca60608730eb089220c6a80af9f6b5341a5c195423"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639",
+   "archivo": "fuentes/crudo/europa/crowdedhero-analista/bafin-smart-registry.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-20T21:06:06Z",
+   "bytes": 25984,
+   "sha256": "e808105621b4df7ac457a8cc863d509b8af51433e0c4c30b5c4a6ccee34edbe6"
+  }
+ ]
+}

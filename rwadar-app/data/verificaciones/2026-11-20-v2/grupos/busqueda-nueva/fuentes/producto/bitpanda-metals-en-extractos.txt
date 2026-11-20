@@ -1,0 +1,10 @@
+Fuente: https://www.bitpanda.com/en/metals
+Consultado (UTC): 2026-11-20T20:54:41Z
+HTTP: 200 · bytes: 496832 · SHA-256 del crudo: f3a97150e71aad547f10284b3ff5caf39822fab0c5362bc20b5ea462eb1a59ca
+Crudo: fuentes/crudo/producto/bitpanda-en-metals.html (fuera de Git)
+
+Extractos literales:
+
+«Bitpanda Metals (M-Token) is offered by Bitpanda Metals GmbH (having its registered office at A-1020 Vienna, Stella-Klein-Löw Weg 17, registered with the commercial register of the Commercial Court of Vienna under number FN 511923 d) and constitutes an unregulated product. Bitpanda Metals does not qualify as a crypto-asset under the Markets in Crypto-Assets Regulation (MiCAR). Investing in Bitpanda Metals involves inherent risks, including counterparty ri»
+
+«Fractional Access to Metals Get fractional access to gold, silver and other precious metals from just €1. Diversify with Stability Precious metals»

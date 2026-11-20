@@ -1,0 +1,11 @@
+# Advertencias de la CNMV (entidades no autorizadas), búsqueda por nombre, 20/11/2026
+# URL base: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=<término>
+# Crudos en crudo/espana/analista/cnmv-adv-*.html; horas y SHA-256 en consultas-analista-albal-2026-11-20.tsv
+2026-11-20T21:09:19Z  «Token Flip»   → «No hay datos disponibles.»
+2026-11-20T21:09:21Z  «TokenFlip»    → «No hay datos disponibles.»
+2026-11-20T21:09:23Z  «Alius»        → «No hay datos disponibles.»
+2026-11-20T21:09:26Z  «Adventurees»  → «No hay datos disponibles.»
+2026-11-20T21:09:29Z  «Gardum»       → «No hay datos disponibles.»
+2026-11-20T21:09:32Z  «Nouval»       → «No hay datos disponibles.»
+2026-11-20T21:11:54Z  «Smartnex»     → «No hay datos disponibles.»
+2026-11-20T21:09:34Z  «Gemini» (control de que el buscador funciona) → 2 resultados: GEMINI LTD FX (04/09/2023) y GEMINI OPTION LTD (29/03/2021)

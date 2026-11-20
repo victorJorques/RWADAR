@@ -1,0 +1,40 @@
+ESMA · S01 Issuer GmbH (ST0x), LEI 2549007E71R1GHH0R131
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*2549007E71R1GHH0R131*&sort=approval_filing_date%20desc
+Consulta: 2026-11-20T20:48:48Z (UTC) · SHA-256 del crudo 87ec352c338647a0413651c1c506b79106157fe85b5025b03fe2b6d12f5b1961 · 14999 bytes
+
+Condiciones finales con España: 31 de 33. Todas aprobadas el 12/11/2026.
+
+2026-11-12 | FTWS | FTWS-2841 | ISIN DE000A5TYLG1 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2847 | ISIN DE000A5TYL96 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2866 | ISIN DE000A5TYLR8 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2867 | ISIN DE000A5TYLP2 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2864 | ISIN DE000A5TYLS6 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2845 | ISIN DE000A5TYMB0 | España no | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2852 | ISIN DE000A5TYL47 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2857 | ISIN DE000A5TYLZ1 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2863 | ISIN DE000A5TYLT4 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2862 | ISIN DE000A5TYLU2 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2859 | ISIN DE000A5TYLX6 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2844 | ISIN DE000A5TYMC8 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2848 | ISIN DE000A5TYL88 | España no | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2856 | ISIN DE000A5TYL05 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2861 | ISIN DE000A5TYLV0 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2869 | ISIN DE000A5TYLM9 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2849 | ISIN DE000A5TYL70 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2855 | ISIN DE000A5TYL13 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2865 | ISIN DE000A5TYLQ0 | España sí | idiomas Dutch, English, French, German, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2872 | ISIN DE000A5TYLJ5 | España sí | idiomas Dutch, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2842 | ISIN DE000A5TYME4 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2846 | ISIN DE000A5TYMA2 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2868 | ISIN DE000A5TYLN7 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2851 | ISIN DE000A5TYL54 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2850 | ISIN DE000A5TYL62 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2854 | ISIN DE000A5TYL21 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2860 | ISIN DE000A5TYLW8 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2873 | ISIN DE000A5TYLH9 | España sí | idiomas Danish, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2870 | ISIN DE000A5TYLL1 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2871 | ISIN DE000A5TYLK3 | España sí | idiomas Dutch, English, French, German, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2875 | ISIN DE000A5TYLY4 | España sí | idiomas Dutch, English, German, Greek, Italian, Spanish
+2026-11-12 | FTWS | FTWS-2843 | ISIN DE000A5TYMD6 | España sí | idiomas Dutch, English, French, German, Greek, Spanish
+2026-11-12 | FTWS | FTWS-2874 | ISIN DE000A5TYL39 | España sí | idiomas Dutch, English, French, German, Greek, Italian, Spanish
+2026-03-30 | BPWO | BPWO-77 | ISIN None | España sí | idiomas English

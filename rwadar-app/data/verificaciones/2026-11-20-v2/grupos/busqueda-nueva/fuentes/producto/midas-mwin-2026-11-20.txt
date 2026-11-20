@@ -1,0 +1,68 @@
+Midas mWIN (Wellington Income Opportunities) · extractos de fuentes · 20/11/2026
+Crudos en crudo/midas-mwin/ (fuera de Git). Horas en UTC.
+
+1) ESMA, registro de folletos, todo el emisor Midas por LEI (21:09:27Z, HTTP 200)
+   https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc
+   SHA-256 ed607ccff11163d3a8fe71325f9198f3f3426eae437e89a585c7c0d403611592 · numFound 41 (igual que el 11/11)
+   Los cinco FTWS de septiembre-octubre de 2026, todos con
+   party_name «Midas Software GmbH - 984500BB00BN6D2B7C48», origen LIECHTENSTEIN, base BPRO 43922 (BPWO-84),
+   member_states «AUSTRIA,BELGIUM,FRANCE,GERMANY,IRELAND,ITALY,LUXEMBOURG,MALTA,NETHERLANDS,POLAND,PORTUGAL,ROMANIA,SPAIN,SWEDEN»:
+     FTWS-2596 · 2026-09-16 · DE000A4AXH53
+     FTWS-2752 · 2026-09-30 · DE000A4AXQV4
+     FTWS-2753 · 2026-09-30 · DE000A4AXS50
+     FTWS-2754 · 2026-09-30 · DE000A4AXS43
+     FTWS-2788 · 2026-10-26 · DE000A4AYDK3
+   El registro no da el nombre del producto de cada ISIN.
+
+2) GLEIF, vehículo luxemburgués (21:10:42Z y 21:10:53Z, HTTP 200)
+   https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78
+   SHA-256 efaca14538673560e4ffaeb032256adaa5567f5477c368c9c37d60f4016ab504
+   «Aureum Securitisation Fund» · LEI 391200M2JHLV9OZAZN78 · LU · legalForm other «Fonds de titrisation»
+   registeredAt RA000432 · registeredAs «O136» · c/o Aureum Manco S.à r.l., 5, Avenue Gaston Diderich, L-1420 Luxembourg
+   creationDate 2025-11-24 · initialRegistrationDate 2026-01-16 · FULLY_CORROBORATED · sin matriz declarada
+   En la búsqueda por nombre (gleif-aureum.json, SHA-256 1da9ed74…4e07) sale también
+   «Aureum Manco S.à r.l.» LEI 391200LLEN2M7MS50Z79, LU B301171.
+
+3) ESMA, folletos del vehículo (21:10:39Z–21:11:07Z, HTTP 200)
+   q=party_name:*391200M2JHLV9OZAZN78* → numFound 0 (SHA-256 c23f4340…a6d2)
+   q=party_name:*Aureum* → numFound 0 (d95985e9…c71e); q=party_name:*AUREUM* → 0
+   q=party_name:*Midas* → 43: 41 de Midas Software GmbH y 2 ajenos (MIDAS FUNDING UK PLC; NARODOWY FUNDUSZ INWESTYCYJNY MIDAS S.A.)
+
+4) CNMV, pasaportes de folletos recibidos (accept-language: es)
+   https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=391200M2JHLV9OZAZN78 (21:12:00Z) → «No se han encontrado datos disponibles»
+   https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=Aureum&lei= (21:12:02Z) → «No se han encontrado datos disponibles»
+   Control: …?denominacion=&lei=984500BB00BN6D2B7C48 (21:12:08Z, SHA-256 6890ae90…b100, igual que el 11/11) → Midas Software GmbH BPWO-84, BPWO-63, BPWO-45.
+
+5) CNMV, advertencias (tipo No autorizadas)
+   Midas (21:11:17Z) «No hay datos disponibles.» · Midas Software (21:11:23Z) idem · Aureum (21:11:19Z) idem
+   Wellington (21:11:21Z): 06/07/2020 «WELLINGTON MANAGEMENT EUROPE (CLON) | WELLINGTON MANAGEMENT GROUP | NO GUARDA RELACIÓN CON
+   WELLINGTON MANAGEMENT EUROPE GMBH, DEBIDAMENTE REGISTRADA EN LA CNMV CON EL NÚMERO 4799 …»; 08/07/2019
+   WWW.WELLINGTON-INVESTMENTS.COM y WWW.WELLINGTONINV.COM. Son clones ajenos a la gestora real y a mWIN.
+
+6) Ethereum, nodo público https://ethereum-rpc.publicnode.com, solo lectura (21:10:28Z; bloque 26458903 de las 21:10:23Z)
+   Token 0x4E72025984424E52838cf8953E2863eFf036B67A: name «Midas Wellington Income Opportunities», symbol «mWIN», totalSupply 32,4805 (solo Ethereum; 66,46 el 01/11), paused 0
+   Oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 «mWIN/USD»: ronda 93 = 131.827,97219477 USD, del 2026-11-20T10:27:59Z
+   Bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4: paused 0 · greenlistEnabled 1 · minMTokenAmountForFirstDeposit 1e18 (1 mWIN) · minAmount 0 · instantDailyLimit 155 mWIN
+   Bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924: paused 0 · greenlistEnabled 1 · minAmount 7,6923e-6 mWIN · instantFee 50 (0,50 %) · instantDailyLimit 4 mWIN
+   Contraste mTBILL (bóveda 0x99361435420711723aF805F08187c9E6bF796683, 21:11:52Z): greenlistEnabled 0, primer depósito mínimo 0, paused 0.
+   Selectores calculados con keccak-256 (paused y latestRoundData coinciden con los conocidos 0x5c975abb y 0xfeaf968c).
+
+7) Documentación de Midas, copia de hoy de https://docs.midas.app/llms-full.txt (grupo acciones-oro-tesoro, 16:55Z, HTTP 200,
+   SHA-256 3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76)
+   - «Legal Product Documentation»: 25 productos (mArb, mArbBTC, mArbETH, mAPOLLO, mBASIS, mBTC, mEDGE, mevBTC, mEVUSD, mFARM,
+     solmHyper, mHYPER, mHyperBTC, mHyperETH, mM1-BTC, mMEV, mRE7BTC, mRE7ETH, mRE7SOL, mRE7YIELD, mROX, msyrupUSD, msyrupUSDp,
+     mTBILL, mXRP). mWIN no está. «The documents below pertain to Midas Software GmbH as the legal issuer of the applicable mTOKENs.»
+   - mWIN solo aparece en «mWIN Smart Contracts» (direcciones de Ethereum y Avalanche).
+   - «Luxembourg Securitisation Setup: … each product is issued through a dedicated compartment … structured as an orphan vehicle,
+     owned through a charitable trust and without shareholder links to other Midas entities.»
+   - «certain strategies operate on a restricted basis. This is typically the case when an underlying strategy is legally limited to
+     professional investors. To invest in these specific strategies, you must first request access and provide your wallet address for
+     review. Only wallets that have been explicitly whitelisted by our team are authorised to interact with the smart contracts for these
+     restricted tokens.»
+   - Riesgos genéricos de todos los productos: «risk of a total loss of invested capital», contratos inteligentes, oráculo, crédito del
+     emisor, regulatorio.
+
+8) Bloqueos de hoy (anotados, sin insistir)
+   - thedefiant.io (nota de lanzamiento, fuente secundaria): 403 de Cloudflare «Sorry, you have been blocked» (21:11:09Z, SHA-256 dd861680…ea72).
+   - OpenFIGI (agregador, contraste): los cinco ISIN «No identifier found.» (21:11:38Z).
+   - De la búsqueda previa: docs.midas.app 403 (20:50:15Z), API de medios de la MFSA 403 (20:58:33Z), CoinGecko 429. No se reintentaron.

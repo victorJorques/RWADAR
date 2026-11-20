@@ -1,0 +1,8 @@
+Fuente: https://www.goldengate.cz/
+Consultado (UTC): 2026-11-20T21:00:02Z
+HTTP: 200 · bytes: 104292 · SHA-256 del crudo: 309c68c42b2f4f0df7ff209a1cff7928153cf1ed02adbb4da6d8b12d8a55e528
+Crudo: fuentes/crudo/producto/goldengate-cz-home.html (fuera de Git)
+
+Extractos literales:
+
+«GG Digital a.s. v částech týkajících se kryptoměn; Golden Gate finanční služby, a.s. jako»

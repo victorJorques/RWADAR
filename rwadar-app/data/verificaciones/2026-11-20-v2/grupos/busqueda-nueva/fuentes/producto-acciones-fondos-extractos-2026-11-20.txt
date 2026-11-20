@@ -1,0 +1,131 @@
+Búsqueda nueva · ángulo «producto-acciones-fondos» · 20/11/2026
+Extractos literales de fuentes primarias (texto). Los crudos están en
+crudo/producto-acciones-fondos/ (fuera de Git), con su SHA-256.
+Sin nombres de personas físicas.
+
+======================================================================
+1. LISE (Lightning Stock Exchange) · acciones tokenizadas de ST GROUP
+======================================================================
+Fuente: https://www.lise.com/en/support (consulta 2026-11-20T20:55:13Z, HTTP 200,
+crudo lise-com-en_support.html, sha256 b36738cf8a8e6614c9a8867c022e7673eefc16377df428a313543aaeed4e1328)
+  «Any investor, retail or institutional, can invest on Lise after creating an
+  account, completing the KYC process, and passing the suitability test. Lise
+  is open to residents of France, Europe, the United Kingdom, and Switzerland.»
+  «This website is not intended for residents of the United States of America,
+  Canada, Australia or Japan.»
+  «Transfers must come from a bank account in your name with a European IBAN.»
+  «Lise does not charge any fees on your deposits.»
+  Test de conveniencia: «a general test on financial markets (minimum required
+  score: 50%) and a specific test on Lise and DLT technology (minimum required
+  score: 66%)».
+  Pie: «Lise SA ... Paris Trade and Companies Register No. 938 642 709 – LEI 894500LNKGRT1I5QBU56».
+
+Fuente: https://www.lise.com/llms.txt (2026-11-20T20:54:56Z, sha256 05e7a06b…4ab1)
+  «Lise (Lightning Stock Exchange) is a French stock exchange dedicated to SMEs
+  and mid-caps, approved by the ACPR and supervised by the AMF and the Banque de
+  France. It operates under the EU DLT Pilot Regime as the first European
+  exchange for natively tokenised shares, giving companies access to public
+  financing and individual investors direct access to those shares, 24/7 and
+  without an intermediary.»
+
+Fuente: https://www.lise.com/en/market y /en/exchange/STGRP (2026-11-20T20:55:13Z)
+  Única cotizada: STGRP · ST GROUP. Precio 16,40 €; capitalización 9.062.361,20 €;
+  «Market open 24/7». (Cifras de la página a la hora de la consulta; volumen muy bajo.)
+Fuente: https://www.lise.com/en/primary-market/st-group
+  «The transaction has been completed The subscription period has ended.»
+  Calendario: «09 April 2026 → 24 April 2026 Offer Period». Documentos: Document
+  d'information, primer suplemento, decisión de admisión, guía de suscripción.
+
+Registro francés REGAFI (supervisor de origen, API pública):
+  https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227
+  (2026-11-20T20:54:26Z) → LISE, Société anonyme, SIREN 938642709, LEI
+  894500LNKGRT1I5QBU56, categoría «Entreprise d'Investissement», «Agrément».
+  https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100
+  → total_count 0 (ningún pasaporte saliente, tampoco a ESPAGNE).
+CNMV, listado de ESI extranjeras en libre prestación:
+  https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4
+  (2026-11-20T20:55:32Z, accept-language: es, sha256 35807bda…de41) → LISE no
+  aparece. (Sí aparecen, p. ej., UAB AXIOLOGY DLT, ASSETERA GmbH, PAYWARD EUROPE
+  DIGITAL SOLUTIONS (CY) LIMITED, ROBINHOOD EUROPE, UAB, BITPANDA FINANCIAL
+  SERVICES GmbH, COINBASE FINANCIAL SERVICES EUROPE LTD, REVOLUT SECURITIES EUROPE UAB.)
+CNMV, advertencias (no autorizadas), 2026-11-20T20:58:41Z:
+  «Lise», «Kriptown», «ST GROUP» → «No hay datos disponibles».
+CONFLICTO: la web dice que está abierta a residentes de «Europe»; ni REGAFI ni
+la CNMV muestran pasaporte hacia España.
+
+======================================================================
+2. Ondo Global Markets (BVI) Limited · folleto base renovado
+======================================================================
+ESMA, registro de folletos (Solr público):
+  https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc
+  (2026-11-20T20:49:44Z) → BPWO-89, «Base prospectus without Final terms»,
+  aprobado 2026-11-11 (FMA Liechtenstein), pasaportado el 2026-11-11T15:13:27Z
+  a 29 Estados, SPAIN incluido. Antes: BPWO-68 (11/11/2025), SUPP-56 (05/05/2026),
+  SUPP-63 (28/08/2026). Condiciones finales nuevas: FTWS-2876 (VGG7001APH19) y
+  FTWS-2877 (VGG7001APJ74), del 13/11/2026, también con SPAIN.
+Copia del folleto en la MFSA (ruta de publicación ya usada en el ciclo):
+  https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf
+  (2026-11-20T20:57:31Z, sha256 7f323e249a9dc593c97a42652e4fb0a6c86d5ab390dc92d2247d9e1e1d7b68bf)
+  Modelo de condiciones finales: «[Prohibition of Sales to [●]]»; «The minimum
+  subscription amount is up to USD 0.01.» Apartado 20.2: si las condiciones
+  finales llevan la leyenda de prohibición, no se ofrecen a minoristas de ese Estado.
+Condiciones finales de ejemplo (NFLXon, 26/03/2026, folleto anterior):
+  https://www.mfsa.mt/wp-content/uploads/2026/05/Ondo-Global-Markets-BVI-Limited-Final-Terms-Document-dated-26-March-2026-REF-NFLXon.pdf
+  (2026-11-20T20:57:47Z, sha256 390d4aba…b19d) «Country(ies) of offer(s)»:
+  «c) to both retail and professional investors within the EU and the EEA,
+  particularly in the following countries: ... Spain ("Spain") ...».
+Página de elegibilidad del emisor:
+  https://docs.ondo.finance/ondo-stocks/eligibility.md (2026-11-20T20:49:58Z,
+  sha256 5c21e9c9…dbd2). Cambio frente al 10/11: añade «Venezuela» a los países
+  prohibidos. Sigue: «Any Member State of the European Economic Area |
+  "Professional Client" under MiFID II ... or "Qualified Investor" ...».
+LECTURA: el folleto ya no caduca (renovado el 11/11), pero el emisor sigue
+emitiendo en el EEE solo a profesionales/cualificados; el minorista depende del
+mercado secundario y de un distribuidor regulado en España que no se ha hallado.
+
+======================================================================
+3. Superstate Opening Bell · acciones tokenizadas de empresas cotizadas (EE. UU.)
+======================================================================
+https://docs.superstate.com/investors/getting-started.md (2026-11-20T20:57:06Z, sha256 f589dd8c…e936)
+  «Tokenized Equities: Available to all investors in supported countries»
+  «Superstate Funds: Only available to Qualified Purchasers ...»
+  «Supported countries for Superstate Funds ... Spain ...»
+https://docs.superstate.com/investors/tokenized-equities.md (sha256 1e344459…e51f)
+  «Tokenized shares are available to all investors in supported jurisdictions
+  and do not require accredited investor status.» «In order to hold tokenized
+  shares in your third party wallet, you must first add that address to the allowlist.»
+
+======================================================================
+4. Franklin Templeton OnChain Funds (LU) · sin cambios
+======================================================================
+Folleto: https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf
+  (2026-11-20T20:52:44Z) sha256 ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9
+  = el mismo que el 03/11 y el 05/11.
+App Benji en la App Store de España: https://itunes.apple.com/lookup?id=1551677725&country=es
+  → «resultCount»: 0.
+ESMA (funds_cbdif): FRANKLIN ONCHAIN U.S. GOVERNMENT LIQUIDITY FUND y FRANKLIN
+  ONCHAIN EURO LIQUIDITY FUND, UCITS LU, con ES entre los países de acogida.
+
+======================================================================
+5. Otros registros barridos
+======================================================================
+ESMA folletos 2026 por nombre (2026-11-20T20:51:49Z): Backed Assets (JE) 1.573
+  documentos; Robinhood Assets Jersey 216; SwarmX GmbH 1 (FTWS-782, 21/04/2026,
+  solo GERMANY; BPWO-65 de 28/08/2025, solo GERMANY); 0 para Dinari, Securitize,
+  Bitpanda, STOKR, Bybit, Kraken/Payward, Crypto/Foris, Gemini, Franklin, Fidelity.
+ESMA fondos transfronterizos (funds_cbdif), nombres con token/onchain/DLT
+  (2026-11-20T20:52:24Z): solo Franklin OnChain (arriba) y «Global X Stablecoin &
+  Tokenisation UCITS ETF» (ETF temático, no tokenizado).
+rwa.xyz (página pública, __NEXT_DATA__, 2026-11-20T20:56:18Z; solo para descubrir):
+  plataformas de acciones tokenizadas por valor: bStocks (Binance, emisor en ADGM),
+  Ondo, xStocks, Securitize, Reality (Bitget), Robinhood, Coinbase, Superstate
+  Opening Bell, WisdomTree, Dinari, STOKR, Swarm... Fondos monetarios con
+  jurisdicción UE: Spiko, Aviva Investors (Licuido), Fidelity International,
+  abrdn, LGIM (Archax), todos salvo Spiko institucionales.
+
+Moniflo (Investre SA, CSSF): https://www.moniflo.com/ (2026-11-20T20:53:00Z,
+  sha256 256d09fd…0e09): «Einstieg ab nur 500 €»; vende fondos UCITS
+  convencionales (Schroders, Candriam, Robeco...); «Moniflo wird von Investre
+  SA, die von der CSSF in Luxemburg autorisiert und beaufsichtigt wird, betrieben.»
+  No ofrece clases tokenizadas; web en DE/FR/EN; INVESTRE no figura en el listado
+  de la CNMV de ESI en libre prestación.

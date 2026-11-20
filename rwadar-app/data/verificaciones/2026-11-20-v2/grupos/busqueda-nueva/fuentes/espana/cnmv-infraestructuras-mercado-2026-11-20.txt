@@ -1,0 +1,91 @@
+>
+Registros Oficiales - Infraestructuras de mercados
+>
+Relación infraestructuras mercados
+Relación de infraestructuras de mercados
+Consultas a Registros Oficiales de Infraestructuras de mercados
+Sociedad rectora
+Infraestructuras gestionadas
+Tipología
+Página web
+ARCHAX MARKETS EUROPE, S.V., S.A.
+DOWGATE MTF (SMN)
+Sistema multilateral de negociación
+https://www.kscm.es/index_sp
+BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A.
+Bit2Me STX (SNL TRD)
+Sistema de negociación y liquidación basado en tecnología de registros distribuidos
+BME CLEARING, S.A.
+Entidad de Contrapartida Central (ECC)
+Entidad de Contrapartida Central
+www.bmeclearing.es
+BME MARKETS & EXCHANGES, S.A.
+BME Growth - Segmento de BME MTF Equity
+Sistema multilateral de negociación – Mercado de PYME en expansión
+https://www.bmegrowth.es/esp/Home.aspx
+BME MTF Equity (SMN)
+Sistema multilateral de negociación
+https://www.bolsasymercados.es/MTF_Equity/esp/Contacto.aspx
+Bolsa de Madrid
+Mercado Regulado
+www.bolsamadrid.es
+MEFF Mercado de productos derivados
+Mercado Regulado
+www.meff.es/
+Mercado Alternativo de Renta Fija (MARF SMN)
+Sistema multilateral de negociación
+www.bmerf.es
+Mercado de Renta Fija AIAF
+Mercado Regulado
+www.bmerf.es
+Mercado de Valores Latinoamericanos (Latibex SMN)
+Sistema multilateral de negociación
+www.latibex.com
+Sistema Electrónico de Negociación de Activos Financieros (SENAF SMN)
+Sistema multilateral de negociación
+www.bmerf.es
+BOLSAS Y MERCADOS ESPAÑOLES RENTA FIJA, S.A.
+BOLSAS Y MERCADOS ESPAÑOLES SISTEMAS DE NEGOCIACION, S.A.
+BOLSAS Y MERCADOS ESPAÑOLES, SDAD HOLDING DE MDOS Y STMAS FIN., S.A.
+Sociedad tenedora de las acciones de sociedades rectoras de mercados y sistemas españoles
+www.bolsasymercados.es
+CM CAPITAL MARKETS BROKERAGE, SOCIEDAD DE VALORES, S.A.
+CAPI OTF (SOC)
+Sistema organizado de contratación
+https://www.capi.es/CapitalMarkets/#/brokerage/capiotf
+CORRETAJE E INFORMACIÓN MONETARIA Y DE DIVISAS, SOCIEDAD DE VALORES, S.A.
+CIMD OTF (SOC)
+Sistema organizado de contratación
+http://www.cimdsv.com
+EUROPEAN DIGITAL SECURITIES EXCHANGE, S.V., S.A.
+Portfolio Stock Exchange (SMN)
+Sistema multilateral de negociación
+https://portfolio.exchange/es
+IBERCLEAR (SOCIEDAD DE SISTEMAS)
+Sistema de Liquidación ARCO
+Depositario central de valores
+www.iberclear.es
+KEY CAPITAL PARTNERS AGENCIA DE VALORES, S.A.
+VAMOS OTF (SOC)
+Sistema organizado de contratación
+https://keycapital.com/
+MEFF SOCIEDAD RECTORA DEL MERCADO DE PRODUCTOS DERIVADOS, S.A.
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+SECURITZE (SNL TRD)
+Sistema de negociación y liquidación basado en tecnología de registros distribuidos
+SOCIEDAD DE BOLSAS, S.A.
+Sistema de Interconexión Bursátil (SIBE)
+www.sbolsas.es
+SOCIEDAD RECTORA DE LA BOLSA DE VALORES DE BARCELONA, S.A.
+Bolsa de Barcelona
+Mercado Regulado
+www.borsabcn.es
+SOCIEDAD RECTORA DE LA BOLSA DE VALORES DE BILBAO, S.A.
+Bolsa de Bilbao
+Mercado Regulado
+www.bolsabilbao.es
+SOCIEDAD RECTORA DE LA BOLSA DE VALORES DE VALENCIA, S.A.
+Bolsa de Valencia
+Mercado Regulado
+www.bolsavalencia.es
+TRADITION FINANCIAL SERVICES ESPAÑA, SOCIEDAD DE VALORES, S.A.U.

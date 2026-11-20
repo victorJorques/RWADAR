@@ -1,0 +1,14 @@
+CNMV · buscador de advertencias (accept-language: es)
+
+CrowdedHero | 2026-11-20T20:59:19Z | SHA-256 cca22352f701f1d6332d2b1f4aa598e76692935d9e6a92066de95a6d332b866b | sin datos («No hay datos disponibles»)
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero
+ST0x | 2026-11-20T20:59:21Z | SHA-256 96dcdb3ca99408d8e4ca7bd401fb8a11abe3bd30321ef72a6e1f15d20c643607 | sin datos («No hay datos disponibles»)
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=ST0x
+S01 Issuer | 2026-11-20T20:59:22Z | SHA-256 00b9ec9f836ab73b47a4db33c1167409f986e23155eb9e735c415c0880f49b91 | sin datos («No hay datos disponibles»)
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=S01%20Issuer
+Franklin Templeton | 2026-11-20T20:59:24Z | SHA-256 154b8a79ff54ffeb0441724fff0009a7f71b1695707d7c226585e7ea3a939161 | sin datos («No hay datos disponibles»)
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton
+Optima | 2026-11-20T20:59:26Z | SHA-256 5d187299ca0764ff8390b971ed923eb85921870e6b45dc59bbc97aa3350db76b | con resultados: solo dominios ajenos (Optimal Path Groups, OptimalFXMarket, Optimal Yield, Optimarket…), nada de Optima Financial
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Optima
+Trading | 2026-11-20T20:59:27Z | SHA-256 379f05a4ec550d78d92a7ce9db00f94a87c98e03c1b35deccd4a5a09b0049529 | con resultados (control positivo: el buscador funciona)
+   https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading

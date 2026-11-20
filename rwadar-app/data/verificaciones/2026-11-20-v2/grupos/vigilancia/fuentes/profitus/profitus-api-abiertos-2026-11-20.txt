@@ -1,0 +1,9 @@
+# https://api.profitus.com/api/v1/landing/projects?limit=50&page=1 (20/11/2026)
+total proyectos: 551
+"Floris Domus" Residential,Kaunas d. III | lt | real_estate_development | loan_type=standard | first_rank_mortgage
+Shopping Centre Adaži, Riga reg. | lv | real_estate_development | loan_type=standard | first_rank_mortgage
+Harmony Homes XII | lt | refinancing | loan_type=standard | first_rank_mortgage
+Spindulio Residential, Vilnius dist. VI | lt | real_estate_development | loan_type=standard | first_rank_mortgage
+Entrelagos Golf Villa, Mijas IV | es | real_estate_development | loan_type=standard | first_rank_mortgage
+Geluzes Kalvos Residential,Vilnius d.III | lt | real_estate_development | loan_type=standard | first_rank_mortgage
+L’Alcúdia Apartments, Valencia reg. II | es | real_estate_development | loan_type=standard | first_rank_mortgage

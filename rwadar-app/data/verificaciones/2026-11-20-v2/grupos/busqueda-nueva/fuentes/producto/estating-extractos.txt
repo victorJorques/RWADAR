@@ -1,0 +1,8 @@
+Fuente: https://www.estating.com/
+Consultado (UTC): 2026-11-20T20:56:13Z
+HTTP: 200 · bytes: 43467 · SHA-256 del crudo: 8dded519a6b0ec027fe54def8f5a8882fc452cad6bc988e82ef6c3bf5bfee12b
+Crudo: fuentes/crudo/producto/estating-home.html (fuera de Git)
+
+Extractos literales:
+
+«The first end-to-end platform built for regulated investment professionals. Curated asset opportunities. Institutional-grade end-to-en»

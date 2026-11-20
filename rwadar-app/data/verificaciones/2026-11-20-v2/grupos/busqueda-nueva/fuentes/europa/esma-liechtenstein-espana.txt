@@ -1,0 +1,23 @@
+ESMA · documentos aprobados por la FMA de Liechtenstein y pasaportados a España desde el 01/06/2025, por emisor
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=home_member_state_code:LI%20AND%20member_states:*SPAIN*%20AND%20approval_filing_date:[2025-06-01T00:00:00Z%20TO%20*]
+Consulta: 2026-11-20T20:48:01Z (UTC) · SHA-256 del crudo b873ad9fe8e299115a902af25cf1ae82a9285948d67656cc3ce917ffe4f0121c · 779971 bytes
+
+ROBINHOOD ASSETS (JERSEY) LIMITED - 984500ADFHQZ9D6B9A29 | 216 documentos | último 2026-11-19 FTWS FTWS-2879 | tipos {'FTWS': 214, 'SUPP': 1, 'BPWO': 1}
+BACKED ASSETS (JE) LIMITED - 984500001AB7C6C7F577 | 1611 documentos | último 2026-11-19 FTWS FTWS-2878 | tipos {'FTWS': 1608, 'SUPP': 2, 'BPWO': 1}
+Ondo Global Markets (BVI) Limited - 984500Z0Q6A5E8BE2B61 | 280 documentos | último 2026-11-13 FTWS FTWS-2876 | tipos {'FTWS': 276, 'BPWO': 2, 'SUPP': 2}
+S01 Issuer GMBH - 2549007E71R1GHH0R131 | 32 documentos | último 2026-11-12 FTWS FTWS-2841 | tipos {'FTWS': 31, 'BPWO': 1}
+iMAPS ETI AG - 5299000ESEDFHHWG3R53 | 25 documentos | último 2026-10-27 FTWS FTWS-2794 | tipos {'FTWS': 23, 'BPWO': 1, 'SUPP': 1}
+Midas Software GmbH - 984500BB00BN6D2B7C48 | 34 documentos | último 2026-10-26 FTWS FTWS-2788 | tipos {'FTWS': 32, 'BPWO': 2}
+Altarius ETI AG - 5299001XE1CIMMOEME82 | 29 documentos | último 2026-10-06 FTWS FTWS-2759 | tipos {'FTWS': 28, 'BPWO': 1}
+Optima Financial UG (haftungsbeschränkt) - 39120039T7O75I0QGJ97 | 51 documentos | último 2026-09-23 FTWS FTWS-2605 | tipos {'FTWS': 49, 'BPWO': 1, 'SUPP': 1}
+issuance.swiss AG - 5067000950889C27EM46 | 17 documentos | último 2026-09-02 FTWS FTWS-2217 | tipos {'FTWS': 15, 'BPWO': 2}
+VanEck ETP AG - 529900R2B8HNG8H5ED30 | 32 documentos | último 2026-08-31 FTWS FTWS-2209 | tipos {'FTWS': 30, 'BPWO': 2}
+Bitcoin Capital AG - 506700IC5128G2S3E076 | 4 documentos | último 2026-08-31 BPWO BPWO-86 | tipos {'BPWO': 2, 'FTWS': 2}
+Floin AG - 391200Z1YA45VPMIGP98 | 1 documentos | último 2026-06-30 STDA STDA-96 | tipos {'STDA': 1}
+Fineqia AG - 529900ZDMIOSP3BMZD86 | 1 documentos | último 2026-06-02 BPWO BPWO-82 | tipos {'BPWO': 1}
+BE BRAVE AG - 894500OHY9QCQH1EVD36 | 2 documentos | último 2026-05-12 SUPP SUPP-59 | tipos {'SUPP': 1, 'STDA': 1}
+(sin nombre) | 2 documentos | último 2026-05-12 SUMT SUMT-83 | tipos {'SUMT': 2}
+DeXentra GmbH - 50670069463VM690ML91 | 1 documentos | último 2026-04-10 STDA STDA-91 | tipos {'STDA': 1}
+Backed Assets (JE) Limited - 984500001AB7C6C7F577 | 78 documentos | último 2026-02-03 FTWS 367684_FTWS 140 | tipos {'FTWS': 75, 'SUPP': 3}
+NOEMON TECH LIMITED - 254900JFRZG8P67ZHI74 | 1 documentos | último 2025-12-01 BPWO BPWO-71 | tipos {'BPWO': 1}
+DDA ETP AG - 529900RM243OV5SVNL95 | 8 documentos | último 2025-11-21 BPWO BPWO-70 | tipos {'BPWO': 1, 'FTWS': 6, 'SUPP': 1}

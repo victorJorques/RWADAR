@@ -1,0 +1,72 @@
+Franklin OnChain Euro Liquidity Fund · lecturas del 20/11/2026 (análisis de la candidata)
+Crudos en fuentes/crudo/franklin-euro/ (fuera de Git). Horas en UTC, tomadas con date -u.
+
+1) ESMA · comercialización transfronteriza de fondos (cbdif)
+   https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50
+   Consulta 2026-11-20T21:03:37Z · HTTP 200 · 5493 B · SHA-256 013affce308129215f60d97837a708da6e2b8eb6ecd7026cf9e615e114dfe880
+   (el hash difiere del de las 20:54 solo por el campo QTime; el bloque response es igual)
+   - FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN EURO LIQUIDITY FUND · LEI 254900SUVJD9ISB77M29 · UCITS · Active
+     gestora FRANKLIN TEMPLETON INTERNATIONAL SERVICES S.À R.L. (LEI 549300PVL6CYCWSH9C53) · supervisor CSSF · domicilio LU
+     alta 2026-11-09 · última act. 2026-11-09 · países de acogida ES, DE, FR, PT, AT, IT, NL · notificaciones 2026-11-09 (x7)
+   - FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN U.S. GOVERNMENT LIQUIDITY FUND · LEI 254900GTFOL2DLE7D868 (ya estudiado el 05/11)
+   El registro no da ISIN ni clases de acciones.
+
+2) Folleto de Franklin Templeton OnChain Funds (inglés, «DATED SEPTEMBER 2026», código 2026-09-01, 83 páginas)
+   https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf
+   Consulta 2026-11-20T21:03:42Z · HTTP 200 · 1288473 B · SHA-256 ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9
+   Mismo SHA-256 que el 03/11, el 05/11 y las 20:54 de hoy: el folleto no ha cambiado.
+   p. 2  «1. Franklin OnChain U.S. Government Liquidity Fund / 2. Franklin OnChain Euro Liquidity Fund»
+   p. 4  «Investors considering investing with the Company must do it via either the App or the Institutional Web Portal.»
+   p. 20 «This Fund is actively managed and qualifies as a short-term LVNAV MMF. The Fund has been duly authorised by the CSSF in
+          accordance with the provisions of the MMFR. The value of an investment in the Fund, in contrast to a deposit, may fluctuate.»
+         «Base Currency Euro (EUR)» · objetivo: «maintain a constant Net Asset Value per Share of EUR 1» · referencia €STR
+   p. 21 Riesgos principales: Credit, Debt securities, Government security, Interest rate, Liquidity, Market, Money Market Fund,
+         Reverse Repurchase Transactions; otros: Blockchain-based Shares, Cybersecurity, Concentration, Counterparty, Custody...
+         «Shares in Money Market Funds are not deposits ... and are not insured or guaranteed by any other agency or regulatory body.»
+   p. 37 «Some Share Classes may not yet be available at the launch date of the Fund(s).»
+         «Class AB Shares are available for subscription to retail investors as well as Institutional Investors.»
+   p. 38 Entrada clase AB: «an entry charge based on the total amount invested of up to 1.5%»
+   p. 39 Tabla EUR: clase AB mínimo inicial EUR 20, siguientes EUR 1, saldo mínimo EUR 20
+         «The Fund is available to individual or Institutional Investors that purchase Shares from the Fund through the App or the
+          Institutional Web Portal (as applicable).»
+         «As at the date of this Prospectus, the App may not yet be available to retail Investors. When the App will be available
+          to retail Investors, the Prospectus will be updated accordingly.»
+         «Retail accounts must be opened via the App.» · corte del subfondo en euros: «1:00 P.M. UK Time»
+   p. 41 Reembolso por la App o el portal institucional en cualquier día de negociación antes del corte;
+         «The Company reserves the right not to be bound to accept the sale on any Valuation Day more than 10% of the value of the
+          Shares of any Fund. In these circumstances the sale of the Shares may be deferred for a period not exceeding ten (10)
+          Luxembourg Business Days.»
+   p. 75 Comisión anual de gestión del subfondo en euros, clase AB: «Up to 0.2%»
+
+3) App Store · consulta por id 1551677725 (Benji)
+   https://itunes.apple.com/lookup?id=1551677725&country=XX · 2026-11-20T21:04:12Z · HTTP 200
+   es: 0 resultados · lu: 0 · de: 0 · fr: 0 (SHA-256 7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047)
+   us: 1 resultado «Benji Investments», vendedor «Franklin Advisers, Inc» (SHA-256 e10f20699d9ef374ececaff11efb0404320fac27fa66d2946343a7b62f1d25be)
+
+4) CNMV · vehículos de inversión extranjeros, NIF N0363289J (accept-language: es)
+   https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=0  · 2026-11-20T21:04:13Z · HTTP 200 · SHA-256 5f4acfc000d813bec74d46e708f9d8d3674cede10e0d50600764ea7aa6d5a5fd
+     «FRANKLIN TEMPLETON ONCHAIN FUNDS · Nº Registro oficial 2284 · 13/12/2024 · SICAV · LUXEMBURGO · IIC Sujeto a la directiva 2009/65/CE»
+   https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18 · 2026-11-20T21:04:14Z · HTTP 200 · SHA-256 78ee44c00f89a42fe98d15db72c4545c1574c943052b8880331c8e7634602538
+     Entidades comercializadoras: «FRANKLIN TEMPLETON INTERNATIONAL SERVICES, S.À.R.L., SUCURSAL EN ESPAÑA» (única)
+   La CNMV no muestra compartimentos (Circular 2/2011): el subfondo en euros no aparece desglosado.
+
+5) CNMV · buscador de advertencias (entidades no autorizadas), accept-language: es
+   «Franklin Templeton» 2026-11-20T21:04:27Z · «No hay datos disponibles» · SHA-256 154b8a79ff54ffeb0441724fff0009a7f71b1695707d7c226585e7ea3a939161
+   «Franklin»           2026-11-20T21:04:29Z · 1 coincidencia ajena (MORGAN FRANKLIN CONSULTANTS, S.L.) · SHA-256 39bc48bbcd39a7363ea13fc6ee2b6f1d7e2c0b42c4838e5d6f880f53f557e34b
+   «Benji»              2026-11-20T21:04:30Z · «No hay datos disponibles» · SHA-256 4c648f319254f6c4d114454482eafed39ac9c746eafadcabc0167898eaa98c92
+   «OnChain»            2026-11-20T21:04:32Z · «No hay datos disponibles» · SHA-256 59cc961c4f99efd8d6369dac802d78bc0805198546364a84ba33cae383c250f9
+
+6) Franklin Templeton · mapas del sitio públicos (para buscar ficha, ISIN o KID del subfondo en euros)
+   https://www.franklintempleton.com.es/binaries/content/assets/global/sitemaps/google/es-es_product.xml
+     2026-11-20T21:04:53Z · HTTP 200 · 1034 URL · SHA-256 7caff65b4f9c0c0d68841616f399f1d88700d1f68ff3630bcd18acf4866cd36d
+     Solo dos fichas OnChain: 41372/PX1 y 41372/QY2 (subfondo en dólares). Ninguna del subfondo OnChain en euros.
+     Las fichas 54201/... «franklin-euro-liquidity-fund» son otro producto (Franklin Templeton Liquidity Funds Plc, Irlanda, ISIN IE...), no tokenizado.
+   https://www.franklintempleton.lu/binaries/content/assets/global/sitemaps/google/en-lu_product.xml
+     2026-11-20T21:04:54Z · HTTP 200 · 1782 URL · SHA-256 86f5a75453cea87099d3da83fee4a745912bd2d7c4a0161108629554596e4e02
+     Solo LU3258450587 (PX1) y LU2900381208 (QY2), ambas del subfondo en dólares.
+   Mapas estático y dinámico de .com.es y .lu (21:05:00Z–21:05:02Z): solo artículos sobre tokenización; ninguna ficha ni documento del subfondo en euros.
+   Búsqueda web (21:04 aprox.) «"Franklin OnChain Euro Liquidity Fund" KID ISIN»: ningún KID ni ISIN del subfondo OnChain en euros.
+
+7) Benji · web pública
+   https://www.benjiinvestments.com/ → redirige a https://digitalassets.franklintempleton.com/ · 2026-11-20T21:05:10Z · HTTP 200 · SHA-256 43e3ae5e898c66627731817101a5dbf7a8108e13d14432db7824795dcd3dabe5
+   Página de aterrizaje («Invest with Benji») sin mención a Europa, Luxemburgo ni al subfondo en euros.
