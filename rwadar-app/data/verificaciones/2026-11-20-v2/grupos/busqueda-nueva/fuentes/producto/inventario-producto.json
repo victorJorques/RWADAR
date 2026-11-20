@@ -1,0 +1,650 @@
+[
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=*:*&wt=json&rows=1&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-muestra.json",
+  "consultadoUtc": "2026-11-20T20:48:32Z",
+  "http": "504",
+  "bytes": 193,
+  "sha256": "25e9fbabffaafa2d21fb0bd6f4a17bbf8692b0a76f939ea0d1e284a519f9dc35"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=1",
+  "archivo": "crudo/producto/esma-priii-muestra.json",
+  "consultadoUtc": "2026-11-20T20:48:57Z",
+  "http": "200",
+  "bytes": 1564,
+  "sha256": "3288f6772eb1e4b024c12fbe1c22d318e94da35091281001c143b77ba55ba799"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&wt=json&rows=1000",
+  "archivo": "crudo/producto/esma-priii-es-desde-20261101.json",
+  "consultadoUtc": "2026-11-20T20:49:05Z",
+  "http": "200",
+  "bytes": 1361172,
+  "sha256": "8a141b0dc1cd318964db2522ab7496be0774496c74f9732b6fd0a0e0288404f1"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=home_member_state_code:ES&fq=approval_filing_date:%5B2026-10-01T00:00:00Z%20TO%20*%5D&wt=json&rows=1000",
+  "archivo": "crudo/producto/esma-priii-home-es-desde-20261001.json",
+  "consultadoUtc": "2026-11-20T20:49:06Z",
+  "http": "200",
+  "bytes": 37745,
+  "sha256": "04cf0159ccd937f6c6675313c287b4a7374af6ecd5d2b622b7bc4fafa9856790"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&wt=json&rows=0&facet=true&facet.field=party_name&facet.limit=500&facet.mincount=1",
+  "archivo": "crudo/producto/esma-priii-es-desde-20261101-facet.json",
+  "consultadoUtc": "2026-11-20T20:49:13Z",
+  "http": "504",
+  "bytes": 193,
+  "sha256": "25e9fbabffaafa2d21fb0bd6f4a17bbf8692b0a76f939ea0d1e284a519f9dc35"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-05T00:00:00Z%20TO%20*%5D&fq=-document_type:FTWS&wt=json&rows=1000",
+  "archivo": "crudo/producto/esma-priii-es-noft-desde-20261105.json",
+  "consultadoUtc": "2026-11-20T20:49:40Z",
+  "http": "200",
+  "bytes": 33712,
+  "sha256": "bc1daa14bdfbb7ed889b45cbfdb40aa0e514961dbb12a1076e7c06b1092d4c12"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=0",
+  "archivo": "crudo/producto/esma-priii-es-ftws-desde-20261101-0.json",
+  "consultadoUtc": "2026-11-20T20:49:52Z",
+  "http": "200",
+  "bytes": 2848798,
+  "sha256": "02afff5ce1878c4cd5ecd8b55167ede6992bd46297dc4c8d2189de03bee6fb80"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=10000",
+  "archivo": "crudo/producto/esma-priii-es-ftws-desde-20261101-10000.json",
+  "consultadoUtc": "2026-11-20T20:49:56Z",
+  "http": "200",
+  "bytes": 2871568,
+  "sha256": "f710516d1d232ac71aa559fbda2645c6b2341e2132dc13f6d006f7624c4dafe1"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=20000",
+  "archivo": "crudo/producto/esma-priii-es-ftws-desde-20261101-20000.json",
+  "consultadoUtc": "2026-11-20T20:49:58Z",
+  "http": "200",
+  "bytes": 2503622,
+  "sha256": "f37a24e0cfabad72fc7472e5238861257726ac3218c762ac93482a66ffa54341"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-midas-lei.json",
+  "consultadoUtc": "2026-11-20T20:50:06Z",
+  "http": "200",
+  "bytes": 57763,
+  "sha256": "4a37e1f4fd1f42dee8586d96666b4fab21c3ccd22055bd3e16473eb39629eb27"
+ },
+ {
+  "url": "https://docs.midas.app/llms.txt",
+  "archivo": "crudo/producto/midas-docs-llms.txt",
+  "consultadoUtc": "2026-11-20T20:50:15Z",
+  "http": "403",
+  "bytes": 2,
+  "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+  "archivo": "crudo/producto/mica-ARTZZ.csv",
+  "consultadoUtc": "2026-11-20T20:50:23Z",
+  "http": "200",
+  "bytes": 276,
+  "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+  "archivo": "crudo/producto/mica-OTHER.csv",
+  "consultadoUtc": "2026-11-20T20:50:24Z",
+  "http": "200",
+  "bytes": 256050,
+  "sha256": "9cc2839bd13ff8822e892278bfe1bf14de226070ff6e91e4e6f065a9a2cadfae"
+ },
+ {
+  "url": "https://files.dgld.ch/dgld-white-paper.pdf",
+  "archivo": "crudo/producto/dgld-white-paper.pdf",
+  "consultadoUtc": "2026-11-20T20:50:46Z",
+  "http": "200",
+  "bytes": 388098,
+  "sha256": "21db08e62b03b7778902dc880e3dd13fce3267ec697692634e9aea1e8003b634"
+ },
+ {
+  "url": "https://gateway.bit2me.com/v2/currency/assets",
+  "archivo": "crudo/producto/bit2me-assets.json",
+  "consultadoUtc": "2026-11-20T20:50:46Z",
+  "http": "200",
+  "bytes": 242824,
+  "sha256": "f3c7ab20c98cb1048b3a9e446a264e1f366faaa9c6c585792bd42c3bbca94367"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/erir?lang=es",
+  "archivo": "crudo/producto/cnmv-erir-indice.html",
+  "consultadoUtc": "2026-11-20T20:51:13Z",
+  "http": "200",
+  "bytes": 153725,
+  "sha256": "1e2da76231dd0daf105fcaf507d7ba0195f85cf6250f3b144a22dde1971f3c11"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=0",
+  "archivo": "crudo/producto/cnmv-erir-ursus3-p0.html",
+  "consultadoUtc": "2026-11-20T20:51:15Z",
+  "http": "200",
+  "bytes": 182377,
+  "sha256": "2fed8b1dc2648a27ad6dafe44277144d4adc4e98d43eab76cdefec32a3aedc97"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+  "archivo": "crudo/producto/cnmv-erir-ursus3-p1.html",
+  "consultadoUtc": "2026-11-20T20:51:17Z",
+  "http": "200",
+  "bytes": 182028,
+  "sha256": "067fdc762602559872cf38c26393e284968b716557fea167bf79a46c580dd5a8"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+  "archivo": "crudo/producto/cnmv-erir-ursus3-p2.html",
+  "consultadoUtc": "2026-11-20T20:51:19Z",
+  "http": "200",
+  "bytes": 161448,
+  "sha256": "23e7b2c6be7463e24aeee2fe2eecbed5e3dad1b00beb4acf93a418ac74df0d34"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+  "archivo": "crudo/producto/cnmv-erir-ursus3-p3.html",
+  "consultadoUtc": "2026-11-20T20:51:20Z",
+  "http": "200",
+  "bytes": 152739,
+  "sha256": "bd80398df3d2c2f5a492d93df3ea18efbdbad1fe6ee810e14bd6066a230826fe"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores-europeos?lang=es",
+  "archivo": "crudo/producto/cnmv-psfp-europeos.html",
+  "consultadoUtc": "2026-11-20T20:51:31Z",
+  "http": "200",
+  "bytes": 176091,
+  "sha256": "c857ee6b0d15a079e6f665f397f608b7bdcbcc3fbac8a1a1055e5b37ef5b7ba7"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores?lang=es",
+  "archivo": "crudo/producto/cnmv-psfp-espanoles.html",
+  "consultadoUtc": "2026-11-20T20:51:44Z",
+  "http": "200",
+  "bytes": 165165,
+  "sha256": "3c4be31459315381dd9c09d1401371afb128074a637f79a349c16a1dd1501a05"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor?nreg=28&nif=A75975201",
+  "archivo": "crudo/producto/cnmv-psfp-28-fundyx.html",
+  "consultadoUtc": "2026-11-20T20:51:53Z",
+  "http": "200",
+  "bytes": 154585,
+  "sha256": "194166c3d320335b075edc6f925566b7fa88a1518d82ec5b860c13c63a0821da"
+ },
+ {
+  "url": "https://crypto.prosegur.com/",
+  "archivo": "crudo/producto/prosegur-crypto-home.html",
+  "consultadoUtc": "2026-11-20T20:53:49Z",
+  "http": "000",
+  "bytes": 0,
+  "sha256": ""
+ },
+ {
+  "url": "https://vnx.li/",
+  "archivo": "crudo/producto/vnx-home.html",
+  "consultadoUtc": "2026-11-20T20:53:50Z",
+  "http": "200",
+  "bytes": 46062,
+  "sha256": "101eee0e576b5a32ab5ca3a33c66e09b7b886e4969246434d78b8fa2732dbbfb"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com",
+  "archivo": "crudo/producto/prosegurcrypto-home.html",
+  "consultadoUtc": "2026-11-20T20:53:59Z",
+  "http": "200",
+  "bytes": 43805,
+  "sha256": "9a17b4f5f694a674f35e8b83503d0814b637f2e4a5d1096f3798ae5396c7e8ca"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/sitemap.xml",
+  "archivo": "crudo/producto/prosegurcrypto-sitemap.xml",
+  "consultadoUtc": "2026-11-20T20:54:00Z",
+  "http": "404",
+  "bytes": 19031,
+  "sha256": "d23f85bb63b6823e71b709325bd49225175dbcfb03bbedd758a6320807723751"
+ },
+ {
+  "url": "https://www.bitpanda.com/es/metales-preciosos",
+  "archivo": "crudo/producto/bitpanda-es-metales.html",
+  "consultadoUtc": "2026-11-20T20:54:27Z",
+  "http": "404",
+  "bytes": 149892,
+  "sha256": "1487a602942c8b215f95b6a2a613124fdfefb6b3d28e72dd24eab065d5fa6b5f"
+ },
+ {
+  "url": "https://www.bitpanda.com/en/precious-metals",
+  "archivo": "crudo/producto/bitpanda-en-metals.html",
+  "consultadoUtc": "2026-11-20T20:54:28Z",
+  "http": "404",
+  "bytes": 166800,
+  "sha256": "8ab7e525f69d94d011a7f3e9a7c81740942fceb63842853f12ed1f7cfa5aaf9f"
+ },
+ {
+  "url": "https://www.bitpanda.com/en/metals",
+  "archivo": "crudo/producto/bitpanda-en-metals.html",
+  "consultadoUtc": "2026-11-20T20:54:41Z",
+  "http": "200",
+  "bytes": 496832,
+  "sha256": "f3a97150e71aad547f10284b3ff5caf39822fab0c5362bc20b5ea462eb1a59ca"
+ },
+ {
+  "url": "https://www.bitpanda.com/es/metals",
+  "archivo": "crudo/producto/bitpanda-es-metals.html",
+  "consultadoUtc": "2026-11-20T20:54:41Z",
+  "http": "404",
+  "bytes": 149870,
+  "sha256": "9b005761ba6c72841b05d9f88870a9da397215f423f4a72ff0cd6862ede4d39b"
+ },
+ {
+  "url": "https://www.bitpanda.com/llms.txt",
+  "archivo": "crudo/producto/bitpanda-llms.txt",
+  "consultadoUtc": "2026-11-20T20:54:49Z",
+  "http": "200",
+  "bytes": 9000,
+  "sha256": "e6e9db78e4ca67b8d7a33ce5fe8e9aef191d71bcf1e51913d0f1e0a82225b2c4"
+ },
+ {
+  "url": "https://www.bitpanda.com/es/metals-metales-preciosos",
+  "archivo": "crudo/producto/bitpanda-es-metales-preciosos.html",
+  "consultadoUtc": "2026-11-20T20:54:57Z",
+  "http": "200",
+  "bytes": 376475,
+  "sha256": "554176ee594de1bd8b04ceaef09eefaa47cf98b2bec4bcbbac1bcdd1fe3421d6"
+ },
+ {
+  "url": "https://cdn.bitpanda.com/terms-and-conditions/m-token-bitpanda-en-latest.pdf",
+  "archivo": "crudo/producto/bitpanda-m-token-terms-en-latest.pdf",
+  "consultadoUtc": "2026-11-20T20:55:25Z",
+  "http": "200",
+  "bytes": 97547,
+  "sha256": "67c63c7d0a6dac206f056251200c186141cd96d82121311719eb88dad3bfa033"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*ESTATING*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-ESTATING.json",
+  "consultadoUtc": "2026-11-20T20:55:51Z",
+  "http": "200",
+  "bytes": 259,
+  "sha256": "09f68c58d64613c7c1f1e6645efcd5e374f1d22f60040e3d3828a7b9add190f6"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Estating*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-Estating.json",
+  "consultadoUtc": "2026-11-20T20:55:51Z",
+  "http": "200",
+  "bytes": 259,
+  "sha256": "ec16d564549a42e26e952e06f11d503df98b243bdb850564b823aded2bf0fa21"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*BRICKS*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-BRICKS.json",
+  "consultadoUtc": "2026-11-20T20:55:52Z",
+  "http": "200",
+  "bytes": 257,
+  "sha256": "67ccef96730b47cbbf31964ed62931383d345a6857578539cad095bda4e8bf7c"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*EQUISAFE*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-EQUISAFE.json",
+  "consultadoUtc": "2026-11-20T20:55:52Z",
+  "http": "200",
+  "bytes": 259,
+  "sha256": "213f1db37d410fd1526299463229c31847ad0e0658dd9f399645a48e18abe4d4"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*LYMO*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-LYMO.json",
+  "consultadoUtc": "2026-11-20T20:55:53Z",
+  "http": "200",
+  "bytes": 255,
+  "sha256": "ba45b12ff287ca20614c7f5a01fa26aef8b0d789031f2c6d730cca32b0cb9628"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*TOKIMO*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-TOKIMO.json",
+  "consultadoUtc": "2026-11-20T20:55:53Z",
+  "http": "200",
+  "bytes": 257,
+  "sha256": "7b00e25b9ecc4993beed4afa9c38d5d030c51be3c232833431ea1782e03e4f57"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*INRENTO*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-INRENTO.json",
+  "consultadoUtc": "2026-11-20T20:55:54Z",
+  "http": "200",
+  "bytes": 258,
+  "sha256": "7f9de205bf4f2d78bb2f00ae3ac99bdd92176d065fa6e6faeb8b79dd6bb6d3d4"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*WALLIANCE*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-WALLIANCE.json",
+  "consultadoUtc": "2026-11-20T20:55:54Z",
+  "http": "200",
+  "bytes": 260,
+  "sha256": "2f19a913d04b38c0fed4982a5b6d4ee72b5b0aab1d0a6bd4d8b4b3070ea40d61"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*FUNDAMENT*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-FUNDAMENT.json",
+  "consultadoUtc": "2026-11-20T20:55:55Z",
+  "http": "200",
+  "bytes": 1332,
+  "sha256": "9ab231271a93296595541ed8bf6f9306cef26eeaca0a8450c6654609f3df919f"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*EXPORO*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-EXPORO.json",
+  "consultadoUtc": "2026-11-20T20:55:55Z",
+  "http": "200",
+  "bytes": 22784,
+  "sha256": "6546f7195ad6aa4b420cf731def2fecf4fbd15616a716f782ea5532730ba487a"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*BLOCKIMMO*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-BLOCKIMMO.json",
+  "consultadoUtc": "2026-11-20T20:55:56Z",
+  "http": "200",
+  "bytes": 260,
+  "sha256": "f4ad0b6bbc9ec81caf61d6398d93ae6ceee7c430a6afa01d4f2f467f9b0afd5e"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*REALTOKEN*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-REALTOKEN.json",
+  "consultadoUtc": "2026-11-20T20:55:56Z",
+  "http": "200",
+  "bytes": 260,
+  "sha256": "3e4113b60239398c72429249edcf59756cede33deaaf370d143577b7d090a309"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*KASAYA*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-KASAYA.json",
+  "consultadoUtc": "2026-11-20T20:55:57Z",
+  "http": "200",
+  "bytes": 257,
+  "sha256": "0696255859c705bb5be0999460ada17cff5e147cc1a87669c0a4064cd89713bd"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*BRICKMARK*&wt=json&rows=20&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-party-BRICKMARK.json",
+  "consultadoUtc": "2026-11-20T20:55:57Z",
+  "http": "200",
+  "bytes": 260,
+  "sha256": "759189cce0a146b7178bbc68df0404a1594f51aadb4b5f25d91d72a8570995f3"
+ },
+ {
+  "url": "https://www.estating.com/",
+  "archivo": "crudo/producto/estating-home.html",
+  "consultadoUtc": "2026-11-20T20:56:13Z",
+  "http": "200",
+  "bytes": 43467,
+  "sha256": "8dded519a6b0ec027fe54def8f5a8882fc452cad6bc988e82ef6c3bf5bfee12b"
+ },
+ {
+  "url": "https://www.seturion.com/",
+  "archivo": "crudo/producto/seturion-home.html",
+  "consultadoUtc": "2026-11-20T20:56:32Z",
+  "http": "200",
+  "bytes": 290779,
+  "sha256": "28b2036b5a4e6e453e03d06b41b81f5811a6d6d1bfaccf27a771b08854b08b90"
+ },
+ {
+  "url": "https://www.seturion.com/news",
+  "archivo": "crudo/producto/seturion-news.html",
+  "consultadoUtc": "2026-11-20T20:56:34Z",
+  "http": "200",
+  "bytes": 290779,
+  "sha256": "f5ee704c0aaa372ff46d608649d96480fe775b935f5c71c742bac4b671fa749e"
+ },
+ {
+  "url": "https://backend.reental.co/graphql",
+  "archivo": "crudo/producto/reental-getProjects.json",
+  "consultadoUtc": "2026-11-20T20:57:30Z",
+  "http": "400",
+  "bytes": 10495,
+  "sha256": "073d1f8bb3646d3f34fc2817fd4e7854c9fbd951c142f0ddc00fb8d3bb13ea81"
+ },
+ {
+  "url": "https://backend.reental.co/graphql",
+  "archivo": "crudo/producto/reental-getProjects.json",
+  "consultadoUtc": "2026-11-20T20:57:43Z",
+  "http": "400",
+  "bytes": 1175,
+  "sha256": "ab424214a83d02f4e69a2b0d5fadaea163d0892ed721400952be38ee94c6e58d"
+ },
+ {
+  "url": "https://api.coingecko.com/api/v3/search?query=midas",
+  "archivo": "crudo/producto/coingecko-search-midas.json",
+  "consultadoUtc": "2026-11-20T20:58:04Z",
+  "http": "200",
+  "bytes": 7906,
+  "sha256": "3347b4e5010482698a8dcdd186ad3d62f8d1373c9e3a0d675e91ccc39ad6d2da"
+ },
+ {
+  "url": "https://api.coingecko.com/api/v3/coins/midas-wellington-income-opportunities?localization=false&tickers=false&community_data=false&developer_data=false",
+  "archivo": "crudo/producto/coingecko-mwin.json",
+  "consultadoUtc": "2026-11-20T20:58:16Z",
+  "http": "429",
+  "bytes": 10,
+  "sha256": "5b57903f875a49c84a5b768a9d15ae885b07106771869e60b7dd0750468b9699"
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-json/wp/v2/media?search=midas&per_page=100&orderby=date&order=desc",
+  "archivo": "crudo/producto/mfsa-wp-media-midas.json",
+  "consultadoUtc": "2026-11-20T20:58:33Z",
+  "http": "403",
+  "bytes": 5657,
+  "sha256": "da509982d74e5baba83fba3d741dbff42609a0fccbd7b5fc129997831bf8772f"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+  "archivo": "crudo/producto/cnmv-esi-eee-libre-prestacion.html",
+  "consultadoUtc": "2026-11-20T20:59:27Z",
+  "http": "200",
+  "bytes": 1993103,
+  "sha256": "35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "archivo": "crudo/producto/mica-CASPS.csv",
+  "consultadoUtc": "2026-11-20T20:59:54Z",
+  "http": "200",
+  "bytes": 201660,
+  "sha256": "d6ba26963008959098964bea92ead7409b6ff8284eea86d17237bdc5aad65134"
+ },
+ {
+  "url": "https://www.goldengate.cz/",
+  "archivo": "crudo/producto/goldengate-cz-home.html",
+  "consultadoUtc": "2026-11-20T21:00:02Z",
+  "http": "200",
+  "bytes": 104292,
+  "sha256": "309c68c42b2f4f0df7ff209a1cff7928153cf1ed02adbb4da6d8b12d8a55e528"
+ },
+ {
+  "url": "https://natgold.com/mica-whitepaper",
+  "archivo": "crudo/producto/natgold-mica-whitepaper.html",
+  "consultadoUtc": "2026-11-20T21:00:09Z",
+  "http": "200",
+  "bytes": 109755,
+  "sha256": "cdc3723dd94638cf4abc414074bb84fbb248fa3c2d662fd3c207499183e8ee0a"
+ },
+ {
+  "url": "https://axiology.xyz/",
+  "archivo": "crudo/producto/axiology-home.html",
+  "consultadoUtc": "2026-11-20T21:00:24Z",
+  "http": "200",
+  "bytes": 1564070,
+  "sha256": "fcbcc0338dac397a6cb55cb3c6924607111297e82487b864eee3b052340ffcee"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds",
+  "archivo": "crudo/producto/axiology-tss-bonds.html",
+  "consultadoUtc": "2026-11-20T21:00:36Z",
+  "http": "200",
+  "bytes": 89409,
+  "sha256": "721048fa90834438acd8bed7b39eea8079bf70e65e6a632f08ce4000633a026c"
+ },
+ {
+  "url": "https://www.axiologyfinance.com/post/axiology-licence-extension-tokenised-money-market-funds",
+  "archivo": "crudo/producto/axiology-post-licence-mmf.html",
+  "consultadoUtc": "2026-11-20T21:00:37Z",
+  "http": "200",
+  "bytes": 1181133,
+  "sha256": "d779514a15722879542019bdbfc745c78a4ce1f82cda346277ef6bc2878c669e"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/4ab9983a-e5c2-4125-949a-b7d0167a4335",
+  "archivo": "crudo/producto/axiology-bond-4ab9983a-e5c2-4125-949a-b7d0167a4335.html",
+  "consultadoUtc": "2026-11-20T21:00:55Z",
+  "http": "200",
+  "bytes": 37434,
+  "sha256": "ad354a928132f439c4b4f609addc775aa34807ddf9c0eb68afbb16e58802c0ee"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/a3bdee5c-ce9f-4a42-9d1a-bb5c4532f388",
+  "archivo": "crudo/producto/axiology-bond-a3bdee5c-ce9f-4a42-9d1a-bb5c4532f388.html",
+  "consultadoUtc": "2026-11-20T21:00:56Z",
+  "http": "200",
+  "bytes": 37677,
+  "sha256": "e2f789c3d57106666f601b0f20e4af70a9ffd47ea6405b8605e20bd9c4c28f2c"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/b68b8c85-342e-4e44-8357-a22669f459a2",
+  "archivo": "crudo/producto/axiology-bond-b68b8c85-342e-4e44-8357-a22669f459a2.html",
+  "consultadoUtc": "2026-11-20T21:00:57Z",
+  "http": "200",
+  "bytes": 37715,
+  "sha256": "5b45e2341a679b643b363c910664c4392df29d5463b14d590997a0c8b731afbb"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/bec9c055-8f81-4863-94c1-82ac4713ca3a",
+  "archivo": "crudo/producto/axiology-bond-bec9c055-8f81-4863-94c1-82ac4713ca3a.html",
+  "consultadoUtc": "2026-11-20T21:00:57Z",
+  "http": "200",
+  "bytes": 37615,
+  "sha256": "8e6ec7bb7100fc82c6bc55e0ec660cedafb70a30c4e51a2d2a7ad4505f50d62e"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/cf958ac3-e1be-4b89-87b7-98fb9dbd1057",
+  "archivo": "crudo/producto/axiology-bond-cf958ac3-e1be-4b89-87b7-98fb9dbd1057.html",
+  "consultadoUtc": "2026-11-20T21:00:58Z",
+  "http": "200",
+  "bytes": 37549,
+  "sha256": "c02e56807c014a17ce4e0595f3454547c1fa48ee754edf9dd04e3f27c83f21a2"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/d13df71c-cbdb-45d4-87de-c60ab50ad7b3",
+  "archivo": "crudo/producto/axiology-bond-d13df71c-cbdb-45d4-87de-c60ab50ad7b3.html",
+  "consultadoUtc": "2026-11-20T21:00:59Z",
+  "http": "200",
+  "bytes": 37657,
+  "sha256": "03dd3a0fc2b933c08967498685aa2b225655255830ca43ede63e2533a84faeb0"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/dda29cef-0c09-4539-801c-6b8f979683ba",
+  "archivo": "crudo/producto/axiology-bond-dda29cef-0c09-4539-801c-6b8f979683ba.html",
+  "consultadoUtc": "2026-11-20T21:00:59Z",
+  "http": "200",
+  "bytes": 37829,
+  "sha256": "3dfe69a6f46d6c82a6365b4bf476958fa9619d3cdb33ce83666ce18d86c1a2d8"
+ },
+ {
+  "url": "https://tss.axiology.xyz/bonds/e28fabd2-de25-4e14-9775-e07f1a49d46e",
+  "archivo": "crudo/producto/axiology-bond-e28fabd2-de25-4e14-9775-e07f1a49d46e.html",
+  "consultadoUtc": "2026-11-20T21:01:00Z",
+  "http": "200",
+  "bytes": 37517,
+  "sha256": "5c9b80c600b3d004312e7329d824f7260ebf6a615153ae113f871328ca3a60d5"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:(LT0000139354%20OR%20LT0000139040%20OR%20LT0000137994%20OR%20LT0000137671%20OR%20LT0000137457%20OR%20LT0000137069%20OR%20LT0000135774)&wt=json&rows=50",
+  "archivo": "crudo/producto/esma-priii-axiology-isins.json",
+  "consultadoUtc": "2026-11-20T21:01:20Z",
+  "http": "200",
+  "bytes": 325,
+  "sha256": "4f89c3307378c77b5e55aaa83da034ee995c779ba1d929dc27272fe98b9f7e36"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=home_member_state_code:LT&fq=approval_filing_date:%5B2026-01-01T00:00:00Z%20TO%20*%5D&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "archivo": "crudo/producto/esma-priii-lt-2026.json",
+  "consultadoUtc": "2026-11-20T21:01:21Z",
+  "http": "200",
+  "bytes": 47201,
+  "sha256": "9895853a3ba09ae049e66d7d9dad00e955d20276e660d1a02a7054c93c7df46f"
+ },
+ {
+  "url": "https://www.bitpanda.com/en/web3/vision-chain",
+  "archivo": "crudo/producto/bitpanda-vision-chain.html",
+  "consultadoUtc": "2026-11-20T21:01:34Z",
+  "http": "200",
+  "bytes": 444791,
+  "sha256": "21772f5112e4d4f4900f50f90eb5d9045a7c1bc7e312d2669fb473c9b02b37a7"
+ },
+ {
+  "url": "https://www.eurivex.com/",
+  "archivo": "crudo/producto/eurivex-home.html",
+  "consultadoUtc": "2026-11-20T21:02:26Z",
+  "http": "200",
+  "bytes": 103087,
+  "sha256": "4607f505a0451b7c8eb33168b72c9bd026f6d2999f5404cd7a022f18fdbfd760"
+ },
+ {
+  "url": "https://www.crowdbase.eu/",
+  "archivo": "crudo/producto/crowdbase-home.html",
+  "consultadoUtc": "2026-11-20T21:02:27Z",
+  "http": "200",
+  "bytes": 1597998,
+  "sha256": "56e84d7893e8361a1c0355f80fa26ce4102e1a0db0b46e306b719dbb426d3986"
+ },
+ {
+  "url": "https://ektico.com/",
+  "archivo": "crudo/producto/ektico-home.html",
+  "consultadoUtc": "2026-11-20T21:02:28Z",
+  "http": "200",
+  "bytes": 185413,
+  "sha256": "556b957f06efff1032857567dff6490c5301bc794642dd38d360bec24879b15e"
+ },
+ {
+  "url": "https://assets.backed.fi/legal-documentation",
+  "archivo": "crudo/producto/backed-legal-documentation.html",
+  "consultadoUtc": "2026-11-20T21:03:51Z",
+  "http": "200",
+  "bytes": 10606,
+  "sha256": "1841a6337136556f96fadc16ae5ae1d8de02bcc703799f5e43895360daff1b4d"
+ },
+ {
+  "url": "https://www.fundaus.com/",
+  "archivo": "crudo/producto/fundaus-home.html",
+  "consultadoUtc": "2026-11-20T21:04:04Z",
+  "http": "200",
+  "bytes": 96860,
+  "sha256": "067f4590f8cc4fc41835918578880b7ef1eeb88edfcbb6c41e49a484dda152ba"
+ },
+ {
+  "url": "https://www.inrento.com/",
+  "archivo": "crudo/producto/inrento-home.html",
+  "consultadoUtc": "2026-11-20T21:04:05Z",
+  "http": "200",
+  "bytes": 45817,
+  "sha256": "fb40a3493b5418ad29a37d644867baef73c496f6bb6c63feaf44fbf5037cf8be"
+ },
+ {
+  "url": "https://www.walliance.eu/",
+  "archivo": "crudo/producto/walliance-home.html",
+  "consultadoUtc": "2026-11-20T21:04:07Z",
+  "http": "200",
+  "bytes": 178685,
+  "sha256": "e4233a592d007d7a022420448dd3e7c36ff74cbea8cfc9b312a01a17117658c0"
+ }
+]

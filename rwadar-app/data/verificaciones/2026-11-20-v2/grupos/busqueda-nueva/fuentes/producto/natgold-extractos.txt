@@ -1,0 +1,10 @@
+Fuente: https://natgold.com/mica-whitepaper
+Consultado (UTC): 2026-11-20T21:00:09Z
+HTTP: 200 · bytes: 109755 · SHA-256 del crudo: cdc3723dd94638cf4abc414074bb84fbb248fa3c2d662fd3c207499183e8ee0a
+Crudo: fuentes/crudo/producto/natgold-mica-whitepaper.html (fuera de Git)
+
+Extractos literales:
+
+«NatGold tokens do not provide equity ownership, governance or voting rights, revenue participation, dividends, yield, or physical redemption. There is no issuer commitment to price stability and purchasers»
+
+«It represents independently verified, in‑ground gold resources (“Certified NatGold Resources”) that remain permanently in the ground (no physical extraction). Token issuance is gated by third‑party tech»

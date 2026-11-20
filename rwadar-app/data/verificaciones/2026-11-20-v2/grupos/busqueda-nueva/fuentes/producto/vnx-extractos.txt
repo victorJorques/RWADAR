@@ -1,0 +1,8 @@
+Fuente: https://vnx.li/
+Consultado (UTC): 2026-11-20T20:53:50Z
+HTTP: 200 · bytes: 46062 · SHA-256 del crudo: 101eee0e576b5a32ab5ca3a33c66e09b7b886e4969246434d78b8fa2732dbbfb
+Crudo: fuentes/crudo/producto/vnx-home.html (fuera de Git)
+
+Extractos literales:
+
+«VNX provides this infrastructure exclusively to business and institutional partners under individually agreed tokenization arrangements. 1:1 Asset ratio 15+ Live networks 24/7 Onchain»

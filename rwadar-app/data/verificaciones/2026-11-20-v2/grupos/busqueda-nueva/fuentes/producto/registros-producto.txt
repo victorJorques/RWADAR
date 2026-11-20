@@ -1,0 +1,187 @@
+Registros consultados por el buscador «producto-inmuebles-bonos-materias» · 20/11/2026
+
+## ESMA, folletos/suplementos (sin condiciones finales) pasaportados a España desde el 05/11/2026
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-05T00:00:00Z%20TO%20*%5D&fq=-document_type:FTWS&wt=json&rows=1000 · 2026-11-20T20:49:40Z · HTTP 200 · 33712 B · SHA-256 bc1daa14bdfbb7ed889b45cbfdb40aa0e514961dbb12a1076e7c06b1092d4c12
+Total: 24
+
+- 2026-11-05 IE SUPP · MB FUNDING LUX SA - 635400R5IHFIXBKVMS16, MEDIOBANCA - BANCA DI CREDITO FINANZIARIO S.P.A.
+- 2026-11-05 LU SUPP · SOCIETE GENERALE - O2RNE8IBXP4R0TD8PU41
+- 2026-11-05 FR SUPP · BNP PARIBAS - R0MUWSFPU8MPRO8K5P83
+- 2026-11-05 SE BPWO · L S LIMITED - 2138001ZTDGR9O183Q55
+- 2026-11-06 DE BPWO · Vontobel Financial Products GmbH - 5299009N4N61DPCDHR97
+- 2026-11-06 IE SUPP · TOYOTA CREDIT CANADA INC. - HJZQGXYTVV2NWJZLPW74, TOYOTA FINANCE AUSTRALIA LIMITED - 3UKPT
+- 2026-11-06 LU SUPP · NATIXIS - KX1WK48MPD4Y2NCUIZ63, Natixis Corporate and Investment Banking Luxembourg - AELI
+- 2026-11-06 LU SUPP · BANK OF AMERICA CORPORATION - 9DJT3UXIJIZJI4WXO774, BOFA FINANCE LLC - 549300CGZYSEY3ZSIW1
+- 2026-11-09 LI SUPP · ROBINHOOD ASSETS (JERSEY) LIMITED - 984500ADFHQZ9D6B9A29
+- 2026-11-11 LI BPWO · Ondo Global Markets (BVI) Limited - 984500Z0Q6A5E8BE2B61
+- 2026-11-11 DE STDA · ANTHROPIC, PBC - 984500B6DEB8CEBC4Z70
+- 2026-11-13 IE SUPP · BARCLAYS BANK PLC - G5GSEF7VJP5I7OUK5573
+- 2026-11-13 LV BPWO · SIA DN Funding Zeta - 894500NYE3OAQD6XRP69
+- 2026-11-13 LV BPWO · SIA Mintos Finance No.45 - 98450059H090976DBC22
+- 2026-11-16 DE BPWO · Vontobel Financial Products GmbH - 5299009N4N61DPCDHR97
+- 2026-11-16 LU SUPP · DEUTSCHE PFANDBRIEFBANK AG - DZZ47B9A52ZJ6LT6VV95
+- 2026-11-16 LU BPWO · CITIGROUP GLOBAL MARKETS HOLDINGS INC. - 82VOJDD5PTRDMVVMGV31, CITIGROUP INC. - 6SHGI4ZSSL
+- 2026-11-17 IE BPWO · LEVERAGE SHARES PUBLIC LIMITED COMPANY - 635400TLFJSNHVSOFH59
+- 2026-11-18 LU SUPP · MORGAN STANLEY & CO. INTERNATIONAL PLC - 4PQUHN3JPFGFNF3BB653, MORGAN STANLEY B.V. - KG1FT
+- 2026-11-18 LU SUPP · MORGAN STANLEY & CO. INTERNATIONAL PLC - 4PQUHN3JPFGFNF3BB653, MORGAN STANLEY B.V. - KG1FT
+- 2026-11-18 LU SUPP · MORGAN STANLEY & CO. INTERNATIONAL PLC - 4PQUHN3JPFGFNF3BB653, MORGAN STANLEY B.V. - KG1FT
+- 2026-11-18 LU SUPP · MORGAN STANLEY & CO. INTERNATIONAL PLC - 4PQUHN3JPFGFNF3BB653, MORGAN STANLEY B.V. - KG1FT
+- 2026-11-19 LU SUPP · J.P. Morgan Structured Products B.V. - XZYUUT6IYN31D9K77X08, JPMORGAN CHASE & CO. - 8I5DZW
+- 2026-11-19 LU SUPP · J.P. Morgan Structured Products B.V. - XZYUUT6IYN31D9K77X08, JPMorgan Chase Bank, National
+
+## ESMA, documentos aprobados por la CNMV desde el 01/10/2026
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=home_member_state_code:ES&fq=approval_filing_date:%5B2026-10-01T00:00:00Z%20TO%20*%5D&wt=json&rows=1000 · 2026-11-20T20:49:06Z · HTTP 200 · 37745 B · SHA-256 04cf0159ccd937f6c6675313c287b4a7374af6ecd5d2b622b7bc4fafa9856790
+Total: 34
+
+- 2026-10-06 ES STDA · CARS ALLIANCE AUTO LOANS SPAIN 2026 FONDO DE TITULIZACION - 959800SHJMHKRJS6Z661
+- 2026-10-08 ES FTWS · BANCO SANTANDER S.A. - 5493006QMFDDMYWIAM13
+- 2026-10-09 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-09 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-14 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-15 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-15 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-15 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-15 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-15 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-19 ES FTWS · BANCO SANTANDER S.A. - 5493006QMFDDMYWIAM13
+- 2026-10-19 ES FTWS · BANCO SANTANDER S.A. - 5493006QMFDDMYWIAM13
+- 2026-10-22 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-22 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-22 ES STDA · BBVA CONSUMER 2026-2 FT - 9598003J7SLC1YVXNS04
+- 2026-10-22 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-22 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-22 ES BPWO · MAPFRE S.A. - 95980020140005693107
+- 2026-10-22 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-10-22 ES STDA · AZUL 2, FONDO DE TITULIZACION - 959800AT2BDMK38C0707
+- 2026-10-29 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-05 ES BPWO · BANCO SANTANDER S.A. - 5493006QMFDDMYWIAM13
+- 2026-11-05 ES SUPP · CAIXABANK SA - 7CUNS533WID6K7DGFI87
+- 2026-11-10 ES FTWS · MAPFRE S.A. - 95980020140005693107
+- 2026-11-10 ES FTWS · MAPFRE S.A. - 95980020140005693107
+- 2026-11-11 ES FTWS · BANCO SANTANDER S.A. - 5493006QMFDDMYWIAM13
+- 2026-11-11 ES FTWS · UNICAJA BANCO SA - 5493007SJLLCTM6J6M37
+- 2026-11-12 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-12 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-12 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-12 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-12 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-13 ES FTWS · BBVA Global Markets B.V. - 213800L2COK1WB5Q3Z55
+- 2026-11-17 ES FTWS · BANCO DE SABADELL S.A. - SI5RG2M0WQQLZCXKRM20
+
+## ESMA, condiciones finales pasaportadas a España desde el 01/11/2026, por emisor (28.806 documentos)
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=0 · 2026-11-20T20:49:52Z · HTTP 200 · 2848798 B · SHA-256 02afff5ce1878c4cd5ecd8b55167ede6992bd46297dc4c8d2189de03bee6fb80
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=10000 · 2026-11-20T20:49:56Z · HTTP 200 · 2871568 B · SHA-256 f710516d1d232ac71aa559fbda2645c6b2341e2132dc13f6d006f7624c4dafe1
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*&fq=approval_filing_date:%5B2026-11-01T00:00:00Z%20TO%20*%5D&fq=document_type:FTWS&fl=party_name,approval_filing_date,home_member_state_code,national_document_id,instrument_isins&wt=json&rows=10000&start=20000 · 2026-11-20T20:49:58Z · HTTP 200 · 2503622 B · SHA-256 f37a24e0cfabad72fc7472e5238861257726ac3218c762ac93482a66ffa54341
+- 8177 · Vontobel Financial Products GmbH
+- 6340 · BNP Paribas Emissions- und Handelsgesellschaft mbH
+- 5564 · Société Générale Effekten GmbH
+- 2013 · SIA Mintos Finance No.2
+- 1822 · SIA Mintos Finance No.31
+- 1360 · SIA Mintos Finance No.11
+- 983 · SIA Mintos Finance No.29
+- 304 · SIA Mintos Finance No.3
+- 269 · WISDOMTREE COMMODITY SECURITIES LIMITED
+- 245 · LEVERAGE SHARES PUBLIC LIMITED COMPANY
+- 236 · SIA Mintos Finance No.5
+- 186 · SIA Mintos Finance No.27
+- 165 · SIA Mintos Finance No.10
+- 139 · WISDOMTREE MULTI ASSET ISSUER PUBLIC LIMITED COMPANY
+- 122 · SIA "Nectaro Alpha"
+- 92 · SIA Mintos Finance No.38
+- 60 · WISDOMTREE METAL SECURITIES LIMITED
+- 52 · SIA Mintos Finance No.47
+- 48 · SIA Mintos Finance No.14
+- 48 · INVESCO PHYSICAL MARKETS PUBLIC LIMITED COMPANY
+- 48 · SIA Mintos Finance No.37
+- 47 · SIA Mintos Finance No.58
+- 46 · BACKED ASSETS (JE) LIMITED
+- 39 · SIA Mintos Finance No.43
+- 38 · ISHARES PHYSICAL METALS PUBLIC LIMITED COMPANY
+- 34 · 21Shares AG
+- 31 · S01 Issuer GMBH
+- 28 · XTRACKERS ETC PUBLIC LIMITED COMPANY
+- 26 · SIA Mintos Finance No.57
+- 25 · WISDOMTREE HEDGED COMMODITY SECURITIES LIMITED
+- 24 · WISDOMTREE ISSUER X LIMITED
+- 17 · SIA Mintos Finance No.48
+- 16 · Indemo SPV Issuer No1 SIA
+- 16 · SIA Mintos Finance No.20
+- 15 · SIA Mintos Finance No.45
+- 14 · WISDOMTREE HEDGED METAL SECURITIES LIMITED
+- 14 · BNP Paribas Issuance B.V.
+- 14 · SIA "Nectaro Charlie"
+- 13 · SIA Mintos Finance No.23
+- 10 · WISDOMTREE FOREIGN EXCHANGE LIMITED
+- 7 · HANETF MULTI-ASSET ETC ISSUER PLC
+- 6 · SIA Mintos Finance No.22
+- 6 · SIA Mintos Finance No.44
+- 6 · SIA Mintos Finance No.21
+- 6 · Amundi Physical Metals Public Limited Company
+- 5 · SIA Mintos Finance No.34
+- 5 · SIA Mintos Finance No.55
+- 5 · Xtrackers Digital Markets ETC AG
+- 4 · SIA Mintos Finance No.24
+- 2 · SIA Mintos Finance No.54
+- 2 · SIA Mintos Finance No.7
+- 2 · BARCLAYS BANK PLC
+- 2 · SIA Mintos Finance No.17
+- 2 · HANetf ETC Securities PLC
+- 2 · Ondo Global Markets (BVI) Limited
+- 1 · SIA Mintos Finance No.30
+- 1 · Goldman Sachs Bank Europe SE
+- 1 · ROBINHOOD ASSETS (JERSEY) LIMITED
+- 1 · Bitwise Europe GmbH
+
+## ESMA, folletos de los 7 ISIN de bonos registrados en Axiology TSS (LT0000139354, LT0000139040, LT0000137994, LT0000137671, LT0000137457, LT0000137069, LT0000135774)
+https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:(LT0000139354%20OR%20LT0000139040%20OR%20LT0000137994%20OR%20LT0000137671%20OR%20LT0000137457%20OR%20LT0000137069%20OR%20LT0000135774)&wt=json&rows=50 · 2026-11-20T21:01:20Z · HTTP 200 · 325 B · SHA-256 4f89c3307378c77b5e55aaa83da034ee995c779ba1d929dc27272fe98b9f7e36
+Resultados: 0
+
+## ESMA, registro provisional MiCA de emisores de fichas referenciadas a activos (ARTZZ.csv)
+https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv · 2026-11-20T20:50:23Z · HTTP 200 · 276 B · SHA-256 fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67
+Filas de datos: 0 (solo cabecera)
+
+## ESMA, white papers MiCA «OTHER» con activo físico detrás (búsqueda por oro, plata, metales, inmuebles, bonos)
+https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv · 2026-11-20T20:50:24Z · HTTP 200 · 256050 B · SHA-256 9cc2839bd13ff8822e892278bfe1bf14de226070ff6e91e4e6f065a9a2cadfae
+- 08/08/2025 · CZ · APF DIGITAL AGRIFUND CR s.r.o. ·  · https://verdanteurope.com/site/assets/files/1172/apf_digital_agrifund_cr_crypto-asset_white_paper_eng.pdf
+- 07/05/2026 · IE · NATGOLD INTEGRITY VAULT LLC ·  · https://natgold.com/mica-whitepaper
+- 14/04/2025 · LI · LCX AG · Admission to trading and offer of LCX Gold (LCXG) · https://www.lcx.com/lcxg-mica-white-paper/
+- 14/04/2025 · LI · LCX AG · Admission to trading and offer of LCX Silver (LCXS) · https://www.lcx.com/lcxs-mica-white-paper/
+- 14/04/2025 · LI · LCX AG · Admission to trading and offer of LCX Platinum (LCXP) · https://www.lcx.com/lcxp-mica-white-paper/
+- 24/07/2026 · MT · Gold Token SA ·  · https://files.dgld.ch/dgld-white-paper.pdf
+
+## ESMA, registro MiCA de CASP: GG Digital, a.s.
+https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv · 2026-11-20T20:59:54Z · HTTP 200 · 201660 B · SHA-256 d6ba26963008959098964bea92ead7409b6ff8284eea86d17237bdc5aad65134
+- Czech National Bank (CNB) · autorizada 14/05/2026 · países de servicio: CZ · a. providing custody and administration of crypto-assets on behalf of clients | c. exchange of crypto-assets for funds | d. exchange of crypto-assets for other crypto-assets | h. providing advice on c
+
+## Bit2Me, API pública de activos: fichas de oro
+https://gateway.bit2me.com/v2/currency/assets · 2026-11-20T20:50:46Z · HTTP 200 · 242824 B · SHA-256 f3c7ab20c98cb1048b3a9e446a264e1f366faaa9c6c585792bd42c3bbca94367
+- PAXG «PAX Gold» · enabled True · removedAt 2025-03-21T00:00:00.000Z
+- XAUT «Tether Gold» · enabled True · removedAt 2025-03-21T00:00:00.000Z
+- TXAU «TGold» · enabled True · removedAt 2025-03-21T00:00:00.000Z
+
+## CNMV, PSFP españolas
+https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores?lang=es · 2026-11-20T20:51:44Z · HTTP 200 · 165165 B · SHA-256 3c4be31459315381dd9c09d1401371afb128074a637f79a349c16a1dd1501a05
+Inscritas: 28 (27 el 10/11). Nueva: FUNDYX GLOBAL PSFP, S.A. · n.º 28 · 20/11/2026.
+
+## CNMV, ficha de FUNDYX GLOBAL PSFP, S.A.
+https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor?nreg=28&nif=A75975201 · 2026-11-20T20:51:53Z · HTTP 200 · 154585 B · SHA-256 194166c3d320335b075edc6f925566b7fa88a1518d82ec5b860c13c63a0821da
+N.º 28, fecha de registro 20/11/2026, domicilio en Adeje (Santa Cruz de Tenerife); «Página Web» vacía.
+
+## CNMV, PSFP europeas que prestan servicios en España
+https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores-europeos?lang=es · 2026-11-20T20:51:31Z · HTTP 200 · 176091 B · SHA-256 c857ee6b0d15a079e6f665f397f608b7bdcbcc3fbac8a1a1055e5b37ef5b7ba7
+Proveedores: 48 (los mismos 48 que el 10/11).
+
+## CNMV, ERIR
+https://www.cnmv.es/portal/consultas/erir?lang=es · 2026-11-20T20:51:13Z · HTTP 200 · 153725 B · SHA-256 1e2da76231dd0daf105fcaf507d7ba0195f85cf6250f3b144a22dde1971f3c11
+ESI designadas ERIR: MINOS SECURITIES, TOKEN CITY EUROPEAN EXCHANGE, URSUS-3 CAPITAL.
+
+https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=0 · 2026-11-20T20:51:15Z · HTTP 200 · 182377 B · SHA-256 2fed8b1dc2648a27ad6dafe44277144d4adc4e98d43eab76cdefec32a3aedc97
+https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1 · 2026-11-20T20:51:17Z · HTTP 200 · 182028 B · SHA-256 067fdc762602559872cf38c26393e284968b716557fea167bf79a46c580dd5a8
+https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2 · 2026-11-20T20:51:19Z · HTTP 200 · 161448 B · SHA-256 23e7b2c6be7463e24aeee2fe2eecbed5e3dad1b00beb4acf93a418ac74df0d34
+https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3 · 2026-11-20T20:51:20Z · HTTP 200 · 152739 B · SHA-256 bd80398df3d2c2f5a492d93df3ea18efbdbad1fe6ee810e14bd6066a230826fe
+Ursus-3: última inscripción el 23/10/2026 (Hausera SPV 7 y SPV 8); sin inscripciones nuevas.
+
+## CNMV, ESI del EEE en libre prestación
+https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4 · 2026-11-20T20:59:27Z · HTTP 200 · 1993103 B · SHA-256 35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41
+No figuran Milano Global Advisors, Fleap, Blockinvest ni Commercio.Network.
+
