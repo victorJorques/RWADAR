@@ -1,0 +1,295 @@
+{
+  "fecha": "2026-11-20",
+  "nota": "Textos de la tabla base public.plataformas corregidos por la auditoría del 20/11/2026 (auditoria/radar-plataformas.md y auditoria/sitio-web.md). Cada cambio lleva el valor de antes (el que sirve hoy producción, lectura-publica/ de las 16:52 UTC) y el nuevo. Lo usan db/38_textos_radar.sql, 38_textos_radar_verificar.sql y probar-textos-radar.mjs. region_slug: la clave de la tabla regiones.",
+  "plataformas": {
+    "swarm": {
+      "aval": {
+        "antes": "Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.",
+        "ahora": "La contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor."
+      },
+      "nota": {
+        "antes": "Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.",
+        "ahora": "Acciones y bonos tokenizados. Se contrata con una sociedad de Liechtenstein; sus términos eligen la ley alemana."
+      },
+      "region_slug": { "antes": "union-europea", "ahora": "liechtenstein" },
+      "fuentes": [
+        "Base de datos de BaFin (portal.mvp.bafin.de), búsquedas «Swarm» y «Swarm Markets»: «Keine Ergebnisse» · 20/11/2026 17:20:37 y 17:20:44 UTC",
+        "https://docs.swarm.com/about/terms/imprint · «Swarm Capital GmbH Landstr. 37 9490 FL-Vaduz Liechtenstein», sin licencia ni supervisor · 20/11/2026 17:20:33 UTC",
+        "Términos de docs.swarm.com: ley alemana y tribunales de Berlín · 20/11/2026 17:27 UTC"
+      ]
+    },
+    "inx": {
+      "aval": {
+        "antes": "Bróker-dealer registrado ante la SEC y miembro de FINRA; su matriz cotiza en Nasdaq.",
+        "ahora": "INX Securities, LLC es bróker-dealer registrado ante la SEC, miembro de FINRA, y opera un sistema alternativo de negociación (ATS). Desde 11/2025 pertenece a OpenDeal, Inc. (Republic), que según FINRA no es una sociedad cotizada."
+      },
+      "nota": {
+        "antes": "Plataforma regulada de valores digitales con negociación secundaria abierta a minoristas.",
+        "ahora": "Plataforma de valores digitales con negociación secundaria."
+      },
+      "fuentes": [
+        "https://files.brokercheck.finra.org/firm/firm_162182.pdf · dueño indirecto «OPENDEAL, INC.» desde «11/2025»; «Is this a public reporting company? No» · 20/11/2026 17:16:13 UTC"
+      ]
+    },
+    "superstate": {
+      "aval": {
+        "antes": "Fondos estadounidenses registrados con administrador y auditor independientes; fundada por un antiguo responsable de Compound.",
+        "ahora": "Fondo privado estadounidense (USTB, gestionado por Invesco Advisers), con auditor (PwC) y custodio (BNY) independientes; no está registrado como sociedad de inversión. Superstate Services es agente de transferencias registrado ante la SEC."
+      },
+      "cadenas": { "antes": "Ethereum", "ahora": "Ethereum, Solana, Plume" },
+      "fuentes": [
+        "https://superstate.com/assets/ustb · «Tokenized private fund», «The Fund is not registered as an investment company under the Investment Company Act», redes «Ethereum, Solana or Plume» · 20/11/2026 17:16:14 UTC"
+      ]
+    },
+    "pax-gold": {
+      "aval": {
+        "antes": "Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.",
+        "ahora": "Lo emite Paxos Trust Company, N.A., banco fiduciario nacional de EE. UU. supervisado por la OCC, con atestaciones mensuales del oro."
+      },
+      "cadenas": { "antes": "Ethereum", "ahora": "Ethereum, Solana, Base" },
+      "fuentes": [
+        "https://paxg.com · «PAXG is issued by Paxos Trust Company, N.A., a U.S. national trust bank regulated by the OCC»; «Available on Ethereum, Solana and Base» · 20/11/2026 17:16:14 UTC"
+      ]
+    },
+    "midas": {
+      "aval": {
+        "antes": "Emite bajo folleto aprobado en la Unión Europea, lo que obliga a información periódica y responsabilidad del emisor.",
+        "ahora": "Emite bajo un folleto base aprobado por la FMA de Liechtenstein el 17/07/2026 y notificado a la CNMV. Aprobar el folleto no es una licencia: según el propio folleto, el emisor no está regulado por la FMA."
+      },
+      "nota": {
+        "antes": "Certificados tokenizados sobre estrategias de renta fija. Levantó 50 M$ con Franklin Templeton y Coinbase Ventures.",
+        "ahora": "Certificados tokenizados sobre estrategias de renta fija."
+      },
+      "fuentes": [
+        "Folleto base de Midas Software GmbH aprobado por la FMA el 17/07/2026, válido hasta el 17/07/2027, y pasaporte en la CNMV (BPWO-84): comprobado en auditoria/radar-plataformas.md («Lo que se sostiene hoy») · 20/11/2026 17:22 UTC",
+        "Quitado sin fuente: «Levantó 50 M$ con Franklin Templeton y Coinbase Ventures» (ninguna fuente enlazada) y «aprobado en la Unión Europea» (la FMA es de Liechtenstein, del EEE)"
+      ]
+    },
+    "blocksquare": {
+      "aval": {
+        "antes": "Vincula cada token a una anotación en el registro de la propiedad, no solo a un contrato inteligente.",
+        "ahora": "Cada token se apoya en un acuerdo societario del emisor, guardado en IPFS, que identifica el inmueble con sus datos registrales y le obliga frente a los tenedores. No es una inscripción en el registro de la propiedad."
+      },
+      "nota": {
+        "antes": "Tecnología para que una inmobiliaria tokenice sus propios activos con respaldo registral.",
+        "ahora": "Tecnología para que una inmobiliaria tokenice sus propios activos."
+      },
+      "fuentes": [
+        "Documentación oficial de Blocksquare: «Corporate resolution… uploaded and stored on IPFS… creates a financial obligation by the issuer»; «Blocksquare's Property Registry — a smart contract» · 20/11/2026 17:19:05 UTC"
+      ]
+    },
+    "lofty": {
+      "aval": {
+        "antes": "Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.",
+        "ahora": "Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y no es un bróker-dealer registrado. Su mercado no es una oferta registrada."
+      },
+      "fuentes": [
+        "https://www.lofty.ai/terms · «Not Registered with the SEC or Any Other Agency» · 20/11/2026 17:16:13 UTC",
+        "https://lofty.ai · «Lofty AI, Inc., which is not a registered broker-dealer or investment advisor» · 20/11/2026 17:16:13 UTC"
+      ]
+    },
+    "franklin-templeton": {
+      "aval": {
+        "antes": "Gestora tradicional con décadas de historial y fondo registrado ante la SEC. La vía más conservadora para empezar.",
+        "ahora": "Fondo monetario estadounidense (FOBXX). Solo para residentes en EE. UU.: su folleto del 01/08/2026 dice que no está registrado ni puede ofrecerse en ningún país de la UE o del EEE."
+      },
+      "fuentes": [
+        "https://www.franklintempleton.com/forms-literature/download-preview/9001-P · «is not registered… in any member country of the European Union (EU) or European Economic Area (EEA), and may not be directly or indirectly offered or distributed in any such country» · 20/11/2026 17:16:13 UTC",
+        "Quitado: «La vía más conservadora para empezar» (recomendación) y «décadas de historial» y «registrado ante la SEC» (sin fuente enlazada)"
+      ]
+    },
+    "reental": {
+      "aval": {
+        "antes": "Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.",
+        "ahora": "Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad no está sujeta a autorización ni registro previo de la CNMV: no hay un supervisor que la vigile."
+      },
+      "fuentes": [
+        "https://reental.co (web en español) · «Reental es una empresa norteamericana que ofrece inversiones desde Estados Unidos y España»; «La actividad no está sujeta a autorización ni registro previo de la CNMV» · 20/11/2026 17:16:14 UTC",
+        "Quitado sin fuente: «Historial de proyectos completados y devueltos» y «reseñas públicas verificadas»"
+      ]
+    },
+    "spiko": {
+      "aval": {
+        "antes": "Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.",
+        "ahora": "Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecen hoy en la base pública de la AMF: compruébalo fondo a fondo."
+      },
+      "nota": {
+        "antes": "Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.",
+        "ahora": "Fondos en euros y dólares para la tesorería de empresas y particulares, con reembolso diario."
+      },
+      "acceso": { "antes": "Empresas", "ahora": "Minorista" },
+      "fuentes": [
+        "https://www.spiko.io · «Individuals» entre sus clientes; página Web3: «Spiko funds are approved as UCITS and can therefore accept non-professional investors» · 20/11/2026 17:16:14 UTC",
+        "AMF GECO, ficha c79399 (EU T-Bills) «Vivant»; Smart Cash ya no aparece · 20/11/2026 17:20:29 UTC"
+      ]
+    },
+    "backed-finance": {
+      "aval": {
+        "antes": "Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.",
+        "ahora": "Grupo suizo; los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública."
+      },
+      "nota": {
+        "antes": "Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.",
+        "ahora": "Réplicas tokenizadas de acciones y bonos cotizados."
+      },
+      "fuentes": [
+        "https://docs.xstocks.fi · «xStocks are issued by Backed Assets (JE) Limited, a Jersey-based special purpose vehicle» · 20/11/2026 17:16:12 UTC",
+        "Quitado sin fuente: «activas desde 2021»"
+      ]
+    },
+    "addx": {
+      "aval": {
+        "antes": "Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.",
+        "ahora": "Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia (del grupo Temasek), UOB y otros."
+      },
+      "fuentes": [
+        "https://www.addx.co/en/inside-addx/ · «Key shareholders of ICHX Tech, in turn the shareholder of ADDX Pte. Ltd.»: SGX, Hanwha, UOB, Heliconia y otros · 20/11/2026 17:16:12 UTC"
+      ]
+    },
+    "maple-finance": {
+      "aval": {
+        "antes": "Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.",
+        "ahora": "Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML); syrupUSDC y syrupUSDT están abiertos a cualquiera en cadena fuera de EE. UU. Los términos de esa interfaz dicen que la operadora no está registrada ante ningún regulador."
+      },
+      "nota": {
+        "antes": "El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.",
+        "ahora": "Crédito privado para instituciones y productos de rendimiento en cadena (syrupUSDC y syrupUSDT)."
+      },
+      "fuentes": [
+        "https://maple.finance/earn/maple-institutional · «Accredited allocators who complete onboarding (KYC/AML). syrupUSDC/USDT remains open to anyone onchain outside of the United States.» · 20/11/2026 17:16:14 UTC",
+        "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt · la operadora no está registrada ante ningún regulador (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)",
+        "Quitado sin fuente: «El mayor actor…», 4.600 M$, +81 %, 1.900 M$, «cifras auditadas… cada trimestre» e «integrado con Robinhood y Kraken»"
+      ]
+    },
+    "securitize": {
+      "aval": {
+        "antes": "Agente de transferencia registrado ante la SEC. Es quien emite y administra el fondo tokenizado BUIDL de BlackRock.",
+        "ahora": "Su filial Securitize Markets, LLC es bróker-dealer registrado ante la SEC, miembro de FINRA, y opera un sistema alternativo de negociación (ATS). Las demás funciones del grupo están en otras filiales."
+      },
+      "nota": {
+        "antes": "La infraestructura sobre la que las grandes gestoras sacan sus fondos a la cadena. El nombre más institucional del sector.",
+        "ahora": "Plataforma de tokenización, administración y negociación de valores; cada función la lleva una sociedad distinta del grupo."
+      },
+      "fuentes": [
+        "FINRA BrokerCheck, Securitize Markets, LLC: bróker-dealer SEC/FINRA y ATS (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)",
+        "Quitado sin fuente: «Es quien emite y administra… BUIDL» (BUIDL lo emite BlackRock USD Institutional Digital Liquidity Fund, rwa.xyz 20/11/2026 17:21 UTC) y «El nombre más institucional del sector»"
+      ]
+    },
+    "courtyard": {
+      "aval": {
+        "antes": "El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.",
+        "ahora": "Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar hoy en su web la custodia ni el canje."
+      },
+      "nota": {
+        "antes": "Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.",
+        "ahora": "Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados."
+      },
+      "fuentes": [
+        "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service · mercado de NFT y coleccionables (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)",
+        "https://courtyard.io respondió 403 el 20/11/2026 a las 17:16:13 UTC: sin poder comprobar. Quitado: «canjeable… en cualquier momento: respaldo comprobable» y «Líder por volumen semanal en 2026»"
+      ]
+    },
+    "ondo-finance": {
+      "aval": {
+        "antes": "La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.",
+        "ahora": "En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no hay una licencia única para toda la marca."
+      },
+      "fuentes": [
+        "Documentación de USDY para el EEE: cliente profesional o inversor cualificado (auditoria/radar-plataformas.md, «Lo que se sostiene hoy») · 20/11/2026 17:16 UTC",
+        "Quitado sin fuente: «La mayor plataforma de valores tokenizados por volumen» y «en custodia de gestoras reguladas»"
+      ]
+    },
+    "centrifuge": {
+      "aval": {
+        "antes": "Una de las tres plataformas que concentran dos tercios del crédito privado tokenizado; estructura de tramos senior/junior.",
+        "ahora": "Es un protocolo, no el emisor: cada fondo tiene su propio vehículo, jurisdicción y documento de oferta. Sus términos dicen que los productos pueden no estar regulados."
+      },
+      "nota": {
+        "antes": "Financiación de carteras de préstamos y facturas con garantía fuera de cadena. Tuvo impagos por 5,8 M$ en 2023 y reforzó su modelo después.",
+        "ahora": "Financiación de carteras de préstamos y facturas con garantía fuera de cadena."
+      },
+      "fuentes": [
+        "https://centrifuge.io/terms · ni Centrifuge ni sus afiliadas se licencian en cada jurisdicción; los productos pueden no estar regulados (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)",
+        "centrifuge.io respondió 403 el 20/11/2026 a las 17:16:12 UTC. Quitado sin fuente: «dos tercios del crédito privado tokenizado», «tramos senior/junior» y «impagos por 5,8 M$ en 2023 y reforzó su modelo después»"
+      ]
+    },
+    "fireblocks": {
+      "aval": {
+        "antes": "Custodia institucional con seguros y certificaciones de seguridad, usada por bancos y gestoras de primer nivel.",
+        "ahora": "Fireblocks Trust Company, LLC figura en el NYDFS como trust de propósito limitado. Esa licencia es de esa sociedad, no de todo su software."
+      },
+      "nota": {
+        "antes": "El motor de custodia y emisión detrás de decenas de proyectos institucionales de tokenización.",
+        "ahora": "Software de custodia y emisión de activos digitales para empresas e instituciones."
+      },
+      "fuentes": [
+        "NYDFS, Fireblocks Trust Company, LLC (auditoria/radar-plataformas.md, «Lo que se sostiene hoy») · 20/11/2026 17:16 UTC",
+        "Quitado sin fuente: «seguros y certificaciones de seguridad», «usada por bancos y gestoras de primer nivel» y «decenas de proyectos»"
+      ]
+    },
+    "figure": {
+      "aval": {
+        "antes": "Cotiza en Nasdaq (FIGR): cuentas auditadas, información pública trimestral y supervisión de la SEC como emisor.",
+        "ahora": "Figure Securities, Inc. es bróker-dealer registrado ante la SEC (FINRA, CRD 307093) y opera un ATS. Ese registro no cubre a las demás sociedades de Figure."
+      },
+      "fuentes": [
+        "https://files.brokercheck.finra.org/firm/firm_307093.pdf · Figure Securities, Inc., CRD 307093 (auditoria/radar-plataformas.md, «Lo que se sostiene hoy») · 20/11/2026 17:16 UTC",
+        "investors.figure.com respondió 403 el 20/11/2026 a las 17:19:26 UTC. Quitado sin poder comprobar: «Cotiza en Nasdaq (FIGR)…»"
+      ]
+    },
+    "tzero": {
+      "aval": {
+        "antes": "Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.",
+        "ahora": "tZERO Securities, LLC es bróker-dealer registrado en FINRA y opera un sistema alternativo de negociación (ATS). Las demás funciones del grupo están en otras sociedades."
+      },
+      "nota": {
+        "antes": "El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.",
+        "ahora": "Mercado secundario en EE. UU. para valores emitidos en cadena."
+      },
+      "fuentes": [
+        "FINRA BrokerCheck, tZERO Securities, LLC, CRD 123421 (auditoria/radar-plataformas.md, «Lo que se sostiene hoy») · 20/11/2026 17:16 UTC",
+        "Quitado: «de referencia» (superlativo sin fuente) y «autorizado por la SEC» (un ATS se registra, no lo autoriza la SEC)"
+      ]
+    },
+    "tokeny": {
+      "aval": {
+        "antes": "Autora del estándar ERC-3643, hoy la referencia del sector para tokens con reglas de cumplimiento incorporadas.",
+        "ahora": "Autora del estándar ERC-3643, para tokens con reglas de cumplimiento incorporadas."
+      },
+      "nota": {
+        "antes": "La capa de cumplimiento normativo que usan decenas de emisores institucionales.",
+        "ahora": "Capa de cumplimiento normativo para emisores de tokens."
+      },
+      "fuentes": [
+        "Quitado sin fuente: «hoy la referencia del sector» y «que usan decenas de emisores institucionales»"
+      ]
+    },
+    "domoblock": {
+      "motivo_descarte": {
+        "antes": "La propia plataforma declara que no está supervisada por la CNMV, que no es una Empresa de Servicios de Inversión y que sus productos no son valores negociables. Antes sus emisiones pasaban por una ESI autorizada; dejó de ser así a partir del proyecto DOMO-VLC-4.",
+        "ahora": "La propia plataforma declara que no está supervisada por la CNMV, que no es una Empresa de Servicios de Inversión y que sus productos no son valores negociables."
+      },
+      "fuentes": [
+        "https://domoblock.io/faq · «en ningún caso ofrece instrumentos financieros sujetos a supervisión por parte de la CNMV ni opera a través de una entidad de servicios de inversión (ESI)» · 20/11/2026 17:23:54 UTC",
+        "Quitado sin fuente: «Antes sus emisiones pasaban por una ESI autorizada; dejó de ser así a partir del proyecto DOMO-VLC-4» (0 menciones en las fuentes enlazadas, 17:16:17 UTC)"
+      ]
+    },
+    "toucan-protocol": {
+      "etiqueta_descarte": { "antes": "Registro bloqueado", "ahora": "Registro bloqueado en 2022" },
+      "motivo_descarte": {
+        "antes": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra.",
+        "ahora": "En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su fondo CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar."
+      },
+      "fuentes": [
+        "Documentación de Toucan: tokeniza «CORCs from the Puro Registry», «immobilized in an omnibus account within the Puro Registry» · 20/11/2026 17:24:26 UTC",
+        "Web de Toucan: fondo CHAR de créditos de biocarbón · 20/11/2026 17:24:17 UTC"
+      ]
+    }
+  },
+  "fueraDeEsteCambio": [
+    "Licencias, avisos y acceso verificados (verificacion_local del radar: Pax Gold fecha OCC 31/10/2026, Midas condiciones finales de mTBILL, Reental «sin registro declarado» y su aviso) van en la capa de revisión del catálogo, no en esta tabla.",
+    "Región de Reental: la auditoría propone «EE. UU. y España», que no existe en la tabla regiones; se deja «España» y el aval dice ahora que es una empresa norteamericana que ofrece inversiones desde EE. UU. y España.",
+    "Securitize: importe de entrada «Alto» y acceso «Institucional» (la portada anuncia mínimos desde 500 $ y cuentas minoristas, 17:17:25 UTC). Sin una regla escrita de qué importe es «Medio» o «Bajo», no se cambian en este paso.",
+    "Fuentes nuevas (domoblock.io/faq, documentación de Toucan) no se añaden a la tabla fuentes en este paso."
+  ]
+}
