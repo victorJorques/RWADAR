@@ -6,6 +6,36 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 · Claude · Textos del radar corregidos (migración 38) · PREPARADO, SIN APLICAR
+
+- **Encargo (orden de la dirección del 20/11, 17:40 UTC):** «Todo lo falso
+  fuera… que no vuelvan a haber textos ni datos falsos». La auditoría del
+  ciclo encontró falsos o sin fuente los textos de julio y agosto de la tabla
+  base `public.plataformas` (aval, nota, acceso, cadenas, región y el motivo
+  de dos descartadas).
+- **Hecho (rama `claude/textos-radar-2026-11-20`, sobre
+  `claude/catalogo-2026-11-20`):** `rwadar-app/db/38_textos_radar.sql` (una
+  transacción, guarda y UPDATE por plataforma, repetible) y
+  `38_textos_radar_verificar.sql` (solo lee; «RWAdar 38 OK: 23
+  plataformas»); los mismos textos en `02_seed.sql`,
+  `pruebas/02_seed_radar_26.sql` y `rwadar-movil/fixtures/escaparate-local.json`;
+  flujo «Textos del radar (base)» (`textos-radar-base.yml`: ensayo-38,
+  aplicar-38 con TEXTOS y copia cifrada, verificar-38); prueba PGlite
+  `rwadar-app/probar-textos-radar.mjs` (en `npm test` y en `partes-ci.mjs`).
+  Antes, ahora y fuente: `rwadar-app/data/verificaciones/2026-11-20-v2/TEXTOS-RADAR.md`
+  (datos en `textos-radar.json`).
+- **Pruebas:** `probar-textos-radar.mjs` 29/29; `flujos.test.mjs` 13/13;
+  `probar-escaparate-local` 34/34, `probar-radar-canonico-local` 14/14,
+  `probar-verificacion-local-ui` 13/13. No se corrió `npm test` entero.
+- **Pendiente:** unir a main, `ensayo-38` y `aplicar-38` (no se ha tocado
+  Supabase ni lanzado ningún flujo), «Publicar web» y el aviso de novedad.
+  Fuera de este cambio (ver TEXTOS-RADAR.md): licencias y avisos de la capa de
+  revisión (Pax Gold OCC 31/10, Midas condiciones finales, Reental), región
+  «EE. UU. y España» de Reental (no existe), importe y acceso de Securitize,
+  y añadir fuentes nuevas (domoblock.io/faq, documentación de Toucan).
+
+---
+
 ## 14 de noviembre de 2026 (32) · Claude · Noticias del 14/11, recuadro «Activa los avisos» y notificaciones sin cuenta · TODO PUBLICADO Y ENCENDIDO
 
 - **Encargos de la dirección (14/11):** «publícalo todo: las notificaciones,
