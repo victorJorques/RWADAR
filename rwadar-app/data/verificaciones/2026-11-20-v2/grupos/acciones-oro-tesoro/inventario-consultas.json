@@ -6,5 +6,77 @@
   "consultadoUtc": "2026-11-20T16:54:50Z",
   "bytes": 1248073,
   "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "archivo": "fuentes/crudo/midas-docs-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5675,
+  "sha256": "1f656d425ca9b97c9887a5785d146a9d3fbb54b05315a97d72dbbd4835134376"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "archivo": "fuentes/mtbill-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "archivo": "fuentes/crudo/midas-app-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5492,
+  "sha256": "71690048a41c1d7b040e11f135040c134180d786eaf156e9f2ef702e529078b4"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents",
+  "archivo": "fuentes/crudo/midas-docs-issuer.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5726,
+  "sha256": "de971a073c2c2dc0a5dec7de62a244a57186f7ec1f1beb2b7d435d539a3de49d"
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "archivo": "fuentes/crudo/midas-docs-llms-full.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 219438,
+  "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL",
+  "archivo": "fuentes/fmali-midas.json",
+  "http": 400,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 11,
+  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-isin-mtbill.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 4417,
+  "sha256": "01d2531aefc72bb2232a1fdbf3e3d5e47f30cde188f3fbfeddcf03c34432c321"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/esma-priii-emisor-midas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 57761,
+  "sha256": "d28bbf2cda17220e40daf625f36d89e28499a49810b28d128edfb6f523ee624d"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+  "archivo": "fuentes/cnmv-pasaportes-midas.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 217221,
+  "sha256": "e9f91dc4e47aa0615c9dadd00a4a642271a4cf956e756c610551e1fb7e3d319b"
  }
 ]
