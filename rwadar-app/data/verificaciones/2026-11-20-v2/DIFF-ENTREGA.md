@@ -2,12 +2,12 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `4380fcf33f557b1b3e3771bb4071b457fc2de03700352d38320da978208dffe6`, revisión `c8727d7d-cd09-d2cf-d3dc-da3158fe6812`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `cb27c32885c8430a6bb0dd7157d771cc6096245bcb9ead906c74bc6bc94d4f30`, revisión `eca89db7-aac5-35fa-f792-5bffbe8795e2`.
 - Parte de la publicada `434217eb-9b7f-1cd9-a851-fbde7bced2bf` (huella `434217eb9b7f1cd9…`); último día vigente 27/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
-- Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **23** de 288.
+- Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **28** de 288.
 
-## Cambios por ficha (162 en 22 fichas)
+## Cambios por ficha (167 en 22 fichas)
 
 ### spiko-letras-del-tesoro-euro
 
@@ -40,6 +40,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - aviso: «Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.» → (se quita)
 - aviso: (nuevo) → «Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %. Las comisiones tampoco coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni reembolso estándar.»
 - fuentes de la oferta: «https://docs.midas.app/resources/legal-product-documentation/mtbill · https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents · https://docs.midas.app/llms-full.txt · https://midas.app/mtbill» → «https://docs.midas.app/resources/legal-product-documentation/mtbill · https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents · https://docs.midas.app/llms-full.txt · https://midas.app/mtbill · https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_sign…»
+- referencia de la ficha: «Acceso desde España · consulta 01/11/2026: mTBILL: Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public» → (se quita)
+- referencia de la ficha: (nuevo) → «Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany»
+- fuente de la ficha: (nuevo) → «https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media»
 
 ### kraken-xstocks
 
@@ -54,7 +57,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### prosegur-digital-gold
 
-- métrica: «Custodia: Oro en inventario común custodiado por Prosegur (sin lingote asignado)» → «Custodia: Oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)»
+- métrica: «Custodia: Oro en inventario común custodiado por Prosegur (sin lingote asignado)» → «Custodia: Según su contrato, oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)»
 
 ### vivienda-pluddemanngasse-101-graz
 
@@ -154,6 +157,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
 - referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 - aviso: (nuevo) → «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
 
 ### apartamento-vacacional-hinterstoder-50
 
@@ -169,6 +173,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
 - referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 - aviso: (nuevo) → «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
 
 ### vivienda-pottendorfer-stra-e-62-wr-neustadt
 
@@ -261,6 +266,38 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - … que respaldan ( «las dos » → «la de pasaportes »
 - …página cargaba sin  «» → «esos »
 
+### insert into rwadar_catalogo.plataformas (revision_id,plataforma_id,fecha_canonic #13
+
+- …por la FMA. « No se obtuvieron los términos finales vigentes de mTBILL.» → «»
+- …:rwadar_catalogo.estado_acceso,' «No se obtuvieron términos » → «Las condiciones »
+- …obtuvieron términos finales  «vigentes que permitan confirmar acceso minorista, mínimo » → «de mTBILL (17/07/2026) incluyen España entre los países »
+- …, mínimo de  «inversión o elegibilidad desde España» → «la oferta pública y no prohíben la venta a minoristas del EEE»
+- …elegibilidad desde España. «» → « Eso no confirma que la web te deje darte de alta.»
+
+### insert into rwadar_catalogo.alertas (revision_id,plataforma_id,codigo,detalle) s #13
+
+- …EEE lo deciden  «los términos» → «las condiciones»
+- …los términos finales  «vigentes » → «»
+- … vigentes de mTBILL «» → «; las del 17/07/2026 no lo prohíben»
+- … de mTBILL,  «que » → «pero eso »
+- …, que no  «hemos podido obtener» → «confirma que la web te deje darte de alta»
+
+### insert into rwadar_catalogo.plataformas (revision_id,plataforma_id,fecha_canonic #16
+
+- …banks activos a  «30» → «31»
+- …activos a 30/ «09» → «10»
+
+### insert into rwadar_catalogo.plataformas (revision_id,plataforma_id,fecha_canonic #17
+
+- …:rwadar_catalogo.estado_licencia,' «La fuente primaria localizada acredita una emisión española concreta con ERIR; » → «Reental dice que su actividad en España »
+- … ERIR; no  «acredita una » → «está sujeta a »
+- …acredita una autorización  «general de Reental como empresa » → «ni registro previo »
+- …como empresa de  «servicios de inversión» → «la CNMV»
+
+### insert into rwadar_catalogo.plataforma_fuentes (revision_id,plataforma_id,campo, #67
+
+- ….campo_plataforma,'reental- «emision» → «web»
+
 ### rwadar_catalogo.ofertas 'spiko-letras-del-tesoro-euro' 'https://www.spiko.io/es/spiko-letras-del-tesoro-euro'
 
 - …mostrada":"2, «40» → «45»
@@ -347,10 +384,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - … emisor (del  «06» → «16»
 - …06/10 al  «10/11/2026» → «<FECHA>»
 - …midas.app/mtbill" «» → «,"https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media","https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV…»
+- …/midas.app/" «» → «,"https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media"»
+- …{"etiqueta":" «Acceso desde España · consulta 01/11/2026","valor":"mTBILL: Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public","fechaDato":null,"fechaConsulta":"2026-11-01","fuente":"https://midas.app/assets/main-DOxid0Zj.js","alcance":"Configuración de la propia web; coincide …» → «»
+- …de reembolso."} «» → «,{"etiqueta":"Países de oferta pública · Condiciones Finales del 17/07/2026","valor":"Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany","fechaDato":"2026-07-17","fe…»
 
 ### rwadar_catalogo.ofertas 'prosegur-digital-gold' 'https://www.prosegurcrypto.com/digital-gold'
 
-- …valor":"Oro  «» → «separado de los bienes de Prosegur, »
+- …,"valor":" «Oro » → «Según su contrato, oro separado de los bienes de Prosegur, »
 - …:"Oro en  «» → «un »
 - …Oro en inventario  «común custodiado por Prosegur» → «conjunto de los clientes»
 
@@ -560,6 +600,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,09 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
 - …del proveedor comprobado  «el30» → «el 30»
 - …{"etiqueta":" «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026","valor":"2,47 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://www.brickwise.at/assets/at0000a2zt84","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegi…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
 - …Übertragung der Token  «erfolgt ausschließlich » → «hat »
 - … durch den Anleger «» → « zu erfolgen»
 - …ese precio había  «21» → «20»
@@ -590,6 +631,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"4,84 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
 - …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
 - …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":4.1; rentalSurplus=14233.22","fechaDato":"2026-10-31","fechaConsulta":"2026-11-01","fuente":"https://www.brickwise.at/assets/at0000a31kp7","alcance":"Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (14233.2…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
 - …Übertragung der Token  «erfolgt ausschließlich » → «hat »
 - … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
@@ -710,13 +752,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - … 18/11/2026 «» → «)»
 - … y la suscripción «, » → « empieza »
 
-## Lo que no se aplicó tal cual (8)
+## Lo que no se aplicó tal cual (10)
 
 - spiko-smart-cash-euro: Quitar la dirección de la ficha GECO c124199 (https://geco.amf-france.org/produit-d-epargne/c124199), que ya no se publica, de la lista de fuentes de la ficha (documentacion-ofertas.json, «fuentes»)
 - spiko-smart-cash-euro: Corregir también el claim del expediente que dice «según el certificado de la AMF y el folleto» (DECISIONES §2: «Igual en el claim del expediente»)
 - varias (Spiko ×3, Kraken, Robinhood y Prosegur Digital Gold): Textos nuevos de la tarjeta que proponen los expedientes (mínimo, acceso desde España o salida) con el mismo fondo y otra redacción
 - spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro: A3 · referencia de la tarjeta «Acceso desde España» con fechaDato 2026-11-13 (y, en Smart Cash, el alcance «Tabla de disponibilidad de Spiko (13/11/2026)…»), sin cambiar el valor
-- randhartingergasse-9-viena, apartamento-vacacional-hinterstoder-50, vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel: A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md
+- randhartingergasse-9-viena, apartamento-vacacional-hinterstoder-50, vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel: A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md: solo Pottendorfer, GreenPoint y Cohotel, que se quedan como estaban
 - kraken-xstocks: A6 · descripción «más de 130 acciones» → «más de 1.000 acciones y ETF de EE. UU.»
-- radar (30 fichas): Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)
+- radar (30 fichas): Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas), salvo A23, A24 y A25
 - randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50: A21 · tarjeta «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.» (el aviso nuevo de A21 sí entra)
+- mtbill: A22 · quitar https://midas.app/assets/main-DOxid0Zj.js (da 404) de la lista «fuentes» de la ficha (documentacion-ofertas.json)
+- radar: midas: A24 · que el acceso, la licencia y el aviso «terminos_finales_no_confirmados» de Midas citen como fuente el PDF de las Condiciones Finales de mTBILL del CDN de GitBook

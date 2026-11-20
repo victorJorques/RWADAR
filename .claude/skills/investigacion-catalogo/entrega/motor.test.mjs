@@ -140,6 +140,24 @@ test('guardas de preparar: cada cambio indebido en decisiones.json para la entre
   finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
+test('radar: cambios-radar.json cambia el texto de un aviso de plataforma por su código, solo con el «antes» publicado', () => {
+  const cr = leer(path.join(CICLO, 'cambios-radar.json'));
+  const radar = leer(path.join(CICLO, 'radar-canonico-26.json'));
+  const p = radar.plataformas.find(x => x.alertasCriticas.length), a = p.alertasCriticas[0];
+  const con = alertas => { const dir = tmp('alertas');
+    try { prepara({ salida: dir, cambiosRadar: { ...cr, plataformas: { [p.slug]: { alertas } } } });
+      return leer(path.join(dir, path.relative(RAIZ, CICLO), 'radar-canonico-26.json')); }
+    finally { fs.rmSync(dir, { recursive: true, force: true }); } };
+  const r = con({ [a.codigo]: { antes: a.detalle, detalle: 'Texto nuevo del aviso, de prueba.', motivo: 'prueba' } });
+  const q = r.plataformas.find(x => x.slug === p.slug);
+  assert.equal(q.alertasCriticas[0].detalle, 'Texto nuevo del aviso, de prueba.');
+  assert.deepEqual(q.alertasCriticas[0].fuentes, a.fuentes, 'las fuentes del aviso no cambian');
+  assert.deepEqual({ ...q, alertasCriticas: p.alertasCriticas }, { ...p }, 'nada más cambia en la plataforma');
+  assert.throws(() => con({ [a.codigo]: { antes: a.detalle + ' ', detalle: 'x', motivo: 'm' } }), /«antes» = lo publicado/);
+  assert.throws(() => con({ codigo_que_no_existe: { antes: a.detalle, detalle: 'x', motivo: 'm' } }), /aviso desconocido/);
+  assert.throws(() => con({ [a.codigo]: { antes: a.detalle, detalle: 'x', motivo: 'm', fuentes: ['otra'] } }), /solo antes, detalle y motivo/);
+});
+
 test('cálculos: el motor rehace las cifras de RWAdar', () => {
   assert.equal(comprobarCalculo({ tipo: 'comision', precio: '95', porcentaje: '1,5', resultado: '96,43' }, 't'), '96,43');
   assert.equal(comprobarCalculo({ tipo: 'comision', precio: '68,80', porcentaje: '1,5', resultado: '69,83' }, 't'), '69,83');

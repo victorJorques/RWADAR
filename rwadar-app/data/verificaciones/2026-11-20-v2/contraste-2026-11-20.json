@@ -3,12 +3,12 @@
   "fecha": "2026-11-20",
   "etiqueta": "2026-11-20",
   "revisionAnterior": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
-  "revisionNueva": "c8727d7d-cd09-d2cf-d3dc-da3158fe6812",
+  "revisionNueva": "eca89db7-aac5-35fa-f792-5bffbe8795e2",
   "decision": "Puesta al día pedida por el responsable del proyecto el 20/11/2026 («Actualiza las fichas y la información de RWAdar, ofertas, noticias, todo antes de las 12 de la noche»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
-    "DECISIONES-COORDINADOR.md": "e8d099a150e1af7cdb99443ef412cb398fcfd9fadd180b93baf4e96a91a83c12",
+    "DECISIONES-COORDINADOR.md": "40caee27edd7e64274e364777b2b2363710dcd9f690b2b3685b91171fd8c91e7",
     "radar-contraste-2026-11-20.json": "1708ca4bef57237c15d532e5a33265ac3831f904b7a2578b83de1de7f6100961",
-    "cambios-radar.json": "0f6fb01f544d2a3e3143dd0732e6c825de0da3d7778dce47430b169e762fdae4"
+    "cambios-radar.json": "d415937f1b76afb4c0dbe854f5db63f811f9852ebb049f9b4f75259c14f61c19"
   },
   "radar": {
     "fuentes": 69,
@@ -18,7 +18,19 @@
     ],
     "cambios": {
       "fuentes": {},
-      "plataformas": {}
+      "plataformas": {
+        "pax-gold": [
+          "licenciaRegistro"
+        ],
+        "midas": [
+          "licenciaRegistro",
+          "acceso",
+          "alertas"
+        ],
+        "reental": [
+          "licenciaRegistro"
+        ]
+      }
     }
   },
   "cifras": {
@@ -188,6 +200,24 @@
       "despues": "https://docs.midas.app/resources/legal-product-documentation/mtbill · https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents · https://docs.midas.app/llms-full.txt · https://midas.app/mtbill · https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media · https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media"
     },
     {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: mTBILL: Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany"
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media"
+    },
+    {
       "slug": "kraken-xstocks",
       "campo": "resumen",
       "antes": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.",
@@ -221,7 +251,7 @@
       "slug": "prosegur-digital-gold",
       "campo": "métrica",
       "antes": "Custodia: Oro en inventario común custodiado por Prosegur (sin lingote asignado)",
-      "despues": "Custodia: Oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)"
+      "despues": "Custodia: Según su contrato, oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)"
     },
     {
       "slug": "vivienda-pluddemanngasse-101-graz",
@@ -692,6 +722,12 @@
       "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt)."
     },
     {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
       "slug": "apartamento-vacacional-hinterstoder-50",
       "campo": "referencia de la ficha",
       "antes": "Venta más barata · 13/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)",
@@ -762,6 +798,12 @@
       "campo": "aviso",
       "antes": null,
       "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt)."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -1174,8 +1216,8 @@
     },
     {
       "slug": "randhartingergasse-9-viena, apartamento-vacacional-hinterstoder-50, vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel",
-      "que": "A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md",
-      "porque": "DECISIONES §6 (A20) acota la corrección a las fichas de auditoria/brickwise-a.md. «Custodia» se corrige también en Randhartingergasse y Hinterstoder, cuyo KID cita con ese literal auditoria/brickwise-b.md. «Qué se adquiere» de esas dos (su KID habla de «Genussrecht», sin literal comprobado) y las dos citas de Pottendorfer, GreenPoint y Cohotel no tienen hoy un literal del KID comprobado por un auditor: se quedan como estaban, para el próximo ciclo."
+      "que": "A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md: solo Pottendorfer, GreenPoint y Cohotel, que se quedan como estaban",
+      "porque": "DECISIONES §6 (A20) acota la corrección a las fichas de auditoria/brickwise-a.md. «Custodia» se corrige también en Randhartingergasse y Hinterstoder, cuyo KID cita con ese literal auditoria/brickwise-b.md, y su «Qué se adquiere» se corrige en esta entrega con el literal de su KID («Das Produkt läuft endlos/ewig …», REVISION-ENTREGA-contenido.md O5 y REVISION-ENTREGA-cumplimiento.md O5). En Pottendorfer, GreenPoint y Cohotel las dos citas están comprobadas en su KID por los revisores de la entrega («erfolgt ausschließlich eigenverantwortlich» y «Genussschein») y son correctas: no hay que cambiar nada."
     },
     {
       "slug": "kraken-xstocks",
@@ -1184,13 +1226,25 @@
     },
     {
       "slug": "radar (30 fichas)",
-      "que": "Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)",
-      "porque": "DECISIONES §6 las deja fuera de esta entrega: son textos de la tabla base «plataformas» (migración aparte), no de la revisión del catálogo; el motor tampoco cambia textos del radar que no estén en cambios-radar.json."
+      "que": "Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas), salvo A23, A24 y A25",
+      "porque": "DECISIONES §6 las deja fuera de esta entrega: son textos de la tabla base «plataformas» (migración aparte), no de la revisión del catálogo. A23 (Pax Gold, licencia), A24 (Midas, licencia, acceso y aviso) y A25 (Reental, licencia) sí entran, por DECISIONES §9, con cambios-radar.json."
     },
     {
       "slug": "randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50",
       "que": "A21 · tarjeta «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.» (el aviso nuevo de A21 sí entra)",
       "porque": "No se puede montar con el motor tal cual: la tarjeta de la web y de la app (resumenOferta) enseña «Sin comprobar si se puede contratar desde España» para cualquier valor que empiece por «Sin confirmar», antes y después, y la comprobación del motor en PGlite exige que la tarjeta enseñe el valor nuevo («la tarjeta enseña «Sin comprobar si se puede contratar desde España» y no «Sin confirmar: … número fiscal austriaco.»»), así que para. La condición del número fiscal austriaco llega al lector por el aviso nuevo de A21; el texto de la tarjeta queda como estaba. Para cambiarlo hace falta montarlo sin el motor (motor:false) o ajustar esa comprobación del motor."
+    },
+    {
+      "slug": "mtbill",
+      "que": "A22 · quitar https://midas.app/assets/main-DOxid0Zj.js (da 404) de la lista «fuentes» de la ficha (documentacion-ofertas.json)",
+      "porque": "El motor no quita direcciones de la lista «fuentes» de una ficha (solo cambia, añade o quita referencias). Ya no la cita ninguna referencia: la de «Acceso desde España · consulta 01/11/2026» pasa a citar las Condiciones Finales del CDN de GitBook. Para quitarla de la lista hace falta montarlo sin el motor (motor:false) o añadir al motor un cambio «fuenteFichaQuita».",
+      "detalle": "DECISIONES §8, A22; REVISION-ENTREGA-sql.md, REVISION-ENTREGA-contenido.md y REVISION-ENTREGA-cumplimiento.md, O1."
+    },
+    {
+      "slug": "radar: midas",
+      "que": "A24 · que el acceso, la licencia y el aviso «terminos_finales_no_confirmados» de Midas citen como fuente el PDF de las Condiciones Finales de mTBILL del CDN de GitBook",
+      "porque": "El motor solo cambia textos del radar con las 69 fuentes que ya tiene (cambios-radar.json no añade fuentes al radar). Los textos nuevos entran, pero el acceso y el aviso siguen citando el folleto base (midas-mtbill) y el folleto de 2024; las Condiciones Finales están citadas en la ficha de mTBILL. El código del aviso tampoco cambia (se propone renombrarlo en la migración 38).",
+      "detalle": "DECISIONES §9, A24; REVISION-ENTREGA-sql.md O3, REVISION-ENTREGA-contenido.md O3 y O6, REVISION-ENTREGA-cumplimiento.md O3 (4) y R6."
     }
   ],
   "sinCambios": [

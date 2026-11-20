@@ -512,7 +512,8 @@
       "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
       "https://docs.midas.app/llms-full.txt",
       "https://midas.app/assets/main-DOxid0Zj.js",
-      "https://midas.app/"
+      "https://midas.app/",
+      "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media"
     ],
     "caracteristicas": [
       {
@@ -598,20 +599,20 @@
         "alcance": "La página HTML devuelve 403; se leyó la exportación oficial llms-full.txt. La lista de «Permitted Jurisdictions» con España solo se vio en la ventana emergente de la web el 23/10 (no revalidada hoy). Localizador: Eligibility & Compliance."
       },
       {
-        "etiqueta": "Acceso desde España · consulta 01/11/2026",
-        "valor": "mTBILL: Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public",
-        "fechaDato": null,
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://midas.app/assets/main-DOxid0Zj.js",
-        "alcance": "Configuración de la propia web; coincide con las Condiciones Finales. Localizador: Bundle JS de midas.app, mapa de emisores (extracto en fuentes/midas-app-bundle-extracto-emisores.txt)."
-      },
-      {
         "etiqueta": "Países de oferta según la web de Midas · consulta 05/11/2026",
         "valor": "España figura entre las 14 jurisdicciones permitidas del aviso de entrada de la web de Midas (versión 1.0.2), las mismas 14 de oferta pública de las Condiciones Finales",
         "fechaDato": "2026-11-05",
         "fechaConsulta": "2026-11-05",
         "fuente": "https://midas.app/",
         "alcance": "Aviso «Eligibility & Jurisdiction» (versión 1.0.2) que enseña la web de Midas al entrar. Se leyó el 05/11/2026 en el código que sirve esa página (localizador: midas.app/assets/main-C67ipI_t.js, «Permitted Jurisdictions»; el nombre del archivo cambia con cada versión de la web): la página da 403 a una lectura automática y no se vio en pantalla. Países: Austria, Bélgica, Francia, Alemania, Irlanda, Italia, Luxemburgo, Malta, Países Bajos, Polonia, Portugal, Rumanía, España y Suecia. No prueba que se acepte el alta de un residente en España (no se hizo KYC). El estado de la ficha no cambia: siguen en conflicto los límites de reembolso."
+      },
+      {
+        "etiqueta": "Países de oferta pública · Condiciones Finales del 17/07/2026",
+        "valor": "Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany",
+        "fechaDato": "2026-07-17",
+        "fechaConsulta": "2026-11-20",
+        "fuente": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+        "alcance": "Condiciones Finales de mTBILL del 17/07/2026 (copia en la documentación de Midas, SHA-256 b1e58001…), leídas el 20/11/2026: España está entre los países de la oferta pública y «Prohibition of Sales to EEA Retail Investors: not applicable». No confirman que la web te deje darte de alta."
       }
     ]
   },
@@ -3140,7 +3141,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
@@ -3384,7 +3385,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",

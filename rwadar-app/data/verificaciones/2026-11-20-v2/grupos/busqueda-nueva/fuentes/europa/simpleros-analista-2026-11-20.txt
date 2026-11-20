@@ -1,0 +1,137 @@
+RWAdar · Simpleros, bonos digitales DLT (2.ª ronda) vía CrowdedHero · copia de fuentes del analista
+Fecha: 2026-11-20. Herramienta: curl con su agente por defecto, solo GET, TLS normal; CNMV con accept-language: es.
+Crudos (fuera de Git): fuentes/crudo/europa/simpleros-analista/ (consultas.tsv con hora, HTTP, bytes y SHA-256).
+Los crudos traen nombres de personas físicas (equipo, firmantes, responsables, titulares reales): aquí se omiten.
+No se ha intentado ver la KIIS ni ningún documento reservado por ninguna vía (ACCESO-FUENTES §1 y §2.5).
+
+=== 1. Ficha de la oferta · https://www.crowdedhero.com/project/view?id=50
+HTTP 200 · 2026-11-20T21:12:01Z · 77.705 B · SHA-256 c0d34547edaea4689dc7f9765307ef702bf99817bf4d165527c01877cdc85488
+(página dinámica: el hash cambia en cada visita; las cifras no frente a la copia de las 21:03)
+Literales:
+- «Simpleros 10,5% Fixed Digital Bonds – €200,000 Round (2nd)» · «Simpleros S.L.» · «Bond · Lending · Spain»
+- «Raising now» · «6 Days left» · «€82 500.00 raised» · «82.3% of min. target» · «Min target €100 250.00» · «Max target €200 000.00»
+- «Annual interest 10.50%» · «Maturity term 30 months» · «Minimum investment €250.00» · «Investors 4»
+- «Proven Profitability 2025 revenue €1.96M with net profit of €202,505.» (sin documento que lo respalde)
+- «Fixed Yield Dividends 10,5% annual yield paid semi-annually.» (llama «dividendos» al cupón de un bono)
+- «Spain’s alternative lending and credit market continues to expand as businesses seek flexible financing solutions.» (la empresa presta a consumidores, no a empresas)
+- «Target Raise €200,000 (Minimum threshold €50,000)» (choca con «Min target €100 250.00» de la cabecera)
+- «Term 2.5 years Maturity: 15 November 2028»
+- Riesgos: «Capital loss risk – You may lose all your invested capital» · «Subordinated bonds – In case of insolvency, you are paid after senior creditors» · «No secondary market – High liquidity risk» · «No deposit guarantee or investor compensation scheme» · «Regulatory and credit risk in consumer lending sector»
+- «This offer has not been reviewed by Latvijas Banka or the European Securities and Markets Authority (ESMA).»
+- Documentos: «Documents (h2 - can be used multiple times accross one text)» · «Moneyz.csv» · «Please note, that only registered and Verified investors could access the restricted Project campaign documents.» · «Apraksts par dokumenta failu Lorem ipsum dolor sit amet…» (cuatro veces; los enlaces de «Moneyz.csv» son href="#")
+- Pie: «AGENT NAME is registered in the REGAFI under the number REGAFI NUMBER…» (sin rellenar)
+- Pie: «CrowdedHero Latvia SIA (registration No. 50203309441…) is a licensed crowdfunding service provider (License number 06.15.01.806/120, issued 16.08.2022) and is supervised by the Bank of Latvia»
+- Enlace del pie al supervisor: https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/ → redirige a https://www.bank.lv/ y la conexión se corta (curl 92) a las 21:13:53Z: enlace roto (la FKTK se integró en Latvijas Banka).
+
+=== 2. Listado de proyectos · https://www.crowdedhero.com/project/index
+HTTP 200 · 2026-11-20T21:13:52Z · 58.552 B · SHA-256 80b98dcfeba10c81d4afe016d74571cab159a848b62d7e35b194c312bea52fab
+- 2.ª ronda: «Bond · 6 days left · Simpleros 10,5% Fixed Digital Bonds – €200,000 Round (2nd) · €82,500 of €100,250 min. target 82.3% · €250 min. investment · 4 investors · €200,000 max. target»
+- 1.ª ronda: «Bond · Funded · Simpleros | 10,5% Fixed Yield Digital Bonds – €200,000 Round · €50,250 of €50,000 min. target 100.5% · €250 min. investment · 9 investors · €200,000 max. target»
+- Otra campaña de la misma sociedad: «Shares · Funded · Automated online lending · Simpleros S.L. · €216,100 of €215,000 min. target · 55 investors» (en el tablón secundario figura como «Simpleros Invest AS», con SPV)
+- «Shares · Funded · Restoration of Zentene Manor … €450 of €32,040 min. target 1.4% · 2 investors»: la plataforma marca «Funded» una campaña al 1,4 % de su mínimo.
+- Aritmética: 100.250 € (mínimo de la cabecera de la 2.ª ronda) = 50.250 € (lo captado en la 1.ª) + 50.000 € (mínimo de los términos). Si el contador fuera acumulado, la 2.ª ronda solo llevaría 32.250 € de nuevo. La ficha no lo explica: es una lectura posible, no un dato.
+
+=== 3. Ficha de la 1.ª ronda · https://www.crowdedhero.com/project/view?id=44
+HTTP 200 · 2026-11-20T21:14:11Z · 75.492 B · SHA-256 a4361b7613e476385d67e62a10b5055ab52fb5d491aebc01e7073841a06b4088
+- «Funded» · «€50 250.00 raised» · «100.5% of min. target» · «Min target €50 000.00» · «Max target €200 000.00» · «Investors 9»
+- Texto idéntico al de la 2.ª ronda (mismo relleno en documentos), salvo estado e inversores.
+
+=== 4. Términos de la emisión (publicación obligatoria del registrador, art. 5 eWpG)
+https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf
+HTTP 200 · 2026-11-20T21:12:02Z · 99.476 B · 5 páginas · SHA-256 c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056 (igual que el 11/11 y que la consulta de las 21:04)
+La raíz https://de000a4exnm2.register.nyala.de/ (21:12:03Z, «Emissionsbedingungen») redirige por script a este mismo PDF.
+Literales:
+- «TERMS AND CONDITIONS OF THE DIGITAL BONDS · SIMPLEROS, S.L. · EUR 500,000 | 10.50% p.a. | DLT Digital Bonds | eWpG §16 | Maturity 15.11.2028»
+- «ISIN: DE000A4EXNM2 | WKN: A4EXNM | Issue Date: 01.07.2026» · «CIF B01787720» · «LEI 98450082BEF114765441»
+- «Instrument Subordinated DLT Digital Bonds (Kryptowertpapiere, eWpG §16)»
+- «Total Volume EUR 500,000 (2,000 units × EUR 250 nominal)» · «First Campaign EUR 200,000 (min. EUR 50,000)»
+- «Interest Rate 10.50% p.a. (5.25% per half-year, 30E/360)» · «Interest Payment Semi-annual: 30 June and 31 December each year» · «First Payment 31 December 2026»
+- «Subscription 01.07.2026 – 30.06.2027»
+- «DLT Registrar Smart Registry GmbH (HRB 234468 B, Berlin)» · «Custodian Tangany GmbH (HRB 258556, Munich)» · «Payment Agent Lemonway SAS»
+- «COLLATERAL Pledge (prenda de valores) over 3 bonds of Audacia Capital OÜ, ISIN EE3300002252, nominal EUR 300,000 total, constituted by [persona física, nombre omitido]»
+- «Governing Law Laws of the Republic of Latvia» · «Jurisdiction Courts of the Republic of Latvia»
+- 2.1: «issued as Kryptowertpapiere … in the form of Einzeleintragung (single entry) and are registered as a single aggregate entry in the electronic securities register … The individual entitlements of each Bondholder are recorded by the Platform on its own books»
+- 2.2: «in the event of insolvency of the Issuer, subordinate to all senior creditors»
+- 2.3: «The minimum subscription amount is EUR 250 (one Digital Bond).»
+- 4.1: «redeemed at 100% of their nominal value (EUR 250 per Digital Bond) on 15 November 2028»
+- 4.2: «The Issuer may redeem the Digital Bonds early (in whole but not in part) at any time after 15 November 2027»
+- 5.3: «A commission of 5.5% of each interest payment is deducted by the Platform … commencing from the second year»
+- 5.4: «An annual Digital Asset Fee of 35 basis points (0.35%) on the outstanding nominal value … deducted from interest payments»
+- 6.2: «successful if at least EUR 50,000 … If the minimum threshold is not reached, all collected funds are returned to subscribers via Lemonway within 5 business days»
+- 6.4: «The entry fee of 1.25% of the invested amount is payable by the subscriber»
+- 7.5: «The aggregate nominal value of the Pledged Securities (EUR 300,000) exceeds the initial First Campaign target (EUR 200,000), providing a coverage ratio of at least 150%.»
+- 8.1: «transferable only through the Platform … No secondary market is provided by the Issuer or the Platform.»
+- 10.1: «The Platform shall act as representative of the Bondholders (comisario)… holding and enforcing the Collateral»
+- 11.1: «The Issuer shall publish quarterly reports on the Platform» (solo en la plataforma, para inversores)
+- El documento solo describe la «First Campaign». No hay términos públicos propios de la 2.ª ronda.
+- Metadatos del PDF: título «BondProspectus_SIMPLEROS V4.0», creado el 03/07/2026 (el autor es una persona física: se omite).
+
+=== 5. Registrador · https://www.nyala.de/en/products/electronic-securities
+HTTP 200 · 2026-11-20T21:12:03Z · 206.104 B · SHA-256 f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427 (igual que a las 21:04)
+- «Simpleros Bonds X · EUR 500.000,00 Total issuance amount · DE000A4EXNM2 ISIN · 10,5 % Interest rate · EUR 250 Token nominal value · July 1, 2026 Date of Issuance · November 15, 2028 Date of Maturity · View Terms of Issue»
+
+=== 6. BaFin · Smart Registry GmbH
+https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639
+HTTP 200 · 2026-11-20T21:12:17Z · SHA-256 e808105621b4df7ac457a8cc863d509b8af51433e0c4c30b5c4a6ccee34edbe6
+- «Smart Registry GmbH · Kryptowertpapierregisterführer, Sehr kleines Institut · Uhlandstraße 32 10719 Berlin»
+- «Kryptowertpapierregisterführung (§ 1 Abs. 1a Satz 2 Nr. 8 KWG) 19.08.2026» (posterior a la «Issue Date 01.07.2026» de los términos)
+
+=== 7. CNMV · PSFP europeos que prestan servicios en España
+https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001
+HTTP 200 · 2026-11-20T21:12:04Z · SHA-256 fe578b1438a90bc3b73be8193d9506f516cf4b195b1712a552e245e5cc3be4fb (igual que el 11/11)
+- «CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA) · Nº Registro oficial 1 · Fecha registro oficial 01/09/2022 · País LETONIA»
+- La ficha lista dos personas como responsables (nombres omitidos). Ver punto 10.
+
+=== 8. ESMA · registro de proveedores de financiación participativa (API pública)
+https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json
+HTTP 200 · 2026-11-20T21:12:05Z · SHA-256 8648122fa7b3793230a5a7c55ba216a3daaa6279b4fa0184e26831edd6a56701
+- «ae_entityName: SIA CrowdedHero Latvia» · «ae_competentAuthority: Latvijas Banka» · «ae_status: Active» · «ae_authorisationNotificationDateStr: 16/08/2022» · «ae_hostMemberStates: ["EUROPEAN UNION"]» · «ae_lastUpdateStr: 22/02/2024»
+
+=== 9. Advertencias de la CNMV (buscador público, accept-language: es)
+- Simpleros · 21:12:06Z · SHA-256 846fd4f5… · «No hay datos disponibles.» · https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros
+- CrowdedHero · 21:12:07Z · SHA-256 cca22352… · «No hay datos disponibles.» · https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero
+- Audacia Capital · 21:14:27Z · SHA-256 5efae2ba… · «No hay datos disponibles.» · https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Audacia%20Capital
+- Lemonway · 21:14:29Z · SHA-256 658a86c2… · «No hay datos disponibles.» · https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lemonway
+- Control positivo «Trading» · 21:12:08Z · SHA-256 379f05a4… · con resultados: el buscador funciona.
+
+=== 10. Registro mercantil de Estonia (e-Äriregister) · emisor de los bonos dados en prenda
+https://ariregister.rik.ee/eng/company/16250495
+HTTP 200 · 2026-11-20T21:13:22Z · 297.317 B · SHA-256 1ed1344847287a0899f301ba2f6558ddf6201b450352ea69f03622bb00a73ab8
+- «Audacia Capital OÜ (16250495)» · «Private limited company» · «Status Entered into the register» · «Registered 14.06.2021»
+- «Capital is 20 000 €» · «Established without making contribution»
+- «Legal person has non-submitted annual reports.» · «2025 … Not submitted (due date 30.06.2026)»
+- «Business and other management consultancy activities 70201 Principal activity»
+- Titulares reales («Beneficial owners», «Direct ownership», desde el 14.06.2021): dos personas residentes en Letonia (nombres omitidos). Son las mismas dos personas que la CNMV lista como responsables de CrowdedHero Latvia (punto 7), y una de ellas firma los términos de Simpleros como presidente del consejo de la plataforma (punto 4).
+- Conclusión: la prenda que «asegura» los bonos son bonos de una consultora estonia con 20.000 € de capital sin desembolsar, sin cuentas de 2025 presentadas y propiedad de los dueños de la plataforma, que a la vez es la fiduciaria que tendría que ejecutar esa prenda. La «cobertura del 150 %» de los términos (7.5) se apoya solo en el valor nominal de esos bonos.
+
+=== 11. Cuentas de la plataforma (data.gov.lv, registro mercantil de Letonia, API CKAN pública)
+- Registro: https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&q=50203309441 · 21:12:21Z · SHA-256 4e18bebd… · «SIA "CrowdedHero Latvia"», alta 2021-04-13, «terminated: None»
+- Balance 2025: …resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={"statement_id":2269545} · 21:12:18Z · SHA-256 fc2fcb09… · «cash: 2121 · total_assets: 35150 · current_liabilities: 86235 · equity: -51085»
+- Pérdidas y ganancias 2025: …resource_id=d5fd17ef-d32e-40cb-8399-82b780095af0&filters={"statement_id":2269545} · 21:12:19Z · SHA-256 c4421879… · «net_turnover: 39322 · net_income: -68723»
+
+=== 12. Documentos de la plataforma
+- Contrato de suscripción DLT · https://www.crowdedhero.com/legal?category=dlt · 21:12:10Z · SHA-256 fd1bd716… (página dinámica)
+  «This Agreement is effective as of 1 July 2026 | Version 1.0»
+  «"KIIS" The Key Investment Information Sheet for the specific Offer, prepared by the Issuer pursuant to Article 23 ECSPR and Annex V thereof, available in Latvian, English and German on the Platform.»
+  «DLT-based transferable securities (Kryptowertpapiere) are issued by "NYALA Digital Asset" AG» (los términos dicen que el emisor es Simpleros)
+  3.3: «The Digital Bonds are registered in the Investor's name in the electronic crypto securities register. Registration constitutes legal ownership pursuant to §24 eWpG.» (los términos 2.1 dicen que la titularidad individual la lleva la plataforma en sus libros)
+  2.4: «a Reflection Period of 4 calendar days applies» (inversor no experimentado)
+  5.2[b]: «there is no secondary market for Digital Bonds; they are issued under a 'buy and hold' model»
+  5.1[e]: «the Investor is resident, incorporated or registered in an EU/EEA Member State or in a third country imposing equivalent AML/CFT obligations»
+  7.2: «Transfers of Digital Bonds between investors are technically possible only through the Platform … A transfer fee applies as specified in the KIIS.»
+  10.1: orden de prelación: (1) Bond Conditions (2) este contrato (3) condiciones de la plataforma (4) KIIS
+- Condiciones generales · https://www.crowdedhero.com/legal?category=terms · 21:12:11Z · SHA-256 a27e5c6b…
+  6.1.6: «be residing and/or registered in a Member State or in a third-party country imposing equivalent obligations…» · 11.5: «We may offer different content and services on the Platform to the Investors depending on their residence country.»
+- Preguntas frecuentes · https://www.crowdedhero.com/faq?category=investor · 21:12:12Z · SHA-256 a75d1424…
+  «Can I invest from abroad? Yes, you can. Investors residing outside Latvia can invest in offers available on CrowdedHero, with the exception of investors based in the United States»
+- Tarifas · https://www.crowdedhero.com/pricelist/investor-pricelist · 21:12:13Z · SHA-256 e953fc3a…
+  «Administration* 1.25% Of the amount invested per project» · «Bond model Digital Asset Fee (annual) 0.35%» · «Bond model Interest (semi-annual) 0.55% Of the interest (coupon) amount» (los términos 5.3 dicen 5,5 %)
+- Mercado secundario · https://www.crowdedhero.com/secondary-market · 21:12:14Z · SHA-256 9d1b4a78…
+  «Showing 1–7 of 7 listings»: solo acciones (Padures muiža, Simpleros Invest AS, TheGeGe); ningún bono.
+- Versiones de idioma de la ficha: /de/project/view?id=50 → 200; /es/project/view?id=50 → 404 (21:13:55Z). Web en inglés, alemán y letón; nada en español.
+
+=== 13. Emisor · web de Simpleros
+- https://simpleros.es/ · 21:12:16Z · SHA-256 7ca26af4… · «Préstamos online, sencillos, rápidos» · «Importe Hasta 1000 €» · «Plazo Hasta 365 días» · «Tu primer crédito de hasta 300€» · «Historial crediticio no importa»
+- https://simpleros.es/condiciones-generales · 21:12:15Z · SHA-256 08c039b0… · «SIMPLEROS, S.L. … domicilio social en Avenida Diagonal 442, número 1º - 1, 08037, Barcelona y … N.I.F. B-01787720, inscrita en el Registro Mercantil de Barcelona, al Tomo 47434, Folio 134, Hoja 551677» · préstamos regidos por la Ley 16/2011 de contratos de crédito al consumo.
+  (Los términos de los bonos dan otra planta: «Av. Diagonal 442, 3º 1ª».)
+- Las cifras de 2025 de la ficha (ingresos 1,96 M€, beneficio 202.505 €) no tienen documento público: las cuentas del Registro Mercantil no son de acceso gratuito y no se han consultado.

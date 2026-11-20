@@ -1,0 +1,103 @@
+Franklin OnChain Euro Liquidity Fund · lecturas propias del revisor independiente · 20/11/2026
+Crudos en fuentes/crudo/revision-franklin-euro/ (fuera de Git). Horas en UTC, tomadas con date -u.
+Peticiones normales con curl (sin cambiar el agente), TLS verificado. A la CNMV, con «accept-language: es».
+
+1) Folleto (inglés, «DATED SEPTEMBER 2026», 83 páginas)
+   https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf
+   2026-11-20T21:14:27Z · HTTP 200 · 1288473 B · application/pdf
+   SHA-256 ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9 (el mismo que el del analista)
+   p. 2  «1. Franklin OnChain U.S. Government Liquidity Fund» / «2. Franklin OnChain Euro Liquidity Fund»
+   p. 4  «Investors considering investing with the Company must do it via either the App or the Institutional Web Portal.
+         The App is available through the Apple App Store or Google Play (App).»
+   p. 20 «This Fund is actively managed and qualifies as a short-term LVNAV MMF. The Fund has been duly authorised by the CSSF
+         in accordance with the provisions of the MMFR.» · «Base Currency Euro (EUR)» · objetivo «maintain a constant Net
+         Asset Value per Share of EUR 1» · referencia €STR · gestor de inversiones Western Asset Management Company Limited (p. 21)
+   p. 21 «Shares in Money Market Funds are not deposits or obligations of, or guaranteed or endorsed by, any bank, and are not
+         insured or guaranteed by any other agency or regulatory body. The value of Shares held in a Money Market Fund may fluctuate.»
+   p. 37 «Some Share Classes may not yet be available at the launch date of the Fund(s). The list of all Share Classes available
+         for the relevant Fund can be found on the website www.franklintempleton.lu.»
+         «Class AB Shares are available for subscription to retail investors as well as Institutional Investors.»
+   p. 38 «Class AB Shares ... the Net Asset Value per Share, plus an entry charge based on the total amount invested of up to 1.5%.»
+         «Specific features of the Share classes offered on Stellar are provided in the tables below.»
+   p. 39 Tabla EUR: Class AB · Minimum Investment EUR 20 · Subsequent Investment EUR 1 · Minimum holding amount EUR 20
+         «As at the date of this Prospectus, the App may not yet be available to retail Investors. When the App will be
+         available to retail Investors, the Prospectus will be updated accordingly.»
+   p. 40 «Retail accounts must be opened via the App. Institutional accounts will be opened via our Institutional Web Portal.»
+         Corte del subfondo en euros: «1:00 P.M. UK Time»
+   p. 41 «Shares can be redeemed through the App or Institutional Web Portal ...»
+         «The Company reserves the right not to be bound to accept the sale on any Valuation Day more than 10% of the value of
+         the Shares of any Fund. In these circumstances the sale of the Shares may be deferred for a period not exceeding ten
+         (10) Luxembourg Business Days.»
+   p. 42 «Redemption proceeds will be sent by electronic funds transfer (SWIFT) ...»
+   p. 44 Administración: «an annual fee of up to 0.20% of the Net Asset Value of the relevant Share Class, an additional amount
+         (consisting of a fixed and variable component) per Investor Holding at the relevant Class level over each one (1) year period»
+   p. 75 Apéndice E: «Franklin OnChain Euro Liquidity Fund · Class AB · Up to 0.2%» (gestión anual); comisión de administración
+         hasta el 0,20 % más un importe por posición; depositario The Bank of New York Mellon SA/NV, Luxembourg Branch, del 0,006 %
+         al 0,0135 % (mínimo agregado de 20.000 EUR al año).
+   p. 76 SFDR: «Product name: Franklin OnChain Euro Liquidity Fund · Legal entity identifier: 254900SUVJD9ISB77M29»
+
+2) ESMA · comercialización transfronteriza (cbdif)
+   https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50
+   2026-11-20T21:14:29Z · HTTP 200 · 5493 B · SHA-256 be864c97… (cambia por QTime; el bloque response es igual al del analista)
+   id 2842616 · FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN EURO LIQUIDITY FUND · LEI 254900SUVJD9ISB77M29 · UCITS ·
+   Active · CSSF · gestora FTIS (LEI 549300PVL6CYCWSH9C53) · funds_created_date 2026-11-09 · host ES, DE, FR, PT, AT, IT, NL ·
+   notificaciones 2026-11-09 (x7).
+   Hijos: https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=_root_:2842616&wt=json&rows=50
+   2026-11-20T21:18:45Z · HTTP 200 · 7885 B · 7 avisos de comercialización; SPAIN · «funds_fund_mrkt_status_code_name»:
+   «Not Available». El fondo en dólares (id 2823985) da el mismo «Not Available» en sus 9 países: el campo no está relleno y no
+   dice nada sobre si se vende.
+
+3) CNMV (accept-language: es)
+   iicextranjera nif N0363289J vista=0 · 2026-11-20T21:15:13Z · HTTP 200 · SHA-256 5f4acfc0… (igual que el del analista)
+   «FRANKLIN TEMPLETON ONCHAIN FUNDS · Nº Registro oficial 2284 · 13/12/2024 · SICAV · LUXEMBURGO · IIC Sujeto a la directiva 2009/65/CE»
+   vista=18 · 2026-11-20T21:15:15Z · HTTP 200 · SHA-256 78ee44c0… (igual)
+   «Entidades comercializadoras · FRANKLIN TEMPLETON INTERNATIONAL SERVICES, S.À.R.L., SUCURSAL EN ESPAÑA» (única)
+   Advertencias (ResultadoBusqueda?tipo=1):
+     Franklin Templeton · 21:15:30Z · «No hay datos disponibles» · 154b8a79…
+     Franklin            · 21:15:32Z · una sola fila: «04/05/2009 MORGAN FRANKLIN CONSULTANTS, S.L.» (ajena) · 39bc48bb…
+     Benji               · 21:15:34Z · «No hay datos disponibles» · 4c648f31…
+     OnChain             · 21:15:35Z · «No hay datos disponibles» · 59cc961c…
+     Western Asset       · 21:15:37Z · «No hay datos disponibles» · 36a36c1e… (búsqueda añadida por el revisor: es el gestor de inversiones)
+
+4) App Benji (id 1551677725) · API pública de la App Store
+   https://itunes.apple.com/lookup?id=1551677725&country=XX · 2026-11-20T21:15:53Z-21:15:54Z
+   es, lu, de, fr, it, nl, pt: {"resultCount":0} (42 B cada una, SHA-256 7f5ce663…)
+   us: 1 resultado · «Benji Investments» · vendedor «Franklin Advisers, Inc» · versión 3.1.0 · bundle com.franklintempleton.benji
+   Descripción: «Benji is offered and operated by Franklin Distributors, LLC»
+   Página web de la tienda (lo que vería un visitante): https://apps.apple.com/es/app/id1551677725 → 404 (21:18:23Z);
+   /lu y /de → 404; /us → 200 (534611 B).
+   Google Play (https://play.google.com/store/apps/details?id=com.franklintempleton.benji&gl=ES&hl=es, 21:16:06Z): HTTP 200 con
+   gl=ES y gl=US; la página web sin sesión no dice en qué países se puede instalar: no prueba nada en ningún sentido.
+
+5) Webs de Franklin Templeton
+   Mapa de productos .com.es (21:16:11Z, 169391 B, 7caff65b…): OnChain solo 41372/PX1 y 41372/QY2 (dólares).
+   Mapa de productos .lu (21:16:12Z, 271442 B, 86f5a754…): OnChain solo LU3258450587 y LU2900381208 (dólares).
+   «euro-liquidity» en ambos: solo fichas 54201 «franklin-euro-liquidity-fund» (otro fondo, no OnChain).
+   https://www.ftidocuments.com/ (21:19:10Z): aplicación de JavaScript; su sitemap.xml solo lista la portada.
+   https://www.eifs.lu/franklintempleton (servicio de facilidades para inversores de la UE, 21:19:18Z): pide país, idioma y tipo de
+   inversor; la segunda petición (21:19:36Z) devolvió una página antirrobots («302 Found · rdwr», validate.perfdrive.com).
+   No se intentó saltar: queda sin consultar.
+   https://www.benjiinvestments.com/ (21:18:22Z) → 2 redirecciones → https://digitalassets.franklintempleton.com/ (200, 47337 B).
+   https://digitalassets.franklintempleton.com/benji/ (21:18:34Z): solo habla del fondo estadounidense FOBXX; nada del fondo en euros.
+
+6) Hermano en dólares (solo para comparar costes y tamaño; no es la candidata)
+   Ficha mensual en español, 31/10/2026:
+   https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF
+   2026-11-20T21:19:01Z · HTTP 200 · 80908 B · SHA-256 a2f90952…
+   «Fecha de Lanzamiento del Fondo 12.02.2025» · «Inversión mínima USD 20» · «Comisión inicial máxima 1,50%» ·
+   «Comisión de gestión anual 0,20%» · «Patrimonio (USD) $52,81 Millón» · «Valor liquidativo-AB (Ddis) USD $1,00»
+   KID en español (clase AB, LU3258450587):
+   https://www.franklintempleton.com.es/download/es-es/key-information-document/4c549e34-cafe-470f-a8eb-a0dcd04a9f72/PRIIPSEU_LU3258450587_es_ES.pdf
+   2026-11-20T21:20:01Z · HTTP 200 · 166539 B · SHA-256 1b9efc78…
+   «Fecha de producción del KID: 15/06/2026» · «1 de 7» · «Costes totales 170 USD» · «Incidencia anual de los costes (*) 1.7%» ·
+   «su rentabilidad media anual se proyecta en un 1,6% antes de costes y en un -0,1% después de costes.»
+
+7) Sanción pública al grupo del gestor (subasesor de inversiones del fondo según el folleto, p. 21:
+   «WESTERN ASSET MANAGEMENT COMPANY, LLC · 385 East Colorado Blvd, Pasadena»)
+   https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26666
+   curl directo 2026-11-20T21:21:48Z → HTTP 403 (la SEC exige declarar un agente con datos de contacto; no se falseó nada).
+   Leído con la herramienta de lectura web a las 2026-11-20T21:21:55Z aprox.:
+   «Litigation Release No. 26666 / October 6, 2026» · «In June 2026, the Commission instituted settled public administrative
+   proceedings against Western Asset, ordering the firm to pay a $100 million civil penalty and establishing a Fair Fund to
+   distribute money to affected investors in the disfavored portfolios.»
+   (El caso trata del reparto de operaciones entre carteras de clientes en EE. UU. entre 2021 y 2023; no menciona este fondo.)

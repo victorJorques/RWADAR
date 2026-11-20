@@ -1,0 +1,324 @@
+{
+ "slug": "candidata-ondo-global-markets-stocks",
+ "tipoExpediente": "candidata",
+ "grupo": "busqueda-nueva",
+ "anguloBusqueda": "producto-acciones-fondos",
+ "proveedor": "Ondo Global Markets · Ondo Stocks (acciones y ETF tokenizados)",
+ "plataformaSlug": "ondo-finance",
+ "entidadComercializadora": "Ninguna entidad regulada identificada para particulares en España. El emisor vende directamente desde su web y su app (Ondo Stocks), sin licencia de ningún supervisor; Assetera GmbH (CNMV nº 5216) lista tokens de Ondo en su marketplace, pero no publica ni mínimo ni comisiones.",
+ "emisor": "Ondo Global Markets (BVI) Limited (LEI 984500Z0Q6A5E8BE2B61), sociedad de las Islas Vírgenes Británicas sin supervisión («will operate without supervision by any authority in any jurisdiction»)",
+ "vehiculo": "Certificados indexados de duración indefinida (tracker certificates, deuda del emisor) emitidos como valores registrados en cadena según el derecho suizo (art. 973d CO), respaldados por las acciones o ETF subyacentes y con garantía a favor de un agente de garantías",
+ "token": "Ondo Stocks (sufijo «on», p. ej. AAPLon, ISIN VGG7001AAB04); 493 tokens en la página de documentos, 272 con condiciones finales y KID; redes Ethereum, BSC y Solana",
+ "derechoAdquirido": "«An Ondo tokenized stock is a structured note: a debt instrument issued by Ondo Global Markets (BVI) Limited»; da exposición económica a la acción con dividendos reinvertidos netos de retención, sin voto ni derechos de accionista; reembolso al emisor previo KYC",
+ "jurisdiccion": "VG (emisor) · LI (folleto) · CH (derecho aplicable)",
+ "identificador": "Folleto base BPWO-89 (FMA de Liechtenstein, 11/11/2026); condiciones finales FTWS-2876 (VGG7001APH19) y FTWS-2877 (VGG7001APJ74) del 13/11/2026",
+ "moneda": "USD (se compra con USDC o USDon)",
+ "documentos": [
+  {
+   "titulo": "Folleto base de Ondo Global Markets (BVI) Limited, 11/11/2026 (copia publicada por la MFSA)",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf",
+   "versionOFecha": "11/11/2026; válido hasta el 11/11/2027",
+   "paginas": 200,
+   "sha256": "7f323e249a9dc593c97a42652e4fb0a6c86d5ab390dc92d2247d9e1e1d7b68bf",
+   "leido": true,
+   "nota": "Mismo documento que la página de documentos del emisor marca como «Current Base Prospectus - November 11 2026». En inglés. Sin apartado de KID PRIIPs para el EEE (solo un anexo suizo). Copia en fuentes/crudo/ondo-stocks/ (fuera de Git); extractos en fuentes/ondo-stocks/extractos-analista-2026-11-20.txt."
+  },
+  {
+   "titulo": "Condiciones finales de NFLXon (26/03/2026, bajo el folleto anterior BPWO-68), con nota de síntesis en español",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Ondo-Global-Markets-BVI-Limited-Final-Terms-Document-dated-26-March-2026-REF-NFLXon.pdf",
+   "versionOFecha": "26/03/2026",
+   "paginas": 141,
+   "sha256": "390d4aba5bd6d74c7d6a326b91d6b9976f0b0cbf87d8018c51db4a4953e6b19d",
+   "leido": true,
+   "nota": "Ejemplo del modelo. Las condiciones finales nuevas (FTWS-2876 y FTWS-2877, del 13/11) figuran en ESMA, pero no se identificó a qué token corresponden ni se leyeron."
+  },
+  {
+   "titulo": "KID de AAPLon en español («Documento de información clave»), dentro del ZIP de 23 lenguas",
+   "url": "https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip",
+   "versionOFecha": "Fecha de elaboración 11.11.2025 (archivo «12.12.2025 (ES)»)",
+   "paginas": 3,
+   "sha256": "335f8c129d97e7a562073107d424f4fbc8a33f52a6b3fc6dd53839466686de90",
+   "leido": true,
+   "nota": "SHA-256 del ZIP; el PDF en español es 19a398f394746da0bb666a075e4188977761b8fb342f0f2d217d36106cbe11f1. Enlazado desde https://app.ondo.finance/legal-documentation. Es de antes del folleto nuevo y no cita el BPWO-89."
+  },
+  {
+   "titulo": "Página pública de documentos del emisor (folletos, condiciones finales y KID por token)",
+   "url": "https://app.ondo.finance/legal-documentation",
+   "versionOFecha": "consulta 2026-11-20T21:09:40Z",
+   "paginas": null,
+   "sha256": "018cc2c8ad882a6fedff68bc79971ca1dd56129cd025001e036dc9fae24a0f1a",
+   "leido": true,
+   "nota": "Se abre sin sesión. 493 tokens; 272 con «Final Terms» y «Key Information Document»."
+  },
+  {
+   "titulo": "Ondo Stocks · Eligibility",
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "versionOFecha": "sin fecha; frente al 10/11 solo añade Venezuela",
+   "paginas": null,
+   "sha256": "5c21e9c9b2be9d3600988b4a9cc5dbd2fad5221125480c7f62fae6aa3e7adbdf",
+   "leido": true,
+   "nota": "Es la página que el folleto cita en sus restricciones de venta (https://docs.ondo.finance/ondo-global-markets/eligibility, que hoy redirige aquí)."
+  },
+  {
+   "titulo": "Ondo Stocks · Important Notes, Onboarding & KYC, Investing & Redeeming, Fees & Taxes, Secondary Market Restrictions, Legal & Regulatory",
+   "url": "https://docs.ondo.finance/ondo-stocks/important-notes.md",
+   "versionOFecha": "consulta 2026-11-20T21:08:51Z–21:08:53Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Copias y SHA-256 en fuentes/ondo-stocks/ y en inventario-consultas-ondo-stocks.json."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA / FMA (Liechtenstein)",
+   "entidad": "Ondo Global Markets (BVI) Limited (LEI 984500Z0Q6A5E8BE2B61)",
+   "numero": "BPWO-89 (aprobado el 11/11/2026; pasaportado el 11/11/2026 15:13:27Z a 29 Estados, SPAIN incluido)",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "alcance": "Aprobación del folleto, no licencia del emisor: el propio folleto dice que el emisor «is not and will not be regulated by the Liechtenstein FMA or any regulator». Sustituye al BPWO-68 (11/11/2025) como folleto sucesor del art. 8(11). Condiciones finales nuevas FTWS-2876 y FTWS-2877 (13/11/2026) con SPAIN y nota de síntesis en español.",
+   "consultadoUtc": "2026-11-20T21:07:48Z"
+  },
+  {
+   "regulador": "CNMV (pasaportes de folletos recibidos)",
+   "entidad": "Ondo Global Markets (BVI) Limited",
+   "numero": "BPWO-89, notificado el 11/11/2026",
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+   "alcance": "La CNMV recibió el pasaporte del folleto nuevo. Esto permite la oferta pública del valor en España; no autoriza a nadie a prestar servicios de inversión.",
+   "consultadoUtc": "2026-11-20T21:11:09Z"
+  },
+  {
+   "regulador": "CNMV (ESI del EEE en libre prestación)",
+   "entidad": "ASSETERA GmbH (única del entorno de Ondo que figura); ninguna «Blockchain», «Bitget», «Binance», «Bybit», «HTX» ni «Alpaca»",
+   "numero": "5216 (26/10/2023)",
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "alcance": "Según el expediente assetera-ondo-stocks del 05/11 (no re-leído hoy), su programa en España cubre recepción y transmisión de órdenes, gestión de carteras y asesoramiento, sin custodia. Su marketplace no publica ni mínimo ni comisión.",
+   "consultadoUtc": "2026-11-20T21:11:44Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo",
+   "resultado": "sin coincidencias sobre Ondo; solo nombres ajenos por parecido de texto (BANKLONDONGROUP.UK, GESTIONFONDOENDOWMENT.FR, LONDONCAPITALFX.EU, LONDON CAPITAL GROUP LTD, LONDONEX LLC, CONDOR RESEARCH)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo",
+   "consultadoUtc": "2026-11-20T21:11:18Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo Global Markets",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo%20Global%20Markets",
+   "consultadoUtc": "2026-11-20T21:11:20Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo Finance",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo%20Finance",
+   "consultadoUtc": "2026-11-20T21:11:22Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "This Base Prospectus has been approved by the FMA on 11.11.2026 ... The validity of this Base Prospectus will expire on 11.11.2027.",
+   "dato": "Folleto base BPWO-89 vigente hasta el 11/11/2027, pasaportado a España",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf",
+   "localizador": "Folleto base, pp. 1-2; ESMA BPWO-89; CNMV, pasaportes recibidos (11/11/2026)",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-20T21:08:09Z",
+   "alcanceYLimites": "Resuelve el bloqueo del 10/11 (caducidad del BPWO-68). Es la aprobación del folleto, no una licencia del emisor.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "entidad",
+   "literal": "The Issuer is not and will not be regulated by the Liechtenstein FMA or any regulator as a result of issuing the Security Tokens.",
+   "dato": "Emisor sin licencia ni supervisión en ningún país",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf",
+   "localizador": "Folleto base, p. 2 («Important Notices») y p. 4 («Regulatory status of the Issuer in BVI»)",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-20T21:08:09Z",
+   "alcanceYLimites": "Tampoco está registrado en la BVI FSC. No hay fondo de garantía de inversiones.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "An offer of the Products may be made by the Issuer ... on an ongoing basis on every calendar day (\"Offer Period\") through the website of the Issuer",
+   "dato": "Oferta continua a través de la web del emisor; condiciones finales nuevas del 13/11/2026 en ESMA",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/05/Ondo-Global-Markets-BVI-Limited-Final-Terms-Document-dated-26-March-2026-REF-NFLXon.pdf",
+   "localizador": "Condiciones finales de NFLXon, parte A; ESMA FTWS-2876 y FTWS-2877",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-20T21:09:11Z",
+   "alcanceYLimites": "La oferta está viva para quien supere la incorporación del emisor; no prueba que un particular residente en España la supere (ver accesoEspana).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Any Member State of the European Economic Area | \"Professional Client\" under MiFID II, Annex II, Section I; or \"Qualified Investor\"",
+   "dato": "Para que el emisor le emita tokens, quien resida en el EEE debe ser cliente profesional o inversor cualificado",
+   "fuentePrimaria": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "localizador": "Eligibility, «Jurisdiction-Based Restrictions» («in order to be issued Ondo Stocks»)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:08:09Z",
+   "alcanceYLimites": "Es la página que el folleto cita en sus restricciones de venta, y la de incorporación remite a ella. En conflicto con el folleto, las condiciones finales, el KID y la nota «Important Notes», que hablan de particulares del EEE (claim siguiente).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "c. to retail or professional investors within the EU and the EEA ... particularly in the following countries: ... Spain (\"Spain\")",
+   "dato": "El folleto y las condiciones finales nombran a España como país de oferta, también para particulares",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf",
+   "localizador": "Folleto base, cláusula XXXIII «Selling Restrictions»; también NFLXon, «Offeror of the Tokens», y docs «Important Notes» («making many Ondo Stocks available to both professional and retail investors, though certain Ondo Stocks are only available to professional investors in the EEA/EU»)",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-20T21:08:52Z",
+   "alcanceYLimites": "Contradice la página de elegibilidad del propio emisor. Comprobar cuál se aplica exige iniciar la incorporación (KYC), lo que está fuera de límites. La nota no dice qué tokens son «solo para profesionales».",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "minimo",
+   "literal": "The minimum is just $1.00 USD.",
+   "dato": "1 USD en la plataforma del emisor; las condiciones finales dicen 0,01 USDC y el modelo del folleto nuevo «up to USD 0.01»",
+   "fuentePrimaria": "https://docs.ondo.finance/ondo-stocks/investing-and-redeeming.md",
+   "localizador": "Investing & Redeeming, «What is the minimum I can invest or redeem?»; NFLXon, «Minimum/maximum subscription amount»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:08:51Z",
+   "alcanceYLimites": "Tres cifras distintas entre documentos del emisor. Solo vale para quien supere la incorporación; ningún intermediario regulado en España publica su mínimo.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "There is no fee to mint and a 0.05% (5bps) fee for each redemption.",
+   "dato": "Sin comisión al comprar; 0,05 % al reembolsar, más el diferencial del precio de cotización",
+   "fuentePrimaria": "https://docs.ondo.finance/ondo-stocks/fees-and-taxes.md",
+   "localizador": "Fees & Taxes",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:08:52Z",
+   "alcanceYLimites": "El KID en español dice «Hasta un 0.1 %» de entrada y de salida y que «Actualmente, no se cobran comisiones». Dividendos de EE. UU. con retención del 30 % al emisor.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "salida",
+   "literal": "Usted puede, en cualquier momento, presentar una solicitud de reembolso al Emisor ... De forma alternativa, usted podrá vender el Producto en operaciones extrabursátiles (\"OTC\")",
+   "dato": "Reembolso al emisor en cualquier momento (instantáneo a USDon; hasta T+5 según el folleto) o venta a terceros fuera de mercado; no cotiza en ningún mercado regulado, SMN ni SOC",
+   "fuentePrimaria": "https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip",
+   "localizador": "KID de AAPLon en español, apartado 5; folleto base, ap. 4.4.4; docs «Investing & Redeeming»",
+   "fechaDato": "2025-11-11",
+   "consultadoUtc": "2026-11-20T21:10:08Z",
+   "alcanceYLimites": "El reembolso exige el KYC del emisor. Según «Secondary Market Restrictions», quien compre en el mercado secundario puede no superarlo y no poder reembolsar. Sin reembolso a una cuenta bancaria en USD.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Este Producto está clasificado en el nivel 6 de 7 ... Si el Emisor no puede efectuar los pagos adeudados, usted podría perder la totalidad del capital invertido.",
+   "dato": "Riesgo 6 de 7; pérdida total posible; riesgo de emisor; sin fondo de garantía; riesgo de liquidez y de cadena de bloques; exposición al USD",
+   "fuentePrimaria": "https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip",
+   "localizador": "KID de AAPLon en español, apartados 2 y 3; folleto base, p. 2",
+   "fechaDato": "2025-11-11",
+   "consultadoUtc": "2026-11-20T21:10:08Z",
+   "alcanceYLimites": "El KID es de antes del folleto nuevo. Arbitraje en Zúrich, en inglés, salvo los derechos imperativos de los particulares del EEE.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "documentos",
+   "literal": "Investors residing in the EU/EEA should read the prospectus, and the relevant final terms and KID for each applicable Token",
+   "dato": "Folleto en inglés; condiciones finales con nota de síntesis en español; KID en español al menos para AAPLon",
+   "fuentePrimaria": "https://app.ondo.finance/legal-documentation",
+   "localizador": "Página de documentos del emisor, aviso EEE y lista por token",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-20T21:09:40Z",
+   "alcanceYLimites": "Solo 272 de 493 tokens tienen KID; no se comprobó la lengua de cada uno. La FAQ «Investing & Redeeming» dice que los documentos de oferta solo se dan a quien supera la incorporación, pero la página de documentos los publica en abierto.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "Folleto aprobado por la FMA de Liechtenstein y notificado a la CNMV, pero el emisor no tiene licencia ni supervisión, y no se ha encontrado ninguna entidad regulada en España que lo venda a particulares con mínimo y costes publicados (Blockchain.com no figura en la CNMV; Assetera sí, pero no publica mínimo ni comisión)."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Oferta continua bajo el folleto nuevo (BPWO-89, del 11/11/2026) y condiciones finales nuevas del 13/11. Queda resuelto el bloqueo de la caducidad que se anotó el 10/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "El emisor se contradice: la página de elegibilidad limita la emisión en el EEE a profesionales o cualificados, mientras que el folleto, las condiciones finales, el KID y sus notas hablan de particulares de España. Comprobarlo exige iniciar el KYC. Además, el mínimo aparece con tres cifras distintas."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV. Riesgos claros en el KID (6 de 7, pérdida total, emisor de las BVI sin supervisión, arbitraje en Zúrich)."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "folleto",
+   "antes": "10/11: el folleto base BPWO-68 cumplía 12 meses el 11/11/2026 sin sustituto en ESMA",
+   "ahora": "BPWO-89 aprobado y pasaportado el 11/11/2026, con SPAIN; la CNMV lo recibió el 11/11; condiciones finales FTWS-2876 y FTWS-2877 del 13/11",
+   "fuente": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+   "critico": false
+  },
+  {
+   "campo": "elegibilidad",
+   "antes": "10/11: EEE solo para profesionales o cualificados (sha256 76916fd4…)",
+   "ahora": "Igual en el EEE; solo añade Venezuela a los países prohibidos (sha256 5c21e9c9…)",
+   "fuente": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "critico": false
+  },
+  {
+   "campo": "documentos",
+   "antes": "10/11: no se leyeron KID",
+   "ahora": "La página pública de documentos del emisor tiene KID por token; el de AAPLon existe en español (riesgo 6 de 7)",
+   "fuente": "https://app.ondo.finance/legal-documentation",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": null,
+  "salida": "Reembolso al emisor en cualquier momento, con su KYC, o venta a terceros fuera de mercado (KID, 11/11/2025)."
+ },
+ "resumenTarjetaNota": "Interno: no es propuesta de tarjeta (decisión no_admitir). null = hoy no hay fuente primaria sin conflicto: el mínimo aparece con tres cifras y el acceso de particulares en España se contradice dentro de los documentos del emisor.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "Folleto BPWO-89 aprobado por la FMA de Liechtenstein y notificado a la CNMV; el emisor no está supervisado",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Más de 450 acciones y ETF de EE. UU. tokenizados, con folleto pasaportado a España y KID en español al menos para AAPLon.",
+  "porQueNo": "El emisor se contradice sobre la venta a particulares del EEE, no tiene licencia y no hay ninguna entidad regulada en España que lo venda a particulares con mínimo y costes publicados."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite. Se levanta el bloqueo de la caducidad: el folleto base BPWO-89 está aprobado (FMA de Liechtenstein, 11/11/2026, válido hasta el 11/11/2027) y pasaportado a España, la CNMV lo recibió el 11/11 y hay condiciones finales del 13/11 con nota de síntesis en español. Además, la página pública de documentos del emisor tiene KID por token (el de AAPLon, en español). Pero sigue faltando una pieza esencial: el acceso de un particular residente en España. El emisor se contradice. Su página de elegibilidad, que el propio folleto cita y a la que remite la incorporación, solo emite en el EEE a profesionales o inversores cualificados, mientras que el folleto, las condiciones finales y sus notas dicen que la oferta también es para particulares de España. Comprobarlo exige iniciar el KYC, que está fuera de límites. El emisor es una sociedad de las BVI sin licencia ni supervisión, y no hay ningún intermediario regulado en España que lo venda a particulares con mínimo y costes publicados: Blockchain.com no figura en la CNMV, y Assetera (CNMV nº 5216) no publica ni mínimo ni comisión. El mínimo aparece además con tres cifras distintas (1 USD, 0,01 USDC y «up to USD 0.01»). Sin advertencias de la CNMV.",
+ "bloqueos": [
+  "Acceso de particulares en España en conflicto dentro de los documentos del emisor (elegibilidad frente a folleto, condiciones finales y notas); solo se resolvería con el KYC, que está fuera de límites.",
+  "Sin entidad regulada en España que lo venda a particulares con mínimo y costes publicados; el emisor no tiene licencia.",
+  "Mínimo con tres cifras distintas entre documentos del emisor; comisiones distintas entre la documentación (0,05 % al reembolsar) y el KID (hasta 0,1 %, «actualmente no se cobran»).",
+  "KID de antes del folleto nuevo (11/11/2025); no se identificó a qué token corresponden FTWS-2876 y FTWS-2877 ni se leyeron."
+ ],
+ "enlacesProbados": [
+  {"url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc", "http": 200, "consultadoUtc": "2026-11-20T21:07:48Z"},
+  {"url": "https://www.mfsa.mt/wp-content/uploads/2026/11/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2026.pdf", "http": 200, "consultadoUtc": "2026-11-20T21:08:09Z"},
+  {"url": "https://docs.ondo.finance/ondo-stocks/eligibility.md", "http": 200, "consultadoUtc": "2026-11-20T21:08:09Z"},
+  {"url": "https://docs.ondo.finance/ondo-global-markets/eligibility", "http": 200, "consultadoUtc": "2026-11-20T21:08:43Z", "nota": "redirige a /ondo-stocks/eligibility"},
+  {"url": "https://ondo.finance/global-markets", "http": 200, "consultadoUtc": "2026-11-20T21:09:28Z", "nota": "redirige a https://ondo.finance/ondo-stocks"},
+  {"url": "https://app.ondo.finance/legal-documentation", "http": 200, "consultadoUtc": "2026-11-20T21:09:40Z"},
+  {"url": "https://cdn.sanity.io/files/8k2tqa6n/production/630a1e519b89411882c560d77da760c1216ea938.zip", "http": 200, "consultadoUtc": "2026-11-20T21:10:08Z"},
+  {"url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61", "http": 200, "consultadoUtc": "2026-11-20T21:11:09Z"},
+  {"url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo", "http": 200, "consultadoUtc": "2026-11-20T21:11:18Z"},
+  {"url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4", "http": 301, "consultadoUtc": "2026-11-20T21:11:38Z", "nota": "redirige a https://www.cnmv.es/Portal/Consultas/listadoentidad?id=1&tipoent=4 (200 a las 21:11:44Z)"},
+  {"url": "https://www.assetera.com/fees", "http": 404, "consultadoUtc": "2026-11-20T21:12:17Z"}
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T21:07:20Z",
+  "finUtc": "2026-11-20T21:12:38Z"
+ },
+ "fuentes": {
+  "extractos": "grupos/busqueda-nueva/fuentes/ondo-stocks/extractos-analista-2026-11-20.txt",
+  "inventario": "grupos/busqueda-nueva/fuentes/ondo-stocks/inventario-consultas-ondo-stocks.json",
+  "crudos": "grupos/busqueda-nueva/fuentes/crudo/ondo-stocks/ (fuera de Git)"
+ },
+ "resumenCorto": "Folleto nuevo pasaportado a España y KID en español, pero el emisor se contradice sobre la venta a particulares del EEE y no hay ninguna entidad regulada en España que lo venda a particulares."
+}

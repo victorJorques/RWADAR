@@ -1,0 +1,66 @@
+Prueba de presentación · resumenOferta (rwadar-site/assets/ficha-editorial-20261022.js) · ejecutada 2026-11-20T21:29:03Z
+Script: prueba-tarjeta-crowdedhero.cjs (misma carpeta). Ayudantes de la tarjeta copiados de rwadar-site/assets/rwadar-20260820.js (textoBreveDatoTarjetaLocal, minimoDocumentadoLocal, salidaDocumentadaLocal, textoEspanaOferta, textoCortoLocal).
+
+
+=== A · tal cual propuestaTarjeta (salida con fuente terminos NYALA)
+{
+ "lineaTarjeta": "Mínimo Desde 250 € (Simpleros) o 500 € (Amber)… · España Sin confirmar",
+ "fichaLoEsencial": {
+  "minimo": "No documentado en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida: Sin mercado secundario: se cobra al vencimiento (Simpleros, 15/11/2028)",
+  "salidaCorta": "Sin mercado secundario: se cobra al…"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones"
+}
+minimo: {"texto":"No documentado en euros","fuente":"https://www.crowdedhero.com/project/view?id=50","consultadaEl":"2026-11-20","fechaDato":"2026-11-20","unidadDocumentada":"Desde 250 € (Simpleros) o 500 € (Amber), más 1,25 % de entrada"}
+accesoEspana: {"texto":"Sin comprobar si se puede contratar desde España","estado":"sin_comprobar"}
+
+=== A2 · tal cual, salida con fuente contrato DLT (no esta en fuentesActuales)
+{
+ "lineaTarjeta": "Mínimo Desde 250 € (Simpleros) o 500 € (Amber)… · España Sin confirmar",
+ "fichaLoEsencial": {
+  "minimo": "No documentado en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida no documentada",
+  "salidaCorta": "Sin documentar"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones"
+}
+minimo: {"texto":"No documentado en euros","fuente":"https://www.crowdedhero.com/project/view?id=50","consultadaEl":"2026-11-20","fechaDato":"2026-11-20","unidadDocumentada":"Desde 250 € (Simpleros) o 500 € (Amber), más 1,25 % de entrada"}
+accesoEspana: {"texto":"Sin comprobar si se puede contratar desde España","estado":"sin_comprobar"}
+
+=== B · textos corregidos
+{
+ "lineaTarjeta": "Mínimo 250 € · España Sí",
+ "fichaLoEsencial": {
+  "minimo": "250 €",
+  "espana": "Sí, según la fuente",
+  "salida": "Salida: Sin mercado secundario: se cobra al vencimiento (Simpleros, 15/11/2028)",
+  "salidaCorta": "Sin mercado secundario: se cobra al…"
+ },
+ "estado": "Datos con fuente y fecha · consulta las condiciones"
+}
+minimo: {"texto":"250 €","fuente":"https://www.crowdedhero.com/project/view?id=50","consultadaEl":"2026-11-20","fechaDato":"2026-11-20","euros":250}
+accesoEspana: {"texto":"Disponible desde España según la fuente","fuente":"https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001","consultadaEl":"2026-11-20","fechaDato":"2022-09-01","estado":"si"}
+
+=== C · revision en conflicto (estadoRevision fuentes_en_conflicto)
+{
+ "lineaTarjeta": "Mínimo No verificado · España Sin confirmar",
+ "fichaLoEsencial": {
+  "minimo": "Sin mínimo vigente en euros",
+  "espana": "Sin confirmar",
+  "salida": "Salida no documentada",
+  "salidaCorta": "Sin documentar"
+ },
+ "estado": "Las fuentes no coinciden"
+}
+minimo: {"texto":"Sin mínimo vigente en euros"}
+accesoEspana: {"texto":"Sin comprobar si se puede contratar desde España","estado":"sin_comprobar"}
+
+=== longitudes
+titulo 30   
+resumen 165   
+minimo 62  tiene % o palabra vetada 
+accesoEspana 73   
+salida 71   fecha DD/MM/AAAA

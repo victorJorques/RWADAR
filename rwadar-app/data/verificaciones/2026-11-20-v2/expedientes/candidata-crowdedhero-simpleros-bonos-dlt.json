@@ -1,0 +1,494 @@
+{
+  "slug": "candidata-crowdedhero-simpleros-bonos-dlt",
+  "tipoExpediente": "candidata",
+  "grupo": "busqueda-nueva",
+  "anguloBusqueda": "espana-registros",
+  "relacionado": "expedientes/candidata-crowdedhero-bonos-dlt.json (mismo día, visión de toda la plataforma: Amber, Simpleros y Bolivar). Este expediente se centra solo en la 2.ª ronda de Simpleros y añade lo nuevo de hoy: la 1.ª ronda, la prenda y los enlaces.",
+  "proveedor": "CrowdedHero (bonos digitales DLT de Simpleros, 2.ª ronda)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "SIA \"CrowdedHero Latvia\" (reg. 50203309441, Riga), proveedor europeo de servicios de financiación participativa (Reglamento (UE) 2020/1503), licencia 06.15.01.806/120 de Latvijas Banka; PSFP europeo n.º 1 en la CNMV desde el 01/09/2022",
+  "emisor": "SIMPLEROS, S.L. (Barcelona, CIF B01787720, LEI 98450082BEF114765441), sociedad de minicréditos al consumo por internet",
+  "vehiculo": "Emisión directa del emisor, sin SPV",
+  "token": "Criptovalor alemán (Kryptowertpapier, §16 eWpG) en el registro de Smart Registry GmbH (NYALA); custodio Tangany GmbH",
+  "derechoAdquirido": "Bono subordinado a tipo fijo (10,5 % anual, cupón semestral) con devolución del nominal el 15/11/2028; prenda sobre bonos de un tercero",
+  "jurisdiccion": "LV",
+  "identificador": "ISIN DE000A4EXNM2 (WKN A4EXNM); Offer ID 984500B08DG03M3EA17100000044; ficha de la plataforma, proyecto 50 (la 1.ª ronda es el proyecto 44)",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Ficha pública de la 2.ª ronda (proyecto 50)",
+      "url": "https://www.crowdedhero.com/project/view?id=50",
+      "versionOFecha": "consulta 2026-11-20T21:12:01Z",
+      "paginas": null,
+      "sha256": "c0d34547edaea4689dc7f9765307ef702bf99817bf4d165527c01877cdc85488",
+      "leido": true,
+      "nota": "Página dinámica (el hash cambia en cada visita; las cifras no). Sección «Documents» con «Lorem ipsum» y cuatro «Moneyz.csv» que no enlazan a nada (href=\"#\"). Trae nombres de personas físicas: no se copian."
+    },
+    {
+      "titulo": "Ficha pública de la 1.ª ronda (proyecto 44)",
+      "url": "https://www.crowdedhero.com/project/view?id=44",
+      "versionOFecha": "consulta 2026-11-20T21:14:11Z",
+      "paginas": null,
+      "sha256": "a4361b7613e476385d67e62a10b5055ab52fb5d491aebc01e7073841a06b4088",
+      "leido": true,
+      "nota": "«Funded»: 50.250 € de un mínimo de 50.000 €, 9 inversores. Mismo texto que la 2.ª ronda."
+    },
+    {
+      "titulo": "Listado de proyectos de la plataforma",
+      "url": "https://www.crowdedhero.com/project/index",
+      "versionOFecha": "consulta 2026-11-20T21:13:52Z",
+      "paginas": null,
+      "sha256": "80b98dcfeba10c81d4afe016d74571cab159a848b62d7e35b194c312bea52fab",
+      "leido": true,
+      "nota": "Muestra las dos rondas de bonos de Simpleros y una campaña de acciones anterior de la misma sociedad. Marca «Funded» una campaña al 1,4 % de su mínimo (Zentene Manor)."
+    },
+    {
+      "titulo": "KIIS (ficha de datos fundamentales de la inversión, art. 23 del Reglamento (UE) 2020/1503) de la oferta",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "Solo para inversores registrados y verificados («only registered and Verified investors could access the restricted Project campaign documents»). Según el contrato DLT, existe en letón, inglés y alemán; no en español. No se intentó verla por ninguna otra vía (ACCESO-FUENTES §1 y §2.5)."
+    },
+    {
+      "titulo": "Terms and Conditions of the Digital Bonds · SIMPLEROS, S.L. (publicación obligatoria del registrador, art. 5 eWpG)",
+      "url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "versionOFecha": "03/07/2026 (nombre y metadatos del archivo, «V4.0»); consulta 2026-11-20T21:12:02Z",
+      "paginas": 5,
+      "sha256": "c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056",
+      "leido": true,
+      "nota": "Mismo SHA-256 que el 11/11. En inglés. Solo describe la «First Campaign EUR 200,000 (min. EUR 50,000)»: no hay términos públicos propios de la 2.ª ronda. Nombra a personas físicas (quien constituye la prenda y los firmantes): no se copian."
+    },
+    {
+      "titulo": "NYALA · criptovalores registrados (publicación del registrador)",
+      "url": "https://www.nyala.de/en/products/electronic-securities",
+      "versionOFecha": "consulta 2026-11-20T21:12:03Z",
+      "paginas": null,
+      "sha256": "f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427",
+      "leido": true,
+      "nota": "«Simpleros Bonds X», DE000A4EXNM2, 500.000 €, 10,5 %, emisión 01/07/2026, vencimiento 15/11/2028."
+    },
+    {
+      "titulo": "DLT Bond Subscription Agreement (contrato de suscripción de bonos DLT), versión 1.0",
+      "url": "https://www.crowdedhero.com/legal?category=dlt",
+      "versionOFecha": "en vigor desde el 01/07/2026; consulta 2026-11-20T21:12:10Z",
+      "paginas": null,
+      "sha256": "fd1bd716494e44be4be61a91ee689922714d00e0f10d643862f0875a3580f412",
+      "leido": true,
+      "nota": "Página dinámica. Dice que los bonos los emite «NYALA Digital Asset» AG y que se inscriben a nombre del inversor; los términos de Simpleros dicen otra cosa y prevalecen (10.1)."
+    },
+    {
+      "titulo": "Condiciones generales de la plataforma",
+      "url": "https://www.crowdedhero.com/legal?category=terms",
+      "versionOFecha": "consulta 2026-11-20T21:12:11Z",
+      "paginas": null,
+      "sha256": "a27e5c6bcb762433573e56c69f435b7dba96586ab3d882572c4079519afb8974",
+      "leido": true
+    },
+    {
+      "titulo": "Preguntas frecuentes del inversor",
+      "url": "https://www.crowdedhero.com/faq?category=investor",
+      "versionOFecha": "consulta 2026-11-20T21:12:12Z",
+      "paginas": null,
+      "sha256": "a75d142416d0a94d9dc2ee9b505f09e0cd1c9c566f26c436671c68cd76648208",
+      "leido": true
+    },
+    {
+      "titulo": "Tarifas para inversores",
+      "url": "https://www.crowdedhero.com/pricelist/investor-pricelist",
+      "versionOFecha": "consulta 2026-11-20T21:12:13Z",
+      "paginas": null,
+      "sha256": "e953fc3a229595b80b4be70bc4e5ddbefaee68eb063241ed6870f592e1acdfd9",
+      "leido": true
+    },
+    {
+      "titulo": "Mercado secundario (tablón)",
+      "url": "https://www.crowdedhero.com/secondary-market",
+      "versionOFecha": "consulta 2026-11-20T21:12:14Z",
+      "paginas": null,
+      "sha256": "9d1b4a783f84712a56a2f5484d8c5e61f708e14bf61588c81c4aadc6cc9aa9c6",
+      "leido": true,
+      "nota": "7 anuncios, todos de acciones; ningún bono."
+    },
+    {
+      "titulo": "Web del emisor y sus condiciones generales de préstamo",
+      "url": "https://simpleros.es/condiciones-generales",
+      "versionOFecha": "consulta 2026-11-20T21:12:15Z (portada, 21:12:16Z)",
+      "paginas": null,
+      "sha256": "08c039b0c26359e5310377c4ef9b95ae4d1b0cb07856b65e1130f2511d6b73f0",
+      "leido": true,
+      "nota": "Identifica al emisor (NIF y datos registrales). La portada ofrece préstamos de hasta 300 € el primero y hasta 1.000 € a 365 días, con «Historial crediticio no importa»."
+    },
+    {
+      "titulo": "Registro mercantil de Estonia · Audacia Capital OÜ (emisor de los bonos dados en prenda)",
+      "url": "https://ariregister.rik.ee/eng/company/16250495",
+      "versionOFecha": "consulta 2026-11-20T21:13:22Z",
+      "paginas": null,
+      "sha256": "1ed1344847287a0899f301ba2f6558ddf6201b450352ea69f03622bb00a73ab8",
+      "leido": true,
+      "nota": "Página pública del registro, sin sesión. Trae los nombres de los titulares reales: no se copian."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA)",
+      "numero": "1 (01/09/2022), LETONIA",
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+      "alcance": "Notificación de pasaporte para prestar servicios de financiación participativa en España. Acredita a la plataforma, no a cada emisión. SHA-256 fe578b14…e4fb, igual que el 11/11.",
+      "consultadoUtc": "2026-11-20T21:12:04Z"
+    },
+    {
+      "regulador": "ESMA (registro de proveedores de financiación participativa) / Latvijas Banka",
+      "entidad": "SIA CrowdedHero Latvia (LEI 984500B08DG03M3EA171)",
+      "numero": "Licencia 06.15.01.806/120 (según la web); autorizada el 16/08/2022 por Latvijas Banka",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+      "alcance": "«Active». Estados de acogida: «EUROPEAN UNION» (no detalla España; eso lo cubre la CNMV). Última actualización del registro: 22/02/2024.",
+      "consultadoUtc": "2026-11-20T21:12:05Z"
+    },
+    {
+      "regulador": "BaFin",
+      "entidad": "Smart Registry GmbH (registrador de criptovalores)",
+      "numero": "BaFin-ID 10160639; Kryptowertpapierregisterführung autorizada el 19.08.2026",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639",
+      "alcance": "Acredita al registrador, no al emisor. La autorización (19/08/2026) es posterior a la fecha de emisión de los términos (01/07/2026).",
+      "consultadoUtc": "2026-11-20T21:12:17Z"
+    },
+    {
+      "regulador": "Registro mercantil de Letonia (Uzņēmumu reģistrs, vía data.gov.lv)",
+      "entidad": "SIA \"CrowdedHero Latvia\"",
+      "numero": "50203309441; alta 13/04/2021; sin baja",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&q=50203309441",
+      "alcance": "Existencia y cuentas de la plataforma.",
+      "consultadoUtc": "2026-11-20T21:12:21Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {"regulador": "CNMV", "busqueda": "Simpleros", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros", "consultadoUtc": "2026-11-20T21:12:06Z"},
+    {"regulador": "CNMV", "busqueda": "CrowdedHero", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero", "consultadoUtc": "2026-11-20T21:12:07Z"},
+    {"regulador": "CNMV", "busqueda": "Audacia Capital", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Audacia%20Capital", "consultadoUtc": "2026-11-20T21:14:27Z"},
+    {"regulador": "CNMV", "busqueda": "Lemonway", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lemonway", "consultadoUtc": "2026-11-20T21:14:29Z"},
+    {"regulador": "CNMV", "busqueda": "Trading (control positivo)", "resultado": "con resultados: el buscador funciona", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading", "consultadoUtc": "2026-11-20T21:12:08Z"}
+  ],
+  "claims": [
+    {
+      "campo": "entidad",
+      "literal": "CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA) … Nº Registro oficial 1 · Fecha registro oficial 01/09/2022 · País LETONIA",
+      "dato": "PSFP europeo n.º 1 en la CNMV desde el 01/09/2022",
+      "fuentePrimaria": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+      "localizador": "Ficha del proveedor europeo n.º 1",
+      "fechaDato": "2022-09-01",
+      "consultadoUtc": "2026-11-20T21:12:04Z",
+      "alcanceYLimites": "Acredita el pasaporte de la plataforma en España, no cada emisión.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "ae_status: Active · ae_competentAuthority: Latvijas Banka · ae_authorisationNotificationDateStr: 16/08/2022 · ae_hostMemberStates: [\"EUROPEAN UNION\"]",
+      "dato": "Autorizada por Latvijas Banka el 16/08/2022; activa",
+      "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+      "localizador": "Registro ESMA de proveedores de financiación participativa (API pública)",
+      "fechaDato": "2024-02-22",
+      "consultadoUtc": "2026-11-20T21:12:05Z",
+      "alcanceYLimites": "Última actualización del registro: 22/02/2024.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "emisor",
+      "literal": "Issuer SIMPLEROS, S.L. · CIF B01787720 · LEI 98450082BEF114765441",
+      "dato": "Emisor: Simpleros, S.L. (Barcelona), inscrita en el Registro Mercantil de Barcelona, tomo 47434, folio 134, hoja 551677",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos, «Summary of key terms» y 1.1; web del emisor (condiciones generales 1.2): «N.I.F. B-01787720, inscrita en el Registro Mercantil de Barcelona, al Tomo 47434, Folio 134, Hoja 551677»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "El domicilio cambia de planta entre los términos («3º 1ª») y la web («1º - 1»). Las cifras de 2025 de la ficha (ingresos 1,96 M€, beneficio 202.505 €) no tienen documento público: no se han verificado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "Raising now · 6 Days left · €82 500.00 raised · 82.3% of min. target · Min target €100 250.00 · Max target €200 000.00 · Investors 4",
+      "dato": "Abierta hoy: 82.500 €, 4 inversores, quedan 6 días; mismo importe que el 10/11 y el 11/11, con el plazo alargado (el 11/11 quedaban 3 días)",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Cabecera de la ficha; igual en el listado https://www.crowdedhero.com/project/index (21:13:52Z)",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:01Z",
+      "alcanceYLimites": "Los términos permiten suscribir hasta el 30/06/2027, así que alargar es posible, pero en diez días no ha entrado dinero. Si no se llega al mínimo, se devuelve el dinero en 5 días hábiles (términos 6.2).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "Min target €100 250.00 (cabecera) · Target Raise €200,000 (Minimum threshold €50,000) (misma ficha) · First Campaign EUR 200,000 (min. EUR 50,000) (términos)",
+      "dato": "El objetivo mínimo de la 2.ª ronda no está escrito en ningún documento público: 100.250 € en la cabecera frente a 50.000 € en el texto y en los términos",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Cabecera frente a «Key Investment Information»; términos, «Summary of key terms»",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:01Z",
+      "alcanceYLimites": "100.250 € = 50.250 € captados en la 1.ª ronda (proyecto 44, «Funded», 9 inversores) + 50.000 €. Si el contador fuera acumulado, la 2.ª ronda solo llevaría 32.250 € nuevos; la ficha no lo explica y no se da por hecho. Los términos públicos solo cubren la «First Campaign».",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "estado",
+      "literal": "Funded · €50 250.00 raised · 100.5% of min. target · Min target €50 000.00 · Max target €200 000.00 · Investors 9",
+      "dato": "La 1.ª ronda cerró con 50.250 € de un máximo de 200.000 €, justo por encima del mínimo",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=44",
+      "localizador": "Cabecera de la ficha de la 1.ª ronda",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:14:11Z",
+      "alcanceYLimites": "Señal de demanda escasa: entre las dos rondas, unos 13 inversores.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "The minimum subscription amount is EUR 250 (one Digital Bond).",
+      "dato": "Desde 250 € (1 bono), más 1,25 % de comisión de entrada",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos 2.3 y 6.4; la ficha dice «Minimum investment €250.00»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "Respaldado por los términos y la ficha.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Can I invest from abroad? Yes, you can. Investors residing outside Latvia can invest in offers available on CrowdedHero, with the exception of investors based in the United States",
+      "dato": "La plataforma admite residentes en la UE/EEE y tiene pasaporte notificado a la CNMV; los países de esta oferta solo constan en la KIIS reservada",
+      "fuentePrimaria": "https://www.crowdedhero.com/faq?category=investor",
+      "localizador": "FAQ del inversor; condiciones generales 6.1.6 y 11.5 («We may offer different content and services on the Platform to the Investors depending on their residence country»); contrato DLT 5.1[e]; CNMV n.º 1",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:12Z",
+      "alcanceYLimites": "Es acceso de la plataforma, no confirmación de que esta oferta se haga en España. La ficha no existe en español (/es/project/view?id=50 → 404, 21:13:55Z) y la KIIS solo está en letón, inglés y alemán.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "No secondary market is provided by the Issuer or the Platform.",
+      "dato": "Sin mercado secundario: se cobra al vencimiento, el 15/11/2028; el emisor puede devolver antes, a su elección, desde el 15/11/2027",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos 4.1, 4.2, 8.1 y 8.2; contrato DLT 5.2[b] («'buy and hold' model») y 7.1–7.2",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "Traspaso a otro inversor solo dentro de la plataforma, con KYC, aprobación manual del custodio y una comisión que solo figura en la KIIS. El tablón de la plataforma solo tiene acciones (21:12:14Z). Cuatro días de reflexión para inversores no experimentados (contrato DLT 2.4).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Capital loss risk – You may lose all your invested capital · Subordinated bonds – In case of insolvency, you are paid after senior creditors · No secondary market – High liquidity risk · No deposit guarantee or investor compensation scheme · Regulatory and credit risk in consumer lending sector",
+      "dato": "Pérdida total posible, bono subordinado, sin liquidez, sin fondo de garantía, riesgo del crédito al consumo y riesgo regulatorio",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Ficha, «Key Risks for Investors»; aviso «This offer has not been reviewed by Latvijas Banka or the European Securities and Markets Authority (ESMA).»",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:01Z",
+      "alcanceYLimites": "La ficha enumera bien los riesgos genéricos, pero no dice que la prenda la forman bonos de una sociedad de los dueños de la plataforma (ver «garantia»). La KIIS, que los detalla, no es pública.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "documentos",
+      "literal": "Documents (h2 - can be used multiple times accross one text) · Moneyz.csv · Please note, that only registered and Verified investors could access the restricted Project campaign documents. · Apraksts par dokumenta failu Lorem ipsum dolor sit amet…",
+      "dato": "Sin KIIS pública; la sección de documentos es texto de relleno con enlaces vacíos",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Sección «Documents» de las fichas 50 y 44",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:01Z",
+      "alcanceYLimites": "Igual que el 10/11 y el 11/11. Lo único público son los términos del registrador, en inglés y solo para la «First Campaign». No se buscó la KIIS por otra vía.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "garantia",
+      "literal": "COLLATERAL Pledge (prenda de valores) over 3 bonds of Audacia Capital OÜ, ISIN EE3300002252, nominal EUR 300,000 total … providing a coverage ratio of at least 150%.",
+      "dato": "La prenda son bonos de Audacia Capital OÜ (Estonia), una consultora con 20.000 € de capital sin desembolsar, sin cuentas de 2025 presentadas y cuyos dos titulares reales son las dos personas que la CNMV lista como responsables de CrowdedHero Latvia",
+      "fuentePrimaria": "https://ariregister.rik.ee/eng/company/16250495",
+      "localizador": "e-Äriregister: «Capital is 20 000 € · Established without making contribution» · «Legal person has non-submitted annual reports.» · «2025 … Not submitted (due date 30.06.2026)» · «Beneficial owners … Direct ownership» (dos personas residentes en Letonia, nombres omitidos); términos 7.1–7.5 y 10.1",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:13:22Z",
+      "alcanceYLimites": "Cruce de nombres entre el registro estonio, la ficha de la CNMV (21:12:04Z) y el firmante de los términos por la plataforma. La plataforma es a la vez fiduciaria que debe ejecutar la prenda (términos 1.10 y 10.1) y propiedad de los dueños del emisor de los bonos pignorados: conflicto de interés que la ficha no cuenta. La «cobertura del 150 %» se calcula sobre el valor nominal de esos bonos, no sobre un valor de mercado.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "registered as a single aggregate entry in the electronic securities register … The individual entitlements of each Bondholder are recorded by the Platform on its own books",
+      "dato": "No queda claro si el bono figura a nombre del inversor en el registro",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos 2.1 (que además mezcla «Einzeleintragung (single entry)» con «single aggregate entry») y 6.3 («allocate the corresponding tokens to the Bondholders' wallets»); contrato DLT 3.3: «registered in the Investor's name … Registration constitutes legal ownership»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "Los términos prevalecen (contrato DLT 10.1) y dejan la titularidad individual en los libros de una plataforma con fondos propios negativos.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "A commission of 5.5% of each interest payment is deducted by the Platform … commencing from the second year",
+      "dato": "Entrada 1,25 %; 0,35 % anual del registro; comisión sobre el cupón: 5,5 % (términos) frente a 0,55 % (tarifas)",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos 5.3, 5.4 y 6.4; tarifas (21:12:13Z): «Bond model Interest (semi-annual) 0.55% Of the interest (coupon) amount»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "Las dos fuentes no coinciden; la KIIS (parte G) no es pública.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Interest Rate 10.50% p.a. (5.25% per half-year, 30E/360)",
+      "dato": "Cupón fijo bruto del 10,5 % anual, pagado cada seis meses (30/06 y 31/12; primero el 31/12/2026)",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos, «Summary of key terms» y art. 3",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:12:02Z",
+      "alcanceYLimites": "Es lo que promete el emisor, antes de comisiones e impuestos; no es un rendimiento obtenido. La ficha lo llama «dividends».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgoEmisor",
+      "literal": "Tu primer crédito de hasta 300€ · Importe Hasta 1000 € · Plazo Hasta 365 días · Historial crediticio no importa",
+      "dato": "El emisor da minicréditos al consumo por internet, sin mirar el historial crediticio",
+      "fuentePrimaria": "https://simpleros.es/",
+      "localizador": "Portada de la web del emisor (21:12:16Z); condiciones generales: préstamos sujetos a la Ley 16/2011",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:12:16Z",
+      "alcanceYLimites": "Negocio de alto riesgo de impago. La ficha de la oferta habla de «businesses seek flexible financing solutions», que no casa con lo que la empresa hace.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgoPlataforma",
+      "literal": "cash: 2121 · total_assets: 35150 · current_liabilities: 86235 · equity: -51085 · net_turnover: 39322 · net_income: -68723",
+      "dato": "Plataforma con fondos propios negativos (−51.085 €) y pérdidas de 68.723 € en 2025",
+      "fuentePrimaria": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2269545}",
+      "localizador": "Registro mercantil de Letonia, balance y cuenta de resultados de 2025 (PyG: resource_id d5fd17ef…, 21:12:19Z)",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-20T21:12:18Z",
+      "alcanceYLimites": "Dato de cierre de 2025. La plataforma lleva el registro individual de los inversores, cobra los pagos a través de Lemonway y es fiduciaria de la prenda.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "calidadPlataforma",
+      "literal": "Shares · Funded · Restoration of Zentene Manor … €450 of €32,040 min. target 1.4%",
+      "dato": "La plataforma marca «Funded» una campaña al 1,4 % de su mínimo, y su ficha deja sin rellenar el agente de pagos («AGENT NAME … REGAFI NUMBER») y enlaza al supervisor con una dirección rota",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/index",
+      "localizador": "Listado de proyectos (21:13:52Z); pie de la ficha 50; enlace https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/ → redirige a bank.lv y corta la conexión (21:13:53Z)",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:13:52Z",
+      "alcanceYLimites": "Señales de poco cuidado en la información al inversor; no son por sí solas un motivo legal.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Plataforma autorizada por Latvijas Banka y con pasaporte en España (CNMV n.º 1). Emisor identificado (CIF y registro mercantil) y registrador autorizado por BaFin. Pero la plataforma cerró 2025 con fondos propios negativos y sus dueños lo son también de la sociedad cuyos bonos forman la prenda."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Abierta hoy («Raising now», 6 días). Parada en 82.500 € desde el 10/11, con el plazo alargado; la 1.ª ronda solo reunió 50.250 €."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Residentes de la UE/EEE pueden invertir; mínimo 250 €; salida solo al vencimiento. Los países de la oferta y la comisión de traspaso solo están en la KIIS reservada; comisión sobre el cupón en conflicto (5,5 % frente a 0,55 %)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "Sin advertencias de la CNMV. Pero no hay KIIS pública ni en español, la sección de documentos es relleno, la 2.ª ronda no tiene términos propios, el objetivo mínimo choca y la prenda que se presenta como cobertura del 150 % son bonos de una sociedad sin cuentas de 2025 y propiedad de los dueños de la plataforma."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "10/11: 82.500 € (82,3 %), 4 días; 11/11: 82.500 €, 3 días",
+      "ahora": "20/11: 82.500 € (82,3 %), 4 inversores, «6 Days left»: plazo alargado sin dinero nuevo",
+      "fuente": "https://www.crowdedhero.com/project/view?id=50",
+      "critico": true
+    },
+    {
+      "campo": "garantía (dato nuevo)",
+      "antes": "11/11: prenda sobre 3 bonos de Audacia Capital OÜ (300.000 € nominales), sin mirar quién es",
+      "ahora": "20/11: Audacia Capital OÜ tiene 20.000 € de capital sin desembolsar, no ha presentado las cuentas de 2025 y sus titulares reales son los responsables de CrowdedHero ante la CNMV",
+      "fuente": "https://ariregister.rik.ee/eng/company/16250495",
+      "critico": true
+    },
+    {
+      "campo": "rondas (dato nuevo)",
+      "antes": "No constaba",
+      "ahora": "La 1.ª ronda (proyecto 44) cerró con 50.250 € y 9 inversores; 100.250 € = 50.250 € + 50.000 €",
+      "fuente": "https://www.crowdedhero.com/project/view?id=44",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Bonos digitales de Simpleros (2.ª ronda)",
+    "categoria": "Crédito privado",
+    "pais": "ES",
+    "tipo": "rendimiento",
+    "coleccion": null,
+    "resumen": "Bonos subordinados de una empresa española de minicréditos, vendidos por una plataforma letona con pasaporte en España; hoy no se propone tarjeta.",
+    "rentabilidad": null,
+    "metricas": [],
+    "avisos": [],
+    "url": "https://www.crowdedhero.com/project/view?id=50",
+    "fuentesActuales": [
+      "https://www.crowdedhero.com/project/view?id=50",
+      "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+      "https://ariregister.rik.ee/eng/company/16250495"
+    ],
+    "lugar": "Barcelona (emisor) · Riga (plataforma)",
+    "pasos": [],
+    "concepto": null,
+    "resumenTarjeta": {
+      "minimo": "Desde 250 € (1 bono), más 1,25 % de entrada",
+      "accesoEspana": "Sí, para residentes en la UE/EEE; la plataforma está notificada a la CNMV",
+      "salida": "Sin mercado secundario: se cobra al vencimiento, el 15/11/2028"
+    },
+    "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se lee en fuente primaria.",
+    "pruebaPresentacion": {
+      "enlaces": [
+        {"url": "https://www.crowdedhero.com/project/view?id=50", "http": 200, "consultadoUtc": "2026-11-20T21:12:01Z", "nota": "Abre, en inglés. Documentos de relleno con enlaces vacíos (href=\"#\")."},
+        {"url": "https://www.crowdedhero.com/es/project/view?id=50", "http": 404, "consultadoUtc": "2026-11-20T21:13:55Z", "nota": "No hay versión en español."},
+        {"url": "https://www.crowdedhero.com/de/project/view?id=50", "http": 200, "consultadoUtc": "2026-11-20T21:13:56Z"},
+        {"url": "https://www.crowdedhero.com/project/index", "http": 200, "consultadoUtc": "2026-11-20T21:13:52Z", "nota": "El listado funciona (la ruta /projects da 404)."},
+        {"url": "https://www.crowdedhero.com/project/view?id=44", "http": 200, "consultadoUtc": "2026-11-20T21:14:11Z", "nota": "1.ª ronda, «Funded»."},
+        {"url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf", "http": 200, "consultadoUtc": "2026-11-20T21:12:02Z", "nota": "PDF de 5 páginas, en inglés; solo la «First Campaign»."},
+        {"url": "https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/", "http": null, "consultadoUtc": "2026-11-20T21:13:53Z", "nota": "Enlace al supervisor del pie de la ficha: redirige a bank.lv y la conexión se corta. Roto."},
+        {"url": "https://www.crowdedhero.com/legal?category=dlt", "http": 200, "consultadoUtc": "2026-11-20T21:12:10Z"},
+        {"url": "https://www.crowdedhero.com/faq?category=investor", "http": 200, "consultadoUtc": "2026-11-20T21:12:12Z"},
+        {"url": "https://www.crowdedhero.com/pricelist/investor-pricelist", "http": 200, "consultadoUtc": "2026-11-20T21:12:13Z"},
+        {"url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001", "http": 200, "consultadoUtc": "2026-11-20T21:12:04Z"},
+        {"url": "https://ariregister.rik.ee/eng/company/16250495", "http": 200, "consultadoUtc": "2026-11-20T21:13:22Z"}
+      ],
+      "valoracion": "La línea de la tarjeta («Mínimo 250 € · España Sí») y la salida se podrían escribir con fuente. Lo que falla es todo lo demás: el botón de la oferta lleva a una ficha en inglés con «Lorem ipsum» y archivos que no abren, sin KIIS pública, con el objetivo mínimo en contradicción y un enlace al supervisor roto. La tarjeta tendría que llevar como aviso crítico que la garantía son bonos de una sociedad de los dueños de la plataforma, sin cuentas de 2025. No se puede enseñar al inversor como oferta con documentación clara."
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "250 €",
+    "supervisorVerificado": "Latvijas Banka (ESMA, 16/08/2022) y CNMV, PSFP europeo n.º 1 (01/09/2022)",
+    "documentacionClara": "no",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Bono de una empresa española, con mínimo de 250 €, inscrito como criptovalor alemán con ISIN y términos públicos del registrador.",
+    "porQueNo": "Sin KIIS pública ni en español, documentos de relleno, 2.ª ronda sin términos propios, objetivo y comisión en contradicción, campaña parada, emisor de minicréditos con cifras sin documento, prenda sobre bonos de una sociedad de los dueños de la plataforma y plataforma con fondos propios negativos."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Falta una pieza esencial: los documentos públicos. La KIIS de la oferta (el documento clave del reglamento europeo de financiación participativa) solo la ven inversores verificados y no existe en español, y la sección de documentos de la ficha es texto de relleno («Lorem ipsum», «Moneyz.csv» con enlaces vacíos). Los únicos términos públicos (los del registrador alemán, ISIN DE000A4EXNM2) describen la «First Campaign» y no la 2.ª ronda: el objetivo mínimo de esta ronda (100.250 € en la cabecera) no está en ningún documento y choca con los 50.000 € de la propia ficha y de los términos. Chocan también la comisión sobre el cupón (5,5 % en los términos, 0,55 % en las tarifas) y la forma de inscribir el bono (libros de la plataforma frente a «a nombre del inversor»). La calidad tampoco acompaña: la campaña sigue en 82.500 € desde el 10/11 con el plazo alargado y la 1.ª ronda solo reunió 50.250 €; el emisor da minicréditos sin mirar el historial crediticio y sus cifras de 2025 no tienen documento; el bono es subordinado; y la prenda que los términos venden como «cobertura del 150 %» son bonos de Audacia Capital OÜ, una consultora estonia con 20.000 € de capital sin desembolsar, sin cuentas de 2025 presentadas y cuyos titulares reales son los responsables de CrowdedHero ante la CNMV, que además actúa como fiduciaria de esa prenda y cerró 2025 con fondos propios de −51.085 €. Se cumplen la licencia y el pasaporte (CNMV n.º 1), el acceso desde la UE/EEE, el mínimo de 250 €, la salida al vencimiento y la lista de riesgos de la ficha, y no hay advertencias de la CNMV. Mejor ninguna que una dudosa.",
+  "bloqueos": [
+    "La KIIS solo es accesible con cuenta verificada; no se intentó por ninguna otra vía (ACCESO-FUENTES §1 y §2.5).",
+    "Las cuentas de Simpleros, S.L. en el Registro Mercantil no son de acceso gratuito: las cifras de 2025 de la ficha quedan sin verificar.",
+    "No se ha buscado el bono EE3300002252 de Audacia Capital OÜ en ningún mercado ni depositario: su valor real no se conoce; solo el nominal que dan los términos.",
+    "La autorización BaFin de Smart Registry (19/08/2026) es posterior a la fecha de emisión de los términos (01/07/2026): queda por aclarar y no se usa como motivo."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-20T21:12:01Z",
+    "finUtc": "2026-11-20T21:14:29Z"
+  },
+  "lecturas20": {
+    "inventario": "grupos/busqueda-nueva/fuentes/europa/inventario-simpleros-analista.json",
+    "copiaTexto": "grupos/busqueda-nueva/fuentes/europa/simpleros-analista-2026-11-20.txt",
+    "crudos": "grupos/busqueda-nueva/fuentes/crudo/europa/simpleros-analista/ (fuera de Git)",
+    "previas": [
+      "../2026-11-10-v2/grupos/ampliacion/barrido-registros.md",
+      ".claude/skills/investigacion-catalogo/acceso/ACCESO-FUENTES.md §2.5",
+      "expedientes/candidata-crowdedhero-bonos-dlt.json (21:03–21:08 UTC)"
+    ]
+  },
+  "resumenCorto": "No se admite: sin KIIS pública ni documentos claros, 2.ª ronda sin términos propios, campaña parada y prenda sobre bonos de una sociedad de los dueños de la plataforma."
+}
