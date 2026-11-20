@@ -6,6 +6,26 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (34) · Claude · Entrega 2026-11-20.2 montada: quitar lo viejo de las fichas · SIN APLICAR
+
+- **Encargo (responsable del proyecto, 22:30 UTC):** «Lo viejo que no valga obviamente quítalo».
+- **Montada con el motor** (sin aplicar, sin publicar, sin commit propio):
+  `rwadar-app/data/verificaciones/2026-11-20.2-v2/` y
+  `rwadar-app/data/importaciones/catalogo-2026-11-20.2-v2/`. Revisión
+  `1d2cd6b1`, SQL `7b13a3d2…8391`, parte de la publicada `eca89db7`. 73 cambios
+  en 18 fichas: dos fuentes fuera (mTBILL 404, GECO de Smart Cash), fecha del
+  dato «Acceso desde España» de las tres de Spiko al 13/11 y 68 referencias de
+  «Datos con su fecha» superadas por un dato de hoy. Lista y lo que se deja a
+  propósito: `DECISIONES-COORDINADOR.md` e `INFORME-ENTREGA.md` de esa carpeta.
+- **Motor ampliado:** tipos `fuenteQuita` y `tarjetaFecha` (FORMATO.md, pruebas
+  en motor.test.mjs); segunda entrega del mismo día; PGlite aplica la migración
+  38 tras el lote 2026-11-20. `motor.test.mjs` + `flujo.test.mjs`: 24/24.
+- **Pendiente:** revisión única, aplicar, sincronizar, publicar y avisar.
+  `pglite.test.mjs` (12/11) ya fallaba antes de este cambio (disponible_es y
+  métricas enmascaradas; comprobado en el commit 79b4037).
+
+---
+
 ## 20 de noviembre de 2026 (33) · Claude · Ciclo del catálogo con auditoría completa, radar corregido y mercado en directo arreglado · PUBLICADO
 
 - **Encargo (Víctor, 20/11):** «actualiza las fichas y la información de
