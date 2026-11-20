@@ -1,0 +1,82 @@
+[
+ {
+  "url": "https://hausera.io/page-data/propiedad/alicante_3/page-data.json",
+  "archivo": "fuentes/crudo/hausera-propiedad-alicante_3-page-data.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:18Z",
+  "bytes": 158492,
+  "sha256": "f95e3a75cbcf282e84e2754ff6bc86dd9c72fa6dabe6c107920561e2d1898b8f"
+ },
+ {
+  "url": "https://hausera.io/page-data/app-data.json",
+  "archivo": "fuentes/crudo/hausera-app-data.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:19Z",
+  "bytes": 50,
+  "sha256": "5e1f3f3fc308ace0dfabfc9c8a13af8ab0a9e6f4ed843a93ed474c1622e471df"
+ },
+ {
+  "url": "https://hausera.io/page-data/oportunidades/page-data.json",
+  "archivo": "fuentes/crudo/hausera-oportunidades-page-data.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:20Z",
+  "bytes": 188774,
+  "sha256": "f9913b8496c835e37cff47a69b3e0e112530bbb114b3e62c514290ee82bfe46d"
+ },
+ {
+  "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+  "archivo": "fuentes/crudo/hausera-propiedad-alicante_2-page-data.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:20Z",
+  "bytes": 158711,
+  "sha256": "8e94a545bc30c4bf1f9083db9139d9206a06266a9372ab7c1a28bf4327d2f2cb"
+ },
+ {
+  "url": "https://hausera.io/sitemap-0.xml",
+  "archivo": "fuentes/crudo/hausera-sitemap-0.xml",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:21Z",
+  "bytes": 30455,
+  "sha256": "f21d85598ac4a0ae66c39e2b12685b1f296c495a2954ac770423ac528d25b5b8"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+  "archivo": "fuentes/crudo/cnmv-erir-ursus3.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:21Z",
+  "bytes": 183044,
+  "sha256": "3ea04f8f58e800a3cc0a2d91415b0fd5d6725e5255faa6d864dd5895012a971b"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+  "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag2.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:23Z",
+  "bytes": 182838,
+  "sha256": "287f1432915b4b8e9373fd949a05bba87ce880645501ea0444fa1dab2878ea65"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+  "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag3.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:24Z",
+  "bytes": 162258,
+  "sha256": "12212c30c55628a72171275defb1ca5f10eb3e6b1fe5fce735930fecc5b27fd7"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+  "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag4.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:26Z",
+  "bytes": 153549,
+  "sha256": "91b3164f305f6fe554709585dc212df48c76df5c1e8e3113174843d321a94711"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+  "archivo": "fuentes/crudo/cnmv-psfp-listado.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:28Z",
+  "bytes": 165407,
+  "sha256": "cc9f91ab2f3f5e4d343003ab079db42757cbe762d8a29ccc9c58497565f4138b"
+ }
+]
