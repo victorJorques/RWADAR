@@ -685,7 +685,8 @@ test('firmaPrepintado y debeRepintar: la firma de lo que pinta Inicio, sin reloj
   otra.noticias[0].titulo = otra.noticias[0].titulo.replace(/.$/, 'x');
   assert.notEqual(m.firmaPrepintado(m.validarNoticias(otra)), firma);
   const foto = structuredClone(PUBLICADO);
-  foto.noticias[1].imagen = 'pago-online';
+  // Una foto distinta de la que ya lleva (la edición del día puede traer justo esa).
+  foto.noticias[1].imagen = foto.noticias[1].imagen === 'pago-online' ? 'red-europea' : 'pago-online';
   assert.notEqual(m.firmaPrepintado(m.validarNoticias(foto)), firma);
   const resumen = structuredClone(PUBLICADO);
   resumen.noticias[0].resumen += ' Más.';

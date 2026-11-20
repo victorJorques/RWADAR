@@ -1,0 +1,10 @@
+2026-11-20T16:55:09Z | 200 | application/pdf | e781ed720cec86116e08e0c4f26140f1befd67a519aee0caaf0998c237ca4782 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d
+2026-11-20T16:55:10Z | 200 | application/pdf | 978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9 | https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf
+2026-11-20T16:55:12Z | 200 | application/pdf | 757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599 | https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf
+2026-11-20T16:55:12Z | 200 | application/pdf | e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d
+2026-11-20T16:55:13Z | 200 | application/pdf | 289265b26b53f727c54ce701024533e4dafdcd1a90189dea9601cb127eaece58 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d
+2026-11-20T16:55:14Z | 200 | application/pdf | 6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d
+2026-11-20T16:55:15Z | 200 | application/pdf | d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d
+2026-11-20T16:55:16Z | 200 | application/pdf | d6d617a4766a5c43d16a84f85fdf189531918bcd1bc8a0deead61c9dd5080755 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d
+2026-11-20T16:55:17Z | 200 | text/html; charset=utf-8 | 7504a2bc89a6157b27e56175e4928ffb1b9ff4cb585ef3f3be1a3ff73e5da37e | https://www.cnmv.es/portal/aldia/notasprensa
+2026-11-20T16:55:18Z | 200 | text/html; charset=utf-8 | 08666c5cae2c8bfd6c07fddb8a62e03de9fc4b0f540a5010c772dba186656b59 | https://www.esma.europa.eu/press-news/esma-news/drsp-supervisory-responsibilities-remain-unchanged-following-esma-assessment
