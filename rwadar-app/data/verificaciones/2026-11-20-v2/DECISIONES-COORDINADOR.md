@@ -259,3 +259,17 @@ expresa para, además del catálogo:
   mercado con fecha cuando el dato no es de hoy);
 - y dejar la auditoría completa como paso fijo de cada ciclo
   (`.claude/workflows/auditoria-completa-catalogo.js` y la skill).
+
+## 8. Enlaces de las 22 fichas (20:50 UTC, `probar-enlaces.mjs`, `enlaces-publicados-20-11.json`)
+
+133 direcciones; 120 responden bien. De las 13 restantes:
+- 6 de la CNMV dan 500 al comprobador (rechaza su agente) y 200 con una
+  petición normal (comprobado a mano, 20:52 UTC): funcionan.
+- 6 de Midas (midas.app y docs.midas.app) dan 403 con desafío anti-robots de
+  Cloudflare: un visitante con navegador entra; no se elude. Por eso A11 añade
+  las Condiciones Finales y el KID del CDN de GitBook, que sí responden.
+- **A22 · mTBILL:** https://midas.app/assets/main-DOxid0Zj.js da **404** (un
+  archivo antiguo de la web de Midas). Quitarlo de las fuentes y de la
+  referencia que lo cite (si el motor no puede quitarlo de la lista
+  «fuentes», que la referencia cite en su lugar el KID o las Condiciones
+  Finales del CDN de GitBook y anotarlo en noAplicado).
