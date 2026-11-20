@@ -3,6 +3,15 @@
   "nota": "Noticias de RWAdar para Inicio (web en el móvil y app). La más reciente arriba. Después de editar: node rwadar-noticias.js. Si la noticia se publicó también en una red social, añade \"red\": {\"nombre\": \"LinkedIn\", \"url\": \"https://…\"}.",
   "noticias": [
     {
+      "id": "catalogo-2026-11-20",
+      "fecha": "2026-11-20",
+      "etiqueta": "Ofertas",
+      "titulo": "Catálogo revisado dato a dato: 22 ofertas y 25 plataformas",
+      "texto": "Comprobamos en su fuente oficial cada dato de cada oferta. Siguen 22: 8 principales, 13 de reventa y 1 próxima. Añadimos avisos de riesgo que faltaban, corregimos textos antiguos del radar que ya no eran ciertos y el mercado vuelve a actualizarse en directo. No entra ninguna candidata nueva.",
+      "resumen": "Catálogo revisado dato a dato, radar corregido y mercado en directo de nuevo",
+      "destino": "ofertas"
+    },
+    {
       "id": "academy-nueve-lecciones",
       "fecha": "2026-11-06",
       "etiqueta": "Academy",
@@ -15,9 +24,9 @@
       "id": "app-android-1-4-2",
       "fecha": "2026-11-06",
       "etiqueta": "App",
-      "titulo": "App Android 1.4.2, preparada para las notificaciones del móvil",
-      "texto": "La versión 1.4.2 trae lo necesario para recibir notificaciones en el móvil, pero todavía no están activas. La app no pide permiso al abrirse: solo lo pedirá si las activas tú con su botón. Hasta entonces funciona igual que la 1.4.1, que avisa de la versión nueva. Se descarga desde GitHub; no está en Google Play.",
-      "resumen": "App Android 1.4.2: preparada para las notificaciones, que todavía no están activas"
+      "titulo": "App Android 1.4.2, con notificaciones en el móvil",
+      "texto": "La versión 1.4.2 trae las notificaciones en el móvil, que funcionan desde el 12/11/2026 para quien las activa. La app no pide permiso al abrirse: solo lo pide si las activas tú con su botón. Se descarga desde GitHub; no está en Google Play.",
+      "resumen": "App Android 1.4.2: notificaciones en el móvil, activas desde el 12/11/2026"
     },
     {
       "id": "catalogo-2026-11-05",

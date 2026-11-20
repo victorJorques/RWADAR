@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo del 20/11/2026 (revisión eca89db7) con auditoría completa, radar corregido (38), mercado en directo arreglado (37), noticias del 20/11 y web al día",
+  "nota": "Novedades al día: notificaciones activas desde el 12/11 y catálogo del 20/11",
   "revisionAprobada": {
-    "commit": "b8e6dc5daa5b95c4fe813841efcb04999e572430",
-    "contenidoSha256": "sha256:30496667a245ede8119f0fb09044d1f07fed39834859505423db6b9b455a0e41",
+    "commit": "822b1f8d45a8588aef4a2ddbc50f528323724618",
+    "contenidoSha256": "sha256:371397faf107de7d87f8c64b4fdcb0d51b617868473fdaeca3f1cb00a86c65e8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
