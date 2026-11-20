@@ -6,8 +6,8 @@ import { cargarTokenizacion } from '../lib/tokenizacion-remota';
 import { cargarSerieConDirecto } from '../lib/tokenizacion-serie-remota';
 import { FUENTE, PESTANAS, PESTANA_INICIAL, avisoDirecto, cambio24h, cambioPct, cifraGrande, coberturaTexto, colorTipo, coordenadas, cuandoDato, cuota, direccion,
   etiquetaPestana, explicacionCambio, fechaCorta, finaAtrasada, graficoPestana, horaEspana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados,
-  msMinuto, notaCorta, notaSerie, pestanaDisponible, porcentaje, serieAtrasada, seriePestana, subtituloCifra, textoInstante, tramosSeguidos,
-  trazosSvg } from '../lib/tokenizacion';
+  msMinuto, notaCorta, notaSerie, pestanaDisponible, porcentaje, rotuloDato, serieAtrasada, seriePestana, subtituloCifra, textoCategoria, textoInstante,
+  tramosSeguidos, trazosSvg } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -46,7 +46,8 @@ import { tacto } from '../lib/tacto';
    vale, la fina publicada, como antes. Con la app a la vista se vuelve a
    pedir cuando toca el dato siguiente, sin cambiar de pestaña y esperando a
    que se quite la cruz. Si el directo está encendido y falla, una línea lo
-   dice (y en Inicio, «copia de las 16:05»); apagado, nada.
+   dice (y en Inicio, «copia de las 16:05», o «copia del 14/11, 15:00» si no
+   es de hoy); apagado, nada. «Hoy» solo con datos de hoy (rotuloDato, 20/11/2026).
    --------------------------------------------------------------------- */
 const VERDE = C.senal;
 // Un solo rojo para la línea y las cifras: #FF6B5E pasa AA como texto sobre s0 y s1.
@@ -373,7 +374,8 @@ function Cambio({ g, grande = false }) {
    dice; el total de la categoría también va en hora de España) de su último punto. */
 function Fuente({ vivo, serie, idioma, onAbrirEnlace, conTotal = true }) {
   const en = idioma === 'en';
-  const partes = [];
+  // Qué categoría de CoinGecko: «Tokenized Assets» (tokenized-products), no «Real World Assets (RWA)».
+  const partes = [textoCategoria(idioma)];
   const fin = serie ? cifraGrande(serie, null) : null;
   const ms = fin && fin.t ? msMinuto(fin.t) : null;
   if (serie && ms !== null) partes.push(`${en ? 'series to' : 'serie hasta el'} ${cuandoMedio({ ms }, idioma)} ${en ? '(Spain time)' : '(hora de España)'}`);
@@ -526,13 +528,14 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {como ? <Text noTraducir style={e.nota}>{notaSerie(serie, idioma, elegida)}</Text> : null}
         </View>
       ) : hoy !== null && fase !== 'cargando' ? (
-        <Text noTraducir style={e.estado}>{en ? "The chart isn't available right now. Today's figure is." : 'El gráfico no está disponible ahora. La cifra de hoy sí.'}</Text>
+        <Text noTraducir style={e.estado}>{en ? "The chart isn't available right now. The figure is." : 'El gráfico no está disponible ahora. La cifra sí.'}</Text>
       ) : null}
       {hoy !== null ? (
         <View style={e.clave}>
           {/* Dos cifras distintas, cada una con su nombre: la de la serie (la cifra grande) y la de toda la categoría. */}
-          {serie && cifraHoy.fuente === 'serie' ? clave(en ? `Value today (${serie.incluidos} largest)` : `Valor hoy (${serie.incluidos} mayores)`, millones(hoy, idioma), cuandoHoy) : null}
-          {clave(en ? 'Category total today' : 'Total de la categoría hoy', vivo ? millones(vivo.total.valor, idioma) : '—', vivo ? (en ? 'all tokens · CoinGecko' : 'todos los tokens · CoinGecko') : null)}
+          {/* «hoy» solo si el dato es de hoy en España y no de una foto guardada; si no, el rótulo lleva el día (rotuloDato). */}
+          {serie && cifraHoy.fuente === 'serie' ? clave(rotuloDato('valor', cifraHoy, { idioma, incluidos: serie.incluidos }), millones(hoy, idioma), cuandoHoy) : null}
+          {clave(rotuloDato('total', vivo, { idioma }), vivo ? millones(vivo.total.valor, idioma) : '—', vivo ? (en ? 'all tokens · CoinGecko' : 'todos los tokens · CoinGecko') : null)}
           {/* 24 h: con una serie fina, el de la pestaña 24 h; si no, el de la diaria si sus dos últimos días son seguidos;
               si no, el de CoinGecko si es creíble; si no, «—». */}
           {clave(en ? '24 h change' : 'Cambio en 24 h', d24 === 'sin-datos' ? '—' : `${FLECHA[d24]} ${porcentaje(c24.cambio, idioma)}`,
@@ -550,7 +553,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       {vivo?.tipos?.length ? (
         <View style={e.tipos}>
           <Text noTraducir style={e.h2} accessibilityRole="header">{en ? 'By asset type' : 'Por tipo de activo'}</Text>
-          <Text noTraducir style={e.h2Sub}>{en ? "Today. A token can count in two types, so the figures don't add up to the total." : 'Hoy. Un mismo token puede contar en dos tipos, así que las cifras no suman el total.'}</Text>
+          <Text noTraducir style={e.h2Sub}>{rotuloDato('tipos', vivo, { idioma })}</Text>
           <Pressable onPress={() => { tacto.eleccion(); setTiposAbiertos((v) => !v); }} style={({ pressed }) => [e.como, pressed && pulsado('b3')]}
             accessibilityRole="button" accessibilityState={{ expanded: tiposAbiertos }} noTraducir testID="mercado-tipos"
             accessibilityLabel={`${en ? `See the ${vivo.tipos.length} types` : `Ver los ${vivo.tipos.length} tipos`}`}>
@@ -625,10 +628,10 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
   const { fase, vivo, serie, origen, motivo, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
   // La misma cifra que el final del minigráfico: el último punto de la serie.
   const hoy = valorHoy(vivo, serie);
-  // Sin el directo (encendido y fallando): «copia de las 16:05», la de la copia publicada.
+  // Sin el directo (encendido y fallando): «copia de las 16:05» si es de hoy; si no, «copia del 14/11, 15:00» (rotuloDato).
   const cifraHoy = cifraGrande(serie, vivo);
   const copia = serie && origen && origen !== 'directo' && avisoDirecto(motivo, serie, idioma)
-    ? (cifraHoy && cifraHoy.t ? `${en ? 'copy from ' : 'copia de las '}${horaEspana(msMinuto(cifraHoy.t)).hora}` : (en ? 'published copy' : 'copia publicada')) : '';
+    ? rotuloDato('copia', cifraHoy, { idioma }) : '';
   const vieja = atrasada(vivo, serie);
   // El minigráfico del mes: con la serie horaria si la hay (721 puntos; se pinta simplificado, sin perder máximos ni mínimos).
   const g = useMemo(() => (serie ? graficoPestana(serie, '1m', idioma) : null), [serie, idioma]);

@@ -237,6 +237,9 @@ const SERIE = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(RAIZ, 'rw
 const ULTIMO = SERIE.puntos.at(-1);
 // El dato en vivo que sirve el servidor local: la respuesta real de CoinGecko del 10/11/2026 a las 15:25 UTC.
 const VIVO = { fuente: 'coingecko', actualizado: '2026-11-10T15:25:40.000Z', total: { valor: 49683537033 } };
+// La página va con el reloj real y los datos de la prueba no son de hoy: los rótulos llevan su día, nunca «hoy» (auditoría del 20/11/2026).
+const ROT_VALOR = modelo.rotuloDato('valor', modelo.cifraGrande(SERIE, null), { incluidos: SERIE.incluidos });
+const ROT_TOTAL = modelo.rotuloDato('total', VIVO);
 const plano = t => String(t).replace(/\s+/g, ' ').trim();
 const NUM = t => Number(String(t).match(/\d[\d.]*/)[0].replace(/\./g, ''));
 /* El reloj del servidor local: empieza el 10/11/2026 a las 15:31:37 UTC
@@ -286,7 +289,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.ok(c.mini, 'el minigráfico del mes');
       assert.match(c.etiqueta, new RegExp(`^Mercado de activos tokenizados, suma de los ${SERIE.incluidos} mayores tokens: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes\\. Ver el gráfico$`));
       assert.equal(c.ver, 'Ver mercado y noticias→');
-      assert.equal(c.fuente, `Datos: CoinGecko · serie diaria hasta el ${modelo.fechaCorta(ULTIMO.fecha)}`);
+      assert.equal(c.fuente, `Datos: CoinGecko · categoría «Tokenized Assets» · serie diaria hasta el ${modelo.fechaCorta(ULTIMO.fecha)}`);
       assert.deepEqual(c.cabecera, ['#emisiones', '/mercado/', '#tool', '/academy/', '/android'], 'la cabecera de Inicio lleva a «Mercado y noticias»');
       assert.equal(c.fuera, 0);
       assert.equal(c.anchoPagina, ancho);
@@ -315,7 +318,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       // /mercado/: cifra grande, cambio del periodo, pestañas, gráfico y datos clave.
       await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
-      const leer = () => pagina.evaluate(() => {
+      const leer = () => pagina.evaluate(([rotValor, rotTotal]) => {
         const s = document.querySelector('#tokenizacion'), svg = s.querySelector('.mk-svg'), graf = s.querySelector('.mk-graf');
         const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
@@ -329,7 +332,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           alcance: s.querySelector('.mk-alcance')?.textContent ?? null, avisoTokens: s.querySelector('.mk-aviso-tokens')?.textContent ?? null,
           pildora: s.querySelector('.mk-ultimo text')?.textContent, pildoraY: ultimo ? Number(ultimo.getAttribute('y')) + 9 : null,
           suelo: Number(svg.querySelector('.mk-suelo').getAttribute('x2')), cruzH: svg.querySelectorAll('.mk-cruz line').length,
-          maximo: dd('Máximo del periodo'), valorHoy: dd('Valor hoy (29 mayores)'), total: dd('Total de la categoría hoy'), c24: dd('Cambio en 24 h'), tokens: dd('Tokens en el gráfico'),
+          maximo: dd('Máximo del periodo'), valorHoy: dd(rotValor), total: dd(rotTotal), c24: dd('Cambio en 24 h'), tokens: dd('Tokens en el gráfico'),
           tiposAbiertos: s.querySelector('.mk-tipos-det')?.open, tiposSum: s.querySelector('.mk-tipos-sum')?.textContent,
           puentes: svg.querySelectorAll('.mk-puente').length, cortesArea: (svg.querySelector('.mk-area').getAttribute('d').match(/M/g) || []).length,
           pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label'), b.disabled]),
@@ -348,7 +351,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           letraClave: [...s.querySelectorAll('.mk-clave dd, .mk-tipo-valor')].map(d => getComputedStyle(d).fontFamily),
           tipos24: [...s.querySelectorAll('.mk-tipo-24h')].map(d => d.textContent),
           fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth };
-      });
+      }, [ROT_VALOR, ROT_TOTAL]);
       let m = await leer();
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
       assert.equal(m.h1, 'Mercado de activos tokenizados');
@@ -406,7 +409,8 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.nota, modelo.notaCorta(SERIE) + ' ' + modelo.lineaTotalCategoria(SERIE, VIVO, 'es'), 'la nota corta a la vista, con el total de la categoría');
       assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', '1m'));
       assert.deepEqual(m.como, ['Cómo se calcula', false], 'el resto, en un desplegable cerrado');
-      assert.deepEqual(m.clave, [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo',
+      assert.ok(!/\bhoy\b/.test(ROT_VALOR + ROT_TOTAL), 'con datos de otro día, ningún «hoy»');
+      assert.deepEqual(m.clave, [ROT_VALOR, ROT_TOTAL, 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo',
         'Tokens en el gráfico', 'El tipo que más pesa']);
       assert.equal(m.tipos, 8);
       assert.equal(m.fuente, 'https://www.coingecko.com/');
@@ -483,7 +487,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         clave: document.querySelector('.mk-clave dt').textContent }));
       assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens with a complete history\u00a0· ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
         explica: 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.',
-        pestanas: ['24H', '1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
+        pestanas: ['24H', '1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: modelo.rotuloDato('valor', modelo.cifraGrande(SERIE, null), { idioma: 'en', incluidos: SERIE.incluidos }) });
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
       await pagina.close();
     }
@@ -534,7 +538,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await pagina.route('**/datos/tokenizacion-serie.json', r => r.abort());
       await pagina.reload({ waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
+      assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra sí\./);
       assert.equal(plano(await pagina.textContent('.mk-cifra-num')), '49.684 M$', 'sin serie, la cifra grande es el total de la categoría');
       assert.equal(await pagina.textContent('.mk-sub'), 'Total de la categoría en CoinGecko, con todos sus tokens');
       assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 16:25 hora de España\)\./);

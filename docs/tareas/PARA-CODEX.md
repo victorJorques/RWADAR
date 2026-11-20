@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (34) · Claude · Mercado: «hoy» solo con datos de hoy y la categoría de CoinGecko con su nombre · SIN PUBLICAR
+
+- **Encargo (Víctor, 20/11):** «lo viejo que no valga, quítalo… que no vuelvan
+  a haber textos ni datos falsos». Hallazgos 4 y 5 de
+  `rwadar-app/data/verificaciones/2026-11-20-v2/auditoria/sitio-web.md`.
+- **Motor** (`rwadar-movil/lib/tokenizacion.js`, copiado a la web con
+  `copiar-modelo-web.cjs`): `rotuloDato(tipo, dato, { idioma, ahora, incluidos })`
+  decide el rótulo; `datoDeHoy` (día de España, Europe/Madrid, y no
+  `foto-guardada`), `momentoEspana`, `textoCategoria` y `CATEGORIA_COINGECKO`
+  («Tokenized Assets» = `tokenized-products`).
+- **Web** (`mercado-20261111.js`) **y app** (`MercadoBolsa.js`): «Total de la
+  categoría (foto del DD/MM, HH:MM)», «Valor el DD/MM (N mayores)», Inicio
+  «copia del DD/MM, HH:MM» y el subtítulo de «Por tipo de activo» («Foto del
+  DD/MM, HH:MM.» en vez de «Hoy.») cuando el dato no es de hoy o es una foto
+  guardada; con datos de hoy, como antes. La línea de la fuente dice
+  «categoría «Tokenized Assets»» y «Cómo se calcula», «tokens de la categoría
+  «Tokenized Assets» de CoinGecko (N % del total de la categoría)» (sin el
+  «hoy», que tampoco era seguro). Inglés en línea, como el resto del mercado.
+- **Pruebas:** nueva en `rwadar-movil/tests/tokenizacion.test.cjs` (hoy, ayer,
+  foto guardada, medianoche de Madrid, verano, otro año); actualizadas las de
+  la app y las de Chromium (`rwadar-acceso/tokenizacion.test.mjs`,
+  `mercado-fino-navegador.test.mjs`). `npm run test:web`, `npm --prefix
+  rwadar-movil test` y OTA compatible (`ok:true`) en verde.
+- **Pendiente:** publicar la web y enviar la OTA (cambia la app) cuando Víctor
+  lo autorice, y después «Avisar novedad».
+
 ## 20 de noviembre de 2026 (33) · Claude · Ciclo del catálogo con auditoría completa, radar corregido y mercado en directo arreglado · PUBLICADO
 
 - **Encargo (Víctor, 20/11):** «actualiza las fichas y la información de

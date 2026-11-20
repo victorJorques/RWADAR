@@ -1323,7 +1323,7 @@ function notaSerie(serie, idioma = 'es', clave = null) {
   const todos = s.incluidos === s.pedidos;
   if (idioma === 'en') {
     return (todos ? `Sum of the ${s.pedidos} largest` : `Sum of ${s.incluidos} of the ${s.pedidos} largest`) +
-      ` real-world-asset tokens tracked by CoinGecko (${cob} of today's category total). If a token started trading within the period, it enters on that day.` +
+      ` tokens in CoinGecko's ${textoCategoria(idioma)} (${cob} of the category total). If a token started trading within the period, it enters on that day.` +
       (mitad > 0 ? ` In this period, ${mitad} of the ${s.incluidos} join midway (from the day CoinGecko starts tracking them).` : '') +
       (huecos > 0 ? ` ${huecos} ${huecos === 1 ? 'is' : 'are'} left out because ${huecos === 1 ? 'its' : 'their'} CoinGecko history is missing days.` : '') +
       (sinLeer > 0 ? ` ${sinLeer} could not be read.` : '') + fina +
@@ -1332,7 +1332,7 @@ function notaSerie(serie, idioma = 'es', clave = null) {
         : sinPintar > 0 ? ` Days without complete data are not drawn (${sinPintar} in the series).` : '');
   }
   return (todos ? `Suma de los ${s.pedidos} mayores` : `Suma de ${s.incluidos} de los ${s.pedidos} mayores`) +
-    ` tokens de activos reales que sigue CoinGecko (${cob} del total de la categoría hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.` +
+    ` tokens de la ${textoCategoria(idioma)} de CoinGecko (${cob} del total de la categoría). Si un token empezó a cotizar dentro del periodo, entra ese día.` +
     (mitad > 0 ? ` En este periodo, ${mitad} de los ${s.incluidos} entran a mitad (desde el día en que CoinGecko los sigue).` : '') +
     (huecos > 0 ? ` Quedan fuera ${huecos} a los que les faltan días en CoinGecko.` : '') +
     (sinLeer > 0 ? (sinLeer === 1 ? ' No se pudo leer 1.' : ` No se pudieron leer ${sinLeer}.`) : '') + fina +
@@ -1458,6 +1458,73 @@ function cuandoDato(vivo, idioma = 'es', ahora = Date.now()) {
   if (h.fecha === horaEspana(ahora).fecha) return (en ? 'today, ' : 'hoy, ') + h.hora + zona;
   return (en ? 'figure from ' : 'dato del ') + fechaHora;
 }
+/* =====================================================================
+   Los rótulos con fecha (auditoría del 20/11/2026: «Total de la categoría
+   hoy» enseñaba la foto guardada del 14/11 y la tarjeta de Inicio decía
+   «copia de las 15:00» sin día). «Hoy» solo si el dato es del día de hoy en
+   España peninsular (Europe/Madrid, como horaEspana) y no de una foto
+   guardada; si no, el rótulo lleva el día (y la hora, si la hay). La misma
+   decisión en la web (/mercado/ e Inicio) y en la app.
+   ===================================================================== */
+/* El nombre que CoinGecko da a la categoría «tokenized-products» (TOTAL.id). */
+const CATEGORIA_COINGECKO = 'Tokenized Assets';
+function textoCategoria(idioma = 'es') {
+  return idioma === 'en' ? `"${CATEGORIA_COINGECKO}" category` : `categoría «${CATEGORIA_COINGECKO}»`;
+}
+/* El instante de un dato, en hora de España: «t» (ISO al minuto, la serie
+   fina y la cifra grande), «actualizado» (ISO, el resumen de
+   /api/tokenizacion) o solo «fecha» (la diaria, sin hora). { fecha, hora }
+   (hora null si no la hay) o null. */
+function momentoEspana(dato) {
+  if (!esObjeto(dato)) return null;
+  const ms = typeof dato.t === 'string' ? msMinuto(dato.t)
+    : typeof dato.actualizado === 'string' && ISO.test(dato.actualizado) ? Date.parse(dato.actualizado) : null;
+  if (ms !== null && Number.isFinite(ms)) return horaEspana(ms);
+  return msFecha(dato.fecha) !== null ? { fecha: dato.fecha, hora: null } : null;
+}
+/* ¿Se puede decir «hoy»? Solo si el dato es de hoy en España y no viene de una foto guardada. */
+function datoDeHoy(dato, ahora = Date.now()) {
+  const m = momentoEspana(dato);
+  return !!m && dato.fuente !== 'foto-guardada' && m.fecha === horaEspana(ahora).fecha;
+}
+/* El rótulo de un dato, ya en su idioma. «tipo»:
+   - 'total': el total de la categoría (dato: el resumen, «vivo»): «Total de
+     la categoría hoy» o «Total de la categoría (foto del 14/11, 15:00)».
+   - 'valor': la cifra grande (dato: cifraGrande), con «incluidos»: «Valor
+     hoy (29 mayores)» o «Valor el 14/11 (29 mayores)».
+   - 'copia': la tarjeta de Inicio sin el directo (dato: cifraGrande):
+     «copia de las 15:00» o «copia del 14/11, 15:00»; sin hora, «copia publicada».
+   - 'tipos': el subtítulo de «Por tipo de activo» (dato: «vivo»): «Hoy.» o
+     «Foto del 14/11, 15:00.», y lo que sigue.
+   El día, «DD/MM» (con el año si no es el de hoy); la hora, la de España. */
+function rotuloDato(tipo, dato, { idioma = 'es', ahora = Date.now(), incluidos = null } = {}) {
+  const en = idioma === 'en', m = momentoEspana(dato), hoy = datoDeHoy(dato, ahora);
+  const dia = m ? fechaBreve(m.fecha, idioma, horaEspana(ahora).fecha) : '';
+  const diaHora = m ? dia + (m.hora ? ', ' + m.hora : '') : '';
+  if (tipo === 'total') {
+    if (hoy) return en ? 'Category total today' : 'Total de la categoría hoy';
+    if (!m) return en ? 'Category total' : 'Total de la categoría';
+    return en ? `Category total (snapshot from ${diaHora})` : `Total de la categoría (foto del ${diaHora})`;
+  }
+  if (tipo === 'valor') {
+    const cuantos = typeof incluidos === 'number' ? (en ? ` (${incluidos} largest)` : ` (${incluidos} mayores)`) : '';
+    if (hoy) return (en ? 'Value today' : 'Valor hoy') + cuantos;
+    if (!m) return (en ? 'Value' : 'Valor') + cuantos;
+    return (en ? `Value on ${dia}` : `Valor el ${dia}`) + cuantos;
+  }
+  if (tipo === 'copia') {
+    if (!m || !m.hora) return en ? 'published copy' : 'copia publicada';
+    if (hoy) return (en ? 'copy from ' : 'copia de las ') + m.hora;
+    return en ? `copy from ${dia}, ${m.hora}` : `copia del ${dia}, ${m.hora}`;
+  }
+  if (tipo === 'tipos') {
+    const resto = en ? "A token can count in two types, so the figures don't add up to the total."
+      : 'Un mismo token puede contar en dos tipos, así que las cifras no suman el total.';
+    const cuando = hoy ? (en ? 'Today.' : 'Hoy.') : m ? (en ? `Snapshot from ${diaHora}.` : `Foto del ${diaHora}.`) : '';
+    return cuando ? cuando + ' ' + resto : resto;
+  }
+  return '';
+}
 /* La línea gris del total de la categoría, con su hora. Va bajo el gráfico,
    tras la nota corta (revisión del 11/11/2026: en la cabecera empujaba el
    gráfico fuera de la primera pantalla del móvil); que la cifra grande y el
@@ -1578,7 +1645,7 @@ module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVa
   diasSinDato, tramo, estadisticasTramo, escalaValores, marcaValor, marcasFechas, graficoPestana, notaSerie, coordenadas, indiceCercano, tramosSeguidos, trazosSvg,
   avisoTokens, serieAtrasada, RETRASO_MAX_DIAS, finaAtrasada, FINA_RETRASO_MAX_HORAS, notaCorta, diasQueFaltan,
   CAMBIO_24H_MAX, cambio24hCreible, etiquetaPestana, anioSerie, coberturaTexto, entranAMitad, cifraGrande, cambio24h, esHoy, cuandoDato,
-  lineaTotalCategoria, explicacionCambio, subtituloCifra,
+  lineaTotalCategoria, explicacionCambio, subtituloCifra, CATEGORIA_COINGECKO, textoCategoria, momentoEspana, datoDeHoy, rotuloDato,
   RESOLUCIONES, FUERA_MAX_PCT, avisoFuera, urlHistoriaFina, observacionesToken, construirSerieFina, validarSerieFina, serializarSerieFina, serieFinaValida, serieFinaVacia,
   seriesEnlazadas, unirSerieFina, serieFinaDe, seriePestana, pestanaDisponible, textoInstante, horaEspana, indicesPintar, isoMinuto, msMinuto,
   directoAFina, validarDirecto, transcurridoMs, edadDirecto, unirDirecto, motivoDirecto, avisoDirecto, esDirecto, notaDirecto,
