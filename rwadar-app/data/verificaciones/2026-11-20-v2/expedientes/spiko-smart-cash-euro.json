@@ -95,7 +95,7 @@
    "url": "https://www.spiko.io/es/spiko-euro",
    "versionOFecha": "11/11/2026: render con JavaScript (09:18:06Z, fuentes/spiko-web-es-spiko-euro.json) y HTML (09:21:20Z, crudo, mismo SHA-256 que el 10/11). Sigue: «Interés a tipo fijo 2,84% · Garantizado por contrapartes», «Sociedad gestora Amundi Asset Management», «€STR + un 0,40%»; «Activos totales del fondo €2.301 M». «Verificar la aprobación →» sigue llevando al certificado de la AMF; el enlace de la CNMV lleva a la ficha de Spiko Finance (n.º 5325), no a la del fondo · 12/11/2026: releída a las 00:33:17 UTC, mismo SHA-256 que el 11/11 (SHA-256 de hoy 988387333b00…). · 20/11/2026: releída (2026-11-20T16:54:40Z; 37f6c5665067…): sigue «Interés a tipo fijo 2,84% Garantizado por contrapartes» y «Sociedad gestora Amundi Asset Management».",
    "paginas": null,
-   "sha256": "37f6c566506793f46d18bff06d2c8edcfbfe21ff76af61bfe3c5d39c659c3189",
+   "sha256": "1f025a475e662d1a7952903c9cfad4b72a0fcc6f860069b868312f3b9f1d8a43",
    "leido": true,
    "consultadoUtc": "2026-11-20T16:54:40Z",
    "nota20": "SHA-256 de la copia de hoy (página con elementos dinámicos; la comparación es de texto)"
@@ -105,7 +105,7 @@
    "url": "https://www.spiko.io/es/usos-principales/particulares",
    "versionOFecha": "11/11/2026: render (09:18:13Z; nombre del testimonio recortado) y HTML (09:21:21Z, mismo SHA-256 que el 10/11); sigue con «No existen límites de retirada» · 12/11/2026: releída a las 00:33:21 UTC, mismo SHA-256 que el 11/11 (SHA-256 de hoy 20ad0274a914…). · 13/11/2026: mismo texto (08:30:46 UTC). · 20/11/2026: releída (2026-11-20T16:54:41Z; 4a1f29ca1c30…): sigue «No existen límites de retirada».",
    "paginas": null,
-   "sha256": "4a1f29ca1c30111f0a1f589e7c0d21051e5ab0b766917e3783bd62f2a7324e15",
+   "sha256": "dcde342312333ab2694d392ce7831ac8f2bcdd8215ed234d5346a5ed55959342",
    "leido": true,
    "consultadoUtc": "2026-11-20T16:54:41Z",
    "nota20": "SHA-256 de la copia de hoy (página con elementos dinámicos; la comparación es de texto)"
@@ -685,6 +685,6 @@
  "notaParaCoordinador": "La próxima VL de Spiko Euro es el lunes 23/11 hacia las 19:30 UTC: la del 20/11 vale para la entrega de hoy. Ojo con la métrica «Supervisor»: la ficha de la AMF que citaba ya no se publica (cambio crítico de texto, no de decisión). El enlace «Verificar la autorización» de la AMF en la web de Spiko lleva a esa ficha vacía.",
  "consulta": {
   "inicioUtc": "2026-11-20T16:53:46Z",
-  "finUtc": "2026-11-20T17:05:00Z"
+  "finUtc": "2026-11-20T17:03:59Z"
  }
 }

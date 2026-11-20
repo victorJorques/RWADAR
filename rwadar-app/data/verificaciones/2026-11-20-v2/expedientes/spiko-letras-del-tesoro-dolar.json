@@ -116,7 +116,7 @@
    "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
    "versionOFecha": "11/11/2026: render con JavaScript (09:17:58Z, fuentes/spiko-web-es-ustbl.json) con la cifra viva «4,02%» y «174.085.623,17$»; el HTML servido sin JavaScript (09:21:21Z, crudo) sigue con «4,09%» en caché. La frase «sin preaviso y sin límite de importe» sigue en la página · 12/11/2026: releída a las 00:33:19 UTC, mismo SHA-256 que el 11/11 (SHA-256 de hoy da4d37cea7f5…). · 20/11/2026: releída (2026-11-20T16:54:40Z; 418c1eaaeb81…): 3,97 %; sigue «sin preaviso y sin límite de importe».",
    "paginas": null,
-   "sha256": "418c1eaaeb81bf0a8cd405b1ebab82a463e4e311edabd08cf15d7d24e08bd8ca",
+   "sha256": "01528a1ffe10a0c38112aa14d4eb5b686972f31bc5c600a4c45107b802b5860b",
    "leido": true,
    "consultadoUtc": "2026-11-20T16:54:40Z",
    "nota20": "SHA-256 de la copia de hoy (página con elementos dinámicos; la comparación es de texto)"
@@ -517,6 +517,6 @@
  "notaParaCoordinador": "La próxima VL de USTBL se espera hoy, 20/11/2026, hacia las 18:00 UTC (nextYieldTimestamp 1795197600). Si la entrega se monta después, habrá cifra nueva; hasta entonces, 3,97 % (VL del 19/11) es la vigente.",
  "consulta": {
   "inicioUtc": "2026-11-20T16:53:46Z",
-  "finUtc": "2026-11-20T17:05:00Z"
+  "finUtc": "2026-11-20T17:03:59Z"
  }
 }

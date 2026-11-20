@@ -116,7 +116,7 @@
    "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
    "versionOFecha": "11/11/2026: render con JavaScript (09:17:50Z, fuentes/spiko-web-es-eutbl.json) con la cifra viva «2,41%» y «427.165.148,65€»; el HTML servido sin JavaScript (09:21:21Z, crudo) es idéntico byte a byte al del 10/11 y aún dice «2,44%»: es una copia en caché de la página, no una fuente distinta · 12/11/2026: releída a las 00:33:18 UTC, mismo SHA-256 que el 11/11 (SHA-256 de hoy d220ef0d1aae…). · 20/11/2026: releída (2026-11-20T16:56:43Z; render): 2,35 % «Rendimiento neto actual», cartera al 19/11/2026.",
    "paginas": null,
-   "sha256": "a0e3a18719f56f33f9faafedc90ea865ef563028f892e5ab998b78cb8389d55b",
+   "sha256": "908cacc49f1b95638c2b4e98d8af054fc87676308e377bb37e24e3be6afc1af5",
    "leido": true,
    "consultadoUtc": "2026-11-20T16:56:43Z",
    "nota20": "SHA-256 de la copia de hoy (página con elementos dinámicos; la comparación es de texto)"
@@ -514,6 +514,6 @@
  "notaParaCoordinador": "La próxima VL de EUTBL se espera hoy, 20/11/2026, hacia las 18:00 UTC (nextYieldTimestamp 1795197600). Si la entrega se monta después, habrá que volver a leer la API y fechar con la VL del 20/11.",
  "consulta": {
   "inicioUtc": "2026-11-20T16:53:46Z",
-  "finUtc": "2026-11-20T17:05:00Z"
+  "finUtc": "2026-11-20T17:03:59Z"
  }
 }
