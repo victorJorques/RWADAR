@@ -247,6 +247,14 @@ que ya están, avanza uno por cada nuevo y guarda exactamente lo mismo que la
    datos).
 5. `estado` a los 15 y a los 30 minutos: llamadas con 200 y guardadas, sin
    `error_2200h`, y la web sirviendo `/api/tokenizacion/directo` con 200.
+   Tras el corte, «espera tras fallos» puede llegar a 60 minutos desde la
+   última llamada fallida (fallos seguidos ≥ 3): hasta esa hora no hay
+   llamada nueva y no es un fallo; si es así, mirar `estado` otra vez
+   pasada esa hora.
+
+Si `ensayo-37` falla con «le quedan N ids» o con «RESTART value … cannot be
+greater than MAXVALUE», no se aplica: el mayor id real está cerca del tope
+y hace falta renumerar los tokens (otra migración).
 
 ## 6. Encender (el coordinador, con permiso de la dirección, paso a paso)
 
