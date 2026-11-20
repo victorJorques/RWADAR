@@ -1,6 +1,7 @@
+<!-- Copia de 2026-11-20-v2/DECISIONES-COORDINADOR.md para las pruebas de la entrega 2026-11-20.2; sin nombres de personas. -->
 # Decisiones del coordinador · entrega 2026-11-20
 
-Claude, 20/11/2026. Puesta al día pedida por Víctor a las 16:51 UTC: «Actualiza
+Claude, 20/11/2026. Puesta al día pedida por [el responsable del proyecto] a las 16:51 UTC: «Actualiza
 las fichas y la información de RWAdar, ofertas, noticias, todo antes de las 12
 de la noche» y, a las 16:54 UTC, «el valor de mercado con el gráfico también,
 todo actualizado al momento de ahora».
@@ -36,7 +37,7 @@ a las 17:20 UTC.
   «imagen», en `noticias.json`.
 - **Tokenización:** «Tokenización diaria» del 20/11 (15:58 UTC) en
   `datos-tokenizacion`; se vuelve a lanzar justo antes de publicar, a petición
-  de Víctor («al momento de ahora»).
+  de [el responsable del proyecto] («al momento de ahora»).
 
 ## 2. Por oferta (antes → ahora)
 
@@ -112,7 +113,7 @@ a las 17:20 UTC.
   suscripción empieza el 25/11» quedará viejo ese día.
 - Spiko Smart Cash: por qué la AMF dejó de publicar la ficha GECO.
 
-## 6. Auditoría completa (petición de Víctor a las 17:12 UTC: «Revisa todas las ofertas e información bien»)
+## 6. Auditoría completa (petición de [el responsable del proyecto] a las 17:12 UTC: «Revisa todas las ofertas e información bien»)
 
 Auditores independientes (no investigaron ni montaron) abrieron hoy la fuente
 de cada dato visible de cada ficha (`auditoria/<ámbito>.md`). Entran estas
@@ -207,7 +208,7 @@ que BaFin no confirma; Lofty «oferta registrada»; Franklin Templeton
 entrega:** esos textos no son de la revisión del catálogo, sino de la tabla
 base `plataformas` de Supabase (`rwadar-app/db/02_seed.sql`). Cambiarlos es
 SQL fuera de «Aplicar catálogo», que esta orden no cubre. Se lo explico a
-Víctor con la propuesta para hacerlo en cuanto lo autorice.
+[el responsable del proyecto] con la propuesta para hacerlo en cuanto lo autorice.
 
 **Brickwise (`auditoria/brickwise-a.md` y `brickwise-b.md`; 303 datos de las
 11 fichas):**
@@ -245,7 +246,7 @@ subordinación, vida útil de Cohotel, piso vacío de Randhartingergasse, «Prec
 de emisión original» de Plüddemanngasse y la fuente del «Plazo» de GreenPoint
 y Cohotel. Quedan anotadas para el próximo ciclo.
 
-## 7. Orden de Víctor de las 17:40 UTC
+## 7. Orden de [el responsable del proyecto] de las 17:40 UTC
 
 «Claro. Todo lo falso fuera y actualiza todo lo comentado y publica la
 actualización; que no vuelvan a haber textos ni datos falsos.» Es la orden
