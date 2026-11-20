@@ -30,7 +30,8 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   const conBase = fs.readdirSync(FLUJOS).filter(n => /\.ya?ml$/.test(n))
     .filter(n => /secrets\.SUPABASE_DB_URL/.test(fs.readFileSync(path.join(FLUJOS, n), 'utf8'))).sort();
   assert.deepEqual(conBase, ['aplicar-catalogo.yml', 'avisar-novedad.yml', 'avisos-base.yml', 'copia-seguridad.yml',
-    'correo-lettermint.yml', 'dominio-correo.yml', 'mercado-directo-base.yml', 'notificaciones-web.yml', 'numeros.yml', 'vigilante.yml'],
+    'correo-lettermint.yml', 'dominio-correo.yml', 'mercado-directo-base.yml', 'notificaciones-web.yml', 'numeros.yml', 'textos-radar-base.yml',
+    'vigilante.yml'],
     'si se añade un flujo con la base, que entre en esta regla');
   for (const n of conBase) {
     const flujo = fs.readFileSync(path.join(FLUJOS, n), 'utf8');
@@ -579,6 +580,34 @@ test('avisos-base.yml: cada acción de la lista tiene su caso con un SQL que exi
   assert.deepEqual(de36, { 'ensayo-36': 'no', 'verificar-36': 'no', 'aplicar-36': 'si', 'activar-sin-cuenta': 'si', 'apagar-sin-cuenta': 'si', 'prueba-sin-cuenta': 'no' });
   assert.match(flujo, /if \[ "\$CAMBIA" = si \] && \[ "\$CONFIRMAR" != "AVISOS" \]; then/);
   assert.match(flujo, /if \[ "\$ACCION" = prueba-sin-cuenta \] && \[ "\$CONFIRMAR" != "AVISOS" \]; then/);
+});
+
+/* ---------- textos-radar-base.yml: la 38, con las garantías de los demás ---------- */
+test('textos-radar-base.yml: acciones fijas de la 38, solo desde main, en la cola del catálogo, TEXTOS y copia antes de aplicar', () => {
+  const flujo = leer('.github/workflows/textos-radar-base.yml');
+  assert.match(flujo, /^name: Textos del radar \(base\)$/m);
+  const opciones = flujo.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1].trim().split('\n').map(l => l.trim().slice(2));
+  assert.deepEqual(opciones, ['ensayo-38', 'verificar-38', 'aplicar-38']);
+  const casos = [...flujo.matchAll(/^ {12}([a-z0-9-]+)\)\s+SQL="([^"]+)";\s+CAMBIA=(si|no)(.*)$/gm)]
+    .map(m => ({ accion: m[1], sql: m[2], cambia: m[3], resto: m[4] }));
+  assert.deepEqual(casos.map(c => [c.accion, c.sql, c.cambia]), [
+    ['ensayo-38', '$D/38_textos_radar.sql', 'no'],
+    ['verificar-38', '$V38', 'no'],
+    ['aplicar-38', '$D/38_textos_radar.sql', 'si']]);
+  assert.match(casos[2].resto, /COPIA=si/, 'aplicar-38 hace la copia cifrada antes');
+  assert.ok(fs.existsSync(path.join(raiz, 'rwadar-app/db/38_textos_radar.sql')));
+  assert.match(flujo, /^ {10}V38="\$D\/38_textos_radar_verificar\.sql"$/m);
+  assert.ok(fs.existsSync(path.join(raiz, 'rwadar-app/db/38_textos_radar_verificar.sql')));
+  assert.match(flujo, /if \[ "\$CAMBIA" = si \] && \[ "\$CONFIRMAR" != "TEXTOS" \]; then/);
+  assert.match(flujo, /- name: Solo desde main\n {8}if: github\.ref != 'refs\/heads\/main'\n/);
+  assert.match(flujo, /^concurrency:\n {2}group: rwadar-aplicar-catalogo\n {2}cancel-in-progress: false$/m);
+  assert.match(flujo, /^permissions:\n {2}contents: read$/m);
+  // La copia va antes de aplicar, y con la clave de cifrado.
+  const copia = flujo.indexOf('- name: Copia de seguridad antes de cambiar nada');
+  const aplicar = flujo.indexOf('- name: Aplicar');
+  assert.ok(copia > 0 && aplicar > copia, 'la copia, antes de aplicar');
+  assert.match(flujo.slice(copia, aplicar), /if: env\.COPIA == 'si'[\s\S]*COPIA_CLAVE: \$\{\{ secrets\.COPIA_CLAVE \}\}[\s\S]*copia-seguridad\.sh/);
+  assert.doesNotMatch(sinComentarios(flujo), /inputs\.(archivo|sql|fichero)/, 'no se puede pasar un archivo cualquiera');
 });
 
 /* ---------- ensayo de restauración ---------- */
