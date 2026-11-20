@@ -1,0 +1,153 @@
+name: Textos del radar (base)
+
+# Los textos del radar corregidos el 20/11/2026 (migración 38): aval, nota,
+# acceso, cadenas y región de la tabla base public.plataformas, y el motivo
+# de dos descartadas. Orden de la dirección del 20/11/2026: «Todo lo falso
+# fuera… que no vuelvan a haber textos ni datos falsos». Antes, ahora y
+# fuente: rwadar-app/data/verificaciones/2026-11-20-v2/TEXTOS-RADAR.md.
+#
+# Mismas garantías que «Mercado en directo (base)» y «Avisos a registrados
+# (base)»: solo desde main, la misma cola que «Aplicar catálogo», conexión
+# cifrada, solo acciones fijas (no se puede pasar un archivo cualquiera) y
+# el verificador al final.
+#
+#   ensayo-38    la 38 y su verificador en una transacción que se deshace.
+#   aplicar-38   con copia cifrada antes (35 días en los artefactos).
+#                Necesita orden expresa de la dirección (AGENTS.md) y
+#                escribir TEXTOS en «confirmar».
+#   verificar-38 solo lee.
+#
+# La 38 es repetible: si una plataforma ya tiene el texto nuevo, no la
+# toca; si tiene uno que no es ni el de antes ni el nuevo, falla y no
+# queda nada. Después, «Publicar web» para que la web y el CSV lo lean.
+#
+# Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - ensayo-38
+          - verificar-38
+          - aplicar-38
+      confirmar:
+        description: 'Escribe TEXTOS para aplicar-38 (no hace falta para ensayo-38 ni verificar-38)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+# La misma cola que «Aplicar catálogo» y los avisos: nunca dos escrituras a la vez.
+concurrency:
+  group: rwadar-aplicar-catalogo
+  cancel-in-progress: false
+
+# Conexiones a Supabase siempre cifradas (lo comprueba .github/flujos.test.mjs).
+env:
+  PGSSLMODE: require
+
+jobs:
+  base:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Los textos del radar solo se aplican desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Comprobar la acción
+        env:
+          ACCION: ${{ inputs.accion }}
+          CONFIRMAR: ${{ inputs.confirmar }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C
+          D=rwadar-app/db
+          V38="$D/38_textos_radar_verificar.sql"
+          ENSAYO=no; COPIA=no; SQL=""
+          case "$ACCION" in
+            ensayo-38)    SQL="$D/38_textos_radar.sql"; CAMBIA=no; ENSAYO=si ;;
+            verificar-38) SQL="$V38";                   CAMBIA=no ;;
+            aplicar-38)   SQL="$D/38_textos_radar.sql"; CAMBIA=si; COPIA=si ;;
+            *) echo "Acción no válida: $ACCION"; exit 1 ;;
+          esac
+          test -f "$SQL" || { echo "No existe $SQL"; exit 1; }
+          test -f "$V38" || { echo "No existe $V38"; exit 1; }
+          if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "TEXTOS" ]; then
+            echo "Esta acción cambia la base: escribe TEXTOS en «confirmar»."; exit 1
+          fi
+          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "COPIA=$COPIA"; echo "V38=$V38"; } >> "$GITHUB_ENV"
+
+      - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Copia de seguridad antes de cambiar nada
+        if: env.COPIA == 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+        run: bash rwadar-app/copia-seguridad.sh copia-antes-textos-radar
+
+      - name: Guardar la copia 35 días
+        if: env.COPIA == 'si'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: copia-antes-textos-radar-${{ github.run_number }}
+          path: copia-antes-textos-radar/
+          retention-days: 35
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Ensayo sin cambiar nada (se deshace al final)
+        if: env.ENSAYO == 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+          # La 38 es una sola transacción (begin; … commit;). Se cambia su
+          # commit final por el verificador (sin su propia transacción) y un
+          # rollback.
+          [ "$(grep -c '^commit;$' "$SQL")" = 1 ] && [ "$(tail -n 1 "$SQL")" = "commit;" ] \
+            || { echo "$SQL no termina en un único commit;"; exit 1; }
+          [ "$(grep -c '^begin transaction read only;$' "$V38")" = 1 ] && [ "$(tail -n 1 "$V38")" = "rollback;" ] \
+            || { echo "El verificador $V38 no tiene la forma esperada"; exit 1; }
+          ENSAYO_SQL="$(mktemp)"
+          head -n -1 "$SQL" > "$ENSAYO_SQL"
+          grep -v '^begin transaction read only;$' "$V38" | head -n -1 >> "$ENSAYO_SQL"
+          echo 'rollback;' >> "$ENSAYO_SQL"
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$ENSAYO_SQL"
+          echo "ENSAYO CORRECTO: $(basename "$SQL") y su verificador pasan en producción. No se ha cambiado nada (rollback)."
+
+      - name: Aplicar
+        if: env.CAMBIA == 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
+
+      - name: Verificar
+        if: env.ENSAYO != 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$V38"
