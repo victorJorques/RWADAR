@@ -78,5 +78,203 @@
   "consultadoUtc": "2026-11-20T16:54:28Z",
   "bytes": 165407,
   "sha256": "cc9f91ab2f3f5e4d343003ab079db42757cbe762d8a29ccc9c58497565f4138b"
+ },
+ {
+  "url": "https://drive.google.com/uc?export=download&id=1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+  "archivo": "fuentes/crudo/hausera-alicante3-documento-emision.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:39Z",
+  "bytes": 533858,
+  "sha256": "9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4",
+  "nota": "PDF descargado para la huella y borrado (datos personales / tamaño); mismo SHA-256 que el 13/11"
+ },
+ {
+  "url": "https://drive.google.com/uc?export=download&id=1vfq0Ljr0c4o73S0l-b5QBOLWgan1Le8X",
+  "archivo": "fuentes/crudo/hausera-alicante3-acuerdo-reserva.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:40Z",
+  "bytes": 2651569,
+  "sha256": "69cbadaf3cb4f8522016e74f7911609aa12fddd9b431e474c1871c30d0eb09c8",
+  "nota": "PDF descargado para la huella y borrado (datos personales / tamaño); mismo SHA-256 que el 13/11"
+ },
+ {
+  "url": "https://drive.google.com/uc?export=download&id=1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+  "archivo": "fuentes/crudo/hausera-alicante2-documento-emision.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:43Z",
+  "bytes": 533728,
+  "sha256": "d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197",
+  "nota": "PDF descargado para la huella y borrado (datos personales / tamaño); mismo SHA-256 que el 13/11"
+ },
+ {
+  "url": "https://drive.google.com/uc?export=download&id=1rbAUwmHLF9O16aQd5i5eOohV9JrYSbPQ",
+  "archivo": "fuentes/crudo/hausera-alicante3-dossier.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:56:45Z",
+  "bytes": 9308752,
+  "sha256": "72a312e2a906cb839b37e905adb229ecd744043f37fda854e2a3fad232e13e89",
+  "nota": "PDF descargado para la huella y borrado (datos personales / tamaño); mismo SHA-256 que el 13/11"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "fuentes/crudo/nav-hausera-oportunidades-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:42Z",
+  "bytes": 4733,
+  "sha256": "c8adbf4e5625d5f729b5564b84c75e9da18063f0b8ad4c725e32c7ad2eb35219",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "fuentes/hausera/nav-hausera-oportunidades-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:42Z",
+  "bytes": 4733,
+  "sha256": "c8adbf4e5625d5f729b5564b84c75e9da18063f0b8ad4c725e32c7ad2eb35219",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/propiedad/alicante_3/",
+  "archivo": "fuentes/crudo/nav-hausera-alicante-3-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:51Z",
+  "bytes": 1465,
+  "sha256": "1bfd2d88c1dbf549bf8fd24e3feb1d7a0ffae324c6642f5d60871868e54daf82",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión"
+ },
+ {
+  "url": "https://hausera.io/propiedad/alicante_3/",
+  "archivo": "fuentes/hausera/nav-hausera-alicante-3-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:51Z",
+  "bytes": 1465,
+  "sha256": "1bfd2d88c1dbf549bf8fd24e3feb1d7a0ffae324c6642f5d60871868e54daf82",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/propiedad/alicante_2/",
+  "archivo": "fuentes/crudo/nav-hausera-alicante-2-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:08Z",
+  "bytes": 1427,
+  "sha256": "01c4e9d991878fc60ade614e9d890d0eddfd67a6922458e2e5308a863814f5bb",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión"
+ },
+ {
+  "url": "https://hausera.io/propiedad/alicante_2/",
+  "archivo": "fuentes/hausera/nav-hausera-alicante-2-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:08Z",
+  "bytes": 1427,
+  "sha256": "01c4e9d991878fc60ade614e9d890d0eddfd67a6922458e2e5308a863814f5bb",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/",
+  "archivo": "fuentes/crudo/nav-hausera-home-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5884,
+  "sha256": "e8cf94ba1f00a2eadebd2c6af45677e0a920d5580c10321bad7348db67d890e8",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/",
+  "archivo": "fuentes/hausera/nav-hausera-home-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:55:00Z",
+  "bytes": 5884,
+  "sha256": "e8cf94ba1f00a2eadebd2c6af45677e0a920d5580c10321bad7348db67d890e8",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/terms/",
+  "archivo": "fuentes/crudo/nav-hausera-terms-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:28Z",
+  "bytes": 53137,
+  "sha256": "e4a339d6b09a754569469b77992d92e9bb9083027c7642d29b01814f9813b9ea",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión"
+ },
+ {
+  "url": "https://hausera.io/terms/",
+  "archivo": "fuentes/hausera/nav-hausera-terms-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:28Z",
+  "bytes": 53137,
+  "sha256": "e4a339d6b09a754569469b77992d92e9bb9083027c7642d29b01814f9813b9ea",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://hausera.io/faq/",
+  "archivo": "fuentes/crudo/nav-hausera-faq-original.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:36Z",
+  "bytes": 3259,
+  "sha256": "6360bfaf7ca299e406000ecd75b497e47f9da7a32d4b8e964acbe83c91dd9a4d",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión"
+ },
+ {
+  "url": "https://hausera.io/faq/",
+  "archivo": "fuentes/hausera/nav-hausera-faq-2026-11-20.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:36Z",
+  "bytes": 3259,
+  "sha256": "6360bfaf7ca299e406000ecd75b497e47f9da7a32d4b8e964acbe83c91dd9a4d",
+  "nota": "Texto renderizado con Playwright (chromium, es-ES), sin sesión ; nombre de persona recortado"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+  "archivo": "fuentes/reguladores/cnmv-erir-ursus3.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:21Z",
+  "bytes": 22362,
+  "sha256": "460cc858df90db2710d4a804ad7445ad02c4ff33ac67dbd15a2914459aecf19d",
+  "nota": "Texto extraído del HTML"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+  "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag2.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:23Z",
+  "bytes": 22011,
+  "sha256": "9da4e6ccf6bde2e705ae2c1f7f5721738fed41aa37f369aa6d9cf9db319a32c8",
+  "nota": "Texto extraído del HTML"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+  "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag3.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:24Z",
+  "bytes": 16241,
+  "sha256": "2763dd734e15243780c56012e0bf5001bd98b90cad30529351c7668d31e68806",
+  "nota": "Texto extraído del HTML"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+  "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag4.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:26Z",
+  "bytes": 13639,
+  "sha256": "333e4f7da5282548b7e242e3bef57063000329535e767920d4c711a4bea093f4",
+  "nota": "Texto extraído del HTML"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+  "archivo": "fuentes/reguladores/cnmv-psfp-listado.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:54:28Z",
+  "bytes": 15040,
+  "sha256": "ad6e34fb9a237b23336a6b6a245671602ee23110fa4360dfad9f30ab48ad0837",
+  "nota": "Texto extraído del HTML"
+ },
+ {
+  "url": "https://polygon-bor-rpc.publicnode.com (eth_call totalSupply y name de Alicante_2 y Alicante_3; eth_blockNumber)",
+  "archivo": "fuentes/crudo/polygon-alicante-contratos.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:22Z",
+  "bytes": 1047,
+  "sha256": "7a0b6de0252938a3df603c7a3dab7914ad362f61668e0b3ca1008c369b0a30f3",
+  "nota": "Alicante_2: 51.960 tokens; Alicante_3: 0 (bloque 0x5d22824)"
  }
 ]
