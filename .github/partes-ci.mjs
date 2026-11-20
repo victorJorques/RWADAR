@@ -83,6 +83,8 @@ export const PESOS = Object.freeze({
   'node probar-mercado-directo-regla.mjs': 7,
   'node probar-mercado-directo-base.mjs': 8,
   'node probar-mercado-directo-flujo.mjs': 6,
+  // La secuencia de tokens (migración 37, 20/11/2026).
+  'node probar-mercado-directo-secuencia.mjs': 9,
   'node --test probar-mapa-buscar.test.cjs': 0.2,
   'node --test ../.claude/skills/investigacion-catalogo/entrega/motor.test.mjs ../.claude/skills/investigacion-catalogo/entrega/flujo.test.mjs': 5.5,
   // Noticias automáticas (14/11/2026): sus pruebas (la de sello.test.mjs hace

@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 · Claude · Mercado en directo: arreglo del corte del 16/11 (migración 37) · PREPARADO, SIN APLICAR
+
+- **Qué pasaba:** desde el 16/11 03:33 UTC el directo no guardaba nada
+  (`error_2200h`): las altas de tokens de la 35 gastaban un id de la
+  secuencia `smallint` de `rwadar_mercado.tokens` por cada token propuesto,
+  aunque existiera (~60 cada 5 min), hasta agotarla.
+- **Arreglo:** `rwadar-app/db/37_mercado_directo_secuencia.sql` (+ copia en
+  `supabase/migrations/20261120180000_…`), su verificador
+  `37_mercado_directo_secuencia_verificar.sql` y las acciones `ensayo-37`,
+  `aplicar-37` y `verificar-37` del flujo «Mercado en directo (base)».
+  Prueba nueva: `rwadar-app/probar-mercado-directo-secuencia.mjs` (en
+  `npm test` y `test:directo`).
+- **Pendiente:** aplicarlo en producción con los pasos de
+  `docs/tareas/MERCADO-DIRECTO-2026-11-14.md` §5.1 (ensayo-37 → aplicar-37 →
+  verificar-37 → sembrar → estado a los 15 y 30 min).
+
 ## 14 de noviembre de 2026 (32) · Claude · Noticias del 14/11, recuadro «Activa los avisos» y notificaciones sin cuenta · TODO PUBLICADO Y ENCENDIDO
 
 - **Encargos de la dirección (14/11):** «publícalo todo: las notificaciones,

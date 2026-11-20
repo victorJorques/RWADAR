@@ -197,6 +197,9 @@ cambian la base o llaman a CoinGecko desde ella.
 | `ensayo-35` | la 35 y su verificador en una transacción que se deshace | — |
 | `aplicar-35` | aplica la 35 y verifica | sí |
 | `verificar-35` | solo lee | — |
+| `ensayo-37` | la 37 (arreglo de la secuencia de tokens) y su verificador en una transacción que se deshace | — |
+| `aplicar-37` | aplica la 37 y pasa los verificadores de la 35 y de la 37 | sí |
+| `verificar-37` | solo lee: los verificadores de la 35 y de la 37 | — |
 | `probar-coingecko` | con el directo apagado, UNA llamada desde la red de Supabase y qué respondió (estado, bytes, 429, cuántos válidos, el primero, la hora más reciente); y la diaria publicada, como la leerá el reloj (su código y sus bytes; no la guarda). **Sin un 200 de la diaria, falla**: no se enciende (revisión del 14/11) | — |
 | `sembrar` | la historia (unas 81 llamadas a CoinGecko desde GitHub, 13 s entre ellas, ~18 min) en una sola transacción. Si un token de la diaria se queda sin alguna de sus dos historias (`days=31` y `days=1`), **para sin escribir nada** (código 3): quedaría «fuera» en toda la ventana sembrada y, con figure-heloc (más de la mitad), no saldría ninguna serie en 24 h ni en 30 días (revisión del 14/11). Se vuelve a lanzar más tarde | — |
 | `encender` | siembra y enciende en la misma ejecución (la 35 exige una siembra de menos de 30 min) | — |
@@ -204,7 +207,7 @@ cambian la base o llaman a CoinGecko desde ella.
 | `deshacer` | relojes, función y esquema; comprueba que no queda nada | sí |
 | `estado` | solo lee; y qué sirve la web | — |
 
-La copia cifrada va solo antes de `aplicar-35` y `deshacer`: las demás solo
+La copia cifrada va solo antes de `aplicar-35`, `aplicar-37` y `deshacer`: las demás solo
 tocan `rwadar_mercado`, que la copia de seguridad no guarda (se rehace con
 `sembrar`). Así no se gastan minutos de más.
 
@@ -212,6 +215,38 @@ tocan `rwadar_mercado`, que la copia de seguridad no guarda (se rehace con
 al final, «Comprobar el gráfico en directo»: si está encendido y no responde
 bien dos veces seguidas (90 s entre ellas), el paso falla y GitHub manda su
 aviso. Apagado (404) o «no casa», no falla.
+
+### 5.1 Corte del 16/11 y arreglo (migración 37)
+
+**Qué pasó.** Desde el 16/11 a las 03:33 UTC cada llamada a CoinGecko
+respondía 200, pero la base no guardaba nada: error `error_2200h` (el
+contador de ids de `rwadar_mercado.tokens` llegó a su tope, 32.767). La 35
+daba de alta los tokens con `insert … on conflict (cg_id)`, y Postgres gasta
+un id por cada fila propuesta **aunque el token ya exista**: unos 60 por
+lectura cada 5 minutos, agotado en unos dos días. Solo hay 60 tokens de
+verdad: el contador se gastó en nada.
+
+**El arreglo (`37_mercado_directo_secuencia.sql`, copia idéntica en
+`supabase/migrations/20261120180000_mercado_directo_secuencia.sql`).** Las
+cuatro altas (`guardar_diaria`, `guardar_mercados`, `sembrar` y
+`cerrar_siembra`) solo insertan los tokens que no existen y actualizan
+`visto_el` aparte; todo lo demás, igual que la 35. Reinicia el contador en
+el mayor id + 1. Se puede aplicar dos veces. Pruebas:
+`probar-mercado-directo-secuencia.mjs` (con la 35 sola el contador avanza 60
+por lectura y, cerca del tope, falla con 2200H; con la 37 no avanza para los
+que ya están, avanza uno por cada nuevo y guarda exactamente lo mismo que la
+35) y las acciones nuevas en `probar-mercado-directo-flujo.mjs`.
+
+**Pasos (con orden de la dirección, desde main):**
+
+1. `ensayo-37` (sin DIRECTO): debe decir «ENSAYO CORRECTO» y «RWAdar 37 OK».
+2. `aplicar-37` (DIRECTO): copia cifrada antes, aplica, «RWAdar 35 OK» y
+   «RWAdar 37 OK».
+3. `verificar-37` (sin DIRECTO).
+4. `sembrar` (DIRECTO): rehace la historia del hueco (más de una hora sin
+   datos).
+5. `estado` a los 15 y a los 30 minutos: llamadas con 200 y guardadas, sin
+   `error_2200h`, y la web sirviendo `/api/tokenizacion/directo` con 200.
 
 ## 6. Encender (el coordinador, con permiso de la dirección, paso a paso)
 
