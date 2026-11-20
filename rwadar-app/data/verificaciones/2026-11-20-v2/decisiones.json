@@ -80,10 +80,7 @@
     "candidata-securitize-stocks",
     "candidata-valorix-bit2me-stx"
   ],
-  "sinCambios": [
-    "robinhood-classic-stock-tokens",
-    "prosegur-digital-gold"
-  ],
+  "sinCambios": [],
   "plantillas": {
     "LIBRO": "Libro de órdenes de la app de Brickwise leído el 20/11/2026 (16:54–16:56 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario.",
     "BW_MINIMO": "Precio por participación de la venta más barata del mercado de la app ese día, más un 1,5 % de comisión; a ese precio había",
@@ -139,44 +136,44 @@
             "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 12/11/2026 (VL fechada el 12/11/2026); consultado el 13/11/2026. Variable y no garantizado."
           },
           "despues": {
-            "mostrada": "2,35 %",
-            "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 19/11/2026 (VL fechada el 19/11/2026); consultado el 20/11/2026. Variable y no garantizado."
+            "mostrada": "2,45 %",
+            "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 20/11/2026 (VL calculada el 20/11/2026, que Spiko fecha el 22/11/2026 porque cubre el fin de semana); consultado el 20/11/2026. Variable y no garantizado."
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.0245\" · updatedAt 2026-11-20T17:18:23.527Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
-                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-EUTBL.json",
+                "sha256": "02a0318581696a3c085ba949d297ed798d9a9d63040602f9bc32db67222bde79",
                 "json": {
-                  "monthlyYield": "0.0235",
-                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                  "monthlyYield": "0.0245",
+                  "updatedAt": "2026-11-20T17:18:23.527Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.063276",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-22 · value 1.063496 · updatedAt 2026-11-20T17:18:23.426Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
-                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-EUTBL.json",
+                "sha256": "98a9113d45fca8d185e0765cb815b5e287ea4bd9e930740bb41d1dfd7b8bf37d",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.063276"
+                  "day": "2026-11-22T00:00:00.000Z",
+                  "amount.value": "1.063496",
+                  "updatedAt": "2026-11-20T17:18:23.426Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "contiene": "monthlyYield \"0.0235\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "Cuadra con 2,45 %."
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 2,35 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Euro: 2,35 % → 2,45 %."
             }
           ]
         },
@@ -185,44 +182,44 @@
           "etiqueta": "Rentabilidad publicada · 31 días · 12/11/2026",
           "antes": "2,40 %",
           "despues": {
-            "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026",
-            "valor": "2,35 %"
+            "etiqueta": "Rentabilidad publicada · 31 días · 20/11/2026",
+            "valor": "2,45 %"
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.0245\" · updatedAt 2026-11-20T17:18:23.527Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
-                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-EUTBL.json",
+                "sha256": "02a0318581696a3c085ba949d297ed798d9a9d63040602f9bc32db67222bde79",
                 "json": {
-                  "monthlyYield": "0.0235",
-                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                  "monthlyYield": "0.0245",
+                  "updatedAt": "2026-11-20T17:18:23.527Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.063276",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-22 · value 1.063496 · updatedAt 2026-11-20T17:18:23.426Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
-                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-EUTBL.json",
+                "sha256": "98a9113d45fca8d185e0765cb815b5e287ea4bd9e930740bb41d1dfd7b8bf37d",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.063276"
+                  "day": "2026-11-22T00:00:00.000Z",
+                  "amount.value": "1.063496",
+                  "updatedAt": "2026-11-20T17:18:23.426Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "contiene": "monthlyYield \"0.0235\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "Cuadra con 2,45 %."
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 2,35 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Euro: 2,35 % → 2,45 %."
             }
           ]
         },
@@ -231,65 +228,87 @@
           "etiqueta": "Rentabilidad publicada · 31 días",
           "antes": "2,40 %",
           "despues": {
-            "valor": "2,35 %",
-            "fechaDato": "2026-11-19",
+            "valor": "2,45 %",
+            "fechaDato": "2026-11-20",
             "fechaConsulta": "2026-11-20",
-            "alcance": "Rendimiento neto anualizado de 31 días que publica Spiko (valor liquidativo del 19/11/2026, que Spiko calculó ese día; consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,061180 € → 1,063276 €). Variable y no garantizado."
+            "alcance": "Rendimiento neto anualizado de 31 días que publica Spiko (valor liquidativo calculado el 20/11/2026, que Spiko fecha el 22/11/2026; consultado el 20/11/2026 y recalculado ese día con los valores liquidativos fechados el 22/10 y el 22/11: 1,06131 € → 1,063496 €). Variable y no garantizado."
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.0245\" · updatedAt 2026-11-20T17:18:23.527Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
-                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-EUTBL.json",
+                "sha256": "02a0318581696a3c085ba949d297ed798d9a9d63040602f9bc32db67222bde79",
                 "json": {
-                  "monthlyYield": "0.0235",
-                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                  "monthlyYield": "0.0245",
+                  "updatedAt": "2026-11-20T17:18:23.527Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.063276",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-22 · value 1.063496 · updatedAt 2026-11-20T17:18:23.426Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
-                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-EUTBL.json",
+                "sha256": "98a9113d45fca8d185e0765cb815b5e287ea4bd9e930740bb41d1dfd7b8bf37d",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.063276"
+                  "day": "2026-11-22T00:00:00.000Z",
+                  "amount.value": "1.063496",
+                  "updatedAt": "2026-11-20T17:18:23.426Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
-              "contiene": "monthlyYield \"0.0235\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "Cuadra con 2,45 %."
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 2,35 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Euro: 2,35 % → 2,45 %."
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-20",
-              "hora": "2026-11-20T17:05:02Z",
-              "literal": "VL del 19/10/2026 1.06118 y del 19/11/2026 1.063276",
+              "hora": "2026-11-20T20:43:26Z",
+              "literal": "VL fechada el 2026-10-22 1.06131 y el 2026-11-22 1.063496",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/series-EUTBL.json",
-                "sha256": "e02579d129eca1f426b20567f7b92343ebd956d8db994feebd67d5b4019cb46a",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/series-EUTBL.json",
+                "sha256": "e3c772b8ae527043d101143740e92831b027d8b2b94dc4ab46d2945b133368d6",
                 "contiene": [
-                  "\"day\":\"2026-10-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.06118\"",
-                  "\"day\":\"2026-11-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.063276\""
+                  "\"day\":\"2026-10-22T00:00:00.000Z\",\"amount\":{\"value\":\"1.06131\"",
+                  "\"day\":\"2026-11-22T00:00:00.000Z\",\"amount\":{\"value\":\"1.063496\""
                 ]
               }
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "Texto propuesto: «AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A5 · Letras Euro y Dólar, métrica «Supervisor»"
             }
           ]
         }
       ],
       "difiere": {
-        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado).",
+        "rentabilidad": "El expediente (leído antes de las 17:18 UTC) da la cifra con la VL del 19/11; la auditoría completa (A1/A2 de DECISIONES §6) la sustituye por la de la VL del 20/11.",
+        "rentabilidad.literal": "El literal del expediente es de la VL del 19/11; DECISIONES §6 (A1/A2) lo sustituye por el de la VL del 20/11 que da el informe de auditoría.",
+        "metricas": "DECISIONES §6 cambia la rentabilidad (VL del 20/11, A1/A2) y el «Supervisor» (A5) respecto a lo que propone el expediente."
       }
     },
     "spiko-letras-del-tesoro-dolar": {
@@ -302,44 +321,44 @@
             "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 12/11/2026 (VL del 12/11/2026); consultado el 13/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
           },
           "despues": {
-            "mostrada": "3,97 %",
-            "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 19/11/2026 (VL del 19/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+            "mostrada": "4,00 %",
+            "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 20/11/2026 (VL del 20/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.04\" · updatedAt 2026-11-20T17:18:10.697Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
-                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-USTBL.json",
+                "sha256": "859689c23eda6315e3171861d40edefbdc4336c290f225d43b6dab9b8f65f7c6",
                 "json": {
-                  "monthlyYield": "0.0397",
-                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                  "monthlyYield": "0.04",
+                  "updatedAt": "2026-11-20T17:18:10.697Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.103445",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-20 · value 1.103573 · updatedAt 2026-11-20T17:18:10.622Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
-                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-USTBL.json",
+                "sha256": "6591d43137ab37343f5288fda3d17f5b36132f80e98626dc3858b85cdb78fd5e",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.103445"
+                  "day": "2026-11-20T00:00:00.000Z",
+                  "amount.value": "1.103573",
+                  "updatedAt": "2026-11-20T17:18:10.622Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "contiene": "monthlyYield \"0.0397\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "capitalizando: **4,002 %**"
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 3,97 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Dólar: 3,97 % → 4,00 % en USD"
             }
           ]
         },
@@ -348,44 +367,44 @@
           "etiqueta": "Rentabilidad publicada · 31 días · 12/11/2026 · en USD",
           "antes": "3,98 %",
           "despues": {
-            "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026 · en USD",
-            "valor": "3,97 %"
+            "etiqueta": "Rentabilidad publicada · 31 días · 20/11/2026 · en USD",
+            "valor": "4,00 %"
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.04\" · updatedAt 2026-11-20T17:18:10.697Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
-                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-USTBL.json",
+                "sha256": "859689c23eda6315e3171861d40edefbdc4336c290f225d43b6dab9b8f65f7c6",
                 "json": {
-                  "monthlyYield": "0.0397",
-                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                  "monthlyYield": "0.04",
+                  "updatedAt": "2026-11-20T17:18:10.697Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.103445",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-20 · value 1.103573 · updatedAt 2026-11-20T17:18:10.622Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
-                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-USTBL.json",
+                "sha256": "6591d43137ab37343f5288fda3d17f5b36132f80e98626dc3858b85cdb78fd5e",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.103445"
+                  "day": "2026-11-20T00:00:00.000Z",
+                  "amount.value": "1.103573",
+                  "updatedAt": "2026-11-20T17:18:10.622Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "contiene": "monthlyYield \"0.0397\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "capitalizando: **4,002 %**"
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 3,97 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Dólar: 3,97 % → 4,00 % en USD"
             }
           ]
         },
@@ -394,65 +413,87 @@
           "etiqueta": "Rentabilidad publicada · 31 días",
           "antes": "3,98 %",
           "despues": {
-            "valor": "3,97 %",
-            "fechaDato": "2026-11-19",
+            "valor": "4,00 %",
+            "fechaDato": "2026-11-20",
             "fechaConsulta": "2026-11-20",
-            "alcance": "Rendimiento neto anualizado en dólares de 31 días que publica Spiko (valor liquidativo del 19/11/2026, consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,099805 $ → 1,103445 $). No incluye la variación del euro frente al dólar. Variable y no garantizado."
+            "alcance": "Rendimiento neto anualizado en dólares de 31 días que publica Spiko (valor liquidativo del 20/11/2026, consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 20/10 y del 20/11: 1,099901 $ → 1,103573 $). No incluye la variación del euro frente al dólar. Variable y no garantizado."
           },
           "prueba": [
             {
               "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "monthlyYield \"0.04\" · updatedAt 2026-11-20T17:18:10.697Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
-                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/yield-USTBL.json",
+                "sha256": "859689c23eda6315e3171861d40edefbdc4336c290f225d43b6dab9b8f65f7c6",
                 "json": {
-                  "monthlyYield": "0.0397",
-                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                  "monthlyYield": "0.04",
+                  "updatedAt": "2026-11-20T17:18:10.697Z"
                 }
               }
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
-              "hora": "2026-11-20T17:04:52Z",
-              "literal": "day 2026-11-19 · value 1.103445",
+              "hora": "2026-11-20T17:27:22Z",
+              "literal": "day 2026-11-20 · value 1.103573 · updatedAt 2026-11-20T17:18:10.622Z",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
-                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/nav-latest-USTBL.json",
+                "sha256": "6591d43137ab37343f5288fda3d17f5b36132f80e98626dc3858b85cdb78fd5e",
                 "json": {
-                  "day": "2026-11-19T00:00:00.000Z",
-                  "amount.value": "1.103445"
+                  "day": "2026-11-20T00:00:00.000Z",
+                  "amount.value": "1.103573",
+                  "updatedAt": "2026-11-20T17:18:10.622Z"
                 }
               }
             },
             {
-              "claim": "rentabilidad",
-              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
-              "contiene": "monthlyYield \"0.0397\""
+              "documento": "auditoria/spiko.md",
+              "contiene": "capitalizando: **4,002 %**"
             },
             {
-              "documento": "revision-independiente/spiko.md",
-              "contiene": "así que 3,97 % es correcto"
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Letras del Tesoro Dólar: 3,97 % → 4,00 % en USD"
             },
             {
               "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL?startDay=2026-09-20",
-              "hora": "2026-11-20T17:05:02Z",
-              "literal": "VL del 19/10/2026 1.099805 y del 19/11/2026 1.103445",
+              "hora": "2026-11-20T20:43:26Z",
+              "literal": "VL fechada el 2026-10-20 1.099901 y el 2026-11-20 1.103573",
               "copia": {
-                "archivo": "revision-independiente/fuentes/spiko/series-USTBL.json",
-                "sha256": "a323e99d158b83d39a117a0dcbdf336ed41b424293ba3e1b8c41a9015ccc4fd5",
+                "archivo": "grupos/spiko/fuentes/api-20-11-tarde/series-USTBL.json",
+                "sha256": "8b5c445093f6082801e8d51ff26106832bcfda0370cc251d345b43fbe7e75294",
                 "contiene": [
-                  "\"day\":\"2026-10-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.099805\"",
-                  "\"day\":\"2026-11-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.103445\""
+                  "\"day\":\"2026-10-20T00:00:00.000Z\",\"amount\":{\"value\":\"1.099901\"",
+                  "\"day\":\"2026-11-20T00:00:00.000Z\",\"amount\":{\"value\":\"1.103573\""
                 ]
               }
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "Texto propuesto: «AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A5 · Letras Euro y Dólar, métrica «Supervisor»"
             }
           ]
         }
       ],
       "difiere": {
-        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado).",
+        "rentabilidad": "El expediente (leído antes de las 17:18 UTC) da la cifra con la VL del 19/11; la auditoría completa (A1/A2 de DECISIONES §6) la sustituye por la de la VL del 20/11.",
+        "rentabilidad.literal": "El literal del expediente es de la VL del 19/11; DECISIONES §6 (A1/A2) lo sustituye por el de la VL del 20/11 que da el informe de auditoría.",
+        "metricas": "DECISIONES §6 cambia la rentabilidad (VL del 20/11, A1/A2) y el «Supervisor» (A5) respecto a lo que propone el expediente."
       }
     },
     "spiko-smart-cash-euro": {
@@ -527,11 +568,11 @@
           "etiqueta": "Aprobación del compartimento",
           "antes": "Autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)",
           "despues": {
-            "valor": "N.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO)",
+            "valor": "N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026",
             "fechaDato": "2026-02-23",
             "fechaConsulta": "2026-11-20",
             "fuente": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
-            "alcance": "Certificado de la AMF fechado en París el 23/02/2026, que aloja Spiko: incluye «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» entre los compartimentos que cubre, sin fecha de autorización. El 20/11/2026 la ficha del compartimento en la base GECO de la AMF ya no se publica y el buscador de GECO no lo devuelve. No dice en qué países se comercializa."
+            "alcance": "Certificado de la AMF que aloja Spiko: incluye SPIKO AMUNDI OVERNIGHT SWAP FUND (SCV20260075) entre los compartimentos de Spiko SICAV. No da la fecha de autorización del compartimento ni dice en qué países se vende. El 20/11/2026 la ficha del fondo ya no aparece en la base pública de la AMF (GECO)."
           },
           "prueba": [
             {
@@ -550,13 +591,21 @@
             {
               "documento": "revision-independiente/spiko.md",
               "contiene": "va fechado «Paris, 2026-02-23». Pone «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» en la lista de subfondos que cubre"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "Referencia «Aprobación del compartimento»: valor «N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A4 · Smart Cash, referencia «Aprobación del compartimento» y descripción"
             }
           ]
         },
         {
           "tipo": "descripcion",
           "antes": "autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)",
-          "despues": "con el n.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026 (el 20/11/2026 el fondo ya no aparece en la base pública GECO de la AMF)",
+          "despues": "autorizado por la AMF con el n.º SCV20260075, según el certificado de la AMF del 23/02/2026",
           "prueba": [
             {
               "documento": "revision-independiente/spiko.md",
@@ -570,6 +619,14 @@
               "claim": "registro",
               "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
               "contiene": "\"published\":false"
+            },
+            {
+              "documento": "auditoria/spiko.md",
+              "contiene": "por «autorizado por la AMF con el n.º SCV20260075, según el certificado de la AMF del 23/02/2026»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A4 · Smart Cash, referencia «Aprobación del compartimento» y descripción"
             }
           ]
         }
@@ -651,10 +708,67 @@
               "contiene": "La etiqueta («5 semanas hasta el 20/11/2026») y el aviso («del 16/10 al 20/11/2026») cambian a la vez, como debe ser."
             }
           ]
+        },
+        {
+          "tipo": "avisoQuita",
+          "antes": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.",
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "dicen «Instant Subscription Fee up to 0.2%» y «Redemption Fees up to 0.05%», y el KID dice «No cobramos comisión de entrada» y «reembolso estándar: sin comisión»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A10 · mTBILL, aviso del conflicto: añadir «Las comisiones tampoco coinciden"
+            }
+          ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "antesDe": "Se opera en USDC con una wallet propia; hay riesgo de cambio euro/dólar.",
+          "despues": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %. Las comisiones tampoco coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni reembolso estándar.",
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "dicen «Instant Subscription Fee up to 0.2%» y «Redemption Fees up to 0.05%», y el KID dice «No cobramos comisión de entrada» y «reembolso estándar: sin comisión»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A10 · mTBILL, aviso del conflicto: añadir «Las comisiones tampoco coinciden"
+            }
+          ]
+        },
+        {
+          "tipo": "fuentesOferta",
+          "antes": [
+            "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+            "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+            "https://docs.midas.app/llms-full.txt",
+            "https://midas.app/mtbill"
+          ],
+          "despues": [
+            "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+            "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+            "https://docs.midas.app/llms-full.txt",
+            "https://midas.app/mtbill",
+            "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+            "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media"
+          ],
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "Corrección: añadir las Condiciones Finales y el KID en español del CDN de GitBook (responden 200, mismo SHA-256)"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A11 · mTBILL, fuentes de la tarjeta: añadir las Condiciones Finales y el KID"
+            }
+          ]
         }
       ],
       "difiere": {
-        "tarjeta": "La ficha publicada no tiene datos de tarjeta y DECISIONES no los añade (el motor no añade datos de tarjeta); además, en «fuentes_en_conflicto», la web y la app los ocultan."
+        "tarjeta": "La ficha publicada no tiene datos de tarjeta y DECISIONES no los añade (el motor no añade datos de tarjeta); además, en «fuentes_en_conflicto», la web y la app los ocultan.",
+        "avisos": "El expediente propone el aviso del conflicto de reembolso sin las comisiones; DECISIONES §6 (A10, auditoría completa) le añade «Las comisiones tampoco coinciden…»."
       }
     },
     "kraken-xstocks": {
@@ -675,6 +789,51 @@
               "contiene": "El cambio del resumen se sostiene."
             }
           ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Dividendos",
+          "antes": "No se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
+          "despues": {
+            "fechaDato": "2026-11-11",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Preguntas frecuentes de Kraken sobre xStocks, actualizadas el 11/11/2026."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "Hoy (17:17:29–17:17:41 UTC) la página dice «Last updated: November 11, 2026». La frase de la retención del 30 % sigue igual."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A7 · Kraken xStocks, referencia «Dividendos»"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Países de oferta (condiciones finales)",
+          "antes": "Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado",
+          "despues": {
+            "fechaDato": "2026-11-19",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+            "alcance": "Condiciones finales del producto ANTx (CH1588667217, 19/11/2026, emitidas con el folleto vigente), publicadas por el agente de pago del emisor: «The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors)». Las de LITEx (26/03/2026) dicen lo mismo."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "«The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors)»"
+            },
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "Condiciones finales de ANTx: solo Liechtenstein y Suiza."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A8 · Kraken xStocks: añadir como fuente las condiciones finales de ANTx"
+            }
+          ]
         }
       ],
       "difiere": {
@@ -683,16 +842,52 @@
     },
     "robinhood-classic-stock-tokens": {
       "decision": "mantener",
-      "cambios": [],
+      "cambios": [
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Producto complejo según su KID: puedes perder todo lo invertido.",
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "«podría sufrir pérdidas significativas o incluso perder la totalidad de su inversión» y «El Producto es un instrumento financiero complejo»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A9 · Robinhood, aviso nuevo: «Producto complejo según su KID: puedes perder todo lo invertido.»"
+            }
+          ]
+        }
+      ],
       "difiere": {
         "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado)."
       }
     },
     "prosegur-digital-gold": {
       "decision": "mantener",
-      "cambios": [],
+      "cambios": [
+        {
+          "tipo": "metrica",
+          "etiqueta": "Custodia",
+          "antes": "Oro en inventario común custodiado por Prosegur (sin lingote asignado)",
+          "despues": {
+            "etiqueta": "Custodia",
+            "valor": "Oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "«Dicho oro permanecerá segregado de los activos propios de Prosegur Crypto» y «inventario segregado de naturaleza fungible»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A12 · Prosegur Digital Gold, métrica «Custodia»"
+            }
+          ]
+        }
+      ],
       "difiere": {
-        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado)."
+        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado).",
+        "metricas": "DECISIONES §6 (A12, auditoría completa) cambia la métrica «Custodia» respecto a lo que propone el expediente."
       }
     },
     "vivienda-pluddemanngasse-101-graz": {
@@ -835,6 +1030,121 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,58 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "3,76 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -978,6 +1288,102 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,42 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+          "antes": "3,52 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -1121,6 +1527,140 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,46 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "3,46 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026",
+          "antes": "\"rentalReturn\":3.46; rentalSurplus=11828.12",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -1264,6 +1804,121 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "4,42 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "4,11 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -1407,6 +2062,121 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,46 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "3,46 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -1550,6 +2320,140 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "5,96 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "4,68 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026",
+          "antes": "\"rentalReturn\":4.83; rentalSurplus=5206.62",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Qué se adquiere · consulta 01/11/2026",
+          "antes": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+          "despues": {
+            "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "en «Qué se adquiere», cambiar el comienzo por «Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -1693,8 +2597,147 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,09 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+          "antes": "2,47 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
+          "antes": "374 de 2.670",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La emisión cerró el 15/09/2022 (`issueEndDate` de la"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A19 · Randhartingergasse: quitar la referencia"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "esos KID dicen «hat eigenverantwortlich"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Acceso desde España",
+          "antes": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+          "despues": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+          "nota": "Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria.",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
+            }
+          ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
+            }
+          ]
         }
-      ]
+      ],
+      "difiere": {
+        "tarjeta.accesoEspana": "El expediente conserva «no consta que esta emisión se distribuya en España»; la auditoría completa (DECISIONES §6, A21) añade que esta emisión pide número fiscal austriaco."
+      }
     },
     "apartamento-vacacional-hinterstoder-50": {
       "decision": "actualizar",
@@ -1836,8 +2879,170 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "4,65 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "4,84 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Próxima distribución esperada · 22/10/2026",
+          "antes": "15/11/2026",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026",
+          "antes": "\"rentalReturn\":4.1; rentalSurplus=14233.22",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Custodia · consulta 01/11/2026",
+          "antes": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+          "despues": {
+            "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "valor de «Custodia» → «Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A20 · Citas del KID en alemán mal copiadas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "esos KID dicen «hat eigenverantwortlich"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Acceso desde España",
+          "antes": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+          "despues": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+          "nota": "Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria.",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
+            }
+          ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
+            }
+          ]
         }
-      ]
+      ],
+      "difiere": {
+        "tarjeta.accesoEspana": "El expediente conserva «no consta que esta emisión se distribuya en España»; la auditoría completa (DECISIONES §6, A21) añade que esta emisión pide número fiscal austriaco."
+      }
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
       "decision": "actualizar",
@@ -1979,6 +3184,66 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "3,80 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+          "antes": "4,22 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -2122,6 +3387,85 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "6,11 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "6,11 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026",
+          "antes": "\"rentalReturn\":6.43; rentalSurplus=10942.56",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura. Localizador histórico https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -2265,6 +3609,85 @@
               }
             }
           }
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual prevista anunciada",
+          "antes": "5,57 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Distribución anual esperada · 22/10/2026",
+          "antes": "5,57 %",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referenciaQuita",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026",
+          "antes": "\"rentalReturn\":5.11; rentalSurplus=4909.64",
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "quitar de `documentacion.referencias` de las seis fichas"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "La norma 2 no deja rentabilidad en reventa"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A18 · En las 11 fichas de reventa, quitar de las referencias"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Mercado público de Brickwise",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/brickwise-a.md",
+              "contiene": "corregir «comprobado el30/09/2026» por"
+            },
+            {
+              "documento": "auditoria/brickwise-b.md",
+              "contiene": "Errata «comprobado el30/09/2026» en «Destino de consulta comprobado» (las"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
       ]
     },
@@ -2307,6 +3730,24 @@
             "url": "https://shares.aktionariat.com/trade",
             "contiene": "6.20 356"
           }
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
+          "prueba": [
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "a loss of up to the entire capital invested may occur."
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Corrección: añadir a cada una el aviso"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A13 · Aktionariat, aviso nuevo"
+            }
+          ]
         }
       ]
     },
@@ -2360,7 +3801,7 @@
           "despues": {
             "etiqueta": "Última operación · 20/11/2026",
             "fechaConsulta": "2026-11-20",
-            "alcance": "Última operación del mercado entre accionistas que enseña el portal del emisor: 1 acción a 8,40 ZCHF el 05/11/2026 a las 13:35 UTC. El 20/11/2026 se comprobó en el portal que sigue siendo la última (ninguna operación nueva). Lo que recibió quien vendió, 8,2404 ZCHF (la diferencia, 0,1596 ZCHF, el 1,9 %, es la comisión), se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer. La anterior era del 28/09/2026 (474 acciones a 6,70 ZCHF)."
+            "alcance": "Última operación del mercado entre accionistas que enseña el portal del emisor: 1 acción a 8,40 ZCHF el 05/11/2026 a las 13:35 UTC. El 20/11/2026 la portada del portal sigue enseñándola como la última («Last trade • 5 Nov 2026, 13:35»). Lo que recibió quien vendió, 8,2404 ZCHF (la diferencia, 0,1596 ZCHF, el 1,9 %, es la comisión), se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer. La anterior era del 28/09/2026 (474 acciones a 6,70 ZCHF)."
           },
           "prueba": [
             {
@@ -2371,6 +3812,32 @@
             {
               "documento": "revision-independiente/suiza.md",
               "contiene": "Última operación:** `getTrades` limit 5 (17:04:25Z)"
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "La portada dice a las 17:25:48 UTC «Current Price CHF 8.4 Last trade • 5 Nov 2026, 13:35»."
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A16 · Boss Info, referencia «Última operación»: la fuente sigue siendo la"
+            }
+          ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
+          "prueba": [
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "«Ein Wertverlust bis 100% des eingesetzten Kapitals ist möglich.»"
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Corrección: añadir a cada una el aviso"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A14 · Boss Info, el mismo aviso nuevo"
             }
           ]
         }
@@ -2428,6 +3895,24 @@
             "claim": "supervision",
             "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG"
           }
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
+          "prueba": [
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "«Equity can lose value, including entirely.»"
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Corrección: añadir a cada una el aviso"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A15 · Switzerlend, el mismo aviso nuevo"
+            }
+          ]
         }
       ]
     },
@@ -2437,7 +3922,7 @@
         {
           "tipo": "resumen",
           "antes": "Seguimiento de las operaciones inmobiliarias de Hausera. El 10/11/2026 Alicante 2 ya figuraba como financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abre la preventa el 18/11 y la suscripción el 25/11/2026.",
-          "despues": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción empieza el 25/11/2026.",
+          "despues": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción anunciada del 25/11/2026 al 30/06/2027.",
           "prueba": [
             {
               "claim": "estado",
@@ -2447,6 +3932,14 @@
             {
               "documento": "revision-independiente/vigilancia.md",
               "contiene": "Estado de Alicante 3: «PREVENTA ABIERTA»."
+            },
+            {
+              "documento": "auditoria/suiza-hausera.md",
+              "contiene": "Documento de emisión: «se iniciará el 25/11/2026 y se extenderá hasta el 30/6/2027»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "A17 · Hausera, resumen"
             }
           ]
         },
@@ -2540,8 +4033,25 @@
               ]
             }
           }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Destino de consulta comprobado",
+          "antes": "Plataforma inmobiliaria Hausera",
+          "despues": {
+            "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://www.hausera.com/ (consulta original 2026-09-28); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          "prueba": [
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "Y la errata «comprobado el30/09/2026» → «comprobado el 30/09/2026» donde esté."
+            }
+          ]
         }
-      ]
+      ],
+      "difiere": {
+        "resumen": "El expediente dice «la suscripción empieza el 25/11/2026», que quedaría viejo el 25/11, dentro de la vigencia; DECISIONES §6 (A17) fija «la suscripción anunciada del 25/11/2026 al 30/06/2027» (documento de emisión)."
+      }
     }
   },
   "prohibidos": [
@@ -2561,9 +4071,23 @@
       "en": "spiko-smart-cash-euro",
       "patron": "autorizad[oa] (?:por la AMF )?el 17/02/2026",
       "motivo": "Spiko Euro: la fecha 17/02/2026 solo venía de la ficha GECO que ya no se publica (corrección del revisor)"
+    },
+    {
+      "en": "spiko-letras-del-tesoro-euro",
+      "patron": "2,35 %",
+      "motivo": "Letras Euro: 2,35 % era la VL del 19/11; A1 la sustituye por 2,45 %"
+    },
+    {
+      "en": "spiko-letras-del-tesoro-dolar",
+      "patron": "3,97 %",
+      "motivo": "Letras Dólar: 3,97 % era la VL del 19/11; A2 la sustituye por 4,00 %"
     }
   ],
-  "fuentesNuevas": [],
+  "fuentesNuevas": [
+    "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+    "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+    "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)"
+  ],
   "noAplicado": [
     {
       "slug": "spiko-smart-cash-euro",
@@ -2612,34 +4136,77 @@
       ]
     },
     {
-      "slug": "spiko-letras-del-tesoro-euro y spiko-letras-del-tesoro-dolar",
-      "que": "Valor liquidativo del 20/11 (DECISIONES §2: «si la entrega se monta o se aplica después [de las 18:00 UTC], se vuelve a leer la API y se fecha con la VL del 20/11»)",
-      "porque": "Al escribir estos cambios (antes de las 18:00 UTC) la API pública de Spiko aún daba la VL del 19/11 (updatedAt 2026-11-19); se publican 2,35 % y 3,97 % con la VL del 19/11, como dice el expediente. Si se aplica después de que salga la del 20/11, hay que rehacer estos tres cambios de cada fondo con la VL nueva (y su revisión).",
+      "slug": "spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro",
+      "que": "A3 · referencia de la tarjeta «Acceso desde España» con fechaDato 2026-11-13 (y, en Smart Cash, el alcance «Tabla de disponibilidad de Spiko (13/11/2026)…»), sin cambiar el valor",
+      "porque": "Tipo de cambio no soportado por el motor: el tipo «tarjeta» exige que el valor cambie («no cambia») y el tipo «referencia» rechaza las etiquetas fijas de la tarjeta («es un dato de tarjeta»). La referencia sigue con su valor, re-fechada con la consulta de hoy, y con fechaDato 2026-11-06. Hace falta montarlo sin el motor (motor:false) o añadir al motor un cambio de fecha del dato en la tarjeta.",
+      "detalle": "DECISIONES §6, A3; auditoria/spiko.md, hallazgo 3 (docs.spiko.io fund_availability, 17:15:43 UTC: «Last updated: November 13, 2026.»).",
       "sigue": [
         {
           "slug": "spiko-letras-del-tesoro-euro",
-          "campo": "rentabilidad.literal",
-          "contiene": "VL fechada el 19/11/2026"
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor."
+          ]
         },
         {
           "slug": "spiko-letras-del-tesoro-dolar",
-          "campo": "rentabilidad.literal",
-          "contiene": "VL del 19/11/2026"
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor."
+          ]
         }
       ]
+    },
+    {
+      "slug": "randhartingergasse-9-viena, apartamento-vacacional-hinterstoder-50, vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel",
+      "que": "A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md",
+      "porque": "DECISIONES §6 (A20) acota la corrección a las fichas de auditoria/brickwise-a.md. «Custodia» se corrige también en Randhartingergasse y Hinterstoder, cuyo KID cita con ese literal auditoria/brickwise-b.md. «Qué se adquiere» de esas dos (su KID habla de «Genussrecht», sin literal comprobado) y las dos citas de Pottendorfer, GreenPoint y Cohotel no tienen hoy un literal del KID comprobado por un auditor: se quedan como estaban, para el próximo ciclo.",
+      "sigue": [
+        {
+          "slug": "fotovoltaica-greenpoint",
+          "referencia": "Custodia · consulta 01/11/2026",
+          "valores": [
+            "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger."
+          ]
+        },
+        {
+          "slug": "randhartingergasse-9-viena",
+          "referencia": "Custodia · consulta 01/11/2026",
+          "valores": [
+            "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kraken-xstocks",
+      "que": "A6 · descripción «más de 130 acciones» → «más de 1.000 acciones y ETF de EE. UU.»",
+      "porque": "No hace falta un cambio aparte: la descripción empieza por el resumen y el motor la cambia con él (cambio «resumen»). Un cambio «descripcion» pararía el motor porque «más de 130» ya no está. PGlite comprueba que la ficha web dice «más de 1.000 acciones» y no «más de 130 acciones».",
+      "sigue": [
+        {
+          "slug": "kraken-xstocks",
+          "campo": "resumen",
+          "es": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 1.000 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre."
+        }
+      ]
+    },
+    {
+      "slug": "radar (30 fichas)",
+      "que": "Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)",
+      "porque": "DECISIONES §6 las deja fuera de esta entrega: son textos de la tabla base «plataformas» (migración aparte), no de la revisión del catálogo; el motor tampoco cambia textos del radar que no estén en cambios-radar.json."
     }
   ],
   "contraste": {
     "cifras": {
       "spiko-letras-del-tesoro-euro": {
         "antes": "2,40 % (VL del 12/11)",
-        "despues": "2,35 % (VL del 19/11, 1,063276 €)",
-        "calculo": "31 días, 19/10 → 19/11, capitalizando: 2,350 %; API monthlyYield 0.0235"
+        "despues": "2,45 % (VL calculada el 20/11 y fechada por Spiko el 22/11, 1,063496 €)",
+        "calculo": "31 días, 22/10 → 22/11, capitalizando: 2,452 %; API monthlyYield 0.0245 (17:18 UTC)"
       },
       "spiko-letras-del-tesoro-dolar": {
         "antes": "3,98 % (VL del 12/11)",
-        "despues": "3,97 % en USD (VL del 19/11, 1,103445 $)",
-        "calculo": "31 días, 19/10 → 19/11, capitalizando: 3,967 %; API monthlyYield 0.0397"
+        "despues": "4,00 % en USD (VL del 20/11, 1,103573 $)",
+        "calculo": "31 días, 20/10 → 20/11, capitalizando: 4,002 %; API monthlyYield 0.04 (17:18 UTC)"
       },
       "spiko-smart-cash-euro": {
         "antes": "2,84 % (VL del 12/11)",
@@ -2666,15 +4233,14 @@
       }
     },
     "condicionHora": {
-      "spiko": "VL del 19/11 (Letras Euro y Dólar) válida si la entrega se monta y se aplica antes de que Spiko publique la del 20/11 (hacia las 18:00 UTC del 20/11); si no, volver a leer la API pública de Spiko. Smart Cash: VL del 20/11, no cambia hasta el 23/11.",
+      "spiko": "VL del 20/11 (Letras Euro y Dólar, publicada a las 17:18 UTC); la siguiente llega el lunes 23/11. Smart Cash: VL del 20/11, no cambia hasta el 23/11.",
       "mtbill": "Ronda 498 (20/11, 11:41 UTC) última a las 16:54 UTC; una ronda nueva cambiaría el valor por token y la ventana de 5 semanas.",
-      "hausera": "La suscripción de Alicante 3 empieza el 25/11/2026: ese día el resumen («la suscripción empieza el 25/11/2026») quedará viejo."
+      "hausera": "El resumen dice «la suscripción anunciada del 25/11/2026 al 30/06/2027»: no queda viejo dentro de la vigencia; volver a mirarlo el 25/11."
     },
     "sinCambios": [
       "las 25 plataformas del radar y sus textos, salvo las fechas de consulta",
       "public.plataformas y public.fuentes (el SQL no las toca)",
       "colecciones 8/13/1, estados de revisión, fuentes de las ofertas e imágenes",
-      "Robinhood y Prosegur Digital Gold: solo las fechas",
       "las noticias (no son parte de esta entrega)"
     ]
   },
@@ -2712,7 +4278,8 @@
   "comprobar": {
     "ausentes": [
       "autorizado el 17/02/2026",
-      "Autorizado por la AMF el 17/02/2026"
+      "Autorizado por la AMF el 17/02/2026",
+      "comprobado el30/09/2026"
     ],
     "fichasWeb": [
       {
@@ -2728,6 +4295,9 @@
       {
         "pagina": "ofertas/spiko-letras-del-tesoro-euro.html",
         "contiene": [
+          "2,45 %"
+        ],
+        "noContiene": [
           "2,35 %"
         ]
       },
@@ -2762,7 +4332,44 @@
       {
         "pagina": "ofertas/hausera-proximas-ofertas.html",
         "contiene": [
-          "con la preventa ya abierta"
+          "con la preventa ya abierta",
+          "del 25/11/2026 al 30/06/2027"
+        ]
+      },
+      {
+        "pagina": "ofertas/spiko-letras-del-tesoro-dolar.html",
+        "contiene": [
+          "4,00 %"
+        ],
+        "noContiene": [
+          "3,97 %"
+        ]
+      },
+      {
+        "pagina": "ofertas/robinhood-classic-stock-tokens.html",
+        "contiene": [
+          "Producto complejo según su KID"
+        ]
+      },
+      {
+        "pagina": "ofertas/randhartingergasse-9-viena.html",
+        "contiene": [
+          "número fiscal austriaco"
+        ],
+        "noContiene": [
+          "374 de 2.670",
+          "erfolgt ausschließlich"
+        ]
+      },
+      {
+        "pagina": "ofertas/vivienda-pluddemanngasse-101-graz.html",
+        "contiene": [
+          "Das Produkt läuft endlos"
+        ],
+        "noContiene": [
+          "Genussscheine ...",
+          "el30/09/2026",
+          "Distribución anual esperada"
         ]
       }
     ]

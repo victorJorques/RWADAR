@@ -178,11 +178,11 @@
       },
       {
         "etiqueta": "Rentabilidad publicada · 31 días",
-        "valor": "2,35 %",
-        "fechaDato": "2026-11-19",
+        "valor": "2,45 %",
+        "fechaDato": "2026-11-20",
         "fechaConsulta": "2026-11-20",
         "fuente": "https://data.spiko.io/eutbl/",
-        "alcance": "Rendimiento neto anualizado de 31 días que publica Spiko (valor liquidativo del 19/11/2026, que Spiko calculó ese día; consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,061180 € → 1,063276 €). Variable y no garantizado."
+        "alcance": "Rendimiento neto anualizado de 31 días que publica Spiko (valor liquidativo calculado el 20/11/2026, que Spiko fecha el 22/11/2026; consultado el 20/11/2026 y recalculado ese día con los valores liquidativos fechados el 22/10 y el 22/11: 1,06131 € → 1,063496 €). Variable y no garantizado."
       },
       {
         "etiqueta": "Mínimo de inversión (clase EUTBL)",
@@ -322,11 +322,11 @@
       },
       {
         "etiqueta": "Rentabilidad publicada · 31 días",
-        "valor": "3,97 %",
-        "fechaDato": "2026-11-19",
+        "valor": "4,00 %",
+        "fechaDato": "2026-11-20",
         "fechaConsulta": "2026-11-20",
         "fuente": "https://data.spiko.io/ustbl/",
-        "alcance": "Rendimiento neto anualizado en dólares de 31 días que publica Spiko (valor liquidativo del 19/11/2026, consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,099805 $ → 1,103445 $). No incluye la variación del euro frente al dólar. Variable y no garantizado."
+        "alcance": "Rendimiento neto anualizado en dólares de 31 días que publica Spiko (valor liquidativo del 20/11/2026, consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 20/10 y del 20/11: 1,099901 $ → 1,103573 $). No incluye la variación del euro frente al dólar. Variable y no garantizado."
       },
       {
         "etiqueta": "Mínimo de inversión",
@@ -1277,7 +1277,7 @@
         "fechaDato": "2026-11-05",
         "fechaConsulta": "2026-11-20",
         "fuente": "https://shares.bossinfo.com/",
-        "alcance": "Última operación del mercado entre accionistas que enseña el portal del emisor: 1 acción a 8,40 ZCHF el 05/11/2026 a las 13:35 UTC. El 20/11/2026 se comprobó en el portal que sigue siendo la última (ninguna operación nueva). Lo que recibió quien vendió, 8,2404 ZCHF (la diferencia, 0,1596 ZCHF, el 1,9 %, es la comisión), se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer. La anterior era del 28/09/2026 (474 acciones a 6,70 ZCHF)."
+        "alcance": "Última operación del mercado entre accionistas que enseña el portal del emisor: 1 acción a 8,40 ZCHF el 05/11/2026 a las 13:35 UTC. El 20/11/2026 la portada del portal sigue enseñándola como la última («Last trade • 5 Nov 2026, 13:35»). Lo que recibió quien vendió, 8,2404 ZCHF (la diferencia, 0,1596 ZCHF, el 1,9 %, es la comisión), se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer. La anterior era del 28/09/2026 (474 acciones a 6,70 ZCHF)."
       }
     ]
   },
@@ -1483,7 +1483,7 @@
   },
   "hausera-proximas-ofertas": {
     "revisadaEl": "2026-11-20",
-    "descripcion": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción empieza el 25/11/2026. Qué se adquiere: Obligaciones u otros valores de la SPV según su documento de emisión",
+    "descripcion": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción anunciada del 25/11/2026 al 30/06/2027. Qué se adquiere: Obligaciones u otros valores de la SPV según su documento de emisión",
     "fuentes": [
       "https://hausera.io/",
       "https://hausera.io/oportunidades/",
@@ -1522,7 +1522,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://hausera.io/",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://www.hausera.com/ (consulta original 2026-09-28); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://www.hausera.com/ (consulta original 2026-09-28); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Historial publicado · 20/11/2026",
@@ -1609,32 +1609,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,58 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "3,76 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -1651,14 +1635,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -1706,7 +1682,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
@@ -1754,7 +1730,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
@@ -1878,20 +1854,12 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,42 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
@@ -1900,14 +1868,6 @@
         "fechaConsulta": "2026-10-22",
         "fuente": "https://www.brickwise.at/marketplace",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
-        "valor": "3,52 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2t4d7",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
         "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
@@ -1967,7 +1927,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
@@ -2015,7 +1975,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
@@ -2138,32 +2098,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,46 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "3,46 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2180,14 +2124,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2234,16 +2170,8 @@
         "alcance": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. Localizador: Investitionsbedingungen (Stand 30.11.2021), p. 4."
       },
       {
-        "etiqueta": "Rentabilidad · consulta 01/11/2026",
-        "valor": "\"rentalReturn\":3.46; rentalSurplus=11828.12",
-        "fechaDato": "2026-10-27",
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://www.brickwise.at/assets/at0000a2u5v3",
-        "alcance": "Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (11828.12 €) / (3600 participaciones × 95 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
-      },
-      {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
@@ -2291,7 +2219,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
@@ -2414,32 +2342,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "4,42 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "4,11 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2456,14 +2368,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2511,7 +2415,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
@@ -2559,7 +2463,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
@@ -2682,32 +2586,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,46 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "3,46 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2724,14 +2612,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2779,7 +2659,7 @@
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
@@ -2827,7 +2707,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
@@ -2950,32 +2830,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "5,96 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "4,68 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2992,14 +2856,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -3046,16 +2902,8 @@
         "alcance": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. Localizador: Investitionsbedingungen (Stand 29.06.2022), p. 4."
       },
       {
-        "etiqueta": "Rentabilidad · consulta 01/11/2026",
-        "valor": "\"rentalReturn\":4.83; rentalSurplus=5206.62",
-        "fechaDato": "2026-11-01",
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://www.brickwise.at/assets/at0000a2ypq0",
-        "alcance": "Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (5206.62 €) / (1590 participaciones × 67.8 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
-      },
-      {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
-        "valor": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+        "valor": "Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
@@ -3103,7 +2951,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
@@ -3227,20 +3075,12 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,09 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
@@ -3248,22 +3088,6 @@
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://www.brickwise.at/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
-        "valor": "2,47 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2zt84",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
-      },
-      {
-        "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
-        "valor": "374 de 2.670",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://api.app.brickwise.at/api/v2/assets",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
@@ -3364,7 +3188,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
@@ -3380,11 +3204,11 @@
       },
       {
         "etiqueta": "Acceso desde España",
-        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-20",
         "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-        "alcance": "Comprobado de nuevo en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán."
+        "alcance": "Redacción en castellano del dato comprobado en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria."
       },
       {
         "etiqueta": "Salida",
@@ -3487,32 +3311,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "4,65 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "4,84 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -3529,14 +3337,6 @@
       {
         "etiqueta": "Plazo · 22/10/2026",
         "valor": "indefinido",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Próxima distribución esperada · 22/10/2026",
-        "valor": "15/11/2026",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -3581,14 +3381,6 @@
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
         "alcance": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. Localizador: Investitionsbedingungen (Stand 25.10.2022), p. 4."
-      },
-      {
-        "etiqueta": "Rentabilidad · consulta 01/11/2026",
-        "valor": "\"rentalReturn\":4.1; rentalSurplus=14233.22",
-        "fechaDato": "2026-10-31",
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://www.brickwise.at/assets/at0000a31kp7",
-        "alcance": "Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (14233.22 €) / (4080 participaciones × 85 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
@@ -3640,7 +3432,7 @@
       },
       {
         "etiqueta": "Custodia · consulta 01/11/2026",
-        "valor": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+        "valor": "Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
@@ -3656,11 +3448,11 @@
       },
       {
         "etiqueta": "Acceso desde España",
-        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-20",
         "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-        "alcance": "Comprobado de nuevo en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán."
+        "alcance": "Redacción en castellano del dato comprobado en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria."
       },
       {
         "etiqueta": "Salida",
@@ -3764,20 +3556,12 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "3,80 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
@@ -3786,14 +3570,6 @@
         "fechaConsulta": "2026-10-22",
         "fuente": "https://www.brickwise.at/marketplace",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
-        "valor": "4,22 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a324b4",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
         "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
@@ -4024,32 +3800,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "6,11 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura. Localizador histórico https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura. Localizador histórico https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "6,11 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -4118,14 +3878,6 @@
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
         "alcance": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. Localizador: Investitionsbedingungen (Stand 14.11.2023), p. 4."
-      },
-      {
-        "etiqueta": "Rentabilidad · consulta 01/11/2026",
-        "valor": "\"rentalReturn\":6.43; rentalSurplus=10942.56",
-        "fechaDato": "2026-11-01",
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
-        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (10942.56 €) / (1790 participaciones × 95 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome."
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
@@ -4300,32 +4052,16 @@
         "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
-        "etiqueta": "Distribución anual prevista anunciada",
-        "valor": "5,57 %",
-        "fechaDato": null,
-        "fechaConsulta": "2026-09-27",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
-      },
-      {
         "etiqueta": "Destino de consulta comprobado",
         "valor": "Mercado público de Brickwise",
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+        "alcance": "Destino público del proveedor comprobado el 30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Moneda · 22/10/2026",
         "valor": "EUR",
-        "fechaDato": null,
-        "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
-      },
-      {
-        "etiqueta": "Distribución anual esperada · 22/10/2026",
-        "valor": "5,57 %",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -4394,14 +4130,6 @@
         "fechaConsulta": "2026-11-01",
         "fuente": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
         "alcance": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. Localizador: Investitionsbedingungen (Stand 14.11.2023), p. 4."
-      },
-      {
-        "etiqueta": "Rentabilidad · consulta 01/11/2026",
-        "valor": "\"rentalReturn\":5.11; rentalSurplus=4909.64",
-        "fechaDato": "2026-10-08",
-        "fechaConsulta": "2026-11-01",
-        "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
-        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (4909.64 €) / (800 participaciones × 120 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome."
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
@@ -4540,7 +4268,8 @@
       "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
       "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
       "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
-      "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+      "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+      "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)"
     ],
     "caracteristicas": [
       {
@@ -4600,10 +4329,10 @@
       {
         "etiqueta": "Países de oferta (condiciones finales)",
         "valor": "Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado",
-        "fechaDato": "2026-03-26",
-        "fechaConsulta": "2026-11-03",
-        "fuente": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
-        "alcance": "Condiciones finales del producto n.º 159 (LITEx, 26/03/2026, emitidas con el folleto de 2025) alojadas en la web oficial del emisor; las de 2026 que se leyeron dicen lo mismo."
+        "fechaDato": "2026-11-19",
+        "fechaConsulta": "2026-11-20",
+        "fuente": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+        "alcance": "Condiciones finales del producto ANTx (CH1588667217, 19/11/2026, emitidas con el folleto vigente), publicadas por el agente de pago del emisor: «The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors)». Las de LITEx (26/03/2026) dicen lo mismo."
       },
       {
         "etiqueta": "Registro del vendedor",
@@ -4632,10 +4361,10 @@
       {
         "etiqueta": "Dividendos",
         "valor": "No se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
-        "fechaDato": "2026-10-30",
-        "fechaConsulta": "2026-11-03",
+        "fechaDato": "2026-11-11",
+        "fechaConsulta": "2026-11-20",
         "fuente": "https://support.kraken.com/articles/xstocks-faq",
-        "alcance": "Preguntas frecuentes de Kraken sobre xStocks, actualizadas el 30/10/2026."
+        "alcance": "Preguntas frecuentes de Kraken sobre xStocks, actualizadas el 11/11/2026."
       },
       {
         "etiqueta": "Situación del emisor",
@@ -4649,7 +4378,7 @@
   },
   "spiko-smart-cash-euro": {
     "revisadaEl": "2026-11-20",
-    "descripcion": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado. Qué se adquiere: acciones de la clase EUR (FR0014015LD3) del compartimento Spiko Amundi Overnight Swap Fund, de Spiko SICAV (Francia), con el n.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026 (el 20/11/2026 el fondo ya no aparece en la base pública GECO de la AMF). El fondo invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen; el rendimiento es variable y, si un banco falla, el fondo puede quedar expuesto a esos títulos. Spiko marca España como disponible, pero ni la CNMV ni la AMF publican que este fondo esté dado de alta para venderse en España.",
+    "descripcion": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado. Qué se adquiere: acciones de la clase EUR (FR0014015LD3) del compartimento Spiko Amundi Overnight Swap Fund, de Spiko SICAV (Francia), autorizado por la AMF con el n.º SCV20260075, según el certificado de la AMF del 23/02/2026. El fondo invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen; el rendimiento es variable y, si un banco falla, el fondo puede quedar expuesto a esos títulos. Spiko marca España como disponible, pero ni la CNMV ni la AMF publican que este fondo esté dado de alta para venderse en España.",
     "fuentes": [
       "https://www.spiko.io/es/spiko-euro",
       "https://data.spiko.io/safo-eur",
@@ -4747,11 +4476,11 @@
       },
       {
         "etiqueta": "Aprobación del compartimento",
-        "valor": "N.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO)",
+        "valor": "N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026",
         "fechaDato": "2026-02-23",
         "fechaConsulta": "2026-11-20",
         "fuente": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
-        "alcance": "Certificado de la AMF fechado en París el 23/02/2026, que aloja Spiko: incluye «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» entre los compartimentos que cubre, sin fecha de autorización. El 20/11/2026 la ficha del compartimento en la base GECO de la AMF ya no se publica y el buscador de GECO no lo devuelve. No dice en qué países se comercializa."
+        "alcance": "Certificado de la AMF que aloja Spiko: incluye SPIKO AMUNDI OVERNIGHT SWAP FUND (SCV20260075) entre los compartimentos de Spiko SICAV. No da la fecha de autorización del compartimento ni dice en qué países se vende. El 20/11/2026 la ficha del fondo ya no aparece en la base pública de la AMF (GECO)."
       },
       {
         "etiqueta": "Registro de la SICAV en España",

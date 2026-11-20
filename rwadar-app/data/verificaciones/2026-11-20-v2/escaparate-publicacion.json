@@ -2004,8 +2004,8 @@
       "fueraLadrillo": true,
       "puntuacion": null,
       "rentabilidad": {
-        "mostrada": "2,35 %",
-        "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 19/11/2026 (VL fechada el 19/11/2026); consultado el 20/11/2026. Variable y no garantizado."
+        "mostrada": "2,45 %",
+        "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 20/11/2026 (VL calculada el 20/11/2026, que Spiko fecha el 22/11/2026 porque cubre el fin de semana); consultado el 20/11/2026. Variable y no garantizado."
       },
       "precio": null,
       "metricas": [
@@ -2019,7 +2019,7 @@
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+          "valor": "AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno"
         },
         {
           "etiqueta": "Gastos corrientes (KID)",
@@ -2038,8 +2038,8 @@
           "valor": "1 de 7"
         },
         {
-          "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026",
-          "valor": "2,35 %"
+          "etiqueta": "Rentabilidad publicada · 31 días · 20/11/2026",
+          "valor": "2,45 %"
         }
       ],
       "avisos": [
@@ -2094,8 +2094,8 @@
       "fueraLadrillo": true,
       "puntuacion": null,
       "rentabilidad": {
-        "mostrada": "3,97 %",
-        "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 19/11/2026 (VL del 19/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+        "mostrada": "4,00 %",
+        "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 20/11/2026 (VL del 20/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
       },
       "precio": null,
       "metricas": [
@@ -2109,7 +2109,7 @@
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+          "valor": "AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno"
         },
         {
           "etiqueta": "Gastos corrientes (KID)",
@@ -2128,8 +2128,8 @@
           "valor": "1 de 7, más riesgo de cambio"
         },
         {
-          "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026 · en USD",
-          "valor": "3,97 %"
+          "etiqueta": "Rentabilidad publicada · 31 días · 20/11/2026 · en USD",
+          "valor": "4,00 %"
         }
       ],
       "avisos": [
@@ -2358,6 +2358,12 @@
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Producto complejo según su KID: puedes perder todo lo invertido.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
         }
       ],
       "estadoRevision": "actual",
@@ -2441,7 +2447,7 @@
           "verificadaEl": "2026-11-20"
         },
         {
-          "texto": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.",
+          "texto": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %. Las comisiones tampoco coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni reembolso estándar.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
@@ -2476,7 +2482,9 @@
         "https://docs.midas.app/resources/legal-product-documentation/mtbill",
         "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
         "https://docs.midas.app/llms-full.txt",
-        "https://midas.app/mtbill"
+        "https://midas.app/mtbill",
+        "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+        "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media"
       ],
       "coleccion": "principales",
       "moneda": "USD",
@@ -2522,7 +2530,7 @@
         },
         {
           "etiqueta": "Custodia",
-          "valor": "Oro en inventario común custodiado por Prosegur (sin lingote asignado)"
+          "valor": "Oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)"
         },
         {
           "etiqueta": "Supervisión",
@@ -2664,6 +2672,12 @@
         },
         {
           "texto": "No se publica cuánto queda del tope de 100.000 € para el EEE.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
@@ -2880,6 +2894,12 @@
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
         }
       ],
       "estadoRevision": "no_verificable",
@@ -2969,6 +2989,12 @@
         },
         {
           "texto": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
@@ -3675,6 +3701,12 @@
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
         }
       ],
       "estadoRevision": "no_verificable",
@@ -3769,6 +3801,12 @@
         },
         {
           "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-20"
+        },
+        {
+          "texto": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-20"
@@ -4106,7 +4144,7 @@
       "plataformaNombre": "Hausera",
       "categoria": "Inmobiliario",
       "pais": "ES",
-      "resumen": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción empieza el 25/11/2026.",
+      "resumen": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción anunciada del 25/11/2026 al 30/06/2027.",
       "url": "https://hausera.io/oportunidades/",
       "cta": "Ver fuente",
       "imagenAlt": "Hausera · próximas ofertas",
