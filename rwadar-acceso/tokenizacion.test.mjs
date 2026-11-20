@@ -538,7 +538,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await pagina.route('**/datos/tokenizacion-serie.json', r => r.abort());
       await pagina.reload({ waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
+      assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra sí\./);
       assert.equal(plano(await pagina.textContent('.mk-cifra-num')), '49.684 M$', 'sin serie, la cifra grande es el total de la categoría');
       assert.equal(await pagina.textContent('.mk-sub'), 'Total de la categoría en CoinGecko, con todos sus tokens');
       assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 16:25 hora de España\)\./);

@@ -955,7 +955,7 @@ test('sin red: la cotización y la pantalla lo dicen y ofrecen reintentar, sin n
   await esperar(); await esperar();
   arbol = otro.pintar(Pantalla, p2);
   assert.match(textoDe(arbol), /49\.684/);
-  assert.match(textoDe(arbol), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
+  assert.match(textoDe(arbol), /El gráfico no está disponible ahora\. La cifra sí\./);
   void MercadoPantalla;
 });
 

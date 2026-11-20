@@ -652,7 +652,7 @@
     });
     const partes = [cab, pestanas];
     if (g) partes.push(graficoInteractivo(g), tablaSerie(g), notaGrafico());
-    else partes.push(el('p', 'mk-estado', tx('El gráfico no está disponible ahora. La cifra de hoy sí.', "The chart isn't available right now. Today's figure is.")));
+    else partes.push(el('p', 'mk-estado', tx('El gráfico no está disponible ahora. La cifra sí.', "The chart isn't available right now. The figure is.")));
     partes.push(datosClave(g), lineaFuente());
     if (vivo?.tipos?.length) partes.push(porTipo());
     cuerpo.replaceChildren(...partes);

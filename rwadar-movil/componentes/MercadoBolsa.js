@@ -528,7 +528,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {como ? <Text noTraducir style={e.nota}>{notaSerie(serie, idioma, elegida)}</Text> : null}
         </View>
       ) : hoy !== null && fase !== 'cargando' ? (
-        <Text noTraducir style={e.estado}>{en ? "The chart isn't available right now. Today's figure is." : 'El gráfico no está disponible ahora. La cifra de hoy sí.'}</Text>
+        <Text noTraducir style={e.estado}>{en ? "The chart isn't available right now. The figure is." : 'El gráfico no está disponible ahora. La cifra sí.'}</Text>
       ) : null}
       {hoy !== null ? (
         <View style={e.clave}>
