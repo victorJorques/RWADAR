@@ -25,9 +25,9 @@
       "pregunta": "Tienes que apuntar 20 proveedores con su nombre, su teléfono y su ciudad. ¿Qué forma de organizarlo es más fácil de leer y de revisar?",
       "opciones": [
         {
-          "texto": "Una tabla: una fila por proveedor y una columna para cada dato (nombre, teléfono, ciudad).",
+          "texto": "Una tabla: una fila por proveedor y una columna por dato.",
           "correcta": true,
-          "porque": "Exacto. Cada dato en su sitio: mirando hacia abajo ves todos los teléfonos, y mirando de lado ves todo sobre un proveedor. Así funciona Excel por dentro."
+          "porque": "Exacto. Cada dato en su sitio (nombre, teléfono, ciudad): mirando hacia abajo ves todos los teléfonos, y mirando de lado ves todo sobre un proveedor. Así funciona Excel por dentro."
         },
         {
           "texto": "Un párrafo seguido con todos los datos separados por comas.",
@@ -69,7 +69,7 @@
           "pregunta": "Con lo que acabas de leer, ¿qué es Excel?",
           "opciones": [
             {
-              "texto": "Un cuaderno de cuadros en el ordenador que además hace las cuentas solo.",
+              "texto": "Un cuaderno de cuadros en el ordenador que hace cuentas solo.",
               "correcta": true,
               "porque": "Eso es. Escribes datos en casillas y Excel calcula con ellos. Ya tienes la idea principal de todo el curso."
             },
@@ -117,9 +117,9 @@
           "pregunta": "Lucía, de Recursos Humanos, dice: «Yo no necesito Excel, eso es cosa de contabilidad». ¿Qué le contestarías?",
           "opciones": [
             {
-              "texto": "Que también le sirve: para la lista de la plantilla, las vacaciones o las horas de cada persona.",
+              "texto": "Que también le sirve: para la plantilla, las vacaciones o las horas.",
               "correcta": true,
-              "porque": "Bien visto. Recursos Humanos vive de listas y fechas, justo lo que Excel ordena y cuenta mejor."
+              "porque": "Bien visto. Recursos Humanos vive de listas y fechas (la lista de la plantilla, las vacaciones, las horas de cada persona), justo lo que Excel ordena y cuenta mejor."
             },
             {
               "texto": "Que tiene razón: Excel es solo para cuentas de dinero.",
@@ -457,9 +457,9 @@
           "pregunta": "En la celda B5 se ve **29**. Marta te pregunta: «¿Ese 29 está escrito a mano o sale de una cuenta?». Haces clic en B5. ¿Dónde lo miras?",
           "opciones": [
             {
-              "texto": "En la barra de fórmulas: si pone `=14+9+6`, es una cuenta; si pone `29`, está escrito a mano.",
+              "texto": "En la barra de fórmulas: si empieza por =, es una cuenta.",
               "correcta": true,
-              "porque": "Exacto. La barra de fórmulas enseña lo que hay de verdad dentro de la celda, aunque en la celda solo veas el resultado."
+              "porque": "Exacto. La barra de fórmulas enseña lo que hay de verdad dentro de la celda, aunque en la celda solo veas el resultado: si pone `=14+9+6`, es una cuenta; si pone `29`, está escrito a mano."
             },
             {
               "texto": "En el cuadro de nombres.",
@@ -485,9 +485,9 @@
           "pregunta": "Lucía te escribe: «Abre el libro de la plantilla y ve a la pestaña **Vacaciones**». ¿Dónde la buscas?",
           "opciones": [
             {
-              "texto": "Abajo, entre las pestañas de hoja (junto a «Plantilla», «Horas»…).",
+              "texto": "Abajo, entre las pestañas de hoja del libro.",
               "correcta": true,
-              "porque": "Muy bien. «Vacaciones» no es una pestaña de Excel, es el nombre que Lucía ha puesto a una hoja de su libro. Las hojas están abajo."
+              "porque": "Muy bien. «Vacaciones» no es una pestaña de Excel, es el nombre que Lucía ha puesto a una hoja de su libro. Las hojas están abajo, junto a «Plantilla», «Horas»…"
             },
             {
               "texto": "Arriba, en la cinta, junto a Inicio e Insertar.",

@@ -53,17 +53,17 @@
    "pregunta": "Antes de mandar en PDF el parte de gastos, seleccionas los importes y la barra de estado dice **Suma 1.245,60**. El total de la hoja dice **1.120,00**. ¿Qué haces?",
    "opciones": [
     {
-     "texto": "No lo envío: hago clic en el total y miro en la barra de fórmulas si tiene fórmula y si su rango coge todas las filas",
+     "texto": "No lo envío: miro en la barra de fórmulas qué celdas suma el total",
      "correcta": true,
-     "porque": "Correcto: si no cuadra, hay un error (rango corto o número escrito a mano). Se busca antes de exportar."
+     "porque": "Correcto: si no cuadra, hay un error (rango corto o número escrito a mano). Haz clic en el total y mira en la barra de fórmulas si tiene fórmula y si su rango coge todas las filas. Se busca antes de exportar."
     },
     {
-     "texto": "Lo envío: la barra de estado a veces redondea",
+     "texto": "Lo envío: la barra de estado a veces redondea y no es exacta",
      "correcta": false,
      "porque": "La barra de estado suma exactamente lo seleccionado. La diferencia de 125,60 es un error real."
     },
     {
-     "texto": "Escribo 1245,60 encima del total",
+     "texto": "Escribo 1245,60 encima del total para que cuadre y lo envío",
      "correcta": false,
      "porque": "Así borrarías la fórmula y el total dejaría de actualizarse. Hay que arreglar la fórmula, no taparla."
     }
@@ -142,14 +142,14 @@
    "pregunta": "La gestoría necesita cargar en su programa el listado de facturas del mes. ¿Cómo se lo mandas?",
    "opciones": [
     {
-     "texto": "Una copia guardada como CSV UTF-8 (delimitado por comas), con el nº de facturas y el total en el correo",
+     "texto": "Una copia en CSV UTF-8, con el nº de facturas y el total en el correo",
      "correcta": true,
-     "porque": "Correcto: el CSV lleva solo los datos para otro programa, y los totales de control permiten comprobar que ha cargado todo."
+     "porque": "Correcto: una copia guardada como CSV UTF-8 (delimitado por comas) lleva solo los datos para otro programa, y los totales de control permiten comprobar que ha cargado todo."
     },
     {
-     "texto": "Un PDF del listado",
+     "texto": "Un PDF del listado, que se ve igual en cualquier ordenador",
      "correcta": false,
-     "porque": "El PDF es para leer, no para cargar datos en un programa."
+     "porque": "El PDF es para leer, no para cargar datos en un programa: la gestoría tendría que volver a teclearlo."
     },
     {
      "texto": "Guardas tu libro de trabajo como CSV y sigues trabajando en él",
@@ -244,14 +244,14 @@
    "pregunta": "En la plantilla de presupuestos, **F1** tiene el tipo de IVA y las fórmulas dicen `=B2*(1+$F$1)`. Marta quiere que cualquiera entienda la fórmula sin buscar qué es F1. ¿Qué haces?",
    "opciones": [
     {
-     "texto": "Selecciono F1, escribo TipoIVA en el cuadro de nombres, pulso Intro y uso =B2*(1+TipoIVA)",
+     "texto": "Llamo a F1 TipoIVA en el cuadro de nombres y uso =B2*(1+TipoIVA)",
      "correcta": true,
-     "porque": "Correcto: el nombre se lee solo y, como apunta siempre a F1, se copia igual que $F$1."
+     "porque": "Correcto: selecciona F1, escribe TipoIVA en el cuadro de nombres y pulsa Intro. El nombre se lee solo y, como apunta siempre a F1, se copia igual que $F$1."
     },
     {
-     "texto": "Llamo a F1 «Tipo IVA» en el cuadro de nombres",
+     "texto": "Llamo a F1 «Tipo IVA» en el cuadro de nombres y uso =B2*(1+Tipo IVA)",
      "correcta": false,
-     "porque": "Los nombres no admiten espacios: usa TipoIVA o Tipo_IVA."
+     "porque": "Los nombres no admiten espacios: Excel no acepta «Tipo IVA». Usa TipoIVA o Tipo_IVA."
     },
     {
      "texto": "Escribo el IVA dentro de la fórmula: =B2*1,21",
@@ -259,7 +259,7 @@
      "porque": "Se lee, pero el día que cambie el tipo habrá que tocar todas las fórmulas, y alguna se quedará sin cambiar."
     },
     {
-     "texto": "Llamo a F1 IVA1",
+     "texto": "Llamo a F1 IVA1 en el cuadro de nombres y uso =B2*(1+IVA1)",
      "correcta": false,
      "porque": "IVA1 es la dirección de una celda de verdad (columna IVA, fila 1): Excel no lo acepta como nombre."
     }
@@ -596,9 +596,9 @@
    "pregunta": "El libro de pedidos está en OneDrive y el equipo lo abre en **Excel para la web**. Cada día laborable a las 8:00 hay que aplicarle el mismo formato, que lleva un año sin cambiar. ¿Qué propones?",
    "opciones": [
     {
-     "texto": "Un Office Script con ese formato, programado con Power Automate",
+     "texto": "Un Office Script programado con Power Automate",
      "correcta": true,
-     "porque": "Eso es: el script funciona en Excel para la web y Power Automate lo ejecuta solo a la hora fijada. El proceso es estable, así que merece la pena automatizarlo."
+     "porque": "Eso es: un Office Script con ese formato funciona en Excel para la web y Power Automate lo ejecuta solo a la hora fijada. El proceso es estable, así que merece la pena automatizarlo."
     },
     {
      "texto": "Una macro VBA que alguien ejecute cada mañana",
@@ -737,14 +737,14 @@
    "pregunta": "Hoy es 24 de noviembre. El informe de cobros se entrega el día 3 y ya sabes que no llegarás a todo: adaptar el nuevo extracto del banco lleva 3 horas más de lo previsto. ¿Qué mensaje le mandas a Marta?",
    "opciones": [
     {
-     "texto": "«El día 3 no llego a todo: adaptar el nuevo extracto me lleva 3 horas más. Te propongo el día 3 el informe de siempre, comprobado, y el detalle nuevo el día 9. ¿Te encaja?»",
+     "texto": "«El nuevo extracto me lleva 3 horas más. Te propongo el día 3 el informe de siempre y el detalle nuevo el 9. ¿Te encaja?»",
      "correcta": true,
-     "porque": "Pronto, con el porqué en cifras, una versión mínima con fecha para el resto y una pregunta para que Marta decida."
+     "porque": "Pronto, con el motivo en cifras, lo imprescindible (el informe de siempre, comprobado) el día 3, el resto con fecha y una pregunta para que Marta decida."
     },
     {
-     "texto": "«Voy un poco liada, haré lo que pueda para el día 3.»",
+     "texto": "«Voy un poco liada con el extracto nuevo del banco, pero haré todo lo que pueda para tenerlo el día 3.»",
      "correcta": false,
-     "porque": "No dice qué pasa, qué tendrá ni cuándo. Marta no puede organizarse con eso."
+     "porque": "No dice qué no llegará ni cuándo estará: «haré lo que pueda» no le sirve a Marta para organizarse."
     },
     {
      "texto": "Ninguno: trabajas el fin de semana y, si el día 3 no está, se lo explicas entonces.",
@@ -752,9 +752,9 @@
      "porque": "Callar un retraso le quita a Marta el margen para reorganizarse, y con prisa se cometen más errores."
     },
     {
-     "texto": "«No puedo con todo. Dime qué hago.»",
+     "texto": "«El nuevo extracto me lleva 3 horas más y no llego a todo para el día 3. Dime qué hago.»",
      "correcta": false,
-     "porque": "Avisas, pero sin propuesta. Tú sabes mejor que nadie qué se puede tener el día 3: ofrécelo."
+     "porque": "Avisas y das el motivo, pero sin propuesta: le pasas el problema a Marta. Tú sabes mejor que nadie qué se puede tener el día 3: ofrécelo."
     }
    ],
    "explicacion": "Avisar pronto, explicar con cifras y proponer: lo imprescindible a tiempo y el resto con fecha.",

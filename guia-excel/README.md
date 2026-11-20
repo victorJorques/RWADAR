@@ -42,6 +42,48 @@ node probar-entreno.cjs dist/_v7.html    # una tanda de entrenamiento diario con
 ANCHO=390 CAPTURAS=capturas node robot.cjs dist/hoja-a-hoja.html n0m3l1   # el robot también hace capturas
 ```
 
+## El método de aprendizaje (versión 8)
+
+Cada técnica está citada en la página «El método» de la guía, con estudios
+comprobados en la fuente.
+
+- **Memoria FSRS:** cada ejercicio y cada tarjeta tiene su estabilidad y su
+  dificultad, calculadas con el modelo FSRS-4.5 y sus pesos por defecto.
+  - Vuelve cuando se calcula que la probabilidad de recordarlo ha bajado al 90 %.
+  - Nada se jubila: el tope es de 365 días.
+  - La nota la pone la app: 1 si falla o ve la solución, 2 si acierta con
+    ayuda o diciendo «dudo», 3 si acierta a la primera.
+- **Qué entra en el repaso al acabar una lección:**
+  - sus «recuerda»;
+  - el ejercicio de la misión;
+  - todo lo que costó.
+- **Reaprender hasta acertar:**
+  - lo fallado vuelve 3 pantallas después, como mucho 3 veces;
+  - las fórmulas vuelven con otros datos, tomados de sus `variantes`;
+  - una habilidad cuenta como «dominada» cuando se acierta a la primera en
+    3 días distintos.
+- **Pregunta previa:** el primer test que va después de una explicación se
+  hace antes, como intento libre. No cuenta para la nota y, al llegar a él,
+  dice si lo intuía.
+- **Sesión de hoy:** primero el repaso (como mucho 12 ejercicios), luego las
+  tarjetas (10, y 20 al día como máximo) y después la lección.
+  - Antes de cada lección hay hasta 2 repasos pendientes de calentamiento.
+- **Repaso:**
+  - no dice de qué lección viene hasta que se responde;
+  - pregunta «Lo sé / Dudo» y avisa del error hecho con seguridad
+    (hipercorrección);
+  - guarda la calibración.
+- **Test:** las opciones se barajan cada vez. `validar.cjs` avisa si la
+  correcta mide más de 1,3 veces la incorrecta más larga, y `tests-largos.cjs`
+  lista esos casos.
+- **Examen de nivel suspendido:** lo fallado entra en el repaso de hoy, y al
+  día siguiente hay un examen paralelo con otros ejercicios de las mismas
+  lecciones.
+- **Perfil:**
+  - «Lo que ya sabes hacer», con la fuerza de memoria de cada lección;
+  - cuánto recuerda hoy y cómo de acertada es su seguridad;
+  - descarga de la lista.
+
 ## La capa de juego (versión 7)
 
 - **A1, la mascota:** la celda seleccionada del logotipo, con cara. Presenta la

@@ -117,9 +117,9 @@
       "pregunta": "Tienes una lista de 300 clientes y al bajar se pierde de vista la fila de títulos. ¿Qué haces?",
       "opciones": [
         {
-          "texto": "Vista › Ventana › Inmovilizar › Inmovilizar fila superior",
+          "texto": "Inmovilizar fila superior (en la pestaña Vista)",
           "correcta": true,
-          "porque": "Correcto. La fila 1 se queda fija en pantalla mientras bajas por la lista."
+          "porque": "Correcto. Está en Vista › Ventana › Inmovilizar › Inmovilizar fila superior. La fila 1 se queda fija en pantalla mientras bajas por la lista."
         },
         {
           "texto": "Copiar la fila de títulos cada 30 filas",
@@ -266,7 +266,7 @@
         },
         {
           "tipo": "texto",
-          "md": "**Ordenar** es cambiar el orden de las filas: de la A a la Z, de más venta a menos…\n\nLo importante: Excel mueve **filas enteras**. Cada cliente viaja con su delegación y sus ventas.\n\nCómo se hace:\n\n1. Haz clic en **una sola celda** de la columna por la que quieres ordenar (por ejemplo, C3, en Ventas). No selecciones la columna entera.\n2. Ve a **Datos › Ordenar y filtrar** y pulsa **Ordenar de A a Z** o **Ordenar de Z a A**.\n\nCon números, «de A a Z» es de menor a mayor."
+          "md": "**Ordenar** es cambiar el orden de las filas: de la A a la Z, de más venta a menos…\n\nExcel mueve **filas enteras**: cada cliente viaja con su delegación y sus ventas.\n\n1. Haz clic en **una sola celda** de la columna por la que quieres ordenar (por ejemplo, C3, en Ventas). No selecciones la columna entera.\n2. Pulsa **Datos › Ordenar y filtrar › Ordenar de A a Z** (o **de Z a A**).\n\nCon números, «de A a Z» es de menor a mayor."
         },
         {
           "tipo": "ejercicio",
@@ -498,12 +498,12 @@
               "porque": "Correcto. Es el síntoma típico: los nombres se quedan y los importes se mueven. Deshaz con Ctrl+Z y ordena con una sola celda seleccionada."
             },
             {
-              "texto": "Había un filtro puesto",
+              "texto": "Había un filtro puesto y al ordenar se mezclaron las filas",
               "correcta": false,
               "porque": "El filtro oculta filas, pero no cambia los datos de una fila a otra."
             },
             {
-              "texto": "La columna tenía formato de euros",
+              "texto": "La columna Ventas tenía formato de euros y se ordenó aparte",
               "correcta": false,
               "porque": "El formato no influye al ordenar: solo cambia cómo se ve el número."
             }
@@ -636,9 +636,9 @@
           "pregunta": "Javier te pide un circular con las ventas de sus **12 comerciales** para la reunión. ¿Qué le propones?",
           "opciones": [
             {
-              "texto": "Un gráfico de barras con los 12 comerciales ordenados de más venta a menos",
+              "texto": "Un gráfico de barras, ordenadas de más venta a menos",
               "correcta": true,
-              "porque": "Correcto. Con 12 nombres, las barras se leen bien y el orden dice quién va primero. Es lo que Javier quiere saber."
+              "porque": "Correcto. Con 12 nombres, las barras se leen bien y, ordenadas, se ve enseguida quién va primero. Es lo que Javier quiere saber."
             },
             {
               "texto": "El circular que pide, con 12 colores distintos",
@@ -1104,9 +1104,9 @@
           "pregunta": "Guardaste el listado como CSV y lo enviaste. Al día siguiente lo abres para seguir trabajando: el total ya no se recalcula al cambiar un importe y los euros salen sin color ni bordes. ¿Qué ha pasado?",
           "opciones": [
             {
-              "texto": "El CSV solo guarda valores: la fórmula del total se convirtió en un número fijo",
+              "texto": "El CSV solo guarda valores: sin fórmulas ni formato",
               "correcta": true,
-              "porque": "Correcto. Es lo normal en un CSV. Por eso se trabaja en el .xlsx y el CSV es solo una copia para enviar."
+              "porque": "Correcto. Al guardar como CSV, la fórmula del total se convirtió en un número fijo y se perdieron colores y bordes. Es lo normal en un CSV. Por eso se trabaja en el .xlsx y el CSV es solo una copia para enviar."
             },
             {
               "texto": "Excel se ha estropeado y hay que reinstalarlo",
@@ -1177,17 +1177,17 @@
           "pregunta": "Imprimes un listado de 5 páginas y desde la página 2 nadie sabe qué es cada columna. ¿Qué faltó?",
           "opciones": [
             {
-              "texto": "Imprimir títulos (repetir la fila 1 arriba de cada página)",
+              "texto": "Repetir la fila 1 en cada página con Imprimir títulos",
               "correcta": true,
-              "porque": "Correcto. Así la fila de títulos sale en todas las páginas."
+              "porque": "Correcto. En Disposición de página › Imprimir títulos, pon $1:$1 en «Repetir filas en extremo superior» y la fila de títulos saldrá en todas las páginas."
             },
             {
-              "texto": "Poner la hoja en horizontal",
+              "texto": "Poner la hoja en horizontal para que quepa todo",
               "correcta": false,
               "porque": "La orientación cambia el ancho que cabe, pero los títulos seguirían saliendo solo en la primera página."
             },
             {
-              "texto": "Inmovilizar la fila 1",
+              "texto": "Inmovilizar la fila 1 antes de imprimir",
               "correcta": false,
               "porque": "Inmovilizar fija la fila en la pantalla, no en el papel. Para imprimir hace falta Imprimir títulos."
             }

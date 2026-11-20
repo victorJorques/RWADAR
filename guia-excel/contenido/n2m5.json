@@ -345,8 +345,8 @@
           },
           "resaltar": [
             "C2",
-            "G3",
-            "H3"
+            "G4",
+            "H4"
           ],
           "mostrar_formulas": true,
           "pie": "C2 busca CAN-40 en G2:G9, lo encuentra en la fila 4 y trae lo que hay en esa misma fila de H: 4,80 €."
@@ -813,17 +813,17 @@
           "pregunta": "Tienes `=BUSCARX(A2;G2:G9;H2:H9)` en C2 y la copias hasta C9. Las últimas filas dan error. ¿Por qué?",
           "opciones": [
             {
-              "texto": "La tarifa no está fijada con $ y su rango baja una fila cada vez",
+              "texto": "La tarifa no lleva $ y su rango baja al copiar",
               "correcta": true,
-              "porque": "Correcto: en C9 busca en G9:G16 y ya no ve los primeros códigos."
+              "porque": "Correcto: sin $, G2:G9 y H2:H9 bajan una fila en cada copia; en C9 busca en G9:G16 y ya no ve los primeros códigos."
             },
             {
-              "texto": "A2 debería llevar $",
+              "texto": "A2 debería ser $A$2 para que no se mueva",
               "correcta": false,
-              "porque": "A2 tiene que moverse: cada fila busca su propio código."
+              "porque": "A2 tiene que moverse: cada fila busca su propio código. Con $A$2, todas buscarían el código de la fila 2."
             },
             {
-              "texto": "BUSCARX no se puede copiar",
+              "texto": "BUSCARX no se puede copiar hacia abajo",
               "correcta": false,
               "porque": "Sí se puede; solo hay que fijar lo que no debe moverse."
             },
@@ -1200,12 +1200,12 @@
           "pregunta": "En el listado de pedidos, el nº de cliente 430012 sale **pegado a la izquierda** y con un triangulito verde. En la lista de clientes, el mismo número sale a la derecha. BUSCARX da #N/D. ¿Qué está pasando?",
           "opciones": [
             {
-              "texto": "En el pedido es un **texto** que parece número; en la lista, un número de verdad",
+              "texto": "En el pedido es **texto**; en la lista, un número",
               "correcta": true,
-              "porque": "Correcto: alineado a la izquierda con triángulo verde = número guardado como texto. Se arregla con VALOR, como en el módulo de textos: `BUSCARX(VALOR(B2);…)`."
+              "porque": "Correcto: alineado a la izquierda con triángulo verde = número guardado como texto. En la lista es un número de verdad, y para BUSCARX no son iguales. Se arregla con VALOR, como en el módulo de textos: `BUSCARX(VALOR(B2);…)`."
             },
             {
-              "texto": "Hay un espacio al final",
+              "texto": "Hay un espacio de más detrás del número",
               "correcta": false,
               "porque": "Podría ser, pero el triángulo verde y la alineación a la izquierda apuntan a otra cosa: número guardado como texto."
             },
@@ -1607,7 +1607,7 @@
         },
         {
           "tipo": "texto",
-          "md": "El cuarto hueco es el más peligroso. **FALSO** significa «busca el código **exacto**».\n\nSi no lo pones, BUSCARV hace una búsqueda **aproximada**: si no encuentra el código, se queda con el más cercano por debajo y te trae su precio **sin avisar**. Ni #N/D ni nada: un precio equivocado que parece bueno.\n\nRegla de oficina: BUSCARV, siempre con FALSO. La aproximada solo sirve para tramos, como las comisiones; la verás más adelante."
+          "md": "El cuarto hueco es el más peligroso. **FALSO** significa «busca el código **exacto**».\n\nSi no lo pones, BUSCARV hace una búsqueda **aproximada**: si no encuentra el código, se queda con el más cercano por debajo **sin avisar**. Y si la tarifa no está ordenada, puede equivocarse incluso con códigos que sí están. Ni #N/D ni nada: un precio equivocado que parece bueno.\n\nRegla de oficina: BUSCARV, siempre con FALSO. La aproximada solo sirve para tramos, como las comisiones; la verás más adelante."
         },
         {
           "tipo": "ejercicio",
@@ -1748,22 +1748,22 @@
           "pregunta": "La tarifa ocupa F:H (Código, Descripción, Precio) y C2 tiene `=BUSCARV(A2;$F$2:$H$9;3;FALSO)`. Andrés **inserta una columna** «Proveedor» entre Descripción y Precio. ¿Qué pasa con C2?",
           "opciones": [
             {
-              "texto": "Ahora trae el proveedor, no el precio, y no avisa",
+              "texto": "Trae el proveedor, sin avisar",
               "correcta": true,
               "porque": "Correcto: Excel amplía la tabla a $F$2:$I$9, pero el 3 sigue siendo 3, y la columna 3 ya es Proveedor."
             },
             {
-              "texto": "Sigue trayendo el precio",
+              "texto": "Sigue trayendo el precio: Excel cambia el 3 por un 4",
               "correcta": false,
               "porque": "Excel ajusta el rango de la tabla, pero no puede saber que el 3 tenía que pasar a 4."
             },
             {
-              "texto": "Da #N/D",
+              "texto": "Da #N/D porque la tabla ha cambiado",
               "correcta": false,
               "porque": "El código se sigue encontrando; lo que cambia es la columna que se trae."
             },
             {
-              "texto": "Da #¡REF!",
+              "texto": "Da #¡REF! porque el precio se ha movido",
               "correcta": false,
               "porque": "No se borra nada: la referencia sigue existiendo, solo apunta a otra columna."
             }
@@ -2098,17 +2098,17 @@
               "porque": "Correcto: sin FALSO hace búsqueda aproximada y se queda con el código más cercano por debajo."
             },
             {
-              "texto": "Siempre da #N/D",
+              "texto": "Da #N/D, como cuando lleva FALSO",
               "correcta": false,
               "porque": "Eso pasa con FALSO. Sin él, muchas veces devuelve un dato equivocado sin error."
             },
             {
-              "texto": "Excel no acepta la fórmula",
+              "texto": "Excel no acepta la fórmula sin el cuarto hueco",
               "correcta": false,
               "porque": "La acepta: el cuarto hueco es opcional, y por eso es tan traicionero."
             },
             {
-              "texto": "Devuelve 0",
+              "texto": "Devuelve 0 en esa fila",
               "correcta": false,
               "porque": "No devuelve 0: devuelve el valor de otra fila."
             }

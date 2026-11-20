@@ -72,14 +72,14 @@
    "pregunta": "En **B6** pone `Materiales Ebro S.L.` y falta la coma: debe ser `Materiales Ebro, S.L.`. ¿Cuál es la forma más segura de corregirlo?",
    "opciones": [
     {
-     "texto": "Selecciono B6, pulso [[F2]], llevo el cursor detrás de «Ebro», escribo la coma y pulso [[Intro]]",
+     "texto": "Selecciono B6, pulso [[F2]], pongo la coma detrás de «Ebro» y pulso [[Intro]]",
      "correcta": true,
-     "porque": "Correcto: con F2 entras en la celda y cambias solo lo que falta, sin tocar el resto."
+     "porque": "Correcto: con F2 entras en la celda, llevas el cursor detrás de «Ebro» y cambias solo lo que falta, sin tocar el resto."
     },
     {
-     "texto": "Selecciono B6 y escribo solo la coma",
+     "texto": "Hago clic en B6 y escribo la coma detrás de «Ebro» con el teclado",
      "correcta": false,
-     "porque": "Escribir sobre una celda llena sustituye todo: B6 quedaría con una coma y nada más."
+     "porque": "Con un clic la celda solo queda seleccionada, no abierta: lo que escribes sustituye todo y B6 quedaría con una coma y nada más."
     },
     {
      "texto": "Selecciono B6, escribo la coma y pulso [[Esc]]",
@@ -136,14 +136,14 @@
      "porque": "Correcto: un número alineado a la izquierda sin que nadie lo cambie es señal de texto."
     },
     {
-     "texto": "Que es una fecha",
+     "texto": "Que Excel lo ha convertido en una fecha",
      "correcta": false,
-     "porque": "Las fechas, cuando Excel las reconoce, también se alinean a la derecha."
+     "porque": "Las fechas que Excel reconoce son números por dentro y también se alinean a la derecha. Un 75 a la izquierda apunta a texto."
     },
     {
-     "texto": "Nada, es estética",
+     "texto": "Nada: es solo cómo se ve, no afecta a las cuentas",
      "correcta": false,
-     "porque": "No es estética: un número guardado como texto da problemas al sumar y al ordenar."
+     "porque": "No es solo aspecto: un número guardado como texto da problemas al sumar y al ordenar."
     }
    ],
    "explicacion": "La alineación es tu detector rápido de números que en realidad son texto."
@@ -168,19 +168,19 @@
    "pregunta": "Marta quiere probar recortes en **2026 Presupuesto.xlsx** sin tocar el original. ¿Qué haces antes de cambiar nada?",
    "opciones": [
     {
-     "texto": "[[F12]] (Guardar como) y le pongo otro nombre, por ejemplo `2026 Presupuesto prueba recortes`",
+     "texto": "[[F12]] (Guardar como) y le pongo otro nombre",
      "correcta": true,
-     "porque": "Correcto: Guardar como crea una copia y el original queda intacto."
+     "porque": "Correcto: Guardar como crea una copia con otro nombre (por ejemplo «2026 Presupuesto prueba recortes») y el original queda intacto."
     },
     {
-     "texto": "[[Ctrl]]+[[G]]",
+     "texto": "[[Ctrl]]+[[G]] para guardar antes de empezar",
      "correcta": false,
-     "porque": "Ctrl+G guarda en el mismo archivo: los cambios acabarían en el original."
+     "porque": "Ctrl+G guarda en el mismo archivo: no crea ninguna copia, y lo que cambies después acabará en el original."
     },
     {
-     "texto": "[[Ctrl]]+[[S]]",
+     "texto": "[[Ctrl]]+[[S]] para guardar una copia",
      "correcta": false,
-     "porque": "En el Excel en español, Ctrl+S es subrayado: no guarda nada."
+     "porque": "En el Excel en español, Ctrl+S es subrayado: no guarda nada, ni copia ni original."
     }
    ],
    "explicacion": "Ctrl+G guarda el mismo archivo; F12 (Guardar como) crea uno nuevo."

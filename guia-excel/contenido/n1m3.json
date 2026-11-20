@@ -375,9 +375,9 @@
           "pregunta": "Andrés te pasa su lista de pedidos y en la columna «Entrega» se ve **46345**, **46351**, **46358**… ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Les pongo formato Fecha corta: son fechas con formato General.",
+              "texto": "Les pongo formato Fecha corta: son fechas.",
               "correcta": true,
-              "porque": "Exacto. El valor está bien; solo le falta el envoltorio de fecha. 46345 se verá como 19/11/2026."
+              "porque": "Exacto. Son fechas que se han quedado con formato General: el valor está bien y solo le falta el envoltorio de fecha. 46345 se verá como 19/11/2026."
             },
             {
               "texto": "Las borro y las escribo otra vez a mano.",
@@ -652,9 +652,9 @@
           "pregunta": "En la columna «Delegación», alguien escribió «   Pamplona» con espacios delante para que quedara más centrado. ¿Qué problema da?",
           "opciones": [
             {
-              "texto": "Ya no es el mismo texto que «Pamplona»: al ordenar o buscar, Excel lo trata como otro distinto.",
+              "texto": "Excel lo trata como un texto distinto de «Pamplona».",
               "correcta": true,
-              "porque": "Exacto. Cada espacio es un carácter más. Para Excel, «   Pamplona» y «Pamplona» son textos diferentes."
+              "porque": "Exacto. Cada espacio es un carácter más: al ordenar, filtrar o buscar, «   Pamplona» y «Pamplona» van por separado."
             },
             {
               "texto": "Ninguno: los espacios no cuentan.",
@@ -809,12 +809,12 @@
           "pregunta": "Acabas de rellenar la tabla y pulsas [[Ctrl]]+[[S]] para guardar. ¿Qué pasa en el Excel español?",
           "opciones": [
             {
-              "texto": "Se subraya lo que tengas seleccionado; no se guarda nada.",
+              "texto": "Se subraya lo seleccionado y no se guarda nada.",
               "correcta": true,
-              "porque": "Eso es: en español Ctrl+S es Subrayado. Guardar es Ctrl+G."
+              "porque": "Eso es: en el Excel español Ctrl+S es Subrayado y se aplica a lo que tengas seleccionado. Guardar es Ctrl+G."
             },
             {
-              "texto": "Se guarda el libro.",
+              "texto": "Se guarda el libro con el mismo nombre.",
               "correcta": false,
               "porque": "Ese es el atajo de los tutoriales en inglés (Save). En el Excel español guarda Ctrl+G."
             },
@@ -934,7 +934,7 @@
         },
         {
           "tipo": "texto",
-          "md": "Lo bueno: **las fórmulas se adaptan solas**. Si B10 tenía `=SUMA(B2:B9)` e insertas una fila **en medio** de los datos, la fórmula baja a B11 y pasa a ser `=SUMA(B2:B10)`. No tienes que tocar nada.\n\nLo peligroso: si insertas la fila **justo debajo del último dato**, encima del total, queda **fuera** del rango. Puede que Excel marque la celda con un triangulito verde, pero no te fíes: **mira siempre el rango del total**."
+          "md": "Lo bueno: **las fórmulas se adaptan solas**. Si B10 tenía `=SUMA(B2:B9)` e insertas una fila **en medio** de los datos, la fórmula baja a B11 y pasa a ser `=SUMA(B2:B10)`. No tienes que tocar nada.\n\nLo peligroso: si insertas la fila **justo debajo del último dato**, encima del total, **puede quedar fuera** del rango. A veces Excel lo amplía solo y a veces no, así que no te fíes: **mira siempre el rango del total**."
         },
         {
           "tipo": "ejercicio",

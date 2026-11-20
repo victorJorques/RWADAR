@@ -298,17 +298,17 @@
           "pregunta": "Escribes en una celda y, sin pulsar Intro, intentas usar un botón de la cinta, pero está en gris. ¿Por qué?",
           "opciones": [
             {
-              "texto": "Porque Excel sigue esperando a que confirmes lo que escribes",
+              "texto": "Porque Excel espera a que confirmes lo que escribes",
               "correcta": true,
               "porque": "Eso es: mientras escribes, muchos botones se desactivan. Pulsa Intro (o Esc) y vuelven."
             },
             {
-              "texto": "Porque el archivo está estropeado",
+              "texto": "Porque el archivo se ha quedado bloqueado",
               "correcta": false,
-              "porque": "No: es lo normal mientras estás escribiendo en una celda."
+              "porque": "No: es lo normal mientras estás escribiendo en una celda. En cuanto la confirmas, los botones vuelven."
             },
             {
-              "texto": "Porque hay que guardar antes",
+              "texto": "Porque ese botón solo funciona si guardas antes",
               "correcta": false,
               "porque": "Guardar no tiene nada que ver; falta confirmar la celda con Intro."
             }
@@ -482,19 +482,19 @@
           "pregunta": "El total de Andrés sale `#¡VALOR!`. ¿Por qué?",
           "opciones": [
             {
-              "texto": "Porque en B3 pone «12 uds»: es texto y Excel no puede sumarlo",
+              "texto": "Porque «12 uds» de B3 es texto y no se puede sumar",
               "correcta": true,
               "porque": "Eso es: al añadir «uds», el 12 dejó de ser un número. Excel avisa con #¡VALOR! de que no puede hacer la cuenta."
             },
             {
-              "texto": "Porque 120 + 12 es demasiado grande",
+              "texto": "Porque la cuenta de B4 está mal escrita",
               "correcta": false,
-              "porque": "Excel maneja números enormes sin problema; el fallo está en el tipo de dato, no en el tamaño."
+              "porque": "La cuenta `=B2+B3` está bien: suma las dos celdas. El fallo está en el dato de B3, no en la cuenta."
             },
             {
-              "texto": "Porque los proveedores son distintos",
+              "texto": "Porque la columna B no tiene formato de número",
               "correcta": false,
-              "porque": "Los nombres de la columna A no intervienen en la cuenta. El problema está en B3."
+              "porque": "El formato solo cambia cómo se ve. El problema es que B3 tiene letras, y eso lo convierte en texto."
             }
           ],
           "explicacion": "Has encontrado el fallo tú sola. Cuando veas un #¡VALOR!, sospecha de un número escrito con letras."
@@ -648,7 +648,7 @@
             {
               "texto": "Centrado",
               "correcta": false,
-              "porque": "Excel no centra nada por su cuenta; eso se hace a mano con el formato."
+              "porque": "Un texto no se centra solo: centrarlo se hace a mano, con los botones de alineación."
             }
           ],
           "explicacion": "La alineación es tu pista rápida para detectar números que en realidad son texto."
@@ -935,14 +935,14 @@
               "porque": "Correcto: ensancha la columna (doble clic en el borde de su letra) y el número aparece."
             },
             {
-              "texto": "El importe se ha borrado",
+              "texto": "Hay un error en la fórmula del importe",
               "correcta": false,
-              "porque": "El número sigue ahí; solo es que no cabe a la vista."
+              "porque": "Los errores de fórmula llevan nombre, como #¡VALOR! o #¡DIV/0!. Una fila de almohadillas sin más es que el número no cabe a la vista."
             },
             {
-              "texto": "El archivo tiene un virus",
+              "texto": "El número es demasiado grande y Excel no lo admite",
               "correcta": false,
-              "porque": "Nada que ver: las almohadillas solo indican falta de espacio."
+              "porque": "Excel admite números enormes. Las almohadillas solo dicen que no cabe a la vista: con la columna más ancha, aparece."
             }
           ],
           "explicacion": "Almohadillas = columna estrecha. Doble clic en el borde y listo."
@@ -1224,19 +1224,19 @@
           "pregunta": "Repaso del módulo: en la celda B3 pone `Gil Moreno` y quieres que ponga `Gil Moreno Sanz`. ¿Cuál es la forma más segura?",
           "opciones": [
             {
-              "texto": "Seleccionar B3, pulsar [[F2]], escribir « Sanz» al final y pulsar [[Intro]]",
+              "texto": "Seleccionar B3, pulsar [[F2]], añadir « Sanz» y pulsar [[Intro]]",
               "correcta": true,
               "porque": "Correcto: con F2 entras en la celda con el cursor al final y solo añades lo que falta."
             },
             {
-              "texto": "Seleccionar B3 y escribir `Sanz`",
+              "texto": "Hacer clic en B3, escribir « Sanz» y pulsar [[Intro]]",
               "correcta": false,
-              "porque": "Escribir encima sustituye todo: B3 pasaría a decir solo «Sanz»."
+              "porque": "Con un clic la celda solo queda seleccionada: lo que escribes sustituye todo y B3 pasaría a decir solo «Sanz»."
             },
             {
-              "texto": "Seleccionar B3 y pulsar [[Supr]]",
+              "texto": "Seleccionar B3, pulsar [[Supr]] y escribir « Sanz»",
               "correcta": false,
-              "porque": "Supr vacía la celda: perderías «Gil Moreno»."
+              "porque": "Supr vacía la celda: perderías «Gil Moreno» y solo quedaría «Sanz»."
             }
           ],
           "explicacion": "F2 para retocar, Intro para confirmar, Ctrl+Z si algo sale mal."

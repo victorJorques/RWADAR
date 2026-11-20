@@ -71,9 +71,9 @@
       "pregunta": "En Power Query quitaste dos columnas, cambiaste tipos y filtraste las devoluciones. El mes que viene, ¿dónde estarán esos cambios para repetirlos?",
       "opciones": [
         {
-          "texto": "En los **Pasos aplicados** de la consulta: se repiten solos al pulsar Actualizar",
+          "texto": "En los **Pasos aplicados** de la consulta",
           "correcta": true,
-          "porque": "Eso es: la consulta guarda la receta paso a paso y la vuelve a aplicar a los datos nuevos."
+          "porque": "Eso es: la consulta guarda la receta paso a paso y, al pulsar Actualizar, la vuelve a aplicar sola a los datos nuevos."
         },
         {
           "texto": "En ningún sitio: hay que repetirlos a mano cada mes",
@@ -364,17 +364,17 @@
           "pregunta": "Javier copió el modelo de la máquina y pegó solo los **valores** para enviarlo por correo. Ahora B6 contiene el número −360 escrito, sin fórmula. Lanza Buscar objetivo con Definir la celda B6, valor 0, cambiando B5. ¿Qué pasa?",
           "opciones": [
             {
-              "texto": "Excel avisa de que la celda tiene que contener una fórmula",
+              "texto": "Sale un aviso: la celda debe contener una fórmula",
               "correcta": true,
               "porque": "Eso es. Buscar objetivo necesita una fórmula que dependa del dato que cambia; un número fijo no reacciona a nada. Solución: volver a poner la fórmula en B6."
             },
             {
-              "texto": "Excel pone 500 en B5, como siempre",
+              "texto": "Excel pone 500 en B5, como cuando B6 tenía fórmula",
               "correcta": false,
               "porque": "Para llegar a 500, B6 tendría que recalcularse al cambiar B5. Con un número escrito, B6 no se mueve nunca."
             },
             {
-              "texto": "Excel cambia B6 a 0 y listo",
+              "texto": "Excel escribe 0 en B6 y deja B5 como estaba",
               "correcta": false,
               "porque": "Buscar objetivo no escribe en la celda del resultado: mueve la celda que cambia y mira cómo responde la fórmula."
             }
@@ -880,7 +880,7 @@
           "pregunta": "Este es el resumen que has sacado para Javier:\n\n| | Valores actuales | Pesimista | Base | Optimista |\n|---|---|---|---|---|\n| Precio | 24,00 € | 22,00 € | 24,00 € | 25,00 € |\n| Unidades | 1.200 | 800 | 1.200 | 1.500 |\n| **Beneficio** | 5.400 € | 0 € | 5.400 € | 9.750 € |\n\nJavier pregunta: «¿Qué conclusión saco?». ¿Cuál es la lectura correcta?",
           "opciones": [
             {
-              "texto": "En el peor caso no perdemos dinero, y en el mejor el beneficio es casi el doble que en el caso base.",
+              "texto": "En el peor caso no perdemos dinero, y en el mejor casi duplicamos el beneficio base.",
               "correcta": true,
               "porque": "Eso es: pesimista 0 € (ni gana ni pierde) y optimista 9.750 €, casi el doble de 5.400 €. Un resumen se lee comparando columnas."
             },
@@ -1554,22 +1554,22 @@
           "pregunta": "Terminas el cuadro y el **saldo final del mes 60 sale 8.412,55 €**, no 0. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Revisar las fórmulas (tasa entre 12, número de cuotas, $ al copiar) y no entregarlo hasta que dé 0",
+              "texto": "Revisar las fórmulas y no entregarlo hasta que el saldo dé 0",
               "correcta": true,
-              "porque": "Eso es: el saldo final es tu total de control. Si no da 0, alguna fórmula está mal, y casi siempre es una de esas tres cosas."
+              "porque": "Eso es: el saldo final es tu total de control. Si no da 0, alguna fórmula está mal. Mira primero lo típico: la tasa sin dividir entre 12, el número de cuotas y los $ al copiar."
             },
             {
-              "texto": "Entregarlo: son restos del redondeo",
+              "texto": "Entregarlo: son restos del redondeo de los decimales",
               "correcta": false,
               "porque": "Los restos del redondeo son números diminutos, como 0,0000000001. Más de 8.000 € es un error de verdad."
             },
             {
-              "texto": "Escribir un 0 a mano en esa celda",
+              "texto": "Escribir un 0 a mano en esa celda para que cuadre",
               "correcta": false,
               "porque": "Eso tapa el síntoma y deja el error dentro: los intereses y el capital de todo el cuadro seguirían mal."
             },
             {
-              "texto": "Quitar los decimales del formato",
+              "texto": "Quitar los decimales del formato de esa celda",
               "correcta": false,
               "porque": "El formato solo cambia cómo se ve el número, no lo que vale. Seguirían faltando más de 8.000 €."
             }
@@ -1889,9 +1889,9 @@
           "pregunta": "Haces una cascada de la tesorería del mes y la barra **Saldo final** sale flotando en el aire, encima de las demás. ¿Qué falta?",
           "opciones": [
             {
-              "texto": "Seleccionar solo esa barra y marcar «Establecer como total»",
+              "texto": "Marcar solo esa barra con «Establecer como total»",
               "correcta": true,
-              "porque": "Eso es: sin esa marca, Excel trata el saldo final como un movimiento más y lo apila sobre los anteriores."
+              "porque": "Eso es: selecciona solo esa barra (un clic en la serie y otro en la barra) y, con el botón derecho, «Establecer como total». Sin esa marca, Excel trata el saldo final como un movimiento más y lo apila sobre los anteriores."
             },
             {
               "texto": "Escribir los gastos en negativo",

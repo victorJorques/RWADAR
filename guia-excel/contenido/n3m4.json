@@ -106,9 +106,9 @@
    "pregunta": "En la columna Importe de una exportación, algunas cifras salen alineadas a la izquierda y con un triangulito verde en la esquina. ¿Qué son?",
    "opciones": [
     {
-     "texto": "Números guardados como texto: SUMA no los tiene en cuenta",
+     "texto": "Números guardados como texto",
      "correcta": true,
-     "porque": "Eso es: parecen números, pero Excel los trata como texto. Hay que convertirlos (VALOR.NUMERO, Texto en columnas…) antes de resumir."
+     "porque": "Eso es: parecen números, pero Excel los trata como texto y SUMA no los tiene en cuenta. Hay que convertirlos (VALOR.NUMERO, Texto en columnas…) antes de resumir."
     },
     {
      "texto": "Números negativos",
@@ -307,12 +307,12 @@
      "pregunta": "Creas una tabla dinámica con este listado de ventas. ¿Qué le pasa al listado original?",
      "opciones": [
       {
-       "texto": "Nada: sigue igual y el resumen va aparte",
+       "texto": "Nada: el resumen se crea aparte",
        "correcta": true,
-       "porque": "Exacto. La dinámica lee el listado y monta el resumen en otro sitio. Puedes probar sin miedo a estropear los datos."
+       "porque": "Exacto. El listado sigue igual: la dinámica lo lee y monta el resumen en otro sitio. Puedes probar sin miedo a estropear los datos."
       },
       {
-       "texto": "Se ordena por zona",
+       "texto": "Se ordena por zona, como el resumen",
        "correcta": false,
        "porque": "La dinámica no toca el orden de tus filas. Ordenar el listado es otra herramienta (Datos › Ordenar)."
       },
@@ -657,9 +657,9 @@
      "pregunta": "Tu dinámica sale de un rango normal, A1:E13 (no es una Tabla). Pegas diez ventas nuevas en las filas 14 a 23. ¿Qué pasa con la dinámica?",
      "opciones": [
       {
-       "texto": "Las ventas nuevas se quedan fuera, porque el origen acaba en la fila 13",
+       "texto": "Se quedan fuera: el origen acaba en la fila 13",
        "correcta": true,
-       "porque": "Eso es: un rango fijo no crece. Por eso el origen debe ser una Tabla, que se amplía sola al pegar justo debajo."
+       "porque": "Eso es: un rango fijo no crece y las ventas nuevas quedan fuera del origen. Por eso el origen debe ser una Tabla, que se amplía sola al pegar justo debajo."
       },
       {
        "texto": "Las recoge solas, porque están justo debajo",
@@ -680,9 +680,9 @@
      "pregunta": "¿Qué pregunta responde una dinámica con **Familia** en Filas, **Zona** en Filtros e **Importe** en Valores?",
      "opciones": [
       {
-       "texto": "Ventas de cada familia, de todas las zonas o de la que elijas en el filtro",
+       "texto": "Ventas de cada familia, de las zonas que elijas en el filtro",
        "correcta": true,
-       "porque": "Correcto: Filas desglosa por familia, Valores suma el importe y el filtro de Zona decide qué zonas entran."
+       "porque": "Correcto: Filas desglosa por familia, Valores suma el importe y el filtro de Zona decide qué zonas entran (si no lo tocas, entran todas)."
       },
       {
        "texto": "Ventas de cada familia en cada zona, todas a la vez",
@@ -769,7 +769,7 @@
     },
     {
      "tipo": "texto",
-     "md": "A veces Excel elige **Cuenta** sin que se lo pidas. Pasa cuando la columna tiene **algún texto**: un «pendiente» escrito a mano o números guardados como texto, como los de las exportaciones sucias del módulo anterior. Con textos no se puede sumar, así que Excel cuenta.\n\nLa pista está en el título: verás **«Cuenta de Importe»** y cifras pequeñas (12, 35, 40…) donde esperabas euros. El arreglo: limpia esa columna en el listado, actualiza la dinámica (lo verás a fondo en la próxima lección) y cambia a **Suma**."
+     "md": "A veces Excel elige **Cuenta** sin que se lo pidas. Pasa cuando la columna tiene **algún texto** (un «pendiente» escrito a mano, números guardados como texto) o **celdas vacías**: Excel no la ve como una columna de números, así que cuenta.\n\nLa pista está en el título: verás **«Cuenta de Importe»** y cifras pequeñas (12, 35, 40…) donde esperabas euros. El arreglo: limpia esa columna en el listado, actualiza la dinámica (lo verás a fondo en la próxima lección) y cambia a **Suma**."
     },
     {
      "tipo": "aviso",
@@ -784,9 +784,9 @@
      "pregunta": "Haces la dinámica de ventas por zona y sale esto:\n\n| Zona | Cuenta de Importe |\n|---|---|\n| Lleida | 205 |\n| Pamplona | 198 |\n| Zaragoza | 412 |\n\nJavier esperaba unos 90.000 € en Zaragoza. ¿Qué ha pasado?",
      "opciones": [
       {
-       "texto": "La columna Importe tiene algún texto y Excel ha contado filas en vez de sumar",
+       "texto": "Hay textos o huecos en Importe y Excel ha contado filas",
        "correcta": true,
-       "porque": "Eso es: «Cuenta de Importe» delata que hay texto en la columna. Busca esas celdas, conviértelas en número, actualiza y cambia a Suma."
+       "porque": "Eso es: «Cuenta de Importe» delata textos o celdas vacías en la columna. Búscalos, arréglalos, actualiza y cambia a Suma."
       },
       {
        "texto": "Zaragoza solo ha vendido 412 €",
@@ -794,7 +794,7 @@
        "porque": "412 no son euros: el título dice Cuenta. Son 412 filas, es decir, 412 ventas."
       },
       {
-       "texto": "La dinámica no está actualizada",
+       "texto": "La dinámica no está actualizada con las ventas del mes",
        "correcta": false,
        "porque": "Una dinámica sin actualizar enseña cifras viejas, pero seguiría diciendo Suma. Aquí el problema es que cuenta."
       },
@@ -964,7 +964,7 @@
      "pregunta": "Intentas agrupar por meses las fechas de una exportación del programa de gestión y Excel avisa de que no puede agrupar la selección. ¿Qué es lo más probable?",
      "opciones": [
       {
-       "texto": "Alguna «fecha» de la columna es un texto, no una fecha de verdad",
+       "texto": "Alguna «fecha» de la columna es en realidad un texto",
        "correcta": true,
        "porque": "Eso es: basta con que alguna sea texto (por ejemplo, 05.11.2026 o con un espacio delante) para que no agrupe. Conviértelas en fechas en el listado, como en el módulo de limpieza, y actualiza."
       },
@@ -1226,7 +1226,7 @@
     {
      "tipo": "error",
      "frente": "La dinámica dice «Cuenta de Importe» sin que lo pidieras. ¿Por qué?",
-     "dorso": "La columna tiene algún texto (números guardados como texto o palabras). Límpiala, actualiza y cambia a Suma."
+     "dorso": "La columna tiene algún texto (números guardados como texto o palabras) o celdas vacías. Límpiala, actualiza y cambia a Suma."
     },
     {
      "tipo": "concepto",
@@ -1388,7 +1388,7 @@
      "pregunta": "Pegas 12 ventas nuevas debajo del listado y pulsas Actualizar todo, pero el total general no cambia. En **Cambiar origen de datos** pone `Ventas!$A$1:$H$1201`, y las ventas nuevas están en las filas 1202 a 1213. ¿Qué pasa?",
      "opciones": [
       {
-       "texto": "El origen es un rango fijo que acaba en la fila 1201: las ventas nuevas se quedan fuera",
+       "texto": "El origen acaba en la fila 1201 y deja fuera las nuevas",
        "correcta": true,
        "porque": "Eso es. Amplía el rango o, mejor, convierte el listado en Tabla y usa la Tabla como origen: así crecerá sola."
       },
@@ -1398,7 +1398,7 @@
        "porque": "Actualizar relee el origen, y el origen acaba en la fila 1201: por muchas veces que pulses, lo de debajo no entra."
       },
       {
-       "texto": "Las ventas nuevas tienen otro formato",
+       "texto": "Las ventas nuevas tienen otro formato y la dinámica las ignora",
        "correcta": false,
        "porque": "El formato no impide que entren: el problema es que están fuera del rango de origen."
       },
@@ -1606,19 +1606,19 @@
      "pregunta": "Javier quiere ver solo el **tercer trimestre** en las tres dinámicas del informe, y cambiar de periodo con un clic durante la reunión. ¿Qué le preparas?",
      "opciones": [
       {
-       "texto": "Una escala de tiempo de Fecha conectada a las tres dinámicas (Conexiones de informe)",
+       "texto": "Una escala de tiempo de Fecha, conectada a las tres",
        "correcta": true,
-       "porque": "Eso es: arrastra sobre julio-septiembre (o elige el nivel Trimestres) y cambian las tres a la vez."
+       "porque": "Eso es: la conectas a las tres dinámicas con Conexiones de informe, arrastras sobre julio-septiembre (o eliges el nivel Trimestres) y cambian las tres a la vez."
       },
       {
-       "texto": "Agrupar las fechas por trimestres",
+       "texto": "Agrupar las fechas por trimestres en las tres",
        "correcta": false,
        "porque": "Agrupar enseña un total por trimestre, pero no filtra: seguirían saliendo los cuatro trimestres."
       },
       {
-       "texto": "Una segmentación de Comercial",
+       "texto": "Una segmentación de Comercial, conectada a las tres",
        "correcta": false,
-       "porque": "Esa filtra por comercial, no por fechas."
+       "porque": "Conectarla a las tres está bien pensado, pero esa filtra por comercial, no por fechas."
       },
       {
        "texto": "Borrar del listado las ventas de los otros meses",
@@ -1838,22 +1838,22 @@
      "pregunta": "Junto a una dinámica con Zona y Familia en Filas (con subtotales por zona), un compañero escribe `=SUMA(C5:C22)` para «comprobar» el total, sin incluir la fila Total general. Le sale **el doble** del total general. ¿Por qué?",
      "opciones": [
       {
-       "texto": "El rango incluye las filas de subtotal: cada zona se suma dos veces (sus familias y su total)",
+       "texto": "El rango incluye también los subtotales de zona",
        "correcta": true,
-       "porque": "Eso es. Para comprobar, compara con el Total general o quita los subtotales antes de sumar."
+       "porque": "Eso es: cada zona se suma dos veces, en sus familias y en su subtotal. Para comprobar, compara con el Total general o quita los subtotales antes de sumar."
       },
       {
-       "texto": "La dinámica no está actualizada",
+       "texto": "La dinámica no está actualizada con el listado",
        "correcta": false,
        "porque": "Una dinámica sin actualizar no daría justo el doble en la SUMA: aquí sale doble porque se suman también los subtotales."
       },
       {
-       "texto": "SUMA no funciona con tablas dinámicas",
+       "texto": "SUMA no funciona bien con tablas dinámicas",
        "correcta": false,
        "porque": "SUMA suma las celdas de una dinámica como cualquier otra; el problema es qué celdas entran en el rango."
       },
       {
-       "texto": "Hay ventas repetidas en el listado",
+       "texto": "Hay ventas repetidas en el listado de origen",
        "correcta": false,
        "porque": "Ventas repetidas cambiarían también el total de la propia dinámica; no harían que tu SUMA saliera justo el doble."
       }
@@ -1989,24 +1989,24 @@
      "pregunta": "Un compañero crea el campo calculado `=Unidades*Precio` y le salen importes enormes. ¿Por qué?",
      "opciones": [
       {
-       "texto": "Multiplica la suma de unidades por la suma de precios de cada grupo",
+       "texto": "Multiplica la suma de unidades por la de precios",
        "correcta": true,
-       "porque": "Eso es: el campo calculado trabaja con sumas. Para multiplicar fila a fila, hazlo en el listado y suma después."
+       "porque": "Eso es: el campo calculado trabaja con las sumas de cada grupo, no fila a fila. Para multiplicar fila a fila, hazlo en el listado y suma después."
       },
       {
-       "texto": "Le falta el signo $",
+       "texto": "Le falta el signo $ para fijar los campos",
        "correcta": false,
        "porque": "En un campo calculado no hay celdas que fijar: se escriben nombres de campos."
       },
       {
-       "texto": "La dinámica no está actualizada",
+       "texto": "La dinámica no se ha actualizado tras crearlo",
        "correcta": false,
        "porque": "Actualizar no cambia cómo calcula: seguiría multiplicando sumas."
       },
       {
-       "texto": "Los campos calculados solo pueden restar",
+       "texto": "Suma también los subtotales y el Total general",
        "correcta": false,
-       "porque": "Pueden sumar, restar, multiplicar y dividir; el problema es que lo hacen sobre las sumas."
+       "porque": "Los subtotales no entran en la cuenta de cada fila. El problema es que el campo calculado multiplica sumas, no fila a fila."
       }
      ],
      "explicacion": "Campo calculado = fórmula sobre las sumas de cada grupo. Perfecto para márgenes; un disparate para multiplicar fila a fila."

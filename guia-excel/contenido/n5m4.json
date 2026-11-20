@@ -101,17 +101,17 @@
       "pregunta": "Carmen quiere saber cuántos clientes **distintos** compraron en 2026 en cada provincia. Tu tabla dinámica sale del modelo de datos y tiene CodCliente (de Ventas) en Valores. ¿Cómo resumes ese campo?",
       "opciones": [
         {
-          "texto": "Recuento distinto",
+          "texto": "Configuración de campo de valor › Recuento distinto",
           "correcta": true,
           "porque": "Eso es: cuenta cada cliente una sola vez aunque tenga muchas ventas. Solo aparece en las tablas dinámicas del modelo de datos."
         },
         {
-          "texto": "Cuenta",
+          "texto": "Configuración de campo de valor › Cuenta",
           "correcta": false,
           "porque": "Cuenta líneas de venta: un cliente con 30 líneas contaría 30 veces."
         },
         {
-          "texto": "Suma",
+          "texto": "Configuración de campo de valor › Suma",
           "correcta": false,
           "porque": "CodCliente es un código: sumarlo no tiene sentido y no dice cuántos clientes hay."
         }
@@ -159,12 +159,12 @@
               "porque": "Eso es. Si da lo que esperas en casos que sabes calcular, puedes empezar a fiarte. Si no, has cazado el error antes que tu jefe."
             },
             {
-              "texto": "La uso tal cual: la ha hecho Microsoft",
+              "texto": "La uso tal cual: la ha hecho Microsoft y está probada",
               "correcta": false,
               "porque": "El propio Microsoft pide revisar y comprobar todo lo que crea Copilot. Que venga de una gran empresa no la hace correcta."
             },
             {
-              "texto": "Le pregunto a Copilot si está seguro",
+              "texto": "Le pregunto a Copilot si está seguro de que va bien",
               "correcta": false,
               "porque": "Te dirá que sí con la misma seguridad. Quien confirma una fórmula son los datos de prueba, no la propia IA."
             }
@@ -183,7 +183,7 @@
         },
         {
           "tipo": "texto",
-          "md": "Su punto débil: **se equivoca con seguridad**. En una prueba de referencia con 912 tareas de hojas de cálculo, Microsoft midió que su modo de edición acertaba unas 6 de cada 10. Puede proponer una función que no existe (Excel responde #¿NOMBRE?), confundir «mayor que» con «mayor o igual que» o sumar la columna equivocada. Lo más peligroso son los **errores silenciosos**: sale un número, no salta ningún aviso… y el número está mal. Excel avisa de lo que no puede calcular, no de lo que está mal pensado."
+          "md": "Su punto débil: **se equivoca con seguridad**. En una prueba de referencia de 2025 con 912 tareas de hojas de cálculo, Microsoft midió que su modo de edición acertaba unas 6 de cada 10. Puede proponer una función que no existe (Excel responde #¿NOMBRE?), confundir «mayor que» con «mayor o igual que» o sumar la columna equivocada. Lo más peligroso son los **errores silenciosos**: sale un número, no salta ningún aviso… y el número está mal. Excel avisa de lo que no puede calcular, no de lo que está mal pensado."
         },
         {
           "tipo": "ejercicio",
@@ -366,7 +366,7 @@
           "pregunta": "Javier le pregunta al chat de Copilot cuánto se vendió en noviembre y la respuesta dice: «Las ventas de noviembre suman 48.215 €». Quiere copiar esa cifra tal cual en el informe para Carmen. ¿Qué le dices?",
           "opciones": [
             {
-              "texto": "Que lo calculemos en la hoja con SUMA y comparemos: al informe va la cifra de la fórmula",
+              "texto": "Que lo calcule en la hoja con SUMA: al informe va la cifra de la fórmula",
               "correcta": true,
               "porque": "Así es. La cifra sale de una fórmula que cualquiera puede revisar. Si coincide con la del chat, perfecto; si no, ya sabes cuál vale."
             },
@@ -481,14 +481,14 @@
               "porque": "Es el caso frontera: con `>=` lleva descuento y con `>` no. Es el único que distingue las dos fórmulas."
             },
             {
-              "texto": "Uno de 25.000 €",
+              "texto": "Uno de 1.000,01 €",
               "correcta": false,
-              "porque": "Con las dos fórmulas lleva descuento, así que no ves la diferencia."
+              "porque": "Con las dos fórmulas lleva descuento: pasa del límite por un céntimo, pero no cae justo en él, así que no ves la diferencia."
             },
             {
-              "texto": "Uno de 80 €",
+              "texto": "Uno de 999,99 €",
               "correcta": false,
-              "porque": "Con las dos fórmulas se queda sin descuento: tampoco destapa el error."
+              "porque": "Con las dos fórmulas se queda sin descuento: está cerca del límite, pero no en él, así que tampoco destapa el error."
             }
           ]
         }
@@ -549,9 +549,9 @@
           "pregunta": "Para entender un concepto, alguien de la oficina quiere pegar la nómina de un trabajador en un chat público de internet. ¿Qué le aconsejas?",
           "opciones": [
             {
-              "texto": "Que no lo haga: es un dato personal y confidencial. Que pregunte con una nómina inventada",
+              "texto": "Que no lo haga y que pregunte con una nómina inventada",
               "correcta": true,
-              "porque": "Eso es. La duda se resuelve igual con datos de ejemplo, y la nómina de esa persona no sale de la empresa."
+              "porque": "Eso es: una nómina es un dato personal y confidencial. La duda se resuelve igual con datos de ejemplo, y la nómina de esa persona no sale de la empresa."
             },
             {
               "texto": "Que puede hacerlo si después borra la conversación",
@@ -935,9 +935,9 @@
           "pregunta": "Te das cuenta de que has pegado en un chat de internet un listado con nombres y teléfonos de clientes. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Aviso enseguida a mi responsable o a quien lleve la protección de datos",
+              "texto": "Aviso enseguida a mi responsable o a protección de datos",
               "correcta": true,
-              "porque": "Es lo correcto: puede ser una brecha de seguridad, y si hay que notificarla, la empresa tiene en general como mucho 72 horas."
+              "porque": "Es lo correcto: puede ser una brecha de seguridad, y quien lleve la protección de datos en la empresa tiene que saberlo ya. Si hay que notificarla, la empresa tiene en general como mucho 72 horas."
             },
             {
               "texto": "Borro la conversación y no digo nada para no liarla",
@@ -1204,7 +1204,7 @@
           "pregunta": "¿En cuál de estos casos tiene más sentido dar el salto a **Power BI**?",
           "opciones": [
             {
-              "texto": "Un cuadro de mando que consultarán 40 personas, y cada delegación solo debe ver sus datos",
+              "texto": "Un cuadro de mando para 40 personas; cada delegación ve solo lo suyo",
               "correcta": true,
               "porque": "Muchas personas y cada una con permiso solo para lo suyo: justo para eso está Power BI, con su seguridad de nivel de fila."
             },

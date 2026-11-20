@@ -11,9 +11,9 @@
    "pregunta": "Cargas en Power Query el informe de envíos de un proveedor de Estados Unidos. En la columna de fecha, unas filas salen como **Error** y otras parecen buenas, pero en un informe de julio aparecen envíos «del 7 de diciembre». ¿Qué haces?",
    "opciones": [
     {
-     "texto": "Cambiar el tipo de esa columna con Usar configuración regional: Fecha e Inglés (Estados Unidos), reemplazando el paso de tipo automático",
+     "texto": "Usar configuración regional: Fecha e Inglés (Estados Unidos)",
      "correcta": true,
-     "porque": "Eso es: le dices a Power Query cómo escribe las fechas ese país. Se arreglan a la vez los Error y las fechas cambiadas, y el paso se repite solo cada mes."
+     "porque": "Eso es: en el icono de tipo de la columna, Usar configuración regional, con Fecha e Inglés (Estados Unidos), reemplazando el paso de tipo automático. Le dices a Power Query cómo escribe las fechas ese país: se arreglan a la vez los Error y las fechas cambiadas, y el paso se repite solo cada mes."
     },
     {
      "texto": "Quitar con un filtro las filas que dan Error",
@@ -40,9 +40,9 @@
    "pregunta": "Tu consulta combina todos los archivos de la carpeta `Cobros_ERP`. Andrés guarda ahí también un Excel con sus notas, `notas_andres.xlsx`. ¿Qué pasará la próxima vez que pulses Actualizar todo?",
    "opciones": [
     {
-     "texto": "Power Query intentará leerlo como otra exportación de cobros: dará errores o meterá filas que no son cobros",
+     "texto": "Intentará leerlo como otro archivo de cobros",
      "correcta": true,
-     "porque": "Eso es: la consulta de carpeta se trae todo lo que hay dentro. Esa carpeta es solo para las exportaciones; las notas, en otra."
+     "porque": "Eso es: la consulta de carpeta se trae todo lo que hay dentro y tratará las notas como una exportación más: dará errores o meterá filas que no son cobros. Esa carpeta es solo para las exportaciones; las notas, en otra."
     },
     {
      "texto": "Nada: la consulta solo lee los archivos .csv",
@@ -187,17 +187,17 @@
      "porque": "Es la contraseña de apertura: sin ella, el archivo no se abre. Y la contraseña se manda por otro canal, no en el mismo correo."
     },
     {
-     "texto": "Revisar › Proteger hoja, con contraseña",
+     "texto": "Revisar › Proteger hoja, poniendo una contraseña",
      "correcta": false,
      "porque": "Solo impide cambiar las celdas bloqueadas; cualquiera que abra el archivo puede leer las nóminas."
     },
     {
-     "texto": "Revisar › Proteger libro (la estructura)",
+     "texto": "Revisar › Proteger libro, poniendo una contraseña",
      "correcta": false,
-     "porque": "Impide añadir, mover o eliminar hojas, pero el contenido se sigue leyendo."
+     "porque": "Esa contraseña protege la estructura: impide añadir, mover o eliminar hojas, pero cualquiera que abra el archivo lee las nóminas."
     },
     {
-     "texto": "Ocultar las hojas de las nóminas",
+     "texto": "Ocultar las hojas de nóminas antes de enviarlo",
      "correcta": false,
      "porque": "Una hoja oculta se vuelve a mostrar con dos clics. Ocultar no es proteger."
     }

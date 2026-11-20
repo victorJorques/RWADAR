@@ -108,9 +108,9 @@
       "pregunta": "En un modelo de datos de ventas, ¿cuál es la tabla de **hechos**?",
       "opciones": [
         {
-          "texto": "Ventas: una fila por línea de factura, con fecha, cliente, producto e importe",
+          "texto": "Ventas: una fila por línea de factura, con su fecha e importe",
           "correcta": true,
-          "porque": "Sí: registra lo que pasa, una fila por operación, y es la que más crece."
+          "porque": "Sí: registra lo que pasa, una fila por operación (con su fecha, cliente, producto e importe), y es la que más crece."
         },
         {
           "texto": "Clientes: una fila por cliente, con su provincia y su tipo",
@@ -296,12 +296,12 @@
           "pregunta": "Octubre de **Raúl Aznar**, comercial. Javier dice que vendió **15.133,55 €** y Marta, **18.311,60 €**. Los dos sacan la cifra de la misma exportación. ¿Qué pasa?",
           "opciones": [
             {
-              "texto": "Uno suma la base imponible (sin IVA) y el otro el total de las facturas (con IVA)",
+              "texto": "Uno suma las bases sin IVA y el otro, los totales con IVA",
               "correcta": true,
-              "porque": "Exacto: 15.133,55 × 1,21 = 18.311,60. Las dos sumas están bien hechas; lo que falla es la definición."
+              "porque": "Exacto: 15.133,55 × 1,21 = 18.311,60. Uno suma la base imponible y el otro el total de las facturas. Las dos sumas están bien hechas; lo que falla es la definición."
             },
             {
-              "texto": "Uno de los dos se ha equivocado al sumar",
+              "texto": "Uno de los dos se ha equivocado al sumar las facturas",
               "correcta": false,
               "porque": "Las dos sumas son correctas. Cuando dos cifras no cuadran, mira primero si miden lo mismo."
             },
@@ -882,17 +882,17 @@
           "pregunta": "En un cuadro de mando ves la tarjeta «**Ventas: 48.200 €**» y nada más. ¿Qué le falta?",
           "opciones": [
             {
-              "texto": "Con qué se compara (objetivo o año anterior) y si lleva IVA",
+              "texto": "Con qué se compara y si lleva IVA o no",
               "correcta": true,
-              "porque": "Sin comparación no se sabe si es buena o mala, y sin definición no se sabe qué mide."
+              "porque": "Sin comparación (con el objetivo o con el año anterior) no se sabe si es buena o mala, y sin definición (¿con IVA o sin él?) no se sabe qué mide."
             },
             {
-              "texto": "Los céntimos",
+              "texto": "Los céntimos, para que la cifra sea exacta",
               "correcta": false,
               "porque": "Para dirección se redondea: nadie decide por los céntimos."
             },
             {
-              "texto": "Un color más llamativo",
+              "texto": "Un color más llamativo para que destaque",
               "correcta": false,
               "porque": "El color no dice si 48.200 € es mucho o poco. La comparación, sí."
             }
@@ -1020,7 +1020,7 @@
           "pregunta": "En el cuadro del antecesor de Javier, la tarjeta de ventas muestra **48.200 €**. Haces clic y en la barra de fórmulas pone `48200`. ¿Qué problema hay?",
           "opciones": [
             {
-              "texto": "Es un número tecleado: no cambiará aunque cambien los datos",
+              "texto": "Es un número tecleado: no cambiará con los datos",
               "correcta": true,
               "porque": "Exacto. El mes que viene seguirá diciendo 48.200 € y parecerá una cifra correcta."
             },
@@ -1536,7 +1536,7 @@
           "pregunta": "El cuadro del antecesor marca cada zona con un círculo verde o rojo, sin nada más. ¿Qué cambias?",
           "opciones": [
             {
-              "texto": "Añado junto al círculo un símbolo y una palabra: «▲ Cumple» o «▼ No llega»",
+              "texto": "Añado junto al círculo un símbolo y una palabra («▲ Cumple»)",
               "correcta": true,
               "porque": "Así se entiende aunque no distingas el rojo del verde o lo imprimas en blanco y negro."
             },
@@ -1546,7 +1546,7 @@
               "porque": "Quien no distingue el rojo del verde seguirá sin verlo, y en blanco y negro los dos salen grises."
             },
             {
-              "texto": "Quito el color: con los números basta",
+              "texto": "Quito el color: con los números de cada zona basta",
               "correcta": false,
               "porque": "El color ayuda a ver de un vistazo dónde mirar. Lo malo no es el color, es que sea la única pista."
             }
@@ -1627,12 +1627,12 @@
               "porque": "Excel reduce la escala lo justo para que el ancho quepa en una página. Si queda demasiado pequeño, quita contenido."
             },
             {
-              "texto": "Bajo toda la letra a 7 puntos",
+              "texto": "Bajo toda la letra a 7 puntos para que quepa",
               "correcta": false,
               "porque": "Cabría, pero nadie lo leería: es el error de la letra diminuta. Deja que Excel ajuste la escala y, si aun así no cabe, quita cosas."
             },
             {
-              "texto": "Lo dejo en dos páginas y que Carmen las junte",
+              "texto": "Lo dejo en dos páginas y que Carmen las junte al imprimir",
               "correcta": false,
               "porque": "Un cuadro de mando es una página: lo que no cabe sobra o va a un anexo."
             }
@@ -1786,14 +1786,14 @@
           "pregunta": "Marta prevé que las ventas de 2027 suban un 4 %. ¿Cómo lo metes en el presupuesto?",
           "opciones": [
             {
-              "texto": "En una celda de la hoja Entradas, con su color, y las fórmulas la leen: `=C2*(1+Entradas!B3)`",
+              "texto": "En una celda de Entradas que leen las fórmulas: `=C2*(1+Entradas!B3)`",
               "correcta": true,
-              "porque": "Así el supuesto se ve, se explica y se cambia en un solo sitio."
+              "porque": "Así el supuesto se ve (con su color de entrada), se explica y se cambia en un solo sitio."
             },
             {
-              "texto": "Dentro de cada fórmula: `=C2*1,04`",
+              "texto": "Dentro de cada fórmula, para que no se toque: `=C2*1,04`",
               "correcta": false,
-              "porque": "Es un supuesto escondido: si Marta lo cambia al 3 %, tendrás que buscarlo fórmula a fórmula, y siempre se escapa alguna."
+              "porque": "Es un supuesto escondido: si Marta lo cambia al 3 %, tendrás que buscarlo fórmula a fórmula, y siempre se escapa alguna. Para que nadie lo toque sin querer está la protección de hojas."
             },
             {
               "texto": "Escribo las cifras ya subidas, calculadas aparte con la calculadora",
@@ -1912,12 +1912,12 @@
               "porque": "Eso es: en los gastos, positivo significa gastar más."
             },
             {
-              "texto": "Favorable: la desviación es positiva",
+              "texto": "Favorable: la desviación es positiva, y positivo es bueno",
               "correcta": false,
               "porque": "El signo solo no basta: mira si la fila es un ingreso o un gasto."
             },
             {
-              "texto": "No se puede saber sin el porcentaje",
+              "texto": "No se puede saber sin calcular antes el porcentaje",
               "correcta": false,
               "porque": "El porcentaje dice cuánto pesa; si es bueno o malo lo dicen el signo y el tipo de fila."
             }
@@ -2301,17 +2301,17 @@
           "pregunta": "Para que no salga ningún `#¡DIV/0!`, alguien propone envolver todas las fórmulas del presupuesto en `SI.ERROR(…;0)`. ¿Qué riesgo tiene?",
           "opciones": [
             {
-              "texto": "Tapa cualquier error y lo convierte en 0: un fallo de verdad pasaría por una cifra correcta",
+              "texto": "Esconde cualquier error: un fallo de verdad parecería un 0 correcto",
               "correcta": true,
               "porque": "Eso es: un error te está avisando de algo. Mejor preguntar por el caso concreto (presupuesto = 0) y dejar que los demás errores se vean."
             },
             {
-              "texto": "Ninguno: un 0 queda más limpio que un error",
+              "texto": "Ninguno: un 0 queda más limpio que un error en el informe",
               "correcta": false,
               "porque": "Más limpio, pero engañoso: un 0 parece un dato y suma como un dato."
             },
             {
-              "texto": "Que la hoja calcula más despacio",
+              "texto": "Que la hoja calcula más despacio con tantas fórmulas",
               "correcta": false,
               "porque": "Eso no es lo grave: el problema es que esconde errores."
             }

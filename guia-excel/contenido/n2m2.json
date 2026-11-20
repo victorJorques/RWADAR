@@ -2015,17 +2015,17 @@
           "pregunta": "Marta mira las devoluciones. **Pamplona**: 2 devoluciones de 100 pedidos (2 %). **Lleida**: 1 devolución de 2 pedidos (50 %). ¿Cuál es el porcentaje de devoluciones de las dos juntas?",
           "opciones": [
             {
-              "texto": "Unos 2,9 % (3 devoluciones de 102 pedidos)",
+              "texto": "Unos 2,9 % (3 de 102 pedidos)",
               "correcta": true,
-              "porque": "Correcto: para un porcentaje global se divide el total entre el total: 3 / 102."
+              "porque": "Correcto: 3 devoluciones de 102 pedidos. Para un porcentaje global se divide el total entre el total: 3 / 102."
             },
             {
-              "texto": "26 %, la media de 2 % y 50 %",
+              "texto": "26 % (la media de 2 % y 50 %)",
               "correcta": false,
               "porque": "Promediar porcentajes da el mismo peso a 2 pedidos que a 100. Por eso sale un 26 % que no se parece a la realidad."
             },
             {
-              "texto": "52 %, la suma de los dos",
+              "texto": "52 % (la suma de 2 % y 50 %)",
               "correcta": false,
               "porque": "Los porcentajes de grupos distintos no se suman: cada uno está calculado sobre una base diferente."
             }
@@ -2159,12 +2159,12 @@
           "pregunta": "Has hecho un resumen de ventas por delegación con SUMAR.SI. Antes de enviarlo, ¿cuál es la mejor comprobación?",
           "opciones": [
             {
-              "texto": "Que la suma del resumen coincida con el total de la columna de importes",
+              "texto": "Que el resumen sume igual que la columna de importes",
               "correcta": true,
-              "porque": "Eso es un total de control: si no cuadra, falta o sobra alguna fila (un nombre mal escrito, un rango que no llega al final)."
+              "porque": "Eso es un total de control: la suma del resumen tiene que coincidir con el total de la columna. Si no cuadra, falta o sobra alguna fila (un nombre mal escrito, un rango que no llega al final)."
             },
             {
-              "texto": "Que ninguna celda muestre un error",
+              "texto": "Que ninguna celda del resumen muestre un error",
               "correcta": false,
               "porque": "No basta: un rango desalineado o mal fijado da cifras sin error y equivocadas."
             },

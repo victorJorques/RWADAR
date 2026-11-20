@@ -1,1654 +1,1654 @@
 {
- "id": "n6m2",
- "nivel": "n6",
- "titulo": "Construir bien y comprobar",
- "intro": "La mayoría de las hojas de empresa tienen errores, y uno solo puede costar mucho dinero o tu credibilidad. En este módulo aprendes las reglas que evitan los errores caros, las celdas que comprueban solas si todo cuadra y la documentación que permite que otra persona continúe tu trabajo.",
- "repaso_inicial": [
-  {
-   "id": "n6m2-r1",
-   "modo": "formula",
-   "enunciado": "Antes de montar el informe, revisas la exportación. En **E2** calcula **cuántas facturas no tienen cliente** (la celda de la columna B está vacía).",
-   "hoja": {
-    "celdas": {
-     "A1": "Factura",
-     "B1": "Cliente",
-     "C1": "Importe",
-     "E1": "Sin cliente",
-     "A2": "F-2026-0412",
-     "B2": "Instalaciones Ebro, S.L.",
-     "C2": 1250.4,
-     "A3": "F-2026-0413",
-     "B3": "Electricidad Moncayo",
-     "C3": 380,
-     "A4": "F-2026-0414",
-     "C4": 96.8,
-     "A5": "F-2026-0415",
-     "B5": "Montajes Jalón, S.L.",
-     "C5": 2140,
-     "A6": "F-2026-0416",
-     "B6": "Reformas Delicias",
-     "C6": 455.25,
-     "A7": "F-2026-0417",
-     "C7": 1023.1,
-     "A8": "F-2026-0418",
-     "B8": "Instalaciones Ebro, S.L.",
-     "C8": 312.6,
-     "A9": "F-2026-0419",
-     "B9": "Climatización Arga",
-     "C9": 789
-    },
-    "formatos": {
-     "C2:C9": "eur"
-    },
-    "anchos": {
-     "A": 13,
-     "B": 26,
-     "C": 12,
-     "D": 3,
-     "E": 12
-    },
-    "columnas": 5,
-    "filas": 9
-   },
-   "objetivo": "E2",
-   "solucion": "=CONTAR.BLANCO(B2:B9)",
-   "errores_tipicos": [
-    "=CONTARA(B2:B9)",
-    "=CONTAR(B2:B9)",
-    "=CONTAR.BLANCO(C2:C9)"
-   ],
-   "variantes": [
+  "id": "n6m2",
+  "nivel": "n6",
+  "titulo": "Construir bien y comprobar",
+  "intro": "La mayoría de las hojas de empresa tienen errores, y uno solo puede costar mucho dinero o tu credibilidad. En este módulo aprendes las reglas que evitan los errores caros, las celdas que comprueban solas si todo cuadra y la documentación que permite que otra persona continúe tu trabajo.",
+  "repaso_inicial": [
     {
-     "B4": "Electricidad Moncayo"
-    }
-   ],
-   "pistas": [
-    "Buscas las celdas vacías de B2:B9.",
-    "Hay una función que cuenta justo las celdas en blanco de un rango.",
-    "Escribe `=CONTAR.BLANCO(B2:B9)`."
-   ],
-   "explicacion": "Dos facturas sin cliente: eso se aclara con quien exportó los datos **antes** de construir nada. Contar huecos es el primer vistazo a cualquier exportación."
-  },
-  {
-   "id": "n6m2-r2",
-   "modo": "test",
-   "pregunta": "Vas a montar el libro de comisiones con sus hojas Parámetros, Datos, Cálculos e Informe. ¿Dónde pones el tipo de comisión del 3 %?",
-   "opciones": [
-    {
-     "texto": "En una celda de la hoja Parámetros, y las fórmulas la usan",
-     "correcta": true,
-     "porque": "Eso es: un dato que puede cambiar va en un solo sitio, a la vista. Cuando suba al 3,5 %, cambias una celda."
-    },
-    {
-     "texto": "Dentro de cada fórmula: =C2*0,03",
-     "correcta": false,
-     "porque": "Cuando cambie el tipo habrá que tocar fórmula por fórmula, y alguna se quedará sin cambiar."
-    },
-    {
-     "texto": "En la hoja Datos, en una columna junto a las ventas",
-     "correcta": false,
-     "porque": "Datos guarda lo que llega del programa de gestión, sin tocar. Si mezclas ahí tus parámetros, se pierden o se pisan al cargar el mes siguiente."
-    },
-    {
-     "texto": "En la hoja Informe, al lado del total",
-     "correcta": false,
-     "porque": "El Informe es lo que lee la dirección: solo resultados. Los parámetros van en Parámetros, donde se ven y se cambian sin riesgo."
-    }
-   ],
-   "explicacion": "Parámetros (las entradas) → Datos (tal como llegan) → Cálculos → Informe. Cada cosa en su sitio y cada dato en un solo lugar."
-  },
-  {
-   "id": "n6m2-r3",
-   "modo": "formula",
-   "enunciado": "Lucía te pide un plazo para cuadrar las vacaciones de 2027. Para la fase «Recoger las peticiones» calculas 2 horas si todo va bien (**B2**), 3 lo más probable (**C2**) y 10 si las peticiones llegan tarde (**D2**). En **E2** calcula la estimación de tres puntos de esa fase.",
-   "hoja": {
-    "celdas": {
-     "A1": "Fase",
-     "B1": "Optimista (h)",
-     "C1": "Probable (h)",
-     "D1": "Pesimista (h)",
-     "E1": "Estimación (h)",
-     "A2": "Recoger las peticiones",
-     "B2": 2,
-     "C2": 3,
-     "D2": 10
-    },
-    "formatos": {
-     "B2:E2": "num2"
-    },
-    "anchos": {
-     "A": 24
-    }
-   },
-   "objetivo": "E2",
-   "solucion": "=(B2+4*C2+D2)/6",
-   "alternativas": [
-    "=(B2+C2*4+D2)/6",
-    "=(4*C2+B2+D2)/6"
-   ],
-   "errores_tipicos": [
-    "=B2+4*C2+D2/6",
-    "=(B2+C2+D2)/3",
-    "=PROMEDIO(B2:D2)",
-    "=(B2+4*C2+D2)/3"
-   ],
-   "variantes": [
-    {
-     "D2": 16
-    },
-    {
-     "C2": 4
-    }
-   ],
-   "formato_resultado": "num2",
-   "pistas": [
-    "El caso probable cuenta cuatro veces; el optimista y el pesimista, una vez cada uno.",
-    "Suma optimista + 4 × probable + pesimista y divide entre 6. Ojo con los paréntesis.",
-    "=(B2+4*C2+D2)/6"
-   ],
-   "explicacion": "4 horas: (2 + 12 + 10) ÷ 6. El caso malo pesa, pero el probable cuenta cuatro veces. Con esa cifra le das a Lucía un plazo con fundamento, no a ojo."
-  }
- ],
- "practica_excel": null,
- "lecciones": [
-  {
-   "id": "n6m2l1",
-   "titulo": "Errores caros de hojas de cálculo y cómo no repetirlos",
-   "minutos": 15,
-   "objetivo": "Reconocer los errores de hoja de cálculo que más han costado en empresas reales y aplicar las reglas que los evitan: rangos que crecen, cada dato una sola vez, ningún número a mano en las fórmulas, una fórmula por columna y los códigos como texto.",
-   "mision": {
-    "de": "Javier Ortega",
-    "puesto": "Director comercial",
-    "texto": "Carmen va a pagar las comisiones de noviembre con mi hoja y no me fío: la montó un becario con prisa. Revísala y déjala bien antes del viernes. Y en enero la comisión sube del 3 % al 3,5 %: que no haya que tocar fórmula por fórmula.",
-    "logro": "Ya sabes encontrar y corregir los errores que más dinero cuestan en una hoja: rangos que se quedan cortos, totales contados dos veces y porcentajes escritos dentro de las fórmulas."
-   },
-   "funciones": [],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "Empecemos por una verdad incómoda. Raymond Panko, profesor de la Universidad de Hawái, reunió los estudios que revisaron **a fondo** hojas de cálculo reales de empresas: de 85 hojas, **el 94 % tenía errores**. No eran ejercicios de clase: eran hojas de trabajo de verdad.\n\nPor eso, en un trabajo profesional, **lo normal es comprobar**. Pensar «a mí no me va a pasar» es, precisamente, el primer error."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e1",
-     "modo": "test",
-     "pregunta": "Terminas la hoja de comisiones y no aparece ningún error del tipo `#¡VALOR!` o `#N/D`. ¿Qué puedes concluir?",
-     "opciones": [
-      {
-       "texto": "Que no hay errores de escritura, pero los resultados aún pueden estar mal.",
-       "correcta": true,
-       "porque": "Exacto. Excel solo avisa cuando no puede calcular. Si una fórmula apunta a la celda equivocada o deja filas fuera, calcula tan tranquila y da un número falso."
+      "id": "n6m2-r1",
+      "modo": "formula",
+      "enunciado": "Antes de montar el informe, revisas la exportación. En **E2** calcula **cuántas facturas no tienen cliente** (la celda de la columna B está vacía).",
+      "hoja": {
+        "celdas": {
+          "A1": "Factura",
+          "B1": "Cliente",
+          "C1": "Importe",
+          "E1": "Sin cliente",
+          "A2": "F-2026-0412",
+          "B2": "Instalaciones Ebro, S.L.",
+          "C2": 1250.4,
+          "A3": "F-2026-0413",
+          "B3": "Electricidad Moncayo",
+          "C3": 380,
+          "A4": "F-2026-0414",
+          "C4": 96.8,
+          "A5": "F-2026-0415",
+          "B5": "Montajes Jalón, S.L.",
+          "C5": 2140,
+          "A6": "F-2026-0416",
+          "B6": "Reformas Delicias",
+          "C6": 455.25,
+          "A7": "F-2026-0417",
+          "C7": 1023.1,
+          "A8": "F-2026-0418",
+          "B8": "Instalaciones Ebro, S.L.",
+          "C8": 312.6,
+          "A9": "F-2026-0419",
+          "B9": "Climatización Arga",
+          "C9": 789
+        },
+        "formatos": {
+          "C2:C9": "eur"
+        },
+        "anchos": {
+          "A": 13,
+          "B": 26,
+          "C": 12,
+          "D": 3,
+          "E": 12
+        },
+        "columnas": 5,
+        "filas": 9
       },
-      {
-       "texto": "Que la hoja está bien: si hubiera un fallo, Excel avisaría.",
-       "correcta": false,
-       "porque": "Es la confusión más común. Excel no sabe qué querías calcular: si sumas el rango equivocado, te da la suma de ese rango sin quejarse."
-      },
-      {
-       "texto": "Que ya solo falta darle formato y enviarla.",
-       "correcta": false,
-       "porque": "Antes de enviar falta lo más importante: comprobar que las cifras cuadran con la fuente. El formato va al final."
-      }
-     ],
-     "explicacion": "«No sale error» no significa «está bien». Vamos a ver cuatro casos reales y la regla que habría evitado cada uno."
-    },
-    {
-     "tipo": "texto",
-     "md": "**Caso 1: las filas que se quedaron fuera.** En 2013, tres investigadores (Herndon, Ash y Pollin) pidieron la hoja de cálculo de un estudio de economía muy conocido, el de Reinhart y Rogoff. Encontraron que una media cubría las filas 30 a 44 en lugar de la 30 a la 49: **cinco países** (Australia, Austria, Bélgica, Canadá y Dinamarca) se habían quedado fuera del cálculo.\n\nLo encontraron porque pidieron **la hoja**: mirando solo el resultado, era imposible verlo."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e2",
-     "modo": "predice",
-     "enunciado": "Esta es la hoja de ventas de Javier. Antes de que Excel lo calcule: ¿qué total da la fórmula de **C9**? (Escribe solo el número.)",
-     "hoja": {
-      "celdas": {
-       "A1": "Comercial",
-       "B1": "Delegación",
-       "C1": "Ventas nov.",
-       "A2": "Sergio Lahoz",
-       "B2": "Zaragoza",
-       "C2": 18500,
-       "A3": "Pilar Gimeno",
-       "B3": "Zaragoza",
-       "C3": 21000,
-       "A4": "Iñaki Etxeberria",
-       "B4": "Pamplona",
-       "C4": 16000,
-       "A5": "Ainhoa Goñi",
-       "B5": "Pamplona",
-       "C5": 12500,
-       "A6": "Jordi Serra",
-       "B6": "Lleida",
-       "C6": 14000,
-       "A7": "Montse Farré",
-       "B7": "Lleida",
-       "C7": 10000,
-       "A8": "Arnau Vidal",
-       "B8": "Lleida",
-       "C8": 9500,
-       "A9": "Total"
-      },
-      "formatos": {
-       "C2:C8": "#.##0 €"
-      },
-      "anchos": {
-       "A": 18,
-       "B": 12,
-       "C": 13
-      }
-     },
-     "celda": "C9",
-     "formula": "=SUMA(C2:C6)",
-     "explicacion": "Da 82.000: la suma va de C2 a C6 y deja fuera a los dos últimos comerciales de Lleida (19.500 €). El total real es 101.500 €. Excel no avisa de nada: suma exactamente lo que le pides.",
-     "respuesta": "82000"
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e3",
-     "modo": "formula",
-     "enunciado": "La fórmula de **C9** deja fuera las filas 7 y 8. Corrígela para que sume las ventas de **todos** los comerciales, de C2 a C8. Debe salir 101.500 €.",
-     "hoja": {
-      "celdas": {
-       "A1": "Comercial",
-       "B1": "Delegación",
-       "C1": "Ventas nov.",
-       "A2": "Sergio Lahoz",
-       "B2": "Zaragoza",
-       "C2": 18500,
-       "A3": "Pilar Gimeno",
-       "B3": "Zaragoza",
-       "C3": 21000,
-       "A4": "Iñaki Etxeberria",
-       "B4": "Pamplona",
-       "C4": 16000,
-       "A5": "Ainhoa Goñi",
-       "B5": "Pamplona",
-       "C5": 12500,
-       "A6": "Jordi Serra",
-       "B6": "Lleida",
-       "C6": 14000,
-       "A7": "Montse Farré",
-       "B7": "Lleida",
-       "C7": 10000,
-       "A8": "Arnau Vidal",
-       "B8": "Lleida",
-       "C8": 9500,
-       "A9": "Total"
-      },
-      "formatos": {
-       "C2:C9": "#.##0 €"
-      },
-      "anchos": {
-       "A": 18,
-       "B": 12,
-       "C": 13
-      }
-     },
-     "objetivo": "C9",
-     "inicial": "=SUMA(C2:C6)",
-     "solucion": "=SUMA(C2:C8)",
-     "alternativas": [
-      "=C2+C3+C4+C5+C6+C7+C8"
-     ],
-     "errores_tipicos": [
-      "=SUMA(C2:C6)",
-      "=SUMA(C2:C7)",
-      "=101500"
-     ],
-     "variantes": [
-      {
-       "C8": 11000
-      },
-      {
-       "C2": 20000
-      }
-     ],
-     "formato_resultado": "#.##0 €",
-     "pistas": [
-      "Mira los números de fila: ¿en qué fila acaba la lista y en qué fila acaba el rango de la fórmula?",
-      "La lista termina en la fila 8, pero el rango se para en C6.",
-      "Cambia el final del rango: =SUMA(C2:C8)"
-     ],
-     "explicacion": "Ahora el total recoge a los siete comerciales: 101.500 €. Es el caso de Reinhart y Rogoff en pequeño. Cada vez que revises una hoja ajena, mira dónde **empieza y acaba** cada rango."
-    },
-    {
-     "tipo": "texto",
-     "md": "**Regla 1: rangos que crecen solos.** Si el mes que viene Javier añade un comercial en la fila 9, `=SUMA(C2:C8)` no lo sumará: el rango es fijo y no se entera.\n\nLa solución es la que viste en el nivel 2: convertir la lista en **Tabla**. Las fórmulas que usan una columna de la Tabla incluyen las filas nuevas que escribes justo debajo, sin que tengas que tocar nada."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "atajo",
-     "titulo": "Convertir una lista en Tabla",
-     "md": "Haz clic dentro de la lista y pulsa [[Ctrl]]+[[T]]. También está en **Insertar › Tablas › Tabla**."
-    },
-    {
-     "tipo": "texto",
-     "md": "**Caso 2: el signo menos.** En 1994, en Fidelity Magellan, un fondo de inversión de Estados Unidos, un contable pasó a una hoja aparte una pérdida de 1.300 millones de dólares **sin el signo menos**. Lo que tenía que restar, sumó, y la estimación se desvió 2.600 millones: **el doble** de la cifra. El reparto de dividendo que se había anunciado se canceló.\n\nRegla: las cifras **se enlazan con una fórmula** (`=B7`), no se copian a mano, y cada columna deja claro su signo."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e4",
-     "modo": "predice",
-     "enunciado": "Lo de Fidelity, en pequeño: la pérdida de Lleida (6.000 €) se copió a mano **sin el signo menos**. ¿Qué resultado da **B5**? (Escribe solo el número.)",
-     "hoja": {
-      "celdas": {
-       "A1": "Delegación",
-       "B1": "Resultado oct.",
-       "A2": "Zaragoza",
-       "B2": 25000,
-       "A3": "Pamplona",
-       "B3": 8000,
-       "A4": "Lleida (pérdida)",
-       "B4": 6000,
-       "A5": "Total"
-      },
-      "anchos": {
-       "A": 18,
-       "B": 15
-      }
-     },
-     "celda": "B5",
-     "formula": "=SUMA(B2:B4)",
-     "explicacion": "Da 39.000. Con el signo bien puesto (−6.000) daría 27.000. La diferencia, 12.000, es **el doble** de la pérdida: olvidar un signo no desvía el total una vez, sino dos. Por eso en Fidelity 1.300 millones se convirtieron en un error de 2.600.",
-     "respuesta": "39000"
-    },
-    {
-     "tipo": "texto",
-     "md": "**Caso 3: contar dos veces.** En 2016, cuando Tesla compró SolarCity, el banco Lazard valoró SolarCity con unas hojas de previsiones en las que **se contaron dos veces** 400 millones de dólares de deuda prevista. Lo recoge el documento que Tesla presentó ante la SEC, el supervisor de la bolsa de Estados Unidos.\n\nEn una oficina pasa a menudo con los **subtotales**: si están dentro del rango que sumas, los cuentas dos veces. Regla: cada dato se calcula **una sola vez** y, si lo necesitas en otro sitio, lo enlazas."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e5",
-     "modo": "formula",
-     "enunciado": "Esta versión de la hoja de Javier tiene un subtotal por delegación en las filas 4, 7 y 11. En **B12** escribe el **total general** de ventas sin contar nada dos veces. Debe salir 101.500 €, igual que antes.",
-     "hoja": {
-      "celdas": {
-       "A1": "Concepto",
-       "B1": "Ventas nov.",
-       "A2": "Zaragoza · Sergio Lahoz",
-       "B2": 18500,
-       "A3": "Zaragoza · Pilar Gimeno",
-       "B3": 21000,
-       "A4": "Subtotal Zaragoza",
-       "B4": "=SUMA(B2:B3)",
-       "A5": "Pamplona · Iñaki Etxeberria",
-       "B5": 16000,
-       "A6": "Pamplona · Ainhoa Goñi",
-       "B6": 12500,
-       "A7": "Subtotal Pamplona",
-       "B7": "=SUMA(B5:B6)",
-       "A8": "Lleida · Jordi Serra",
-       "B8": 14000,
-       "A9": "Lleida · Montse Farré",
-       "B9": 10000,
-       "A10": "Lleida · Arnau Vidal",
-       "B10": 9500,
-       "A11": "Subtotal Lleida",
-       "B11": "=SUMA(B8:B10)",
-       "A12": "Total general"
-      },
-      "formatos": {
-       "B2:B12": "#.##0 €"
-      },
-      "anchos": {
-       "A": 28,
-       "B": 13
-      }
-     },
-     "objetivo": "B12",
-     "solucion": "=B4+B7+B11",
-     "alternativas": [
-      "=SUMA(B4;B7;B11)",
-      "=SUMA(B2:B3;B5:B6;B8:B10)"
-     ],
-     "errores_tipicos": [
-      "=SUMA(B2:B11)",
-      "=B4+B7",
-      "=101500"
-     ],
-     "variantes": [
-      {
-       "B2": 20000
-      },
-      {
-       "B10": 12000
-      }
-     ],
-     "formato_resultado": "#.##0 €",
-     "pistas": [
-      "Si sumas de B2 a B11, cada venta entra dos veces: una por sí misma y otra dentro de su subtotal.",
-      "Los tres subtotales ya contienen todas las ventas. Basta con sumar B4, B7 y B11.",
-      "=B4+B7+B11"
-     ],
-     "explicacion": "101.500 €, el mismo total que en el ejercicio anterior: cuadra. Sumar todo el rango habría dado 203.000 €, justo el doble. Cuando un total te salga «sospechosamente el doble», busca subtotales dentro del rango."
-    },
-    {
-     "tipo": "comparar",
-     "izq": "Así no",
-     "der": "Así sí",
-     "filas": [
-      [
-       "`=C2*0,03`: el 3 % escrito dentro de cada fórmula",
-       "`=C2*$G$2`: el 3 % en una celda, a la vista, y la fórmula apunta a ella"
+      "objetivo": "E2",
+      "solucion": "=CONTAR.BLANCO(B2:B9)",
+      "errores_tipicos": [
+        "=CONTARA(B2:B9)",
+        "=CONTAR(B2:B9)",
+        "=CONTAR.BLANCO(C2:C9)"
       ],
-      [
-       "Una fila «arreglada» a mano con una fórmula distinta",
-       "La misma fórmula en toda la columna, copiada hacia abajo"
+      "variantes": [
+        {
+          "B4": "Electricidad Moncayo"
+        }
       ],
-      [
-       "`=SUMA(C2:C8)` sobre una lista que crece cada mes",
-       "La lista convertida en Tabla ([[Ctrl]]+[[T]])"
+      "pistas": [
+        "Buscas las celdas vacías de B2:B9.",
+        "Hay una función que cuenta justo las celdas en blanco de un rango.",
+        "Escribe `=CONTAR.BLANCO(B2:B9)`."
       ],
-      [
-       "Una cifra copiada a mano de otra hoja",
-       "La cifra enlazada con una fórmula, calculada una sola vez"
+      "explicacion": "Dos facturas sin cliente: eso se aclara con quien exportó los datos **antes** de construir nada. Contar huecos es el primer vistazo a cualquier exportación."
+    },
+    {
+      "id": "n6m2-r2",
+      "modo": "test",
+      "pregunta": "Vas a montar el libro de comisiones con sus hojas Parámetros, Datos, Cálculos e Informe. ¿Dónde pones el tipo de comisión del 3 %?",
+      "opciones": [
+        {
+          "texto": "En una celda de la hoja Parámetros, y las fórmulas la usan",
+          "correcta": true,
+          "porque": "Eso es: un dato que puede cambiar va en un solo sitio, a la vista. Cuando suba al 3,5 %, cambias una celda."
+        },
+        {
+          "texto": "Dentro de cada fórmula: =C2*0,03",
+          "correcta": false,
+          "porque": "Cuando cambie el tipo habrá que tocar fórmula por fórmula, y alguna se quedará sin cambiar."
+        },
+        {
+          "texto": "En la hoja Datos, en una columna junto a las ventas",
+          "correcta": false,
+          "porque": "Datos guarda lo que llega del programa de gestión, sin tocar. Si mezclas ahí tus parámetros, se pierden o se pisan al cargar el mes siguiente."
+        },
+        {
+          "texto": "En la hoja Informe, al lado del total",
+          "correcta": false,
+          "porque": "El Informe es lo que lee la dirección: solo resultados. Los parámetros van en Parámetros, donde se ven y se cambian sin riesgo."
+        }
+      ],
+      "explicacion": "Parámetros (las entradas) → Datos (tal como llegan) → Cálculos → Informe. Cada cosa en su sitio y cada dato en un solo lugar."
+    },
+    {
+      "id": "n6m2-r3",
+      "modo": "formula",
+      "enunciado": "Lucía te pide un plazo para cuadrar las vacaciones de 2027. Para la fase «Recoger las peticiones» calculas 2 horas si todo va bien (**B2**), 3 lo más probable (**C2**) y 10 si las peticiones llegan tarde (**D2**). En **E2** calcula la estimación de tres puntos de esa fase.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fase",
+          "B1": "Optimista (h)",
+          "C1": "Probable (h)",
+          "D1": "Pesimista (h)",
+          "E1": "Estimación (h)",
+          "A2": "Recoger las peticiones",
+          "B2": 2,
+          "C2": 3,
+          "D2": 10
+        },
+        "formatos": {
+          "B2:E2": "num2"
+        },
+        "anchos": {
+          "A": 24
+        }
+      },
+      "objetivo": "E2",
+      "solucion": "=(B2+4*C2+D2)/6",
+      "alternativas": [
+        "=(B2+C2*4+D2)/6",
+        "=(4*C2+B2+D2)/6"
+      ],
+      "errores_tipicos": [
+        "=B2+4*C2+D2/6",
+        "=(B2+C2+D2)/3",
+        "=PROMEDIO(B2:D2)",
+        "=(B2+4*C2+D2)/3"
+      ],
+      "variantes": [
+        {
+          "D2": 16
+        },
+        {
+          "C2": 4
+        }
+      ],
+      "formato_resultado": "num2",
+      "pistas": [
+        "El caso probable cuenta cuatro veces; el optimista y el pesimista, una vez cada uno.",
+        "Suma optimista + 4 × probable + pesimista y divide entre 6. Ojo con los paréntesis.",
+        "=(B2+4*C2+D2)/6"
+      ],
+      "explicacion": "4 horas: (2 + 12 + 10) ÷ 6. El caso malo pesa, pero el probable cuenta cuatro veces. Con esa cifra le das a Lucía un plazo con fundamento, no a ojo."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n6m2l1",
+      "titulo": "Errores caros de hojas de cálculo y cómo no repetirlos",
+      "minutos": 15,
+      "objetivo": "Reconocer los errores de hoja de cálculo que más han costado en empresas reales y aplicar las reglas que los evitan: rangos que crecen, cada dato una sola vez, ningún número a mano en las fórmulas, una fórmula por columna y los códigos como texto.",
+      "mision": {
+        "de": "Javier Ortega",
+        "puesto": "Director comercial",
+        "texto": "Carmen va a pagar las comisiones de noviembre con mi hoja y no me fío: la montó un becario con prisa. Revísala y déjala bien antes del viernes. Y en enero la comisión sube del 3 % al 3,5 %: que no haya que tocar fórmula por fórmula.",
+        "logro": "Ya sabes encontrar y corregir los errores que más dinero cuestan en una hoja: rangos que se quedan cortos, totales contados dos veces y porcentajes escritos dentro de las fórmulas."
+      },
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Empecemos por una verdad incómoda. Raymond Panko, profesor de la Universidad de Hawái, reunió los estudios que revisaron **a fondo** hojas de cálculo reales de empresas: de 85 hojas, **el 94 % tenía errores**. No eran ejercicios de clase: eran hojas de trabajo de verdad.\n\nPor eso, en un trabajo profesional, **lo normal es comprobar**. Pensar «a mí no me va a pasar» es, precisamente, el primer error."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e1",
+          "modo": "test",
+          "pregunta": "Terminas la hoja de comisiones y no aparece ningún error del tipo `#¡VALOR!` o `#N/D`. ¿Qué puedes concluir?",
+          "opciones": [
+            {
+              "texto": "Que no hay errores de escritura, pero los resultados aún pueden estar mal.",
+              "correcta": true,
+              "porque": "Exacto. Excel solo avisa cuando no puede calcular. Si una fórmula apunta a la celda equivocada o deja filas fuera, calcula tan tranquila y da un número falso."
+            },
+            {
+              "texto": "Que la hoja está bien: si hubiera un fallo, Excel avisaría.",
+              "correcta": false,
+              "porque": "Es la confusión más común. Excel no sabe qué querías calcular: si sumas el rango equivocado, te da la suma de ese rango sin quejarse."
+            },
+            {
+              "texto": "Que ya solo falta darle formato y enviarla.",
+              "correcta": false,
+              "porque": "Antes de enviar falta lo más importante: comprobar que las cifras cuadran con la fuente. El formato va al final."
+            }
+          ],
+          "explicacion": "«No sale error» no significa «está bien». Vamos a ver cuatro casos reales y la regla que habría evitado cada uno."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Caso 1: las filas que se quedaron fuera.** En 2013, tres investigadores (Herndon, Ash y Pollin) pidieron la hoja de cálculo de un estudio de economía muy conocido, el de Reinhart y Rogoff. Encontraron que una media cubría las filas 30 a 44 en lugar de la 30 a la 49: **cinco países** (Australia, Austria, Bélgica, Canadá y Dinamarca) se habían quedado fuera del cálculo.\n\nLo encontraron porque pidieron **la hoja**: mirando solo el resultado, era imposible verlo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e2",
+          "modo": "predice",
+          "enunciado": "Esta es la hoja de ventas de Javier. Antes de que Excel lo calcule: ¿qué total da la fórmula de **C9**? (Escribe solo el número.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Delegación",
+              "C1": "Ventas nov.",
+              "A2": "Sergio Lahoz",
+              "B2": "Zaragoza",
+              "C2": 18500,
+              "A3": "Pilar Gimeno",
+              "B3": "Zaragoza",
+              "C3": 21000,
+              "A4": "Iñaki Etxeberria",
+              "B4": "Pamplona",
+              "C4": 16000,
+              "A5": "Ainhoa Goñi",
+              "B5": "Pamplona",
+              "C5": 12500,
+              "A6": "Jordi Serra",
+              "B6": "Lleida",
+              "C6": 14000,
+              "A7": "Montse Farré",
+              "B7": "Lleida",
+              "C7": 10000,
+              "A8": "Arnau Vidal",
+              "B8": "Lleida",
+              "C8": 9500,
+              "A9": "Total"
+            },
+            "formatos": {
+              "C2:C8": "#.##0 €"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 12,
+              "C": 13
+            }
+          },
+          "celda": "C9",
+          "formula": "=SUMA(C2:C6)",
+          "explicacion": "Da 82.000: la suma va de C2 a C6 y deja fuera a los dos últimos comerciales de Lleida (19.500 €). El total real es 101.500 €. Excel no avisa de nada: suma exactamente lo que le pides.",
+          "respuesta": "82000"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e3",
+          "modo": "formula",
+          "enunciado": "La fórmula de **C9** deja fuera las filas 7 y 8. Corrígela para que sume las ventas de **todos** los comerciales, de C2 a C8. Debe salir 101.500 €.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Delegación",
+              "C1": "Ventas nov.",
+              "A2": "Sergio Lahoz",
+              "B2": "Zaragoza",
+              "C2": 18500,
+              "A3": "Pilar Gimeno",
+              "B3": "Zaragoza",
+              "C3": 21000,
+              "A4": "Iñaki Etxeberria",
+              "B4": "Pamplona",
+              "C4": 16000,
+              "A5": "Ainhoa Goñi",
+              "B5": "Pamplona",
+              "C5": 12500,
+              "A6": "Jordi Serra",
+              "B6": "Lleida",
+              "C6": 14000,
+              "A7": "Montse Farré",
+              "B7": "Lleida",
+              "C7": 10000,
+              "A8": "Arnau Vidal",
+              "B8": "Lleida",
+              "C8": 9500,
+              "A9": "Total"
+            },
+            "formatos": {
+              "C2:C9": "#.##0 €"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 12,
+              "C": 13
+            }
+          },
+          "objetivo": "C9",
+          "inicial": "=SUMA(C2:C6)",
+          "solucion": "=SUMA(C2:C8)",
+          "alternativas": [
+            "=C2+C3+C4+C5+C6+C7+C8"
+          ],
+          "errores_tipicos": [
+            "=SUMA(C2:C6)",
+            "=SUMA(C2:C7)",
+            "=101500"
+          ],
+          "variantes": [
+            {
+              "C8": 11000
+            },
+            {
+              "C2": 20000
+            }
+          ],
+          "formato_resultado": "#.##0 €",
+          "pistas": [
+            "Mira los números de fila: ¿en qué fila acaba la lista y en qué fila acaba el rango de la fórmula?",
+            "La lista termina en la fila 8, pero el rango se para en C6.",
+            "Cambia el final del rango: =SUMA(C2:C8)"
+          ],
+          "explicacion": "Ahora el total recoge a los siete comerciales: 101.500 €. Es el caso de Reinhart y Rogoff en pequeño. Cada vez que revises una hoja ajena, mira dónde **empieza y acaba** cada rango."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Regla 1: rangos que crecen solos.** Si el mes que viene Javier añade un comercial en la fila 9, `=SUMA(C2:C8)` no lo sumará: el rango es fijo y no se entera.\n\nLa solución es la que viste en el nivel 2: convertir la lista en **Tabla**. Las fórmulas que usan una columna de la Tabla incluyen las filas nuevas que escribes justo debajo, sin que tengas que tocar nada."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "atajo",
+          "titulo": "Convertir una lista en Tabla",
+          "md": "Haz clic dentro de la lista y pulsa [[Ctrl]]+[[T]]. También está en **Insertar › Tablas › Tabla**."
+        },
+        {
+          "tipo": "texto",
+          "md": "**Caso 2: el signo menos.** En 1994, en Fidelity Magellan, un fondo de inversión de Estados Unidos, un contable pasó a una hoja aparte una pérdida de 1.300 millones de dólares **sin el signo menos**. Lo que tenía que restar, sumó, y la estimación se desvió 2.600 millones: **el doble** de la cifra. El reparto de dividendo que se había anunciado se canceló.\n\nRegla: las cifras **se enlazan con una fórmula** (`=B7`), no se copian a mano, y cada columna deja claro su signo."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e4",
+          "modo": "predice",
+          "enunciado": "Lo de Fidelity, en pequeño: la pérdida de Lleida (6.000 €) se copió a mano **sin el signo menos**. ¿Qué resultado da **B5**? (Escribe solo el número.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Resultado oct.",
+              "A2": "Zaragoza",
+              "B2": 25000,
+              "A3": "Pamplona",
+              "B3": 8000,
+              "A4": "Lleida (pérdida)",
+              "B4": 6000,
+              "A5": "Total"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 15
+            }
+          },
+          "celda": "B5",
+          "formula": "=SUMA(B2:B4)",
+          "explicacion": "Da 39.000. Con el signo bien puesto (−6.000) daría 27.000. La diferencia, 12.000, es **el doble** de la pérdida: olvidar un signo no desvía el total una vez, sino dos. Por eso en Fidelity 1.300 millones se convirtieron en un error de 2.600.",
+          "respuesta": "39000"
+        },
+        {
+          "tipo": "texto",
+          "md": "**Caso 3: contar dos veces.** En 2016, cuando Tesla compró SolarCity, el banco Lazard valoró SolarCity con unas hojas de previsiones en las que **se contaron dos veces** 400 millones de dólares de deuda prevista. Lo recoge el documento que Tesla presentó ante la SEC, el supervisor de la bolsa de Estados Unidos.\n\nEn una oficina pasa a menudo con los **subtotales**: si están dentro del rango que sumas, los cuentas dos veces. Regla: cada dato se calcula **una sola vez** y, si lo necesitas en otro sitio, lo enlazas."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e5",
+          "modo": "formula",
+          "enunciado": "Esta versión de la hoja de Javier tiene un subtotal por delegación en las filas 4, 7 y 11. En **B12** escribe el **total general** de ventas sin contar nada dos veces. Debe salir 101.500 €, igual que antes.",
+          "hoja": {
+            "celdas": {
+              "A1": "Concepto",
+              "B1": "Ventas nov.",
+              "A2": "Zaragoza · Sergio Lahoz",
+              "B2": 18500,
+              "A3": "Zaragoza · Pilar Gimeno",
+              "B3": 21000,
+              "A4": "Subtotal Zaragoza",
+              "B4": "=SUMA(B2:B3)",
+              "A5": "Pamplona · Iñaki Etxeberria",
+              "B5": 16000,
+              "A6": "Pamplona · Ainhoa Goñi",
+              "B6": 12500,
+              "A7": "Subtotal Pamplona",
+              "B7": "=SUMA(B5:B6)",
+              "A8": "Lleida · Jordi Serra",
+              "B8": 14000,
+              "A9": "Lleida · Montse Farré",
+              "B9": 10000,
+              "A10": "Lleida · Arnau Vidal",
+              "B10": 9500,
+              "A11": "Subtotal Lleida",
+              "B11": "=SUMA(B8:B10)",
+              "A12": "Total general"
+            },
+            "formatos": {
+              "B2:B12": "#.##0 €"
+            },
+            "anchos": {
+              "A": 28,
+              "B": 13
+            }
+          },
+          "objetivo": "B12",
+          "solucion": "=B4+B7+B11",
+          "alternativas": [
+            "=SUMA(B4;B7;B11)",
+            "=SUMA(B2:B3;B5:B6;B8:B10)"
+          ],
+          "errores_tipicos": [
+            "=SUMA(B2:B11)",
+            "=B4+B7",
+            "=101500"
+          ],
+          "variantes": [
+            {
+              "B2": 20000
+            },
+            {
+              "B10": 12000
+            }
+          ],
+          "formato_resultado": "#.##0 €",
+          "pistas": [
+            "Si sumas de B2 a B11, cada venta entra dos veces: una por sí misma y otra dentro de su subtotal.",
+            "Los tres subtotales ya contienen todas las ventas. Basta con sumar B4, B7 y B11.",
+            "=B4+B7+B11"
+          ],
+          "explicacion": "101.500 €, el mismo total que en el ejercicio anterior: cuadra. Sumar todo el rango habría dado 203.000 €, justo el doble. Cuando un total te salga «sospechosamente el doble», busca subtotales dentro del rango."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "`=C2*0,03`: el 3 % escrito dentro de cada fórmula",
+              "`=C2*$G$2`: el 3 % en una celda, a la vista, y la fórmula apunta a ella"
+            ],
+            [
+              "Una fila «arreglada» a mano con una fórmula distinta",
+              "La misma fórmula en toda la columna, copiada hacia abajo"
+            ],
+            [
+              "`=SUMA(C2:C8)` sobre una lista que crece cada mes",
+              "La lista convertida en Tabla ([[Ctrl]]+[[T]])"
+            ],
+            [
+              "Una cifra copiada a mano de otra hoja",
+              "La cifra enlazada con una fórmula, calculada una sola vez"
+            ]
+          ]
+        },
+        {
+          "tipo": "texto",
+          "md": "**Caso 4: los códigos que no son números.** En 2010, según el informe oficial del comisionado británico de interceptación de comunicaciones, un fallo de formato en una hoja de cálculo del MI5 cambió los tres últimos dígitos de unos números de teléfono por «000». Se pidieron por error los datos de 134 números que no tenían nada que ver con ninguna investigación.\n\nRegla: **los códigos son texto**. Teléfonos, NIF, códigos postales o números de cuenta no se suman: se guardan como texto."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e6",
+          "modo": "test",
+          "pregunta": "Andrés te pasa una lista de proveedores con su número de cuenta de 20 cifras. Al pegarla, Excel muestra cosas como `2,08512E+19` y, al ensanchar la columna, las cuentas acaban en ceros. ¿Qué ha pasado?",
+          "opciones": [
+            {
+              "texto": "Excel las ha guardado como números y solo conserva 15 cifras: hay que traerlas como texto.",
+              "correcta": true,
+              "porque": "Exacto. Excel trabaja con 15 cifras de precisión: un código de 20 cifras guardado como número pierde las últimas, que se convierten en ceros sin avisar."
+            },
+            {
+              "texto": "Es solo un problema de formato: con el formato de número adecuado vuelven a salir bien.",
+              "correcta": false,
+              "porque": "El formato cambia cómo se ve el número, no lo que Excel ha guardado. Las cifras que pasan de la 15.ª ya son ceros y no vuelven."
+            },
+            {
+              "texto": "Hay que redondearlas con REDONDEAR para que se vean enteras.",
+              "correcta": false,
+              "porque": "REDONDEAR trabaja con cantidades. Un número de cuenta no es una cantidad: no se redondea, se guarda como texto."
+            }
+          ],
+          "explicacion": "Como en el caso del MI5: un código tratado como número se estropea sin avisar. La solución es importarlo como texto (lo viste con los CSV en el nivel 3) o volver a pedir los datos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l1-e7",
+          "modo": "formula",
+          "enunciado": "El encargo de Javier. En la columna D, el 3 % estaba escrito dentro de cada fórmula, y en la fila 5 alguien tecleó 0,3 en lugar de 0,03 (¡Ainhoa iba a cobrar 3.750 € en vez de 375 €!). En **D2** escribe la comisión usando el porcentaje de **G2**. Tu fórmula se copiará a D3:D8, así que fija lo que no deba moverse.",
+          "hoja": {
+            "celdas": {
+              "A1": "Comercial",
+              "B1": "Delegación",
+              "C1": "Ventas nov.",
+              "D1": "Comisión",
+              "F1": "Dato",
+              "G1": "Valor",
+              "A2": "Sergio Lahoz",
+              "B2": "Zaragoza",
+              "C2": 18500,
+              "A3": "Pilar Gimeno",
+              "B3": "Zaragoza",
+              "C3": 21000,
+              "A4": "Iñaki Etxeberria",
+              "B4": "Pamplona",
+              "C4": 16000,
+              "A5": "Ainhoa Goñi",
+              "B5": "Pamplona",
+              "C5": 12500,
+              "A6": "Jordi Serra",
+              "B6": "Lleida",
+              "C6": 14000,
+              "A7": "Montse Farré",
+              "B7": "Lleida",
+              "C7": 10000,
+              "A8": "Arnau Vidal",
+              "B8": "Lleida",
+              "C8": 9500,
+              "F2": "% comisión",
+              "G2": 0.03
+            },
+            "formatos": {
+              "C2:C8": "#.##0 €",
+              "D2:D8": "eur",
+              "G2": "pct1"
+            },
+            "anchos": {
+              "A": 18,
+              "B": 12,
+              "C": 13,
+              "D": 12,
+              "F": 12
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D8"
+          ],
+          "inicial": "=C2*0,03",
+          "solucion": "=C2*$G$2",
+          "alternativas": [
+            "=$G$2*C2",
+            "=C2*G$2"
+          ],
+          "errores_tipicos": [
+            "=C2*0,03",
+            "=C2*G2",
+            "=C2*3%"
+          ],
+          "variantes": [
+            {
+              "G2": 0.035
+            },
+            {
+              "C3": 25000
+            }
+          ],
+          "formato_resultado": "eur",
+          "pistas": [
+            "Cambia el 0,03 por la celda donde está el porcentaje.",
+            "Al copiar hacia abajo, G2 pasaría a G3, G4… que están vacías. Hay que fijarla con $.",
+            "=C2*$G$2"
+          ],
+          "explicacion": "Ahora toda la columna tiene **la misma fórmula** y el porcentaje está a la vista en G2. En enero, Javier cambia G2 a 3,5 % y las siete comisiones se recalculan solas. La hoja ya está lista para que Carmen pague sin sustos."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n6m2l1-q1",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "En un informe que recibe filas nuevas cada semana encuentras `=SUMA(D2:D40)` y, debajo, `=D41*0,21`. ¿Qué reglas rompe? Marca todas las que correspondan.",
+          "opciones": [
+            {
+              "texto": "Usa un rango fijo que no crecerá con las filas nuevas",
+              "correcta": true,
+              "porque": "Sí: cuando lleguen datos en la fila 41 y siguientes, la SUMA no los verá. Con una Tabla, el rango crecería solo."
+            },
+            {
+              "texto": "Tiene un número que puede cambiar (el 21 % de IVA) escrito dentro de la fórmula",
+              "correcta": true,
+              "porque": "Sí: si el tipo cambia, habrá que buscarlo dentro de cada fórmula. Va en una celda y la fórmula apunta a ella."
+            },
+            {
+              "texto": "Guarda códigos como números",
+              "correcta": false,
+              "porque": "Aquí no hay códigos: D son importes, y los importes sí son números."
+            },
+            {
+              "texto": "Cuenta dos veces un subtotal",
+              "correcta": false,
+              "porque": "Con lo que se ve no hay ningún subtotal dentro del rango; el problema está en el rango fijo y en el 0,21."
+            }
+          ],
+          "explicacion": "Dos reglas en dos fórmulas: rangos que crecen (Tablas) y ningún número que pueda cambiar dentro de una fórmula."
+        },
+        {
+          "id": "n6m2l1-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "Importas una lista de clientes y el código postal 08001 aparece como 8001. ¿Como qué tipo de dato tenías que haberlo guardado? (Una palabra.)",
+          "aceptadas": [
+            "texto",
+            "Texto",
+            "como texto",
+            "TEXTO"
+          ],
+          "explicacion": "Como texto. Un código postal no es una cantidad: si Excel lo toma como número, le quita el cero de delante."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué parte de las hojas de empresa revisadas a fondo tenía errores, según Panko?",
+          "dorso": "El 94 % de 85 hojas. Lo normal es que haya errores: por eso se comprueba."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo evitas que un total deje fuera las filas nuevas?",
+          "dorso": "Convirtiendo la lista en Tabla (Ctrl+T) y revisando dónde empieza y acaba cada rango."
+        },
+        {
+          "tipo": "error",
+          "frente": "¿Por qué no escribir `=C2*0,03`?",
+          "dorso": "Si el porcentaje cambia, hay que tocar cada fórmula y siempre se escapa alguna. Ponlo en una celda y fíjala: `=C2*$G$2`."
+        },
+        {
+          "tipo": "error",
+          "frente": "Un total te sale justo el doble de lo esperado. ¿Qué buscas?",
+          "dorso": "Subtotales dentro del rango sumado: se están contando dos veces."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se guardan los códigos postales, NIF y números de cuenta?",
+          "dorso": "Como texto. Como número pierden los ceros de delante o las cifras a partir de la 15.ª."
+        }
       ]
-     ]
     },
     {
-     "tipo": "texto",
-     "md": "**Caso 4: los códigos que no son números.** En 2010, según el informe oficial del comisionado británico de interceptación de comunicaciones, un fallo de formato en una hoja de cálculo del MI5 cambió los tres últimos dígitos de unos números de teléfono por «000». Se pidieron por error los datos de 134 números que no tenían nada que ver con ninguna investigación.\n\nRegla: **los códigos son texto**. Teléfonos, NIF, códigos postales o números de cuenta no se suman: se guardan como texto."
+      "id": "n6m2l2",
+      "titulo": "Comprobar: totales de control y celdas que avisan",
+      "minutos": 16,
+      "objetivo": "Construir celdas de comprobación que comparan el informe con la fuente (importe con tolerancia de un céntimo y número de filas), resumirlas en una comprobación global y probar la hoja con casos límite antes de entregarla.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Esta tarde le mando a Carmen el informe de cobros de octubre. Antes, quiero una celda que diga «OK» si el total y el número de facturas cuadran con lo que da el programa de gestión, y «REVISAR» si no. «Lo he mirado y está bien» no me vale.",
+        "logro": "Ya sabes poner celdas de control que comparan tu informe con la fuente y avisan solas cuando algo no cuadra."
+      },
+      "funciones": [
+        "SI",
+        "ABS",
+        "SUMA",
+        "CONTARA",
+        "REDONDEAR",
+        "Y"
+      ],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "**Lo que se pierde no avisa.** En octubre de 2020, Salud Pública de Inglaterra comunicó que **15.841 positivos de COVID**, del 25 de septiembre al 2 de octubre, no se habían incluido en sus cifras diarias. La causa, según su comunicado: algunos archivos con resultados superaron el tamaño máximo que admitía el sistema.\n\nLa defensa es sencilla: **contar lo que entra y lo que sale**. Si el sistema dice 100 filas, en tu informe tiene que haber 100."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "El límite del .xls",
+          "md": "El formato antiguo **.xls** (Excel 97-2003) solo tiene 65.536 filas y 256 columnas: si guardas ahí más datos, lo que no cabe se pierde. Guarda siempre en **.xlsx**, que admite 1.048.576 filas por hoja."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un **total de control** es una cifra de la fuente que tu informe tiene que reproducir. Antes de tocar nada, apunta lo que dice el programa de gestión: **cuántas facturas** hay y **cuánto suman**. Al terminar, tu informe tiene que dar lo mismo.\n\nLa forma más sencilla de compararlos es restar: si la diferencia es 0, cuadra; si no, la diferencia te dice cuánto falta o sobra."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e1",
+          "modo": "predice",
+          "enunciado": "El programa de gestión dice que los cobros de octubre suman 9.540 € (F2). ¿Qué devuelve la celda de diferencia **F3**? (Escribe solo el número, con su signo si lo tiene.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Cobrado",
+              "A2": "FV-1021",
+              "B2": "Instalaciones Moncayo",
+              "C2": 1850,
+              "A3": "FV-1022",
+              "B3": "Electricidad Arrabal",
+              "C3": 2300,
+              "A4": "FV-1025",
+              "B4": "Montajes Ribera",
+              "C4": 1240,
+              "A5": "FV-1027",
+              "B5": "Clima y Luz Huesca",
+              "C5": 960,
+              "A6": "FV-1030",
+              "B6": "Reformas Delicias",
+              "C6": 1790,
+              "B7": "Total informe",
+              "C7": "=SUMA(C2:C6)",
+              "E2": "Total según el programa",
+              "F2": 9540,
+              "E3": "Diferencia",
+              "F3": "=C7-F2"
+            },
+            "formatos": {
+              "C2:C7": "#.##0 €",
+              "F2": "#.##0 €"
+            },
+            "anchos": {
+              "B": 22,
+              "E": 24
+            }
+          },
+          "celda": "F3",
+          "formula": "=C7-F2",
+          "explicacion": "−1.400: el informe suma 8.140 € y el programa dice 9.540 €. Al informe le faltan 1.400 € (seguramente una factura que no ha entrado). El signo menos te dice que el informe se queda corto.",
+          "respuesta": "-1400"
+        },
+        {
+          "tipo": "texto",
+          "md": "Restar tiene dos pegas. La primera, **el signo**: para el control te da igual qué total es mayor; te importa **cuánto** se separan. Para eso está **ABS** (valor absoluto), que quita el signo: `=ABS(-1400)` da 1.400.\n\nLa segunda, **los céntimos**. Si un total redondea factura a factura y el otro no, pueden diferir en fracciones de céntimo aunque en pantalla se vean iguales. Por eso no se compara con `=`: se mira si la diferencia es **menor de un céntimo**."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "La celda de comprobación",
+          "md": "`=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")`\n\nSe lee: «si la diferencia, sin signo, es menor de un céntimo, pon OK; si no, REVISAR». Ese pequeño margen de un céntimo se llama **tolerancia**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e2",
+          "modo": "formula",
+          "enunciado": "Nuria escribió en **F4** una comprobación con `=` y sale REVISAR, aunque los dos totales se ven iguales (8.083,62 €). El informe calcula el IVA sin redondear y el programa lo redondea factura a factura. Arregla **F4** para que compare con una **tolerancia de un céntimo**: «OK» si se diferencian menos de 0,01 €; si no, «REVISAR».",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Base",
+              "C1": "Total con IVA",
+              "A2": "FV-2026-0412",
+              "B2": 1250.35,
+              "C2": "=B2*(1+$F$2)",
+              "A3": "FV-2026-0413",
+              "B3": 842.17,
+              "C3": "=B3*(1+$F$2)",
+              "A4": "FV-2026-0415",
+              "B4": 2310.8,
+              "C4": "=B4*(1+$F$2)",
+              "A5": "FV-2026-0418",
+              "B5": 415.62,
+              "C5": "=B5*(1+$F$2)",
+              "A6": "FV-2026-0421",
+              "B6": 1098.45,
+              "C6": "=B6*(1+$F$2)",
+              "A7": "FV-2026-0422",
+              "B7": 763.29,
+              "C7": "=B7*(1+$F$2)",
+              "B8": "Total informe",
+              "C8": "=SUMA(C2:C7)",
+              "E2": "IVA",
+              "F2": 0.21,
+              "E3": "Total según el programa",
+              "F3": 8083.62,
+              "E4": "Comprobación"
+            },
+            "formatos": {
+              "B2:B7": "eur",
+              "C2:C8": "eur",
+              "F2": "pct",
+              "F3": "eur"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 13,
+              "C": 14,
+              "E": 24,
+              "F": 12
+            }
+          },
+          "objetivo": "F4",
+          "inicial": "=SI(C8=F3;\"OK\";\"REVISAR\")",
+          "solucion": "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(ABS(F3-C8)<0,01;\"OK\";\"REVISAR\")",
+            "=SI(ABS(C8-F3)<=0,01;\"OK\";\"REVISAR\")",
+            "=SI(REDONDEAR(C8;2)=REDONDEAR(F3;2);\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(C8=F3;\"OK\";\"REVISAR\")",
+            "=SI(C8-F3<0,01;\"OK\";\"REVISAR\")",
+            "=\"OK\""
+          ],
+          "variantes": [
+            {
+              "B3": 942.17
+            },
+            {
+              "B4": 0
+            },
+            {
+              "F3": 8083.64
+            }
+          ],
+          "pistas": [
+            "Con `=`, dos importes que se diferencian en 0,003 € no son iguales. Compara la **diferencia**, no los importes.",
+            "La diferencia es C8-F3. Quítale el signo con ABS y mira si es menor que 0,01.",
+            "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")"
+          ],
+          "explicacion": "Ahora dice OK: la diferencia real es de 0,0028 €, una fracción de céntimo que sale del redondeo. Si mañana falta una factura, la diferencia será de cientos de euros y la celda dirá REVISAR. Esta celda es la que te ahorra el disgusto antes de enviar."
+        },
+        {
+          "tipo": "texto",
+          "md": "El importe no basta: dos errores pueden compensarse. Comprueba también **cuántas filas** hay, con `CONTARA`, que cuenta las celdas que no están vacías.\n\nY si limpias los datos, apunta lo que quitas. La cuenta tiene que cerrar: **filas que entran − filas que quitas a propósito = filas que quedan**. Aquí sí vale el `=`: los recuentos son números enteros, sin céntimos."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e3",
+          "modo": "formula",
+          "enunciado": "Has quitado las filas duplicadas de la lista de clientes que exportó el programa. En **F4** comprueba que no se ha perdido nada más: «OK» si las filas que quedan (A2:A9) son las de la exportación (F2) menos los duplicados quitados (F3); si no, «REVISAR».",
+          "hoja": {
+            "celdas": {
+              "A1": "Código",
+              "B1": "Cliente",
+              "C1": "Población",
+              "A2": "C-1043",
+              "B2": "Instalaciones Moncayo, S.L.",
+              "C2": "Zaragoza",
+              "A3": "C-1051",
+              "B3": "Electricidad Arrabal, S.L.",
+              "C3": "Zaragoza",
+              "A4": "C-1060",
+              "B4": "Montajes Ribera, S.L.",
+              "C4": "Tudela",
+              "A5": "C-1072",
+              "B5": "Clima y Luz Huesca, S.L.",
+              "C5": "Huesca",
+              "A6": "C-1088",
+              "B6": "Reformas Delicias, S.L.",
+              "C6": "Zaragoza",
+              "A7": "C-1094",
+              "B7": "Electro Pirineo, S.L.",
+              "C7": "Jaca",
+              "A8": "C-1102",
+              "B8": "Instalaciones Segre, S.L.",
+              "C8": "Lleida",
+              "A9": "C-1115",
+              "B9": "Montajes Baztán, S.L.",
+              "C9": "Elizondo",
+              "E2": "Filas en la exportación",
+              "F2": 9,
+              "E3": "Duplicados quitados",
+              "F3": 1,
+              "E4": "Control de filas"
+            },
+            "anchos": {
+              "A": 10,
+              "B": 26,
+              "C": 11,
+              "E": 22,
+              "F": 10
+            }
+          },
+          "objetivo": "F4",
+          "solucion": "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(CONTARA(A2:A9)+F3=F2;\"OK\";\"REVISAR\")",
+            "=SI(F2-F3=CONTARA(A2:A9);\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(CONTAR(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
+            "=SI(CONTARA(A2:A9)=F2;\"OK\";\"REVISAR\")",
+            "=\"OK\""
+          ],
+          "variantes": [
+            {
+              "F3": 2
+            },
+            {
+              "F2": 10
+            }
+          ],
+          "pistas": [
+            "Cuenta las filas que quedan con CONTARA(A2:A9). ¿Con qué cifra tienes que compararla?",
+            "Deben quedar F2-F3 filas. Compara las dos cosas dentro de un SI.",
+            "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")"
+          ],
+          "explicacion": "9 − 1 = 8, y quedan 8: OK. Si un día al limpiar se te va una fila de más, esta celda lo dirá antes que nadie. Fíjate en que CONTAR no serviría: cuenta solo números, y los códigos son texto."
+        },
+        {
+          "tipo": "texto",
+          "md": "Con varias celdas de control, nadie va a mirarlas una a una. Se resumen en una **comprobación global**: una sola celda, arriba y a la vista, que dice «TODO CUADRA» solo si **todas** dicen OK.\n\nPara eso sirve `Y`, que ya conoces: devuelve VERDADERO solo si se cumplen todas sus condiciones.\n\n`=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`"
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "Dónde van las comprobaciones",
+          "md": "En los libros bien hechos, los controles viven en su propia hoja (**Comprobaciones**) y la global se repite arriba del informe, para que quien lo abra la vea sin buscarla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e4",
+          "modo": "formula",
+          "enunciado": "En la hoja Comprobaciones del informe de cobros ya hay tres controles (B2:B4). En **B6** escribe la comprobación global: «TODO CUADRA» si los tres dicen «OK», y «REVISAR» en cualquier otro caso. Escribe los textos tal cual, en mayúsculas.",
+          "hoja": {
+            "celdas": {
+              "A1": "Control",
+              "B1": "Resultado",
+              "A2": "Total de importes",
+              "B2": "OK",
+              "A3": "Número de facturas",
+              "B3": "OK",
+              "A4": "Facturas sin cliente",
+              "B4": "OK",
+              "A6": "Comprobación global"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 16
+            }
+          },
+          "objetivo": "B6",
+          "solucion": "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(CONTAR.SI(B2:B4;\"OK\")=3;\"TODO CUADRA\";\"REVISAR\")",
+            "=SI(Y(B2:B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(O(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+            "=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
+            "=\"TODO CUADRA\""
+          ],
+          "variantes": [
+            {
+              "B3": "REVISAR"
+            },
+            {
+              "B3": "OK",
+              "B4": "REVISAR"
+            }
+          ],
+          "pistas": [
+            "Necesitas que se cumplan las tres condiciones a la vez: eso es Y.",
+            "Dentro de Y van las tres: B2=\"OK\"; B3=\"OK\"; B4=\"OK\". Luego, SI elige el texto.",
+            "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
+          ],
+          "explicacion": "Una celda, una respuesta: si cualquiera de los controles falla, la global dice REVISAR. Con O bastaría que uno dijera OK para dar el visto bueno, justo lo contrario de lo que quieres."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una hoja puede cuadrar hoy y fallar el mes que viene. Antes de darla por buena, pruébala con los **casos límite**, los que suelen romper las fórmulas:\n\n- **Un mes sin ventas** (ceros o filas vacías).\n- **Un cliente nuevo**, sin datos del mes anterior.\n- **Importes negativos**, como los abonos.\n\nCambia un dato, mira qué pasa y vuelve a dejarlo como estaba."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e5",
+          "modo": "test",
+          "pregunta": "Tu informe calcula, por cliente, la variación de ventas con `=(C2-B2)/B2`, donde B es octubre y C es noviembre. ¿Qué caso límite dará `#¡DIV/0!`?",
+          "opciones": [
+            {
+              "texto": "Un cliente nuevo, que en octubre no compró nada",
+              "correcta": true,
+              "porque": "Exacto: B2 vale 0 y no se puede dividir entre 0. Hay que decidir qué mostrar en ese caso (por ejemplo, «Nuevo») y dejarlo escrito."
+            },
+            {
+              "texto": "Un cliente con un abono en noviembre (importe negativo)",
+              "correcta": false,
+              "porque": "Un negativo en C2 da una variación negativa, pero no un error: dividir entre B2 sigue siendo posible. Eso sí, conviene mirar que el resultado tenga sentido."
+            },
+            {
+              "texto": "Un cliente que en noviembre no compró nada",
+              "correcta": false,
+              "porque": "C2 vale 0 y la fórmula da −100 %: es un resultado correcto (ha dejado de comprar), no un error."
+            }
+          ],
+          "explicacion": "Los casos límite se buscan a propósito antes de entregar: un cliente nuevo, un mes a cero, un abono. Mejor que los encuentres tú que Marta."
+        },
+        {
+          "tipo": "texto",
+          "md": "Y por último, **otra mirada**. En los estudios de Panko, una persona que revisa sola encuentra de media el 60-63 % de los errores; un equipo de tres, el 83 %. Nadie ve bien sus propios fallos.\n\nSi lo que entregas es importante, pide que lo revise otra persona. Si no hay nadie, déjalo reposar y revísalo **tú al día siguiente**, con una lista y sin prisa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena lo que haces con la exportación de cobros, desde que llega hasta que la entregas.",
+          "pasos": [
+            "Anotar cuántas filas hay y cuánto suman según el programa de gestión",
+            "Limpiar los datos y apuntar cuántas filas quitas y por qué",
+            "Construir el informe",
+            "Poner las celdas de control y la comprobación global",
+            "Probar casos límite: un mes a cero, un cliente nuevo, un abono",
+            "Revisarlo con la lista al día siguiente (o que lo revise otra persona) y entregarlo"
+          ],
+          "explicacion": "Lo primero es anotar los totales de la fuente **antes de tocar nada**: si limpias primero, ya no sabrás cuánto había. Y la revisión va al final, con todo montado."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l2-e7",
+          "modo": "formula",
+          "enunciado": "El encargo de Marta. El programa de gestión dice que en octubre se cobraron 12.486,40 € (F2) en 7 facturas (F3). En **F5** escribe una sola fórmula que diga «OK» si el total del informe (C9) se diferencia de F2 menos de un céntimo **y**, además, el número de facturas de A2:A8 coincide con F3. Si falla cualquiera de las dos cosas, «REVISAR».",
+          "hoja": {
+            "celdas": {
+              "A1": "Factura",
+              "B1": "Cliente",
+              "C1": "Cobrado",
+              "A2": "FV-2026-0388",
+              "B2": "Instalaciones Moncayo",
+              "C2": 1815,
+              "A3": "FV-2026-0391",
+              "B3": "Electricidad Arrabal",
+              "C3": 2541.6,
+              "A4": "FV-2026-0395",
+              "B4": "Montajes Ribera",
+              "C4": 968,
+              "A5": "FV-2026-0402",
+              "B5": "Clima y Luz Huesca",
+              "C5": 3025,
+              "A6": "FV-2026-0406",
+              "B6": "Reformas Delicias",
+              "C6": 1452,
+              "A7": "FV-2026-0409",
+              "B7": "Electro Pirineo",
+              "C7": 2117.5,
+              "A8": "FV-2026-0411",
+              "B8": "Instalaciones Segre",
+              "C8": 567.3,
+              "B9": "Total informe",
+              "C9": "=SUMA(C2:C8)",
+              "E2": "Total según el programa",
+              "F2": 12486.4,
+              "E3": "Facturas según el programa",
+              "F3": 7,
+              "E5": "Control"
+            },
+            "formatos": {
+              "C2:C9": "eur",
+              "F2": "eur"
+            },
+            "anchos": {
+              "A": 14,
+              "B": 22,
+              "C": 13,
+              "E": 26,
+              "F": 12
+            }
+          },
+          "objetivo": "F5",
+          "solucion": "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(Y(ABS(F2-C9)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+            "=SI(Y(CONTARA(A2:A8)=F3;ABS(C9-F2)<0,01);\"OK\";\"REVISAR\")",
+            "=SI(Y(ABS(C9-F2)<=0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(Y(C9=F2;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+            "=SI(O(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
+            "=SI(ABS(C9-F2)<0,01;\"OK\";\"REVISAR\")",
+            "=\"OK\""
+          ],
+          "variantes": [
+            {
+              "F3": 8
+            },
+            {
+              "F3": 7,
+              "C4": 1068
+            },
+            {
+              "C4": 968,
+              "F2": 12486.404
+            }
+          ],
+          "pistas": [
+            "Son dos condiciones que se tienen que cumplir a la vez, el importe y el recuento: eso es Y dentro de SI.",
+            "Condición 1: ABS(C9-F2)<0,01. Condición 2: CONTARA(A2:A8)=F3.",
+            "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
+          ],
+          "explicacion": "OK: 7 facturas y 12.486,40 €, igual que el programa. Ya puedes mandar el informe a Carmen sabiendo que cuadra, y el mes que viene la celda avisará sola si algo se descuadra."
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n6m2l2-q1",
+          "modo": "formula",
+          "enunciado": "Sin mirar arriba: en **D2** escribe la comprobación entre el total del informe (B2) y el del banco (C2): «OK» si se diferencian menos de un céntimo; si no, «REVISAR». Tu fórmula se copiará a D3:D4.",
+          "hoja": {
+            "celdas": {
+              "A1": "Mes",
+              "B1": "Total informe",
+              "C1": "Total banco",
+              "D1": "Control",
+              "A2": "Agosto",
+              "B2": 15230.5,
+              "C2": 15230.5,
+              "A3": "Septiembre",
+              "B3": 17104.2,
+              "C3": 17140.2,
+              "A4": "Octubre",
+              "B4": 18452.3,
+              "C4": 18452.304
+            },
+            "formatos": {
+              "B2:C4": "eur"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 14,
+              "C": 14,
+              "D": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(ABS(C2-B2)<0,01;\"OK\";\"REVISAR\")",
+            "=SI(ABS(B2-C2)<=0,01;\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(B2=C2;\"OK\";\"REVISAR\")",
+            "=SI(B2-C2<0,01;\"OK\";\"REVISAR\")"
+          ],
+          "variantes": [
+            {
+              "C2": 15330.5
+            }
+          ],
+          "pistas": [
+            "Resta los dos totales, quita el signo y compara con un céntimo.",
+            "La condición del SI es ABS(B2-C2)<0,01.",
+            "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")"
+          ],
+          "explicacion": "Septiembre sale REVISAR: 17.104,20 frente a 17.140,20, dos cifras cambiadas de sitio al teclear. Octubre sale OK aunque el banco tenga una fracción de céntimo de diferencia."
+        },
+        {
+          "id": "n6m2l2-q2",
+          "modo": "test",
+          "pregunta": "Un informe suma `=SUMA(C2:C40)`, pero este mes la exportación llega hasta la fila 45. ¿Qué lo habría detectado antes de enviar?",
+          "opciones": [
+            {
+              "texto": "Comparar el número de filas y el total con el programa",
+              "correcta": true,
+              "porque": "Sí: faltarían cinco filas en el recuento y su importe en el total. Los controles lo cantan en cuanto los miras."
+            },
+            {
+              "texto": "Mirar que ninguna celda del informe dé `#¡VALOR!`",
+              "correcta": false,
+              "porque": "Una SUMA con el rango corto no da ningún error: suma lo que le pides y se queda tan tranquila."
+            },
+            {
+              "texto": "Poner el total en negrita y con borde doble",
+              "correcta": false,
+              "porque": "El formato hace que el total se vea mejor, no que sea correcto."
+            }
+          ],
+          "explicacion": "Los totales de control y los recuentos son la red que atrapa los errores de la lección anterior: rangos cortos, filas perdidas y sumas dobles."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "funcion",
+          "frente": "Celda de comprobación con tolerancia de un céntimo",
+          "dorso": "`=SI(ABS(A-B)<0,01;\"OK\";\"REVISAR\")`, donde A y B son los dos totales."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "¿Qué hace ABS?",
+          "dorso": "Devuelve el número sin signo: `=ABS(-12,5)` da 12,5."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Recuento al limpiar datos",
+          "dorso": "Filas que entran − filas que quitas a propósito = filas que quedan (cuéntalas con CONTARA)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es la comprobación global?",
+          "dorso": "Una celda, arriba y a la vista, que dice «TODO CUADRA» solo si todos los controles dicen OK: `=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué parte de los errores encuentra quien revisa solo, y un equipo de tres (Panko)?",
+          "dorso": "Sola, el 60-63 %; un equipo de tres, el 83 %. Lo importante lo revisa otra persona."
+        }
+      ]
     },
     {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e6",
-     "modo": "test",
-     "pregunta": "Andrés te pasa una lista de proveedores con su número de cuenta de 20 cifras. Al pegarla, Excel muestra cosas como `2,08512E+19` y, al ensanchar la columna, las cuentas acaban en ceros. ¿Qué ha pasado?",
-     "opciones": [
-      {
-       "texto": "Excel las ha tomado como números y solo guarda 15 cifras: las demás se han convertido en ceros. Hay que traerlas como texto.",
-       "correcta": true,
-       "porque": "Exacto. Excel trabaja con 15 cifras de precisión. Un código de 20 cifras guardado como número pierde las últimas sin avisar."
+      "id": "n6m2l3",
+      "titulo": "Documentar: la hoja Léeme y el registro de cambios",
+      "minutos": 15,
+      "objetivo": "Dejar un libro documentado (hoja Léeme con supuestos y pasos de actualización, registro de cambios y entregas con fecha y versión) para que otra persona lo mantenga sin ti.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "En Navidad te vas dos semanas y el informe de cobros de diciembre lo sacará Nuria. Déjale el libro listo para que no tenga que llamarte: qué es, de dónde salen los datos y cómo se actualiza. Y que quede apuntado lo que hemos ido cambiando este otoño.",
+        "logro": "Ya sabes documentar un libro con su hoja Léeme, sus supuestos, sus pasos de actualización y su registro de cambios, y nombrar cada entrega con fecha y versión, para que otra persona lo mantenga sin ti."
       },
-      {
-       "texto": "Es solo un problema de formato: con el formato de número adecuado vuelven a salir bien.",
-       "correcta": false,
-       "porque": "El formato cambia cómo se ve el número, no lo que Excel ha guardado. Las cifras que pasan de la 15.ª ya son ceros y no vuelven."
-      },
-      {
-       "texto": "Hay que redondearlas con REDONDEAR para que se vean enteras.",
-       "correcta": false,
-       "porque": "REDONDEAR trabaja con cantidades. Un número de cuenta no es una cantidad: no se redondea, se guarda como texto."
-      }
-     ],
-     "explicacion": "Como en el caso del MI5: un código tratado como número se estropea sin avisar. La solución es importarlo como texto (lo viste con los CSV en el nivel 3) o volver a pedir los datos."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l1-e7",
-     "modo": "formula",
-     "enunciado": "El encargo de Javier. En la columna D, el 3 % estaba escrito dentro de cada fórmula, y en la fila 5 alguien tecleó 0,3 en lugar de 0,03 (¡Ainhoa iba a cobrar 3.750 € en vez de 375 €!). En **D2** escribe la comisión usando el porcentaje de **G2**. Tu fórmula se copiará a D3:D8, así que fija lo que no deba moverse.",
-     "hoja": {
-      "celdas": {
-       "A1": "Comercial",
-       "B1": "Delegación",
-       "C1": "Ventas nov.",
-       "D1": "Comisión",
-       "F1": "Dato",
-       "G1": "Valor",
-       "A2": "Sergio Lahoz",
-       "B2": "Zaragoza",
-       "C2": 18500,
-       "A3": "Pilar Gimeno",
-       "B3": "Zaragoza",
-       "C3": 21000,
-       "A4": "Iñaki Etxeberria",
-       "B4": "Pamplona",
-       "C4": 16000,
-       "A5": "Ainhoa Goñi",
-       "B5": "Pamplona",
-       "C5": 12500,
-       "A6": "Jordi Serra",
-       "B6": "Lleida",
-       "C6": 14000,
-       "A7": "Montse Farré",
-       "B7": "Lleida",
-       "C7": 10000,
-       "A8": "Arnau Vidal",
-       "B8": "Lleida",
-       "C8": 9500,
-       "F2": "% comisión",
-       "G2": 0.03
-      },
-      "formatos": {
-       "C2:C8": "#.##0 €",
-       "D2:D8": "eur",
-       "G2": "pct1"
-      },
-      "anchos": {
-       "A": 18,
-       "B": 12,
-       "C": 13,
-       "D": 12,
-       "F": 12
-      }
-     },
-     "objetivo": "D2",
-     "copiar_a": [
-      "D3:D8"
-     ],
-     "inicial": "=C2*0,03",
-     "solucion": "=C2*$G$2",
-     "alternativas": [
-      "=$G$2*C2",
-      "=C2*G$2"
-     ],
-     "errores_tipicos": [
-      "=C2*0,03",
-      "=C2*G2",
-      "=C2*3%"
-     ],
-     "variantes": [
-      {
-       "G2": 0.035
-      },
-      {
-       "C3": 25000
-      }
-     ],
-     "formato_resultado": "eur",
-     "pistas": [
-      "Cambia el 0,03 por la celda donde está el porcentaje.",
-      "Al copiar hacia abajo, G2 pasaría a G3, G4… que están vacías. Hay que fijarla con $.",
-      "=C2*$G$2"
-     ],
-     "explicacion": "Ahora toda la columna tiene **la misma fórmula** y el porcentaje está a la vista en G2. En enero, Javier cambia G2 a 3,5 % y las siete comisiones se recalculan solas. La hoja ya está lista para que Carmen pague sin sustos."
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Un libro que solo entiende quien lo hizo tiene fecha de caducidad. Funciona mientras tú estás; el día que te vas de vacaciones, te pones mala o cambias de puesto, alguien tendrá que **adivinar** de dónde salen los datos y qué botón se pulsa.\n\nEl error tiene nombre: **«está todo en mi cabeza»**. Esta lección va de sacarlo de tu cabeza y meterlo **dentro del libro**, en una hoja que se suele llamar **Léeme**."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Te cuento una de cuando llegué. El compañero que llevaba las comisiones se jubiló y nos dejó el libro sin una sola nota. Tardamos dos semanas en averiguar por qué la columna H restaba un 2 %: era un descuento pactado con un cliente que ya ni nos compraba. Desde entonces, libro que hago, libro que lleva su Léeme."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e1",
+          "modo": "test",
+          "pregunta": "Te vas de vacaciones y Nuria sacará el informe de cobros. ¿Dónde dejas las instrucciones?",
+          "opciones": [
+            {
+              "texto": "En una hoja «Léeme», la primera del propio libro",
+              "correcta": true,
+              "porque": "Eso es: las instrucciones viajan con el libro. Quien lo abra, hoy o dentro de un año, las ve lo primero."
+            },
+            {
+              "texto": "En un correo a Nuria antes de irte",
+              "correcta": false,
+              "porque": "El correo se queda en la bandeja de Nuria. Quien herede el libro en marzo no lo verá. Las guías de buenas prácticas piden no separar las instrucciones del libro."
+            },
+            {
+              "texto": "Se lo explicas de palabra el último día",
+              "correcta": false,
+              "porque": "En dos semanas se olvida la mitad, y no le sirve a nadie más. Lo que no está escrito sigue estando solo en tu cabeza."
+            },
+            {
+              "texto": "En un documento de Word guardado en tu escritorio",
+              "correcta": false,
+              "porque": "Nadie más lo encuentra, y cuando cambies el libro el Word se quedará viejo. Dentro del libro, en cambio, lo ves cada vez que lo abres."
+            }
+          ],
+          "explicacion": "La hoja Léeme es la primera del libro y explica cómo funciona. Así el libro se explica solo, sin depender de ti."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un buen **Léeme** contesta, en pocas líneas, lo que preguntaría alguien que abre el libro por primera vez:\n\n- **Qué es** y **para quién**.\n- **De dónde salen los datos**: programa, informe y cuándo se exportan.\n- **Cómo se actualiza**, paso a paso.\n- **Supuestos**: las decisiones que has tomado (ahora lo vemos).\n- **Responsable** y suplente.\n- **Fecha y versión**.\n\nNo hace falta que sea bonito: hace falta que esté y que esté al día."
+        },
+        {
+          "tipo": "hoja",
+          "titulo": "Léeme del informe de cobros (primeras líneas)",
+          "hoja": {
+            "celdas": {
+              "A1": "Apartado",
+              "B1": "Contenido",
+              "A2": "Qué es",
+              "B2": "Informe mensual de cobros por cliente",
+              "A3": "Para quién",
+              "B3": "Marta Ruiz (Dirección financiera)",
+              "A4": "De dónde salen los datos",
+              "B4": "Programa de gestión › informe «Cobros por cliente», en CSV",
+              "A5": "Cómo se actualiza",
+              "B5": "Pasos numerados, más abajo",
+              "A6": "Supuestos",
+              "B6": "Importes sin IVA; facturas anuladas, fuera",
+              "A7": "Responsable",
+              "B7": "Tú (suplente: Nuria Campos)",
+              "A8": "Fecha y versión",
+              "B8": "20/11/2026 · v04"
+            },
+            "anchos": {
+              "A": 24,
+              "B": 54
+            },
+            "columnas": 2,
+            "filas": 8
+          },
+          "pie": "Dos columnas bastan: el apartado y lo que hay que saber."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e2",
+          "modo": "test",
+          "pregunta": "Andrés te pasa el libro de pedidos a proveedores que llevaba su antiguo ayudante, con este Léeme:\n\n| Apartado | Contenido |\n|---|---|\n| Qué es | Pedidos semanales a proveedores |\n| Para quién | Andrés Molina (Compras) |\n| Responsable | Andrés Molina |\n| Fecha y versión | 03/11/2026 · v02 |\n\nLa semana que viene te toca actualizarlo a ti. ¿Qué es lo que **más** falta?",
+          "opciones": [
+            {
+              "texto": "De dónde salen los datos y los pasos para actualizarlo",
+              "correcta": true,
+              "porque": "Justo: sabes qué es, pero no de qué informe salen los pedidos ni qué hay que pulsar. Sin eso, tendrás que llamar a Andrés."
+            },
+            {
+              "texto": "Un índice con vínculos a cada hoja",
+              "correcta": false,
+              "porque": "Un índice ayuda a moverse por el libro, pero sin saber de dónde salen los datos no podrás actualizar nada."
+            },
+            {
+              "texto": "La explicación de cada fórmula, celda por celda",
+              "correcta": false,
+              "porque": "Eso sería un manual enorme que nadie lee. Lo que te bloquea no son las fórmulas, sino no saber el origen de los datos ni los pasos."
+            },
+            {
+              "texto": "Nada: con saber qué es y de quién es basta",
+              "correcta": false,
+              "porque": "Es el «está todo en mi cabeza» disimulado: el libro dice qué es, pero no cómo se hace. Te tocaría preguntar."
+            }
+          ],
+          "explicacion": "El origen de los datos y los pasos de actualización son lo que permite que otra persona haga el trabajo sin ti."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un **supuesto** es una decisión que tomaste al construir el informe y que **no se ve** mirando la hoja: «los importes van sin IVA», «las facturas anuladas no cuentan», «un cobro cuenta el día que entra en el banco».\n\nSi no los escribes, alguien comparará tu total con otro informe que sí lleva IVA y creerá que hay un descuadre de miles de euros. Escríbelos aunque te parezcan obvios: hoy lo son para ti; dentro de seis meses, para nadie."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Si cambia un supuesto, cambia el Léeme",
+          "md": "Si Marta te pide incluir las facturas anuladas, no basta con cambiar la fórmula: corrige también el supuesto en el Léeme. Un Léeme que dice una cosa y una hoja que hace otra es peor que no tener Léeme."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e3",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "Marca **todas** las frases que son supuestos y deben ir escritas en el Léeme del informe de cobros.",
+          "opciones": [
+            {
+              "texto": "Los importes van sin IVA",
+              "correcta": true,
+              "porque": "Sí: no se ve en la hoja y cambia el total un 21 % en las facturas al tipo general. Quien compare con otro informe necesita saberlo."
+            },
+            {
+              "texto": "Las facturas anuladas no se cuentan",
+              "correcta": true,
+              "porque": "Sí: es una decisión tuya (o de Marta) que cambia el número de facturas y el total."
+            },
+            {
+              "texto": "Un cobro cuenta en el mes en que entra en el banco, no en el de la factura",
+              "correcta": true,
+              "porque": "Sí: el mismo cobro puede caer en octubre o en noviembre según la regla. Si no lo escribes, dos personas harán el informe distinto."
+            },
+            {
+              "texto": "La columna D tiene formato de euros",
+              "correcta": false,
+              "porque": "Eso se ve nada más abrir la hoja y no cambia ningún resultado. No es un supuesto."
+            },
+            {
+              "texto": "El libro está hecho con Excel",
+              "correcta": false,
+              "porque": "Es evidente para quien lo abre y no cambia ninguna cifra."
+            }
+          ],
+          "explicacion": "Un supuesto es una regla que **cambia las cifras** y que **no se ve** en la hoja. Esos van siempre por escrito."
+        },
+        {
+          "tipo": "texto",
+          "md": "Las **instrucciones de actualización** son una receta. Reglas:\n\n- Un paso por línea, numerado, y empezando por un verbo: *Exporta*, *Guarda*, *Pulsa*, *Comprueba*.\n- Di **dónde exactamente**: qué informe del programa, qué carpeta, qué botón.\n- Termina con **qué debe verse** al acabar: «la celda de control dice OK».\n\nEscríbelas para alguien que nunca ha visto el libro. Si un paso necesita que te llamen, falta un paso."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "truco",
+          "titulo": "Un paso, una fila",
+          "md": "Puedes escribir varias líneas dentro de una celda con [[Alt]]+[[Intro]], pero en el Léeme se lee mejor cada paso en su propia fila: 1, 2, 3… Así también es fácil añadir uno en medio."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e4",
+          "modo": "ordenar",
+          "enunciado": "Ordena los pasos de actualización del informe de cobros, tal como irían en el Léeme.",
+          "pasos": [
+            "Exporta del programa de gestión el informe «Cobros por cliente» del mes, en CSV",
+            "Guarda el CSV en la carpeta del informe, con el nombre que indica el Léeme",
+            "Abre el libro y pulsa Datos › Actualizar todo",
+            "Comprueba que la celda de control dice «OK»",
+            "Anota en el registro de cambios la fecha, qué has hecho y tu nombre"
+          ],
+          "explicacion": "Primero los datos (exportar y guardar donde los lee el libro), después actualizar, luego **comprobar** antes de dar nada por bueno y, al final, dejarlo apuntado. Si el control dice «REVISAR», el Léeme debe decir qué mirar antes de enviar nada."
+        },
+        {
+          "tipo": "texto",
+          "md": "El **registro de cambios** es el diario del libro: una tabla, al final del Léeme, con una línea por cada cambio. Tres columnas como mínimo:\n\n- **Fecha**.\n- **Qué ha cambiado y por qué**.\n- **Quién** lo ha hecho.\n\nCuando en marzo alguien pregunte «¿por qué en octubre salía distinto?», la respuesta estará escrita: «15/10: fuera las facturas anuladas, lo pide Marta». Sin registro, toca adivinar."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e5",
+          "modo": "formula",
+          "enunciado": "Este es el registro de cambios del informe de cobros. En **F2** escribe una fórmula que muestre la **fecha del último cambio**. Tiene que seguir funcionando cuando alguien añada líneas nuevas debajo, hasta la fila 12.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Versión",
+              "C1": "Qué ha cambiado y por qué",
+              "D1": "Quién",
+              "F1": "Último cambio",
+              "A2": {
+                "fecha": "2026-10-06"
+              },
+              "B2": "v01",
+              "C2": "Primera versión (cobros de septiembre)",
+              "D2": "Tú",
+              "A3": {
+                "fecha": "2026-10-15"
+              },
+              "B3": "v02",
+              "C3": "Fuera las facturas anuladas: lo pide Marta",
+              "D3": "Tú",
+              "A4": {
+                "fecha": "2026-11-05"
+              },
+              "B4": "v03",
+              "C4": "Añadidas las celdas de control",
+              "D4": "Tú",
+              "A5": {
+                "fecha": "2026-11-18"
+              },
+              "B5": "v04",
+              "C5": "Nueva columna Delegación",
+              "D5": "Nuria Campos"
+            },
+            "formatos": {
+              "A2:A12": "fecha",
+              "F2": "fecha"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 8,
+              "C": 40,
+              "D": 13,
+              "E": 3,
+              "F": 14
+            },
+            "columnas": 6,
+            "filas": 12
+          },
+          "objetivo": "F2",
+          "solucion": "=MAX(A2:A12)",
+          "debe_usar": [
+            "MAX"
+          ],
+          "alternativas": [
+            "=MAX(A2:A20)",
+            "=MAX(A2:A100)"
+          ],
+          "errores_tipicos": [
+            "=A5",
+            "=MAX(A2:A5)",
+            "=MIN(A2:A12)"
+          ],
+          "variantes": [
+            {
+              "A6": {
+                "fecha": "2026-11-20"
+              },
+              "B6": "v05",
+              "C6": "Control de facturas duplicadas",
+              "D6": "Tú"
+            }
+          ],
+          "formato_resultado": "fecha",
+          "pistas": [
+            "Las fechas son números: la más reciente es la más grande.",
+            "La función que devuelve el número más grande de un rango es MAX. Abarca también las filas vacías de abajo.",
+            "Escribe `=MAX(A2:A12)`."
+          ],
+          "explicacion": "Ya tienes una celda «Último cambio» que se pone al día sola. Llévala arriba del Léeme: quien abra el libro sabrá al instante si está actualizado. Como el rango llega a la fila 12 y MAX no tiene en cuenta las celdas vacías, las líneas nuevas cuentan sin tocar la fórmula. En tu libro real, convierte el registro en Tabla y crecerá sin límite."
+        },
+        {
+          "tipo": "texto",
+          "md": "En las carpetas compartidas abundan nombres como `informe_final_v2_BUENO_revJuan.xlsx`. ¿Cuál es el último? Nadie lo sabe.\n\nUna forma de nombrar que funciona: **fecha en año-mes-día, proyecto y versión con dos cifras**, sin espacios ni tildes:\n\n`2026-11-20_Cobros-octubre_v03.xlsx`\n\nCon la fecha así, ordenar por nombre es ordenar por fecha. Y con dos cifras (v03, v04… v12), todas las versiones tienen la misma forma."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "empresa",
+          "titulo": "En OneDrive o SharePoint, sin copias",
+          "md": "Si el libro vive en OneDrive o SharePoint, no hagas copias v01, v02… del libro de trabajo: Excel guarda las versiones él solo. Las ves en **Archivo › Información › Historial de versiones**. El nombre con fecha y versión úsalo para lo que **entregas**: el PDF o la copia que guardas en una carpeta «Entregas»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e6",
+          "modo": "formula",
+          "enunciado": "Marta quiere que todas las entregas se llamen igual. En **B6** ya hay una fórmula que pone la fecha y el proyecto. **Complétala** para que añada `_v` y la versión de **B4** con dos cifras. Debe salir `2026-11-20_Cobros-octubre_v03.xlsx`.",
+          "hoja": {
+            "celdas": {
+              "A1": "Dato",
+              "B1": "Valor",
+              "A2": "Fecha de entrega",
+              "B2": {
+                "fecha": "2026-11-20"
+              },
+              "A3": "Proyecto",
+              "B3": "Cobros-octubre",
+              "A4": "Versión",
+              "B4": 3,
+              "A6": "Nombre del archivo"
+            },
+            "formatos": {
+              "B2": "fecha"
+            },
+            "anchos": {
+              "A": 20,
+              "B": 40
+            },
+            "columnas": 2,
+            "filas": 6
+          },
+          "objetivo": "B6",
+          "inicial": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\".xlsx\"",
+          "solucion": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
+          "debe_usar": [
+            "TEXTO"
+          ],
+          "alternativas": [
+            "=CONCAT(TEXTO(B2;\"aaaa-mm-dd\");\"_\";B3;\"_v\";TEXTO(B4;\"00\");\".xlsx\")"
+          ],
+          "errores_tipicos": [
+            "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&B4&\".xlsx\"",
+            "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v0\"&B4&\".xlsx\"",
+            "=B2&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
+            "=TEXTO(B2;\"dd-mm-aaaa\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\""
+          ],
+          "variantes": [
+            {
+              "B4": 12
+            },
+            {
+              "B2": {
+                "fecha": "2026-12-03"
+              },
+              "B3": "Cobros-noviembre",
+              "B4": 1
+            }
+          ],
+          "pistas": [
+            "Te falta un trozo entre el proyecto y `\".xlsx\"`: el texto `\"_v\"` y la versión, unidos con `&`.",
+            "Si unes B4 tal cual, sale `v3`. Para que salga `03`, conviértelo con `TEXTO(B4;\"00\")`: el formato `00` rellena con ceros hasta dos cifras.",
+            "`=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"`"
+          ],
+          "explicacion": "Ya tienes el nombre de cada entrega hecho con fórmula: se acabó el «final_BUENO». `TEXTO(B2;\"aaaa-mm-dd\")` pone la fecha en año-mes-día, para que la carpeta se ordene sola por fecha, y `TEXTO(B4;\"00\")` da v03, v04… v12, siempre con dos cifras. Ponlo en el Léeme y copia ese nombre cada vez que guardes una entrega."
+        },
+        {
+          "tipo": "texto",
+          "md": "Último paso: **probar el manual**. Dale el libro a otra persona (Nuria, por ejemplo) y pídele que lo actualice siguiendo el Léeme **sin preguntarte nada**. Tú solo miras y apuntas.\n\nCada vez que se atasca, falta una línea: añádela y anótalo en el registro de cambios. Si no hay nadie, hazlo tú **al día siguiente**, siguiendo el Léeme al pie de la letra: lo que tengas que «recordar» es justo lo que falta escribir."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m2l3-e7",
+          "modo": "abierta",
+          "pregunta": "**La misión de Marta.** Escribe el Léeme del informe de cobros para que Nuria lo saque en diciembre sin llamarte. Una línea por apartado. Esto es lo que sabes:\n\n- Es el informe mensual de cobros por cliente, para Marta (Carmen recibe el PDF).\n- Los datos salen del programa de gestión, informe «Cobros por cliente», en CSV, el primer día laborable del mes. El CSV va en la carpeta del informe, con el nombre `cobros.csv`.\n- Se actualiza con Datos › Actualizar todo. Hay una celda de control que dice «OK» o «REVISAR».\n- Tus decisiones: importes sin IVA; facturas anuladas, fuera; un cobro cuenta el día que entra en el banco.\n- Responsable: tú. Suplente: Nuria. Hoy es 20/11/2026 y vas por la v04.",
+          "modelo": "**Qué es:** informe mensual de cobros por cliente. **Para quién:** Marta Ruiz (Carmen Soler recibe el PDF).\n**Datos:** programa de gestión › informe «Cobros por cliente», en CSV, el primer día laborable del mes.\n**Cómo se actualiza:**\n1. Exporta el informe «Cobros por cliente» del mes en CSV.\n2. Guárdalo en la carpeta del informe con el nombre cobros.csv, sustituyendo al anterior.\n3. Abre el libro y pulsa Datos › Actualizar todo.\n4. Comprueba que la celda de control dice «OK». Si dice «REVISAR», no envíes nada y avisa a Marta.\n5. Guarda el PDF con el nombre AAAA-MM-DD_Cobros-mes_vNN y envíaselo a Marta.\n6. Anota en el registro de cambios la fecha, qué has hecho y tu nombre.\n**Supuestos:** importes sin IVA; las facturas anuladas no cuentan; un cobro cuenta el día que entra en el banco.\n**Responsable:** yo. **Suplente:** Nuria Campos.\n**Fecha y versión:** 20/11/2026 · v04.",
+          "criterios": [
+            "Dice qué es el informe y para quién",
+            "Indica de dónde salen los datos (programa, informe, formato y cuándo se exporta) y dónde se guarda el CSV",
+            "Da pasos numerados, empezando por un verbo, que incluyen actualizar y comprobar que el control dice «OK» (y qué hacer si dice «REVISAR»)",
+            "Escribe los tres supuestos: sin IVA, anuladas fuera y fecha de cobro",
+            "Pone responsable, suplente, fecha y versión"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n6m2l3-q1",
+          "modo": "respuesta_corta",
+          "pregunta": "En el registro de cambios, cada línea lleva la fecha y qué ha cambiado (y por qué). ¿Qué tercer dato no puede faltar?",
+          "aceptadas": [
+            "quién",
+            "quien",
+            "quién lo ha hecho",
+            "quien lo ha hecho",
+            "quién lo hizo",
+            "quien lo hizo",
+            "quién lo ha cambiado",
+            "quien lo ha cambiado",
+            "la persona",
+            "la persona que lo hace",
+            "el nombre",
+            "nombre",
+            "autor",
+            "el autor",
+            "responsable",
+            "el responsable"
+          ],
+          "explicacion": "**Quién** lo ha hecho. Así, si algo no cuadra, sabes a quién preguntar. Fecha, qué y por qué, y quién: el diario completo del libro."
+        },
+        {
+          "id": "n6m2l3-q2",
+          "modo": "test",
+          "pregunta": "Vas a guardar las entregas de tres meses en la misma carpeta y quieres que se ordenen solas por fecha. ¿Qué nombres eliges?",
+          "opciones": [
+            {
+              "texto": "2026-09-30_Cobros_v01 · 2026-10-31_Cobros_v01 · 2026-11-20_Cobros_v03",
+              "correcta": true,
+              "porque": "Eso es: con la fecha en año-mes-día, el orden por nombre coincide con el orden por fecha. Y la versión dice cuál es la buena."
+            },
+            {
+              "texto": "30-09-2026_Cobros · 31-10-2026_Cobros · 20-11-2026_Cobros",
+              "correcta": false,
+              "porque": "Así se ordenan por el día: el 20-11 saldría antes que el 30-09. Y sin versión no sabes cuál es la última de cada mes."
+            },
+            {
+              "texto": "Cobros septiembre · Cobros octubre · Cobros noviembre",
+              "correcta": false,
+              "porque": "Por orden alfabético quedarían noviembre, octubre, septiembre. Además no dicen el año ni la versión."
+            },
+            {
+              "texto": "Cobros_final · Cobros_final2 · Cobros_BUENO",
+              "correcta": false,
+              "porque": "El clásico: nadie sabe cuál es el último ni de qué mes es cada uno."
+            }
+          ],
+          "explicacion": "Fecha en año-mes-día al principio, proyecto y versión con dos cifras: la carpeta se ordena sola."
+        },
+        {
+          "id": "n6m2l3-q3",
+          "modo": "test",
+          "pregunta": "Has terminado el Léeme del informe de cobros. ¿Cuál es la mejor forma de saber si sirve?",
+          "opciones": [
+            {
+              "texto": "Que Nuria lo siga para actualizar el informe, sin preguntarte nada",
+              "correcta": true,
+              "porque": "Eso es probarlo de verdad: tú miras sin ayudar y apuntas dónde se atasca. Cada atasco es una línea que falta en el Léeme."
+            },
+            {
+              "texto": "Releerlo tú con calma, línea a línea, antes de irte",
+              "correcta": false,
+              "porque": "Al releer, tu cabeza rellena los huecos sin que te des cuenta. Si no hay nadie, síguelo tú al día siguiente, paso a paso y al pie de la letra."
+            },
+            {
+              "texto": "Mandárselo a Marta para que dé el visto bueno",
+              "correcta": false,
+              "porque": "Marta no va a actualizar el informe: leerlo no es probarlo. Quien tiene que poder seguirlo es quien lo va a hacer."
+            },
+            {
+              "texto": "Añadir capturas de pantalla de cada paso del proceso",
+              "correcta": false,
+              "porque": "Pueden ayudar, pero sin probarlo no sabes qué falta. Primero la prueba; después, las capturas donde alguien se haya atascado."
+            }
+          ],
+          "explicacion": "Un manual se prueba usándolo: otra persona lo sigue sin ayuda, o tú al día siguiente, al pie de la letra."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué lleva una hoja Léeme?",
+          "dorso": "Qué es y para quién; de dónde salen los datos; cómo se actualiza, paso a paso; supuestos; responsable y suplente; fecha y versión."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es un supuesto y dónde se escribe?",
+          "dorso": "Una decisión que cambia las cifras y no se ve en la hoja («importes sin IVA», «anuladas fuera»). Va escrito en el Léeme."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Columnas del registro de cambios",
+          "dorso": "Fecha · qué ha cambiado y por qué · quién. Una línea por cambio."
+        },
+        {
+          "tipo": "funcion",
+          "frente": "Nombre de entrega que se ordena solo por fecha",
+          "dorso": "AAAA-MM-DD_Proyecto_vNN, p. ej. 2026-11-20_Cobros-octubre_v03.xlsx. Con fórmula: TEXTO(fecha;\"aaaa-mm-dd\") y TEXTO(versión;\"00\")."
+        },
+        {
+          "tipo": "error",
+          "frente": "«Está todo en mi cabeza»: ¿cómo compruebas que no?",
+          "dorso": "Otra persona actualiza el libro siguiendo el Léeme sin preguntarte. Cada atasco es una línea que falta."
+        }
+      ]
     }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m2l1-q1",
-     "modo": "test",
-     "multiple": true,
-     "pregunta": "En un informe que recibe filas nuevas cada semana encuentras `=SUMA(D2:D40)` y, debajo, `=D41*0,21`. ¿Qué reglas rompe? Marca todas las que correspondan.",
-     "opciones": [
-      {
-       "texto": "Usa un rango fijo que no crecerá con las filas nuevas",
-       "correcta": true,
-       "porque": "Sí: cuando lleguen datos en la fila 41 y siguientes, la SUMA no los verá. Con una Tabla, el rango crecería solo."
-      },
-      {
-       "texto": "Tiene un número que puede cambiar (el 21 % de IVA) escrito dentro de la fórmula",
-       "correcta": true,
-       "porque": "Sí: si el tipo cambia, habrá que buscarlo dentro de cada fórmula. Va en una celda y la fórmula apunta a ella."
-      },
-      {
-       "texto": "Guarda códigos como números",
-       "correcta": false,
-       "porque": "Aquí no hay códigos: D son importes, y los importes sí son números."
-      },
-      {
-       "texto": "Cuenta dos veces un subtotal",
-       "correcta": false,
-       "porque": "Con lo que se ve no hay ningún subtotal dentro del rango; el problema está en el rango fijo y en el 0,21."
-      }
-     ],
-     "explicacion": "Dos reglas en dos fórmulas: rangos que crecen (Tablas) y ningún número que pueda cambiar dentro de una fórmula."
-    },
-    {
-     "id": "n6m2l1-q2",
-     "modo": "respuesta_corta",
-     "pregunta": "Importas una lista de clientes y el código postal 08001 aparece como 8001. ¿Como qué tipo de dato tenías que haberlo guardado? (Una palabra.)",
-     "aceptadas": [
-      "texto",
-      "Texto",
-      "como texto",
-      "TEXTO"
-     ],
-     "explicacion": "Como texto. Un código postal no es una cantidad: si Excel lo toma como número, le quita el cero de delante."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué parte de las hojas de empresa revisadas a fondo tenía errores, según Panko?",
-     "dorso": "El 94 % de 85 hojas. Lo normal es que haya errores: por eso se comprueba."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Cómo evitas que un total deje fuera las filas nuevas?",
-     "dorso": "Convirtiendo la lista en Tabla (Ctrl+T) y revisando dónde empieza y acaba cada rango."
-    },
-    {
-     "tipo": "error",
-     "frente": "¿Por qué no escribir `=C2*0,03`?",
-     "dorso": "Si el porcentaje cambia, hay que tocar cada fórmula y siempre se escapa alguna. Ponlo en una celda y fíjala: `=C2*$G$2`."
-    },
-    {
-     "tipo": "error",
-     "frente": "Un total te sale justo el doble de lo esperado. ¿Qué buscas?",
-     "dorso": "Subtotales dentro del rango sumado: se están contando dos veces."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Cómo se guardan los códigos postales, NIF y números de cuenta?",
-     "dorso": "Como texto. Como número pierden los ceros de delante o las cifras a partir de la 15.ª."
-    }
-   ]
-  },
-  {
-   "id": "n6m2l2",
-   "titulo": "Comprobar: totales de control y celdas que avisan",
-   "minutos": 16,
-   "objetivo": "Construir celdas de comprobación que comparan el informe con la fuente (importe con tolerancia de un céntimo y número de filas), resumirlas en una comprobación global y probar la hoja con casos límite antes de entregarla.",
-   "mision": {
-    "de": "Marta Ruiz",
-    "puesto": "Directora financiera",
-    "texto": "Esta tarde le mando a Carmen el informe de cobros de octubre. Antes, quiero una celda que diga «OK» si el total y el número de facturas cuadran con lo que da el programa de gestión, y «REVISAR» si no. «Lo he mirado y está bien» no me vale.",
-    "logro": "Ya sabes poner celdas de control que comparan tu informe con la fuente y avisan solas cuando algo no cuadra."
-   },
-   "funciones": [
-    "SI",
-    "ABS",
-    "SUMA",
-    "CONTARA",
-    "REDONDEAR",
-    "Y"
-   ],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "**Lo que se pierde no avisa.** En octubre de 2020, Salud Pública de Inglaterra comunicó que **15.841 positivos de COVID**, del 25 de septiembre al 2 de octubre, no se habían incluido en sus cifras diarias. La causa, según su comunicado: algunos archivos con resultados superaron el tamaño máximo que admitía el sistema.\n\nLa defensa es sencilla: **contar lo que entra y lo que sale**. Si el sistema dice 100 filas, en tu informe tiene que haber 100."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "dato",
-     "titulo": "El límite del .xls",
-     "md": "El formato antiguo **.xls** (Excel 97-2003) solo tiene 65.536 filas y 256 columnas: si guardas ahí más datos, lo que no cabe se pierde. Guarda siempre en **.xlsx**, que admite 1.048.576 filas por hoja."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un **total de control** es una cifra de la fuente que tu informe tiene que reproducir. Antes de tocar nada, apunta lo que dice el programa de gestión: **cuántas facturas** hay y **cuánto suman**. Al terminar, tu informe tiene que dar lo mismo.\n\nLa forma más sencilla de compararlos es restar: si la diferencia es 0, cuadra; si no, la diferencia te dice cuánto falta o sobra."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e1",
-     "modo": "predice",
-     "enunciado": "El programa de gestión dice que los cobros de octubre suman 9.540 € (F2). ¿Qué devuelve la celda de diferencia **F3**? (Escribe solo el número, con su signo si lo tiene.)",
-     "hoja": {
-      "celdas": {
-       "A1": "Factura",
-       "B1": "Cliente",
-       "C1": "Cobrado",
-       "A2": "FV-1021",
-       "B2": "Instalaciones Moncayo",
-       "C2": 1850,
-       "A3": "FV-1022",
-       "B3": "Electricidad Arrabal",
-       "C3": 2300,
-       "A4": "FV-1025",
-       "B4": "Montajes Ribera",
-       "C4": 1240,
-       "A5": "FV-1027",
-       "B5": "Clima y Luz Huesca",
-       "C5": 960,
-       "A6": "FV-1030",
-       "B6": "Reformas Delicias",
-       "C6": 1790,
-       "B7": "Total informe",
-       "C7": "=SUMA(C2:C6)",
-       "E2": "Total según el programa",
-       "F2": 9540,
-       "E3": "Diferencia",
-       "F3": "=C7-F2"
-      },
-      "formatos": {
-       "C2:C7": "#.##0 €",
-       "F2": "#.##0 €"
-      },
-      "anchos": {
-       "B": 22,
-       "E": 24
-      }
-     },
-     "celda": "F3",
-     "formula": "=C7-F2",
-     "explicacion": "−1.400: el informe suma 8.140 € y el programa dice 9.540 €. Al informe le faltan 1.400 € (seguramente una factura que no ha entrado). El signo menos te dice que el informe se queda corto.",
-     "respuesta": "-1400"
-    },
-    {
-     "tipo": "texto",
-     "md": "Restar tiene dos pegas. La primera, **el signo**: para el control te da igual qué total es mayor; te importa **cuánto** se separan. Para eso está **ABS** (valor absoluto), que quita el signo: `=ABS(-1400)` da 1.400.\n\nLa segunda, **los céntimos**. Si un total redondea factura a factura y el otro no, pueden diferir en fracciones de céntimo aunque en pantalla se vean iguales. Por eso no se compara con `=`: se mira si la diferencia es **menor de un céntimo**."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "truco",
-     "titulo": "La celda de comprobación",
-     "md": "`=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")`\n\nSe lee: «si la diferencia, sin signo, es menor de un céntimo, pon OK; si no, REVISAR». Ese pequeño margen de un céntimo se llama **tolerancia**."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e2",
-     "modo": "formula",
-     "enunciado": "Nuria escribió en **F4** una comprobación con `=` y sale REVISAR, aunque los dos totales se ven iguales (8.083,62 €). El informe calcula el IVA sin redondear y el programa lo redondea factura a factura. Arregla **F4** para que compare con una **tolerancia de un céntimo**: «OK» si se diferencian menos de 0,01 €; si no, «REVISAR».",
-     "hoja": {
-      "celdas": {
-       "A1": "Factura",
-       "B1": "Base",
-       "C1": "Total con IVA",
-       "A2": "FV-2026-0412",
-       "B2": 1250.35,
-       "C2": "=B2*(1+$F$2)",
-       "A3": "FV-2026-0413",
-       "B3": 842.17,
-       "C3": "=B3*(1+$F$2)",
-       "A4": "FV-2026-0415",
-       "B4": 2310.8,
-       "C4": "=B4*(1+$F$2)",
-       "A5": "FV-2026-0418",
-       "B5": 415.62,
-       "C5": "=B5*(1+$F$2)",
-       "A6": "FV-2026-0421",
-       "B6": 1098.45,
-       "C6": "=B6*(1+$F$2)",
-       "A7": "FV-2026-0422",
-       "B7": 763.29,
-       "C7": "=B7*(1+$F$2)",
-       "B8": "Total informe",
-       "C8": "=SUMA(C2:C7)",
-       "E2": "IVA",
-       "F2": 0.21,
-       "E3": "Total según el programa",
-       "F3": 8083.62,
-       "E4": "Comprobación"
-      },
-      "formatos": {
-       "B2:B7": "eur",
-       "C2:C8": "eur",
-       "F2": "pct",
-       "F3": "eur"
-      },
-      "anchos": {
-       "A": 14,
-       "B": 13,
-       "C": 14,
-       "E": 24,
-       "F": 12
-      }
-     },
-     "objetivo": "F4",
-     "inicial": "=SI(C8=F3;\"OK\";\"REVISAR\")",
-     "solucion": "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(ABS(F3-C8)<0,01;\"OK\";\"REVISAR\")",
-      "=SI(ABS(C8-F3)<=0,01;\"OK\";\"REVISAR\")",
-      "=SI(REDONDEAR(C8;2)=REDONDEAR(F3;2);\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(C8=F3;\"OK\";\"REVISAR\")",
-      "=SI(C8-F3<0,01;\"OK\";\"REVISAR\")",
-      "=\"OK\""
-     ],
-     "variantes": [
-      {
-       "B3": 942.17
-      },
-      {
-       "B4": 0
-      },
-      {
-       "F3": 8083.64
-      }
-     ],
-     "pistas": [
-      "Con `=`, dos importes que se diferencian en 0,003 € no son iguales. Compara la **diferencia**, no los importes.",
-      "La diferencia es C8-F3. Quítale el signo con ABS y mira si es menor que 0,01.",
-      "=SI(ABS(C8-F3)<0,01;\"OK\";\"REVISAR\")"
-     ],
-     "explicacion": "Ahora dice OK: la diferencia real es de 0,0028 €, una fracción de céntimo que sale del redondeo. Si mañana falta una factura, la diferencia será de cientos de euros y la celda dirá REVISAR. Esta celda es la que te ahorra el disgusto antes de enviar."
-    },
-    {
-     "tipo": "texto",
-     "md": "El importe no basta: dos errores pueden compensarse. Comprueba también **cuántas filas** hay, con `CONTARA`, que cuenta las celdas que no están vacías.\n\nY si limpias los datos, apunta lo que quitas. La cuenta tiene que cerrar: **filas que entran − filas que quitas a propósito = filas que quedan**. Aquí sí vale el `=`: los recuentos son números enteros, sin céntimos."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e3",
-     "modo": "formula",
-     "enunciado": "Has quitado las filas duplicadas de la lista de clientes que exportó el programa. En **F4** comprueba que no se ha perdido nada más: «OK» si las filas que quedan (A2:A9) son las de la exportación (F2) menos los duplicados quitados (F3); si no, «REVISAR».",
-     "hoja": {
-      "celdas": {
-       "A1": "Código",
-       "B1": "Cliente",
-       "C1": "Población",
-       "A2": "C-1043",
-       "B2": "Instalaciones Moncayo, S.L.",
-       "C2": "Zaragoza",
-       "A3": "C-1051",
-       "B3": "Electricidad Arrabal, S.L.",
-       "C3": "Zaragoza",
-       "A4": "C-1060",
-       "B4": "Montajes Ribera, S.L.",
-       "C4": "Tudela",
-       "A5": "C-1072",
-       "B5": "Clima y Luz Huesca, S.L.",
-       "C5": "Huesca",
-       "A6": "C-1088",
-       "B6": "Reformas Delicias, S.L.",
-       "C6": "Zaragoza",
-       "A7": "C-1094",
-       "B7": "Electro Pirineo, S.L.",
-       "C7": "Jaca",
-       "A8": "C-1102",
-       "B8": "Instalaciones Segre, S.L.",
-       "C8": "Lleida",
-       "A9": "C-1115",
-       "B9": "Montajes Baztán, S.L.",
-       "C9": "Elizondo",
-       "E2": "Filas en la exportación",
-       "F2": 9,
-       "E3": "Duplicados quitados",
-       "F3": 1,
-       "E4": "Control de filas"
-      },
-      "anchos": {
-       "A": 10,
-       "B": 26,
-       "C": 11,
-       "E": 22,
-       "F": 10
-      }
-     },
-     "objetivo": "F4",
-     "solucion": "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(CONTARA(A2:A9)+F3=F2;\"OK\";\"REVISAR\")",
-      "=SI(F2-F3=CONTARA(A2:A9);\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(CONTAR(A2:A9)=F2-F3;\"OK\";\"REVISAR\")",
-      "=SI(CONTARA(A2:A9)=F2;\"OK\";\"REVISAR\")",
-      "=\"OK\""
-     ],
-     "variantes": [
-      {
-       "F3": 2
-      },
-      {
-       "F2": 10
-      }
-     ],
-     "pistas": [
-      "Cuenta las filas que quedan con CONTARA(A2:A9). ¿Con qué cifra tienes que compararla?",
-      "Deben quedar F2-F3 filas. Compara las dos cosas dentro de un SI.",
-      "=SI(CONTARA(A2:A9)=F2-F3;\"OK\";\"REVISAR\")"
-     ],
-     "explicacion": "9 − 1 = 8, y quedan 8: OK. Si un día al limpiar se te va una fila de más, esta celda lo dirá antes que nadie. Fíjate en que CONTAR no serviría: cuenta solo números, y los códigos son texto."
-    },
-    {
-     "tipo": "texto",
-     "md": "Con varias celdas de control, nadie va a mirarlas una a una. Se resumen en una **comprobación global**: una sola celda, arriba y a la vista, que dice «TODO CUADRA» solo si **todas** dicen OK.\n\nPara eso sirve `Y`, que ya conoces: devuelve VERDADERO solo si se cumplen todas sus condiciones.\n\n`=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`"
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "empresa",
-     "titulo": "Dónde van las comprobaciones",
-     "md": "En los libros bien hechos, los controles viven en su propia hoja (**Comprobaciones**) y la global se repite arriba del informe, para que quien lo abra la vea sin buscarla."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e4",
-     "modo": "formula",
-     "enunciado": "En la hoja Comprobaciones del informe de cobros ya hay tres controles (B2:B4). En **B6** escribe la comprobación global: «TODO CUADRA» si los tres dicen «OK», y «REVISAR» en cualquier otro caso. Escribe los textos tal cual, en mayúsculas.",
-     "hoja": {
-      "celdas": {
-       "A1": "Control",
-       "B1": "Resultado",
-       "A2": "Total de importes",
-       "B2": "OK",
-       "A3": "Número de facturas",
-       "B3": "OK",
-       "A4": "Facturas sin cliente",
-       "B4": "OK",
-       "A6": "Comprobación global"
-      },
-      "anchos": {
-       "A": 22,
-       "B": 16
-      }
-     },
-     "objetivo": "B6",
-     "solucion": "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(CONTAR.SI(B2:B4;\"OK\")=3;\"TODO CUADRA\";\"REVISAR\")",
-      "=SI(Y(B2:B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(O(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
-      "=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")",
-      "=\"TODO CUADRA\""
-     ],
-     "variantes": [
-      {
-       "B3": "REVISAR"
-      },
-      {
-       "B3": "OK",
-       "B4": "REVISAR"
-      }
-     ],
-     "pistas": [
-      "Necesitas que se cumplan las tres condiciones a la vez: eso es Y.",
-      "Dentro de Y van las tres: B2=\"OK\"; B3=\"OK\"; B4=\"OK\". Luego, SI elige el texto.",
-      "=SI(Y(B2=\"OK\";B3=\"OK\";B4=\"OK\");\"TODO CUADRA\";\"REVISAR\")"
-     ],
-     "explicacion": "Una celda, una respuesta: si cualquiera de los controles falla, la global dice REVISAR. Con O bastaría que uno dijera OK para dar el visto bueno, justo lo contrario de lo que quieres."
-    },
-    {
-     "tipo": "texto",
-     "md": "Una hoja puede cuadrar hoy y fallar el mes que viene. Antes de darla por buena, pruébala con los **casos límite**, los que suelen romper las fórmulas:\n\n- **Un mes sin ventas** (ceros o filas vacías).\n- **Un cliente nuevo**, sin datos del mes anterior.\n- **Importes negativos**, como los abonos.\n\nCambia un dato, mira qué pasa y vuelve a dejarlo como estaba."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e5",
-     "modo": "test",
-     "pregunta": "Tu informe calcula, por cliente, la variación de ventas con `=(C2-B2)/B2`, donde B es octubre y C es noviembre. ¿Qué caso límite dará `#¡DIV/0!`?",
-     "opciones": [
-      {
-       "texto": "Un cliente nuevo, que en octubre no compró nada",
-       "correcta": true,
-       "porque": "Exacto: B2 vale 0 y no se puede dividir entre 0. Hay que decidir qué mostrar en ese caso (por ejemplo, «Nuevo») y dejarlo escrito."
-      },
-      {
-       "texto": "Un cliente con un abono en noviembre (importe negativo)",
-       "correcta": false,
-       "porque": "Un negativo en C2 da una variación negativa, pero no un error: dividir entre B2 sigue siendo posible. Eso sí, conviene mirar que el resultado tenga sentido."
-      },
-      {
-       "texto": "Un cliente que en noviembre no compró nada",
-       "correcta": false,
-       "porque": "C2 vale 0 y la fórmula da −100 %: es un resultado correcto (ha dejado de comprar), no un error."
-      }
-     ],
-     "explicacion": "Los casos límite se buscan a propósito antes de entregar: un cliente nuevo, un mes a cero, un abono. Mejor que los encuentres tú que Marta."
-    },
-    {
-     "tipo": "texto",
-     "md": "Y por último, **otra mirada**. En los estudios de Panko, una persona que revisa sola encuentra de media el 60-63 % de los errores; un equipo de tres, el 83 %. Nadie ve bien sus propios fallos.\n\nSi lo que entregas es importante, pide que lo revise otra persona. Si no hay nadie, déjalo reposar y revísalo **tú al día siguiente**, con una lista y sin prisa."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e6",
-     "modo": "ordenar",
-     "enunciado": "Ordena lo que haces con la exportación de cobros, desde que llega hasta que la entregas.",
-     "pasos": [
-      "Anotar cuántas filas hay y cuánto suman según el programa de gestión",
-      "Limpiar los datos y apuntar cuántas filas quitas y por qué",
-      "Construir el informe",
-      "Poner las celdas de control y la comprobación global",
-      "Probar casos límite: un mes a cero, un cliente nuevo, un abono",
-      "Revisarlo con la lista al día siguiente (o que lo revise otra persona) y entregarlo"
-     ],
-     "explicacion": "Lo primero es anotar los totales de la fuente **antes de tocar nada**: si limpias primero, ya no sabrás cuánto había. Y la revisión va al final, con todo montado."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l2-e7",
-     "modo": "formula",
-     "enunciado": "El encargo de Marta. El programa de gestión dice que en octubre se cobraron 12.486,40 € (F2) en 7 facturas (F3). En **F5** escribe una sola fórmula que diga «OK» si el total del informe (C9) se diferencia de F2 menos de un céntimo **y**, además, el número de facturas de A2:A8 coincide con F3. Si falla cualquiera de las dos cosas, «REVISAR».",
-     "hoja": {
-      "celdas": {
-       "A1": "Factura",
-       "B1": "Cliente",
-       "C1": "Cobrado",
-       "A2": "FV-2026-0388",
-       "B2": "Instalaciones Moncayo",
-       "C2": 1815,
-       "A3": "FV-2026-0391",
-       "B3": "Electricidad Arrabal",
-       "C3": 2541.6,
-       "A4": "FV-2026-0395",
-       "B4": "Montajes Ribera",
-       "C4": 968,
-       "A5": "FV-2026-0402",
-       "B5": "Clima y Luz Huesca",
-       "C5": 3025,
-       "A6": "FV-2026-0406",
-       "B6": "Reformas Delicias",
-       "C6": 1452,
-       "A7": "FV-2026-0409",
-       "B7": "Electro Pirineo",
-       "C7": 2117.5,
-       "A8": "FV-2026-0411",
-       "B8": "Instalaciones Segre",
-       "C8": 567.3,
-       "B9": "Total informe",
-       "C9": "=SUMA(C2:C8)",
-       "E2": "Total según el programa",
-       "F2": 12486.4,
-       "E3": "Facturas según el programa",
-       "F3": 7,
-       "E5": "Control"
-      },
-      "formatos": {
-       "C2:C9": "eur",
-       "F2": "eur"
-      },
-      "anchos": {
-       "A": 14,
-       "B": 22,
-       "C": 13,
-       "E": 26,
-       "F": 12
-      }
-     },
-     "objetivo": "F5",
-     "solucion": "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(Y(ABS(F2-C9)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
-      "=SI(Y(CONTARA(A2:A8)=F3;ABS(C9-F2)<0,01);\"OK\";\"REVISAR\")",
-      "=SI(Y(ABS(C9-F2)<=0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(Y(C9=F2;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
-      "=SI(O(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")",
-      "=SI(ABS(C9-F2)<0,01;\"OK\";\"REVISAR\")",
-      "=\"OK\""
-     ],
-     "variantes": [
-      {
-       "F3": 8
-      },
-      {
-       "F3": 7,
-       "C4": 1068
-      },
-      {
-       "C4": 968,
-       "F2": 12486.404
-      }
-     ],
-     "pistas": [
-      "Son dos condiciones que se tienen que cumplir a la vez, el importe y el recuento: eso es Y dentro de SI.",
-      "Condición 1: ABS(C9-F2)<0,01. Condición 2: CONTARA(A2:A8)=F3.",
-      "=SI(Y(ABS(C9-F2)<0,01;CONTARA(A2:A8)=F3);\"OK\";\"REVISAR\")"
-     ],
-     "explicacion": "OK: 7 facturas y 12.486,40 €, igual que el programa. Ya puedes mandar el informe a Carmen sabiendo que cuadra, y el mes que viene la celda avisará sola si algo se descuadra."
-    }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m2l2-q1",
-     "modo": "formula",
-     "enunciado": "Sin mirar arriba: en **D2** escribe la comprobación entre el total del informe (B2) y el del banco (C2): «OK» si se diferencian menos de un céntimo; si no, «REVISAR». Tu fórmula se copiará a D3:D4.",
-     "hoja": {
-      "celdas": {
-       "A1": "Mes",
-       "B1": "Total informe",
-       "C1": "Total banco",
-       "D1": "Control",
-       "A2": "Agosto",
-       "B2": 15230.5,
-       "C2": 15230.5,
-       "A3": "Septiembre",
-       "B3": 17104.2,
-       "C3": 17140.2,
-       "A4": "Octubre",
-       "B4": 18452.3,
-       "C4": 18452.304
-      },
-      "formatos": {
-       "B2:C4": "eur"
-      },
-      "anchos": {
-       "A": 12,
-       "B": 14,
-       "C": 14,
-       "D": 11
-      }
-     },
-     "objetivo": "D2",
-     "copiar_a": [
-      "D3:D4"
-     ],
-     "solucion": "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(ABS(C2-B2)<0,01;\"OK\";\"REVISAR\")",
-      "=SI(ABS(B2-C2)<=0,01;\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(B2=C2;\"OK\";\"REVISAR\")",
-      "=SI(B2-C2<0,01;\"OK\";\"REVISAR\")"
-     ],
-     "variantes": [
-      {
-       "C2": 15330.5
-      }
-     ],
-     "pistas": [
-      "Resta los dos totales, quita el signo y compara con un céntimo.",
-      "La condición del SI es ABS(B2-C2)<0,01.",
-      "=SI(ABS(B2-C2)<0,01;\"OK\";\"REVISAR\")"
-     ],
-     "explicacion": "Septiembre sale REVISAR: 17.104,20 frente a 17.140,20, dos cifras cambiadas de sitio al teclear. Octubre sale OK aunque el banco tenga una fracción de céntimo de diferencia."
-    },
-    {
-     "id": "n6m2l2-q2",
-     "modo": "test",
-     "pregunta": "Un informe suma `=SUMA(C2:C40)`, pero este mes la exportación llega hasta la fila 45. ¿Qué lo habría detectado antes de enviar?",
-     "opciones": [
-      {
-       "texto": "Comparar el número de filas y el total con lo que da el programa de gestión",
-       "correcta": true,
-       "porque": "Sí: faltarían cinco filas en el recuento y su importe en el total. Los controles lo cantan en cuanto los miras."
-      },
-      {
-       "texto": "Mirar que no aparezca ningún `#¡VALOR!`",
-       "correcta": false,
-       "porque": "Una SUMA con el rango corto no da ningún error: suma lo que le pides y se queda tan tranquila."
-      },
-      {
-       "texto": "Poner el total en negrita y con borde doble",
-       "correcta": false,
-       "porque": "El formato hace que el total se vea mejor, no que sea correcto."
-      }
-     ],
-     "explicacion": "Los totales de control y los recuentos son la red que atrapa los errores de la lección anterior: rangos cortos, filas perdidas y sumas dobles."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "funcion",
-     "frente": "Celda de comprobación con tolerancia de un céntimo",
-     "dorso": "`=SI(ABS(A-B)<0,01;\"OK\";\"REVISAR\")`, donde A y B son los dos totales."
-    },
-    {
-     "tipo": "funcion",
-     "frente": "¿Qué hace ABS?",
-     "dorso": "Devuelve el número sin signo: `=ABS(-12,5)` da 12,5."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "Recuento al limpiar datos",
-     "dorso": "Filas que entran − filas que quitas a propósito = filas que quedan (cuéntalas con CONTARA)."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué es la comprobación global?",
-     "dorso": "Una celda, arriba y a la vista, que dice «TODO CUADRA» solo si todos los controles dicen OK: `=SI(Y(B2=\"OK\";B3=\"OK\");\"TODO CUADRA\";\"REVISAR\")`."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué parte de los errores encuentra quien revisa solo, y un equipo de tres (Panko)?",
-     "dorso": "Sola, el 60-63 %; un equipo de tres, el 83 %. Lo importante lo revisa otra persona."
-    }
-   ]
-  },
-  {
-   "id": "n6m2l3",
-   "titulo": "Documentar: la hoja Léeme y el registro de cambios",
-   "minutos": 15,
-   "objetivo": "Dejar un libro documentado (hoja Léeme con supuestos y pasos de actualización, registro de cambios y entregas con fecha y versión) para que otra persona lo mantenga sin ti.",
-   "mision": {
-    "de": "Marta Ruiz",
-    "puesto": "Directora financiera",
-    "texto": "En Navidad te vas dos semanas y el informe de cobros de diciembre lo sacará Nuria. Déjale el libro listo para que no tenga que llamarte: qué es, de dónde salen los datos y cómo se actualiza. Y que quede apuntado lo que hemos ido cambiando este otoño.",
-    "logro": "Ya sabes documentar un libro con su hoja Léeme, sus supuestos, sus pasos de actualización y su registro de cambios, y nombrar cada entrega con fecha y versión, para que otra persona lo mantenga sin ti."
-   },
-   "funciones": [],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "Un libro que solo entiende quien lo hizo tiene fecha de caducidad. Funciona mientras tú estás; el día que te vas de vacaciones, te pones mala o cambias de puesto, alguien tendrá que **adivinar** de dónde salen los datos y qué botón se pulsa.\n\nEl error tiene nombre: **«está todo en mi cabeza»**. Esta lección va de sacarlo de tu cabeza y meterlo **dentro del libro**, en una hoja que se suele llamar **Léeme**."
-    },
-    {
-     "tipo": "mensaje",
-     "de": "Nuria Campos",
-     "puesto": "Administración",
-     "md": "Te cuento una de cuando llegué. El compañero que llevaba las comisiones se jubiló y nos dejó el libro sin una sola nota. Tardamos dos semanas en averiguar por qué la columna H restaba un 2 %: era un descuento pactado con un cliente que ya ni nos compraba. Desde entonces, libro que hago, libro que lleva su Léeme."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e1",
-     "modo": "test",
-     "pregunta": "Te vas de vacaciones y Nuria sacará el informe de cobros. ¿Dónde dejas las instrucciones?",
-     "opciones": [
-      {
-       "texto": "En una hoja «Léeme», la primera del propio libro",
-       "correcta": true,
-       "porque": "Eso es: las instrucciones viajan con el libro. Quien lo abra, hoy o dentro de un año, las ve lo primero."
-      },
-      {
-       "texto": "En un correo a Nuria antes de irte",
-       "correcta": false,
-       "porque": "El correo se queda en la bandeja de Nuria. Quien herede el libro en marzo no lo verá. Las guías de buenas prácticas piden no separar las instrucciones del libro."
-      },
-      {
-       "texto": "Se lo explicas de palabra el último día",
-       "correcta": false,
-       "porque": "En dos semanas se olvida la mitad, y no le sirve a nadie más. Lo que no está escrito sigue estando solo en tu cabeza."
-      },
-      {
-       "texto": "En un documento de Word guardado en tu escritorio",
-       "correcta": false,
-       "porque": "Nadie más lo encuentra, y cuando cambies el libro el Word se quedará viejo. Dentro del libro, en cambio, lo ves cada vez que lo abres."
-      }
-     ],
-     "explicacion": "La hoja Léeme es la primera del libro y explica cómo funciona. Así el libro se explica solo, sin depender de ti."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un buen **Léeme** contesta, en pocas líneas, lo que preguntaría alguien que abre el libro por primera vez:\n\n- **Qué es** y **para quién**.\n- **De dónde salen los datos**: programa, informe y cuándo se exportan.\n- **Cómo se actualiza**, paso a paso.\n- **Supuestos**: las decisiones que has tomado (ahora lo vemos).\n- **Responsable** y suplente.\n- **Fecha y versión**.\n\nNo hace falta que sea bonito: hace falta que esté y que esté al día."
-    },
-    {
-     "tipo": "hoja",
-     "titulo": "Léeme del informe de cobros (primeras líneas)",
-     "hoja": {
-      "celdas": {
-       "A1": "Apartado",
-       "B1": "Contenido",
-       "A2": "Qué es",
-       "B2": "Informe mensual de cobros por cliente",
-       "A3": "Para quién",
-       "B3": "Marta Ruiz (Dirección financiera)",
-       "A4": "De dónde salen los datos",
-       "B4": "Programa de gestión › informe «Cobros por cliente», en CSV",
-       "A5": "Cómo se actualiza",
-       "B5": "Pasos numerados, más abajo",
-       "A6": "Supuestos",
-       "B6": "Importes sin IVA; facturas anuladas, fuera",
-       "A7": "Responsable",
-       "B7": "Tú (suplente: Nuria Campos)",
-       "A8": "Fecha y versión",
-       "B8": "20/11/2026 · v04"
-      },
-      "anchos": {
-       "A": 24,
-       "B": 54
-      },
-      "columnas": 2,
-      "filas": 8
-     },
-     "pie": "Dos columnas bastan: el apartado y lo que hay que saber."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e2",
-     "modo": "test",
-     "pregunta": "Andrés te pasa el libro de pedidos a proveedores que llevaba su antiguo ayudante, con este Léeme:\n\n| Apartado | Contenido |\n|---|---|\n| Qué es | Pedidos semanales a proveedores |\n| Para quién | Andrés Molina (Compras) |\n| Responsable | Andrés Molina |\n| Fecha y versión | 03/11/2026 · v02 |\n\nLa semana que viene te toca actualizarlo a ti. ¿Qué es lo que **más** falta?",
-     "opciones": [
-      {
-       "texto": "De dónde salen los datos y los pasos para actualizarlo",
-       "correcta": true,
-       "porque": "Justo: sabes qué es, pero no de qué informe salen los pedidos ni qué hay que pulsar. Sin eso, tendrás que llamar a Andrés."
-      },
-      {
-       "texto": "Un índice con vínculos a cada hoja",
-       "correcta": false,
-       "porque": "Un índice ayuda a moverse por el libro, pero sin saber de dónde salen los datos no podrás actualizar nada."
-      },
-      {
-       "texto": "La explicación de cada fórmula, celda por celda",
-       "correcta": false,
-       "porque": "Eso sería un manual enorme que nadie lee. Lo que te bloquea no son las fórmulas, sino no saber el origen de los datos ni los pasos."
-      },
-      {
-       "texto": "Nada: con saber qué es y de quién es basta",
-       "correcta": false,
-       "porque": "Es el «está todo en mi cabeza» disimulado: el libro dice qué es, pero no cómo se hace. Te tocaría preguntar."
-      }
-     ],
-     "explicacion": "El origen de los datos y los pasos de actualización son lo que permite que otra persona haga el trabajo sin ti."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un **supuesto** es una decisión que tomaste al construir el informe y que **no se ve** mirando la hoja: «los importes van sin IVA», «las facturas anuladas no cuentan», «un cobro cuenta el día que entra en el banco».\n\nSi no los escribes, alguien comparará tu total con otro informe que sí lleva IVA y creerá que hay un descuadre de miles de euros. Escríbelos aunque te parezcan obvios: hoy lo son para ti; dentro de seis meses, para nadie."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "cuidado",
-     "titulo": "Si cambia un supuesto, cambia el Léeme",
-     "md": "Si Marta te pide incluir las facturas anuladas, no basta con cambiar la fórmula: corrige también el supuesto en el Léeme. Un Léeme que dice una cosa y una hoja que hace otra es peor que no tener Léeme."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e3",
-     "modo": "test",
-     "multiple": true,
-     "pregunta": "Marca **todas** las frases que son supuestos y deben ir escritas en el Léeme del informe de cobros.",
-     "opciones": [
-      {
-       "texto": "Los importes van sin IVA",
-       "correcta": true,
-       "porque": "Sí: no se ve en la hoja y cambia el total un 21 % en las facturas al tipo general. Quien compare con otro informe necesita saberlo."
-      },
-      {
-       "texto": "Las facturas anuladas no se cuentan",
-       "correcta": true,
-       "porque": "Sí: es una decisión tuya (o de Marta) que cambia el número de facturas y el total."
-      },
-      {
-       "texto": "Un cobro cuenta en el mes en que entra en el banco, no en el de la factura",
-       "correcta": true,
-       "porque": "Sí: el mismo cobro puede caer en octubre o en noviembre según la regla. Si no lo escribes, dos personas harán el informe distinto."
-      },
-      {
-       "texto": "La columna D tiene formato de euros",
-       "correcta": false,
-       "porque": "Eso se ve nada más abrir la hoja y no cambia ningún resultado. No es un supuesto."
-      },
-      {
-       "texto": "El libro está hecho con Excel",
-       "correcta": false,
-       "porque": "Es evidente para quien lo abre y no cambia ninguna cifra."
-      }
-     ],
-     "explicacion": "Un supuesto es una regla que **cambia las cifras** y que **no se ve** en la hoja. Esos van siempre por escrito."
-    },
-    {
-     "tipo": "texto",
-     "md": "Las **instrucciones de actualización** son una receta. Reglas:\n\n- Un paso por línea, numerado, y empezando por un verbo: *Exporta*, *Guarda*, *Pulsa*, *Comprueba*.\n- Di **dónde exactamente**: qué informe del programa, qué carpeta, qué botón.\n- Termina con **qué debe verse** al acabar: «la celda de control dice OK».\n\nEscríbelas para alguien que nunca ha visto el libro. Si un paso necesita que te llamen, falta un paso."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "truco",
-     "titulo": "Un paso, una fila",
-     "md": "Puedes escribir varias líneas dentro de una celda con [[Alt]]+[[Intro]], pero en el Léeme se lee mejor cada paso en su propia fila: 1, 2, 3… Así también es fácil añadir uno en medio."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e4",
-     "modo": "ordenar",
-     "enunciado": "Ordena los pasos de actualización del informe de cobros, tal como irían en el Léeme.",
-     "pasos": [
-      "Exporta del programa de gestión el informe «Cobros por cliente» del mes, en CSV",
-      "Guarda el CSV en la carpeta del informe, con el nombre que indica el Léeme",
-      "Abre el libro y pulsa Datos › Actualizar todo",
-      "Comprueba que la celda de control dice «OK»",
-      "Anota en el registro de cambios la fecha, qué has hecho y tu nombre"
-     ],
-     "explicacion": "Primero los datos (exportar y guardar donde los lee el libro), después actualizar, luego **comprobar** antes de dar nada por bueno y, al final, dejarlo apuntado. Si el control dice «REVISAR», el Léeme debe decir qué mirar antes de enviar nada."
-    },
-    {
-     "tipo": "texto",
-     "md": "El **registro de cambios** es el diario del libro: una tabla, al final del Léeme, con una línea por cada cambio. Tres columnas como mínimo:\n\n- **Fecha**.\n- **Qué ha cambiado y por qué**.\n- **Quién** lo ha hecho.\n\nCuando en marzo alguien pregunte «¿por qué en octubre salía distinto?», la respuesta estará escrita: «15/10: fuera las facturas anuladas, lo pide Marta». Sin registro, toca adivinar."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e5",
-     "modo": "formula",
-     "enunciado": "Este es el registro de cambios del informe de cobros. En **F2** escribe una fórmula que muestre la **fecha del último cambio**. Tiene que seguir funcionando cuando alguien añada líneas nuevas debajo, hasta la fila 12.",
-     "hoja": {
-      "celdas": {
-       "A1": "Fecha",
-       "B1": "Versión",
-       "C1": "Qué ha cambiado y por qué",
-       "D1": "Quién",
-       "F1": "Último cambio",
-       "A2": {
-        "fecha": "2026-10-06"
-       },
-       "B2": "v01",
-       "C2": "Primera versión (cobros de septiembre)",
-       "D2": "Tú",
-       "A3": {
-        "fecha": "2026-10-15"
-       },
-       "B3": "v02",
-       "C3": "Fuera las facturas anuladas: lo pide Marta",
-       "D3": "Tú",
-       "A4": {
-        "fecha": "2026-11-05"
-       },
-       "B4": "v03",
-       "C4": "Añadidas las celdas de control",
-       "D4": "Tú",
-       "A5": {
-        "fecha": "2026-11-18"
-       },
-       "B5": "v04",
-       "C5": "Nueva columna Delegación",
-       "D5": "Nuria Campos"
-      },
-      "formatos": {
-       "A2:A12": "fecha",
-       "F2": "fecha"
-      },
-      "anchos": {
-       "A": 11,
-       "B": 8,
-       "C": 40,
-       "D": 13,
-       "E": 3,
-       "F": 14
-      },
-      "columnas": 6,
-      "filas": 12
-     },
-     "objetivo": "F2",
-     "solucion": "=MAX(A2:A12)",
-     "debe_usar": [
-      "MAX"
-     ],
-     "alternativas": [
-      "=MAX(A2:A20)",
-      "=MAX(A2:A100)"
-     ],
-     "errores_tipicos": [
-      "=A5",
-      "=MAX(A2:A5)",
-      "=MIN(A2:A12)"
-     ],
-     "variantes": [
-      {
-       "A6": {
-        "fecha": "2026-11-20"
-       },
-       "B6": "v05",
-       "C6": "Control de facturas duplicadas",
-       "D6": "Tú"
-      }
-     ],
-     "formato_resultado": "fecha",
-     "pistas": [
-      "Las fechas son números: la más reciente es la más grande.",
-      "La función que devuelve el número más grande de un rango es MAX. Abarca también las filas vacías de abajo.",
-      "Escribe `=MAX(A2:A12)`."
-     ],
-     "explicacion": "Ya tienes una celda «Último cambio» que se pone al día sola. Llévala arriba del Léeme: quien abra el libro sabrá al instante si está actualizado. Como el rango llega a la fila 12 y MAX no tiene en cuenta las celdas vacías, las líneas nuevas cuentan sin tocar la fórmula. En tu libro real, convierte el registro en Tabla y crecerá sin límite."
-    },
-    {
-     "tipo": "texto",
-     "md": "En las carpetas compartidas abundan nombres como `informe_final_v2_BUENO_revJuan.xlsx`. ¿Cuál es el último? Nadie lo sabe.\n\nUna forma de nombrar que funciona: **fecha en año-mes-día, proyecto y versión con dos cifras**, sin espacios ni tildes:\n\n`2026-11-20_Cobros-octubre_v03.xlsx`\n\nCon la fecha así, ordenar por nombre es ordenar por fecha. Y con dos cifras (v03, v04… v12), todas las versiones tienen la misma forma."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "empresa",
-     "titulo": "En OneDrive o SharePoint, sin copias",
-     "md": "Si el libro vive en OneDrive o SharePoint, no hagas copias v01, v02… del libro de trabajo: Excel guarda las versiones él solo. Las ves en **Archivo › Información › Historial de versiones**. El nombre con fecha y versión úsalo para lo que **entregas**: el PDF o la copia que guardas en una carpeta «Entregas»."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e6",
-     "modo": "formula",
-     "enunciado": "Marta quiere que todas las entregas se llamen igual. En **B6** ya hay una fórmula que pone la fecha y el proyecto. **Complétala** para que añada `_v` y la versión de **B4** con dos cifras. Debe salir `2026-11-20_Cobros-octubre_v03.xlsx`.",
-     "hoja": {
-      "celdas": {
-       "A1": "Dato",
-       "B1": "Valor",
-       "A2": "Fecha de entrega",
-       "B2": {
-        "fecha": "2026-11-20"
-       },
-       "A3": "Proyecto",
-       "B3": "Cobros-octubre",
-       "A4": "Versión",
-       "B4": 3,
-       "A6": "Nombre del archivo"
-      },
-      "formatos": {
-       "B2": "fecha"
-      },
-      "anchos": {
-       "A": 20,
-       "B": 40
-      },
-      "columnas": 2,
-      "filas": 6
-     },
-     "objetivo": "B6",
-     "inicial": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\".xlsx\"",
-     "solucion": "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
-     "debe_usar": [
-      "TEXTO"
-     ],
-     "alternativas": [
-      "=CONCAT(TEXTO(B2;\"aaaa-mm-dd\");\"_\";B3;\"_v\";TEXTO(B4;\"00\");\".xlsx\")"
-     ],
-     "errores_tipicos": [
-      "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&B4&\".xlsx\"",
-      "=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v0\"&B4&\".xlsx\"",
-      "=B2&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"",
-      "=TEXTO(B2;\"dd-mm-aaaa\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\""
-     ],
-     "variantes": [
-      {
-       "B4": 12
-      },
-      {
-       "B2": {
-        "fecha": "2026-12-03"
-       },
-       "B3": "Cobros-noviembre",
-       "B4": 1
-      }
-     ],
-     "pistas": [
-      "Te falta un trozo entre el proyecto y `\".xlsx\"`: el texto `\"_v\"` y la versión, unidos con `&`.",
-      "Si unes B4 tal cual, sale `v3`. Para que salga `03`, conviértelo con `TEXTO(B4;\"00\")`: el formato `00` rellena con ceros hasta dos cifras.",
-      "`=TEXTO(B2;\"aaaa-mm-dd\")&\"_\"&B3&\"_v\"&TEXTO(B4;\"00\")&\".xlsx\"`"
-     ],
-     "explicacion": "Ya tienes el nombre de cada entrega hecho con fórmula: se acabó el «final_BUENO». `TEXTO(B2;\"aaaa-mm-dd\")` pone la fecha en año-mes-día, para que la carpeta se ordene sola por fecha, y `TEXTO(B4;\"00\")` da v03, v04… v12, siempre con dos cifras. Ponlo en el Léeme y copia ese nombre cada vez que guardes una entrega."
-    },
-    {
-     "tipo": "texto",
-     "md": "Último paso: **probar el manual**. Dale el libro a otra persona (Nuria, por ejemplo) y pídele que lo actualice siguiendo el Léeme **sin preguntarte nada**. Tú solo miras y apuntas.\n\nCada vez que se atasca, falta una línea: añádela y anótalo en el registro de cambios. Si no hay nadie, hazlo tú **al día siguiente**, siguiendo el Léeme al pie de la letra: lo que tengas que «recordar» es justo lo que falta escribir."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m2l3-e7",
-     "modo": "abierta",
-     "pregunta": "**La misión de Marta.** Escribe el Léeme del informe de cobros para que Nuria lo saque en diciembre sin llamarte. Una línea por apartado. Esto es lo que sabes:\n\n- Es el informe mensual de cobros por cliente, para Marta (Carmen recibe el PDF).\n- Los datos salen del programa de gestión, informe «Cobros por cliente», en CSV, el primer día laborable del mes. El CSV va en la carpeta del informe, con el nombre `cobros.csv`.\n- Se actualiza con Datos › Actualizar todo. Hay una celda de control que dice «OK» o «REVISAR».\n- Tus decisiones: importes sin IVA; facturas anuladas, fuera; un cobro cuenta el día que entra en el banco.\n- Responsable: tú. Suplente: Nuria. Hoy es 20/11/2026 y vas por la v04.",
-     "modelo": "**Qué es:** informe mensual de cobros por cliente. **Para quién:** Marta Ruiz (Carmen Soler recibe el PDF).\n**Datos:** programa de gestión › informe «Cobros por cliente», en CSV, el primer día laborable del mes.\n**Cómo se actualiza:**\n1. Exporta el informe «Cobros por cliente» del mes en CSV.\n2. Guárdalo en la carpeta del informe con el nombre cobros.csv, sustituyendo al anterior.\n3. Abre el libro y pulsa Datos › Actualizar todo.\n4. Comprueba que la celda de control dice «OK». Si dice «REVISAR», no envíes nada y avisa a Marta.\n5. Guarda el PDF con el nombre AAAA-MM-DD_Cobros-mes_vNN y envíaselo a Marta.\n6. Anota en el registro de cambios la fecha, qué has hecho y tu nombre.\n**Supuestos:** importes sin IVA; las facturas anuladas no cuentan; un cobro cuenta el día que entra en el banco.\n**Responsable:** yo. **Suplente:** Nuria Campos.\n**Fecha y versión:** 20/11/2026 · v04.",
-     "criterios": [
-      "Dice qué es el informe y para quién",
-      "Indica de dónde salen los datos (programa, informe, formato y cuándo se exporta) y dónde se guarda el CSV",
-      "Da pasos numerados, empezando por un verbo, que incluyen actualizar y comprobar que el control dice «OK» (y qué hacer si dice «REVISAR»)",
-      "Escribe los tres supuestos: sin IVA, anuladas fuera y fecha de cobro",
-      "Pone responsable, suplente, fecha y versión"
-     ]
-    }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m2l3-q1",
-     "modo": "respuesta_corta",
-     "pregunta": "En el registro de cambios, cada línea lleva la fecha y qué ha cambiado (y por qué). ¿Qué tercer dato no puede faltar?",
-     "aceptadas": [
-      "quién",
-      "quien",
-      "quién lo ha hecho",
-      "quien lo ha hecho",
-      "quién lo hizo",
-      "quien lo hizo",
-      "quién lo ha cambiado",
-      "quien lo ha cambiado",
-      "la persona",
-      "la persona que lo hace",
-      "el nombre",
-      "nombre",
-      "autor",
-      "el autor",
-      "responsable",
-      "el responsable"
-     ],
-     "explicacion": "**Quién** lo ha hecho. Así, si algo no cuadra, sabes a quién preguntar. Fecha, qué y por qué, y quién: el diario completo del libro."
-    },
-    {
-     "id": "n6m2l3-q2",
-     "modo": "test",
-     "pregunta": "Vas a guardar las entregas de tres meses en la misma carpeta y quieres que se ordenen solas por fecha. ¿Qué nombres eliges?",
-     "opciones": [
-      {
-       "texto": "2026-09-30_Cobros_v01 · 2026-10-31_Cobros_v01 · 2026-11-20_Cobros_v03",
-       "correcta": true,
-       "porque": "Eso es: con la fecha en año-mes-día, el orden por nombre coincide con el orden por fecha. Y la versión dice cuál es la buena."
-      },
-      {
-       "texto": "30-09-2026_Cobros · 31-10-2026_Cobros · 20-11-2026_Cobros",
-       "correcta": false,
-       "porque": "Así se ordenan por el día: el 20-11 saldría antes que el 30-09. Y sin versión no sabes cuál es la última de cada mes."
-      },
-      {
-       "texto": "Cobros septiembre · Cobros octubre · Cobros noviembre",
-       "correcta": false,
-       "porque": "Por orden alfabético quedarían noviembre, octubre, septiembre. Además no dicen el año ni la versión."
-      },
-      {
-       "texto": "Cobros_final · Cobros_final2 · Cobros_BUENO",
-       "correcta": false,
-       "porque": "El clásico: nadie sabe cuál es el último ni de qué mes es cada uno."
-      }
-     ],
-     "explicacion": "Fecha en año-mes-día al principio, proyecto y versión con dos cifras: la carpeta se ordena sola."
-    },
-    {
-     "id": "n6m2l3-q3",
-     "modo": "test",
-     "pregunta": "Has terminado el Léeme del informe de cobros. ¿Cuál es la mejor forma de saber si sirve?",
-     "opciones": [
-      {
-       "texto": "Que Nuria actualice el informe siguiéndolo, sin preguntarte, mientras tú apuntas dónde se atasca",
-       "correcta": true,
-       "porque": "Eso es probarlo de verdad: cada atasco es una línea que falta en el Léeme."
-      },
-      {
-       "texto": "Releerlo tú con calma antes de irte",
-       "correcta": false,
-       "porque": "Al releer, tu cabeza rellena los huecos sin que te des cuenta. Si no hay nadie, síguelo tú al día siguiente, paso a paso y al pie de la letra."
-      },
-      {
-       "texto": "Mandárselo a Marta para que dé el visto bueno",
-       "correcta": false,
-       "porque": "Marta no va a actualizar el informe: leerlo no es probarlo. Quien tiene que poder seguirlo es quien lo va a hacer."
-      },
-      {
-       "texto": "Añadir capturas de pantalla de todo",
-       "correcta": false,
-       "porque": "Pueden ayudar, pero sin probarlo no sabes qué falta. Primero la prueba; después, las capturas donde alguien se haya atascado."
-      }
-     ],
-     "explicacion": "Un manual se prueba usándolo: otra persona lo sigue sin ayuda, o tú al día siguiente, al pie de la letra."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué lleva una hoja Léeme?",
-     "dorso": "Qué es y para quién; de dónde salen los datos; cómo se actualiza, paso a paso; supuestos; responsable y suplente; fecha y versión."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué es un supuesto y dónde se escribe?",
-     "dorso": "Una decisión que cambia las cifras y no se ve en la hoja («importes sin IVA», «anuladas fuera»). Va escrito en el Léeme."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "Columnas del registro de cambios",
-     "dorso": "Fecha · qué ha cambiado y por qué · quién. Una línea por cambio."
-    },
-    {
-     "tipo": "funcion",
-     "frente": "Nombre de entrega que se ordena solo por fecha",
-     "dorso": "AAAA-MM-DD_Proyecto_vNN, p. ej. 2026-11-20_Cobros-octubre_v03.xlsx. Con fórmula: TEXTO(fecha;\"aaaa-mm-dd\") y TEXTO(versión;\"00\")."
-    },
-    {
-     "tipo": "error",
-     "frente": "«Está todo en mi cabeza»: ¿cómo compruebas que no?",
-     "dorso": "Otra persona actualiza el libro siguiendo el Léeme sin preguntarte. Cada atasco es una línea que falta."
-    }
-   ]
-  }
- ]
+  ]
 }

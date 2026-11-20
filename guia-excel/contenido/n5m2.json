@@ -849,7 +849,7 @@
           "pregunta": "Andrés quiere cruzar las ventas con los pedidos a proveedor e intenta relacionar `Ventas[CodProducto]` con `PedidosProveedor[CodProducto]`. Excel no le deja. ¿Por qué?",
           "opciones": [
             {
-              "texto": "Porque en ninguna de las dos tablas el código es único: un producto sale en muchas ventas y en muchos pedidos",
+              "texto": "Porque el código se repite en las dos tablas: en ninguna es único",
               "correcta": true,
               "porque": "Es una relación de **varios a varios**, y Excel solo crea la relación si una de las dos columnas tiene valores únicos. La solución: relacionar Ventas con Productos y PedidosProveedor con Productos. La dimensión queda en medio y sirve a las dos."
             },
@@ -1158,7 +1158,7 @@
           "pregunta": "Añades Familia (de Productos) a tu tabla dinámica del modelo y aparece «Pueden ser necesarias relaciones entre tablas». ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Crear la relación Ventas[CodProducto] → Productos[CodProducto] en Datos › Relaciones",
+              "texto": "Crear en Datos › Relaciones la relación por CodProducto",
               "correcta": true,
               "porque": "El aviso dice que falta un hilo entre las tablas que estás cruzando. Con la relación, cada venta encuentra su familia."
             },
@@ -1168,7 +1168,7 @@
               "porque": "Funcionaría, pero vuelves a la tabla gigante con datos repetidos. La relación hace lo mismo sin copiar nada."
             },
             {
-              "texto": "Actualizar la tabla dinámica",
+              "texto": "Actualizar la tabla dinámica para que lea otra vez las tablas",
               "correcta": false,
               "porque": "Actualizar vuelve a leer los datos, pero no crea las relaciones que faltan."
             }

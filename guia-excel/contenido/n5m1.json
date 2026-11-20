@@ -865,14 +865,14 @@
           "pregunta": "Apilas Zaragoza (Pedido, Cliente, Importe) y, debajo, Pamplona (Pedido, Cliente, **Comercial**, Importe). ¿Qué sale?",
           "opciones": [
             {
-              "texto": "Una 3.ª columna que mezcla importes de Zaragoza con comerciales de Pamplona, y #N/D en la 4.ª columna de las filas de Zaragoza",
+              "texto": "Importes y comerciales mezclados en la 3.ª columna, y #N/D en la 4.ª",
               "correcta": true,
-              "porque": "Eso es: APILARV coloca por posición, no por nombre, y rellena con #N/D lo que falta. Por eso las dos listas deben tener las mismas columnas en el mismo orden."
+              "porque": "Eso es: APILARV coloca por posición, no por nombre. La 3.ª columna mezcla importes de Zaragoza con comerciales de Pamplona, y las filas de Zaragoza, que solo tienen tres columnas, se rellenan con #N/D en la 4.ª. Por eso las dos listas deben tener las mismas columnas en el mismo orden."
             },
             {
-              "texto": "Cada dato bajo su cabecera correcta",
+              "texto": "Cada dato bajo su cabecera, con Comercial vacío en Zaragoza",
               "correcta": false,
-              "porque": "APILARV no lee los nombres de las columnas, solo su posición."
+              "porque": "Eso pasaría si APILARV leyera los nombres de las columnas, pero solo mira su posición: no deja huecos donde tú los esperas."
             },
             {
               "texto": "Un error #¡DESBORDAMIENTO! en la celda de la fórmula",
@@ -1478,22 +1478,22 @@
           "pregunta": "Has montado el resumen de ventas por delegación. ¿Cómo compruebas que no se ha quedado fuera ningún pedido?",
           "opciones": [
             {
-              "texto": "La suma de las ventas por delegación debe ser igual a la suma de todos los importes",
+              "texto": "Comparar el total del resumen con la suma de todos los importes",
               "correcta": true,
               "porque": "Es un total de control: si no cuadra, falta algún pedido (por ejemplo, una delegación mal escrita) o sobra alguno."
             },
             {
-              "texto": "Si no sale ningún error, está bien",
+              "texto": "Mirar que ninguna fórmula del resumen dé error",
               "correcta": false,
               "porque": "Una fórmula puede no dar error y estar mal: una delegación escrita «Zaragoza » con un espacio no sumaría y nadie lo notaría."
             },
             {
-              "texto": "Contar cuántas delegaciones aparecen",
+              "texto": "Comprobar que salen todas las delegaciones",
               "correcta": false,
               "porque": "Te dice si están todas las delegaciones, no si están todos los importes."
             },
             {
-              "texto": "Mirar si los números parecen razonables",
+              "texto": "Mirar si las cifras de cada delegación parecen razonables",
               "correcta": false,
               "porque": "A ojo no se ve que falte un pedido de 615 € entre miles de euros. Mejor un cuadre exacto."
             }
@@ -1576,7 +1576,7 @@
           "pregunta": "Lee esta función: `=LAMBDA(precio;dto;precio*(1-dto))`. ¿Qué hace?",
           "opciones": [
             {
-              "texto": "Recibe un precio y un descuento, y devuelve el precio con el descuento aplicado",
+              "texto": "Devuelve el precio con el descuento ya aplicado",
               "correcta": true,
               "porque": "Eso es: dos parámetros (precio y dto) y una cuenta que multiplica el precio por lo que queda tras el descuento."
             },
@@ -1586,12 +1586,12 @@
               "porque": "LAMBDA es el nombre de la función. Los parámetros son precio y dto; lo último es la cuenta."
             },
             {
-              "texto": "Devuelve el descuento en euros",
+              "texto": "Devuelve el descuento en euros que se le hace al precio",
               "correcta": false,
               "porque": "Eso sería precio*dto. Aquí se multiplica por (1 − dto): lo que queda después del descuento."
             },
             {
-              "texto": "Calcula el precio con IVA",
+              "texto": "Calcula el precio con el IVA ya incluido",
               "correcta": false,
               "porque": "No hay IVA por ningún lado: solo precio y descuento."
             }
@@ -1664,7 +1664,7 @@
           "tipo": "mensaje",
           "de": "Nuria Campos",
           "puesto": "Administración",
-          "md": "Una función sin explicar es una caja negra. Hace dos años alguien dejó una «CALC_PORTES» en la hoja de pedidos, se fue de la empresa y nadie sabía qué hacía ni si estaba bien. Escribe siempre el **Comentario**: Sale junto a la función en el Administrador de nombres, y es lo primero que leerá quien herede el libro. Y apunta en el libro los casos de prueba con su resultado."
+          "md": "Una función sin explicar es una caja negra. Hace dos años alguien dejó una «CALC_PORTES» en la hoja de pedidos, se fue de la empresa y nadie sabía qué hacía ni si estaba bien. Escribe siempre el **Comentario**: sale junto a la función en el Administrador de nombres, y es lo primero que leerá quien herede el libro. Y apunta en el libro los casos de prueba con su resultado."
         },
         {
           "tipo": "texto",
@@ -1752,7 +1752,7 @@
           "pregunta": "Creaste PRECIO_FINAL en el libro de presupuestos y allí funciona. Javier, que tiene Microsoft 365 como tú, la escribe en su propio libro de ofertas y le sale **#¿NOMBRE?**. ¿Por qué?",
           "opciones": [
             {
-              "texto": "La función solo existe en el libro donde se creó; en el libro de Javier hay que definirla también",
+              "texto": "La función solo existe en el libro donde se creó",
               "correcta": true,
               "porque": "Correcto: un nombre definido pertenece a su libro. Javier tiene que crearla en el suyo con la misma LAMBDA."
             },
@@ -1767,7 +1767,7 @@
               "porque": "Con el Ámbito «Libro», que es el que viene marcado, funcionan en todas las hojas de ese libro."
             },
             {
-              "texto": "Falta pulsar Actualizar",
+              "texto": "Falta pulsar Datos › Actualizar todo en su libro",
               "correcta": false,
               "porque": "Actualizar es para tablas dinámicas y Power Query. Las fórmulas se recalculan solas."
             }
@@ -1807,9 +1807,9 @@
           "pregunta": "Mezcla de todo el módulo. ¿Qué herramienta encaja con este problema: «En 40 hojas cada uno calcula los portes con su propia fórmula y salen resultados distintos»?",
           "opciones": [
             {
-              "texto": "LAMBDA: una función de la casa con nombre, definida una sola vez",
+              "texto": "LAMBDA",
               "correcta": true,
-              "porque": "Eso es: una sola definición, probada y documentada, que todos usan igual."
+              "porque": "Eso es: una función de la casa con nombre, definida una sola vez, probada y documentada, que todos usan igual."
             },
             {
               "texto": "DIVIDIRTEXTO",
@@ -1824,7 +1824,7 @@
             {
               "texto": "TOMAR",
               "correcta": false,
-              "porque": "TOMAR devuelve las primeras o últimas filas de una tabla."
+              "porque": "TOMAR devuelve las primeras o las últimas filas de una tabla; no sirve para que todos calculen igual."
             }
           ]
         },

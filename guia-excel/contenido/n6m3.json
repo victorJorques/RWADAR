@@ -1,1439 +1,1439 @@
 {
- "id": "n6m3",
- "nivel": "n6",
- "titulo": "Entregar y mantener",
- "intro": "Un buen trabajo que nadie entiende, que llega a quien no debe o que se para cuando tú no estás sirve de poco. En este módulo aprendes a entregar con las conclusiones delante, a compartir sin que se escape ningún dato personal y a mantener un informe mes a mes, avisando a tiempo cuando algo no llega.",
- "repaso_inicial": [
-  {
-   "id": "n6m3-r1",
-   "modo": "formula",
-   "enunciado": "Repaso: comprobar antes de entregar. En **E4** escribe la celda de control: **OK** si la suma de los importes (C2:C6) coincide con el total que da el programa de gestión (**E2**), y **REVISAR** si no. Usa ABS y una tolerancia de 0,01 € para que los céntimos del redondeo no den falsas alarmas.",
-   "hoja": {
-    "celdas": {
-     "A1": "Factura",
-     "B1": "Cliente",
-     "C1": "Importe",
-     "E1": "Total del programa",
-     "E3": "Control",
-     "A2": "F-2026-0811",
-     "B2": "Instalaciones Moncayo",
-     "C2": 1250.4,
-     "A3": "F-2026-0812",
-     "B3": "Montajes Cinca",
-     "C3": 3480,
-     "A4": "F-2026-0815",
-     "B4": "Reformas Jalón",
-     "C4": 912.35,
-     "A5": "F-2026-0817",
-     "B5": "Electro Huesca",
-     "C5": 2200,
-     "A6": "F-2026-0820",
-     "B6": "Electricidad Arga",
-     "C6": 615.25,
-     "E2": 8458
-    },
-    "formatos": {
-     "C2:C6": "eur",
-     "E2": "eur"
-    },
-    "anchos": {
-     "A": 12,
-     "B": 22,
-     "C": 11,
-     "D": 3,
-     "E": 18
-    }
-   },
-   "objetivo": "E4",
-   "solucion": "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")",
-   "alternativas": [
-    "=SI(ABS(E2-SUMA(C2:C6))<0,01;\"OK\";\"REVISAR\")",
-    "=SI(ABS(SUMA(C2:C6)-E2)>=0,01;\"REVISAR\";\"OK\")"
-   ],
-   "errores_tipicos": [
-    "=SI(SUMA(C2:C6)-E2<0,01;\"OK\";\"REVISAR\")",
-    "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"REVISAR\";\"OK\")",
-    "=\"OK\""
-   ],
-   "variantes": [
+  "id": "n6m3",
+  "nivel": "n6",
+  "titulo": "Entregar y mantener",
+  "intro": "Un buen trabajo que nadie entiende, que llega a quien no debe o que se para cuando tú no estás sirve de poco. En este módulo aprendes a entregar con las conclusiones delante, a compartir sin que se escape ningún dato personal y a mantener un informe mes a mes, avisando a tiempo cuando algo no llega.",
+  "repaso_inicial": [
     {
-     "C4": 900
-    },
-    {
-     "E2": 9000
-    }
-   ],
-   "pistas": [
-    "Empieza por la diferencia entre tu suma y el total del programa: `SUMA(C2:C6)-E2`.",
-    "ABS le quita el signo a esa diferencia; compárala con 0,01: `ABS(SUMA(C2:C6)-E2)<0,01`.",
-    "`=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")`"
-   ],
-   "explicacion": "Cuadra: 8.458 € en los dos lados. Esta celda es la que te deja entregar tranquila. En este módulo la usarás antes de cada entrega."
-  },
-  {
-   "id": "n6m3-r2",
-   "modo": "test",
-   "pregunta": "Javier te escribe: «Prepárame un informe de ventas para el lunes». ¿Qué le preguntas antes de empezar?",
-   "opciones": [
-    {
-     "texto": "Para qué lo quiere, de qué periodo y con qué detalle (por comercial, por cliente…)",
-     "correcta": true,
-     "porque": "Eso es: con el para qué, el periodo y el detalle evitas tener que rehacerlo el lunes."
-    },
-    {
-     "texto": "Nada: mejor no molestarle y hacerlo lo más completo posible",
-     "correcta": false,
-     "porque": "«Lo más completo posible» suele ser lo que no necesitaba. Dos minutos de preguntas ahorran horas de trabajo."
-    },
-    {
-     "texto": "Qué colores quiere en los gráficos",
-     "correcta": false,
-     "porque": "Puede importar al final, pero no decide qué hay que calcular. Primero, para qué y con qué datos."
-    }
-   ],
-   "explicacion": "Un encargo ambiguo se aclara antes de empezar, no después de entregar."
-  },
-  {
-   "id": "n6m3-r3",
-   "modo": "test",
-   "pregunta": "Quieres que una IA te ayude con una fórmula de la hoja de nóminas. ¿Qué haces?",
-   "opciones": [
-    {
-     "texto": "Usar la herramienta que autoriza la empresa, con tu cuenta de trabajo, y darle datos inventados con la misma estructura",
-     "correcta": true,
-     "porque": "Eso es: para ayudarte con una fórmula basta la estructura. Los datos de verdad no salen de donde deben estar."
-    },
-    {
-     "texto": "Pegar la hoja en una IA gratuita con tu cuenta personal, que va más rápida",
-     "correcta": false,
-     "porque": "Sacas datos personales de la plantilla a un servicio que la empresa no controla. Nunca datos personales ni confidenciales en una IA personal."
-    },
-    {
-     "texto": "Pegarla tal cual en la IA autorizada, con salarios y DNI incluidos, porque es de la empresa",
-     "correcta": false,
-     "porque": "Aunque la herramienta esté autorizada, no hace falta darle los datos de nadie: con datos inventados te ayuda igual."
-    }
-   ],
-   "explicacion": "Herramienta autorizada, cuenta de trabajo y solo los datos imprescindibles. Es la misma idea que verás en este módulo: no compartir de más."
-  }
- ],
- "practica_excel": null,
- "lecciones": [
-  {
-   "id": "n6m3l1",
-   "titulo": "Entregar: primero las conclusiones",
-   "minutos": 15,
-   "objetivo": "Escribir el correo de entrega de un análisis con la conclusión primero, en lenguaje de negocio, eligiendo entre PDF o enlace y diciendo con claridad lo que falta.",
-   "mision": {
-    "de": "Carmen Soler",
-    "puesto": "Directora general",
-    "texto": "El jueves presento a los socios las ventas de octubre por delegación. Mándame hoy lo que has preparado, pero no me hagas buscar: en un minuto quiero saber qué pasa y qué tengo que vigilar.",
-    "logro": "Ya sabes entregar un análisis con las conclusiones delante, en lenguaje de negocio y diciendo claramente lo que falta."
-   },
-   "funciones": [],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "Ya tienes el análisis de ventas hecho y cuadrado. Ahora viene la parte que más se nota: **la entrega**.\n\nQuien lo recibe no ha visto tus fórmulas y no tiene tiempo de abrir el libro para adivinar. Quiere saber **qué pasa** y **qué tiene que hacer**.\n\nPor eso el correo «Te adjunto el Excel» se queda corto: le pasa a ella el trabajo de entenderlo. La regla de esta lección es sencilla: **primero las conclusiones, después el detalle**."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e1",
-     "modo": "test",
-     "pregunta": "Carmen tiene un minuto entre dos reuniones. ¿Qué correo le sirve?",
-     "opciones": [
-      {
-       "texto": "«Octubre: vendemos lo mismo que hace un año (+0,3 %), pero Pamplona cae un 15 %. Te lo explico abajo.»",
-       "correcta": true,
-       "porque": "Eso es: la respuesta en la primera línea, con su cifra. Si solo lee eso, ya sabe lo esencial."
+      "id": "n6m3-r1",
+      "modo": "formula",
+      "enunciado": "Repaso: comprobar antes de entregar. En **E4** escribe la celda de control: **OK** si la suma de los importes (C2:C6) coincide con el total que da el programa de gestión (**E2**), y **REVISAR** si no. Usa ABS y una tolerancia de 0,01 € para que los céntimos del redondeo no den falsas alarmas.",
+      "hoja": {
+        "celdas": {
+          "A1": "Factura",
+          "B1": "Cliente",
+          "C1": "Importe",
+          "E1": "Total del programa",
+          "E3": "Control",
+          "A2": "F-2026-0811",
+          "B2": "Instalaciones Moncayo",
+          "C2": 1250.4,
+          "A3": "F-2026-0812",
+          "B3": "Montajes Cinca",
+          "C3": 3480,
+          "A4": "F-2026-0815",
+          "B4": "Reformas Jalón",
+          "C4": 912.35,
+          "A5": "F-2026-0817",
+          "B5": "Electro Huesca",
+          "C5": 2200,
+          "A6": "F-2026-0820",
+          "B6": "Electricidad Arga",
+          "C6": 615.25,
+          "E2": 8458
+        },
+        "formatos": {
+          "C2:C6": "eur",
+          "E2": "eur"
+        },
+        "anchos": {
+          "A": 12,
+          "B": 22,
+          "C": 11,
+          "D": 3,
+          "E": 18
+        }
       },
-      {
-       "texto": "«Te adjunto el Excel con las ventas de octubre. Cualquier cosa, me dices.»",
-       "correcta": false,
-       "porque": "Le toca a ella abrir el libro y sacar las conclusiones. En un minuto no le da tiempo, y lo importante (Pamplona cae) se le puede pasar."
+      "objetivo": "E4",
+      "solucion": "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")",
+      "alternativas": [
+        "=SI(ABS(E2-SUMA(C2:C6))<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(SUMA(C2:C6)-E2)>=0,01;\"REVISAR\";\"OK\")"
+      ],
+      "errores_tipicos": [
+        "=SI(SUMA(C2:C6)-E2<0,01;\"OK\";\"REVISAR\")",
+        "=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"REVISAR\";\"OK\")",
+        "=\"OK\""
+      ],
+      "variantes": [
+        {
+          "C4": 900
+        },
+        {
+          "E2": 9000
+        }
+      ],
+      "pistas": [
+        "Empieza por la diferencia entre tu suma y el total del programa: `SUMA(C2:C6)-E2`.",
+        "ABS le quita el signo a esa diferencia; compárala con 0,01: `ABS(SUMA(C2:C6)-E2)<0,01`.",
+        "`=SI(ABS(SUMA(C2:C6)-E2)<0,01;\"OK\";\"REVISAR\")`"
+      ],
+      "explicacion": "Cuadra: 8.458 € en los dos lados. Esta celda es la que te deja entregar tranquila. En este módulo la usarás antes de cada entrega."
+    },
+    {
+      "id": "n6m3-r2",
+      "modo": "test",
+      "pregunta": "Javier te escribe: «Prepárame un informe de ventas para el lunes». ¿Qué le preguntas antes de empezar?",
+      "opciones": [
+        {
+          "texto": "Para qué lo quiere, de qué periodo y con qué detalle",
+          "correcta": true,
+          "porque": "Eso es: con el para qué, el periodo y el detalle (por comercial, por cliente…) evitas tener que rehacerlo el lunes."
+        },
+        {
+          "texto": "Nada: mejor no molestarle y hacerlo lo más completo posible",
+          "correcta": false,
+          "porque": "«Lo más completo posible» suele ser lo que no necesitaba. Dos minutos de preguntas ahorran horas de trabajo."
+        },
+        {
+          "texto": "Qué colores quiere en los gráficos",
+          "correcta": false,
+          "porque": "Puede importar al final, pero no decide qué hay que calcular. Primero, para qué y con qué datos."
+        }
+      ],
+      "explicacion": "Un encargo ambiguo se aclara antes de empezar, no después de entregar."
+    },
+    {
+      "id": "n6m3-r3",
+      "modo": "test",
+      "pregunta": "Quieres que una IA te ayude con una fórmula de la hoja de nóminas. ¿Qué haces?",
+      "opciones": [
+        {
+          "texto": "Usar la IA que autoriza la empresa, con tu cuenta de trabajo y datos inventados con la misma estructura",
+          "correcta": true,
+          "porque": "Eso es: para ayudarte con una fórmula basta la estructura. Los datos de verdad no salen de donde deben estar."
+        },
+        {
+          "texto": "Pegar la hoja en una IA gratuita con tu cuenta personal, que va más rápida",
+          "correcta": false,
+          "porque": "Sacas datos personales de la plantilla a un servicio que la empresa no controla. Nunca datos personales ni confidenciales en una IA personal."
+        },
+        {
+          "texto": "Pegarla tal cual en la IA autorizada, con salarios y DNI incluidos, porque es de la empresa",
+          "correcta": false,
+          "porque": "Aunque la herramienta esté autorizada, no hace falta darle los datos de nadie: con datos inventados te ayuda igual."
+        }
+      ],
+      "explicacion": "Herramienta autorizada, cuenta de trabajo y solo los datos imprescindibles. Es la misma idea que verás en este módulo: no compartir de más."
+    }
+  ],
+  "practica_excel": null,
+  "lecciones": [
+    {
+      "id": "n6m3l1",
+      "titulo": "Entregar: primero las conclusiones",
+      "minutos": 15,
+      "objetivo": "Escribir el correo de entrega de un análisis con la conclusión primero, en lenguaje de negocio, eligiendo entre PDF o enlace y diciendo con claridad lo que falta.",
+      "mision": {
+        "de": "Carmen Soler",
+        "puesto": "Directora general",
+        "texto": "El jueves presento a los socios las ventas de octubre por delegación. Mándame hoy lo que has preparado, pero no me hagas buscar: en un minuto quiero saber qué pasa y qué tengo que vigilar.",
+        "logro": "Ya sabes entregar un análisis con las conclusiones delante, en lenguaje de negocio y diciendo claramente lo que falta."
       },
-      {
-       "texto": "«He cruzado la exportación con BUSCARX y he hecho una tabla dinámica con segmentación por delegación.»",
-       "correcta": false,
-       "porque": "Eso cuenta cómo lo has hecho, no qué ha salido. A la dirección le interesa el resultado; las herramientas, a quien mantenga el libro."
-      }
-     ],
-     "explicacion": "Lo primero que lee es lo único que seguro que lee. Pon ahí la respuesta, con su cifra."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un buen correo de entrega se lee **de lo que más importa a lo que menos**. Es la idea de la «pirámide» de Barbara Minto (autora de *The Minto Pyramid Principle*): una idea principal arriba y, debajo, lo que la sostiene.\n\n1. **Titular** con la respuesta.\n2. **Tres conclusiones**, cada una con su cifra.\n3. **Qué vigilar** y qué propones.\n4. **Qué incluye el archivo** y dónde está.\n5. **Supuestos y limitaciones**: lo que has dado por hecho y lo que falta."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e2",
-     "modo": "ordenar",
-     "enunciado": "Ordena las partes del correo de entrega, de la primera línea a la última.",
-     "pasos": [
-      "Titular con la respuesta y su cifra",
-      "Tres conclusiones, cada una con su cifra",
-      "Qué vigilar y qué propones",
-      "Qué incluye el archivo y dónde está",
-      "Supuestos y limitaciones: lo que has dado por hecho y lo que falta"
-     ],
-     "explicacion": "De lo que más importa a lo que menos. Si Carmen deja de leer en la segunda línea, ya se lleva lo esencial; quien quiera el detalle sigue bajando."
-    },
-    {
-     "tipo": "texto",
-     "md": "Escribe en **lenguaje de negocio**, no de Excel. A Carmen no le importa qué función has usado; le importa qué significa para la empresa.\n\nTres costumbres que ayudan:\n- **Redondea para presentar**: «28 mil €», no «28.213,47 €». El dato exacto se queda en el libro.\n- **Compara siempre**: una cifra sola no dice nada; «un 15 % menos que en octubre de 2025», sí.\n- **Nombra cosas, no celdas**: «Pamplona», no «la fila 3 de la hoja Cálculos»."
-    },
-    {
-     "tipo": "comparar",
-     "izq": "Así no",
-     "der": "Así sí",
-     "filas": [
-      [
-       "He hecho un SUMAR.SI.CONJUNTO por delegación y mes",
-       "Pamplona vende 28 mil € menos que en octubre de 2025"
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Ya tienes el análisis de ventas hecho y cuadrado. Ahora viene la parte que más se nota: **la entrega**.\n\nQuien lo recibe no ha visto tus fórmulas y no tiene tiempo de abrir el libro para adivinar. Quiere saber **qué pasa** y **qué tiene que hacer**.\n\nPor eso el correo «Te adjunto el Excel» se queda corto: le pasa a ella el trabajo de entenderlo. La regla de esta lección es sencilla: **primero las conclusiones, después el detalle**."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e1",
+          "modo": "test",
+          "pregunta": "Carmen tiene un minuto entre dos reuniones. ¿Qué correo le sirve?",
+          "opciones": [
+            {
+              "texto": "«Octubre: vendemos lo mismo que hace un año (+0,3 %), pero Pamplona cae un 15 %. Te lo explico abajo.»",
+              "correcta": true,
+              "porque": "Eso es: la respuesta en la primera línea, con su cifra. Si solo lee eso, ya sabe lo esencial."
+            },
+            {
+              "texto": "«Te adjunto el Excel con las ventas de octubre. Cualquier cosa, me dices.»",
+              "correcta": false,
+              "porque": "Le toca a ella abrir el libro y sacar las conclusiones. En un minuto no le da tiempo, y lo importante (Pamplona cae) se le puede pasar."
+            },
+            {
+              "texto": "«He cruzado la exportación con BUSCARX y he hecho una tabla dinámica con segmentación por delegación.»",
+              "correcta": false,
+              "porque": "Eso cuenta cómo lo has hecho, no qué ha salido. A la dirección le interesa el resultado; las herramientas, a quien mantenga el libro."
+            }
+          ],
+          "explicacion": "Lo primero que lee es lo único que seguro que lee. Pon ahí la respuesta, con su cifra."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un buen correo de entrega se lee **de lo que más importa a lo que menos**. Es la idea de la «pirámide» de Barbara Minto (autora de *The Minto Pyramid Principle*): una idea principal arriba y, debajo, lo que la sostiene.\n\n1. **Titular** con la respuesta.\n2. **Tres conclusiones**, cada una con su cifra.\n3. **Qué vigilar** y qué propones.\n4. **Qué incluye el archivo** y dónde está.\n5. **Supuestos y limitaciones**: lo que has dado por hecho y lo que falta."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e2",
+          "modo": "ordenar",
+          "enunciado": "Ordena las partes del correo de entrega, de la primera línea a la última.",
+          "pasos": [
+            "Titular con la respuesta y su cifra",
+            "Tres conclusiones, cada una con su cifra",
+            "Qué vigilar y qué propones",
+            "Qué incluye el archivo y dónde está",
+            "Supuestos y limitaciones: lo que has dado por hecho y lo que falta"
+          ],
+          "explicacion": "De lo que más importa a lo que menos. Si Carmen deja de leer en la segunda línea, ya se lleva lo esencial; quien quiera el detalle sigue bajando."
+        },
+        {
+          "tipo": "texto",
+          "md": "Escribe en **lenguaje de negocio**, no de Excel. A Carmen no le importa qué función has usado; le importa qué significa para la empresa.\n\nTres costumbres que ayudan:\n- **Redondea para presentar**: «28 mil €», no «28.213,47 €». El dato exacto se queda en el libro.\n- **Compara siempre**: una cifra sola no dice nada; «un 15 % menos que en octubre de 2025», sí.\n- **Nombra cosas, no celdas**: «Pamplona», no «la fila 3 de la hoja Cálculos»."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "He hecho un SUMAR.SI.CONJUNTO por delegación y mes",
+              "Pamplona vende 28 mil € menos que en octubre de 2025"
+            ],
+            [
+              "La variación sale -0,151345",
+              "Pamplona cae un 15 %"
+            ],
+            [
+              "Mira la celda F12 de la hoja Cálculos",
+              "El detalle por cliente está en la hoja Informe"
+            ],
+            [
+              "Me salen tres #N/D al cruzar con el maestro de clientes",
+              "Tres facturas eran de clientes dados de alta este mes; ya están incluidas"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e3",
+          "modo": "formula",
+          "enunciado": "Para las conclusiones necesitas la variación de cada delegación. En **D2** calcula cuánto cambian las ventas de Zaragoza de octubre de 2025 (**B2**) a octubre de 2026 (**C2**), en porcentaje. Tu fórmula se copiará hasta D5. En D2 debe salir **4,8 %**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Oct 2025",
+              "C1": "Oct 2026",
+              "D1": "Variación",
+              "A2": "Zaragoza",
+              "B2": 412300,
+              "C2": 431900,
+              "A3": "Pamplona",
+              "B3": 186400,
+              "C3": 158200,
+              "A4": "Lleida",
+              "B4": 128700,
+              "C4": 139500,
+              "A5": "Total",
+              "B5": "=SUMA(B2:B4)",
+              "C5": "=SUMA(C2:C4)"
+            },
+            "formatos": {
+              "B2:C5": "#.##0 €",
+              "D2:D5": "pct1"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12,
+              "C": 12,
+              "D": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D5"
+          ],
+          "solucion": "=C2/B2-1",
+          "alternativas": [
+            "=(C2-B2)/B2",
+            "=(C2/B2)-1"
+          ],
+          "errores_tipicos": [
+            "=C2-B2",
+            "=(C2-B2)/C2",
+            "=C2-B2/B2",
+            "=B2/C2-1"
+          ],
+          "variantes": [
+            {
+              "B2": 400000,
+              "C2": 440000
+            }
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "La variación compara lo nuevo con lo antiguo: cuánto ha cambiado, dividido entre lo que había.",
+            "Lo que había está en B2 y lo nuevo en C2. Divide lo nuevo entre lo antiguo y réstale 1 (o resta los dos y divide entre B2).",
+            "Escribe `=C2/B2-1`. Ojo con `=C2-B2/B2`: sin paréntesis, Excel divide antes de restar."
+          ],
+          "explicacion": "Zaragoza +4,8 %, Pamplona −15,1 %, Lleida +8,4 % y el total +0,3 %. Ya tienes la cifra de cada conclusión. Con este cálculo comparas cualquier mes con el mismo mes del año anterior, que es lo primero que pregunta una dirección."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e4",
+          "modo": "predice",
+          "enunciado": "En el correo pondrás la caída de Pamplona en **miles de euros, sin decimales**. ¿Qué devuelve esta fórmula?",
+          "hoja": {
+            "celdas": {
+              "A1": "Delegación",
+              "B1": "Oct 2025",
+              "C1": "Oct 2026",
+              "A2": "Zaragoza",
+              "B2": 412300,
+              "C2": 431900,
+              "A3": "Pamplona",
+              "B3": 186400,
+              "C3": 158200,
+              "A4": "Lleida",
+              "B4": 128700,
+              "C4": 139500
+            },
+            "formatos": {
+              "B2:C4": "#.##0 €"
+            },
+            "anchos": {
+              "A": 12,
+              "B": 12,
+              "C": 12
+            }
+          },
+          "celda": "E3",
+          "formula": "=REDONDEAR((C3-B3)/1000;0)",
+          "explicacion": "(158.200 − 186.400) ÷ 1.000 = −28,2; redondeado sin decimales, −28. En el correo: «Pamplona vende 28 mil € menos que en octubre de 2025». El signo menos ya lo dice la palabra «menos».",
+          "respuesta": "-28"
+        },
+        {
+          "tipo": "texto",
+          "md": "El libro también se entrega **con las conclusiones delante**. Quien lo abra debe ver primero la hoja **Informe**, el resumen de una página; detrás, los datos y los cálculos, para quien quiera comprobar.\n\nTruco: antes de guardar por última vez, **deja seleccionada la hoja Informe** y la celda A1. Excel abre el libro por la hoja que estaba activa al guardarlo.\n\nEl **Léeme** sigue en el libro, para quien tenga que mantenerlo."
+        },
+        {
+          "tipo": "texto",
+          "md": "¿Qué mandas, el PDF o el libro? Depende de **qué va a hacer la otra persona**.\n\n- **PDF para leer**: Carmen lo leerá en el móvil antes del comité. El PDF de la hoja Informe se ve igual en cualquier pantalla y no se cambia sin querer.\n- **Enlace para trabajar**: Javier quiere filtrar por cliente. Mejor un **enlace** al libro guardado en la nube de la empresa (OneDrive o SharePoint) que una copia adjunta: así todos trabajáis sobre la misma versión.\n\nCómo compartir ese enlace, en la lección siguiente."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e5",
+          "modo": "test",
+          "pregunta": "Carmen leerá el resumen en el móvil antes del comité, y Javier quiere seguir trabajando con las cifras. ¿Qué le mandas a cada uno?",
+          "opciones": [
+            {
+              "texto": "A Carmen, el PDF del informe; a Javier, un enlace al libro",
+              "correcta": true,
+              "porque": "Cada uno recibe lo que va a usar: Carmen lee una página (el PDF de la hoja Informe); Javier trabaja sobre la versión buena, sin copias sueltas."
+            },
+            {
+              "texto": "A los dos, el libro de Excel adjunto",
+              "correcta": false,
+              "porque": "Carmen tendría que abrir un libro en el móvil para leer una página, y Javier trabajaría sobre una copia que ya no se actualiza con la tuya."
+            },
+            {
+              "texto": "A los dos, el PDF",
+              "correcta": false,
+              "porque": "Javier no puede filtrar ni calcular en un PDF: en cuanto quiera tocar algo, te pedirá el libro."
+            },
+            {
+              "texto": "A Carmen, el enlace al libro; a Javier, el PDF",
+              "correcta": false,
+              "porque": "Justo al revés: quien solo lee necesita el PDF, y quien trabaja necesita el libro."
+            }
+          ],
+          "explicacion": "PDF para leer, enlace para trabajar. Pregúntate siempre qué va a hacer cada persona con lo que le mandas."
+        },
+        {
+          "tipo": "texto",
+          "md": "A veces, al repasar antes de enviar, aparece un hueco: faltan datos de un día, un cliente no cuadra, una cifra es provisional. La tentación es **callarlo** y arreglarlo después.\n\nNo lo hagas. Si lo descubre ella más tarde, dejará de fiarse de **todas** tus cifras, no solo de esa. Dilo con tres datos:\n- **qué falta**,\n- **cuánto puede afectar**,\n- **cuándo lo tendrás**.\n\nSi el hueco cambia una conclusión, avísalo junto a esa conclusión, no al final."
+        },
+        {
+          "tipo": "mensaje",
+          "de": "Nuria Campos",
+          "puesto": "Administración",
+          "md": "Me pasó en mi segundo año: entregué un informe sabiendo que faltaba una remesa del banco y pensé «el lunes lo cambio». El lunes Marta ya lo había enseñado en una reunión. Desde entonces, la frase «faltan los datos de X; los tendré el día Y» va en todos mis correos. Nadie se ha enfadado nunca por leerla."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e6",
+          "modo": "test",
+          "pregunta": "Son las seis de la tarde. Al repasar ves que en Lleida faltan las facturas del 30 de octubre: el programa de gestión las cerró tarde. Carmen lo necesita hoy. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Lo envías hoy diciendo qué falta y cuándo tendrás la definitiva",
+              "correcta": true,
+              "porque": "Eso es: dices qué falta (las facturas de Lleida del 30 de octubre), que esa cifra puede subir algo y que el lunes 23 tendrás la definitiva. Carmen decide con toda la información, incluida la que falta, y cuando llegue la cifra definitiva no habrá sorpresas."
+            },
+            {
+              "texto": "Lo envías sin decir nada y el lunes cambias la cifra",
+              "correcta": false,
+              "porque": "Si Carmen presenta una cifra y luego cambia sin aviso, pierdes su confianza en todas tus cifras, no solo en esa."
+            },
+            {
+              "texto": "No envías nada hasta tener todos los datos de Lleida",
+              "correcta": false,
+              "porque": "Carmen se queda sin nada para el comité. Casi siempre es mejor entregar a tiempo lo que hay, diciendo con claridad lo que falta."
+            },
+            {
+              "texto": "Lo envías hoy con la frase «puede haber algún error»",
+              "correcta": false,
+              "porque": "Demasiado vago: no dice qué falta, cuánto afecta ni cuándo estará. Con eso no se puede decidir nada, y siembra dudas sobre todo el informe."
+            }
+          ],
+          "explicacion": "Qué falta, cuánto afecta y cuándo lo tendrás. Con esas tres cosas, un problema de datos no se convierte en un problema de confianza."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l1-e7",
+          "modo": "abierta",
+          "pregunta": "**La misión.** Escribe el correo de entrega a Carmen con estos datos (ventas netas de octubre):\n\n| Delegación | Oct 2025 | Oct 2026 | Variación |\n|---|---|---|---|\n| Zaragoza | 412.300 € | 431.900 € | +4,8 % |\n| Pamplona | 186.400 € | 158.200 € | −15,1 % |\n| Lleida | 128.700 € | 139.500 € | +8,4 % |\n| Total | 727.400 € | 729.600 € | +0,3 % |\n\nAdemás: Instalaciones Arga, el mayor cliente de Pamplona, le compró 24.000 € en octubre de 2025 y este octubre no ha hecho pedidos. En Lleida faltan las facturas del 30/10, que tendrás el lunes 23. Adjuntas el PDF de la hoja Informe y pones el enlace al libro.",
+          "modelo": "Asunto: Ventas de octubre por delegación: total estable, Pamplona cae un 15 %\n\nCarmen:\n\nEn octubre vendemos lo mismo que hace un año (+0,3 %), pero Pamplona cae un 15 %.\n\n1. Total: 729.600 €, 2.200 € más que en octubre de 2025.\n2. Pamplona: 158.200 €, 28 mil € menos (−15 %). Casi toda la caída es Instalaciones Arga, que en octubre de 2025 nos compró 24 mil € y este mes no ha pedido nada.\n3. Zaragoza (+4,8 %) y Lleida (+8,4 %) crecen y compensan la caída.\n\nQué vigilar: si Arga sigue sin pedir en noviembre. Propongo que Javier hable con ellos esta semana.\n\nTe adjunto el PDF del resumen (una página). El detalle por cliente está en el libro: [enlace].\n\nLimitación: en Lleida faltan las facturas del 30/10, así que su cifra puede subir un poco. El lunes 23 te paso la definitiva.\n\nUn saludo.",
+          "criterios": [
+            "Empieza por la conclusión principal con su cifra (total estable y caída de Pamplona)",
+            "Da tres conclusiones con cifras redondeadas y comparadas con octubre de 2025",
+            "Dice qué vigilar o propone una acción (Instalaciones Arga)",
+            "Explica qué adjunta: el PDF para leer y el enlace al libro",
+            "Dice con claridad lo que falta en Lleida, cuánto puede afectar y cuándo estará"
+          ]
+        }
       ],
-      [
-       "La variación sale -0,151345",
-       "Pamplona cae un 15 %"
+      "recuerda": [
+        {
+          "id": "n6m3l1-q1",
+          "modo": "test",
+          "pregunta": "¿Cuál de estos titulares está en lenguaje de negocio?",
+          "opciones": [
+            {
+              "texto": "Las comisiones de noviembre suben un 6 % por las ventas de luminarias LED",
+              "correcta": true,
+              "porque": "Dice qué pasa, cuánto y por qué, sin una palabra de Excel."
+            },
+            {
+              "texto": "He actualizado la tabla dinámica de comisiones con los datos nuevos",
+              "correcta": false,
+              "porque": "Cuenta lo que has hecho tú, no lo que ha pasado en la empresa."
+            },
+            {
+              "texto": "La celda H14 de la hoja Comisiones da 18.432,17",
+              "correcta": false,
+              "porque": "Una celda y una cifra sin comparar no le dicen nada a quien no ha visto el libro."
+            },
+            {
+              "texto": "Comisiones de noviembre: ver archivo adjunto",
+              "correcta": false,
+              "porque": "No da ninguna conclusión: obliga a abrir el archivo para saber qué pasa."
+            }
+          ],
+          "explicacion": "Qué pasa, cuánto y por qué, con palabras de la empresa."
+        },
+        {
+          "id": "n6m3l1-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "Carmen solo va a leer el resumen, y lo hará en el móvil. ¿En qué formato de archivo se lo mandas?",
+          "aceptadas": [
+            "PDF",
+            "pdf",
+            "en PDF",
+            "En PDF",
+            "un PDF",
+            "Un PDF",
+            "en pdf"
+          ],
+          "explicacion": "En PDF: se ve igual en cualquier pantalla y no se cambia sin querer. El libro, por enlace, para quien tenga que trabajar con él."
+        },
+        {
+          "id": "n6m3l1-q3",
+          "modo": "formula",
+          "enunciado": "Javier quiere saber cómo van las familias de producto. En **D2** calcula la variación de las ventas de luminarias LED de septiembre de 2025 (**B2**) a septiembre de 2026 (**C2**). La fórmula se copiará a D3:D4. En D2 debe salir **15,0 %**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Familia",
+              "B1": "Sep 2025",
+              "C1": "Sep 2026",
+              "D1": "Variación",
+              "A2": "Luminarias LED",
+              "B2": 84500,
+              "C2": 97200,
+              "A3": "Cable",
+              "B3": 152300,
+              "C3": 148900,
+              "A4": "Mecanismos",
+              "B4": 63800,
+              "C4": 66100
+            },
+            "formatos": {
+              "B2:C4": "#.##0 €",
+              "D2:D4": "pct1"
+            },
+            "anchos": {
+              "A": 15,
+              "B": 12,
+              "C": 12,
+              "D": 11
+            }
+          },
+          "objetivo": "D2",
+          "copiar_a": [
+            "D3:D4"
+          ],
+          "solucion": "=C2/B2-1",
+          "alternativas": [
+            "=(C2-B2)/B2"
+          ],
+          "errores_tipicos": [
+            "=C2-B2",
+            "=(C2-B2)/C2",
+            "=C2-B2/B2"
+          ],
+          "variantes": [
+            {
+              "B2": 80000,
+              "C2": 100000
+            }
+          ],
+          "formato_resultado": "pct1",
+          "pistas": [
+            "Lo nuevo comparado con lo antiguo.",
+            "Divide septiembre de 2026 entre septiembre de 2025 y réstale 1.",
+            "`=C2/B2-1`"
+          ],
+          "explicacion": "LED +15,0 %, cable −2,2 % y mecanismos +3,6 %. Titular posible: «Las luminarias LED tiran de las ventas; el cable baja un poco»."
+        }
       ],
-      [
-       "Mira la celda F12 de la hoja Cálculos",
-       "El detalle por cliente está en la hoja Informe"
-      ],
-      [
-       "Me salen tres #N/D al cruzar con el maestro de clientes",
-       "Tres facturas eran de clientes dados de alta este mes; ya están incluidas"
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué va en la primera línea de un correo de entrega?",
+          "dorso": "La respuesta: la conclusión principal, con su cifra."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Las cinco partes de un correo de entrega, en orden",
+          "dorso": "Titular · tres conclusiones con cifra · qué vigilar y qué propones · qué incluye el archivo · supuestos y limitaciones."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿PDF o enlace al libro?",
+          "dorso": "PDF para quien solo va a leer; enlace al libro para quien tiene que trabajar con él."
+        },
+        {
+          "tipo": "error",
+          "frente": "Justo antes de entregar ves que faltan datos. ¿Qué haces?",
+          "dorso": "Entregar diciendo qué falta, cuánto puede afectar y cuándo lo tendrás. Nunca esconderlo."
+        }
       ]
-     ]
     },
     {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e3",
-     "modo": "formula",
-     "enunciado": "Para las conclusiones necesitas la variación de cada delegación. En **D2** calcula cuánto cambian las ventas de Zaragoza de octubre de 2025 (**B2**) a octubre de 2026 (**C2**), en porcentaje. Tu fórmula se copiará hasta D5. En D2 debe salir **4,8 %**.",
-     "hoja": {
-      "celdas": {
-       "A1": "Delegación",
-       "B1": "Oct 2025",
-       "C1": "Oct 2026",
-       "D1": "Variación",
-       "A2": "Zaragoza",
-       "B2": 412300,
-       "C2": 431900,
-       "A3": "Pamplona",
-       "B3": 186400,
-       "C3": 158200,
-       "A4": "Lleida",
-       "B4": 128700,
-       "C4": 139500,
-       "A5": "Total",
-       "B5": "=SUMA(B2:B4)",
-       "C5": "=SUMA(C2:C4)"
+      "id": "n6m3l2",
+      "titulo": "Compartir con seguridad y cumplir con la protección de datos",
+      "minutos": 16,
+      "objetivo": "Compartir un libro con los permisos justos y enviarlo fuera de la empresa sin datos personales de más, sin información escondida y, si hace falta, cifrado.",
+      "mision": {
+        "de": "Lucía Fernández",
+        "puesto": "Responsable de RRHH",
+        "texto": "La consultora que nos prepara el plan de formación de 2027 necesita saber cuántas personas hay en cada departamento y cuántas horas de formación han hecho este año. Te paso la hoja de plantilla, pero lleva DNI, salarios y bajas: que no salga nada que no haga falta. ¿Se lo mandas hoy?",
+        "logro": "Ya sabes compartir un archivo con los permisos justos y enviar fuera solo los datos necesarios, sin nada escondido."
       },
-      "formatos": {
-       "B2:C5": "#.##0 €",
-       "D2:D5": "pct1"
-      },
-      "anchos": {
-       "A": 12,
-       "B": 12,
-       "C": 12,
-       "D": 11
-      }
-     },
-     "objetivo": "D2",
-     "copiar_a": [
-      "D3:D5"
-     ],
-     "solucion": "=C2/B2-1",
-     "alternativas": [
-      "=(C2-B2)/B2",
-      "=(C2/B2)-1"
-     ],
-     "errores_tipicos": [
-      "=C2-B2",
-      "=(C2-B2)/C2",
-      "=C2-B2/B2",
-      "=B2/C2-1"
-     ],
-     "variantes": [
-      {
-       "B2": 400000,
-       "C2": 440000
-      }
-     ],
-     "formato_resultado": "pct1",
-     "pistas": [
-      "La variación compara lo nuevo con lo antiguo: cuánto ha cambiado, dividido entre lo que había.",
-      "Lo que había está en B2 y lo nuevo en C2. Divide lo nuevo entre lo antiguo y réstale 1 (o resta los dos y divide entre B2).",
-      "Escribe `=C2/B2-1`. Ojo con `=C2-B2/B2`: sin paréntesis, Excel divide antes de restar."
-     ],
-     "explicacion": "Zaragoza +4,8 %, Pamplona −15,1 %, Lleida +8,4 % y el total +0,3 %. Ya tienes la cifra de cada conclusión. Con este cálculo comparas cualquier mes con el mismo mes del año anterior, que es lo primero que pregunta una dirección."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e4",
-     "modo": "predice",
-     "enunciado": "En el correo pondrás la caída de Pamplona en **miles de euros, sin decimales**. ¿Qué devuelve esta fórmula?",
-     "hoja": {
-      "celdas": {
-       "A1": "Delegación",
-       "B1": "Oct 2025",
-       "C1": "Oct 2026",
-       "A2": "Zaragoza",
-       "B2": 412300,
-       "C2": 431900,
-       "A3": "Pamplona",
-       "B3": 186400,
-       "C3": 158200,
-       "A4": "Lleida",
-       "B4": 128700,
-       "C4": 139500
-      },
-      "formatos": {
-       "B2:C4": "#.##0 €"
-      },
-      "anchos": {
-       "A": 12,
-       "B": 12,
-       "C": 12
-      }
-     },
-     "celda": "E3",
-     "formula": "=REDONDEAR((C3-B3)/1000;0)",
-     "explicacion": "(158.200 − 186.400) ÷ 1.000 = −28,2; redondeado sin decimales, −28. En el correo: «Pamplona vende 28 mil € menos que en octubre de 2025». El signo menos ya lo dice la palabra «menos».",
-     "respuesta": "-28"
-    },
-    {
-     "tipo": "texto",
-     "md": "El libro también se entrega **con las conclusiones delante**. Quien lo abra debe ver primero la hoja **Informe**, el resumen de una página; detrás, los datos y los cálculos, para quien quiera comprobar.\n\nTruco: antes de guardar por última vez, **deja seleccionada la hoja Informe** y la celda A1. Excel abre el libro por la hoja que estaba activa al guardarlo.\n\nEl **Léeme** sigue en el libro, para quien tenga que mantenerlo."
-    },
-    {
-     "tipo": "texto",
-     "md": "¿Qué mandas, el PDF o el libro? Depende de **qué va a hacer la otra persona**.\n\n- **PDF para leer**: Carmen lo leerá en el móvil antes del comité. El PDF de la hoja Informe se ve igual en cualquier pantalla y no se cambia sin querer.\n- **Enlace para trabajar**: Javier quiere filtrar por cliente. Mejor un **enlace** al libro guardado en la nube de la empresa (OneDrive o SharePoint) que una copia adjunta: así todos trabajáis sobre la misma versión.\n\nCómo compartir ese enlace, en la lección siguiente."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e5",
-     "modo": "test",
-     "pregunta": "Carmen leerá el resumen en el móvil antes del comité, y Javier quiere seguir trabajando con las cifras. ¿Qué le mandas a cada uno?",
-     "opciones": [
-      {
-       "texto": "A Carmen, el PDF de la hoja Informe; a Javier, un enlace al libro",
-       "correcta": true,
-       "porque": "Cada uno recibe lo que va a usar: Carmen lee una página; Javier trabaja sobre la versión buena, sin copias sueltas."
-      },
-      {
-       "texto": "A los dos, el libro de Excel adjunto",
-       "correcta": false,
-       "porque": "Carmen tendría que abrir un libro en el móvil para leer una página, y Javier trabajaría sobre una copia que ya no se actualiza con la tuya."
-      },
-      {
-       "texto": "A los dos, el PDF",
-       "correcta": false,
-       "porque": "Javier no puede filtrar ni calcular en un PDF: en cuanto quiera tocar algo, te pedirá el libro."
-      },
-      {
-       "texto": "A Carmen, el enlace al libro; a Javier, el PDF",
-       "correcta": false,
-       "porque": "Justo al revés: quien solo lee necesita el PDF, y quien trabaja necesita el libro."
-      }
-     ],
-     "explicacion": "PDF para leer, enlace para trabajar. Pregúntate siempre qué va a hacer cada persona con lo que le mandas."
-    },
-    {
-     "tipo": "texto",
-     "md": "A veces, al repasar antes de enviar, aparece un hueco: faltan datos de un día, un cliente no cuadra, una cifra es provisional. La tentación es **callarlo** y arreglarlo después.\n\nNo lo hagas. Si lo descubre ella más tarde, dejará de fiarse de **todas** tus cifras, no solo de esa. Dilo con tres datos:\n- **qué falta**,\n- **cuánto puede afectar**,\n- **cuándo lo tendrás**.\n\nSi el hueco cambia una conclusión, avísalo junto a esa conclusión, no al final."
-    },
-    {
-     "tipo": "mensaje",
-     "de": "Nuria Campos",
-     "puesto": "Administración",
-     "md": "Me pasó en mi segundo año: entregué un informe sabiendo que faltaba una remesa del banco y pensé «el lunes lo cambio». El lunes Marta ya lo había enseñado en una reunión. Desde entonces, la frase «faltan los datos de X; los tendré el día Y» va en todos mis correos. Nadie se ha enfadado nunca por leerla."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e6",
-     "modo": "test",
-     "pregunta": "Son las seis de la tarde. Al repasar ves que en Lleida faltan las facturas del 30 de octubre: el programa de gestión las cerró tarde. Carmen lo necesita hoy. ¿Qué haces?",
-     "opciones": [
-      {
-       "texto": "Lo envías hoy diciendo qué falta, que la cifra de Lleida puede subir algo y que el lunes 23 tendrás la definitiva",
-       "correcta": true,
-       "porque": "Eso es: Carmen decide con toda la información, incluida la que falta. Y cuando llegue la cifra definitiva, no habrá sorpresas."
-      },
-      {
-       "texto": "Lo envías sin decir nada y el lunes cambias la cifra",
-       "correcta": false,
-       "porque": "Si Carmen presenta una cifra y luego cambia sin aviso, pierdes su confianza en todas tus cifras, no solo en esa."
-      },
-      {
-       "texto": "No envías nada hasta tener todos los datos",
-       "correcta": false,
-       "porque": "Carmen se queda sin nada para el comité. Casi siempre es mejor entregar a tiempo lo que hay, diciendo con claridad lo que falta."
-      },
-      {
-       "texto": "Lo envías con la frase «puede haber algún error»",
-       "correcta": false,
-       "porque": "Demasiado vago: no dice qué falta, cuánto afecta ni cuándo estará. Con eso no se puede decidir nada, y siembra dudas sobre todo el informe."
-      }
-     ],
-     "explicacion": "Qué falta, cuánto afecta y cuándo lo tendrás. Con esas tres cosas, un problema de datos no se convierte en un problema de confianza."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l1-e7",
-     "modo": "abierta",
-     "pregunta": "**La misión.** Escribe el correo de entrega a Carmen con estos datos (ventas netas de octubre):\n\n| Delegación | Oct 2025 | Oct 2026 | Variación |\n|---|---|---|---|\n| Zaragoza | 412.300 € | 431.900 € | +4,8 % |\n| Pamplona | 186.400 € | 158.200 € | −15,1 % |\n| Lleida | 128.700 € | 139.500 € | +8,4 % |\n| Total | 727.400 € | 729.600 € | +0,3 % |\n\nAdemás: Instalaciones Arga, el mayor cliente de Pamplona, le compró 24.000 € en octubre de 2025 y este octubre no ha hecho pedidos. En Lleida faltan las facturas del 30/10, que tendrás el lunes 23. Adjuntas el PDF de la hoja Informe y pones el enlace al libro.",
-     "modelo": "Asunto: Ventas de octubre por delegación: total estable, Pamplona cae un 15 %\n\nCarmen:\n\nEn octubre vendemos lo mismo que hace un año (+0,3 %), pero Pamplona cae un 15 %.\n\n1. Total: 729.600 €, 2.200 € más que en octubre de 2025.\n2. Pamplona: 158.200 €, 28 mil € menos (−15 %). Casi toda la caída es Instalaciones Arga, que en octubre de 2025 nos compró 24 mil € y este mes no ha pedido nada.\n3. Zaragoza (+4,8 %) y Lleida (+8,4 %) crecen y compensan la caída.\n\nQué vigilar: si Arga sigue sin pedir en noviembre. Propongo que Javier hable con ellos esta semana.\n\nTe adjunto el PDF del resumen (una página). El detalle por cliente está en el libro: [enlace].\n\nLimitación: en Lleida faltan las facturas del 30/10, así que su cifra puede subir un poco. El lunes 23 te paso la definitiva.\n\nUn saludo.",
-     "criterios": [
-      "Empieza por la conclusión principal con su cifra (total estable y caída de Pamplona)",
-      "Da tres conclusiones con cifras redondeadas y comparadas con octubre de 2025",
-      "Dice qué vigilar o propone una acción (Instalaciones Arga)",
-      "Explica qué adjunta: el PDF para leer y el enlace al libro",
-      "Dice con claridad lo que falta en Lleida, cuánto puede afectar y cuándo estará"
-     ]
-    }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m3l1-q1",
-     "modo": "test",
-     "pregunta": "¿Cuál de estos titulares está en lenguaje de negocio?",
-     "opciones": [
-      {
-       "texto": "Las comisiones de noviembre suben un 6 % por las ventas de luminarias LED",
-       "correcta": true,
-       "porque": "Dice qué pasa, cuánto y por qué, sin una palabra de Excel."
-      },
-      {
-       "texto": "He actualizado la tabla dinámica de comisiones con los datos nuevos",
-       "correcta": false,
-       "porque": "Cuenta lo que has hecho tú, no lo que ha pasado en la empresa."
-      },
-      {
-       "texto": "La celda H14 de la hoja Comisiones da 18.432,17",
-       "correcta": false,
-       "porque": "Una celda y una cifra sin comparar no le dicen nada a quien no ha visto el libro."
-      },
-      {
-       "texto": "Comisiones de noviembre: ver archivo adjunto",
-       "correcta": false,
-       "porque": "No da ninguna conclusión: obliga a abrir el archivo para saber qué pasa."
-      }
-     ],
-     "explicacion": "Qué pasa, cuánto y por qué, con palabras de la empresa."
-    },
-    {
-     "id": "n6m3l1-q2",
-     "modo": "respuesta_corta",
-     "pregunta": "Carmen solo va a leer el resumen, y lo hará en el móvil. ¿En qué formato de archivo se lo mandas?",
-     "aceptadas": [
-      "PDF",
-      "pdf",
-      "en PDF",
-      "En PDF",
-      "un PDF",
-      "Un PDF",
-      "en pdf"
-     ],
-     "explicacion": "En PDF: se ve igual en cualquier pantalla y no se cambia sin querer. El libro, por enlace, para quien tenga que trabajar con él."
-    },
-    {
-     "id": "n6m3l1-q3",
-     "modo": "formula",
-     "enunciado": "Javier quiere saber cómo van las familias de producto. En **D2** calcula la variación de las ventas de luminarias LED de septiembre de 2025 (**B2**) a septiembre de 2026 (**C2**). La fórmula se copiará a D3:D4. En D2 debe salir **15,0 %**.",
-     "hoja": {
-      "celdas": {
-       "A1": "Familia",
-       "B1": "Sep 2025",
-       "C1": "Sep 2026",
-       "D1": "Variación",
-       "A2": "Luminarias LED",
-       "B2": 84500,
-       "C2": 97200,
-       "A3": "Cable",
-       "B3": 152300,
-       "C3": 148900,
-       "A4": "Mecanismos",
-       "B4": 63800,
-       "C4": 66100
-      },
-      "formatos": {
-       "B2:C4": "#.##0 €",
-       "D2:D4": "pct1"
-      },
-      "anchos": {
-       "A": 15,
-       "B": 12,
-       "C": 12,
-       "D": 11
-      }
-     },
-     "objetivo": "D2",
-     "copiar_a": [
-      "D3:D4"
-     ],
-     "solucion": "=C2/B2-1",
-     "alternativas": [
-      "=(C2-B2)/B2"
-     ],
-     "errores_tipicos": [
-      "=C2-B2",
-      "=(C2-B2)/C2",
-      "=C2-B2/B2"
-     ],
-     "variantes": [
-      {
-       "B2": 80000,
-       "C2": 100000
-      }
-     ],
-     "formato_resultado": "pct1",
-     "pistas": [
-      "Lo nuevo comparado con lo antiguo.",
-      "Divide septiembre de 2026 entre septiembre de 2025 y réstale 1.",
-      "`=C2/B2-1`"
-     ],
-     "explicacion": "LED +15,0 %, cable −2,2 % y mecanismos +3,6 %. Titular posible: «Las luminarias LED tiran de las ventas; el cable baja un poco»."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué va en la primera línea de un correo de entrega?",
-     "dorso": "La respuesta: la conclusión principal, con su cifra."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "Las cinco partes de un correo de entrega, en orden",
-     "dorso": "Titular · tres conclusiones con cifra · qué vigilar y qué propones · qué incluye el archivo · supuestos y limitaciones."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿PDF o enlace al libro?",
-     "dorso": "PDF para quien solo va a leer; enlace al libro para quien tiene que trabajar con él."
-    },
-    {
-     "tipo": "error",
-     "frente": "Justo antes de entregar ves que faltan datos. ¿Qué haces?",
-     "dorso": "Entregar diciendo qué falta, cuánto puede afectar y cuándo lo tendrás. Nunca esconderlo."
-    }
-   ]
-  },
-  {
-   "id": "n6m3l2",
-   "titulo": "Compartir con seguridad y cumplir con la protección de datos",
-   "minutos": 16,
-   "objetivo": "Compartir un libro con los permisos justos y enviarlo fuera de la empresa sin datos personales de más, sin información escondida y, si hace falta, cifrado.",
-   "mision": {
-    "de": "Lucía Fernández",
-    "puesto": "Responsable de RRHH",
-    "texto": "La consultora que nos prepara el plan de formación de 2027 necesita saber cuántas personas hay en cada departamento y cuántas horas de formación han hecho este año. Te paso la hoja de plantilla, pero lleva DNI, salarios y bajas: que no salga nada que no haga falta. ¿Se lo mandas hoy?",
-    "logro": "Ya sabes compartir un archivo con los permisos justos y enviar fuera solo los datos necesarios, sin nada escondido."
-   },
-   "funciones": [],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "Compartir un archivo parece cosa de un clic. Pero un Excel puede llevar **mucho más de lo que se ve**: hojas ocultas, comentarios, el nombre de quien lo hizo y, sobre todo, **datos de personas**.\n\nUn **dato personal** es cualquier información sobre una persona a la que se puede identificar: su nombre, su DNI, su salario, sus bajas. Los protege el **RGPD** (Reglamento General de Protección de Datos, una norma europea), además de la ley española.\n\nEn esta lección aprendes a compartir sin que se escape nada."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e1",
-     "modo": "test",
-     "multiple": true,
-     "pregunta": "En la hoja de plantilla que te ha pasado Lucía, ¿cuáles de estas columnas son datos personales? Marca todas las que lo sean.",
-     "opciones": [
-      {
-       "texto": "El DNI de cada persona",
-       "correcta": true,
-       "porque": "Sí: identifica a la persona sin ninguna duda."
-      },
-      {
-       "texto": "El salario de cada persona",
-       "correcta": true,
-       "porque": "Sí: es información sobre una persona concreta, que está en su fila junto a su nombre."
-      },
-      {
-       "texto": "Los días de baja de cada persona",
-       "correcta": true,
-       "porque": "Sí, y además delicado, porque tiene que ver con la salud. Cuanto más delicado es un dato, más cuidado."
-      },
-      {
-       "texto": "El número total de personas del departamento de Almacén",
-       "correcta": false,
-       "porque": "No: es un total y no dice nada de nadie en concreto (salvo que el grupo sea tan pequeño que se adivine de quién se habla)."
-      }
-     ],
-     "explicacion": "Si el dato se puede unir a una persona concreta, es personal. Los totales por grupo, en general, no."
-    },
-    {
-     "tipo": "texto",
-     "md": "Hay dos formas de hacer llegar un libro a alguien:\n\n- **Adjuntarlo** a un correo: cada persona recibe **una copia**. Si luego cambias algo, su copia se queda vieja, y lo enviado **ya no se puede retirar**.\n- **Compartir un enlace** al libro guardado en **OneDrive** o **SharePoint** (los espacios de archivos de Microsoft 365): todos ven **la misma versión**, y puedes **cambiar o quitar el permiso** cuando quieras.\n\nDentro de la empresa, por defecto, **enlace**."
-    },
-    {
-     "tipo": "texto",
-     "md": "Al pulsar **Compartir** (el botón de arriba a la derecha, o Archivo › Compartir) decides dos cosas:\n\n1. **Quién puede abrir el enlace.** Las opciones se llaman «Cualquiera», «Personas de *(tu organización)* con el vínculo», «Usuarios con acceso existente» y «**Personas que elija**». Esta última da acceso solo a quien tú escribas.\n2. **Qué puede hacer**: editar o solo ver.\n\nRegla práctica: **personas concretas** y el **permiso mínimo** que necesiten."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "cuidado",
-     "titulo": "«Cualquiera» es cualquiera",
-     "md": "Con un vínculo «Cualquiera», quien tenga el enlace (también si se lo reenvían) abre el archivo sin identificarse. Microsoft recomienda no usarlo «a menos que sea absolutamente necesario»."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e2",
-     "modo": "test",
-     "pregunta": "Javier tiene que corregir contigo las cifras de comisiones en el libro, y Andrés solo necesita consultarlas. Los dos son de la empresa. ¿Cómo compartes?",
-     "opciones": [
-      {
-       "texto": "Un enlace «Personas que elija» con permiso de edición para Javier, y otro de solo ver para Andrés",
-       "correcta": true,
-       "porque": "Eso es: solo entran ellos dos, y cada uno puede hacer lo que necesita, ni más ni menos."
-      },
-      {
-       "texto": "Un enlace «Cualquiera» con edición, para que no tengan problemas al abrirlo",
-       "correcta": false,
-       "porque": "Abrirías el libro a cualquiera que reciba el enlace, aunque no sea de la empresa, y con permiso para cambiarlo todo."
-      },
-      {
-       "texto": "Adjuntas el libro en un correo a los dos",
-       "correcta": false,
-       "porque": "Cada uno tendría su copia: Javier corregiría la suya, y la tuya se quedaría sin sus cambios."
-      },
-      {
-       "texto": "Un enlace con edición para los dos: Andrés ya sabe que no debe tocar nada",
-       "correcta": false,
-       "porque": "Funciona hasta el día en que Andrés ordena una columna sin querer. Dale solo lo que necesita: ver."
-      }
-     ],
-     "explicacion": "Personas concretas y el permiso mínimo. Si mañana alguien ya no lo necesita, le quitas el permiso y listo."
-    },
-    {
-     "tipo": "texto",
-     "md": "Con el libro compartido, varias personas pueden trabajar **a la vez** en el mismo archivo: es la **coautoría**. Hace falta Microsoft 365, el archivo en OneDrive o SharePoint y el **Autoguardado** (el guardado automático) activado.\n\nPara preguntar algo sin tocar las celdas, deja un **comentario**: Revisar › Comentarios › **Nuevo comentario**. Si escribes **@** y el nombre de un compañero (una *@mención*), le llega un **correo con un enlace** a ese comentario. Funciona con personas de tu organización."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "cuidado",
-     "titulo": "Dos personas, la misma celda",
-     "md": "Si dos personas cambian la misma celda, se queda el último cambio guardado. Microsoft aconseja repartirse zonas u hojas del libro."
-    },
-    {
-     "tipo": "texto",
-     "md": "El RGPD pide que los datos personales sean «adecuados, pertinentes y **limitados a lo necesario**». Se llama **minimización**.\n\nAntes de enviar algo fuera, pregúntate: **¿qué necesita de verdad quien lo recibe?**\n- Quita las columnas que no hacen falta: DNI, teléfono, IBAN (la cuenta del banco), salario.\n- Mejor aún, manda **totales** en lugar del detalle de cada persona.\n- Si hay que distinguir filas, cambia el nombre por un **código** (EMP-014)."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "dato",
-     "titulo": "Un caso real",
-     "md": "Según la prensa jurídica, la AEPD (Agencia Española de Protección de Datos) multó con 35.000 € a una empresa que dejó accesible por enlace una hoja de cálculo con nombre, apellidos y DNI de 10.837 personas. La empresa alegó que fue un error puntual de una persona recién contratada."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e3",
-     "modo": "test",
-     "pregunta": "La consultora necesita saber, por departamento, cuántas personas hay y cuántas horas de formación han hecho. ¿Qué le mandas?",
-     "opciones": [
-      {
-       "texto": "Una tabla con departamento, número de personas y horas de formación, sin nombres",
-       "correcta": true,
-       "porque": "Exacto: es justo lo que necesita y no identifica a nadie. Lo mínimo necesario."
-      },
-      {
-       "texto": "La hoja de plantilla entera, con las columnas de DNI, salario y bajas ocultas",
-       "correcta": false,
-       "porque": "Ocultar no es quitar: cualquiera las vuelve a mostrar en dos clics. Y además le mandas nombres que no necesita."
-      },
-      {
-       "texto": "El nombre y las horas de cada persona, sin DNI ni salario",
-       "correcta": false,
-       "porque": "Mejor, pero sobran los nombres: para su trabajo le bastan los totales por departamento. Si no necesita saber quién, no le mandes quién."
-      },
-      {
-       "texto": "La hoja entera, pero cifrada con contraseña",
-       "correcta": false,
-       "porque": "Cifrar protege el envío, pero la consultora seguiría recibiendo DNI, salarios y bajas que no necesita. Primero se quita lo que sobra."
-      }
-     ],
-     "explicacion": "Primero, qué necesita; después, cómo enviarlo. Si con totales basta, no salen datos de nadie."
-    },
-    {
-     "tipo": "texto",
-     "md": "Cuidado con una falsa seguridad muy común: **ocultar no es quitar**.\n\n- Las filas, columnas y hojas **ocultas** se vuelven a mostrar con dos clics.\n- Un **filtro** solo esconde filas: siguen dentro del archivo.\n- Mover los datos a una columna lejana tampoco sirve.\n- Una **tabla dinámica** guarda, por defecto, una copia de sus datos de origen dentro del libro: con doble clic en un valor, Excel saca el detalle en una hoja nueva.\n\nLo que no debe salir **se borra** de la copia que envías."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e4",
-     "modo": "test",
-     "pregunta": "Vas a mandar a Electricidad Moncayo, un cliente, su presupuesto. En el libro hay una hoja oculta, «Costes», con lo que nos cuesta cada producto. ¿Qué haces?",
-     "opciones": [
-      {
-       "texto": "Le mandas el PDF del presupuesto o, si necesita el Excel, una copia sin la hoja Costes",
-       "correcta": true,
-       "porque": "Eso es: lo que el cliente no debe ver no viaja en el archivo. Oculta, la hoja sigue ahí."
-      },
-      {
-       "texto": "Nada: la hoja está oculta y el cliente no la verá",
-       "correcta": false,
-       "porque": "Clic derecho en una pestaña › Mostrar, y ahí están tus costes. Ocultar sirve para ordenar, no para proteger."
-      },
-      {
-       "texto": "Proteges la hoja del presupuesto con Revisar › Proteger hoja",
-       "correcta": false,
-       "porque": "Proteger una hoja impide cambiar celdas, no leerlas. Y la hoja Costes seguiría dentro del archivo."
-      },
-      {
-       "texto": "Pones un filtro en la hoja Costes para que no se vea ninguna fila",
-       "correcta": false,
-       "porque": "Un filtro solo esconde filas: en cuanto se quita, todo vuelve a verse."
-      }
-     ],
-     "explicacion": "Mandar a un cliente nuestros márgenes es de los errores más caros. Lo que no debe salir, se borra de la copia (o se manda un PDF)."
-    },
-    {
-     "tipo": "texto",
-     "md": "Antes de enviar un libro fuera, pásale el **Inspector de documento**: Archivo › Información › Comprobar si hay problemas › **Inspeccionar documento**.\n\nBusca lo que no se ve a simple vista y **puede quitarlo**: comentarios, el nombre del autor y otras propiedades, encabezados y pies, filas, columnas y hojas ocultas.\n\nOtras cosas **las avisa, pero no las quita**: vínculos a otros libros, datos guardados de tablas dinámicas, macros, filtros y nombres ocultos. Esas, a mano.\n\nÚsalo **sobre una copia**: quizá no se pueda deshacer."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e5",
-     "modo": "cinta",
-     "enunciado": "Vas a revisar la copia para la consultora con el Inspector de documento. Primero, abre la pantalla de **Archivo** donde está «Comprobar si hay problemas».",
-     "ruta": [
-      "Archivo",
-      "Archivo",
-      "Información"
-     ],
-     "explicacion": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Pulsa Inspeccionar y quita lo que encuentre, siempre en la copia, nunca en el original."
-    },
-    {
-     "tipo": "texto",
-     "md": "Si un archivo con datos personales **tiene que salir** de la empresa, cífralo: Archivo › Información › Proteger libro › **Cifrar con contraseña**. Sin la contraseña, el archivo no se abre.\n\nTres reglas:\n- Distingue mayúsculas y minúsculas, y Microsoft **no puede recuperarla** si se olvida.\n- **Nunca** va en el mismo correo que el archivo: mándala por otro canal (teléfono, SMS).\n- Proteger una hoja **no es lo mismo**: Microsoft avisa de que «no está pensada como característica de seguridad»."
-    },
-    {
-     "tipo": "aviso",
-     "estilo": "cuidado",
-     "titulo": "Si se te escapa un archivo",
-     "md": "Si envías por error datos personales (destinatario o archivo equivocado), avisa **enseguida** a quien lleve la protección de datos en la empresa. Es una brecha de seguridad: el RGPD pide notificarla a la autoridad, cuando proceda, sin dilación y, si es posible, en 72 horas como máximo. Borrar el correo y callar lo empeora."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e6",
-     "modo": "ordenar",
-     "enunciado": "Ordena la lista de comprobación antes de enviar un libro fuera de la empresa.",
-     "pasos": [
-      "Pregúntate si hace falta el libro o basta con un PDF o un resumen",
-      "Guarda una copia para enviar (el original no se toca)",
-      "En la copia, borra las columnas y hojas que no hacen falta",
-      "Pasa el Inspector de documento a la copia",
-      "Si lleva datos personales, cífrala con contraseña",
-      "Envíala y manda la contraseña por otro canal"
-     ],
-     "explicacion": "Primero decides qué sale; después lo limpias, lo compruebas, lo proteges y lo envías. La contraseña siempre viaja aparte."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l2-e7",
-     "modo": "formula",
-     "enunciado": "**La misión.** A la consultora solo le llegará la tabla de la derecha: personas y horas por departamento. Las personas (columna G) ya están. En **H2** calcula las horas de formación del departamento de **F2**, sumando la columna D. Tu fórmula se copiará a H3:H5, así que fija los rangos. En H2 debe salir **36**. (Para practicar, la hoja tiene 10 personas; en el libro real harás lo mismo con las 58.)",
-     "hoja": {
-      "celdas": {
-       "A1": "Empleado",
-       "B1": "DNI",
-       "C1": "Departamento",
-       "D1": "Horas form.",
-       "A2": "Sergio Lozano Ruiz",
-       "B2": "72914583K",
-       "C2": "Comercial",
-       "D2": 8,
-       "A3": "Elena Castro Pardo",
-       "B3": "25640917M",
-       "C3": "Administración",
-       "D3": 16,
-       "A4": "Iñaki Etxeberria Sola",
-       "B4": "44873026P",
-       "C4": "Compras",
-       "D4": 10,
-       "A5": "Pilar Navarro Gil",
-       "B5": "17395248R",
-       "C5": "Almacén",
-       "D5": 12,
-       "A6": "Raúl Herrero Sanz",
-       "B6": "73052861W",
-       "C6": "Almacén",
-       "D6": 20,
-       "A7": "Ana Belén Domínguez Rey",
-       "B7": "29481735B",
-       "C7": "Comercial",
-       "D7": 6,
-       "A8": "Rocío Marín Vidal",
-       "B8": "18627340H",
-       "C8": "Almacén",
-       "D8": 4,
-       "A9": "Jorge Prieto Lasheras",
-       "B9": "72318094C",
-       "C9": "Administración",
-       "D9": 12,
-       "A10": "Laura Gimeno Ferrer",
-       "B10": "25917463X",
-       "C10": "Comercial",
-       "D10": 14,
-       "A11": "Óscar Bielsa Mur",
-       "B11": "47120586D",
-       "C11": "Compras",
-       "D11": 8,
-       "F1": "Departamento",
-       "G1": "Personas",
-       "H1": "Horas",
-       "F2": "Almacén",
-       "G2": "=CONTAR.SI($C$2:$C$11;F2)",
-       "F3": "Comercial",
-       "G3": "=CONTAR.SI($C$2:$C$11;F3)",
-       "F4": "Administración",
-       "G4": "=CONTAR.SI($C$2:$C$11;F4)",
-       "F5": "Compras",
-       "G5": "=CONTAR.SI($C$2:$C$11;F5)"
-      },
-      "anchos": {
-       "A": 22,
-       "B": 11,
-       "C": 14,
-       "D": 10,
-       "E": 3,
-       "F": 14,
-       "G": 9,
-       "H": 8
-      }
-     },
-     "objetivo": "H2",
-     "copiar_a": [
-      "H3:H5"
-     ],
-     "solucion": "=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)",
-     "alternativas": [
-      "=SUMAR.SI(C$2:C$11;F2;D$2:D$11)",
-      "=SUMAR.SI.CONJUNTO($D$2:$D$11;$C$2:$C$11;F2)"
-     ],
-     "errores_tipicos": [
-      "=SUMAR.SI(C2:C11;F2;D2:D11)",
-      "=SUMAR.SI($C$2:$C$11;$F$2;$D$2:$D$11)",
-      "=CONTAR.SI($C$2:$C$11;F2)",
-      "=SUMA($D$2:$D$11)"
-     ],
-     "variantes": [
-      {
-       "D5": 30
-      },
-      {
-       "C2": "Almacén"
-      }
-     ],
-     "pistas": [
-      "Quieres sumar las horas (columna D) solo de las filas cuyo departamento (columna C) sea el de F2: eso es SUMAR.SI.",
-      "SUMAR.SI(dónde miro; qué busco; qué sumo): `=SUMAR.SI(C2:C11;F2;D2:D11)`. Ahora fija los dos rangos para que no se muevan al copiar.",
-      "Con $ en los rangos y F2 sin fijar: `=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)`."
-     ],
-     "explicacion": "Almacén 36 h, Comercial 28 h, Administración 28 h y Compras 18 h. Esa tabla es lo único que sale: sin nombres, sin DNI, sin salarios ni bajas. Para enviarla, cópiala y pégala **como valores** en un libro nuevo (o expórtala a PDF): así no viaja ninguna fórmula que apunte a la plantilla. Lucía ya puede respirar."
-    }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m3l2-q1",
-     "modo": "test",
-     "pregunta": "¿Qué impide de verdad que alguien que no debe **lea** un archivo que envías por correo?",
-     "opciones": [
-      {
-       "texto": "Archivo › Información › Proteger libro › Cifrar con contraseña, y la contraseña por otro canal",
-       "correcta": true,
-       "porque": "Eso es: sin la contraseña de apertura, el archivo no se abre. Y como la contraseña va aparte, un correo equivocado no lleva las dos cosas."
-      },
-      {
-       "texto": "Revisar › Proteger hoja, con contraseña",
-       "correcta": false,
-       "porque": "Solo impide cambiar las celdas bloqueadas; el contenido se lee igual. No está pensada para la seguridad."
-      },
-      {
-       "texto": "Ocultar las hojas con los datos delicados",
-       "correcta": false,
-       "porque": "Ocultar no es quitar: se vuelven a mostrar con dos clics."
-      },
-      {
-       "texto": "Cifrarlo y poner la contraseña al final del mismo correo",
-       "correcta": false,
-       "porque": "Quien reciba el correo por error tendrá juntos el archivo y la llave."
-      }
-     ],
-     "explicacion": "Cifrar con contraseña y mandarla por otro canal. Y antes, quitar lo que no hace falta."
-    },
-    {
-     "id": "n6m3l2-q2",
-     "modo": "respuesta_corta",
-     "pregunta": "En un comentario de Excel, ¿qué signo escribes delante del nombre de un compañero para que le llegue un aviso por correo?",
-     "aceptadas": [
-      "@",
-      "arroba",
-      "una arroba",
-      "la arroba",
-      "Arroba",
-      "La arroba"
-     ],
-     "explicacion": "La arroba: «@Lucía, ¿esta columna hace falta?». Le llega un correo con un enlace a tu comentario."
-    },
-    {
-     "id": "n6m3l2-q3",
-     "modo": "test",
-     "pregunta": "Te das cuenta de que has enviado a un cliente un Excel con los teléfonos y correos de todos los clientes. ¿Qué haces?",
-     "opciones": [
-      {
-       "texto": "Avisar enseguida a quien lleve la protección de datos en la empresa",
-       "correcta": true,
-       "porque": "Es una brecha de seguridad. Hay plazo (si procede notificarla, 72 horas como máximo, si es posible) y lo valora quien lleva el tema. Cuanto antes, mejor."
-      },
-      {
-       "texto": "Pedirle al cliente que lo borre y no decir nada más",
-       "correcta": false,
-       "porque": "Pedir que lo borre puede ayudar, pero la empresa tiene que saberlo para valorar si debe notificarlo."
-      },
-      {
-       "texto": "Esperar a ver si el cliente dice algo",
-       "correcta": false,
-       "porque": "Mientras esperas, corre el plazo, y los datos siguen donde no deben."
-      },
-      {
-       "texto": "Mandar otro correo con el archivo bueno, sin explicar nada",
-       "correcta": false,
-       "porque": "El archivo malo sigue en su bandeja. Esconder el error lo hace más grave."
-      }
-     ],
-     "explicacion": "Un error se puede tener; callarlo es lo que lo convierte en un problema serio."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué es la minimización de datos?",
-     "dorso": "Usar y enviar solo los datos personales necesarios para lo que se va a hacer (RGPD, art. 5.1.c)."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué enlace usas para compartir un libro con dos compañeros?",
-     "dorso": "«Personas que elija», con el permiso mínimo que necesite cada uno (editar o solo ver)."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Dónde está el Inspector de documento?",
-     "dorso": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Siempre sobre una copia."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Cómo se cifra un libro con contraseña?",
-     "dorso": "Archivo › Información › Proteger libro › Cifrar con contraseña. La contraseña, por otro canal."
-    },
-    {
-     "tipo": "error",
-     "frente": "«Las columnas de DNI están ocultas: ya lo puedo mandar»",
-     "dorso": "Ocultar no es quitar: se muestran con dos clics. Bórralas de la copia que envías."
-    }
-   ]
-  },
-  {
-   "id": "n6m3l3",
-   "titulo": "Mantener un informe recurrente y saber decir «así no llego»",
-   "minutos": 16,
-   "objetivo": "Llevar un informe mensual con una rutina fija, detectar cuando cambia el formato de los datos, avisar a tiempo de un retraso con una alternativa y dejarlo listo para que otra persona lo actualice.",
-   "mision": {
-    "de": "Marta Ruiz",
-    "puesto": "Directora financiera",
-    "texto": "Desde diciembre, el informe de cobros es tuyo: el día 3 de cada mes, a primera hora, en mi correo. Este mes, además, Javier quiere el detalle por comercial y el banco ha cambiado el formato del extracto. Dime hoy si llegas al día 3 y, si no, qué me puedes dar.",
-    "logro": "Ya sabes mantener un informe mes a mes con su rutina y sus comprobaciones, y avisar a tiempo, con una alternativa, cuando no llegas."
-   },
-   "funciones": [],
-   "bloques": [
-    {
-     "tipo": "texto",
-     "md": "Un informe que se hace **cada mes** es una promesa: el mismo día y con la misma calidad. El primer mes es fácil, porque lo acabas de montar. Lo difícil llega el séptimo: el banco cambia el formato del extracto, te piden una columna nueva o te vas de vacaciones.\n\nDe eso va esta lección: una **rutina** que no falla, qué hacer cuando **cambian los datos**, cómo **avisar a tiempo** cuando no llegas y cómo **traspasar** el informe a otra persona."
-    },
-    {
-     "tipo": "texto",
-     "md": "La rutina de cada mes tiene cinco pasos, siempre en el mismo orden:\n\n1. **Datos nuevos**: guarda la exportación del mes donde la espera el libro.\n2. **Actualizar**: Datos › **Actualizar todo** (refresca las consultas y las tablas dinámicas).\n3. **Comprobar**: mira las celdas de control. Si alguna dice REVISAR, no sigas.\n4. **Entregar**: el correo con las conclusiones y el PDF.\n5. **Anotar** en el registro: fecha, quién lo ha hecho, filas cargadas, totales e incidencias.\n\nSiempre igual: así no se olvida nada."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e1",
-     "modo": "ordenar",
-     "enunciado": "Ordena la rutina mensual del informe de cobros.",
-     "pasos": [
-      "Guardar la exportación del mes donde la espera el libro",
-      "Datos › Actualizar todo",
-      "Revisar las celdas de control",
-      "Enviar el correo con las conclusiones y el PDF",
-      "Anotar la actualización en el registro"
-     ],
-     "explicacion": "Datos, actualizar, comprobar, entregar y anotar. Si una comprobación falla, la rutina se para ahí: no se entrega nada que no cuadre."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un día, el banco o el programa de gestión **cambian el formato** de la exportación: una columna nueva, otro orden, otro nombre. Tus fórmulas siguen apuntando a la columna de siempre… y casi nunca sale un error: **sale un número falso**.\n\nPor eso un informe que se repite necesita comprobaciones que vigilen **la forma** de los datos: que cada columna esté donde se espera, cuántas filas han llegado y si el total cuadra con el del origen."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e2",
-     "modo": "predice",
-     "enunciado": "El informe de cobros suma la columna C, porque ahí venía siempre el importe. Este mes el banco ha añadido una columna **Referencia** delante del importe. ¿Qué devuelve ahora la fórmula del informe?",
-     "hoja": {
-      "celdas": {
-       "A1": "Fecha",
-       "B1": "Concepto",
-       "C1": "Referencia",
-       "D1": "Importe",
-       "A2": {
-        "fecha": "2026-11-02"
-       },
-       "B2": "Transf. Instalaciones Moncayo",
-       "C2": "TR-48211",
-       "D2": 3480,
-       "A3": {
-        "fecha": "2026-11-04"
-       },
-       "B3": "Transf. Montajes Cinca",
-       "C3": "TR-48390",
-       "D3": 1250.4,
-       "A4": {
-        "fecha": "2026-11-09"
-       },
-       "B4": "Transf. Reformas Jalón",
-       "C4": "TR-48655",
-       "D4": 912.35,
-       "A5": {
-        "fecha": "2026-11-13"
-       },
-       "B5": "Transf. Electro Huesca",
-       "C5": "TR-48902",
-       "D5": 2200,
-       "A6": {
-        "fecha": "2026-11-18"
-       },
-       "B6": "Transf. Electricidad Arga",
-       "C6": "TR-49147",
-       "D6": 615.25
-      },
-      "formatos": {
-       "A2:A6": "fecha",
-       "D2:D6": "eur"
-      },
-      "anchos": {
-       "A": 11,
-       "B": 28,
-       "C": 11,
-       "D": 11
-      }
-     },
-     "celda": "F2",
-     "formula": "=SUMA(C2:C6)",
-     "explicacion": "Da **0**: SUMA no tiene en cuenta los textos de la columna C. Y no sale ningún error. El informe diría que en noviembre no se ha cobrado nada; y si la columna nueva trajera números, sumaría referencias como si fueran euros. Por eso hay que vigilar la forma de los datos.",
-     "respuesta": "0"
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e3",
-     "modo": "formula",
-     "enunciado": "Pon un vigilante. En **F2** escribe una comprobación que muestre **OK** si la cabecera de la columna C (la celda **C1**) es «Importe», y **REVISAR** si no. Con el extracto de este mes debe salir **REVISAR**.",
-     "hoja": {
-      "celdas": {
-       "A1": "Fecha",
-       "B1": "Concepto",
-       "C1": "Referencia",
-       "D1": "Importe",
-       "F1": "Control formato",
-       "A2": {
-        "fecha": "2026-11-02"
-       },
-       "B2": "Transf. Instalaciones Moncayo",
-       "C2": "TR-48211",
-       "D2": 3480,
-       "A3": {
-        "fecha": "2026-11-04"
-       },
-       "B3": "Transf. Montajes Cinca",
-       "C3": "TR-48390",
-       "D3": 1250.4,
-       "A4": {
-        "fecha": "2026-11-09"
-       },
-       "B4": "Transf. Reformas Jalón",
-       "C4": "TR-48655",
-       "D4": 912.35,
-       "A5": {
-        "fecha": "2026-11-13"
-       },
-       "B5": "Transf. Electro Huesca",
-       "C5": "TR-48902",
-       "D5": 2200,
-       "A6": {
-        "fecha": "2026-11-18"
-       },
-       "B6": "Transf. Electricidad Arga",
-       "C6": "TR-49147",
-       "D6": 615.25
-      },
-      "formatos": {
-       "A2:A6": "fecha",
-       "D2:D6": "eur"
-      },
-      "anchos": {
-       "A": 11,
-       "B": 28,
-       "C": 11,
-       "D": 11,
-       "E": 3,
-       "F": 15
-      }
-     },
-     "objetivo": "F2",
-     "solucion": "=SI(C1=\"Importe\";\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(C1<>\"Importe\";\"REVISAR\";\"OK\")",
-      "=SI(IGUAL(C1;\"Importe\");\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(C1=\"Importe\";\"REVISAR\";\"OK\")",
-      "=SI(D1=\"Importe\";\"OK\";\"REVISAR\")",
-      "=\"REVISAR\""
-     ],
-     "variantes": [
-      {
-       "C1": "Importe"
-      }
-     ],
-     "pistas": [
-      "Es una decisión con dos salidas: SI(condición; si se cumple; si no).",
-      "La condición compara la celda con un texto: `C1=\"Importe\"`. Los textos van entre comillas.",
-      "`=SI(C1=\"Importe\";\"OK\";\"REVISAR\")`"
-     ],
-     "explicacion": "Sale REVISAR: tu vigilante ha visto el cambio antes que Marta. Pon uno así por cada columna que use el informe, junto al control de filas y de total que ya sabes hacer, y la rutina se parará sola cuando cambie el origen. Entonces: adaptas las fórmulas o la consulta, compruebas que cuadra y lo anotas en el registro de cambios."
-    },
-    {
-     "tipo": "texto",
-     "md": "A veces, con la rutina en marcha, ves que **no llegas**: datos que se retrasan, un cambio que lleva más horas de las previstas, un encargo nuevo.\n\nLo peor es **callar** y esperar a que se arregle solo. Cuanto **antes avises**, más opciones tiene la otra persona: mover una reunión, darte prioridad, aceptar una versión más corta.\n\nUn buen aviso tiene tres partes:\n1. **Qué pasa** y por qué.\n2. **Qué puedes darle y cuándo**.\n3. **Qué necesitas** de ella o qué tiene que decidir."
-    },
-    {
-     "tipo": "comparar",
-     "izq": "Así no",
-     "der": "Así sí",
-     "filas": [
-      [
-       "Día 3, a mediodía: «Perdona, aún no lo tengo»",
-       "Día 20 del mes anterior: «El día 3 no llego a todo. Te propongo esto…»"
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Compartir un archivo parece cosa de un clic. Pero un Excel puede llevar **mucho más de lo que se ve**: hojas ocultas, comentarios, el nombre de quien lo hizo y, sobre todo, **datos de personas**.\n\nUn **dato personal** es cualquier información sobre una persona a la que se puede identificar: su nombre, su DNI, su salario, sus bajas. Los protege el **RGPD** (Reglamento General de Protección de Datos, una norma europea), además de la ley española.\n\nEn esta lección aprendes a compartir sin que se escape nada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e1",
+          "modo": "test",
+          "multiple": true,
+          "pregunta": "En la hoja de plantilla que te ha pasado Lucía, ¿cuáles de estas columnas son datos personales? Marca todas las que lo sean.",
+          "opciones": [
+            {
+              "texto": "El DNI de cada persona",
+              "correcta": true,
+              "porque": "Sí: identifica a la persona sin ninguna duda."
+            },
+            {
+              "texto": "El salario de cada persona",
+              "correcta": true,
+              "porque": "Sí: es información sobre una persona concreta, que está en su fila junto a su nombre."
+            },
+            {
+              "texto": "Los días de baja de cada persona",
+              "correcta": true,
+              "porque": "Sí, y además delicado, porque tiene que ver con la salud. Cuanto más delicado es un dato, más cuidado."
+            },
+            {
+              "texto": "El número total de personas del departamento de Almacén",
+              "correcta": false,
+              "porque": "No: es un total y no dice nada de nadie en concreto (salvo que el grupo sea tan pequeño que se adivine de quién se habla)."
+            }
+          ],
+          "explicacion": "Si el dato se puede unir a una persona concreta, es personal. Los totales por grupo, en general, no."
+        },
+        {
+          "tipo": "texto",
+          "md": "Hay dos formas de hacer llegar un libro a alguien:\n\n- **Adjuntarlo** a un correo: cada persona recibe **una copia**. Si luego cambias algo, su copia se queda vieja, y lo enviado **ya no se puede retirar**.\n- **Compartir un enlace** al libro guardado en **OneDrive** o **SharePoint** (los espacios de archivos de Microsoft 365): todos ven **la misma versión**, y puedes **cambiar o quitar el permiso** cuando quieras.\n\nDentro de la empresa, por defecto, **enlace**."
+        },
+        {
+          "tipo": "texto",
+          "md": "Al pulsar **Compartir** (el botón de arriba a la derecha, o Archivo › Compartir) decides dos cosas:\n\n1. **Quién puede abrir el enlace.** Las opciones se llaman «Cualquiera», «Personas de *(tu organización)* con el vínculo», «Usuarios con acceso existente» y «**Personas que elija**». Esta última da acceso solo a quien tú escribas.\n2. **Qué puede hacer**: editar o solo ver.\n\nRegla práctica: **personas concretas** y el **permiso mínimo** que necesiten."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "«Cualquiera» es cualquiera",
+          "md": "Con un vínculo «Cualquiera», quien tenga el enlace (también si se lo reenvían) abre el archivo sin identificarse. Microsoft recomienda no usarlo «a menos que sea absolutamente necesario»."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e2",
+          "modo": "test",
+          "pregunta": "Javier tiene que corregir contigo las cifras de comisiones en el libro, y Andrés solo necesita consultarlas. Los dos son de la empresa. ¿Cómo compartes?",
+          "opciones": [
+            {
+              "texto": "Un enlace «Personas que elija» con permiso de edición para Javier, y otro de solo ver para Andrés",
+              "correcta": true,
+              "porque": "Eso es: solo entran ellos dos, y cada uno puede hacer lo que necesita, ni más ni menos."
+            },
+            {
+              "texto": "Un enlace «Cualquiera» con edición, para que no tengan problemas al abrirlo",
+              "correcta": false,
+              "porque": "Abrirías el libro a cualquiera que reciba el enlace, aunque no sea de la empresa, y con permiso para cambiarlo todo."
+            },
+            {
+              "texto": "Adjuntas el libro en un correo a los dos",
+              "correcta": false,
+              "porque": "Cada uno tendría su copia: Javier corregiría la suya, y la tuya se quedaría sin sus cambios."
+            },
+            {
+              "texto": "Un enlace con edición para los dos: Andrés ya sabe que no debe tocar nada",
+              "correcta": false,
+              "porque": "Funciona hasta el día en que Andrés ordena una columna sin querer. Dale solo lo que necesita: ver."
+            }
+          ],
+          "explicacion": "Personas concretas y el permiso mínimo. Si mañana alguien ya no lo necesita, le quitas el permiso y listo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Con el libro compartido, varias personas pueden trabajar **a la vez** en el mismo archivo: es la **coautoría**. Hace falta Microsoft 365, el archivo en OneDrive o SharePoint y el **Autoguardado** (el guardado automático) activado.\n\nPara preguntar algo sin tocar las celdas, deja un **comentario**: Revisar › Comentarios › **Nuevo comentario**. Si escribes **@** y el nombre de un compañero (una *@mención*), le llega un **correo con un enlace** a ese comentario. Funciona con personas de tu organización."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Dos personas, la misma celda",
+          "md": "Si dos personas cambian la misma celda, se queda el último cambio guardado. Microsoft aconseja repartirse zonas u hojas del libro."
+        },
+        {
+          "tipo": "texto",
+          "md": "El RGPD pide que los datos personales sean «adecuados, pertinentes y **limitados a lo necesario**». Se llama **minimización**.\n\nAntes de enviar algo fuera, pregúntate: **¿qué necesita de verdad quien lo recibe?**\n- Quita las columnas que no hacen falta: DNI, teléfono, IBAN (la cuenta del banco), salario.\n- Mejor aún, manda **totales** en lugar del detalle de cada persona.\n- Si hay que distinguir filas, cambia el nombre por un **código** (EMP-014)."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "dato",
+          "titulo": "Un caso real",
+          "md": "Según la prensa jurídica, la AEPD (Agencia Española de Protección de Datos) multó con 35.000 € a una empresa que dejó accesible por enlace una hoja de cálculo con nombre, apellidos y DNI de 10.837 personas. La empresa alegó que fue un error puntual de una persona recién contratada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e3",
+          "modo": "test",
+          "pregunta": "La consultora necesita saber, por departamento, cuántas personas hay y cuántas horas de formación han hecho. ¿Qué le mandas?",
+          "opciones": [
+            {
+              "texto": "Una tabla con departamento, número de personas y horas de formación, sin nombres",
+              "correcta": true,
+              "porque": "Exacto: es justo lo que necesita y no identifica a nadie. Lo mínimo necesario."
+            },
+            {
+              "texto": "La hoja de plantilla entera, con las columnas de DNI, salario y bajas ocultas",
+              "correcta": false,
+              "porque": "Ocultar no es quitar: cualquiera las vuelve a mostrar en dos clics. Y además le mandas nombres que no necesita."
+            },
+            {
+              "texto": "El nombre y las horas de cada persona, sin DNI ni salario",
+              "correcta": false,
+              "porque": "Mejor, pero sobran los nombres: para su trabajo le bastan los totales por departamento. Si no necesita saber quién, no le mandes quién."
+            },
+            {
+              "texto": "La hoja entera, pero cifrada con contraseña",
+              "correcta": false,
+              "porque": "Cifrar protege el envío, pero la consultora seguiría recibiendo DNI, salarios y bajas que no necesita. Primero se quita lo que sobra."
+            }
+          ],
+          "explicacion": "Primero, qué necesita; después, cómo enviarlo. Si con totales basta, no salen datos de nadie."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuidado con una falsa seguridad muy común: **ocultar no es quitar**.\n\n- Las filas, columnas y hojas **ocultas** se vuelven a mostrar con dos clics.\n- Un **filtro** solo esconde filas: siguen dentro del archivo.\n- Mover los datos a una columna lejana tampoco sirve.\n- Una **tabla dinámica** guarda, por defecto, una copia de sus datos de origen dentro del libro: con doble clic en un valor, Excel saca el detalle en una hoja nueva.\n\nLo que no debe salir **se borra** de la copia que envías."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e4",
+          "modo": "test",
+          "pregunta": "Vas a mandar a Electricidad Moncayo, un cliente, su presupuesto. En el libro hay una hoja oculta, «Costes», con lo que nos cuesta cada producto. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Le mandas el PDF del presupuesto o, si pide el Excel, una copia sin Costes",
+              "correcta": true,
+              "porque": "Eso es: lo que el cliente no debe ver no viaja en el archivo. Oculta, la hoja sigue ahí."
+            },
+            {
+              "texto": "Nada: la hoja está oculta y el cliente no la verá",
+              "correcta": false,
+              "porque": "Clic derecho en una pestaña › Mostrar, y ahí están tus costes. Ocultar sirve para ordenar, no para proteger."
+            },
+            {
+              "texto": "Proteges la hoja del presupuesto con Revisar › Proteger hoja",
+              "correcta": false,
+              "porque": "Proteger una hoja impide cambiar celdas, no leerlas. Y la hoja Costes seguiría dentro del archivo."
+            },
+            {
+              "texto": "Pones un filtro en la hoja Costes para que no se vea ninguna fila",
+              "correcta": false,
+              "porque": "Un filtro solo esconde filas: en cuanto se quita, todo vuelve a verse."
+            }
+          ],
+          "explicacion": "Mandar a un cliente nuestros márgenes es de los errores más caros. Lo que no debe salir, se borra de la copia (o se manda un PDF)."
+        },
+        {
+          "tipo": "texto",
+          "md": "Antes de enviar un libro fuera, pásale el **Inspector de documento**: Archivo › Información › Comprobar si hay problemas › **Inspeccionar documento**.\n\nBusca lo que no se ve a simple vista y **puede quitarlo**: comentarios, el nombre del autor y otras propiedades, encabezados y pies, filas, columnas y hojas ocultas.\n\nOtras cosas **las avisa, pero no las quita**: los datos guardados de las tablas dinámicas, los vínculos a otros libros y los nombres ocultos. Esas, a mano.\n\nÚsalo **sobre una copia**: quizá no se pueda deshacer."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e5",
+          "modo": "cinta",
+          "enunciado": "Vas a revisar la copia para la consultora con el Inspector de documento. Primero, abre la pantalla de **Archivo** donde está «Comprobar si hay problemas».",
+          "ruta": [
+            "Archivo",
+            "Archivo",
+            "Información"
+          ],
+          "explicacion": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Pulsa Inspeccionar y quita lo que encuentre, siempre en la copia, nunca en el original."
+        },
+        {
+          "tipo": "texto",
+          "md": "Si un archivo con datos personales **tiene que salir** de la empresa, cífralo: Archivo › Información › Proteger libro › **Cifrar con contraseña**. Sin la contraseña, el archivo no se abre.\n\nTres reglas:\n- Distingue mayúsculas y minúsculas, y Microsoft **no puede recuperarla** si se olvida.\n- **Nunca** va en el mismo correo que el archivo: mándala por otro canal (teléfono, SMS).\n- Proteger una hoja **no es lo mismo**: Microsoft avisa de que «no está pensada como característica de seguridad»."
+        },
+        {
+          "tipo": "aviso",
+          "estilo": "cuidado",
+          "titulo": "Si se te escapa un archivo",
+          "md": "Si envías por error datos personales (destinatario o archivo equivocado), avisa **enseguida** a quien lleve la protección de datos en la empresa. Es una brecha de seguridad: el RGPD pide notificarla a la autoridad, cuando proceda, sin dilación y, si es posible, en 72 horas como máximo. Borrar el correo y callar lo empeora."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e6",
+          "modo": "ordenar",
+          "enunciado": "Ordena la lista de comprobación antes de enviar un libro fuera de la empresa.",
+          "pasos": [
+            "Pregúntate si hace falta el libro o basta con un PDF o un resumen",
+            "Guarda una copia para enviar (el original no se toca)",
+            "En la copia, borra las columnas y hojas que no hacen falta",
+            "Pasa el Inspector de documento a la copia",
+            "Si lleva datos personales, cífrala con contraseña",
+            "Envíala y manda la contraseña por otro canal"
+          ],
+          "explicacion": "Primero decides qué sale; después lo limpias, lo compruebas, lo proteges y lo envías. La contraseña siempre viaja aparte."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l2-e7",
+          "modo": "formula",
+          "enunciado": "**La misión.** A la consultora solo le llegará la tabla de la derecha: personas y horas por departamento. Las personas (columna G) ya están. En **H2** calcula las horas de formación del departamento de **F2**, sumando la columna D. Tu fórmula se copiará a H3:H5, así que fija los rangos. En H2 debe salir **36**. (Para practicar, la hoja tiene 10 personas; en el libro real harás lo mismo con las 58.)",
+          "hoja": {
+            "celdas": {
+              "A1": "Empleado",
+              "B1": "DNI",
+              "C1": "Departamento",
+              "D1": "Horas form.",
+              "A2": "Sergio Lozano Ruiz",
+              "B2": "72914583K",
+              "C2": "Comercial",
+              "D2": 8,
+              "A3": "Elena Castro Pardo",
+              "B3": "25640917M",
+              "C3": "Administración",
+              "D3": 16,
+              "A4": "Iñaki Etxeberria Sola",
+              "B4": "44873026P",
+              "C4": "Compras",
+              "D4": 10,
+              "A5": "Pilar Navarro Gil",
+              "B5": "17395248R",
+              "C5": "Almacén",
+              "D5": 12,
+              "A6": "Raúl Herrero Sanz",
+              "B6": "73052861W",
+              "C6": "Almacén",
+              "D6": 20,
+              "A7": "Ana Belén Domínguez Rey",
+              "B7": "29481735B",
+              "C7": "Comercial",
+              "D7": 6,
+              "A8": "Rocío Marín Vidal",
+              "B8": "18627340H",
+              "C8": "Almacén",
+              "D8": 4,
+              "A9": "Jorge Prieto Lasheras",
+              "B9": "72318094C",
+              "C9": "Administración",
+              "D9": 12,
+              "A10": "Laura Gimeno Ferrer",
+              "B10": "25917463X",
+              "C10": "Comercial",
+              "D10": 14,
+              "A11": "Óscar Bielsa Mur",
+              "B11": "47120586D",
+              "C11": "Compras",
+              "D11": 8,
+              "F1": "Departamento",
+              "G1": "Personas",
+              "H1": "Horas",
+              "F2": "Almacén",
+              "G2": "=CONTAR.SI($C$2:$C$11;F2)",
+              "F3": "Comercial",
+              "G3": "=CONTAR.SI($C$2:$C$11;F3)",
+              "F4": "Administración",
+              "G4": "=CONTAR.SI($C$2:$C$11;F4)",
+              "F5": "Compras",
+              "G5": "=CONTAR.SI($C$2:$C$11;F5)"
+            },
+            "anchos": {
+              "A": 22,
+              "B": 11,
+              "C": 14,
+              "D": 10,
+              "E": 3,
+              "F": 14,
+              "G": 9,
+              "H": 8
+            }
+          },
+          "objetivo": "H2",
+          "copiar_a": [
+            "H3:H5"
+          ],
+          "solucion": "=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)",
+          "alternativas": [
+            "=SUMAR.SI(C$2:C$11;F2;D$2:D$11)",
+            "=SUMAR.SI.CONJUNTO($D$2:$D$11;$C$2:$C$11;F2)"
+          ],
+          "errores_tipicos": [
+            "=SUMAR.SI(C2:C11;F2;D2:D11)",
+            "=SUMAR.SI($C$2:$C$11;$F$2;$D$2:$D$11)",
+            "=CONTAR.SI($C$2:$C$11;F2)",
+            "=SUMA($D$2:$D$11)"
+          ],
+          "variantes": [
+            {
+              "D5": 30
+            },
+            {
+              "C2": "Almacén"
+            }
+          ],
+          "pistas": [
+            "Quieres sumar las horas (columna D) solo de las filas cuyo departamento (columna C) sea el de F2: eso es SUMAR.SI.",
+            "SUMAR.SI(dónde miro; qué busco; qué sumo): `=SUMAR.SI(C2:C11;F2;D2:D11)`. Ahora fija los dos rangos para que no se muevan al copiar.",
+            "Con $ en los rangos y F2 sin fijar: `=SUMAR.SI($C$2:$C$11;F2;$D$2:$D$11)`."
+          ],
+          "explicacion": "Almacén 36 h, Comercial 28 h, Administración 28 h y Compras 18 h. Esa tabla es lo único que sale: sin nombres, sin DNI, sin salarios ni bajas. Para enviarla, cópiala y pégala **como valores** en un libro nuevo (o expórtala a PDF): así no viaja ninguna fórmula que apunte a la plantilla. Lucía ya puede respirar."
+        }
       ],
-      [
-       "«Voy un poco liada, a ver si llego»",
-       "«Adaptar el informe al nuevo extracto me lleva 3 horas más de lo previsto»"
+      "recuerda": [
+        {
+          "id": "n6m3l2-q1",
+          "modo": "test",
+          "pregunta": "¿Qué impide de verdad que alguien que no debe **lea** un archivo que envías por correo?",
+          "opciones": [
+            {
+              "texto": "Cifrar con contraseña y mandar la contraseña por otro canal",
+              "correcta": true,
+              "porque": "Eso es (Archivo › Información › Proteger libro › Cifrar con contraseña): sin la contraseña de apertura, el archivo no se abre. Y como la contraseña va aparte, un correo equivocado no lleva las dos cosas."
+            },
+            {
+              "texto": "Revisar › Proteger hoja, con una contraseña segura",
+              "correcta": false,
+              "porque": "Solo impide cambiar las celdas bloqueadas; el contenido se lee igual. No está pensada para la seguridad."
+            },
+            {
+              "texto": "Ocultar las hojas con los datos delicados",
+              "correcta": false,
+              "porque": "Ocultar no es quitar: se vuelven a mostrar con dos clics."
+            },
+            {
+              "texto": "Cifrarlo y poner la contraseña al final del mismo correo",
+              "correcta": false,
+              "porque": "Quien reciba el correo por error tendrá juntos el archivo y la llave."
+            }
+          ],
+          "explicacion": "Cifrar con contraseña y mandarla por otro canal. Y antes, quitar lo que no hace falta."
+        },
+        {
+          "id": "n6m3l2-q2",
+          "modo": "respuesta_corta",
+          "pregunta": "En un comentario de Excel, ¿qué signo escribes delante del nombre de un compañero para que le llegue un aviso por correo?",
+          "aceptadas": [
+            "@",
+            "arroba",
+            "una arroba",
+            "la arroba",
+            "Arroba",
+            "La arroba"
+          ],
+          "explicacion": "La arroba: «@Lucía, ¿esta columna hace falta?». Le llega un correo con un enlace a tu comentario."
+        },
+        {
+          "id": "n6m3l2-q3",
+          "modo": "test",
+          "pregunta": "Te das cuenta de que has enviado a un cliente un Excel con los teléfonos y correos de todos los clientes. ¿Qué haces?",
+          "opciones": [
+            {
+              "texto": "Avisar enseguida a quien lleve la protección de datos en la empresa",
+              "correcta": true,
+              "porque": "Es una brecha de seguridad. Hay plazo (si procede notificarla, 72 horas como máximo, si es posible) y lo valora quien lleva el tema. Cuanto antes, mejor."
+            },
+            {
+              "texto": "Pedirle al cliente que lo borre y no decir nada más",
+              "correcta": false,
+              "porque": "Pedir que lo borre puede ayudar, pero la empresa tiene que saberlo para valorar si debe notificarlo."
+            },
+            {
+              "texto": "Esperar a ver si el cliente dice algo",
+              "correcta": false,
+              "porque": "Mientras esperas, corre el plazo, y los datos siguen donde no deben."
+            },
+            {
+              "texto": "Mandar otro correo con el archivo bueno, sin explicar nada",
+              "correcta": false,
+              "porque": "El archivo malo sigue en su bandeja. Esconder el error lo hace más grave."
+            }
+          ],
+          "explicacion": "Un error se puede tener; callarlo es lo que lo convierte en un problema serio."
+        }
       ],
-      [
-       "Trabajar el fin de semana sin decir nada y entregar con prisas",
-       "Pedir que decida qué va primero: con prisa se cometen más errores"
-      ],
-      [
-       "«No puedo»",
-       "«El día 3, lo imprescindible; el detalle por comercial, el día 10»"
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es la minimización de datos?",
+          "dorso": "Usar y enviar solo los datos personales necesarios para lo que se va a hacer (RGPD, art. 5.1.c)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué enlace usas para compartir un libro con dos compañeros?",
+          "dorso": "«Personas que elija», con el permiso mínimo que necesite cada uno (editar o solo ver)."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Dónde está el Inspector de documento?",
+          "dorso": "Archivo › Información › Comprobar si hay problemas › Inspeccionar documento. Siempre sobre una copia."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Cómo se cifra un libro con contraseña?",
+          "dorso": "Archivo › Información › Proteger libro › Cifrar con contraseña. La contraseña, por otro canal."
+        },
+        {
+          "tipo": "error",
+          "frente": "«Las columnas de DNI están ocultas: ya lo puedo mandar»",
+          "dorso": "Ocultar no es quitar: se muestran con dos clics. Bórralas de la copia que envías."
+        }
       ]
-     ]
     },
     {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e4",
-     "modo": "test",
-     "pregunta": "Hoy es 20 de noviembre y ya sabes que el detalle por comercial no estará para el 3 de diciembre. ¿Cuándo y cómo se lo dices a Marta?",
-     "opciones": [
-      {
-       "texto": "Hoy, diciéndole qué sí tendrá el día 3 y en qué fecha tendrá el resto",
-       "correcta": true,
-       "porque": "Eso es: con casi dos semanas de margen, Marta puede reorganizarse o decirte qué prefiere. Y le llevas una solución, no solo un problema."
+      "id": "n6m3l3",
+      "titulo": "Mantener un informe recurrente y saber decir «así no llego»",
+      "minutos": 16,
+      "objetivo": "Llevar un informe mensual con una rutina fija, detectar cuando cambia el formato de los datos, avisar a tiempo de un retraso con una alternativa y dejarlo listo para que otra persona lo actualice.",
+      "mision": {
+        "de": "Marta Ruiz",
+        "puesto": "Directora financiera",
+        "texto": "Desde diciembre, el informe de cobros es tuyo: el día 3 de cada mes, a primera hora, en mi correo. Este mes, además, Javier quiere el detalle por comercial y el banco ha cambiado el formato del extracto. Dime hoy si llegas al día 3 y, si no, qué me puedes dar.",
+        "logro": "Ya sabes mantener un informe mes a mes con su rutina y sus comprobaciones, y avisar a tiempo, con una alternativa, cuando no llegas."
       },
-      {
-       "texto": "El día 2, cuando estés segura del todo",
-       "correcta": false,
-       "porque": "El día 2 ya no tiene margen para nada. Avisar tarde convierte un retraso en un problema."
-      },
-      {
-       "texto": "No dices nada y trabajas el fin de semana para intentarlo",
-       "correcta": false,
-       "porque": "Quizá llegues, pero con prisa y cansancio se cometen más errores. Y si no llegas, el aviso llega cuando ya no sirve."
-      },
-      {
-       "texto": "Le dices «no llego» y que decida ella qué hacer",
-       "correcta": false,
-       "porque": "Avisas a tiempo, bien, pero sin propuesta. Tú sabes mejor que nadie qué se puede hacer: dale una opción concreta."
-      }
-     ],
-     "explicacion": "Pronto y con alternativa. Avisar a tiempo no es quedar mal: es lo que hace una profesional que controla su trabajo."
-    },
-    {
-     "tipo": "texto",
-     "md": "Cuando no llegas a todo, **negocia el alcance**: qué se entrega ya y qué espera.\n\nDivide el trabajo en **imprescindible** (lo que hace falta sí o sí el día 3) y **puede esperar** (lo nuevo, lo que mejora pero no corre prisa). Suma las horas de cada parte y compáralas con las que tienes.\n\nSi lo imprescindible cabe, propón una **versión mínima primero**: el día 3, lo de siempre y bien comprobado; lo nuevo, después y con fecha. Mejor algo bien y a tiempo que todo mal."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e5",
-     "modo": "formula",
-     "enunciado": "Entre el día 1 (cuando llegan los datos) y el día 3 tienes **10 horas** (C9). Para hacerlo todo necesitas 14,5 (C10). En **C11** calcula las horas de la **versión mínima**: la suma de las horas de las tareas marcadas «Imprescindible». Debe salir **8,5**.",
-     "hoja": {
-      "celdas": {
-       "A1": "Tarea",
-       "B1": "Tipo",
-       "C1": "Horas",
-       "A2": "Cargar y comprobar los cobros de noviembre",
-       "B2": "Imprescindible",
-       "C2": 3,
-       "A3": "Adaptar el informe al nuevo extracto del banco",
-       "B3": "Imprescindible",
-       "C3": 3,
-       "A4": "Detalle de cobros por comercial (nuevo)",
-       "B4": "Puede esperar",
-       "C4": 4,
-       "A5": "Gráfico de evolución del año",
-       "B5": "Puede esperar",
-       "C5": 2,
-       "A6": "Correo de entrega a Marta",
-       "B6": "Imprescindible",
-       "C6": 1.5,
-       "A7": "Anotar en el registro y actualizar el Léeme",
-       "B7": "Imprescindible",
-       "C7": 1,
-       "A9": "Horas disponibles",
-       "C9": 10,
-       "A10": "Horas para hacerlo todo",
-       "C10": "=SUMA(C2:C7)",
-       "A11": "Horas de la versión mínima"
-      },
-      "formatos": {
-       "C2:C11": "0,0"
-      },
-      "anchos": {
-       "A": 42,
-       "B": 15,
-       "C": 8
-      }
-     },
-     "objetivo": "C11",
-     "solucion": "=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)",
-     "alternativas": [
-      "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Imprescindible\")",
-      "=SUMAR.SI(B2:B7;B2;C2:C7)"
-     ],
-     "errores_tipicos": [
-      "=SUMA(C2:C7)",
-      "=CONTAR.SI(B2:B7;\"Imprescindible\")",
-      "=C2+C3+C6+C7",
-      "=SUMAR.SI(C2:C7;\"Imprescindible\";B2:B7)"
-     ],
-     "variantes": [
-      {
-       "B5": "Imprescindible"
-      },
-      {
-       "C3": 5
-      }
-     ],
-     "formato_resultado": "0,0",
-     "pistas": [
-      "Quieres sumar horas, pero solo de algunas filas: las que en la columna B dicen «Imprescindible». Es SUMAR.SI.",
-      "SUMAR.SI(dónde miro; qué busco; qué sumo): miras en B2:B7, buscas \"Imprescindible\" y sumas C2:C7.",
-      "`=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)`"
-     ],
-     "explicacion": "8,5 horas: lo imprescindible cabe en tus 10. Ya tienes el argumento con números: el día 3, el informe de siempre con el nuevo extracto del banco; el detalle por comercial y el gráfico, después. Así se negocia un alcance: con cifras, no con sensaciones."
-    },
-    {
-     "tipo": "texto",
-     "md": "Un informe que **solo sabe actualizar una persona** está a una gripe de fallar. Para que otra lo saque sin llamarte:\n\n- El **Léeme**, con la rutina paso a paso en una página.\n- **Comprobaciones automáticas**: que el libro avise solo si algo no cuadra.\n- El **registro** de cada mes, para comparar filas y totales.\n- Y la prueba de verdad: que la otra persona lo actualice **una vez ella sola**, siguiendo el Léeme, mientras tú todavía estás para resolver dudas."
-    },
-    {
-     "tipo": "texto",
-     "md": "Una vez al año, revisa si el informe **sigue haciendo falta** y si Excel sigue siendo la herramienta adecuada. Señales para proponer otra:\n\n- Los datos se acercan al límite de una hoja (1.048.576 filas) o el libro va lento aunque esté bien hecho.\n- **Muchas personas escriben datos a la vez** (pedidos, horas): mejor un formulario, una aplicación o una base de datos.\n- Cada persona debe ver **solo lo suyo**: Power BI permite limitarlo.\n- El proceso está regulado (facturas, nóminas): va en su programa."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e6",
-     "modo": "test",
-     "pregunta": "¿En cuál de estos casos tiene sentido proponer otra herramienta en lugar de un Excel compartido?",
-     "opciones": [
-      {
-       "texto": "Los doce comerciales tienen que apuntar sus pedidos cada día, a la vez, en el mismo libro",
-       "correcta": true,
-       "porque": "Eso es: muchas personas escribiendo datos a la vez es trabajo para un formulario, una aplicación o una base de datos."
-      },
-      {
-       "texto": "Marta quiere un gráfico más en el informe de cobros",
-       "correcta": false,
-       "porque": "Es una mejora del informe, no un motivo para cambiar de herramienta. Excel lo hace sin problema."
-      },
-      {
-       "texto": "Nuria va a sacar el informe en diciembre, mientras estás de vacaciones",
-       "correcta": false,
-       "porque": "Eso se resuelve con un buen Léeme y una prueba de traspaso, no con otra herramienta."
-      },
-      {
-       "texto": "El informe tarda dos minutos en actualizarse",
-       "correcta": false,
-       "porque": "Dos minutos al mes no son un problema. Antes de pensar en cambiar, comprueba si de verdad hay una señal."
-      }
-     ],
-     "explicacion": "Excel es un taller estupendo para analizar y cuadrar. Cuando muchas personas escriben a la vez, o cada una debe ver solo lo suyo, toca proponer otra cosa."
-    },
-    {
-     "tipo": "ejercicio",
-     "id": "n6m3l3-e7",
-     "modo": "abierta",
-     "pregunta": "**La misión.** Escribe el mensaje para Marta. Datos: hoy es 20 de noviembre; los datos de noviembre llegan el día 1 y tienes 10 horas hasta el día 3. Hacerlo todo lleva 14,5 horas; lo imprescindible (cargar y comprobar los cobros, adaptar el informe al nuevo extracto del banco, el correo y el registro), 8,5. El detalle por comercial (4 h) y el gráfico del año (2 h) pueden esperar: podrías tenerlos el jueves 10 de diciembre.",
-     "modelo": "Asunto: Informe de cobros de noviembre: qué tendrás el día 3\n\nMarta:\n\nTe aviso ya, para que te dé tiempo a organizarte: el día 3 no llego a todo.\n\nEl banco ha cambiado el formato del extracto y tengo que adaptar el informe; además, el detalle por comercial es nuevo. En total son unas 14,5 horas, y entre el 1 y el 3 tengo 10.\n\nTe propongo:\n- Día 3: el informe de cobros de siempre, ya con el nuevo extracto y todas las comprobaciones.\n- Jueves 10: el detalle por comercial para Javier y el gráfico del año.\n\nSi el detalle por comercial te hace falta antes, dímelo y vemos qué dejamos para después. ¿Te parece bien?\n\nUn saludo.",
-     "criterios": [
-      "Avisa hoy, con antelación, sin esperar al día 3",
-      "Explica qué pasa y por qué, con las horas",
-      "Propone una versión mínima para el día 3 y una fecha concreta para el resto",
-      "Pide a Marta que confirme o que decida las prioridades",
-      "Tono profesional y breve, sin excusas ni dramatismo"
-     ]
+      "funciones": [],
+      "bloques": [
+        {
+          "tipo": "texto",
+          "md": "Un informe que se hace **cada mes** es una promesa: el mismo día y con la misma calidad. El primer mes es fácil, porque lo acabas de montar. Lo difícil llega el séptimo: el banco cambia el formato del extracto, te piden una columna nueva o te vas de vacaciones.\n\nDe eso va esta lección: una **rutina** que no falla, qué hacer cuando **cambian los datos**, cómo **avisar a tiempo** cuando no llegas y cómo **traspasar** el informe a otra persona."
+        },
+        {
+          "tipo": "texto",
+          "md": "La rutina de cada mes tiene cinco pasos, siempre en el mismo orden:\n\n1. **Datos nuevos**: guarda la exportación del mes donde la espera el libro.\n2. **Actualizar**: Datos › **Actualizar todo** (refresca las consultas y las tablas dinámicas).\n3. **Comprobar**: mira las celdas de control. Si alguna dice REVISAR, no sigas.\n4. **Entregar**: el correo con las conclusiones y el PDF.\n5. **Anotar** en el registro: fecha, quién lo ha hecho, filas cargadas, totales e incidencias.\n\nSiempre igual: así no se olvida nada."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e1",
+          "modo": "ordenar",
+          "enunciado": "Ordena la rutina mensual del informe de cobros.",
+          "pasos": [
+            "Guardar la exportación del mes donde la espera el libro",
+            "Datos › Actualizar todo",
+            "Revisar las celdas de control",
+            "Enviar el correo con las conclusiones y el PDF",
+            "Anotar la actualización en el registro"
+          ],
+          "explicacion": "Datos, actualizar, comprobar, entregar y anotar. Si una comprobación falla, la rutina se para ahí: no se entrega nada que no cuadre."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un día, el banco o el programa de gestión **cambian el formato** de la exportación: una columna nueva, otro orden, otro nombre. Tus fórmulas siguen apuntando a la columna de siempre… y casi nunca sale un error: **sale un número falso**.\n\nPor eso un informe que se repite necesita comprobaciones que vigilen **la forma** de los datos: que cada columna esté donde se espera, cuántas filas han llegado y si el total cuadra con el del origen."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e2",
+          "modo": "predice",
+          "enunciado": "El informe de cobros suma la columna C, porque ahí venía siempre el importe. Este mes el banco ha añadido una columna **Referencia** delante del importe. ¿Qué devuelve ahora la fórmula del informe?",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Concepto",
+              "C1": "Referencia",
+              "D1": "Importe",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Transf. Instalaciones Moncayo",
+              "C2": "TR-48211",
+              "D2": 3480,
+              "A3": {
+                "fecha": "2026-11-04"
+              },
+              "B3": "Transf. Montajes Cinca",
+              "C3": "TR-48390",
+              "D3": 1250.4,
+              "A4": {
+                "fecha": "2026-11-09"
+              },
+              "B4": "Transf. Reformas Jalón",
+              "C4": "TR-48655",
+              "D4": 912.35,
+              "A5": {
+                "fecha": "2026-11-13"
+              },
+              "B5": "Transf. Electro Huesca",
+              "C5": "TR-48902",
+              "D5": 2200,
+              "A6": {
+                "fecha": "2026-11-18"
+              },
+              "B6": "Transf. Electricidad Arga",
+              "C6": "TR-49147",
+              "D6": 615.25
+            },
+            "formatos": {
+              "A2:A6": "fecha",
+              "D2:D6": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 28,
+              "C": 11,
+              "D": 11
+            }
+          },
+          "celda": "F2",
+          "formula": "=SUMA(C2:C6)",
+          "explicacion": "Da **0**: SUMA no tiene en cuenta los textos de la columna C. Y no sale ningún error. El informe diría que en noviembre no se ha cobrado nada; y si la columna nueva trajera números, sumaría referencias como si fueran euros. Por eso hay que vigilar la forma de los datos.",
+          "respuesta": "0"
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e3",
+          "modo": "formula",
+          "enunciado": "Pon un vigilante. En **F2** escribe una comprobación que muestre **OK** si la cabecera de la columna C (la celda **C1**) es «Importe», y **REVISAR** si no. Con el extracto de este mes debe salir **REVISAR**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Concepto",
+              "C1": "Referencia",
+              "D1": "Importe",
+              "F1": "Control formato",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Transf. Instalaciones Moncayo",
+              "C2": "TR-48211",
+              "D2": 3480,
+              "A3": {
+                "fecha": "2026-11-04"
+              },
+              "B3": "Transf. Montajes Cinca",
+              "C3": "TR-48390",
+              "D3": 1250.4,
+              "A4": {
+                "fecha": "2026-11-09"
+              },
+              "B4": "Transf. Reformas Jalón",
+              "C4": "TR-48655",
+              "D4": 912.35,
+              "A5": {
+                "fecha": "2026-11-13"
+              },
+              "B5": "Transf. Electro Huesca",
+              "C5": "TR-48902",
+              "D5": 2200,
+              "A6": {
+                "fecha": "2026-11-18"
+              },
+              "B6": "Transf. Electricidad Arga",
+              "C6": "TR-49147",
+              "D6": 615.25
+            },
+            "formatos": {
+              "A2:A6": "fecha",
+              "D2:D6": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 28,
+              "C": 11,
+              "D": 11,
+              "E": 3,
+              "F": 15
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=SI(C1=\"Importe\";\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(C1<>\"Importe\";\"REVISAR\";\"OK\")",
+            "=SI(IGUAL(C1;\"Importe\");\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(C1=\"Importe\";\"REVISAR\";\"OK\")",
+            "=SI(D1=\"Importe\";\"OK\";\"REVISAR\")",
+            "=\"REVISAR\""
+          ],
+          "variantes": [
+            {
+              "C1": "Importe"
+            }
+          ],
+          "pistas": [
+            "Es una decisión con dos salidas: SI(condición; si se cumple; si no).",
+            "La condición compara la celda con un texto: `C1=\"Importe\"`. Los textos van entre comillas.",
+            "`=SI(C1=\"Importe\";\"OK\";\"REVISAR\")`"
+          ],
+          "explicacion": "Sale REVISAR: tu vigilante ha visto el cambio antes que Marta. Pon uno así por cada columna que use el informe, junto al control de filas y de total que ya sabes hacer, y la rutina se parará sola cuando cambie el origen. Entonces: adaptas las fórmulas o la consulta, compruebas que cuadra y lo anotas en el registro de cambios."
+        },
+        {
+          "tipo": "texto",
+          "md": "A veces, con la rutina en marcha, ves que **no llegas**: datos que se retrasan, un cambio que lleva más horas de las previstas, un encargo nuevo.\n\nLo peor es **callar** y esperar a que se arregle solo. Cuanto **antes avises**, más opciones tiene la otra persona: mover una reunión, darte prioridad, aceptar una versión más corta.\n\nUn buen aviso tiene tres partes:\n1. **Qué pasa** y por qué.\n2. **Qué puedes darle y cuándo**.\n3. **Qué necesitas** de ella o qué tiene que decidir."
+        },
+        {
+          "tipo": "comparar",
+          "izq": "Así no",
+          "der": "Así sí",
+          "filas": [
+            [
+              "Día 3, a mediodía: «Perdona, aún no lo tengo»",
+              "Día 20 del mes anterior: «El día 3 no llego a todo. Te propongo esto…»"
+            ],
+            [
+              "«Voy un poco liada, a ver si llego»",
+              "«Adaptar el informe al nuevo extracto me lleva 3 horas más de lo previsto»"
+            ],
+            [
+              "Trabajar el fin de semana sin decir nada y entregar con prisas",
+              "Pedir que decida qué va primero: con prisa se cometen más errores"
+            ],
+            [
+              "«No puedo»",
+              "«El día 3, lo imprescindible; el detalle por comercial, el día 10»"
+            ]
+          ]
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e4",
+          "modo": "test",
+          "pregunta": "Hoy es 20 de noviembre y ya sabes que el detalle por comercial no estará para el 3 de diciembre. ¿Cuándo y cómo se lo dices a Marta?",
+          "opciones": [
+            {
+              "texto": "Hoy, diciéndole qué sí tendrá el día 3 y en qué fecha tendrá el resto",
+              "correcta": true,
+              "porque": "Eso es: con casi dos semanas de margen, Marta puede reorganizarse o decirte qué prefiere. Y le llevas una solución, no solo un problema."
+            },
+            {
+              "texto": "El día 2, cuando estés segura del todo",
+              "correcta": false,
+              "porque": "El día 2 ya no tiene margen para nada. Avisar tarde convierte un retraso en un problema."
+            },
+            {
+              "texto": "No dices nada y trabajas el fin de semana para intentarlo",
+              "correcta": false,
+              "porque": "Quizá llegues, pero con prisa y cansancio se cometen más errores. Y si no llegas, el aviso llega cuando ya no sirve."
+            },
+            {
+              "texto": "Le dices «no llego» y que decida ella qué hacer",
+              "correcta": false,
+              "porque": "Avisas a tiempo, bien, pero sin propuesta. Tú sabes mejor que nadie qué se puede hacer: dale una opción concreta."
+            }
+          ],
+          "explicacion": "Pronto y con alternativa. Avisar a tiempo no es quedar mal: es lo que hace una profesional que controla su trabajo."
+        },
+        {
+          "tipo": "texto",
+          "md": "Cuando no llegas a todo, **negocia el alcance**: qué se entrega ya y qué espera.\n\nDivide el trabajo en **imprescindible** (lo que hace falta sí o sí el día 3) y **puede esperar** (lo nuevo, lo que mejora pero no corre prisa). Suma las horas de cada parte y compáralas con las que tienes.\n\nSi lo imprescindible cabe, propón una **versión mínima primero**: el día 3, lo de siempre y bien comprobado; lo nuevo, después y con fecha. Mejor algo bien y a tiempo que todo mal."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e5",
+          "modo": "formula",
+          "enunciado": "Entre el día 1 (cuando llegan los datos) y el día 3 tienes **10 horas** (C9). Para hacerlo todo necesitas 14,5 (C10). En **C11** calcula las horas de la **versión mínima**: la suma de las horas de las tareas marcadas «Imprescindible». Debe salir **8,5**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Tarea",
+              "B1": "Tipo",
+              "C1": "Horas",
+              "A2": "Cargar y comprobar los cobros de noviembre",
+              "B2": "Imprescindible",
+              "C2": 3,
+              "A3": "Adaptar el informe al nuevo extracto del banco",
+              "B3": "Imprescindible",
+              "C3": 3,
+              "A4": "Detalle de cobros por comercial (nuevo)",
+              "B4": "Puede esperar",
+              "C4": 4,
+              "A5": "Gráfico de evolución del año",
+              "B5": "Puede esperar",
+              "C5": 2,
+              "A6": "Correo de entrega a Marta",
+              "B6": "Imprescindible",
+              "C6": 1.5,
+              "A7": "Anotar en el registro y actualizar el Léeme",
+              "B7": "Imprescindible",
+              "C7": 1,
+              "A9": "Horas disponibles",
+              "C9": 10,
+              "A10": "Horas para hacerlo todo",
+              "C10": "=SUMA(C2:C7)",
+              "A11": "Horas de la versión mínima"
+            },
+            "formatos": {
+              "C2:C11": "0,0"
+            },
+            "anchos": {
+              "A": 42,
+              "B": 15,
+              "C": 8
+            }
+          },
+          "objetivo": "C11",
+          "solucion": "=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)",
+          "alternativas": [
+            "=SUMAR.SI.CONJUNTO(C2:C7;B2:B7;\"Imprescindible\")",
+            "=SUMAR.SI(B2:B7;B2;C2:C7)"
+          ],
+          "errores_tipicos": [
+            "=SUMA(C2:C7)",
+            "=CONTAR.SI(B2:B7;\"Imprescindible\")",
+            "=C2+C3+C6+C7",
+            "=SUMAR.SI(C2:C7;\"Imprescindible\";B2:B7)"
+          ],
+          "variantes": [
+            {
+              "B5": "Imprescindible"
+            },
+            {
+              "C3": 5
+            }
+          ],
+          "formato_resultado": "0,0",
+          "pistas": [
+            "Quieres sumar horas, pero solo de algunas filas: las que en la columna B dicen «Imprescindible». Es SUMAR.SI.",
+            "SUMAR.SI(dónde miro; qué busco; qué sumo): miras en B2:B7, buscas \"Imprescindible\" y sumas C2:C7.",
+            "`=SUMAR.SI(B2:B7;\"Imprescindible\";C2:C7)`"
+          ],
+          "explicacion": "8,5 horas: lo imprescindible cabe en tus 10. Ya tienes el argumento con números: el día 3, el informe de siempre con el nuevo extracto del banco; el detalle por comercial y el gráfico, después. Así se negocia un alcance: con cifras, no con sensaciones."
+        },
+        {
+          "tipo": "texto",
+          "md": "Un informe que **solo sabe actualizar una persona** está a una gripe de fallar. Para que otra lo saque sin llamarte:\n\n- El **Léeme**, con la rutina paso a paso en una página.\n- **Comprobaciones automáticas**: que el libro avise solo si algo no cuadra.\n- El **registro** de cada mes, para comparar filas y totales.\n- Y la prueba de verdad: que la otra persona lo actualice **una vez ella sola**, siguiendo el Léeme, mientras tú todavía estás para resolver dudas."
+        },
+        {
+          "tipo": "texto",
+          "md": "Una vez al año, revisa si el informe **sigue haciendo falta** y si Excel sigue siendo la herramienta adecuada. Señales para proponer otra:\n\n- Los datos se acercan al límite de una hoja (1.048.576 filas) o el libro va lento aunque esté bien hecho.\n- **Muchas personas escriben datos a la vez** (pedidos, horas): mejor un formulario, una aplicación o una base de datos.\n- Cada persona debe ver **solo lo suyo**: Power BI permite limitarlo.\n- El proceso está regulado (facturas, nóminas): va en su programa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e6",
+          "modo": "test",
+          "pregunta": "¿En cuál de estos casos tiene sentido proponer otra herramienta en lugar de un Excel compartido?",
+          "opciones": [
+            {
+              "texto": "Los doce comerciales tienen que apuntar sus pedidos cada día, a la vez, en el mismo libro",
+              "correcta": true,
+              "porque": "Eso es: muchas personas escribiendo datos a la vez es trabajo para un formulario, una aplicación o una base de datos."
+            },
+            {
+              "texto": "Marta quiere un gráfico más en el informe de cobros",
+              "correcta": false,
+              "porque": "Es una mejora del informe, no un motivo para cambiar de herramienta. Excel lo hace sin problema."
+            },
+            {
+              "texto": "Nuria va a sacar el informe en diciembre, mientras estás de vacaciones",
+              "correcta": false,
+              "porque": "Eso se resuelve con un buen Léeme y una prueba de traspaso, no con otra herramienta."
+            },
+            {
+              "texto": "El informe tarda dos minutos en actualizarse",
+              "correcta": false,
+              "porque": "Dos minutos al mes no son un problema. Antes de pensar en cambiar, comprueba si de verdad hay una señal."
+            }
+          ],
+          "explicacion": "Excel es un taller estupendo para analizar y cuadrar. Cuando muchas personas escriben a la vez, o cada una debe ver solo lo suyo, toca proponer otra cosa."
+        },
+        {
+          "tipo": "ejercicio",
+          "id": "n6m3l3-e7",
+          "modo": "abierta",
+          "pregunta": "**La misión.** Escribe el mensaje para Marta. Datos: hoy es 20 de noviembre; los datos de noviembre llegan el día 1 y tienes 10 horas hasta el día 3. Hacerlo todo lleva 14,5 horas; lo imprescindible (cargar y comprobar los cobros, adaptar el informe al nuevo extracto del banco, el correo y el registro), 8,5. El detalle por comercial (4 h) y el gráfico del año (2 h) pueden esperar: podrías tenerlos el jueves 10 de diciembre.",
+          "modelo": "Asunto: Informe de cobros de noviembre: qué tendrás el día 3\n\nMarta:\n\nTe aviso ya, para que te dé tiempo a organizarte: el día 3 no llego a todo.\n\nEl banco ha cambiado el formato del extracto y tengo que adaptar el informe; además, el detalle por comercial es nuevo. En total son unas 14,5 horas, y entre el 1 y el 3 tengo 10.\n\nTe propongo:\n- Día 3: el informe de cobros de siempre, ya con el nuevo extracto y todas las comprobaciones.\n- Jueves 10: el detalle por comercial para Javier y el gráfico del año.\n\nSi el detalle por comercial te hace falta antes, dímelo y vemos qué dejamos para después. ¿Te parece bien?\n\nUn saludo.",
+          "criterios": [
+            "Avisa hoy, con antelación, sin esperar al día 3",
+            "Explica qué pasa y por qué, con las horas",
+            "Propone una versión mínima para el día 3 y una fecha concreta para el resto",
+            "Pide a Marta que confirme o que decida las prioridades",
+            "Tono profesional y breve, sin excusas ni dramatismo"
+          ]
+        }
+      ],
+      "recuerda": [
+        {
+          "id": "n6m3l3-q1",
+          "modo": "test",
+          "pregunta": "Nuria sacará el informe de cobros en diciembre, mientras estás de vacaciones. ¿Qué demuestra mejor que podrá hacerlo sin ti?",
+          "opciones": [
+            {
+              "texto": "Que lo saque ella sola una vez con el Léeme, antes de irte",
+              "correcta": true,
+              "porque": "Eso es: si lo saca sola siguiendo el Léeme, el informe ya no depende de ti. Y si se atasca, lo descubrís mientras aún estás."
+            },
+            {
+              "texto": "Que se lo expliques en una reunión de una hora",
+              "correcta": false,
+              "porque": "Ayuda, pero escuchar no es hacer: lo que no ha practicado se le olvidará."
+            },
+            {
+              "texto": "Que tenga tu móvil por si le surgen dudas",
+              "correcta": false,
+              "porque": "Si tiene que llamarte, el informe sigue dependiendo de ti (y te estropea las vacaciones)."
+            },
+            {
+              "texto": "Que el libro tenga todas las fórmulas bien hechas",
+              "correcta": false,
+              "porque": "Necesario, pero no suficiente: también tiene que saber qué pasos seguir y qué mirar."
+            }
+          ],
+          "explicacion": "La prueba del traspaso es que la otra persona lo haga una vez sola. Un informe que solo sabe actualizar una persona es un riesgo para la empresa."
+        },
+        {
+          "id": "n6m3l3-q2",
+          "modo": "cinta",
+          "enunciado": "Ya has guardado la exportación de este mes. ¿Dónde está el botón que refresca de una vez todas las consultas y tablas dinámicas del libro?",
+          "ruta": [
+            "Datos",
+            "Consultas y conexiones",
+            "Actualizar todo"
+          ],
+          "explicacion": "Datos › Consultas y conexiones › Actualizar todo. Es el paso 2 de la rutina; después, las comprobaciones."
+        },
+        {
+          "id": "n6m3l3-q3",
+          "modo": "formula",
+          "enunciado": "Otro vigilante. En **F2** escribe una comprobación que muestre **OK** si el número de cobros cargados (las fechas de A2:A7) es igual al que indica el banco en **E2**, y **REVISAR** si no. Este mes falta uno: debe salir **REVISAR**.",
+          "hoja": {
+            "celdas": {
+              "A1": "Fecha",
+              "B1": "Cliente",
+              "C1": "Importe",
+              "E1": "Cobros (banco)",
+              "F1": "Control filas",
+              "A2": {
+                "fecha": "2026-11-02"
+              },
+              "B2": "Instalaciones Moncayo",
+              "C2": 3480,
+              "A3": {
+                "fecha": "2026-11-04"
+              },
+              "B3": "Montajes Cinca",
+              "C3": 1250.4,
+              "A4": {
+                "fecha": "2026-11-09"
+              },
+              "B4": "Reformas Jalón",
+              "C4": 912.35,
+              "A5": {
+                "fecha": "2026-11-13"
+              },
+              "B5": "Electro Huesca",
+              "C5": 2200,
+              "A6": {
+                "fecha": "2026-11-18"
+              },
+              "B6": "Electricidad Arga",
+              "C6": 615.25,
+              "E2": 6
+            },
+            "formatos": {
+              "A2:A7": "fecha",
+              "C2:C7": "eur"
+            },
+            "anchos": {
+              "A": 11,
+              "B": 22,
+              "C": 11,
+              "D": 3,
+              "E": 14,
+              "F": 13
+            }
+          },
+          "objetivo": "F2",
+          "solucion": "=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")",
+          "alternativas": [
+            "=SI(CONTAR(A2:A7)=E2;\"OK\";\"REVISAR\")",
+            "=SI(E2=CONTARA(A2:A7);\"OK\";\"REVISAR\")"
+          ],
+          "errores_tipicos": [
+            "=SI(CONTARA(A2:A7)=E2;\"REVISAR\";\"OK\")",
+            "=SI(SUMA(C2:C7)=E2;\"OK\";\"REVISAR\")",
+            "=\"REVISAR\""
+          ],
+          "variantes": [
+            {
+              "E2": 5
+            }
+          ],
+          "pistas": [
+            "Cuenta las filas que han llegado y compáralas con E2 dentro de un SI.",
+            "CONTARA(A2:A7) cuenta las celdas con algo escrito.",
+            "`=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")`"
+          ],
+          "explicacion": "REVISAR: el banco dice 6 cobros y han llegado 5. Antes de entregar, toca averiguar cuál falta. Columnas, filas y total: los tres vigilantes de un informe que se repite."
+        }
+      ],
+      "tarjetas": [
+        {
+          "tipo": "concepto",
+          "frente": "Los cinco pasos de la rutina de un informe mensual",
+          "dorso": "1) Datos nuevos · 2) Actualizar todo (pestaña Datos) · 3) Comprobar · 4) Entregar · 5) Anotar en el registro."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "Las tres partes de un buen aviso de retraso",
+          "dorso": "Qué pasa y por qué · qué puedes dar y cuándo · qué necesitas o qué tiene que decidir la otra persona. Y se da pronto."
+        },
+        {
+          "tipo": "concepto",
+          "frente": "¿Qué es negociar el alcance?",
+          "dorso": "Separar lo imprescindible de lo que puede esperar y entregar primero una versión mínima bien hecha, con fecha para el resto."
+        },
+        {
+          "tipo": "error",
+          "frente": "«La fórmula no da error, así que el informe está bien»",
+          "dorso": "Un cambio de formato en el origen casi nunca da error: da un número falso. Vigila columnas, filas y total cada mes."
+        }
+      ]
     }
-   ],
-   "recuerda": [
-    {
-     "id": "n6m3l3-q1",
-     "modo": "test",
-     "pregunta": "Nuria sacará el informe de cobros en diciembre, mientras estás de vacaciones. ¿Qué demuestra mejor que podrá hacerlo sin ti?",
-     "opciones": [
-      {
-       "texto": "Que lo actualice ella sola una vez, siguiendo el Léeme, antes de que te vayas",
-       "correcta": true,
-       "porque": "Eso es: si lo saca sola con el Léeme, el informe ya no depende de ti. Y si se atasca, lo descubrís mientras aún estás."
-      },
-      {
-       "texto": "Que se lo expliques en una reunión de una hora",
-       "correcta": false,
-       "porque": "Ayuda, pero escuchar no es hacer: lo que no ha practicado se le olvidará."
-      },
-      {
-       "texto": "Que tenga tu móvil por si le surgen dudas",
-       "correcta": false,
-       "porque": "Si tiene que llamarte, el informe sigue dependiendo de ti (y te estropea las vacaciones)."
-      },
-      {
-       "texto": "Que el libro tenga todas las fórmulas bien hechas",
-       "correcta": false,
-       "porque": "Necesario, pero no suficiente: también tiene que saber qué pasos seguir y qué mirar."
-      }
-     ],
-     "explicacion": "La prueba del traspaso es que la otra persona lo haga una vez sola. Un informe que solo sabe actualizar una persona es un riesgo para la empresa."
-    },
-    {
-     "id": "n6m3l3-q2",
-     "modo": "cinta",
-     "enunciado": "Ya has guardado la exportación de este mes. ¿Dónde está el botón que refresca de una vez todas las consultas y tablas dinámicas del libro?",
-     "ruta": [
-      "Datos",
-      "Consultas y conexiones",
-      "Actualizar todo"
-     ],
-     "explicacion": "Datos › Consultas y conexiones › Actualizar todo. Es el paso 2 de la rutina; después, las comprobaciones."
-    },
-    {
-     "id": "n6m3l3-q3",
-     "modo": "formula",
-     "enunciado": "Otro vigilante. En **F2** escribe una comprobación que muestre **OK** si el número de cobros cargados (las fechas de A2:A7) es igual al que indica el banco en **E2**, y **REVISAR** si no. Este mes falta uno: debe salir **REVISAR**.",
-     "hoja": {
-      "celdas": {
-       "A1": "Fecha",
-       "B1": "Cliente",
-       "C1": "Importe",
-       "E1": "Cobros (banco)",
-       "F1": "Control filas",
-       "A2": {
-        "fecha": "2026-11-02"
-       },
-       "B2": "Instalaciones Moncayo",
-       "C2": 3480,
-       "A3": {
-        "fecha": "2026-11-04"
-       },
-       "B3": "Montajes Cinca",
-       "C3": 1250.4,
-       "A4": {
-        "fecha": "2026-11-09"
-       },
-       "B4": "Reformas Jalón",
-       "C4": 912.35,
-       "A5": {
-        "fecha": "2026-11-13"
-       },
-       "B5": "Electro Huesca",
-       "C5": 2200,
-       "A6": {
-        "fecha": "2026-11-18"
-       },
-       "B6": "Electricidad Arga",
-       "C6": 615.25,
-       "E2": 6
-      },
-      "formatos": {
-       "A2:A7": "fecha",
-       "C2:C7": "eur"
-      },
-      "anchos": {
-       "A": 11,
-       "B": 22,
-       "C": 11,
-       "D": 3,
-       "E": 14,
-       "F": 13
-      }
-     },
-     "objetivo": "F2",
-     "solucion": "=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")",
-     "alternativas": [
-      "=SI(CONTAR(A2:A7)=E2;\"OK\";\"REVISAR\")",
-      "=SI(E2=CONTARA(A2:A7);\"OK\";\"REVISAR\")"
-     ],
-     "errores_tipicos": [
-      "=SI(CONTARA(A2:A7)=E2;\"REVISAR\";\"OK\")",
-      "=SI(SUMA(C2:C7)=E2;\"OK\";\"REVISAR\")",
-      "=\"REVISAR\""
-     ],
-     "variantes": [
-      {
-       "E2": 5
-      }
-     ],
-     "pistas": [
-      "Cuenta las filas que han llegado y compáralas con E2 dentro de un SI.",
-      "CONTARA(A2:A7) cuenta las celdas con algo escrito.",
-      "`=SI(CONTARA(A2:A7)=E2;\"OK\";\"REVISAR\")`"
-     ],
-     "explicacion": "REVISAR: el banco dice 6 cobros y han llegado 5. Antes de entregar, toca averiguar cuál falta. Columnas, filas y total: los tres vigilantes de un informe que se repite."
-    }
-   ],
-   "tarjetas": [
-    {
-     "tipo": "concepto",
-     "frente": "Los cinco pasos de la rutina de un informe mensual",
-     "dorso": "1) Datos nuevos · 2) Actualizar todo (pestaña Datos) · 3) Comprobar · 4) Entregar · 5) Anotar en el registro."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "Las tres partes de un buen aviso de retraso",
-     "dorso": "Qué pasa y por qué · qué puedes dar y cuándo · qué necesitas o qué tiene que decidir la otra persona. Y se da pronto."
-    },
-    {
-     "tipo": "concepto",
-     "frente": "¿Qué es negociar el alcance?",
-     "dorso": "Separar lo imprescindible de lo que puede esperar y entregar primero una versión mínima bien hecha, con fecha para el resto."
-    },
-    {
-     "tipo": "error",
-     "frente": "«La fórmula no da error, así que el informe está bien»",
-     "dorso": "Un cambio de formato en el origen casi nunca da error: da un número falso. Vigila columnas, filas y total cada mes."
-    }
-   ]
-  }
- ]
+  ]
 }

@@ -303,9 +303,9 @@
           "pregunta": "Haces una resta de fechas y en la celda aparece **01/02/1900**. ¿Qué ha pasado?",
           "opciones": [
             {
-              "texto": "La celda tiene formato de fecha: el resultado es 32 días y solo hay que cambiar el formato a General.",
+              "texto": "El resultado son 32 días con formato de fecha.",
               "correcta": true,
-              "porque": "Exacto: la cuenta está bien, solo lleva el disfraz equivocado. El 01/02/1900 es el día 32 de la cuenta de Excel (31 de enero + 1)."
+              "porque": "Exacto: la cuenta está bien, solo lleva el disfraz equivocado. El 01/02/1900 es el día 32 de la cuenta de Excel (31 de enero + 1). Cambia el formato a General y verás 32."
             },
             {
               "texto": "La fórmula está mal y hay que escribirla de nuevo.",

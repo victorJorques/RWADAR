@@ -1314,9 +1314,9 @@
      "pregunta": "En **E2** tienes `=UNICOS(A2:A13)`. En otra celda, Javier escribe `=CONTARA(E2#)`. ¿Qué cuenta?",
      "opciones": [
       {
-       "texto": "Todos los nombres que ha desbordado UNICOS desde E2, sean cuantos sean",
+       "texto": "Todos los nombres que devuelve UNICOS en E2",
        "correcta": true,
-       "porque": "Eso es. E2# es «todo el resultado de la fórmula de E2». Si mañana hay siete comerciales, contará siete sin tocar nada."
+       "porque": "Eso es. E2# es «todo el resultado de la fórmula de E2», sean cuantos sean. Si mañana hay siete comerciales, contará siete sin tocar nada."
       },
       {
        "texto": "Solo la celda E2, así que da 1",
@@ -1324,14 +1324,14 @@
        "porque": "Eso sería `=CONTARA(E2)`. La almohadilla añade todo lo que la fórmula ha desbordado."
       },
       {
-       "texto": "Toda la columna E",
+       "texto": "Toda la columna E, de arriba abajo",
        "correcta": false,
        "porque": "No: solo las celdas del resultado de E2. Lo que haya más abajo, fuera del resultado, no cuenta."
       },
       {
-       "texto": "Nada: el # siempre da error",
+       "texto": "Da error: el # no vale dentro de CONTARA",
        "correcta": false,
-       "porque": "En Excel 2021 y Microsoft 365, el # es válido (se llama operador de rango desbordado). Solo falla si en E2 no hay una fórmula que desborde."
+       "porque": "En Excel 2021 y Microsoft 365, el # es válido dentro de CONTARA y de otras funciones (se llama operador de rango desbordado). Solo falla si en E2 no hay una fórmula que desborde."
       }
      ],
      "explicacion": "E2# usa el operador de rango desbordado: se refiere a todo lo que devuelve la fórmula de E2, crezca o encoja."
@@ -1856,12 +1856,12 @@
      "pregunta": "Un compañero manda un gráfico de columnas con las ventas del trimestre por delegación: Zaragoza 512.000 €, Pamplona 498.000 € y Lleida 489.000 €. El eje vertical empieza en **485.000 €**, y la columna de Zaragoza parece **casi siete veces** más alta que la de Lleida. ¿Qué le dices?",
      "opciones": [
       {
-       "texto": "Que el eje empiece en 0: en realidad, Zaragoza vende menos de un 5 % más que Lleida",
+       "texto": "Que ponga el eje en 0, porque exagera la diferencia",
        "correcta": true,
-       "porque": "Eso es. Con el eje cortado, la altura ya no es la cifra: 27.000 € por encima de 485.000 frente a 4.000 parece una diferencia enorme, y no lo es."
+       "porque": "Eso es. En realidad, Zaragoza vende menos de un 5 % más que Lleida. Con el eje cortado, la altura ya no es la cifra: 27.000 € por encima de 485.000 frente a 4.000 parece una diferencia enorme, y no lo es."
       },
       {
-       "texto": "Que lo cambie a un gráfico circular",
+       "texto": "Que lo pase a un gráfico circular por delegación",
        "correcta": false,
        "porque": "El circular es para partes de un total y con cifras tan parecidas no se leería mejor. El problema aquí es el eje, no el tipo."
       },
@@ -1871,9 +1871,9 @@
        "porque": "Se ven más, pero falsas. En columnas, la altura tiene que ser la cifra; si cortas el eje, el gráfico exagera."
       },
       {
-       "texto": "Que añada un eje secundario",
+       "texto": "Que añada un eje secundario para Lleida",
        "correcta": false,
-       "porque": "El eje secundario es para una segunda serie con otra escala (como el margen %). Aquí solo hay una serie."
+       "porque": "El eje secundario es para una segunda serie con otra escala (como el margen %). Aquí solo hay una serie, y dar a Lleida otra escala confundiría aún más."
       }
      ],
      "explicacion": "En columnas y barras el eje empieza en 0, porque la altura tiene que ser la cifra. Si una diferencia pequeña importa, dila en el título en vez de exagerarla con el eje."
@@ -1913,9 +1913,9 @@
      "pregunta": "Javier quiere un gráfico de líneas con la evolución mensual de sus **12 comerciales**, una línea por cada uno. ¿Qué le aconsejas?",
      "opciones": [
       {
-       "texto": "Que no meta las 12: mejor unas barras ordenadas con el total de cada uno, o solo las líneas de los que le interesan",
+       "texto": "Que deje solo las líneas de los que le interesan",
        "correcta": true,
-       "porque": "Eso es. Con 12 líneas cruzadas no se distingue ninguna; un gráfico tiene que dejar ver una idea."
+       "porque": "Eso es. Con 12 líneas cruzadas no se distingue ninguna. Otra buena opción: unas barras ordenadas con el total de cada uno. Un gráfico tiene que dejar ver una idea."
       },
       {
        "texto": "Un gráfico combinado con eje secundario",
@@ -1923,7 +1923,7 @@
        "porque": "El eje secundario sirve para dos medidas con escalas distintas, no para muchas series de la misma medida."
       },
       {
-       "texto": "Un gráfico circular por cada mes",
+       "texto": "Un gráfico circular por cada mes del año",
        "correcta": false,
        "porque": "Doce circulares de doce porciones: ilegible. El circular solo funciona con pocas partes de un total."
       },
@@ -2140,7 +2140,7 @@
       [
        "#¡VALOR!",
        "Tipo de dato equivocado: hay texto donde debería haber un número",
-       "«1.250 €» guardado como texto y multiplicado por 2"
+       "«12 uds» (texto) multiplicado por un precio"
       ],
       [
        "#¡REF!",
@@ -2177,7 +2177,7 @@
      "pregunta": "El chico de prácticas **borró la columna de descuentos** porque «ya no se usaba». Desde entonces, el total de la hoja muestra **#¡REF!**. ¿Qué ha pasado?",
      "opciones": [
       {
-       "texto": "Alguna fórmula usaba esa columna y ahora apunta a una celda que ya no existe",
+       "texto": "Una fórmula usaba esa columna, que ya no existe",
        "correcta": true,
        "porque": "Eso es. Si acabas de borrar, [[Ctrl]]+[[Z]] lo deshace. Si no, abre la fórmula: verás #¡REF! dentro, justo donde estaba la referencia, y la rehaces."
       },
@@ -2192,7 +2192,7 @@
        "porque": "Eso daría #¡DIV/0!."
       },
       {
-       "texto": "La función está mal escrita",
+       "texto": "La función del total está mal escrita",
        "correcta": false,
        "porque": "Eso daría #¿NOMBRE?. Aquí la fórmula estaba bien hasta que se borró la columna."
       }
@@ -2584,7 +2584,7 @@
      "pregunta": "Un compañero trae el saldo de cada cliente con `=SI.ERROR(BUSCARX(A2;$G$2:$G$90;$H$2:$H$90);0)` y dice que el total cuadra «más o menos». ¿Qué riesgo tiene?",
      "opciones": [
       {
-       "texto": "Si un cliente no está en la lista de G, sale 0 en vez de #N/D y nadie se entera de que falta",
+       "texto": "Un cliente que no esté en la lista sale con 0 y nadie lo ve",
        "correcta": true,
        "porque": "Eso es. Ese #N/D era un aviso útil. Mejor `BUSCARX(…;\"No está\")` y contar cuántos «No está» hay."
       },

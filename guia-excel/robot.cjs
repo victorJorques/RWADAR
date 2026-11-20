@@ -21,7 +21,7 @@ const archivo = process.argv[2]; const solo = process.argv[3] ? process.argv[3].
     const e = await ejDe(ejId.replace(/^ej-/, '')); if (!e) { informe.push(`${ejId}: no encuentro el ejercicio en DATOS`); return; }
     try {
       if (e.modo === 'formula') { const inp = sec.locator('.entrada-formula'); await inp.fill(e.solucion); await inp.press('Enter'); }
-      else if (e.modo === 'test') { const ops = sec.locator('.opcion'); const n = await ops.count(); for (let k = 0; k < n; k++) if (e.opciones[k].correcta) await ops.nth(k).click(); if (e.multiple) await comprobar(sec); }
+      else if (e.modo === 'test') { for (let k = 0; k < e.opciones.length; k++) if (e.opciones[k].correcta) await sec.locator(`.opcion[data-i="${k}"]`).click(); if (e.multiple) await comprobar(sec); }
       else if (e.modo === 'predice') { await sec.locator('input.entrada-corta').fill(String(e.respuesta)); await comprobar(sec); }
       else if (e.modo === 'respuesta_corta') { await sec.locator('input.entrada-corta').fill(e.aceptadas[0]); await comprobar(sec); }
       else if (e.modo === 'cinta') { await sec.locator('.cinta-pestanas button', { hasText: new RegExp('^' + e.ruta[0].replace(/[()]/g, '.') + '$') }).click(); await sec.locator('.cinta-grupo').filter({ has: p.locator('.nombre-grupo', { hasText: new RegExp('^' + e.ruta[1].replace(/[()+]/g, '.') + '$') }) }).locator('button', { hasText: new RegExp('^' + e.ruta[2].replace(/[()+/]/g, '.') + '$') }).first().click(); }
@@ -45,6 +45,7 @@ const archivo = process.argv[2]; const solo = process.argv[3] ? process.argv[3].
     const btn = p.locator('.barra-continuar button.primario'); let capturada = false;
     for (let k = 0; k < 80; k++) {
       if (await p.locator('.resultado').count()) break;
+      if (await p.locator('.pantalla-jugar section.previa').count()) { await p.locator('.pantalla-jugar section.previa .opcion').first().click(); await btn.click(); await p.waitForTimeout(80); continue; } // pregunta previa: no cuenta
       const ej = p.locator('.pantalla-jugar section.ejercicio');
       if (await ej.count()) { const r = await resolver(await ej.first().getAttribute('id'), informe); if (r === 'saltado') continue; if (CAPT && !capturada) { capturada = true; await p.waitForTimeout(400); await p.screenshot({ path: path.join(CAPT, id + '-acierto.png') }); } }
       if (await btn.isDisabled()) { informe.push(`${id}: bloqueada en la pantalla ${k}`); break; }

@@ -27,9 +27,9 @@
           "pregunta": "Rodrigo te pide el precio de CAF-ESP-1K. Lo ves en la Tarifa con tus propios ojos, pero tu búsqueda devuelve «no encontrado». ¿Qué compruebas primero?",
           "opciones": [
             {
-              "texto": "Si uno de los dos códigos tiene espacios de más, o si uno es número y el otro está guardado como texto.",
+              "texto": "Si los dos códigos son idénticos: un espacio de más o un número guardado como texto.",
               "correcta": true,
-              "porque": "Es la causa más frecuente. Para Excel, «CAF-ESP-1K » (con espacio) y «CAF-ESP-1K» son textos distintos, igual que 1001 y «1001». Compáralos con `=A2=B2` o mira su LARGO, y limpia el que esté mal."
+              "porque": "Es la causa más frecuente. Para Excel, «CAF-ESP-1K » (con espacio) y «CAF-ESP-1K» son textos distintos, igual que 1001 y «1001». Compáralos con `=A2=B2` o mira su LARGO, y limpia el que esté mal. Después, busca erratas como una O en lugar de un 0."
             },
             {
               "texto": "Cambiar la búsqueda a coincidencia aproximada para que encuentre algo.",
@@ -37,12 +37,12 @@
               "porque": "Encontraría «algo», pero no lo que buscas: la coincidencia aproximada devuelve el valor más cercano y te daría un precio falso sin avisar. Es peor que el error."
             },
             {
-              "texto": "Ordenar la tarifa por código de producto.",
+              "texto": "Ordenar la tarifa por código, de la A a la Z, y repetir la búsqueda.",
               "correcta": false,
               "porque": "Con búsqueda exacta el orden no importa. Ordenar no arregla un código que no es igual al que buscas."
             },
             {
-              "texto": "Cerrar Excel y volver a abrirlo, o repararlo.",
+              "texto": "Cerrar Excel y volver a abrirlo, por si se ha quedado colgado.",
               "correcta": false,
               "porque": "No es un fallo del programa: Excel compara carácter a carácter y te está diciendo que los dos códigos no son iguales."
             }
@@ -56,9 +56,9 @@
           "pregunta": "Tienes una tabla dinámica de ventas. Pegas debajo de los datos los pedidos de ayer y la tabla dinámica no cambia. ¿Qué ha pasado y cuál es la buena práctica?",
           "opciones": [
             {
-              "texto": "Su origen es un rango fijo que no incluye las filas nuevas, o falta actualizarla. Lo bueno es que el origen sea una Tabla ([[Ctrl]]+[[T]]) y actualizar al añadir datos.",
+              "texto": "Su origen no llega a las filas nuevas o falta actualizarla: origen en una Tabla y Actualizar.",
               "correcta": true,
-              "porque": "Una tabla dinámica no se recalcula sola como una fórmula: hay que actualizarla (Datos > Actualizar todo). Y si su origen es un rango como A1:G1240, la fila 1241 no existe para ella. Con una Tabla, el origen crece solo."
+              "porque": "Una tabla dinámica no se recalcula sola como una fórmula: hay que actualizarla (Datos > Actualizar todo). Y si su origen es un rango como A1:G1240, la fila 1241 no existe para ella. Si conviertes los datos en Tabla (Ctrl+T) y la usas como origen, el origen crece solo y basta con actualizar al añadir datos."
             },
             {
               "texto": "Las tablas dinámicas tienen un máximo de filas y se ha llenado.",
@@ -143,12 +143,12 @@
           "pregunta": "Un proveedor de Estados Unidos manda un CSV con fechas como «03/04/2026». ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Es ambiguo: lo importo indicando la configuración regional de origen (Estados Unidos) y lo compruebo con una fecha cuyo día sea mayor que 12.",
+              "texto": "Lo importo indicando la configuración regional de Estados Unidos y reviso un día mayor que 12.",
               "correcta": true,
-              "porque": "En Estados Unidos se escribe mes/día: «03/04/2026» es el 4 de marzo. Un día mayor que 12 (por ejemplo «03/25/2026») delata el orden: si Excel lo deja como texto o lo lee mal, la importación está mal."
+              "porque": "Es ambiguo: en Estados Unidos se escribe mes/día, así que «03/04/2026» es el 4 de marzo. Al importar, indica la configuración regional de origen. Un día mayor que 12 (por ejemplo «03/25/2026») delata el orden: si Excel lo deja como texto o lo lee mal, la importación está mal."
             },
             {
-              "texto": "Es el 3 de abril: Excel en español lo lee bien.",
+              "texto": "Es el 3 de abril: lo abro con doble clic y Excel en español lo lee bien.",
               "correcta": false,
               "porque": "Excel lo lee con tu configuración (día/mes) y lo convierte en el 3 de abril, pero el proveedor quería decir el 4 de marzo. Y las fechas con día mayor que 12 se quedan como texto."
             },
@@ -172,22 +172,22 @@
           "pregunta": "Cada mes te llegan 3 CSV (uno por zona) con las mismas columnas y tienes que unirlos para el informe. ¿Qué montas?",
           "opciones": [
             {
-              "texto": "Una consulta de Power Query que lee la carpeta donde se guardan; cada mes copio allí los archivos nuevos y pulso Actualizar.",
+              "texto": "Una consulta de Power Query desde carpeta: cada mes dejo allí los CSV y pulso Actualizar.",
               "correcta": true,
-              "porque": "Se monta una vez: la consulta combina todos los archivos de la carpeta y les aplica los mismos pasos de limpieza. El mes siguiente es dejar los archivos y actualizar."
+              "porque": "Se monta una vez: la consulta lee la carpeta donde se guardan, combina todos los archivos y les aplica los mismos pasos de limpieza. El mes siguiente es copiar allí los archivos nuevos y pulsar Actualizar."
             },
             {
-              "texto": "Abrir los tres y copiarlos uno debajo de otro cada mes.",
+              "texto": "Abrir los tres y copiarlos uno debajo de otro en mi libro cada mes.",
               "correcta": false,
               "porque": "Funciona el primer mes, pero cada copia a mano es una ocasión de pegar dos veces el mismo archivo o dejarte uno. No es mantenible."
             },
             {
-              "texto": "Grabar una macro que copie y pegue.",
+              "texto": "Grabar una macro que abra los tres CSV, los copie y los pegue.",
               "correcta": false,
-              "porque": "Puede servir, pero una macro grabada se rompe si cambia el nombre de un archivo o el número de filas, y no todas las empresas permiten macros. Power Query hace lo mismo sin código."
+              "porque": "Puede servir, pero una macro grabada suele romperse si cambia el nombre de un archivo o el número de filas, y no todas las empresas permiten macros. Power Query hace lo mismo sin código."
             },
             {
-              "texto": "Vincular celdas de mi libro a cada CSV con fórmulas.",
+              "texto": "Vincular las celdas de mi libro a cada CSV con fórmulas que apunten a ellos.",
               "correcta": false,
               "porque": "Los vínculos a otros archivos se rompen al moverlos o renombrarlos y no traen filas nuevas: si un mes hay más líneas, no las ves."
             }
@@ -201,9 +201,9 @@
           "pregunta": "En la variante «modo 2026», Copilot te propone una fórmula para el margen por zona. ¿Qué haces antes de usarla?",
           "opciones": [
             {
-              "texto": "La pruebo con un caso que conozco, reviso que sus rangos cubren todas las filas y no pego datos personales de clientes en asistentes que la empresa no haya autorizado.",
+              "texto": "La pruebo con un caso que conozco y reviso que sus rangos cubren todas las filas.",
               "correcta": true,
-              "porque": "La IA acierta a menudo, pero no siempre, y no sabe qué es «correcto» en tu empresa (con o sin IVA, qué líneas cuentan). Un caso conocido y la revisión de rangos atrapan la mayoría de errores. Y los datos personales solo van a herramientas aprobadas."
+              "porque": "La IA acierta a menudo, pero no siempre, y no sabe qué es «correcto» en tu empresa (con o sin IVA, qué líneas cuentan). Un caso conocido y la revisión de rangos atrapan la mayoría de errores. Y de paso: los datos personales de clientes solo van a asistentes que la empresa haya autorizado."
             },
             {
               "texto": "La uso tal cual: Copilot ha leído el libro, así que la fórmula es correcta.",
@@ -259,22 +259,22 @@
           "pregunta": "El total de una factura de 40 líneas sale 0,01 € distinto de la suma de los totales de cada línea. ¿Qué pasa y qué haces?",
           "opciones": [
             {
-              "texto": "El IVA se ha redondeado en sitios distintos (línea a línea en un cálculo y sobre la suma en el otro). Se redondea en el mismo nivel en que se factura y se documenta la regla.",
+              "texto": "Se ha redondeado en sitios distintos: redondeo en un solo nivel, el de la factura, y lo anoto.",
               "correcta": true,
-              "porque": "Redondear cada línea y sumar no da lo mismo que sumar y redondear. Ninguno es «el malo»: hay que elegir uno, el mismo que usa la factura, y escribirlo en el Léame para que todo cuadre."
+              "porque": "Redondear el IVA línea a línea y sumar no da lo mismo que sumar y redondear el total. Ninguno es «el malo»: hay que elegir uno, el mismo que usa la factura, y escribirlo en el Léame para que todo cuadre."
             },
             {
-              "texto": "Es un error de decimales de Excel; se puede ignorar.",
+              "texto": "Es un fallo de Excel con los decimales: un céntimo no importa y se ignora.",
               "correcta": false,
               "porque": "Los errores internos de Excel con decimales son de millonésimas, no de un céntimo. Un céntimo es una diferencia de criterio, y en una factura importa."
             },
             {
-              "texto": "Se quitan los decimales con el botón Disminuir decimales.",
+              "texto": "Se quitan los decimales del total con el botón Disminuir decimales y ya cuadra.",
               "correcta": false,
               "porque": "Eso solo cambia lo que se ve; el valor guardado es el mismo y la diferencia sigue en las sumas."
             },
             {
-              "texto": "Se cambia a mano el IVA de la última línea para que cuadre.",
+              "texto": "Se cambia a mano el IVA de la última línea para que el total cuadre.",
               "correcta": false,
               "porque": "Un valor tecleado para cuadrar esconde el problema y se rompe en cuanto cambian los datos. Arregla la regla, no el resultado."
             }
@@ -288,22 +288,22 @@
           "pregunta": "Heredas una hoja con `=B2*1,21` copiada en 300 filas para calcular el total con IVA. ¿Qué problema tiene?",
           "opciones": [
             {
-              "texto": "Tiene el tipo de IVA escrito dentro de la fórmula: si cambia, hay que tocar 300 fórmulas. El tipo va en una celda de parámetros, con nombre, y la fórmula la usa.",
+              "texto": "El tipo de IVA está metido en las 300 fórmulas en vez de en una celda.",
               "correcta": true,
-              "porque": "Separar los datos que cambian de las fórmulas es la base de un libro mantenible: cambias una celda y se actualiza todo. Además, con un nombre (por ejemplo `TipoIVA`) la fórmula se lee sola."
+              "porque": "Si cambia el tipo, hay que tocar 300 fórmulas sin dejarse ninguna. El tipo va en una celda de parámetros, con nombre (por ejemplo `TipoIVA`), y la fórmula la usa: cambias una celda y se actualiza todo. Separar los datos que cambian de las fórmulas es la base de un libro mantenible."
             },
             {
-              "texto": "Ninguno: si da bien, está bien.",
+              "texto": "Ninguno: si el total sale bien, la hoja está bien hecha.",
               "correcta": false,
               "porque": "Da bien hoy. El día que cambie el tipo o haya productos al 10 %, alguien tendrá que encontrar y cambiar las 300 fórmulas sin dejarse ninguna."
             },
             {
-              "texto": "Debería ser `=B2+21%`.",
+              "texto": "La fórmula está mal: debería ser `=B2+21%` para sumar el IVA.",
               "correcta": false,
               "porque": "Eso suma 0,21 a la base, no el 21 %. El total con IVA es base × (1 + tipo)."
             },
             {
-              "texto": "Le faltan los dólares: `=$B$2*1,21`.",
+              "texto": "Le faltan los dólares para copiarla bien: `=$B$2*1,21`.",
               "correcta": false,
               "porque": "Con $B$2 todas las filas usarían la base de la fila 2. La referencia a la base debe ser relativa; lo que debería ser fijo es el tipo, en su celda."
             }
@@ -317,14 +317,14 @@
           "pregunta": "Vas a proteger la plantilla de pedidos para que los comerciales solo rellenen las celdas amarillas. ¿Qué haces antes de proteger la hoja?",
           "opciones": [
             {
-              "texto": "Desbloquear las celdas de entrada (Formato de celdas > Proteger, quitar «Bloqueada»).",
+              "texto": "Desbloquear las celdas amarillas (Formato de celdas > Proteger).",
               "correcta": true,
-              "porque": "Todas las celdas nacen bloqueadas, pero el bloqueo solo actúa al proteger la hoja. Si no desbloqueas antes las de entrada, nadie podrá escribir en ellas."
+              "porque": "Todas las celdas nacen bloqueadas, pero el bloqueo solo actúa al proteger la hoja. Si no quitas antes la marca «Bloqueada» a las de entrada, nadie podrá escribir en ellas."
             },
             {
-              "texto": "Bloquear todas las celdas una a una.",
+              "texto": "Seleccionar las celdas con fórmulas y marcarlas como bloqueadas.",
               "correcta": false,
-              "porque": "Ya lo están por defecto. Si proteges así, tampoco se podrá escribir en las amarillas."
+              "porque": "Ya lo están: todas las celdas nacen bloqueadas. Si proteges así, tampoco se podrá escribir en las amarillas, porque también están bloqueadas."
             },
             {
               "texto": "Poner una contraseña de apertura al libro.",

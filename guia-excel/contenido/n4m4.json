@@ -541,12 +541,12 @@
           "pregunta": "Javier quiere que la nota diga «Uso interno - no reenviar» en lugar de «Uso interno». ¿Qué cambias en el código?",
           "opciones": [
             {
-              "texto": "El texto entre comillas de la línea `ActiveCell.FormulaR1C1 = \"Uso interno\"`",
+              "texto": "El texto entre comillas de `ActiveCell.FormulaR1C1 = \"Uso interno\"`",
               "correcta": true,
               "porque": "Eso es: lo que va entre comillas es el texto que se escribe en la celda. Cambias solo eso, guardas y pruebas."
             },
             {
-              "texto": "El nombre de la línea `Sub FormatoPedidos()`",
+              "texto": "El nombre de la macro, en la línea `Sub FormatoPedidos()`",
               "correcta": false,
               "porque": "Ese es el nombre de la macro. Cambiarlo no cambia lo que escribe, y además el botón dejaría de encontrarla."
             },
@@ -753,9 +753,9 @@
           "pregunta": "Lucía abre el libro de Javier en Excel para la web, desde el navegador, y pulsa el botón «Dar formato». No pasa nada. ¿Por qué?",
           "opciones": [
             {
-              "texto": "En Excel para la web las macros VBA no se ejecutan: hay que abrirlo en la aplicación de escritorio",
+              "texto": "Excel para la web no ejecuta macros VBA",
               "correcta": true,
-              "porque": "Eso es. La macro sigue en el archivo; en el Excel de escritorio funcionará."
+              "porque": "Eso es. La macro sigue en el archivo, pero Excel para la web no la ejecuta: hay que abrir el libro en la aplicación de escritorio, y ahí el botón funcionará."
             },
             {
               "texto": "El libro tendría que estar guardado como .xlsx",

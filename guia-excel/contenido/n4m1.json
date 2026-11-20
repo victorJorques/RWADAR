@@ -227,9 +227,9 @@
           "pregunta": "Andrés limpia a mano el mismo CSV cada lunes. Si se monta una vez con Power Query, ¿qué habrá que hacer el lunes que viene?",
           "opciones": [
             {
-              "texto": "Guardar el CSV nuevo en el mismo sitio y pulsar Actualizar",
+              "texto": "Guardar el CSV nuevo en su sitio y pulsar Actualizar",
               "correcta": true,
-              "porque": "Eso es: los pasos ya están grabados en la consulta y Actualizar los repite sobre el archivo nuevo."
+              "porque": "Eso es: con el mismo nombre y en la misma carpeta que el de esta semana, Actualizar repite sobre él los pasos grabados en la consulta."
             },
             {
               "texto": "Repetir la limpieza a mano, pero más deprisa",
@@ -237,7 +237,7 @@
               "porque": "Esa es justo la tarea que desaparece: la limpieza está grabada y se repite sola."
             },
             {
-              "texto": "Volver a crear la consulta desde cero",
+              "texto": "Volver a crear la consulta con el CSV nuevo",
               "correcta": false,
               "porque": "La consulta se crea una vez y se reutiliza cada semana. Solo se toca si cambia la forma del archivo."
             }
@@ -367,12 +367,12 @@
               "porque": "Así la corrección forma parte de la receta y se repite sola cada lunes."
             },
             {
-              "texto": "Directamente en la Tabla cargada",
+              "texto": "Directamente en la Tabla cargada, en las dos filas que salen mal",
               "correcta": false,
               "porque": "Al actualizar el lunes, la Tabla se reescribe desde la consulta y tu cambio desaparece."
             },
             {
-              "texto": "En el CSV original, cada lunes",
+              "texto": "En el CSV original, antes de actualizar cada lunes",
               "correcta": false,
               "porque": "Funcionaría, pero volverías a limpiar a mano cada semana. Además, Andrés quiere el CSV intacto."
             }
@@ -801,17 +801,17 @@
               "porque": "Copia cada familia en las celdas vacías de debajo, hasta que aparece la siguiente."
             },
             {
-              "texto": "Reemplazar valores",
+              "texto": "Inicio › Reemplazar valores",
               "correcta": false,
               "porque": "Tendrías que escribir cada familia a mano, y el mes que viene los huecos estarían en otras filas."
             },
             {
-              "texto": "Formato › Recortar",
+              "texto": "Transformar › Formato › Recortar",
               "correcta": false,
               "porque": "Recortar quita espacios sobrantes; no rellena huecos."
             },
             {
-              "texto": "Quitar filas superiores",
+              "texto": "Inicio › Quitar filas superiores",
               "correcta": false,
               "porque": "Eso quita títulos de arriba. Aquí las filas son buenas: solo les falta el dato."
             }
@@ -1437,9 +1437,9 @@
           "pregunta": "Llega el CSV de diciembre. ¿Qué haces con tu consulta de carpeta?",
           "opciones": [
             {
-              "texto": "Guardarlo en la carpeta con el mismo patrón de nombre y pulsar Actualizar todo",
+              "texto": "Guardarlo en esa carpeta y pulsar Actualizar todo",
               "correcta": true,
-              "porque": "La consulta lee la carpeta entera cada vez: diciembre entra solo."
+              "porque": "Eso es: la consulta lee la carpeta entera cada vez y diciembre entra solo. Guárdalo con el mismo patrón de nombre que los demás meses."
             },
             {
               "texto": "Abrirlo, copiar sus filas y pegarlas debajo de la Tabla",

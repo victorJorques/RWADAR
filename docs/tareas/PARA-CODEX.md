@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (35) · Claude · Guía de Excel: método de aprendizaje y rediseño (versión 8) · NO ES RWADAR, NO UNIR A MAIN
+
+- **Encargo de Víctor:**
+  - «mejora aún más la interfaz y revisa la calidad de la enseñanza; tiene que
+    tener la técnica más avanzada de aprendizaje»;
+  - «la interfaz, la más bonita posible».
+- **Una revisión (workflow de 4 agentes):**
+  - **Método:** con citas verificadas.
+  - **Contenido de n0-n3 y n4-n6:** arreglaron directamente unos 25 fallos.
+  - **Interfaz.**
+  - **Hallazgo grave:** en los 420 test la correcta iba siempre la primera, y en
+    124 se delataba por ser más larga. Ahora se barajan y otros 4 agentes
+    reescribieron esos 124. `tests-largos.cjs` da 0.
+- **Hecho (detalle en `guia-excel/README.md`):**
+  - memoria FSRS para ejercicios y tarjetas;
+  - reaprendizaje hasta acertar, con otros datos en las fórmulas;
+  - pregunta previa;
+  - calentamiento y «sesión de hoy»;
+  - «Lo sé / Dudo» en el repaso;
+  - examen paralelo tras suspender;
+  - estrellas de cada partida (antes no podían subir);
+  - perfil «Lo que ya sabes hacer»;
+  - página «El método» actualizada;
+  - rediseño: portada en azul, mundos como estandartes, papel cuadriculado,
+    pestañas con iconos y números de fila fijos en el móvil;
+  - accesibilidad: contraste y objetivos de 44 px.
+  - Publicada como versión 8.
+- **Pruebas:**
+  - el robot completo: 98 lecciones a 3 estrellas y 7 exámenes aprobados;
+  - `validar.cjs`: 0 errores y 0 avisos;
+  - capturas en móvil (claro y oscuro) y en escritorio, sin errores de página.
+- **Pendiente:** nada de Víctor, salvo probarla dentro de claude.ai.
+
 ## 20 de noviembre de 2026 (34) · Claude · Guía de Excel: capa de juego y «Empezar de cero» (versión 7) · NO ES RWADAR, NO UNIR A MAIN
 
 - **Encargo de Víctor:**

@@ -53,8 +53,10 @@
     return h('div', { class: 'md', html });
   }
   function toast(t) { const el = h('div', { class: 'toast', role: 'status' }, t); document.body.append(el); setTimeout(() => el.remove(), 2600); }
-  const hoy = () => new Date().toISOString().slice(0, 10);
-  const sumarDias = (n) => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+  const fechaLocal = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const hoy = () => fechaLocal(new Date());
+  const sumarDias = (n, desde) => { const d = desde ? new Date(desde + 'T12:00:00') : new Date(); d.setDate(d.getDate() + n); return fechaLocal(d); };
+  const diasEntre = (a, b) => Math.round((Date.parse(b + 'T12:00:00') - Date.parse(a + 'T12:00:00')) / 864e5);
   const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
 
   /* ================= índices del contenido ================= */
@@ -123,9 +125,10 @@
     } catch (e) { if (e && e.code === 'declined') toast('No se ha guardado la copia.'); else toast('No se ha podido descargar la copia.'); return false; }
   }
   function fechaCorta(t) { const d = new Date(t); return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`; }
-  function avisoGuardado() { // solo cuando el progreso NO llega a la cuenta
+  function avisoGuardado(compacto) { // solo cuando el progreso NO llega a la cuenta
     if (guardadoEn !== 'navegador') return null;
     const reciente = P.copia && Date.now() - P.copia < 7 * 864e5;
+    if (compacto) return h('p', { class: 'guardado-linea' + (reciente ? '' : ' urgente') }, icono('candado'), h('span', null, reciente ? `Tu progreso está en este navegador · última copia: ${fechaCorta(P.copia)}` : 'Tu progreso solo está en este navegador'), ' ', reciente ? h('a', { href: '#perfil' }, 'más') : h('button', { class: 'enlace', type: 'button', onclick: async () => { if (await guardarCopia()) router(); } }, 'Guardar una copia'));
     const boton = h('button', { class: 'boton peq', type: 'button', onclick: async () => { if (await guardarCopia()) router(); } }, 'Guardar una copia ahora');
     if (reciente) return h('p', { class: 'tenue guardado-linea' }, `Tu progreso está en este navegador · última copia: ${fechaCorta(P.copia)} · `, h('a', { href: '#perfil' }, 'más'));
     return h('div', { class: 'aviso cuidado guardado-aviso', role: 'note' },
@@ -161,7 +164,8 @@
     guardar();
     if (escuchaEj) escuchaEj(id, ok, { xp, vista: !!(extra && extra.vista) });
   }
-  function anotarPista(id) { if (modoSesion) { sesionPista = true; return; } const e = P.ej[id] || { ok: false, n: 0 }; e.pistas = (e.pistas || 0) + 1; P.ej[id] = e; guardar(); }
+  let pistasSesion = new Set();
+  function anotarPista(id) { pistasSesion.add(id); if (modoSesion) { sesionPista = true; return; } const e = P.ej[id] || { ok: false, n: 0 }; e.pistas = (e.pistas || 0) + 1; P.ej[id] = e; guardar(); }
   function progresoNivel(n) {
     const ids = []; for (const m of n.modulos) for (const l of (MOD[m.id]?.lecciones || [])) ids.push(l.id);
     const hechas = ids.filter((i) => ['hecha', 'saltada'].includes(estadoLeccion(i))).length;
@@ -377,6 +381,8 @@
     if (cfg.modo === 'ver') seleccionar(cfg.objetivo || [...resaltar][0] || 'A1');
     // en pantallas estrechas, que se vea la celda donde hay que escribir
     requestAnimationFrame(() => { const td = tabla.querySelector('td.objetivo') || tabla.querySelector('td.sel'); const env2 = tabla.parentElement; if (td && env2 && env2.scrollWidth > env2.clientWidth) { const x = td.offsetLeft + td.offsetWidth - env2.clientWidth + 24; if (x > 0) env2.scrollLeft = x; } });
+    // en el móvil, si la tabla no cabe: botón para verla entera en pequeño (los números de fila se quedan fijos)
+    requestAnimationFrame(() => { const re = env.querySelector('.rejilla-env'); if (!re || re.scrollWidth <= re.clientWidth + 8 || env.querySelector('.ver-toda')) return; const b = h('button', { class: 'ver-toda', type: 'button', 'aria-pressed': 'false' }, 'Ver toda la hoja'); b.addEventListener('click', () => { const on = !tabla.classList.contains('reducida'); tabla.classList.toggle('reducida', on); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Tamaño normal' : 'Ver toda la hoja'; if (on) re.scrollLeft = 0; }); env.insertBefore(b, re); });
     return {
       el: env, input,
       mostrarUsuario(f, marcasNuevas) { marcas = marcasNuevas || {}; calcular(f); pintar(); },
@@ -398,6 +404,23 @@
     return h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => abrirTutora(contexto) }, 'Preguntar a la tutora');
   }
 
+  // Título corto para la barra cuando una fórmula falla (el detalle completo queda en el ejercicio).
+  let ultimoDiagnostico = null;
+  function diagnosticoCorto() {
+    const m = ultimoDiagnostico || ''; let x;
+    if ((x = m.match(/^En (\$?[A-Z]+\$?\d+) tu fórmula da (.+?) y debería dar (.+?)\.$/))) { const t = `${x[1]} da ${x[2]}, no ${x[3]}`; return t.length <= 34 ? t : `${x[1]} no da lo esperado`; }
+    if ((x = m.match(/al copiar la fórmula a (\$?[A-Z]+\$?\d+)/))) return 'Falla al copiar a ' + x[1];
+    if ((x = m.match(/pero en (\$?[A-Z]+\$?\d+) tu fórmula da/))) return 'Falla en ' + x[1];
+    if (/#¿NOMBRE\?/.test(m)) return 'Esa función no existe en español';
+    if (/^Escribe tu fórmula/.test(m)) return 'Falta la fórmula';
+    if (/número o un texto fijo/.test(m)) return 'Apunta a las celdas';
+    if (/si cambian los datos/.test(m)) return 'Falla si cambian los datos';
+    if (/hay que practicar/.test(m)) return 'Usa la función que se pide';
+    if (/se pide resolverlo sin/.test(m)) return 'Sin esa función, por favor';
+    if ((x = m.match(/Tu fórmula devuelve (#\S+?)[.\s]/))) return 'Da ' + x[1];
+    if (/no aceptaría esta fórmula/.test(m)) return 'Revisa cómo está escrita';
+    return null;
+  }
   function ejFormula(ej, ctxLeccion) {
     const cont = h('section', { class: 'ejercicio', id: 'ej-' + ej.id });
     if (P.ej[ej.id]?.ok) cont.classList.add('hecho');
@@ -414,6 +437,8 @@
     if (modoExamen) btnSol.hidden = true;
     function darPista() {
       if (pistasDadas >= ej.pistas.length) return;
+      // Si ya empieza por «=», la pista que lo pide sobra: se pasa a la siguiente.
+      if (pistasDadas < ej.pistas.length - 1 && /^\s*=/.test(hoja.input.value) && /signo igual|empieza (siempre )?(por|con) (el )?(signo )?=|empieza por =/i.test(ej.pistas[pistasDadas])) pistasDadas++;
       pistasEl.append(h('div', { class: 'pista' }, h('b', null, `Pista ${pistasDadas + 1}. `), h('span', { html: enLinea(ej.pistas[pistasDadas]) })));
       pistasDadas++; anotarPista(ej.id); btnPista.textContent = pistasDadas < ej.pistas.length ? `Otra pista (${ej.pistas.length - pistasDadas})` : 'Sin más pistas';
       if (pistasDadas >= ej.pistas.length) { btnPista.disabled = true; btnSol.disabled = false; }
@@ -430,9 +455,10 @@
       const marcas = {}; for (const c of r.celdas || []) marcas[c] = r.ok ? 'bien-celda' : '';
       hoja.mostrarUsuario(f.startsWith('=') ? f : null, marcas);
       zona.innerHTML = '';
+      ultimoDiagnostico = r.ok ? null : (r.mensajes || [])[0] || null;
       registrarEj(ej.id, r.ok);
       if (r.ok) {
-        cont.classList.add('hecho');
+        cont.classList.add('hecho'); filaAyuda.hidden = true;
         zona.append(respuesta('bien', '¡Correcto!', h('div', { class: 'pila' }, ej.explicacion ? md(ej.explicacion) : null, (ej.alternativas || []).length ? h('p', { class: 'tenue' }, 'Otras formas válidas: ', ej.alternativas.map((a, i) => [i ? ' · ' : '', h('code', null, a)])) : null)));
         cont.querySelector('.etq-ej')?.replaceWith(cabeceraEj('Practica en la hoja', ej.id).firstChild);
       } else {
@@ -440,10 +466,12 @@
         zona.append(respuesta('mal', 'Todavía no', h('div', { class: 'pila' }, r.mensajes.map((m) => h('p', null, m)))));
         if (fallos >= 2) btnSol.disabled = false;
         if (CAP.sample && fallos >= 1 && !modoExamen) zona.append(h('div', { class: 'fila' }, botonTutora({ tipo: 'ejercicio', ej, formula: f, mensajes: r.mensajes, leccion: ctxLeccion })));
+        requestAnimationFrame(() => zona.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
       }
     }
     hoja.input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.defaultPrevented) { e.preventDefault(); comprobar(); } });
-    cont.append(hoja.el, h('div', { class: 'fila' }, h('button', { class: 'boton primario', type: 'button', onclick: comprobar }, 'Comprobar'), btnPista, btnSol, h('span', { class: 'tenue' }, 'Intro también comprueba')), pistasEl, zona);
+    const filaAyuda = h('div', { class: 'fila fila-ayuda' }, h('button', { class: 'boton primario', type: 'button', onclick: comprobar }, 'Comprobar'), btnPista, btnSol, h('span', { class: 'tenue solo-raton' }, 'Intro también comprueba'));
+    cont.append(hoja.el, filaAyuda, pistasEl, zona);
     return cont;
   }
 
@@ -476,14 +504,18 @@
     cont.append(cabeceraEj(ej.multiple ? 'Elige todas las correctas' : 'Elige una', ej.id), md(ej.pregunta));
     const zona = h('div', { 'aria-live': 'polite' });
     const elegidas = new Set();
-    const botones = ej.opciones.map((o, i) => {
-      const b = h('button', { class: 'opcion', type: 'button', 'aria-pressed': 'false' }, h('span', { class: 'letra' }, String.fromCharCode(97 + i) + ')'), h('span', { html: enLinea(o.texto) }));
+    // Las opciones se barajan en cada aparición (en el contenido la correcta va primero): la letra es la de su sitio en pantalla.
+    const orden = barajar(ej.opciones.map((_, i) => i), ej.id + ':' + hoy() + ':' + (vecesTest++));
+    const botones = [];
+    orden.forEach((i, pos) => {
+      const o = ej.opciones[i];
+      const b = h('button', { class: 'opcion', type: 'button', 'aria-pressed': 'false', 'data-i': i }, h('span', { class: 'letra' }, String.fromCharCode(97 + pos) + ')'), h('span', { html: enLinea(o.texto) }));
       b.addEventListener('click', () => {
         if (cont.dataset.cerrado) return;
         if (ej.multiple) { if (elegidas.has(i)) elegidas.delete(i); else elegidas.add(i); b.setAttribute('aria-pressed', elegidas.has(i)); return; }
         elegidas.clear(); elegidas.add(i); corregir();
       });
-      return b;
+      botones[i] = b;
     });
     function corregir() {
       cont.dataset.cerrado = '1';
@@ -498,12 +530,13 @@
       if (ok) cont.classList.add('hecho');
       if (!modoExamen && !escuchaEj) zona.append(h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => { cont.replaceWith(ejTest(ej)); } }, 'Volver a intentarlo'));
     }
-    cont.append(h('div', { class: 'opciones' }, botones));
+    cont.append(h('div', { class: 'opciones' }, orden.map((i) => botones[i])));
     if (ej.multiple) cont.append(h('div', null, h('button', { class: 'boton primario', type: 'button', onclick: () => elegidas.size && corregir() }, 'Comprobar')));
     cont.append(zona);
     return cont;
   }
 
+  let vecesTest = 0;
   function barajar(arr, semilla) { const a = arr.slice(); let s = 0; for (const c of semilla) s = (s * 31 + c.charCodeAt(0)) >>> 0; for (let i = a.length - 1; i > 0; i--) { s = (s * 1103515245 + 12345) >>> 0; const j = s % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } if (a.every((x, i) => x === arr[i]) && a.length > 1) [a[0], a[1]] = [a[1], a[0]]; return a; }
 
   function ejOrdenar(ej) {
@@ -774,31 +807,33 @@
     for (const l of LECCIONES) (l.tarjetas || []).forEach((t, i) => out.push({ id: `${l.id}-t${i}`, leccion: l.id, ...t }));
     return out;
   }
-  function desbloquearTarjetas(l) { (l.tarjetas || []).forEach((t, i) => { const id = `${l.id}-t${i}`; if (!P.tarjetas[id]) P.tarjetas[id] = { caja: 1, prox: hoy() }; }); guardar(); }
-  function tarjetasPendientes() { const T = todasTarjetas(); return T.filter((t) => P.tarjetas[t.id] && P.tarjetas[t.id].prox <= hoy()); }
+  function desbloquearTarjetas(l) { (l.tarjetas || []).forEach((t, i) => { const id = `${l.id}-t${i}`; if (!P.tarjetas[id]) P.tarjetas[id] = { prox: hoy() }; }); guardar(); }
+  // Como mucho 20 tarjetas al día (las que más tiempo llevan esperando); el resto, otro día.
+  function tarjetasPendientes() { const T = todasTarjetas(); const h0 = hoy(); return T.filter((t) => P.tarjetas[t.id] && P.tarjetas[t.id].prox <= h0).sort((a, b) => (P.tarjetas[a.id].prox < P.tarjetas[b.id].prox ? -1 : 1)).slice(0, 20); }
+  const tramoMemoria = (m) => (!m || !m.S || m.S < 7 ? 0 : m.S < 30 ? 1 : 2);
   function vistaRepaso() {
     titulo('Repaso');
-    const pend = tarjetasPendientes(); const T = todasTarjetas();
+    const pend = tarjetasPendientes().slice(0, sesionHoy ? 10 : 20); const T = todasTarjetas();
     const activas = T.filter((t) => P.tarjetas[t.id]);
-    const cajas = [1, 2, 3, 4, 5].map((c) => activas.filter((t) => P.tarjetas[t.id].caja === c).length);
+    const cajas = [0, 1, 2].map((k) => activas.filter((t) => tramoMemoria(migrarMemoria(P.tarjetas[t.id])) === k).length);
     const zona = h('div', { class: 'pila' });
     let i = 0;
     function pintar() {
       zona.innerHTML = '';
-      if (i >= pend.length) { zona.append(h('div', { class: 'tarjeta-repaso' }, h('div', { class: 'frente' }, pend.length ? 'Repaso de hoy terminado' : 'Nada que repasar hoy'), h('p', { class: 'tenue' }, activas.length ? 'Las tarjetas vuelven en 1, 3, 7, 16 y 35 días según lo bien que las sepas.' : 'Las tarjetas aparecen cuando terminas lecciones.'))); return; }
+      if (i >= pend.length) { const sig = sesionHoy ? siguientePasoSesion() : null; zona.append(h('div', { class: 'tarjeta-repaso' }, h('div', { class: 'frente' }, pend.length ? 'Repaso de hoy terminado' : 'Nada que repasar hoy'), h('p', { class: 'tenue' }, activas.length ? 'Cada tarjeta vuelve justo cuando estás a punto de olvidarla: cuanto mejor la sabes, más tarda en volver.' : 'Las tarjetas aparecen cuando terminas lecciones.'), sig ? h('div', { class: 'fila', style: { justifyContent: 'center' } }, h('a', { class: 'boton primario gigante', href: sig.href }, sig.texto)) : null)); return; }
       const t = pend[i];
       const dorso = h('div', { class: 'dorso', hidden: true, html: enLinea(t.dorso) });
       const botones = h('div', { class: 'fila', style: { justifyContent: 'center' }, hidden: true },
         [['No la sabía', 0], ['Dudé', 1], ['La sabía', 2]].map(([txt, q]) => h('button', { class: 'boton' + (q === 2 ? ' primario' : ''), type: 'button', onclick: () => {
           P.repasos = (P.repasos || 0) + 1; P.repasoHoy = hoy(); if (q === 2) ganarXP(2); else if (q === 1) ganarXP(1);
-          const e = P.tarjetas[t.id]; e.caja = q === 0 ? 1 : q === 1 ? Math.max(1, e.caja) : Math.min(5, e.caja + 1); e.prox = sumarDias(q === 0 ? 0 : INTERVALOS[e.caja]); if (q === 0) pend.push(t); guardar(); i++; pintar();
+          P.tarjetas[t.id] = repasar(P.tarjetas[t.id], q === 0 ? 1 : q === 1 ? 2 : 3); if (q === 0) pend.push(t); guardar(); i++; pintar();
         } }, txt)));
       const mostrar = h('button', { class: 'boton primario', type: 'button', onclick: () => { dorso.hidden = false; botones.hidden = false; mostrar.hidden = true; } }, 'Mostrar respuesta');
       zona.append(h('p', { class: 'tenue' }, `Tarjeta ${i + 1} de ${pend.length} · ${t.tipo || 'concepto'}`), h('div', { class: 'tarjeta-repaso' }, h('div', { class: 'frente', html: enLinea(t.frente) }), dorso, h('div', { class: 'fila', style: { justifyContent: 'center' } }, mostrar), botones));
     }
     pintar();
     vista().replaceChildren(h('div', { class: 'pila-g lectura' }, h('div', { class: 'pila' }, h('div', { class: 'sobretitulo' }, 'Repaso espaciado'), h('h1', null, 'Repaso de hoy'), h('p', { class: 'entradilla' }, 'Intenta recordar antes de dar la vuelta a la tarjeta. Sé sincera: si dudas, vuelve antes.')),
-      h('div', { class: 'cajas' }, cajas.map((n, k) => h('div', { class: 'caja' }, h('b', null, n), `Caja ${k + 1}`))), zona));
+      h('div', { class: 'cajas' }, cajas.map((n, k) => h('div', { class: 'caja' }, h('b', null, n), ['Aprendiendo', 'Afianzando', 'Dominadas'][k]))), zona));
   }
 
   /* ================= hoja libre ================= */
@@ -1000,6 +1035,11 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     fuego: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 1.8c.4 3-1.1 4.9-2.6 6.6-1.4 1.6-2.7 3.1-2.4 5.5-.9-.6-1.5-1.7-1.6-3C5 12.5 4 14.6 4 16.8 4 20.2 7.6 23 12 23s8-2.8 8-6.6c0-5.5-4.9-7.6-6.5-14.6Zm-1.2 19.4c-2 0-3.5-1.3-3.5-3 0-1.9 1.6-3 2.4-4.6.6 1.3 1.6 1.8 2.6 1.8.3 1.3 2 1.9 2 3.3 0 1.4-1.5 2.5-3.5 2.5Z"/></svg>',
     rayo: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.2 1 3.5 13.6h6.8L9 23l10.4-13.3h-6.9L13.2 1Z"/></svg>',
     estrella: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 1.8 3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9L12 1.8Z"/></svg>',
+    mapa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>',
+    tarjetas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="14" rx="2.5"/><path d="M7 3h11.5A2.5 2.5 0 0 1 21 5.5V17"/></svg>',
+    rejilla: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>',
+    consulta: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/><path d="M9 8h7"/></svg>',
+    persona: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.6-4 4.6-6 8-6s6.4 2 8 6"/></svg>',
     candado: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2.5" fill="currentColor" stroke="none"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/></svg>',
     bandera: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2h2v20H5zM8 3h11l-2.6 4.5L19 12H8z"/></svg>',
     libro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M3.5 9h17M3.5 14.5h17M9.5 3.5v17"/></svg>',
@@ -1115,6 +1155,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     btn.addEventListener('click', () => { if (btn.disabled) return; if (modo === 'comprobar' && interno) interno.click(); else alContinuar(); });
     function estado(clase, titulo, subtitulo, habilitado) {
       barra.className = 'barra-continuar' + (clase ? ' ' + clase : '');
+      if (clase === 'mal' && modo === 'comprobar') barra.classList.add('reintento');
       tit.textContent = titulo || ''; sub.textContent = subtitulo || '';
       cara.replaceChildren(conMascota !== false && clase ? mascota(clase === 'bien' ? 'feliz' : 'animo') : '');
       btn.disabled = !habilitado;
@@ -1323,20 +1364,27 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const meta = P.meta || 50; const pct = Math.min(100, Math.round(xpHoy() / meta * 100));
     const racha = rachaActual();
     const nuevo = !hechas && !Object.keys(P.ej || {}).length;
+    // Sesión de hoy: primero lo que se está olvidando (ejercicios y tarjetas) y después lo nuevo.
+    const nRep = Math.min(12, entrenoPendiente().length); const nTar = Math.min(10, tarjetasPendientes().length);
+    const conSesion = !nuevo && actual && (nRep + nTar) > 0;
+    const ultimoDia = Object.keys(P.dias || {}).sort().pop(); const diasFuera = ultimoDia ? diasEntre(ultimoDia, hoy()) : 0;
+    const vuelve = !nuevo && diasFuera >= 3;
+    const minutos = Math.max(5, Math.round((nRep * 0.8 + nTar * 0.3) / 5) * 5 + (actual ? (LEC[(actual.href || '').replace('#jugar-', '')] || {}).minutos || 0 : 0));
     const panel = h('section', { class: 'panel-hoy' },
       h('div', { class: 'pila' },
-        h('div', { class: 'sobretitulo' }, nuevo ? 'Excel desde cero, jugando' : (P.nombre ? `Hola, ${P.nombre} · siguiente paso` : 'Siguiente paso')),
-        h('h1', null, nuevo ? 'Aprende Excel nivel a nivel hasta trabajar sola' : actual ? actual.titulo : '¡Lo has completado todo!'),
-        nuevo ? h('p', { class: 'entradilla' }, 'Lecciones de 10 minutos, ejercicios que se corrigen al momento y proyectos reales de oficina. Empieza por la primera: no hace falta saber nada.') : null,
+        h('div', { class: 'hero-saludo' }, mascota(nuevo || vuelve ? 'feliz' : 'normal'), h('div', { class: 'sobretitulo' }, nuevo ? 'Excel desde cero, jugando' : vuelve ? `Bienvenida de nuevo${P.nombre ? ', ' + P.nombre : ''}` : (P.nombre ? `Hola, ${P.nombre} · siguiente paso` : 'Siguiente paso'))),
+        h('h1', null, nuevo ? 'Aprende Excel nivel a nivel hasta trabajar sola' : vuelve && conSesion ? 'Un repaso corto y seguimos donde lo dejaste' : actual ? actual.titulo : '¡Lo has completado todo!'),
+        nuevo ? h('p', { class: 'entradilla' }, 'Lecciones de 10 minutos, ejercicios que se corrigen al momento y proyectos reales de oficina. Empieza por la primera: no hace falta saber nada.')
+          : conSesion ? h('p', { class: 'entradilla' }, `Hoy: ${nRep ? nRep + (nRep === 1 ? ' repaso' : ' repasos') : ''}${nRep && nTar ? ' y ' : ''}${nTar ? nTar + (nTar === 1 ? ' tarjeta' : ' tarjetas') : ''}, y luego «${actual.titulo}». Unos ${minutos} minutos.`) : null,
         h('div', { class: 'stats' },
-          h('div', { class: 'stat', style: { color: racha ? 'var(--fuego)' : 'var(--tinta-3)' } }, icono('fuego'), h('div', null, h('b', null, racha), h('span', null, racha === 1 ? 'día de racha' : 'días de racha'))),
+          racha || !P.mejorRacha ? h('div', { class: 'stat', style: { color: racha ? 'var(--fuego)' : 'var(--tinta-3)' } }, icono('fuego'), h('div', null, h('b', null, racha), h('span', null, racha === 1 ? 'día de racha' : 'días de racha')))
+            : h('div', { class: 'stat', style: { color: 'var(--fuego)' } }, icono('fuego'), h('div', null, h('b', null, P.mejorRacha), h('span', null, 'tu mejor racha · empieza otra hoy'))),
           h('div', { class: 'stat', style: { color: 'var(--oro)' } }, icono('rayo'), h('div', null, h('b', null, P.xp || 0), h('span', null, 'puntos de experiencia'))),
           h('div', { class: 'stat' }, h('div', { class: 'anillo', style: { '--p': pct } }), h('div', null, h('b', null, `${xpHoy()}/${meta}`), h('span', null, 'meta de hoy'))),
           h('div', { class: 'stat' }, h('div', null, h('b', null, `${hechas}/${total}`), h('span', null, 'lecciones'))))),
       h('div', { class: 'pila', style: { alignItems: 'stretch' } },
-        actual ? h('a', { class: 'boton primario gigante', href: actual.href }, nuevo ? 'Empezar' : 'Continuar') : h('a', { class: 'boton primario gigante', href: '#perfil' }, 'Ver mi certificado'),
-        entrenoPendiente().length ? h('a', { class: 'boton', href: '#entrenar' }, `Entrenamiento (${Math.min(7, entrenoPendiente().length)})`) : null,
-        tarjetasPendientes().length ? h('a', { class: 'boton', href: '#repaso' }, `Tarjetas de repaso (${tarjetasPendientes().length})`) : null,
+        conSesion ? h('a', { class: 'boton primario gigante', href: '#sesion' }, vuelve ? 'Empezar' : 'Empezar la sesión de hoy') : actual ? h('a', { class: 'boton primario gigante', href: actual.href }, nuevo ? 'Empezar' : 'Continuar') : h('a', { class: 'boton primario gigante', href: '#perfil' }, 'Ver mi certificado'),
+        conSesion ? h('a', { class: 'boton fantasma', href: actual.href }, 'Hoy solo la lección') : null,
         nuevo && D.prueba_nivel ? h('a', { class: 'boton fantasma', href: '#prueba' }, '¿Ya sabes algo? Prueba de nivel') : null));
     const lista = h('div', { class: 'pila-g' });
     for (const w of mundos) {
@@ -1347,12 +1395,12 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
           h('div', { class: 'pila', style: { gap: '.35rem' } }, h('div', { class: 'sobretitulo' }, w.final ? 'Nivel final' : `Nivel ${w.idx}`), h('h2', null, w.nivel.nombre), h('p', null, w.nivel.lema || ''),
             h('div', { class: 'barra-prog' + (p.pct === 1 ? ' bien' : '') }, h('i', { style: { width: Math.round(p.pct * 100) + '%' } })),
             h('div', { class: 'entre' }, h('span', { class: 'tenue' }, `${p.hechas} de ${p.total}${w.nivel.horas ? ' · unas ' + w.nivel.horas + ' h' : ''}`), w.final ? null : h('a', { href: '#nivel-' + w.nivel.id, class: 'tenue' }, 'Qué aprenderás')))),
-        w.nodos.length ? pintarCamino(w) : h('p', { class: 'tenue', style: { textAlign: 'center', padding: '.5rem 0 1rem' } }, 'Este nivel se está terminando de preparar. Aparecerá aquí en cuanto esté listo: ', (w.nivel.previstos || []).join(' · ')),
+        w.nodos.length ? (() => { const cam = pintarCamino(w); if (aprobado && p.pct === 1 && !w.nodos.some((n) => n.actual)) { cam.hidden = true; const est = w.nodos.reduce((a, n) => a + ((P.estrellas || {})[n.id] || 0), 0); const nl = w.nodos.filter((n) => n.tipo === 'leccion').length; const b = h('button', { class: 'boton peq ver-nivel', type: 'button', 'aria-expanded': 'false', onclick: () => { cam.hidden = !cam.hidden; b.setAttribute('aria-expanded', String(!cam.hidden)); b.textContent = cam.hidden ? `Nivel superado · ${est} de ${nl * 3} estrellas · ver lecciones` : 'Plegar'; } }, `Nivel superado · ${est} de ${nl * 3} estrellas · ver lecciones`); return h('div', { class: 'pila', style: { alignItems: 'center' } }, b, cam); } return cam; })() : h('p', { class: 'tenue', style: { textAlign: 'center', padding: '.5rem 0 1rem' } }, 'Este nivel se está terminando de preparar. Aparecerá aquí en cuanto esté listo: ', (w.nivel.previstos || []).join(' · ')),
         w.nodos.length && w.nivel.incompleto ? h('p', { class: 'tenue', style: { textAlign: 'center' } }, 'Faltan módulos de este nivel: se añadirán en cuanto estén listos.') : null));
     }
     const rg = rango(P.xp);
     const tiraRango = nuevo ? null : h('div', { class: 'rango' }, h('div', { class: 'entre' }, h('span', null, h('b', null, rg.nombre), ' en Electro Cierzo'), rg.siguiente ? h('span', { class: 'tenue' }, `${rg.hasta - (P.xp || 0)} XP para ${rg.siguiente}`) : null), rg.siguiente ? h('div', { class: 'barra-prog' }, h('i', { style: { width: Math.round(((P.xp || 0) - rg.desde) / (rg.hasta - rg.desde) * 100) + '%', background: 'var(--oro)' } })) : null);
-    vista().replaceChildren(h('div', { class: 'pila-g mapa' }, panel, nuevo ? null : avisoGuardado(), tiraRango, nuevo ? null : panelMision(), lista, h('p', { class: 'tenue', style: { textAlign: 'center' } }, h('a', { href: '#metodo' }, 'Por qué aquí se aprende de verdad: el método y la investigación que hay detrás'))));
+    vista().replaceChildren(h('div', { class: 'pila-g mapa' }, panel, nuevo ? null : avisoGuardado(true), tiraRango, nuevo ? null : panelMision(), lista, h('p', { class: 'tenue', style: { textAlign: 'center' } }, h('a', { href: '#metodo' }, 'Por qué aquí se aprende de verdad: el método y la investigación que hay detrás'))));
     if (actual && !nuevo) setTimeout(() => { const el = document.querySelector('.nodo.actual'); if (el && el.getBoundingClientRect().top > innerHeight) el.scrollIntoView({ block: 'center' }); }, 50);
   }
 
@@ -1360,10 +1408,16 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   let escuchaEj = null;
   function pantallasDe(l) {
     const mod = MOD[l.modulo]; const out = [];
+    const primeraDelModulo = mod.lecciones[0].id === l.id;
     out.push({ tipo: 'intro' });
-    if (mod.lecciones[0].id === l.id) for (const e of mod.repaso_inicial || []) out.push({ tipo: 'ej', ej: e, etq: 'Calentamiento: repaso de lo anterior', fuera: true });
+    if (primeraDelModulo) for (const e of mod.repaso_inicial || []) out.push({ tipo: 'ej', ej: e, etq: 'Calentamiento: repaso de lo anterior', fuera: true });
+    else for (const [id] of entrenoPendiente().filter(([x]) => !x.startsWith(l.id + '-')).slice(0, 2)) out.push({ tipo: 'ej', ej: EJ_INDEX[id], etq: 'Calentamiento: de días anteriores', fuera: true, memoria: true });
+    // Pregunta previa: un test de la lección que llega después de alguna explicación, para intentarlo antes de verlo.
+    let visto = false; let previa = null;
+    for (const b of l.bloques) { if (b.tipo !== 'ejercicio') visto = true; else if (visto && !previa && b.modo === 'test' && !b.multiple && (b.opciones || []).length > 1) previa = b; }
+    if (previa) out.push({ tipo: 'previa', ej: previa });
     let cur = null;
-    if (mod.lecciones[0].id === l.id && mod.intro) { cur = { tipo: 'explica', bloques: [{ tipo: 'texto', md: mod.intro }] }; out.push(cur); }
+    if (primeraDelModulo && mod.intro) { cur = { tipo: 'explica', bloques: [{ tipo: 'texto', md: mod.intro }] }; out.push(cur); }
     for (const b of l.bloques) {
       if (b.tipo === 'ejercicio') { out.push({ tipo: 'ej', ej: b }); cur = null; }
       else if (cur && ['aviso', 'hoja', 'atajos'].includes(b.tipo) && cur.bloques.length < 3) cur.bloques.push(b);
@@ -1372,7 +1426,15 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     for (const e of l.recuerda || []) out.push({ tipo: 'ej', ej: e, etq: 'Recuerda sin mirar' });
     return out;
   }
-  const REPETIBLES = ['test', 'predice', 'respuesta_corta', 'cinta', 'ordenar', 'senala'];
+  // Mismo encargo con otros datos: la fórmula se comprueba igual (el motor calcula lo esperado con la solución).
+  function conVariante(ej, k) {
+    const vs = ej.variantes || [];
+    if (ej.modo !== 'formula' || !vs.length || !k) return ej;
+    const v = vs[(k - 1) % vs.length]; const celdas = (ej.hoja && ej.hoja.celdas) || {};
+    const originales = {}; for (const c of Object.keys(v)) if (celdas[c] !== undefined && celdas[c] !== null) originales[c] = celdas[c];
+    return { ...ej, hoja: { ...ej.hoja, celdas: { ...celdas, ...v } }, variantes: [originales, ...vs.filter((x) => x !== v)], inicial: undefined, otrosDatos: true };
+  }
+  const NO_VUELVEN = ['abierta', 'excel'];
   function vistaJugar(id) {
     const l = LEC[id]; if (!l) return vistaMapa();
     leccionActual = l; titulo(l.titulo); document.body.classList.add('jugando');
@@ -1381,7 +1443,8 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const nIdx = niveles.findIndex((n) => n.id === l.nivel);
     const ctx = { titulo: l.titulo, objetivo: l.objetivo, nivel: niveles[nIdx].nombre, texto: l.bloques.filter((b) => b.tipo === 'texto').map((b) => b.md).join('\n').slice(0, 3000) };
     const pantallas = pantallasDe(l);
-    const repetidos = new Set(); const resultados = {}; let i = 0; xpSesion = 0; logrosNuevos = []; ascensos = []; let combo = 0;
+    const resultados = {}; const vueltas = {}; let i = 0; xpSesion = 0; logrosNuevos = []; ascensos = []; let combo = 0; let previaRes = null; let alFinal = null;
+    pistasSesion = new Set();
     const barraProg = h('div', { class: 'progreso-leccion', role: 'progressbar', 'aria-label': 'Progreso de la lección' }, h('i', { style: { width: '0%' } }));
     const chipCombo = h('span', { class: 'combo', hidden: true, 'aria-live': 'polite' });
     function pintarCombo() { chipCombo.hidden = combo < 2; chipCombo.replaceChildren(icono('fuego'), h('b', null, '×' + combo)); chipCombo.classList.remove('pop'); void chipCombo.offsetWidth; chipCombo.classList.add('pop'); barraProg.classList.toggle('en-racha', combo >= 3); }
@@ -1393,45 +1456,82 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const saltar = h('button', { class: 'boton fantasma peq', type: 'button', hidden: true }, 'Hacerlo luego'); JB.extra.append(saltar);
     const cont = h('div', { class: 'jugar' }, cab, zona, barra);
     function estadoBarra(clase, texto, habilitado, subtitulo) { JB.estado(clase, texto, subtitulo, habilitado); }
+    // Reaprender hasta acertar: lo fallado vuelve 3 pantallas después (no al final ni en el acto), como mucho 3 veces.
+    function programarVuelta(ej) {
+      if (NO_VUELVEN.includes(ej.modo)) return false;
+      const n = (vueltas[ej.id] || 0) + 1; if (n > 3) return false; vueltas[ej.id] = n;
+      pantallas.splice(Math.min(i + 4, pantallas.length), 0, { tipo: 'ej', ej: conVariante(ej, n), rep: n });
+      return true;
+    }
     function pintar() {
       const p = pantallas[i];
       barraProg.firstChild.style.width = Math.round(i / pantallas.length * 100) + '%';
       zona.innerHTML = ''; saltar.hidden = true; escuchaEj = null;
       if (p.tipo === 'intro') {
+        const nEj = pantallas.filter((x) => x.tipo === 'ej' && !x.fuera).length;
         zona.append(h('div', { class: 'pila', style: { gap: '1rem', paddingTop: '1rem' } }, h('div', { class: 'etq-pantalla' }, `Nivel ${nIdx} · ${MOD[l.modulo].titulo}`), h('h1', null, l.titulo),
+          h('div', { class: 'fila' }, h('span', { class: 'chip' }, `${l.minutos || 12} min`), h('span', { class: 'chip' }, `${nEj} ejercicios`), (l.funciones || []).map((f) => h('span', { class: 'chip fn' }, f))),
           l.mision ? h('div', { class: 'pila', style: { gap: '.5rem' } }, h('div', { class: 'etq-pantalla', style: { color: 'var(--entrada)' } }, 'Tu misión'), burbujaMensaje(l.mision.de, l.mision.puesto, l.mision.texto)) : null,
           l.objetivo ? h('p', { class: 'entradilla' }, l.objetivo) : null,
-          h('div', { class: 'fila' }, h('span', { class: 'chip' }, `${l.minutos || 12} min`), h('span', { class: 'chip' }, `${pantallas.filter((x) => x.tipo === 'ej').length} ejercicios`), (l.funciones || []).map((f) => h('span', { class: 'chip fn' }, f))),
-          h('p', { class: 'tenue' }, 'Ve a tu ritmo. Si fallas algo, no pasa nada: lo repasamos al final.')));
+          h('p', { class: 'tenue' }, 'Ve a tu ritmo. Lo que falles vuelve un poco después, hasta que te salga.')));
         estadoBarra('', '', true); JB.texto('Empezar');
+      } else if (p.tipo === 'previa') {
+        const ej = p.ej; let elegida = null;
+        const orden = barajar(ej.opciones.map((_, k) => k), 'previa:' + ej.id + ':' + hoy());
+        const botones = orden.map((k, pos) => {
+          const b = h('button', { class: 'opcion', type: 'button', 'aria-pressed': 'false' }, h('span', { class: 'letra' }, String.fromCharCode(97 + pos) + ')'), h('span', { html: enLinea(ej.opciones[k].texto) }));
+          b.addEventListener('click', () => {
+            if (elegida !== null) return; elegida = k; previaRes = { id: ej.id, k };
+            b.setAttribute('aria-pressed', 'true'); zona.querySelector('.previa')?.classList.add('respondida'); tono([[587, 0.1]]);
+            estadoBarra('', 'Apuntado', true, 'En unos minutos sabrás si era esa');
+          });
+          return b;
+        });
+        zona.append(h('section', { class: 'ejercicio previa' }, h('div', { class: 'etq-pantalla' }, 'Antes de empezar · intento libre'),
+          dice('pensando', 'Aún no lo hemos visto. ¿Qué crees tú? Equivocarse aquí no cuenta y ayuda a que luego se quede.'),
+          md(ej.pregunta), h('div', { class: 'opciones' }, botones),
+          h('div', null, h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => { if (elegida === null) { elegida = -1; estadoBarra('', 'Sin problema', true, 'Fíjate en esto durante la lección'); } } }, 'No tengo ni idea')))) ;
+        estadoBarra('', 'Elige lo que creas', false); JB.texto('Continuar'); btn.disabled = true;
       } else if (p.tipo === 'explica') {
         zona.append(h('div', { class: 'pila', style: { gap: '1rem' } }, p.bloques.map((b) => renderBloque(b, ctx))));
         estadoBarra('', '', true); JB.texto('Continuar');
       } else if (p.tipo === 'ej') {
-        const ej = p.ej; const yaResuelto = resultados[ej.id + (p.rep ? '-r' : '')];
-        if (p.etq || p.rep) zona.append(h('div', { class: 'etq-pantalla' }, p.rep ? 'Otra vez: este se te resistió' : p.etq));
+        const ej = p.ej; const clave = ej.id + (p.rep ? '-r' + p.rep : '');
+        const yaResuelto = resultados[clave];
+        const etq = p.rep ? (ej.otrosDatos ? 'Otra vez, con otros datos' : 'Otra vez: a por él') : p.etq;
+        if (etq) zona.append(h('div', { class: 'etq-pantalla' }, etq));
         zona.append(renderEjercicio(ej, ctx));
-        const libre = ['abierta', 'excel'].includes(ej.modo);
+        const libre = NO_VUELVEN.includes(ej.modo);
         const conComprobar = JB.ejercicio(zona, ej, !!yaResuelto);
         estadoBarra('', libre || yaResuelto || conComprobar ? '' : 'Elige una respuesta', libre || !!yaResuelto || conComprobar);
         if (ej.modo === 'excel') { saltar.hidden = false; saltar.onclick = () => { registrarEj(ej.id, false, { saltado: true }); siguiente(); }; }
-        escuchaEj = (id, ok, info) => {
-          if (id !== ej.id) return;
-          const clave = ej.id + (p.rep ? '-r' : '');
+        escuchaEj = (eid, ok, info) => {
+          if (eid !== ej.id) return;
           const primera = !(clave in resultados);
-          if (primera) resultados[clave] = ok;
-          if (ok) {
-            if (primera) combo++; let extra = '';
-            if (primera && [3, 5, 8, 12].includes(combo)) { ganarXP(combo, btn); extra = ` · ¡${combo} seguidas! +${combo} XP extra`; tono([[784, 0.1], [988, 0.1], [1319, 0.25]]); } else sonidoBien();
-            JB.resuelto(false);
-            estadoBarra('bien', al(VITORES), true, (info && info.xp ? `+${info.xp} XP` : '') + extra);
-            if (info && info.xp) flotar('+' + info.xp + ' XP', btn);
+          const vista = !!(info && info.vista);
+          if (primera) {
+            resultados[clave] = ok && !vista;
+            if (p.memoria) { P.mem[ej.id] = repasar(P.mem[ej.id], notaDe(ok && !vista, pistasSesion.has(ej.id), null)); guardar(); }
+            if (!ok || vista) programarVuelta(ej);
+            if (previaRes && previaRes.id === ej.id && !p.rep) {
+              const antesBien = previaRes.k >= 0 && !!ej.opciones[previaRes.k].correcta;
+              zona.append(h('div', { class: 'nota-previa' }, icono('rayo'), h('span', null, previaRes.k < 0 ? (ok ? 'Al empezar no lo sabías. Ahora sí: eso es aprender.' : 'Al empezar no lo sabías: lee la explicación y vuelve en un rato.')
+                : antesBien ? (ok ? 'Antes de la lección ya lo intuías; ahora además sabes por qué.' : 'Al principio lo intuiste bien: repasa la explicación y vuelve en un rato.')
+                  : (ok ? 'Al empezar elegiste otra cosa. Ahora lo has clavado: eso es aprender.' : 'Al empezar también dudabas. Mira la explicación: vuelve en un rato.'))));
+            }
           }
-          else if (info && info.vista) { combo = 0; JB.resuelto(false); estadoBarra('mal', 'Mírala con calma', true, 'Te la volveremos a preguntar otro día'); }
+          if (ok && !vista) {
+            if (primera) combo++; let extra = '';
+            const produce = ['formula', 'predice', 'respuesta_corta'].includes(ej.modo);
+            if (primera && produce && [3, 5, 8, 12].includes(combo)) { ganarXP(combo, btn); extra = ` · ¡${combo} seguidas! +${combo} XP extra`; tono([[784, 0.1], [988, 0.1], [1319, 0.25]]); } else sonidoBien();
+            JB.resuelto(false);
+            estadoBarra('bien', al(VITORES), true, (info && info.xp ? `+${info.xp} XP` : (p.rep ? 'Ahora sí: se va fijando' : '')) + extra);
+            if (info && info.xp) flotar('+' + info.xp + ' XP', btn);
+          } else if (vista) { combo = 0; JB.resuelto(false); estadoBarra('mal', 'Mírala con calma', true, 'Vuelve dentro de un rato con otros datos'); }
           else {
             combo = 0; sonidoMal();
-            if (ej.modo === 'formula') { JB.resuelto(true); estadoBarra('mal', al(ANIMOS), true, 'Prueba otra vez o pide una pista'); }
-            else { JB.resuelto(false); estadoBarra('mal', al(ANIMOS), true, 'Lo repasamos al final de la lección'); if (primera && !p.rep && REPETIBLES.includes(ej.modo) && !repetidos.has(ej.id)) { repetidos.add(ej.id); pantallas.push({ tipo: 'ej', ej, rep: true }); } }
+            if (ej.modo === 'formula') { JB.resuelto(true); estadoBarra('mal', diagnosticoCorto() || al(ANIMOS), true, 'Prueba otra vez o pide una pista'); }
+            else { JB.resuelto(false); estadoBarra('mal', al(ANIMOS), true, vueltas[ej.id] && vueltas[ej.id] <= 3 && primera ? 'Vuelve dentro de un rato, hasta que te salga' : 'Lee bien la explicación'); }
           }
           pintarCombo();
         };
@@ -1439,16 +1539,16 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       btn.focus({ preventScroll: true });
       window.scrollTo(0, 0);
     }
-    function siguiente() { i++; if (i >= pantallas.length) return terminar(); pintar(); }
+    function siguiente() { if (alFinal) return alFinal(); i++; if (i >= pantallas.length) return terminar(); pintar(); }
     function terminar() {
       escuchaEj = null;
-      const propios = [...l.bloques.filter((b) => b.tipo === 'ejercicio'), ...(l.recuerda || [])].filter((e) => !['abierta', 'excel'].includes(e.modo));
-      const limpios = propios.filter((e) => P.ej[e.id] && P.ej[e.id].ok && P.ej[e.id].primera).length;
+      // Estrellas de ESTA partida: a la primera y sin pistas (así repetir la lección sí puede subirlas).
+      const propios = [...l.bloques.filter((b) => b.tipo === 'ejercicio'), ...(l.recuerda || [])].filter((e) => !NO_VUELVEN.includes(e.modo));
+      const limpios = propios.filter((e) => resultados[e.id] === true && !pistasSesion.has(e.id)).length;
       const ratio = propios.length ? limpios / propios.length : 1;
       const estrellas = ratio >= 0.9 ? 3 : ratio >= 0.6 ? 2 : 1;
-      completarLeccion(l, estrellas);
-      document.body.classList.remove('jugando');
-      sonidoFin(); confeti();
+      completarLeccion(l, estrellas, resultados);
+      sonidoFin(); if (estrellas === 3) confeti();
       const idx = LECCIONES.indexOf(l); const sig = LECCIONES[idx + 1];
       const { actual } = estadoNodos();
       const destino = actual ? actual.href : '#inicio';
@@ -1457,26 +1557,32 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       const numXP = h('b', { 'data-pre': '+' }, '+0'); setTimeout(() => contarHasta(numXP, xpSesion, 900), 500);
       const meta1 = metaHoyCumplida; metaHoyCumplida = false;
       const etqSig = destino.startsWith('#cofre-') ? 'Abrir el cofre' : sig && destino === '#jugar-' + sig.id ? 'Siguiente lección' : 'Seguir';
-      cont.replaceChildren(h('div', { class: 'resultado' },
-        mascota(estrellas === 3 ? 'fiesta' : 'feliz', 'grande'),
+      const manana = ejerciciosDe(l).filter((e) => P.mem[e.id] && P.mem[e.id].prox && P.mem[e.id].prox <= sumarDias(1)).length;
+      const enMemoria = ejerciciosDe(l).filter((e) => P.mem[e.id]).map((e) => diasEntre(hoy(), P.mem[e.id].prox));
+      const memoriaTxt = manana ? `Mañana vuelven ${manana} ${manana === 1 ? 'ejercicio que te costó' : 'ejercicios que te costaron'}: así se fijan.` : enMemoria.length ? `Todo a la primera. Dentro de ${Math.min(...enMemoria)} días te lo pregunto otra vez para que se quede.` : 'Todo a la primera.';
+      const destacados = [...ascensos.map((a) => ({ ico: ICO.trofeo, color: 'var(--oro)', t: '¡Ascenso!', d: 'Ahora eres ' + a })), ...(meta1 ? [{ ico: ICO.fuego, color: 'var(--fuego)', t: '¡Meta de hoy cumplida!', d: 'Has llegado a tus ' + meta + ' XP. Mañana, a por otra.' }] : []), ...logrosNuevos.map((g) => ({ svg: svgLogro(g, true), t: 'Logro: ' + g.t, d: g.d }))];
+      const d0 = destacados[0];
+      zona.replaceChildren(h('div', { class: 'resultado' },
+        h('div', { class: 'rayos' }, mascota(estrellas === 3 ? 'fiesta' : 'feliz', 'grande')),
         h('div', { class: 'estrellas-grandes', 'aria-label': `${estrellas} de 3 estrellas` }, [1, 2, 3].map((k) => h('span', { class: 'estrella-pop', style: { '--d': (350 + k * 260) + 'ms' }, html: ICO.estrella.replace('<svg ', `<svg class="${k <= estrellas ? 'si' : ''}" `) }))),
         h('h1', null, estrellas === 3 ? '¡Lección perfecta!' : estrellas === 2 ? '¡Muy bien!' : '¡Lección completada!'),
-        l.mision && l.mision.logro ? h('div', { class: 'logro-nuevo', style: { borderColor: 'var(--bien)', background: 'var(--bien-suave)' } }, h('span', { style: { color: 'var(--bien)', width: '2.4rem' }, html: ICO.check }), h('div', null, h('b', null, 'Misión cumplida'), h('div', null, l.mision.logro))) : null,
-        ascensos.map((a) => h('div', { class: 'logro-nuevo' }, h('span', { style: { color: 'var(--oro)', width: '2.4rem' }, html: ICO.trofeo }), h('div', null, h('b', null, '¡Ascenso!'), h('div', { class: 'tenue' }, 'Ahora eres ' + a)))),
-        h('p', { class: 'entradilla' }, estrellas === 3 ? 'Todo a la primera y sin pistas. Esto ya es tuyo.' : `Has acertado a la primera ${limpios} de ${propios.length}. ${estrellas < 3 ? 'Repítela cuando quieras para conseguir las 3 estrellas.' : ''}`),
-        h('div', { class: 'recuadros' }, h('div', { class: 'recuadro oro' }, numXP, h('span', null, 'XP')), h('div', { class: 'recuadro fuego' }, h('b', null, rachaActual()), h('span', null, 'días de racha')), h('div', { class: 'recuadro verde' }, h('b', null, `${Math.min(100, Math.round(xpHoy() / meta * 100))}%`), h('span', null, 'meta de hoy'))),
-        meta1 ? h('div', { class: 'logro-nuevo', style: { borderColor: 'var(--fuego)' } }, h('span', { style: { color: 'var(--fuego)', width: '2.4rem' }, html: ICO.fuego }), h('div', null, h('b', null, '¡Meta de hoy cumplida!'), h('div', { class: 'tenue' }, 'Has llegado a tus ' + meta + ' XP. Mañana, a por otra.'))) : null,
-        logrosNuevos.map((g) => h('div', { class: 'logro-nuevo' }, h('span', { html: svgLogro(g, true) }), h('div', null, h('b', null, 'Logro: ' + g.t), h('div', { class: 'tenue' }, g.d)))),
-        (l.tarjetas || []).length ? h('p', { class: 'tenue' }, `${l.tarjetas.length} tarjeta${l.tarjetas.length > 1 ? 's' : ''} nueva${l.tarjetas.length > 1 ? 's' : ''} en tu repaso.`) : null,
-        h('div', { class: 'fila', style: { justifyContent: 'center' } }, h('a', { class: 'boton primario gigante', href: destino }, etqSig), h('a', { class: 'boton', href: '#inicio' }, 'Volver al mapa'), h('a', { class: 'boton fantasma', href: '#leccion-' + l.id }, 'Ver la lección entera'))));
-      window.scrollTo(0, 0);
+        l.mision && l.mision.logro ? h('div', { class: 'logro-nuevo mision-cumplida' }, h('span', { style: { color: 'var(--bien)', width: '2.4rem' }, html: ICO.check }), h('div', null, h('b', null, 'Misión cumplida'), h('div', null, l.mision.logro))) : null,
+        h('p', { class: 'entradilla' }, estrellas === 3 ? 'Todo a la primera y sin pistas.' : `A la primera y sin pistas: ${limpios} de ${propios.length}. Si la repites, cuenta la nueva partida.`, ' ', memoriaTxt),
+        h('div', { class: 'linea-stats' }, h('span', { class: 'ls oro' }, icono('rayo'), numXP, ' XP'), h('span', { class: 'ls fuego' }, icono('fuego'), h('b', null, rachaActual()), rachaActual() === 1 ? ' día de racha' : ' días de racha'), h('span', { class: 'ls verde' }, h('b', null, `${Math.min(100, Math.round(xpHoy() / meta * 100))} %`), ' de la meta de hoy')),
+        d0 ? h('div', { class: 'logro-nuevo' }, h('span', { style: { color: d0.color || '', width: '2.4rem' }, html: d0.svg || d0.ico }), h('div', null, h('b', null, d0.t), h('div', { class: 'tenue' }, d0.d), destacados.length > 1 ? h('a', { href: '#perfil', class: 'tenue' }, `y ${destacados.length - 1} ${destacados.length - 1 === 1 ? 'premio' : 'premios'} más`) : null)) : null,
+        (l.tarjetas || []).length ? h('p', { class: 'tenue' }, `${l.tarjetas.length} tarjeta${l.tarjetas.length > 1 ? 's' : ''} nueva${l.tarjetas.length > 1 ? 's' : ''} en tu repaso · `, h('a', { href: '#leccion-' + l.id }, 'ver la lección entera')) : h('a', { class: 'tenue', href: '#leccion-' + l.id }, 'Ver la lección entera')));
+      barraProg.firstChild.style.width = '100%'; chipCombo.hidden = true;
+      JB.estado('', '', '', true); JB.texto(etqSig); saltar.hidden = true;
+      JB.extra.replaceChildren(h('a', { class: 'boton fantasma peq', href: '#inicio' }, 'Volver al mapa'));
+      alFinal = () => { location.hash = destino; };
+      window.scrollTo(0, 0); btn.focus({ preventScroll: true });
     }
     vista().replaceChildren(cont);
     pintar();
   }
-  function completarLeccion(l, estrellas) {
+  function completarLeccion(l, estrellas, resultados) {
     const primeraVez = estadoLeccion(l.id) !== 'hecha';
-    marcarLeccion(l.id, 'hecha'); desbloquearTarjetas(l); programarEntreno(l);
+    marcarLeccion(l.id, 'hecha'); desbloquearTarjetas(l); programarEntreno(l, resultados);
     P.estrellas = P.estrellas || {};
     const antes = P.estrellas[l.id] || 0;
     if (estrellas) P.estrellas[l.id] = Math.max(antes, estrellas);
@@ -1493,22 +1599,31 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const prev = P.examenes && P.examenes[nid];
     const preguntas = ex.preguntas || [];
     const umbral = ex.umbral || 0.8;
+    // Tras suspender: primero repaso de lo fallado y, al día siguiente, un examen paralelo (otros ejercicios de las mismas lecciones).
+    const bloqueado = !!(prev && !prev.aprobado && prev.reintento && prev.reintento > hoy());
+    const paralela = (q) => {
+      const l = q.leccion && LEC[q.leccion]; if (!l) return q;
+      const cands = ejerciciosDe(l).filter((e) => e.modo === q.modo && AUTO.includes(e.modo) && e.id !== q.id && !e.multiple);
+      return cands.length ? conVariante(barajar(cands, nid + hoy() + q.id)[0], 1) : q;
+    };
     const inicio = h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Salir al mapa' }, '✕'), h('div'), h('span')),
       h('div', { class: 'resultado' }, h('div', { html: svgInsignia(ni, !(prev && prev.aprobado)) }), h('div', { class: 'sobretitulo' }, `Nivel ${ni} · ${niveles[ni].nombre}`), h('h1', null, ex.titulo || 'Examen del nivel'), h('p', { class: 'entradilla' }, ex.intro || `${preguntas.length} preguntas. Para aprobar necesitas acertar a la primera el ${Math.round(umbral * 100)} %. Sin pistas.`),
         prev ? h('p', { class: 'tenue' }, `Tu mejor nota: ${Math.round(prev.nota * 100)} %${prev.aprobado ? ' · aprobado' : ''}`) : null,
-        h('div', { class: 'fila', style: { justifyContent: 'center' } }, h('button', { class: 'boton primario gigante', type: 'button', onclick: empezar }, prev ? 'Repetir el examen' : 'Empezar el examen'), h('a', { class: 'boton', href: '#nivel-' + nid }, 'Repasar el nivel antes'))));
+        bloqueado ? h('p', { class: 'aviso-suave' }, 'Hoy toca repasar lo que falló; mañana tendrás un examen nuevo con otros ejercicios de las mismas lecciones.') : null,
+        h('div', { class: 'fila', style: { justifyContent: 'center' } }, bloqueado ? h('a', { class: 'boton primario gigante', href: '#sesion' }, 'Repasar lo que falló') : h('button', { class: 'boton primario gigante', type: 'button', onclick: empezar }, prev && !prev.aprobado ? 'Hacer el examen nuevo' : prev ? 'Repetir el examen' : 'Empezar el examen'), h('a', { class: 'boton', href: '#nivel-' + nid }, 'Repasar el nivel antes'))));
     function empezar() {
       document.body.classList.add('jugando'); modoExamen = true; modoSesion = true;
       const res = {}; let i = 0;
+      const lista = prev && !prev.aprobado ? preguntas.map(paralela) : preguntas;
       const barraProg = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: '0%' } }));
       const zona = h('div', { class: 'pantalla-jugar' });
-      const JB = crearBarraJuego(() => { i++; if (i < preguntas.length) pintar(); else fin(); }, false);
+      const JB = crearBarraJuego(() => { i++; if (i < lista.length) pintar(); else fin(); }, false);
       const barra = JB.barra;
       const cont = h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Abandonar', onclick: () => { modoExamen = false; } }, '✕'), barraProg, h('span', { class: 'tenue mono' }, '')), zona, barra);
       function pintar() {
-        const q = { ...preguntas[i], id: `ex-${nid}-${preguntas[i].id || i}` };
-        barraProg.firstChild.style.width = Math.round(i / preguntas.length * 100) + '%';
-        cont.querySelector('.jugar-cab .mono').textContent = `${i + 1}/${preguntas.length}`;
+        const q = { ...lista[i], id: `ex-${nid}-${lista[i].id || i}` };
+        barraProg.firstChild.style.width = Math.round(i / lista.length * 100) + '%';
+        cont.querySelector('.jugar-cab .mono').textContent = `${i + 1}/${lista.length}`;
         zona.replaceChildren(renderEjercicio(q, { titulo: 'examen' }));
         const conComprobar = JB.ejercicio(zona, q, false);
         JB.estado('', '', '', conComprobar);
@@ -1517,16 +1632,20 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       }
       function fin() {
         modoExamen = false; modoSesion = false; escuchaEj = null; document.body.classList.remove('jugando');
-        const aciertos = Object.values(res).filter(Boolean).length; const nota = aciertos / preguntas.length; const aprobado = nota >= umbral;
+        const aciertos = Object.values(res).filter(Boolean).length; const nota = aciertos / lista.length; const aprobado = nota >= umbral;
         P.examenes = P.examenes || {}; const antes = P.examenes[nid];
         const primeraAprobada = aprobado && !(antes && antes.aprobado);
         if (!antes || nota >= antes.nota) P.examenes[nid] = { nota, aprobado: aprobado || !!(antes && antes.aprobado), fecha: hoy() };
         if (primeraAprobada) { ganarXP(100); sonidoFin(); confeti(); }
+        const falladas = lista.map((q, k) => ({ q, k })).filter((x) => !res[x.k]);
+        if (!aprobado) {
+          P.examenes[nid] = { ...(P.examenes[nid] || { nota, aprobado: false, fecha: hoy() }), reintento: sumarDias(1) };
+          for (const { q } of falladas) { const l = q.leccion && LEC[q.leccion]; if (!l) continue; for (const e of (l.recuerda || []).filter((x) => AUTO.includes(x.modo))) { P.mem[e.id] = repasar(P.mem[e.id], 1); P.mem[e.id].prox = hoy(); } }
+        }
         comprobarLogros(); guardar();
-        const falladas = preguntas.map((q, k) => ({ q, k })).filter((x) => !res[x.k]);
-        cont.replaceChildren(h('div', { class: 'resultado' }, h('div', { html: svgInsignia(ni, !aprobado) }), h('h1', null, aprobado ? '¡Nivel superado!' : 'Aún no, pero estás cerca'), h('p', { class: 'entradilla' }, `${aciertos} de ${preguntas.length} correctas (${Math.round(nota * 100)} %). ${aprobado ? 'Has ganado la insignia del nivel ' + ni + '.' : `Necesitas ${Math.round(umbral * 100)} %. Repasa lo que has fallado y vuelve a intentarlo: cada intento cuenta.`}`),
+        cont.replaceChildren(h('div', { class: 'resultado' }, h('div', { html: svgInsignia(ni, !aprobado) }), h('h1', null, aprobado ? '¡Nivel superado!' : 'Aún no, pero estás cerca'), h('p', { class: 'entradilla' }, `${aciertos} de ${preguntas.length} correctas (${Math.round(nota * 100)} %). ${aprobado ? 'Has ganado la insignia del nivel ' + ni + '.' : `Necesitas ${Math.round(umbral * 100)} %. Tu plan: hoy, el repaso de lo que ha fallado; mañana, un examen nuevo.`}`),
           falladas.length ? h('div', { class: 'pila', style: { textAlign: 'left', width: '100%', maxWidth: '36rem' } }, h('h3', null, 'Para repasar'), h('ul', { class: 'lista-sola' }, falladas.map(({ q }) => h('li', null, h('span', { html: enLinea(String(q.pregunta || q.enunciado || '').split('\n')[0].slice(0, 140)) }), q.leccion && LEC[q.leccion] ? [' · ', h('a', { href: '#leccion-' + q.leccion }, 'ver lección')] : null)))) : null,
-          h('div', { class: 'fila', style: { justifyContent: 'center' } }, aprobado ? h('button', { class: 'boton primario gigante', type: 'button', onclick: () => descargarCertificado({ tipo: 'nivel', nivel: ni }) }, 'Descargar el certificado del nivel') : h('button', { class: 'boton primario gigante', type: 'button', onclick: () => vistaExamenNivel(nid) }, 'Volver a intentarlo'), h('a', { class: 'boton', href: '#inicio' }, 'Volver al mapa'))));
+          h('div', { class: 'fila', style: { justifyContent: 'center' } }, aprobado ? h('button', { class: 'boton primario gigante', type: 'button', onclick: () => descargarCertificado({ tipo: 'nivel', nivel: ni }) }, 'Descargar el certificado del nivel') : h('a', { class: 'boton primario gigante', href: '#sesion' }, 'Repasar ahora lo que falló'), h('a', { class: 'boton', href: '#inicio' }, 'Volver al mapa'))));
         window.scrollTo(0, 0);
       }
       vista().replaceChildren(cont); pintar();
@@ -1563,9 +1682,11 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
         h('div', { class: 'stat' }, h('div', null, h('b', null, Object.values(P.ej || {}).filter((e) => e.ok).length), h('span', null, 'ejercicios resueltos'))))),
         h('div', { class: 'pila' }, nombre, h('label', { class: 'fila tenue' }, h('input', { type: 'checkbox', checked: P.sonido !== false, onchange: (e) => { P.sonido = e.target.checked; guardar(); } }), 'Sonidos al acertar'))),
       h('section', { class: 'pila', style: { alignItems: 'center' } }, tarjetaEmpleada()),
+      seccionSabes(),
       h('section', { class: 'pila' }, h('h2', null, 'Meta diaria'), h('p', { class: 'tenue' }, 'Mejor poco cada día que mucho un día suelto: la constancia es lo que hace que se quede.'), metas),
       h('section', { class: 'pila' }, h('h2', null, 'Insignias de nivel'), h('div', { class: 'insignias' }, niveles.map((n, i) => { const ok = P.examenes && P.examenes[n.id] && P.examenes[n.id].aprobado; return h('div', { class: 'logro' + (ok ? '' : ' no') }, h('span', { html: svgInsignia(i, !ok) }), h('b', null, n.nombre), h('span', null, ok ? 'Conseguida ' + P.examenes[n.id].fecha.split('-').reverse().join('/') : 'Aprueba el examen del nivel'), ok ? h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => descargarCertificado({ tipo: 'nivel', nivel: i }) }, 'Certificado') : null); }))),
-      h('section', { class: 'pila' }, h('h2', null, 'Logros'), h('div', { class: 'logros' }, LOGROS.map((l) => { const ok = P.logros && P.logros[l.id]; return h('div', { class: 'logro' + (ok ? '' : ' no') }, h('span', { html: svgLogro(l, !!ok) }), h('b', null, l.t), h('span', null, l.d)); }))),
+      (() => { const pinta = (l) => { const ok = P.logros && P.logros[l.id]; return h('div', { class: 'logro' + (ok ? '' : ' no') }, h('span', { html: svgLogro(l, !!ok) }), h('b', null, l.t), h('span', null, l.d)); }; const si = LOGROS.filter((l) => P.logros && P.logros[l.id]); const no = LOGROS.filter((l) => !(P.logros && P.logros[l.id]));
+        return h('section', { class: 'pila' }, h('h2', null, `Logros · ${si.length} de ${LOGROS.length}`), si.length ? h('div', { class: 'logros' }, si.map(pinta)) : h('p', { class: 'tenue' }, 'Aún ninguno: el primero llega con tu primera lección.'), no.length ? h('details', { class: 'plegable' }, h('summary', null, `Ver los ${no.length} que te faltan`), h('div', { class: 'logros' }, no.map(pinta))) : null); })(),
       h('section', { class: 'pila' }, h('h2', null, 'Expediente'), h('div', { class: 'tabla-env expediente' }, h('table', { class: 'tabla-datos' }, h('thead', null, h('tr', null, h('th', null, 'Nivel'), h('th', null, 'Lecciones'), h('th', null, 'Examen'), h('th', null, 'Estado'))), h('tbody', null, exp))), h('div', null, h('a', { class: 'boton primario', href: '#certificado' }, 'Ver los requisitos del certificado'))),
       h('section', { class: 'pila' }, h('h2', null, 'Dónde se guarda tu progreso'),
         guardadoEn === 'cuenta' ? h('p', { class: 'guardado-ok' }, icono('check'), ' Se guarda solo, en tu cuenta y en este navegador. Puedes seguir desde cualquier ordenador.')
@@ -1574,6 +1695,28 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
         h('p', { class: 'tenue' }, P.copia ? `Última copia descargada: ${fechaCorta(P.copia)}.` : 'Aún no has descargado ninguna copia.', ' La copia es un archivo pequeño (.json) con todo tu avance: lecciones, puntos, racha, exámenes y certificados.'),
         h('div', { class: 'fila' }, h('button', { class: 'boton', type: 'button', onclick: async () => { if (await guardarCopia()) vistaPerfil(); } }, 'Descargar una copia'), h('label', { class: 'boton', for: 'importar' }, 'Cargar una copia'), archivo)),
       seccionEmpezarDeCero()));
+  }
+  // «Lo que ya sabes hacer»: una frase por lección terminada, con la fuerza de su memoria (modelo FSRS).
+  function seccionSabes() {
+    const hechas = LECCIONES.filter((l) => estadoLeccion(l.id) === 'hecha' && l.mision && l.mision.logro);
+    const mm = memoriaMedia(); const c = P.calib || { si: [0, 0], duda: [0, 0] };
+    const frase = (l) => l.mision.logro.replace(/^Ya sabes\s+/i, 'Sé ').replace(/^Ya\s+/i, '');
+    const fila = (l) => {
+      const ms = ejerciciosDe(l).map((e) => P.mem && P.mem[e.id]).filter((m) => m && m.S);
+      const r = ms.length ? ms.reduce((a, m) => a + recuerdo(m), 0) / ms.length : null;
+      const est = !ms.length ? null : ms.every(dominado) ? ['Dominada', 3] : r >= 0.85 ? ['Bien fijada', 2] : ['Se está fijando', 1];
+      return h('li', { class: 'sabe' }, h('span', { class: 'puntos', title: est ? est[0] : 'Sin datos de memoria', 'aria-label': est ? est[0] : 'Sin datos de memoria' }, [1, 2, 3].map((k) => h('i', { class: est && k <= est[1] ? 'si' : '' }))),
+        h('span', { class: 'sabe-txt' }, frase(l)),
+        est && est[1] === 1 ? h('button', { class: 'boton peq', type: 'button', onclick: () => { for (const e of ejerciciosDe(l)) if (P.mem[e.id]) P.mem[e.id].prox = hoy(); guardar(); location.hash = '#entrenar'; } }, 'Repasar') : null);
+    };
+    const ultimas = hechas.slice(-8).reverse(); const resto = hechas.slice(0, -8).reverse();
+    const lista = hechas.map((l) => '- ' + frase(l)).join('\n');
+    return h('section', { class: 'pila' }, h('h2', null, 'Lo que ya sabes hacer'),
+      hechas.length ? h('p', { class: 'tenue' }, `${hechas.length} ${hechas.length === 1 ? 'cosa' : 'cosas'} de oficina que ya haces sola.`, mm !== null ? ` Hoy recuerdas aprox. el ${Math.round(mm * 100)} % de lo aprendido.` : '', c.si[1] >= 5 ? ` Cuando dices «lo sé», aciertas ${Math.round(c.si[0] / c.si[1] * 10)} de cada 10.` : '') : h('p', { class: 'tenue' }, 'Aquí irá apareciendo, lección a lección, lo que ya sabes hacer en una oficina.'),
+      ultimas.length ? h('ul', { class: 'lista-sabe' }, ultimas.map(fila)) : null,
+      resto.length ? h('details', { class: 'plegable' }, h('summary', null, `Ver las ${resto.length} anteriores`), h('ul', { class: 'lista-sabe' }, resto.map(fila))) : null,
+      hechas.length ? h('div', { class: 'fila' }, h('span', { class: 'tenue leyenda-puntos' }, h('span', { class: 'puntos' }, h('i', { class: 'si' }), h('i'), h('i')), ' se está fijando · ', h('span', { class: 'puntos' }, h('i', { class: 'si' }), h('i', { class: 'si' }), h('i')), ' bien · ', h('span', { class: 'puntos' }, h('i', { class: 'si' }), h('i', { class: 'si' }), h('i', { class: 'si' })), ' dominada'),
+        CAP.downloads ? h('button', { class: 'boton fantasma peq', type: 'button', onclick: async () => { try { await CAP.downloads.save({ filename: 'lo-que-se-hacer-en-excel.txt', data: `Lo que sé hacer en Excel (${P.nombre || ''})\n\n${lista}\n` }); toast('Lista descargada'); } catch (e) { /* */ } } }, 'Descargar mi lista') : null) : null);
   }
   function seccionEmpezarDeCero() { // borra todo el avance, con confirmación dentro de la página (el visor no muestra confirm())
     const caja = h('div', { class: 'pila' });
@@ -1717,22 +1860,62 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   }
 
 
+  /* ================= memoria: modelo FSRS-4.5 con sus pesos por defecto =================
+     Cada ejercicio y cada tarjeta guarda su estabilidad S (días hasta que la probabilidad de recordarlo baja al 90 %)
+     y su dificultad D (1-10). Al repasar se pone una nota automática: 1 olvido, 2 con esfuerzo, 3 bien, 4 fácil.
+     El siguiente repaso se programa para cuando se espera un 90 % de recuerdo; nada se jubila (tope de 365 días). */
+  const FSRS_W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+  const FSRS_DECAY = -0.5; const FSRS_FACTOR = 19 / 81; const RETENCION = 0.9;
+  const dificultadInicial = (g) => Math.min(10, Math.max(1, FSRS_W[4] - (g - 3) * FSRS_W[5]));
+  function recuerdo(m, fecha) { if (!m || !m.S || !m.ult) return 0; const t = Math.max(0, diasEntre(m.ult, fecha || hoy())); return Math.pow(1 + FSRS_FACTOR * t / m.S, FSRS_DECAY); }
+  function diasHastaRepaso(S) { return Math.min(365, Math.max(1, Math.round(S / FSRS_FACTOR * (Math.pow(RETENCION, 1 / FSRS_DECAY) - 1)))); }
+  function migrarMemoria(x) { // cajas antiguas (Leitner 1-5) → estabilidad; las tarjetas recién desbloqueadas aún no tienen memoria
+    if (!x || x.S) return x || null;
+    if (!x.caja) return null;
+    const S = [1, 1, 3, 7, 16, 35][x.caja] || 1;
+    return { S, D: 5, rep: x.caja, fallos: 0, ok: [], ult: sumarDias(-S, x.prox || hoy()), prox: x.prox || sumarDias(7) };
+  }
+  function repasar(previo, g) {
+    const f = hoy(); let m = migrarMemoria(previo);
+    if (!m) m = { S: FSRS_W[g - 1], D: dificultadInicial(g), rep: 0, fallos: 0, ok: [] };
+    else if (diasEntre(m.ult, f) >= 1 || g === 1) { // el mismo día no se estira la memoria (solo cuenta un olvido)
+      const R = recuerdo(m, f); const { S, D } = m;
+      m.S = g === 1 ? Math.min(S, FSRS_W[11] * Math.pow(D, -FSRS_W[12]) * (Math.pow(S + 1, FSRS_W[13]) - 1) * Math.exp(FSRS_W[14] * (1 - R)))
+        : S * (1 + Math.exp(FSRS_W[8]) * (11 - D) * Math.pow(S, -FSRS_W[9]) * (Math.exp(FSRS_W[10] * (1 - R)) - 1) * (g === 2 ? FSRS_W[15] : 1) * (g === 4 ? FSRS_W[16] : 1));
+      m.D = Math.min(10, Math.max(1, FSRS_W[7] * dificultadInicial(3) + (1 - FSRS_W[7]) * (D - FSRS_W[6] * (g - 3))));
+    }
+    m.S = Math.max(0.2, m.S); m.rep = (m.rep || 0) + 1; if (g === 1) m.fallos = (m.fallos || 0) + 1;
+    if (g >= 3) m.ok = [...new Set([...(m.ok || []), f])].slice(-6);
+    m.ult = f; m.prox = sumarDias(g === 1 ? 1 : diasHastaRepaso(m.S)); delete m.caja;
+    return m;
+  }
+  const dominado = (m) => !!m && (m.ok || []).length >= 3; // acertado a la primera y sin ayuda en 3 días distintos
+  function notaDe(ok, ayuda, seguridad) { if (!ok) return 1; if (ayuda || seguridad === 'baja') return 2; return 3; }
+  function memoriaMedia() { const v = Object.values(P.mem || {}).filter((m) => m && m.S); return v.length ? v.reduce((a, m) => a + recuerdo(m), 0) / v.length : null; }
+
   /* ================= entrenamiento diario: recuperar, espaciar y mezclar ================= */
   const AUTO = ['formula', 'predice', 'test', 'respuesta_corta', 'cinta', 'senala', 'ordenar'];
   const SALTOS = [0, 1, 3, 7, 16, 35]; // días hasta el siguiente repaso según la caja
-  function programarEntreno(l) {
-    // Al terminar una lección: vuelven mañana los ejercicios fallados o con ayuda (su «gemelo») y, a los 3 días, dos ejercicios clave.
+  function programarEntreno(l, resultados) {
+    // Al terminar una lección entran en la memoria: sus «recuerda», el último ejercicio (la misión) y todo lo que costó.
+    // La nota sale de cómo fue hoy: a la primera y sin ayuda (3), con ayuda o tras fallar (2), sin acertarlo (1).
     P.mem = P.mem || {};
     const ejs = ejerciciosDe(l).filter((e) => AUTO.includes(e.modo));
-    const flojos = ejs.filter((e) => P.ej[e.id] && !P.ej[e.id].primera);
-    const formulas = ejs.filter((e) => e.modo === 'formula' && !flojos.includes(e));
-    const clave = [...formulas.slice(-1), ...ejs.filter((e) => !flojos.includes(e) && !formulas.slice(-1).includes(e)).slice(-1)];
-    for (const e of flojos) if (!P.mem[e.id]) P.mem[e.id] = { caja: 1, prox: sumarDias(1) };
-    for (const e of clave) if (!P.mem[e.id]) P.mem[e.id] = { caja: 2, prox: sumarDias(3) };
+    const propios = l.bloques.filter((b) => b.tipo === 'ejercicio' && AUTO.includes(b.modo));
+    const elegidos = new Set([...(l.recuerda || []).filter((e) => AUTO.includes(e.modo)).map((e) => e.id), ...propios.slice(-1).map((e) => e.id)]);
+    const res = resultados || {};
+    for (const e of ejs) {
+      const primero = res[e.id]; const ayuda = pistasSesion.has(e.id);
+      if (primero === false || ayuda) elegidos.add(e.id);
+      if (!elegidos.has(e.id) || (P.mem[e.id] && P.mem[e.id].S)) continue;
+      const acabo = P.ej[e.id] && P.ej[e.id].ok;
+      P.mem[e.id] = repasar(null, primero === true && !ayuda ? 3 : acabo ? 2 : 1);
+    }
   }
-  function entrenoPendiente() {
+  function entrenoPendiente() { // lo que toca hoy, primero lo que más se está olvidando
     const m = P.mem || {}; const h0 = hoy();
-    return Object.entries(m).filter(([id, v]) => v.prox && v.prox <= h0 && EJ_INDEX[id]).sort((a, b) => (a[1].prox < b[1].prox ? -1 : 1));
+    for (const [id, v] of Object.entries(m)) if (v && !v.S && v.caja) m[id] = migrarMemoria(v); // progreso de versiones anteriores
+    return Object.entries(m).filter(([id, v]) => v && v.prox && v.prox <= h0 && EJ_INDEX[id]).sort((a, b) => recuerdo(a[1]) - recuerdo(b[1]));
   }
   function elegirEntreno(max) {
     const porLeccion = {}; const out = [];
@@ -1742,56 +1925,101 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
       if (porLeccion[lec] > 2) continue; // mezclar: como mucho dos de la misma lección
       out.push(id); if (out.length >= max) break;
     }
-    return barajar(out, hoy());
+    // intercalar: que no salgan seguidos dos de la misma lección
+    const b = barajar(out, hoy()); const r = [];
+    while (b.length) { const k = b.findIndex((x) => !r.length || x.replace(/-(e|q|r|s)\d+$/, '') !== r[r.length - 1].replace(/-(e|q|r|s)\d+$/, '')); r.push(...b.splice(k < 0 ? 0 : k, 1)); }
+    return r;
   }
   let modoSesion = false; let sesionPista = false;
+  let sesionHoy = null; // «Sesión de hoy»: repaso → tarjetas → lección, encadenados
+  const CON_SEGURIDAD = ['test', 'predice', 'respuesta_corta', 'cinta', 'ordenar', 'senala'];
+  function siguientePasoSesion() {
+    if (sesionHoy && !sesionHoy.tarjetas && tarjetasPendientes().length) { sesionHoy.tarjetas = true; return { href: '#repaso', texto: `Seguir: ${Math.min(10, tarjetasPendientes().length)} tarjetas` }; }
+    sesionHoy = null; const { actual } = estadoNodos();
+    return { href: actual ? actual.href : '#inicio', texto: actual ? 'Seguir con la lección' : 'Volver al mapa' };
+  }
+  function vistaSesion() { // botón grande del mapa: primero lo que se está olvidando, luego lo nuevo
+    sesionHoy = { inicio: hoy() };
+    if (entrenoPendiente().length) return vistaEntrenar();
+    const s = siguientePasoSesion(); location.hash = s.href;
+  }
   function vistaEntrenar() {
-    titulo('Entrenamiento');
-    const ids = elegirEntreno(7);
+    titulo('Repaso de hoy');
+    const ids = elegirEntreno(12);
     if (!ids.length) {
-      vista().replaceChildren(h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Volver al mapa' }, '✕'), h('div'), h('span')), h('div', { class: 'resultado' }, h('h1', null, 'Hoy no toca entrenar'), h('p', { class: 'entradilla' }, 'El entrenamiento te trae de vuelta ejercicios de lecciones pasadas justo cuando empiezan a olvidarse. Aparecerán aquí a partir de mañana de tu primera lección.'), h('a', { class: 'boton primario gigante', href: '#inicio' }, 'Volver al mapa'))));
+      const s = sesionHoy ? siguientePasoSesion() : null;
+      vista().replaceChildren(h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Volver al mapa' }, '✕'), h('div'), h('span')), h('div', { class: 'resultado' }, mascota('feliz', 'grande'), h('h1', null, 'Hoy no toca repasar ejercicios'), h('p', { class: 'entradilla' }, 'Cada ejercicio vuelve justo cuando estás a punto de olvidarlo. Hoy no hay ninguno en ese punto: sigue con lo nuevo.'), h('a', { class: 'boton primario gigante', href: s ? s.href : '#inicio' }, s ? s.texto : 'Volver al mapa'))));
       return;
     }
-    document.body.classList.add('jugando'); modoSesion = true;
-    const cola = ids.map((id) => ({ id })); const res = {}; let i = 0; let xp0 = P.xp || 0;
+    document.body.classList.add('jugando'); modoSesion = true; pistasSesion = new Set();
+    const cola = ids.map((id) => ({ id, vuelta: 0 })); const notas = {}; let i = 0; const xp0 = P.xp || 0;
+    P.calib = P.calib || { si: [0, 0], duda: [0, 0] };
     const barraProg = h('div', { class: 'progreso-leccion' }, h('i', { style: { width: '0%' } }));
     const zona = h('div', { class: 'pantalla-jugar' });
-    const JB = crearBarraJuego(() => { i++; if (i < cola.length) pintar(); else fin(); });
+    let alFin = null;
+    const JB = crearBarraJuego(() => { if (alFin) return alFin(); i++; if (i < cola.length) pintar(); else fin(); });
     const btn = JB.btn; const barra = JB.barra;
     const cont = h('div', { class: 'jugar' }, h('div', { class: 'jugar-cab' }, h('a', { class: 'cerrar', href: '#inicio', 'aria-label': 'Salir' }, '✕'), barraProg, h('span', { class: 'tenue mono' }, '')), zona, barra);
     function pintar() {
       const item = cola[i]; const orig = EJ_INDEX[item.id]; const lec = LEC[item.id.replace(/-(e|q|r|s)\d+$/, '')];
-      const q = { ...orig, id: 'en-' + item.id + '-' + i };
-      sesionPista = false;
+      const m = P.mem[item.id];
+      // en el repaso, las fórmulas rotan entre los datos originales y sus variantes: mismo encargo, datos de otro día
+      const nVar = (orig.variantes || []).length;
+      const q = { ...conVariante(orig, nVar ? (((m && m.rep) || 0) + item.vuelta) % (nVar + 1) : 0), id: 'en-' + item.id + '-' + i };
+      sesionPista = false; let seguridad = null; let primerIntento = true;
       barraProg.firstChild.style.width = Math.round(i / cola.length * 100) + '%';
       cont.querySelector('.jugar-cab .mono').textContent = `${i + 1}/${cola.length}`;
-      zona.replaceChildren(h('div', { class: 'etq-pantalla' }, item.rep ? 'Otra vez: a por él' : 'De una lección anterior' + (lec ? ': ' + lec.titulo : '')), renderEjercicio(q, { titulo: lec ? lec.titulo : 'entrenamiento' }));
+      const chips = !item.vuelta && CON_SEGURIDAD.includes(orig.modo) ? h('div', { class: 'seguridad', role: 'group', 'aria-label': '¿Cómo lo llevas?' }, h('span', null, 'Antes de responder:'),
+        [['alta', 'Lo sé'], ['baja', 'Dudo']].map(([v, t]) => h('button', { class: 'chip-seg', type: 'button', 'aria-pressed': 'false', onclick: (e) => { if (!primerIntento) return; seguridad = seguridad === v ? null : v; chips.querySelectorAll('.chip-seg').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget && seguridad === v))); } }, t))) : null;
+      zona.replaceChildren(h('div', { class: 'etq-pantalla' }, item.vuelta ? 'Otra vez, ahora que lo has visto' : q.otrosDatos ? 'De días anteriores · con datos nuevos' : 'Un encargo de días anteriores'), chips || '', renderEjercicio(q, { titulo: lec ? lec.titulo : 'repaso' }));
       const conComprobar = JB.ejercicio(zona, q, false);
-      JB.estado('', '', 'Recuerda cómo se hacía antes de mirar nada', conComprobar);
-      let primerIntento = true;
+      JB.estado('', '', 'Intenta recordarlo antes de mirar nada', conComprobar);
       escuchaEj = (id, ok, info) => {
         if (id !== q.id) return;
-        const limpio = ok && primerIntento && !sesionPista && !(info && info.vista);
-        if (primerIntento && !item.rep) {
-          res[item.id] = limpio;
-          const m = P.mem[item.id];
-          if (limpio) { m.caja = Math.min(5, (m.caja || 1) + 1); m.prox = m.caja >= 5 ? null : sumarDias(SALTOS[m.caja]); ganarXP(5, btn); }
-          else { m.caja = 1; m.prox = sumarDias(1); if (AUTO.includes(orig.modo)) cola.push({ id: item.id, rep: true }); }
+        const vista = !!(info && info.vista); const ayuda = sesionPista || vista;
+        if (primerIntento) {
+          if (chips) chips.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+          if (!item.vuelta) {
+            const g = notaDe(ok && !vista, ayuda, seguridad); notas[item.id] = g;
+            P.mem[item.id] = repasar(P.mem[item.id], g);
+            if (seguridad) { const k = seguridad === 'alta' ? 'si' : 'duda'; P.calib[k][1]++; if (ok && !vista) P.calib[k][0]++; }
+            if (g >= 3) ganarXP(10, btn); else if (ok && !vista) ganarXP(5, btn);
+          }
+          if ((!ok || ayuda) && item.vuelta < 2 && AUTO.includes(orig.modo)) cola.splice(Math.min(i + 3, cola.length), 0, { id: item.id, vuelta: item.vuelta + 1 });
+          guardar();
+          if (lec) zona.append(h('p', { class: 'tenue origen' }, 'Era de: ', h('a', { href: '#leccion-' + lec.id }, lec.titulo)));
         }
         primerIntento = false;
-        if (ok) { sonidoBien(); JB.resuelto(false); JB.estado('bien', limpio ? '¡Lo recuerdas!' : al(VITORES), limpio ? '+5 XP' : '', true); }
-        else if (info && info.vista) { JB.resuelto(false); JB.estado('mal', 'Mírala con calma', 'Mañana vuelve a salirte', true); }
-        else { sonidoMal(); if (orig.modo === 'formula') { JB.resuelto(true); JB.estado('mal', al(ANIMOS), 'Inténtalo otra vez o pide una pista', true); } else { JB.resuelto(false); JB.estado('mal', al(ANIMOS), 'Mañana vuelve a salirte', true); } }
+        if (ok && !vista) {
+          sonidoBien(); JB.resuelto(false);
+          const dias = P.mem[item.id] && P.mem[item.id].prox ? diasEntre(hoy(), P.mem[item.id].prox) : 0;
+          if (item.vuelta) JB.estado('bien', '¡Ahora sí!', 'Mañana vuelve para fijarlo', true);
+          else if (notas[item.id] >= 3) JB.estado('bien', '¡Lo recuerdas!', `+10 XP · vuelve dentro de ${dias} ${dias === 1 ? 'día' : 'días'}`, true);
+          else JB.estado('bien', 'Bien', seguridad === 'baja' ? 'Lo has dudado: vuelve pronto para fijarlo' : 'Con ayuda: vuelve pronto para fijarlo', true);
+        } else if (vista) { JB.resuelto(false); JB.estado('mal', 'Mírala con calma', 'Te la pongo otra vez dentro de un rato', true); }
+        else {
+          sonidoMal(); const sorpresa = seguridad === 'alta';
+          if (orig.modo === 'formula') { JB.resuelto(true); JB.estado('mal', diagnosticoCorto() || al(ANIMOS), 'Inténtalo otra vez o pide una pista', true); }
+          else { JB.resuelto(false); JB.estado('mal', sorpresa ? 'Te ha sorprendido' : al(ANIMOS), sorpresa ? 'Lee bien por qué: lo que dabas por seguro y falla es lo que mejor se aprende' : 'Te lo pongo otra vez dentro de un rato', true); }
+          if (sorpresa) zona.querySelector('.respuesta')?.classList.add('destacada');
+        }
       };
       window.scrollTo(0, 0);
     }
     function fin() {
-      modoSesion = false; escuchaEj = null; document.body.classList.remove('jugando');
+      modoSesion = false; escuchaEj = null;
       P.entreno = hoy(); ganarXP(10); comprobarLogros(); guardar(); sonidoFin();
-      const bien = Object.values(res).filter(Boolean).length; const total = Object.keys(res).length;
-      cont.replaceChildren(h('div', { class: 'resultado' }, h('h1', null, bien === total ? '¡Memoria de elefanta!' : 'Entrenamiento hecho'), h('p', { class: 'entradilla' }, `Has recordado a la primera ${bien} de ${total}. ${bien < total ? 'Lo que ha fallado vuelve mañana; lo que has acertado, dentro de más días.' : 'Cada acierto aleja el siguiente repaso: así se queda para siempre.'}`),
-        h('div', { class: 'recuadros' }, h('div', { class: 'recuadro oro' }, h('b', null, '+' + ((P.xp || 0) - xp0)), h('span', null, 'XP')), h('div', { class: 'recuadro fuego' }, h('b', null, rachaActual()), h('span', null, 'días de racha')), h('div', { class: 'recuadro verde' }, h('b', null, entrenoPendiente().length), h('span', null, 'pendientes'))),
-        h('div', { class: 'fila', style: { justifyContent: 'center' } }, entrenoPendiente().length ? h('button', { class: 'boton', type: 'button', onclick: () => vistaEntrenar() }, 'Otra tanda') : null, h('a', { class: 'boton primario gigante', href: '#inicio' }, 'Volver al mapa'))));
+      const vals = Object.values(notas); const bien = vals.filter((g) => g >= 3).length; const total = vals.length;
+      const mm = memoriaMedia(); const pend = entrenoPendiente().length;
+      const s = sesionHoy ? siguientePasoSesion() : null;
+      zona.replaceChildren(h('div', { class: 'resultado' }, h('div', { class: 'rayos' }, mascota(bien === total ? 'fiesta' : 'feliz', 'grande')), h('h1', null, bien === total ? '¡Memoria de elefanta!' : 'Repaso hecho'),
+        h('p', { class: 'entradilla' }, `Recordado a la primera y sin ayuda: ${bien} de ${total}. ${bien < total ? 'Lo que costó vuelve pronto; lo demás, dentro de más días.' : 'Cada acierto aleja el siguiente repaso: así se queda.'}`),
+        h('div', { class: 'linea-stats' }, h('span', { class: 'ls oro' }, icono('rayo'), h('b', null, '+' + ((P.xp || 0) - xp0)), ' XP'), mm !== null ? h('span', { class: 'ls verde' }, 'Hoy recuerdas aprox. ', h('b', null, Math.round(mm * 100) + ' %'), ' de lo aprendido') : null)));
+      barraProg.firstChild.style.width = '100%';
+      JB.estado('', '', '', true); JB.texto(s ? s.texto : 'Volver al mapa');
+      JB.extra.replaceChildren(!s && pend ? h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => vistaEntrenar() }, `Otra tanda (${pend})`) : s ? h('a', { class: 'boton fantasma peq', href: '#inicio' }, 'Dejarlo aquí') : '');
+      const destino = s ? s.href : '#inicio';
+      alFin = () => { location.hash = destino; };
       window.scrollTo(0, 0);
     }
     vista().replaceChildren(cont); pintar();
@@ -1802,7 +2030,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
     const meta = P.meta || 50; const tareas = [];
     tareas.push({ t: `Consigue ${meta} XP`, hecho: xpHoy() >= meta, href: null, detalle: `${Math.min(xpHoy(), meta)}/${meta}` });
     const nE = entrenoPendiente().length;
-    if (nE || P.entreno === hoy()) tareas.push({ t: 'Haz el entrenamiento', hecho: P.entreno === hoy(), href: '#entrenar', detalle: P.entreno === hoy() ? '' : `${Math.min(nE, 7)} ejercicio${Math.min(nE, 7) === 1 ? '' : 's'}` });
+    if (nE || P.entreno === hoy()) tareas.push({ t: 'Haz el repaso de hoy', hecho: P.entreno === hoy() && !nE, href: '#sesion', detalle: nE ? `${Math.min(nE, 12)} ejercicio${Math.min(nE, 12) === 1 ? '' : 's'}` : '' });
     const nT = tarjetasPendientes().length;
     if (nT || P.repasoHoy === hoy()) tareas.push({ t: 'Repasa tus tarjetas', hecho: !nT, href: '#repaso', detalle: nT ? `${nT} tarjeta${nT === 1 ? '' : 's'}` : '' });
     const todas = tareas.every((x) => x.hecho);
@@ -1818,15 +2046,19 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   /* ================= el método (la ciencia que hay detrás) ================= */
   const METODO = [
     { t: 'Recordar sin mirar enseña más que releer', dato: 'Una semana después, quienes se habían examinado recordaban el 56 % del texto; quienes lo habían releído, el 42 %. Y los que releyeron creían estar mejor preparados.', cita: 'Roediger y Karpicke (2006), Psychological Science 17(3), 249-255', aqui: 'Cada lección termina con «Recuerda sin mirar», cada módulo empieza con un repaso y casi todo lo que haces es contestar, no leer.' },
-    { t: 'Repasar con huecos que crecen', dato: 'El hueco ideal entre repasos depende de cuánto tiempo quieres recordar: entre el 20 y el 40 % de ese tiempo si es una semana, entre el 5 y el 10 % si es un año.', cita: 'Cepeda, Vul, Rohrer, Wixted y Pashler (2008), Psychological Science 19(11), 1095-1102', aqui: 'Las tarjetas y el entrenamiento vuelven al cabo de 1, 3, 7, 16 y 35 días: cada acierto aleja el siguiente repaso.' },
-    { t: 'Mezclar problemas distintos', dato: 'Con práctica mezclada, la nota un mes después fue del 74 %; con práctica por bloques del mismo tipo, del 42 %.', cita: 'Rohrer, Dedrick y Stershic (2015), Journal of Educational Psychology 107(3)', aqui: 'El entrenamiento diario mezcla ejercicios de lecciones diferentes: así aprendes a elegir la herramienta, que es lo difícil en la oficina.' },
+    { t: 'Repasar justo antes de olvidar', dato: 'Con un repaso personalizado por un modelo de memoria, un curso de un semestre retuvo un 16,5 % más que estudiando todo junto y un 10 % más que con el mismo calendario para todos. Espaciar la recuperación tiene un efecto grande (g = 0,74); hacer crecer los huecos por norma no añade nada.', cita: 'Lindsey, Shroyer, Pashler y Mozer (2014), Psychological Science 25(3), 639-647; Latimier, Peyre y Ramus (2021), Educational Psychology Review 33(3), 959-987', aqui: 'Cada ejercicio y cada tarjeta lleva su propio reloj de memoria (el modelo FSRS, el que usa Anki): vuelve cuando la probabilidad de recordarlo baja al 90 %, según lo bien o mal que te fue. Nada se jubila.' },
+    { t: 'Reaprender hasta acertar, en días distintos', dato: 'Recuperar con corrección hasta acertar cada cosa una vez por sesión, y repetirlo en varias sesiones espaciadas, es de las técnicas más potentes para aprender y no olvidar.', cita: 'Rawson y Dunlosky (2022), Current Directions in Psychological Science 31(4); Dunlosky, Wissman, Greve, Rawson y Badali (2023), guía para docentes', aqui: 'Lo que fallas vuelve tres pantallas después, hasta que te sale (las fórmulas, con otros datos). Una habilidad está «dominada» cuando la aciertas a la primera en tres días distintos.' },
+    { t: 'Una pregunta antes de explicar', dato: 'Intentar responder antes de estudiar algo mejora lo que se aprende después sobre eso (g = 0,54 en 97 comparaciones), aunque la primera respuesta sea errónea.', cita: 'St. Hilaire, Chan y Ahn (2024), Psychonomic Bulletin & Review; Pan y Carpenter (2023), Educational Psychology Review 35', aqui: 'Muchas lecciones empiezan con «¿Qué crees tú?». No cuenta para la nota y, cuando llegas a la respuesta, ves si lo intuías.' },
+    { t: 'Mezclar problemas distintos', dato: 'En un ensayo con 787 alumnos, la práctica mezclada dio un 61 % un mes después frente al 38 % de la práctica por bloques (d = 0,83).', cita: 'Rohrer, Dedrick, Hartwig y Cheung (2020), Journal of Educational Psychology 112(1); Brunmair y Richter (2019), Psychological Bulletin 145(11)', aqui: 'El repaso mezcla ejercicios de lecciones diferentes y no te dice de cuál vienen hasta que respondes: así aprendes a elegir la herramienta, que es lo difícil en la oficina.' },
+    { t: 'Mismo encargo, otros datos', dato: 'Lo practicado con tests se transfiere a preguntas nuevas (d = 0,40), sobre todo a las de aplicación; y los ejemplos variados dan mejor transferencia con menos esfuerzo.', cita: 'Pan y Rickard (2018), Psychological Bulletin 144(7), 710-756; Paas y van Merriënboer (1994), Journal of Educational Psychology 86(1)', aqui: 'Las opciones de los test se barajan cada vez y, en el repaso, las fórmulas vuelven con los datos de otro día: practicas la habilidad, no la respuesta de memoria.' },
+    { t: '¿Lo sabes o dudas?', dato: 'Equivocarse y recibir corrección ayuda a aprender, y los errores que se cometían con mucha seguridad se corrigen mejor que los de poca (efecto de hipercorrección).', cita: 'Metcalfe (2017), Annual Review of Psychology 68, 465-489', aqui: 'En el repaso puedes decir si lo sabes o dudas antes de responder. Si dudas y aciertas, vuelve antes; si lo dabas por seguro y fallas, te lo señalamos para que leas bien por qué.' },
     { t: 'Primero un ejemplo resuelto, luego a medias, luego sola', dato: 'Quitar la ayuda poco a poco (primero los últimos pasos) da mejores resultados que pasar de golpe del ejemplo al problema.', cita: 'Renkl, Atkinson, Maier y Staley (2002), Journal of Experimental Education 70(4), 293-315', aqui: 'El primer ejercicio de cada idea viene casi hecho, el siguiente tiene pistas y el último lo resuelves tú.' },
     { t: 'Guía clara al empezar; equivocarse sin miedo después', dato: 'Quien parte de cero aprende mejor con explicaciones y ejemplos que descubriendo sola. Y entrenar animando a explorar y a equivocarse mejora la capacidad de resolver tareas nuevas (efecto medio d = 0,44; 18 de los 24 estudios eran de aprender un programa de ordenador).', cita: 'Kirschner, Sweller y Clark (2006), Educational Psychologist 41(2), 75-86; Keith y Frese (2008), Journal of Applied Psychology 93(1), 59-69', aqui: 'En los primeros niveles se explica y se muestra antes de pedir. Después hay ejercicios de «arregla el error», y fallar nunca penaliza: el ejercicio simplemente vuelve.' },
-    { t: 'Una corrección que explica', dato: 'Decir solo «bien» o «mal» apenas enseña (d = 0,46); explicar qué ha pasado, por qué y qué hacer enseña el doble (d = 0,99).', cita: 'Wisniewski, Zierer y Hattie (2020), Frontiers in Psychology 10, 3087', aqui: 'La hoja te dice en qué celda falla tu fórmula, qué da y qué debería dar; cada opción de un test explica por qué es correcta o no.' },
+    { t: 'Una corrección que explica', dato: 'Decir solo «bien» o «mal» apenas enseña (d = 0,46); explicar qué ha pasado, por qué y qué hacer enseña el doble (d = 0,99).', cita: 'Wisniewski, Zierer y Hattie (2020), Frontiers in Psychology 10, 3087; Van der Kleij, Feskens y Eggen (2015), Review of Educational Research 85(4)', aqui: 'La hoja te dice en qué celda falla tu fórmula, qué da y qué debería dar; cada opción de un test explica por qué es correcta o no.' },
     { t: 'Una pantalla, una idea', dato: 'Ir y venir entre unas instrucciones y el programa satura la memoria de trabajo y se aprende menos.', cita: 'Chandler y Sweller (1996), Applied Cognitive Psychology 10(2), 151-170', aqui: 'Cada pantalla tiene una sola idea o un solo ejercicio, y la hoja está siempre junto al enunciado.' },
     { t: 'Tareas completas y reales desde el principio', dato: 'Los modelos de formación profesional más contrastados ponen en el centro tareas enteras con sentido, no piezas sueltas.', cita: 'van Merriënboer y Kirschner, Ten Steps to Complex Learning (modelo 4C/ID)', aqui: 'Cada lección resuelve un encargo de una compañera de Electro Cierzo, y el curso termina con ocho proyectos de empresa.' },
     { t: 'Desconfiar del resultado', dato: 'En auditorías a fondo, el 94 % de 85 hojas de cálculo de empresa tenían errores, y al revisarlas solo se detecta de media el 60 % de los errores.', cita: 'Panko (2015), ponencia en el congreso de EuSpRIG (European Spreadsheet Risks Interest Group)', aqui: 'Desde el nivel 2 aprendes a comprobar: totales de control, celdas que avisan y casos límite antes de entregar.' },
-    { t: 'No avanzar con lagunas', dato: 'Los programas que exigen dominar cada unidad antes de pasar a la siguiente dieron resultados positivos en 108 evaluaciones controladas.', cita: 'Kulik, Kulik y Bangert-Drowns (1990), Review of Educational Research 60(2), 265-299', aqui: 'Cada nivel acaba con un examen que se aprueba con el 80 % a la primera y sin pistas. Puedes repetirlo cuantas veces haga falta.' },
+    { t: 'No avanzar con lagunas', dato: 'Los programas que exigen dominar cada unidad antes de pasar a la siguiente dieron resultados positivos en 108 evaluaciones controladas.', cita: 'Kulik, Kulik y Bangert-Drowns (1990), Review of Educational Research 60(2), 265-299; Guskey (2010), Educational Leadership 68(2)', aqui: 'Cada nivel acaba con un examen que se aprueba con el 80 % a la primera y sin pistas. Si no sale, ese día repasas lo que falló y al día siguiente te espera un examen nuevo, con otros ejercicios de las mismas lecciones.' },
     { t: 'Un plan concreto y una racha que perdona', dato: 'Decidir de antemano «si pasa X, entonces hago Y» ayuda a cumplir lo que te propones (efecto medio d = 0,65 en 94 estudios; revisiones recientes lo rebajan a entre 0,15 y 0,35). Y ver una racha rota quita ganas de volver, salvo que se pueda reparar.', cita: 'Gollwitzer y Sheeran (2006); Sheeran, Listrom y Gollwitzer (2024), European Review of Social Psychology 36(1); Silverman y Barasch (2023), Journal of Consumer Research 49(6), 1095-1117', aqui: 'Al empezar eliges cuándo vas a practicar, y la racha te perdona un día de descanso a la semana.' },
     { t: 'El juego, al servicio del aprendizaje', dato: 'Los elementos de juego mejoran el aprendizaje de forma modesta pero real (g = 0,49). Pero las clasificaciones y las insignias vacías pueden quitar motivación.', cita: 'Sailer y Homner (2020), Educational Psychology Review 32(1), 77-112; Hanus y Fox (2015), Computers & Education 80, 152-161', aqui: 'Aquí los puntos, las estrellas y los logros solo se ganan haciendo cosas reales (acertar a la primera, cuadrar un total, entregar un proyecto). No hay clasificaciones ni castigos.' },
   ];
@@ -1913,6 +2145,7 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   const RUTAS = [
     [/^#?$|^#inicio$|^#mapa$/, () => (!P.bienvenida && !P.xp && !Object.keys(P.ej || {}).length ? vistaBienvenida() : vistaMapa()), 'inicio'],
     [/^#bienvenida$/, () => vistaBienvenida(), 'inicio'],
+    [/^#sesion$/, () => vistaSesion(), 'inicio'],
     [/^#cofre-([\w-]+)$/, (m) => vistaCofre(m[1]), 'inicio'],
     [/^#jugar-([\w-]+)$/, (m) => vistaJugar(m[1]), 'inicio'],
     [/^#examen-([\w-]+)$/, (m) => vistaExamenNivel(m[1]), 'inicio'],
@@ -1950,12 +2183,12 @@ Enseña, no resuelvas por ella: ante un ejercicio, primero una pista o una pregu
   }
 
   function montarMarco() {
-    const enlaces = [['#inicio', 'Mapa', 'inicio'], ['#repaso', 'Repaso', 'repaso'], ['#hoja', 'Hoja libre', 'hoja'], ['#consulta', 'Consulta', 'consulta'], ['#perfil', 'Mi progreso', 'perfil']];
+    const enlaces = [['#inicio', 'Mapa', 'inicio', 'mapa'], ['#repaso', 'Repaso', 'repaso', 'tarjetas'], ['#hoja', 'Hoja libre', 'hoja', 'rejilla'], ['#consulta', 'Consulta', 'consulta', 'consulta'], ['#perfil', 'Mi progreso', 'perfil', 'persona']];
     const nav = h('nav', { class: 'nav', 'aria-label': 'Secciones' }, enlaces.map(([href, t, s]) => h('a', { href, 'data-sec': s }, t, s === 'repaso' ? h('span', { class: 'insignia', 'data-insignia': 'repaso', hidden: true }) : null)));
     const tutBtn = h('button', { class: 'boton peq boton-tutora', id: 'btn-tutora', type: 'button', hidden: true, onclick: () => { const p = $('#tutora'); if (p.hidden) abrirTutora(ctxTutora ? null : (leccionActual ? { tipo: 'leccion', leccion: { titulo: leccionActual.titulo, objetivo: leccionActual.objetivo, nivel: '' } } : { tipo: 'leccion', leccion: { titulo: 'general' } })); else p.hidden = true; } }, h('span', { 'aria-hidden': 'true' }, '✦'), h('span', { class: 'txt' }, ' Tutora'));
     const hud = h('div', { class: 'hud' }, h('a', { class: 'hud-item racha', id: 'hud-racha', href: '#perfil', style: { textDecoration: 'none' } }, icono('fuego'), h('b', null, '0'), h('span', { class: 'oculto-visual' }, ' días de racha')), h('a', { class: 'hud-item xp', id: 'hud-xp', href: '#perfil', style: { textDecoration: 'none' } }, icono('rayo'), h('b', null, '0'), h('span', { class: 'oculto-visual' }, ' puntos de experiencia')));
     const barra = h('header', { class: 'barra' }, h('div', { class: 'barra-in' }, h('a', { class: 'marca', href: '#inicio' }, h('span', { class: 'marca-celda', 'aria-hidden': 'true' }, 'A1'), 'Hoja a hoja'), nav, hud, tutBtn));
-    const pestanas = h('nav', { class: 'pestanas', 'aria-label': 'Secciones' }, enlaces.map(([href, t, s]) => h('a', { href, 'data-sec': s }, t, s === 'repaso' ? h('span', { class: 'insignia', 'data-insignia': 'repaso', hidden: true }) : null)));
+    const pestanas = h('nav', { class: 'pestanas', 'aria-label': 'Secciones' }, enlaces.map(([href, t, s, ic]) => h('a', { href, 'data-sec': s }, h('span', { class: 'pest-ico' }, icono(ic), s === 'repaso' ? h('span', { class: 'insignia', 'data-insignia': 'repaso', hidden: true }) : null), h('span', { class: 'pest-txt' }, t))));
     const area = h('textarea', { 'aria-label': 'Escribe tu pregunta', placeholder: 'Pregunta lo que quieras sobre Excel…', rows: 2, id: 'tutora-texto' });
     const adj = h('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp,image/gif', class: 'oculto-visual', id: 'tutora-img', onchange: (e) => { imagenesAdj = [...e.target.files].slice(0, 2); $('#tutora .adjunto').textContent = imagenesAdj.length ? `${imagenesAdj.length} imagen lista para enviar` : ''; } });
     const form = h('form', null, h('div', { class: 'sugerencias' }, ['Explícamelo más fácil', 'Ponme otro ejemplo', 'Hazme una pregunta para comprobar', 'Dame una pista'].map((s) => h('button', { type: 'button', onclick: () => enviarTutora(s) }, s))), area, h('div', { class: 'entre' }, h('span', null, h('label', { class: 'boton fantasma peq adjuntar', for: 'tutora-img', hidden: true }, 'Adjuntar captura'), adj, h('span', { class: 'adjunto' })), h('div', { class: 'fila' }, h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => ctlTutora && ctlTutora.abort() }, 'Parar'), h('button', { class: 'boton primario peq', type: 'submit' }, 'Enviar'))));

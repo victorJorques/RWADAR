@@ -594,9 +594,9 @@
           "pregunta": "Filtras la Tabla Pedidos para ver solo «Mecanismos Pirineo». ¿Qué muestra la fila de totales?",
           "opciones": [
             {
-              "texto": "El total de los pedidos de Mecanismos Pirineo, los que se ven",
+              "texto": "Solo el total de los pedidos que se ven",
               "correcta": true,
-              "porque": "La fila de totales usa SUBTOTALES, que solo calcula con las filas visibles."
+              "porque": "La fila de totales usa SUBTOTALES, que solo calcula con las filas visibles: verás el total de Mecanismos Pirineo."
             },
             {
               "texto": "El total de todos los pedidos, filtrados o no",
@@ -779,9 +779,9 @@
               "porque": "Nombre de la Tabla y, entre corchetes, la columna: suma todas las filas, también las que se añadan."
             },
             {
-              "texto": "=SUMA([@Importe])",
+              "texto": "=SUMA(Pedidos[@Importe])",
               "correcta": false,
-              "porque": "La @ es «esta fila»: solo tendría sentido dentro de la Tabla y sumaría un único importe."
+              "porque": "La @ significa «esta fila»: aunque lleve el nombre de la Tabla, no coge la columna entera, así que no daría el total."
             },
             {
               "texto": "=SUMA(Importe)",
@@ -886,9 +886,9 @@
           "pregunta": "Abres un libro de compras y ves `=[@[Precio unidad]]*[@Cantidad]`. ¿Por qué Precio unidad lleva dos pares de corchetes y Cantidad uno?",
           "opciones": [
             {
-              "texto": "Porque «Precio unidad» tiene un espacio y Excel necesita marcar dónde empieza y termina el nombre",
+              "texto": "Porque el nombre «Precio unidad» tiene un espacio",
               "correcta": true,
-              "porque": "Exacto. Los nombres con espacios o signos van entre doble corchete; los de una sola palabra, con uno."
+              "porque": "Exacto. Con la @, un nombre con espacios o signos lleva su propio par de corchetes para marcar dónde empieza y termina; uno de una sola palabra, como Cantidad, no lo necesita."
             },
             {
               "texto": "Porque Precio unidad es una columna más importante",
@@ -1366,9 +1366,9 @@
               "porque": "Dejaría pasar 2,5 y también 300. Decimal es para importes, no para días."
             },
             {
-              "texto": "Permitir: Lista, con los números del 1 al 30 en la hoja Listas",
+              "texto": "Permitir: Número entero, mayor que 0",
               "correcta": false,
-              "porque": "Funcionaría, pero es dar un rodeo: para números, la regla de número entero es más sencilla y clara."
+              "porque": "Rechaza el -3 y el 2,5, pero dejaría pasar 45 o 300 días: falta el tope de 30."
             }
           ]
         },

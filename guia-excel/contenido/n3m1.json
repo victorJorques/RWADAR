@@ -1083,6 +1083,11 @@
        "texto": "=",
        "correcta": false,
        "porque": "«Igual» solo suma lo facturado ese día exacto, no lo que viene después."
+      },
+      {
+       "texto": "<=",
+       "correcta": false,
+       "porque": "«Menor o igual» va hacia atrás: sumaría lo facturado hasta el 1 de julio, no desde el 1 de julio."
       }
      ],
      "explicacion": "En contabilidad «desde el día 1» siempre incluye el día 1. Por eso los periodos se escriben con `>=` y `<=`."
@@ -1527,17 +1532,17 @@
      "pregunta": "Importas las facturas del programa de gestión y la columna de fechas sale **alineada a la izquierda**. Tu fórmula del trimestre da menos de lo que esperabas. ¿Qué es lo más probable?",
      "opciones": [
       {
-       "texto": "Esas fechas son texto: un criterio como \">=\"&F1 compara números, y las filas con fecha-texto se quedan fuera sin avisar",
+       "texto": "Esas fechas son texto y la fórmula las deja fuera",
        "correcta": true,
-       "porque": "Exacto. Excel alinea a la derecha los números y las fechas de verdad. Una «fecha» a la izquierda suele ser texto, y la fórmula la ignora en silencio."
+       "porque": "Exacto. Excel alinea a la derecha los números y las fechas de verdad. Una «fecha» a la izquierda suele ser texto, y un criterio como \">=\"&F1 compara números: esas filas se quedan fuera en silencio."
       },
       {
-       "texto": "Falta el $ en los rangos",
+       "texto": "Falta el $ en los rangos de la fórmula",
        "correcta": false,
        "porque": "El $ solo importa al copiar la fórmula a otras celdas. Aquí la fórmula está bien: el problema está en los datos."
       },
       {
-       "texto": "SUMAR.SI.CONJUNTO no admite fechas",
+       "texto": "SUMAR.SI.CONJUNTO no admite fechas como criterio",
        "correcta": false,
        "porque": "Sí las admite, siempre que sean fechas de verdad (números con formato de fecha), como en todos los ejercicios de esta lección."
       }
@@ -2216,14 +2221,14 @@
      "pregunta": "Has calculado el peso de cada delegación y la comprobación da **104,2 %** en vez de 100 %. ¿Qué haces?",
      "opciones": [
       {
-       "texto": "Revisar el total y las partes: o al total le falta alguna fila, o alguna venta se cuenta dos veces",
+       "texto": "Buscar si al total le faltan filas o hay ventas contadas dos veces",
        "correcta": true,
-       "porque": "Correcto: si las partes suman más que el todo, el total se ha quedado corto o hay algo duplicado. Hay que encontrarlo antes de enviar nada."
+       "porque": "Correcto: si las partes suman más que el todo, al total le falta alguna fila o hay alguna venta duplicada. Hay que encontrarlo antes de enviar nada."
       },
       {
        "texto": "Nada: son cosas del redondeo",
        "correcta": false,
-       "porque": "El redondeo de lo que se ve en pantalla puede dar 99,9 % o 100,1 %, nunca un 4 % de diferencia."
+       "porque": "El redondeo de lo que se ve en pantalla puede dejar un 99,9 % o un 100,1 %, no un 4 % de diferencia."
       },
       {
        "texto": "Quitar los decimales para que no se note tanto",

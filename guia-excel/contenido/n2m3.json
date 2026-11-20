@@ -288,9 +288,9 @@
               "porque": "Mismo problema: & no añade separadores si no los escribes tú."
             },
             {
-              "texto": "=SUMA(A2:A4)",
+              "texto": "=UNIRCADENAS(\",\";VERDADERO;A2:A4)",
               "correcta": false,
-              "porque": "SUMA es para números; con textos da 0."
+              "porque": "Casi: el separador es solo la coma, sin espacio, y saldría «CAB-0425,MAG-1016,LED-2203». Entre las comillas va exactamente lo que quieres ver entre código y código."
             }
           ],
           "explicacion": "Para listas con separador, UNIRCADENAS es la herramienta: separador, VERDADERO y el rango."
@@ -806,9 +806,9 @@
           "pregunta": "En C2 tienes `=IZQUIERDA(B2;2)` y sale **50**, pero pegado a la izquierda de la celda. En otra celda, `=C2=50` da **FALSO**. ¿Qué pasa?",
           "opciones": [
             {
-              "texto": "IZQUIERDA siempre devuelve texto: «50» parece un número pero es texto, y para Excel no es igual que el número 50.",
+              "texto": "IZQUIERDA devuelve texto: «50» no es el número 50.",
               "correcta": true,
-              "porque": "Correcto. Todas las funciones de esta lección devuelven texto. Por eso se alinea a la izquierda. En la próxima lección verás cómo convertirlo en número con VALOR."
+              "porque": "Correcto. IZQUIERDA siempre devuelve texto, aunque corte cifras: «50» parece un número, pero para Excel no es igual que el número 50. Todas las funciones de esta lección devuelven texto; por eso se alinea a la izquierda. En la próxima lección verás cómo convertirlo en número con VALOR."
             },
             {
               "texto": "La fórmula está mal: debería ser DERECHA.",
@@ -1156,9 +1156,9 @@
           "pregunta": "Aplicas NOMPROPIO al cliente «CLIMATIZACIÓN DEL HUERVA SL» y sale **Climatización Del Huerva Sl**. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Revisar a mano los nombres con siglas y palabras como «del», o dejar los nombres de empresa en MAYUSC.",
+              "texto": "Revisar a mano las siglas y palabras como «del».",
               "correcta": true,
-              "porque": "Correcto: NOMPROPIO no sabe qué es una sigla ni qué palabras van en minúscula. En nombres de empresa, revisa siempre el resultado."
+              "porque": "Correcto: NOMPROPIO no sabe qué es una sigla ni qué palabras van en minúscula. Corrige a mano «Sl» y «Del», o deja los nombres de empresa en MAYUSC. Con nombres de empresa, revisa siempre el resultado."
             },
             {
               "texto": "Nada: NOMPROPIO siempre deja los nombres bien escritos.",

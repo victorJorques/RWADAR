@@ -919,9 +919,9 @@
           "pregunta": "Lucía cuenta los empleados con `=CONTAR(A2:A59)` sobre la columna de **nombres** y le sale **0**. ¿Qué le dices?",
           "opciones": [
             {
-              "texto": "Que use CONTARA: CONTAR solo cuenta números y los nombres son texto.",
+              "texto": "Que use CONTARA en lugar de CONTAR.",
               "correcta": true,
-              "porque": "Eso es. CONTAR da 0 porque no hay ni un número en esa columna."
+              "porque": "Eso es. CONTAR solo cuenta números y los nombres son texto: por eso da 0. CONTARA cuenta todas las celdas que no están vacías."
             },
             {
               "texto": "Que la columna está vacía.",
@@ -1458,9 +1458,9 @@
           "pregunta": "Las líneas de IVA de una factura no cuadran con el total por un céntimo. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Redondear el IVA de cada línea a 2 decimales con REDONDEAR.",
+              "texto": "Redondear el IVA de cada línea con REDONDEAR.",
               "correcta": true,
-              "porque": "Así lo que se ve es lo que vale y la suma cuadra."
+              "porque": "Así cada línea vale lo que se ve, con 2 decimales, y el total que las suma cuadra con ellas."
             },
             {
               "texto": "Pulsar Disminuir decimales en el total.",
@@ -1473,9 +1473,9 @@
               "porque": "Romperías la fórmula: si cambia una línea, el total ya no se actualiza."
             },
             {
-              "texto": "Calcular el PROMEDIO de las líneas.",
+              "texto": "Poner formato Moneda a las líneas de IVA.",
               "correcta": false,
-              "porque": "La media no tiene nada que ver con el problema del redondeo."
+              "porque": "El formato Moneda también es solo aspecto: muestra 2 decimales, pero el valor sigue guardando todos y el céntimo de diferencia no se va."
             }
           ]
         }
@@ -1520,7 +1520,7 @@
       "bloques": [
         {
           "tipo": "texto",
-          "md": "Hasta ahora tus fórmulas calculaban siempre lo mismo. Con **SI** Excel **decide**, como haces tú cada día: «si llueve, cojo el paraguas; si no, no».\n\nEn la oficina: si el pedido pasa de 1.000 €, es «Grande»; si no, «Normal». Si llega a 300 €, los portes (lo que cuesta el envío) son gratis; si no, se cobran. Una regla, dos resultados posibles."
+          "md": "Hasta ahora tus fórmulas calculaban siempre lo mismo. Con **SI** Excel **decide**, como haces tú cada día: «si llueve, cojo el paraguas; si no, no».\n\nEn la oficina: si el pedido es de 1.000 € o más, es «Grande»; si no, «Normal». Si llega a 300 €, los portes (lo que cuesta el envío) son gratis; si no, se cobran. Una regla, dos resultados posibles."
         },
         {
           "tipo": "texto",

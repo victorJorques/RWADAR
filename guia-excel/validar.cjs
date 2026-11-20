@@ -139,6 +139,10 @@ function validarEjercicio(ej, donde, errores, avisos, cambios) {
       if (!ej.multiple && ok !== 1) errores.push(`${donde}: debe haber exactamente 1 opción correcta (hay ${ok}).`);
       if (ej.multiple && ok < 1) errores.push(`${donde}: ninguna opción correcta.`);
       ops.forEach((o, i) => { if (!o.porque) avisos.push(`${donde}.opciones[${i}]: falta "porque" (retroalimentación de esa opción).`); });
+      { // que la correcta no se delate por ser mucho más larga (la app ya baraja el orden)
+        const lim = (t) => String(t || '').replace(/[*`_]/g, '').length; const ok = ops.filter((o) => o.correcta); const no = ops.filter((o) => !o.correcta);
+        if (!ej.multiple && ok.length === 1 && no.length && lim(ok[0].texto) > 1.3 * Math.max(...no.map((o) => lim(o.texto)))) avisos.push(`${donde}: la opción correcta mide más de 1,3 veces la incorrecta más larga; se adivina por la longitud. Acórtala (el matiz va a su «porque») o concreta las incorrectas.`);
+      }
       break;
     }
     case 'ordenar': {

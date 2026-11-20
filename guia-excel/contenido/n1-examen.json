@@ -333,12 +333,12 @@
    "pregunta": "Javier quiere el título «Clientes de Lleida» centrado sobre las columnas A-E, y después ordenará la lista de debajo. ¿Qué haces?",
    "opciones": [
     {
-     "texto": "Escribo el título en A1 y uso Centrar en la selección (Ctrl+1 › Alineación › Horizontal)",
+     "texto": "Escribo el título en A1 y aplico Centrar en la selección a A1:E1",
      "correcta": true,
-     "porque": "Correcto: se ve centrado y cada celda sigue siendo independiente, así que nada falla al ordenar."
+     "porque": "Correcto: se ve centrado y cada celda sigue siendo independiente, así que nada falla al ordenar. Está en Ctrl+1 › Alineación › Horizontal."
     },
     {
-     "texto": "Combinar y centrar A1:E1",
+     "texto": "Escribo el título en A1 y uso Combinar y centrar en A1:E1",
      "correcta": false,
      "porque": "Se ve igual, pero las celdas combinadas son la costumbre que da problemas al ordenar y filtrar."
     },

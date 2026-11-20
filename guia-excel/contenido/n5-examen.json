@@ -1,575 +1,575 @@
 {
- "nivel": "n5",
- "titulo": "Examen del nivel 5",
- "intro": "Quince encargos para demostrar que ya eres la referencia de Excel de la oficina: funciones modernas, modelo de datos, cuadro de mando y presupuesto, e IA con criterio.",
- "umbral": 0.8,
- "preguntas": [
-  {
-   "id": "n5-x1",
-   "leccion": "n5m1l1",
-   "modo": "formula",
-   "enunciado": "Los albaranes llegan con códigos como `ALB/ZGZ/2026/00873`. Andrés solo quiere el **número**: lo que va detrás de la **última** barra. En **B2** escribe una fórmula que lo saque del código de A2, sea cual sea la longitud de cada trozo. Se copiará a B3:B4.",
-   "hoja": {
-    "celdas": {
-     "A1": "Albarán",
-     "B1": "Número",
-     "A2": "ALB/ZGZ/2026/00873",
-     "A3": "ALB/PAM/2026/01204",
-     "A4": "DEV/LLE/2025/00031"
+  "nivel": "n5",
+  "titulo": "Examen del nivel 5",
+  "intro": "Quince encargos para demostrar que ya eres la referencia de Excel de la oficina: funciones modernas, modelo de datos, cuadro de mando y presupuesto, e IA con criterio.",
+  "umbral": 0.8,
+  "preguntas": [
+    {
+      "id": "n5-x1",
+      "leccion": "n5m1l1",
+      "modo": "formula",
+      "enunciado": "Los albaranes llegan con códigos como `ALB/ZGZ/2026/00873`. Andrés solo quiere el **número**: lo que va detrás de la **última** barra. En **B2** escribe una fórmula que lo saque del código de A2, sea cual sea la longitud de cada trozo. Se copiará a B3:B4.",
+      "hoja": {
+        "celdas": {
+          "A1": "Albarán",
+          "B1": "Número",
+          "A2": "ALB/ZGZ/2026/00873",
+          "A3": "ALB/PAM/2026/01204",
+          "A4": "DEV/LLE/2025/00031"
+        },
+        "anchos": {
+          "A": 22
+        }
+      },
+      "objetivo": "B2",
+      "copiar_a": [
+        "B3:B4"
+      ],
+      "solucion": "=TEXTODESPUES(A2;\"/\";-1)",
+      "alternativas": [
+        "=TEXTODESPUES(A2;\"/\";3)"
+      ],
+      "errores_tipicos": [
+        "=TEXTODESPUES(A2;\"/\")",
+        "=TEXTOANTES(A2;\"/\";-1)",
+        "=DERECHA(A2;5)"
+      ],
+      "variantes": [
+        {
+          "A2": "ABONO/ZGZ/2026/0087"
+        }
+      ],
+      "explicacion": "`=TEXTODESPUES(A2;\"/\";-1)`: con -1 corta en la **última** barra, tenga el código las barras que tenga. Sin el -1 cortaría en la primera y te llevarías «ZGZ/2026/00873»; con DERECHA fallaría en cuanto un número tenga otra longitud."
     },
-    "anchos": {
-     "A": 22
+    {
+      "id": "n5-x2",
+      "leccion": "n5m1l2",
+      "modo": "formula",
+      "enunciado": "Javier quiere revisar los pedidos **más pequeños** de la semana, por si sale a cuenta agruparlos. En **E2** devuelve, con **una sola fórmula**, los **2 pedidos de menor importe** de las dos listas juntas (Zaragoza en **A2:B5** y Lleida en **A8:B9**), de menor a mayor, con cliente e importe. Deben llenarse E2:F3.",
+      "hoja": {
+        "celdas": {
+          "A1": "Cliente ZGZ",
+          "B1": "Importe",
+          "A2": "Instalaciones Ebro",
+          "B2": 2480.5,
+          "A3": "Electricidad Oroel",
+          "B3": 615.2,
+          "A4": "Montajes Bardenas",
+          "B4": 4150,
+          "A5": "Reformas Jaca",
+          "B5": 980.75,
+          "A7": "Cliente LLE",
+          "B7": "Importe",
+          "A8": "Instalaciones Segre",
+          "B8": 1840,
+          "A9": "Electro Noguera",
+          "B9": 402.3,
+          "E1": "Cliente",
+          "F1": "Importe"
+        },
+        "formatos": {
+          "B2:B9": "eur",
+          "F2:F3": "eur"
+        },
+        "anchos": {
+          "A": 20,
+          "E": 20
+        }
+      },
+      "objetivo": "E2",
+      "solucion": "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);2)",
+      "alternativas": [
+        "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2;1);2)",
+        "=TOMAR(ORDENAR(APILARV(A8:B9;A2:B5);2;1);2)"
+      ],
+      "errores_tipicos": [
+        "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2;-1);2)",
+        "=TOMAR(ORDENAR(A2:B5;2);2)",
+        "=TOMAR(APILARV(A2:B5;A8:B9);2)",
+        "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);-2)"
+      ],
+      "variantes": [
+        {
+          "B8": 350
+        },
+        {
+          "B3": 2615.2
+        }
+      ],
+      "explicacion": "`=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);2)`: une las dos listas, las ordena por el importe (2.ª columna) de menor a mayor y se queda con las 2 primeras filas: Electro Noguera (402,30 €) y Electricidad Oroel (615,20 €). Si la semana que viene cambia un pedido, el resultado se rehace solo."
+    },
+    {
+      "id": "n5-x3",
+      "leccion": "n5m1l3",
+      "modo": "test",
+      "pregunta": "Javier tiene Microsoft 365 y quiere en su hoja de resumen **cuántos pedidos** ha hecho cada comercial, siempre al día sin pulsar nada. Los comerciales están en C2:C300 y los importes en E2:E300. ¿Qué fórmula escribe?",
+      "opciones": [
+        {
+          "texto": "=AGRUPARPOR(C2:C300;E2:E300;CONTAR)",
+          "correcta": true,
+          "porque": "Eso es: agrupa por comercial y cuenta los importes de cada grupo, uno por pedido. Y al ser una fórmula, se recalcula sola."
+        },
+        {
+          "texto": "=AGRUPARPOR(C2:C300;E2:E300;SUMA)",
+          "correcta": false,
+          "porque": "Daría cuánto ha vendido cada comercial, no cuántos pedidos ha hecho."
+        },
+        {
+          "texto": "=AGRUPARPOR(E2:E300;C2:C300;CONTAR)",
+          "correcta": false,
+          "porque": "Está al revés: agruparía por importe y contaría nombres. Primero va por qué agrupas (el comercial)."
+        },
+        {
+          "texto": "=CONTAR.SI(C2:C300;E2:E300)",
+          "correcta": false,
+          "porque": "CONTAR.SI pide un criterio concreto, no otra columna de datos, y no devuelve una fila por comercial."
+        }
+      ],
+      "explicacion": "AGRUPARPOR: por qué agrupo; qué resumo; cómo lo resumo (la función, sin paréntesis)."
+    },
+    {
+      "id": "n5-x4",
+      "leccion": "n5m1l4",
+      "modo": "respuesta_corta",
+      "pregunta": "En el libro de facturación hay una función de la casa guardada en el Administrador de nombres: **CUOTA_IVA**, que hace referencia a `=LAMBDA(base;tipo;REDONDEAR(base*tipo;2))`. ¿Qué devuelve `=CUOTA_IVA(250;21%)`?",
+      "aceptadas": [
+        "52,5",
+        "52,50",
+        "52,5 €",
+        "52,50 €",
+        "52,50€",
+        "52,5€"
+      ],
+      "explicacion": "Los valores entran en los huecos por orden: base = 250 y tipo = 21 %. 250 × 0,21 = 52,50 €, redondeado a 2 decimales."
+    },
+    {
+      "id": "n5-x5",
+      "leccion": "n5m2l1",
+      "modo": "test",
+      "pregunta": "Andrés monta la tabla de **Proveedores** para relacionarla con sus pedidos de compra. Tiene estas columnas: CIF, Nombre, Ciudad y Plazo de entrega. ¿Cuál usa como **clave**?",
+      "opciones": [
+        {
+          "texto": "El CIF",
+          "correcta": true,
+          "porque": "Sí: identifica a cada proveedor sin dudas y no se repite. Es la columna que también llevará cada pedido."
+        },
+        {
+          "texto": "El nombre",
+          "correcta": false,
+          "porque": "Un mismo proveedor puede aparecer como «Cables Ebro» y «Cables Ebro, S.L.»: para Excel son dos textos distintos."
+        },
+        {
+          "texto": "La ciudad",
+          "correcta": false,
+          "porque": "Varios proveedores pueden ser de la misma ciudad: la clave no puede repetirse en la dimensión."
+        },
+        {
+          "texto": "El plazo de entrega",
+          "correcta": false,
+          "porque": "Es un dato descriptivo que comparten muchos proveedores (por ejemplo, 48 horas). No identifica a nadie."
+        }
+      ],
+      "explicacion": "La clave de una dimensión identifica cada ficha y no se repite nunca. Antes de relacionar, compruébalo con una celda de control."
+    },
+    {
+      "id": "n5-x6",
+      "leccion": "n5m2l2",
+      "modo": "test",
+      "pregunta": "Vas a crear la relación entre `Ventas[CodProducto]` y `Productos[CodProducto]` y Excel no la crea: dice que una de las columnas tiene que tener valores únicos. ¿Qué compruebas primero?",
+      "opciones": [
+        {
+          "texto": "Que en la Tabla Productos no haya ningún código repetido",
+          "correcta": true,
+          "porque": "Eso es: Productos es la dimensión y su clave tiene que ser única. Una celda de control (códigos menos códigos distintos) te dice al momento si sobra alguno."
+        },
+        {
+          "texto": "Que en la Tabla Ventas no se repita ningún código",
+          "correcta": false,
+          "porque": "En la tabla de hechos es normal que se repita: cada venta de un artículo lleva su código. Lo único es la dimensión."
+        },
+        {
+          "texto": "Que las dos Tablas tengan el mismo número de filas",
+          "correcta": false,
+          "porque": "No hace falta: la dimensión suele tener pocas filas y la tabla de hechos, miles."
+        },
+        {
+          "texto": "Pulsar Actualizar todo y volver a intentarlo",
+          "correcta": false,
+          "porque": "Actualizar vuelve a leer los datos, pero no quita un código repetido."
+        }
+      ],
+      "explicacion": "Si una relación no se crea, mira la clave de la dimensión: casi siempre hay un código repetido."
+    },
+    {
+      "id": "n5-x7",
+      "leccion": "n5m2l2",
+      "modo": "test",
+      "pregunta": "Tienes las medidas `Margen := [Total ventas] - [Total coste]` y `Margen % := DIVIDE([Margen]; [Total ventas])`, y una tabla dinámica con Familia en Filas. ¿Qué muestra Margen % en la fila del **Total general**?",
+      "opciones": [
+        {
+          "texto": "El margen total dividido entre las ventas totales",
+          "correcta": true,
+          "porque": "Eso es: la medida se recalcula en cada celda con su filtro. En el total no hay filtro de familia, así que divide el margen total entre las ventas totales."
+        },
+        {
+          "texto": "La suma de los porcentajes de cada familia",
+          "correcta": false,
+          "porque": "Una medida no suma lo de las filas: se calcula de nuevo. Sumar porcentajes daría cifras sin sentido, incluso de más del 100 %."
+        },
+        {
+          "texto": "La media de los porcentajes de cada familia",
+          "correcta": false,
+          "porque": "Así pesaría igual una familia que vende poco que una que vende mucho. La medida pondera bien porque divide totales."
+        },
+        {
+          "texto": "Nada: DIVIDE solo funciona en las filas, no en los totales",
+          "correcta": false,
+          "porque": "La medida funciona en cualquier celda de la dinámica, también en los totales."
+        }
+      ],
+      "explicacion": "Una medida es una receta que se vuelve a calcular en cada celda, con lo que filtra esa celda."
+    },
+    {
+      "id": "n5-x8",
+      "leccion": "n5m3l1",
+      "modo": "formula",
+      "enunciado": "Javier quiere el **ticket medio** de noviembre en **H2**: lo que se factura de media en cada factura, **sin IVA**. Ojo: cada fila es una **línea** y una factura puede tener varias líneas.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "B1": "Factura",
+          "C1": "Cliente",
+          "D1": "Base (sin IVA)",
+          "E1": "Total (con IVA)",
+          "G1": "Indicador",
+          "H1": "Noviembre",
+          "G2": "Ticket medio",
+          "A2": {
+            "fecha": "2026-11-03"
+          },
+          "B2": "F26-1101",
+          "C2": "Instalaciones Moncayo",
+          "D2": 420,
+          "E2": 508.2,
+          "A3": {
+            "fecha": "2026-11-03"
+          },
+          "B3": "F26-1101",
+          "C3": "Instalaciones Moncayo",
+          "D3": 186.5,
+          "E3": 225.67,
+          "A4": {
+            "fecha": "2026-11-05"
+          },
+          "B4": "F26-1102",
+          "C4": "Electricidad Arga",
+          "D4": 1250,
+          "E4": 1512.5,
+          "A5": {
+            "fecha": "2026-11-09"
+          },
+          "B5": "F26-1103",
+          "C5": "Montajes Segre",
+          "D5": 312.4,
+          "E5": 378,
+          "A6": {
+            "fecha": "2026-11-09"
+          },
+          "B6": "F26-1103",
+          "C6": "Montajes Segre",
+          "D6": 98.6,
+          "E6": 119.31,
+          "A7": {
+            "fecha": "2026-11-09"
+          },
+          "B7": "F26-1103",
+          "C7": "Montajes Segre",
+          "D7": 45,
+          "E7": 54.45,
+          "A8": {
+            "fecha": "2026-11-12"
+          },
+          "B8": "F26-1104",
+          "C8": "Reformas Delicias",
+          "D8": 860,
+          "E8": 1040.6,
+          "A9": {
+            "fecha": "2026-11-13"
+          },
+          "B9": "F26-1105",
+          "C9": "Electricidad Arga",
+          "D9": 527.5,
+          "E9": 638.28
+        },
+        "formatos": {
+          "A2:A9": "fecha",
+          "D2:E9": "eur",
+          "H2": "eur"
+        },
+        "anchos": {
+          "C": 20,
+          "G": 14
+        }
+      },
+      "objetivo": "H2",
+      "solucion": "=SUMA(D2:D9)/CONTARA(UNICOS(B2:B9))",
+      "alternativas": [
+        "=SUMA(D2:D9)/FILAS(UNICOS(B2:B9))"
+      ],
+      "errores_tipicos": [
+        "=SUMA(D2:D9)/CONTARA(B2:B9)",
+        "=PROMEDIO(D2:D9)",
+        "=SUMA(E2:E9)/CONTARA(UNICOS(B2:B9))",
+        "=SUMA(D2:D9)/CONTARA(UNICOS(C2:C9))"
+      ],
+      "variantes": [
+        {
+          "D4": 1500
+        },
+        {
+          "B7": "F26-1106"
+        }
+      ],
+      "formato_resultado": "eur",
+      "explicacion": "3.700 € sin IVA entre **5 facturas distintas** = **740,00 €**. Si divides entre las 8 líneas sale 462,50 €, y si cuentas clientes, otra cifra: por eso cada indicador se define por escrito."
+    },
+    {
+      "id": "n5-x9",
+      "leccion": "n5m3l2",
+      "modo": "formula",
+      "enunciado": "En **G4** calcula las ventas de la zona de **G3** en el mes del informe, cuyo día 1 está en **G2**. El mes que viene alguien cambiará G2 o G3, y tu fórmula tiene que seguir valiendo sin tocarla.",
+      "hoja": {
+        "celdas": {
+          "A1": "Fecha",
+          "B1": "Factura",
+          "C1": "Zona",
+          "D1": "Importe",
+          "F1": "Parámetro",
+          "G1": "Valor",
+          "F2": "Mes del informe",
+          "G2": {
+            "fecha": "2026-10-01"
+          },
+          "F3": "Zona",
+          "G3": "Pamplona",
+          "F4": "Ventas del mes",
+          "A2": {
+            "fecha": "2026-09-29"
+          },
+          "B2": "F26-0801",
+          "C2": "Pamplona",
+          "D2": 640,
+          "A3": {
+            "fecha": "2026-09-30"
+          },
+          "B3": "F26-0805",
+          "C3": "Pamplona",
+          "D3": 1180.5,
+          "A4": {
+            "fecha": "2026-10-01"
+          },
+          "B4": "F26-0810",
+          "C4": "Pamplona",
+          "D4": 925,
+          "A5": {
+            "fecha": "2026-10-07"
+          },
+          "B5": "F26-0838",
+          "C5": "Zaragoza",
+          "D5": 2310.4,
+          "A6": {
+            "fecha": "2026-10-15"
+          },
+          "B6": "F26-0862",
+          "C6": "Pamplona",
+          "D6": 1402.75,
+          "A7": {
+            "fecha": "2026-10-22"
+          },
+          "B7": "F26-0887",
+          "C7": "Lleida",
+          "D7": 760,
+          "A8": {
+            "fecha": "2026-10-31"
+          },
+          "B8": "F26-0915",
+          "C8": "Pamplona",
+          "D8": 518.2,
+          "A9": {
+            "fecha": "2026-11-02"
+          },
+          "B9": "F26-0921",
+          "C9": "Pamplona",
+          "D9": 1290,
+          "A10": {
+            "fecha": "2026-11-04"
+          },
+          "B10": "F26-0930",
+          "C10": "Zaragoza",
+          "D10": 845.6
+        },
+        "formatos": {
+          "A2:A10": "fecha",
+          "G2": "fecha",
+          "D2:D10": "eur",
+          "G4": "eur"
+        },
+        "anchos": {
+          "F": 15
+        }
+      },
+      "objetivo": "G4",
+      "solucion": "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0))",
+      "alternativas": [
+        "=SUMAR.SI.CONJUNTO(D2:D10;A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0);C2:C10;G3)",
+        "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<\"&FECHA.MES(G2;1))"
+      ],
+      "errores_tipicos": [
+        "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<\"&FIN.MES(G2;0))",
+        "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;\"Pamplona\";A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0))",
+        "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2)",
+        "=SUMAR.SI(C2:C10;G3;D2:D10)"
+      ],
+      "variantes": [
+        {
+          "G2": {
+            "fecha": "2026-09-01"
+          }
+        },
+        {
+          "G3": "Zaragoza"
+        },
+        {
+          "G2": {
+            "fecha": "2026-11-01"
+          }
+        }
+      ],
+      "formato_resultado": "eur",
+      "explicacion": "Pamplona en octubre: 925 + 1.402,75 + 518,20 = **2.845,95 €**. Con `\"<=\"&FIN.MES(G2;0)` entra la factura del día 31; con `<` se perdería. Y como todo lee G2 y G3, el cuadro del mes que viene sale cambiando una celda."
+    },
+    {
+      "id": "n5-x10",
+      "leccion": "n5m3l3",
+      "modo": "test",
+      "pregunta": "El gráfico de octubre muestra el cumplimiento del objetivo por zona: Zaragoza 104 %, Pamplona 101 % y Lleida 91 %. ¿Qué título le pones en el cuadro de Carmen?",
+      "opciones": [
+        {
+          "texto": "Lleida, la única zona que no llega al objetivo (91 %)",
+          "correcta": true,
+          "porque": "Dice la conclusión: Carmen lee el título y ya sabe qué hay que mirar, sin interpretar el gráfico."
+        },
+        {
+          "texto": "Cumplimiento del objetivo por zona, octubre de 2026",
+          "correcta": false,
+          "porque": "Describe el gráfico, pero no dice qué hay que saber: la conclusión la tendría que sacar Carmen."
+        },
+        {
+          "texto": "¡ALERTA! LLEIDA EN ROJO",
+          "correcta": false,
+          "porque": "Alarma sin dato ni contexto, en mayúsculas y apoyada en un color que no todo el mundo distingue."
+        },
+        {
+          "texto": "Ventas por zona",
+          "correcta": false,
+          "porque": "Ni siquiera describe bien el gráfico (es cumplimiento, no ventas) y no dice ninguna conclusión."
+        }
+      ],
+      "explicacion": "Un buen título de cuadro de mando es la frase que dirías en voz alta en el comité."
+    },
+    {
+      "id": "n5-x11",
+      "leccion": "n5m3l4",
+      "modo": "formula",
+      "enunciado": "Marta quiere que el presupuesto de gastos de noviembre avise solo de lo que hay que explicar. En **D2** escribe **«Revisar»** si el gasto real se aparta del presupuesto **más** del porcentaje de **H1**, tanto si se gasta de más como de menos; si no, **«OK»**. Se copiará a D3:D6.",
+      "hoja": {
+        "celdas": {
+          "A1": "Concepto",
+          "B1": "Presupuesto",
+          "C1": "Real",
+          "D1": "Aviso",
+          "G1": "Margen tolerado",
+          "H1": 0.1,
+          "A2": "Transporte",
+          "B2": 2000,
+          "C2": 2150,
+          "A3": "Material de oficina",
+          "B3": 600,
+          "C3": 690,
+          "A4": "Mantenimiento de carretillas",
+          "B4": 1500,
+          "C4": 1260,
+          "A5": "Luz y agua",
+          "B5": 3200,
+          "C5": 3290,
+          "A6": "Formación",
+          "B6": 900,
+          "C6": 450
+        },
+        "formatos": {
+          "B2:C6": "eur",
+          "H1": "pct"
+        },
+        "anchos": {
+          "A": 26,
+          "G": 15
+        }
+      },
+      "objetivo": "D2",
+      "copiar_a": [
+        "D3:D6"
+      ],
+      "solucion": "=SI(ABS(C2-B2)>$H$1*B2;\"Revisar\";\"OK\")",
+      "alternativas": [
+        "=SI(ABS(C2-B2)<=$H$1*B2;\"OK\";\"Revisar\")",
+        "=SI(ABS(C2-B2)>$H$1*ABS(B2);\"Revisar\";\"OK\")",
+        "=SI(ABS(C2/B2-1)>$H$1;\"Revisar\";\"OK\")",
+        "=SI(O(C2-B2>$H$1*B2;B2-C2>$H$1*B2);\"Revisar\";\"OK\")"
+      ],
+      "errores_tipicos": [
+        "=SI(C2-B2>$H$1*B2;\"Revisar\";\"OK\")",
+        "=SI(ABS(C2-B2)>$H$1;\"Revisar\";\"OK\")",
+        "=SI(ABS(C2-B2)>H1*B2;\"Revisar\";\"OK\")",
+        "=SI(ABS(C2-B2)>0,1*B2;\"Revisar\";\"OK\")"
+      ],
+      "variantes": [
+        {
+          "H1": 0.2
+        },
+        {
+          "C5": 3700
+        }
+      ],
+      "explicacion": "Material de oficina (+15 %), carretillas (−16 %) y formación (−50 %) dicen «Revisar». Sin ABS, los gastos muy por **debajo** pasarían como «OK», y también hay que explicarlos (¿se ha suspendido un curso?). El 10 % está en H1 y fijado con $: si Marta cambia el margen, la columna se recalcula sola."
+    },
+    {
+      "id": "n5-x14",
+      "leccion": "n5m4l2",
+      "modo": "test",
+      "pregunta": "Lucía quiere que Copilot, con su cuenta de trabajo (la IA autorizada en Electro Cierzo), le proponga una fórmula para calcular la **antigüedad** de cada persona de la plantilla. ¿Qué le enseña?",
+      "opciones": [
+        {
+          "texto": "Los nombres de las columnas y dos filas inventadas",
+          "correcta": true,
+          "porque": "Eso es minimización: para proponer la fórmula, la IA solo necesita saber qué columnas hay y cómo es una fecha de alta, y eso se ve con dos filas de ejemplo. Ningún dato real sale del archivo."
+        },
+        {
+          "texto": "El listado completo, porque es la IA autorizada",
+          "correcta": false,
+          "porque": "Que la herramienta esté autorizada no significa que haya que darle más datos de los necesarios. Nombres, NIF y sueldos sobran para esa fórmula."
+        },
+        {
+          "texto": "El listado sin el NIF, pero con nombres y fechas de alta",
+          "correcta": false,
+          "porque": "El nombre identifica a cada persona: sigue siendo un dato personal y no hace falta para la fórmula."
+        },
+        {
+          "texto": "Una captura de pantalla del listado, que no es el archivo",
+          "correcta": false,
+          "porque": "Una captura enseña los mismos datos personales que el archivo: el formato no cambia nada."
+        }
+      ],
+      "explicacion": "Antes de pegar: ¿qué necesita de verdad para ayudarme? Casi siempre basta la estructura."
     }
-   },
-   "objetivo": "B2",
-   "copiar_a": [
-    "B3:B4"
-   ],
-   "solucion": "=TEXTODESPUES(A2;\"/\";-1)",
-   "alternativas": [
-    "=TEXTODESPUES(A2;\"/\";3)"
-   ],
-   "errores_tipicos": [
-    "=TEXTODESPUES(A2;\"/\")",
-    "=TEXTOANTES(A2;\"/\";-1)",
-    "=DERECHA(A2;5)"
-   ],
-   "variantes": [
-    {
-     "A2": "ABONO/ZGZ/2026/0087"
-    }
-   ],
-   "explicacion": "`=TEXTODESPUES(A2;\"/\";-1)`: con -1 corta en la **última** barra, tenga el código las barras que tenga. Sin el -1 cortaría en la primera y te llevarías «ZGZ/2026/00873»; con DERECHA fallaría en cuanto un número tenga otra longitud."
-  },
-  {
-   "id": "n5-x2",
-   "leccion": "n5m1l2",
-   "modo": "formula",
-   "enunciado": "Javier quiere revisar los pedidos **más pequeños** de la semana, por si sale a cuenta agruparlos. En **E2** devuelve, con **una sola fórmula**, los **2 pedidos de menor importe** de las dos listas juntas (Zaragoza en **A2:B5** y Lleida en **A8:B9**), de menor a mayor, con cliente e importe. Deben llenarse E2:F3.",
-   "hoja": {
-    "celdas": {
-     "A1": "Cliente ZGZ",
-     "B1": "Importe",
-     "A2": "Instalaciones Ebro",
-     "B2": 2480.5,
-     "A3": "Electricidad Oroel",
-     "B3": 615.2,
-     "A4": "Montajes Bardenas",
-     "B4": 4150,
-     "A5": "Reformas Jaca",
-     "B5": 980.75,
-     "A7": "Cliente LLE",
-     "B7": "Importe",
-     "A8": "Instalaciones Segre",
-     "B8": 1840,
-     "A9": "Electro Noguera",
-     "B9": 402.3,
-     "E1": "Cliente",
-     "F1": "Importe"
-    },
-    "formatos": {
-     "B2:B9": "eur",
-     "F2:F3": "eur"
-    },
-    "anchos": {
-     "A": 20,
-     "E": 20
-    }
-   },
-   "objetivo": "E2",
-   "solucion": "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);2)",
-   "alternativas": [
-    "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2;1);2)",
-    "=TOMAR(ORDENAR(APILARV(A8:B9;A2:B5);2;1);2)"
-   ],
-   "errores_tipicos": [
-    "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2;-1);2)",
-    "=TOMAR(ORDENAR(A2:B5;2);2)",
-    "=TOMAR(APILARV(A2:B5;A8:B9);2)",
-    "=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);-2)"
-   ],
-   "variantes": [
-    {
-     "B8": 350
-    },
-    {
-     "B3": 2615.2
-    }
-   ],
-   "explicacion": "`=TOMAR(ORDENAR(APILARV(A2:B5;A8:B9);2);2)`: une las dos listas, las ordena por el importe (2.ª columna) de menor a mayor y se queda con las 2 primeras filas: Electro Noguera (402,30 €) y Electricidad Oroel (615,20 €). Si la semana que viene cambia un pedido, el resultado se rehace solo."
-  },
-  {
-   "id": "n5-x3",
-   "leccion": "n5m1l3",
-   "modo": "test",
-   "pregunta": "Javier tiene Microsoft 365 y quiere en su hoja de resumen **cuántos pedidos** ha hecho cada comercial, siempre al día sin pulsar nada. Los comerciales están en C2:C300 y los importes en E2:E300. ¿Qué fórmula escribe?",
-   "opciones": [
-    {
-     "texto": "=AGRUPARPOR(C2:C300;E2:E300;CONTAR)",
-     "correcta": true,
-     "porque": "Eso es: agrupa por comercial y cuenta los importes de cada grupo, uno por pedido. Y al ser una fórmula, se recalcula sola."
-    },
-    {
-     "texto": "=AGRUPARPOR(C2:C300;E2:E300;SUMA)",
-     "correcta": false,
-     "porque": "Daría cuánto ha vendido cada comercial, no cuántos pedidos ha hecho."
-    },
-    {
-     "texto": "=AGRUPARPOR(E2:E300;C2:C300;CONTAR)",
-     "correcta": false,
-     "porque": "Está al revés: agruparía por importe y contaría nombres. Primero va por qué agrupas (el comercial)."
-    },
-    {
-     "texto": "=CONTAR.SI(C2:C300;E2:E300)",
-     "correcta": false,
-     "porque": "CONTAR.SI pide un criterio concreto, no otra columna de datos, y no devuelve una fila por comercial."
-    }
-   ],
-   "explicacion": "AGRUPARPOR: por qué agrupo; qué resumo; cómo lo resumo (la función, sin paréntesis)."
-  },
-  {
-   "id": "n5-x4",
-   "leccion": "n5m1l4",
-   "modo": "respuesta_corta",
-   "pregunta": "En el libro de facturación hay una función de la casa guardada en el Administrador de nombres: **CUOTA_IVA**, que hace referencia a `=LAMBDA(base;tipo;REDONDEAR(base*tipo;2))`. ¿Qué devuelve `=CUOTA_IVA(250;21%)`?",
-   "aceptadas": [
-    "52,5",
-    "52,50",
-    "52,5 €",
-    "52,50 €",
-    "52,50€",
-    "52,5€"
-   ],
-   "explicacion": "Los valores entran en los huecos por orden: base = 250 y tipo = 21 %. 250 × 0,21 = 52,50 €, redondeado a 2 decimales."
-  },
-  {
-   "id": "n5-x5",
-   "leccion": "n5m2l1",
-   "modo": "test",
-   "pregunta": "Andrés monta la tabla de **Proveedores** para relacionarla con sus pedidos de compra. Tiene estas columnas: CIF, Nombre, Ciudad y Plazo de entrega. ¿Cuál usa como **clave**?",
-   "opciones": [
-    {
-     "texto": "El CIF",
-     "correcta": true,
-     "porque": "Sí: identifica a cada proveedor sin dudas y no se repite. Es la columna que también llevará cada pedido."
-    },
-    {
-     "texto": "El nombre",
-     "correcta": false,
-     "porque": "Un mismo proveedor puede aparecer como «Cables Ebro» y «Cables Ebro, S.L.»: para Excel son dos textos distintos."
-    },
-    {
-     "texto": "La ciudad",
-     "correcta": false,
-     "porque": "Varios proveedores pueden ser de la misma ciudad: la clave no puede repetirse en la dimensión."
-    },
-    {
-     "texto": "El plazo de entrega",
-     "correcta": false,
-     "porque": "Es un dato descriptivo que comparten muchos proveedores (por ejemplo, 48 horas). No identifica a nadie."
-    }
-   ],
-   "explicacion": "La clave de una dimensión identifica cada ficha y no se repite nunca. Antes de relacionar, compruébalo con una celda de control."
-  },
-  {
-   "id": "n5-x6",
-   "leccion": "n5m2l2",
-   "modo": "test",
-   "pregunta": "Vas a crear la relación entre `Ventas[CodProducto]` y `Productos[CodProducto]` y Excel no la crea: dice que una de las columnas tiene que tener valores únicos. ¿Qué compruebas primero?",
-   "opciones": [
-    {
-     "texto": "Que en la Tabla Productos no haya ningún código repetido",
-     "correcta": true,
-     "porque": "Eso es: Productos es la dimensión y su clave tiene que ser única. Una celda de control (códigos menos códigos distintos) te dice al momento si sobra alguno."
-    },
-    {
-     "texto": "Que en la Tabla Ventas no se repita ningún código",
-     "correcta": false,
-     "porque": "En la tabla de hechos es normal que se repita: cada venta de un artículo lleva su código. Lo único es la dimensión."
-    },
-    {
-     "texto": "Que las dos Tablas tengan el mismo número de filas",
-     "correcta": false,
-     "porque": "No hace falta: la dimensión suele tener pocas filas y la tabla de hechos, miles."
-    },
-    {
-     "texto": "Pulsar Actualizar todo y volver a intentarlo",
-     "correcta": false,
-     "porque": "Actualizar vuelve a leer los datos, pero no quita un código repetido."
-    }
-   ],
-   "explicacion": "Si una relación no se crea, mira la clave de la dimensión: casi siempre hay un código repetido."
-  },
-  {
-   "id": "n5-x7",
-   "leccion": "n5m2l2",
-   "modo": "test",
-   "pregunta": "Tienes las medidas `Margen := [Total ventas] - [Total coste]` y `Margen % := DIVIDE([Margen]; [Total ventas])`, y una tabla dinámica con Familia en Filas. ¿Qué muestra Margen % en la fila del **Total general**?",
-   "opciones": [
-    {
-     "texto": "El margen de todas las familias juntas dividido entre las ventas de todas las familias",
-     "correcta": true,
-     "porque": "Eso es: la medida se recalcula en cada celda con su filtro. En el total no hay filtro de familia, así que divide el margen total entre las ventas totales."
-    },
-    {
-     "texto": "La suma de los porcentajes de cada familia",
-     "correcta": false,
-     "porque": "Una medida no suma lo de las filas: se calcula de nuevo. Sumar porcentajes daría cifras sin sentido, incluso de más del 100 %."
-    },
-    {
-     "texto": "La media de los porcentajes de cada familia",
-     "correcta": false,
-     "porque": "Así pesaría igual una familia que vende poco que una que vende mucho. La medida pondera bien porque divide totales."
-    },
-    {
-     "texto": "Nada: DIVIDE solo funciona en las filas, no en los totales",
-     "correcta": false,
-     "porque": "La medida funciona en cualquier celda de la dinámica, también en los totales."
-    }
-   ],
-   "explicacion": "Una medida es una receta que se vuelve a calcular en cada celda, con lo que filtra esa celda."
-  },
-  {
-   "id": "n5-x8",
-   "leccion": "n5m3l1",
-   "modo": "formula",
-   "enunciado": "Javier quiere el **ticket medio** de noviembre en **H2**: lo que se factura de media en cada factura, **sin IVA**. Ojo: cada fila es una **línea** y una factura puede tener varias líneas.",
-   "hoja": {
-    "celdas": {
-     "A1": "Fecha",
-     "B1": "Factura",
-     "C1": "Cliente",
-     "D1": "Base (sin IVA)",
-     "E1": "Total (con IVA)",
-     "G1": "Indicador",
-     "H1": "Noviembre",
-     "G2": "Ticket medio",
-     "A2": {
-      "fecha": "2026-11-03"
-     },
-     "B2": "F26-1101",
-     "C2": "Instalaciones Moncayo",
-     "D2": 420,
-     "E2": 508.2,
-     "A3": {
-      "fecha": "2026-11-03"
-     },
-     "B3": "F26-1101",
-     "C3": "Instalaciones Moncayo",
-     "D3": 186.5,
-     "E3": 225.67,
-     "A4": {
-      "fecha": "2026-11-05"
-     },
-     "B4": "F26-1102",
-     "C4": "Electricidad Arga",
-     "D4": 1250,
-     "E4": 1512.5,
-     "A5": {
-      "fecha": "2026-11-09"
-     },
-     "B5": "F26-1103",
-     "C5": "Montajes Segre",
-     "D5": 312.4,
-     "E5": 378,
-     "A6": {
-      "fecha": "2026-11-09"
-     },
-     "B6": "F26-1103",
-     "C6": "Montajes Segre",
-     "D6": 98.6,
-     "E6": 119.31,
-     "A7": {
-      "fecha": "2026-11-09"
-     },
-     "B7": "F26-1103",
-     "C7": "Montajes Segre",
-     "D7": 45,
-     "E7": 54.45,
-     "A8": {
-      "fecha": "2026-11-12"
-     },
-     "B8": "F26-1104",
-     "C8": "Reformas Delicias",
-     "D8": 860,
-     "E8": 1040.6,
-     "A9": {
-      "fecha": "2026-11-13"
-     },
-     "B9": "F26-1105",
-     "C9": "Electricidad Arga",
-     "D9": 527.5,
-     "E9": 638.28
-    },
-    "formatos": {
-     "A2:A9": "fecha",
-     "D2:E9": "eur",
-     "H2": "eur"
-    },
-    "anchos": {
-     "C": 20,
-     "G": 14
-    }
-   },
-   "objetivo": "H2",
-   "solucion": "=SUMA(D2:D9)/CONTARA(UNICOS(B2:B9))",
-   "alternativas": [
-    "=SUMA(D2:D9)/FILAS(UNICOS(B2:B9))"
-   ],
-   "errores_tipicos": [
-    "=SUMA(D2:D9)/CONTARA(B2:B9)",
-    "=PROMEDIO(D2:D9)",
-    "=SUMA(E2:E9)/CONTARA(UNICOS(B2:B9))",
-    "=SUMA(D2:D9)/CONTARA(UNICOS(C2:C9))"
-   ],
-   "variantes": [
-    {
-     "D4": 1500
-    },
-    {
-     "B7": "F26-1106"
-    }
-   ],
-   "formato_resultado": "eur",
-   "explicacion": "3.700 € sin IVA entre **5 facturas distintas** = **740,00 €**. Si divides entre las 8 líneas sale 462,50 €, y si cuentas clientes, otra cifra: por eso cada indicador se define por escrito."
-  },
-  {
-   "id": "n5-x9",
-   "leccion": "n5m3l2",
-   "modo": "formula",
-   "enunciado": "En **G4** calcula las ventas de la zona de **G3** en el mes del informe, cuyo día 1 está en **G2**. El mes que viene alguien cambiará G2 o G3, y tu fórmula tiene que seguir valiendo sin tocarla.",
-   "hoja": {
-    "celdas": {
-     "A1": "Fecha",
-     "B1": "Factura",
-     "C1": "Zona",
-     "D1": "Importe",
-     "F1": "Parámetro",
-     "G1": "Valor",
-     "F2": "Mes del informe",
-     "G2": {
-      "fecha": "2026-10-01"
-     },
-     "F3": "Zona",
-     "G3": "Pamplona",
-     "F4": "Ventas del mes",
-     "A2": {
-      "fecha": "2026-09-29"
-     },
-     "B2": "F26-0801",
-     "C2": "Pamplona",
-     "D2": 640,
-     "A3": {
-      "fecha": "2026-09-30"
-     },
-     "B3": "F26-0805",
-     "C3": "Pamplona",
-     "D3": 1180.5,
-     "A4": {
-      "fecha": "2026-10-01"
-     },
-     "B4": "F26-0810",
-     "C4": "Pamplona",
-     "D4": 925,
-     "A5": {
-      "fecha": "2026-10-07"
-     },
-     "B5": "F26-0838",
-     "C5": "Zaragoza",
-     "D5": 2310.4,
-     "A6": {
-      "fecha": "2026-10-15"
-     },
-     "B6": "F26-0862",
-     "C6": "Pamplona",
-     "D6": 1402.75,
-     "A7": {
-      "fecha": "2026-10-22"
-     },
-     "B7": "F26-0887",
-     "C7": "Lleida",
-     "D7": 760,
-     "A8": {
-      "fecha": "2026-10-31"
-     },
-     "B8": "F26-0915",
-     "C8": "Pamplona",
-     "D8": 518.2,
-     "A9": {
-      "fecha": "2026-11-02"
-     },
-     "B9": "F26-0921",
-     "C9": "Pamplona",
-     "D9": 1290,
-     "A10": {
-      "fecha": "2026-11-04"
-     },
-     "B10": "F26-0930",
-     "C10": "Zaragoza",
-     "D10": 845.6
-    },
-    "formatos": {
-     "A2:A10": "fecha",
-     "G2": "fecha",
-     "D2:D10": "eur",
-     "G4": "eur"
-    },
-    "anchos": {
-     "F": 15
-    }
-   },
-   "objetivo": "G4",
-   "solucion": "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0))",
-   "alternativas": [
-    "=SUMAR.SI.CONJUNTO(D2:D10;A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0);C2:C10;G3)",
-    "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<\"&FECHA.MES(G2;1))"
-   ],
-   "errores_tipicos": [
-    "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2;A2:A10;\"<\"&FIN.MES(G2;0))",
-    "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;\"Pamplona\";A2:A10;\">=\"&G2;A2:A10;\"<=\"&FIN.MES(G2;0))",
-    "=SUMAR.SI.CONJUNTO(D2:D10;C2:C10;G3;A2:A10;\">=\"&G2)",
-    "=SUMAR.SI(C2:C10;G3;D2:D10)"
-   ],
-   "variantes": [
-    {
-     "G2": {
-      "fecha": "2026-09-01"
-     }
-    },
-    {
-     "G3": "Zaragoza"
-    },
-    {
-     "G2": {
-      "fecha": "2026-11-01"
-     }
-    }
-   ],
-   "formato_resultado": "eur",
-   "explicacion": "Pamplona en octubre: 925 + 1.402,75 + 518,20 = **2.845,95 €**. Con `\"<=\"&FIN.MES(G2;0)` entra la factura del día 31; con `<` se perdería. Y como todo lee G2 y G3, el cuadro del mes que viene sale cambiando una celda."
-  },
-  {
-   "id": "n5-x10",
-   "leccion": "n5m3l3",
-   "modo": "test",
-   "pregunta": "El gráfico de octubre muestra el cumplimiento del objetivo por zona: Zaragoza 104 %, Pamplona 101 % y Lleida 91 %. ¿Qué título le pones en el cuadro de Carmen?",
-   "opciones": [
-    {
-     "texto": "Lleida, la única zona que no llega al objetivo (91 %)",
-     "correcta": true,
-     "porque": "Dice la conclusión: Carmen lee el título y ya sabe qué hay que mirar, sin interpretar el gráfico."
-    },
-    {
-     "texto": "Cumplimiento del objetivo por zona, octubre de 2026",
-     "correcta": false,
-     "porque": "Describe el gráfico, pero no dice qué hay que saber: la conclusión la tendría que sacar Carmen."
-    },
-    {
-     "texto": "¡ALERTA! LLEIDA EN ROJO",
-     "correcta": false,
-     "porque": "Alarma sin dato ni contexto, en mayúsculas y apoyada en un color que no todo el mundo distingue."
-    },
-    {
-     "texto": "Ventas por zona",
-     "correcta": false,
-     "porque": "Ni siquiera describe bien el gráfico (es cumplimiento, no ventas) y no dice ninguna conclusión."
-    }
-   ],
-   "explicacion": "Un buen título de cuadro de mando es la frase que dirías en voz alta en el comité."
-  },
-  {
-   "id": "n5-x11",
-   "leccion": "n5m3l4",
-   "modo": "formula",
-   "enunciado": "Marta quiere que el presupuesto de gastos de noviembre avise solo de lo que hay que explicar. En **D2** escribe **«Revisar»** si el gasto real se aparta del presupuesto **más** del porcentaje de **H1**, tanto si se gasta de más como de menos; si no, **«OK»**. Se copiará a D3:D6.",
-   "hoja": {
-    "celdas": {
-     "A1": "Concepto",
-     "B1": "Presupuesto",
-     "C1": "Real",
-     "D1": "Aviso",
-     "G1": "Margen tolerado",
-     "H1": 0.1,
-     "A2": "Transporte",
-     "B2": 2000,
-     "C2": 2150,
-     "A3": "Material de oficina",
-     "B3": 600,
-     "C3": 690,
-     "A4": "Mantenimiento de carretillas",
-     "B4": 1500,
-     "C4": 1260,
-     "A5": "Luz y agua",
-     "B5": 3200,
-     "C5": 3290,
-     "A6": "Formación",
-     "B6": 900,
-     "C6": 450
-    },
-    "formatos": {
-     "B2:C6": "eur",
-     "H1": "pct"
-    },
-    "anchos": {
-     "A": 26,
-     "G": 15
-    }
-   },
-   "objetivo": "D2",
-   "copiar_a": [
-    "D3:D6"
-   ],
-   "solucion": "=SI(ABS(C2-B2)>$H$1*B2;\"Revisar\";\"OK\")",
-   "alternativas": [
-    "=SI(ABS(C2-B2)<=$H$1*B2;\"OK\";\"Revisar\")",
-    "=SI(ABS(C2-B2)>$H$1*ABS(B2);\"Revisar\";\"OK\")",
-    "=SI(ABS(C2/B2-1)>$H$1;\"Revisar\";\"OK\")",
-    "=SI(O(C2-B2>$H$1*B2;B2-C2>$H$1*B2);\"Revisar\";\"OK\")"
-   ],
-   "errores_tipicos": [
-    "=SI(C2-B2>$H$1*B2;\"Revisar\";\"OK\")",
-    "=SI(ABS(C2-B2)>$H$1;\"Revisar\";\"OK\")",
-    "=SI(ABS(C2-B2)>H1*B2;\"Revisar\";\"OK\")",
-    "=SI(ABS(C2-B2)>0,1*B2;\"Revisar\";\"OK\")"
-   ],
-   "variantes": [
-    {
-     "H1": 0.2
-    },
-    {
-     "C5": 3700
-    }
-   ],
-   "explicacion": "Material de oficina (+15 %), carretillas (−16 %) y formación (−50 %) dicen «Revisar». Sin ABS, los gastos muy por **debajo** pasarían como «OK», y también hay que explicarlos (¿se ha suspendido un curso?). El 10 % está en H1 y fijado con $: si Marta cambia el margen, la columna se recalcula sola."
-  },
-  {
-   "id": "n5-x14",
-   "leccion": "n5m4l2",
-   "modo": "test",
-   "pregunta": "Lucía quiere que Copilot, con su cuenta de trabajo (la IA autorizada en Electro Cierzo), le proponga una fórmula para calcular la **antigüedad** de cada persona de la plantilla. ¿Qué le enseña?",
-   "opciones": [
-    {
-     "texto": "Solo los nombres de las columnas y dos filas inventadas, con la fecha de alta",
-     "correcta": true,
-     "porque": "Eso es minimización: para proponer la fórmula, la IA solo necesita saber qué columnas hay y cómo es una fecha de alta. Ningún dato real sale del archivo."
-    },
-    {
-     "texto": "El listado completo, porque es la IA autorizada",
-     "correcta": false,
-     "porque": "Que la herramienta esté autorizada no significa que haya que darle más datos de los necesarios. Nombres, NIF y sueldos sobran para esa fórmula."
-    },
-    {
-     "texto": "El listado sin el NIF, pero con nombres y fechas de alta",
-     "correcta": false,
-     "porque": "El nombre identifica a cada persona: sigue siendo un dato personal y no hace falta para la fórmula."
-    },
-    {
-     "texto": "Una captura de pantalla del listado, que no es el archivo",
-     "correcta": false,
-     "porque": "Una captura enseña los mismos datos personales que el archivo: el formato no cambia nada."
-    }
-   ],
-   "explicacion": "Antes de pegar: ¿qué necesita de verdad para ayudarme? Casi siempre basta la estructura."
-  }
- ]
+  ]
 }

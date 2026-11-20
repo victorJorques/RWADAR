@@ -281,19 +281,19 @@
           "pregunta": "Tienes una lista de 200 facturas. Escribes la fórmula en la fila 2 y haces **doble clic** en el controlador de relleno. Solo se rellena hasta la fila 57. ¿Qué ha pasado lo más probable?",
           "opciones": [
             {
-              "texto": "La columna de al lado tiene una celda vacía en la fila 58",
+              "texto": "La columna de al lado tiene un hueco en la fila 58",
               "correcta": true,
-              "porque": "Correcto: el doble clic copia hasta donde encuentra datos seguidos en la columna vecina. Un hueco lo para. Rellena el resto arrastrando o con Ctrl+J."
+              "porque": "Correcto: el doble clic copia hasta donde encuentra datos seguidos en la columna vecina. Una celda vacía en la fila 58 lo para. Rellena el resto arrastrando o con Ctrl+J."
             },
             {
-              "texto": "Excel solo copia 56 filas cada vez",
+              "texto": "El doble clic solo copia un número fijo de filas cada vez",
               "correcta": false,
               "porque": "No hay límite así. El doble clic llega hasta el final de los datos, sean 50 o 50 000 filas."
             },
             {
-              "texto": "La fórmula está mal escrita",
+              "texto": "La fórmula da un error en la fila 58 y Excel se para",
               "correcta": false,
-              "porque": "Si la fórmula estuviera mal, fallaría también en las filas copiadas, no se pararía en una fila concreta."
+              "porque": "Un error en una fila no detiene el relleno: la fórmula se copia igual y verías el error en esa fila. Lo que para el doble clic es un hueco en la columna de al lado."
             }
           ],
           "explicacion": "Por eso, después de rellenar, baja al final de la lista ([[Ctrl]]+[[↓]]) y comprueba que la última fila también tiene su fórmula."
@@ -309,9 +309,9 @@
           "pregunta": "Lucía, de RRHH, te pide numerar del 1 al 30 la columna A de una lista de turnos. ¿Cuál es la forma más rápida y segura?",
           "opciones": [
             {
-              "texto": "Escribir 1 en A2 y 2 en A3, seleccionar las dos y arrastrar el controlador hasta A31",
+              "texto": "Escribir 1 y 2 en A2 y A3, seleccionarlas y arrastrar hasta A31",
               "correcta": true,
-              "porque": "Correcto: con dos números Excel entiende el paso (de uno en uno) y continúa la serie: 3, 4, 5… hasta 30."
+              "porque": "Correcto: con dos números Excel entiende el paso (de uno en uno) y, al arrastrar el controlador de relleno, continúa la serie: 3, 4, 5… hasta 30."
             },
             {
               "texto": "Escribir 1 en A2 y arrastrar el controlador hasta A31",
@@ -870,9 +870,9 @@
           "pregunta": "Copias `=$C$4*$B$1` hacia abajo en una lista de importes. ¿Qué verás?",
           "opciones": [
             {
-              "texto": "El mismo resultado repetido en todas las filas",
+              "texto": "El mismo resultado en todas las filas",
               "correcta": true,
-              "porque": "Correcto: con $ en C4, todas las filas usan el dato de la fila 4. El $ solo va en lo que no debe moverse."
+              "porque": "Correcto: con $ en C4, todas las filas usan el dato de la fila 4 y repiten el mismo resultado. El $ solo va en lo que no debe moverse."
             },
             {
               "texto": "Cada fila con su resultado correcto",
@@ -880,7 +880,7 @@
               "porque": "Para eso C4 tendría que poder bajar a C5, C6…, y el $ se lo impide."
             },
             {
-              "texto": "Un error #¡REF!",
+              "texto": "Un error #¡REF! en las filas copiadas",
               "correcta": false,
               "porque": "No hay ningún error: la fórmula es válida, solo que calcula siempre lo mismo. Por eso es un fallo difícil de ver."
             }
@@ -1075,7 +1075,7 @@
           "pregunta": "Escribes `=(B2+B3)/(B4-B5` y pulsas Intro. Excel te propone una corrección. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Leer dónde pone el paréntesis que falta y aceptar solo si es lo que quería",
+              "texto": "Ver dónde pone el paréntesis y aceptar solo si es lo que quería",
               "correcta": true,
               "porque": "Correcto: aquí falta cerrar el segundo paréntesis después de B5. Si la propuesta lo pone ahí, acepta; si no, corrígelo tú."
             },

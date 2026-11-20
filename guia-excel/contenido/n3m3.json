@@ -749,9 +749,9 @@
      "pregunta": "Pulsas Quitar duplicados en esta lista con **solo la columna Cliente** marcada. ¿Cuántas filas de datos quedan?\n\n| Cliente | NIF | Población |\n|---|---|---|\n| Electricidad Lasheras | 40871236Y | Lleida |\n| Montajes Jalón, S.L. | B50318842 | Calatayud |\n| Electricidad Lasheras | 18043759Y | Huesca |\n| Montajes Jalón, S.L. | B50318842 | Calatayud |\n| Reformas Cinca, S.L. | B22604137 | Monzón |",
      "opciones": [
       {
-       "texto": "3: también ha borrado la Electricidad Lasheras de Huesca, que es otro cliente",
+       "texto": "3: se van la segunda Montajes Jalón y la Lasheras de Huesca",
        "correcta": true,
-       "porque": "Correcto. Con solo Cliente marcada, las dos «Electricidad Lasheras» cuentan como repetidas aunque tengan distinto NIF. Has perdido un cliente bueno."
+       "porque": "Correcto. Con solo Cliente marcada, las dos «Electricidad Lasheras» cuentan como repetidas aunque tengan distinto NIF, así que se borra la de Huesca, que es otro cliente: has perdido un cliente bueno."
       },
       {
        "texto": "4: solo se va la segunda Montajes Jalón",
@@ -852,9 +852,9 @@
      "pregunta": "Ayer sacaste con Relleno rápido el nombre de pila de cada contacto en la columna B. Hoy Andrés corrige en la columna A un contacto: «Pablo Castán» pasa a ser «Elena Ferrer». ¿Qué pasa en la columna B?",
      "opciones": [
       {
-       "texto": "Nada: sigue poniendo «Pablo», porque Relleno rápido deja valores fijos",
+       "texto": "Nada: sigue poniendo «Pablo», el valor de ayer",
        "correcta": true,
-       "porque": "Correcto. Relleno rápido escribe el resultado una vez, como si lo tecleases tú. Si el original cambia, hay que volver a lanzarlo o corregir a mano."
+       "porque": "Correcto. Relleno rápido deja valores fijos: escribe el resultado una vez, como si lo tecleases tú. Si el original cambia, hay que volver a lanzarlo o corregir a mano."
       },
       {
        "texto": "Se actualiza sola a «Elena», como una fórmula",
@@ -880,9 +880,9 @@
      "pregunta": "En la columna Población del listado de Andrés hay «Lleida», «LLEIDA» y «Lérida». Quieres que todas digan «Lleida». ¿Qué herramienta usas?",
      "opciones": [
       {
-       "texto": "Buscar y reemplazar, con la columna Población seleccionada",
+       "texto": "Buscar y reemplazar en la columna Población",
        "correcta": true,
-       "porque": "Correcto: cambias cada variante por la forma buena solo en esa columna, de una vez."
+       "porque": "Correcto: con la columna Población seleccionada, cambias cada variante por «Lleida» de una vez, sin tocar el resto de la hoja."
       },
       {
        "texto": "Quitar duplicados en la columna Población",
@@ -890,12 +890,12 @@
        "porque": "Quitar duplicados borra filas: te quedarías con un solo proveedor de cada ciudad. Aquí no sobra nadie; lo que falla es cómo está escrita la ciudad."
       },
       {
-       "texto": "Texto en columnas",
+       "texto": "Texto en columnas sobre la columna Población",
        "correcta": false,
        "porque": "Texto en columnas parte una celda en varias. Aquí cada celda tiene un solo dato, solo que escrito de formas distintas."
       },
       {
-       "texto": "Relleno rápido",
+       "texto": "Relleno rápido en una columna nueva al lado",
        "correcta": false,
        "porque": "Relleno rápido saca un patrón en una columna nueva. Para cambiar una palabra por otra en toda una columna, Reemplazar es más directo y seguro."
       }
@@ -956,19 +956,19 @@
      "pregunta": "Pulsas Quitar duplicados con **todas** las columnas marcadas y siguen ahí dos filas del mismo cliente, con el mismo NIF. ¿Qué es lo más probable?",
      "opciones": [
       {
-       "texto": "En alguna columna no son idénticas: por ejemplo, un espacio de más en el nombre",
+       "texto": "Algo no coincide, como un espacio de más en el nombre",
        "correcta": true,
-       "porque": "Correcto. Con todas marcadas, basta un espacio para que no sean iguales. Limpia antes o marca solo el NIF."
+       "porque": "Correcto. Con todas las columnas marcadas, basta un espacio de más en una celda para que Excel no las vea iguales. Limpia antes o marca solo el NIF."
       },
       {
-       "texto": "Quitar duplicados solo funciona con números",
+       "texto": "Quitar duplicados no compara columnas de texto",
        "correcta": false,
-       "porque": "Funciona con textos, números y fechas."
+       "porque": "Compara textos, números y fechas por igual. El fallo está en que las dos filas no son idénticas en todo."
       },
       {
-       "texto": "Había que ordenar la lista antes",
+       "texto": "Había que ordenar la lista por NIF antes",
        "correcta": false,
-       "porque": "No hace falta ordenar: compara todas las filas, estén donde estén."
+       "porque": "No hace falta ordenar: compara todas las filas, estén donde estén, aunque no estén seguidas."
       }
      ],
      "explicacion": "Primero se limpia (espacios, variantes) y después se quitan duplicados por la columna que identifica cada registro."
@@ -979,19 +979,19 @@
      "pregunta": "Cada lunes llega el mismo listado nuevo del programa y hay que sacar de «Pamplona (31008)» solo la ciudad. ¿Qué te conviene más?",
      "opciones": [
       {
-       "texto": "Una fórmula, porque se recalcula sola cuando pegas los datos nuevos",
+       "texto": "Una fórmula, que se recalcula con los datos nuevos",
        "correcta": true,
-       "porque": "Correcto. Lo que se repite cada semana se resuelve con fórmulas: las escribes una vez y sirven siempre."
+       "porque": "Correcto. Lo que se repite cada semana se resuelve con fórmulas: las escribes una vez y, al pegar los datos nuevos en su sitio, se recalculan solas."
       },
       {
-       "texto": "Relleno rápido, porque es lo más rápido",
+       "texto": "Relleno rápido, que aprende el patrón del ejemplo",
        "correcta": false,
-       "porque": "Lo es para una vez. Pero cada lunes tendrías que repetirlo y revisar sus aciertos, porque deja valores fijos."
+       "porque": "Aprende el patrón, pero deja valores fijos: cada lunes tendrías que repetirlo y revisar sus aciertos."
       },
       {
-       "texto": "Quitar duplicados",
+       "texto": "Texto en columnas, separando por el paréntesis",
        "correcta": false,
-       "porque": "Quitar duplicados borra filas repetidas; no saca un trozo de texto."
+       "porque": "Separa la ciudad, pero solo una vez: cada lunes tendrías que repetirlo, y además deja un espacio detrás de «Pamplona»."
       }
      ],
      "explicacion": "Herramientas para limpiezas de una vez; fórmulas para lo que se repite. En la lección siguiente aprendes las fórmulas de limpieza."
@@ -1281,17 +1281,17 @@
      "pregunta": "En otro archivo, de una plataforma de EE. UU., aparece la fecha **03/04/2026**. ¿Qué día es?",
      "opciones": [
       {
-       "texto": "Depende de dónde se hizo el archivo: en EE. UU. el mes va primero, así que sería el 4 de marzo",
+       "texto": "El 4 de marzo: en EE. UU. el mes va primero",
        "correcta": true,
-       "porque": "Correcto. En España se escribe día/mes; en EE. UU., mes/día. Busca en la columna una fecha con el primer número mayor que 12 (por ejemplo, 03/25/2026): si existe, el archivo es mes/día."
+       "porque": "Correcto. En España se escribe día/mes; en EE. UU., mes/día. Aun así, compruébalo: busca en la columna una fecha con el primer número mayor que 12 (por ejemplo, 03/25/2026). Si existe, el archivo es mes/día."
       },
       {
-       "texto": "El 3 de abril, como siempre",
+       "texto": "El 3 de abril: el día siempre va primero",
        "correcta": false,
-       "porque": "Eso es en formato español. Si el archivo viene de un sistema de EE. UU., 03/04 es el 4 de marzo. No des el formato por hecho: compruébalo."
+       "porque": "Eso es en formato español (día/mes). Si el archivo viene de un sistema de EE. UU., 03/04 es el 4 de marzo. No des el formato por hecho: compruébalo."
       },
       {
-       "texto": "Excel lo sabe y lo corrige solo",
+       "texto": "El que muestre Excel: detecta el formato solo",
        "correcta": false,
        "porque": "Excel lee las fechas según la configuración de tu equipo (día/mes en España). Si el archivo es mes/día, la leerá mal sin avisarte."
       }
@@ -1477,17 +1477,17 @@
      "pregunta": "Has limpiado una columna con fórmulas, borras la columna original y todas tus fórmulas dan #¡REF!. ¿Qué faltó?",
      "opciones": [
       {
-       "texto": "Pegar la columna auxiliar como valores antes de borrar la original",
+       "texto": "Pegar como valores la columna limpia antes de borrar",
        "correcta": true,
-       "porque": "Correcto. Las fórmulas apuntaban a la columna borrada. Deshaz con Ctrl+Z, pega como valores y borra después."
+       "porque": "Correcto. Las fórmulas apuntaban a la columna borrada. Deshaz con Ctrl+Z, pega la columna auxiliar como valores y borra la original después."
       },
       {
-       "texto": "Fijar las referencias con $",
+       "texto": "Fijar con $ las referencias de las fórmulas antes de borrar",
        "correcta": false,
-       "porque": "El $ evita que una referencia se mueva al copiar, pero no salva una celda borrada."
+       "porque": "El $ evita que una referencia se mueva al copiar, pero no salva una celda borrada: seguiría saliendo #¡REF!."
       },
       {
-       "texto": "Usar VALOR en vez de VALOR.NUMERO",
+       "texto": "Usar VALOR en vez de VALOR.NUMERO en las fórmulas",
        "correcta": false,
        "porque": "La función no importa: cualquier fórmula que apunte a una celda borrada da #¡REF!."
       }
@@ -1625,9 +1625,9 @@
      "pregunta": "Tras abrir la tarifa con doble clic, el EAN 8412345678905 se ve como **8,41235E+12**. ¿Se ha perdido el número?",
      "opciones": [
       {
-       "texto": "No: tiene 13 cifras, menos de 15. Con formato Número sin decimales vuelve a verse entero",
+       "texto": "No: con formato Número sin decimales se ve entero",
        "correcta": true,
-       "porque": "Correcto. La notación científica es solo la forma de mostrarlo; el número está completo."
+       "porque": "Correcto. Tiene 13 cifras, menos de las 15 que Excel guarda sin perder ninguna. La notación científica es solo la forma de mostrarlo; el número está completo."
       },
       {
        "texto": "Sí: la notación científica borra las últimas cifras",
@@ -1635,7 +1635,7 @@
        "porque": "Solo se pierden las cifras que pasan de la 15.ª. Con 13 cifras, todas siguen guardadas."
       },
       {
-       "texto": "Sí, y hay que pedir el archivo otra vez",
+       "texto": "Sí: hay que pedir el archivo otra vez al proveedor",
        "correcta": false,
        "porque": "Con 13 cifras basta cambiar el formato. Lo de pedirlo otra vez (o importarlo bien desde el principio) pasa con códigos de más de 15 cifras."
       }
@@ -1742,9 +1742,9 @@
      "pregunta": "El CSV de una plataforma de EE. UU. trae las fechas como mes/día/año. Al abrirlo con doble clic, **03/04/2026** sale como 3 de abril y **03/25/2026** se queda pegada a la izquierda. ¿Qué ha pasado?",
      "opciones": [
       {
-       "texto": "Excel ha leído día/mes: la primera la ha convertido mal y la segunda no ha podido (no existe el mes 25)",
+       "texto": "Excel las ha leído como día/mes y las dos están mal",
        "correcta": true,
-       "porque": "Correcto. La de día 25 se queda como texto; la de día 4 se convierte en otra fecha, sin aviso."
+       "porque": "Correcto. La primera la ha convertido en otra fecha (3 de abril en vez de 4 de marzo) sin avisar; la segunda no ha podido, porque no existe el mes 25, y se queda como texto."
       },
       {
        "texto": "Solo está mal la segunda; la primera es correcta",
@@ -1822,19 +1822,19 @@
      "pregunta": "Elige la herramienta: en una columna que se actualiza cada semana llegan importes como texto, «2.450,00 €». Quieres números que sumen.",
      "opciones": [
       {
-       "texto": "Una fórmula: =VALOR.NUMERO(SUSTITUIR(A2;\"€\";\"\");\",\";\".\")",
+       "texto": "Una fórmula con VALOR.NUMERO y SUSTITUIR",
        "correcta": true,
-       "porque": "Correcto. Quita el € y convierte; al ser fórmula, sirve también la semana que viene."
+       "porque": "Correcto. Por ejemplo, `=VALOR.NUMERO(SUSTITUIR(A2;\"€\";\"\");\",\";\".\")` quita el € y convierte; al ser fórmula, sirve también la semana que viene."
       },
       {
-       "texto": "Quitar duplicados",
+       "texto": "Cambiar el formato de la columna a Número",
        "correcta": false,
-       "porque": "Quitar duplicados borra filas repetidas; no convierte textos en números."
+       "porque": "El formato cambia cómo se ve un número, pero no convierte un texto en número: los importes seguirían sin sumar."
       },
       {
-       "texto": "Relleno rápido",
+       "texto": "Relleno rápido, escribiendo el primer importe sin €",
        "correcta": false,
-       "porque": "Relleno rápido deja textos fijos, copiados de tu ejemplo: no los convierte en números ni se actualiza la semana que viene."
+       "porque": "Relleno rápido deja valores fijos, copiados de tu ejemplo: la semana que viene tendrías que repetirlo y revisar sus aciertos."
       }
      ],
      "explicacion": "Elegir la herramienta es la mitad del trabajo: fórmula para lo que se repite, herramienta para una limpieza de una vez, De texto/CSV para importar."

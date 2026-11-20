@@ -502,9 +502,9 @@
    "pregunta": "Marta abre con doble clic un CSV del banco con el **número de cuenta de 20 cifras** de cada proveedor. Excel lo enseña como 2,08501E+19 y, con formato Número, las últimas cifras salen como ceros. ¿Qué ha pasado y qué hace?",
    "opciones": [
     {
-     "texto": "Excel lo ha leído como número y solo guarda 15 cifras: vuelve a importarlo con De texto/CSV y esa columna como Texto",
+     "texto": "Excel solo guarda 15 cifras: importarlo otra vez con esa columna como Texto",
      "correcta": true,
-     "porque": "Correcto: a partir de la 15.ª cifra Excel pone ceros y no se recuperan. Importada como Texto, la cuenta llega entera."
+     "porque": "Correcto: al abrirlo con doble clic, Excel lee la cuenta como número y a partir de la 15.ª cifra pone ceros, que no se recuperan. Importado con Datos › De texto/CSV y esa columna como Texto, la cuenta llega entera."
     },
     {
      "texto": "Es solo el formato: con formato Número sin decimales se ve entera",
@@ -531,9 +531,9 @@
    "pregunta": "Lucía tiene en una Tabla las horas de formación de 2026 (Fecha, Persona, Departamento, Centro, Horas). Quiere un informe con las **horas de cada departamento** (una fila por departamento) **por trimestre** (una columna por trimestre), y poder elegir **un centro** encima del informe. ¿Cómo coloca los campos de la tabla dinámica?",
    "opciones": [
     {
-     "texto": "Departamento en Filas, Fecha en Columnas (agrupada por trimestres), Horas en Valores y Centro en Filtros",
+     "texto": "Departamento en Filas, Fecha por trimestres en Columnas, Horas en Valores y Centro en Filtros",
      "correcta": true,
-     "porque": "Correcto: lo que se suma va a Valores; lo que va hacia abajo, a Filas; hacia la derecha, a Columnas, y lo que elige qué entra, a Filtros."
+     "porque": "Correcto: lo que se suma va a Valores; lo que va hacia abajo, a Filas; hacia la derecha, a Columnas, y lo que elige qué entra, a Filtros. La fecha se agrupa por trimestres con clic derecho › Agrupar."
     },
     {
      "texto": "Departamento en Filas, Centro en Columnas, Horas en Valores y Fecha en Filtros",
@@ -589,9 +589,9 @@
    "pregunta": "El listado de ventas tiene, en cada línea, el Importe, la Comisión en euros y el «% comisión» (distinto según el producto). Para saber qué parte de lo que vende Raúl Gimeno se va en comisiones, Javier pone **% comisión** en Valores como **Promedio** y sale 4,0 %. ¿Qué le dices?",
    "opciones": [
     {
-     "texto": "Que ese 4,0 % es la media de las líneas; la parte real es la comisión total entre las ventas totales, por ejemplo con un campo calculado =Comisión/Importe",
+     "texto": "Que ese 4,0 % es una media de líneas: mejor un campo calculado =Comisión/Importe",
      "correcta": true,
-     "porque": "Correcto: el campo calculado trabaja con las sumas de cada comercial, así que cada venta pesa lo que vale."
+     "porque": "Correcto: la parte real es la comisión total entre las ventas totales. El campo calculado trabaja con las sumas de cada comercial, así que cada venta pesa lo que vale; en la media, una venta de 50 € pesa igual que una de 5.000 €."
     },
     {
      "texto": "Que está bien: la media de los porcentajes es el porcentaje del total",
@@ -609,7 +609,7 @@
      "porque": "Eso diría qué parte de todos los porcentajes corresponde a Raúl, no qué parte de sus ventas son comisiones."
     }
    ],
-   "explicacion": "Porcentaje de un grupo = total de la parte ÷ total del todo. Nunca la media de los porcentajes de cada línea."
+   "explicacion": "Porcentaje de un grupo = total de la parte ÷ total del todo. No la media de los porcentajes de cada línea, que solo coincide si todas las ventas son del mismo importe."
   },
   {
    "id": "n3-x14",
@@ -618,22 +618,22 @@
    "pregunta": "Andrés quiere enseñar en un solo gráfico, mes a mes, el **número de pedidos** a proveedores (entre 80 y 120) y el **importe medio por pedido** (entre 1.500 y 2.300 €). ¿Qué gráfico le preparas?",
    "opciones": [
     {
-     "texto": "Combinado: los pedidos en columnas y el importe medio en una línea con eje secundario",
+     "texto": "Combinado: pedidos en columnas e importe en línea con eje secundario",
      "correcta": true,
-     "porque": "Correcto: dos medidas con escalas muy distintas, cada una con su propio eje, y las dos se leen."
+     "porque": "Correcto: dos medidas con escalas muy distintas; el importe medio va en una línea con su propio eje secundario, y las dos se leen."
     },
     {
-     "texto": "Columnas para las dos series, en el mismo eje",
+     "texto": "Columnas agrupadas para las dos series, en el mismo eje",
      "correcta": false,
      "porque": "Con un eje que llega a 2.500, las columnas de unos 100 pedidos quedarían aplastadas abajo."
     },
     {
-     "texto": "Circular",
+     "texto": "Circular con los pedidos de cada mes",
      "correcta": false,
-     "porque": "El circular reparte un total en porciones; aquí hay dos medidas que cambian en el tiempo."
+     "porque": "El circular reparte un total en porciones y solo enseña una serie; aquí hay dos medidas que cambian en el tiempo."
     },
     {
-     "texto": "Dispersión con los pedidos y el importe medio",
+     "texto": "Dispersión con los pedidos y el importe medio de cada mes",
      "correcta": false,
      "porque": "La dispersión busca si dos medidas van juntas, pero pierde el orden de los meses, que es lo que Andrés quiere enseñar."
     }

@@ -10,9 +10,9 @@
       "pregunta": "Combinas en Power Query las ventas del trimestre (**1.240 filas**) con el maestro de productos para traer la familia. Al cargar, la tabla de ventas tiene **1.268 filas**. ¿Qué ha pasado?",
       "opciones": [
         {
-          "texto": "Algún código está repetido en el maestro y sus ventas se han duplicado al expandir",
+          "texto": "Hay algún código repetido en el maestro de productos",
           "correcta": true,
-          "porque": "Eso es: cada venta de un código repetido encuentra dos parejas y sale dos veces. Se arregla con Quitar duplicados en la consulta del maestro, antes de combinar."
+          "porque": "Eso es: cada venta de un código repetido encuentra dos parejas en el maestro y, al expandir, sale dos veces. Se arregla con Quitar duplicados en la consulta del maestro, antes de combinar."
         },
         {
           "texto": "Has elegido Anti izquierda en vez de Externa izquierda",
@@ -605,7 +605,7 @@
           "pregunta": "Vas a enviar a la delegación de Lleida una hoja con LET y allí tienen Excel 2019. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Pasar cada paso a una columna auxiliar (o a un nombre definido) para que funcione en su versión",
+              "texto": "Pasar cada paso a una columna auxiliar, que funciona en su versión",
               "correcta": true,
               "porque": "Eso es: Excel 2019 no conoce LET. Con columnas auxiliares el cálculo es el mismo y funciona en cualquier versión."
             },
@@ -615,7 +615,7 @@
               "porque": "No la traduce: la verán con el prefijo `_xlfn.` y, si la editan, dará #¿NOMBRE?."
             },
             {
-              "texto": "Cambiar los ; por , para que la entienda",
+              "texto": "Cambiar los ; por , para que su Excel la entienda",
               "correcta": false,
               "porque": "El separador no tiene nada que ver: el problema es que esa versión no tiene la función LET."
             }
@@ -1049,14 +1049,14 @@
           "pregunta": "Aplicas a una columna de importes el formato `#.##0,00 €`. ¿Qué les pasa a los valores?",
           "opciones": [
             {
-              "texto": "Nada: solo cambia cómo se ven, y se siguen sumando",
+              "texto": "Nada: solo cambia cómo se ven en la celda",
               "correcta": true,
-              "porque": "Eso es: el formato es la ropa del número, no el número."
+              "porque": "Eso es: el formato es la ropa del número, no el número. Los importes se siguen sumando igual."
             },
             {
-              "texto": "Se convierten en texto",
+              "texto": "Se convierten en texto con el símbolo €",
               "correcta": false,
-              "porque": "Eso lo hace TEXTO, no el formato de celdas."
+              "porque": "Eso lo hace la función TEXTO, no el formato de celdas: con formato, siguen siendo números."
             },
             {
               "texto": "Se redondean de verdad a dos decimales",
@@ -1470,17 +1470,17 @@
           "pregunta": "En `=[Ventas_Pamplona.xlsx]Octubre!$B$5`, ¿qué es **Octubre**?",
           "opciones": [
             {
-              "texto": "La hoja del libro de Pamplona",
+              "texto": "La hoja de donde sale el dato",
               "correcta": true,
               "porque": "Eso es: va justo antes del !, que es donde siempre se escribe la hoja."
             },
             {
-              "texto": "El libro",
+              "texto": "El libro de donde sale el dato",
               "correcta": false,
               "porque": "El libro es lo que va entre corchetes: Ventas_Pamplona.xlsx."
             },
             {
-              "texto": "La celda",
+              "texto": "La celda de donde sale el dato",
               "correcta": false,
               "porque": "La celda es lo último, detrás del !: $B$5."
             }
@@ -1570,9 +1570,9 @@
           "pregunta": "Javier ha pegado datos encima de la hoja de comisiones, que está en SharePoint, y se ha perdido lo que había ayer. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Archivo › Información › Historial de versiones y restaurar la versión de ayer",
+              "texto": "Abrir el Historial de versiones y restaurar la de ayer",
               "correcta": true,
-              "porque": "Eso es: el historial guarda las versiones del propio archivo, sin que nadie haya tenido que hacer copias."
+              "porque": "Eso es: en Archivo › Información › Historial de versiones abres la de ayer y la restauras. El historial guarda las versiones del propio archivo, sin que nadie haya tenido que hacer copias."
             },
             {
               "texto": "Buscar en el correo la última copia que alguien mandó",
@@ -1580,7 +1580,7 @@
               "porque": "Puede estar desfasada o incompleta. El historial tiene la versión exacta de ayer."
             },
             {
-              "texto": "Pulsar Ctrl+Z hasta que vuelva",
+              "texto": "Pulsar Ctrl+Z hasta que vuelva lo que había ayer",
               "correcta": false,
               "porque": "Deshacer sirve para tus propios cambios, no para lo que pegó otra persona en su ordenador."
             }

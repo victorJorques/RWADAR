@@ -346,19 +346,19 @@
           "pregunta": "Una compañera hace la cuenta con la calculadora y escribe **484,5** en la celda. Tú escribes `=128+46,5+310`. Las dos celdas muestran lo mismo. ¿Qué ventaja tiene la tuya?",
           "opciones": [
             {
-              "texto": "Cualquiera ve en la barra de fórmulas de dónde sale el número y puede revisarlo",
+              "texto": "Que en la barra de fórmulas se ve de dónde sale el número",
               "correcta": true,
-              "porque": "Exacto: la fórmula deja la cuenta a la vista. Si un albarán estaba mal, se ve y se corrige en un momento."
+              "porque": "Exacto: la fórmula deja la cuenta a la vista y cualquiera puede revisarla. Si un albarán estaba mal, se ve y se corrige en un momento."
             },
             {
-              "texto": "Ninguna: si sale lo mismo, da igual",
+              "texto": "Ninguna: si las dos muestran 484,5, valen lo mismo",
               "correcta": false,
               "porque": "Hoy sale lo mismo, pero el 484,5 suelto no dice de dónde viene. Si hay un error en la calculadora, nadie podrá encontrarlo."
             },
             {
-              "texto": "La suya es mejor porque es más corta",
+              "texto": "Que da más decimales que la calculadora y es más exacta",
               "correcta": false,
-              "porque": "Más corta, pero imposible de comprobar. En una empresa, un número que no se puede revisar es un riesgo."
+              "porque": "Las dos dan 484,5 exactos. La ventaja no es la precisión: es que la tuya enseña la cuenta y se puede revisar."
             }
           ],
           "explicacion": "Regla de oficina: las cuentas, con fórmula. Los resultados escritos a mano no se pueden revisar."
@@ -823,7 +823,7 @@
           "pregunta": "¿Por qué es mejor `=B2*C2` que `=12,4*25`, si hoy las dos dan 310?",
           "opciones": [
             {
-              "texto": "Porque si cambia un dato de B2 o C2, el resultado se actualiza solo",
+              "texto": "Porque si cambia B2 o C2, el resultado cambia solo",
               "correcta": true,
               "porque": "Exacto: la fórmula con celdas sigue a los datos; la de números a mano se queda con los de hoy."
             },
@@ -1218,12 +1218,12 @@
           "pregunta": "Quieres saber al momento cuánto suman unas celdas, **sin escribir ninguna fórmula**. ¿Qué haces?",
           "opciones": [
             {
-              "texto": "Seleccionarlas y mirar Suma en la barra de estado",
+              "texto": "Seleccionarlas y mirar la barra de estado",
               "correcta": true,
-              "porque": "Correcto: la barra de estado, abajo a la derecha, suma lo que seleccionas. Perfecto para comprobar."
+              "porque": "Correcto: la barra de estado, abajo a la derecha, enseña la Suma de lo que seleccionas. Perfecto para comprobar."
             },
             {
-              "texto": "Pulsar Autosuma",
+              "texto": "Seleccionarlas y pulsar Autosuma",
               "correcta": false,
               "porque": "Autosuma escribe una fórmula SUMA en una celda. Es útil, pero sí escribe una fórmula."
             },
@@ -1588,7 +1588,7 @@
           ],
           "pistas": [
             "Borra el 38: ahí tiene que ir una fórmula, no un número.",
-            "Usa SUMA con el rango de las horas, de C2 a C6, sin la celda del total (si la incluyes, aquí verás #¡REF!; en Excel, el aviso de referencia circular).",
+            "Usa SUMA con el rango de las horas, de C2 a C6. No metas C8 en el rango: una fórmula no puede sumarse a sí misma.",
             "La fórmula es `=SUMA(C2:C6)`."
           ],
           "explicacion": "Plantilla reparada: 38 horas, y ahora sí se recalcula si alguien corrige un día. Solo te queda exportarla a PDF y enviársela a Lucía. Revisar que los totales tienen fórmula antes de enviar es lo que distingue a quien trabaja con cuidado."
