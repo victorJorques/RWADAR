@@ -1,0 +1,143 @@
+Búsqueda nueva · candidata LISE · acciones nativamente tokenizadas de ST GROUP (STGRP)
+Consultas del 20/11/2026, 21:00:55Z a 21:05:05Z (UTC), petición normal con curl y TLS.
+Crudos (fuera de Git): crudo/lise/ ; registro de cada consulta con hora, HTTP, bytes y SHA-256 en
+crudo/lise/consultas.log. Sin nombres de personas físicas.
+
+======================================================================
+1. Entidad y autorización
+======================================================================
+REGAFI (registro francés de entidades financieras, API pública)
+  https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227
+  2026-11-20T21:03:30Z · HTTP 200 · sha256 602705541e2b06bceadc57f86c569739ca1fee0e0628d075052ef78fc0d3c5f3
+  denominación «LISE», Société anonyme, SIREN 938642709, LEI 894500LNKGRT1I5QBU56,
+  categoría «Entreprise d'Investissement», «Agrément», CIB 18883 desde 2025-10-13, PARIS, FRANCE.
+
+ESMA · infraestructuras DLT autorizadas (PDF)
+  https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf
+  2026-11-20T21:04:13Z · HTTP 200 · sha256 8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc
+  «LISE SA | LISE DLT TSS | DLT Trading & Settlement System | France | Autorité de Contrôle
+  Prudentiel et de Résolution (ACPR) | 13 October 2025».
+
+Pie de todas las páginas de lise.com (21:04:59Z a 21:05:04Z):
+  «An investment firm authorised by the French Prudential Supervision and Resolution Authority
+  (CIB 18883), supervised by the French Financial Markets Authority. Operator of an organised
+  multilateral trading facility (MTF) registered as an SME Growth Market, and of a distributed
+  ledger settlement system, pursuant to Regulation (EU) 2022/858.»
+
+======================================================================
+2. Acceso desde España (pieza que falta)
+======================================================================
+LISE · ayuda  https://www.lise.com/en/support
+  2026-11-20T21:05:00Z · HTTP 200 · sha256 b36738cf8a8e6614c9a8867c022e7673eefc16377df428a313543aaeed4e1328
+  (idéntico byte a byte a la lectura de 20:55:13Z)
+  «Any investor, retail or institutional, can invest on Lise after creating an account, completing
+  the KYC process, and passing the suitability test. Lise is open to residents of France, Europe,
+  the United Kingdom, and Switzerland.»
+  «Transfers must come from a bank account in your name with a European IBAN.»
+  Pie: «This website is not intended for residents of the United States of America, Canada,
+  Australia or Japan.»
+  No hay lista de países. «Europe» no nombra España.
+
+REGAFI · pasaportes salientes de LISE
+  https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100
+  2026-11-20T21:03:31Z · HTTP 200 · sha256 b40a5ce424590aa2d85084c9a423d90252d3ba8a22202193a62874533698a3a3
+  {"total_count": 0, "results": []}  → ningún pasaporte, tampoco hacia ESPAGNE.
+  Control positivo del mismo conjunto (21:03:47Z, sha256 68af7b62…a5f9d1): pasaportes hacia
+  «ESPAGNE» de entidades con servicios de inversión → total_count 172. El conjunto funciona.
+
+CNMV · ESI del EEE en libre prestación en España (accept-language: es)
+  https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4
+  2026-11-20T21:03:55Z · HTTP 200 · sha256 35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41
+  (idéntico al de 20:55:32Z)
+  «LISE», «KRIPTOWN», «LIGHTNING»: ninguna entidad (la única coincidencia de «LISE» es una
+  dirección de otra entidad, «…l'Eglise…»). Sí aparece «UAB AXIOLOGY DLT», otro operador
+  del régimen piloto DLT: ese tipo de entidad puede notificar su libre prestación a España.
+
+Reglas de funcionamiento de LISE (PDF público, v. Google Drive enlazado desde lise.com)
+  https://www.lise.com/rules/regles-de-fonctionnement.pdf → https://drive.google.com/uc?export=download&id=1P4AY5Qu0v57WVidAxUKvVWaxBc5zHQfV
+  2026-11-20T21:02:44Z · HTTP 200 · sha256 5f6923289b15e7f2628af4532eb7657548e28ecf8a7bda70a024b627b80faa67
+  Art. 9.3.1.2 (criterios de admisión del «Membre Investisseur»): persona física mayor de edad o
+  persona jurídica, conocimientos suficientes, KYC… No menciona países de residencia.
+  Art. 13.1: «toute utilisation des Services par ses utilisateurs autorisés situés en dehors du pays
+  où le Participant a son siège est strictement interdite» salvo acuerdo escrito de LISE
+  (se refiere a los usuarios autorizados de un participante, no a la residencia del particular).
+
+Condiciones generales de uso (marzo de 2026)
+  https://www.lise.com/rules/conditions-generales-d-utilisation → https://drive.google.com/uc?export=download&id=1d_YUkKL5QJOPNFBN3xXsIw4YIHqs0Z6a
+  2026-11-20T21:02:41Z · HTTP 200 · sha256 985325db93f89b1ddf068cc414b7bfea469bab47b03d4e81a0dc4d952281b161
+  Sin cláusula de países ni de residencia.
+
+Documento de información de ST GROUP (n.º Lise-DI-2026-001, aprobado por LISE el 09/04/2026)
+  2026-11-20T21:02:27Z · HTTP 200 · sha256 ba3a3815ed9ae702afb63c1cf0a0f118b39b9e681202ca7496555630fd8852cf
+  «Restrictions d'offre … L'offre décrite dans le présent Document d'Information est exemptée de
+  l'obligation de publier un prospectus en vertu de l'article 3, paragraphe 2, du Règlement Prospectus.»
+  (Exención nacional francesa: no se puede pasaportar.) Restricción expresa para el Reino Unido.
+  No nombra España ni otros Estados de la UE.
+
+======================================================================
+3. Oferta hoy, precio, liquidez y mínimo
+======================================================================
+Ficha de STGRP  https://www.lise.com/en/exchange/STGRP
+  2026-11-20T21:04:59Z · HTTP 200 · sha256 7a8790ba5be983e9e98bc8851ac436267f7d1feb57d8100b3e6d2130f1ae460b
+  «Market open 24/7». Precio 16,40 €; capitalización 9.062.361,20 €; «Free float» 3.799.519,20 €;
+  «Volume» 537,11 €; «Traded capital» 0,0059268218 %.
+  Libro de órdenes (actualizado hoy 20:55:16): mejor compra 14,50 € (1 acción), mejor venta
+  16,00 € (132 acciones). Total a la compra 786 acciones; a la venta 1.843.
+  Últimas operaciones: 16/11/2026 1 acción a 16,40 €; 13/11 tres operaciones de 1 acción
+  (15,50–16,00 €); 01/11 1 acción a 16,50 €; 31/10 4; 30/10 15; 24/10 2 y 8 a 14,50 €;
+  19/10 6 a 16,60 €.
+Mercado  https://www.lise.com/en/market  (21:05:04Z, sha256 b04f974a…0e0c): una sola cotizada, STGRP.
+
+Mercado primario  https://www.lise.com/en/primary-market/st-group
+  2026-11-20T21:05:02Z · HTTP 200 · sha256 e3e2429a7b7cc49a259823634fe0c535f597739bfac7b6b5396d508048c6419b
+  «The transaction has been completed / The subscription period has ended.»
+  «09 April 2026 → 24 April 2026 Offer Period»; ISIN FR0014017QA4; «Unit price €18.25»;
+  «Number of shares 142,950»; «Amount following the extension clause €3,000,154.00»;
+  «Lock-up on existing shareholder(s) 365 days».
+
+Mínimo · Reglas de funcionamiento, art. 20.4.1.2 «Quotité»:
+  «Toutes les quantités sont négociables, sous réserve de restrictions particulières pour certains
+  types de Titres Tokénisés Admis précisées par Notices.» → desde 1 acción (16,40 € al precio del día).
+Ayuda: «There is no minimum or maximum amount required to deposit funds into your Lise account.»
+
+Comisiones · Politique de transparence tarifaire (v. 1.1)
+  https://www.lise.com/rules/politique-tarifaire.pdf → https://drive.google.com/uc?export=download&id=1bVzT-JDmYVcWT7vtk-NLeOnZVj7KpI08
+  2026-11-20T21:02:46Z · HTTP 200 · sha256 6882ad23310ae80fbb4b256bcc86a4add2a2569836669e8fe46c2313c28aea67
+  «Commission sur transactions sur le marché secondaire: Entre 0,10 % et 0,25 % du volume de la
+  transaction» según el volumen de los 6 meses anteriores: 0–6.000 € 0,25 %; 6.000–24.000 € 0,20 %;
+  24.000–120.000 € 0,15 %; ≥ 120.000 € 0,10 %. (Confirma en fuente primaria el tope del 0,25 %.)
+  Ayuda: «Lise does not charge any fees on your deposits.» Sin comisión al suscribir en salida a bolsa.
+
+======================================================================
+4. Salida y protección
+======================================================================
+Ayuda: «Liquidity risk: you may not find a buyer to sell your securities quickly at your desired price.»
+  «Withdrawals to your bank account may take up to 48 business hours.»
+  «If Lise were to default … Your funds, held in a segregated account with our banking partner, are
+  covered by the French Deposit Guarantee Scheme (FGDR) up to €100,000 per depositor. Your securities
+  are protected by the Securities Guarantee Scheme up to €70,000 per investor.»
+Reglas, art. 11.3.1.5: el inversor puede pedir pasar el título a la forma nominativa, fuera de la DLT.
+Documento de información, 5.3: «la revente des titres n'est pas garantie, elle peut être incertaine,
+  partielle, voire impossible»; la sociedad encargó un contrato de liquidez a una empresa de servicios
+  de inversión; el accionista fundador tiene un compromiso de conservación de 12 meses (total) y
+  otros 12 meses (mitad), lo que «réduire significativement le flottant».
+
+======================================================================
+5. Riesgos (documento de información, 5.3)
+======================================================================
+  «Risque de perte totale ou partielle du capital investi.» · illiquidez · cesión de control sin
+  cláusula de salida equivalente · precio sin «expertise indépendante» · carácter experimental del
+  régimen piloto (puede cambiar o terminar) · DLT Hyperledger Besu y contratos inteligentes («Seule
+  la première version des smart contracts … a été auditée. Ces smart contracts ne sont pas assurés.»)
+  · pérdida de la condición de titular · exclusión de cotización.
+  El documento no es un folleto, no lo aprobó la AMF y está solo en francés. Las acciones no son
+  PRIIP: no hay KID.
+
+======================================================================
+6. Advertencias de la CNMV (accept-language: es)
+======================================================================
+  Lise            2026-11-20T21:03:58Z sha256 b3739e07…f294  «No hay datos disponibles»
+  Kriptown        2026-11-20T21:04:00Z sha256 c2474586…5c1a  «No hay datos disponibles»
+  ST GROUP        2026-11-20T21:04:01Z sha256 6f3d9317…3cb3  «No hay datos disponibles»
+  Lightning Stock 2026-11-20T21:04:03Z sha256 ff0a083e…8acc «No hay datos disponibles»
+  Control positivo del buscador («Trading», con resultados): 20:59:27Z, ver europa/cnmv-advertencias.txt.
