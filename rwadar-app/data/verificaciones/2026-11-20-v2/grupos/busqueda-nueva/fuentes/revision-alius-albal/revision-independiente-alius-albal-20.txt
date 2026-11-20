@@ -1,0 +1,80 @@
+Revisión independiente · candidata ALBAL (Alius Capital / Token Flip) · 20/11/2026
+Extractos literales de mis propias consultas (sin nombres de personas físicas).
+Crudos: grupos/busqueda-nueva/fuentes/crudo/revision-alius-albal/ (fuera de Git).
+Registro de cada consulta con hora UTC, código, bytes y SHA-256: consultas-revision-alius-albal-20.tsv
+
+== API pública de la plataforma (la que pinta la propia página, sin sesión)
+21:24:49Z https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed
+  200 · 83 B · SHA-256 e48d3194… (igual que el analista)
+  {"issuances_count":{"CAMPAIGN":1,"PRIVATE_CAMPAIGN":0,"PRE_CAMPAIGN":1,"CLOSED":2}}
+21:24:49Z https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress
+  200 · 20.489 B · SHA-256 f155958f… (igual que el analista a las 21:09:02Z)
+  title "ALBAL | Bono 13% con garantía hipotecaria" · campaign_status "PRE_CAMPAIGN"
+  campaign.start_date null · end_date null · target_amount "350000.00"
+  campaign_progress booked 4000 · invested 0 · supply 700
+  asset name "TF1" · network 80002 · address null
+  asset_issuance_relational minimum_offer_money 500 · asset_price "500.00" · minimum_revenue_money 280000 · deployed 0
+  extra_fields: minimum_investment null · appraised_value null · collateral null · loan_term "15 meses" · annual_interest_rate "13%"
+  process: "FASE 1. Pre-campaña: hasta el [...] … FASE 2. Oferta privada: entre el [...] y el [...] … FASE 3. Oferta pública: desde el [...] hasta el [...]"
+  proposal: "Importe mínimo de financiación requerido: 280.000€ (400 tokens)"  [280.000 € / 500 € = 560 tokens]
+  brief_description: "Comprado en su totalidad por el promotor aportando el 100% con fondos propios libres de cargas." · "Cada euro de deuda está respaldado por 3,71 € en ladrillo tangible." · "Las 3 unidades habitacionales y el local restante actúan como un colchón financiero de seguridad absoluta." · "garantizando una velocidad de absorción muy alta" · "cuyo valor comercial triplica el préstamo."
+21:27:52–53Z mismas API por estado (PRE_CAMPAIGN, CAMPAIGN, CLOSED):
+  182 ALBAL · PRE_CAMPAIGN · net 80002 · deployed 0
+  71 Casa de Outeiro · CAMPAIGN · start 2026-07-01 · end 2026-10-31 · net 80002 · deployed 0
+  169 IOD · CLOSED · net 80002 · address 0x6355…e354 · deployed 0
+  77 OTESA Calella Living · CLOSED · net 80002 · address 0x403d…aDA5 · deployed 0
+  (la red 80002 y deployed 0 salen también en las emisiones ya cerradas: no es exclusivo de ALBAL)
+21:27:33Z https://chainid.network/chains_mini.json · 200 · [('Amoy', 80002)]
+
+== Ficha de datos fundamentales (doc. 334)
+21:24:51Z https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334 · 200 · 341.010 B · SHA-256 9f082cc4… (igual)
+  Portada: "Identificador de la oferta: […]" · "Garantía: hipoteca sobre el inmueble, tasado en […] €" · "Periodo de la oferta: Hasta completar suscripción. Apertura el 23/11/2026. Fecha límite el 23/02/2026." · "Madrid, […] de noviembre del 2026"
+  Ap. 1: "Identidad: TOKEN FLIP S.A." · "CIF: A05832381" · "Aunque la Sociedad emisora es de reciente constitución" · "Estados financieros · Accesible al inversor a través del hipervínculo: […]"
+  Ap. 1: "El Proyecto contempla una actuación de cambio de uso y segregación" · "El solar … es propiedad de Gardum 2016, S.L." · "se construirá un edificio residencial compuesto por cinco viviendas"
+  Ap. 1: "Umbral de Equilibrio (Break-Even): para que todos los inversores recuperen el 100% de su capital depositado más los intereses al cabo de los 14 meses, el promotor necesita cubrir un umbral de 403.083,33 EUR." · "colchón financiero de seguridad absoluta"
+  Ap. 2: "Importe mínimo de financiación requerido: 280.000€" · "con fecha límite el 23/02/27."
+  Ap. 3: "Precio de suscripción: 500€ / token" · "Importe mínimo de financiación requerido: 280.000€ (400 tokens)" · "Interés del bono: 13% anual, a contar a partir de la fecha de [fin de la captacion…]" · "Plazo de devolución: 15 meses, desde […]" · "garantía real aportada por la Sociedad representada por hipoteca inmobiliaria de primer rango sobre el inmueble, cuyo valor de tasación es de [¿…]€." · "Alius Capital será designado como comisario" · "Transmisibilidad: tokens libremente transmisibles."
+  Ap. 4: "un activo tasado en […?] M€, lo que representa un Loan-to-Value (LTV) del […?]%" · "dependerá de la existencia de una contraparte interesada o de las condiciones del mercado secundario aplicable"
+  Ap. 5: "El inversor no soportará coste alguno en relación con la inversión en este Proyecto de financiación participativa."
+  P. 1: "Los inversores no experimentados se benefician de un período de reflexión … expira cuatro días naturales después."
+
+== Tasación (doc. 336)
+21:24:53Z https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336 · 200 · 6.396.690 B · SHA-256 df8e1f1b… (igual) · 55 páginas
+  Portada: "TITULAR GARDUM 2016 SL" · "OBJETO VALORACIÓN SOLAR DE USO RESIDENCIAL, CON EDIFICACIÓN A DEMOLER"
+  Certificado: "Finalidad de la tasación: INFORMACION VALOR DE MERCADO" · "SI BIEN SU FINALIDAD NO ESTÁ INCLUIDA ENTRE …" · "ESTE INFORME DE TASACIÓN NO ESTÁ SOMETIDO A SUPERVISIÓN POR PARTE DE BANCO DE ESPAÑA" · "VALOR DE TASACIÓN: 401.111,35 €" · "Fecha Tasación: 13.11.2026" · "DANA del 29 de octubre de 2024 … pero sin aparente afección significativa."
+  Hoja 2/4: "se reflejan cargas que gravan la finca valorada. Del valor obtenido no se ha deducido ninguna cantidad debido a esta carga." · "El cálculo del valor se ha realizado en la hipótesis de demolición de las edificaciones existentes"
+  Hoja 3/4 y G.1: "Titular registral: *Ver desglose de propietarios" · "1307 SMARTNEX 4 S.L. B55479091 100,00"
+  Validez: "FECHA LÍMITE DE VALIDEZ: 12 de Mayo de 2027"
+  J (método residual): "Se estima que la promoción, con una edificabilidad estimada de 988,44 m²t puede albergar 8 viviendas" · costes de construcción totales "1.267.818,24" · "Demoliciones … 34.595,40" · valor de edificio terminado "2.086.943,84" · "TERRENO … 401.111,35"
+  Cálculos de RWAdar: 350.000 / 401.111,35 = 87,3 %. A devolver a los 15 meses: 350.000 × (1 + 0,13 × 15/12) = 406.875 €, más que el valor de tasación.
+
+== Web del proyecto (renderizada con Chrome sin sesión, agente por defecto)
+21:26:36Z https://aliuscap.com/projects/albal · 78.673 B · SHA-256 1ee03996…
+  "ALBAL | Bono 13% con garantía hipotecaria" · "En estudio" · "Objetivo 350.000,00 €" · "Próximamente" · "Nuestros proyectos pasan por una fase de estudio y estructuración previa al lanzamiento de la oferta de inversión." · "Expresa tu interés y te mantendremos al tanto de todas las novedades." · "2 Inversores ya han expresado su posible interés en invertir" · "Tasa de impago 0%" · "Alius Capital (ALIUS CAPITAL STOS PSFP S.L.) es un proveedor de servicios de financiación participativa autorizado y supervisado por la CNMV"
+  Con curl (21:24:55Z) solo llega el armazón: 200 · 4.371 B · SHA-256 4cbaba0d…
+
+== Condiciones de la plataforma (renderizadas, 21:31:37–40Z)
+https://aliuscap.com/general-terms: "ALIUS CAPITAL STOS PSFP S.L. (nombre comercial ALIUS CAPITAL …), identificada con C.I.F. B76632793" [el mismo NIF que ADVENTUREES CAPITAL PFP en la CNMV]
+  Tarifas al PROMOTOR: "3.000€ por estructuración" · "1.500€ por la admisión y publicación" · "Entre el 0,5% y el 2,5% de la ronda (sólo en caso de éxito)" · "0,2% de los pagos a inversores" · "E.R.I.R. 0,2% del volumen captado, con un mínimo de 3.000€/año" · "Operador de pago MangoPay Transferencia: 0,5% del volumen transaccionado"
+  Al INVERSOR: "aquellas inversiones realizadas mediante transferencia o tarjeta bancaria pueden tener un coste que deberá asumir, en su caso." · "MANGOPAY S.A. transfiere el dinero … a la tarjeta o cuenta bancaria del INVERSOR, sin coste para el INVERSOR."
+https://aliuscap.com/basic-information-for-clients: "Inversor: no tendrá que pagar por registrarse … solamente deberá desembolsar el importe de la inversión"
+21:27:27Z https://aliuscap.com/files/Alius_03_07_26_Convocatoria%20JGO_Firmado.pdf · 200 · "CONVOCATORIA DE LA JUNTA GENERAL … “ALIUS CAPITAL STOS PSFP, S.L.”" · firma con "(R: B76632793)"
+
+== Token City (ERIR y proveedor tecnológico de la plataforma)
+21:32:00Z https://www.token-city.com/ · 200 · "New investment opportunity via Alius Capital, our regulated tokenized crowdfunding vehicle" · "regulated distribution channel, through Alius Capital"
+
+== Emisor (web propia)
+21:27:30Z https://www.token-flip.com/ → https://token-flip.com/ · 200 · 48.654 B · "Una Nueva Forma de Invertir en Inmuebles está Llegando." · "accesible desde 500 €." · "Estamos preparando algo grande." · "Próximamente!" · "Encuentro Privado 26 Noviembre"
+21:30:07Z https://token-flip.com/wp-content/uploads/2026/11/Presentacion-Tokenflip-mercado-regulado-.pdf · 200 · 21.221.981 B · "TOKENFLIP Plataforma de financiación y estructuración de emisiones." · "Hipoteca de primer rango … Inscripción en el Registro de la Propiedad como condición indispensable." · "100+ PROYECTOS CERRADOS · 7 M EUR+ CAPITAL INVERTIDO" · "Cifras corporativas sujetas a acreditación documental antes de difusión pública." · "30+ EMISIONES PREVISTAS EN 2027" · "Viene algo grande." · "Ejemplo matemático, no rentabilidad garantizada."
+21:30:10Z https://token-flip.com/wp-content/uploads/2026/11/Tokenflip_Evento_26_Noviembre.pdf · 200 · imagen: "ENCUENTRO PRIVADO DE INVERSORES · 26 NOVIEMBRE 2026 · 19:00 H" · "Detalle de bienvenida" · "Vino de honor al finalizar" · "CLUB PRIVADO DE INVERSORES" · "SOLICITA TU INVITACIÓN"
+
+== CNMV
+21:26:09Z https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es → 301 → …/listado-proveedores?lang=es · 200 · 165.165 B · SHA-256 3c4be314… · "ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA · 11 · 03/11/2023 · www.aliuscap.com". 28 proveedores; ninguno es Token Flip.
+21:26:10Z …/Proveedor.aspx?nreg=11&nif=B76632793 → 301 → …/Proveedor?nreg=11&nif=B76632793 · 200 · 154.642 B · "C/ SANTA TERESA DE JORNET E IBARS, 11 · SANTA CRUZ DE TENERIFE"; "Otras autorizaciones" sin ninguna marcada.
+21:25:35Z https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es · 200 · SHA-256 12ac95b9… · "Emisiones inscritas de TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. · 06/11/2026 · SERIES A GRUPO UAE SA" (una sola).
+21:29:47Z https://www.cnmv.es/portal/consultas/erir?lang=es · 200 · índice ERIR: A23875529 (MINOS SECURITIES), A25988981 (TOKEN CITY), A86796182 (URSUS-3).
+21:29:53–54Z fichas ERIR de MINOS y URSUS-3: 0 apariciones de "TOKEN FLIP", "ALBAL" o "TF1".
+21:29:11Z https://www.cnmv.es/portal/consultas/esi/erir.aspx?lang=es → 301 → 302 → /Portal/Error?errorcode=CVFE → 403 ("CNMV - Error"): ruta rota de la CNMV, no antirrobots.
+Advertencias (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…), 21:25:37Z–21:26:11Z:
+  Token Flip · TokenFlip · Alius · Adventurees · Gardum · Nouval · Smartnex · Clara y Libre · Token City → "No hay datos disponibles."
+  Gemini (control) → "04/09/2023 GEMINI LTD FX" · "29/03/2021 GEMINI OPTION LTD"

@@ -6,6 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 20 de noviembre de 2026 (33) · Claude · Ciclo del catálogo con auditoría completa, radar corregido y mercado en directo arreglado · PUBLICADO
+
+- **Encargo (Víctor, 20/11):** «actualiza las fichas y la información de
+  RWAdar, ofertas, noticias, todo antes de las 12 de la noche»; «revisa todas
+  las ofertas e información bien»; «todo lo falso fuera… que no vuelvan a haber
+  textos ni datos falsos»; «el valor de mercado con el gráfico… al momento»;
+  «la investigación de nuevas ofertas, en profundidad».
+- **Catálogo 2026-11-20** (revisión `eca89db7`, PR #163): 22 ofertas, válido
+  hasta el 27/11. Investigación por grupos + auditoría completa de cada dato
+  visible + una revisión de la entrega (3 lentes) + corrección + `auditar` +
+  auditor final. Resumen: [`INVESTIGACION-CATALOGO-2026-11-20.md`](../INVESTIGACION-CATALOGO-2026-11-20.md).
+- **Mercado en directo** (PR #161, migración 37): el alta de tokens agotaba la
+  secuencia `smallint` (error 2200H desde el 16/11 03:33 UTC). Aplicada,
+  sembrada y verificada; `/api/tokenizacion/directo` vuelve a 200.
+- **Radar** (PR #162, migración 38, flujo nuevo «Textos del radar (base)»): 23
+  plataformas con textos falsos o sin fuente corregidos, con revisión
+  independiente; aplicada con copia antes.
+- **Motor de la entrega:** cambia un aviso del radar por código (con guarda) y
+  la guarda del orden de referencias compara etiqueta y valor.
+- **Auditoría completa como paso fijo** (skill y
+  `.claude/workflows/auditoria-completa-catalogo.js`).
+- **Ofertas nuevas:** 14 expedientes (7 nuevos de la búsqueda en profundidad),
+  ninguna admitida hoy, todas con revisión independiente.
+- **Pendiente:** ver «Lo que queda» del informe. `pglite.test.mjs` del motor
+  falla igual en main (no lo causa este ciclo). Las tareas de noticias
+  automáticas del 15 al 18/11 no corrieron. Copias antiguas de 11-13/11 con
+  `spiko-web-es-particulares-render.json` siguen en Git (revisar si llevan el
+  nombre de un testimonio).
+
 ## 20 de noviembre de 2026 · Claude (montador) · Re-montaje de la entrega 2026-11-20 con la auditoría completa · SIN APLICAR NI PUBLICAR
 
 - `rwadar-app/data/verificaciones/2026-11-20-v2/decisiones.json`: se conserva el
