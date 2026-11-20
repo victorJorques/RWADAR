@@ -174,3 +174,37 @@ cifras que vio el auditor a las 17:21 UTC):
 02a03185…, `yield-USTBL.json` 859689c2…, `nav-latest-EUTBL.json` 98a9113d…,
 `nav-latest-USTBL.json` 6591d431…). La serie de VL para el recálculo se lee de
 `net-asset-values/<clase>` como en el expediente.
+
+**Suiza y Hausera (`auditoria/suiza-hausera.md`; 58 datos, 8 PDF con la misma
+huella, 29 enlaces que responden):**
+- A13 · Aktionariat, aviso nuevo: «Son acciones de una empresa que no cotiza
+  en bolsa: puedes perder todo el dinero invertido.» (aktionariat.com/disclaimer,
+  17:25:44 UTC: «a loss of up to the entire capital invested may occur»).
+- A14 · Boss Info, el mismo aviso nuevo (bossinfo.com, investor tokens,
+  17:25:45 UTC: «Ein Wertverlust bis 100% des eingesetzten Kapitals ist
+  möglich.»).
+- A15 · Switzerlend, el mismo aviso nuevo (lend.ch/en/investor-relations,
+  17:25:46 UTC: «Equity can lose value, including entirely.»).
+- A16 · Boss Info, referencia «Última operación»: la fuente sigue siendo la
+  portada https://shares.bossinfo.com/ (la API getTrades responde 405 a una
+  petición normal y no está entre las fuentes de la ficha); valor «8,40 ZCHF
+  (1 acción, 05/11/2026)», que la portada muestra hoy («Last trade • 5 Nov
+  2026»).
+- A17 · Hausera, resumen: «… tiene la preventa abierta desde el 18/11 y la
+  suscripción anunciada del 25/11/2026 al 30/06/2027.» (documento de emisión:
+  «El periodo de suscripción se iniciará el 25/11/2026 y se extenderá hasta el
+  30/6/2027»), para que no quede viejo el 25/11, dentro de la vigencia.
+
+No entran (claridad): «Clase» de Switzerlend, mínimo en cripto de Aktionariat
+y el alcance de las referencias antiguas de Boss Info (eran ciertas en su
+fecha).
+
+**Radar (`auditoria/radar-plataformas.md`; 226 datos de las 30 fichas):** 14
+correcciones obligatorias y 6 recomendadas, casi todas en los textos «aval» y
+«nota» de julio y agosto (por ejemplo, Swarm «opera bajo licencia de BaFin»,
+que BaFin no confirma; Lofty «oferta registrada»; Franklin Templeton
+«Minorista» para un fondo que no se vende en la UE). **No entran en esta
+entrega:** esos textos no son de la revisión del catálogo, sino de la tabla
+base `plataformas` de Supabase (`rwadar-app/db/02_seed.sql`). Cambiarlos es
+SQL fuera de «Aplicar catálogo», que esta orden no cubre. Se lo explico a
+Víctor con la propuesta para hacerlo en cuanto lo autorice.
