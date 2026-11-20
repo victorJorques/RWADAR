@@ -3,7 +3,7 @@
   "fecha": "2026-11-20",
   "etiqueta": "2026-11-20",
   "revisionAnterior": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
-  "revisionNueva": "84ef34ed-5acc-162f-4352-db02369e7b80",
+  "revisionNueva": "c8727d7d-cd09-d2cf-d3dc-da3158fe6812",
   "decision": "Puesta al día pedida por el responsable del proyecto el 20/11/2026 («Actualiza las fichas y la información de RWAdar, ofertas, noticias, todo antes de las 12 de la noche»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
     "DECISIONES-COORDINADOR.md": "e8d099a150e1af7cdb99443ef412cb398fcfd9fadd180b93baf4e96a91a83c12",
@@ -687,12 +687,6 @@
     },
     {
       "slug": "randhartingergasse-9-viena",
-      "campo": "tarjeta",
-      "antes": "Acceso desde España: Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
-      "despues": "Acceso desde España: Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco."
-    },
-    {
-      "slug": "randhartingergasse-9-viena",
       "campo": "aviso",
       "antes": null,
       "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt)."
@@ -762,12 +756,6 @@
       "campo": "referencia de la ficha",
       "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
       "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
-    },
-    {
-      "slug": "apartamento-vacacional-hinterstoder-50",
-      "campo": "tarjeta",
-      "antes": "Acceso desde España: Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
-      "despues": "Acceso desde España: Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco."
     },
     {
       "slug": "apartamento-vacacional-hinterstoder-50",
@@ -1127,12 +1115,12 @@
     },
     "randhartingergasse-9-viena": {
       "Mínimo de inversión": "Desde 78 € la participación en reventa (20/11)",
-      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
       "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
     },
     "apartamento-vacacional-hinterstoder-50": {
       "Mínimo de inversión": "Desde 75 € la participación en reventa (20/11)",
-      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
       "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
@@ -1198,6 +1186,11 @@
       "slug": "radar (30 fichas)",
       "que": "Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)",
       "porque": "DECISIONES §6 las deja fuera de esta entrega: son textos de la tabla base «plataformas» (migración aparte), no de la revisión del catálogo; el motor tampoco cambia textos del radar que no estén en cambios-radar.json."
+    },
+    {
+      "slug": "randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50",
+      "que": "A21 · tarjeta «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.» (el aviso nuevo de A21 sí entra)",
+      "porque": "No se puede montar con el motor tal cual: la tarjeta de la web y de la app (resumenOferta) enseña «Sin comprobar si se puede contratar desde España» para cualquier valor que empiece por «Sin confirmar», antes y después, y la comprobación del motor en PGlite exige que la tarjeta enseñe el valor nuevo («la tarjeta enseña «Sin comprobar si se puede contratar desde España» y no «Sin confirmar: … número fiscal austriaco.»»), así que para. La condición del número fiscal austriaco llega al lector por el aviso nuevo de A21; el texto de la tarjeta queda como estaba. Para cambiarlo hace falta montarlo sin el motor (motor:false) o ajustar esa comprobación del motor."
     }
   ],
   "sinCambios": [

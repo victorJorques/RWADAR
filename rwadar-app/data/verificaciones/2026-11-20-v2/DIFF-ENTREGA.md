@@ -2,24 +2,26 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `4418ad20bafb5d186dc7f9639121b7f9a70d0822bb991d2f08fa2468fd75ef2f`, revisión `a513851a-c3ce-26b1-5dfa-4be8c359f8f8`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `4380fcf33f557b1b3e3771bb4071b457fc2de03700352d38320da978208dffe6`, revisión `c8727d7d-cd09-d2cf-d3dc-da3158fe6812`.
 - Parte de la publicada `434217eb-9b7f-1cd9-a851-fbde7bced2bf` (huella `434217eb9b7f1cd9…`); último día vigente 27/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
-- Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **19** de 288.
+- Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **23** de 288.
 
-## Cambios por ficha (87 en 20 fichas)
+## Cambios por ficha (162 en 22 fichas)
 
 ### spiko-letras-del-tesoro-euro
 
-- rentabilidad: «2,40 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 12/11/2026 (VL fechada el 12/11/2026); consultado el 13/11/2026. Variable y no garantizado.» → «2,35 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 19/11/2026 (VL fechada el 19/11/2026); consultado el 20/11/2026. Variable y no garantizado.»
-- métrica: «Rentabilidad publicada · 31 días · 12/11/2026: 2,40 %» → «Rentabilidad publicada · 31 días · 19/11/2026: 2,35 %»
-- referencia de la ficha: «Rentabilidad publicada · 31 días: 2,40 %» → «Rentabilidad publicada · 31 días: 2,35 %»
+- rentabilidad: «2,40 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 12/11/2026 (VL fechada el 12/11/2026); consultado el 13/11/2026. Variable y no garantizado.» → «2,45 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 20/11/2026 (VL calculada el 20/11/2026, que Spiko fecha el 22/11/2026 porque cubre el fin de semana); consultado el 20/11/2026. Variable y no garantizado.»
+- métrica: «Rentabilidad publicada · 31 días · 12/11/2026: 2,40 %» → «Rentabilidad publicada · 31 días · 20/11/2026: 2,45 %»
+- referencia de la ficha: «Rentabilidad publicada · 31 días: 2,40 %» → «Rentabilidad publicada · 31 días: 2,45 %»
+- métrica: «Supervisor: AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380» → «Supervisor: AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno»
 
 ### spiko-letras-del-tesoro-dolar
 
-- rentabilidad: «3,98 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 12/11/2026 (VL del 12/11/2026); consultado el 13/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.» → «3,97 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 19/11/2026 (VL del 19/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.»
-- métrica: «Rentabilidad publicada · 31 días · 12/11/2026 · en USD: 3,98 %» → «Rentabilidad publicada · 31 días · 19/11/2026 · en USD: 3,97 %»
-- referencia de la ficha: «Rentabilidad publicada · 31 días: 3,98 %» → «Rentabilidad publicada · 31 días: 3,97 %»
+- rentabilidad: «3,98 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 12/11/2026 (VL del 12/11/2026); consultado el 13/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.» → «4,00 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 20/11/2026 (VL del 20/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.»
+- métrica: «Rentabilidad publicada · 31 días · 12/11/2026 · en USD: 3,98 %» → «Rentabilidad publicada · 31 días · 20/11/2026 · en USD: 4,00 %»
+- referencia de la ficha: «Rentabilidad publicada · 31 días: 3,98 %» → «Rentabilidad publicada · 31 días: 4,00 %»
+- métrica: «Supervisor: AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380» → «Supervisor: AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno»
 
 ### spiko-smart-cash-euro
 
@@ -27,18 +29,32 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - métrica: «Rentabilidad publicada · neta y variable · 12/11/2026: 2,84 %» → «Rentabilidad publicada · neta y variable · 20/11/2026: 2,84 %»
 - métrica: «Supervisor: AMF (Francia): n.º SCV20260075, autorizado el 17/02/2026 (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España» → «Supervisor: AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España»
 - referencia de la ficha: «Rendimiento neto publicado: 2,84 %» → «Rendimiento neto publicado: 2,84 %»
-- referencia de la ficha: «Aprobación del compartimento: Autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)» → «Aprobación del compartimento: N.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO)»
-- descripción: «autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)» → «con el n.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026 (el 20/11/2026 el fondo ya no aparece en la base pública GECO de la AMF)»
+- referencia de la ficha: «Aprobación del compartimento: Autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)» → «Aprobación del compartimento: N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026»
+- descripción: «autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)» → «autorizado por la AMF con el n.º SCV20260075, según el certificado de la AMF del 23/02/2026»
 
 ### mtbill
 
 - métrica: «Valor por token · 10/11/2026: 1,0777 USD (oráculo del emisor)» → «Valor por token · 20/11/2026: 1,0789 USD (oráculo del emisor)»
 - métrica: «Rentabilidad pasada · 5 semanas hasta el 10/11/2026 · en USD: 3,45 % anual» → «Rentabilidad pasada · 5 semanas hasta el 20/11/2026 · en USD: 3,46 % anual»
 - aviso: «La rentabilidad es pasada y la calcula RWAdar con el valor que publica el emisor (del 06/10 al 10/11/2026): está en dólares, no descuenta el 0,07 % del reembolso inmediato ni el cambio euro/dólar, y no garantiza la futura.» → «La rentabilidad es pasada y la calcula RWAdar con el valor que publica el emisor (del 16/10 al 20/11/2026): está en dólares, no descuenta el 0,07 % del reembolso inmediato ni el cambio euro/dólar, y no garantiza la futura.»
+- aviso: «Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.» → (se quita)
+- aviso: (nuevo) → «Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %. Las comisiones tampoco coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni reembolso estándar.»
+- fuentes de la oferta: «https://docs.midas.app/resources/legal-product-documentation/mtbill · https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents · https://docs.midas.app/llms-full.txt · https://midas.app/mtbill» → «https://docs.midas.app/resources/legal-product-documentation/mtbill · https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents · https://docs.midas.app/llms-full.txt · https://midas.app/mtbill · https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_sign…»
 
 ### kraken-xstocks
 
 - resumen: «Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.» → «Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 1.000 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.»
+- referencia de la ficha: «Dividendos: No se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.» → «Dividendos: No se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.»
+- referencia de la ficha: «Países de oferta (condiciones finales): Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado» → «Países de oferta (condiciones finales): Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado»
+- fuente de la ficha: (nuevo) → «https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)»
+
+### robinhood-classic-stock-tokens
+
+- aviso: (nuevo) → «Producto complejo según su KID: puedes perder todo lo invertido.»
+
+### prosegur-digital-gold
+
+- métrica: «Custodia: Oro en inventario común custodiado por Prosegur (sin lingote asignado)» → «Custodia: Oro separado de los bienes de Prosegur, en un inventario conjunto de los clientes (sin lingote asignado)»
 
 ### vivienda-pluddemanngasse-101-graz
 
@@ -47,6 +63,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 75 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 75 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 335» → «Participaciones en venta · 20/11/2026: 335»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 20,00 € (1 participación, orden del 23/04/2026)» → «Mejor oferta de compra · 20/11/2026: 20,00 € (1 participación, orden del 23/04/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,58 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 3,76 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### vivienda-sonnleithnergasse-2-viena
 
@@ -55,6 +77,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 75 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 75 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 97» → «Participaciones en venta · 20/11/2026: 97»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 65,00 € (1 participación, orden del 16/10/2026)» → «Mejor oferta de compra · 20/11/2026: 65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,42 %» → (se quita)
+- referencia de la ficha: «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026: 3,52 %» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### local-de-estanco-klagenfurt
 
@@ -63,6 +90,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 95 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 95 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 302» → «Participaciones en venta · 20/11/2026: 299»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 15,00 € (1 participación, orden del 21/09/2026)» → «Mejor oferta de compra · 20/11/2026: 15,00 € (1 participación, orden del 21/09/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,46 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 3,46 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Rentabilidad · consulta 01/11/2026: "rentalReturn":3.46; rentalSurplus=11828.12» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### vivienda-stallhofstra-e-28-gratwein
 
@@ -71,6 +105,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 68,80 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 68,80 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 317» → «Participaciones en venta · 20/11/2026: 315»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 30,00 € (1 participación, orden del 01/07/2026)» → «Mejor oferta de compra · 20/11/2026: 30,00 € (1 participación, orden del 01/07/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 4,42 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 4,11 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### vivienda-schwarzer-weg-18-graz
 
@@ -79,6 +119,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 69,90 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 69,90 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 299» → «Participaciones en venta · 20/11/2026: 298»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 60,00 € (1 participación, orden del 10/11/2026)» → «Mejor oferta de compra · 20/11/2026: 62,00 € (1 participación, orden del 17/11/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,46 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 3,46 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### drautalresidenz-paternion
 
@@ -87,6 +133,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 70 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 70 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 150» → «Participaciones en venta · 20/11/2026: 147»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 60,00 € (1 participación, orden del 05/11/2026)» → «Mejor oferta de compra · 20/11/2026: 50,00 € (1 participación, orden del 29/09/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 5,96 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 4,68 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Rentabilidad · consulta 01/11/2026: "rentalReturn":4.83; rentalSurplus=5206.62» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Qué se adquiere · consulta 01/11/2026: Genussscheine ... läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.» → «Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig ("Perpetual") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### randhartingergasse-9-viena
 
@@ -95,6 +148,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 78 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 78 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 189» → «Participaciones en venta · 20/11/2026: 188»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 64,00 € (1 participación, orden del 12/11/2026)» → «Mejor oferta de compra · 20/11/2026: 64,00 € (1 participación, orden del 12/11/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,09 %» → (se quita)
+- referencia de la ficha: «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026: 2,47 %» → (se quita)
+- referencia de la ficha: «Participaciones disponibles en emisión (API) · 22/10/2026: 374 de 2.670» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
+- aviso: (nuevo) → «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).»
 
 ### apartamento-vacacional-hinterstoder-50
 
@@ -103,6 +162,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 75 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 75 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 265» → «Participaciones en venta · 20/11/2026: 252»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)» → «Mejor oferta de compra · 20/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 4,65 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 4,84 %» → (se quita)
+- referencia de la ficha: «Próxima distribución esperada · 22/10/2026: 15/11/2026» → (se quita)
+- referencia de la ficha: «Rentabilidad · consulta 01/11/2026: "rentalReturn":4.1; rentalSurplus=14233.22» → (se quita)
+- referencia de la ficha: «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.» → «Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.»
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
+- aviso: (nuevo) → «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).»
 
 ### vivienda-pottendorfer-stra-e-62-wr-neustadt
 
@@ -111,6 +177,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 80 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 81 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 106» → «Participaciones en venta · 20/11/2026: 96»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 19,00 € (3 participaciones, orden del 06/11/2025)» → «Mejor oferta de compra · 20/11/2026: 64,00 € (1 participación, orden del 17/11/2026)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 3,80 %» → (se quita)
+- referencia de la ficha: «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026: 4,22 %» → (se quita)
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### fotovoltaica-greenpoint
 
@@ -119,6 +188,10 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 102 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 102 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 347» → «Participaciones en venta · 20/11/2026: 347»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 84,00 € (1 participación, orden del 23/06/2026)» → «Mejor oferta de compra · 20/11/2026: 29,00 € (1 participación, orden del 10/08/2024)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 6,11 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 6,11 %» → (se quita)
+- referencia de la ficha: «Rentabilidad · consulta 01/11/2026: "rentalReturn":6.43; rentalSurplus=10942.56» → (se quita)
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### fotovoltaica-cohotel
 
@@ -127,12 +200,17 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - tarjeta: «Mínimo de inversión: Desde 102 € la participación en reventa (13/11)» → «Mínimo de inversión: Desde 110 € la participación en reventa (20/11)»
 - referencia de la ficha: «Participaciones en venta · 13/11/2026: 59» → «Participaciones en venta · 20/11/2026: 59»
 - referencia de la ficha: «Mejor oferta de compra · 13/11/2026: 3,00 € (1 participación, orden del 23/11/2024)» → «Mejor oferta de compra · 20/11/2026: 3,00 € (1 participación, orden del 23/11/2024)»
+- referencia de la ficha: «Distribución anual prevista anunciada: 5,57 %» → (se quita)
+- referencia de la ficha: «Distribución anual esperada · 22/10/2026: 5,57 %» → (se quita)
+- referencia de la ficha: «Rentabilidad · consulta 01/11/2026: "rentalReturn":5.11; rentalSurplus=4909.64» → (se quita)
+- referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 
 ### aktionariat
 
 - métrica: «Precio del emisor · 13/11/2026: 7,25 CHF por acción (fijo)» → «Precio del emisor · 20/11/2026: 7,25 CHF por acción (fijo)»
 - métrica: «Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026)» → «Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)»
 - aviso: «Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 13/11/2026).» → «Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 20/11/2026).»
+- aviso: (nuevo) → «Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.»
 
 ### boss-info
 
@@ -140,6 +218,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - aviso: «El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 13/11/2026).» → «El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 20/11/2026).»
 - tarjeta: «Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 13/11)» → «Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 20/11)»
 - referencia de la ficha: «Última operación · 13/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)» → «Última operación · 20/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)»
+- aviso: (nuevo) → «Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.»
 
 ### switzerlend
 
@@ -147,14 +226,16 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - aviso: «Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026).» → «Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 20/11/2026).»
 - tarjeta: «Mínimo de inversión: 1 acción (68,01 CHF el 13/11)» → «Mínimo de inversión: 1 acción (68,01 CHF el 20/11)»
 - métrica: «Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026); afiliada a PolyReg solo a efectos de blanqueo» → «Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026); afiliada a PolyReg solo a efectos de blanqueo»
+- aviso: (nuevo) → «Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.»
 
 ### hausera-proximas-ofertas
 
-- resumen: «Seguimiento de las operaciones inmobiliarias de Hausera. El 10/11/2026 Alicante 2 ya figuraba como financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abre la preventa el 18/11 y la suscripción el 25/11/2026.» → «Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción empieza el 25/11/2026.»
+- resumen: «Seguimiento de las operaciones inmobiliarias de Hausera. El 10/11/2026 Alicante 2 ya figuraba como financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abre la preventa el 18/11 y la suscripción el 25/11/2026.» → «Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción anunciada del 25/11/2026 al 30/06/2027.»
 - métrica: «Próxima operación: Alicante 3 · preventa desde el 18/11/2026, suscripción del 25/11/2026 al 30/06/2027» → «Próxima operación: Alicante 3 · preventa abierta desde el 18/11/2026; suscripción del 25/11/2026 al 30/06/2027»
 - aviso: «El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 13/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV.» → «El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 20/11/2026, con la preventa ya abierta, Alicante 3 aún no estaba inscrita en el registro de la CNMV.»
 - tarjeta: «Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (13/11); la preventa abre el 18/11.» → «Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.»
 - referencia de la ficha: «Historial publicado · 13/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados» → «Historial publicado · 20/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados»
+- referencia de la ficha: «Destino de consulta comprobado: Plataforma inmobiliaria Hausera» → «Destino de consulta comprobado: Plataforma inmobiliaria Hausera»
 
 ## Tarjetas que cambian (14)
 
@@ -182,34 +263,45 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'spiko-letras-del-tesoro-euro' 'https://www.spiko.io/es/spiko-letras-del-tesoro-euro'
 
-- …mostrada":"2, «40» → «35»
-- …por Spiko el  «12» → «19»
-- …VL fechada el  «12» → «19»
-- …31 días ·  «12» → «19»
-- …valor":"2, «40» → «35»
-- …valor":"2, «40» → «35»
-- …:"2026-11- «12» → «19»
-- …valor liquidativo del  «12» → «19»
-- …valores liquidativos del  «12» → «19»
-- …10 y del  «12» → «19»
-- …/11: 1, «060664» → «061180»
-- …€ → 1, «062803» → «063276»
+- …mostrada":"2, «40» → «45»
+- …por Spiko el  «12/11/2026» → «<FECHA>»
+- …/2026 (VL  «fechada» → «calculada»
+- …VL fechada el  «12» → «<FECHA>, que Spiko fecha el 22»
+- … 12/11/2026 «» → « porque cubre el fin de semana»
+- …(fondo) ·  «inscrito » → «Spiko SICAV inscrita »
+- … para su comercialización «, » → « (»
+- … n.º 2380 «» → «); la CNMV no detalla sus fondos uno a uno»
+- …31 días ·  «12/11/2026» → «<FECHA>»
+- …valor":"2, «40» → «45»
+- …valor":"2, «40» → «45»
+- …,"fechaDato":" «2026-11-12» → «<FECHA>»
+- … (valor liquidativo  «del 12/11/2026» → «calculado el <FECHA>»
+- …, que Spiko  «calculó ese día» → «fecha el 22/11/2026»
+- …los valores liquidativos  «del 12» → «fechados el 22»
+- …12/10 y  «del 12» → «el 22»
+- …/11: 1, «060664» → «06131»
+- …€ → 1, «062803» → «063496»
 
 ### rwadar_catalogo.ofertas 'spiko-letras-del-tesoro-dolar' 'https://www.spiko.io/es/spiko-letras-del-tesoro-dollar'
 
-- …mostrada":"3, «98» → «97»
-- …por Spiko el  «12» → «19»
-- … (VL del  «12» → «19»
-- …31 días ·  «12» → «19»
-- …valor":"3, «98» → «97»
-- …valor":"3, «98» → «97»
-- …:"2026-11- «12» → «19»
-- …valor liquidativo del  «12» → «19»
-- …valores liquidativos del  «13» → «19»
-- …10 y del  «12» → «19»
-- … del 12/11 «, porque el 12/10 fue festivo en EE. UU.» → «»
-- …UU.: 1, «099159» → «099805»
-- …$ → 1, «102694» → «103445»
+- …{"mostrada":" «3» → «4»
+- …mostrada":"3, «98» → «00»
+- …por Spiko el  «12/11/2026» → «<FECHA>»
+- … (VL del  «12/11/2026» → «<FECHA>»
+- …(fondo) ·  «inscrito » → «Spiko SICAV inscrita »
+- … para su comercialización «, » → « (»
+- … n.º 2380 «» → «); la CNMV no detalla sus fondos uno a uno»
+- …31 días ·  «12/11/2026» → «<FECHA>»
+- …,"valor":" «3» → «4»
+- …valor":"3, «98» → «00»
+- …,"valor":" «3» → «4»
+- …valor":"3, «98» → «00»
+- …,"fechaDato":" «2026-11-12» → «<FECHA>»
+- …valor liquidativo del  «12/11/2026» → «<FECHA>»
+- …valores liquidativos del  «13» → «20»
+- …10 y del  «12/11, porque el 12/10 fue festivo en EE. UU.» → «<FECHA>»
+- …UU.: 1, «099159» → «099901»
+- …$ → 1, «102694» → «103573»
 
 ### rwadar_catalogo.ofertas 'spiko-smart-cash-euro' 'https://www.spiko.io/es/spiko-euro'
 
@@ -218,18 +310,14 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …, autorizado el  «17» → «certificado de la AMF del 23»
 - … 17/02/2026 « (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo» → «; el <FECHA> el fondo ya no aparece en la base pública de la AMF (GECO»
 - …y variable ·  «12/11/2026» → «<FECHA>»
-- … (Francia),  «autorizado por la AMF el 17/02/2026 » → «»
-- …n.º SCV20260075  «(ficha pública en GECO y» → «de la AMF, según el»
-- … 23/02/2026 «» → « (el <FECHA> el fondo ya no aparece en la base pública GECO de la AMF»
+- …por la AMF  «el 17/02/2026 » → «»
+- … n.º SCV20260075 « (ficha pública en GECO y » → «, según el »
+- … 23/02/2026 «)» → «»
 - …,"fechaDato":" «2026-11-12» → «<FECHA>»
 - …valor liquidativo del  «12/11/2026» → «<FECHA>»
-- …,"valor":" «Autorizado por » → «N.º SCV20260075 de »
-- … por la AMF « » → «, según »
-- …la AMF el  «17» → «certificado de la AMF del 23»
-- … 17/02/2026 « con » → «; el <FECHA> »
-- …2026 con el  «n.º SCV20260075 (ficha pública» → «fondo ya no aparece»
-- …ficha pública en  «GECO y certificado» → «la base pública»
-- …de la AMF  «del 23/02/2026» → «(GECO»
+- …,"valor":" «Autorizado por la AMF el 17/02/2026 con el n» → «N»
+- … n.º SCV20260075 « (ficha pública en GECO y » → «, en la lista de compartimentos del »
+- … 23/02/2026 «)» → «»
 - …:"2026-02- «17» → «23»
 - …,"fechaConsulta":" «2026-11-10» → «<FECHA>»
 - …:"https:// «geco» → «cdn»
@@ -238,14 +326,16 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …amf-france.org/ «produit-d-epargne» → «legal_docs»
 - …produit-d-epargne/ «c124199» → «EN/SAFO_Letter_EN.pdf»
 - …,"alcance":" «Ficha pública del compartimento en la base GECO » → «Certificado »
-- … de la AMF «, consultada » → « fechado en París »
-- …, consultada el  «10» → «23»
-- …consultada el 10/ «11» → «02»
-- … 10/11/2026 «: n.º SCV20260075, autorizado el 17/02/2026, vivo y abierto a todos » → «, que aloja Spiko: incluye «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» entre »
-- …a todos los  «suscriptores; aún » → «compartimentos que cubre, »
-- …; aún sin  «clases» → «fecha»
-- …sin clases de  «acciones ni valor liquidativo. Lo confirma el certificado » → «autorización. El <FECHA> la ficha del compartimento en la base GECO »
-- …de la AMF  «del 23/02/2026 que aloja Spiko» → «ya no se publica y el buscador de GECO no lo devuelve»
+- … de la AMF «, consultada el 10/11/2026» → « que aloja Spiko»
+- …/11/2026:  «n.º SCV20260075, autorizado el 17/02/2026, vivo y abierto a todos los suscriptores; aún sin clases » → «incluye SPIKO AMUNDI OVERNIGHT SWAP FUND (SCV20260075) entre los compartimentos de Spiko SICAV. No da la fecha »
+- …sin clases de  «acciones » → «autorización del compartimento »
+- …de acciones ni  «valor liquidativo. Lo confirma el certificado de » → «dice en qué países se vende. El <FECHA> »
+- …certificado de la  «AMF» → «ficha»
+- …la AMF del  «23/02/2026 que aloja Spiko. No dice en qué países se comercializa» → «fondo ya no aparece en la base pública de la AMF (GECO)»
+
+### rwadar_catalogo.ofertas 'robinhood-classic-stock-tokens' 'https://robinhood.com/eu/es/invest'
+
+- …"<FECHA>"} «» → «,{"texto":"Producto complejo según su KID: puedes perder todo lo invertido.","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
 
 ### rwadar_catalogo.ofertas 'mtbill' 'https://midas.app/mtbill'
 
@@ -253,25 +343,76 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …valor":"1, «0777» → «0789»
 - …semanas hasta el  «10/11/2026» → «<FECHA>»
 - …valor":"3, «45» → «46»
+- …el 50 %. «» → « Las comisiones tampoco coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni reembolso estándar.»
 - … emisor (del  «06» → «16»
 - …06/10 al  «10/11/2026» → «<FECHA>»
+- …midas.app/mtbill" «» → «,"https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media","https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV…»
+
+### rwadar_catalogo.ofertas 'prosegur-digital-gold' 'https://www.prosegurcrypto.com/digital-gold'
+
+- …valor":"Oro  «» → «separado de los bienes de Prosegur, »
+- …:"Oro en  «» → «un »
+- …Oro en inventario  «común custodiado por Prosegur» → «conjunto de los clientes»
+
+### rwadar_catalogo.ofertas 'aktionariat' 'https://shares.aktionariat.com/invest'
+
+- …"<FECHA>"} «» → «,{"texto":"Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
 
 ### rwadar_catalogo.ofertas 'kraken-xstocks' 'https://eu.kraken.com/xstocks'
 
 - …de más de  «130» → «1.000»
 - …de más de  «130» → «1.000»
+- …LITEx)_20260326.pdf" «» → «,"https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)"»
+- …fechaDato":"2026- «03» → «11»
+- …:"2026-03- «26» → «19»
+- …,"fechaConsulta":" «2026-11-03» → «<FECHA>»
+- …:"https:// «cdn» → «sppdownloaddocumentservice»
+- …https://cdn. «prod.website» → «l»
+- …cdn.prod.website- «files» → «p-a»
+- …website-files.com/ «655f3efc4be468487052e35a» → «api»
+- …files.com/655f3efc4be468487052e35a/ «69c684c9cf6e1070cfdd8851_Backed» → «DownloadDocument/UPI/CH1588667217/BF»
+- …com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed% «20Assets_Final» → «20Final»
+- …69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms% «20Nr» → «20AND»
+- …20Assets_Final%20Terms%20Nr% «20159» → «20Summary»
+- …20Nr%20159%20( «LITEx» → «PDF»
+- …20159%20(LITEx) «_20260326.pdf» → «»
+- …finales del producto  «n.º 159 » → «ANTx »
+- ….º 159 ( «LITEx» → «CH1588667217»
+- …159 (LITEx,  «26» → «19»
+- …(LITEx, 26/ «03» → «11»
+- …con el folleto  «de 2025» → «vigente»
+- …folleto de 2025) « alojadas en la web oficial » → «, publicadas por el agente de pago »
+- … oficial del emisor «; las de 2026 que se leyeron » → «: «The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors)». Las de LITEx (26/03/2026) »
+- …fechaDato":"2026- «10» → «11»
+- …:"2026-10- «30» → «11»
+- …,"fechaConsulta":" «2026-11-03» → «<FECHA>»
+- …, actualizadas el  «30» → «11»
+- …actualizadas el 30/ «10» → «11»
 
 ### rwadar_catalogo.ofertas 'boss-info' 'https://shares.bossinfo.com/'
 
-- …<FECHA> se  «comprobaron » → «comprobó en »
-- … comprobaron el portal «,» → «»
-- … portal, que  «el historial de operaciones es igual byte a byte que el del 12/11 » → «sigue siendo la última »
-- …ninguna operación nueva) « y, en la cadena de bloques, la operación (05/11/2026, 13:35:35 UTC, contrato del mercado entre accionistas) y lo » → «. Lo »
+- …"<FECHA>"} «» → «,{"texto":"Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
+- …El <FECHA>  «se comprobaron el» → «la portada del»
+- … comprobaron el portal «, que el historial de operaciones es igual byte a byte que el del 12/11 » → « sigue enseñándola como la última »
+- … 12/11 ( «ninguna operación nueva) y, en la cadena de bloques, la operación (05/11/» → ««Last trade • 5 Nov »
+- …2026, 13:35 «:35 UTC, contrato del mercado entre accionistas» → «»»
+- …mercado entre accionistas) « y lo » → «. Lo »
 - … recibió quien vendió «:» → «,»
 - …es la comisión) «» → «, se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer»
 
+### rwadar_catalogo.ofertas 'switzerlend' 'https://shares.lend.ch/'
+
+- …"<FECHA>"} «» → «,{"texto":"Son acciones de una empresa que no cotiza en bolsa: puedes perder todo el dinero invertido.","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
+
 ### rwadar_catalogo.ofertas 'vivienda-pluddemanngasse-101-graz' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,58 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"3,76 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -287,6 +428,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'vivienda-sonnleithnergasse-2-viena' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,42 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026","valor":"3,52 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://www.brickwise.at/assets/at0000a2t4d7","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegi…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -303,6 +450,14 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'local-de-estanco-klagenfurt' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,46 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"3,46 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":3.46; rentalSurplus=11828.12","fechaDato":"2026-10-27","fechaConsulta":"2026-11-01","fuente":"https://www.brickwise.at/assets/at0000a2u5v3","alcance":"Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (11828.…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -319,6 +474,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'vivienda-stallhofstra-e-28-gratwein' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"4,42 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"4,11 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -335,6 +497,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'vivienda-schwarzer-weg-18-graz' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,46 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"3,46 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -353,6 +522,14 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'drautalresidenz-paternion' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"5,96 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"4,68 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":4.83; rentalSurplus=5206.62","fechaDato":"2026-11-01","fechaConsulta":"2026-11-01","fuente":"https://www.brickwise.at/assets/at0000a2ypq0","alcance":"Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (5206.62…» → «»
+- …,"valor":" «Genussscheine ...» → «Das Produkt»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - …ese precio había  «3 participaciones» → «1 participación»
 - … por participación ( «3» → «1»
 - …, orden del  «18» → «17»
@@ -379,6 +556,12 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'randhartingergasse-9-viena' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …"<FECHA>"} «» → «,{"texto":"Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,09 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026","valor":"2,47 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://www.brickwise.at/assets/at0000a2zt84","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegi…» → «»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - …ese precio había  «21» → «20»
 - … por participación ( «21» → «20»
 - … ese precio,  «en 2 órdenes» → «orden del 29/06/2026»
@@ -401,6 +584,14 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'apartamento-vacacional-hinterstoder-50' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …"<FECHA>"} «» → «,{"texto":"Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).","tono":"warn","esAntiguedad":false,"verificadaEl":"<FECHA>"}»
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"4,65 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"4,84 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Próxima distribución esperada · 22/10/2026","valor":"15/11/2026","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni ren…» → «»
+- …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":4.1; rentalSurplus=14233.22","fechaDato":"2026-10-31","fechaConsulta":"2026-11-01","fuente":"https://www.brickwise.at/assets/at0000a31kp7","alcance":"Rentabilidad por alquiler esperada que calcula la API: excedente anual previsto (14233.2…» → «»
+- …Übertragung der Token  «erfolgt ausschließlich » → «hat »
+- … durch den Anleger «» → « zu erfolgen»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -420,6 +611,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'vivienda-pottendorfer-stra-e-62-wr-neustadt' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"3,80 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Rentabilidad por alquiler esperada (API de la app) · 22/10/2026","valor":"4,22 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://www.brickwise.at/assets/at0000a324b4","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegi…» → «»
 - …valor":"Desde  «80» → «81»
 - …ese precio había  «11 participaciones» → «1 participación»
 - …,"valor":" «80» → «81»
@@ -443,6 +637,10 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'fotovoltaica-greenpoint' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"6,11 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"6,11 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":6.43; rentalSurplus=10942.56","fechaDato":"2026-11-01","fechaConsulta":"2026-11-01","fuente":"https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32","alcance":"Rendimiento esperado que calcula la API para la instalación: exceden…» → «»
 - … <FECHA> ( «08» → «16»
 - …FECHA> (08: «30» → «54»
 - … (08:30– «08» → «16»
@@ -462,6 +660,10 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 
 ### rwadar_catalogo.ofertas 'fotovoltaica-cohotel' 'https://app.brickwise.at/desktopWeb/marketplace'
 
+- …{"etiqueta":" «Distribución anual prevista anunciada","valor":"5,57 %","fechaDato":null,"fechaConsulta":"2026-09-27","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni rev…» → «»
+- …del proveedor comprobado  «el30» → «el 30»
+- …{"etiqueta":" «Distribución anual esperada · 22/10/2026","valor":"5,57 %","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://app.brickwise.at/desktopWeb/marketplace","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabili…» → «»
+- …{"etiqueta":" «Rentabilidad · consulta 01/11/2026","valor":"\"rentalReturn\":5.11; rentalSurplus=4909.64","fechaDato":"2026-10-08","fechaConsulta":"2026-11-01","fuente":"https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40","alcance":"Rendimiento esperado que calcula la API para la instalación: excedent…» → «»
 - …valor":"Desde  «102» → «110»
 - …ese precio había  «1 participación» → «35 participaciones»
 - …,"valor":" «102» → «110»
@@ -489,7 +691,8 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …Alicante 2 ya  «figuraba como » → «está »
 - …Orihuela Costa),  «abre» → «tiene»
 - …abre la preventa  «» → «abierta desde »
-- …y la suscripción  «» → «empieza »
+- …y la suscripción  «el » → «anunciada del »
+- … 25/11/2026 «» → « al 30/06/2027»
 - …3 · preventa  «» → «abierta »
 - … 18/11/2026 «,» → «;»
 - … El <FECHA> « » → «, con la preventa ya abierta, »
@@ -497,7 +700,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - …Alicante 2 ya  «figuraba como » → «está »
 - …Orihuela Costa),  «abre» → «tiene»
 - …abre la preventa  «» → «abierta desde »
-- …y la suscripción  «» → «empieza »
+- …y la suscripción  «el » → «anunciada del »
+- … 25/11/2026 «» → « al 30/06/2027»
+- …del proveedor comprobado  «el30» → «el 30»
 - …<FECHA>);  «la » → «»
 - …; la preventa  «abre » → «abierta desde »
 - …El <FECHA>  «aún no se podía invertir: » → «»
@@ -505,9 +710,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-20`) a partir de decisiones.js
 - … 18/11/2026 «» → «)»
 - … y la suscripción «, » → « empieza »
 
-## Lo que no se aplicó tal cual (4)
+## Lo que no se aplicó tal cual (8)
 
 - spiko-smart-cash-euro: Quitar la dirección de la ficha GECO c124199 (https://geco.amf-france.org/produit-d-epargne/c124199), que ya no se publica, de la lista de fuentes de la ficha (documentacion-ofertas.json, «fuentes»)
 - spiko-smart-cash-euro: Corregir también el claim del expediente que dice «según el certificado de la AMF y el folleto» (DECISIONES §2: «Igual en el claim del expediente»)
 - varias (Spiko ×3, Kraken, Robinhood y Prosegur Digital Gold): Textos nuevos de la tarjeta que proponen los expedientes (mínimo, acceso desde España o salida) con el mismo fondo y otra redacción
-- spiko-letras-del-tesoro-euro y spiko-letras-del-tesoro-dolar: Valor liquidativo del 20/11 (DECISIONES §2: «si la entrega se monta o se aplica después [de las 18:00 UTC], se vuelve a leer la API y se fecha con la VL del 20/11»)
+- spiko-letras-del-tesoro-euro, spiko-letras-del-tesoro-dolar y spiko-smart-cash-euro: A3 · referencia de la tarjeta «Acceso desde España» con fechaDato 2026-11-13 (y, en Smart Cash, el alcance «Tabla de disponibilidad de Spiko (13/11/2026)…»), sin cambiar el valor
+- randhartingergasse-9-viena, apartamento-vacacional-hinterstoder-50, vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel: A20 · citas del KID («Custodia» y «Qué se adquiere») fuera de las seis fichas de auditoria/brickwise-a.md
+- kraken-xstocks: A6 · descripción «más de 130 acciones» → «más de 1.000 acciones y ETF de EE. UU.»
+- radar (30 fichas): Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)
+- randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50: A21 · tarjeta «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.» (el aviso nuevo de A21 sí entra)

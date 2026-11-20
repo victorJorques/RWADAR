@@ -273,3 +273,25 @@ expresa para, además del catálogo:
   referencia que lo cite (si el motor no puede quitarlo de la lista
   «fuentes», que la referencia cite en su lugar el KID o las Condiciones
   Finales del CDN de GitBook y anotarlo en noAplicado).
+
+## 9. Radar: lo que va en la revisión del catálogo (no en la tabla base)
+
+Los textos base del radar van en la migración 38 (PR aparte). Estos tres
+hallazgos de `auditoria/radar-plataformas.md` están en la capa verificada del
+radar (licencia y acceso) y se cambian en esta entrega con
+`cambios-radar.json` → `plataformas` (campos licenciaRegistro / acceso):
+- A23 · Pax Gold, licencia: «… lista OCC de trust banks activos a 30/09/2026»
+  → «a 31/10/2026» (lista OCC «Trust Banks Active As of 10/31/2026», charter
+  25379, 17:16:15 UTC).
+- A24 · Midas, acceso, aviso y licencia: ya no es cierto que no se obtuvieran
+  los términos finales de mTBILL. Acceso: «Las condiciones finales de mTBILL
+  (17/07/2026) incluyen España entre los países de la oferta pública y no
+  prohíben la venta a minoristas del EEE. Eso no confirma que la web te deje
+  darte de alta.»; quitar «que no hemos podido obtener» y «No se obtuvieron los
+  términos finales vigentes de mTBILL», citando el PDF de las condiciones
+  finales del CDN de GitBook (SHA-256 b1e58001…, 17:22:41 UTC).
+- A25 · Reental, licencia: «Reental dice que su actividad en España no está
+  sujeta a autorización ni registro previo de la CNMV.» (reental.co,
+  17:16:14 UTC: «La actividad no está sujeta a autorización ni registro
+  previo de la CNMV»).
+Si el motor no admite alguno tal cual, a noAplicado con el motivo.

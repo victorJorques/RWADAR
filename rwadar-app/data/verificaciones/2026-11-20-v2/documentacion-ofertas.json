@@ -3204,11 +3204,11 @@
       },
       {
         "etiqueta": "Acceso desde España",
-        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-20",
         "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-        "alcance": "Redacción en castellano del dato comprobado en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria."
+        "alcance": "Comprobado de nuevo en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán."
       },
       {
         "etiqueta": "Salida",
@@ -3448,11 +3448,11 @@
       },
       {
         "etiqueta": "Acceso desde España",
-        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
+        "valor": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-20",
         "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-        "alcance": "Redacción en castellano del dato comprobado en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria."
+        "alcance": "Comprobado de nuevo en la fuente el 20/11/2026. Página de ayuda de Brickwise; documentos de la emisión solo en alemán."
       },
       {
         "etiqueta": "Salida",

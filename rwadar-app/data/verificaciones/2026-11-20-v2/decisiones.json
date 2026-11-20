@@ -2696,27 +2696,6 @@
           ]
         },
         {
-          "tipo": "tarjeta",
-          "etiqueta": "Acceso desde España",
-          "antes": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
-          "despues": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
-          "nota": "Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria.",
-          "prueba": [
-            {
-              "documento": "auditoria/brickwise-b.md",
-              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
-            },
-            {
-              "documento": "auditoria/brickwise-b.md",
-              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
-            },
-            {
-              "documento": "DECISIONES-COORDINADOR.md",
-              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
-            }
-          ]
-        },
-        {
           "tipo": "avisoNuevo",
           "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
           "prueba": [
@@ -2734,10 +2713,7 @@
             }
           ]
         }
-      ],
-      "difiere": {
-        "tarjeta.accesoEspana": "El expediente conserva «no consta que esta emisión se distribuya en España»; la auditoría completa (DECISIONES §6, A21) añade que esta emisión pide número fiscal austriaco."
-      }
+      ]
     },
     "apartamento-vacacional-hinterstoder-50": {
       "decision": "actualizar",
@@ -3001,27 +2977,6 @@
           ]
         },
         {
-          "tipo": "tarjeta",
-          "etiqueta": "Acceso desde España",
-          "antes": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
-          "despues": "Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.",
-          "nota": "Página de ayuda de Brickwise; documentos de la emisión solo en alemán. Según su ayuda «Wie sind die Erträge zu versteuern?» y la app pública (20/11/2026), esta emisión pide un número fiscal austriaco a quien no tributa en Austria.",
-          "prueba": [
-            {
-              "documento": "auditoria/brickwise-b.md",
-              "contiene": "Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt"
-            },
-            {
-              "documento": "auditoria/brickwise-b.md",
-              "contiene": "durch vorherige Bekanntgabe einer Steuernummer in Österreich"
-            },
-            {
-              "documento": "DECISIONES-COORDINADOR.md",
-              "contiene": "A21 · Randhartingergasse y Hinterstoder (productos de capital,"
-            }
-          ]
-        },
-        {
           "tipo": "avisoNuevo",
           "despues": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
           "prueba": [
@@ -3039,10 +2994,7 @@
             }
           ]
         }
-      ],
-      "difiere": {
-        "tarjeta.accesoEspana": "El expediente conserva «no consta que esta emisión se distribuya en España»; la auditoría completa (DECISIONES §6, A21) añade que esta emisión pide número fiscal austriaco."
-      }
+      ]
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
       "decision": "actualizar",
@@ -4194,6 +4146,27 @@
       "slug": "radar (30 fichas)",
       "que": "Correcciones del radar de auditoria/radar-plataformas.md (14 obligatorias y 6 recomendadas)",
       "porque": "DECISIONES §6 las deja fuera de esta entrega: son textos de la tabla base «plataformas» (migración aparte), no de la revisión del catálogo; el motor tampoco cambia textos del radar que no estén en cambios-radar.json."
+    },
+    {
+      "slug": "randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50",
+      "que": "A21 · tarjeta «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE (España incluida); esta emisión pide número fiscal austriaco.» (el aviso nuevo de A21 sí entra)",
+      "porque": "No se puede montar con el motor tal cual: la tarjeta de la web y de la app (resumenOferta) enseña «Sin comprobar si se puede contratar desde España» para cualquier valor que empiece por «Sin confirmar», antes y después, y la comprobación del motor en PGlite exige que la tarjeta enseñe el valor nuevo («la tarjeta enseña «Sin comprobar si se puede contratar desde España» y no «Sin confirmar: … número fiscal austriaco.»»), así que para. La condición del número fiscal austriaco llega al lector por el aviso nuevo de A21; el texto de la tarjeta queda como estaba. Para cambiarlo hace falta montarlo sin el motor (motor:false) o ajustar esa comprobación del motor.",
+      "sigue": [
+        {
+          "slug": "randhartingergasse-9-viena",
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España."
+          ]
+        },
+        {
+          "slug": "apartamento-vacacional-hinterstoder-50",
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España."
+          ]
+        }
+      ]
     }
   ],
   "contraste": {
