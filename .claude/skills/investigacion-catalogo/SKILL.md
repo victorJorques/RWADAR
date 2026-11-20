@@ -123,6 +123,21 @@ PDF y HTML de las fuentes, fuera de Git.
 «Tokenización diaria» guarda una foto de CoinGecko cada día en la rama
 `datos-tokenizacion` y «Publicar web» la incluye.
 
+**Auditoría completa (obligatoria desde el 20/11/2026, orden de Víctor: «que no
+vuelvan a haber textos ni datos falsos»).** En cuanto `DECISIONES-COORDINADOR.md`
+tiene §2, lanza el flujo guardado `auditoria-completa-catalogo` varias veces a
+la vez (2 grupos por lanzamiento): `spiko`, `acciones-oro-tesoro`,
+`brickwise-a`, `brickwise-b`, `suiza-hausera`, `radar-plataformas`,
+`noticias` y `sitio-web` (las tareas de cada grupo, en el ciclo
+`2026-11-20-v2`). Cada auditor abre hoy la fuente de **cada dato visible**
+(no solo de lo que cambia), también los textos `aval` y `nota` del radar, que
+el contraste automático no mira, y la web publicada (por ejemplo, que el
+mercado en directo responda 200). Lo que encuentren con URL, literal y hora va
+a `DECISIONES-COORDINADOR.md` §6 y se aplica en la corrección; lo que no sea de
+la entrega (textos base del radar, web, base del mercado) se arregla en su PR
+el mismo día. El 20/11 encontró 21 correcciones de ofertas, 14 textos falsos
+del radar y el directo del mercado parado desde el 16/11.
+
 ## 2 · Decidir y montar con el motor (30–40 min; 35–50 si la corrección cambia el SQL)
 
 1. Lee los resultados (diario `journal.jsonl` de cada flujo) y escribe

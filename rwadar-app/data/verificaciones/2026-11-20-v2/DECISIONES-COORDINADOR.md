@@ -244,3 +244,18 @@ retención KESt, mínimos «en lote de N», nueva redacción del aviso de
 subordinación, vida útil de Cohotel, piso vacío de Randhartingergasse, «Precio
 de emisión original» de Plüddemanngasse y la fuente del «Plazo» de GreenPoint
 y Cohotel. Quedan anotadas para el próximo ciclo.
+
+## 7. Orden de Víctor de las 17:40 UTC
+
+«Claro. Todo lo falso fuera y actualiza todo lo comentado y publica la
+actualización; que no vuelvan a haber textos ni datos falsos.» Es la orden
+expresa para, además del catálogo:
+- arreglar el mercado en directo (migración 37: el alta de tokens agotaba la
+  secuencia `smallint` de `rwadar_mercado.tokens`; error 2200H desde el 16/11
+  03:33 UTC) y volver a sembrarlo;
+- corregir los textos falsos del radar en la tabla base `plataformas`
+  (migración 38, `TEXTOS-RADAR.md`);
+- corregir los textos desfasados de la web (/cambios, privacidad, rótulos del
+  mercado con fecha cuando el dato no es de hoy);
+- y dejar la auditoría completa como paso fijo de cada ciclo
+  (`.claude/workflows/auditoria-completa-catalogo.js` y la skill).
