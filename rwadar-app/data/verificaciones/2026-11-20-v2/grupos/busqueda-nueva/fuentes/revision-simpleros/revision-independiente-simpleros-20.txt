@@ -1,0 +1,162 @@
+Revisión independiente · candidata-crowdedhero-simpleros-bonos-dlt · 20/11/2026
+Consultas propias del revisor, 21:32:16Z–21:38:17Z, GET normal con curl (agente por defecto,
+TLS verificado), sin cuenta ni sesión. A la CNMV se le pide «accept-language: es» (ACCESO-FUENTES §1).
+La KIIS no se buscó por ninguna vía (ACCESO-FUENTES §1 y §2.5).
+Crudos (fuera de Git; traen nombres de personas, no se publican):
+  grupos/busqueda-nueva/fuentes/crudo/revision-simpleros/  (registro-consultas.tsv con hora, código, tamaño y SHA-256)
+En esta copia se omiten nombres de personas físicas, números personales, IBAN, correos y teléfonos.
+
+=== 1. Registro de consultas (hora UTC · id · HTTP final · bytes · SHA-256 abreviado)
+21:32:16Z p50             200  77705  9246d656…  https://www.crowdedhero.com/project/view?id=50
+21:32:17Z p44             200  75492  5915cf9f…  https://www.crowdedhero.com/project/view?id=44
+21:32:18Z pindex          200  58552  6b6141c1…  https://www.crowdedhero.com/project/index
+21:32:18Z p50es           404  22826  c8624d48…  https://www.crowdedhero.com/es/project/view?id=50  («404 · Back to civilization»)
+21:32:19Z p50de           200  80011  f99dbe7e…  https://www.crowdedhero.com/de/project/view?id=50
+21:32:20Z terminos        200  99476  c0c445e4…f056 (igual que el 11/11 y que el analista)  https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf
+21:32:21Z nyala           200 206104  f91f3a67… (igual que el analista)  https://www.nyala.de/en/products/electronic-securities
+21:32:22Z dlt             200  91606  baba9179…  https://www.crowdedhero.com/legal?category=dlt
+21:32:22Z terms           200 146005  e38216c9…  https://www.crowdedhero.com/legal?category=terms
+21:32:23Z risk            200  77548  9a3db5de…  https://www.crowdedhero.com/legal?category=risk
+21:32:23Z faq             200  92028  41576c9b…  https://www.crowdedhero.com/faq?category=investor
+21:32:24Z tarifas         200  43367  3c81c1e5…  https://www.crowdedhero.com/pricelist/investor-pricelist
+21:32:24Z secundario      200  77696  95aff637…  https://www.crowdedhero.com/secondary-market
+21:32:25Z simpleros-cg    200  65596  86c0fc5d…  https://simpleros.es/condiciones-generales
+21:32:26Z simpleros-home  200  29100  68ada7f2…  https://simpleros.es/
+21:32:26Z simpleros-info  200  40664  e348a2b3…  https://simpleros.es/informacion-sobre-prestamo
+21:32:27Z ariregister     200 297317  452fab8e…  https://ariregister.rik.ee/eng/company/16250495
+21:32:29Z cnmv-psfp       200 150697  fe578b14…e4fb (igual que el 11/11)  https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001
+21:32:30Z esma            200   1486  8648122f… (igual que el 11/11)  https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json
+21:32:31Z bafin           200  25984  e8081056…  https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639
+21:32:32Z lv-registro     200   1462  7018739b…  data.gov.lv datastore_search (registro, q=50203309441) → 0 registros (ver punto 9)
+21:32:33Z lv-balance      200   1524  32d8cdac…  data.gov.lv datastore_search (balance, statement_id 2269545) → 0 registros
+21:32:34Z lv-pyg          200   2229  ab3064f7…  data.gov.lv datastore_search (PyG, statement_id 2269545) → 0 registros
+21:32:35Z cnmv-simpleros  200 211414  846fd4f5…  ResultadoBusqueda?tipo=1&nombre=Simpleros → «No hay datos disponibles», sin tabla
+21:32:36Z cnmv-crowdedhero200 211458  cca22352…  …&nombre=CrowdedHero → «No hay datos disponibles», sin tabla
+21:32:38Z cnmv-audacia    200 211546  5efae2ba…  …&nombre=Audacia%20Capital → «No hay datos disponibles», sin tabla
+21:32:39Z cnmv-lemonway   200 211392  658a86c2…  …&nombre=Lemonway → «No hay datos disponibles», sin tabla
+21:32:40Z cnmv-trading    200 236466  379f05a4…  …&nombre=Trading (control) → tabla gridAdvertencias con 10 filas: el buscador funciona
+21:32:42Z fktk            000      0  —          https://www.fktk.lv/en/market/crowdfunding-service-providers/ltd-crowdedhero-latvia/
+                          → 301 a https://www.bank.lv/ (portada, se pierde la ruta) y «curl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR»
+Extra:
+21:34:08Z ee-2024-14      200  16853  98e64661…  https://ariregister.rik.ee/eng/company/16250495/fiscal_year_report/1:3674585:14/pdf (balance 2024)
+21:34:11Z ee-2024-35      200  13001  1cf72fd9…  https://ariregister.rik.ee/eng/company/16250495/fiscal_year_report/1:3674585:35/pdf (PyG 2024)
+21:35:08Z eurlex-2023-2225 200 678057  https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32023L2225
+21:36:20Z–21:36:54Z  CSV oficiales de data.gov.lv (balance_sheets.csv, income_statements.csv; actualizados a las 21:25Z)
+21:37:42Z gleif           200  https://api.gleif.org/api/v1/lei-records/98450082BEF114765441 y …/984500B08DG03M3EA171
+21:37:48Z bafin-tangany   200  https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Tangany&sucheButtonInstitut=Suche
+21:38:17Z eurlex-2020-1503 200 559146  https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32020R1503
+
+=== 2. Ficha de la 2.ª ronda (p50, 21:32:16Z), literal
+«Simpleros 10,5% Fixed Digital Bonds – €200,000 Round (2nd)» · «Raising now» · «6 Days left» ·
+«€82 500.00 raised» · «82.3%» · «of min. target» · «Min target €100 250.00» · «Max target €200 000.00» ·
+«Annual interest 10.50%» · «Maturity term 30 months» · «Minimum investment €250.00» · «Investors 4»
+«Read the Key Investment Information Sheet before investing.»
+«Proven Profitability · 2025 revenue €1.96M with net profit of €202,505.» · «Fixed Yield Dividends» ·
+«Simpleros offers investors a solid opportunity in the European financial sector.»
+«Spain’s alternative lending and credit market continues to expand as businesses seek flexible financing solutions.»
+«Target Raise €200,000 (Minimum threshold €50,000)»
+Riesgos: «Capital loss risk – You may lose all your invested capital» · «Subordinated bonds – In case of insolvency,
+you are paid after senior creditors» · «No secondary market – High liquidity risk» · «No deposit guarantee or investor
+compensation scheme» · «Regulatory and credit risk in consumer lending sector»
+«This offer has not been reviewed by Latvijas Banka or the European Securities and Markets Authority (ESMA).»
+Bloque «Documents»: en el HTML lleva style="filter: blur(10px)" (5 veces), 4 <button class="project-file"> «Moneyz.csv»
+sin enlace (0 href="#", 0 <a> dentro de los botones), 3 «Lorem ipsum», y encima: «Please note, that only registered and
+Verified investors could access the restricted Project campaign documents.» · «To access full project information please
+log in or verify your account.» Es un marcador borroso detrás del muro de acceso, no una lista de enlaces rotos. Igual en p44.
+Pie: «AGENT NAME is registered in the REGAFI under the number REGAFI NUMBER …» (sin rellenar).
+Copia del 10/11 (2026-11-10-v2/grupos/ampliacion/fuentes/crowdedhero/project-50.txt): «Raised: €82 500.00 82.3% financed …
+4 Shareholders … 4 Days remaining». 11/11 (ACCESO-FUENTES §2.5c): 82.500 €, 3 días.
+
+=== 3. Ficha de la 1.ª ronda (p44, 21:32:17Z) y listado (21:32:18Z)
+«Simpleros | 10,5% Fixed Yield Digital Bonds – €200,000 Round» · «Funded» · «€50 250.00 raised» · «100.5%» ·
+«Min target €50 000.00» · «Max target €200 000.00» · «Investors 9»
+Listado: «€82,500 of €100,250 min. target · 82.3% · €250 min. investment · 4 investors» (2.ª ronda) ·
+«€50,250 of €50,000 min. target · 100.5% · 9 investors» (1.ª ronda) ·
+«Restoration of Zentene Manor … Funded … €450 of €32,040 min. target · 1.4% · 2 investors».
+
+=== 4. Términos de los bonos (PDF del registrador, 21:32:20Z, 5 páginas, «V4.0», 03/07/2026)
+«Offer ID: 984500B08DG03M3EA17100000044» (LEI de la plataforma + 00000044: la oferta 44, que es la 1.ª ronda)
+«Total Volume EUR 500,000 (2,000 units × EUR 250 nominal)» · «First Campaign EUR 200,000 (min. EUR 50,000)»
+«Interest Rate 10.50% p.a. (5.25% per half-year, 30E/360)» · «Maturity Date 15.11.2028» · «Subscription 01.07.2026 – 30.06.2027»
+2.1 «… in the form of Einzeleintragung (single entry) and are registered as a single aggregate entry in the electronic
+securities register … The individual entitlements of each Bondholder are recorded by the Platform on its own books»
+2.2 «… in the event of insolvency of the Issuer, subordinate to all senior creditors.»
+2.3 «The minimum subscription amount is EUR 250 (one Digital Bond).»
+4.1 «… redeemed at 100% of their nominal value … on 15 November 2028» · 4.2 «The Issuer may redeem the Digital Bonds early
+… at any time after 15 November 2027»
+5.3 «A commission of 5.5% of each interest payment is deducted by the Platform … commencing from the second year after the
+Fundraising completion date.» · 5.4 «An annual Digital Asset Fee of 35 basis points (0.35%) on the outstanding nominal value»
+6.2 «The Fundraising shall be deemed successful if at least EUR 50,000 … If the minimum threshold is not reached, all collected
+funds are returned … within 5 business days.» · 6.4 «The entry fee of 1.25% of the invested amount is payable by the subscriber»
+7.1 La prenda la constituye una persona física [nombre omitido] «in favour of the Bondholders, represented by SIA "CrowdedHero
+Latvia" acting as Security Trustee». Esa misma persona firma los términos como «Administradora Única» de Simpleros.
+7.2 «3 bonds issued by Audacia Capital OÜ (Estonia), ISIN EE3300002252, nominal value EUR 100,000 each (aggregate EUR 300,000)»
+7.5 «… exceeds the initial First Campaign target (EUR 200,000), providing a coverage ratio of at least 150%.»
+8.1 «No secondary market is provided by the Issuer or the Platform.» · 8.2 «manual approval by the Custodian»
+Firma por la plataforma: el presidente del consejo [nombre omitido], que es una de las dos personas que la CNMV lista como
+responsables de CrowdedHero (cruce hecho en local, sin copiar nombres).
+
+=== 5. Contrato DLT (21:32:22Z), condiciones (21:32:22Z), FAQ (21:32:23Z) y tarifas (21:32:24Z)
+DLT, definiciones: «issued by “NYALA Digital Asset” AG pursuant to §16 …» · «"KIIS" … available in Latvian, English and German on the Platform.»
+DLT 2.4: «a Reflection Period of 4 calendar days» · 3.3: «The Digital Bonds are registered in the Investor's name … Registration
+constitutes legal ownership» · 5.1[e]: «resident … in an EU/EEA Member State or in a third country imposing equivalent AML/CFT
+obligations» · 5.2[b]: «there is no secondary market for Digital Bonds; they are issued under a 'buy and hold' model» ·
+6.1: «All fees … are described in Part G of the KIIS» · 7.2: «A transfer fee applies as specified in the KIIS.» ·
+9.1: CrowdedHero es «record-keeper of individual Investor entitlements» y «Security Trustee» · 10.1: prevalecen «(1) Bond Conditions».
+Condiciones 6.1.6: «be residing and/or registered in a Member State or in a third-party country …» · 11.5: «We may offer different
+content and services on the Platform to the Investors depending on their residence country.»
+FAQ: «Can I invest from abroad? Yes, you can. Investors residing outside Latvia can invest in offers available on CrowdedHero, with
+the exception of investors based in the United States»
+Tarifas: «All investments · Administration* · 1.25%» · «Equity model · On success & dividends · 5.5%» · «Bond model · Digital
+Asset Fee (annual) · 0.35%» · «Bond model · Interest (semi-annual) · 0.55% · Of the interest (coupon) amount»
+Mercado secundario: «A bulletin board where CrowdedHero investors sell shares …»; todos los anuncios son de acciones («Shares»).
+
+=== 6. Supervisores y registros
+CNMV (21:32:29Z): «CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA)» · «Nº Registro oficial 1» · «01/09/2022» · «LETONIA» ·
+«Responsable: [dos personas, nombres omitidos]».
+ESMA (21:32:30Z): «ae_entityName: SIA CrowdedHero Latvia» · «ae_competentAuthority: Latvijas Banka» · «ae_status: Active» ·
+«ae_authorisationNotificationDateStr: 16/08/2022» · «ae_hostMemberStates: ["EUROPEAN UNION"]» · «ae_lastUpdateStr: 22/02/2024».
+BaFin (21:32:31Z): «Smart Registry GmbH» · «Kryptowertpapierregisterführer, Sehr kleines Institut» · «Bafin-ID: 10160639» ·
+«Kryptowertpapierregisterführung (§ 1 Abs. 1a Satz 2 Nr. 8 KWG) 19.08.2026».
+BaFin (21:37:48Z): «Tangany GmbH · Finanzdienstleistungsinstitut, Kryptoverwahrer, Kryptowertedienstleister, …».
+NYALA (21:32:21Z): «Simpleros Bonds X · EUR 500.000,00 · DE000A4EXNM2 · 10,5 % · EUR 250 · July 1, 2026 · November 15, 2028».
+GLEIF (21:37:42Z): «SIMPLEROS S.L.» · ES · BARCELONA · ACTIVE · «B-551677-8» · ISSUED, alta 19/05/2026;
+«SIA "CrowdedHero Latvia"» · LV · ACTIVE · ISSUED, alta 25/03/2022.
+
+=== 7. Emisor (web propia)
+Condiciones generales (21:32:25Z): «N.I.F.) B-01787720, inscrita en el Registro Mercantil de Barcelona, al Tomo 47434, Folio 134,
+Hoja 551677» · préstamos sujetos a «la Ley 16/2011, de 24 de junio, de Contratos de Créditos al Consumo».
+Portada (21:32:26Z): «Importe Hasta 1000 €» · «Plazo Hasta 365 días» · «Tu primer crédito de hasta 300€» · «Historial crediticio no importa».
+Información del préstamo (21:32:26Z): «Tipo de Interés Nominal (TIN) 365%» · «TAE 2321%» · «Interés de demora: 3% diario …» ·
+«Autoridad de supervisión: No está sujeto a supervisión por parte del Banco de España.»
+
+=== 8. Audacia Capital OÜ (registro mercantil de Estonia, 21:32:27Z; cuentas 2024, 21:34:08Z–21:34:11Z)
+«Legal person has non-submitted annual reports.» · «Capital is 20 000 € · Established without making contribution» ·
+«Registered 14.06.2021» · «2025 · 01.01.2025 - 31.12.2025 · Not submitted (due date 30.06.2026)» ·
+«Business and other management consultancy activities 70201» · Ingresos: 2024 30 200; 2023 0; 2022 0; 2021 0 ·
+Resultado: 2024 10 558; 2023 −20 455; 2022 −29 798; 2021 −2 914.
+Socios al 50 % / consejo / titulares reales («Direct ownership»): dos personas residentes en Letonia [nombres omitidos], las
+mismas dos que la CNMV lista como responsables de CrowdedHero (cruce en local).
+Balance a 31/12/2024: «CASH AND BANK 2 034» · «Receivables and prepayments [no corriente] 275 000» · «ASSETS TOTAL 277 503» ·
+«Payables and prepayments [largo plazo] 300 000» · «LIABILITIES TOTAL 300 112» · «Equity or Net assets -22 609».
+PyG 2024: «NET SALES 30 200» · «Interest expenses -15 160» · «NET PROFIT (LOSS) 10 558».
+Lectura: la deuda a largo plazo de Audacia (300.000 €) coincide con el nominal de los 3 bonos dados en prenda; su único activo
+relevante es un crédito a largo plazo de 275.000 € cuyo deudor no figura en el extracto público.
+
+=== 9. Cuentas de la plataforma (data.gov.lv)
+La API datastore_search devolvió 200 con 0 registros a las 21:32–21:35Z: los ficheros se actualizaron a las 21:25Z
+(resource_show: last_modified 2026-11-20T21:25:31Z) y el almacén se estaba recargando (total del registro: 282.200 filas a las
+21:34:38Z, 306.850 a las 21:35:19Z). Mismo dato leído en los CSV oficiales del mismo recurso (21:36:20Z–21:36:54Z):
+financial_statements.csv: 50203309441 · 2025 · «employees 2» · presentado 2026-05-26 (statement 2269545); 2024 · 2 empleados (2076497).
+balance_sheets.csv, 2025: «cash 2121» · «total_assets 35150» · «current_liabilities 86235» · «equity -51085»;
+2024: «cash 13474» · «total_assets 39168» · «equity 17639».
+income_statements.csv, 2025: «net_turnover 39322» · «net_income -68723»; 2024: «net_turnover 113930» · «net_income -28737».
+
+=== 10. Normas
+Reglamento (UE) 2020/1503, art. 23.3 (EUR-Lex, 21:38:17Z): «Cuando un proveedor de servicios de financiación participativa
+publicite una oferta … en otro Estado miembro, la ficha de datos fundamentales de la inversión deberá estar disponible en al
+menos una de las lenguas oficiales de dicho Estado miembro o en una lengua aceptada por las autoridades competentes de ese Estado miembro.»
+Directiva (UE) 2023/2225 (EUR-Lex, 21:35:08Z): art. 48: «Aplicarán dichas medidas a partir del 20 de noviembre de 2026.» ·
+art. 37.1: «Los Estados miembros velarán por que los prestamistas … estén sujetos a un procedimiento de reconocimiento adecuado,
+a mecanismos de registro y supervisión …» · art. 31.1: «… no se pueda imponer a los consumidores unos tipos deudores, tasas
+anuales equivalentes o costes totales de crédito excesivamente elevados …, tales como límites máximos.»
