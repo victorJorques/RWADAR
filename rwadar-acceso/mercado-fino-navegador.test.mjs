@@ -155,7 +155,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         // La cabecera: la cifra grande es el último punto (41.816 M$) y dice la hora de España de la lectura.
         assert.equal(plano(await pagina.textContent('.mk-cifra-num')), plano(modelo.millones(41815579529)));
         assert.equal(await pagina.textContent('.mk-sub'), 'Suma de los 30 mayores tokens con historia completa\u00a0· 13/11/2026, 16:05 (hora de España)');
-        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /^En millones de dólares \(M\$\)\. Datos: CoinGecko · serie hasta el 13\/11\/2026, 16:05 \(hora de España\) · total de la categoría:/);
+        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /^En millones de dólares \(M\$\)\. Datos: CoinGecko · categoría «Tokenized Assets» · serie hasta el 13\/11\/2026, 16:05 \(hora de España\) · total de la categoría:/);
         // Las siete pestañas tienen datos (24 h, por la fina) y 1 M sigue siendo la de partida.
         assert.deepEqual(await pagina.$$eval('.mk-pestana', bs => bs.map(b => [b.textContent, b.disabled, b.getAttribute('aria-pressed')])),
           [['24 h', false, 'false'], ['1 S', false, 'false'], ['1 M', false, 'true'], ['3 M', false, 'false'], ['6 M', false, 'false'], ['2026', false, 'false'], ['1 A', false, 'false']]);
@@ -214,7 +214,10 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         // Datos clave con 24 h: el valor con su hora; el cambio en 24 h, el de la pestaña; el máximo y el mínimo, con día y hora.
         await elegir(pagina, '1d');
         const g24 = modelo.graficoPestana(UNIDA, '1d');
-        assert.deepEqual(await datoClave(pagina, 'Valor hoy (30 mayores)'), { valor: modelo.millones(41815579529), extra: '13/11/2026, 16:05' });
+        // La página va con el reloj real y el dato es del 13/11: «Valor el 13/11», nunca «Valor hoy» (auditoría del 20/11/2026).
+        const rotValor = modelo.rotuloDato('valor', { valor: 41815579529, fecha: '2026-11-13', t: '2026-11-13T15:05Z', fuente: 'serie' }, { incluidos: 30 });
+        assert.match(rotValor, /^Valor el 13\/11(\/2026)? \(30 mayores\)$/);
+        assert.deepEqual(await datoClave(pagina, rotValor), { valor: modelo.millones(41815579529), extra: '13/11/2026, 16:05' });
         const c24 = await datoClave(pagina, 'Cambio en 24 h');
         assert.deepEqual([plano(c24.valor), c24.extra], [plano('▼' + g24.cambioTexto), '30 mayores']);
         assert.deepEqual(await datoClave(pagina, 'Máximo del periodo'), { valor: modelo.millones(g24.estadisticas.max.valor), extra: modelo.textoInstante(g24.estadisticas.max, 'es', '1h') });
@@ -240,7 +243,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
           if (!tactil) await pagina.mouse.move(0, 0);
         }
         assert.deepEqual(await pagina.$$eval('.mk-pestana', bs => bs.map(b => b.textContent)), ['24H', '1W', '1M', '3M', '6M', 'YTD', '1Y']);
-        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /Data: CoinGecko · series to 13 Nov 2026, 16:05 \(Spain time\)/);
+        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /Data: CoinGecko · "Tokenized Assets" category · series to 13 Nov 2026, 16:05 \(Spain time\)/);
         assert.equal((await datoClave(pagina, 'Period high')).extra, modelo.textoInstante(modelo.graficoPestana(UNIDA, '1s', 'en').estadisticas.max, 'en', '1h'));
         await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
         await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Mercado de activos tokenizados');
@@ -258,7 +261,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         assert.deepEqual([ini.res, ini.puntos, ini.caja, ini.grosor], ['1h', 721, `0 0 ${tactil ? 112 : 600} 44`, '1.25px'], `${ancho}: Inicio`);
         assert.equal(plano(ini.cifra), plano(modelo.millones(41815579529)));
         assert.equal(plano(ini.cambio), plano({ sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto));
-        assert.equal(plano(ini.fuente), 'Datos: CoinGecko · serie hasta el 13/11/2026, 16:05 (hora de España)');
+        assert.equal(plano(ini.fuente), 'Datos: CoinGecko · categoría «Tokenized Assets» · serie hasta el 13/11/2026, 16:05 (hora de España)');
         assert.deepEqual([ini.aviso, ini.anchoPagina], [null, ancho]);
         assert.deepEqual(await pagina.evaluate(() => window.__csp), [], `${ancho}: nada bloqueado por la CSP`);
         assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
@@ -301,7 +304,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         assert.deepEqual([m.resolucion, m.puntos], ['1d', g1mSola.puntos.length], caso);
         assert.deepEqual(await pagina.$$eval('.mk-pestana:disabled', bs => bs.map(b => b.textContent)), ['24 h'], `${caso}: solo 24 h, desactivada`);
         assert.equal(await pagina.textContent('.mk-sub'), 'Suma de los 30 mayores tokens con historia completa\u00a0· 13/11/2026', caso);
-        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /Datos: CoinGecko · serie diaria hasta el 13\/11\/2026 ·/, caso);
+        assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /Datos: CoinGecko · categoría «Tokenized Assets» · serie diaria hasta el 13\/11\/2026 ·/, caso);
         const c = await cruzEn(pagina, 0.5, true);
         assert.match(c.fecha, FORMATO['1d'], caso);
         assert.equal(c.texto, `${modelo.fechaCorta(g1mSola.puntos[c.indice].fecha)}: ${modelo.millonesHablados(g1mSola.puntos[c.indice].valor)}`, caso);

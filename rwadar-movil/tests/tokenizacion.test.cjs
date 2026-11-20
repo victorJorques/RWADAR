@@ -436,13 +436,13 @@ test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pesta
   assert.match(t.graficoPestana(SERIE, '1a').marcasFechas[0].texto, /^[a-z]{3} \d{4}$/, '«dic 2025», con el año entero');
   const seguidos = [...Array(10)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2026-11-01T00:00:00Z') + i * DIA), valor: 4e10, tokens: 1 }));
   const base = { ...SERIE, pedidos: 40, incluidos: 40, discontinuos: 0, tokens: [...Array(40)].map((_, i) => 'tk-' + i), cobertura: 93.2, puntos: seguidos };
-  assert.equal(t.notaSerie(base), 'Suma de los 40 mayores tokens de activos reales que sigue CoinGecko (93\u00a0% del total de la categoría hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.');
+  assert.equal(t.notaSerie(base), 'Suma de los 40 mayores tokens de la categoría «Tokenized Assets» de CoinGecko (93\u00a0% del total de la categoría). Si un token empezó a cotizar dentro del periodo, entra ese día.');
   assert.match(t.notaSerie({ ...base, incluidos: 32, discontinuos: 8, tokens: base.tokens.slice(0, 32), cobertura: 86.3 }),
-    /^Suma de 32 de los 40 mayores tokens de activos reales que sigue CoinGecko \(86\s% del total de la categoría hoy\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
+    /^Suma de 32 de los 40 mayores tokens de la categoría «Tokenized Assets» de CoinGecko \(86\s% del total de la categoría\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 37, discontinuos: 1, tokens: base.tokens.slice(0, 37) }), /Quedan fuera 1 a los que les faltan días en CoinGecko\. No se pudieron leer 2\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 39, tokens: base.tokens.slice(0, 39) }, 'en'), /^Sum of 39 of the 40 largest .* 1 could not be read\.$/);
   assert.match(t.notaSerie({ ...base, puntos: seguidos.filter((_, i) => i !== 4 && i !== 6) }), /\. Faltan el \d\d\/\d\d\/\d{4} y el \d\d\/\d\d\/\d{4}: esos días no hay dato completo y no se pintan\.$/);
-  assert.match(t.notaSerie(SERIE), /^Suma de \d+ de los 40 mayores tokens de activos reales que sigue CoinGecko/);
+  assert.match(t.notaSerie(SERIE), /^Suma de \d+ de los 40 mayores tokens de la categoría «Tokenized Assets» de CoinGecko \(\d+\s% del total de la categoría\)\./);
   assert.equal(t.graficoPestana({ version: 2 }, '1m'), null);
 });
 
@@ -519,6 +519,55 @@ test('cabecera: «Cambio en 24 h» sale de la serie si sus dos últimos días so
   assert.deepEqual(t.cambio24h(conHueco, vivo), { cambio: null, fuente: null, desde: null, hasta: null }, 'serie con hueco y CoinGecko disparatado: «—»');
   assert.deepEqual(t.cambio24h(conHueco, { ...vivo, total: { valor: 1, cambio24h: -0.8626 } }), { cambio: -0.8626, fuente: 'coingecko', desde: null, hasta: null });
   assert.equal(t.cambio24h(null, null).cambio, null);
+});
+
+test('los rótulos con fecha: «hoy» solo con un dato de hoy en España y no de una foto guardada; si no, el día (auditoría del 20/11/2026)', () => {
+  const ahora = Date.parse('2026-11-20T12:00:00Z'); // 13:00 en España
+  const vivo = (actualizado, fuente = 'coingecko') => ({ ...RESUMEN, fuente, actualizado });
+  const cifra = (t0) => ({ valor: 42947e6, fecha: t0.slice(0, 10), t: t0, fuente: 'serie' });
+  // De hoy, en directo: como hasta ahora.
+  assert.equal(t.datoDeHoy(vivo('2026-11-20T10:05:00.000Z'), ahora), true);
+  assert.equal(t.rotuloDato('total', vivo('2026-11-20T10:05:00.000Z'), { ahora }), 'Total de la categoría hoy');
+  assert.equal(t.rotuloDato('total', vivo('2026-11-20T10:05:00.000Z'), { idioma: 'en', ahora }), 'Category total today');
+  assert.equal(t.rotuloDato('valor', cifra('2026-11-20T10:05Z'), { incluidos: 29, ahora }), 'Valor hoy (29 mayores)');
+  assert.equal(t.rotuloDato('valor', cifra('2026-11-20T10:05Z'), { idioma: 'en', incluidos: 29, ahora }), 'Value today (29 largest)');
+  assert.equal(t.rotuloDato('copia', cifra('2026-11-20T10:05Z'), { ahora }), 'copia de las 11:05');
+  assert.equal(t.rotuloDato('copia', cifra('2026-11-20T10:05Z'), { idioma: 'en', ahora }), 'copy from 11:05');
+  assert.equal(t.rotuloDato('tipos', vivo('2026-11-20T10:05:00.000Z'), { ahora }), 'Hoy. Un mismo token puede contar en dos tipos, así que las cifras no suman el total.');
+  // De ayer: el día (y la hora, si la hay), nunca «hoy».
+  assert.equal(t.datoDeHoy(vivo('2026-11-19T14:00:00.000Z'), ahora), false);
+  assert.equal(t.rotuloDato('total', vivo('2026-11-19T14:00:00.000Z'), { ahora }), 'Total de la categoría (foto del 19/11, 15:00)');
+  assert.equal(t.rotuloDato('total', vivo('2026-11-19T14:00:00.000Z'), { idioma: 'en', ahora }), 'Category total (snapshot from 19 Nov, 15:00)');
+  assert.equal(t.rotuloDato('valor', cifra('2026-11-19T14:00Z'), { incluidos: 29, ahora }), 'Valor el 19/11 (29 mayores)');
+  assert.equal(t.rotuloDato('valor', cifra('2026-11-19T14:00Z'), { idioma: 'en', incluidos: 29, ahora }), 'Value on 19 Nov (29 largest)');
+  assert.equal(t.rotuloDato('valor', { valor: 1, fecha: '2026-11-19', fuente: 'serie' }, { incluidos: 29, ahora }), 'Valor el 19/11 (29 mayores)', 'la diaria, sin hora');
+  assert.equal(t.rotuloDato('copia', cifra('2026-11-19T14:00Z'), { ahora }), 'copia del 19/11, 15:00');
+  assert.equal(t.rotuloDato('copia', cifra('2026-11-19T14:00Z'), { idioma: 'en', ahora }), 'copy from 19 Nov, 15:00');
+  assert.equal(t.rotuloDato('copia', { valor: 1, fecha: '2026-11-19', fuente: 'serie' }, { ahora }), 'copia publicada', 'sin hora, como hasta ahora');
+  assert.equal(t.rotuloDato('tipos', vivo('2026-11-19T14:00:00.000Z'), { idioma: 'en', ahora }), "Snapshot from 19 Nov, 15:00. A token can count in two types, so the figures don't add up to the total.");
+  // La foto guardada lleva su fecha aunque sea de hoy (el caso del 20/11: la foto del 14/11 salía como «hoy»).
+  assert.equal(t.datoDeHoy(vivo('2026-11-20T10:05:00.000Z', 'foto-guardada'), ahora), false);
+  assert.equal(t.rotuloDato('total', vivo('2026-11-20T10:05:00.000Z', 'foto-guardada'), { ahora }), 'Total de la categoría (foto del 20/11, 11:05)');
+  assert.equal(t.rotuloDato('total', vivo('2026-11-14T14:00:00.000Z', 'foto-guardada'), { ahora }), 'Total de la categoría (foto del 14/11, 15:00)');
+  assert.equal(t.rotuloDato('tipos', vivo('2026-11-14T14:00:00.000Z', 'foto-guardada'), { ahora }), 'Foto del 14/11, 15:00. Un mismo token puede contar en dos tipos, así que las cifras no suman el total.');
+  // La medianoche de Madrid, no la de UTC: a las 00:30 del 21 en España (23:30 UTC del 20), el dato de las 23:50 del 20 ya es de ayer.
+  const pasadaMedianoche = Date.parse('2026-11-20T23:30:00Z');
+  assert.equal(t.rotuloDato('total', vivo('2026-11-20T22:50:00.000Z'), { ahora: pasadaMedianoche }), 'Total de la categoría (foto del 20/11, 23:50)');
+  assert.equal(t.rotuloDato('copia', cifra('2026-11-20T22:50Z'), { ahora: pasadaMedianoche }), 'copia del 20/11, 23:50');
+  assert.equal(t.rotuloDato('total', vivo('2026-11-20T23:10:00.000Z'), { ahora: pasadaMedianoche }), 'Total de la categoría hoy', 'las 00:10 del 21 en España ya son de hoy');
+  assert.equal(t.rotuloDato('valor', cifra('2026-11-20T23:10Z'), { incluidos: 29, ahora: pasadaMedianoche }), 'Valor hoy (29 mayores)');
+  // En verano (UTC+2): las 22:30 UTC del 1/7 son las 00:30 del 2/7 en España.
+  assert.equal(t.rotuloDato('copia', cifra('2026-07-01T21:50Z'), { ahora: Date.parse('2026-07-01T22:30:00Z') }), 'copia del 01/07, 23:50');
+  // Otro año: con el año.
+  assert.equal(t.rotuloDato('total', vivo('2025-12-31T14:00:00.000Z'), { ahora: Date.parse('2026-01-01T12:00:00Z') }), 'Total de la categoría (foto del 31/12/2025, 15:00)');
+  // Sin dato, sin «hoy» ni fecha inventada.
+  assert.equal(t.rotuloDato('total', null, { ahora }), 'Total de la categoría');
+  assert.equal(t.rotuloDato('copia', null, { ahora }), 'copia publicada');
+  // La categoría de CoinGecko que de verdad se usa: «Tokenized Assets» (tokenized-products).
+  assert.equal(t.TOTAL.id, 'tokenized-products');
+  assert.equal(t.textoCategoria('es'), 'categoría «Tokenized Assets»');
+  assert.equal(t.textoCategoria('en'), '"Tokenized Assets" category');
+  assert.match(t.notaSerie(SERIE, 'en'), /^Sum of 29 of the 40 largest tokens in CoinGecko's "Tokenized Assets" category \(86% of the category total\)\./);
 });
 
 test('el total de la categoría, con su hora («hoy» solo si es de hoy), y lo que mide el % del periodo', () => {
@@ -700,11 +749,16 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   assert.deepEqual(pestanas.map((n) => !!n.props.accessibilityState.disabled), [true, false, false, false, false, false, false]);
   assert.ok(nodos(arbol).some((n) => n?.props?.accessibilityRole === 'tablist'));
   // Datos clave: dos cifras con su nombre; 24 h de la serie (−0,1 %, nunca el +124 % de CoinGecko).
+  // Los datos de la prueba no son de hoy: los rótulos llevan su día, nunca «hoy» (auditoría del 20/11/2026).
   const claves = nodos(arbol).filter((n) => n?.props?.style?.[0]?.width === '47%').map((n) => n.props.accessibilityLabel);
-  assert.deepEqual(claves.map((c) => c.split(':')[0]), [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo',
+  const diaValor = t.fechaBreve(ULTIMO.fecha, 'es', t.horaEspana(Date.now()).fecha);
+  const rotuloTotal = t.rotuloDato('total', RESUMEN, { idioma: 'es' });
+  assert.match(rotuloTotal, /^Total de la categoría \(foto del 10\/11(\/2026)?, \d\d:\d\d\)$/);
+  assert.deepEqual(claves.map((c) => c.split(': ')[0]), [`Valor el ${diaValor} (${SERIE.incluidos} mayores)`, rotuloTotal, 'Cambio en 24 h', 'Máximo del periodo',
     'Mínimo del periodo', 'Tokens en el gráfico', 'El tipo que más pesa']);
-  assert.equal(claves[0], `Valor hoy (${SERIE.incluidos} mayores): 42.947\u00a0M$: ${t.fechaCorta(ULTIMO.fecha)}`);
-  assert.equal(claves[1], 'Total de la categoría hoy: 49.684\u00a0M$: todos los tokens · CoinGecko');
+  assert.ok(!claves.some((c) => /\bhoy\b/.test(c)), 'ningún «hoy» con datos de otro día');
+  assert.equal(claves[0], `Valor el ${diaValor} (${SERIE.incluidos} mayores): 42.947\u00a0M$: ${t.fechaCorta(ULTIMO.fecha)}`);
+  assert.equal(claves[1], `${rotuloTotal}: 49.684\u00a0M$: todos los tokens · CoinGecko`);
   assert.equal(claves[2], `Cambio en 24 h: ▼ −0,1\u00a0%: ${SERIE.incluidos} mayores`);
   assert.equal(claves[5], `Tokens en el gráfico: ${SERIE.incluidos}: 86 % del total`, 'el mismo 86 % que la nota');
   assert.ok(NUM(claves[3].split(': ')[1]) >= NUM(claves[0].split(': ')[1]), 'el máximo del periodo no es menor que el valor de hoy');
@@ -725,7 +779,7 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   assert.equal(porId('mercado-como').props.accessibilityState.expanded, true);
   assert.equal(nodos(arbol).filter((n) => /^(Crédito privado|Letras del Tesoro): /.test(n?.props?.accessibilityLabel || '')).length, 2, 'desplegados, los tipos');
   const fuente = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'link');
-  assert.equal(fuente.props.accessibilityLabel, `En millones de dólares (M$). Datos: CoinGecko · serie diaria hasta el ${t.fechaCorta(ULTIMO.fecha)} · total de la categoría: ${t.cuandoDato(RESUMEN, 'es')}`);
+  assert.equal(fuente.props.accessibilityLabel, `En millones de dólares (M$). Datos: CoinGecko · categoría «Tokenized Assets» · serie diaria hasta el ${t.fechaCorta(ULTIMO.fecha)} · total de la categoría: ${t.cuandoDato(RESUMEN, 'es')}`);
   fuente.props.onPress();
   assert.deepEqual(enlaces, ['https://www.coingecko.com/']);
   // La cruz en el último día dice la cifra grande; en cada pestaña, el máximo es ≥ la cifra grande.
@@ -1005,8 +1059,10 @@ test('con las series finas: «24 h» activa, cada pestaña con la más fina, la 
       // La cifra grande y «Valor hoy», con la hora de España del último punto (09:45 UTC = 10:45 en noviembre).
       const dia = en ? '11 Nov 2026' : '11/11/2026';
       assert.ok(textoDe(porTestID(v.arbol, 'mercado-subtitulo')).endsWith(`· ${dia}, 10:45 ${en ? '(Spain time)' : '(hora de España)'}`));
-      assert.equal(claveDe(v.arbol, en ? 'Value today (29 largest)' : 'Valor hoy (29 mayores)'),
-        `${en ? 'Value today (29 largest)' : 'Valor hoy (29 mayores)'}: ${t.millones(SERIE.puntos.at(-1).valor, lengua)}: ${dia}, 10:45`);
+      // El dato de la prueba no es de hoy: «Valor el 11/11», no «Valor hoy».
+      const breve = t.fechaBreve('2026-11-11', lengua, t.horaEspana(Date.now()).fecha);
+      const rotuloValor = en ? `Value on ${breve} (29 largest)` : `Valor el ${breve} (29 mayores)`;
+      assert.equal(claveDe(v.arbol, rotuloValor), `${rotuloValor}: ${t.millones(SERIE.puntos.at(-1).valor, lengua)}: ${dia}, 10:45`);
       const fuente = nodos(v.arbol).find((n) => n?.props?.accessibilityRole === 'link').props.accessibilityLabel;
       assert.ok(fuente.includes(en ? `series to ${dia}, 10:45 (Spain time)` : `serie hasta el ${dia}, 10:45 (hora de España)`), fuente);
       // 24 h: la serie de 5 minutos; el eje con horas en punto y sin claves repetidas (varias marcas son del mismo día).
@@ -1096,7 +1152,9 @@ test('en directo: sin aviso; con el directo encendido y fallando, la copia publi
     await esperar(); await esperar();
     const tarjeta = otro.pintar(Tarjeta, props);
     const copia = porTestID(tarjeta, 'mercado-cotizacion-copia');
-    assert.equal(copia ? textoDe(copia) : null, aviso ? `copia de las ${hora}` : null, `tarjeta ${origen} ${motivo}`);
+    // La copia de la prueba no es de hoy: «copia del 11/11, 10:45» (con «copia de las …» no se sabía de qué día).
+    const diaCopia = t.fechaBreve(t.horaEspana(fino.ms).fecha, 'es', t.horaEspana(Date.now()).fecha);
+    assert.equal(copia ? textoDe(copia) : null, aviso ? `copia del ${diaCopia}, ${hora}` : null, `tarjeta ${origen} ${motivo}`);
   }
 });
 

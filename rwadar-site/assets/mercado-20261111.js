@@ -244,7 +244,8 @@
     p.append(el('span', '', tx('Datos:', 'Data:')), ' ');
     const a = el('a', '', 'CoinGecko');
     a.href = modelo.FUENTE.url; a.target = '_blank'; a.rel = 'noopener nofollow';
-    p.append(a);
+    // Qué categoría de CoinGecko: «Tokenized Assets» (tokenized-products), no «Real World Assets (RWA)».
+    p.append(a, ' · ', el('span', '', modelo.textoCategoria(idioma())));
     // Con la serie fina, hasta qué hora (la de la cifra grande); si no, hasta qué día.
     const hoy = valorHoy();
     if (serie && hoy?.t) p.append(' · ', el('span', '', tx('serie hasta el', 'series to') + ' ' + fechaHora(modelo.msMinuto(hoy.t)) + tx(' (hora de España)', ' (Spain time)')));
@@ -485,9 +486,10 @@
     const hoy = valorHoy(), lengua = idioma();
     // Dos cifras distintas, cada una con su nombre: la de la serie (la cifra grande) y la de toda la categoría.
     // Con la serie fina, de cuándo es: el día y la hora de España («13/11/2026, 16:05»).
-    if (serie && hoy?.fuente === 'serie') fila(tx(`Valor hoy (${serie.incluidos} mayores)`, `Value today (${serie.incluidos} largest)`), modelo.millones(hoy.valor, lengua),
+    // «hoy» solo si el dato es de hoy en España y no de una foto guardada; si no, el rótulo lleva el día (rotuloDato).
+    if (serie && hoy?.fuente === 'serie') fila(modelo.rotuloDato('valor', hoy, { idioma: lengua, incluidos: serie.incluidos }), modelo.millones(hoy.valor, lengua),
       hoy.t ? fechaHora(modelo.msMinuto(hoy.t)) : modelo.fechaCorta(hoy.fecha, lengua));
-    fila(tx('Total de la categoría hoy', 'Category total today'), vivo ? modelo.millones(vivo.total.valor, lengua) : '—',
+    fila(modelo.rotuloDato('total', vivo, { idioma: lengua }), vivo ? modelo.millones(vivo.total.valor, lengua) : '—',
       vivo ? tx('todos los tokens · CoinGecko', 'all tokens · CoinGecko') : null);
     // 24 h: con la serie fina, el de la pestaña «24 h» (el mismo que se pinta); si no, el de la diaria si sus dos
     // últimos días son seguidos; si no, el de CoinGecko si es creíble; si no, «—».
@@ -530,8 +532,8 @@
     caja.setAttribute('aria-labelledby', 'mkTiposTit');
     const h = el('h2', 'mk-h2', tx('Por tipo de activo', 'By asset type'));
     h.id = 'mkTiposTit';
-    caja.append(h, el('p', 'mk-h2-sub', tx('Hoy. Un mismo token puede contar en dos tipos, así que las cifras no suman el total.',
-      "Today. A token can count in two types, so the figures don't add up to the total.")));
+    // «Hoy.» solo si los tipos son de hoy; si son de una foto guardada, de qué día (rotuloDato).
+    caja.append(h, el('p', 'mk-h2-sub', modelo.rotuloDato('tipos', vivo, { idioma: idioma() })));
     const plegable = el('details', 'mk-tipos-det');
     plegable.open = tiposAbierto ?? matchMedia('(min-width:768px)').matches;
     plegable.addEventListener('toggle', () => { tiposAbierto = plegable.open; });
@@ -700,8 +702,8 @@
     der.append(el('span', 'mk-ct-cifra', modelo.millones(hoy.valor, idioma())));
     if (g) der.append(cambio(g, 'mk-ct-cambio'), el('span', 'mk-ct-periodo', g.periodoTexto));
     if (atrasada()) der.append(el('span', 'mk-ct-periodo mk-ct-hasta', tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
-    // Sin el directo (encendido y fallando): «copia de las 16:05», la de la copia publicada.
-    else if (avisoDirecto()) der.append(el('span', 'mk-ct-periodo mk-ct-copia', hoy.t ? tx('copia de las ', 'copy from ') + modelo.horaEspana(modelo.msMinuto(hoy.t)).hora : tx('copia publicada', 'published copy')));
+    // Sin el directo (encendido y fallando): «copia de las 16:05» si es de hoy; si no, «copia del 14/11, 15:00» (rotuloDato).
+    else if (avisoDirecto()) der.append(el('span', 'mk-ct-periodo mk-ct-copia', modelo.rotuloDato('copia', hoy, { idioma: idioma() })));
     a.append(izq);
     if (g) a.append(minigrafico(g));
     a.append(der);
