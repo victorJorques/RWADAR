@@ -1,0 +1,224 @@
+DOCUMENTO DE INFORMACIÓN CLAVE (“KID”)
+PRODUCTO
+
+
+  FINALIDAD
+  El presente documento le proporciona información clave sobre este producto de inversión. No constituye material publicitario. La
+  información contenida en él es exigida por la legislación vigente con el fin de ayudarle a comprender la naturaleza, los riesgos,
+  los costes, las ganancias y las pérdidas potenciales de este producto, así como a compararlo con otros productos. Cualquier
+  término que figure con mayúscula inicial en el presente Documento de Información Clave (KID) tendrá el significado atribuido en
+  el correspondiente Prospecto Base y en las Condiciones Finales.
+
+    Nombre del producto                AAPLon
+    Fabricante del PRIIP               Ondo Global Markets (BVI) Limited, Floor 4 Banco Popular Building, Road Town, Tortola
+                                       VG1110, Islas Vírgenes Británicas. El fabricante del PRIIP es el emisor del producto (el
+                                       «Emisor»).
+    Identificador del producto         ISIN: VGG7001AAB04
+    Sitio web                          https://ondo.finance/global-markets
+    Número de teléfono de              +1 284 494 2423
+    contacto
+    Autoridad competente del           Autoridad del Mercado Financiero de Liechtenstein (FMA), como autoridad competente para
+    fabricante del PRIIP               la aprobación del Prospecto Base. El fabricante / emisor del PRIIP no está sujeto a
+                                       supervisión prudencial por parte de la FMA ni de ninguna otra autoridad de supervisión de
+                                       los mercados financieros.
+    Fecha de elaboración del           11.11.2025
+    KID
+              Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+
+1. ¿QUÉ ES ESTE PRODUCTO?
+
+Tipo                  Certificado indexado de duración indefinida (open-ended tracker certificate) emitido en forma de valores
+                      basados en registro electrónico (Registerwertrechte) conforme a los artículos 973d y siguientes del Código
+                      de Obligaciones suizo (“CO”), y regido por el Derecho suizo.
+Plazo                 El Producto (según la definición que figura a continuación) no tiene una fecha de vencimiento fija.
+Objetivos             AAPLon (en adelante, el “Producto”) es un certificado de seguimiento (tracker certificate) emitido en la red
+                      principal de Ethereum (Ethereum Mainnet), un Registro de Valores (Securities Ledger) respaldado por el
+                      Producto. El Producto está diseñado para reflejar los movimientos de precio de las acciones ordinarias de
+                      Apple Inc. (el “Subyacente”). El objetivo fundamental de inversión del Producto es reproducir el rendimiento
+                      del Subyacente, una vez deducidas las comisiones y gastos aplicables. El Producto ofrece varias ventajas
+                      clave, entre ellas, una mayor velocidad de transacción en comparación con los valores tradicionales. Está
+                      específicamente concebido para proporcionar a los inversores una exposición a la evolución del
+                      Subyacente, aprovechando simultáneamente las ventajas de la tecnología blockchain, como una mayor
+                      transparencia, seguridad y facilidad de transferencia.
+                      Información sobre el Subyacente:
+                      •    Emisor: Apple Inc.;
+                      •    Nombre: Apple Inc.;
+                      •    ISIN: US0378331005; and
+                      •    Ticker: AAPL.
+                      La denominación del Producto es el dólar estadounidense (“USD”), y la divisa base del Subyacente también
+                      es el USD. El Producto solo puede transferirse libremente a otros inversores a través de carteras digitales y
+                      del Registro de Valores correspondiente. El Producto está respaldado por el Subyacente y por cualquier
+                      garantía adicional, a fin de cumplir con las obligaciones de pago del Emisor.
+                      Disponen de recursos financieros y liquidez suficientes para poder asumir la pérdida total del importe
+                      invertido.
+                      •   Buscan una oportunidad de inversión de carácter especulativo, acompañada de la expectativa de que
+                          el Activo Subyacente aumente de valor con el tiempo de forma suficiente como para superar las
+                          comisiones aplicables.
+                      •   Poseen capacidades técnicas limitadas o carecen de los conocimientos técnicos necesarios y, por
+Inversores
+                          tanto, en lugar de invertir directamente en el Subyacente y su ecosistema, optan por hacerlo mediante
+minoristas a los
+                          valores de deuda cuyo valor se base en el precio del Subyacente, sin necesidad de mantener la
+que va
+                          propiedad directa del Subyacente durante el período de tenencia del Producto.
+destinado
+                      •   Tienen la capacidad de adoptar una decisión de inversión informada, al poseer los conocimientos y la
+                          experiencia suficientes para realizar una evaluación significativa del Producto, de los beneficios y
+                          riesgos asociados a la inversión en el mismo, y de la información contenida en el Prospecto Base y en
+                          las Condiciones Finales.
+                      •   Cuentan con un horizonte de inversión mínimo que coincide con el período de tenencia recomendado
+                          especificado más adelante.
+
+
+DOCUMENT D’INFORMATIONS CLÉS (“KID”)                                                                                          Page | 1
+2. ¿CUÁLES SON LOS RIESGOS Y QUÉ PODRÍA OBTENER A CAMBIO?
+INDICADOR DE RIESGO
+
+
+                            1              2              3              4              5              6               7
+   Riesgo más bajo                                                                                                              Riesgo más alto
+                        El indicador supone que usted mantiene el Producto durante un período de 5 años.
+                             En caso de reembolso anticipado, el importe devuelto podría ser inferior.
+El indicador de riesgo sintético mide el nivel de riesgo de este Producto en comparación con otros productos. Muestra la probabilidad de pérdida
+financiera derivada de las fluctuaciones del mercado o de la incapacidad del Emisor para cumplir sus obligaciones. Este Producto está clasificado
+en el nivel 6 de 7, lo que corresponde a la segunda categoría de riesgo más elevada. Esto implica que las posibles pérdidas derivadas del
+rendimiento futuro se consideran elevadas y que es muy probable que las condiciones adversas del mercado afecten a la capacidad del Emisor para
+efectuar pagos a su favor. Entre los riesgos adicionales se incluye el riesgo de liquidez de mercado, que puede amplificar las fluctuaciones en los
+resultados. El Producto no ofrece protección frente a las caídas del mercado, por lo que usted puede perder la totalidad o parte de su inversión. Si el
+Emisor no puede efectuar los pagos adeudados, usted podría perder la totalidad del capital invertido. Otros factores pueden influir en el rendimiento
+del Producto. Se recomienda consultar el Prospecto Base para obtener información detallada.
+
+ESCENARIOS DE RENDIMIENTO
+
+Los desarrollos futuros del mercado no pueden predecirse con exactitud Los escenarios que se presentan a continuación
+ilustran algunos resultados posibles, basados en rendimientos recientes. Los rendimientos reales pueden ser inferiores o
+incluso nulos.
+
+                                        Inversión: 10’000 USD                                                 Período     de       tenencia
+                                                                                                              recomendado
+                        Escenarios                                          Después de 1 año                        Después de 5 años
+
+ Mínimo:                                                           No existe un rendimiento mínimo            No existe un rendimiento mínimo
+                                                                   garantizado. Usted podría perder           garantizado. Usted podría perder
+                                                                   la totalidad de su inversión.              la totalidad de su inversión.
+                                                                                         6’132.00 USD                               5’756.00 USD
+ Escenario de tensión           Importe      recuperado
+ (estrés)                       después de costes
+                                                                                                 -39.00%                                    -10.00%
+                                Rendimiento anual medio
+                                                                                           8’763.00 USD                             14’440.00 USD
+ Escenario                      Importe      recuperado
+ desfavorable                   después de costes
+                                                                                                 -12.00%                                      8.00%
+                                Rendimiento anual medio
+                                                                                         12’716.00 USD                              33’214.00 USD
+                                Importe      recuperado
+ Escenario moderado
+                                después de costes
+                                                                                                  27.00%                                     27.00%
+                                Rendimiento anual medio
+                                                                                         18’436.00 USD                              76’330.00 USD
+                                Importe      recuperado
+ Escenario favorable
+                                después de costes
+                                                                                                  84.00%                                     50.00%
+                                Rendimiento anual medio
+Esta tabla muestra el importe que podría recibir después de un período de tenencia recomendado de cinco años, bajo diferentes
+condiciones de mercado, si invierte 10.000 USD. Los escenarios presentados ilustran la posible evolución de su inversión y pueden
+compararse con los de otros productos. Estos escenarios se basan en fluctuaciones históricas y no constituyen una previsión exacta.
+El importe efectivamente obtenido dependerá de la evolución del mercado y de la duración real de la tenencia. El escenario de
+tensión (estrés) muestra lo que usted podría llegar a recuperar en circunstancias de mercado extremas, sin tener en cuenta el riesgo
+de incumplimiento del Emisor. Las cifras presentadas incluyen todos los costes asociados al producto, pero no incluyen los posibles
+gastos de asesoramiento o de distribución. Su situación fiscal personal también puede influir en el importe final del reembolso.
+
+3. ¿QUÉ OCURRE SI EL EMISOR ES INSOLVENTE?
+El Producto está garantizado mediante la adquisición del activo subyacente. Cuando el inversor adquiere el Producto, el Emisor
+utiliza los ingresos de la emisión, una vez deducidos los costes, para financiar la compra del activo subyacente. El valor de las
+garantías debe ser, en todo momento, al menos equivalente al valor del Producto, de conformidad con las disposiciones establecidas
+en el Prospecto Base. Los inversores gozan de un derecho prioritario sobre el colateral asignado al Producto. Si dicho colateral
+resultara insuficiente, disponen de un derecho sobre cualquier garantía adicional, conforme a las disposiciones del Prospecto Base.
+El Producto no está garantizado ni asegurado por ningún Estado, autoridad reguladora o entidad pública. El inversor no tiene ningún
+derecho sobre otros activos del Emisor o de sus prestadores de servicios en caso de pérdida derivada de su inversión. El Producto
+constituye un instrumento de deuda y no está cubierto por ningún sistema de garantía de depósitos ni por ninguna otra forma de
+seguro equivalente.
+
+4. ¿CUÁLES SON LOS COSTES?
+COSTES A LO LARGO DEL TIEMPO
+Las tablas siguientes muestran los importes que se deducen de su inversión para cubrir los diferentes tipos de costes. Dichos importes
+DOCUMENT D’INFORMATIONS CLÉS (“KID”)                                                                                                           Page | 2
+    dependen del monto invertido y de la duración del período de tenencia. Para el cálculo que se presenta a continuación, se supone
+    que el inversor invierte 10.000 USD y mantiene el Producto durante el período recomendado de cinco años. Los costes totales
+    indicados incluyen todos los gastos únicos de entrada y salida, los costes recurrentes, así como cualesquiera costes adicionales
+    eventuales. Se trata de estimaciones, y los costes reales pueden variar con el tiempo.
+
+      Inversión: 10’000 USD                                  Impacto anual sobre el rendimiento en caso de salida después de 5 años
+
+      Costes totales (USD)                                                                                                             20.00 USD
+
+      Impacto sobre el rendimiento                                                                                                          0.20%
+
+
+
+
+     Detalle de la composición de los costes                                                                                 Impacto anual sobre
+                                                                                                                             el rendimiento en
+                                                                                                                             caso    de    salida
+                                                                                                                             después de 1 año
+                                                       Hasta un 0.1 % del precio de mercado del activo subyacente, a la
+                        Comisión de entrada                                                                                        10.00 USD
+                                                       exclusiva discreción del Emisor1
+     Costes únicos de
+     entrada y salida                                  Hasta un 0.1 % del precio de mercado del activo subyacente, a la
+                        Comisión de salida                                                                                         10.00 USD
+                                                       exclusiva discreción del Emisor2
+
+                        Gastos de gestión,
+                                                     No aplicable                                                                   0.00 USD
+          Costes        administración y explotación
+        recurrentes
+                        Otros gastos recurrentes       No aplicable                                                                 0.00 USD
+
+          Costes
+                        Comisiones de rendimiento      No aplicable                                                                 0.00 USD
+       condicionales
+
+
+
+    5. ¿CUÁNTO TIEMPO DEBO CONSERVAR EL PRODUCTO Y PUEDO REVENDERLO ANTES DEL VENCIMIENTO?
+    El Producto no tiene una duración fija. El período de tenencia recomendado es de 5 años. Usted puede, en cualquier momento,
+    presentar una solicitud de reembolso al Emisor o a cualquier entidad designada para tal fin. El reembolso podrá efectuarse en efectivo
+    o, a la exclusiva discreción del Emisor, en otras divisas fiduciarias o en criptomonedas. De forma alternativa, usted podrá vender el
+    Producto en operaciones extrabursátiles (“OTC”) a terceros, sujeto a las restricciones de transferencia establecidas en el Prospecto
+    Base y en las Condiciones Finales. El Producto no está actualmente cotizado ni admitido a negociación en ninguna bolsa de valores,
+    sistema multilateral de negociación (“MTF”) ni sistema organizado de negociación (“OTF”), tanto dentro como fuera de la Unión
+    Europea o de Suiza. Si el Emisor decidiera posteriormente proceder a una admisión a cotización o a una autorización de negociación,
+    dicha información se publicará en el siguiente sitio web: https://ondo.finance/global-markets. En condiciones de mercado
+    excepcionales, o en caso de fallos o disfunciones técnicas, la compra o la venta del Producto puede verse temporalmente
+    limitada o incluso resultar imposible.
+
+    6. ¿CÓMO PUEDO PRESENTAR UNA RECLAMACIÓN?
+    Las reclamaciones relativas a la persona o entidad que le haya asesorado o vendido este Producto pueden presentarse directamente
+    ante dicha entidad. Las reclamaciones relacionadas con el propio Producto o con la conducta del Emisor pueden enviarse por escrito
+    (por correo postal o por correo electrónico) a la siguiente dirección: Ondo Global Markets (BVI) Limited 4ª planta, Banco Popular
+    Building, Road Town, Tortola VG1110, Islas Vírgenes Británicas Correo electrónico: legal@ondo.finance. Las reclamaciones deberán
+    indicar el nombre del Producto, el ISIN y el motivo de la reclamación.
+
+    7. OTRA INFORMACIÓN IMPORTANTE
+    Los documentos adicionales relativos al Producto – en particular el Prospecto Base, las Condiciones Definitivas, así como cualquier
+    suplemento – se publican en el siguiente sitio web, de conformidad con los requisitos legales vigentes: https://ondo.finance/global-
+    markets. Para obtener información más detallada, especialmente en lo que respecta a la estructura y a los riesgos asociados a una
+    inversión en el Producto, se recomienda leer detenidamente dichos documentos. Asimismo, puede consultarse información
+    complementaria sobre el activo subyacente, incluida su rentabilidad histórica, su composición y otros datos relevantes, en el siguiente
+    sitio web: https://finance.yahoo.com/quote/AAPL/.
+
+
+
+
+1
+  Actualmente, no se cobran comisiones a los inversores. En caso de que se apliquen comisiones en el futuro, éstas no superarán el 0.1 % del precio de
+  mercado del activo subyacente. Los inversores no asumirán ningún otro coste que los expresamente revelados en el presente documento.
+2
+  Actualmente, no se cobran comisiones a los inversores. En caso de que se apliquen comisiones en el futuro, éstas no superarán el 0.1 % del precio de
+  mercado del activo subyacente. Los inversores no asumirán ningún otro coste que los expresamente revelados en el presente documento.
+    DOCUMENT D’INFORMATIONS CLÉS (“KID”)                                                                                                     Page | 3
+

@@ -1,0 +1,94 @@
+# aliuscap.com/projects/albal renderizada (google-chrome --headless=new --dump-dom, agente por defecto, sin sesión)
+# consulta 2026-11-20T21:10:50Z; SHA-256 del DOM volcado 56188e3fc6bb0df971438b675c1b438a3d41c26ef77375b20d375ce054eea333 (crudo/espana/analista/alius-albal-render-chrome.html)
+# Texto visible del proyecto (sin el banner de cookies). La dirección del inmueble se sustituye por [dirección del inmueble].
+ALBAL | Bono 13% con garantía hipotecaria
+Inmobiliario
+En estudio
+TF1
+(TF1)
+Documento de emisión
+download
+Objetivo
+350.000,00 €
+Tipo de producto financiero
+Bono
+hourglass
+Próximamente
+Nuestros proyectos pasan por una fase de estudio y estructuración previa al lanzamiento de la oferta de inversión.
+Expresa tu interés y te mantendremos al tanto de todas las novedades.
+group
+2 Inversores
+ya han expresado su posible interés en invertir
+¿Te interesa?
+Información del proyecto
+keyboard_double_arrow_left
+Descripción
+Propuesta
+Proceso
+Documentos
+keyboard_double_arrow_right
+1. Estructura Financiera y Aportes del Promotor
+El proyecto destaca por una estructura de capital equilibrada, donde el promotor asume el riesgo principal de adquisición de activos, maximizando el blindaje sobre el inversor minorista.
+Inversión Total del Proyecto:
+590.000 EUR.
+Adquisición del Activo (Suelo):
+240.000 EUR + IVA. Comprado en su totalidad por el promotor aportando el 100% con fondos propios libres de cargas.
+Presupuesto Técnico de Obra:
+350.000 EUR.
+Estructura de Financiación de Obra:
+el presupuesto total de la obra (350.000 EUR) se financia íntegramente mediante un modelo de co-inversión colectiva. Los fondos captados a través de esta emisión de deuda tokenizada cubren el 100% de la fase de edificación.
+Alineación de Intereses:
+el promotor aporta el activo inmobiliario principal (suelo) libre de cargas como base tangible del proyecto, blindando la posición de los tenedores de deuda frente a cualquier imprevisto.
+2. Memoria de Ejecución técnica: Cambio de Uso y Segregación
+La estrategia arquitectónica optimiza los plazos y reduce los riesgos constructivos típicos de una obra nueva
+desde cero al actuar sobre un volumen ya consolidado:
+Situación Inicial:
+el edificio ya existe físicamente en la actualidad con un uso catastral y registral original destinado a almacén.
+Proyecto de Reforma:
+Consiste en la tramitación de un Cambio de Uso con Segregación, transformando la superficie diáfana actual en un complejo inmobiliario exclusivo de 5 viviendas residenciales, 1 local comercial y 5 plazas de garaje independientes.
+Movilidad y Accesibilidad:
+El edificio actual no dispone de ascensor, por lo que se instalará un ascensor completamente nuevo durante la reforma arquitectónica. Esto garantizará plena accesibilidad a todas las plantas y elevará drásticamente la cotización de los áticos.
+3. Análisis de Mercado y Viabilidad Comercial
+Efecto Desbordamiento de la Capital:
+Albal se sitúa estratégicamente en la primera corona del área metropolitana de Valencia (a solo 10 minutos). Debido a la escasez crónica de suelo y la escalada de precios en Valencia centro, la demanda residencial familiar se desplaza con fuerza hacia estos municipios colindantes, garantizando una velocidad de absorción muy alta.
+Ventaja Competitiva Premium:
+el diseño arquitectónico rompe con la oferta común de la zona al añadir atributos exclusivos: amplias terrazas de uso exclusivo y piscinas privadas independientes por vivienda en las tipologías seleccionadas.
+Distribución Comercial y Valor de Venta (GDV):
+Las ventas totales previstas suman un importe de 1.300.000 EUR, desglosadas de la siguiente manera: Local Comercial en Planta Baja (35 m²): 50.000 EUR; Viviendas con terraza y piscina privada en Planta Primera: 265.000 EUR cada una (Total:530.000 EUR); Áticos Dúplex premium con terraza y piscina privada en Planta Segunda: 290.000 EUR cada uno (Total:580.000 EUR); 1 Piso Ático de 1 habitación situado en la Planta Alta del edificio: 140.000 EUR; Todas las viviendas disponen de Garaje incluido
+4. Viabilidad y Seguridad para el Inversor
+Ratio de Cobertura del Colateral:
+el valor de venta final del activo (GDV = 1.300.000 EUR) equivale a 3,71 veces el capital total prestado por los inversores (350.000 EUR). Cada euro de deuda está respaldado por 3,71 € en ladrillo tangible.
+Loan-to-Value (LTV) sobre Coste:
+59,32 %. El préstamo colectivo cubre el coste total de la obra, representando poco más de la mitad del coste de desarrollo real de la promoción global.
+Hito Administrativo Avalado:
+La licencia de obras ya se encuentra formalmente presentada y solicitada a través de la ECUV (Entidad Colaboradora de la Administración Municipal), garantizando que los trámites se encuentran en fase avanzada bajo supervisión externa homologada.
+Umbral de Equilibrio (Break-Even):
+Para que todos los inversores recuperen el 100% de su capital depositado más los intereses al cabo de los 15 meses, el promotor necesita cubrir un umbral de 403.083,33 EUR. Esto se alcanza holgadamente formalizando únicamente la venta de las dos viviendas de la primera planta (que suman 530.000 EUR). Las 3 unidades habitacionales y el local restante actúan como un colchón financiero de seguridad absoluta.
+Marco de Garantía Real:
+frente a la emisión de deuda, se constituye un marco de seguridad de primer nivel para blindar la co-inversión. El propio inmueble físico ubicado en la [dirección del inmueble] (adquirido en su totalidad por fondos propios del promotor y libre de cargas), junto con los derechos de edificación en vuelo, segregación y explotación del proyecto constructivo, actúan como garantía real (colateral hipotecario y pignoraticio de primer rango) a favor de los inversores colectivos. Esto asegura que ante cualquier escenario extremo de incumplimiento de plazos máximos, los inversores podrán ostentar la titularidad y control del activo tangible, cuyo valor comercial triplica el préstamo.
+Anterior
+download
+CONVOCATORIA DE JUNTA GENERAL
+LEGAL Y CORPORATIVO
+Aviso Legal
+Política de Privacidad
+Política de Cookies
+Información financiera
+Reglamento interno de conducta
+Quejas y reclamaciones
+Inversión de personas vinculadas
+Clientes
+Información básica para el cliente
+Condiciones generales
+Quiénes somos
+Contacto
+Condiciones generales Mangopay
+Tasa de impago 0%
+Destacados
+Invertir
+Obtener inversión
+Tokenización de la inversión
+Siguenos
+Alius Capital (ALIUS CAPITAL STOS PSFP S.L.) es un proveedor de servicios de financiación participativa autorizado y supervisado por la
+CNMV
+Copyright ©2026 Alius Capital

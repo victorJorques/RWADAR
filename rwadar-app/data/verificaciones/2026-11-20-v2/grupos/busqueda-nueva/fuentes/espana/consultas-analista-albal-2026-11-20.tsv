@@ -1,0 +1,23 @@
+2026-11-20T21:09:01Z	200	83	e48d31944a0e9adb5b65b862c3cf3bcec7f4b377a9dcbb18305c28a2c70f62c5	count.json	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed
+2026-11-20T21:09:02Z	200	20489	f155958fc91aa8effd6fe2124675b7708ec086f03100f30c02c9ed6b5c4625cf	albal.json	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress
+2026-11-20T21:09:02Z	200	7148	959bb021f7204cb7942b95d0a3d22b309b20eacae28c89f2aba707704f9a44a4	albal-tabs.json	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/tabs
+2026-11-20T21:09:03Z	200	341010	9f082cc43e8ac6692fcc0b4470d8343b2f37c02e9059f59596a589fa4dde5fa3	doc334.pdf	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334
+2026-11-20T21:09:04Z	200	4371	4cbaba0dd2e0bec87e54ffeccf73449ef6aef07416c2a4c96d9d0fbc4b82a21c	projects-albal.html	https://aliuscap.com/projects/albal
+2026-11-20T21:09:05Z	301	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	tokenflip-home.html	https://www.token-flip.com/
+2026-11-20T21:09:06Z	200	19889	d6a6c0fd83113474309b9702d4b3ba33cce20112a40e82efc0a5636fe36eb7c1	pre-campaign.json	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRE_CAMPAIGN/expand/images,type,asset,campaign,campaign_progress,extra_fields,asset_issuance_relational
+2026-11-20T21:09:13Z	200	48654	3ee482131e464f5320d2a7f1846d54c28032820da6c7d4052d473359278e0d8c	tokenflip-home.html	https://www.token-flip.com/
+2026-11-20T21:09:15Z	200	165165	3c4be31459315381dd9c09d1401371afb128074a637f79a349c16a1dd1501a05	cnmv-psfp-es.html	https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es
+2026-11-20T21:09:17Z	200	152454	12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453	cnmv-erir-tokencity.html	https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es
+2026-11-20T21:09:18Z	403	12239	c8df9862e561588e1f42d959214a661fa1b5abffc4caa9afc7ef0006322496a3	cnmv-erir-indice.html	https://www.cnmv.es/portal/consultas/esi/erir.aspx?lang=es
+2026-11-20T21:09:19Z	200	211436	24d996bccd310ba0a9ca38631dcb6064aa4f0e81896f82c21751ecd68f3f85cd	cnmv-adv-Token_Flip.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20Flip
+2026-11-20T21:09:21Z	200	211414	4877e6a3d6fdc8f68a930d0d71492dec7fe04ee6e9361134c22691c79fc32135	cnmv-adv-TokenFlip.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenFlip
+2026-11-20T21:09:23Z	200	211326	7a9b9710329e4a9e9718ffbaa076600d05dad5ed5fc9ecae717be550244630d5	cnmv-adv-Alius.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius
+2026-11-20T21:09:26Z	200	211458	b7549956654c40a01b5b7b72c27d210cb8399b1fee299845092a437911f63331	cnmv-adv-Adventurees.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees
+2026-11-20T21:09:29Z	200	211348	41fc2ad0898dcbeaa9cc25ab72431be6d76ccbdfcdffbe92bd28eb5b52b9530d	cnmv-adv-Gardum.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gardum
+2026-11-20T21:09:32Z	200	211348	12012f33da62a006e8d1e969a5b0858655b1b896ec79a9e098aa84b8c642a172	cnmv-adv-Nouval.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Nouval
+2026-11-20T21:09:34Z	200	216914	5fca61f265e8495ad004d978cda5341c224136ac63eaa7477f644682c4fb555c	cnmv-adv-Gemini.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini
+2026-11-20T21:09:52Z	200	154642	62cd4c3f276aee41e40efa21471a87a1941c2194e8f6bea4e02c56f3105800b1	cnmv-psfp-alius.html	https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793
+2026-11-20T21:10:10Z	200	6396690	df8e1f1bfc8c50a034f9fe066d8fed253d2c97ce6e96585f7b3557bbe05b58ab	doc336.pdf	https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336
+2026-11-20T21:10:50Z	200(render)	79784	56188e3fc6bb0df971438b675c1b438a3d41c26ef77375b20d375ce054eea333	alius-albal-render-chrome.html	https://aliuscap.com/projects/albal (google-chrome --headless=new --dump-dom, agente por defecto)
+2026-11-20T21:11:15Z	200	778383	f4403f9fcee38c738706c7c72306ea7b8a8f0d81d9878f4ee611bb19a5ddd742	chainid-80002.json	https://chainid.network/chains_mini.json
+2026-11-20T21:11:54Z	200	211392	5117369ebe6293924329804fd57b3eb381683159c9eae5b77d54ed4a99fcd54d	cnmv-adv-Smartnex.html	https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Smartnex

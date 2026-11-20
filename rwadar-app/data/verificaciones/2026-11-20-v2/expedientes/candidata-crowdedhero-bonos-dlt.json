@@ -1,0 +1,460 @@
+{
+  "slug": "candidata-crowdedhero-bonos-dlt",
+  "tipoExpediente": "candidata",
+  "grupo": "busqueda-nueva",
+  "proveedor": "CrowdedHero (bonos digitales DLT)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "SIA \"CrowdedHero Latvia\" (reg. 50203309441, Riga), proveedor europeo de servicios de financiación participativa (ECSPR), licencia 06.15.01.806/120 de Latvijas Banka",
+  "emisor": "Una sociedad por oferta: SIA \"BALVORA Group\" (Amber Hostelis, Letonia), SIMPLEROS, S.L. (Barcelona, CIF B01787720) y SIA \"Bolivar Logistic\" (Letonia, aún no abierta)",
+  "vehiculo": "Emisión directa de cada sociedad, sin SPV (según las fichas)",
+  "token": "Criptovalor alemán (Kryptowertpapier, §16 eWpG) en el registro de Smart Registry GmbH (NYALA); custodio Tangany GmbH. Solo Simpleros figura en el registro público.",
+  "derechoAdquirido": "Bono de deuda a tipo fijo del emisor (Simpleros: subordinado), con cupón y devolución del nominal al vencimiento",
+  "jurisdiccion": "LV",
+  "identificador": "Simpleros: ISIN DE000A4EXNM2 (WKN A4EXNM). Amber y Bolivar: sin ISIN público. Plataforma: LEI 984500B08DG03M3EA171",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Ficha pública de Amber Hostelis (proyecto 49)",
+      "url": "https://www.crowdedhero.com/project/view?id=49",
+      "versionOFecha": "consulta 2026-11-20T21:03:31Z",
+      "paginas": null,
+      "sha256": "4e326192a5e8f13c7cc4cd52d9e7cb60fe82717de5c3a583d14ebdd34b855eaf",
+      "leido": true,
+      "nota": "Página dinámica (el hash cambia, las cifras no frente a la copia de las 20:52). Sección «Documents» con texto de relleno y «Moneyz.csv»; uso de fondos «[TO BE COMPLETED AFTER FINAL BUDGET APPROVAL…]»; emisión «Planned for September 2026». Sin ningún PDF público."
+    },
+    {
+      "titulo": "Ficha pública de Simpleros (proyecto 50)",
+      "url": "https://www.crowdedhero.com/project/view?id=50",
+      "versionOFecha": "consulta 2026-11-20T21:03:32Z",
+      "paginas": null,
+      "sha256": "92234725d3bc2247e1d87ecb3c4adaaf70750acd463e7688381c5241948cd50e",
+      "leido": true,
+      "nota": "Mismo relleno en «Documents». Cabecera «Min target €100 250.00» frente a «Minimum threshold €50,000» en el texto de la misma ficha."
+    },
+    {
+      "titulo": "Ficha pública de Bolivar Logistic (proyecto 51)",
+      "url": "https://www.crowdedhero.com/project/view?id=51",
+      "versionOFecha": "consulta 2026-11-20T21:03:33Z",
+      "paginas": null,
+      "sha256": "d2c35f7eb42bcc5ac7279eb373c6643145b9624f9e6279fe7325d197ac398375",
+      "leido": true,
+      "nota": "«Coming soon»: no se puede invertir."
+    },
+    {
+      "titulo": "KIIS (ficha de datos fundamentales de la inversión, art. 23 ECSPR) de cada oferta",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "Solo para inversores registrados y verificados («only registered and Verified investors could access the restricted Project campaign documents»). Según el contrato DLT, existe en letón, inglés y alemán (no en español). No se intentó verla por ninguna otra vía (ACCESO-FUENTES §1 y §2.5)."
+    },
+    {
+      "titulo": "Terms and Conditions of the Digital Bonds · SIMPLEROS, S.L. (publicación obligatoria del registrador, art. 5 eWpG)",
+      "url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "versionOFecha": "03/07/2026 (nombre del archivo); consulta 2026-11-20T21:04:55Z",
+      "paginas": 5,
+      "sha256": "c0c445e493def11b76de0a59f9992afcfc41be278b0584398fd1538df42af056",
+      "leido": true,
+      "nota": "Mismo SHA-256 que el 11/11. En inglés. Nombra a una persona física (la que constituye la prenda): no se copia."
+    },
+    {
+      "titulo": "DLT Bond Subscription Agreement (contrato de suscripción de bonos DLT), versión 1.0",
+      "url": "https://www.crowdedhero.com/legal?category=dlt",
+      "versionOFecha": "en vigor desde el 01/07/2026; consulta 2026-11-20T21:04:04Z",
+      "paginas": null,
+      "sha256": "28f8763ccbd57cf4a7588b481a98f5dba7a28f174d558c518a16d78fc5c8b3b1",
+      "leido": true,
+      "nota": "Dice que los bonos los emite «NYALA Digital Asset» AG y que se inscriben a nombre del inversor; las fichas y los términos de Simpleros dicen otra cosa (ver claims en conflicto)."
+    },
+    {
+      "titulo": "Condiciones generales de la plataforma",
+      "url": "https://www.crowdedhero.com/legal?category=terms",
+      "versionOFecha": "en vigor desde el 01/08/2026; consulta 2026-11-20T21:04:02Z",
+      "paginas": null,
+      "sha256": "054389ae4c89c0560793613ba06a772ece487bc178c59cd002f094248e6e5abc",
+      "leido": true
+    },
+    {
+      "titulo": "Advertencia de riesgos de la plataforma",
+      "url": "https://www.crowdedhero.com/legal?category=risk",
+      "versionOFecha": "en vigor desde el 01/08/2023; consulta 2026-11-20T21:04:03Z",
+      "paginas": null,
+      "sha256": "e7b54f8b5de21880b63ae5e26cf1c241134e11557a9f0bbc331e632dd7d589e2",
+      "leido": true,
+      "nota": "Anterior a los bonos DLT; trata el tablón de acciones. Cita la dirección antigua de la plataforma."
+    },
+    {
+      "titulo": "Preguntas frecuentes del inversor",
+      "url": "https://www.crowdedhero.com/faq?category=investor",
+      "versionOFecha": "consulta 2026-11-20T21:04:05Z",
+      "paginas": null,
+      "sha256": "75a73106f58ccbc22b376b99b362b29043d2d3482c204674f9da1bc8409507a5",
+      "leido": true
+    },
+    {
+      "titulo": "Tarifas para inversores",
+      "url": "https://www.crowdedhero.com/pricelist/investor-pricelist",
+      "versionOFecha": "consulta 2026-11-20T21:04:06Z",
+      "paginas": null,
+      "sha256": "0d8bc8eec89adb8cf3e5c8c3c06847506abab2bd0ac5df1b6b3cfcace41d2160",
+      "leido": true
+    },
+    {
+      "titulo": "Mercado secundario (tablón)",
+      "url": "https://www.crowdedhero.com/secondary-market",
+      "versionOFecha": "consulta 2026-11-20T21:04:07Z",
+      "paginas": null,
+      "sha256": "65a5ee8ff5a2fcab5cf272b334b732d9b9b061debfeee42c195337fe182cd3fa",
+      "leido": true,
+      "nota": "Solo anuncios de acciones (7); ningún bono."
+    },
+    {
+      "titulo": "NYALA · criptovalores registrados (publicación del registrador)",
+      "url": "https://www.nyala.de/en/products/electronic-securities",
+      "versionOFecha": "consulta 2026-11-20T21:04:54Z",
+      "paginas": null,
+      "sha256": "f91f3a67bae8f987e8579c030656ed18fa3497e1c9c9f1de105243c976d04427",
+      "leido": true,
+      "nota": "De CrowdedHero solo «Simpleros Bonds X» (DE000A4EXNM2). Ni Amber Hostelis/BALVORA ni Bolivar Logistic."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA)",
+      "numero": "1 (01/09/2022), LETONIA",
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+      "alcance": "Notificación de pasaporte para prestar servicios de financiación participativa en España. Acredita a la plataforma, no a cada emisión. SHA-256 fe578b14…e4fb, igual que el 11/11.",
+      "consultadoUtc": "2026-11-20T21:04:47Z"
+    },
+    {
+      "regulador": "ESMA (registro de proveedores de financiación participativa) / Latvijas Banka",
+      "entidad": "SIA CrowdedHero Latvia (LEI 984500B08DG03M3EA171)",
+      "numero": "Licencia 06.15.01.806/120 (según la web); autorizada el 16/08/2022 por Latvijas Banka",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+      "alcance": "«Active». Estados de acogida: «EUROPEAN UNION» (no detalla España). Última actualización del registro: 22/02/2024.",
+      "consultadoUtc": "2026-11-20T21:04:48Z"
+    },
+    {
+      "regulador": "BaFin",
+      "entidad": "Smart Registry GmbH (registrador de criptovalores)",
+      "numero": "BaFin-ID 10160639; Kryptowertpapierregisterführung autorizada el 19.08.2026",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160639",
+      "alcance": "Acredita al registrador, no a los emisores. La autorización (19/08/2026) es posterior a la fecha de emisión que dan los términos de Simpleros (01/07/2026): punto a aclarar, no usado como motivo.",
+      "consultadoUtc": "2026-11-20T21:06:06Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {"regulador": "CNMV", "busqueda": "CrowdedHero", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero", "consultadoUtc": "2026-11-20T21:05:48Z"},
+    {"regulador": "CNMV", "busqueda": "Balvora", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Balvora", "consultadoUtc": "2026-11-20T21:05:49Z"},
+    {"regulador": "CNMV", "busqueda": "Simpleros", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros", "consultadoUtc": "2026-11-20T21:05:51Z"},
+    {"regulador": "CNMV", "busqueda": "Bolivar Logistic", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bolivar%20Logistic", "consultadoUtc": "2026-11-20T21:05:53Z"},
+    {"regulador": "CNMV", "busqueda": "Amber Hostelis", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Amber%20Hostelis", "consultadoUtc": "2026-11-20T21:05:55Z"},
+    {"regulador": "CNMV", "busqueda": "OKX (control positivo)", "resultado": "con resultados: el buscador funciona", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OKX", "consultadoUtc": "2026-11-20T21:05:58Z"}
+  ],
+  "claims": [
+    {
+      "campo": "entidad",
+      "literal": "CROWDEDHERO LATVIA LTD (SIA CROWDEDHERO LATVIA) … Nº Registro oficial 1 · Fecha registro oficial 01/09/2022 · País LETONIA",
+      "dato": "PSFP europeo nº 1 en la CNMV desde el 01/09/2022",
+      "fuentePrimaria": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001",
+      "localizador": "Ficha del proveedor europeo nº 1",
+      "fechaDato": "2022-09-01",
+      "consultadoUtc": "2026-11-20T21:04:47Z",
+      "alcanceYLimites": "Acredita el pasaporte de la plataforma en España, no cada emisión.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "ae_status: Active · ae_competentAuthority: Latvijas Banka · ae_authorisationNotificationDateStr: 16/08/2022 · ae_hostMemberStates: ['EUROPEAN UNION']",
+      "dato": "Autorizada por Latvijas Banka el 16/08/2022; activa",
+      "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_lei:984500B08DG03M3EA171&wt=json",
+      "localizador": "Registro ESMA de proveedores de financiación participativa (API pública)",
+      "fechaDato": "2024-02-22",
+      "consultadoUtc": "2026-11-20T21:04:48Z",
+      "alcanceYLimites": "La última actualización del registro es del 22/02/2024; no enumera España como Estado de acogida (lo cubre la CNMV).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "Raising now 25 Days left … €1 000.00 raised 2.0% of min. target Min target €50 000.00 … Investors 1",
+      "dato": "Amber Hostelis abierta; 1.000 € de un mínimo de 50.000 € (2 %), 25 días",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=49",
+      "localizador": "Cabecera de la ficha",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:31Z",
+      "alcanceYLimites": "Igual que el 11/11 (1.000 €, 1 inversor). Si no se llega al mínimo, se devuelve el dinero (contrato DLT 3.4). La misma ficha sigue diciendo «Planned for September 2026».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "Raising now 6 Days left … €82 500.00 raised 82.3% of min. target Min target €100 250.00",
+      "dato": "Simpleros abierta; 82.500 €, 6 días; el plazo se ha alargado (3 días el 11/11) y no entra dinero desde el 10/11",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Cabecera de la ficha",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:32Z",
+      "alcanceYLimites": "El objetivo mínimo choca: cabecera 100.250 € frente a «Minimum threshold €50,000» en la misma ficha y «First Campaign EUR 200,000 (min. EUR 50,000)» en los términos.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "estado",
+      "literal": "Coming soon … €0.00 raised … Investors 0",
+      "dato": "Bolivar Logistic no está abierta",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=51",
+      "localizador": "Cabecera de la ficha",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:33Z",
+      "alcanceYLimites": "Próxima: fuera del alcance de una tarjeta principal hoy.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "The nominal value of one bond is €250. The minimum investment is two bonds, or €500.",
+      "dato": "500 € (Amber Hostelis)",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=49",
+      "localizador": "Sección «Investment terms»",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:31Z",
+      "alcanceYLimites": "Más 1,25 % de comisión de administración (tarifas).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "The minimum subscription amount is EUR 250 (one Digital Bond).",
+      "dato": "250 € (Simpleros)",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos de la emisión, art. 2.3; la ficha dice «Minimum investment €250.00»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:04:55Z",
+      "alcanceYLimites": "Más 1,25 % de comisión de entrada (art. 6.4).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Can I invest from abroad? Yes, you can. Investors residing outside Latvia can invest in offers available on CrowdedHero, with the exception of investors based in the United States",
+      "dato": "Plataforma abierta a residentes en el EEE, con pasaporte notificado a la CNMV",
+      "fuentePrimaria": "https://www.crowdedhero.com/faq?category=investor",
+      "localizador": "FAQ del inversor; condiciones generales 6.1.6 («be residing and/or registered in a Member State»); CNMV nº 1",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:04:05Z",
+      "alcanceYLimites": "Es acceso de la plataforma. Los países de cada oferta van en la KIIS, que no es pública; condiciones 11.5: «We may offer different content and services … depending on their residence country». Web en inglés, alemán y letón; la KIIS, en letón, inglés y alemán.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "there is no secondary market for Digital Bonds; they are issued under a 'buy and hold' model",
+      "dato": "Sin mercado secundario: se cobra al vencimiento (Simpleros 15/11/2028; Amber 15/03/2030 según la ficha)",
+      "fuentePrimaria": "https://www.crowdedhero.com/legal?category=dlt",
+      "localizador": "Contrato DLT 5.2[b] y 7.1–7.2; términos de Simpleros 4.1, 4.2 y 8.1",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-20T21:04:04Z",
+      "alcanceYLimites": "Traspaso a otro inversor solo dentro de la plataforma, con KYC y comisión (fijada en la KIIS, no pública). Simpleros puede amortizar antes, a su elección, después del 15/11/2027. El tablón de la plataforma solo tiene acciones.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Capital loss risk – You may lose all your invested capital · Subordinated bonds – In case of insolvency, you are paid after senior creditors · No secondary market – High liquidity risk",
+      "dato": "Pérdida total posible, bono subordinado, sin liquidez, sin fondo de garantía, riesgo del crédito al consumo",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=50",
+      "localizador": "Ficha de Simpleros, «Key Risks for Investors»; Amber, «Key risks» (un solo inmueble arrendado, fondos propios negativos, sin mercado secundario)",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:32Z",
+      "alcanceYLimites": "Los riesgos de las fichas son claros. La KIIS, que los detalla por oferta, no es pública.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "documentos",
+      "literal": "Please note, that only registered and Verified investors could access the restricted Project campaign documents. Apraksts par dokumenta failu Lorem ipsum dolor sit amet…",
+      "dato": "Sin KIIS pública; sección de documentos con texto de relleno en las tres fichas",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=49",
+      "localizador": "Sección «Documents (h2 - can be used multiple times accross one text)» de los proyectos 49, 50 y 51",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:31Z",
+      "alcanceYLimites": "Igual que el 10/11 y el 11/11. No se buscó la KIIS por otra vía.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "emisor",
+      "literal": "SIA “BALVORA Group” Operator of Amber Hostelis and issuer of the digital bonds. … direct issuance without an SPV.",
+      "dato": "Amber: el emisor no está claro y la emisión no tiene términos públicos",
+      "fuentePrimaria": "https://www.crowdedhero.com/project/view?id=49",
+      "localizador": "Ficha, «Investment structure»; contrato DLT: «Digital Bonds … are issued by “NYALA Digital Asset” AG»; registro NYALA sin Amber",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-20T21:03:31Z",
+      "alcanceYLimites": "La ficha dice BALVORA; el contrato genérico, NYALA Digital Asset AG; el registrador no publica ninguna emisión de Amber. La ficha mantiene «Planned for September 2026» y «[TO BE COMPLETED AFTER FINAL BUDGET APPROVAL…]».",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "derecho",
+      "literal": "registered as a single aggregate entry in the electronic securities register … The individual entitlements of each Bondholder are recorded by the Platform on its own books",
+      "dato": "Simpleros: no queda claro si el bono figura a nombre del inversor en el registro",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos de Simpleros, art. 2.1; contrato DLT 3.3: «registered in the Investor's name … Registration constitutes legal ownership»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:04:55Z",
+      "alcanceYLimites": "Los términos (que prevalecen, contrato DLT 10.1) dejan la titularidad individual en los libros de la plataforma; el contrato dice que el inversor queda inscrito a su nombre. Es lo que se compra en un producto tokenizado.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "A commission of 5.5% of each interest payment is deducted by the Platform … commencing from the second year",
+      "dato": "Entrada 1,25 %; 0,35 % anual del registro; comisión sobre el cupón: 5,5 % (términos) frente a 0,55 % (tarifas)",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos 5.3, 5.4 y 6.4; tarifas: «Bond model Interest (semi-annual) 0.55% Of the interest (coupon) amount»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:04:55Z",
+      "alcanceYLimites": "Las dos fuentes son de la plataforma o del emisor y no coinciden; la KIIS (parte G) no es pública.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Interest Rate 10.50% p.a. (5.25% per half-year, 30E/360)",
+      "dato": "Cupón fijo: Simpleros 10,5 % anual semestral; Amber 12 % anual trimestral (ficha)",
+      "fuentePrimaria": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "localizador": "Términos de Simpleros, «Summary of key terms» y art. 3; ficha de Amber, «Investment terms»",
+      "fechaDato": "2026-07-03",
+      "consultadoUtc": "2026-11-20T21:04:55Z",
+      "alcanceYLimites": "Es el cupón bruto prometido por el emisor, antes de comisiones e impuestos; no es un rendimiento obtenido.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgoPlataforma",
+      "literal": "equity: -51085 · total_assets: 35150 · cash: 2121",
+      "dato": "Fondos propios de la plataforma negativos (−51.085 €) al cierre de 2025",
+      "fuentePrimaria": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2269545}",
+      "localizador": "Registro mercantil de Letonia, balance 2025 (presentado el 26/05/2026); 2024: +17.639 €",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-20T21:05:37Z",
+      "alcanceYLimites": "Dato de cierre de 2025. La plataforma es además fiduciaria de las garantías y lleva el registro individual de los inversores (contrato DLT 9.1). Que no cumpla los requisitos prudenciales del art. 11 ECSPR es una inferencia con esa fecha; la web no menciona un seguro.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "riesgoEmisor",
+      "literal": "equity: -150078 · total_assets: 546973",
+      "dato": "BALVORA Group (Amber): fondos propios −150.078 € al cierre de 2025",
+      "fuentePrimaria": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=50ef4f26-f410-4007-b296-22043ca3dc43&filters={\"statement_id\":2340045}",
+      "localizador": "Balance 2025 (presentado el 08/06/2026); la ficha lo reconoce: «The company’s equity remained negative at the end of 2025.»",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-20T21:05:40Z",
+      "alcanceYLimites": "Solo afecta a Amber.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Plataforma autorizada por Latvijas Banka y con pasaporte en España (CNMV nº 1). Registrador autorizado por BaFin. Pero el emisor de Amber no cuadra entre ficha y contrato, y la plataforma cerró 2025 con fondos propios negativos."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Amber y Simpleros abiertas hoy; Bolivar «Coming soon». Amber con 2 % del mínimo y fecha de emisión desfasada; Simpleros con el plazo alargado y sin dinero nuevo desde el 10/11."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Residentes del EEE pueden invertir; mínimo 250 € (Simpleros) o 500 € (Amber); salida solo al vencimiento. Comisión sobre el cupón en conflicto (5,5 % frente a 0,55 %) y países de cada oferta solo en la KIIS restringida."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "Sin advertencias de la CNMV. Pero no hay KIIS pública, la sección de documentos es texto de relleno, Amber no tiene términos de emisión públicos y en Simpleros chocan el objetivo mínimo, la comisión y la forma de inscripción del bono."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado (Simpleros)",
+      "antes": "11/11: 82.500 € (82,3 %), 3 días restantes (10/11: 4 días)",
+      "ahora": "20/11: 82.500 € (82,3 %), «6 Days left»: plazo alargado, sin dinero nuevo",
+      "fuente": "https://www.crowdedhero.com/project/view?id=50",
+      "critico": true
+    },
+    {
+      "campo": "estado (Amber Hostelis)",
+      "antes": "11/11: 1.000 € de 50.000 € (2 %), 34 días",
+      "ahora": "20/11: 1.000 € de 50.000 € (2 %), 25 días, 1 inversor",
+      "fuente": "https://www.crowdedhero.com/project/view?id=49",
+      "critico": false
+    },
+    {
+      "campo": "ofertas",
+      "antes": "11/11: Amber y Simpleros",
+      "ahora": "20/11: nueva ficha 51, Bolivar Logistic, «Coming soon» (14 %, 24 meses, mínimo 100 €)",
+      "fuente": "https://www.crowdedhero.com/project/view?id=51",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Bonos digitales de CrowdedHero",
+    "categoria": "Crédito privado",
+    "pais": "LV",
+    "tipo": "rendimiento",
+    "coleccion": null,
+    "resumen": "Plataforma letona de financiación participativa con pasaporte en España que vende bonos de empresas inscritos como criptovalores alemanes; hoy no se propone tarjeta.",
+    "rentabilidad": null,
+    "metricas": [],
+    "avisos": [],
+    "url": "https://www.crowdedhero.com/project/view?id=50",
+    "fuentesActuales": [
+      "https://www.crowdedhero.com/project/view?id=50",
+      "https://www.crowdedhero.com/project/view?id=49",
+      "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf",
+      "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001"
+    ],
+    "lugar": null,
+    "pasos": [],
+    "concepto": null,
+    "resumenTarjeta": {
+      "minimo": "Desde 250 € (Simpleros) o 500 € (Amber), más 1,25 % de entrada",
+      "accesoEspana": "Sí, para residentes en la UE/EEE; la plataforma está notificada a la CNMV",
+      "salida": "Sin mercado secundario: se cobra al vencimiento (Simpleros, 15/11/2028)"
+    },
+    "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se lee en fuente primaria.",
+    "pruebaPresentacion": {
+      "enlaces": [
+        {"url": "https://www.crowdedhero.com/project/view?id=50", "http": 200, "consultadoUtc": "2026-11-20T21:03:32Z", "nota": "Abre, pero su sección de documentos es texto de relleno."},
+        {"url": "https://www.crowdedhero.com/project/view?id=49", "http": 200, "consultadoUtc": "2026-11-20T21:03:31Z", "nota": "Abre; uso de fondos «TO BE COMPLETED», emisión «Planned for September 2026»."},
+        {"url": "https://www.crowdedhero.com/project/view?id=51", "http": 200, "consultadoUtc": "2026-11-20T21:03:33Z", "nota": "Abre; «Coming soon»."},
+        {"url": "https://www.crowdedhero.com/projects", "http": 404, "consultadoUtc": "2026-11-20T21:03:34Z", "nota": "No sirve como enlace de listado."},
+        {"url": "https://de000a4exnm2.register.nyala.de/BondProspectus_SIMPLEROS%2003.07.2026.pdf", "http": 200, "consultadoUtc": "2026-11-20T21:04:55Z", "nota": "PDF público de 5 páginas, en inglés."},
+        {"url": "https://www.crowdedhero.com/legal?category=dlt", "http": 200, "consultadoUtc": "2026-11-20T21:04:04Z"},
+        {"url": "https://www.crowdedhero.com/faq?category=investor", "http": 200, "consultadoUtc": "2026-11-20T21:04:05Z"},
+        {"url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor-Europeo?nreg=1&nif=PSFPUE0001", "http": 200, "consultadoUtc": "2026-11-20T21:04:47Z"}
+      ],
+      "valoracion": "Los tres datos de la tarjeta («Mínimo 250 € · España Sí» y la salida) se podrían escribir con fuente. Lo que no se sostiene es la ficha: el botón de la oferta lleva a una página con «Lorem ipsum» en documentos, sin KIIS pública y con el objetivo mínimo y la comisión en contradicción. No se puede enseñar al inversor como oferta con documentación clara."
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "250 € (Simpleros) · 500 € (Amber)",
+    "supervisorVerificado": "Latvijas Banka (ESMA, 16/08/2022) y CNMV, PSFP europeo nº 1 (01/09/2022)",
+    "documentacionClara": "no",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Única plataforma con pasaporte en España que hoy vende bonos inscritos como criptovalores alemanes, con mínimo de 250 €.",
+    "porQueNo": "Sin KIIS pública, documentos de relleno, contradicciones en objetivo, comisión y titularidad, campañas paradas y plataforma con fondos propios negativos al cierre de 2025."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Falta la pieza «documentos públicos claros». La KIIS de cada oferta (el documento clave del ECSPR) solo la ven inversores verificados, y la sección de documentos de las tres fichas es texto de relleno («Lorem ipsum», «Moneyz.csv»). Amber Hostelis (abierta, 25 días) no tiene términos de emisión públicos: no figura en el registro de NYALA, su ficha y el contrato DLT dan emisores distintos, dice «Planned for September 2026» y deja el uso de fondos «TO BE COMPLETED». Simpleros (abierta, 6 días) sí tiene términos públicos, pero contradicen la ficha y las tarifas en el objetivo mínimo (50.000 € frente a 100.250 €), en la comisión sobre el cupón (5,5 % frente a 0,55 %) y en cómo se inscribe el bono (en los libros de la plataforma frente a «a nombre del inversor»). Además, la campaña está parada en 82.500 € desde el 10/11 con el plazo alargado. Bolivar Logistic solo está «Coming soon». Calidad: la plataforma cerró 2025 con fondos propios de −51.085 €, y es a la vez fiduciaria de las garantías y quien lleva el registro individual. Se cumplen la licencia y el pasaporte (CNMV nº 1), el acceso desde la UE/EEE, el mínimo, la salida y los riesgos, y no hay advertencias de la CNMV. Mejor ninguna que una dudosa.",
+  "bloqueos": [
+    "La KIIS de cada oferta solo es accesible con cuenta verificada; no se intentó por ninguna otra vía (ACCESO-FUENTES §1 y §2.5).",
+    "No se reabrieron hoy el BORME de Simpleros ni sus cuentas; el último dato público del emisor es el de la ficha (ingresos y beneficio de 2025, sin documento).",
+    "La autorización BaFin de Smart Registry (19/08/2026) es posterior a la fecha de emisión de los términos de Simpleros (01/07/2026): queda por aclarar y no se usa como motivo."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-20T21:03:31Z",
+    "finUtc": "2026-11-20T21:08:53Z"
+  },
+  "lecturas20": {
+    "inventario": "grupos/busqueda-nueva/fuentes/europa/inventario-crowdedhero-analista.json",
+    "copiaTexto": "grupos/busqueda-nueva/fuentes/europa/crowdedhero-analista-2026-11-20.txt",
+    "crudos": "grupos/busqueda-nueva/fuentes/crudo/europa/crowdedhero-analista/ (fuera de Git)",
+    "previas": [
+      "grupos/busqueda-nueva/fuentes/europa/crowdedhero-fichas.txt (20:52 UTC)",
+      "grupos/busqueda-nueva/fuentes/europa/nyala-registro.txt (20:52 UTC)",
+      "grupos/busqueda-nueva/fuentes/europa/cnmv-advertencias.txt (20:59 UTC)"
+    ]
+  },
+  "resumenCorto": "No se admite: sin KIIS pública ni documentos claros; Amber sin términos de emisión y Simpleros con contradicciones y campaña parada."
+}
