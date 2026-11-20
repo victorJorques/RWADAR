@@ -13,7 +13,8 @@
   "http": 403,
   "consultadoUtc": "2026-11-20T16:55:00Z",
   "bytes": 5675,
-  "sha256": "1f656d425ca9b97c9887a5785d146a9d3fbb54b05315a97d72dbbd4835134376"
+  "sha256": "1f656d425ca9b97c9887a5785d146a9d3fbb54b05315a97d72dbbd4835134376",
+  "nota": "bloqueo (403), no se insistió"
  },
  {
   "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
@@ -29,7 +30,8 @@
   "http": 403,
   "consultadoUtc": "2026-11-20T16:55:00Z",
   "bytes": 5492,
-  "sha256": "71690048a41c1d7b040e11f135040c134180d786eaf156e9f2ef702e529078b4"
+  "sha256": "71690048a41c1d7b040e11f135040c134180d786eaf156e9f2ef702e529078b4",
+  "nota": "bloqueo (403), no se insistió"
  },
  {
   "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents",
@@ -37,7 +39,8 @@
   "http": 403,
   "consultadoUtc": "2026-11-20T16:55:00Z",
   "bytes": 5726,
-  "sha256": "de971a073c2c2dc0a5dec7de62a244a57186f7ec1f1beb2b7d435d539a3de49d"
+  "sha256": "de971a073c2c2dc0a5dec7de62a244a57186f7ec1f1beb2b7d435d539a3de49d",
+  "nota": "bloqueo (403), no se insistió"
  },
  {
   "url": "https://docs.midas.app/llms-full.txt",
@@ -45,7 +48,8 @@
   "http": 200,
   "consultadoUtc": "2026-11-20T16:55:00Z",
   "bytes": 219438,
-  "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76"
+  "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76",
+  "nota": "lleva enlaces con token: solo en crudo/"
  },
  {
   "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL",
@@ -53,7 +57,8 @@
   "http": 400,
   "consultadoUtc": "2026-11-20T16:55:00Z",
   "bytes": 11,
-  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa"
+  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa",
+  "nota": "API de la FMA-LI responde 400 Bad Request: bloqueo registrado"
  },
  {
   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
@@ -145,11 +150,12 @@
  },
  {
   "url": "https://support.kraken.com/articles/xstocks-availability",
-  "archivo": "fuentes/kraken-support-xstocks-availability.html",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-availability.html",
   "http": 200,
   "consultadoUtc": "2026-11-20T16:55:46Z",
   "bytes": 5421584,
-  "sha256": "5f26efa15d2f90a9a357c98e34e62c4886e985fa87a32e41833fa77b7cbfdd9b"
+  "sha256": "5f26efa15d2f90a9a357c98e34e62c4886e985fa87a32e41833fa77b7cbfdd9b",
+  "nota": "movido a crudo/ por tamaño"
  },
  {
   "url": "https://xstocks.fi/us",
@@ -345,11 +351,12 @@
  },
  {
   "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
-  "archivo": "fuentes/kraken-support-xstocks-availability-es.html",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-availability-es.html",
   "http": 200,
   "consultadoUtc": "2026-11-20T16:56:41Z",
   "bytes": 5421661,
-  "sha256": "8d2d7d6f3777f79945285ff024d509f37329419102a12a81249b04f757ec9b39"
+  "sha256": "8d2d7d6f3777f79945285ff024d509f37329419102a12a81249b04f757ec9b39",
+  "nota": "movido a crudo/ por tamaño"
  },
  {
   "url": "https://eu.kraken.com/es-es/xstocks",
@@ -365,6 +372,97 @@
   "http": 400,
   "consultadoUtc": "2026-11-20T16:58:38Z",
   "bytes": 11,
-  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa"
+  "sha256": "7c41b898c5da0cfa4aa049b65ef50248bce9a72d24bef4c723786431921b75aa",
+  "nota": "API de la FMA-LI responde 400 Bad Request: bloqueo registrado"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "archivo": "fuentes/crudo/prosegur-digital-gold-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:15Z",
+  "bytes": 8677,
+  "sha256": "92797c3c6224d52f25d27d942417287f57342fa371c7aa76ddd13f6a4d1c222a",
+  "nota": "render es-ES; nombres de personas recortados tras la lectura"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "archivo": "fuentes/crudo/prosegur-terms-service-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 73274,
+  "sha256": "ac9bcc5177427e932765bad0690c7ef0cb9672bc821bcf386ca93c256be23e96",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "archivo": "fuentes/crudo/prosegur-transparency-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 2400,
+  "sha256": "518864008f1cdf5a0f8202ac32b7f00934b85c926b1d9e185eabf29fde8a1dea",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/about-us/faqs",
+  "archivo": "fuentes/crudo/prosegur-faqs-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:09Z",
+  "bytes": 2060,
+  "sha256": "a26005106fa116ca14f40d9202ed8fb30cb4d701ec8b9a75bd1870fbba7b62b7",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/home",
+  "archivo": "fuentes/crudo/prosegur-app-home-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:12Z",
+  "bytes": 1131,
+  "sha256": "5cad7958ff9e194c7dbd1ba02c9f6674c0930378c368ef6af2e2967baa36fe99",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "archivo": "fuentes/crudo/robinhood-invest-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:13Z",
+  "bytes": 11695,
+  "sha256": "73f035739cc02de5ae6196cc7b54f37b82a86778d42f98bd4a8acf81e1a892eb",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://eu.kraken.com/es-es/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:57:25Z",
+  "bytes": 11678,
+  "sha256": "9086de58615734eaf186b0ad912ec248e8add582effb2696ffcd6daa0db2917f",
+  "nota": "render es-ES"
+ },
+ {
+  "url": "https://eu.kraken.com/es-es/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-es-faq-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-20T16:58:04Z",
+  "bytes": 6338,
+  "sha256": "64d3739ea84177ca9aa8ab25b87d2c98cea6c3e35963e08b044271bcc9a9c4b0",
+  "nota": "render es-ES con preguntas frecuentes desplegadas"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (eth_call oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b, rondas 468–498)",
+  "archivo": "fuentes/crudo/onchain-mtbill-oraculo-20261120.json",
+  "http": null,
+  "consultadoUtc": "2026-11-20T16:54:23Z",
+  "bytes": 6084,
+  "sha256": "8de97f439fd58d7dfb9ab3cbff801348467e99bc9b631db3507fcaac8b6c47b5",
+  "nota": "bloque 26457629"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (paused() y totalSupply() de mTBILL)",
+  "archivo": "fuentes/crudo/onchain-mtbill-pausas-20261120.json",
+  "http": null,
+  "consultadoUtc": "2026-11-20T16:55:19Z",
+  "bytes": 373,
+  "sha256": "be9ad21b352ec3715f50d407e9f522e35f228512647f1d9a0e9bfb94a64be0f7",
+  "nota": "bloque 26457633"
  }
 ]

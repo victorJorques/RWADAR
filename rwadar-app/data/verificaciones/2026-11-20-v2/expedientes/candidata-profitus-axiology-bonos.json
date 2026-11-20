@@ -1,0 +1,219 @@
+{
+ "slug": "candidata-profitus-axiology-bonos",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Profitus (bonos registrados en Axiology)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "UAB \"Profitus Crowdfunding\" (Lituania), proveedor europeo de financiación participativa",
+ "emisor": "Cada emisión tiene su propio emisor; hoy no hay ninguna emisión de bonos abierta",
+ "vehiculo": "Bono corporativo de cada emisor",
+ "token": "Bono digital registrado en Axiology DLT TSS",
+ "derechoAdquirido": "Bono (deuda) del emisor",
+ "jurisdiccion": "LT",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "API pública de proyectos de Profitus (la que usa su web sin sesión)",
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "versionOFecha": "consulta 2026-11-13T08:30:47Z–08:30:50Z",
+   "paginas": null,
+   "sha256": "a97366dbf58b6453 (pág. 1, prefijo)",
+   "leido": true,
+   "nota": "549 proyectos (550 el 12/11). 7 abiertos («open_for_investments»), los 7 de tipo «standard» (préstamos con garantía inmobiliaria): 1 en España y 6 en Lituania. Entran P00001675-3 y P00001537-21; salen P00001457-6 y P00001399-8. Ningún bono. Resumen en fuentes/profitus/profitus-api-abiertos-2026-11-13.txt; crudo en fuentes/crudo/."
+  },
+  {
+   "titulo": "Profitus · página «Bonds»",
+   "url": "https://www.profitus.com/bonds",
+   "versionOFecha": "consulta 2026-11-13T08:34:58Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Página informativa para empresas que quieran emitir bonos (estructura de capital, usos de la financiación); no lista ninguna emisión abierta. Copia en fuentes/profitus/nav-profitus-bonds-2026-11-13.txt."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+   "entidad": "UAB \"PROFITUS CROWDFUNDING\"",
+   "numero": "21 (28/12/2023)",
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+   "alcance": "Figura en el listado de PSFP europeos que prestan servicios en España (texto igual que el 12/11): UAB \"PROFITUS CROWDFUNDING\", Lituania, nº 21, 28/12/2023. Solo acredita la financiación participativa, no una emisión de bonos. · Re-leído el 20/11 con el mismo contenido.",
+   "consultadoUtc": "2026-11-20T16:59:44Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Profitus",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "consultadoUtc": "2026-11-20T17:01:51Z",
+   "alcance": "Re-leído el 20/11: mismo resultado que el 13/11. "
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Axiology",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "consultadoUtc": "2026-11-20T17:01:52Z",
+   "alcance": "Re-leído el 20/11: mismo resultado que el 13/11. "
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "status: open_for_investments · loan_type: standard (7 de 7)",
+   "dato": "Hoy no hay ninguna emisión de bonos abierta; los 7 proyectos abiertos son préstamos",
+   "fuentePrimaria": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "localizador": "API pública de proyectos, campos status y loan_type",
+   "fechaDato": "2026-11-12",
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Cambian los préstamos abiertos frente al 12/11 (entran P00001675-3 y P00001537-21; salen P00001457-6 y P00001399-8), pero ninguno es bono.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "localizador": "Sin emisión de bonos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Sin emisión, no hay mínimo.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "localizador": "Sin emisión de bonos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Sin emisión.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "localizador": "Sin emisión de bonos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Sin emisión.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "PSFP con pasaporte en España (CNMV, PSFP europeo nº 21, comprobado el 13/11) y sistema DLT autorizado (Axiology, dato del 10/11)."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "No hay ninguna emisión de bonos abierta el 13/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin emisión."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin emisión; sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "7 proyectos abiertos, todos préstamos; ningún bono (13/11)",
+   "ahora": "7 abiertos, todos préstamos «standard» (4 LT, 1 LV, 2 ES); ningún bono; total 549 → 551 proyectos (20/11)",
+   "fuente": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Bonos digitales de Profitus",
+  "categoria": "Crédito privado",
+  "pais": "LT",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Plataforma lituana que puede emitir bonos registrados en un sistema DLT autorizado; hoy no hay ninguna emisión abierta.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://www.profitus.com/bonds",
+  "fuentesActuales": [
+   "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV: PSFP europeo nº 21 (12/11)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Proveedor con pasaporte en España y sistema DLT autorizado.",
+  "porQueNo": "No hay ninguna emisión de bonos abierta."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin bonos abiertos el 20/11: la API pública lista 551 proyectos y los 7 abiertos son préstamos «standard» con hipoteca de primer rango (4 en Lituania, 1 en Letonia y 2 en España). Profitus sigue en el listado de la CNMV de plataformas europeas (nº 21). Sin advertencias de la CNMV. Seguir vigilando por si abre una emisión de bonos.",
+ "bloqueos": [
+  "La página «Bonds» de Profitus no se reabrió hoy (último dato del 13/11: informativa para emisores)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T16:59:25Z",
+  "finUtc": "2026-11-20T17:03:40Z"
+ },
+ "lecturas20": [
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "fuentes/profitus/profitus-api-abiertos-2026-11-20.txt",
+   "consultadoUtc": "2026-11-20T16:59:40Z",
+   "sha256": "b48d421e047ed4841729dd7b50d6120a340700659431edeee63476458b99e2e5",
+   "http": 200
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=2",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p2.json",
+   "consultadoUtc": "2026-11-20T16:59:42Z",
+   "sha256": "1d31924ff75dfb87ad9bdcdcb8e896fb810b6d4f71a35125829d46a8fb328d77",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-psfp-europeos.txt",
+   "consultadoUtc": "2026-11-20T16:59:44Z",
+   "sha256": "f4a1e0758fb06ff86d2e7e872ead160b62958175c7c210768dfcbe262c68d375",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "fuentes/crudo/cnmv-adv-Profitus.html",
+   "consultadoUtc": "2026-11-20T17:01:51Z",
+   "sha256": "2f346294f24ff288306a0739dc5ba882c27e60a8cbe88c3268f6dde6492c1e46",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "fuentes/crudo/cnmv-adv-Axiology.html",
+   "consultadoUtc": "2026-11-20T17:01:52Z",
+   "sha256": "37dbc728c83cd55db243d73dcfe10fb68f392c0c5a92fb095773464e0e00631b",
+   "http": 200
+  }
+ ],
+ "resumenCorto": "Ningún bono abierto: los 7 proyectos abiertos son préstamos."
+}
