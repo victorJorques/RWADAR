@@ -1,0 +1,2770 @@
+{
+  "formato": 1,
+  "etiqueta": "2026-11-20",
+  "fecha": "2026-11-20",
+  "desde": "2026-11-13",
+  "previa": {
+    "revisionId": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
+    "hash": "434217eb9b7f1cd9a851fbde7bced2bf001c79ac17610ad1d2a24edb8a9c1b61",
+    "ultimoDia": "2026-11-20"
+  },
+  "vigenciaDias": 7,
+  "ultimoDia": "2026-11-27",
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  },
+  "plataformas": 25,
+  "cadena": [
+    "2026-10-22",
+    "2026-10-23",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-03.2",
+    "2026-11-03.3",
+    "2026-11-03.4",
+    "2026-11-03.5",
+    "2026-11-03.6",
+    "2026-11-03.7",
+    "2026-11-04",
+    "2026-11-04.2",
+    "2026-11-05",
+    "2026-11-05.2",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13"
+  ],
+  "pedido": "puesta al día pedida por el responsable del proyecto",
+  "orden": "Actualiza las fichas y la información de RWAdar, ofertas, noticias, todo antes de las 12 de la noche",
+  "lecturaPublica": {
+    "hora": "2026-11-20T16:52:14Z – 2026-11-20T16:52:17Z",
+    "descartadas": 5
+  },
+  "radar": {
+    "fuentes": 69,
+    "manuales": [
+      "spiko-regafi-pasaporte-es"
+    ],
+    "alcanceNota": "la de pasaportes del registro REGAFI de la ACPR, por su API pública, porque la página cargaba sin esos datos",
+    "copias": [
+      {
+        "archivo": "radar-manual/regafi-spiko-pasaporte-espagne.json",
+        "sha256": "fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6",
+        "contiene": [
+          "\"type_passeport\": \"Libre prestation de services\"",
+          "\"pays\": \"ESPAGNE\"",
+          "\"date_debut\": \"2026-01-08\""
+        ]
+      }
+    ],
+    "literales": [
+      {
+        "id": "paxg-occ",
+        "contiene": [
+          "Trust Banks Active As of 10/31/2026"
+        ],
+        "patron": [
+          "25379 Paxos Trust Company"
+        ]
+      }
+    ]
+  },
+  "candidatas": [
+    "candidata-cando1-token-city",
+    "candidata-cryptocom-tokenized-stocks-eee",
+    "candidata-hausera-alicante-3",
+    "candidata-profitus-axiology-bonos",
+    "candidata-prosegur-cash-pagares",
+    "candidata-securitize-stocks",
+    "candidata-valorix-bit2me-stx"
+  ],
+  "sinCambios": [
+    "robinhood-classic-stock-tokens",
+    "prosegur-digital-gold"
+  ],
+  "plantillas": {
+    "LIBRO": "Libro de órdenes de la app de Brickwise leído el 20/11/2026 (16:54–16:56 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario.",
+    "BW_MINIMO": "Precio por participación de la venta más barata del mercado de la app ese día, más un 1,5 % de comisión; a ese precio había",
+    "BW_MINIMO_FIN": "a la venta. Brickwise no publica un mínimo en reventa ni si una orden se puede comprar en parte. El precio lo fija cada vendedor y cambia a diario. No es el precio de emisión.",
+    "BW_MENOR": "Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo.",
+    "BW_COMPRA": "Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %.",
+    "BW_PARTICIPACIONES": "Participaciones de esta emisión a la venta entre inversores ese día (suma de las órdenes abiertas en la app). Cambia a diario."
+  },
+  "pruebas": {
+    "spikoSmartCash": [
+      {
+        "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+        "hora": "2026-11-20T17:04:52Z",
+        "literal": "dailyYield \"0.0284\" · weeklyYield \"0.0284\" · monthlyYield \"0.0284\"",
+        "copia": {
+          "archivo": "revision-independiente/fuentes/spiko/yield-eurSAFO.json",
+          "sha256": "0cc6c7fcc2af635336ee0964bc805f776d6956ed27b7d3c1dd5a4d6e13ba0687",
+          "json": {
+            "dailyYield": "0.0284",
+            "weeklyYield": "0.0284",
+            "monthlyYield": "0.0284"
+          }
+        }
+      },
+      {
+        "url": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO/latest",
+        "hora": "2026-11-20T17:04:52Z",
+        "literal": "day 2026-11-20 · value 1.017886 EUR",
+        "copia": {
+          "archivo": "revision-independiente/fuentes/spiko/navlatest-eurSAFO.json",
+          "sha256": "9b7f78668c7cde3883b3998d7929bdef40dcdeabae7dd4cc269e7436186e7486",
+          "json": {
+            "day": "2026-11-20T00:00:00.000Z",
+            "amount.value": "1.017886"
+          }
+        }
+      },
+      {
+        "claim": "rentabilidad",
+        "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+        "contiene": "dailyYield \"0.0284\""
+      }
+    ]
+  },
+  "ofertas": {
+    "spiko-letras-del-tesoro-euro": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "rentabilidad",
+          "antes": {
+            "mostrada": "2,40 %",
+            "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 12/11/2026 (VL fechada el 12/11/2026); consultado el 13/11/2026. Variable y no garantizado."
+          },
+          "despues": {
+            "mostrada": "2,35 %",
+            "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 19/11/2026 (VL fechada el 19/11/2026); consultado el 20/11/2026. Variable y no garantizado."
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
+                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "json": {
+                  "monthlyYield": "0.0235",
+                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.063276",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
+                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.063276"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "contiene": "monthlyYield \"0.0235\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 2,35 % es correcto"
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Rentabilidad publicada · 31 días · 12/11/2026",
+          "antes": "2,40 %",
+          "despues": {
+            "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026",
+            "valor": "2,35 %"
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
+                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "json": {
+                  "monthlyYield": "0.0235",
+                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.063276",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
+                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.063276"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "contiene": "monthlyYield \"0.0235\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 2,35 % es correcto"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Rentabilidad publicada · 31 días",
+          "antes": "2,40 %",
+          "despues": {
+            "valor": "2,35 %",
+            "fechaDato": "2026-11-19",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Rendimiento neto anualizado de 31 días que publica Spiko (valor liquidativo del 19/11/2026, que Spiko calculó ese día; consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,061180 € → 1,063276 €). Variable y no garantizado."
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0235\" · updatedAt 2026-11-19T16:44:57.782Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-EUTBL.json",
+                "sha256": "d01e752cfac4139aa2668b7e415f8f4ca214f56173f0630ce0dd2df9b199c427",
+                "json": {
+                  "monthlyYield": "0.0235",
+                  "updatedAt": "2026-11-19T16:44:57.782Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.063276",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-EUTBL.json",
+                "sha256": "d94fd116941c0866d63b5e66b90f041f06676c4a54696bdec2e9b709c572946a",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.063276"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+              "contiene": "monthlyYield \"0.0235\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 2,35 % es correcto"
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-20",
+              "hora": "2026-11-20T17:05:02Z",
+              "literal": "VL del 19/10/2026 1.06118 y del 19/11/2026 1.063276",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/series-EUTBL.json",
+                "sha256": "e02579d129eca1f426b20567f7b92343ebd956d8db994feebd67d5b4019cb46a",
+                "contiene": [
+                  "\"day\":\"2026-10-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.06118\"",
+                  "\"day\":\"2026-11-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.063276\""
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "rentabilidad",
+          "antes": {
+            "mostrada": "3,98 %",
+            "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 12/11/2026 (VL del 12/11/2026); consultado el 13/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+          },
+          "despues": {
+            "mostrada": "3,97 %",
+            "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 19/11/2026 (VL del 19/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
+                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "json": {
+                  "monthlyYield": "0.0397",
+                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.103445",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
+                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.103445"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "contiene": "monthlyYield \"0.0397\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 3,97 % es correcto"
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Rentabilidad publicada · 31 días · 12/11/2026 · en USD",
+          "antes": "3,98 %",
+          "despues": {
+            "etiqueta": "Rentabilidad publicada · 31 días · 19/11/2026 · en USD",
+            "valor": "3,97 %"
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
+                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "json": {
+                  "monthlyYield": "0.0397",
+                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.103445",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
+                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.103445"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "contiene": "monthlyYield \"0.0397\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 3,97 % es correcto"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Rentabilidad publicada · 31 días",
+          "antes": "3,98 %",
+          "despues": {
+            "valor": "3,97 %",
+            "fechaDato": "2026-11-19",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Rendimiento neto anualizado en dólares de 31 días que publica Spiko (valor liquidativo del 19/11/2026, consultado el 20/11/2026 y recalculado ese día con los valores liquidativos del 19/10 y del 19/11: 1,099805 $ → 1,103445 $). No incluye la variación del euro frente al dólar. Variable y no garantizado."
+          },
+          "prueba": [
+            {
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "monthlyYield \"0.0397\" · updatedAt 2026-11-19T16:45:20.640Z",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/yield-USTBL.json",
+                "sha256": "4bad4f5638fa36ff0ad40de78c8ae803af4ed3d2de0f16e377ab57e5d5d11c5f",
+                "json": {
+                  "monthlyYield": "0.0397",
+                  "updatedAt": "2026-11-19T16:45:20.640Z"
+                }
+              }
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+              "hora": "2026-11-20T17:04:52Z",
+              "literal": "day 2026-11-19 · value 1.103445",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/navlatest-USTBL.json",
+                "sha256": "a810e630470ef74edce5b3b011cefa0541a5c17c17bec39f1e48f7fcfafd34e1",
+                "json": {
+                  "day": "2026-11-19T00:00:00.000Z",
+                  "amount.value": "1.103445"
+                }
+              }
+            },
+            {
+              "claim": "rentabilidad",
+              "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+              "contiene": "monthlyYield \"0.0397\""
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "así que 3,97 % es correcto"
+            },
+            {
+              "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL?startDay=2026-09-20",
+              "hora": "2026-11-20T17:05:02Z",
+              "literal": "VL del 19/10/2026 1.099805 y del 19/11/2026 1.103445",
+              "copia": {
+                "archivo": "revision-independiente/fuentes/spiko/series-USTBL.json",
+                "sha256": "a323e99d158b83d39a117a0dcbdf336ed41b424293ba3e1b8c41a9015ccc4fd5",
+                "contiene": [
+                  "\"day\":\"2026-10-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.099805\"",
+                  "\"day\":\"2026-11-19T00:00:00.000Z\",\"amount\":{\"value\":\"1.103445\""
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para los tres datos de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "spiko-smart-cash-euro": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "rentabilidad",
+          "antes": {
+            "mostrada": "2,84 %",
+            "literal": "Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 12/11/2026 (consultado el 13/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+          },
+          "despues": {
+            "mostrada": "2,84 %",
+            "literal": "Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 20/11/2026 (consultado el 20/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+          },
+          "prueba": [
+            "spikoSmartCash",
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "La cifra de 2,84 % y la fecha 20/11 son correctas."
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Rentabilidad publicada · neta y variable · 12/11/2026",
+          "antes": "2,84 %",
+          "despues": {
+            "etiqueta": "Rentabilidad publicada · neta y variable · 20/11/2026",
+            "valor": "2,84 %"
+          },
+          "prueba": "spikoSmartCash"
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "AMF (Francia): n.º SCV20260075, autorizado el 17/02/2026 (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
+          },
+          "prueba": [
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "Texto que hay que usar: «AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "**Corrección obligatoria del revisor:** la métrica «Supervisor» pasa a"
+            },
+            {
+              "claim": "registro",
+              "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+              "contiene": "\"published\":false"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Rendimiento neto publicado",
+          "antes": "2,84 %",
+          "despues": {
+            "valor": "2,84 %",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Tipo neto de comisiones que publica Spiko con el valor liquidativo del 20/11/2026 (consultado el 20/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR."
+          },
+          "prueba": "spikoSmartCash"
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Aprobación del compartimento",
+          "antes": "Autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)",
+          "despues": {
+            "valor": "N.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO)",
+            "fechaDato": "2026-02-23",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+            "alcance": "Certificado de la AMF fechado en París el 23/02/2026, que aloja Spiko: incluye «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» entre los compartimentos que cubre, sin fecha de autorización. El 20/11/2026 la ficha del compartimento en la base GECO de la AMF ya no se publica y el buscador de GECO no lo devuelve. No dice en qué países se comercializa."
+          },
+          "prueba": [
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "Texto que hay que usar: «AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España»"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "**Corrección obligatoria del revisor:** la métrica «Supervisor» pasa a"
+            },
+            {
+              "claim": "registro",
+              "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+              "contiene": "\"published\":false"
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "va fechado «Paris, 2026-02-23». Pone «SCV20260075 SPIKO AMUNDI OVERNIGHT SWAP FUND» en la lista de subfondos que cubre"
+            }
+          ]
+        },
+        {
+          "tipo": "descripcion",
+          "antes": "autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)",
+          "despues": "con el n.º SCV20260075 de la AMF, según el certificado de la AMF del 23/02/2026 (el 20/11/2026 el fondo ya no aparece en la base pública GECO de la AMF)",
+          "prueba": [
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "Texto que hay que usar: «AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España»"
+            },
+            {
+              "documento": "revision-independiente/spiko.md",
+              "contiene": "Lo más claro es quitar la fecha."
+            },
+            {
+              "claim": "registro",
+              "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+              "contiene": "\"published\":false"
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "metricas": "El expediente propone «autorizado el 17/02/2026 según el certificado de la AMF y el folleto» en «Supervisor»; el revisor lo corrige (ningún documento da esa fecha) y DECISIONES §2 y §4 fijan su texto.",
+        "tarjeta": "El expediente propone textos nuevos para el acceso y la salida de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "mtbill": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "metrica",
+          "etiqueta": "Valor por token · 10/11/2026",
+          "antes": "1,0777 USD (oráculo del emisor)",
+          "despues": {
+            "etiqueta": "Valor por token · 20/11/2026",
+            "valor": "1,0789 USD (oráculo del emisor)"
+          },
+          "prueba": [
+            {
+              "claim": "precio",
+              "url": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b",
+              "contiene": "roundId 498, answer 107890125"
+            },
+            {
+              "documento": "revision-independiente/acciones-oro-tesoro.md",
+              "contiene": "«1,0789 USD (20/11/2026)». Correcto."
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Rentabilidad pasada · 5 semanas hasta el 10/11/2026 · en USD",
+          "antes": "3,45 % anual",
+          "despues": {
+            "etiqueta": "Rentabilidad pasada · 5 semanas hasta el 20/11/2026 · en USD",
+            "valor": "3,46 % anual"
+          },
+          "prueba": [
+            {
+              "claim": "rentabilidad",
+              "url": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b (latestRoundData y getRoundData)",
+              "contiene": "ronda 475: answer 107534190, updatedAt 2026-10-16T13:47:47Z · ronda 498: answer 107890125, updatedAt 2026-11-20T11:41:35Z"
+            },
+            {
+              "documento": "revision-independiente/acciones-oro-tesoro.md",
+              "contiene": "3,4605 % → 3,46 % anual en USD"
+            }
+          ],
+          "calculos": [
+            {
+              "tipo": "anualSimple",
+              "desde": {
+                "valor": 107534190,
+                "ts": 1792158467
+              },
+              "hasta": {
+                "valor": 107890125,
+                "ts": 1795174895
+              },
+              "resultado": "3,46",
+              "dias": "34.91"
+            }
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "antes": "La rentabilidad es pasada y la calcula RWAdar con el valor que publica el emisor (del 06/10 al 10/11/2026): está en dólares, no descuenta el 0,07 % del reembolso inmediato ni el cambio euro/dólar, y no garantiza la futura.",
+          "despues": "La rentabilidad es pasada y la calcula RWAdar con el valor que publica el emisor (del 16/10 al 20/11/2026): está en dólares, no descuenta el 0,07 % del reembolso inmediato ni el cambio euro/dólar, y no garantiza la futura.",
+          "prueba": [
+            {
+              "documento": "revision-independiente/acciones-oro-tesoro.md",
+              "contiene": "3,4605 % → 3,46 % anual en USD"
+            },
+            {
+              "documento": "revision-independiente/acciones-oro-tesoro.md",
+              "contiene": "La etiqueta («5 semanas hasta el 20/11/2026») y el aviso («del 16/10 al 20/11/2026») cambian a la vez, como debe ser."
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "La ficha publicada no tiene datos de tarjeta y DECISIONES no los añade (el motor no añade datos de tarjeta); además, en «fuentes_en_conflicto», la web y la app los ocultan."
+      }
+    },
+    "kraken-xstocks": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "resumen",
+          "antes": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.",
+          "despues": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 1.000 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.",
+          "prueba": [
+            {
+              "claim": "estado",
+              "url": "https://eu.kraken.com/xstocks",
+              "contiene": "Kraken ofrece acceso a más de 1.000 acciones y ETF de EE. UU."
+            },
+            {
+              "documento": "revision-independiente/acciones-oro-tesoro.md",
+              "contiene": "El cambio del resumen se sostiene."
+            }
+          ]
+        }
+      ],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos para el mínimo y el acceso de la tarjeta; DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge (Kraken: «el aviso se mantiene»): se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "robinhood-classic-stock-tokens": {
+      "decision": "mantener",
+      "cambios": [],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "prosegur-digital-gold": {
+      "decision": "mantener",
+      "cambios": [],
+      "difiere": {
+        "tarjeta": "El expediente propone textos nuevos de tarjeta; DECISIONES §2 dice «sin cambios; solo la fecha»: se conservan los publicados (ver noAplicado)."
+      }
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 75,00 € (2 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2RAH5.ventaMasBarata": 75,
+                "activos.AT0000A2RAH5.cantidadAVentaMasBarata": 2
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 99,00 € (100,49 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 99,00 € (100,49 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 99,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2RAH5.ordenMenorDesembolso.precio": 99,
+                "activos.AT0000A2RAH5.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "99,00",
+              "porcentaje": "1,5",
+              "resultado": "100,49"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 75 € la participación en reventa (13/11)",
+          "despues": "Desde 75 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 2 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 75,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2RAH5.ventaMasBarata": 75,
+                  "activos.AT0000A2RAH5.v2_lowestOfferPrice": 75
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "335",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "335",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 335",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2RAH5.v2_availableBricksSecondary": 335,
+                "activos.AT0000A2RAH5.participacionesEnVenta": 335
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "20,00 € (1 participación, orden del 23/04/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "20,00 € (1 participación, orden del 23/04/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 20,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2RAH5.mejorCompra.precio": 20
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 75,00 € (11 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2T4D7.ventaMasBarata": 75,
+                "activos.AT0000A2T4D7.cantidadAVentaMasBarata": 11
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 80,00 € (81,20 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 80,00 € (81,20 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 80,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2T4D7.ordenMenorDesembolso.precio": 80,
+                "activos.AT0000A2T4D7.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "80,00",
+              "porcentaje": "1,5",
+              "resultado": "81,20"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 75 € la participación en reventa (13/11)",
+          "despues": "Desde 75 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 11 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 75,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2T4D7.ventaMasBarata": 75,
+                  "activos.AT0000A2T4D7.v2_lowestOfferPrice": 75
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "97",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "97",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 97",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2T4D7.v2_availableBricksSecondary": 97,
+                "activos.AT0000A2T4D7.participacionesEnVenta": 97
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "65,00 € (1 participación, orden del 16/10/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 65,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2T4D7.mejorCompra.precio": 65
+              }
+            }
+          }
+        }
+      ]
+    },
+    "local-de-estanco-klagenfurt": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "95,00 € por participación (16 a ese precio, en 3 órdenes)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "95,00 € por participación (16 a ese precio, en 3 órdenes)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 95,00 € (16 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2U5V3.ventaMasBarata": 95,
+                "activos.AT0000A2U5V3.cantidadAVentaMasBarata": 16
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 95,00 € (96,43 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 95,00 € (96,43 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 95,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2U5V3.ordenMenorDesembolso.precio": 95,
+                "activos.AT0000A2U5V3.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "95,00",
+              "porcentaje": "1,5",
+              "resultado": "96,43"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 95 € la participación en reventa (13/11)",
+          "despues": "Desde 95 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 16 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 95,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2U5V3.ventaMasBarata": 95,
+                  "activos.AT0000A2U5V3.v2_lowestOfferPrice": 95
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "302",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "299",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 299",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2U5V3.v2_availableBricksSecondary": 299,
+                "activos.AT0000A2U5V3.participacionesEnVenta": 299
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "15,00 € (1 participación, orden del 21/09/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "15,00 € (1 participación, orden del 21/09/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 15,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2U5V3.mejorCompra.precio": 15
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "68,80 € por participación (1 a ese precio, orden del 08/11/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "68,80 € por participación (1 a ese precio, orden del 08/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 68,80 € (1 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCD0.ventaMasBarata": 68.8,
+                "activos.AT0000A2WCD0.cantidadAVentaMasBarata": 1
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 68,80 € (69,83 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 68,80 € (69,83 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 68,80 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCD0.ordenMenorDesembolso.precio": 68.8,
+                "activos.AT0000A2WCD0.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "68,80",
+              "porcentaje": "1,5",
+              "resultado": "69,83"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 68,80 € la participación en reventa (13/11)",
+          "despues": "Desde 68,80 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 1 participación {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 68,80 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2WCD0.ventaMasBarata": 68.8,
+                  "activos.AT0000A2WCD0.v2_lowestOfferPrice": 68.8
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "317",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "315",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 315",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCD0.v2_availableBricksSecondary": 315,
+                "activos.AT0000A2WCD0.participacionesEnVenta": 315
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "30,00 € (1 participación, orden del 01/07/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "30,00 € (1 participación, orden del 01/07/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 30,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCD0.mejorCompra.precio": 30
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 69,90 € (1 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCE8.ventaMasBarata": 69.9,
+                "activos.AT0000A2WCE8.cantidadAVentaMasBarata": 1
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 69,90 € (70,95 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 69,90 € (70,95 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 69,90 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCE8.ordenMenorDesembolso.precio": 69.9,
+                "activos.AT0000A2WCE8.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "69,90",
+              "porcentaje": "1,5",
+              "resultado": "70,95"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 69,90 € la participación en reventa (13/11)",
+          "despues": "Desde 69,90 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 1 participación {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 69,90 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2WCE8.ventaMasBarata": 69.9,
+                  "activos.AT0000A2WCE8.v2_lowestOfferPrice": 69.9
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "299",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "298",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 298",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCE8.v2_availableBricksSecondary": 298,
+                "activos.AT0000A2WCE8.participacionesEnVenta": 298
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "60,00 € (1 participación, orden del 10/11/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "62,00 € (1 participación, orden del 17/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 62,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2WCE8.mejorCompra.precio": 62
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drautalresidenz-paternion": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "70,00 € por participación (3 a ese precio, orden del 18/10/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "70,00 € por participación (1 a ese precio, orden del 17/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 70,00 € (1 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2YPQ0.ventaMasBarata": 70,
+                "activos.AT0000A2YPQ0.cantidadAVentaMasBarata": 1
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 84,00 € (85,26 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 70,00 € (71,05 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 70,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2YPQ0.ordenMenorDesembolso.precio": 70,
+                "activos.AT0000A2YPQ0.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "70,00",
+              "porcentaje": "1,5",
+              "resultado": "71,05"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 70 € la participación en reventa (13/11)",
+          "despues": "Desde 70 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 1 participación {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 70,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2YPQ0.ventaMasBarata": 70,
+                  "activos.AT0000A2YPQ0.v2_lowestOfferPrice": 70
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "150",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "147",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 147",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2YPQ0.v2_availableBricksSecondary": 147,
+                "activos.AT0000A2YPQ0.participacionesEnVenta": 147
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "60,00 € (1 participación, orden del 05/11/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "50,00 € (1 participación, orden del 29/09/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 50,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2YPQ0.mejorCompra.precio": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    "randhartingergasse-9-viena": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "78,00 € por participación (21 a ese precio, en 2 órdenes)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "78,00 € por participación (20 a ese precio, orden del 29/06/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 78,00 € (20 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2ZT84.ventaMasBarata": 78,
+                "activos.AT0000A2ZT84.cantidadAVentaMasBarata": 20
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 78,00 € (79,17 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 85,00 € (86,28 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 85,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2ZT84.ordenMenorDesembolso.precio": 85,
+                "activos.AT0000A2ZT84.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "85,00",
+              "porcentaje": "1,5",
+              "resultado": "86,28"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 78 € la participación en reventa (13/11)",
+          "despues": "Desde 78 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 20 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 78,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A2ZT84.ventaMasBarata": 78,
+                  "activos.AT0000A2ZT84.v2_lowestOfferPrice": 78
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "189",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "188",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 188",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2ZT84.v2_availableBricksSecondary": 188,
+                "activos.AT0000A2ZT84.participacionesEnVenta": 188
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "64,00 € (1 participación, orden del 12/11/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "64,00 € (1 participación, orden del 12/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 64,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A2ZT84.mejorCompra.precio": 64
+              }
+            }
+          }
+        }
+      ]
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "75,00 € por participación (5 a ese precio, orden del 08/11/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "75,00 € por participación (5 a ese precio, orden del 08/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 75,00 € (5 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A31KP7.ventaMasBarata": 75,
+                "activos.AT0000A31KP7.cantidadAVentaMasBarata": 5
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 90,00 € (91,35 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 82,00 € (83,23 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 82,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A31KP7.ordenMenorDesembolso.precio": 82,
+                "activos.AT0000A31KP7.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "82,00",
+              "porcentaje": "1,5",
+              "resultado": "83,23"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 75 € la participación en reventa (13/11)",
+          "despues": "Desde 75 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 5 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 75,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A31KP7.ventaMasBarata": 75,
+                  "activos.AT0000A31KP7.v2_lowestOfferPrice": 75
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "265",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "252",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 252",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A31KP7.v2_availableBricksSecondary": 252,
+                "activos.AT0000A31KP7.participacionesEnVenta": 252
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 20,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A31KP7.mejorCompra.precio": 20
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "80,00 € por participación (11 a ese precio, orden del 08/02/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "81,00 € por participación (1 a ese precio, orden del 15/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 81,00 € (1 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A324B4.ventaMasBarata": 81,
+                "activos.AT0000A324B4.cantidadAVentaMasBarata": 1
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 115,00 € (116,73 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 81,00 € (82,22 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 81,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A324B4.ordenMenorDesembolso.precio": 81,
+                "activos.AT0000A324B4.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "81,00",
+              "porcentaje": "1,5",
+              "resultado": "82,22"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 80 € la participación en reventa (13/11)",
+          "despues": "Desde 81 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 1 participación {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 81,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A324B4.ventaMasBarata": 81,
+                  "activos.AT0000A324B4.v2_lowestOfferPrice": 81
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "106",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "96",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 96",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A324B4.v2_availableBricksSecondary": 96,
+                "activos.AT0000A324B4.participacionesEnVenta": 96
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "19,00 € (3 participaciones, orden del 06/11/2025)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "64,00 € (1 participación, orden del 17/11/2026)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 64,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A324B4.mejorCompra.precio": 64
+              }
+            }
+          }
+        }
+      ]
+    },
+    "fotovoltaica-greenpoint": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 102,00 € (8 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J32.ventaMasBarata": 102,
+                "activos.AT0000A38J32.cantidadAVentaMasBarata": 8
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 102,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J32.ordenMenorDesembolso.precio": 102,
+                "activos.AT0000A38J32.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "102,00",
+              "porcentaje": "1,5",
+              "resultado": "103,53"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 102 € la participación en reventa (13/11)",
+          "despues": "Desde 102 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 8 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 102,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A38J32.ventaMasBarata": 102,
+                  "activos.AT0000A38J32.v2_lowestOfferPrice": 102
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "347",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "347",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 347",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J32.v2_availableBricksSecondary": 347,
+                "activos.AT0000A38J32.participacionesEnVenta": 347
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "84,00 € (1 participación, orden del 23/06/2026)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "29,00 € (1 participación, orden del 10/08/2024)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 29,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J32.mejorCompra.precio": 29
+              }
+            }
+          }
+        }
+      ]
+    },
+    "fotovoltaica-cohotel": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "referencia",
+          "etiqueta": "Venta más barata · 13/11/2026",
+          "antes": "102,00 € por participación (1 a ese precio, orden del 11/11/2026)",
+          "despues": {
+            "etiqueta": "Venta más barata · 20/11/2026",
+            "valor": "110,00 € por participación (35 a ese precio, en 2 órdenes de 31, 4)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "venta más barata 110,00 € (35 a ese precio)",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J40.ventaMasBarata": 110,
+                "activos.AT0000A38J40.cantidadAVentaMasBarata": 35
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+          "antes": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+          "despues": {
+            "etiqueta": "Orden de venta de menor importe · 20/11/2026",
+            "valor": "1 participación a 120,00 € (121,80 € con el 1,5 %)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "orden de menor importe: 1 participación a 120,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J40.ordenMenorDesembolso.precio": 120,
+                "activos.AT0000A38J40.ordenMenorDesembolso.cantidad": 1
+              }
+            }
+          },
+          "calculos": [
+            {
+              "tipo": "comision",
+              "precio": "120,00",
+              "porcentaje": "1,5",
+              "resultado": "121,80"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 102 € la participación en reventa (13/11)",
+          "despues": "Desde 110 € la participación en reventa (20/11)",
+          "fechaDato": "2026-11-20",
+          "nota": "{{BW_MINIMO}} 35 participaciones {{BW_MINIMO_FIN}}",
+          "prueba": [
+            {
+              "url": "https://api.app.brickwise.at/api/v1/assets",
+              "hora": "2026-11-20T16:54:47Z",
+              "literal": "venta más barata 110,00 €",
+              "copia": {
+                "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+                "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+                "json": {
+                  "activos.AT0000A38J40.ventaMasBarata": 110,
+                  "activos.AT0000A38J40.v2_lowestOfferPrice": 110
+                }
+              }
+            },
+            {
+              "claim": "minimo",
+              "url": "https://app.brickwise.at/desktopWeb/marketplace"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Participaciones en venta · 13/11/2026",
+          "antes": "59",
+          "despues": {
+            "etiqueta": "Participaciones en venta · 20/11/2026",
+            "valor": "59",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v2/assets",
+            "alcance": "{{BW_PARTICIPACIONES}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v2/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "availableBricksSecondary 59",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J40.v2_availableBricksSecondary": 59,
+                "activos.AT0000A38J40.participacionesEnVenta": 59
+              }
+            }
+          }
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Mejor oferta de compra · 13/11/2026",
+          "antes": "3,00 € (1 participación, orden del 23/11/2024)",
+          "despues": {
+            "etiqueta": "Mejor oferta de compra · 20/11/2026",
+            "valor": "3,00 € (1 participación, orden del 23/11/2024)",
+            "fechaDato": "2026-11-20",
+            "fechaConsulta": "2026-11-20",
+            "fuente": "https://api.app.brickwise.at/api/v1/assets",
+            "alcance": "{{LIBRO}} {{BW_COMPRA}}"
+          },
+          "prueba": {
+            "url": "https://api.app.brickwise.at/api/v1/assets",
+            "hora": "2026-11-20T16:54:47Z",
+            "literal": "mejor oferta de compra 3,00 €",
+            "copia": {
+              "archivo": "grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-20.json",
+              "sha256": "129bda94f1eeba84b90278fc0df00914c6eabee08369c6cf29ca952156fe1bf2",
+              "json": {
+                "activos.AT0000A38J40.mejorCompra.precio": 3
+              }
+            }
+          }
+        }
+      ]
+    },
+    "aktionariat": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "metrica",
+          "etiqueta": "Precio del emisor · 13/11/2026",
+          "antes": "7,25 CHF por acción (fijo)",
+          "despues": {
+            "etiqueta": "Precio del emisor · 20/11/2026",
+            "valor": "7,25 CHF por acción (fijo)"
+          },
+          "prueba": {
+            "claim": "precio",
+            "url": "https://shares.aktionariat.com/invest",
+            "contiene": "Price per DAKS 7.25 CHF"
+          }
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026)",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)"
+          },
+          "prueba": {
+            "claim": "supervision",
+            "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"
+          }
+        },
+        {
+          "tipo": "aviso",
+          "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 13/11/2026).",
+          "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 20/11/2026).",
+          "prueba": {
+            "claim": "precio",
+            "url": "https://shares.aktionariat.com/trade",
+            "contiene": "6.20 356"
+          }
+        }
+      ]
+    },
+    "boss-info": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026)",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)"
+          },
+          "prueba": {
+            "claim": "supervision",
+            "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"
+          }
+        },
+        {
+          "tipo": "aviso",
+          "antes": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 13/11/2026).",
+          "despues": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 20/11/2026).",
+          "prueba": {
+            "claim": "salida",
+            "url": "https://shares.bossinfo.com/trade",
+            "contiene": "Bid/Ask 7.30 / 8.40"
+          }
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 13/11)",
+          "despues": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 20/11)",
+          "fechaDato": "2026-11-20",
+          "prueba": [
+            {
+              "claim": "minimo",
+              "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
+            },
+            {
+              "documento": "revision-independiente/suiza.md",
+              "contiene": "Confirma «unos 17 ZCHF»."
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Última operación · 13/11/2026",
+          "antes": "8,40 ZCHF (1 acción, 05/11/2026)",
+          "despues": {
+            "etiqueta": "Última operación · 20/11/2026",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Última operación del mercado entre accionistas que enseña el portal del emisor: 1 acción a 8,40 ZCHF el 05/11/2026 a las 13:35 UTC. El 20/11/2026 se comprobó en el portal que sigue siendo la última (ninguna operación nueva). Lo que recibió quien vendió, 8,2404 ZCHF (la diferencia, 0,1596 ZCHF, el 1,9 %, es la comisión), se comprobó en la cadena de bloques el 13/11/2026 y hoy no se ha vuelto a leer. La anterior era del 28/09/2026 (474 acciones a 6,70 ZCHF)."
+          },
+          "prueba": [
+            {
+              "claim": "actividad",
+              "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+              "contiene": "5 Nov 2026 / 13:35 Secondary Trade 8.40 ZCHF 1 BOSS"
+            },
+            {
+              "documento": "revision-independiente/suiza.md",
+              "contiene": "Última operación:** `getTrades` limit 5 (17:04:25Z)"
+            }
+          ]
+        }
+      ]
+    },
+    "switzerlend": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "aviso",
+          "antes": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 13/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+          "despues": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 20/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+          "prueba": [
+            {
+              "claim": "salida",
+              "url": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65"
+            },
+            {
+              "documento": "revision-independiente/suiza.md",
+              "contiene": "saldo ZCHF del contrato 0,03177"
+            }
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 13/11/2026).",
+          "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 20/11/2026).",
+          "prueba": {
+            "claim": "precio",
+            "url": "https://shares.lend.ch/trade",
+            "contiene": "67.00 15"
+          }
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "1 acción (68,01 CHF el 13/11)",
+          "despues": "1 acción (68,01 CHF el 20/11)",
+          "fechaDato": "2026-11-20",
+          "prueba": {
+            "claim": "minimo",
+            "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+            "contiene": "Price per LENDS 68.01 CHF"
+          }
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Supervisor",
+          "antes": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (13/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+          "despues": {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+          },
+          "prueba": {
+            "claim": "supervision",
+            "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG"
+          }
+        }
+      ]
+    },
+    "hausera-proximas-ofertas": {
+      "decision": "actualizar",
+      "cambios": [
+        {
+          "tipo": "resumen",
+          "antes": "Seguimiento de las operaciones inmobiliarias de Hausera. El 10/11/2026 Alicante 2 ya figuraba como financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abre la preventa el 18/11 y la suscripción el 25/11/2026.",
+          "despues": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción empieza el 25/11/2026.",
+          "prueba": [
+            {
+              "claim": "estado",
+              "url": "https://hausera.io/oportunidades/",
+              "contiene": "Alicante 3 · PREVENTA ABIERTA"
+            },
+            {
+              "documento": "revision-independiente/vigilancia.md",
+              "contiene": "Estado de Alicante 3: «PREVENTA ABIERTA»."
+            }
+          ]
+        },
+        {
+          "tipo": "metrica",
+          "etiqueta": "Próxima operación",
+          "antes": "Alicante 3 · preventa desde el 18/11/2026, suscripción del 25/11/2026 al 30/06/2027",
+          "despues": {
+            "etiqueta": "Próxima operación",
+            "valor": "Alicante 3 · preventa abierta desde el 18/11/2026; suscripción del 25/11/2026 al 30/06/2027"
+          },
+          "prueba": [
+            {
+              "claim": "estado",
+              "url": "https://hausera.io/oportunidades/",
+              "contiene": "Alicante 3 · PREVENTA ABIERTA"
+            },
+            {
+              "documento": "revision-independiente/vigilancia.md",
+              "contiene": "Estado de Alicante 3: «PREVENTA ABIERTA»."
+            }
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "antes": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 13/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV.",
+          "despues": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 20/11/2026, con la preventa ya abierta, Alicante 3 aún no estaba inscrita en el registro de la CNMV.",
+          "prueba": [
+            {
+              "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+              "hora": "2026-11-20T16:54:21Z",
+              "literal": "Registro de emisiones de Ursus-3 (págs. 1 a 4): de Hausera, las mismas 8 (SPV a SPV 8); sin SPV 9, 10 ni 11"
+            },
+            {
+              "documento": "revision-independiente/vigilancia.md",
+              "contiene": "El aviso «El 20/11/2026, con la preventa ya abierta, Alicante 3 aún no estaba inscrita…» está respaldado."
+            }
+          ]
+        },
+        {
+          "tipo": "tarjeta",
+          "etiqueta": "Mínimo de inversión",
+          "antes": "Desde 100 € en Alicante 3, según su documento de emisión (13/11); la preventa abre el 18/11.",
+          "despues": "Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.",
+          "fechaDato": null,
+          "notaCambia": {
+            "antes": "El 13/11/2026 aún no se podía invertir: la preventa abre el 18/11/2026 y la suscripción, el 25/11/2026.",
+            "despues": "El 20/11/2026 la preventa estaba abierta (desde el 18/11/2026) y la suscripción empieza el 25/11/2026."
+          },
+          "prueba": [
+            {
+              "url": "https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+              "hora": "2026-11-20T16:56:39Z",
+              "literal": "Ticket mínimo: 100,00 euros"
+            },
+            {
+              "documento": "revision-independiente/vigilancia.md",
+              "contiene": "En el documento siguen «Ticket mínimo: 100,00 euros»"
+            },
+            {
+              "claim": "estado",
+              "url": "https://hausera.io/oportunidades/",
+              "contiene": "Alicante 3 · PREVENTA ABIERTA"
+            },
+            {
+              "documento": "revision-independiente/vigilancia.md",
+              "contiene": "Estado de Alicante 3: «PREVENTA ABIERTA»."
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
+          "etiqueta": "Historial publicado · 13/11/2026",
+          "antes": "42 operaciones, 24 terminadas, 128 M€ financiados",
+          "despues": {
+            "etiqueta": "Historial publicado · 20/11/2026",
+            "fechaConsulta": "2026-11-20",
+            "alcance": "Cifras del promotor en su portada, consultada el 20/11/2026; ningún registro público las comprueba. No son una rentabilidad ni garantizan resultados."
+          },
+          "prueba": {
+            "url": "https://hausera.io/",
+            "hora": "2026-11-20T16:55:00Z",
+            "literal": "42 operaciones realizadas · 24 operaciones terminadas · 128M€ total financiado",
+            "copia": {
+              "archivo": "grupos/vigilancia/fuentes/hausera/nav-hausera-home-2026-11-20.txt",
+              "sha256": "e8cf94ba1f00a2eadebd2c6af45677e0a920d5580c10321bad7348db67d890e8",
+              "contiene": [
+                "42 operaciones realizadas",
+                "24 operaciones terminadas",
+                "128M€ total financiado"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "prohibidos": [
+    {
+      "en": "mtbill",
+      "patron": "lista blanca|greenlist|whitelist",
+      "flags": "i",
+      "motivo": "mTBILL: sin «lista blanca»"
+    },
+    {
+      "en": "cambios",
+      "patron": "países permitidos|Permitted Jurisdictions",
+      "flags": "i",
+      "motivo": "ni el acceso de mTBILL según la web de Midas"
+    },
+    {
+      "en": "spiko-smart-cash-euro",
+      "patron": "autorizad[oa] (?:por la AMF )?el 17/02/2026",
+      "motivo": "Spiko Euro: la fecha 17/02/2026 solo venía de la ficha GECO que ya no se publica (corrección del revisor)"
+    }
+  ],
+  "fuentesNuevas": [],
+  "noAplicado": [
+    {
+      "slug": "spiko-smart-cash-euro",
+      "que": "Quitar la dirección de la ficha GECO c124199 (https://geco.amf-france.org/produit-d-epargne/c124199), que ya no se publica, de la lista de fuentes de la ficha (documentacion-ofertas.json, «fuentes»)",
+      "porque": "El motor no quita fuentes de la lista de una ficha (solo cambia, añade o quita referencias). Ya no la cita ninguna referencia ni la descripción: «Aprobación del compartimento» pasa al certificado de la AMF. No está en las fuentes de la oferta del escaparate (fuentesActuales). Si se quiere quitar también de la lista, hay que montarlo sin el motor (motor:false) o añadir al motor un cambio «fuenteFichaQuita».",
+      "detalle": "DECISIONES §2: «En documentacion-ofertas.json se quita la fecha 17/02/2026 y «(ficha pública en GECO …)» y la URL de la ficha GECO c124199, que ya no se publica». La fecha y el paréntesis sí se quitan."
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "que": "Corregir también el claim del expediente que dice «según el certificado de la AMF y el folleto» (DECISIONES §2: «Igual en el claim del expediente»)",
+      "porque": "Al montador no le está permitido editar los expedientes. Lo que se publica (métrica, referencia y descripción) ya lleva el texto corregido del revisor; el expediente queda como lo dejó el investigador y la corrección consta en revision-independiente/spiko.md."
+    },
+    {
+      "slug": "varias (Spiko ×3, Kraken, Robinhood y Prosegur Digital Gold)",
+      "que": "Textos nuevos de la tarjeta que proponen los expedientes (mínimo, acceso desde España o salida) con el mismo fondo y otra redacción",
+      "porque": "DECISIONES-COORDINADOR.md es una lista cerrada y no los recoge: se conservan los textos publicados, con la consulta de hoy.",
+      "sigue": [
+        {
+          "slug": "spiko-letras-del-tesoro-euro",
+          "referencia": "Mínimo de inversión (clase EUTBL)",
+          "valores": [
+            "Desde 1 €"
+          ]
+        },
+        {
+          "slug": "spiko-smart-cash-euro",
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)"
+          ]
+        },
+        {
+          "slug": "kraken-xstocks",
+          "referencia": "Acceso desde España",
+          "valores": [
+            "Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales"
+          ]
+        },
+        {
+          "slug": "robinhood-classic-stock-tokens",
+          "referencia": "Salida",
+          "valores": [
+            "Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro y spiko-letras-del-tesoro-dolar",
+      "que": "Valor liquidativo del 20/11 (DECISIONES §2: «si la entrega se monta o se aplica después [de las 18:00 UTC], se vuelve a leer la API y se fecha con la VL del 20/11»)",
+      "porque": "Al escribir estos cambios (antes de las 18:00 UTC) la API pública de Spiko aún daba la VL del 19/11 (updatedAt 2026-11-19); se publican 2,35 % y 3,97 % con la VL del 19/11, como dice el expediente. Si se aplica después de que salga la del 20/11, hay que rehacer estos tres cambios de cada fondo con la VL nueva (y su revisión).",
+      "sigue": [
+        {
+          "slug": "spiko-letras-del-tesoro-euro",
+          "campo": "rentabilidad.literal",
+          "contiene": "VL fechada el 19/11/2026"
+        },
+        {
+          "slug": "spiko-letras-del-tesoro-dolar",
+          "campo": "rentabilidad.literal",
+          "contiene": "VL del 19/11/2026"
+        }
+      ]
+    }
+  ],
+  "contraste": {
+    "cifras": {
+      "spiko-letras-del-tesoro-euro": {
+        "antes": "2,40 % (VL del 12/11)",
+        "despues": "2,35 % (VL del 19/11, 1,063276 €)",
+        "calculo": "31 días, 19/10 → 19/11, capitalizando: 2,350 %; API monthlyYield 0.0235"
+      },
+      "spiko-letras-del-tesoro-dolar": {
+        "antes": "3,98 % (VL del 12/11)",
+        "despues": "3,97 % en USD (VL del 19/11, 1,103445 $)",
+        "calculo": "31 días, 19/10 → 19/11, capitalizando: 3,967 %; API monthlyYield 0.0397"
+      },
+      "spiko-smart-cash-euro": {
+        "antes": "2,84 % (VL del 12/11)",
+        "despues": "2,84 % (VL del 20/11, 1,017886 €)",
+        "calculo": "7 días: 2,837 %"
+      },
+      "mtbill": {
+        "antes": "1,0777 USD (10/11) y 3,45 % anual (06/10 → 10/11)",
+        "despues": "1,0789 USD (20/11) y 3,46 % anual en USD (16/10 → 20/11)",
+        "calculo": "(1,07890125 / 1,07534190 − 1) × 365 / 34,91 días (rondas 475 → 498 del oráculo, 16/10 13:47 UTC → 20/11 11:41 UTC)"
+      },
+      "brickwise": {
+        "vivienda-pluddemanngasse-101-graz": "75 € → 75 €",
+        "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €",
+        "local-de-estanco-klagenfurt": "95 € → 95 €",
+        "vivienda-stallhofstra-e-28-gratwein": "68,80 € → 68,80 €",
+        "vivienda-schwarzer-weg-18-graz": "69,90 € → 69,90 €",
+        "drautalresidenz-paternion": "70 € → 70 €",
+        "randhartingergasse-9-viena": "78 € → 78 €",
+        "apartamento-vacacional-hinterstoder-50": "75 € → 75 €",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt": "80 € → 81 €",
+        "fotovoltaica-greenpoint": "102 € → 102 €",
+        "fotovoltaica-cohotel": "102 € → 110 €"
+      }
+    },
+    "condicionHora": {
+      "spiko": "VL del 19/11 (Letras Euro y Dólar) válida si la entrega se monta y se aplica antes de que Spiko publique la del 20/11 (hacia las 18:00 UTC del 20/11); si no, volver a leer la API pública de Spiko. Smart Cash: VL del 20/11, no cambia hasta el 23/11.",
+      "mtbill": "Ronda 498 (20/11, 11:41 UTC) última a las 16:54 UTC; una ronda nueva cambiaría el valor por token y la ventana de 5 semanas.",
+      "hausera": "La suscripción de Alicante 3 empieza el 25/11/2026: ese día el resumen («la suscripción empieza el 25/11/2026») quedará viejo."
+    },
+    "sinCambios": [
+      "las 25 plataformas del radar y sus textos, salvo las fechas de consulta",
+      "public.plataformas y public.fuentes (el SQL no las toca)",
+      "colecciones 8/13/1, estados de revisión, fuentes de las ofertas e imágenes",
+      "Robinhood y Prosegur Digital Gold: solo las fechas",
+      "las noticias (no son parte de esta entrega)"
+    ]
+  },
+  "transparencia": {
+    "reventaDe": [
+      "brickwise"
+    ],
+    "minimosCortos": {
+      "switzerlend": {
+        "tarjeta": "1 acción (68,01 CHF el 20/11)",
+        "antes": "1 acción (68,01 CHF, 13/11)",
+        "despues": "1 acción (68,01 CHF, 20/11)"
+      },
+      "hausera-proximas-ofertas": {
+        "tarjeta": "Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.",
+        "antes": "Desde 100 € en Alicante 3 (13/11)",
+        "despues": "Desde 100 € en Alicante 3 (20/11)"
+      }
+    },
+    "textos": [
+      {
+        "slug": "hausera-proximas-ofertas",
+        "campo": "documentoEspana.motivo",
+        "antes": "la CNMV no lo ha revisado y el 13/11/2026 la emisión aún no estaba inscrita.",
+        "despues": "la CNMV no lo ha revisado y el 20/11/2026 la emisión aún no estaba inscrita.",
+        "prueba": {
+          "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+          "hora": "2026-11-20T16:54:21Z",
+          "literal": "Registro de emisiones de Ursus-3 (págs. 1 a 4): de Hausera, las mismas 8 (SPV a SPV 8); sin SPV 9, 10 ni 11"
+        },
+        "avisoCatalogo": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 20/11/2026, con la preventa ya abierta, Alicante 3 aún no estaba inscrita en el registro de la CNMV."
+      }
+    ]
+  },
+  "comprobar": {
+    "ausentes": [
+      "autorizado el 17/02/2026",
+      "Autorizado por la AMF el 17/02/2026"
+    ],
+    "fichasWeb": [
+      {
+        "pagina": "ofertas/spiko-smart-cash-euro.html",
+        "contiene": [
+          "según el certificado de la AMF del 23/02/2026",
+          "2,84 %"
+        ],
+        "noContiene": [
+          "17/02/2026"
+        ]
+      },
+      {
+        "pagina": "ofertas/spiko-letras-del-tesoro-euro.html",
+        "contiene": [
+          "2,35 %"
+        ]
+      },
+      {
+        "pagina": "ofertas/fotovoltaica-cohotel.html",
+        "contiene": [
+          "Desde 110 € la participación en reventa (20/11)"
+        ],
+        "noContiene": [
+          "Desde 102 € la participación"
+        ]
+      },
+      {
+        "pagina": "ofertas/vivienda-pottendorfer-stra-e-62-wr-neustadt.html",
+        "contiene": [
+          "Desde 81 € la participación en reventa (20/11)",
+          "82,22 €"
+        ],
+        "noContiene": [
+          "116,73 €"
+        ]
+      },
+      {
+        "pagina": "ofertas/kraken-xstocks.html",
+        "contiene": [
+          "más de 1.000 acciones"
+        ],
+        "noContiene": [
+          "más de 130 acciones"
+        ]
+      },
+      {
+        "pagina": "ofertas/hausera-proximas-ofertas.html",
+        "contiene": [
+          "con la preventa ya abierta"
+        ]
+      }
+    ]
+  }
+}

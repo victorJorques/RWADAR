@@ -111,3 +111,66 @@ a las 17:20 UTC.
 - Hausera: el 25/11 empieza la suscripción de Alicante 3; el texto «la
   suscripción empieza el 25/11» quedará viejo ese día.
 - Spiko Smart Cash: por qué la AMF dejó de publicar la ficha GECO.
+
+## 6. Auditoría completa (petición de Víctor a las 17:12 UTC: «Revisa todas las ofertas e información bien»)
+
+Auditores independientes (no investigaron ni montaron) abrieron hoy la fuente
+de cada dato visible de cada ficha (`auditoria/<ámbito>.md`). Entran estas
+correcciones, todas con URL, literal y hora de hoy en su informe:
+
+**Spiko (`auditoria/spiko.md`; 99 datos comprobados):**
+- A1 · **Letras del Tesoro Euro: 2,35 % → 2,45 %.** Spiko publicó la VL nueva
+  a las 17:18 UTC (API `monthlyYield` 0.0245; VL 1,063496 €, calculada el
+  20/11 y fechada por Spiko el 22/11 porque cubre el fin de semana;
+  recalculado 22/10 → 22/11, 31 días: 2,452 %). Métrica «Rentabilidad
+  publicada · 31 días · 20/11/2026: 2,45 %»; literal y referencia con
+  `fechaDato` 2026-11-20 (no 22/11) y el alcance que propone el informe.
+  Sustituye a la cifra de §2.
+- A2 · **Letras del Tesoro Dólar: 3,97 % → 4,00 % en USD** (API 0.04 a las
+  17:18 UTC; VL del 20/11, 1,103573 $; recalculado 20/10 → 20/11: 4,002 %).
+  Métrica «Rentabilidad publicada · 31 días · 20/11/2026 · en USD: 4,00 %».
+  Sustituye a la cifra de §2.
+- A3 · Las tres de Spiko, referencia «Acceso desde España»: `fechaDato`
+  2026-11-13 (la tabla de disponibilidad dice «Last updated: November 13,
+  2026»); en Smart Cash, el alcance pasa a «(13/11/2026)» con el texto del
+  informe.
+- A4 · Smart Cash, referencia «Aprobación del compartimento» y descripción:
+  el texto exacto del informe (certificado de la AMF del 23/02/2026,
+  `fechaDato` 2026-02-23, fuente SAFO_Letter_EN.pdf; sin la fecha 17/02/2026
+  ni la ficha GECO c124199, que ya no se publica).
+- A5 · Letras Euro y Dólar, métrica «Supervisor»: «AMF (fondo) · Spiko SICAV
+  inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla
+  sus fondos uno a uno».
+
+**Acciones, oro y letras (`auditoria/acciones-oro-tesoro.md`; 95 datos):**
+- A6 · Kraken xStocks, descripción: «más de 130 acciones» → «más de 1.000
+  acciones y ETF de EE. UU.» (igual que el resumen).
+- A7 · Kraken xStocks, referencia «Dividendos»: `fechaDato` 2026-11-11 y
+  alcance «Preguntas frecuentes de Kraken sobre xStocks, actualizadas el
+  11/11/2026.» (el valor no cambia).
+- A8 · Kraken xStocks: añadir como fuente las condiciones finales de ANTx del
+  19/11/2026 (l-p-a.com, CH1588667217) en la referencia «Países de oferta
+  (condiciones finales)», `fechaDato` 2026-11-19.
+- A9 · Robinhood, aviso nuevo: «Producto complejo según su KID: puedes perder
+  todo lo invertido.» (KID ES, SHA-256 84f4f0a8…: «perder la totalidad de su
+  inversión», «instrumento financiero complejo»).
+- A10 · mTBILL, aviso del conflicto: añadir «Las comisiones tampoco
+  coinciden: las Condiciones Finales permiten hasta 0,2 % al suscribir de
+  forma inmediata y hasta 0,05 % al reembolsar; el KID no cobra entrada ni
+  reembolso estándar.»
+- A11 · mTBILL, fuentes de la tarjeta: añadir las Condiciones Finales y el KID
+  en español del CDN de GitBook (responden 200; las páginas de Midas dan 403).
+- A12 · Prosegur Digital Gold, métrica «Custodia»: «Oro separado de los bienes
+  de Prosegur, en un inventario conjunto de los clientes (sin lingote
+  asignado)».
+
+No entran (recomendaciones de claridad sin dato falso): «Riesgo KID» de las
+Letras, mínimo en euros de la clase USD (ya avisado), «Entidad que
+comercializa» de mTBILL.
+
+Copias de la API de Spiko para A1 y A2 (consultadas a las 17:31 UTC, mismas
+cifras que vio el auditor a las 17:21 UTC):
+`grupos/spiko/fuentes/api-20-11-tarde/` (`yield-EUTBL.json` SHA-256
+02a03185…, `yield-USTBL.json` 859689c2…, `nav-latest-EUTBL.json` 98a9113d…,
+`nav-latest-USTBL.json` 6591d431…). La serie de VL para el recálculo se lee de
+`net-asset-values/<clase>` como en el expediente.
