@@ -12,10 +12,10 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.»
-  - Ahora: «La contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.»
+  - Ahora: «Según sus términos, la contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.»
 - **Resumen (nota)**
   - Antes: «Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.»
-  - Ahora: «Acciones y bonos tokenizados. Se contrata con una sociedad de Liechtenstein; sus términos eligen la ley alemana.»
+  - Ahora: «Acciones y bonos tokenizados. Sus términos designan como contraparte a una sociedad de Liechtenstein y eligen la ley alemana.»
 - **Región**
   - Antes: «union-europea»
   - Ahora: «liechtenstein»
@@ -84,7 +84,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.»
-  - Ahora: «Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y no es un bróker-dealer registrado. Su mercado no es una oferta registrada.»
+  - Ahora: «Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y según su web no es un bróker-dealer registrado. Su mercado no es una oferta registrada.»
 - **Fuente y lo quitado:**
   - https://www.lofty.ai/terms · «Not Registered with the SEC or Any Other Agency» · 20/11/2026 17:16:13 UTC
   - https://lofty.ai · «Lofty AI, Inc., which is not a registered broker-dealer or investment advisor» · 20/11/2026 17:16:13 UTC
@@ -102,7 +102,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.»
-  - Ahora: «Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad no está sujeta a autorización ni registro previo de la CNMV: no hay un supervisor que la vigile.»
+  - Ahora: «Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad en España no está sujeta a autorización ni registro previo de la CNMV.»
 - **Fuente y lo quitado:**
   - https://reental.co (web en español) · «Reental es una empresa norteamericana que ofrece inversiones desde Estados Unidos y España»; «La actividad no está sujeta a autorización ni registro previo de la CNMV» · 20/11/2026 17:16:14 UTC
   - Quitado sin fuente: «Historial de proyectos completados y devueltos» y «reseñas públicas verificadas»
@@ -111,7 +111,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.»
-  - Ahora: «Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecen hoy en la base pública de la AMF: compruébalo fondo a fondo.»
+  - Ahora: «Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecían el 20/11/2026 en la base pública de la AMF: compruébalo fondo a fondo.»
 - **Resumen (nota)**
   - Antes: «Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.»
   - Ahora: «Fondos en euros y dólares para la tesorería de empresas y particulares, con reembolso diario.»
@@ -126,7 +126,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.»
-  - Ahora: «Grupo suizo; los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.»
+  - Ahora: «Los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.»
 - **Resumen (nota)**
   - Antes: «Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.»
   - Ahora: «Réplicas tokenizadas de acciones y bonos cotizados.»
@@ -138,7 +138,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.»
-  - Ahora: «Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia (del grupo Temasek), UOB y otros.»
+  - Ahora: «Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia, UOB y otros.»
 - **Fuente y lo quitado:**
   - https://www.addx.co/en/inside-addx/ · «Key shareholders of ICHX Tech, in turn the shareholder of ADDX Pte. Ltd.»: SGX, Hanwha, UOB, Heliconia y otros · 20/11/2026 17:16:12 UTC
 
@@ -146,12 +146,13 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.»
-  - Ahora: «Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML); syrupUSDC y syrupUSDT están abiertos a cualquiera en cadena fuera de EE. UU. Los términos de esa interfaz dicen que la operadora no está registrada ante ningún regulador.»
+  - Ahora: «Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML). Maple dice que syrupUSDC y syrupUSDT están abiertos en cadena fuera de EE. UU., pero los términos de esa interfaz excluyen además otras jurisdicciones y dicen que la operadora no está registrada ante ningún regulador.»
 - **Resumen (nota)**
   - Antes: «El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.»
   - Ahora: «Crédito privado para instituciones y productos de rendimiento en cadena (syrupUSDC y syrupUSDT).»
 - **Fuente y lo quitado:**
   - https://maple.finance/earn/maple-institutional · «Accredited allocators who complete onboarding (KYC/AML). syrupUSDC/USDT remains open to anyone onchain outside of the United States.» · 20/11/2026 17:16:14 UTC
+  - https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt · la interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)
   - https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt · la operadora no está registrada ante ningún regulador (radar del 13/11, contrastado el 20/11 a las 16:57 UTC)
   - Quitado sin fuente: «El mayor actor…», 4.600 M$, +81 %, 1.900 M$, «cifras auditadas… cada trimestre» e «integrado con Robinhood y Kraken»
 
@@ -171,7 +172,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.»
-  - Ahora: «Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar hoy en su web la custodia ni el canje.»
+  - Ahora: «Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar el 20/11/2026 en su web la custodia ni el canje.»
 - **Resumen (nota)**
   - Antes: «Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.»
   - Ahora: «Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados.»
@@ -183,7 +184,7 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 
 - **Cómo funciona y qué se ha comprobado (aval)**
   - Antes: «La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.»
-  - Ahora: «En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no hay una licencia única para toda la marca.»
+  - Ahora: «En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no consta una licencia única para toda la marca.»
 - **Fuente y lo quitado:**
   - Documentación de USDY para el EEE: cliente profesional o inversor cualificado (auditoria/radar-plataformas.md, «Lo que se sostiene hoy») · 20/11/2026 17:16 UTC
   - Quitado sin fuente: «La mayor plataforma de valores tokenizados por volumen» y «en custodia de gestoras reguladas»
@@ -260,10 +261,10 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
   - Ahora: «Registro bloqueado en 2022»
 - **Motivo del descarte**
   - Antes: «El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra.»
-  - Ahora: «En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su fondo CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.»
+  - Ahora: «En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su cesta CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.»
 - **Fuente y lo quitado:**
   - Documentación de Toucan: tokeniza «CORCs from the Puro Registry», «immobilized in an omnibus account within the Puro Registry» · 20/11/2026 17:24:26 UTC
-  - Web de Toucan: fondo CHAR de créditos de biocarbón · 20/11/2026 17:24:17 UTC
+  - Web de Toucan: cesta CHAR de créditos de biocarbón · 20/11/2026 17:24:17 UTC
 
 ## Lo que no entra en este cambio
 
@@ -274,4 +275,5 @@ Cómo se aplica: «Textos del radar (base)» (`.github/workflows/textos-radar-ba
 - La fecha `verificada_el` de la tabla base no se cambia (la 38 solo toca las columnas de texto).
 - Copias históricas (`lectura-publica/` y `lectura-despues-de-aplicar/` de ciclos anteriores) se dejan como estaban: son registros de lo que se leyó.
 - `rwadar-site/` (páginas de plataforma, `rwadar.csv`, `catalogo-publico-20261022.js`) se rehace al publicar la web desde la base.
+- `rwadar-app/db/pruebas/02_seed_radar_26.sql` es una copia fija del 04/11 que solo usan las pruebas de lotes antiguos (sus guardas esperan los textos de entonces); no se toca.
 - En `rwadar-movil/fixtures/escaparate-local.json` el motivo de Toucan ya era otro texto anterior; se deja.

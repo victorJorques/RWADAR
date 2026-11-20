@@ -17,14 +17,16 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   `claude/catalogo-2026-11-20`):** `rwadar-app/db/38_textos_radar.sql` (una
   transacción, guarda y UPDATE por plataforma, repetible) y
   `38_textos_radar_verificar.sql` (solo lee; «RWAdar 38 OK: 23
-  plataformas»); los mismos textos en `02_seed.sql`,
-  `pruebas/02_seed_radar_26.sql` y `rwadar-movil/fixtures/escaparate-local.json`;
+  plataformas»); los mismos textos en `02_seed.sql` y
+  `rwadar-movil/fixtures/escaparate-local.json` (la copia fija
+  `pruebas/02_seed_radar_26.sql` no se toca: sus lotes antiguos esperan los
+  textos de entonces);
   flujo «Textos del radar (base)» (`textos-radar-base.yml`: ensayo-38,
   aplicar-38 con TEXTOS y copia cifrada, verificar-38); prueba PGlite
   `rwadar-app/probar-textos-radar.mjs` (en `npm test` y en `partes-ci.mjs`).
   Antes, ahora y fuente: `rwadar-app/data/verificaciones/2026-11-20-v2/TEXTOS-RADAR.md`
   (datos en `textos-radar.json`).
-- **Pruebas:** `probar-textos-radar.mjs` 29/29; `flujos.test.mjs` 13/13;
+- **Pruebas:** `probar-textos-radar.mjs` 29/29; `probar-avisos-registrados.mjs`; `flujos.test.mjs` 13/13;
   `probar-escaparate-local` 34/34, `probar-radar-canonico-local` 14/14,
   `probar-verificacion-local-ui` 13/13. No se corrió `npm test` entero.
 - **Pendiente:** unir a main, `ensayo-38` y `aplicar-38` (no se ha tocado

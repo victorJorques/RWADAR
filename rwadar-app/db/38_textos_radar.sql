@@ -27,20 +27,20 @@ begin
     raise exception 'RWAdar 38: no está la plataforma swarm';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'swarm' and
-      (aval::text is not distinct from 'Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.' or aval::text is not distinct from 'La contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.')
-      and (nota::text is not distinct from 'Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.' or nota::text is not distinct from 'Acciones y bonos tokenizados. Se contrata con una sociedad de Liechtenstein; sus términos eligen la ley alemana.')
+      (aval::text is not distinct from 'Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.' or aval::text is not distinct from 'Según sus términos, la contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.')
+      and (nota::text is not distinct from 'Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.' or nota::text is not distinct from 'Acciones y bonos tokenizados. Sus términos designan como contraparte a una sociedad de Liechtenstein y eligen la ley alemana.')
       and (region_slug::text is not distinct from 'union-europea' or region_slug::text is not distinct from 'liechtenstein')) then
     raise exception 'RWAdar 38: swarm no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'La contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.',
-       nota = 'Acciones y bonos tokenizados. Se contrata con una sociedad de Liechtenstein; sus términos eligen la ley alemana.',
+       aval = 'Según sus términos, la contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.',
+       nota = 'Acciones y bonos tokenizados. Sus términos designan como contraparte a una sociedad de Liechtenstein y eligen la ley alemana.',
        region_slug = 'liechtenstein'
  where slug = 'swarm'
-   and (aval::text is distinct from 'La contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.'
-    or nota::text is distinct from 'Acciones y bonos tokenizados. Se contrata con una sociedad de Liechtenstein; sus términos eligen la ley alemana.'
+   and (aval::text is distinct from 'Según sus términos, la contraparte es Swarm Capital GmbH (Vaduz, Liechtenstein). No consta licencia: BaFin no la tiene en su base de datos (20/11/2026) y su aviso legal no nombra supervisor.'
+    or nota::text is distinct from 'Acciones y bonos tokenizados. Sus términos designan como contraparte a una sociedad de Liechtenstein y eligen la ley alemana.'
     or region_slug::text is distinct from 'liechtenstein');
 
 -- inx: aval, nota
@@ -150,15 +150,15 @@ begin
     raise exception 'RWAdar 38: no está la plataforma lofty';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'lofty' and
-      (aval::text is not distinct from 'Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.' or aval::text is not distinct from 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y no es un bróker-dealer registrado. Su mercado no es una oferta registrada.')) then
+      (aval::text is not distinct from 'Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.' or aval::text is not distinct from 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y según su web no es un bróker-dealer registrado. Su mercado no es una oferta registrada.')) then
     raise exception 'RWAdar 38: lofty no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y no es un bróker-dealer registrado. Su mercado no es una oferta registrada.'
+       aval = 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y según su web no es un bróker-dealer registrado. Su mercado no es una oferta registrada.'
  where slug = 'lofty'
-   and (aval::text is distinct from 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y no es un bróker-dealer registrado. Su mercado no es una oferta registrada.');
+   and (aval::text is distinct from 'Según sus términos, Lofty no está registrada ante la SEC ni ante ningún otro organismo, y según su web no es un bróker-dealer registrado. Su mercado no es una oferta registrada.');
 
 -- franklin-templeton: aval
 do $guarda$
@@ -184,15 +184,15 @@ begin
     raise exception 'RWAdar 38: no está la plataforma reental';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'reental' and
-      (aval::text is not distinct from 'Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.' or aval::text is not distinct from 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad no está sujeta a autorización ni registro previo de la CNMV: no hay un supervisor que la vigile.')) then
+      (aval::text is not distinct from 'Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.' or aval::text is not distinct from 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad en España no está sujeta a autorización ni registro previo de la CNMV.')) then
     raise exception 'RWAdar 38: reental no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad no está sujeta a autorización ni registro previo de la CNMV: no hay un supervisor que la vigile.'
+       aval = 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad en España no está sujeta a autorización ni registro previo de la CNMV.'
  where slug = 'reental'
-   and (aval::text is distinct from 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad no está sujeta a autorización ni registro previo de la CNMV: no hay un supervisor que la vigile.');
+   and (aval::text is distinct from 'Según su web, es una empresa norteamericana que ofrece inversiones desde EE. UU. y España, y su actividad en España no está sujeta a autorización ni registro previo de la CNMV.');
 
 -- spiko: aval, nota, acceso
 do $guarda$
@@ -201,7 +201,7 @@ begin
     raise exception 'RWAdar 38: no está la plataforma spiko';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'spiko' and
-      (aval::text is not distinct from 'Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.' or aval::text is not distinct from 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecen hoy en la base pública de la AMF: compruébalo fondo a fondo.')
+      (aval::text is not distinct from 'Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.' or aval::text is not distinct from 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecían el 20/11/2026 en la base pública de la AMF: compruébalo fondo a fondo.')
       and (nota::text is not distinct from 'Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.' or nota::text is not distinct from 'Fondos en euros y dólares para la tesorería de empresas y particulares, con reembolso diario.')
       and (acceso::text is not distinct from 'Empresas' or acceso::text is not distinct from 'Minorista')) then
     raise exception 'RWAdar 38: spiko no tiene el texto de antes ni el nuevo; no se cambia nada';
@@ -209,11 +209,11 @@ begin
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecen hoy en la base pública de la AMF: compruébalo fondo a fondo.',
+       aval = 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecían el 20/11/2026 en la base pública de la AMF: compruébalo fondo a fondo.',
        nota = 'Fondos en euros y dólares para la tesorería de empresas y particulares, con reembolso diario.',
        acceso = 'Minorista'
  where slug = 'spiko'
-   and (aval::text is distinct from 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecen hoy en la base pública de la AMF: compruébalo fondo a fondo.'
+   and (aval::text is distinct from 'Fondos monetarios de la SICAV francesa Spiko SICAV, gestionados por Twenty First Capital. No todos aparecían el 20/11/2026 en la base pública de la AMF: compruébalo fondo a fondo.'
     or nota::text is distinct from 'Fondos en euros y dólares para la tesorería de empresas y particulares, con reembolso diario.'
     or acceso::text is distinct from 'Minorista');
 
@@ -224,17 +224,17 @@ begin
     raise exception 'RWAdar 38: no está la plataforma backed-finance';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'backed-finance' and
-      (aval::text is not distinct from 'Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.' or aval::text is not distinct from 'Grupo suizo; los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.')
+      (aval::text is not distinct from 'Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.' or aval::text is not distinct from 'Los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.')
       and (nota::text is not distinct from 'Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.' or nota::text is not distinct from 'Réplicas tokenizadas de acciones y bonos cotizados.')) then
     raise exception 'RWAdar 38: backed-finance no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Grupo suizo; los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.',
+       aval = 'Los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.',
        nota = 'Réplicas tokenizadas de acciones y bonos cotizados.'
  where slug = 'backed-finance'
-   and (aval::text is distinct from 'Grupo suizo; los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.'
+   and (aval::text is distinct from 'Los xStocks los emite una sociedad de Jersey (Backed Assets (JE) Limited), con el activo 1:1 en custodios regulados y prueba de reservas pública.'
     or nota::text is distinct from 'Réplicas tokenizadas de acciones y bonos cotizados.');
 
 -- addx: aval
@@ -244,15 +244,15 @@ begin
     raise exception 'RWAdar 38: no está la plataforma addx';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'addx' and
-      (aval::text is not distinct from 'Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.' or aval::text is not distinct from 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia (del grupo Temasek), UOB y otros.')) then
+      (aval::text is not distinct from 'Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.' or aval::text is not distinct from 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia, UOB y otros.')) then
     raise exception 'RWAdar 38: addx no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia (del grupo Temasek), UOB y otros.'
+       aval = 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia, UOB y otros.'
  where slug = 'addx'
-   and (aval::text is distinct from 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia (del grupo Temasek), UOB y otros.');
+   and (aval::text is distinct from 'Licencia de mercado reconocido del MAS de Singapur. Accionistas de su matriz: la bolsa SGX, Heliconia, UOB y otros.');
 
 -- maple-finance: aval, nota
 do $guarda$
@@ -261,17 +261,17 @@ begin
     raise exception 'RWAdar 38: no está la plataforma maple-finance';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'maple-finance' and
-      (aval::text is not distinct from 'Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.' or aval::text is not distinct from 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML); syrupUSDC y syrupUSDT están abiertos a cualquiera en cadena fuera de EE. UU. Los términos de esa interfaz dicen que la operadora no está registrada ante ningún regulador.')
+      (aval::text is not distinct from 'Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.' or aval::text is not distinct from 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML). Maple dice que syrupUSDC y syrupUSDT están abiertos en cadena fuera de EE. UU., pero los términos de esa interfaz excluyen además otras jurisdicciones y dicen que la operadora no está registrada ante ningún regulador.')
       and (nota::text is not distinct from 'El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.' or nota::text is not distinct from 'Crédito privado para instituciones y productos de rendimiento en cadena (syrupUSDC y syrupUSDT).')) then
     raise exception 'RWAdar 38: maple-finance no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML); syrupUSDC y syrupUSDT están abiertos a cualquiera en cadena fuera de EE. UU. Los términos de esa interfaz dicen que la operadora no está registrada ante ningún regulador.',
+       aval = 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML). Maple dice que syrupUSDC y syrupUSDT están abiertos en cadena fuera de EE. UU., pero los términos de esa interfaz excluyen además otras jurisdicciones y dicen que la operadora no está registrada ante ningún regulador.',
        nota = 'Crédito privado para instituciones y productos de rendimiento en cadena (syrupUSDC y syrupUSDT).'
  where slug = 'maple-finance'
-   and (aval::text is distinct from 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML); syrupUSDC y syrupUSDT están abiertos a cualquiera en cadena fuera de EE. UU. Los términos de esa interfaz dicen que la operadora no está registrada ante ningún regulador.'
+   and (aval::text is distinct from 'Su crédito institucional es para inversores acreditados que completan el alta (KYC/AML). Maple dice que syrupUSDC y syrupUSDT están abiertos en cadena fuera de EE. UU., pero los términos de esa interfaz excluyen además otras jurisdicciones y dicen que la operadora no está registrada ante ningún regulador.'
     or nota::text is distinct from 'Crédito privado para instituciones y productos de rendimiento en cadena (syrupUSDC y syrupUSDT).');
 
 -- securitize: aval, nota
@@ -301,17 +301,17 @@ begin
     raise exception 'RWAdar 38: no está la plataforma courtyard';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'courtyard' and
-      (aval::text is not distinct from 'El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.' or aval::text is not distinct from 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar hoy en su web la custodia ni el canje.')
+      (aval::text is not distinct from 'El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.' or aval::text is not distinct from 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar el 20/11/2026 en su web la custodia ni el canje.')
       and (nota::text is not distinct from 'Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.' or nota::text is not distinct from 'Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados.')) then
     raise exception 'RWAdar 38: courtyard no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar hoy en su web la custodia ni el canje.',
+       aval = 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar el 20/11/2026 en su web la custodia ni el canje.',
        nota = 'Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados.'
  where slug = 'courtyard'
-   and (aval::text is distinct from 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar hoy en su web la custodia ni el canje.'
+   and (aval::text is distinct from 'Es un mercado de NFT de coleccionables físicos, no un mercado de valores con licencia. No hemos podido comprobar el 20/11/2026 en su web la custodia ni el canje.'
     or nota::text is distinct from 'Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados.');
 
 -- ondo-finance: aval
@@ -321,15 +321,15 @@ begin
     raise exception 'RWAdar 38: no está la plataforma ondo-finance';
   end if;
   if not exists (select 1 from public.plataformas where slug = 'ondo-finance' and
-      (aval::text is not distinct from 'La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.' or aval::text is not distinct from 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no hay una licencia única para toda la marca.')) then
+      (aval::text is not distinct from 'La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.' or aval::text is not distinct from 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no consta una licencia única para toda la marca.')) then
     raise exception 'RWAdar 38: ondo-finance no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
-       aval = 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no hay una licencia única para toda la marca.'
+       aval = 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no consta una licencia única para toda la marca.'
  where slug = 'ondo-finance'
-   and (aval::text is distinct from 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no hay una licencia única para toda la marca.');
+   and (aval::text is distinct from 'En el EEE, USDY exige ser cliente profesional o inversor cualificado. Emisor, producto y jurisdicción se revisan por separado: no consta una licencia única para toda la marca.');
 
 -- centrifuge: aval, nota
 do $guarda$
@@ -453,17 +453,17 @@ begin
   end if;
   if not exists (select 1 from public.plataformas where slug = 'toucan-protocol' and
       (etiqueta_descarte::text is not distinct from 'Registro bloqueado' or etiqueta_descarte::text is not distinct from 'Registro bloqueado en 2022')
-      and (motivo_descarte::text is not distinct from 'El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra.' or motivo_descarte::text is not distinct from 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su fondo CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.')) then
+      and (motivo_descarte::text is not distinct from 'El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra.' or motivo_descarte::text is not distinct from 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su cesta CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.')) then
     raise exception 'RWAdar 38: toucan-protocol no tiene el texto de antes ni el nuevo; no se cambia nada';
   end if;
 end
 $guarda$;
 update public.plataformas set
        etiqueta_descarte = 'Registro bloqueado en 2022',
-       motivo_descarte = 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su fondo CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.'
+       motivo_descarte = 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su cesta CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.'
  where slug = 'toucan-protocol'
    and (etiqueta_descarte::text is distinct from 'Registro bloqueado en 2022'
-    or motivo_descarte::text is distinct from 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su fondo CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.');
+    or motivo_descarte::text is distinct from 'En mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Hoy Toucan solo tokeniza créditos del registro Puro (su cesta CHAR, de biocarbón), con los créditos inmovilizados en ese registro. No la hemos vuelto a evaluar para el radar.');
 
 do $fin$
 begin

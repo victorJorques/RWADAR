@@ -73,7 +73,7 @@ const baseNueva = () => baseConMigraciones(MIGRACIONES);
   const nuevasEn = (texto) => CAMBIOS.every((c) => filaDe(texto, c.slug)?.includes(enSemilla(c.col, c.ahora))
     && (c.antes === c.ahora || !filaDe(texto, c.slug).includes(enSemilla(c.col, c.antes))));
   paso('02_seed.sql lleva los textos nuevos y ninguno de los viejos', nuevasEn(SEED));
-  paso('pruebas/02_seed_radar_26.sql también', nuevasEn(SEED26));
+  paso('pruebas/02_seed_radar_26.sql (copia fija del 04/11 para los lotes antiguos) no se toca', CAMBIOS.every((c) => !filaDe(SEED26, c.slug)?.includes(enSemilla(c.col, c.ahora))));
   paso(`textos-radar.json: ${N} plataformas, cada cambio con fuente y con un valor nuevo distinto`,
     N === 23 && Object.values(J.plataformas).every((p) => Array.isArray(p.fuentes) && p.fuentes.length > 0)
     && CAMBIOS.every((c) => typeof c.ahora === 'string' && c.ahora.trim() && c.ahora !== c.antes));
