@@ -449,13 +449,17 @@ if (hayBash) {
   paso(`y rechaza ${malos.length} entradas (las que cambian la base o la prueba sin AVISOS, acción desconocida) sin dejar nada en GITHUB_ENV`,
     rechazos.every((v) => v.estado !== 0 && Object.keys(v.salida).length === 0) && /escribe AVISOS/.test(rechazos[0].texto)
     && /navegadores y móviles sin cuenta: escribe AVISOS/.test(rechazos[3].texto));
-  const copia = path.join(raiz, 'supabase/migrations/20261114180000_avisos_sin_cuenta.sql');
-  fs.writeFileSync(copia, `${SQL36}-- cambiada\n`);
-  let distinta;
-  try { distinta = await compruebaBase({ ACCION: 'ensayo-36' }); } finally { fs.writeFileSync(copia, MIGRACION36); }
+  // La copia «cambiada» de la migración va al directorio temporal y el paso la
+  // compara en lugar de la versionada, que la prueba no toca nunca.
+  const MIGRACION36_RUTA = 'rwadar-app/supabase/migrations/20261114180000_avisos_sin_cuenta.sql';
+  const copia = path.join(temporal, '20261114180000_avisos_sin_cuenta.sql');
+  fs.writeFileSync(copia, `${MIGRACION36}-- cambiada\n`);
+  const distinta = await correPaso(BASE.replace(MIGRACION36_RUTA, '"$COPIA_36"'), 'Comprobar la acción',
+    { ACCION: 'ensayo-36', CONFIRMAR: '', REMITENTE: '', COPIA_36: copia });
   paso('si las dos copias de la 36 no coinciden, «Comprobar la acción» falla y no deja nada en GITHUB_ENV',
-    distinta.estado !== 0 && /Las dos copias de la 36 no coinciden/.test(distinta.texto) && Object.keys(distinta.salida).length === 0
-    && fs.readFileSync(copia, 'utf8') === SQL36);
+    BASE.split(MIGRACION36_RUTA).length === 2
+    && distinta.estado !== 0 && /Las dos copias de la 36 no coinciden/.test(distinta.texto) && Object.keys(distinta.salida).length === 0
+    && leer('supabase/migrations/20261114180000_avisos_sin_cuenta.sql') === SQL36);
   const comprobar = await compruebaBase({ ACCION: 'ensayo-36' });
   const ensayo = await correPaso(BASE, 'Ensayo sin cambiar nada (se deshace al final)', comprobar.salida);
   await sesion(db);
@@ -888,6 +892,8 @@ let a1;
   // no se lo dio): a los dos les llega el de sin cuenta.
   await sesion(db);
   await db.query('select rwadar_novedades.repartir()');
+  // PGlite guarda la hora con milisegundos y la 36 compara d.creado_el <= p.creado_el: un empate dejaba a Eva sin aviso.
+  await new Promise((r) => setTimeout(r, 2));
   await consentir(dani);
   await movilCuenta(eva, tEva2);
   const { r } = await procesar();
