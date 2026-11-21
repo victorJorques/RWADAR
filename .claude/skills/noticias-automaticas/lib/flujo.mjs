@@ -282,3 +282,32 @@ export function hayQueAvisar({ estado, avisarCerrojo = true }) {
   if (estado === 'SIN_HACER_NADA') return avisarCerrojo;
   return true;
 }
+
+/* ---- Aviso a los usuarios cuando entran noticias nuevas (Víctor, 21/11/2026:
+   «Sii vale»): solo si la edición publicada trae alguna noticia (id) que no
+   estaba en la que había en producción al empezar; nunca si solo se volvieron
+   a comprobar. Uno al día como mucho: si ya hay uno de noticias de ese día en
+   los avisos recientes, no se manda otro. El título y el texto pasan las
+   mismas palabras vetadas que la base (30_avisos_registrados.sql,
+   anuncio_sin_palabras_vetadas): si un titular lleva alguna, el texto no
+   nombra titulares. ---- */
+export const TITULO_AVISO_NOTICIAS = /^(Noticia nueva|\d+ noticias nuevas) del sector$/;
+export const VETADAS_AVISO = /(oportunidad|rentabilidad|garantiz|%|rendimiento|(?<!\p{L})apy(?!\p{L})|(?<!\p{L})apr(?!\p{L})|sin\s+riesgo|exclusiv|[uú]ltimas\s+plazas|no\s+te\s+lo\s+pierdas|(?<!\p{L})gana|regalo|(?<!\p{L})bono(?!\p{L})|descuento|autorizad)/iu;
+export function avisoNoticiasNuevas({ antes, ahora, fecha, recientes = null, enlace = 'https://rwadar.pages.dev/mercado/' }) {
+  const previas = new Set((antes?.noticias || []).map(n => n.id));
+  const nuevas = (ahora?.noticias || []).filter(n => n && typeof n.id === 'string' && !previas.has(n.id))
+    .map(n => ({ id: n.id, titulo: String(n.titulo || n.titular || '').trim() }));
+  if (!nuevas.length) return { nuevas, aviso: null, motivo: 'ninguna noticia nueva (solo se volvieron a comprobar): no se avisa' };
+  const deHoy = (recientes?.avisos || []).filter(a => TITULO_AVISO_NOTICIAS.test(String(a.titulo || '')) &&
+    new Date(a.creado_el).toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' }) === fecha);
+  if (deHoy.length) return { nuevas, aviso: null, motivo: `ya se avisó de noticias nuevas hoy (aviso ${deHoy[0].id}): uno al día como mucho` };
+  const titulo = nuevas.length === 1 ? 'Noticia nueva del sector' : `${nuevas.length} noticias nuevas del sector`;
+  const lista = nuevas.map(n => `«${n.titulo}»`).join('; ');
+  let texto = `En RWAdar: ${lista}. Míralas en Mercado y noticias.`;
+  if (nuevas.length === 1) texto = `En RWAdar: ${lista}. Mírala en Mercado y noticias.`;
+  if (VETADAS_AVISO.test(texto) || /[\r\n]/.test(texto) || texto.length > 400) {
+    texto = nuevas.length === 1 ? 'Hay una noticia nueva del sector en RWAdar. Mírala en Mercado y noticias.'
+      : `Hay ${nuevas.length} noticias nuevas del sector en RWAdar. Míralas en Mercado y noticias.`;
+  }
+  return { nuevas, aviso: { titulo, texto, enlace }, motivo: null };
+}

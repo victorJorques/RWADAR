@@ -15,8 +15,8 @@
 // Órdenes (en el orden de la mañana): config, iniciar, cerrojo, barrido,
 // encargo, comprobar-fuentes, validar, decidir, corregir, preparar, pruebas,
 // sellar, comprobar-sello, antes-de-unir, comprobar-ejecucion,
-// comprobar-vivo, resumen. Y además: volver (vuelta atrás, con orden de la
-// dirección). Detalle de cada una: SKILL.md.
+// comprobar-vivo, aviso-usuarios, resumen. Y además: volver (vuelta atrás, con
+// orden de la dirección). Detalle de cada una: SKILL.md.
 //
 // La carpeta de trabajo (--trabajo, por defecto ${TMPDIR}/rwadar-noticias-<fecha>)
 // está FUERA del repositorio: copias en bruto, entradas del cerrojo y lo que
@@ -34,7 +34,7 @@ import { RAIZ_REPO, DIR_SKILL, RUTAS, SALIDA, Freno, Nada, sha256, leerJSON, lee
 import { validarEdicion, nombreEdicion, carpetaDelDia, ARCHIVOS_CARPETA } from './lib/validar.mjs';
 import { recogerHechos, decidirCerrojo, lineaSinHacerNada, leerLecturaPublica } from './lib/cerrojo.mjs';
 import { barrer, comprobarFuentes } from './lib/barrido.mjs';
-import { decidir, corregir, sellar, simularUnion, antesDeUnir, comprobarEjecucion, comprobarVivo, volver, primeraLinea, hayQueAvisar } from './lib/flujo.mjs';
+import { decidir, corregir, sellar, simularUnion, antesDeUnir, comprobarEjecucion, comprobarVivo, volver, primeraLinea, hayQueAvisar, avisoNoticiasNuevas } from './lib/flujo.mjs';
 
 const require = createRequire(import.meta.url);
 export const CORREGIR = 5;
@@ -324,6 +324,25 @@ const ORDENES = {
     const base = requerido(args, 'base');
     const r = await comprobarVivo({ base, raiz, intentos: Number(args.intentos || 6), esperaMs: Number(args.espera ?? 20) * 1000 });
     return { mensaje: `${base} sirve lo de main (${r.bien.length} comprobaciones, intento ${r.intentos}).`, datos: r };
+  },
+
+  /* Tras publicar: ¿hay noticias nuevas de verdad? Si las hay (y hoy no se ha
+     avisado ya de noticias), deja en <trabajo>/aviso-usuarios.json el título,
+     el texto y el enlace para «Avisar novedad». Si no, 3 (no se avisa).
+     --recientes: el JSON de /api/avisos/recientes (uno al día como mucho). */
+  'aviso-usuarios'(args) {
+    const { raiz, fecha, trabajo } = contexto(args);
+    const antes = leerJSONSiHay(T.produccion(trabajo));
+    if (!antes) throw new Error(`falta ${T.produccion(trabajo)} (lo deja el cerrojo): sin la edición de antes no se sabe qué es nuevo`);
+    const ahora = leerJSON(path.join(raiz, RUTAS.v2));
+    const recientes = args.recientes ? leerJSON(path.resolve(args.recientes)) : null;
+    const r = avisoNoticiasNuevas({ antes, ahora, fecha, recientes });
+    escribirJSON(path.join(trabajo, 'aviso-usuarios.json'), { fecha, ...r });
+    if (!r.aviso) throw new Nada(r.motivo);
+    return { mensaje: `Noticias nuevas: ${r.nuevas.length}. Lanza «Avisar novedad» (anunciar, novedad, ENVIAR) con:
+  título: ${r.aviso.titulo}
+  texto: ${r.aviso.texto}
+  enlace: ${r.aviso.enlace}`, datos: r };
   },
 
   /* El mensaje final y si hay que avisar. */

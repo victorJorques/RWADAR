@@ -131,7 +131,9 @@ cambia para el lector primero, con cifra o consecuencia; nada de promesas ni
 exageraciones), comprobados contra el resumen y la fuente. El JSON verificado
 se copia a `rwadar-site/datos/noticias.json` (lo valida `rwadar-publicar.js`)
 y sale con «Publicar web»; la app lo lee de la web. Sin nombres de personas;
-PDF y HTML de las fuentes, fuera de Git.
+PDF y HTML de las fuentes, fuera de Git. Si la edición publicada trae noticias
+nuevas, se avisa a los usuarios como en el paso 12 bis de `noticias-automaticas`
+(`noticias-auto.mjs aviso-usuarios`; una vez al día como mucho).
 
 **La tokenización en el mundo** (Inicio) no necesita nada del ciclo: el flujo
 «Tokenización diaria» guarda una foto de CoinGecko cada día en la rama

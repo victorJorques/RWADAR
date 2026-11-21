@@ -30,7 +30,10 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   notificación, acuérdate eso siempre»):** cada vez que se publique algo nuevo
   para el usuario (mejoras de la web o la app, o un ciclo del catálogo con
   cambios), se lanza «Avisar novedad» (`anunciar`, tipo `novedad`) sin pedir
-  otra orden. Las noticias diarias automáticas no avisan.
+  otra orden. **Noticias nuevas del sector (Víctor, 21/11/2026: «Sii vale»):**
+  también se avisa cuando una edición de noticias publicada trae alguna noticia
+  que no estaba (`noticias-auto.mjs aviso-usuarios` da el título, el texto y el
+  enlace), una vez al día como mucho y nunca si solo se volvieron a comprobar.
 
 **Investigación del catálogo: se prepara sola y se publica con la orden de
 Víctor.** Aplicar el SQL, publicar la web, enviar la OTA y avisar de la
@@ -96,7 +99,9 @@ pedir permiso cada vez, puede: escribir y verificar las noticias del sector
 la CI en verde, sellar ese contenido en el mismo PR y lanzar «Publicar web»
 (revisión y producción). Solo si pasan todas las compuertas de la skill (el
 freno); si algo falla o hay dudas, no se publica nada y se avisa a Víctor.
-Nunca se avisa a los usuarios.
+A los usuarios solo se les avisa si la edición publicada trae noticias nuevas
+(«Avisar novedad» con lo que da `aviso-usuarios`; una vez al día como mucho;
+Víctor, 21/11/2026).
 
 El PR de la mañana solo puede cambiar `rwadar-site/datos/noticias-v2.json`,
 `rwadar-site/datos/noticias.json`, `rwadar-app/data/noticias-diarias/<fecha>/`
@@ -104,8 +109,8 @@ y el sello (`estado.json`: commit, huella y nota; nunca `actualizadoEl`, que
 sigue siendo la fecha del último sello revisado por una persona: a los 7 días
 sin uno, la mañana se para y avisa). Esta autorización **no** incluye:
 investigar o cambiar el catálogo, tocar Supabase (salvo la lectura de
-visitante), enviar OTA, compilar la app, avisos o notificaciones a usuarios,
-generar o cambiar fotos, cambiar código, la CI, la skill, la guía de titulares
+visitante), enviar OTA, compilar la app, otros avisos o notificaciones a
+usuarios (solo el de noticias nuevas, de arriba), generar o cambiar fotos, cambiar código, la CI, la skill, la guía de titulares
 o esta autorización, ni publicar si el freno paró.
 
 Sigue necesitando la orden de Víctor: encender la tarea, cambiar su hora o su
