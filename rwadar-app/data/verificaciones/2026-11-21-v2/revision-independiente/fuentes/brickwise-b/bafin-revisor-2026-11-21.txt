@@ -1,0 +1,58 @@
+BaFin · Effecta GmbH (2026-11-21T18:10:05Z) https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261
+Effecta GmbH
+Gattung:
+Wertpapierinstitut
+Am Sportplatz 13
+61197 Florstadt
+Deutschland
+Bafin-ID:
+10133261
+Bak Nr.:
+133261
+Reg Nr.:
+---
+Schlichtungsstelle:
+Erlaubnisse/Zulassung/Tätigkeiten
+Erteilungsdatum
+Ende am
+Endegrund
+Abschlußvermittlung (§ 1 Abs. 1a Satz 2 Nr. 2 KWG)
+21.11.2013
+14.04.2015
+Rückgabe / Aufgabe
+Anlageberatung (§ 1 Abs. 1a Satz 2 Nr. 1a KWG)
+21.11.2013
+25.06.2021
+Inkrafttreten Wertpapierinstitutsgesetz (WpIG)
+Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG)
+26.06.2021
+Anlagevermittlung (§ 1 Abs. 1a Satz 2 Nr. 1 KWG)
+21.11.2013
+25.06.2021
+Inkrafttreten Wertpapierinstitutsgesetz (WpIG)
+Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG)
+26.06.2021
+
+
+BaFin · registro de agentes vinculados, búsqueda «Brickwise» (POST, 2026-11-21T18:10:21Z) https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do
+Stand der Daten:
+20.11.2026
+Vertr. geb. 
+Brickwise Investment GmbH
+Amalienstraße 71, 2. RGB
+80799 München
+Deutschland
+Vertreter 1: [nombre recortado]
+Nr.
+zum Haftungsinstitut
+Sitz
+Tätig ab
+Tätig bis
+Meldedatum
+hist. Meldungen
+80174029
+Effecta GmbH
+Florstadt
+04.08.2021
+29.06.2023
+Anz.

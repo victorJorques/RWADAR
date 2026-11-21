@@ -1,0 +1,8 @@
+https://api.profitus.com/api/v1/landing/projects?limit=50&page=1 · consultado 2026-11-21T18:06:54Z · HTTP 200 · 51.830 bytes
+total=552 · abiertos (open_for_investments) en la pág. 1 (los más recientes)=6
+('P00001753', 'standard', 'lv')
+('P00001442-12', 'standard', 'lt')
+('P00001631-6', 'standard', 'lt')
+('P00001552-4', 'standard', 'es')
+('P00001675-3', 'standard', 'lt')
+('P00001689-2', 'standard', 'es')

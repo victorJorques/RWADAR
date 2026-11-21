@@ -1,0 +1,213 @@
+Mercado de la app de Brickwise renderizado sin sesión con Playwright, 2026-11-21T18:09:24Z, https://app.brickwise.at/desktopWeb/marketplace, sha256 del texto 2e6b144aca83f9f51677ea4e2b1ac86f920a0f2e57bf17c97daa8bc9c4cdfacf
+
+Klicke hier, um einen Account zu erstellen.
+Marktplatz
+Einloggen
+Account erstellen
+Alle
+Wohnimmobilien
+Gewerbe
+Finanzierungsphase
+Bestand
+Karte
+Neue Objekte
+63
+KESt
+Bestand
+Betriebsgrundstück mit langfristigem BILLA-Mietvertrag
+10. Oktober Straße 2, Brückl
+1%
+5,07 % p.a.
+Erw. laufende Ausschüttung
+Mindestinvestition
+€ 1.000,00
+Laufzeit:
+endlos
+Ausschüttungen erw. ab:
+14.7.2026
+Weitere Objekte
+Handel aktiv
+86
+KESt
+Bestand
+Photovoltaik Anlage mit Schnellladestation im Parkhaus Quartier Mitte St. Pölten
+Rennbahnstraße 1, 3100 St. Pölten, St. Pölten
+6,12 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 507,62
+Laufzeit:
+30.10.2039
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+405
+4.6
+Bestand
+Randhartingergasse 9, Wien
+Randhartingergasse 9, Wien
+2,38 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 78,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+205
+KESt
+Bestand
+Photovoltaik Anlage GreenPoint mit Überschussbeteiligung
+Pottendorfer Straße 62, Wiener Neustadt
+5,99 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 102,00
+Laufzeit:
+30.12.2038
+Ausschüttungen erw. ab:
+14.2.2024
+Handel aktiv
+99
+KESt
+Bestand
+Photovoltaik Anlage Cohotel mit Überschussbeteiligung
+Gewerbeallee 15, Steyregg
+5,58 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 110,00
+Laufzeit:
+30.12.2038
+Ausschüttungen erw. ab:
+15.2.2024
+Handel aktiv
+174
+5
+Bestand
+Wohnung, Plüddemanngasse 101, Graz
+Plüddemanngasse 101, Top 4, Graz
+4,01 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 75,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+215
+4
+Bestand
+Wohnung, Sonnleithnergasse 2, Wien 10.
+Sonnleithnergasse 2, Top 247, Wien
+3,42 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 75,00
+Laufzeit:
+endlos
+Ausschüttungen erw. ab:
+14.12.2023
+Handel aktiv
+357
+5
+Bestand
+Trafik, Kohldorfer Straße 102, Klagenfurt
+Kohldorfer Straße 102, Top Gewerbe 2, Klagenfurt
+3,46 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 95,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+305
+4.5
+Bestand
+Wohnung, Stallhofstraße 28, Gratwein
+Stallhofstraße 28, Gratwein
+4,18 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 68,80
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+326
+4.8
+Bestand
+Wohnung, Schwarzer Weg 18, Graz
+Schwarzer Weg 18, Graz
+3,37 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 71,90
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+291
+3.5
+Bestand
+Drautalresidenz, Paternion
+Bahnhofstraße 210, Paternion
+4,68 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 70,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+467
+4.4
+Bestand
+Ferien-Appartement, Hinterstoder 50
+Hinterstoder 50, Hinterstoder
+4,65 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 75,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+231
+4.4
+KESt
+Bestand
+Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt
+Pottendorferstrasse 62, Wiener Neustadt
+3,75 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 81,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.12.2026
+Handel aktiv
+139
+KESt
+Bestand
+Fremdkapitalanteil
+Investieren in eine Ferienimmobilie mit Fixpacht in Hinterstoder!
+Hinterstoder 50, Hinterstoder
+9,69 % p.a.
+Renditepotenzial (mittleres Szenario)
+Preis pro Anteil
+ab € 94,90
+Laufzeit:
+endlos (gepl. Verkauf in 11,7J)
+Ausschüttungen erw. ab:
+14.9.2023
+Diese Plattform wird von Brickwise Investment GmbH betrieben, die vertraglich gebundener Vermittler gemäß § 3 (2) WpIG der Effecta GmbH, Florstadt, ist.

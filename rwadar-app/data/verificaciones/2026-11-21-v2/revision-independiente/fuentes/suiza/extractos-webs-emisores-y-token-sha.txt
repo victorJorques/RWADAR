@@ -1,0 +1,27 @@
+=== lend.ch/en/investor-relations (18:02:53Z)
+Can I sell my tokens later? You can sell back to the brokerbot when it holds sufficient liquidity, or peer-to-peer on shares.lend.ch . Liquidity is limited compared to a stock exchange - treat this as a long-term holding. Is this regulated? Switzerlend AG is a
+---
+Is this regulated? Switzerlend AG is a Swiss AG and an approved financial intermediary (SRO Polyreg). The trading venue itself is not a supervised exchange; the risk box above explains what that means. Does LEND pay dividends? Dividend policy is decided by the
+---
+Know the risks. LENDS trade on a non-supervised venue without the protections of a regulated exchange. Liquidity is limited; you may not be able to sell at the displayed price or at all. Equity can lose value, including entirely. Past platform performance does not predict share performance. This page is informational and not inv
+---
+=== bossinfo.com investor-faq (18:02:50Z)
+Wer kann keine Aktien kaufen? Es gibt Länder und Organisationen, die gemäss Liste der OECD oder Bestimmungen der Schweiz vom Kauf der BOSS Token ausgenommen sind: United States of America, People’s Republic of China, Afghanistan, the Bahamas, Botswana, Bosnia, Cambodia, Cuba, Democratic People’s Republic of Korea, Ethiopia, Ghana, Guyana, Iraq, Iran, Laos, Pakistan, Sri Lanka, Sudan, Syria, Trinidad and Tobago, Tunisia, Uganda, Vanuatu and Yemen. Welches Wallet empfiehlt Boss Info? Wir empfehlen die Aktionariat Por
+---
+Informationen zum xCHF www.bitcoinsuisse.com/de/cryptofranc Steuern und Gebühren
+---
+=== bossinfo.com investor-tokens (18:02:52Z)
+Ein Wertverlust bis 100% des eingesetzten Kapitals ist möglich. Investor Relatio
+---
+=== LENDS_TOKEN_Agreement.pdf (descargado 18:02:54Z y de nuevo a las 18:08:35Z, SHA-256 896479984f553b3b…), texto lineal de pdftotext
+The Issuer is under no obligation to offer or repurchase compensatory capital increase or anti-dilution adjustment, if applicable, in the order of priority the Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or speci
+---
+(no encontrado: one-time non-participating)
+---
+Initially, any preferred shares with senior ranking liquidation preferences as per the Articles, as amended from time to time, than the Share Tokens and the Preferred C2 Shares, if and Open Trading & issuance of new Share Tokens when introduced by the shareholders’ meeting with a respective amendment of the Articles All Sharehol
+---
+Thereafter, each holder of Share Token and Preferred C2 Share shall receive from the proceeds available for distribution per Share Token and Preferred C2 Shares an amount the Open Trading. equal to CHF 53.72 (rounded) (rounded, as adjusted by any compensatory capital increase or 1.5 Conversion anti-dilution adjustment, if applicable). If the proceeds do not suffice to make such payments to all of the holders of Prefe
+---
+ares pro rata to the Common Shares held by them, provided that each holder of Preferred Shares (including, for the avoidance of doubt, Token Holders) may participate in such distribution with the relevant Preferred Shares if and to the extent such holder of Preferred Shares, in relation to the relevant Preferred Shares and hereby on an “as-converted” basis (assuming the conversion of the relevant Preferred Share into a Common Share prior to the relevant Sale or Liquidation) would receive, in the aggregate but not including any amounts received as preference amount as per this Section above and the Ordinary SHA, an amount greater than the amount that 2 Board woul
+---
+ed in this Section to the contrary, the Liquidation Preference shall terminate and cease automatically upon completion of a Listing. 3 Liquidation Preference In

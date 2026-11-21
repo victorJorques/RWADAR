@@ -1,0 +1,72 @@
+Documento de emisión de Alicante 3 (HAUSERA PROPERTY MANAGER SPV 11, S.A)
+URL: https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_ (descarga https://drive.google.com/uc?export=download&id=1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_)
+Descargado: 2026-11-21T18:01:44Z · HTTP 200 · 533.858 bytes · 27 páginas · creado 23/10/2026
+SHA-256: 9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4 (igual que el expediente)
+El PDF no se guarda aquí: lleva datos personales. Extracto de líneas citadas (pdftotext -layout):
+
+  Dirección del Smart Contract (Polygon):                    0xbc10da132a553447e1080376fFB1FcbE94BeC265
+  El presente documento no es considerado un folleto informativo ni ha sido revisado por parte de la Comisión
+  La presente oferta está exenta de la obligación de publicar un folleto informativo conforme al artículo 35 de la
+     ●​   Plazo de Inversión: 20 meses computados desde el 25/11/2026 (inicio de la suscripción).
+
+     ●​   Importe total de la emisión: 5.196.000€
+   ●​   Hard Cap: 5.196.000€. Soft Cap para esta emisión será de un 50% que equivale a un importe
+        de 2.598.000€.
+                     Emisión de instrumentos financieros – Obligaciones por un importe total
+Cantidad emitida:    de 5.196.000 euros, correspondientes a 51.960 valores con valor nominal
+                     unitario de 100,00 euros cada uno.
+
+
+                     A la par. Importe nominal unitario: 100,00 euros.
+Precio de emisión:
+                     Ticket mínimo: 100,00 euros
+
+
+                     Rentabilidad máxima estimada del 22,00% (equivalente a una Rentabilidad
+                     Anualizada Simple estimada del 13,20% ).​
+Retribución de las
+                     ​
+obligaciones:
+                     Base de cálculo utilizada para la equivalencia anualizada de la rentabilidad
+                     estimada: 365 días
+
+
+                     El periodo de suscripción se iniciará el 25/11/2026 y se extenderá hasta el
+                     30/6/2027.
+
+Periodo de
+                     Si a fecha 02/12/2026 no se hubiera alcanzado al menos el 50% del importe
+suscripción:
+                     total previsto para la emisión (softcap), la emisión no se entenderá
+                     válidamente constituida, procediéndose a la devolución de las cantidades
+                     aportadas por los inversores.
+
+5.7.​ Tipos de inversores a los que va dirigida la Emisión
+
+La oferta de los instrumentos financieros con tecnología DLT se dirigirá, tanto a inversores
+cualificados, entendiendo por tales, los inversores profesionales según la definición de los mismos
+que hace mención el artículo 205 LMVSI y su reglamento de desarrollo, como a determinadas
+personas físicas y jurídicas que no tengan la condición de inversor cualificado. En estos últimos casos,
+HAUSERA PROPERTY MANAGER SPV 11, S.A analizará la información provista por el inversor a fin de
+determinar que el inversor tiene la suficiente experiencia y conocimientos financieros como para
+considerarlo idóneo para realizar la inversión en los valores con tecnología DLT.
+
+
+5.8.​ Suscripción de los instrumentos financieros con tecnología DLT
+
+El compromiso de suscripción de los instrumentos financieros con tecnología DLT se llevará a cabo
+durante el periodo de suscripción, definido en la cláusula 5.9 del presente documento, en la
+plataforma www.hausera.io. Los inversores pueden optar por suscribir un Acuerdo de Reserva de
+Suscripción, mediante el cual adelantan fondos en concepto de reserva de suscripción de valores.
+
+Dichos fondos podrán ser gestionados por el Emisor para avanzar en el desarrollo del proyecto
+mientras se completa el proceso de formalización de la emisión, y se convertirán automáticamente
+en valores con tecnología DLT una vez la emisión sea formalmente inscrita.
+5.9.​ Período de Suscripción
+
+El plazo para la suscripción de los instrumentos financieros con tecnología DLT (el “Periodo de
+Suscripción”) se inicia el 25/11/2026 y se extenderá hasta el 30/6/2027.
+
+No obstante si a fecha 2/12/2026 no se hubiera alcanzado al menos el 50% del importe total previsto
+para la emisión (softcap), la emisión no se entenderá válidamente constituida, procediéndose a la
+devolución de las cantidades aportadas por los inversores.

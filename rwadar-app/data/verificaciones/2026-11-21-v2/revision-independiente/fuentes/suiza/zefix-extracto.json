@@ -1,0 +1,26 @@
+{
+ "nota": "Extracto sin las publicaciones del SHAB (traen nombres de personas físicas). SHA-256 de la respuesta completa en log.txt.",
+ "fichas": [
+  {
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+   "name": "Aktionariat AG",
+   "uid": "CHE-453.438.437",
+   "status": "EXISTIEREND",
+   "legalSeat": "Erlenbach (ZH)"
+  },
+  {
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+   "name": "Boss Info AG",
+   "uid": "CHE-105.004.543",
+   "status": "EXISTIEREND",
+   "legalSeat": "Farnern"
+  },
+  {
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+   "name": "Switzerlend AG",
+   "uid": "CHE-456.445.646",
+   "status": "EXISTIEREND",
+   "legalSeat": "Zürich"
+  }
+ ]
+}

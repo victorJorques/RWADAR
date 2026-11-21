@@ -1,0 +1,220 @@
+{
+ "fuente": "https://api.app.brickwise.at/api/v1/assets (órdenes abiertas) y https://api.app.brickwise.at/api/v2/assets",
+ "consultadoUtc": "2026-11-21T18:02:58Z / 18:02:59Z",
+ "sha256V1": "edaee0fe86ac22686091253710f41b53547741834a83520fbc7d88077df9d207",
+ "sha256V2": "b6d47201d2b16410dddf8213d6523fb6d7bc475627a39e44c3ea1209f5ae2506",
+ "nota": "Sin direcciones de cartera (los crudos están en crudo/, fuera de Git).",
+ "activos": {
+  "AT0000A2ZT84": {
+   "titulo": "Randhartingergasse 9, Wien",
+   "stage": "secondary",
+   "securityType": "participationRightEquity",
+   "ventaMasBarata": 78,
+   "cantidadAEsePrecio": 20,
+   "ordenesAEsePrecio": [
+    {
+     "cantidad": 20,
+     "creada": "2026-06-29"
+    }
+   ],
+   "ordenDe1MasBarata": 85,
+   "ordenDe1Creada": "2026-11-06",
+   "enVenta": 188,
+   "availableBricksSecondaryV2": 188,
+   "lowestOfferPriceV2": 78,
+   "mejorCompra": 64,
+   "mejorCompraOrdenes": [
+    {
+     "cantidad": 1,
+     "creada": "2026-11-12"
+    }
+   ],
+   "availableBricks": 374,
+   "issuingSharePriceV2": 100.24,
+   "plannedFirstRentalIncomeDateV2": null,
+   "maturityDateV2": null,
+   "fichaApi": {
+    "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+    "sha256": "23bdcc55dbbc49c3bcfb834367501ebe2e22d0fad0da70f2446e5bde9a508c23",
+    "securityType": "participationRightEquity",
+    "paisSociedadEmisora": "AUT",
+    "isAllowedDomicile": [],
+    "stage": "secondary",
+    "issueEndDate": "2022-09-15T23:40:57.669Z",
+    "onlyPrimary": false
+   }
+  },
+  "AT0000A31KP7": {
+   "titulo": "Ferien-Appartement, Hinterstoder 50",
+   "stage": "secondary",
+   "securityType": "participationRightEquity",
+   "ventaMasBarata": 75,
+   "cantidadAEsePrecio": 5,
+   "ordenesAEsePrecio": [
+    {
+     "cantidad": 5,
+     "creada": "2026-11-08"
+    }
+   ],
+   "ordenDe1MasBarata": 82,
+   "ordenDe1Creada": "2026-11-15",
+   "enVenta": 252,
+   "availableBricksSecondaryV2": 252,
+   "lowestOfferPriceV2": 75,
+   "mejorCompra": 20,
+   "mejorCompraOrdenes": [
+    {
+     "cantidad": 1,
+     "creada": "2025-05-19"
+    },
+    {
+     "cantidad": 3,
+     "creada": "2026-09-29"
+    }
+   ],
+   "availableBricks": 0,
+   "issuingSharePriceV2": 100.2,
+   "plannedFirstRentalIncomeDateV2": null,
+   "maturityDateV2": null,
+   "fichaApi": {
+    "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+    "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c",
+    "securityType": "participationRightEquity",
+    "paisSociedadEmisora": "AUT",
+    "isAllowedDomicile": [],
+    "stage": "secondary",
+    "issueEndDate": "2022-12-21T23:40:57.669Z",
+    "onlyPrimary": false
+   }
+  },
+  "AT0000A324B4": {
+   "titulo": "Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt",
+   "stage": "secondary",
+   "securityType": "participationRightDebtCapital",
+   "ventaMasBarata": 81,
+   "cantidadAEsePrecio": 1,
+   "ordenesAEsePrecio": [
+    {
+     "cantidad": 1,
+     "creada": "2026-11-15"
+    }
+   ],
+   "ordenDe1MasBarata": 81,
+   "ordenDe1Creada": "2026-11-15",
+   "enVenta": 96,
+   "availableBricksSecondaryV2": 96,
+   "lowestOfferPriceV2": 81,
+   "mejorCompra": 64,
+   "mejorCompraOrdenes": [
+    {
+     "cantidad": 1,
+     "creada": "2026-11-17"
+    }
+   ],
+   "availableBricks": 0,
+   "issuingSharePriceV2": null,
+   "plannedFirstRentalIncomeDateV2": null,
+   "maturityDateV2": null,
+   "fichaApi": {
+    "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+    "sha256": "16cf851beead10c3ec242d16f58dd76946e5e71ba15753a8b1a9a8ab5d118dcc",
+    "securityType": "participationRightDebtCapital",
+    "paisSociedadEmisora": "AUT",
+    "isAllowedDomicile": [],
+    "stage": "secondary",
+    "issueEndDate": "2023-03-31T21:00:00.000Z",
+    "onlyPrimary": false
+   }
+  },
+  "AT0000A38J32": {
+   "titulo": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung",
+   "stage": "secondary",
+   "securityType": "participationRightDebtCapital",
+   "ventaMasBarata": 102,
+   "cantidadAEsePrecio": 8,
+   "ordenesAEsePrecio": [
+    {
+     "cantidad": 5,
+     "creada": "2026-09-05"
+    },
+    {
+     "cantidad": 2,
+     "creada": "2026-09-28"
+    },
+    {
+     "cantidad": 1,
+     "creada": "2026-11-11"
+    }
+   ],
+   "ordenDe1MasBarata": 102,
+   "ordenDe1Creada": "2026-11-11",
+   "enVenta": 347,
+   "availableBricksSecondaryV2": 347,
+   "lowestOfferPriceV2": 102,
+   "mejorCompra": 29,
+   "mejorCompraOrdenes": [
+    {
+     "cantidad": 1,
+     "creada": "2024-08-10"
+    }
+   ],
+   "availableBricks": 0,
+   "issuingSharePriceV2": 100.32,
+   "plannedFirstRentalIncomeDateV2": "2024-02-14T23:00:00.000Z",
+   "maturityDateV2": "2038-12-30T23:00:00.000Z",
+   "fichaApi": {
+    "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+    "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3",
+    "securityType": "participationRightDebtCapital",
+    "paisSociedadEmisora": "AUT",
+    "isAllowedDomicile": [],
+    "stage": "secondary",
+    "issueEndDate": "2024-03-14T23:00:00.000Z",
+    "onlyPrimary": false
+   }
+  },
+  "AT0000A38J40": {
+   "titulo": "Photovoltaik Anlage Cohotel mit Überschussbeteiligung",
+   "stage": "secondary",
+   "securityType": "participationRightDebtCapital",
+   "ventaMasBarata": 110,
+   "cantidadAEsePrecio": 35,
+   "ordenesAEsePrecio": [
+    {
+     "cantidad": 31,
+     "creada": "2025-02-07"
+    },
+    {
+     "cantidad": 4,
+     "creada": "2026-05-07"
+    }
+   ],
+   "ordenDe1MasBarata": 120,
+   "ordenDe1Creada": "2026-11-15",
+   "enVenta": 59,
+   "availableBricksSecondaryV2": 59,
+   "lowestOfferPriceV2": 110,
+   "mejorCompra": 3,
+   "mejorCompraOrdenes": [
+    {
+     "cantidad": 1,
+     "creada": "2024-11-23"
+    }
+   ],
+   "availableBricks": 0,
+   "issuingSharePriceV2": 100.85,
+   "plannedFirstRentalIncomeDateV2": "2024-02-15T13:00:00.000Z",
+   "maturityDateV2": "2038-12-30T23:00:00.000Z",
+   "fichaApi": {
+    "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+    "sha256": "45f816ccbb087fb3b6a22d8f6edbae0ffa1add90b3fd93492babd5e1e4a265c8",
+    "securityType": "participationRightDebtCapital",
+    "paisSociedadEmisora": "AUT",
+    "isAllowedDomicile": [],
+    "stage": "secondary",
+    "issueEndDate": "2024-05-17T23:00:00.000Z",
+    "onlyPrimary": false
+   }
+  }
+ }
+}

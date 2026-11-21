@@ -1,0 +1,23 @@
+Pestaña Sell pulsada: true
+URL: https://shares.lend.ch/trade
+Hora UTC: 2026-11-21T17:47:22Z
+
+…
+10
+Buy
+Sell
+Number of Shares
+LENDS
+Limit Price
+ZCHF
+Order Summary
+1 LENDS
+To be matched later
+67 ZCHF
+Fee (1.9%):
+1.27 ZCHF
+Total Value:
+65.73 ZCHF
+Register to Access Secondary Trading
+Switzerlend AG
+Terms of Use: This page is hosted by Switzerlend using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Switzerlend and provided "AS IS" without further verification. These sources include the public 

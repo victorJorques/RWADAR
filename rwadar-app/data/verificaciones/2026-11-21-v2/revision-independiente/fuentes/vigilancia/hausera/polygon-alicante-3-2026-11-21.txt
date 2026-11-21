@@ -1,0 +1,6 @@
+2026-11-21T18:02:09Z https://polygon-rpc.com 0xbc10da132a553447e1080376fFB1FcbE94BeC265 0x18160ddd {"error":"message: API key disabled, reason: tenant disabled, json-rpc code: -32051, rest code: 403"}
+2026-11-21T18:02:10Z https://polygon-rpc.com 0xbc10da132a553447e1080376fFB1FcbE94BeC265 0x06fdde03 {"error":"message: API key disabled, reason: tenant disabled, json-rpc code: -32051, rest code: 403"}
+2026-11-21T18:02:10Z https://polygon-rpc.com blockNumber {"error":"message: API key disabled, reason: tenant disabled, json-rpc code: -32051, rest code: 403"}
+2026-11-21T18:02:10Z https://polygon-bor-rpc.publicnode.com 0xbc10da132a553447e1080376fFB1FcbE94BeC265 0x18160ddd {"jsonrpc":"2.0","id":1,"result":"0x0000000000000000000000000000000000000000000000000000000000000000"}
+2026-11-21T18:02:10Z https://polygon-bor-rpc.publicnode.com 0xbc10da132a553447e1080376fFB1FcbE94BeC265 0x06fdde03 {"jsonrpc":"2.0","id":1,"result":"0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a416c6963616e74655f3300000000000000000000000000000000000000000000"}
+2026-11-21T18:02:10Z https://polygon-bor-rpc.publicnode.com blockNumber {"jsonrpc":"2.0","result":"0x5d31343","id":1}

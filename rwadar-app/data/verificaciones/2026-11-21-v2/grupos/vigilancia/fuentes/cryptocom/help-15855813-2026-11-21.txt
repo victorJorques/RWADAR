@@ -1,0 +1,139 @@
+About Crypto.com Tokenized Stocks (EEA) | Crypto.com Help Center
+Copyright (c) 2023, Intercom, Inc. (
+[email protected]
+) with Reserved Font Name "Open Sans".
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Copyright 2023. Intercom Inc.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+Skip to main content
+العربية
+Português do Brasil
+Hrvatski
+Čeština
+Dansk
+Nederlands
+English
+Suomi
+Français
+Deutsch
+Ελληνικά
+Magyar
+Italiano
+Norsk
+Polski
+Português
+Română
+Pусский
+Español
+Svenska
+繁體中文
+Türkçe
+English
+العربية
+Português do Brasil
+Hrvatski
+Čeština
+Dansk
+Nederlands
+English
+Suomi
+Français
+Deutsch
+Ελληνικά
+Magyar
+Italiano
+Norsk
+Polski
+Português
+Română
+Pусский
+Español
+Svenska
+繁體中文
+Türkçe
+English
+Search for articles...
+All Collections
+Tokenized Stocks (EEA)
+About Crypto.com Tokenized Stocks (EEA)
+About Crypto.com Tokenized Stocks (EEA)
+Everything you need to know about trading tokenized stocks in the Crypto.com App
+August 11, 2026
+Table of contents
+What are tokenized stocks?
+Tokenized stocks track the price of publicly traded equities 1:1. They are traded on the Crypto.com App, bringing exposure to U.S. stocks into the Crypto.com App with the same ease as trading crypto. Underlying equities are held through partner and custody arrangements.
+Each tokenized stock is issued on the Cronos EVM chain. For an overview of the network, see
+Cronos chain
+.
+Crypto.com's Tokenized Stocks feature:
+24/7 access to U.S. markets:
+Trade TSLA, AAPL, NVDA, and other blue-chip tokenized stocks, even on weekends and holidays.
+Starting from $1:
+Buy as little as $1 of any tokenized stock with crypto, cash, or cards.
+0% commission:
+Trade commission-free. Other fees and charges may apply.
+Users trade Tokenized Stocks tracking U.S. stock and ETF prices, not direct shares on U.S. exchanges.
+Why should I trade tokenized stocks?
+Tokenized stocks offer several advantages over stocks on traditional brokerages:
+24/7 access:
+Unlike traditional stocks, you can trade tokenized stocks on nights, weekends, and holidays.
+Fractional trading:
+Buy as little as $1 of any tokenized stock instead of purchasing a full share.
+Instant settlement:
+When you sell, your proceeds are available right away — buy again the same day with no waiting for trades to clear.
+1:1 backed by reserves:
+Each tokenized stock is backed 1:1 by the underlying stock. Verify anytime via the
+Proof of Reserves
+.
+For how to trade them, see the "
+Buy and sell tokenized stocks
+" section.
+What rights do I have as a tokenized stockholder?
+Tokenized stocks give you economic exposure to the underlying security's price. They do not confer direct ownership of the underlying shares.
+You generally do not receive:
+Shareholder voting rights
+Direct shareholder communications from the issuer
+Dividends and other corporate actions are handled through the corporate actions program. See the "
+Corporate actions and dividends
+" article.
+Who can trade tokenized stocks?
+You can trade tokenized stocks if the feature is available in your jurisdiction and you have completed onboarding in the Crypto.com App.
+If you do not see
+Tokenized Stocks
+in the App, you may be in an unsupported jurisdiction or may not have completed the required verification steps.
+How many tokenized stocks and ETFs are available?
+The Crypto.com App offers approximately 1,500 tokenized U.S. stocks and ETFs. You can get exposure to major equities like TSLA, NVDA, and AAPL, as well as popular ETFs like QQQ, SPY, and GLD.
+How are dividends handled for tokenized stocks?
+You can receive contractual payouts that mirror traditional corporate dividends in the Crypto.com app or directly on-chain.
+For more information on dividends and stock splits, see the "Corporate actions and dividends" section.
+Subject to jurisdictional availability. Availability depends on your country of residence, applicable law, account type and completion of all required verification checks.
+Tokenized Stocks issued by Foris Capital CY Limited are derivatives that track the prices of underlying financial instruments. Trading may involve loss of capital due to market volatility or counterparty risk.
+Please consult the
+Key Information Document
+and
+Risk Disclosure Statement
+and ensure you fully understand the risks before trading. Terms apply.
+Related Articles
+Stock and ETF Trading via the Crypto.com App
+About Crypto.com Tokenized Stocks
+Earn rewards on eligible tokenized stocks
+Corporate actions and dividends of Tokenized Stocks
+Corporate actions and dividends of Tokenized Stocks (EEA)
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+Cryptocurrency in Every Wallet™
+Your Privacy Choices

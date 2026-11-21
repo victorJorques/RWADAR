@@ -1,0 +1,23 @@
+Pestaña Sell pulsada: true
+URL: https://shares.aktionariat.com/trade
+Hora UTC: 2026-11-21T17:47:03Z
+
+
+124
+Buy
+Sell
+Number of Shares
+DAKS
+Limit Price
+ZCHF
+Order Summary
+1 DAKS
+To be matched later
+6.2 ZCHF
+Fee (1.9%):
+0.12 ZCHF
+Total Value:
+6.08 ZCHF
+Register to Access Secondary Trading
+Aktionariat AG
+Terms of Use: This page is hosted by Aktionariat using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Aktionariat and provided "AS IS" without further verification. These sources include the public t

@@ -1,0 +1,47 @@
+2026-11-21T18:00:04Z https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS bb-DAKS.json 1543 0293edb70f9d1801dd824cd156af38cce2747fba604d342fa1a99aa224212b2b
+2026-11-21T18:00:05Z https://shares.aktionariat.com/api/secondarymarketsettings?ticker=DAKS sms-DAKS.json 499 132754731b9730b021e1af85fc7a5d3bba93adf20d426922e381b0ae85a25f61
+2026-11-21T18:00:06Z https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS bb-BOSS.json 1682 ec9ff651518709567134b058e2e8c8180ebde3c7d9303d142580756e7fb57347
+2026-11-21T18:00:07Z https://shares.bossinfo.com/api/secondarymarketsettings?ticker=BOSS sms-BOSS.json 527 5aaeee13184326fc8ba93fe6691fd41a3c01699371162341815f5d65469c61f3
+2026-11-21T18:00:07Z https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS bb-LENDS.json 1358 8852d0adabae4fd9262166eb06eb54ac44248609bad13d4ca0cd355d7d08bb62
+2026-11-21T18:00:08Z https://shares.lend.ch/api/secondarymarketsettings?ticker=LENDS sms-LENDS.json 494 49b876e974c4aa0520d1162656935c5645834c900911abb60d3ce82f2f9b781f
+2026-11-21T18:00:22Z POST https://shares.aktionariat.com/api/secondarymarkets/getOrderBook company=77 ob-DAKS.json 1145 6391b553497830d2f0fb0523685f0af14f9d7aa86405702e3c6a1cbf64e8f1a9
+2026-11-21T18:00:22Z POST https://shares.aktionariat.com/api/secondarymarkets/getTrades company=77 limit=5000 tr-DAKS.json 383961 ebad27e1295bb91d77e89a6a385f667239c390f7b9669ad1a1ad4e4851ada6c8
+2026-11-21T18:00:23Z POST https://shares.bossinfo.com/api/secondarymarkets/getOrderBook company=1664 ob-BOSS.json 452 d3359b4c66579c22398618ec798f1d2fdb193865ef0fa4f3ea64cf168ef70e43
+2026-11-21T18:00:24Z POST https://shares.bossinfo.com/api/secondarymarkets/getTrades company=1664 limit=5000 tr-BOSS.json 99256 f02ec19d5b1bae96be28ffe1b6788610f877637a13d733902cba4b7f08a1af3a
+2026-11-21T18:00:24Z POST https://shares.lend.ch/api/secondarymarkets/getOrderBook company=40880 ob-LENDS.json 559 c81b388c16a452cd7dc17ac16e20261f62ea0c82b1dd6012450b45c5c6878d60
+2026-11-21T18:00:24Z POST https://shares.lend.ch/api/secondarymarkets/getTrades company=40880 limit=5000 tr-LENDS.json 29537 97a527d4018fbe7a7401a94c41d7931cb11f173c73e208eff064cc14e741ef25
+2026-11-21T18:02:36Z eth_call+receipts https://ethereum-rpc.publicnode.com cadena.json 1218 e3a66ecd3219075863b355c2be6b00d7371cdaf3615320e5a3557c7cb705ba11
+2026-11-21T18:02:48Z https://www.aktionariat.com/disclaimer disclaimer.html 39058 51971f13236aa166df0d281f142316fdc7db2885047610b456a23240ac6f48be
+2026-11-21T18:02:48Z https://shares.aktionariat.com/investor-page-terms ipt-aktionariat.html 26190 c77ab1ca7ee203d1aeeae54e826d5d0aad754c1d67618c667eb752b18fee47d4
+2026-11-21T18:02:49Z https://shares.bossinfo.com/investor-page-terms ipt-boss.html 26190 c77ab1ca7ee203d1aeeae54e826d5d0aad754c1d67618c667eb752b18fee47d4
+2026-11-21T18:02:49Z https://shares.lend.ch/investor-page-terms ipt-lend.html 26190 c77ab1ca7ee203d1aeeae54e826d5d0aad754c1d67618c667eb752b18fee47d4
+2026-11-21T18:02:49Z https://www.aktionariat.com/terms-of-service tos-aktionariat.html 52129 8e549a1436898e45d76c5ae0ffd770fc3467dfc6369af789afa4713b02cafb38
+2026-11-21T18:02:50Z https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/ boss-faq.html 105442 bec8b5866d9c8ba1327d16e89397d94f1860bcc4ec79fbf89157cd5e417e20a4
+2026-11-21T18:02:52Z https://www.bossinfo.com/unternehmen/investor-relations/investor-tokens/ boss-tokens.html 95655 dcb3e3a436a68381c0ca2c614826955825df26b6218dde4aeb9da9d128a29760
+2026-11-21T18:02:53Z https://lend.ch/en/investor-relations lend-ir-en.html 320474 b5b2802981a4806cf11cd41083bf36b88034950505485e90b67d3c2e0c49d501
+2026-11-21T18:02:54Z https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf lends-token-sha.pdf 455843 896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18
+2026-11-21T18:02:56Z https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf daks-registration-agreement.pdf 317532 9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b
+2026-11-21T18:02:57Z https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf boss-registration-regulations.pdf 246294 613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f
+2026-11-21T18:02:58Z https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf daks-token-holder-agreement.pdf 72428 650eec368bdd93f45bac1cd37d6034471c4fedc913f53e818af568318f3f6b53
+2026-11-21T18:05:29Z POST https://www.finma.ch/en/api/search/getresult query=Aktionariat finma-Aktionariat.json 466 5bc7a55233cd9af8d8a4590b8e74c16f7d435697c9e13b880f0d2439425da2c6
+2026-11-21T18:05:29Z POST https://www.finma.ch/en/api/search/getresult query=Boss%20Info finma-BossInfo.json 464 d7dab6ab372143eabf1e77847a846e77b3e88896bb9d9331de2b553b729883bc
+2026-11-21T18:05:30Z POST https://www.finma.ch/en/api/search/getresult query=Switzerlend finma-Switzerlend.json 466 5a44d1eb44c4dbd5a87994b3b36ed83bcdadf9e4791e202698001aec98ab3983
+2026-11-21T18:05:31Z POST https://www.finma.ch/en/api/search/getresult query=Sygnum finma-Sygnum.json 1086 07fee30eaefe2fb8763822859034ae6485c5b67df8b2f86a5ba49ded97f62aa5
+2026-11-21T18:05:31Z https://api.polyreg.ch/api/membership-check?name=Aktionariat%20AG polyreg-Aktionariat_AG.json 77 614eace25af609c5f6679ad0422b859275bf8c5a97d829d160c24912063ee1b0
+2026-11-21T18:05:32Z https://api.polyreg.ch/api/membership-check?name=Boss%20Info%20AG polyreg-Boss_Info_AG.json 75 858c5ec11734c964f535abadef30fa9d88552f9a1fb955af9324c39a0a963a76
+2026-11-21T18:05:32Z https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG polyreg-Switzerlend_AG.json 76 d7ca18f4bbcdc568a8a77674c41057e7fd39a391de3e999e8ca7a8a3c33b5d77
+2026-11-21T18:05:39Z POST https://www.finma.ch/en/api/search/getresult ds=warnings finma-warnings.json 825520 22c34dc5917ef830e99c8afe653d7b5f64dbfb9e4434cf6d07fff99b2d5275c8
+2026-11-21T18:05:47Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat cnmv-Aktionariat.html 212291 42807a3bd07e3e75642ef82c16c1f5194316aacf2d14f7d76b4c33d68d9c5498
+2026-11-21T18:05:49Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info cnmv-Boss_Info.html 212247 dca76683655aee53520e481f4ede887697d208f26356bac5bf01286a66a4db29
+2026-11-21T18:05:50Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG cnmv-Switzerlend_AG.html 212357 9341e5da613ac076f5222c32e1a97d145a142c532aac8cc52248f16152d98482
+2026-11-21T18:06:08Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat (accept-language es) cnmv-Aktionariat.html 212291 42807a3bd07e3e75642ef82c16c1f5194316aacf2d14f7d76b4c33d68d9c5498
+2026-11-21T18:06:09Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG (accept-language es) cnmv-Aktionariat_AG.html 212357 7b228e773cd02638f7704d7cd4ba0633c06430a59feef111db7fcdeb6670ebe0
+2026-11-21T18:06:11Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info (accept-language es) cnmv-Boss_Info.html 212247 dca76683655aee53520e481f4ede887697d208f26356bac5bf01286a66a4db29
+2026-11-21T18:06:12Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG (accept-language es) cnmv-Boss_Info_AG.html 212313 e43fa269fcc964674fe43d121badd1e576b151acbbd587988decc580a97122a9
+2026-11-21T18:06:14Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend (accept-language es) cnmv-Switzerlend.html 212291 b7e4b0fa902a6c2c5b4aa6ebf36b7994a9cd487eeacf337c69921b071fd0b453
+2026-11-21T18:06:15Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG (accept-language es) cnmv-Switzerlend_AG.html 212357 9341e5da613ac076f5222c32e1a97d145a142c532aac8cc52248f16152d98482
+2026-11-21T18:06:17Z https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading (accept-language es) cnmv-Trading.html 237276 d4b4055d9a5e70fb609bd71680730786f594bc234da1de63f19b04145bad026b
+2026-11-21T18:06:55Z https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json zefix-1438805.json 13485 b46ae864bb099562044309927ce8d3946fd7122b1d094cdd47505ac281b1161b
+2026-11-21T18:06:56Z https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json zefix-450692.json 17747 c22a7dcf11d9bc7b22db293a568833089869c4bf8622a1339b99496b244fea9d
+2026-11-21T18:06:57Z https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json zefix-1231406.json 27929 f3547c2433780660924a77bafe8fa331b77b8319411a21851e6f156f4c33f6a5
+2026-11-21T18:08:24Z NOTA: bb-BOSS.json con correo recortado tras calcular el SHA-256 (ec9ff651…); zefix-*.json, PDF, finma-warnings.json y HTML de bossinfo.com/lend.ch borrados tras registrar su SHA-256 (traen o pueden traer nombres de personas físicas); quedan extractos.

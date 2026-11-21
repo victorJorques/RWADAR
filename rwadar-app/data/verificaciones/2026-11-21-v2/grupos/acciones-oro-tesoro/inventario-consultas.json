@@ -1,0 +1,1027 @@
+[
+  {
+    "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+    "archivo": "fuentes/crudo/midas-docs-mtbill.html",
+    "http": 403,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 5782,
+    "sha256": "dd064e487022eadc32409e3ae2fa9745ddd48dc02c65d03f4c7568453b1ffd81",
+    "nota": "un intento"
+  },
+  {
+    "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+    "archivo": "fuentes/mtbill-ft.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 1248073,
+    "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+  },
+  {
+    "url": "https://midas.app/mtbill",
+    "archivo": "fuentes/crudo/midas-app-mtbill.html",
+    "http": 403,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 5578,
+    "sha256": "4a070cb75113f41475d3bbddd86f05b953559cd9690a1a0e01c2a9999d4d057c",
+    "nota": "un intento"
+  },
+  {
+    "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+    "archivo": "fuentes/mtbill-kid-es.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 154610,
+    "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+    "archivo": "fuentes/cnmv-pasaportes-midas.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 217221,
+    "sha256": "de12b98ce93263d71b9a2a0c9334549e2562e972a4fe02a62117bdc7776c9270"
+  },
+  {
+    "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+    "archivo": "fuentes/esma-priii-isin-mtbill.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 4419,
+    "sha256": "c43b645faecf3999a8514d6aab1ef2dd3b1cf6be1d50aadd69fccc002bd8d7c2"
+  },
+  {
+    "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=200&sort=approval_filing_date%20desc",
+    "archivo": "fuentes/esma-priii-emisor-midas.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:41:58Z",
+    "bytes": 57763,
+    "sha256": "d97ca4b3f238e41ebb0f2528eea03e00e8dde090292cd99f83a30a13d8fd4fec"
+  },
+  {
+    "url": "https://docs.midas.app/llms-full.txt",
+    "archivo": "fuentes/crudo/midas-docs-llms-full.txt",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:42:17Z",
+    "bytes": 219438,
+    "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76",
+    "nota": "lleva enlaces con token: solo en crudo/"
+  },
+  {
+    "url": "https://ethereum-rpc.publicnode.com (eth_call paused() de emisión 0x99361435…, reembolso 0x569D7dcc…, token 0xdd629e52…; totalSupply(); latestRoundData() del oráculo 0x056339C0…)",
+    "archivo": "fuentes/crudo/onchain-mtbill-pausas-20261121.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:43:47Z",
+    "bytes": 560,
+    "sha256": "82910046856521044f32b07d16e6db58d881aa61d8ade4c2b284ce9861739305",
+    "nota": "bloque 26465047 (17:43:35 UTC)"
+  },
+  {
+    "url": "texto extraído con pdftotext de fuentes/mtbill-ft.pdf",
+    "archivo": "fuentes/crudo/mtbill-ft.txt",
+    "http": null,
+    "consultadoUtc": "2026-11-21T17:43:00Z",
+    "bytes": 513788,
+    "sha256": "37a0c4eb2a5b3d15c4f1dc62098df9d95a694528498b7ddd578d909cae83aaf8",
+    "nota": "extracción local"
+  },
+  {
+    "url": "texto extraído con pdftotext de fuentes/mtbill-kid-es.pdf",
+    "archivo": "fuentes/crudo/mtbill-kid-es.txt",
+    "http": null,
+    "consultadoUtc": "2026-11-21T17:43:00Z",
+    "bytes": 24256,
+    "sha256": "37364b1ee2aa6cf2a010c00fb1304353428337a64eaae4e99af1c81d395b5808",
+    "nota": "extracción local"
+  },
+  {
+    "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_es.pdf",
+    "archivo": "fuentes/robinhood-dos-es.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 308722,
+    "sha256": "75f905ae83716a4532611023a931dce9e8f6efb3a60918598f76eb7443ac748f"
+  },
+  {
+    "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+    "archivo": "fuentes/robinhood-kid-es.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 191487,
+    "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501"
+  },
+  {
+    "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+    "archivo": "fuentes/esma-casps.csv",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 201660,
+    "sha256": "d6ba26963008959098964bea92ead7409b6ff8284eea86d17237bdc5aad65134"
+  },
+  {
+    "url": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+    "archivo": "fuentes/lb-robinhood-europe-uab.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 156631,
+    "sha256": "c8fe46b2e650e0bc1331f43bc92cbaa5418fb96b7f9efa9464113b0d761c3d08"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+    "archivo": "fuentes/cnmv-esi-5299.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 218078,
+    "sha256": "731533762d31180f8ce396fddbacd41baba8a1f9f47d2d981cfb1a642b18a901"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299&vista=17",
+    "archivo": "fuentes/cnmv-esi-5299-vista17.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 232956,
+    "sha256": "13dab1dab9178702d0e04bc0b68b824bd7b4f32182ad5eb955497289da3faefa"
+  },
+  {
+    "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf",
+    "archivo": "fuentes/cnmv-listado-casp.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:03Z",
+    "bytes": 482698,
+    "sha256": "0dea9e14f8f7aacb3d76021afe8b91b8aac8896e597fc4012a8d9a19f6c4f7e7"
+  },
+  {
+    "url": "https://robinhood.com/eu/es/invest",
+    "archivo": "fuentes/crudo/robinhood-invest-es-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:04Z",
+    "bytes": 11695,
+    "sha256": "142f52813f310a36aaf9a2b255e3abfa917e87359d1ce51b79502ae3d7794269",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://www.prosegurcrypto.com/digital-gold",
+    "archivo": "fuentes/crudo/prosegur-digital-gold-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:04Z",
+    "bytes": 8608,
+    "sha256": "4f9cac7835590fb0a3a6e25f586f0ae8cbd0c1bcbba0744a92ddd52a19e4fb79",
+    "nota": "render es-ES (Playwright); nombres de personas recortados tras la lectura"
+  },
+  {
+    "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+    "archivo": "fuentes/crudo/prosegur-terms-service-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:04Z",
+    "bytes": 73274,
+    "sha256": "c13fab5e7ec97cf5129dcb8c2ae08028341ed1f118c6c3a3b05a529d783be642",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://prosegurdigitalgold.com/transparency",
+    "archivo": "fuentes/crudo/prosegur-transparency-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:18Z",
+    "bytes": 2400,
+    "sha256": "9464c38939507788d000df16aa66ea6ef629847a3dda8e756f7a3850f5c2fd61",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://prosegurdigitalgold.com/about-us/faqs",
+    "archivo": "fuentes/crudo/prosegur-faqs-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:45:18Z",
+    "bytes": 2060,
+    "sha256": "0000b49137d73786492c832d6f4f884f03fc0c0adb76a0b695bf119ede304a90",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://app.prosegurdigitalgold.com/#/home",
+    "archivo": "fuentes/crudo/prosegur-app-home-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:46:41Z",
+    "bytes": 1131,
+    "sha256": "f6df0e21cf44e40b3e1547ba85e882230df58f752ad05cb8bc8d568c51db77f5",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://prosegurdigitalgold.com/about-us/faqs",
+    "archivo": "fuentes/prosegur-faqs.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:47:05Z",
+    "bytes": 46919,
+    "sha256": "ebaebbb1f601e8895abf68c95483d3a7608e6dd1081ede940b9931b01532dd88"
+  },
+  {
+    "url": "https://robinhood.com/us/en/newsroom/europe-investment-gap-why-investors-are-turning-to-new-technologies-to-access-markets/",
+    "archivo": "fuentes/crudo/robinhood-newsroom-europe-gap-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:47:45Z",
+    "bytes": 10048,
+    "sha256": "f2ee839721ce40bf5c0e8493f3677f183257015a404923166210703ed6284aef",
+    "nota": "render (Playwright)"
+  },
+  {
+    "url": "https://eu.kraken.com/legal/risk-disclosure",
+    "archivo": "fuentes/kraken-eu-risk-disclosure.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 227180,
+    "sha256": "e988ca07ef75610529c27b2e6ab8c30efbde4bc21dac7c7b3e1987b38dfbe98c"
+  },
+  {
+    "url": "https://www.kraken.com/features/fee-schedule",
+    "archivo": "fuentes/kraken-fee-schedule.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 672045,
+    "sha256": "6a4f8ced04f4b3734be38b537c48c05b0a9fd11cd3447b73e10f21d227a9120e"
+  },
+  {
+    "url": "https://xstocks.fi/us",
+    "archivo": "fuentes/xstocks-fi-us.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 143552,
+    "sha256": "885214bf11788f5df104a416bc3adb97619c69989da4cdcb1261bbe0b4f0041c"
+  },
+  {
+    "url": "https://support.kraken.com/articles/xstocks-faq",
+    "archivo": "fuentes/kraken-support-xstocks-faq.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 1063370,
+    "sha256": "c78a3b3a1252cc5a611e9dd8531bd4e7ad487bed1303c1395011b633b2908957"
+  },
+  {
+    "url": "https://support.kraken.com/articles/xstocks-availability",
+    "archivo": "fuentes/crudo/kraken-support-xstocks-availability.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 5426417,
+    "sha256": "401ee411b925e75082e211c012b796f066989e9d9c1d29daee8c33c8add45de5",
+    "nota": "en crudo por tamaño"
+  },
+  {
+    "url": "https://assets.backed.fi/legal-documentation",
+    "archivo": "fuentes/backed-legal-documentation.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 10606,
+    "sha256": "516f474d241570a471be7e8de277025c35fff410d793a7df0af17116cc4eb29e"
+  },
+  {
+    "url": "https://www.kraken.com/legal/xstocks",
+    "archivo": "fuentes/kraken-legal-xstocks.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 627744,
+    "sha256": "ba2cd63c6221fda2ddee721d2359cc5aa16fcee0e1208612eb5daac4e630e68b"
+  },
+  {
+    "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
+    "archivo": "fuentes/crudo/kraken-support-xstocks-availability-es.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 5426417,
+    "sha256": "401ee411b925e75082e211c012b796f066989e9d9c1d29daee8c33c8add45de5",
+    "nota": "en crudo por tamaño"
+  },
+  {
+    "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+    "archivo": "fuentes/esma-priii-backed-noft.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 21243,
+    "sha256": "04ecd9560d6ce02b068c80a79480ba9c94b7ccd4ebbbc30dee5137b93b62b676"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+    "archivo": "fuentes/cnmv-pasaportes-backed.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 215530,
+    "sha256": "bfdadeec5ccd1f2602d1753971f2ebdc2ea471ebf1b399635decc990097bf0cb"
+  },
+  {
+    "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*&wt=json&rows=50&sort=approval_filing_date%20desc",
+    "archivo": "fuentes/esma-priii-backed-todos.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 81075,
+    "sha256": "45fcb186dfa799d07e7f977f70b0e3640fa420e506fd391c63e9471d6749be32"
+  },
+  {
+    "url": "https://www.kraken.com/es-es/features/fee-schedule",
+    "archivo": "fuentes/kraken-fee-schedule-es.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 679680,
+    "sha256": "1e8ae80ff8b36bf0492c0def953f322bbd119efc3b080b5e8c23f7aa92e62c45"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+    "archivo": "fuentes/cnmv-esi-4474.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 218255,
+    "sha256": "490c31b3a4c3b113c96227b99e7792d1a63d562cd224809db63a21604abe953e"
+  },
+  {
+    "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474&vista=17",
+    "archivo": "fuentes/cnmv-esi-4474-vista17.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 252943,
+    "sha256": "5a05ff97fac4047ce2cfd431a42039d7d7a6c93f986aabc67aa258941600996f"
+  },
+  {
+    "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+    "archivo": "fuentes/cysec-payward-45914.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:13Z",
+    "bytes": 651841,
+    "sha256": "690590c472de4e2da7274e8f6e2eb2a241d295ba4b990938158274256715bdef"
+  },
+  {
+    "url": "https://eu.kraken.com/es-es/xstocks",
+    "archivo": "fuentes/crudo/kraken-eu-xstocks-es-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:14Z",
+    "bytes": 11642,
+    "sha256": "a902107d5f2ccae21a2f68408110dcbc1c3de0e5e73408852334fd41cdbd16d4",
+    "nota": "render es-ES (Playwright)"
+  },
+  {
+    "url": "https://eu.kraken.com/es-es/xstocks",
+    "archivo": "fuentes/crudo/kraken-eu-xstocks-es-faq-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:48:14Z",
+    "bytes": 15315,
+    "sha256": "d70317f600bd752dfa8973d8f3336647c0e74ca7596f0c3c92eddb4452010127",
+    "nota": "render es-ES con preguntas frecuentes desplegadas"
+  },
+  {
+    "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20approval_filing_date:%5B2026-10-15T00:00:00Z%20TO%20*%5D&wt=json&rows=400&sort=approval_filing_date%20desc",
+    "archivo": "fuentes/esma-priii-backed-desde-20261015.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:49:50Z",
+    "bytes": 94054,
+    "sha256": "a17a9c28b6777e3a3b71be0966023d2ced4619ad8ea9fbdecedda44057fa7acb"
+  },
+  {
+    "url": "https://xstocks.fi/us/news",
+    "archivo": "fuentes/crudo/xstocks-fi-news.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:50:23Z",
+    "bytes": 335976,
+    "sha256": "bd46e294638e5572a4854be844338bf8da38f0d54fa392b5a62fd941970fc170",
+    "nota": "en crudo"
+  },
+  {
+    "url": "https://xstocks.fi/us/products",
+    "archivo": "fuentes/crudo/xstocks-fi-products-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:50:23Z",
+    "bytes": 4162,
+    "sha256": "c875ae269a031b196e2c52c6ef1349e49921438262b16d9b5405613c84b0ec0e",
+    "nota": "render (Playwright)"
+  },
+  {
+    "url": "https://xstocks.fi/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+    "archivo": "fuentes/crudo/xstocks-fi-news-uk-eu-render.json",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:50:40Z",
+    "bytes": 7972,
+    "sha256": "ccf5b7d6459f8d978e804e5cd1cdaf93f9a3fb32f7233cc29d5e9fc30e313d78",
+    "nota": "render (Playwright)"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+    "archivo": "fuentes/backed-kid-es-CH1436219187.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 225778,
+    "sha256": "4909dd8ae221cf0184478b8aacb5146d8b2b6ee0cb320dd86666c2cffc49b4ae"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+    "archivo": "fuentes/backed-kid-es-CH1436219195.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 225710,
+    "sha256": "7f80609f04968599026fd29cc9de169e3db73352a15d325c220aa51cac08a065"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+    "archivo": "fuentes/backed-kid-es-CH1436219716.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 228273,
+    "sha256": "8cac29773ced1776a24a651eaac00fcf3382963736d04497d50215bac3ae5d86"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1436219187.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1040640,
+    "sha256": "ad7f3be6ef79bd590e67d7b545227166bf4425808612f95be2734102373cd575"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1588667175.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1087150,
+    "sha256": "9ad0819cc4fbbc7441236e38cdd928909562d38eac0aa792880648718ffb6b69"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667225/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1588667225.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1084724,
+    "sha256": "5297cd90dc1d736da0256f677b5696f8f02f6d0ab36b1d2457199eb1697e1f75"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1436219716.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1049054,
+    "sha256": "280159d434561e538f9bac487b0aac8da34f5962f740a3cac12d844fea82a653"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1580494602/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1580494602.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1083726,
+    "sha256": "65ccdd4d560d3940abc348fca9e054173f0e82ab2a2d08d9f4ffa502665625ff"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1436219195.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1040803,
+    "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/backed-ft-CH1588667217.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:51:24Z",
+    "bytes": 1085449,
+    "sha256": "116a61b3204d37edfcab3b53ea6d0a720b49428907cd1ba36c8992470eb72300"
+  },
+  {
+    "url": "https://www.kraken.com/features/fee-schedule",
+    "archivo": "fuentes/kraken-fee-schedule-en.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:52:02Z",
+    "bytes": 664197,
+    "sha256": "983c95b7d1c40c6143544a5e6208c0498a99e1a2ef4c73e52c1fa6e4eae9c120",
+    "nota": "Accept-Language en-US"
+  },
+  {
+    "url": "https://support.kraken.com/articles/xstocks-faq",
+    "archivo": "fuentes/kraken-support-xstocks-faq-en.html",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:52:02Z",
+    "bytes": 1054783,
+    "sha256": "957b85cf6e7bce94ae4bd1aae8ef43140bba1993c606ba3ec3fbdbc31f833171",
+    "nota": "Accept-Language en-US"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667217/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667217.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1085449,
+    "sha256": "116a61b3204d37edfcab3b53ea6d0a720b49428907cd1ba36c8992470eb72300",
+    "nota": "FTWS-2878 · Anthropic xStock ANTx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667225/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667225.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1084724,
+    "sha256": "5297cd90dc1d736da0256f677b5696f8f02f6d0ab36b1d2457199eb1697e1f75",
+    "nota": "FTWS-2839 · Xetra-Gold xStock 4GLDx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667175.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087150,
+    "sha256": "9ad0819cc4fbbc7441236e38cdd928909562d38eac0aa792880648718ffb6b69",
+    "nota": "FTWS-2799 · Janus Henderson B-BBB CLO xStock JBBBx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666854/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666854.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083675,
+    "sha256": "2aa139cd3256a8b7b5eeddcbe2a7d344cda53762e125dd50564ec2e33a21fef2",
+    "nota": "FTWS-2810 · Fox xStock FOXAx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666870/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666870.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083805,
+    "sha256": "b3acb6397c4c62e91d48f8469a36389ca2cc12b4f8a33796076a164c0270e3c3",
+    "nota": "FTWS-2815 · Honeywell Aerospace xStock HONAx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666862/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666862.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083645,
+    "sha256": "61d5dff5c3c251bf5b2b25f9048fcc1fe1c999005e3c0419d8455bcbda18bdfc",
+    "nota": "FTWS-2816 · ZoomInfo Technologies xStock GTMx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667068/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667068.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083608,
+    "sha256": "43608a24d090112f4df4abc0549df89bb0ff580d47ee0c665a562ca1027ef96d",
+    "nota": "FTWS-2806 · Playboy xStock PLBYx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1580494602/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1580494602.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083726,
+    "sha256": "65ccdd4d560d3940abc348fca9e054173f0e82ab2a2d08d9f4ffa502665625ff",
+    "nota": "FTWS-2827 · Cboe Global Markets xStock CBOEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666763/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666763.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083598,
+    "sha256": "348bd1e14249bf6828f00c79f36e449f21385315ca38179455a5106000bcc804",
+    "nota": "FTWS-2830 · The AES xStock AESx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667001/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667001.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083761,
+    "sha256": "edbe6b3d0e99ea77e3b9717261eed5223368171701b5433742082dc65bca0791",
+    "nota": "FTWS-2803 · Bio-Techne xStock TECHx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666987/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666987.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083773,
+    "sha256": "948cd838a71ded2220fb72bc2a8f286fa62354295f4d9ceb02cae29d53fc6068",
+    "nota": "FTWS-2804 · Sunbelt Rentals xStock SUNBx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666896/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666896.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083936,
+    "sha256": "4c75e1eda381eaea248afdd0ee6506344820858081ffdd029edb18e7a7d437fd",
+    "nota": "FTWS-2820 · James Hardie Industries xStock JHXx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666789/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666789.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083628,
+    "sha256": "84bd4b0e62476bb85d3f55b53836b1a0c94cbed89b710c62da1ad02941b74b9d",
+    "nota": "FTWS-2825 · Birkenstock xStock BIRKx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667084/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667084.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1084003,
+    "sha256": "bf2d67dd33e20856c2cf709cf17ac2b39da1ee32d350590cc62554ae5f6dda07",
+    "nota": "FTWS-2833 · Cypherpunk Technologies xStock CYPHx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666953/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666953.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083423,
+    "sha256": "9e4d4bca5646c20abd432aebc85fc6f028db1f46b6951eb18a1343adf30e45ad",
+    "nota": "FTWS-2814 · QXO xStock QXOx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666839/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666839.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083443,
+    "sha256": "f3a46d0760bfbfd420f6f444a90c699c1841a6d3c4d7e0494ecf19ed1656ce77",
+    "nota": "FTWS-2829 · Amdocs xStock DOXx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666813/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666813.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083607,
+    "sha256": "fc80d4b933ff700e7f062a0a37da4fdd05c820f88970f14e23e78cddf1135b17",
+    "nota": "FTWS-2824 · Coca-Cola Consolidated xStock COKEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667118/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667118.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083509,
+    "sha256": "6957d03cbba030a5c746c365dc60fba90fb1785fa9bea07da67b8ff7c4d3415d",
+    "nota": "FTWS-2837 · Securitize xStock SECZx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667183/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667183.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1086823,
+    "sha256": "a9382dc317e19380e0175ba4c5d3a7ab636190f6b82a4e0ac577bf06a7f49d8f",
+    "nota": "FTWS-2800 · PGIM AAA CLO xStock PAAAx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667159/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667159.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1086862,
+    "sha256": "33bf9402c21489c14608b55b10b6bd016682548822859d7a7b29bc4f08bf21da",
+    "nota": "FTWS-2795 · iShares Treasury Floating Rate Bond xStock TFLOx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666797/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666797.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083758,
+    "sha256": "246778937a9e5d9f56628e67b3ca67d3f586eb9aba37743a6f77f6143af37ef5",
+    "nota": "FTWS-2826 · Central Bancompany xStock CBCx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667142/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667142.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087306,
+    "sha256": "61bdaee40dff78ed5fc3681c37adc7d0fa1cafc7d77fdf619db08707d411326c",
+    "nota": "FTWS-2835 · iShares 20+ Year Treasury Bond xStock TLTx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667134/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667134.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083933,
+    "sha256": "319946f8cfb8f85fdf79327c72f94c0270cacd00faa92e538bbcd69ae6841e01",
+    "nota": "FTWS-2834 · Zhongji Innolight xStock ZJINNOx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667167/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667167.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1086655,
+    "sha256": "31edb974873ac42abef9bf0d9ee3e9d48c50ea0f26ce9f2a92c9df970c540df8",
+    "nota": "FTWS-2796 · WisdomTree Floating Rate Treasury xStock USFRx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667035/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667035.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083897,
+    "sha256": "c3a695a0f941e161a870a47751c374355c159cfa8702e0084616bbb2e4347b99",
+    "nota": "FTWS-2808 · Weatherford International xStock WFRDx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666938/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666938.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083454,
+    "sha256": "2f4bd2c623505591e2196284bf6c48123889817375416299cea2114a1ffd7ec7",
+    "nota": "FTWS-2812 · NielsenIQ xStock NIQx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666912/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666912.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083622,
+    "sha256": "830d2d3a4d41073fde19c53fa5821e3f687017d6bd8967ad7663ab1f5bd6edc3",
+    "nota": "FTWS-2818 · Labcorp xStock LHx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666847/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666847.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083741,
+    "sha256": "f80476d286b5bee6a50aaed11e286ba5933c6cf0fa01694c93fb545347e38f5d",
+    "nota": "FTWS-2821 · EchoStar xStock ECHOx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666805/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666805.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083620,
+    "sha256": "2f45e49fb772c2a61dd576918edc28691f5208790239e5fa74864728f4db73b8",
+    "nota": "FTWS-2823 · CNH Industrial xStock CNHx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667076/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667076.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087965,
+    "sha256": "82a4beae17b64fb16aac92e1e3422526febff621b638dcfdbb594a0aa83fb096",
+    "nota": "FTWS-2832 · Breakwave Tanker Shipping xStock BWETx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667209/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667209.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087075,
+    "sha256": "28171e2c30bc8127dbacf41531d1e38bf645cefd0adb3cd0cc13b929d0702429",
+    "nota": "FTWS-2798 · State Street Blackstone Senior Loan xStock SRLNx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667050/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667050.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1086892,
+    "sha256": "b26294a2a99fcb6914e66fd25a4e51620e90ca7d9e7f9a8c91fa49655557ad36",
+    "nota": "FTWS-2801 · ARK Blockchain & Fintech Innovation ETF xStock ARKFx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666888/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666888.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083383,
+    "sha256": "868e4e61271d712bc8327342b37b2c060e6a22bf7523831713c8e2352db482cc",
+    "nota": "FTWS-2819 · JBS xStock JBSx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666979/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666979.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083737,
+    "sha256": "67c741e98c7b2767483c1fc385656c72e1581215737265c15b3626fcc305a70c",
+    "nota": "FTWS-2809 · Sensata Technologies xStock STx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666920/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666920.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083779,
+    "sha256": "837b0b636d0364678e6a4b0ede42741090b17c62c903c91a34f4a331a901689b",
+    "nota": "FTWS-2817 · Molina Healthcare xStock MOHx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666946/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666946.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083567,
+    "sha256": "517313e33b7371d6bba3392add02f4eb55c53ddbf05dc874ca26d7c9075a433d",
+    "nota": "FTWS-2813 · On xStock ONONx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666821/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666821.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083857,
+    "sha256": "7cab1ed807e3b7f8d5095f89a42800a6550a8874be9908310cdbc76e1fdcfa6b",
+    "nota": "FTWS-2828 · Charles River Laboratories International xStock CRLx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667092/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667092.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1088267,
+    "sha256": "2983d4056a2eec3c79e50afd61d1d283b5a2473842612d0471af8778b9e9f0dd",
+    "nota": "FTWS-2831 · producto no extraído"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666961/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666961.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083600,
+    "sha256": "26f11425087a06ef5f0b3475819848b115a688fcbbe34962f04823198ed7fda5",
+    "nota": "FTWS-2811 · Solventum xStock SOLVx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667100/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667100.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087638,
+    "sha256": "6077d5fe29bc6f7ae2258653270ed14d6f75fa790f3e2c63e4d7f62608a11523",
+    "nota": "FTWS-2836 · T-REX 2X Long MSTR Daily Target xStock MSTUx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667191/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667191.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1087432,
+    "sha256": "b569bba007f6766a519efff63ee3886f9217cdd09737322a0d90b33f042db398",
+    "nota": "FTWS-2797 · iShares Floating Rate Bond xStock FLOTx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666995/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666995.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083580,
+    "sha256": "d1f412e273fe7dacee1cc9e41accb59caae2c199b2c07ceab804aecf7b78ef70",
+    "nota": "FTWS-2802 · Skyworks Solutions xStock SWKSx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667019/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667019.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1084101,
+    "sha256": "75b72ce43f6028470e1db8fad594b0bb8975e3d6ecf0c7710a487b6ac6379ba3",
+    "nota": "FTWS-2805 · Millicom International Cellular xStock TIGOx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667043/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667043.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083698,
+    "sha256": "3513a7cd1250ead40feda09462c103dc125e4843ccd6d3748a0e9913e4d4e0ba",
+    "nota": "FTWS-2807 · DDC Enterprise xStock DDCx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666771/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666771.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083716,
+    "sha256": "b9c391d92f47fd67ab3c575e258daf199972a8ed42688d8c4c1288680676bbd6",
+    "nota": "FTWS-2822 · Ascendis Pharma A/S xStock ASNDx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667126/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588667126.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083997,
+    "sha256": "ef52d75d5244b25d1a5e890bee9299c1b9dc399ef0f2dc5eeca533ed9e28a88a",
+    "nota": "FTWS-2838 · MiniMax xStock MINIMAXx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588666003/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588666003.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083861,
+    "sha256": "1a65868258ca0cdf00be0fa36ddc958ab1f7876771b4bd5a519ed9d8c0051eac",
+    "nota": "FTWS-2768 · Scout24 xStock G24x"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665948/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665948.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083450,
+    "sha256": "3e0d5acc3c74c65d2699f8210dc1254fe5fc642bd70565dc8ff20ef6c0eb9d03",
+    "nota": "FTWS-2771 · Symrise xStock SY1x"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665930/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665930.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083531,
+    "sha256": "f7f2ee634172fc6b710be35583f8abf69da91154968af0a37f55e2dc752aa2a9",
+    "nota": "FTWS-2767 · Continental xStock CON.DEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665922/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665922.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1084011,
+    "sha256": "4b0ca56ae84518bf3c19e6bca79c061acd55c8ee37832534e05b4cef29a5aa5a",
+    "nota": "FTWS-2763 · Beiersdorf xStock BEIx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665898/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665898.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083972,
+    "sha256": "c2fdf05c835b5d5f4a6b19a31e9a2eff0a3911d2232bd72f8d6f0d9696835c65",
+    "nota": "FTWS-2764 · Commerzbank xStock CBK.DEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665906/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665906.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083829,
+    "sha256": "43eaa6467cd9003055103ca1ccaef3a552c16a06caf895bcb3161a753f9ac7ef",
+    "nota": "FTWS-2769 · Hochtief xStock HOTx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665914/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665914.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083787,
+    "sha256": "f7c3a52114bdbdd16c44db309542d717aafd61d1ab3f91945fc16364b34b7036",
+    "nota": "FTWS-2765 · Henkel xStock HEN3x"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665963/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665963.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083931,
+    "sha256": "a174ebdef29f5befa41c6e943b7662eceaf047dbaa3ff55abd6b80a5eec3ce95",
+    "nota": "FTWS-2770 · Fresenius Medical Care xStock FMEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665989/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665989.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083479,
+    "sha256": "9b5a9804ec23768a75607a8090eb2d46ccc55c98e6db044e0e19427183135479",
+    "nota": "FTWS-2761 · Qiagen xStock QIA.DEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665971/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665971.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083545,
+    "sha256": "a46aec2c9a49d36ed93da62026d833ff242d24561af53091ea655bcbdb1acf65",
+    "nota": "FTWS-2760 · Brenntag xStock BNR.DEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665997/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": "fuentes/crudo/backed-ft-recientes/CH1588665997.pdf",
+    "http": 200,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 1083947,
+    "sha256": "4b990f076ae984c9363076fc61b8cfab648162070702a126f497db508b8f8003",
+    "nota": "FTWS-2762 · Zalando xStock ZAL.DEx"
+  },
+  {
+    "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665955/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+    "archivo": null,
+    "http": null,
+    "consultadoUtc": "2026-11-21T17:53:47Z",
+    "bytes": 0,
+    "sha256": null,
+    "nota": "FTWS-2766 · descarga fallida (no se reintentó)"
+  },
+  {
+    "url": "resumen local de las 58 condiciones finales",
+    "archivo": "fuentes/crudo/backed-ft-recientes-resumen.json",
+    "http": null,
+    "consultadoUtc": "2026-11-21T17:54:30Z",
+    "bytes": 24470,
+    "sha256": "de08bd831775302fe7ef75ab163c1d7ff2dcf731ec16f372415000bc9661ef3d",
+    "nota": "extracción local"
+  }
+]

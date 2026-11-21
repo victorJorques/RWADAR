@@ -1,0 +1,858 @@
+{
+ "grupo": "brickwise-b",
+ "ciclo": "2026-11-21",
+ "generadoUtc": "2026-11-21T18:00:12Z",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "fuentes/crudo/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:41:24Z",
+   "bytes": 235023,
+   "sha256": "edaee0fe86ac22686091253710f41b53547741834a83520fbc7d88077df9d207",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/crudo/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:41:25Z",
+   "bytes": 53971,
+   "sha256": "b6d47201d2b16410dddf8213d6523fb6d7bc475627a39e44c3ea1209f5ae2506",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "archivo": "fuentes/crudo/api-v1-utils-fees.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:41:26Z",
+   "bytes": 49,
+   "sha256": "f4d671a12c51e2caf42835630be0a6f1f31ea5c9a7fc97dc7472aacc17b90449",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2ZT84.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:03Z",
+   "bytes": 10670,
+   "sha256": "23bdcc55dbbc49c3bcfb834367501ebe2e22d0fad0da70f2446e5bde9a508c23",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A31KP7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:04Z",
+   "bytes": 9881,
+   "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A324B4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:05Z",
+   "bytes": 12167,
+   "sha256": "16cf851beead10c3ec242d16f58dd76946e5e71ba15753a8b1a9a8ab5d118dcc",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J32.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:05Z",
+   "bytes": 7969,
+   "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J40.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:06Z",
+   "bytes": 6614,
+   "sha256": "45f816ccbb087fb3b6a22d8f6edbae0ffa1add90b3fd93492babd5e1e4a265c8",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+   "archivo": "fuentes/crudo/web-support-wie-sind-die-ertrage-zu-versteuern-2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:41Z",
+   "bytes": 64578,
+   "sha256": "b941508f7ffd675f11039c0a488dc2c02b8191aee444d989cc17b54c38e282bf",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "fuentes/crudo/web-support-kann-ich-einen-account-von-jedem-land-aus-eroffnen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:41Z",
+   "bytes": 55846,
+   "sha256": "d652644e63dce0a863cc8f490b57f224903587b6cfff5f7d4b7196984207133e",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "fuentes/crudo/web-support-wie-funktioniert-der-handel-am-marktplatz.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 56675,
+   "sha256": "52d2e52750799577afca08ece7cd54c2cb3bb9699c66b9e6cdfcdf4cfe941e80",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/beinhaltet-die-dargestellte-laufende-rendite-bereits-allfallige-steuern",
+   "archivo": "fuentes/crudo/web-support-beinhaltet-die-dargestellte-laufende-rendite-bereits-allfallige-steuern.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 55738,
+   "sha256": "5334f79eb4a6edcea77f54fc2eb4d93ffbf326c8353340593ecb94ffd5b3240b",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-eroffne-ich-einen-account",
+   "archivo": "fuentes/crudo/web-support-wie-eroffne-ich-einen-account.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 56154,
+   "sha256": "fb1a37cecf1887bf70f659fc4ff245813759e9b96eeec09254f0f1b61729a270",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-kann-ich-investieren",
+   "archivo": "fuentes/crudo/web-support-wie-kann-ich-investieren.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 56640,
+   "sha256": "2d34986c29dbc4017d42ffd9417db8273b72db174e9b8123d22aec54142543f3",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/was-passiert-bei-einem-leerstand",
+   "archivo": "fuentes/crudo/web-support-was-passiert-bei-einem-leerstand.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 56273,
+   "sha256": "d27f7b11b0a41852bb8d685f19ada81a29f8b2363ac52cf2b6d9e0f3b3354871",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-in-produkte-investieren-die-fur-mich-nicht-angemessen-sind",
+   "archivo": "fuentes/crudo/web-support-kann-ich-in-produkte-investieren-die-fur-mich-nicht-angemessen-sind.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 56125,
+   "sha256": "91230bd941c61a3bed933691334ee86c257c920458c4ba2f3a92f156d0400ddf",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/assets/at0000a2zt84",
+   "archivo": "fuentes/crudo/web-asset-at0000a2zt84.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:43:19Z",
+   "bytes": 60194,
+   "sha256": "ce6ee8ae740517fb979a364600f1c3dc6b50451017f0146ece2976bb1da4d943",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/assets/at0000a31kp7",
+   "archivo": "fuentes/crudo/web-asset-at0000a31kp7.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:43:19Z",
+   "bytes": 59699,
+   "sha256": "670b2ca7ee28b556ad8c37a299443f7f629b30d55f3fa16f4f30679697557b4a",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/assets/at0000a324b4",
+   "archivo": "fuentes/crudo/web-asset-at0000a324b4.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:43:19Z",
+   "bytes": 59297,
+   "sha256": "05285975fbfd70982fef0340dbdac4547d9e936c5d969cb81a795b326e586ff5",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/assets/at0000a38j32",
+   "archivo": "fuentes/crudo/web-asset-at0000a38j32.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-21T17:43:19Z",
+   "bytes": 27657,
+   "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/assets/at0000a38j40",
+   "archivo": "fuentes/crudo/web-asset-at0000a38j40.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-21T17:43:19Z",
+   "bytes": 27657,
+   "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/js/app.85dda63a.js",
+   "archivo": "fuentes/crudo/app.85dda63a.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:47:22Z",
+   "bytes": 512911,
+   "sha256": "b5c9c15438379efc1ddf96df1ceb9310b7991096c72a98cdb62b788a37e0601d",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?numero=5003&tipo=CLP",
+   "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+   "http": 301,
+   "consultadoUtc": "2026-11-21T17:49:19Z",
+   "bytes": 206,
+   "sha256": "577625a10d0e39a0b4d022583af77115c04d8bdafabb5da00605dfe0b20cbf0b",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+   "http": 301,
+   "consultadoUtc": "2026-11-21T17:49:20Z",
+   "bytes": 219,
+   "sha256": "07377d83b26f62de50cb2f6fdf764283ba8c1203c86bd3b90765b0dd2461572c",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+   "http": 301,
+   "consultadoUtc": "2026-11-21T17:49:21Z",
+   "bytes": 218,
+   "sha256": "fd4d3ff0c7dc907822236172ea8c5153af5965eb0ac3c50e797b0b80408d84c4",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "fuentes/crudo/bafin-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:21Z",
+   "bytes": 26540,
+   "sha256": "4569a97c31e5a8a85e64854258d7a0780b3bdab1c79a373fa80609ec0670628e",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/imprint",
+   "archivo": "fuentes/crudo/web-imprint.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:22Z",
+   "bytes": 41447,
+   "sha256": "5ee85c3b7971bfe55eab23eeb2e9ef072262312034ca45e085a98c8db5846308",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?numero=5003&tipo=CLP",
+   "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:34Z",
+   "bytes": 218036,
+   "sha256": "077a0174c5131d20814bd5ed91281e2496bf9ce48ef661264e0e9c8fc6c2ef2d",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:36Z",
+   "bytes": 218752,
+   "sha256": "53894596abc5e7e4dd4c514416e803890ffe91c3c2f8813007fac8593fc10c29",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:37Z",
+   "bytes": 218234,
+   "sha256": "d73b1d3d6d7946c3199a76c04b417e6d7a3ef58b15714cb83c3fa929ea977fe9",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise)",
+   "archivo": "fuentes/crudo/bafin-vgv-brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:50:10Z",
+   "bytes": 26968,
+   "sha256": "1c7f069c4f4b8af22723d1d3f63b6f23eed7eb0f0f1a61fd00c43ba5d7823d9d",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:51:45Z",
+   "bytes": 228984,
+   "sha256": "fdf2ed79e9c2377111a8d41b771ab014241da39812925c3653f6af2b07b8baf5",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://cdn.brickwise.at/04f3f1d5-71a1-4629-8e5f-dcc45ef4fb15.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:51:45Z",
+   "bytes": 220687,
+   "sha256": "b25ece9e355d627f132b14a93c296a921ff5ea98198b2a81611a013d7a59a48f",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://cdn.brickwise.at/a847b550-48f2-4971-aec9-19684c6cca4f.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:51:45Z",
+   "bytes": 355071,
+   "sha256": "6feb6d254c9ea0ec691276caebfc76e1897e0a909c4d473367bc3fa5d25fb32d",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:51:46Z",
+   "bytes": 456752,
+   "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://cdn.brickwise.at/8dfb7e84-2f99-4de7-9e49-c5a43fa76537.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:51:46Z",
+   "bytes": 410115,
+   "sha256": "b98ac9fe99249337dace974450357b18d768d346399323bead9aaa515b4f52e5",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/js/8388.098ec0ae.js",
+   "archivo": "fuentes/crudo/js/8388.098ec0ae.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:48:19Z",
+   "bytes": 49012,
+   "sha256": "d0cfc7a387ecb6f114e2c5b8f5c690658c65c67b48a94b831fcf7ab9f6bbe02b",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/js/5900.2a8f50da.js",
+   "archivo": "fuentes/crudo/js/5900.2a8f50da.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:48:14Z",
+   "bytes": 31380,
+   "sha256": "cdc0ca00d5321c52daa6e7b43b6e1f63950b07a723bd27e7d48398aade55e87e",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+   "archivo": "fuentes/crudo/fma-buscar-brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:53:54Z",
+   "bytes": 138727,
+   "sha256": "cebab47d8a5a253e59c11f3ea4cda2be83db0bfebfdcc7396003935a761b725d",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/web/web-app-marketplace-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:44:40Z",
+   "bytes": 3704,
+   "sha256": "2e6b144aca83f9f51677ea4e2b1ac86f920a0f2e57bf17c97daa8bc9c4cdfacf",
+   "nota": "Texto renderizado con Playwright sin sesión (carga 17:44:03Z).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/web/web-app-marketplace-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:44:40Z",
+   "bytes": 170294,
+   "sha256": "8ede17d7b65caecf0ac7729b2fc846f97bbc714f466b533d2606318a490afd79",
+   "nota": "Captura de pantalla completa.",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2ZT84/details",
+   "archivo": "fuentes/web/web-app-asset-AT0000A2ZT84-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:45:13Z",
+   "bytes": 1954,
+   "sha256": "d1174668fde49dc165b777b188d68820c06dd3b00b931e53f162e4aa525a77a4",
+   "nota": "Texto renderizado con Playwright sin sesión (nombre de pila de una empleada recortado en el texto).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2ZT84/details",
+   "archivo": "fuentes/crudo/web-app-asset-AT0000A2ZT84-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:45:13Z",
+   "bytes": 667056,
+   "sha256": "0859c5b49b48439f0a808d7d026028fe4ca6cd4966ab9bc51076b9296992b59c",
+   "nota": "Captura de pantalla (fuera de Git: lleva un nombre de pila en el texto comercial).",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A31KP7/details",
+   "archivo": "fuentes/web/web-app-asset-AT0000A31KP7-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:45:47Z",
+   "bytes": 1957,
+   "sha256": "5ee495ba33adaa261de89dedfdf5a68faf54ae84a7d4bdae9ec1bde3c79cdda2",
+   "nota": "Texto renderizado con Playwright sin sesión (nombre de pila de una empleada recortado en el texto).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A31KP7/details",
+   "archivo": "fuentes/crudo/web-app-asset-AT0000A31KP7-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:45:47Z",
+   "bytes": 733193,
+   "sha256": "9330ffb72ebd4748048017828baabf5e7d1fdc64bb549a1f6d43618c00e35b3c",
+   "nota": "Captura de pantalla (fuera de Git: lleva un nombre de pila en el texto comercial).",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A324B4/details",
+   "archivo": "fuentes/web/web-app-asset-AT0000A324B4-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:46:20Z",
+   "bytes": 1873,
+   "sha256": "2780ab110546f55cdaf75f87e520bca17c54f84eb86ee4ab07162f836e43683d",
+   "nota": "Texto renderizado con Playwright sin sesión (nombre de pila de una empleada recortado en el texto).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A324B4/details",
+   "archivo": "fuentes/crudo/web-app-asset-AT0000A324B4-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:46:20Z",
+   "bytes": 661974,
+   "sha256": "86ec9d70deff3eb7beaf6bc616f84d134b53d607ce890c49ae3172a7f76890fc",
+   "nota": "Captura de pantalla (fuera de Git: lleva un nombre de pila en el texto comercial).",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details",
+   "archivo": "fuentes/web/web-app-asset-AT0000A38J32-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:46:32Z",
+   "bytes": 1961,
+   "sha256": "dbed3303c0f6f489179753207a030601b9fe946a65a6f43abc80ab99b3126a18",
+   "nota": "Texto renderizado con Playwright sin sesión (nombre de pila de una empleada recortado en el texto).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details",
+   "archivo": "fuentes/crudo/web-app-asset-AT0000A38J32-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:46:32Z",
+   "bytes": 575474,
+   "sha256": "33ce149d692cdb4748367f61418888ae9bd4128f61a004741b4fc2fe4693a116",
+   "nota": "Captura de pantalla (fuera de Git: lleva un nombre de pila en el texto comercial).",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A38J40/details",
+   "archivo": "fuentes/web/web-app-asset-AT0000A38J40-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:47:09Z",
+   "bytes": 1884,
+   "sha256": "a1425f90b3fb6531c0e446b346f07b254b8099f34a4498899926e44741d5bf61",
+   "nota": "Texto renderizado con Playwright sin sesión (nombre de pila de una empleada recortado en el texto).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A38J40/details",
+   "archivo": "fuentes/crudo/web-app-asset-AT0000A38J40-2026-11-21.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:47:09Z",
+   "bytes": 634636,
+   "sha256": "2db7fed8f7ef83a56c98843834554119683b11f6ae8e59466096ed169ce0994a",
+   "nota": "Captura de pantalla (fuera de Git: lleva un nombre de pila en el texto comercial).",
+   "fueraDeGit": true
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
+   "archivo": "fuentes/web/web-faq-versteuern-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:41Z",
+   "bytes": 6472,
+   "sha256": "7b16164d42f616c41e1a74994c47256fbcbfbafe1a9cff58c090d0bbc4bbe8aa",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "fuentes/web/web-faq-land-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:41Z",
+   "bytes": 346,
+   "sha256": "2f07f9c9a694da7f07c2e3f72777b5d2d4ba88fa223b5c792680470f803bb645",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "fuentes/web/web-faq-handel-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 1072,
+   "sha256": "4b1f43e07400a81928fa6f0c8a1acdaeaf5f2a5d58e87e5638f67dfdec4e03e7",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-kann-ich-investieren",
+   "archivo": "fuentes/web/web-faq-investieren-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 1014,
+   "sha256": "05457d2bd3eba0af1a23e9ae3dc71e9c4326fdc793b3e5b325d698b203735472",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/was-passiert-bei-einem-leerstand",
+   "archivo": "fuentes/web/web-faq-leerstand-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 719,
+   "sha256": "b396c64ef83f8498e16db9498cabd3e2ea3165051bd57985550b62ac93358824",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-eroffne-ich-einen-account",
+   "archivo": "fuentes/web/web-faq-account-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 412,
+   "sha256": "3ccf1505bb241faf791ac781e8bd2650b921c5703d526afc7bafa235abee1380",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/beinhaltet-die-dargestellte-laufende-rendite-bereits-allfallige-steuern",
+   "archivo": "fuentes/web/web-faq-rendite-steuern-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 222,
+   "sha256": "a6d8ffcffd9571ba231d2c7b9c8e3d36dc05a91e66b77d6063d8f8a93da9cd02",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-in-produkte-investieren-die-fur-mich-nicht-angemessen-sind",
+   "archivo": "fuentes/web/web-faq-angemessen-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:42:42Z",
+   "bytes": 502,
+   "sha256": "509ed3eb1d4459841e1878af4efc4c3e31e65266e7b687301e8efa85d41d37f9",
+   "nota": "Texto extraído del HTML (autor recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.brickwise.at/imprint",
+   "archivo": "fuentes/web/web-imprint-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:22Z",
+   "bytes": 15451,
+   "sha256": "6217836549381c0bec37a7c4945c68d2c55d8d217854c9a82808ecd9c1a630f4",
+   "nota": "Texto extraído del HTML (administrador recortado).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://app.brickwise.at/js/app.85dda63a.js + https://app.brickwise.at/js/8388.098ec0ae.js",
+   "archivo": "fuentes/web/app-js-extracto-numero-fiscal-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:48:19Z",
+   "bytes": 5056,
+   "sha256": "0bf4c8fd659920b7abb3891a5585ad7e6b171236d1dcde63425375471d32c696",
+   "nota": "Extracto literal del código de la app (número fiscal austriaco, domicilio).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/libro-ordenes-resumen-2026-11-21.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:41:25Z",
+   "bytes": 6244,
+   "sha256": "36dde9726b037921dc6d1976ebec7df0ab2c8f4a1b0e6606d092ec79a69a63d1",
+   "nota": "Resumen del libro de órdenes de las 5 fichas, sin direcciones ni identificadores.",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?numero=5003&tipo=CLP",
+   "archivo": "fuentes/reguladores/cnmv-effecta-lp-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:34Z",
+   "bytes": 891,
+   "sha256": "1d9f8628c42f585490b9ac45d1f6b789c4a39bd1c15c884bb27651b07f776d76",
+   "nota": "Texto extraído (representante recortado donde aparece).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/reguladores/cnmv-effecta-programa-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:36Z",
+   "bytes": 1021,
+   "sha256": "117a980e2c6197779e62091c6ba7a1e6e2bb156c547fa03a1e4280b6a29d7778",
+   "nota": "Texto extraído (representante recortado donde aparece).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/reguladores/cnmv-effecta-agentes-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:37Z",
+   "bytes": 845,
+   "sha256": "6123c9c756a62af8d4989c2aac53630ec0a6d308f1bec17e1d519737abd53b7a",
+   "nota": "Texto extraído (representante recortado donde aparece).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "fuentes/reguladores/bafin-effecta-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:49:21Z",
+   "bytes": 881,
+   "sha256": "283fc28d938dea80a17426120baf45e3f722836784589e98b6ee6d31bb5d1684",
+   "nota": "Texto extraído (representante recortado donde aparece).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise)",
+   "archivo": "fuentes/reguladores/bafin-vgv-brickwise-2026-11-21.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:50:10Z",
+   "bytes": 447,
+   "sha256": "73c6f8e42cda6ad42af0fba4daed86002b19ac9137cebeb99dc1e2a3ee9edcf6",
+   "nota": "Texto extraído (representante recortado donde aparece).",
+   "fueraDeGit": false
+  },
+  {
+   "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+   "archivo": "../../vigia-crudo/7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:58Z",
+   "bytes": 191910,
+   "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+   "archivo": "../../vigia-crudo/2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:58Z",
+   "bytes": 128786,
+   "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "archivo": "../../vigia-crudo/3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:56Z",
+   "bytes": 30692,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+   "archivo": "../../vigia-crudo/87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:01Z",
+   "bytes": 64605,
+   "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Sagarmatha",
+   "archivo": "../../vigia-crudo/4cbe9f0bef70ccc3016f6a685ecdd563056b84456bb3377033c8b1996918a0ca.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:11Z",
+   "bytes": 211568,
+   "sha256": "4cbe9f0bef70ccc3016f6a685ecdd563056b84456bb3377033c8b1996918a0ca",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Brick Sagarmatha»: sin advertencias (igual que lo publicado)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": "../../vigia-crudo/8e0bced88774569f4815f4ec8fc488f54188dc3f0ac0d5533cec6a016d2b57c8.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:01Z",
+   "bytes": 211414,
+   "sha256": "8e0bced88774569f4815f4ec8fc488f54188dc3f0ac0d5533cec6a016d2b57c8",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Brickwise»: sin advertencias (igual que lo publicado)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "../../vigia-crudo/b1fd5dc761464a7e79f705471a157c78750d9e027933b60e9466630e1f680731.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:02Z",
+   "bytes": 211370,
+   "sha256": "b1fd5dc761464a7e79f705471a157c78750d9e027933b60e9466630e1f680731",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Effecta»: sin advertencias (igual que lo publicado)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+   "archivo": "../../vigia-crudo/ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:58Z",
+   "bytes": 139587,
+   "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+   "archivo": "../../vigia-crudo/d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:58Z",
+   "bytes": 247203,
+   "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+   "archivo": "../../vigia-crudo/bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:01Z",
+   "bytes": 64520,
+   "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "archivo": "../../vigia-crudo/0add09606d1131f035c6c81cc147e2a6c003e058dd5c7c711a565629e4e93fe1.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:03Z",
+   "bytes": 211458,
+   "sha256": "0add09606d1131f035c6c81cc147e2a6c003e058dd5c7c711a565629e4e93fe1",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Brick Qogir»: sin advertencias (igual que lo publicado)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+   "archivo": "../../vigia-crudo/da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:59Z",
+   "bytes": 146611,
+   "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+   "archivo": "../../vigia-crudo/24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:58Z",
+   "bytes": 259949,
+   "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+   "archivo": "../../vigia-crudo/63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:01Z",
+   "bytes": 63599,
+   "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+   "archivo": "../../vigia-crudo/760e161a04e534b13b392d3e0ff2056df89aa8980a90fb69d083d26f39e3898d.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:15Z",
+   "bytes": 211458,
+   "sha256": "760e161a04e534b13b392d3e0ff2056df89aa8980a90fb69d083d26f39e3898d",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Green-Point»: sin advertencias (igual que lo publicado)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "archivo": "../../vigia-crudo/74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:59Z",
+   "bytes": 550355,
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "archivo": "../../vigia-crudo/bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:59Z",
+   "bytes": 360088,
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "archivo": "../../vigia-crudo/125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:02Z",
+   "bytes": 64702,
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+   "archivo": "../../vigia-crudo/1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:59Z",
+   "bytes": 557605,
+   "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+   "archivo": "../../vigia-crudo/a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:36:59Z",
+   "bytes": 396631,
+   "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+   "archivo": "../../vigia-crudo/e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:02Z",
+   "bytes": 64712,
+   "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+   "segunVigia": true,
+   "nota": "Documento leído por el vigía; mismo SHA-256 que lo publicado. No se relee (GreenPoint y Cohotel: KID y contrato consultados en esa misma copia para el plazo y la cláusula 9.2)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cohotel",
+   "archivo": "../../vigia-crudo/46fd9215738a88b93f93c7f4b032d3d594c509367a0489fd8251e410b796b70e.bin",
+   "http": 200,
+   "consultadoUtc": "2026-11-21T17:37:13Z",
+   "bytes": 211370,
+   "sha256": "46fd9215738a88b93f93c7f4b032d3d594c509367a0489fd8251e410b796b70e",
+   "segunVigia": true,
+   "nota": "Búsqueda de advertencias de la CNMV «Cohotel»: sin advertencias (igual que lo publicado)."
+  }
+ ]
+}

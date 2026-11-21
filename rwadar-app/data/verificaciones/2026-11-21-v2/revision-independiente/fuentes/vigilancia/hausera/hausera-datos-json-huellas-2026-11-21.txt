@@ -1,0 +1,9 @@
+Datos públicos de las fichas de Hausera (JSON estático), consultados 2026-11-21T18:01:19Z–18:01:20Z, HTTP 200.
+No se copian (basta la huella; cuadran byte a byte con las del investigador).
+https://hausera.io/page-data/propiedad/alicante_3/page-data.json 158.492 bytes SHA-256 f95e3a75cbcf282e84e2754ff6bc86dd9c72fa6dabe6c107920561e2d1898b8f
+https://hausera.io/page-data/propiedad/alicante_2/page-data.json 158.711 bytes SHA-256 8e94a545bc30c4bf1f9083db9139d9206a06266a9372ab7c1a28bf4327d2f2cb
+https://hausera.io/page-data/oportunidades/page-data.json 188.774 bytes SHA-256 f9913b8496c835e37cff47a69b3e0e112530bbb114b3e62c514290ee82bfe46d
+https://hausera.io/sitemap-0.xml SHA-256 f21d85598ac4a0ae66c39e2b12685b1f296c495a2954ac770423ac528d25b5b8
+
+Alicante 3 (pageContext): status=PRESALE · presaleDate=18/11/2026 · launchDate=25/11/2026 · startDate=25/11/2026 · endDate=25/07/2028 · priceToken=100 · tokens=51960 · totalFinancedEur=5196000 · isin=None
+Calendario: 18/11/2026 «Preventa» · 25/11/2026 «Inicio de la oportunidad»

@@ -1,0 +1,98 @@
+URL: https://shares.lend.ch/
+Renderizado: 2026-11-21T18:04:45.383Z
+
+English
+Sign In
+Switzerlend AG
+Buy Shares
+More info: www.lend.ch
+About Switzerlend
+Lending•Founded in 2015, Zürich, Switzerland
+We want to build a financial world that benefits all, not just a few. To do so, we radically challenge the status quo in order to make finance fair and enjoyable. In 2015, we set out to shake up the credit world with technology, healthy incentives and novel structures. It was not and is not easy. But we continue because we know we are doing the right thing.
+Switzerlend AG C1 Shares SHA (LENDS)
+Historic market prices and access to blockchain-powered secondary trading.
+Market Price
+Price history of Switzerlend AG C1 Shares SHA
+1W
+1M
+6M
+1Y
+All
+Price
+Volume
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+Nov 2026
+66.5 CHF
+67 CHF
+67.5 CHF
+68 CHF
+68.5 CHF
+Direct Investment
+Invest in Switzerlend AG by buying tokenized shares directly from the issuer at a fixed price.
+Direct Funding
+Bank Transfer
+Pay with Frankencoin
+Buy Shares
+Secondary Trading
+Trade Switzerlend AG shares with other shareholders in secure on-chain transactions, instantly settled using Frankencoin (ZCHF).
+Real-time Trading
+Open Order Book
+Instant Settlement
+Open Secondary Trading
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+7 Oct 2026 / 13:34	Direct Investment	68.01 ZCHF	10 LENDS	680.05 ZCHF
+
+
+7 Oct 2026 / 13:34	Direct Investment	68.01 ZCHF	1 LENDS	68.01 ZCHF
+
+
+25 Sep 2026 / 13:32	Direct Investment	68.00 ZCHF	6 LENDS	408.02 ZCHF
+
+
+3 Sep 2026 / 08:23	Direct Investment	68.00 ZCHF	3 LENDS	204.01 ZCHF
+
+
+25 Aug 2026 / 09:18	Secondary Trade	67.00 ZCHF	1 LENDS	67 ZCHF
+Page 1 of 19
+1
+2
+3
+4
+5
+…
+19
+Your Shareholder Balance
+Overview of your registered and tokenized shares
+Register to View your Balance
+Share Overview
+Key details and on-chain references for this token
+Current Price
+CHF 68.01
+Last trade • 7 Oct 2026, 13:34
+Total Shares
+31'066
+Market Cap
+CHF 48'409'858
+Tokenized Shares
+27'277 LENDS
+Shareholders
+286
+Legal Documents
+Registration Agreement
+Token Holder Agreement
+Share Smart Contracts
+0x3433…8047
+Switzerlend AG
+Terms of Use: This page is hosted by Switzerlend using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Switzerlend and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Switzerlend assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for Switzerlend. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by Switzerlend. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by Switzerlend using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, Switzerlend may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by Switzerlend under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 Switzerlend (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy
