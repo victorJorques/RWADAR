@@ -148,7 +148,7 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
   const lista = {
     contratable: { cumple: contratable, fuente: cita(acceso), motivo: contratable
       ? 'Es una oferta principal y la fuente dice que se contrata desde España.'
-      : o.coleccion === 'secundario' ? 'Es una referencia de reventa entre inversores, no una oferta abierta.'
+      : o.coleccion === 'secundario' ? 'Está en Reventa: RWAdar no confirma que se pueda contratar hoy; compruébalo en la fuente.'
         : o.coleccion === 'en_camino' ? 'Es un anuncio: todavía no se puede contratar.'
           : o.disponibleEs === false ? 'La fuente dice que no se contrata desde España.'
             : caducado ? vencida : 'No consta en la fuente que se contrate desde España.' },
