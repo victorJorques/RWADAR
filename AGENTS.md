@@ -95,8 +95,10 @@ paró, retirar unas noticias ya publicadas y cualquier cambio en el
 procedimiento. Para pausarla sin borrar nada: `"activo": false` en
 `.claude/skills/noticias-automaticas/config.json` (cualquier herramienta puede
 proponerlo en un PR), desactivar la tarea programada o, solo un día, crear la
-rama `claude/cerrojo-ciclo-<AAAA-MM-DD>`. Estado: preparada y **SIN
-ENCENDER** (ver [`ORDEN-TAREA.md`](.claude/skills/noticias-automaticas/ORDEN-TAREA.md)).
+rama `claude/cerrojo-ciclo-<AAAA-MM-DD>`. Estado: encendida el 14/11/2026 y
+**apagada desde el 18/11/2026** (la tarea programada «Noticias automáticas de
+RWAdar» está desactivada); volver a encenderla es decisión de la dirección (ver
+[`ORDEN-TAREA.md`](.claude/skills/noticias-automaticas/ORDEN-TAREA.md)).
 
 ## Límites de seguridad
 

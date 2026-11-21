@@ -72,12 +72,17 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   enlace roto nuevo. `npm --prefix rwadar-app run test:motor-entrega`: 24 de
   25; falla `pglite.test.mjs` (la entrega del 12/11 ya caducó y el ensayo de
   ese día no), igual que en `main` sin este cambio (ya anotado en (33) y
-  (35)).
+  (35)). Causa: con `hoy` simulado, `comprobar.mjs` solo cambia
+  `current_date` en la guarda del SQL; las vistas públicas siguen con la fecha
+  real y esconden las cifras de una entrega caducada (`disponible_es` null).
+  Arreglo pendiente: simular también el reloj de las vistas en PGlite. No va
+  en la CI.
 - **Pendiente para la dirección:**
-  1. **Urgente, hoy 21/11:** borrar las ramas
+  1. Borrar las ramas
      `claude/cerrojo-ciclo-2026-11-20` y `claude/cerrojo-ciclo-2026-11-21`
-     (siguen en GitHub). Si mañana siguen ahí, las noticias automáticas del
-     22/11 se paran solas. Se puede hacer a mano en GitHub › Branches o con
+     (no corre prisa mientras la tarea de noticias siga desactivada, como lo
+     está desde el 18/11). Si se vuelve a encender con esas ramas vivas, la
+     mañana se para sola. Se puede hacer a mano en GitHub › Branches o con
      «Limpiar ramas» con BORRAR e `incluir_cerrojos=si`.
   2. Lanzar «Limpiar ramas»: primero sin escribir nada (solo lista), mirar la
      lista y después con BORRAR. Hay unas 10 ramas de copias intermedias que
