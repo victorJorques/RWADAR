@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "fecha": "2026-11-21",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "ef8916de157acf74be281491f5a1e5e4bc0a4b3267ea1fdf2f6b677745468edb"
+  },
+  "noticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
+      "propuestas": {
+        "es": [
+          "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+          "Alemania prohíbe ofrecer oro físico sin folleto al público",
+          "Tres ofertas sin folleto, una de oro: compruébalas antes"
+        ],
+        "en": [
+          "Gold and shares with no prospectus: three German alerts",
+          "Germany bars a physical gold offer made with no prospectus",
+          "Three offers with no prospectus, one in gold: check first"
+        ]
+      },
+      "elegido": {
+        "es": "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+        "en": "Gold and shares with no prospectus: three German alerts"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y sigue diciendo primero qué se ofrecía y el fallo, con la cifra de avisos.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "alerta-fraude-3",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude",
+          "alerta-fraude-2"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-advertencias-9-entidades-dos-clones",
+      "propuestas": {
+        "es": [
+          "9 firmas sin registro; dos imitan a firmas registradas",
+          "La CNMV avisa de 9 firmas sin registro, dos de ellas clones",
+          "Webs clonadas de firmas registradas: la CNMV avisa de dos"
+        ],
+        "en": [
+          "9 unregistered firms; two pose as registered ones",
+          "Spain's CNMV flags 9 unregistered firms, two of them clones",
+          "Clones of registered firms: Spain's CNMV flags two sites"
+        ]
+      },
+      "elegido": {
+        "es": "9 firmas sin registro; dos imitan a firmas registradas",
+        "en": "9 unregistered firms; two pose as registered ones"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y empieza por la cifra y el riesgo concreto para el lector.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "pago-online",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude-2",
+          "alerta-fraude-3"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "propuestas": {
+        "es": [
+          "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+          "Stock Tokens: el emisor podrá cobrar costes en tokens",
+          "Un suplemento deja al emisor de Robinhood repercutir costes"
+        ],
+        "en": [
+          "Robinhood: the issuer may cut your Stock Tokens for costs",
+          "Robinhood Stock Tokens: costs may come out of your holding",
+          "A supplement lets Robinhood's issuer pass on its costs"
+        ]
+      },
+      "elegido": {
+        "es": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+        "en": "Robinhood: the issuer may cut your Stock Tokens for costs"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y dice lo que te puede pasar con el sujeto exacto y en futuro.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "acciones-movil",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "propuestas": {
+        "es": [
+          "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+          "Los 27 piden subir a 300.000 millones el tope tokenizado",
+          "Mercados tokenizados: los Estados ven corto el tope actual"
+        ],
+        "en": [
+          "Tokenised markets: EU states want a cap 50 times higher",
+          "EU states seek a €300bn cap for tokenised markets",
+          "Tokenised markets: EU states want more room than €6bn"
+        ]
+      },
+      "elegido": {
+        "es": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+        "en": "Tokenised markets: EU states want a cap 50 times higher"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y la cifra sale de una cuenta directa (300.000 / 6.000).",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "instituciones-ue-2",
+        "encaje": "propia",
+        "alternativas": [
+          "instituciones-ue",
+          "red-europea"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "propuestas": {
+        "es": [
+          "España ya tiene dos mercados de valores tokenizados",
+          "La CNMV autoriza un segundo mercado de valores tokenizados",
+          "Acciones y bonos tokenizados: España suma un segundo mercado"
+        ],
+        "en": [
+          "Spain now has two tokenised securities markets",
+          "Spain's CNMV authorises a second tokenised securities market",
+          "Tokenised shares and bonds: Spain adds a second market"
+        ]
+      },
+      "elegido": {
+        "es": "España ya tiene dos mercados de valores tokenizados",
+        "en": "Spain now has two tokenised securities markets"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y el hecho y la cifra se entienden sin saber qué es la CNMV.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "bolsa-madrid",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu",
+          "red-europea"
+        ],
+        "faltaria": null
+      }
+    }
+  ]
+}

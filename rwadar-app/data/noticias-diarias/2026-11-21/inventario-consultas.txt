@@ -1,0 +1,8 @@
+2026-11-21T15:21:26Z | 200 | application/pdf | 6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d
+2026-11-21T15:21:30Z | 200 | application/pdf | d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d
+2026-11-21T15:21:33Z | 200 | application/pdf | 978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9 | https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf
+2026-11-21T15:21:35Z | 200 | application/pdf | 757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599 | https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf
+2026-11-21T15:21:39Z | 200 | application/pdf | e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727 | https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d
+2026-11-21T15:21:42Z | 200 | text/html; charset=utf-8 | 7504a2bc89a6157b27e56175e4928ffb1b9ff4cb585ef3f3be1a3ff73e5da37e | https://www.cnmv.es/portal/aldia/notasprensa
+2026-11-21T15:21:51Z | 200 | application/rss+xml; charset=utf-8 | dd34df8a6b4a2e82064d2fa70dddc4bb65773bda77da0450888e96338f5c7343 | https://www.esma.europa.eu/rss.xml
+2026-11-21T15:21:53Z | 200 | text/xml; charset=utf-8 | 3853540c6b405e29cfd5f3f2947903d3cb11a3f59c07be30ff8e92e34595d139 | https://www.consilium.europa.eu/en/rss/pressreleases.ashx

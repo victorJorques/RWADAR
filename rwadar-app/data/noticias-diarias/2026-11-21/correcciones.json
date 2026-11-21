@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "verificacionSha256": "2e91c251606399fd25331363f47e0f243a3426d217e83b7980bb74d1a632dbc2",
+  "aplicadas": [
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "campo": "resumen",
+      "antes": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo opera Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
+      "despues": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo operará Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
+      "motivo": "La nota de la CNMV dice que la infraestructura «será operada» por Bit2Me STX: está autorizada, pero aún no funciona. «Lo opera» la da por ya en marcha."
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "campo": "en.resumen",
+      "antes": "It is a DLT-based trading and settlement system under the EU pilot regime. It is run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
+      "despues": "It is a DLT-based trading and settlement system under the EU pilot regime. It will be run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
+      "motivo": "Lo mismo en inglés: la fuente dice que será operada («será operada»), no que ya lo esté."
+    }
+  ]
+}

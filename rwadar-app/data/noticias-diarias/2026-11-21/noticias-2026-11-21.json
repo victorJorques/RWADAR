@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-21",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
+      "fecha": "2026-11-18",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "UE",
+      "titulo": "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+      "resumen": "La CNMV difunde tres avisos del supervisor alemán (BaFin). Prohibió a una firma ofrecer oro físico al público y suspendió la oferta de acciones de otra, ambas sin el folleto exigido. De la tercera tiene indicios de que ofrece un producto de inversión sin él.",
+      "porQueImporta": "El oro es uno de los activos que también se venden tokenizados. Ofrecer al público sin el folleto exigido es una señal de alarma: antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
+      "en": {
+        "titulo": "Gold and shares with no prospectus: three German alerts",
+        "resumen": "The CNMV relays three alerts from Germany's supervisor (BaFin). It barred one firm from offering physical gold to the public and suspended another's share offer, both without the required prospectus. It has signs that the third offers an investment product without one.",
+        "porQueImporta": "Gold is one of the assets also sold in tokenised form. A public offer without the required prospectus is a red flag: before investing, look the firm up in the CNMV's search tool for warnings.",
+        "tituloInformativo": "Spain's CNMV relays three German alerts on offers without a prospectus, one of physical gold"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 18/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico",
+      "imagen": "alerta-fraude-3"
+    },
+    {
+      "id": "cnmv-advertencias-9-entidades-dos-clones",
+      "fecha": "2026-11-16",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "9 firmas sin registro; dos imitan a firmas registradas",
+      "resumen": "La CNMV advierte de 9 entidades que no figuran en sus registros ni están autorizadas para prestar servicios de inversión. Dos son clones: imitan a una empresa de asesoramiento financiero y a una sociedad de capital riesgo, ambas registradas en España.",
+      "porQueImporta": "Un nombre o una web parecidos a los de una firma registrada no bastan. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV y comprueba que la web es la que figura en su registro.",
+      "en": {
+        "titulo": "9 unregistered firms; two pose as registered ones",
+        "resumen": "The CNMV warns about 9 entities that are not on its registers and are not authorised to provide investment services. Two are clones: they imitate a financial advisory firm and a venture capital company, both registered in Spain.",
+        "porQueImporta": "A name or website that looks like a registered firm's is not enough. Before investing, look the firm up in the CNMV's search tool for warnings and check that the website is the one on its register.",
+        "tituloInformativo": "Spain's CNMV warns about 9 unregistered entities, two of them clones of registered firms"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas del 16/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "La CNMV advierte de 9 entidades no registradas, dos de ellas clones de firmas registradas",
+      "imagen": "pago-online"
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "fecha": "2026-11-09",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+      "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
+      "porQueImporta": "El cambio vale también para los tokens ya emitidos, desde el 9 de noviembre. Que la filial europea de Robinhood sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "en": {
+        "titulo": "Robinhood: the issuer may cut your Stock Tokens for costs",
+        "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
+        "porQueImporta": "The change also applies to tokens already issued, from 9 November. Making Robinhood's EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+        "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
+      },
+      "fuente": {
+        "nombre": "Robinhood Assets (Jersey) Limited, suplemento al folleto base aprobado por la FMA el 09/11/2026",
+        "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
+      "imagen": "acciones-movil"
+    },
+    {
+      "id": "consejo-ue-tope-regimen-piloto-dlt",
+      "fecha": "2026-11-04",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
+      "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
+      "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
+      "en": {
+        "titulo": "Tokenised markets: EU states want a cap 50 times higher",
+        "resumen": "Member states' ambassadors (Coreper) approved the Council's position: drop the per-asset caps and raise to €300bn the maximum value each DLT market infrastructure can record or trade.",
+        "porQueImporta": "Today's cap is €6bn and holds back large players. This is a negotiating position, not law: it still has to be agreed with the European Parliament.",
+        "tituloInformativo": "EU countries want to raise the DLT Pilot Regime cap from €6bn to €300bn"
+      },
+      "fuente": {
+        "nombre": "Consejo de la UE, orientación general (ST 13779/1/26 REV 1) y puntos «A» del ECOFIN (ST 14900/26)",
+        "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
+      "imagen": "instituciones-ue-2"
+    },
+    {
+      "id": "cnmv-autoriza-bit2me-stx",
+      "fecha": "2026-10-28",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "España",
+      "titulo": "España ya tiene dos mercados de valores tokenizados",
+      "resumen": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo operará Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
+      "porQueImporta": "España suma dos con Securitize. Se autoriza el mercado, no una emisión: por ahora no consta ninguna con documento público para particulares.",
+      "en": {
+        "titulo": "Spain now has two tokenised securities markets",
+        "resumen": "It is a DLT-based trading and settlement system under the EU pilot regime. It will be run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
+        "porQueImporta": "Spain now has two, with Securitize. The market is authorised, not an issue: so far no issue with a public document for retail investors is on record.",
+        "tituloInformativo": "Spain's CNMV authorises Bit2Me STX, the country's second market for tokenised securities"
+      },
+      "fuente": {
+        "nombre": "CNMV, nota de prensa del 28/10/2026 (ESMA la registra con fecha 27/10/2026)",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
+      "imagen": "bolsa-madrid"
+    }
+  ]
+}
