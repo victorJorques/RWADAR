@@ -67,6 +67,36 @@
       }
     },
     {
+      "id": "xstocks-200-empresas-reino-unido-ue",
+      "propuestas": {
+        "es": [
+          "xStocks lanza tokens de más de 200 empresas europeas",
+          "Las 40 del DAX alemán, ya en tokens de xStocks",
+          "Empresas europeas en xStocks: tokens sin hacerte accionista"
+        ],
+        "en": [
+          "xStocks launches tokens of over 200 European companies",
+          "All 40 DAX companies now come as xStocks tokens",
+          "European shares as xStocks tokens, but you won't own them"
+        ]
+      },
+      "elegido": {
+        "es": "xStocks lanza tokens de más de 200 empresas europeas",
+        "en": "xStocks launches tokens of over 200 European companies"
+      },
+      "motivo": "Dice primero lo que cambia (ya hay xStocks de empresas europeas, no solo de EE. UU.), con la cifra de la fuente y el sujeto exacto; la del DAX se queda corta y lo de no ser accionista va en el texto.",
+      "heredado": null,
+      "foto": {
+        "clave": "acciones-eeuu",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-movil",
+          "bolsa-madrid"
+        ],
+        "faltaria": null
+      }
+    },
+    {
       "id": "robinhood-stock-tokens-suplemento",
       "propuestas": {
         "es": [
@@ -91,36 +121,6 @@
         "encaje": "propia",
         "alternativas": [
           "acciones-eeuu"
-        ],
-        "faltaria": null
-      }
-    },
-    {
-      "id": "consejo-ue-tope-regimen-piloto-dlt",
-      "propuestas": {
-        "es": [
-          "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
-          "Los 27 piden subir a 300.000 millones el tope tokenizado",
-          "Mercados tokenizados: los Estados ven corto el tope actual"
-        ],
-        "en": [
-          "Tokenised markets: EU states want a cap 50 times higher",
-          "EU states seek a €300bn cap for tokenised markets",
-          "Tokenised markets: EU states want more room than €6bn"
-        ]
-      },
-      "elegido": {
-        "es": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
-        "en": "Tokenised markets: EU states want a cap 50 times higher"
-      },
-      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y la cifra sale de una cuenta directa (300.000 / 6.000).",
-      "heredado": "2026-11-20",
-      "foto": {
-        "clave": "instituciones-ue-2",
-        "encaje": "propia",
-        "alternativas": [
-          "instituciones-ue",
-          "red-europea"
         ],
         "faltaria": null
       }

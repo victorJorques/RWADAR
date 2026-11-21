@@ -2,8 +2,8 @@
   "version": 1,
   "pase": 1,
   "fecha": "2026-11-21",
-  "edicionSha256": "f99c5c763bd37bec128dea8493560251534aa09ce60663d8b8667059ed7f84d2",
-  "veredicto": "con_cambios",
+  "edicionSha256": "f76ee267ba95c5c72e51c96138b5925e388f4f475d237f3739c4a706c83a7b37",
+  "veredicto": "conforme",
   "noticias": [
     {
       "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
@@ -11,7 +11,7 @@
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
         "http": 200,
-        "horaUtc": "2026-11-21T15:24:59Z",
+        "horaUtc": "2026-11-21T16:52:55Z",
         "sha256": "6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820",
         "caida": false
       },
@@ -27,11 +27,27 @@
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
         "http": 200,
-        "horaUtc": "2026-11-21T15:25:01Z",
+        "horaUtc": "2026-11-21T16:52:57Z",
         "sha256": "d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355",
         "caida": false
       },
       "literal": "La CNMV pone de manifiesto que dichas sociedades no figuran inscritas en el correspondiente registro de esta Comisión y, por tanto, no están autorizadas para prestar servicios de inversión u otras actividades sujetas a la supervisión de la CNMV.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "xstocks-200-empresas-reino-unido-ue",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+        "http": 200,
+        "horaUtc": "2026-11-21T16:52:58Z",
+        "sha256": "5adbaf19336bc991679752f970e30b621186090aded652aa12e4637adca37e78",
+        "caida": false
+      },
+      "literal": "xStocks has launched its first regional markets, bringing tokenized equities for 200+ of the largest UK and EU-listed companies, and every constituent of the DAX 40. [...] Each xStock is backed 1:1 by the underlying share but represents economic exposure only, not direct ownership.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -43,27 +59,11 @@
       "fuente": {
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "http": 200,
-        "horaUtc": "2026-11-21T15:25:02Z",
+        "horaUtc": "2026-11-21T16:52:58Z",
         "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
         "caida": false
       },
-      "literal": "Further, if fees or costs are charged to the Issuer in connection with the Underlying (for example, where the Underlying is a depositary receipt that does not pay dividends), then the Issuer may pass-through any such fees or costs to Investors. Such fees will be deducted by reducing the number of Products held by the Investor.",
-      "titularRespaldado": true,
-      "fotoAdecuada": true,
-      "personas": false,
-      "fechaCorrecta": true
-    },
-    {
-      "id": "consejo-ue-tope-regimen-piloto-dlt",
-      "veredicto": "confirmada",
-      "fuente": {
-        "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
-        "http": 200,
-        "horaUtc": "2026-11-21T15:25:02Z",
-        "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
-        "caida": false
-      },
-      "literal": "an aggregate cap that limits the total value of financial instruments intermediated by a DLT market infrastructure of EUR 6 billion. Those activity thresholds have made it difficult for certain large market participants to use the Pilot framework [...]. Therefore, all asset-specific caps should be withdrawn, whereas the aggregate cap should be raised to EUR 300 billion.",
+      "literal": "the Issuer is permitted to pass on certain fees and costs charged to the Issuer in connection with an Underlying to Investors, which may include proportionately reducing the number of Products held by such Investors",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -71,38 +71,22 @@
     },
     {
       "id": "cnmv-autoriza-bit2me-stx",
-      "veredicto": "corregir",
+      "veredicto": "confirmada",
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "http": 200,
-        "horaUtc": "2026-11-21T15:25:04Z",
+        "horaUtc": "2026-11-21T16:52:59Z",
         "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
         "caida": false
       },
-      "literal": "La infraestructura, denominada Bit2MeSTX, será operada por Bit2Me Security Tokens Exchange STX, A.V., S.A. [...] En Bit2MeSTX se podrán negociar acciones y bonos representados en TRD.",
+      "literal": "El Consejo de la CNMV ha autorizado el Sistema de Negociación y Liquidación, SNL, basado en Tecnología de Registros Distribuidos, TRD [...] En Bit2MeSTX se podrán negociar acciones y bonos representados en TRD.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
-      "fechaCorrecta": true,
-      "motivo": "El resumen (castellano e inglés) pone en presente que Bit2Me STX opera el mercado; la fuente dice que «será operada». Corrección de un tiempo verbal."
+      "fechaCorrecta": true
     }
   ],
   "hoyCorrecto": true,
   "faltaAlgo": [],
-  "correcciones": [
-    {
-      "id": "cnmv-autoriza-bit2me-stx",
-      "campo": "resumen",
-      "antes": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo opera Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
-      "despues": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo operará Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
-      "motivo": "La nota de la CNMV dice que la infraestructura «será operada» por Bit2Me STX: está autorizada, pero aún no funciona. «Lo opera» la da por ya en marcha."
-    },
-    {
-      "id": "cnmv-autoriza-bit2me-stx",
-      "campo": "en.resumen",
-      "antes": "It is a DLT-based trading and settlement system under the EU pilot regime. It is run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
-      "despues": "It is a DLT-based trading and settlement system under the EU pilot regime. It will be run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
-      "motivo": "Lo mismo en inglés: la fuente dice que será operada («será operada»), no que ya lo esté."
-    }
-  ]
+  "correcciones": []
 }
