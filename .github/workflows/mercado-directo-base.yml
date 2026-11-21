@@ -9,8 +9,8 @@ name: Mercado en directo (base)
 #
 # Cada acción que cambia la base (o llama a CoinGecko desde ella) necesita
 # orden expresa de la dirección (AGENTS.md) y escribir DIRECTO en «confirmar».
-# «ensayo-35», «verificar-35», «ensayo-37», «verificar-37» y «estado» no
-# cambian nada.
+# «ensayo-35», «verificar-35», «ensayo-37», «verificar-37», «ensayo-39»,
+# «verificar-39» y «estado» no cambian nada.
 #
 #   ensayo-35        la 35 y su verificador en una transacción que se deshace.
 #   aplicar-35       con copia cifrada antes (35 días en los artefactos).
@@ -21,6 +21,12 @@ name: Mercado en directo (base)
 #   aplicar-37       con copia cifrada antes, como aplicar-35; después, los
 #                    verificadores de la 35 y de la 37.
 #   verificar-37     solo lee: los verificadores de la 35 y de la 37.
+#   ensayo-39        la 39 (el arreglo del fallo del 18-20/11: las esperas
+#                    tras fallos ya no se desbordan con «interval out of
+#                    range») y su verificador en una transacción que se deshace.
+#   aplicar-39       con copia cifrada antes, como aplicar-37; después, los
+#                    verificadores de la 35 y de la 39.
+#   verificar-39     solo lee: los verificadores de la 35 y de la 39.
 #   probar-coingecko con el directo apagado: UNA llamada a CoinGecko desde la
 #                    red de Supabase (las mismas reglas de ranura y espera) y
 #                    qué respondió (estado, bytes, 429); y la diaria publicada,
@@ -39,7 +45,7 @@ name: Mercado en directo (base)
 #   estado           solo lee: relojes, llamadas, esperas, el documento y lo
 #                    que sirve la web (/api/tokenizacion/directo).
 #
-# La copia cifrada va solo antes de aplicar-35, aplicar-37 y deshacer: las demás solo
+# La copia cifrada va solo antes de aplicar-35, aplicar-37, aplicar-39 y deshacer: las demás solo
 # tocan rwadar_mercado (y sus dos relojes), que la copia de seguridad no
 # guarda (se rehace con «sembrar»). Así no se gastan minutos de más.
 #
@@ -60,6 +66,9 @@ on:
           - ensayo-37
           - verificar-37
           - aplicar-37
+          - ensayo-39
+          - verificar-39
+          - aplicar-39
           - probar-coingecko
           - sembrar
           - encender
@@ -67,7 +76,7 @@ on:
           - deshacer
           - estado
       confirmar:
-        description: 'Escribe DIRECTO para las acciones que cambian la base o llaman a CoinGecko desde ella (no hace falta para ensayo-35, verificar-35, ensayo-37, verificar-37 ni estado)'
+        description: 'Escribe DIRECTO para las acciones que cambian la base o llaman a CoinGecko desde ella (no hace falta para ensayo-35, verificar-35, ensayo-37, verificar-37, ensayo-39, verificar-39 ni estado)'
         required: false
         type: string
 
@@ -110,6 +119,7 @@ jobs:
           D=rwadar-app/db
           V35="$D/35_mercado_directo_verificar.sql"
           V37=""
+          V39=""
           ENSAYO=no; COPIA=no; SIEMBRA=no; SQL=""
           case "$ACCION" in
             ensayo-35)        SQL="$D/35_mercado_directo.sql";          CAMBIA=no; ENSAYO=si ;;
@@ -118,6 +128,9 @@ jobs:
             ensayo-37)        SQL="$D/37_mercado_directo_secuencia.sql"; V37="$D/37_mercado_directo_secuencia_verificar.sql"; CAMBIA=no; ENSAYO=si ;;
             verificar-37)     V37="$D/37_mercado_directo_secuencia_verificar.sql"; SQL="$V37"; CAMBIA=no ;;
             aplicar-37)       SQL="$D/37_mercado_directo_secuencia.sql"; V37="$D/37_mercado_directo_secuencia_verificar.sql"; CAMBIA=si; COPIA=si ;;
+            ensayo-39)        SQL="$D/39_mercado_directo_espera.sql"; V39="$D/39_mercado_directo_espera_verificar.sql"; CAMBIA=no; ENSAYO=si ;;
+            verificar-39)     V39="$D/39_mercado_directo_espera_verificar.sql"; SQL="$V39"; CAMBIA=no ;;
+            aplicar-39)       SQL="$D/39_mercado_directo_espera.sql"; V39="$D/39_mercado_directo_espera_verificar.sql"; CAMBIA=si; COPIA=si ;;
             probar-coingecko) CAMBIA=si ;;
             sembrar)          CAMBIA=si; SIEMBRA=si ;;
             encender)         SQL="$D/35_mercado_directo_encender.sql"; CAMBIA=si; SIEMBRA=si ;;
@@ -129,6 +142,7 @@ jobs:
           if [ -n "$SQL" ]; then test -f "$SQL" || { echo "No existe $SQL"; exit 1; }; fi
           test -f "$V35" || { echo "No existe $V35"; exit 1; }
           if [ -n "$V37" ]; then test -f "$V37" || { echo "No existe $V37"; exit 1; }; fi
+          if [ -n "$V39" ]; then test -f "$V39" || { echo "No existe $V39"; exit 1; }; fi
           if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "DIRECTO" ]; then
             echo "Esta acción cambia la base o llama a CoinGecko desde ella: escribe DIRECTO en «confirmar»."; exit 1
           fi
@@ -138,7 +152,10 @@ jobs:
           # Y las de la 37 (el arreglo de la secuencia de tokens, 20/11/2026).
           cmp -s "$D/37_mercado_directo_secuencia.sql" rwadar-app/supabase/migrations/20261120180000_mercado_directo_secuencia.sql \
             || { echo "Las dos copias de la 37 no coinciden"; exit 1; }
-          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "COPIA=$COPIA"; echo "SIEMBRA=$SIEMBRA"; echo "V35=$V35"; echo "V37=$V37"; } >> "$GITHUB_ENV"
+          # Y las de la 39 (las esperas sin desbordarse, 21/11/2026).
+          cmp -s "$D/39_mercado_directo_espera.sql" rwadar-app/supabase/migrations/20261121120000_mercado_directo_espera.sql \
+            || { echo "Las dos copias de la 39 no coinciden"; exit 1; }
+          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "COPIA=$COPIA"; echo "SIEMBRA=$SIEMBRA"; echo "V35=$V35"; echo "V37=$V37"; echo "V39=$V39"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
         run: |
@@ -172,10 +189,10 @@ jobs:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: |
           set -euo pipefail
-          # La 35 (y la 37) es una sola transacción (begin; … commit;). Se
-          # cambia su commit final por su verificador (sin su propia
-          # transacción) y un rollback.
-          VERIF="${V37:-$V35}"
+          # La 35 (y la 37 y la 39) es una sola transacción (begin; …
+          # commit;). Se cambia su commit final por su verificador (sin su
+          # propia transacción) y un rollback.
+          VERIF="${V39:-${V37:-$V35}}"
           [ "$(grep -c '^commit;$' "$SQL")" = 1 ] && [ "$(tail -n 1 "$SQL")" = "commit;" ] \
             || { echo "$SQL no termina en un único commit;"; exit 1; }
           [ "$(grep -c '^begin transaction read only;$' "$VERIF")" = 1 ] && [ "$(tail -n 1 "$VERIF")" = "rollback;" ] \
@@ -281,3 +298,4 @@ jobs:
           set -euo pipefail
           psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$V35"
           if [ -n "${V37:-}" ]; then psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$V37"; fi
+          if [ -n "${V39:-}" ]; then psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$V39"; fi

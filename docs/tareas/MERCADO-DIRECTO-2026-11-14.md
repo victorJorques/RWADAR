@@ -200,6 +200,9 @@ cambian la base o llaman a CoinGecko desde ella.
 | `ensayo-37` | la 37 (arreglo de la secuencia de tokens) y su verificador en una transacción que se deshace | — |
 | `aplicar-37` | aplica la 37 y pasa los verificadores de la 35 y de la 37 | sí |
 | `verificar-37` | solo lee: los verificadores de la 35 y de la 37 | — |
+| `ensayo-39` | la 39 (esperas tras fallos sin desbordarse) y su verificador en una transacción que se deshace | — |
+| `aplicar-39` | aplica la 39 y pasa los verificadores de la 35 y de la 39 | sí |
+| `verificar-39` | solo lee: los verificadores de la 35 y de la 39 | — |
 | `probar-coingecko` | con el directo apagado, UNA llamada desde la red de Supabase y qué respondió (estado, bytes, 429, cuántos válidos, el primero, la hora más reciente); y la diaria publicada, como la leerá el reloj (su código y sus bytes; no la guarda). **Sin un 200 de la diaria, falla**: no se enciende (revisión del 14/11) | — |
 | `sembrar` | la historia (unas 81 llamadas a CoinGecko desde GitHub, 13 s entre ellas, ~18 min) en una sola transacción. Si un token de la diaria se queda sin alguna de sus dos historias (`days=31` y `days=1`), **para sin escribir nada** (código 3): quedaría «fuera» en toda la ventana sembrada y, con figure-heloc (más de la mitad), no saldría ninguna serie en 24 h ni en 30 días (revisión del 14/11). Se vuelve a lanzar más tarde | — |
 | `encender` | siembra y enciende en la misma ejecución (la 35 exige una siembra de menos de 30 min) | — |
@@ -207,7 +210,7 @@ cambian la base o llaman a CoinGecko desde ella.
 | `deshacer` | relojes, función y esquema; comprueba que no queda nada | sí |
 | `estado` | solo lee; y qué sirve la web | — |
 
-La copia cifrada va solo antes de `aplicar-35`, `aplicar-37` y `deshacer`: las demás solo
+La copia cifrada va solo antes de `aplicar-35`, `aplicar-37`, `aplicar-39` y `deshacer`: las demás solo
 tocan `rwadar_mercado`, que la copia de seguridad no guarda (se rehace con
 `sembrar`). Así no se gastan minutos de más.
 
@@ -255,6 +258,38 @@ que ya están, avanza uno por cada nuevo y guarda exactamente lo mismo que la
 Si `ensayo-37` falla con «le quedan N ids» o con «RESTART value … cannot be
 greater than MAXVALUE», no se aplica: el mayor id real está cerca del tope
 y hace falta renumerar los tokens (otra migración).
+
+### 5.2 Fallo del 18 al 20/11 y arreglo (migración 39)
+
+**Qué pasó.** El log del «Vigilante» del 20/11 (14:07) decía
+«rwadar-mercado-pedir: 576 fallos … ERROR: interval out of range», en la
+actualización de `rwadar_mercado.configuracion` que apunta el fallo; y
+«Tokenización diaria» falló con «503 directo_atrasado», que es la
+consecuencia. La 35 calcula la espera tras fallos multiplicando 15 minutos
+por 2 elevado a (fallos seguidos − 2) y solo después la limita a 60 minutos:
+con 36 fallos seguidos o más, la multiplicación se sale del tipo `interval`
+antes de llegar al límite. Como la propia actualización que apunta el fallo
+da error, el contador nunca vuelve a 0 y el reloj falla en cada vuelta (cada
+5 minutos). La espera de los 429 tenía el mismo defecto desde 35 seguidos.
+La 37 arregló la causa del corte y con eso se recuperó, pero el fallo seguía
+ahí: el próximo corte largo de CoinGecko lo volvía a disparar.
+
+**El arreglo (`39_mercado_directo_espera.sql`, copia idéntica en
+`supabase/migrations/20261121120000_mercado_directo_espera.sql`).**
+`pedir_coingecko` y `leer_respuesta` limitan el exponente antes de
+multiplicar (como mucho 2 en los fallos, 15 × 4 = 60 minutos; como mucho 4
+en los 429, 5 × 16 = 80, que el límite deja en 60). Las esperas son las de
+siempre (15, 30 y 60; 10, 20, 40 y 60); solo cambian esos tres exponentes, y
+la prueba compara las dos funciones con las de la 35. Se puede aplicar dos
+veces. El verificador (`39_mercado_directo_espera_verificar.sql`, solo lee)
+mira las fórmulas en la base y calcula 60 minutos con 36, 40 y 576 fallos
+seguidos y con 35 y 40 429 seguidos. Pruebas: `probar-mercado-directo-base.mjs`
+(con la 35 sola reproduce el «interval out of range»; con la 39, 60 minutos y
+la siguiente respuesta buena pone los fallos a 0) y las acciones nuevas en
+`probar-mercado-directo-flujo.mjs`. **No está aplicada en Supabase**: con orden
+de la dirección, desde main, `ensayo-39` (sin DIRECTO; «ENSAYO CORRECTO» y
+«RWAdar 39 OK»), `aplicar-39` (DIRECTO; «RWAdar 35 OK» y «RWAdar 39 OK») y
+`verificar-39` (sin DIRECTO).
 
 ## 6. Encender (el coordinador, con permiso de la dirección, paso a paso)
 
@@ -345,10 +380,12 @@ apagado): `sembrar` (DIRECTO) rellena el hueco con la historia de CoinGecko.
   CI (300 con `MERCADO_DIRECTO_CASOS=300`; la ejecución entera de 30 tokens con
   `MERCADO_DIRECTO_REAL=…`), casos límite y los cortes del propio directo (2 h,
   25 h, 73 h).
-- `rwadar-app/probar-mercado-directo-base.mjs`: pedir/leer, ranuras, esperas,
-  lo que se guarda y lo que no, la lista de la diaria, la cadena con 3 sondeos
-  reales, retención, permisos con privilegios hostiles, encender/apagar/
-  deshacer y el verificador (falla con 16 estados rotos).
+- `rwadar-app/probar-mercado-directo-base.mjs`: con la 35, la 37 y la 39
+  aplicadas, pedir/leer, ranuras, esperas (también con 36, 40 y 576 fallos
+  seguidos y 40 429 seguidos, §5.2), lo que se guarda y lo que no, la lista
+  de la diaria, la cadena con 3 sondeos reales, retención, permisos con
+  privilegios hostiles, encender/apagar/deshacer y el verificador (falla con
+  16 estados rotos).
 - `rwadar-app/probar-mercado-directo-flujo.mjs`: la siembra con un CoinGecko de
   pega, los pasos del flujo ejecutados con bash y un psql de pega sobre
   PGlite, la alarma del flujo diario y `comparar-directo.mjs`.
