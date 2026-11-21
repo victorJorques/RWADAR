@@ -57,11 +57,14 @@ export function elegir({ ramas, esAncestroDeMain, prsUnidos = [], prsAbiertos = 
     if (!NOMBRE_VALIDO.test(nombre) || !SHA.test(String(punta))) return decision('conservar', 'nombre o punta que no se entiende: no se toca');
     const abierto = prsAbiertos.find(pr => pr.head?.ref === nombre);
     if (abierto) return decision('conservar', `tiene el PR #${abierto.number} abierto`);
+    // Si se borra la base de un PR abierto (PR apilados), GitHub lo cierra.
+    const base = prsAbiertos.find(pr => pr.base?.ref === nombre);
+    if (base) return decision('conservar', `es la base del PR #${base.number} abierto`);
     if (CERROJO.test(nombre) && incluirCerrojos !== true) {
       return decision('conservar', 'cerrojo de las noticias automáticas: solo se borra con incluir_cerrojos=si');
     }
     if (esAncestroDeMain(nombre) === true) return decision('borrar', 'su punta ya está en la historia de main');
-    const unido = prsUnidos.find(pr => pr.head?.ref === nombre && pr.head?.sha === punta);
+    const unido = prsUnidos.find(pr => pr.head?.ref === nombre && pr.head?.sha === punta && (pr.base?.ref ?? 'main') === 'main');
     if (unido) return decision('borrar', `el PR #${unido.number} se unió con esta misma punta`);
     const otro = prsUnidos.find(pr => pr.head?.ref === nombre);
     const commits = `${propios} commit${propios === 1 ? '' : 's'} propio${propios === 1 ? '' : 's'} que no está${propios === 1 ? '' : 'n'} en main`;
@@ -110,13 +113,13 @@ function esAncestro(nombre, cwd) {
   throw new Error(`git merge-base --is-ancestor falló con la rama ${nombre} (código ${r.status})`);
 }
 
-/* PR del repositorio por la API de GitHub, como { number, head: { ref, sha }, unido }. */
+/* PR del repositorio por la API de GitHub, como { number, head: { ref, sha }, base: { ref }, unido }. */
 export function leerPRs(repo, estado) {
   const salida = execFileSync('gh', ['api', '--paginate', `repos/${repo}/pulls?state=${estado}&per_page=100`,
-    '--jq', '.[] | [.number, .head.ref, .head.sha, (.merged_at // "")] | @tsv'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
+    '--jq', '.[] | [.number, .head.ref, .head.sha, (.merged_at // ""), .base.ref] | @tsv'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
   return salida.split('\n').filter(Boolean).map(l => {
-    const [numero, ref, sha, unidoEl] = l.split('\t');
-    return { number: Number(numero), head: { ref, sha }, unido: Boolean(unidoEl) };
+    const [numero, ref, sha, unidoEl, baseRef] = l.split('\t');
+    return { number: Number(numero), head: { ref, sha }, base: { ref: baseRef }, unido: Boolean(unidoEl) };
   });
 }
 

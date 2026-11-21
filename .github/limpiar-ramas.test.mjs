@@ -74,6 +74,18 @@ test('una rama con un PR abierto se queda, aunque esté en main o tenga otro PR 
   assert.equal(d['claude/cerrojo-ciclo-2026-11-21'].accion, 'conservar');
 });
 
+test('la base de un PR abierto se queda (PR apilados), y un PR unido a otra rama no cuenta como unido a main', () => {
+  const d = decidir({
+    ramas: [rama('claude/base-apilada'), rama('claude/unida-a-otra', sha('c'), 2)],
+    dentro: ['claude/base-apilada'],
+    prsUnidos: [{ number: 60, head: { ref: 'claude/unida-a-otra', sha: sha('c') }, base: { ref: 'claude/otra' } }],
+    prsAbiertos: [{ number: 61, head: { ref: 'claude/encima', sha: sha('d') }, base: { ref: 'claude/base-apilada' } }],
+  });
+  assert.equal(d['claude/base-apilada'].accion, 'conservar');
+  assert.match(d['claude/base-apilada'].motivo, /base del PR #61 abierto/);
+  assert.equal(d['claude/unida-a-otra'].accion, 'conservar');
+});
+
 test('cerrojo dentro de main: se queda sin incluir_cerrojos; con «si» se borra, y si no está en main se queda igual', () => {
   const ramas = [rama('claude/cerrojo-ciclo-2026-11-20'), rama('claude/cerrojo-ciclo-2026-11-21', sha('b'), 1)];
   const dentro = ['claude/cerrojo-ciclo-2026-11-20'];
