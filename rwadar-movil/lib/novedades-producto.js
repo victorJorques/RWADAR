@@ -150,7 +150,7 @@ const NOVEDADES_PRODUCTO = {
         "En la web, sale en la campana de arriba y en Perfil. En la app, sale en la pestaña Inicio de abajo.",
         "En iPhone, con RWAdar en la pantalla de inicio y las notificaciones activadas, también sale en su icono.",
         "Cuando los lees, el número se va.",
-        "Para verlo tienes que haber entrado en tu cuenta."
+        "En la web, desde el 21/11/2026 también lo ves sin cuenta: la campana cuenta los avisos publicados que aún no has visto en este navegador."
       ],
       "pasos": [],
       "en": {
@@ -160,7 +160,7 @@ const NOVEDADES_PRODUCTO = {
           "On the website, it shows on the bell at the top and in Profile. In the app, it shows on the Home tab at the bottom.",
           "On iPhone, with RWAdar on your home screen and notifications turned on, it also shows on its icon.",
           "When you read them, the number goes away.",
-          "To see it, you need to be signed in to your account."
+          "On the website, since 21/11/2026 you also see it without an account: the bell counts the published alerts you haven't seen yet in this browser."
         ],
         "pasos": []
       }
