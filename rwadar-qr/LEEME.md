@@ -1,11 +1,13 @@
 # RWAdar · código QR de entrada
 
 El código lleva a **https://rwadar.pages.dev**, que es la web pública y
-funciona igual en el móvil. *No* lleva a la app de las tiendas: a 15 de
-agosto de 2026 la app móvil está terminada pero sin publicar, porque eso
-depende de dos cuentas de desarrollador que aún no están abiertas
-(`docs/INTERNO.md` → «Pendientes reales»). Cuando la app esté
-en Google Play o en la App Store, se regenera apuntando allí:
+funciona igual en el móvil. *No* lleva a ninguna tienda de apps: la app de
+Android está publicada en GitHub (`RWAdar-downloads`), y desde la web se
+llega a ella con el enlace `/android`
+(https://rwadar.pages.dev/android). Todavía no está en Google Play ni en
+la App Store: las cuentas de desarrollador siguen pendientes
+(`docs/INTERNO.md` → «Lo que falta, por orden», punto «Tiendas»).
+Cuando la app esté en una de las tiendas, se regenera apuntando allí:
 
 ```bash
 node rwadar-qr/hacer-qr.js https://play.google.com/store/apps/details?id=com.rwadar.app

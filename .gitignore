@@ -19,7 +19,6 @@
 !/package-lock.json
 !/probar-web.mjs
 !/probar-web-pwa.mjs
-!/PLAN-GIT-Y-RESPALDOS.md
 !/SECURITY.md
 !/AGENTS.md
 # Procedimientos de Claude (skills y flujos guardados); el resto de .claude/ se ignora más abajo
@@ -60,7 +59,6 @@
 !/rwadar-banco-de-sonidos.html
 !/rwadar-qr/
 !/rwadar-limpieza/
-!/rwadar-version-codex/
 
 # La documentación del proyecto
 !/CLAUDE.md
