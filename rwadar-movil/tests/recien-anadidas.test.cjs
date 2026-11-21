@@ -106,3 +106,37 @@ test('Ofertas de Inicio (21/11/2026): Principales por fecha de alta, de la más 
   const web = fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/rwadar-20260820.js'), 'utf8');
   assert.match(web, /function ofertasInicio\(c\)\{[\s\S]*?o\.coleccion==='principales'[\s\S]*?altaOferta\(b\)\.localeCompare\(altaOferta\(a\)\)\|\|\(enSel\.has\(b\.slug\)\?1:0\)-\(enSel\.has\(a\.slug\)\?1:0\)\|\|masNuevasPrimero\(a,b\)\)\.slice\(0,6\)/);
 });
+
+// 21/11/2026, orden de Víctor: la tarjeta de Inicio pone la fecha más reciente: «Añadida el», «Verificada el»
+// (solo si la revisión pudo verificarla) o «Actualizada el» (la documentación).
+test('fechaTarjeta: la más reciente entre el alta, la verificación del catálogo y la documentación', () => {
+  const tabla = { vieja: { anadidaEl: '2026-11-03' }, hoy: { anadidaEl: '2026-11-20' }, despues: { anadidaEl: '2026-11-21' },
+    mala: { anadidaEl: 'mal' } };
+  const con = (slug, verificadaEl, extra = {}) => ({ ...oferta(slug), verificadaEl, estadoRevision: 'actual', ...extra });
+  const ahora = dia('2026-11-21');
+  // Añadida el 3 y verificada el 20: «Verificada el 20».
+  assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-20'), { ahora, tabla }), { tipo: 'verificada', fecha: '2026-11-20' });
+  // Añadida el mismo día que se verificó, o después: «Añadida».
+  assert.deepEqual(r.fechaTarjeta(con('hoy', '2026-11-20'), { ahora, tabla }), { tipo: 'anadida', fecha: '2026-11-20' });
+  assert.deepEqual(r.fechaTarjeta(con('despues', '2026-11-20'), { ahora, tabla }), { tipo: 'anadida', fecha: '2026-11-21' });
+  // Sin alta válida, la verificación; sin verificación válida (o futura), el alta; sin ninguna, nada.
+  assert.deepEqual(r.fechaTarjeta(con('mala', '2026-11-20'), { ahora, tabla }), { tipo: 'verificada', fecha: '2026-11-20' });
+  assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-30'), { ahora, tabla }), { tipo: 'anadida', fecha: '2026-11-03' });
+  assert.deepEqual(r.fechaTarjeta(con('vieja', 'mal'), { ahora, tabla }), { tipo: 'anadida', fecha: '2026-11-03' });
+  assert.equal(r.fechaTarjeta(con('nada', 'mal'), { ahora, tabla }), null);
+  // Si la revisión no pudo verificarla (fuentes en conflicto, no verificable), nunca «Verificada».
+  for (const estadoRevision of ['fuentes_en_conflicto', 'no_verificable', undefined]) {
+    assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-20', { estadoRevision }), { ahora, tabla }), { tipo: 'anadida', fecha: '2026-11-03' });
+    assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-20', { estadoRevision, documentacion: { revisadaEl: '2026-11-20' } }), { ahora, tabla }),
+      { tipo: 'actualizada', fecha: '2026-11-20' });
+  }
+  // La documentación, si es lo más reciente: «Actualizada»; a igual fecha gana «Verificada»; futura, no cuenta.
+  assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-10', { documentacion: { revisadaEl: '2026-11-20' } }), { ahora, tabla }),
+    { tipo: 'actualizada', fecha: '2026-11-20' });
+  assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-20', { documentacion: { revisadaEl: '2026-11-20' } }), { ahora, tabla }),
+    { tipo: 'verificada', fecha: '2026-11-20' });
+  assert.deepEqual(r.fechaTarjeta(con('vieja', '2026-11-20', { documentacion: { revisadaEl: '2026-12-01' } }), { ahora, tabla }),
+    { tipo: 'verificada', fecha: '2026-11-20' });
+  // Con el catálogo caducado, ninguna fecha.
+  assert.equal(r.fechaTarjeta(con('vieja', '2026-11-20'), { ahora, tabla, catalogoCaducado: true }), null);
+});

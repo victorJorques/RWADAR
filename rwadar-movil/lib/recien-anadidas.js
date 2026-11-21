@@ -29,6 +29,26 @@ export function fechaAlta(oferta, tabla = TRANSPARENCIA_POR_SLUG) {
   return e && fechaValida(e.anadidaEl) ? e.anadidaEl : '';
 }
 
+/* La fecha de cada tarjeta de Inicio (21/11/2026, orden de Víctor: «lo que más
+   actualizado esté, si la documentación la hemos actualizado o hemos añadido
+   la ficha»), como fechaTarjetaInicio de la web: la más reciente entre el
+   alta ('anadida'), la verificación del catálogo ('verificada', solo si la
+   revisión pudo verificarla: estadoRevision 'actual') y la revisión de su
+   documentación ('actualizada'). A igual fecha, en ese orden. Con el catálogo
+   caducado, o sin ninguna fecha válida, null. */
+export function fechaTarjeta(oferta, { ahora = new Date(), catalogoCaducado = false, tabla = TRANSPARENCIA_POR_SLUG } = {}) {
+  const h = new Date(ahora);
+  if (catalogoCaducado || !oferta || !Number.isFinite(h.getTime())) return null;
+  const hoy = h.toISOString().slice(0, 10);
+  const valida = (f) => (fechaValida(f) && f <= hoy ? f : '');
+  const candidatas = [['anadida', fechaAlta(oferta, tabla)],
+    ['verificada', oferta.estadoRevision === 'actual' ? valida(oferta.verificadaEl) : ''],
+    ['actualizada', valida(oferta.documentacion?.revisadaEl)]];
+  let mejor = null;
+  for (const [tipo, fecha] of candidatas) if (fecha && (!mejor || fecha > mejor.fecha)) mejor = { tipo, fecha };
+  return mejor;
+}
+
 /* Añadida hace menos de `dias` días, contados en el día del teléfono. */
 export function esNueva(oferta, { ahora = new Date(), catalogoCaducado = false, dias = DIAS_NUEVA, tabla = TRANSPARENCIA_POR_SLUG } = {}) {
   const f = fechaAlta(oferta, tabla), h = new Date(ahora);
