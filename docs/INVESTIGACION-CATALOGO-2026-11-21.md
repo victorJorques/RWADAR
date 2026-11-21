@@ -42,6 +42,21 @@ importante». Después, sobre Brickwise: «Mantener con aviso»; y «Termina».
 - **Radar:** 69 de 69 fuentes iguales; la ficha de Spiko en REGAFI, con la
   misma huella.
 
+- **Publicado (21/11, 22:53–23:37 UTC):** PR #193 (entrega), «Aplicar
+  catálogo» (run 44959062110), #194 (sincronización y sello), #195 (arreglo de
+  la tarjeta, abajo), «Publicar web» revisión y producción (run 44962460055),
+  OTA Android (run 44960376699) y «Avisar novedad» (aviso n.º 10, «Ofertas
+  comprobadas de nuevo con fuentes de hoy»). En vivo: revisión `fe0cfaa8`,
+  verificada el 21/11; Hausera «Desde 100 € · suscripción desde el 25/11»;
+  Schwarzer Weg 18 «Desde 71,00 €»; mTBILL «Condiciones Finales del
+  17/07/2026».
+- **Arreglo de la web (#195):** a 390 px la tarjeta de Hausera se leía
+  «suscripción sde el 25/11». Cada dato de la tarjeta va desplazado 16 px para
+  esconder el «·» del primero, y esa franja se recorta: si el texto bajaba de
+  línea, perdía las primeras letras. Ahora la segunda línea empieza 16 px más
+  adentro (sangría francesa). Las tarjetas de una línea no cambian. Tiene
+  prueba en `probar-web.mjs`.
+
 ## Cómo se hizo
 
 1. Vigía (17:37 UTC) y lectura pública de lo publicado.
