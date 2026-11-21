@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Noticias del sector del 21/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo 94f7fd5d",
   "revisionAprobada": {
-    "commit": "5f42c49844bcc171dbed7267a911dedfe1476b1e",
-    "contenidoSha256": "sha256:2db36b89a3eead8b94f47794b69ab7dc7e1ce98b31d18685ba33814cd332471a",
+    "commit": "a91a3acc47cc4c83305c62bf0fe3fe937b5aa344",
+    "contenidoSha256": "sha256:d96d6ceaee646b0beb8bb6b2df140fb2b5e5c20acc8e1420d03ca8986269ec57",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
