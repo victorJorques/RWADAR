@@ -1,0 +1,111 @@
+name: Limpiar ramas
+
+# Borra las ramas de GitHub que ya no hacen falta (21/11/2026). Desde las
+# sesiones el borrado da 403 y cada ciclo deja 3 o 4 ramas nuevas.
+#
+# - Solo a mano (Run workflow) y desde main.
+# - Sin la palabra BORRAR en «confirmar», solo lista lo que borraría.
+#   La primera vez, lánzalo así, sin BORRAR, y mira la lista.
+# - Borra solo las ramas cuya punta ya está en la historia de main, o cuyo PR
+#   se unió con esa misma punta (los «squash»). Nunca main ni
+#   datos-tokenizacion, ni una rama con un PR abierto.
+# - Las claude/cerrojo-ciclo-* (el cerrojo de las noticias automáticas), solo
+#   con incluir_cerrojos = si, y solo si ningún ciclo está en marcha.
+# - El resumen de la ejecución dice qué se borró y qué se quedó, y por qué.
+#
+# La decisión y el resumen: .github/limpiar-ramas.mjs. Pruebas:
+# .github/limpiar-ramas.test.mjs. No usa claves ni la base de datos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Escribe BORRAR para borrar. Vacío (o cualquier otra cosa): solo lista lo que borraría.'
+        required: false
+        type: string
+        default: ''
+      incluir_cerrojos:
+        description: '¿Borrar también las ramas claude/cerrojo-ciclo-* que ya están en main? Solo si no hay ningún ciclo en marcha.'
+        required: true
+        type: choice
+        options:
+          - 'no'
+          - 'si'
+        default: 'no'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-limpiar-ramas
+  cancel-in-progress: false
+
+jobs:
+  limpiar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    # Escribir contenido, para borrar ramas; leer los PR, para no tocar las
+    # que tienen uno abierto y reconocer las unidas con «squash».
+    permissions:
+      contents: write
+      pull-requests: read
+    env:
+      CONFIRMAR: ${{ inputs.confirmar }}
+      INCLUIR_CERROJOS: ${{ inputs.incluir_cerrojos }}
+    steps:
+      # Con permiso de escritura, solo el código de main decide qué se borra.
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "«Limpiar ramas» solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      # Toda la historia, para comparar cada rama con main. Las credenciales
+      # se quedan (por defecto): hacen falta para borrar.
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Decidir qué ramas se borran
+        id: decidir
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node .github/limpiar-ramas.mjs decidir "$RUNNER_TEMP/limpiar-ramas"
+
+      # Una a una, y solo si su punta sigue siendo la que se comprobó: si
+      # alguien empujó a la rama mientras tanto, no se borra (queda en
+      # «No se pudieron borrar»). Sin BORRAR, borrar.tsv está vacío.
+      - name: Borrar las ramas elegidas
+        run: |
+          set -euo pipefail
+          CARPETA="$RUNNER_TEMP/limpiar-ramas"
+          : > "$CARPETA/borradas.txt"
+          : > "$CARPETA/fallidas.txt"
+          if [ "$CONFIRMAR" != "BORRAR" ]; then
+            echo "Solo lista: no se borra nada (falta BORRAR en «confirmar»)."
+            exit 0
+          fi
+          while IFS=$'\t' read -r rama punta; do
+            [ -n "$rama" ] || continue
+            case "$rama" in
+              main|datos-tokenizacion) echo "::error::La rama $rama no se borra nunca."; exit 1 ;;
+            esac
+            if git push --force-with-lease="refs/heads/$rama:$punta" origin --delete "refs/heads/$rama"; then
+              printf '%s\n' "$rama" >> "$CARPETA/borradas.txt"
+            else
+              printf '%s\n' "$rama" >> "$CARPETA/fallidas.txt"
+            fi
+          done < "$CARPETA/borrar.tsv"
+
+      - name: Resumen de lo borrado y lo que se queda
+        if: always() && steps.decidir.outcome == 'success'
+        run: node .github/limpiar-ramas.mjs resumen "$RUNNER_TEMP/limpiar-ramas"
