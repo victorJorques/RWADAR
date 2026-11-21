@@ -438,6 +438,21 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
   });
 });
 
+test('proveedoresDeOfertas: un proveedor por plataforma, con su nombre corto y en orden', () => {
+  const datos = cargar('lib/datos.js', {
+    'datos.js:./modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
+    'datos.js:./supabase': {},
+    '@react-native-async-storage/async-storage': { __esModule: true, default: almacenamientoInicial() },
+    'react-native': { Platform: { OS: 'web' } },
+  });
+  const fixture = JSON.parse(fs.readFileSync(path.join(RAIZ, 'fixtures', 'escaparate-local.json'), 'utf8'));
+  const proveedores = datos.proveedoresDeOfertas([...fixture.ofertas, ...fixture.secundario].map((o) => datos.normalizarOferta(o)));
+  assert.equal(proveedores.length, 7);
+  assert.deepEqual(proveedores.find((p) => p.slug === 'aktionariat'), { slug: 'aktionariat', nombre: 'Aktionariat' });
+  assert.deepEqual(proveedores.map((p) => p.nombre), [...proveedores.map((p) => p.nombre)].sort((a, b) => a.localeCompare(b, 'es')));
+  assert.deepEqual(datos.proveedoresDeOfertas([null, { plataformaSlug: '' }, { plataformaSlug: 'x', plataformaNombre: 'X · Suiza' }]), [{ slug: 'x', nombre: 'X' }]);
+});
+
 test('el fixture mantiene separados los proveedores que no pertenecen al radar', () => {
   const fixture = JSON.parse(fs.readFileSync(path.join(RAIZ, 'fixtures', 'escaparate-local.json'), 'utf8'));
   const canonicos = new Set(fixture.plataformas.map((p) => p.slug));

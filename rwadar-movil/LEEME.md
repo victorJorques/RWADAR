@@ -63,10 +63,12 @@ desde el commit del APK instalado:
 node scripts/comprobar-ota-compatible.cjs --base COMMIT_COMPLETO_DEL_APK
 ```
 
-La bloquea cualquier cambio (o archivo nuevo sin seguimiento) en
-`package.json`, `package-lock.json`, `.npmrc`, `app.json`, `app.config.*`,
-`eas.json`, `plugins/`, `scripts/`, `android/`, `ios/`, `.easignore` y en los
-iconos y archivos que `app.json` nombra por ruta. Eso exige otro APK. La OTA
+La bloquea cualquier cambio (o archivo nuevo sin seguimiento) en la raíz del
+repositorio en `.easignore`, `.gitattributes`, `package.json`,
+`package-lock.json` y `.npmrc`, y dentro de `rwadar-movil/` en `package.json`,
+`package-lock.json`, `.npmrc`, `app.json`, `app.config.*`, `eas.json`,
+`plugins/`, `scripts/`, `android/`, `ios/` y en los iconos y archivos que
+`app.json` nombra por ruta. Eso exige otro APK. La OTA
 se envía con el flujo `.github/workflows/ota-android.yml` y siempre con
 permiso expreso de Víctor.
 
@@ -90,7 +92,7 @@ Son constantes en el código, no variables de entorno. Valor de hoy:
 | `CORREO_AUTH_E2E` | `true` | Alta y recuperación por correo comprobadas |
 | `AVISOS_NOVEDADES_REMOTOS` | `true` | Perfil › Avisos y la tarjeta de avisos de Inicio |
 | `AVISOS_CASILLA_ALTA_REMOTA` | `false` | La casilla de avisos del alta, apagada hasta que salga el correo |
-| `AVISOS_BANDEJA_REMOTA` | `true` | Bandeja de avisos recibidos en Inicio |
+| `AVISOS_BANDEJA_REMOTA` | `true` | Bandeja de avisos recibidos en Inicio; hoy no hace nada, porque `AVISOS_NOVEDADES_REMOTOS` está encendido y ya trae la tarjeta |
 | `AVISOS_SIN_CUENTA_REMOTOS` | `true` | «Notificaciones en este móvil» en la pantalla de acceso, sin cuenta |
 
 Cambiar uno es solo JavaScript (llega por OTA), pero cambia lo que ve la gente:
