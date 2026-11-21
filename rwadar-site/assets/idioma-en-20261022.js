@@ -1167,6 +1167,7 @@
   "Las últimas ofertas que hemos revisado y añadido al radar": "The latest offers we have reviewed and added to the radar",
   "Nueva": "New",
   "Añadida el": "Added on",
+  "Verificada el": "Verified on",
   "Ver todas las ofertas nuevas": "See all new offers",
   "Ver todas las ofertas": "See all offers",
   "Más nuevas primero": "Newest first",

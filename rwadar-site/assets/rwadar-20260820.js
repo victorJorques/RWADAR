@@ -2138,8 +2138,19 @@ function ofertasInicio(c){
  return ofertasCatalogoInicio().filter(o=>o&&typeof o.slug==='string'&&o.coleccion==='principales'&&!vistas.has(o.slug)&&vistas.add(o.slug))
   .sort((a,b)=>altaOferta(b).localeCompare(altaOferta(a))||(enSel.has(b.slug)?1:0)-(enSel.has(a.slug)?1:0)||masNuevasPrimero(a,b)).slice(0,6);
 }
+/* La fecha de cada tarjeta de Inicio (21/11/2026, orden de Víctor: «lo que más
+   actualizado esté»): la más reciente entre la de alta y la de verificación
+   del catálogo. «Añadida el» si se añadió ese día o después de verificarse;
+   si no, «Verificada el». Con el catálogo caducado o sin comprobar, ninguna. */
+function fechaTarjetaInicio(o){
+ if(catalogoSinCifrasLocal())return null;
+ const alta=altaOferta(o),hoy=new Date().toISOString().slice(0,10);
+ const verif=o&&fechaLocalValida(o.verificadaEl)&&o.verificadaEl<=hoy?o.verificadaEl:'';
+ if(alta&&alta>=verif)return {etiqueta:'Añadida el',fecha:alta};
+ return verif?{etiqueta:'Verificada el',fecha:verif}:null;
+}
 function tarjetaInicioHtml(o,i,seleccion){
- const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);
+ const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=fechaTarjetaInicio(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);
  const bloqueo=avisoBloqueoOferta(o),nota=NOTAS_SELECCION[o.slug];
  /* Todas las tarjetas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y si se contrata desde España. */
  const dc=datosCortosOferta(o,resumenEditorialOferta(o)),noEsp=estadoVigenciaLocal(o).clase!=='caducado'&&o.disponibleEs===false;
@@ -2151,7 +2162,7 @@ function tarjetaInicioHtml(o,i,seleccion){
   '<p class="rel-tarjeta-datos"><span>Mínimo</span> <b>'+escHtml(dc.minimo)+'</b><span class="rel-tarjeta-sep" aria-hidden="true"> · </span><span>España</span> <b>'+escHtml(noEsp?'No':dc.espanaCorta)+'</b></p>'+
   (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
-  (nueva&&f?'<p class="rel-nueva-fecha"><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></p>':'')+
+  (f?'<p class="rel-nueva-fecha"><span>'+f.etiqueta+'</span> <time datetime="'+escHtml(f.fecha)+'">'+escHtml(fechaES(f.fecha))+'</time></p>':'')+
   '</div></article></li>';
 }
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo

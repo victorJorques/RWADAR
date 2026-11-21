@@ -218,6 +218,7 @@ const es = {
       etiquetaCinco: 'Pasa las 5 comprobaciones',
       nueva: 'Nueva',
       anadida: 'Añadida el',
+      verificada: 'Verificada el',
       verFicha: 'Ver ficha de',
       // Sin cifra: el número de ofertas ya sale en las cifras de la cabecera (que no se repita).
       ver: () => 'Ver todas las ofertas',
@@ -486,6 +487,7 @@ const en = {
       etiquetaCinco: 'Passes the 5 checks',
       nueva: 'New',
       anadida: 'Added on',
+      verificada: 'Verified on',
       verFicha: 'View details of',
       ver: () => 'See all offers',
     },

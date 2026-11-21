@@ -29,6 +29,20 @@ export function fechaAlta(oferta, tabla = TRANSPARENCIA_POR_SLUG) {
   return e && fechaValida(e.anadidaEl) ? e.anadidaEl : '';
 }
 
+/* La fecha de cada tarjeta de Inicio (21/11/2026, orden de Víctor: «lo que más
+   actualizado esté»), como fechaTarjetaInicio de la web: la más reciente
+   entre la de alta y la de verificación del catálogo. { tipo: 'anadida' } si
+   se añadió ese día o después de verificarse; si no, { tipo: 'verificada' }.
+   Con el catálogo caducado, o sin ninguna fecha válida, null. */
+export function fechaTarjeta(oferta, { ahora = new Date(), catalogoCaducado = false, tabla = TRANSPARENCIA_POR_SLUG } = {}) {
+  const h = new Date(ahora);
+  if (catalogoCaducado || !Number.isFinite(h.getTime())) return null;
+  const alta = fechaAlta(oferta, tabla), hoy = h.toISOString().slice(0, 10);
+  const verif = oferta && fechaValida(oferta.verificadaEl) && oferta.verificadaEl <= hoy ? oferta.verificadaEl : '';
+  if (alta && alta >= verif) return { tipo: 'anadida', fecha: alta };
+  return verif ? { tipo: 'verificada', fecha: verif } : null;
+}
+
 /* Añadida hace menos de `dias` días, contados en el día del teléfono. */
 export function esNueva(oferta, { ahora = new Date(), catalogoCaducado = false, dias = DIAS_NUEVA, tabla = TRANSPARENCIA_POR_SLUG } = {}) {
   const f = fechaAlta(oferta, tabla), h = new Date(ahora);

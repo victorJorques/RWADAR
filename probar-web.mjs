@@ -2625,6 +2625,23 @@ for(const [nombre,alterar] of [
     // Todas con la misma fecha: primero las de la Selección.
     JSON.stringify(sinAltas[0])===JSON.stringify(espSin)&&sinAltas[0].slice(0,Math.min(6,enSelIni.size)).every(x=>enSelIni.has(x))&&!sinAltas[1]&&
     /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="mercado"/.test(panelInicioHTML));
+  // 21/11/2026, orden de Víctor («lo que más actualizado esté»): cada tarjeta de Inicio lleva su fecha más reciente,
+  // «Añadida el» si se añadió el día de la verificación o después y, si no, «Verificada el» con la fecha del catálogo.
+  {
+    const fechas=[...p.obtiene('relNuevasLista').innerHTML.matchAll(/<p class="rel-nueva-fecha"><span>([^<]+)<\/span> <time datetime="([^"]+)">([^<]+)<\/time><\/p>/g)].map(m=>[m[1],m[2],m[3]]);
+    const esperadas=conAltas.map(slug=>{const o=emi.find(x=>x.slug===slug),alta=altaIni(o);
+      return alta&&alta>=o.verificadaEl?['Añadida el',alta]:['Verificada el',o.verificadaEl];});
+    const caso=(alta,verificadaEl)=>JSON.parse(vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${conAltas[0]}'],f=e.anadidaEl;e.anadidaEl='${alta}';
+      const r=fechaTarjetaInicio({slug:'${conAltas[0]}',verificadaEl:'${verificadaEl}'});e.anadidaEl=f;return JSON.stringify(r)})()`,c));
+    prueba('Inicio: cada tarjeta pone su fecha más reciente, «Añadida el» o «Verificada el» (la del 3 se ve verificada el 20)',
+      fechas.length===conAltas.length&&fechas.length>0&&
+      JSON.stringify(fechas.map(([e,f])=>[e,f]))===JSON.stringify(esperadas)&&fechas.every(([,f,v])=>v===vm.runInContext(`fechaES('${f}')`,c))&&
+      JSON.stringify(caso('2026-11-03','2026-11-20'))===JSON.stringify({etiqueta:'Verificada el',fecha:'2026-11-20'})&&
+      JSON.stringify(caso('2026-11-20','2026-11-20'))===JSON.stringify({etiqueta:'Añadida el',fecha:'2026-11-20'})&&
+      JSON.stringify(caso('2026-11-03','2999-01-01'))===JSON.stringify({etiqueta:'Añadida el',fecha:'2026-11-03'})&&
+      vm.runInContext("(()=>{CATALOGO_CADUCADO=true;const r=fechaTarjetaInicio({slug:'x',verificadaEl:'2026-11-20'});CATALOGO_CADUCADO=false;return r})()",c)===null&&
+      /"Verificada el": "Verified on"/.test(lee('assets/idioma-en-20261022.js')));
+  }
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
   const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;

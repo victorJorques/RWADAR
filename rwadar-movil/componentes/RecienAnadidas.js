@@ -5,7 +5,7 @@ import { traducir } from '../lib/idioma';
 import { ImagenOferta, avisosCriticos, lugarConPais, ofertaParaResumen } from './Ofertas';
 import { resumenOferta } from '../lib/ficha-editorial';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
-import { esNueva, fechaAlta } from '../lib/recien-anadidas';
+import { esNueva, fechaTarjeta } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
 import { datosTarjetaOferta, fechaES } from '../lib/transparencia';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
@@ -20,7 +20,8 @@ import { tacto } from '../lib/tacto';
    foto, el título en 2 líneas, el proveedor y el lugar, su nota propia si la
    tiene (la de la Selección), el aviso crítico entero si lo hay (como la
    tarjeta de Ofertas desde el 05/11/2026: los demás avisos, en la ficha),
-   «Nueva» y «Pasa las 5 comprobaciones» si toca y «Añadida el dd/mm/aaaa»,
+   «Nueva» y «Pasa las 5 comprobaciones» si toca y su fecha más reciente
+   («Añadida el dd/mm/aaaa» o «Verificada el dd/mm/aaaa», fechaTarjeta),
    y abre su ficha. Debajo, qué son las 5 comprobaciones (plegado: el
    superlativo solo vale con ellas delante) y «Ver todas las ofertas ›». Sin
    ninguna oferta no se pinta nada.
@@ -42,7 +43,8 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
         snapToInterval={ancho + 12} snapToAlignment="start" style={e.pista} contentContainerStyle={e.pistaContenido}>
         {ofertas.map((o) => {
           const lugar = lugarConPais(imagenEditorialOferta(o)?.lugar);
-          const fecha = fechaES(fechaAlta(o));
+          const cuando = fechaTarjeta(o);
+          const fecha = cuando ? `${cuando.tipo === 'anadida' ? b.anadida : b.verificada} ${fechaES(cuando.fecha)}` : '';
           const procedencia = [o.plataformaNombre, lugar].filter(Boolean).join(' · ');
           const letra = t.seleccion.letraPequena[o.slug] || '';
           const critico = avisosCriticos(o)[0];
@@ -61,7 +63,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
                 bloqueo ? `${traducir('Aviso bloqueante')}: ${String(bloqueo.texto).replace(/\.$/, '')}` : null,
                 ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
                 nueva ? b.nueva : null, cinco ? b.etiquetaCinco : null,
-                nueva && fecha ? `${b.anadida} ${fecha}` : null].filter(Boolean).join('. ')}>
+                fecha || null].filter(Boolean).join('. ')}>
               {/* «Nueva» y «Pasa las 5 comprobaciones», sobre la foto en su píldora oscura, como en
                   la lista de Ofertas: los títulos de las tarjetas empiezan a la misma altura. */}
               <View style={e.foto}>
@@ -91,9 +93,9 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
                     <Text style={e.avisoStopMarca}>Importante</Text> · <Text noTraducir idiomaOriginal="es-ES">{bloqueo.texto}</Text>
                   </Text>
                 ) : null}
-                {nueva && fecha ? (
+                {fecha ? (
                   <View style={e.meta}>
-                    <Text noTraducir style={e.fecha}>{b.anadida} {fecha}</Text>
+                    <Text noTraducir style={e.fecha}>{fecha}</Text>
                   </View>
                 ) : null}
               </View>
