@@ -162,7 +162,7 @@ test('la Selección sale en el orden de la web y va en el carrusel «Ofertas» c
   // su nota propia si la tiene, «Pasa las 5 comprobaciones» y, plegadas
   // debajo, las 5 comprobaciones con su aviso.
   const inicio = leer('componentes', 'Inicio.js');
-  assert.match(inicio, /ofertasDestacadas\(nuevas, cifras\.seleccion\)/);
+  assert.match(inicio, /ofertasDestacadas\(ofertas, cifras\.seleccion\)/);
   const carrusel = leer('componentes', 'RecienAnadidas.js');
   assert.match(carrusel, /t\.seleccion\.letraPequena\[o\.slug\] \|\| ''/);
   assert.match(carrusel, /t\.seleccion\.criterios\.map/);

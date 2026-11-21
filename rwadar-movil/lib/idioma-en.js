@@ -1962,6 +1962,7 @@
   // Inicio por bloques y sus secciones (rediseño del 10/11/2026), web y app.
   "Ofertas y plataformas tokenizadas, contrastadas con su fuente.": "Tokenised offers and platforms, checked against their source.",
   "Las últimas añadidas y las que pasan nuestras 5 comprobaciones": "The latest additions and those that pass our 5 checks",
+  "Las últimas añadidas, de la más nueva a la más antigua": "The latest additions, newest first",
   "¿Qué son las 5 comprobaciones?": "What are the 5 checks?",
   "Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.": "Passing them does not make an offer safer or more profitable. This is not an investment recommendation.",
   "Ofertas destacadas": "Featured offers",

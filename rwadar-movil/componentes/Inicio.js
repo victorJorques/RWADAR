@@ -11,7 +11,7 @@ import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
 import CalculadoraInicio, { ResultadoFlotante } from './CalculadoraInicio';
 import Colabora from './Colabora';
-import { ofertasDestacadas, recienAnadidas } from '../lib/recien-anadidas';
+import { ofertasDestacadas } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
 import { cifrasInicio } from '../lib/inicio-cifras';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
@@ -87,8 +87,7 @@ export default function Inicio({
   const avisoPrimero = compacta || (altoVisible > 0 && finAccion > altoVisible);
   const cifras = cifrasInicio({ ofertas, plataformas, descartadas: fuera, fechaCatalogo,
     orden: Object.keys(t.seleccion.letraPequena) });
-  const nuevas = recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente });
-  const destacadas = cifras.vigente ? ofertasDestacadas(nuevas, cifras.seleccion) : [];
+  const destacadas = cifras.vigente ? ofertasDestacadas(ofertas, cifras.seleccion) : [];
   const enSeleccion = new Set(cifras.seleccion.map((o) => o.slug));
   // La pantalla abierta encima de Inicio: 'mercado' (con las noticias) o 'aprende'.
   const [seccion, setSeccion] = useState(null);

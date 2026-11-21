@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
-import { ImagenOferta, avisosCriticos, lugarConPais } from './Ofertas';
+import { ImagenOferta, avisosCriticos, lugarConPais, ofertaParaResumen } from './Ofertas';
+import { resumenOferta } from '../lib/ficha-editorial';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { esNueva, fechaAlta } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
-import { fechaES } from '../lib/transparencia';
+import { datosTarjetaOferta, fechaES } from '../lib/transparencia';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -48,6 +49,9 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
           const bloqueo = critico?.tono === 'stop' ? critico : null;
           const nueva = esNueva(o, { dias: 30 });
           const cinco = seleccion.has(o.slug);
+          // Todas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y España.
+          const resumen = resumenOferta(ofertaParaResumen(o), [], new Date());
+          const datos = datosTarjetaOferta(o, resumen, { noEspana: !!resumen.cifrasVigentes && o.disponibleEs === false });
           return (
             <Pressable key={o.slug} onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
               style={({ pressed }) => [e.tarjeta, { width: ancho }, pressed && e.tarjetaPulsada]}
@@ -55,6 +59,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
               accessibilityLabel={[`${b.verFicha} ${String(o.titulo || '').replace(/\.$/, '')}`, procedencia, letra ? letra.replace(/\.$/, '') : null,
                 // Como FichaOferta: el lector de pantalla oye lo que se ve, el aviso crítico entero.
                 bloqueo ? `${traducir('Aviso bloqueante')}: ${String(bloqueo.texto).replace(/\.$/, '')}` : null,
+                ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
                 nueva ? b.nueva : null, cinco ? b.etiquetaCinco : null,
                 nueva && fecha ? `${b.anadida} ${fecha}` : null].filter(Boolean).join('. ')}>
               {/* «Nueva» y «Pasa las 5 comprobaciones», sobre la foto en su píldora oscura, como en
@@ -71,6 +76,15 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
               <View style={e.cuerpo}>
                 <Text noTraducir idiomaOriginal="es-ES" style={e.tarjetaTit} numberOfLines={4}>{o.titulo}</Text>
                 {procedencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.procedencia}>{procedencia}</Text> : null}
+                <View style={e.datos}>
+                  {datos.map(([etiqueta, valor], i) => (
+                    <View key={etiqueta} style={e.dato}>
+                      {i ? <Text style={e.datoPunto} accessible={false} importantForAccessibility="no">·</Text> : null}
+                      <Text style={e.datoEtiqueta}>{etiqueta}</Text>
+                      <Text style={e.datoValor}>{valor}</Text>
+                    </View>
+                  ))}
+                </View>
                 {letra ? <Text noTraducir style={e.letra}>{letra}</Text> : null}
                 {bloqueo ? (
                   <Text style={e.aviso}>
@@ -134,6 +148,11 @@ const e = StyleSheet.create({
   cuerpo: { flex: 1, paddingHorizontal: 16, paddingTop: 14, paddingBottom: 14 },
   tarjetaTit: { ...T.ficha, fontSize: 18, lineHeight: 23, color: C.tx },
   procedencia: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.semi, color: C.tx3, marginTop: 4 },
+  datos: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline', marginTop: 8 },
+  dato: { flexDirection: 'row', alignItems: 'baseline' },
+  datoPunto: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx3, marginHorizontal: 6 },
+  datoEtiqueta: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx2, marginRight: 4 },
+  datoValor: { ...T.menor, fontSize: 15, lineHeight: 21, fontFamily: F.semi, color: C.tx },
   // La línea de riesgo, como tarjetaSelLetra de Inicio.js.
   letra: { ...T.menor, fontSize: 16, lineHeight: 23, color: C.tx2, marginTop: 10 },
   // Como la web (.rel-nueva-bloqueo): raya roja a la izquierda; solo el aviso crítico.

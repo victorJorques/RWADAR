@@ -2126,26 +2126,29 @@ function lugarTarjetaHtml(lugar){
  const partes=String(lugar).split(' · '),pais=partes.pop();
  return '<span class="rel-lugar">'+(partes.length?'<span translate="no" lang="es">'+escHtml(partes.join(' · '))+'</span> · ':'')+'<span>'+escHtml(pais)+'</span></span>';
 }
-/* Ofertas de Inicio (rediseño del 10/11/2026): un solo carrusel con las
-   recién añadidas y las que pasan las 5 comprobaciones, sin duplicados y
-   6 como mucho. Primero las nuevas (de la más nueva a la más antigua);
-   después, las de la Selección que no estén ya, con 3 huecos guardados para
-   ellas aunque haya muchas nuevas. Cada tarjeta dice por qué está («Nueva»,
-   «Pasa las 5 comprobaciones») y abre su ficha. */
-function ofertasInicio(c,nuevas){
- const enNuevas=new Set(nuevas.map(o=>o.slug)),resto=c.seleccion.filter(o=>o&&!enNuevas.has(o.slug)).slice(0,3);
- const vistas=new Set(),lista=[];
- for(const o of [...nuevas.slice(0,6-resto.length),...resto]){if(!o||vistas.has(o.slug))continue;vistas.add(o.slug);lista.push(o);if(lista.length===6)break;}
- return lista;
+/* Ofertas de Inicio (21/11/2026, orden de Víctor: «que salgan las nuevas
+   añadidas, las más recientes»): las de Principales por su fecha de alta, de
+   la más nueva a la más antigua, 6 como mucho y sin huecos guardados para las
+   antiguas. A igual fecha, primero las que pasan las 5 comprobaciones y
+   después por proveedor y título. Cada tarjeta dice por qué destaca («Nueva»,
+   «Pasa las 5 comprobaciones») y abre su ficha. La app hace lo mismo
+   (ofertasDestacadas de rwadar-movil/lib/recien-anadidas.js). */
+function ofertasInicio(c){
+ const enSel=new Set(c.seleccion.map(o=>o.slug)),vistas=new Set();
+ return ofertasCatalogoInicio().filter(o=>o&&typeof o.slug==='string'&&o.coleccion==='principales'&&!vistas.has(o.slug)&&vistas.add(o.slug))
+  .sort((a,b)=>altaOferta(b).localeCompare(altaOferta(a))||(enSel.has(b.slug)?1:0)-(enSel.has(a.slug)?1:0)||masNuevasPrimero(a,b)).slice(0,6);
 }
 function tarjetaInicioHtml(o,i,seleccion){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);
  const bloqueo=avisoBloqueoOferta(o),nota=NOTAS_SELECCION[o.slug];
+ /* Todas las tarjetas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y si se contrata desde España. */
+ const dc=datosCortosOferta(o,resumenEditorialOferta(o)),noEsp=estadoVigenciaLocal(o).clase!=='caducado'&&o.disponibleEs===false;
  return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo"><p class="rel-nueva-meta">'+(nueva?'<span class="etq etq-ok">Nueva</span>':'')+(sel?'<span class="etq ini-etq-cinco">Pasa las 5 comprobaciones</span>':'')+'</p>'+
   '<h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
+  '<p class="rel-tarjeta-datos"><span>Mínimo</span> <b>'+escHtml(dc.minimo)+'</b><span class="rel-tarjeta-sep" aria-hidden="true"> · </span><span>España</span> <b>'+escHtml(noEsp?'No':dc.espanaCorta)+'</b></p>'+
   (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
   (nueva&&f?'<p class="rel-nueva-fecha"><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></p>':'')+
@@ -2195,7 +2198,7 @@ function pintarInicio(){
   const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.getAttribute('data-rel-sin')??'';
   if(el.textContent!==texto)el.textContent=texto;
  });
- const destacadas=sin?[]:ofertasInicio(c,nuevas),enSeleccion=new Set(c.seleccion.map(o=>o.slug));
+ const destacadas=sin?[]:ofertasInicio(c),enSeleccion=new Set(c.seleccion.map(o=>o.slug));
  ocultar('relEscaparate',sin||!destacadas.some(o=>enSeleccion.has(o.slug)));
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
  ocultar('relNuevas',!destacadas.length);
