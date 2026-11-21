@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-20",
+  "actualizadoEl": "2026-11-21",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Novedades al día: notificaciones activas desde el 12/11 y catálogo del 20/11",
+  "nota": "Catálogo 2026-11-20.2 aplicado (revisión 94f7fd5d), Inicio por fecha de alta y rótulos del mercado",
   "revisionAprobada": {
-    "commit": "822b1f8d45a8588aef4a2ddbc50f528323724618",
-    "contenidoSha256": "sha256:371397faf107de7d87f8c64b4fdcb0d51b617868473fdaeca3f1cb00a86c65e8",
+    "commit": "ac9cdb5e177372817cc2d886eff8c3e8befb978a",
+    "contenidoSha256": "sha256:bc72c57f9402d53db719b6149246c185f7e48eddbb9512169330c83936b614fc",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
