@@ -2256,11 +2256,13 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 }
 
 /* ============ Campana de avisos y notificaciones en este móvil (12/11/2026) ============ */
-/* La campana: solo con sesión confirmada. El globo rojo con el número, como
-   en las apps de mensajería: 1…9 y 9+. */
+/* La campana: la ve todo el mundo (21/11/2026); con sesión, los avisos de la
+   cuenta y, sin ella, los publicados. El globo rojo con el número, como en
+   las apps de mensajería: 1…9 y 9+. En escritorio, redonda y oscura como el
+   botón «?» de la barra del móvil. */
 .campana{position:relative}
 .campana[hidden]{display:none!important}
-.hdr-campana{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:var(--r-m);
+.hdr-campana{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:var(--r-p);
   background:var(--ton);color:var(--tx);cursor:pointer;transition:var(--tr);--bp:var(--ton-2)}
 @media (hover:hover){.hdr-campana:hover{background:var(--bp)}}
 .campana-n{position:absolute;top:2px;right:0;display:grid;place-items:center;min-width:19px;height:19px;padding:0 5px;
@@ -2299,11 +2301,10 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .avisos-baja{margin:0;color:var(--tx-2);font-size:.9rem;line-height:1.45}
 .avisos-gestionar{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;padding:0 12px;
   border:var(--bd);border-radius:var(--r-m);background:none;color:var(--senal);font:600 .9rem/1.2 var(--body);cursor:pointer}
-/* Bandeja: punto en los no leídos y «Marcar como leídos». */
+/* Bandeja: punto en los no leídos (sin «Marcar como leídos» desde el 21/11/2026:
+   verlos ya es leerlos). */
 .bandeja-avisos li.nuevo b{color:var(--tx)}
 .bandeja-punto{display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:50%;background:var(--coral);vertical-align:.08em}
-.bandeja-marcar{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;padding:0 4px;border:0;background:none;
-  color:var(--senal);font:600 .9rem/1.2 var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 /* Notificaciones en este móvil (Perfil › Avisos y panel de la cuenta). */
 .avisos-push{margin-top:16px;padding-top:14px;border-top:var(--bd)}
 .avisos-push[hidden]{display:none}
@@ -2340,7 +2341,7 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-accion.movil-descarga{margin-right:94px}
   .movil-campana .campana-n{top:1px;right:-2px}
 }
-/* En teléfonos estrechos, con sesión, la campana ocupa el sitio de la descarga
+/* En teléfonos estrechos la campana ocupa el sitio de la descarga
    (sigue en Perfil y en /android) para que el título no se corte. */
 @media (max-width:374px){
   .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-accion.movil-descarga{display:none}
