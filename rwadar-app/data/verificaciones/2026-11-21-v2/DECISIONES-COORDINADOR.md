@@ -256,3 +256,31 @@ Cuatro obligatorias:
   es falso: la lista de redes de Backed está incompleta y el resumen de Ondo no
   cuenta las acciones tokenizadas de Ondo Stocks.
 - Recomendadas del radar: al próximo ciclo.
+
+## 8. Para el montaje (21:0x UTC, tras el primer intento)
+
+El primer montaje paró en dos guardas del motor (bien puestas). Sin tocar el
+motor:
+
+- **Brickwise:** el coordinador ha pasado la `decision` de los 8 expedientes
+  con número fiscal austriaco de `retirar_propuesta` a `actualizar`, por la
+  decisión de Víctor de §1. Cada expediente guarda `decisionInvestigador`
+  (`retirar_propuesta`) y `decisionCoordinador` (el motivo). Lo demás de su
+  propuesta (avisos, cifras, referencias) entra con las correcciones de los
+  revisores y la auditoría. El acceso desde España se queda como está
+  publicado (no «No»): la decisión fue mantenerlas con aviso.
+- **Hausera · mínimo corto:** no va en `transparencia.minimosCortos` (esa
+  regla exige la fecha de la ficha al final, pensada para precios con fecha).
+  Va en `transparencia.textos`, campo `minimoCorto`: `antes` «Desde 100 € en
+  Alicante 3 (20/11)», `despues` «Desde 100 € · suscripción desde el 25/11»,
+  con su `prueba` del expediente de hoy (documento de emisión, «El periodo de
+  suscripción se iniciará el 25/11/2026…», y la ficha de Alicante 3,
+  «Inicio de oferta pública: 25/11/2026»). Si `transparencia.minimosCortos`
+  trae a Hausera del día anterior, se quita de ahí.
+- **Cohotel, Randhartingergasse e Hinterstoder:** el mínimo de la tarjeta se
+  queda en el formato de reventa que exige el motor («Desde X € la
+  participación en reventa (21/11)»), con la venta más barata de hoy; la
+  ficha lleva la referencia de los lotes («1 sola participación, desde
+  120 €», etc.) si el expediente la da.
+- **cambios-radar.json:** vale el arreglo de formato de la nota que hizo el
+  montador («Cambios del radar comprobados a mano el 21/11/2026. …»).

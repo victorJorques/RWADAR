@@ -740,7 +740,7 @@
   "porQueDestaca": "Precio y libro de órdenes públicos y fechados (API 21/11/2026: 97 participaciones en venta desde 75,00 €).",
   "porQueNo": "Un particular de España no puede comprarla hoy sin número fiscal austriaco y después debe declarar en Austria; además solo reventa, KID en alemán, riesgo 6 de 7 y compra parcial sin confirmar."
  },
- "decision": "retirar_propuesta",
+ "decision": "actualizar",
  "motivoDecision": "Un particular residente en España no puede comprar hoy esta emisión sin número fiscal austriaco. Es un producto de capital (securityType=participationRightEquity) de un emisor con domicilio en Austria (API, 2026-11-21T17:42:03Z). La ayuda de Brickwise (2026-11-21T17:42:38Z) dice: «Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun.» y la app, en su código público (2026-11-21T17:46:00Z), abre antes de comprar la ventana «Bei diesem Produkt wird eine österreichische Steuernummer benötigt» y no deja seguir sin él. Conseguirlo exige un trámite con Hacienda de Austria y después declarar allí las rentas y la ImmoESt al vender. Propuesta: retirarla. Si Víctor prefiere mantenerla, la tarjeta debe decir «España: No» («No: la app no deja comprar esta emisión sin número fiscal austriaco (se pide a Hacienda de Austria).») y llevar el aviso del número fiscal; las cifras de hoy están al día en este expediente (venta más barata 75,00 € por participación (11 a ese precio, orden del 28/04/2026); 97 en venta). Documentos con el mismo SHA-256, registros iguales y CNMV sin advertencias.",
  "bloqueos": [
   "Firmenbuch no consultado (de pago); los números FN vienen de los documentos y de la API.",
@@ -753,5 +753,7 @@
   "inicioUtc": "2026-11-21T17:41:48Z",
   "finUtc": "2026-11-21T17:56:40Z"
  },
- "comparacionVigia": "Mi lectura de la API (v1 2026-11-21T17:42:00Z, v2 2026-11-21T17:42:01Z) tiene los mismos bytes que la del vigía (17:36:55Z y 17:36:56Z; SHA-256 edaee0fe86ac… y b6d47201d2b1…). Las 5 cifras de la ficha coinciden con el vigía: sí. Documentos: KID, contrato e Informationsblatt descargados a mano (mismo SHA-256); Kosteninformationen, Rücktrittsbelehrung y búsquedas de la CNMV re-fechados con el vigía."
+ "comparacionVigia": "Mi lectura de la API (v1 2026-11-21T17:42:00Z, v2 2026-11-21T17:42:01Z) tiene los mismos bytes que la del vigía (17:36:55Z y 17:36:56Z; SHA-256 edaee0fe86ac… y b6d47201d2b1…). Las 5 cifras de la ficha coinciden con el vigía: sí. Documentos: KID, contrato e Informationsblatt descargados a mano (mismo SHA-256); Kosteninformationen, Rücktrittsbelehrung y búsquedas de la CNMV re-fechados con el vigía.",
+ "decisionInvestigador": "retirar_propuesta",
+ "decisionCoordinador": "actualizar · decisión de Víctor del 21/11/2026 (pregunta directa): las fichas de Brickwise se quedan, con un aviso claro del número fiscal austriaco (DECISIONES-COORDINADOR.md §1 y §2)"
 }

@@ -768,7 +768,7 @@
   "porQueDestaca": "Precio y libro de órdenes públicos y fechados (API 21/11/2026: 252 participaciones en venta desde 75 €).",
   "porQueNo": "Un residente en España no puede comprar sin número fiscal austriaco (hay que pedirlo antes en Austria) y tendría que declarar en Austria; además, solo reventa, KID solo en alemán, riesgo 6/7 y distribución en España sin confirmar."
  },
- "decision": "retirar_propuesta",
+ "decision": "actualizar",
  "motivoDecision": "Un particular residente en España sin número fiscal austriaco no puede comprar hoy esta emisión. La ayuda de Brickwise (21/11/2026, 2026-11-21T17:42:41Z) dice que quien tributa fuera de Austria solo puede invertir en estos productos de capital propio «durch vorherige Bekanntgabe einer Steuernummer in Österreich», que se pide a Hacienda de Austria en persona o con asesor; y el código público de la app (2026-11-21T17:47:22Z) corta la compra (también en reventa) con «Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt» y el botón «In ein anderes Produkt investieren». Además, las rentas tributan en Austria (declaración de la comunidad de inversores) y la ganancia al vender paga ImmoESt allí. Para el inversor común en España no es comprable hoy. Si la ficha se queda: «España: No» con el texto de resumenTarjeta.accesoEspana y el aviso nuevo. El resto se mantiene igual que lo publicado (libro de órdenes leído hoy, 2026-11-21T17:41:24Z, mismos bytes que el vigía: venta más barata 75 € con 5 participaciones; documentos con el mismo SHA-256).",
  "bloqueos": [
   "Firmenbuch no consultado (de pago); los números FN vienen de los documentos y de la API.",
@@ -1046,5 +1046,7 @@
    "fuente": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2",
    "motivo": "Lo pide Víctor el 21/11: dejar claro en cada ficha si hace falta."
   }
- ]
+ ],
+ "decisionInvestigador": "retirar_propuesta",
+ "decisionCoordinador": "actualizar · decisión de Víctor del 21/11/2026 (pregunta directa): las fichas de Brickwise se quedan, con un aviso claro del número fiscal austriaco (DECISIONES-COORDINADOR.md §1 y §2)"
 }
