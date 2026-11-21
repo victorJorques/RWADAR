@@ -23,7 +23,9 @@ y [`docs/INTERNO.md`](docs/INTERNO.md), y después solo la sección de
 - **Novedades siempre como notificación** (orden permanente de Víctor del
   14/11/2026: «pon las novedades como notificación, acuérdate eso siempre»).
   Cada vez que se publique algo nuevo para el usuario (mejoras de la web o la
-  app, o un ciclo del catálogo con cambios), al terminar se lanza «Avisar
+  app, un ciclo del catálogo con cambios o, desde el 21/11/2026, noticias
+  nuevas del sector: una vez al día como mucho y nunca si solo se volvieron a
+  comprobar, con lo que da `noticias-auto.mjs aviso-usuarios`), al terminar se lanza «Avisar
   novedad» (`avisar-novedad.yml`, acción `anunciar`, tipo `novedad`, título y
   texto en llano sin «oportunidad», «rentabilidad», «garantiz…» ni %, enlace a
   la página donde se ve, confirmación `ENVIAR`). Esta orden es el permiso para

@@ -6,7 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { decidir, corregir, antesDeUnir, comprobarEjecucion, primeraLinea, hayQueAvisar } from '../lib/flujo.mjs';
+import { decidir, corregir, antesDeUnir, comprobarEjecucion, primeraLinea, hayQueAvisar, avisoNoticiasNuevas, VETADAS_AVISO, TITULO_AVISO_NOTICIAS } from '../lib/flujo.mjs';
 import { Freno, RUTAS, sha256 } from '../lib/comun.mjs';
 import { FECHA, BASE, montarDia, verificacionDe, programa, escribir, edicionBuena, copia, tmp, RAIZ } from './ayuda.mjs';
 
@@ -157,4 +157,43 @@ test('config: «activo»: false → no hace nada (código 3) (mutación 11)', ()
   assert.equal(programa(['config']).codigo, 0);
   escribir(path.join(dir, 'mal.json'), { ...c, selloHumanoMaxDias: 30 });
   assert.equal(programa(['config', '--config', path.join(dir, 'mal.json')]).codigo, 1);
+});
+
+// 21/11/2026, Víctor («Sii vale»): aviso a los usuarios solo cuando entran noticias nuevas, uno al día como mucho.
+test('aviso-usuarios: solo con noticias nuevas, uno al día, y sin palabras vetadas por la base', () => {
+  const ed = (...l) => ({ noticias: l.map(([id, titulo]) => ({ id, titulo })) });
+  const antes = ed(['a', 'Uno'], ['b', 'Dos']);
+  // Las mismas (solo vueltas a comprobar) o quitar alguna: no se avisa.
+  assert.equal(avisoNoticiasNuevas({ antes, ahora: ed(['a', 'Uno cambiado'], ['b', 'Dos']), fecha: FECHA }).aviso, null);
+  assert.equal(avisoNoticiasNuevas({ antes, ahora: ed(['a', 'Uno']), fecha: FECHA }).aviso, null);
+  // Una nueva: «Noticia nueva del sector» con su titular y el enlace a Mercado y noticias.
+  const una = avisoNoticiasNuevas({ antes, ahora: ed(['c', 'La CNMV avisa de tres webs'], ['a', 'Uno']), fecha: FECHA });
+  assert.deepEqual(una.nuevas, [{ id: 'c', titulo: 'La CNMV avisa de tres webs' }]);
+  assert.deepEqual(una.aviso, { titulo: 'Noticia nueva del sector', texto: 'En RWAdar: «La CNMV avisa de tres webs». Mírala en Mercado y noticias.',
+    enlace: 'https://rwadar.pages.dev/mercado/' });
+  // Dos nuevas: el número en el título.
+  const dos = avisoNoticiasNuevas({ antes, ahora: ed(['c', 'C'], ['d', 'D'], ['a', 'Uno']), fecha: FECHA });
+  assert.equal(dos.aviso.titulo, '2 noticias nuevas del sector');
+  assert.match(dos.aviso.texto, /^En RWAdar: «C»; «D»\. Míralas en Mercado y noticias\.$/);
+  // Un titular con una palabra que la base veta («autoriza…», %, «rendimiento»…): el texto no nombra titulares.
+  for (const t of ['Plataforma autorizada por la CNMV', 'Sube un 5 % el mercado', 'Mejor rendimiento del fondo', 'Bono del Tesoro en cadena']) {
+    const r = avisoNoticiasNuevas({ antes, ahora: ed(['c', t]), fecha: FECHA });
+    assert.equal(r.aviso.texto, 'Hay una noticia nueva del sector en RWAdar. Mírala en Mercado y noticias.', t);
+  }
+  // «bonos» (el activo) y «organización» pasan, como en la base.
+  assert.equal(VETADAS_AVISO.test('Bonos tokenizados y organización'), false);
+  assert.equal(VETADAS_AVISO.test('La CNMV autoriza un mercado'), false); // la base solo veta «autorizad…»
+  assert.equal(VETADAS_AVISO.test('gana dinero'), true);
+  // Uno al día: si ya hay un aviso de noticias de hoy (hora de España), no se manda otro; si es de ayer, sí.
+  const hoy = `${FECHA}T10:00:00+00:00`, ayer = new Date(Date.parse(`${FECHA}T10:00:00Z`) - 86400000).toISOString();
+  const recientes = c => ({ avisos: [{ id: '9', titulo: 'Noticia nueva del sector', creado_el: c }, { id: '8', titulo: 'Otra novedad', creado_el: hoy }] });
+  assert.equal(avisoNoticiasNuevas({ antes, ahora: ed(['c', 'C']), fecha: FECHA, recientes: recientes(hoy) }).aviso, null);
+  assert.ok(avisoNoticiasNuevas({ antes, ahora: ed(['c', 'C']), fecha: FECHA, recientes: recientes(ayer) }).aviso);
+  // Título y texto, dentro de lo que acepta «Avisar novedad» (3-90 y ≤ 400, una línea) y sin palabras vetadas.
+  const larga = avisoNoticiasNuevas({ antes, ahora: ed(...Array.from({ length: 8 }, (_, i) => [`n${i}`, 'x'.repeat(58)])), fecha: FECHA }).aviso;
+  for (const a of [una.aviso, dos.aviso, larga]) {
+    assert.ok(a.titulo.length >= 3 && a.titulo.length <= 90 && TITULO_AVISO_NOTICIAS.test(a.titulo));
+    assert.ok(a.texto.length <= 400 && !/[\r\n]/.test(a.texto) && !VETADAS_AVISO.test(`${a.titulo} ${a.texto}`));
+  }
+  assert.equal(larga.texto, 'Hay 8 noticias nuevas del sector en RWAdar. Míralas en Mercado y noticias.');
 });

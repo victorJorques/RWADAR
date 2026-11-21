@@ -10,8 +10,9 @@ Autorización: `AGENTS.md`, apartado «Noticias del sector automáticas». Cubre
 unirlo, sellarlo en el mismo PR y lanzar «Publicar web» (revisión y
 producción) **si pasan todas las compuertas de abajo**. Nada más: ni el
 catálogo, ni Supabase (salvo la lectura de visitante), ni la app (ni OTA ni
-EAS), ni avisos ni notificaciones a usuarios, ni la CI, ni esta skill, ni la
-guía, ni las fotos.
+EAS), ni otros avisos o notificaciones a usuarios, ni la CI, ni esta skill, ni
+la guía, ni las fotos. **El único aviso a los usuarios** es el de noticias
+nuevas (paso 12 bis; Víctor, 21/11/2026: «Sii vale»).
 
 **El freno, sin excepciones:** se publica solo si, en este orden, todo da
 bien: cerrojo libre; barrido con las fuentes críticas leídas; guía presente;
@@ -222,6 +223,18 @@ Igual que el 11 con `destino: produccion` (y `main` todavía = `M`;
 en verde o la comprobación falla: `PUBLICADO_CON_AVISO`, aviso urgente; **no**
 intentes deshacer nada solo.
 
+## Paso 12 bis · Aviso de noticias nuevas (1 min)
+
+Solo con producción en verde y comprobada. Guarda `/api/avisos/recientes`
+(`curl -s https://rwadar.pages.dev/api/avisos/recientes > <trabajo>/recientes.json`)
+y `NA aviso-usuarios --fecha <fecha> --recientes <trabajo>/recientes.json`.
+Compara la edición publicada con la que había en producción al empezar (la
+del cerrojo): **3 → no se avisa** (ninguna noticia nueva, solo se volvieron a
+comprobar, o ya se avisó hoy de noticias). **0 →** lanza «Avisar novedad»
+(`avisar-novedad.yml`: `accion: anunciar`, `tipo: novedad`, y el `titulo`, el
+`texto` y el `enlace` exactos que da, `confirmacion: ENVIAR`) y espera a que
+acabe en verde. Si falla, no se reintenta: dilo en el resumen.
+
 ## Paso 13 · Cerrar
 
 `NA resumen --fecha <fecha> --estado <ESTADO> [--paso <paso> --motivo "<motivo>"] --minutos "<cuenta>"`
@@ -234,8 +247,8 @@ está propuesto, sin construir).
 
 Tu **último mensaje** empieza con la primera línea que da el resumen y sigue
 con el resto, en castellano llano. Si dice `AVISAR: sí`, envía además una
-notificación (PushNotification) con esa primera línea. Nunca se avisa a los
-usuarios. Después de unir no escribas nada más en el repositorio (otro PR
+notificación (PushNotification) con esa primera línea. A los usuarios, solo el
+aviso del paso 12 bis. Después de unir no escribas nada más en el repositorio (otro PR
 costaría minutos): la mañana siguiente lo ve en producción.
 
 ## Vuelta atrás (solo con orden de la dirección)

@@ -6,6 +6,27 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (44) · Claude · Aviso a los usuarios cuando entran noticias nuevas · REGLA Y PROGRAMA
+
+- **Orden de Víctor (21/11):** «Sii vale» a la propuesta de avisar solo cuando
+  entren noticias nuevas de verdad, una vez al día como mucho y nunca si solo
+  se vuelven a comprobar.
+- **Programa:** `noticias-auto.mjs aviso-usuarios --fecha <f> --recientes
+  <json>` compara la edición publicada (`rwadar-site/datos/noticias-v2.json`)
+  con la que había en producción al empezar (la del cerrojo). Sin noticias
+  nuevas, o si `/api/avisos/recientes` ya tiene uno de noticias de ese día
+  (hora de España), sale con 3 y no se avisa. Si hay nuevas, deja en
+  `<trabajo>/aviso-usuarios.json` el título («Noticia nueva del sector» o «N
+  noticias nuevas del sector»), el texto (los titulares o, si alguno lleva una
+  palabra que veta la base, un texto sin titulares) y el enlace (`/mercado/`).
+  Función `avisoNoticiasNuevas` en `lib/flujo.mjs`, con su prueba en
+  `pruebas/flujo.test.mjs` (80/80).
+- **Normas:** `AGENTS.md` (excepción permanente de avisos y noticias
+  automáticas), `CLAUDE.md`, la skill de noticias (paso 12 bis), su
+  `ORDEN-TAREA.md` y el párrafo de noticias de `investigacion-catalogo`.
+- **El 21/11 no hubo aviso:** la edición del día solo volvió a comprobar las 5
+  noticias de ayer (`aviso-usuarios` da 3).
+
 ## 21 de noviembre de 2026 (43) · Claude · Inicio: cada oferta con su fecha más reciente · PUBLICADO
 
 - **Publicado:** #183 (squash) y el sello #185 (merge, main = `e34e421e`);
