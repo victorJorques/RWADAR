@@ -64,5 +64,13 @@ publicación los cita, por eso siguen aquí y **no se deben borrar ni mover**.
 | [`SEO-2026-09-30.md`](SEO-2026-09-30.md) | Indexación en Google |
 | [`PREPARACION-PLAY-2026-09-30.md`](PREPARACION-PLAY-2026-09-30.md) | Gráficos y paquete para Google Play |
 
-Más atrás, en [`archive/`](archive/): agosto (antes y durante el apagado) y la
-versión detallada del estado a 30 de septiembre.
+Más atrás, en [`archive/`](archive/): agosto (antes y durante el apagado), la
+versión detallada del estado a 30 de septiembre y:
+
+- [`archive/2026-10/`](archive/2026-10/): planes, estado y revisiones de
+  pendientes de octubre (ya superados por [`INTERNO.md`](INTERNO.md)).
+- [`archive/2026-11/PARA-CODEX-hasta-2026-11-13.md`](archive/2026-11/PARA-CODEX-hasta-2026-11-13.md):
+  las entradas del traspaso entre Codex y Claude hasta el 13/11/2026.
+- [`archive/2026-11/VERIFICACIONES-ARCHIVADAS.md`](archive/2026-11/VERIFICACIONES-ARCHIVADAS.md):
+  los ciclos del catálogo, lotes y archivos quitados en la limpieza del
+  21/11/2026, y cómo recuperarlos del historial.

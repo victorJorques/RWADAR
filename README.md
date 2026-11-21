@@ -7,24 +7,24 @@ fuente al lado.
 → **https://rwadar.pages.dev** · App Android en
 [RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)
 
-> Este repositorio es **privado**. RWAdar es un registro independiente y no es
-> asesoramiento financiero.
+> Este repositorio es **público** desde el 21/11/2026. RWAdar es un registro
+> independiente y no es asesoramiento financiero.
 
 ## Estado
 
 La web y la app de Android están **publicadas** desde el 28 de septiembre de
-2026. A 7 de noviembre de 2026:
+2026. A 21 de noviembre de 2026:
 
-- **Catálogo** del 05/11/2026: 25 plataformas en el radar (5 descartadas) y
-  22 ofertas. Vale hasta el 12/11/2026 incluido; si no se renueva, desde el
-  13/11 a las 00:00 UTC (01:00 en España) se sigue viendo con un aviso y sin
+- **Catálogo** del 20/11/2026: 25 plataformas en el radar (5 descartadas) y
+  22 ofertas. Vale hasta el 27/11/2026 incluido; si no se renueva, desde el
+  28/11 a las 00:00 UTC (01:00 en España) se sigue viendo con un aviso y sin
   las cifras vencidas.
 - **Cuentas** abiertas y gratis. Las 9 lecciones de RWAdar Academy se leen con
   una cuenta; el índice y el tutorial 3D, sin ella.
 - **App Android 1.4.2**, publicada el 06/11/2026. No hay app de iPhone ni
   está en las tiendas.
-- **Avisos a registrados** (correo y notificaciones): preparados y apagados.
-  Opiniones y comunidad, en pausa.
+- **Notificaciones** encendidas en la web y en Android, también sin cuenta. El
+  correo de los avisos sigue apagado. Opiniones y comunidad, en pausa.
 
 Todo el detalle, en lenguaje llano: **[`docs/INTERNO.md`](docs/INTERNO.md)**.
 
@@ -66,13 +66,13 @@ npm test
 | `rwadar-qr/` | Código QR |
 | `rwadar-limpieza/` | Página de `rwadar.netlify.app` que desinstala la app web antigua; se conserva |
 | `rwadar-publicado/` | Generado al publicar; no se edita |
-| `rwadar-version-codex/` | Copia histórica de agosto; no se edita |
 | `docs/` | Documentación (lo legal, en `docs/legal/`) |
 
 ## Ramas
 
 **`main` es la rama vigente.** Desde el 1 de octubre de 2026 contiene todo el
 trabajo de Codex y de Claude, y la web se publica desde ella con los flujos de
-GitHub. Las ramas `codex/*` y `claude/*` se conservan como historial (el panel
-de control sigue solo en `claude/panel-control`). Trabaja siempre a partir de
+GitHub. Las ramas ya unidas se borran solas al unir el PR o con el flujo
+«Limpiar ramas»; lo que llevaban queda en `main` (el panel de control sigue
+solo en `claude/panel-control`). Trabaja siempre a partir de
 `main` actualizada (`git pull`).

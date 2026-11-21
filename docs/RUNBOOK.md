@@ -125,8 +125,9 @@ móviles de verdad se comprueban aparte.
 
 - **Copia de la base:** automática cada noche cuando esté activada. Ver
   [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-- **Código:** sube ramas normales a GitHub, sin `--force`. Comprueba que el
-  repositorio sigue en `PRIVATE`.
+- **Código:** sube ramas normales a GitHub, sin `--force`. El repositorio es
+  público desde el 21/11/2026: todo lo que subas lo puede leer cualquiera.
+  Las ramas ya unidas se borran con el flujo «Limpiar ramas» (lo lanza Víctor).
 - Lo generado se reconstruye. Las fuentes, migraciones, portadas editoriales,
   la página de limpieza y la documentación sí tienen que estar en Git.
 - Para recuperar una decisión antigua, usa el historial de Git y
