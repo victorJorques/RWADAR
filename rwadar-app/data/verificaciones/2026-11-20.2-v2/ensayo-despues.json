@@ -1,0 +1,124 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-20T22:39:41Z–2026-11-20T22:44:22Z",
+  "como": "Copia aparte del repositorio (git clone --local, commit 59d1f3b, en <scratchpad>/ensayo-2026-11-20.2) con la carpeta del ciclo 2026-11-20.2-v2, el SQL de catalogo-2026-11-20.2-v2 y el motor ampliado copiados encima y node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción y guarda lo que leería un visitante (DIR = <scratchpad>/rest-ensayo-2026-11-20.2); ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Nada sale a la red ni toca Supabase. El paso 03 falla a propósito (aún no sincronizado).",
+  "revision": "1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a",
+  "huella": "1d2cd6b10aca240088c1d8aa31d01f6adf7f79e436a22600e43b3e6fa6141be6",
+  "sha256AplicarYAprobar": "7b13a3d28ad47a3dac14d77dbbb1211f9d718ac8bf07548f1a05b42a9e9c8391",
+  "pasos": [
+    {
+      "paso": "01-preparar",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20.2-v2/preparar-entrega.mjs --repetir",
+      "inicio": "2026-11-20T22:39:41Z",
+      "fin": "2026-11-20T22:39:43Z",
+      "exit": 0,
+      "salida": "  \"radar-canonico-26.json\": \"72b29b32d60c601c21d2855b57548e1e685171f393f927e959cba1cbc0ca5823\",\n  \"manifiesto-catalogo.json\": \"c2c51919a4cf00d66a58cea8f7d24d2091ada39bec80141ce94427766c3c4224\",\n  \"contraste-2026-11-20.2.json\": \"454b3ba3ccf5f1fad0c21c04c1515cc74aefd747bf3607620a516da4f983c94b\",\n  \"aplicar-y-aprobar.sql\": \"7b13a3d28ad47a3dac14d77dbbb1211f9d718ac8bf07548f1a05b42a9e9c8391\",\n  \"catalogo.sql\": \"429555498934e0ad65eb8445e892a1e0a907d2c7fa38cf9995c7ee1fa10b4be2\",\n  \"revision.json\": \"90d4c1422e227ec242d6bf48926e4d1c29876bc926630bf974c8727ff20482fe\"\n }\n}"
+    },
+    {
+      "paso": "02-comprobar",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20.2-v2/comprobar-entrega.mjs --exportar=<scratchpad>/rest-ensayo-2026-11-20.2",
+      "inicio": "2026-11-20T22:39:43Z",
+      "fin": "2026-11-20T22:40:10Z",
+      "exit": 0,
+      "salida": "{\n \"resultado\": \"correcto\",\n \"etiqueta\": \"2026-11-20.2\",\n \"revisionId\": \"1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a\",\n \"sha256\": \"7b13a3d28ad47a3dac14d77dbbb1211f9d718ac8bf07548f1a05b42a9e9c8391\",\n \"pruebas\": 19,\n \"casosDeFallo\": 6\n}"
+    },
+    {
+      "paso": "03-despues-antes-de-sincronizar",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20.2-v2/despues-de-aplicar.mjs",
+      "inicio": "2026-11-20T22:40:10Z",
+      "fin": "2026-11-20T22:40:10Z",
+      "exit": 1,
+      "salida": "NO: el catálogo sincronizado no es la revisión 1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js\n+ actual - expected\n\n  [\n+   'eca89db7-aac5-35fa-f792-5bffbe8795e2'\n-   '1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a'\n  ]"
+    },
+    {
+      "paso": "04-sincronizar",
+      "orden": "RWADAR_REST_SIMULADO=<scratchpad>/rest-ensayo-2026-11-20.2 node -r ./rwadar-app/data/verificaciones/2026-11-20.2-v2/ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "inicio": "2026-11-20T22:40:10Z",
+      "fin": "2026-11-20T22:40:10Z",
+      "exit": 0,
+      "salida": "[REST simulado] catalogo_plataformas_publicas_v2?select=*&limit=257 -> 25 filas\n[REST simulado] plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(ur -> 5 filas\n[REST simulado] catalogo_ofertas_publicas_v2?select=*&limit=1001 -> 22 filas\nSincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.\nrwadar.csv regenerado: 30 filas."
+    },
+    {
+      "paso": "05-despues",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20.2-v2/despues-de-aplicar.mjs",
+      "inicio": "2026-11-20T22:40:10Z",
+      "fin": "2026-11-20T22:40:10Z",
+      "exit": 0,
+      "salida": "· transparencia.json: revisión, lote y verificadaEl al 20/11; fecha del 20/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); 11 mínimos cortos; 0 textos con fecha\nComprobaciones de transparencia al 20/11: 43 de 44. Con su fecha anterior:\n  · mtbill · supervisada: 2026-11-10 (la dirección https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche no aparece entre las consultas de hoy del expediente)\nTítulos de puntos fuertes con fecha de consulta: 11 de 11 pasan al 20/11.\nMínimos cortos: apartamento-vacacional-hinterstoder-50 «Desde 75 € la participación (20/11)», drautalresidenz-paternion «Desde 70 € la participación (20/11)», fotovoltaica-cohotel «Desde 110 € la participación (20/11)», fotovoltaica-greenpoint «Desde 102 € la participación (20/11)», randhartingergasse-9-viena «Desde 78 € la participación (20/11)», local-de-estanco-klagenfurt «Desde 95 € la participación (20/11)», vivienda-pluddemanngasse-101-graz «Desde 75 € la participación (20/11)», vivienda-pottendorfer-stra-e-62-wr-neustadt «Desde 81 € la participación (20/11)», vivienda-schwarzer-weg-18-graz «Desde 69,90 € la participación (20/11)», vivienda-sonnleithnergasse-2-viena «Desde 75 € la participación (20/11)», vivienda-stallhofstra-e-28-gratwein «Desde 68,80 € la participación (20/11)»\nSiguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-fichas.js && npm test"
+    },
+    {
+      "paso": "06-despues-otra-vez",
+      "orden": "node rwadar-app/data/verificaciones/2026-11-20.2-v2/despues-de-aplicar.mjs",
+      "inicio": "2026-11-20T22:40:10Z",
+      "fin": "2026-11-20T22:40:11Z",
+      "exit": 0,
+      "salida": "Nada que cambiar: ya estaba hecho.\nComprobaciones de transparencia al 20/11: 43 de 44. Con su fecha anterior:\n  · mtbill · supervisada: 2026-11-10 (la dirección https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche no aparece entre las consultas de hoy del expediente)\nTítulos de puntos fuertes con fecha de consulta: 11 de 11 pasan al 20/11.\nMínimos cortos: apartamento-vacacional-hinterstoder-50 «Desde 75 € la participación (20/11)», drautalresidenz-paternion «Desde 70 € la participación (20/11)», fotovoltaica-cohotel «Desde 110 € la participación (20/11)», fotovoltaica-greenpoint «Desde 102 € la participación (20/11)», randhartingergasse-9-viena «Desde 78 € la participación (20/11)», local-de-estanco-klagenfurt «Desde 95 € la participación (20/11)», vivienda-pluddemanngasse-101-graz «Desde 75 € la participación (20/11)», vivienda-pottendorfer-stra-e-62-wr-neustadt «Desde 81 € la participación (20/11)», vivienda-schwarzer-weg-18-graz «Desde 69,90 € la participación (20/11)», vivienda-sonnleithnergasse-2-viena «Desde 75 € la participación (20/11)», vivienda-stallhofstra-e-28-gratwein «Desde 68,80 € la participación (20/11)»\nSiguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-fichas.js && npm test"
+    },
+    {
+      "paso": "07-volcar-seed",
+      "orden": "RWADAR_REST_SIMULADO=<scratchpad>/rest-ensayo-2026-11-20.2 node -r ./rwadar-app/data/verificaciones/2026-11-20.2-v2/ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js && git status --short rwadar-app/db/02_seed.sql && echo seed-status-fin",
+      "inicio": "2026-11-20T22:40:11Z",
+      "fin": "2026-11-20T22:40:11Z",
+      "exit": 0,
+      "salida": "[REST simulado] categorias?select=*&order=orden -> 6 filas\n[REST simulado] regiones?select=*&order=slug -> 8 filas\n[REST simulado] radar_publico?select=* -> 25 filas\n[REST simulado] plataformas?estado=eq.descartada&select=slug,nombre,etiqueta_descarte,motivo_descarte,verif -> 5 filas\n02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.\nseed-status-fin"
+    },
+    {
+      "paso": "08-transparencia",
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "inicio": "2026-11-20T22:40:11Z",
+      "fin": "2026-11-20T22:40:11Z",
+      "exit": 0,
+      "salida": "Transparencia escrita: 22 ofertas con transparencia"
+    },
+    {
+      "paso": "09-fichas",
+      "orden": "node rwadar-fichas.js",
+      "inicio": "2026-11-20T22:40:11Z",
+      "fin": "2026-11-20T22:40:12Z",
+      "exit": 0,
+      "salida": "Archivos actualizados: 22"
+    },
+    {
+      "paso": "10-npm-test",
+      "orden": "npm test",
+      "inicio": "2026-11-20T22:40:12Z",
+      "fin": "2026-11-20T22:44:22Z",
+      "exit": 1,
+      "salida": "# tests 695\n# suites 0\n# pass 692\n# fail 1\n# cancelled 0\n# skipped 2\n# todo 0\n# duration_ms 33480.376531\n\nFallo único: «las ofertas reales publicadas…» (rwadar-movil/tests/ofertas-presentacion.test.cjs): «sin lectura en línea de la revisión 1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a». Solo existe después de aplicar de verdad. Con la lectura «después de aplicar» simulada SOLO en la copia (vistas exportadas de PGlite, marcada como simulada), ese archivo da 25 de 25."
+    },
+    {
+      "paso": "10b-npm-test-ofertas-presentacion-con-lectura-simulada",
+      "orden": "node --test rwadar-movil/tests/ofertas-presentacion.test.cjs",
+      "exit": 0,
+      "salida": "# tests 25\n# pass 25\n# fail 0"
+    }
+  ],
+  "archivosQueCambian": [
+    "M rwadar-editorial-source/ofertas/transparencia.json",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/ofertas/aktionariat.html",
+    "M rwadar-site/ofertas/apartamento-vacacional-hinterstoder-50.html",
+    "M rwadar-site/ofertas/boss-info.html",
+    "M rwadar-site/ofertas/drautalresidenz-paternion.html",
+    "M rwadar-site/ofertas/fotovoltaica-cohotel.html",
+    "M rwadar-site/ofertas/fotovoltaica-greenpoint.html",
+    "M rwadar-site/ofertas/hausera-proximas-ofertas.html",
+    "M rwadar-site/ofertas/kraken-xstocks.html",
+    "M rwadar-site/ofertas/local-de-estanco-klagenfurt.html",
+    "M rwadar-site/ofertas/mtbill.html",
+    "M rwadar-site/ofertas/prosegur-digital-gold.html",
+    "M rwadar-site/ofertas/randhartingergasse-9-viena.html",
+    "M rwadar-site/ofertas/robinhood-classic-stock-tokens.html",
+    "M rwadar-site/ofertas/spiko-letras-del-tesoro-dolar.html",
+    "M rwadar-site/ofertas/spiko-letras-del-tesoro-euro.html",
+    "M rwadar-site/ofertas/spiko-smart-cash-euro.html",
+    "M rwadar-site/ofertas/switzerlend.html",
+    "M rwadar-site/ofertas/vivienda-pluddemanngasse-101-graz.html",
+    "M rwadar-site/ofertas/vivienda-pottendorfer-stra-e-62-wr-neustadt.html",
+    "M rwadar-site/ofertas/vivienda-schwarzer-weg-18-graz.html",
+    "M rwadar-site/ofertas/vivienda-sonnleithnergasse-2-viena.html",
+    "M rwadar-site/ofertas/vivienda-stallhofstra-e-28-gratwein.html",
+    "?? rwadar-app/data/verificaciones/2026-11-20.2-v2/DIFF-ENTREGA.md",
+    "?? rwadar-app/data/verificaciones/2026-11-20.2-v2/pruebas-locales.json"
+  ]
+}

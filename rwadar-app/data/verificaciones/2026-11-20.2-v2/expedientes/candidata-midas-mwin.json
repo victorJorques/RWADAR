@@ -1,0 +1,458 @@
+{
+ "slug": "candidata-midas-mwin",
+ "tipoExpediente": "candidata",
+ "grupo": "busqueda-nueva",
+ "angulo": "producto-inmuebles-bonos-materias",
+ "proveedor": "Midas (plataforma del radar; mTBILL ya publicado)",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app, tras un control de Cloudflare); no hay distribuidor inscrito en la CNMV para este producto",
+ "emisor": "Según la web de Midas el 01/11/2026 (mapa de emisores del código de midas.app): «Aureum Securitisation Fund acting in respect of compartment mWIN», con marco «Exempt Offer». Hoy no se pudo releer midas.app (Cloudflare). GLEIF: Aureum Securitisation Fund, fondo de titulización luxemburgués, LEI 391200M2JHLV9OZAZN78, inscrito como O136, c/o Aureum Manco S.à r.l. No es Midas Software GmbH, el emisor del folleto base BPWO-84.",
+ "vehiculo": "Compartimento mWIN de un vehículo de titulización de Luxemburgo (ley de 22/03/2004); estrategia de crédito multisector gestionada por Wellington Management según la nota de lanzamiento (fuente secundaria, hoy 403)",
+ "token": "mWIN «Midas Wellington Income Opportunities»; Ethereum 0x4E72025984424E52838cf8953E2863eFf036B67A (también Avalanche 0x61daEEb998bC5415DF8512A4Be1b71f4275Ef314)",
+ "derechoAdquirido": "Valor emitido por un compartimento de titulización; los términos no están publicados en abierto (no hay folleto en la ESMA ni documentos de mWIN en docs.midas.app)",
+ "jurisdiccion": "LU",
+ "identificador": "LEI del vehículo 391200M2JHLV9OZAZN78 (GLEIF); ISIN no publicado",
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Documentación de Midas (llms-full.txt), copia de hoy",
+   "url": "https://docs.midas.app/llms-full.txt",
+   "versionOFecha": "Leída por el grupo acciones-oro-tesoro a las 16:55Z del 20/11/2026 (HTTP 200)",
+   "paginas": null,
+   "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76",
+   "leido": true,
+   "nota": "Archivo: grupos/acciones-oro-tesoro/fuentes/crudo/midas-docs-llms-full.txt. La lista «Legal Product Documentation» tiene 25 productos de Midas Software GmbH y mWIN no está. mWIN solo aparece en el registro de contratos inteligentes."
+  },
+  {
+   "titulo": "Folleto, condiciones finales o KID de mWIN",
+   "url": null,
+   "versionOFecha": "No existen en abierto el 20/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": false,
+   "nota": "ESMA: 0 documentos para el LEI del vehículo (21:11:07Z). CNMV: ningún pasaporte (21:12:00Z). El 01/11 los términos solo estaban en un enlace de DocSend, que no se abre (pide datos y aceptar condiciones)."
+  },
+  {
+   "titulo": "Nota de lanzamiento de mWIN (The Defiant, 10/08/2026)",
+   "url": "https://thedefiant.io/news/press-releases/introducing-mwin-midas-brings-institutional-credit-strategies-onchain-with-wellington-management",
+   "versionOFecha": "403 de Cloudflare a las 21:11:09Z",
+   "paginas": null,
+   "sha256": "dd861680081a5538cbbed5130df62b110976bec0116810672df4cbcd02ccea72",
+   "leido": false,
+   "nota": "Fuente secundaria. Bloqueada: se anotó y no se insistió. Lo que dice (Wellington, Northern Trust, USDC/PYUSD, vehículo luxemburgués) viene de la pista y no se usa como dato."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA (registro de folletos)",
+   "entidad": "Aureum Securitisation Fund",
+   "numero": "LEI 391200M2JHLV9OZAZN78",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*391200M2JHLV9OZAZN78*&wt=json&rows=100",
+   "alcance": "0 documentos. Tampoco hay nada con «Aureum» en el nombre. No hay folleto aprobado ni pasaportado para mWIN en ningún país del EEE.",
+   "consultadoUtc": "2026-11-20T21:11:07Z"
+  },
+  {
+   "regulador": "ESMA (registro de folletos)",
+   "entidad": "Midas Software GmbH",
+   "numero": "LEI 984500BB00BN6D2B7C48 · folleto base BPWO-84 (Liechtenstein)",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "alcance": "41 documentos, igual que el 11/11. Los cinco ISIN de la pista (DE000A4AXH53, DE000A4AXQV4, DE000A4AXS50, DE000A4AXS43 y DE000A4AYDK3) son condiciones finales de Midas Software GmbH con España entre los países. Al ser de otro emisor, no son mWIN. El registro no dice qué producto es cada ISIN.",
+   "consultadoUtc": "2026-11-20T21:09:27Z"
+  },
+  {
+   "regulador": "CNMV (pasaportes de folletos recibidos)",
+   "entidad": "Aureum Securitisation Fund",
+   "numero": null,
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=391200M2JHLV9OZAZN78",
+   "alcance": "«No se han encontrado datos disponibles» por LEI y por el nombre «Aureum». La misma consulta con el LEI de Midas Software GmbH sí devuelve BPWO-84, BPWO-63 y BPWO-45 (21:12:08Z): la consulta funciona.",
+   "consultadoUtc": "2026-11-20T21:12:00Z"
+  },
+  {
+   "regulador": "GLEIF (identificador de entidad, no es un supervisor)",
+   "entidad": "Aureum Securitisation Fund",
+   "numero": "LEI 391200M2JHLV9OZAZN78 · registeredAs O136 (autoridad RA000432)",
+   "url": "https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78",
+   "alcance": "Fondo de titulización de Luxemburgo, activo, creado el 24/11/2025, LEI del 16/01/2026, domicilio c/o Aureum Manco S.à r.l. (LEI 391200LLEN2M7MS50Z79, B301171). No acredita autorización de la CSSF ni que mWIN sea de este vehículo.",
+   "consultadoUtc": "2026-11-20T21:10:53Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-20T21:11:17Z",
+   "sha256": "652611a27c0566499e50c63adb98791873227da2f6623350976601e203376f9d"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-20T21:11:23Z",
+   "sha256": "a824c6dac96495bfd54023bec044c2f3f56cf749c0d45a0b14ad536c6b605a6a"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Aureum",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aureum",
+   "consultadoUtc": "2026-11-20T21:11:19Z",
+   "sha256": "a628e3e8d0a8ed0f4f9bf868a0884be4bfe4f661b857408d0b7e67470e4cbdd7"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Wellington",
+   "resultado": "2 advertencias sobre clones ajenos: 06/07/2020 «WELLINGTON MANAGEMENT EUROPE (CLON)» (no guarda relación con Wellington Management Europe GmbH, n.º 4799 en la CNMV) y 08/07/2019 webs wellington-investments.com y wellingtoninv.com. Ninguna es sobre la gestora real ni sobre mWIN.",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Wellington",
+   "consultadoUtc": "2026-11-20T21:11:21Z",
+   "sha256": "ab3bcce965adf3696ea93131267b67497b845494a903dd55deee985e2a0a77dd"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "party_name:*391200M2JHLV9OZAZN78* → numFound 0; party_name:*Aureum* → numFound 0",
+   "dato": "el vehículo de mWIN no tiene ningún folleto en el registro de la ESMA",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*391200M2JHLV9OZAZN78*&wt=json&rows=100",
+   "localizador": "ESMA, registro de folletos (Solr público), búsqueda por LEI y por nombre",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:11:07Z",
+   "alcanceYLimites": "Sin folleto no puede haber oferta pública a particulares en España. Encaja con la «Exempt Offer» que mostraba la web de Midas el 01/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registro",
+   "literal": "FTWS-2596 2026-09-16 DE000A4AXH53 · FTWS-2752/2753/2754 2026-09-30 DE000A4AXQV4, DE000A4AXS50, DE000A4AXS43 · FTWS-2788 2026-10-26 DE000A4AYDK3 · party_name «Midas Software GmbH - 984500BB00BN6D2B7C48» · home LIECHTENSTEIN · member_states …,SPAIN,…",
+   "dato": "los cinco ISIN de la pista son de Midas Software GmbH, no del vehículo luxemburgués",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "localizador": "ESMA, documentos id 46906101, 47217875, 47217876, 47217877 y 47836431",
+   "fechaDato": "2026-10-26",
+   "consultadoUtc": "2026-11-20T21:09:27Z",
+   "alcanceYLimites": "No se sabe qué producto es cada ISIN: el registro no da nombres, OpenFIGI no los conoce (21:11:38Z) y la MFSA y las páginas legales de docs.midas.app dieron 403 hoy. Para mWIN da igual: el emisor no coincide.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Aureum Securitisation Fund · LU · Fonds de titrisation · registeredAs O136 · c/o Aureum Manco S.à r.l. · ACTIVE · creationDate 2025-11-24",
+   "dato": "el vehículo luxemburgués existe y tiene LEI",
+   "fuentePrimaria": "https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78",
+   "localizador": "GLEIF, ficha LEI 391200M2JHLV9OZAZN78",
+   "fechaDato": "2026-01-16",
+   "consultadoUtc": "2026-11-20T21:10:53Z",
+   "alcanceYLimites": "GLEIF no es un supervisor. Que mWIN es de este vehículo sale de la web de Midas del 01/11 (hoy tras Cloudflare). No se comprobó si la CSSF lo autoriza.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "documentos",
+   "literal": "The documents below pertain to Midas Software GmbH as the legal issuer of the applicable mTOKENs. [lista de 25 productos: mArb … mTBILL, mXRP; sin mWIN]",
+   "dato": "Midas no publica folleto, condiciones finales ni KID de mWIN",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "«Legal Product Documentation» e «Issuer Documents»; mWIN solo en «mWIN Smart Contracts»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T16:55:00Z",
+   "alcanceYLimites": "Copia de hoy del grupo acciones-oro-tesoro (SHA-256 3003298138b5…8c76). docs.midas.app dio 403 a las 20:50:15Z y no se reintentó.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "certain strategies operate on a restricted basis. This is typically the case when an underlying strategy is legally limited to professional investors. … Only wallets that have been explicitly whitelisted by our team are authorised to interact with the smart contracts for these restricted tokens.",
+   "dato": "hay productos de Midas solo para profesionales, con cartera en lista blanca",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "FAQ «Why can I not invest when the button says “Get access”?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T16:55:00Z",
+   "alcanceYLimites": "Regla general de la plataforma, no nombra a mWIN. Lo que la aplica a mWIN es la lista blanca activa en su bóveda (claim siguiente).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "greenlistEnabled() = 1 (bóveda de suscripción y de reembolso de mWIN) · mTBILL: greenlistEnabled() = 0",
+   "dato": "solo pueden suscribir y reembolsar carteras en la lista blanca de Midas; mTBILL, que sí se vende a particulares, no la tiene",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com (bloque 26458903, 21:10:23Z) · token 0x4E72025984424E52838cf8953E2863eFf036B67A · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "bóvedas de mWIN (21:10:28Z) y bóveda de mTBILL 0x99361435420711723aF805F08187c9E6bF796683 (21:11:52Z)",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:28Z",
+   "alcanceYLimites": "Solo Ethereum. Junto con la falta de folleto y de pasaporte, indica un producto para profesionales. Ningún documento dice que esté abierto a minoristas.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Pasaportes · LEI 391200M2JHLV9OZAZN78 → «No se han encontrado datos disponibles»; denominación «Aureum» → idem",
+   "dato": "la CNMV no ha recibido ningún folleto del vehículo",
+   "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=391200M2JHLV9OZAZN78",
+   "localizador": "CNMV, Folletos, pasaportes recibidos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:12:00Z",
+   "alcanceYLimites": "Control con el LEI de Midas Software GmbH a las 21:12:08Z: devuelve BPWO-84, BPWO-63 y BPWO-45.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "bóveda de suscripción: paused() = 0 · greenlistEnabled() = 1 · token paused() = 0 · totalSupply 32,4805 mWIN",
+   "dato": "la suscripción funciona solo para carteras en lista blanca",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com (bloque 26458903, 21:10:23Z) · token 0x4E72025984424E52838cf8953E2863eFf036B67A · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "eth_call en el bloque 26458903",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:28Z",
+   "alcanceYLimites": "En Ethereum había 66,46 mWIN el 01/11 y hoy 32,48: ha bajado a la mitad. No hay una oferta abierta al público.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "minMTokenAmountForFirstDeposit() = 1000000000000000000 (1 mWIN) · oráculo mWIN/USD ronda 93 = 131827.97219477 · updatedAt 2026-11-20T10:27:59Z",
+   "dato": "primer depósito técnico de 1 mWIN, unos 131.828 USD al valor de hoy",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com (bloque 26458903, 21:10:23Z) · token 0x4E72025984424E52838cf8953E2863eFf036B67A · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "bóveda de suscripción y oráculo",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:28Z",
+   "alcanceYLimites": "Es un parámetro del contrato, no un mínimo escrito en un documento. No sirve para la tarjeta.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "bóveda de reembolso: paused() = 0 · greenlistEnabled() = 1 · instantFee() = 50 · instantDailyLimit() = 4 mWIN · minAmount() = 0,0000076923 mWIN",
+   "dato": "hay una bóveda de reembolso inmediato con comisión del 0,50 % y un límite de 4 mWIN al día (unos 527.000 USD), solo para la lista blanca",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com (bloque 26458903, 21:10:23Z) · token 0x4E72025984424E52838cf8953E2863eFf036B67A · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "bóveda de reembolso",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:28Z",
+   "alcanceYLimites": "No hay documento público con las condiciones de reembolso (plazos, suspensiones, mercado secundario). La lectura de la comisión en puntos básicos sigue la de mTBILL (7 = 0,07 %).",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Investing in security tokens involves a high degree of risk, including the risk of a total loss of invested capital. … Full risk disclosure can be found in the relevant product documentation.",
+   "dato": "solo hay riesgos genéricos de Midas (pérdida total, contratos inteligentes, oráculo, crédito del emisor, regulación)",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "«Legal Structure» y apartado de riesgos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T16:55:00Z",
+   "alcanceYLimites": "La propia web remite a la documentación de cada producto, y la de mWIN no es pública. Faltan los riesgos de crédito, tipos y cambio de esta estrategia.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "advertencias",
+   "literal": "Midas, Midas Software y Aureum: «No hay datos disponibles.» · Wellington: solo clones (2019 y 2020)",
+   "dato": "ninguna advertencia de la CNMV sobre Midas, el vehículo o la gestora real",
+   "fuentePrimaria": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "localizador": "CNMV, advertencias, tipo No autorizadas",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:11:23Z",
+   "alcanceYLimites": "Las dos advertencias de «Wellington» son de clones que se hacen pasar por la gestora.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "El vehículo luxemburgués (Aureum Securitisation Fund, LEI 391200M2JHLV9OZAZN78) existe según GLEIF. No tiene folletos en la ESMA ni pasaportes en la CNMV, y no se comprobó ninguna autorización de la CSSF. Los cinco ISIN de la pista son de Midas Software GmbH (BPWO-84), otro emisor."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "La bóveda de suscripción no está en pausa y el oráculo publicó un valor hoy a las 10:27:59Z. Pero solo pueden entrar carteras en la lista blanca, y el circulante en Ethereum bajó de 66,46 a 32,48 mWIN desde el 01/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Sin folleto ni pasaporte, no hay oferta pública en España. La lista blanca está activa, Midas la usa para productos limitados a profesionales y mTBILL no la tiene. El primer depósito técnico es de 1 mWIN, unos 131.828 USD. No hay mínimo ni salida en ningún documento público."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Solo hay riesgos genéricos de Midas; los de mWIN están en documentación que no es pública. No hay KID. Sin advertencias de la CNMV sobre Midas o Aureum; las de «Wellington» son clones ajenos."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "solo_acreditados",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente previo mwin (01/11/2026)",
+   "antes": "01/11: oferta exenta para lista blanca, primer depósito técnico de 1 mWIN (131.766,87 USD), 66,46 mWIN en Ethereum, términos solo en DocSend",
+   "ahora": "20/11: lista blanca y primer depósito de 1 mWIN siguen (131.827,97 USD); 32,48 mWIN en Ethereum; 0 folletos para el LEI del vehículo; mWIN fuera de la documentación legal de Midas",
+   "fuente": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com (bloque 26458903, 21:10:23Z) · token 0x4E72025984424E52838cf8953E2863eFf036B67A · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · bóveda de suscripción 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · bóveda de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "critico": true
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "mWIN de Midas: crédito gestionado por Wellington",
+  "categoria": "Renta fija",
+  "pais": "LU",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Token de un compartimento de titulización luxemburgués con una cartera de crédito; sin folleto ni pasaporte para España y solo para carteras en lista blanca.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": null,
+  "fuentesActuales": [
+   "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*391200M2JHLV9OZAZN78*&wt=json&rows=100",
+   "https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78",
+   "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=391200M2JHLV9OZAZN78"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": "No: sin folleto ni pasaporte en España y solo con cartera en la lista blanca de Midas",
+   "salida": null
+  },
+  "nota": "Candidata no admitida: no se propone tarjeta. resumenTarjeta solo recoge lo que hoy se lee en fuente primaria; lo demás queda en null. El primer depósito técnico (1 mWIN, unos 131.828 USD) no está en ningún documento y no se usa como mínimo."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "sin documento; técnico: 1 mWIN ≈ 131.828 USD (20/11)",
+  "supervisorVerificado": "no (solo LEI en GLEIF; ni folleto en la ESMA ni pasaporte en la CNMV)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "sí (oráculo del 20/11, solo como dato técnico)",
+  "porQueDestaca": "Cartera de crédito de una gestora grande, con valor diario en cadena.",
+  "porQueNo": "No hay oferta pública ni documentos: el vehículo no tiene folleto en la ESMA ni pasaporte en la CNMV, la suscripción es solo para carteras en lista blanca y el primer depósito técnico es de unos 131.828 USD."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Faltan varias piezas esenciales. (1) Acceso desde España como particular: el vehículo luxemburgués de mWIN (Aureum Securitisation Fund, LEI 391200M2JHLV9OZAZN78) tiene 0 folletos en la ESMA (21:11:07Z) y ningún pasaporte en la CNMV (21:12:00Z). Los cinco ISIN de la pista son condiciones finales de Midas Software GmbH (BPWO-84), otro emisor, así que no son mWIN. En cadena, las bóvedas de mWIN tienen la lista blanca activa (21:10:28Z, bloque 26458903), y Midas la usa para estrategias «legally limited to professional investors»; mTBILL, que sí se vende a particulares, no la tiene. (2) Documentos: Midas no publica folleto, condiciones finales ni KID de mWIN. Su lista de documentación legal (copia de hoy, 16:55Z) tiene 25 productos y mWIN no está. (3) Mínimo y salida: no hay ningún documento público; solo el contrato fija un primer depósito de 1 mWIN, unos 131.828 USD con el oráculo de las 10:27:59Z. Volver a mirar si aparece un folleto del vehículo en la ESMA con España entre los países, o un KID de mWIN.",
+ "bloqueos": [
+  "midas.app (403 de Cloudflare): no se pudo releer hoy el mapa de emisores que el 01/11 ligaba mWIN a Aureum Securitisation Fund.",
+  "docs.midas.app dio 403 a las 20:50:15Z (búsqueda previa) y no se reintentó; se usó la copia de llms-full.txt de hoy a las 16:55Z.",
+  "thedefiant.io (nota de lanzamiento, secundaria): 403 de Cloudflare a las 21:11:09Z; no se insistió.",
+  "No se identificó el producto de cada uno de los cinco ISIN: la ESMA no da nombres, OpenFIGI no los conoce y la API de medios de la MFSA dio 403 (20:58:33Z). No cambia la decisión: el emisor de esos ISIN no es el de mWIN.",
+  "No se consultó el registro de la CSSF ni el RCS de Luxemburgo para el vehículo; solo GLEIF.",
+  "DocSend (términos de mWIN el 01/11) no se abre: pide datos y aceptar condiciones."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T21:08:51Z",
+  "finUtc": "2026-11-20T21:14:54Z"
+ },
+ "lecturas20": [
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/esma-lei-midas.json",
+   "consultadoUtc": "2026-11-20T21:09:27Z",
+   "sha256": "ed607ccff11163d3a8fe71325f9198f3f3426eae437e89a585c7c0d403611592",
+   "http": 200
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com (eth_call mWIN: token, oráculo y bóvedas)",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/onchain-mwin-ethereum.json",
+   "consultadoUtc": "2026-11-20T21:10:28Z",
+   "sha256": "1cf37fca6688808b6f6da6cc3a03fdf5c74799718a13201add7dce725fa083c0",
+   "http": 200
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Aureum*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/esma-partynameAureum.json",
+   "consultadoUtc": "2026-11-20T21:10:39Z",
+   "sha256": "d95985e9ded190bb5fdb7afe7e354e2b8f22ceee603291426e370f71a570c71e",
+   "http": 200
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Midas*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/esma-partynameMidas.json",
+   "consultadoUtc": "2026-11-20T21:10:40Z",
+   "sha256": "93fa9c76406880e0c3589bdce1df342ec16c11fbd1b19178933841434203df2c",
+   "http": 200
+  },
+  {
+   "url": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.legalName%5D=Aureum&page%5Bsize%5D=50",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/gleif-aureum.json",
+   "consultadoUtc": "2026-11-20T21:10:42Z",
+   "sha256": "1da9ed7454c5c70b602ab052174ad8ef67f73970bf5424b031531a2bacdb4e07",
+   "http": 200
+  },
+  {
+   "url": "https://api.gleif.org/api/v1/lei-records/391200M2JHLV9OZAZN78",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/gleif-aureum-securitisation-fund.json",
+   "consultadoUtc": "2026-11-20T21:10:53Z",
+   "sha256": "efaca14538673560e4ffaeb032256adaa5567f5477c368c9c37d60f4016ab504",
+   "http": 200
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*391200M2JHLV9OZAZN78*&wt=json&rows=100",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/esma-lei-aureum.json",
+   "consultadoUtc": "2026-11-20T21:11:07Z",
+   "sha256": "c23f4340a80637c863ed7004fcad0b8087edcd9e42a590101572b2eb8009a6d2",
+   "http": 200
+  },
+  {
+   "url": "https://thedefiant.io/news/press-releases/introducing-mwin-midas-brings-institutional-credit-strategies-onchain-with-wellington-management",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/defiant-mwin.html",
+   "consultadoUtc": "2026-11-20T21:11:09Z",
+   "sha256": "dd861680081a5538cbbed5130df62b110976bec0116810672df4cbcd02ccea72",
+   "http": 403
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-adv-Midas.html",
+   "consultadoUtc": "2026-11-20T21:11:17Z",
+   "sha256": "652611a27c0566499e50c63adb98791873227da2f6623350976601e203376f9d",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aureum",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-adv-Aureum.html",
+   "consultadoUtc": "2026-11-20T21:11:19Z",
+   "sha256": "a628e3e8d0a8ed0f4f9bf868a0884be4bfe4f661b857408d0b7e67470e4cbdd7",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Wellington",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-adv-Wellington.html",
+   "consultadoUtc": "2026-11-20T21:11:21Z",
+   "sha256": "ab3bcce965adf3696ea93131267b67497b845494a903dd55deee985e2a0a77dd",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-adv-MidasSoftware.html",
+   "consultadoUtc": "2026-11-20T21:11:23Z",
+   "sha256": "a824c6dac96495bfd54023bec044c2f3f56cf749c0d45a0b14ad536c6b605a6a",
+   "http": 200
+  },
+  {
+   "url": "https://api.openfigi.com/v3/mapping (POST con los cinco ISIN)",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/openfigi-isins.json",
+   "consultadoUtc": "2026-11-20T21:11:38Z",
+   "sha256": "015f931cd2b8e7915c0dca6050ce79fd8e4b50bb46911dc04218b5d66f16cd7e",
+   "http": 200
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com (eth_call bóveda de suscripción de mTBILL, contraste)",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/onchain-mtbill-dv-contraste.txt",
+   "consultadoUtc": "2026-11-20T21:11:52Z",
+   "sha256": "c448edc8b7dc3b1879e4f61676cd7c0867e69d11114e8d719a571755f404baa5",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=391200M2JHLV9OZAZN78",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-pasaportes-aureum.html",
+   "consultadoUtc": "2026-11-20T21:12:00Z",
+   "sha256": "afbb9992c05dde9800c14865fb25ffa908f96d03be8dff0564c3110750659cc8",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=Aureum&lei=",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-pasaportes-aureum-nombre.html",
+   "consultadoUtc": "2026-11-20T21:12:02Z",
+   "sha256": "f7eb94bfe4e996268842f12d143c328dbd22984c49d4c708d23037da85d46358",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/midas-mwin/cnmv-pasaportes-midas-control.html",
+   "consultadoUtc": "2026-11-20T21:12:08Z",
+   "sha256": "6890ae90ba7ece408c0f57241e54243ed5cb00585a06a3b149f19e4db441b100",
+   "http": 200
+  },
+  {
+   "url": "https://docs.midas.app/llms-full.txt",
+   "archivo": "grupos/acciones-oro-tesoro/fuentes/crudo/midas-docs-llms-full.txt",
+   "consultadoUtc": "2026-11-20T16:55:00Z",
+   "sha256": "3003298138b58dd2035e673326cfef4ae89be0ac4c2da8b9c0518d5bb3ee8c76",
+   "http": 200,
+   "nota": "Copia del grupo acciones-oro-tesoro; reutilizada, no se volvió a pedir."
+  }
+ ],
+ "fuenteTexto": "grupos/busqueda-nueva/fuentes/producto/midas-mwin-2026-11-20.txt",
+ "notaEstadoOferta": "Bóveda de suscripción sin pausa, pero solo para carteras en la lista blanca de Midas (21:10:28Z). No es una oferta abierta al público.",
+ "notaDisponibleEs": "Sin folleto en la ESMA ni pasaporte en la CNMV; lista blanca activa, que Midas usa para estrategias limitadas a profesionales. Para un particular en España: no."
+}

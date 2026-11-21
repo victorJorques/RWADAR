@@ -6,6 +6,42 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (35) · Claude · Entrega 2026-11-20.2 revisada y lista para aplicar; GitHub sin minutos · SIN APLICAR
+
+- **Encargo (responsable del proyecto, 20/11, 22:30 UTC):** «Lo viejo que no
+  valga obviamente quítalo». Carpetas: `rwadar-app/data/verificaciones/2026-11-20.2-v2/`
+  y `rwadar-app/data/importaciones/catalogo-2026-11-20.2-v2/`. Parte de la
+  publicada `eca89db7`. Revisión `94f7fd5d`, SQL `622881c1…87cb`.
+- **73 cambios en 18 fichas:** dos fuentes fuera (mTBILL 404, GECO de Smart
+  Cash), fecha del dato «Acceso desde España» de las tres de Spiko al 13/11 y
+  68 referencias de «Datos con su fecha» superadas por un dato de hoy. Lo que se
+  deja a propósito: `DECISIONES-COORDINADOR.md` e `INFORME-ENTREGA.md`.
+- **Motor ampliado:** tipos `fuenteQuita` y `tarjetaFecha` (FORMATO.md, pruebas
+  en motor.test.mjs); segunda entrega del mismo día; PGlite aplica la migración
+  38 tras el lote 2026-11-20. `motor.test.mjs` + `flujo.test.mjs`: 24/24.
+- **Revisión única** (SQL, contenido, cumplimiento): aprobada con cambios. Smart
+  Cash dice ahora «ningún registro público confirma que este fondo esté dado de
+  alta para venderse en España» (C1) y el informe se corrigió (S1/O1).
+  `auditar`: una sola sentencia cambia, la pedida; PGlite correcto; sin
+  secretos. Sin auditor, por la orden de una sola revisión
+  (`VERIFICACION-ENTREGA.md`).
+- **Disponibilidad de las ofertas (21/11):** según la auditoría del 20/11,
+  ninguna de las 22 ha caducado ni desaparecido. Randhartingergasse 9 y
+  Hinterstoder (Brickwise) piden número fiscal austriaco (ya lo avisan); quitar
+  solo si lo pide la dirección.
+- **Bloqueo:** desde el 21/11 a las 01:54 UTC, GitHub Actions no arranca ningún
+  trabajo de la cuenta (sin máquina ni registro; GitHub sin incidencias): casi
+  seguro, minutos del plan gratuito agotados. Falta: presupuesto en GitHub ›
+  Billing o esperar al nuevo ciclo; después «Aplicar catálogo» con la fecha
+  `2026-11-20.2`, sincronizar, sello, publicar web, OTA y «Avisar novedad».
+- **Pendiente aparte:** PR #167 (Inicio: ofertas de la más nueva a la más
+  antigua, web y app); `pglite.test.mjs` (12/11) ya fallaba antes; las ramas
+  `claude/cerrojo-ciclo-2026-11-20` y `-21` no se pueden borrar desde estas
+  sesiones (403): las borra la dirección en GitHub. Para no repetirlo, no crear
+  ramas de cerrojo desde sesiones en la nube.
+
+---
+
 ## 20 de noviembre de 2026 (34) · Claude · Mercado: «hoy» solo con datos de hoy y la categoría de CoinGecko con su nombre · SIN PUBLICAR
 
 - **Encargo (Víctor, 20/11):** «lo viejo que no valga, quítalo… que no vuelvan

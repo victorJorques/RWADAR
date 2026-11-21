@@ -140,6 +140,54 @@ test('guardas de preparar: cada cambio indebido en decisiones.json para la entre
   finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
+test('fuenteQuita y tarjetaFecha: quitan una fuente que nada cita y re-fechan un dato de tarjeta sin tocar su valor, con sus guardas', () => {
+  const slug = 'kraken-xstocks', libre = 'https://support.kraken.com/articles/xstocks-availability', citada = 'https://eu.kraken.com/xstocks';
+  const pub = lp('ofertas-v2.json').find(o => o.slug === slug).documentacion;
+  const acceso = pub.referencias.find(r => r.etiqueta === 'Acceso desde España');
+  const prueba = { documento: 'DECISIONES-COORDINADOR.md', contiene: 'Decisiones del coordinador · entrega 2026-11-12' };
+  const con = (cambios, mas = () => {}) => d => {
+    d.sinCambios = d.sinCambios.filter(s => s !== slug); d.contraste.sinCambios = (d.contraste.sinCambios || []).filter(s => s !== slug);
+    d.ofertas[slug].cambios = cambios; mas(d);
+  };
+  const buenos = [
+    { tipo: 'fuenteQuita', url: libre, prueba },
+    { tipo: 'tarjetaFecha', etiqueta: 'Acceso desde España', antes: { valor: acceso.valor, fechaDato: acceso.fechaDato },
+      despues: { fechaDato: '2026-11-11', alcance: 'Nota nueva del alcance, de prueba.' }, prueba },
+  ];
+  // Bien: se quita la fuente, el dato de tarjeta cambia solo de fecha y nota, y nada más cambia.
+  const d = structuredClone(DECISIONES); con(buenos)(d);
+  const dir = tmp('fuente-fecha'), ruta = path.join(dir, 'decisiones.json');
+  try {
+    fs.writeFileSync(ruta, JSON.stringify(d, null, 2));
+    prepara({ decisiones: ruta, salida: path.join(dir, 'salida') });
+    const doc = leer(path.join(dir, 'salida', path.relative(RAIZ, CICLO), 'documentacion-ofertas.json'))[slug];
+    assert.ok(!doc.fuentes.includes(libre));
+    assert.deepEqual(doc.fuentes, pub.fuentes.filter(u => u !== libre), 'solo sale esa fuente');
+    const r = doc.referencias.find(x => x.etiqueta === 'Acceso desde España');
+    assert.equal(r.valor, acceso.valor, 'el valor no cambia');
+    assert.equal(r.fechaDato, '2026-11-11');
+    assert.equal(r.alcance, 'Comprobado de nuevo en la fuente el 12/11/2026. Nota nueva del alcance, de prueba.');
+    const k = leer(path.join(dir, 'salida', path.relative(RAIZ, CICLO), 'contraste-2026-11-12.json')).cambios.filter(c => c.slug === slug);
+    assert.deepEqual(k.map(c => [c.campo, c.despues === null]), [['fuente de la ficha', true], ['tarjeta (fecha del dato)', false]]);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+  // Guardas.
+  const casos = [
+    ['fuente que aún cita una referencia', [{ ...buenos[0], url: citada }], /la cita aún: referencia/],
+    ['fuente que no está en la ficha', [{ ...buenos[0], url: 'https://ejemplo.invalid/x' }], /no está una vez en las fuentes/],
+    ['fecha del dato «antes» que no es la publicada', [{ ...buenos[1], antes: { valor: acceso.valor, fechaDato: '2026-01-01' } }], /publicado \(fechaDato\)/],
+    ['valor «antes» que no es el publicado', [{ ...buenos[1], antes: { valor: acceso.valor + ' ', fechaDato: acceso.fechaDato } }], /publicado \(valor\)/],
+    ['tarjetaFecha que cambia el valor', [{ ...buenos[1], despues: { fechaDato: '2026-11-11', valor: 'otro' } }], /el valor no cambia/],
+    ['tarjetaFecha que no cambia nada', [{ ...buenos[1], despues: { fechaDato: acceso.fechaDato } }], /ni la fecha ni el alcance cambian/],
+    ['fecha del dato posterior a hoy', [{ ...buenos[1], despues: { fechaDato: '2026-12-01' } }], /posterior a hoy/],
+    ['tarjetaFecha en una etiqueta que no es de la tarjeta', [{ ...buenos[1], etiqueta: 'Folleto' }], /no es una etiqueta fija/],
+  ];
+  for (const [nombre, cambios, rx] of casos) {
+    const e = conDecisiones(con(cambios));
+    assert.ok(e, `${nombre}: tenía que fallar`);
+    assert.match(e.message, rx, `${nombre}: falló por otra cosa: ${e.message.split('\n')[0]}`);
+  }
+});
+
 test('radar: cambios-radar.json cambia el texto de un aviso de plataforma por su código, solo con el «antes» publicado', () => {
   const cr = leer(path.join(CICLO, 'cambios-radar.json'));
   const radar = leer(path.join(CICLO, 'radar-canonico-26.json'));

@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-11-20",
+  "nota": "Cambios del radar comprobados a mano el 20/11/2026. Segunda entrega del día (2026-11-20.2): parte de la publicada 2026-11-20, que ya lleva los cambios de plataformas de la primera (A23, A24 y A25), así que hoy no cambia ninguna dirección ni ningún texto del radar. Se reutiliza el contraste de las 69 fuentes de las 16:57 UTC y la lectura a mano de REGAFI de las 16:58 UTC.",
+  "fuentes": {},
+  "plataformas": {},
+  "verificacionesManuales": {
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "Misma página de REGAFI sin datos. Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 20/11/2026 a las 16:58 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6, igual que el 13/11)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ]
+    }
+  }
+}
