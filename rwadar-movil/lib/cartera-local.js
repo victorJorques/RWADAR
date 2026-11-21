@@ -16,4 +16,3 @@ export async function guardarCartera(usuarioId, posiciones) {
   const raw = serializarCartera(posiciones);
   await AsyncStorage.setItem(key, raw);
 }
-export async function borrarCartera(usuarioId) { await AsyncStorage.removeItem(claveCartera(usuarioId)); }

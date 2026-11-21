@@ -132,9 +132,6 @@ export const T = {
   instrumento: { fontFamily: F.mono, letterSpacing: 0, fontVariant: ['tabular-nums'] },
 };
 
-/* Escala de letra: 7 tamaños (11 solo en la barra inferior). */
-export const FS = { 1: 11, 2: 12, 3: 13, 4: 15, 5: 16, 6: 20, 7: 28 };
-
 /* ---------------------------------------------------------------------
    Elevación
    ---------------------------------------------------------------------
@@ -163,9 +160,6 @@ E.e3 = E.e2;
    (GUIA-ACABADOS §3). Radio anidado = radio exterior − relleno. */
 export const R = { s: 8, m: 12, l: 16, xl: 24, p: 999 };
 
-/* Un solo borde, en todas partes. */
-export const BORDE = { borderWidth: 1, borderColor: C.bd };
-
 /* Movimiento: 120 ms al pulsar, 160 para color y 200 para lo que aparece,
    siempre ease-out. `reducir` sigue a «reducir movimiento» del sistema: con
    él activo, los pulsados cambian de color pero no encogen. */
@@ -175,18 +169,6 @@ try {
   accesibilidad?.isReduceMotionEnabled?.()?.then?.((v) => { MOV.reducir = Boolean(v); })?.catch?.(() => {});
   accesibilidad?.addEventListener?.('reduceMotionChanged', (v) => { MOV.reducir = Boolean(v); });
 } catch { /* sin accesibilidad (pruebas): se queda en false */ }
-
-/* Tres botones (GUIA-ACABADOS §4): b1 relleno verde, una sola acción por
-   pantalla; b2 tonal, las demás; b3 de texto verde. Los controles no llevan
-   borde: se distinguen por su relleno. */
-export const BOTON = {
-  b1: { minHeight: 48, borderRadius: R.m, backgroundColor: C.senal, paddingHorizontal: 20,
-    alignItems: 'center', justifyContent: 'center' },
-  b2: { minHeight: 48, borderRadius: R.m, backgroundColor: C.ton, paddingHorizontal: 20,
-    alignItems: 'center', justifyContent: 'center' },
-  b3: { minHeight: 44, borderRadius: R.m, paddingHorizontal: 8, alignItems: 'flex-start', justifyContent: 'center' },
-  texto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, letterSpacing: 0 },
-};
 
 /* Estado al pulsar de cada variante. Se calcula al pulsar, así que respeta
    «reducir movimiento» aunque cambie con la app abierta. */

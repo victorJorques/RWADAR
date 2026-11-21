@@ -113,17 +113,6 @@ export async function cargarCatalogo(opciones = {}) {
     local: true, error: radar.error || ofertas.error };
 }
 
-export const CLAVES_MODO_LOCAL = Object.freeze({
-  radar: 'rwadar.local.cache.radar',
-  fuera: 'rwadar.local.cache.fuera',
-  ofertas: 'rwadar.local.cache.ofertas',
-  secundario: 'rwadar.local.cache.secundario',
-  exclusiones: 'rwadar.local.cache.exclusiones',
-  fecha: 'rwadar.local.cache.fecha',
-  siguiendo: 'rwadar.local.siguiendo',
-  pendientes: 'rwadar.local.seguimiento.pendiente',
-});
-
 /* ---------------------------------------------------------------------
    Consulta sin conexión
    --------------------------------------------------------------------- */
@@ -348,10 +337,6 @@ export async function cargarExclusiones({ soloCache = false } = {}) {
   const datos = escaparateLocal().exclusionesOfertas || [];
   try { await guardar(CACHE_EXCLUSIONES, datos); } catch {}
   return { datos, deCache: false, local: true, error: null };
-}
-
-export async function fechaSincronizacion() {
-  return AsyncStorage.getItem(CACHE_FECHA);
 }
 
 /* ---------------------------------------------------------------------
