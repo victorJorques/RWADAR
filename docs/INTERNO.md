@@ -1,16 +1,10 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 7 de noviembre de 2026.* Si solo vas a leer un documento, que
+*Actualizado el 21 de noviembre de 2026.* Si solo vas a leer un documento, que
 sea este. Lo que hizo cada sesión, con sus pruebas, está en
 [`tareas/PARA-CODEX.md`](tareas/PARA-CODEX.md). El detalle técnico antiguo está
 en los informes con fecha y en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
-
-> **El catálogo publicado vale hasta el jueves 12 de noviembre de 2026
-> incluido** (último día con cifras). Es la revisión del 05/11 (entrega
-> `2026-11-05.2`). Desde el viernes 13/11 a las 00:00 UTC (01:00 en España) no
-> desaparece: se sigue viendo completo, con un aviso y sin las cifras vencidas.
-> Para renovarlo, Víctor pide «haz la investigación» (ver «Lo que falta», punto 1).
 
 ---
 
@@ -29,8 +23,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare Pages, con un servidor web propio que gestiona la sesión). Se publica desde `main` con el flujo de GitHub «Publicar web», primero en revisión y después en producción. Última publicación: **10/11/2026** (catálogo del 10/11 y, en Inicio, «La tokenización en el mundo» y «Noticias del sector»). |
-| **Catálogo** | Investigado y publicado el **20/11/2026** (revisión `eca89db7`) y, el **21/11/2026**, la segunda entrega `2026-11-20.2` (revisión `94f7fd5d`), que solo quita datos y enlaces viejos de 18 fichas: **22 ofertas** (8 principales, 13 de reventa y 1 en camino) y **25 plataformas** en el radar (5 descartadas). Vale hasta el **27/11/2026** incluido; desde el 28/11 (00:00 UTC) se ve con aviso y sin cifras. Desde el 20/11, cada ciclo lleva una **auditoría completa** de cada dato visible (ofertas, radar, noticias y web) además de la revisión de la entrega, por orden de Víctor («que no vuelvan a haber textos ni datos falsos»). Ese día se corrigieron además 23 textos falsos o sin fuente del radar (migración 38). Ver [`INVESTIGACION-CATALOGO-2026-11-20.md`](INVESTIGACION-CATALOGO-2026-11-20.md). Las fuentes que bloquean se leen por rutas legítimas verificadas: [`.claude/skills/investigacion-catalogo/acceso/ACCESO-FUENTES.md`](../.claude/skills/investigacion-catalogo/acceso/ACCESO-FUENTES.md). |
+| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare Pages, con un servidor web propio que gestiona la sesión). Se publica desde `main` con el flujo de GitHub «Publicar web», primero en revisión y después en producción. Última publicación: **21/11/2026** (catálogo del 20/11 con su segunda entrega y, en Inicio, las ofertas de la más nueva a la más antigua). |
+| **Catálogo** | Investigado y publicado el **20/11/2026** y, el **21/11/2026**, la segunda entrega `2026-11-20.2`, que solo quita datos y enlaces viejos de 18 fichas: **22 ofertas** (8 principales, 13 de reventa y 1 en camino) y **25 plataformas** en el radar (5 descartadas). Vale hasta el **27/11/2026** incluido; desde el 28/11 (00:00 UTC) se ve con aviso y sin cifras. Desde el 20/11, cada ciclo lleva una **auditoría completa** de cada dato visible (ofertas, radar, noticias y web) además de la revisión de la entrega, por orden de Víctor («que no vuelvan a haber textos ni datos falsos»). Ese día se corrigieron además 23 textos falsos o sin fuente del radar (migración 38). Ver [`INVESTIGACION-CATALOGO-2026-11-20.md`](INVESTIGACION-CATALOGO-2026-11-20.md). Las fuentes que bloquean se leen por rutas legítimas verificadas: [`.claude/skills/investigacion-catalogo/acceso/ACCESO-FUENTES.md`](../.claude/skills/investigacion-catalogo/acceso/ACCESO-FUENTES.md). |
 | **Cuentas** | Abiertas y gratis. En la web, la cuenta confirmada hace falta para las funciones personales (lista de seguimiento, «Mis inversiones») y para leer las lecciones de la Academy; el resto se consulta sin registro. La app pide cuenta para todo desde la 1.4.1. El fallo que devolvía a la pantalla de acceso quedó resuelto el 29/10. El servidor web limita los intentos por IP; el CAPTCHA (Turnstile) está preparado y apagado. **Preparado el 12/11, sin publicar:** la sesión de la web ya no se pierde a la hora: el servidor guarda también el código de renovación en una segunda cookie y pide un pase nuevo solo. Con la casilla «Mantener la sesión iniciada en este dispositivo» (sale sin marcar, al entrar y al confirmar el correo) dura 30 días desde el último uso, aunque se cierre la web; sin ella, hasta cerrar el navegador. Riesgo aceptado: Supabase limita las renovaciones por IP y todas salen de Cloudflare; un abuso podría agotar ese cupo un rato (no saca a nadie de su cuenta). |
 | **Correo de las cuentas** | La confirmación y la recuperación de contraseña salen hoy por un **Gmail sin contrato de encargo**: es el riesgo legal más alto que queda. Se pasa a Lettermint en la ronda 2 del [plan](tareas/PLAN-CEO-2026-11-06.md). |
 | **App Android** | **[Versión 1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2)** publicada el **06/11/2026** (código 24). Lleva Firebase para las notificaciones del móvil, sin arranque automático: en el emulador, al abrirla, no hubo ninguna conexión a Firebase. Hasta que se enciendan los avisos funciona igual que la 1.4.1. Las actualizaciones automáticas (OTA) van ya a la 1.4.2; la 1.4.1 sigue funcionando y avisa de la versión nueva. No está en Google Play. Pendiente menor: unos textos de Lettermint de la app (ocultos mientras el correo esté apagado) irán en la próxima OTA. |
@@ -124,27 +118,12 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
      aplica; la protección de contraseñas filtradas de Supabase no está en el
      plan gratuito. Si hay una brecha:
      [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md).
-4. **Minutos de GitHub Actions.** El plan gratuito da 2.000 al mes en el
-   repositorio privado (https://github.com/pricing, consultado el 07/11). Del
-   01 al 07/11 se gastaron unos 790, sobre todo en las pruebas (`ci.yml`), que
-   corrían en cada PR y otra vez al unir a `main`, también cuando solo cambiaba
-   la documentación (recuento del 07/11; **verificar** en GitHub › Settings ›
-   Billing). A ese ritmo se acabarían hacia la mitad del mes. El 07/11 se
-   ajusta `ci.yml` para gastar menos (ver el traspaso de ese día en
-   [`tareas/PARA-CODEX.md`](tareas/PARA-CODEX.md)). GitHub Team sube el cupo a
-   3.000. El 13/11 `ci.yml` reparte la batería en trabajos a la vez (cinco
-   partes de batería y la app móvil; de unos 4 min a cerca de 1 min 30 s por
-   PR, estimado) y el PR que solo cambia el sello ya no la corre entera (unos
-   45 s). GitHub cobra cada trabajo por minutos enteros: un PR con código pasa
-   de unos 6 minutos facturados a unos 8 (cada trabajo queda por debajo del
-   minuto; el que lo pase en un runner lento cuenta 2, así que hasta unos 14),
-   y el del sello, de 6 a 3. Un ciclo (catálogo, sincronización y sello) pasa
-   de unos 18 a unos 19 (hasta 31 en el peor caso). Mirar los minutos reales
-   la primera semana en Settings › Billing. Las noticias automáticas (sin
-   encender) gastarían unos 11-13 al día (330-390 al mes); con un trabajo
-   «Noticias» propio en la CI, aún sin construir, 7-8 (210-240). Un día
-   frenado antes del PR, 0. Sus pruebas no van en el trabajo «Sello» (usan
-   un sello fijo), así que el PR de sello sigue bajo el minuto.
+4. **Minutos de GitHub Actions: ya no aplica.** El límite de minutos era del
+   repositorio privado (el plan gratuito se agotó el 21/11). Desde que el
+   repositorio es público (21/11/2026), las Actions no tienen ese límite. Lo
+   que se hizo antes para gastar menos (la CI repartida en trabajos a la vez y
+   el PR del sello sin la batería entera) se queda, porque también acorta la
+   espera.
 5. **Actualizar Postgres.** Antes, descargar una copia y abrirla una vez, como
    explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
 6. **Node.js del PC.** GitHub y EAS ya usan la versión corregida (22.23.4). En
@@ -174,7 +153,7 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
 | Cuándo | Qué |
 |---|---|
 | **11 de noviembre de 2026** | Hausera anuncia la oferta pública de Alicante 2 |
-| **12 de noviembre de 2026** | **Último día con cifras de la revisión del catálogo del 05/11.** Desde el 13/11 a las 00:00 UTC (01:00 en España) se conserva completa, con aviso y sin cifras vencidas |
+| **27 de noviembre de 2026** | **Último día con cifras del catálogo del 20/11.** Desde el 28/11 a las 00:00 UTC (01:00 en España) se conserva completo, con aviso y sin cifras vencidas |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada (GitHub Actions), guardada 35 días |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días (pg_cron en Supabase, versiones anteriores) |
 | Cada noche, 04:41 UTC | Limpieza de los avisos a registrados, `rwadar-novedades-limpieza` (pg_cron en Supabase, desde el 06/11/2026; corre aunque los avisos estén apagados) |
@@ -213,7 +192,6 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | `rwadar-movil/` | App de Android e iPhone (Expo) |
 | `rwadar-qr/` | Código QR de la tarjeta |
 | `rwadar-limpieza/` | Página que desinstala la app web antigua de `rwadar.netlify.app`: se conserva |
-| `rwadar-version-codex/` | Copia rescatada de la versión de agosto: no se edita |
 | `docs/` | Esta documentación; lo legal, en `docs/legal/` |
 
 El panel de control (`rwadar-panel/`) no está en `main`: está en la rama

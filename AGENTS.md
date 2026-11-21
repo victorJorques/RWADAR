@@ -1,7 +1,9 @@
 # RWAdar · instrucciones para agentes (Codex, Claude y otros)
 
 RWAdar está **publicado**: la web en `https://rwadar.pages.dev` y la app de
-Android en GitHub (`RWAdar-downloads`). El repositorio es privado.
+Android en GitHub (`RWAdar-downloads`). El repositorio es público desde el
+21/11/2026 (decisión de Víctor); las claves siguen en los secretos de GitHub y
+nunca en Git.
 
 **Antes de empezar, lee en este orden:**
 
@@ -104,7 +106,6 @@ ENCENDER** (ver [`ORDEN-TAREA.md`](.claude/skills/noticias-automaticas/ORDEN-TAR
   publicable de Supabase va en el cliente, pero no se copia a la documentación.
 - `rwadar-site/` es la fuente web. `rwadar-publicado/` y
   `rwadar-generated-source/` se generan y se pueden tirar.
-- `rwadar-version-codex/` es una copia histórica: no se edita.
 - `rwadar-limpieza/` desinstala la PWA antigua de Netlify: se conserva.
 - Los datos del catálogo no se editan en el HTML ni en el JS: la fuente de
   verdad es Supabase. **Ninguna plataforma descartada sin una fuente citable.**
@@ -113,7 +114,8 @@ ENCENDER** (ver [`ORDEN-TAREA.md`](.claude/skills/noticias-automaticas/ORDEN-TAR
   web porque una revisión caduque o no se pueda comprobar: se muestra la última
   copia completa con aviso y sin cifras vencidas.
 - Los informes con fecha de `docs/` (`VERIFICACION-…`, `CATALOGO-V2-…`, etc.)
-  los cita la compuerta de publicación: no se borran ni se mueven.
+  que cita la compuerta de publicación (`rwadar-app/data/relanzamiento/estado.json`)
+  no se borran ni se mueven.
 
 ## Autoría de los commits
 
@@ -171,6 +173,8 @@ Las tareas grandes para la otra herramienta van en su propio archivo dentro de
 - Localiza con `rg` antes de leer. No leas enteros los manuales históricos,
   binarios, tipografías en base64 ni archivos generados.
 - `git status --short --branch` antes y después de los generadores.
+- Las ramas ya unidas se borran con el flujo «Limpiar ramas» (lo lanza
+  Víctor; sin BORRAR solo lista; los cerrojos solo con `incluir_cerrojos=si`).
 - Pruebas del área que tocas; para cambios transversales, `npm test`. Ninguna
   prueba local demuestra cómo está producción.
 - El estado vigente va en `docs/INTERNO.md`, en lenguaje llano y sin hashes ni

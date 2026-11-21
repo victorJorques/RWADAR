@@ -5,7 +5,7 @@
 Víctor pidió inicialmente terminar la validación y publicar el APK existente, sin repetir
 las fases correctas ni compilar otra vez. Esta continuación no cambia código
 del producto, catálogo, cuentas o servicios remotos. La lista completa de lo
-hecho y pendiente figura en [la revisión del 23/10](REVISION-PENDIENTES-2026-10-23.md).
+hecho y pendiente figura en [la revisión del 23/10](archive/2026-10/REVISION-PENDIENTES-2026-10-23.md).
 
 APK: versión 1.4.0, código 18, paquete `com.rwadar.app`, 88.898.873 bytes.
 SHA-256: `350276ec8ed734801d86f5c739596e0e16bea4c6757a97b69b2737a67a7ce3d9`.

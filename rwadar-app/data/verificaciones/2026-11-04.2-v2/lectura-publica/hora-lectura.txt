@@ -1,3 +1,0 @@
-Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-04T23:33:43Z – 2026-11-04T23:33:48Z
-catalogo_plataformas_publicas_v2, catalogo_ofertas_publicas_v2, plataformas?estado=eq.descartada con todas sus columnas y sus fuentes, plataformas?slug=eq.artex-global-markets con sus fuentes y plataformas (slug, estado, cadenas) de las 30.
-Resultado: revisión cf79e4a4-f828-96ce-681b-ae69c3d1b81b, 26 plataformas, 24 ofertas (8/13/3), 4 descartadas (Domoblock, Goldfinch, RealT, Toucan Protocol); ARTEX en el radar con «No usa blockchain», sin fuentes propias en public.fuentes y sin ofertas. Igual que la primera lectura del intento anterior (22:47 UTC).
