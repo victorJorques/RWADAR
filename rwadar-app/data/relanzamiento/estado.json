@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Inicio: fecha más reciente en cada oferta (#183)",
+  "nota": "Noticias del sector del 21/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo 94f7fd5d",
   "revisionAprobada": {
-    "commit": "026e28193865934b2a77aed3a88a296dedb15747",
-    "contenidoSha256": "sha256:cdcfe91fb3e39689d8a353a87b615dc7f274986e66eb4e83bb34d270af396457",
+    "commit": "5f42c49844bcc171dbed7267a911dedfe1476b1e",
+    "contenidoSha256": "sha256:2db36b89a3eead8b94f47794b69ab7dc7e1ce98b31d18685ba33814cd332471a",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-20",
+  "actualizadoEl": "2026-11-21",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
@@ -23,9 +23,9 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-20",
+      "consultadaEl": "2026-11-21",
       "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico",
-      "imagen": "alerta-fraude"
+      "imagen": "alerta-fraude-3"
     },
     {
       "id": "cnmv-advertencias-9-entidades-dos-clones",
@@ -47,7 +47,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-20",
+      "consultadaEl": "2026-11-21",
       "tituloInformativo": "La CNMV advierte de 9 entidades no registradas, dos de ellas clones de firmas registradas",
       "imagen": "pago-online"
     },
@@ -71,7 +71,7 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-20",
+      "consultadaEl": "2026-11-21",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
       "imagen": "acciones-movil"
     },
@@ -95,7 +95,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-20",
+      "consultadaEl": "2026-11-21",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
       "imagen": "instituciones-ue-2"
     },
@@ -106,11 +106,11 @@
       "categoria": "regulacion",
       "ambito": "España",
       "titulo": "España ya tiene dos mercados de valores tokenizados",
-      "resumen": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo opera Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
+      "resumen": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo operará Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
       "porQueImporta": "España suma dos con Securitize. Se autoriza el mercado, no una emisión: por ahora no consta ninguna con documento público para particulares.",
       "en": {
         "titulo": "Spain now has two tokenised securities markets",
-        "resumen": "It is a DLT-based trading and settlement system under the EU pilot regime. It is run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
+        "resumen": "It is a DLT-based trading and settlement system under the EU pilot regime. It will be run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
         "porQueImporta": "Spain now has two, with Securitize. The market is authorised, not an issue: so far no issue with a public document for retail investors is on record.",
         "tituloInformativo": "Spain's CNMV authorises Bit2Me STX, the country's second market for tokenised securities"
       },
@@ -119,7 +119,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-20",
+      "consultadaEl": "2026-11-21",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
       "imagen": "bolsa-madrid"
     }
