@@ -86,14 +86,13 @@ horas para avisar a la AEPD.
 
 RWAdar no tiene sociedad constituida. Gestionan conjuntamente los reportes:
 
-- Eric Almiñana
-- Samuel Rodriguez
-- Victor Jorques
+- Victor Jorques (titular)
+- dos colaboradores del proyecto
 
 Contacto único: `rwadares@gmail.com`.
 
 El responsable del tratamiento de los datos personales es Víctor Manuel
-Jorques Granero (privacidad, apartado 1). Si Eric Almiñana y Samuel Rodriguez
+Jorques Granero (privacidad, apartado 1). Si los dos colaboradores
 son además corresponsables en el sentido del RGPD (art. 26) está por decidir
 ([registro de actividades](docs/legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md),
 apartado 1). Ese acuerdo y los plazos internos siguen pendientes de

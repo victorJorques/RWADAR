@@ -80,8 +80,8 @@ como brecha hasta saber más.
 
 ### Paso 0 · Avisar (en el momento)
 
-- Quien lo detecte avisa a Víctor por el canal más rápido: Víctor, Eric
-  Almiñana, Samuel Rodriguez, Codex, Claude, o un reporte que llegue a
+- Quien lo detecte avisa a Víctor por el canal más rápido: Víctor, los dos
+  colaboradores del proyecto, Codex, Claude, o un reporte que llegue a
   rwadares@gmail.com.
 - **Codex y Claude paran** lo que estén haciendo y se lo cuentan. No tocan
   producción, no publican y no borran nada sin la orden de Víctor.

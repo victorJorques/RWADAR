@@ -107,8 +107,8 @@ terminales y ninguna petición pendiente.
 
 ## Responsables y decisión pendiente
 
-RWAdar se gestiona sin sociedad constituida por **Eric Almiñana, Samuel
-Rodriguez y Victor Jorques**. Correo: `RWAdar@protonmail.com`.
+RWAdar se gestiona sin sociedad constituida por **Victor Jorques y dos
+colaboradores del proyecto**. Correo: `RWAdar@protonmail.com`.
 
 El acuerdo de corresponsabilidad no está firmado. Los plazos propuestos de 12
 meses y 3 años tampoco están aprobados. Hasta cerrarlos, no deben presentarse

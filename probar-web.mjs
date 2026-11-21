@@ -3266,7 +3266,7 @@ prueba('la identidad declarada incluye aviso legal sin aprobar funciones ni exti
   /criterios de conservación/.test(privacidadLineal) &&
   /no extingue las obligaciones anteriores/.test(privacidadLineal) &&
   /Alcance de esta versión/.test(privacidadLineal) &&
-  !/Eric Almiñana|Samuel Rodriguez|<b>Corresponsables del tratamiento:/.test(privacidad));
+  !/<b>Corresponsables del tratamiento:/.test(privacidad));
 prueba('la privacidad identifica la medición agregada, sus límites y su estado sin despliegue',
   /Cloudflare Web Analytics/.test(privacidad) && /No se utiliza Zaraz/.test(privacidad) &&
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&

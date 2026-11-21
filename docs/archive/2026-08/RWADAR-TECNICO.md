@@ -134,8 +134,8 @@ Security Advisor quedó en 0 Critical y 0 Security Definer View.
 
 ## 5 · Privacidad con estado honesto
 
-RWAdar no tiene sociedad constituida. Sus corresponsables actuales son Eric
-Almiñana, Samuel Rodriguez y Victor Jorques. Contacto:
+RWAdar no tiene sociedad constituida. Sus corresponsables actuales son Victor
+Jorques y dos colaboradores del proyecto. Contacto:
 `RWAdar@protonmail.com`.
 
 Existe un borrador de acuerdo, no un acuerdo firmado. Los plazos propuestos de
