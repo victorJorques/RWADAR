@@ -291,6 +291,11 @@ de la dirección, desde main, `ensayo-39` (sin DIRECTO; «ENSAYO CORRECTO» y
 «RWAdar 39 OK»), `aplicar-39` (DIRECTO; «RWAdar 35 OK» y «RWAdar 39 OK») y
 `verificar-39` (sin DIRECTO).
 
+**Si alguna vez se vuelve a aplicar la 35** (por ejemplo, tras `deshacer`), hay
+que aplicar después la 37 y la 39: `aplicar-35` vuelve a poner las funciones
+de la 35, cuyas esperas se desbordan, y su verificación solo pasa el
+verificador de la 35, así que no lo avisaría.
+
 ## 6. Encender (el coordinador, con permiso de la dirección, paso a paso)
 
 Antes:
