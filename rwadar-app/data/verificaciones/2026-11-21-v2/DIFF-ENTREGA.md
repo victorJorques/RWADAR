@@ -2,12 +2,12 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `c7f994423f918cfd5c1a24e6e9822cc758cec2ab5491a19894c994a9d722fe5f`, revisión `53747b1d-8b08-adda-5d0b-1f4875749a2d`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40`, revisión `508d0366-3c8e-8f9c-611d-bf49025a08d1`.
 - Parte de la publicada `94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7` (huella `94f7fd5df6e5c28e…`); último día vigente 28/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
 - Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **23** de 288.
 
-## Cambios por ficha (418 en 22 fichas)
+## Cambios por ficha (425 en 22 fichas)
 
 ### spiko-letras-del-tesoro-euro
 
@@ -17,8 +17,8 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Suscripción inicial mínima: 1 EUR» → (se quita)
 - referencia de la ficha: «Suscripción inicial publicada · 22/10/2026: 1 EUR» → (se quita)
 - referencia de la ficha: «Moneda · 22/10/2026: EUR» → (se quita)
-- referencia de la ficha: «Comisión de gestión · 22/10/2026: 0,25 %» → (se quita)
 - referencia de la ficha: «Mínimo de inversión · consulta 01/11/2026: Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR» → (se quita)
+- referencia de la ficha: «Comisión de gestión · 22/10/2026: 0,25 %» → «Comisión de gestión · 21/11/2026: 0,25 %»
 - referencia de la ficha: «Estado de la oferta · consulta 01/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs» → «Estado de la oferta · consulta 21/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs»
 - referencia de la ficha: «Comisiones · consulta 01/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último año.» → «Comisiones · consulta 21/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último año.»
 - referencia de la ficha: «Custodia · consulta 01/11/2026: Depositario: CACEIS Bank ... los activos del Producto conservados por el depositario no se verán afectados» → «Custodia · consulta 21/11/2026: Depositario: CACEIS Bank ... los activos del Producto conservados por el depositario no se verán afectados»
@@ -80,7 +80,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Descripción en el índice oficial de productos · 22/10/2026: «The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.»» → (se quita)
 - referencia de la ficha: «Acceso desde España · consulta 01/11/2026: U.S. Persons… Sanctioned Jurisdictions… Restricted Countries: Users from jurisdictions that Midas deems to pose an unacceptable legal or regulatory risk will be blocked.» → (se quita)
 - referencia de la ficha: «Países de oferta según la web de Midas · consulta 05/11/2026: España figura entre las 14 jurisdicciones permitidas del aviso de entrada de la web de Midas (versión 1.0.2), las mismas 14 de oferta pública de las Condiciones Finales» → (se quita)
-- referencia de la ficha: «Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany» → «Países de oferta pública · Condiciones Finales del 21/11/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany»
+- referencia de la ficha: «Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany» → «Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany»
 - fuente de la ficha: «https://midas.app/products» → (se quita)
 - fuente de la ficha: «https://midas.app/llms.txt» → (se quita)
 - fuente de la ficha: «https://midas.app/» → (se quita)
@@ -153,6 +153,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Situación del emisor: No es rentable, depende de la financiación de su grupo y avala un préstamo de su matriz» → «Situación del emisor: No es rentable, depende de la financiación de su grupo y avala un préstamo de su matriz»
 - tarjeta (fecha del dato): «Mínimo de inversión: Desde 1 € · dato del sin fecha» → «Mínimo de inversión: Desde 1 € · dato del sin fecha»
 - tarjeta (fecha del dato): «Acceso desde España: Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales · dato del sin fecha» → «Acceso desde España: Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales · dato del sin fecha»
+- tarjeta (fecha del dato): «Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo · dato del sin fecha» → «Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo · dato del sin fecha»
 
 ### boss-info
 
@@ -221,8 +222,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### vivienda-sonnleithnergasse-2-viena
 
@@ -245,8 +247,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### local-de-estanco-klagenfurt
 
@@ -270,8 +273,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### vivienda-stallhofstra-e-28-gratwein
 
@@ -295,8 +299,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### vivienda-schwarzer-weg-18-graz
 
@@ -320,8 +325,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### drautalresidenz-paternion
 
@@ -345,8 +351,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: «Desistimiento: No hay derecho de desistimiento al comprar en reventa» → «Desistimiento: No hay derecho de desistimiento al comprar en reventa»
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia.»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
-- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.»
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: «Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.» → (se quita)
+- aviso: (nuevo) → «Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### randhartingergasse-9-viena
 
@@ -371,9 +378,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar: sin él la app no deja comprar esta emisión»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
 - aviso: «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).» → (se quita)
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 - aviso: «Según la API, el inquilino se fue el 28/02/2026 y se busca otro; la rentabilidad no se muestra.» → (se quita)
-- aviso: (nuevo) → «Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra.»
+- aviso: (nuevo) → «Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Si sigue vacía, puede no haber repartos. La rentabilidad no se muestra.»
 
 ### apartamento-vacacional-hinterstoder-50
 
@@ -398,7 +405,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - referencia de la ficha: (nuevo) → «Número fiscal austriaco · 21/11/2026: Obligatorio para comprar: sin él la app no deja comprar esta emisión»
 - fuente de la ficha: (nuevo) → «https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2»
 - aviso: «Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).» → (se quita)
-- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
+- aviso: (nuevo) → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.»
 
 ### vivienda-pottendorfer-stra-e-62-wr-neustadt
 
@@ -528,15 +535,22 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …{"etiqueta":" «Suscripción inicial mínima publicada","valor":"1 EUR","fechaDato":null,"fechaConsulta":"2026-09-30","fuente":"https://data.spiko.io/eutbl/","alcance":"Condición mostrada durante la consulta; no prueba acceso específico desde España ni aceptación de una suscripción. Confirmar condiciones con el prove…» → «»
 - …{"etiqueta":" «Suscripción inicial mínima","valor":"1 EUR","fuente":"https://data.spiko.io/eutbl/","fechaDato":null,"fechaConsulta":"2026-09-30","alcance":"Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."},{"etiqueta":"» → «»
 - …{"etiqueta":" «Suscripción inicial publicada · 22/10/2026","valor":"1 EUR","fechaDato":null,"fechaConsulta":"2026-10-22","fuente":"https://data.spiko.io/eutbl/","alcance":"Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."},{"et…» → «»
+- …de gestión ·  «22/10/2026» → «<FECHA>»
+- …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
+- …fuente oficial el  «22/10/2026» → «<FECHA>»
 - …oferta · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaDato":" «2026-11-01» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «El fondo sigue » → «GECO <FECHA>: »
-- … fondo sigue vivo « y publica VL diaria (API: NAV 01» → «, todo tipo de suscriptores; VL del 20»
-- … 01/11/2026 «» → « (1,063496 €»
-- …se ha hecho  «onboarding» → «el alta»
-- …onboarding. Localizador:  «Ficha» → «ficha»
-- …{"etiqueta":" «Mínimo de inversión · consulta 01/11/2026","valor":"Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR","fechaDato":"2026-09-01","fechaConsulta":"2026-11-01","fuente":"https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf","alcance":"Clase EUR FR001400ODL1…» → «»
+- … fondo sigue vivo « y publica VL diaria (API: NAV 01/11/2026)» → «, todo tipo de suscriptores»
+- …11/2026).  «No se ha hecho onboarding. Localizador: Ficha GECO » → «El último valor liquidativo, »
+- …Ficha GECO del  «compartimento."},{"etiqueta":"Mínimo de inversión · consulta 01» → «20»
+- … 01/11/2026 «","valor":"Minimum initial subscription » → « (»
+- … initial subscription 1 « EUR · Minimum subsequent 1 EUR · redeemed 1 EUR","fechaDato":"2026-09-01","fechaConsulta":"2026-11-01","fuente":"https://cdn» → «,063496 €), es el que publica Spiko en su API»
+- …https://cdn. «spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf","alcance":"Clase EUR FR001400ODL1. No prueba aceptación individual» → « No se ha hecho el alta»
+- …individual. Localizador:  «Prospectus 01/09/2026, p. 5 y tabla «Characteristics of shares» p» → «ficha GECO del compartimento»
+- … shares» p. « 35; coincide con API /share-classes (minimumInitialSubscription \» → «»
+- … (minimumInitialSubscription \" «1\")."» → «»
 - …Comisiones · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
@@ -551,7 +565,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"fechaDato":" «<FECHA>» → «2026-11-20»
 - …liquidativo calculado el  «<FECHA>» → «20/11/2026»
-- …> y recalculado  «ese día » → «»
+- (y 1 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'spiko-letras-del-tesoro-dolar' 'https://www.spiko.io/es/spiko-letras-del-tesoro-dollar'
 
@@ -564,13 +578,16 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …oferta · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaDato":" «2026-10-30» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
-- …,"alcance":" «Fondo vivo con VL diaria (API» → «GECO <FECHA>»
-- …diaria (API:  «30/10/2026). Sin onboarding. Localizador: Ficha GECO» → «vivo, todo tipo de suscriptores; VL»
+- …,"alcance":" «Fondo » → «GECO <FECHA>: »
+- …":"Fondo vivo « con VL diaria (API: 30/10/2026)» → «, todo tipo de suscriptores»
+- …10/2026).  «Sin onboarding. Localizador: Ficha GECO » → «El último valor liquidativo, »
 - …Ficha GECO del  «compartimento."},{"etiqueta":"Mínimo de inversión · consulta 01» → «20»
 - … 01/11/2026 «","valor":"USD Share FR001400ODM9 ... » → « (»
 - … ... 1 « USD 1 USD 1 USD All investors"» → «»
 - … All investors", «"fechaDato":"2026-09-01","fechaConsulta":"2026-11-01","fuente":"https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf","alcance":"Conflicto en la clase EUR (FR001400SBD3» → «103573 $»
-- … EUR (FR001400SBD3) «: el folleto dice 1 EUR y la API de Spiko dice 1» → «»
+- … EUR (FR001400SBD3) «: » → «, es »
+- …FR001400SBD3): el  «folleto dice 1 EUR y la » → «que publica Spiko en su »
+- … y la API « de Spiko dice 1» → «»
 - …Spiko dice 1. «000 EUR. No publicar mínimo en euros hasta aclararlo» → « Sin alta»
 - …aclararlo. Localizador:  «Prospectus 01/09/2026, p. 5 y tabla p» → «ficha GECO del compartimento»
 - …y tabla p. « 23; API minimumInitialSubscription \» → «»
@@ -592,10 +609,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"https:// «data» → «www»
 - …https://data. «spiko» → «cnmv»
 - …//data.spiko. «io» → «es»
-- …data.spiko.io/ «ustbl» → «portal»
-- …spiko.io/ustbl/ «» → «consultas/iic/iicextranjera?nif=N0401205J&lang=es»
-- …,"alcance":" «Tamaño, no rentabilidad. Localizador: API /share-classes/USTBL/totals. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que » → «Registro de la CNMV de vehículos de inversión extranjeros, consultado el <FECHA>: «SPIKO SICAV · 2380 · 30/01/2026 · SICAV · FRANCIA · IIC Comunitaria». La CNMV no detalla los fondos de »
-- (y 5 cambios más en esta sentencia)
+- (y 8 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'spiko-smart-cash-euro' 'https://www.spiko.io/es/spiko-euro'
 
@@ -627,10 +641,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …{"etiqueta":" «Mínimo de inversión · consulta 01/11/2026","valor":"Start with as little as €1","fechaDato":"2026-11-01","fechaConsulta":"2026-11-01","fuente":"https://robinhood.com/eu/en/invest","alcance":"Cifra de la página comercial; el KID no fija mínimo. Fracciones de token Localizador: página Invest, bloque d…» → «»
 - …Comisiones · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
-- … Classic Stock Tokens «."},{"etiqueta":"Salida · consulta 01/11/2026","valor":"You can request that Robinhood Europe buy it back from you at any time at the then-quoted price of the Underlying Asset, subject to applicable fees and other conditions in each case.","fechaDato":"2026-07-01","fechaConsulta":"2026-11-01","fuent…» → «; »
-- …puede suspender el  «cierre de posiciones (movimientos inesperados» → «KID en español dice 0»
-- … (movimientos inesperados, « fuera de horario, anuncios» → «00 % (errata»
-- …horario, anuncios). « No hay mercado secundario ni transferencia del token Localizador: KID p.1; p.3 «How long should I hold it».» → «»
+- …"alcance":"KID «» → « en inglés»
+- …,00 %;  «posibles diferenciales» → «el KID»
+- …posibles diferenciales en  «horario ampliado Localizador: Fee Schedule» → «español pone 0»
+- …: Fee Schedule, « apartado Robinhood Classic Stock Tokens."},{"etiqueta":"Salida · consulta 01/11/2026","valor":"You can request that Robinhood Europe buy it back from you at any time at the then-quoted price of the Underlying Asset, subject to applicable fees and other conditions in each case.","fechaDato":"2026-07…» → «00 % »
+- …el cierre de  «posiciones» → «entrada»
+- … de posiciones ( «movimientos inesperados, fuera de» → «errata). Posibles diferenciales en»
+- … fuera de horario «, anuncios)» → « ampliado»
+- …, anuncios).  «No hay mercado secundario ni transferencia del token » → «»
+- … token Localizador:  «KID p.1; p.3 «How long should I hold it»» → «Fee Schedule, apartado Robinhood Classic Stock Tokens»
 - …Riesgos · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Riesgos · consulta  «01/11/2026» → «<FECHA>»
@@ -654,7 +673,6 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …{"etiqueta":" «Comisión publicada · Gestión","valor":"0 %","fechaDato":null,"fechaConsulta":"2026-09-21","fuente":"https://midas.app/mtbill","alcance":"Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."},{…» → «»
 - …Países de oferta  «según la web de Midas · consulta 05/11/2026","valor":"España figura entre las 14 jurisdicciones permitidas del aviso de entrada de la web de Midas (versión 1.0.2), las mismas 14 de oferta » → «»
 - …de oferta pública  «de las Condiciones Finales","fechaDato":"2026-11-05","fechaConsulta":"2026-11-05","fuente":"https://midas.app/","alcance":"Aviso «Eligibility & Jurisdiction» (versión 1.0.2) que enseña la web de Midas al entrar. Se leyó el 05/11/2026 en el código que sirve esa página (localizador: midas.app/assets/m…» → «»
-- …Condiciones Finales del  «17/07/2026» → «<FECHA>»
 - ……), leídas  «» → «de nuevo »
 - … el <FECHA> «» → « (mismo archivo)»
 
@@ -735,12 +753,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …adquiere · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Supervisión · consulta  «01/11/2026» → «<FECHA>»
-- (y 27 cambios más en esta sentencia)
+- (y 26 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'kraken-xstocks' 'https://eu.kraken.com/xstocks'
 
 - … del 30 % « en EE» → «»
 - …% en EE. « UU.» → «»
+- … de Kraken UE « consultada el 03/11/2026» → «»
 - … de Kraken UE « consultada el 03/11/2026» → «»
 - … de Kraken UE « consultada el 03/11/2026» → «»
 - …)». Las  «de LITEx (26» → «58 condiciones finales que el emisor ha publicado desde el 15»
@@ -845,8 +864,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -854,9 +874,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -880,17 +902,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- …precio había 2  «participaciones» → «participaciónes»
-- …precio de emisión. «» → « Una sola participación cuesta desde 99 € (100,49 € con el 1,5 %).»
-- … <FECHA> ( «16» → «17»
-- (y 13 cambios más en esta sentencia)
+- (y 15 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'vivienda-sonnleithnergasse-2-viena' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -898,6 +918,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -921,20 +942,19 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- …precio había 11  «participaciones» → «participaciónes»
 - …precio de emisión. «» → « Una sola participación cuesta desde 80 € (81,20 € con el 1,5 %).»
 - … <FECHA> ( «16» → «17»
 - …FECHA> (16: «54» → «41»
 - … (16:54– «16» → «17»
-- …16:54–16: «56» → «42»
-- (y 10 cambios más en esta sentencia)
+- (y 11 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'local-de-estanco-klagenfurt' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -942,9 +962,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -968,17 +990,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- …precio había 16  «participaciones» → «participaciónes»
-- … <FECHA> ( «16» → «17»
-- …FECHA> (16: «54» → «41»
-- (y 12 cambios más en esta sentencia)
+- (y 14 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'vivienda-stallhofstra-e-28-gratwein' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -986,9 +1006,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1012,17 +1034,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- … <FECHA> ( «16» → «17»
-- …FECHA> (16: «54» → «41»
-- … (16:54– «16» → «17»
-- (y 11 cambios más en esta sentencia)
+- (y 14 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'vivienda-schwarzer-weg-18-graz' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -1030,9 +1050,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1056,17 +1078,15 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …valor":"Desde  «69» → «71»
-- …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- …,"valor":" «69» → «71»
-- …, orden del  «27» → «18»
-- (y 19 cambios más en esta sentencia)
+- (y 22 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'drautalresidenz-paternion' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … residentes del EEE «; » → «, pero »
 - … EEE; la  «distribución de » → «app no deja comprar »
-- …de esta emisión  «en España no está confirmada y » → «sin número fiscal austriaco; »
-- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"wa…»
+- …de esta emisión  «en España » → «sin número fiscal austriaco; »
+- …en España no  «está confirmada » → «consta que se comercialice en España »
+- …{"texto":" «» → «Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.","tono":"…»
 - …AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf" «» → «,"https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"»
 - …,"fechaConsulta":" «2026-09-30» → «<FECHA>»
 - …proveedor comprobado el  «30/09/2026» → «<FECHA> (mercado de la app abierto sin sesión)»
@@ -1074,9 +1094,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1100,20 +1122,17 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- … <FECHA> ( «16» → «17»
-- …FECHA> (16: «54» → «41»
-- … (16:54– «16» → «17»
-- (y 11 cambios más en esta sentencia)
+- (y 14 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'randhartingergasse-9-viena' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - … API, el  «inquilino se fue » → «alquiler terminó »
 - …2026 y se  «busca» → «buscaba»
 - … se busca otro «» → « inquilino»
-- … busca otro;  «la » → «no consta si ya lo hay. Mientras esté vacía no hay repartos. La »
+- … busca otro;  «la » → «no consta si ya lo hay. Si sigue vacía, puede no haber repartos. La »
 - …:"Para comprar  «esta emisión, quien no tributa en » → «hace falta un número fiscal austriaco: se pide a Hacienda de »
-- …tributa en Austria  «debe dar antes un número » → «y, si lo pides con el asesor »
-- …un número fiscal  «austriaco: las » → «que te presenta Brickwise, no cuesta nada. Las »
+- …tributa en Austria  «debe dar antes un número » → «y, según Brickwise, pedirlo con el asesor »
+- …un número fiscal  «austriaco: las » → «que te presenta no cuesta nada. Las »
 - …tributan en Austria  «y » → «(»
 - …Austria y la  «ganancia al vender paga allí el impuesto inmobiliario (» → «emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la »
 - …impuesto inmobiliario (ImmoESt «)» → «»
@@ -1124,6 +1143,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …(API) ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
@@ -1146,14 +1166,13 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - … conveniencia y app « propia» → «)»
 - …solo en alemán. « Localizador: FAQ «Kann ich einen Account von jedem Land aus eröffnen?».» → «»
 - …comercializa · consulta  «01/11/2026» → «<FECHA>»
-- …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - (y 19 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'apartamento-vacacional-hinterstoder-50' 'https://app.brickwise.at/desktopWeb/marketplace'
 
 - …:"Para comprar  «esta emisión, quien no tributa en » → «hace falta un número fiscal austriaco: se pide a Hacienda de »
-- …tributa en Austria  «debe dar antes un número » → «y, si lo pides con el asesor »
-- …un número fiscal  «austriaco: las » → «que te presenta Brickwise, no cuesta nada. Las »
+- …tributa en Austria  «debe dar antes un número » → «y, según Brickwise, pedirlo con el asesor »
+- …un número fiscal  «austriaco: las » → «que te presenta no cuesta nada. Las »
 - …tributan en Austria  «y » → «(»
 - …Austria y la  «ganancia al vender paga allí el impuesto inmobiliario (» → «emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la »
 - …impuesto inmobiliario (ImmoESt «)» → «»
@@ -1164,9 +1183,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1189,9 +1210,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
-- …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- …precio había 5  «participaciones» → «participaciónes»
-- (y 15 cambios más en esta sentencia)
+- (y 16 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'vivienda-pottendorfer-stra-e-62-wr-neustadt' 'https://app.brickwise.at/desktopWeb/marketplace'
 
@@ -1206,6 +1225,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1234,8 +1254,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - … (16:54– «16» → «17»
 - …16:54–16: «56» → «42»
 - … <FECHA> ( «16» → «17»
-- …FECHA> (16: «54» → «41»
-- (y 4 cambios más en esta sentencia)
+- (y 5 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'fotovoltaica-greenpoint' 'https://app.brickwise.at/desktopWeb/marketplace'
 
@@ -1252,6 +1271,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …:"https:// «app» → «cdn»
@@ -1260,6 +1280,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"2026-10- «22","fuente":"https://app» → «4272-86dd-39e02432868c»
 - …https://app. «brickwise.at/desktopWeb/marketplace» → «pdf»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1277,9 +1298,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …comercializa · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
-- …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
-- …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- (y 15 cambios más en esta sentencia)
+- (y 16 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'fotovoltaica-cohotel' 'https://app.brickwise.at/desktopWeb/marketplace'
 
@@ -1296,6 +1315,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"Moneda ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …:"Plazo ·  «22/10/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-10-22» → «<FECHA>»
 - …:"https:// «app» → «cdn»
@@ -1304,6 +1324,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …:"2026-10- «22","fuente":"https://app» → «4075-9311-299f93c8563e»
 - …https://app. «brickwise.at/desktopWeb/marketplace» → «pdf»
 - …fuente oficial el  «22/10/2026» → «<FECHA>»
+- …22/10/2026. « Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.» → «»
 - …Precio · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …inversión · consulta  «01/11/2026» → «<FECHA>»
@@ -1321,9 +1342,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …comercializa · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
-- …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
-- …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- (y 16 cambios más en esta sentencia)
+- (y 17 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'hausera-proximas-ofertas' 'https://hausera.io/oportunidades/'
 
@@ -1344,11 +1363,11 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …<FECHA>);  «preventa abierta » → «reserva »
 - … el 18/11 «» → « y suscripción del 25/11/2026 al 30/06/2027»
 - …,"alcance":" «Comprobado de nuevo » → «Redacción en castellano del dato comprobado »
-- … (5.11) «. El <FECHA> la » → «; periodo de suscripción del 25/11/2026 al 30/6/2027 (5.9). La »
-- …> la preventa  «estaba » → «(reserva) está »
-- …preventa estaba abierta  «(» → «»
-- … 18/11/2026 «) y» → « según»
-- …) y la  «suscripción empieza el 25/11/2026» → «ficha»
+- … (5.11) «. El <FECHA> la preventa estaba abierta (desde el 18» → «; periodo de suscripción del 25»
+- … 18/11/2026 «» → « al 30/6/2027 (5.9»
+- …18/11/2026) « y la suscripción empieza» → «. La preventa (reserva) abrió»
+- …suscripción empieza el  «25» → «18»
+- … 25/11/2026 «» → « según la ficha»
 
 ## Lo que no se aplicó tal cual (15)
 

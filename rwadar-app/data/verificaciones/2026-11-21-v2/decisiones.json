@@ -89,7 +89,7 @@
     "BW_MENOR": "Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo.",
     "BW_COMPRA": "Es lo más que ofrecía pagar un comprador ese día, antes de la comisión del 1,5 %.",
     "BW_PARTICIPACIONES": "Participaciones de esta emisión a la venta entre inversores ese día (suma de las órdenes abiertas en la app). Cambia a diario.",
-    "AVISO_NF": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.",
+    "AVISO_NF": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt.",
     "AVISO_KEST": "El emisor retiene en Austria el impuesto KESt de cada reparto; al vender no hay retención y la ganancia la declaras tú.",
     "AVISO_CUENTA_KEST": "Cuenta abierta a residentes del EEE (España incluida); esta emisión no pide número fiscal austriaco, pero no consta que se comercialice en España y la documentación está en alemán.",
     "ACCESO_CONSULTA_EQ": "Abrir cuenta no basta para esta emisión: exige además un número fiscal austriaco (FAQ «Wie sind die Erträge zu versteuern?» y app). Effecta figura en la CNMV en libre prestación (RTO), sin agentes notificados. Documentación solo en alemán.",
@@ -210,21 +210,6 @@
         },
         {
           "tipo": "referenciaQuita",
-          "etiqueta": "Comisión de gestión · 22/10/2026",
-          "antes": "0,25 %",
-          "prueba": [
-            {
-              "documento": "auditoria/spiko.md",
-              "contiene": "Con `referenciaQuita`, quitar las 7 de data.spiko.io del 30/09 y del 22/10 y «Mínimo de inversión · consulta 01/11/2026»."
-            },
-            {
-              "documento": "DECISIONES-COORDINADOR.md",
-              "contiene": "entran **todos los hallazgos obligatorios** de cada informe"
-            }
-          ]
-        },
-        {
-          "tipo": "referenciaQuita",
           "etiqueta": "Mínimo de inversión · consulta 01/11/2026",
           "antes": "Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR",
           "prueba": [
@@ -240,12 +225,32 @@
         },
         {
           "tipo": "referencia",
+          "etiqueta": "Comisión de gestión · 22/10/2026",
+          "antes": "0,25 %",
+          "despues": {
+            "etiqueta": "Comisión de gestión · 21/11/2026",
+            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "fechaConsulta": "2026-11-21"
+          },
+          "prueba": [
+            {
+              "documento": "auditoria/sitio-web.md",
+              "contiene": "`data.spiko.io/eutbl/` (20:19:47 UTC): «Management fees 0.25% … Minimum initial subscription 1 EUR»"
+            },
+            {
+              "documento": "auditoria/sitio-web.md",
+              "contiene": "re-fechar al 21/11 con lo leído hoy (las mismas cifras) o quitar los duplicados"
+            }
+          ]
+        },
+        {
+          "tipo": "referencia",
           "etiqueta": "Estado de la oferta · consulta 01/11/2026",
           "antes": "Statut : Vivant · Type de souscripteurs : Tous souscripteurs",
           "despues": {
             "etiqueta": "Estado de la oferta · consulta 21/11/2026",
             "fechaDato": "2026-11-21",
-            "alcance": "GECO 21/11/2026: vivo, todo tipo de suscriptores; VL del 20/11/2026 (1,063496 €). No se ha hecho el alta. Localizador: ficha GECO del compartimento.",
+            "alcance": "GECO 21/11/2026: vivo, todo tipo de suscriptores. El último valor liquidativo, del 20/11/2026 (1,063496 €), es el que publica Spiko en su API. No se ha hecho el alta. Localizador: ficha GECO del compartimento.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -259,6 +264,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "entran **todos los hallazgos obligatorios** de cada informe"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "atribuye a GECO la VL de la API de Spiko"
             }
           ]
         },
@@ -463,7 +472,7 @@
           "despues": {
             "etiqueta": "Estado de la oferta · consulta 21/11/2026",
             "fechaDato": "2026-11-21",
-            "alcance": "GECO 21/11/2026: vivo, todo tipo de suscriptores; VL del 20/11/2026 (1,103573 $). Sin alta. Localizador: ficha GECO del compartimento.",
+            "alcance": "GECO 21/11/2026: vivo, todo tipo de suscriptores. El último valor liquidativo, del 20/11/2026 (1,103573 $), es el que publica Spiko en su API. Sin alta. Localizador: ficha GECO del compartimento.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -478,6 +487,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "entran **todos los hallazgos obligatorios** de cada informe"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "atribuye a GECO la VL de la API de Spiko"
             }
           ]
         },
@@ -989,7 +1002,7 @@
           "antes": "Robinhood Europe applies a 0.10% currency conversion fee for each transaction ... Robinhood Europe does not apply any other fees related to the trading of Classic Stock Tokens.",
           "despues": {
             "etiqueta": "Comisiones · consulta 21/11/2026",
-            "alcance": "KID: entrada 0,10 %, salida 0,10 %, costes corrientes 0,00 %; posibles diferenciales en horario ampliado Localizador: Fee Schedule, apartado Robinhood Classic Stock Tokens; el KID en español dice 0,00 % (errata).",
+            "alcance": "KID en inglés: entrada 0,10 %, salida 0,10 %, costes corrientes 0,00 %; el KID en español pone 0,00 % de entrada (errata). Posibles diferenciales en horario ampliado. Localizador: Fee Schedule, apartado Robinhood Classic Stock Tokens.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -1004,6 +1017,10 @@
             {
               "documento": "auditoria/acciones-oro-tesoro.md",
               "contiene": "Añadir «el KID en español dice 0,00 % (errata)»."
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "En el KID en español, el 0,00 % es la entrada: «Costes de"
             }
           ]
         },
@@ -1217,7 +1234,6 @@
           "etiqueta": "Países de oferta pública · Condiciones Finales del 17/07/2026",
           "antes": "Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany",
           "despues": {
-            "etiqueta": "Países de oferta pública · Condiciones Finales del 21/11/2026",
             "alcance": "Condiciones Finales de mTBILL del 17/07/2026 (copia en la documentación de Midas, SHA-256 b1e58001…), leídas de nuevo el 21/11/2026 (mismo archivo): España está entre los países de la oferta pública y «Prohibition of Sales to EEA Retail Investors: not applicable». No confirman que la web te deje darte de alta.",
             "fechaConsulta": "2026-11-21"
           },
@@ -2116,7 +2132,7 @@
           "antes": "The secondary trading facilitated herein is considered a non-commercial trading facility … not subject to prudential supervision.",
           "despues": {
             "etiqueta": "Supervisión · consulta 21/11/2026",
-            "alcance": "Lista de advertencias FINMA y CNMV sin coincidencias.Registro de autorizados de FINMA: 0 resultados el 21/11/2026. Localizador: Pie de página «Terms of Use».",
+            "alcance": "Lista de advertencias FINMA y CNMV sin coincidencias. Registro de autorizados de FINMA: 0 resultados el 21/11/2026. Localizador: Pie de página «Terms of Use».",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -2455,6 +2471,28 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "entran **todos los hallazgos obligatorios** de cada informe"
+            }
+          ]
+        },
+        {
+          "tipo": "tarjetaFecha",
+          "etiqueta": "Salida",
+          "antes": {
+            "valor": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo",
+            "fechaDato": null
+          },
+          "despues": {
+            "fechaDato": null,
+            "alcance": "Página de xStocks de Kraken UE."
+          },
+          "prueba": [
+            {
+              "claim": "salida",
+              "url": "https://eu.kraken.com/xstocks"
+            },
+            {
+              "documento": "auditoria/acciones-oro-tesoro.md",
+              "contiene": "Las referencias «Mínimo de inversión», «Acceso desde España» y «Salida» llevan en su nota «Página de xStocks de Kraken UE consultada el 03/11/2026»."
             }
           ]
         }
@@ -3196,7 +3234,7 @@
           "antes": "Desde 75 € la participación en reventa (20/11)",
           "despues": "Desde 75 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 2 participaciónes {{BW_MINIMO_FIN}} Una sola participación cuesta desde 99 € (100,49 € con el 1,5 %).",
+          "nota": "{{BW_MINIMO}} 2 participaciones {{BW_MINIMO_FIN}} Una sola participación cuesta desde 99 € (100,49 € con el 1,5 %).",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -3383,7 +3421,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -3394,6 +3432,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -3403,7 +3445,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -3414,6 +3456,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -3629,9 +3675,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -3640,8 +3685,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -3657,6 +3725,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -3665,7 +3737,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "vivienda-sonnleithnergasse-2-viena": {
@@ -3676,7 +3748,7 @@
           "antes": "Desde 75 € la participación en reventa (20/11)",
           "despues": "Desde 75 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 11 participaciónes {{BW_MINIMO_FIN}} Una sola participación cuesta desde 80 € (81,20 € con el 1,5 %).",
+          "nota": "{{BW_MINIMO}} 11 participaciones {{BW_MINIMO_FIN}} Una sola participación cuesta desde 80 € (81,20 € con el 1,5 %).",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -3863,7 +3935,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -3874,6 +3946,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -4089,9 +4165,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -4100,8 +4175,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -4117,6 +4215,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -4125,7 +4227,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "local-de-estanco-klagenfurt": {
@@ -4136,7 +4238,7 @@
           "antes": "Desde 95 € la participación en reventa (20/11)",
           "despues": "Desde 95 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 16 participaciónes {{BW_MINIMO_FIN}}",
+          "nota": "{{BW_MINIMO}} 16 participaciones {{BW_MINIMO_FIN}}",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -4323,7 +4425,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -4334,6 +4436,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -4343,7 +4449,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -4354,6 +4460,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -4569,9 +4679,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -4580,8 +4689,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -4597,6 +4729,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -4605,7 +4741,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "vivienda-stallhofstra-e-28-gratwein": {
@@ -4803,7 +4939,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -4814,6 +4950,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -4823,7 +4963,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -4834,6 +4974,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -5049,9 +5193,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -5060,8 +5203,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -5077,6 +5243,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -5085,7 +5255,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "vivienda-schwarzer-weg-18-graz": {
@@ -5283,7 +5453,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -5294,6 +5464,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -5303,7 +5477,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -5314,6 +5488,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -5529,9 +5707,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -5540,8 +5717,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -5557,6 +5757,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -5565,7 +5769,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "drautalresidenz-paternion": {
@@ -5763,7 +5967,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -5774,6 +5978,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -5783,7 +5991,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -5794,6 +6002,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -6009,9 +6221,8 @@
           ]
         },
         {
-          "tipo": "aviso",
+          "tipo": "avisoQuita",
           "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán.",
           "prueba": [
             {
               "claim": "accesoEspana",
@@ -6020,8 +6231,31 @@
             {
               "documento": "revision-independiente/brickwise-a.md",
               "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
             }
           ]
+        },
+        {
+          "tipo": "avisoNuevo",
+          "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán.",
+          "prueba": [
+            {
+              "claim": "accesoEspana",
+              "url": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+            },
+            {
+              "documento": "revision-independiente/brickwise-a.md",
+              "contiene": "aviso de la cuenta EEE"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "fiscal austriaco; no consta que se comercialice en España y la"
+            }
+          ],
+          "antesDe": "Riesgo 6 de 7 en el KID; posible pérdida total."
         },
         {
           "tipo": "avisoNuevo",
@@ -6037,6 +6271,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Brickwise · aviso del número fiscal austriaco (las 8):** el texto del auditor"
             }
@@ -6045,7 +6283,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "randhartingergasse-9-viena": {
@@ -6056,7 +6294,7 @@
           "antes": "Desde 78 € la participación en reventa (20/11)",
           "despues": "Desde 78 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 20 participaciónes {{BW_MINIMO_FIN}} Una sola participación cuesta desde 85 € (86,28 € con el 1,5 %).",
+          "nota": "{{BW_MINIMO}} 20 participaciones {{BW_MINIMO_FIN}} Una sola participación cuesta desde 85 € (86,28 € con el 1,5 %).",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -6243,7 +6481,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -6254,6 +6492,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -6501,6 +6743,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Si la ficha ya lleva un aviso del número fiscal, se cambia por este."
             },
@@ -6521,6 +6767,10 @@
             {
               "documento": "auditoria/brickwise-a.md",
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
             },
             {
               "documento": "DECISIONES-COORDINADOR.md",
@@ -6547,12 +6797,20 @@
             {
               "documento": "auditoria/brickwise-b.md",
               "contiene": "Mejor: «Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra.»"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "«Mientras esté vacía no hay repartos» lo deduce"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "Mejor: «si sigue vacía, puede no haber"
             }
           ]
         },
         {
           "tipo": "avisoNuevo",
-          "despues": "Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra.",
+          "despues": "Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Si sigue vacía, puede no haber repartos. La rentabilidad no se muestra.",
           "prueba": [
             {
               "claim": "avisoAlquiler",
@@ -6565,6 +6823,14 @@
             {
               "documento": "auditoria/brickwise-b.md",
               "contiene": "Mejor: «Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra.»"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "«Mientras esté vacía no hay repartos» lo deduce"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "Mejor: «si sigue vacía, puede no haber"
             }
           ],
           "antesDe": "Cada venta se anuncia con su precio y su número de participaciones; no consta que se pueda comprar solo una parte. El comprador paga además un 1,5 % de comisión."
@@ -6572,7 +6838,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "apartamento-vacacional-hinterstoder-50": {
@@ -6583,7 +6849,7 @@
           "antes": "Desde 75 € la participación en reventa (20/11)",
           "despues": "Desde 75 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 5 participaciónes {{BW_MINIMO_FIN}} Una sola participación cuesta desde 82 € (83,23 € con el 1,5 %).",
+          "nota": "{{BW_MINIMO}} 5 participaciones {{BW_MINIMO_FIN}} Una sola participación cuesta desde 82 € (83,23 € con el 1,5 %).",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -6770,7 +7036,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -6781,6 +7047,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -6790,7 +7060,7 @@
           "antes": "indefinido",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -6801,6 +7071,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -7028,6 +7302,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Si la ficha ya lleva un aviso del número fiscal, se cambia por este."
             },
@@ -7050,6 +7328,10 @@
               "contiene": "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada."
             },
             {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada"
+            },
+            {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Si la ficha ya lleva un aviso del número fiscal, se cambia por este."
             },
@@ -7062,7 +7344,7 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor («…si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada…»), que respalda el literal de la ayuda, en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
       }
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
@@ -7260,7 +7542,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -7271,6 +7553,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -7550,7 +7836,7 @@
           "antes": "Desde 102 € la participación en reventa (20/11)",
           "despues": "Desde 102 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 8 participaciónes {{BW_MINIMO_FIN}}",
+          "nota": "{{BW_MINIMO}} 8 participaciones {{BW_MINIMO_FIN}}",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -7737,7 +8023,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -7748,6 +8034,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -7757,8 +8047,8 @@
           "antes": "hasta el 31/12/2038",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fuente": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -7769,6 +8059,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -8098,7 +8392,7 @@
           "antes": "Desde 110 € la participación en reventa (20/11)",
           "despues": "Desde 110 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
-          "nota": "{{BW_MINIMO}} 35 participaciónes {{BW_MINIMO_FIN}} Una sola participación cuesta desde 120 € (121,80 € con el 1,5 %).",
+          "nota": "{{BW_MINIMO}} 35 participaciones {{BW_MINIMO_FIN}} Una sola participación cuesta desde 120 € (121,80 € con el 1,5 %).",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
@@ -8285,7 +8579,7 @@
           "antes": "EUR",
           "despues": {
             "etiqueta": "Moneda · 21/11/2026",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -8296,6 +8590,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -8305,8 +8603,8 @@
           "antes": "hasta el 31/12/2038",
           "despues": {
             "etiqueta": "Plazo · 21/11/2026",
+            "alcance": "Visto en la fuente oficial el 21/11/2026.",
             "fuente": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
-            "alcance": "Visto en la fuente oficial el 21/11/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura.",
             "fechaConsulta": "2026-11-21"
           },
           "prueba": [
@@ -8317,6 +8615,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "Entra la limpieza de referencias con fechas viejas que proponen los grupos"
+            },
+            {
+              "documento": "REVISION-ENTREGA-contenido.md",
+              "contiene": "La nota «Cifra indicativa y variable…» no encaja con «EUR» ni con"
             }
           ]
         },
@@ -8720,7 +9022,7 @@
           "etiqueta": "Mínimo de inversión",
           "antes": "Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.",
           "despues": "Desde 100 € en Alicante 3 (documento de emisión); reserva desde el 18/11 y suscripción del 25/11/2026 al 30/06/2027.",
-          "nota": "Documento de emisión de Alicante 3, público en su ficha de Hausera sin iniciar sesión: «Ticket mínimo: 100,00 euros» (cuadro resumen) y 100 € por obligación (5.11); periodo de suscripción del 25/11/2026 al 30/6/2027 (5.9). La preventa (reserva) está abierta desde el 18/11/2026 según la ficha.",
+          "nota": "Documento de emisión de Alicante 3, público en su ficha de Hausera sin iniciar sesión: «Ticket mínimo: 100,00 euros» (cuadro resumen) y 100 € por obligación (5.11); periodo de suscripción del 25/11/2026 al 30/6/2027 (5.9). La preventa (reserva) abrió el 18/11/2026 según la ficha.",
           "prueba": [
             {
               "claim": "minimo"
@@ -8855,7 +9157,7 @@
     {
       "slug": "spiko-letras-del-tesoro-euro",
       "que": "Auditoría Spiko §2: quitar también las dos «Gestión publicada: 0,25 %» del 30/09/2026",
-      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ni re-fechar ninguna de las dos (no se toca el motor). Siguen publicadas con su consulta del 30/09/2026; la métrica «Gastos corrientes (KID): 0,25 % anual» y «Comisiones · consulta 21/11/2026» dicen lo mismo con fecha de hoy.",
+      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ni re-fechar ninguna de las dos (no se toca el motor). Siguen publicadas con su consulta del 30/09/2026. «Comisión de gestión · 22/10/2026» no se quita: se re-fecha al 21/11 con lo leído hoy en data.spiko.io (0,25 %), para que la fila «Costes» de «Acceso, salida y costes» siga citando un dato de hoy y no la «Gestión publicada» del 30/09 (corrección C3 de la revisión de contenido). La métrica «Gastos corrientes (KID): 0,25 % anual» y «Comisiones · consulta 21/11/2026» dicen lo mismo con fecha de hoy.",
       "sigue": [
         {
           "referencia": "Gestión publicada",
@@ -9098,6 +9400,19 @@
             "contiene": "que el expediente o `decisiones.json` lleve esta consulta de hoy (BaFin, 20:17:55 UTC, SHA-256 a8a0daad…) para que pase al 21/11"
           }
         ]
+      },
+      {
+        "slug": "prosegur-digital-gold",
+        "campo": "supervisada.motivo",
+        "antes": "solo para custodiar y transferir criptoactivos",
+        "despues": "solo para custodiar, tramitar órdenes y transferir criptoactivos",
+        "prueba": [
+          {
+            "documento": "auditoria/acciones-oro-tesoro.md",
+            "contiene": "«solo para custodiar y transferir criptoactivos» omite la recepción y transmisión de órdenes, que la propia fuente de la casilla nombra."
+          }
+        ],
+        "avisoCatalogo": "Prosegur Crypto figura en la CNMV solo para custodiar, tramitar órdenes y transferir criptoactivos; su contrato dice que este oro no está supervisado."
       }
     ]
   },
@@ -9107,7 +9422,12 @@
       "produit-d-epargne/c124199",
       "tiene la preventa abierta",
       "Brickwise lo tramita",
-      "se cruzaron 62"
+      "se cruzaron 62",
+      "Condiciones Finales del 21/11/2026",
+      "si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada",
+      "participaciónes",
+      "coincidencias.Registro",
+      "Mientras esté vacía no hay repartos"
     ]
   }
 }

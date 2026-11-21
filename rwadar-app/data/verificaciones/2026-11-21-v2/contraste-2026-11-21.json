@@ -3,7 +3,7 @@
   "fecha": "2026-11-21",
   "etiqueta": "2026-11-21",
   "revisionAnterior": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
-  "revisionNueva": "53747b1d-8b08-adda-5d0b-1f4875749a2d",
+  "revisionNueva": "508d0366-3c8e-8f9c-611d-bf49025a08d1",
   "decision": "Puesta al día pedida por el responsable del proyecto el 21/11/2026 («Y esta ya ha pasado por ejemplo es antigua, y no sé si ya se puede seguir invirtiendo todos esos errores los tienes que corregir que el lunes tenemos una reunión muy importante»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
     "DECISIONES-COORDINADOR.md": "f855471439d6277374caeb413f64270f7de3f0a6fa56891694e77d55420abb9f",
@@ -107,14 +107,14 @@
     {
       "slug": "spiko-letras-del-tesoro-euro",
       "campo": "referencia de la ficha",
-      "antes": "Comisión de gestión · 22/10/2026: 0,25 %",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR",
       "despues": null
     },
     {
       "slug": "spiko-letras-del-tesoro-euro",
       "campo": "referencia de la ficha",
-      "antes": "Mínimo de inversión · consulta 01/11/2026: Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR",
-      "despues": null
+      "antes": "Comisión de gestión · 22/10/2026: 0,25 %",
+      "despues": "Comisión de gestión · 21/11/2026: 0,25 %"
     },
     {
       "slug": "spiko-letras-del-tesoro-euro",
@@ -414,7 +414,7 @@
       "slug": "mtbill",
       "campo": "referencia de la ficha",
       "antes": "Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany",
-      "despues": "Países de oferta pública · Condiciones Finales del 21/11/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany"
+      "despues": "Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany"
     },
     {
       "slug": "mtbill",
@@ -795,6 +795,12 @@
       "despues": "Acceso desde España: Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales · dato del sin fecha"
     },
     {
+      "slug": "kraken-xstocks",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo · dato del sin fecha",
+      "despues": "Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo · dato del sin fecha"
+    },
+    {
       "slug": "boss-info",
       "campo": "métrica",
       "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)",
@@ -1152,13 +1158,19 @@
       "slug": "vivienda-pluddemanngasse-101-graz",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "vivienda-pluddemanngasse-101-graz",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "vivienda-sonnleithnergasse-2-viena",
@@ -1278,13 +1290,19 @@
       "slug": "vivienda-sonnleithnergasse-2-viena",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "vivienda-sonnleithnergasse-2-viena",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "local-de-estanco-klagenfurt",
@@ -1410,13 +1428,19 @@
       "slug": "local-de-estanco-klagenfurt",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "local-de-estanco-klagenfurt",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "vivienda-stallhofstra-e-28-gratwein",
@@ -1542,13 +1566,19 @@
       "slug": "vivienda-stallhofstra-e-28-gratwein",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "vivienda-stallhofstra-e-28-gratwein",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
@@ -1674,13 +1704,19 @@
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "drautalresidenz-paternion",
@@ -1806,13 +1842,19 @@
       "slug": "drautalresidenz-paternion",
       "campo": "aviso",
       "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
-      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+      "despues": null
     },
     {
       "slug": "drautalresidenz-paternion",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "randhartingergasse-9-viena",
@@ -1944,7 +1986,7 @@
       "slug": "randhartingergasse-9-viena",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "randhartingergasse-9-viena",
@@ -1956,7 +1998,7 @@
       "slug": "randhartingergasse-9-viena",
       "campo": "aviso",
       "antes": null,
-      "despues": "Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra."
+      "despues": "Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Si sigue vacía, puede no haber repartos. La rentabilidad no se muestra."
     },
     {
       "slug": "apartamento-vacacional-hinterstoder-50",
@@ -2088,7 +2130,7 @@
       "slug": "apartamento-vacacional-hinterstoder-50",
       "campo": "aviso",
       "antes": null,
-      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -2700,7 +2742,7 @@
     {
       "slug": "spiko-letras-del-tesoro-euro",
       "que": "Auditoría Spiko §2: quitar también las dos «Gestión publicada: 0,25 %» del 30/09/2026",
-      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ni re-fechar ninguna de las dos (no se toca el motor). Siguen publicadas con su consulta del 30/09/2026; la métrica «Gastos corrientes (KID): 0,25 % anual» y «Comisiones · consulta 21/11/2026» dicen lo mismo con fecha de hoy."
+      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ni re-fechar ninguna de las dos (no se toca el motor). Siguen publicadas con su consulta del 30/09/2026. «Comisión de gestión · 22/10/2026» no se quita: se re-fecha al 21/11 con lo leído hoy en data.spiko.io (0,25 %), para que la fila «Costes» de «Acceso, salida y costes» siga citando un dato de hoy y no la «Gestión publicada» del 30/09 (corrección C3 de la revisión de contenido). La métrica «Gastos corrientes (KID): 0,25 % anual» y «Comisiones · consulta 21/11/2026» dicen lo mismo con fecha de hoy."
     },
     {
       "slug": "spiko-letras-del-tesoro-euro",
