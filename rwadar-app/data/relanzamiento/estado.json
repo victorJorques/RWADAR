@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Campana de avisos junto al «?» en la web y la app, vistos al verlos (#179, #180)",
+  "nota": "Inicio: fecha más reciente en cada oferta (#183)",
   "revisionAprobada": {
-    "commit": "cf27a3d542fee018ff5fa754d2a1d68e8ec664b3",
-    "contenidoSha256": "sha256:b00736c5fd01f0136c08bd6909b499c833062b8e3337a7082c1a29dcabc28a6c",
+    "commit": "026e28193865934b2a77aed3a88a296dedb15747",
+    "contenidoSha256": "sha256:cdcfe91fb3e39689d8a353a87b615dc7f274986e66eb4e83bb34d270af396457",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
