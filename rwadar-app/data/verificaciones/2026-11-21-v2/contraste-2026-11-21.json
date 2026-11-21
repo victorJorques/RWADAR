@@ -3,10 +3,10 @@
   "fecha": "2026-11-21",
   "etiqueta": "2026-11-21",
   "revisionAnterior": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
-  "revisionNueva": "508d0366-3c8e-8f9c-611d-bf49025a08d1",
+  "revisionNueva": "753b4cc9-3c01-e879-ba96-05dc3cf95b05",
   "decision": "Puesta al día pedida por el responsable del proyecto el 21/11/2026 («Y esta ya ha pasado por ejemplo es antigua, y no sé si ya se puede seguir invirtiendo todos esos errores los tienes que corregir que el lunes tenemos una reunión muy importante»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
-    "DECISIONES-COORDINADOR.md": "f855471439d6277374caeb413f64270f7de3f0a6fa56891694e77d55420abb9f",
+    "DECISIONES-COORDINADOR.md": "bf79d79cb6c3072b0436eda18e1c87c666524fb985cc806784694d6bdf808a1b",
     "radar-contraste-2026-11-21.json": "73bf8ad90afab74e1c50e4c10a32085dfd9544dd75481c1bca694e50363375fb",
     "cambios-radar.json": "272b29b55b6f3289fd8cda59a0a46edb876256f1bb98ad1555b20efd82283f97"
   },
@@ -47,7 +47,7 @@
       "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €",
       "local-de-estanco-klagenfurt": "95 € → 95 €",
       "vivienda-stallhofstra-e-28-gratwein": "68,80 € → 68,80 €",
-      "vivienda-schwarzer-weg-18-graz": "69,90 € → 71,90 €",
+      "vivienda-schwarzer-weg-18-graz": "69,90 € → 71,00 €",
       "drautalresidenz-paternion": "70 € → 70 €",
       "randhartingergasse-9-viena": "78 € → 78 €",
       "apartamento-vacacional-hinterstoder-50": "75 € → 75 €",
@@ -1584,25 +1584,25 @@
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "tarjeta",
       "antes": "Mínimo de inversión: Desde 69,90 € la participación en reventa (20/11)",
-      "despues": "Mínimo de inversión: Desde 71,90 € la participación en reventa (21/11)"
+      "despues": "Mínimo de inversión: Desde 71,00 € la participación en reventa (21/11)"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "referencia de la ficha",
       "antes": "Venta más barata · 20/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
-      "despues": "Venta más barata · 21/11/2026: 71,90 € por participación (1 a ese precio, orden del 18/09/2026)"
+      "despues": "Venta más barata · 21/11/2026: 71,00 € por participación (1 a ese precio, orden del 21/11/2026)"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "referencia de la ficha",
       "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)",
-      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 71,90 € (72,98 € con el 1,5 %)"
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 71,00 € (72,07 € con el 1,5 %)"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
       "campo": "referencia de la ficha",
       "antes": "Participaciones en venta · 20/11/2026: 298",
-      "despues": "Participaciones en venta · 21/11/2026: 297"
+      "despues": "Participaciones en venta · 21/11/2026: 298"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
@@ -2683,7 +2683,7 @@
       "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
     },
     "vivienda-schwarzer-weg-18-graz": {
-      "Mínimo de inversión": "Desde 71,90 € la participación en reventa (21/11)",
+      "Mínimo de inversión": "Desde 71,00 € la participación en reventa (21/11)",
       "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
       "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
     },

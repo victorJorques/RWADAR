@@ -21,11 +21,12 @@ commits.
 
 | | |
 |---|---|
-| Revisión nueva | `508d0366-3c8e-8f9c-611d-bf49025a08d1` |
-| Huella | `508d03663c8e8f9c611dbf49025a08d1cb55fb651b61ba064cbe80aeb9a269ef` |
-| `aplicar-y-aprobar.sql` (SHA-256) | `0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40` |
-| `catalogo.sql` (SHA-256) | `94aaacf6cccbbafb265d7aeaa09d2c047e08dfb5235e281c230569a40137213c` |
-| `revision.json` (SHA-256) | `c245be3be929dc8eb80b9bb2577094db8fbfeec28835a197da11d8fa781443a4` |
+| Revisión nueva | `753b4cc9-3c01-e879-ba96-05dc3cf95b05` (§9) |
+| Huella | `753b4cc93c01e879ba9605dc3cf95b05d6dd506a5679d58f41677766f3d145e3` |
+| `aplicar-y-aprobar.sql` antes de §9 | `0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40` (revisión `508d0366…`, auditada conforme) |
+| `aplicar-y-aprobar.sql` (SHA-256) | `1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd` |
+| `catalogo.sql` (SHA-256) | `554bae00ca319c05a9cd26296b932a203abf12480988205aece2fdc3ba56b39d` |
+| `revision.json` (SHA-256) | `6f98903144ce84d6aca8f4661dfe45c99539a40d539ec631b43d3a725bfb87d1` |
 | Vigencia | verificadas el 21/11/2026, 7 días: **último día el 28/11/2026**; la guarda del SQL no deja aplicarla después |
 | Ofertas y plataformas | las mismas 22 (8 principales, 13 de reventa, 1 en camino) y 25; sin altas ni retiradas |
 | Cambios | 425 en las 22 fichas, 413 con su prueba; 14 tarjetas cambian (solo el mínimo) |
@@ -371,3 +372,26 @@ con el motor (§6). La revisión pasa de `53747b1d…` (SQL `c7f99442…fe5f`) a
 - **Contenido R11 y cumplimiento 1, 2 y 5:** decisiones del coordinador para
   el próximo ciclo (tono del aviso, acceso de Smart Cash, impuestos en España,
   avisos de Boss Info y Switzerlend).
+
+## 9. Corrección antes de aplicar (22:38–22:45 UTC)
+
+El vigía contra la entrega ya auditada (paso 2 de «Publicar») dio una cifra
+nueva en Brickwise · Schwarzer Weg 18: a las 21:36 UTC entró una orden de 1
+participación a 71,00 €. Leído en la API pública a las 22:38:58 UTC
+(`grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json`,
+SHA-256 `298af8e9…d4f5`; DECISIONES §9). Las otras 10 fichas de Brickwise y
+las demás cifras, iguales.
+
+- Mínimo de la tarjeta: «Desde 71,90 €…» → **«Desde 71,00 € la participación
+  en reventa (21/11)»**.
+- Venta más barata: 71,00 € (1 a ese precio, orden del 21/11/2026).
+- Orden de menor importe: 1 participación a 71,00 € (72,07 € con el 1,5 %).
+- Participaciones en venta: 297 → 298.
+
+`preparar --repetir`: mismos SHA-256 las dos veces. `comprobar`: correcto (18
+y 6). `auditar --antes=<scratchpad>/sql-auditado-2026-11-21
+--revisado=0486c6fd…4d40`: mismo inventario (288), una sola sentencia
+cambia (la oferta de Schwarzer Weg 18, con esas cifras y nada más), PGlite
+correcto y secretos sin hallazgos; «sql_cambiado_falta_auditor». Revisión
+`753b4cc9-3c01-e879-ba96-05dc3cf95b05`, SQL `1f892b76…75e9bd`. El auditor
+independiente de este cambio está en `VERIFICACION-ENTREGA.md` §9.

@@ -5264,21 +5264,21 @@
           "tipo": "tarjeta",
           "etiqueta": "Mínimo de inversión",
           "antes": "Desde 69,90 € la participación en reventa (20/11)",
-          "despues": "Desde 71,90 € la participación en reventa (21/11)",
+          "despues": "Desde 71,00 € la participación en reventa (21/11)",
           "fechaDato": "2026-11-21",
           "nota": "{{BW_MINIMO}} 1 participación {{BW_MINIMO_FIN}}",
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
-              "hora": "2026-11-21T17:42:00Z",
-              "literal": "venta más barata 71,90 € (1 a ese precio)",
+              "hora": "2026-11-21T22:38:58Z",
+              "literal": "venta más barata 71,00 € (1 a ese precio)",
               "copia": {
-                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21.json",
-                "sha256": "eadaa2fab0c984d65515b2662d8fdd8f8b2cb462cfe7227f9751d0959f9c7db8",
+                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json",
+                "sha256": "298af8e9501f3527fa12cc0a5211271b24864522c8020c6983869a4fbeedd4f5",
                 "json": {
-                  "activos.AT0000A2WCE8.ventaMasBarata": 71.9,
+                  "activos.AT0000A2WCE8.ventaMasBarata": 71,
                   "activos.AT0000A2WCE8.cantidadAVentaMasBarata": 1,
-                  "activos.AT0000A2WCE8.v2_lowestOfferPrice": 71.9
+                  "activos.AT0000A2WCE8.v2_lowestOfferPrice": 71
                 }
               }
             },
@@ -5289,6 +5289,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Cifras del libro de órdenes:** las del 21/11 de cada ficha"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "venta más barata 71,00 € (1 a ese precio, orden del 21/11/2026)"
             }
           ]
         },
@@ -5298,7 +5302,7 @@
           "antes": "69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
           "despues": {
             "etiqueta": "Venta más barata · 21/11/2026",
-            "valor": "71,90 € por participación (1 a ese precio, orden del 18/09/2026)",
+            "valor": "71,00 € por participación (1 a ese precio, orden del 21/11/2026)",
             "fechaDato": "2026-11-21",
             "fechaConsulta": "2026-11-21",
             "fuente": "https://api.app.brickwise.at/api/v1/assets",
@@ -5307,21 +5311,25 @@
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
-              "hora": "2026-11-21T17:42:00Z",
-              "literal": "venta más barata 71,90 €",
+              "hora": "2026-11-21T22:38:58Z",
+              "literal": "venta más barata 71,00 €",
               "copia": {
-                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21.json",
-                "sha256": "eadaa2fab0c984d65515b2662d8fdd8f8b2cb462cfe7227f9751d0959f9c7db8",
+                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json",
+                "sha256": "298af8e9501f3527fa12cc0a5211271b24864522c8020c6983869a4fbeedd4f5",
                 "json": {
-                  "activos.AT0000A2WCE8.ventaMasBarata": 71.9,
+                  "activos.AT0000A2WCE8.ventaMasBarata": 71,
                   "activos.AT0000A2WCE8.cantidadAVentaMasBarata": 1,
-                  "activos.AT0000A2WCE8.v2_lowestOfferPrice": 71.9
+                  "activos.AT0000A2WCE8.v2_lowestOfferPrice": 71
                 }
               }
             },
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Cifras del libro de órdenes:** las del 21/11 de cada ficha"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "venta más barata 71,00 € (1 a ese precio, orden del 21/11/2026)"
             }
           ]
         },
@@ -5331,7 +5339,7 @@
           "antes": "1 participación a 69,90 € (70,95 € con el 1,5 %)",
           "despues": {
             "etiqueta": "Orden de venta de menor importe · 21/11/2026",
-            "valor": "1 participación a 71,90 € (72,98 € con el 1,5 %)",
+            "valor": "1 participación a 71,00 € (72,07 € con el 1,5 %)",
             "fechaDato": "2026-11-21",
             "fechaConsulta": "2026-11-21",
             "fuente": "https://api.app.brickwise.at/api/v1/assets",
@@ -5340,13 +5348,13 @@
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v1/assets",
-              "hora": "2026-11-21T17:42:00Z",
-              "literal": "orden de menor importe: 1 participación a 71,90 €",
+              "hora": "2026-11-21T22:38:58Z",
+              "literal": "orden de menor importe: 1 participación a 71,00 €",
               "copia": {
-                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21.json",
-                "sha256": "eadaa2fab0c984d65515b2662d8fdd8f8b2cb462cfe7227f9751d0959f9c7db8",
+                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json",
+                "sha256": "298af8e9501f3527fa12cc0a5211271b24864522c8020c6983869a4fbeedd4f5",
                 "json": {
-                  "activos.AT0000A2WCE8.ordenMenorDesembolso.precio": 71.9,
+                  "activos.AT0000A2WCE8.ordenMenorDesembolso.precio": 71,
                   "activos.AT0000A2WCE8.ordenMenorDesembolso.cantidad": 1
                 }
               }
@@ -5354,14 +5362,18 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Cifras del libro de órdenes:** las del 21/11 de cada ficha"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "venta más barata 71,00 € (1 a ese precio, orden del 21/11/2026)"
             }
           ],
           "calculos": [
             {
               "tipo": "comision",
-              "precio": "71,90",
+              "precio": "71,00",
               "porcentaje": "1,5",
-              "resultado": "72,98"
+              "resultado": "72,07"
             }
           ]
         },
@@ -5371,7 +5383,7 @@
           "antes": "298",
           "despues": {
             "etiqueta": "Participaciones en venta · 21/11/2026",
-            "valor": "297",
+            "valor": "298",
             "fechaDato": "2026-11-21",
             "fechaConsulta": "2026-11-21",
             "fuente": "https://api.app.brickwise.at/api/v2/assets",
@@ -5380,20 +5392,24 @@
           "prueba": [
             {
               "url": "https://api.app.brickwise.at/api/v2/assets",
-              "hora": "2026-11-21T17:42:00Z",
-              "literal": "participaciones en venta 297",
+              "hora": "2026-11-21T22:38:58Z",
+              "literal": "participaciones en venta 298",
               "copia": {
-                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21.json",
-                "sha256": "eadaa2fab0c984d65515b2662d8fdd8f8b2cb462cfe7227f9751d0959f9c7db8",
+                "archivo": "grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json",
+                "sha256": "298af8e9501f3527fa12cc0a5211271b24864522c8020c6983869a4fbeedd4f5",
                 "json": {
-                  "activos.AT0000A2WCE8.participacionesEnVenta": 297,
-                  "activos.AT0000A2WCE8.v2_availableBricksSecondary": 297
+                  "activos.AT0000A2WCE8.participacionesEnVenta": 298,
+                  "activos.AT0000A2WCE8.v2_availableBricksSecondary": 298
                 }
               }
             },
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "**Cifras del libro de órdenes:** las del 21/11 de cada ficha"
+            },
+            {
+              "documento": "DECISIONES-COORDINADOR.md",
+              "contiene": "venta más barata 71,00 € (1 a ese precio, orden del 21/11/2026)"
             }
           ]
         },
@@ -5769,7 +5785,8 @@
       ],
       "difiere": {
         "tarjeta.accesoEspana": "Decisión del responsable del proyecto (DECISIONES §1, §2 y §8): las 8 con número fiscal austriaco se quedan y el acceso desde España se queda como está publicado («Sin confirmar…»), no «No».",
-        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente."
+        "avisos": "DECISIONES §6: el aviso del número fiscal es el texto del auditor, que respalda el literal de la ayuda, con lo que no cuesta atribuido a Brickwise («…según Brickwise, pedirlo con el asesor fiscal que te presenta no cuesta nada…», revisión de cumplimiento C2), en lugar del del expediente.",
+        "tarjeta.minimo": "DECISIONES §9: el vigía de antes de aplicar (22:38 UTC) encontró una orden de venta nueva de 1 participación a 71,00 €, creada a las 21:36 UTC; entra en lugar de los 71,90 € del expediente (17:42 UTC)."
       }
     },
     "drautalresidenz-paternion": {
@@ -9308,7 +9325,7 @@
         "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €",
         "local-de-estanco-klagenfurt": "95 € → 95 €",
         "vivienda-stallhofstra-e-28-gratwein": "68,80 € → 68,80 €",
-        "vivienda-schwarzer-weg-18-graz": "69,90 € → 71,90 €",
+        "vivienda-schwarzer-weg-18-graz": "69,90 € → 71,00 €",
         "drautalresidenz-paternion": "70 € → 70 €",
         "randhartingergasse-9-viena": "78 € → 78 €",
         "apartamento-vacacional-hinterstoder-50": "75 € → 75 €",

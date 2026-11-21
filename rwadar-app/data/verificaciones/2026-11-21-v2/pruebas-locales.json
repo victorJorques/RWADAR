@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-21T22:00:39.494Z",
+  "ejecutadoEl": "2026-11-21T22:41:12.687Z",
   "etiqueta": "2026-11-21",
   "revisionAnterior": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
-  "revisionNueva": "508d0366-3c8e-8f9c-611d-bf49025a08d1",
-  "sha256AplicarYAprobar": "0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40",
+  "revisionNueva": "753b4cc9-3c01-e879-ba96-05dc3cf95b05",
+  "sha256AplicarYAprobar": "1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd",
   "pruebas": [
     "inventario: 288 sentencias en una transacción serializable (begin, guarda, 284 inserts, aprobación, commit); guarda (publicada 94f7fd5d con su huella 94f7fd5df6e5…, catálogo no retirado, fecha del 21/11 al 28/11, destino sin otra identidad); solo inserts en rwadar_catalogo (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones; las mismas filas por tabla que la 2026-11-20.2), todos idempotentes y de la revisión nueva; la aprobación solo cambia rwadar_catalogo.revisiones; sin DDL, borrados, permisos, Auth ni funciones; nada en public.*",
     "cadena de producción (seed antes de ARTEX + 20 lotes, del 2026-10-22 a la 2026-11-20.2): la publicada es la 94f7fd5d",
@@ -29,7 +29,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador",
       "falla": false,
-      "publicada": "508d0366-3c8e-8f9c-611d-bf49025a08d1"
+      "publicada": "753b4cc9-3c01-e879-ba96-05dc3cf95b05"
     },
     {
       "caso": "la publicada no es la 94f7fd5d (es la anterior, eca89db7)",
@@ -276,7 +276,7 @@
     "vivienda-schwarzer-weg-18-graz": {
       "coleccion": "secundario",
       "estado": "Referencia de reventa · disponibilidad sin confirmar",
-      "minimo": "Desde 71,90 € la participación en reventa (21/11)",
+      "minimo": "Desde 71,00 € la participación en reventa (21/11)",
       "espana": "Sin comprobar si se puede contratar desde España",
       "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
       "antes": {

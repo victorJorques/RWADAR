@@ -284,3 +284,19 @@ motor:
   120 €», etc.) si el expediente la da.
 - **cambios-radar.json:** vale el arreglo de formato de la nota que hizo el
   montador («Cambios del radar comprobados a mano el 21/11/2026. …»).
+
+## 9. Antes de aplicar (22:38 UTC)
+
+- **Vigía contra la entrega revisada** (`<scratchpad>/vigia-antes-de-aplicar`,
+  22:38:24 UTC): 5 cifras cambian, 72 no cambian, 51 documentos y 29
+  búsquedas de la CNMV iguales. La publicada sigue siendo `94f7fd5d`.
+- **Spiko Euro:** la misma VL del 20/11 (1,063496 EUR). Es la falsa alarma de
+  las 17:37 UTC y no cambia nada.
+- **Schwarzer Weg 18:** a las 21:36 UTC entró una orden de venta nueva de 1
+  participación a 71,00 €. Leído en la API pública a las 22:38:58 UTC
+  (`grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json`):
+  venta más barata 71,00 € (1 a ese precio, orden del 21/11/2026); orden de
+  menor importe 1 participación a 71,00 € (72,07 € con el 1,5 %); 298
+  participaciones en venta. Entran estas cifras en lugar de las de las
+  17:42 UTC (71,90 €, 297). La mejor oferta de compra no cambia (62,00 €). Las
+  otras 10 fichas de Brickwise dan lo mismo que a las 17:42 UTC.

@@ -2,7 +2,7 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40`, revisión `508d0366-3c8e-8f9c-611d-bf49025a08d1`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd`, revisión `753b4cc9-3c01-e879-ba96-05dc3cf95b05`.
 - Parte de la publicada `94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7` (huella `94f7fd5df6e5c28e…`); último día vigente 28/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
 - Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **23** de 288.
@@ -305,10 +305,10 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 
 ### vivienda-schwarzer-weg-18-graz
 
-- tarjeta: «Mínimo de inversión: Desde 69,90 € la participación en reventa (20/11)» → «Mínimo de inversión: Desde 71,90 € la participación en reventa (21/11)»
-- referencia de la ficha: «Venta más barata · 20/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)» → «Venta más barata · 21/11/2026: 71,90 € por participación (1 a ese precio, orden del 18/09/2026)»
-- referencia de la ficha: «Orden de venta de menor importe · 20/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)» → «Orden de venta de menor importe · 21/11/2026: 1 participación a 71,90 € (72,98 € con el 1,5 %)»
-- referencia de la ficha: «Participaciones en venta · 20/11/2026: 298» → «Participaciones en venta · 21/11/2026: 297»
+- tarjeta: «Mínimo de inversión: Desde 69,90 € la participación en reventa (20/11)» → «Mínimo de inversión: Desde 71,00 € la participación en reventa (21/11)»
+- referencia de la ficha: «Venta más barata · 20/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)» → «Venta más barata · 21/11/2026: 71,00 € por participación (1 a ese precio, orden del 21/11/2026)»
+- referencia de la ficha: «Orden de venta de menor importe · 20/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)» → «Orden de venta de menor importe · 21/11/2026: 1 participación a 71,00 € (72,07 € con el 1,5 %)»
+- referencia de la ficha: «Participaciones en venta · 20/11/2026: 298» → «Participaciones en venta · 21/11/2026: 298»
 - referencia de la ficha: «Mejor oferta de compra · 20/11/2026: 62,00 € (1 participación, orden del 17/11/2026)» → «Mejor oferta de compra · 21/11/2026: 62,00 € (1 participación, orden del 17/11/2026)»
 - referencia de la ficha: «Destino de consulta comprobado: Mercado público de Brickwise» → «Destino de consulta comprobado: Mercado público de Brickwise»
 - referencia de la ficha: «Moneda · 22/10/2026: EUR» → «Moneda · 21/11/2026: EUR»
@@ -509,7 +509,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - vivienda-sonnleithnergasse-2-viena: Mínimo de inversión: «Desde 75 € la participación en reventa (20/11)» → «Desde 75 € la participación en reventa (21/11)»
 - local-de-estanco-klagenfurt: Mínimo de inversión: «Desde 95 € la participación en reventa (20/11)» → «Desde 95 € la participación en reventa (21/11)»
 - vivienda-stallhofstra-e-28-gratwein: Mínimo de inversión: «Desde 68,80 € la participación en reventa (20/11)» → «Desde 68,80 € la participación en reventa (21/11)»
-- vivienda-schwarzer-weg-18-graz: Mínimo de inversión: «Desde 69,90 € la participación en reventa (20/11)» → «Desde 71,90 € la participación en reventa (21/11)»
+- vivienda-schwarzer-weg-18-graz: Mínimo de inversión: «Desde 69,90 € la participación en reventa (20/11)» → «Desde 71,00 € la participación en reventa (21/11)»
 - drautalresidenz-paternion: Mínimo de inversión: «Desde 70 € la participación en reventa (20/11)» → «Desde 70 € la participación en reventa (21/11)»
 - randhartingergasse-9-viena: Mínimo de inversión: «Desde 78 € la participación en reventa (20/11)» → «Desde 78 € la participación en reventa (21/11)»
 - apartamento-vacacional-hinterstoder-50: Mínimo de inversión: «Desde 75 € la participación en reventa (20/11)» → «Desde 75 € la participación en reventa (21/11)»
@@ -1078,7 +1078,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …valor":"Desde  «69» → «71»
-- (y 22 cambios más en esta sentencia)
+- (y 23 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'drautalresidenz-paternion' 'https://app.brickwise.at/desktopWeb/marketplace'
 

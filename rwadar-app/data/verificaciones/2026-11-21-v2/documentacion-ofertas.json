@@ -2036,7 +2036,7 @@
       },
       {
         "etiqueta": "Mínimo de inversión",
-        "valor": "Desde 71,90 € la participación en reventa (21/11)",
+        "valor": "Desde 71,00 € la participación en reventa (21/11)",
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
@@ -2060,7 +2060,7 @@
       },
       {
         "etiqueta": "Venta más barata · 21/11/2026",
-        "valor": "71,90 € por participación (1 a ese precio, orden del 18/09/2026)",
+        "valor": "71,00 € por participación (1 a ese precio, orden del 21/11/2026)",
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
@@ -2068,7 +2068,7 @@
       },
       {
         "etiqueta": "Orden de venta de menor importe · 21/11/2026",
-        "valor": "1 participación a 71,90 € (72,98 € con el 1,5 %)",
+        "valor": "1 participación a 71,00 € (72,07 € con el 1,5 %)",
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
@@ -2076,7 +2076,7 @@
       },
       {
         "etiqueta": "Participaciones en venta · 21/11/2026",
-        "valor": "297",
+        "valor": "298",
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://api.app.brickwise.at/api/v2/assets",
