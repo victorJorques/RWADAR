@@ -219,6 +219,7 @@ const es = {
       nueva: 'Nueva',
       anadida: 'Añadida el',
       verificada: 'Verificada el',
+      actualizada: 'Actualizada el',
       verFicha: 'Ver ficha de',
       // Sin cifra: el número de ofertas ya sale en las cifras de la cabecera (que no se repita).
       ver: () => 'Ver todas las ofertas',
@@ -488,6 +489,7 @@ const en = {
       nueva: 'New',
       anadida: 'Added on',
       verificada: 'Verified on',
+      actualizada: 'Updated on',
       verFicha: 'View details of',
       ver: () => 'See all offers',
     },

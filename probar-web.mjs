@@ -2625,22 +2625,38 @@ for(const [nombre,alterar] of [
     // Todas con la misma fecha: primero las de la Selección.
     JSON.stringify(sinAltas[0])===JSON.stringify(espSin)&&sinAltas[0].slice(0,Math.min(6,enSelIni.size)).every(x=>enSelIni.has(x))&&!sinAltas[1]&&
     /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="mercado"/.test(panelInicioHTML));
-  // 21/11/2026, orden de Víctor («lo que más actualizado esté»): cada tarjeta de Inicio lleva su fecha más reciente,
-  // «Añadida el» si se añadió el día de la verificación o después y, si no, «Verificada el» con la fecha del catálogo.
+  // 21/11/2026, orden de Víctor («lo que más actualizado esté, si la documentación la hemos actualizado o hemos añadido
+  // la ficha»): cada tarjeta de Inicio lleva su fecha más reciente: «Añadida el» (alta), «Verificada el» (catálogo, solo
+  // si la revisión pudo verificarla) o «Actualizada el» (documentación); a igual fecha, en ese orden.
   {
     const fechas=[...p.obtiene('relNuevasLista').innerHTML.matchAll(/<p class="rel-nueva-fecha"><span>([^<]+)<\/span> <time datetime="([^"]+)">([^<]+)<\/time><\/p>/g)].map(m=>[m[1],m[2],m[3]]);
-    const esperadas=conAltas.map(slug=>{const o=emi.find(x=>x.slug===slug),alta=altaIni(o);
-      return alta&&alta>=o.verificadaEl?['Añadida el',alta]:['Verificada el',o.verificadaEl];});
-    const caso=(alta,verificadaEl)=>JSON.parse(vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${conAltas[0]}'],f=e.anadidaEl;e.anadidaEl='${alta}';
-      const r=fechaTarjetaInicio({slug:'${conAltas[0]}',verificadaEl:'${verificadaEl}'});e.anadidaEl=f;return JSON.stringify(r)})()`,c));
-    prueba('Inicio: cada tarjeta pone su fecha más reciente, «Añadida el» o «Verificada el» (la del 3 se ve verificada el 20)',
-      fechas.length===conAltas.length&&fechas.length>0&&
+    // Lo esperado, con los datos de cada oferta (con el catálogo del 20/11, las seis salen «Verificada el 20/11/2026»).
+    const esperadas=conAltas.map(slug=>{const o=emi.find(x=>x.slug===slug);let m=null;
+      for(const [e,f] of [['Añadida el',altaIni(o)],['Verificada el',o.estadoRevision==='actual'?o.verificadaEl:''],['Actualizada el',o.documentacion?.revisadaEl||'']])
+        if(f&&(!m||f>m[1]))m=[e,f];
+      return m;});
+    const base=emi.find(x=>x.slug===conAltas[0]);
+    const caso=(alta,verificadaEl,{estado='actual',doc=null}={})=>JSON.parse(vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${conAltas[0]}'],f=e.anadidaEl;e.anadidaEl='${alta}';
+      const o={slug:'${conAltas[0]}',verificadaEl:'${verificadaEl}',estadoRevision:'${estado}',documentacion:${doc?`{...${JSON.stringify(base.documentacion)},revisadaEl:'${doc}'}`:'null'}};
+      const r=fechaTarjetaInicio(o);e.anadidaEl=f;return JSON.stringify(r)})()`,c));
+    const es=(r,etiqueta,fecha)=>JSON.stringify(r)===JSON.stringify({etiqueta,fecha});
+    prueba('Inicio: cada tarjeta pone su fecha más reciente, «Añadida», «Verificada» (solo si se pudo verificar) o «Actualizada» (la del 3 se ve verificada el 20)',
+      fechas.length===conAltas.length&&fechas.length>0&&esperadas.every(Boolean)&&base.documentacion&&
+      // Ninguna tarjeta pone «Añadida» si después se verificó o se actualizó.
+      conAltas.every((slug,i)=>{const o=emi.find(x=>x.slug===slug);return fechas[i][0]!=='Añadida el'||fechas[i][1]>=o.verificadaEl||o.estadoRevision!=='actual';})&&
       JSON.stringify(fechas.map(([e,f])=>[e,f]))===JSON.stringify(esperadas)&&fechas.every(([,f,v])=>v===vm.runInContext(`fechaES('${f}')`,c))&&
-      JSON.stringify(caso('2026-11-03','2026-11-20'))===JSON.stringify({etiqueta:'Verificada el',fecha:'2026-11-20'})&&
-      JSON.stringify(caso('2026-11-20','2026-11-20'))===JSON.stringify({etiqueta:'Añadida el',fecha:'2026-11-20'})&&
-      JSON.stringify(caso('2026-11-03','2999-01-01'))===JSON.stringify({etiqueta:'Añadida el',fecha:'2026-11-03'})&&
+      es(caso('2026-11-03','2026-11-20'),'Verificada el','2026-11-20')&&
+      es(caso('2026-11-20','2026-11-20'),'Añadida el','2026-11-20')&&
+      es(caso('2026-11-03','2999-01-01'),'Añadida el','2026-11-03')&&
+      // Fuentes en conflicto o no verificable: nunca «Verificada»; con documentación del día, «Actualizada».
+      es(caso('2026-11-03','2026-11-20',{estado:'fuentes_en_conflicto'}),'Añadida el','2026-11-03')&&
+      es(caso('2026-11-03','2026-11-20',{estado:'no_verificable',doc:'2026-11-20'}),'Actualizada el','2026-11-20')&&
+      // Documentación más reciente que la verificación: «Actualizada»; a igual fecha, «Verificada»; futura, no cuenta.
+      es(caso('2026-11-03','2026-11-10',{doc:'2026-11-20'}),'Actualizada el','2026-11-20')&&
+      es(caso('2026-11-03','2026-11-20',{doc:'2026-11-20'}),'Verificada el','2026-11-20')&&
+      es(caso('2026-11-03','2026-11-10',{doc:'2999-01-01'}),'Verificada el','2026-11-10')&&
       vm.runInContext("(()=>{CATALOGO_CADUCADO=true;const r=fechaTarjetaInicio({slug:'x',verificadaEl:'2026-11-20'});CATALOGO_CADUCADO=false;return r})()",c)===null&&
-      /"Verificada el": "Verified on"/.test(lee('assets/idioma-en-20261022.js')));
+      /"Verificada el": "Verified on"/.test(lee('assets/idioma-en-20261022.js'))&&/"Actualizada el": "Updated on"/.test(lee('assets/idioma-en-20261022.js')));
   }
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);

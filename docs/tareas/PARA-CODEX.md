@@ -6,6 +6,25 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (43) · Claude · Inicio: cada oferta con su fecha más reciente · PR #183
+
+- **Orden de Víctor (21/11):** en las ofertas de Inicio, en vez de cuándo se
+  añadió (salía «Añadida el 03/11» estando a día 20), «lo que más actualizado
+  esté, si la documentación la hemos actualizado o hemos añadido la ficha».
+- **Regla (web `fechaTarjetaInicio`, app `fechaTarjeta` de
+  `rwadar-movil/lib/recien-anadidas.js`):** la más reciente entre el alta
+  («Añadida el»), la verificación del catálogo («Verificada el», solo con
+  `estadoRevision === 'actual'`: una oferta con fuentes en conflicto o no
+  verificable nunca dice «Verificada») y la revisión de su documentación
+  («Actualizada el»). A igual fecha, en ese orden; las fechas futuras no
+  cuentan; con el catálogo caducado o sin comprobar, ninguna. Sale en todas
+  las tarjetas, no solo en las «Nueva». Inglés: «Verified on» y «Updated on».
+- **Pruebas:** `probar-web.mjs` (fechas pintadas y casos límite) y
+  `rwadar-movil/tests/recien-anadidas.test.cjs`. Web 734/734, app 690/690.
+  Con el catálogo del 20/11, las seis tarjetas dicen «Verificada el 20/11/2026».
+- **Revisión única:** 3 hallazgos (estado de revisión, fecha de la
+  documentación, esta entrada), arreglados.
+
 ## 21 de noviembre de 2026 (42) · Claude · El catálogo se prepara solo y Víctor da el «dale» · TAREA PROGRAMADA
 
 - **Orden de Víctor (21/11):** «Tú ve haciendo en automático si puedes» y,

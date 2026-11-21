@@ -2139,15 +2139,21 @@ function ofertasInicio(c){
   .sort((a,b)=>altaOferta(b).localeCompare(altaOferta(a))||(enSel.has(b.slug)?1:0)-(enSel.has(a.slug)?1:0)||masNuevasPrimero(a,b)).slice(0,6);
 }
 /* La fecha de cada tarjeta de Inicio (21/11/2026, orden de Víctor: «lo que más
-   actualizado esté»): la más reciente entre la de alta y la de verificación
-   del catálogo. «Añadida el» si se añadió ese día o después de verificarse;
-   si no, «Verificada el». Con el catálogo caducado o sin comprobar, ninguna. */
+   actualizado esté, si la documentación la hemos actualizado o hemos añadido
+   la ficha»): la más reciente entre el alta («Añadida el»), la verificación
+   del catálogo («Verificada el», solo si la revisión pudo verificarla:
+   estadoRevision 'actual') y la revisión de su documentación («Actualizada
+   el»). A igual fecha, en ese orden. Con el catálogo caducado o sin comprobar,
+   ninguna. La app hace lo mismo (fechaTarjeta de lib/recien-anadidas.js). */
 function fechaTarjetaInicio(o){
- if(catalogoSinCifrasLocal())return null;
- const alta=altaOferta(o),hoy=new Date().toISOString().slice(0,10);
- const verif=o&&fechaLocalValida(o.verificadaEl)&&o.verificadaEl<=hoy?o.verificadaEl:'';
- if(alta&&alta>=verif)return {etiqueta:'Añadida el',fecha:alta};
- return verif?{etiqueta:'Verificada el',fecha:verif}:null;
+ if(catalogoSinCifrasLocal()||!o)return null;
+ const hoy=new Date().toISOString().slice(0,10);
+ const verif=o.estadoRevision==='actual'&&fechaLocalValida(o.verificadaEl)&&o.verificadaEl<=hoy?o.verificadaEl:'';
+ const d=o.documentacion!=null?documentacionOfertaLocal(o):null;
+ let mejor=null;
+ for(const [etiqueta,fecha] of [['Añadida el',altaOferta(o)],['Verificada el',verif],['Actualizada el',d&&d.revisadaEl||'']])
+  if(fecha&&(!mejor||fecha>mejor.fecha))mejor={etiqueta,fecha};
+ return mejor;
 }
 function tarjetaInicioHtml(o,i,seleccion){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=fechaTarjetaInicio(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);

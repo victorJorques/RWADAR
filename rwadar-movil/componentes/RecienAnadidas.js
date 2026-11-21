@@ -21,7 +21,7 @@ import { tacto } from '../lib/tacto';
    tiene (la de la Selección), el aviso crítico entero si lo hay (como la
    tarjeta de Ofertas desde el 05/11/2026: los demás avisos, en la ficha),
    «Nueva» y «Pasa las 5 comprobaciones» si toca y su fecha más reciente
-   («Añadida el dd/mm/aaaa» o «Verificada el dd/mm/aaaa», fechaTarjeta),
+   («Añadida el», «Verificada el» o «Actualizada el dd/mm/aaaa», fechaTarjeta),
    y abre su ficha. Debajo, qué son las 5 comprobaciones (plegado: el
    superlativo solo vale con ellas delante) y «Ver todas las ofertas ›». Sin
    ninguna oferta no se pinta nada.
@@ -44,7 +44,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
         {ofertas.map((o) => {
           const lugar = lugarConPais(imagenEditorialOferta(o)?.lugar);
           const cuando = fechaTarjeta(o);
-          const fecha = cuando ? `${cuando.tipo === 'anadida' ? b.anadida : b.verificada} ${fechaES(cuando.fecha)}` : '';
+          const fecha = cuando ? `${b[cuando.tipo]} ${fechaES(cuando.fecha)}` : '';
           const procedencia = [o.plataformaNombre, lugar].filter(Boolean).join(' · ');
           const letra = t.seleccion.letraPequena[o.slug] || '';
           const critico = avisosCriticos(o)[0];
