@@ -16,7 +16,7 @@ function entorno(inicial = {}) {
   Module._load = function(name, parent, main) {
     if (name === '@react-native-async-storage/async-storage') return { __esModule: true, default: storage };
     if (name === 'react-native') return { Platform: { OS: 'android' } };
-    if (parent?.filename === path.join(lib, 'datos.js') && name === './modo-local') return { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false };
+    if (parent?.filename === path.join(lib, 'datos.js') && name === './modo-local') return { SERVICIOS_USUARIO_REMOTOS: false };
     if (parent?.filename === path.join(lib, 'datos.js') && name === './supabase') return {};
     return load.call(this, name, parent, main);
   };

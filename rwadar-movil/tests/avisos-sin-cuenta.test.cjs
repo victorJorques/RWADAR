@@ -213,7 +213,7 @@ function datos(inicial = {}) {
   const storage = { async getItem(k) { return mapa.has(k) ? mapa.get(k) : null; }, async setItem(k, v) { mapa.set(k, v); },
     async removeItem(k) { mapa.delete(k); }, async getAllKeys() { return [...mapa.keys()]; }, async multiRemove(c) { c.forEach((k) => mapa.delete(k)); } };
   const modulo = cargar('lib/datos.js', { '@react-native-async-storage/async-storage': { __esModule: true, default: storage },
-    'react-native': { Platform: { OS: 'android' } }, 'datos.js:./modo-local': { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false },
+    'react-native': { Platform: { OS: 'android' } }, 'datos.js:./modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
     'datos.js:./supabase': {} });
   return { d: modulo, mapa };
 }
@@ -393,7 +393,7 @@ test('sin cuenta · en la app: dentro de la pantalla de acceso, encima del formu
   const acceso = leer('componentes', 'AccesoObligatorio.js');
   assert.ok(acceso.indexOf('<AvisosSinCuenta') > 0 && acceso.indexOf('<AvisosSinCuenta') < acceso.indexOf('<Cuenta controlador'), 'encima del formulario');
   const app = leer('App.js');
-  assert.match(app, /const AVISOS_SIN_CUENTA_ACTIVOS = MODO_LOCAL === false && AVISOS_SIN_CUENTA_REMOTOS === true;/);
+  assert.match(app, /const AVISOS_SIN_CUENTA_ACTIVOS = AVISOS_SIN_CUENTA_REMOTOS === true;/);
   assert.match(app, /sinCuenta=\{AVISOS_SIN_CUENTA_ACTIVOS \? \{ desdeNotificacion: Boolean\(destinoAvisoPendiente\) \} : null\}/);
   assert.match(app, /g\.renovar\(\)\.catch\(\(\) => \{\}\)/, 'una vez al abrir (el gestor la limita a una al día)');
   assert.match(app, /sinCuenta: AVISOS_SIN_CUENTA_ACTIVOS \? gestorSinCuenta\(\) : null/, 'con sesión, «Desactivar» quita también las de sin cuenta');

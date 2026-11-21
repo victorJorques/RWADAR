@@ -12,9 +12,9 @@ const ast = babel.parseSync(codigo, { babelrc: false, configFile: false, parserO
 ast.program.body = ast.program.body.filter((nodo) => nodo.type === 'FunctionDeclaration' && funciones.includes(nodo.id.name));
 const js = babel.transformFromAstSync(ast, codigo, { babelrc: false, configFile: false, plugins: [jsx] }).code;
 
-function componentes(local, capacidad) {
+function componentes(capacidad) {
   const entorno = {
-    MODO_LOCAL: local, USUARIO_LOCAL: local || capacidad !== true,
+    USUARIO_LOCAL: capacidad !== true,
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
     useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
     useEffect() {}, useRef: inicial => ({ current: inicial }),
@@ -32,7 +32,7 @@ function nodos(arbol) {
 function texto(arbol) { return nodos(arbol).filter((n) => typeof n === 'string').join(' '); }
 
 test('el panel editorial no ofrece activación aunque reciba un estado push antiguo', () => {
-  const ui = componentes(false, false);
+  const ui = componentes(false);
   for (const estado of ['disponible', 'activo', 'denegado', 'comprobando', 'error']) {
     const arbol = ui.PanelAvisos({ estado: { estado }, tieneSeguimientos: true, procesando: true });
     assert.match(texto(arbol), /Avisos no activados/);
@@ -43,7 +43,7 @@ test('el panel editorial no ofrece activación aunque reciba un estado push anti
 });
 
 test('privacidad editorial describe conexión y borrado limitado, sin prometer borrado histórico', () => {
-  const ui = componentes(false, false);
+  const ui = componentes(false);
   const visible = texto(ui.Privacidad({ visible: true }));
   assert.match(visible, /Catálogo con cuenta confirmada/);
   assert.match(visible, /dirección IP/);
@@ -54,7 +54,7 @@ test('privacidad editorial describe conexión y borrado limitado, sin prometer b
 });
 
 test('Perfil editorial anuncia avisos y cuentas como próximamente, sin ofrecer activarlos', () => {
-  const ui = componentes(false, false);
+  const ui = componentes(false);
   const perfil = ui.PantallaPerfil({ seguidas: [], ofertasGuardadas: [] });
   assert.match(texto(perfil), /Los avisos llegarán a la app en una próxima actualización/);
   assert.match(texto(perfil), /Las cuentas llegarán a la app en una próxima actualización/);
@@ -63,11 +63,9 @@ test('Perfil editorial anuncia avisos y cuentas como próximamente, sin ofrecer 
   assert.doesNotMatch(texto(perfil), /pedir permiso|Avisos push activos/);
 });
 
-test('las explicaciones local y remota siguen separadas por capacidad explícita', () => {
-  const local = componentes(true, true);
-  assert.match(texto(local.Privacidad({})), /Copia interna aislada/);
-  assert.doesNotMatch(texto(local.Privacidad({})), /Catálogo conectado, sin cuenta/);
-  const remoto = componentes(false, true);
+test('las explicaciones con y sin servicios remotos siguen separadas por capacidad explícita', () => {
+  assert.doesNotMatch(texto(componentes(false).Privacidad({})), /Identificador y seguimiento/);
+  const remoto = componentes(true);
   assert.match(texto(remoto.Privacidad({})), /Identificador y seguimiento/);
   const arbol = remoto.PanelAvisos({ estado: { estado: 'disponible' }, tieneSeguimientos: true });
   assert.match(texto(arbol), /Continuar y pedir permiso/);

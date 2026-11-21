@@ -63,16 +63,13 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
   assert.match(codigo, /accessibilityLabel="Buscar plataforma o palabra clave"/);
   assert.match(codigo, /accessibilityLabel=\{sigue \? `Dejar de seguir/);
   assert.match(codigo, /accessibilityLiveRegion="polite"/);
-  assert.match(codigo, /INTERNO · datos locales · sin conexión a Supabase de producción/);
   assert.match(codigo, /Buscar por oferta, empresa, país o activo/);
   assert.match(codigo, /no hay comisiones ni enlaces remunerados activos/);
   assert.match(codigo, /Una relación comercial debe identificarse y no cambia el orden editorial/);
   assert.match(codigo, /oferta\.plataformaSlug !== proveedorOferta/);
   assert.match(codigo, /proveedor\.slug/);
-  assert.match(codigo, /const escaparate = MODO_LOCAL \? \[/);
-  assert.match(codigo, /cargarCatalogo\(\), cargarFuera\(\), \.\.\.escaparate, siguiendo\(\)/);
+  assert.match(codigo, /cargarCatalogo\(\), cargarFuera\(\), siguiendo\(\)/);
   assert.match(codigo, /setRadar\(catalogo\.plataformas\); setFuera\(f\.datos\); setOfertas\(principales\)/);
-  assert.match(codigo, /\{!MODO_LOCAL \? \(/);
 });
 
 test('el aviso de catálogo se desplaza dentro de las listas de Buscar sin ocultarlo ni truncarlo', () => {
@@ -204,7 +201,7 @@ test('ofertas separa tres colecciones y adapta una, dos o tres columnas al ancho
     assert.match(app, new RegExp(`catalogo\\.ofertas\\.filter\\(o => o\\.coleccion === '${grupo}'\\)`));
     assert.match(app, new RegExp(`activo=\\{grupoOfertas === '${grupo}'\\}[\\s\\S]{0,180}seleccionarGrupoOfertas\\('${grupo}'\\)`));
   }
-  assert.match(app, /MODO_LOCAL \? <SegmentoOferta texto="Todo"/);
+  assert.doesNotMatch(app, /<SegmentoOferta texto="Todo"/);
   assert.match(app, /No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles/);
   assert.match(app, /No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir/);
   assert.match(app, /setSecundario\(\[\]\); setEnCamino\(\[\]\)/);

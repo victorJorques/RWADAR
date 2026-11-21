@@ -68,7 +68,6 @@ test('las fichas móviles priorizan la verificación local sobre claims canónic
   const detalle = app.slice(app.indexOf('function Detalle('), app.indexOf('const e = StyleSheet.create'));
 
   assert.match(ficha, /const verificacion = p\.verificacionLocal/);
-  assert.doesNotMatch(app, /MODO_LOCAL (?:\?|&&) p\.verificacionLocal/);
   assert.match(ficha, /<PanelVerificacionLocal verificacion=\{verificacion\} compacta \/>/);
   assert.match(ficha, /verificacion \? verificacion\.estadoOperativo\.detalle : p\.nota/);
   assert.match(detalle, /<PanelVerificacionLocal verificacion=\{verificacion\} \/>/);

@@ -1,16 +1,13 @@
 /* ---------------------------------------------------------------------
-   Corte editorial conectado
+   Interruptores de la app
    ---------------------------------------------------------------------
-   Solo el valor literal catalogo-editorial permite consultar el catálogo.
-   La bandera es una decisión de código explícita, no una variable de entorno que pueda
+   Son decisiones de código explícitas, no variables de entorno que puedan
    faltar o interpretarse de forma distinta entre Metro, Expo Go y un test.
-
-   El corte de publicación se valida antes de compilar la entrega. Un valor
-   desconocido falla hacia «local»; nunca habilita servicios de usuario.
+   La app consulta siempre el catálogo editorial conectado: el antiguo modo
+   local, con el escaparate de agosto incluido, se quitó el 21/11/2026.
    --------------------------------------------------------------------- */
 
 export const MODO_DATOS = 'catalogo-editorial';
-export const MODO_LOCAL = MODO_DATOS !== 'catalogo-editorial';
 
 /* Consultar el catálogo conectado no autoriza a registrar instalaciones,
    sincronizar favoritos o preparar push. Requieren un corte y E2E propios.
@@ -63,13 +60,3 @@ export const AVISOS_BANDEJA_REMOTA = true;
    llega por OTA a la 1.4.2 (con la 1.4.1 dice que llega con la 1.4.2). */
 export const AVISOS_SIN_CUENTA_REMOTOS = true;
 
-export function modoLocalActivo() {
-  return MODO_LOCAL === true;
-}
-
-export function exigirModoLocal() {
-  if (!modoLocalActivo()) {
-    throw new Error('Esta copia de RWAdar solo admite datos locales');
-  }
-  return true;
-}
