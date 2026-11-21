@@ -113,7 +113,7 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
      condición para enviar las notificaciones de la web a todos, salvo que ese
      envío salga de GitHub.
    - **Gmail sin contrato:** se quita en la ronda 2 (punto 2).
-   - Decidir si Eric Almiñana y Samuel Rodriguez son corresponsables en el
+   - Decidir si los dos colaboradores del proyecto son corresponsables en el
      sentido del RGPD (hoy la privacidad solo nombra a Víctor).
    - Plazos que faltan (registros de proveedores, analítica, buzones, altas
      sin confirmar, datos en pausa) y nombrar a GitHub en la privacidad como
@@ -188,8 +188,8 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
 | | |
 |---|---|
 | **Víctor** (titular) | Decide; cuentas de proveedores y tiendas, pagos, contratos y todo lo que exija identidad. Solo él autoriza publicar o tocar la base en línea. Es el responsable del tratamiento de datos. |
-| **Eric Almiñana** | Autor de las lecciones de la Academy. Con Samuel y Víctor, gestiona los reportes de seguridad ([`../SECURITY.md`](../SECURITY.md)). |
-| **Samuel Rodriguez** | Gestiona con Eric y Víctor los reportes de seguridad. Si Eric y él son corresponsables en el sentido del RGPD está por decidir (registro de actividades, apartado 1). |
+| **Eric** (colaborador) | Autor de las lecciones de la Academy. Con el otro colaborador y Víctor, gestiona los reportes de seguridad ([`../SECURITY.md`](../SECURITY.md)). |
+| **Otro colaborador** | Gestiona con Eric y Víctor los reportes de seguridad. Si Eric y él son corresponsables en el sentido del RGPD está por decidir (registro de actividades, apartado 1). |
 | **Codex (ChatGPT)** | Integración técnica, configuración, pruebas y publicación autorizada de web y app; también trabajo técnico de catálogo y tiendas. |
 | **Claude** | Seguridad, copias de seguridad, revisiones, legal y documentación; también ciclos del catálogo y publicación autorizada. |
 

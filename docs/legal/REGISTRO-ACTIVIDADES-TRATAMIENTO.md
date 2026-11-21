@@ -82,7 +82,7 @@ marcado:
 | **Domicilio** | Plaza Generalitat, s/n, 46600 Alzira, Valencia, España. |
 | **Nombre del proyecto** | RWAdar (no hay sociedad constituida). |
 | **Contacto de privacidad** | rwadares@gmail.com |
-| **Corresponsables** | Ninguno según la privacidad (§1), que nombra solo al titular. **verificar:** `SECURITY.md` dice que Eric Almiñana, Samuel Rodriguez y Víctor Jorques gestionan «conjuntamente» los reportes de seguridad y que el «acuerdo de corresponsabilidad» está pendiente; `docs/INTERNO.md` los llama «corresponsables». Hay que decidir si es solo responsabilidad del proyecto o una corresponsabilidad del RGPD (art. 26), que exigiría un acuerdo escrito y cambiar la privacidad. |
+| **Corresponsables** | Ninguno según la privacidad (§1), que nombra solo al titular. **verificar:** `SECURITY.md` dice que Víctor Jorques y dos colaboradores del proyecto gestionan «conjuntamente» los reportes de seguridad y que el «acuerdo de corresponsabilidad» está pendiente; `docs/INTERNO.md` los llama «corresponsables». Hay que decidir si es solo responsabilidad del proyecto o una corresponsabilidad del RGPD (art. 26), que exigiría un acuerdo escrito y cambiar la privacidad. |
 | **Representante en la UE** | No aplica: el responsable está en España. |
 | **Delegado de protección de datos** | No designado. **No es obligatorio** (comprobado el 07/11/2026; razonamiento debajo de esta tabla). |
 
@@ -217,7 +217,7 @@ guardan allí, Proton los sigue guardando por cuenta de RWAdar.
     tocar la base. Ver A5.
 
 **Quién no recibe datos:** las plataformas del radar, anunciantes ni
-compradores de datos (privacidad §10). Eric Almiñana, autor de la Academy, no
+compradores de datos (privacidad §10). El autor de la Academy no
 recibe datos de usuarios (contraste 4).
 
 ---
@@ -1013,8 +1013,8 @@ valoración: [anexo, apartado 7](ANEXO-NOTIFICACIONES-2026-11-12.md#7-notificaci
   - Cloudflare, Netlify y Supabase;
   - Google (Gmail, el buzón), para los reportes.
 
-  **verificar:** según `SECURITY.md`, los reportes los gestionan Eric
-  Almiñana, Samuel Rodriguez y Víctor Jorques (ver apartado 1).
+  **verificar:** según `SECURITY.md`, los reportes los gestionan Víctor
+  Jorques y dos colaboradores del proyecto (ver apartado 1).
 - **Transferencias internacionales:** Cloudflare con DPF y SCC; Supabase con
   SCC; Netlify con DPF según su DPA (§14.2) y, si cae, SCC módulo 2 (§14.3);
   su entrada en la lista oficial del DPF, **verificar**. Gmail (los
@@ -1254,7 +1254,7 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
   [`BRECHAS-DE-DATOS.md`](BRECHAS-DE-DATOS.md), con el registro interno que
   pide el art. 33.5 del RGPD (07/11/2026).
 - [ ] **Casilla de los 18 años:** decidir si se guarda constancia (A1).
-- [ ] **Corresponsabilidad** de Eric Almiñana y Samuel Rodriguez: decidir y,
+- [ ] **Corresponsabilidad** de los dos colaboradores del proyecto: decidir y,
   si procede, firmar el acuerdo y cambiar la privacidad (apartado 1).
 - [ ] **Panel de control:** documentar qué datos de cuentas trata y quién
   entra (A1).

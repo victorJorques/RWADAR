@@ -166,7 +166,7 @@ que una operación esté protegida.
 No hay un único bloqueo y el proyecto no debe llamarse terminado. Faltan, como
 mínimo:
 
-1. que Eric Almiñana, Samuel Rodriguez y Victor Jorques revisen y firmen el
+1. que Victor Jorques y los dos colaboradores del proyecto revisen y firmen el
    acuerdo de corresponsabilidad y decidan los plazos propuestos de 12 meses y
    3 años;
 2. conservar la evidencia de la 22 aplicada y verificada y repetir su
@@ -647,8 +647,8 @@ los JSON.
 
 ## Lo siguiente, por orden de riesgo
 
-1. Cerrar el acuerdo de corresponsabilidad de Eric Almiñana, Samuel Rodriguez
-   y Victor Jorques (`RWAdar@protonmail.com`) y decidir los plazos propuestos
+1. Cerrar el acuerdo de corresponsabilidad de Victor Jorques y los dos
+   colaboradores del proyecto (`RWAdar@protonmail.com`) y decidir los plazos propuestos
    de 12 meses y 3 años.
 2. Conservar la evidencia de la migración 22 aplicada y verificada; repetir el
    verificador tras cambios de esquema.

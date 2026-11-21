@@ -228,9 +228,8 @@ segura» salvo que otra fuente oficial pruebe exactamente ese alcance.
 RWAdar no tiene sociedad constituida. Las decisiones se toman conjuntamente
 por:
 
-- Eric Almiñana
-- Samuel Rodriguez
 - Victor Jorques
+- dos colaboradores del proyecto
 
 Correo de contacto: `RWAdar@protonmail.com`.
 
