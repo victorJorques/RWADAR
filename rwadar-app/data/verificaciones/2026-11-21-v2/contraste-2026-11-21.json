@@ -1,0 +1,2779 @@
+{
+  "tipo": "revision_integral",
+  "fecha": "2026-11-21",
+  "etiqueta": "2026-11-21",
+  "revisionAnterior": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
+  "revisionNueva": "53747b1d-8b08-adda-5d0b-1f4875749a2d",
+  "decision": "Puesta al día pedida por el responsable del proyecto el 21/11/2026 («Y esta ya ha pasado por ejemplo es antigua, y no sé si ya se puede seguir invirtiendo todos esos errores los tienes que corregir que el lunes tenemos una reunión muy importante»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
+  "archivos": {
+    "DECISIONES-COORDINADOR.md": "f855471439d6277374caeb413f64270f7de3f0a6fa56891694e77d55420abb9f",
+    "radar-contraste-2026-11-21.json": "73bf8ad90afab74e1c50e4c10a32085dfd9544dd75481c1bca694e50363375fb",
+    "cambios-radar.json": "272b29b55b6f3289fd8cda59a0a46edb876256f1bb98ad1555b20efd82283f97"
+  },
+  "radar": {
+    "fuentes": 69,
+    "correctas": 69,
+    "verificacionesManuales": [
+      "spiko-regafi-pasaporte-es"
+    ],
+    "cambios": {
+      "fuentes": {},
+      "plataformas": {}
+    }
+  },
+  "cifras": {
+    "spiko-letras-del-tesoro-euro": {
+      "antes": "2,45 % (VL calculada el 20/11, fechada por Spiko el 22/11)",
+      "despues": "2,45 % (la misma VL, 1,063496 €; consulta del 21/11)",
+      "calculo": "31 días, 22/10 → 22/11, capitalizando: 2,452 % (revisor 18:03 UTC y auditoría 20:14 UTC)"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "antes": "4,00 % en USD (VL del 20/11)",
+      "despues": "4,00 % en USD (la misma VL, 1,103573 $)",
+      "calculo": "31 días, 20/10 → 20/11: 4,002 %"
+    },
+    "spiko-smart-cash-euro": {
+      "antes": "2,84 % (VL del 20/11)",
+      "despues": "2,84 % (la misma VL, 1,017886 €)",
+      "calculo": "7 días: 2,837 %; 35 días: 2,834 %"
+    },
+    "mtbill": {
+      "antes": "1,0789 USD y 3,46 % (ronda 498 del 20/11)",
+      "despues": "sin cambios: no hay ronda nueva el 21/11",
+      "calculo": "(1,07890125 / 1,0753419 − 1) × 365 / 34,91 días"
+    },
+    "brickwise": {
+      "vivienda-pluddemanngasse-101-graz": "75 € → 75 €",
+      "vivienda-sonnleithnergasse-2-viena": "75 € → 75 €",
+      "local-de-estanco-klagenfurt": "95 € → 95 €",
+      "vivienda-stallhofstra-e-28-gratwein": "68,80 € → 68,80 €",
+      "vivienda-schwarzer-weg-18-graz": "69,90 € → 71,90 €",
+      "drautalresidenz-paternion": "70 € → 70 €",
+      "randhartingergasse-9-viena": "78 € → 78 €",
+      "apartamento-vacacional-hinterstoder-50": "75 € → 75 €",
+      "vivienda-pottendorfer-stra-e-62-wr-neustadt": "81 € → 81 €",
+      "fotovoltaica-greenpoint": "102 € → 102 €",
+      "fotovoltaica-cohotel": "110 € → 110 €"
+    }
+  },
+  "condicionHora": {
+    "spiko": "Sábado: no hay VL nueva hasta el lunes 23/11 (Letras hacia las 18:00 UTC; Spiko Euro hacia las 19:30 UTC). Si se aplica después, volver a leer la API.",
+    "mtbill": "Ronda 498 (20/11, 11:41 UTC), sin ronda nueva el 21/11.",
+    "brickwise": "Libro de órdenes de las 17:41–17:42 UTC del 21/11, los mismos bytes que el vigía (17:36 UTC), el revisor (17:59 UTC) y la auditoría (20:13 UTC).",
+    "hausera": "El 25/11 empieza la suscripción; el resumen, la métrica, el aviso y el mínimo corto no dicen «preventa abierta» y siguen siendo ciertos hasta el 28/11."
+  },
+  "vigencia": {
+    "verificadaEl": "2026-11-21",
+    "vigenciaDias": 7,
+    "ultimoDiaVigente": "2026-11-28"
+  },
+  "cambios": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "rentabilidad",
+      "antes": "2,45 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 20/11/2026 (VL calculada el 20/11/2026, que Spiko fecha el 22/11/2026 porque cubre el fin de semana); consultado el 20/11/2026. Variable y no garantizado.",
+      "despues": "2,45 % · Rendimiento neto anualizado de los últimos 31 días que publica Spiko con el valor liquidativo calculado el viernes 20/11/2026; consultado el 21/11/2026. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "métrica",
+      "antes": "Riesgo KID: 1 de 7",
+      "despues": "Riesgo KID: 1 de 7, sin contar los riesgos del registro en blockchain y de la cartera digital (el KID los deja fuera)"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Suscripción inicial mínima publicada: 1 EUR",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Suscripción inicial mínima: 1 EUR",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Suscripción inicial publicada · 22/10/2026: 1 EUR",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Comisión de gestión · 22/10/2026: 0,25 %",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Minimum initial subscription 1 EUR · Minimum subsequent 1 EUR · redeemed 1 EUR",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs",
+      "despues": "Estado de la oferta · consulta 21/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último año.",
+      "despues": "Comisiones · consulta 21/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último año."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Depositario: CACEIS Bank ... los activos del Producto conservados por el depositario no se verán afectados",
+      "despues": "Custodia · consulta 21/11/2026: Depositario: CACEIS Bank ... los activos del Producto conservados por el depositario no se verán afectados"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Reembolso inmediato · consulta 01/11/2026: Instant transfers are supported for amounts up to €500,000 per day",
+      "despues": "Reembolso inmediato · consulta 21/11/2026: Instant transfers are supported for amounts up to €500,000 per day"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7 ... El capital no está garantizado",
+      "despues": "Riesgos · consulta 21/11/2026: Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7 ... El capital no está garantizado"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Las solicitudes ... son centralizadas por Spiko Finance a más tardar a las 11:30 (hora de París). Estas solicitudes se ejecutan sobre la base del último valor liquidativo conocido.",
+      "despues": "Salida · consulta 21/11/2026: Las solicitudes ... son centralizadas por Spiko Finance a más tardar a las 11:30 (hora de París). Estas solicitudes se ejecutan sobre la base del último valor liquidativo conocido."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España (particulares) · consulta 01/11/2026: Customer: a Customer may be a natural person with full legal capacity ... (i) a consumer",
+      "despues": "Acceso desde España (particulares) · consulta 21/11/2026: Customer: a Customer may be a natural person with full legal capacity ... (i) a consumer"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 2,45 %",
+      "despues": "Rentabilidad publicada · 31 días: 2,45 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "rentabilidad",
+      "antes": "4,00 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 20/11/2026 (VL del 20/11/2026); consultado el 20/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.",
+      "despues": "4,00 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 20/11/2026 (VL del 20/11/2026); consultado el 21/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "métrica",
+      "antes": "Riesgo KID: 1 de 7, más riesgo de cambio",
+      "despues": "Riesgo KID: 1 de 7, más riesgo de cambio, sin contar los riesgos del registro en blockchain y de la cartera digital (el KID los deja fuera)"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs",
+      "despues": "Estado de la oferta · consulta 21/11/2026: Statut : Vivant · Type de souscripteurs : Tous souscripteurs"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: USD Share FR001400ODM9 ... 1 USD 1 USD 1 USD All investors",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año",
+      "despues": "Comisiones · consulta 21/11/2026: Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda y tipo de cambio · consulta 01/11/2026: Atención al riesgo de cambio ... la ganancia final dependerá del tipo de cambio entre ambas monedas. Este riesgo no se tiene en cuenta en el indicador anterior.",
+      "despues": "Moneda y tipo de cambio · consulta 21/11/2026: Atención al riesgo de cambio ... la ganancia final dependerá del tipo de cambio entre ambas monedas. Este riesgo no se tiene en cuenta en el indicador anterior."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Depositario: CACEIS Bank",
+      "despues": "Custodia · consulta 21/11/2026: Depositario: CACEIS Bank"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7",
+      "despues": "Riesgos · consulta 21/11/2026: Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Patrimonio y partícipes · consulta 01/11/2026: totalAssets 171243227.21 USD · numberOfHolders 857",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 4,00 %",
+      "despues": "Rentabilidad publicada · 31 días: 4,00 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "fuentes de la oferta",
+      "antes": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar · https://data.spiko.io/ustbl/ · https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf · https://docs.spiko.io/documentation/product_overview/fund_availability · https://geco.amf-france.org/produit-d-epargne/c79398",
+      "despues": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar · https://data.spiko.io/ustbl/ · https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf · https://docs.spiko.io/documentation/product_overview/fund_availability · https://geco.amf-france.org/produit-d-epargne/c79398 · https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Registro de la SICAV en España: Spiko SICAV · CNMV n.º 2380 (30/01/2026) · IIC comunitaria (Francia)"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "rentabilidad",
+      "antes": "2,84 % · Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 20/11/2026 (consultado el 20/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado.",
+      "despues": "2,84 % · Tipo que publica Spiko, ya descontadas sus comisiones, con el valor liquidativo del 20/11/2026 (consultado el 21/11/2026); la web lo presenta como el tipo que paga cada día el banco con el que el fondo tiene el swap. Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "métrica",
+      "antes": "Supervisor: AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; el 20/11/2026 el fondo ya no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España",
+      "despues": "Supervisor: AMF (Francia): n.º SCV20260075, según el certificado de la AMF del 23/02/2026; desde el 20/11/2026 el fondo no aparece en la base pública de la AMF (GECO) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Comisión de gestión: 0,25 % anual; gastos de funcionamiento de hasta el 0,10 %; sin comisión de entrada ni de salida",
+      "despues": "Comisión de gestión: 0,25 % anual; gastos de funcionamiento de hasta el 0,10 %; sin comisión de entrada ni de salida"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgo (KID): 1 de 7, sin contar el riesgo de contraparte; capital no garantizado y sin rentabilidad mínima; en los escenarios del KID, 10.000 € quedan entre 9.980 € y 10.100 € a 3 meses (moderado: 9.990 €); plazo recomendado de 3 meses",
+      "despues": "Riesgo (KID): 1 de 7, sin contar el riesgo de contraparte; capital no garantizado y sin rentabilidad mínima; en los escenarios del KID, 10.000 € quedan entre 9.980 € y 10.100 € a 3 meses (moderado: 9.990 €); plazo recomendado de 3 meses"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Ajuste del valor liquidativo: Si un día entran o salen muchas órdenes, la gestora puede ajustar el valor liquidativo hasta un 0,50 % (swing pricing)",
+      "despues": "Ajuste del valor liquidativo: Si un día entran o salen muchas órdenes, la gestora puede ajustar el valor liquidativo hasta un 0,50 % (swing pricing)"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Registro de la SICAV en España: Spiko SICAV · CNMV n.º 2380 (30/01/2026)",
+      "despues": "Registro de la SICAV en España: Spiko SICAV · CNMV n.º 2380 (30/01/2026)"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Web frente al KID: La web dice «Interés a tipo fijo», «Garantizado por contrapartes» y «rendimiento diario garantizado»; el KID dice «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión»",
+      "despues": "Web frente al KID: La web dice «Interés a tipo fijo», «Garantizado por contrapartes» y «rendimiento diario garantizado»; el KID dice «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión»"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rendimiento neto publicado: 2,84 %",
+      "despues": "Rendimiento neto publicado: 2,84 %"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Aprobación del compartimento: N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026",
+      "despues": "Aprobación del compartimento: N.º SCV20260075, en la lista de compartimentos del certificado de la AMF del 23/02/2026"
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Start with as little as €1",
+      "despues": null
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: ROBINHOOD EUROPE, UAB · Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación · Nº Registro Oficial 5299 · 21/04/2025",
+      "despues": null
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: You can request that Robinhood Europe buy it back from you at any time at the then-quoted price of the Underlying Asset, subject to applicable fees and other conditions in each case.",
+      "despues": null
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Classic Stock Tokens are derivative contracts between you and Robinhood. They are priced at the prices of the underlying securities without granting rights to them.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Classic Stock Tokens are derivative contracts between you and Robinhood. They are priced at the prices of the underlying securities without granting rights to them."
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Explore 2,000+ Classic Stock Tokens linked to US stocks and ETPs",
+      "despues": "Precio · consulta 21/11/2026: Explore 2,000+ Classic Stock Tokens linked to US stocks and ETPs"
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Your rights under the Product come from your contract with Robinhood Europe, and are also represented by a blockchain-traded token (the 'Token'), issued to you at the time of entering into the contract.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Your rights under the Product come from your contract with Robinhood Europe, and are also represented by a blockchain-traded token (the 'Token'), issued to you at the time of entering into the contract."
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Robinhood Europe applies a 0.10% currency conversion fee for each transaction ... Robinhood Europe does not apply any other fees related to the trading of Classic Stock Tokens.",
+      "despues": "Comisiones · consulta 21/11/2026: Robinhood Europe applies a 0.10% currency conversion fee for each transaction ... Robinhood Europe does not apply any other fees related to the trading of Classic Stock Tokens."
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: We have classified this Product as 7 out of 7, which is the highest risk class.",
+      "despues": "Riesgos · consulta 21/11/2026: We have classified this Product as 7 out of 7, which is the highest risk class."
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: The product is not covered by an investor compensation or deposit insurance scheme. Robinhood Europe is the sole counterparty to payment claims arising from the Product",
+      "despues": "Riesgos · consulta 21/11/2026: The product is not covered by an investor compensation or deposit insurance scheme. Robinhood Europe is the sole counterparty to payment claims arising from the Product"
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: although Robinhood hedges its obligations by purchasing US shares or ETPs for its own account on a 1:1 basis with the US Share Derivatives it issues",
+      "despues": "Custodia · consulta 21/11/2026: although Robinhood hedges its obligations by purchasing US shares or ETPs for its own account on a 1:1 basis with the US Share Derivatives it issues"
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Mínimo de inversión: Desde 1 € · dato del 2026-11-01",
+      "despues": "Mínimo de inversión: Desde 1 € · dato del sin fecha"
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Comisión publicada · Gestión: 0 %",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Comisión publicada · Performance: 5 % sobre el rendimiento",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "TVL publicado en Midas: $76.36M",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Descripción en el índice oficial de productos · 20/10/2026: «The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.»",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Descripción en el índice oficial de productos · 21/10/2026: «The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.»",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Descripción en el índice oficial de productos · 22/10/2026: «The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.»",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: U.S. Persons… Sanctioned Jurisdictions… Restricted Countries: Users from jurisdictions that Midas deems to pose an unacceptable legal or regulatory risk will be blocked.",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Países de oferta según la web de Midas · consulta 05/11/2026: España figura entre las 14 jurisdicciones permitidas del aviso de entrada de la web de Midas (versión 1.0.2), las mismas 14 de oferta pública de las Condiciones Finales",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "referencia de la ficha",
+      "antes": "Países de oferta pública · Condiciones Finales del 17/07/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany",
+      "despues": "Países de oferta pública · Condiciones Finales del 21/11/2026: Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany"
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://midas.app/products",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://midas.app/llms.txt",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://midas.app/",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://docs.midas.app/tokens/mtbill",
+      "despues": null
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://docs.midas.app/legal/eligibility-and-compliance",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Unidad descrita: 1 gramo de oro físico por token",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Compra mínima publicada: 1 gramo",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia publicada: Sin tarifas de custodia según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Compra mínima publicada · 22/10/2026: 1 gramo",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia publicada · 22/10/2026: Sin tarifas de custodia según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Liquidación publicada: Menos de 24 horas según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Liquidación publicada · 22/10/2026: Menos de 24 horas según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Auditorías publicadas: Mensuales y certificadas según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Auditorías publicadas · 22/10/2026: Mensuales y certificadas según el proveedor",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Compra mínima ✔ 1 gramo",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 02/11/2026: todas las transacciones económicas se realizarán en EUROS para los Clientes residentes en el Espacio Económico Europeo",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Costes publicados de compra y venta: Compra: LBMA +4%; venta: LBMA −6%",
+      "despues": "Costes publicados de compra y venta: Compra: LBMA +4%; venta: LBMA −6%"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Salida y plazo contractual publicados: Solo recompra por Prosegur; procesamiento normal aproximado de 1 a 7 días hábiles",
+      "despues": "Salida y plazo contractual publicados: Solo recompra por Prosegur; procesamiento normal aproximado de 1 a 7 días hábiles"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Precio de compra ... Comprar (app); «Empieza hoy mismo» (web)",
+      "despues": "Estado de la oferta · consulta 21/11/2026: Precio de compra 107,88 € · Emitida · Comprar (app); «Empieza hoy mismo» (web)"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 02/11/2026: Los Tokens de Oro confieren derechos sobre una cantidad equivalente de oro físico segregado mantenido dentro de un inventario fungible",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Los Tokens de Oro confieren derechos sobre una cantidad equivalente de oro físico segregado mantenido dentro de un inventario fungible"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Supervisión · consulta 02/11/2026: SU COMERCIALIZACIÓN NO ESTÁ SUJETA A LA SUPERVISIÓN DE NINGÚN REGULADOR FINANCIERO",
+      "despues": "Supervisión · consulta 21/11/2026: SU COMERCIALIZACIÓN NO ESTÁ SUJETA A LA SUPERVISIÓN DE NINGÚN REGULADOR FINANCIERO"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 02/11/2026: Compra de tokens ... Precio LBMA diario + 4% · Venta de tokens ... Precio LBMA diario - 6%",
+      "despues": "Comisiones · consulta 21/11/2026: Compra de tokens ... Precio LBMA diario + 4% · Venta de tokens ... Precio LBMA diario - 6%"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 02/11/2026: El Oro Físico ... será almacenado en instalaciones de custodia de alta seguridad de Prosegur Crypto (o en las de terceros custodios especialmente designados)",
+      "despues": "Custodia · consulta 21/11/2026: El Oro Físico ... será almacenado en instalaciones de custodia de alta seguridad de Prosegur Crypto (o en las de terceros custodios especialmente designados)"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad · consulta 02/11/2026: PROSEGUR CRYPTO NO GARANTIZA NI RENTABILIDAD NI UN VALOR FIJO DE LOS TOKENS DE ORO",
+      "despues": "Rentabilidad · consulta 21/11/2026: PROSEGUR CRYPTO NO GARANTIZA NI RENTABILIDAD NI UN VALOR FIJO DE LOS TOKENS DE ORO"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencia de la ficha",
+      "antes": "Fiscalidad · consulta 02/11/2026: Los Tokens de Oro suponen una entrega de oro de inversión exenta de IVA de acuerdo con lo dispuesto en el artículo 140. Bis de la Ley de IVA",
+      "despues": "Fiscalidad · consulta 21/11/2026: Los Tokens de Oro suponen una entrega de oro de inversión exenta de IVA de acuerdo con lo dispuesto en el artículo 140. Bis de la Ley de IVA"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Mínimo de inversión: 1 gramo de oro · dato del 2026-11-01",
+      "despues": "Mínimo de inversión: 1 gramo de oro · dato del sin fecha"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "aviso",
+      "antes": "Prosegur Crypto está autorizada por la CNMV (MiCA, 30/06/2026) para custodiar y transferir criptoactivos; esa autorización no cubre este token de oro.",
+      "despues": null
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Prosegur Crypto figura en la CNMV solo para custodiar, tramitar órdenes y transferir criptoactivos; su contrato dice que este oro no está supervisado."
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Precio del emisor · 20/11/2026: 7,25 CHF por acción (fijo)",
+      "despues": "Precio del emisor · 21/11/2026: 7,25 CHF por acción (fijo)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (21/11/2026)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 20/11/2026).",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Entre accionistas se vende por debajo del precio del emisor (7,25 CHF): el 21/11/2026 la venta más barata era de 6,20 ZCHF y ese día se vendieron 62 acciones a 5,00 ZCHF."
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: CHF",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Última operación publicada · 22/10/2026: 7,25 CHF (14/10/2026)",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Última inversión directa del emisor · 22/10/2026: 7,25 ZCHF (14/10/2026)",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce secundario · 22/10/2026: 6,25 ZCHF (30/09/2026)",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Capitalización publicada · 22/10/2026: 12.927.925 CHF",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Operaciones recientes · consulta 01/11/2026: 31 Oct 2026 / 11:56 Direct Investment 7.25 ZCHF 1 DAKS",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: bankTransferLimit enabled min 500",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: The public offer to purchase the shares is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. … The offer for persons from the EEA is limited to a total of €100,000.",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Verificación de identidad · consulta 01/11/2026: Register to Access Direct Investment",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Bid/Ask 6.00 / 6.20 · Spread 3.23%",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Número de accionistas publicado · 22/10/2026: 368",
+      "despues": "Número de accionistas publicado · 21/11/2026: 368"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Acciones tokenizadas · 22/10/2026: 800.000 DAKS de 1.800.000",
+      "despues": "Acciones tokenizadas · 21/11/2026: 800.000 DAKS de 1.800.000"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 05/11/2026: Entre accionistas: 0 % para quien compra y 1,9 % para quien vende",
+      "despues": "Comisiones · consulta 21/11/2026: Entre accionistas: 0 % para quien compra y 1,9 % para quien vende"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: As communicated to our shareholders, the sell-side of the Brokerbot will remain disabled for the foreseeable future. Feel free to post your sell offer on our secondaries widget below.",
+      "despues": "Salida · consulta 21/11/2026: As communicated to our shareholders, the sell-side of the Brokerbot will remain disabled for the foreseeable future. Feel free to post your sell offer on our secondaries widget below."
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Issued instrument Registered shares (Namenaktien) … Transfer restrictions (Vinkulierung) None",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Issued instrument Registered shares (Namenaktien) … Transfer restrictions (Vinkulierung) None"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Supervisión · consulta 01/11/2026: The secondary trading facilitated herein is considered a non-commercial trading facility … not subject to prudential supervision.",
+      "despues": "Supervisión · consulta 21/11/2026: The secondary trading facilitated herein is considered a non-commercial trading facility … not subject to prudential supervision."
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Folleto · consulta 01/11/2026: Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland … Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus",
+      "despues": "Folleto · consulta 21/11/2026: Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland … Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: An investment in a company is suitable only for investors who … can afford a loss of all or part of their investment.",
+      "despues": "Riesgos · consulta 21/11/2026: An investment in a company is suitable only for investors who … can afford a loss of all or part of their investment."
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Última compra al emisor · 21/11/2026: 7,25 ZCHF (1 acción, 31/10/2026)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Última operación entre accionistas · 21/11/2026: 5,00 ZCHF (62 acciones, 21/11/2026)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Libro entre accionistas · 21/11/2026: Mejor compra entre accionistas 5,01 ZCHF (5 acciones); 78 acciones pedidas en total"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "aviso",
+      "antes": "Los dividendos no se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
+      "despues": "Los dividendos no se cobran: se suman al saldo, netos de una retención del 30 %."
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Dividendos: No se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
+      "despues": "Dividendos: No se cobran: se suman al saldo, netos de una retención del 30 %"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Países de oferta (condiciones finales): Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado",
+      "despues": "Países de oferta (condiciones finales): Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Registro del vendedor: Payward Europe Digital Solutions (CY) Limited · ESI del EEE en libre prestación · n.º 4474",
+      "despues": "Registro del vendedor: Payward Europe Digital Solutions (CY) Limited · ESI del EEE en libre prestación · n.º 4474"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Licencia del vendedor: CySEC, licencia 342/17",
+      "despues": "Licencia del vendedor: CySEC, licencia 342/17"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Comisión con euros: 1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica",
+      "despues": "Comisión con euros: 1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "referencia de la ficha",
+      "antes": "Situación del emisor: No es rentable, depende de la financiación de su grupo y avala un préstamo de su matriz",
+      "despues": "Situación del emisor: No es rentable, depende de la financiación de su grupo y avala un préstamo de su matriz"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Mínimo de inversión: Desde 1 € · dato del sin fecha",
+      "despues": "Mínimo de inversión: Desde 1 € · dato del sin fecha"
+    },
+    {
+      "slug": "kraken-xstocks",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Acceso desde España: Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales · dato del sin fecha",
+      "despues": "Acceso desde España: Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales · dato del sin fecha"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (21/11/2026)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "aviso",
+      "antes": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 20/11/2026).",
+      "despues": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 21/11/2026)."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 20/11)",
+      "despues": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF, precio a 21/11)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Accionistas publicados: 155",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Acciones tokenizadas publicadas: 10.650.100 BOSS",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: CHF",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Capitalización publicada · 22/10/2026: 71.280.824 CHF",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: bankTransferLimit enabled min 100",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Número de accionistas publicado · 22/10/2026: 155",
+      "despues": "Número de accionistas publicado · 21/11/2026: 155"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Acciones tokenizadas · 22/10/2026: 10.650.100 BOSS",
+      "despues": "Acciones tokenizadas · 21/11/2026: 10.650.100 BOSS"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Última operación · 20/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)",
+      "despues": "Última operación · 21/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Bid/Ask 7.30 / 8.40 · Spread 13.10%",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert.",
+      "despues": "Salida · consulta 21/11/2026: Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Issued instrument Registered shares (Namenaktien) … Transfer restrictions (Vinkulierung) None",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Issued instrument Registered shares (Namenaktien) … Transfer restrictions (Vinkulierung) None"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Supervisión · consulta 01/11/2026: not subject to prudential supervision",
+      "despues": "Supervisión · consulta 21/11/2026: not subject to prudential supervision"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Salida · 21/11/2026: Bid/Ask 7.30 / 8.40 · Spread 13.10%"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (20/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (21/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "métrica",
+      "antes": "Clase: Preferente C1 (preferencia en liquidación)",
+      "despues": "Clase: Preferente C1: en una venta o liquidación, si el dinero alcanza, cobra 53,72 CHF por acción detrás de las preferentes de rango superior y antes que las ordinarias (no es un tope)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 20/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "despues": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 21/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 20/11/2026).",
+      "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 21/11/2026)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 1 acción (68,01 CHF el 20/11)",
+      "despues": "Mínimo de inversión: 1 acción (68,01 CHF el 21/11, precio del emisor)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce documentado: 68,01 CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce publicado: 68,01 CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Accionistas publicados: 285",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Acciones tokenizadas publicadas: 27.277 LENDS · clase C1",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Última operación publicada · 22/10/2026: 68,01 CHF (07/10/2026)",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Última inversión directa del emisor · 22/10/2026: 68,01 ZCHF (07/10/2026)",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce secundario · 22/10/2026: 67,00 ZCHF (25/08/2026)",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Capitalización publicada (toda la empresa) · 22/10/2026: 48.409.858 CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Operaciones recientes · consulta 01/11/2026: 7 Oct 2026 / 13:34 Direct Investment 68.01 ZCHF 10 LENDS",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Total: 408.07 CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Bid/Ask 59.00 / 67.50 · Spread 12.59%",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Número de accionistas publicado · 22/10/2026: 286",
+      "despues": "Número de accionistas publicado · 21/11/2026: 286"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Acciones tokenizadas · 22/10/2026: 27.277 LENDS de 31.066",
+      "despues": "Acciones tokenizadas · 21/11/2026: 27.277 LENDS de 31.066"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: All Share Tokens are issued as preferred C1 shares with a nominal value of CHF 1.00 and which have the Liquidation Preferences",
+      "despues": "Qué se adquiere · consulta 21/11/2026: All Share Tokens are issued as preferred C1 shares with a nominal value of CHF 1.00 and which have the Liquidation Preferences"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Última compra al emisor · 21/11/2026: 68,01 ZCHF (10 + 1 acciones, 07/10/2026)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Última operación entre accionistas · 21/11/2026: 67,00 ZCHF (1 acción, 25/08/2026)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Salida · 21/11/2026: Bid/Ask 59.00 / 67.00 · Spread 11.94%"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 75,00 € por participación (2 a ese precio, orden del 04/11/2026)",
+      "despues": "Venta más barata · 21/11/2026: 75,00 € por participación (2 a ese precio, orden del 04/11/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 99,00 € (100,49 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 99,00 € (100,49 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 335",
+      "despues": "Participaciones en venta · 21/11/2026: 335"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 20,00 € (1 participación, orden del 23/04/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 20,00 € (1 participación, orden del 23/04/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 103,37",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 103,37"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 103,37",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 103,37"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 75,00 € por participación (11 a ese precio, orden del 28/04/2026)",
+      "despues": "Venta más barata · 21/11/2026: 75,00 € por participación (11 a ese precio, orden del 28/04/2026)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 80,00 € (81,20 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 80,00 € (81,20 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 97",
+      "despues": "Participaciones en venta · 21/11/2026: 97"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 65,00 € (2 participaciones en 2 órdenes; la más antigua del 16/10/2026)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 101,37",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 101,37"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 101,37",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 101,37"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 95 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 95 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 95,00 € por participación (16 a ese precio, en 3 órdenes)",
+      "despues": "Venta más barata · 21/11/2026: 95,00 € por participación (16 a ese precio, en 3 órdenes)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 95,00 € (96,43 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 95,00 € (96,43 € con el 1,5 %)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 299",
+      "despues": "Participaciones en venta · 21/11/2026: 299"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 15,00 € (1 participación, orden del 21/09/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 15,00 € (1 participación, orden del 21/09/2026)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,02",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,02"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,02",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,02"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 68,80 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 68,80 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 68,80 € por participación (1 a ese precio, orden del 08/11/2026)",
+      "despues": "Venta más barata · 21/11/2026: 68,80 € por participación (1 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 68,80 € (69,83 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 68,80 € (69,83 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 315",
+      "despues": "Participaciones en venta · 21/11/2026: 315"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 30,00 € (1 participación, orden del 01/07/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 30,00 € (1 participación, orden del 01/07/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,10",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,10"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,10",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,10"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 69,90 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 71,90 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 69,90 € por participación (1 a ese precio, orden del 27/10/2026)",
+      "despues": "Venta más barata · 21/11/2026: 71,90 € por participación (1 a ese precio, orden del 18/09/2026)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 69,90 € (70,95 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 71,90 € (72,98 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 298",
+      "despues": "Participaciones en venta · 21/11/2026: 297"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 62,00 € (1 participación, orden del 17/11/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 62,00 € (1 participación, orden del 17/11/2026)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,14",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,14"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,14",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,14"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 70 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 70 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 70,00 € por participación (1 a ese precio, orden del 17/11/2026)",
+      "despues": "Venta más barata · 21/11/2026: 70,00 € por participación (1 a ese precio, orden del 17/11/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 70,00 € (71,05 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 70,00 € (71,05 € con el 1,5 %)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 147",
+      "despues": "Participaciones en venta · 21/11/2026: 147"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 50,00 € (1 participación, orden del 29/09/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 50,00 € (1 participación, orden del 29/09/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,05",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,05"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,05",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,05"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar esta emisión (producto de capital de un emisor austriaco); también hace falta para pagar en Austria la ImmoESt si vendes con ganancia."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": "Cuenta abierta a residentes del EEE, pero la app no deja comprar esta emisión sin número fiscal austriaco; la documentación está en alemán."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 78 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 78 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 78,00 € por participación (20 a ese precio, orden del 29/06/2026)",
+      "despues": "Venta más barata · 21/11/2026: 78,00 € por participación (20 a ese precio, orden del 29/06/2026)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 85,00 € (86,28 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 85,00 € (86,28 € con el 1,5 %)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 188",
+      "despues": "Participaciones en venta · 21/11/2026: 188"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 64,00 € (1 participación, orden del 12/11/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 64,00 € (1 participación, orden del 12/11/2026)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio de emisión por participación (API) · 22/10/2026: 100,24 EUR",
+      "despues": "Precio de emisión por participación (API) · 21/11/2026: 100,24 EUR"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,24",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,24"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,24",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,24"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar: sin él la app no deja comprar esta emisión"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "aviso",
+      "antes": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "aviso",
+      "antes": "Según la API, el inquilino se fue el 28/02/2026 y se busca otro; la rentabilidad no se muestra.",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Según la API, el alquiler terminó el 28/02/2026 y se buscaba otro inquilino; no consta si ya lo hay. Mientras esté vacía no hay repartos. La rentabilidad no se muestra."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)",
+      "despues": "Venta más barata · 21/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 82,00 € (83,23 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 82,00 € (83,23 € con el 1,5 %)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 252",
+      "despues": "Participaciones en venta · 21/11/2026: 252"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: indefinido",
+      "despues": "Plazo · 21/11/2026: indefinido"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,20",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,20"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,20",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,20"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Das Produkt läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+      "despues": "Salida · consulta 21/11/2026: Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token hat eigenverantwortlich durch den Anleger zu erfolgen."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: Obligatorio para comprar: sin él la app no deja comprar esta emisión"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "aviso",
+      "antes": "Para comprar esta emisión, quien no tributa en Austria debe dar antes un número fiscal austriaco: las rentas tributan en Austria y la ganancia al vender paga allí el impuesto inmobiliario (ImmoESt).",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Para comprar hace falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las rentas tributan en Austria (la emisora presenta una declaración conjunta) y, si vendes con ganancia, pagas allí la ImmoESt."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 81 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 81 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 81,00 € por participación (1 a ese precio, orden del 15/11/2026)",
+      "despues": "Venta más barata · 21/11/2026: 81,00 € por participación (1 a ese precio, orden del 15/11/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 81,00 € (82,22 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 81,00 € (82,22 € con el 1,5 %)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 96",
+      "despues": "Participaciones en venta · 21/11/2026: 96"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 64,00 € (1 participación, orden del 17/11/2026)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 64,00 € (1 participación, orden del 17/11/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,44",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,44"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,44",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,44"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Genussschein ... läuft grundsätzlich endlos/ewig (\"Perpetual\")",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Genussschein ... läuft grundsätzlich endlos/ewig (\"Perpetual\")"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: die ordentliche Kündigung ist erstmals nach 15 (fünfzehn) Jahren ab dem Ausgabetag und sodann alle ...",
+      "despues": "Salida · consulta 21/11/2026: die ordentliche Kündigung ist erstmals nach 15 (fünfzehn) Jahren ab dem Ausgabetag und sodann alle ..."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: No hace falta (producto con retención austriaca KESt)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Cuenta abierta a residentes del EEE (España incluida); esta emisión no pide número fiscal austriaco, pero no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "El emisor retiene en Austria el impuesto KESt de cada reparto; al vender no hay retención y la ganancia la declaras tú."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 102 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 102 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)",
+      "despues": "Venta más barata · 21/11/2026: 102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 102,00 € (103,53 € con el 1,5 %)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 347",
+      "despues": "Participaciones en venta · 21/11/2026: 347"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 29,00 € (1 participación, orden del 10/08/2024)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 29,00 € (1 participación, orden del 10/08/2024)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: hasta el 31/12/2038",
+      "despues": "Plazo · 21/11/2026: hasta el 31/12/2038"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Distribuciones esperadas desde · 22/10/2026: 15/02/2024",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,32",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,32"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,32",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,32"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Laufzeit von 15 Jahren (\"endfällig\")",
+      "despues": "Salida · consulta 21/11/2026: Laufzeit von 15 Jahren (\"endfällig\")"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: No hace falta (producto con retención austriaca KESt)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Cuenta abierta a residentes del EEE (España incluida); esta emisión no pide número fiscal austriaco, pero no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "El emisor retiene en Austria el impuesto KESt de cada reparto; al vender no hay retención y la ganancia la declaras tú."
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "aviso",
+      "antes": "Reembolso subordinado a los acreedores financieros del emisor.",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Reembolso y repartos subordinados: si el emisor es insolvente, tiene fondos propios negativos, su ratio de recursos propios baja del 8 % o se liquida, solo se cobra después de los acreedores financieros."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 110 € la participación en reventa (20/11)",
+      "despues": "Mínimo de inversión: Desde 110 € la participación en reventa (21/11)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 20/11/2026: 110,00 € por participación (35 a ese precio, en 2 órdenes de 31, 4)",
+      "despues": "Venta más barata · 21/11/2026: 110,00 € por participación (35 a ese precio, en 2 órdenes de 31, 4)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Orden de venta de menor importe · 20/11/2026: 1 participación a 120,00 € (121,80 € con el 1,5 %)",
+      "despues": "Orden de venta de menor importe · 21/11/2026: 1 participación a 120,00 € (121,80 € con el 1,5 %)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 20/11/2026: 59",
+      "despues": "Participaciones en venta · 21/11/2026: 59"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 20/11/2026: 3,00 € (1 participación, orden del 23/11/2024)",
+      "despues": "Mejor oferta de compra · 21/11/2026: 3,00 € (1 participación, orden del 23/11/2024)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Mercado público de Brickwise",
+      "despues": "Destino de consulta comprobado: Mercado público de Brickwise"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Moneda · 22/10/2026: EUR",
+      "despues": "Moneda · 21/11/2026: EUR"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Plazo · 22/10/2026: hasta el 31/12/2038",
+      "despues": "Plazo · 21/11/2026: hasta el 31/12/2038"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Distribuciones esperadas desde · 22/10/2026: 15/02/2024",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Ausgabepreis: EUR 100,85",
+      "despues": "Precio · consulta 21/11/2026: Ausgabepreis: EUR 100,85"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Mínimo de inversión · consulta 01/11/2026: Mindestzeichnungsbetrag: EUR 100,85",
+      "despues": "Mínimo de inversión · consulta 21/11/2026: Mindestzeichnungsbetrag: EUR 100,85"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Qué se adquiere · consulta 01/11/2026: Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag.",
+      "despues": "Qué se adquiere · consulta 21/11/2026: Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Salida · consulta 01/11/2026: Laufzeit von 15 Jahren (\"endfällig\")",
+      "despues": "Salida · consulta 21/11/2026: Laufzeit von 15 Jahren (\"endfällig\")"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Riesgos · consulta 01/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "despues": "Riesgos · consulta 21/11/2026: Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Comisiones · consulta 01/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "despues": "Comisiones · consulta 21/11/2026: Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "despues": "Acceso desde España · consulta 21/11/2026: Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Entidad que comercializa · consulta 01/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "despues": "Entidad que comercializa · consulta 21/11/2026: Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Custodia · consulta 01/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "despues": "Custodia · consulta 21/11/2026: Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Desistimiento: No hay derecho de desistimiento al comprar en reventa",
+      "despues": "Desistimiento: No hay derecho de desistimiento al comprar en reventa"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Número fiscal austriaco · 21/11/2026: No hace falta (producto con retención austriaca KESt)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "aviso",
+      "antes": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Cuenta abierta a residentes del EEE (España incluida); esta emisión no pide número fiscal austriaco, pero no consta que se comercialice en España y la documentación está en alemán."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "El emisor retiene en Austria el impuesto KESt de cada reparto; al vender no hay retención y la ganancia la declaras tú."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "aviso",
+      "antes": "Reembolso subordinado a los acreedores financieros del emisor.",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Reembolso y repartos subordinados: si el emisor es insolvente, tiene fondos propios negativos, su ratio de recursos propios baja del 8 % o se liquida, solo se cobra después de los acreedores financieros."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "resumen",
+      "antes": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), tiene la preventa abierta desde el 18/11 y la suscripción anunciada del 25/11/2026 al 30/06/2027.",
+      "despues": "Seguimiento de las operaciones inmobiliarias de Hausera. Alicante 2 ya está financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abrió la preventa el 18/11 y anuncia la suscripción del 25/11/2026 al 30/06/2027."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "métrica",
+      "antes": "Próxima operación: Alicante 3 · preventa abierta desde el 18/11/2026; suscripción del 25/11/2026 al 30/06/2027",
+      "despues": "Próxima operación: Alicante 3 · preventa desde el 18/11/2026; suscripción del 25/11/2026 al 30/06/2027"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 20/11/2026, con la preventa ya abierta, Alicante 3 aún no estaba inscrita en el registro de la CNMV.",
+      "despues": null
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. Alicante 3 abrió la preventa el 18/11/2026 y el 21/11/2026 aún no estaba inscrita en el registro de la CNMV."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.",
+      "despues": "Mínimo de inversión: Desde 100 € en Alicante 3 (documento de emisión); reserva desde el 18/11 y suscripción del 25/11/2026 al 30/06/2027."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Destino de consulta comprobado: Plataforma inmobiliaria Hausera",
+      "despues": null
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Historial publicado · 20/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados",
+      "despues": "Historial publicado · 21/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados"
+    }
+  ],
+  "tarjetaConservadasDeMasDe120": [],
+  "tarjetas": {
+    "spiko-letras-del-tesoro-euro": {
+      "Mínimo de inversión (clase EUTBL)": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "Mínimo de inversión": "1 USD",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España: Robinhood Europe está inscrita en la CNMV en libre prestación (n.º 5299).",
+      "Salida": "Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse"
+    },
+    "mtbill": {},
+    "prosegur-digital-gold": {
+      "Mínimo de inversión": "1 gramo de oro",
+      "Acceso desde España": "Disponible para clientes residentes en España; las operaciones se liquidan en euros.",
+      "Reembolso": "Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "aktionariat": {
+      "Mínimo de inversión": "500 CHF por transferencia bancaria",
+      "Acceso desde España": "Disponible para residentes en Suiza y el Espacio Económico Europeo, con un tope total de 100.000 € para el EEE.",
+      "Salida": "Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "boss-info": {
+      "Mínimo de inversión": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF, precio a 21/11)",
+      "Salida": "El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "switzerlend": {
+      "Mínimo de inversión": "1 acción (68,01 CHF el 21/11, precio del emisor)",
+      "Salida": "El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "hausera-proximas-ofertas": {
+      "Mínimo de inversión": "Desde 100 € en Alicante 3 (documento de emisión); reserva desde el 18/11 y suscripción del 25/11/2026 al 30/06/2027.",
+      "Acceso desde España": "Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV.",
+      "Salida": "Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado."
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "local-de-estanco-klagenfurt": {
+      "Mínimo de inversión": "Desde 95 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "Mínimo de inversión": "Desde 68,80 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "Mínimo de inversión": "Desde 71,90 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "drautalresidenz-paternion": {
+      "Mínimo de inversión": "Desde 70 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "randhartingergasse-9-viena": {
+      "Mínimo de inversión": "Desde 78 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "Mínimo de inversión": "Desde 81 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "Mínimo de inversión": "Desde 102 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "Mínimo de inversión": "Desde 110 € la participación en reventa (21/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "kraken-xstocks": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales",
+      "Salida": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "spiko-smart-cash-euro": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "Reembolso": "Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)"
+    }
+  },
+  "noAplicadoTalCual": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "que": "DECISIONES §2 (corrección del revisor de Spiko): «Acceso desde España» → «Disponible para residentes en España tras el alta y la verificación de identidad; la SICAV está inscrita en la CNMV»",
+      "porque": "El ensayo en PGlite del motor exige que cada dato de tarjeta cambiado se vea tal cual en «Lo esencial», y en una ficha principal con España «sí» la tarjeta solo enseña el texto genérico «Disponible desde España según la fuente»: el motor para con «la tarjeta enseña … y no …». Sin tocar el motor, se conserva el texto publicado («Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.», dato del 13/11/2026, consulta de hoy), que es cierto y no dice que el fondo esté inscrito en la CNMV, que era lo que corregía el revisor. La inscripción de la SICAV sigue en la métrica «Supervisor»."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "que": "DECISIONES §2 (corrección del revisor de Spiko): «Acceso desde España» → «Disponible para residentes en España tras el alta y la verificación de identidad; la SICAV está inscrita en la CNMV»",
+      "porque": "El ensayo en PGlite del motor exige que cada dato de tarjeta cambiado se vea tal cual en «Lo esencial», y en una ficha principal con España «sí» la tarjeta solo enseña el texto genérico «Disponible desde España según la fuente»: el motor para con «la tarjeta enseña … y no …». Sin tocar el motor, se conserva el texto publicado («Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.», dato del 13/11/2026, consulta de hoy), que es cierto y no dice que el fondo esté inscrito en la CNMV, que era lo que corregía el revisor. La inscripción de la SICAV sigue en la métrica «Supervisor»."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "que": "Auditoría Spiko §2: quitar también las dos «Gestión publicada: 0,25 %» del 30/09/2026",
+      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ni re-fechar ninguna de las dos (no se toca el motor). Siguen publicadas con su consulta del 30/09/2026; la métrica «Gastos corrientes (KID): 0,25 % anual» y «Comisiones · consulta 21/11/2026» dicen lo mismo con fecha de hoy."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "que": "Auditoría Spiko §2: dar otro nombre a «Salida · consulta 01/11/2026» y «Acceso desde España (particulares) · consulta 01/11/2026» (p. ej. «Órdenes de reembolso (KID)»)",
+      "porque": "El motor solo deja cambiar la fecha de la etiqueta de una referencia (comprueba el orden con la fecha como comodín); cambiar el nombre obligaría a quitarla y crear otra. Se re-fechan al 21/11 con su nombre («· consulta 21/11/2026»); la etiqueta no coincide con las fijas de la tarjeta y «Lo esencial» sigue tomando «Reembolso» y «Acceso desde España» (comprobado con resumenOferta)."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "que": "Auditoría Spiko §3: cambiar «Patrimonio y partícipes · consulta 01/11/2026» por «Patrimonio y titulares: 176,97 millones de dólares · 904 titulares»",
+      "porque": "La auditoría da dos salidas: cambiarla o quitarla. Cambiar el nombre de la etiqueta no lo admite el motor (solo la fecha); se quita, que es la otra corrección que da el informe. El tamaño no es un dato de la tarjeta."
+    },
+    {
+      "slug": "mtbill",
+      "que": "Revisión acciones-oro-tesoro, corrección 3: añadir la huella del vigía a `avisosConFecha` 0, 1 y 6 del expediente de mTBILL",
+      "porque": "Es un arreglo del expediente, que el montador no puede editar; no cambia nada de lo que se publica (las dos cifras del oráculo siguen siendo las de la ronda 498 que el vigía dio como «no cambia»)."
+    },
+    {
+      "slug": "aktionariat",
+      "que": "Expediente y DECISIONES §2: quitar las dos «Último cruce publicado: 6,25 CHF» (22/09/2026, consulta del 30/09/2026)",
+      "porque": "Son dos referencias con la misma etiqueta y el mismo valor; el motor localiza cada referencia por etiqueta y valor y exige que sea única, así que no puede quitar ninguna (no se toca el motor). Siguen publicadas con su fecha; al lado salen «Última operación entre accionistas · 21/11/2026: 5,00 ZCHF (62 acciones, 21/11/2026)» y el aviso de precios de hoy."
+    },
+    {
+      "slug": "aktionariat",
+      "que": "DECISIONES §2: la referencia nueva «Salida · 21/11/2026: mejor compra 5,01 ZCHF (5 acciones); 78 pedidas»",
+      "porque": "Entra con el nombre «Libro entre accionistas · 21/11/2026», como da la auditoría (recomendada): con «Salida» y el dato del 21/11, «Lo esencial» dejaría de decir «Venta solo a otros accionistas; el emisor no recompra» (resumenOferta ordena por fecha del dato)."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "que": "Expediente: cambiar la etiqueta «Historial publicado · 20/11/2026» por «Historial que publica Hausera (consultado el 21/11/2026)»",
+      "porque": "El motor solo deja cambiar la fecha de la etiqueta; queda «Historial publicado · 21/11/2026» con las mismas cifras y la consulta de hoy."
+    },
+    {
+      "slug": "fotovoltaica-cohotel, randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50",
+      "que": "Revisión brickwise-b C1 y auditoría brickwise-b obligatorio 1: mínimo «1 participación desde 120 € / 85 € / 82 € en reventa (21/11)»",
+      "porque": "DECISIONES §2 y §8: el motor exige en reventa «Desde X € la participación en reventa (DD/MM)» (despues.mjs, mínimo corto de reventa) y no se toca. Queda «Desde 110 € / 78 € / 75 € la participación en reventa (21/11)», con la venta más barata de hoy, y la nota del mínimo y la referencia «Orden de venta de menor importe · 21/11/2026» dicen cuánto cuesta una sola participación (120 €, 85 € y 82 €)."
+    },
+    {
+      "slug": "brickwise (11 fichas)",
+      "que": "Expedientes de brickwise-b y recomendada de brickwise-a: cambiar el nombre de «Precio · consulta 01/11/2026» y «Mínimo de inversión · consulta 01/11/2026» por «Precio de emisión original» y «Mínimo de la suscripción original (cerrada)»",
+      "porque": "El motor solo deja cambiar la fecha de la etiqueta de una referencia; renombrarla exigiría quitarla y crear otra con una fecha del dato que el contrato no da. Se re-fechan al 21/11 con su nombre («· consulta 21/11/2026»); en reventa no entran en «Lo esencial», que solo toma las etiquetas fijas de la tarjeta."
+    },
+    {
+      "slug": "brickwise (11 fichas)",
+      "que": "Expedientes de Brickwise: fuentes de la oferta nuevas (API v1 y v2 y ayuda de impuestos) y fuera las páginas www.brickwise.at/assets/…",
+      "porque": "DECISIONES §2 no lo pide y la auditoría solo lo recomienda para tres fichas; no cambia ningún texto. La ayuda de impuestos entra en las fuentes de la ficha con la referencia «Número fiscal austriaco · 21/11/2026»."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt, fotovoltaica-greenpoint y fotovoltaica-cohotel",
+      "que": "Expedientes y recomendada R1 del revisor y la auditoría de brickwise-b: «Acceso desde España» → «Sin confirmar: cuenta para residentes del EEE, no pide número fiscal austriaco; no consta su venta en España.»",
+      "porque": "El ensayo en PGlite del motor exige que cada dato de tarjeta cambiado se vea tal cual, y con «Sin confirmar» la tarjeta de reventa enseña el texto genérico «Sin comprobar si se puede contratar desde España»: el motor no lo admite. Se conserva el publicado, que es cierto; que no pide número fiscal austriaco lo dicen el aviso de la cuenta (nuevo) y la referencia «Número fiscal austriaco · 21/11/2026: No hace falta»."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "que": "DECISIONES §2 (textos largos): «Acceso desde España» como lo propone el expediente («Particulares en España que pasen el alta y el test del emisor: reserva desde el 18/11 y suscripción desde el 25/11/2026.»)",
+      "porque": "El ensayo en PGlite del motor exige que cada dato de tarjeta cambiado se vea tal cual, y en «Próximas» la tarjeta enseña para ese texto el genérico «Sin comprobar si se puede contratar desde España»: el motor no lo admite. Se conserva el publicado («Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV.»), que no lleva fecha y sigue siendo cierto. El mínimo largo, el mínimo corto, el aviso, el resumen y «Próxima operación» sí entran."
+    },
+    {
+      "slug": "midas",
+      "que": "DECISIONES §7 (4): en el radar, añadir como fuente del acceso las «Condiciones Finales de mTBILL (17/07/2026)» y como fuente de la licencia «CNMV · Pasaportes recibidos (Midas Software GmbH)»",
+      "porque": "El motor solo cambia fuentes del radar que ya existen (cambios-radar.json → fuentes) y exige las mismas 69 fuentes contrastadas hoy; añadir dos fuentes nuevas a la tabla del radar no lo admite. Los textos del acceso y de la licencia no cambian y no son falsos. Queda para el próximo ciclo, con su contraste."
+    }
+  ],
+  "sinCambios": [
+    "las 25 plataformas del radar y sus textos, salvo las fechas de consulta (el arreglo de las fuentes de Midas, §7 (4), queda para el próximo ciclo)",
+    "public.plataformas y public.fuentes (el SQL no las toca)",
+    "colecciones 8/13/1, estados de revisión, fuentes de las ofertas (salvo Letras Dólar, con la CNMV) e imágenes",
+    "las noticias (no son parte de esta entrega)"
+  ],
+  "altas": [],
+  "retiradas": [],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  }
+}
