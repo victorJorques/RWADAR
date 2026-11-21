@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (36) · Claude · Repositorio público, entrega 2026-11-20.2 aplicada e Inicio por fecha de alta · PUBLICANDO
+## 21 de noviembre de 2026 (36) · Claude · Repositorio público, entrega 2026-11-20.2 aplicada e Inicio por fecha de alta · PUBLICADO
 
 - **GitHub sin minutos (21/11, 01:54 UTC):** el plan gratuito de Actions se
   agotó. Decisión de la dirección: hacer público el repositorio (Actions sin
@@ -24,6 +24,13 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   aplicar: Schwarzer Weg sube su venta más barata de 69,90 € a 71,90 € (la
   ficha lo dice con fecha 20/11; para el próximo ciclo), un documento de mTBILL
   y el VL de Spiko euro por leer, y la CNMV ya no da resultados para Hausera.
+- **Publicado (21/11):** PR #170 (sincronizar y sello) unido; «Publicar web»
+  revisión y producción a las 10:16 y 10:18 UTC, comprobadas a 390 y 1366
+  (Inicio de la más nueva a la más antigua, frase nueva de Smart Cash, sin las
+  fuentes caídas, mercado con «foto del 21/11, 02:50», directo 200); OTA
+  Android (base `fa30779`) enviada a las 10:16 UTC; «Avisar novedad» «Inicio
+  con las ofertas más recientes y fichas al día» a las 10:21 UTC, visible en
+  `/api/avisos/recientes`.
 - **Ofertas caducadas (orden del 21/11):** según la auditoría del 20/11 no hay
   ninguna; Randhartingergasse 9 y Hinterstoder piden número fiscal austriaco
   (ya lo avisan): quitarlas solo si lo pide la dirección.
