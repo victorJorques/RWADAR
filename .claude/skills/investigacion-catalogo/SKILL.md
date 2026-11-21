@@ -277,7 +277,10 @@ en llano, entrada arriba de `docs/tareas/PARA-CODEX.md` y, para Víctor, un
 resumen corto: qué cambió en las ofertas, qué no entró y por qué, y qué está
 publicado y comprobado. Borra la rama de cerrojo de las noticias
 automáticas (`git push origin --delete claude/cerrojo-ciclo-<fecha>`), también
-si el ciclo se paró a medias.
+si el ciclo se paró a medias. Si da 403 (desde las sesiones suele pasar), dile
+a Víctor que la borre en GitHub › Branches o que lance «Limpiar ramas»
+(`limpiar-ramas.yml`) con `confirmar: BORRAR` e `incluir_cerrojos: si`: si
+se queda, las noticias automáticas de la mañana siguiente se paran.
 
 ## Vigía: medido el 13/11/2026
 
