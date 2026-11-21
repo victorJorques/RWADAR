@@ -6,6 +6,48 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (45) · Claude · Catálogo 2026-11-21: puesta al día completa · PUBLICADO
+
+- **Orden de Víctor (21/11, 17:34 UTC):** al ver «Hausera · Desde 100 € en
+  Alicante 3 (20/11)» en Próximas: «Y esta ya ha pasado… todos esos errores los
+  tienes que corregir que el lunes tenemos una reunión muy importante». Sobre
+  Brickwise: «Mantener con aviso». Después: «Termina».
+- **Publicado:** #193 (entrega, merge `83e33dff`), «Aplicar catálogo» `2026-11-21`
+  (run 44959062110), #194 (sincronización y sello), #195 (tarjeta, abajo; main
+  = `84acdd7a`), «Publicar web» revisión y producción (run 44962460055), OTA
+  Android (run 44960376699, base `fa30779f`) y «Avisar novedad» (aviso n.º
+  10). En vivo: revisión `fe0cfaa8-9682-b729-69e2-9bb4f8587ce9`, verificada el
+  21/11, 25 / 22 (8 / 13 / 1) / 5; caduca el 29/11 a las 00:00 UTC.
+- **Ciclo:** vigía, 6 grupos con revisor independiente, auditoría completa (8
+  auditores), motor, una revisión con tres lentes (11 obligatorias) y auditor
+  final conforme. Detalle en `docs/INVESTIGACION-CATALOGO-2026-11-21.md` y
+  `rwadar-app/data/verificaciones/2026-11-21-v2/`.
+- **Vigía antes de aplicar (22:38 UTC):** Schwarzer Weg 18 tenía una orden
+  nueva de 71,00 € (21:36 UTC). Se corrigió en `decisiones.json` (DECISIONES
+  §9, copia `libro-ordenes-resumen-2026-11-21-2238.json`), con su auditor. Su
+  único hallazgo (la hora de lectura «17:41–17:42» en dos alcances) se arregló
+  a «22:38 UTC». `INFORME-ENTREGA.md` §9 y `VERIFICACION-ENTREGA.md` §9.
+- **Web (#195):** la línea «Mínimo · España» de la tarjeta se desplaza 16 px y
+  recorta esa franja para esconder el «·». Un mínimo de dos líneas perdía sus
+  primeras letras: Hausera a 390 px decía «suscripción sde el 25/11». Ahora
+  lleva sangría francesa en `.escaparate-datos-linea>div` y en
+  `#emiLista .escaparate-oferta .escaparate-datos-clave>div`, y el «·» lleva
+  `text-indent:0`. Prueba en `probar-web.mjs` (735/735; falla con el CSS de
+  antes). Por un `git add -A`, el borrador de
+  `docs/INVESTIGACION-CATALOGO-2026-11-21.md` entró en ese mismo commit; se
+  completa en este traspaso.
+- **Detalle del flujo `entrega-catalogo`:** en la fase «cerrar», los `args`
+  grandes (unos 25 KB) llegaron al guion como texto y paró con «args.etiqueta
+  es obligatorio». Lo relancé desde la copia del guion de la sesión, con los
+  argumentos dentro. Conviene que el guion acepte `args` como texto JSON
+  (`typeof args === 'string' ? JSON.parse(args) : args`).
+- **Próximo ciclo:** el 25/11 abre la suscripción de Alicante 3 (el 02/12, si
+  llegó al 50 %); Spiko Smart Cash sin la ficha de la AMF; motor (mínimo en
+  lote, quitar referencias duplicadas, cambiar el nombre de etiquetas, fuentes
+  de Midas en el radar, avisar de erratas fáciles); Boss Info y Switzerlend
+  (aviso y «principales»); Brickwise, el IRPF en España en el aviso del número
+  fiscal.
+
 ## 21 de noviembre de 2026 (44) · Claude · Aviso a los usuarios cuando entran noticias nuevas · REGLA Y PROGRAMA
 
 - **Orden de Víctor (21/11):** «Sii vale» a la propuesta de avisar solo cuando
