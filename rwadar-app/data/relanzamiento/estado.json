@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Noticias del sector del 21/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo 94f7fd5d",
+  "nota": "Catálogo 2026-11-21 (revisión fe0cfaa8): puesta al día completa; Hausera con la fecha del evento",
   "revisionAprobada": {
-    "commit": "a91a3acc47cc4c83305c62bf0fe3fe937b5aa344",
-    "contenidoSha256": "sha256:d96d6ceaee646b0beb8bb6b2df140fb2b5e5c20acc8e1420d03ca8986269ec57",
+    "commit": "4b2cb90e93411cd03df5860138dd7fe0d040162b",
+    "contenidoSha256": "sha256:06d6e3943185a4cd6e3f8e9b7a30ab53f75dba4c7cd6943de74433d393bc7061",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
