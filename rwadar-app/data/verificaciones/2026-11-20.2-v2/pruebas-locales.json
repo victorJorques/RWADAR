@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-20T22:38:54.134Z",
+  "ejecutadoEl": "2026-11-21T02:25:29.783Z",
   "etiqueta": "2026-11-20.2",
   "revisionAnterior": "eca89db7-aac5-35fa-f792-5bffbe8795e2",
-  "revisionNueva": "1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a",
-  "sha256AplicarYAprobar": "7b13a3d28ad47a3dac14d77dbbb1211f9d718ac8bf07548f1a05b42a9e9c8391",
+  "revisionNueva": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
+  "sha256AplicarYAprobar": "622881c1f1c00e48f657ec8b1240fcd408f79dc7a89df558531a3048e47387cb",
   "pruebas": [
     "inventario: 288 sentencias en una transacción serializable (begin, guarda, 284 inserts, aprobación, commit); guarda (publicada eca89db7 con su huella eca89db7aac5…, catálogo no retirado, fecha del 20/11 al 27/11, destino sin otra identidad); solo inserts en rwadar_catalogo (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones; las mismas filas por tabla que la 2026-11-20), todos idempotentes y de la revisión nueva; la aprobación solo cambia rwadar_catalogo.revisiones; sin DDL, borrados, permisos, Auth ni funciones; nada en public.*",
     "cadena de producción (seed antes de ARTEX + 19 lotes, del 2026-10-22 a la 2026-11-20): la publicada es la eca89db7",
@@ -23,14 +23,14 @@
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
     "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
     "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
-    "falla y no deja nada: aplicada después del último día vigente (lote caducado; tope movido al 2026-11-19) → Lote caducado: sus fichas valían hasta el 27/11/2026. No aplicar este lote.",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado; tope movido al 2026-11-20) → Lote caducado: sus fichas valían hasta el 27/11/2026. No aplicar este lote.",
     "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior"
   ],
   "casos": [
     {
       "caso": "la revisión nueva ya estaba importada como borrador",
       "falla": false,
-      "publicada": "1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a"
+      "publicada": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7"
     },
     {
       "caso": "la publicada no es la eca89db7 (es la anterior, 434217eb)",
@@ -57,7 +57,7 @@
       "todoIgual": true
     },
     {
-      "caso": "aplicada después del último día vigente (lote caducado; tope movido al 2026-11-19)",
+      "caso": "aplicada después del último día vigente (lote caducado; tope movido al 2026-11-20)",
       "falla": true,
       "error": "Lote caducado: sus fichas valían hasta el 27/11/2026. No aplicar este lote.",
       "todoIgual": true

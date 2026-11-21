@@ -2,9 +2,17 @@
 
 Segunda entrega del 20/11/2026. Orden del responsable del proyecto (22:30 UTC):
 «Lo viejo que no valga obviamente quítalo». Esta entrega **solo quita o
-re-fecha lo viejo que ya no vale**; no cambia ningún texto, cifra, aviso,
-métrica ni dato de tarjeta (salvo la fecha de «Acceso desde España» en las tres
-de Spiko, que no cambia de valor).
+re-fecha lo viejo que ya no vale**; no cambia ninguna cifra, aviso, métrica ni
+dato de tarjeta (salvo la fecha de «Acceso desde España» en las tres de Spiko,
+que no cambia de valor). Fuera de la lista solo cambia el comienzo del alcance
+de «Mínimo de inversión» en 14 fichas (las 11 de Brickwise, Boss Info,
+Switzerlend y Hausera): «Redacción en castellano del dato comprobado en la
+fuente el 20/11/2026.» pasa a «Comprobado de nuevo en la fuente el
+20/11/2026.», como pone el motor a todo dato de tarjeta que se conserva; la
+fecha y el resto de la nota no cambian. Tras la revisión única, el alcance de
+«Acceso desde España» de Spiko Smart Cash dice «ningún registro público
+confirma que este fondo esté dado de alta para venderse en España» en lugar de
+«no consta en ningún supervisor» (revisión de cumplimiento, C1).
 
 ## Partida
 
@@ -120,7 +128,8 @@ En resumen, por ficha:
 | Aktionariat | Precio y estado del 01/11 (ya está «Precio del emisor · 20/11/2026») |
 | Boss Info | Precio, operación y estado del 01/11 y cruce del 29/08 (ya está «Última operación · 20/11/2026») |
 | Switzerlend | Precio y estado del 01/11 (la tarjeta ya dice «1 acción (68,01 CHF el 20/11)») |
-| Kraken, Robinhood, Prosegur, Hausera | Nada (solo la fecha) |
+| Kraken, Robinhood, Prosegur | Nada (solo la fecha) |
+| Hausera | Nada (la fecha y el comienzo del alcance de «Mínimo de inversión», que pone el motor) |
 
 ## Lo que se deja a propósito
 
@@ -144,9 +153,11 @@ eca89db7 con su huella, catálogo no retirado, fecha del 20/11 al 27/11, destino
 sin otra identidad), 284 inserts solo en `rwadar_catalogo` (25 plataformas, 22
 ofertas, 69 fuentes, 25 alertas, 35 alerta_fuentes, 107 plataforma_fuentes, 1
 revisión; las mismas filas por tabla que la 2026-11-20), la aprobación y
-`commit`. Sin DDL, borrados, permisos ni nada en `public.*`. 20 sentencias
-cambian algo más que la revisión, la huella y la fecha (las 18 ofertas con
-cambios y sus revisiones).
+`commit`. Sin DDL, borrados ni permisos, y sin escribir en `public.*` (solo lee
+`public.plataformas` y bloquea la fila de `public.catalogo_publicacion`
+mientras dura). 20 sentencias cambian algo más que la revisión, la huella y la
+fecha (las 18 ofertas con cambios, Hausera solo por ese comienzo del alcance, y
+la aprobación).
 
 ## Cambios en el motor
 

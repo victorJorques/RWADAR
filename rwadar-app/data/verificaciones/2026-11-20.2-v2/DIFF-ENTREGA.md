@@ -2,7 +2,7 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-20.2`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `7b13a3d28ad47a3dac14d77dbbb1211f9d718ac8bf07548f1a05b42a9e9c8391`, revisión `1d2cd6b1-0aca-2400-88c1-d8aa31d01f6a`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `622881c1f1c00e48f657ec8b1240fcd408f79dc7a89df558531a3048e47387cb`, revisión `94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7`.
 - Parte de la publicada `eca89db7-aac5-35fa-f792-5bffbe8795e2` (huella `eca89db7aac535fa…`); último día vigente 27/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
 - Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **20** de 288.
@@ -166,7 +166,9 @@ Generado por el motor (`motor.mjs revisar 2026-11-20.2`) a partir de decisiones.
 - …:"2026-11- «06» → «13»
 - … de Spiko ( «06» → «13»
 - …06/11/2026) «» → «: España marcada en la columna Smart Cash, que cubre Spiko Euro»
-- … los fondos extranjeros «» → « y la AMF ya no muestra la ficha del fondo»
+- … los fondos extranjeros «: » → « y la AMF ya »
+- … extranjeros: no  «consta en » → «muestra la ficha del fondo: »
+- …consta en ningún  «supervisor» → «registro público confirma que este fondo esté dado de alta para venderse en España»
 
 ### rwadar_catalogo.ofertas 'mtbill' 'https://midas.app/mtbill'
 

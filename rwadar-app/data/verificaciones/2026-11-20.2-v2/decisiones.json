@@ -254,7 +254,7 @@
           },
           "despues": {
             "fechaDato": "2026-11-13",
-            "alcance": "Tabla de disponibilidad de Spiko (13/11/2026): España marcada en la columna Smart Cash, que cubre Spiko Euro. La CNMV no publica los compartimentos de los fondos extranjeros y la AMF ya no muestra la ficha del fondo: no consta en ningún supervisor."
+            "alcance": "Tabla de disponibilidad de Spiko (13/11/2026): España marcada en la columna Smart Cash, que cubre Spiko Euro. La CNMV no publica los compartimentos de los fondos extranjeros y la AMF ya no muestra la ficha del fondo: ningún registro público confirma que este fondo esté dado de alta para venderse en España."
           },
           "prueba": [
             {
@@ -268,6 +268,10 @@
             {
               "documento": "DECISIONES-COORDINADOR.md",
               "contiene": "spiko-smart-cash-euro · «Acceso desde España» con fecha del dato 13/11/2026"
+            },
+            {
+              "documento": "REVISION-ENTREGA-cumplimiento.md",
+              "contiene": "ningún registro público confirma que este fondo esté dado de alta para venderse en España"
             }
           ]
         }

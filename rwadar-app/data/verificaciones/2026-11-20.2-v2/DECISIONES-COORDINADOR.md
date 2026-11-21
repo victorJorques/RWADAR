@@ -119,4 +119,5 @@ y `auditoria/`) y la lectura pública de hoy.
   01/11/2026»; en Robinhood «Precio · consulta 01/11/2026» (dice cuántos
   tokens ofrece, no un precio).
 - Sin cambios: kraken-xstocks, robinhood-classic-stock-tokens,
-  prosegur-digital-gold y hausera-proximas-ofertas (solo la fecha).
+  prosegur-digital-gold (solo la fecha) y hausera-proximas-ofertas (la fecha y
+  el comienzo del alcance de «Mínimo de inversión», que pone el motor).
