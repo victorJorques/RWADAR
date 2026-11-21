@@ -35,8 +35,8 @@ const RECIENTES = [
 ];
 const SIN_LEER = '<span class="bandeja-punto" aria-hidden="true"></span><span class="solo-lector">Sin leer</span> ';
 
-function entorno({ encendida = true, sesion = true, recientes = RECIENTES, falla = false } = {}) {
-  const llamadas = [], nodos = new Map();
+function entorno({ encendida = true, sesion = true, recientes = RECIENTES, falla = false, publicos = null, guardado = null } = {}) {
+  const llamadas = [], nodos = new Map(), almacen = new Map(Object.entries(guardado || {}));
   function nodo(id) {
     if (!nodos.has(id)) {
       const atributos = html.match(new RegExp('<[a-z]+\\b[^>]*\\bid="' + id + '"[^>]*>'))?.[0] || '';
@@ -53,8 +53,13 @@ function entorno({ encendida = true, sesion = true, recientes = RECIENTES, falla
     sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} }, setInterval() {}, URLSearchParams,
     SERVICIOS_USUARIO_DISPONIBLES: true, OPINIONES_DISPONIBLES: false, AVISOS_CORREO_DISPONIBLES: false,
     openPanel() {}, closeAll() {}, avisar() {},
+    // Sin sesión, la campana pide los avisos publicados con plazo (setTimeout) y guarda lo visto.
+    ...(publicos ? { setTimeout, clearTimeout,
+      localStorage: { getItem: k => almacen.has(k) ? almacen.get(k) : null, setItem: (k, v) => almacen.set(k, String(v)), removeItem: k => almacen.delete(k) } } : {}),
     fetch: async (ruta, opciones) => {
       llamadas.push({ ruta, opciones });
+      if (ruta === '/api/avisos/recientes') return { ok: true, status: 200, json: async () => ({ v: 1, avisos: publicos || [] }) };
+      if (ruta.startsWith('/api/avisos/')) return { ok: false, status: 404, json: async () => ({ ok: false, error: 'no_disponible' }) };
       if (ruta.endsWith('/sesion')) return sesion
         ? { ok: true, status: 200, json: async () => ({ autenticada: true, usuario: { id: 'cuenta-a', correo: 'qa@ejemplo.test', correoConfirmadoEl: '2026-11-05T00:00:00Z' } }) }
         : { ok: false, status: 401, json: async () => ({ error: 'sesion_necesaria' }) };
@@ -75,7 +80,8 @@ function entorno({ encendida = true, sesion = true, recientes = RECIENTES, falla
   vm.runInContext(consentimiento(codigo) + '\n' + cuenta(codigo) + '\nglobalThis.cuentaPrueba=Cuenta;', context);
   const rpc = () => llamadas.filter(l => l.ruta === '/api/acceso/datos').map(l => JSON.parse(l.opciones.body))
     .filter(c => c.ruta.startsWith('/rpc/'));
-  return { context, nodo, rpc };
+  const publicas = () => llamadas.filter(l => l.ruta === '/api/avisos/recientes').map(l => [l.opciones.method, l.opciones.credentials]);
+  return { context, nodo, rpc, publicas, almacen };
 }
 
 test('la bandeja está encendida (12/11/2026) y sigue siendo un interruptor aparte de los avisos de novedades', () => {
@@ -121,7 +127,9 @@ test('encendida: pide mis_avisos_recientes al confirmar la sesión (para la camp
   assert.ok(lista.includes('<li class="nuevo">' + SIN_LEER + '<b>2 fichas nuevas en el radar de RWAdar</b><p>Consulta en el radar qué ha entrado.</p><time datetime="2026-11-05">05/11/2026</time> <a href="/#emisiones" aria-label="Abrir 2 fichas nuevas en el radar de RWAdar">Abrir</a></li>'));
   assert.ok(lista.includes('<b>&lt;img src=x onerror=alert(1)&gt;</b><p>Texto con &lt;b&gt;etiquetas&lt;/b&gt;.</p>'), 'escapado');
   assert.ok(lista.includes('<a href="/academy/" aria-label="Abrir Te damos la bienvenida a RWAdar">Abrir</a>'));
-  assert.ok(lista.endsWith('</ul><button type="button" class="bandeja-marcar" data-avisos-marcar>Marcar como leídos</button>'));
+  // Sin «Marcar como leídos» (21/11/2026): la lista se da por vista al estar en pantalla 1,5 s.
+  assert.ok(lista.endsWith('</ul>'));
+  assert.doesNotMatch(lista, /data-avisos-marcar|Marcar como leídos/);
   assert.doesNotMatch(lista, /evil\.test|Repetido|<img/);
   // Volver a abrir la cuenta no repite la consulta.
   await e.context.cuentaPrueba.abrirGestion();
@@ -158,12 +166,42 @@ test('encendida: si la base falla lo dice y reintenta al volver a abrir; sin avi
   assert.match(rara.nodo('pfBandeja').innerHTML, /No se pudieron cargar tus avisos/);
 });
 
-test('encendida sin sesión: no se pide nada y no hay campana', async () => {
-  const e = entorno({ sesion: false });
-  await tick();
-  await e.context.cuentaPrueba.abrirGestion().catch(() => {});
-  await tick();
-  assert.deepEqual(e.rpc(), []);
-  assert.equal(e.nodo('btnAvisos').hidden, true);
-  assert.equal(e.nodo('movilAvisos').hidden, true);
+// 21/11/2026, la dirección: «me gustaría que los avisos salieran en Inicio arriba a la derecha». Sin
+// sesión la campana también sale: cuenta los avisos publicados (/api/avisos/recientes, sin cookies y
+// sin la bienvenida) que este navegador no ha visto (rwadar.avisos.leidos.publicos.v1), sin pedir nada
+// de ninguna cuenta. El globo de Perfil sigue siendo solo de la cuenta.
+const PUBLICOS = [
+  { id: '12', tipo: 'novedad', titulo: 'Novedad de prueba', texto: 'Texto.', enlace: 'https://rwadar.pages.dev/novedades-rwadar/', creado_el: '2026-11-20T10:00:00Z' },
+  { id: '11', tipo: 'ofertas', titulo: 'Fichas nuevas', texto: 'Texto.', enlace: 'https://rwadar.pages.dev/#emisiones', creado_el: '2026-11-19T10:00:00Z' },
+  { id: 'bienvenida', tipo: 'bienvenida', titulo: 'Bienvenida', texto: 'Solo de las cuentas.', enlace: null, creado_el: null },
+];
+test('encendida sin sesión: la campana sale con los avisos publicados no vistos en este navegador, sin pedir nada de la cuenta', async () => {
+  const e = entorno({ sesion: false, publicos: PUBLICOS });
+  await tick(20);
+  assert.deepEqual(e.rpc(), [], 'nada de la cuenta');
+  assert.deepEqual(e.publicas(), [['GET', 'omit']], 'una sola petición de los avisos publicados, sin cookies');
+  assert.equal(e.nodo('btnAvisos').hidden, false);
+  assert.equal(e.nodo('movilAvisos').hidden, false);
+  assert.equal(e.nodo('btnAvisosN').textContent, '2', 'la bienvenida no cuenta');
+  assert.equal(e.nodo('btnAvisosN').hidden, false);
+  assert.equal(e.nodo('movilAvisosN').textContent, '2');
+  assert.equal(e.context.cuentaPrueba.avisosSinLeer(), 0, 'el globo de Perfil sigue siendo de la cuenta');
+  // Lo ya visto en este navegador no cuenta; lo de una cuenta (otra clave), tampoco se mezcla.
+  const visto = entorno({ sesion: false, publicos: PUBLICOS,
+    guardado: { 'rwadar.avisos.leidos.publicos.v1': '["12"]', 'rwadar.avisos.leidos.v1:cuenta-a': '["11"]' } });
+  await tick(20);
+  assert.equal(visto.nodo('btnAvisosN').textContent, '1');
+  // «Borrar lo guardado aquí» lo olvida: vuelven a contar los dos.
+  assert.equal(visto.context.cuentaPrueba.hayAvisosVistosAqui(), true);
+  visto.context.cuentaPrueba.olvidarAvisosVistosAqui();
+  assert.equal(visto.almacen.has('rwadar.avisos.leidos.publicos.v1'), false);
+  assert.equal(visto.almacen.get('rwadar.avisos.leidos.v1:cuenta-a'), '["11"]', 'lo de la cuenta no se toca');
+  assert.equal(visto.nodo('btnAvisosN').textContent, '2');
+  assert.equal(visto.context.cuentaPrueba.hayAvisosVistosAqui(), false);
+});
+test('encendida con sesión: la campana no pide los avisos publicados', async () => {
+  const e = entorno({ publicos: PUBLICOS });
+  await tick(20);
+  assert.deepEqual(e.publicas(), []);
+  assert.equal(e.nodo('btnAvisosN').textContent, '3', 'los de la cuenta');
 });
