@@ -1,0 +1,594 @@
+{
+  "tipo": "revision_integral",
+  "fecha": "2026-11-20",
+  "etiqueta": "2026-11-20.2",
+  "revisionAnterior": "eca89db7-aac5-35fa-f792-5bffbe8795e2",
+  "revisionNueva": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
+  "decision": "Puesta al día pedida por el responsable del proyecto el 20/11/2026 («Lo viejo que no valga obviamente quítalo»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
+  "archivos": {
+    "DECISIONES-COORDINADOR.md": "9ed8bda07a24d208fd429c92b390fff1ea0b8e8c5722f318cba2aa969e965b67",
+    "radar-contraste-2026-11-20.json": "1708ca4bef57237c15d532e5a33265ac3831f904b7a2578b83de1de7f6100961",
+    "cambios-radar.json": "4b3f4e9ab9eef8c06373066aa177f7358ba268ad5e048c9a999641c776dc2438"
+  },
+  "radar": {
+    "fuentes": 69,
+    "correctas": 69,
+    "verificacionesManuales": [
+      "spiko-regafi-pasaporte-es"
+    ],
+    "cambios": {
+      "fuentes": {},
+      "plataformas": {}
+    }
+  },
+  "cifras": {},
+  "condicionHora": {},
+  "vigencia": {
+    "verificadaEl": "2026-11-20",
+    "vigenciaDias": 7,
+    "ultimoDiaVigente": "2026-11-27"
+  },
+  "cambios": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor. · dato del 2026-11-06",
+      "despues": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor. · dato del 2026-11-13"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Latest NAV 1.0620 · 2026-11-01 ; amount 1.062032 EUR, updatedAt 2026-10-30T16:02:10Z",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: 🇪🇸 Spain ✅ (Smart Cash) ✅ (T-Bills Euro) ✅ (T-Bills Dollar) ❌ (T-Bills Pound) · Last updated: October 23, 2026",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor. · dato del 2026-11-06",
+      "despues": "Acceso desde España: Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor. · dato del 2026-11-13"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: amount 1.101207 USD · day 2026-10-30",
+      "despues": null
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Acceso desde España · consulta 01/11/2026: 🇪🇸 Spain ✅ ✅ ✅ ❌ (columna T-Bills Dollar ✅)",
+      "despues": null
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "fuente de la ficha",
+      "antes": "https://geco.amf-france.org/produit-d-epargne/c124199",
+      "despues": null
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "tarjeta (fecha del dato)",
+      "antes": "Acceso desde España: Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC) · dato del 2026-11-06",
+      "despues": "Acceso desde España: Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC) · dato del 2026-11-13"
+    },
+    {
+      "slug": "mtbill",
+      "campo": "fuente de la ficha",
+      "antes": "https://midas.app/assets/main-DOxid0Zj.js",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 84 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 80,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":333",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":76",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 21 órdenes de venta abiertas, 333 participaciones, la más barata a 80 €; 3 órdenes de compra, la mejor a 20 €",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 75 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio más bajo en mercado secundario (API) · 22/10/2026: 75,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones disponibles en emisión (API) · 22/10/2026: 0 de 2.350",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":96",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":80",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 38 órdenes de venta abiertas, 96 participaciones, la más barata a 75 €; 10 órdenes de compra, la mejor a 69 €",
+      "despues": null
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 95 EUR",
+      "despues": null
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 95,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":301",
+      "despues": null
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":95",
+      "despues": null
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 46 órdenes de venta abiertas, 301 participaciones, la más barata a 95 €; 4 órdenes de compra, la mejor a 88 €",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 65 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 69,96 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":309",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":69.96",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 83 órdenes de venta abiertas, 309 participaciones, la más barata a 69.9 €; 12 órdenes de compra, la mejor a 30 €",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 70 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 70,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":274",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":65",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 73 órdenes de venta abiertas, 274 participaciones, la más barata a 69.9 €; 8 órdenes de compra, la mejor a 60 €",
+      "despues": null
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 55 EUR",
+      "despues": null
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 70,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":150",
+      "despues": null
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":67.8",
+      "despues": null
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 32 órdenes de venta abiertas, 150 participaciones, la más barata a 70 €; 9 órdenes de compra, la mejor a 54 €",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 60 EUR",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio más bajo en mercado secundario (API) · 22/10/2026: 75,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":75",
+      "despues": null
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 30 órdenes de venta abiertas, 183 participaciones, la más barata a 78 €; 8 órdenes de compra, la mejor a 40.5 €",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 75 EUR",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 72,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":253",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":85",
+      "despues": null
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 36 órdenes de venta abiertas, 253 participaciones, la más barata a 72 €; 7 órdenes de compra, la mejor a 65 €",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 80 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio más bajo en mercado secundario (API) · 22/10/2026: 80,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones disponibles en emisión (API) · 22/10/2026: 0 de 1.410",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":106",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":72",
+      "despues": null
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 19 órdenes de venta abiertas, 106 participaciones, la más barata a 80 €; 15 órdenes de compra, la mejor a 63 €",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 100 EUR",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 100,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":351",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":95",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 16 órdenes de venta abiertas, 351 participaciones, la más barata a 100 €; 10 órdenes de compra, la mejor a 90 €",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Precio desde anunciado: 110 EUR",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Precio por participación · 22/10/2026: desde 110,00 EUR",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: \"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":65",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: \"sharePrice\":120",
+      "despues": null
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 5 órdenes de venta abiertas, 65 participaciones, la más barata a 110 €; 5 órdenes de compra, la mejor a 3 €",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Price per DAKS 7.25 CHF",
+      "despues": null
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Direct Investment – Invest in Aktionariat AG by buying tokenized shares directly from the issuer at a fixed price.",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Buy BOSS at 8.502 CHF · bank transfer or crypto",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Price per BOSS 8.5 CHF",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: 28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce documentado: 8,44 CHF",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Estado de la oferta · consulta 01/11/2026: Buy LENDS at 68.0105 CHF · bank transfer or crypto",
+      "despues": null
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "referencia de la ficha",
+      "antes": "Precio · consulta 01/11/2026: Price per LENDS 68.01 CHF",
+      "despues": null
+    }
+  ],
+  "tarjetaConservadasDeMasDe120": [],
+  "tarjetas": {
+    "spiko-letras-del-tesoro-euro": {
+      "Mínimo de inversión (clase EUTBL)": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "Mínimo de inversión": "1 USD",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España: Robinhood Europe está inscrita en la CNMV en libre prestación (n.º 5299).",
+      "Salida": "Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse"
+    },
+    "mtbill": {},
+    "prosegur-digital-gold": {
+      "Mínimo de inversión": "1 gramo de oro",
+      "Acceso desde España": "Disponible para clientes residentes en España; las operaciones se liquidan en euros.",
+      "Reembolso": "Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "aktionariat": {
+      "Mínimo de inversión": "500 CHF por transferencia bancaria",
+      "Acceso desde España": "Disponible para residentes en Suiza y el Espacio Económico Europeo, con un tope total de 100.000 € para el EEE.",
+      "Salida": "Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "boss-info": {
+      "Mínimo de inversión": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 20/11)",
+      "Salida": "El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "switzerlend": {
+      "Mínimo de inversión": "1 acción (68,01 CHF el 20/11)",
+      "Salida": "El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "hausera-proximas-ofertas": {
+      "Mínimo de inversión": "Desde 100 € en Alicante 3, según su documento de emisión (20/11); preventa abierta desde el 18/11.",
+      "Acceso desde España": "Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV.",
+      "Salida": "Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado."
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "local-de-estanco-klagenfurt": {
+      "Mínimo de inversión": "Desde 95 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "Mínimo de inversión": "Desde 68,80 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "Mínimo de inversión": "Desde 69,90 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "drautalresidenz-paternion": {
+      "Mínimo de inversión": "Desde 70 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "randhartingergasse-9-viena": {
+      "Mínimo de inversión": "Desde 78 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "Mínimo de inversión": "Desde 81 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "Mínimo de inversión": "Desde 102 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "Mínimo de inversión": "Desde 110 € la participación en reventa (20/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "kraken-xstocks": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales",
+      "Salida": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "spiko-smart-cash-euro": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "Reembolso": "Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)"
+    }
+  },
+  "noAplicadoTalCual": [],
+  "sinCambios": [
+    "kraken-xstocks",
+    "robinhood-classic-stock-tokens",
+    "prosegur-digital-gold",
+    "hausera-proximas-ofertas"
+  ],
+  "altas": [],
+  "retiradas": [],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  }
+}

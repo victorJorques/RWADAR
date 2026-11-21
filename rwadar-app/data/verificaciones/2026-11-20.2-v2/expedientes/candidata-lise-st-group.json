@@ -1,0 +1,490 @@
+{
+ "slug": "candidata-lise-st-group",
+ "tipoExpediente": "candidata",
+ "grupo": "busqueda-nueva",
+ "proveedor": "LISE (Lightning Stock Exchange)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "LISE SA (société anonyme, RCS París 938 642 709, LEI 894500LNKGRT1I5QBU56)",
+ "emisor": "ST GROUP SA (RCS Toulouse 477 869 994; composites para aeronáutica y defensa)",
+ "vehiculo": "Acciones ordinarias de ST GROUP emitidas y registradas de forma nativa en la DLT de LISE (sin vehículo intermedio)",
+ "token": "Acción tokenizada nativa en la DLT permisionada de LISE (Hyperledger Besu); sin contrato público consultable",
+ "derechoAdquirido": "Acción ordinaria de ST GROUP con los mismos derechos que una acción tradicional (voto, dividendo, información), inscrita en la DLT de LISE a nombre del inversor",
+ "jurisdiccion": "FR",
+ "identificador": "ISIN FR0014017QA4 · ticker STGRP · LEI de LISE 894500LNKGRT1I5QBU56",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "LISE · centro de ayuda (cuenta, admisión, depósitos, retiradas, comisiones, protección)",
+   "url": "https://www.lise.com/en/support",
+   "versionOFecha": "consulta 2026-11-20T21:05:00Z (idéntico byte a byte al de 20:55:13Z)",
+   "paginas": null,
+   "sha256": "b36738cf8a8e6614c9a8867c022e7673eefc16377df428a313543aaeed4e1328",
+   "leido": true,
+   "nota": "Dice «open to residents of France, Europe, the United Kingdom, and Switzerland», sin lista de países."
+  },
+  {
+   "titulo": "LISE · ficha de mercado de STGRP (precio, libro de órdenes, historial)",
+   "url": "https://www.lise.com/en/exchange/STGRP",
+   "versionOFecha": "consulta 2026-11-20T21:04:59Z; libro actualizado hoy a las 20:55:16",
+   "paginas": null,
+   "sha256": "7a8790ba5be983e9e98bc8851ac436267f7d1feb57d8100b3e6d2130f1ae460b",
+   "leido": true,
+   "nota": "Página dinámica: el precio y el libro cambian."
+  },
+  {
+   "titulo": "LISE · mercado primario de ST GROUP (salida a bolsa cerrada)",
+   "url": "https://www.lise.com/en/primary-market/st-group",
+   "versionOFecha": "consulta 2026-11-20T21:05:02Z",
+   "paginas": null,
+   "sha256": "e3e2429a7b7cc49a259823634fe0c535f597739bfac7b6b5396d508048c6419b",
+   "leido": true
+  },
+  {
+   "titulo": "LISE · Règles de fonctionnement de la Plateforme Lise (PDF en Google Drive enlazado desde lise.com)",
+   "url": "https://www.lise.com/rules/regles-de-fonctionnement.pdf",
+   "versionOFecha": "descarga pública https://drive.google.com/uc?export=download&id=1P4AY5Qu0v57WVidAxUKvVWaxBc5zHQfV, 2026-11-20T21:02:44Z",
+   "paginas": 84,
+   "sha256": "5f6923289b15e7f2628af4532eb7657548e28ecf8a7bda70a024b627b80faa67",
+   "leido": true,
+   "nota": "Leídos: 9.3 (admisión de miembros inversores), 11.3.1.5 (paso a nominativo), 13.1 (acceso), 20.4.1.2 (quotité). En francés."
+  },
+  {
+   "titulo": "LISE · Politique de transparence tarifaire v1.1",
+   "url": "https://www.lise.com/rules/politique-tarifaire.pdf",
+   "versionOFecha": "descarga pública https://drive.google.com/uc?export=download&id=1bVzT-JDmYVcWT7vtk-NLeOnZVj7KpI08, 2026-11-20T21:02:46Z",
+   "paginas": 8,
+   "sha256": "6882ad23310ae80fbb4b256bcc86a4add2a2569836669e8fe46c2313c28aea67",
+   "leido": true
+  },
+  {
+   "titulo": "LISE · Conditions générales d'utilisation (marzo de 2026)",
+   "url": "https://www.lise.com/rules/conditions-generales-d-utilisation",
+   "versionOFecha": "descarga pública https://drive.google.com/uc?export=download&id=1d_YUkKL5QJOPNFBN3xXsIw4YIHqs0Z6a, 2026-11-20T21:02:41Z",
+   "paginas": 20,
+   "sha256": "985325db93f89b1ddf068cc414b7bfea469bab47b03d4e81a0dc4d952281b161",
+   "leido": true,
+   "nota": "Sin cláusula de países ni de residencia."
+  },
+  {
+   "titulo": "ST GROUP · Document d'information n.º Lise-DI-2026-001 (aprobado por LISE el 09/04/2026; no es folleto ni lo aprobó la AMF)",
+   "url": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com/%2Fusers%2Fuser%7C2041535063736193024%2Finformation_document%2FST-GROUP-Document+d%27information.pdf",
+   "versionOFecha": "09/04/2026; consulta 2026-11-20T21:02:27Z",
+   "paginas": 79,
+   "sha256": "ba3a3815ed9ae702afb63c1cf0a0f118b39b9e681202ca7496555630fd8852cf",
+   "leido": true,
+   "nota": "Leídos: portada, restricciones de oferta y 5.3 (riesgos). Solo en francés. Exención de folleto del art. 3.2 del Reglamento (UE) 2017/1129: oferta nacional francesa. No nombra España."
+  },
+  {
+   "titulo": "ST GROUP · Primer suplemento n.º Lise-DI-2026-001-S1 (20/04/2026)",
+   "url": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com//users/user%7C2041535063736193024/first_supplement_information_document/ST-GROUP-20042026-Premier-supplement-au-Document%20d%27Information%20%281%29.pdf",
+   "versionOFecha": "20/04/2026; consulta 2026-11-20T21:02:29Z",
+   "paginas": 4,
+   "sha256": "3259ed8db338984a5e7eea6541c8ab6a29ec66bc2a250f1f31a737d3b88a9fd8",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ACPR (REGAFI)",
+   "entidad": "LISE, Société anonyme, SIREN 938642709",
+   "numero": "CIB 18883 desde 2025-10-13; id REGAFI 749227",
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227",
+   "alcance": "Entreprise d'investissement con «Agrément» en Francia.",
+   "consultadoUtc": "2026-11-20T21:03:30Z"
+  },
+  {
+   "regulador": "ACPR (REGAFI)",
+   "entidad": "LISE · pasaportes salientes",
+   "numero": "total_count 0",
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100",
+   "alcance": "Ningún pasaporte, tampoco hacia España. Control positivo del mismo conjunto: 172 pasaportes de servicios de inversión hacia «ESPAGNE» (21:03:47Z, sha256 68af7b62…a5f9d1).",
+   "consultadoUtc": "2026-11-20T21:03:31Z"
+  },
+  {
+   "regulador": "ESMA",
+   "entidad": "LISE SA · LISE DLT TSS",
+   "numero": "DLT Trading & Settlement System, autorizado por la ACPR el 13/10/2025",
+   "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+   "alcance": "Régimen piloto DLT (Reglamento (UE) 2022/858). La lista no da alcance territorial.",
+   "consultadoUtc": "2026-11-20T21:04:13Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "Listado de ESI del EEE en libre prestación en España",
+   "numero": "LISE no aparece",
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+   "alcance": "Ni «LISE», ni «KRIPTOWN», ni «LIGHTNING». Sí aparece UAB AXIOLOGY DLT, otro operador del régimen piloto DLT. Mismo SHA-256 que a las 20:55:32Z.",
+   "consultadoUtc": "2026-11-20T21:03:55Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Lise",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lise",
+   "consultadoUtc": "2026-11-20T21:03:58Z",
+   "sha256": "b3739e071659a476f66a592539d22015d78e6c2464c68859a332f12f6cfaf294"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Kriptown",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kriptown",
+   "consultadoUtc": "2026-11-20T21:04:00Z",
+   "sha256": "c2474586cea7986edbfa5c4078585b72ec742e2aa3a298800c91f50fdccd5c1a"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "ST GROUP",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=ST%20GROUP",
+   "consultadoUtc": "2026-11-20T21:04:01Z",
+   "sha256": "6f3d93178e6924b79f1b897fa0ef8d198b909d66b0dc643125296b3e4bfd3cb3"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Lightning Stock",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lightning%20Stock",
+   "consultadoUtc": "2026-11-20T21:04:03Z",
+   "sha256": "ff0a083eef8080af21f2197db4bf68ce91a795b1853e5bb2ba295854d8628acc",
+   "alcance": "Control positivo del buscador («Trading», con resultados) a las 20:59:27Z (europa/cnmv-advertencias.txt)."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "An investment firm authorised by the French Prudential Supervision and Resolution Authority (CIB 18883) ... Operator of an organised multilateral trading facility (MTF) ... pursuant to Regulation (EU) 2022/858.",
+   "dato": "Empresa de inversión autorizada por la ACPR (CIB 18883, 13/10/2025); DLT TSS en la lista de ESMA",
+   "fuentePrimaria": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227",
+   "localizador": "REGAFI id 749227; ESMA, Authorised DLT Market Infrastructures; pie de lise.com",
+   "fechaDato": "2025-10-13",
+   "consultadoUtc": "2026-11-20T21:03:30Z",
+   "alcanceYLimites": "Autorización francesa. No dice nada de prestar servicio en otros Estados.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Lise is open to residents of France, Europe, the United Kingdom, and Switzerland.",
+   "dato": null,
+   "fuentePrimaria": "https://www.lise.com/en/support",
+   "localizador": "Centro de ayuda, «Who can invest on Lise?»; REGAFI pasaportes salientes (0); CNMV listado tipoent=4 (no consta)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:05:00Z",
+   "alcanceYLimites": "«Europe» no es una lista de países ni nombra España. Ni REGAFI ni la CNMV muestran pasaporte o libre prestación de LISE hacia España, y el documento de información usa una exención de folleto solo francesa. Las reglas y las condiciones no fijan países.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "estado",
+   "literal": "Market open 24/7",
+   "dato": "Solo mercado secundario abierto; salida a bolsa cerrada (09/04–24/04/2026)",
+   "fuentePrimaria": "https://www.lise.com/en/exchange/STGRP",
+   "localizador": "Ficha STGRP y página del mercado primario («The subscription period has ended.»)",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:04:59Z",
+   "alcanceYLimites": "Una sola cotizada en LISE (STGRP).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "precio",
+   "literal": "€16.40 ... Capitalization €9,062,361.20",
+   "dato": "16,40 € (última operación, 16/11/2026, 1 acción); precio de salida a bolsa 18,25 €",
+   "fuentePrimaria": "https://www.lise.com/en/exchange/STGRP",
+   "localizador": "Ficha STGRP, «Market history»; mercado primario «Unit price €18.25»",
+   "fechaDato": "2026-11-16",
+   "consultadoUtc": "2026-11-20T21:04:59Z",
+   "alcanceYLimites": "Precio de reventa entre inversores, no de emisión. Mejor compra 14,50 € y mejor venta 16,00 € en el libro de hoy.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Toutes les quantités sont négociables, sous réserve de restrictions particulières pour certains types de Titres Tokénisés Admis précisées par Notices.",
+   "dato": "1 acción (16,40 € al precio de la última operación)",
+   "fuentePrimaria": "https://www.lise.com/rules/regles-de-fonctionnement.pdf",
+   "localizador": "Règles de fonctionnement, art. 20.4.1.2 «Quotité»; ayuda: sin mínimo de depósito",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:02:44Z",
+   "alcanceYLimites": "Depende del precio de cada momento; las operaciones recientes son de 1 a 15 acciones.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Entre 0,10 % et 0,25 % du volume de la transaction ... 0 à 6 000 : 0,25%",
+   "dato": "0,25 % por operación hasta 6.000 € de volumen en 6 meses (baja a 0,20 %, 0,15 % y 0,10 %); depósitos sin comisión",
+   "fuentePrimaria": "https://www.lise.com/rules/politique-tarifaire.pdf",
+   "localizador": "Politique de transparence tarifaire v1.1, «Commission Investisseurs»; ayuda «Are there fees when buying or selling my securities?»",
+   "fechaDato": "2026-03-09",
+   "consultadoUtc": "2026-11-20T21:02:46Z",
+   "alcanceYLimites": "Confirma en fuente primaria el tope del 0,25 % que daba la prensa.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Liquidity risk: you may not find a buyer to sell your securities quickly at your desired price.",
+   "dato": "Venta en el libro de órdenes de LISE, 24/7; sin recompra ni reembolso; retirada del efectivo al banco hasta 48 h hábiles",
+   "fuentePrimaria": "https://www.lise.com/en/support",
+   "localizador": "Ayuda (mercado secundario, retiradas); documento de información 5.3; reglas 11.3.1.5 (paso a nominativo)",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:05:00Z",
+   "alcanceYLimites": "Liquidez casi nula: última operación el 16/11 (1 acción); horquilla de unos 1,50 € (14,50/16,00 €, cerca del 10 %). El documento de información dice que la reventa «peut être incertaine, partielle, voire impossible».",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Your funds ... are covered by the French Deposit Guarantee Scheme (FGDR) up to €100,000 per depositor. Your securities are protected by the Securities Guarantee Scheme up to €70,000 per investor.",
+   "dato": "LISE custodia los títulos; efectivo segregado en un banco",
+   "fuentePrimaria": "https://www.lise.com/en/support",
+   "localizador": "Ayuda, «What happens if Lise defaults?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:05:00Z",
+   "alcanceYLimites": "Esas garantías cubren el fallo de LISE, no la caída de la acción.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Risque de perte totale ou partielle du capital investi.",
+   "dato": "Pérdida de capital, illiquidez, régimen piloto experimental, DLT y contratos inteligentes (solo la primera versión auditada, sin seguro), exclusión de cotización",
+   "fuentePrimaria": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com/%2Fusers%2Fuser%7C2041535063736193024%2Finformation_document%2FST-GROUP-Document+d%27information.pdf",
+   "localizador": "Document d'information Lise-DI-2026-001, 5.3",
+   "fechaDato": "2026-04-09",
+   "consultadoUtc": "2026-11-20T21:02:27Z",
+   "alcanceYLimites": "Documento en francés, no aprobado por la AMF. Las acciones no son PRIIP: no hay KID.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "documentos",
+   "literal": "L'offre décrite dans le présent Document d'Information est exemptée de l'obligation de publier un prospectus en vertu de l'article 3, paragraphe 2, du Règlement Prospectus.",
+   "dato": "Documento de información y suplemento públicos; sin folleto; nada en español",
+   "fuentePrimaria": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com/%2Fusers%2Fuser%7C2041535063736193024%2Finformation_document%2FST-GROUP-Document+d%27information.pdf",
+   "localizador": "Document d'information, «Restrictions d'offre»",
+   "fechaDato": "2026-04-09",
+   "consultadoUtc": "2026-11-20T21:02:27Z",
+   "alcanceYLimites": "La exención del art. 3.2 es nacional (Francia) y no se pasaporta.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Autorizada en Francia (ACPR, CIB 18883) y en la lista de ESMA de infraestructuras DLT; sin pasaporte a ningún país."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Mercado secundario abierto hoy; salida a bolsa cerrada. Una sola acción cotizada, con muy pocas operaciones (última el 16/11)."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Nada prueba que un particular residente en España pueda abrir cuenta: «Europe» genérico frente a 0 pasaportes en REGAFI y ausencia en la CNMV."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple",
+   "nota": "Riesgos explicados en el documento de información (en francés). Sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "solo_reventa",
+ "disponibleEs": "no_confirmado",
+ "conflictos": [
+  {
+   "campo": "accesoEspana",
+   "fuenteA": "https://www.lise.com/en/support",
+   "datoA": "«open to residents of France, Europe, the United Kingdom, and Switzerland»",
+   "fuenteB": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100 · https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+   "datoB": "0 pasaportes salientes; LISE no figura entre las ESI del EEE en libre prestación en España",
+   "resolucion": "No se resuelve con fuentes públicas: haría falta la notificación de libre prestación a España (REGAFI/CNMV) o un escrito de LISE o de la ACPR."
+  }
+ ],
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": {
+  "titulo": "LISE · acciones tokenizadas de ST GROUP",
+  "categoria": "Acciones y capital privado",
+  "pais": "FR",
+  "tipo": "valor",
+  "coleccion": null,
+  "resumen": "Acciones de una pyme francesa de composites para aeronáutica, emitidas y negociadas en una bolsa DLT autorizada en Francia; sin confirmación de acceso para particulares en España.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://www.lise.com/en/exchange/STGRP",
+  "fuentesActuales": [
+   "https://www.lise.com/en/exchange/STGRP",
+   "https://www.lise.com/en/support",
+   "https://www.lise.com/rules/regles-de-fonctionnement.pdf",
+   "https://www.lise.com/rules/politique-tarifaire.pdf",
+   "https://lise-production-public-api.s3.eu-west-3.amazonaws.com/%2Fusers%2Fuser%7C2041535063736193024%2Finformation_document%2FST-GROUP-Document+d%27information.pdf"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": "1 acción, 16,40 € en reventa (20/11)",
+   "accesoEspana": null,
+   "salida": "Venta a otro inversor en el mercado de LISE, abierto 24/7, si hay comprador; última operación el 16/11 (20/11)."
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se lee en fuente primaria; el acceso desde España queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "1 acción (16,40 € el 20/11)",
+  "supervisorVerificado": "ACPR, CIB 18883 (REGAFI) y lista DLT de ESMA",
+  "documentacionClara": "parcial (documento de información y reglas solo en francés; sin folleto)",
+  "salidaExplicada": "sí, pero con liquidez casi nula",
+  "cifraRecienteVerificada": "sí (precio y libro del 20/11)",
+  "porQueDestaca": "Acciones reales emitidas de forma nativa en DLT, en un mercado autorizado y supervisado en Francia, con acceso directo del particular, comisión baja (hasta 0,25 %) y desde una acción.",
+  "porQueNo": "Sin prueba de acceso desde España. Además, la calidad como oferta es floja hoy: una sola empresa, de unos 9 M€, operaciones sueltas de 1 a 15 acciones, horquilla cercana al 10 % y precio por debajo del de salida (16,40 € frente a 18,25 €)."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Falta una pieza esencial: el acceso desde España como particular. La ayuda de LISE dice que está abierta a residentes de «Europe», pero no da lista de países, y los registros lo contradicen: REGAFI no muestra ningún pasaporte saliente de LISE (0; el mismo conjunto tiene 172 hacia España de otras entidades) y la CNMV no la incluye entre las ESI del EEE en libre prestación en España (sí incluye a UAB Axiology DLT, otro operador del régimen piloto). La salida a bolsa de ST GROUP usó una exención de folleto solo francesa. Lo demás sí está respaldado hoy: autorización ACPR (CIB 18883) y lista DLT de ESMA, mercado secundario abierto 24/7, mínimo de 1 acción (16,40 €), comisión del 0,10 % al 0,25 %, riesgos y documentos públicos, sin advertencias de la CNMV. Se podría reabrir si aparece la notificación de libre prestación hacia España en REGAFI o en la CNMV, o un escrito de LISE o de la ACPR.",
+ "bloqueos": [
+  "Ninguna web cerrada: todas las fuentes respondieron 200 a una petición normal. Las reglas, las condiciones y la política de precios están en Google Drive, enlazadas desde lise.com, y se bajaron por su descarga pública.",
+  "Sin fuente pública que pruebe el acceso desde España. Haría falta pedirlo por escrito a LISE (support@lise.com) o consultar a la CNMV."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T21:00:55Z",
+  "finUtc": "2026-11-20T21:08:14Z"
+ },
+ "lecturas20": [
+  {
+   "url": "https://www.lise.com/en/support",
+   "archivo": "fuentes/crudo/lise/support.html",
+   "consultadoUtc": "2026-11-20T21:05:00Z",
+   "sha256": "b36738cf8a8e6614c9a8867c022e7673eefc16377df428a313543aaeed4e1328",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/en/exchange/STGRP",
+   "archivo": "fuentes/crudo/lise/exchange-STGRP.html",
+   "consultadoUtc": "2026-11-20T21:04:59Z",
+   "sha256": "7a8790ba5be983e9e98bc8851ac436267f7d1feb57d8100b3e6d2130f1ae460b",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/en/primary-market/st-group",
+   "archivo": "fuentes/crudo/lise/primary-st-group.html",
+   "consultadoUtc": "2026-11-20T21:05:02Z",
+   "sha256": "e3e2429a7b7cc49a259823634fe0c535f597739bfac7b6b5396d508048c6419b",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/en/about/lise",
+   "archivo": "fuentes/crudo/lise/about-lise.html",
+   "consultadoUtc": "2026-11-20T21:05:03Z",
+   "sha256": "38cc72917aa850641b8fffc4cf1ef6afba05fc83bbb3f1b03b2af6b2dba14065",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/en/market",
+   "archivo": "fuentes/crudo/lise/market.html",
+   "consultadoUtc": "2026-11-20T21:05:04Z",
+   "sha256": "b04f974a53237ab6024095b8ffe305f211cc2f0041e3539370a20e5094741e0c",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/llms.txt",
+   "archivo": "fuentes/crudo/lise/llms.txt",
+   "consultadoUtc": "2026-11-20T21:05:05Z",
+   "sha256": "05e7a06b42c3f01f9e93f1a9425748d3b514e0f72255ea2e204fce8d25ea4ab1",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/rules/regles-de-fonctionnement.pdf",
+   "archivo": "fuentes/crudo/lise/regles-drive.pdf",
+   "consultadoUtc": "2026-11-20T21:02:44Z",
+   "sha256": "5f6923289b15e7f2628af4532eb7657548e28ecf8a7bda70a024b627b80faa67",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/rules/politique-tarifaire.pdf",
+   "archivo": "fuentes/crudo/lise/tarifs-drive.pdf",
+   "consultadoUtc": "2026-11-20T21:02:46Z",
+   "sha256": "6882ad23310ae80fbb4b256bcc86a4add2a2569836669e8fe46c2313c28aea67",
+   "http": 200
+  },
+  {
+   "url": "https://www.lise.com/rules/conditions-generales-d-utilisation",
+   "archivo": "fuentes/crudo/lise/cgu-drive.pdf",
+   "consultadoUtc": "2026-11-20T21:02:41Z",
+   "sha256": "985325db93f89b1ddf068cc414b7bfea469bab47b03d4e81a0dc4d952281b161",
+   "http": 200
+  },
+  {
+   "url": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com/%2Fusers%2Fuser%7C2041535063736193024%2Finformation_document%2FST-GROUP-Document+d%27information.pdf",
+   "archivo": "fuentes/crudo/lise/st-group-document-information.pdf",
+   "consultadoUtc": "2026-11-20T21:02:27Z",
+   "sha256": "ba3a3815ed9ae702afb63c1cf0a0f118b39b9e681202ca7496555630fd8852cf",
+   "http": 200
+  },
+  {
+   "url": "https://lise-production-public-api.s3.eu-west-3.amazonaws.com//users/user%7C2041535063736193024/first_supplement_information_document/ST-GROUP-20042026-Premier-supplement-au-Document%20d%27Information%20%281%29.pdf",
+   "archivo": "fuentes/crudo/lise/st-group-supplement-1.pdf",
+   "consultadoUtc": "2026-11-20T21:02:29Z",
+   "sha256": "3259ed8db338984a5e7eea6541c8ab6a29ec66bc2a250f1f31a737d3b88a9fd8",
+   "http": 200
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D749227",
+   "archivo": "fuentes/crudo/lise/regafi-lise-entidad.json",
+   "consultadoUtc": "2026-11-20T21:03:30Z",
+   "sha256": "602705541e2b06bceadc57f86c569739ca1fee0e0628d075052ef78fc0d3c5f3",
+   "http": 200
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D749227&limit=100",
+   "archivo": "fuentes/crudo/lise/regafi-lise-pasaportes.json",
+   "consultadoUtc": "2026-11-20T21:03:31Z",
+   "sha256": "b40a5ce424590aa2d85084c9a423d90252d3ba8a22202193a62874533698a3a3",
+   "http": 200
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=pays%3D%22ESPAGNE%22%20and%20indicateur_psi%3D%22True%22&limit=1&select=id_referentiel,pays,type_passeport,date_debut,categorie",
+   "archivo": "fuentes/crudo/lise/regafi-pasaportes-espagne-psi.json",
+   "consultadoUtc": "2026-11-20T21:03:47Z",
+   "sha256": "68af7b62e907c4f8228fb4c4ea9b666c1d74c9dd6120433fe9324e641ca5f9d1",
+   "http": 200
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+   "archivo": "fuentes/crudo/lise/esma-dlt-infraestructuras.pdf",
+   "consultadoUtc": "2026-11-20T21:04:13Z",
+   "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+   "archivo": "fuentes/crudo/lise/cnmv-esi-lp-listado.html",
+   "consultadoUtc": "2026-11-20T21:03:55Z",
+   "sha256": "35807bda5923ede5f9e93387a7b21b6075d6ade3dbde4534763c0abd8efede41",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lise",
+   "archivo": "fuentes/crudo/lise/cnmv-adv-Lise.html",
+   "consultadoUtc": "2026-11-20T21:03:58Z",
+   "sha256": "b3739e071659a476f66a592539d22015d78e6c2464c68859a332f12f6cfaf294",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kriptown",
+   "archivo": "fuentes/crudo/lise/cnmv-adv-Kriptown.html",
+   "consultadoUtc": "2026-11-20T21:04:00Z",
+   "sha256": "c2474586cea7986edbfa5c4078585b72ec742e2aa3a298800c91f50fdccd5c1a",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=ST%20GROUP",
+   "archivo": "fuentes/crudo/lise/cnmv-adv-ST_GROUP.html",
+   "consultadoUtc": "2026-11-20T21:04:01Z",
+   "sha256": "6f3d93178e6924b79f1b897fa0ef8d198b909d66b0dc643125296b3e4bfd3cb3",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lightning%20Stock",
+   "archivo": "fuentes/crudo/lise/cnmv-adv-Lightning_Stock.html",
+   "consultadoUtc": "2026-11-20T21:04:03Z",
+   "sha256": "ff0a083eef8080af21f2197db4bf68ce91a795b1853e5bb2ba295854d8628acc",
+   "http": 200
+  }
+ ],
+ "copiaTexto": "fuentes/lise-st-group-2026-11-20.txt",
+ "resumenCorto": "Bolsa DLT francesa autorizada (ACPR) con una sola acción, ST GROUP, desde 1 acción (16,40 €) y casi sin operaciones; no consta que pueda dar servicio a particulares en España (0 pasaportes, fuera del listado de la CNMV)."
+}

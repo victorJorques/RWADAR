@@ -155,6 +155,14 @@ Cada uno lleva `tipo`, sus campos y `prueba`. Opcionales: `calculos` y
 | `descripcion` | `antes`, `despues` (un trozo que esté una sola vez) |
 | `caracteristica` | `etiqueta`, `antes`, `despues` |
 | `fuentesOferta` | `antes: [urls]`, `despues: [urls]` (las nuevas, en `fuentesNuevas`) |
+| `fuenteQuita` | `url`: quita esa dirección de la lista `fuentes` de la ficha. Solo si está una vez, se leyó hoy como visitante y nada la cita (ninguna referencia ni dato de tarjeta, característica, descripción ni la oferta); si algo la cita, el motor para |
+| `tarjetaFecha` | `etiqueta` fija, `antes: {valor, fechaDato}` (lo publicado y lo leído hoy como visitante), `despues: {fechaDato, alcance?}`: cambia solo la fecha del dato y, si se da, la nota del alcance (sin el prefijo de fecha, que pone el motor). El valor no cambia; la fecha no puede ser posterior a hoy |
+
+Desde la entrega 2026-11-20.2: en el contraste, `fuenteQuita` sale como «fuente de la ficha» con `despues: null` y
+`tarjetaFecha` como «tarjeta (fecha del dato)» con «<etiqueta>: <valor> · dato del <fecha>»; PGlite comprueba los dos
+en lo que lee un visitante. En una segunda entrega del mismo día (`desde` de hoy), los avisos que la publicada de hoy ya
+comprobó (con `verificadaEl` de hoy) siguen comprobados. Y el ensayo en PGlite aplica, después del lote 2026-11-20 de la
+cadena, la migración 38 de los textos del radar (`db/38_textos_radar.sql`), como producción.
 
 Los datos de la tarjeta que no se tocan se re-fechan solos («Comprobado de
 nuevo en la fuente el …»). Los avisos publicados se re-fechan si el expediente

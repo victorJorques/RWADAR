@@ -1,0 +1,411 @@
+{
+ "slug": "candidata-franklin-templeton-onchain-euro-liquidity",
+ "tipoExpediente": "candidata",
+ "grupo": "busqueda-nueva",
+ "proveedor": "Franklin Templeton OnChain Funds (Benji)",
+ "plataformaSlug": "franklin-templeton",
+ "entidadComercializadora": "Franklin Templeton International Services, S.à r.l., Sucursal en España (única comercializadora inscrita en la CNMV para la SICAV nº 2284)",
+ "emisor": "Franklin Templeton OnChain Funds (SICAV UCITS, Luxemburgo, R.C.S. B 289405); sociedad gestora y distribuidora principal Franklin Templeton International Services S.à r.l. (LEI 549300PVL6CYCWSH9C53, supervisada por la CSSF)",
+ "vehiculo": "Subfondo Franklin OnChain Euro Liquidity Fund: fondo del mercado monetario a corto plazo LVNAV en euros, autorizado por la CSSF; clase AB para minoristas e institucionales",
+ "token": "Acciones del subfondo registradas en Stellar por el agente de transmisiones de la gestora (sin ISIN ni código de token públicos para la clase en euros)",
+ "derechoAdquirido": "Acciones de un subfondo monetario UCITS cuyo registro de accionistas se lleva en blockchain; no es propiedad directa de los activos de la cartera",
+ "jurisdiccion": "LU",
+ "identificador": "LEI del subfondo 254900SUVJD9ISB77M29; CNMV IIC extranjera nº 2284 (la SICAV); ISIN de la clase en euros no publicado",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Folleto de Franklin Templeton OnChain Funds (inglés)",
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "versionOFecha": "«DATED SEPTEMBER 2026» (código 2026-09-01); consulta 2026-11-20T21:03:42Z; mismo SHA-256 que el 03/11 y el 05/11",
+   "paginas": 83,
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+   "leido": true,
+   "nota": "Incluye el subfondo en euros (pp. 2, 20-21, 39, 75). Dice que la app para minoristas puede no estar disponible aún (p. 39)."
+  },
+  {
+   "titulo": "KID del Franklin OnChain Euro Liquidity Fund (cualquier idioma)",
+   "url": null,
+   "versionOFecha": "No localizado el 20/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": false,
+   "nota": "Los mapas de producto públicos de franklintempleton.com.es (21:04:53Z) y franklintempleton.lu (21:04:54Z) solo tienen fichas OnChain del subfondo en dólares (41372/PX1 y QY2; LU3258450587 y LU2900381208). Una búsqueda web tampoco da KID ni ISIN. No se adivinan enlaces."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA (registro de comercialización transfronteriza de fondos, cbdif)",
+   "entidad": "FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN EURO LIQUIDITY FUND",
+   "numero": "LEI 254900SUVJD9ISB77M29",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50",
+   "alcance": "UCITS activo, supervisor de origen CSSF, gestora FTIS. Alta el 09/11/2026, notificado ese día a ES, DE, FR, PT, AT, IT y NL. El registro no da ISIN ni clases. Es un pasaporte para comercializar, no un canal abierto.",
+   "consultadoUtc": "2026-11-20T21:03:37Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "FRANKLIN TEMPLETON ONCHAIN FUNDS",
+   "numero": "2284 (IIC extranjera, 13/12/2024)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=0",
+   "alcance": "SICAV de Luxemburgo, «IIC Sujeto a la directiva 2009/65/CE». La CNMV no desglosa compartimentos (Circular 2/2011), así que el subfondo en euros no aparece en la ficha.",
+   "consultadoUtc": "2026-11-20T21:04:13Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "Franklin Templeton International Services, S.À.R.L., Sucursal en España",
+   "numero": "Comercializadora de la IIC nº 2284",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18",
+   "alcance": "Única comercializadora inscrita. Ningún banco, neobróker ni plataforma española aparece como comercializador.",
+   "consultadoUtc": "2026-11-20T21:04:14Z"
+  },
+  {
+   "regulador": "CSSF (Luxemburgo)",
+   "entidad": "Franklin OnChain Euro Liquidity Fund",
+   "numero": null,
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "alcance": "Según el folleto (p. 20), el subfondo está autorizado por la CSSF como fondo del mercado monetario (MMFR). La ESMA confirma que el supervisor de origen es la CSSF. No se consultó el registro de la CSSF.",
+   "consultadoUtc": "2026-11-20T21:03:42Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Franklin Templeton",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton",
+   "consultadoUtc": "2026-11-20T21:04:27Z",
+   "sha256": "154b8a79ff54ffeb0441724fff0009a7f71b1695707d7c226585e7ea3a939161"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Franklin",
+   "resultado": "1 coincidencia ajena: MORGAN FRANKLIN CONSULTANTS, S.L.; ninguna sobre Franklin Templeton",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin",
+   "consultadoUtc": "2026-11-20T21:04:29Z",
+   "sha256": "39bc48bbcd39a7363ea13fc6ee2b6f1d7e2c0b42c4838e5d6f880f53f557e34b"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Benji",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Benji",
+   "consultadoUtc": "2026-11-20T21:04:30Z",
+   "sha256": "4c648f319254f6c4d114454482eafed39ac9c746eafadcabc0167898eaa98c92"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "OnChain",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OnChain",
+   "consultadoUtc": "2026-11-20T21:04:32Z",
+   "sha256": "59cc961c4f99efd8d6369dac802d78bc0805198546364a84ba33cae383c250f9"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "FRANKLIN TEMPLETON ONCHAIN FUNDS-FRANKLIN ONCHAIN EURO LIQUIDITY FUND · 254900SUVJD9ISB77M29 · UCITS · CSSF · Active · host ES,DE,FR,PT,AT,IT,NL · 2026-11-09",
+   "dato": "Subfondo UCITS de Luxemburgo notificado para comercializarse en España el 09/11/2026",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50",
+   "localizador": "ESMA cbdif, documento id 2842616",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-20T21:03:37Z",
+   "alcanceYLimites": "Acredita el pasaporte UCITS hacia España, no que haya un canal de compra abierto para particulares. Sin ISIN ni clases.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registroEspana",
+   "literal": "FRANKLIN TEMPLETON ONCHAIN FUNDS · Nº Registro oficial 2284 · 13/12/2024 · SICAV · LUXEMBURGO · IIC Sujeto a la directiva 2009/65/CE",
+   "dato": "CNMV nº 2284 (la SICAV paraguas)",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=0",
+   "localizador": "CNMV, vehículos de inversión extranjeros, datos generales",
+   "fechaDato": "2024-12-13",
+   "consultadoUtc": "2026-11-20T21:04:13Z",
+   "alcanceYLimites": "La CNMV no muestra compartimentos; el subfondo en euros no se puede ver en este registro.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comercializadora",
+   "literal": "Entidades comercializadoras: FRANKLIN TEMPLETON INTERNATIONAL SERVICES, S.À.R.L., SUCURSAL EN ESPAÑA",
+   "dato": "única comercializadora en España: la sucursal española de la gestora",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18",
+   "localizador": "CNMV, pestaña Entidades comercializadoras",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:04:14Z",
+   "alcanceYLimites": "Ningún banco, bróker ni plataforma española lo distribuye.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "As at the date of this Prospectus, the App may not yet be available to retail Investors. When the App will be available to retail Investors, the Prospectus will be updated accordingly.",
+   "dato": "sin canal para particulares según el folleto vigente",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, «HOW TO PURCHASE SHARES», p. 39 del PDF",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "Bloqueo principal. El folleto no ha cambiado (mismo SHA-256 que el 03/11 y el 05/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "canalCompra",
+   "literal": "Retail accounts must be opened via the App. Institutional accounts will be opened via our Institutional Web Portal.",
+   "dato": "los particulares solo pueden comprar por la app Benji",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, «Buying Shares», p. 39; también «Important information», p. 4",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "La p. 4 dice: «Investors considering investing with the Company must do it via either the App or the Institutional Web Portal.»",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "lookup id=1551677725: country=es resultCount 0; lu 0; de 0; fr 0; us 1 «Benji Investments», vendedor «Franklin Advisers, Inc»",
+   "dato": "la app Benji no está en la App Store española ni en la luxemburguesa, alemana o francesa",
+   "fuentePrimaria": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+   "localizador": "API pública de búsqueda de la App Store, id 1551677725, países es, lu, de, fr y us",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:04:12Z",
+   "alcanceYLimites": "Respuestas crudas en fuentes/crudo/franklin-euro/itunes-lookup-benji-*.json. Google Play no se comprobó: su ficha web no acredita disponibilidad por país.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "kid",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.franklintempleton.com.es/binaries/content/assets/global/sitemaps/google/es-es_product.xml",
+   "localizador": "Mapas de producto públicos de franklintempleton.com.es y franklintempleton.lu",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-20T21:04:53Z",
+   "alcanceYLimites": "No hay ficha, ISIN ni KID publicados del subfondo en euros. Es un PRIIP para minoristas, así que sin KID no se puede vender a particulares. Las fichas 54201 «Franklin Euro Liquidity Fund» son otro producto, irlandés y no tokenizado.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "estado",
+   "literal": "Some Share Classes may not yet be available at the launch date of the Fund(s). The list of all Share Classes available for the relevant Fund can be found on the website www.franklintempleton.lu.",
+   "dato": null,
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto, «Share Classes», p. 37; y mapa de producto de franklintempleton.lu (21:04:54Z)",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:04:54Z",
+   "alcanceYLimites": "La web luxemburguesa que el folleto señala solo lista las clases del subfondo en dólares. No hay valor liquidativo, patrimonio ni fecha de lanzamiento del subfondo en euros: no se puede comprobar que esté suscribiendo.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "publicoObjetivo",
+   "literal": "Class AB Shares are available for subscription to retail investors as well as Institutional Investors.",
+   "dato": "la clase AB admite minoristas sobre el papel",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, «Share Classes», p. 37",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "El mismo folleto (p. 39) dice que la app para minoristas puede no estar disponible todavía.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "EUR · Class AB · Minimum Investment EUR 20 · Subsequent Investment EUR 1 · Minimum holding amount EUR 20",
+   "dato": "20 € de entrada en la clase AB (folleto)",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, tabla «EUR» de «Specific features of Share classes», p. 39",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "Mínimo en Stellar; en otras redes puede ser mayor. Entrada en la clase AB de hasta el 1,5 % (p. 38). Sin canal abierto, el mínimo no se puede usar.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "The Company reserves the right not to be bound to accept the sale on any Valuation Day more than 10% of the value of the Shares of any Fund. ... deferred for a period not exceeding ten (10) Luxembourg Business Days.",
+   "dato": "reembolso por la app en cualquier día de valoración antes de las 13:00 (hora del Reino Unido); puede limitarse si los reembolsos pasan del 10 % del fondo",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, «HOW TO SELL SHARES», p. 41; corte del subfondo en euros, p. 39 y apéndice A",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "El reembolso solo se puede pedir por la app o el portal institucional, y la app no está abierta a minoristas. Sin KID no está su descripción de liquidez para el inversor.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Shares in Money Market Funds are not deposits ... and are not insured or guaranteed by any other agency or regulatory body. The value of Shares held in a Money Market Fund may fluctuate.",
+   "dato": "sin garantía de capital; riesgos de crédito, tipos, liquidez, mercado, fondo monetario, repos inversos, acciones en blockchain, ciberseguridad, contraparte y custodia",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto de septiembre de 2026, sección del subfondo, «Risk Considerations», p. 21",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "Riesgos solo en el folleto en inglés; sin KID no hay indicador de riesgo (1-7) ni escenarios.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Franklin OnChain Euro Liquidity Fund · Class AB · Up to 0.2%",
+   "dato": "gestión anual de hasta el 0,20 % en la clase AB; entrada de hasta el 1,5 %",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "localizador": "Folleto, apéndice E, p. 75 (gestión); «Entry Charge», p. 38",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "alcanceYLimites": "Son máximos del folleto. Sin KID no hay costes totales.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple",
+   "nota": "Subfondo UCITS monetario autorizado por la CSSF (folleto, p. 20; ESMA confirma CSSF y gestora FTIS). Notificado a España el 09/11/2026 (ESMA cbdif). SICAV inscrita en la CNMV con el nº 2284; comercializa en España la sucursal española de FTIS."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "No hay ficha, ISIN, valor liquidativo ni patrimonio publicados del subfondo en euros. La web luxemburguesa que cita el folleto solo lista las clases del subfondo en dólares. No consta que esté suscribiendo."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "El folleto vigente dice que la app para minoristas puede no estar disponible todavía, y los particulares solo pueden comprar por la app. La app Benji no está en la App Store de España, Luxemburgo, Alemania ni Francia: solo en la de EE. UU. Mínimo de 20 € en el folleto, pero sin canal que lo haga utilizable."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Riesgos en el folleto en inglés (sin garantía de capital, crédito, tipos, liquidez, blockchain, ciberseguridad). Falta el KID que exige PRIIPs para minoristas. Sin advertencias de la CNMV por «Franklin Templeton», «Benji» ni «OnChain»."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "registro ESMA del subfondo en euros",
+   "antes": "05/11 (expediente franklin-templeton-grbenji): el subfondo en euros solo constaba en el folleto, sin registro ni canal comprobados",
+   "ahora": "20/11: ESMA cbdif lo da de alta el 09/11/2026 y notificado a ES, DE, FR, PT, AT, IT y NL",
+   "fuente": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50",
+   "critico": false
+  },
+  {
+   "campo": "folleto y canal para particulares",
+   "antes": "05/11: folleto ec0458b6… con «the App may not yet be available to retail Investors»; app ausente de la App Store española",
+   "ahora": "20/11: mismo folleto (mismo SHA-256) y misma frase; la app sigue ausente en es, lu, de y fr",
+   "fuente": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "critico": true
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Fondo monetario en euros tokenizado de Franklin Templeton",
+  "categoria": "Tesoro y fondos",
+  "pais": "LU",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Subfondo monetario UCITS en euros con registro de acciones en blockchain; notificado a España el 09/11/2026, sin canal para particulares ni KID públicos.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+  "fuentesActuales": [
+   "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": "20 € en la clase AB según el folleto, pero hoy no hay canal para usarlo",
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: no se propone tarjeta. resumenTarjeta solo recoge lo que hoy se lee en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "20 € (folleto, clase AB), inutilizable sin canal",
+  "supervisorVerificado": "CSSF (folleto y ESMA); CNMV nº 2284 para la SICAV; notificado a España el 09/11/2026 (ESMA)",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Fondo monetario UCITS en euros de una gestora grande, con pasaporte a España desde el 09/11/2026 y mínimo de 20 € en el folleto.",
+  "porQueNo": "El folleto dice que la app para minoristas puede no estar disponible todavía, la app no está en la App Store española y no hay KID, ISIN ni valor liquidativo publicados del subfondo en euros."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Falta lo esencial para un particular en España. (1) Canal: el folleto vigente (septiembre de 2026, mismo SHA-256 ec0458b6… que el 03/11 y el 05/11) obliga a los minoristas a comprar por la app Benji y dice, en la p. 39: «As at the date of this Prospectus, the App may not yet be available to retail Investors». La app (id 1551677725) no está en la App Store de España, Luxemburgo, Alemania ni Francia; solo en la de EE. UU., a nombre de Franklin Advisers, Inc (21:04:12Z). La CNMV solo registra como comercializadora a la sucursal española de la gestora. (2) Documentos: no hay KID publicado del subfondo en euros (PRIIPs lo exige para minoristas). Tampoco hay ISIN, ficha ni valor liquidativo en las webs de Franklin Templeton de España y Luxemburgo (mapas de producto, 21:04:53Z y 21:04:54Z). No se puede comprobar que el subfondo esté suscribiendo. Lo nuevo, el pasaporte del 09/11/2026 a España en la ESMA, no abre por sí solo un canal de compra. Volver a mirar cuando cambie el folleto, cuando aparezca un KID o ficha del subfondo en euros o cuando la app esté en la App Store española.",
+ "bloqueos": [
+  "No se consultó el registro de la CSSF; la autorización del subfondo sale del folleto y de la ESMA (supervisor CSSF).",
+  "Google Play no se comprobó: su ficha web no acredita disponibilidad por país.",
+  "No se buscaron KID en agregadores de terceros: no son fuente primaria y no sustituyen al documento del emisor."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T21:03:12Z",
+  "finUtc": "2026-11-20T21:06:09Z"
+ },
+ "lecturas20": [
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*ONCHAIN*&wt=json&rows=50",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/esma-cbdif-onchain.json",
+   "consultadoUtc": "2026-11-20T21:03:37Z",
+   "sha256": "013affce308129215f60d97837a708da6e2b8eb6ecd7026cf9e615e114dfe880",
+   "http": 200
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/FT-OnChain-prospectus-en.pdf",
+   "consultadoUtc": "2026-11-20T21:03:42Z",
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+   "http": 200
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/itunes-lookup-benji-es.json",
+   "consultadoUtc": "2026-11-20T21:04:12Z",
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+   "http": 200
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1551677725&country=lu",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/itunes-lookup-benji-lu.json",
+   "consultadoUtc": "2026-11-20T21:04:12Z",
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+   "http": 200
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1551677725&country=us",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/itunes-lookup-benji-us.json",
+   "consultadoUtc": "2026-11-20T21:04:12Z",
+   "sha256": "e10f20699d9ef374ececaff11efb0404320fac27fa66d2946343a7b62f1d25be",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=0",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/cnmv-iicext-N0363289J-v0.html",
+   "consultadoUtc": "2026-11-20T21:04:13Z",
+   "sha256": "5f4acfc000d813bec74d46e708f9d8d3674cede10e0d50600764ea7aa6d5a5fd",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/cnmv-iicext-N0363289J-v18.html",
+   "consultadoUtc": "2026-11-20T21:04:14Z",
+   "sha256": "78ee44c00f89a42fe98d15db72c4545c1574c943052b8880331c8e7634602538",
+   "http": 200
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/cnmv-adv-Franklin-Templeton.html",
+   "consultadoUtc": "2026-11-20T21:04:27Z",
+   "sha256": "154b8a79ff54ffeb0441724fff0009a7f71b1695707d7c226585e7ea3a939161",
+   "http": 200
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/binaries/content/assets/global/sitemaps/google/es-es_product.xml",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/product-es-es.xml",
+   "consultadoUtc": "2026-11-20T21:04:53Z",
+   "sha256": "7caff65b4f9c0c0d68841616f399f1d88700d1f68ff3630bcd18acf4866cd36d",
+   "http": 200
+  },
+  {
+   "url": "https://www.franklintempleton.lu/binaries/content/assets/global/sitemaps/google/en-lu_product.xml",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/product-lu.xml",
+   "consultadoUtc": "2026-11-20T21:04:54Z",
+   "sha256": "86f5a75453cea87099d3da83fee4a745912bd2d7c4a0161108629554596e4e02",
+   "http": 200
+  },
+  {
+   "url": "https://www.benjiinvestments.com/",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/franklin-euro/benji-home.html",
+   "consultadoUtc": "2026-11-20T21:05:10Z",
+   "sha256": "43e3ae5e898c66627731817101a5dbf7a8108e13d14432db7824795dcd3dabe5",
+   "http": 200
+  }
+ ],
+ "copiaTexto": "grupos/busqueda-nueva/fuentes/franklin-euro/franklin-onchain-euro-20.txt",
+ "resumenCorto": "Subfondo monetario UCITS en euros con pasaporte a España desde el 09/11/2026, pero sin canal para particulares (la app no está en la App Store española y el folleto dice que aún puede no estar abierta a minoristas) y sin KID ni ISIN publicados."
+}

@@ -95,6 +95,9 @@ export async function comprobar(opciones = {}) {
     if (relojSimulado) ok(`reloj simulado: la guarda del SQL se evalúa el ${fechaLarga(HOY)} (current_date → date '${HOY}'), como los lotes de la cadena; el SQL de la entrega no se toca`);
 
     // ------------------------------------------------------------ base como producción
+    // Migraciones de public.plataformas que producción tiene después de un lote de la cadena (textos del radar de la tabla
+    // base, fuera del catálogo versionado). La 38 se aplicó el 20/11/2026 después del lote 2026-11-20.
+    const MIGRACIONES_TRAS_LOTE = { '2026-11-20': ['db/38_textos_radar.sql'] };
     async function base() {
       const db = await baseCatalogoHistorico();
       await db.exec('alter default privileges grant all on tables to anon, authenticated');
@@ -106,6 +109,8 @@ export async function comprobar(opciones = {}) {
       for (const f of LOTES) {
         const sql = fs.readFileSync(`data/importaciones/catalogo-${f}-v2/aplicar-y-aprobar.sql`, 'utf8');
         await db.exec(sql.replace(/current_date > date '(\d{4}-\d{2}-\d{2})'/g, `date '${f.slice(0, 10)}' > date '$1'`));
+        // Migraciones de la tabla base public.plataformas aplicadas en producción después de ese lote.
+        for (const m of MIGRACIONES_TRAS_LOTE[f] || []) await db.exec(fs.readFileSync(m, 'utf8'));
       }
       return db;
     }
@@ -267,6 +272,7 @@ export async function comprobar(opciones = {}) {
         const ver = slug => enmascaradas.includes(slug) ? { ...o1.get(slug), ...tabla.get(slug) } : o1.get(slug);
         const textosDe = o => { const d = o.documentacion; return { aviso: o.avisos.map(a => a.texto), 'métrica': o.metricas.map(m => `${m.etiqueta}: ${m.valor}`),
           'referencia de la ficha': d.referencias.map(r => `${r.etiqueta}: ${r.valor}`), tarjeta: d.referencias.map(r => `${r.etiqueta}: ${r.valor}`),
+          'tarjeta (fecha del dato)': d.referencias.map(r => `${r.etiqueta}: ${r.valor} · dato del ${r.fechaDato ?? 'sin fecha'}`),
           'fuente de la ficha': d.fuentes, 'característica': (d.caracteristicas || []).map(x => `${x.etiqueta}: ${x.valor}`) }; };
         const comprobados = [];
         for (const c of contraste.cambios) {
@@ -282,7 +288,7 @@ export async function comprobar(opciones = {}) {
           }
           comprobados.push(c.slug);
         }
-        for (const c of contraste.cambios.filter(x => x.antes && ['aviso', 'métrica', 'referencia de la ficha', 'tarjeta', 'característica'].includes(x.campo))) {
+        for (const c of contraste.cambios.filter(x => x.antes && ['aviso', 'métrica', 'referencia de la ficha', 'tarjeta', 'tarjeta (fecha del dato)', 'característica', 'fuente de la ficha'].includes(x.campo))) {
           const l = textosDe(ver(c.slug))[c.campo];
           if (c.antes !== c.despues) assert.ok(!l.includes(c.antes), `${c.slug}: sigue publicado «${c.antes}»`);
         }

@@ -1,0 +1,595 @@
+{
+ "slug": "candidata-alius-albal-token-flip",
+ "tipoExpediente": "candidata",
+ "grupo": "busqueda-nueva",
+ "proveedor": "Alius Capital",
+ "plataformaSlug": null,
+ "entidadComercializadora": "ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA (NIF B76632793), proveedor de servicios de financiación participativa inscrito en la CNMV con el n.º 11 el 03/11/2023; su web firma como «Alius Capital (ALIUS CAPITAL STOS PSFP S.L.)», denominación que la CNMV no recoge",
+ "emisor": "TOKEN FLIP S.A. (CIF A05832381), sociedad «de reciente constitución» según la ficha; sin cuentas propias publicadas (el enlace a los estados financieros está en blanco)",
+ "vehiculo": "Sociedad anónima emisora de obligaciones no convertibles con garantía hipotecaria; sindicato de obligacionistas con Alius Capital como comisario (anunciado, no constituido)",
+ "token": "TF1 («Token Flip 1»), 700 tokens de 500 €; en la API pública, red 80002 (Polygon Amoy, red de pruebas), sin dirección de contrato y «deployed» 0",
+ "derechoAdquirido": "Obligación no convertible representada mediante tecnología de registro distribuido (bono tokenizado), 13 % anual, 15 meses, pago único de principal e intereses al vencimiento, con hipoteca anunciada de primer rango sobre un solar en Albal (Valencia); la hipoteca aún no está constituida y la ficha deja en blanco tasación, LTV y fechas",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Anexo II · Ficha de datos fundamentales de la inversión (KIIS de crowdfunding) · ALBAL",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "versionOFecha": "26_11_08 (nombre del archivo); subido el 16/11/2026; borrador con huecos «[…]»",
+   "paginas": 6,
+   "sha256": "9f082cc43e8ac6692fcc0b4470d8343b2f37c02e9059f59596a589fa4dde5fa3",
+   "leido": true,
+   "nota": "Leído entero (copia de texto: grupos/busqueda-nueva/fuentes/espana/alius-albal-kiis-2026-11-20.txt, nombres de personas recortados). Re-descargado a las 21:09:03Z con el mismo SHA-256. Huecos: «Identificador de la oferta: […]», «tasado en […] €», «LTV del […?]%», «a contar a partir de la fecha de [fin de la captacion…]», «15 meses, desde […]», «Madrid, […] de noviembre», estados financieros «[…]». Fecha límite contradictoria: «23/02/2026» (portada) frente a «23/02/27» (apartado 2)."
+  },
+  {
+   "titulo": "Informe de tasación (Técnicos en Tasación S.A., expediente 2026-005972/46 v.03, 13/11/2026)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336",
+   "versionOFecha": "13/11/2026; subido el 17/11/2026",
+   "paginas": 55,
+   "sha256": "df8e1f1bfc8c50a034f9fe066d8fed253d2c97ce6e96585f7b3557bbe05b58ab",
+   "leido": true,
+   "nota": "Re-descargado a las 21:10:10Z con el mismo SHA-256 que a las 20:59:19Z. Extracto: grupos/busqueda-nueva/fuentes/espana/alius-albal-tasacion-analista-2026-11-20.txt (sin nombres de personas). Pesa 6,4 MB: el PDF queda solo en crudo/ (fuera de Git)."
+  },
+  {
+   "titulo": "Ficha del proyecto en la web de Alius (renderizada)",
+   "url": "https://aliuscap.com/projects/albal",
+   "versionOFecha": "2026-11-20T21:10:50Z (google-chrome --headless=new, agente por defecto, sin sesión)",
+   "paginas": null,
+   "sha256": "56188e3fc6bb0df971438b675c1b438a3d41c26ef77375b20d375ce054eea333",
+   "leido": true,
+   "nota": "Con curl solo llega el armazón de la aplicación (4.371 B, el mismo que la portada); el contenido se pinta con la API pública. Texto visible copiado en grupos/busqueda-nueva/fuentes/espana/alius-albal-pagina-renderizada-2026-11-20.txt."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA (www.aliuscap.com)",
+   "numero": "PSFP n.º 11, registro 03/11/2023",
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "alcance": "Proveedor español de servicios de financiación participativa (Reglamento (UE) 2020/1503). Ficha de la CNMV (https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793, 21:09:52Z, 200): domicilio en Santa Cruz de Tenerife, sin otras autorizaciones marcadas.",
+   "consultadoUtc": "2026-11-20T21:09:15Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (como ERIR)",
+   "numero": "Una sola emisión inscrita: SERIES A GRUPO UAE SA (06/11/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "alcance": "Mismo SHA-256 que el 12/11 (12ac95b9…): la emisión de Token Flip (TF1) no está inscrita. La ficha dice que la inscripción de la ERIR de esta emisión llegará después del cierre.",
+   "consultadoUtc": "2026-11-20T21:09:17Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Token Flip",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20Flip",
+   "consultadoUtc": "2026-11-20T21:09:19Z",
+   "alcance": "Advertencias sobre entidades no autorizadas."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "TokenFlip",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenFlip",
+   "consultadoUtc": "2026-11-20T21:09:21Z",
+   "alcance": "Advertencias sobre entidades no autorizadas."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Alius",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "consultadoUtc": "2026-11-20T21:09:23Z",
+   "alcance": "Advertencias sobre entidades no autorizadas."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Adventurees",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "consultadoUtc": "2026-11-20T21:09:26Z",
+   "alcance": "Advertencias sobre entidades no autorizadas."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Gardum",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gardum",
+   "consultadoUtc": "2026-11-20T21:09:29Z",
+   "alcance": "Advertencias sobre entidades no autorizadas. Socio al 50 % del emisor y dueño del solar según la ficha."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Nouval",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Nouval",
+   "consultadoUtc": "2026-11-20T21:09:32Z",
+   "alcance": "Advertencias sobre entidades no autorizadas. Sociedad del mismo grupo según la ficha."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Smartnex",
+   "resultado": "sin coincidencias («No hay datos disponibles.»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Smartnex",
+   "consultadoUtc": "2026-11-20T21:11:54Z",
+   "alcance": "Advertencias sobre entidades no autorizadas. Titular registral del solar según la tasación."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Gemini (control)",
+   "resultado": "coincidencia: GEMINI LTD FX (04/09/2023) y GEMINI OPTION LTD (29/03/2021)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "consultadoUtc": "2026-11-20T21:09:34Z",
+   "alcance": "Control: el buscador devuelve resultados cuando los hay."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "En estudio · Próximamente · Nuestros proyectos pasan por una fase de estudio y estructuración previa al lanzamiento de la oferta de inversión. Expresa tu interés",
+   "dato": "No abierta: precampaña («En estudio»); la API da campaign_status PRE_CAMPAIGN, start_date null, 4.000 € reservados y 0 € invertidos",
+   "fuentePrimaria": "https://aliuscap.com/projects/albal",
+   "localizador": "Ficha del proyecto renderizada; API https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress (21:09:02Z, SHA-256 f155958f…)",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:50Z",
+   "alcanceYLimites": "La web muestra «2 Inversores ya han expresado su posible interés». Solo se puede expresar interés; no se puede suscribir.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "fechas",
+   "literal": "Apertura el 23/11/2026. Fecha límite el 23/02/2026. … fecha límite el 23/02/27.",
+   "dato": "Apertura anunciada el 23/11/2026; cierre 23/02/2027 (la portada dice 2026)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, portada y apartado 2",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "Las fases del proceso en la API y en la web tienen todas las fechas en «[...]». La apertura no está confirmada por la plataforma.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "emisor",
+   "literal": "Identidad: TOKEN FLIP S.A. … CIF: A05832381 … la Sociedad emisora es de reciente constitución",
+   "dato": "TOKEN FLIP S.A., CIF A05832381; 50 % GARDUM 2016 S.L. y 50 % CLARA Y LIBRE INVERSIONES S.L.",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, apartado 1",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "Sin estados financieros del emisor (enlace «[…]»); las cifras de facturación y beneficio que da la ficha son del grupo, sin cuentas que las respalden.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "obligación no convertible con garantía hipotecaria, representado mediante tecnologías de registro distribuido (“Bono tokenizado”)",
+   "dato": "Bono tokenizado TF1, 13 % anual, 15 meses, pago único al vencimiento",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, apartado 3",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "Inicio del interés «[fin de la captacion…]» y del plazo «desde […]» sin fijar. Amortización anticipada posible a elección del promotor.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Precio de suscripción: 500€ / token",
+   "dato": "500 € (1 token TF1)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, apartado 3; API minimum_offer_money 500 y asset_price 500.00",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "Coinciden ficha y API. La oferta no está abierta.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "El inversor no soportará coste alguno en relación con la inversión en este Proyecto de financiación participativa.",
+   "dato": "Sin costes para el inversor según la ficha",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, apartado 5",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "No se han leído las condiciones generales de la plataforma ni las de la cartera.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Los inversores no experimentados se benefician de un período de reflexión … expira cuatro días naturales después.",
+   "dato": "Plataforma española; la ficha se dirige también a inversores no experimentados (particulares)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, página 1 (advertencias del Reglamento (UE) 2020/1503)",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "No se ha leído el proceso de alta (exige cuenta). Aplica el límite del reglamento para no experimentados.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "Transmisibilidad: tokens libremente transmisibles. … dependerá de la existencia de una contraparte interesada o de las condiciones del mercado secundario aplicable.",
+   "dato": "Sin reembolso antes del vencimiento (15 meses, pago único) y sin mercado secundario identificado",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, apartados 3 y 4",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "Los tokens solo se entregan tras inscribir la emisión en la ERIR; hoy el activo está en una red de pruebas y sin desplegar. El inicio del plazo «desde […]» no está fijado.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "garantia",
+   "literal": "hipoteca inmobiliaria de primer rango sobre el inmueble, cuyo valor de tasación es de [¿…]€ … un activo tasado en […?] M€, lo que representa un Loan-to-Value (LTV) del […?]%",
+   "dato": "Tasación pública 401.111,35 € (13/11/2026) del solar; 350.000 € equivalen al 87,3 % de ese valor (cálculo de RWAdar)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336",
+   "localizador": "Tasación: certificado (hojas 1 y 3) y apartados J.13 y M.1; ficha, apartados 3 y 4",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-20T21:10:10Z",
+   "alcanceYLimites": "La tasación es de valor de mercado del solar por método residual estático, con finalidad «INFORMACION VALOR DE MERCADO», no de las finalidades de la ECO/805/2003 (no hipotecaria) y no supervisada por el Banco de España. La ficha y la web destacan otra cosa: «3,71 veces» sobre ventas futuras previstas de 1,3 M€ y «LTV sobre coste 59,32 %».",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "propiedadYCargas",
+   "literal": "PROPIETARIOS … 1307 SMARTNEX 4 S.L. B55479091 100,00 · se reflejan cargas que gravan la finca valorada",
+   "dato": "Titular registral según la tasación: SMARTNEX 4 S.L. (100 %), con cargas registradas",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336",
+   "localizador": "Tasación, certificado hoja 3/4 y apartado M.1",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-20T21:10:10Z",
+   "alcanceYLimites": "Choca con la ficha («El solar … es propiedad de Gardum 2016, S.L.»; garantía «aportada por la Sociedad», es decir, el emisor) y con la web («adquirido en su totalidad por fondos propios del promotor y libre de cargas»). No se ha consultado el Registro de la Propiedad (de pago).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "proyecto",
+   "literal": "el edificio ya existe físicamente … destinado a almacén … Cambio de Uso con Segregación · SOLAR DE USO RESIDENCIAL, CON EDIFICACIÓN A DEMOLER",
+   "dato": "La web habla de reformar un almacén; la ficha, de construir un edificio; la tasación valora el solar suponiendo la demolición",
+   "fuentePrimaria": "https://aliuscap.com/projects/albal",
+   "localizador": "Web (Descripción, apartado 2); ficha, apartado 1; tasación, observaciones",
+   "fechaDato": "2026-11-20",
+   "consultadoUtc": "2026-11-20T21:10:50Z",
+   "alcanceYLimites": "Además, el «umbral» de 403.083,33 € de la ficha está calculado a 14 meses (la web dice «15 meses» con la misma cifra; a 15 meses serían 406.875 €).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Invertir en este proyecto de financiación participativa entraña riesgos, incluido el de pérdida parcial o total del dinero invertido.",
+   "dato": "Pérdida total o parcial, sin fondo de garantía, impago del promotor, sector inmobiliario, fallo tecnológico e iliquidez",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "localizador": "Ficha, página 1 y apartado 4",
+   "fechaDato": "2026-11-08",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "alcanceYLimites": "El apartado de riesgo de impago se apoya en una tasación y un LTV que deja en blanco. La tasación avisa de que el municipio fue afectado por la DANA del 29/10/2024, «sin aparente afección significativa».",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "token",
+   "literal": "\"name\": \"TF1\", \"network\": 80002, … \"address\": null … \"deployed\": 0",
+   "dato": "Token en la red de pruebas Polygon Amoy (ID 80002), sin contrato desplegado",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "API pública, asset y asset_issuance_relational",
+   "fechaDato": "2026-11-17",
+   "consultadoUtc": "2026-11-20T21:09:02Z",
+   "alcanceYLimites": "ID 80002 = «Amoy» según https://chainid.network/chains_mini.json (21:11:15Z). Es normal antes de la emisión, pero hoy no hay token real.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Alius (Adventurees Capital PFP) es PSFP n.º 11 de la CNMV y Token City es ERIR; la emisión TF1 no está inscrita en la ERIR (se inscribiría tras el cierre). El emisor es de reciente constitución y sin cuentas publicadas. La web firma con una razón social distinta de la del registro."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Hoy, 20/11, está en precampaña («En estudio», «Próximamente»): solo se puede expresar interés. La ficha anuncia apertura el 23/11/2026 pero la plataforma no tiene fecha de inicio y las fases van en «[...]»."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Plataforma española dirigida también a no experimentados; mínimo 500 €; sin costes según la ficha. Salida solo al vencimiento a 15 meses; tokens transmisibles sin mercado secundario; entrega de tokens tras la inscripción en la ERIR."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_cumple",
+   "nota": "La ficha es un borrador con huecos (identificador, tasación, LTV, fechas, estados financieros). La garantía no cuadra: tasación del solar 401.111,35 € (préstamo al 87 %), finalidad no hipotecaria, titular registral SMARTNEX 4 S.L. con cargas, frente a «libre de cargas» y «propiedad de Gardum 2016» en la ficha y la web. Reforma o demolición según el documento. Sin advertencias de la CNMV para ninguna de las sociedades."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "No existía (10/11: PRE_CAMPAIGN 0 en la API de Alius)",
+   "ahora": "Emisión 182 en precampaña (PRE_CAMPAIGN 1 a las 20:49:11Z y a las 21:09:01Z)",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "ALBAL · bono tokenizado (Alius Capital)",
+  "categoria": "Crédito privado",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Bono tokenizado de una promotora nueva para una obra en Albal (Valencia), en precampaña el 20/11/2026 y con una ficha aún incompleta.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://aliuscap.com/projects/albal",
+  "fuentesActuales": [
+   "https://aliuscap.com/projects/albal",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336",
+   "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": "500 € (1 token)",
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. Solo el mínimo se lee hoy en fuente primaria (ficha y API); acceso y salida quedan en null porque la oferta no está abierta. Enlace probado: https://aliuscap.com/projects/albal carga (200) y, renderizada, muestra «En estudio» y «Próximamente»."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "500 €",
+  "supervisorVerificado": "CNMV: Adventurees Capital PFP, S.L. (Alius Capital), PSFP n.º 11; Token City European Exchange A.V. como ERIR (sin esta emisión)",
+  "documentacionClara": "no",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Plataforma española inscrita en la CNMV, ficha en español, mínimo de 500 € y bono con garantía hipotecaria anunciada.",
+  "porQueNo": "No está abierta; la ficha es un borrador; la garantía no cuadra entre la tasación, la ficha y la web (dueño del solar, cargas, reforma o demolición; préstamo al 87 % del valor del solar); emisor recién creado sin cuentas; token en red de pruebas."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No está abierta hoy: el 20/11 la web de Alius la muestra «En estudio · Próximamente» (solo se puede expresar interés) y la API da PRE_CAMPAIGN sin fecha de inicio; la ficha anuncia apertura el 23/11/2026. Además, la ficha es un borrador (identificador, tasación, LTV, inicio del interés y del plazo, estados financieros en «[…]»; fecha límite 23/02/2026 frente a 23/02/27) y la garantía no cuadra: la tasación pública (13/11/2026) vale el solar en 401.111,35 € con finalidad no hipotecaria (el bono de 350.000 € sería el 87 %), da como titular registral a SMARTNEX 4 S.L. con cargas registradas y supone demolición, mientras la ficha dice que el solar es de Gardum 2016 S.L. y la web habla de un almacén «libre de cargas» que se reforma. Token TF1 en red de pruebas y sin desplegar; emisión no inscrita en la ERIR. Sin advertencias de la CNMV. Volver a mirarla el 23/11: aunque abra, haría falta una ficha completa y que cuadren propiedad, cargas y tasación.",
+ "bloqueos": [
+  "https://www.cnmv.es/portal/consultas/esi/erir.aspx?lang=es devolvió 403 (página de error de la CNMV por ruta equivocada, no un control anti-bots); no se reintentó. El índice ERIR ya se leyó a las 20:46:10Z (ver consultas-espana-2026-11-20.tsv) y la ficha ERIR de Token City responde 200.",
+  "https://aliuscap.com/projects/albal con curl solo devuelve el armazón de la aplicación; se leyó renderizado con Chrome sin sesión y por la API pública que usa la propia página."
+ ],
+ "conflictos": [
+  {
+   "campo": "fechaLimite",
+   "fuenteA": "Ficha, portada: «Fecha límite el 23/02/2026»",
+   "fuenteB": "Ficha, apartado 2: «fecha límite el 23/02/27»"
+  },
+  {
+   "campo": "propiedadDelSolar",
+   "fuenteA": "Ficha: «propiedad de Gardum 2016, S.L.»; garantía «aportada por la Sociedad» (Token Flip)",
+   "fuenteB": "Tasación: titular registral SMARTNEX 4 S.L. al 100 %"
+  },
+  {
+   "campo": "cargas",
+   "fuenteA": "Web: «adquirido en su totalidad por fondos propios del promotor y libre de cargas»",
+   "fuenteB": "Tasación: «se reflejan cargas que gravan la finca valorada»"
+  },
+  {
+   "campo": "obra",
+   "fuenteA": "Web: almacén existente, «Cambio de Uso con Segregación»",
+   "fuenteB": "Tasación: «SOLAR … CON EDIFICACIÓN A DEMOLER», «hipótesis de demolición»; ficha: «se construirá un edificio»"
+  },
+  {
+   "campo": "cobertura",
+   "fuenteA": "Ficha y web: «3,71 veces» sobre ventas futuras de 1,3 M€; «LTV sobre coste 59,32 %»",
+   "fuenteB": "Tasación del solar hoy: 401.111,35 € (350.000 € = 87,3 %)"
+  }
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-20T21:08:31Z",
+  "finUtc": "2026-11-20T21:11:54Z"
+ },
+ "lecturas20": [
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/count.json",
+   "consultadoUtc": "2026-11-20T21:09:01Z",
+   "sha256": "e48d31944a0e9adb5b65b862c3cf3bcec7f4b377a9dcbb18305c28a2c70f62c5",
+   "http": 200,
+   "bytes": 83
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/albal/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/albal.json",
+   "consultadoUtc": "2026-11-20T21:09:02Z",
+   "sha256": "f155958fc91aa8effd6fe2124675b7708ec086f03100f30c02c9ed6b5c4625cf",
+   "http": 200,
+   "bytes": 20489
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/tabs",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/albal-tabs.json",
+   "consultadoUtc": "2026-11-20T21:09:02Z",
+   "sha256": "959bb021f7204cb7942b95d0a3d22b309b20eacae28c89f2aba707704f9a44a4",
+   "http": 200,
+   "bytes": 7148
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/334",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/doc334.pdf",
+   "consultadoUtc": "2026-11-20T21:09:03Z",
+   "sha256": "9f082cc43e8ac6692fcc0b4470d8343b2f37c02e9059f59596a589fa4dde5fa3",
+   "http": 200,
+   "bytes": 341010
+  },
+  {
+   "url": "https://aliuscap.com/projects/albal",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/projects-albal.html",
+   "consultadoUtc": "2026-11-20T21:09:04Z",
+   "sha256": "4cbaba0dd2e0bec87e54ffeccf73449ef6aef07416c2a4c96d9d0fbc4b82a21c",
+   "http": 200,
+   "bytes": 4371
+  },
+  {
+   "url": "https://www.token-flip.com/",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/tokenflip-home.html",
+   "consultadoUtc": "2026-11-20T21:09:05Z",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "http": 301,
+   "bytes": 0
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRE_CAMPAIGN/expand/images,type,asset,campaign,campaign_progress,extra_fields,asset_issuance_relational",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/pre-campaign.json",
+   "consultadoUtc": "2026-11-20T21:09:06Z",
+   "sha256": "d6a6c0fd83113474309b9702d4b3ba33cce20112a40e82efc0a5636fe36eb7c1",
+   "http": 200,
+   "bytes": 19889
+  },
+  {
+   "url": "https://www.token-flip.com/",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/tokenflip-home.html",
+   "consultadoUtc": "2026-11-20T21:09:13Z",
+   "sha256": "3ee482131e464f5320d2a7f1846d54c28032820da6c7d4052d473359278e0d8c",
+   "http": 200,
+   "bytes": 48654
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-psfp-es.html",
+   "consultadoUtc": "2026-11-20T21:09:15Z",
+   "sha256": "3c4be31459315381dd9c09d1401371afb128074a637f79a349c16a1dd1501a05",
+   "http": 200,
+   "bytes": 165165
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-erir-tokencity.html",
+   "consultadoUtc": "2026-11-20T21:09:17Z",
+   "sha256": "12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453",
+   "http": 200,
+   "bytes": 152454
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir.aspx?lang=es",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-erir-indice.html",
+   "consultadoUtc": "2026-11-20T21:09:18Z",
+   "sha256": "c8df9862e561588e1f42d959214a661fa1b5abffc4caa9afc7ef0006322496a3",
+   "http": 403,
+   "bytes": 12239
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20Flip",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Token_Flip.html",
+   "consultadoUtc": "2026-11-20T21:09:19Z",
+   "sha256": "24d996bccd310ba0a9ca38631dcb6064aa4f0e81896f82c21751ecd68f3f85cd",
+   "http": 200,
+   "bytes": 211436
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenFlip",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-TokenFlip.html",
+   "consultadoUtc": "2026-11-20T21:09:21Z",
+   "sha256": "4877e6a3d6fdc8f68a930d0d71492dec7fe04ee6e9361134c22691c79fc32135",
+   "http": 200,
+   "bytes": 211414
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Alius.html",
+   "consultadoUtc": "2026-11-20T21:09:23Z",
+   "sha256": "7a9b9710329e4a9e9718ffbaa076600d05dad5ed5fc9ecae717be550244630d5",
+   "http": 200,
+   "bytes": 211326
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Adventurees.html",
+   "consultadoUtc": "2026-11-20T21:09:26Z",
+   "sha256": "b7549956654c40a01b5b7b72c27d210cb8399b1fee299845092a437911f63331",
+   "http": 200,
+   "bytes": 211458
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gardum",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Gardum.html",
+   "consultadoUtc": "2026-11-20T21:09:29Z",
+   "sha256": "41fc2ad0898dcbeaa9cc25ab72431be6d76ccbdfcdffbe92bd28eb5b52b9530d",
+   "http": 200,
+   "bytes": 211348
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Nouval",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Nouval.html",
+   "consultadoUtc": "2026-11-20T21:09:32Z",
+   "sha256": "12012f33da62a006e8d1e969a5b0858655b1b896ec79a9e098aa84b8c642a172",
+   "http": 200,
+   "bytes": 211348
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Gemini.html",
+   "consultadoUtc": "2026-11-20T21:09:34Z",
+   "sha256": "5fca61f265e8495ad004d978cda5341c224136ac63eaa7477f644682c4fb555c",
+   "http": 200,
+   "bytes": 216914
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-psfp-alius.html",
+   "consultadoUtc": "2026-11-20T21:09:52Z",
+   "sha256": "62cd4c3f276aee41e40efa21471a87a1941c2194e8f6bea4e02c56f3105800b1",
+   "http": 200,
+   "bytes": 154642
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/182/document/336",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/doc336.pdf",
+   "consultadoUtc": "2026-11-20T21:10:10Z",
+   "sha256": "df8e1f1bfc8c50a034f9fe066d8fed253d2c97ce6e96585f7b3557bbe05b58ab",
+   "http": 200,
+   "bytes": 6396690
+  },
+  {
+   "url": "https://aliuscap.com/projects/albal (google-chrome --headless=new --dump-dom, agente por defecto)",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/alius-albal-render-chrome.html",
+   "consultadoUtc": "2026-11-20T21:10:50Z",
+   "sha256": "56188e3fc6bb0df971438b675c1b438a3d41c26ef77375b20d375ce054eea333",
+   "http": "200(render)",
+   "bytes": 79784
+  },
+  {
+   "url": "https://chainid.network/chains_mini.json",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/chainid-80002.json",
+   "consultadoUtc": "2026-11-20T21:11:15Z",
+   "sha256": "f4403f9fcee38c738706c7c72306ea7b8a8f0d81d9878f4ee611bb19a5ddd742",
+   "http": 200,
+   "bytes": 778383
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Smartnex",
+   "archivo": "grupos/busqueda-nueva/fuentes/crudo/espana/analista/cnmv-adv-Smartnex.html",
+   "consultadoUtc": "2026-11-20T21:11:54Z",
+   "sha256": "5117369ebe6293924329804fd57b3eb381683159c9eae5b77d54ed4a99fcd54d",
+   "http": 200,
+   "bytes": 211392
+  },
+  {
+   "url": null,
+   "archivo": "grupos/busqueda-nueva/fuentes/espana/alius-albal-pagina-renderizada-2026-11-20.txt",
+   "consultadoUtc": "2026-11-20T21:10:50Z",
+   "sha256": "bd3b62819ad04d155745cafd24e1b254a3ac8789d02ccb17a04f8b4a6c18b915",
+   "http": null,
+   "nota": "copia de texto en Git"
+  },
+  {
+   "url": null,
+   "archivo": "grupos/busqueda-nueva/fuentes/espana/alius-albal-tasacion-analista-2026-11-20.txt",
+   "consultadoUtc": "2026-11-20T21:10:10Z",
+   "sha256": "e5dbb27bcf94964fb37dfc4ca12bbe21a33324ca3120e94b37ba60868fd26eea",
+   "http": null,
+   "nota": "copia de texto en Git"
+  },
+  {
+   "url": null,
+   "archivo": "grupos/busqueda-nueva/fuentes/espana/cnmv-advertencias-analista-albal-2026-11-20.txt",
+   "consultadoUtc": "2026-11-20T21:11:54Z",
+   "sha256": "068713a86edd0290acc79a6f045d5d4e886a03f2e8142212d1de745fdb869ef0",
+   "http": null,
+   "nota": "copia de texto en Git"
+  },
+  {
+   "url": null,
+   "archivo": "grupos/busqueda-nueva/fuentes/espana/consultas-analista-albal-2026-11-20.tsv",
+   "consultadoUtc": "2026-11-20T21:11:54Z",
+   "sha256": "664bdeb78a05a0f8c7e6546397406fe74dc8981076f749190a619fb0cb5bcde2",
+   "http": null,
+   "nota": "copia de texto en Git"
+  }
+ ],
+ "resumenCorto": "ALBAL (Alius Capital) está en precampaña y su ficha es un borrador; la garantía no cuadra entre tasación, ficha y web."
+}

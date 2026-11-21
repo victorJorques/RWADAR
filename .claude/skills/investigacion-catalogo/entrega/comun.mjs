@@ -86,7 +86,7 @@ const ETIQUETA_RX = /^\d{4}-\d{2}-\d{2}(?:\.(?:[2-9]|[1-9]\d))?$/;
 const FECHA_RX = /^\d{4}-\d{2}-\d{2}$/;
 const UUID_RX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const TIPOS_CAMBIO = ['rentabilidad', 'metrica', 'metricaNueva', 'metricaQuita', 'aviso', 'avisoNuevo', 'avisoQuita', 'referencia',
-  'referenciaNueva', 'referenciaQuita', 'tarjeta', 'resumen', 'descripcion', 'caracteristica', 'fuentesOferta'];
+  'referenciaNueva', 'referenciaQuita', 'tarjeta', 'tarjetaFecha', 'resumen', 'descripcion', 'caracteristica', 'fuentesOferta', 'fuenteQuita'];
 export const DIFIERE = ['resumen', 'metricas', 'avisos', 'rentabilidad', 'rentabilidad.literal', 'tarjeta', 'tarjeta.minimo', 'tarjeta.accesoEspana', 'tarjeta.salida'];
 
 // Plantillas: «{{NOMBRE}}» en cualquier texto de decisiones.json se sustituye por plantillas.NOMBRE (sin anidar).
