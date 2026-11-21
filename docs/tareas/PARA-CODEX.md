@@ -6,7 +6,42 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (39 · web) · Claude · Campana de avisos para todos, junto al «?», y fuera «Marcar como leídos» · RAMA SIN UNIR (`claude/campana-avisos-web-2026-11-21`) · sin publicar
+## 21 de noviembre de 2026 (40) · Claude · Campana de avisos en la cabecera de la app · RAMA `claude/campana-avisos-app-2026-11-21` (#180), sin publicar
+
+- **Orden de la dirección (21/11):** «que los avisos salgan en Inicio arriba a
+  la derecha, al lado del interrogante» y «al leerlas, que desaparezca como que
+  está pendiente». Esta es la parte de la app (`rwadar-movil/`); la web va en
+  su propia rama.
+- **Campana** (`componentes/CampanaAvisos.js`, `lib/campana-avisos.js`) al
+  lado del «?» de la cabecera, mismo círculo y tamaño, con el dibujo de la
+  campana de la web (`Icono nombre="campana"`). Globo con los sin leer (1-9,
+  «9+»), solo si hay; etiqueta «Avisos, N sin leer» / «Avisos, ninguno sin
+  leer» (y en inglés).
+- **Al pulsarla**, la lista a pantalla completa con «Cerrar». Abrirla es
+  verlos: se guardan como leídos, el globo baja a 0 y se quitan las
+  notificaciones del sistema; los puntos «Sin leer» se quedan mientras sigue
+  abierta. Cada aviso con «Abrir» (si tiene a dónde llevar) y, al final,
+  «¿No quieres estos avisos?» hacia Perfil › Avisos. Una notificación que
+  lleva a Inicio abre la lista.
+- **Fuera:** la tarjeta «Avisos» de Inicio (`TarjetaAvisosInicio`) y su
+  «Marcar como leídos». La insignia de la pestaña Inicio ya no cuenta avisos:
+  solo los «cambios de lo que sigues» no vistos (se dan por vistos tras 1,5 s
+  en pantalla).
+- **Sin avisos de la cuenta** (interruptores apagados), la campana enseña los
+  públicos de `/api/avisos/recientes`. Claves nuevas, por cuenta y borradas
+  por «Borrar datos del dispositivo»:
+  `rwadar.editorial.avisos.publicos.leidos.v1:<UUID>` y
+  `rwadar.editorial.cambios.vistos.v1:<UUID>`.
+- **Pruebas:** `npm --prefix rwadar-movil test` 689/689 (nuevas en
+  `tests/campana-avisos.test.cjs` y las de la tarjeta de
+  `tests/avisos-ui.test.cjs` sustituidas por las de la campana);
+  `comprobar-ota-compatible.cjs --base fa30779` ok; diccionario web/móvil
+  idéntico (`copiar-idiomas-web.cjs --comprobar`). Capturas a 390 px de la
+  exportación web con datos simulados (no es un móvil físico).
+- **Pendiente:** unir con la parte de la web, OTA y «Avisar novedad» cuando
+  la dirección lo autorice.
+
+## 21 de noviembre de 2026 (39) · Claude · Campana de avisos para todos, junto al «?», y fuera «Marcar como leídos» · UNIDA (#179) · sin publicar
 
 - **Encargo de la dirección (21/11):** «que en la pestaña de notificaciones, al
   leerlas, desaparezca como que está pendiente» y «me gustaría que los avisos

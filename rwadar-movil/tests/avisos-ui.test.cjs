@@ -32,10 +32,11 @@ function nodos(arbol) {
 function texto(arbol) { return nodos(arbol).filter((n) => typeof n === 'string').join(' '); }
 function boton(arbol, etiqueta) { return nodos(arbol).find((n) => n.type === 'Pressable' && n.props.accessibilityLabel === etiqueta); }
 
-function cargarComponente(archivo, react, mocks, plataforma = 'android') {
+function cargarComponente(archivo, react, mocks, plataforma = 'android', extraNativo = {}) {
   const absoluto = path.join(RAIZ, 'componentes', archivo);
   const original = Module._load, extension = Module._extensions['.js'];
-  const nativo = { StyleSheet: { create: (s) => s }, Keyboard: { dismiss() {} }, Platform: { OS: plataforma } };
+  const nativo = { StyleSheet: { create: (s) => s }, Keyboard: { dismiss() {} }, Platform: { OS: plataforma },
+    ScrollView: 'ScrollView', ...extraNativo };
   for (const tipo of ['Text', 'TextInput', 'View', 'Pressable', 'ActivityIndicator', 'KeyboardAvoidingView']) nativo[tipo] = tipo;
   Module._load = function (pedido, padre, principal) {
     if (padre?.filename === absoluto) {
@@ -456,7 +457,8 @@ test('Perfil: si la base dice que este móvil ya no está registrado, no sale co
 });
 
 /* ---------------------------------------------------------------------
-   Inicio: tarjeta «Avisos» con punto de no leído
+   Campana de la cabecera (21/11/2026): la lista que sustituye a la tarjeta
+   «Avisos» de Inicio. Abrirla es verlos.
    --------------------------------------------------------------------- */
 const RECIENTES = [
   { id: '9', tipo: 'ofertas', titulo: '2 fichas nuevas en el radar de RWAdar', texto: 'Consulta en el radar qué ha entrado.',
@@ -468,140 +470,162 @@ const RECIENTES = [
     enlace: 'https://rwadar.pages.dev/academy/', creado_el: '2026-11-01T10:00:00Z' },
 ];
 
-/* La tarjeta guarda si está desplegada: se pinta en un React aislado propio,
-   aparte del hook, para que ese estado se conserve entre pintadas. */
-function tarjetaViva() {
-  const h = crearReact();
-  const modulo = cargarComponente('AvisosNovedades.js', h.react, { '../lib/avisos': {}, '../lib/datos': {} });
-  return (props) => h.pintar(() => modulo.TarjetaAvisosInicio(props));
-}
-const verTodos = (arbol) => nodos(arbol).find((n) => n.type === 'Pressable' && /^Ver (todos \(\d+\)|menos)$/.test(n.props.accessibilityLabel));
+const DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
-test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda al abrirlos', async () => {
+/* La campana (su hook y su lista) en un React aislado propio, aparte del
+   hook de avisos que le da la fuente. */
+function campanaViva() {
+  const h = crearReact(), retiradas = [];
+  const nativo = { Modal: 'Modal', Dimensions: { get: () => ({ height: 800 }) } };
+  const modulo = cargarComponente('CampanaAvisos.js', h.react, {
+    './Navegacion': { Icono: 'Icono' },
+    'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
+    '../lib/avisos': { retirarNotificacionesAvisos: async () => { retiradas.push(1); return 0; } },
+    '../lib/datos': {},
+  }, 'android', nativo);
+  let campana;
+  return {
+    modulo, retiradas, h,
+    hook(fuente) { campana = h.pintar(() => modulo.useCampanaAvisos(fuente)); return campana; },
+    lista(fuente, extra = {}) {
+      return crearReact().pintar(() => modulo.ListaAvisos({ avisos: fuente.avisos, sinLeer: campana?.sinLeer || [],
+        cargando: fuente.cargando, error: fuente.errorCarga, ...extra }));
+    },
+  };
+}
+
+test('campana: abrirla es verlos, el globo baja a 0 y los puntos «Sin leer» se quedan mientras sigue abierta', async () => {
   const p = perfil({ capacidad: false, recientes: RECIENTES });
   await p.esperar();
   const hook = p.estadoHook();
   assert.deepEqual(hook.avisos.map((x) => x.id), ['9', 'bienvenida'], 'el aviso con enlace ajeno no se enseña');
   assert.equal(hook.noLeidos, 2);
   assert.deepEqual(p.rpc.find(([n]) => n === 'mis_avisos_recientes'), ['mis_avisos_recientes', { p_limite: 10 }]);
-  const abiertos = [], marcados = [], pintarTarjeta = tarjetaViva();
-  const tarjeta = () => pintarTarjeta({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
-    onAbrir: (aviso) => { abiertos.push(aviso.id); p.estadoHook().marcarLeidos([aviso.id]); },
-    onMarcarLeidos: (ids) => { marcados.push(ids); p.estadoHook().marcarLeidos(ids); } });
-  let t = tarjeta();
-  assert.match(texto(t), /Avisos/);
-  assert.match(texto(t), /2 fichas nuevas en el radar de RWAdar/);
-  assert.equal(verTodos(t), undefined, 'con 3 o menos ya se ven todos: no hay «Ver todos»');
-  const aviso = boton(t, '2 fichas nuevas en el radar de RWAdar');
-  assert.equal(aviso.props.accessibilityHint, 'Sin leer');
-  aviso.props.onPress();
+  const c = campanaViva();
+  let campana = c.hook(p.estadoHook());
+  assert.equal(campana.activa, true);
+  assert.equal(campana.abierta, false);
+  assert.equal(campana.noLeidos, 2, 'el globo cuenta los 2 sin leer');
+  campana.abrir();
+  campana = c.hook(p.estadoHook());
+  assert.equal(campana.abierta, true);
   await p.esperar();
-  assert.deepEqual(abiertos, ['9']);
-  assert.deepEqual(p.local.leidos, ['9'], 'leído se guarda en el dispositivo');
-  t = tarjeta();
-  assert.equal(boton(t, '2 fichas nuevas en el radar de RWAdar').props.accessibilityHint, undefined);
-  assert.equal(p.estadoHook().noLeidos, 1);
-  boton(t, 'Marcar como leídos').props.onPress();
-  await p.esperar();
-  assert.deepEqual(marcados, [['bienvenida']]);
+  campana = c.hook(p.estadoHook());
+  assert.deepEqual([...p.local.leidos].sort(), ['9', 'bienvenida'], 'abrirla los guarda como leídos en el dispositivo');
   assert.equal(p.estadoHook().noLeidos, 0);
-  assert.equal(boton(tarjeta(), 'Marcar como leídos'), undefined);
-  const vacia = tarjetaViva()({ avisos: [], leidos: [] });
-  assert.match(texto(vacia), /Aquí verás las fichas nuevas del radar/);
-  p.h.desmontar();
+  assert.equal(campana.noLeidos, 0, 'el globo baja a 0');
+  assert.ok(c.retiradas.length >= 1, 'y se quitan las notificaciones del sistema (y su número en el icono)');
+  // Mientras sigue abierta, los dos conservan su punto y su «Sin leer».
+  let lista = c.lista(p.estadoHook());
+  for (const id of ['9', 'bienvenida']) {
+    const aviso = nodos(lista).find((n) => n.props?.testID === `campanaAviso-${id}`);
+    assert.ok(aviso, id);
+    assert.match(texto(aviso), /Sin leer/, id);
+  }
+  assert.match(texto(lista), /2 fichas nuevas en el radar de RWAdar/);
+  assert.match(texto(lista), /05\/11\/2026/);
+  assert.equal(boton(lista, 'Marcar como leídos'), undefined, 'ya no hace falta «Marcar como leídos»');
+  // Sin escribir dos veces lo mismo al volver a pintarse.
+  const escrituras = p.local.leidos.length;
+  c.hook(p.estadoHook()); await p.esperar(); c.hook(p.estadoHook());
+  assert.equal(p.local.leidos.length, escrituras);
+  // Al cerrarla, la próxima vez ya salen leídos.
+  campana = c.hook(p.estadoHook());
+  campana.cerrar();
+  campana = c.hook(p.estadoHook());
+  assert.equal(campana.abierta, false);
+  lista = c.lista(p.estadoHook());
+  assert.doesNotMatch(texto(lista), /Sin leer/);
+  // Vacía, lo dice.
+  assert.match(texto(c.lista({ avisos: [] })), /Aquí verás las fichas nuevas del radar/);
+  p.h.desmontar(); c.h.desmontar();
 });
 
-test('Inicio con 7 avisos: «Ver todos (7)» los enseña todos en la tarjeta y se marcan leídos después de verlos', async () => {
-  const base = (id, dia) => ({ id: String(id), tipo: 'novedad', titulo: `Novedad ${id}`, texto: 'Hay cambios en RWAdar.',
-    enlace: 'https://rwadar.pages.dev/cambios', creado_el: `2026-11-${String(dia).padStart(2, '0')}T10:00:00Z` });
-  const recientes = [...[17, 16, 15, 14, 13, 12].map((id, i) => base(id, 5 - Math.floor(i / 2))), RECIENTES[2]];
-  const TITULOS = [...['17', '16', '15', '14', '13', '12'].map((id) => `Novedad ${id}`), 'Te damos la bienvenida a RWAdar'];
-  const p = perfil({ capacidad: false, recientes });
-  await p.esperar();
-  assert.equal(p.estadoHook().avisos.length, 7);
-  assert.equal(p.estadoHook().noLeidos, 7, 'la insignia de Inicio cuenta los 7 cargados');
-  // App conecta la tarjeta así (ver la prueba de conexiones de App).
-  const abiertos = [], marcados = [], pintarTarjeta = tarjetaViva();
-  const tarjeta = () => pintarTarjeta({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
-    onAbrir: (aviso) => { abiertos.push(aviso.id); p.estadoHook().marcarLeidos([aviso.id]); },
-    onMarcarLeidos: (ids) => { marcados.push(ids); return p.estadoHook().marcarTodosLeidos(); } });
-  const avisosVistos = (arbol) => nodos(arbol).filter((n) => n.type === 'Pressable' && TITULOS.includes(n.props.accessibilityLabel))
-    .map((n) => n.props.accessibilityLabel);
-  // Plegada: los 3 primeros y «Ver todos (7)», que avisa de los 4 sin leer que no se ven.
-  let t = tarjeta();
-  assert.deepEqual(avisosVistos(t), TITULOS.slice(0, 3));
-  let ver = verTodos(t);
-  assert.equal(ver.props.accessibilityLabel, 'Ver todos (7)');
-  assert.equal(ver.props.accessibilityState.expanded, false);
-  assert.equal(ver.props.accessibilityHint, '4 sin leer');
-  assert.match(texto(t), /Ver todos \(7\)/);
-  // Desplegada: los 7, en la misma tarjeta y en orden, con su punto de no leído.
-  ver.props.onPress();
-  t = tarjeta();
-  assert.deepEqual(avisosVistos(t), TITULOS, 'se ven los 7');
-  for (const titulo of TITULOS) assert.equal(boton(t, titulo).props.accessibilityHint, 'Sin leer', titulo);
-  const vistos = new Set(avisosVistos(t));
-  assert.ok(p.estadoHook().idsNoLeidos.every((id) => vistos.has(p.estadoHook().avisos.find((x) => x.id === id).titulo)),
-    'todo lo que cuenta la insignia se puede ver');
-  ver = verTodos(t);
-  assert.equal(ver.props.accessibilityLabel, 'Ver menos');
-  assert.equal(ver.props.accessibilityState.expanded, true);
-  assert.equal(ver.props.accessibilityHint, undefined);
-  // Uno de los que antes no se veían se puede abrir; la tarjeta sigue desplegada.
-  boton(t, 'Novedad 12').props.onPress();
-  await p.esperar();
-  assert.deepEqual(abiertos, ['12']);
-  assert.equal(p.estadoHook().noLeidos, 6);
-  t = tarjeta();
-  assert.deepEqual(avisosVistos(t), TITULOS);
-  assert.equal(boton(t, 'Novedad 12').props.accessibilityHint, undefined);
-  // Vistos todos, «Marcar como leídos» deja la insignia a cero.
-  const puntoCabecera = (arbol) => nodos(arbol).some((n) => n.type === 'View' && n.props.accessible === false && !Array.isArray(n.props.style));
-  assert.ok(puntoCabecera(t));
-  boton(t, 'Marcar como leídos').props.onPress();
-  await p.esperar();
-  assert.deepEqual(marcados, [['17', '16', '15', '14', '13', 'bienvenida']]);
-  assert.equal(p.estadoHook().noLeidos, 0, 'la insignia queda a cero');
-  assert.deepEqual([...p.local.leidos].sort(), ['12', '13', '14', '15', '16', '17', 'bienvenida'].sort(), 'guardado en el dispositivo');
-  t = tarjeta();
-  assert.equal(boton(t, 'Marcar como leídos'), undefined);
-  assert.equal(puntoCabecera(t), false);
-  // «Ver menos» la vuelve a plegar; sin nada por leer, sin pista.
-  verTodos(t).props.onPress();
-  t = tarjeta();
-  assert.deepEqual(avisosVistos(t), TITULOS.slice(0, 3));
-  assert.equal(verTodos(t).props.accessibilityLabel, 'Ver todos (7)');
-  assert.equal(verTodos(t).props.accessibilityHint, undefined);
-  // La insignia también se puede vaciar de golpe, como hasta ahora.
-  const q = perfil({ capacidad: false, recientes });
-  await q.esperar();
-  assert.deepEqual([...q.estadoHook().idsNoLeidos], ['17', '16', '15', '14', '13', '12', 'bienvenida']);
-  await q.estadoHook().marcarTodosLeidos();
-  await q.esperar();
-  assert.equal(q.estadoHook().noLeidos, 0);
-  p.h.desmontar(); q.h.desmontar();
+test('campana: lo que llega con la lista abierta también se da por visto; sin fuente no hace nada', async () => {
+  const leidos = [];
+  let fuente = { avisos: [], leidos: [], idsNoLeidos: [], noLeidos: 0, recargas: 0,
+    marcarLeidos(ids) { leidos.push(ids); }, recargar() { fuente.recargas += 1; } };
+  const c = campanaViva();
+  let campana = c.hook(fuente);
+  campana.abrir();
+  campana = c.hook(fuente);
+  assert.deepEqual(leidos, [], 'nada sin leer: nada que guardar');
+  assert.deepEqual(c.retiradas, [1], 'al abrirla se quitan las notificaciones del sistema');
+  fuente = { ...fuente, avisos: [{ id: '12' }], idsNoLeidos: ['12'], noLeidos: 1 };
+  campana = c.hook(fuente);
+  assert.deepEqual(leidos, [['12']]);
+  assert.deepEqual(campana.sinLeer, ['12'], 'con su punto mientras siga abierta');
+  // Si una recarga se cruza con el guardado y lo vuelve a dar por pendiente, se vuelve a guardar.
+  fuente = { ...fuente, idsNoLeidos: [], noLeidos: 0 };
+  c.hook(fuente);
+  fuente = { ...fuente, idsNoLeidos: ['12'], noLeidos: 1 };
+  campana = c.hook(fuente);
+  assert.deepEqual(leidos, [['12'], ['12']]);
+  assert.deepEqual(campana.sinLeer, ['12']);
+  const nula = campanaViva();
+  const sin = nula.hook(null);
+  assert.equal(sin.activa, false);
+  assert.equal(sin.noLeidos, 0);
+  sin.abrir();
+  assert.equal(nula.hook(null).abierta, false);
+  assert.deepEqual(nula.retiradas, []);
 });
 
-const DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
-test('Inicio: debajo de la lista, «¿No quieres estos avisos?» lleva a Perfil › Avisos', () => {
-  const pulsados = [];
-  for (const avisos of [avisosCuenta.validarAvisosRecientes(RECIENTES), []]) {
-    const t = tarjetaViva()({ avisos, leidos: [], onDesactivar: () => pulsados.push('perfil') });
+test('campana: cada aviso conserva su «Abrir» y, debajo de la lista, «¿No quieres estos avisos?» lleva a Perfil › Avisos', () => {
+  const pulsados = [], abiertos = [];
+  const c = campanaViva();
+  const avisos = avisosCuenta.validarAvisosRecientes([...RECIENTES,
+    { id: '7', tipo: 'novedad', titulo: 'Sin enlace', texto: 'Nada que abrir.', enlace: null, creado_el: '2026-11-03T10:00:00Z' }]);
+  for (const lista of [avisos, []]) {
+    const t = c.lista({ avisos: lista }, { onAbrir: (a) => abiertos.push(a.id), onDesactivar: () => pulsados.push('perfil') });
     const enlace = boton(t, DESACTIVAR);
     assert.ok(enlace, 'falta el enlace de baja');
     assert.equal(enlace.props.accessibilityRole, 'link');
     assert.equal(enlace.props.accessibilityHint, 'Abre Perfil › Avisos');
     assert.ok(texto(enlace).includes(DESACTIVAR));
-    const estilos = enlace.props.style({ pressed: false }).flat().filter(Boolean);
-    assert.ok(estilos.some((e) => e.minHeight >= 48), 'diana táctil de 48');
-    // Es lo último de la tarjeta: debajo de la lista y de «Marcar como leídos».
+    assert.ok(enlace.props.style({ pressed: false }).flat().filter(Boolean).some((e) => e.minHeight >= 48), 'diana táctil de 48');
     const pulsables = nodos(t).filter((n) => n.type === 'Pressable');
-    assert.equal(pulsables.at(-1), enlace);
+    assert.equal(pulsables.at(-1), enlace, 'es lo último de la lista');
     enlace.props.onPress();
+    if (lista.length) {
+      const abrir = pulsables.filter((n) => n.props.accessibilityLabel === 'Abrir');
+      assert.deepEqual(abrir.map((n) => n.props.accessibilityHint), ['2 fichas nuevas en el radar de RWAdar', 'Te damos la bienvenida a RWAdar'],
+        'solo los que tienen a dónde llevar');
+      assert.ok(abrir.every((n) => n.props.style({ pressed: false }).flat().filter(Boolean).some((e) => e.minHeight >= 48)));
+      abrir.forEach((n) => n.props.onPress());
+    }
   }
   assert.deepEqual(pulsados, ['perfil', 'perfil']);
-  assert.equal(boton(tarjetaViva()({ avisos: [], leidos: [] }), DESACTIVAR), undefined, 'sin destino no se pinta');
+  assert.deepEqual(abiertos, ['9', 'bienvenida']);
+  assert.equal(boton(c.lista({ avisos: [] }), DESACTIVAR), undefined, 'sin destino no se pinta');
+  // Si falla, lo dice y deja reintentar.
+  const reintentos = [];
+  const caida = c.lista({ avisos: [], errorCarga: 'No se pudieron cargar tus avisos. Desliza hacia abajo para reintentar.' },
+    { onReintentar: () => reintentos.push(1) });
+  assert.match(texto(caida), /No se pudieron cargar tus avisos/);
+  boton(caida, 'Reintentar').props.onPress();
+  assert.deepEqual(reintentos, [1]);
   assert.equal(idioma.ingles(DESACTIVAR), "Don't want these notices? Turn them off in Profile or in your phone settings.");
+});
+
+test('campana: la lista se abre en su propia pantalla, con título y «Cerrar»', () => {
+  const c = campanaViva(), cerrados = [];
+  const avisos = avisosCuenta.validarAvisosRecientes(RECIENTES);
+  const pantalla = crearReact().pintar(() => c.modulo.PantallaAvisos({ visible: true, avisos, sinLeer: ['9'],
+    onCerrar: () => cerrados.push(1), onDesactivar() {} }));
+  const modal = nodos(pantalla).find((n) => n.type === 'Modal');
+  assert.equal(modal.props.visible, true);
+  assert.equal(modal.props.presentationStyle, 'fullScreen');
+  modal.props.onRequestClose();
+  assert.match(texto(pantalla), /Avisos/);
+  assert.match(texto(pantalla), /Fichas nuevas del radar y novedades de RWAdar\./);
+  assert.match(texto(pantalla), /2 fichas nuevas en el radar de RWAdar/);
+  const cerrar = boton(pantalla, 'Cerrar');
+  assert.ok(cerrar.props.style({ pressed: false }).flat().filter(Boolean).some((e) => e.width >= 44 && e.height >= 44));
+  cerrar.props.onPress();
+  assert.deepEqual(cerrados, [1, 1], 'el botón y el «atrás» de Android la cierran');
+  const oculta = crearReact().pintar(() => c.modulo.PantallaAvisos({ visible: false, avisos, sinLeer: [] }));
+  assert.equal(boton(oculta, 'Cerrar'), undefined);
 });
 
 test('Notificación que lleva a Buscar o a la Academy: la baja arriba, con su enlace a Perfil › Avisos y para ocultarla', () => {
@@ -797,18 +821,24 @@ function variableApp(nombre) {
     null, { babelrc: false, configFile: false }).code.replace(/;\s*$/, '');
 }
 
-test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', () => {
-  // Con la bandeja sola (AVISOS_BANDEJA_REMOTA) no hay Perfil › Avisos: sin enlace de baja.
-  assert.match(APP, /<TarjetaAvisosInicio[^>]*onDesactivar=\{AVISOS_NOVEDADES_ACTIVOS \? irAAvisosPerfil : undefined\}/);
+test('App: el enlace de baja de la campana abre Perfil y Perfil baja hasta Avisos', () => {
+  // Con la bandeja sola (AVISOS_BANDEJA_REMOTA) o los públicos no hay Perfil › Avisos: sin enlace de baja.
+  assert.match(APP, /<PantallaAvisos [\s\S]{0,600}?onDesactivar=\{AVISOS_NOVEDADES_ACTIVOS \? irAAvisosPerfil : undefined\} \/>/);
   assert.match(APP, /enfocarAvisos=\{enfocarAvisosPerfil\}\s*onAvisosEnfocados=\{\(\) => setEnfocarAvisosPerfil\(false\)\}/);
   assert.match(APP, /<PanelAvisosNovedades[^>]*onPrivacidad=\{\(\) => abrirEnlace\(URL_PRIVACIDAD_AVISOS\)\}/);
   assert.match(APP, /const URL_PRIVACIDAD_AVISOS = `\$\{URL_PRIVACIDAD\}#avisos-novedades`;/);
-  // irAAvisosPerfil: cierra lo abierto, va a Perfil y pide bajar hasta Avisos.
+  // irAAvisosPerfil: cierra lo abierto (también la campana), va a Perfil y pide bajar hasta Avisos.
   const cambios = {};
   const setter = (nombre) => (valor) => { cambios[nombre] = valor; };
-  new Function('tacto', 'setAbierta', 'setOfertaAbierta', 'setEnfocarAvisosPerfil', 'setPestana', `return (${variableApp('irAAvisosPerfil')});`)(
-    { eleccion() {} }, setter('abierta'), setter('ofertaAbierta'), setter('enfocar'), setter('pestana'))();
-  assert.deepEqual(cambios, { abierta: null, ofertaAbierta: null, enfocar: true, pestana: 'perfil' });
+  new Function('tacto', 'campana', 'setAbierta', 'setOfertaAbierta', 'setEnfocarAvisosPerfil', 'setPestana', `return (${variableApp('irAAvisosPerfil')});`)(
+    { eleccion() {} }, { cerrar: () => { cambios.campana = 'cerrada'; } }, setter('abierta'), setter('ofertaAbierta'), setter('enfocar'), setter('pestana'))();
+  assert.deepEqual(cambios, { campana: 'cerrada', abierta: null, ofertaAbierta: null, enfocar: true, pestana: 'perfil' });
+  // «Abrir» de un aviso: cierra la campana, lo marca leído y lleva a su sitio.
+  const pasos = [];
+  new Function('avisosCampana', 'campana', 'destinoAviso', 'irA', `return (${variableApp('abrirAvisoCampana')});`)(
+    { marcarLeidos: (ids) => pasos.push(['leido', ids]) }, { cerrar: () => pasos.push(['cerrar']) },
+    avisosCuenta.destinoAviso, (destino) => pasos.push(['ir', destino]))({ id: '9', tipo: 'ofertas' });
+  assert.deepEqual(pasos, [['leido', ['9']], ['cerrar'], ['ir', 'ofertas-nuevas']]);
   // PantallaPerfil: con la petición, cada medida de Avisos baja hasta ella; deslizar la consume.
   const efectos = [];
   const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect: (fn) => efectos.push(fn),
@@ -841,7 +871,7 @@ test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', 
   }
 });
 
-test('App: solo con el interruptor se observan las novedades y se pinta la tarjeta, el panel y la casilla', () => {
+test('App: solo con el interruptor se observan las novedades y se pinta la campana, el panel y la casilla', () => {
   const crear = new Function('observarAperturasAvisos', 'setSlugAvisoPendiente', 'setDestinoAvisoPendiente',
     'AVISOS_NOVEDADES_ACTIVOS', `return (${efectoApp('observarAperturasAvisos((slug)')});`);
   for (const activo of [false, true]) {
@@ -856,11 +886,15 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   }
   assert.match(APP, /const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;/);
   assert.match(APP, /useAvisosNovedades\(\{ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS \? usuarioAdmitido : null,[\s\S]{0,140}sinCuenta: AVISOS_SIN_CUENTA_ACTIVOS \? gestorSinCuenta\(\) : null \}\)/);
-  assert.match(APP, /const avisosInicio = AVISOS_NOVEDADES_ACTIVOS \? novedadesCuenta : BANDEJA_AVISOS_ACTIVA \? bandejaAvisos : null;/);
-  assert.match(APP, /tarjetaAvisos=\{avisosInicio \? \(/);
+  assert.match(APP, /const avisosCampana = AVISOS_NOVEDADES_ACTIVOS \? novedadesCuenta : BANDEJA_AVISOS_ACTIVA \? bandejaAvisos\s*: AVISOS_PUBLICOS_ACTIVOS \? avisosPublicos : null;/);
+  // La campana sale en la cabecera, al lado del «?», y abre la lista; la tarjeta de Inicio y «Marcar como leídos» ya no están.
+  assert.match(APP, /const campana = useCampanaAvisos\(avisosCampana\);/);
+  assert.match(APP, /campana=\{campana\.activa \? \{ noLeidos: campana\.noLeidos, onPress: abrirCampana \} : null\}/);
+  assert.match(APP, /\{campana \? <BotonCampana noLeidos=\{campana\.noLeidos\} onPress=\{campana\.onPress\} \/> : null\}\s*<Pressable\s*onPress=\{onAyuda\}/);
+  assert.match(APP, /<PantallaAvisos visible=\{campana\.abierta && Boolean\(avisosCampana\)\}/);
+  assert.doesNotMatch(APP, /TarjetaAvisosInicio|tarjetaAvisos=|marcarTodosLeidos/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
-  assert.match(APP, /<TarjetaAvisosInicio[^>]*onMarcarLeidos=\{avisosInicio\.marcarTodosLeidos\}/);
-  assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}avisosInicio\?\.recargar\(\);/);
+  assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}avisosCampana\?\.recargar\(\);/);
   // La casilla del alta va con su propio interruptor (12/11/2026), apagado hasta que salga el correo.
   assert.match(APP, /const CASILLA_ALTA_ACTIVA = AVISOS_NOVEDADES_ACTIVOS && AVISOS_CASILLA_ALTA_REMOTA === true;/);
   assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{CASILLA_ALTA_ACTIVA\}/);
@@ -871,7 +905,15 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   assert.match(APP, /AppState\.addEventListener\('change', \(estado\) => \{ if \(estado === 'active'\) recargarAvisos\(\); \}\)/);
   assert.match(APP, /observarAvisosRecibidos\(\(\) => recargarAvisos\(true\)\)/);
   assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'AccesoObligatorio.js'), 'utf8'), /avisosNovedades=\{avisosNovedades === true\}/);
-  assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'Inicio.js'), 'utf8'), /tarjetaAvisos = null,[\s\S]*\{tarjetaAvisos\}/);
+  // Inicio ya no pinta avisos: solo los cambios de lo que sigues, que se dan por vistos en pantalla.
+  const inicio = fs.readFileSync(path.join(RAIZ, 'componentes', 'Inicio.js'), 'utf8');
+  assert.doesNotMatch(inicio, /tarjetaAvisos/);
+  assert.match(inicio, /useVistoEnPantalla\(\{ activo: cambios\.length > 0 && !seccion && !cubierta,[\s\S]{0,120}onVisto: onCambiosVistos \}\)/);
+  assert.match(inicio, /<View style=\{e\.seccion\} ref=\{refCambios\} collapsable=\{false\}>/);
+  // Tapada (lista de la campana, ficha, novedades, lección, privacidad) o en segundo plano, Inicio no se ve: nada se da por visto.
+  const appFuente = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
+  assert.match(appFuente, /cubierta=\{campana\.abierta \|\| explicando \|\| Boolean\(novedadesRwadar\.ventana\) \|\| Boolean\(abierta\)[\s\S]{0,120}\|\| appEnSegundoPlano\}/);
+  assert.match(appFuente, /AppState\.addEventListener\('change', \(estado\) => setAppEnSegundoPlano\(estado !== 'active'\)\)/);
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
   // Encendido el 12/11/2026 por orden de Víctor; la casilla del alta sigue apagada.
   assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = true;/);
@@ -881,15 +923,15 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
 });
 
 test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Academy, y espera a la cuenta', () => {
-  const crear = new Function('destinoAvisoPendiente', 'cargando', 'usuarioAdmitido', 'setters', 'avisosInicio',
+  const crear = new Function('destinoAvisoPendiente', 'cargando', 'usuarioAdmitido', 'setters', 'avisosCampana', 'campana',
     `const { setAbierta, setOfertaAbierta, setExplicando, setPrivacidad, setLeccion, setPestana, setOrdenOfertas,
       setGrupoOfertas, setTipoOferta, setProveedorOferta, setGrupoProveedorAbierto, setBusquedaOfertas, setVistaBuscar,
       setDestinoAvisoPendiente, setBajaNotificacion } = setters; return (${efectoApp('destinoAvisoPendiente || cargando')});`);
   function ejecutar(destino, { cargando = false, usuario = UID } = {}) {
-    const cambios = {}, recargas = [];
+    const cambios = {}, recargas = [], aperturas = [];
     const setters = new Proxy({}, { get: (_, nombre) => (valor) => { cambios[nombre] = valor; } });
-    crear(destino, cargando, usuario, setters, { recargar: () => recargas.push(1) })();
-    return { cambios, recargas };
+    crear(destino, cargando, usuario, setters, { recargar: () => recargas.push(1) }, { abrir: () => aperturas.push(1) })();
+    return { cambios, recargas, aperturas };
   }
   const ofertas = ejecutar({ tipo: 'ofertas', destino: 'buscar' });
   assert.equal(ofertas.cambios.setPestana, 'buscar');
@@ -903,7 +945,10 @@ test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Acade
   assert.equal(Object.hasOwn(novedad.cambios, 'setOrdenOfertas'), false);
   assert.equal(ejecutar({ tipo: 'bienvenida', destino: 'academy' }).cambios.setPestana, 'academy');
   assert.equal(ejecutar({ tipo: 'actualizacion', destino: 'inicio' }).cambios.setPestana, 'inicio');
-  // Fuera de Inicio (sin la tarjeta «Avisos»), la baja arriba; la bienvenida es un aviso de servicio.
+  // A Inicio, con la lista de la campana abierta (con su «¿No quieres estos avisos?»); a otro sitio, no.
+  assert.equal(ejecutar({ tipo: 'novedad', destino: 'inicio' }).aperturas.length, 1);
+  assert.equal(ofertas.aperturas.length, 0);
+  // Fuera de Inicio (sin la lista de la campana), la baja arriba; la bienvenida es un aviso de servicio.
   assert.equal(ofertas.cambios.setBajaNotificacion, true);
   assert.equal(novedad.cambios.setBajaNotificacion, true);
   assert.equal(ejecutar({ tipo: 'novedad', destino: 'academy' }).cambios.setBajaNotificacion, true);
@@ -961,10 +1006,21 @@ test('bandeja encendida: solo pide mis_avisos_recientes, enseña lo recibido y g
   await b.pintar().marcarTodosLeidos();
   assert.equal((await b.esperar()).noLeidos, 0);
   assert.deepEqual(b.local.leidos.sort(), ['9', 'bienvenida']);
-  // La tarjeta de Inicio, sin «¿No quieres estos avisos?»: no hay Perfil › Avisos que abrir.
-  const tarjeta = tarjetaViva()({ avisos: b.pintar().avisos, leidos: b.pintar().leidos });
-  assert.match(texto(tarjeta), /Te damos la bienvenida a RWAdar/);
-  assert.equal(boton(tarjeta, DESACTIVAR), undefined);
+  // La lista de la campana, sin «¿No quieres estos avisos?»: no hay Perfil › Avisos que abrir.
+  const lista = campanaViva().lista(b.pintar());
+  assert.match(texto(lista), /Te damos la bienvenida a RWAdar/);
+  assert.equal(boton(lista, DESACTIVAR), undefined);
+  // Y la campana con la bandeja: abrirla la deja a cero.
+  const otra = bandeja();
+  await otra.esperar();
+  const c = campanaViva();
+  assert.equal(c.hook(otra.pintar()).noLeidos, 2);
+  c.hook(otra.pintar()).abrir();
+  c.hook(otra.pintar());
+  await otra.esperar();
+  assert.equal(c.hook(otra.pintar()).noLeidos, 0);
+  assert.deepEqual(otra.local.leidos.sort(), ['9', 'bienvenida']);
+  otra.h.desmontar();
   b.pintar().recargar();
   await b.esperar();
   assert.equal(b.rpc.length, 2, 'deslizar para actualizar vuelve a pedirlos');
@@ -994,7 +1050,7 @@ test('bandeja: si la base falla se dice en la tarjeta, y sin cuenta (interruptor
   assert.deepEqual(await pieza.cargarRecientes(10), { avisos: [10], leidos: ['bienvenida'] });
 });
 
-test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta la tarjeta de Inicio', () => {
+test('App: la bandeja tiene su interruptor aparte; encendida sola, la campana enseña sus avisos', () => {
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
   // 12/11/2026: los dos encendidos; con los avisos completos la bandeja no hace nada aparte.
   assert.match(modo, /export const AVISOS_BANDEJA_REMOTA = true;/);
@@ -1005,14 +1061,22 @@ test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta
   assert.equal(activa(true, true, false), true, 'encendida, con cuenta');
   assert.equal(activa(false, true, false), false, 'sin cuentas remotas, nada');
   assert.equal(activa(true, true, true), false, 'con los avisos completos, ya la traen ellos');
-  const inicio = new Function('AVISOS_NOVEDADES_ACTIVOS', 'BANDEJA_AVISOS_ACTIVA', 'novedadesCuenta', 'bandejaAvisos',
-    `return (${variableApp('avisosInicio')});`);
-  const completa = { tipo: 'completa' }, sola = { tipo: 'bandeja' };
-  assert.equal(inicio(false, false, completa, sola), null, 'apagadas las dos: ni tarjeta ni insignia');
-  assert.equal(inicio(false, true, completa, sola), sola);
-  assert.equal(inicio(true, false, completa, sola), completa);
+  const inicio = new Function('AVISOS_NOVEDADES_ACTIVOS', 'BANDEJA_AVISOS_ACTIVA', 'AVISOS_PUBLICOS_ACTIVOS', 'novedadesCuenta',
+    'bandejaAvisos', 'avisosPublicos', `return (${variableApp('avisosCampana')});`);
+  const completa = { tipo: 'completa' }, sola = { tipo: 'bandeja' }, publicos = { tipo: 'publicos' };
+  assert.equal(inicio(false, false, false, completa, sola, publicos), null, 'apagado todo: ni campana ni globo');
+  assert.equal(inicio(false, false, true, completa, sola, publicos), publicos, 'sin avisos de la cuenta, los públicos');
+  assert.equal(inicio(false, true, true, completa, sola, publicos), sola);
+  assert.equal(inicio(true, false, true, completa, sola, publicos), completa);
+  const publicosActivos = new Function('CUENTA_REMOTA_ACTIVA', 'AVISOS_NOVEDADES_ACTIVOS', 'BANDEJA_AVISOS_ACTIVA',
+    'AVISOS_SIN_CUENTA_ACTIVOS', `return (${variableApp('AVISOS_PUBLICOS_ACTIVOS')});`);
+  assert.equal(publicosActivos(true, true, false, true), false, 'con los avisos de la cuenta, no');
+  assert.equal(publicosActivos(true, false, true, true), false, 'con la bandeja, no');
+  assert.equal(publicosActivos(true, false, false, true), true);
+  assert.equal(publicosActivos(true, false, false, false), false, 'sin el interruptor de sin cuenta, no');
   assert.match(APP, /useBandejaAvisos\(\{ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA \? usuarioAdmitido : null \}\)/);
-  assert.match(APP, /novedades=\{avisos\.length \+ \(avisosInicio \? avisosInicio\.noLeidos : 0\)\}/);
+  // La insignia de la pestaña Inicio ya no cuenta avisos: solo los cambios de lo que sigues sin ver.
+  assert.match(APP, /novedades=\{cambiosNoVistos\(avisos, cambiosVistos\)\}/);
   // Perfil › Avisos, el push y la salida dependen solo de los avisos completos; la casilla, además, de su interruptor.
   assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{CASILLA_ALTA_ACTIVA\}/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
@@ -1117,18 +1181,47 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
   const baja = renderToStaticMarkup(React.createElement(modulo.AvisoBajaNotificacion, { onDesactivar() {}, onOcultar() {} }));
   assert.match(baja, /¿No quieres estos avisos\? Desactívalos en Perfil o en los ajustes del móvil\./);
   assert.match(baja, /aria-label="Ocultar aviso"/);
+});
+
+test('la campana y su lista se renderizan también con React y react-native-web reales', () => {
+  const React = require('react');
+  const { renderToStaticMarkup } = require('react-dom/server');
+  const absoluto = path.join(RAIZ, 'componentes', 'CampanaAvisos.js');
+  const original = Module._load, extension = Module._extensions['.js'];
+  Module._load = function (pedido, padre, principal) {
+    if (padre?.filename === absoluto) {
+      if (pedido === './Idioma') return soporteIdioma(React, require('react-native-web'));
+      if (pedido === 'react-native') return require('react-native-web');
+      if (pedido === '../lib/tema') return tema;
+      if (pedido === './Navegacion') return { Icono: ({ nombre }) => React.createElement('svg', { 'data-icono': nombre }) };
+      if (pedido === 'react-native-safe-area-context') return { SafeAreaProvider: ({ children }) => children, SafeAreaView: ({ children }) => children };
+      if (pedido === '../lib/avisos' || pedido === '../lib/datos') return {};
+    }
+    return original.call(this, pedido, padre, principal);
+  };
+  Module._extensions['.js'] = function (modulo, ruta) {
+    if (ruta !== absoluto) return extension(modulo, ruta);
+    modulo._compile(babel.transformSync(fs.readFileSync(ruta, 'utf8'), { filename: ruta, babelrc: false, configFile: false,
+      plugins: [jsx, commonjs] }).code, ruta);
+  };
+  delete require.cache[absoluto];
+  let modulo;
+  try { modulo = require(absoluto); } finally { Module._load = original; Module._extensions['.js'] = extension; }
+  // El botón: el dibujo de la campana y su globo, solo con algo sin leer.
+  const con = renderToStaticMarkup(React.createElement(modulo.BotonCampana, { noLeidos: 12, onPress() {} }));
+  assert.match(con, /aria-label="Avisos, 12 sin leer"/);
+  assert.match(con, /data-icono="campana"/);
+  assert.match(con, />9\+</);
+  const sin = renderToStaticMarkup(React.createElement(modulo.BotonCampana, { noLeidos: 0, onPress() {} }));
+  assert.match(sin, /aria-label="Avisos, ninguno sin leer"/);
+  assert.doesNotMatch(sin, /campanaGlobo/);
   const avisos = avisosCuenta.validarAvisosRecientes(RECIENTES);
-  const html = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos, leidos: ['9'], onDesactivar() {} }));
+  const html = renderToStaticMarkup(React.createElement(modulo.ListaAvisos, { avisos, sinLeer: ['bienvenida'], onAbrir() {}, onDesactivar() {} }));
   assert.match(html, /Te damos la bienvenida a RWAdar/);
   assert.match(html, /¿No quieres estos avisos\? Desactívalos en Perfil o en los ajustes del móvil\./);
-  assert.ok(html.lastIndexOf('¿No quieres estos avisos?') > html.lastIndexOf('Marcar como leídos'), 'debajo de la lista');
+  assert.ok(html.lastIndexOf('¿No quieres estos avisos?') > html.lastIndexOf('Te damos la bienvenida'), 'debajo de la lista');
   assert.match(html, /01\/11\/2026/);
-  assert.match(html, /Marcar como leídos/);
-  assert.doesNotMatch(html, /Ver todos|Ver menos/, 'con 2 avisos no hace falta desplegar');
-  const siete = avisosCuenta.validarAvisosRecientes([1, 2, 3, 4, 5, 6, 7].map((n) => ({ id: String(n), tipo: 'novedad',
-    titulo: `Novedad ${n}`, texto: 'Hay cambios en RWAdar.', enlace: null, creado_el: '2026-11-05T10:00:00Z' })));
-  const plegada = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos: siete, leidos: [] }));
-  assert.match(plegada, /Ver todos \(7\)/);
-  assert.equal((plegada.match(/aria-label="Novedad \d"/g) || []).length, 3, 'plegada, 3 de 7');
-  assert.match(plegada, /aria-label="Ver todos \(7\)"/);
+  assert.equal((html.match(/Sin leer/g) || []).length, 1, 'solo el que estaba sin leer al abrir');
+  assert.equal((html.match(/>Abrir</g) || []).length, 2);
+  assert.doesNotMatch(html, /Marcar como leídos|undefined/);
 });

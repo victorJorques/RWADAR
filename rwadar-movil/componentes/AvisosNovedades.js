@@ -17,16 +17,17 @@ import {
    ---------------------------------------------------------------------
    Solo se usa con AVISOS_NOVEDADES_REMOTOS encendido: App no llama al hook
    con una cuenta ni pinta estas piezas si está apagado. La excepción es la
-   tarjeta de Inicio con AVISOS_BANDEJA_REMOTA (useBandejaAvisos, más abajo):
-   solo la lista de avisos recibidos, sin el enlace a Perfil › Avisos.
+   campana con AVISOS_BANDEJA_REMOTA (useBandejaAvisos, más abajo): solo la
+   lista de avisos recibidos, sin el enlace a Perfil › Avisos.
    - Perfil › Avisos: «Avisos de novedades (correo y móvil)», que es el
      permiso, y «Notificaciones en este móvil», que pide permiso al sistema y
      registra este móvil. En binarios por debajo del código 24 (la 1.4.1) el
      segundo explica que llega con la 1.4.2 y no toca el SDK.
-   - Inicio: tarjeta «Avisos» con los últimos y un punto de no leído,
-     guardado en este dispositivo y por cuenta. Enseña los 3 primeros y
-     «Ver todos (N)» despliega los demás cargados en la misma tarjeta. Debajo,
-     «¿No quieres estos avisos?…» lleva a Perfil › Avisos.
+   - Campana de la cabecera (21/11/2026, componentes/CampanaAvisos.js): los
+     últimos, con un punto de no leído guardado en este dispositivo y por
+     cuenta. Abrirla es verlos (se guardan como leídos). Debajo, «¿No quieres
+     estos avisos?…» lleva a Perfil › Avisos. Sustituye a la tarjeta
+     «Avisos» de Inicio y a su «Marcar como leídos».
    - Al cargar, si este móvil está activo, renueva su registro en la base
      como mucho una vez al día, sin pedir permiso (la base borra los que no
      se renuevan en 180 días).
@@ -67,7 +68,7 @@ const TEXTO_MOVIL = 'Al activarlas, el sistema te pedirá permiso. Guardamos en 
 // (docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md, 2.4): sin él no vale el
 // consentimiento de la LSSI, art. 22.2 (condición C5).
 const TEXTO_MOVIL_QUIEN = 'Con ellas activadas, el componente de notificaciones de Google (Firebase) envía también a Google las fechas en que abres la app (hasta 30) y datos técnicos del móvil, que usa para sus estadísticas. Si no las activas, no le llega nada y seguirás viendo los avisos en Inicio.';
-// Enlace de baja de la tarjeta «Avisos» de Inicio.
+// Enlace de baja de las notificaciones que llevan fuera de Inicio (y de la campana).
 const TEXTO_DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
 const INICIAL = Object.freeze({ servidor: null, movil: null, avisos: [], leidos: [], cargando: false,
@@ -222,10 +223,8 @@ export function useAvisosNovedades({ cuenta, usuarioId, sinCuenta = null }) {
     if (g) cargar(g, turno.current);
   }
 
-  /* Los avisos cargados (hasta 10) cuentan para la insignia de Inicio. La
-     tarjeta enseña los primeros y «Ver todos (N)» despliega el resto, así que
-     todo lo que cuenta la insignia se puede ver. «Marcar como leídos» los
-     marca todos, para que la insignia siempre se pueda vaciar. */
+  /* Los avisos cargados (hasta 10) cuentan para el globo de la campana, que
+     los enseña todos: abrirla los marca como leídos (useCampanaAvisos). */
   const idsNoLeidos = vista.avisos.filter((aviso) => !vista.leidos.includes(aviso.id)).map((aviso) => aviso.id);
   function marcarTodosLeidos() {
     return marcarLeidos(idsNoLeidos);
@@ -235,7 +234,7 @@ export function useAvisosNovedades({ cuenta, usuarioId, sinCuenta = null }) {
 }
 
 /* Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026):
-   lo mismo que useAvisosNovedades para la tarjeta «Avisos» de Inicio (los
+   lo mismo que useAvisosNovedades para la campana de la cabecera (los
    avisos recibidos y cuáles has leído), pero sin el permiso de avisos, sin el
    móvil y sin renovar nada. App solo le pasa la cuenta con su interruptor
    encendido; sin cuenta no llama a nada. */
@@ -403,15 +402,8 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
   );
 }
 
-function fechaCorta(iso) {
-  const fecha = new Date(iso);
-  if (!Number.isFinite(fecha.getTime())) return '';
-  const dos = (n) => String(n).padStart(2, '0');
-  return `${dos(fecha.getDate())}/${dos(fecha.getMonth() + 1)}/${fecha.getFullYear()}`;
-}
-
 /* Baja a la vista al abrir una notificación de novedades que lleva a Buscar
-   o a la Academy, donde no está la tarjeta «Avisos» de Inicio. Como en la web
+   o a la Academy, donde no se abre la lista de la campana. Como en la web
    (?avisos=1), cada aviso enseña cómo dejar de recibirlos (LSSI, art. 21.2,
    párr. 2; condición C7 del anexo legal). `onDesactivar` lleva a Perfil ›
    Avisos y `onOcultar` lo quita. */
@@ -426,72 +418,6 @@ export function AvisoBajaNotificacion({ onDesactivar, onOcultar }) {
         style={({ pressed }) => [s.bajaAvisoCerrar, pressed && s.pulsado]}>
         <Text noTraducir style={s.bajaAvisoCerrarTexto}>×</Text>
       </Pressable>
-    </View>
-  );
-}
-
-/* Inicio › Avisos: los últimos, con un punto en los que no has abierto.
-   Plegada enseña los `maximo` primeros; «Ver todos (N)» despliega todos los
-   cargados dentro de la misma tarjeta y «Ver menos» la vuelve a plegar. El
-   punto de la cabecera y «Marcar como leídos» cuentan todos los cargados,
-   igual que la insignia de Inicio (`idsNoLeidos` de useAvisosNovedades):
-   todo lo que cuenta se puede ver, y marcar deja la insignia a cero.
-   `onDesactivar` (Perfil › Avisos) pinta debajo de la lista cómo dejar de
-   recibirlos. */
-export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false, error = '', maximo = 3,
-  onAbrir, onMarcarLeidos, onDesactivar }) {
-  const [verTodos, setVerTodos] = useState(false);
-  const plegable = avisos.length > maximo;
-  const plegada = plegable && !verTodos;
-  const visibles = plegada ? avisos.slice(0, maximo) : avisos;
-  const sinLeer = avisos.filter((aviso) => !leidos.includes(aviso.id));
-  const ocultosSinLeer = plegada ? avisos.slice(maximo).filter((aviso) => !leidos.includes(aviso.id)).length : 0;
-  const textoVer = plegada ? `Ver todos (${avisos.length})` : 'Ver menos';
-  return (
-    <View style={s.seccion}>
-      <View style={s.cabecera}>
-        <Text style={s.titulo} accessibilityRole="header">Avisos</Text>
-        {sinLeer.length ? <View style={s.punto} accessible={false} /> : null}
-      </View>
-      {visibles.map((aviso) => {
-        const nuevo = !leidos.includes(aviso.id);
-        return (
-          <Pressable key={aviso.id} onPress={() => onAbrir?.(aviso)} accessibilityRole="button"
-            accessibilityLabel={aviso.titulo} accessibilityHint={nuevo ? 'Sin leer' : undefined}
-            style={({ pressed }) => [s.aviso, pressed && s.avisoPulsado]}>
-            <View style={[s.punto, s.puntoAviso, !nuevo && s.puntoLeido]} accessible={false} />
-            <View style={s.avisoCuerpo}>
-              <Text style={s.avisoTitulo}>{aviso.titulo}</Text>
-              <Text style={s.avisoTexto} numberOfLines={3}>{aviso.texto}</Text>
-              {aviso.creadoEl ? <Text noTraducir style={s.fecha}>{fechaCorta(aviso.creadoEl)}</Text> : null}
-            </View>
-          </Pressable>
-        );
-      })}
-      {plegable ? (
-        <Pressable onPress={() => setVerTodos((antes) => !antes)} accessibilityRole="button"
-          accessibilityLabel={textoVer} accessibilityState={{ expanded: !plegada }}
-          accessibilityHint={ocultosSinLeer ? `${ocultosSinLeer} sin leer` : undefined}
-          style={({ pressed }) => [s.b3, pressed && s.pulsado]}>
-          <Text style={s.b3Texto}>{textoVer}</Text>
-        </Pressable>
-      ) : null}
-      {!visibles.length && !cargando && !error
-        ? <Text style={s.nota}>Aquí verás las fichas nuevas del radar y las novedades de RWAdar.</Text> : null}
-      {cargando && !visibles.length ? <ActivityIndicator color={C.senal} accessibilityLabel="Cargando tus avisos" /> : null}
-      {error ? <Text style={s.nota}>{error}</Text> : null}
-      {sinLeer.length ? (
-        <Pressable onPress={() => onMarcarLeidos?.(sinLeer.map((aviso) => aviso.id))} accessibilityRole="button"
-          accessibilityLabel="Marcar como leídos" style={({ pressed }) => [s.b3, pressed && s.pulsado]}>
-          <Text style={s.b3Texto}>Marcar como leídos</Text>
-        </Pressable>
-      ) : null}
-      {typeof onDesactivar === 'function' ? (
-        <Pressable onPress={onDesactivar} accessibilityRole="link" accessibilityLabel={TEXTO_DESACTIVAR}
-          accessibilityHint="Abre Perfil › Avisos" style={({ pressed }) => [s.enlaceBaja, pressed && s.pulsado]}>
-          <Text style={s.enlace}>{TEXTO_DESACTIVAR}</Text>
-        </Pressable>
-      ) : null}
     </View>
   );
 }
@@ -515,23 +441,6 @@ const s = StyleSheet.create({
   botonTexto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
   deshabilitado: { opacity: 0.6 },
   pulsado: { opacity: 0.8 },
-  // Como «Recién añadidas»: una sección más de Inicio.
-  seccion: { marginTop: 28, paddingTop: 28, borderTopWidth: 1, borderTopColor: C.bd, gap: 10 },
-  cabecera: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  titulo: { ...T.seccion, color: C.tx },
-  punto: { width: 10, height: 10, borderRadius: R.p, backgroundColor: C.senal },
-  puntoAviso: { marginTop: 8 },
-  puntoLeido: { backgroundColor: 'transparent' },
-  aviso: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'flex-start', gap: 12, padding: 14,
-    borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
-  avisoPulsado: { backgroundColor: C.s2 },
-  avisoCuerpo: { flex: 1, gap: 4 },
-  avisoTitulo: { ...T.cuerpoFte, color: C.tx },
-  avisoTexto: { ...T.menor, color: C.tx2 },
-  fecha: { ...T.dato, color: C.tx3 },
-  b3: { minHeight: UI.tactil, borderRadius: R.m, justifyContent: 'center', alignSelf: 'flex-start', paddingHorizontal: 8, marginHorizontal: -8 },
-  b3Texto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
-  enlaceBaja: { minHeight: UI.tactil, justifyContent: 'center' },
   enlace: { ...T.menor, color: C.senal, textDecorationLine: 'underline' },
   bajaAviso: { alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', gap: 8, paddingLeft: 16, paddingRight: 8,
     backgroundColor: C.s1, borderBottomWidth: 1, borderBottomColor: C.bd },

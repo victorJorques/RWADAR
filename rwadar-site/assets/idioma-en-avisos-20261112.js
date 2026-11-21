@@ -9,7 +9,6 @@
    idioma de la página. */
 (function(raiz){const extra={
   // Campana de la cabecera y su diálogo.
-  "Avisos, ninguno sin leer": "Notices, none unread",
   "Tus avisos": "Your notices",
   "Ver tus avisos": "See your notices",
   "Notificaciones y avisos en Perfil": "Notifications and notices in Profile",
@@ -72,7 +71,6 @@
   "Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con RWAdar. Se borrarán solas en el próximo envío.": "We have removed notifications from this browser, but could not confirm it with RWAdar. They will be deleted automatically with the next delivery.",
   "Fichas nuevas y novedades": "New listings and news",
   "Avisos de RWAdar": "RWAdar notices",
-  "No se han podido cargar los avisos. Vuelve a intentarlo más tarde.": "The notices could not be loaded. Please try again later.",
   "Cargando los avisos…": "Loading the notices…"
 };
 if(typeof module==='object'&&module.exports){module.exports=Object.freeze(extra);return;}

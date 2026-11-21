@@ -11,6 +11,7 @@ import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
 import CalculadoraInicio, { ResultadoFlotante } from './CalculadoraInicio';
 import Colabora from './Colabora';
+import { useVistoEnPantalla } from './CampanaAvisos';
 import { ofertasDestacadas } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
 import { cifrasInicio } from '../lib/inicio-cifras';
@@ -71,7 +72,7 @@ function PantallaInicio({ visible, titulo, volver, onCerrar, children }) {
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
-  tarjetaAvisos = null, irCalculadora = 0, onCalculadoraVista, onPantalla,
+  onCambiosVistos, irCalculadora = 0, onCalculadoraVista, onPantalla, cubierta = false,
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
@@ -103,6 +104,12 @@ export default function Inicio({
   avisarPantalla.current = onPantalla;
   useEffect(() => { avisarPantalla.current?.(seccion); }, [seccion]);
   useEffect(() => () => { avisarPantalla.current?.(null); }, []);
+  // «Cambios en lo que sigues»: vistos al estar 1,5 s en pantalla (la insignia
+  // de la pestaña Inicio solo cuenta los no vistos). Sin pantalla encima: ni
+  // una sección de Inicio ni nada que App ponga delante (cubierta: la lista de
+  // la campana, una ficha, la ventana de novedades… o la app en segundo plano).
+  const refCambios = useVistoEnPantalla({ activo: cambios.length > 0 && !seccion && !cubierta,
+    clave: cambios.map((c) => String(c.id)).join(','), onVisto: onCambiosVistos });
 
   // «Calcula tus números»: Inicio sube hasta el resultado al escribir y, en
   // «Afinar», lo enseña arriba en pequeño (que el teclado no lo tape).
@@ -171,10 +178,10 @@ export default function Inicio({
         </View>
       </View>
 
-      {/* Avisos de la cuenta y cambios en lo que sigues: solo si los hay. */}
-      {tarjetaAvisos}
+      {/* Cambios en lo que sigues: solo si los hay. Los avisos de la cuenta
+          están en la campana de la cabecera (21/11/2026). */}
       {cambios.length ? (
-        <View style={e.seccion}>
+        <View style={e.seccion} ref={refCambios} collapsable={false}>
           <Text style={e.seccionTit}>Cambios en lo que sigues</Text>
           {cambios.map((c) => <View key={String(c.id)}>{renderCambio(c)}</View>)}
         </View>

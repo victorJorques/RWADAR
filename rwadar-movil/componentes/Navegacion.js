@@ -50,6 +50,14 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
           <Circle cx="18.2" cy="5.2" r="2.2" fill={C.coral} stroke={C.noche2} strokeWidth="1.2" />
         </>
       ) : null}
+      {/* La campana de la cabecera: el mismo dibujo que la de la web, sin punto
+          (el número va en su globo, componentes/CampanaAvisos.js). */}
+      {nombre === 'campana' ? (
+        <>
+          <Path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z" {...comun} />
+          <Path d="M9.7 20h4.6" {...comun} />
+        </>
+      ) : null}
       {nombre === 'mas' ? (
         <>
           <Circle cx="5" cy="12" r="1.4" fill={color} stroke="none" />

@@ -15,11 +15,13 @@ function cuentaAdmitida(estado) {
    propósito: lib/datos.js lo borra solo después de quitarlo de la base. Lo
    mismo con el de las notificaciones sin cuenta
    (rwadar.editorial.avisos.sin-cuenta.v1, sin UUID): primero la baja en el
-   servidor y después la clave (claveSinCuentaQuitada de lib/datos.js). */
+   servidor y después la clave (claveSinCuentaQuitada de lib/datos.js).
+   Desde el 21/11/2026 también los leídos de los avisos públicos de la
+   campana y hasta cuándo se vieron los cambios de lo que sigues. */
 function clavesPrivadasDispositivo(claves) {
   return claves.filter(key => /^rwadar:cartera:v1:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
     /^rwadar\.cache\.catalogo\.v2:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
-    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1|avisos\.leidos\.v1|avisos\.renovado\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
+    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1|avisos\.leidos\.v1|avisos\.renovado\.v1|avisos\.publicos\.leidos\.v1|cambios\.vistos\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
 }
 
 module.exports = { cuentaAdmitida, clavesPrivadasDispositivo };
