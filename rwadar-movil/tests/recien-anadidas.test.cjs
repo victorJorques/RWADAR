@@ -84,18 +84,25 @@ test('con el catálogo publicado, las altas recientes son las de transparencia.j
   assert.deepEqual(lista.map((o) => o.slug), esperadas);
 });
 
-test('Ofertas de Inicio (rediseño del 10/11/2026): nuevas y Selección en un solo carrusel, sin duplicados y 6 como mucho', () => {
-  const o = (slug) => ({ slug });
+test('Ofertas de Inicio (21/11/2026): Principales por fecha de alta, de la más nueva a la más antigua, 6 como mucho', () => {
   const { ofertasDestacadas } = r;
-  assert.deepEqual(ofertasDestacadas([o('a'), o('b')], [o('b'), o('c')]).map((x) => x.slug), ['a', 'b', 'c'], 'primero las nuevas; la repetida, una vez');
-  // Con muchas nuevas, la Selección conserva sus huecos (3 como mucho).
-  assert.deepEqual(ofertasDestacadas([o('1'), o('2'), o('3'), o('4'), o('5')], [o('6'), o('7')]).map((x) => x.slug), ['1', '2', '3', '4', '6', '7']);
-  assert.deepEqual(ofertasDestacadas([o('1'), o('2'), o('3'), o('4'), o('5'), o('6'), o('7')], [o('a'), o('b'), o('c'), o('d')]).map((x) => x.slug),
-    ['1', '2', '3', 'a', 'b', 'c']);
-  assert.deepEqual(ofertasDestacadas([o('1'), o('2')], [o('1')]).map((x) => x.slug), ['1', '2'], 'una nueva de la Selección cuenta una vez');
+  const tabla = { a: { anadidaEl: '2026-11-03' }, b: { anadidaEl: '2026-11-02' }, c: { anadidaEl: '2026-09-30' }, d: { anadidaEl: '2026-09-30' },
+    e: { anadidaEl: '2026-09-30' }, f: { anadidaEl: '2026-09-30' }, g: { anadidaEl: '2026-09-30' }, h: { anadidaEl: '2026-11-20' } };
+  const o = (slug, plataformaNombre = slug, coleccion = 'principales') => ({ slug, plataformaNombre, titulo: slug, coleccion });
+  const todas = [o('c'), o('d'), o('a'), o('e'), o('b'), o('f'), o('g'), o('h', 'h', 'secundario')];
+  // La más nueva primero; a igual fecha, la de la Selección y después por proveedor; Reventa no entra; 6 como mucho.
+  assert.deepEqual(ofertasDestacadas(todas, [o('f')], { tabla }).map((x) => x.slug), ['a', 'b', 'f', 'c', 'd', 'e']);
+  // Sin huecos guardados: con muchas nuevas, las antiguas de la Selección no las desplazan.
+  const nuevas = ['1', '2', '3', '4', '5', '6', '7'].map((n, i) => ({ slug: n, plataformaNombre: n, titulo: n, coleccion: 'principales' }));
+  const tabla2 = Object.fromEntries(nuevas.map((x, i) => [x.slug, { anadidaEl: `2026-11-1${i}` }]));
+  tabla2.viejo = { anadidaEl: '2026-09-30' };
+  assert.deepEqual(ofertasDestacadas([...nuevas, o('viejo')], [o('viejo')], { tabla: tabla2 }).map((x) => x.slug), ['7', '6', '5', '4', '3', '2']);
+  assert.deepEqual(ofertasDestacadas([o('a'), o('a')], [], { tabla }).map((x) => x.slug), ['a'], 'la repetida, una vez');
+  assert.deepEqual(ofertasDestacadas([o('a')], [], { tabla, catalogoCaducado: true }), [], 'con el catálogo caducado, ninguna');
   assert.deepEqual(ofertasDestacadas([], []), []);
-  assert.deepEqual(ofertasDestacadas(null, [o('x'), null, { slug: 7 }]).map((x) => x.slug), ['x'], 'lo que no tiene slug no entra');
+  assert.deepEqual(ofertasDestacadas(null, null).map((x) => x.slug), []);
+  assert.deepEqual(ofertasDestacadas([null, { slug: 7 }, o('a')], [], { tabla }).map((x) => x.slug), ['a'], 'lo que no tiene slug no entra');
   // La web hace lo mismo (ofertasInicio de rwadar-20260820.js).
   const web = fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/rwadar-20260820.js'), 'utf8');
-  assert.match(web, /function ofertasInicio\(c,nuevas\)\{[\s\S]*?\.slice\(0,3\)[\s\S]*?\[\.\.\.nuevas\.slice\(0,6-resto\.length\),\.\.\.resto\][\s\S]*?lista\.length===6/);
+  assert.match(web, /function ofertasInicio\(c\)\{[\s\S]*?o\.coleccion==='principales'[\s\S]*?altaOferta\(b\)\.localeCompare\(altaOferta\(a\)\)\|\|\(enSel\.has\(b\.slug\)\?1:0\)-\(enSel\.has\(a\.slug\)\?1:0\)\|\|masNuevasPrimero\(a,b\)\)\.slice\(0,6\)/);
 });

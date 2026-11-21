@@ -212,7 +212,7 @@ const es = {
     cifras: { ofertas: 'Ofertas', plataformas: 'Plataformas', revisado: 'Revisado el', pendiente: 'Revisión pendiente', ultima: 'Última revisión' },
     ofertas: {
       titulo: 'Ofertas',
-      sub: 'Las últimas añadidas y las que pasan nuestras 5 comprobaciones',
+      sub: 'Las últimas añadidas, de la más nueva a la más antigua',
       cinco: '¿Qué son las 5 comprobaciones?',
       cincoNota: 'Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.',
       etiquetaCinco: 'Pasa las 5 comprobaciones',

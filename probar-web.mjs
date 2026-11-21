@@ -2606,23 +2606,24 @@ for(const [nombre,alterar] of [
   prueba('sin cifras, las frases con plantilla vuelven a su texto en castellano y el idioma lo traduce',
     conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
-  // Recién añadidas (04/11): altas de los últimos 30 días, de la más nueva a la más antigua y 6 como mucho; sin ninguna, oculto.
-  const alta=o=>transparencia.ofertas[o.slug]?.anadidaEl||'',dA=o=>Math.round((Date.UTC(ahora.getFullYear(),ahora.getMonth(),ahora.getDate())-Date.parse(alta(o)+'T00:00:00Z'))/864e5);
-  const altas=emi.filter(o=>o.coleccion==='principales'&&alta(o)&&dA(o)>=0&&dA(o)<30).sort((a,b)=>alta(b).localeCompare(alta(a))||a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||
-    a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug),
-    // El carrusel «Ofertas» (rediseño del 10/11/2026): las altas y, en sus 3 huecos, la Selección que no esté ya.
-    destacadas=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio(),ofertasRecienAnadidas()).map(o=>o.slug))",c)),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
-  const conAltas=carrusel(),oculto=p.obtiene('relNuevas').hidden;
+  // Inicio, «Ofertas» (21/11/2026, orden de Víctor): las de Principales por fecha de alta, de la más nueva a la más antigua y 6 como
+  // mucho; a igual fecha, primero las que pasan las 5 comprobaciones y después por proveedor y título. Sin huecos guardados.
+  const altaIni=o=>transparencia.ofertas[o.slug]?.anadidaEl||'';
+  const enSelIni=new Set(JSON.parse(vm.runInContext("JSON.stringify(cifrasInicio().seleccion.map(o=>o.slug))",c)));
+  const espInicio=()=>emi.filter(o=>o.coleccion==='principales').sort((a,b)=>altaIni(b).localeCompare(altaIni(a))||(enSelIni.has(b.slug)?1:0)-(enSelIni.has(a.slug)?1:0)||
+    a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug);
+  const destacadas=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio()).map(o=>o.slug))",c)),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
+  const conAltas=carrusel(),oculto=p.obtiene('relNuevas').hidden,espHoy=espInicio();
   vm.runInContext("var _a=Object.values(TRANSPARENCIA_POR_SLUG).map(e=>[e,e.anadidaEl]);_a.forEach(([e])=>e.anadidaEl='2000-01-01');huellaInicio='';pintarInicio()",c);
-  const sinAltas=[carrusel(),p.obtiene('relNuevas').hidden];
-  const selInicio=JSON.parse(vm.runInContext("JSON.stringify(cifrasInicio().seleccion.slice(0,3).map(o=>o.slug))",c));
+  for(const e of Object.values(transparencia.ofertas))e._f=e.anadidaEl,e.anadidaEl='2000-01-01';
+  const sinAltas=[carrusel(),p.obtiene('relNuevas').hidden],espSin=espInicio();
+  for(const e of Object.values(transparencia.ofertas))e.anadidaEl=e._f,delete e._f;
   vm.runInContext("_a.forEach(([e,f])=>e.anadidaEl=f);huellaInicio='';pintarInicio()",c);
-  prueba('Inicio: «Ofertas» une las altas de los últimos 30 días, ordenadas, y la Selección, sin duplicados y 6 como mucho',
-    JSON.stringify(conAltas)===JSON.stringify(destacadas)&&conAltas.length<=6&&new Set(conAltas).size===conAltas.length&&
-    altas.slice(0,6-selInicio.filter(x=>!altas.includes(x)).length).every((x,i)=>conAltas[i]===x)&&
-    selInicio.every(x=>conAltas.includes(x))&&oculto===!conAltas.length&&
-    // Sin altas, quedan las de la Selección.
-    JSON.stringify(sinAltas[0])===JSON.stringify(selInicio)&&sinAltas[1]===!selInicio.length&&
+  prueba('Inicio: «Ofertas» pone las de Principales de la más nueva a la más antigua (a igual fecha, la Selección primero), sin duplicados y 6 como mucho',
+    JSON.stringify(conAltas)===JSON.stringify(destacadas)&&JSON.stringify(conAltas)===JSON.stringify(espHoy)&&conAltas.length<=6&&
+    new Set(conAltas).size===conAltas.length&&oculto===!conAltas.length&&
+    // Todas con la misma fecha: primero las de la Selección.
+    JSON.stringify(sinAltas[0])===JSON.stringify(espSin)&&sinAltas[0].slice(0,Math.min(6,enSelIni.size)).every(x=>enSelIni.has(x))&&!sinAltas[1]&&
     /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="mercado"/.test(panelInicioHTML));
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
@@ -2715,7 +2716,7 @@ for(const [nombre,alterar] of [
   // Corrección (03/11), con el Inicio nuevo (04/11): Selección, aviso crítico y radar para el lector.
   const dc=s=>declaracionesCSS(css,s).join(';'),stop=vm.runInContext(`(()=>{const o={...EMI.find(x=>x.slug==='${sacada}')};
     o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP'}];return {sel:enSeleccionOferta(o)}})()`,c);
-  const conNota=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio(),ofertasRecienAnadidas()).filter(o=>NOTAS_SELECCION[o.slug]).length)",c));
+  const conNota=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio()).filter(o=>NOTAS_SELECCION[o.slug]).length)",c));
   prueba('Ofertas de Inicio: tarjetas que encogen, del mismo ancho, con su nota propia y nunca una Selección con aviso crítico',
     /min-width:0/.test(dc('.rel-tarjeta'))&&/grid-auto-columns:\d+%/.test(dc('.rel-tarjetas'))&&!stop.sel&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&
     (p.obtiene('relNuevasLista').innerHTML.match(/<p class="rel-tarjeta-nota">[^<]+</g)||[]).length===conNota);
