@@ -6,6 +6,28 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (42) · Claude · El catálogo se prepara solo y Víctor da el «dale» · TAREA PROGRAMADA
+
+- **Orden de Víctor (21/11):** «Tú ve haciendo en automático si puedes» y,
+  tras elegir entre «totalmente solo» y «con un toque tuyo», «Elegimos las dos
+  entonces, y así yo te doy también la verificación y miramos que haya abuso
+  también del Claude Code y todo».
+- **Qué hay:** la tarea programada «Catálogo automático de RWAdar» (cada día a
+  las 07:33, España) lee el «Vigilante diario». Si al catálogo le quedan menos
+  de 72 h, **prepara** el ciclo con la skill `investigacion-catalogo` en «modo
+  preparar»: hasta el PR de la entrega con la CI en verde, sin unir, aplicar ni
+  publicar. Después avisa a Víctor con una notificación y espera su «dale». Si
+  el vigilante falla por otra cosa, solo diagnostica y avisa. Cada aviso dice
+  cuántos agentes y cuánto tiempo gastó.
+- **Documentos:** `AGENTS.md` («Preparación automática», que sustituye la pausa
+  del 22/10), `docs/INTERNO.md`, la cabecera de
+  `docs/tareas/CICLO-DIARIO-CATALOGO.md`, el apartado «Modo preparar» de la
+  skill y su texto exacto en
+  `.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md`.
+- **Sin cambios de permisos para publicar:** aplicar, publicar, enviar la OTA
+  y avisar siguen necesitando la orden de Víctor («dale» o «haz la
+  investigación»).
+
 ## 21 de noviembre de 2026 (41) · Claude · Campana de avisos publicada en la web y la app, y aviso enviado · PUBLICADO
 
 - **Qué ve el usuario:** la campana arriba a la derecha, junto al «?», en la

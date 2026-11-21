@@ -1,4 +1,14 @@
-# Investigación del catálogo de RWAdar · inicio manual
+# Investigación del catálogo de RWAdar · preparación automática, publicación con orden
+
+> **Desde el 21/11/2026** (Víctor: «elegimos las dos… y así yo te doy también
+> la verificación»), la tarea programada «Catálogo automático de RWAdar»
+> **prepara** un ciclo cuando al catálogo publicado le quedan menos de 72 h:
+> hasta el PR de la entrega con la CI en verde, sin aplicar ni publicar. El
+> resto (aplicar, publicar, OTA y aviso) sigue esperando la orden de Víctor:
+> «dale» para el ciclo preparado o «haz la investigación». Donde abajo se dice
+> «inicio manual», vale igual para ese inicio automático de la preparación; lo
+> de «nada se programa por horario» queda sustituido por esta tarea. Ver
+> `AGENTS.md` y `.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md`.
 
 Vigente desde el 22 de octubre de 2026. Encargo de Víctor: investigar en
 profundidad las ofertas actuales y nuevas y publicar un catálogo de calidad

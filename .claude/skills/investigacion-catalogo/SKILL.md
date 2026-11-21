@@ -17,6 +17,15 @@ lo publicado como estaba.
 Procedimiento de fondo: `docs/tareas/CICLO-DIARIO-CATALOGO.md`. Esta skill es
 el orden de trabajo y lo aprendido para hacerlo rápido.
 
+**Modo preparar (tarea programada «Catálogo automático de RWAdar», desde el
+21/11/2026; ver `ORDEN-AUTOMATICA.md`).** Haz los pasos 0, 1 y 2 y, del paso 3,
+solo el punto 1 hasta el PR de la entrega con la CI en verde: **no lo unas**,
+ni «Aplicar catálogo», «Publicar web», «OTA Android» o «Avisar novedad». Borra
+el cerrojo de las noticias (paso 4) y manda a Víctor una notificación con lo
+que cambia, pidiéndole «dale». Con su «dale», sigue desde el paso 3: une el PR
+y, si han pasado horas, el vigía del punto 2 dice si hay que re-fechar o
+corregir antes de aplicar.
+
 ## 0 · Arranque (10 min)
 
 1. Lee `AGENTS.md`, la entrada de arriba de `docs/tareas/PARA-CODEX.md` y el

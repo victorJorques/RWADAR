@@ -43,11 +43,14 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Google y RSS** | Fichas, sitemap y RSS se ven sin sesión. Las lecciones de la Academy van con `noindex` y fuera del sitemap. |
 | **Panel de control** | El panel de los socios sigue en línea en <https://rwadar-panel.victorjorquesgranero.workers.dev> (se entra con enlace personal; sin él responde 401, comprobado el 07/11). Su código está en la rama `claude/panel-control`, **no en `main`**. |
 
-**Investigación del catálogo: inicio manual.** Solo empieza cuando Víctor
-pulsa **Ejecutar** o pide **«haz la investigación»**. Esa orden autoriza el
-ciclo completo de ese día (aplicar en Supabase, publicar la web y enviar la
-OTA si pasan las pruebas y la revisión independiente), y se puede repetir
-varias veces el mismo día. No hay programación automática ni cola pública «en
+**Investigación del catálogo: se prepara sola, se publica con la orden de
+Víctor.** Desde el 21/11/2026, la tarea programada «Catálogo automático de
+RWAdar» mira el vigilante cada mañana (07:33, España). Cuando al catálogo le
+quedan menos de 72 h, prepara el ciclo hasta el PR de la entrega (sin aplicar
+ni publicar) y avisa a Víctor con una notificación. Su «dale», o un «haz la
+investigación», autoriza el resto de ese ciclo: aplicar en Supabase, publicar
+la web y enviar la OTA si pasan las pruebas y la revisión independiente. Se
+puede repetir varias veces el mismo día. No hay cola pública «en
 investigación». Procedimiento:
 [`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md) y la
 skill `investigacion-catalogo`.
