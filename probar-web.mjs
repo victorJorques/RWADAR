@@ -2636,25 +2636,28 @@ for(const [nombre,alterar] of [
         if(f&&(!m||f>m[1]))m=[e,f];
       return m;});
     const base=emi.find(x=>x.slug===conAltas[0]);
+    // D: la fecha de revisión de su documentación (la del catálogo); antes10: diez días antes.
+    const D=base.documentacion?.revisadaEl||base.verificadaEl,antes10=new Date(Date.parse(D+'T00:00:00Z')-10*86400000).toISOString().slice(0,10);
     const caso=(alta,verificadaEl,{estado='actual',doc=null}={})=>JSON.parse(vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${conAltas[0]}'],f=e.anadidaEl;e.anadidaEl='${alta}';
       const o={slug:'${conAltas[0]}',verificadaEl:'${verificadaEl}',estadoRevision:'${estado}',documentacion:${doc?`{...${JSON.stringify(base.documentacion)},revisadaEl:'${doc}'}`:'null'}};
       const r=fechaTarjetaInicio(o);e.anadidaEl=f;return JSON.stringify(r)})()`,c));
     const es=(r,etiqueta,fecha)=>JSON.stringify(r)===JSON.stringify({etiqueta,fecha});
-    prueba('Inicio: cada tarjeta pone su fecha más reciente, «Añadida», «Verificada» (solo si se pudo verificar) o «Actualizada» (la del 3 se ve verificada el 20)',
+    prueba('Inicio: cada tarjeta pone su fecha más reciente, «Añadida», «Verificada» (solo si se pudo verificar) o «Actualizada» (la del 03/11 ya no sale como «Añadida»)',
       fechas.length===conAltas.length&&fechas.length>0&&esperadas.every(Boolean)&&base.documentacion&&
       // Ninguna tarjeta pone «Añadida» si después se verificó o se actualizó.
       conAltas.every((slug,i)=>{const o=emi.find(x=>x.slug===slug);return fechas[i][0]!=='Añadida el'||fechas[i][1]>=o.verificadaEl||o.estadoRevision!=='actual';})&&
       JSON.stringify(fechas.map(([e,f])=>[e,f]))===JSON.stringify(esperadas)&&fechas.every(([,f,v])=>v===vm.runInContext(`fechaES('${f}')`,c))&&
-      es(caso('2026-11-03','2026-11-20'),'Verificada el','2026-11-20')&&
-      es(caso('2026-11-20','2026-11-20'),'Añadida el','2026-11-20')&&
+      // Las fechas, relativas a la documentación de la ficha que se usa (D): la prueba vale con cualquier catálogo.
+      es(caso('2026-11-03',D),'Verificada el',D)&&
+      es(caso(D,D),'Añadida el',D)&&
       es(caso('2026-11-03','2999-01-01'),'Añadida el','2026-11-03')&&
       // Fuentes en conflicto o no verificable: nunca «Verificada»; con documentación del día, «Actualizada».
-      es(caso('2026-11-03','2026-11-20',{estado:'fuentes_en_conflicto'}),'Añadida el','2026-11-03')&&
-      es(caso('2026-11-03','2026-11-20',{estado:'no_verificable',doc:'2026-11-20'}),'Actualizada el','2026-11-20')&&
+      es(caso('2026-11-03',D,{estado:'fuentes_en_conflicto'}),'Añadida el','2026-11-03')&&
+      es(caso('2026-11-03',D,{estado:'no_verificable',doc:D}),'Actualizada el',D)&&
       // Documentación más reciente que la verificación: «Actualizada»; a igual fecha, «Verificada»; futura, no cuenta.
-      es(caso('2026-11-03','2026-11-10',{doc:'2026-11-20'}),'Actualizada el','2026-11-20')&&
-      es(caso('2026-11-03','2026-11-20',{doc:'2026-11-20'}),'Verificada el','2026-11-20')&&
-      es(caso('2026-11-03','2026-11-10',{doc:'2999-01-01'}),'Verificada el','2026-11-10')&&
+      es(caso('2026-11-03',antes10,{doc:D}),'Actualizada el',D)&&
+      es(caso('2026-11-03',D,{doc:D}),'Verificada el',D)&&
+      es(caso('2026-11-03',antes10,{doc:'2999-01-01'}),'Verificada el',antes10)&&
       vm.runInContext("(()=>{CATALOGO_CADUCADO=true;const r=fechaTarjetaInicio({slug:'x',verificadaEl:'2026-11-20'});CATALOGO_CADUCADO=false;return r})()",c)===null&&
       /"Verificada el": "Verified on"/.test(lee('assets/idioma-en-20261022.js'))&&/"Actualizada el": "Updated on"/.test(lee('assets/idioma-en-20261022.js')));
   }
@@ -3450,8 +3453,8 @@ prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
     privacidadLineal.includes('<a href="#firebase-android">apartado 5</a>') &&
-    // 14/11/2026: notificaciones sin cuenta (§6 «Notificaciones sin cuenta»).
-    privacidad.includes('Versión revisada el <time datetime="2026-11-14">14 de noviembre de 2026</time>'));
+    // 14/11/2026: notificaciones sin cuenta (§6 «Notificaciones sin cuenta»). 21/11/2026: la campana sin cuenta.
+    privacidad.includes('Versión revisada el <time datetime="2026-11-21">21 de noviembre de 2026</time>'));
 }
 // Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
 const seccionAvisos =privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));

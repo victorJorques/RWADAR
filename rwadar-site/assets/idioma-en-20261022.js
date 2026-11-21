@@ -1311,7 +1311,7 @@
   "Cancelable a los 5 años; reventa": "Can be cancelled after 5 years; resale",
   "Cancelable a los 15 años; reventa": "Can be cancelled after 15 years; resale",
   "Es una oferta principal y la fuente dice que se contrata desde España.": "It is a main offer and the source says it can be bought from Spain.",
-  "Es una referencia de reventa entre inversores, no una oferta abierta.": "It is a resale listing between investors, not an open offer.",
+  "Está en Reventa: RWAdar no confirma que se pueda contratar hoy; compruébalo en la fuente.": "It is in Resale: RWAdar does not confirm it can be bought today; check the source.",
   "Es un anuncio: todavía no se puede contratar.": "It is an announcement: it cannot be bought yet.",
   "La fuente dice que no se contrata desde España.": "The source says it cannot be bought from Spain.",
   "No consta en la fuente que se contrate desde España.": "The source does not state that it can be bought from Spain.",

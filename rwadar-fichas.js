@@ -244,7 +244,7 @@ function transparenciaOferta(o,catalogo) {
   return '<section aria-labelledby="transparencia"><h2 id="transparencia">Transparencia: lo que hemos comprobado</h2>'+
     '<p class="ui">Es una comprobación de la documentación, no una recomendación de inversión.</p><ul class="comprobaciones">'+
     fila('contratable',contratable,esc(contratable ? 'Es una oferta principal y la fuente dice que se contrata desde España.' :
-      o.coleccion==='secundario' ? 'Es una referencia de reventa entre inversores, no una oferta abierta.' :
+      o.coleccion==='secundario' ? 'Está en Reventa: RWAdar no confirma que se pueda contratar hoy; compruébalo en la fuente.' :
       o.coleccion==='en_camino' ? 'Es un anuncio: todavía no se puede contratar.' :
       o.disponibleEs===false ? 'La fuente dice que no se contrata desde España.' : 'No consta en la fuente que se contrate desde España.'),acceso,{campo:'contratable'})+
     editorial('supervisada')+editorial('documentoEspana')+
@@ -288,7 +288,7 @@ function paginaOferta(o,catalogo,imagen) {
     (adquiere ? '<div><dt>Qué se adquiere</dt><dd'+ORIGINAL+'>'+esc(adquiere)+'</dd></div>' : '')+'<div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
-    '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
+    '<div><dt>Mínimo</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar si se puede contratar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
     '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+
@@ -310,7 +310,10 @@ function paginaPlataforma(p,catalogo) {
   const asociadas = catalogo.ofertas.filter(o=>o.plataformaSlug===p.slug);
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(p.nota)+'</p><section><h2>Quién es</h2><p'+ORIGINAL+'>'+esc(tipoEmpresaVisible(p.tipo))+' · '+esc(p.cat)+' · '+esc(p.reg)+'</p><p'+ORIGINAL+'>'+esc(v.estadoOperativo?.detalle || '')+'</p></section>'+
     '<section><h2>Cómo funciona y qué se ha comprobado</h2><p'+ORIGINAL+'>'+esc(p.aval)+'</p><h3>Supervisión y alcance</h3><p'+ORIGINAL+'>'+esc(v.licenciaRegistro?.detalle || 'Consulta el alcance del registro en la fuente.')+'</p>'+fuentes(v.licenciaRegistro?.fuentes || [])+'</section>'+
-    '<section><h2>Quién puede acceder</h2><p'+ORIGINAL+'>'+esc(v.acceso?.detalle || p.acceso)+'</p><p>La presencia en el radar no confirma acceso desde España ni aprobación de un producto concreto.</p>'+fuentes(v.acceso?.fuentes || [])+'</section>'+riesgos+
+    '<section><h2>Quién puede acceder</h2><p'+ORIGINAL+'>'+esc(v.acceso?.detalle || p.acceso)+'</p><p>La presencia en el radar no confirma acceso desde España ni aprobación de un producto concreto.</p>'+fuentes(v.acceso?.fuentes || [])+'</section>'+
+    /* Los avisos importantes de la plataforma, con su fuente (auditoría del radar del 21/11/2026: se veían en el radar, no en su página). */
+    ((v.alertasCriticas || []).some(a=>a && a.detalle) ? '<section aria-labelledby="avisos-plataforma"><h2 id="avisos-plataforma">Avisos importantes</h2><ul class="riesgos"'+ORIGINAL+'>'+
+      v.alertasCriticas.filter(a=>a && a.detalle).map(a=>'<li>'+esc(a.detalle)+'</li>').join('')+'</ul>'+fuentes(v.alertasCriticas.flatMap(a=>a.fuentes || []))+'</section>' : '')+riesgos+
     '<section><h2>Fuentes y fechas</h2><p>Revisión editorial: '+esc(corta(v.verificadoEl || p.ver))+'. Cada fuente mantiene su propia fecha de consulta.</p>'+fuentes([...(v.estadoOperativo?.fuentes || []),...(v.alertasCriticas || []).flatMap(a=>a.fuentes || [])])+'</section>'+
     '<section><h2>Ofertas de esta plataforma en RWAdar</h2>'+(asociadas.length ? '<ul'+ORIGINAL+'>'+asociadas.map(o=>'<li><a href="'+rutaOferta(o)+'">'+esc(o.titulo)+'</a></li>').join('')+'</ul>' : '<p>Todavía no tenemos fichas de ofertas concretas de esta plataforma. Eso no quiere decir que no tenga productos.</p>')+'</section>'+
     '<p><a class="boton" href="'+esc(enlace(p.web))+'" target="_blank" rel="noopener noreferrer">Ir a la web de '+esc(p.n)+' ↗</a></p>';
