@@ -1,8 +1,14 @@
 /* =====================================================================
-   RWAdar · el gráfico en directo en la base (migración 35)
+   RWAdar · el gráfico en directo en la base (migraciones 35, 37 y 39)
    ---------------------------------------------------------------------
    PGlite con dobles de pg_net, pg_cron y Vault (mercado-directo-soporte.mjs)
-   y la 35 aplicada con privilegios por defecto hostiles. Sin red.
+   y la 35, la 37 y la 39 aplicadas con privilegios por defecto hostiles,
+   como en producción. Sin red.
+   - La 39 (21/11): con la 35 sola, 40 fallos seguidos (o 40 429 seguidos)
+     dan «interval out of range», como del 18 al 20/11; con la 39, la espera
+     es de 60 minutos con 36, 40 y 576 fallos seguidos y con 40 429
+     seguidos, y la siguiente respuesta buena pone los fallos a 0. Solo
+     cambian los exponentes; su verificador falla sin ella y pasa con ella.
    - pedir(): apagado no pide; encendido, UNA llamada exacta por ranura de
      5 minutos y nunca dos a menos de 240 s; esperas; clave Demo opcional;
      la diaria publicada cada 15 minutos.
@@ -20,7 +26,7 @@
 import { createRequire } from 'node:module';
 import { isDeepStrictEqual } from 'node:util';
 import {
-  baseDirecto, leer, filas, una, valor, fijarReloj, peticiones, responder, SQL35, RELOJ_PRODUCCION, URL_MERCADOS, URL_DIARIA,
+  baseDirecto, leer, filas, una, valor, fijarReloj, peticiones, responder, SQL35, RELOJ_PRODUCCION, URL_MERCADOS, URL_DIARIA, HOSTIL,
 } from './mercado-directo-soporte.mjs';
 import { informe } from './pruebas-soporte.mjs';
 
@@ -42,6 +48,9 @@ const APAGAR = leer('db/35_mercado_directo_apagar.sql');
 const DESHACER = leer('db/35_mercado_directo_deshacer.sql');
 const ESTADO = leer('db/35_mercado_directo_estado.sql');
 const APAGAR30 = leer('db/30_avisos_registrados_apagar.sql');
+const SQL37 = leer('db/37_mercado_directo_secuencia.sql');
+const SQL39 = leer('db/39_mercado_directo_espera.sql');
+const VERIFICAR39 = leer('db/39_mercado_directo_espera_verificar.sql');
 {
   const lineas = (t) => t.replace(/\n$/, '').split('\n');
   const primera = (t) => sinComentarios(t).split('\n').find((l) => l.trim() !== '');
@@ -58,10 +67,51 @@ const APAGAR30 = leer('db/30_avisos_registrados_apagar.sql');
     !/rwadar_novedades|rwadar_catalogo|public\.(?!tokenizacion_directo\(\))/.test(codigo) && !/(select|perform) cron\.schedule\(/.test(codigo));
   paso('la 35 solo da permiso a anon y authenticated para public.tokenizacion_directo()',
     (codigo.match(/\bgrant\b[^;]*;/gi) || []).join('|') === 'grant execute on function public.tokenizacion_directo() to anon, authenticated;');
+  // La 39: copia idéntica, una sola transacción, verificador de solo lectura y solo cambian los exponentes.
+  paso('la migración versionada 20261121120000 es una copia idéntica de db/39', leer('supabase/migrations/20261121120000_mercado_directo_espera.sql') === SQL39);
+  paso('la 39 empieza en «begin;» y acaba en su único «commit;»; su verificador es de solo lectura y acaba en «rollback;»',
+    primera(SQL39) === 'begin;' && (SQL39.match(/^commit;$/gm) || []).length === 1 && lineas(SQL39).at(-1) === 'commit;'
+    && primera(VERIFICAR39) === 'begin transaction read only;' && lineas(VERIFICAR39).at(-1) === 'rollback;'
+    && (VERIFICAR39.match(/^begin transaction read only;$/gm) || []).length === 1 && !/^commit;$/m.test(VERIFICAR39));
+  const funcion = (sql, nombre) => (sql.match(new RegExp(`create or replace function rwadar_mercado\\.${nombre}\\([\\s\\S]*?\\n\\$funcion\\$;`, 'g')) || []);
+  const codigo39 = sinComentarios(SQL39);
+  const comoLa35 = (f) => f.split('\n').filter((l) => !/^\s*-- RWAdar 39:/.test(l)).join('\n')
+    .replaceAll('power(2, least(fallos_seguidos + 1 - 3, 2))', 'power(2, fallos_seguidos + 1 - 3)').replaceAll('power(2, least(c.seguidos_429, 4))', 'power(2, c.seguidos_429)');
+  paso('la 39 solo redefine pedir_coingecko y leer_respuesta, y son las de la 35 salvo los tres exponentes (con least dentro)',
+    (codigo39.match(/create or replace function [\w.]+/g) || []).join('|') === 'create or replace function rwadar_mercado.pedir_coingecko|create or replace function rwadar_mercado.leer_respuesta'
+    && ['pedir_coingecko', 'leer_respuesta'].every((n) => funcion(SQL39, n).length === 1 && funcion(SQL35, n).length === 1 && comoLa35(funcion(SQL39, n)[0]) === funcion(SQL35, n)[0])
+    && (codigo39.match(/power\(2, least\(/g) || []).length === 3 && (codigo39.match(/power\s*\(/g) || []).length === 3);
+  paso('la 39 no da permisos a nadie ni crea relojes', !/\bgrant\b/i.test(codigo39) && !/cron\.schedule\(/.test(codigo39));
 }
 
 /* ---------- 2 · Datos de prueba ---------- */
 db = await baseDirecto();
+/* La 35 sola: 40 fallos seguidos (o 40 429 seguidos) desbordan la espera,
+   como del 18 al 20/11. Después, la 37 y la 39 con privilegios hostiles. */
+{
+  const verificar39 = await error(() => db.exec(VERIFICAR39));
+  paso(`con la 35 sola, el verificador de la 39 falla (${verificar39.slice(0, 80)})`, /sigue con la espera de la 35/.test(verificar39));
+  await fijarReloj(db, '2026-11-14T09:08:00Z');
+  await db.exec(`update rwadar_mercado.configuracion set encendido = true, peticion_id = 987654, pedido_el = '2026-11-14T09:03:00Z',
+    ultimo_pedido_el = '2026-11-14T09:03:00Z', fallos_seguidos = 40, diaria_leida_el = '2026-11-14T09:03:00Z'`);
+  const pedir35 = await error(() => db.query('select rwadar_mercado.pedir()'));
+  const fallos35 = (await una(db, 'select fallos_seguidos from rwadar_mercado.configuracion')).fallos_seguidos;
+  await db.exec("update rwadar_mercado.configuracion set peticion_id = 987655, pedido_el = '2026-11-14T09:07:30Z', fallos_seguidos = 0, seguidos_429 = 40");
+  await responder(db, 987655, { status: 429, contenido: '{}' });
+  const leer35 = await valor(db, 'select rwadar_mercado.leer()');
+  const seguidos35 = (await una(db, 'select seguidos_429 from rwadar_mercado.configuracion')).seguidos_429;
+  paso(`con la 35 sola, 40 fallos seguidos: pedir() falla con «interval out of range» y no apunta el fallo (${pedir35.slice(0, 40)}); con 40 429 seguidos, leer() tampoco (${JSON.stringify(leer35)})`,
+    /interval out of range/.test(pedir35) && fallos35 === 40 && leer35.fallo_coingecko === '22008' && seguidos35 === 40);
+  await db.exec(`delete from net._http_response; update rwadar_mercado.configuracion set encendido = false, peticion_id = null, pedido_el = null,
+    ultimo_pedido_el = null, fallos_seguidos = 0, seguidos_429 = 0, diaria_leida_el = null, reintentar_desde = null`);
+  await db.exec(HOSTIL);
+  await db.exec(SQL37);
+  await db.exec(SQL39);
+  await db.exec(SQL39);
+  await db.exec(HOSTIL.replace(/ grant /g, ' revoke ').replace(/ to /g, ' from '));
+  const verificado = await error(() => db.exec(VERIFICAR39));
+  paso(`la 37 y la 39 se aplican sobre la 35 (la 39, dos veces) y el verificador de la 39 pasa${verificado ? ' — ' + verificado : ''}`, verificado === '');
+}
 const TOKENS = Array.from({ length: 30 }, (_, i) => `tok-${i + 1}`);
 const diariaJSON = (tokens = TOKENS, generado = '2026-11-14T06:30:00Z', cambios = {}) => JSON.stringify({ version: 1, fuente: 'CoinGecko', categoria: 'tokenized-products',
   generado, pedidos: 40, incluidos: tokens.length, discontinuos: 0, cobertura: 90, tokens, puntos: [], ...cambios });
@@ -218,6 +268,52 @@ paso('24 válidos → nada (lista_corta)', await noGuarda(mercados(H('2026-11-18
     where o.cubo = floor(extract(epoch from $1::timestamptz) / 300)`, [new Date(ms - 70000).toISOString()])).map((x) => x.cg_id);
   paso('se guardan los 60 mayores y los de la diaria (el del puesto 70 sí; el 61, no)', guardados.length === 61 && guardados.includes('tok-70') && !guardados.includes('tok-61'));
   await db.query('update rwadar_mercado.configuracion set tokens = $1', [TOKENS]);
+}
+
+{
+  // La 39: con muchos fallos seguidos la espera sigue siendo de 60 minutos (con la 35, «interval out of range»).
+  const limpio = "update rwadar_mercado.configuracion set peticion_id = null, pedido_el = null, ultimo_pedido_el = null, reintentar_desde = null, fallos_seguidos = 0, seguidos_429 = 0";
+  const resultados = [];
+  let ms = H('2026-11-19T02:03:00Z');
+  for (const n of [36, 40, 576]) {
+    // Una petición perdida (pedir() la da por fallida) con n fallos seguidos.
+    await db.exec(limpio);
+    await db.query(`update rwadar_mercado.configuracion set peticion_id = 987000 + $1, pedido_el = $2, ultimo_pedido_el = $2, fallos_seguidos = $1`, [n, new Date(ms - 5 * MIN).toISOString()]);
+    await fijarReloj(db, ms);
+    let r = '';
+    const fallo = await error(async () => { r = await pedir(); });
+    await nuevas();
+    const c1 = await cfg();
+    resultados.push([`perdida ${n}`, fallo === '' && r === 'espera' && c1.fallos_seguidos === n + 1
+      && c1.reintentar_desde.getTime() === ms - 5 * MIN + 59.5 * MIN]);
+    // Un 503 con n fallos seguidos: leer() lo apunta sin fallo_coingecko.
+    ms += 2 * 60 * MIN;
+    await db.exec(limpio);
+    await db.query('update rwadar_mercado.configuracion set fallos_seguidos = $1', [n]);
+    const c = await ciclo(ms, () => ({ status: 503, contenido: 'no' }));
+    const c2 = await cfg();
+    resultados.push([`503 ${n}`, c.pedir === 'pedido' && c.leer.coingecko === 503 && !('fallo_coingecko' in c.leer) && c2.fallos_seguidos === n + 1
+      && c2.reintentar_desde.getTime() === ms + 59.5 * MIN]);
+    if (n === 576) {
+      // Hasta la hora no pide; a la hora, pide y la respuesta buena pone los fallos a 0.
+      const antes = await ciclo(ms + 55 * MIN);
+      const despues = await ciclo(ms + 60 * MIN);
+      resultados.push(['576 y después bien', antes.pedir === 'espera' && despues.pedir === 'pedido' && despues.leer.coingecko === 200
+        && (await cfg()).fallos_seguidos === 0 && (await cfg()).reintentar_desde === null]);
+    }
+    ms += 2 * 60 * MIN;
+  }
+  // 40 429 seguidos: 60 minutos (Retry-After más corto no la acorta).
+  await db.exec(limpio);
+  await db.exec('update rwadar_mercado.configuracion set seguidos_429 = 40');
+  const c429 = await ciclo(ms, () => ({ status: 429, contenido: '{}', headers: { 'Retry-After': '40' } }));
+  const c3 = await cfg();
+  resultados.push(['429 40', c429.leer.coingecko === 429 && c429.leer.espera_s === 3600 && !('fallo_coingecko' in c429.leer)
+    && c3.seguidos_429 === 41 && c3.reintentar_desde.getTime() === ms + 59.5 * MIN]);
+  await db.exec(limpio);
+  const mal = resultados.filter(([, b]) => b !== true).map(([k]) => k);
+  paso(`con la 39, una petición perdida o un 503 con 36, 40 y 576 fallos seguidos y un 429 con 40 seguidos apuntan el fallo y esperan 60 minutos desde la petición, sin «interval out of range»; después, la respuesta buena pone los fallos a 0${mal.length ? ' — ' + mal.join(', ') : ''}`,
+    mal.length === 0 && resultados.length === 8);
 }
 
 /* ---------- 5 · La lista de la diaria ---------- */
@@ -424,4 +520,4 @@ const verificar = () => error(() => db.exec(VERIFICAR));
 const segundos = (performance.now() - t0) / 1000;
 paso(`dura menos de 25 s en esta máquina (${segundos.toFixed(1)} s; tope por archivo de la CI)`, segundos < 25);
 await db.close();
-informe('Gráfico en directo: la base (migración 35)', ok, fail);
+informe('Gráfico en directo: la base (migraciones 35, 37 y 39)', ok, fail);
