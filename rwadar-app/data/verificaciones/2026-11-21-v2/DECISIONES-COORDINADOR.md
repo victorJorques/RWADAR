@@ -172,3 +172,66 @@ profitus-bonds; spiko: la página de particulares) quedan fuera de Git
   investigación»).
 - Spiko Smart Cash: la ficha de la AMF.
 - Kraken xStocks: si alguna condición final incluye España.
+
+## 6. Auditoría completa (obligatoria desde el 20/11/2026)
+
+Auditores independientes (no investigaron ni montaron) abrieron hoy la fuente
+de cada dato visible (`auditoria/<ámbito>.md`): spiko (150 datos),
+acciones-oro-tesoro, brickwise-a (189), brickwise-b, suiza-hausera (98),
+noticias (55), sitio-web (412) y radar-plataformas. Siete de ellos se cortaron
+a las 19:05 UTC por el límite de uso de la cuenta y se relanzaron a las 20:11
+UTC; sus informes son de las 20:12–20:31 UTC.
+
+**Regla:** entran **todos los hallazgos obligatorios** de cada informe, con su
+`correccionExacta` (sobre todo la limpieza de referencias con fechas viejas:
+re-fechar al 21/11 con la consulta de hoy o quitarlas, como diga cada
+hallazgo), salvo lo que se decide abajo. Las recomendadas entran si solo
+aclaran un texto de la entrega y el informe da su fuente de hoy; las que piden
+código de la web van en su PR.
+
+**Decisiones del coordinador sobre hallazgos concretos:**
+
+- **Spiko Smart Cash · acceso desde España** (opción (a) del auditor): se
+  mantiene la referencia publicada «Disponible para particulares residentes en
+  España según Spiko, tras el alta y la verificación de identidad (KYC)»
+  (fechaDato 2026-11-13, consulta 21/11) y se re-fecha al 21/11 el aviso sobre
+  la CNMV y la AMF. No se toca `resumenOferta` (código) en este ciclo.
+- **Spiko Letras Euro y Dólar · «Riesgo KID»:** «1 de 7, sin contar los
+  riesgos del registro en blockchain y de la cartera digital (el KID los deja
+  fuera)» (Dólar: «…, más riesgo de cambio, sin contar…»). Dólar: añadir la
+  fuente de la CNMV (iicextranjera N0401205J) a `fuentesActuales` y a
+  `documentacion.fuentes`, como Letras Euro.
+- **Brickwise · aviso del número fiscal austriaco (las 8):** el texto del
+  auditor, que respalda el literal de la ayuda de Brickwise: «Para comprar hace
+  falta un número fiscal austriaco: se pide a Hacienda de Austria y, si lo
+  pides con el asesor fiscal que te presenta Brickwise, no cuesta nada. Las
+  rentas tributan en Austria (la emisora presenta una declaración conjunta) y,
+  si vendes con ganancia, pagas allí la ImmoESt.» Si un aviso no admite ese
+  largo, la primera frase entera y la segunda en la referencia de la ficha.
+- **Hausera · mínimo corto:** «Desde 100 € · suscripción desde el 25/11». Si la
+  comprobación «mínimo corto con la fecha de la ficha» de
+  `.claude/skills/investigacion-catalogo/entrega/despues.mjs` lo rechaza, se
+  ajusta para aceptar en Próximas la fecha del evento (con su prueba en
+  `motor.test.mjs`), sin aflojarla para las demás. Aviso de la inscripción,
+  resumen y «Próxima operación» como el auditor; fuera la referencia «Destino
+  de consulta comprobado» del 30/09.
+- **BOSS Info y Switzerlend · ¿pasar a «principales»?** El auditor lo propone
+  (venta directa del emisor abierta hoy, como Aktionariat) o que la dirección
+  decida dejarlas en reventa. **Decisión del coordinador: se quedan en reventa
+  en este ciclo** (cambiar de colección es un cambio de estructura que no da
+  tiempo a revisar bien antes del lunes); se anota en §5 para el próximo. Sus
+  otras obligatorias (referencias del 22/10 fuera; «Clase» de Switzerlend con
+  «si el dinero alcanza… no es un tope») entran.
+- **Noticias:** cero obligatorias; las 4 recomendadas (sujeto de BaFin, emisor
+  de Jersey en Robinhood, quién autoriza Bit2Me STX, doble fecha) van a la
+  próxima edición de noticias, no a esta entrega.
+- **Web (código):** las obligatorias 1–4 de `sitio-web.md` (mínimo de las
+  fichas «No documentado en euros», privacidad y novedades) van en el PR #190;
+  las 5–7 (referencias viejas de Spiko, mTBILL y Prosegur) entran en esta
+  entrega.
+
+## 5 bis. Pendiente añadido por la auditoría
+
+- BOSS Info y Switzerlend: decidir si pasan a «principales».
+- Las recomendadas de la web (cuota del mercado, etiqueta «Nueva» con el mismo
+  plazo en Inicio y en Ofertas, /cambios y RSS) y de las noticias.

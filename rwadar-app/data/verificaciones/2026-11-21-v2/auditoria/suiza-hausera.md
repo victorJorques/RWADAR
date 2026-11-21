@@ -61,6 +61,7 @@ publicado (`2026-11-20.2-v2`) más los cambios de `DECISIONES-COORDINADOR.md`
 | Hausera, token | Polygon `0xbc10…C265` · bloque 97.724.722, 20:22:32 | `name()` «Alicante_3», `totalSupply()` 0. |
 | Hausera, registros CNMV | ERIR de Ursus-3, págs. 1 a 4; PSFP; ficha ESI · 20:22:37–20:23:31 | Solo SPV a SPV 8 (últimas del 23/10/2026); ni SPV 9, 10 ni 11. PSFP: 0 coincidencias. Ursus-3: n.º 251, 29/08/2013. |
 | Enlaces citados | 20:25:32–20:25:40 | Todos 200 (Drive, hausera.io, FINMA, portales, PDF). |
+| Web publicada | `https://rwadar.pages.dev/ofertas/<slug>` · 20:31:38–20:31:39 | Las tres páginas (Hausera, Boss Info, Switzerlend) dan 200 y llevan en `description` «Condiciones pendientes de nueva revisión…»; Boss Info y Switzerlend, «Es una referencia de reventa entre inversores, no una oferta abierta». |
 
 ## Obligatorias
 
