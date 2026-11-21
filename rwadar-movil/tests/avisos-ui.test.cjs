@@ -710,7 +710,7 @@ function efectoApp(fragmento) {
 }
 
 test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las nuevas', () => {
-  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+  const entorno = { USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
   for (const n of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[n] = n;
   const Privacidad = funcionApp('Privacidad', entorno);
   // Notificaciones sin cuenta (14/11/2026): con su interruptor, la privacidad de la app lo cuenta, con su inglés.
@@ -770,7 +770,7 @@ test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las 
 });
 
 test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximamente»', () => {
-  const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect() {}, useRef: (i) => ({ current: i }), MODO_LOCAL: false,
+  const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect() {}, useRef: (i) => ({ current: i }),
     USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
   for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
     'PanelAvisos', 'ActivityIndicator', 'MisInversiones', 'Colabora']) entorno[n] = n;
@@ -812,7 +812,7 @@ test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', 
   // PantallaPerfil: con la petición, cada medida de Avisos baja hasta ella; deslizar la consume.
   const efectos = [];
   const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect: (fn) => efectos.push(fn),
-    useRef: (i) => ({ current: i }), MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
+    useRef: (i) => ({ current: i }), USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
   for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
     'PanelAvisos', 'ActivityIndicator', 'MisInversiones', 'Colabora']) entorno[n] = n;
   const PantallaPerfil = funcionApp('PantallaPerfil', entorno);
@@ -1023,7 +1023,7 @@ test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta
   // El texto versionado del permiso no cambia.
   assert.equal(avisosCuenta.VERSION_AVISOS, 'novedades-v2-2026-11-06');
   // Privacidad: con la bandeja, una frase de lo que se ve y se guarda; sin ella, nada nuevo.
-  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+  const entorno = { USUARIO_LOCAL: true, AVISOS_SIN_CUENTA_ACTIVOS: false, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
   for (const n of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[n] = n;
   const Privacidad = funcionApp('Privacidad', entorno);
   const FRASE = /En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar\. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo\. No se envían por correo ni como notificaciones\./;

@@ -16,7 +16,7 @@ const LIB = path.join(RAIZ, 'lib') + path.sep;
 const UID = '11111111-1111-4111-8111-111111111111';
 const OTRO = '22222222-2222-4222-8222-222222222222';
 const TOKEN = 'ExponentPushToken[abcdefghijklmnop1234]';
-const MODO = { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false, AVISOS_NOVEDADES_REMOTOS: true };
+const MODO = { SERVICIOS_USUARIO_REMOTOS: false, AVISOS_NOVEDADES_REMOTOS: true };
 
 /* Como el cargador de flujo.test.cjs, pero los dobles siguen activos hasta
    restaurar: avisos.js lee expo-updates al llamar, no al cargarse. */
@@ -236,7 +236,7 @@ function datos(inicial = {}) {
   const e = cargar('lib/datos.js', {
     '@react-native-async-storage/async-storage': { __esModule: true, default: storage },
     'react-native': { Platform: { OS: 'android' } },
-    'datos.js:./modo-local': { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false },
+    'datos.js:./modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
     'datos.js:./supabase': {},
   });
   e.restaurar();

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
-import { exigirModoLocal, MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-local';
-import { validarRadarLocal, revisionTemporalOferta, ofertaConCifrasVigentes } from './verificacion-local';
+import { SERVICIOS_USUARIO_REMOTOS } from './modo-local';
+import { revisionTemporalOferta, ofertaConCifrasVigentes } from './verificacion-local';
 import { CACHE_CATALOGO, crearLectorCatalogo } from './catalogo-remoto';
 import { normalizarProgreso, progresoVacio } from './academy-progreso';
 import { clavesPrivadasDispositivo } from './acceso-obligatorio';
@@ -9,34 +9,15 @@ import { quitarPushConCliente } from './avisos-cuenta';
 import { bajaSinCuenta, validarGuardado } from './avisos-sin-cuenta';
 import { compararVersiones, versionValida } from './novedades-rwadar';
 
-/* Supabase no se importa al evaluar este módulo. En modo interno ni siquiera
-   se ejecuta su archivo, de modo que cargar la app no puede crear un cliente
-   dirigido al proyecto de producción por accidente. */
-let moduloSupabase = MODO_LOCAL ? null : require('./supabase');
+let moduloSupabase = require('./supabase');
 function supabaseRemoto() {
-  if (MODO_LOCAL) throw new Error('Supabase está bloqueado en modo local');
   if (!moduloSupabase) throw new Error('No se pudo cargar el cliente remoto');
   return moduloSupabase;
 }
 
-let escaparateCache = null;
-function escaparateLocal() {
-  exigirModoLocal();
-  if (!escaparateCache) {
-    const cargado = require('../fixtures/escaparate-local.json');
-    escaparateCache = cargado?.default || cargado;
-  }
-  if (!escaparateCache || !Array.isArray(escaparateCache.plataformas) ||
-      !Array.isArray(escaparateCache.ofertas) || !Array.isArray(escaparateCache.secundario)) {
-    throw new Error('El escaparate local no tiene el contrato esperado');
-  }
-  validarRadarLocal(escaparateCache.plataformas);
-  return escaparateCache;
-}
-
-const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
+const USUARIO_LOCAL = SERVICIOS_USUARIO_REMOTOS !== true;
 // No migrar ni reintentar operaciones de una instalación productiva anterior.
-const PREFIJO = MODO_LOCAL ? 'rwadar.local.' : USUARIO_LOCAL ? 'rwadar.editorial.' : 'rwadar.';
+const PREFIJO = USUARIO_LOCAL ? 'rwadar.editorial.' : 'rwadar.';
 const CACHE_RADAR = `${PREFIJO}cache.radar`;
 const CACHE_FUERA = `${PREFIJO}cache.fuera`;
 const CACHE_OFERTAS = `${PREFIJO}cache.ofertas`;
@@ -47,12 +28,14 @@ const CACHE_SIGO = `${PREFIJO}siguiendo`;
 const CACHE_PENDIENTES = `${PREFIJO}seguimiento.pendiente`;
 const PROGRESO_ACADEMY = `${PREFIJO}academy.progreso.v1`;
 const OFERTAS_GUARDADAS = `${PREFIJO}ofertas.guardadas.v1`;
+/* Algunas de estas cachés solo las escribían versiones anteriores de la app:
+   siguen en la lista para que «Borrar datos del dispositivo» las quite. */
 const CLAVES_LOCALES = [
   CACHE_RADAR, CACHE_FUERA, CACHE_OFERTAS, CACHE_SECUNDARIO,
   CACHE_EXCLUSIONES, CACHE_FECHA, CACHE_SIGO, CACHE_PENDIENTES, PROGRESO_ACADEMY,
   OFERTAS_GUARDADAS,
 ];
-if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
+CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
 /* Novedades de RWAdar (12/11/2026): la última versión de la ventana de
    novedades que se ha visto en este dispositivo, p. ej. «2026-11-12». No es
    un dato personal ni va por cuenta; no sale del móvil. Solo evita enseñarla
@@ -74,7 +57,7 @@ let lectorCatalogo = null;
 let accesoCatalogo = null;
 const DATOS_PERSONALES = new Set([CACHE_SIGO, CACHE_PENDIENTES, PROGRESO_ACADEMY, OFERTAS_GUARDADAS]);
 function claveAlmacenamiento(clave) {
-  if (MODO_LOCAL || !DATOS_PERSONALES.has(clave)) return clave;
+  if (!DATOS_PERSONALES.has(clave)) return clave;
   return accesoCatalogo ? clave + ':' + accesoCatalogo.usuarioId : null;
 }
 export function configurarAccesoCatalogo(usuarioId, obtenerCliente) {
@@ -88,7 +71,6 @@ export function configurarAccesoCatalogo(usuarioId, obtenerCliente) {
   } else accesoCatalogo.obtenerCliente = obtenerCliente;
 }
 async function cargarCatalogoRemoto(opciones) {
-  if (MODO_LOCAL) throw new Error('El catálogo remoto está bloqueado en modo local');
   if (!accesoCatalogo) throw new Error('Se necesita una cuenta confirmada para consultar el catálogo');
   const acceso = accesoCatalogo;
   // Even a cache-only request requires the current verified account. Never
@@ -107,22 +89,8 @@ async function cargarCatalogoRemoto(opciones) {
 }
 
 export async function cargarCatalogo(opciones = {}) {
-  if (!MODO_LOCAL) return cargarCatalogoRemoto(opciones);
-  const [radar, ofertas] = await Promise.all([cargarRadar(opciones), cargarOfertas(opciones)]);
-  return { plataformas: radar.datos, ofertas: ofertas.datos, deCache: false,
-    local: true, error: radar.error || ofertas.error };
+  return cargarCatalogoRemoto(opciones);
 }
-
-export const CLAVES_MODO_LOCAL = Object.freeze({
-  radar: 'rwadar.local.cache.radar',
-  fuera: 'rwadar.local.cache.fuera',
-  ofertas: 'rwadar.local.cache.ofertas',
-  secundario: 'rwadar.local.cache.secundario',
-  exclusiones: 'rwadar.local.cache.exclusiones',
-  fecha: 'rwadar.local.cache.fecha',
-  siguiendo: 'rwadar.local.siguiendo',
-  pendientes: 'rwadar.local.seguimiento.pendiente',
-});
 
 /* ---------------------------------------------------------------------
    Consulta sin conexión
@@ -139,7 +107,7 @@ async function leer(clave) {
     if (!destino) return null;
     const cuenta = accesoCatalogo;
     const s = await AsyncStorage.getItem(destino);
-    if (!MODO_LOCAL && DATOS_PERSONALES.has(clave) && cuenta !== accesoCatalogo) return null;
+    if (DATOS_PERSONALES.has(clave) && cuenta !== accesoCatalogo) return null;
     return s ? JSON.parse(s) : null;
   } catch {
     return null;
@@ -147,31 +115,13 @@ async function leer(clave) {
 }
 
 export async function cargarRadar({ soloCache = false } = {}) {
-  if (MODO_LOCAL) {
-    /* En modo interno el fixture validado es la autoridad. Una caché de una
-       versión anterior podría no traer el overlay y reactivar claims que el
-       barrido actual contradice, así que nunca se usa para saltarse la
-       validación aunque el llamador pida `soloCache`. */
-    const datos = validarRadarLocal(escaparateLocal().plataformas);
-    try {
-      await guardar(CACHE_RADAR, datos);
-      await AsyncStorage.setItem(CACHE_FECHA, new Date().toISOString());
-    } catch {}
-    return { datos, deCache: false, local: true, error: null };
-  }
   const catalogo = await cargarCatalogoRemoto({ soloCache });
   return { ...catalogo, datos: catalogo.plataformas };
 }
 
-export async function cargarFuera({ soloCache = false } = {}) {
-  if (!MODO_LOCAL && !accesoCatalogo) return { datos: [], deCache: false, error: 'Entra para consultar el catálogo' };
+export async function cargarFuera() {
+  if (!accesoCatalogo) return { datos: [], deCache: false, error: 'Entra para consultar el catálogo' };
   const cacheado = await leer(CACHE_FUERA);
-  if (MODO_LOCAL) {
-    const datos = escaparateLocal().descartes || [];
-    if (soloCache && cacheado) return { datos: cacheado, deCache: true, local: true, error: null };
-    try { await guardar(CACHE_FUERA, datos); } catch {}
-    return { datos, deCache: false, local: true, error: null };
-  }
   try {
     const sb = await accesoCatalogo.obtenerCliente();
     const { data } = await sb
@@ -319,39 +269,9 @@ export function textoBusquedaOferta(oferta) {
   ].filter(Boolean).join(' ').toLocaleLowerCase('es');
 }
 
-async function cargarColeccionLocal(campo, clave, tipoForzado = null, { soloCache = false } = {}) {
-  exigirModoLocal();
-  // El fixture de esta versión manda también al pedir soloCache. Una copia de
-  // agosto no puede ocultar la revalidación o reintroducir condiciones retiradas.
-  const crudos = escaparateLocal()[campo];
-  const datos = (Array.isArray(crudos) ? crudos : []).map((item) => normalizarOferta(item, tipoForzado));
-  try { await guardar(clave, datos); } catch {}
-  return { datos, deCache: false, local: true, error: null };
-}
-
 export async function cargarOfertas(opciones = {}) {
-  if (!MODO_LOCAL) {
-    const catalogo = await cargarCatalogoRemoto(opciones);
-    return { ...catalogo, datos: catalogo.ofertas };
-  }
-  return cargarColeccionLocal('ofertas', CACHE_OFERTAS, null, opciones);
-}
-
-export function cargarSecundario(opciones = {}) {
-  return cargarColeccionLocal('secundario', CACHE_SECUNDARIO, 'secundario', opciones);
-}
-
-export async function cargarExclusiones({ soloCache = false } = {}) {
-  exigirModoLocal();
-  const cacheado = await leer(CACHE_EXCLUSIONES);
-  if (soloCache && cacheado) return { datos: cacheado, deCache: true, local: true, error: null };
-  const datos = escaparateLocal().exclusionesOfertas || [];
-  try { await guardar(CACHE_EXCLUSIONES, datos); } catch {}
-  return { datos, deCache: false, local: true, error: null };
-}
-
-export async function fechaSincronizacion() {
-  return AsyncStorage.getItem(CACHE_FECHA);
+  const catalogo = await cargarCatalogoRemoto(opciones);
+  return { ...catalogo, datos: catalogo.ofertas };
 }
 
 /* ---------------------------------------------------------------------
@@ -411,7 +331,7 @@ export async function alternarSeguimiento(slug, plataformaId) {
 
   const cuenta = accesoCatalogo;
   const actual = await siguiendo();
-  if (!MODO_LOCAL && (!cuenta || cuenta !== accesoCatalogo)) throw new Error('La cuenta ha cambiado');
+  if (!cuenta || cuenta !== accesoCatalogo) throw new Error('La cuenta ha cambiado');
   const seguir = !actual.includes(slug);
   const nuevo = seguir ? [...actual, slug] : actual.filter((s) => s !== slug);
 
@@ -538,7 +458,7 @@ export async function alternarOfertaGuardada(slug) {
   if (typeof slug !== 'string' || !slug) throw new Error('La oferta no tiene un identificador válido');
   const cuenta = accesoCatalogo;
   const actual = await ofertasGuardadas();
-  if (!MODO_LOCAL && (!cuenta || cuenta !== accesoCatalogo)) throw new Error('La cuenta ha cambiado');
+  if (!cuenta || cuenta !== accesoCatalogo) throw new Error('La cuenta ha cambiado');
   const nueva = actual.includes(slug)
     ? actual.filter((s) => s !== slug)
     : [slug, ...actual].slice(0, MAX_GUARDADAS);
@@ -554,7 +474,7 @@ export async function leerProgresoAcademy(slugsValidos = null) {
     const cuenta = accesoCatalogo, destino = claveAlmacenamiento(PROGRESO_ACADEMY);
     if (!destino) return progresoVacio();
     const guardado = await AsyncStorage.getItem(destino);
-    if (!MODO_LOCAL && cuenta !== accesoCatalogo) return progresoVacio();
+    if (cuenta !== accesoCatalogo) return progresoVacio();
     return normalizarProgreso(guardado ? JSON.parse(guardado) : null, slugsValidos);
   } catch {
     return progresoVacio();
@@ -621,7 +541,7 @@ const MAX_AVISOS_LEIDOS = 100;
 // Como al cerrar sesión (PLAZO_ANTES_DE_SALIR de lib/cuentas.js).
 const PLAZO_QUITAR_PUSH = 4000;
 function claveAvisosCuenta(base, usuarioId) {
-  if (MODO_LOCAL || typeof usuarioId !== 'string' || !UUID_CUENTA.test(usuarioId)) return null;
+  if (typeof usuarioId !== 'string' || !UUID_CUENTA.test(usuarioId)) return null;
   return `${base}:${usuarioId}`;
 }
 const limpiarLeidos = (lista) => (Array.isArray(lista)
@@ -745,7 +665,7 @@ export async function avisosSinCuenta() {
 }
 export async function guardarAvisosSinCuenta(datos) {
   const limpio = validarGuardado(datos);
-  if (MODO_LOCAL || !limpio) throw new Error('Datos de avisos no válidos');
+  if (!limpio) throw new Error('Datos de avisos no válidos');
   await AsyncStorage.setItem(AVISOS_SIN_CUENTA, JSON.stringify(limpio));
 }
 export async function borrarAvisosSinCuenta() {

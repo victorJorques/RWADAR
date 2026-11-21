@@ -34,7 +34,8 @@ const movil = cargarModulo('lib/verificacion-local.js', {
 const datosMoviles = cargarModulo('lib/datos.js', {
   '@react-native-async-storage/async-storage': {},
   'react-native': { Platform: { OS: 'android' } },
-  './modo-local': { MODO_LOCAL: true, SERVICIOS_USUARIO_REMOTOS: false },
+  './modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
+  './supabase': {},
   './verificacion-local': movil,
   './catalogo-remoto': {},
   './academy-progreso': cargarModulo('lib/academy-progreso.js'),

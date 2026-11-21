@@ -1,0 +1,506 @@
+# RWAdar · app móvil
+
+App nativa en React Native con Expo (SDK 57).
+
+## Novedades de RWAdar al abrir la app · 12 de noviembre de 2026
+
+Solo JS (pasa `scripts/comprobar-ota-compatible.cjs`). Una ventana encima de
+Inicio con el título, 4-5 puntos (icono y una línea), «Ver en detalle» y
+«Entendido»; el detalle, a pantalla completa, con un botón a Perfil › Avisos
+y el historial de /cambios. Perfil › «Novedades de RWAdar» la vuelve a abrir.
+
+- **Contenido:** el mismo JSON que la web, `rwadar-site/datos/novedades-producto.json`
+  (inglés en el campo `en` de cada elemento). La app lo lee de
+  `https://rwadar.pages.dev/datos/novedades-producto.json` (6 s, sin cookies,
+  solo JSON de hasta 32 KB y con la forma exacta) y trae una copia idéntica en
+  `lib/novedades-producto.js` (y `fixtures/novedades-producto.ejemplo.json`)
+  para verlo sin red. Gana la versión más nueva. Esa copia no se edita a
+  mano: al cambiar el JSON de la web, `node rwadar-novedades-producto.js` (en
+  la raíz) la escribe; `tests/novedades-producto.test.cjs` y probar-web fallan
+  si no coinciden. El texto es común: lo que solo existe en la web (la
+  campana, «Mantener la sesión iniciada») dice «en la web».
+- **No se añaden campos ni se suben límites** en el JSON sin publicar antes
+  una OTA con el validador nuevo: la app valida la forma exacta y, si no la
+  reconoce, ignora el archivo de la web sin avisar y enseña su copia.
+- **Cuándo sale:** una vez por `version`, cuando ya se ve Inicio y no hay
+  nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad, una
+  pantalla de Inicio como «Mercado y noticias» o una notificación
+  abriéndose). La ventana respeta las barras del móvil (`useSafeAreaInsets`). Lo visto se guarda en el móvil
+  (`rwadar.editorial.novedades.vista.v2`, solo la versión; también se copia
+  en la `v1` de las versiones anteriores, y lo que una de ellas diera por
+  visto desde la `2026-11-14.2` no cuenta: sale una vez más, con el recuadro
+  «Activa los avisos») y se borra con «Borrar datos del dispositivo». Si no se
+  puede leer, no sale sola.
+- **Código:** `lib/novedades-rwadar.js` (validar, comparar, descargar),
+  `componentes/NovedadesRwadar.js` (hook, ventana y detalle) y
+  `lib/datos.js` (`leerNovedadesVistas`, `marcarNovedadesVistas`).
+
+## Avisos de novedades · 5 de noviembre de 2026 (preparado y apagado)
+
+Contrato: [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../../tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+Solo JS, compatible con la OTA de la 1.4.1. El interruptor
+`AVISOS_NOVEDADES_REMOTOS` (`lib/modo-local.js`) nace en `false`: así la app
+se ve y se comporta como antes, salvo la casilla obligatoria del alta, que ya
+dice «Tengo 18 años o más, acepto las condiciones y he leído la privacidad».
+
+Encendido (solo Víctor, con la base 30 aplicada y la plantilla de Auth
+puesta):
+
+- **Alta:** casilla opcional y sin marcar con el texto exacto del contrato.
+  Marcada, añade a los metadatos `avisos_novedades: true`, `avisos_version` y
+  `avisos_canal: 'app'`.
+- **Perfil › Avisos** (`componentes/AvisosNovedades.js`): «Avisos de novedades
+  (correo y móvil)», que es el permiso, y «Notificaciones en este móvil». En
+  binarios por debajo del código 24 (la 1.4.1) el segundo dice que llega con
+  la 1.4.2 y no llama al SDK de notificaciones.
+- **Inicio:** tarjeta «Avisos» con un punto de no leído, guardado en el
+  dispositivo y por cuenta (`rwadar.editorial.avisos.*:<UUID>`).
+- **Al tocar una notificación:** solo `{tipo, destino}` con `destino` ∈
+  `inicio`, `buscar`, `academy`, o el `slug` antiguo.
+- **Al cerrar sesión:** `quitar_aviso_push` con la sesión que se cierra, con un
+  plazo de 4 s y sin bloquear la salida.
+
+Las llamadas a la base están en `lib/avisos-cuenta.js` y las del SDK, en
+`lib/avisos.js`. El APK con notificaciones del sistema:
+[`APK-1.4.2-NOTIFICACIONES.md`](../../tareas/APK-1.4.2-NOTIFICACIONES.md).
+
+## Cuentas · Android del 11 de octubre de 2026
+
+Se ha añadido un panel nativo para crear cuenta, confirmar correo, entrar,
+recuperar acceso, gestionar nombre y lista de vigilancia, salir y borrar la
+cuenta con contraseña recién comprobada y confirmación escrita. Usa la misma
+identidad y lista que la web; los favoritos locales siguen separados.
+
+`CUENTAS_REMOTAS=true` y `CORREO_AUTH_E2E=true` activan las cuentas opcionales
+tras comprobar un alta confirmada, acceso y cierre de sesión en la web, y la
+entrega real del correo de recuperación. El cambio final de contraseña y el
+alta/inicio/baja real desde Android y un teléfono físico requieren comprobaciones aparte. No activar
+`SERVICIOS_USUARIO_REMOTOS`: esa guarda antigua protege instalaciones,
+sincronización histórica y push, que siguen apagados.
+
+La sesión del SDK se guarda solo en memoria; no se persiste en AsyncStorage.
+Confirmación y recuperación enlazan a la web oficial, sin añadir nuevos
+esquemas de URL ni permisos al sistema. El panel no anuncia notificaciones.
+
+`npm test` incluye las pruebas del motor con SDK real y transporte simulado,
+la interfaz, el desmontaje y los permisos del paquete. No equivale a una
+prueba de correo ni a instalar la app. **Android 1.3.1/código14 está publicado**
+y su APK exacto superó instalación/navegación/formularios en emulador API35,
+firma y descarga pública anónima. Corrige el margen de la nota local y el
+singular de favoritos; sus capturas propias también se revisaron.
+Descarga: <https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+No es publicación en las tiendas ni prueba de Auth nativo real o teléfono físico.
+Informe: [`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../../VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
+Compilación EAS solo si hay cuota gratuita: no contratar ni aceptar cargos adicionales.
+Plan y requisitos: [`CUENTAS-WEB-MOVIL-2026-10-11.md`](../../tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
+
+## Corte editorial conectado · 28 de septiembre de 2026
+
+Esta copia usa `catalogo-editorial`: consulta las dos vistas verificadas de
+Supabase sin iniciar sesión. No sincroniza operaciones pendientes ni solicita
+permisos push. Los favoritos se guardan bajo `rwadar.editorial.*`, separados de
+cualquier instalación anterior. Un catálogo retirado o vencido no se sustituye
+por el fixture interno. El estado de distribución se registra en `docs/INTERNO.md`.
+
+El catálogo y los servicios remotos de usuario tienen compuertas separadas.
+`SERVICIOS_USUARIO_REMOTOS = false` mantiene desactivados instalación, sincronización
+y push con el catálogo conectado. En este perfil
+editorial los favoritos usan `rwadar.editorial.*`: no se leen ni migran claves
+`rwadar.*` de instalaciones anteriores y no se generan reintentos. El borrado
+afecta solo a ese espacio y a la caché pública del catálogo, nunca a datos
+históricos del servidor. Esta guarda del cliente no acredita bloqueo de los
+endpoints ni sustituye la revisión de permisos/RLS en Supabase.
+
+El fixture incluido contiene 26 plataformas del radar, 4 descartes con sus
+fuentes, 28 ofertas principales y 24 referencias secundarias con imágenes
+locales. Los proveedores exclusivos del escaparate no se incorporan al radar
+ni pueden seguirse como plataformas canónicas.
+
+El fixture se conserva para pruebas aisladas, no como catálogo de respaldo del
+perfil conectado. La sección siguiente es histórica, no una entrega del corte
+actual. Las builds anteriores no validan los cambios de septiembre.
+
+## Binario revisado para la entrega editorial
+
+El candidato actual es Android **1.1.0, versionCode 8**, paquete
+`com.rwadar.app`, build EAS `d6966f1f-b0b3-415d-b732-311c4b31f7a3`.
+No usar los APK 4, 6 o 7 ni el AAB 5 para esta entrega.
+
+- SHA-256 del APK:
+  `593099b7c23d420da0aa361d74d4760b6e73368089849a57887489e7cfb1a255`.
+- Certificado de firma SHA-256:
+  `f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72`.
+  `apksigner` confirma la firma v2 y el mismo certificado que el APK 4.
+- Manifiesto efectivo: solo `INTERNET`, `ACCESS_NETWORK_STATE`, `VIBRATE`
+  y `com.rwadar.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+  `allowBackup=false` y `expo.modules.updates.ENABLED=false`.
+- Android mínimo API 24, destino API 36. La compilación terminada, su firma
+  y una descarga comprobada no prueban por sí solas toda la navegación.
+
+La prueba remota instala el **mismo APK**, sin recompilarlo, en un emulador
+Android API 35 de un runner efímero. La ejecución
+[36401384266](https://github.com/victorJorques/RWAdar-downloads/actions/runs/36401384266)
+superó instalación, arranque en frío, catálogo real de 26 plataformas,
+28 fichas, búsqueda de Spiko y apertura de su detalle. Las cuatro capturas
+se revisaron visualmente; `app-errors.log` y `final-errors.log` están vacíos.
+La extracción usa un helper de pruebas separado y efímero basado en
+`Instrumentation`/`UiAutomation`, sin esperar reposo de la animación ni
+reutilizar XML antiguo; no cambia el APK de RWAdar.
+
+El intento anterior conservó una pantalla de carga obsoleta al esperar
+reposo mediante `uiautomator dump`; se conserva como intento fallido, no
+como evidencia aprobada. La prueba final no cubre un teléfono físico,
+todas las versiones Android, todas las funcionalidades ni las tiendas.
+
+La URL de EAS caduca el 12 de octubre de 2026; no debe ser el enlace
+permanente de distribución. La publicación y el estado operativo vigentes
+se registran únicamente en [`docs/INTERNO.md`](../../INTERNO.md).
+
+## Histórico · 21 de agosto de 2026 · no ejecutar como instrucciones actuales
+
+- APK interno Android `1.0.0` build 4, runtime
+  `af69452933f988f2d48d45861802f09d3df06e8b`.
+- Rediseño publicado por EAS Update en el canal `preview`, grupo
+  `c20b2752-8d53-48a1-a29b-36285e254b3b`.
+- AAB de producción `1.0.0` build 5 terminado con el mismo runtime y el mismo
+  keystore: build `965fc4b6-3c77-4661-b2a7-b8281c06aac2`.
+- Google Play todavía no ha recibido el AAB: la cuenta de Play Console no está
+  creada y Google exige activar antes la verificación en dos pasos.
+- La entrega push sigue apagada deliberadamente; seguir una plataforma no se
+  presenta como garantía de recibir avisos.
+
+## Compilar desde GitHub (versión 1.2.0)
+
+La 1.2.0 trae RWAdar Academy, la barra Inicio · Buscar · Academy · Perfil,
+las ofertas guardadas y el catálogo que no desaparece al caducar. Se compila
+con el flujo manual **Compilar app Android** (`.github/workflows/compilar-app.yml`):
+pasa `npm test`, compila en EAS con el perfil elegido (`editorial` = APK
+firmado para la página de descargas; `production` = AAB para Google Play) y
+deja el archivo y su SHA-256 como artefacto del flujo durante 30 días.
+
+Necesita una vez el secreto `EXPO_TOKEN` (lo hace Víctor):
+
+1. expo.dev › icono de perfil › **Account settings** › **Access tokens** ›
+   **Create token**. Nombre: `RWAdar GitHub`. Copiar el valor (se ve una vez).
+2. GitHub › RWADAR › **Settings** › **Secrets and variables** › **Actions** ›
+   **New repository secret**. Name: `EXPO_TOKEN`; Secret: el valor › **Add secret**.
+
+Después, cualquiera con acceso al repositorio (Claude incluido) lo lanza desde
+*Actions › Compilar app Android › Run workflow*. Instalar el APK en un móvil
+real antes de subirlo a la página de descargas.
+
+## Probarla ahora mismo
+
+```bash
+cd rwadar-movil
+npm test
+npx expo start
+```
+
+Expo Go sirve para revisar parte de la interfaz, pero no sustituye una prueba
+nativa de entrega. El export `--web` solo se usa como apoyo de QA responsive;
+no es la versión web/ordenador de RWAdar. No entregar el APK histórico build 4
+como si incorporara el catálogo y la seguridad nuevos.
+
+El perfil EAS `editorial` genera un APK Android firmado, con el mismo paquete
+`com.rwadar.app` y firma existente. Antes de iniciarlo se inspecciona el archivo
+con `eas build:inspect --platform android --profile editorial --stage archive`.
+La `.easignore` de la raíz solo admite el código móvil y sus activos necesarios:
+excluye otros proyectos, documentos, fotografías internas y credenciales.
+`tests/empaquetado.test.cjs` cubre esa frontera, también para rutas de Windows.
+
+**Histórico del corte 1.3.0, sin OTA:** ese corte desactivaba `updates.enabled`; el APK ejecutaba su código incluido y no
+recupera JavaScript de los canales históricos. El catálogo se actualiza por
+REST; cambiar el código requiere una nueva build revisada. También desactiva
+la copia Android a Google Drive y bloquea permisos de notificaciones,
+micrófono, almacenamiento externo, superposición de pantalla, arranque,
+biometría, recepción push y contadores OEM que este alcance no necesita.
+La identidad de runtime usa la política oficial `appVersion` (`1.3.0`), ya que
+se distribuye el binario completo sin OTA. El primer intento con `fingerprint`
+fue rechazado por una discrepancia entre la huella local y la del constructor;
+no se usa ninguna bandera para omitir la comprobación. Reactivar OTA exigiría
+una revisión independiente de compatibilidad y firma. `expo-updates` se fija
+a la revisión compatible `~57.0.23` indicada por Expo Doctor para SDK 57.
+
+La comprobación operativa `node verificar-catalogo-remoto.cjs --lectura-remota`
+realiza solo GET públicos con el lector móvil, verifica las 26/28 fichas,
+la caché, cuatro descartes citables y que el esquema interno no está expuesto.
+No forma parte de `npm test`, no escribe en Supabase ni imprime claves.
+
+## Qué hace, y por qué eso importa
+
+La app usa interfaz nativa, favoritos locales y caché con caducidad; no es
+solo una WebView del sitio. Eso no garantiza la admisión en ninguna tienda.
+
+**Conserva un adaptador de avisos desactivado.** Solo con capacidad remota
+explícita puede registrar permiso, token y seguimiento; el proceso que envía
+el push tampoco está activado. La interfaz solo mostrará «avisos activos» cuando ese proceso se
+haya probado de extremo a extremo y `extra.rwadar.pushDeliveryEnabled` cambie
+explícitamente a `true`.
+
+**Consulta sin conexión con caducidad.** El adaptador conectado conserva un lote
+atómico de plataformas y ofertas, no dos respuestas que puedan pertenecer a
+revisiones distintas. Solo admite una copia completa dentro de su plazo; una
+respuesta vacía, retirada, inválida o sin permisos no recupera el catálogo
+anterior. La cabecera indica cuándo se usa una copia sin conexión. Las cifras
+tienen su propio TTL y los días se computan en UTC, como en las vistas SQL.
+La caducidad se revisa también con la app abierta y al volver de suspensión.
+El adaptador del catálogo está habilitado en `catalogo-editorial`; el perfil
+`local-interno` conserva su comportamiento aislado para pruebas.
+
+**Seguir no exige registrarse.** En el perfil editorial la lista permanece en
+el dispositivo, sin UUID ni sincronización. El adaptador remoto conservado,
+desactivado por defecto, identifica la instalación con un UUID
+aleatorio criptográfico, no con una cuenta. En iOS y Android se guarda en
+Keychain/Keystore. Consultar el catálogo no crea ese identificador; si Supabase
+no confirma un seguimiento, queda marcado como pendiente y no se prometen
+avisos basados en él.
+
+La pantalla **Privacidad y datos de esta app** explica únicamente los
+tratamientos habilitados y el alcance real del borrado. Solo en el adaptador
+remoto habilitado el borrado exige primero confirmar la fila remota y después
+elimina la identidad local. En los perfiles local y editorial no contacta al servidor.
+
+## Estructura
+
+```
+App.js                     Radar, Siguiendo, Avisos, Más y modales
+componentes/Navegacion.js  Barra inferior, iconos propios e insignias
+componentes/Radar.js       Radar animado, puntos y filtros accesibles; en Inicio, sin texto y con su leyenda al lado
+componentes/Explicador.js  3D en WebView y fallback nativo animado
+lib/tema.js                Colores, tipografía, sombras y radios
+lib/tacto.js               Respuesta háptica
+lib/supabase.js            Cliente + identificador anónimo de instalación
+lib/datos.js               Consultas, caché sin conexión y seguimiento
+lib/contrato-catalogo.js    Validación pura compartida con el importador web
+lib/catalogo-remoto.js     Lectura del lote verificado y caducidad sin conexión
+lib/avisos.js              Registro para avisos push
+```
+
+El lector conectado usa únicamente `catalogo_plataformas_publicas` y
+`catalogo_ofertas_publicas` para el lote 26/28. No usa `radar_publico` como
+respaldo ni publica las referencias secundarias del fixture interno. La
+migración y la activación requieren el procedimiento de
+[`docs/RUNBOOK.md`](../../RUNBOOK.md); las pruebas con mocks o PGlite no
+acreditan disponibilidad del backend ni una compilación móvil publicada.
+
+## Diseño: lo mismo que la web, adaptado al móvil
+
+**Tipografía.** Geist, la misma que el sitio, desde el paquete oficial de
+Expo. Interletraje óptico —cuanto mayor el cuerpo, más se aprieta— y cifras
+en Geist Mono para todo lo que sea dato.
+
+**Elevación.** Sombras de dos capas en iOS, una de contacto y otra ambiental;
+en Android su propia elevación, que ya viene calibrada. Con una sola capa
+todo parece una pegatina.
+
+**Radios graduados.** La curva crece con la superficie: 8 para etiquetas,
+18 para fichas, 24 para paneles.
+
+**Tacto en vez de sonido.** En un teléfono la respuesta física convence más
+que el audio y no molesta en una reunión. Mismo criterio que en la web: solo
+en gestos deliberados, con intensidad proporcional. Seguir es seco y
+definido; dejar de seguir, blando. La diferencia se nota en el dedo sin
+mirar la pantalla.
+
+**El explicador** conserva la misma narración 3D que la web —entero, dividido,
+con dueño, negociable— dentro de una WebView limitada al origen HTTPS exacto
+de RWAdar. Si no puede cargar, usa el fallback nativo de cuarenta bloques y
+cuatro pasos animados.
+
+## La piel es la de la web, desde el 14 de agosto de 2026
+
+La app nació antes del rediseño y se quedó con la identidad de papel — crema,
+azul marino y verde menta. Ya no: usa los **mismos tokens exactos** que
+`rwadar-site/index.html`, copiados de su sección `1 · TOKENS`.
+
+- fondo de noche `#0B0A0A`, superficies `#171614` → `#262523`;
+- la señal `#25E39A`, el verde de un eco de radar, **como único color de la
+  interfaz**: logotipo, rótulos, acción principal y foco. En ningún otro sitio;
+- grises **cálidos** (`#F7F5F0` / `#BBB5AB` / `#8A8378`), que sobre negro se
+  leen cómodos donde un gris neutro cansa;
+- los seis colores de categoría y el coral `#FF3B30` de «descartada», con sus
+  distancias medidas en Lab. **No tocar sin volver a medir.**
+
+Sobre fondo oscuro una sombra negra no separa nada: la jerarquía la llevan las
+superficies, y la sombra solo añade profundidad en iOS.
+
+## Lo que falta para llegar a las tiendas
+
+La descarga directa de un APK firmado no equivale a publicar en Google Play.
+El AAB 5 es histórico y no contiene este corte editorial. Para las tiendas:
+
+1. El titular debe completar identidad, condiciones y pago del alta de Play
+   Console, y su verificación en dos pasos si Google la exige. No se suplantan
+   esas decisiones ni se contratan planes automáticamente.
+2. Preparar la ficha `com.rwadar.app`, privacidad, seguridad de datos,
+   contenido, países y la pista de prueba que corresponda a esa cuenta.
+3. Generar y verificar un **AAB nuevo del corte vigente**, con su versión y
+   firma revisadas. No reutilizar el AAB 5 ni reactivar canales OTA antiguos.
+4. Completar navegación, catálogo conectado, modo sin conexión, favoritos,
+   borrado local, enlaces y accesibilidad en Android real y en la pista de
+   prueba. La verificación del emulador se declara por separado.
+5. Solicitar la revisión y confirmar la publicación efectiva antes de
+   anunciar que está disponible en Google Play.
+
+iOS sigue necesitando Apple Developer, credenciales de firma, un build EAS y
+pruebas mediante TestFlight.
+
+**Avisos, cuentas y comisiones quedan fuera de esta entrega.** El código
+conservado para servicios remotos está desactivado y no acredita que sus
+endpoints o procesos históricos sigan operativos. Cualquier activación
+requiere revisar permisos del servidor, privacidad y pruebas completas.
+RWAdar no recibe dinero de inversión ni cobra comisiones en este corte.
+
+## Actualizaciones actuales e histórico de EAS
+
+**Preparado para el siguiente APK 1.4.2/código 24 (notificaciones del
+sistema):** Updates habilitado, runtime oficial `nativeVersion` que resuelve
+Android `1.4.2(24)`, canal `production` y entorno `production`. EAS usa
+`appVersionSource=local` y `autoIncrement=false`: el código nativo se elige e
+incrementa explícitamente para cada nuevo binario. El perfil `editorial` sigue
+generando APK para GitHub; `production` conserva AAB y no implica una
+publicación en Google Play. La configuración local no demuestra que ese APK se
+haya compilado o entregado. Guía completa:
+[`APK-1.4.2-NOTIFICACIONES.md`](../../tareas/APK-1.4.2-NOTIFICACIONES.md).
+
+- **Permisos:** `POST_NOTIFICATIONS`, `c2dm.permission.RECEIVE` y `WAKE_LOCK`
+  salen de `blockedPermissions`. El resto sigue bloqueado:
+  `RECEIVE_BOOT_COMPLETED`, porque no hay notificaciones locales programadas;
+  las insignias de lanzadores; `SYSTEM_ALERT_WINDOW`; audio; almacenamiento, y
+  *install referrer*. La notificación lleva su icono propio,
+  `assets/notification-icon.png`. `extra.rwadar.pushDeliveryEnabled` pasa a `true`.
+- **Firebase (FCM) sin archivo en Git:** `app.config.js` añade
+  `android.googleServicesFile` solo si existe la variable de EAS
+  `GOOGLE_SERVICES_JSON` (tipo archivo, visibilidad secreta, entorno
+  `production`, el del perfil `editorial`). En la máquina de compilación de EAS
+  (`EAS_BUILD=true`) sin esa variable, la configuración falla a propósito: un
+  APK sin FCM no entregaría nada. En local (`expo start`, `eas update`) no hace
+  falta: la configuración es la de `app.json`. `google-services.json` está en
+  `.gitignore` y `.easignore`; se borra la copia local después de subirlo.
+- **Credencial FCM V1:** clave JSON de una cuenta de servicio de Google Cloud
+  del mismo proyecto de Firebase, subida en `eas credentials -p android` ›
+  *Google Service Account* › *Push Notifications (FCM V1)* (o en expo.dev ›
+  Credentials › Android › `com.rwadar.app`). Sin ella Expo no puede entregar en
+  Android. No se guarda en el repositorio ni en el Vault.
+- **Firebase no arranca solo:** el plugin local
+  `plugins/firebase-sin-autoarranque.js` pone en el `<application>` del
+  manifiesto `firebase_messaging_auto_init_enabled=false` y
+  `firebase_analytics_collection_enabled=false`. El token solo se pide al pulsar
+  «Notificaciones en este móvil» (y en la renovación diaria de un móvil ya
+  activo).
+- **OTA:** desde que se compile la 1.4.2, la base de `ota-android.yml` pasa a
+  ser el commit completo de esa compilación; la 1.4.1 deja de recibir OTA y ve
+  el aviso de la versión nueva por `version-android.json`.
+
+**APK 1.4.0 ya publicado:** contiene Updates desactivado. Hace falta instalar
+una vez el APK nuevo con el mismo paquete y firma para recibir futuras OTA.
+Después, JavaScript y activos compatibles se descargan automáticamente sin
+interrumpir la pantalla abierta y se usan en el siguiente arranque en frío.
+Volver desde segundo plano conserva los formularios. El arranque no espera a
+la red; quedan disponibles el bundle incluido y la recuperación de Expo.
+No se instalan APK en silencio ni se añaden permisos de instalación.
+El catálogo conserva su actualización independiente por las vistas REST.
+
+**Botón «Actualizar» (29/10/2026, por OTA a la 1.4.1):** si hay una mejora ya
+descargada, un aviso bajo la cabecera (y en la pantalla de acceso) ofrece
+«Aplicar», que reinicia solo al pulsar. Al abrir, la app lee
+`releases/latest/download/version-android.json` de RWAdar-downloads; si su
+`versionCode` supera al instalado, ofrece descargar el APK, que Android
+instala encima sin desinstalar. Perfil › «Versión de la app» comprueba ambas
+cosas a mano. **Cada versión Android nueva debe subir su
+`version-android.json` a la release**, con esta forma exacta (la app rechaza
+cualquier otra URL o versión):
+
+```json
+{"plataforma":"android","version":"1.4.2","versionCode":24,"apk":"https://github.com/victorJorques/RWAdar-downloads/releases/download/v1.4.2/RWAdar.apk"}
+```
+
+Sin ese archivo en la última release, la app no avisa de versiones nuevas;
+las mejoras por OTA siguen llegando igual.
+
+Antes de publicar una OTA, usar el commit completo de la fuente del APK real:
+
+```powershell
+node scripts/comprobar-ota-compatible.cjs --base COMMIT_COMPLETO_DEL_APK
+```
+
+El guard solo lee Git local. Rechaza cambios en dependencias, lock,
+configuración, plugins, scripts nativos e iconos referenciados, incluidos
+archivos nuevos sin seguimiento. Un resultado correcto solo acredita esta
+compatibilidad local; cada publicación OTA sigue requiriendo autorización
+expresa de Víctor. Módulos nativos, permisos o cambios de SDK/configuración
+exigen otro binario con otro código. Conservar la fuente del APK para no
+confundir su runtime con el de una compilación futura.
+
+Antes de la primera OTA, comprobar en el APK nuevo canal `production`,
+runtime `1.4.2(24)`, Updates activo, arranque sin conexión y aplicación en la
+siguiente apertura sin perder datos. Comprobar el plan y la cuota de EAS antes
+de una operación. El plan Free no genera cargos por exceso; no contratar un
+plan ni activar la firma EAS de extremo a extremo, que es de pago, sin permiso.
+La firma del APK es independiente y se conserva.
+
+**Solo como evidencia histórica:** la OTA de agosto usaba `fingerprint` y
+el canal `preview`, compatible con APK4; AAB5 usaba `production`. El intento
+posterior de fingerprint con una discrepancia entre local y constructor queda
+como antecedente: no se omite ninguna verificación ni se reutilizan aquellos
+binarios o actualizaciones. La preparación actual usa `nativeVersion`.
+
+Una configuración o un comando escrito no demuestra una OTA recibida. Los
+avisos push siguen desactivados en la base (`push_activo = false`) hasta que
+Víctor los encienda con la 1.4.2 publicada y probada en un móvil real
+(permisos, registro, envío, recepción, canales y retirada de tokens).
+
+Fuentes: [Updates SDK57](https://docs.expo.dev/versions/v57.0.0/sdk/updates/),
+[versiones locales y limitaciones](https://docs.expo.dev/build-reference/app-versions/),
+[descarga y siguiente arranque](https://docs.expo.dev/eas-update/download-updates/),
+[plan Free](https://expo.dev/pricing) y [facturación](https://docs.expo.dev/billing/faq/).
+
+## Verificación local y avisos de dependencias
+
+Revisión del **28 de septiembre de 2026**, antes de compilar APK 8:
+
+- `npm test`: 58 de 58 pruebas móviles superadas.
+- `npx expo-doctor`: 21 de 21 comprobaciones superadas, con parches compatibles
+  de SDK 57 y React Native 0.86.3.
+- `npm audit --omit=dev`: cero avisos críticos, cero altos y diez moderados
+  propagados en el toolchain de Expo, `xcode` y `uuid`.
+- El parche compatible `@xmldom/xmldom` 0.8.15 está en el lock utilizado por
+  APK 8; no se rebaja Expo ni se omiten verificaciones.
+- Export web de QA revisado a 320 y 390 px, sin desbordamiento horizontal ni
+  errores de consola en las pruebas realizadas. Eso no es evidencia nativa.
+- Lectura real del catálogo: 26 plataformas y 28 ofertas, revisión
+  `80159d96-dcb8-b476-ae10-bc9cd2a45c83`; sin escrituras ni sesión de usuario.
+- Prueba nativa del APK 8 en Android API 35: descarga, firma, instalación,
+  arranque, catálogo, búsqueda y ficha aprobados; evidencia enlazada arriba.
+
+No ejecutar `npm audit fix --force`: la propuesta automática rebaja a Expo
+46 y rompe la compatibilidad del proyecto. Los avisos moderados pendientes
+se deben reevaluar al actualizar el SDK. Estas comprobaciones no certifican
+riesgo cero ni sustituyen la revisión del backend y del binario distribuido.
+
+La implementación se contrastó antes de editar con la documentación oficial
+versionada de [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/),
+[Crypto](https://docs.expo.dev/versions/v57.0.0/sdk/crypto/),
+[SecureStore](https://docs.expo.dev/versions/v57.0.0/sdk/securestore/),
+[Notifications](https://docs.expo.dev/versions/v57.0.0/sdk/notifications/) y
+[Updates](https://docs.expo.dev/versions/v57.0.0/sdk/updates/).
+
+## El criterio editorial de "Fuera del radar"
+
+Una plataforma solo aparece señalada si el motivo se puede respaldar con una
+fuente citable. Hoy son cuatro casos con diez fuentes: una demanda municipal
+documentada por la propia ciudad, un cierre aprobado en votación pública, una
+prohibición de un registro de carbono y la declaración regulatoria de la propia
+plataforma.
+
+Se retiraron ocho que eran juicio de valor sin respaldo ("escala pequeña",
+"poca transparencia", "nicho"). Entre ellas Kinesis, cuya crítica sobre
+auditorías es de 2021, procede de un blog enmarcado en una disputa por
+difamación y quedó desmentida por auditorías independientes posteriores.
+
+La base impide que esto se degrade: `select * from descartadas_sin_fuente`
+lista cualquier empresa señalada sin respaldo. **Debe devolver cero filas
+siempre.** Antes de publicar debe comprobarse la evidencia, su vigencia y
+un canal de rectificación; una reclamación requiere revisión, no se puede
+prometer un resultado específico de moderación de las tiendas.

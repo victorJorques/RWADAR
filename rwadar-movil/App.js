@@ -14,11 +14,11 @@ import { tacto } from './lib/tacto';
 import {
   cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades, configurarAccesoCatalogo,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
-  cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
+  proveedoresDeOfertas, textoBusquedaOferta,
   ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas,
 } from './lib/datos';
 import {
-  MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
+  SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
   AVISOS_BANDEJA_REMOTA, AVISOS_CASILLA_ALTA_REMOTA, AVISOS_SIN_CUENTA_REMOTOS,
 } from './lib/modo-local';
 import { gestorSinCuenta } from './componentes/AvisosSinCuenta';
@@ -71,9 +71,9 @@ const URL_PRIVACIDAD_AVISOS = `${URL_PRIVACIDAD}#avisos-novedades`;
 // (/cambios, como siempre), enlazada desde ese detalle.
 const URL_NOVEDADES = 'https://rwadar.pages.dev/cambios';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
-const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
+const USUARIO_LOCAL = SERVICIOS_USUARIO_REMOTOS !== true;
 // Las cuentas son independientes del seguimiento y los avisos de instalaciones.
-const CUENTA_REMOTA_ACTIVA = MODO_LOCAL === false && CUENTAS_REMOTAS === true && CORREO_AUTH_E2E === true;
+const CUENTA_REMOTA_ACTIVA = CUENTAS_REMOTAS === true && CORREO_AUTH_E2E === true;
 // Avisos de novedades a cuentas registradas (contrato del 05/11/2026). Apagado,
 // la app se ve y se comporta como antes.
 const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;
@@ -87,7 +87,7 @@ const CASILLA_ALTA_ACTIVA = AVISOS_NOVEDADES_ACTIVOS && AVISOS_CASILLA_ALTA_REMO
 const BANDEJA_AVISOS_ACTIVA = CUENTA_REMOTA_ACTIVA && AVISOS_BANDEJA_REMOTA === true && !AVISOS_NOVEDADES_ACTIVOS;
 // Notificaciones sin cuenta (14/11/2026, lib/modo-local.js): en la pantalla de
 // acceso, la única sin sesión. Solo hablan con /api/avisos/* de la web.
-const AVISOS_SIN_CUENTA_ACTIVOS = MODO_LOCAL === false && AVISOS_SIN_CUENTA_REMOTOS === true;
+const AVISOS_SIN_CUENTA_ACTIVOS = AVISOS_SIN_CUENTA_REMOTOS === true;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -257,7 +257,7 @@ export default function App() {
   useEffect(() => {
     // Crear y liberar en el mismo efecto evita conservar un cliente del SDK
     // al desmontar App y también soporta el doble setup de React StrictMode.
-    const controlador = crearControladorCuentas({ modoLocal: MODO_LOCAL,
+    const controlador = crearControladorCuentas({ modoLocal: false,
       cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E,
       avisosNovedades: CASILLA_ALTA_ACTIVA,
       antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true ? quitarPushAlSalir : null });
@@ -288,30 +288,20 @@ export default function App() {
       return cliente;
     });
     try {
-      const escaparate = MODO_LOCAL ? [
-        cargarSecundario(), cargarExclusiones(),
-      ] : [
-        Promise.resolve({ datos: [] }),
-        Promise.resolve({ datos: [] }),
-      ];
-      const [catalogo, f, mercado, exclusiones, s] = await Promise.all([
-        cargarCatalogo(), cargarFuera(), ...escaparate, siguiendo(),
+      const [catalogo, f, s] = await Promise.all([
+        cargarCatalogo(), cargarFuera(), siguiendo(),
       ]);
       if (cuenta.estado().usuario?.id !== usuarioAdmitido) return false;
-      const principales = MODO_LOCAL ? catalogo.ofertas
-        : catalogo.ofertas.filter(o => o.coleccion === 'principales');
-      const referenciasSecundarias = MODO_LOCAL ? mercado.datos
-        : catalogo.ofertas.filter(o => o.coleccion === 'secundario');
-      const referenciasEnCamino = MODO_LOCAL ? []
-        : catalogo.ofertas.filter(o => o.coleccion === 'en_camino');
+      const principales = catalogo.ofertas.filter(o => o.coleccion === 'principales');
+      const referenciasSecundarias = catalogo.ofertas.filter(o => o.coleccion === 'secundario');
+      const referenciasEnCamino = catalogo.ofertas.filter(o => o.coleccion === 'en_camino');
       setRadar(catalogo.plataformas); setFuera(f.datos); setOfertas(principales);
       setFechaCatalogo(catalogo.fecha
         ? { fecha: catalogo.fecha, vigenciaDias: catalogo.vigenciaDias, caducado: catalogo.caducado === true } : null);
       setSecundario(referenciasSecundarias); setEnCamino(referenciasEnCamino);
-      setExclusionesOfertas(exclusiones.datos); setSigo(s);
+      setExclusionesOfertas([]); setSigo(s);
       setAbierta(actual => actual && catalogo.plataformas.find(p => p.slug === actual.slug) || null);
-      setOfertaAbierta(actual => actual && [...catalogo.ofertas, ...mercado.datos]
-        .find(o => o.slug === actual.slug) || null);
+      setOfertaAbierta(actual => actual && catalogo.ofertas.find(o => o.slug === actual.slug) || null);
       setSinConexion(!!catalogo.deCache);
 
       const [n, sincronizacion] = await Promise.all([
@@ -386,7 +376,7 @@ export default function App() {
     return () => { vivo = false; };
   }, [usuarioAdmitido]);
   useEffect(() => {
-    if (MODO_LOCAL || !fechaCatalogo) return;
+    if (!fechaCatalogo) return;
     // Al vencer, el catálogo no se borra: se vuelve a cargar y queda marcado
     // como caducado, con sus cifras vencidas ocultas. Ya caducado, basta con
     // refrescarlo una vez al día para ocultar las cifras que vayan venciendo.
@@ -509,9 +499,7 @@ export default function App() {
      que su búsqueda no encontró nada cuando lo que falla es la red le
      manda a cambiar el filtro en vez de a mirar la cobertura. */
   const nadaQueVer = radar.length === 0
-    ? MODO_LOCAL
-      ? 'No se pudo leer el radar incluido en esta copia. Desliza hacia abajo para reintentar la carga local.'
-      : 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
+    ? 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
     : 'Nada cumple esos filtros.';
 
   const visibles = useMemo(() => {
@@ -537,8 +525,8 @@ export default function App() {
   const todasOfertas = useMemo(() => [...ofertas, ...secundario, ...enCamino], [ofertas, secundario, enCamino]);
   const ofertasDelGrupo = useMemo(() => grupoOfertas === 'principales' ? ofertas
     : grupoOfertas === 'secundario' ? secundario
-      : grupoOfertas === 'en_camino' ? enCamino : MODO_LOCAL ? todasOfertas : [],
-  [grupoOfertas, ofertas, secundario, enCamino, todasOfertas]);
+      : grupoOfertas === 'en_camino' ? enCamino : [],
+  [grupoOfertas, ofertas, secundario, enCamino]);
   const proveedoresOferta = useMemo(() => proveedoresDeOfertas(
     ofertasDelGrupo
   ), [ofertasDelGrupo]);
@@ -567,7 +555,7 @@ export default function App() {
   const filasOfertas = useMemo(() => {
     const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1 && ordenOfertas !== 'nuevas');
     // Con «Más nuevas primero», una sola lista: la más nueva arriba (como la web).
-    const conSeleccion = columnasOfertas === 1 && ordenOfertas !== 'nuevas' && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
+    const conSeleccion = columnasOfertas === 1 && ordenOfertas !== 'nuevas' && grupoOfertas === 'principales';
     if (!conSeleccion) return filas;
     const ahora = new Date();
     const elegidas = filas.filter((fila) => fila.tipo === 'oferta' &&
@@ -627,10 +615,8 @@ export default function App() {
   const confirmarBorrado = () => {
     Alert.alert(
       'Borrar datos de este dispositivo',
-      MODO_LOCAL
-        ? 'Se eliminarán únicamente los seguimientos y cachés del escaparate local. No se contactará con Supabase.'
-        : USUARIO_LOCAL
-          ? 'Se borrarán las empresas y ofertas guardadas, las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo. No se borran datos del servidor.'
+      USUARIO_LOCAL
+        ? 'Se borrarán las empresas y ofertas guardadas, las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo. No se borran datos del servidor.'
         : 'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
@@ -646,18 +632,12 @@ export default function App() {
               avisosInicio?.recargar();
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
-              setEstadoDatos(MODO_LOCAL
-                ? 'Datos locales borrados. Actualiza para volver a cargar el escaparate incluido en esta copia.'
-                : 'Datos borrados. Actualiza para consultar de nuevo el catálogo con tu cuenta.');
+              setEstadoDatos('Datos borrados. Actualiza para consultar de nuevo el catálogo con tu cuenta.');
               setEstadoAccion('');
-              setEstadoAvisos(MODO_LOCAL
-                ? { ok: false, estado: 'local', local: true }
-                : USUARIO_LOCAL ? { ok: false, estado: 'desactivados' }
-                : { estado: 'disponible' });
+              setEstadoAvisos(USUARIO_LOCAL ? { ok: false, estado: 'desactivados' } : { estado: 'disponible' });
               setPrivacidad(false);
-              Alert.alert('Datos borrados', MODO_LOCAL
-                ? 'Se han eliminado los seguimientos y cachés de esta copia local.'
-                : USUARIO_LOCAL ? 'Se han eliminado los guardados, las inversiones registradas, el progreso de la Academy y las cachés del catálogo de este dispositivo. No se han modificado datos del servidor.'
+              Alert.alert('Datos borrados', USUARIO_LOCAL
+                ? 'Se han eliminado los guardados, las inversiones registradas, el progreso de la Academy y las cachés del catálogo de este dispositivo. No se han modificado datos del servidor.'
                 : 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
             } catch {
               Alert.alert(
@@ -841,10 +821,6 @@ export default function App() {
           <Cabecera
             pestana={pestana}
             vistaBuscar={vistaBuscar}
-            total={radar.length}
-            ofertas={ofertas.length}
-            secundario={secundario.length}
-            enCamino={enCamino.length}
             guardados={sigo.length + guardadas.length}
             sinConexion={sinConexion}
             onAyuda={() => { tacto.abrir(); setExplicando(true); }}
@@ -853,8 +829,6 @@ export default function App() {
 
         {/* El idioma sale de la primera pantalla: solo arriba de Perfil (ESPEC §4). */}
         {pestana === 'perfil' ? <SelectorIdioma /> : null}
-
-        {MODO_LOCAL ? <BannerModoLocal /> : null}
 
         {avisoActualizacion}
 
@@ -1002,10 +976,8 @@ export default function App() {
                       onPress={() => seleccionarGrupoOfertas('principales')} />
                     <SegmentoOferta texto={`Reventa ${secundario.length}`} activo={grupoOfertas === 'secundario'}
                       onPress={() => seleccionarGrupoOfertas('secundario')} />
-                    {MODO_LOCAL ? <SegmentoOferta texto="Todo" activo={grupoOfertas === 'todo'}
-                      onPress={() => seleccionarGrupoOfertas('todo')} />
-                      : <SegmentoOferta texto={`Próximas ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
-                        onPress={() => seleccionarGrupoOfertas('en_camino')} />}
+                    <SegmentoOferta texto={`Próximas ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
+                      onPress={() => seleccionarGrupoOfertas('en_camino')} />
                   </View>
                   {grupoProveedorAbierto ? (
                     <View>
@@ -1096,7 +1068,7 @@ export default function App() {
                   </View>
                   {filtrosOfertasAbiertos ? (
                     <View style={e.filtrosOfertasDesplegados}>
-                      {grupoOfertas === 'principales' || (MODO_LOCAL && grupoOfertas === 'todo') ? (
+                      {grupoOfertas === 'principales' ? (
                         <View>
                           <Text style={e.filtroGrupoEtiqueta}>Tipo de oferta principal</Text>
                           <ScrollView horizontal showsHorizontalScrollIndicator={false}
@@ -1282,19 +1254,18 @@ export default function App() {
 /* Cabecera opaca de una sola línea, como la web (GUIA-ACABADOS §6 y ESPEC
    §4): la marca, el título de la pestaña y la ayuda. Debajo, solo si dice
    algo, una línea con el recuento. */
-function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, guardados, sinConexion, onAyuda }) {
+function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda }) {
   const textos = {
     inicio: { titulo: 'Inicio', subtitulo: '' },
     // Ofertas y Plataformas ya enseñan sus recuentos en el segmentado y los
-    // chips; la cabecera solo avisa si es una copia sin conexión o local.
+    // chips; la cabecera solo avisa si es una copia sin conexión.
     radar: {
       titulo: 'Plataformas',
-      subtitulo: MODO_LOCAL ? `${total} plataformas · fixture local` : sinConexion ? 'Copia sin conexión' : '',
+      subtitulo: sinConexion ? 'Copia sin conexión' : '',
     },
     ofertas: {
       titulo: 'Ofertas',
-      subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
-        : sinConexion ? 'Copia sin conexión' : '',
+      subtitulo: sinConexion ? 'Copia sin conexión' : '',
     },
     perfil: {
       titulo: 'Perfil',
@@ -1334,17 +1305,6 @@ function paisInglesOferta(oferta) {
   return traducir(partes[partes.length - 1] || '', 'en');
 }
 
-function BannerModoLocal() {
-  return (
-    <View style={e.bannerLocal} accessibilityRole="alert">
-      <View style={e.bannerLocalPunto} />
-      <Text style={e.bannerLocalTxt}>
-        INTERNO · datos locales · sin conexión a Supabase de producción
-      </Text>
-    </View>
-  );
-}
-
 function EstadoVacioResultados({ texto, sePuedeLimpiar, onLimpiar }) {
   return (
     <View style={e.vacioResultados}>
@@ -1365,7 +1325,6 @@ function EstadoVacioResultados({ texto, sePuedeLimpiar, onLimpiar }) {
 
 function etiquetaEstadoAvisos(estado) {
   switch (estado?.estado) {
-    case 'local': return 'Desactivados en modo local';
     case 'desactivados': return 'No activados en esta versión';
     case 'activo': return 'Envío activo';
     case 'preparado': return 'Dispositivo preparado';
@@ -1455,11 +1414,9 @@ function PantallaPerfil({
           <Text style={e.resumenEtiqueta}>Tu perfil</Text>
           <Text style={e.resumenTitulo}>Sin cuenta, por ahora</Text>
           <Text style={e.resumenTexto}>
-            {MODO_LOCAL
-              ? 'Copia interna: lo guardado vive solo en su espacio local y nunca se sincroniza.'
-              : USUARIO_LOCAL
-                ? 'Las cuentas llegarán a la app en una próxima actualización. Lo que guardas se queda en este dispositivo.'
-                : 'Lo que guardas se sincroniza con esta instalación.'}
+            {USUARIO_LOCAL
+              ? 'Las cuentas llegarán a la app en una próxima actualización. Lo que guardas se queda en este dispositivo.'
+              : 'Lo que guardas se sincroniza con esta instalación.'}
           </Text>
         </View>
         <View style={e.resumenNumero}>
@@ -1543,8 +1500,7 @@ function PantallaPerfil({
         <FilaMenu
           icono="actualizar"
           titulo="Actualizar catálogo"
-          subtitulo={MODO_LOCAL ? 'Recargar el fixture incluido en esta copia' :
-            sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
+          subtitulo={sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
           onPress={onActualizar}
           cargando={refrescando}
           ultima
@@ -1571,14 +1527,12 @@ function PantallaPerfil({
           subtitulo="Qué se guarda y cómo eliminarlo"
           onPress={onPrivacidad}
         />
-        {!MODO_LOCAL ? (
-          <FilaMenu
-            icono="enlace"
-            titulo="Política de privacidad"
-            subtitulo="Abrir la política completa"
-            onPress={onPolitica}
-          />
-        ) : null}
+        <FilaMenu
+          icono="enlace"
+          titulo="Política de privacidad"
+          subtitulo="Abrir la política completa"
+          onPress={onPolitica}
+        />
         <FilaMenu
           icono="correo"
           titulo="Contactar sobre mis datos"
@@ -1811,14 +1765,8 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
   let accion = null;
   let tono = e.panelAvisos;
 
-  const estadoVisible = USUARIO_LOCAL
-    ? (MODO_LOCAL ? 'local' : 'desactivados') : estado.estado;
+  const estadoVisible = USUARIO_LOCAL ? 'desactivados' : estado.estado;
   switch (estadoVisible) {
-    case 'local':
-      titulo = 'Avisos desconectados';
-      texto = 'El modo interno no solicita permisos, no obtiene tokens y no registra este dispositivo en Supabase.';
-      tono = [e.panelAvisos, e.panelAvisosActivo];
-      break;
     case 'desactivados':
       titulo = 'Avisos no activados';
       texto = 'Esta versión permite consultar el catálogo y guardar favoritos en el dispositivo. No solicita permisos push, obtiene tokens ni registra instalaciones. No se envían avisos.';
@@ -1930,7 +1878,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.privacidadCuerpo}>
-            {!MODO_LOCAL && estadoCuenta?.disponible ? (
+            {estadoCuenta?.disponible ? (
               <>
                 <Text style={e.privacidadTit}>Tu cuenta en la app y funciones personales de la web</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1956,26 +1904,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 </Text>
               </>
             ) : null}
-            {MODO_LOCAL ? (
-              <>
-                <Text style={e.privacidadTit}>Copia interna aislada</Text>
-                <Text style={e.privacidadParrafo}>
-                  Empresas, descartes, ofertas e imágenes se leen del fixture incluido en esta copia. La app no consulta Supabase de producción.
-                </Text>
-                <Text style={e.privacidadTit}>Seguimiento exclusivamente local</Text>
-                <Text style={e.privacidadParrafo}>
-                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*, igual que el progreso de la Academy. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
-                </Text>
-                <Text style={e.privacidadTit}>Avisos desconectados</Text>
-                <Text style={e.privacidadParrafo}>
-                  Esta copia no solicita permiso, no obtiene un token push y no registra avisos remotos.
-                </Text>
-                <Text style={e.privacidadTit}>Control de borrado</Text>
-                <Text style={e.privacidadParrafo}>
-                  El borrado elimina únicamente seguimientos y cachés con el prefijo local. Las claves de una instalación productiva anterior no se leen ni se modifican.
-                </Text>
-              </>
-            ) : USUARIO_LOCAL ? (
+            {USUARIO_LOCAL ? (
               <>
                 <Text style={e.privacidadTit}>Catálogo con cuenta confirmada</Text>
                 <Text style={e.privacidadParrafo}>
@@ -2059,18 +1988,14 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
             {/* El «latido» de Firebase (docs/tareas/APK-1.4.2-NOTIFICACIONES.md, «Al día
                 06/11/2026, tarde», punto 3): ocurre ya en la 1.4.2 aunque el push esté
                 apagado. Mientras el botón siga oculto, no se promete nada que no exista. */}
-            {!MODO_LOCAL ? (
-              <>
-                <Text style={e.privacidadTit}>{'Componente de notificaciones de Google (Firebase)'}</Text>
-                <Text style={e.privacidadParrafo}>
-                  {pushNovedades
-                    ? 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no actives «Notificaciones en este móvil», no envía nada a Google. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si activas las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'
-                    : 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no se activen «Notificaciones en este móvil», no envía nada a Google; hoy ese botón no aparece en la app. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si se activan las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'}
-                </Text>
-              </>
-            ) : null}
+            <Text style={e.privacidadTit}>{'Componente de notificaciones de Google (Firebase)'}</Text>
+            <Text style={e.privacidadParrafo}>
+              {pushNovedades
+                ? 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no actives «Notificaciones en este móvil», no envía nada a Google. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si activas las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'
+                : 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no se activen «Notificaciones en este móvil», no envía nada a Google; hoy ese botón no aparece en la app. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si se activan las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'}
+            </Text>
 
-            {!MODO_LOCAL ? (idioma === 'en' ? (
+            {idioma === 'en' ? (
               <>
                 <Text noTraducir idiomaOriginal="en" style={e.privacidadTit}>App updates</Text>
                 <Text noTraducir idiomaOriginal="en" style={e.privacidadParrafo}>
@@ -2084,7 +2009,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   Al abrirse, la app descarga de Expo las mejoras compatibles y pregunta a la página de descargas de RWAdar en GitHub si hay una versión Android nueva. Expo recibe tu IP, la plataforma, la versión instalada y un identificador aleatorio de esta instalación; GitHub recibe tu IP y datos técnicos de la conexión. Ninguno recibe tu cuenta ni tus datos. Una versión nueva solo se descarga cuando pulsas «Actualizar».
                 </Text>
               </>
-            )) : null}
+            )}
 
             <Text style={e.privacidadTit}>Transparencia comercial</Text>
             <Text style={e.privacidadParrafo}>
@@ -2094,13 +2019,11 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
               La vía inicial de ingresos prevista es publicidad dentro de la app: una red publicitaria pagaría a RWAdar por los anuncios, en espacios separados y marcados como «Publicidad». No depende de invertir en un token. No hay campañas activas ni redes de anuncios integradas en esta versión.
             </Text>
 
-            {!MODO_LOCAL ? (
-              <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
-                style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
-                accessibilityRole="link">
-                <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
-              </Pressable>
-            ) : null}
+            <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+              accessibilityRole="link">
+              <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
+            </Pressable>
             <Pressable onPress={() => abrirEnlace('mailto:rwadares@gmail.com')}
               style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
               accessibilityRole="link">
@@ -2274,13 +2197,6 @@ const e = StyleSheet.create({
     ...T.menor, fontSize: 13, lineHeight: 19, color: C.alarma, backgroundColor: C.alarmaT,
     paddingHorizontal: 16, paddingVertical: 9,
   },
-  bannerLocal: {
-    minHeight: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-    paddingHorizontal: 14, paddingVertical: 7, backgroundColor: C.senal10,
-    borderBottomWidth: 1, borderBottomColor: C.senal34,
-  },
-  bannerLocalPunto: { width: 7, height: 7, borderRadius: 4, backgroundColor: C.senal },
-  bannerLocalTxt: { ...T.etiqueta, color: C.tx3, textAlign: 'center' },
 
   lista: { padding: UI.margen, paddingBottom: 26 },
   listaVacia: { flexGrow: 1 },

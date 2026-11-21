@@ -237,7 +237,7 @@ function datosConAlmacen(inicial = {}, fallos = {}) {
   Module._load = function (pedido, padre, principal) {
     if (pedido === '@react-native-async-storage/async-storage') return { __esModule: true, default: storage };
     if (pedido === 'react-native') return { Platform: { OS: 'android' } };
-    if (padre?.filename === archivo && pedido === './modo-local') return { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false };
+    if (padre?.filename === archivo && pedido === './modo-local') return { SERVICIOS_USUARIO_REMOTOS: false };
     if (padre?.filename === archivo && pedido === './supabase') return {};
     return original.call(this, pedido, padre, principal);
   };

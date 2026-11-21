@@ -9,16 +9,7 @@ const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const RAIZ = path.resolve(__dirname, '..');
 const LIB = path.join(RAIZ, 'lib') + path.sep;
 const CUENTA_PRUEBA = '11111111-1111-4111-8111-111111111111';
-const MODO_INTERNO = {
-  MODO_LOCAL: true,
-  SERVICIOS_USUARIO_REMOTOS: false,
-  exigirModoLocal() {},
-};
-const MODO_REMOTO = {
-  MODO_LOCAL: false,
-  SERVICIOS_USUARIO_REMOTOS: true,
-  exigirModoLocal() { throw new Error('no se usa en estas pruebas remotas'); },
-};
+const MODO_REMOTO = { SERVICIOS_USUARIO_REMOTOS: true };
 
 function cargar(ruta, mocks = {}) {
   const absoluto = path.join(RAIZ, ruta);
@@ -56,7 +47,7 @@ function cargar(ruta, mocks = {}) {
   delete require.cache[absoluto];
   try {
     const modulo = require(absoluto);
-    if (ruta === 'lib/datos.js' && mocks['datos.js:./modo-local']?.MODO_LOCAL === false) {
+    if (ruta === 'lib/datos.js' && typeof mocks['datos.js:./supabase']?.clientePublico === 'function') {
       // Unit fixture only: current-session validation has its own controller/SQL tests.
       modulo.configurarAccesoCatalogo(CUENTA_PRUEBA, async () => mocks['datos.js:./supabase'].clientePublico());
     }
@@ -349,83 +340,6 @@ test('un toque push abre solo un slug editorial valido sin pedir permisos', asyn
   assert.equal(retirado, true);
 });
 
-test('el modo local carga todo el escaparate sin importar ni consultar Supabase', async () => {
-  const almacenamiento = almacenamientoInicial({
-    'rwadar.siguiendo': JSON.stringify(['produccion-intocable']),
-    'rwadar.seguimiento.pendiente': JSON.stringify([{ slug: 'produccion-intocable' }]),
-  });
-  let accesoSupabase = 0;
-  const prohibido = {
-    __alCargar() { accesoSupabase += 1; throw new Error('Supabase no debe importarse en modo local'); },
-  };
-  const datos = cargar('lib/datos.js', {
-    'datos.js:./modo-local': MODO_INTERNO,
-    '@react-native-async-storage/async-storage': { __esModule: true, default: almacenamiento },
-    'datos.js:./supabase': prohibido,
-    'react-native': { Platform: { OS: 'android' } },
-  });
-
-  const [radar, fuera, ofertas, secundario, exclusiones] = await Promise.all([
-    datos.cargarRadar(), datos.cargarFuera(), datos.cargarOfertas(),
-    datos.cargarSecundario(), datos.cargarExclusiones(),
-  ]);
-  assert.equal(radar.datos.length, 26);
-  assert.equal(fuera.datos.length, 4);
-  assert.equal(ofertas.datos.length, 28);
-  assert.equal(secundario.datos.length, 24);
-  assert.equal(exclusiones.datos.length, 15);
-  const proveedores = datos.proveedoresDeOfertas([...ofertas.datos, ...secundario.datos]);
-  assert.equal(proveedores.length, 7);
-  assert.deepEqual(proveedores.find((p) => p.slug === 'aktionariat'), {
-    slug: 'aktionariat', nombre: 'Aktionariat',
-  });
-  assert.equal(accesoSupabase, 0);
-
-  const seguimiento = await datos.alternarSeguimiento('reental', 'plataforma-local-reental');
-  assert.equal(seguimiento.local, true);
-  assert.equal(seguimiento.sincronizado, true);
-  assert.deepEqual(await datos.sincronizarSeguimientoPendiente(), {
-    sincronizados: 0, pendientes: 0, errores: [], local: true,
-  });
-  assert.equal(accesoSupabase, 0);
-
-  const clavesTocadas = almacenamiento.llamadas.flatMap(([metodo, valor]) => {
-    if (metodo === 'multiRemove' || metodo === 'multiSet') {
-      return Array.isArray(valor) ? valor.flatMap((v) => Array.isArray(v) ? v[0] : v) : [];
-    }
-    return typeof valor === 'string' ? [valor] : [];
-  });
-  assert.ok(clavesTocadas.length > 0);
-  assert.ok(clavesTocadas.every((clave) => clave.startsWith('rwadar.local.')),
-    `se tocó una clave no local: ${clavesTocadas.find((clave) => !clave.startsWith('rwadar.local.'))}`);
-  assert.deepEqual(JSON.parse(almacenamiento.datos.get('rwadar.siguiendo')), ['produccion-intocable']);
-  assert.equal(almacenamiento.datos.has('rwadar.seguimiento.pendiente'), true);
-
-  assert.deepEqual(await datos.borrarDatosDispositivo(), { ok: true, local: true });
-  assert.deepEqual(JSON.parse(almacenamiento.datos.get('rwadar.siguiendo')), ['produccion-intocable']);
-  assert.equal(almacenamiento.datos.has('rwadar.seguimiento.pendiente'), true);
-  assert.equal(accesoSupabase, 0);
-});
-
-test('una caché local antigua no puede sustituir el catálogo incluido, ni siquiera con soloCache', async () => {
-  const almacenamiento = almacenamientoInicial({
-    'rwadar.local.cache.radar': '[{"slug":"plataforma-obsoleta"}]',
-    'rwadar.local.cache.ofertas': '[{"slug":"oferta-obsoleta"}]',
-  });
-  const datos = cargar('lib/datos.js', {
-    'datos.js:./modo-local': MODO_INTERNO,
-    '@react-native-async-storage/async-storage': { __esModule: true, default: almacenamiento },
-    'react-native': { Platform: { OS: 'android' } },
-    'datos.js:./supabase': { __alCargar() { throw new Error('No importar producción'); } },
-  });
-  const catalogo = await datos.cargarCatalogo({ soloCache: true });
-  assert.equal(catalogo.local, true);
-  assert.equal(catalogo.plataformas.length, 26);
-  assert.equal(catalogo.ofertas.length, 28);
-  assert.ok(catalogo.ofertas.every(o => o.verificadaEl === '2026-09-27'));
-  assert.ok(!JSON.stringify(catalogo).includes('obsoleta'));
-});
-
 test('el adaptador remoto de datos no puede usar el fixture como sustituto de un lote retirado', async () => {
   const almacenamiento = almacenamientoInicial();
   const tablas = [];
@@ -450,7 +364,8 @@ test('el adaptador remoto de datos no puede usar el fixture como sustituto de un
 test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
   const almacenamiento = almacenamientoInicial();
   const datos = cargar('lib/datos.js', {
-    'datos.js:./modo-local': MODO_INTERNO,
+    'datos.js:./modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
+    'datos.js:./supabase': {},
     '@react-native-async-storage/async-storage': { __esModule: true, default: almacenamiento },
     'react-native': { Platform: { OS: 'web' } },
   });
@@ -523,35 +438,19 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
   });
 });
 
-test('los avisos locales no registran handler, permiso, token, listener ni Supabase', async () => {
-  const llamadas = [];
-  let accesoSupabase = 0;
-  const avisos = cargar('lib/avisos.js', {
-    'avisos.js:./modo-local': MODO_INTERNO,
-    'react-native': { Platform: { OS: 'android' } },
-    expo: { isRunningInExpoGo() { llamadas.push('expo-go'); return false; } },
-    'expo-constants': { __esModule: true, default: {} },
-    'expo-device': { isDevice: true },
-    'expo-notifications': {
-      setNotificationHandler() { llamadas.push('handler'); },
-      getPermissionsAsync() { llamadas.push('permisos'); },
-      requestPermissionsAsync() { llamadas.push('solicitar'); },
-      getExpoPushTokenAsync() { llamadas.push('token'); },
-      addNotificationResponseReceivedListener() { llamadas.push('listener'); },
-    },
-    'avisos.js:./supabase': {
-      __alCargar() { accesoSupabase += 1; throw new Error('Supabase no debe cargarse'); },
-    },
+test('proveedoresDeOfertas: un proveedor por plataforma, con su nombre corto y en orden', () => {
+  const datos = cargar('lib/datos.js', {
+    'datos.js:./modo-local': { SERVICIOS_USUARIO_REMOTOS: false },
+    'datos.js:./supabase': {},
+    '@react-native-async-storage/async-storage': { __esModule: true, default: almacenamientoInicial() },
+    'react-native': { Platform: { OS: 'web' } },
   });
-
-  const detener = avisos.observarAperturasAvisos(() => true);
-  detener();
-  assert.deepEqual(await avisos.consultarEstadoAvisos(), { ok: false, estado: 'local', local: true });
-  assert.deepEqual(await avisos.registrarParaAvisos({ solicitarPermiso: true }), {
-    ok: false, estado: 'local', local: true,
-  });
-  assert.deepEqual(llamadas, []);
-  assert.equal(accesoSupabase, 0);
+  const fixture = JSON.parse(fs.readFileSync(path.join(RAIZ, 'fixtures', 'escaparate-local.json'), 'utf8'));
+  const proveedores = datos.proveedoresDeOfertas([...fixture.ofertas, ...fixture.secundario].map((o) => datos.normalizarOferta(o)));
+  assert.equal(proveedores.length, 7);
+  assert.deepEqual(proveedores.find((p) => p.slug === 'aktionariat'), { slug: 'aktionariat', nombre: 'Aktionariat' });
+  assert.deepEqual(proveedores.map((p) => p.nombre), [...proveedores.map((p) => p.nombre)].sort((a, b) => a.localeCompare(b, 'es')));
+  assert.deepEqual(datos.proveedoresDeOfertas([null, { plataformaSlug: '' }, { plataformaSlug: 'x', plataformaNombre: 'X · Suiza' }]), [{ slug: 'x', nombre: 'X' }]);
 });
 
 test('el fixture mantiene separados los proveedores que no pertenecen al radar', () => {
@@ -639,10 +538,8 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
   assert.doesNotMatch(codigo, /Seguir y recibir avisos/);
   assert.match(codigo, /destino\.protocol === 'https:'/);
   assert.match(codigo, /!destino\.username && !destino\.password/);
-  assert.match(codigo, /setEstadoAvisos\(MODO_LOCAL[\s\S]*estado: 'local'/);
+  assert.match(codigo, /setEstadoAvisos\(USUARIO_LOCAL \? \{ ok: false, estado: 'desactivados' \}/);
   assert.match(modoLocal, /MODO_DATOS = 'catalogo-editorial'/);
-  assert.match(modoLocal, /MODO_LOCAL = MODO_DATOS !== 'catalogo-editorial'/);
-  assert.equal(cargar('lib/modo-local.js').MODO_LOCAL, false);
   assert.equal(cargar('lib/modo-local.js').SERVICIOS_USUARIO_REMOTOS, false);
 });
 
@@ -726,10 +623,9 @@ test('los avisos editoriales ignoran incluso permisos o tokens anteriores sin in
 
 test('la guarda de identidad bloquea llamadas directas antes de leer, crear, migrar o borrar un UUID', async () => {
   for (const modo of [
-    { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false },
-    { MODO_LOCAL: false },
-    { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: 'true' },
-    { MODO_LOCAL: true, SERVICIOS_USUARIO_REMOTOS: true },
+    { SERVICIOS_USUARIO_REMOTOS: false },
+    {},
+    { SERVICIOS_USUARIO_REMOTOS: 'true' },
   ]) {
     const prohibido = () => assert.fail('No debe tocar almacenamiento o identidad');
     const clientes = [];

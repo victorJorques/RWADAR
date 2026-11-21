@@ -192,7 +192,7 @@ test('la app conecta aviso, Perfil y descarga sin permisos nativos nuevos', () =
   assert.match(app, /const actualizacion = useEstadoActualizaciones\(\);/);
   assert.match(app, /<AvisoActualizacion resumen=\{actualizacion\.resumen\} onActualizar=\{actualizarApp\}/);
   assert.match(app, /<AccesoObligatorio [^>]*aviso=\{avisoActualizacion\}/, 'también sin sesión: la versión nueva puede arreglar el acceso');
-  assert.match(app, /\{MODO_LOCAL \? <BannerModoLocal \/> : null\}\s+\{avisoActualizacion\}/);
+  assert.match(app, /\{pestana === 'perfil' \? <SelectorIdioma \/> : null\}\s+\{avisoActualizacion\}/);
   assert.match(app, /onActualizarApp=\{actualizarApp\}/);
   assert.match(app, /<PreparandoAcceso [^/]*?aviso=\{avisoActualizacion\} \/>/);
   assert.match(app, /<BloqueoApp [^/]*?aviso=\{avisoActualizacion\} \/>/);

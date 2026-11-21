@@ -4,10 +4,10 @@ import { Platform } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
-import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-local';
+import { SERVICIOS_USUARIO_REMOTOS } from './modo-local';
 
 function exigirServiciosUsuario() {
-  if (MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true) {
+  if (SERVICIOS_USUARIO_REMOTOS !== true) {
     throw new Error('Los servicios remotos de usuario están desactivados');
   }
 }

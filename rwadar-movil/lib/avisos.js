@@ -3,14 +3,14 @@ import { isRunningInExpoGo } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, AVISOS_NOVEDADES_REMOTOS } from './modo-local';
+import { SERVICIOS_USUARIO_REMOTOS, AVISOS_NOVEDADES_REMOTOS } from './modo-local';
 import { aperturaDesdeDatosAviso, capacidadPushNativa, tokenPushValido } from './avisos-cuenta';
 import { traducir } from './idioma';
 
-const SERVICIOS_ACTIVOS = !MODO_LOCAL && SERVICIOS_USUARIO_REMOTOS === true;
+const SERVICIOS_ACTIVOS = SERVICIOS_USUARIO_REMOTOS === true;
 // Avisos de novedades de la cuenta (contrato del 05/11/2026). Independientes
 // de las instalaciones antiguas, que siguen cerradas.
-const NOVEDADES_ACTIVAS = !MODO_LOCAL && AVISOS_NOVEDADES_REMOTOS === true;
+const NOVEDADES_ACTIVAS = AVISOS_NOVEDADES_REMOTOS === true;
 /* Dos canales de Android, con los mismos `channelId` con que envía la base:
    «cuenta» para los avisos de servicio (la bienvenida) y «novedades» para los
    anuncios. Así, quien desactiva las novedades en los ajustes del móvil o
@@ -206,7 +206,6 @@ function resultadoPreparado() {
 /* Consulta pasiva: nunca abre el diálogo del sistema ni crea una identidad. */
 export async function consultarEstadoAvisos() {
   try {
-    if (MODO_LOCAL) return { ok: false, estado: 'local', local: true };
     if (!SERVICIOS_ACTIVOS) return { ok: false, estado: 'desactivados' };
     if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
     if (!Device.isDevice) return { ok: false, estado: 'emulador' };
@@ -252,7 +251,6 @@ export async function consultarEstadoAvisos() {
 /* Solo debe llamarse tras una pulsación explícita en el panel de avisos. */
 export async function registrarParaAvisos({ solicitarPermiso = false } = {}) {
   try {
-    if (MODO_LOCAL) return { ok: false, estado: 'local', local: true };
     if (!SERVICIOS_ACTIVOS) return { ok: false, estado: 'desactivados' };
     if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
     if (!Device.isDevice) return { ok: false, estado: 'emulador' };

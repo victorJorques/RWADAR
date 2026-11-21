@@ -4,7 +4,6 @@ import { Pressable, Text, View } from './Idioma';
 import { WebView } from 'react-native-webview';
 import ExplicadorNativo from './ExplicadorNativo';
 import { C, T, F, R } from '../lib/tema';
-import { MODO_LOCAL } from '../lib/modo-local';
 
 /* ---------------------------------------------------------------------
    El explicador: el edificio 3D de la web, dentro de la app
@@ -144,7 +143,6 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion, 
   const web = useRef(null);
   useEffect(() => {
     let vivo = true;
-    if (MODO_LOCAL) return () => { vivo = false; };
     Promise.resolve().then(() => obtenerAcceso()).then(value => {
       if (value?.uri !== 'https://rwadar.pages.dev/api/acceso/tutorial' ||
         !/^Bearer [A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(value?.headers?.Authorization || '')) throw new Error('Acceso no válido');
@@ -153,8 +151,7 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion, 
     return () => { vivo = false; };
   }, [obtenerAcceso]);
 
-  /* La copia interna no intenta abrir la antigua dirección pública. */
-  if (MODO_LOCAL || fallo) return <ExplicadorNativo onCerrar={onCerrar} onCalculadora={onCalculadora} />;
+  if (fallo) return <ExplicadorNativo onCerrar={onCerrar} onCalculadora={onCalculadora} />;
 
   return (
     <View style={e.pantalla}>

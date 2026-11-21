@@ -302,7 +302,7 @@ test('el componente nativo se renderiza también con react-native-web, sin Auth 
 
 test('App integra cuentas aparte de instalaciones, conserva favoritos y no activa otros servicios', () => {
   const app = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
-  assert.match(app, /crearControladorCuentas\(\{ modoLocal: MODO_LOCAL/);
+  assert.match(app, /crearControladorCuentas\(\{ modoLocal: false,/);
   assert.match(app, /cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E/);
   assert.match(app, /controlador\.suscribir\(setEstadoCuenta\)/);
   assert.match(app, /cancelarSuscripcion\(\); controlador\.destruir\(\)/);
@@ -332,7 +332,7 @@ function seccionesPerfil() {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
     useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
     useEffect() {}, useRef: inicial => ({ current: inicial }),
-    StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
+    StyleSheet: { create: (s) => s }, T: tema.T, C: colores, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',
     'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos', 'SafeAreaView', 'ActivityIndicator', 'Colabora']) entorno[nombre] = nombre;
@@ -384,7 +384,7 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
     babel.types.expressionStatement(efecto),
   ])), null, { babelrc: false, configFile: false }).code;
   const controladores = [], visibles = [], orden = [], controladorActual = { current: null };
-  const crear = new Function('crearControladorCuentas', 'setCuenta', 'setEstadoCuenta', 'MODO_LOCAL',
+  const crear = new Function('crearControladorCuentas', 'setCuenta', 'setEstadoCuenta',
     'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', 'controladorActual', 'restaurarAcceso', 'CUENTA_REMOTA_ACTIVA',
     'AVISOS_NOVEDADES_REMOTOS', 'CASILLA_ALTA_ACTIVA', `return (${js.replace(/;\s*$/, '')});`);
   const setup = crear((flags) => {
@@ -393,7 +393,7 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
       destruir() { c.destruido = true; },
     };
     controladores.push(c); return c;
-  }, (c) => visibles.push(c), () => {}, false, true, true, controladorActual, (c) => {
+  }, (c) => visibles.push(c), () => {}, true, true, controladorActual, (c) => {
     assert.equal(controladorActual.current, c); orden.push('restaurar');
   }, true, false, false);
   const limpiarPrimero = setup(); limpiarPrimero();
@@ -415,7 +415,7 @@ test('privacidad con cuentas abiertas describe sesión segura, desbloqueo, baja 
   ast.program.body = ast.program.body.filter((n) => n.type === 'FunctionDeclaration' && n.id.name === 'Privacidad');
   const js = babel.transformFromAstSync(ast, app, { babelrc: false, configFile: false, plugins: [jsx] }).code;
   const entorno = { React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
-    MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+    USUARIO_LOCAL: true, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
   for (const nombre of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[nombre] = nombre;
   const Privacidad = new Function(...Object.keys(entorno), `${js};return Privacidad;`)(...Object.values(entorno));
   const copia = texto(Privacidad({ estadoCuenta: { disponible: true } }));
@@ -529,8 +529,8 @@ test('producción real mantiene restauración, bloqueo y seguridad de Perfil con
   const codigoModo=babel.transformSync(fuenteModo,{babelrc:false,configFile:false,plugins:[commonjs]}).code;
   new Function('module','exports',codigoModo)(moduloModo,moduloModo.exports);
   const flags=moduloModo.exports;
-  assert.deepEqual([flags.MODO_LOCAL,flags.SERVICIOS_USUARIO_REMOTOS,flags.CUENTAS_REMOTAS,flags.CORREO_AUTH_E2E],
-    [false,false,true,true],'Este caso debe cubrir la configuración publicada real');
+  assert.deepEqual([flags.SERVICIOS_USUARIO_REMOTOS,flags.CUENTAS_REMOTAS,flags.CORREO_AUTH_E2E],
+    [false,true,true],'Este caso debe cubrir la configuración publicada real');
   const app=fs.readFileSync(path.join(RAIZ,'App.js'),'utf8');
   const ast=babel.parseSync(app,{babelrc:false,configFile:false,parserOpts:{plugins:['jsx']}});
   const nombres=new Set(['USUARIO_LOCAL','CUENTA_REMOTA_ACTIVA','AVISOS_NOVEDADES_ACTIVOS','CASILLA_ALTA_ACTIVA']);
