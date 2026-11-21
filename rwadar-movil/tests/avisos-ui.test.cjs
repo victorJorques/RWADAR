@@ -908,8 +908,12 @@ test('App: solo con el interruptor se observan las novedades y se pinta la campa
   // Inicio ya no pinta avisos: solo los cambios de lo que sigues, que se dan por vistos en pantalla.
   const inicio = fs.readFileSync(path.join(RAIZ, 'componentes', 'Inicio.js'), 'utf8');
   assert.doesNotMatch(inicio, /tarjetaAvisos/);
-  assert.match(inicio, /useVistoEnPantalla\(\{ activo: cambios\.length > 0 && !seccion,[\s\S]{0,120}onVisto: onCambiosVistos \}\)/);
+  assert.match(inicio, /useVistoEnPantalla\(\{ activo: cambios\.length > 0 && !seccion && !cubierta,[\s\S]{0,120}onVisto: onCambiosVistos \}\)/);
   assert.match(inicio, /<View style=\{e\.seccion\} ref=\{refCambios\} collapsable=\{false\}>/);
+  // Tapada (lista de la campana, ficha, novedades, lección, privacidad) o en segundo plano, Inicio no se ve: nada se da por visto.
+  const appFuente = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
+  assert.match(appFuente, /cubierta=\{campana\.abierta \|\| explicando \|\| Boolean\(novedadesRwadar\.ventana\) \|\| Boolean\(abierta\)[\s\S]{0,120}\|\| appEnSegundoPlano\}/);
+  assert.match(appFuente, /AppState\.addEventListener\('change', \(estado\) => setAppEnSegundoPlano\(estado !== 'active'\)\)/);
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
   // Encendido el 12/11/2026 por orden de Víctor; la casilla del alta sigue apagada.
   assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = true;/);

@@ -149,7 +149,8 @@ export function useCampanaAvisos(fuente) {
   }, [abierta, clave]);
   function abrir() {
     if (!fuente) return;
-    setSinLeer([]);
+    // Los puntos de «Sin leer» desde el primer fotograma (el efecto los mantiene).
+    setSinLeer(fuente.idsNoLeidos || []);
     setAbierta(true);
     // Fuera también las notificaciones del sistema (y su número en el icono).
     void retirarNotificacionesAvisos();
@@ -205,7 +206,10 @@ export function useAvisosPublicos({ usuarioId, cargar = cargarAvisosPublicos }) 
    `ms` (1,5 s) seguidos dentro de la ventana, midiendo cada `cada` ms. Vale
    en Android, iOS y la web (measureInWindow). `clave` vuelve a armarlo
    cuando cambia lo que enseña. */
-export function useVistoEnPantalla({ activo, clave = '', onVisto, ms = 1500, cada = 250, alto = () => Dimensions.get('window').height }) {
+/* «Visto» como en la web: la mitad de la sección o 160 dp a la vista, por
+   encima de la barra de pestañas (margenInferior), durante ms seguidos. */
+export function useVistoEnPantalla({ activo, clave = '', onVisto, ms = 1500, cada = 250, alto = () => Dimensions.get('window').height,
+  margenInferior = 84 }) {
   const ref = useRef(null);
   const aviso = useRef(onVisto);
   aviso.current = onVisto;
@@ -219,7 +223,8 @@ export function useVistoEnPantalla({ activo, clave = '', onVisto, ms = 1500, cad
       if (hecho || !nodo || typeof nodo.measureInWindow !== 'function') return;
       nodo.measureInWindow((x, y, ancho, altura) => {
         if (hecho) return;
-        const dentro = altura > 0 && y < alto() && y + altura > 0;
+        const visible = Math.min(y + altura, alto() - margenInferior) - Math.max(y, 0);
+        const dentro = altura > 0 && visible >= Math.min(160, altura / 2);
         seguidas = dentro ? seguidas + 1 : 0;
         if (seguidas >= necesarias) { hecho = true; clearInterval(reloj); aviso.current?.(); }
       });

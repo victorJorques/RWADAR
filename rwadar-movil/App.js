@@ -181,6 +181,12 @@ export default function App() {
   // Pestaña Academy: '' muestra la lista de lecciones; un slug, esa lección.
   const [leccion, setLeccion] = useState('');
   const [privacidad, setPrivacidad] = useState(false);
+  // Con la app en segundo plano, Inicio no se está viendo (nada se da por visto).
+  const [appEnSegundoPlano, setAppEnSegundoPlano] = useState(false);
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (estado) => setAppEnSegundoPlano(estado !== 'active'));
+    return () => sub.remove();
+  }, []);
   const [estadoDatos, setEstadoDatos] = useState('');
   const [estadoAccion, setEstadoAccion] = useState('');
   const [procesandoSeguimiento, setProcesandoSeguimiento] = useState(false);
@@ -890,6 +896,8 @@ export default function App() {
               onActualizar={refrescar}
               onDestino={irA}
               onPantalla={setPantallaInicio}
+              cubierta={campana.abierta || explicando || Boolean(novedadesRwadar.ventana) || Boolean(abierta)
+                || Boolean(ofertaAbierta) || privacidad || Boolean(leccion) || appEnSegundoPlano}
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
               fuera={fuera}
               cambios={avisos}

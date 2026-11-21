@@ -72,7 +72,7 @@ function PantallaInicio({ visible, titulo, volver, onCerrar, children }) {
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
-  onCambiosVistos, irCalculadora = 0, onCalculadoraVista, onPantalla,
+  onCambiosVistos, irCalculadora = 0, onCalculadoraVista, onPantalla, cubierta = false,
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
@@ -105,8 +105,10 @@ export default function Inicio({
   useEffect(() => { avisarPantalla.current?.(seccion); }, [seccion]);
   useEffect(() => () => { avisarPantalla.current?.(null); }, []);
   // «Cambios en lo que sigues»: vistos al estar 1,5 s en pantalla (la insignia
-  // de la pestaña Inicio solo cuenta los no vistos). Sin pantalla encima.
-  const refCambios = useVistoEnPantalla({ activo: cambios.length > 0 && !seccion,
+  // de la pestaña Inicio solo cuenta los no vistos). Sin pantalla encima: ni
+  // una sección de Inicio ni nada que App ponga delante (cubierta: la lista de
+  // la campana, una ficha, la ventana de novedades… o la app en segundo plano).
+  const refCambios = useVistoEnPantalla({ activo: cambios.length > 0 && !seccion && !cubierta,
     clave: cambios.map((c) => String(c.id)).join(','), onVisto: onCambiosVistos });
 
   // «Calcula tus números»: Inicio sube hasta el resultado al escribir y, en

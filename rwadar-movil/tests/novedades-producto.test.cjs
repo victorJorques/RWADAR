@@ -799,7 +799,7 @@ test('novedades · App: la ventana espera a Inicio sin nada encima, el detalle l
   assert.match(app, /<Inicio\s+refrescando=\{refrescando\}\s+onActualizar=\{refrescar\}\s+onDestino=\{irA\}\s+onPantalla=\{setPantallaInicio\}/);
   assert.ok(app.indexOf('const [pantallaInicio, setPantallaInicio] = useState(null);') < app.indexOf('useNovedadesRwadar('));
   const inicio = leer('componentes', 'Inicio.js');
-  assert.match(inicio, /irCalculadora = 0, onCalculadoraVista, onPantalla,\n\}\) \{/);
+  assert.match(inicio, /irCalculadora = 0, onCalculadoraVista, onPantalla, cubierta = false,\n\}\) \{/);
   assert.match(inicio, /useEffect\(\(\) => \{ avisarPantalla\.current\?\.\(seccion\); \}, \[seccion\]\);/);
   assert.match(inicio, /useEffect\(\(\) => \(\) => \{ avisarPantalla\.current\?\.\(null\); \}, \[\]\);/);
   // El hook va antes de cualquier return (reglas de los hooks).
