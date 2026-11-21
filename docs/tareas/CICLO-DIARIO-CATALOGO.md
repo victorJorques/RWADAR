@@ -7,8 +7,12 @@
 > resto (aplicar, publicar, OTA y aviso) sigue esperando la orden de Víctor:
 > «dale» para el ciclo preparado o «haz la investigación». Donde abajo se dice
 > «inicio manual», vale igual para ese inicio automático de la preparación; lo
-> de «nada se programa por horario» queda sustituido por esta tarea. Ver
-> `AGENTS.md` y `.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md`.
+> de «nada se programa por horario» queda sustituido por esta tarea. Donde
+> dice «ese día» o «sin una aprobación pendiente para mañana», el ciclo
+> preparado vale hasta el «dale» mientras la guarda del SQL lo deje: si llega
+> otro día, se vuelve a pasar el vigía, se rehacen las noticias de «Hoy» y se
+> re-fecha o corrige lo que haya cambiado, con su revisión. Ver `AGENTS.md` y
+> `.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md`.
 
 Vigente desde el 22 de octubre de 2026. Encargo de Víctor: investigar en
 profundidad las ofertas actuales y nuevas y publicar un catálogo de calidad

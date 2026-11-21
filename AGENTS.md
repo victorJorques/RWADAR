@@ -40,17 +40,23 @@ orden corresponde a un solo ciclo. Nada se aplica ni se publica por horario.
 
 **Preparación automática (Víctor, 21/11/2026: «elegimos las dos… y así yo te
 doy también la verificación»).** Cada mañana a las 07:33 (España), la tarea
-programada «Catálogo automático de RWAdar» lee el «Vigilante diario» de ese
-día. Si al catálogo publicado le quedan **menos de 72 h**, prepara el ciclo
-con la skill `investigacion-catalogo` en **modo preparar**: hasta el PR de la
-entrega con la CI en verde, **sin unirlo, sin «Aplicar catálogo», sin publicar,
-sin OTA y sin avisar a los usuarios**. Después manda a Víctor una notificación
-con lo que cambia y espera su «dale»: con él, el ciclo sigue desde el paso 3
-de la skill. Si el vigilante encuentra otra cosa, la tarea busca la causa sin
-cambiar nada y se la cuenta a Víctor en una notificación. Si no hay nada que
-hacer, termina sin avisar. Cada aviso dice cuántos agentes y cuánto tiempo
-gastó, para vigilar el consumo de Claude Code. Para pararla: desactivar la
-tarea programada o pedírselo a Claude. Texto exacto de la tarea:
+programada «Catálogo automático de RWAdar» mira cuánto le queda al catálogo
+publicado (`node .github/vigilante.mjs --solo-web`, solo lectura). Si le quedan
+**menos de 72 h**, prepara el ciclo con la skill `investigacion-catalogo` en
+**modo preparar**: hasta el PR de la entrega («Catálogo preparado del …
+(espera el «dale»)») con la CI en verde. **No une ese ni ningún otro PR, no
+lanza «Aplicar catálogo» ni ningún flujo que escriba en Supabase o publique, no
+envía la OTA y no avisa a los usuarios.** Después manda a Víctor una
+notificación con lo que cambia y espera su «dale»: con él, el ciclo sigue
+desde el paso 3 de la skill. El ciclo preparado no es una cola: vale mientras
+la guarda del SQL lo deje; si el «dale» llega otro día, se vuelve a pasar el
+vigía y se rehacen las noticias de «Hoy», y si algo cambió se re-fecha o se
+corrige con su revisión antes de aplicar. Si el último vigilante tiene otras
+fallas, la tarea busca la causa sin cambiar nada y se la cuenta a Víctor en
+una notificación. Si no hay nada que hacer, termina sin avisar. Cada aviso
+dice cuántos agentes y cuánto tiempo gastó, para vigilar el consumo de Claude
+Code. Para pararla: desactivar la tarea programada o pedírselo a Claude.
+Texto exacto de la tarea:
 [`ORDEN-AUTOMATICA.md`](.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md).
 Sustituye la pausa del 22/10/2026.
 

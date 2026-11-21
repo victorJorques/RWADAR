@@ -13,12 +13,18 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   entonces, y así yo te doy también la verificación y miramos que haya abuso
   también del Claude Code y todo».
 - **Qué hay:** la tarea programada «Catálogo automático de RWAdar» (cada día a
-  las 07:33, España) lee el «Vigilante diario». Si al catálogo le quedan menos
-  de 72 h, **prepara** el ciclo con la skill `investigacion-catalogo` en «modo
-  preparar»: hasta el PR de la entrega con la CI en verde, sin unir, aplicar ni
-  publicar. Después avisa a Víctor con una notificación y espera su «dale». Si
-  el vigilante falla por otra cosa, solo diagnostica y avisa. Cada aviso dice
-  cuántos agentes y cuánto tiempo gastó.
+  las 07:33, España) mira la caducidad con `node .github/vigilante.mjs
+  --solo-web`; el vigilante programado no le sirve, porque GitHub lo retrasa
+  hasta las 12-14 h UTC. Si al catálogo le quedan menos de 72 h, **prepara** el
+  ciclo con la skill `investigacion-catalogo` en «modo preparar»: hasta el PR
+  «Catálogo preparado del … (espera el «dale»)» con la CI en verde. No une ese
+  PR ni ningún otro, y no lanza flujos que apliquen o publiquen. Después avisa a
+  Víctor con una notificación (PR, etiqueta, agentes y minutos) y espera su
+  «dale». Si el vigilante falla por otra cosa, solo diagnostica y avisa. Con la
+  carpeta del repositorio sucia, no prepara: avisa.
+- **Revisión única:** 11 hallazgos, todos arreglados en el mismo PR, incluidos
+  los textos fijos «13/11» y «16:52 UTC» de
+  `.claude/workflows/auditoria-completa-catalogo.js`.
 - **Documentos:** `AGENTS.md` («Preparación automática», que sustituye la pausa
   del 22/10), `docs/INTERNO.md`, la cabecera de
   `docs/tareas/CICLO-DIARIO-CATALOGO.md`, el apartado «Modo preparar» de la

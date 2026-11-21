@@ -45,9 +45,9 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 **Investigación del catálogo: se prepara sola, se publica con la orden de
 Víctor.** Desde el 21/11/2026, la tarea programada «Catálogo automático de
-RWAdar» mira el vigilante cada mañana (07:33, España). Cuando al catálogo le
-quedan menos de 72 h, prepara el ciclo hasta el PR de la entrega (sin aplicar
-ni publicar) y avisa a Víctor con una notificación. Su «dale», o un «haz la
+RWAdar» mira cada mañana (07:33, España) cuánto le queda al catálogo. Cuando
+le quedan menos de 72 h, prepara el ciclo hasta el PR de la entrega (sin unir,
+aplicar ni publicar) y avisa a Víctor con una notificación. Su «dale», o un «haz la
 investigación», autoriza el resto de ese ciclo: aplicar en Supabase, publicar
 la web y enviar la OTA si pasan las pruebas y la revisión independiente. Se
 puede repetir varias veces el mismo día. No hay cola pública «en
