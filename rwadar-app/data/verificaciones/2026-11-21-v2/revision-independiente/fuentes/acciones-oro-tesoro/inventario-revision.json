@@ -1,0 +1,338 @@
+[
+ {
+  "url": "https://xstocks.fi/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+  "archivo": "crudo/xstocks-uk-eu-news.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:28Z",
+  "bytes": 51355,
+  "sha256": "f6ab2ec574e939db359502341b78c9521d8aadfbd2ba809fb04da2e7ac32e191"
+ },
+ {
+  "url": "https://xstocks.fi/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+  "archivo": "xstocks-uk-eu-news-extracto.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:28Z",
+  "bytes": 2088,
+  "sha256": "36ba039a92fc4386bba71e2bc04fceab430ff5a3907ff51e7ac927c273ae1fb4"
+ },
+ {
+  "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
+  "archivo": "crudo/support.kraken.com_es-es_articles_xstocks-availability.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:52Z",
+  "bytes": 5421310,
+  "sha256": "5a2b24260cb4b1282c88c1ac32094d2c23f26ccadaefa37e3173ba6b8dba4a9e"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-availability",
+  "archivo": "crudo/support.kraken.com_articles_xstocks-availability.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:52Z",
+  "bytes": 5421323,
+  "sha256": "ac30a777020f2c2f36109cc45a4d7ceaf829e802009555b0cc0fb863ad39846d"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-faq",
+  "archivo": "crudo/support.kraken.com_articles_xstocks-faq.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:52Z",
+  "bytes": 1054783,
+  "sha256": "5314ed6ce76f72288420bebb094e35e446d8569b3bf5daf0284065599a565f4c"
+ },
+ {
+  "url": "https://support.kraken.com/es-es/articles/xstocks-faq",
+  "archivo": "crudo/support.kraken.com_es-es_articles_xstocks-faq.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:52Z",
+  "bytes": 1054783,
+  "sha256": "5062df313bf5fc0bca69bdac99113938b15083051e4dc9552dc7ff499979b95e"
+ },
+ {
+  "url": "https://eu.kraken.com/xstocks",
+  "archivo": "crudo/kraken-eu-xstocks-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:04:22Z",
+  "bytes": 11781,
+  "sha256": "c03b78d5d70ba8d35a33608aa2edab3f174c90488b5a6df8181e4ff653b9aa1a"
+ },
+ {
+  "url": "https://eu.kraken.com/xstocks",
+  "archivo": "crudo/kraken-eu-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:05:34Z",
+  "bytes": 1413780,
+  "sha256": "0f35b81aa5454b2d38c4d6eaeebbfd108163cfeb9738734074d230d76657eae8"
+ },
+ {
+  "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
+  "archivo": "crudo/kraken-support-availability-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:07:45Z",
+  "bytes": 6196,
+  "sha256": "36e32ac84d91ae012c5ee53179e29d36e7bf84fdf4896efdb164f22ae368d834"
+ },
+ {
+  "url": "https://api.kraken.com/0/public/AssetPairs?aclass_base=tokenized_asset",
+  "archivo": "kraken-api-assetpairs-tokenized.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:00Z",
+  "bytes": 176893,
+  "sha256": "83630de64abb9a40cc07cf283209800b43cae8caab86fe83269139fdd093e680"
+ },
+ {
+  "url": "https://api.kraken.com/0/public/AssetPairs?aclass_base=tokenized_asset&country_code=ES",
+  "archivo": "kraken-api-assetpairs-tokenized-ES.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:00Z",
+  "bytes": 176893,
+  "sha256": "83630de64abb9a40cc07cf283209800b43cae8caab86fe83269139fdd093e680"
+ },
+ {
+  "url": "https://api.kraken.com/0/public/Assets?aclass=tokenized_asset",
+  "archivo": "kraken-api-assets-tokenized.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:08Z",
+  "bytes": 306191,
+  "sha256": "c8ff12464aaa6b9e3ad648436c626d9b1172e7af1960b8961153271e9dec848a"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20approval_filing_date:%5B2026-10-15T00:00:00Z%20TO%20*%5D&wt=json&rows=400&sort=approval_filing_date%20desc",
+  "archivo": "esma-priii-backed-desde-20261015.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:40Z",
+  "bytes": 94055,
+  "sha256": "52b5e0c8623e0c2a82691a0be5915f9c3e6bf07f2c1956a33b402be320edfc74"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665997/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "crudo/backed-ft-CH1588665997.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:56Z",
+  "bytes": 1083947,
+  "sha256": "4b990f076ae984c9363076fc61b8cfab648162070702a126f497db508b8f8003"
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588665898/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "crudo/backed-ft-CH1588665898.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:06:56Z",
+  "bytes": 1083972,
+  "sha256": "c2fdf05c835b5d5f4a6b19a31e9a2eff0a3911d2232bd72f8d6f0d9696835c65"
+ },
+ {
+  "url": "https://www.kraken.com/legal/xstocks",
+  "archivo": "crudo/kraken-legal-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:07:38Z",
+  "bytes": 622301,
+  "sha256": "9967ccd315d4518039df93dd9b32f2df3030b62790c5a63cc4437df669ba80fb"
+ },
+ {
+  "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+  "archivo": "crudo/cysec-45914.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:08:29Z",
+  "bytes": 651841,
+  "sha256": "b1b6a36027e8b77ba3fca454e0933a5659cedbeb1e51f2954e0a3a81fc1b13f2"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+  "archivo": "cnmv-esi-4474.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:08:47Z",
+  "bytes": 218255,
+  "sha256": "490c31b3a4c3b113c96227b99e7792d1a63d562cd224809db63a21604abe953e"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+  "archivo": "cnmv-esi-5299.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:08:47Z",
+  "bytes": 218078,
+  "sha256": "d0828f9578e6a83a181afd0b7ab497dac888ed511e748930ad04c65b37663cd4"
+ },
+ {
+  "url": "https://www.kraken.com/features/fee-schedule",
+  "archivo": "crudo/kraken-fee-schedule-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:06Z",
+  "bytes": 664331,
+  "sha256": "f99322c088abb09962e880044fbd3ef11ff04010194c03d8af2f0e29131acfb3"
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+  "archivo": "crudo/backed-base-prospectus-mfsa.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:14Z",
+  "bytes": 1428039,
+  "sha256": "47be92729ffec7b9bae6c6b6141b1d16b571c787170b570a8f59a03459f008b3"
+ },
+ {
+  "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+  "archivo": "crudo/backed-ft-159-litex.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:14Z",
+  "bytes": 1365826,
+  "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+  "archivo": "crudo/mtbill-ft.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:23Z",
+  "bytes": 1248073,
+  "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "archivo": "crudo/mtbill-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:23Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com · eth_call latestRoundData/getRoundData a 0x056339C044055819E8Db84E71f5f2E1F536b2E5b",
+  "archivo": "oraculo-mtbill-20261121.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:49Z",
+  "bytes": 371,
+  "sha256": "2f9b7bcd586db2b81604189bab3ce0087191dc44763965d61d0423e6f3e5953e"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "esma-priii-isin-mtbill.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:58Z",
+  "bytes": 4419,
+  "sha256": "463b420582f2dd3198696a4a6d7d37dfb293606e5272db089d8c550d5b852764"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+  "archivo": "crudo/cnmv-pasaportes-midas.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:09:58Z",
+  "bytes": 217221,
+  "sha256": "de12b98ce93263d71b9a2a0c9334549e2562e972a4fe02a62117bdc7776c9270"
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+  "archivo": "crudo/rh-kid-en.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:11Z",
+  "bytes": 177536,
+  "sha256": "d744e3ac63962771cb3ea745e2b8e72b3ccf9d0cd0fc3972b6e59733eecaee96"
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+  "archivo": "crudo/rh-fee-schedule.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:11Z",
+  "bytes": 77204,
+  "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "archivo": "crudo/midas-app-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-21T18:10:12Z",
+  "bytes": 5322,
+  "sha256": "511f4e8f44e7c50686dd41ef8ae6d1b02c79891458c014831e96b398c673140f"
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+  "archivo": "crudo/rh-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:19Z",
+  "bytes": 191487,
+  "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501"
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "archivo": "crudo/rh-invest-es-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:20Z",
+  "bytes": 11677,
+  "sha256": "bf547d57970507f7efae2774b4dd9f2834981bce6599c5cc9aaeff1498530d08"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+  "archivo": "crudo/cnmv-adv-Prosegur.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:45Z",
+  "bytes": 212225,
+  "sha256": "4a926ac2b1633c73d4be47a455ebc4348e00422f3bee9086a24dcc39caebcae4"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kraken",
+  "archivo": "crudo/cnmv-adv-Kraken.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:45Z",
+  "bytes": 212181,
+  "sha256": "8235a40ef5c450e09a08ba3ea4b49969828c826008d2c5027e61e71b8538b463"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+  "archivo": "crudo/cnmv-adv-Gemini.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:45Z",
+  "bytes": 217724,
+  "sha256": "79d6ac43e4debd6c079a7528bc975564be78627b7c38706cfe2202aa51acf079"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robinhood",
+  "archivo": "crudo/cnmv-adv-Robinhood.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:10:45Z",
+  "bytes": 212247,
+  "sha256": "e0317dc12d4bf6df9b9b5701293c9e86a6853e5dda8648b680a04cf5fa13fd8f"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "archivo": "crudo/prosegur-digital-gold-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:11:12Z",
+  "bytes": 7974,
+  "sha256": "7064f635ef15c448d761964fa2a0aa455cff3525113e5b5b403d452479d8dd61"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "archivo": "crudo/prosegur-terms-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:11:30Z",
+  "bytes": 72651,
+  "sha256": "d7e3cdc5ccf7ca6e26ff625fe07ae6f4de4acc2f0e680ef75f337792a86c7d19"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/",
+  "archivo": "crudo/prosegur-app-home-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:11:43Z",
+  "bytes": 492,
+  "sha256": "2df0dbcef3b9c5fd81cbb2374cc20f001e63c602b6e872c429c8ff1addd89792"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "archivo": "crudo/esma-casps.csv",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:11:59Z",
+  "bytes": 201660,
+  "sha256": "d6ba26963008959098964bea92ead7409b6ff8284eea86d17237bdc5aad65134"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+  "archivo": "crudo/cnmv-pasaportes-backed.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:12:52Z",
+  "bytes": 215530,
+  "sha256": "bfdadeec5ccd1f2602d1753971f2ebdc2ea471ebf1b399635decc990097bf0cb"
+ },
+ {
+  "url": "extractos literales de eu.kraken.com/xstocks y support.kraken.com (ver cada bloque)",
+  "archivo": "kraken-extractos-21-11.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-21T18:02:52Z–18:07:45Z",
+  "bytes": 6445,
+  "sha256": "c5f12760091335715481e488e0a84cf94966d90131caa123be2061fa63e0a2d0"
+ }
+]
