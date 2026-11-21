@@ -6,7 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (37) · Claude · Limpieza del código y de GitHub en seis partes · PARTES 1-5 UNIDAS (#172-#176); LA 6, ESTE CAMBIO · nada nuevo para el usuario
+## 21 de noviembre de 2026 (38) · Claude · Cierre de la limpieza: ramas borradas, migración 39 aplicada y OTA de la app · HECHO
+
+- **Orden de la dirección (21/11):** «Ábrela en móvil y lanza lo que se necesite
+  para finalizar el trabajo».
+- **App en tamaño de móvil (390 px):** exportación web de `main` con un sustituto
+  de `expo-secure-store` solo para la prueba (en una copia aparte, fuera de Git)
+  y sesión y datos simulados (sin tocar producción): acceso, Inicio (con la
+  ventana de novedades), lista de Ofertas, una ficha, Plataformas, Academy y
+  Perfil se abren sin errores de JavaScript. No es un móvil físico.
+- **«Limpiar ramas»:** primero solo lista (112 se borrarían, 20 se quedan) y
+  después con `BORRAR` e `incluir_cerrojos=si`: de 132 ramas quedan 18 (`main`,
+  `datos-tokenizacion` y 16 con trabajo propio sin unir, que el flujo no toca).
+  Fuera también `claude/cerrojo-ciclo-2026-11-20` y `-21`.
+- **Migración 39 aplicada:** `ensayo-39` («ENSAYO CORRECTO», sin cambios),
+  `aplicar-39` (copia cifrada; «RWAdar 35 OK: directo encendido, 2 relojes, 30
+  tokens» y «RWAdar 39 OK») y `verificar-39` (solo lectura) en verde.
+  `/api/tokenizacion/directo` responde 200 después.
+- **OTA Android** con la limpieza de la app (base `fa30779`, runtime 1.4.2(24))
+  enviada y en verde. Sin aviso a usuarios: no cambia nada visible.
+- **Pendiente (decisión de la dirección):** las 16 ramas con trabajo sin unir,
+  entre ellas cinco ajenas al producto que ahora son públicas (guía de Excel,
+  BTC en papel, rivales de Mister, panel de control y 33 correos a empresas sin
+  enviar); ajustes de GitHub (regla para `main`, aprobación de PR de forks),
+  «Correo Lettermint» y «Gestión de Supabase»; arreglar el reloj de las vistas
+  en `pglite.test.mjs`.
+
+---
+
+## 21 de noviembre de 2026 (37) · Claude · Limpieza del código y de GitHub en seis partes · SEIS PARTES UNIDAS (#172-#177) · nada nuevo para el usuario
 
 - **Encargo (responsable del proyecto, 21/11):** «Soluciona y arregla todo lo
   de GitHub y limpia el código de la app y la web para que sea más fácil y
