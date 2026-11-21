@@ -16,6 +16,7 @@ import {
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   proveedoresDeOfertas, textoBusquedaOferta,
   ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas,
+  leerCambiosVistos, marcarCambiosVistos,
 } from './lib/datos';
 import {
   SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
@@ -42,8 +43,10 @@ import Inicio from './componentes/Inicio';
 import Cuenta from './componentes/Cuenta';
 import Colabora from './componentes/Colabora';
 import {
-  useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, TarjetaAvisosInicio, AvisoBajaNotificacion, quitarPushAlSalir,
+  useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, AvisoBajaNotificacion, quitarPushAlSalir,
 } from './componentes/AvisosNovedades';
+import { BotonCampana, PantallaAvisos, useAvisosPublicos, useCampanaAvisos } from './componentes/CampanaAvisos';
+import { cambiosNoVistos, ultimoCambio } from './lib/campana-avisos';
 import { destinoAviso } from './lib/avisos-cuenta';
 import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
@@ -88,6 +91,11 @@ const BANDEJA_AVISOS_ACTIVA = CUENTA_REMOTA_ACTIVA && AVISOS_BANDEJA_REMOTA === 
 // Notificaciones sin cuenta (14/11/2026, lib/modo-local.js): en la pantalla de
 // acceso, la única sin sesión. Solo hablan con /api/avisos/* de la web.
 const AVISOS_SIN_CUENTA_ACTIVOS = AVISOS_SIN_CUENTA_REMOTOS === true;
+// Campana de la cabecera (21/11/2026): si la cuenta no tiene sus avisos (ni
+// los completos ni la bandeja), enseña los públicos de la web
+// (/api/avisos/recientes), los mismos que se ven sin sesión.
+const AVISOS_PUBLICOS_ACTIVOS = CUENTA_REMOTA_ACTIVA && !AVISOS_NOVEDADES_ACTIVOS && !BANDEJA_AVISOS_ACTIVA
+  && AVISOS_SIN_CUENTA_ACTIVOS;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -200,27 +208,31 @@ export default function App() {
     sinCuenta: AVISOS_SIN_CUENTA_ACTIVOS ? gestorSinCuenta() : null });
   // Igual con la bandeja: sin su interruptor no recibe cuenta y no llama a nada.
   const bandejaAvisos = useBandejaAvisos({ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA ? usuarioAdmitido : null });
-  // Lo que pinta la tarjeta «Avisos» de Inicio y cuenta su insignia, si hay algo.
-  // Con la bandeja sola, la tarjeta no lleva «¿No quieres estos avisos?…»: sin
-  // Perfil › Avisos no hay nada que desactivar.
-  const avisosInicio = AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta : BANDEJA_AVISOS_ACTIVA ? bandejaAvisos : null;
-  /* El «1» de Inicio se recalcula solo, como en WhatsApp: al volver a la app
-     (como mucho una vez cada 30 s) y al llegar un aviso con la app abierta. */
-  const avisosInicioRef = useRef(null);
-  avisosInicioRef.current = avisosInicio;
+  const avisosPublicos = useAvisosPublicos({ usuarioId: AVISOS_PUBLICOS_ACTIVOS ? usuarioAdmitido : null });
+  // Lo que enseña la campana de la cabecera y cuenta su globo, si hay algo.
+  // Con la bandeja sola o los públicos, la lista no lleva «¿No quieres estos
+  // avisos?…»: sin Perfil › Avisos no hay nada que desactivar.
+  const avisosCampana = AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta : BANDEJA_AVISOS_ACTIVA ? bandejaAvisos
+    : AVISOS_PUBLICOS_ACTIVOS ? avisosPublicos : null;
+  // Abrirla es verlos: se guardan como leídos y el globo baja a 0.
+  const campana = useCampanaAvisos(avisosCampana);
+  /* El globo de la campana se recalcula solo, como en WhatsApp: al volver a la
+     app (como mucho una vez cada 30 s) y al llegar un aviso con la app abierta. */
+  const avisosCampanaRef = useRef(null);
+  avisosCampanaRef.current = avisosCampana;
   useEffect(() => {
-    if (!avisosInicio) return undefined;
+    if (!avisosCampana) return undefined;
     let ultima = Date.now();
     const recargarAvisos = (forzar = false) => {
       const ahora = Date.now();
       if (!forzar && ahora - ultima < 30000) return;
       ultima = ahora;
-      avisosInicioRef.current?.recargar();
+      avisosCampanaRef.current?.recargar();
     };
     const vuelta = AppState.addEventListener('change', (estado) => { if (estado === 'active') recargarAvisos(); });
     const dejarDeEscuchar = observarAvisosRecibidos(() => recargarAvisos(true));
     return () => { vuelta.remove(); dejarDeEscuchar(); };
-  }, [Boolean(avisosInicio)]);
+  }, [Boolean(avisosCampana)]);
   const restaurarAcceso = useCallback(async (controlador) => {
     if (!CUENTA_REMOTA_ACTIVA || !controlador || controladorActual.current !== controlador) return;
     setRestaurandoAcceso(true); setErrorRestauracion('');
@@ -352,6 +364,7 @@ export default function App() {
       setAbierta(null); setOfertaAbierta(null); setInversionInicial(null);
       setExplicando(false);
       setPrivacidad(false); setLeccion(''); setPestana('inicio'); setBajaNotificacion(false);
+      campana.cerrar();
       return;
     }
     // Remote identity + guarded profile revalidated whenever the app returns.
@@ -366,6 +379,23 @@ export default function App() {
     const reloj = setInterval(() => { if (activa) cuenta.refrescar(); }, 60000);
     return () => { volver.remove(); clearInterval(reloj); cuenta.suspender(); };
   }, [usuarioAdmitido, cuenta]);
+  /* «Cambios en lo que sigues» de Inicio: la insignia de la pestaña Inicio
+     solo cuenta los que no se han visto. Hasta cuándo se vieron se guarda en
+     este dispositivo, por cuenta; se dan por vistos al estar 1,5 s en
+     pantalla (Inicio, useVistoEnPantalla). */
+  const [cambiosVistos, setCambiosVistos] = useState(null);
+  useEffect(() => {
+    let vivo = true;
+    setCambiosVistos(null);
+    if (usuarioAdmitido) leerCambiosVistos(usuarioAdmitido).then((fecha) => { if (vivo) setCambiosVistos(fecha); });
+    return () => { vivo = false; };
+  }, [usuarioAdmitido, revisionCartera]);
+  const marcarCambiosEnPantalla = useCallback(() => {
+    const ultimo = ultimoCambio(avisos);
+    if (!ultimo || !usuarioAdmitido) return;
+    setCambiosVistos((antes) => (antes && Date.parse(antes) >= Date.parse(ultimo) ? antes : ultimo));
+    marcarCambiosVistos(usuarioAdmitido, ultimo);
+  }, [avisos, usuarioAdmitido]);
   const obtenerAccesoTutorial = useCallback(() => cuenta.accesoTutorial(), [cuenta]);
   const cerrarTutorial = useCallback(() => {
     setExplicando(false); setPestana('academy'); setLeccion('');
@@ -432,13 +462,16 @@ export default function App() {
       }
       setVistaBuscar('ofertas'); setPestana('buscar');
     } else {
+      // A Inicio, con la lista de la campana abierta: es donde está el aviso y,
+      // debajo, «¿No quieres estos avisos?».
       setPestana('inicio');
+      campana.abrir();
     }
-    // Fuera de Inicio no está la tarjeta con «¿No quieres estos avisos?»: la
+    // Fuera de Inicio no se abre la lista con «¿No quieres estos avisos?»: la
     // baja va arriba, como en la web (LSSI, art. 21.2, párr. 2). La bienvenida
     // es un aviso de servicio, no de novedades.
     setBajaNotificacion(destino !== 'inicio' && tipo !== 'bienvenida');
-    avisosInicio?.recargar();
+    avisosCampana?.recargar();
     setDestinoAvisoPendiente(null);
   }, [destinoAvisoPendiente, cargando, usuarioAdmitido]);
   useEffect(() => {
@@ -479,7 +512,7 @@ export default function App() {
 
   const refrescar = async () => {
     setRefrescando(true);
-    avisosInicio?.recargar();
+    avisosCampana?.recargar();
     try {
       const actualizado = await traer();
       if (actualizado) tacto.novedad();
@@ -629,7 +662,7 @@ export default function App() {
               await borrarDatosDispositivo();
               setRevisionCartera(actual => actual + 1);
               // Leídos y token de este móvil pueden haber cambiado.
-              avisosInicio?.recargar();
+              avisosCampana?.recargar();
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
               setEstadoDatos('Datos borrados. Actualiza para consultar de nuevo el catálogo con tu cuenta.');
@@ -706,17 +739,20 @@ export default function App() {
       if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
   };
-  /* Un aviso de Inicio se marca como leído y lleva a su sitio dentro de la
-     app; si solo tiene un enlace de la web, lo abre. */
-  const abrirAvisoInicio = (aviso) => {
-    avisosInicio?.marcarLeidos([aviso.id]);
+  /* «Abrir» de un aviso de la campana: cierra la lista y lleva a su sitio
+     dentro de la app; si solo tiene un enlace de la web, lo abre. */
+  const abrirAvisoCampana = (aviso) => {
+    avisosCampana?.marcarLeidos([aviso.id]);
+    campana.cerrar();
     const destino = destinoAviso(aviso);
     if (destino) irA(destino.destino, destino.url);
   };
-  /* Enlace de baja de la tarjeta «Avisos»: lleva a Perfil › Avisos, donde
+  const abrirCampana = () => { tacto.abrir(); campana.abrir(); };
+  /* «¿No quieres estos avisos?» de la campana: lleva a Perfil › Avisos, donde
      están los dos interruptores. */
   const irAAvisosPerfil = () => {
     tacto.eleccion();
+    campana.cerrar();
     setAbierta(null); setOfertaAbierta(null);
     setEnfocarAvisosPerfil(true);
     setPestana('perfil');
@@ -824,6 +860,7 @@ export default function App() {
             guardados={sigo.length + guardadas.length}
             sinConexion={sinConexion}
             onAyuda={() => { tacto.abrir(); setExplicando(true); }}
+            campana={campana.activa ? { noLeidos: campana.noLeidos, onPress: abrirCampana } : null}
           />
         ) : null}
 
@@ -857,6 +894,7 @@ export default function App() {
               fuera={fuera}
               cambios={avisos}
               renderCambio={(aviso) => <Aviso aviso={aviso} />}
+              onCambiosVistos={marcarCambiosEnPantalla}
               plataformas={radar}
               ofertas={todasOfertas}
               fechaCatalogo={fechaCatalogo}
@@ -864,12 +902,6 @@ export default function App() {
               onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
               onAbrirEnlace={abrirEnlace}
               irCalculadora={irCalculadora} onCalculadoraVista={() => setIrCalculadora(0)}
-              tarjetaAvisos={avisosInicio ? (
-                <TarjetaAvisosInicio avisos={avisosInicio.avisos} leidos={avisosInicio.leidos}
-                  cargando={avisosInicio.cargando} error={avisosInicio.errorCarga}
-                  onAbrir={abrirAvisoInicio} onMarcarLeidos={avisosInicio.marcarTodosLeidos}
-                  onDesactivar={AVISOS_NOVEDADES_ACTIVOS ? irAAvisosPerfil : undefined} />
-              ) : null}
             />
           ) : null}
 
@@ -1197,7 +1229,7 @@ export default function App() {
         <Navegacion
           activa={destinoBarra}
           guardados={sigo.length + guardadas.length}
-          novedades={avisos.length + (avisosInicio ? avisosInicio.noLeidos : 0)}
+          novedades={cambiosNoVistos(avisos, cambiosVistos)}
           onCambiar={cambiarPestana}
         />
 
@@ -1237,6 +1269,15 @@ export default function App() {
           bandejaAvisos={BANDEJA_AVISOS_ACTIVA}
           pushNovedades={AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades()} />
 
+        {/* La lista de la campana: abrirla es verlos. */}
+        <PantallaAvisos visible={campana.abierta && Boolean(avisosCampana)} avisos={avisosCampana?.avisos || []}
+          sinLeer={campana.sinLeer} cargando={avisosCampana?.cargando}
+          /* El fallo de carga solo si no hay lista que enseñar (el de Perfil › Avisos va en su panel). */
+          error={avisosCampana?.avisos?.length ? '' : avisosCampana?.errorCarga}
+          onAbrir={abrirAvisoCampana} onCerrar={() => { tacto.eleccion(); campana.cerrar(); }}
+          onReintentar={avisosCampana?.recargar}
+          onDesactivar={AVISOS_NOVEDADES_ACTIVOS ? irAAvisosPerfil : undefined} />
+
         {/* Novedades de RWAdar: la ventana al abrir y su detalle (también desde Perfil). */}
         <VentanaNovedades visible={novedadesRwadar.ventana} datos={novedadesRwadar.datos}
           onDetalle={novedadesRwadar.verDetalle} onEntendido={novedadesRwadar.entendido}
@@ -1254,7 +1295,7 @@ export default function App() {
 /* Cabecera opaca de una sola línea, como la web (GUIA-ACABADOS §6 y ESPEC
    §4): la marca, el título de la pestaña y la ayuda. Debajo, solo si dice
    algo, una línea con el recuento. */
-function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda }) {
+function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda, campana = null }) {
   const textos = {
     inicio: { titulo: 'Inicio', subtitulo: '' },
     // Ofertas y Plataformas ya enseñan sus recuentos en el segmentado y los
@@ -1283,6 +1324,8 @@ function Cabecera({ pestana, vistaBuscar, guardados, sinConexion, onAyuda }) {
           <Text style={e.marca}>RWA<Text style={{ color: C.senal }}>dar</Text></Text>
         </View>
         <Text style={e.cabeceraTitulo} accessibilityRole="header" numberOfLines={1}>{actual.titulo}</Text>
+        {/* La campana de avisos, al lado del «?» (21/11/2026). */}
+        {campana ? <BotonCampana noLeidos={campana.noLeidos} onPress={campana.onPress} /> : null}
         <Pressable
           onPress={onAyuda}
           style={({ pressed }) => [e.accionCabecera, pressed && e.accionCabeceraPulsada]}

@@ -607,6 +607,64 @@ export async function marcarRenovacionPushNovedades(usuarioId, dia) {
   await AsyncStorage.setItem(clave, dia);
 }
 
+/* Campana de avisos (21/11/2026, componentes/CampanaAvisos.js). Dos claves
+   nuevas, solo en el dispositivo y por cuenta (no se mezclan entre cuentas
+   de este móvil), que «Borrar datos del dispositivo» elimina con el resto
+   (clavesPrivadasDispositivo de lib/acceso-obligatorio.js):
+   - rwadar.editorial.avisos.publicos.leidos.v1:<UUID>: qué avisos públicos
+     (los de /api/avisos/recientes, si la cuenta no tiene sus avisos) se han
+     visto en la campana. Mismo formato que los leídos de la cuenta.
+   - rwadar.editorial.cambios.vistos.v1:<UUID>: hasta qué fecha se han visto
+     en Inicio los «cambios en lo que sigues» (ISO). La insignia de la
+     pestaña Inicio solo cuenta los posteriores. Nunca baja. */
+const AVISOS_PUBLICOS_LEIDOS = `${PREFIJO}avisos.publicos.leidos.v1`;
+const CAMBIOS_VISTOS = `${PREFIJO}cambios.vistos.v1`;
+const FECHA_ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/;
+
+export async function avisosPublicosLeidos(usuarioId) {
+  try {
+    const clave = claveAvisosCuenta(AVISOS_PUBLICOS_LEIDOS, usuarioId);
+    if (!clave) return [];
+    const guardado = await AsyncStorage.getItem(clave);
+    return limpiarLeidos(guardado ? JSON.parse(guardado) : []);
+  } catch {
+    return [];
+  }
+}
+
+export async function marcarAvisosPublicosLeidos(usuarioId, ids) {
+  const clave = claveAvisosCuenta(AVISOS_PUBLICOS_LEIDOS, usuarioId);
+  if (!clave) throw new Error('Entra para guardar tus datos');
+  const lista = limpiarLeidos([...limpiarLeidos(ids), ...await avisosPublicosLeidos(usuarioId)]);
+  await AsyncStorage.setItem(clave, JSON.stringify(lista));
+  return lista;
+}
+
+export async function leerCambiosVistos(usuarioId) {
+  try {
+    const clave = claveAvisosCuenta(CAMBIOS_VISTOS, usuarioId);
+    if (!clave) return null;
+    const fecha = await AsyncStorage.getItem(clave);
+    return typeof fecha === 'string' && FECHA_ISO.test(fecha) && Number.isFinite(Date.parse(fecha)) ? fecha : null;
+  } catch {
+    return null;
+  }
+}
+
+// Guarda «vistos hasta» sin bajar nunca a una fecha anterior. Nunca lanza.
+export async function marcarCambiosVistos(usuarioId, fecha) {
+  const clave = claveAvisosCuenta(CAMBIOS_VISTOS, usuarioId);
+  if (!clave || typeof fecha !== 'string' || !FECHA_ISO.test(fecha) || !Number.isFinite(Date.parse(fecha))) return false;
+  try {
+    const actual = await leerCambiosVistos(usuarioId);
+    if (actual && Date.parse(actual) >= Date.parse(fecha)) return true;
+    await AsyncStorage.setItem(clave, fecha);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function conPlazo(promesa, ms) {
   let reloj;
   return Promise.race([promesa, new Promise((_, rechazar) => {
