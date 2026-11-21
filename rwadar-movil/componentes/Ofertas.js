@@ -69,7 +69,7 @@ function datoDestacado(oferta) {
 /* La web no marca «cifras pendientes» en reventa ni en próximas: su mínimo, su
    acceso y su salida documentados salen mientras la ficha está vigente
    (ficha-editorial.js ya mira la fecha y la colección; 03/11/2026, Víctor). */
-function ofertaParaResumen(oferta) {
+export function ofertaParaResumen(oferta) {
   return oferta && oferta.coleccion != null && oferta.coleccion !== 'principales'
     ? { ...oferta, cifrasPendientes: false } : oferta;
 }

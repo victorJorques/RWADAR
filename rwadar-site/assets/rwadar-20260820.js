@@ -2141,11 +2141,14 @@ function ofertasInicio(c){
 function tarjetaInicioHtml(o,i,seleccion){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);
  const bloqueo=avisoBloqueoOferta(o),nota=NOTAS_SELECCION[o.slug];
+ /* Todas las tarjetas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y si se contrata desde España. */
+ const dc=datosCortosOferta(o,resumenEditorialOferta(o)),noEsp=estadoVigenciaLocal(o).clase!=='caducado'&&o.disponibleEs===false;
  return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo"><p class="rel-nueva-meta">'+(nueva?'<span class="etq etq-ok">Nueva</span>':'')+(sel?'<span class="etq ini-etq-cinco">Pasa las 5 comprobaciones</span>':'')+'</p>'+
   '<h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
+  '<p class="rel-tarjeta-datos"><span>Mínimo</span> <b>'+escHtml(dc.minimo)+'</b><span class="rel-tarjeta-sep" aria-hidden="true"> · </span><span>España</span> <b>'+escHtml(noEsp?'No':dc.espanaCorta)+'</b></p>'+
   (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
   (nueva&&f?'<p class="rel-nueva-fecha"><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></p>':'')+
