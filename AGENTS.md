@@ -32,14 +32,33 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   cambios), se lanza «Avisar novedad» (`anunciar`, tipo `novedad`) sin pedir
   otra orden. Las noticias diarias automáticas no avisan.
 
-**Investigación del catálogo: inicio manual.** Por indicación de Víctor del
-22/10/2026, la tarea queda preparada y **PAUSADA**. Sólo se inicia cuando Víctor
-pulsa **Ejecutar** o pide **«haz la investigación»**. No se ejecuta por horario
-ni existe autorización recurrente para iniciar investigaciones, aplicar SQL o
-publicar por cuenta propia. Cada inicio manual corresponde a un solo ciclo;
-no reactiva la programación ni autoriza futuras ejecuciones.
-Esta indicación sustituye el modo automático anterior descrito en los informes
-y traspasos fechados del 22/10.
+**Investigación del catálogo: se prepara sola y se publica con la orden de
+Víctor.** Aplicar el SQL, publicar la web, enviar la OTA y avisar de la
+novedad siguen necesitando su orden: **«haz la investigación»** (o pulsar
+**Ejecutar**) para un ciclo entero, o **«dale»** para uno ya preparado. Cada
+orden corresponde a un solo ciclo. Nada se aplica ni se publica por horario.
+
+**Preparación automática (Víctor, 21/11/2026: «elegimos las dos… y así yo te
+doy también la verificación»).** Cada mañana a las 07:33 (España), la tarea
+programada «Catálogo automático de RWAdar» mira cuánto le queda al catálogo
+publicado (`node .github/vigilante.mjs --solo-web`, solo lectura). Si le quedan
+**menos de 72 h**, prepara el ciclo con la skill `investigacion-catalogo` en
+**modo preparar**: hasta el PR de la entrega («Catálogo preparado del …
+(espera el «dale»)») con la CI en verde. **No une ese ni ningún otro PR, no
+lanza «Aplicar catálogo» ni ningún flujo que escriba en Supabase o publique, no
+envía la OTA y no avisa a los usuarios.** Después manda a Víctor una
+notificación con lo que cambia y espera su «dale»: con él, el ciclo sigue
+desde el paso 3 de la skill. El ciclo preparado no es una cola: vale mientras
+la guarda del SQL lo deje; si el «dale» llega otro día, se vuelve a pasar el
+vigía y se rehacen las noticias de «Hoy», y si algo cambió se re-fecha o se
+corrige con su revisión antes de aplicar. Si el último vigilante tiene otras
+fallas, la tarea busca la causa sin cambiar nada y se la cuenta a Víctor en
+una notificación. Si no hay nada que hacer, termina sin avisar. Cada aviso
+dice cuántos agentes y cuánto tiempo gastó, para vigilar el consumo de Claude
+Code. Para pararla: desactivar la tarea programada o pedírselo a Claude.
+Texto exacto de la tarea:
+[`ORDEN-AUTOMATICA.md`](.claude/skills/investigacion-catalogo/ORDEN-AUTOMATICA.md).
+Sustituye la pausa del 22/10/2026.
 
 Seguir la investigación profunda, la revisión independiente y las compuertas de
 [`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md).
@@ -63,10 +82,10 @@ nuevas solo deja un anuncio **retenido** (no se envía ni se ve) mientras
 `ofertas_automaticas` siga apagado; publicarlo es otra orden de Víctor.
 Cada candidata se admite y publica tras las compuertas y con autorización, o no
 se admite ni publica ese día; no se mantiene una cola ni un estado público
-«en investigación». En otro inicio manual se consultan de nuevo las fuentes,
+«en investigación». En el siguiente ciclo se consultan de nuevo las fuentes,
 sin arrastrar aprobaciones. El catálogo completo ya publicado se conserva.
-La única excepción a «inicio manual» son las noticias del sector de cada
-mañana (abajo).
+Las tareas automáticas son la preparación del catálogo (arriba) y las noticias
+del sector de cada mañana (abajo, apagadas).
 
 **Noticias del sector automáticas (autorización permanente de Víctor del
 13/11/2026).** Cada mañana, la tarea programada «Noticias automáticas de
