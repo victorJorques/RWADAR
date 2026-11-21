@@ -1797,12 +1797,15 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-oferta .emi-donde{display:inline;margin:0;color:inherit;font:inherit;font-weight:600}
 .escaparate-oferta .emi-lugar{color:var(--tx-3)}
 .escaparate-oferta .escaparate-datos-linea{grid-area:datos;align-self:end;display:flex;flex-wrap:wrap;gap:0;margin:12px 0 0 -16px;font-size:.875rem;line-height:1.4}
-.escaparate-datos-linea>div{display:block}
+.escaparate-datos-linea>div{display:block;padding-left:16px;text-indent:-16px}
 .escaparate-datos-linea>div:last-child{white-space:nowrap}
 /* El «·» va delante de cada dato y la franja de 16 px de la izquierda se
-   recorta: si un dato baja de línea, no empieza por «·». */
+   recorta: si un dato baja de línea, no empieza por «·». Si es el texto de un
+   dato el que no cabe (un mínimo largo), su segunda línea empieza 16 px más
+   adentro (sangría francesa), fuera de la franja recortada: sin ella, se
+   perdían las primeras letras («suscripción sde el 25/11»). */
 .escaparate-oferta :is(.escaparate-procedencia,.escaparate-datos-linea){clip-path:inset(0 0 0 16px)}
-.escaparate-oferta :is(.emi-donde,.emi-lugar)::before,.escaparate-datos-linea>div::before{content:'·'/'';display:inline-block;width:16px;color:var(--tx-3);font-weight:400;text-align:center}
+.escaparate-oferta :is(.emi-donde,.emi-lugar)::before,.escaparate-datos-linea>div::before{content:'·'/'';display:inline-block;width:16px;text-indent:0;color:var(--tx-3);font-weight:400;text-align:center}
 .escaparate-datos-linea :is(dt,dd){display:inline;margin:0}
 .escaparate-datos-linea dt{margin-right:4px;color:var(--tx-3);font-weight:500}
 .escaparate-datos-linea dd{color:var(--tx);font-weight:600}
@@ -1910,7 +1913,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 #emiLista .escaparate-oferta .emi-donde{font-weight:600}
 #emiLista .escaparate-oferta .emi-lugar{flex:none;max-width:100%;color:var(--tx-3)}
 #emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;margin:6px 0 0 -16px;border:0;min-width:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave>div{padding:0;border:0;font-size:.8125rem;line-height:1.35}
+#emiLista .escaparate-oferta .escaparate-datos-clave>div{padding:0 0 0 16px;text-indent:-16px;border:0;font-size:.8125rem;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:3px;color:var(--tx-3);font:500 .75rem/1.35 var(--body)}
 #emiLista .escaparate-oferta .escaparate-datos-clave dd{color:var(--tx);font:600 .8125rem/1.35 var(--body);overflow-wrap:normal;hyphens:none}
 #emiLista .escaparate-oferta .escaparate-alertas{grid-area:alertas;gap:2px 10px;margin:6px 0 0}

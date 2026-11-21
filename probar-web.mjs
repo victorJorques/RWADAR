@@ -2493,6 +2493,16 @@ for(const [nombre,alterar] of [
     /font:\d+ \.75rem/.test(dt)&&!/text-transform/.test(dt)&&/flex-wrap:wrap/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia'))&&
     /flex:none/.test(d(cssMovil,'#emiLista .escaparate-oferta .emi-lugar'))&&/<h3 id="emiSeleccionTit">[\s\S]*?<h4 class="emi-tit"/.test(sin)&&
     !/<h3 class="emi-tit"/.test(sin.slice(0,sin.indexOf('catalogo-referencias'))));
+  // 21/11/2026: la franja de 16 px que esconde el «·» del primer dato se recorta, así que un
+  // mínimo largo que baja de línea («Desde 100 € · suscripción desde el 25/11», a 390 px)
+  // perdía sus primeras letras. Cada dato lleva sangría francesa (en escritorio y en el
+  // móvil, que anula el relleno) y el «·» no la hereda.
+  const cssLimpio=css.replace(/\/\*[\s\S]*?\*\//g,''),datoLinea=d(cssLimpio,'.escaparate-datos-linea>div'),
+    datoMovil=d(cssMovil,'#emiLista .escaparate-oferta .escaparate-datos-clave>div'),punto=d(cssLimpio,'.escaparate-datos-linea>div::before');
+  prueba('tarjeta: un mínimo de dos líneas no pierde letras bajo la franja recortada del «·»',
+    /\.escaparate-oferta :is\(\.escaparate-procedencia,\.escaparate-datos-linea\)\{clip-path:inset\(0 0 0 16px\)\}/.test(cssLimpio)&&
+    /padding-left:16px/.test(datoLinea)&&/text-indent:-16px/.test(datoLinea)&&
+    /padding:0 0 0 16px/.test(datoMovil)&&/text-indent:-16px/.test(datoMovil)&&/text-indent:0/.test(punto));
   // Revisión de la tarjeta sencilla (05/11/2026): lo patrocinado no lleva el verde
   // de «Nueva» ni de la acción; «No disponible en España», en rojo como en la app;
   // en escritorio, sin hueco bajo los títulos cortos y con la línea de datos al pie.
