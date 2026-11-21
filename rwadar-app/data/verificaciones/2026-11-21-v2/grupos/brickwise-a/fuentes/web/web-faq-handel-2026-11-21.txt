@@ -1,0 +1,55 @@
+zurück zu allen fragen
+Wie funktioniert der Handel am Marktplatz?
+Alle Wertpapiere in Bezug auf Assets, die am Marktplatz nicht mehr als “neu” gekennzeichnet sind, sind am Zweitmarkt direkt zwischen den Investor:innen handelbar. 
+Über den Kauf- bzw. Verkaufsbutton, der auf der Detailseite eines Assets angezeigt wird, gelangt man zur Übersicht aller bestehenden Kauf- und Verkaufsangebote. Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden. Sobald der:die Ver-/ Käufer:in das Angebot erneut bestätigt hat, wird die Transaktion direkt zwischen den jeweiligen Investor:innen durchgeführt.
+Es besteht auch die Möglichkeit, ein eigenes Kauf- oder Verkaufsangebot zu erstellen. Dabei legt man die Anzahl und den Preis, zu dem Wertpapiere angeboten werden sollen, selbst fest. Sobald das Angebot von einem:r anderen Investor:in angenommen wurde, muss das Angebot noch ein letztes Mal bestätigt werden, bevor die Wertpapiere übertragen werden können.
+Autor
+[nombre recortado]
+Kategorien
+Investments
+Sind meine Investments abgesichert?
+Wo finde ich einen Überblick über meine Investments?
+Wie berechnet sich der Marktwert?
+Wie berechnet sich der Gesamtwert meines Portfolios?
+Woraus ergibt sich die Wertentwicklung meiner Wertpapiere?
+Wie lange habe ich Anspruch auf laufende Ausschüttungen?
+Wo sehe ich meine erhaltenen Ausschüttungen?
+Was sind digitale Anteile?
+Was ist eine Emittentin?
+Was ist die Finanzierungsphase?
+Mit wem handle ich die Wertpapiere über die Plattform eigentlich?
+Wie lange dauert es, bis meine Wertpapiere verkauft sind?
+Warum ist mein Kauf noch ausstehend?
+Warum sind meine Angebote noch ausständig?
+Sicherheit
+Wie kann ich ein neues Handy mit meinem Account verknüpfen?
+Wo werden meine persönlichen Daten gespeichert?
+Wie schütze ich meinen Account?
+Was ist Phishing?
+Warum sind meine Wertpapiere auf der Blockchain sicher?
+Warum wird Blockchain-Technologie genutzt?
+Warum wird meine Handynummer benötigt?
+Wie kann ich mein Passwort zurücksetzen?
+Wie wird mein Account geschützt?
+Security App
+Was tue ich, wenn ich meine Wiederherstellungsdatei verloren habe?
+Warum muss ich die Wiederherstellungsdatei speichern?
+Was tue ich, wenn ich meinen PIN-Code für die Security App vergessen habe?
+Wie kann ich in der Security App einen neuen PIN festlegen?
+Warum erhalte ich einen Verknüpfungscode per SMS?
+Wozu benötige ich eine Security App?
+Immobilien
+Was passiert bei einem Leerstand?
+Was ist das Zustandsprotokoll?
+Bin ich Eigentümer:in der den Produkten zugrunde liegenden Immobilien?
+Kann ich auch eigene Vorschläge zur Verwaltung einer Immobilie einbringen?
+Wer zahlt Reparaturen?
+Wer trifft Entscheidungen über die jeweilige Immobilie?
+Wer verwaltet die Immobilien?
+Steuern
+Beinhaltet die dargestellte laufende Rendite bereits allfällige Steuern?
+Gibt es einen Jahresreport?
+Wie sind die Erträge zu versteuern?
+Zahlungskonto
+Wie kann ich mein Auszahlungskonto ändern?
+Warum m

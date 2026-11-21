@@ -1,0 +1,18 @@
+Extracto literal del código público de la app web de Brickwise (sin sesión), leído por el revisor el 21/11/2026.
+app.85dda63a.js https://app.brickwise.at/js/app.85dda63a.js sha256 b5c9c15438379efc1ddf96df1ceb9310b7991096c72a98cdb62b788a37e0601d (descarga 2026-11-21T18:04:09Z)
+8388.098ec0ae.js https://app.brickwise.at/js/8388.098ec0ae.js sha256 d0cfc7a387ecb6f114e2c5b8f5c690658c65c67b48a94b831fcf7ab9f6bbe02b (descarga 2026-11-21T18:04:40Z)
+
+1) Textos del aviso TaxIdModal (alemán):
+TaxIdModal:{default_button:e=>{const{normalize:n}=e;return n(["In ein anderes Produkt investieren"])},errorMessage:e=>{const{normalize:n}=e;return n(["Ungültig"])},inputLabel:e=>{const{normalize:n}=e;return n(["Steuernummer"])},main_button:e=>{const{normalize:n}=e;return n(["Steuernummer hinzufügen"])},text1:e=>{const{normalize:n}=e;return n(["Die laufenden Erträge dieses Produkts unterliegen der Einkommenssteuer in Österreich. Um in dieses Produkt investieren zu können, wird eine österreichische Steuernummer benötigt."])},text2:e=>{const{normalize:n}=e;return n(["Investitionen in Produkte, deren Einkünfte der Kapitalertragssteuer (KESt/KapEst) unterliegen, sind hingegen jederzeit möglich. Diese sind am KESt-Tag am Marktplatz erkenntlich."])},title:e=>{const{normalize:n}=e;return n(["Bei diesem Produkt wird eine österreichische Steuernummer benötigt"])}},
+
+2) Función que decide si hace falta número fiscal austriaco (exportada como gu):
+function m(e,n,t){return!("sell"===e||n.data.investmentDetails.securityType!==l._U.participationRightEquity&&n.data.investmentDetails.securityType!==l._U.participationRightEquityBuilderOwner||"AUT"!==n.data.investmentDetails.spv?.address.countryCode||"undefined"!==typeof t.account.taxIds&&0!==t.account.taxIds.filter((e=>"AUT"===e.country.toUpperCase())).length)}
+
+3) Compra en la ficha del activo (chunk 8388): la compra en reventa (handleSecondaryBuy) pasa por initialChecks("buy"):
+initialChecks(e){if(this.loggedIn)if("buy"===e&&this.checkUserAbilityToInvestByAddress(this.asset,this.user))this.addressIsNotAvailableModal();else if(this.user.status!==d.J0.active)this.handleInfoModal();else if(this.checkUserAbilityToInvestInAustrianEquityAssets(e,this.asset,this.user))this.openAustrianTaxIdModal();else{if(!this.checkGermanTaxIdRequirement(e,this.asset,this.user))return!0;this.openGermanTaxIdModal()}else(0,u.Pw)(this)},handlePrimaryBuy(){this.initialChecks("buy")&&this.router.navigate(`/${this.appPlatform}/investment/${this.asset.data.id}`,"forward","push")},handleSecondaryBuy(){this.initialChecks("buy")&&this.router.navigate(`/${this.appPlatform}/trading/${this.asset.data.id}
+
+4) Cuándo hay botón de compra primaria y cuándo de reventa:
+isPrimaryBuyButtonAvailable(){return!!(this.asset.data.investmentDetails.stage===C.O8.primary||this.asset.data.investmentDetails.stage===C.O8.secondary&&this.asset.onlyPrimary&&this.asset.data.investmentDetails.availableBricks)},isSecondaryBuyButtonAvailable(){return this.asset.data.investmentDetails.stage===C.O8.secondary&&!this.asset.onlyPrimary},
+
+5) Texto de la app sobre «Mindestinvestition»:
+minAmountPrice_modalDescription:e=>{const{normalize:n}=e;return n(["Für dieses Asset gilt ein Mindestzeichnungsvolumen. Investitionen können ab dem angegebenen Betrag am Primärmarkt getätigt werden."])},minAmountPrice_modalHeader:

@@ -1,0 +1,20 @@
+URL: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera
+Consultado: 2026-11-21T18:05:23Z (agente curl/8; HTTP 200)
+SHA-256 del HTML: 9a78fe54e096a43efb5e76b40b7c1669b7c0f6bb05f6c8b291f38b82259d8652
+
+Índices de referencia
+Sede electrónica
+Inicio
+>
+Advertencias (entidades no autorizadas y otras entidades)
+>
+Buscador de entidades advertidas
+Listado de entidades advertidas
+Criterios de consulta: por tipo No autorizadas,  de nombre Hausera.
+No hay datos disponibles.
+Contacto
+Mapa web
+Nota legal
+Política de cookies
+Protección de datos
+Accesibilidad

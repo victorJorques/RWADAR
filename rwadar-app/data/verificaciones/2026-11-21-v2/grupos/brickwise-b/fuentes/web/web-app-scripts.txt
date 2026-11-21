@@ -1,0 +1,15 @@
+https://app.brickwise.at/js/app.85dda63a.js	200
+https://app.brickwise.at/js/chunk-vendors.992cdb3e.js	200
+https://app.brickwise.at/js/3476.60f6d7a3.js	200
+https://app.brickwise.at/js/8499.7ea072bf.js	200
+https://app.brickwise.at/js/9715.c34ff810.js	200
+https://app.brickwise.at/js/8677.b290cbee.js	200
+https://app.brickwise.at/js/7929.2761adc8.js	200
+https://app.brickwise.at/js/691.e32c9a04.js	200
+https://app.brickwise.at/js/2466.e41c0ca9.js	200
+https://app.brickwise.at/js/8990.b9bdec73.js	200
+https://app.brickwise.at/js/3030.ed74d6ad.js	200
+https://app.brickwise.at/js/7961.0d5def38.js	200
+https://app.brickwise.at/js/4074.abc62fdb.js	200
+https://app.brickwise.at/js/8544.49d9fae9.js	200
+https://app.brickwise.at/js/5486.a4553d3f.js	200

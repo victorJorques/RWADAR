@@ -1,0 +1,6 @@
+URL: https://www.brickwise.at/support/wie-berechnet-sich-der-marktwert
+Consulta: 2026-11-21T18:12:25Z (HTTP 200, SHA-256 f6046b832e7a8093b6e3dfef1c22b1a31f8053914814d4e5802f220f882adbb3). Texto extraído, sin autor.
+
+zurück zu allen fragen
+ Wie berechnet sich der Marktwert?
+ Der Marktwert berechnet sich auf Basis der insgesamt verfügbaren Anteile, multipliziert mit dem zuletzt gehandelten Preis am Marktplatz.

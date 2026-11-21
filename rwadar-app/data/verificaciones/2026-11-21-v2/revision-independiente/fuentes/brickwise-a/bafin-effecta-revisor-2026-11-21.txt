@@ -1,0 +1,47 @@
+URL: https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261 · 2026-11-21T18:07:35Z · HTTP 200
+ Bereichsmenu 
+ Suche 
+ Stand der Daten: 
+ 20.11.2026 
+ Unternehmen: 
+ Bafin-ID: 
+ Bak Nr: 
+ Reg Nr: 
+ Kategorie: 
+ Mo. bis Fr. von 8 bis 18 Uhr
+ 0800 2 100 500 
+ Unternehmen
+ Effecta GmbH 
+ Gattung: 
+ Wertpapierinstitut 
+ Am Sportplatz 13
+ 61197 Florstadt
+ Deutschland
+ Bafin-ID: 
+ 10133261 
+ Bak Nr.: 
+ 133261 
+ Reg Nr.: 
+ --- 
+ Schlichtungsstelle: 
+ Erlaubnisse/Zulassung/Tätigkeiten 
+ Erteilungsdatum 
+ Ende am 
+ Endegrund 
+ Abschlußvermittlung (§ 1 Abs. 1a Satz 2 Nr. 2 KWG)
+ 21.11.2013
+ 14.04.2015
+ Rückgabe / Aufgabe
+ Anlageberatung (§ 1 Abs. 1a Satz 2 Nr. 1a KWG)
+ 21.11.2013
+ 25.06.2021
+ Inkrafttreten Wertpapierinstitutsgesetz (WpIG)
+ Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG)
+ 26.06.2021
+ Anlagevermittlung (§ 1 Abs. 1a Satz 2 Nr. 1 KWG)
+ 21.11.2013
+ 25.06.2021
+ Inkrafttreten Wertpapierinstitutsgesetz (WpIG)
+ Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG)
+ 26.06.2021
+ Rechtliches

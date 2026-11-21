@@ -1,0 +1,65 @@
+[
+ {
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "status": 200,
+  "carga": "2026-11-21T17:43:14Z",
+  "texto": "2026-11-21T17:43:22Z",
+  "bytes": 3704,
+  "steuer": false,
+  "kest": true
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2RAH5/details",
+  "status": 200,
+  "carga": "2026-11-21T17:43:22Z",
+  "texto": "2026-11-21T17:43:32Z",
+  "bytes": 1935,
+  "steuer": false,
+  "kest": false
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2T4D7/details",
+  "status": 200,
+  "carga": "2026-11-21T17:43:32Z",
+  "texto": "2026-11-21T17:43:43Z",
+  "bytes": 1965,
+  "steuer": false,
+  "kest": false
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2U5V3/details",
+  "status": 200,
+  "carga": "2026-11-21T17:43:43Z",
+  "texto": "2026-11-21T17:43:53Z",
+  "bytes": 1971,
+  "steuer": false,
+  "kest": false
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2WCD0/details",
+  "status": 200,
+  "carga": "2026-11-21T17:43:54Z",
+  "texto": "2026-11-21T17:44:06Z",
+  "bytes": 1975,
+  "steuer": false,
+  "kest": false
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2WCE8/details",
+  "status": 200,
+  "carga": "2026-11-21T17:44:07Z",
+  "texto": "2026-11-21T17:44:16Z",
+  "bytes": 1909,
+  "steuer": false,
+  "kest": false
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2YPQ0/details",
+  "status": 200,
+  "carga": "2026-11-21T17:44:16Z",
+  "texto": "2026-11-21T17:44:27Z",
+  "bytes": 2002,
+  "steuer": false,
+  "kest": false
+ }
+]

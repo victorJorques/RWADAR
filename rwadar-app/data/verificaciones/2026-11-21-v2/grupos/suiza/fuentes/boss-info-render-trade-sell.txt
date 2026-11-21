@@ -1,0 +1,23 @@
+Pestaña Sell pulsada: true
+URL: https://shares.bossinfo.com/trade
+Hora UTC: 2026-11-21T17:47:12Z
+
+…
+32
+Buy
+Sell
+Number of Shares
+BOSS
+Limit Price
+ZCHF
+Order Summary
+1 BOSS
+To be matched later
+8.4 ZCHF
+Fee (1.9%):
+0.16 ZCHF
+Total Value:
+8.24 ZCHF
+Register to Access Secondary Trading
+Boss Info AG
+Terms of Use: This page is hosted by Boss Info using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Boss Info and provided "AS IS" without further verification. These sources include the public trade r

@@ -1,0 +1,20 @@
+URL: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx
+Consultado: 2026-11-21T18:05:25Z (agente curl/8; HTTP 200)
+SHA-256 del HTML: 9f100d8f1d43e42e7333a498fa50cc34b0540b12ca8542ca54b8e8c7041949c9
+
+Índices de referencia
+Sede electrónica
+Inicio
+>
+Advertencias (entidades no autorizadas y otras entidades)
+>
+Buscador de entidades advertidas
+Listado de entidades advertidas
+Criterios de consulta: por tipo No autorizadas,  de nombre Holdtx.
+No hay datos disponibles.
+Contacto
+Mapa web
+Nota legal
+Política de cookies
+Protección de datos
+Accesibilidad

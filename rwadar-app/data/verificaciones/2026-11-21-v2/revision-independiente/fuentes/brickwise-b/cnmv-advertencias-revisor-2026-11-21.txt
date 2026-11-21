@@ -1,0 +1,9 @@
+CNMV · buscador de entidades advertidas (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…), 2026-11-21T18:10:31Z–18:10:43Z.
+El SHA-256 no coincide con el del vigía porque la página trae otro envoltorio ASP.NET (campos __EVENTTARGET y script de formulario); el resultado sí coincide.
+Brickwise: No hay datos disponibles · sha256 a4d94c5fab8cac8423e7b89860b20c018401c2942d375833234950e4c96e86d7
+Effecta: No hay datos disponibles · sha256 5c05aa8a3f97bbd5f7487f4a07761a97b42869bac99c30f288a85f9b274c78ee
+Cohotel: No hay datos disponibles · sha256 81bfe238f08ef56ce6a4379ba024151b04e5898c5c80f5aa0bdb73e1b897f83a
+Green-Point: No hay datos disponibles · sha256 549b0084d55decfddaca15ab1ea63d33bb9a8bb3298886e643d32229d63b7fbb
+Brick Qogir: No hay datos disponibles · sha256 bd660ea0689bea4bc95a494310681ae50821c1a2ea2ea314ef4505ab3d9a6265
+Brick Sagarmatha: No hay datos disponibles · sha256 9d4d5849eeca62b08d45a8fb8cd0082c121cd87975ab57f3f2c90e5fd34b7f44
+Trading (control): con resultados · sha256 d4b4055d9a5e70fb609bd71680730786f594bc234da1de63f19b04145bad026b

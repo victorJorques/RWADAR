@@ -1,0 +1,35 @@
+# Copias binarias y HTML completos de las fuentes: se conservan en disco
+# durante el ciclo, con su SHA-256 en cada inventario-consultas. En Git van
+# los textos extraídos (.txt), los resúmenes y los expedientes.
+grupos/**/*.pdf
+grupos/**/*.html
+grupos/**/*.htm
+grupos/**/*.png
+grupos/**/*.jpg
+grupos/**/*.bin
+revision-independiente/**/*.pdf
+revision-independiente/**/*.html
+revision-independiente/**/*.htm
+revision-independiente/**/*.png
+revision-independiente/**/*.jpg
+# Respuestas crudas de API y de cadena (direcciones, tokenId, UUID) que el
+# escáner de secretos confunde con claves: en disco con su SHA-256, no en Git.
+grupos/**/crudo/
+revision-independiente/**/crudo/
+grupos/**/*.json.gz
+grupos/**/.inventario.jsonl
+
+# Copias públicas de Midas (llms-full.txt) con un identificador público que el
+# escáner de secretos confunde con una clave: en disco con su SHA-256, no en Git.
+grupos/acciones-oro-tesoro/fuentes/midas-app-llms-full.txt
+revision-independiente/fuentes/acciones-oro-tesoro/midas-app-llms-full.txt
+
+
+
+# Respuestas en bruto del vigía: fuera de Git (sus SHA-256 están en vigia.json).
+vigia-crudo/
+grupos/**/fuentes/midas-app-llms-full.txt
+revision-independiente/**/midas-app-llms-full.txt
+# Copias con nombres de personas físicas (revisión de vigilancia del 21/11): en disco, no en Git.
+grupos/vigilancia/fuentes/bit2me/bit2me-blog-autorizacion-2026-11-21.txt
+grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-21.txt

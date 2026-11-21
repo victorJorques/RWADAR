@@ -1,0 +1,8 @@
+API pública de Profitus, página 1 (consulta 2026-11-21T17:52:59Z). Total de proyectos: 552.
+Abiertos (open_for_investments): 6. Tipo de préstamo de todos: ['standard'].
+- Apartment Ausekla 4, Riga (II) · país lv · tipo standard · finalidad refinancing, real_estate_development · interés base 12 % · 37330.8 / 86000 EUR · P00001753
+- Harmony Homes XII · país lt · tipo standard · finalidad refinancing · interés base 9.5 % · 192613.4 / 250998 EUR · P00001442-12
+- Spindulio Residential, Vilnius dist. VI · país lt · tipo standard · finalidad real_estate_development · interés base 9 % · 125275.6 / 250000 EUR · P00001631-6
+- Entrelagos Golf Villa, Mijas IV · país es · tipo standard · finalidad real_estate_development · interés base 9.5 % · 25749.8 / 150000 EUR · P00001552-4
+- Geluzes Kalvos Residential,Vilnius d.III · país lt · tipo standard · finalidad real_estate_development · interés base 9.4 % · 101205.4 / 137100 EUR · P00001675-3
+- L’Alcúdia Apartments, Valencia reg. II · país es · tipo standard · finalidad real_estate_development · interés base 9 % · 75201.2 / 205000 EUR · P00001689-2

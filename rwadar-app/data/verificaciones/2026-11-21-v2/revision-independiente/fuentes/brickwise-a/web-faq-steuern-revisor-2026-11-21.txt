@@ -1,0 +1,131 @@
+URL: https://www.brickwise.at/support/wie-sind-die-ertrage-zu-versteuern-2
+Consulta: 2026-11-21T17:59:27Z (HTTP 200, 64578 bytes, SHA-256 b941508f7ffd675f11039c0a488dc2c02b8191aee444d989cc17b54c38e282bf; mismo que el investigador)
+Texto extraído; nombre del autor recortado.
+
+zurück zu allen fragen
+ Wie sind die Erträge zu versteuern?
+ Über Brickwise können verschiedene Finanzprodukte (Wertpapiere) erworben werden, bei denen es je nach Ausgestaltung zu einer unterschiedlichen Besteuerung kommen kann. Aus Sicht des Ertragsteuerrechts ist zwischen Fremdkapital-Produkten und Eigenkapital-Produkten zu unterscheiden. 
+ Fremdkapital-Produkte 
+ Bei den Fremdkapital-Produkten (diese sind am Marktplatz mit einem “KESt” Tag gekennzeichnet), sind die Erträge wie folgt zu besteuern: 
+ Laufende Ausschüttungen 
+ Bei den laufenden Ausschüttungen durch die Emittentinnen handelt es sich um Einkünfte aus Kapitalvermögen (Überlassung von Kapital), die der Kapitalertragssteuer unterliegen. 
+ Die hierbei anfallenden Kapitalertragsteuern werden von den Emittentinnen einbehalten und an das für sie zuständige Finanzamt abgeführt (an der Quelle / Quellensteuer). 
+ Für Investor:innen mit Wohnsitz in Deutschland oder Österreich gilt: 
+ Liegt der eigene Steuersitz im selben Land wie der Steuersitz der jeweiligen Emittentin, müssen die laufenden Ausschüttungen nicht mehr in der eigenen Jahressteuererklärung angeführt werden, da diese bereits Endbesteuerungswirkung entfalten. 
+ Befindet sich der persönliche Steuersitz nicht im selben Land wie jener der Emittentin, sind die Ausschüttungen (Kapitalerträge) in die eigene Einkommensteuererklärung aufzunehmen, selbst wenn im Ausland bereits eine (Quellen)Steuer einbehalten wurde. In diesen Fällen kann jedoch in der Regel die ausländische Quellensteuer in Höhe des im Doppelbesteuerungsabkommen (DBA) festgelegten Prozentsatz auf die im Wohnsitzland zu entrichtende Steuer angerechnet werden. 
+ Veräußerung der Wertpapiere 
+ Werden die Wertpapiere zu einem Preis über dem Anschaffungspreis veräußert, bewirkt der Veräußerungsvorgang Einkünfte aus realisierter Wertsteigerung, die der Kapitalertragsteuer unterliegen. Als Bemessungsgrundlage für die Kapitalertragsteuer ist die Differenz zwischen dem Kaufpreis und dem Veräußerungserlös heranzuziehen. 
+ Da der Handel direkt zwischen den Investor:innen stattfindet und keine depotführende Stelle involviert ist, erfolgt kein automatischer Abzug der Kapitalertragssteuer, weshalb keine Endbesteuerungswirkung eintritt. Dies bedeutet, dass Gewinne oder Verluste von Investor:innen in der eigenen Jahressteuererklärung erfasst und entsprechend versteuert werden müssen. 
+ Eigenkapital-Produkte 
+ Bei den über Brickwise handelbaren Eigenkapital-Produkten österreichischer Emittentinnen liegt aus ertragsteuerrechtlicher Sicht hinsichtlich der einzelnen Immobilie eine (wirtschaftliche) Miteigentumsgemeinschaft (MEG) der Investor:innen vor. 
+ Laufende Auszahlungen 
+ Bei den Einkünften handelt es sich um Einkünfte aus Vermietung und Verpachtung, die der Einkommenssteuer in Österreich unterliegen. Diese weichen von den laufenden Auszahlungsbeträgen ab und können dem jährlichen Steuerreport entnommen werden. 
+ Für die Miteigentümergemeinschaft besteht die Pflicht zur Abgabe einer gemeinsamen Einkommensteuererklärung, die von der jeweiligen Emittentin beim zuständigen Finanzamt abgegeben wird. Für die Einreichung der Jahreserklärung der MEG wird zwingend eine österreichische Steuernummer der jeweiligen Investor:innen benötigt. 
+ Investor:innen, deren Steuersitz in Österreich liegt, werden die Einkünfte lt. Steuerreport nach Veranlagung der Steuererklärung der MEG bescheidmäßig durch das Finanzamt als Ergebnistangente zugewiesen. Diese Einkünfte sind jedoch trotzdem von den Investor:innen in die persönliche Steuererklärung zu übernehmen und werden damit im Gesamtbetrag der Einkünfte der Investor:innen berücksichtigt. 
+ Diese Einkünfte sind auch für ausländische Investor:innen in Österreich steuerpflichtig. Je nach DBA sind die Einkünfte im ausländischen Ansässigkeitsstatt der Investor:innen von der Einkommenssteuer befreit oder die österreichische Steuer ist im Ansässigkeitsstatt anrechenbar. Im Falle einer Steuerbefreiung behält sich der Ansässigkeitsstatt aber das Recht, für die Ermittlung des anzuwendenden Steuersatzes auf die inländischen Einkünfte, die ausländischen Einkünfte in die Bemessungsgrundlage für die Berechnung der Progression einzubeziehen. Im Falle einer Anrechnung besteuert der Ansässigkeitsstaat das gesamte Einkommen und Vermögen, rechnet jedoch die in Österreich erhobenen Steuern auf die inländische Steuerschuld an, sodass es zu keiner Doppelbesteuerung kommt. 
+ Investor:innen, deren Steuersitz nicht in Österreich liegt, und die in ein solches Eigenkapital-Produkt österreichischer Emittentinnen investieren möchten, können dies durch vorherige Bekanntgabe einer Steuernummer in Österreich tun. Sollte keine österreichische Steuernummer vorhanden sein, so kann diese beim österreichischen Finanzamt persönlich oder durch einen Steuerberater beantragt werden. Gerne stellt Brickwise auch einen Kontakt zu einem Steuerberater her. In diesem Fall entstehen für die Beantragung der Steuernummer keine Kosten für die Investor:innen. 
+ Veräußerung der Wertpapiere 
+ Bei den Einkünften aus einem Verkauf von Eigenkapital-Produkten über Brickwise handelt es sich aus ertragsteuerrechtlicher Sicht um Einkünfte aus privaten Grundstücksveräußerungen. Folglich unterliegen Gewinne aus der Veräußerung dieser Eigenkapital-Produkte in Österreich der Immobilienertragsteuer (ImmoESt). Investor:innen müssen diese bis zum 15. des zweitfolgenden Monats in Form einer „besonderen Vorauszahlung“ an das österreichische Finanzamt entrichten. Diese entfaltet allerdings keine Endbesteuerungswirkung, weshalb die Einkünfte in die persönliche Einkommensteuererklärung aufzunehmen sind. Für die Einzahlung und Zuordnung der besonderen Vorauszahlung wird ebenfalls die persönliche Steuernummer beim Finanzamt in Österreich benötigt. Als Bemessungsgrundlage für die ImmoESt ist der Veräußerungserlös abzgl. dem Kaufpreis und zzgl. der steuerlich geltend gemachten AfA (Abschreibung für Abnutzung) heranzuziehen. 
+ Hinweis: Wir bitten um Verständnis, dass die vorstehenden Informationen keine steuerliche Beratung darstellen und keinesfalls die individuelle Beratung durch eine:n Steuerberater:in ersetzen. Im Einzelfall kann die Besteuerung womöglich abweichen. Genauere Informationen über die individuellen steuerlichen Pflichten in Bezug auf die Erträge aus den Wertpapieren können bei einem/einem Steuerberater:in eingeholt werden. 
+ Autor
+ [nombre recortado]
+ Kategorien
+ Investments
+ Sind meine Investments abgesichert?
+ Wo finde ich einen Überblick über meine Investments?
+ Wie berechnet sich der Marktwert?
+ Wie berechnet sich der Gesamtwert meines Portfolios?
+ Woraus ergibt sich die Wertentwicklung meiner Wertpapiere?
+ Wie lange habe ich Anspruch auf laufende Ausschüttungen?
+ Wo sehe ich meine erhaltenen Ausschüttungen?
+ Was sind digitale Anteile?
+ Was ist eine Emittentin?
+ Was ist die Finanzierungsphase?
+ Mit wem handle ich die Wertpapiere über die Plattform eigentlich?
+ Wie lange dauert es, bis meine Wertpapiere verkauft sind?
+ Warum ist mein Kauf noch ausstehend?
+ Warum sind meine Angebote noch ausständig?
+ Sicherheit
+ Wie kann ich ein neues Handy mit meinem Account verknüpfen?
+ Wo werden meine persönlichen Daten gespeichert?
+ Wie schütze ich meinen Account?
+ Was ist Phishing?
+ Warum sind meine Wertpapiere auf der Blockchain sicher?
+ Warum wird Blockchain-Technologie genutzt?
+ Warum wird meine Handynummer benötigt?
+ Wie kann ich mein Passwort zurücksetzen?
+ Wie wird mein Account geschützt?
+ Security App
+ Was tue ich, wenn ich meine Wiederherstellungsdatei verloren habe?
+ Warum muss ich die Wiederherstellungsdatei speichern?
+ Was tue ich, wenn ich meinen PIN-Code für die Security App vergessen habe?
+ Wie kann ich in der Security App einen neuen PIN festlegen?
+ Warum erhalte ich einen Verknüpfungscode per SMS?
+ Wozu benötige ich eine Security App?
+ Immobilien
+ Was passiert bei einem Leerstand?
+ Was ist das Zustandsprotokoll?
+ Bin ich Eigentümer:in der den Produkten zugrunde liegenden Immobilien?
+ Kann ich auch eigene Vorschläge zur Verwaltung einer Immobilie einbringen?
+ Wer zahlt Reparaturen?
+ Wer trifft Entscheidungen über die jeweilige Immobilie?
+ Wer verwaltet die Immobilien?
+ Steuern
+ Beinhaltet die dargestellte laufende Rendite bereits allfällige Steuern?
+ Gibt es einen Jahresreport?
+ Wie sind die Erträge zu versteuern?
+ Zahlungskonto
+ Wie kann ich mein Auszahlungskonto ändern?
+ Warum muss ich eine Einzahlung durchführen, um Geld auszahlen zu können?
+ Wieso muss ich Inhaber:in des Auszahlungskontos sein?
+ Was ist das Auszahlungskonto?
+ Wo sehe ich meine vergangenen Transaktionen?
+ Welche Zahlungsmethoden stehen mir bei einer Investition zur Verfügung?
+ Muss ich Geld auf mein Zahlungskonto einzahlen, bevor ich die Plattform nutzen kann?
+ Was bedeutet verfügbarer Kontostand?
+ Was kostet eine Ein- oder Auszahlung?
+ Wie kann ich Geld von meinem Zahlungskonto auszahlen?
+ Wie kann ich Geld auf mein Zahlungskonto einzahlen?
+ Wie lange dauert eine Überweisung auf das Zahlungskonto?
+ Was ist das Zahlungskonto?
+ KYC (Know-Your-Customer)
+ Was ist eine politisch exponierte Person (PEP)?
+ Kann ich in Produkte investieren, die für mich nicht angemessen sind?
+ Wann ist ein Produkt für mich angemessen?
+ Warum werden meine Erfahrungen und Kenntnisse abgefragt?
+ Was kann ich tun, wenn während der Identifizierung ein Problem auftritt?
+ Welche Ausweisdokumente werden für die Identifizierung akzeptiert?
+ Wie funktioniert die Video-Identifizierung?
+ Wie funktioniert die digitale Identifizierung?
+ Wie kann ich mich identifizieren?
+ Warum muss ich mich identifzieren?
+ Handelsplatz
+ Was kostet der Handel am Marktplatz?
+ Kann ich meine Wertpapiere auch mit Freund:innen und Familienmitgliedern handeln?
+ Wie funktioniert der Handel am Marktplatz?
+ Wie kann ich investieren?
+ Was ist der Marktplatz?
+ Investieren
+ So funktioniert's
+ Wissenswertes
+ Über uns
+ Kosten
+ Sicherheit
+ Fragen und Antworten
+ Business Relations
+ B2B-Lösungen & Whitelabel
+ Whitelabel Energie
+ Vertriebspartner:in werden
+ Immobilien verkaufen
+ Digitale Immobilienanteile
+ Presse
+ Rechtliches
+ Rechtliche Dokumente
+ Download Kurzerklärung
+ Datenschutz
+ Risikohinweise
+ Impressum
+ Follow Us
+ Wir freuen uns, wenn wir in Verbindung bleiben.
+ Branding & Design: Anwert 
+ ¹Digitale Immobilienanteile und mit ihnen verbundene Rechte: Bei den auf Brickwise zur Vermittlung angebotenen digitalen Immobilienanteilen handelt es sich um tokenisierte Genussscheine, die kein grundbücherliches Eigentum begründen. Brickwise bietet keine direkten in Investments in Immobilien oder Anteile von Immobilien an. Die angebotenen Genussscheine haben Eigenkapitalcharakter. Der Eigenkapitalcharakter ergibt sich aus der unendlichen Laufzeit, dem weitgehenden Ausschluss ordentlicher Kündigungsrechte, den Mitbestimmungsrechten in Bezug auf die Immobilie und den Ansprüchen der Investor:innen gegenüber der Emittenten auf anteilige Auszahlung des Veräußerungserlöses im Falle der Liquidation der Gesellschaft oder der Veräußerung der Immobilie, auf die sich der tokenisierte Genussschein bezieht. Außerdem haben Investor:innen das Anrecht auf monatliche Ausschüttungen der Überschüsse der Nettomieteinnahmen abzüglich etwaiger Rücklagen, einer Management Fee, einer Liquiditätsrücklage und gegebenenfalls sonstigen zur ordentlichen Verwaltung der jeweiligen Immobilie notwendigen Maßnahmen und Kosten. Die angegebene Mietrendite errechnet sich auf Basis der im Mietvertrag zur entsprechenden Immobilie vereinbarten Miete, abzüglich der oben angeführten Kosten. Weitere Details finden sich in den jeweiligen Investmentbedingungen der emittierenden Gesellschaft.Die über Brickwise erhältlichen digitalen Immobilienanteile sind in Form von Tokens digitalisiert. Token sind digitale (Wert-)Einheiten in Form eines Datensatzes, die aufgrund eines Protokolls in einer Blockchain ausschließlich von der jeweiligen Emittentin erstellt und an den/die Investor:in ausgegeben werden. Jedes einzelne auf diese Weise tokenisierte Wertpapier wird durch einen Token repräsentiert,

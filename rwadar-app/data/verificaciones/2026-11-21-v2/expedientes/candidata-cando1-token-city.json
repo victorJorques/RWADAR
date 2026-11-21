@@ -1,0 +1,236 @@
+{
+ "slug": "candidata-cando1-token-city",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Token City Exchange",
+ "plataformaSlug": null,
+ "entidadComercializadora": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (NIF A25988981; la web dice «ESI autorizada por CNMV, Registro nº 334. Adherida al FOGAIN»)",
+ "emisor": "LORNIN IBÉRICA S.L. (marca CANDO), según la portada de Token City Exchange del 13/11/2026; no hay documento de emisión",
+ "vehiculo": "No publicado",
+ "token": "CANDO1 (CDO1); red y contrato no publicados",
+ "derechoAdquirido": "No publicado",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Token City Exchange · portada (bloque «Oportunidades de inversión · Próximamente»)",
+   "url": "https://exchange.token-city.com/es",
+   "versionOFecha": "consultas 2026-11-13T08:31:20Z (curl, 200) y 08:34:47Z (navegador, 200); consulta 2026-11-21T17:54:57Z",
+   "paginas": null,
+   "sha256": "706b14efad4a (prefijo del HTML de curl; completo en el inventario)",
+   "leido": true,
+   "nota": "La web vuelve a funcionar (el 11/11 y el 12/11 daba 503 por mantenimiento). CANDO1 (CDO1) aparece «En estudio» bajo «Próximamente», con el botón «Lista prioritaria». No hay ficha propia, documento de emisión ni condiciones enlazadas. Copia del texto en fuentes/tokencity/nav-token-city-exchange-es-2026-11-13.txt. 21/11: mismo texto renderizado (fuentes/tokencity/nav-token-city-exchange-es-2026-11-21.txt)."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (como ERIR)",
+   "numero": "Una inscripción: Series A Grupo UAE SA (06/11/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "alcance": "Idéntico byte a byte al del 12/11 (12ac95b9…): nada de CANDO1 ni de Lornin. · Re-leído el 21/11 con el mismo contenido.",
+   "consultadoUtc": "2026-11-21T17:53:05Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Token City",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "consultadoUtc": "2026-11-21T17:54:12Z",
+   "alcance": "Re-leído a mano el 21/11: mismo resultado que el 20/11.",
+   "sha256": "99b777228bd4ffc9edf748d40511a6a8b534ce424b7223a708d7de2466953694"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Lornin",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "consultadoUtc": "2026-11-21T17:54:15Z",
+   "alcance": "Re-leído a mano el 21/11: mismo resultado que el 20/11.",
+   "sha256": "3089b077e8186cd45fb94c5631a4db69693d4a5550d7f03168d709e1e4eabd61"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Cando",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "consultadoUtc": "2026-11-21T17:54:14Z",
+   "alcance": "Re-leído a mano el 21/11: mismo resultado que el 20/11.",
+   "sha256": "acb467e0480b0213599bf262ec963ff16fc1889ab7b2482b888e661eb0bcaa69"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Oportunidades de inversión · Próximamente … CANDO1 (CDO1) · En estudio … Lista prioritaria",
+   "dato": "No abierta: «En estudio», en el bloque «Próximamente»",
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Portada de Token City Exchange, bloque «Oportunidades de inversión»",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "alcanceYLimites": "Solo se puede apuntar a una lista prioritaria; no hay fecha de apertura. Mismo texto renderizado el 21/11 (CANDO1 «En estudio»).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "emisor",
+   "literal": "Bajo la marca comercial CANDO, la Sociedad LORNIN IBÉRICA S.L. ha promovido y desarrollado un complejo de Senior Living premium en La Moraleja (Madrid), compuesto por 76 apartamentos",
+   "dato": "LORNIN IBÉRICA S.L.; 76 apartamentos de Senior Living en La Moraleja (Madrid)",
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Portada, tarjeta de CANDO1",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "alcanceYLimites": "No dice qué valor se emite ni qué derecho se adquiere. Mismo texto renderizado el 21/11 (CANDO1 «En estudio»).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Inversión mínima 657 €",
+   "dato": "657 € (cifra comercial)",
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Portada, tarjeta de CANDO1",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "alcanceYLimites": "Cifra de la web de la agencia de valores, sin documento de emisión que la respalde; la operación está «En estudio». La misma tarjeta anuncia «TIR bruta estimada ~11,7% anual» (previsión, no se usa) y un objetivo de 1.971.000 € en 1.971 tokens. Mismo texto renderizado el 21/11 (CANDO1 «En estudio»).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Renta fija y variable · Institucionales y minoristas",
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Portada (texto general de la agencia, no de CANDO1)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "alcanceYLimites": "Es una frase general de la plataforma; no hay documento que diga a quién se dirige CANDO1. Mismo texto renderizado el 21/11 (CANDO1 «En estudio»).",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "Próximamente · Mercado secundario",
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Portada, «Servicios»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "alcanceYLimites": "El mercado secundario aún no existe; no hay vencimiento ni condiciones de reembolso publicadas. Mismo texto renderizado el 21/11 (CANDO1 «En estudio»).",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Agencia de valores (nº 334 según su web) e inscrita como ERIR; la emisión de CANDO1 no está en su ERIR el 13/11."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "13/11: la web vuelve a funcionar y CANDO1 figura «En estudio» bajo «Próximamente»; no está abierta."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento de emisión: el mínimo de 657 € es solo una cifra comercial; ni destinatarios ni salida."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento de riesgos; sin advertencias de la CNMV para Token City, Lornin ni Cando."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "«En estudio» (20/11)",
+   "ahora": "«En estudio» (21/11)",
+   "fuente": "https://exchange.token-city.com/es",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "CANDO1 · Token City",
+  "categoria": "Inmobiliario",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Oportunidad anunciada por una agencia de valores española, todavía «En estudio» el 13/11/2026 y sin documento de emisión.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://exchange.token-city.com/es",
+  "fuentesActuales": [
+   "https://exchange.token-city.com/es",
+   "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV: Token City European Exchange, A.V. (ERIR; nº 334 según su web)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Agencia de valores española inscrita como ERIR; la oferta se anuncia en su web.",
+  "porQueNo": "Está «En estudio», sin documento de emisión ni inscripción en la ERIR; el mínimo de 657 € es solo comercial."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin cambios el 21/11: en Token City Exchange, CANDO1 sigue «En estudio» (objetivo 1.971.000 €, «TIR bruta estimada ~11,7%» sin documento). La ERIR de Token City solo tiene la emisión de SERIES A GRUPO UAE (06/11). Sin advertencias de la CNMV para Token City, Cando ni Lornin. No está abierta: hoy no se puede invertir. Revisar cuando abra.",
+ "bloqueos": [],
+ "consulta": {
+  "inicioUtc": "2026-11-21T17:53:05Z",
+  "finUtc": "2026-11-21T17:57:46Z"
+ },
+ "resumenCorto": "Sigue «En estudio», sin documento ni inscripción.",
+ "lecturas21": [
+  {
+   "url": "https://exchange.token-city.com/es",
+   "archivo": "fuentes/tokencity/nav-token-city-exchange-es-2026-11-21.txt",
+   "consultadoUtc": "2026-11-21T17:54:57Z",
+   "sha256": "1ada747adcd36281729aca9f75416e01540319ed185a5ef3d0d9094547092d9a",
+   "http": 200,
+   "resultado": "mismo texto que el 20/11: CANDO1 (CDO1) «En estudio», objetivo 1.971.000 €"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-token-city.txt",
+   "consultadoUtc": "2026-11-21T17:53:05Z",
+   "sha256": "12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453",
+   "http": 200,
+   "resultado": "solo SERIES A GRUPO UAE (06/11); igual"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/crudo/cnmv-adv-Token_City.html",
+   "consultadoUtc": "2026-11-21T17:54:12Z",
+   "sha256": "99b777228bd4ffc9edf748d40511a6a8b534ce424b7223a708d7de2466953694",
+   "http": 200,
+   "resultado": "No hay datos disponibles"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "fuentes/crudo/cnmv-adv-Cando.html",
+   "consultadoUtc": "2026-11-21T17:54:14Z",
+   "sha256": "acb467e0480b0213599bf262ec963ff16fc1889ab7b2482b888e661eb0bcaa69",
+   "http": 200,
+   "resultado": "No hay datos disponibles"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "fuentes/crudo/cnmv-adv-Lornin.html",
+   "consultadoUtc": "2026-11-21T17:54:15Z",
+   "sha256": "3089b077e8186cd45fb94c5631a4db69693d4a5550d7f03168d709e1e4eabd61",
+   "http": 200,
+   "resultado": "No hay datos disponibles"
+  }
+ ]
+}

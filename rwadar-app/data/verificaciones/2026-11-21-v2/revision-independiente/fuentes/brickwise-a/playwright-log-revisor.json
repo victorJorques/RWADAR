@@ -1,0 +1,31 @@
+[
+ {
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "inicio": "2026-11-21T18:02:13.763Z",
+  "texto": "2026-11-21T18:02:24.364Z"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2RAH5/details",
+  "texto": "2026-11-21T18:02:57.052Z"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2T4D7/details",
+  "texto": "2026-11-21T18:03:04.533Z"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2U5V3/details",
+  "texto": "2026-11-21T18:04:13.952Z"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2WCD0/details",
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://app.brickwise.at/desktopWeb/asset/AT0000A2WCD0/details\", waiting until \"networkidle\"\u001b[22m\n"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2WCE8/details",
+  "texto": "2026-11-21T18:05:50.737Z"
+ },
+ {
+  "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A2YPQ0/details",
+  "texto": "2026-11-21T18:05:57.623Z"
+ }
+]

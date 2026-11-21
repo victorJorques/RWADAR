@@ -1,0 +1,58 @@
+Extractos de los PDF releídos por el revisor el 21/11/2026 (18:06:37–18:06:40 UTC). SHA-256 de hoy frente al del vigía (vigia.json).
+
+== Randhartingergasse · contrato: https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf
+   sha256 hoy 7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797 · vigía 7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797 · IGUAL
+   Ausgabepreis: EUR 100,24 (in Worten: Euro einhundert und vierundzwanzig Cent) je
+   Ausgabezeitraum: 05.08.2022 bis 15.09.2022
+   Mindestzeichnungsbetrag: EUR 100,24 (in Worten: Euro einhundert und vierundzwanzig Cent)
+
+== Hinterstoder · contrato: https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf
+   sha256 hoy d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693 · vigía d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693 · IGUAL
+   Ausgabepreis: EUR 100,20 (in Worten: Euro einhundert und zwanzig Cent) je
+   Zeichnungsfrist: 25.10.2022 bis 20.12.2022
+   Mindestzeichnungsbetrag: EUR 100,20 (in Worten: Euro einhundert und zwanzig Cent)
+
+== Pottendorfer · contrato: https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf
+   sha256 hoy 24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502 · vigía 24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502 · IGUAL
+   Ausgabepreis: EUR 100,44 (in Worten: Euro einhundert und vierundvierzig Cent) je
+   Zeichnungsfrist: 27.12.2022 bis 27.01.2023
+   Mindestzeichnungsbetrag: EUR 100,44 (in Worten: Euro einhundert und vierundvierzig Cent)
+
+== GreenPoint · contrato: https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf
+   sha256 hoy 74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0 · vigía 74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0 · IGUAL
+   Ausgabepreis: EUR 100,32 je tokenisiertem Wertpapier
+   Zeichnungsfrist: 15.11.2023 bis 15.01.2024
+   Mindestzeichnungsbetrag je EUR 100,32
+   Nachrangigkeit: Nachrangigkeit sämtlicher Forderungen der Investoren aus diesen
+   9.2 Jeder Investor erklärt unwiderruflich, dass er sämtliche vermögensrechtliche Forderungen aus
+   erst nach Befriedigung aller anderen Gläubiger aus Fremdfinanzierungen begehrt und wegen
+
+== Cohotel · contrato: https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf
+   sha256 hoy 1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40 · vigía 1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40 · IGUAL
+   Ausgabepreis: EUR 100,85 je tokenisiertem Wertpapier
+   Zeichnungsfrist: 15.11.2023. bis 15.01.2024
+   Mindestzeichnungsbetrag je EUR 100,85
+   Nachrangigkeit: Nachrangigkeit sämtlicher Forderungen der Investoren aus diesen
+   9.2 Jeder Investor erklärt unwiderruflich, dass er sämtliche vermögensrechtliche Forderungen aus
+   erst nach Befriedigung aller anderen Gläubiger aus Fremdfinanzierungen begehrt und wegen
+
+== GreenPoint · KID: https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf
+   sha256 hoy bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee · vigía bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee · IGUAL
+   Beendigungszeitpunkt: 31.12.2038 (15 Jahre) ("endfällig")
+   stimmten Weise entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen. Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse
+   Erstellungsdatum des Basisinformationsblatts: 15.11.2023
+
+== Cohotel · KID: https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf
+   sha256 hoy a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f · vigía a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f · IGUAL
+   Beendigungszeitpunkt: 31.12.2038 (15 Jahre) ("endfällig")
+   stimmten Weise entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen. Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse
+   Erstellungsdatum des Basisinformationsblatts: 14.11.2023
+
+== Cohotel · Rücktrittsbelehrung: https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf
+   sha256 hoy e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919 · vigía e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919 · IGUAL
+   Rücktrittsrecht. Kein Rücktrittsrecht besteht jedoch für den Kauf und Verkauf tokenisierter Wertpapiere
+   COHOTEL Hotelbetriebsgesellschaft m.b.H. · Rücktrittsbelehrung und vorvertragliche Informationen · Stand: 10.07.2026 · Seite 1
+
+== Kosteninformationen: https://cdn.brickwise.at/Kosteninformationen_Brickwise.pdf
+   sha256 hoy 3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b · vigía 3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b · IGUAL
+   Vermittlungsgebühr2 1,50% Einmalige Produktkosten1 1,80%

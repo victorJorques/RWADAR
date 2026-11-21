@@ -1,0 +1,7 @@
+Búsquedas de advertencias de la CNMV (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…), leídas por el revisor
+Brickwise · 2026-11-21T18:08:00Z UTC · HTTP 200 · SHA-256 a4d94c5fab8cac8423e7b89860b20c018401c2942d375833234950e4c96e86d7 · «No hay datos disponibles»: sí
+Effecta · 2026-11-21T18:08:02Z UTC · HTTP 200 · SHA-256 5c05aa8a3f97bbd5f7487f4a07761a97b42869bac99c30f288a85f9b274c78ee · «No hay datos disponibles»: sí
+Brick+Qogir · 2026-11-21T18:08:03Z UTC · HTTP 200 · SHA-256 bd660ea0689bea4bc95a494310681ae50821c1a2ea2ea314ef4505ab3d9a6265 · «No hay datos disponibles»: sí
+Brick+Sagarmatha · 2026-11-21T18:08:08Z UTC · HTTP 200 · SHA-256 9d4d5849eeca62b08d45a8fb8cd0082c121cd87975ab57f3f2c90e5fd34b7f44 · «No hay datos disponibles»: sí
+BrickOne · 2026-11-21T18:08:10Z UTC · HTTP 200 · SHA-256 761151983c1519470550e923450f34020b7b9afb7c14ac0970ac54393d5be924 · «No hay datos disponibles»: sí
+Trading · 2026-11-21T18:08:11Z UTC · HTTP 200 · SHA-256 d4b4055d9a5e70fb609bd71680730786f594bc234da1de63f19b04145bad026b · «No hay datos disponibles»: no, hay resultados

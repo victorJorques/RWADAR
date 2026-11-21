@@ -1,0 +1,244 @@
+{
+ "vivienda-pluddemanngasse-101-graz": {
+  "isin": "AT0000A2RAH5",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 75,
+  "cantidadAEsePrecio": 2,
+  "ordenesAEsePrecio": [
+   [
+    2,
+    "2026-11-04"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 99,
+   "createdAt": "2026-07-15",
+   "conComision": "100.49"
+  },
+  "sueltaMasBarata": [
+   99,
+   "2026-07-15"
+  ],
+  "totalEnVenta": 335,
+  "nOrdenesVenta": 22,
+  "nOrdenesCompra": 3,
+  "mejorCompra": [
+   20,
+   1,
+   1,
+   "2026-04-23"
+  ],
+  "v2_lowestOfferPrice": 75,
+  "v2_availableBricksSecondary": 335,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-04T19:57:09.033Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 335
+ },
+ "vivienda-sonnleithnergasse-2-viena": {
+  "isin": "AT0000A2T4D7",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 75,
+  "cantidadAEsePrecio": 11,
+  "ordenesAEsePrecio": [
+   [
+    11,
+    "2026-04-28"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 80,
+   "createdAt": "2026-11-05",
+   "conComision": "81.20"
+  },
+  "sueltaMasBarata": [
+   80,
+   "2026-11-05"
+  ],
+  "totalEnVenta": 97,
+  "nOrdenesVenta": 39,
+  "nOrdenesCompra": 9,
+  "mejorCompra": [
+   65,
+   2,
+   2,
+   "2026-10-16"
+  ],
+  "v2_lowestOfferPrice": 75,
+  "v2_availableBricksSecondary": 97,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-16T14:51:35.453Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 97
+ },
+ "local-de-estanco-klagenfurt": {
+  "isin": "AT0000A2U5V3",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 95,
+  "cantidadAEsePrecio": 16,
+  "ordenesAEsePrecio": [
+   [
+    5,
+    "2026-03-21"
+   ],
+   [
+    10,
+    "2026-03-30"
+   ],
+   [
+    1,
+    "2026-11-05"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 95,
+   "createdAt": "2026-11-05",
+   "conComision": "96.43"
+  },
+  "sueltaMasBarata": [
+   95,
+   "2026-11-05"
+  ],
+  "totalEnVenta": 299,
+  "nOrdenesVenta": 47,
+  "nOrdenesCompra": 3,
+  "mejorCompra": [
+   15,
+   1,
+   1,
+   "2026-09-21"
+  ],
+  "v2_lowestOfferPrice": 95,
+  "v2_availableBricksSecondary": 299,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-15T21:54:27.437Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 299
+ },
+ "vivienda-stallhofstra-e-28-gratwein": {
+  "isin": "AT0000A2WCD0",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 68.8,
+  "cantidadAEsePrecio": 1,
+  "ordenesAEsePrecio": [
+   [
+    1,
+    "2026-11-08"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 68.8,
+   "createdAt": "2026-11-08",
+   "conComision": "69.83"
+  },
+  "sueltaMasBarata": [
+   68.8,
+   "2026-11-08"
+  ],
+  "totalEnVenta": 315,
+  "nOrdenesVenta": 87,
+  "nOrdenesCompra": 12,
+  "mejorCompra": [
+   30,
+   1,
+   1,
+   "2026-07-01"
+  ],
+  "v2_lowestOfferPrice": 68.8,
+  "v2_availableBricksSecondary": 315,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-20T18:51:37.555Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 315
+ },
+ "vivienda-schwarzer-weg-18-graz": {
+  "isin": "AT0000A2WCE8",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 71.9,
+  "cantidadAEsePrecio": 1,
+  "ordenesAEsePrecio": [
+   [
+    1,
+    "2026-09-18"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 71.9,
+   "createdAt": "2026-09-18",
+   "conComision": "72.98"
+  },
+  "sueltaMasBarata": [
+   71.9,
+   "2026-09-18"
+  ],
+  "totalEnVenta": 297,
+  "nOrdenesVenta": 72,
+  "nOrdenesCompra": 8,
+  "mejorCompra": [
+   62,
+   1,
+   1,
+   "2026-11-17"
+  ],
+  "v2_lowestOfferPrice": 71.9,
+  "v2_availableBricksSecondary": 297,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-21T07:16:58.786Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 297
+ },
+ "drautalresidenz-paternion": {
+  "isin": "AT0000A2YPQ0",
+  "stage": "secondary",
+  "securityType": "participationRightEquity",
+  "ventaMasBarata": 70,
+  "cantidadAEsePrecio": 1,
+  "ordenesAEsePrecio": [
+   [
+    1,
+    "2026-11-17"
+   ]
+  ],
+  "ordenMenorImporte": {
+   "amount": 1,
+   "price": 70,
+   "createdAt": "2026-11-17",
+   "conComision": "71.05"
+  },
+  "sueltaMasBarata": [
+   70,
+   "2026-11-17"
+  ],
+  "totalEnVenta": 147,
+  "nOrdenesVenta": 31,
+  "nOrdenesCompra": 8,
+  "mejorCompra": [
+   50,
+   1,
+   1,
+   "2026-09-29"
+  ],
+  "v2_lowestOfferPrice": 70,
+  "v2_availableBricksSecondary": 147,
+  "v2_stage": "secondary",
+  "v2_availableBricks": 0,
+  "v2_updatedAt": "2026-11-17T20:41:43.104Z",
+  "cooldownActivoEnLasMasBaratas": [],
+  "v1_availableBricksSecondary": 147
+ }
+}
