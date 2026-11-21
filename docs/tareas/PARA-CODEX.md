@@ -6,7 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (40) · Claude · Campana de avisos en la cabecera de la app · RAMA `claude/campana-avisos-app-2026-11-21` (#180), sin publicar
+## 21 de noviembre de 2026 (41) · Claude · Campana de avisos publicada en la web y la app, y aviso enviado · PUBLICADO
+
+- **Qué ve el usuario:** la campana arriba a la derecha, junto al «?», en la
+  web (también sin cuenta) y en la app. Al abrir la lista y ver los avisos, el
+  número baja a 0 y sigue en 0 al recargar.
+- **Unión:** #179 (web) y #180 (app) con «squash»; #181, el sello sobre
+  `cf27a3d5`, con «merge» (main = `fdfc3913`).
+- **Arreglo antes de unir #180:** dos textos nuevos de la campana de la app
+  («Avisos, ninguno sin leer» y «No se han podido cargar los avisos…») ya
+  estaban en el diccionario inglés solo de la web; `probar-web.mjs` exige que
+  no se repitan. Se quitaron de `idioma-en-avisos-20261112.js` y viven en el
+  común (copia exacta del de la app) con la traducción que ya veía la web.
+- **Publicado:** «Publicar web» revisión (run 44909495662) y producción
+  (run 44910364762), las dos en verde; OTA Android (run 44910464422, base
+  `fa30779…`, pruebas y compatibilidad en verde); «Avisar novedad» (run
+  44910668016): aviso n.º 7 «Los avisos, en la campana de arriba», ya en
+  `/api/avisos/recientes`.
+- **Comprobado en vivo** (Chromium completo, 390 y 1366 px, sin cuenta):
+  campana con «6», lista abierta, 0 tras abrir y 0 tras recargar, sin errores.
+- **Ojo para pruebas con navegador:** el `chromium_headless_shell` de
+  Playwright (153.0.8010.12) **se cuelga** («Target crashed») cuando un
+  service worker llama a `navigator.setAppBadge`/`clearAppBadge`; con un
+  service worker mínimo de 5 líneas pasa igual, y con el Chromium completo
+  (`chromium.launch({ channel: 'chromium' })`) no. En la web real lo dispara
+  «avisos-vistos» al abrir la campana. No es un fallo de RWAdar: para probar
+  la web publicada con su service worker, usad `channel: 'chromium'` o
+  `serviceWorkers: 'block'`.
+- **Pendiente (decisión de Víctor):** lo de siempre (ramas con trabajo sin
+  unir, reglas de `main`, Brickwise con NIF austriaco) y renovar el catálogo
+  antes del 28/11.
+
+## 21 de noviembre de 2026 (40) · Claude · Campana de avisos en la cabecera de la app · UNIDA (#180) · PUBLICADA (ver 41)
 
 - **Orden de la dirección (21/11):** «que los avisos salgan en Inicio arriba a
   la derecha, al lado del interrogante» y «al leerlas, que desaparezca como que
@@ -41,7 +72,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 - **Pendiente:** unir con la parte de la web, OTA y «Avisar novedad» cuando
   la dirección lo autorice.
 
-## 21 de noviembre de 2026 (39) · Claude · Campana de avisos para todos, junto al «?», y fuera «Marcar como leídos» · UNIDA (#179) · sin publicar
+## 21 de noviembre de 2026 (39) · Claude · Campana de avisos para todos, junto al «?», y fuera «Marcar como leídos» · UNIDA (#179) · PUBLICADA (ver 41)
 
 - **Encargo de la dirección (21/11):** «que en la pestaña de notificaciones, al
   leerlas, desaparezca como que está pendiente» y «me gustaría que los avisos
