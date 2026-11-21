@@ -5278,7 +5278,9 @@ const Cuenta = (function(){
   if(vistaBandeja.reloj||!caja)return;
   vistaBandeja.reloj=setTimeout(()=>{
    vistaBandeja.reloj=0;
-   if(vistaBandeja.nodo===caja&&vistaBandeja.visible&&bandejaPerfilVisible(caja))marcarLeidos();
+   /* Con la pestaña del navegador a la vista: cambiar de pestaña antes de 1,5 s no cuenta como verlos. */
+   const pestanaVisible=typeof document==='undefined'||!document.visibilityState||document.visibilityState==='visible';
+   if(vistaBandeja.nodo===caja&&vistaBandeja.visible&&pestanaVisible&&bandejaPerfilVisible(caja))marcarLeidos();
   },VISTA_BANDEJA_MS);
  }
  function vigilarBandejaPerfil(){
