@@ -33,3 +33,5 @@ revision-independiente/**/midas-app-llms-full.txt
 # Copias con nombres de personas físicas (revisión de vigilancia del 21/11): en disco, no en Git.
 grupos/vigilancia/fuentes/bit2me/bit2me-blog-autorizacion-2026-11-21.txt
 grupos/vigilancia/fuentes/profitus/nav-profitus-bonds-2026-11-21.txt
+# gitleaks confunde una huella SHA-256 («sha=…») con una clave: en disco, no en Git.
+revision-independiente/fuentes/vigilancia/reguladores/cnmv-advertencias-candidatas-2026-11-21.txt
