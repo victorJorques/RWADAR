@@ -6,7 +6,13 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (43) · Claude · Inicio: cada oferta con su fecha más reciente · PR #183
+## 21 de noviembre de 2026 (43) · Claude · Inicio: cada oferta con su fecha más reciente · PUBLICADO
+
+- **Publicado:** #183 (squash) y el sello #185 (merge, main = `e34e421e`);
+  «Publicar web» revisión (run 44916584736) y producción (run 44917113684),
+  OTA Android (run 44917116482) y «Avisar novedad» (aviso n.º 8, «Cada oferta,
+  con su fecha más reciente»), todo en verde. En vivo, las seis tarjetas de
+  Inicio dicen «Verificada el 20/11/2026».
 
 - **Orden de Víctor (21/11):** en las ofertas de Inicio, en vez de cuándo se
   añadió (salía «Añadida el 03/11» estando a día 20), «lo que más actualizado
