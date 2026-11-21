@@ -1,0 +1,93 @@
+{
+  "formato": 1,
+  "etiqueta": "2026-11-21",
+  "fecha": "2026-11-21",
+  "desde": "2026-11-20.2",
+  "previa": {
+    "revisionId": "94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7",
+    "hash": "94f7fd5df6e5c28e1c31a6ea5a5f38d792b57febb4f1b695d925c2f7636905ba",
+    "ultimoDia": "2026-11-27"
+  },
+  "vigenciaDias": 7,
+  "ultimoDia": "2026-11-28",
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  },
+  "plataformas": 25,
+  "cadena": [
+    "2026-10-22",
+    "2026-10-23",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-03.2",
+    "2026-11-03.3",
+    "2026-11-03.4",
+    "2026-11-03.5",
+    "2026-11-03.6",
+    "2026-11-03.7",
+    "2026-11-04",
+    "2026-11-04.2",
+    "2026-11-05",
+    "2026-11-05.2",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13",
+    "2026-11-20",
+    "2026-11-20.2"
+  ],
+  "pedido": "puesta al día pedida por el responsable del proyecto",
+  "orden": "Y esta ya ha pasado por ejemplo es antigua, y no sé si ya se puede seguir invirtiendo todos esos errores los tienes que corregir que el lunes tenemos una reunión muy importante",
+  "lecturaPublica": {
+    "hora": "2026-11-21T17:36:51Z – 2026-11-21T17:36:55Z",
+    "descartadas": 5
+  },
+  "radar": {
+    "fuentes": 69,
+    "manuales": [
+      "spiko-regafi-pasaporte-es"
+    ],
+    "alcanceNota": "la de pasaportes del registro REGAFI de la ACPR, por su API pública, porque la página cargaba sin esos datos",
+    "copias": [
+      {
+        "archivo": "radar-manual/regafi-spiko-pasaporte-espagne.json",
+        "sha256": "fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6",
+        "contiene": [
+          "\"type_passeport\": \"Libre prestation de services\"",
+          "\"pays\": \"ESPAGNE\"",
+          "\"date_debut\": \"2026-01-08\""
+        ]
+      }
+    ],
+    "literales": [
+      {
+        "id": "paxg-occ",
+        "contiene": [
+          "Trust Banks Active As of 10/31/2026"
+        ],
+        "patron": [
+          "25379 Paxos Trust Company"
+        ]
+      }
+    ]
+  },
+  "candidatas": [
+    "candidata-cando1-token-city",
+    "candidata-cryptocom-tokenized-stocks-eee",
+    "candidata-profitus-axiology-bonos",
+    "candidata-prosegur-cash-pagares",
+    "candidata-securitize-stocks",
+    "candidata-valorix-bit2me-stx"
+  ],
+  "ofertas": {},
+  "noAplicado": [
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz, vivienda-sonnleithnergasse-2-viena, local-de-estanco-klagenfurt, vivienda-stallhofstra-e-28-gratwein, vivienda-schwarzer-weg-18-graz, drautalresidenz-paternion, randhartingergasse-9-viena y apartamento-vacacional-hinterstoder-50",
+      "que": "DECISIONES §1 y §2: las 8 fichas de Brickwise que piden número fiscal austriaco se quedan (decisión de Víctor) y pasan de «retirar_propuesta» a «actualizar»",
+      "porque": "El motor no lo puede montar: preparar exige que la decisión de cada expediente «publicada» sea «mantener» o «actualizar» y para con «NO: vivienda-pluddemanngasse-101-graz: decisión retirar_propuesta». decisiones.json no tiene ninguna clave que lo admita («ofertas.<slug>.decision» solo exige que sea igual a la del expediente), el montador no puede editar los expedientes y el cambio del motor que lo admitiría (una clave «sinRetirar» con motivo y prueba) se denegó en esta sesión. Sin pasar esa guarda no se genera nada (datos, SQL, PGlite ni ensayo). Hace falta relanzar con motor:false o que se apruebe ese cambio del motor.",
+      "detalle": "Además, para el después de aplicar: el mínimo corto de Hausera «Desde 100 € · suscripción desde el 25/11» (DECISIONES §2 y §6) no pasa la comprobación «mínimo corto con la fecha de la ficha» de entrega/despues.mjs; DECISIONES §6 autoriza ajustarla con su prueba en motor.test.mjs, pero ese cambio también se denegó."
+    }
+  ]
+}

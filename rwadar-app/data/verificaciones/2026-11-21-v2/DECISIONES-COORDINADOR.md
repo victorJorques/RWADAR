@@ -235,3 +235,24 @@ código de la web van en su PR.
 - BOSS Info y Switzerlend: decidir si pasan a «principales».
 - Las recomendadas de la web (cuota del mercado, etiqueta «Nueva» con el mismo
   plazo en Inicio y en Ofertas, /cambios y RSS) y de las noticias.
+
+## 7. Radar (auditoria/radar-plataformas.md, 168 datos, 20:13–20:38 UTC)
+
+Cuatro obligatorias:
+- **(1) Avisos importantes en las páginas /plataformas/<slug>:** es código
+  (`rwadar-fichas.js`): va en el PR #191, con la frase nueva de Reventa
+  («Está en Reventa: RWAdar no confirma que se pueda contratar hoy;
+  compruébalo en la fuente»), que arregla también lo de BOSS Info y
+  Switzerlend de §6.
+- **(4) Midas · fuente del acceso y de la licencia:** capa verificada del
+  radar → esta entrega, con `cambios-radar.json` → `plataformas` (campo
+  acceso: añadir como fuente las «Condiciones Finales de mTBILL (17/07/2026)»
+  con su URL; licencia: «CNMV · Pasaportes recibidos (Midas Software GmbH)»,
+  con la URL del informe). Si el motor no lo admite tal cual, a `noAplicado`
+  con el motivo.
+- **(2) Backed Finance · redes** y **(3) Ondo Finance · resumen:** son textos
+  base del radar (tabla base, migración como la 38): no entran esta noche.
+  Pendiente del próximo ciclo, con su migración y su PR. Lo que publica hoy no
+  es falso: la lista de redes de Backed está incompleta y el resumen de Ondo no
+  cuenta las acciones tokenizadas de Ondo Stocks.
+- Recomendadas del radar: al próximo ciclo.
