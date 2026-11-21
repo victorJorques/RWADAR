@@ -6,7 +6,29 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 21 de noviembre de 2026 (35) · Claude · Entrega 2026-11-20.2 revisada y lista para aplicar; GitHub sin minutos · SIN APLICAR
+## 21 de noviembre de 2026 (36) · Claude · Repositorio público, entrega 2026-11-20.2 aplicada e Inicio por fecha de alta · PUBLICANDO
+
+- **GitHub sin minutos (21/11, 01:54 UTC):** el plan gratuito de Actions se
+  agotó. Decisión de la dirección: hacer público el repositorio (Actions sin
+  límite y gratis). Antes, revisión previa: el escáner de secretos sobre los
+  1.120 commits del historial no encuentra ninguna clave real (pruebas,
+  claves públicas y páginas de terceros), y los nombres completos de los dos
+  colaboradores salen de los archivos actuales (PR #169). El historial no se
+  reescribe: quedan en él los correos de los commits y esos nombres (lo aceptó
+  la dirección). Hecho público a las 09:50 UTC; comprobado sin sesión.
+- **Inicio (PR #167):** el carrusel «Ofertas» va de la más nueva a la más
+  antigua (fecha de alta, 6 como mucho, sin huecos para las antiguas) y todas
+  las tarjetas llevan «Mínimo · España», en la web y en la app.
+- **Entrega 2026-11-20.2 (PR #168) aplicada** a las 10:05 UTC: revisión
+  `94f7fd5d`, 22 ofertas y 25 plataformas; leída como visitante. Vigía antes de
+  aplicar: Schwarzer Weg sube su venta más barata de 69,90 € a 71,90 € (la
+  ficha lo dice con fecha 20/11; para el próximo ciclo), un documento de mTBILL
+  y el VL de Spiko euro por leer, y la CNMV ya no da resultados para Hausera.
+- **Ofertas caducadas (orden del 21/11):** según la auditoría del 20/11 no hay
+  ninguna; Randhartingergasse 9 y Hinterstoder piden número fiscal austriaco
+  (ya lo avisan): quitarlas solo si lo pide la dirección.
+
+## 21 de noviembre de 2026 (35) · Claude · Entrega 2026-11-20.2 revisada y lista para aplicar; GitHub sin minutos · APLICADA (ver 36)
 
 - **Encargo (responsable del proyecto, 20/11, 22:30 UTC):** «Lo viejo que no
   valga obviamente quítalo». Carpetas: `rwadar-app/data/verificaciones/2026-11-20.2-v2/`
