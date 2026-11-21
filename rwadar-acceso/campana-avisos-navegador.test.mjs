@@ -266,12 +266,27 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo q
       return { visible: r.width > 0 && getComputedStyle(b).display !== 'none', aria: b.getAttribute('aria-label'), alto: r.height,
         unaLinea: document.querySelector('.hdr-nav').getBoundingClientRect().height <= 48 }; });
     assert.deepEqual(hdr, { visible: true, aria: 'Avisos, 3 sin leer', alto: 44, unaLinea: true });
+    // Redonda y oscura, como el «?» de la barra del móvil (21/11/2026).
+    assert.ok(await escritorio.pagina.evaluate(() => parseFloat(getComputedStyle(document.getElementById('btnAvisos')).borderRadius) >= 22), 'campana redonda');
+    await captura(escritorio.pagina, 'campana-escritorio-cabecera-1366.png');
     // En el panel de la cuenta, «Avisos recibidos» es la lista; la cifra antigua (0) ya no sale.
+    // Sin «Marcar como leídos» (21/11/2026): la lista se da por vista cuando lleva 1,5 s en pantalla;
+    // la campana baja a 0 y los puntos se quedan mientras se sigue viendo.
+    const antesDeAbrir = Date.now();
     await escritorio.pagina.click('#btnCuenta');
     await escritorio.pagina.waitForSelector('#pfBandeja li', { timeout: 10000 });
     const panel = await escritorio.pagina.evaluate(() => ({ cifras: [...document.querySelectorAll('#perfilCuerpo .perfil-cifras .l')].map(n => n.textContent),
-      marcar: !!document.querySelector('#pfBandeja [data-avisos-marcar]') }));
-    assert.deepEqual(panel, { cifras: ['Díasde miembro', 'Plataformasque sigues'], marcar: true });
+      marcar: !!document.querySelector('#pfBandeja [data-avisos-marcar]') || /Marcar como leídos/.test(document.getElementById('pfBandeja').textContent),
+      nuevos: document.querySelectorAll('#pfBandeja li.nuevo').length, numero: document.getElementById('btnAvisosN').textContent }));
+    assert.deepEqual(panel, { cifras: ['Díasde miembro', 'Plataformasque sigues'], marcar: false, nuevos: 3, numero: '3' });
+    await escritorio.pagina.locator('#pfBandeja').scrollIntoViewIfNeeded();
+    await escritorio.pagina.waitForFunction(() => document.getElementById('btnAvisosN').hidden, null, { timeout: 8000 });
+    assert.ok(Date.now() - antesDeAbrir >= 1500, 'no antes de 1,5 s en pantalla');
+    const visto = await escritorio.pagina.evaluate(uid => ({ aria: document.getElementById('btnAvisos').getAttribute('aria-label'),
+      nuevos: document.querySelectorAll('#pfBandeja li.nuevo').length,
+      guardado: JSON.parse(localStorage.getItem('rwadar.avisos.leidos.v1:' + uid) || '[]').length,
+      publicos: localStorage.getItem('rwadar.avisos.leidos.publicos.v1') }), USUARIO_PRUEBA.id);
+    assert.deepEqual(visto, { aria: 'Avisos, ninguno sin leer', nuevos: 3, guardado: 3, publicos: null }, 'leídos en la cuenta, sin tocar los de sin cuenta');
     await captura(escritorio.pagina, 'campana-escritorio-1366.png');
     assert.deepEqual(escritorio.errores, []);
     await escritorio.contexto.close();

@@ -4227,7 +4227,11 @@ const Cuenta = (function(){
     /api/acceso/datos). Sin casilla, sin permiso, sin correo y sin push.
     Desde el 12/11/2026 también la campana con número de la cabecera: lo leído
     se guarda en este navegador por cuenta (rwadar.avisos.leidos.v1:<uuid>,
-    como avisos.leidos.v1:<uuid> en la app). Apagado, no pide ni muestra nada. */
+    como avisos.leidos.v1:<uuid> en la app). Apagado, no pide ni muestra nada.
+    Desde el 21/11/2026 la campana la ve todo el mundo: sin sesión cuenta los
+    avisos publicados (la lista de ?avisos=1) y lo visto se guarda en este
+    navegador en rwadar.avisos.leidos.publicos.v1 (solo los números de aviso,
+    aparte de los de cada cuenta; lo borra «Borrar lo guardado aquí»). */
  const AVISOS_BANDEJA_REMOTA=true;
  const AVISOS_BANDEJA_DISPONIBLE=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_BANDEJA_REMOTA;
  /* Notificaciones en este móvil por Web Push (12/11/2026). Solo en móviles y
@@ -5230,7 +5234,9 @@ const Cuenta = (function(){
  }
  /* La lista se pinta en la cuenta (#pfBandeja) y en el diálogo de la campana
     (#avisosDialogoLista). Un aviso sin leer lleva un punto y «Sin leer» para
-    el lector de pantalla; «Marcar como leídos» solo sale si queda alguno. */
+    el lector de pantalla. Sin botón de «Marcar como leídos» (21/11/2026): en
+    el diálogo, abrirlo ya es verlos; en la cuenta, se dan por vistos cuando la
+    lista lleva 1,5 s en pantalla (vigilarBandejaPerfil). */
  function pintarBandeja(){
   const cajas=['pfBandeja','avisosDialogoLista'].map(id=>$(id)).filter(Boolean);
   if(!AVISOS_BANDEJA_DISPONIBLE||!cajas.length)return;
@@ -5249,10 +5255,57 @@ const Cuenta = (function(){
      '<b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
      (a.fecha?'<time datetime="'+iso(a.fecha)+'">'+dia(a.fecha)+'</time>':'')+
      (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>';}).join('')+'</ul>';
-  /* En el diálogo de la campana no hace falta «Marcar como leídos»: abrirlo
-     ya es verlos (como en WhatsApp) y el número baja a 0. En la cuenta, sí. */
-  for(const caja of cajas)caja.innerHTML=html+(conLista&&pendientes&&caja.id==='pfBandeja'
-   ?'<button type="button" class="bandeja-marcar" data-avisos-marcar>Marcar como leídos</button>':'');
+  for(const caja of cajas)caja.innerHTML=html;
+  if(conLista&&pendientes)vigilarBandejaPerfil();
+ }
+ /* La lista de la cuenta (#pfBandeja) se da por vista cuando lleva 1,5 s
+    seguidos en pantalla (la mitad de la lista o 160 px de ella), con
+    IntersectionObserver. Sin él (navegadores viejos), 1,5 s después de
+    pintarse con el panel abierto. Como en el diálogo de la campana, los
+    puntos de «Sin leer» se quedan hasta que la lista se vuelve a pintar. */
+ const VISTA_BANDEJA_MS=1500;
+ let vistaBandeja={nodo:null,obs:null,reloj:0,visible:false};
+ function bandejaPerfilVisible(caja){
+  try{
+   if(!caja||typeof document==='undefined'||typeof document.contains!=='function'||!document.contains(caja))return false;
+   if(typeof caja.checkVisibility==='function')return caja.checkVisibility({visibilityProperty:true,opacityProperty:true});
+   return !!(caja.getClientRects&&caja.getClientRects().length);
+  }catch(e){return false;}
+ }
+ function pararVistaBandeja(){if(vistaBandeja.reloj)clearTimeout(vistaBandeja.reloj);vistaBandeja.reloj=0;}
+ function contarVistaBandeja(){
+  const caja=vistaBandeja.nodo;
+  if(vistaBandeja.reloj||!caja)return;
+  vistaBandeja.reloj=setTimeout(()=>{
+   vistaBandeja.reloj=0;
+   if(vistaBandeja.nodo===caja&&vistaBandeja.visible&&bandejaPerfilVisible(caja))marcarLeidos();
+  },VISTA_BANDEJA_MS);
+ }
+ function vigilarBandejaPerfil(){
+  if(typeof document==='undefined'||typeof setTimeout!=='function')return;
+  const caja=$('pfBandeja');
+  if(!caja)return;
+  if(vistaBandeja.nodo!==caja){
+   if(vistaBandeja.obs)try{vistaBandeja.obs.disconnect();}catch(e){}
+   pararVistaBandeja();
+   vistaBandeja={nodo:caja,obs:null,reloj:0,visible:false};
+   if(typeof IntersectionObserver==='function'){
+    try{
+     const obs=new IntersectionObserver(entradas=>{
+      if(vistaBandeja.obs!==obs)return;
+      for(const e of entradas){
+       const ve=e.isIntersecting&&(e.intersectionRatio>=0.5||e.intersectionRect.height>=160);
+       vistaBandeja.visible=ve;
+       if(ve&&avisosSinLeer())contarVistaBandeja();else if(!ve)pararVistaBandeja();
+      }
+     },{threshold:[0,0.25,0.5,0.75,1]});
+     vistaBandeja.obs=obs;obs.observe(caja);
+    }catch(e){vistaBandeja.obs=null;}
+   }
+   /* Respaldo: sin IntersectionObserver, pintada con el panel abierto es vista. */
+   if(!vistaBandeja.obs)vistaBandeja.visible=true;
+  }
+  if(vistaBandeja.visible&&avisosSinLeer())contarVistaBandeja();
  }
  /* forzar: vuelve a pedir la lista aunque ya esté cargada (al volver a la
     pestaña o cuando el service worker avisa de un push nuevo); mientras
@@ -5283,8 +5336,11 @@ const Cuenta = (function(){
     almacenamiento, todo cuenta como no leído y no pasa nada más. El mismo
     número va al icono de la web instalada (Badging API, donde exista) y al
     service worker, que lo sube con cada notificación que llega. */
- let bandejaPedida=0,campanaAnterior=-1,insigniaEnviada=-1,saliendo=false;
+ let bandejaPedida=0,campanaAnterior=-1,insigniaEnviada=-1,saliendo=false,sesionResuelta=false;
  const CLAVE_LEIDOS='rwadar.avisos.leidos.v1:';
+ /* Sin sesión (21/11/2026): los avisos publicados vistos en este navegador.
+    Solo sus números (como mucho 200), aparte de los de cada cuenta. */
+ const CLAVE_LEIDOS_PUBLICOS='rwadar.avisos.leidos.publicos.v1';
  const uidValido=u=>typeof u==='string'&&/^[A-Za-z0-9-]{1,64}$/.test(u);
  function leidosCuenta(){
   if(!ses||!uidValido(ses.uid))return [];
@@ -5301,6 +5357,48 @@ const Cuenta = (function(){
   if(!AVISOS_BANDEJA_DISPONIBLE||!identidadConfirmada||!ses||bandejaCuenta!==versionCuenta||!bandeja)return 0;
   const leidos=new Set(leidosCuenta());
   return bandeja.filter(a=>!leidos.has(a.id)).length;
+ }
+ function leidosPublicos(){
+  try{
+   const v=JSON.parse(localStorage.getItem(CLAVE_LEIDOS_PUBLICOS)||'[]');
+   return Array.isArray(v)?v.filter(x=>typeof x==='string'&&x.length<=24).slice(-200):[];
+  }catch(e){return [];}
+ }
+ function guardarLeidosPublicos(ids){
+  try{localStorage.setItem(CLAVE_LEIDOS_PUBLICOS,JSON.stringify([...new Set(ids)].slice(-200)));}catch(e){}
+ }
+ /* Para «Borrar lo guardado aquí» de Perfil. */
+ function hayAvisosVistosAqui(){try{return localStorage.getItem(CLAVE_LEIDOS_PUBLICOS)!==null;}catch(e){return false;}}
+ function olvidarAvisosVistosAqui(){
+  try{localStorage.removeItem(CLAVE_LEIDOS_PUBLICOS);}catch(e){}
+  pintarCampana();
+ }
+ /* De quién son los avisos de la campana (21/11/2026, la dirección: «me
+    gustaría que los avisos salieran en Inicio arriba a la derecha, al lado
+    del interrogante»). La ve todo el mundo: 'cuenta' (sesión confirmada: la
+    bandeja), 'publico' (sin sesión: los avisos publicados de
+    /api/avisos/recientes, como en ?avisos=1) o 'comprobando' (mientras se
+    mira si hay sesión: la campana sin número). '' = sin campana. */
+ function modoCampana(){
+  if(identidadConfirmada&&ses)return AVISOS_BANDEJA_DISPONIBLE?'cuenta':'';
+  if(!AVISOS_SIN_CUENTA_DISPONIBLE)return '';
+  return restauracionCuenta||!sesionResuelta?'comprobando':'publico';
+ }
+ function campanaSinLeer(modo){
+  if(modo==='cuenta')return avisosSinLeer();
+  if(modo!=='publico'||!listaSC.avisos)return 0;
+  const leidos=new Set(leidosPublicos());
+  return listaSC.avisos.filter(a=>!leidos.has(a.id)).length;
+ }
+ /* La campana de las dos cabeceras: abre la lista que toca. */
+ function abrirCampana(origen){
+  const modo=modoCampana();
+  if(modo==='cuenta'){abrirAvisos(origen);return;}
+  if(modo==='publico'){abrirAvisosSinCuenta(origen);return;}
+  if(modo==='comprobando'){
+   if(restauracionCuenta){restauracionCuenta.then(()=>abrirCampana(origen),()=>abrirCampana(origen));return;}
+   abrirAvisosSinCuenta(origen);
+  }
  }
  const enIngles=()=>typeof document!=='undefined'&&!!document.documentElement&&document.documentElement.lang==='en';
  /* El número en el icono de la web instalada. Sin la API (Android, Firefox)
@@ -5323,9 +5421,9 @@ const Cuenta = (function(){
   }catch(e){}
  }
  function pintarCampana(){
-  const visible=AVISOS_BANDEJA_DISPONIBLE&&identidadConfirmada&&!!ses;
-  const cargada=visible&&!!bandeja&&bandejaCuenta===versionCuenta;
-  const n=cargada?avisosSinLeer():0,texto=n>9?'9+':String(n);
+  const modo=modoCampana(),visible=!!modo;
+  const cargada=modo==='cuenta'?!!bandeja&&bandejaCuenta===versionCuenta:modo==='publico'&&!!listaSC.avisos;
+  const n=cargada?campanaSinLeer(modo):0,texto=n>9?'9+':String(n);
   const etiqueta=enIngles()?(n?'Notices, '+texto+' unread':'Notices, none unread')
    :(n?'Avisos, '+texto+' sin leer':'Avisos, ninguno sin leer');
   for(const [idBoton,idNumero] of [['btnAvisos','btnAvisosN'],['movilAvisos','movilAvisosN']]){
@@ -5340,16 +5438,26 @@ const Cuenta = (function(){
    anuncio.textContent=enIngles()?(n===1?'You have 1 unread notice.':'You have '+texto+' unread notices.')
     :(n===1?'Tienes 1 aviso sin leer.':'Tienes '+texto+' avisos sin leer.');
   campanaAnterior=cargada?n:-1;
-  if(cargada&&n!==insigniaEnviada){insigniaEnviada=n;insigniaApp(n);avisarTrabajador({tipo:n?'avisos-pendientes':'avisos-vistos',n});}
+  /* Sin sesión, un 0 al cargar no quita nada: la lista publicada puede llevar
+     hasta un minuto de retraso y una notificación recién llegada se borraría
+     sin verla. El 0 se manda al verlos (avisosPublicosVistos, el diálogo). */
+  if(cargada&&n!==insigniaEnviada){
+   const callar=modo==='publico'&&!n&&insigniaEnviada<0;
+   insigniaEnviada=n;
+   if(!callar){insigniaApp(n);avisarTrabajador({tipo:n?'avisos-pendientes':'avisos-vistos',n});}
+  }
   if(!cargada)insigniaEnviada=-1;
   if(typeof document!=='undefined'&&document.dispatchEvent&&typeof CustomEvent==='function')
    document.dispatchEvent(new CustomEvent('rwadar:avisos'));
  }
+ /* La lista de Perfil ya se ha visto (vigilarBandejaPerfil): todo leído, sin
+    repintarla (los puntos se quedan mientras sigue en pantalla). */
  function marcarLeidos(){
   if(!identidadConfirmada||!ses||!bandeja||bandejaCuenta!==versionCuenta)return;
-  guardarLeidos([...leidosCuenta(),...bandeja.map(a=>a.id)]);
-  pintarBandeja();pintarCampana();
-  aviso(enIngles()?'Notices marked as read.':'Avisos marcados como leídos.');
+  const leidos=new Set(leidosCuenta());
+  if(bandeja.every(a=>leidos.has(a.id)))return;
+  guardarLeidos([...leidos,...bandeja.map(a=>a.id)]);
+  pintarCampana();
  }
  /* Con el diálogo de la campana abierto y la lista cargada, los avisos se
     dan por vistos (como al abrir un chat de WhatsApp): se guardan como
@@ -6173,28 +6281,59 @@ const Cuenta = (function(){
  }
 
  /* ?avisos=1 sin sesión: los avisos publicados y la baja de este móvil. */
- let listaSC={avisos:null,error:false,pedida:0};
+ /* Desde el 21/11/2026 es también la de la campana sin sesión: se pide al
+    saber que no hay sesión para contar lo no visto (el servidor la guarda
+    60 s). sinLeerVista: los que no se habían visto al abrir la lista; sus
+    puntos se quedan mientras siga abierta. */
+ let listaSC={avisos:null,error:false,pedida:0,cargando:null,sinLeerVista:null};
  function pintarListaSC(){
   const caja=$('avisosScLista');if(!caja)return;
+  const leidos=new Set(leidosPublicos()),abierta=listaSC.sinLeerVista;
+  const nuevo=a=>!leidos.has(a.id)||!!(abierta&&abierta.has(a.id));
   const dos=n=>String(n).padStart(2,'0'),dia=d=>dos(d.getDate())+'/'+dos(d.getMonth()+1)+'/'+d.getFullYear();
   const iso=d=>d.getFullYear()+'-'+dos(d.getMonth()+1)+'-'+dos(d.getDate());
   const l=listaSC.avisos;
   ponerHtml(caja,listaSC.error&&!l?'<p class="perfil-nota" role="status">No se han podido cargar los avisos. Vuelve a intentarlo más tarde.</p>'
    :!l?'<p class="perfil-nota" role="status">Cargando los avisos…</p>'
    :!l.length?'<p class="perfil-nota">Aquí verás las fichas nuevas del radar y las novedades de RWAdar.</p>'
-   :'<ul class="bandeja-avisos">'+l.map(a=>'<li><b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
+   :'<ul class="bandeja-avisos">'+l.map(a=>{const n=nuevo(a);
+     return '<li'+(n?' class="nuevo"':'')+'>'+(n?'<span class="bandeja-punto" aria-hidden="true"></span><span class="solo-lector">Sin leer</span> ':'')+
+     '<b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
      (a.fecha?'<time datetime="'+iso(a.fecha)+'">'+dia(a.fecha)+'</time>':'')+
-     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>').join('')+'</ul>');
+     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>';}).join('')+'</ul>');
  }
- async function cargarListaSC(){
+ function cargarListaSC(){
+  if(listaSC.cargando)return listaSC.cargando;
   listaSC.pedida=Date.now();listaSC.error=false;pintarListaSC();
-  try{
-   const {status,j}=await pedirSinCuenta('/api/avisos/recientes');
-   if(status!==200||!j||j.v!==1||!Array.isArray(j.avisos)||j.avisos.length>50)throw new Error('lista');
-   const vistos=new Set();
-   listaSC.avisos=j.avisos.filter(a=>a&&a.tipo!=='bienvenida').map(avisoBandeja).filter(a=>a&&!vistos.has(a.id)&&vistos.add(a.id)).slice(0,20);
-  }catch(e){listaSC.error=true;}
-  pintarListaSC();
+  const p=listaSC.cargando=(async()=>{
+   try{
+    const {status,j}=await pedirSinCuenta('/api/avisos/recientes');
+    if(status!==200||!j||j.v!==1||!Array.isArray(j.avisos)||j.avisos.length>50)throw new Error('lista');
+    const vistos=new Set();
+    listaSC.avisos=j.avisos.filter(a=>a&&a.tipo!=='bienvenida').map(avisoBandeja).filter(a=>a&&!vistos.has(a.id)&&vistos.add(a.id)).slice(0,20);
+   }catch(e){listaSC.error=true;}
+  })().finally(()=>{if(listaSC.cargando===p)listaSC.cargando=null;});
+  return p.then(()=>{pintarListaSC();avisosPublicosVistos();pintarCampana();});
+ }
+ /* Sin sesión: la lista para el número de la campana. forzar: al volver a la
+    pestaña o con una notificación nueva, si tiene más de un minuto. */
+ function cargarPublicosCampana(forzar=false){
+  if(modoCampana()!=='publico'||listaSC.cargando)return;
+  if(listaSC.avisos&&!listaSC.error&&!(forzar&&Date.now()-listaSC.pedida>60000))return;
+  cargarListaSC().catch(()=>{});
+ }
+ /* Con la lista abierta y cargada, lo publicado se da por visto (como en el
+    diálogo de la cuenta): se guarda en este navegador y la campana, el
+    icono y el service worker bajan a 0. */
+ function avisosPublicosVistos(){
+  const d=typeof document!=='undefined'?$('avisosScDialogo'):null;
+  if(!d||!d.open||!listaSC.avisos)return;
+  const leidos=new Set(leidosPublicos());
+  if(!listaSC.sinLeerVista)listaSC.sinLeerVista=new Set();
+  for(const a of listaSC.avisos)if(!leidos.has(a.id))listaSC.sinLeerVista.add(a.id);
+  if(listaSC.avisos.every(a=>leidos.has(a.id)))return;
+  guardarLeidosPublicos([...leidos,...listaSC.avisos.map(a=>a.id)]);
+  pintarCampana();
  }
  function abrirAvisosSinCuenta(origen){
   if(!AVISOS_SIN_CUENTA_DISPONIBLE||typeof document==='undefined'||!document.createElement)return;
@@ -6215,14 +6354,16 @@ const Cuenta = (function(){
     if(e.target===d||(e.target.closest&&e.target.closest('[data-cerrar-avisos-sc]')))d.close();
     else if(e.target.closest&&e.target.closest('[data-avisos-sc-perfil]')){d._origen=null;d.close();irAPerfilAvisos();}
    });
-   d.addEventListener('close',()=>{if(d._origen&&document.contains(d._origen))d._origen.focus({preventScroll:true});});
+   d.addEventListener('close',()=>{listaSC.sinLeerVista=null;if(d._origen&&document.contains(d._origen))d._origen.focus({preventScroll:true});});
    document.body.appendChild(d);
   }
   d._origen=origen||null;
+  if(!d.open)listaSC.sinLeerVista=null;
   pintarListaSC();pintarSinCuenta();
   if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
   const cerrarBoton=d.querySelector('[data-cerrar-avisos-sc]');if(cerrarBoton)cerrarBoton.focus({preventScroll:true});
-  /* Visto: el número del icono y el del service worker, a 0. */
+  /* Visto: lo publicado, leído en este navegador; el número del icono y el del service worker, a 0. */
+  avisosPublicosVistos();
   insigniaApp(0);avisarTrabajador({tipo:'avisos-vistos',n:0});
   if(!listaSC.avisos||listaSC.error||Date.now()-listaSC.pedida>60000)cargarListaSC().catch(()=>{});
   /* ¿Hay algo que desactivar en este navegador? */
@@ -6323,10 +6464,12 @@ const Cuenta = (function(){
   }
   /* Sin cuenta (14/11/2026): con sesión el bloque solo sale si este móvil las tiene así. */
   if(AVISOS_SIN_CUENTA_DISPONIBLE)pintarSinCuenta();
-  /* La campana: con sesión confirmada se pide la bandeja para contar lo no leído. */
-  if(AVISOS_BANDEJA_DISPONIBLE){
+  /* La campana: con sesión confirmada se pide la bandeja para contar lo no
+     leído; sin sesión (21/11/2026), los avisos publicados. */
+  if(AVISOS_BANDEJA_DISPONIBLE||AVISOS_SIN_CUENTA_DISPONIBLE){
    pintarCampana();
-   if(identidadConfirmada&&ses)cargarBandeja().catch(()=>{});
+   if(AVISOS_BANDEJA_DISPONIBLE&&identidadConfirmada&&ses)cargarBandeja().catch(()=>{});
+   else cargarPublicosCampana();
   }
  }
  async function abrirGestion(){
@@ -6358,12 +6501,11 @@ const Cuenta = (function(){
    if(CORREO_AUTH_E2E&&correo)$('cCorreo').value=correo;
   });
   $('cuentaVolver').addEventListener('click',cerrar);
-  /* La campana, «Marcar como leídos» y los botones de las notificaciones. */
-  for(const id of ['btnAvisos','movilAvisos']){const b=$(id);if(b)b.addEventListener('click',()=>abrirAvisos(b));}
+  /* La campana (con o sin sesión) y los botones de las notificaciones. */
+  for(const id of ['btnAvisos','movilAvisos']){const b=$(id);if(b)b.addEventListener('click',()=>abrirCampana(b));}
   document.addEventListener('click',e=>{
    const t=e.target&&typeof e.target.closest==='function'?e.target:null;if(!t)return;
-   if(t.closest('[data-avisos-marcar]'))marcarLeidos();
-   else if(t.closest('[data-ver-avisos]'))abrirAvisos(t.closest('[data-ver-avisos]'));
+   if(t.closest('[data-ver-avisos]'))abrirAvisos(t.closest('[data-ver-avisos]'));
    else if(t.closest('[data-push-activar]'))activarPush();
    else if(t.closest('[data-push-desactivar]'))desactivarPush();
    else if(t.closest('[data-push-reintentar]'))reintentarPush();
@@ -6384,7 +6526,8 @@ const Cuenta = (function(){
   /* Al volver a la pestaña, como en WhatsApp, y cuando el service worker
      avisa de que ha llegado una notificación con la página abierta. */
   document.addEventListener('visibilitychange',()=>{
-   if(document.visibilityState!=='visible'||!identidadConfirmada||!ses)return;
+   if(document.visibilityState!=='visible')return;
+   if(!identidadConfirmada||!ses){cargarPublicosCampana(true);return;}
    if(Date.now()-bandejaPedida>60000)cargarBandeja(true).catch(()=>{});
    /* Al volver a la app (iPhone), lo que no se pudo comprobar se vuelve a preguntar. */
    if(AVISOS_NOVEDADES_DISPONIBLES&&novedadesError)cargarNovedades().catch(()=>{});
@@ -6394,6 +6537,7 @@ const Cuenta = (function(){
   try{
    if(typeof navigator!=='undefined'&&navigator.serviceWorker)navigator.serviceWorker.addEventListener('message',e=>{
     if(e.data&&e.data.tipo==='aviso-nuevo'&&identidadConfirmada&&ses)cargarBandeja(true).catch(()=>{});
+    else if(e.data&&e.data.tipo==='aviso-nuevo'){listaSC.pedida=0;cargarPublicosCampana(true);}
     /* Se ha tocado una notificación con la web ya abierta: la lista, con la baja. */
     else if(e.data&&e.data.tipo==='abrir-avisos')abrirAvisosPedido();
    });
@@ -6433,6 +6577,9 @@ const Cuenta = (function(){
     if(typeof history!=='undefined'&&history.replaceState)history.replaceState(history.state,'',u.pathname+u.search+u.hash);
    }
   }catch(e){}
+  /* Con el servidor de la web, la sesión se comprueba primero: hasta saberlo,
+     la campana sale sin número y no se piden los avisos publicados. */
+  sesionResuelta=!servidor;
   pinta();
 
   if(servidor){
@@ -6441,7 +6588,10 @@ const Cuenta = (function(){
     identidadConfirmada=true;
     await cargarMio();
     pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
-   }).catch(()=>{}).finally(()=>{restauracionCuenta=null;});
+   }).catch(()=>{}).finally(()=>{
+    restauracionCuenta=null;sesionResuelta=true;
+    if(AVISOS_BANDEJA_DISPONIBLE||AVISOS_SIN_CUENTA_DISPONIBLE){pintarCampana();cargarPublicosCampana();}
+   });
    if(pideAvisos)abrirAvisosPedido();
    return;
   }
@@ -6496,7 +6646,8 @@ const Cuenta = (function(){
  return {abrir:abrir,abrirGestion:abrirGestion,pintarVigilar:pintarVigilar,
          actualizarMovil:pintaMovil,hay:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&!!ses,
          uid:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&ses&&ses.uid,
-         avisosSinLeer:avisosSinLeer,abrirAvisos:abrirAvisos,irAPerfilAvisos:irAPerfilAvisos,
+         avisosSinLeer:avisosSinLeer,abrirAvisos:abrirAvisos,irAPerfilAvisos:irAPerfilAvisos,abrirCampana:abrirCampana,
+         hayAvisosVistosAqui:hayAvisosVistosAqui,olvidarAvisosVistosAqui:olvidarAvisosVistosAqui,
          token:()=>identidadConfirmada&&ses?testigo():Promise.resolve(null)};
 })();
 
@@ -7078,9 +7229,13 @@ const Movil = (function(){
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
   if(accion.dataset.movilAction==='borrar-guardados'){
    e.preventDefault();
-   if(!Favoritos.total()){avisar('No hay nada guardado en este navegador.');return;}
-   if(confirm('Se borrarán las empresas y ofertas guardadas en este navegador. ¿Seguimos?')){
-    Favoritos.borrar();avisar('Guardados borrados de este navegador.');
+   /* También lo que has visto de los avisos sin cuenta (21/11/2026). */
+   const vistos=typeof Cuenta!=='undefined'&&typeof Cuenta.hayAvisosVistosAqui==='function'&&Cuenta.hayAvisosVistosAqui();
+   if(!Favoritos.total()&&!vistos){avisar('No hay nada guardado en este navegador.');return;}
+   if(confirm('Se borrarán las empresas y ofertas guardadas en este navegador y qué avisos has visto sin cuenta. ¿Seguimos?')){
+    Favoritos.borrar();
+    if(typeof Cuenta!=='undefined'&&typeof Cuenta.olvidarAvisosVistosAqui==='function')Cuenta.olvidarAvisosVistosAqui();
+    avisar('Guardados borrados de este navegador.');
    }
   }
   if(accion.dataset.movilAction==='sonido'){

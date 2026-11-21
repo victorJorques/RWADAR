@@ -3586,7 +3586,8 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
   const textosPush = [...(js.match(/ const TEXTOS_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
   // Por qué no se han podido activar (12/11/2026): cada motivo, también en inglés.
   const textosActivar = [...(js.match(/ const TEXTOS_ACTIVAR_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
-  const fijos = ['Avisos, ninguno sin leer', 'Tus avisos', 'Ver tus avisos', 'Notificaciones y avisos en Perfil', 'Marcar como leídos', 'Sin leer',
+  const fijos = ['Avisos, ninguno sin leer', 'Tus avisos', 'Ver tus avisos', 'Notificaciones y avisos en Perfil', 'Sin leer',
+    'Avisos de RWAdar', 'Fichas nuevas y novedades', 'Cargando los avisos…',
     'Notificaciones en este móvil', 'Activar notificaciones en este móvil', 'Desactivar las notificaciones de este móvil', 'Ver cómo añadirla',
     'Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
     'Abre RWAdar desde el icono nuevo, entra en tu cuenta y vuelve a Perfil › Avisos.', 'Un momento…',
@@ -3622,7 +3623,31 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     js.includes("else if(t.closest('[data-push-reintentar]'))reintentarPush();") && js.includes("else if(t.closest('[data-push-entrar]'))entrarPush();") &&
     /if\(fallo==='sesion'\|\|novedadesError==='sesion'\)return 'sesion-caducada';/.test(js) &&
     /if\(fallo\|\|novedadesError\)return 'error-comprobar';/.test(js));
-  prueba('campana: botones con sesión en las dos cabeceras, número oculto al nacer, anuncio educado y hueco de las notificaciones en Perfil',
+  // 21/11/2026, la dirección: «me gustaría que los avisos salieran en Inicio arriba a la derecha, al lado
+  // del interrogante» y «al leerlas, desaparezca como que está pendiente». La campana es para todos (sin
+  // sesión, los avisos publicados, con lo visto en una clave propia del navegador que borra «Borrar lo
+  // guardado aquí»), en el móvil va justo a la izquierda del «?» y redonda como él, y sin «Marcar como
+  // leídos»: la lista de Perfil se da por vista tras 1,5 s en pantalla (en Chromium, en
+  // rwadar-acceso/campana-avisos-navegador.test.mjs).
+  const cssPlano = css.replace(/\n\s*/g, '');
+  const campanaMovil = html.indexOf('id="movilAvisos"'), ayudaMovil = html.indexOf('data-movil-action="ayuda"'), descargaMovil = html.indexOf('class="movil-cabecera-accion movil-descarga"');
+  prueba('campana para todos: sin sesión cuenta los avisos publicados con su propia clave, junto al «?» y redonda, y sin «Marcar como leídos»',
+    js.includes(" const CLAVE_LEIDOS_PUBLICOS='rwadar.avisos.leidos.publicos.v1';") &&
+    /function modoCampana\(\)\{\n  if\(identidadConfirmada&&ses\)return AVISOS_BANDEJA_DISPONIBLE\?'cuenta':'';/.test(js) &&
+    js.includes("return restauracionCuenta||!sesionResuelta?'comprobando':'publico';") &&
+    js.includes("for(const id of ['btnAvisos','movilAvisos']){const b=$(id);if(b)b.addEventListener('click',()=>abrirCampana(b));}") &&
+    js.includes("if(modo==='publico'){abrirAvisosSinCuenta(origen);return;}") &&
+    js.includes("const {status,j}=await pedirSinCuenta('/api/avisos/recientes');") &&
+    /function avisosPublicosVistos\(\)\{[\s\S]{0,400}guardarLeidosPublicos\(/.test(js) &&
+    js.includes("Cuenta.olvidarAvisosVistosAqui();") && js.includes("try{localStorage.removeItem(CLAVE_LEIDOS_PUBLICOS);}catch(e){}") &&
+    !/data-avisos-marcar|bandeja-marcar|Marcar como leídos<\/button>/.test(js + css + html) &&
+    js.includes(' const VISTA_BANDEJA_MS=1500;') && /new IntersectionObserver\(entradas=>\{\n      if\(vistaBandeja\.obs!==obs\)return;/.test(js) &&
+    js.includes('if(!vistaBandeja.obs)vistaBandeja.visible=true;') &&
+    campanaMovil > 0 && descargaMovil > campanaMovil && ayudaMovil > descargaMovil &&
+    /\.movil-cabecera-accion\.movil-campana\{margin-right:47px\}/.test(cssPlano) &&
+    /\.hdr-campana\{[^}]*border-radius:var\(--r-p\)/.test(cssPlano) &&
+    /Sin cuenta, recuerda igual qué avisos publicados has visto en la campana/.test(privacidad.replace(/\s+/g, ' ')));
+  prueba('campana: botones en las dos cabeceras (ocultos hasta que arranca la cuenta), número oculto al nacer, anuncio educado y hueco de las notificaciones en Perfil',
     /<button class="hdr-campana campana" id="btnAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
     /<button class="movil-cabecera-accion movil-campana campana" id="movilAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
     /<span class="campana-n" id="btnAvisosN" aria-hidden="true" translate="no" hidden>0<\/span>/.test(html) &&

@@ -295,10 +295,13 @@ test('en Chromium: base apagada, sin la migración 36, iPhone sin instalar e ins
     }
 
     // Desde una notificación sin sesión (?avisos=1): los avisos publicados, la baja a la vista y el número a 0.
+    // Con su propio worker: desde el 21/11/2026 cada página sin sesión pide la lista para la campana, y el
+    // servidor guarda 60 s la que vieron las de arriba (vacía).
     escenario = { recientes: [aviso(4), aviso(3, { tipo: 'ofertas' })] };
-    {
+    const conAvisos = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder });
+    try {
       const marca = { v: 1, huella, version: VERSION, idioma: 'es', origen: 'perfil', renovado: Date.now() };
-      const { contexto, pagina, errores, rastro } = await abrir(navegador, local, { viewport: { width: 360, height: 640 }, ruta: '/?avisos=1',
+      const { contexto, pagina, errores, rastro } = await abrir(navegador, conAvisos, { viewport: { width: 360, height: 640 }, ruta: '/?avisos=1',
         cfg: { permiso: 'granted', suscrito: true, marca } });
       await pagina.waitForSelector('#avisosScDialogo[open] #avisosScLista li', { timeout: 15000 });
       await pagina.waitForFunction(() => !document.getElementById('avisosScDesactivar').hidden, null, { timeout: 5000 });
@@ -315,15 +318,17 @@ test('en Chromium: base apagada, sin la migración 36, iPhone sin instalar e ins
         boton: 'Desactivar las notificaciones de este móvil' });
       assert.ok((await rastro()).some(x => x[0] === 'sw' && x[1] === 'avisos-vistos'), 'el número del service worker, a 0');
       await captura(pagina, 'avisos-1-sin-sesion-360x640.png');
-      const bajas = rpc(local, 'baja_aviso_sin_cuenta_web').length;
+      const bajas = rpc(conAvisos, 'baja_aviso_sin_cuenta_web').length;
       await pagina.click('#avisosScDesactivar');
       await pagina.waitForFunction(() => document.getElementById('avisosScResultado').textContent === 'Notificaciones desactivadas en este móvil.', null, { timeout: 10000 });
-      assert.equal(rpc(local, 'baja_aviso_sin_cuenta_web').length, bajas + 1);
+      assert.equal(rpc(conAvisos, 'baja_aviso_sin_cuenta_web').length, bajas + 1);
       assert.ok((await rastro()).some(x => x[0] === 'unsubscribe'));
       assert.equal(await pagina.evaluate(() => document.getElementById('avisosScDesactivar').hidden), true, 'ya no hay nada que desactivar');
       await captura(pagina, 'avisos-1-sin-sesion-desactivadas-360x640.png');
       assert.deepEqual(errores, []);
       await contexto.close();
+    } finally {
+      await conAvisos.cerrar();
     }
   } finally {
     await navegador.close();
@@ -457,6 +462,104 @@ test('en Chromium: ventana de novedades sin sesión: el recuadro arriba y a la v
       await contexto.close();
       await otro.cerrar();
     }
+  } finally {
+    await navegador.close();
+    await local.cerrar();
+  }
+});
+
+// 21/11/2026, la dirección: «que en la pestaña de notificaciones, al leerlas, desaparezca como que está
+// pendiente» y «me gustaría que los avisos salieran en Inicio arriba a la derecha, al lado del
+// interrogante». Sin sesión, la campana sale justo a la izquierda del «?», igual de grande, redonda y
+// oscura, con el número de avisos publicados que este navegador no ha visto. Abrirla es verlos (como un
+// chat de WhatsApp): el número baja a 0 y se guarda en rwadar.avisos.leidos.publicos.v1, y los puntos
+// de «Sin leer» se quedan mientras la lista siga abierta. «Borrar lo guardado aquí» lo olvida.
+test('en Chromium: sin sesión, la campana junto al «?» cuenta los avisos publicados, abrirla es verlos y «Borrar lo guardado aquí» lo olvida', { skip: sinNavegador, timeout: 240000 }, async () => {
+  if (CAPTURAS) fs.mkdirSync(CAPTURAS, { recursive: true });
+  escenario = { recientes: [aviso(4), aviso(3, { tipo: 'ofertas' }), aviso(2)] };
+  const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder });
+  const navegador = await playwright.chromium.launch();
+  const CLAVE = 'rwadar.avisos.leidos.publicos.v1';
+  try {
+    const { contexto, pagina, errores, rastro } = await abrir(navegador, local, { viewport: { width: 390, height: 844 } });
+    await pagina.waitForFunction(() => { const n = document.getElementById('movilAvisosN'); return !document.getElementById('movilAvisos').hidden && !n.hidden && n.textContent === '3'; }, null, { timeout: 15000 });
+    const cabecera = await pagina.evaluate(() => {
+      const b = document.getElementById('movilAvisos'), a = document.querySelector('[data-movil-action="ayuda"]');
+      const rb = b.getBoundingClientRect(), ra = a.getBoundingClientRect(), eb = getComputedStyle(b), ea = getComputedStyle(a);
+      return { aria: b.getAttribute('aria-label'), hueco: Math.round(ra.left - rb.right), mismaFila: Math.abs(ra.top - rb.top) < 1,
+        tamano: [rb.width, rb.height], tamanoAyuda: [ra.width, ra.height], mismoRadio: eb.borderRadius === ea.borderRadius,
+        mismoFondo: eb.backgroundColor === ea.backgroundColor, ayudaALaDerecha: ra.right <= innerWidth && innerWidth - ra.right <= 24,
+        sinDesborde: document.documentElement.scrollWidth <= innerWidth, trazo: b.querySelector('svg').getAttribute('stroke') };
+    });
+    assert.deepEqual(cabecera, { aria: 'Avisos, 3 sin leer', hueco: 3, mismaFila: true, tamano: [44, 44], tamanoAyuda: [44, 44], mismoRadio: true,
+      mismoFondo: true, ayudaALaDerecha: true, sinDesborde: true, trazo: 'currentColor' });
+    assert.equal(rpc(local, 'avisos_publicos').length, 1, 'una sola lectura de los avisos publicados');
+    assert.equal(rpc(local, 'mis_avisos_recientes').length, 0, 'nada de ninguna cuenta');
+    assert.ok((await rastro()).some(x => x[0] === 'sw' && x[1] === 'avisos-pendientes' && x[2] === 3), 'el service worker sabe el número');
+    await captura(pagina, 'campana-sin-cuenta-cabecera-390.png');
+
+    // Al pulsarla, la lista con los no vistos marcados, su «Abrir» y la baja; abrirla ya es verlos.
+    await pagina.click('#movilAvisos');
+    await pagina.waitForSelector('#avisosScDialogo[open] #avisosScLista li', { timeout: 10000 });
+    await pagina.waitForFunction(() => document.getElementById('movilAvisosN').hidden, null, { timeout: 5000 });
+    const lista = await pagina.evaluate(clave => {
+      const d = document.getElementById('avisosScDialogo');
+      return { titulo: document.getElementById('avisosScDialogoTit').textContent, nuevos: d.querySelectorAll('li.nuevo').length,
+        sinLeer: d.querySelectorAll('li.nuevo .solo-lector').length, abrir: [...d.querySelectorAll('#avisosScLista li a')].map(a => a.textContent),
+        baja: document.getElementById('avisosScBaja').textContent, perfil: d.querySelector('[data-avisos-sc-perfil]').textContent,
+        aria: document.getElementById('movilAvisos').getAttribute('aria-label'), guardado: JSON.parse(localStorage.getItem(clave) || '[]').sort(),
+        cuentas: Object.keys(localStorage).filter(k => k.startsWith('rwadar.avisos.leidos.v1:')) };
+    }, CLAVE);
+    assert.deepEqual(lista, { titulo: 'Avisos de RWAdar', nuevos: 3, sinLeer: 3, abrir: ['Abrir', 'Abrir', 'Abrir'],
+      baja: '¿No quieres estos avisos? Desactívalos aquí o en los ajustes del móvil.', perfil: 'Notificaciones y avisos en Perfil',
+      aria: 'Avisos, ninguno sin leer', guardado: ['96', '97', '98'], cuentas: [] }, 'los puntos se quedan mientras sigue abierta');
+    const r = await rastro();
+    assert.ok(r.some(x => x[0] === 'sw' && x[1] === 'avisos-vistos'), 'el service worker y sus notificaciones, a 0');
+    await captura(pagina, 'campana-sin-cuenta-lista-390.png');
+    await pagina.keyboard.press('Escape');
+    await pagina.click('#movilAvisos');
+    await pagina.waitForSelector('#avisosScDialogo[open] #avisosScLista li', { timeout: 10000 });
+    assert.equal(await pagina.evaluate(() => document.querySelectorAll('#avisosScDialogo li.nuevo').length), 0, 'al volver a abrirla ya están vistos');
+    // «Notificaciones y avisos en Perfil» lleva a Perfil › Avisos.
+    await pagina.click('#avisosScDialogo [data-avisos-sc-perfil]');
+    await pagina.waitForFunction(() => !document.getElementById('avisosScDialogo').open, null, { timeout: 5000 });
+    assert.equal(await pagina.evaluate(() => document.activeElement && document.activeElement.id), 'perfilAvisosTit');
+
+    // Lo visto se recuerda al volver.
+    const pedida = pagina.waitForResponse(res => res.url().endsWith('/api/avisos/recientes'), { timeout: 15000 });
+    await pagina.reload({ waitUntil: 'load' });
+    await pedida;
+    await pagina.waitForTimeout(400);
+    assert.deepEqual(await pagina.evaluate(() => [document.getElementById('movilAvisos').hidden, document.getElementById('movilAvisosN').hidden,
+      document.getElementById('movilAvisos').getAttribute('aria-label')]), [false, true, 'Avisos, ninguno sin leer']);
+
+    // «Borrar lo guardado aquí» (Perfil) lo olvida: vuelven a contar.
+    await pagina.click('#movilTabMas');
+    pagina.once('dialog', d => d.accept());
+    await pagina.click('[data-movil-action="borrar-guardados"]');
+    await pagina.waitForFunction(() => document.getElementById('movilAvisosN').textContent === '3' && !document.getElementById('movilAvisosN').hidden, null, { timeout: 5000 });
+    assert.equal(await pagina.evaluate(clave => localStorage.getItem(clave), CLAVE), null);
+    // En inglés, la etiqueta con número.
+    await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('en'));
+    await pagina.waitForFunction(() => document.getElementById('movilAvisos').getAttribute('aria-label') === 'Notices, 3 unread', null, { timeout: 5000 });
+    await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
+    assert.deepEqual(errores, []);
+    await contexto.close();
+
+    // Escritorio: la campana redonda y oscura en la cabecera, también sin sesión.
+    const escritorio = await abrir(navegador, local, { dispositivo: 'Desktop Chrome', viewport: { width: 1366, height: 900 } });
+    await escritorio.pagina.waitForFunction(() => document.getElementById('btnAvisosN').textContent === '3' && !document.getElementById('btnAvisosN').hidden, null, { timeout: 15000 });
+    const hdr = await escritorio.pagina.evaluate(() => { const b = document.getElementById('btnAvisos'), r = b.getBoundingClientRect(), e = getComputedStyle(b);
+      return { aria: b.getAttribute('aria-label'), tamano: [r.width, r.height], redonda: parseFloat(e.borderRadius) >= 22, derecha: r.left > innerWidth / 2,
+        unaLinea: document.querySelector('.hdr-nav').getBoundingClientRect().height <= 48 }; });
+    assert.deepEqual(hdr, { aria: 'Avisos, 3 sin leer', tamano: [44, 44], redonda: true, derecha: true, unaLinea: true });
+    await captura(escritorio.pagina, 'campana-sin-cuenta-escritorio-1366.png');
+    await escritorio.pagina.click('#btnAvisos');
+    await escritorio.pagina.waitForSelector('#avisosScDialogo[open] #avisosScLista li.nuevo', { timeout: 10000 });
+    await escritorio.pagina.waitForFunction(() => document.getElementById('btnAvisosN').hidden, null, { timeout: 5000 });
+    await captura(escritorio.pagina, 'campana-sin-cuenta-escritorio-lista-1366.png');
+    assert.deepEqual(escritorio.errores, []);
+    await escritorio.contexto.close();
   } finally {
     await navegador.close();
     await local.cerrar();

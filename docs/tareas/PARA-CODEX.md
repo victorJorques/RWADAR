@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de noviembre de 2026 (39 · web) · Claude · Campana de avisos para todos, junto al «?», y fuera «Marcar como leídos» · RAMA SIN UNIR (`claude/campana-avisos-web-2026-11-21`) · sin publicar
+
+- **Encargo de la dirección (21/11):** «que en la pestaña de notificaciones, al
+  leerlas, desaparezca como que está pendiente» y «me gustaría que los avisos
+  salieran en Inicio arriba a la derecha, al lado del interrogante». Esta
+  entrada es la parte de la **web**; la de la app va en su propia rama.
+- **Campana para todos** (`rwadar-site/assets/rwadar-20260820.js`): con sesión,
+  los avisos de la cuenta como antes; sin sesión, los avisos publicados
+  (`/api/avisos/recientes`, la lista de `?avisos=1`), pedidos solo cuando se
+  sabe que no hay sesión. Mientras se comprueba la sesión, la campana sale sin
+  número. Lo visto sin cuenta se guarda en el navegador en la clave nueva
+  `rwadar.avisos.leidos.publicos.v1` (solo números de aviso, aparte de las de
+  cada cuenta); la borra «Borrar lo guardado aquí» de Perfil y lo cuenta la
+  privacidad (fila «Avisos leídos y número del icono»).
+- **Sitio:** en el móvil, justo a la izquierda del «?», del mismo tamaño y
+  forma; en escritorio, redonda y oscura en la cabecera. Globo 1-9 y «9+».
+- **Abrirla es verlos** (con o sin cuenta): el número, el icono y el service
+  worker bajan a 0 y los puntos de «Sin leer» se quedan mientras la lista sigue
+  abierta. Sin sesión, al cargar con 0 no se borra ninguna notificación.
+- **Fuera «Marcar como leídos»** de la bandeja de la cuenta: se da por vista
+  cuando lleva 1,5 s en pantalla (IntersectionObserver; sin él, 1,5 s después
+  de pintarse). El globo de la pestaña Perfil sigue contando solo los de la
+  cuenta.
+- **Pruebas:** `npm run test:web` 733 correctas, 0 fallidas; Chromium nuevo
+  (sin sesión: campana junto al «?», lista, vistos, recarga, borrar, inglés y
+  escritorio) y el de la cuenta ampliado (Perfil marca a los 1,5 s).
+- **Pendiente:** unir con la rama de la app, rehacer el sello de `rwadar-site`,
+  publicar la web y lanzar «Avisar novedad» (orden permanente) cuando se
+  publique.
+
+---
+
 ## 21 de noviembre de 2026 (38) · Claude · Cierre de la limpieza: ramas borradas, migración 39 aplicada y OTA de la app · HECHO
 
 - **Orden de la dirección (21/11):** «Ábrela en móvil y lanza lo que se necesite
