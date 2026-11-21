@@ -1,7 +1,7 @@
 {
   "version": 1,
   "fecha": "2026-11-21",
-  "generado": "2026-11-21T15:31:30.661Z",
+  "generado": "2026-11-21T16:52:17.684Z",
   "fuentes": [
     {
       "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
@@ -9,7 +9,7 @@
       "tipo": "application/pdf",
       "bytes": 134678,
       "sha256": "6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820",
-      "horaUtc": "2026-11-21T15:31:23.779Z",
+      "horaUtc": "2026-11-21T16:52:10.662Z",
       "error": null
     },
     {
@@ -18,7 +18,16 @@
       "tipo": "application/pdf",
       "bytes": 149664,
       "sha256": "d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355",
-      "horaUtc": "2026-11-21T15:31:27.221Z",
+      "horaUtc": "2026-11-21T16:52:14.127Z",
+      "error": null
+    },
+    {
+      "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 51355,
+      "sha256": "3249436a9c75ddc82fe72d452beb78e617c031d130f04531531a6276344e69ca",
+      "horaUtc": "2026-11-21T16:52:10.770Z",
       "error": null
     },
     {
@@ -27,16 +36,7 @@
       "tipo": "application/pdf",
       "bytes": 2208721,
       "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
-      "horaUtc": "2026-11-21T15:31:23.840Z",
-      "error": null
-    },
-    {
-      "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
-      "http": 200,
-      "tipo": "application/pdf",
-      "bytes": 2824126,
-      "sha256": "757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599",
-      "horaUtc": "2026-11-21T15:31:23.842Z",
+      "horaUtc": "2026-11-21T16:52:10.772Z",
       "error": null
     },
     {
@@ -45,7 +45,7 @@
       "tipo": "application/pdf",
       "bytes": 97216,
       "sha256": "e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727",
-      "horaUtc": "2026-11-21T15:31:30.066Z",
+      "horaUtc": "2026-11-21T16:52:16.974Z",
       "error": null
     }
   ]

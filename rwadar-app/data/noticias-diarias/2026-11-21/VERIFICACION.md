@@ -1,73 +1,87 @@
 # Verificación de las noticias del 21/11/2026 · pase 1
 
-**Veredicto: con cambios** (dos correcciones de un tiempo verbal en una noticia; el resto, confirmado).
+**Veredicto: conforme.** Las cinco noticias están confirmadas y no hay correcciones.
 
-- Edición verificada: `editor/noticias-2026-11-21.json`, SHA-256 `f99c5c763bd37bec128dea8493560251534aa09ce60663d8b8667059ed7f84d2`.
-- Guía leída: `rwadar-editorial-source/noticias/GUIA-TITULARES.md`.
-- Abrí yo mismo las cinco fuentes el 21/11/2026 entre las 15:24:59 y las 15:25:04 UTC. Las cinco responden con HTTP 200 y dan la misma huella que el inventario del programa y que lo publicado ayer.
-- La edición es la publicada ayer con dos cambios: la fecha de consulta (21/11) y la foto de portada (`alerta-fraude` pasa a `alerta-fraude-3`, como pide la guía § 4.3 si la portada repite foto).
+- Edición verificada: `editor/noticias-2026-11-21.json`, SHA-256 `f76ee267ba95c5c72e51c96138b5925e388f4f475d237f3739c4a706c83a7b37`.
+- Guía leída: `GUIA-TITULARES.md`, SHA-256 `ef8916de157acf74be281491f5a1e5e4bc0a4b3267ea1fdf2f6b677745468edb` (la misma que cita `titulares.json`).
+- He abierto yo mismo las cinco fuentes el 21/11/2026 entre las 16:52:55 y las 16:52:59 UTC.
 
-| # | Noticia | Veredicto |
-| --- | --- | --- |
-| 1 | Oro y acciones sin folleto: tres avisos llegan de Alemania | confirmada |
-| 2 | 9 firmas sin registro; dos imitan a firmas registradas | confirmada |
-| 3 | Robinhood: el emisor podrá restarte Stock Tokens por costes | confirmada |
-| 4 | Mercados tokenizados: los 27 piden un tope 50 veces mayor | confirmada |
-| 5 | España ya tiene dos mercados de valores tokenizados | corregir (resumen, castellano e inglés) |
+## Resumen
 
-Comprobado en las cinco: titulares de 60 caracteres o menos en las dos lenguas (58/55, 54/49, 59/57, 57/55 y 51/46), sin punto final, sin promesas ni exageraciones, sin «¡» ni «!». Sin personas: leí entero cada texto que se publica (titular, resumen, «por qué importa» y título informativo, en castellano y en inglés) y cada cita. Las cinco fotos son de la biblioteca, distintas entre sí y del tema de cada noticia.
+| # | Noticia | Fecha | Foto | Veredicto |
+| --- | --- | --- | --- | --- |
+| 1 | Oro y acciones sin folleto: tres avisos llegan de Alemania | 18/11/2026 | alerta-fraude-3 | confirmada |
+| 2 | 9 firmas sin registro; dos imitan a firmas registradas | 16/11/2026 | pago-online | confirmada |
+| 3 | xStocks lanza tokens de más de 200 empresas europeas (nueva) | 11/11/2026 | acciones-eeuu | confirmada |
+| 4 | Robinhood: el emisor podrá restarte Stock Tokens por costes | 09/11/2026 | acciones-movil | confirmada |
+| 5 | España ya tiene dos mercados de valores tokenizados | 28/10/2026 | bolsa-madrid | confirmada |
 
----
+Qué cambia frente a lo publicado ahora: las noticias 1, 2, 4 y 5 son idénticas, letra a letra, a las de `produccion-noticias-v2.json`. Entra la de xStocks y sale la del Consejo de la UE sobre el tope del régimen piloto (del 04/11; su fuente sigue respondiendo igual, así que sale por decisión editorial, no por un fallo).
 
-## 1 · Oro y acciones sin folleto: tres avisos llegan de Alemania · confirmada
+Comprobaciones de toda la edición:
+
+- Titulares: todos de 60 caracteres o menos en las dos lenguas (el más largo, 59), sin punto final, sin «¡» ni «!» y sin palabras de promesa o exageración.
+- Fotos: cinco distintas, cada una de su tema en `fotos.json`. La de portada (alerta-fraude-3) es la misma que lleva hoy esa misma noticia en portada. La regla de cambiarla está pensada para una portada nueva, así que no la cambio.
+- Fechas: cada una es la del documento de la fuente. Ninguna es de hoy ni de ayer, así que ninguna puede salir como «Hoy».
+- Sin personas: he leído entero cada texto publicado (titular, resumen, «por qué importa» y título informativo, en castellano y en inglés) y cada cita. Solo salen organismos, empresas e índices (CNMV, BaFin, FMA, Kraken, Payward, Robinhood, Bit2Me, Securitize, DAX). La nota de xStocks trae una declaración firmada por un directivo y el suplemento de Robinhood, una firma: ninguna de las dos se usa.
+- Lo que falta: el barrido no trae nada de hoy ni de ayer del sector. Lo único nuevo es un convenio del BOE ajeno al sector, y la CNMV y la ESMA no tienen nada nuevo.
+
+## Noticia a noticia
+
+### 1 · Oro y acciones sin folleto: tres avisos llegan de Alemania — confirmada
 
 - URL: https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d
-- Hora: 2026-11-21T15:24:59Z · HTTP 200 · SHA-256 `6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820`
+- Hora: 2026-11-21T16:52:55Z · HTTP 200 · PDF de 134.678 bytes
+- SHA-256: `6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820` (igual que el inventario)
 - Cita: «BAFIN ha prohibido a Uniox Gold LLC la oferta al público de oro físico por no haber publicado EL FOLLETO INFORMATIVO O DOCUMENTO EQUIVALENTE REQUERIDO POR LA NORMATIVA DE VALORES.»
-- El documento es del 18 de noviembre de 2026 y recoge tres avisos del supervisor alemán: una oferta de acciones suspendida, una oferta de oro físico prohibida y una tercera con indicios de ofrecer un producto de inversión, las tres sin folleto. El resumen lo cuenta así. La CNMV dice que su web «ofrece un buscador de entidades advertidas», lo que respalda el consejo de «por qué importa».
-- Foto `alerta-fraude-3` (avisos y fraude): encaja con un aviso de riesgo. Fecha correcta. Sin personas.
+- El documento es del 18 de noviembre de 2026 y recoge tres avisos de BaFin: prohíbe ofrecer oro físico, suspende una oferta de acciones y tiene indicios de que se ofrece un producto de inversión sin folleto. Todo eso coincide con el resumen. El buscador de entidades advertidas que se recomienda está en la fuente. Foto de avisos y fraude, propia para un aviso de riesgo.
 
-## 2 · 9 firmas sin registro; dos imitan a firmas registradas · confirmada
+### 2 · 9 firmas sin registro; dos imitan a firmas registradas — confirmada
 
 - URL: https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d
-- Hora: 2026-11-21T15:25:01Z · HTTP 200 · SHA-256 `d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355`
+- Hora: 2026-11-21T16:52:57Z · HTTP 200 · PDF de 149.664 bytes
+- SHA-256: `d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355` (igual que el inventario)
 - Cita: «La CNMV pone de manifiesto que dichas sociedades no figuran inscritas en el correspondiente registro de esta Comisión y, por tanto, no están autorizadas para prestar servicios de inversión u otras actividades sujetas a la supervisión de la CNMV.»
-- El aviso es del 16 de noviembre de 2026. He contado las entidades de la lista: son 9, y dos llevan la marca «(clon)»: una de una empresa de asesoramiento financiero registrada y otra de una sociedad de capital riesgo registrada. Coincide con el titular y con el resumen.
-- Foto `pago-online` (avisos y fraude; pagos): encaja con webs clonadas. Fecha correcta. Sin personas.
+- El documento es del 16 de noviembre de 2026. He contado las entidades: son 9, y dos llevan la marca «clon». Una no guarda relación con una empresa de asesoramiento financiero registrada y la otra, con una sociedad de capital riesgo registrada, como dice el resumen. Foto propia de avisos y fraude, que no se repite.
 
-## 3 · Robinhood: el emisor podrá restarte Stock Tokens por costes · confirmada
+### 3 · xStocks lanza tokens de más de 200 empresas europeas — confirmada (nueva)
+
+- URL: https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain
+- Hora: 2026-11-21T16:52:58Z · HTTP 200 · HTML de 51.355 bytes
+- SHA-256: `5adbaf19336bc991679752f970e30b621186090aded652aa12e4637adca37e78`. El SHA-256 cambia en cada descarga: el sitio cambia el código del enlace «Contact» en cada visita. El inventario recibió el mismo tamaño y el mismo texto.
+- Cita: «xStocks has launched its first regional markets, bringing tokenized equities for 200+ of the largest UK and EU-listed companies, and every constituent of the DAX 40. [...] Each xStock is backed 1:1 by the underlying share but represents economic exposure only, not direct ownership.»
+- La página está fechada el 11 de noviembre de 2026. La fuente respalda cada dato:
+  - «más de 200», «las 40 del DAX» y el respaldo 1:1 están en la cita;
+  - solo da exposición económica, no la propiedad directa;
+  - se ofrecen en Kraken y en socios de la «xStocks Alliance»;
+  - son los primeros mercados de fuera de EE. UU.;
+  - en la UE los ofrece una firma del grupo autorizada por el supervisor de Chipre;
+  - la nota dice: «xStocks are not, nor will they be registered with any local securities regulators»;
+  - el pie de la página pone xStocks entre los servicios de Payward, la empresa de Kraken.
+- El titular tiene verbo activo, el sujeto exacto y la cifra de la fuente. Foto de acciones tokenizadas: un escritorio con gráficos genéricos, nada que la ate a EE. UU. No se repite. Ninguna persona: la declaración del directivo que trae la nota no se usa.
+
+### 4 · Robinhood: el emisor podrá restarte Stock Tokens por costes — confirmada
 
 - URL: https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf
-- Hora: 2026-11-21T15:25:02Z · HTTP 200 · SHA-256 `978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9`
-- Cita: «Further, if fees or costs are charged to the Issuer in connection with the Underlying (for example, where the Underlying is a depositary receipt that does not pay dividends), then the Issuer may pass-through any such fees or costs to Investors. Such fees will be deducted by reducing the number of Products held by the Investor.»
-- El suplemento tiene fecha del 09/11/2026 y lo aprobó la FMA de Liechtenstein ese mismo día. Cambia también las condiciones de los productos ya emitidos, con efecto desde esa fecha. Los productos son valores de deuda en forma de tokens. El folleto base pidió notificarse a España, entre otros países. La versión consolidada del folleto, con fecha del 25 de junio de 2026, ya dice que el emisor prevé sumar a la filial europea de Robinhood como participante autorizado, y el suplemento no añade esa frase. Todo lo que dicen el resumen y «por qué importa» consta en el documento.
-- Un matiz que no cambia el veredicto: el documento dice que los productos van ligados a «equity instruments or ETPs», sin limitarlos a EE. UU. La referencia a EE. UU. del resumen casa con los productos que hay hoy, que usan la retención fiscal de EE. UU. y precios en dólares.
-- Foto `acciones-movil` (acciones tokenizadas): encaja. Fecha correcta. Sin personas: el documento trae firmas, pero la noticia no las recoge.
+- Hora: 2026-11-21T16:52:58Z · HTTP 200 · PDF de 2.208.721 bytes
+- SHA-256: `978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9` (igual que el inventario)
+- Cita: «the Issuer is permitted to pass on certain fees and costs charged to the Issuer in connection with an Underlying to Investors, which may include proportionately reducing the number of Products held by such Investors»
+- El documento respalda cada dato:
+  - el suplemento lleva fecha del 09/11/2026 y la FMA de Liechtenstein lo aprobó ese día;
+  - la nueva condición 5.3 deja repercutir costes «resulting in a decrease in the number of Products»;
+  - el cambio vale para las series ya emitidas desde la fecha del suplemento;
+  - el folleto se notifica, entre otros países, a España;
+  - los productos son «debt securities»;
+  - la frase de que el emisor prevé incorporar a la filial europea de Robinhood como participante autorizado está en la versión del folleto del 25 de junio que acompaña al suplemento, no entre los cambios.
+- Una observación que no cambia el veredicto: el documento no dice literalmente «de EE. UU.». Lo respaldan su apartado fiscal (retención de EE. UU. sobre dividendos, sección 871(m)) y los mercados de referencia que cita primero (NASDAQ, NYSE). La noticia ya estaba publicada así, con la misma fuente.
+- Foto de acciones tokenizadas, distinta de la de xStocks.
 
-## 4 · Mercados tokenizados: los 27 piden un tope 50 veces mayor · confirmada
-
-- URL: https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf
-- Hora: 2026-11-21T15:25:02Z · HTTP 200 · SHA-256 `757b8851957af55c035cca5651b8d2d9a5a61f43036ec780bf06af999a498599`
-- Cita: «an aggregate cap that limits the total value of financial instruments intermediated by a DLT market infrastructure of EUR 6 billion. Those activity thresholds have made it difficult for certain large market participants to use the Pilot framework [...]. Therefore, all asset-specific caps should be withdrawn, whereas the aggregate cap should be raised to EUR 300 billion.»
-- El texto de la orientación general (nota de la Presidencia del 30/10/2026) quita los topes por activo y sube el tope total de 6.000 a 300.000 millones de euros. La cuenta 300.000 / 6.000 da 50 veces.
-- La fecha (04/11/2026) sale del segundo documento que cita la fuente, que también abrí: la lista de puntos «A» del ECOFIN, https://data.consilium.europa.eu/doc/document/ST-14900-2026-INIT/en/pdf (2026-11-21T15:27:35Z, HTTP 200, SHA-256 `54f5eeefda10ae00b309e1996590999152cc10e77bf0449e2ac1f2da58eb2cb7`). Dice «General approach approved by Coreper. Part 2, on 04.11.2026». La noticia aclara bien que es una posición negociadora y no una ley.
-- Foto `instituciones-ue-2` (regulación en la UE): encaja. Fecha correcta. Sin personas.
-
-## 5 · España ya tiene dos mercados de valores tokenizados · corregir
+### 5 · España ya tiene dos mercados de valores tokenizados — confirmada
 
 - URL: https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d
-- Hora: 2026-11-21T15:25:04Z · HTTP 200 · SHA-256 `e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727`
-- Cita: «La infraestructura, denominada Bit2MeSTX, será operada por Bit2Me Security Tokens Exchange STX, A.V., S.A. [...] En Bit2MeSTX se podrán negociar acciones y bonos representados en TRD.»
-- El titular es correcto. Abrí la lista de ESMA de infraestructuras DLT autorizadas, https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf (2026-11-21T15:27:54Z, HTTP 200, SHA-256 `8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc`). Trae exactamente dos en España, las dos de la CNMV: la de Securitize, desde el 26/11/2025, y Bit2Me STX, desde el 27/10/2026.
-- Lo que falla es el resumen. Dice «Lo opera Bit2Me…» («It is run by…»), en presente, y la fuente dice «será operada»: está autorizada pero aún no funciona. La prensa del sector que encontré lo confirma: espera empezar a operar en las próximas semanas, con una primera emisión prevista para diciembre, para inversores que cumplan ciertos requisitos. Eso cuadra con el «no consta» de «por qué importa», que se queda como está.
-- Correcciones (dos, exactas):
-  - `resumen`: «Lo opera Bit2Me Security Tokens Exchange STX, A.V.» → «Lo operará Bit2Me Security Tokens Exchange STX, A.V.»
-  - `en.resumen`: «It is run by Bit2Me Security Tokens Exchange STX, A.V.» → «It will be run by Bit2Me Security Tokens Exchange STX, A.V.»
-- Foto `bolsa-madrid` (bolsas y mercados): encaja. Fecha correcta (nota del 28/10/2026). Sin personas.
-
----
-
-## «Hoy» y lo que falta
-
-- **Hoy**: ninguna noticia es del 20 ni del 21 de noviembre, así que ninguna puede salir como «Hoy». Correcto.
-- **Lo que falta**: el barrido no trae nada nuevo del sector desde el 20/11. La CNMV y ESMA no tienen nada nuevo. El BOE trae un convenio de investigación, que no es del sector. El Consejo, el BCE y la EBA no traen nada del sector, y la Comisión no da elementos. La nota de ESMA del 18/11 sobre la supervisión de los proveedores de datos no es para particulares. No echo nada en falta.
+- Hora: 2026-11-21T16:52:59Z · HTTP 200 · PDF de 97.216 bytes
+- SHA-256: `e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727` (igual que el inventario)
+- Cita: «El Consejo de la CNMV ha autorizado el Sistema de Negociación y Liquidación, SNL, basado en Tecnología de Registros Distribuidos, TRD [...] En Bit2MeSTX se podrán negociar acciones y bonos representados en TRD.»
+- La nota es del 28 de octubre de 2026. Quién lo operará, qué se podrá negociar y que es del régimen piloto (Reglamento (UE) 2022/858) coinciden con la fuente.
+- El «dos» suma la autorización anterior de Securitize, que no está en esta nota. Está documentada en público y la guía usa este mismo titular como ejemplo bueno. En las notas de la CNMV desde el 28/10 no aparece otra autorización de este tipo, así que la cifra sigue valiendo.
+- «No consta» es una afirmación prudente, no un «no hay». Foto de bolsas y mercados, propia.

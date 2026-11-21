@@ -52,6 +52,30 @@
       "imagen": "pago-online"
     },
     {
+      "id": "xstocks-200-empresas-reino-unido-ue",
+      "fecha": "2026-11-11",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "xStocks lanza tokens de más de 200 empresas europeas",
+      "resumen": "xStocks, del grupo de Kraken (Payward), ha lanzado tokens de más de 200 grandes empresas que cotizan en Reino Unido y la UE, entre ellas las 40 del índice alemán DAX. Cada token está respaldado 1:1 por la acción, pero solo da exposición económica, no la propiedad. Se ofrecen en Kraken y en plataformas socias.",
+      "porQueImporta": "Son los primeros xStocks de fuera de EE. UU. y no te hacen accionista. En la UE los ofrece una firma del grupo autorizada en Chipre, y la nota dice que los xStocks no están ni estarán registrados ante supervisores de valores locales.",
+      "en": {
+        "titulo": "xStocks launches tokens of over 200 European companies",
+        "resumen": "xStocks, part of the Kraken group (Payward), has launched tokens for more than 200 large companies listed in the UK and the EU, including all 40 in Germany's DAX index. Each token is backed 1:1 by the share but gives economic exposure only, not ownership. They are offered on Kraken and partner platforms.",
+        "porQueImporta": "These are the first xStocks outside the US and they do not make you a shareholder. In the EU a group firm authorised in Cyprus offers them, and the notice says xStocks are not, and will not be, registered with local securities regulators.",
+        "tituloInformativo": "xStocks, part of the Kraken group, launches tokens linked to over 200 UK and EU shares, including all 40 DAX companies"
+      },
+      "fuente": {
+        "nombre": "xStocks, nota del 11/11/2026 sobre sus primeros mercados fuera de EE. UU. (emisor: Backed Assets (JE) Limited)",
+        "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-21",
+      "tituloInformativo": "xStocks, del grupo de Kraken, lanza tokens ligados a más de 200 acciones de Reino Unido y la UE, entre ellas las 40 del DAX",
+      "imagen": "acciones-eeuu"
+    },
+    {
       "id": "robinhood-stock-tokens-suplemento",
       "fecha": "2026-11-09",
       "seccion": "importante",
@@ -74,30 +98,6 @@
       "consultadaEl": "2026-11-21",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
       "imagen": "acciones-movil"
-    },
-    {
-      "id": "consejo-ue-tope-regimen-piloto-dlt",
-      "fecha": "2026-11-04",
-      "seccion": "importante",
-      "categoria": "regulacion",
-      "ambito": "UE",
-      "titulo": "Mercados tokenizados: los 27 piden un tope 50 veces mayor",
-      "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
-      "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
-      "en": {
-        "titulo": "Tokenised markets: EU states want a cap 50 times higher",
-        "resumen": "Member states' ambassadors (Coreper) approved the Council's position: drop the per-asset caps and raise to €300bn the maximum value each DLT market infrastructure can record or trade.",
-        "porQueImporta": "Today's cap is €6bn and holds back large players. This is a negotiating position, not law: it still has to be agreed with the European Parliament.",
-        "tituloInformativo": "EU countries want to raise the DLT Pilot Regime cap from €6bn to €300bn"
-      },
-      "fuente": {
-        "nombre": "Consejo de la UE, orientación general (ST 13779/1/26 REV 1) y puntos «A» del ECOFIN (ST 14900/26)",
-        "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-21",
-      "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
-      "imagen": "instituciones-ue-2"
     },
     {
       "id": "cnmv-autoriza-bit2me-stx",
