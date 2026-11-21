@@ -21,12 +21,12 @@ commits.
 
 | | |
 |---|---|
-| Revisión nueva | `753b4cc9-3c01-e879-ba96-05dc3cf95b05` (§9) |
-| Huella | `753b4cc93c01e879ba9605dc3cf95b05d6dd506a5679d58f41677766f3d145e3` |
+| Revisión nueva | `fe0cfaa8-9682-b729-69e2-9bb4f8587ce9` (§9) |
+| Huella | `fe0cfaa89682b72969e29bb4f8587ce9c27f249e7e7f5b181292d91887b43966` |
 | `aplicar-y-aprobar.sql` antes de §9 | `0486c6fd7104e93e1265f654d4870308b9b3abbf5e6dba0192bd26f8e8984d40` (revisión `508d0366…`, auditada conforme) |
-| `aplicar-y-aprobar.sql` (SHA-256) | `1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd` |
-| `catalogo.sql` (SHA-256) | `554bae00ca319c05a9cd26296b932a203abf12480988205aece2fdc3ba56b39d` |
-| `revision.json` (SHA-256) | `6f98903144ce84d6aca8f4661dfe45c99539a40d539ec631b43d3a725bfb87d1` |
+| `aplicar-y-aprobar.sql` (SHA-256) | `e9a671b3ab43ca5b650dc709b6875dbe18fe732eeb85ae31baff64a3eb1c3206` |
+| `catalogo.sql` (SHA-256) | `e29c35ee2a21294e7e13505eaf72016270c3947668512751a9e21538b107b419` |
+| `revision.json` (SHA-256) | `90ff355e3636e3bc793b0b9fc366ac58aa1841e3e25d925985078ac3aaff43a8` |
 | Vigencia | verificadas el 21/11/2026, 7 días: **último día el 28/11/2026**; la guarda del SQL no deja aplicarla después |
 | Ofertas y plataformas | las mismas 22 (8 principales, 13 de reventa, 1 en camino) y 25; sin altas ni retiradas |
 | Cambios | 425 en las 22 fichas, 413 con su prueba; 14 tarjetas cambian (solo el mínimo) |
@@ -395,3 +395,11 @@ cambia (la oferta de Schwarzer Weg 18, con esas cifras y nada más), PGlite
 correcto y secretos sin hallazgos; «sql_cambiado_falta_auditor». Revisión
 `753b4cc9-3c01-e879-ba96-05dc3cf95b05`, SQL `1f892b76…75e9bd`. El auditor
 independiente de este cambio está en `VERIFICACION-ENTREGA.md` §9.
+
+**Arreglo del hallazgo H1 del auditor (22:52 UTC).** En la «Venta más barata» y
+la «Orden de venta de menor importe» de Schwarzer Weg 18, el alcance decía la
+hora de la lectura de las 17:41–17:42 UTC; ahora dice «leído el 21/11/2026
+(22:38 UTC)». Rehecho con el motor: mismos SHA-256 las dos veces; `comprobar`
+correcto; `auditar` frente a `0486c6fd…4d40`: mismo inventario, solo cambia
+la sentencia de Schwarzer Weg 18 (las cifras de arriba y esa hora), PGlite
+correcto y secretos sin hallazgos. Revisión final `fe0cfaa8-9682-b729-69e2-9bb4f8587ce9`, SQL `e9a671b3ab43ca5b650dc709b6875dbe18fe732eeb85ae31baff64a3eb1c3206`.

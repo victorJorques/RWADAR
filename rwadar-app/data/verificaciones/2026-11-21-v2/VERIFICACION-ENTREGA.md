@@ -243,3 +243,138 @@ aviso nuevo del número fiscal, 8 veces.
   - si Spiko publica VL nueva antes de aplicar (el lunes 23/11 por la tarde),
     rehacer sus cifras;
   - aplicar antes del 29/11.
+
+## 9. Auditor del cambio de antes de aplicar (Schwarzer Weg 18)
+
+Auditor independiente: no preparé ni corregí nada de esta entrega. 21/11/2026,
+de 22:43 a 22:50 UTC. Sin tocar Supabase ni ningún servicio en línea salvo la
+lectura de la API pública de Brickwise, sin publicar y sin commits. Mis guiones
+y salidas están en `<scratchpad>/auditor-sw18/`, y la lectura de la API en
+`<scratchpad>/auditor-sw18-api-224637/`.
+
+**Veredicto: no conforme, por un solo hallazgo pequeño (H1).** El cambio de
+cifras es exacto y no toca nada más, pero deja mal la hora de lectura que ve el
+usuario en dos de esas cifras.
+
+### 1. El motor, ejecutado por mí (sin `--escribir`)
+
+Orden: `motor.mjs auditar 2026-11-21 --antes=<scratchpad>/sql-auditado-2026-11-21
+--revisado=0486c6fd…4d40 --secretos=<scratchpad>/gitleaks/gitleaks
+--exigir-secretos` (22:44 UTC). Salida 0. Lo que dio:
+
+- La copia auditada sigue intacta: `aplicar-y-aprobar.sql` da `0486c6fd…4d40`,
+  igual que en el commit `7ffe31a7` («copiaEsLaRevisada»: sí).
+- Rehecho desde `decisiones.json`: reproducible y la carpeta igual a lo que
+  sale de él.
+- Mismo inventario: 288 sentencias (35 alerta_fuentes, 25 alertas, 69 fuentes,
+  22 ofertas, 107 plataforma_fuentes, 25 plataformas, 1 revisiones).
+- Una sola sentencia cambia: la oferta `vivienda-schwarzer-weg-18-graz`.
+- PGlite: «correcto», 18 comprobaciones y 6 casos de fallo.
+- Secretos: «sin hallazgos».
+- SHA-256 final `1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd`,
+  el esperado. Revisión `753b4cc9-3c01-e879-ba96-05dc3cf95b05`.
+- Hallazgos del motor: ninguno. Veredicto del motor:
+  «sql_cambiado_falta_auditor» (por eso esta sección).
+- Después, `git status` limpio: el motor no cambió nada en el disco.
+
+### 2. Lo que cambia en el SQL, mirado por mí
+
+Con un comparador propio, igualando solo la revisión y la huella (salen 288
+veces la revisión y 2 la huella, antes y después; la huella nueva empieza por
+la revisión nueva, como debe):
+
+- `aplicar-y-aprobar.sql`: solo cambia la línea 308 (la oferta de Schwarzer
+  Weg 18), con la misma longitud. La guarda, la aprobación y las otras 287
+  sentencias son iguales.
+- `catalogo.sql`: solo cambia la misma oferta (línea 280), con los mismos 7
+  cambios. `revision.json`: solo cambian `revisionId` y `hash`.
+
+Los 7 cambios de esa sentencia, uno a uno:
+
+| Dónde | Antes | Después | Cifra de §9 |
+|---|---|---|---|
+| Mínimo de la tarjeta | Desde 71,90 € la participación en reventa (21/11) | Desde 71,00 € … (21/11) | mínimo 71,00 € |
+| Venta más barata · 21/11/2026 | 71,90 € … (1 a ese precio, orden del 18/09/2026) | 71,00 € … (1 a ese precio, orden del 21/11/2026) | 71,00 €, 1 a ese precio, orden del 21/11/2026 |
+| Orden de venta de menor importe | 1 participación a 71,90 € (72,98 € con el 1,5 %) | 1 participación a 71,00 € (72,07 € con el 1,5 %) | 1 a 71,00 €, 72,07 € con el 1,5 % |
+| Participaciones en venta · 21/11/2026 | 297 | 298 | 298 |
+
+En el SQL nuevo ya no queda «71,90», «72,98», «18/09» ni «297» en ninguna
+parte. La mejor oferta de compra sigue en 62,00 €. Ninguna otra ficha cambia.
+
+### 3. La copia del libro de órdenes de las 22:38
+
+`grupos/brickwise-a/fuentes/libro-ordenes-resumen-2026-11-21-2238.json`:
+
+- SHA-256 `298af8e9501f3527fa12cc0a5211271b24864522c8020c6983869a4fbeedd4f5`,
+  el mismo que citan las 4 pruebas de `decisiones.json`. Está en Git
+  (`7c7c7131`). Leída a las 22:38:58 UTC.
+- Para AT0000A2WCE8 dice lo mismo que el SQL: venta más barata 71 (1
+  participación, orden creada el 21/11/2026, actualizada 21:36:29 UTC); orden
+  de menor importe 1 a 71 (72,07 con el 1,5 %); 298 en venta (v1 y v2);
+  `lowestOfferPrice` 71; mejor compra 62.
+- Las otras 10 fichas de Brickwise (5 en esta copia y 5 en la de
+  `brickwise-b`) dan las mismas cifras que a las 17:42 UTC.
+- Sin datos personales: miré todas las claves y todos los textos. No hay
+  direcciones de cartera (`0x…`), ni identificadores de usuario, de orden ni de
+  token (`offerId`, `assetId`, `tokenId`, UUID o cadenas hexadecimales largas:
+  0 coincidencias), ni nombres de personas. Los únicos textos son la fuente, la
+  nota, «bulletin», el estado de cada activo y los títulos de los 17 activos.
+  Uno de ellos, «Oskars Hundehütte» (KTGG-0944, de prueba), es el título de un
+  activo en la API, no una persona.
+
+### 4. La API pública, leída por mí otra vez
+
+`curl` a `https://api.app.brickwise.at/api/v1/assets` a las **22:46:37 UTC**
+(200, SHA-256 `d983efc6…1a8f`) y a `https://api.app.brickwise.at/api/v2/assets`
+a las **22:46:39 UTC** (200, `c625c2a2…04c7`). Para AT0000A2WCE8:
+
+- Órdenes `status: open` y `type: sell`: 73, que suman **298** participaciones.
+- La más barata sigue siendo **71,00 €**: 1 orden de 1 participación, creada a
+  las 21:35:49 UTC y actualizada a las 21:36:29 UTC del 21/11/2026. Detrás:
+  71,90 (1), 72,27 (1), 74 (25), 75 (1).
+- La de menor importe: 1 participación a 71,00 €. Mejor compra: 62,00 € (1).
+- v1 `availableBricksSecondary` 298; v2 `availableBricksSecondary` **298** y
+  `lowestOfferPrice` **71**.
+
+No ha cambiado nada desde las 22:38:58 UTC.
+
+### 5. La cuenta de la comisión
+
+71,00 × 1,015 = 72,065 exacto (7.100 céntimos × 1.015 / 1.000 = 7.206,5
+céntimos). Redondeado al céntimo con 0,005 hacia arriba, como en el resto del
+catálogo (99 → 100,49): **72,07 €**. `comprobarCalculo` del motor da 72,07 y
+rechaza 72,06.
+
+### 6. Hallazgo
+
+**H1 · la hora de lectura de dos cifras ya no es verdad.** En la ficha, dentro
+de «Ver los datos consultados y sus fechas», la «Venta más barata» y la «Orden
+de venta de menor importe» llevan el alcance `{{LIBRO}}`: «Libro de órdenes de
+la app de Brickwise leído el 21/11/2026 (17:41–17:42 UTC)…». Pero sus cifras
+nuevas (71,00 € y 72,07 €) salen de la lectura de las 22:38:58 UTC, y esa
+orden no existía a las 17:42: se creó a las 21:35 UTC. El usuario lo ve en la
+ficha (`rwadar-fichas.js` pinta el alcance). Solo afecta a esas dos cifras: la
+mejor compra (62,00 €) sí estaba a las 17:42, y «Participaciones en venta» no
+dice hora.
+
+Arreglo propuesto, en `decisiones.json`, solo en esas dos referencias de
+Schwarzer Weg 18: cambiar el alcance para que diga la hora buena, por ejemplo
+«Libro de órdenes de la app de Brickwise leído el 21/11/2026 (22:38 UTC) en los
+datos que usa la app; ninguna página pública enseña las órdenes una a una.
+Cambia a diario.» (y en la de menor importe, seguido de `{{BW_MENOR}}`).
+Rehacer con el motor y volver a pasar `auditar`.
+
+Todo lo demás que pedía comprobar está bien: las cifras, la copia, la API y la
+cuenta.
+
+### 7. Arreglo de H1 (coordinador, 22:52 UTC)
+
+Se hizo el arreglo propuesto, solo en esas dos referencias de
+`decisiones.json`: el alcance dice «Libro de órdenes de la app de Brickwise
+leído el 21/11/2026 (22:38 UTC)…» (y, en la de menor importe, sigue
+`{{BW_MENOR}}`). `motor.mjs auditar` frente a `0486c6fd…4d40`: salida 0, mismo
+inventario (288), «sql_cambiado_falta_auditor» con una sola sentencia cambiada
+(Schwarzer Weg 18: 71,90 → 71,00, orden del 18/09 → 21/11, 72,98 → 72,07,
+297 → 298 y la hora 17:41–17:42 → 22:38 en esos dos alcances), PGlite
+«correcto» (18 y 6), secretos «sin hallazgos», 0 hallazgos del motor. Con H1
+arreglado no queda nada de este hallazgo. Revisión `fe0cfaa8-9682-b729-69e2-9bb4f8587ce9`, SQL `e9a671b3ab43ca5b650dc709b6875dbe18fe732eeb85ae31baff64a3eb1c3206`.

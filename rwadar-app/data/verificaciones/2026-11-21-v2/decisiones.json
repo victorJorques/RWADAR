@@ -5306,7 +5306,7 @@
             "fechaDato": "2026-11-21",
             "fechaConsulta": "2026-11-21",
             "fuente": "https://api.app.brickwise.at/api/v1/assets",
-            "alcance": "{{LIBRO}}"
+            "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (22:38 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario."
           },
           "prueba": [
             {
@@ -5343,7 +5343,7 @@
             "fechaDato": "2026-11-21",
             "fechaConsulta": "2026-11-21",
             "fuente": "https://api.app.brickwise.at/api/v1/assets",
-            "alcance": "{{LIBRO}} {{BW_MENOR}}"
+            "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (22:38 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. {{BW_MENOR}}"
           },
           "prueba": [
             {

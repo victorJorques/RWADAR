@@ -2064,7 +2064,7 @@
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
-        "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (17:41–17:42 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario."
+        "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (22:38 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario."
       },
       {
         "etiqueta": "Orden de venta de menor importe · 21/11/2026",
@@ -2072,7 +2072,7 @@
         "fechaDato": "2026-11-21",
         "fechaConsulta": "2026-11-21",
         "fuente": "https://api.app.brickwise.at/api/v1/assets",
-        "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (17:41–17:42 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo."
+        "alcance": "Libro de órdenes de la app de Brickwise leído el 21/11/2026 (22:38 UTC) en los datos que usa la app; ninguna página pública enseña las órdenes una a una. Cambia a diario. Es la orden de venta abierta que pide menos dinero en total ese día; el importe entre paréntesis suma la comisión del 1,5 % que paga el comprador, redondeada al céntimo."
       },
       {
         "etiqueta": "Participaciones en venta · 21/11/2026",

@@ -2,7 +2,7 @@
 
 Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.json, el contraste y los dos SQL. Es el punto de partida de la revisión: cada revisor sigue haciendo sus propias pruebas.
 
-- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `1f892b7608789ce6410979b4158815c1c62ff4f112711430b47b68c73075e9bd`, revisión `753b4cc9-3c01-e879-ba96-05dc3cf95b05`.
+- SQL de hoy: `aplicar-y-aprobar.sql` SHA-256 `e9a671b3ab43ca5b650dc709b6875dbe18fe732eeb85ae31baff64a3eb1c3206`, revisión `fe0cfaa8-9682-b729-69e2-9bb4f8587ce9`.
 - Parte de la publicada `94f7fd5d-f6e5-c28e-1c31-a6ea5a5f38d7` (huella `94f7fd5df6e5c28e…`); último día vigente 28/11/2026.
 - Inventario: las mismas filas por tabla que ayer (35 en alerta_fuentes, 25 en alertas, 69 en fuentes, 22 en ofertas, 107 en plataforma_fuentes, 25 en plataformas, 1 en revisiones).
 - Sentencias del SQL que cambian algo más que la revisión, la huella y la fecha del día: **23** de 288.
@@ -1078,7 +1078,7 @@ Generado por el motor (`motor.mjs revisar 2026-11-21`) a partir de decisiones.js
 - …Custodia · consulta  «01/11/2026» → «<FECHA>»
 - …,"fechaConsulta":" «2026-11-01» → «<FECHA>»
 - …valor":"Desde  «69» → «71»
-- (y 23 cambios más en esta sentencia)
+- (y 19 cambios más en esta sentencia)
 
 ### rwadar_catalogo.ofertas 'drautalresidenz-paternion' 'https://app.brickwise.at/desktopWeb/marketplace'
 
