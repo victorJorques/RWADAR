@@ -16,7 +16,9 @@
       const nodo=pagina.querySelector('[data-campo="'+nombre+'"]');
       const campo=resumen[nombre];
       if (!nodo || !campo) continue;
-      nodo.textContent=campo.texto;
+      /* El mínimo en su unidad («500 CHF», «Desde 71,90 € la participación en reventa (21/11)»), como la
+         web y la transparencia de la ficha (auditoría del 21/11/2026): nunca «No documentado en euros» si está. */
+      nodo.textContent=nombre==='minimo'&&campo.texto==='No documentado en euros'&&campo.unidadDocumentada?campo.unidadDocumentada:campo.texto;
       const referencias=Array.isArray(campo.referencias) && campo.referencias.length
         ? campo.referencias.map(r=>({fuente:r.fuente,consultadaEl:r.fechaConsulta,etiqueta:r.etiqueta}))
         : campo.fuente ? [campo] : [];

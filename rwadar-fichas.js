@@ -288,7 +288,7 @@ function paginaOferta(o,catalogo,imagen) {
     (adquiere ? '<div><dt>Qué se adquiere</dt><dd'+ORIGINAL+'>'+esc(adquiere)+'</dd></div>' : '')+'<div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
-    '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
+    '<div><dt>Mínimo</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar si se puede contratar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
     '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+

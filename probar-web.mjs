@@ -3450,8 +3450,8 @@ prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
     privacidadLineal.includes('<a href="#firebase-android">apartado 5</a>') &&
-    // 14/11/2026: notificaciones sin cuenta (§6 «Notificaciones sin cuenta»).
-    privacidad.includes('Versión revisada el <time datetime="2026-11-14">14 de noviembre de 2026</time>'));
+    // 14/11/2026: notificaciones sin cuenta (§6 «Notificaciones sin cuenta»). 21/11/2026: la campana sin cuenta.
+    privacidad.includes('Versión revisada el <time datetime="2026-11-21">21 de noviembre de 2026</time>'));
 }
 // Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
 const seccionAvisos =privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
