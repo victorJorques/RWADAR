@@ -955,6 +955,40 @@
      "sha256": "dbc8a7f673eb87a1dd7a83cf79cd5777cf4f5fe0fff6eb608c3f1250e3e48f5d"
     }
    }
+  },
+  "real-cajero-teclado": {
+   "origen": "foto",
+   "descripcion": "El teclado de un cajero automático, de cerca, sin ninguna marca de banco.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:ATM PIN buttons 20180827.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ATM_PIN_buttons_20180827.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/ATM_PIN_buttons_20180827.jpg/1920px-ATM_PIN_buttons_20180827.jpg",
+    "sha256Original": "ffeb454b655b7a88809c70a372b1cfe043ea36ea54b8b66f5f2144e8538075e0"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Santeri Viinamäki",
+   "sinPersonas": true,
+   "encuadre": "50% 60%",
+   "bytes": 107268,
+   "sha256": "cf945d16c31c8bf8306f83f6cf967eef584ef479fead81273e77f9a56a725c7a",
+   "temas": [
+    "bancos"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 15526,
+     "sha256": "e6722bd3ef52cd4d30fbce750f38af9d9db94b282e79c939ac8cfd284f5cb4e7"
+    },
+    "960": {
+     "bytes": 64790,
+     "sha256": "64840ffb8815d62f21b989d3262e7ef41af32e20c22f64eba45e30b2b81df6d6"
+    }
+   }
   }
  }
 }
