@@ -603,11 +603,11 @@ test('la biblioteca admite fotos reales (esquema 2) con todo lo que pide su lice
   assert.equal(fotosMod.tituloCommons('File:sede_de__prueba.jpg'), 'File:Sede de prueba.jpg');
 });
 
-test('el interruptor de las fotos reales: apagado hasta la OTA con los créditos; el publicador, --comprobar y V-2 paran si una noticia usa una', () => {
+test('el interruptor de las fotos reales: encendido desde la OTA con los créditos (22/11/2026); apagado, el publicador, --comprobar y V-2 paran si una noticia usa una', () => {
   const fotosMod = require('../rwadar-noticias-editoriales.js');
   const config = JSON.parse(lee('.claude/skills/noticias-automaticas/config.json'));
-  assert.equal(config.fotos.realesEnApp, false, 'la app instalada aún no enseña los créditos');
-  assert.equal(fotosMod.fotosRealesEnApp(RAIZ), false);
+  assert.equal(config.fotos.realesEnApp, true, 'la OTA con los créditos salió el 22/11/2026 (run 44996121393)');
+  assert.equal(fotosMod.fotosRealesEnApp(RAIZ), true);
   const manifiesto = { fotos: { 'sede-prueba': { origen: 'foto' }, 'alerta-fraude': {} } };
   assert.throws(() => fotosMod.comprobarFotosRealesEnApp(manifiesto, ['alerta-fraude', 'sede-prueba'], false), /fotos reales \(sede-prueba\).*realesEnApp/);
   assert.deepEqual(fotosMod.comprobarFotosRealesEnApp(manifiesto, ['alerta-fraude'], false), []);
