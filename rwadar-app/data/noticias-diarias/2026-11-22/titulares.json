@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "fecha": "2026-11-22",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "ef8916de157acf74be281491f5a1e5e4bc0a4b3267ea1fdf2f6b677745468edb"
+  },
+  "noticias": [
+    {
+      "id": "kraken-antx-token-anthropic",
+      "propuestas": {
+        "es": [
+          "Kraken ofrece un token de Anthropic que no te da acciones",
+          "Token de Anthropic en Kraken: precio sí, voto y dividendo no",
+          "Anthropic sale a 83 dólares y Kraken vende un token ligado"
+        ],
+        "en": [
+          "Kraken offers an Anthropic token that gives you no shares",
+          "Anthropic token on Kraken: price yes, votes and dividends no",
+          "Anthropic lists at $83 and Kraken sells a linked token"
+        ]
+      },
+      "elegido": {
+        "es": "Kraken ofrece un token de Anthropic que no te da acciones",
+        "en": "Kraken offers an Anthropic token that gives you no shares"
+      },
+      "motivo": "Dice primero lo que cambia para el lector (Kraken ya ofrece en el EEE un token que sigue a Anthropic) y la consecuencia que respalda la fuente (solo exposición al precio, no propiedad); la del precio no dice qué cambia y la de «precio sí» es menos clara.",
+      "heredado": null,
+      "foto": {
+        "clave": "acciones-eeuu",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-movil",
+          "bolsa-madrid"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
+      "propuestas": {
+        "es": [
+          "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+          "Alemania prohíbe ofrecer oro físico sin folleto al público",
+          "Tres ofertas sin folleto, una de oro: compruébalas antes"
+        ],
+        "en": [
+          "Gold and shares with no prospectus: three German alerts",
+          "Germany bars a physical gold offer made with no prospectus",
+          "Three offers with no prospectus, one in gold: check first"
+        ]
+      },
+      "elegido": {
+        "es": "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+        "en": "Gold and shares with no prospectus: three German alerts"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y sigue diciendo primero qué se ofrecía y el fallo, con la cifra de avisos.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "alerta-fraude-3",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude",
+          "alerta-fraude-2"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-advertencias-9-entidades-dos-clones",
+      "propuestas": {
+        "es": [
+          "9 firmas sin registro; dos imitan a firmas registradas",
+          "La CNMV avisa de 9 firmas sin registro, dos de ellas clones",
+          "Webs clonadas de firmas registradas: la CNMV avisa de dos"
+        ],
+        "en": [
+          "9 unregistered firms; two pose as registered ones",
+          "Spain's CNMV flags 9 unregistered firms, two of them clones",
+          "Clones of registered firms: Spain's CNMV flags two sites"
+        ]
+      },
+      "elegido": {
+        "es": "9 firmas sin registro; dos imitan a firmas registradas",
+        "en": "9 unregistered firms; two pose as registered ones"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y empieza por la cifra y el riesgo concreto para el lector.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "pago-online",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude-2",
+          "alerta-fraude-3"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "xstocks-200-empresas-reino-unido-ue",
+      "propuestas": {
+        "es": [
+          "xStocks lanza tokens de más de 200 empresas europeas",
+          "Las 40 del DAX alemán, ya en tokens de xStocks",
+          "Empresas europeas en xStocks: tokens sin hacerte accionista"
+        ],
+        "en": [
+          "xStocks launches tokens of over 200 European companies",
+          "All 40 DAX companies now come as xStocks tokens",
+          "European shares as xStocks tokens, but you won't own them"
+        ]
+      },
+      "elegido": {
+        "es": "xStocks lanza tokens de más de 200 empresas europeas",
+        "en": "xStocks launches tokens of over 200 European companies"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 21/11: la fuente dice lo mismo (texto visible idéntico) y sigue diciendo primero lo que cambia, con la cifra de la fuente y el sujeto exacto.",
+      "heredado": "2026-11-21",
+      "foto": {
+        "clave": "bolsa-madrid",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu",
+          "acciones-movil"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "propuestas": {
+        "es": [
+          "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+          "Stock Tokens: el emisor podrá cobrar costes en tokens",
+          "Un suplemento deja al emisor de Robinhood repercutir costes"
+        ],
+        "en": [
+          "Robinhood: the issuer may cut your Stock Tokens for costs",
+          "Robinhood Stock Tokens: costs may come out of your holding",
+          "A supplement lets Robinhood's issuer pass on its costs"
+        ]
+      },
+      "elegido": {
+        "es": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+        "en": "Robinhood: the issuer may cut your Stock Tokens for costs"
+      },
+      "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y dice lo que te puede pasar con el sujeto exacto y en futuro.",
+      "heredado": "2026-11-20",
+      "foto": {
+        "clave": "acciones-movil",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-eeuu"
+        ],
+        "faltaria": null
+      }
+    }
+  ]
+}

@@ -1,8 +1,31 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-21",
+  "actualizadoEl": "2026-11-22",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
+    {
+      "id": "kraken-antx-token-anthropic",
+      "fecha": "2026-11-19",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Kraken ofrece un token de Anthropic que no te da acciones",
+      "resumen": "Kraken ya deja negociar ANTx, un token de xStocks que sigue la acción de Anthropic. Según Kraken, la empresa salió a bolsa en el Nasdaq el 19/11 a un precio de oferta de 83 dólares. Lo emite Backed Assets (JE) Limited y en el EEE lo ofrece, con restricciones geográficas, una firma del grupo autorizada en Chipre.",
+      "porQueImporta": "ANTx no te hace accionista: solo da exposición al precio, sin voto ni dividendos, y lo emite Backed, no Anthropic. Su valor puede bajar o subir. En la salida a bolsa se pagaba el precio de oferta más un 5 %, y puede haber otras comisiones.",
+      "en": {
+        "titulo": "Kraken offers an Anthropic token that gives you no shares",
+        "resumen": "Kraken now lets you trade ANTx, an xStocks token that tracks Anthropic's share. According to Kraken, the company listed on Nasdaq on 19 November at an offer price of $83. Backed Assets (JE) Limited issues it, and a group firm authorised in Cyprus offers it in the EEA, with geographic restrictions.",
+        "porQueImporta": "ANTx does not make you a shareholder: price exposure only, with no voting or dividend rights, and Backed issues it, not Anthropic. Its value can go down or up. IPO buyers paid the offer price plus 5%, and other fees may apply.",
+        "tituloInformativo": "Kraken offers ANTx in the EEA, an xStocks token tracking Anthropic's share, which listed on Nasdaq on 19 November"
+      },
+      "fuente": {
+        "nombre": "Kraken, página de la salida a bolsa de Anthropic con xStocks (ANTx), primer día de negociación el 19/11/2026 (emisor: Backed Assets (JE) Limited)",
+        "url": "https://www.kraken.com/es/ipo/anthropic",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "Kraken ofrece en el EEE ANTx, un token de xStocks que sigue la acción de Anthropic, que salió a bolsa en el Nasdaq el 19/11"
+    },
     {
       "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
       "fecha": "2026-11-18",
@@ -23,7 +46,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-21",
+      "consultadaEl": "2026-11-22",
       "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico"
     },
     {
@@ -46,7 +69,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-21",
+      "consultadaEl": "2026-11-22",
       "tituloInformativo": "La CNMV advierte de 9 entidades no registradas, dos de ellas clones de firmas registradas"
     },
     {
@@ -69,7 +92,7 @@
         "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-21",
+      "consultadaEl": "2026-11-22",
       "tituloInformativo": "xStocks, del grupo de Kraken, lanza tokens ligados a más de 200 acciones de Reino Unido y la UE, entre ellas las 40 del DAX"
     },
     {
@@ -92,31 +115,8 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-21",
+      "consultadaEl": "2026-11-22",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor"
-    },
-    {
-      "id": "cnmv-autoriza-bit2me-stx",
-      "fecha": "2026-10-28",
-      "seccion": "importante",
-      "categoria": "regulacion",
-      "ambito": "España",
-      "titulo": "España ya tiene dos mercados de valores tokenizados",
-      "resumen": "Es un sistema de negociación y liquidación basado en registros distribuidos, del régimen piloto europeo. Lo operará Bit2Me Security Tokens Exchange STX, A.V. y en él se podrán negociar acciones y bonos tokenizados.",
-      "porQueImporta": "España suma dos con Securitize. Se autoriza el mercado, no una emisión: por ahora no consta ninguna con documento público para particulares.",
-      "en": {
-        "titulo": "Spain now has two tokenised securities markets",
-        "resumen": "It is a DLT-based trading and settlement system under the EU pilot regime. It will be run by Bit2Me Security Tokens Exchange STX, A.V. and will allow trading in tokenised shares and bonds.",
-        "porQueImporta": "Spain now has two, with Securitize. The market is authorised, not an issue: so far no issue with a public document for retail investors is on record.",
-        "tituloInformativo": "Spain's CNMV authorises Bit2Me STX, the country's second market for tokenised securities"
-      },
-      "fuente": {
-        "nombre": "CNMV, nota de prensa del 28/10/2026 (ESMA la registra con fecha 27/10/2026)",
-        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-21",
-      "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados"
     }
   ]
 }

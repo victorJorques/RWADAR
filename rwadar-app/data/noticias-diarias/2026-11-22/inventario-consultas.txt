@@ -1,0 +1,15 @@
+2026-11-22T01:29:30.938Z	200	text/html	5b400373b9a46fc9b1f94f3f7412fde60a5778820cc932a4d9156b710e743369	https://www.kraken.com/es/ipo/anthropic
+2026-11-22T01:29:33.487Z	200	text/html	558e92c9ce014607e963852179b268289a34237050b0ee26cf64279037304f17	https://www.kraken.com/ipo/anthropic
+2026-11-22T01:29:35.897Z	200	application/pdf	8cebdfa5496932d8ceb0d8d75f96751ed7a25b56c097e11db31dce7ff62f5edc	https://cdn.robinhood.com/assets/robinhood/legal/rhj_final_terms_for_tokenised_debt_securities_linked_to_anthropic_pbc.pdf
+2026-11-22T01:29:38.418Z	200	text/html	e4c3bb1e9ca7b3d5f7bb53b42e4c543e097724fd0cd1de4167a758e66fab6903	https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html
+2026-11-22T01:30:21.236Z	200	application/pdf	6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820	https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d
+2026-11-22T01:30:24.531Z	200	text/html	01a89679cfb296d9716414859b6e77af65e97e19c0d362b6b1735a55b7ca655b	https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain
+2026-11-22T01:30:26.885Z	200	application/pdf	978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9	https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf
+2026-11-22T01:30:29.385Z	200	text/html	28733909e60007433b4ed2623f2166a8a0595954a3c5f2dcebaf8cb2af7fb425	https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_20_stock3_ai_ki.html
+2026-11-22T01:30:32.151Z	0	-	-	https://www.cssf.lu/en/2026/11/warning-concerning-the-website-www-euroinvests-com/	(error: TimeoutError)
+2026-11-22T01:31:14.156Z	200	text/html	c7aeb16f5cdf3aac310c6691484a85f9aac01f8209b9e5b2af72e9645f307518	https://www.fsma.be/fr/warnings/boiler-rooms-la-fsma-met-le-public-en-garde-contre-de-nouvelles-activites-irregulieres-1
+2026-11-22T01:31:17.802Z	200	text/html	b5d41dd79dca97008232cb09b4bcaf80ddfc695e82e6b47af88a736dbc56cf8c	https://ondo.finance/blog/first-defined-outcome-intelligent-portfolio
+2026-11-22T01:31:20.190Z	200	application/pdf	d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355	https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d
+2026-11-22T01:31:23.766Z	200	text/html	ce8a9645c758cebd0aece07cd2d53d5c7a00d31ecff97508cc67e9e379d4b370	https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Rundschreiben/2026/rs_15_2026_kryptowerte.html
+2026-11-22T01:31:26.802Z	200	application/pdf	e09fadd373bf36218aa83c02bad132b9e13cab4786b5087a3671ab78e1717727	https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d
+2026-11-22T01:34:02Z	200	text/html	67aa90ec31de9a4d1fcf81918e57adadfb9c7cbd5825c20c4cb456653f6e301c	https://www.cssf.lu/en/2026/11/warning-concerning-the-website-www-euroinvests-com/	(reintento con curl; el primer intento con el fetch de Node agotó el plazo)
