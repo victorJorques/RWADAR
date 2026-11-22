@@ -58,10 +58,11 @@ test('«Lo más importante» admite hasta 8 (config.json, edicion.importanteMax)
 
 /* Fotos reales (22/11/2026): la app instalada antes de la OTA con los créditos
    las daría por IA y sin el autor que pide su licencia. Con «fotos.realesEnApp»
-   en false (como está hasta esa OTA), V-2 para una edición que use una; con
+   en false (como estuvo hasta esa OTA, el 22/11/2026), V-2 para una edición que use una; con
    true, pasa. Sobre una raíz temporal con una foto real en la biblioteca. */
 test('V-2: una foto real solo con fotos.realesEnApp en true (después de la OTA con los créditos)', () => {
-  assert.equal(CONFIG.fotos.realesEnApp, false, 'hasta enviar la OTA con los créditos, apagado');
+  // Encendido el 22/11/2026, tras la OTA con los créditos; la prueba sigue mirando los dos estados.
+  assert.equal(CONFIG.fotos.realesEnApp, true, 'tras la OTA con los créditos (22/11/2026), encendido');
   const raiz = tmp('reales');
   try {
     for (const x of ['rwadar-movil', 'rwadar-app', 'rwadar-noticias-editoriales.js']) fs.symlinkSync(path.join(RAIZ, x), path.join(raiz, x));
