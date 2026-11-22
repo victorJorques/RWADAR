@@ -3,9 +3,40 @@
   "fecha": "2026-11-22",
   "guia": {
     "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
-    "sha256": "ef8916de157acf74be281491f5a1e5e4bc0a4b3267ea1fdf2f6b677745468edb"
+    "sha256": "728b4c59aa61ee47b0e3eaabc1a30e826866c9859f3c40e4777a675b4a57de6f"
   },
   "noticias": [
+    {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "propuestas": {
+        "es": [
+          "Token ficticio por WhatsApp: avisa el supervisor alemán",
+          "Alemania avisa de un token ficticio en grupos de WhatsApp",
+          "Grupos de WhatsApp que llevan a comprar un token ficticio"
+        ],
+        "en": [
+          "Fictitious token via WhatsApp: German supervisor warns",
+          "Germany warns of a fake token promoted in WhatsApp groups",
+          "WhatsApp groups that steer investors to a fictitious token"
+        ]
+      },
+      "elegido": {
+        "es": "Token ficticio por WhatsApp: avisa el supervisor alemán",
+        "en": "Fictitious token via WhatsApp: German supervisor warns"
+      },
+      "motivo": "Pone primero lo que puede encontrarse el lector (un token ficticio que llega por WhatsApp) y atribuye el aviso a quien lo da, el supervisor alemán, sin la sigla BaFin ni decir «Alemania» por el supervisor.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-sede-bafin-francfort",
+        "encaje": "propia",
+        "alternativas": [
+          "alerta-fraude",
+          "alerta-fraude-2",
+          "pago-online"
+        ],
+        "faltaria": null
+      }
+    },
     {
       "id": "kraken-antx-token-anthropic",
       "propuestas": {
@@ -24,14 +55,15 @@
         "es": "Kraken ofrece un token de Anthropic que no te da acciones",
         "en": "Kraken offers an Anthropic token that gives you no shares"
       },
-      "motivo": "Dice primero lo que cambia para el lector (Kraken ya ofrece en el EEE un token que sigue a Anthropic) y la consecuencia que respalda la fuente (solo exposición al precio, no propiedad); la del precio no dice qué cambia y la de «precio sí» es menos clara.",
+      "motivo": "Es el titular publicado y elegido esta mañana entre estas tres propuestas: dice lo que cambia (un token que sigue a Anthropic) y la consecuencia que respalda Kraken (no te da acciones); la fuente no ha cambiado.",
       "heredado": null,
       "foto": {
         "clave": "acciones-eeuu",
         "encaje": "propia",
         "alternativas": [
-          "acciones-movil",
-          "bolsa-madrid"
+          "real-bolsa-nueva-york-fachada",
+          "real-pantalla-cotizaciones-grafico",
+          "acciones-movil"
         ],
         "faltaria": null
       }
@@ -57,11 +89,43 @@
       "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y sigue diciendo primero qué se ofrecía y el fallo, con la cifra de avisos.",
       "heredado": "2026-11-20",
       "foto": {
-        "clave": "alerta-fraude-3",
+        "clave": "real-cnmv-entrada-edison",
         "encaje": "propia",
         "alternativas": [
-          "alerta-fraude",
-          "alerta-fraude-2"
+          "real-sede-bafin-francfort",
+          "real-lingotes-oro-400oz",
+          "alerta-fraude-3"
+        ],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "ondo-carteras-token-bolsa-oro-cripto",
+      "propuestas": {
+        "es": [
+          "Ondo: 60 % bolsa, 20 % oro y 20 % cripto en un solo token",
+          "Ondo mete bolsa, oro y cripto en un solo token",
+          "Carteras en un token de Ondo: no consta si llegan a España"
+        ],
+        "en": [
+          "Ondo: 60% stocks, 20% gold and 20% crypto in one token",
+          "Ondo packs stocks, gold and crypto into a single token",
+          "Ondo portfolios in one token: no word on Spain"
+        ]
+      },
+      "elegido": {
+        "es": "Ondo: 60 % bolsa, 20 % oro y 20 % cripto en un solo token",
+        "en": "Ondo: 60% stocks, 20% gold and 20% crypto in one token"
+      },
+      "motivo": "Dice en una línea qué es el producto nuevo con las cifras de la fuente (60 % bolsa de EE. UU., 20 % oro y 20 % cripto), sin promesas; la falta de datos para España va en «Por qué te importa».",
+      "heredado": null,
+      "foto": {
+        "clave": "real-pantalla-cotizaciones-grafico",
+        "encaje": "propia",
+        "alternativas": [
+          "acciones-movil",
+          "acciones-eeuu",
+          "real-lingote-oro-terciopelo"
         ],
         "faltaria": null
       }
@@ -87,11 +151,12 @@
       "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y empieza por la cifra y el riesgo concreto para el lector.",
       "heredado": "2026-11-20",
       "foto": {
-        "clave": "pago-online",
+        "clave": "real-cnmv-sede-madrid",
         "encaje": "propia",
         "alternativas": [
-          "alerta-fraude-2",
-          "alerta-fraude-3"
+          "real-cnmv-entrada-edison",
+          "pago-online",
+          "alerta-fraude-2"
         ],
         "faltaria": null
       }
@@ -117,11 +182,12 @@
       "motivo": "Se hereda el titular publicado y elegido el 21/11: la fuente dice lo mismo (texto visible idéntico) y sigue diciendo primero lo que cambia, con la cifra de la fuente y el sujeto exacto.",
       "heredado": "2026-11-21",
       "foto": {
-        "clave": "bolsa-madrid",
+        "clave": "real-bolsa-francfort-toro-oso",
         "encaje": "propia",
         "alternativas": [
-          "acciones-eeuu",
-          "acciones-movil"
+          "real-bolsa-madrid-fachada",
+          "bolsa-madrid",
+          "acciones-eeuu"
         ],
         "faltaria": null
       }
@@ -147,10 +213,11 @@
       "motivo": "Se hereda el titular publicado y elegido el 20/11: la fuente no ha cambiado (misma huella) y dice lo que te puede pasar con el sujeto exacto y en futuro.",
       "heredado": "2026-11-20",
       "foto": {
-        "clave": "acciones-movil",
+        "clave": "real-bolsa-nueva-york-fachada",
         "encaje": "propia",
         "alternativas": [
-          "acciones-eeuu"
+          "acciones-movil",
+          "real-pantalla-cotizaciones-grafico"
         ],
         "faltaria": null
       }

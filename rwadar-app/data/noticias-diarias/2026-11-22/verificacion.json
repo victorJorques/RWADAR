@@ -2,20 +2,36 @@
   "version": 1,
   "pase": 1,
   "fecha": "2026-11-22",
-  "edicionSha256": "9ea1490d0b04457a5f7a084553c59c60658b946c7bdeaf33d4f344bdf6155581",
+  "edicionSha256": "54c5ac8a05aa7b35837b2b1a58a853445f48d4113892fa976799a683ae0c1cec",
   "veredicto": "conforme",
   "noticias": [
+    {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+        "http": 200,
+        "horaUtc": "2026-11-22T07:34:52.881Z",
+        "sha256": "42592be161da2a1d95b4a686f6d84bdad7fe6899c917d6e28d67bfa617d6698e",
+        "caida": false
+      },
+      "literal": "Insbesondere wird der Kauf eines fingierten Krypto-Tokens „VLVI“ beworben. Die Bafin hat in der Vergangenheit bereits mehrfach vor dieser Masche gewarnt. Der Bafin sind keine lizenzierten Institute bekannt, welche sich über WhatsApp-Gruppen an deutsche Anlegerinnen und Anleger wenden.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
     {
       "id": "kraken-antx-token-anthropic",
       "veredicto": "confirmada",
       "fuente": {
         "url": "https://www.kraken.com/es/ipo/anthropic",
         "http": 200,
-        "horaUtc": "2026-11-22T01:38:03Z",
-        "sha256": "4df15951cb5dc28677574ecd613775f3eea8864b491a9f94978ddc307dec57e6",
+        "horaUtc": "2026-11-22T07:34:54.050Z",
+        "sha256": "c8e8ffa4e8771acbf195e5bce79258b2983e8356a2d41185004fd3f8e90198b6",
         "caida": false
       },
-      "literal": "Anthropic listed on Nasdaq on Nov 19. Trade ANTx 24/5 alongside 1,000+ xStocks. […] IPO xStocks are tokenized equities providing price exposure only — not direct ownership. […] xStocks are tokenized securities issued by Backed Assets (JE) Limited",
+      "literal": "Anthropic listed on Nasdaq on Nov 19. Trade ANTx 24/5 alongside 1,000+ xStocks. […] IPO xStocks are tokenized equities providing price exposure only — not direct ownership.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -27,11 +43,27 @@
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
         "http": 200,
-        "horaUtc": "2026-11-22T01:38:03Z",
+        "horaUtc": "2026-11-22T07:34:54.452Z",
         "sha256": "6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820",
         "caida": false
       },
-      "literal": "BAFIN ha prohibido a Uniox Gold LLC la oferta al público de oro físico por no haber publicado EL FOLLETO INFORMATIVO O DOCUMENTO EQUIVALENTE REQUERIDO POR LA NORMATIVA DE VALORES",
+      "literal": "BAFIN ha prohibido a Uniox Gold LLC la oferta al público de oro físico por no haber publicado EL FOLLETO INFORMATIVO O DOCUMENTO EQUIVALENTE REQUERIDO POR LA NORMATIVA DE VALORES.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "ondo-carteras-token-bolsa-oro-cripto",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://ondo.finance/blog/first-defined-outcome-intelligent-portfolio",
+        "http": 200,
+        "horaUtc": "2026-11-22T07:34:56.037Z",
+        "sha256": "d4502cc7e3fc3c085c87ebff260d15846e40094f876b37af474d4585f4f0cb4e",
+        "caida": false
+      },
+      "literal": "The mix is 60% US equities, 20% gold, and 20% crypto, with programmatic quarterly rebalancing back to the base weights.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -43,11 +75,11 @@
       "fuente": {
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
         "http": 200,
-        "horaUtc": "2026-11-22T01:38:06Z",
+        "horaUtc": "2026-11-22T07:34:56.465Z",
         "sha256": "d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355",
         "caida": false
       },
-      "literal": "La CNMV pone de manifiesto que dichas sociedades no figuran inscritas en el correspondiente registro de esta Comisión y, por tanto, no están autorizadas para prestar servicios de inversión",
+      "literal": "La CNMV pone de manifiesto que dichas sociedades no figuran inscritas en el correspondiente registro de esta Comisión y, por tanto, no están autorizadas para prestar servicios de inversión u otras actividades sujetas a la supervisión de la CNMV.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -59,11 +91,11 @@
       "fuente": {
         "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
         "http": 200,
-        "horaUtc": "2026-11-22T01:38:07Z",
-        "sha256": "5b177d27d69b1aad99acee91ffde27f973bc61ab48f1a198cba04fe682a6782f",
+        "horaUtc": "2026-11-22T07:34:57.781Z",
+        "sha256": "ba6657a630cebe0c704fb92662863a1256cfd285cb42f5adb76a9380736697c4",
         "caida": false
       },
-      "literal": "xStocks has launched its first regional markets, bringing tokenized equities for 200+ of the largest UK and EU-listed companies, and every constituent of the DAX 40. […] Each xStock is backed 1:1 by the underlying share but represents economic exposure only, not direct ownership.",
+      "literal": "xStocks has launched its first regional markets, bringing tokenized equities for 200+ of the largest UK and EU-listed companies, and every constituent of the DAX 40.",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,
@@ -75,11 +107,11 @@
       "fuente": {
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "http": 200,
-        "horaUtc": "2026-11-22T01:38:07Z",
+        "horaUtc": "2026-11-22T07:34:57.947Z",
         "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
         "caida": false
       },
-      "literal": "the Issuer is permitted to pass on certain fees and costs charged to the Issuer in connection with an Underlying to Investors, which may include proportionately reducing the number of Products held by such Investors",
+      "literal": "(C) the Issuer is permitted to pass on certain fees and costs charged to the Issuer in connection with an Underlying to Investors, which may include proportionately reducing the number of Products held by such Investors;",
       "titularRespaldado": true,
       "fotoAdecuada": true,
       "personas": false,

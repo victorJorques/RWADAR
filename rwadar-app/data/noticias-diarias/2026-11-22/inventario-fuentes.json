@@ -1,15 +1,24 @@
 {
   "version": 1,
   "fecha": "2026-11-22",
-  "generado": "2026-11-22T01:37:19.902Z",
+  "generado": "2026-11-22T07:33:55.744Z",
   "fuentes": [
+    {
+      "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+      "http": 200,
+      "tipo": "text/html;charset=utf-8",
+      "bytes": 87197,
+      "sha256": "98badc150eafcd10114be7a390eb4202fce81f0a0cb25532c5e37ca956df3c33",
+      "horaUtc": "2026-11-22T07:33:51.520Z",
+      "error": null
+    },
     {
       "url": "https://www.kraken.com/es/ipo/anthropic",
       "http": 200,
       "tipo": "text/html; charset=utf-8",
-      "bytes": 1158693,
-      "sha256": "d23e7925446853f81c4c66dce60cc58d01496d2fa37c2f13d126417bc8d24e34",
-      "horaUtc": "2026-11-22T01:37:15.678Z",
+      "bytes": 1158715,
+      "sha256": "9f5ea4e15119781ec9897a0c5752976c463e93d3d95c4150adc129596e166c4a",
+      "horaUtc": "2026-11-22T07:33:51.610Z",
       "error": null
     },
     {
@@ -18,7 +27,16 @@
       "tipo": "application/pdf",
       "bytes": 134678,
       "sha256": "6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820",
-      "horaUtc": "2026-11-22T01:37:15.740Z",
+      "horaUtc": "2026-11-22T07:33:51.612Z",
+      "error": null
+    },
+    {
+      "url": "https://ondo.finance/blog/first-defined-outcome-intelligent-portfolio",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 136280,
+      "sha256": "37fcbb2e7746920302d8967548ced7de9826e22b9039a9b50ee2164807ee10c7",
+      "horaUtc": "2026-11-22T07:33:51.614Z",
       "error": null
     },
     {
@@ -27,7 +45,7 @@
       "tipo": "application/pdf",
       "bytes": 149664,
       "sha256": "d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355",
-      "horaUtc": "2026-11-22T01:37:18.950Z",
+      "horaUtc": "2026-11-22T07:33:54.882Z",
       "error": null
     },
     {
@@ -35,8 +53,8 @@
       "http": 200,
       "tipo": "text/html; charset=utf-8",
       "bytes": 51355,
-      "sha256": "dfb72d44e8fca28295efce15187af5366035563a51791a152b7d0cf4b508eeb3",
-      "horaUtc": "2026-11-22T01:37:15.741Z",
+      "sha256": "c171520106c74050f04abced260532bd9054e914a2d745ffbe2e55fe29dfdda4",
+      "horaUtc": "2026-11-22T07:33:51.615Z",
       "error": null
     },
     {
@@ -45,7 +63,7 @@
       "tipo": "application/pdf",
       "bytes": 2208721,
       "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
-      "horaUtc": "2026-11-22T01:37:15.742Z",
+      "horaUtc": "2026-11-22T07:33:51.617Z",
       "error": null
     }
   ]
