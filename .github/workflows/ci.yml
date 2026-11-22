@@ -145,7 +145,7 @@ jobs:
       # solo en rueda ya compilada; sin ella la prueba falla, no se salta.
       - name: Instalar Pillow (prueba del importador de fotos)
         if: ${{ matrix.base }}
-        run: python3 -m pip install --user --break-system-packages --only-binary=:all: Pillow==12.3.0
+        run: 'python3 -m pip install --user --break-system-packages --only-binary=:all: Pillow==12.3.0'
 
       - name: Instalar dependencias móviles
         if: ${{ matrix.movil }}
