@@ -1,0 +1,75 @@
+{
+ "version": 1,
+ "nota": "Origen y crédito de cada foto de las noticias. Se genera de rwadar-editorial-source/noticias/fotos.json con node rwadar-noticias-editoriales.js --creditos: no se edita a mano.",
+ "fotos": {
+  "alerta-fraude": {
+   "origen": "ia"
+  },
+  "acciones-eeuu": {
+   "origen": "ia"
+  },
+  "red-europea": {
+   "origen": "ia"
+  },
+  "pagares-deuda": {
+   "origen": "ia"
+  },
+  "instituciones-ue": {
+   "origen": "ia"
+  },
+  "bolsa-madrid": {
+   "origen": "ia"
+  },
+  "pago-online": {
+   "origen": "ia"
+  },
+  "regulador-espana": {
+   "origen": "ia"
+  },
+  "alerta-fraude-2": {
+   "origen": "ia"
+  },
+  "alerta-fraude-3": {
+   "origen": "ia"
+  },
+  "regulador-espana-2": {
+   "origen": "ia"
+  },
+  "documentos-consulta": {
+   "origen": "ia"
+  },
+  "instituciones-ue-2": {
+   "origen": "ia"
+  },
+  "bonos-emision": {
+   "origen": "ia"
+  },
+  "inmuebles-ciudad": {
+   "origen": "ia"
+  },
+  "inmuebles-costa": {
+   "origen": "ia"
+  },
+  "oro-pepitas": {
+   "origen": "ia"
+  },
+  "moneda-digital": {
+   "origen": "ia"
+  },
+  "fondos-liquidez": {
+   "origen": "ia"
+  },
+  "acciones-movil": {
+   "origen": "ia"
+  },
+  "banco-sala": {
+   "origen": "ia"
+  },
+  "servidores-seguridad": {
+   "origen": "ia"
+  },
+  "planeta-noche": {
+   "origen": "ia"
+  }
+ }
+}
