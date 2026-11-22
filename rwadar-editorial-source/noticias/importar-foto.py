@@ -191,6 +191,13 @@ def autor_de(ext, licencia):
     if not licencia['atribucionObligatoria']:
         return None
     autor = meta(ext, 'Attribution') or meta(ext, 'Artist')
+    # Sin caracteres invisibles (Commons trae a veces un espacio de anchura cero delante).
+    autor = re.sub(r'[\u200b-\u200f\u2060\ufeff]', '', autor or '').strip()
+    # Las plantillas de la Comisión Europea ponen «© European Union, <año en curso>»: el año
+    # bueno es el de la foto, y eso lo decide una persona (README de la biblioteca).
+    if re.search(r'©\s*European Union', autor):
+        raise Rechazo('la autoría «© European Union, …» la pone la plantilla con el año en curso: '
+                      'escríbela a mano con el año de la foto (README de la biblioteca)')
     if not autor:
         raise Rechazo('la licencia obliga a nombrar al autor y Commons no lo da')
     if len(autor) > 200:

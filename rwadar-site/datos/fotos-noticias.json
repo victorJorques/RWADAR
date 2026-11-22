@@ -133,6 +133,141 @@
    "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
    "sitio": "Wikimedia Commons",
    "pagina": "https://commons.wikimedia.org/wiki/File:Washington,_D.C.,_September_22,_2024_-_101.jpg"
+  },
+  "real-bolsa-francfort-toro-oso": {
+   "origen": "foto",
+   "descripcion": "Las esculturas del toro y el oso ante la Bolsa de Fráncfort (Alemania).",
+   "autor": "Dietmar Rabich",
+   "licencia": "CC BY-SA 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Frankfurt_am_Main,_Skulptur_-Bulle_%26_B%C3%A4r-_--_2015_--_6763.jpg"
+  },
+  "real-bolsa-nueva-york-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada de la Bolsa de Nueva York, con sus columnas y banderas de Estados Unidos.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Wide-Angle_New_York_Stock_Exchange_(51680640260).jpg"
+  },
+  "real-pantalla-cotizaciones-grafico": {
+   "origen": "foto",
+   "descripcion": "Una pantalla de cotizaciones de la Bolsa de Taiwán, con la línea del índice y tablas de precios.",
+   "autor": "中華民國總統府",
+   "licencia": "CC BY 2.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by/2.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg"
+  },
+  "real-lingotes-oro-400oz": {
+   "origen": "foto",
+   "descripcion": "Lingotes de oro de 400 onzas colocados en filas, con su número de serie y la ley «999.9».",
+   "autor": "Andrzej Barabasz",
+   "licencia": "CC BY-SA 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:400-oz-Gold-Bars-AB-01.jpg"
+  },
+  "real-tesoro-eeuu-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada del Departamento del Tesoro de Estados Unidos en Washington, con su pórtico de columnas.",
+   "autor": null,
+   "licencia": "Dominio público",
+   "licenciaUrl": null,
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:U.S._Treasury_building,_Washington,_D.C_LCCN2011631001.tif"
+  },
+  "real-comision-europea-berlaymont": {
+   "origen": "foto",
+   "descripcion": "El edificio Berlaymont de Bruselas, sede de la Comisión Europea, con banderas de la UE delante.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Berlaymont_building_in_Brussels.jpg"
+  },
+  "real-monedas-euro-bandera": {
+   "origen": "foto",
+   "descripcion": "Monedas de euro de varios países sobre la bandera de la Unión Europea.",
+   "autor": "Lukasz Kobus – European Commission, © European Union, 2023",
+   "licencia": "CC BY 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Euro_coins_(05).jpg"
+  },
+  "real-bolsa-madrid-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada del Palacio de la Bolsa de Madrid, con el rótulo «Bolsa de Madrid» sobre las columnas.",
+   "autor": "Luis García",
+   "licencia": "CC BY-SA 3.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Palacio_de_la_Bolsa_de_Madrid_(Espa%C3%B1a)_02.jpg"
+  },
+  "real-bce-francfort": {
+   "origen": "foto",
+   "descripcion": "La torre del Banco Central Europeo en Fráncfort, junto al río Meno.",
+   "autor": "Norbert Nagel",
+   "licencia": "CC BY-SA 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg"
+  },
+  "real-parlamento-europeo-bruselas": {
+   "origen": "foto",
+   "descripcion": "El edificio Paul-Henri Spaak del Parlamento Europeo en Bruselas, con carteles de las elecciones europeas de 2024.",
+   "autor": "VynedJ",
+   "licencia": "CC BY 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Paul-Henri_Spaak_building_20240510.jpg"
+  },
+  "real-sala-servidores-bastidores": {
+   "origen": "foto",
+   "descripcion": "La sala de un centro de datos, vacía, con bastidores de servidores y cables de red.",
+   "autor": "Carl Lender from Sunrise, USA",
+   "licencia": "CC BY 2.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by/2.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg"
+  },
+  "real-datafono-tarjeta": {
+   "origen": "foto",
+   "descripcion": "Un datáfono con una tarjeta metida en la ranura, sobre una mesa.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Card_Payment_(176811287).jpeg"
+  },
+  "real-lingote-oro-terciopelo": {
+   "origen": "foto",
+   "descripcion": "Un lingote de oro de 400 onzas sobre una bandeja de terciopelo azul.",
+   "autor": null,
+   "licencia": "Dominio público",
+   "licenciaUrl": null,
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Gold_bullion_1.jpg"
+  },
+  "real-servidores-cables": {
+   "origen": "foto",
+   "descripcion": "Cables de red junto a un armario de servidores con luces encendidas, en un centro de datos.",
+   "autor": "Victorgrigas",
+   "licencia": "CC BY-SA 3.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Wikimedia_Foundation_Servers-8055_22.jpg"
+  },
+  "real-urbanizacion-punta-prima": {
+   "origen": "foto",
+   "descripcion": "Bloques de apartamentos junto al mar en Punta Prima (Torrevieja, Alicante).",
+   "autor": "Ximonic (Simo Räsänen)",
+   "licencia": "CC BY-SA 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Residential_in_Punta_Prima,_Torrevieja,_Alicante,_Spain,_2022_January_-_2.jpg"
   }
  }
 }

@@ -161,21 +161,21 @@ pone el programa según las fotos que se ven). Hay dos clases:
 
 | Tema | Fotos reales (primero) | Escenas de IA |
 | --- | --- | --- |
-| Regulación en España | — | `regulador-espana`, `regulador-espana-2`, `documentos-consulta` |
-| Regulación en la UE | — | `red-europea`, `instituciones-ue`, `instituciones-ue-2` |
-| Avisos y fraude | — | `alerta-fraude`, `pago-online`, `alerta-fraude-2`, `alerta-fraude-3` |
-| Consultas y reclamaciones | — | `documentos-consulta` |
-| Bonos, pagarés y deuda | — | `pagares-deuda`, `bonos-emision` |
-| Inmobiliario | — | `inmuebles-ciudad`, `inmuebles-costa` |
-| Oro y materias primas | — | `oro-pepitas` |
-| Fondos monetarios y del Tesoro | — | `fondos-liquidez` |
-| Acciones tokenizadas | — | `acciones-eeuu`, `acciones-movil` |
-| Pagos y monedas estables | — | `pago-online`, `moneda-digital` |
-| Bancos | — | `banco-sala` |
-| Bolsas y mercados | — | `acciones-eeuu`, `bolsa-madrid` |
-| Ciberseguridad | — | `servidores-seguridad` |
-| Emisiones e infraestructura | — | `red-europea` |
-| Internacional | — | `planeta-noche` |
+| Regulación en España | `real-cnmv-sede-madrid`, `real-cnmv-entrada-edison`, `real-banco-espana-alcala`, `real-banco-espana-banderas` | `regulador-espana`, `regulador-espana-2`, `documentos-consulta` |
+| Regulación en la UE | `real-comision-europea-berlaymont`, `real-bce-francfort`, `real-parlamento-europeo-bruselas` | `red-europea`, `instituciones-ue`, `instituciones-ue-2` |
+| Avisos y fraude | `real-cnmv-sede-madrid`, `real-cnmv-entrada-edison`, `real-sede-bafin-francfort`, `real-sec-washington` | `alerta-fraude`, `pago-online`, `alerta-fraude-2`, `alerta-fraude-3` |
+| Consultas y reclamaciones | `real-cnmv-sede-madrid`, `real-cnmv-entrada-edison`, `real-banco-espana-alcala` | `documentos-consulta` |
+| Bonos, pagarés y deuda | `real-tesoro-eeuu-fachada` | `pagares-deuda`, `bonos-emision` |
+| Inmobiliario | `real-urbanizacion-punta-prima` | `inmuebles-ciudad`, `inmuebles-costa` |
+| Oro y materias primas | `real-lingotes-oro-400oz`, `real-lingote-oro-terciopelo` | `oro-pepitas` |
+| Fondos monetarios y del Tesoro | `real-tesoro-eeuu-fachada`, `real-monedas-euro-bandera` | `fondos-liquidez` |
+| Acciones tokenizadas | `real-bolsa-nueva-york-fachada`, `real-pantalla-cotizaciones-grafico` | `acciones-eeuu`, `acciones-movil` |
+| Pagos y monedas estables | `real-monedas-euro-bandera`, `real-datafono-tarjeta` | `pago-online`, `moneda-digital` |
+| Bancos | `real-banco-espana-alcala`, `real-banco-espana-banderas`, `real-cajero-teclado` | `banco-sala` |
+| Bolsas y mercados | `real-bolsa-francfort-toro-oso`, `real-bolsa-nueva-york-fachada`, `real-pantalla-cotizaciones-grafico`, `real-bolsa-madrid-fachada` | `acciones-eeuu`, `bolsa-madrid` |
+| Ciberseguridad | `real-sala-servidores-bastidores`, `real-servidores-cables` | `servidores-seguridad` |
+| Emisiones e infraestructura | `real-sala-servidores-bastidores`, `real-servidores-cables` | `red-europea` |
+| Internacional | `real-sede-bafin-francfort`, `real-sec-washington` | `planeta-noche` |
 
 Genéricas por categoría (`genericas` en `fotos.json`; siempre fotos ya
 publicadas):

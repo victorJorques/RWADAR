@@ -166,6 +166,12 @@ a tamaño completo, añade la clave a la tabla de `GUIA-TITULARES.md` y
 `node rwadar-noticias-editoriales.js --comprobar`. Las mañanas automáticas
 nunca importan ni generan fotos.
 
+Fotos de la Comisión Europea: su plantilla de Commons pone «© European
+Union, <año en curso>», y el importador las rechaza. Se escribe a mano el
+crédito que pide su servicio audiovisual, con el año de la foto (por ejemplo,
+«Lukasz Kobus – European Commission, © European Union, 2023» en
+`real-monedas-euro-bandera`).
+
 ## Licencia y transparencia (escenas de IA)
 
 RealVisXL V5.0 Lightning se distribuye con la licencia CreativeML Open RAIL++-M.
