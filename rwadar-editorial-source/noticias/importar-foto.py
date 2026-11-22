@@ -73,7 +73,7 @@ CALIDADES = (84, 80, 76, 72, 68, 64, 60, 56, 52, 48, 44, 40)
 CLAVE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 ENCUADRE = re.compile(r'^(100|[1-9]?\d)% (100|[1-9]?\d)%$')
 PAGINA_COMMONS = re.compile(r'^https://commons\.wikimedia\.org/wiki/File:[^\s"\'<>\\]+$')
-ORIGINAL_COMMONS = re.compile(r'^https://upload\.wikimedia\.org/wikipedia/commons/[^\s"\'<>\\]+$')
+ORIGINAL_COMMONS = re.compile(r'^https://(upload|thumb)\.wikimedia\.org/wikipedia/commons/[^\s"\'<>\\]+$')
 
 # Las licencias admitidas: nombre → (url de la licencia, si obliga a nombrar al autor).
 LICENCIAS = {'Dominio público': (None, False), 'CC0': ('https://creativecommons.org/publicdomain/zero/1.0/', False)}
@@ -323,7 +323,7 @@ def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=Non
     # Commons añade a veces «?utm_source=…»: fuera (el archivo es el mismo sin ese rastreo).
     url = str(url or '').split('?', 1)[0].split('#', 1)[0] or None
     if not url or not ORIGINAL_COMMONS.match(url):
-        raise Rechazo(f'Commons no da una URL de descarga de upload.wikimedia.org ({url})')
+        raise Rechazo(f'Commons no da una URL de descarga de upload.wikimedia.org ni de thumb.wikimedia.org ({url})')
     crudo = descargar(url)
     if usar_original and info.get('sha1') and hashlib.sha1(crudo).hexdigest() != info['sha1'].lower():
         raise Rechazo('el archivo descargado no tiene el sha1 que da Commons')

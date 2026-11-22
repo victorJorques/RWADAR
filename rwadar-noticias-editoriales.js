@@ -102,8 +102,8 @@ function comprobarEntrada(clave, f, manifiesto) {
   if (!fu || typeof fu !== 'object' || Object.keys(fu).sort().join() !== 'archivo,original,pagina,sha256Original,sitio' ||
       fu.sitio !== modeloNoticias.SITIO_FOTOS || !textoLlano(fu.archivo, 240) || !/^File:./.test(fu.archivo) ||
       !modeloNoticias.PAGINA_COMMONS.test(fu.pagina || '') ||
-      !/^https:\/\/upload\.wikimedia\.org\/wikipedia\/commons\/[^\s"'<>\\]+$/.test(fu.original || '') || !/^[a-f0-9]{64}$/.test(fu.sha256Original || '')) {
-    throw new Error(`fotos.json: «${clave}»: la «fuente» es { sitio: "Wikimedia Commons", archivo: "File:…", pagina (https://commons.wikimedia.org/wiki/File:…), original (https://upload.wikimedia.org/…), sha256Original }`);
+      !/^https:\/\/(upload|thumb)\.wikimedia\.org\/wikipedia\/commons\/[^\s"'<>\\]+$/.test(fu.original || '') || !/^[a-f0-9]{64}$/.test(fu.sha256Original || '')) {
+    throw new Error(`fotos.json: «${clave}»: la «fuente» es { sitio: "Wikimedia Commons", archivo: "File:…", pagina (https://commons.wikimedia.org/wiki/File:…), original (https://upload.wikimedia.org/… o https://thumb.wikimedia.org/…), sha256Original }`);
   }
   const lic = f.licencia, admitida = lic && typeof lic === 'object' && Object.hasOwn(modeloNoticias.LICENCIAS_FOTO, lic.nombre)
     ? modeloNoticias.LICENCIAS_FOTO[lic.nombre] : null;
