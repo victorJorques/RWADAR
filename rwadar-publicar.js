@@ -25,7 +25,7 @@ const entornoSincronizacion = { ...process.env };
 delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
 const { adelgazarJS, adelgazarCSS, sinComentariosHTML } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
-const { cargarFotosNoticias } = require('./rwadar-noticias-editoriales');
+const { cargarFotosNoticias, comprobarCreditos, clavesUsadas: clavesFotosUsadas, fotosRealesEnApp, comprobarFotosRealesEnApp } = require('./rwadar-noticias-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
 const { comprobar: comprobarAcademy, paginasAcademy, comprobarLeccionesPublicadas } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
@@ -179,8 +179,17 @@ catch (e) { console.error('PRECARGAS EDITORIALES BLOQUEADAS:', e.message); proce
    sha256 y tamaño). Sin ellas no se publica, tampoco en local: así las
    pruebas ven lo mismo que verá la web. */
 let fotosNoticias;
-try { fotosNoticias = cargarFotosNoticias(__dirname); }
-catch (e) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
+/* Y su origen y su crédito (22/11/2026: fotos reales de Wikimedia Commons):
+   /datos/fotos-noticias.json tiene que ser el que sale de fotos.json, para
+   que la web y la app nunca enseñen un crédito que no es el de la biblioteca. */
+let creditosFotos;
+try {
+  fotosNoticias = cargarFotosNoticias(__dirname);
+  comprobarCreditos(__dirname, fotosNoticias.manifiesto);
+  // Ninguna foto real hasta que la app instalada enseñe su crédito (fotos.realesEnApp, tras la OTA).
+  comprobarFotosRealesEnApp(fotosNoticias.manifiesto, clavesFotosUsadas(__dirname), fotosRealesEnApp(__dirname));
+  creditosFotos = noticiasModelo.validarCreditosFotos(JSON.parse(fs.readFileSync(path.join(DIR, 'datos', 'fotos-noticias.json'), 'utf8')));
+} catch (e) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
 if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
   console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
   process.exit(2);
@@ -651,7 +660,7 @@ function construirSalida() {
        Solo en el index.html de esta carpeta temporal; rwadar-site/index.html
        no se toca (rwadar-noticias-portada.js). */
     const inicioTemporal = path.join(temporal, 'index.html');
-    fs.writeFileSync(inicioTemporal, prepararInicioPublicado(fs.readFileSync(inicioTemporal, 'utf8'), noticias), 'utf8');
+    fs.writeFileSync(inicioTemporal, prepararInicioPublicado(fs.readFileSync(inicioTemporal, 'utf8'), noticias, creditosFotos), 'utf8');
     /* «Novedades de RWAdar» (12/11/2026): lo leen la ventana de Inicio, la
        página /novedades-rwadar/ y la app. Un archivo mal formado no se
        publica: la web no enseñaría nada y la app se quedaría con su copia. */

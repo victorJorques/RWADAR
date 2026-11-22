@@ -1980,6 +1980,12 @@
   "Otros": "Other",
   "Noticias": "News",
   "Imágenes ilustrativas generadas con IA, no fotos de la noticia.": "Illustrative AI-generated images, not photos of the news.",
+  // Fotos reales de Wikimedia Commons en las noticias (22/11/2026): la nota y el crédito de las de IA (el modelo también los da en los dos idiomas).
+  "Fotos de archivo con licencia libre: ilustran el tema, no son de la noticia.": "Stock photos under free licences: they illustrate the topic, not the news itself.",
+  "Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.": "Stock photos under free licences and AI-generated illustrations: they illustrate the topic, not the news itself.",
+  "Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.": "Illustrative images, some AI-generated: not photos of the news.",
+  "Imágenes ilustrativas, no fotos de la noticia.": "Illustrative images, not photos of the news.",
+  "Ilustración generada con IA": "AI-generated illustration",
   "Todas las noticias": "All the news",
   "Leer el detalle": "Read the details",
   "Aprende": "Learn",

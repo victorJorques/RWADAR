@@ -19,10 +19,21 @@
      en la fuente (sales de RWAdar) ↗» (rel="noopener noreferrer"). Escape o
      «×» lo cierran y el foco vuelve a la tarjeta. Un enlace /noticias/#<id>
      abre esa noticia (/noticias/#<id> lleva a /mercado/#<id>).
-   Las fotos son ilustrativas, generadas con IA y servidas por RWAdar en
-   /noticias-editoriales/<clave>.webp (la clave es el campo «imagen»). Si una
-   no carga o la noticia no trae «imagen», queda el fondo oscuro y el titular
-   sigue legible.
+   Las fotos son ilustrativas (ilustran el tema, no son de la noticia) y las
+   sirve RWAdar en /noticias-editoriales/<clave>.webp (la clave es el campo
+   «imagen»). Si una no carga o la noticia no trae «imagen», queda el fondo
+   oscuro y el titular sigue legible. Desde el 22/11/2026 unas son fotos
+   reales con licencia libre de Wikimedia Commons y otras, escenas generadas
+   con IA: su origen y su crédito salen de /datos/fotos-noticias.json
+   (modelo.RUTA_CREDITOS). Debajo de cada tarjeta, el crédito corto («Foto:
+   autor · licencia · Wikimedia Commons», enlace a la página del archivo) o
+   «Ilustración generada con IA»; en /mercado/ y en el detalle, el texto
+   alternativo de una foto real es su descripción (en Inicio la foto va
+   dentro del enlace de la noticia y sigue decorativa: el nombre del enlace
+   es el titular). Sin ese archivo, una foto real se ve sin crédito, nunca
+   con uno falso, y las de IA siguen diciendo que lo son (modelo.FOTOS_IA).
+   La línea de debajo de la sección dice la verdad de las fotos que se ven
+   (modelo.notaFotos).
    Los textos de cada noticia salen del archivo en el idioma elegido (los
    campos «en» en inglés) y no pasan por el diccionario; los de la interfaz
    los traduce idioma-web con lib/idioma-en.js. Todo se escribe con
@@ -31,7 +42,7 @@
 (() => {
   const modelo = globalThis.RWAdarNoticiasModelo;
   const RUTA = '/datos/noticias-v2.json', PLAZO_MS = 10000;
-  let seccion, modo, lista, estado, fecha, nota, dialogo, cuerpoDlg, datos = null, abierta = null, origenFoco = null, suscrito = false;
+  let seccion, modo, lista, estado, fecha, nota, dialogo, cuerpoDlg, datos = null, creditos = null, abierta = null, origenFoco = null, suscrito = false;
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
   const quieto = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -58,17 +69,45 @@
      para nadie más que RWAdar. Los atributos (src, srcset, sizes, loading…)
      los da el modelo (atributosFoto), los mismos que escribe el publicador en
      Inicio: aquí no se escribe ninguno a mano. Si falla, se quita y queda el fondo. */
-  function foto(n, clase, papel) {
+  function foto(n, clase, papel, { describir = false } = {}) {
     const caja = el('span', clase);
-    caja.setAttribute('aria-hidden', 'true');
     const a = modelo.atributosFoto(n, papel);
+    // Una foto real fuera de un enlace (/mercado/ y el detalle) dice lo que se ve; las demás, decorativas.
+    const c = describir ? modelo.creditoFoto(n, creditos, idioma()) : null;
+    const alt = a && c && c.origen === 'foto' ? c.alt : '';
+    if (!alt) caja.setAttribute('aria-hidden', 'true');
     if (!a) { caja.classList.add('nt-foto--sin'); return caja; }
     const img = document.createElement('img');
-    img.alt = '';
+    img.alt = alt;
+    // La descripción está en castellano (también con la web en inglés).
+    if (alt) { img.lang = 'es'; img.setAttribute('translate', 'no'); }
     for (const k of ['width', 'height', 'decoding', 'loading']) if (a[k] !== undefined) img.setAttribute(k, a[k]);
     img.addEventListener('error', () => { img.remove(); caja.classList.add('nt-foto--sin'); }, { once: true });
     for (const k of ['src', 'srcset', 'sizes']) img.setAttribute(k, a[k]);
     caja.append(img);
+    return caja;
+  }
+  /* El crédito de la foto, fuera del enlace de la tarjeta: una foto real,
+     «Foto: autor · licencia · Wikimedia Commons», con la licencia enlazada a
+     su texto (si tiene dirección) y «Wikimedia Commons» a la página del
+     archivo (los trozos los da el modelo: creditoFoto().partes); en el
+     detalle, además, «· recortada»; una de IA, «Ilustración generada con
+     IA»; sin crédito conocido, nada. El mismo marcado que escribe el
+     publicador en Inicio (rwadar-noticias-portada.js). */
+  function credito(n, clase = 'nt-credito', { detalle = false } = {}) {
+    const c = modelo.creditoFoto(n, creditos, idioma());
+    if (!c) return null;
+    if (c.origen === 'ia') return dato('span', clase + ' nt-credito--ia', c.texto);
+    const caja = dato('span', clase + ' nt-credito--foto', '');
+    for (const parte of c.partes) {
+      if (!parte.enlace) { caja.append(parte.texto); continue; }
+      const a = el('a', 'nt-credito-enl', parte.texto);
+      a.href = parte.enlace;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      caja.append(a);
+    }
+    if (detalle) caja.append(' · ' + c.recorte);
     return caja;
   }
   function meta(n, clase) {
@@ -93,13 +132,20 @@
     return p;
   }
 
-  async function cargar() {
+  async function pedirJSON(ruta) {
     const abort = new AbortController(), reloj = setTimeout(() => abort.abort(), PLAZO_MS);
     try {
-      const r = await fetch(RUTA, { credentials: 'omit', cache: 'no-cache', headers: { Accept: 'application/json' }, signal: abort.signal });
+      const r = await fetch(ruta, { credentials: 'omit', cache: 'no-cache', headers: { Accept: 'application/json' }, signal: abort.signal });
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      return modelo.validarNoticias(await r.json());
-    } catch { return null; } finally { clearTimeout(reloj); }
+      return await r.json();
+    } finally { clearTimeout(reloj); }
+  }
+  async function cargar() {
+    try { return modelo.validarNoticias(await pedirJSON(RUTA)); } catch { return null; }
+  }
+  // Los créditos: si no llegan o no valen, ninguno (nunca uno falso).
+  async function cargarCreditos() {
+    try { return modelo.creditosValidos(await pedirJSON(modelo.RUTA_CREDITOS)); } catch { return null; }
   }
 
   /* Una noticia de la rejilla (14/11/2026, «noticias que entran por los
@@ -128,7 +174,7 @@
       b.dataset.ntId = n.id;
       b.append(dato('span', '', t.titulo));
       h.append(b);
-      caja.append(foto(n, pre + '-foto', papel), textoTarjeta(n, pre, h, portada, 'div'));
+      caja.append(foto(n, pre + '-foto', papel, { describir: true }), textoTarjeta(n, pre, h, portada, 'div'));
     } else {
       caja = el('a', pre);
       caja.href = '/mercado/#' + encodeURIComponent(n.id);
@@ -136,6 +182,8 @@
       caja.append(foto(n, pre + '-foto', papel), textoTarjeta(n, pre, dato('span', pre + '-tit', t.titulo), portada, 'span'));
     }
     li.append(caja);
+    const cr = credito(n);
+    if (cr) li.append(cr);
     // /mercado/: debajo de la portada, por qué te importa (el detalle lleva el resumen y eso).
     if (portada && modo === 'lista') {
       const importa = el('p', 'nt-v-importa');
@@ -195,19 +243,24 @@
       fecha.append(cuando);
       fecha.hidden = false;
     }
-    nota.hidden = false;
     lista.hidden = false;
     /* Inicio llega con las tres ya escritas por el publicador
        (data-nt-prepintado = la firma de lo pintado): si es la misma edición y
        la página está en castellano, no se rehacen, solo se pone «Hoy» o
        «Ayer». Si no (inglés, otra edición), se rehacen. */
     if (modo === 'portada' && !modelo.debeRepintar({ prepintado: lista.dataset.ntPrepintado, datos, idioma: idioma() })) {
+      // El publicador ya escribió los créditos y la nota de esta edición.
+      nota.hidden = false;
       ponerRecientes();
       return;
     }
     delete lista.dataset.ntPrepintado;
     const enfocada = document.activeElement?.closest?.('[data-nt-id]')?.dataset.ntId;
     const noticias = modo === 'lista' ? datos.noticias : datos.noticias.slice(0, modelo.EN_INICIO);
+    // La línea de debajo: la verdad de las fotos que se ven (todas reales, de IA, de las dos o sin crédito).
+    nota.textContent = modelo.notaFotos(noticias, creditos, idioma());
+    nota.lang = idioma(); nota.setAttribute('translate', 'no');
+    nota.hidden = false;
     lista.replaceChildren(...noticias.map((n, i) => tarjeta(n, i, noticias.length)));
     ponerRecientes();
     if (enfocada) lista.querySelector(`[data-nt-id="${CSS.escape(enfocada)}"]`)?.focus({ preventScroll: true });
@@ -218,14 +271,15 @@
   function pintarDetalle(n) {
     const lengua = idioma(), t = modelo.textos(n, lengua);
     const marco = el('article', 'nt-dlg-art');
-    const arte = foto(n, 'nt-dlg-arte', 'detalle');
+    const arte = foto(n, 'nt-dlg-arte', 'detalle', { describir: true });
+    const cr = credito(n, 'nt-dlg-credito', { detalle: true });
     const m = meta(n, 'nt-dlg-meta');
     const reciente = etiqueta(n, 'nt-hoy--dlg');
     if (reciente) m.append(' ', reciente);
     const titulo = dato('h2', 'nt-dlg-tit', t.titulo);
     titulo.id = 'ntDlgTit';
     // Sin «tituloInformativo»: repetía el titular con otras palabras.
-    marco.append(arte, m, titulo, dato('p', 'nt-dlg-resumen', t.resumen));
+    marco.append(arte, ...(cr ? [cr] : []), m, titulo, dato('p', 'nt-dlg-resumen', t.resumen));
     const importa = el('section', 'nt-dlg-bloque nt-dlg-importa');
     importa.append(el('h3', '', 'Por qué te importa'), dato('p', '', t.porQueImporta));
     const fuente = el('section', 'nt-dlg-bloque nt-dlg-fuente');
@@ -308,7 +362,7 @@
       dialogo.addEventListener('close', alCerrar);
       addEventListener('hashchange', abrirDesdeAncla);
     }
-    datos = await cargar();
+    [datos, creditos] = await Promise.all([cargar(), cargarCreditos()]);
     pintar();
     if (modo === 'lista') abrirDesdeAncla();
   }

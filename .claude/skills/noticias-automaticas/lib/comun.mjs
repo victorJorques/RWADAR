@@ -130,6 +130,8 @@ export function cargarConfig(ruta = path.join(RAIZ_REPO, RUTAS.config)) {
   if (!entero(e.hoyMax, 0, 5) || !entero(e.importanteMax, 1, 10) || !entero(e.totalMin, 1, 8) || !entero(e.totalMax, e.totalMin || 1, 24) ||
     !entero(e.diasImportante, 1, 60)) fallos.push('edicion: hoyMax, importanteMax, totalMin, totalMax y diasImportante');
   if (c.fotos?.distintasEn !== 'edicion') fallos.push('fotos.distintasEn debe ser «edicion»');
+  // Fotos reales en las noticias solo tras la OTA con sus créditos (22/11/2026).
+  if (typeof c.fotos?.realesEnApp !== 'boolean') fallos.push('fotos.realesEnApp debe ser true o false');
   const genericas = c.fotos?.genericas;
   if (!genericas || typeof genericas !== 'object' || ['regulacion', 'mercado', 'producto', 'riesgo'].some(k => typeof genericas[k] !== 'string')) {
     fallos.push('fotos.genericas debe tener regulacion, mercado, producto y riesgo');

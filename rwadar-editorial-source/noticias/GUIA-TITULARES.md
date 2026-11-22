@@ -116,42 +116,66 @@ escribe uno» y «4 · La foto» son fijos: una prueba los exige.
 
 ## 4 · La foto
 
-Las fotos son de la biblioteca (`fotos.json`): escenas genéricas generadas
-con IA, sin texto, logotipos, banderas ni personas. Debajo de las noticias va
-siempre «Imágenes ilustrativas generadas con IA, no fotos de la noticia».
+Las fotos son de la biblioteca (fotos.json). Ninguna es una foto de la
+noticia: ilustran su tema, y así se dice debajo de las noticias (la línea la
+pone el programa según las fotos que se ven). Hay dos clases:
 
-1. **Elige por tema**, con la tabla de abajo (la misma que el campo `temas`
-   de cada foto en `fotos.json`).
-2. **Ninguna foto se repite en la misma edición** (el programa lo para). Si
+- **Fotos reales** con licencia libre de Wikimedia Commons (la biblioteca
+  las admite desde el 22/11/2026; las que hay están en la tabla de abajo):
+  llevan su crédito («Foto: autor · licencia · Wikimedia Commons») y su
+  descripción, que es lo que de verdad se ve.
+- **Escenas generadas con IA**: genéricas, sin texto, logotipos, banderas ni
+  personas; se ven con «Ilustración generada con IA».
+
+0. **Mientras «fotos.realesEnApp» sea false** en el config.json de las
+   noticias automáticas, ninguna noticia lleva una foto real: la app
+   instalada antes de la OTA con los créditos las daría por IA y sin el autor
+   que pide su licencia (V-2 y el publicador lo paran). Se pone a true, en un
+   PR aparte, después de enviar esa OTA. Hasta entonces, las reglas 1 y 6 se
+   leen con las escenas de IA.
+1. **Prefiere una foto real** que muestre de verdad lo que dice su
+   descripción y que tenga que ver con la noticia: para una noticia de un
+   supervisor, su sede si está en la biblioteca; para el oro, lingotes; para
+   una bolsa, su edificio. Lee la descripción, no solo la clave.
+2. **Nunca se presenta como foto del hecho**: la sede de la CNMV ilustra una
+   noticia de la CNMV, no «la reunión de ayer». Ni el titular ni el resumen
+   dicen «en la imagen».
+3. **Sin personas reconocibles** (la biblioteca solo admite fotos reales sin
+   ellas) y que la foto no diga lo contrario que la noticia: el rojo de
+   alarma solo para avisos, fraude o riesgo; nada de oro para un bono ni de
+   banco para una plataforma cripto; la sede de un supervisor no va con una
+   noticia de otro.
+4. **Ninguna foto se repite en la misma edición** (el programa lo para). Si
    el tema ya está usado, otra foto del mismo tema; si no hay, la de un tema
    cercano que no engañe.
-3. **La portada** (la primera noticia) es la que más se ve: dale la foto más
+5. **La portada** (la primera noticia) es la que más se ve: dale la foto más
    clara del tema. Si la portada de ayer llevaba la misma foto y hay otra del
    tema, cámbiala.
-4. **Que la foto no diga lo contrario que la noticia**: el rojo de alarma
-   (`alerta-fraude…`) solo para avisos, fraude o riesgo; nada de oro para un
-   bono ni de banco para una plataforma cripto.
-5. **Si ninguna encaja**, la genérica de la categoría (`genericas` en
-   `fotos.json`) y se apunta la escena que faltaría (`faltaria`) para
-   ampliar la biblioteca. Las mañanas automáticas **nunca generan fotos**.
+6. **Las escenas de IA, solo si ninguna foto real encaja**. Si tampoco encaja
+   ninguna escena, la genérica de la categoría (genericas en fotos.json) y se
+   apunta la foto que faltaría (faltaria) para ampliar la biblioteca. Las
+   mañanas automáticas **nunca generan ni importan fotos**: las fotos reales
+   las trae una persona con importar-foto.py (README de la biblioteca).
+7. El crédito y la descripción son los de la biblioteca: no se escriben a
+   mano en la noticia ni se cambian (el verificador lo comprueba).
 
-| Tema | Fotos |
-| --- | --- |
-| Regulación en España | `regulador-espana`, `regulador-espana-2`, `documentos-consulta` |
-| Regulación en la UE | `red-europea`, `instituciones-ue`, `instituciones-ue-2` |
-| Avisos y fraude | `alerta-fraude`, `pago-online`, `alerta-fraude-2`, `alerta-fraude-3` |
-| Consultas y reclamaciones | `documentos-consulta` |
-| Bonos, pagarés y deuda | `pagares-deuda`, `bonos-emision` |
-| Inmobiliario | `inmuebles-ciudad`, `inmuebles-costa` |
-| Oro y materias primas | `oro-pepitas` |
-| Fondos monetarios y del Tesoro | `fondos-liquidez` |
-| Acciones tokenizadas | `acciones-eeuu`, `acciones-movil` |
-| Pagos y monedas estables | `pago-online`, `moneda-digital` |
-| Bancos | `banco-sala` |
-| Bolsas y mercados | `acciones-eeuu`, `bolsa-madrid` |
-| Ciberseguridad | `servidores-seguridad` |
-| Emisiones e infraestructura | `red-europea` |
-| Internacional | `planeta-noche` |
+| Tema | Fotos reales (primero) | Escenas de IA |
+| --- | --- | --- |
+| Regulación en España | — | `regulador-espana`, `regulador-espana-2`, `documentos-consulta` |
+| Regulación en la UE | — | `red-europea`, `instituciones-ue`, `instituciones-ue-2` |
+| Avisos y fraude | — | `alerta-fraude`, `pago-online`, `alerta-fraude-2`, `alerta-fraude-3` |
+| Consultas y reclamaciones | — | `documentos-consulta` |
+| Bonos, pagarés y deuda | — | `pagares-deuda`, `bonos-emision` |
+| Inmobiliario | — | `inmuebles-ciudad`, `inmuebles-costa` |
+| Oro y materias primas | — | `oro-pepitas` |
+| Fondos monetarios y del Tesoro | — | `fondos-liquidez` |
+| Acciones tokenizadas | — | `acciones-eeuu`, `acciones-movil` |
+| Pagos y monedas estables | — | `pago-online`, `moneda-digital` |
+| Bancos | — | `banco-sala` |
+| Bolsas y mercados | — | `acciones-eeuu`, `bolsa-madrid` |
+| Ciberseguridad | — | `servidores-seguridad` |
+| Emisiones e infraestructura | — | `red-europea` |
+| Internacional | — | `planeta-noche` |
 
 Genéricas por categoría (`genericas` en `fotos.json`; siempre fotos ya
 publicadas):
@@ -161,7 +185,8 @@ publicadas):
 - producto → `acciones-eeuu`
 - riesgo → `alerta-fraude`
 
-(Esta tabla es la de `fotos.json`: una prueba las compara. La sala de
+(Esta tabla es la de fotos.json: una prueba las compara; al importar una
+foto real, se añade su clave en su columna. La sala de
 operaciones que se probó el 14/11 no se aprobó, porque en sus dos tomas los
 monitores salían con seudotexto; para bolsas y mercados quedan `bolsa-madrid`
 y `acciones-eeuu`. Si un tema se queda sin foto, sale de la lista de temas y

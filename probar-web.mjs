@@ -1988,7 +1988,7 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   prueba('las noticias van en Inicio dentro de «Mercado y noticias», tras la cotización, y el HTML no trae ninguna',
     inicio < 0 && html.indexOf('data-noticias="portada"') > html.indexOf('id="relNuevas"') && html.indexOf('id="ntLista"') > html.indexOf('id="mkCuerpo"') &&
     html.indexOf('data-noticias="portada"') < html.indexOf('id="iniAprendeTit"') && !/ntDialogo/.test(panelInicioHTML) &&
-    panelInicioHTML.includes('Imágenes ilustrativas generadas con IA, no fotos de la noticia.') &&
+    panelInicioHTML.includes('<p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas, no fotos de la noticia.</p>') &&
     datosNt.noticias.every(n => !html.includes(n.titulo)));
   const scriptNt = lee('assets/noticias-sector-20261110.js');
   prueba('/mercado/ trae la lista y el diálogo del detalle, sin ninguna noticia escrita en el HTML; Inicio enlaza a /mercado/#<id>',
@@ -2012,6 +2012,17 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     ['rwadar-app/noticias/copiar-modelo-web.cjs', '--comprobar']]) {
     const r = spawnSync(process.execPath, args, { cwd: raiz, encoding: 'utf8' });
     prueba(`node ${args.join(' ')} pasa`, r.status === 0);
+  }
+  // El importador de fotos reales de Wikimedia Commons (22/11/2026), con su prueba sin red; también aquí y no en test:tools.
+  {
+    const r = spawnSync('python3', ['-I', 'rwadar-editorial-source/noticias/probar-importar-foto.py'], { cwd: raiz, encoding: 'utf8' });
+    if (r.status !== 0) console.error(String(r.stdout || '') + String(r.stderr || '') + String(r.error || ''));
+    // Y corren todas: ninguna se salta (sin Pillow con WebP la prueba falla; la CI lo instala).
+    const pruebasPy = (fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/noticias/probar-importar-foto.py'), 'utf8').match(/^ {4}def test_/gm) || []).length;
+    const salidaPy = String(r.stderr || '');
+    prueba(`python3 rwadar-editorial-source/noticias/probar-importar-foto.py pasa (el importador de Commons, sin red): las ${pruebasPy} pruebas, sin saltarse ninguna`,
+      r.status === 0 && pruebasPy >= 12 && new RegExp(`\\nRan ${pruebasPy} tests? in `).test(salidaPy) && /\nOK\s*$/.test(salidaPy) && !/skipped/.test(salidaPy) &&
+      /if: \$\{\{ matrix\.base \}\}\n\s+run: python3 -m pip install [^\n]*Pillow==\d+\.\d+\.\d+/.test(fs.readFileSync(path.join(raiz, '.github/workflows/ci.yml'), 'utf8')));
   }
   // Las fotos: cada «imagen» tiene su WebP en noticias-editoriales/, con los bytes y el sha256 de fotos.json, y no sobra ninguno.
   // Desde el 14/11/2026, también sus variantes de 480 y 960 (en sus carpetas), ni más ni menos.
@@ -2042,15 +2053,46 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   const lisNt = [...ulPublicada.matchAll(/<li\b[^>]*>/g)].map(m => m[0]);
   const imgsNt = [...ulPublicada.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
   const enInicio = datosNt.noticias.slice(0, nt.EN_INICIO);
+  /* Fotos reales con licencia libre (22/11/2026): el origen y el crédito de cada foto, en
+     /datos/fotos-noticias.json (aparte: la app instalada rechazaría una clave nueva en las noticias),
+     generado de fotos.json, y en Inicio, debajo de cada tarjeta, su crédito y la nota que dice la verdad. */
+  const fotosMod = require('./rwadar-noticias-editoriales.js');
+  const textoCreditos = lee('datos/fotos-noticias.json');
+  const creditosNt = nt.validarCreditosFotos(JSON.parse(textoCreditos));
+  const { ARCHIVOS_PUBLICABLES: publicablesNt } = require('./rwadar-publicacion-segura.js');
+  prueba('/datos/fotos-noticias.json sale de fotos.json (--creditos), se publica tal cual, lo valida el publicador y lo comprueba el vigilante en vivo',
+    textoCreditos === fotosMod.creditosDesdeManifiesto(JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/noticias/fotos.json'), 'utf8'))) &&
+    fs.readFileSync(path.join(publicado, 'datos', 'fotos-noticias.json'), 'utf8') === textoCreditos && publicablesNt.includes('datos/fotos-noticias.json') &&
+    /comprobarCreditos\(__dirname, fotosNoticias\.manifiesto\)/.test(publicador) && /noticiasModelo\.validarCreditosFotos\(/.test(publicador) &&
+    fs.readFileSync(path.join(raiz, '.github', 'comprobar-publicado.mjs'), 'utf8').includes("pedir('/datos/fotos-noticias.json')") &&
+    Object.keys(creditosNt.fotos).sort().join() === Object.keys(fotosNt).sort().join() &&
+    Object.entries(fotosNt).every(([k, f]) => creditosNt.fotos[k].origen === (f.origen === 'foto' ? 'foto' : 'ia')) &&
+    nt.FOTOS_IA.every(k => creditosNt.fotos[k]?.origen === 'ia'));
+  // Una foto real: «Foto: autor · licencia · Wikimedia Commons», con la licencia enlazada a su texto
+  // (si tiene dirección) y «Wikimedia Commons» a la página del archivo, como piden las licencias CC.
+  const enlaceCredito = (texto, href) => `<a class="nt-credito-enl" href="${portadaNt.esc(href)}" target="_blank" rel="noopener noreferrer">${portadaNt.esc(texto)}</a>`;
+  prueba('en el Inicio publicado, debajo de cada tarjeta y fuera de su enlace, el crédito de su foto (real, con su licencia y la página de Commons enlazadas; o «Ilustración generada con IA»)',
+    enInicio.every(n => {
+      const c = nt.creditoFoto(n, creditosNt, 'es');
+      const li = ulPublicada.slice(ulPublicada.indexOf(`data-nt-id="${n.id}"`));
+      const tras = li.slice(li.indexOf('</a>') + 4, li.indexOf('</li>'));
+      if (!c) return false;
+      if (c.origen === 'ia') return tras === `<span class="nt-credito nt-credito--ia" translate="no" lang="es">${c.texto}</span>`;
+      const fc = creditosNt.fotos[n.imagen];
+      const autor = fc.autor ? `${portadaNt.esc(fc.autor)} · ` : '';
+      const licencia = fc.licenciaUrl ? enlaceCredito(fc.licencia, fc.licenciaUrl) : portadaNt.esc(fc.licencia);
+      return tras === `<span class="nt-credito nt-credito--foto" translate="no" lang="es">Foto: ${autor}${licencia} · ${enlaceCredito('Wikimedia Commons', fc.pagina)}</span>`;
+    }));
   prueba('el Inicio publicado trae la portada y dos tarjetas escritas, con la firma de la edición; rwadar-site/index.html, la lista vacía',
     ulPublicada.includes(`data-nt-prepintado="${firmaNt}"`) && !/<ul class="nt-v" id="ntLista"[^>]*\shidden/.test(ulPublicada) &&
     lisNt.length === enInicio.length && lisNt[0] === '<li class="nt-v-portada">' &&
     enInicio.every(n => ulPublicada.includes(`href="/mercado/#${n.id}" data-nt-id="${n.id}"`) && ulPublicada.includes(portadaNt.esc(n.titulo))) &&
-    /<p class="nt-estado" id="ntEstado" role="status" hidden>/.test(htmlPublicado) && /<p class="nt-nota" id="ntNota">Imágenes ilustrativas/.test(htmlPublicado) &&
+    /<p class="nt-estado" id="ntEstado" role="status" hidden>/.test(htmlPublicado) &&
+    htmlPublicado.includes(`<p class="nt-nota" id="ntNota" translate="no" lang="es">${nt.notaFotos(enInicio, creditosNt, 'es')}</p>`) &&
     !html.includes('data-nt-prepintado') && html.includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') &&
     !/\sstyle\s*=/.test(ulPublicada) &&
     portadaNt.sinNoticiasInicio(htmlPublicado).includes('<ul class="nt-v" id="ntLista" aria-labelledby="ntTit" hidden></ul>') &&
-    /prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias\)/.test(publicador) && !/writeFileSync\(FILE[^;]*prepararInicio/.test(publicador));
+    /prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias, creditosFotos\)/.test(publicador) && !/writeFileSync\(FILE[^;]*prepararInicio/.test(publicador));
   prueba('las fotos de Inicio llevan srcset y sizes del modelo; la portada no es perezosa y las tarjetas sí',
     imgsNt.length === enInicio.length && imgsNt.every((img, i) => {
       const a = nt.atributosFoto(enInicio[i], i === 0 ? 'portada' : nt.papelTarjeta(i, enInicio.length));
@@ -2093,7 +2135,9 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     /modelo\.atributosFoto\(n, papel\)/.test(scriptNt) && !/\.(?:srcset|sizes|loading)\s*=/.test(scriptNt) &&
     !/setAttribute\('(?:srcset|sizes|loading)'/.test(scriptNt) && !/['"](?:lazy|eager)['"]/.test(scriptNt) &&
     /modelo\.debeRepintar\(\{ prepintado: lista\.dataset\.ntPrepintado, datos, idioma: idioma\(\) \}\)/.test(scriptNt) &&
-    panelInicioHTML.includes('Imágenes ilustrativas generadas con IA, no fotos de la noticia.') && !/\.nt-compacta|\.nt-c\b|\.nt-art|\.nt-fila/.test(lee('assets/mercado-20261111.css') + cssNt));
+    /nota\.textContent = modelo\.notaFotos\(noticias, creditos, idioma\(\)\)/.test(scriptNt) && /modelo\.creditoFoto\(n, creditos, idioma\(\)\)/.test(scriptNt) &&
+    /modelo\.creditosValidos\(await pedirJSON\(modelo\.RUTA_CREDITOS\)\)/.test(scriptNt) &&
+    !/\.nt-compacta|\.nt-c\b|\.nt-art|\.nt-fila/.test(lee('assets/mercado-20261111.css') + cssNt));
   const ntPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/noticias-sector-/.test(r));
   prueba('el motor y la sección de las noticias salen con huella, tras la tokenización y antes del snapshot del catálogo',
     ntPublicados.length === 2 && /^\/assets\/noticias-sector-modelo-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[0]) &&
@@ -3926,7 +3970,8 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
   prueba('el detalle explica lo publicado del 11 al 14/11 en frases cortas (el mercado en directo, las noticias con foto, avisos, el «1», la sesión de 30 días, el correo y la calculadora)',
     ['mercado-directo', 'noticias-foto', 'avisos-movil', 'avisos-sin-leer', 'sesion-30-dias', 'contacto', 'calcula-y-mercado'].every(id => datos.detalle.some(s => s.id === id)) &&
     datos.detalle[0].id === 'mercado-directo' && /cada 5 minutos/.test(datos.detalle[0].parrafos.join(' ')) &&
-    /no fotos de la noticia/.test(datos.detalle.find(s => s.id === 'noticias-foto').parrafos.join(' ')) &&
+    /no son fotos de la noticia/.test(datos.detalle.find(s => s.id === 'noticias-foto').parrafos.join(' ')) &&
+    /they are not photos of the news/.test(datos.detalle.find(s => s.id === 'noticias-foto').en.parrafos.join(' ')) &&
     datos.detalle.every(s => [...s.parrafos, ...s.pasos].every(f => f.split(/(?<=[.:!?])\s+/).every(frase => frase.length <= 160))) &&
     /Perfil › Avisos/.test(JSON.stringify(seccionAvisos)) && /Safari/.test(seccionAvisos.parrafos.join(' ')) &&
     /Mantener la sesión iniciada en este dispositivo/.test(JSON.stringify(datos.detalle)) && /rwadares@gmail\.com/.test(JSON.stringify(datos.detalle)));

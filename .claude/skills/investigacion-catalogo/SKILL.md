@@ -125,8 +125,10 @@ ciclo se renuevan las noticias de Inicio: flujo con dos analistas (regulación
 España/UE; mercado, productos y riesgos), un redactor jefe y un verificador
 independiente (modelo: `rwadar-app/data/verificaciones/2026-11-10-v2/noticias/`,
 con `EDICION.md` y `VERIFICACION.md`). «Hoy» = 2–3 del día o del anterior (si
-no hay ninguna con fuente, ninguna); «Lo más importante» = 4–5 de los últimos
-30 días. Titulares propios con gancho y sin engañar (≤ 70 caracteres, lo que
+no hay ninguna con fuente, ninguna); «Lo más importante» = hasta 8 de los
+últimos 30 días (22/11/2026; total de la edición, entre 3 y 8). Las fotos,
+de la biblioteca: primero las reales de Wikimedia Commons, con su crédito
+(guía, «4 · La foto»). Titulares propios con gancho y sin engañar (≤ 70 caracteres, lo que
 cambia para el lector primero, con cifra o consecuencia; nada de promesas ni
 exageraciones), comprobados contra el resumen y la fuente. El JSON verificado
 se copia a `rwadar-site/datos/noticias.json` (lo valida `rwadar-publicar.js`)

@@ -6,6 +6,75 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · SIN COMMIT, SIN PUBLICAR
+
+- **Orden de Víctor (22/11):** «Pero noticias reales y verificadas eh y
+  cúrrate más las fotos anda que sean reales». Es el cambio de programa; las
+  fotos las elige otro equipo (aquí no se importó ninguna al repositorio).
+- **«Lo más importante» hasta 8:** `config.json` (`importanteMax` 8; el
+  total sigue en 8), EDITOR.md, SKILL de `investigacion-catalogo` y una prueba
+  nueva en `validar.test.mjs` (8 pasan; con 9, V-4 para).
+- **Biblioteca, esquema 2:** `fotos.json` admite fotos reales (`"origen":
+  "foto"`, `descripcion`, `fuente` de Commons, `licencia` de la lista cerrada,
+  `autor`, `sinPersonas`). Las 23 de IA no se tocan. Lo comprueba
+  `rwadar-noticias-editoriales.js` (acepta los esquemas 1 y 2).
+- **Importador:** `rwadar-editorial-source/noticias/importar-foto.py` (API
+  de Commons, agente genérico, pausa y espera si Commons da 429; licencias PD,
+  CC0, CC BY y CC BY-SA 2.0–4.0; WebP sin metadatos en 1200/960/480). Prueba
+  sin red: `probar-importar-foto.py` (en `npm test`, dentro de probar-web.mjs: el package.json de la raíz no se toca, o el guardián de la OTA pediría otro APK). Probado de
+  verdad en una copia fuera del repositorio.
+- **Créditos sin romper la app instalada:** `rwadar-site/datos/fotos-noticias.json`
+  (se genera con `node rwadar-noticias-editoriales.js --creditos`; lo exigen
+  `--comprobar`, el publicador y `comprobar-publicado.mjs`). Web e app: crédito
+  corto debajo de cada tarjeta y en el detalle (enlace a Commons), texto
+  alternativo con la descripción en /mercado/ y en el detalle, «Ilustración
+  generada con IA» en las de IA y la nota que dice la verdad de las fotos que
+  se ven (`notaFotos`). Sin el archivo, ningún crédito falso (las claves de IA
+  van en el modelo: `FOTOS_IA`).
+- **Textos:** GUIA-TITULARES §4 (dos columnas en la tabla: reales primero),
+  VERIFICADOR, README de la biblioteca, privacidad y el párrafo de la novedad
+  «noticias-foto».
+- **Pruebas:** `npm test` entero en verde; después, con el CSS final,
+  `npm run test:web` (738/738, con el importador) y
+  `rwadar-acceso/noticias-sector.test.mjs` (13/13, en Chromium: crédito,
+  texto alternativo, inglés, sin créditos y que nada se monte; esa última
+  falla con el CSS de antes). `validar --publicada` y `--comprobar`, bien.
+  Importación real de `File:Banco de España (Madrid) 06.jpg` (CC BY-SA 3.0,
+  Luis García) en una copia fuera del repositorio: Commons dio 429 dos veces
+  y el importador esperó y siguió.
+- **Tras la revisión (una sola):**
+  - **Interruptor `fotos.realesEnApp`** (`config.json` de noticias
+    automáticas, hoy `false`): ninguna noticia publicada puede usar una foto
+    real hasta que salga la OTA con los créditos (la app instalada las daría
+    por IA y sin su autor). Lo paran el publicador
+    (`comprobarFotosRealesEnApp`), `--comprobar` y la regla V-2 (con prueba en
+    `validar.test.mjs` sobre una raíz con una foto real). Se pone a `true` en
+    un PR aparte después de la OTA.
+  - **Crédito con la licencia enlazada:** «Foto: autor · <licencia> · <Wikimedia
+    Commons>», con la licencia como enlace a su texto (si tiene: el dominio
+    público no) y Commons a la página del archivo (24 px, `_blank`, `noopener
+    noreferrer`); en el detalle, «· recortada» / «· cropped». Web (JS y
+    prepintado de Inicio) y app (dos Pressable en el detalle). El modelo da
+    los trozos (`creditoFoto().partes`, `licenciaUrl`, `recorte`).
+  - **Duplicados:** el importador compara el título normalizado, el que
+    devuelve la API y el `sha256Original` antes de escribir nada; el
+    comprobador de Node para si dos entradas reales tienen el mismo archivo o
+    los mismos bytes.
+  - **CI:** la prueba del importador ya no se salta sin Pillow (falla);
+    `ci.yml` instala `Pillow==12.3.0` en las partes de base y probar-web
+    exige que corran las 12 pruebas sin ninguna saltada.
+  - **Textos:** novedades y privacidad ya no dicen que haya fotos reales (dicen
+    qué lleva cada clase); «no son fotos de la noticia» / «they are not photos
+    of the news». Fuera la entrada sin uso «Foto de la noticia: ver en
+    Wikimedia Commons».
+  - Importación real otra vez (copia fuera del repo, borrada): `File:Banco de
+    España (Madrid) 06.jpg` entró; la misma con guiones bajos, rechazada; con
+    el interruptor apagado `--comprobar` paró al usarla.
+- **Pendiente:** commit y PR; importar las fotos reales (otro equipo: aún
+  hay 0) y añadirlas a la tabla de la guía; la OTA con este cambio y, después,
+  `fotos.realesEnApp: true`; sello nuevo de contenido antes de publicar; no
+  lanzar «Avisar novedad» de fotos reales hasta que se vea alguna.
+
 ## 22 de noviembre de 2026 (46) · Claude · Noticias del 22/11 con búsqueda amplia y rama de cerrojo borrada · PUBLICADO
 
 - **Orden de Víctor (22/11, 00:1x UTC):** «Yo no veo noticias distintas».

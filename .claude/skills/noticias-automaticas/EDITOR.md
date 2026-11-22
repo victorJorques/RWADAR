@@ -13,8 +13,9 @@ y lo pasa tal cual a la herramienta Agent. Solo cambian las rutas.
   texto y la foto, siguiendo la **guía de titulares y fotos**
   (`rwadar-editorial-source/noticias/GUIA-TITULARES.md`). Si la guía no
   existe, no hace nada y lo dice: la mañana frena.
-- No publica, no hace commits, no toca el repositorio, no genera fotos (el
-  modelo pesa 7 GB y no se usa por la mañana) y no cambia `fotos.json`.
+- No publica, no hace commits, no toca el repositorio, no genera ni importa
+  fotos (ni con el modelo de IA ni de Wikimedia Commons) y no cambia
+  `fotos.json`.
 - Su trabajo lo juzgan después un programa (las reglas V-1 a V-16) y un
   verificador independiente que no ve sus notas.
 
@@ -22,8 +23,8 @@ y lo pasa tal cual a la herramienta Agent. Solo cambian las rutas.
 
 - **«Hoy»**: 0 a 3 noticias con fecha de hoy o de ayer. Si no hay ninguna con
   fuente primaria, ninguna.
-- **«Lo más importante»**: como mucho 5, de los últimos 30 días. Total entre 3
-  y 8.
+- **«Lo más importante»**: como mucho 8, de los últimos 30 días. Total entre 3
+  y 8 (con «Hoy» incluido).
 - **Fuentes**: solo primarias para una noticia nueva (regulador, organismo
   oficial, folleto o comunicado de la empresa), en `https`. Un medio solo
   como pista, nunca como fuente de una noticia nueva.
@@ -39,12 +40,21 @@ y lo pasa tal cual a la herramienta Agent. Solo cambian las rutas.
   una con una frase de por qué. Si el titular es el mismo que ya se publicó y
   la carpeta de ese día tiene su `titulares.json` con ese mismo elegido, basta
   con `"heredado": "<esa fecha>"` (sin propuestas nuevas).
-- **Fotos**: la de la biblioteca (`rwadar-editorial-source/noticias/fotos.json`)
-  que mejor encaja con la noticia, **sin repetir foto en toda la edición** (Inicio
-  enseña tres a la vez y /mercado/ todas). Si ninguna encaja, la genérica de su
-  categoría (`config.json`, `fotos.genericas`; si ya está usada, otra
-  adecuada) con `"encaje": "generica"` y en `faltaria` la escena que haría
-  falta, en una frase, para ampliar la biblioteca otro día.
+- **Fotos** (guía, «4 · La foto»): la de la biblioteca
+  (`rwadar-editorial-source/noticias/fotos.json`) que mejor encaja con la
+  noticia, **sin repetir foto en toda la edición** (Inicio enseña tres a la vez
+  y /mercado/ todas). **Primero las fotos reales** (`"origen": "foto"`, de
+  Wikimedia Commons), **si `fotos.realesEnApp` es `true`** en `config.json`
+  (mientras sea `false`, ninguna: la app instalada no enseña aún su crédito y
+  V-2 para la edición): lee su `descripcion` y elige la que muestra de verdad
+  algo de la noticia (la sede del supervisor que la firma, lingotes para el
+  oro, el edificio de la bolsa de la que se habla). Nunca la presentes como
+  foto del hecho ni escribas «en la imagen». Las escenas de IA, solo si
+  ninguna real encaja. Si tampoco, la genérica de su categoría (`config.json`,
+  `fotos.genericas`; si ya está usada, otra adecuada) con `"encaje":
+  "generica"` y en `faltaria` la foto que haría falta, en una frase, para
+  ampliar la biblioteca otro día. El crédito y la descripción de cada foto son
+  los de la biblioteca: no los escribes en la noticia.
 - **Nada de recomendaciones**: ni «compra», «vende», «invierte», «garantizado»,
   «sin riesgo», «asegurado», «oportunidad única» (ni en inglés).
 - **Sin datos personales en nada de lo que escribes** (el JSON, los titulares y

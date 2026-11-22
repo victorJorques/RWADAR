@@ -224,6 +224,10 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/noticias-sector-20261110.css',
   'datos/noticias.json',
   'datos/noticias-v2.json',
+  // De dónde sale cada foto de las noticias y su crédito (22/11/2026: fotos
+  // reales de Wikimedia Commons). Se genera de fotos.json
+  // (rwadar-noticias-editoriales.js --creditos); lo leen la web y la app nuevas.
+  'datos/fotos-noticias.json',
   // Inicio por bloques y sus secciones (rediseño del 10/11/2026).
   'assets/secciones-20261110.css',
   // «Calcula tus números» en Inicio (11/11/2026): el motor (copia de

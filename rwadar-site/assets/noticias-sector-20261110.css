@@ -172,3 +172,19 @@ html.nt-dialogo-abierto{overflow:hidden}
   .nt-dlg-cuerpo{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
   .nt-dlg-tit{font-size:1.375rem}
 }
+/* El crédito de cada foto (22/11/2026: fotos reales de Wikimedia Commons),
+   debajo de la tarjeta y fuera de su enlace: «Foto: autor · licencia ·
+   Wikimedia Commons», con dos enlaces (la licencia a su texto y «Wikimedia
+   Commons» a la página del archivo; 24 px de alto cada uno), o «Ilustración
+   generada con IA». En el detalle, debajo de la foto y con «· recortada». */
+.nt-credito,.nt-dlg-credito{display:block;margin:6px 0 0;color:var(--tx-3);font:400 .6875rem/1.4 var(--body);overflow-wrap:anywhere}
+.nt-credito--foto{margin-top:2px}
+.nt-credito-enl{display:inline-flex;align-items:center;min-height:24px;color:var(--tx-3);
+  text-decoration:underline;text-decoration-color:rgba(138,131,120,.5);text-underline-offset:2px}
+.nt-credito-enl:hover{color:var(--tx-2)}
+.nt-credito-enl:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:2px}
+.nt-dlg-credito{font-size:.75rem;max-width:calc(100% - 40px)}
+/* Con el crédito debajo, la tarjeta ya no ocupa el 100 % del alto de su <li>
+   (el crédito se salía encima de la nota): crece con flex y el crédito va debajo. */
+.nt-v>li:not(.nt-v-portada){display:flex;flex-direction:column}
+.nt-v>li:not(.nt-v-portada)>.nt-t{height:auto;flex:1 0 auto}

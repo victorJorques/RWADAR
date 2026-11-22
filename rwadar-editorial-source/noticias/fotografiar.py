@@ -118,7 +118,8 @@ def guardar_spec():
 
 tomas = []  # (clave, f, semilla)
 for clave, f in spec['fotos'].items():
-    if f['modelo'] != 'realvisxl' or (solo and clave not in solo):
+    # Las fotos reales («origen»: "foto", de importar-foto.py) no se generan ni se recortan aquí.
+    if f.get('origen') == 'foto' or f.get('modelo') != 'realvisxl' or (solo and clave not in solo):
         continue
     if candidatas:
         tomas += [(clave, f, s) for s in candidatas]

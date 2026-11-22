@@ -170,7 +170,15 @@ export function validarEdicion({ fase, fecha, raiz, config, edicionRuta, titular
       try { modFotos.cargarFotosNoticias(raiz, { claves: [...new Set(noticias.map(n => n.imagen))] }); }
       catch (e) { f.push(e.message); }
     }
-    regla('V-2', f, 'foto de la biblioteca en todas');
+    // Fotos reales solo con «fotos.realesEnApp»: true (después de la OTA con los créditos):
+    // la app instalada antes las daría por IA y sin el autor que pide su licencia.
+    // (La misma regla que comprobarFotosRealesEnApp del publicador, aquí sin depender de él.)
+    const reales = [...new Set(noticias.map(n => n?.imagen))].filter(c => typeof c === 'string' && fotosJSON[c]?.origen === 'foto');
+    if (reales.length && config.fotos?.realesEnApp !== true) {
+      f.push(`las noticias usan fotos reales (${reales.join(', ')}) y la app instalada aún no enseña su crédito: ` +
+        'hasta enviar la OTA con los créditos y poner «fotos.realesEnApp»: true en config.json, solo fotos de IA');
+    }
+    regla('V-2', f, 'foto de la biblioteca en todas (y reales solo con fotos.realesEnApp)');
   }
   // V-3 Fotos distintas en toda la edición (Inicio enseña 3 y /mercado/ todas a la vez).
   {
