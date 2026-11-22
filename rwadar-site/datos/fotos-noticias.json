@@ -70,6 +70,42 @@
   },
   "planeta-noche": {
    "origen": "ia"
+  },
+  "real-cnmv-sede-madrid": {
+   "origen": "foto",
+   "descripcion": "La sede de la CNMV en el edificio Edison de Madrid (calle Edison 4), con el rótulo «CNMV» y las banderas de España y de la UE en la entrada.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_4.JPG"
+  },
+  "real-cnmv-entrada-edison": {
+   "origen": "foto",
+   "descripcion": "El edificio Edison, sede de la CNMV en Madrid, visto desde abajo, con el rótulo «CNMV · Edificio Edison» en la entrada.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_2.JPG"
+  },
+  "real-banco-espana-alcala": {
+   "origen": "foto",
+   "descripcion": "La fachada del Banco de España en Madrid, con sus puertas de hierro y el escudo con las banderas de España y de la UE.",
+   "autor": null,
+   "licencia": "CC0",
+   "licenciaUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Banco_de_Espa%C3%B1a_30.jpg"
+  },
+  "real-banco-espana-banderas": {
+   "origen": "foto",
+   "descripcion": "La parte alta de la fachada del Banco de España en la calle de Alcalá de Madrid, con el escudo de piedra y las banderas de España y de la UE.",
+   "autor": "Javier Perez Montes",
+   "licencia": "CC BY-SA 4.0",
+   "licenciaUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "sitio": "Wikimedia Commons",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Banco_de_Espana_-_Madrid_04.jpg"
   }
  }
 }

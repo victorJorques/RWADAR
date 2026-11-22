@@ -812,6 +812,149 @@
      "sha256": "da4399604d1ac6153fa51066f5909009b7545a72ea735ce196b8151fa46453e5"
     }
    }
+  },
+  "real-cnmv-sede-madrid": {
+   "origen": "foto",
+   "descripcion": "La sede de la CNMV en el edificio Edison de Madrid (calle Edison 4), con el rótulo «CNMV» y las banderas de España y de la UE en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Edificio Edison (Comisión Nacional del Mercado de Valores) 4.JPG",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_4.JPG",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_4.JPG/1920px-Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_4.JPG",
+    "sha256Original": "e81a68852018ee9cfe52825d66a786f4da70be108a3ed833622ba0803aacdb2b"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 70%",
+   "bytes": 126970,
+   "sha256": "847cf992e11c492e5c95ad73ba977a1aa368d2bc9e951048b17b227508edd696",
+   "temas": [
+    "regulacion-espana",
+    "fraude-advertencias",
+    "consultas-reclamaciones"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 33122,
+     "sha256": "61611bd944a18d382b31fd5ffa91374b9682c6698262739abaa251cf183b26ce"
+    },
+    "960": {
+     "bytes": 93264,
+     "sha256": "b0f63c8e3807ad6d223679d8b713754d586f38b496f25ccc78fe3bb24095340f"
+    }
+   }
+  },
+  "real-cnmv-entrada-edison": {
+   "origen": "foto",
+   "descripcion": "El edificio Edison, sede de la CNMV en Madrid, visto desde abajo, con el rótulo «CNMV · Edificio Edison» en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Edificio Edison (Comisión Nacional del Mercado de Valores) 2.JPG",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_2.JPG",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_2.JPG/1920px-Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_2.JPG",
+    "sha256Original": "b41cf8a98c244700a5b839ee3006002a9f6fe774b86ced8431ad88b8451ea24c"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 65%",
+   "bytes": 146778,
+   "sha256": "a4236536110030f8d50111c915c28fa066d832fa644535497c959a7334467ce5",
+   "temas": [
+    "regulacion-espana",
+    "consultas-reclamaciones",
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 34964,
+     "sha256": "a6891d8bedbd2c9daacd97faeff01407bb738d7b1c21724109ad711b3c21ae1f"
+    },
+    "960": {
+     "bytes": 102928,
+     "sha256": "be148ce12735ccc44045800d6125eac708ff04df728ca326bcdc5cae6383a0fc"
+    }
+   }
+  },
+  "real-banco-espana-alcala": {
+   "origen": "foto",
+   "descripcion": "La fachada del Banco de España en Madrid, con sus puertas de hierro y el escudo con las banderas de España y de la UE.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Banco de España 30.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Banco_de_Espa%C3%B1a_30.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Madrid_-_Banco_de_Espa%C3%B1a_30.jpg/1920px-Madrid_-_Banco_de_Espa%C3%B1a_30.jpg",
+    "sha256Original": "b23cf5dbd7c214ca6d06447c735bfd7801a077ec951cd04972fec4e4c4f65832"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 158986,
+   "sha256": "db68f029b0f1b97ad46822c4ccca4cc2511f79e7b2e72c2bb67c589607c2fc41",
+   "temas": [
+    "bancos",
+    "regulacion-espana",
+    "consultas-reclamaciones"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 35064,
+     "sha256": "f49fb774cfff9075490e92f1530a81fa2c94a7cd68f041272dc5f7c4e957c135"
+    },
+    "960": {
+     "bytes": 111274,
+     "sha256": "e64fcc7582ae1926aabdf15b81a5858d9650592f3d6bdd4043d7df223f0b7437"
+    }
+   }
+  },
+  "real-banco-espana-banderas": {
+   "origen": "foto",
+   "descripcion": "La parte alta de la fachada del Banco de España en la calle de Alcalá de Madrid, con el escudo de piedra y las banderas de España y de la UE.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Banco de Espana - Madrid 04.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Banco_de_Espana_-_Madrid_04.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Banco_de_Espana_-_Madrid_04.jpg/1920px-Banco_de_Espana_-_Madrid_04.jpg",
+    "sha256Original": "8c3bc7f39b8c1546b4dd3a625a1b94342f54063c94dbc3b99f298c81d50c24eb"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Javier Perez Montes",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 112466,
+   "sha256": "9472ef68d550ee732992700be9ab507fadff3a473bfee9ae79706d60ebbe0748",
+   "temas": [
+    "regulacion-espana",
+    "bancos"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 23060,
+     "sha256": "b7e39553e17a25f643c433b195549c5bf7fc20b2de292acdccb76048c8827956"
+    },
+    "960": {
+     "bytes": 75514,
+     "sha256": "dbc8a7f673eb87a1dd7a83cf79cd5777cf4f5fe0fff6eb608c3f1250e3e48f5d"
+    }
+   }
   }
  }
 }
