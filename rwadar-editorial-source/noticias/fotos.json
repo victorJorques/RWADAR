@@ -989,6 +989,41 @@
      "sha256": "64840ffb8815d62f21b989d3262e7ef41af32e20c22f64eba45e30b2b81df6d6"
     }
    }
+  },
+  "real-sede-bafin-francfort": {
+   "origen": "foto",
+   "descripcion": "La sede de BaFin, el supervisor financiero de Alemania, en Fráncfort.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Bafin Frankfurt.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bafin_Frankfurt.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Bafin_Frankfurt.jpg/1920px-Bafin_Frankfurt.jpg",
+    "sha256Original": "c1c877cb031d2cb58df1e3334c14497d88739aab7e59a375553984a0121c626a"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Asdrubal",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 159608,
+   "sha256": "a309799a600bfa8301c5d098949e19811b03c33df46aa9292fefe61d156cde30",
+   "temas": [
+    "fraude-advertencias",
+    "internacional"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 40026,
+     "sha256": "77291853d1a7a1879540642b7805dd98d9afea081b8d4807bc33490d27aaceec"
+    },
+    "960": {
+     "bytes": 117904,
+     "sha256": "5a612d8f9d730977201ef9c7e54d17a170e64e5ab97fdc710e44d1c463163dc9"
+    }
+   }
   }
  }
 }
