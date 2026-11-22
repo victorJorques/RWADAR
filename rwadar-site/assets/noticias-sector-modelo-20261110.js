@@ -15,8 +15,9 @@
    hoy primero) y se eligen los textos del idioma.
 
    Fotos (rediseño de Inicio, 10/11/2026): cada noticia lleva en «imagen» la
-   clave de una foto editorial propia (WebP generado con IA, sin texto,
-   logotipos ni personas), servida desde rwadar.pages.dev: nunca de terceros,
+   clave de una foto editorial de la biblioteca (WebP: una escena generada
+   con IA o, desde el 22/11/2026, una foto real con licencia libre de
+   Wikimedia Commons), servida desde rwadar.pages.dev: nunca de terceros,
    que verían la IP de quien mira. Sustituyen a las ilustraciones SVG. Al
    leer, «imagen» es opcional (sin ella, la tarjeta queda con su fondo
    oscuro, como cuando la foto no carga); al publicar, rwadar-publicar.js la
@@ -184,9 +185,11 @@ function etiquetaReciente(n, hoyISO) {
 /* Cada noticia trae en «imagen» la clave de una foto editorial de la
    biblioteca por tema (rwadar-editorial-source/noticias/fotos.json). La web la
    sirve en /noticias-editoriales/<clave>.webp y la app la carga de
-   rwadar.pages.dev, como las imágenes de las ofertas. Son ilustrativas,
-   generadas con IA, sin texto, logotipos ni personas: no son fotos de la
-   noticia, y así se dice debajo de la sección. */
+   rwadar.pages.dev, como las imágenes de las ofertas. Son ilustrativas: no
+   son fotos de la noticia, y así se dice debajo de la sección. Unas son
+   escenas generadas con IA, sin texto, logotipos ni personas; desde el
+   22/11/2026, otras son fotos reales con licencia libre de Wikimedia Commons
+   (su origen y su crédito: «De dónde sale cada foto», más abajo). */
 const RUTA_FOTOS = '/noticias-editoriales/';
 const URL_FOTOS = 'https://rwadar.pages.dev/noticias-editoriales/';
 const CLAVE_FOTO = /^[a-z0-9-]+$/;
@@ -248,6 +251,120 @@ function atributosFoto(n, papel, { base = RUTA_FOTOS } = {}) {
   const a = { src, srcset: srcsetFoto(n, { base }), sizes: SIZES[papel], width: 1200, height: 800, decoding: 'async' };
   if (papel !== 'portada') a.loading = 'lazy';
   return a;
+}
+
+/* ---- De dónde sale cada foto y su crédito (22/11/2026) ----
+   Desde el 22/11/2026 la biblioteca admite, además de las escenas generadas
+   con IA, fotos reales con licencia libre de Wikimedia Commons. Su origen y
+   su crédito NO van en noticias-v2.json (la app ya instalada valida las
+   claves de cada noticia con una lista cerrada y rechazaría una nueva): van
+   en un archivo aparte, /datos/fotos-noticias.json, que genera
+   rwadar-noticias-editoriales.js --creditos a partir de fotos.json.
+   Reglas: una foto real lleva su crédito corto («Foto: autor · licencia ·
+   Wikimedia Commons», con enlace a la página del archivo) y su descripción
+   como texto alternativo; una de IA dice «Ilustración generada con IA». Si
+   el archivo no está o no vale, la foto se ve sin crédito, nunca con uno
+   falso; y las de IA siguen diciendo que son de IA porque sus claves van
+   aquí (FOTOS_IA: una clave publicada no cambia nunca; una prueba la compara
+   con fotos.json). */
+const RUTA_CREDITOS = '/datos/fotos-noticias.json';
+const URL_CREDITOS = 'https://rwadar.pages.dev/datos/fotos-noticias.json';
+const FOTOS_IA = Object.freeze(['alerta-fraude', 'acciones-eeuu', 'red-europea', 'pagares-deuda', 'instituciones-ue', 'bolsa-madrid', 'pago-online',
+  'regulador-espana', 'alerta-fraude-2', 'alerta-fraude-3', 'regulador-espana-2', 'documentos-consulta', 'instituciones-ue-2', 'bonos-emision',
+  'inmuebles-ciudad', 'inmuebles-costa', 'oro-pepitas', 'moneda-digital', 'fondos-liquidez', 'acciones-movil', 'banco-sala', 'servidores-seguridad',
+  'planeta-noche']);
+/* Las licencias que se aceptan (la misma lista que importar-foto.py: una
+   prueba las compara). «atribucion»: si la licencia obliga a nombrar al autor. */
+const LICENCIAS_FOTO = Object.freeze({
+  'Dominio público': Object.freeze({ url: null, atribucion: false, en: 'Public domain' }),
+  'CC0': Object.freeze({ url: 'https://creativecommons.org/publicdomain/zero/1.0/', atribucion: false, en: 'CC0' }),
+  ...Object.fromEntries(['by', 'by-sa'].flatMap(t => ['2.0', '2.5', '3.0', '4.0'].map(v => [`CC ${t.toUpperCase()} ${v}`,
+    Object.freeze({ url: `https://creativecommons.org/licenses/${t}/${v}/`, atribucion: true, en: `CC ${t.toUpperCase()} ${v}` })]))),
+});
+const SITIO_FOTOS = 'Wikimedia Commons';
+const PAGINA_COMMONS = /^https:\/\/commons\.wikimedia\.org\/wiki\/File:[^\s"'<>\\]+$/;
+const MAX_CREDITO = Object.freeze({ descripcion: 200, autor: 200, pagina: 400 });
+const NOTAS_FOTOS = Object.freeze({
+  foto: Object.freeze({ es: 'Fotos de archivo con licencia libre: ilustran el tema, no son de la noticia.',
+    en: 'Stock photos under free licences: they illustrate the topic, not the news itself.' }),
+  ia: NOTA_FOTOS,
+  mixta: Object.freeze({ es: 'Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.',
+    en: 'Stock photos under free licences and AI-generated illustrations: they illustrate the topic, not the news itself.' }),
+  algunaIa: Object.freeze({ es: 'Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.',
+    en: 'Illustrative images, some AI-generated: not photos of the news.' }),
+  ilustrativas: Object.freeze({ es: 'Imágenes ilustrativas, no fotos de la noticia.', en: 'Illustrative images, not photos of the news.' }),
+});
+const TEXTO_IA = Object.freeze({ es: 'Ilustración generada con IA', en: 'AI-generated illustration' });
+/* La foto real se publica recortada a 3:2 y reducida: el detalle lo dice
+   (CC BY 4.0 y CC BY-SA 4.0 piden indicar si la obra se ha modificado). */
+const TEXTO_RECORTE = Object.freeze({ es: 'recortada', en: 'cropped' });
+/* Comprueba /datos/fotos-noticias.json entero y devuelve una copia limpia;
+   lanza si algo no cuadra (entonces no se usa ningún crédito). */
+function validarCreditosFotos(datos) {
+  claves(datos, ['version', 'nota', 'fotos'], ['version', 'fotos'], 'fotos-noticias.json');
+  if (datos.version !== 1) throw new Error('fotos-noticias.json: versión desconocida');
+  if (datos.nota !== undefined) texto(datos.nota, 'fotos-noticias.json, nota', MAX.nota);
+  if (!esObjeto(datos.fotos) || Object.keys(datos.fotos).length > 500) throw new Error('fotos-noticias.json: «fotos» no vale');
+  const fotos = {};
+  for (const [clave, f] of Object.entries(datos.fotos)) {
+    const donde = `fotos-noticias.json, ${clave}`;
+    claveFoto(clave, donde);
+    if (!esObjeto(f) || !['ia', 'foto'].includes(f.origen)) throw new Error(`${donde}: origen desconocido`);
+    if (f.origen === 'ia') { claves(f, ['origen'], ['origen'], donde); fotos[clave] = { origen: 'ia' }; continue; }
+    // Una clave de IA nunca pasa por foto real: el archivo entero no vale.
+    if (FOTOS_IA.includes(clave)) throw new Error(`${donde}: es una ilustración generada con IA`);
+    claves(f, ['origen', 'descripcion', 'autor', 'licencia', 'licenciaUrl', 'sitio', 'pagina'],
+      ['origen', 'descripcion', 'autor', 'licencia', 'licenciaUrl', 'sitio', 'pagina'], donde);
+    const lic = Object.hasOwn(LICENCIAS_FOTO, f.licencia) ? LICENCIAS_FOTO[f.licencia] : null;
+    if (!lic) throw new Error(`${donde}: licencia no admitida`);
+    if (f.licenciaUrl !== lic.url) throw new Error(`${donde}: el enlace de la licencia no es el suyo`);
+    if (f.sitio !== SITIO_FOTOS) throw new Error(`${donde}: sitio desconocido`);
+    texto(f.pagina, `${donde}, pagina`, MAX_CREDITO.pagina);
+    if (!PAGINA_COMMONS.test(f.pagina)) throw new Error(`${donde}: la página no es la del archivo en Wikimedia Commons`);
+    const descripcion = texto(f.descripcion, `${donde}, descripcion`, MAX_CREDITO.descripcion);
+    if (lic.atribucion) texto(f.autor, `${donde}, autor`, MAX_CREDITO.autor);
+    else if (f.autor !== null) throw new Error(`${donde}: sin autor en ${f.licencia}`);
+    fotos[clave] = { origen: 'foto', descripcion, autor: f.autor, licencia: f.licencia, licenciaUrl: f.licenciaUrl, sitio: f.sitio, pagina: f.pagina };
+  }
+  for (const clave of FOTOS_IA) if (Object.hasOwn(fotos, clave) && fotos[clave].origen !== 'ia') throw new Error(`fotos-noticias.json: ${clave} es de IA`);
+  return { version: 1, fotos };
+}
+function creditosValidos(datos) {
+  try { return validarCreditosFotos(datos); } catch { return null; }
+}
+/* El crédito de la foto de una noticia: { origen: 'ia', texto } (siempre que
+   su clave sea de IA, haya archivo o no), { origen: 'foto', texto, enlace,
+   licenciaUrl, alt, partes, recorte } (solo con un archivo de créditos
+   válido) o null (sin crédito). «partes» es el mismo texto en trozos, para
+   pintarlo igual en la web y en la app: el nombre de la licencia enlaza a la
+   licencia (si tiene dirección: el dominio público no) y «Wikimedia
+   Commons», a la página del archivo (las licencias CC piden las dos cosas).
+   «recorte» se añade en el detalle: «recortada». */
+function creditoFoto(n, creditos, idioma = 'es') {
+  const clave = n && typeof n.imagen === 'string' ? n.imagen : null;
+  if (!clave || !CLAVE_FOTO.test(clave)) return null;
+  const en = idioma === 'en';
+  if (FOTOS_IA.includes(clave) || creditos?.fotos?.[clave]?.origen === 'ia') return { origen: 'ia', texto: TEXTO_IA[en ? 'en' : 'es'] };
+  const c = creditos?.fotos?.[clave];
+  if (!c || c.origen !== 'foto') return null;
+  const lic = LICENCIAS_FOTO[c.licencia];
+  if (!lic) return null;
+  const nombre = en ? lic.en : c.licencia;
+  const cabeza = `${en ? 'Photo' : 'Foto'}: ${lic.atribucion && c.autor ? `${c.autor} · ` : ''}`;
+  const partes = [{ texto: cabeza, enlace: null }, { texto: nombre, enlace: c.licenciaUrl }, { texto: ' · ', enlace: null },
+    { texto: c.sitio, enlace: c.pagina }];
+  return { origen: 'foto', texto: partes.map(x => x.texto).join(''), enlace: c.pagina, licenciaUrl: c.licenciaUrl, alt: c.descripcion,
+    partes, recorte: TEXTO_RECORTE[en ? 'en' : 'es'] };
+}
+/* La línea de debajo de la sección, según las fotos que se ven: todas reales,
+   todas de IA, de las dos o, si alguna no tiene crédito, sin decir que es real. */
+function notaFotos(noticias, creditos, idioma = 'es') {
+  const lista = Array.isArray(noticias) ? noticias.filter(n => n && typeof n.imagen === 'string') : [];
+  const origenes = lista.map(n => creditoFoto(n, creditos, idioma)?.origen || null);
+  const hay = o => origenes.includes(o);
+  const cual = !lista.length ? 'ilustrativas' : hay(null) ? (hay('ia') ? 'algunaIa' : 'ilustrativas')
+    : hay('ia') && hay('foto') ? 'mixta' : hay('foto') ? 'foto' : 'ia';
+  return NOTAS_FOTOS[cual][idioma === 'en' ? 'en' : 'es'];
 }
 
 /* ¿Es la tarjeta i (la portada es la 0) de una rejilla de «total» la última
@@ -382,6 +499,8 @@ const fuenteTraducida = (noticia, idioma = 'es') => fuenteCorta(noticia, idioma)
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
   textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente,
   RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto, FUENTES_EN, fuenteCorta, fuenteTraducida,
-  ANCHOS_FOTO, anchoFoto, srcsetFoto, SIZES, atributosFoto, esAncha, papelTarjeta, EN_INICIO, firmaPrepintado, debeRepintar, REGLAS_TITULAR, revisarEdicion };
+  ANCHOS_FOTO, anchoFoto, srcsetFoto, SIZES, atributosFoto,
+  RUTA_CREDITOS, URL_CREDITOS, FOTOS_IA, LICENCIAS_FOTO, SITIO_FOTOS, PAGINA_COMMONS, NOTAS_FOTOS, TEXTO_IA, TEXTO_RECORTE, validarCreditosFotos, creditosValidos,
+  creditoFoto, notaFotos, esAncha, papelTarjeta, EN_INICIO, firmaPrepintado, debeRepintar, REGLAS_TITULAR, revisarEdicion };
 
 window.RWAdarNoticiasModelo=module.exports; })();

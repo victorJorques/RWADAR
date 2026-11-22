@@ -32,6 +32,68 @@ test('con una de «Hoy» nueva, su foto propia y sus tres propuestas, también p
   assert.equal(r.soloCambianFechas, false);
 });
 
+/* «Lo más importante» hasta 8 (22/11/2026, orden de la dirección): la edición de 5
+   importantes más 3 nuevas (sin «Hoy») pasa; con una novena, el total (8 como mucho) para. */
+function conImportantes(cuantas) {
+  const e = edicionBuena(), libres = ['pago-online', 'oro-pepitas', 'fondos-liquidez', 'banco-sala', 'servidores-seguridad'];
+  for (let i = 0; i < cuantas; i++) {
+    e.noticias.push(noticiaDeHoy(FECHA, { id: `esma-ejemplo-importante-${i + 1}`, seccion: 'importante', fecha: '2026-11-08', imagen: libres[i],
+      fuente: { nombre: 'ESMA, consulta de ejemplo', url: `https://www.esma.europa.eu/ejemplo-${i + 1}`, tipo: 'regulador' } }));
+  }
+  // El orden del motor: a igual sección, de la más nueva a la más antigua.
+  e.noticias.sort((a, b) => (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0));
+  return e;
+}
+test('«Lo más importante» admite hasta 8 (config.json, edicion.importanteMax) y el total sigue en 8 como mucho', () => {
+  assert.equal(CONFIG.edicion.importanteMax, 8);
+  assert.equal(CONFIG.edicion.totalMax, 8);
+  const ocho = conImportantes(3);
+  assert.equal(ocho.noticias.filter(n => n.seccion === 'importante').length, 8);
+  assert.deepEqual(validar({ edicion: ocho }).errores, []);
+  const nueve = conImportantes(4);
+  const r = validar({ edicion: nueve });
+  assert.ok(fallan(r).includes('V-4'), r.errores.join(' | '));
+  assert.match(r.errores.join(' '), /9 de «Lo más importante» \(máximo 8\)/);
+});
+
+/* Fotos reales (22/11/2026): la app instalada antes de la OTA con los créditos
+   las daría por IA y sin el autor que pide su licencia. Con «fotos.realesEnApp»
+   en false (como está hasta esa OTA), V-2 para una edición que use una; con
+   true, pasa. Sobre una raíz temporal con una foto real en la biblioteca. */
+test('V-2: una foto real solo con fotos.realesEnApp en true (después de la OTA con los créditos)', () => {
+  assert.equal(CONFIG.fotos.realesEnApp, false, 'hasta enviar la OTA con los créditos, apagado');
+  const raiz = tmp('reales');
+  try {
+    for (const x of ['rwadar-movil', 'rwadar-app', 'rwadar-noticias-editoriales.js']) fs.symlinkSync(path.join(RAIZ, x), path.join(raiz, x));
+    const dir = path.join(raiz, 'rwadar-editorial-source/noticias');
+    fs.cpSync(path.join(RAIZ, 'rwadar-editorial-source/noticias'), dir, { recursive: true });
+    const spec = JSON.parse(fs.readFileSync(path.join(dir, 'fotos.json'), 'utf8'));
+    const ia = spec.fotos['red-europea'];
+    for (const w of ['', '480', '960']) fs.copyFileSync(path.join(dir, 'fotos', w, 'red-europea.webp'), path.join(dir, 'fotos', w, 'sede-prueba.webp'));
+    spec.fotos['sede-prueba'] = { origen: 'foto', descripcion: 'La fachada de piedra de una sede oficial en una calle de Madrid',
+      fuente: { sitio: 'Wikimedia Commons', archivo: 'File:Sede de prueba.jpg', pagina: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba.jpg',
+        original: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Sede_de_prueba.jpg', sha256Original: 'a'.repeat(64) },
+      licencia: { nombre: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/', atribucionObligatoria: true },
+      autor: 'Ana Ejemplo', sinPersonas: true, encuadre: '50% 50%', bytes: ia.bytes, sha256: ia.sha256, temas: ia.temas, variantes: ia.variantes };
+    fs.writeFileSync(path.join(dir, 'fotos.json'), JSON.stringify(spec, null, 1) + '\n');
+    const edicion = edicionBuena();
+    const titulares = titularesDe(edicion);
+    edicion.noticias[0].imagen = 'sede-prueba';
+    titulares.noticias[0].foto.clave = 'sede-prueba';
+    const trabajo = tmp('reales-edicion');
+    escribir(path.join(trabajo, `noticias-${FECHA}.json`), edicion);
+    escribir(path.join(trabajo, 'titulares.json'), titulares);
+    const con = realesEnApp => validarEdicion({ fase: 'editor', fecha: FECHA, raiz, config: { ...CONFIG, fotos: { ...CONFIG.fotos, realesEnApp } },
+      edicionRuta: path.join(trabajo, `noticias-${FECHA}.json`), titularesRuta: path.join(trabajo, 'titulares.json'),
+      inventario: inventarioDe(edicion, FECHA), referencia: BASE, rutaGuia: GUIA });
+    const apagado = con(false);
+    assert.deepEqual(fallan(apagado), ['V-2'], apagado.errores.join(' | '));
+    assert.match(apagado.errores.join(' '), /fotos reales \(sede-prueba\).*fotos\.realesEnApp/);
+    const encendido = con(true);
+    assert.deepEqual(encendido.errores, []);
+  } finally { fs.rmSync(raiz, { recursive: true, force: true }); }
+});
+
 const CASOS = [
   ['V-1', 'actualizadoEl de otro día', ({ edicion }) => { edicion.actualizadoEl = '2026-11-13'; }],
   ['V-1', 'orden distinto del del motor', ({ edicion }) => { edicion.noticias.reverse(); }],

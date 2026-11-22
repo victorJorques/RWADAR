@@ -1,6 +1,6 @@
 {
- "versionEsquema": 1,
- "nota": "Biblioteca de fotos editoriales de las noticias del sector, por tema: cada noticia elige una clave en su campo «imagen». Son escenas genéricas generadas con IA, no fotos de la noticia: sin texto, letras, logotipos, marcas, banderas ni personas. «concepto» completa el texto alternativo («Imagen ilustrativa generada con IA: …»); «retoque», si lo hay, desenfoca zonas de la toma (una pantalla, un rótulo falso) o la voltea en espejo, y dice por qué; «encuadre» es la posición (x% y%) del recorte 3:2 sobre la toma del modelo, para dejar el sujeto en el tercio derecho. fotografiar.py genera cada toma con el modelo, la recorta, la exporta a fotos/<clave>.webp (1200×800, como mucho 160 kB) y, del mismo recorte, a fotos/480/ y fotos/960/ («variantes»), y apunta aquí la semilla, los bytes y el sha256 de cada una. «temas» dice qué temas de noticia cubre cada foto (la lista cerrada está en «temas» de arriba) y «genericas», la foto de cada categoría cuando ningún tema encaja. Una foto publicada no se cambia nunca bajo la misma clave, tampoco sus variantes: una escena nueva lleva una clave nueva.",
+ "versionEsquema": 2,
+ "nota": "Biblioteca de fotos editoriales de las noticias del sector, por tema: cada noticia elige una clave en su campo «imagen». Ninguna es una foto de la noticia: ilustran su tema. Hay dos clases. (1) Fotos reales con licencia libre de Wikimedia Commons (desde el 22/11/2026; las trae importar-foto.py): «origen»: \"foto\"; «descripcion», en castellano llano, lo que de verdad se ve (es el texto alternativo); «fuente»: { «sitio»: \"Wikimedia Commons\", «archivo»: \"File:…\", «pagina» (la página del archivo), «original» (la URL del archivo descargado) y «sha256Original» }; «licencia»: { «nombre» (Dominio público, CC0, CC BY 2.0/2.5/3.0/4.0 o CC BY-SA 2.0/2.5/3.0/4.0), «url» (de la licencia; null en dominio público) y «atribucionObligatoria» }; «autor»: el texto de autoría que pide la licencia, tal cual y sin HTML (null en dominio público o CC0); «sinPersonas»: true (sin personas reconocibles); sin modelo, prompt ni semilla. Su crédito («Foto: autor · licencia · Wikimedia Commons», con enlace a «pagina») se publica en /datos/fotos-noticias.json, que se genera de aquí con node rwadar-noticias-editoriales.js --creditos. (2) Escenas genéricas generadas con IA (las de antes, que no se tocan): sin texto, letras, logotipos, marcas, banderas ni personas; «concepto» describe la escena; «retoque», si lo hay, desenfoca zonas de la toma (una pantalla, un rótulo falso) o la voltea en espejo, y dice por qué; fotografiar.py las genera con el modelo y apunta la semilla. Se ven con «Ilustración generada con IA». En las dos, «encuadre» es la posición (x% y%) del recorte 3:2 sobre la toma o el archivo original; se exporta a fotos/<clave>.webp (1200×800, como mucho 160 kB) y, del mismo recorte, a fotos/480/ y fotos/960/ («variantes»), con los bytes y el sha256 de cada una. «temas» dice qué temas de noticia cubre cada foto (la lista cerrada está en «temas» de arriba) y «genericas», la foto de cada categoría cuando ningún tema encaja. Una foto publicada no se cambia nunca bajo la misma clave, tampoco sus variantes: una escena o una foto nueva lleva una clave nueva.",
  "modelos": {
   "realvisxl": {
    "nombre": "RealVisXL V5.0 Lightning (SG161222)",
@@ -810,6 +810,769 @@
     "960": {
      "bytes": 47140,
      "sha256": "da4399604d1ac6153fa51066f5909009b7545a72ea735ce196b8151fa46453e5"
+    }
+   }
+  },
+  "real-cnmv-sede-madrid": {
+   "origen": "foto",
+   "descripcion": "La sede de la CNMV en el edificio Edison de Madrid (calle Edison 4), con el rótulo «CNMV» y las banderas de España y de la UE en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Edificio Edison (Comisión Nacional del Mercado de Valores) 4.JPG",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_4.JPG",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_4.JPG/1920px-Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_4.JPG",
+    "sha256Original": "e81a68852018ee9cfe52825d66a786f4da70be108a3ed833622ba0803aacdb2b"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 70%",
+   "bytes": 126970,
+   "sha256": "847cf992e11c492e5c95ad73ba977a1aa368d2bc9e951048b17b227508edd696",
+   "temas": [
+    "regulacion-espana",
+    "fraude-advertencias",
+    "consultas-reclamaciones"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 33122,
+     "sha256": "61611bd944a18d382b31fd5ffa91374b9682c6698262739abaa251cf183b26ce"
+    },
+    "960": {
+     "bytes": 93264,
+     "sha256": "b0f63c8e3807ad6d223679d8b713754d586f38b496f25ccc78fe3bb24095340f"
+    }
+   }
+  },
+  "real-cnmv-entrada-edison": {
+   "origen": "foto",
+   "descripcion": "El edificio Edison, sede de la CNMV en Madrid, visto desde abajo, con el rótulo «CNMV · Edificio Edison» en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Edificio Edison (Comisión Nacional del Mercado de Valores) 2.JPG",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Edificio_Edison_(Comisi%C3%B3n_Nacional_del_Mercado_de_Valores)_2.JPG",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_2.JPG/1920px-Madrid_-_Edificio_Edison_%28Comisi%C3%B3n_Nacional_del_Mercado_de_Valores%29_2.JPG",
+    "sha256Original": "b41cf8a98c244700a5b839ee3006002a9f6fe774b86ced8431ad88b8451ea24c"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 65%",
+   "bytes": 146778,
+   "sha256": "a4236536110030f8d50111c915c28fa066d832fa644535497c959a7334467ce5",
+   "temas": [
+    "regulacion-espana",
+    "consultas-reclamaciones",
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 34964,
+     "sha256": "a6891d8bedbd2c9daacd97faeff01407bb738d7b1c21724109ad711b3c21ae1f"
+    },
+    "960": {
+     "bytes": 102928,
+     "sha256": "be148ce12735ccc44045800d6125eac708ff04df728ca326bcdc5cae6383a0fc"
+    }
+   }
+  },
+  "real-banco-espana-alcala": {
+   "origen": "foto",
+   "descripcion": "La fachada del Banco de España en Madrid, con sus puertas de hierro y el escudo con las banderas de España y de la UE.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Madrid - Banco de España 30.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madrid_-_Banco_de_Espa%C3%B1a_30.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Madrid_-_Banco_de_Espa%C3%B1a_30.jpg/1920px-Madrid_-_Banco_de_Espa%C3%B1a_30.jpg",
+    "sha256Original": "b23cf5dbd7c214ca6d06447c735bfd7801a077ec951cd04972fec4e4c4f65832"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 158986,
+   "sha256": "db68f029b0f1b97ad46822c4ccca4cc2511f79e7b2e72c2bb67c589607c2fc41",
+   "temas": [
+    "bancos",
+    "regulacion-espana",
+    "consultas-reclamaciones"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 35064,
+     "sha256": "f49fb774cfff9075490e92f1530a81fa2c94a7cd68f041272dc5f7c4e957c135"
+    },
+    "960": {
+     "bytes": 111274,
+     "sha256": "e64fcc7582ae1926aabdf15b81a5858d9650592f3d6bdd4043d7df223f0b7437"
+    }
+   }
+  },
+  "real-banco-espana-banderas": {
+   "origen": "foto",
+   "descripcion": "La parte alta de la fachada del Banco de España en la calle de Alcalá de Madrid, con el escudo de piedra y las banderas de España y de la UE.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Banco de Espana - Madrid 04.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Banco_de_Espana_-_Madrid_04.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Banco_de_Espana_-_Madrid_04.jpg/1920px-Banco_de_Espana_-_Madrid_04.jpg",
+    "sha256Original": "8c3bc7f39b8c1546b4dd3a625a1b94342f54063c94dbc3b99f298c81d50c24eb"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Javier Perez Montes",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 112466,
+   "sha256": "9472ef68d550ee732992700be9ab507fadff3a473bfee9ae79706d60ebbe0748",
+   "temas": [
+    "regulacion-espana",
+    "bancos"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 23060,
+     "sha256": "b7e39553e17a25f643c433b195549c5bf7fc20b2de292acdccb76048c8827956"
+    },
+    "960": {
+     "bytes": 75514,
+     "sha256": "dbc8a7f673eb87a1dd7a83cf79cd5777cf4f5fe0fff6eb608c3f1250e3e48f5d"
+    }
+   }
+  },
+  "real-cajero-teclado": {
+   "origen": "foto",
+   "descripcion": "El teclado de un cajero automático, de cerca, sin ninguna marca de banco.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:ATM PIN buttons 20180827.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ATM_PIN_buttons_20180827.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/ATM_PIN_buttons_20180827.jpg/1920px-ATM_PIN_buttons_20180827.jpg",
+    "sha256Original": "ffeb454b655b7a88809c70a372b1cfe043ea36ea54b8b66f5f2144e8538075e0"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Santeri Viinamäki",
+   "sinPersonas": true,
+   "encuadre": "50% 60%",
+   "bytes": 107268,
+   "sha256": "cf945d16c31c8bf8306f83f6cf967eef584ef479fead81273e77f9a56a725c7a",
+   "temas": [
+    "bancos"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 15526,
+     "sha256": "e6722bd3ef52cd4d30fbce750f38af9d9db94b282e79c939ac8cfd284f5cb4e7"
+    },
+    "960": {
+     "bytes": 64790,
+     "sha256": "64840ffb8815d62f21b989d3262e7ef41af32e20c22f64eba45e30b2b81df6d6"
+    }
+   }
+  },
+  "real-sede-bafin-francfort": {
+   "origen": "foto",
+   "descripcion": "La sede de BaFin, el supervisor financiero de Alemania, en Fráncfort.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Bafin Frankfurt.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bafin_Frankfurt.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Bafin_Frankfurt.jpg/1920px-Bafin_Frankfurt.jpg",
+    "sha256Original": "c1c877cb031d2cb58df1e3334c14497d88739aab7e59a375553984a0121c626a"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Asdrubal",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 159608,
+   "sha256": "a309799a600bfa8301c5d098949e19811b03c33df46aa9292fefe61d156cde30",
+   "temas": [
+    "fraude-advertencias",
+    "internacional"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 40026,
+     "sha256": "77291853d1a7a1879540642b7805dd98d9afea081b8d4807bc33490d27aaceec"
+    },
+    "960": {
+     "bytes": 117904,
+     "sha256": "5a612d8f9d730977201ef9c7e54d17a170e64e5ab97fdc710e44d1c463163dc9"
+    }
+   }
+  },
+  "real-sec-washington": {
+   "origen": "foto",
+   "descripcion": "La sede de la SEC, el supervisor de los mercados de Estados Unidos, en Washington, con su rótulo en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Washington, D.C., September 22, 2024 - 101.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Washington,_D.C.,_September_22,_2024_-_101.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Washington%2C_D.C.%2C_September_22%2C_2024_-_101.jpg/1920px-Washington%2C_D.C.%2C_September_22%2C_2024_-_101.jpg",
+    "sha256Original": "41cdda97edb94e3285baaa56290b228a3be4afd878d17484d688037c6caf5462"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Another Believer",
+   "sinPersonas": true,
+   "encuadre": "50% 30%",
+   "bytes": 139600,
+   "sha256": "2aa772155e0383818c71ddd3a8db6f747106e4a2cb708e9cd91bcb7ea5b51a53",
+   "temas": [
+    "internacional",
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 30660,
+     "sha256": "6559f128ae370d24aee8df4c3d7eb1514b35dc543af38c5df73d60b5d2338ae0"
+    },
+    "960": {
+     "bytes": 108744,
+     "sha256": "941618265c35f3dc31cd648c98adcafcaf4ac70bdeb08164e39b68dcb3ae5471"
+    }
+   }
+  },
+  "real-bolsa-francfort-toro-oso": {
+   "origen": "foto",
+   "descripcion": "Las esculturas del toro y el oso ante la Bolsa de Fráncfort (Alemania).",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Frankfurt am Main, Skulptur -Bulle & Bär- -- 2015 -- 6763.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Frankfurt_am_Main,_Skulptur_-Bulle_%26_B%C3%A4r-_--_2015_--_6763.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Frankfurt_am_Main%2C_Skulptur_-Bulle_%26_B%C3%A4r-_--_2015_--_6763.jpg/1920px-Frankfurt_am_Main%2C_Skulptur_-Bulle_%26_B%C3%A4r-_--_2015_--_6763.jpg",
+    "sha256Original": "92930436e292860254d4afc3dfd40f35df5459ef133890f8a96fb28c9dacfd3b"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Dietmar Rabich",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 154352,
+   "sha256": "925693b08efc4470eac8de40759409feeb802ef0e0926841f026d835825162f0",
+   "temas": [
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 45634,
+     "sha256": "d3892f8e6fe5384fc4a5e3bd8345b3c6fbf87d87907764a6fcd5ada865955a39"
+    },
+    "960": {
+     "bytes": 118326,
+     "sha256": "962e86a710741a682424fc742131b7847f3b6cdc3e327f534dc0b852d56e2da5"
+    }
+   }
+  },
+  "real-bolsa-nueva-york-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada de la Bolsa de Nueva York, con sus columnas y banderas de Estados Unidos.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Wide-Angle New York Stock Exchange (51680640260).jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Wide-Angle_New_York_Stock_Exchange_(51680640260).jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Wide-Angle_New_York_Stock_Exchange_%2851680640260%29.jpg/1920px-Wide-Angle_New_York_Stock_Exchange_%2851680640260%29.jpg",
+    "sha256Original": "98efc619c54fafd651fc90142df6791da806bb54fbf6b6c6cf608501e4de03aa"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 159844,
+   "sha256": "497091a4e9d8531ea3b6f1abde7a72f3e31216375f490e9d5f4077e76106a24c",
+   "temas": [
+    "acciones-tokenizadas",
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 41660,
+     "sha256": "8f3a755f5884d877f833cad3e168fbf03ea87d2365907e3ac2b2caece3d4e9ac"
+    },
+    "960": {
+     "bytes": 112618,
+     "sha256": "29febae0e0dc65432704c6417d2dcec403fb51d4a6d6f6536304764e0fa3730e"
+    }
+   }
+  },
+  "real-pantalla-cotizaciones-grafico": {
+   "origen": "foto",
+   "descripcion": "Una pantalla de cotizaciones de la Bolsa de Taiwán, con la línea del índice y tablas de precios.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Market data on display at Taiwan Stock Exchange 20210208.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg/1920px-Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg",
+    "sha256Original": "b41c3fabbcae0d9a1e11ab00cddbd3ced862822b6fa42e642b2d5feaeae099af"
+   },
+   "licencia": {
+    "nombre": "CC BY 2.0",
+    "url": "https://creativecommons.org/licenses/by/2.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "中華民國總統府",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 138468,
+   "sha256": "acc70f3ce62aa7c3281a5ec111cd6d3dad90dd715c2c6dc4e48d0aaa4e756864",
+   "temas": [
+    "acciones-tokenizadas",
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 39744,
+     "sha256": "51618a8e9f04c3bc552c2fbedda0550eaf6777c08d1969f45c04f095c7f1c2db"
+    },
+    "960": {
+     "bytes": 114834,
+     "sha256": "303183649ca679ef593b3d5283dc34fe548fd29caac4d7acec582e5df6e3d76e"
+    }
+   }
+  },
+  "real-lingotes-oro-400oz": {
+   "origen": "foto",
+   "descripcion": "Lingotes de oro de 400 onzas colocados en filas, con su número de serie y la ley «999.9».",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:400-oz-Gold-Bars-AB-01.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:400-oz-Gold-Bars-AB-01.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/400-oz-Gold-Bars-AB-01.jpg/1920px-400-oz-Gold-Bars-AB-01.jpg",
+    "sha256Original": "b5975c02bff9ffd507de911c70e13a528a557450c1ffc46ebf2546192eea2c42"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Andrzej Barabasz",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 94530,
+   "sha256": "94332ccfe50efffa1f0e6070ce5208c6305e430cd9a15b93b00de1fc153ef30b",
+   "temas": [
+    "oro-materias-primas"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 19784,
+     "sha256": "c2f33ae441d293e93e9791e45ebebf87d92b4eb6e1c7b9d76cd3657ee5be1c05"
+    },
+    "960": {
+     "bytes": 55644,
+     "sha256": "cb99adbe70b2fb1af11ebd32875565af0370be34163f1c62dbbed3da56bbcfe6"
+    }
+   }
+  },
+  "real-tesoro-eeuu-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada del Departamento del Tesoro de Estados Unidos en Washington, con su pórtico de columnas.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:U.S. Treasury building, Washington, D.C LCCN2011631001.tif",
+    "pagina": "https://commons.wikimedia.org/wiki/File:U.S._Treasury_building,_Washington,_D.C_LCCN2011631001.tif",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/U.S._Treasury_building%2C_Washington%2C_D.C_LCCN2011631001.tif/lossy-page1-1920px-U.S._Treasury_building%2C_Washington%2C_D.C_LCCN2011631001.tif.jpg",
+    "sha256Original": "6b51c0034a0e66a905003cd352efe688f94e2e0d683fad9fb8b6217b40fd6283"
+   },
+   "licencia": {
+    "nombre": "Dominio público",
+    "url": null,
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 60%",
+   "bytes": 120010,
+   "sha256": "b42fe0d0d2b1bced8216d1972ccbff1e14ef073873db733426de835889ea07ad",
+   "temas": [
+    "bonos-deuda",
+    "fondos-monetarios"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 26016,
+     "sha256": "23cbcf832c820a644c1a959f428b69297b4e6695050f0b4b0d0177122e026e86"
+    },
+    "960": {
+     "bytes": 82678,
+     "sha256": "df1ff532b3523a695e40b0077ca3e500cef3d4b5cbfa7e512954547bde929d94"
+    }
+   }
+  },
+  "real-comision-europea-berlaymont": {
+   "origen": "foto",
+   "descripcion": "El edificio Berlaymont de Bruselas, sede de la Comisión Europea, con banderas de la UE delante.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Berlaymont building in Brussels.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Berlaymont_building_in_Brussels.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/Berlaymont_building_in_Brussels.jpg",
+    "sha256Original": "745d2e32f432bdcca0d2e97b6f9e15c950243c50b7e64ba700683437f94c3f8c"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 45%",
+   "bytes": 154180,
+   "sha256": "ceab1895ee9e15092169ae1025d06da5e0445479478f253ff245cf1232f18864",
+   "temas": [
+    "regulacion-ue"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 48632,
+     "sha256": "0a5fdbf19ad3b516360c5fcbef55dac10e9f67e4c5e5f5773a08d35018f66604"
+    },
+    "960": {
+     "bytes": 116260,
+     "sha256": "76f16e552d1f0f06447591225b35c2cd80ca8503a8202ed1eb24d652000b2107"
+    }
+   }
+  },
+  "real-monedas-euro-bandera": {
+   "origen": "foto",
+   "descripcion": "Monedas de euro de varios países sobre la bandera de la Unión Europea.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Euro coins (05).jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Euro_coins_(05).jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Euro_coins_%2805%29.jpg/1920px-Euro_coins_%2805%29.jpg",
+    "sha256Original": "4f80d2f0c33577582955b8931ef8dea210bd443c340b0bc1116905e234a844e6"
+   },
+   "licencia": {
+    "nombre": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Lukasz Kobus – European Commission, © European Union, 2023",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 97336,
+   "sha256": "e09bc123aac66c31b702b1b7b20160e8d1e7c290293713daabb49429a1b34f3d",
+   "temas": [
+    "fondos-monetarios",
+    "pagos-stablecoins"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 24262,
+     "sha256": "f9c2ea70b560152a57ec39aad2146b12fc727524a43c3cb793c34424380c5ed9"
+    },
+    "960": {
+     "bytes": 64250,
+     "sha256": "fe05ce700f017e1f6d63551360ac0304ebbd573014a53c4a400ed811e68be5ec"
+    }
+   }
+  },
+  "real-bolsa-madrid-fachada": {
+   "origen": "foto",
+   "descripcion": "La fachada del Palacio de la Bolsa de Madrid, con el rótulo «Bolsa de Madrid» sobre las columnas.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Palacio de la Bolsa de Madrid (España) 02.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Palacio_de_la_Bolsa_de_Madrid_(Espa%C3%B1a)_02.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Palacio_de_la_Bolsa_de_Madrid_%28Espa%C3%B1a%29_02.jpg/1920px-Palacio_de_la_Bolsa_de_Madrid_%28Espa%C3%B1a%29_02.jpg",
+    "sha256Original": "52b6e37079d70857ac5f040f56621c0a4c7a01a9b42c21502bd6af080df6b894"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 3.0",
+    "url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Luis García",
+   "sinPersonas": true,
+   "encuadre": "50% 40%",
+   "bytes": 153570,
+   "sha256": "e6c71ba387bdb13b0b316539a0ef66c9243facae6a9852d8454b48391778d060",
+   "temas": [
+    "bolsas-mercados"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 32924,
+     "sha256": "0a55137eb9d26e7b615e28b14bdd93ca16319e26b871f356fa9909d5ed141277"
+    },
+    "960": {
+     "bytes": 112984,
+     "sha256": "7a2afb966689712388ddbe4416d42e969c68b2e6b1591752c8f512be06133190"
+    }
+   }
+  },
+  "real-bce-francfort": {
+   "origen": "foto",
+   "descripcion": "La torre del Banco Central Europeo en Fráncfort, junto al río Meno.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:European Central Bank Frankfurt Germany 18 Feb 2023.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg/1920px-European_Central_Bank_Frankfurt_Germany_18_Feb_2023.jpg",
+    "sha256Original": "784d694735c31d93c1401d7a90f9e9c2ddc71f0b48d2e0424b3a7b5bc54e337a"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Norbert Nagel",
+   "sinPersonas": true,
+   "encuadre": "62% 50%",
+   "bytes": 130590,
+   "sha256": "100f6c9fcef523101fd7c034b645182f58e05b356a3f39d7f9ca452110fc2bf1",
+   "temas": [
+    "regulacion-ue"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 20766,
+     "sha256": "d3687a17e3368cd9a3a2bf4e85eaa34d5ee2cd91d3dd423959ad2aa28c57a6cc"
+    },
+    "960": {
+     "bytes": 82934,
+     "sha256": "708171e63d2de26f90dd7a60c86b86889116dd024ecfcd41da549f55d8ab61b4"
+    }
+   }
+  },
+  "real-parlamento-europeo-bruselas": {
+   "origen": "foto",
+   "descripcion": "El edificio Paul-Henri Spaak del Parlamento Europeo en Bruselas, con carteles de las elecciones europeas de 2024.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Paul-Henri Spaak building 20240510.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Paul-Henri_Spaak_building_20240510.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Paul-Henri_Spaak_building_20240510.jpg/1920px-Paul-Henri_Spaak_building_20240510.jpg",
+    "sha256Original": "e9811665303c34e0000e23435a800b4ba5bb8738506cf6f3df057579b0175e6f"
+   },
+   "licencia": {
+    "nombre": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "VynedJ",
+   "sinPersonas": true,
+   "encuadre": "50% 55%",
+   "bytes": 155100,
+   "sha256": "fa64cbd54847129e44d4b7e4c06b9acbfacb1b4ee8435c83adc7b4d079c31d95",
+   "temas": [
+    "regulacion-ue"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 41444,
+     "sha256": "81ffca332842f88e5ab59a36fbf74fa72a179e8c704c601d4d23ac5934febbef"
+    },
+    "960": {
+     "bytes": 118516,
+     "sha256": "40f4378fa4b34ff1444e8f97c3e3a8b74199e06d06507a3b28b951e7be5ae266"
+    }
+   }
+  },
+  "real-sala-servidores-bastidores": {
+   "origen": "foto",
+   "descripcion": "La sala de un centro de datos, vacía, con bastidores de servidores y cables de red.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Datacenter Server Racks (22370909788).jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Datacenter_Server_Racks_%2822370909788%29.jpg/1920px-Datacenter_Server_Racks_%2822370909788%29.jpg",
+    "sha256Original": "839670424e8e97de8f6dc154af999b37448e20e1bb57481ad9801dad55fd07f5"
+   },
+   "licencia": {
+    "nombre": "CC BY 2.0",
+    "url": "https://creativecommons.org/licenses/by/2.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Carl Lender from Sunrise, USA",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 148858,
+   "sha256": "d033747b77b5c027e626c6d022ee19ba20e392a06d6fbf97973e247a47da980d",
+   "temas": [
+    "emisiones-infraestructura",
+    "ciberseguridad"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 27396,
+     "sha256": "34812ff66ef89c0db165d348571ebced1145c41aaf0407478a8c55af69aa94ec"
+    },
+    "960": {
+     "bytes": 99252,
+     "sha256": "2006a338ce8f72c0878bdee5dbdbd3f1e3c057aa2bad7febfda6e0d156f3fc36"
+    }
+   }
+  },
+  "real-datafono-tarjeta": {
+   "origen": "foto",
+   "descripcion": "Un datáfono con una tarjeta metida en la ranura, sobre una mesa.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Card Payment (176811287).jpeg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Card_Payment_(176811287).jpeg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Card_Payment_%28176811287%29.jpeg/1920px-Card_Payment_%28176811287%29.jpeg",
+    "sha256Original": "bec4cd5ac9494e68be761bff8a99f1199551d88b67f59b614a8c972bd2b500ce"
+   },
+   "licencia": {
+    "nombre": "CC0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 48916,
+   "sha256": "babc37caed57ec73747fb6827f9c61a69326d1c542cfd3620a2a45bf6e87e340",
+   "temas": [
+    "pagos-stablecoins"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 14558,
+     "sha256": "d06965e8ad665cf2c77309c4732113d35e6bf2b009a6e2850a724c6621f09d2f"
+    },
+    "960": {
+     "bytes": 35650,
+     "sha256": "c7a728c2ab263b44df53dab977ddf9bd9593ea332574e84e8187adf8cb232cf2"
+    }
+   }
+  },
+  "real-lingote-oro-terciopelo": {
+   "origen": "foto",
+   "descripcion": "Un lingote de oro de 400 onzas sobre una bandeja de terciopelo azul.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Gold bullion 1.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gold_bullion_1.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Gold_bullion_1.jpg/1920px-Gold_bullion_1.jpg",
+    "sha256Original": "bf3ebc54a16aaa894cb1652496430f0b2d1535211b89dcda03a6667a98ad36c0"
+   },
+   "licencia": {
+    "nombre": "Dominio público",
+    "url": null,
+    "atribucionObligatoria": false
+   },
+   "autor": null,
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 159900,
+   "sha256": "ebc6e031d8c507069df2bf6837ffe4258ed13ca6996202c5f8bc3aef271f1c9d",
+   "temas": [
+    "oro-materias-primas"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 38970,
+     "sha256": "cbeef2eca0746b4e96931a06be8a86aa5a4da8fdaaa011d513022f1668f2b1dc"
+    },
+    "960": {
+     "bytes": 117764,
+     "sha256": "113220a4dee76c38885f04f4bb78da0ce71815c677987ea91afc84bda958ad71"
+    }
+   }
+  },
+  "real-servidores-cables": {
+   "origen": "foto",
+   "descripcion": "Cables de red junto a un armario de servidores con luces encendidas, en un centro de datos.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Wikimedia Foundation Servers-8055 22.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Wikimedia_Foundation_Servers-8055_22.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Wikimedia_Foundation_Servers-8055_22.jpg/1920px-Wikimedia_Foundation_Servers-8055_22.jpg",
+    "sha256Original": "5810e6af4fcf784167484672ae287e24a42c84b7a2daccaa64ef9f85cf0641ab"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 3.0",
+    "url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Victorgrigas",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 76830,
+   "sha256": "30b44e0f87d3524491276c0dfd62da1870fb12513c6171d6078a27692e5eaf31",
+   "temas": [
+    "ciberseguridad",
+    "emisiones-infraestructura"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 24568,
+     "sha256": "c7dcd9752e2ef95460aab79894ef8722a91b22c03bdf6dab743a3f0fd997fb85"
+    },
+    "960": {
+     "bytes": 57940,
+     "sha256": "490ac647c76bf57d2662f3e8709803344753ac8aeab8079e8d4c0590b35c68c1"
+    }
+   }
+  },
+  "real-urbanizacion-punta-prima": {
+   "origen": "foto",
+   "descripcion": "Bloques de apartamentos junto al mar en Punta Prima (Torrevieja, Alicante).",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Residential in Punta Prima, Torrevieja, Alicante, Spain, 2022 January - 2.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Residential_in_Punta_Prima,_Torrevieja,_Alicante,_Spain,_2022_January_-_2.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Residential_in_Punta_Prima%2C_Torrevieja%2C_Alicante%2C_Spain%2C_2022_January_-_2.jpg/1920px-Residential_in_Punta_Prima%2C_Torrevieja%2C_Alicante%2C_Spain%2C_2022_January_-_2.jpg",
+    "sha256Original": "7386af42f081183c46a2880823c37d5e2f4d0aa9e5fa29654fd7a305dd85ae23"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Ximonic (Simo Räsänen)",
+   "sinPersonas": true,
+   "encuadre": "50% 50%",
+   "bytes": 137842,
+   "sha256": "e2e9b5968a0d902362144cc6c0a433bc5831eebb7277da7439131f246bd10f08",
+   "temas": [
+    "inmobiliario"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 34198,
+     "sha256": "3c093712a3367d7cbd55ceb8c12569f63b65b8f66352f0034c8d8dd8db529999"
+    },
+    "960": {
+     "bytes": 104010,
+     "sha256": "6deeb682514e9d4a3914ac16f8cce12c2b69fcc5f339834f531fe94ae71024dd"
     }
    }
   }

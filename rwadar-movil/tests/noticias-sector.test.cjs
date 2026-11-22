@@ -301,7 +301,7 @@ function cargarSeccion(react, { ancho = 390, escala = 2, fontScale = 1 } = {}) {
       if (pedido === 'react-native-safe-area-context') return { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' };
       if (pedido === '../lib/tema') return tema;
       if (pedido === '../lib/tacto') return { tacto: { eleccion() {}, abrir() {} } };
-      if (pedido === '../lib/noticias-sector-remota') return { cargarNoticias: async () => { throw new Error('sin red en las pruebas'); } };
+      if (pedido === '../lib/noticias-sector-remota') return { cargarNoticias: async () => { throw new Error('sin red en las pruebas'); }, cargarCreditosFotos: async () => null };
     }
     return original.call(this, pedido, padre, principal);
   };
@@ -761,4 +761,104 @@ test('revisarEdicion: titulares legítimos del sector no paran nada (solo un avi
 test('el modelo no usa \\p{…} ni lookbehind (Hermes, la app instalada, carga este archivo)', () => {
   const fuente = fs.readFileSync(path.join(RAIZ, 'lib/noticias-sector.js'), 'utf8');
   assert.doesNotMatch(fuente, /\\p\{|\(\?<[=!]/);
+});
+
+/* ---- Fotos reales de Wikimedia Commons (22/11/2026) ----
+   El origen y el crédito de cada foto llegan aparte (/datos/fotos-noticias.json): la app ya
+   instalada valida las claves de cada noticia con una lista cerrada y rechazaría una nueva. */
+const SEDE = { origen: 'foto', descripcion: 'La fachada de piedra de una sede oficial en una calle de Madrid', autor: 'Ana Ejemplo',
+  licencia: 'CC BY-SA 4.0', licenciaUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sitio: 'Wikimedia Commons',
+  pagina: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba,_Madrid.jpg' };
+const CREDITOS = m.validarCreditosFotos({ version: 1, fotos: { ...Object.fromEntries(m.FOTOS_IA.map(k => [k, { origen: 'ia' }])), 'sede-prueba': SEDE } });
+const CON_REAL = (() => { const d = m.validarNoticias(ARCHIVO); d.noticias[0] = { ...d.noticias[0], imagen: 'sede-prueba' }; return d; })();
+
+test('las claves de IA del modelo son las escenas de IA de la biblioteca, y el archivo de créditos publicado lo acepta la app', () => {
+  const spec = JSON.parse(fs.readFileSync(path.join(RAIZ, '../rwadar-editorial-source/noticias/fotos.json'), 'utf8'));
+  assert.deepEqual([...m.FOTOS_IA].sort(), Object.entries(spec.fotos).filter(([, f]) => f.origen !== 'foto').map(([k]) => k).sort());
+  const publicado = m.validarCreditosFotos(JSON.parse(fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/fotos-noticias.json'), 'utf8')));
+  assert.deepEqual(Object.keys(publicado.fotos).sort(), Object.keys(spec.fotos).sort());
+  assert.equal(m.URL_CREDITOS, 'https://rwadar.pages.dev/datos/fotos-noticias.json');
+});
+
+test('la app lee los créditos de https://rwadar.pages.dev/datos/fotos-noticias.json sin cookies; si fallan o mienten, ninguno (nunca lanza)', async () => {
+  const llamadas = [];
+  const responde = (status, cuerpo) => async (url, init) => { llamadas.push([url, init]); return { ok: status === 200, status, text: async () => cuerpo }; };
+  const texto = JSON.stringify(CREDITOS);
+  remota.olvidarCreditosFotos();
+  assert.deepEqual(await remota.cargarCreditosFotos({ fetchImpl: responde(200, texto) }), CREDITOS);
+  assert.equal(llamadas[0][0], 'https://rwadar.pages.dev/datos/fotos-noticias.json');
+  assert.equal(llamadas[0][1].credentials, 'omit');
+  // Una respuesta buena se reutiliza; los fallos devuelven null y no se guardan.
+  assert.deepEqual(await remota.cargarCreditosFotos({ fetchImpl: responde(500, '') }), CREDITOS, 'reutiliza la buena');
+  remota.olvidarCreditosFotos();
+  assert.equal(await remota.cargarCreditosFotos({ fetchImpl: responde(404, '') }), null);
+  assert.equal(await remota.cargarCreditosFotos({ fetchImpl: responde(200, '<html>') }), null);
+  const mentira = structuredClone(CREDITOS); mentira.fotos['alerta-fraude'] = SEDE;
+  assert.equal(await remota.cargarCreditosFotos({ fetchImpl: responde(200, JSON.stringify(mentira)) }), null, 'una escena de IA dada por foto real: el archivo entero no vale');
+  assert.equal(await remota.cargarCreditosFotos({ fetchImpl: async () => { throw new Error('sin red'); } }), null);
+  assert.equal(await remota.cargarCreditosFotos({ fetchImpl: responde(200, 'x'.repeat(200 * 1024)) }), null);
+  remota.olvidarCreditosFotos();
+});
+
+test('en la app, con una foto real: su crédito en la tarjeta, en el detalle su descripción para el lector y el crédito como enlace; las de IA lo dicen; la nota, la verdad', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const enlaces = [];
+  const props = { cargar: async () => CON_REAL, cargarCreditos: async () => CREDITOS, onAbrirEnlace: (u) => enlaces.push(u), ahora: EL_DIA_DE_HOY, modo: 'lista' };
+  pintar(Seccion, props);
+  await esperar(); await esperar();
+  let arbol = pintar(Seccion, props);
+  const creditosEn = (a) => buscar(a, n => n.type === 'Text' && /^credito-/.test(n.props?.testID || '')).map(textoDe);
+  assert.deepEqual(creditosEn(arbol), ['Foto: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons', ...CON_REAL.noticias.slice(1).map(() => 'Ilustración generada con IA')]);
+  assert.equal(textoDe(buscar(arbol, n => n.props?.testID === 'noticias-nota')[0]),
+    'Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.');
+  // La etiqueta de la tarjeta (lo que se lee en voz alta) no cambia: empieza por el titular.
+  const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
+  assert.ok(filas[0].props.accessibilityLabel.startsWith(`${CON_REAL.noticias[0].titulo}. `));
+  filas[0].props.onPress();
+  arbol = pintar(Seccion, props);
+  const modal = buscar(arbol, n => n.type === 'Modal')[0];
+  const foto = buscar(modal, n => n.type === 'View' && n.props.accessibilityRole === 'image');
+  assert.equal(foto.length, 1);
+  assert.equal(foto[0].props.accessibilityLabel, SEDE.descripcion, 'la foto real se lee con su descripción');
+  // El crédito del detalle: el texto entero, con «recortada», y dos enlaces (la licencia y la página del archivo).
+  const caja = buscar(modal, n => n.props?.testID === 'credito-detalle')[0];
+  assert.equal(textoDe(caja).replace(/\s*↗/g, ''), 'Foto: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons · recortada');
+  const enlace = buscar(modal, n => n.props?.testID === 'credito-enlace')[0];
+  const licencia = buscar(modal, n => n.props?.testID === 'credito-licencia')[0];
+  assert.equal(enlace.props.accessibilityRole, 'link');
+  assert.equal(licencia.props.accessibilityRole, 'link');
+  assert.ok(textoDe(enlace).startsWith('Wikimedia Commons'));
+  assert.ok(textoDe(licencia).startsWith('CC BY-SA 4.0'));
+  assert.equal(licencia.props.accessibilityLabel, `CC BY-SA 4.0: ${SEDE.licenciaUrl}`);
+  enlace.props.onPress();
+  licencia.props.onPress();
+  assert.deepEqual(enlaces, [SEDE.pagina, SEDE.licenciaUrl], 'abre la página del archivo en Commons y la licencia, como el resto de enlaces externos');
+  // El enlace de la fuente sigue estando.
+  assert.ok(buscar(modal, x => x.type === 'Pressable' && x.props.accessibilityLabel === `Leer en la fuente (sales de RWAdar): ${CON_REAL.noticias[0].fuente.url}`).length === 1);
+});
+
+test('en la app, sin el archivo de créditos: la foto real va sin crédito (nunca uno falso) y las de IA siguen diciéndolo; en inglés, los textos del modelo', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const props = { cargar: async () => CON_REAL, cargarCreditos: async () => null, onAbrirEnlace() {}, ahora: EL_DIA_DE_HOY, modo: 'compacta' };
+  pintar(Seccion, props);
+  await esperar(); await esperar();
+  let arbol = pintar(Seccion, props);
+  const creditosEn = (a) => buscar(a, n => n.type === 'Text' && /^credito-/.test(n.props?.testID || '')).map(textoDe);
+  assert.deepEqual(creditosEn(arbol), ['Ilustración generada con IA', 'Ilustración generada con IA']);
+  assert.doesNotMatch(textoDe(arbol), /Wikimedia|Foto: /);
+  assert.equal(textoDe(buscar(arbol, n => n.props?.testID === 'noticias-nota')[0]), 'Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.');
+  await idioma.cambiarIdioma('en');
+  try {
+    const r2 = crearReact();
+    const S2 = cargarSeccion(r2.react);
+    const p2 = { ...props, cargarCreditos: async () => CREDITOS };
+    r2.pintar(S2, p2);
+    await esperar(); await esperar();
+    arbol = r2.pintar(S2, p2);
+    assert.deepEqual(creditosEn(arbol), ['Photo: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons', 'AI-generated illustration', 'AI-generated illustration']);
+    assert.equal(textoDe(buscar(arbol, n => n.props?.testID === 'noticias-nota')[0]),
+      'Stock photos under free licences and AI-generated illustrations: they illustrate the topic, not the news itself.');
+  } finally { await idioma.cambiarIdioma('es'); }
 });

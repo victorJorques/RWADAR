@@ -122,9 +122,14 @@ al mismo servidor, 3 intentos ante 5xx). Copias en bruto en
    **tal cual**, a un subagente nuevo (herramienta Agent). No añadas nada.
 3. Si responde algo distinto de «HECHO»: FRENO «editor».
 
-Las mañanas **no generan fotos**: el editor elige de la biblioteca; si ninguna
-encaja, la genérica de su categoría con `faltaria` (el resumen las junta para
-ampliar la biblioteca otro día).
+Las mañanas **no generan ni importan fotos**: el editor elige de la biblioteca
+(primero las fotos reales de Wikimedia Commons, que llevan su crédito, pero
+solo con `fotos.realesEnApp: true` en `config.json`, que se pone después de
+la OTA con los créditos: si no, V-2 para; las escenas de IA solo si ninguna
+real encaja); si ninguna encaja, la genérica de
+su categoría con `faltaria` (el resumen las junta para ampliar la biblioteca
+otro día; las fotos reales las importa una persona con
+`rwadar-editorial-source/noticias/importar-foto.py`).
 
 ## Paso 4 · Fuentes y validación (segundos)
 

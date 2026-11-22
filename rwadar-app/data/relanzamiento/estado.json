@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-21",
+  "actualizadoEl": "2026-11-22",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Noticias del sector del 22/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo fe0cfaa8",
+  "nota": "Noticias con fotos reales de Wikimedia Commons (biblioteca y créditos; en las noticias tras la OTA)",
   "revisionAprobada": {
-    "commit": "8f0926160b17631385715be26338ded84026595d",
-    "contenidoSha256": "sha256:7d25b752432a06ec2a973ad30dc47703421e3d7f00ff58e6e99ff8890b1985bc",
+    "commit": "8a59212f52091ac88699d2d454116cb469f8b24b",
+    "contenidoSha256": "sha256:0a525896d0fe830c9a40a787fcaf3cf38fa37151f0f08539891895a7762a50ef",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

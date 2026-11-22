@@ -24,7 +24,17 @@ escribió.
    «No hay» solo si se puede probar; si no, «no hemos hallado».
 4. **La fecha** es la del documento de la fuente; «Hoy» solo de hoy o de ayer.
 5. **La foto** encaja con la noticia y no engaña (por ejemplo, una alerta para
-   una noticia que no es de riesgo), y no se repite en la edición.
+   una noticia que no es de riesgo; la sede de un supervisor con una noticia
+   de otro), y no se repite en la edición. Si es una foto real (`"origen":
+   "foto"` en `rwadar-editorial-source/noticias/fotos.json`), su `descripcion`
+   tiene que ver de verdad con la noticia y nada de la edición la presenta
+   como foto del hecho («en la imagen»…). Su crédito es el de la biblioteca:
+   `rwadar-site/datos/fotos-noticias.json` dice para esa clave el mismo autor,
+   licencia y página de Commons que `fotos.json` (si no, `fotoAdecuada: false`
+   y veredicto `rechazado`: un crédito falso no se publica). Si hay una foto
+   real de la biblioteca que encaja y se eligió una escena de IA, dilo en
+   `faltaAlgo` (salvo que `fotos.realesEnApp` sea `false` en `config.json`:
+   entonces no se puede usar ninguna real y la regla V-2 ya lo comprueba).
 6. **Sin personas**: ningún nombre de persona física, tratamiento, cargo con
    nombre, correo ni teléfono. **Esto lo compruebas tú, literal, en cada
    noticia**: lee entero cada texto que se publica (titular, resumen, «por qué

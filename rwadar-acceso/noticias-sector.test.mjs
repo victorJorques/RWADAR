@@ -11,6 +11,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { createRequire } from 'node:module';
@@ -435,7 +436,10 @@ test('el index.html publicado: las noticias dentro de #ntLista, con su firma, «
   assert.equal(ul[1], ` aria-labelledby="ntTit" data-nt-prepintado="${modelo.firmaPrepintado(modelo.validarNoticias(VIS))}"`, 'sin hidden y con la firma');
   assert.equal(ul[2], portadaNt.htmlNoticiasInicio(VIS));
   assert.ok(salida.includes('<p class="nt-estado" id="ntEstado" role="status" hidden>Cargando las noticias…</p>'));
-  assert.ok(salida.includes('<p class="nt-nota" id="ntNota">Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>'));
+  // La nota de las tres fotos que se ven (en la edición fija, escenas de IA: lo dice).
+  assert.ok(salida.includes('<p class="nt-nota" id="ntNota" translate="no" lang="es">Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>'));
+  // Y en la fuente, sin saber qué fotos se verán, solo «ilustrativas».
+  assert.ok(fuente.includes('<p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas, no fotos de la noticia.</p>'));
   // Fuera de la lista, el resto de la página no cambia.
   assert.equal(portadaNt.sinNoticiasInicio(salida), fuente);
   // Sin la lista vacía (o ya escrita), se para.
@@ -452,7 +456,7 @@ test('el index.html publicado: las noticias dentro de #ntLista, con su firma, «
   assert.equal(portadaNt.sinNoticiasInicio(otra), portadaNt.sinNoticiasInicio(salida));
   // El publicador lo aplica al index.html de la carpeta temporal, tras validar y revisar la guía; nunca a rwadar-site/index.html.
   const publicador = lee('rwadar-publicar.js');
-  assert.match(publicador, /const inicioTemporal = path\.join\(temporal, 'index\.html'\);\n\s*fs\.writeFileSync\(inicioTemporal, prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias\), 'utf8'\);/);
+  assert.match(publicador, /const inicioTemporal = path\.join\(temporal, 'index\.html'\);\n\s*fs\.writeFileSync\(inicioTemporal, prepararInicioPublicado\(fs\.readFileSync\(inicioTemporal, 'utf8'\), noticias, creditosFotos\), 'utf8'\);/);
   assert.ok(publicador.indexOf('noticiasModelo.revisarEdicion(') < publicador.indexOf('prepararInicioPublicado(fs.readFileSync'));
   assert.doesNotMatch(publicador, /writeFileSync\(FILE[^\n]*(?:prepararInicio|inyectarNoticias)/);
   assert.doesNotMatch(publicador, /function validaMarcadoEstricto/, 'una sola regla de la CSP, la del módulo');
@@ -462,6 +466,310 @@ test('el index.html publicado: las noticias dentro de #ntLista, con su firma, «
   // La edición viva también pasa el camino entero del publicador (la mañana lo hace antes de su PR).
   portadaNt.prepararInicioPublicado(fuente, JSON.parse(TEXTO));
   assert.deepEqual(modelo.revisarEdicion(JSON.parse(TEXTO)).errores, []);
+});
+
+/* ---- Fotos reales de Wikimedia Commons (22/11/2026) ---- */
+// Unos créditos de prueba: las escenas de IA de la biblioteca y dos fotos reales con claves que no son de IA.
+const SEDE = { origen: 'foto', descripcion: 'La fachada de piedra de una sede oficial en una calle de Madrid', autor: 'Ana Ejemplo',
+  licencia: 'CC BY-SA 4.0', licenciaUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sitio: 'Wikimedia Commons',
+  pagina: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba,_Madrid.jpg' };
+const LINGOTES = { origen: 'foto', descripcion: 'Unos lingotes de oro apilados sobre una mesa', autor: null, licencia: 'Dominio público',
+  licenciaUrl: null, sitio: 'Wikimedia Commons', pagina: 'https://commons.wikimedia.org/wiki/File:Lingotes_de_prueba.jpg' };
+const CREDITOS_PRUEBA = { version: 1, fotos: { ...Object.fromEntries(modelo.FOTOS_IA.map(k => [k, { origen: 'ia' }])), 'sede-prueba': SEDE, 'lingotes-prueba': LINGOTES } };
+const conReales = (datos, claves) => { const d = structuredClone(datos); claves.forEach((k, i) => { if (k) d.noticias[i].imagen = k; }); return d; };
+
+test('el HTML de Inicio con fotos reales: el crédito corto fuera del enlace, con enlace a Commons; las de IA lo dicen; la nota, la verdad de las tres', () => {
+  const creditos = modelo.validarCreditosFotos(CREDITOS_PRUEBA);
+  const fuente = lee('rwadar-site/index.html');
+  // Las tres reales: «Foto: autor · licencia · Wikimedia Commons» (sin autor en dominio público) y la nota de las fotos reales.
+  const reales = conReales(VIS, ['sede-prueba', 'lingotes-prueba', 'sede-prueba-2']);
+  const tresReales = { ...creditos, fotos: { ...creditos.fotos, 'sede-prueba-2': { ...SEDE, pagina: 'https://commons.wikimedia.org/wiki/File:Otra_sede.jpg' } } };
+  const h = portadaNt.htmlNoticiasInicio(reales, tresReales);
+  const lis = h.split('</li>').filter(Boolean);
+  assert.equal(lis.length, 3);
+  // Dos enlaces: la licencia, a su texto (CC BY-SA 4.0 pide su enlace), y «Wikimedia Commons», a la página del archivo.
+  assert.ok(lis[0].endsWith('</a><span class="nt-credito nt-credito--foto" translate="no" lang="es">Foto: Ana Ejemplo · ' +
+    '<a class="nt-credito-enl" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · ' +
+    '<a class="nt-credito-enl" href="https://commons.wikimedia.org/wiki/File:Sede_de_prueba,_Madrid.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></span>'), lis[0].slice(-400));
+  // Sin autor ni enlace de licencia en dominio público (no tiene texto que enlazar).
+  assert.ok(lis[1].endsWith('<span class="nt-credito nt-credito--foto" translate="no" lang="es">Foto: Dominio público · ' +
+    '<a class="nt-credito-enl" href="https://commons.wikimedia.org/wiki/File:Lingotes_de_prueba.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></span>'), lis[1].slice(-300));
+  // En Inicio la foto va dentro del enlace de la noticia: decorativa (el nombre del enlace es el titular).
+  assert.ok([...h.matchAll(/<img\b[^>]*>/g)].every(m => m[0].includes(' alt=""')));
+  const salida = portadaNt.prepararInicioPublicado(fuente, reales, tresReales);
+  assert.ok(salida.includes('<p class="nt-nota" id="ntNota" translate="no" lang="es">Fotos de archivo con licencia libre: ilustran el tema, no son de la noticia.</p>'));
+  assert.equal(portadaNt.sinNoticiasInicio(salida), fuente);
+  // Una real y dos de IA: cada una con lo suyo y la nota lo dice.
+  const mixta = portadaNt.prepararInicioPublicado(fuente, conReales(VIS, ['sede-prueba']), creditos);
+  assert.ok(mixta.includes('>Foto: Ana Ejemplo · <a class="nt-credito-enl" href="https://creativecommons.org/licenses/by-sa/4.0/"'));
+  assert.equal((mixta.match(/<span class="nt-credito nt-credito--ia" translate="no" lang="es">Ilustración generada con IA<\/span>/g) || []).length, 2);
+  assert.ok(mixta.includes('>Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.</p>'));
+  // Sin créditos: la real va sin crédito (nunca uno falso), las de IA siguen diciéndolo y la nota no dice que sean reales.
+  const sin = portadaNt.prepararInicioPublicado(fuente, conReales(VIS, ['sede-prueba']), null);
+  assert.doesNotMatch(sin, /Foto: |Wikimedia/);
+  assert.equal((sin.match(/>Ilustración generada con IA</g) || []).length, 2);
+  assert.ok(sin.includes('>Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.</p>'));
+  // Un texto de crédito con comillas o un = no rompe el HTML ni la CSP.
+  const raro = modelo.validarCreditosFotos({ version: 1, fotos: { 'sede-prueba': { ...SEDE, autor: 'Ana "La Fotógrafa" O\'Neil a=b' } } });
+  const hr = portadaNt.htmlNoticiasInicio(conReales(VIS, ['sede-prueba']), raro);
+  assert.ok(hr.includes('lang="es">Foto: Ana &quot;La Fotógrafa&quot; O&#39;Neil a&#61;b · <a class="nt-credito-enl" href="https://creativecommons.org/licenses/by-sa/4.0/"'));
+  portadaNt.validaMarcadoEstricto('x', hr);
+});
+
+test('el archivo de créditos de verdad: sale de fotos.json, todas sus claves, las de IA como IA, y el comprobador para si no está al día o miente', () => {
+  const fotosMod = require('../rwadar-noticias-editoriales.js');
+  const spec = JSON.parse(lee('rwadar-editorial-source/noticias/fotos.json'));
+  const texto = lee('rwadar-site/datos/fotos-noticias.json');
+  assert.equal(texto, fotosMod.creditosDesdeManifiesto(spec), 'ejecuta node rwadar-noticias-editoriales.js --creditos');
+  const c = modelo.validarCreditosFotos(JSON.parse(texto));
+  assert.deepEqual(Object.keys(c.fotos).sort(), Object.keys(spec.fotos).sort());
+  // Las claves de IA del modelo son exactamente las escenas de IA de la biblioteca (una clave publicada no cambia).
+  assert.deepEqual([...modelo.FOTOS_IA].sort(), Object.entries(spec.fotos).filter(([, f]) => f.origen !== 'foto').map(([k]) => k).sort());
+  for (const [k, f] of Object.entries(spec.fotos)) {
+    if (f.origen !== 'foto') { assert.deepEqual(c.fotos[k], { origen: 'ia' }); continue; }
+    assert.deepEqual(c.fotos[k], { origen: 'foto', descripcion: f.descripcion, autor: f.licencia.atribucionObligatoria ? f.autor : null,
+      licencia: f.licencia.nombre, licenciaUrl: f.licencia.url, sitio: 'Wikimedia Commons', pagina: f.fuente.pagina });
+  }
+  // Un archivo de créditos que no es el de la biblioteca: el comprobador (y con él el publicador) se para.
+  const raiz = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-creditos-'));
+  try {
+    fs.cpSync(path.join(RAIZ, 'rwadar-editorial-source/noticias'), path.join(raiz, 'rwadar-editorial-source/noticias'), { recursive: true });
+    fs.mkdirSync(path.join(raiz, 'rwadar-site/datos'), { recursive: true });
+    assert.throws(() => fotosMod.comprobarCreditos(raiz), /falta rwadar-site\/datos\/fotos-noticias\.json/);
+    fs.writeFileSync(path.join(raiz, 'rwadar-site/datos/fotos-noticias.json'), texto.replace('"origen": "ia"', '"origen": "foto"'));
+    assert.throws(() => fotosMod.comprobarCreditos(raiz), /no está al día/);
+    fotosMod.escribirCreditos(raiz);
+    assert.equal(fotosMod.comprobarCreditos(raiz), path.join(raiz, 'rwadar-site/datos/fotos-noticias.json'));
+  } finally { fs.rmSync(raiz, { recursive: true, force: true }); }
+});
+
+test('la biblioteca admite fotos reales (esquema 2) con todo lo que pide su licencia, y para si falta algo o trae campos de IA', async () => {
+  const fotosMod = require('../rwadar-noticias-editoriales.js');
+  const spec = JSON.parse(lee('rwadar-editorial-source/noticias/fotos.json'));
+  const clave = Object.keys(spec.fotos)[0], ia = spec.fotos[clave];
+  // Una foto real hecha con los WebP de una escena (aquí solo importa la forma de la entrada).
+  const real = { origen: 'foto', descripcion: 'La fachada de piedra de una sede oficial en una calle de Madrid',
+    fuente: { sitio: 'Wikimedia Commons', archivo: 'File:Sede de prueba.jpg', pagina: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba.jpg',
+      original: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Sede_de_prueba.jpg', sha256Original: 'a'.repeat(64) },
+    licencia: { nombre: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/', atribucionObligatoria: true },
+    autor: 'Ana Ejemplo', sinPersonas: true, encuadre: '50% 50%', bytes: ia.bytes, sha256: ia.sha256, temas: ['regulacion-espana'], variantes: ia.variantes };
+  const caso = (nombre, cambiar, error) => {
+    const raiz = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-real-'));
+    try {
+      const dir = path.join(raiz, 'rwadar-editorial-source/noticias');
+      fs.cpSync(path.join(RAIZ, 'rwadar-editorial-source/noticias'), dir, { recursive: true });
+      for (const w of ['', '480', '960']) fs.copyFileSync(path.join(dir, 'fotos', w, `${clave}.webp`), path.join(dir, 'fotos', w, 'sede-prueba.webp'));
+      const s = structuredClone(spec), r = structuredClone(real);
+      s.fotos['sede-prueba'] = r;
+      cambiar(r, s);
+      fs.writeFileSync(path.join(dir, 'fotos.json'), JSON.stringify(s, null, 1) + '\n');
+      if (error) assert.throws(() => fotosMod.cargarFotosNoticias(raiz, { claves: [] }), error, nombre);
+      else {
+        const m = fotosMod.cargarFotosNoticias(raiz, { claves: ['sede-prueba'] }).manifiesto;
+        const c = modelo.validarCreditosFotos(JSON.parse(fotosMod.creditosDesdeManifiesto(m)));
+        return modelo.creditoFoto({ imagen: 'sede-prueba' }, c);
+      }
+    } finally { fs.rmSync(raiz, { recursive: true, force: true }); }
+  };
+  assert.deepEqual(caso('buena', () => {}), { origen: 'foto', texto: 'Foto: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons',
+    enlace: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba.jpg', licenciaUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', alt: real.descripcion,
+    partes: [{ texto: 'Foto: Ana Ejemplo · ', enlace: null }, { texto: 'CC BY-SA 4.0', enlace: 'https://creativecommons.org/licenses/by-sa/4.0/' },
+      { texto: ' · ', enlace: null }, { texto: 'Wikimedia Commons', enlace: 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba.jpg' }],
+    recorte: 'recortada' });
+  const dp = caso('dominio público', r => { r.licencia = { nombre: 'Dominio público', url: null, atribucionObligatoria: false }; r.autor = null; });
+  assert.equal(dp.texto, 'Foto: Dominio público · Wikimedia Commons');
+  assert.equal(dp.licenciaUrl, null);
+  assert.deepEqual(dp.partes.map(x => x.enlace), [null, null, null, 'https://commons.wikimedia.org/wiki/File:Sede_de_prueba.jpg'], 'el dominio público no tiene licencia que enlazar');
+  caso('esquema 1', (r, s) => { s.versionEsquema = 1; }, /esquema 1 no las admite/);
+  caso('sin descripción', r => { delete r.descripcion; }, /le falta descripcion/);
+  caso('descripción vacía', r => { r.descripcion = 'Edificio'; }, /descripcion/);
+  caso('con prompt', r => { r.prompt = 'a building'; }, /no lleva prompt/);
+  caso('con modelo', r => { r.modelo = 'realvisxl'; }, /no lleva modelo/);
+  caso('licencia no libre', r => { r.licencia = { nombre: 'CC BY-NC 4.0', url: 'https://creativecommons.org/licenses/by-nc/4.0/', atribucionObligatoria: true }; }, /licencia no admitida/);
+  caso('url de licencia cambiada', r => { r.licencia.url = 'https://creativecommons.org/licenses/by/4.0/'; }, /licencia no admitida/);
+  caso('sin autor y la licencia lo pide', r => { r.autor = null; }, /obliga a nombrar al autor/);
+  caso('autor con HTML', r => { r.autor = '<a href="x">Ana</a>'; }, /obliga a nombrar al autor/);
+  caso('página fuera de Commons', r => { r.fuente.pagina = 'https://example.com/wiki/File:Sede.jpg'; }, /fuente/);
+  caso('original fuera de upload.wikimedia.org', r => { r.fuente.original = 'https://example.com/x.jpg'; }, /fuente/);
+  caso('sin personas sin decir', r => { r.sinPersonas = false; }, /sinPersonas/);
+  caso('encuadre raro', r => { r.encuadre = 'centro'; }, /encuadre/);
+  caso('una clave de IA no se vuelve real', (r, s) => { s.fotos[clave] = r; delete s.fotos['sede-prueba']; }, /se publicó como ilustración de IA/);
+  caso('una escena de IA con campos de foto real', (r, s) => { s.fotos[clave].descripcion = 'x'; }, /campos que no son suyos/);
+  // El mismo archivo de Commons dos veces: escrito con guiones bajos, o la misma imagen con otro nombre.
+  caso('el mismo archivo con guiones bajos', (r, s) => { s.fotos['sede-prueba-2'] = { ...structuredClone(r),
+    fuente: { ...r.fuente, archivo: 'File:Sede_de_prueba.jpg', sha256Original: 'b'.repeat(64) } }; }, /mismo archivo de Commons/);
+  caso('la misma imagen con otro nombre', (r, s) => { s.fotos['sede-prueba-2'] = { ...structuredClone(r),
+    fuente: { ...r.fuente, archivo: 'File:Otra sede.jpg', pagina: 'https://commons.wikimedia.org/wiki/File:Otra_sede.jpg' } }; }, /misma imagen \(mismo sha256Original\)/);
+  assert.equal(fotosMod.tituloCommons('File:sede_de__prueba.jpg'), 'File:Sede de prueba.jpg');
+});
+
+test('el interruptor de las fotos reales: apagado hasta la OTA con los créditos; el publicador, --comprobar y V-2 paran si una noticia usa una', () => {
+  const fotosMod = require('../rwadar-noticias-editoriales.js');
+  const config = JSON.parse(lee('.claude/skills/noticias-automaticas/config.json'));
+  assert.equal(config.fotos.realesEnApp, false, 'la app instalada aún no enseña los créditos');
+  assert.equal(fotosMod.fotosRealesEnApp(RAIZ), false);
+  const manifiesto = { fotos: { 'sede-prueba': { origen: 'foto' }, 'alerta-fraude': {} } };
+  assert.throws(() => fotosMod.comprobarFotosRealesEnApp(manifiesto, ['alerta-fraude', 'sede-prueba'], false), /fotos reales \(sede-prueba\).*realesEnApp/);
+  assert.deepEqual(fotosMod.comprobarFotosRealesEnApp(manifiesto, ['alerta-fraude'], false), []);
+  assert.deepEqual(fotosMod.comprobarFotosRealesEnApp(manifiesto, ['alerta-fraude', 'sede-prueba'], true), ['sede-prueba']);
+  // Un valor que no es true ni false: para (nada de «sí» o 1).
+  const raiz = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-interruptor-'));
+  try {
+    fs.mkdirSync(path.join(raiz, '.claude/skills/noticias-automaticas'), { recursive: true });
+    fs.writeFileSync(path.join(raiz, '.claude/skills/noticias-automaticas/config.json'), JSON.stringify({ fotos: { realesEnApp: 'sí' } }));
+    assert.throws(() => fotosMod.fotosRealesEnApp(raiz), /true o false/);
+    fs.writeFileSync(path.join(raiz, '.claude/skills/noticias-automaticas/config.json'), JSON.stringify({ fotos: { realesEnApp: true } }));
+    assert.equal(fotosMod.fotosRealesEnApp(raiz), true);
+  } finally { fs.rmSync(raiz, { recursive: true, force: true }); }
+  // Lo aplican el publicador (antes de construir nada), --comprobar y la regla V-2.
+  assert.match(lee('rwadar-publicar.js'), /comprobarFotosRealesEnApp\(fotosNoticias\.manifiesto, clavesFotosUsadas\(__dirname\), fotosRealesEnApp\(__dirname\)\)/);
+  assert.match(lee('rwadar-noticias-editoriales.js'), /comprobarFotosRealesEnApp\(r\.manifiesto, clavesUsadas\(__dirname\), fotosRealesEnApp\(__dirname\)\)/);
+  assert.match(lee('.claude/skills/noticias-automaticas/lib/validar.mjs'), /fotosJSON\[c\]\?\.origen === 'foto'\);\n\s*if \(reales\.length && config\.fotos\?\.realesEnApp !== true\)/);
+});
+
+test('el modelo nunca da un crédito falso: un archivo de créditos que miente o está roto no se usa entero', () => {
+  const bueno = modelo.validarCreditosFotos(CREDITOS_PRUEBA);
+  assert.equal(modelo.creditoFoto({ imagen: 'sede-prueba' }, bueno, 'en').texto, 'Photo: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons');
+  assert.equal(modelo.creditoFoto({ imagen: 'lingotes-prueba' }, bueno, 'en').texto, 'Photo: Public domain · Wikimedia Commons');
+  assert.deepEqual(modelo.creditoFoto({ imagen: 'alerta-fraude' }, null, 'en'), { origen: 'ia', texto: 'AI-generated illustration' });
+  const malos = [
+    ['una clave de IA dada por real', f => { f['alerta-fraude'] = SEDE; }],
+    ['una licencia que no es libre', f => { f['sede-prueba'] = { ...SEDE, licencia: 'CC BY-NC 4.0' }; }],
+    ['la página fuera de Commons', f => { f['sede-prueba'] = { ...SEDE, pagina: 'https://example.com/File:x.jpg' }; }],
+    ['un autor con marcado', f => { f['sede-prueba'] = { ...SEDE, autor: '<b>Ana</b>' }; }],
+    ['autor en dominio público', f => { f['lingotes-prueba'] = { ...LINGOTES, autor: 'Alguien' }; }],
+    ['un campo de más', f => { f['sede-prueba'] = { ...SEDE, extra: 1 }; }],
+    ['un origen desconocido', f => { f['sede-prueba'] = { origen: 'otro' }; }],
+  ];
+  for (const [nombre, romper] of malos) {
+    const d = structuredClone(CREDITOS_PRUEBA); romper(d.fotos);
+    assert.throws(() => modelo.validarCreditosFotos(d), Error, nombre);
+    assert.equal(modelo.creditosValidos(d), null, nombre);
+    // Sin créditos válidos: la real va sin crédito y la de IA sigue diciendo que lo es.
+    assert.equal(modelo.creditoFoto({ imagen: 'sede-prueba' }, modelo.creditosValidos(d)), null);
+    assert.equal(modelo.creditoFoto({ imagen: 'alerta-fraude' }, modelo.creditosValidos(d)).origen, 'ia');
+  }
+  const notas = (claves, c, idioma) => modelo.notaFotos(claves.map(imagen => ({ imagen })), c, idioma);
+  assert.equal(notas(['sede-prueba', 'lingotes-prueba'], bueno), 'Fotos de archivo con licencia libre: ilustran el tema, no son de la noticia.');
+  assert.equal(notas(['sede-prueba', 'lingotes-prueba'], bueno, 'en'), 'Stock photos under free licences: they illustrate the topic, not the news itself.');
+  assert.equal(notas(['alerta-fraude', 'red-europea'], null), 'Imágenes ilustrativas generadas con IA, no fotos de la noticia.');
+  assert.equal(notas(['sede-prueba', 'alerta-fraude'], bueno), 'Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.');
+  assert.equal(notas(['sede-prueba', 'alerta-fraude'], null), 'Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.');
+  assert.equal(notas(['sede-prueba'], null), 'Imágenes ilustrativas, no fotos de la noticia.');
+  assert.equal(notas(['sede-prueba'], null, 'en'), 'Illustrative images, not photos of the news.');
+});
+
+test('en Chromium, con fotos reales: el crédito debajo de cada tarjeta (con enlace a Commons), el texto alternativo en /mercado/ y en el detalle, la nota y el inglés; sin créditos, ninguno falso', { skip: sinNavegador, timeout: 180000 }, async () => {
+  const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0,
+    responder: async url => (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
+  const navegador = await playwright.chromium.launch();
+  const edicion = conReales(DATOS_EJ, ['sede-prueba', null, 'lingotes-prueba']);
+  const abrir = async (ruta, { creditos = CREDITOS_PRUEBA, idioma = null, ancho = 390 } = {}) => {
+    const p = await navegador.newPage({ viewport: { width: ancho, height: 844 } });
+    if (idioma) await p.addInitScript(i => { try { localStorage.setItem('rwadar.idioma', i); } catch {} }, idioma);
+    await p.clock.setFixedTime(aMediodia(HOY));
+    await p.route('**/datos/noticias-v2.json', r => r.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: JSON.stringify(edicion) }));
+    await p.route('**/datos/fotos-noticias.json', r => (creditos ? r.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: JSON.stringify(creditos) })
+      : r.fulfill({ status: 404, body: '' })));
+    await conFotos(p, []);
+    const errores = [];
+    p.on('pageerror', e => errores.push(e.message));
+    await p.goto(local.url + ruta, { waitUntil: 'load' });
+    await p.waitForSelector('[data-noticias-estado="listo"]', { timeout: 20000 });
+    return { p, errores };
+  };
+  const leer = p => p.evaluate(() => ({
+    creditos: [...document.querySelectorAll('#ntLista > li')].map(li => {
+      const c = li.querySelector(':scope > .nt-credito');
+      return c ? { tag: c.tagName, texto: c.textContent, dentroEnlace: !!c.closest('a.nt-p,a.nt-t'),
+        enlaces: [...c.querySelectorAll('a')].map(a => ({ texto: a.textContent, href: a.getAttribute('href'), target: a.getAttribute('target'),
+          rel: a.getAttribute('rel'), alto: a.getBoundingClientRect().height })) } : null;
+    }),
+    alts: [...document.querySelectorAll('#ntLista img')].map(i => ({ alt: i.getAttribute('alt'), oculta: i.closest('[aria-hidden="true"]') !== null })),
+    nota: document.getElementById('ntNota').textContent, anchoPagina: document.documentElement.scrollWidth,
+    // Nada se monta: cada crédito, debajo de su tarjeta y dentro de su <li>; la nota, debajo de todos.
+    solapes: [...document.querySelectorAll('#ntLista > li')].filter(li => {
+      const c = li.querySelector(':scope > .nt-credito'), t = li.querySelector(':scope > .nt-p, :scope > .nt-t');
+      if (!c) return false;
+      const bc = c.getBoundingClientRect(), bt = t.getBoundingClientRect(), bl = li.getBoundingClientRect();
+      return bc.top < bt.bottom - 0.5 || bc.bottom > bl.bottom + 0.5 || bc.bottom > document.getElementById('ntNota').getBoundingClientRect().top + 0.5;
+    }).length,
+  }));
+  try {
+    for (const ancho of [390, 1366]) {
+      // ---- Inicio: créditos fuera del enlace, fotos decorativas dentro del enlace ----
+      const { p, errores } = await abrir('/', { ancho });
+      const i = await leer(p);
+      assert.deepEqual(errores, []);
+      // La licencia enlaza a su texto (el dominio público no tiene) y «Wikimedia Commons», a la página del archivo.
+      assert.deepEqual(i.creditos.map(c => c && [c.tag, c.texto, c.enlaces.map(a => [a.texto, a.href]), c.dentroEnlace]), [
+        ['SPAN', 'Foto: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons', [['CC BY-SA 4.0', SEDE.licenciaUrl], ['Wikimedia Commons', SEDE.pagina]], false],
+        ['SPAN', 'Ilustración generada con IA', [], false],
+        ['SPAN', 'Foto: Dominio público · Wikimedia Commons', [['Wikimedia Commons', LINGOTES.pagina]], false]]);
+      assert.ok(i.creditos.flatMap(c => c.enlaces).every(a => a.target === '_blank' && a.rel === 'noopener noreferrer' && a.alto >= 24), 'enlaces que salen, con 24 px de alto');
+      assert.ok(i.alts.every(a => a.alt === '' && a.oculta), 'en Inicio la foto va dentro del enlace: decorativa');
+      assert.equal(i.nota, 'Fotos de archivo con licencia libre e ilustraciones generadas con IA: ilustran el tema, no son de la noticia.');
+      assert.equal(i.anchoPagina, ancho, 'sin desplazamiento horizontal');
+      assert.equal(i.solapes, 0, `${ancho}: ningún crédito se monta en su tarjeta ni en la nota`);
+      for (const n of edicion.noticias.slice(0, 3)) {
+        const cual = modelo.etiquetaReciente(n, HOY);
+        assert.equal(await p.getByRole('link', { name: `${n.titulo} ${corta(n)} · ${modelo.fechaCorta(n.fecha)}${cual ? ' ' + cual : ''}`, exact: true }).count(), 1, 'el nombre del enlace sigue siendo el titular');
+      }
+      assert.equal(await p.getByRole('link', { name: 'CC BY-SA 4.0', exact: true }).count(), 1);
+      assert.equal(await p.getByRole('link', { name: 'Wikimedia Commons', exact: true }).count(), 2);
+      await p.close();
+    }
+    // ---- /mercado/: el texto alternativo de la foto real es su descripción; en el detalle, también, con el crédito enlazado ----
+    {
+      const { p, errores } = await abrir('/mercado/');
+      const m = await leer(p);
+      assert.deepEqual(errores, []);
+      assert.deepEqual(m.alts.slice(0, 3), [{ alt: SEDE.descripcion, oculta: false }, { alt: '', oculta: true }, { alt: LINGOTES.descripcion, oculta: false }]);
+      assert.equal(m.creditos.length, edicion.noticias.length);
+      assert.equal(m.solapes, 0, '/mercado/: ningún crédito se monta');
+      assert.equal(await p.getByRole('img', { name: SEDE.descripcion }).count(), 1);
+      await p.click(`#ntLista [data-nt-id="${edicion.noticias[0].id}"]`);
+      await p.waitForSelector('#ntDialogo[open]');
+      const d = await p.evaluate(() => { const c = document.querySelector('#ntDialogo .nt-dlg-credito'), i = document.querySelector('#ntDialogo .nt-dlg-arte img');
+        return { texto: c?.textContent, hrefs: [...c.querySelectorAll('a')].map(a => a.getAttribute('href')), altos: [...c.querySelectorAll('a')].map(a => a.getBoundingClientRect().height >= 24),
+          alt: i?.getAttribute('alt'), oculta: !!i?.closest('[aria-hidden="true"]'), trasFoto: c?.previousElementSibling?.classList.contains('nt-dlg-arte') }; });
+      // En el detalle, además, que la foto se publica recortada (CC BY-SA 4.0 pide indicar los cambios).
+      assert.deepEqual(d, { texto: 'Foto: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons · recortada', hrefs: [SEDE.licenciaUrl, SEDE.pagina], altos: [true, true],
+        alt: SEDE.descripcion, oculta: false, trasFoto: true });
+      await p.keyboard.press('Escape');
+      await p.click(`#ntLista [data-nt-id="${edicion.noticias[1].id}"]`);
+      await p.waitForSelector('#ntDialogo[open]');
+      assert.equal(await p.textContent('#ntDialogo .nt-dlg-credito'), 'Ilustración generada con IA');
+      await p.close();
+    }
+    // ---- En inglés ----
+    {
+      const { p } = await abrir('/mercado/', { idioma: 'en' });
+      await p.waitForFunction(() => document.documentElement.lang === 'en');
+      const e = await leer(p);
+      assert.deepEqual(e.creditos.slice(0, 3).map(c => c.texto), ['Photo: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons', 'AI-generated illustration', 'Photo: Public domain · Wikimedia Commons']);
+      assert.equal(e.nota, 'Stock photos under free licences and AI-generated illustrations: they illustrate the topic, not the news itself.');
+      await p.click(`#ntLista [data-nt-id="${edicion.noticias[0].id}"]`);
+      await p.waitForSelector('#ntDialogo[open]');
+      assert.equal(await p.textContent('#ntDialogo .nt-dlg-credito'), 'Photo: Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons · cropped');
+      await p.close();
+    }
+    // ---- Sin el archivo de créditos: ningún crédito falso; las de IA siguen diciéndolo ----
+    {
+      const { p, errores } = await abrir('/', { creditos: null });
+      const s = await leer(p);
+      assert.deepEqual(errores, []);
+      assert.deepEqual(s.creditos.map(c => c && c.texto), [null, 'Ilustración generada con IA', null]);
+      assert.equal(s.nota, 'Imágenes ilustrativas, algunas generadas con IA: no son fotos de la noticia.');
+      await p.close();
+      // Y un archivo que miente (una escena de IA dada por foto real) no se usa entero.
+      const mentira = structuredClone(CREDITOS_PRUEBA); mentira.fotos[edicion.noticias[1].imagen] = SEDE;
+      const r = await abrir('/', { creditos: mentira });
+      const x = await leer(r.p);
+      assert.deepEqual(x.creditos.map(c => c && c.texto), [null, 'Ilustración generada con IA', null]);
+      await r.p.close();
+    }
+  } finally { await navegador.close(); await local.cerrar(); }
 });
 
 test('la biblioteca de fotos: el comprobador para con una variante cambiada, que falta o que sobra, de otro tamaño, o con temas y genéricas mal', async () => {
@@ -720,6 +1028,17 @@ test('la guía de titulares (GUIA-TITULARES.md): sus apartados fijos, las fotos 
     const deTabla = [...fila.matchAll(/`([a-z0-9-]+)`/g)].map(m => m[1]).sort();
     const deFotos = Object.entries(spec.fotos).filter(([, f]) => f.temas.includes(tema)).map(([k]) => k).sort();
     assert.deepEqual(deTabla, deFotos, `las fotos del tema «${nombre}» en la guía y en fotos.json`);
+    // 22/11/2026: las fotos reales (primero) y las escenas de IA, cada una en su columna.
+    const [, , reales, ia] = fila.split('|').map(c => c.trim());
+    const claves = c => [...c.matchAll(/`([a-z0-9-]+)`/g)].map(m => m[1]);
+    assert.ok(claves(reales).every(k => spec.fotos[k].origen === 'foto') && claves(ia).every(k => spec.fotos[k].origen !== 'foto'),
+      `en la fila «${nombre}», las fotos reales en su columna y las de IA en la suya`);
+  }
+  assert.ok(tabla.includes('| Tema | Fotos reales (primero) | Escenas de IA |'));
+  // Lo que pidió la dirección: primero una foto real que muestre de verdad lo que dice su descripción; nunca como foto del hecho; IA solo si ninguna real encaja.
+  for (const regla of ['**Prefiere una foto real**', '**Nunca se presenta como foto del hecho**', '**Sin personas reconocibles**',
+    '**Ninguna foto se repite en la misma edición**', '**Las escenas de IA, solo si ninguna foto real encaja**', '**nunca generan ni importan fotos**']) {
+    assert.ok(tabla.includes(regla), regla);
   }
   for (const [cat, clave] of Object.entries(spec.genericas)) assert.ok(guia.includes(`${modelo.CATEGORIAS[cat].es.toLowerCase()} → \`${clave}\``), `genérica de ${cat}`);
   // El largo de la guía es el del programa.

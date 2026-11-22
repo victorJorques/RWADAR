@@ -4,9 +4,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { FuenteOriginal, Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
-import { cargarNoticias } from '../lib/noticias-sector-remota';
-import { CATEGORIAS, EN_INICIO, URL_FOTOS, anchoFoto, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal,
-  fuenteCorta as fuenteCortaModelo, rutaFoto, textos } from '../lib/noticias-sector';
+import { cargarCreditosFotos, cargarNoticias } from '../lib/noticias-sector-remota';
+import { CATEGORIAS, EN_INICIO, URL_FOTOS, anchoFoto, creditoFoto, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal,
+  fuenteCorta as fuenteCortaModelo, notaFotos, rutaFoto, textos } from '../lib/noticias-sector';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -30,8 +30,17 @@ import { tacto } from '../lib/tacto';
      un modal: fecha, titular, resumen, «Por qué te importa», la fuente y
      «Leer en la fuente (sales de RWAdar) ↗», que abre el enlace con
      onAbrirEnlace (el de App.js: solo https). `abrirId` abre esa al entrar.
-   Las fotos son ilustrativas, generadas con IA, y se cargan de
-   https://rwadar.pages.dev/noticias-editoriales/ en el tamaño que pide la
+   Las fotos ilustran el tema, no son de la noticia: unas son fotos reales
+   con licencia libre de Wikimedia Commons y otras, escenas generadas con IA
+   (22/11/2026). Su origen y su crédito salen de /datos/fotos-noticias.json
+   (cargarCreditosFotos, aparte de las noticias): en cada tarjeta, «Foto:
+   autor · licencia · Wikimedia Commons» o «Ilustración generada con IA»; en
+   el detalle, la foto real se lee con su descripción y su crédito lleva dos
+   enlaces (la licencia, a su texto; «Wikimedia Commons», a la página del
+   archivo) y «recortada». Sin ese archivo, una foto real va sin
+   crédito (nunca con uno falso) y las de IA siguen diciendo que lo son. La
+   línea de debajo dice la verdad de las fotos que se ven (notaFotos). Se
+   cargan de https://rwadar.pages.dev/noticias-editoriales/ en el tamaño que pide la
    pantalla (480, 960 o 1200 píxeles: modelo.anchoFoto); si la variante no
    carga, se prueba la de 1200 y, si tampoco, queda el fondo oscuro. Con la
    red caída, la sección lo dice y ofrece reintentar. Los textos de cada
@@ -46,14 +55,23 @@ const VELO = '#0B0A0A';
 const ANCHO_DOS_COLUMNAS = 320;
 const HUECO = 12;
 
-/* La foto de una noticia, decorativa (el titular ya lo dice todo). «ancho»:
-   los puntos que ocupa en la pantalla, para pedir el tamaño justo. */
-export function FotoNoticia({ noticia, estilo, ancho = 0 }) {
+/* La foto de una noticia, decorativa (el titular ya lo dice todo) salvo
+   que traiga «descripcion» (una foto real en el detalle: se lee lo que se
+   ve). «ancho»: los puntos que ocupa en la pantalla, para pedir el tamaño justo. */
+export function FotoNoticia({ noticia, estilo, ancho = 0, descripcion = null }) {
   // 0: el tamaño elegido; 1: la de 1200 (si la variante falló); 2: sin foto.
   const [intento, setIntento] = useState(0);
   const elegido = ancho > 0 ? anchoFoto(PixelRatio.getPixelSizeForLayoutSize(ancho)) : 1200;
   const tamano = intento === 0 ? elegido : 1200;
   const uri = intento < 2 ? rutaFoto(noticia, { base: URL_FOTOS, ancho: tamano }) : null;
+  if (descripcion && uri) {
+    return (
+      <View style={[e.foto, estilo]} accessible accessibilityRole="image" accessibilityLabel={descripcion} noTraducir idiomaOriginal="es-ES">
+        <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" onError={() => setIntento(tamano === 1200 ? 2 : 1)}
+          accessible={false} importantForAccessibility="no" />
+      </View>
+    );
+  }
   return (
     <View style={[e.foto, estilo]} accessible={false} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
       {uri ? (
@@ -95,6 +113,13 @@ function Etiqueta({ cual, enDetalle = false, primero = false }) {
   );
 }
 
+/* El crédito corto de la foto en una tarjeta (texto; el enlace, en el detalle). */
+function CreditoTarjeta({ noticia, creditos, idioma, estilo }) {
+  const c = creditoFoto(noticia, creditos, idioma);
+  if (!c) return null;
+  return <Text noTraducir style={[e.credito, estilo]} testID={`credito-${c.origen}`}>{c.texto}</Text>;
+}
+
 /* La fuente, como en una app de bolsa: lo que va antes de la primera coma de
    su nombre, tal como lo escribe RWAdar («CNMV», «ESMA»…); en inglés, los
    organismos traducidos («Council of the EU»). Lo decide el modelo, como en la web. */
@@ -111,7 +136,7 @@ function datosTarjeta(noticia, idioma, hoyISO) {
 }
 
 /* La portada: la foto a sangre y, abajo, la categoría, la fuente y la fecha y el titular. */
-function Portada({ noticia, idioma, hoyISO, onAbrir, ancho }) {
+function Portada({ noticia, idioma, hoyISO, onAbrir, ancho, creditos }) {
   const { t, reciente, meta, etiqueta, lengua } = datosTarjeta(noticia, idioma, hoyISO);
   const color = CATEGORIAS[noticia.categoria]?.color || C.tx;
   return (
@@ -129,6 +154,7 @@ function Portada({ noticia, idioma, hoyISO, onAbrir, ancho }) {
           <Etiqueta cual={reciente} enDetalle />
         </View>
         <Text noTraducir style={e.portadaTit}>{t.titulo}</Text>
+        <CreditoTarjeta noticia={noticia} creditos={creditos} idioma={idioma} estilo={e.creditoPortada} />
       </View>
     </Pressable>
   );
@@ -136,7 +162,7 @@ function Portada({ noticia, idioma, hoyISO, onAbrir, ancho }) {
 
 /* Una tarjeta: foto 3:2 arriba y titular debajo; «ancha», la que queda sola
    en su fila (foto 2:1); «enFila», con la letra grande: foto pequeña a la izquierda. */
-function Tarjeta({ noticia, idioma, hoyISO, onAbrir, ancho, ancha = false, enFila = false }) {
+function Tarjeta({ noticia, idioma, hoyISO, onAbrir, ancho, ancha = false, enFila = false, creditos }) {
   const { t, reciente, meta, etiqueta, lengua } = datosTarjeta(noticia, idioma, hoyISO);
   return (
     <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }}
@@ -149,6 +175,7 @@ function Tarjeta({ noticia, idioma, hoyISO, onAbrir, ancho, ancha = false, enFil
           <Text noTraducir style={e.metaPeq}>{meta}</Text>
           <Etiqueta cual={reciente} enDetalle />
         </View>
+        <CreditoTarjeta noticia={noticia} creditos={creditos} idioma={idioma} />
       </View>
     </Pressable>
   );
@@ -174,13 +201,14 @@ function Tarjetas({ noticias, ancho, fontScale, ...resto }) {
   );
 }
 
-function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO }) {
+function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO, creditos }) {
   const { width } = useWindowDimensions();
   if (!noticia) return null;
   const t = textos(noticia, idioma);
   const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
   const anchoArte = Math.min(width, 640);
   const reciente = etiquetaReciente(noticia, hoyISO);
+  const credito = creditoFoto(noticia, creditos, idioma);
   return (
     <Modal visible animationType="slide" presentationStyle="fullScreen" onRequestClose={onCerrar}
       statusBarTranslucent={false} navigationBarTranslucent={false}>
@@ -194,8 +222,24 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO }) {
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.detalle}>
-            <FotoNoticia noticia={noticia} estilo={[e.arte, { width: anchoArte, height: Math.round(anchoArte / 1.6) }]} ancho={anchoArte} />
+            <FotoNoticia noticia={noticia} estilo={[e.arte, { width: anchoArte, height: Math.round(anchoArte / 1.6) }]} ancho={anchoArte}
+              descripcion={credito?.origen === 'foto' ? credito.alt : null} />
             <View style={e.texto}>
+              {credito?.origen === 'foto' ? (
+                /* «Foto: autor · licencia · Wikimedia Commons · recortada»: la
+                   licencia abre su texto (si tiene dirección) y «Wikimedia
+                   Commons», la página del archivo, como el resto de enlaces externos. */
+                <View style={e.creditoDetalleCaja} testID="credito-detalle">
+                  {credito.partes.map((parte, i) => (parte.enlace ? (
+                    <Pressable key={i} onPress={() => { tacto.abrir(); onAbrirEnlace?.(parte.enlace); }} style={({ pressed }) => [e.creditoEnlace, pressed && e.pulsada]}
+                      accessibilityRole="link" noTraducir idiomaOriginal={lengua} accessibilityLabel={`${parte.texto}: ${parte.enlace}`}
+                      testID={parte.enlace === credito.enlace ? 'credito-enlace' : 'credito-licencia'}>
+                      <Text noTraducir style={[e.credito, e.creditoDetalle, e.creditoSubrayado]}>{parte.texto}<Text noTraducir>{'\u00a0↗'}</Text></Text>
+                    </Pressable>
+                  ) : <Text key={i} noTraducir style={[e.credito, e.creditoDetalle]}>{parte.texto}</Text>))}
+                  <Text noTraducir style={[e.credito, e.creditoDetalle]}>{` · ${credito.recorte}`}</Text>
+                </View>
+              ) : credito ? <Text noTraducir style={[e.credito, e.creditoDetalle]} testID="credito-ia">{credito.texto}</Text> : null}
               <View style={e.meta} accessible noTraducir idiomaOriginal={lengua}
                 accessibilityLabel={[fechaCorta(noticia.fecha, idioma), etiquetaCategoria(noticia.categoria, idioma),
                   etiquetaAmbito(noticia.ambito, idioma), reciente ? traducir(reciente) : null].filter(Boolean).join(' · ')}>
@@ -232,9 +276,12 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO }) {
   );
 }
 
-export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date(), modo = 'compacta', onAbrir, abrirId = null }) {
+export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, cargarCreditos = cargarCreditosFotos, ahora = () => new Date(), modo = 'compacta',
+  onAbrir, abrirId = null }) {
   const idioma = useIdioma();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
+  // Los créditos de las fotos: null hasta que llegan (o si fallan: entonces, sin crédito).
+  const [creditos, setCreditos] = useState(null);
   const [abierta, setAbierta] = useState(null);
   const vivo = useRef(true);
   const pendiente = useRef(abrirId);
@@ -254,6 +301,11 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
       .catch(() => { if (vivo.current) setEstado((s) => ({ fase: s.datos ? 'listo' : 'error', datos: s.datos })); });
   }, [cargar, modo]);
   useEffect(() => { vivo.current = true; pedir(); return () => { vivo.current = false; }; }, [pedir]);
+  useEffect(() => {
+    let sigue = true;
+    Promise.resolve().then(() => cargarCreditos()).then((c) => { if (sigue && c) setCreditos(c); }, () => {});
+    return () => { sigue = false; };
+  }, [cargarCreditos]);
 
   const d = estado.fase === 'listo' ? estado.datos : null;
   // El ancho de la sección (medido; al principio, la pantalla menos los márgenes) y la letra del sistema.
@@ -278,18 +330,19 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
     </>
   );
   const fecha = d ? <Text style={e.sub}>{'Actualizadas el'} <Text noTraducir>{fechaBreve(d.actualizadoEl, idioma)}</Text></Text> : null;
-  const nota = <Text style={e.nota}>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</Text>;
   const alAbrir = lista ? setAbierta : (x) => onAbrir?.(x);
   const noticias = d ? (lista ? d.noticias : d.noticias.slice(0, EN_INICIO)) : [];
+  // La verdad de las fotos que se ven: todas reales, todas de IA, de las dos o sin crédito.
+  const nota = <Text noTraducir style={e.nota} testID="noticias-nota">{notaFotos(noticias, creditos, idioma)}</Text>;
   const rejilla = d && noticias.length ? (
     <View style={e.cuerpo}>
-      <Portada noticia={noticias[0]} idioma={idioma} hoyISO={hoyISO} onAbrir={alAbrir} ancho={anchoCaja} />
+      <Portada noticia={noticias[0]} idioma={idioma} hoyISO={hoyISO} onAbrir={alAbrir} ancho={anchoCaja} creditos={creditos} />
       {lista ? (
         <Text noTraducir style={e.importaPortada} testID="noticia-importa">
           <Text style={e.importaRot}>{'Por qué te importa'}</Text>{': '}{textos(noticias[0], idioma).porQueImporta}
         </Text>
       ) : null}
-      <Tarjetas noticias={noticias.slice(1)} ancho={anchoCaja} fontScale={fontScale} idioma={idioma} hoyISO={hoyISO} onAbrir={alAbrir} />
+      <Tarjetas noticias={noticias.slice(1)} ancho={anchoCaja} fontScale={fontScale} idioma={idioma} hoyISO={hoyISO} onAbrir={alAbrir} creditos={creditos} />
     </View>
   ) : null;
 
@@ -299,7 +352,8 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
       {estados}
       {rejilla}
       {d ? nota : null}
-      {lista ? <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} hoyISO={hoyISO} /> : null}
+      {lista ? <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} hoyISO={hoyISO}
+        creditos={creditos} /> : null}
     </View>
   );
 }
@@ -349,6 +403,12 @@ const e = StyleSheet.create({
   ayerPunto: { backgroundColor: C.tx2 },
   ayerTxt: { color: C.tx },
   nota: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 10 },
+  credito: { fontFamily: F.regular, fontSize: 11, lineHeight: 15, color: C.tx3 },
+  creditoPortada: { marginTop: 8, color: C.tx2 },
+  creditoDetalleCaja: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 4 },
+  creditoEnlace: { minHeight: 44, justifyContent: 'center' },
+  creditoDetalle: { fontSize: 12, lineHeight: 17 },
+  creditoSubrayado: { textDecorationLine: 'underline' },
   modal: { flex: 1, backgroundColor: C.s1 },
   cab: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: UI.margen + 2, paddingRight: 10,
     paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: C.bd },

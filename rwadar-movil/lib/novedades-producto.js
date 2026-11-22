@@ -92,7 +92,7 @@ const NOVEDADES_PRODUCTO = {
       "parrafos": [
         "La noticia más importante sale arriba, en grande, con su foto y el titular encima.",
         "Las demás van en tarjetas, cada una con su foto. Los titulares son más cortos y dicen lo importante.",
-        "Las fotos son imágenes ilustrativas hechas con IA, no fotos de la noticia. Cada noticia lleva el enlace a su fuente.",
+        "Las fotos ilustran el tema; no son fotos de la noticia. Cada foto dice qué es: una ilustración hecha con IA lo pone, y una foto de Wikimedia Commons lleva su autor y su licencia. Cada noticia lleva el enlace a su fuente.",
         "Las fotos pesan menos: en el móvil, Inicio descarga menos datos."
       ],
       "pasos": [
@@ -104,7 +104,7 @@ const NOVEDADES_PRODUCTO = {
         "parrafos": [
           "The most important story comes first, big, with its photo and the headline on top.",
           "The others come in cards, each with its photo. Headlines are shorter and say what matters.",
-          "The photos are illustrative images made with AI, not photos of the news. Each story links to its source.",
+          "The photos illustrate the topic; they are not photos of the news. Each photo says what it is: an AI-made illustration says so, and a Wikimedia Commons photo shows its author and licence. Each story links to its source.",
           "The photos are lighter: on your phone, Home downloads less data."
         ],
         "pasos": [

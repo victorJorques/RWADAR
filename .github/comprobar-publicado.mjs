@@ -359,6 +359,11 @@ try { datosV2 = JSON.parse(noticiasV2.texto); } catch {}
 ok('/datos/noticias-v2.json es el del build', noticiasV2.estado === 200 && noticiasV2.texto === leerPublicado('datos/noticias-v2.json'));
 ok('/datos/noticias.json (app instalada) es el del build y no lleva «imagen»', noticiasV1.estado === 200 &&
   noticiasV1.texto === leerPublicado('datos/noticias.json') && !/"imagen"\s*:/.test(noticiasV1.texto));
+// El origen y el crédito de cada foto (22/11/2026: fotos reales de Wikimedia
+// Commons): el del build, que sale de fotos.json; nunca un crédito que no es el de la biblioteca.
+const creditosFotos = await pedir('/datos/fotos-noticias.json');
+ok('/datos/fotos-noticias.json (origen y crédito de las fotos) es el del build', creditosFotos.estado === 200 &&
+  creditosFotos.texto === leerPublicado('datos/fotos-noticias.json'));
 const bibliotecaFotos = JSON.parse(fs.readFileSync(fileURLToPath(new URL('../rwadar-editorial-source/noticias/fotos.json', import.meta.url)), 'utf8')).fotos;
 const clavesUsadas = [...new Set((datosV2?.noticias || []).map(n => n && n.imagen).filter(c => typeof c === 'string'))];
 ok('las noticias publicadas usan alguna foto', clavesUsadas.length > 0);
