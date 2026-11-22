@@ -6,6 +6,36 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de noviembre de 2026 (46) · Claude · Noticias del 22/11 con búsqueda amplia y rama de cerrojo borrada · PUBLICADO
+
+- **Orden de Víctor (22/11, 00:1x UTC):** «Yo no veo noticias distintas».
+  Lo publicado era la edición del 21/11 (5 noticias, la más nueva del 18/11):
+  el barrido de las 7 fuentes oficiales no daba nada nuevo y las noticias
+  automáticas siguen apagadas desde el 18/11.
+- **Rama de cerrojo:** `claude/cerrojo-ciclo-2026-11-21` frenaba el
+  procedimiento («hay un ciclo manual en marcha»). Desde la sesión, `git push
+  --delete` lo corta el proxy. «Limpiar ramas» primero solo listó (solo
+  borraría esa; quedaban 18) y después se lanzó con `BORRAR` e
+  `incluir_cerrojos: si` (runs 44965779623 y 44965824398).
+- **Búsqueda amplia:** flujo de 6 analistas (supervisores de España y la UE,
+  otros supervisores, catálogo, radar, mercados españoles y fraudes) con un
+  verificador escéptico por candidata: 9 válidas del 17 al 20/11 y 1
+  descartada. Se pasaron al editor como pistas (`<trabajo>/pistas/candidatas.json`,
+  sin nombres de personas). Un límite de uso cortó 5 verificaciones; se
+  retomaron con `resumeFromRunId` al renovarse.
+- **Edición:** el editor metió «Kraken ofrece un token de Anthropic que no te
+  da acciones» (19/11) y quitó la más antigua (28/10). Con «Lo más importante»
+  limitado a 5 y «Hoy» solo para noticias de hoy o de ayer, las demás
+  candidatas (avisos de BaFin, FSMA, CSSF y SEC; Ondo; Robinhood) no entraron.
+  Verificador independiente «conforme» (pase 1).
+- **Publicado:** #197 (merge `00847eb8`), «Publicar web» revisión
+  (44972965854) y producción (44973034611), comprobadas en vivo, y aviso de
+  noticia nueva («Noticia nueva del sector», run 44973110973).
+- **Para decidir (Víctor):** si «Lo más importante» puede llevar más de 5 o si
+  «Hoy» admite noticias de hasta 3 días en fines de semana. Hoy deja fuera
+  avisos de fraude recientes que sí le importan a un particular. Y si se
+  vuelven a encender las noticias automáticas de cada mañana.
+
 ## 21 de noviembre de 2026 (45) · Claude · Catálogo 2026-11-21: puesta al día completa · PUBLICADO
 
 - **Orden de Víctor (21/11, 17:34 UTC):** al ver «Hausera · Desde 100 € en
