@@ -9,7 +9,7 @@ Uso:
 
 Qué hace, en orden (y se para sin escribir nada en cuanto algo no cuadra):
   1. Pide a la API de Commons (action=query, prop=imageinfo,
-     iiprop=url|size|sha1|mime|extmetadata, iiurlwidth=2400) los datos del
+     iiprop=url|size|sha1|mime|extmetadata, iiurlwidth=1920) los datos del
      archivo, con el agente de usuario genérico «editorial-photo-import/1.0» y
      una pausa entre peticiones.
   2. Acepta solo estas licencias: dominio público, CC0, CC BY 2.0/2.5/3.0/4.0 y
@@ -17,7 +17,7 @@ Qué hace, en orden (y se para sin escribir nada en cuanto algo no cuadra):
      rwadar-movil/lib/noticias-sector.js; una prueba las compara). Rechaza todo
      lo demás, lo marcado «NonFree» y lo que tenga restricciones de derechos de
      imagen de personas («personality»).
-  3. Descarga la miniatura de 2400 px de ancho que da Commons (o, con
+  3. Descarga la miniatura de 1920 px de ancho que da Commons (o, con
      --original, el original: JPEG, PNG o WebP de hasta 6000 px y 40 MB) a --trabajo (fuera del
      repositorio; por defecto, una carpeta temporal), comprueba su sha1 si es
      el original, y que el recorte 3:2 tenga al menos 1200×800 píxeles útiles.
@@ -58,7 +58,9 @@ API = 'https://commons.wikimedia.org/w/api.php'
 AGENTE = 'editorial-photo-import/1.0'
 PAUSA_S = 1.5
 SITIO = 'Wikimedia Commons'
-ANCHO_MINIATURA = 2400
+# 1920: uno de los anchos de miniatura estándar de Wikimedia (https://w.wiki/GHai); los
+# demás se limitan con 429. Da 1920 × 1280 en 3:2, de sobra para 1200 × 800.
+ANCHO_MINIATURA = 1920
 MAX_LADO_ORIGINAL = 6000
 MAX_BYTES_ORIGINAL = 40 * 1024 * 1024
 MIN_ANCHO, MIN_ALTO = 1200, 800
@@ -100,12 +102,12 @@ def _esperar_turno():
 
 
 REINTENTOS = 3
-MAX_ESPERA_S = 90
+MAX_ESPERA_S = 300
 
 
 def _abrir(req, timeout):
     """urlopen con pausa entre peticiones y, si Commons pide calma (429 o 503),
-    espera lo que diga «Retry-After» (como mucho 90 s) y lo vuelve a intentar 3 veces."""
+    espera lo que diga «Retry-After» (como mucho 300 s) y lo vuelve a intentar 3 veces."""
     for intento in range(REINTENTOS + 1):
         _esperar_turno()
         try:
@@ -313,7 +315,7 @@ def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=Non
     if not PAGINA_COMMONS.match(pagina):
         raise Rechazo(f'la página del archivo no es de Commons: {pagina}')
 
-    # Por defecto, la miniatura grande (≥ 2400 px, de sobra para 1200 × 800): es lo que
+    # Por defecto, la miniatura estándar de 1920 px (de sobra para 1200 × 800): es lo que
     # pide Wikimedia para no cargar sus servidores, y los originales se limitan (429).
     usar_original = original and (info.get('mime') in ('image/jpeg', 'image/png', 'image/webp') and
                      max(info.get('width', 0), info.get('height', 0)) <= MAX_LADO_ORIGINAL and info.get('size', 0) <= MAX_BYTES_ORIGINAL)
@@ -399,7 +401,7 @@ def main(argv=None):
     p.add_argument('--encuadre', default='50% 50%', help='posición del recorte 3:2, «x%% y%%» (por defecto, el centro)')
     p.add_argument('--trabajo', help='carpeta fuera del repositorio para lo descargado')
     p.add_argument('--raiz', default=RAIZ_REPO, help='raíz del repositorio (por defecto, este; otra, para probar en una copia)')
-    p.add_argument('--original', action='store_true', help='descargar el original en vez de la miniatura de 2400 px (por defecto, la miniatura)')
+    p.add_argument('--original', action='store_true', help='descargar el original en vez de la miniatura de 1920 px (por defecto, la miniatura)')
     p.add_argument('--licencias-json', action='store_true', help='solo escribe la lista de licencias admitidas (para las pruebas)')
     a = p.parse_args(argv)
     if a.licencias_json:

@@ -124,7 +124,7 @@ class Importar(Biblioteca):
         self.assertEqual((q['action'], q['prop'], q['iiprop'], q['titles']),
                          (['query'], ['imageinfo'], ['url|size|sha1|mime|extmetadata'], ['File:Sede de ejemplo, Madrid.jpg']))
         url = url.split('?')[0]
-        self.assertEqual(self.bajadas, [resp['query']['pages'][0]['imageinfo'][0]['thumburl']], 'por defecto, la miniatura de 2400 px, sin el «?utm_…» de Commons')
+        self.assertEqual(self.bajadas, [resp['query']['pages'][0]['imageinfo'][0]['thumburl']], 'por defecto, la miniatura de 1920 px, sin el «?utm_…» de Commons')
         self.assertEqual(entrada['origen'], 'foto')
         self.assertEqual(entrada['autor'], 'Ana Ejemplo', 'sin HTML ni entidades')
         self.assertEqual(entrada['licencia'], {'nombre': 'CC BY-SA 4.0', 'url': 'https://creativecommons.org/licenses/by-sa/4.0/', 'atribucionObligatoria': True})

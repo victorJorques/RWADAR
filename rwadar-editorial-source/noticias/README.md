@@ -156,8 +156,9 @@ python3 rwadar-editorial-source/noticias/importar-foto.py --clave cnmv-sede \
 
 Pide los datos a la API de Commons (con el agente de usuario genérico
 `editorial-photo-import/1.0` y una pausa entre peticiones; si Commons pide
-calma, espera lo que diga), comprueba la licencia, descarga el original (o la
-miniatura de 2400 px si es enorme o no es JPEG, PNG ni WebP), exige un recorte
+calma, espera lo que diga), comprueba la licencia, descarga la miniatura
+estándar de 1920 px (con `--original`, el original; Wikimedia limita las
+descargas de originales y de tamaños no estándar), exige un recorte
 3:2 de al menos 1200×800 útiles, exporta los tres WebP sin metadatos bajando la
 calidad hasta que quepan, añade la entrada a `fotos.json` (nunca pisa una clave
 ni un archivo que ya existan) y regenera `fotos-noticias.json`. Después: **mírala**
