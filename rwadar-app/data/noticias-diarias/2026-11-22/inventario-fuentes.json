@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "fecha": "2026-11-22",
+  "generado": "2026-11-22T01:37:19.902Z",
+  "fuentes": [
+    {
+      "url": "https://www.kraken.com/es/ipo/anthropic",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 1158693,
+      "sha256": "d23e7925446853f81c4c66dce60cc58d01496d2fa37c2f13d126417bc8d24e34",
+      "horaUtc": "2026-11-22T01:37:15.678Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 134678,
+      "sha256": "6b1d350e69c262faab5ab9ca1a14c88ce273f668b85909a1bac907da5f148820",
+      "horaUtc": "2026-11-22T01:37:15.740Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 149664,
+      "sha256": "d80481e506caff1bf39324084e323d5f9c79a271ff902ad92ae42d8600bbd355",
+      "horaUtc": "2026-11-22T01:37:18.950Z",
+      "error": null
+    },
+    {
+      "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 51355,
+      "sha256": "dfb72d44e8fca28295efce15187af5366035563a51791a152b7d0cf4b508eeb3",
+      "horaUtc": "2026-11-22T01:37:15.741Z",
+      "error": null
+    },
+    {
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 2208721,
+      "sha256": "978eea67a47d5bb63f184a1efa419118166301ee94806e94f91f3fec710d29b9",
+      "horaUtc": "2026-11-22T01:37:15.742Z",
+      "error": null
+    }
+  ]
+}

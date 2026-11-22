@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-22",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "kraken-antx-token-anthropic",
+      "fecha": "2026-11-19",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Kraken ofrece un token de Anthropic que no te da acciones",
+      "resumen": "Kraken ya deja negociar ANTx, un token de xStocks que sigue la acción de Anthropic. Según Kraken, la empresa salió a bolsa en el Nasdaq el 19/11 a un precio de oferta de 83 dólares. Lo emite Backed Assets (JE) Limited y en el EEE lo ofrece, con restricciones geográficas, una firma del grupo autorizada en Chipre.",
+      "porQueImporta": "ANTx no te hace accionista: solo da exposición al precio, sin voto ni dividendos, y lo emite Backed, no Anthropic. Su valor puede bajar o subir. En la salida a bolsa se pagaba el precio de oferta más un 5 %, y puede haber otras comisiones.",
+      "en": {
+        "titulo": "Kraken offers an Anthropic token that gives you no shares",
+        "resumen": "Kraken now lets you trade ANTx, an xStocks token that tracks Anthropic's share. According to Kraken, the company listed on Nasdaq on 19 November at an offer price of $83. Backed Assets (JE) Limited issues it, and a group firm authorised in Cyprus offers it in the EEA, with geographic restrictions.",
+        "porQueImporta": "ANTx does not make you a shareholder: price exposure only, with no voting or dividend rights, and Backed issues it, not Anthropic. Its value can go down or up. IPO buyers paid the offer price plus 5%, and other fees may apply.",
+        "tituloInformativo": "Kraken offers ANTx in the EEA, an xStocks token tracking Anthropic's share, which listed on Nasdaq on 19 November"
+      },
+      "fuente": {
+        "nombre": "Kraken, página de la salida a bolsa de Anthropic con xStocks (ANTx), primer día de negociación el 19/11/2026 (emisor: Backed Assets (JE) Limited)",
+        "url": "https://www.kraken.com/es/ipo/anthropic",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "Kraken ofrece en el EEE ANTx, un token de xStocks que sigue la acción de Anthropic, que salió a bolsa en el Nasdaq el 19/11",
+      "imagen": "acciones-eeuu"
+    },
+    {
+      "id": "cnmv-advertencias-supervisores-ue-oro-sin-folleto",
+      "fecha": "2026-11-18",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "UE",
+      "titulo": "Oro y acciones sin folleto: tres avisos llegan de Alemania",
+      "resumen": "La CNMV difunde tres avisos del supervisor alemán (BaFin). Prohibió a una firma ofrecer oro físico al público y suspendió la oferta de acciones de otra, ambas sin el folleto exigido. De la tercera tiene indicios de que ofrece un producto de inversión sin él.",
+      "porQueImporta": "El oro es uno de los activos que también se venden tokenizados. Ofrecer al público sin el folleto exigido es una señal de alarma: antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
+      "en": {
+        "titulo": "Gold and shares with no prospectus: three German alerts",
+        "resumen": "The CNMV relays three alerts from Germany's supervisor (BaFin). It barred one firm from offering physical gold to the public and suspended another's share offer, both without the required prospectus. It has signs that the third offers an investment product without one.",
+        "porQueImporta": "Gold is one of the assets also sold in tokenised form. A public offer without the required prospectus is a red flag: before investing, look the firm up in the CNMV's search tool for warnings.",
+        "tituloInformativo": "Spain's CNMV relays three German alerts on offers without a prospectus, one of physical gold"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 18/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bb0c4a848-4bd7-40b7-9b28-8f013ad97bc4%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico",
+      "imagen": "alerta-fraude-3"
+    },
+    {
+      "id": "cnmv-advertencias-9-entidades-dos-clones",
+      "fecha": "2026-11-16",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "9 firmas sin registro; dos imitan a firmas registradas",
+      "resumen": "La CNMV advierte de 9 entidades que no figuran en sus registros ni están autorizadas para prestar servicios de inversión. Dos son clones: imitan a una empresa de asesoramiento financiero y a una sociedad de capital riesgo, ambas registradas en España.",
+      "porQueImporta": "Un nombre o una web parecidos a los de una firma registrada no bastan. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV y comprueba que la web es la que figura en su registro.",
+      "en": {
+        "titulo": "9 unregistered firms; two pose as registered ones",
+        "resumen": "The CNMV warns about 9 entities that are not on its registers and are not authorised to provide investment services. Two are clones: they imitate a financial advisory firm and a venture capital company, both registered in Spain.",
+        "porQueImporta": "A name or website that looks like a registered firm's is not enough. Before investing, look the firm up in the CNMV's search tool for warnings and check that the website is the one on its register.",
+        "tituloInformativo": "Spain's CNMV warns about 9 unregistered entities, two of them clones of registered firms"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencia de entidades no registradas del 16/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bf3fcb37a-091d-4f8b-b217-60ba8b126e7e%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "La CNMV advierte de 9 entidades no registradas, dos de ellas clones de firmas registradas",
+      "imagen": "pago-online"
+    },
+    {
+      "id": "xstocks-200-empresas-reino-unido-ue",
+      "fecha": "2026-11-11",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "xStocks lanza tokens de más de 200 empresas europeas",
+      "resumen": "xStocks, del grupo de Kraken (Payward), ha lanzado tokens de más de 200 grandes empresas que cotizan en Reino Unido y la UE, entre ellas las 40 del índice alemán DAX. Cada token está respaldado 1:1 por la acción, pero solo da exposición económica, no la propiedad. Se ofrecen en Kraken y en plataformas socias.",
+      "porQueImporta": "Son los primeros xStocks de fuera de EE. UU. y no te hacen accionista. En la UE los ofrece una firma del grupo autorizada en Chipre, y la nota dice que los xStocks no están ni estarán registrados ante supervisores de valores locales.",
+      "en": {
+        "titulo": "xStocks launches tokens of over 200 European companies",
+        "resumen": "xStocks, part of the Kraken group (Payward), has launched tokens for more than 200 large companies listed in the UK and the EU, including all 40 in Germany's DAX index. Each token is backed 1:1 by the share but gives economic exposure only, not ownership. They are offered on Kraken and partner platforms.",
+        "porQueImporta": "These are the first xStocks outside the US and they do not make you a shareholder. In the EU a group firm authorised in Cyprus offers them, and the notice says xStocks are not, and will not be, registered with local securities regulators.",
+        "tituloInformativo": "xStocks, part of the Kraken group, launches tokens linked to over 200 UK and EU shares, including all 40 DAX companies"
+      },
+      "fuente": {
+        "nombre": "xStocks, nota del 11/11/2026 sobre sus primeros mercados fuera de EE. UU. (emisor: Backed Assets (JE) Limited)",
+        "url": "https://xstocks.com/us/news/xstocks-brings-200-of-the-uk-and-eus-largest-companies-onchain",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "xStocks, del grupo de Kraken, lanza tokens ligados a más de 200 acciones de Reino Unido y la UE, entre ellas las 40 del DAX",
+      "imagen": "bolsa-madrid"
+    },
+    {
+      "id": "robinhood-stock-tokens-suplemento",
+      "fecha": "2026-11-09",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Robinhood: el emisor podrá restarte Stock Tokens por costes",
+      "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
+      "porQueImporta": "El cambio vale también para los tokens ya emitidos, desde el 9 de noviembre. Que la filial europea de Robinhood sea participante autorizado es un plan que el folleto ya recogía en junio.",
+      "en": {
+        "titulo": "Robinhood: the issuer may cut your Stock Tokens for costs",
+        "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
+        "porQueImporta": "The change also applies to tokens already issued, from 9 November. Making Robinhood's EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
+        "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
+      },
+      "fuente": {
+        "nombre": "Robinhood Assets (Jersey) Limited, suplemento al folleto base aprobado por la FMA el 09/11/2026",
+        "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
+      "imagen": "acciones-movil"
+    }
+  ]
+}
