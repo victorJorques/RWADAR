@@ -305,7 +305,7 @@ for (const dir of ['rwadar-movil/assets/ofertas-editoriales', 'rwadar-editorial-
 let imagenesRetiradas = [];
 try {
   imagenesRetiradas = [...new Set(execFileSync('git', ['log', '--diff-filter=D', '--name-only', '--format=', '--',
-    'rwadar-movil/assets/ofertas-editoriales/oferta-*.webp'],
+    'rwadar-movil/assets/ofertas-editoriales/oferta-*.webp', 'rwadar-movil/assets/ofertas-editoriales/foto-*.webp'],
   { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' })
     .split('\n').map(linea => path.basename(linea.trim())).filter(Boolean))]
     .filter(nombre => !imagenesVivas.has(nombre)).sort();
@@ -383,6 +383,29 @@ for (const clave of clavesUsadas) {
       /^image\/webp\b/.test(r.headers.get('content-type') || '') && Boolean(v) && b.length === v.bytes &&
       crypto.createHash('sha256').update(b).digest('hex') === v.sha256);
   }
+}
+
+/* Las imágenes de las ofertas (22/11/2026: fotos reales de Wikimedia Commons):
+   el manifiesto publicado es el del repositorio (con el crédito de cada foto
+   real, que la web enseña en el pie) y cada foto real (foto-<slug>.webp) está
+   publicada con sus bytes. Ninguna foto real se publica como oferta-<slug>.webp,
+   el nombre que la app ya instalada presenta como ilustración de IA. */
+const textoManifiestoOfertas = fs.readFileSync(fileURLToPath(new URL('../rwadar-movil/assets/ofertas-editoriales/manifest.json', import.meta.url)), 'utf8');
+const manifiestoOfertas = JSON.parse(textoManifiestoOfertas);
+const manifiestoPublicado = await pedir('/ofertas-editoriales/manifest.json');
+ok('/ofertas-editoriales/manifest.json (imágenes y créditos de las ofertas) es el del repositorio', manifiestoPublicado.estado === 200 &&
+  manifiestoPublicado.texto === textoManifiestoOfertas);
+const fotosRealesOfertas = (manifiestoOfertas.fichas || []).filter(f => f.origen === 'foto');
+ok(`las fotos reales de las ofertas se llaman foto-<slug>.webp y llevan su crédito (${fotosRealesOfertas.length})`, fotosRealesOfertas.every(f =>
+  f.archivo === `foto-${f.slug}.webp` && f.credito && typeof f.credito.pagina === 'string' && ['activo', 'lugar', 'tema'].includes(f.queMuestra)));
+for (const f of fotosRealesOfertas) {
+  const r = await fetch(`${base}/ofertas-editoriales/${f.archivo}`, { cache: 'no-store' });
+  const b = Buffer.from(await r.arrayBuffer());
+  ok(`foto real /ofertas-editoriales/${f.archivo} publicada, WebP y con el sha256 del manifiesto`, r.status === 200 &&
+    /^image\/webp\b/.test(r.headers.get('content-type') || '') && b.length === f.bytes &&
+    crypto.createHash('sha256').update(b).digest('hex') === f.hashSha256);
+  const vieja = await pedir(`/ofertas-editoriales/oferta-${f.slug}.webp`, { method: 'HEAD' });
+  ok(`la ilustración de IA de ${f.slug} ya no se publica (la app instalada pide ese nombre): ${vieja.estado}`, vieja.estado === 404);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);

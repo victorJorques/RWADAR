@@ -2725,18 +2725,58 @@ for(const [nombre,alterar] of [
     [...detalle.matchAll(/<a\b([^>]*)>/g)].every(m=>/^\/ofertas\//.test(atributoHTML(m[1],'href')||'')||
       atributoHTML(m[1],'target')==='_blank'&&/\bnoopener\b/.test(atributoHTML(m[1],'rel')||'')));
   // Ninguna etiqueta encima de las imágenes y la línea de honestidad a la vista.
+  // Desde el 22/11/2026 una ficha puede llevar una foto real de Wikimedia Commons:
+  // su texto alternativo es su descripción (la del manifiesto) y lleva su pie;
+  // las demás siguen diciendo «Ilustración editorial».
   const cajasFila=[...lista.matchAll(/<div class="escaparate-imagen">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajasInicio=[...p.obtiene('relNuevasLista').innerHTML.matchAll(/<div class="rel-tarjeta-img">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajaDetalle=(detalle.match(/<div class="escaparate-dialogo-imagen">([\s\S]*?)<\/div>/)||['',''])[1];
-  prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» presente',
-    cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
-    cajasInicio.length>0&&cajasInicio.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*loading="lazy" decoding="async"[^>]*>$/.test(h))&&
-    /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
-    lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
-    detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
-    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
+  const altsReales=new Set(activosEditoriales.fichas.filter(f=>f.clase==='foto').map(f=>f.alt.replace(/&/g,'&amp;').replace(/"/g,'&quot;')));
+  const altBueno=h=>{const alt=(h.match(/ alt="([^"]*)"/)||[])[1]||'';return alt.startsWith('Ilustración editorial')||altsReales.has(alt);};
+  const notasPosibles=altsReales.size?['Imágenes ilustrativas, no fotos del activo','Fotos reales del lugar o del tema, no del activo',
+    'Fotos reales del lugar o del tema e imágenes ilustrativas: ninguna es foto del activo','Fotos reales del activo, de Wikimedia Commons',
+    'Cada foto real dice si muestra el activo, su lugar o su tema; las demás imágenes son ilustrativas']:['Imágenes ilustrativas, no fotos del activo'];
+  const notaLista=(lista.match(/<p class="nota-ilustrativa catalogo-nota-imagenes">([^<]*)<\/p>/)||[])[1];
+  const fotoSacada=activosEditoriales.fichas.find(f=>f.slug===sacada&&f.clase==='foto');
+  prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» (o la de las fotos reales) presente',
+    cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="[^"]+"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h)&&altBueno(h))&&
+    cajasInicio.length>0&&cajasInicio.every(h=>/^<img [^>]*alt="[^"]+"[^>]*loading="lazy" decoding="async"[^>]*>$/.test(h)&&altBueno(h))&&
+    /^<img [^>]*alt="[^"]+"[^>]*>$/.test(cajaDetalle)&&altBueno(cajaDetalle)&&
+    notasPosibles.includes(notaLista)&&
+    (fotoSacada?detalle.includes('<p class="foto-oferta-pie foto-oferta-pie-detalle" translate="no" data-foto="/ofertas-editoriales/foto-'+sacada+'.webp">'):
+      detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'))&&
+    (htmlInicio.match(/<p class="nota-ilustrativa" id="relNuevasNota">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
     !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
-    !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
+    !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';'))&&
+    !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.foto-oferta-pie').join(';')));
+  // El pie de una foto real (22/11/2026), con el modelo de la app copiado en el JS
+  // de la web: castellano e inglés a la vez (la hoja enseña uno), la licencia y
+  // la página de Commons enlazadas y fuera de RWAdar, y con un crédito roto, un
+  // pie genérico verdadero, nunca «del activo».
+  {
+    const credito={autor:'Ana & Co',licencia:'CC BY-SA 4.0',licenciaUrl:'https://creativecommons.org/licenses/by-sa/4.0/',sitio:'Wikimedia Commons',
+      pagina:'https://commons.wikimedia.org/wiki/File:Graz_Herrengasse.jpg'};
+    const pie=x=>vm.runInContext('pieFotoOfertaHtml('+JSON.stringify(x)+',{detalle:true})',c);
+    const lugar=pie({origen:'foto',queMuestra:'lugar',lugarOTema:'Graz (Austria)',credito});
+    const activo=pie({origen:'foto',queMuestra:'activo',credito:{...credito,autor:null,licencia:'Dominio público',licenciaUrl:null}});
+    const roto=pie({origen:'foto',queMuestra:'activo',credito:{...credito,licencia:'CC BY-NC 4.0'}});
+    const enlaces=[...lugar.matchAll(/<a\b([^>]*)>/g)].map(m=>m[1]);
+    prueba('web: el pie de una foto real dice qué muestra, autor, licencia y Wikimedia Commons, en castellano y en inglés',
+      lugar==='<p class="foto-oferta-pie" translate="no" data-foto=""><span class="foto-oferta-pie-es" lang="es">Foto real de Graz (Austria), no del activo · Ana &amp; Co · '+
+        '<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · '+
+        '<a href="https://commons.wikimedia.org/wiki/File:Graz_Herrengasse.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · recortada</span>'+
+        '<span class="foto-oferta-pie-en" lang="en">Real photo of Graz (Austria), not of the asset · Ana &amp; Co · '+
+        '<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · '+
+        '<a href="https://commons.wikimedia.org/wiki/File:Graz_Herrengasse.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · cropped</span></p>'&&
+      enlaces.length===4&&
+      activo.includes('>Foto real del activo · Dominio público · <a ')&&activo.includes('>Real photo of the asset · Public domain · <a ')&&!/Ana/.test(activo)&&
+      roto.includes('>Foto real del lugar o del tema, no del activo</span>')&&roto.includes('>Real photo of the place or the topic, not of the asset</span>')&&
+      !/del activo ·|<a /.test(roto)&&
+      vm.runInContext('pieFotoOfertaHtml({origen:"foto-generada"})+pieFotoOfertaHtml(null)+pieFotoOfertaHtml({src:"/x.webp"})',c)===''&&
+      /html\[lang="en"\] \.foto-oferta-pie-es,html:not\(\[lang="en"\]\) \.foto-oferta-pie-en\{display:none\}/.test(css)&&
+      /html\[lang="en"\] \.foto-oferta-pie-es,html:not\(\[lang="en"\]\) \.foto-oferta-pie-en\{display:none\}/.test(lee('assets/fichas-20261022.css'))&&
+      vm.runInContext('typeof FOTOS_OFERTAS_MODELO==="object"&&typeof FOTOS_OFERTAS_MODELO.pieFotoOferta==="function"',c));
+  }
   // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.
   vm.runInContext("emiCat='';pintarFiltrosEmision();render()",c);
   const chips=p.obtiene('emiFiltros').innerHTML,pills=p.obtiene('pills').innerHTML;

@@ -245,6 +245,16 @@ Para la imagen de cada alta o cambio visual:
   con IA. Una oferta nueva usa únicamente la ruta editorial canónica
   `https://rwadar.pages.dev/ofertas-editoriales/oferta-<slug>.webp`; no recibe
   URLs de imagen arbitrarias de la API. Mantener los fallback de categoría.
+- Desde el 22/11/2026 una ficha puede llevar, en vez de su ilustración, una
+  **foto real** de Wikimedia Commons con licencia libre:
+  `python3 rwadar-editorial-source/noticias/importar-foto.py --biblioteca ofertas
+  --clave <slug> --archivo "File:…" --descripcion "…" --que-muestra
+  activo|lugar|tema [--lugar-o-tema "…"]`. «activo» solo si una persona ha
+  comprobado que es el edificio o la instalación exacta; si no, «lugar» o
+  «tema», y el pie dice «no del activo». Se publica como `foto-<slug>.webp`
+  (nunca `oferta-<slug>.webp`, que la app instalada presenta como
+  ilustración) y su crédito va en el manifiesto empaquetado: hace falta la OTA
+  para que la app la enseñe. Detalle en el `README.md` de las ofertas.
 
 ### Entrega con el motor (procedimiento rápido, desde el 13/11/2026)
 

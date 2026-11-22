@@ -947,6 +947,14 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-dialogo-imagen img{display:block;width:100%;height:100%;object-fit:cover}
 /* Imágenes limpias (03/11/2026): nada encima; una línea pequeña debajo. */
 .nota-ilustrativa{margin:6px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4}
+/* Pie de la foto real de una oferta (22/11/2026): qué muestra, autor, licencia y Wikimedia Commons.
+   Va en los dos idiomas y se ve el del elegido; las ilustraciones no llevan pie propio. */
+.foto-oferta-pie{margin:4px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4;overflow-wrap:anywhere}
+.foto-oferta-pie a{display:inline-flex;align-items:center;min-height:24px;color:var(--tx-3);text-decoration:underline;text-underline-offset:2px}
+.foto-oferta-pie a:hover{color:var(--tx-2)}
+.foto-oferta-pie a:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:2px}
+.foto-oferta-pie-detalle{margin:8px 0 0}
+html[lang="en"] .foto-oferta-pie-es,html:not([lang="en"]) .foto-oferta-pie-en{display:none}
 .solo-lector{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 /* Puntos fuertes (con fuente en la ficha): hasta dos chips con ✓, sin nota ni orden. */
 /* Ficha: «Transparencia: lo que hemos comprobado». Cinco criterios con su

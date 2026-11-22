@@ -221,6 +221,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     '../lib/transparencia': cargarModulo('lib/transparencia.js', {
       './transparencia-contenido': cargarModulo('lib/transparencia-contenido.js'),
     }),
+    '../lib/fotos-ofertas': require('../lib/fotos-ofertas'),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,

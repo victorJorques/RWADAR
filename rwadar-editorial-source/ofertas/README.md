@@ -19,6 +19,75 @@ bajo la lista, los carruseles y el detalle dice «Imágenes ilustrativas, no
 fotos del activo». Si un emisor da licencia por escrito, se puede
 sustituir.
 
+## Fotos reales de Wikimedia Commons (desde el 22/11/2026)
+
+Orden de Víctor del 22/11/2026: «La de las ofertas también las cambiaría, las
+siento muy igual». Cada ficha puede llevar, **en vez de** su ilustración, una
+foto real con licencia libre de Wikimedia Commons (dominio público, CC0,
+CC BY 2.0–4.0 o CC BY-SA 2.0–4.0: la lista de las noticias). Las de IA siguen
+igual para las fichas que no la tengan, y su encargo se queda en `fotos.json`
+por si se quita la real.
+
+```
+python3 rwadar-editorial-source/noticias/importar-foto.py --biblioteca ofertas \
+    --clave <slug> --archivo "File:Nombre en Commons.jpg" \
+    --descripcion "Lo que de verdad se ve, en castellano llano" \
+    --que-muestra activo|lugar|tema [--lugar-o-tema "Graz (Austria)"] \
+    [--lugar-o-tema-en "Graz, Austria"] [--encuadre "50% 50%"] [--trabajo /fuera/del/repo]
+```
+
+- **Qué muestra** (`queMuestra`), siempre con honradez:
+  - `activo`: el edificio o la instalación exacta de la oferta. Solo si una
+    persona lo ha comprobado con la fuente (dirección, fachada). El pie dice
+    «Foto real del activo».
+  - `lugar`: la calle, el barrio o la ciudad donde está el activo, no el
+    activo. El pie dice «Foto real de <lugarOTema>, no del activo».
+  - `tema`: algo real relacionado (el Tesoro, una bolsa, lingotes…). El mismo
+    pie: «Foto real de la Bolsa de Nueva York, no del activo».
+- `--lugar-o-tema` es lo que va en el pie (no con `activo`), y
+  `--lugar-o-tema-en`, si lo hay, lo mismo para el pie en inglés.
+- El importador usa la API de Commons con el agente genérico
+  «editorial-photo-import/1.0», la miniatura estándar de 1920 px, rechaza las
+  licencias que no son de la lista, lo «NonFree», los derechos de imagen de
+  personas y el «© European Union, <año en curso>», quita el HTML y los
+  caracteres invisibles del autor y no pisa nada: si la ficha ya tiene foto
+  real o ese archivo ya está en la biblioteca, se para sin escribir nada.
+- Recorta a 16:11 con el encuadre y exporta un solo WebP sin metadatos,
+  `rwadar-movil/assets/ofertas-editoriales/foto-<slug>.webp` (960 × 660,
+  200 kB como mucho), que publica la web y empaqueta la app. Apunta la entrada
+  en `reales` de `fotos.json` (`origen`, `descripcion`, `queMuestra`,
+  `lugarOTema`, `fuente`, `licencia`, `autor`, `sinPersonas`, `encuadre`,
+  `bytes`, `sha256`) y ejecuta `generar.mjs --indices`, que reescribe el
+  manifiesto (con el crédito), el bloque de la web y los `require` de la app
+  sin dibujar nada y borra `oferta-<slug>.webp`.
+- **Nunca** como `oferta-<slug>.webp`: la app ya instalada pide ese nombre a
+  la web para las fichas que no lleva dentro y lo presenta como ilustración
+  de IA. La foto real se llama `foto-<slug>.webp` y solo la enseña la app que
+  trae su crédito (la OTA con este cambio). La app instalada sin esa OTA sigue
+  con sus ilustraciones empaquetadas, que dicen la verdad.
+- **Pie** (web: catálogo, carruseles de Inicio, mapa, ficha y
+  `/ofertas/<slug>`; app: lista, Inicio y ficha), en castellano e inglés, con
+  `rwadar-movil/lib/fotos-ofertas.js` (la web lleva una copia exacta en su
+  bloque generado): «Foto real de Graz (Austria), no del activo · Autor ·
+  CC BY-SA 4.0 · Wikimedia Commons» o «Foto real del activo · …», con la
+  licencia enlazada a su texto y Commons a la página del archivo (en la ficha,
+  «· recortada»); sin autor en dominio público o CC0. Si el crédito falta o no
+  vale, «Foto real del lugar o del tema, no del activo»: nunca se da una foto
+  por foto del activo sin un crédito válido que lo diga. El texto alternativo
+  es la descripción. La línea de debajo de la lista y del carrusel dice la
+  verdad de lo que se ve (ilustraciones, fotos del lugar o del tema, o del
+  activo).
+- Las reglas de las ilustraciones (sin rótulos, sin cifras) no se aplican
+  igual a una foto real de un edificio con su rótulo; sí: **sin personas
+  reconocibles**, licencia de la lista, crédito completo y nada de cifras de
+  dinero ni promesas en la descripción ni en el pie. Lo comprueban
+  `generar.mjs`, `rwadar-ofertas-editoriales.js`, la app y las pruebas.
+- Después de importar: **mírala** a tamaño completo (personas, que se vea lo
+  que dice la descripción, y si dice «activo», que lo sea),
+  `node rwadar-editorial-source/ofertas/generar.mjs --comprobar` y `npm test`.
+  Cambia la huella del contenido: sello nuevo antes de publicar la web y OTA
+  para la app. Prueba sin red: `probar-importar-foto.py` (en `npm test`).
+
 Si una ficha no tiene foto, `generar.mjs` usa su escena en SVG (el dibujo
 isométrico de antes); si la ficha no está en `fichas.json`, la web y la app
 usan la ilustración de su categoría.
@@ -42,7 +111,8 @@ usan la ilustración de su categoría.
 
 - `fichas.json`: el texto de cada ficha: lugar, pasos, `concepto` del dibujo
   y la escena SVG de reserva.
-- `fotos.json`: el encargo de cada foto: modelo, descripción en inglés
+- `fotos.json` (esquema 3): en `reales`, las fotos reales de Commons (arriba);
+  en `fotos`, el encargo de cada foto generada: modelo, descripción en inglés
   (`prompt`), semilla, encuadre (posición x% y% del recorte, para dejar el
   activo a la derecha) y `concepto` (completa «Ilustración editorial de …»,
   el texto alternativo). Describe también los dos modelos usados.
@@ -66,6 +136,7 @@ usan la ilustración de su categoría.
 node rwadar-editorial-source/ofertas/generar.mjs --comprobar   # solo valida
 node rwadar-editorial-source/ofertas/generar.mjs                # monta las 49
 node rwadar-editorial-source/ofertas/generar.mjs --hoja=hoja.png   # y una hoja de contactos
+node rwadar-editorial-source/ofertas/generar.mjs --indices      # solo manifiesto, web y app, sin dibujar
 ```
 
 Necesita Playwright con Chromium (`RWADAR_CHROMIUM` indica el ejecutable si

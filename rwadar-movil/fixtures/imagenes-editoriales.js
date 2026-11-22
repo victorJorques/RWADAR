@@ -85,11 +85,18 @@ if (CATEGORIAS_EDITORIALES.some((categoria) => !categoriasVistas.has(categoria))
 }
 const EDITORIALES_POR_CATEGORIA = Object.freeze(Object.fromEntries(paresEditoriales));
 
+/* Desde el 22/11/2026 una ficha puede llevar una foto real de Wikimedia
+   Commons (origen "foto", foto-<slug>.webp): su texto alternativo es lo que
+   se ve y su crédito («queMuestra», «lugarOTema», «credito») va con ella en el
+   manifiesto empaquetado; el pie lo compone lib/fotos-ofertas.js y, si el
+   crédito no vale, dice solo «Foto real del lugar o del tema, no del activo». */
 const EDITORIALES_POR_FICHA = new Map(MANIFIESTO_EDITORIAL.fichas.map((entrada) => {
   const fuente = Object.prototype.hasOwnProperty.call(FUENTES_POR_FICHA, entrada?.archivo || '') ? FUENTES_POR_FICHA[entrada.archivo] : null;
-  if (!fuente || typeof entrada.slug !== 'string' || entrada.archivo !== `oferta-${entrada.slug}.webp` ||
+  const real = entrada?.origen === 'foto';
+  if (!fuente || typeof entrada.slug !== 'string' || entrada.archivo !== `${real ? 'foto-' : 'oferta-'}${entrada.slug}.webp` ||
       typeof entrada.categoria !== 'string' ||
-      typeof entrada.alt !== 'string' || !entrada.alt.startsWith(`${ETIQUETA_EDITORIAL} `) ||
+      typeof entrada.alt !== 'string' || !entrada.alt.trim() ||
+      (!real && !entrada.alt.startsWith(`${ETIQUETA_EDITORIAL} `)) ||
       entrada.ancho !== 960 || entrada.alto !== 660 ||
       !/^[a-f0-9]{64}$/.test(entrada.hashSha256 || '')) {
     throw new Error(`Ilustración editorial no válida: ${entrada?.archivo || 'sin archivo'}`);
@@ -102,6 +109,8 @@ const EDITORIALES_POR_FICHA = new Map(MANIFIESTO_EDITORIAL.fichas.map((entrada) 
     etiqueta: MANIFIESTO_EDITORIAL.etiquetaVisibleObligatoria,
     hashSha256: entrada.hashSha256,
     lugar: typeof entrada.lugar === 'string' ? entrada.lugar : '',
+    ...(real ? { origen: 'foto', queMuestra: entrada.queMuestra, lugarOTema: entrada.lugarOTema, lugarOTemaEn: entrada.lugarOTemaEn,
+      credito: entrada.credito } : { origen: 'ia' }),
   })];
 }));
 if (EDITORIALES_POR_FICHA.size !== MANIFIESTO_EDITORIAL.fichas.length ||

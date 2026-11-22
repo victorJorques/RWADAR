@@ -1,11 +1,32 @@
 """Importa una foto real con licencia libre de Wikimedia Commons a la biblioteca
-de fotos de las noticias (fotos.json y fotos/), desde el 22/11/2026.
+de fotos de las noticias (fotos.json y fotos/), desde el 22/11/2026, o, con
+--biblioteca ofertas, a la de las ofertas (también desde el 22/11/2026).
 
-Uso:
+Uso (noticias, como siempre):
   python3 rwadar-editorial-source/noticias/importar-foto.py --clave <clave-nueva> \\
       --archivo "File:Nombre en Commons.jpg" --temas regulacion-espana,bancos \\
       --descripcion "La sede de la CNMV en la calle Edison de Madrid" \\
       [--encuadre "50% 50%"] [--trabajo /ruta/fuera/del/repo] [--raiz /copia/del/repo]
+
+Uso (ofertas):
+  python3 rwadar-editorial-source/noticias/importar-foto.py --biblioteca ofertas \\
+      --clave <slug de la oferta> --archivo "File:Graz Hauptplatz.jpg" \\
+      --descripcion "La plaza mayor de Graz con el ayuntamiento al fondo" \\
+      --que-muestra lugar --lugar-o-tema "Graz (Austria)" \\
+      [--lugar-o-tema-en "Graz (Austria)"] [--encuadre "50% 50%"] [--trabajo …] [--raiz …]
+  --que-muestra: «activo» (el edificio o la instalación exacta de la oferta: solo
+  si una persona lo ha comprobado), «lugar» (la calle, el barrio o la ciudad
+  donde está el activo, no el activo) o «tema» (algo real relacionado: el
+  Tesoro, una bolsa, lingotes…). --lugar-o-tema es lo que dice el pie («Foto
+  real de <lugar-o-tema>, no del activo»); no va con «activo». La clave es el
+  slug de una ficha de rwadar-editorial-source/ofertas/fichas.json que aún no
+  tenga foto real. Recorta a 16:11 y exporta un solo WebP sin metadatos,
+  rwadar-movil/assets/ofertas-editoriales/foto-<slug>.webp (960×660, ≤ 200 kB:
+  el que publica la web y empaqueta la app), apunta la entrada en «reales» de
+  rwadar-editorial-source/ofertas/fotos.json y reescribe el manifiesto, el
+  bloque de la web y los require de la app con
+  node rwadar-editorial-source/ofertas/generar.mjs --indices (la ilustración de
+  IA de esa oferta deja de publicarse; su encargo se queda en «fotos»).
 
 Qué hace, en orden (y se para sin escribir nada en cuanto algo no cuadra):
   1. Pide a la API de Commons (action=query, prop=imageinfo,
@@ -74,6 +95,14 @@ CLAVE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 ENCUADRE = re.compile(r'^(100|[1-9]?\d)% (100|[1-9]?\d)%$')
 PAGINA_COMMONS = re.compile(r'^https://commons\.wikimedia\.org/wiki/File:[^\s"\'<>\\]+$')
 ORIGINAL_COMMONS = re.compile(r'^https://(upload|thumb)\.wikimedia\.org/wikipedia/commons/[^\s"\'<>\\]+$')
+
+# Ofertas (--biblioteca ofertas): el tamaño de las imágenes de las fichas (FICHA_ANCHO ×
+# FICHA_ALTO de rwadar-ofertas-editoriales.js; 16:11) y su tope.
+OFERTA_ANCHO, OFERTA_ALTO, OFERTA_BYTES = 960, 660, 200 * 1024
+QUE_MUESTRA = ('activo', 'lugar', 'tema')
+# Lo que no se escribe en lo que pone RWAdar (descripción y pie): ni cifras de dinero ni
+# promesas (la misma lista que PROHIBIDO de rwadar-movil/lib/fotos-ofertas.js; una prueba las compara).
+PROHIBIDO_OFERTA = re.compile(r'[%€$£]|rentab|garantiz|benefici|gananci|retorno|asegurad|sin riesgo|oportunidad', re.I)
 
 # Las licencias admitidas: nombre → (url de la licencia, si obliga a nombrar al autor).
 LICENCIAS = {'Dominio público': (None, False), 'CC0': ('https://creativecommons.org/publicdomain/zero/1.0/', False)}
@@ -211,11 +240,16 @@ def pagina_de(archivo):
 
 # ---- Imagen ----
 def recorte_3_2(ancho, alto, encuadre):
+    return recorte_proporcion(ancho, alto, encuadre, 3, 2)
+
+
+def recorte_proporcion(ancho, alto, encuadre, pw, ph):
+    """El recorte pw:ph más grande, colocado con el encuadre («x% y%», como object-position)."""
     x, y = (int(v.rstrip('%')) / 100 for v in encuadre.split())
-    if ancho * 2 > alto * 3:
-        cw, ch = alto * 3 // 2, alto
+    if ancho * ph > alto * pw:
+        cw, ch = alto * pw // ph, alto
     else:
-        cw, ch = ancho, ancho * 2 // 3
+        cw, ch = ancho, ancho * ph // pw
     izq = round((ancho - cw) * x)
     arr = round((alto - ch) * y)
     return izq, arr, izq + cw, arr + ch
@@ -272,42 +306,12 @@ def titulo_normal(titulo):
     return 'File:' + resto[:1].upper() + resto[1:]
 
 
-def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=None, raiz=RAIZ_REPO, creditos=True, original=False):
-    """Importa la foto; devuelve la entrada añadida. Lanza Rechazo sin escribir nada si algo no cuadra."""
+def traer_de_commons(archivo, encuadre, trabajo, raiz, clave, repetida, proporcion, minimo, original=False):
+    """Pide los datos a Commons, comprueba la licencia y el autor, descarga (a
+    --trabajo, fuera del repositorio) y recorta a la proporción con el
+    encuadre. Lo común de las dos bibliotecas; lanza Rechazo sin escribir nada
+    en el repositorio."""
     from PIL import Image, ImageOps
-    if not CLAVE.match(clave or '') or len(clave) > 60:
-        raise Rechazo('la clave es en minúsculas, números y guiones (como mucho 60)')
-    if not str(archivo).startswith('File:') or len(archivo) > 240:
-        raise Rechazo('el archivo es el título de Commons, empezando por «File:»')
-    if not ENCUADRE.match(encuadre or ''):
-        raise Rechazo('el encuadre es «x% y%», de 0% a 100%')
-    descripcion = re.sub(r'\s+', ' ', str(descripcion or '')).strip()
-    if not 10 <= len(descripcion) <= 200 or re.search(r'[<>]', descripcion):
-        raise Rechazo('la descripción dice lo que se ve, en llano (de 10 a 200 caracteres, sin < ni >)')
-    ruta_spec, spec = leer_biblioteca(raiz)
-    if spec.get('versionEsquema') != 2:
-        raise Rechazo('fotos.json tiene que ser del esquema 2 para llevar fotos reales')
-    if clave in spec['fotos']:
-        raise Rechazo(f'la clave «{clave}» ya está en fotos.json (una clave publicada no cambia nunca)')
-    temas = [t.strip() for t in temas if t.strip()]
-    if not 1 <= len(temas) <= 3 or len(set(temas)) != len(temas) or any(t not in spec['temas'] for t in temas):
-        raise Rechazo(f'de 1 a 3 temas distintos de la lista: {", ".join(spec["temas"])}')
-    dir_fotos = os.path.join(os.path.dirname(ruta_spec), 'fotos')
-    destinos = [os.path.join(dir_fotos, c, f'{clave}.webp') for c, *_ in SALIDAS]
-    if any(os.path.lexists(d) for d in destinos):
-        raise Rechazo(f'ya hay un archivo con la clave «{clave}» en fotos/')
-    def repetida(titulo_api=None, sha_original=None):
-        # El mismo archivo de Commons no entra dos veces: ni con otro modo de
-        # escribir el título («_» por espacio, la primera letra), ni con el
-        # título que devuelve la API, ni con los mismos bytes con otro nombre.
-        for otra, f in spec['fotos'].items():
-            if f.get('origen') != 'foto':
-                continue
-            ya = titulo_normal(f['fuente']['archivo'])
-            if ya in (titulo_normal(archivo), titulo_normal(titulo_api or archivo)) or (sha_original and f['fuente'].get('sha256Original') == sha_original):
-                raise Rechazo(f'ese archivo ya está en la biblioteca como «{otra}»')
-    repetida()
-
     datos_api = pedir_json(url_api(archivo))
     paginas = (datos_api.get('query') or {}).get('pages') or []
     if len(paginas) != 1 or paginas[0].get('missing') or not paginas[0].get('imageinfo'):
@@ -349,11 +353,53 @@ def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=Non
             convertida = img.convert('RGBA')
             fondo.paste(convertida, mask=convertida.split()[-1])
             img = fondo
-        caja = recorte_3_2(img.width, img.height, encuadre)
+        caja = recorte_proporcion(img.width, img.height, encuadre, *proporcion)
         recorte = img.crop(caja)
-    if recorte.width < MIN_ANCHO or recorte.height < MIN_ALTO:
-        raise Rechazo(f'el recorte 3:2 sale de {recorte.width}×{recorte.height}: hacen falta al menos {MIN_ANCHO}×{MIN_ALTO} útiles')
+    if recorte.width < minimo[0] or recorte.height < minimo[1]:
+        raise Rechazo(f'el recorte {proporcion[0]}:{proporcion[1]} sale de {recorte.width}×{recorte.height}: '
+                      f'hacen falta al menos {minimo[0]}×{minimo[1]} útiles')
+    return titulo, licencia, autor, pagina, url, crudo, recorte
 
+
+
+def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=None, raiz=RAIZ_REPO, creditos=True, original=False):
+    """Importa la foto; devuelve la entrada añadida. Lanza Rechazo sin escribir nada si algo no cuadra."""
+    from PIL import Image, ImageOps
+    if not CLAVE.match(clave or '') or len(clave) > 60:
+        raise Rechazo('la clave es en minúsculas, números y guiones (como mucho 60)')
+    if not str(archivo).startswith('File:') or len(archivo) > 240:
+        raise Rechazo('el archivo es el título de Commons, empezando por «File:»')
+    if not ENCUADRE.match(encuadre or ''):
+        raise Rechazo('el encuadre es «x% y%», de 0% a 100%')
+    descripcion = re.sub(r'\s+', ' ', str(descripcion or '')).strip()
+    if not 10 <= len(descripcion) <= 200 or re.search(r'[<>]', descripcion):
+        raise Rechazo('la descripción dice lo que se ve, en llano (de 10 a 200 caracteres, sin < ni >)')
+    ruta_spec, spec = leer_biblioteca(raiz)
+    if spec.get('versionEsquema') != 2:
+        raise Rechazo('fotos.json tiene que ser del esquema 2 para llevar fotos reales')
+    if clave in spec['fotos']:
+        raise Rechazo(f'la clave «{clave}» ya está en fotos.json (una clave publicada no cambia nunca)')
+    temas = [t.strip() for t in temas if t.strip()]
+    if not 1 <= len(temas) <= 3 or len(set(temas)) != len(temas) or any(t not in spec['temas'] for t in temas):
+        raise Rechazo(f'de 1 a 3 temas distintos de la lista: {", ".join(spec["temas"])}')
+    dir_fotos = os.path.join(os.path.dirname(ruta_spec), 'fotos')
+    destinos = [os.path.join(dir_fotos, c, f'{clave}.webp') for c, *_ in SALIDAS]
+    if any(os.path.lexists(d) for d in destinos):
+        raise Rechazo(f'ya hay un archivo con la clave «{clave}» en fotos/')
+    def repetida(titulo_api=None, sha_original=None):
+        # El mismo archivo de Commons no entra dos veces: ni con otro modo de
+        # escribir el título («_» por espacio, la primera letra), ni con el
+        # título que devuelve la API, ni con los mismos bytes con otro nombre.
+        for otra, f in spec['fotos'].items():
+            if f.get('origen') != 'foto':
+                continue
+            ya = titulo_normal(f['fuente']['archivo'])
+            if ya in (titulo_normal(archivo), titulo_normal(titulo_api or archivo)) or (sha_original and f['fuente'].get('sha256Original') == sha_original):
+                raise Rechazo(f'ese archivo ya está en la biblioteca como «{otra}»')
+    repetida()
+
+    titulo, licencia, autor, pagina, url, crudo, recorte = traer_de_commons(
+        archivo, encuadre, trabajo, raiz, clave, repetida, (3, 2), (MIN_ANCHO, MIN_ALTO), original)
     exportadas = []
     for carpeta, w, h, maximo in SALIDAS:
         datos, calidad = webp_sin_metadatos(recorte, w, h, maximo)
@@ -391,6 +437,110 @@ def importar(clave, archivo, temas, descripcion, encuadre='50% 50%', trabajo=Non
     return entrada, exportadas
 
 
+def leer_ofertas(raiz):
+    base = os.path.join(raiz, 'rwadar-editorial-source', 'ofertas')
+    with open(os.path.join(base, 'fotos.json'), encoding='utf-8') as f:
+        spec = json.load(f)
+    with open(os.path.join(base, 'fichas.json'), encoding='utf-8') as f:
+        fichas = json.load(f)
+    return os.path.join(base, 'fotos.json'), spec, {x['slug'] for x in fichas.get('fichas', [])}
+
+
+def texto_oferta(valor, nombre, minimo, maximo):
+    t = re.sub(r'\s+', ' ', str(valor or '')).strip()
+    if not minimo <= len(t) <= maximo or re.search(r'[<>\u0000-\u001f\u007f\u200b-\u200f\u2060\ufeff]', t):
+        raise Rechazo(f'{nombre}: en llano, de {minimo} a {maximo} caracteres, sin < ni >')
+    if PROHIBIDO_OFERTA.search(t):
+        raise Rechazo(f'{nombre}: sin cifras de dinero ni promesas («%», «€», «rentabilidad», «garantiza», «oportunidad»…)')
+    return t
+
+
+def importar_oferta(clave, archivo, descripcion, que_muestra, lugar_o_tema=None, encuadre='50% 50%', trabajo=None,
+                    raiz=RAIZ_REPO, indices=True, original=False, lugar_o_tema_en=None):
+    """Importa la foto real de una oferta (--biblioteca ofertas); devuelve la entrada añadida a «reales».
+    Lanza Rechazo sin escribir nada si algo no cuadra."""
+    if not CLAVE.match(clave or '') or len(clave) > 160:
+        raise Rechazo('la clave es el slug de la oferta: minúsculas, números y guiones')
+    if not str(archivo).startswith('File:') or len(archivo) > 240:
+        raise Rechazo('el archivo es el título de Commons, empezando por «File:»')
+    if not ENCUADRE.match(encuadre or ''):
+        raise Rechazo('el encuadre es «x% y%», de 0% a 100%')
+    descripcion = texto_oferta(descripcion, 'la descripción dice lo que de verdad se ve', 10, 200)
+    if que_muestra not in QUE_MUESTRA:
+        raise Rechazo(f'--que-muestra es {", ".join(QUE_MUESTRA)}')
+    if que_muestra == 'activo':
+        if lugar_o_tema or lugar_o_tema_en:
+            raise Rechazo('la foto del activo no lleva --lugar-o-tema (el pie dice «Foto real del activo»)')
+    else:
+        lugar_o_tema = texto_oferta(lugar_o_tema, '--lugar-o-tema (lo que dice el pie: «Foto real de …, no del activo»)', 2, 80)
+        if lugar_o_tema_en:
+            lugar_o_tema_en = texto_oferta(lugar_o_tema_en, '--lugar-o-tema-en', 2, 80)
+    ruta_spec, spec, slugs = leer_ofertas(raiz)
+    if spec.get('versionEsquema') != 3 or not isinstance(spec.get('reales'), dict):
+        raise Rechazo('rwadar-editorial-source/ofertas/fotos.json tiene que ser del esquema 3 (con «reales») para llevar fotos reales')
+    if clave not in slugs:
+        raise Rechazo(f'«{clave}» no es una ficha de rwadar-editorial-source/ofertas/fichas.json')
+    if clave in spec['reales']:
+        raise Rechazo(f'«{clave}» ya tiene foto real en fotos.json (no se pisa: quítala a mano con su revisión y vuelve a importar)')
+    destino = os.path.join(raiz, 'rwadar-movil', 'assets', 'ofertas-editoriales', f'foto-{clave}.webp')
+    if os.path.lexists(destino):
+        raise Rechazo(f'ya hay un archivo foto-{clave}.webp en rwadar-movil/assets/ofertas-editoriales/')
+
+    def repetida(titulo_api=None, sha_original=None):
+        for otra, f in spec['reales'].items():
+            ya = titulo_normal(f['fuente']['archivo'])
+            if ya in (titulo_normal(archivo), titulo_normal(titulo_api or archivo)) or (sha_original and f['fuente'].get('sha256Original') == sha_original):
+                raise Rechazo(f'ese archivo ya está en la biblioteca de ofertas como «{otra}»')
+    repetida()
+
+    titulo, licencia, autor, pagina, url, crudo, recorte = traer_de_commons(
+        archivo, encuadre, trabajo, raiz, clave, repetida, (16, 11), (OFERTA_ANCHO, OFERTA_ALTO), original)
+    datos, calidad = webp_sin_metadatos(recorte, OFERTA_ANCHO, OFERTA_ALTO, OFERTA_BYTES)
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    entrada = {
+        'origen': 'foto',
+        'descripcion': descripcion,
+        'queMuestra': que_muestra,
+        **({'lugarOTema': lugar_o_tema} if que_muestra != 'activo' else {}),
+        **({'lugarOTemaEn': lugar_o_tema_en} if que_muestra != 'activo' and lugar_o_tema_en else {}),
+        'fuente': {'sitio': SITIO, 'archivo': titulo, 'pagina': pagina, 'original': url, 'sha256Original': sha256(crudo)},
+        'licencia': licencia,
+        'autor': autor,
+        'sinPersonas': True,
+        'encuadre': encuadre,
+        'bytes': len(datos),
+        'sha256': sha256(datos),
+    }
+    with open(ruta_spec, 'rb') as f:
+        antes = f.read()
+    escrito = False
+    try:
+        with open(destino, 'xb') as f:
+            f.write(datos)
+        escrito = True
+        spec['reales'][clave] = entrada
+        escribir_json(ruta_spec, spec)
+        if indices:
+            regenerar_indices_ofertas(raiz)
+    except BaseException:
+        # Si el manifiesto no sale, no queda nada a medias: ni la foto ni la entrada.
+        if escrito:
+            os.remove(destino)
+        with open(ruta_spec, 'wb') as f:
+            f.write(antes)
+        raise
+    return entrada, [('', OFERTA_ANCHO, OFERTA_ALTO, datos, calidad)]
+
+
+def regenerar_indices_ofertas(raiz):
+    """El manifiesto, el bloque de la web y los require de la app, sin dibujar nada."""
+    script = os.path.join(RAIZ_REPO, 'rwadar-editorial-source', 'ofertas', 'generar.mjs')
+    r = subprocess.run(['node', script, '--indices', f'--raiz={os.path.abspath(raiz)}'], cwd=raiz, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise Rechazo('generar.mjs --indices no pudo reescribir el manifiesto: ' + (r.stderr or r.stdout).strip()[-600:])
+    print(r.stdout.strip())
+
+
 def regenerar_creditos(raiz):
     script = os.path.join(raiz, 'rwadar-noticias-editoriales.js')
     if not os.path.exists(script):
@@ -400,10 +550,14 @@ def regenerar_creditos(raiz):
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(description='Importa una foto de Wikimedia Commons a la biblioteca de las noticias.')
-    p.add_argument('--clave')
+    p = argparse.ArgumentParser(description='Importa una foto de Wikimedia Commons a la biblioteca de las noticias o de las ofertas.')
+    p.add_argument('--biblioteca', choices=('noticias', 'ofertas'), default='noticias', help='a qué biblioteca (por defecto, la de las noticias)')
+    p.add_argument('--clave', help='la clave nueva (noticias) o el slug de la oferta (ofertas)')
     p.add_argument('--archivo', help='título en Commons, «File:…»')
-    p.add_argument('--temas', help='de 1 a 3, separados por comas')
+    p.add_argument('--temas', help='noticias: de 1 a 3, separados por comas')
+    p.add_argument('--que-muestra', choices=QUE_MUESTRA, help='ofertas: activo, lugar o tema')
+    p.add_argument('--lugar-o-tema', help='ofertas: lo que dice el pie («Graz (Austria)», «la Bolsa de Nueva York»); no con activo')
+    p.add_argument('--lugar-o-tema-en', help='ofertas, opcional: lo mismo en inglés para el pie en inglés')
     p.add_argument('--descripcion', help='lo que de verdad se ve, en castellano llano (texto alternativo)')
     p.add_argument('--encuadre', default='50% 50%', help='posición del recorte 3:2, «x%% y%%» (por defecto, el centro)')
     p.add_argument('--trabajo', help='carpeta fuera del repositorio para lo descargado')
@@ -414,6 +568,8 @@ def main(argv=None):
     if a.licencias_json:
         print(json.dumps({k: {'url': v[0], 'atribucion': v[1]} for k, v in LICENCIAS.items()}, ensure_ascii=False))
         return 0
+    if a.biblioteca == 'ofertas':
+        return main_ofertas(p, a)
     if not (a.clave and a.archivo and a.temas and a.descripcion):
         p.error('faltan --clave, --archivo, --temas o --descripcion')
     try:
@@ -427,6 +583,26 @@ def main(argv=None):
         print(f'  fotos/{carpeta + "/" if carpeta else ""}{a.clave}.webp: {w}×{h}, {len(datos)} bytes, calidad {calidad}')
     print('Ahora: MÍRALA a tamaño completo (sin personas reconocibles, que se vea lo que dice la descripción), '
           'añade la clave a la tabla de GUIA-TITULARES.md («4 · La foto») y node rwadar-noticias-editoriales.js --comprobar.')
+    return 0
+
+
+def main_ofertas(p, a):
+    if not (a.clave and a.archivo and a.descripcion and a.que_muestra):
+        p.error('con --biblioteca ofertas: faltan --clave, --archivo, --descripcion o --que-muestra')
+    if a.temas:
+        p.error('--temas es de las noticias')
+    try:
+        entrada, exportadas = importar_oferta(a.clave, a.archivo, a.descripcion, a.que_muestra, a.lugar_o_tema, a.encuadre, a.trabajo,
+                                              raiz=os.path.abspath(a.raiz), original=a.original, lugar_o_tema_en=a.lugar_o_tema_en)
+    except Rechazo as e:
+        print(f'NO SE IMPORTA: {e}', file=sys.stderr)
+        return 2
+    print(f'Importada la foto real de «{a.clave}» ({entrada["queMuestra"]}): {entrada["fuente"]["archivo"]} ({entrada["licencia"]["nombre"]}'
+          f'{", " + entrada["autor"] if entrada["autor"] else ""}).')
+    for _c, w, h, datos, calidad in exportadas:
+        print(f'  rwadar-movil/assets/ofertas-editoriales/foto-{a.clave}.webp: {w}×{h}, {len(datos)} bytes, calidad {calidad}')
+    print('Ahora: MÍRALA a tamaño completo (sin personas reconocibles; que se vea lo que dice la descripción; y, si dice «activo», '
+          'que sea de verdad el edificio o la instalación de la oferta), node rwadar-editorial-source/ofertas/generar.mjs --comprobar y npm test.')
     return 0
 
 

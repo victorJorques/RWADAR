@@ -5,6 +5,7 @@ import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas } from '../lib/datos';
+import { notaImagenesOfertas, pieFotoOferta } from '../lib/fotos-ofertas';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
@@ -168,7 +169,8 @@ function registroProveedor(plataforma, ahora) {
 
 export function imagenesParaOferta(oferta) {
   const local = imagenEditorialOferta(oferta);
-  const propia = local?.archivo === `oferta-${oferta?.slug}.webp`;
+  // La propia de la ficha: su ilustración (oferta-<slug>.webp) o su foto real (foto-<slug>.webp, 22/11/2026).
+  const propia = local?.archivo === `oferta-${oferta?.slug}.webp` || local?.archivo === `foto-${oferta?.slug}.webp`;
   const categoria = imagenEditorial(oferta?.categoria);
   const fallback = categoria || {...imagenEditorial('Acciones y capital privado'),
     alt:'Ilustración editorial financiera; no representa un activo concreto'};
@@ -229,6 +231,49 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
   );
 }
 
+/* El pie de la foto real de una oferta (22/11/2026), con lib/fotos-ofertas.js:
+   «Foto real de <lugar o tema>, no del activo · autor · licencia · Wikimedia
+   Commons» o «Foto real del activo · …»; null si es una ilustración (las de IA
+   no llevan pie propio: lo dice la línea de debajo de la lista). Es la imagen
+   que se intenta enseñar primero (la principal). */
+export function pieImagenOferta(oferta, idioma = 'es') {
+  return pieFotoOferta(imagenesParaOferta(oferta).principal, idioma);
+}
+
+/* La línea de debajo de una lista o de un carrusel: la verdad de lo que se ve. */
+export function notaImagenesLista(ofertas, idioma = 'es') {
+  return notaImagenesOfertas((Array.isArray(ofertas) ? ofertas : []).map(o => imagenesParaOferta(o).principal), idioma);
+}
+
+/* En una tarjeta (lista e Inicio): el pie en una línea pequeña, sin enlaces
+   (toda la tarjeta es un botón); los enlaces van en la ficha. */
+export function PieFotoTarjeta({ oferta, estilo }) {
+  const idioma = useIdioma();
+  const pie = pieImagenOferta(oferta, idioma);
+  if (!pie) return null;
+  return <Text noTraducir style={[e.pieFoto, estilo]} numberOfLines={3} testID="pie-foto-oferta">{pie.texto}</Text>;
+}
+
+/* En la ficha: el pie de la foto real con la licencia enlazada a su texto y
+   «Wikimedia Commons» a la página del archivo, y «· recortada»; si es una
+   ilustración, la línea de siempre. */
+export function PieFotoDetalle({ oferta, onAbrirEnlace }) {
+  const idioma = useIdioma();
+  const pie = pieImagenOferta(oferta, idioma);
+  if (!pie) return <Text style={e.notaImagen}>{PIE_EDITORIAL}</Text>;
+  return (
+    <View style={e.pieFotoCaja} testID="pie-foto-detalle">
+      {pie.partes.map((parte, i) => (parte.enlace ? (
+        <Pressable key={i} onPress={() => onAbrirEnlace?.(parte.enlace)} style={({ pressed }) => [e.pieFotoEnlace, pressed && e.pulsado]}
+          accessibilityRole="link" noTraducir accessibilityLabel={`${parte.texto} (${idioma === 'en' ? 'opens outside RWAdar' : 'sales de RWAdar'})`}>
+          <Text noTraducir style={[e.notaImagen, e.pieFotoTxt, e.pieFotoSubrayado]}>{parte.texto}<Text noTraducir>{'\u00a0↗'}</Text></Text>
+        </Pressable>
+      ) : <Text key={i} noTraducir style={[e.notaImagen, e.pieFotoTxt]}>{parte.texto}</Text>))}
+      {pie.generico ? null : <Text noTraducir style={[e.notaImagen, e.pieFotoTxt]}>{` · ${pie.recorte}`}</Text>}
+    </View>
+  );
+}
+
 /* Un problema de la revisión (caducada, no verificable o con fuentes en
    conflicto), como problemaRevisionOferta de la web. En Reventa y Próximas
    «no verificable» es su estado de siempre (liquidez o apertura sin
@@ -279,12 +324,14 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
   const marcaNueva = nueva && !catalogoCaducado;
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = lugarConPais(imagenEditorialOferta(oferta)?.lugar);
+  const pie = pieImagenOferta(oferta, idiomaActual);
   // El patrón «Ver ficha de A en B» del diccionario parte mal los títulos con «en»: se compone aquí.
   const nombre = `${traducir('Ver ficha de')} ${oferta.titulo}${oferta.plataformaNombre
     ? ` ${idiomaActual === 'en' ? 'from' : 'en'} ${oferta.plataformaNombre}` : ''}`;
   // El lector de pantalla oye lo que se ve (y que la foto es una ilustración); nada que solo esté en la ficha.
   const etiquetaAccesible = [
-    nombre, lugar, traducir(ETIQUETA_EDITORIAL),
+    // Una foto real dice qué muestra (nunca «ilustración»); una de IA, que es una ilustración.
+    nombre, lugar, pie ? pie.texto : traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no cambia el orden editorial') : null,
     marcaNueva ? traducir('Nueva') : null,
     ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
@@ -318,6 +365,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
             <Text noTraducir idiomaOriginal="es-ES" style={e.plataformaNombre}>{oferta.plataformaNombre}</Text>
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
+          {pie ? <Text noTraducir style={e.pieFoto} numberOfLines={3} testID="pie-foto-oferta">{pie.texto}</Text> : null}
           {/* Mínimo · España en una línea. Cada dato lleva delante su «·» y el
               marco recorta la franja de la izquierda, como la web: si el
               segundo baja de línea, no empieza por «·». */}
@@ -595,7 +643,7 @@ export function DetalleOferta({
             ) : null}
 
             <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande /></View>
-            <Text style={e.notaImagen}>{PIE_EDITORIAL}</Text>
+            <PieFotoDetalle oferta={oferta} onAbrirEnlace={onAbrirEnlace} />
 
             <View style={e.antesCaja}>
               <Text style={e.antesTitulo} accessibilityRole="header">Antes de invertir</Text>
@@ -1009,6 +1057,11 @@ const e = StyleSheet.create({
   esencialNota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
   imagenDetalle: { marginTop: 22 },
   notaImagen: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 8 },
+  pieFoto: { ...T.menor, fontSize: 11, lineHeight: 15, color: C.tx3, marginTop: 4 },
+  pieFotoCaja: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 8 },
+  pieFotoTxt: { marginTop: 0 },
+  pieFotoEnlace: { minHeight: 44, justifyContent: 'center' },
+  pieFotoSubrayado: { textDecorationLine: 'underline' },
   fichaPermanente: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12 },
   antesCaja: { backgroundColor: C.ton, borderRadius: R.l, padding: 14, marginTop: 16, gap: 6 },
   antesTitulo: { ...T.ficha, fontSize: 17, lineHeight: 23, color: C.tx, marginBottom: 2 },

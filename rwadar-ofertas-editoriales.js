@@ -3,6 +3,9 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+/* Fotos reales de Wikimedia Commons (22/11/2026): el crédito, el pie y su
+   comprobación son los de la app (un solo modelo para la web y la app). */
+const fotosOfertas = require('./rwadar-movil/lib/fotos-ofertas');
 
 const DIRECTORIO_RELATIVO = 'rwadar-movil/assets/ofertas-editoriales';
 const RUTA_PUBLICA_BASE = 'ofertas-editoriales';
@@ -31,6 +34,10 @@ const FICHA_ALTO = 660;
 const FICHA_BYTES_MAX = 200 * 1024;
 /* Ni cifras ni promesas en lo que la imagen dice o en su texto alternativo. */
 const TEXTO_PROHIBIDO = /[0-9%€$£]|rentab|garantiz|benefici|gananci|retorno|asegurad|sin riesgo/i;
+
+function archivoFicha(slug, real = false) {
+  return `${real ? fotosOfertas.PREFIJO_ARCHIVO_FOTO : 'oferta-'}${slug}.webp`;
+}
 
 function sha256(bytes) {
   return crypto.createHash('sha256').update(bytes).digest('hex');
@@ -150,17 +157,30 @@ function cargarActivosEditoriales(raiz = __dirname) {
   const fichas = [];
   for (const entrada of manifiesto.fichas) {
     const slug = entrada && entrada.slug;
+    /* Una foto real (origen "foto", 22/11/2026) se llama foto-<slug>.webp y
+       nunca oferta-<slug>.webp: ese nombre lo pide a la web la app ya
+       instalada y lo presenta como ilustración de IA. */
+    const real = !!entrada && entrada.origen === 'foto';
     if (typeof slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slugs.has(slug) ||
-        !CATEGORIAS_FICHA.includes(entrada.categoria) || entrada.archivo !== `oferta-${slug}.webp` ||
+        !CATEGORIAS_FICHA.includes(entrada.categoria) || entrada.archivo !== archivoFicha(slug, real) ||
         nombres.has(entrada.archivo)) {
       throw new Error(`ficha editorial no permitida o duplicada: ${slug || ''}`);
+    }
+    if (real) {
+      // Las reglas de las ilustraciones (sin rótulos ni cifras) no se aplican a una
+      // foto real de un edificio con su rótulo; sí: sin personas, licencia de la
+      // lista y crédito completo (lib/fotos-ofertas.js).
+      try { fotosOfertas.validarFichaFoto(entrada); }
+      catch (error) { throw new Error(`metadatos editoriales no válidos: ${entrada.archivo} (${error.message})`); }
+    } else if (entrada.origen !== undefined && !['foto-generada', 'dibujo-propio'].includes(entrada.origen)) {
+      throw new Error(`metadatos editoriales no válidos: ${entrada.archivo} (origen desconocido)`);
     }
     const pasos = entrada.pasos;
     if (entrada.ancho !== FICHA_ANCHO || entrada.alto !== FICHA_ALTO ||
         !Number.isInteger(entrada.bytes) || entrada.bytes <= 1024 || entrada.bytes > FICHA_BYTES_MAX ||
         !/^[a-f0-9]{64}$/.test(entrada.hashSha256 || '') ||
-        typeof entrada.alt !== 'string' || !entrada.alt.startsWith(`${ETIQUETA_OBLIGATORIA} `) ||
-        TEXTO_PROHIBIDO.test(entrada.alt) ||
+        (!real && (typeof entrada.alt !== 'string' || !entrada.alt.startsWith(`${ETIQUETA_OBLIGATORIA} `) ||
+        TEXTO_PROHIBIDO.test(entrada.alt))) ||
         !Array.isArray(pasos) || pasos.length !== 3 ||
         pasos.some(paso => typeof paso !== 'string' || !paso.trim() || paso.length > 32 || TEXTO_PROHIBIDO.test(paso)) ||
         (entrada.lugar !== undefined && (typeof entrada.lugar !== 'string' || TEXTO_PROHIBIDO.test(entrada.lugar))) ||
@@ -184,6 +204,10 @@ function cargarActivosEditoriales(raiz = __dirname) {
       categoria: entrada.categoria,
       archivo: entrada.archivo,
       alt: entrada.alt,
+      clase: real ? 'foto' : 'ia',
+      // De una foto real, lo que dice el pie (en la web, la ficha pública y la app).
+      foto: real ? Object.freeze({ origen: 'foto', queMuestra: entrada.queMuestra, lugarOTema: entrada.lugarOTema,
+        lugarOTemaEn: entrada.lugarOTemaEn, credito: Object.freeze({ ...entrada.credito }) }) : null,
       hashSha256: entrada.hashSha256,
       bytes: entrada.bytes,
       origen,
@@ -220,6 +244,7 @@ function cargarActivosEditoriales(raiz = __dirname) {
 }
 
 module.exports = {
+  archivoFicha,
   CATEGORIAS_FICHA,
   CATEGORIAS_OBLIGATORIAS,
   FICHA_ALTO,
@@ -228,6 +253,7 @@ module.exports = {
   TEXTO_PROHIBIDO,
   DIRECTORIO_RELATIVO,
   ETIQUETA_OBLIGATORIA,
+  PIE_OBLIGATORIO,
   RUTA_PUBLICA_BASE,
   cargarActivosEditoriales,
   dimensionesWebp,

@@ -1,6 +1,6 @@
 {
- "versionEsquema": 2,
- "nota": "Encargo de la fotografía generada de cada ficha: el activo genérico parecido al real según su fuente oficial, sin marcas, rótulos ni personas. «concepto» completa el texto alternativo; «encuadre» es la posición (x% y%) del recorte a 1280×880, para dejar el activo a la derecha. Las fotos maestras están en fotos/<slug>.webp; fotografiar.py las vuelve a generar con el modelo, y generar.mjs las retoca y les pone el texto.",
+ "versionEsquema": 3,
+ "nota": "Encargo de la fotografía generada de cada ficha: el activo genérico parecido al real según su fuente oficial, sin marcas, rótulos ni personas. «concepto» completa el texto alternativo; «encuadre» es la posición (x% y%) del recorte a 1280×880, para dejar el activo a la derecha. Las fotos maestras están en fotos/<slug>.webp; fotografiar.py las vuelve a generar con el modelo, y generar.mjs las retoca y les pone el texto. Desde el 22/11/2026 (esquema 3), «reales» guarda las fotos reales con licencia libre de Wikimedia Commons, por slug: las trae rwadar-editorial-source/noticias/importar-foto.py --biblioteca ofertas y, si una oferta tiene foto real, se publica esa (foto-<slug>.webp) y no su ilustración. Cada una: «origen»: \"foto\"; «descripcion», lo que de verdad se ve en castellano llano (el texto alternativo); «queMuestra»: \"activo\" (el edificio o la instalación exacta, comprobado), \"lugar\" (la calle, el barrio o la ciudad, no el activo) o \"tema\" (algo real relacionado); «lugarOTema» (y, si se quiere, «lugarOTemaEn»), lo que dice el pie, salvo en \"activo\"; «fuente», «licencia», «autor» y «sinPersonas», como en la biblioteca de las noticias; «encuadre» del recorte 16:11; y «bytes» y «sha256» de rwadar-movil/assets/ofertas-editoriales/foto-<slug>.webp (960×660). Las encargadas con IA de «fotos» no se tocan: vuelven a usarse si se quita la real.",
  "modelos": {
   "realvisxl": {
    "nombre": "RealVisXL V5.0 Lightning (SG161222)",
@@ -175,5 +175,6 @@
    "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
    "prompt": "Generic Parisian financial district street at early morning with cream limestone Haussmann-style office buildings, wrought iron balconies, soft golden sunrise light, wet cobblestones, empty sidewalk, no signage, no logos, no text, no flags"
   }
- }
+ },
+ "reales": {}
 }

@@ -59,6 +59,7 @@
   ],
   "fichasOrigen": {
     "herramienta": "Fotografias generadas con IA (RealVisXL V5.0 Lightning (SG161222); Canva, generación de imágenes (21/10/2026)), retocadas por RWAdar y sin rotulos; si una ficha no tiene foto, dibujo vectorial propio",
+    "fotosReales": "Desde el 22/11/2026, una ficha puede llevar en su lugar una foto real con licencia libre de Wikimedia Commons (origen \"foto\", foto-<slug>.webp): su texto alternativo es lo que se ve, queMuestra dice si es el activo, su lugar o su tema y credito lleva autor, licencia y pagina del archivo, que la web y la app enseñan en el pie",
     "modo": "generacion-sin-imagenes-de-terceros",
     "usoPrevisto": "Una ilustracion por ficha que explica la inversion de un vistazo; si falta, se usa la de su categoria",
     "direccionVisual": "Foto generica del activo, parecida al real segun su fuente oficial, sin marcas, rotulos ni personas, y limpia: el lugar y los tres pasos van como texto en la ficha",

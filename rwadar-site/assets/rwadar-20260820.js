@@ -136,6 +136,160 @@ const EDITORIAL_OFERTA_POR_CATEGORIA={
    falta, o la ficha cambió de categoría, se usa la de su categoría. */
 /* fichas-editoriales:inicio (generado por rwadar-editorial-source/ofertas/generar.mjs) */
 const EDITORIAL_OFERTA_POR_SLUG=Object.freeze({"aktionariat":{"src":"/ofertas-editoriales/oferta-aktionariat.webp","alt":"Ilustración editorial de un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Erlenbach · Suiza"},"apartamento-vacacional-hinterstoder-50":{"src":"/ofertas-editoriales/oferta-apartamento-vacacional-hinterstoder-50.webp","alt":"Ilustración editorial de un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real, imagen generada con IA. Pasos: compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Hinterstoder · Austria"},"boss-info":{"src":"/ofertas-editoriales/oferta-boss-info.webp","alt":"Ilustración editorial de un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Farnern · Suiza"},"drautalresidenz-paternion":{"src":"/ofertas-editoriales/oferta-drautalresidenz-paternion.webp","alt":"Ilustración editorial de un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Paternion · Austria"},"fotovoltaica-cohotel":{"src":"/ofertas-editoriales/oferta-fotovoltaica-cohotel.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta plana de un edificio comercial austriaco, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Infraestructura","lugar":"Steyregg · Austria"},"fotovoltaica-greenpoint":{"src":"/ofertas-editoriales/oferta-fotovoltaica-greenpoint.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Infraestructura","lugar":"Wiener Neustadt · Austria"},"hausera-proximas-ofertas":{"src":"/ofertas-editoriales/oferta-hausera-proximas-ofertas.webp","alt":"Ilustración editorial de un edificio de viviendas mediterráneo recién reformado en la costa de Orihuela (Alicante), como imagen de viviendas que se compran, se reforman y se venden, imagen generada con IA. Pasos: reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Orihuela Costa · Alicante"},"kraken-xstocks":{"src":"/ofertas-editoriales/oferta-kraken-xstocks.webp","alt":"Ilustración editorial de un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras con euros; vendes o retiras. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Limasol · Chipre"},"local-de-estanco-klagenfurt":{"src":"/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp","alt":"Ilustración editorial de un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Klagenfurt · Austria"},"mtbill":{"src":"/ofertas-editoriales/oferta-mtbill.webp","alt":"Ilustración editorial de un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos, imagen generada con IA. Pasos: compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Estados Unidos"},"prosegur-digital-gold":{"src":"/ofertas-editoriales/oferta-prosegur-digital-gold.webp","alt":"Ilustración editorial de unos lingotes de oro sin marcas en una cámara acorazada, imagen generada con IA. Pasos: compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.","categoria":"Materias primas","lugar":"Custodia en España"},"randhartingergasse-9-viena":{"src":"/ofertas-editoriales/oferta-randhartingergasse-9-viena.webp","alt":"Ilustración editorial de un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Viena · Austria"},"robinhood-classic-stock-tokens":{"src":"/ofertas-editoriales/oferta-robinhood-classic-stock-tokens.webp","alt":"Ilustración editorial de la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras en euros; cierras con la contraparte. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Estados Unidos"},"spiko-letras-del-tesoro-dolar":{"src":"/ofertas-editoriales/oferta-spiko-letras-del-tesoro-dolar.webp","alt":"Ilustración editorial de un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense, imagen generada con IA. Pasos: abres cuenta con KYC; compras participaciones; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Estados Unidos"},"spiko-letras-del-tesoro-euro":{"src":"/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp","alt":"Ilustración editorial de un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro, imagen generada con IA. Pasos: compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Zona euro"},"spiko-smart-cash-euro":{"src":"/ofertas-editoriales/oferta-spiko-smart-cash-euro.webp","alt":"Ilustración editorial de una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario, imagen generada con IA. Pasos: abres cuenta con KYC; transfieres euros; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"París · Francia"},"switzerlend":{"src":"/ofertas-editoriales/oferta-switzerlend.webp","alt":"Ilustración editorial de un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Zúrich · Suiza"},"vivienda-pluddemanngasse-101-graz":{"src":"/ofertas-editoriales/oferta-vivienda-pluddemanngasse-101-graz.webp","alt":"Ilustración editorial de un bloque de pisos moderno de fachada blanca en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Graz · Austria"},"vivienda-pottendorfer-stra-e-62-wr-neustadt":{"src":"/ofertas-editoriales/oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp","alt":"Ilustración editorial de un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Wiener Neustadt · Austria"},"vivienda-schwarzer-weg-18-graz":{"src":"/ofertas-editoriales/oferta-vivienda-schwarzer-weg-18-graz.webp","alt":"Ilustración editorial de un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Graz · Austria"},"vivienda-sonnleithnergasse-2-viena":{"src":"/ofertas-editoriales/oferta-vivienda-sonnleithnergasse-2-viena.webp","alt":"Ilustración editorial de un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Viena · Austria"},"vivienda-stallhofstra-e-28-gratwein":{"src":"/ofertas-editoriales/oferta-vivienda-stallhofstra-e-28-gratwein.webp","alt":"Ilustración editorial de un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Gratwein · Austria"}});
+const FOTOS_OFERTAS_MODELO=(()=>{const module={exports:{}};const require=()=>Object.freeze({LICENCIAS_FOTO:{"Dominio público":{"url":null,"atribucion":false,"en":"Public domain"},"CC0":{"url":"https://creativecommons.org/publicdomain/zero/1.0/","atribucion":false,"en":"CC0"},"CC BY 2.0":{"url":"https://creativecommons.org/licenses/by/2.0/","atribucion":true,"en":"CC BY 2.0"},"CC BY 2.5":{"url":"https://creativecommons.org/licenses/by/2.5/","atribucion":true,"en":"CC BY 2.5"},"CC BY 3.0":{"url":"https://creativecommons.org/licenses/by/3.0/","atribucion":true,"en":"CC BY 3.0"},"CC BY 4.0":{"url":"https://creativecommons.org/licenses/by/4.0/","atribucion":true,"en":"CC BY 4.0"},"CC BY-SA 2.0":{"url":"https://creativecommons.org/licenses/by-sa/2.0/","atribucion":true,"en":"CC BY-SA 2.0"},"CC BY-SA 2.5":{"url":"https://creativecommons.org/licenses/by-sa/2.5/","atribucion":true,"en":"CC BY-SA 2.5"},"CC BY-SA 3.0":{"url":"https://creativecommons.org/licenses/by-sa/3.0/","atribucion":true,"en":"CC BY-SA 3.0"},"CC BY-SA 4.0":{"url":"https://creativecommons.org/licenses/by-sa/4.0/","atribucion":true,"en":"CC BY-SA 4.0"}},SITIO_FOTOS:"Wikimedia Commons",PAGINA_COMMONS:/^https:\/\/commons\.wikimedia\.org\/wiki\/File:[^\s"'<>\\]+$/});
+/* ---------------------------------------------------------------------
+   Fotos reales de las ofertas (22/11/2026)
+   ---------------------------------------------------------------------
+   Orden de Víctor del 22/11/2026: «La de las ofertas también las cambiaría,
+   las siento muy igual». Cada oferta puede llevar, en vez de su ilustración
+   generada con IA, una foto real con licencia libre de Wikimedia Commons
+   (las mismas licencias que las noticias: LICENCIAS_FOTO de
+   lib/noticias-sector.js). La trae
+   rwadar-editorial-source/noticias/importar-foto.py --biblioteca ofertas.
+
+   Una foto real dice con honradez qué se ve («queMuestra»):
+     - "activo": el edificio o la instalación exacta de la oferta (comprobado
+       por una persona antes de importarla);
+     - "lugar": la calle, el barrio o la ciudad donde está el activo, no el
+       activo;
+     - "tema": algo real relacionado (el Tesoro, una bolsa, lingotes…).
+   «lugarOTema» es lo que va en el pie («Graz (Austria)», «la Bolsa de Nueva
+   York»), y «lugarOTemaEn», si lo hay, lo mismo en inglés.
+
+   El crédito NO viaja con el catálogo (la app instalada valida las ofertas
+   con claves cerradas): va con la imagen, en el manifiesto de
+   rwadar-movil/assets/ofertas-editoriales/manifest.json, que la app empaqueta
+   (la OTA lleva a la vez la foto, su crédito y este código) y la web publica
+   en /ofertas-editoriales/manifest.json y en su bloque generado
+   EDITORIAL_OFERTA_POR_SLUG. La foto real se publica como foto-<slug>.webp y
+   nunca como oferta-<slug>.webp: la app ya instalada pide ese nombre a la web
+   para las ofertas que no lleva dentro y lo presenta como ilustración de IA.
+
+   Pie (web y app, en castellano e inglés):
+     «Foto real de <lugarOTema>, no del activo · <autor> · <licencia> ·
+      Wikimedia Commons» (lugar o tema), o «Foto real del activo · …»
+     (activo), con la licencia enlazada a su texto y «Wikimedia Commons» a la
+     página del archivo; sin autor en dominio público o CC0. Si el crédito
+     falta o no vale, un pie genérico y verdadero («Foto real del lugar o del
+     tema, no del activo»): una foto real nunca pasa por foto del activo sin
+     un crédito válido que lo diga. Las ilustraciones de IA, como siempre:
+     sin pie propio y la línea general «Imágenes ilustrativas, no fotos del
+     activo».
+   Sin dependencias, sin red y sin Intl (Hermes).
+   --------------------------------------------------------------------- */
+const { LICENCIAS_FOTO, SITIO_FOTOS, PAGINA_COMMONS } = require('./noticias-sector');
+
+const QUE_MUESTRA = Object.freeze(['activo', 'lugar', 'tema']);
+const PREFIJO_ARCHIVO_FOTO = 'foto-';
+const MAX = Object.freeze({ descripcion: 200, lugarOTema: 80, autor: 200, pagina: 400 });
+/* En lo que escribe RWAdar (no en la autoría, que es la del autor): ni cifras
+   de dinero ni promesas. Una foto real puede llevar el número de una calle. */
+const PROHIBIDO = /[%€$£]|rentab|garantiz|benefici|gananci|retorno|asegurad|sin riesgo|oportunidad/i;
+const textoLlano = (v, max) => typeof v === 'string' && v.trim() === v && v.length > 0 && [...v].length <= max &&
+  !/[<>\u0000-\u001f\u007f​-‏⁠﻿]/.test(v);
+
+const TEXTOS = Object.freeze({
+  activo: Object.freeze({ es: 'Foto real del activo', en: 'Real photo of the asset' }),
+  generico: Object.freeze({ es: 'Foto real del lugar o del tema, no del activo', en: 'Real photo of the place or the topic, not of the asset' }),
+  recorte: Object.freeze({ es: 'recortada', en: 'cropped' }),
+});
+const lugarOTemaPie = (lugar, idioma) => (idioma === 'en'
+  ? `Real photo of ${lugar}, not of the asset` : `Foto real de ${lugar}, no del activo`);
+
+/* La línea general, según las imágenes que se ven. */
+const NOTAS_IMAGENES = Object.freeze({
+  ia: Object.freeze({ es: 'Imágenes ilustrativas, no fotos del activo', en: 'Illustrative images, not photos of the asset' }),
+  foto: Object.freeze({ es: 'Fotos reales del lugar o del tema, no del activo',
+    en: 'Real photos of the place or the topic, not of the asset' }),
+  mixta: Object.freeze({ es: 'Fotos reales del lugar o del tema e imágenes ilustrativas: ninguna es foto del activo',
+    en: 'Real photos of the place or the topic and illustrative images: none is a photo of the asset' }),
+  activo: Object.freeze({ es: 'Fotos reales del activo, de Wikimedia Commons', en: 'Real photos of the asset, from Wikimedia Commons' }),
+  cadaUna: Object.freeze({ es: 'Cada foto real dice si muestra el activo, su lugar o su tema; las demás imágenes son ilustrativas',
+    en: 'Each real photo says whether it shows the asset, its place or its topic; the other images are illustrative' }),
+});
+
+/* El crédito de una foto real, limpio, o null si algo no cuadra (nunca lanza).
+   «x» es la entrada del manifiesto (o del bloque de la web): { origen: "foto",
+   queMuestra, lugarOTema, lugarOTemaEn?, credito: { autor, licencia,
+   licenciaUrl, sitio, pagina } }. */
+function creditoFotoOferta(x) {
+  if (!x || typeof x !== 'object' || x.origen !== 'foto') return null;
+  const c = x.credito;
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return null;
+  if (Object.keys(c).sort().join() !== 'autor,licencia,licenciaUrl,pagina,sitio') return null;
+  if (!QUE_MUESTRA.includes(x.queMuestra)) return null;
+  const lic = typeof c.licencia === 'string' && Object.hasOwn(LICENCIAS_FOTO, c.licencia) ? LICENCIAS_FOTO[c.licencia] : null;
+  if (!lic || c.licenciaUrl !== lic.url || c.sitio !== SITIO_FOTOS) return null;
+  if (!textoLlano(c.pagina, MAX.pagina) || !PAGINA_COMMONS.test(c.pagina)) return null;
+  if (lic.atribucion ? !textoLlano(c.autor, MAX.autor) : c.autor !== null) return null;
+  const lugar = x.queMuestra === 'activo' ? null : x.lugarOTema;
+  if (lugar !== null && (!textoLlano(lugar, MAX.lugarOTema) || PROHIBIDO.test(lugar))) return null;
+  const lugarEn = x.queMuestra === 'activo' || x.lugarOTemaEn === undefined ? null : x.lugarOTemaEn;
+  if (lugarEn !== null && (!textoLlano(lugarEn, MAX.lugarOTema) || PROHIBIDO.test(lugarEn))) return null;
+  return Object.freeze({ queMuestra: x.queMuestra, lugarOTema: lugar, lugarOTemaEn: lugarEn, autor: lic.atribucion ? c.autor : null,
+    licencia: c.licencia, licenciaUrl: c.licenciaUrl, sitio: c.sitio, pagina: c.pagina });
+}
+
+/* El pie de la imagen de una oferta: null si no es una foto real (una
+   ilustración de IA no lleva pie propio); si lo es, { generico, queMuestra,
+   texto, partes, recorte }. «partes» son los trozos del texto, para pintarlo
+   igual en la web y en la app (los que tienen «enlace» son enlaces). */
+function pieFotoOferta(x, idioma = 'es') {
+  if (!x || typeof x !== 'object' || x.origen !== 'foto') return null;
+  const en = idioma === 'en';
+  const lengua = en ? 'en' : 'es';
+  const c = creditoFotoOferta(x);
+  if (!c) {
+    const texto = TEXTOS.generico[lengua];
+    return Object.freeze({ generico: true, queMuestra: null, texto, partes: Object.freeze([Object.freeze({ texto, enlace: null })]),
+      recorte: TEXTOS.recorte[lengua] });
+  }
+  const cabeza = c.queMuestra === 'activo' ? TEXTOS.activo[lengua] : lugarOTemaPie(en && c.lugarOTemaEn ? c.lugarOTemaEn : c.lugarOTema, lengua);
+  const lic = LICENCIAS_FOTO[c.licencia];
+  const partes = [{ texto: cabeza, enlace: null }, { texto: ' · ', enlace: null }];
+  if (c.autor) partes.push({ texto: c.autor, enlace: null }, { texto: ' · ', enlace: null });
+  partes.push({ texto: en ? lic.en : c.licencia, enlace: c.licenciaUrl }, { texto: ' · ', enlace: null }, { texto: c.sitio, enlace: c.pagina });
+  return Object.freeze({ generico: false, queMuestra: c.queMuestra, texto: partes.map(p => p.texto).join(''),
+    partes: Object.freeze(partes.map(p => Object.freeze(p))), recorte: TEXTOS.recorte[lengua] });
+}
+
+/* Qué es cada imagen: 'ia', 'activo' (foto real del activo con crédito
+   válido) o 'lugar' (foto real del lugar o del tema, o sin crédito válido:
+   nunca se da por foto del activo). */
+function claseImagenOferta(x) {
+  if (!x || typeof x !== 'object' || x.origen !== 'foto') return 'ia';
+  return creditoFotoOferta(x)?.queMuestra === 'activo' ? 'activo' : 'lugar';
+}
+
+/* La línea general de debajo de una lista o un carrusel, según lo que se ve. */
+function notaImagenesOfertas(imagenes, idioma = 'es') {
+  const clases = new Set((Array.isArray(imagenes) ? imagenes : []).filter(Boolean).map(claseImagenOferta));
+  const cual = clases.has('activo') ? (clases.size === 1 ? 'activo' : 'cadaUna')
+    : clases.has('lugar') ? (clases.has('ia') ? 'mixta' : 'foto') : 'ia';
+  return NOTAS_IMAGENES[cual][idioma === 'en' ? 'en' : 'es'];
+}
+
+/* Comprueba una entrada del manifiesto que sea una foto real (la usan
+   rwadar-ofertas-editoriales.js y las pruebas). Lanza con el motivo. */
+function validarFichaFoto(entrada) {
+  const donde = `foto real de ${entrada?.slug || 'sin slug'}`;
+  if (!entrada || entrada.origen !== 'foto') throw new Error(`${donde}: no es una foto real`);
+  if (entrada.archivo !== `${PREFIJO_ARCHIVO_FOTO}${entrada.slug}.webp`) throw new Error(`${donde}: el archivo es ${PREFIJO_ARCHIVO_FOTO}<slug>.webp`);
+  if (!textoLlano(entrada.alt, MAX.descripcion) || [...entrada.alt].length < 10 || PROHIBIDO.test(entrada.alt)) {
+    throw new Error(`${donde}: el texto alternativo es la descripción de lo que se ve (de 10 a ${MAX.descripcion} caracteres, sin cifras de dinero ni promesas)`);
+  }
+  if (!QUE_MUESTRA.includes(entrada.queMuestra)) throw new Error(`${donde}: «queMuestra» es ${QUE_MUESTRA.join(', ')}`);
+  if (entrada.queMuestra === 'activo' ? entrada.lugarOTema !== undefined || entrada.lugarOTemaEn !== undefined : !entrada.lugarOTema) {
+    throw new Error(`${donde}: ${entrada.queMuestra === 'activo' ? 'la foto del activo no lleva «lugarOTema»' : 'falta «lugarOTema» (lo que dice el pie)'}`);
+  }
+  if (entrada.sinPersonas !== true) throw new Error(`${donde}: sin personas reconocibles («sinPersonas»: true)`);
+  if (!creditoFotoOferta(entrada)) throw new Error(`${donde}: crédito no válido (licencia de la lista con su url, autor si la licencia lo pide, página de Wikimedia Commons; «lugarOTema» llano)`);
+  return entrada;
+}
+
+module.exports = { QUE_MUESTRA, PREFIJO_ARCHIVO_FOTO, PROHIBIDO, MAX, TEXTOS, NOTAS_IMAGENES, creditoFotoOferta, pieFotoOferta,
+  claseImagenOferta, notaImagenesOfertas, validarFichaFoto };
+return module.exports;})();
 /* fichas-editoriales:fin */
 /* Transparencia de cada oferta (comprobaciones editoriales, puntos fuertes y
    textos cortos). Falla cerrado: sin entrada, o con otra verificadaEl, nada. */
@@ -1856,7 +2010,7 @@ function pintarEmisiones(){
    '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son informativas y gratuitas. Si puedes invertir, las condiciones y los riesgos los confirma la empresa que ofrece cada producto. RWAdar no recibe dinero de las inversiones.</p></header>'+
    '<div class="catalogo-principales">'+filas+'</div>'+
    seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
-   '<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>';
+   '<p class="nota-ilustrativa catalogo-nota-imagenes">'+escHtml(notaImagenesOfertasLocal([...visibles,...catalogo.filter(o=>o.coleccion==='secundario'||o.coleccion==='en_camino')]))+'</p>';
   return;
  }
  const v=emisionesVisibles();
@@ -2165,6 +2319,7 @@ function tarjetaInicioHtml(o,i,seleccion){
   '<div class="rel-tarjeta-cuerpo"><p class="rel-nueva-meta">'+(nueva?'<span class="etq etq-ok">Nueva</span>':'')+(sel?'<span class="etq ini-etq-cinco">Pasa las 5 comprobaciones</span>':'')+'</p>'+
   '<h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
+  pieFotoOfertaHtml(img)+
   '<p class="rel-tarjeta-datos"><span>Mínimo</span> <b>'+escHtml(dc.minimo)+'</b><span class="rel-tarjeta-sep" aria-hidden="true"> · </span><span>España</span> <b>'+escHtml(noEsp?'No':dc.espanaCorta)+'</b></p>'+
   (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
@@ -2220,6 +2375,9 @@ function pintarInicio(){
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
  ocultar('relNuevas',!destacadas.length);
  pon('relNuevasLista',destacadas.map((o,i)=>tarjetaInicioHtml(o,i,enSeleccion)).join(''));
+ /* La línea de debajo del carrusel dice la verdad de las fotos que se ven (22/11/2026). */
+ const notaFotos=document.getElementById('relNuevasNota'),textoNota=notaImagenesOfertasLocal(destacadas);
+ if(notaFotos&&notaFotos.textContent!==textoNota)notaFotos.textContent=textoNota;
  diferirFotosInicio();
  if(relatoInicio)relatoInicio.repintar();
 }
@@ -2355,6 +2513,8 @@ function numeroLocal(v,def){
  const n=t?Number(t[0]):NaN;return Number.isFinite(n)?n:def;
 }
 function imagenOfertaLocal(o){
+ /* De una foto real (22/11/2026), lo que necesita su pie (pieFotoOfertaHtml). */
+ const datosFotoReal=x=>x&&x.origen==='foto'?{origen:'foto',queMuestra:x.queMuestra,lugarOTema:x.lugarOTema,lugarOTemaEn:x.lugarOTemaEn,credito:x.credito}:{};
  if(o&&o.catalogo===true){
   if(typeof o.slug!=='string'||o.slug.length>160||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.slug))return null;
   const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria]||
@@ -2362,7 +2522,7 @@ function imagenOfertaLocal(o){
   const propia=Object.hasOwn(EDITORIAL_OFERTA_POR_SLUG,o.slug)?EDITORIAL_OFERTA_POR_SLUG[o.slug]:null;
   if(propia&&propia.categoria!==o.categoria)return {src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'};
   return propia&&propia.categoria===o.categoria?
-   {src:propia.src,alt:propia.alt,etiqueta:'Ilustración editorial',respaldo:entrada.src,lugar:textoLocal(propia.lugar)}:
+   {src:propia.src,alt:propia.alt,etiqueta:propia.origen==='foto'?'Foto real':'Ilustración editorial',respaldo:entrada.src,lugar:textoLocal(propia.lugar),...datosFotoReal(propia)}:
    {src:'/ofertas-editoriales/oferta-'+o.slug+'.webp',
     alt:'Ilustración editorial generada con IA; no es fotografía del activo. '+
      (typeof o.documentacion?.imagenEditorialAlt==='string'&&o.documentacion.imagenEditorialAlt.trim().length>=20&&
@@ -2375,9 +2535,42 @@ function imagenOfertaLocal(o){
  if(!entrada)return null;
  const propia=MANIFIESTO_EDITORIAL_LOCAL.porSlug.get(textoLocal(o.slug));
  return propia&&propia.categoria===o.categoria?
-  {src:'/ofertas-editoriales/'+propia.archivo,alt:propia.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta,
-   respaldo:'/ofertas-editoriales/'+entrada.archivo,lugar:textoLocal(propia.lugar)}:
+  {src:'/ofertas-editoriales/'+propia.archivo,alt:propia.alt,etiqueta:propia.origen==='foto'?'Foto real':MANIFIESTO_EDITORIAL_LOCAL.etiqueta,
+   respaldo:'/ofertas-editoriales/'+entrada.archivo,lugar:textoLocal(propia.lugar),...datosFotoReal(propia)}:
   {src:'/ofertas-editoriales/'+entrada.archivo,alt:entrada.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta};
+}
+/* Fotos reales de las ofertas (22/11/2026): una ficha puede llevar una foto
+   real con licencia libre de Wikimedia Commons en vez de su ilustración. Lo
+   que dice su pie lo compone el mismo modelo que la app (lib/fotos-ofertas.js,
+   copiado tal cual por generar.mjs en el bloque generado:
+   FOTOS_OFERTAS_MODELO): «Foto real de <lugar o tema>, no del activo ·
+   autor · licencia · Wikimedia Commons» o «Foto real del activo · …», con la
+   licencia y la página del archivo enlazadas. Si el crédito no vale (o falta
+   el modelo), un pie genérico verdadero: «Foto real del lugar o del tema, no
+   del activo». Va en castellano y en inglés a la vez y la hoja de estilos
+   enseña el del idioma elegido (html[lang]); las ilustraciones no llevan pie
+   propio. */
+function pieFotoOfertaPartes(img,idioma){
+ if(!img||img.origen!=='foto')return null;
+ const m=typeof FOTOS_OFERTAS_MODELO!=='undefined'?FOTOS_OFERTAS_MODELO:null;
+ if(m)return m.pieFotoOferta(img,idioma);
+ const texto=idioma==='en'?'Real photo of the place or the topic, not of the asset':'Foto real del lugar o del tema, no del activo';
+ return {generico:true,queMuestra:null,texto,partes:[{texto,enlace:null}],recorte:idioma==='en'?'cropped':'recortada'};
+}
+function pieFotoOfertaHtml(img,{detalle=false,enlaces=true,clase=''}={}){
+ const lenguas=['es','en'].map(l=>[l,pieFotoOfertaPartes(img,l)]);
+ if(!lenguas[0][1])return '';
+ return '<p class="foto-oferta-pie'+(clase?' '+clase:'')+'" translate="no" data-foto="'+escHtml(img.src||'')+'">'+lenguas.map(([l,p])=>'<span class="foto-oferta-pie-'+l+'" lang="'+l+'">'+
+  p.partes.map(x=>x.enlace&&enlaces&&urlHttps(x.enlace)?'<a href="'+escHtml(urlHttps(x.enlace))+'" target="_blank" rel="noopener noreferrer">'+escHtml(x.texto)+'</a>':escHtml(x.texto)).join('')+
+  (detalle&&!p.generico?' · '+escHtml(p.recorte):'')+'</span>').join('')+'</p>';
+}
+/* La línea de debajo de una lista o un carrusel: la verdad de lo que se ve
+   (en castellano: el diccionario la traduce). */
+function notaImagenesOfertasLocal(ofertas){
+ const imgs=(ofertas||[]).map(o=>{try{return imagenOfertaLocal(o)}catch(e){return null}}).filter(Boolean);
+ const m=typeof FOTOS_OFERTAS_MODELO!=='undefined'?FOTOS_OFERTAS_MODELO:null;
+ if(m)return m.notaImagenesOfertas(imgs,'es');
+ return imgs.some(i=>i.origen==='foto')?'Fotos reales del lugar o del tema e imágenes ilustrativas: ninguna es foto del activo':'Imágenes ilustrativas, no fotos del activo';
 }
 /* Si la ilustración propia no carga, la tarjeta pasa una sola vez a la de su
    categoría. Se escucha en captura porque el error de <img> no burbujea, y
@@ -2386,6 +2579,9 @@ const respaldoImagen=i=>i&&i.respaldo?' data-respaldo="'+escHtml(i.respaldo)+'"'
 if(typeof document!=='undefined'&&typeof document.addEventListener==='function')document.addEventListener('error',ev=>{
  const img=ev.target;
  if(!(img instanceof HTMLImageElement)||!img.dataset.respaldo)return;
+ /* Si era una foto real, su pie deja de verse: lo que queda es una ilustración. */
+ const original=img.getAttribute('src')||'';
+ for(const p of document.querySelectorAll('.foto-oferta-pie[data-foto]'))if(p.getAttribute('data-foto')===original)p.hidden=true;
  const respaldo=img.dataset.respaldo;delete img.dataset.respaldo;img.src=respaldo;
 },true);
 function ofertaLocalValida(o){
@@ -2792,6 +2988,7 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    '<p class="escaparate-procedencia"><b class="emi-donde">'+escHtml(o.plataformaNombre)+'</b>'+
    /* La ciudad es un dato (no se traduce); el país, sí, como en «Recién añadidas». */
    (imagen&&imagen.lugar?'<span class="emi-lugar">'+lugarTarjetaHtml(imagen.lugar)+'</span>':'')+'</p>'+
+   pieFotoOfertaHtml(imagen)+
    datosTarjetaOfertaHtml(o,resumen,noEspana)+
    (revision||noEspana?'<p class="escaparate-alertas">'+(revision?'<span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span>':'')+
     (noEspana?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</p>':'')+
@@ -2829,7 +3026,7 @@ function filaSecundariaLocal(o){
  return '<article class="escaparate-sec-fila"><div class="escaparate-sec-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440"></div><div class="escaparate-sec-contenido">'+
   '<div class="escaparate-sec-meta"><b>'+escHtml(o.plataformaNombre)+'</b><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
-  '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
+  '<h4>'+escHtml(o.titulo)+'</h4>'+pieFotoOfertaHtml(imagen)+'<div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
   '<div class="escaparate-sec-pie">'+(ultima?'<span>'+escHtml(ultima.valor)+'</span>':'<span>Sin última operación publicada</span>')+
   '<span class="escaparate-sec-enlaces">'+botonGuardarOferta(o)+'<button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Detalle de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
@@ -2946,7 +3143,8 @@ function abrirDetalleOfertaLocal(slug){
   (avisos.length?'<section class="escaparate-dialogo-seccion" aria-labelledby="detalleAvisosTit"><h3 id="detalleAvisosTit">Avisos de esta oferta</h3><ul class="escaparate-dialogo-avisos">'+
    avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
   '<div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
+   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div>'+
+   (pieFotoOfertaHtml(imagen,{detalle:true,clase:'foto-oferta-pie-detalle'})||'<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')+
   '<section class="escaparate-dialogo-seccion escaparate-antes-fuente"><h3>Antes de invertir</h3><ul><li>Puedes perder parte o todo lo que inviertas.</li><li>La salida depende del contrato y puede requerir compradores.</li><li>Comprueba quién custodia el activo y quién responde.</li><li>El registro de una empresa no cubre todos sus productos.</li></ul></section>'+
   /* Un div, no un footer: la regla global de footer lo ocultaba en el móvil. */
   '<div class="escaparate-dialogo-pie"><p>No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p><div>'+enlaces+'</div></div>'+

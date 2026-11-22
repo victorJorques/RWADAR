@@ -191,6 +191,8 @@
 .mapa-fila .mapa-lugar{grid-area:lugar;color:var(--tx-3)}
 .mapa-fila .mapa-precision{grid-area:prec;margin-top:2px;color:var(--tx-3)}
 .mapa-fila-pie{grid-area:pie;margin:0;align-self:center}
+/* Pie de una foto real (22/11/2026): debajo de todo, a lo ancho. */
+.mapa-fila-foto{grid-column:1/-1;margin:4px 0 8px}
 .mapa-fila .mapa-fuente{position:relative;z-index:2;color:var(--tx-3)}
 .mapa-fila .mapa-ver{grid-area:ver;align-self:center;margin-right:-8px;color:var(--senal);font-size:.8125rem}
 .mapa-fila .mapa-ver::after{content:'';position:absolute;inset:0;z-index:1}

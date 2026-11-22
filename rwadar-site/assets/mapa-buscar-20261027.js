@@ -127,11 +127,31 @@
    if(datos.respaldo)img.dataset.respaldo=datos.respaldo;
    return img;
   }
+  /* El pie de una foto real (22/11/2026), como en la lista de Ofertas: qué
+     muestra, autor, licencia y Wikimedia Commons, en los dos idiomas (se ve el
+     elegido). Las ilustraciones no llevan pie propio. */
+  function pieFoto(o){
+   const datos=typeof imagenOfertaLocal==='function'?imagenOfertaLocal(o):null;
+   if(!datos||datos.origen!=='foto'||typeof pieFotoOfertaPartes!=='function')return null;
+   const p=document.createElement('p');p.className='foto-oferta-pie mapa-fila-foto';p.setAttribute('translate','no');p.setAttribute('data-foto',datos.src);
+   for(const l of ['es','en']){
+    const partes=pieFotoOfertaPartes(datos,l);if(!partes)return null;
+    const s=document.createElement('span');s.className='foto-oferta-pie-'+l;s.lang=l;
+    for(const x of partes.partes){
+     const url=x.enlace&&typeof urlHttps==='function'?urlHttps(x.enlace):'';
+     if(!url){s.append(x.texto);continue;}
+     const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=x.texto;s.append(a);
+    }
+    p.append(s);
+   }
+   return p;
+  }
   function filaLista(f){
    const a=document.createElement('article');a.className='mapa-fila';
    const img=miniatura(f.oferta);if(img)a.appendChild(img);
    const pie=document.createElement('p');pie.className='mapa-fila-pie';pie.appendChild(fuente(f.ubicacion));
    a.append(original(texto('h4',f.oferta.titulo)),tipo(f),lugar(f.ubicacion),precision(f.ubicacion),pie,verFicha(f.oferta));
+   const foto=pieFoto(f.oferta);if(foto)a.appendChild(foto);
    return a;
   }
   // Leaflet lee el margen del autoPan al abrir cada ficha: se calcula en ese

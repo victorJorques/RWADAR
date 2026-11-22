@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
-import { ImagenOferta, avisosCriticos, lugarConPais, ofertaParaResumen } from './Ofertas';
+import { ImagenOferta, PieFotoTarjeta, avisosCriticos, lugarConPais, ofertaParaResumen, pieImagenOferta } from './Ofertas';
 import { resumenOferta } from '../lib/ficha-editorial';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { esNueva, fechaTarjeta } from '../lib/recien-anadidas';
@@ -51,6 +51,8 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
           const bloqueo = critico?.tono === 'stop' ? critico : null;
           const nueva = esNueva(o, { dias: 30 });
           const cinco = seleccion.has(o.slug);
+          // Una foto real dice qué muestra (lib/fotos-ofertas.js); las ilustraciones, como siempre.
+          const pie = pieImagenOferta(o, idioma);
           // Todas con los mismos dos datos que la lista de Ofertas (21/11/2026): el mínimo y España.
           const resumen = resumenOferta(ofertaParaResumen(o), [], new Date());
           const datos = datosTarjetaOferta(o, resumen, { noEspana: !!resumen.cifrasVigentes && o.disponibleEs === false });
@@ -58,7 +60,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
             <Pressable key={o.slug} onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
               style={({ pressed }) => [e.tarjeta, { width: ancho }, pressed && e.tarjetaPulsada]}
               accessibilityRole="button" noTraducir
-              accessibilityLabel={[`${b.verFicha} ${String(o.titulo || '').replace(/\.$/, '')}`, procedencia, letra ? letra.replace(/\.$/, '') : null,
+              accessibilityLabel={[`${b.verFicha} ${String(o.titulo || '').replace(/\.$/, '')}`, procedencia, pie ? pie.texto : null, letra ? letra.replace(/\.$/, '') : null,
                 // Como FichaOferta: el lector de pantalla oye lo que se ve, el aviso crítico entero.
                 bloqueo ? `${traducir('Aviso bloqueante')}: ${String(bloqueo.texto).replace(/\.$/, '')}` : null,
                 ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
@@ -78,6 +80,7 @@ export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), on
               <View style={e.cuerpo}>
                 <Text noTraducir idiomaOriginal="es-ES" style={e.tarjetaTit} numberOfLines={4}>{o.titulo}</Text>
                 {procedencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.procedencia}>{procedencia}</Text> : null}
+                <PieFotoTarjeta oferta={o} />
                 <View style={e.datos}>
                   {datos.map(([etiqueta, valor], i) => (
                     <View key={etiqueta} style={e.dato}>

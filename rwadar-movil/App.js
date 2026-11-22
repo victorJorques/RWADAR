@@ -57,7 +57,7 @@ import MisInversiones from './componentes/MisInversiones';
 import { crearCarteraCuenta } from './lib/cartera-cuenta';
 import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
-  agruparOfertasLectura, ordenarOfertasLectura,
+  agruparOfertasLectura, notaImagenesLista, ordenarOfertasLectura,
 } from './componentes/Ofertas';
 import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
@@ -1169,7 +1169,8 @@ export default function App() {
                 />
               }
               ListFooterComponent={<View>
-                {filasOfertas.length ? <Text style={e.notaImagenes}>Imágenes ilustrativas, no fotos del activo</Text> : null}
+                {/* La verdad de lo que se ve (22/11/2026): ilustraciones, fotos reales del lugar o del tema, o del activo. */}
+                {filasOfertas.length ? <Text noTraducir style={e.notaImagenes} testID="nota-imagenes-ofertas">{notaImagenesLista(filasOfertas.filter((f) => f.tipo === 'oferta').map((f) => f.oferta), idioma)}</Text> : null}
                 <ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />
               </View>}
             />

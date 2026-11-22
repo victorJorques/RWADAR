@@ -64,6 +64,7 @@ function componentes(ahora = AHORA, opciones = {}) {
       Animated: { View: 'AnimatedView' },
       AppState: {}, StyleSheet: { hairlineWidth: 1, create(valor) { Object.assign(estilos, valor); return valor; } } },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
+    '../lib/fotos-ofertas': require('../lib/fotos-ofertas'),
     '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datos,
@@ -752,4 +753,68 @@ test('ES/EN marca títulos, valores y citas originales sin cambiar datos y muest
     assert.equal(node?.props.noTraducir,true,literal);
   }
   assert.equal(JSON.stringify(oferta),original);
+});
+
+/* Fotos reales de las ofertas (22/11/2026): el pie dice qué muestra la foto,
+   su autor, su licencia y Wikimedia Commons; nunca presenta una foto del lugar
+   como si fuera el activo, ni una foto real sin decir que lo es. */
+const FOTO_LUGAR = Object.freeze({
+  fuente: 'foto.webp', archivo: 'foto-fondo-presentacion.webp', categoria: 'Crédito privado',
+  alt: 'La Herrengasse de Graz con sus fachadas antiguas', lugar: 'Graz · Austria',
+  origen: 'foto', queMuestra: 'lugar', lugarOTema: 'Graz (Austria)',
+  credito: Object.freeze({ autor: 'Ana Ejemplo', licencia: 'CC BY-SA 4.0', licenciaUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    sitio: 'Wikimedia Commons', pagina: 'https://commons.wikimedia.org/wiki/File:Graz_Herrengasse.jpg' }),
+});
+const imagenesConFoto = foto => ({ ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo',
+  imagenEditorial: () => ({ fuente: 'cat.webp', archivo: 'capital-privado-rwadar.webp', alt: 'Ilustración editorial financiera' }),
+  imagenEditorialOferta: () => foto });
+
+test('foto real del lugar: la tarjeta y la ficha dicen «Foto real de Graz (Austria), no del activo» con su crédito y enlaces', () => {
+  const ui = componentes(AHORA, { imagenes: imagenesConFoto(FOTO_LUGAR) });
+  // Una oferta del catálogo (catalogo: true), como las publicadas: la foto empaquetada, nunca la URI remota de las ilustraciones.
+  const oferta = dato({ catalogo: true });
+  assert.equal(ui.imagenesParaOferta(oferta).principal, FOTO_LUGAR);
+  const tarjeta = ui.FichaOferta({ oferta, onAbrir() {} });
+  const pie = 'Foto real de Graz (Austria), no del activo · Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons';
+  assert.ok(textoVisible(tarjeta).includes(pie), 'el pie, visible en la tarjeta');
+  assert.ok(tarjeta.props.accessibilityLabel.includes(pie), 'y el lector de pantalla lo oye');
+  assert.ok(!tarjeta.props.accessibilityLabel.includes('Ilustración editorial'), 'una foto real no se presenta como ilustración');
+  assert.equal(nodos(tarjeta).filter(n => n.tipo === 'Pressable').length, 1, 'sin enlaces dentro del botón de la tarjeta');
+  const detalle = ui.DetalleOferta({ oferta, onAbrirEnlace() {} });
+  const nodoPie = nodos(detalle).find(n => n.componente === ui.PieFotoDetalle);
+  assert.ok(nodoPie, 'la ficha lleva el pie de la foto');
+  assert.ok(!textoVisible(detalle).includes('Imágenes ilustrativas, no fotos del activo'));
+  const abiertos = [];
+  const caja = ui.PieFotoDetalle({ oferta, onAbrirEnlace: url => abiertos.push(url) });
+  assert.equal(textoVisible(caja).replace(/[\s\u00a0]*↗/g, '').replace(/\s+/g, ' ').trim(), `${pie} · recortada`);
+  for (const enlace of nodos(caja).filter(n => n.tipo === 'Pressable')) enlace.props.onPress();
+  assert.deepEqual(abiertos, [FOTO_LUGAR.credito.licenciaUrl, FOTO_LUGAR.credito.pagina]);
+  // El texto alternativo de la foto es lo que se ve.
+  const imagen = ui.ImagenOferta({ oferta, grande: true });
+  assert.equal(imagen.props.accessibilityLabel, FOTO_LUGAR.alt);
+  assert.equal(ui.notaImagenesLista([oferta]), 'Fotos reales del lugar o del tema, no del activo');
+  assert.equal(ui.notaImagenesLista([oferta], 'en'), 'Real photos of the place or the topic, not of the asset');
+});
+
+test('foto real con el crédito roto: pie genérico verdadero, nunca «del activo» ni ilustración', () => {
+  for (const roto of [{ ...FOTO_LUGAR, credito: undefined }, { ...FOTO_LUGAR, queMuestra: 'activo', credito: { ...FOTO_LUGAR.credito, licencia: 'CC BY-NC 4.0' } },
+    { ...FOTO_LUGAR, queMuestra: 'edificio' }, { ...FOTO_LUGAR, credito: { ...FOTO_LUGAR.credito, pagina: 'https://example.test/foto' } }]) {
+    const ui = componentes(AHORA, { imagenes: imagenesConFoto(roto) });
+    const oferta = dato();
+    const tarjeta = ui.FichaOferta({ oferta, onAbrir() {} });
+    assert.ok(textoVisible(tarjeta).includes('Foto real del lugar o del tema, no del activo'));
+    assert.ok(!/Foto real del activo/.test(textoVisible(tarjeta)));
+    const caja = ui.PieFotoDetalle({ oferta, onAbrirEnlace() {} });
+    assert.equal(textoVisible(caja).trim(), 'Foto real del lugar o del tema, no del activo');
+    assert.equal(nodos(caja).filter(n => n.tipo === 'Pressable').length, 0);
+  }
+});
+
+test('ilustración de IA: sin pie propio y la línea de siempre', () => {
+  const ia = { fuente: 'ia.webp', archivo: 'oferta-fondo-presentacion.webp', categoria: 'Crédito privado', alt: 'Ilustración editorial de un fondo', origen: 'ia' };
+  const ui = componentes(AHORA, { imagenes: imagenesConFoto(ia) });
+  const oferta = dato();
+  assert.equal(nodos(ui.FichaOferta({ oferta, onAbrir() {} })).filter(n => n.props?.testID === 'pie-foto-oferta').length, 0);
+  assert.equal(textoVisible(ui.PieFotoDetalle({ oferta })), 'Imágenes ilustrativas, no fotos del activo');
+  assert.equal(ui.notaImagenesLista([oferta]), 'Imágenes ilustrativas, no fotos del activo');
 });

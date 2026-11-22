@@ -95,27 +95,35 @@ function comprobarEntrada(clave, f, manifiesto) {
   if (sobran.length) throw new Error(`fotos.json: la foto real «${clave}» no lleva ${sobran.join(', ')} (eso es de las de IA o no es de la biblioteca)`);
   const falta = CAMPOS_FOTO.filter(k => !Object.hasOwn(f, k));
   if (falta.length) throw new Error(`fotos.json: a la foto real «${clave}» le falta ${falta.join(', ')}`);
+  comprobarFotoReal(clave, f);
+}
+
+/* Lo común a toda foto real de Wikimedia Commons, de las noticias y de las
+   ofertas (rwadar-editorial-source/ofertas/generar.mjs la usa también):
+   descripción llana, fuente de Commons, licencia de la lista cerrada, autor si
+   la licencia lo pide, sin personas reconocibles y encuadre. Lanza si no. */
+function comprobarFotoReal(clave, f, donde = 'fotos.json') {
   if (!textoLlano(f.descripcion, 200) || [...f.descripcion].length < 10) {
-    throw new Error(`fotos.json: «${clave}»: la «descripcion» dice lo que se ve, en llano (de 10 a 200 caracteres, sin < ni >)`);
+    throw new Error(`${donde}: «${clave}»: la «descripcion» dice lo que se ve, en llano (de 10 a 200 caracteres, sin < ni >)`);
   }
   const fu = f.fuente;
   if (!fu || typeof fu !== 'object' || Object.keys(fu).sort().join() !== 'archivo,original,pagina,sha256Original,sitio' ||
       fu.sitio !== modeloNoticias.SITIO_FOTOS || !textoLlano(fu.archivo, 240) || !/^File:./.test(fu.archivo) ||
       !modeloNoticias.PAGINA_COMMONS.test(fu.pagina || '') ||
       !/^https:\/\/(upload|thumb)\.wikimedia\.org\/wikipedia\/commons\/[^\s"'<>\\]+$/.test(fu.original || '') || !/^[a-f0-9]{64}$/.test(fu.sha256Original || '')) {
-    throw new Error(`fotos.json: «${clave}»: la «fuente» es { sitio: "Wikimedia Commons", archivo: "File:…", pagina (https://commons.wikimedia.org/wiki/File:…), original (https://upload.wikimedia.org/… o https://thumb.wikimedia.org/…), sha256Original }`);
+    throw new Error(`${donde}: «${clave}»: la «fuente» es { sitio: "Wikimedia Commons", archivo: "File:…", pagina (https://commons.wikimedia.org/wiki/File:…), original (https://upload.wikimedia.org/… o https://thumb.wikimedia.org/…), sha256Original }`);
   }
   const lic = f.licencia, admitida = lic && typeof lic === 'object' && Object.hasOwn(modeloNoticias.LICENCIAS_FOTO, lic.nombre)
     ? modeloNoticias.LICENCIAS_FOTO[lic.nombre] : null;
   if (!admitida || Object.keys(lic).sort().join() !== 'atribucionObligatoria,nombre,url' || lic.url !== admitida.url ||
       lic.atribucionObligatoria !== admitida.atribucion) {
-    throw new Error(`fotos.json: «${clave}»: licencia no admitida o mal escrita (solo ${Object.keys(modeloNoticias.LICENCIAS_FOTO).join(', ')}, con su url y su atribucionObligatoria)`);
+    throw new Error(`${donde}: «${clave}»: licencia no admitida o mal escrita (solo ${Object.keys(modeloNoticias.LICENCIAS_FOTO).join(', ')}, con su url y su atribucionObligatoria)`);
   }
   if (lic.atribucionObligatoria ? !textoLlano(f.autor, 200) : f.autor !== null) {
-    throw new Error(`fotos.json: «${clave}»: ${lic.atribucionObligatoria ? 'la licencia obliga a nombrar al autor («autor», sin HTML)' : '«autor» va en null (dominio público o CC0)'}`);
+    throw new Error(`${donde}: «${clave}»: ${lic.atribucionObligatoria ? 'la licencia obliga a nombrar al autor («autor», sin HTML)' : '«autor» va en null (dominio público o CC0)'}`);
   }
-  if (f.sinPersonas !== true) throw new Error(`fotos.json: «${clave}»: sin personas reconocibles («sinPersonas»: true)`);
-  if (typeof f.encuadre !== 'string' || !ENCUADRE.test(f.encuadre)) throw new Error(`fotos.json: «${clave}»: «encuadre» es «x% y%»`);
+  if (f.sinPersonas !== true) throw new Error(`${donde}: «${clave}»: sin personas reconocibles («sinPersonas»: true)`);
+  if (typeof f.encuadre !== 'string' || !ENCUADRE.test(f.encuadre)) throw new Error(`${donde}: «${clave}»: «encuadre» es «x% y%»`);
 }
 
 /* El archivo de créditos (rwadar-site/datos/fotos-noticias.json): de cada
@@ -302,7 +310,7 @@ function cargarFotosNoticias(raiz = __dirname, { claves = clavesUsadas(raiz) } =
     publicables: Object.freeze([...fotos, ...variantesPublicables]) });
 }
 
-module.exports = { DIRECTORIO_RELATIVO, RUTA_PUBLICA_BASE, CREDITOS_RELATIVO, CONFIG_NOTICIAS_RELATIVO, ANCHO, ALTO, BYTES_MAX, VARIANTES, PIE_OBLIGATORIO, clavesUsadas,
+module.exports = { comprobarFotoReal, DIRECTORIO_RELATIVO, RUTA_PUBLICA_BASE, CREDITOS_RELATIVO, CONFIG_NOTICIAS_RELATIVO, ANCHO, ALTO, BYTES_MAX, VARIANTES, PIE_OBLIGATORIO, clavesUsadas,
   cargarFotosNoticias, creditosDesdeManifiesto, comprobarCreditos, escribirCreditos, tituloCommons, fotosRealesEnApp, comprobarFotosRealesEnApp };
 
 if (require.main === module) {

@@ -107,6 +107,9 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/scripts/copiar-idiomas-web.cjs',
   'rwadar-movil/assets/ofertas-editoriales',
   'rwadar-ofertas-editoriales.js',
+  // Fotos reales de las ofertas (22/11/2026): el modelo de su pie (la web lleva su copia) y su biblioteca.
+  'rwadar-movil/lib/fotos-ofertas.js',
+  'rwadar-editorial-source/ofertas/fotos.json',
   'rwadar-publicacion-segura.js',
   'rwadar-publicar.js',
   'rwadar-precargar-imagenes.js',

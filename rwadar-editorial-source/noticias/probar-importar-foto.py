@@ -5,7 +5,10 @@ sobre una copia de la biblioteca en una carpeta temporal (el repositorio no se
 toca): una foto CC BY-SA con su autor sin HTML, una de dominio público, la
 miniatura cuando el original no vale, y los rechazos (licencia no libre o no
 admitida, «NonFree», derechos de imagen, poco tamaño, clave repetida, temas,
-sha1 distinto, --trabajo dentro del repositorio). Comprueba además que los WebP
+sha1 distinto, --trabajo dentro del repositorio). Con --biblioteca ofertas:
+la foto del lugar y la del activo con su pie, las reglas de «queMuestra» y
+«lugarOTema», y que el manifiesto, la web y la app salen bien (generar.mjs
+--indices de verdad, sobre la copia). Comprueba además que los WebP
 no llevan metadatos, que el comprobador de Node acepta la entrada nueva, que
 el archivo de créditos sale con el crédito corto y que la lista de licencias es
 la del modelo de la web y la app.
@@ -49,6 +52,11 @@ def imagen(ancho, alto, formato='JPEG', semilla=7):
     b = io.BytesIO()
     img.save(b, formato, quality=90) if formato == 'JPEG' else img.save(b, formato)
     return b.getvalue()
+
+
+def leer(ruta):
+    with open(ruta, 'rb') as f:
+        return f.read()
 
 
 def respuesta(archivo, datos, ancho, alto, licencia='cc-by-sa-4.0', corta='CC BY-SA 4.0', artista='<a href="//commons.wikimedia.org/wiki/User:Ejemplo">Ana&nbsp;Ejemplo</a>',
@@ -277,6 +285,150 @@ class Importar(Biblioteca):
         with self.assertRaisesRegex(imp.Rechazo, 'ya está en la biblioteca'):
             self.importar(clave='sede-ejemplo-2', archivo='File:Otra copia de la sede.jpg')
         self.assertFalse(os.path.exists(os.path.join(self.fotos, 'sede-ejemplo-2.webp')))
+
+
+class ImportarOferta(unittest.TestCase):
+    """--biblioteca ofertas (22/11/2026), sobre una copia de lo que toca: la
+    biblioteca de las ofertas, las imágenes empaquetadas, el JS de la web y los
+    require de la app. Se ejecuta de verdad generar.mjs --indices."""
+    SLUG = 'vivienda-schwarzer-weg-18-graz'
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix='probar-importar-oferta-')
+        self.raiz = os.path.join(self.tmp, 'repo')
+        self.trabajo = os.path.join(self.tmp, 'trabajo')
+        for rel in ('rwadar-editorial-source/ofertas/fichas.json', 'rwadar-editorial-source/ofertas/fotos.json',
+                    'rwadar-site/assets/rwadar-20260820.js', 'rwadar-movil/fixtures/imagenes-editoriales.js'):
+            os.makedirs(os.path.dirname(os.path.join(self.raiz, rel)), exist_ok=True)
+            shutil.copy(os.path.join(RAIZ, rel), os.path.join(self.raiz, rel))
+        for rel in ('rwadar-editorial-source/ofertas/fotos', 'rwadar-movil/assets/ofertas-editoriales'):
+            shutil.copytree(os.path.join(RAIZ, rel), os.path.join(self.raiz, rel))
+        self.spec = os.path.join(self.raiz, 'rwadar-editorial-source', 'ofertas', 'fotos.json')
+        self.activos = os.path.join(self.raiz, 'rwadar-movil', 'assets', 'ofertas-editoriales')
+        self.antes = {rel: leer(os.path.join(self.raiz, rel)) for rel in (
+            'rwadar-editorial-source/ofertas/fotos.json', 'rwadar-movil/assets/ofertas-editoriales/manifest.json',
+            'rwadar-site/assets/rwadar-20260820.js', 'rwadar-movil/fixtures/imagenes-editoriales.js')}
+        self.bajadas = []
+        self._pedir, self._bajar, self._pausa = imp.pedir_json, imp.descargar, imp.PAUSA_S
+        imp.PAUSA_S = 0
+
+    def tearDown(self):
+        imp.pedir_json, imp.descargar, imp.PAUSA_S = self._pedir, self._bajar, self._pausa
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def simular(self, resp, datos):
+        imp.pedir_json = lambda url: resp
+        def bajar(url, maximo=imp.MAX_BYTES_ORIGINAL):
+            self.bajadas.append(url)
+            return datos
+        imp.descargar = bajar
+
+    def importar(self, slug=SLUG, archivo='File:Graz Herrengasse.jpg', descripcion='La Herrengasse de Graz con sus fachadas antiguas y el tranvía',
+                 que_muestra='lugar', lugar='Graz (Austria)', datos=None, resp=None, **kw):
+        datos = datos or imagen(3000, 2000)
+        self.simular(resp or respuesta(archivo, datos, 3000, 2000), datos)
+        return imp.importar_oferta(slug, archivo, descripcion, que_muestra, lugar, kw.pop('encuadre', '50% 50%'), kw.pop('trabajo', self.trabajo),
+                                   raiz=self.raiz, **kw)
+
+    def node(self, guion, *args):
+        return json.loads(subprocess.run(['node', '-e', guion, *args], capture_output=True, text=True, check=True).stdout)
+
+    def sin_cambios(self):
+        for rel, b in self.antes.items():
+            with open(os.path.join(self.raiz, rel), 'rb') as f:
+                self.assertEqual(f.read(), b, f'{rel} no cambia')
+        self.assertFalse([n for n in os.listdir(self.activos) if n.startswith('foto-')], 'ni se escribe ninguna foto')
+
+    def test_foto_del_lugar_con_su_pie_en_web_y_app(self):
+        entrada, exportadas = self.importar(lugar_o_tema_en='Graz, Austria')
+        self.assertEqual(self.bajadas[0].split('/')[-1][:7], '2400px-', 'la miniatura, como en las noticias')
+        self.assertEqual((entrada['origen'], entrada['queMuestra'], entrada['lugarOTema'], entrada['lugarOTemaEn'], entrada['autor']),
+                         ('foto', 'lugar', 'Graz (Austria)', 'Graz, Austria', 'Ana Ejemplo'))
+        for campo in ('modelo', 'prompt', 'semilla', 'concepto', 'temas', 'variantes'):
+            self.assertNotIn(campo, entrada)
+        # Un solo WebP, el que publica la web y empaqueta la app: 960×660, sin metadatos.
+        ruta = os.path.join(self.activos, f'foto-{self.SLUG}.webp')
+        with open(ruta, 'rb') as f:
+            b = f.read()
+        self.assertLessEqual(len(b), imp.OFERTA_BYTES)
+        with Image.open(io.BytesIO(b)) as im:
+            self.assertEqual(im.size, (960, 660))
+            self.assertFalse(im.info.get('exif') or im.info.get('icc_profile') or im.info.get('xmp'))
+        self.assertEqual((entrada['bytes'], entrada['sha256']), (len(b), hashlib.sha256(b).hexdigest()))
+        self.assertEqual([x[1:3] for x in exportadas], [(960, 660)])
+        # La ilustración de IA de esa oferta deja de publicarse; su encargo sigue en «fotos».
+        self.assertFalse(os.path.exists(os.path.join(self.activos, f'oferta-{self.SLUG}.webp')))
+        with open(self.spec, encoding='utf-8') as f:
+            nuevo = json.load(f)
+        viejo = json.loads(self.antes['rwadar-editorial-source/ofertas/fotos.json'].decode('utf-8'))
+        self.assertEqual(list(nuevo['reales']), [self.SLUG])
+        self.assertIn(self.SLUG, nuevo['fotos'])
+        del nuevo['reales'][self.SLUG]
+        self.assertEqual(nuevo, viejo)
+        # El manifiesto, la web y la app, reescritos y aceptados por los comprobadores de Node.
+        r = self.node("const m=require(process.argv[1]),f=require(process.argv[2]),fs=require('fs');const a=m.cargarActivosEditoriales(process.argv[3]);"
+                      "const e=a.manifiesto.fichas.find(x=>x.slug===process.argv[4]),k=a.fichas.find(x=>x.slug===process.argv[4]);"
+                      "const js=fs.readFileSync(process.argv[3]+'/rwadar-site/assets/rwadar-20260820.js','utf8');"
+                      "const app=fs.readFileSync(process.argv[3]+'/rwadar-movil/fixtures/imagenes-editoriales.js','utf8');"
+                      "console.log(JSON.stringify({n:a.fichas.length,archivo:e.archivo,alt:e.alt,clase:k.clase,credito:e.credito,"
+                      "es:f.pieFotoOferta(e,'es'),en:f.pieFotoOferta(e,'en').texto,nota:f.notaImagenesOfertas([e,a.fichas[0]]),"
+                      "web:js.includes('\"src\":\"/ofertas-editoriales/foto-'+process.argv[4]+'.webp\"')&&js.includes('\"queMuestra\":\"lugar\"'),"
+                      "app:app.includes(\"require('../assets/ofertas-editoriales/foto-\"+process.argv[4]+\".webp')\")&&!app.includes('oferta-'+process.argv[4]+'.webp')}))",
+                      os.path.join(RAIZ, 'rwadar-ofertas-editoriales.js'), os.path.join(RAIZ, 'rwadar-movil', 'lib', 'fotos-ofertas.js'), self.raiz, self.SLUG)
+        pagina, licencia = 'https://commons.wikimedia.org/wiki/File:Graz_Herrengasse.jpg', 'https://creativecommons.org/licenses/by-sa/4.0/'
+        self.assertEqual((r['n'], r['archivo'], r['clase']), (22, f'foto-{self.SLUG}.webp', 'foto'))
+        self.assertEqual(r['alt'], 'La Herrengasse de Graz con sus fachadas antiguas y el tranvía', 'el texto alternativo es la descripción')
+        self.assertEqual(r['credito'], {'autor': 'Ana Ejemplo', 'licencia': 'CC BY-SA 4.0', 'licenciaUrl': licencia, 'sitio': 'Wikimedia Commons', 'pagina': pagina})
+        self.assertEqual(r['es']['texto'], 'Foto real de Graz (Austria), no del activo · Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons')
+        self.assertEqual([p['enlace'] for p in r['es']['partes'] if p['enlace']], [licencia, pagina])
+        self.assertEqual(r['en'], 'Real photo of Graz, Austria, not of the asset · Ana Ejemplo · CC BY-SA 4.0 · Wikimedia Commons')
+        self.assertEqual(r['nota'], 'Fotos reales del lugar o del tema e imágenes ilustrativas: ninguna es foto del activo')
+        self.assertTrue(r['web'] and r['app'])
+        # Y la comprobación entera de generar.mjs (fotos.json, el archivo y su sha256) pasa sobre la copia.
+        subprocess.run(['node', os.path.join(RAIZ, 'rwadar-editorial-source', 'ofertas', 'generar.mjs'), '--indices', f'--raiz={self.raiz}'],
+                       capture_output=True, text=True, check=True)
+
+    def test_foto_del_activo_en_dominio_publico_sin_autor(self):
+        d = imagen(2400, 1650)
+        resp = respuesta('File:Graz Herrengasse.jpg', d, 2400, 1650, licencia='pd', corta='Public domain')
+        entrada, _ = self.importar(que_muestra='activo', lugar=None, datos=d, resp=resp)
+        self.assertNotIn('lugarOTema', entrada)
+        self.assertIsNone(entrada['autor'])
+        r = self.node("const m=require(process.argv[1]),f=require(process.argv[2]);const e=m.cargarActivosEditoriales(process.argv[3]).manifiesto.fichas"
+                      ".find(x=>x.slug===process.argv[4]);console.log(JSON.stringify([f.pieFotoOferta(e,'es').texto,f.pieFotoOferta(e,'en').texto]))",
+                      os.path.join(RAIZ, 'rwadar-ofertas-editoriales.js'), os.path.join(RAIZ, 'rwadar-movil', 'lib', 'fotos-ofertas.js'), self.raiz, self.SLUG)
+        self.assertEqual(r, ['Foto real del activo · Dominio público · Wikimedia Commons', 'Real photo of the asset · Public domain · Wikimedia Commons'])
+
+    def rechaza(self, patron, **kw):
+        with self.assertRaisesRegex(imp.Rechazo, patron):
+            self.importar(**kw)
+        self.sin_cambios()
+
+    def test_rechazos(self):
+        self.rechaza('no es una ficha', slug='no-existe')
+        self.rechaza('no lleva --lugar-o-tema', que_muestra='activo')
+        self.rechaza('lugar-o-tema', lugar=None)
+        self.rechaza('--que-muestra', que_muestra='edificio')
+        self.rechaza('promesas', descripcion='Un edificio con una rentabilidad del cinco por ciento')
+        self.rechaza('promesas', lugar='Graz, desde 100 €')
+        self.rechaza('promesas', descripcion='Una oportunidad en el centro de Graz')
+        self.rechaza('al menos 960×660', datos=imagen(1000, 600), resp=respuesta('File:Graz Herrengasse.jpg', b'x', 1000, 600))
+        self.rechaza('licencia no admitida', resp=respuesta('File:Graz Herrengasse.jpg', b'x', 3000, 2000, licencia='cc-by-nc-4.0', corta='CC BY-NC 4.0'))
+        self.rechaza('fuera del repositorio', trabajo=os.path.join(self.raiz, 'descargas'))
+
+    def test_sin_pisar_una_foto_real_ni_repetir_archivo(self):
+        self.importar()
+        with self.assertRaisesRegex(imp.Rechazo, 'ya tiene foto real'):
+            self.importar()
+        with self.assertRaisesRegex(imp.Rechazo, 'ya está en la biblioteca de ofertas'):
+            self.importar(slug='vivienda-pluddemanngasse-101-graz', archivo='File:Graz_Herrengasse.jpg')
+        self.assertFalse(os.path.exists(os.path.join(self.activos, 'foto-vivienda-pluddemanngasse-101-graz.webp')))
+
+    def test_lo_prohibido_es_lo_del_modelo(self):
+        modelo = subprocess.run(['node', '-e', 'console.log(require(process.argv[1]).PROHIBIDO.source)',
+                                 os.path.join(RAIZ, 'rwadar-movil', 'lib', 'fotos-ofertas.js')], capture_output=True, text=True, check=True).stdout.strip()
+        self.assertEqual(imp.PROHIBIDO_OFERTA.pattern, modelo)
+        self.assertEqual((imp.OFERTA_ANCHO, imp.OFERTA_ALTO), (960, 660))
 
 
 class Generales(unittest.TestCase):

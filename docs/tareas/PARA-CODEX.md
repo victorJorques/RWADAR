@@ -6,6 +6,71 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de noviembre de 2026 (48) · Claude · Fotos reales de Wikimedia Commons para las ofertas (programa; sin fotos importadas) · SIN COMMIT
+
+- **Orden de Víctor (22/11):** «La de las ofertas también las cambiaría, las
+  siento muy igual». Es el cambio de programa, como #199 en las noticias. Las
+  fotos las elige otro equipo: aquí **no se importó ninguna** (las 22 ofertas
+  siguen con su ilustración de IA). Rama `claude/fotos-reales-ofertas`, cambios
+  en el árbol de trabajo, sin commit.
+- **Biblioteca:** `rwadar-editorial-source/ofertas/fotos.json` pasa al esquema 3
+  con `reales` (por slug): `origen: "foto"`, `descripcion` (texto
+  alternativo), `queMuestra` (`activo` | `lugar` | `tema`), `lugarOTema` (y
+  `lugarOTemaEn` opcional), `fuente`, `licencia`, `autor`, `sinPersonas`,
+  `encuadre`, `bytes`, `sha256`. Los encargos de IA de `fotos` no se tocan.
+- **Importador:** el mismo `rwadar-editorial-source/noticias/importar-foto.py`
+  con `--biblioteca ofertas --clave <slug> --archivo "File:…" --descripcion …
+  --que-muestra activo|lugar|tema --lugar-o-tema "…" [--lugar-o-tema-en …]
+  [--encuadre]`. Comparte con las noticias la API, el agente, las licencias, el
+  autor y la descarga (`traer_de_commons`); recorta a 16:11 y exporta
+  `rwadar-movil/assets/ofertas-editoriales/foto-<slug>.webp` (960×660, ≤ 200 kB,
+  sin metadatos) y ejecuta `generar.mjs --indices` (nuevo: reescribe
+  manifiesto, bloque de la web y `require` de la app sin dibujar; borra
+  `oferta-<slug>.webp`). Si algo falla, deshace la foto y `fotos.json`.
+- **Nombre `foto-<slug>.webp`, nunca `oferta-<slug>.webp`:** la app instalada
+  (1.4.2) pide `oferta-<slug>.webp` a la web para las ofertas que no lleva
+  dentro y lo presenta como ilustración de IA. Con otro nombre, esa app nunca
+  enseña una foto real sin crédito: sigue con sus ilustraciones empaquetadas
+  (o la de su categoría). La OTA lleva a la vez fotos, manifiesto con crédito y
+  código. `comprobar-ota-compatible.cjs --base fa30779f…`: ok (runtime 1.4.2(24)).
+- **Créditos:** van con la imagen en el manifiesto empaquetado
+  (`credito`: autor, licencia, licenciaUrl, sitio, pagina; `queMuestra`,
+  `lugarOTema`). Ninguna clave nueva en lo que la app valida del catálogo.
+- **Pie (web y app, ES/EN):** modelo único `rwadar-movil/lib/fotos-ofertas.js`
+  (la web lleva su copia exacta en el bloque generado, `FOTOS_OFERTAS_MODELO`;
+  `generar.mjs --comprobar` para si no está al día). «Foto real de Graz
+  (Austria), no del activo · Autor · CC BY-SA 4.0 · Wikimedia Commons» o «Foto
+  real del activo · …», con la licencia y Commons enlazados (en la ficha,
+  «· recortada»); sin autor en PD/CC0; crédito roto → «Foto real del lugar o del
+  tema, no del activo». Web: catálogo, reventa, Inicio, mapa, ficha y
+  `/ofertas/<slug>` (dos idiomas a la vez, la CSS enseña el elegido; si la foto
+  no carga y pasa a la ilustración, su pie se oculta). App: lista, Inicio y
+  ficha (enlaces solo en la ficha). La línea general dice la verdad de lo que
+  se ve (`notaImagenesOfertas`; con solo IA, la de siempre).
+- **Comprobaciones:** `rwadar-ofertas-editoriales.js` acepta `origen: "foto"`
+  con `validarFichaFoto` (sin personas, licencia de la lista, crédito; las
+  reglas de rótulos y cifras de IA no se aplican a la foto, sí nada de cifras de
+  dinero ni promesas en descripción y pie); `generar.mjs` valida `reales` con
+  `comprobarFotoReal` (compartida con las noticias); `comprobar-publicado.mjs`
+  exige el manifiesto publicado igual al del repositorio, cada `foto-*.webp`
+  con su sha256 y el 404 de su `oferta-<slug>.webp`;
+  `rwadar-publicacion-segura.js` añade el modelo y `fotos.json` al contenido
+  aprobado.
+- **Textos:** README de ofertas (apartado nuevo), CICLO-DIARIO-CATALOGO,
+  privacidad, diccionario ES/EN (copiado a la web).
+- **Pruebas:** `npm test` entero en verde; `probar-importar-foto.py` 19/19 (5
+  nuevas de ofertas, con `generar.mjs --indices` de verdad sobre una copia);
+  `rwadar-movil/tests/fotos-ofertas.test.cjs` (nuevo) y 3 nuevas en
+  `ofertas-presentacion`; 2 nuevas en `probar-web.mjs` (la de «ninguna
+  etiqueta encima» ahora acepta el texto alternativo de una foto real del
+  manifiesto, no cualquiera). `validar --publicada`: bien.
+- **Pendiente:**
+  - Commit y PR (Claude no lo hizo: orden del flujo).
+  - Importar las fotos (otro equipo). Desde aquí Commons responde 429.
+  - Mirarlas: web y app, móvil y escritorio.
+  - Sello nuevo de contenido, publicar la web, la OTA y «Avisar novedad».
+  - Sin foto real importada, el pie aún no se ha visto en pantalla: solo en pruebas.
+
 ## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · PUBLICADO
 
 - **Publicado:**

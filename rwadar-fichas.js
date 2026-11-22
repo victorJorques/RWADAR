@@ -10,6 +10,7 @@ const { parse } = createRequire(path.join(__dirname,'rwadar-app/package.json'))(
 const { validarLotePublicoV2, MANIFIESTO_CATALOGO_V2 } = require('./rwadar-movil/lib/contrato-catalogo');
 const permitidas = require('./rwadar-fichas-manifiesto');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const fotosOfertas = require('./rwadar-movil/lib/fotos-ofertas');
 const { paginasAcademy } = require('./rwadar-academy');
 const { resumenOferta, rotuloReferencia } = require('./rwadar-movil/lib/ficha-editorial');
 // Transparencia de cada oferta (validada por rwadar-editorial-source/ofertas/transparencia.mjs).
@@ -267,6 +268,19 @@ function separarAdquiere(d) {
   return {intro:texto.slice(0,i).trim(), adquiere:/[.!?…]$/.test(valor) ? valor : valor+'.'};
 }
 
+/* El pie de la imagen (22/11/2026): una ilustración dice que es de IA; una foto
+   real de Wikimedia Commons, qué muestra (el activo, o su lugar o su tema, «no
+   del activo»), su autor, su licencia y su página, en castellano y en inglés
+   (la hoja de estilos enseña el del idioma elegido), con lib/fotos-ofertas.js. */
+function pieFigura(imagen) {
+  if (imagen.clase !== 'foto') return 'Ilustración editorial generada con IA. No es una fotografía del activo real.';
+  return ['es','en'].map(l=>{
+    const pie = fotosOfertas.pieFotoOferta(imagen.foto, l);
+    return '<span class="foto-oferta-pie-'+l+'" lang="'+l+'">'+pie.partes.map(x=>x.enlace && enlace(x.enlace)
+      ? '<a href="'+esc(enlace(x.enlace))+'" target="_blank" rel="noopener noreferrer">'+esc(x.texto)+'</a>' : esc(x.texto)).join('')+
+      (pie.generico ? '' : ' · '+esc(pie.recorte))+'.</span>';
+  }).join('');
+}
 function paginaOferta(o,catalogo,imagen) {
   const d = o.documentacion || {}, {intro, adquiere} = separarAdquiere(d);
   const refs = (d.referencias || []).filter(r=>enlace(r.fuente) && fecha(r.fechaConsulta));
@@ -279,7 +293,7 @@ function paginaOferta(o,catalogo,imagen) {
   /* Los avisos de la oferta, tal cual y arriba; el genérico ya lo dice la línea del botón. */
   const avisos = (o.avisos || []).map(a=>typeof a==='string' ? a : a && a.tono!=='ok' && (!a.esAntiguedad || a.tono==='stop') ? a.texto : '')
     .filter(x=>x && !/^Referencia editorial gratuita\b/.test(x));
-  const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>Ilustración editorial generada con IA. No es una fotografía del activo real.</figcaption></figure>' : '';
+  const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>'+pieFigura(imagen)+'</figcaption></figure>' : '';
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(intro || o.resumen)+'</p>'+fichaImagen+
     '<p class="estado" role="status" data-campo="estado">Confirma las condiciones actuales en las fuentes.</p>'+
     (avisos.length ? '<section aria-labelledby="avisos"><h2 id="avisos">Avisos de esta oferta</h2><ul class="riesgos"'+ORIGINAL+'>'+avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>' : '')+
