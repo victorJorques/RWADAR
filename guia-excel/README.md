@@ -42,6 +42,34 @@ node probar-entreno.cjs dist/_v7.html    # una tanda de entrenamiento diario con
 ANCHO=390 CAPTURAS=capturas node robot.cjs dist/hoja-a-hoja.html n0m3l1   # el robot también hace capturas
 ```
 
+## Hoja como en Excel y «Hazlo en tu Excel» (versión 9)
+
+**La hoja de práctica funciona como Excel:**
+- se pulsa la celda azul y se escribe, y la fórmula se ve dentro de la celda;
+- con una fórmula a medias, al hacer clic en una celda se mete su referencia y
+  al arrastrar se mete un rango (`B2:B6`);
+- en la hoja libre, escribir sobre una celda la sustituye.
+
+**«Hazlo en tu Excel»** (en cada ejercicio de fórmula):
+- descarga un .xlsx con dos hojas: «Ejercicio» (los datos, sus formatos y una
+  nota en la celda donde va la fórmula) e «Instrucciones»;
+- se resuelve en el Excel de verdad;
+- se sube el archivo guardado, y la guía lee la fórmula de la celda, la pasa
+  al español y la corrige igual que en la web.
+
+Las fórmulas de los datos se escriben en el formato interno del archivo: en
+inglés, con comas y el prefijo `_xlfn.` en las funciones modernas. Las 468
+fórmulas del curso van y vuelven idénticas. La librería que crea el archivo es
+SheetJS 0.18.5, que se carga de cdnjs al pulsar el botón.
+
+**Pruebas:**
+- `node probar-teclado.cjs dist/_v9.html`: los 33 ejercicios de fórmula del
+  nivel 1, escribiendo con el teclado desde la celda y desde la barra;
+- `node probar-excel-real.cjs`: escribir con clics, arrastrar un rango, la
+  traducción de todas las fórmulas y la descarga y subida del .xlsx.
+
+`probar-excel-real.cjs` crea `dist/_v9.html`, así que va primero.
+
 ## El método de aprendizaje (versión 8)
 
 Cada técnica está citada en la página «El método» de la guía, con estudios

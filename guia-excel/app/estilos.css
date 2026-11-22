@@ -826,3 +826,12 @@ section[data-cerrado] .opcion:not(.correcta):not(.incorrecta):hover { border-col
 
 .mapa { overflow-x: clip; }
 canvas.confeti { z-index: 14; }
+
+/* ================= hoja como en Excel y «Hazlo en tu Excel» (v9) ================= */
+.rejilla td.objetivo { cursor: text; }
+.rejilla td.objetivo.editando { background: var(--hoja); outline: 2px solid var(--seleccion); outline-offset: -2px; font-family: var(--f-mono); font-size: .8rem; text-align: left; overflow: visible; z-index: 2; }
+.rejilla td.objetivo.editando:empty::after { content: ""; }
+.en-mi-excel { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; padding: .7rem .85rem; border: 1px dashed var(--rejilla-2); border-radius: 14px; background: color-mix(in srgb, var(--bien-suave) 55%, var(--hoja)); }
+.en-mi-excel .boton svg { width: 1.05rem; height: 1.05rem; }
+.en-mi-excel .tenue { font-size: .85rem; flex: 1 1 14rem; }
+.paso-subir { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; width: 100%; font-weight: 600; font-size: .9rem; }

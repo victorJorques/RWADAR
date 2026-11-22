@@ -300,7 +300,7 @@
     let contenidos = { ...(hoja.celdas || {}) }; // para modo libre
     let valores = {}; let sel = cfg.objetivo || 'A1'; let derrames = new Set(); let marcas = {};
     const nombre = h('div', { class: 'cuadro-nombre', 'aria-label': 'Celda seleccionada' }, sel);
-    const input = h('input', { class: 'entrada-formula', type: 'text', spellcheck: 'false', autocomplete: 'off', autocapitalize: 'off', 'aria-label': cfg.modo === 'ejercicio' ? `Escribe tu fórmula para la celda ${cfg.objetivo}` : 'Barra de fórmulas', placeholder: cfg.modo === 'ejercicio' ? `Escribe aquí tu fórmula para ${cfg.objetivo}, empieza por =` : '', readonly: cfg.modo === 'ver' ? true : null });
+    const input = h('input', { class: 'entrada-formula', type: 'text', spellcheck: 'false', autocomplete: 'off', autocapitalize: 'off', 'aria-label': cfg.modo === 'ejercicio' ? `Escribe tu fórmula para la celda ${cfg.objetivo}` : 'Barra de fórmulas', placeholder: cfg.modo === 'ejercicio' ? `Pulsa ${cfg.objetivo} o aquí y escribe la fórmula (empieza por =)` : '', readonly: cfg.modo === 'ver' ? true : null });
     const barra = h('div', { class: 'barra-formulas' }, nombre, h('div', { class: 'fx', 'aria-hidden': 'true' }, 'fx'), input);
     const ayuda = h('div', { class: 'ayuda-sintaxis', hidden: true, 'aria-live': 'polite' });
     if (cfg.modo !== 'ver') conectarAyudas(input, ayuda, barra);
@@ -348,8 +348,8 @@
           if (cfg.modo === 'libre') clases.push('libre');
           const txt = textoCelda(ref);
           const td = h('td', { class: clases.join(' '), 'data-ref': ref, title: copias.has(ref) ? 'Aquí se copiará tu fórmula' : (String(txt).length > 14 ? String(txt) : null) }, txt);
-          if (cfg.modo !== 'ejercicio' || ref === cfg.objetivo) td.addEventListener('click', () => seleccionar(ref));
-          else td.addEventListener('click', () => { nombre.textContent = ref; const cont = contenidos[ref]; ayudaCelda(ref, cont); });
+          if (cfg.modo !== 'ejercicio' || ref === cfg.objetivo) td.addEventListener('click', () => { if (tragarClick) { tragarClick = false; return; } seleccionar(ref); });
+          else td.addEventListener('click', () => { if (tragarClick) { tragarClick = false; return; } nombre.textContent = ref; const cont = contenidos[ref]; ayudaCelda(ref, cont); });
           tr.append(td);
         }
         cuerpo.append(tr);
@@ -362,9 +362,50 @@
     }
     function seleccionar(ref) {
       sel = ref; nombre.textContent = ref;
-      if (cfg.modo === 'libre') { const v = contenidos[ref]; input.value = v === undefined ? '' : (typeof v === 'object' && v.fecha ? v.fecha.split('-').reverse().join('/') : typeof v === 'number' ? String(v).replace('.', ',') : String(v)); input.focus(); }
+      if (cfg.modo === 'libre') { const v = contenidos[ref]; input.value = v === undefined ? '' : (typeof v === 'object' && v.fecha ? v.fecha.split('-').reverse().join('/') : typeof v === 'number' ? String(v).replace('.', ',') : String(v)); input.focus(); try { input.select(); } catch (e) { /* */ } } // como en Excel: al escribir se sustituye; para retocar, clic en la barra
       else if (cfg.modo === 'ver') { const v = contenidos[ref]; input.value = v === undefined ? '' : (typeof v === 'object' && v.fecha ? v.fecha.split('-').reverse().join('/') : typeof v === 'number' ? M.formatear(v) : String(v)); }
-      pintar();
+      else if (cfg.modo === 'ejercicio' && ref === cfg.objetivo) { input.focus(); const n = input.value.length; try { input.setSelectionRange(n, n); } catch (e) { /* */ } }
+      pintar(); espejo();
+    }
+    /* Como en Excel: lo que escribes se ve dentro de la celda, y mientras escribes una fórmula, hacer clic
+       (o arrastrar) en otras celdas mete su referencia (B2, o B2:B6) donde está el cursor. */
+    let apuntando = null; let tragarClick = false;
+    function espejo() {
+      if (cfg.modo !== 'ejercicio') return;
+      const td = tabla.querySelector('td.objetivo'); if (!td) return;
+      if (document.activeElement === input) { td.textContent = input.value; td.classList.add('editando'); }
+    }
+    const puedeApuntar = () => document.activeElement === input && input.value.startsWith('=') && /[=+\-*/^(;:&<>]\s*$/.test(input.value.slice(0, input.selectionStart ?? input.value.length));
+    if (cfg.modo === 'ejercicio' || cfg.modo === 'libre') {
+      tabla.addEventListener('mousedown', (e) => {
+        const td = e.target.closest('td[data-ref]'); if (!td) return;
+        // la celda azul se edita al pulsarla, sin perder el foco ni redibujar la tabla en mitad del clic
+        if (!puedeApuntar() && cfg.modo === 'ejercicio' && td.dataset.ref === cfg.objetivo) {
+          e.preventDefault(); tragarClick = true; input.focus(); const n = input.value.length; try { input.setSelectionRange(n, n); } catch (x) { /* */ } espejo(); return;
+        }
+        if (!puedeApuntar()) return;
+        e.preventDefault(); tragarClick = true;
+        const pos = input.selectionStart ?? input.value.length; const fin = input.selectionEnd ?? pos; const ref = td.dataset.ref;
+        input.value = input.value.slice(0, pos) + ref + input.value.slice(fin);
+        apuntando = { desde: ref, ini: pos, largo: ref.length };
+        try { input.setSelectionRange(pos + ref.length, pos + ref.length); } catch (x) { /* */ }
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+      tabla.addEventListener('mouseover', (e) => {
+        if (!apuntando || !(e.buttons & 1)) return;
+        const td = e.target.closest('td[data-ref]'); if (!td) return;
+        const r = td.dataset.ref === apuntando.desde ? apuntando.desde : apuntando.desde + ':' + td.dataset.ref;
+        input.value = input.value.slice(0, apuntando.ini) + r + input.value.slice(apuntando.ini + apuntando.largo);
+        apuntando.largo = r.length; const c = apuntando.ini + r.length; try { input.setSelectionRange(c, c); } catch (x) { /* */ }
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+      window.addEventListener('mouseup', () => { apuntando = null; });
+    }
+    if (cfg.modo === 'ejercicio') {
+      input.addEventListener('input', espejo);
+      input.addEventListener('focus', espejo);
+      input.addEventListener('blur', () => { setTimeout(() => { if (document.activeElement !== input && !apuntando) pintar(); }, 0); });
+      tabla.addEventListener('dblclick', (e) => { if (e.target.closest('td.objetivo')) seleccionar(cfg.objetivo); });
     }
     if (cfg.modo === 'libre') {
       input.addEventListener('keydown', (e) => {
@@ -402,6 +443,113 @@
   function botonTutora(contexto) {
     if (!CAP.sample) return null;
     return h('button', { class: 'boton fantasma peq', type: 'button', onclick: () => abrirTutora(contexto) }, 'Preguntar a la tutora');
+  }
+
+  /* ================= «Hazlo en tu Excel»: el ejercicio en un .xlsx de verdad, y corrección del archivo que sube ================= */
+  // Dentro de un .xlsx las fórmulas se guardan con nombres en inglés y comas; Excel en español las enseña traducidas.
+  const XLSX_URL = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  async function cargarXLSX() { if (!window.XLSX) await cargarScript(XLSX_URL); if (!window.XLSX) throw new Error('sin XLSX'); return window.XLSX; }
+  let DIC_ES_EN = null; let DIC_EN_ES = null;
+  function diccionarios() {
+    if (DIC_ES_EN) return;
+    const L = window.HyperFormula.getLanguage('esXL'); DIC_ES_EN = {}; DIC_EN_ES = {};
+    for (const [en, es] of Object.entries(L.functions || {})) { DIC_EN_ES[en.toUpperCase()] = es; DIC_ES_EN[String(es).toUpperCase()] = en; }
+    // las que la guía reescribe por su cuenta (no están en el diccionario del motor)
+    for (const [en, es] of [['AVERAGEIFS', 'PROMEDIO.SI.CONJUNTO'], ['SWITCH', 'CAMBIAR'], ['LET', 'LET'], ['LAMBDA', 'LAMBDA']]) { DIC_EN_ES[en] = es; DIC_ES_EN[es] = en; }
+  }
+  const XL_FN = new Set(['XLOOKUP', 'XMATCH', 'TEXTJOIN', 'CONCAT', 'IFS', 'SWITCH', 'MAXIFS', 'MINIFS', 'IFNA', 'DAYS', 'UNIQUE', 'SEQUENCE', 'TEXTBEFORE', 'TEXTAFTER', 'TEXTSPLIT', 'VSTACK', 'HSTACK', 'CHOOSECOLS', 'CHOOSEROWS', 'TAKE', 'DROP', 'TOCOL', 'TOROW', 'WRAPROWS', 'WRAPCOLS', 'PERCENTOF', 'FORECAST.LINEAR', 'STDEV.S', 'STDEV.P', 'VAR.S', 'VAR.P', 'MODE.SNGL', 'PERCENTILE.INC', 'QUARTILE.INC', 'RANK.EQ', 'CEILING.MATH', 'FLOOR.MATH', 'NUMBERVALUE', 'COVARIANCE.P', 'COVARIANCE.S', 'IFERROR']);
+  const XL_WS = new Set(['FILTER', 'SORT', 'SORTBY']);
+  function formulaAIngles(f) { // «=SUMA(B2:B5;1,5)» → «SUM(B2:B5,1.5)»; null si no se puede traducir con seguridad
+    diccionarios(); const t = M.tokenizar(String(f).replace(/^=/, '')); let out = ''; let llave = 0;
+    for (let i = 0; i < t.length; i++) {
+      const x = t[i];
+      if (x.k === 'id') {
+        let j = i + 1; while (t[j] && t[j].k === 'sp') j++;
+        if (t[j] && t[j].k === '(') { const en = DIC_ES_EN[x.v.toUpperCase()]; if (!en || en === 'LET' || en === 'LAMBDA') return null; out += (XL_WS.has(en) ? '_xlfn._xlws.' : XL_FN.has(en) && en !== 'IFERROR' ? '_xlfn.' : '') + en; }
+        else if (/^VERDADERO$/i.test(x.v)) out += 'TRUE'; else if (/^FALSO$/i.test(x.v)) out += 'FALSE'; else out += x.v;
+      } else if (x.k === 'num') out += x.v.replace(/,/g, '.');
+      else if (x.k === ';') out += llave ? ';' : ',';
+      else if (x.k === '{') { llave++; out += '{'; } else if (x.k === '}') { llave--; out += '}'; }
+      else if (x.k === 'op' && llave && x.v === '\\') out += ',';
+      else out += x.v;
+    }
+    return out;
+  }
+  function formulaAEspanol(f) { // lo contrario, para la fórmula que llega en el archivo de la alumna
+    diccionarios(); const s = String(f).replace(/^=/, '').replace(/_xlfn\._xlws\.|_xlfn\.|_xlpm\./gi, ''); let i = 0; let out = ''; let llave = 0;
+    while (i < s.length) {
+      const c = s[i];
+      if (c === '"') { let j = i + 1; while (j < s.length) { if (s[j] === '"' && s[j + 1] === '"') { j += 2; continue; } if (s[j] === '"') break; j++; } out += s.slice(i, j + 1); i = j + 1; continue; }
+      if (c === "'") { const j = s.indexOf("'", i + 1); const fin = j < 0 ? s.length : j + 1; out += s.slice(i, fin); i = fin; continue; }
+      if (/[A-Za-z_\\$]/.test(c)) {
+        let j = i; while (j < s.length && /[A-Za-z0-9_.\\$!:]/.test(s[j])) j++;
+        const id = s.slice(i, j); let k = j; while (s[k] === ' ') k++;
+        if (s[k] === '(') out += DIC_EN_ES[id.toUpperCase()] || id; else if (/^TRUE$/i.test(id)) out += 'VERDADERO'; else if (/^FALSE$/i.test(id)) out += 'FALSO'; else out += id;
+        i = j; continue;
+      }
+      if (/[0-9.]/.test(c)) { let j = i; while (j < s.length && /[0-9.]/.test(s[j])) j++; if (/[Ee]/.test(s[j] || '') && /[+\-0-9]/.test(s[j + 1] || '')) { j += /[+\-]/.test(s[j + 1]) ? 2 : 1; while (/[0-9]/.test(s[j] || '')) j++; } out += s.slice(i, j).replace('.', ','); i = j; continue; }
+      if (c === '{') { llave++; out += c; i++; continue; }
+      if (c === '}') { llave--; out += c; i++; continue; }
+      if (c === ',') { out += llave ? '\\' : ';'; i++; continue; }
+      out += c; i++;
+    }
+    return '=' + out;
+  }
+  function formatoExcel(fmt) { // formatos de la guía → código de formato del archivo
+    if (!fmt) return null;
+    const atajos = { eur: '#,##0.00 "€"', fecha: 'dd/mm/yyyy', pct: '0%', pct1: '0.0%', num: '#,##0', num2: '#,##0.00', hora: 'hh:mm' };
+    if (atajos[fmt]) return atajos[fmt];
+    return String(fmt).replace(/[.,]/g, (m) => (m === '.' ? ',' : '.')).replace(/(^|[^"])€/g, '$1"€"');
+  }
+  async function descargarEjercicioExcel(ej) {
+    if (!HF) { toast('La hoja aún se está cargando. Prueba en unos segundos.'); return false; }
+    if (!CAP.downloads) { toast('Aquí no se puede descargar. Abre la guía desde claude.ai.'); return false; }
+    let X; try { X = await cargarXLSX(); } catch (e) { toast('No se ha podido preparar el archivo. Revisa la conexión.'); return false; }
+    const hoja = ej.hoja || { celdas: {} }; const fmts = mapaFormatos(hoja); const ws = {};
+    const refs = [...Object.keys(hoja.celdas || {}), ej.objetivo, ...(ej.copiar_a || []).flatMap((r) => M.celdasDeRango(r))].filter(Boolean);
+    let maxR = 0; let maxC = 0; for (const r of refs) { const d = M.dir(r); maxR = Math.max(maxR, d.row); maxC = Math.max(maxC, d.col); }
+    let vals = {}; try { vals = M.valoresHoja(M.construir(HF, hoja), maxC + 3, maxR + 3); } catch (e) { /* */ }
+    const serie = (iso) => { const [y, m, d] = iso.split('-').map(Number); return (Date.UTC(y, m - 1, d) - Date.UTC(1899, 11, 30)) / 864e5; };
+    for (const [ref, v] of Object.entries(hoja.celdas || {})) {
+      let cel;
+      if (typeof v === 'string' && v.startsWith('=')) {
+        const en = formulaAIngles(v); const val = vals[ref];
+        cel = en ? { f: en } : {};
+        if (typeof val === 'number') { cel.t = 'n'; cel.v = val; } else if (typeof val === 'boolean') { cel.t = 'b'; cel.v = val; } else if (typeof val === 'string') { cel.t = 's'; cel.v = val; } else { cel.t = en ? 'n' : 's'; if (!en) cel.v = ''; }
+      } else if (v && typeof v === 'object' && v.fecha) cel = { t: 'n', v: serie(v.fecha), z: 'dd/mm/yyyy' };
+      else if (typeof v === 'number') cel = { t: 'n', v };
+      else if (typeof v === 'boolean') cel = { t: 'b', v };
+      else cel = { t: 's', v: String(v ?? '') };
+      const z = formatoExcel(fmts[ref]); if (z && !cel.z) cel.z = z;
+      ws[ref] = cel;
+    }
+    // nota en la celda donde va la fórmula (si ya hay una fórmula mal, la nota dice que se arregla)
+    const obj = ws[ej.objetivo] || (ws[ej.objetivo] = { t: 's', v: '' });
+    obj.c = [{ a: 'Hoja a hoja', t: (hoja.celdas || {})[ej.objetivo] ? 'Corrige aquí la fórmula.' : 'Escribe aquí tu fórmula (empieza por =).' }]; obj.c.hidden = false;
+    const z0 = formatoExcel(fmts[ej.objetivo] || ej.formato_resultado); if (z0) obj.z = z0;
+    for (const r of (ej.copiar_a || []).flatMap((x) => M.celdasDeRango(x))) { if (!ws[r]) ws[r] = { t: 's', v: '' }; const z = formatoExcel(fmts[r] || ej.formato_resultado); if (z) ws[r].z = z; }
+    ws['!ref'] = 'A1:' + M.numeroALetra(Math.max(maxC, 1)) + (maxR + 1);
+    ws['!cols'] = Array.from({ length: maxC + 1 }, (_, c) => { const L = M.numeroALetra(c); const a = (hoja.anchos || {})[L]; let w = a || 8; for (let r = 0; r <= maxR; r++) { const v = (hoja.celdas || {})[L + (r + 1)]; if (typeof v === 'string' && !v.startsWith('=')) w = Math.max(w, Math.min(40, v.length + 2)); else if (typeof v === 'number') w = Math.max(w, 12); } return { wch: w }; });
+    const limpio = (t) => String(t || '').replace(/\*\*|`|\[\[|\]\]/g, '').replace(/\s+/g, ' ').trim();
+    const pasos = [['Hoja a hoja · ejercicio para hacer en tu Excel'], [], ['El encargo:'], [limpio(ej.enunciado)], [],
+      ['Qué hacer:'], [`1. Ve a la hoja «Ejercicio» y escribe la fórmula en ${ej.objetivo}.`]];
+    if ((ej.copiar_a || []).length) pasos.push([`2. Cópiala a ${ej.copiar_a.join(', ')} con el controlador de relleno.`]);
+    pasos.push([`${(ej.copiar_a || []).length ? 3 : 2}. Guarda el archivo (Ctrl+G).`], [`${(ej.copiar_a || []).length ? 4 : 3}. Vuelve a la guía y pulsa «Subir mi archivo». La guía lee tu fórmula y la corrige.`]);
+    const wsI = X.utils.aoa_to_sheet(pasos); wsI['!cols'] = [{ wch: 100 }];
+    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, 'Ejercicio'); X.utils.book_append_sheet(wb, wsI, 'Instrucciones');
+    const datos = X.write(wb, { bookType: 'xlsx', type: 'array' });
+    try { await CAP.downloads.save({ filename: `hoja-a-hoja-${ej.id}.xlsx`, data: new Blob([datos], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }) }); return true; }
+    catch (e) { if (e && e.code !== 'declined') toast('No se ha podido descargar el archivo.'); return false; }
+  }
+  window.HojaAHoja = { formulaAIngles, formulaAEspanol }; // para las pruebas automáticas
+  async function leerMiExcel(ej, archivo) {
+    let X; try { X = await cargarXLSX(); } catch (e) { return { error: 'No se ha podido leer el archivo. Revisa la conexión.' }; }
+    let wb; try { wb = X.read(await archivo.arrayBuffer(), { cellFormula: true }); } catch (e) { return { error: 'Ese archivo no parece un libro de Excel (.xlsx).' }; }
+    const ws = wb.Sheets.Ejercicio || wb.Sheets[wb.SheetNames[0]];
+    const c = ws && ws[ej.objetivo];
+    if (!c || (c.v === '' && !c.f)) return { error: `En ${ej.objetivo} no hay nada. Escribe allí la fórmula, guarda el archivo (Ctrl+G) y vuelve a subirlo.` };
+    if (!c.f) return { error: `En ${ej.objetivo} hay un número o un texto (${c.w ?? c.v}), no una fórmula. Escribe la fórmula, que empieza por =.` };
+    return { formula: formulaAEspanol(c.f) };
   }
 
   // Título corto para la barra cuando una fórmula falla (el detalle completo queda en el ejercicio).
@@ -470,8 +618,20 @@
       }
     }
     hoja.input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.defaultPrevented) { e.preventDefault(); comprobar(); } });
-    const filaAyuda = h('div', { class: 'fila fila-ayuda' }, h('button', { class: 'boton primario', type: 'button', onclick: comprobar }, 'Comprobar'), btnPista, btnSol, h('span', { class: 'tenue solo-raton' }, 'Intro también comprueba'));
-    cont.append(hoja.el, filaAyuda, pistasEl, zona);
+    const filaAyuda = h('div', { class: 'fila fila-ayuda' }, h('button', { class: 'boton primario', type: 'button', onclick: comprobar }, 'Comprobar'), btnPista, btnSol, h('span', { class: 'tenue solo-raton' }, 'Como en Excel: pulsa la celda azul, escribe = y haz clic en las celdas que uses · Intro comprueba'));
+    // «Hazlo en tu Excel»: descargar el ejercicio, hacerlo en Excel y subir el archivo para corregirlo
+    const subida = h('input', { type: 'file', accept: '.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', class: 'oculto-visual', id: 'subir-' + ej.id });
+    const pasoSubir = h('div', { class: 'paso-subir', hidden: true }, h('span', null, `Escribe la fórmula en ${ej.objetivo}, guarda el archivo (Ctrl+G) y súbelo:`), h('label', { class: 'boton peq primario', for: 'subir-' + ej.id }, 'Subir mi archivo'), subida);
+    subida.addEventListener('change', async () => {
+      const f = subida.files[0]; subida.value = ''; if (!f) return;
+      const r = await leerMiExcel(ej, f);
+      if (r.error) { zona.innerHTML = ''; zona.append(respuesta('mal', 'No he podido corregirlo', r.error)); return; }
+      hoja.input.value = r.formula; comprobar(); zona.prepend(h('p', { class: 'tenue' }, 'Fórmula leída de tu archivo: ', h('code', null, r.formula)));
+    });
+    const enMiExcel = modoExamen ? null : h('div', { class: 'en-mi-excel' },
+      h('button', { class: 'boton peq', type: 'button', onclick: async () => { if (await descargarEjercicioExcel(ej)) { pasoSubir.hidden = false; } } }, icono('rejilla'), 'Hazlo en tu Excel'),
+      h('span', { class: 'tenue' }, 'Descarga este ejercicio, hazlo en tu Excel y súbelo: se corrige igual.'), pasoSubir);
+    cont.append(hoja.el, filaAyuda, enMiExcel, pistasEl, zona);
     return cont;
   }
 

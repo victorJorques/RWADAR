@@ -6,6 +6,34 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de noviembre de 2026 (36) · Claude · Guía de Excel: celdas como en Excel y «Hazlo en tu Excel» (versión 9) · NO ES RWADAR, NO UNIR A MAIN
+
+- **Encargo de Víctor:**
+  - «en Chrome, en el nivel 1, en algunas celdas no deja escribir desde el
+    ordenador»;
+  - «me gustaría que utilizara Excel de verdad»;
+  - «corrección rápida pero bien».
+- **Causa:** en los 33 ejercicios de fórmula del nivel 1 solo se podía
+  escribir en la barra de fórmulas; al pulsar la celda y teclear, no pasaba
+  nada.
+- **Arreglo:**
+  - se escribe pulsando la celda, con la fórmula a la vista dentro de ella;
+  - clic o arrastre en las celdas para meter referencias, como en Excel;
+  - en la hoja libre, escribir sobre una celda la sustituye.
+- **Nuevo, «Hazlo en tu Excel»:** descarga el ejercicio en .xlsx y, al subir
+  el archivo guardado, lo corrige (detalle en `guia-excel/README.md`).
+- **Pruebas:**
+  - `probar-teclado`: 33 de 33 desde la celda y 33 de 33 desde la barra;
+  - `probar-excel-real`: escribir con clics y arrastrar bien, 468 fórmulas
+    de ida y vuelta sin diferencias, y la subida corrige «¡Correcto!»;
+  - el archivo se abre y calcula en LibreOffice;
+  - el robot completo: 98 lecciones a 3 estrellas y 7 exámenes aprobados;
+  - `validar.cjs`: 0 errores.
+  - Publicada como versión 9.
+- **Ojo:** la página está compartida con enlace público. Así, quien no es de
+  la organización solo puede guardar el progreso en su navegador (la guía lo
+  avisa y ofrece copia).
+
 ## 20 de noviembre de 2026 (35) · Claude · Guía de Excel: método de aprendizaje y rediseño (versión 8) · NO ES RWADAR, NO UNIR A MAIN
 
 - **Encargo de Víctor:**
