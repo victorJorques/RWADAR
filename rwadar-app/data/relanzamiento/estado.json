@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Fotos reales en las noticias (tras la OTA con los créditos)",
+  "nota": "Noticias del sector del 22/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo fe0cfaa8",
   "revisionAprobada": {
-    "commit": "b62f41e5425c1af9551b68eeb886e169c7127858",
-    "contenidoSha256": "sha256:719071e4dfda8a9d63a7bd40b90389badc218c3bb230398294dd6e84ef396e4b",
+    "commit": "f68f4c35ff96380c57e9680f77ecfd278f7026f5",
+    "contenidoSha256": "sha256:6eb21f1e34f8bfaf033a74d2ff1d3aa2a7bb9a88b4d6d6027683f447efdc57f9",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

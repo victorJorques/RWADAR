@@ -4,6 +4,29 @@
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "fecha": "2026-11-19",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "UE",
+      "titulo": "Token ficticio por WhatsApp: avisa el supervisor alemán",
+      "resumen": "El supervisor alemán (BaFin) avisa de que unos desconocidos que dicen ser una academia de inversión de EE. UU. contactan con inversores en Alemania por grupos y chats de WhatsApp para que compren VLVI, un criptotoken que llama ficticio, en la plataforma Zorvantic Exchange. Ofrecen servicios cripto sin permiso.",
+      "porQueImporta": "BaFin no supervisa ni a los grupos ni a la plataforma y dice que no conoce entidades con licencia que contacten por WhatsApp a inversores en Alemania. Antes de enviar dinero, comprueba en la CNMV si la entidad está autorizada.",
+      "en": {
+        "titulo": "Fictitious token via WhatsApp: German supervisor warns",
+        "resumen": "Germany's supervisor (BaFin) warns that unknown people claiming to be a US investment academy are contacting investors in Germany through WhatsApp groups and chats to get them to acquire VLVI, a crypto token it calls fictitious, on the Zorvantic Exchange platform. Crypto services are offered without permission.",
+        "porQueImporta": "BaFin supervises neither the groups nor the platform and says it knows of no licensed firm that contacts investors in Germany via WhatsApp. Before sending money, check with the CNMV whether the firm is authorised.",
+        "tituloInformativo": "Germany's BaFin warns of VLVI, a fictitious crypto token promoted in WhatsApp groups aimed at investors in Germany"
+      },
+      "fuente": {
+        "nombre": "BaFin (supervisor financiero de Alemania), aviso a consumidores del 19/11/2026 sobre ofertas en grupos de WhatsApp",
+        "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "El supervisor alemán avisa de VLVI, un criptotoken ficticio que se promociona en grupos de WhatsApp dirigidos a inversores en Alemania"
+    },
+    {
       "id": "kraken-antx-token-anthropic",
       "fecha": "2026-11-19",
       "seccion": "importante",
@@ -48,6 +71,29 @@
       },
       "consultadaEl": "2026-11-22",
       "tituloInformativo": "La CNMV difunde tres avisos del supervisor alemán sobre ofertas sin folleto, una de oro físico"
+    },
+    {
+      "id": "ondo-carteras-token-bolsa-oro-cripto",
+      "fecha": "2026-11-17",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "Mundo",
+      "titulo": "Ondo: 60 % bolsa, 20 % oro y 20 % cripto en un solo token",
+      "resumen": "Ondo Finance ha lanzado dos carteras nuevas, cada una en un token. BIG5on pone un 60 % en bolsa de EE. UU., un 20 % en oro y un 20 % en bitcoin y ether, a través de ETF tokenizados, y vuelve a esos pesos cada trimestre. SPYSHIELDon junta 12 ETF que buscan amortiguar las caídas del S&P 500 con un tope a las subidas.",
+      "porQueImporta": "Son productos complejos: un token mezcla activos muy distintos, cripto incluida, y el colchón de cada ETF solo vale para quien lo tiene todo su periodo. La nota, para inversores elegibles fuera de EE. UU., no cita España ni cifra costes.",
+      "en": {
+        "titulo": "Ondo: 60% stocks, 20% gold and 20% crypto in one token",
+        "resumen": "Ondo Finance has launched two new portfolios, each in a single token. BIG5on puts 60% in US stocks, 20% in gold and 20% in bitcoin and ether, through tokenised ETFs, and returns to those weights every quarter. SPYSHIELDon holds 12 ETFs that seek to buffer S&P 500 falls in exchange for capped gains.",
+        "porQueImporta": "These are complex products: one token mixes very different assets, crypto included, and each ETF's buffer only applies to those holding it for its full period. The note cites eligible investors outside the US, not Spain, and no fee figures.",
+        "tituloInformativo": "Ondo Finance launches two tokenised portfolios: BIG5on, with stocks, gold and crypto, and SPYSHIELDon, with ETFs seeking to buffer falls"
+      },
+      "fuente": {
+        "nombre": "Ondo Finance, blog oficial: anuncio del 17/11/2026 de dos nuevas carteras «Intelligent Portfolios»",
+        "url": "https://ondo.finance/blog/first-defined-outcome-intelligent-portfolio",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-22",
+      "tituloInformativo": "Ondo Finance lanza dos carteras en forma de token: BIG5on, con bolsa, oro y cripto, y SPYSHIELDon, con ETF que buscan amortiguar caídas"
     },
     {
       "id": "cnmv-advertencias-9-entidades-dos-clones",
