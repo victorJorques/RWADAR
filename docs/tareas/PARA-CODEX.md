@@ -6,7 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · SIN COMMIT, SIN PUBLICAR
+## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · PUBLICADO
+
+- **Publicado:**
+  - #199: programa, más las 22 fotos importadas y miradas una a una.
+  - OTA con los créditos (run 44996121393).
+  - #200: `fotos.realesEnApp: true`, y el sello #201.
+  - Web (44996305521 y 44997568664).
+  - Edición b de las noticias del 22/11 (#202, merge `5caddf5b`; revisión
+    44999590044 y producción 44999738500): 7 noticias, 6 con foto real.
+  - «Avisar novedad»: «Las noticias, con fotos reales» (44999839534). El
+    aviso de noticias nuevas no se repitió (ya hubo uno hoy).
+  - Comprobado en vivo con Chromium a 390 y 1366 px: 6 créditos en /mercado/
+    y 2 en Inicio, sin errores.
+- **Importación (22 fotos):** el importador descarga ahora la miniatura
+  estándar de 1920 px. Wikimedia limita con 429 los originales y los tamaños
+  no estándar, y se esperó a que soltara. Acepta `thumb.wikimedia.org` como
+  descarga. Quita los caracteres invisibles del autor y rechaza el «©
+  European Union, <año en curso>» de la plantilla de la Comisión Europea. En
+  `real-monedas-euro-bandera` se escribió a mano «Lukasz Kobus – European
+  Commission, © European Union, 2023».
+- **CI (dos tropiezos con el paso de Pillow):** primero `:all: ` sin comillas
+  rompía el YAML. Después `--user` no lo veía `python3 -I`; ahora se instala
+  con `sudo` en el Python del sistema, y probar-web lo comprueba.
+- **Pendiente:** las fotos de las ofertas siguen siendo ilustraciones de IA.
+  Para que sean reales hace falta permiso de cada plataforma, o fotos libres
+  del lugar. Lo decide Víctor.
+
+**Lo que dejó escrito el constructor antes de publicar:**
+
 
 - **Orden de Víctor (22/11):** «Pero noticias reales y verificadas eh y
   cúrrate más las fotos anda que sean reales». Es el cambio de programa; las
