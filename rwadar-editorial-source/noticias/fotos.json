@@ -1024,6 +1024,41 @@
      "sha256": "5a612d8f9d730977201ef9c7e54d17a170e64e5ab97fdc710e44d1c463163dc9"
     }
    }
+  },
+  "real-sec-washington": {
+   "origen": "foto",
+   "descripcion": "La sede de la SEC, el supervisor de los mercados de Estados Unidos, en Washington, con su rótulo en la entrada.",
+   "fuente": {
+    "sitio": "Wikimedia Commons",
+    "archivo": "File:Washington, D.C., September 22, 2024 - 101.jpg",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Washington,_D.C.,_September_22,_2024_-_101.jpg",
+    "original": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Washington%2C_D.C.%2C_September_22%2C_2024_-_101.jpg/1920px-Washington%2C_D.C.%2C_September_22%2C_2024_-_101.jpg",
+    "sha256Original": "41cdda97edb94e3285baaa56290b228a3be4afd878d17484d688037c6caf5462"
+   },
+   "licencia": {
+    "nombre": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "atribucionObligatoria": true
+   },
+   "autor": "Another Believer",
+   "sinPersonas": true,
+   "encuadre": "50% 30%",
+   "bytes": 139600,
+   "sha256": "2aa772155e0383818c71ddd3a8db6f747106e4a2cb708e9cd91bcb7ea5b51a53",
+   "temas": [
+    "internacional",
+    "fraude-advertencias"
+   ],
+   "variantes": {
+    "480": {
+     "bytes": 30660,
+     "sha256": "6559f128ae370d24aee8df4c3d7eb1514b35dc543af38c5df73d60b5d2338ae0"
+    },
+    "960": {
+     "bytes": 108744,
+     "sha256": "941618265c35f3dc31cd648c98adcafcaf4ac70bdeb08164e39b68dcb3ae5471"
+    }
+   }
   }
  }
 }
