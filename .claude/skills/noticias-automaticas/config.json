@@ -10,7 +10,7 @@
   "edicion": { "hoyMax": 3, "importanteMax": 8, "totalMin": 3, "totalMax": 8, "diasImportante": 30 },
   "fotos": {
     "distintasEn": "edicion",
-    "realesEnApp": false,
+    "realesEnApp": true,
     "genericas": { "regulacion": "regulador-espana", "mercado": "red-europea", "producto": "acciones-eeuu", "riesgo": "alerta-fraude" }
   },
   "carpeta": { "maxBytes": 200000, "extensiones": [".json", ".md", ".txt"] },
