@@ -2022,7 +2022,7 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     const salidaPy = String(r.stderr || '');
     prueba(`python3 rwadar-editorial-source/noticias/probar-importar-foto.py pasa (el importador de Commons, sin red): las ${pruebasPy} pruebas, sin saltarse ninguna`,
       r.status === 0 && pruebasPy >= 12 && new RegExp(`\\nRan ${pruebasPy} tests? in `).test(salidaPy) && /\nOK\s*$/.test(salidaPy) && !/skipped/.test(salidaPy) &&
-      /if: \$\{\{ matrix\.base \}\}\n\s+run: '?python3 -m pip install [^\n]*Pillow==\d+\.\d+\.\d+'?\n/.test(fs.readFileSync(path.join(raiz, '.github/workflows/ci.yml'), 'utf8')));
+      /if: \$\{\{ matrix\.base \}\}\n\s+run: '?(?:sudo )?python3 -m pip install (?![^\n]*--user)[^\n]*Pillow==\d+\.\d+\.\d+'?\n/.test(fs.readFileSync(path.join(raiz, '.github/workflows/ci.yml'), 'utf8')));
   }
   // Las fotos: cada «imagen» tiene su WebP en noticias-editoriales/, con los bytes y el sha256 de fotos.json, y no sobra ninguno.
   // Desde el 14/11/2026, también sus variantes de 480 y 960 (en sus carpetas), ni más ni menos.

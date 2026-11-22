@@ -142,10 +142,12 @@ jobs:
 
       # El importador de fotos de Wikimedia Commons (22/11/2026) y su prueba
       # sin red, dentro de test:web, necesitan Pillow con WebP. Versión exacta,
-      # solo en rueda ya compilada; sin ella la prueba falla, no se salta.
+      # solo en rueda ya compilada; sin ella la prueba falla, no se salta. En el
+      # Python del sistema (con sudo): la prueba corre con «python3 -I», que no
+      # ve lo instalado con --user.
       - name: Instalar Pillow (prueba del importador de fotos)
         if: ${{ matrix.base }}
-        run: 'python3 -m pip install --user --break-system-packages --only-binary=:all: Pillow==12.3.0'
+        run: 'sudo python3 -m pip install --break-system-packages --only-binary=:all: Pillow==12.3.0'
 
       - name: Instalar dependencias móviles
         if: ${{ matrix.movil }}
