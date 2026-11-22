@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Noticias con fotos reales de Wikimedia Commons (biblioteca y créditos; en las noticias tras la OTA)",
+  "nota": "Fotos reales en las noticias (tras la OTA con los créditos)",
   "revisionAprobada": {
-    "commit": "8a59212f52091ac88699d2d454116cb469f8b24b",
-    "contenidoSha256": "sha256:0a525896d0fe830c9a40a787fcaf3cf38fa37151f0f08539891895a7762a50ef",
+    "commit": "b62f41e5425c1af9551b68eeb886e169c7127858",
+    "contenidoSha256": "sha256:719071e4dfda8a9d63a7bd40b90389badc218c3bb230398294dd6e84ef396e4b",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
