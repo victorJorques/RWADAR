@@ -1,5 +1,4 @@
-{"version":1,"fuente":"CoinGecko","categoria":"tokenized-products","generado":"2026-11-24T18:19:59Z","pedidos":40,"incluidos":30,"discontinuos":10,"cobertura":86.3,"tokens":["figure-heloc","tether-gold","ondo-us-dollar-yield","spiko-amundi-overnight-swap-fund-eur","pax-gold","blackrock-usd-institutional-digital-liquidity-fund","superstate-short-duration-us-government-securities-fund-ustb","eutbl","ousg","kinesis-gold","safo","nvidia-bstocks","usa","spiko-us-t-bills-money-market-fund","kinesis-silver","nvidia-xstock","theo-short-duration-us-treasury-fund","alpha-bulgaria-warrants","circle-internet-group-bstock","securitize-tokenized-aaa-clo-fund","spacex-bstocks-tokenized-stock","strategy-pp-variable-xstock","tether-gold-tokens","circle-xstock","semicon-bull-3x-etf-bstocks-tokenized-stock","microstrategy-xstock","alphabet-bstocks-tokenized-stock","nasdaq-xstock","na-post-settlement-legal-financing-receivables","sp500-xstock"],"puntos":[
-{"fecha":"2025-11-25","valor":23856005144,"tokens":18},
+{"version":1,"fuente":"CoinGecko","categoria":"tokenized-products","generado":"2026-11-25T17:46:28Z","pedidos":40,"incluidos":30,"discontinuos":10,"cobertura":86.2,"tokens":["figure-heloc","tether-gold","ondo-us-dollar-yield","spiko-amundi-overnight-swap-fund-eur","pax-gold","blackrock-usd-institutional-digital-liquidity-fund","superstate-short-duration-us-government-securities-fund-ustb","eutbl","ousg","kinesis-gold","safo","usa","nvidia-bstocks","spiko-us-t-bills-money-market-fund","kinesis-silver","nvidia-xstock","theo-short-duration-us-treasury-fund","alpha-bulgaria-warrants","circle-internet-group-bstock","securitize-tokenized-aaa-clo-fund","spacex-bstocks-tokenized-stock","strategy-pp-variable-xstock","tether-gold-tokens","circle-xstock","semicon-bull-3x-etf-bstocks-tokenized-stock","microstrategy-xstock","alphabet-bstocks-tokenized-stock","nasdaq-xstock","na-post-settlement-legal-financing-receivables","sp500-xstock"],"puntos":[
 {"fecha":"2025-11-26","valor":23519879088,"tokens":18},
 {"fecha":"2025-11-27","valor":23963691101,"tokens":18},
 {"fecha":"2025-11-28","valor":24179102449,"tokens":18},
@@ -362,5 +361,6 @@
 {"fecha":"2026-11-21","valor":42175078436,"tokens":30},
 {"fecha":"2026-11-22","valor":42808961617,"tokens":30},
 {"fecha":"2026-11-23","valor":42348577738,"tokens":30},
-{"fecha":"2026-11-24","valor":43504066902,"tokens":30}
+{"fecha":"2026-11-24","valor":43320436079,"tokens":30},
+{"fecha":"2026-11-25","valor":42985686741,"tokens":30}
 ]}
