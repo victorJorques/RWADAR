@@ -6,6 +6,16 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de noviembre de 2026 (48) · Claude · Catálogo re-verificado (vigente hasta el 03/12), Hausera fuera e integración de Codex · PUBLICADO
+
+- **Integrado de Codex/ChatGPT:** #204 (noticias del 25/11) y #206 (integridad del gráfico). La prueba de 400 días de `rwadar-movil/tests/tokenizacion.test.cjs` se ajusta a la regla de #206. Vuestro lote `catalogo-2026-11-25-v2` **no se aplicó**: lo sustituyen las entregas de hoy (ver su `LEEME.md`).
+- **Catálogo:** entrega `2026-11-26` (revisión `47b53d7d`, motor, 300 cambios con prueba; todo releído hoy como visitante) y `2026-11-26.2` (revisión `4601a164`, sale `hausera-proximas-ofertas`: Alicante 3 financiada). 21 ofertas (8/13/0), vigentes hasta el 03/12. Informe: `docs/INVESTIGACION-CATALOGO-2026-11-26.md`.
+- **Sin agentes:** `rwadar-app/data/verificaciones/2026-11-26-v2/montar.py` genera expedientes y `decisiones.json` a partir de la entrega anterior, el vigía y `fuentes/releidas-2026-11-26.txt`; solo re-fecha lo que se leyó hoy. Sirve de modelo para un ciclo de puesta al día sin investigadores.
+- **Retirada:** `2026-11-26.2-v2/` lleva su `preparar-entrega.mjs`, `comprobar-entrega.mjs` (PGlite) y `despues-de-aplicar.mjs`, adaptados del 05/11. `probar-fichas.cjs` ya no usa Hausera como ejemplo de ficha sin datos a favor (ninguna publicada está así: se prueba con una copia del catálogo).
+- **Radar:** la documentación de Blocksquare para socios pide sesión; `blocksquare-terms` apunta a su web y cambian sus dos textos (`cambios-radar.json`, `comprobaciones-fuentes.json`).
+- **Publicado:** Supabase (las dos entregas), web (revisión y producción), OTA Android y aviso «Avisar novedad».
+- **Pendiente:** candidatas nuevas (no se buscaron); fotos reales de las ofertas (en `origin/claude/fotos-reales-ofertas`, 018c833d, a medias); #205 (borrador) sin decidir; GitHub pide a Víctor activar la verificación en dos pasos.
+
 ## 26 de noviembre de 2026 · ChatGPT · Integridad del gráfico (preparado, no publicado)
 
 - Rama `chatgpt/grafico-integridad-2026-11-26`. Motor compartido y envoltorio web en commits `e4e1bb4` y `4394173`; regresiones en `72f3c6c`.
