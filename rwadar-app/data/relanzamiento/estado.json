@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Catálogo 2026-11-26.3 (25b54edc) sincronizado: 11 ofertas y 7 plataformas internacionales, las nuevas primero, fotos realistas y noticias del 26/11",
+  "nota": "Catálogo 2026-11-26.4: 25 plataformas nuevas del radar (57), con portada propia; ofertas iguales",
   "revisionAprobada": {
-    "commit": "741046cde7289aa4c7cc6a3f54d77741fd865a4a",
-    "contenidoSha256": "sha256:5d0ad95e750b7b9090e0a4d294b4d8b95d18a2f9a5d6d4213452004d1db6a2da",
+    "commit": "5dab640346466a7a726956a93cf2b52e2424842f",
+    "contenidoSha256": "sha256:45261cb485bfdb038bc625779dc4aac4b44c32f7fccf8a888096556d3c939165",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
