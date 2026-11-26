@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-26T21:25:17.780Z",
+  "ejecutadoEl": "2026-11-26T21:31:13.239Z",
   "etiqueta": "2026-11-26.3",
   "revisionAnterior": "4601a164-0884-8198-2e8a-23998e4e3120",
-  "revisionNueva": "dd99e41e-7a84-7b44-0c65-8eb58d4e297f",
-  "sha256AplicarYAprobar": "841e4cf900bd082f0bdb187e8d070b21f4f88d5f851830857d64dc5c77ced31e",
+  "revisionNueva": "ce22b23e-bd3f-220d-71a7-3ee354dc6f07",
+  "sha256AplicarYAprobar": "5e1b2dc8cc4d6606e39f430acaee51d9b21502adeb146ac9143387526cbc6593",
   "pruebas": [
     "inventario: una transacción serializable; guarda (publicada 4601a164 con su huella 4601a1640884…, catálogo no retirado, fecha del 26/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (la región «Latinoamérica» y las 7 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 79 en fuentes, 32 en plataformas, 130 en plataforma_fuentes, 32 en alertas, 42 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
     "cadena de producción (seed antes de ARTEX + 23 lotes, del 2026-10-22 a la 2026-11-26.2): la publicada es la 4601a164",
@@ -15,6 +15,7 @@
     "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 32/32 con 2 en camino; vale el 26/11 y el 03/12 y caduca el 04/12; las 21 tarjetas de antes se ven igual y las 11 nuevas tienen mínimo, acceso desde España y salida",
     "sincronizador real con estas vistas: 32 plataformas, 32 ofertas y 5 descartadas (CSV de 37 filas); sin añadir las 18 páginas nuevas a la lista cerrada las fichas no se generan; con la lista nueva salen 69 páginas, las 18 nuevas incluidas y en el sitemap",
     "worker con la lista nueva: las 11 fichas de oferta y las 7 de plataforma nuevas se sirven",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/684c4976-e318-5eb6-ab51-eb259042ad6c/scratchpad/export263b lo que leería un visitante después de aplicar",
     "si la revisión nueva y sus plataformas ya estaban dentro, el aplicador la aprueba y la publica sin duplicar ni cambiar filas",
     "falla y no deja nada: la publicada no es la 2026-11-26.2 (es la 2026-11-26, 47b53d7d) → Publicación distinta de la revisión anterior prevista: 47b53d7d-e223-b1fb-dc78-f06745466eef. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
@@ -30,7 +31,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
       "falla": false,
-      "publicada": "dd99e41e-7a84-7b44-0c65-8eb58d4e297f"
+      "publicada": "ce22b23e-bd3f-220d-71a7-3ee354dc6f07"
     },
     {
       "caso": "la publicada no es la 2026-11-26.2 (es la 2026-11-26, 47b53d7d)",
@@ -130,7 +131,7 @@
     },
     "finexity-bono-2026-2030-serie-b": {
       "minimo": "1000 €",
-      "espana": "Sin comprobar si se puede contratar desde España",
+      "espana": "No disponible desde España según la fuente",
       "salida": "Salida: Al vencimiento (27/11/2030); sin mercado secundario líquido",
       "estado": "Datos con fuente y fecha · consulta las condiciones",
       "vencida": false
@@ -144,14 +145,14 @@
     },
     "securitize-hinc": {
       "minimo": "Desde 100.000 USD",
-      "espana": "Sin comprobar si se puede contratar desde España",
+      "espana": "No disponible desde España según la fuente",
       "salida": "Reembolso: Diario, con pago objetivo T+1 (no garantizado)",
       "estado": "Datos con fuente y fecha · consulta las condiciones",
       "vencida": false
     },
     "blackrock-hkd-digital-liquidity": {
       "minimo": "Sin mínimo publicado en la web de BlackRock",
-      "espana": "Sin comprobar si se puede contratar desde España",
+      "espana": "No disponible desde España según la fuente",
       "salida": "Reembolso: Por el distribuidor; BlackRock no publica plazos en esta página",
       "estado": "Datos con fuente y fecha · consulta las condiciones",
       "vencida": false

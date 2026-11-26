@@ -2539,8 +2539,12 @@ for(const [nombre,alterar] of [
     /background:var\(--noche\)/.test(cab)&&/background:var\(--noche\)/.test(barra)&&!/backdrop-filter/.test(cab+barra));
   vm.runInContext("emiColeccion='principales';emiCat='Tesoro y fondos';emiBusquedaLocal='';pintarEmisiones()",c);
   const filtrada=p.obtiene('emiLista').innerHTML,anuncio=p.obtiene('movilOfertasEstado').textContent;
-  vm.runInContext("emiCat='';pintarEmisiones()",c);
+  // La selección (las que pasan las 5 comprobaciones) va arriba con «Las más al día primero»; por defecto
+  // (26/11/2026) la lista va de la más nueva a la más antigua, sin ese bloque.
+  const ordenAntes=vm.runInContext('emiOrden',c);
+  vm.runInContext("emiCat='';emiOrden='cierra';pintarEmisiones()",c);
   const sin=p.obtiene('emiLista').innerHTML,dt=d(cssMovil,'#emiLista .escaparate-oferta .escaparate-datos-clave dt');
+  vm.runInContext("emiOrden="+JSON.stringify(ordenAntes)+";pintarEmisiones()",c);
   prueba('al filtrar, el recuento queda a la vista',
     /^\d+ de \d+ principales$/.test(anuncio)&&filtrada.includes('<p class="catalogo-recuento" aria-hidden="true">'+anuncio+'</p>')&&
     !sin.includes('catalogo-recuento')&&!/opacity/.test(d(css,'.emis-colecciones button em')));
@@ -2587,17 +2591,23 @@ for(const [nombre,alterar] of [
       (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto)&&
       o.estadoRevision==='actual'&&!r.vencida;};
   const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
-  vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);
+  // La Selección va arriba de Principales con «Las más al día primero»; por defecto (26/11/2026) la lista
+  // va de la más nueva a la más antigua, sin ese bloque.
+  const ordenAntes=vm.runInContext('emiOrden',c);
+  vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';emiOrden='cierra';pintarEmisiones()",c);
   // Desde el rediseño de Inicio (10/11/2026) la Selección va en el carrusel «Ofertas», con «Pasa las 5 comprobaciones».
+  // El carrusel enseña las 6 más nuevas (21/11/2026): cada tarjeta lleva el distintivo si, y solo si, pasa las 5.
   const tarjetasInicio=p.obtiene('relNuevasLista').innerHTML.split('<li class="rel-tarjeta').slice(1);
+  const enInicio=tarjetasInicio.map(t=>(t.match(/data-perfil-oferta="([^"]+)"/)||[])[1]);
   const inicioSel=tarjetasInicio.filter(t=>/Pasa las 5 comprobaciones/.test(t)).map(t=>(t.match(/data-perfil-oferta="([^"]+)"/)||[])[1]).sort();
   const lista=p.obtiene('emiLista').innerHTML;
+  vm.runInContext("emiOrden="+JSON.stringify(ordenAntes)+";pintarEmisiones()",c);
   const bloqueSel=lista.slice(lista.indexOf('catalogo-seleccion'),lista.indexOf('emiRestoTit'));
   const buscarSel=[...bloqueSel.matchAll(/data-oferta-detalle="([^"]+)"/g)].map(m=>m[1]).sort();
   // Sin fijar la redacción de los avisos (decisión de Víctor, 04/11/2026).
   prueba('la Selección son las ofertas con las 5 comprobaciones, en el carrusel de Inicio y en Principales',
-    esperadas.length>0&&JSON.stringify(inicioSel)===JSON.stringify(esperadas)&&JSON.stringify(buscarSel)===JSON.stringify(esperadas)&&
-    p.obtiene('relEscaparate').hidden===false&&lista.indexOf('catalogo-seleccion')<lista.indexOf('emiRestoTit'));
+    esperadas.length>0&&enInicio.length>0&&JSON.stringify(inicioSel)===JSON.stringify(esperadas.filter(x=>enInicio.includes(x)))&&JSON.stringify(buscarSel)===JSON.stringify(esperadas)&&
+    p.obtiene('relEscaparate').hidden===(inicioSel.length===0)&&lista.indexOf('catalogo-seleccion')<lista.indexOf('emiRestoTit'));
   const criterios=p.obtiene('inicioCriterios').innerHTML;
   // ESPEC-INICIO §2.8: las 5 comprobaciones van abiertas y en llano, en el orden del archivo.
   // Rediseño del 10/11/2026: sin superlativo («las mejor documentadas»); la tarjeta dice «Pasa las 5
