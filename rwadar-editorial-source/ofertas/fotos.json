@@ -104,10 +104,10 @@
   },
   "randhartingergasse-9-viena": {
    "modelo": "realvisxl",
-   "semilla": 199,
-   "encuadre": "70% 45%",
+   "semilla": 200,
+   "encuadre": "70% 50%",
    "concepto": "un ático reformado sobre un edificio clásico de Viena, parecido al real",
-   "prompt": "looking up from the street at a classic Viennese apartment building with a renovated top floor with dormer windows and a small roof terrace, late afternoon sun on the facade"
+   "prompt": "renovated attic apartment with dormer windows and a small roof terrace with plants on top of a classic Viennese apartment building, seen from a neighbouring rooftop, afternoon"
   },
   "spiko-letras-del-tesoro-euro": {
    "modelo": "realvisxl",
@@ -118,10 +118,10 @@
   },
   "prosegur-digital-gold": {
    "modelo": "realvisxl",
-   "semilla": 149,
+   "semilla": 150,
    "encuadre": "70% 55%",
    "concepto": "unos lingotes de oro en una cámara acorazada",
-   "prompt": "a neat row of plain gold bars on a dark tray inside a modern bank vault with brushed steel safe deposit lockers, plain overhead lighting"
+   "prompt": "a neat stack of plain gold bars on a dark wooden table inside a bank vault room, a heavy round steel vault door in the background, plain overhead lighting"
   },
   "aktionariat": {
    "modelo": "realvisxl",
@@ -132,10 +132,10 @@
   },
   "boss-info": {
    "modelo": "realvisxl",
-   "semilla": 103,
+   "semilla": 104,
    "encuadre": "70% 55%",
-   "concepto": "una pequeña oficina junto a una granja en los prados del Jura suizo, no la de la empresa",
-   "prompt": "small modern two-storey office building next to a traditional Swiss farmhouse in green meadows at the foot of the Jura mountains, summer morning"
+   "concepto": "una pequeña oficina moderna en un pueblo suizo al pie del Jura, no la de la empresa",
+   "prompt": "small modern two-storey office building with large windows and a flat roof in a Swiss village surrounded by green meadows, Jura mountains behind, summer morning"
   },
   "switzerlend": {
    "modelo": "realvisxl",
