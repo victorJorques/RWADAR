@@ -7,7 +7,7 @@
  "plataformas": [
   {
    "slug": "alterna",
-   "nombre": "ALTERNA (Mitsui & Co. Digital Asset Management)",
+   "nombre": "ALTERNA",
    "publica": {
     "categoria_slug": "inmobiliario",
     "region_slug": "asia-pacifico",
@@ -2398,7 +2398,7 @@
     "tipo": "rendimiento",
     "titulo": "Mitsui & Co.: primer bono digital para particulares en Japón, en pre-solicitud (ALTERNA)",
     "plataformaSlug": "alterna",
-    "plataformaNombre": "ALTERNA (Mitsui & Co. Digital Asset Management)",
+    "plataformaNombre": "ALTERNA",
     "categoria": "Crédito privado",
     "pais": "JP",
     "resumen": "Primer bono digital sin garantía de Mitsui & Co. para particulares, a 1 año, con un tipo provisional del 1,80 % al 2,40 % anual y calificación AA (R&I). Está en pre-solicitud en ALTERNA; el tipo se fija el 05/01/2027.",

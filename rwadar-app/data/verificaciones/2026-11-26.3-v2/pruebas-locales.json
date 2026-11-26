@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-26T20:23:25.924Z",
+  "ejecutadoEl": "2026-11-26T20:39:26.280Z",
   "etiqueta": "2026-11-26.3",
   "revisionAnterior": "4601a164-0884-8198-2e8a-23998e4e3120",
-  "revisionNueva": "e74636ea-b683-d40c-18dd-edb788b7ded8",
-  "sha256AplicarYAprobar": "63b349048bbf4784278d0f6baa506d5a32f6e54664bb3309d9a4edf31ba70c5e",
+  "revisionNueva": "dd99e41e-7a84-7b44-0c65-8eb58d4e297f",
+  "sha256AplicarYAprobar": "841e4cf900bd082f0bdb187e8d070b21f4f88d5f851830857d64dc5c77ced31e",
   "pruebas": [
     "inventario: una transacción serializable; guarda (publicada 4601a164 con su huella 4601a1640884…, catálogo no retirado, fecha del 26/11 al 03/12, destino sin otra identidad); en public.* solo inserts idempotentes de filas nuevas (la región «Latinoamérica» y las 7 plataformas, con guarda y comprobación de que quedan exactas); inserts idempotentes en rwadar_catalogo (1 en revisiones, 79 en fuentes, 32 en plataformas, 130 en plataforma_fuentes, 32 en alertas, 42 en alerta_fuentes, 32 en ofertas); aprobación al final; sin DDL, borrados, updates en public, permisos, Auth ni funciones",
     "cadena de producción (seed antes de ARTEX + 23 lotes, del 2026-10-22 a la 2026-11-26.2): la publicada es la 4601a164",
@@ -31,7 +31,7 @@
     {
       "caso": "la revisión nueva ya estaba importada como borrador (con sus plataformas)",
       "falla": false,
-      "publicada": "e74636ea-b683-d40c-18dd-edb788b7ded8"
+      "publicada": "dd99e41e-7a84-7b44-0c65-8eb58d4e297f"
     },
     {
       "caso": "la publicada no es la 2026-11-26.2 (es la 2026-11-26, 47b53d7d)",

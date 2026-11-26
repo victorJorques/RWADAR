@@ -1479,7 +1479,7 @@ prueba(`las ${N_PLATAFORMAS} empresas usan portadas WebP editoriales propias sin
       entrada.sha256 === sha256 && /^[a-f0-9]{64}$/.test(entrada.sha256) &&
       entrada.origenVisual === 'representacion-editorial-generada' && entrada.pagina === null &&
       entrada.imagenOrigen === null && /^https:\/\//.test(entrada.paginaReferencia) &&
-      entrada.creador === 'RWAdar' && /ImageGen/.test(entrada.herramienta || '') &&
+      entrada.creador === 'RWAdar' && /ImageGen|RealVisXL/.test(entrada.herramienta || '') &&
       entrada.tipoVisual === 'Representación editorial generada' &&
       /sin metadatos/i.test(entrada.metodo || '') &&
       bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&

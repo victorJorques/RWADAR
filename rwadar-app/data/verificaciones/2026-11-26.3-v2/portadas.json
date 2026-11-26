@@ -1,0 +1,61 @@
+{
+  "nota": "Portadas de las 7 plataformas nuevas: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista). portadas.py dibuja los maestros en rwadar-editorial-source/<maestro>; despues-de-aplicar.mjs los convierte a 720×720 sin metadatos y los apunta en rwadar-site/plataformas/fuentes.json.",
+  "portadas": [
+    {
+      "empresa": "ALTERNA",
+      "maestro": "alterna.webp",
+      "semilla": 301,
+      "descripcionVisual": "Edificio de viviendas en una calle tranquila de Tokio, el tipo de inmueble que ofrece en valores digitales.",
+      "prompt": "modern mid-rise residential apartment building on a quiet street in Tokyo with bicycles parked by the entrance, overcast day",
+      "paginaReferencia": "https://app.alterna-z.com/offerings"
+    },
+    {
+      "empresa": "Amundi",
+      "maestro": "amundi.webp",
+      "semilla": 307,
+      "descripcionVisual": "Edificio de oficinas genérico en un bulevar de París, sede típica de una gestora europea de fondos.",
+      "prompt": "generic modern office building of glass and pale stone on a tree-lined boulevard in Paris, morning",
+      "paginaReferencia": "https://about.amundi.com/article/amundi-extends-tokenisation-index-investing"
+    },
+    {
+      "empresa": "BlackRock",
+      "maestro": "blackrock.webp",
+      "semilla": 311,
+      "descripcionVisual": "Oficina vacía con vistas a los rascacielos de Hong Kong, donde se distribuye su fondo de liquidez en HKD.",
+      "prompt": "empty modern office corner with floor-to-ceiling windows overlooking Hong Kong high-rise towers, daylight",
+      "paginaReferencia": "https://www.blackrock.com/hk/en/investment-ideas/hkd-digital-liquidity-fund"
+    },
+    {
+      "empresa": "FINEXITY",
+      "maestro": "finexity.webp",
+      "semilla": 313,
+      "descripcionVisual": "Oficina en un antiguo almacén de ladrillo de Hamburgo, ciudad de la plataforma de valores digitales.",
+      "prompt": "bright modern office interior with desks, laptops and plants inside a converted red-brick warehouse in Hamburg, daylight",
+      "paginaReferencia": "https://finexity-group.com/investor-relations/bond-2026-2030"
+    },
+    {
+      "empresa": "Groma",
+      "maestro": "groma.webp",
+      "semilla": 317,
+      "descripcionVisual": "Casa de varias viviendas de madera en Massachusetts, el tipo de inmueble de alquiler de su fondo.",
+      "prompt": "renovated wooden multi-family house with a front porch on a residential street in Massachusetts, summer afternoon",
+      "paginaReferencia": "https://www.gromareit.com/"
+    },
+    {
+      "empresa": "Liqi",
+      "maestro": "liqi.webp",
+      "semilla": 331,
+      "descripcionVisual": "Edificios de oficinas de la avenida Paulista de São Paulo, donde operan las empresas que se financian en Liqi.",
+      "prompt": "office buildings along Avenida Paulista in Sao Paulo seen from street level, cloudy day",
+      "paginaReferencia": "https://tokens.liqi.com.br/tokens"
+    },
+    {
+      "empresa": "TOHKN",
+      "maestro": "tohkn.webp",
+      "semilla": 337,
+      "descripcionVisual": "Vista de San Salvador con el volcán detrás, ciudad de las emisiones de activos digitales de TOHKN.",
+      "prompt": "view over San Salvador with modern office buildings and the green San Salvador volcano behind, clear day",
+      "paginaReferencia": "https://www.tohkn.com/en/issuances"
+    }
+  ]
+}

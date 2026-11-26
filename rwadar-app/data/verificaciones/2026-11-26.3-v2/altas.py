@@ -18,7 +18,7 @@ REGION = {'slug': 'latinoamerica', 'nombre': 'Latinoamérica'}
 
 # ------------------------------------------------------------------ plataformas
 PLATAFORMAS = [
-  {'slug': 'alterna', 'nombre': 'ALTERNA (Mitsui & Co. Digital Asset Management)',
+  {'slug': 'alterna', 'nombre': 'ALTERNA',
    'publica': {'categoria_slug': 'inmobiliario', 'region_slug': 'asia-pacifico', 'actor': 'Marketplace', 'acceso': 'Minorista', 'ticket': 'Medio',
                'cadenas': 'No la publica', 'web': U['alterna-ofertas'],
                'aval': 'La opera Mitsui & Co. Digital Asset Management, que en su web figura como intermediario financiero registrado en Japón (Kanto Local Finance Bureau, n.º 3277).',
@@ -368,7 +368,7 @@ OFERTAS = [
      'minimoCorto': 'Sin publicar', 'salidaCorta': 'Sin publicar', 'puntos': []},
     {'escena': 'tesoro', 'lugar': 'Luxemburgo', 'pasos': ['Monetario tokenizado en euros', 'Aún no admite suscripciones', 'Se abrirá a minoristas'], 'concepto': 'la ciudad de Luxemburgo', 'foto': {'semilla': 79, 'encuadre': '70% 55%', 'concepto': 'el casco antiguo de la ciudad de Luxemburgo sobre el valle', 'prompt': 'Luxembourg City old town on cliffs above the green Alzette valley, old stone houses and a church spire, autumn afternoon'}}),
 
-  oferta('alterna-bono-digital-mitsui', 'alterna', 'ALTERNA (Mitsui & Co. Digital Asset Management)', 'Mitsui & Co.: primer bono digital para particulares en Japón, en pre-solicitud (ALTERNA)', 'Crédito privado', 'JP', 'JPY', 'en_camino', None,
+  oferta('alterna-bono-digital-mitsui', 'alterna', 'ALTERNA', 'Mitsui & Co.: primer bono digital para particulares en Japón, en pre-solicitud (ALTERNA)', 'Crédito privado', 'JP', 'JPY', 'en_camino', None,
     'Primer bono digital sin garantía de Mitsui & Co. para particulares, a 1 año, con un tipo provisional del 1,80 % al 2,40 % anual y calificación AA (R&I). Está en pre-solicitud en ALTERNA; el tipo se fija el 05/01/2027.',
     'alterna-ofertas', None,
     [{'etiqueta': 'Tipo provisional', 'valor': '1,80 % a 2,40 % anual antes de impuestos (se fija el 05/01/2027)'},
