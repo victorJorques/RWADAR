@@ -129,14 +129,19 @@ test('la serie conserva los últimos 400 días hasta el dato actual y sustituye 
   const inicio = Date.parse('2025-01-01T00:00:00Z');
   const fotos = Array.from({ length: 500 }, (_, i) => foto(new Date(inicio + i * 86400000).toISOString().slice(0, 10), 1000 + i));
   const h = { version: 1, fuente: 'CoinGecko', fotos };
-  const actual = foto(fotos[450].fecha, 9999);
+  // El dato en vivo es del mismo día que la última foto guardada: la sustituye.
+  const actual = foto(fotos[499].fecha, 9999);
   const r = t.resumir({ historico: h, actual });
   assert.equal(r.serie.length, 400);
-  assert.deepEqual(r.serie[0], { fecha: fotos[51].fecha, valor: fotos[51].total.valor });
+  assert.deepEqual(r.serie[0], { fecha: fotos[100].fecha, valor: fotos[100].total.valor });
   assert.deepEqual(r.serie[399], { fecha: actual.fecha, valor: 9999 });
-  assert.equal(fotos[450].total.valor, 1450, 'el histórico de entrada conserva su valor');
-  assert.deepEqual(t.resumir({ historico: h, actual: foto('2024-12-31', 88) }).serie,
-    [{ fecha: '2024-12-31', valor: 88 }], 'una base anterior al histórico no incorpora fechas posteriores');
+  assert.equal(fotos[499].total.valor, 1499, 'el histórico de entrada conserva su valor');
+  // Una lectura en vivo atrasada (anterior a la foto guardada más reciente) no la desplaza
+  // (#206): la serie sigue terminando en la foto guardada, sin el dato atrasado.
+  const atrasada = t.resumir({ historico: h, actual: foto('2024-12-31', 88) }).serie;
+  assert.equal(atrasada.length, 400);
+  assert.deepEqual(atrasada[399], { fecha: fotos[499].fecha, valor: 1499 });
+  assert.ok(!atrasada.some(p => p.fecha === '2024-12-31'), 'el dato atrasado no entra en la serie');
 });
 
 test('sin CoinGecko: la foto guardada más reciente, con su fecha; sin nada, un estado vacío sin cifras', () => {
