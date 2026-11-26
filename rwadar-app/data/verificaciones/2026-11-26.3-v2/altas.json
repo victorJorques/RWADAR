@@ -1277,10 +1277,10 @@
     ],
     "concepto": "oficinas de pequeñas empresas",
     "foto": {
-     "semilla": 233,
+     "semilla": 234,
      "encuadre": "70% 55%",
-     "concepto": "el taller de una pequeña empresa, imagen genérica de las empresas que piden el crédito",
-     "prompt": "small textile workshop with sewing machines, fabric rolls and wooden tables, empty, afternoon daylight through the windows"
+     "concepto": "el taller de carpintería de una pequeña empresa, imagen genérica de las empresas que piden el crédito",
+     "prompt": "small family-run carpentry workshop with wooden workbenches, unfinished chairs and planks of wood, empty, afternoon daylight through large windows"
     }
    }
   },
