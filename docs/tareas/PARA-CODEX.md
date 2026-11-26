@@ -6,6 +6,15 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de noviembre de 2026 · ChatGPT · Integridad del gráfico (preparado, no publicado)
+
+- Rama `chatgpt/grafico-integridad-2026-11-26`. Motor compartido y envoltorio web en commits `e4e1bb4` y `4394173`; regresiones en `72f3c6c`.
+- El histórico real de `datos-tokenizacion` tiene 16 fotos, 10–25/11, y la serie anual 30 de 40 tokens (86,2 % de cobertura declarada). La semilla de main no es el histórico completo. El dato del 11/11 conserva +123,9998 % bruto: se normaliza a null al validar, sin cambiar su valor de mercado. Se evita que una lectura antigua desplace la última foto y que la variación de la categoría se atribuya a una muestra con huecos.
+- Comprobaciones ejecutadas contra el motor y el histórico real: cinco condiciones dirigidas correctas; envoltorio web idéntico al motor. Se añaden pruebas al suite existente; no se ha ejecutado npm test completo ni verificado el despliegue. No se ha modificado main, rama de datos ni producción. Pendiente CI y revisión de interacción con #204 y #205.
+- Mantener CoinGecko como metodología del gráfico existente hasta verificar licencia/API y diseñar una migración separada si procede. No mezclar con RWA.xyz.
+
+---
+
 ## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · PUBLICADO
 
 - **Publicado:**

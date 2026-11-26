@@ -1,0 +1,73 @@
+{
+  "fecha": "2026-11-26",
+  "nota": "Cambios del radar comprobados a mano el 26/11/2026. Parte de la publicada 2026-11-21. Hoy se contrastan de nuevo las 69 fuentes del radar con las capturas de las 18:17–18:22 UTC.",
+  "fuentes": {
+    "blocksquare-terms": {
+      "antes": {
+        "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+        "titulo": "Blocksquare certified partner terms template"
+      },
+      "url": "https://blocksquare.io/",
+      "titulo": "Blocksquare (su documentación para socios pide iniciar sesión)",
+      "motivo": "El 26/11/2026 a las 18:23:50 UTC, docs.blocksquare.io (incluidas las condiciones para socios certificados) redirige a la pantalla de inicio de sesión de GitBook («Sign in to GitBook»): un visitante ya no puede leerlas. Se cita la web pública de Blocksquare, que sigue marcando «Regulation · Available soon», y se cambian los dos textos que se apoyaban en esas condiciones."
+    }
+  },
+  "comprobacionesCambiadas": {
+    "blocksquare-terms": {
+      "antes": [
+        "CP\\\\?_COMPANY",
+        "OFAC",
+        "not a financial institution"
+      ],
+      "ahora": [
+        "Regulation\\W+Available soon",
+        "Ljubljana"
+      ],
+      "motivo": "Las condiciones para socios ya no se pueden leer sin sesión (26/11/2026, 18:23:50 UTC). La fuente pasa a ser la web pública, que dice «Regulation» «Available soon» y su sede en Ljubljana."
+    }
+  },
+  "plataformas": {
+    "blocksquare": {
+      "licenciaRegistro": {
+        "antes": "Ya se pueden leer sus condiciones de uso. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+        "detalle": "Sus condiciones de uso para socios piden ahora iniciar sesión y no se pueden leer como visitante. Su web no muestra entidad ni registro y marca 'Regulation' como 'Available soon'.",
+        "motivo": "docs.blocksquare.io redirige a la pantalla de inicio de sesión de GitBook (26/11/2026, 18:23:50 UTC)."
+      },
+      "acceso": {
+        "antes": "Los términos son una plantilla para operadores de portales: exigen KYC y control de sanciones (ONU, UE, Reino Unido, OFAC) y dejan en blanco la jurisdicción. El acceso real debe confirmarse con el operador de cada portal y activo.",
+        "detalle": "Blocksquare vende su tecnología a operadores de portales y no publica condiciones de acceso que un visitante pueda leer. El acceso real debe confirmarse con el operador de cada portal y activo.",
+        "motivo": "Las condiciones que respaldaban el texto anterior ya no se pueden leer sin sesión (26/11/2026, 18:23:50 UTC); la web pública ofrece productos para empresas (protocolo y plataforma de marca blanca)."
+      }
+    }
+  },
+  "verificacionesManuales": {
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "La página de REGAFI no carga sus datos en la captura (se pintan con JavaScript). Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 26/11/2026 a las 18:23:21 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6, igual que el 21/11)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ]
+    },
+    "centrifuge-terms": {
+      "motivo": "La captura recibe un 403 del servidor; la misma página, abierta con un navegador normal, carga con su texto.",
+      "metodo": "Página renderizada con Chromium (Playwright, sin sesión) el 26/11/2026 a las 18:25:57 UTC; copia del texto visible en radar-manual/centrifuge-terms.txt (SHA-256 9b2bc44428c3023c9ce4e9fba2e5572f1e6c8d85db80c6f39bc337051cb0113e)",
+      "url": "https://centrifuge.io/terms",
+      "literales": [
+        "Neither Centrifuge nor any affiliated entity is licensed in your jurisdiction and we do not promote or market tokens",
+        "may be restricted to certain types of sophisticated, accredited or qualified investors"
+      ]
+    },
+    "paxg-occ": {
+      "motivo": "La captura no recibió el PDF; descargado con curl, el servidor sí lo entrega.",
+      "metodo": "PDF descargado con curl el 26/11/2026 a las 18:23:34 UTC (SHA-256 b8cbc850db1698718fbe2d6bfe95659ed6db530ae614a5537f6cb66c6497a274); texto en radar-manual/occ-trust-by-name.txt (SHA-256 7e48e99501b8e4e5a1941ee5a2c6df605ddec8b9e7ead747ad2e05f46cd92239)",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "literales": [
+        "Trust Banks Active As of 10/31/2026",
+        "25379 Paxos Trust Company, National Association"
+      ]
+    }
+  }
+}

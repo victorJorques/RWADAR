@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "fase": "final",
+  "fecha": "2026-11-25",
+  "edicionSha256": "e0c8656b58db792a1a0ace0823c8d2216ad95420c2f80fdd65e822d26f9a117d",
+  "reglas": [
+    {
+      "id": "V-1",
+      "ok": true
+    },
+    {
+      "id": "V-2",
+      "ok": true
+    },
+    {
+      "id": "V-3",
+      "ok": true
+    },
+    {
+      "id": "V-4",
+      "ok": true
+    },
+    {
+      "id": "V-5",
+      "ok": true
+    },
+    {
+      "id": "V-6",
+      "ok": true
+    },
+    {
+      "id": "V-7",
+      "ok": true
+    },
+    {
+      "id": "V-8",
+      "ok": true
+    },
+    {
+      "id": "V-9",
+      "ok": true
+    },
+    {
+      "id": "V-10",
+      "ok": true
+    },
+    {
+      "id": "V-11",
+      "ok": true
+    },
+    {
+      "id": "V-12",
+      "ok": true
+    },
+    {
+      "id": "V-13",
+      "ok": true
+    },
+    {
+      "id": "V-14",
+      "ok": true
+    },
+    {
+      "id": "V-15",
+      "ok": true
+    },
+    {
+      "id": "V-16",
+      "ok": true
+    }
+  ]
+}

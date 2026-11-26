@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "pase": 1,
+  "fecha": "2026-11-25",
+  "edicionSha256": "e0c8656b58db792a1a0ace0823c8d2216ad95420c2f80fdd65e822d26f9a117d",
+  "veredicto": "conforme",
+  "noticias": [
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "f6ba83be889aeeda110e3444959cb621194f02881ba694f775a248e8d71681e2",
+        "caida": false
+      },
+      "literal": "announced today (25 November) the official launch of CMU Digital Asset Platform",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+        "caida": false
+      },
+      "literal": "La Comisión Nacional del Mercado de Valores (CNMV) hace públicas las advertencias recibidas a través de los supervisores internacionales",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "cc5ec63bbd5752f4129584084ca0bc5a3f7616a467d929dcca13298cc8a05374",
+        "caida": false
+      },
+      "literal": "published a Tokenisation Reference Model (TRM) to support standardisation discussions with market participants",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "ca2fdc5bc0bfad5143eda19c93e392ec807691f94c36403e2d705b528a761e94",
+        "caida": false
+      },
+      "literal": "approved the acceptance of marketable assets issued on DLT platforms licensed under the EU DLT Pilot Regime Regulation as eligible collateral",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "ae112d1aeb327651ae4f54f04afbef06947cdc6821efc4bea4140b555006e585",
+        "caida": false
+      },
+      "literal": "The new Fund will be available to retail investors in Austria, France, Germany, Luxembourg, the Netherlands, Portugal and Spain",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "okxice-mercado-24-horas-eeuu",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "eb8d8f207849ccbc0362e27c434d5e9c1c83dc102b3184abc712f50a882155f0",
+        "caida": false
+      },
+      "literal": "eligible U.S. customers can trade available assets around the clock on OKXICE’s Tokenized Securities Venue",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "hsbc-hong-kong-fondo-tokenizado-100-hkd",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "2bc0a622891ce44bbe88b18e4b453065d77f4ef67feecf8d3910149169ea1acf",
+        "caida": false
+      },
+      "literal": "Minimum subscription of HKD 100 (funded with RCHKD 100)",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    },
+    {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "veredicto": "confirmada",
+      "fuente": {
+        "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+        "http": 200,
+        "horaUtc": "2026-11-25T16:57:13Z",
+        "sha256": "c0085949501850796cd36e3b643fc8b4153bee6ccf597ce4cd6fdf20514b0915",
+        "caida": false
+      },
+      "literal": "Insbesondere wird der Kauf eines fingierten Krypto-Tokens „VLVI“ beworben.",
+      "titularRespaldado": true,
+      "fotoAdecuada": true,
+      "personas": false,
+      "fechaCorrecta": true
+    }
+  ],
+  "hoyCorrecto": true,
+  "faltaAlgo": [],
+  "correcciones": []
+}
