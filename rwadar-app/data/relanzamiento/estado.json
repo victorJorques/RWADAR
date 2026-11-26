@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-22",
+  "actualizadoEl": "2026-11-26",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Noticias del sector del 22/11/2026, escritas y verificadas por la mañana automática, sobre el catálogo fe0cfaa8",
+  "nota": "Catálogo 2026-11-26.2 (4601a164) aplicado y sincronizado; noticias del 25/11; gráfico #206",
   "revisionAprobada": {
-    "commit": "f68f4c35ff96380c57e9680f77ecfd278f7026f5",
-    "contenidoSha256": "sha256:6eb21f1e34f8bfaf033a74d2ff1d3aa2a7bb9a88b4d6d6027683f447efdc57f9",
+    "commit": "063db88861606c484d3c97d5e04d1699f5d39097",
+    "contenidoSha256": "sha256:648ae7349ae0108f226f2a24ba1c73ca2d8b377eca9d7e444eae266a05f53de4",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
