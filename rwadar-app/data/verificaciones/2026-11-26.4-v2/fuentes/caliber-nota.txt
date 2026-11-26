@@ -1,0 +1,117 @@
+Caliber Goes Live with Tokenization of Three More Real Estate Offerings - Caliber
+X
+
+NEW OFFERING: Canyon Village - Multifamily Development in Phoenix
+
+LEARN MORE
+NAVIGATION
+OVERVIEW
+OFFERINGS & ASSETS
+FOR ADVISORS
+DIGITAL ASSETS
+NEWS & INSIGHTS
+CONTACT
+INVESTOR LOGIN
+SOCIAL LINKS
+LINKEDIN
+FACEBOOK
+TWITTER
+INSTAGRAM
+YOUTUBE
+VIMEO
+
+Call us at 480-295-7600
+
+OVERVIEW
+OFFERINGS & ASSETS
+FOR ADVISORS
+DIGITAL ASSETS
+NEWS & INSIGHTS
+CONTACT
+INVESTOR LOGIN
+CRYPTO MEDIA MENTIONS REAL ESTATE
+Caliber Goes Live with Tokenization of Three More Real Estate Offerings
+
+Two Caliber-Hyatt Studios hotel developments and the Caliber-HS Feeder Fund added to Caliber’s tokenized offerings as the Company develops valuation tools for future borrowing against investment interests
+
+SCOTTSDALE, Ariz., Nov. 04, 2026 (GLOBE NEWSWIRE) — Caliber (Nasdaq: CWD), a diversified real estate and digital asset management platform, today announced that it has gone live with three additional tokenized real estate investment offerings: Caliber-Hyatt Studios Steamboat, Caliber-Hyatt Studios Phoenix/TSMC and the Caliber-HS Feeder Fund. Combined, the three offerings represent up to $85 million in offered equity. Tokenization is designed to give investors a clearer digital record of what they own and, through Caliber’s Automated NAV (CNAV), a clearer view of its value. Together with lender rights, Caliber believes this will enable investors to borrow against their tokenized investment interests while retaining ownership. The launch follows the Company’s first tokenization, PURE Pickleball & Padel, and extends the same ownership infrastructure to both individual developments and a fund structure.
+
+Caliber-Hyatt Studios Steamboat is a Hyatt Studios hotel development in Steamboat Springs, Colorado, which broke ground in July 2026.
+Caliber-Hyatt Studios Phoenix/TSMC is a Hyatt Studios hotel development in North Phoenix, Arizona, located near Taiwan Semiconductor Manufacturing Company’s Arizona campus.
+The Caliber-HS Feeder Fund is a fund-level investment vehicle rather than a single asset or project, designed to provide diversified exposure to Caliber’s extended-stay hotel developments.
+
+
+As of today, investors in the three offerings can choose to receive a tokenized digital ownership certificate (the “Token”) or opt for the existing method of a paper certificate. Investors who choose the tokenized option receive a digital representation of their investment interest and hold the Token in a digital wallet. The underlying investment remains an interest in the applicable Caliber offering, governed by its offering documents.
+
+Tokenization is designed to create a tangible economic benefit for real estate investors by first reducing the costs of investment management borne by both the investor and the fund they invested in. Once the token is established, the automation of the investor’s value calculation and the addition of transparent, verified financial metrics transform the investor’s minority share of a private fund from a piece of paper in their desk to a digital security.
+
+“With our unique hotel developments now offering a way to own shares digitally, we anticipate that the ecosystem of prospective investors will broaden and that their satisfaction with the ownership experience will deepen,” said Chris Loeffler, Chief Executive Officer of Caliber. “When investors and their advisors realize our funds are easier to understand, track, manage within their broader portfolio, gift through their estate, and secure, we think the benefits will speak for themselves. If venues for liquidity emerge, either by giving our clients the ability to borrow against their shares or to resell them through an exchange, Caliber will have solved for the two most challenging aspects of private real estate investing: lack of a clear view of the value of shares and lack of liquidity.”
+
+A transparent, reliable net asset value (NAV) for shares in a private real estate investment fund is the industry’s opportunity through tokenization. Through the CNAV product Caliber is developing, Caliber believes it will be able to automate valuation calculations over time, giving investors greater transparency into the value of their investment interests. This includes shifting valuation strategies through asset lifecycles and utilizing internal and external data that can be validated in the CNAV calculation to ensure accuracy. CNAV reflects Caliber’s own proprietary valuation standards for private real estate funds. Clients of Caliber Tokenization Services can choose to adopt CNAV or apply their own valuation methodology. The Company believes this process is critical to ascribe on-chain collateral value to real estate fund interests.
+
+If automated valuation is the private real estate industry’s first significant challenge, lack of liquidity is its second. Caliber’s tokenization projects are seeking to address liquidity as well by developing a set of lender rights to open the possibility of borrowing against tokenized Caliber equities and implementing automated compliance to allow for secondary share sales on one or more exchanges. While tokenization does not guarantee liquidity, and any transfer remains subject to the applicable offering documents and transfer restrictions, the process of making the security digital via a token is an important first step toward liquidity.
+
+The Token is designed to serve as a digital ownership record that improves visibility into ownership positions, automates portions of fund administration and compliance, supports investor communications and makes interests held by a larger number of investors easier to administer. As with the PURE Pickleball & Padel tokenization, the implementation incorporates Chainlink’s Automated Compliance Engine (ACE) to support investor verification, know-your-customer and anti-money-laundering review, sanctions screening and transfer controls.
+
+The expansion also follows the formation of Caliber Tokenization Services, LLC (“CTS”), the Company’s division established to provide tokenization services under the brand Tokenized by Caliber. CTS combines institutional technology providers with Caliber’s proprietary smart contracts and implementation process to serve both Caliber’s own funds and offerings and real estate portfolios owned by family offices seeking the potential benefits of tokenization.
+
+These three offerings advance Caliber’s previously announced program to tokenize approximately $100 million of Managed Assets. With PURE Pickleball & Padel, the four offerings now live on Caliber’s tokenization platform represent more than $110 million of combined maximum offered equity, exceeding the Company’s initial $100 million target, and Caliber is now working to bring all of that equity on-chain.
+
+Caliber views tokenization as an extension of its established real estate platform rather than a change in its core business and intends to expand the program to additional offerings over time.
+
+Accredited investors and their financial professionals can learn more about the three offerings, including the tokenized ownership option, and request the offering materials at Caliberco.com. Each offering is limited to accredited investors, whose accredited status must be verified before investing, and investments may be made only through the applicable offering’s definitive offering documents.
+
+About Caliber (CaliberCos Inc.)
+
+Caliber (Nasdaq: CWD) is a real estate-focused alternative asset manager with over $2.6 billion in Managed Assets and a 17-year track record investing in middle-market hospitality and multifamily real estate. The Company pairs an institutional-quality asset management platform with a boutique, hands-on investment approach focused on value creation in underserved market segments. Investors can participate in Caliber through its publicly traded equity (Nasdaq: CWD), and through its private real estate investment funds for accredited investors and financial professionals. For more information, visit caliberco.com.
+
+Forward-Looking Statements
+
+This press release contains “forward-looking statements” that are subject to substantial risks and uncertainties. All statements, other than statements of historical fact, contained in this press release are forward-looking statements. Forward-looking statements contained in this press release may be identified by the use of words such as “anticipate,” “believe,” “contemplate,” “could,” “estimate,” “expect,” “intend,” “seek,” “may,” “might,” “plan,” “potential,” “predict,” “project,” “target,” “aim,” “should,” “will,” “would,” or the negative of these words or other similar expressions, although not all forward-looking statements contain these words. Forward-looking statements in this press release include, among others, statements regarding the expected automation of valuation calculations, potential improvements in liquidity, the expected benefits of tokenization for investors and for fund administration, the expansion of Caliber’s tokenization program, including its initial program of approximately $100 million of Managed Assets, the development of Caliber’s Automated NAV (CNAV), potential lending arrangements involving tokenized interests, potential secondary transfers of tokenized interests on one or more trading venues, expected reductions in the costs of investment management, and the Company’s efforts to bring the offered equity of its tokenized offerings on-chain. Forward-looking statements are based on the Company’s current expectations and are subject to inherent uncertainties, risks and assumptions that are difficult to predict. Further, certain forward-looking statements are based on assumptions as to future events that may not prove to be accurate. These and other risks and uncertainties are described more fully in the section titled “Risk Factors” in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025, filed with the SEC on March 26, 2026, and other reports filed with the SEC thereafter. Forward-looking statements contained in this announcement are made as of this date, and the Company undertakes no duty to update such information except as required under applicable law. Nothing in this press release is an offer to sell, or a solicitation of an offer to buy, any security. Caliber Tokenization Services provides technology and administrative services, and tokenization does not guarantee any outcome, including liquidity.
+
+Contacts:
+Caliber Investor Relations
+[Datos de contacto de una persona: omitidos en esta copia]
+
+
+Media Relations
+
+[Datos de contacto de una persona: omitidos en esta copia]
+
+CaliberCos Inc
+8901 E Mountain View Rd, Ste 150,
+Scottsdale, AZ 85258
+480-295-7600
+
+SOCIAL
+
+FACEBOOK
+
+
+TWITTER
+
+
+INSTAGRAM
+
+
+YOUTUBE
+
+
+LINKEDIN
+
+COMPANY
+ABOUT
+OFFERINGS & ASSETS
+EVENTS
+BLOG
+FAQS
+CAREERS
+CONTACT
+RESOURCES
+ACCESSIBILITY STATEMENT
+DISCLOSURES
+GLOSSARY
+SERVICE LEVEL AGREEMENT
+TERMS OF USE
+PRIVACY POLICY
+© 2026 CaliberCos Inc. All Rights Reserved.

@@ -1,0 +1,1653 @@
+{
+ "fecha": "2026-11-26",
+ "regiones": [
+  {
+   "slug": "africa",
+   "nombre": "África"
+  },
+  {
+   "slug": "oriente-medio",
+   "nombre": "Oriente Medio"
+  }
+ ],
+ "plataformas": [
+  {
+   "slug": "raiz",
+   "nombre": "Raíz",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "latinoamerica",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Polygon",
+    "web": "https://raiz.finance/",
+    "aval": "Empresa con sede en Buenos Aires y Montevideo que publica inmuebles tokenizados con su registro en Polygon. En su web no declara una licencia de valores.",
+    "nota": "Inmuebles tokenizados (sobre todo viviendas en alquiler en Miami) desde 50 dólares, con renta mensual en dólares y reventa en la propia plataforma."
+   },
+   "fuentes": [
+    {
+     "id": "raiz-web",
+     "tipo": "empresa",
+     "titulo": "Raíz · Invierte en real estate tokenizado",
+     "url": "https://raiz.finance/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "raiz-web": [
+     "Invierte en real estate tokenizado",
+     "desde USD 50",
+     "Polygon"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web enseña propiedades tokenizadas, alguna ya agotada, y explica cómo invertir desde 50 dólares.",
+     "fuentes": [
+      "raiz-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "sin_registro_declarado",
+     "detalle": "La web no dice que la plataforma tenga una licencia de valores en Argentina ni en otro país.",
+     "fuentes": [
+      "raiz-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Habla de «inversores registrados», pero no publica qué países admite ni qué requisitos pide.",
+     "fuentes": [
+      "raiz-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sin_licencia_declarada",
+      "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "raiz-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tokeniza",
+   "nombre": "Tokeniza",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "latinoamerica",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://tokeniza.com.br/",
+    "aval": "Plataforma brasileña de inversión colectiva que dice operar bajo la norma de crowdfunding de la CVM, el supervisor de valores de Brasil.",
+    "nota": "Captaciones de empresas y promociones inmobiliarias brasileñas (sociedades de propósito específico) en forma de activos tokenizados, en reales."
+   },
+   "fuentes": [
+    {
+     "id": "tokeniza-web",
+     "tipo": "empresa",
+     "titulo": "Tokeniza · Página inicial",
+     "url": "https://tokeniza.com.br/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "tokeniza-invista",
+     "tipo": "empresa",
+     "titulo": "Tokeniza · Invista (ofertas)",
+     "url": "https://tokeniza.com.br/invista/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "tokeniza-web": [
+     "regulada pela CVM"
+    ],
+    "tokeniza-invista": [
+     "Invista em ativos reais tokenizados",
+     "Regulamentação Crowdfunding"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su página de ofertas presenta las captaciones disponibles y el proceso de alta.",
+     "fuentes": [
+      "tokeniza-invista"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice estar regulada por la CVM como plataforma de crowdfunding; no lo hemos comprobado en el registro de la CVM.",
+     "fuentes": [
+      "tokeniza-web",
+      "tokeniza-invista"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Analiza los documentos de cada inversor antes de dejarle invertir; no publica si admite residentes fuera de Brasil.",
+     "fuentes": [
+      "tokeniza-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Ofertas brasileñas en reales. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "tokeniza-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "etherfuse",
+   "nombre": "Etherfuse",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "latinoamerica",
+    "actor": "Emisor",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://etherfuse.com/es",
+    "aval": "Emisor de bonos soberanos tokenizados (CETES de México, Tesouros de Brasil, letras de EE. UU., Eurobonos y gilts) con prueba de reservas semanal y custodios regulados, según su web.",
+    "nota": "Deuda pública tokenizada para la tesorería y el «float» de empresas."
+   },
+   "fuentes": [
+    {
+     "id": "etherfuse-web",
+     "tipo": "empresa",
+     "titulo": "Etherfuse · Activos soberanos tokenizados",
+     "url": "https://etherfuse.com/es",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "etherfuse-web": [
+     "Bonos soberanos tokenizados",
+     "CETES",
+     "Prueba de reservas semanal"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web presenta sus bonos soberanos tokenizados y las formas de usarlos en tesorerías de empresas.",
+     "fuentes": [
+      "etherfuse-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Habla de custodios regulados y auditorías, pero no dice qué licencia tiene la empresa ni en qué país.",
+     "fuentes": [
+      "etherfuse-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Su oferta se dirige a tesorerías corporativas, no a particulares.",
+     "fuentes": [
+      "etherfuse-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "licencia_no_declarada",
+      "detalle": "La web no identifica la sociedad emisora ni su supervisor. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "etherfuse-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "hator",
+   "nombre": "HATOR",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "latinoamerica",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://hatorsecurities.com/",
+    "aval": "Hator S.A.S. de C.V. dice estar regulada en El Salvador por la Comisión Nacional de Activos Digitales (CNAD) y la Superintendencia del Sistema Financiero.",
+    "nota": "Infraestructura de tokenización, emisión, distribución y negociación de activos de empresas latinoamericanas."
+   },
+   "fuentes": [
+    {
+     "id": "hator-web",
+     "tipo": "empresa",
+     "titulo": "HATOR Securities · Mercado de capitales digitales de Latinoamérica",
+     "url": "https://hatorsecurities.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "hator-web": [
+     "Comisión Nacional de Activos Digitales \\(CNAD\\)",
+     "Hator S\\.A\\.S de C\\.V\\."
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web ofrece su infraestructura y un registro previo de inversores.",
+     "fuentes": [
+      "hator-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice estar regulada por la CNAD y la Superintendencia del Sistema Financiero de El Salvador; no lo hemos comprobado en el registro de la CNAD.",
+     "fuentes": [
+      "hator-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Es infraestructura para emisores e instituciones; los inversores solo pueden pre-registrarse.",
+     "fuentes": [
+      "hator-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "registro_no_es_aval",
+      "detalle": "La propia web avisa de que estar registrada en la CNAD no es un respaldo del regulador a ninguna inversión. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "hator-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "real-tokn",
+   "nombre": "Real Tokn",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "latinoamerica",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://www.realtokn.com/en/investors.html",
+    "aval": "Marca de Pulpo Fintech, S.A. de C.V., proveedor de servicios de activos digitales registrado en la CNAD de El Salvador con el n.º PSAD-0023, según su web.",
+    "nota": "Emisión y custodia de activos tokenizados en El Salvador; no ofrece las emisiones al público a través de su web."
+   },
+   "fuentes": [
+    {
+     "id": "realtokn-inversores",
+     "tipo": "empresa",
+     "titulo": "Real Tokn · Inversores",
+     "url": "https://www.realtokn.com/en/investors.html",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "realtokn-inversores": [
+     "PSAD-0023",
+     "Pulpo Fintech"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web explica cómo registrarse como inversor y cómo custodia los activos digitales.",
+     "fuentes": [
+      "realtokn-inversores"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice estar registrada en la CNAD con el n.º PSAD-0023; no lo hemos comprobado en el registro de la CNAD.",
+     "fuentes": [
+      "realtokn-inversores"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo admite residentes de jurisdicciones permitidas y revisa el perfil del inversor antes de enseñarle una emisión.",
+     "fuentes": [
+      "realtokn-inversores"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "registro_no_es_aval",
+      "detalle": "Su web avisa de que el registro en la CNAD no responde de la solvencia de los emisores ni de lo que paguen sus emisiones. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "realtokn-inversores"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bloktok",
+   "nombre": "Bloktok",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "latinoamerica",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://www.bloktok.io/",
+    "aval": "Empresa chilena de infraestructura de tokenización en marca blanca; dice estar en proceso de autorización ante la CMF bajo la Ley Fintec 21.521.",
+    "nota": "Plataforma en marca blanca para que inmobiliarias, fondos y emisores tokenicen sus activos en Chile."
+   },
+   "fuentes": [
+    {
+     "id": "bloktok-web",
+     "tipo": "empresa",
+     "titulo": "Bloktok · Tokenizar activos, ahora es infraestructura",
+     "url": "https://www.bloktok.io/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "bloktok-web": [
+     "EN PROCESO REGULATORIO CMF",
+     "white label"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web ofrece su plataforma en marca blanca y enseña órdenes abiertas de tokens de inmuebles.",
+     "fuentes": [
+      "bloktok-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "sin_registro_declarado",
+     "detalle": "Dice estar en proceso regulatorio ante la CMF (Ley Fintec 21.521): todavía no declara una autorización.",
+     "fuentes": [
+      "bloktok-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Es infraestructura para empresas; los inversores llegan por la marca de cada cliente.",
+     "fuentes": [
+      "bloktok-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "autorizacion_en_tramite",
+      "detalle": "Su autorización de la CMF está en trámite, no concedida.",
+      "fuentes": [
+       "bloktok-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bit2me-stx",
+   "nombre": "Bit2Me STX",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "espana",
+    "actor": "Marketplace",
+    "acceso": "Institucional",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+    "aval": "Según Bit2Me, la CNMV la autorizó como agencia de valores (noviembre de 2025) y le dio la licencia de sistema de negociación del régimen piloto DLT (octubre de 2026).",
+    "nota": "Bolsa de valores española nativa en blockchain, del grupo Bit2Me, bajo el régimen piloto europeo de infraestructuras DLT."
+   },
+   "fuentes": [
+    {
+     "id": "bit2me-stx-cnmv",
+     "tipo": "empresa",
+     "titulo": "Bit2Me · «Bit2Me STX obtiene la autorización de la CNMV para lanzar su Bolsa de Valores nativa en blockchain»",
+     "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "bit2me-stx-cnmv": [
+     "Licencia SNL bajo el Régimen Piloto DLT",
+     "Agencia de Valores"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Bit2Me anuncia que la licencia permite lanzar su bolsa de valores en blockchain.",
+     "fuentes": [
+      "bit2me-stx-cnmv"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Lo dice el blog de Bit2Me (agencia de valores y licencia SNL del régimen piloto DLT); no lo hemos comprobado aún en el registro de la CNMV.",
+     "fuentes": [
+      "bit2me-stx-cnmv"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "La nota no explica cómo puede negociar un particular ni con qué intermediario.",
+     "fuentes": [
+      "bit2me-stx-cnmv"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "lanzamiento",
+      "detalle": "La autorización permite lanzar la bolsa; no prueba que ya haya valores negociándose ni que un particular pueda comprarlos.",
+      "fuentes": [
+       "bit2me-stx-cnmv"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "assetera",
+   "nombre": "Assetera",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "union-europea",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://www.assetera.com/",
+    "aval": "Plataforma austriaca de distribución de valores tokenizados que dice estar regulada bajo MiFID II y operar en 30 países del EEE.",
+    "nota": "Valores tokenizados para inversores del EEE: acciones y ETF tokenizados de EE. UU. (xStocks, Ondo) y financiación de inventarios y facturas."
+   },
+   "fuentes": [
+    {
+     "id": "assetera-web",
+     "tipo": "empresa",
+     "titulo": "Assetera · Your gateway to invest in tokenised securities",
+     "url": "https://www.assetera.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "assetera-web": [
+     "MiFID II",
+     "Your gateway to invest in tokenised securities"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web invita a registrarse y anuncia acciones y ETF tokenizados para inversores de 30 países del EEE.",
+     "fuentes": [
+      "assetera-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser una plataforma austriaca regulada bajo MiFID II; no lo hemos comprobado en el registro de la FMA austriaca ni en la CNMV.",
+     "fuentes": [
+      "assetera-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Habla de «inversores elegibles» en 30 países del EEE sin decir qué requisitos pide en España.",
+     "fuentes": [
+      "assetera-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "producto_y_geografia",
+      "detalle": "Que la plataforma opere en el EEE no hace que cada producto esté disponible en España: depende del folleto de cada valor.",
+      "fuentes": [
+       "assetera-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "estating",
+   "nombre": "Estating",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "union-europea",
+    "actor": "Emisor",
+    "acceso": "Institucional",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://www.estating.com/press-releases/estating-and-reental-sign-strategic-partnership-connecting-institutional-infrastructure-and-tokenised-investment-rails",
+    "aval": "Estating S.A., de Luxemburgo, estructura cada inversión inmobiliaria como un valor con ISIN a través de un vehículo de titulización luxemburgués propio.",
+    "nota": "Inmuebles de calidad institucional para gestores de patrimonio y asesores regulados; socio de producto de Reental desde octubre de 2026."
+   },
+   "fuentes": [
+    {
+     "id": "estating-web",
+     "tipo": "empresa",
+     "titulo": "Estating · Fintech para inmuebles y mercados privados",
+     "url": "https://www.estating.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "estating-alianza",
+     "tipo": "empresa",
+     "titulo": "Estating · Alianza con Reental (26/10/2026)",
+     "url": "https://www.estating.com/press-releases/estating-and-reental-sign-strategic-partnership-connecting-institutional-infrastructure-and-tokenised-investment-rails",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "estating-web": [
+     "regulated investment professionals"
+    ],
+    "estating-alianza": [
+     "Luxembourg-domiciled infrastructure platform for real-world assets"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web describe su plataforma para profesionales y la nota de octubre detalla operaciones ya hechas con Reental.",
+     "fuentes": [
+      "estating-web",
+      "estating-alianza"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La web no identifica ninguna licencia: emite a través de un vehículo de titulización de Luxemburgo.",
+     "fuentes": [
+      "estating-alianza"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Se dirige a profesionales regulados de la inversión, no a particulares directamente.",
+     "fuentes": [
+      "estating-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "no_minorista",
+      "detalle": "No es una plataforma para particulares: llega a través de asesores y gestores.",
+      "fuentes": [
+       "estating-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "seturion",
+   "nombre": "Seturion",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "union-europea",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "Varias",
+    "web": "https://group.boerse-stuttgart.com/en/seturion/",
+    "aval": "Plataforma del grupo Boerse Stuttgart para liquidar activos tokenizados, abierta a bancos, brókeres y mercados de toda Europa.",
+    "nota": "Liquidación, registro y emisión de activos tokenizados para instituciones europeas, con dinero de banco central o efectivo en cadena."
+   },
+   "fuentes": [
+    {
+     "id": "seturion-web",
+     "tipo": "empresa",
+     "titulo": "Boerse Stuttgart Group · Seturion",
+     "url": "https://group.boerse-stuttgart.com/en/seturion/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "seturion-web": [
+     "The European settlement platform for tokenized assets",
+     "public and private blockchains supported"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "El grupo Boerse Stuttgart presenta Seturion con sus servicios de emisión, registro y liquidación.",
+     "fuentes": [
+      "seturion-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La página no dice qué licencia cubre la plataforma.",
+     "fuentes": [
+      "seturion-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Es infraestructura para bancos, brókeres y mercados; no se invierte en ella.",
+     "fuentes": [
+      "seturion-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "infraestructura_b2b",
+      "detalle": "Es una infraestructura entre instituciones: no ofrece productos a particulares.",
+      "fuentes": [
+       "seturion-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "digishares",
+   "nombre": "DigiShares",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "union-europea",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "Varias",
+    "web": "https://digishares.io/",
+    "aval": "Proveedor danés de software de tokenización en marca blanca para gestoras, inmobiliarias y empresas, con precios para empresa publicados.",
+    "nota": "Software para emitir, gestionar y negociar activos tokenizados (inmuebles, fondos, acciones de empresas)."
+   },
+   "fuentes": [
+    {
+     "id": "digishares-web",
+     "tipo": "empresa",
+     "titulo": "DigiShares · Asset Tokenization Platform",
+     "url": "https://digishares.io/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "digishares-web": [
+     "Asset Tokenization Platform",
+     "Enterprise pricing"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web ofrece su plataforma de tokenización y publica precios para empresas.",
+     "fuentes": [
+      "digishares-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Vende software: la licencia, si hace falta, es de cada cliente que emite.",
+     "fuentes": [
+      "digishares-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Su cliente es la empresa que tokeniza, no el inversor.",
+     "fuentes": [
+      "digishares-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "software_no_mercado",
+      "detalle": "Es software para emisores: lo que se ofrece con él depende de cada cliente y de su licencia.",
+      "fuentes": [
+       "digishares-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "ctrl-alt",
+   "nombre": "Ctrl Alt",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "reino-unido",
+    "actor": "Infraestructura",
+    "acceso": "Empresas",
+    "ticket": "No aplica",
+    "cadenas": "No la publica",
+    "web": "https://ctrl-alt.co/",
+    "aval": "Grupo con sociedades autorizadas según su web por la FCA británica (FRN 1045023), en Irlanda bajo MiFID y por VARA en Dubái (licencia VL/25/05/002).",
+    "nota": "Infraestructura para estructurar, emitir y gestionar productos tokenizados (inmuebles, mercados privados) para gestoras y distribuidores."
+   },
+   "fuentes": [
+    {
+     "id": "ctrlalt-web",
+     "tipo": "empresa",
+     "titulo": "Ctrl Alt · Institutional-Grade Tokenization Infrastructure",
+     "url": "https://ctrl-alt.co/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "ctrlalt-web": [
+     "FRN: 1045023",
+     "VL/25/05/002"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web presenta sus servicios de tokenización para gestoras, distribuidores e inversores.",
+     "fuentes": [
+      "ctrlalt-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Su web cita la FCA (FRN 1045023), una empresa de inversión irlandesa bajo MiFID y la licencia VARA VL/25/05/002; no lo hemos comprobado en esos registros.",
+     "fuentes": [
+      "ctrlalt-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_aplica_plataforma",
+     "detalle": "Trabaja para gestoras y distribuidores; el inversor llega por ellos.",
+     "fuentes": [
+      "ctrlalt-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "grupo_multi_entidad",
+      "detalle": "Cada licencia es de una sociedad distinta del grupo (Reino Unido, Irlanda, Dubái) y no cubre a las demás.",
+      "fuentes": [
+       "ctrlalt-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "digift",
+   "nombre": "DigiFT",
+   "publica": {
+    "categoria_slug": "tesoro-y-fondos",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Acreditado",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://www.digift.io/",
+    "aval": "DigiFT Tech (Singapore) Pte. Ltd. dice tener licencia de servicios de mercados de capitales de la Autoridad Monetaria de Singapur (MAS).",
+    "nota": "Mercado regulado de fondos y productos tokenizados en cadena para inversores acreditados e institucionales de Asia."
+   },
+   "fuentes": [
+    {
+     "id": "digift-web",
+     "tipo": "empresa",
+     "titulo": "DigiFT · Regulated Exchange For On-Chain RWA",
+     "url": "https://www.digift.io/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "digift-web": [
+     "Capital Markets Services License",
+     "Monetary Authority of Singapore",
+     "I am an accredited investor"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web ofrece el alta y anuncia productos nuevos, como su estrategia de crédito con SBI para Japón.",
+     "fuentes": [
+      "digift-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice tener licencia CMS de la MAS; no lo hemos comprobado en el directorio de la MAS.",
+     "fuentes": [
+      "digift-web"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Al entrar pregunta si eres inversor acreditado: sus productos son para acreditados e institucionales.",
+     "fuentes": [
+      "digift-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "no_minorista",
+      "detalle": "No es para particulares: exige ser inversor acreditado.",
+      "fuentes": [
+       "digift-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "sdax",
+   "nombre": "SDAX",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Acreditado",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://www.sdax.co/listings/",
+    "aval": "Sus dos sociedades de Singapur dicen tener licencia de la MAS: servicios de mercados de capitales (CMS100573) y operador de mercado reconocido.",
+    "nota": "Emisiones tokenizadas en el sudeste asiático (infraestructuras, crédito privado) solo para inversores acreditados."
+   },
+   "fuentes": [
+    {
+     "id": "sdax-listados",
+     "tipo": "empresa",
+     "titulo": "SDAX · Listings",
+     "url": "https://www.sdax.co/listings/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "sdax-listados": [
+     "CMS100573",
+     "Recognised Market Operator",
+     "For Accredited Investors \\(AI\\) only"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su lista enseña emisiones tokenizadas con su mínimo y su estado.",
+     "fuentes": [
+      "sdax-listados"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice tener licencia CMS (CMS100573) y de operador de mercado reconocido de la MAS; no lo hemos comprobado en el directorio de la MAS.",
+     "fuentes": [
+      "sdax-listados"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo para inversores acreditados, según su propia lista.",
+     "fuentes": [
+      "sdax-listados"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "no_minorista",
+      "detalle": "No es para particulares: solo inversores acreditados.",
+      "fuentes": [
+       "sdax-listados"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "terazo",
+   "nombre": "Terazo",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Medio",
+    "cadenas": "No la publica",
+    "web": "https://www.terazo.network/",
+    "aval": "Plataforma de GIFT City (India) que dice operar en el entorno de pruebas regulatorio de la IFSCA; su primer fondo tokenizado es ORYX.",
+    "nota": "Inmuebles comerciales tokenizados en GIFT City (India), con tokens desde 1.000 dólares y reventa entre inversores."
+   },
+   "fuentes": [
+    {
+     "id": "terazo-web",
+     "tipo": "empresa",
+     "titulo": "Terazo · Asset Tokenization Platform",
+     "url": "https://www.terazo.network/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "terazo-oryx",
+     "tipo": "empresa",
+     "titulo": "Terazo · Invest in Oryx",
+     "url": "https://www.terazo.network/invest-in-oryx",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "terazo-web": [
+     "IFSCA",
+     "ORYX"
+    ],
+    "terazo-oryx": [
+     "Tokens starting as low as USD \\$1000"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web presenta ORYX: el tramo inicial está suscrito y la reventa va por lista de espera.",
+     "fuentes": [
+      "terazo-web",
+      "terazo-oryx"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice operar en el entorno de pruebas regulatorio de la IFSCA (GIFT City); no lo hemos comprobado en la IFSCA.",
+     "fuentes": [
+      "terazo-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "No publica qué inversores admite ni desde qué países.",
+     "fuentes": [
+      "terazo-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sandbox",
+      "detalle": "Un entorno de pruebas regulatorio no es una licencia definitiva. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "terazo-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tokinvest",
+   "nombre": "Tokinvest",
+   "publica": {
+    "categoria_slug": "infraestructura",
+    "region_slug": "oriente-medio",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://tokinvest.capital/",
+    "aval": "Tokinvest DMCC tiene licencia activa de VARA (Dubái), VL/2024/12/004, para intermediación y emisión de activos virtuales, con permiso para atender a minoristas.",
+    "nota": "Plataforma de Dubái para tokenizar e invertir en activos reales; enseña a cada inversor lo que puede comprar según su perfil."
+   },
+   "fuentes": [
+    {
+     "id": "tokinvest-vara",
+     "tipo": "regulador",
+     "titulo": "VARA · Registro público: Tokinvest DMCC",
+     "url": "https://www.vara.ae/en/licenses-and-register/public-register/tokinvest-dmcc/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "tokinvest-web",
+     "tipo": "empresa",
+     "titulo": "Tokinvest · Tokenise with us",
+     "url": "https://tokinvest.capital/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "tokinvest-vara": [
+     "Tokinvest DMCC",
+     "VL/2024/12/004",
+     "Retail Investors"
+    ],
+    "tokinvest-web": [
+     "Tokenise with us"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web ofrece tokenizar activos e invertir tras verificar la identidad.",
+     "fuentes": [
+      "tokinvest-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "confirmada_regulador",
+     "detalle": "El registro público de VARA recoge a Tokinvest DMCC con licencia VASP activa (VL/2024/12/004, del 30/12/2024) para intermediación y emisión de categoría 1.",
+     "fuentes": [
+      "tokinvest-vara"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "VARA le permite atender a inversores institucionales, cualificados y minoristas; la web enseña a cada uno lo que puede comprar según su perfil.",
+     "fuentes": [
+      "tokinvest-vara",
+      "tokinvest-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Licencia de Dubái, sin pasaporte europeo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "tokinvest-vara"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "prypco-mint",
+   "nombre": "PRYPCO Mint",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "oriente-medio",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint",
+    "aval": "Cada inmueble está registrado en el Departamento de Tierras de Dubái (DLD), que emite el certificado de propiedad de los tokens, según su ayuda.",
+    "nota": "Viviendas de Dubái tokenizadas desde 1.000 dírhams (AED), con reventa en su propio mercado."
+   },
+   "fuentes": [
+    {
+     "id": "prypco-mint",
+     "tipo": "empresa",
+     "titulo": "PRYPCO Mint · Cómo invertir en inmuebles tokenizados",
+     "url": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "prypco-mint": [
+     "starting from AED 1,000",
+     "Dubai Land Depar"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su ayuda explica cómo invertir en las propiedades tokenizadas abiertas tras verificar la cuenta.",
+     "fuentes": [
+      "prypco-mint"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La ayuda cita el registro de cada inmueble en el DLD; no dice qué licencia tiene la plataforma.",
+     "fuentes": [
+      "prypco-mint"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Hay que verificar la cuenta antes de invertir; el mínimo es de 1.000 AED en todas las propiedades.",
+     "fuentes": [
+      "prypco-mint"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Inmuebles de Dubái en dírhams. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "prypco-mint"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "mesh",
+   "nombre": "Mesh",
+   "publica": {
+    "categoria_slug": "credito-privado",
+    "region_slug": "africa",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://www.mesh.trade/about-us/",
+    "aval": "Mesh Trade South Africa (Pty) Ltd dice ser proveedor de servicios financieros autorizado en Sudáfrica (FSP 53710).",
+    "nota": "Mercado sudafricano de activos financieros tokenizados: acciones preferentes, bonos y oro, con emisión, negociación y liquidación en la misma plataforma."
+   },
+   "fuentes": [
+    {
+     "id": "mesh-sobre",
+     "tipo": "empresa",
+     "titulo": "Mesh · Sobre nosotros",
+     "url": "https://www.mesh.trade/about-us/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    },
+    {
+     "id": "mesh-bcfs",
+     "tipo": "empresa",
+     "titulo": "Mesh · Acciones preferentes tokenizadas de BCFS",
+     "url": "https://www.mesh.trade/im/bcfs/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "mesh-sobre": [
+     "Asset Origination, Issuance, and Tokenisation"
+    ],
+    "mesh-bcfs": [
+     "licensed Financial Services Provider \\(53710\\)"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Su web publica emisiones abiertas, como las acciones preferentes tokenizadas de BCFS.",
+     "fuentes": [
+      "mesh-bcfs"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser proveedor de servicios financieros autorizado (FSP 53710); no lo hemos comprobado en el registro de la FSCA.",
+     "fuentes": [
+      "mesh-bcfs"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "No publica qué inversores admite fuera de Sudáfrica.",
+     "fuentes": [
+      "mesh-sobre"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Productos sudafricanos. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "mesh-bcfs"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "oaksvale",
+   "nombre": "Oaksvale",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "africa",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://oaksvale.com/",
+    "aval": "Oaksvale Ventures Limited está inscrita como sociedad en Nigeria (RC 7194242) y en Tanzania. En su web no declara una licencia de valores.",
+    "nota": "Inmuebles de alquiler en África (hoteles boutique, villas en Zanzíbar) tokenizados a través de sociedades vehículo."
+   },
+   "fuentes": [
+    {
+     "id": "oaksvale-web",
+     "tipo": "empresa",
+     "titulo": "Oaksvale · Tokenized African Real Estate",
+     "url": "https://oaksvale.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "oaksvale-web": [
+     "RC: 7194242",
+     "Tokenized African Real Estate"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web enseña inmuebles tokenizados, como una villa en Zanzíbar.",
+     "fuentes": [
+      "oaksvale-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "sin_registro_declarado",
+     "detalle": "Solo da su inscripción mercantil en Nigeria y Tanzania; no declara licencia de valores.",
+     "fuentes": [
+      "oaksvale-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Pide verificación de identidad, pero no publica qué países admite.",
+     "fuentes": [
+      "oaksvale-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sin_licencia_declarada",
+      "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "oaksvale-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "cradle",
+   "nombre": "Cradle",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "africa",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://cradlemarkets.com/",
+    "aval": "Se presenta como mercado regulado y en cadena de valores africanos tokenizados (acciones cotizadas, bonos soberanos y monedas estables locales).",
+    "nota": "Acciones africanas cotizadas (por ejemplo, de la Bolsa de Nairobi), bonos y monedas estables locales tokenizados, con préstamos y salidas a bolsa en token."
+   },
+   "fuentes": [
+    {
+     "id": "cradle-web",
+     "tipo": "empresa",
+     "titulo": "Cradle · On-chain real-world assets for Africa",
+     "url": "https://cradlemarkets.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "cradle-web": [
+     "regulated home for tokenized African securities",
+     "Nairobi Securities Exchange"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web enseña su mercado con cotizaciones de acciones africanas tokenizadas.",
+     "fuentes": [
+      "cradle-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice ser un mercado regulado, pero no identifica la sociedad ni el supervisor.",
+     "fuentes": [
+      "cradle-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "No publica qué inversores admite ni desde qué países.",
+     "fuentes": [
+      "cradle-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "licencia_no_identificada",
+      "detalle": "Que la web diga «regulado» sin nombrar supervisor ni licencia no permite comprobarlo. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "cradle-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "shard",
+   "nombre": "Shard",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "africa",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://shard.africa/",
+    "aval": "Shard Developers Ltd, de Abuja (Nigeria), publica inmuebles tokenizados con documentación y restringe las transferencias a inversores verificados. En su web no declara una licencia de valores.",
+    "nota": "Pisos y locales tokenizados en Nigeria (por ejemplo, en Abuja) para inversores del país y de la diáspora."
+   },
+   "fuentes": [
+    {
+     "id": "shard-web",
+     "tipo": "empresa",
+     "titulo": "Shard · A new way to own",
+     "url": "https://shard.africa/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "shard-web": [
+     "Shard Developers Ltd",
+     "Abuja"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web enseña inmuebles tokenizados con su mínimo y su avance de financiación.",
+     "fuentes": [
+      "shard-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "sin_registro_declarado",
+     "detalle": "No declara licencia de valores; dice que verifica los activos con autoridades y socios independientes.",
+     "fuentes": [
+      "shard-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Dice que la elegibilidad y las restricciones por país dependen de cada inversión.",
+     "fuentes": [
+      "shard-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "sin_licencia_declarada",
+      "detalle": "No declara licencia de valores: los tokens no tienen la protección de un producto supervisado. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "shard-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "luxivana",
+   "nombre": "Luxivana",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "asia-pacifico",
+    "actor": "Emisor",
+    "acceso": "Minorista",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://www.luxivana.com/",
+    "aval": "Luxivana Pty Ltd es representante autorizada (CAR 1321612) de Trend Capital Group, que tiene licencia australiana de servicios financieros (AFSL 255475), según su web.",
+    "nota": "Tokens respaldados 1:1 por activos de un fondo de inversión regulado en Australia, desde 25.000 dólares."
+   },
+   "fuentes": [
+    {
+     "id": "luxivana-web",
+     "tipo": "empresa",
+     "titulo": "Luxivana · Tokenised Assets & Investment Infrastructure",
+     "url": "https://www.luxivana.com/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "luxivana-web": [
+     "AFSL #255475",
+     "from \\$25,000"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web invita a invertir en activos privados tokenizados desde 25.000 dólares.",
+     "fuentes": [
+      "luxivana-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "Dice operar como representante autorizada de un titular de AFSL (255475); no lo hemos comprobado en el registro de ASIC.",
+     "fuentes": [
+      "luxivana-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "No publica qué inversores admite fuera de Australia.",
+     "fuentes": [
+      "luxivana-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "licencia_de_tercero",
+      "detalle": "La licencia es de otra empresa (Trend Capital Group); Luxivana actúa como su representante. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "luxivana-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tangiblex",
+   "nombre": "TangibleX",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "asia-pacifico",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "No la publica",
+    "web": "https://www.tangiblex.com.au/",
+    "aval": "Mercado australiano de participaciones tokenizadas de fondos; cada producto que lista lo origina una gestora con licencia AFSL, según su web.",
+    "nota": "Participaciones de fondos y planes de inversión australianos representadas con tokens, para inversores verificados."
+   },
+   "fuentes": [
+    {
+     "id": "tangiblex-web",
+     "tipo": "empresa",
+     "titulo": "TangibleX · Marketplace",
+     "url": "https://www.tangiblex.com.au/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "tangiblex-web": [
+     "licensed AFSL fund managers",
+     "tokenised real-world-assets"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "La web presenta su mercado de participaciones tokenizadas y el proceso para participar.",
+     "fuentes": [
+      "tangiblex-web"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La licencia es de las gestoras que originan cada fondo; la web no identifica ninguna.",
+     "fuentes": [
+      "tangiblex-web"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "Solo dice que participan «inversores verificados», sin publicar requisitos ni países.",
+     "fuentes": [
+      "tangiblex-web"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "licencia_de_tercero",
+      "detalle": "Cada producto depende de la licencia de su gestora, no de la plataforma. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "tangiblex-web"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "caliber",
+   "nombre": "Caliber",
+   "publica": {
+    "categoria_slug": "inmobiliario",
+    "region_slug": "ee-uu",
+    "actor": "Emisor",
+    "acceso": "Acreditado",
+    "ticket": "Alto",
+    "cadenas": "No la publica",
+    "web": "https://www.caliberco.com/caliber-goes-live-with-tokenization-of-three-more-real-estate-offerings/",
+    "aval": "CaliberCos Inc., gestora inmobiliaria estadounidense, ha tokenizado tres ofertas más: dos promociones de hoteles y un fondo.",
+    "nota": "Participaciones tokenizadas de ofertas inmobiliarias de Caliber en EE. UU. (hoteles y fondos)."
+   },
+   "fuentes": [
+    {
+     "id": "caliber-nota",
+     "tipo": "empresa",
+     "titulo": "Caliber · Tokenización de tres ofertas inmobiliarias más",
+     "url": "https://www.caliberco.com/caliber-goes-live-with-tokenization-of-three-more-real-estate-offerings/",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "caliber-nota": [
+     "Caliber Goes Live with Tokenization of Three More Real Estate Offerings",
+     "CaliberCos Inc\\."
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "Caliber anuncia que ya tiene tokenizadas tres ofertas más y que ampliará el programa.",
+     "fuentes": [
+      "caliber-nota"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La nota no dice con qué exención o registro se ofrecen los tokens.",
+     "fuentes": [
+      "caliber-nota"
+     ]
+    },
+    "acceso": {
+     "estado": "no_verificable",
+     "detalle": "La nota no dice quién puede invertir; las ofertas privadas de este tipo en EE. UU. suelen limitarse a acreditados.",
+     "fuentes": [
+      "caliber-nota"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "fuera_ue",
+      "detalle": "Ofertas privadas de EE. UU. No tiene folleto ni KID europeos y la CNMV no la supervisa: lo que ofrece se rige por la ley de su país.",
+      "fuentes": [
+       "caliber-nota"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "okxice",
+   "nombre": "OKXICE",
+   "publica": {
+    "categoria_slug": "acciones-y-capital-privado",
+    "region_slug": "ee-uu",
+    "actor": "Marketplace",
+    "acceso": "Minorista",
+    "ticket": "Bajo",
+    "cadenas": "Ethereum (X Layer)",
+    "web": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+    "aval": "Mercado de valores tokenizados de OKX e ICE abierto el 23/11/2026, solo para clientes de OKX Inc. en EE. UU. que cumplan los requisitos.",
+    "nota": "Acciones y ETF de EE. UU. tokenizados que se negocian las 24 horas en X Layer, la red de OKX."
+   },
+   "fuentes": [
+    {
+     "id": "okxice-nota",
+     "tipo": "empresa",
+     "titulo": "OKX · «24/7 Securities Trading Arrives on OKXICE»",
+     "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+     "primaria": true,
+     "consultadaEl": "2026-11-26"
+    }
+   ],
+   "comprobaciones": {
+    "okxice-nota": [
+     "Tokenized Securities Venue",
+     "eligible U\\.S\\.-based OKX Inc\\. customers"
+    ]
+   },
+   "radar": {
+    "estadoOperativo": {
+     "estado": "observada",
+     "detalle": "OKX anuncia el inicio de la negociación en su mercado de valores tokenizados.",
+     "fuentes": [
+      "okxice-nota"
+     ]
+    },
+    "licenciaRegistro": {
+     "estado": "no_verificable",
+     "detalle": "La nota no detalla las licencias que cubren el mercado.",
+     "fuentes": [
+      "okxice-nota"
+     ]
+    },
+    "acceso": {
+     "estado": "confirmado_condicionado",
+     "detalle": "Solo para clientes de OKX Inc. en EE. UU. que verifiquen su identidad y cumplan los requisitos geográficos.",
+     "fuentes": [
+      "okxice-nota"
+     ]
+    },
+    "alertasCriticas": [
+     {
+      "codigo": "solo_eeuu",
+      "detalle": "No está abierto desde España: solo clientes de OKX en EE. UU.",
+      "fuentes": [
+       "okxice-nota"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "ofertas": []
+}

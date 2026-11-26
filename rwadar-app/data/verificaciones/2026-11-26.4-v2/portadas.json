@@ -1,0 +1,205 @@
+{
+  "nota": "Portadas de las 25 plataformas nuevas: representación editorial generada con el modelo «realvisxl» de rwadar-editorial-source/ofertas/fotos.json (1024×1024, mismo estilo realista y sin texto). portadas.py dibuja los maestros en rwadar-editorial-source/<maestro>; despues-de-aplicar.mjs los convierte a 720×720 sin metadatos y los apunta en rwadar-site/plataformas/fuentes.json.",
+  "portadas": [
+    {
+      "empresa": "Raíz",
+      "maestro": "raiz.webp",
+      "semilla": 401,
+      "descripcionVisual": "Casas adosadas de alquiler con palmeras en una calle residencial de Miami, el tipo de vivienda que tokeniza.",
+      "prompt": "row of pastel-colored two-story rental townhouses with palm trees on a quiet residential street in Miami, sunny morning",
+      "paginaReferencia": "https://raiz.finance/"
+    },
+    {
+      "empresa": "Tokeniza",
+      "maestro": "tokeniza.webp",
+      "semilla": 409,
+      "descripcionVisual": "Edificio residencial en obra con grúa en Porto Alegre, como las promociones brasileñas que financia.",
+      "prompt": "residential apartment building under construction with scaffolding and a tower crane in Porto Alegre Brazil, clear afternoon",
+      "paginaReferencia": "https://tokeniza.com.br/"
+    },
+    {
+      "empresa": "Etherfuse",
+      "maestro": "etherfuse.webp",
+      "semilla": 419,
+      "descripcionVisual": "Paseo de la Reforma en Ciudad de México, donde trabajan las tesorerías de empresas a las que se dirige.",
+      "prompt": "Paseo de la Reforma avenue in Mexico City with modern office towers and tall trees, early morning haze, empty road",
+      "paginaReferencia": "https://etherfuse.com/es"
+    },
+    {
+      "empresa": "HATOR",
+      "maestro": "hator.webp",
+      "semilla": 421,
+      "descripcionVisual": "Cafetal en la ladera de un volcán de El Salvador, ejemplo de los activos de empresas latinoamericanas.",
+      "prompt": "coffee plantation on a green volcanic hillside in El Salvador with a dirt path between the rows, morning mist",
+      "paginaReferencia": "https://hatorsecurities.com/"
+    },
+    {
+      "empresa": "Real Tokn",
+      "maestro": "real-tokn.webp",
+      "semilla": 431,
+      "descripcionVisual": "Edificio de oficinas con jardín tropical en Antiguo Cuscatlán (El Salvador), donde opera la emisora.",
+      "prompt": "modern low-rise office building with a tropical garden in Antiguo Cuscatlan El Salvador, soft morning light",
+      "paginaReferencia": "https://www.realtokn.com/en/investors.html"
+    },
+    {
+      "empresa": "Bloktok",
+      "maestro": "bloktok.webp",
+      "semilla": 433,
+      "descripcionVisual": "Torres de viviendas de Las Condes con los Andes detrás, como las inmobiliarias chilenas a las que da servicio.",
+      "prompt": "residential apartment towers in the Las Condes district of Santiago de Chile with the snowy Andes mountains behind, clear winter day",
+      "paginaReferencia": "https://www.bloktok.io/"
+    },
+    {
+      "empresa": "Bit2Me STX",
+      "maestro": "bit2me-stx.webp",
+      "semilla": 439,
+      "descripcionVisual": "Rascacielos del norte de Madrid al anochecer, ciudad de la bolsa de valores en blockchain.",
+      "prompt": "business district skyscrapers in northern Madrid seen from a park at dusk, warm sky, quiet path in the foreground",
+      "paginaReferencia": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/"
+    },
+    {
+      "empresa": "Assetera",
+      "maestro": "assetera.webp",
+      "semilla": 443,
+      "descripcionVisual": "Edificio de oficinas de cristal junto al canal del Danubio en Viena, sede de la plataforma.",
+      "prompt": "modern glass office building beside the Danube canal in Vienna with bicycles on the riverside path, morning",
+      "paginaReferencia": "https://www.assetera.com/"
+    },
+    {
+      "empresa": "Estating",
+      "maestro": "estating.webp",
+      "semilla": 449,
+      "descripcionVisual": "Edificios de oficinas en la meseta de Kirchberg (Luxemburgo), donde se estructuran sus inversiones.",
+      "prompt": "modern office buildings with wide lawns on the Kirchberg plateau in Luxembourg, overcast day",
+      "paginaReferencia": "https://www.estating.com/press-releases/estating-and-reental-sign-strategic-partnership-connecting-institutional-infrastructure-and-tokenised-investment-rails"
+    },
+    {
+      "empresa": "Seturion",
+      "maestro": "seturion.webp",
+      "semilla": 457,
+      "descripcionVisual": "Stuttgart vista desde los viñedos de sus colinas, ciudad del grupo bursátil que la impulsa.",
+      "prompt": "view over Stuttgart rooftops from a hillside vineyard, autumn colours, soft afternoon light",
+      "paginaReferencia": "https://group.boerse-stuttgart.com/en/seturion/"
+    },
+    {
+      "empresa": "DigiShares",
+      "maestro": "digishares.webp",
+      "semilla": 461,
+      "descripcionVisual": "Oficina nórdica luminosa frente a un canal de Copenhague, donde se hace el software.",
+      "prompt": "bright Scandinavian office in Copenhagen with wooden desks, closed laptops and large windows overlooking a canal, daylight",
+      "paginaReferencia": "https://digishares.io/"
+    },
+    {
+      "empresa": "Ctrl Alt",
+      "maestro": "ctrl-alt.webp",
+      "semilla": 463,
+      "descripcionVisual": "Oficinas en un antiguo almacén de ladrillo junto a un canal del este de Londres.",
+      "prompt": "converted brick warehouse offices along a canal in East London with a narrowboat moored, morning",
+      "paginaReferencia": "https://ctrl-alt.co/"
+    },
+    {
+      "empresa": "DigiFT",
+      "maestro": "digift.webp",
+      "semilla": 469,
+      "descripcionVisual": "Torres del distrito financiero de Singapur desde el agua al anochecer, mercado donde opera.",
+      "prompt": "Singapore financial district towers seen across the bay water at blue hour, calm reflections",
+      "paginaReferencia": "https://www.digift.io/"
+    },
+    {
+      "empresa": "SDAX",
+      "maestro": "sdax.webp",
+      "semilla": 479,
+      "descripcionVisual": "Viaducto de autopista y grúas de un puerto del sudeste asiático, como las infraestructuras que se financian.",
+      "prompt": "elevated highway viaduct and container port cranes in Southeast Asia at sunrise, hazy sky",
+      "paginaReferencia": "https://www.sdax.co/listings/"
+    },
+    {
+      "empresa": "Terazo",
+      "maestro": "terazo.webp",
+      "semilla": 487,
+      "descripcionVisual": "Torres de oficinas nuevas de GIFT City (India), donde está el fondo inmobiliario tokenizado.",
+      "prompt": "new glass office towers in GIFT City Gujarat India with wide empty roads and young trees, hazy afternoon",
+      "paginaReferencia": "https://www.terazo.network/"
+    },
+    {
+      "empresa": "Tokinvest",
+      "maestro": "tokinvest.webp",
+      "semilla": 491,
+      "descripcionVisual": "Puerto deportivo de Dubái con rascacielos, emirato de la plataforma y su supervisor.",
+      "prompt": "Dubai Marina residential towers with yachts moored in the marina, late afternoon light",
+      "paginaReferencia": "https://tokinvest.capital/"
+    },
+    {
+      "empresa": "PRYPCO Mint",
+      "maestro": "prypco-mint.webp",
+      "semilla": 499,
+      "descripcionVisual": "Urbanización de villas blancas con palmeras en las afueras de Dubái, el tipo de vivienda que tokeniza.",
+      "prompt": "modern villa community with white houses and palm trees in a Dubai suburb, warm evening light, empty street",
+      "paginaReferencia": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint"
+    },
+    {
+      "empresa": "Mesh",
+      "maestro": "mesh.webp",
+      "semilla": 503,
+      "descripcionVisual": "Torres de oficinas de Sandton (Johannesburgo) vistas desde un barrio arbolado, sede del mercado.",
+      "prompt": "Sandton Johannesburg office towers seen from a leafy residential neighbourhood, clear blue sky",
+      "paginaReferencia": "https://www.mesh.trade/about-us/"
+    },
+    {
+      "empresa": "Oaksvale",
+      "maestro": "oaksvale.webp",
+      "semilla": 509,
+      "descripcionVisual": "Villa con tejado de paja y piscina frente a la playa en Zanzíbar, como las que tokeniza.",
+      "prompt": "boutique villa with a thatched roof and a swimming pool facing a white sand beach in Zanzibar, sunny day",
+      "paginaReferencia": "https://oaksvale.com/"
+    },
+    {
+      "empresa": "Cradle",
+      "maestro": "cradle.webp",
+      "semilla": 521,
+      "descripcionVisual": "Rascacielos de Nairobi con jacarandas en flor, ciudad de las acciones africanas que negocia.",
+      "prompt": "Nairobi city skyline with modern towers and purple jacaranda trees in bloom, morning",
+      "paginaReferencia": "https://cradlemarkets.com/"
+    },
+    {
+      "empresa": "Shard",
+      "maestro": "shard.webp",
+      "semilla": 523,
+      "descripcionVisual": "Edificios de viviendas nuevos en Abuja con la roca Aso detrás, donde están sus inmuebles.",
+      "prompt": "new apartment buildings in Abuja Nigeria with the large Aso Rock granite outcrop in the background, dry season haze",
+      "paginaReferencia": "https://shard.africa/"
+    },
+    {
+      "empresa": "Luxivana",
+      "maestro": "luxivana.webp",
+      "semilla": 541,
+      "descripcionVisual": "Torres de oficinas del centro de Sídney vistas desde un muelle del puerto, país del fondo que respalda los tokens.",
+      "prompt": "Sydney central business district office towers seen from a harbour wharf, morning, calm water",
+      "paginaReferencia": "https://www.luxivana.com/"
+    },
+    {
+      "empresa": "TangibleX",
+      "maestro": "tangiblex.webp",
+      "semilla": 547,
+      "descripcionVisual": "Calle de casas adosadas modernas con eucaliptos en Melbourne, país de los fondos que lista.",
+      "prompt": "suburban Melbourne street with modern townhouses and eucalyptus trees, afternoon sun",
+      "paginaReferencia": "https://www.tangiblex.com.au/"
+    },
+    {
+      "empresa": "Caliber",
+      "maestro": "caliber.webp",
+      "semilla": 557,
+      "descripcionVisual": "Hotel con piscina y jardín desértico en Scottsdale (Arizona), como las promociones hoteleras que tokeniza.",
+      "prompt": "boutique hotel with a swimming pool and desert landscaping in Scottsdale Arizona with a rocky mountain behind, golden hour",
+      "paginaReferencia": "https://www.caliberco.com/caliber-goes-live-with-tokenization-of-three-more-real-estate-offerings/"
+    },
+    {
+      "empresa": "OKXICE",
+      "maestro": "okxice.webp",
+      "semilla": 563,
+      "descripcionVisual": "Calle del distrito financiero de Manhattan de noche con las oficinas iluminadas, mercado de las acciones que negocia.",
+      "prompt": "empty street in the Lower Manhattan financial district at night with lit office windows, wet pavement reflections",
+      "paginaReferencia": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live"
+    }
+  ]
+}
