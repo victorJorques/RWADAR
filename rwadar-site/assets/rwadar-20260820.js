@@ -1855,8 +1855,7 @@ function pintarEmisiones(){
    '<p class="catalogo-nota-movil">No es una recomendación de inversión · RWAdar no recibe dinero de las inversiones.</p>':'')+
    '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son informativas y gratuitas. Si puedes invertir, las condiciones y los riesgos los confirma la empresa que ofrece cada producto. RWAdar no recibe dinero de las inversiones.</p></header>'+
    '<div class="catalogo-principales">'+filas+'</div>'+
-   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
-   '<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>';
+   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino');
   return;
  }
  const v=emisionesVisibles();
@@ -2731,13 +2730,10 @@ function datosCortosOferta(o,resumen){
   textoBreveDatoTarjetaLocal(resumen.minimo);
  return {minimo,espana:textoEspanaOferta(resumen),espanaCorta:textoEspanaOferta(resumen,true),salida:textoSalidaOferta(o,resumen)};
 }
-/* La tarjeta de la lista: una sola línea con el mínimo y el acceso desde España.
-   Si la oferta no se contrata desde España, el dato dice «No» (nunca «Sin
-   confirmar» al lado de «No disponible en España»). */
-function datosTarjetaOfertaHtml(o,resumen,noEspana=false){
- const d=datosCortosOferta(o,resumen);
- return '<dl class="escaparate-datos-clave escaparate-datos-linea">'+[['Mínimo',d.minimo],['España',noEspana?'No':d.espanaCorta]]
-  .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
+/* La lista muestra el mínimo. El acceso y la salida tienen sus fuentes en la ficha. */
+function datosTarjetaOfertaHtml(o,resumen){
+ const {minimo}=datosCortosOferta(o,resumen);
+ return '<dl class="escaparate-datos-clave escaparate-datos-linea"><div><dt>Mínimo</dt><dd>'+escHtml(minimo)+'</dd></div></dl>';
 }
 /* Un problema de la revisión (caducada, no verificable o con fuentes en
    conflicto) se ve en la tarjeta. En Reventa y Próximas «no verificable» es
@@ -2770,21 +2766,14 @@ function transparenciaDetalleHtml(o,resumen){
    (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
   '</details>';
 }
-/* Tarjeta de la lista (decisión del 05/11/2026: «veo demasiada
-   información así de primeras, me marea»). Solo lo que sirve para decidir
-   qué abrir: imagen y guardar, «Patrocinada» y «Nueva», título, proveedor ·
-   lugar y una línea con el mínimo y el acceso desde España. Por seguridad,
-   solo si existen: el aviso crítico entero, un problema de la revisión y «No
-   disponible en España». Los puntos fuertes, la vigencia, la salida, los
-   avisos ordinarios y las fechas siguen en la ficha. Toda la tarjeta abre la
-   ficha con un único botón («›»); guardar va aparte. */
+/* Portada, procedencia y mínimo. Las alertas siguen visibles cuando afectan al acceso o a la revisión. */
 function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
  const estado=estadoVigenciaLocal(o),resumen=resumenEditorialOferta(o),imagen=imagenOfertaLocal(o);
  const bloqueo=avisoBloqueoOferta(o),revision=problemaRevisionOferta(o),nueva=ofertaNueva(o);
  const noEspana=estado.clase!=='caducado'&&o.disponibleEs===false;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
-  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
+  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt=""'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
    (o.patrocinada||nueva?'<p class="escaparate-marcas">'+(o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
     (nueva?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'</p>':'')+
@@ -2792,7 +2781,7 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    '<p class="escaparate-procedencia"><b class="emi-donde">'+escHtml(o.plataformaNombre)+'</b>'+
    /* La ciudad es un dato (no se traduce); el país, sí, como en «Recién añadidas». */
    (imagen&&imagen.lugar?'<span class="emi-lugar">'+lugarTarjetaHtml(imagen.lugar)+'</span>':'')+'</p>'+
-   datosTarjetaOfertaHtml(o,resumen,noEspana)+
+   datosTarjetaOfertaHtml(o,resumen)+
    (revision||noEspana?'<p class="escaparate-alertas">'+(revision?'<span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span>':'')+
     (noEspana?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</p>':'')+
    (bloqueo?'<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
@@ -2945,8 +2934,7 @@ function abrirDetalleOfertaLocal(slug){
   '<div class="escaparate-dialogo-cuerpo">'+esencial+
   (avisos.length?'<section class="escaparate-dialogo-seccion" aria-labelledby="detalleAvisosTit"><h3 id="detalleAvisosTit">Avisos de esta oferta</h3><ul class="escaparate-dialogo-avisos">'+
    avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
-  '<div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
+  '<div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt=""'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div>'+
   '<section class="escaparate-dialogo-seccion escaparate-antes-fuente"><h3>Antes de invertir</h3><ul><li>Puedes perder parte o todo lo que inviertas.</li><li>La salida depende del contrato y puede requerir compradores.</li><li>Comprueba quién custodia el activo y quién responde.</li><li>El registro de una empresa no cubre todos sus productos.</li></ul></section>'+
   /* Un div, no un footer: la regla global de footer lo ocultaba en el móvil. */
   '<div class="escaparate-dialogo-pie"><p>No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p><div>'+enlaces+'</div></div>'+

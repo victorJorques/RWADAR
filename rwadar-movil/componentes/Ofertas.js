@@ -3,12 +3,12 @@ import { Animated, AppState, Modal, Share, StyleSheet } from 'react-native';
 import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
+import { ETIQUETA_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
-  comprobacionesOferta, datosCortosOferta, datosTarjetaOferta, estadoVigencia, fechaES, puntosFuertesOferta,
+  comprobacionesOferta, datosCortosOferta, estadoVigencia, fechaES, puntosFuertesOferta,
 } from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
@@ -223,8 +223,6 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessible={false}
         importantForAccessibility="no"
       />
-      {/* Ninguna etiqueta encima de la foto, como en la web: el pie «Imágenes
-          ilustrativas, no fotos del activo» va debajo (lista, carrusel y ficha). */}
     </View>
   );
 }
@@ -274,7 +272,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
   const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
   const noEspana = !catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false;
-  const datos = datosTarjetaOferta(ofertaOriginal, resumen, { catalogoCaducado, noEspana });
+  const [[rotuloMinimo, minimo]] = datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado });
   const revision = problemaRevisionOferta(ofertaOriginal, ahora, catalogoCaducado);
   const marcaNueva = nueva && !catalogoCaducado;
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
@@ -284,10 +282,10 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
     ? ` ${idiomaActual === 'en' ? 'from' : 'en'} ${oferta.plataformaNombre}` : ''}`;
   // El lector de pantalla oye lo que se ve (y que la foto es una ilustración); nada que solo esté en la ficha.
   const etiquetaAccesible = [
-    nombre, lugar, traducir(ETIQUETA_EDITORIAL),
+    nombre, lugar,
     oferta.patrocinada ? traducir('Contenido patrocinado; no cambia el orden editorial') : null,
     marcaNueva ? traducir('Nueva') : null,
-    ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
+    `${traducir(rotuloMinimo)}: ${traducir(minimo)}`,
     revision ? traducirEstado(revision) : null,
     noEspana ? traducir('No disponible en España') : null,
     bloqueo ? `${traducir('Aviso bloqueante')}: ${bloqueo.texto}` : null,
@@ -301,10 +299,10 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
       accessibilityLabel={etiquetaAccesible}
       accessibilityHint={traducir('Abre la ficha completa de la oferta')}
     >
+      <View style={e.imagenFicha}>
+        <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
+      </View>
       <View style={e.filaSuperior}>
-        <View style={e.imagenFicha}>
-          <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
-        </View>
         <View style={e.cuerpoFicha}>
           {oferta.patrocinada || marcaNueva ? (
             <View style={e.marcas}>
@@ -318,19 +316,9 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
             <Text noTraducir idiomaOriginal="es-ES" style={e.plataformaNombre}>{oferta.plataformaNombre}</Text>
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
-          {/* Mínimo · España en una línea. Cada dato lleva delante su «·» y el
-              marco recorta la franja de la izquierda, como la web: si el
-              segundo baja de línea, no empieza por «·». */}
-          <View style={e.datosMarco}>
-            <View style={e.datosLinea}>
-              {datos.map(([etiqueta, valor]) => (
-                <View key={etiqueta} style={e.datoTarjeta}>
-                  <Text style={e.datoPunto} accessible={false} importantForAccessibility="no">·</Text>
-                  <Text style={e.datoTarjetaEtiqueta}>{etiqueta}</Text>
-                  <Text style={e.datoTarjetaValor}>{valor}</Text>
-                </View>
-              ))}
-            </View>
+          <View style={e.datoTarjeta}>
+            <Text style={e.datoTarjetaEtiqueta}>{rotuloMinimo}</Text>
+            <Text style={e.datoTarjetaValor}>{minimo}</Text>
           </View>
           {revision || noEspana ? (
             <View style={e.alertas}>
@@ -594,8 +582,7 @@ export function DetalleOferta({
               </View>
             ) : null}
 
-            <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande /></View>
-            <Text style={e.notaImagen}>{PIE_EDITORIAL}</Text>
+            <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande decorativa /></View>
 
             <View style={e.antesCaja}>
               <Text style={e.antesTitulo} accessibilityRole="header">Antes de invertir</Text>
@@ -870,19 +857,19 @@ export function ExclusionesOfertas({ datos, onAbrirEnlace }) {
 }
 
 const e = StyleSheet.create({
-  // Aire entre filas (05/11/2026): 14 px arriba y abajo, como la web.
   ficha: {
-    paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: C.bd,
+    marginBottom: 14, borderWidth: 1, borderColor: C.bd, borderRadius: R.l,
+    backgroundColor: C.sup, overflow: 'hidden',
   },
   fichaPulsada: { backgroundColor: C.ton },
-  filaSuperior: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  filaSuperior: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, padding: 14 },
   // «›»: la fila entera es el botón; la flecha solo lo indica.
   flechaFicha: { fontFamily: F.regular, fontSize: 22, lineHeight: 26, color: C.tx3, alignSelf: 'center' },
   pulsado: { backgroundColor: C.ton2 },
   imagen: { width: '100%', backgroundColor: C.sup3 },
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
-  imagenFicha: { width: 80, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
+  imagenFicha: { width: '100%', aspectRatio: 16 / 9, overflow: 'hidden', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
   imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.l },
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
@@ -908,18 +895,13 @@ const e = StyleSheet.create({
   plataformaNombre: { fontFamily: F.semi, color: C.tx2 },
   lugarTxt: { color: C.tx3 },
   titulo: { ...T.ficha, color: C.tx, fontSize: 16, lineHeight: 20, letterSpacing: -0.16 },
-  /* Mínimo · España: el marco recorta los 16 px de la izquierda, donde cae
-     el «·» del dato que empieza cada línea. */
-  datosMarco: { overflow: 'hidden', marginTop: 6 },
-  datosLinea: { flexDirection: 'row', flexWrap: 'wrap', marginLeft: -16 },
-  datoTarjeta: { flexDirection: 'row', alignItems: 'baseline', flexShrink: 1, maxWidth: '100%' },
-  datoPunto: { ...T.menor, width: 16, fontSize: 13, lineHeight: 18, color: C.tx3, textAlign: 'center' },
+  datoTarjeta: { flexDirection: 'row', alignItems: 'baseline', marginTop: 8 },
   datoTarjetaEtiqueta: { ...T.menor, fontFamily: F.media, fontSize: 13, lineHeight: 18, color: C.tx3, marginRight: 4 },
   datoTarjetaValor: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.tx, flexShrink: 1 },
   punto: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2 },
   puntoMarca: { fontFamily: F.semi, color: C.senal },
   avisoFicha: {
-    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 4, marginTop: 10,
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 4, marginHorizontal: 14, marginBottom: 14,
   },
   avisoFichaStop: { backgroundColor: C.alarmaT },
   avisoFichaWarn: { backgroundColor: C.avisoT },
@@ -1008,7 +990,6 @@ const e = StyleSheet.create({
   esencialCifra: { fontFamily: F.semi },
   esencialNota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
   imagenDetalle: { marginTop: 22 },
-  notaImagen: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 8 },
   fichaPermanente: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12 },
   antesCaja: { backgroundColor: C.ton, borderRadius: R.l, padding: 14, marginTop: 16, gap: 6 },
   antesTitulo: { ...T.ficha, fontSize: 17, lineHeight: 23, color: C.tx, marginBottom: 2 },

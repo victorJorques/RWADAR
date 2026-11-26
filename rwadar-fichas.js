@@ -279,7 +279,7 @@ function paginaOferta(o,catalogo,imagen) {
   /* Los avisos de la oferta, tal cual y arriba; el genérico ya lo dice la línea del botón. */
   const avisos = (o.avisos || []).map(a=>typeof a==='string' ? a : a && a.tono!=='ok' && (!a.esAntiguedad || a.tono==='stop') ? a.texto : '')
     .filter(x=>x && !/^Referencia editorial gratuita\b/.test(x));
-  const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>Ilustración editorial generada con IA. No es una fotografía del activo real.</figcaption></figure>' : '';
+  const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="" width="960" height="660"></figure>' : '';
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(intro || o.resumen)+'</p>'+fichaImagen+
     '<p class="estado" role="status" data-campo="estado">Confirma las condiciones actuales en las fuentes.</p>'+
     (avisos.length ? '<section aria-labelledby="avisos"><h2 id="avisos">Avisos de esta oferta</h2><ul class="riesgos"'+ORIGINAL+'>'+avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>' : '')+

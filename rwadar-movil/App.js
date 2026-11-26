@@ -1169,7 +1169,6 @@ export default function App() {
                 />
               }
               ListFooterComponent={<View>
-                {filasOfertas.length ? <Text style={e.notaImagenes}>Imágenes ilustrativas, no fotos del activo</Text> : null}
                 <ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />
               </View>}
             />
@@ -2294,7 +2293,6 @@ const e = StyleSheet.create({
   bloqueOfertasCab: { paddingTop: 14, paddingBottom: 6 },
   bloqueOfertasTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx },
   bloqueOfertasMarca: { color: C.senal },
-  notaImagenes: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 12, marginBottom: 8 },
   panelOfertasCompacto: { marginBottom: 12 },
   selectorOfertas: {
     minHeight: UI.tactil + 6, flexDirection: 'row', gap: 2, padding: 3,

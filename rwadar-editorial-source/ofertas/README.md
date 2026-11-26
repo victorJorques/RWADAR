@@ -11,13 +11,10 @@ Cada ficha del catálogo tiene su propia imagen, `oferta-<slug>.webp`
   **tres pasos** (qué haces, qué pasa y cómo recibes o sales) van como texto en
   el manifiesto, en el texto alternativo y en la ficha.
 
-No son fotos del activo real: no tenemos derechos sobre las fotos de los
-emisores. La web ya no pone ninguna etiqueta encima de la imagen: el texto
-alternativo empieza por «Ilustración editorial», dice que la imagen está
-generada con IA y que no es una foto del activo real, y una línea pequeña
-bajo la lista, los carruseles y el detalle dice «Imágenes ilustrativas, no
-fotos del activo». Si un emisor da licencia por escrito, se puede
-sustituir.
+El listado muestra la portada, el nombre, la procedencia, el mínimo y los
+avisos que afecten al acceso o a la revisión. La ficha reúne las condiciones
+y sus fuentes. Al incorporar una portada, revisa el recorte móvil de 16:9
+y comprueba que los datos de la oferta se puedan leer sin depender de ella.
 
 Si una ficha no tiene foto, `generar.mjs` usa su escena en SVG (el dibujo
 isométrico de antes); si la ficha no está en `fichas.json`, la web y la app

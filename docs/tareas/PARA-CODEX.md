@@ -6,6 +6,13 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de noviembre de 2026 · Codex · Tarjetas de ofertas simplificadas
+
+- Rama `codex/tarjetas-ofertas`, commit `Simplifica las tarjetas de ofertas en web y Android`.
+- Portada, procedencia, importe mínimo documentado y alertas relevantes en la tarjeta. Las condiciones y fuentes quedan en la ficha. Se conservan el acceso a la ficha y Guardar.
+- Pruebas de la web, de fichas compartidas y de Android ejecutadas en local.
+- Pendientes la publicación en Cloudflare, la OTA y el aviso a usuarios.
+
 ## 22 de noviembre de 2026 (47) · Claude · Fotos reales de Wikimedia Commons en las noticias y «Lo más importante» hasta 8 · PUBLICADO
 
 - **Publicado:**

@@ -1888,7 +1888,7 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
   }));
 {
   const conPropia = [...htmlPublicado.matchAll(
-    /<img src="\/ofertas-editoriales\/oferta-([a-z0-9-]+)\.webp" alt="Ilustración editorial[^"]*" data-respaldo="\/ofertas-editoriales\/[a-z-]+-rwadar\.webp"/g)]
+    /<img src="\/ofertas-editoriales\/oferta-([a-z0-9-]+)\.webp" alt="" data-respaldo="\/ofertas-editoriales\/[a-z-]+-rwadar\.webp"/g)]
     .map(m => m[1]);
   const detalles = new Set([...htmlPublicado.matchAll(/data-oferta-detalle="([a-z0-9-]+)"/g)].map(m => m[1]));
   const esperadas = activosEditoriales.fichas.filter(f => detalles.has(f.slug)).map(f => f.slug);
@@ -2533,20 +2533,14 @@ for(const [nombre,alterar] of [
   prueba('al filtrar, el recuento queda a la vista',
     /^\d+ de \d+ principales$/.test(anuncio)&&filtrada.includes('<p class="catalogo-recuento" aria-hidden="true">'+anuncio+'</p>')&&
     !sin.includes('catalogo-recuento')&&!/opacity/.test(d(css,'.emis-colecciones button em')));
-  prueba('fila: etiquetas de 12 px, lugar sin cortar y títulos h4 bajo el bloque',
-    /font:\d+ \.75rem/.test(dt)&&!/text-transform/.test(dt)&&/flex-wrap:wrap/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia'))&&
+  prueba('tarjeta móvil: mínimo legible, lugar sin cortar y títulos h4 bajo el bloque',
+    /font:\d+ \.875rem/.test(dt)&&!/text-transform/.test(dt)&&/flex-wrap:wrap/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia'))&&
     /flex:none/.test(d(cssMovil,'#emiLista .escaparate-oferta .emi-lugar'))&&/<h3 id="emiSeleccionTit">[\s\S]*?<h4 class="emi-tit"/.test(sin)&&
     !/<h3 class="emi-tit"/.test(sin.slice(0,sin.indexOf('catalogo-referencias'))));
-  // 21/11/2026: la franja de 16 px que esconde el «·» del primer dato se recorta, así que un
-  // mínimo largo que baja de línea («Desde 100 € · suscripción desde el 25/11», a 390 px)
-  // perdía sus primeras letras. Cada dato lleva sangría francesa (en escritorio y en el
-  // móvil, que anula el relleno) y el «·» no la hereda.
-  const cssLimpio=css.replace(/\/\*[\s\S]*?\*\//g,''),datoLinea=d(cssLimpio,'.escaparate-datos-linea>div'),
-    datoMovil=d(cssMovil,'#emiLista .escaparate-oferta .escaparate-datos-clave>div'),punto=d(cssLimpio,'.escaparate-datos-linea>div::before');
-  prueba('tarjeta: un mínimo de dos líneas no pierde letras bajo la franja recortada del «·»',
-    /\.escaparate-oferta :is\(\.escaparate-procedencia,\.escaparate-datos-linea\)\{clip-path:inset\(0 0 0 16px\)\}/.test(cssLimpio)&&
-    /padding-left:16px/.test(datoLinea)&&/text-indent:-16px/.test(datoLinea)&&
-    /padding:0 0 0 16px/.test(datoMovil)&&/text-indent:-16px/.test(datoMovil)&&/text-indent:0/.test(punto));
+  const cssLimpio=css.replace(/\/\*[\s\S]*?\*\//g,'');
+  prueba('el mínimo puede saltar de línea sin recorte ni sangría negativa',
+    !/clip-path|text-indent/.test(d(cssLimpio,'.escaparate-oferta .escaparate-datos-linea')) &&
+    !/clip-path|text-indent/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-datos-clave')));
   // Revisión de la tarjeta sencilla (05/11/2026): lo patrocinado no lleva el verde
   // de «Nueva» ni de la acción; «No disponible en España», en rojo como en la app;
   // en escritorio, sin hueco bajo los títulos cortos y con la línea de datos al pie.
@@ -2556,9 +2550,9 @@ for(const [nombre,alterar] of [
     /color:var\(--tx(?:-2)?\)/.test(patrocinada)&&!/senal/.test(patrocinada)&&/color:var\(--senal\)/.test(d(css,'.escaparate-oferta .escaparate-marcas>span'))&&
     /color:var\(--alarma\)/.test(d(css,'.escaparate-no-disponible')));
   const cssSinNotas=css.replace(/\/\*[\s\S]*?\*\//g,''),cuerpoEsc=d(cssSinNotas,'.escaparate-oferta .escaparate-cuerpo');
-  prueba('escritorio: sin hueco bajo los títulos cortos y la línea Mínimo · España al pie de la tarjeta',
-    /min-height:0/.test(d(css,'.escaparate-oferta .escaparate-cuerpo .emi-tit'))&&/grid-template-rows:auto auto 1fr auto auto/.test(cuerpoEsc)&&
-    /"tit tit" "proc proc" "datos ver"/.test(cuerpoEsc)&&!/align-content:start/.test(cuerpoEsc)&&/align-self:end/.test(d(css,'.escaparate-oferta .escaparate-datos-linea'))&&
+  prueba('escritorio: sin hueco bajo los títulos cortos y el mínimo al pie de la tarjeta',
+    /min-height:0/.test(d(css,'.escaparate-oferta .escaparate-cuerpo .emi-tit'))&&/grid-template-rows:auto auto auto 1fr auto auto/.test(cuerpoEsc)&&
+    /"marcas marcas" "tit tit" "proc proc" "datos ver"/.test(cuerpoEsc)&&!/align-content:start/.test(cuerpoEsc)&&/align-self:end/.test(d(css,'.escaparate-oferta .escaparate-datos-linea'))&&
     /align-self:stretch/.test(d(cssSinNotas,'.emis-rejilla .escaparate-oferta')));
 }
 // ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
@@ -2607,8 +2601,8 @@ for(const [nombre,alterar] of [
   const fila=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
   const datos=[...fila.matchAll(/<div><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)].map(m=>[m[1],m[2]]);
   const ocultaDatos=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-datos-clave/.test(m[1])&&/display\s*:\s*none/.test(m[2]));
-  prueba('la tarjeta enseña solo Mínimo y España, en corto, y no esconde ninguno',
-    JSON.stringify(datos)===JSON.stringify([['Mínimo',transparencia.ofertas[sacada].minimoCorto],['España','Sí']])&&ocultaDatos.length===0&&
+  prueba('la tarjeta enseña solo el mínimo y conserva las alertas',
+    JSON.stringify(datos)===JSON.stringify([['Mínimo',transparencia.ofertas[sacada].minimoCorto]])&&ocultaDatos.length===0&&
     /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
   probarTarjetaYComparador({ c, prueba });
   await probarTarjetaEnIngles({ c, prueba });
@@ -2728,13 +2722,11 @@ for(const [nombre,alterar] of [
   const cajasFila=[...lista.matchAll(/<div class="escaparate-imagen">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajasInicio=[...p.obtiene('relNuevasLista').innerHTML.matchAll(/<div class="rel-tarjeta-img">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajaDetalle=(detalle.match(/<div class="escaparate-dialogo-imagen">([\s\S]*?)<\/div>/)||['',''])[1];
-  prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» presente',
-    cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
+  prueba('portadas sin etiquetas visibles y con carga diferida en los listados',
+    cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt=""[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
     cajasInicio.length>0&&cajasInicio.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*loading="lazy" decoding="async"[^>]*>$/.test(h))&&
-    /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
-    lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
-    detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
-    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
+    /^<img [^>]*alt=""[^>]*>$/.test(cajaDetalle)&&
+    !/nota-ilustrativa/.test(lista+detalle)&&
     !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
     !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
   // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.
@@ -3152,8 +3144,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') === oferta.slug &&
         /\bfav-local\b/.test(atributoHTML(b[1], 'class') || '')).length === 1);
     prueba(`tarjeta ${caso.nombre}: fixture válido y documento largo aceptado`, render.valida && render.docValida);
-    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y dos datos siguen el orden de lectura`,
-      /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
+    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y mínimo siguen el orden de lectura`,
+      /<img\b[^>]*alt=""[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
       tarjeta.indexOf('escaparate-imagen') < tarjeta.indexOf('escaparate-cuerpo') &&
       // ESPEC-FINAL §3: el título lleva title= con el texto completo (la fila lo corta a dos líneas).
       cuerpo.includes('<h3 class="emi-tit" title="'+render.titulo+'">'+render.titulo+'</h3>') &&
@@ -3161,10 +3153,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       cuerpo.indexOf('<h3') < cuerpo.indexOf('class="emi-donde"') &&
       cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-datos-clave escaparate-datos-linea"') &&
       (cuerpo.match(/class="escaparate-datos-clave escaparate-datos-linea"/g)||[]).length === 1 &&
-      // «Mínimo · España» (05/11/2026); el valor corto ya lleva su unidad («1 €», «500 CHF»). La Salida, en la ficha.
-      ['Mínimo','España'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) && !cuerpo.includes('<dt>Salida</dt>') &&
-      // Fuera de España, el dato dice «No», nunca «Sin confirmar» al lado de «No disponible en España».
-      (!caso.espana || cuerpo.includes('<dt>España</dt><dd>'+caso.espana+'</dd>') && !cuerpo.includes('Sin confirmar')) &&
+      cuerpo.includes('<dt>Mínimo</dt>') && !cuerpo.includes('<dt>España</dt>') && !cuerpo.includes('<dt>Salida</dt>') &&
       !/escaparate-destacado|escaparate-dato-principal/.test(tarjeta));
     prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
       !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&
@@ -3267,9 +3256,9 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
   // Móvil (03/11/2026, ESPEC-FINAL §1): las ilustraciones ya no llevan texto
   // dibujado, así que la miniatura de ancho fijo se encuadra al centro, sin el
   // desplazamiento ni la ampliación que lo escondían, y sin nada encima.
-  prueba('las tarjetas mantienen portada 16/10 en escritorio y una miniatura limpia y centrada en el móvil',
+  prueba('las tarjetas muestran una portada 16/10 en escritorio y 16/9 en móvil',
     reglasImagen.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
-    reglasImagenMovil.some(d=>/(?:^|;)\s*width\s*:\s*\d+px/.test(d)) &&
+    reglasImagenMovil.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*9/.test(d)) &&
     reglasMiniaturaMovil.length > 0 &&
     reglasMiniaturaMovil.every(d=>!/object-position\s*:\s*100%|transform\s*:\s*scale|width\s*:\s*2\d\d%/.test(d)) &&
     !/escaparate-editorial|inicio-ilustracion|escaparate-tipo/.test(js));
