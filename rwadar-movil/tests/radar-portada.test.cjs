@@ -68,7 +68,7 @@ function nodos(n) { return !n || typeof n !== 'object' ? [] : Array.isArray(n) ?
 const textoDe = (n) => nodos(n.children).concat(n.children).filter((x) => typeof x === 'string').join('');
 const plano = (estilo) => (Array.isArray(estilo) ? Object.assign({}, ...estilo.flat(Infinity).filter(Boolean).map(plano)) : estilo || {});
 
-// El catálogo publicado (25 plataformas), con la forma de la app.
+// El catálogo publicado, con la forma de la app.
 const fuente = fs.readFileSync(path.join(RAIZ, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8');
 const { P } = new Function(`${fuente};return {P};`)();
 const DATOS = P.map((p) => ({ slug: p.slug, nombre: p.n, categoria: p.cat, acceso: p.acceso, verificacionLocal: p.verificacionLocal }));
@@ -77,6 +77,8 @@ const CATEGORIAS = Object.keys(tema.COLOR_CATEGORIA);
 /* Lo esperado sale de los datos: el catálogo cambia en cada ciclo y la prueba
    no puede llevar las cifras de hoy escritas a mano. */
 const cuenta = (c) => DATOS.filter((p) => p.categoria === c).length;
+// Cifras del contador más largo, como las calcula el componente (con más de 9 en una categoría, 2).
+const DIGITOS = Math.max(...CATEGORIAS.map((c) => String(cuenta(c)).length));
 const etiqueta = (pre, nombres) => `${pre}: ${nombres.map((n, i) => `${n}, ${cuenta(CATEGORIAS[i])}`).join('; ')}`;
 
 function portada(opciones = {}, props = {}) {
@@ -294,7 +296,7 @@ test('de 320 a 767 px de ancho nada se sale ni se monta, y el bloque no pasa de 
   // el punto, `punto`, y la leyenda va al lado (o debajo, con letra enorme).
   for (const [ancho, compacta, fontScale] of [[320, false, 1], [390, false, 1], [360, true, 1], [320, false, 1.3], [360, true, 1.3], [320, false, 2]]) {
     const { todos, filas, ui: u } = portada({ ancho, fontScale }, { compacta });
-    const m = u.medidasPortada({ ancho, compacta, fontScale, nombres: ORDEN, digitos: 1 });
+    const m = u.medidasPortada({ ancho, compacta, fontScale, nombres: ORDEN, digitos: DIGITOS });
     const lienzo = todos.find((n) => n.type === 'Svgdefault');
     assert.equal(lienzo.props.width, m.lado, `${ancho}, letra ${fontScale}: lienzo de ${m.lado}`);
     assert.ok(filas.every((f) => f.punto.width === m.punto), `${ancho}, letra ${fontScale}: punto de ${m.punto}`);

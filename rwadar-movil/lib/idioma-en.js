@@ -1727,6 +1727,9 @@
   // Plataformas y su ficha
   "Asia-Pacífico": "Asia-Pacific",
   "Latinoamérica": "Latin America",
+  "África": "Africa",
+  "Oriente Medio": "Middle East",
+  "Varias": "Several",
   "No la publica": "Not disclosed",
   "EE. UU.": "US",
   "Reino Unido": "United Kingdom",
