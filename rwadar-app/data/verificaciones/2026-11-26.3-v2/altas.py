@@ -252,7 +252,7 @@ OFERTAS = [
     {'supervisada': crit(False, 'La vende el propio emisor alemán sin folleto; no consta como entidad autorizada inscrita en la CNMV para esta venta.', 'finexity-terminos', 'FINEXITY · Hoja de términos del bono 2026/2030'),
      'documentoEspana': crit(False, 'Tiene KID en alemán, pero la oferta pública es solo en Alemania.', 'finexity-terminos', 'FINEXITY · Hoja de términos («Public offer in Germany only»)'),
      'minimoCorto': '1.000 €', 'salidaCorta': 'Al vencimiento (2030)',
-     'puntos': [{'texto': 'Cupón mínimo del 7 % anual', 'fuente': tr('finexity-terminos', 'FINEXITY · Hoja de términos del bono 2026/2030')}]},
+     'puntos': [{'texto': 'Cupón variable con un mínimo fijado', 'fuente': tr('finexity-terminos', 'FINEXITY · Hoja de términos del bono 2026/2030')}]},
     {'escena': 'empresa', 'lugar': 'Hamburgo · Alemania', 'pasos': ['Suscribes el bono', 'Cobras el cupón cada semestre', 'Recuperas el nominal al vencimiento'], 'concepto': 'oficinas en Hamburgo', 'foto': {'semilla': 59, 'encuadre': '70% 55%', 'concepto': 'edificios de oficinas de ladrillo junto a un canal de Hamburgo, no los de la empresa', 'prompt': 'historic red-brick warehouse office buildings along a calm canal in Hamburg at blue hour, warm windows reflected in the water, small iron bridge'}}),
 
   oferta('groma-real-estate-trust', 'groma', 'Groma', 'Groma Real Estate Trust: REIT de pisos en EE. UU. con acciones en cadena (GromaCoin)', 'Inmobiliario', 'US', 'USD', 'principales', None,
