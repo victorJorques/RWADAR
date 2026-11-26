@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 26 de noviembre de 2026 (49) · Claude · Altas internacionales del informe de Codex (11 ofertas, 7 plataformas), las nuevas primero, fotos realistas y noticias del 26/11
+## 26 de noviembre de 2026 (49) · Claude · Altas internacionales del informe de Codex (11 ofertas, 7 plataformas), las nuevas primero, fotos realistas y noticias del 26/11 · PUBLICADO
 
 - **Orden de Víctor:** añadir a la actualización el informe global de Codex del 26/11 verificado («RWAdar es
   internacional», «no descartes las internacionales», «pon las nuevas en primera portada»), noticias y gráfico;
@@ -36,8 +36,14 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 - **Noticias del 26/11** (`noticias-diarias/2026-11-26/`, verificación hecha por Claude en las fuentes, sin
   subagentes): Singapur (fondos no tradicionales), SBI Solana Global y oro digital mayorista; salen OKXICE, HSBC y
   BaFin. **Gráfico:** las 16 fotos de Codex cuadran con `datos-tokenizacion`, más la del 26/11.
-- **Pendiente tras unir este PR:** «Publicar web» (revisión y producción), OTA Android y «Avisar novedad»; borrar
-  `claude/cerrojo-ciclo-2026-11-26`.
+- **Publicado:** PR #209 (entrega) y #210 (sincronización y sello `741046cd`); «Aplicar catálogo» 45900639213;
+  «Publicar web» revisión 45902151896 y producción 45902460217, comprobadas en vivo con Chromium a 390 y 1366 px
+  (revisión `25b54edc`, 32/32, «Más nuevas primero», las 18 fichas nuevas y sus portadas en 200, noticias del 26/11,
+  gráfico hasta el 26/11, sin errores); OTA Android 45902154729 (`comprobar-ota-compatible`: ok, 1.4.2(24));
+  «Avisar novedad» 45902738046 («11 inversiones nuevas de 7 países, algunas desde 100 dólares») y 45902825220
+  (las 3 noticias del día). Ramas de la entrega borradas; la de cerrojo, con «Limpiar ramas».
+- **Pendiente:** las ~30 plataformas solo de radar del informe de Codex (sección 09); fotos reales de Commons para las
+  ofertas cuando Commons deje de responder 429 (programa en `origin/claude/fotos-reales-ofertas`, a medias).
 
 ## 26 de noviembre de 2026 (48) · Claude · Catálogo re-verificado (vigente hasta el 03/12), Hausera fuera e integración de Codex · PUBLICADO
 
