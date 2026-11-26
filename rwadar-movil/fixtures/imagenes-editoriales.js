@@ -20,7 +20,6 @@ const FUENTES_POR_FICHA = Object.freeze({
   'oferta-drautalresidenz-paternion.webp': require('../assets/ofertas-editoriales/oferta-drautalresidenz-paternion.webp'),
   'oferta-fotovoltaica-cohotel.webp': require('../assets/ofertas-editoriales/oferta-fotovoltaica-cohotel.webp'),
   'oferta-fotovoltaica-greenpoint.webp': require('../assets/ofertas-editoriales/oferta-fotovoltaica-greenpoint.webp'),
-  'oferta-hausera-proximas-ofertas.webp': require('../assets/ofertas-editoriales/oferta-hausera-proximas-ofertas.webp'),
   'oferta-kraken-xstocks.webp': require('../assets/ofertas-editoriales/oferta-kraken-xstocks.webp'),
   'oferta-local-de-estanco-klagenfurt.webp': require('../assets/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp'),
   'oferta-mtbill.webp': require('../assets/ofertas-editoriales/oferta-mtbill.webp'),

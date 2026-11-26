@@ -8766,8 +8766,19 @@
   "fuentesNuevas": [],
   "noAplicado": [],
   "contraste": {},
-  "transparencia": {},
   "comprobar": {},
+  "transparencia": {
+    "reventaDe": [
+      "brickwise"
+    ],
+    "minimosCortos": {
+      "switzerlend": {
+        "tarjeta": "1 acción (68,01 CHF el 26/11, precio del emisor)",
+        "antes": "1 acción (68,01 CHF a 21/11)",
+        "despues": "1 acción (68,01 CHF a 26/11)"
+      }
+    }
+  },
   "textos": {
     "notaOrigen": "Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; sin altas ni retiradas. Parte de la publicada fe0cfaa8 (entrega 2026-11-21). Las cifras se publican solo donde se leyeron en la fuente oficial; en reventa y próximas, la tarjeta enseña mínimo, acceso desde España y salida en castellano, con fuente y fecha.",
     "aprobadaReferencia": "Entrega 2026-11-26: radar (69 fuentes) y 22 fichas comprobados el 26/11/2026 con fuentes primarias releídas hoy, expediente por oferta; mismas 22 ofertas (8/13/1) y 25 plataformas. Puesta al día pedida por el responsable del proyecto el 26/11/2026; ciclo autorizado por su orden."

@@ -370,7 +370,9 @@ D = {
   'prohibidos': [{'en': 'cambios', 'patron': 'oportunidad|rentabilidad garantizada', 'flags': 'i', 'motivo': 'palabras que no van en las fichas'},
                  {'en': 'hausera-proximas-ofertas', 'patron': 'preventa abierta|suscripción del 25/11', 'flags': 'i', 'motivo': 'Hausera: Alicante 3 ya está financiada'}],
   'fuentesNuevas': [],
-  'noAplicado': [], 'contraste': {}, 'transparencia': {}, 'comprobar': {},
+  'noAplicado': [], 'contraste': {}, 'comprobar': {},
+  'transparencia': {'reventaDe': ['brickwise'],
+                    'minimosCortos': {'switzerlend': {'tarjeta': f'1 acción (68,01 CHF el {CORTA}, precio del emisor)', 'antes': f'1 acción (68,01 CHF a {PCORTA})', 'despues': f'1 acción (68,01 CHF a {CORTA})'}}},
   'textos': {
     'notaOrigen': ('Revisión del 26/11/2026 (puesta al día pedida por el responsable del proyecto): las 22 fichas revisadas con sus fuentes primarias '
                    'releídas hoy como visitante, un expediente por oferta; montaje y revisión por una sola sesión, sin agentes; ninguna candidata nueva; '

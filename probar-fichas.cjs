@@ -199,7 +199,11 @@ verificar('la ficha fija enseña «Transparencia: lo que hemos comprobado» sin 
   assert(/<p data-campo="vigencia"[^>]*>Se comprueba al abrir la página/.test(pagina));
   assert(pagina.includes('<h3>Datos comprobados a favor, con su fuente</h3>'));
   assert(!/(?<![\d,.])[0-5]\s*\/\s*5(?!\d)/.test(pagina.replace(/<[^>]*>/g,' ')));
-  const sinPuntos=salidas.get('ofertas/hausera-proximas-ofertas.html');
+  // Sin datos a favor (desde el 26/11 ninguna ficha publicada está así): la misma ficha con una revisión de otro día,
+  // cuya transparencia no se enseña, conserva el título y no saca la lista.
+  const otroDia=structuredClone(catalogo);
+  otroDia.ofertas.find(o=>o.slug==='robinhood-classic-stock-tokens').verificadaEl='2026-11-25';
+  const sinPuntos=construirSalidas({catalogo:otroDia}).get('ofertas/robinhood-classic-stock-tokens.html');
   assert(sinPuntos.includes('Transparencia: lo que hemos comprobado')&&!sinPuntos.includes('Datos comprobados a favor'));
 });
 // Revisión legal 06/11/2026, punto 5.3: «Datos comprobados a favor» en vez de «Puntos fuertes»,
@@ -222,7 +226,6 @@ verificar('revisión legal 5.3: sin «Puntos fuertes» y el botón al proveedor 
   }
   assert.equal(botones.mtbill,'Ir a la web del proveedor (sales de RWAdar) ↗');
   assert.equal(botones['boss-info'],'Ir a la web del proveedor (sales de RWAdar) ↗');
-  assert.equal(botones['hausera-proximas-ofertas'],'Ir a la web del proveedor (sales de RWAdar) ↗');
   assert.equal(botones['robinhood-classic-stock-tokens'],'Ver oferta en Robinhood Europe ↗');
   // Se contratan desde España, pero quien las vende no está supervisado: tampoco «Ver oferta en».
   assert.equal(botones.aktionariat,'Ir a la web del proveedor (sales de RWAdar) ↗');
