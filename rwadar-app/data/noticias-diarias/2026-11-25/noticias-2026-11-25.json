@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "actualizadoEl": "2026-11-25",
+  "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
+  "noticias": [
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "fecha": "2026-11-25",
+      "seccion": "hoy",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "Hong Kong estrena una plataforma de bonos tokenizados",
+      "resumen": "La autoridad monetaria de Hong Kong anuncia el lanzamiento de CMU Digital Asset Platform. La infraestructura permite emitir deuda, liquidar compras y ventas, pagar cupones y amortizar los títulos al vencimiento. También permite tokenizar deuda existente.",
+      "porQueImporta": "El sistema permite liquidar operaciones en varias monedas las 24 horas mediante tokens de efectivo. La posible incorporación de fondos y otros activos queda en la hoja de ruta.",
+      "en": {
+        "titulo": "Hong Kong launches a platform for tokenised bonds",
+        "resumen": "Hong Kong’s monetary authority announces the launch of CMU Digital Asset Platform. The infrastructure supports debt issuance, trade settlement, coupon payments and redemption at maturity. Existing debt securities can also be tokenised.",
+        "porQueImporta": "The system supports round-the-clock settlement in several currencies using digital cash tokens. Funds and other assets are possible additions on the roadmap.",
+        "tituloInformativo": "Hong Kong’s monetary authority launches a platform for issuing and settling tokenised debt"
+      },
+      "fuente": {
+        "nombre": "Autoridad Monetaria de Hong Kong, comunicado del 25/11/2026 sobre CMU Digital Asset Platform",
+        "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "La autoridad monetaria de Hong Kong anuncia una plataforma para emitir y liquidar deuda tokenizada",
+      "imagen": "real-sala-servidores-bastidores"
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "fecha": "2026-11-25",
+      "seccion": "hoy",
+      "categoria": "riesgo",
+      "ambito": "España",
+      "titulo": "La CNMV difunde alertas del supervisor belga",
+      "resumen": "La CNMV publica una lista de entidades no registradas que le ha remitido el supervisor financiero de Bélgica, la FSMA. El documento identifica por nombre y dirección web las entidades advertidas y marca expresamente un caso de suplantación.",
+      "porQueImporta": "El aviso permite distinguir a las entidades que figuran en la lista, incluso cuando un nombre comercial se parece al de una empresa legítima.",
+      "en": {
+        "titulo": "Spain’s CNMV shares warnings from the Belgian regulator",
+        "resumen": "Spain’s CNMV publishes a list of unregistered entities reported by Belgium’s financial regulator, the FSMA. The document identifies the entities by name and website and explicitly flags one case of impersonation.",
+        "porQueImporta": "The warning helps distinguish the entities listed, including when a trading name resembles that of a legitimate firm.",
+        "tituloInformativo": "Spain’s CNMV publishes Belgian regulator warnings about unregistered entities"
+      },
+      "fuente": {
+        "nombre": "CNMV, advertencias de supervisores internacionales del 25/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "La CNMV publica advertencias remitidas por el supervisor belga sobre entidades no registradas",
+      "imagen": "real-cnmv-sede-madrid"
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "fecha": "2026-11-24",
+      "seccion": "hoy",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "El BCE propone criterios comunes para la tokenización",
+      "resumen": "El BCE propone un modelo de referencia con cinco criterios para conectar mercados tokenizados. Entre ellos figuran que las redes puedan comunicarse, que los activos se puedan mover y que se mantenga el control sobre sus reglas.",
+      "porQueImporta": "El marco servirá como aportación al trabajo del grupo europeo de estándares de tokenización. Compartir criterios técnicos podría reducir la fragmentación entre plataformas.",
+      "en": {
+        "titulo": "ECB proposes common criteria for tokenisation",
+        "resumen": "The ECB proposes a reference model with five criteria for connecting tokenised markets. They include allowing networks to communicate, enabling assets to move and keeping their rules enforceable.",
+        "porQueImporta": "The framework will feed into the European Tokenisation Standards Group’s work. Shared technical criteria could reduce fragmentation between platforms.",
+        "tituloInformativo": "The ECB proposes a five-criterion reference model for tokenisation standards discussions"
+      },
+      "fuente": {
+        "nombre": "Banco Central Europeo, propuesta de marco para la estandarización DLT del 24/11/2026",
+        "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "El BCE propone un modelo de referencia con cinco criterios para debatir estándares de tokenización",
+      "imagen": "real-servidores-cables"
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "regulacion",
+      "ambito": "UE",
+      "titulo": "El BCE aceptará ciertos valores tokenizados en garantía",
+      "resumen": "El BCE ha aprobado que ciertos valores negociables emitidos en plataformas autorizadas bajo el régimen piloto DLT de la UE puedan servir de garantía en operaciones de crédito del Eurosistema. La aplicación está prevista para junio de 2027.",
+      "porQueImporta": "Las entidades que se financian con el Eurosistema podrán aportar esos valores como respaldo si cumplen los criterios habituales y los requisitos específicos. El sistema de liquidación tendrá que ofrecer acceso a TARGET2-Securities.",
+      "en": {
+        "titulo": "ECB to accept some tokenised securities as collateral",
+        "resumen": "The ECB has approved the use of certain marketable securities issued on platforms authorised under the EU DLT Pilot Regime as collateral in Eurosystem credit operations. Implementation is planned for June 2027.",
+        "porQueImporta": "Institutions borrowing from the Eurosystem will be able to pledge those securities if they meet standard and specific requirements. Their settlement system must offer settlement in TARGET2-Securities.",
+        "tituloInformativo": "The ECB expands eligible Eurosystem collateral to certain marketable securities issued on authorised DLT platforms"
+      },
+      "fuente": {
+        "nombre": "Banco Central Europeo, comunicado del 23/11/2026 sobre activos basados en DLT como garantía",
+        "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "El BCE amplía las garantías admisibles del Eurosistema a ciertos valores negociables emitidos en plataformas DLT autorizadas",
+      "imagen": "real-bce-francfort"
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "UE",
+      "titulo": "Franklin Templeton lanza un monetario tokenizado en euros",
+      "resumen": "Franklin Templeton anuncia un fondo monetario en euros domiciliado en Luxemburgo que registra las participaciones en una infraestructura con blockchain. La gestora prevé ofrecerlo a minoristas de siete países, incluido España.",
+      "porQueImporta": "La gestora prevé transferencias de participaciones entre carteras digitales aprobadas las 24 horas. Esa función está sujeta a la elegibilidad de los participantes. El comunicado remite al folleto y al documento de datos fundamentales.",
+      "en": {
+        "titulo": "Franklin Templeton launches a tokenised euro money fund",
+        "resumen": "Franklin Templeton announces a Luxembourg-domiciled euro money market fund that records ownership using blockchain infrastructure. The manager plans to make it available to retail investors in seven countries, including Spain.",
+        "porQueImporta": "The manager plans round-the-clock transfers of fund shares between approved digital wallets. This feature is subject to participant eligibility. The announcement refers readers to the prospectus and key information document.",
+        "tituloInformativo": "Franklin Templeton launches a tokenised euro money market fund with planned retail availability in Spain"
+      },
+      "fuente": {
+        "nombre": "Franklin Templeton, comunicado del 23/11/2026 sobre Franklin OnChain Euro Liquidity Fund",
+        "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "Franklin Templeton lanza un fondo monetario tokenizado en euros y prevé ofrecerlo a minoristas en España",
+      "imagen": "real-monedas-euro-bandera"
+    },
+    {
+      "id": "okxice-mercado-24-horas-eeuu",
+      "fecha": "2026-11-23",
+      "seccion": "importante",
+      "categoria": "mercado",
+      "ambito": "Mundo",
+      "titulo": "OKXICE abre la negociación 24/7 para clientes de EE. UU.",
+      "resumen": "OKX e ICE anuncian el arranque de OKXICE TSV, con 113 activos confirmados que se incorporarán de forma gradual. Los tokens dan derechos sobre los valores subyacentes. Solo acceden clientes elegibles de EE. UU., con verificación de identidad y una cartera propia.",
+      "porQueImporta": "La plataforma avisa de posibles diferencias con el precio de la acción y pérdida de capital. Opera con una exención temporal de la SEC. La NYSE no opera ni supervisa este mercado.",
+      "en": {
+        "titulo": "OKXICE opens 24/7 securities trading to eligible US clients",
+        "resumen": "OKX and ICE announce the start of OKXICE TSV, with 113 confirmed assets rolling out gradually. Tokens carry rights to the underlying securities. Access is limited to eligible US clients who verify their identity and hold their own wallets.",
+        "porQueImporta": "The venue warns of price gaps against the share and capital losses. It operates under a temporary SEC exemption. NYSE does not operate or oversee this venue.",
+        "tituloInformativo": "OKXICE announces the start of its 24/7 tokenised securities venue for eligible US clients"
+      },
+      "fuente": {
+        "nombre": "OKX, comunicado de lanzamiento de OKXICE TSV del 23/11/2026, actualizado el 24/11",
+        "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "OKXICE anuncia el inicio de su mercado de valores tokenizados 24/7 para clientes elegibles de EE. UU.",
+      "imagen": "real-pantalla-cotizaciones-grafico"
+    },
+    {
+      "id": "hsbc-hong-kong-fondo-tokenizado-100-hkd",
+      "fecha": "2026-11-19",
+      "seccion": "importante",
+      "categoria": "producto",
+      "ambito": "Mundo",
+      "titulo": "HSBC abre un fondo tokenizado desde 100 dólares de Hong Kong",
+      "resumen": "HSBC permite a clientes elegibles de su app de Hong Kong acceder a una nueva clase tokenizada de un fondo monetario en dólares de Hong Kong. El mínimo es de 100 HKD, mediante su moneda digital RedCoin.",
+      "porQueImporta": "Los repartos proceden del fondo. RedCoin no paga intereses. La nota dirige al cliente a los documentos de riesgos y limita el acceso a clientes elegibles de esa app.",
+      "en": {
+        "titulo": "HSBC opens tokenised money fund access from HKD 100",
+        "resumen": "HSBC lets eligible users of its Hong Kong app access a new tokenised class of a Hong Kong dollar money market fund. The minimum is HKD 100, using its RedCoin digital currency.",
+        "porQueImporta": "Distributions come from the fund. RedCoin pays no interest. The release directs clients to the risk documents and limits access to eligible users of that app.",
+        "tituloInformativo": "HSBC offers eligible Hong Kong app clients a tokenised money market fund class from HKD 100"
+      },
+      "fuente": {
+        "nombre": "HSBC Hong Kong, comunicado del 19/11/2026 sobre la clase SD de HSBC Global Money Funds – Hong Kong Dollar",
+        "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+        "tipo": "empresa"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "HSBC ofrece a clientes elegibles de su app de Hong Kong una clase tokenizada de fondo monetario desde 100 HKD",
+      "imagen": "real-cajero-teclado"
+    },
+    {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "fecha": "2026-11-19",
+      "seccion": "importante",
+      "categoria": "riesgo",
+      "ambito": "UE",
+      "titulo": "Token ficticio por WhatsApp: avisa el supervisor alemán",
+      "resumen": "BaFin advierte de la promoción del token ficticio VLVI en grupos de WhatsApp dirigidos a inversores en Alemania. El aviso identifica a Zorvantic Exchange y señala que ofrece servicios de criptoactivos sin la autorización necesaria.",
+      "porQueImporta": "BaFin indica que no supervisa a los grupos ni a la plataforma. Su base de datos permite comprobar si una empresa está autorizada en Alemania.",
+      "en": {
+        "titulo": "Fictitious token via WhatsApp: German supervisor warns",
+        "resumen": "BaFin warns that a fictitious token called VLVI is promoted in WhatsApp groups targeting investors in Germany. The warning names Zorvantic Exchange and says it offers crypto-asset services without the required authorisation.",
+        "porQueImporta": "BaFin says it supervises neither the groups nor the platform. Its database lets readers check whether a firm is authorised in Germany.",
+        "tituloInformativo": "Germany's BaFin warns of VLVI, a fictitious crypto token promoted in WhatsApp groups aimed at investors in Germany"
+      },
+      "fuente": {
+        "nombre": "BaFin (supervisor financiero de Alemania), aviso a consumidores del 19/11/2026 sobre ofertas en grupos de WhatsApp",
+        "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+        "tipo": "regulador"
+      },
+      "consultadaEl": "2026-11-25",
+      "tituloInformativo": "El supervisor alemán avisa de VLVI, un criptotoken ficticio que se promociona en grupos de WhatsApp dirigidos a inversores en Alemania",
+      "imagen": "real-sede-bafin-francfort"
+    }
+  ]
+}

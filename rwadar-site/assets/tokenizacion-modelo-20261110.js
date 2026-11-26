@@ -205,10 +205,9 @@ function resumir({ historico, actual = null, fuente = actual ? 'coingecko' : 'fo
     .sort((a, b) => b.valor - a.valor);
   const materias = base.tipos['materias-primas'];
   const oro = base.oro ? { ...base.oro, cuotaMateriasPrimas: materias ? redondear(base.oro.valor / materias.valor * 100, 2) : null } : null;
-  const porFecha = new Map(fotos.map(f => [f.fecha, f.total.valor]));
-  porFecha.set(base.fecha, base.total.valor);
-  const serie = [...porFecha].filter(([fecha]) => fecha <= base.fecha).sort((a, b) => (a[0] < b[0] ? -1 : 1))
-    .slice(-MAX_SERIE).map(([fecha, valor]) => ({ fecha, valor }));
+  const serie = fotos.filter(f => f.fecha < base.fecha).slice(1 - MAX_SERIE)
+    .map(f => ({ fecha: f.fecha, valor: f.total.valor }));
+  serie.push({ fecha: base.fecha, valor: base.total.valor });
   return { ...comun, fuente, fecha: base.fecha, actualizado: base.actualizado, total: base.total, tipos, oro, periodos, serie };
 }
 

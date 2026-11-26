@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "guia": {
+    "ruta": "rwadar-editorial-source/noticias/GUIA-TITULARES.md",
+    "sha256": "728b4c59aa61ee47b0e3eaabc1a30e826866c9859f3c40e4777a675b4a57de6f"
+  },
+  "noticias": [
+    {
+      "id": "hong-kong-hkma-plataforma-bonos-tokenizados",
+      "propuestas": {
+        "es": [
+          "Hong Kong estrena una plataforma de bonos tokenizados",
+          "Hong Kong lanza su sistema digital para emitir bonos",
+          "Hong Kong incorpora liquidación 24 h para deuda digital"
+        ],
+        "en": [
+          "Hong Kong launches a platform for tokenised bonds",
+          "Hong Kong rolls out digital debt issuance platform",
+          "Hong Kong brings 24-hour settlement to digital debt"
+        ]
+      },
+      "elegido": {
+        "es": "Hong Kong estrena una plataforma de bonos tokenizados",
+        "en": "Hong Kong launches a platform for tokenised bonds"
+      },
+      "motivo": "Identifica el lanzamiento y el activo cubierto. La foto de servidores ilustra infraestructura digital sin atribuirla a la autoridad monetaria.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-sala-servidores-bastidores",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "cnmv-avisa-entidades-belgica-25-noviembre",
+      "propuestas": {
+        "es": [
+          "La CNMV difunde alertas del supervisor belga",
+          "La CNMV publica avisos de Bélgica sobre un clon",
+          "La CNMV recoge avisos belgas de entidades sin registro"
+        ],
+        "en": [
+          "Spain’s CNMV shares warnings from the Belgian regulator",
+          "CNMV relays Belgian warnings that include a clone",
+          "Spanish regulator lists warnings about unregistered firms"
+        ]
+      },
+      "elegido": {
+        "es": "La CNMV difunde alertas del supervisor belga",
+        "en": "Spain’s CNMV shares warnings from the Belgian regulator"
+      },
+      "motivo": "La fecha corresponde a la difusión de la CNMV. El titular atribuye los avisos al supervisor belga.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-cnmv-sede-madrid",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bce-propuesta-estandares-tecnicos-dlt",
+      "propuestas": {
+        "es": [
+          "El BCE propone criterios comunes para la tokenización",
+          "El BCE plantea cómo conectar los mercados de tokens",
+          "Cinco criterios del BCE para conectar redes de tokens"
+        ],
+        "en": [
+          "ECB proposes common criteria for tokenisation",
+          "ECB sets out how tokenised markets can connect",
+          "Five ECB criteria for connecting token networks"
+        ]
+      },
+      "elegido": {
+        "es": "El BCE propone criterios comunes para la tokenización",
+        "en": "ECB proposes common criteria for tokenisation"
+      },
+      "motivo": "Indica que es una propuesta. La foto de cableado ilustra la conexión entre sistemas.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-servidores-cables",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bce-valores-tokenizados-garantia-2027",
+      "propuestas": {
+        "es": [
+          "El BCE aceptará ciertos valores tokenizados en garantía",
+          "La deuda tokenizada gana sitio como garantía ante el BCE",
+          "El BCE prevé admitir valores tokenizados desde junio de 2027"
+        ],
+        "en": [
+          "ECB to accept some tokenised securities as collateral",
+          "ECB widens collateral eligibility to select DLT securities",
+          "ECB plans new DLT collateral eligibility for June 2027"
+        ]
+      },
+      "elegido": {
+        "es": "El BCE aceptará ciertos valores tokenizados en garantía",
+        "en": "ECB to accept some tokenised securities as collateral"
+      },
+      "motivo": "El titular explica el nuevo uso de los valores. «Ciertos» conserva la condición de elegibilidad y el resumen recoge la fecha prevista.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-bce-francfort",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "franklin-templeton-monetario-euros-tokenizado",
+      "propuestas": {
+        "es": [
+          "Franklin Templeton lanza un monetario tokenizado en euros",
+          "Un fondo en euros lleva sus participaciones a blockchain",
+          "Franklin añade un fondo en euros a su plataforma Benji"
+        ],
+        "en": [
+          "Franklin Templeton launches a tokenised euro money fund",
+          "Euro fund brings ownership records onto blockchain",
+          "Franklin adds a euro money market fund to Benji"
+        ]
+      },
+      "elegido": {
+        "es": "Franklin Templeton lanza un monetario tokenizado en euros",
+        "en": "Franklin Templeton launches a tokenised euro money fund"
+      },
+      "motivo": "Comunica el lanzamiento sin adelantar la fecha ni las condiciones de contratación local.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-monedas-euro-bandera",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "okxice-mercado-24-horas-eeuu",
+      "propuestas": {
+        "es": [
+          "OKXICE abre la negociación 24/7 para clientes de EE. UU.",
+          "EE. UU. estrena el mercado tokenizado 24/7 de OKXICE",
+          "OKXICE anuncia 113 activos para su despliegue en EE. UU."
+        ],
+        "en": [
+          "OKXICE opens 24/7 securities trading to eligible US clients",
+          "OKXICE launches round-the-clock US securities trading",
+          "113 assets confirmed for OKXICE’s gradual US rollout"
+        ]
+      },
+      "elegido": {
+        "es": "OKXICE abre la negociación 24/7 para clientes de EE. UU.",
+        "en": "OKXICE opens 24/7 securities trading to eligible US clients"
+      },
+      "motivo": "Expone el cambio y su alcance con términos comprensibles y respaldo de la fuente.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-pantalla-cotizaciones-grafico",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "hsbc-hong-kong-fondo-tokenizado-100-hkd",
+      "propuestas": {
+        "es": [
+          "HSBC abre un fondo tokenizado desde 100 dólares de Hong Kong",
+          "Hong Kong lleva un fondo tokenizado a la app de HSBC",
+          "HSBC permite entrar en su fondo tokenizado con 100 HKD"
+        ],
+        "en": [
+          "HSBC opens tokenised money fund access from HKD 100",
+          "A tokenised money fund joins HSBC’s Hong Kong app",
+          "HSBC Hong Kong adds a tokenised fund class from HKD 100"
+        ]
+      },
+      "elegido": {
+        "es": "HSBC abre un fondo tokenizado desde 100 dólares de Hong Kong",
+        "en": "HSBC opens tokenised money fund access from HKD 100"
+      },
+      "motivo": "Expone el cambio y su alcance con términos comprensibles y respaldo de la fuente.",
+      "heredado": null,
+      "foto": {
+        "clave": "real-cajero-teclado",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    },
+    {
+      "id": "bafin-token-ficticio-vlvi-whatsapp",
+      "propuestas": {},
+      "elegido": {
+        "es": "Token ficticio por WhatsApp: avisa el supervisor alemán",
+        "en": "Fictitious token via WhatsApp: German supervisor warns"
+      },
+      "motivo": "Expone el cambio y su alcance con términos comprensibles y respaldo de la fuente.",
+      "heredado": "2026-11-22",
+      "foto": {
+        "clave": "real-sede-bafin-francfort",
+        "encaje": "propia",
+        "alternativas": [],
+        "faltaria": null
+      }
+    }
+  ]
+}
