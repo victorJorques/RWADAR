@@ -306,8 +306,8 @@
    "lugar": "El Salvador",
    "pasos": [
     "Compras tokens de deuda",
-    "Iberplastic paga intereses cada mes",
-    "Recuperas el capital al vencimiento"
+    "Iberplastic paga interés mensual",
+    "Recuperas el capital al final"
    ],
    "concepto": "una planta de reciclaje de plástico"
   },
@@ -317,8 +317,8 @@
    "lugar": "El Salvador",
    "pasos": [
     "Compras tokens de deuda",
-    "MultiMoney paga intereses cada mes",
-    "Recuperas el capital al vencimiento"
+    "MultiMoney paga interés mensual",
+    "Recuperas el capital al final"
    ],
    "concepto": "una oficina de crédito"
   },
@@ -328,7 +328,7 @@
    "lugar": "San Salvador · El Salvador",
    "pasos": [
     "Compras tokens de ingresos",
-    "Se construyen y venden las viviendas",
+    "Se hacen y venden las viviendas",
     "Cobras tu parte de las ventas"
    ],
    "concepto": "un condominio residencial"
@@ -351,7 +351,7 @@
    "pasos": [
     "Suscribes el bono",
     "Cobras el cupón cada semestre",
-    "Recuperas el nominal al vencimiento"
+    "Recuperas el nominal al final"
    ],
    "concepto": "oficinas en Hamburgo"
   },
@@ -376,9 +376,9 @@
    "escena": "credito",
    "lugar": "Nueva York · EE. UU.",
    "pasos": [
-    "Compras participaciones del fondo",
-    "Neuberger Berman gestiona los bonos",
-    "Pides el reembolso cuando quieras"
+    "Compras partes del fondo",
+    "Neuberger Berman lo gestiona",
+    "Pides el reembolso"
    ],
    "concepto": "un distrito financiero"
   },
@@ -387,8 +387,8 @@
    "escena": "tesoro",
    "lugar": "Hong Kong",
    "pasos": [
-    "Compras participaciones tokenizadas",
-    "El fondo invierte a corto plazo en dólares de Hong Kong",
+    "Compras partes tokenizadas",
+    "Invierte a corto plazo en HKD",
     "Reembolsas por tu distribuidor"
    ],
    "concepto": "el puerto de Hong Kong"
@@ -401,8 +401,8 @@
    },
    "lugar": "Europa",
    "pasos": [
-    "Compras participaciones tokenizadas",
-    "El fondo sigue a las grandes empresas europeas",
+    "Compras partes tokenizadas",
+    "Sigue a empresas europeas",
     "Reembolsas según el fondo"
    ],
    "concepto": "el distrito financiero de una gran ciudad europea"
@@ -412,9 +412,9 @@
    "escena": "tesoro",
    "lugar": "Luxemburgo",
    "pasos": [
-    "Fondo monetario tokenizado en euros",
+    "Monetario tokenizado en euros",
     "Aún no admite suscripciones",
-    "Se abrirá a minoristas en varios países"
+    "Se abrirá a minoristas"
    ],
    "concepto": "la ciudad de Luxemburgo"
   },

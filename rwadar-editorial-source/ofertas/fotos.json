@@ -1,6 +1,6 @@
 {
  "versionEsquema": 2,
- "nota": "Encargo de la fotografía generada de cada ficha: el activo genérico parecido al real según su fuente oficial, sin marcas, rótulos ni personas. «concepto» completa el texto alternativo; «encuadre» es la posición (x% y%) del recorte a 1280×880, para dejar el activo a la derecha. Las fotos maestras están en fotos/<slug>.webp; fotografiar.py las vuelve a generar con el modelo, y generar.mjs las retoca y les pone el texto.",
+ "nota": "Encargo de la fotografía generada de cada ficha: el activo genérico parecido al real según su fuente oficial, sin marcas, rótulos ni personas. «concepto» completa el texto alternativo; «encuadre» es la posición (x% y%) del recorte a 1280×880, para dejar el activo a la derecha. Las fotos maestras están en fotos/<slug>.webp; fotografiar.py las vuelve a generar con el modelo, y generar.mjs solo las recorta (sin tocar el color: desde el 26/11/2026, fotos lo más realistas posible y casi sin edición).",
  "modelos": {
   "realvisxl": {
    "nombre": "RealVisXL V5.0 Lightning (SG161222)",
@@ -14,8 +14,8 @@
     "muestreador": "DPM++ SDE Karras",
     "precision": "bfloat16 en CPU"
    },
-   "estilo": "RAW photo, professional architectural photography, natural light, realistic, sharp focus, highly detailed",
-   "negativo": "cartoon, illustration, drawing, painting, anime, 3d render, cgi, toy, miniature, text, watermark, logo, signage, letters, people, person, crowd, blurry, lowres, deformed, distorted, oversaturated, fisheye, frame"
+   "estilo": "RAW photo, candid documentary photograph taken with a 35mm full-frame camera, ordinary natural daylight, true-to-life muted colors, realistic textures and small imperfections, sharp focus",
+   "negativo": "cartoon, illustration, drawing, painting, anime, 3d render, cgi, toy, miniature, text, watermark, logo, signage, letters, people, person, crowd, blurry, lowres, deformed, distorted, oversaturated, HDR, overprocessed, dramatic lighting, glow, bloom, lens flare, neon, vivid colors, airbrushed, plastic look, fisheye, frame"
   },
   "canva": {
    "nombre": "Canva, generación de imágenes (21/10/2026)",
@@ -26,224 +26,228 @@
  },
  "fotos": {
   "fotovoltaica-greenpoint": {
-   "modelo": "canva",
+   "modelo": "realvisxl",
+   "semilla": 151,
    "encuadre": "70% 55%",
-   "concepto": "unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca",
-   "prompt": "Rows of solar panels on the gravel flat roof of a three-storey office building in a small Austrian town, rooftops and church spire in the distance, late afternoon light"
+   "concepto": "paneles solares en la cubierta plana de una nave, vistos desde el aire, no los del proyecto",
+   "prompt": "aerial photo of rows of solar panels on the flat roof of a light industrial building at the edge of a small Austrian town, fields around, ordinary summer daylight"
   },
   "drautalresidenz-paternion": {
-   "modelo": "canva",
+   "modelo": "realvisxl",
+   "semilla": 163,
    "encuadre": "70% 55%",
-   "concepto": "un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real",
-   "prompt": "A long three-storey residential complex with white facades, wooden balconies and dark grey pitched roofs around a landscaped garden courtyard with lawns and conifers, green forested Carinthian mountains behind, golden hour"
+   "concepto": "un conjunto de viviendas con balcones de madera en un valle de Carintia, parecido al real",
+   "prompt": "new three-storey residential complex with wooden balconies in a green alpine valley in Carinthia, forested mountains behind, early autumn afternoon, ordinary daylight"
   },
   "vivienda-stallhofstra-e-28-gratwein": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 167,
    "encuadre": "70% 55%",
-   "concepto": "un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real",
-   "prompt": "two-storey beige residential building with balconies and a neat lawn in a small Austrian town, green wooded hills behind, soft evening light"
+   "concepto": "una casa de vecinos con tejado rojo en un pueblo de Estiria, parecida a la real",
+   "prompt": "small two-storey residential building with a red tiled roof and a garden with fruit trees in a hillside village in Styria, spring morning, overcast sky"
   },
   "fotovoltaica-cohotel": {
-   "modelo": "canva",
+   "modelo": "realvisxl",
+   "semilla": 157,
    "encuadre": "70% 55%",
-   "concepto": "unos paneles solares en la cubierta plana de un edificio comercial austriaco",
-   "prompt": "Long rows of solar panels on the flat roof of a commercial building in an Austrian business park, low warm sunset light, other industrial buildings and green trees in the distance"
+   "concepto": "paneles solares en el tejado de un edificio comercial junto al Danubio, no los del proyecto",
+   "prompt": "solar panels on the pitched roof of a modern three-storey commercial building near the Danube close to Linz, light morning haze, ordinary daylight"
   },
   "apartamento-vacacional-hinterstoder-50": {
-   "modelo": "canva",
-   "encuadre": "72% 55%",
-   "concepto": "un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real",
-   "prompt": "An alpine aparthotel of three-to-four-storey chalet-style buildings with warm larch wood facades, balconies and gabled roofs, in an Austrian Alpine valley village, snowy steep limestone mountains behind, winter dusk with warm lights in the windows"
+   "modelo": "realvisxl",
+   "semilla": 173,
+   "encuadre": "70% 55%",
+   "concepto": "un aparthotel de madera en un valle alpino en verano, parecido al real",
+   "prompt": "wooden alpine aparthotel with balconies and flower boxes, green summer meadow, rocky Austrian mountains behind, clear day"
   },
   "vivienda-pluddemanngasse-101-graz": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 179,
    "encuadre": "70% 55%",
-   "concepto": "un bloque de pisos moderno de fachada blanca en Graz, parecido al real",
-   "prompt": "modern four-storey apartment building in Graz, white rendered facade, dark slate-clad ground floor, large windows and balconies, blue hour, warm light in some flats, quiet street"
+   "concepto": "un edificio de viviendas moderno en una calle de Graz, parecido al real",
+   "prompt": "modern five-storey apartment building with white facade and dark balconies on a quiet street in Graz, overcast day, autumn leaves on the pavement"
   },
   "local-de-estanco-klagenfurt": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 181,
    "encuadre": "70% 55%",
-   "concepto": "un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca",
-   "prompt": "modern four-storey mixed-use building in Klagenfurt, ground-floor shop arcade behind slender white columns, apartments with long white balconies above, small corner shop softly lit, quiet street at dusk"
+   "concepto": "un pequeño local a pie de calle en un edificio de Klagenfurt, parecido al real",
+   "prompt": "small ground-floor shop with a large window and a plain grey awning in a pastel mixed-use building on a pedestrian street in Klagenfurt, morning"
   },
   "vivienda-schwarzer-weg-18-graz": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 191,
    "encuadre": "70% 55%",
-   "concepto": "un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real",
-   "prompt": "modern cubic three-storey apartment building with white and soft peach facades, large terraces, tall cypress hedges, quiet residential street in Graz, golden hour"
+   "concepto": "un edificio de viviendas cúbico visto desde su jardín, parecido al real",
+   "prompt": "cubic modern three-storey apartment building with large terraces and planters seen from its back garden with a lawn and young trees, late summer afternoon"
   },
   "vivienda-sonnleithnergasse-2-viena": {
    "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real",
-   "prompt": "large white nine-storey residential housing estate in Vienna with many balconies, mature leafy trees in a green courtyard, blue hour, warm lit windows"
+   "semilla": 193,
+   "encuadre": "70% 50%",
+   "concepto": "un gran bloque de viviendas de Viena alrededor de un patio verde, visto desde el aire, parecido al real",
+   "prompt": "aerial photo of a large Viennese residential block with many balconies around a big green courtyard with mature trees, spring day"
   },
   "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 197,
    "encuadre": "70% 55%",
-   "concepto": "un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real",
-   "prompt": "three-storey white and grey residential building with ribbon windows and a glass stairwell on a street corner in a small Austrian city, dusk, warm interior lights"
+   "concepto": "un edificio de viviendas en una esquina tras la lluvia, parecido al real",
+   "prompt": "three-storey modern residential building with white and anthracite facade on a street corner in a small Austrian city just after rain, wet pavement, grey sky"
   },
   "mtbill": {
    "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos",
-   "prompt": "neoclassical government building with tall stone columns and a pediment at blue hour, warmly floodlit facade, wide stone steps, no flags"
+   "semilla": 127,
+   "encuadre": "70% 50%",
+   "concepto": "Washington con los cerezos en flor, imagen genérica de Estados Unidos",
+   "prompt": "the Washington Monument seen across the Tidal Basin with cherry trees in blossom, early morning, soft overcast light"
   },
   "randhartingergasse-9-viena": {
    "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real",
-   "prompt": "renovated rooftop attic apartment with a small terrace and flower boxes on top of a classic Viennese apartment building, view over Vienna rooftops at dusk, warm lights"
+   "semilla": 199,
+   "encuadre": "70% 45%",
+   "concepto": "un ático reformado sobre un edificio clásico de Viena, parecido al real",
+   "prompt": "looking up from the street at a classic Viennese apartment building with a renovated top floor with dormer windows and a small roof terrace, late afternoon sun on the facade"
   },
   "spiko-letras-del-tesoro-euro": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 137,
    "encuadre": "70% 55%",
-   "concepto": "un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro",
-   "prompt": "European neoclassical ministry building with pale limestone facade, tall windows and colonnade, floodlit at blue hour, wide empty square, no flags"
+   "concepto": "el Sena en París con sus puentes de piedra, imagen genérica de la zona euro",
+   "prompt": "the river Seine in Paris with an old stone bridge and cream Haussmann buildings along the quays, early morning, light mist"
   },
   "prosegur-digital-gold": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 149,
    "encuadre": "70% 55%",
-   "concepto": "unos lingotes de oro sin marcas en una cámara acorazada",
-   "prompt": "stacks of polished plain gold bars inside a high-security bank vault, heavy round steel vault door ajar, warm dramatic light, dark polished floor"
+   "concepto": "unos lingotes de oro en una cámara acorazada",
+   "prompt": "a neat row of plain gold bars on a dark tray inside a modern bank vault with brushed steel safe deposit lockers, plain overhead lighting"
   },
   "aktionariat": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 101,
    "encuadre": "70% 55%",
-   "concepto": "un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
-   "prompt": "modern Swiss office building with glass and timber facade on the shore of Lake Zurich at dusk, warm office lights, calm lake reflections"
+   "concepto": "unas viñas que bajan hasta el lago de Zúrich con una oficina moderna entre ellas, no la de la empresa",
+   "prompt": "small contemporary office building among terraced vineyards sloping down to Lake Zurich, village and church in the distance, autumn afternoon"
   },
   "boss-info": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 103,
    "encuadre": "70% 55%",
-   "concepto": "un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones",
-   "prompt": "small modern two-storey office building in a Swiss countryside village at the foot of the Jura hills, warm lights at dusk, tidy car park, green fields"
+   "concepto": "una pequeña oficina junto a una granja en los prados del Jura suizo, no la de la empresa",
+   "prompt": "small modern two-storey office building next to a traditional Swiss farmhouse in green meadows at the foot of the Jura mountains, summer morning"
   },
   "switzerlend": {
    "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
-   "prompt": "sleek modern office building of glass and light stone in the Zurich business district at blue hour, offices lit, wide pavement"
+   "semilla": 107,
+   "encuadre": "70% 50%",
+   "concepto": "el casco antiguo de Zúrich nevado junto al río",
+   "prompt": "Zurich old town with the Limmat river, stone bridge and church towers on a snowy winter morning, light snow on the rooftops, grey sky"
   },
   "spiko-letras-del-tesoro-dolar": {
    "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense",
-   "prompt": "Generic American neoclassical federal government building with white marble columns, wide stone steps and a pediment, golden hour light, wide empty plaza, clear sky, no flags"
+   "semilla": 131,
+   "encuadre": "70% 50%",
+   "concepto": "Manhattan desde el puente de Brooklyn, imagen genérica de Estados Unidos",
+   "prompt": "view along the walkway of the Brooklyn Bridge towards Lower Manhattan, steel cables and stone arch, clear morning"
   },
   "robinhood-classic-stock-tokens": {
    "modelo": "realvisxl",
-   "semilla": 23,
-   "encuadre": "70% 55%",
-   "concepto": "la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses",
-   "prompt": "Generic neoclassical stock exchange building facade with tall Corinthian columns and a plain smooth frieze, warm facade lighting at dusk, empty street in a financial district, no flags, no banners, no inscription"
+   "semilla": 113,
+   "encuadre": "70% 50%",
+   "concepto": "una sala de operaciones vacía",
+   "prompt": "empty modern open-plan office trading floor with rows of desks and switched-off monitors, daylight through tall windows"
   },
   "kraken-xstocks": {
    "modelo": "realvisxl",
-   "semilla": 29,
-   "encuadre": "60% 55%",
-   "concepto": "un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses",
-   "prompt": "Modern glass office towers of a Mediterranean financial district at dusk beside a calm seafront promenade with palm trees, warm city lights reflecting on the water, wide empty walkway, no logos, no signage, no text, no flags"
+   "semilla": 109,
+   "encuadre": "70% 55%",
+   "concepto": "el puerto deportivo de Limasol a mediodía",
+   "prompt": "harbour of Limassol in Cyprus with small fishing boats, a marina and palm trees, midday Mediterranean light"
   },
   "spiko-smart-cash-euro": {
    "modelo": "realvisxl",
-   "semilla": 37,
-   "encuadre": "60% 55%",
-   "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
-   "prompt": "Generic Parisian financial district street at early morning with cream limestone Haussmann-style office buildings, wrought iron balconies, soft golden sunrise light, wet cobblestones, empty sidewalk, no signage, no logos, no text, no flags"
+   "semilla": 139,
+   "encuadre": "70% 50%",
+   "concepto": "el barrio de negocios de La Défense, en París",
+   "prompt": "glass office towers of the La Defense business district in Paris seen from its wide empty esplanade, morning, blue sky with thin clouds"
   },
   "tohkn-iber1": {
    "modelo": "realvisxl",
    "semilla": 41,
    "encuadre": "70% 55%",
    "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
-   "prompt": "modern plastic recycling plant in Central America, clean white industrial hall with neat bales of sorted plastic bottles in the yard, green volcano and tropical trees behind, golden hour"
+   "prompt": "plastic recycling plant in Central America, plain white industrial hall with bales of sorted plastic bottles in the yard, green hills behind, midday"
   },
   "tohkn-mmlti1": {
    "modelo": "realvisxl",
    "semilla": 43,
    "encuadre": "70% 55%",
-   "concepto": "una pequeña oficina de servicios financieros en una avenida con palmeras, no la de la empresa",
-   "prompt": "small modern two-storey office building with white facade and large glass storefront on a quiet palm-lined avenue in San Salvador, warm interior lights at dusk, tidy pavement"
+   "concepto": "una pequeña oficina de servicios financieros en una avenida de San Salvador, no la de la empresa",
+   "prompt": "small modern two-storey office building with white facade and glass storefront on a palm-lined avenue in San Salvador, morning"
   },
   "tohkn-rncrrev": {
    "modelo": "realvisxl",
-   "semilla": 47,
+   "semilla": 229,
    "encuadre": "70% 55%",
-   "concepto": "un condominio de casas nuevas con jardines tropicales, no el del proyecto",
-   "prompt": "new gated residential condominium of modern two-storey houses with white and warm grey facades, tropical gardens and young palm trees, San Salvador volcano in the background, warm late afternoon light"
+   "concepto": "un condominio nuevo con piscina entre jardines tropicales, no el del proyecto",
+   "prompt": "new residential condominium of modern white houses around a swimming pool among tropical gardens and palm trees, morning"
   },
   "liqi-creditos-empresas": {
    "modelo": "realvisxl",
-   "semilla": 53,
+   "semilla": 233,
    "encuadre": "70% 55%",
-   "concepto": "una calle de pequeños negocios en una ciudad de Brasil, no de las empresas que piden el crédito",
-   "prompt": "tree-lined street of low-rise commercial buildings with small workshops and shops in a Brazilian city, Sao Paulo skyline in the far distance, soft morning light, clean pavement"
+   "concepto": "el taller de una pequeña empresa, imagen genérica de las empresas que piden el crédito",
+   "prompt": "small textile workshop with sewing machines, fabric rolls and wooden tables, empty, afternoon daylight through the windows"
   },
   "finexity-bono-2026-2030-serie-b": {
    "modelo": "realvisxl",
-   "semilla": 59,
+   "semilla": 227,
    "encuadre": "70% 55%",
-   "concepto": "edificios de oficinas de ladrillo junto a un canal de Hamburgo, no los de la empresa",
-   "prompt": "historic red-brick warehouse office buildings along a calm canal in Hamburg at blue hour, warm windows reflected in the water, small iron bridge"
+   "concepto": "un edificio de oficinas moderno junto al Elba en Hamburgo, no el de la empresa",
+   "prompt": "modern glass and timber office building in the HafenCity district of Hamburg next to the water, cloudy morning"
   },
   "groma-real-estate-trust": {
    "modelo": "realvisxl",
    "semilla": 61,
    "encuadre": "70% 55%",
    "concepto": "edificios de pisos de ladrillo en una calle de Boston, no los del fondo",
-   "prompt": "classic red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, golden afternoon light, quiet sidewalk"
+   "prompt": "red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, afternoon"
   },
   "securitize-hinc": {
    "modelo": "realvisxl",
-   "semilla": 67,
-   "encuadre": "70% 50%",
-   "concepto": "el distrito financiero de Manhattan desde el agua",
-   "prompt": "Lower Manhattan financial district skyline seen from the water at blue hour, glass towers with warm lit windows, calm harbour reflections"
+   "semilla": 211,
+   "encuadre": "70% 55%",
+   "concepto": "el vestíbulo de una torre de oficinas de Nueva York, no la de la gestora",
+   "prompt": "empty lobby of a modern New York office tower in the morning, tall windows, stone floor and indoor plants, daylight"
   },
   "blackrock-hkd-digital-liquidity": {
    "modelo": "realvisxl",
    "semilla": 71,
    "encuadre": "70% 50%",
    "concepto": "el puerto de Victoria y los rascacielos de Hong Kong",
-   "prompt": "Victoria Harbour and the Hong Kong island skyline at blue hour, mountains behind, glass skyscrapers with warm lights reflected on calm water"
+   "prompt": "Victoria Harbour and the Hong Kong island skyline with mountains behind, seen from the Kowloon waterfront on a hazy afternoon"
   },
   "amundi-core-stoxx-europe-600-tokenizada": {
    "modelo": "realvisxl",
-   "semilla": 73,
-   "encuadre": "70% 50%",
-   "concepto": "el distrito financiero de Fráncfort junto al río Meno",
-   "prompt": "Frankfurt am Main financial district skyline across the river Main at dusk, modern office towers with warm lights, calm river reflections, old bridge in the foreground"
+   "semilla": 223,
+   "encuadre": "70% 55%",
+   "concepto": "un puerto de mercancías del norte de Europa, imagen genérica de las empresas europeas",
+   "prompt": "aerial photo of a northern European container port with cranes and a container ship, grey morning, calm water"
   },
   "franklin-onchain-euro-liquidity": {
    "modelo": "realvisxl",
    "semilla": 79,
    "encuadre": "70% 55%",
    "concepto": "el casco antiguo de la ciudad de Luxemburgo sobre el valle",
-   "prompt": "Luxembourg City old town on sandstone cliffs above the green Alzette valley, historic stone houses and church spires, golden hour light"
+   "prompt": "Luxembourg City old town on cliffs above the green Alzette valley, old stone houses and a church spire, autumn afternoon"
   },
   "alterna-bono-digital-mitsui": {
    "modelo": "realvisxl",
    "semilla": 83,
    "encuadre": "70% 55%",
    "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
-   "prompt": "Marunouchi business district in Tokyo at dusk, modern glass office towers along a wide tree-lined avenue with ginkgo trees, warm lit windows, empty clean street"
+   "prompt": "Marunouchi business district in Tokyo, modern office towers along a wide avenue with ginkgo trees, clear autumn day"
   }
  }
 }

@@ -689,15 +689,15 @@
     "lugar": "El Salvador",
     "pasos": [
      "Compras tokens de deuda",
-     "Iberplastic paga intereses cada mes",
-     "Recuperas el capital al vencimiento"
+     "Iberplastic paga interés mensual",
+     "Recuperas el capital al final"
     ],
     "concepto": "una planta de reciclaje de plástico",
     "foto": {
      "semilla": 41,
      "encuadre": "70% 55%",
      "concepto": "una planta de reciclaje de plástico en Centroamérica, no la de la empresa",
-     "prompt": "modern plastic recycling plant in Central America, clean white industrial hall with neat bales of sorted plastic bottles in the yard, green volcano and tropical trees behind, golden hour"
+     "prompt": "plastic recycling plant in Central America, plain white industrial hall with bales of sorted plastic bottles in the yard, green hills behind, midday"
     }
    }
   },
@@ -899,15 +899,15 @@
     "lugar": "El Salvador",
     "pasos": [
      "Compras tokens de deuda",
-     "MultiMoney paga intereses cada mes",
-     "Recuperas el capital al vencimiento"
+     "MultiMoney paga interés mensual",
+     "Recuperas el capital al final"
     ],
     "concepto": "una oficina de crédito",
     "foto": {
      "semilla": 43,
      "encuadre": "70% 55%",
-     "concepto": "una pequeña oficina de servicios financieros en una avenida con palmeras, no la de la empresa",
-     "prompt": "small modern two-storey office building with white facade and large glass storefront on a quiet palm-lined avenue in San Salvador, warm interior lights at dusk, tidy pavement"
+     "concepto": "una pequeña oficina de servicios financieros en una avenida de San Salvador, no la de la empresa",
+     "prompt": "small modern two-storey office building with white facade and glass storefront on a palm-lined avenue in San Salvador, morning"
     }
    }
   },
@@ -1084,15 +1084,15 @@
     "lugar": "San Salvador · El Salvador",
     "pasos": [
      "Compras tokens de ingresos",
-     "Se construyen y venden las viviendas",
+     "Se hacen y venden las viviendas",
      "Cobras tu parte de las ventas"
     ],
     "concepto": "un condominio residencial",
     "foto": {
-     "semilla": 47,
+     "semilla": 229,
      "encuadre": "70% 55%",
-     "concepto": "un condominio de casas nuevas con jardines tropicales, no el del proyecto",
-     "prompt": "new gated residential condominium of modern two-storey houses with white and warm grey facades, tropical gardens and young palm trees, San Salvador volcano in the background, warm late afternoon light"
+     "concepto": "un condominio nuevo con piscina entre jardines tropicales, no el del proyecto",
+     "prompt": "new residential condominium of modern white houses around a swimming pool among tropical gardens and palm trees, morning"
     }
    }
   },
@@ -1277,10 +1277,10 @@
     ],
     "concepto": "oficinas de pequeñas empresas",
     "foto": {
-     "semilla": 53,
+     "semilla": 233,
      "encuadre": "70% 55%",
-     "concepto": "una calle de pequeños negocios en una ciudad de Brasil, no de las empresas que piden el crédito",
-     "prompt": "tree-lined street of low-rise commercial buildings with small workshops and shops in a Brazilian city, Sao Paulo skyline in the far distance, soft morning light, clean pavement"
+     "concepto": "el taller de una pequeña empresa, imagen genérica de las empresas que piden el crédito",
+     "prompt": "small textile workshop with sewing machines, fabric rolls and wooden tables, empty, afternoon daylight through the windows"
     }
    }
   },
@@ -1487,14 +1487,14 @@
     "pasos": [
      "Suscribes el bono",
      "Cobras el cupón cada semestre",
-     "Recuperas el nominal al vencimiento"
+     "Recuperas el nominal al final"
     ],
     "concepto": "oficinas en Hamburgo",
     "foto": {
-     "semilla": 59,
+     "semilla": 227,
      "encuadre": "70% 55%",
-     "concepto": "edificios de oficinas de ladrillo junto a un canal de Hamburgo, no los de la empresa",
-     "prompt": "historic red-brick warehouse office buildings along a calm canal in Hamburg at blue hour, warm windows reflected in the water, small iron bridge"
+     "concepto": "un edificio de oficinas moderno junto al Elba en Hamburgo, no el de la empresa",
+     "prompt": "modern glass and timber office building in the HafenCity district of Hamburg next to the water, cloudy morning"
     }
    }
   },
@@ -1695,7 +1695,7 @@
      "semilla": 61,
      "encuadre": "70% 55%",
      "concepto": "edificios de pisos de ladrillo en una calle de Boston, no los del fondo",
-     "prompt": "classic red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, golden afternoon light, quiet sidewalk"
+     "prompt": "red-brick three-storey apartment buildings with bay windows on a leafy residential street in Boston in autumn, afternoon"
     }
    }
   },
@@ -1875,16 +1875,16 @@
     "escena": "credito",
     "lugar": "Nueva York · EE. UU.",
     "pasos": [
-     "Compras participaciones del fondo",
-     "Neuberger Berman gestiona los bonos",
-     "Pides el reembolso cuando quieras"
+     "Compras partes del fondo",
+     "Neuberger Berman lo gestiona",
+     "Pides el reembolso"
     ],
     "concepto": "un distrito financiero",
     "foto": {
-     "semilla": 67,
-     "encuadre": "70% 50%",
-     "concepto": "el distrito financiero de Manhattan desde el agua",
-     "prompt": "Lower Manhattan financial district skyline seen from the water at blue hour, glass towers with warm lit windows, calm harbour reflections"
+     "semilla": 211,
+     "encuadre": "70% 55%",
+     "concepto": "el vestíbulo de una torre de oficinas de Nueva York, no la de la gestora",
+     "prompt": "empty lobby of a modern New York office tower in the morning, tall windows, stone floor and indoor plants, daylight"
     }
    }
   },
@@ -2048,8 +2048,8 @@
     "escena": "tesoro",
     "lugar": "Hong Kong",
     "pasos": [
-     "Compras participaciones tokenizadas",
-     "El fondo invierte a corto plazo en dólares de Hong Kong",
+     "Compras partes tokenizadas",
+     "Invierte a corto plazo en HKD",
      "Reembolsas por tu distribuidor"
     ],
     "concepto": "el puerto de Hong Kong",
@@ -2057,7 +2057,7 @@
      "semilla": 71,
      "encuadre": "70% 50%",
      "concepto": "el puerto de Victoria y los rascacielos de Hong Kong",
-     "prompt": "Victoria Harbour and the Hong Kong island skyline at blue hour, mountains behind, glass skyscrapers with warm lights reflected on calm water"
+     "prompt": "Victoria Harbour and the Hong Kong island skyline with mountains behind, seen from the Kowloon waterfront on a hazy afternoon"
     }
    }
   },
@@ -2218,16 +2218,16 @@
     },
     "lugar": "Europa",
     "pasos": [
-     "Compras participaciones tokenizadas",
-     "El fondo sigue a las grandes empresas europeas",
+     "Compras partes tokenizadas",
+     "Sigue a empresas europeas",
      "Reembolsas según el fondo"
     ],
     "concepto": "el distrito financiero de una gran ciudad europea",
     "foto": {
-     "semilla": 73,
-     "encuadre": "70% 50%",
-     "concepto": "el distrito financiero de Fráncfort junto al río Meno",
-     "prompt": "Frankfurt am Main financial district skyline across the river Main at dusk, modern office towers with warm lights, calm river reflections, old bridge in the foreground"
+     "semilla": 223,
+     "encuadre": "70% 55%",
+     "concepto": "un puerto de mercancías del norte de Europa, imagen genérica de las empresas europeas",
+     "prompt": "aerial photo of a northern European container port with cranes and a container ship, grey morning, calm water"
     }
    }
   },
@@ -2379,16 +2379,16 @@
     "escena": "tesoro",
     "lugar": "Luxemburgo",
     "pasos": [
-     "Fondo monetario tokenizado en euros",
+     "Monetario tokenizado en euros",
      "Aún no admite suscripciones",
-     "Se abrirá a minoristas en varios países"
+     "Se abrirá a minoristas"
     ],
     "concepto": "la ciudad de Luxemburgo",
     "foto": {
      "semilla": 79,
      "encuadre": "70% 55%",
      "concepto": "el casco antiguo de la ciudad de Luxemburgo sobre el valle",
-     "prompt": "Luxembourg City old town on sandstone cliffs above the green Alzette valley, historic stone houses and church spires, golden hour light"
+     "prompt": "Luxembourg City old town on cliffs above the green Alzette valley, old stone houses and a church spire, autumn afternoon"
     }
    }
   },
@@ -2566,7 +2566,7 @@
      "semilla": 83,
      "encuadre": "70% 55%",
      "concepto": "el barrio de oficinas de Marunouchi, en Tokio, no las de la empresa",
-     "prompt": "Marunouchi business district in Tokyo at dusk, modern glass office towers along a wide tree-lined avenue with ginkgo trees, warm lit windows, empty clean street"
+     "prompt": "Marunouchi business district in Tokyo, modern office towers along a wide avenue with ginkgo trees, clear autumn day"
     }
    }
   }

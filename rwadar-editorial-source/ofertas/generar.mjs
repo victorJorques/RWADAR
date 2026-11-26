@@ -95,10 +95,10 @@ const altDe = (f, foto) => `${ETIQUETA_OBLIGATORIA} de ${foto ? foto.concepto : 
   `${foto ? ', imagen generada con IA' : ''}. Pasos: ` +
   `${f.pasos.map(p => p.charAt(0).toLowerCase() + p.slice(1)).join('; ')}. No es una foto del activo real.`;
 
-// Retoque de la foto maestra antes de ponerle el texto: recorte exacto a
-// 1280×880 en el encuadre pedido, un punto menos de saturación (los modelos
-// la exageran), tono algo más cálido y nitidez fina. La viñeta, el velo de
-// lectura y el grano los pone plantilla-foto.mjs.
+// Preparación de la foto maestra: recorte exacto a 1280×880 en el encuadre
+// pedido y una nitidez muy ligera por el cambio de tamaño. Nada más: desde el
+// 26/11/2026 (Víctor: «lo más realistas posibles sin mucha edición») no se
+// toca el color, el tono ni el contraste.
 async function retocar(sharp, ruta, encuadre) {
   const { width, height } = await sharp(ruta).metadata();
   const [px, py] = encuadre.split(' ').map(v => Math.min(100, parseFloat(v)) / 100);
@@ -106,10 +106,7 @@ async function retocar(sharp, ruta, encuadre) {
   const rw = Math.ceil(width * k), rh = Math.ceil(height * k);
   const buf = await sharp(ruta).removeAlpha().resize(rw, rh, { kernel: 'lanczos3' })
     .extract({ left: Math.round((rw - W) * px), top: Math.round((rh - H) * py), width: W, height: H })
-    .modulate({ saturation: 0.93 })
-    .recomb([[1.03, 0.01, 0], [0, 1, 0], [0, 0.01, 0.96]])
-    .linear(1.04, -4)
-    .sharpen({ sigma: 0.8, m1: 0.5, m2: 2 })
+    .sharpen({ sigma: 0.5, m1: 0.3, m2: 1 })
     .jpeg({ quality: 95 }).toBuffer();
   return `data:image/jpeg;base64,${buf.toString('base64')}`;
 }
