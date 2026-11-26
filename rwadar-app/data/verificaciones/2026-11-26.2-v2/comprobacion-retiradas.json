@@ -1,0 +1,56 @@
+{
+  "etiqueta": "2026-11-26.2",
+  "fecha": "2026-11-26",
+  "decision": {
+    "texto": "Orden de la dirección del 26/11/2026: «coteja la información de códex que es de hoy con lo que hiciste y lanza la actualización de toda la app y la web». Codex propuso el 25/11 retirar esta tarjeta; hoy se comprueba en la fuente que Alicante 3 ya figura como financiada y que no hay otra operación abierta ni anunciada. El 21/11 la dirección pidió que no quedaran tarjetas antiguas («Y esta ya ha pasado por ejemplo es antigua»)."
+  },
+  "retirar": [
+    {
+      "slug": "hausera-proximas-ofertas",
+      "titulo": "Hausera · próximas ofertas",
+      "coleccion": "en_camino",
+      "motivo": "La tarjeta seguía la siguiente operación de Hausera. Alicante 3 figura hoy como «FINANCIADA» (5.196.000 €) en la lista de oportunidades y en la portada, y las 15 operaciones de la lista están financiadas: no hay ninguna en preventa ni abierta, ni otra anunciada. Una tarjeta «en camino» sin nada en camino no sirve al inversor.",
+      "textoRetirada": "Retirada el 26/11/2026: Alicante 3, la última operación de Hausera, ya está financiada y Hausera no anuncia otra.",
+      "fuentes": [
+        {
+          "url": "https://hausera.io/oportunidades/",
+          "horaUtc": "2026-11-26T18:28:58Z",
+          "literal": "CRV · FINANCIADA · Alicante 3 · ROI: 22,00% · 20 meses · 5.196.000€ (las 15 operaciones de la lista, «FINANCIADA»)"
+        },
+        {
+          "url": "https://hausera.io/",
+          "horaUtc": "2026-11-26T18:28:47Z",
+          "literal": "Oportunidades · CRV · FINANCIADA · Alicante 3 · 5.196.000€"
+        }
+      ]
+    }
+  ],
+  "seQuedan": [
+    "spiko-letras-del-tesoro-euro",
+    "spiko-letras-del-tesoro-dolar",
+    "spiko-smart-cash-euro",
+    "robinhood-classic-stock-tokens",
+    "mtbill",
+    "prosegur-digital-gold",
+    "aktionariat",
+    "kraken-xstocks",
+    "boss-info",
+    "switzerlend",
+    "vivienda-pluddemanngasse-101-graz",
+    "vivienda-sonnleithnergasse-2-viena",
+    "local-de-estanco-klagenfurt",
+    "vivienda-stallhofstra-e-28-gratwein",
+    "vivienda-schwarzer-weg-18-graz",
+    "drautalresidenz-paternion",
+    "randhartingergasse-9-viena",
+    "apartamento-vacacional-hinterstoder-50",
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+    "fotovoltaica-greenpoint",
+    "fotovoltaica-cohotel"
+  ],
+  "coleccionesDespues": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 0
+  }
+}

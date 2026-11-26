@@ -1,0 +1,43 @@
+{
+  "tipo": "retiradas_y_correcciones",
+  "fecha": "2026-11-26",
+  "etiqueta": "2026-11-26.2",
+  "revisionAnterior": "47b53d7d-e223-b1fb-dc78-f06745466eef",
+  "revisionNueva": "4601a164-0884-8198-2e8a-23998e4e3120",
+  "decision": "Orden de la dirección del 26/11/2026: «coteja la información de códex que es de hoy con lo que hiciste y lanza la actualización de toda la app y la web». Codex propuso el 25/11 retirar esta tarjeta; hoy se comprueba en la fuente que Alicante 3 ya figura como financiada y que no hay otra operación abierta ni anunciada. El 21/11 la dirección pidió que no quedaran tarjetas antiguas («Y esta ya ha pasado por ejemplo es antigua»).",
+  "archivos": {
+    "comprobacion-retiradas.json": "1dfe2042b83127dcdeb829ae94005df15d460215f8931d877770c5062d3d8157"
+  },
+  "cuentas": {
+    "plataformas": 25,
+    "fuentesRadar": 69,
+    "ofertasAntes": 22,
+    "ofertasDespues": 21,
+    "descartadas": 5
+  },
+  "cambios": [
+    {
+      "donde": "catálogo",
+      "retirada": "hausera-proximas-ofertas",
+      "titulo": "Hausera · próximas ofertas",
+      "coleccion": "en_camino",
+      "texto": "Retirada el 26/11/2026: Alicante 3, la última operación de Hausera, ya está financiada y Hausera no anuncia otra."
+    }
+  ],
+  "sinCambios": [
+    "las otras 21 ofertas: documentación, cifras, avisos, colecciones y vigencia (verificadas el 26/11, 7 días: hasta el 03/12)",
+    "las 25 plataformas del radar y sus 69 fuentes",
+    "las 5 descartadas",
+    "public.plataformas y public.fuentes"
+  ],
+  "altas": [],
+  "retiradas": [
+    "hausera-proximas-ofertas"
+  ],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 0
+  },
+  "lecturaPublica": null
+}

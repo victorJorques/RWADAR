@@ -13,7 +13,7 @@
     "backed-web": ["xStock"],
     "xstocks-legal": ["Backed Assets \\(JE\\) Limited", "base prospectus approved by the Liechtenstein", "not marketed, offered, or solicited in the United States"],
     "blocksquare-web": ["Tokenization infrastructure for real estate", "Contact sales|Send Inquiry"],
-    "blocksquare-terms": ["CP\\\\?_COMPANY", "OFAC", "not a financial institution"],
+    "blocksquare-terms": ["Regulation\\W+Available soon", "Ljubljana"],
     "centrifuge-web": ["onchain asset management"],
     "centrifuge-terms": ["Neither Centrifuge nor any affiliated entity is licensed", "sophisticated, accredited or qualified investors"],
     "courtyard-web": ["Packs", "vault"],

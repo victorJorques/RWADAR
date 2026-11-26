@@ -1,0 +1,508 @@
+{
+  "slug": "spiko-letras-del-tesoro-euro",
+  "tipoExpediente": "publicada",
+  "grupo": "spiko",
+  "proveedor": "Spiko",
+  "plataformaSlug": "spiko",
+  "entidadComercializadora": "Spiko Finance SAS (empresa de servicios de inversión, ACPR CIB 19183; inscrita en la CNMV como ESI del EEE en libre prestación n.º 5325 desde el 14/01/2026). En el registro de IIC extranjeras de la CNMV figura además ALDANA CAPITAL, S.A., A.V. (CNMV n.º 280) como comercializadora de SPIKO SICAV.",
+  "emisor": "SPIKO SICAV (SICAV francesa UCITS de compartimentos), compartimento SPIKO EU T-BILLS MONEY MARKET FUND; sociedad gestora TWENTY FIRST CAPITAL (AMF GP-11000029); depositario CACEIS Bank",
+  "vehiculo": "Compartimento de SICAV UCITS (Directiva 2009/65/CE), fondo del mercado monetario VNAV a corto plazo (Reglamento (UE) 2017/1131)",
+  "token": "Acciones registradas en DLT (símbolo EUTBL) en varias redes; direcciones en el folleto y en la API /share-classes (copias en grupos/spiko/fuentes/crudo/, fuera de Git).",
+  "derechoAdquirido": "Acciones de capitalización de la clase EUR (FR001400ODL1) del compartimento, inscritas a nombre del titular en un registro DLT; el valor sigue el valor liquidativo diario.",
+  "jurisdiccion": "FR",
+  "identificador": "ISIN FR001400ODL1 · AMF SCV20240014 (compartimento, FDS79399) / SCV20240012 (SICAV) · LEI gestora 969500WSBA6KS8V1OR80",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Documento de Datos Fundamentales (KID PRIIPs) en español · Spiko EU T-Bills MMF",
+      "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "versionOFecha": "Fecha de la última revisión 01/09/2026; SHA-256 idéntico al publicado el 05/11 (descargado; copia en fuentes/pdf/) · 21/11/2026: mismo SHA-256 que lo publicado según el vigía (2026-11-21T17:36:55Z, cb1a621d8bd2…); no se relee. · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "paginas": 3,
+      "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325",
+      "leido": true,
+      "segunVigia": true,
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "sha256Vigia": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+    },
+    {
+      "titulo": "KID en inglés · EUTBL",
+      "url": "https://cdn.spiko.finance/legal_docs/EN/KID_EUTBL_EN.pdf",
+      "versionOFecha": "Primera descarga en estos ciclos; no hay huella anterior con la que comparar · 21/11/2026: descargado de nuevo (2026-11-21T17:42:59Z), mismo SHA-256 que el 20/11. · 26/11/2026: releída a las 18:21:23 UTC.",
+      "paginas": null,
+      "sha256": "ac3c5d8338474156fa1be7cdd0a7cc1c8ce6e17114b810dd231ca3d8c6b15dfb",
+      "leido": false,
+      "consultadoUtc": "2026-11-26T18:21:23Z"
+    },
+    {
+      "titulo": "Spiko SICAV – Prospectus vEN",
+      "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+      "versionOFecha": "Publication date 1 September 2026; SHA-256 idéntico al 05/11 (descargado; PDF fuera de Git en fuentes/crudo/pdf/) · 21/11/2026: mismo SHA-256 que lo publicado según el vigía (2026-11-21T17:36:56Z, 7457e79f2853…); no se relee. · 26/11/2026: según el vigía (18:17:25 UTC), sin cambios.",
+      "paginas": 82,
+      "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+      "leido": true,
+      "segunVigia": true,
+      "consultadoUtc": "2026-11-26T18:17:25Z",
+      "sha256Vigia": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35"
+    },
+    {
+      "titulo": "Folleto de SPIKO SICAV en francés publicado en la base GECO de la AMF",
+      "url": "https://geco.amf-france.org/back-office/document/download/438274",
+      "versionOFecha": "Spiko SICAV_Prospectus vFR 2026.09.01 (creado 27/08/2026, efecto 01/09/2026); SHA-256 idéntico al 05/11; sigue siendo el último folleto que lista GECO · 21/11/2026: mismo SHA-256 que lo publicado según el vigía (2026-11-21T17:36:55Z, 940559b4976a…); no se relee. · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "paginas": 84,
+      "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe",
+      "leido": true,
+      "segunVigia": true,
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "sha256Vigia": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe"
+    },
+    {
+      "titulo": "Folleto en francés alojado por Spiko",
+      "url": "https://cdn.spiko.finance/legal_docs/FR/Prospectus_Spiko_SICAV_FR.pdf",
+      "versionOFecha": "Prospectus vFR (01.09.2026); SHA-256 idéntico al 05/11 · 21/11/2026: descargado de nuevo (2026-11-21T17:43:02Z), mismo SHA-256 que el 20/11. · 26/11/2026: releída a las 18:21:14 UTC.",
+      "paginas": 84,
+      "sha256": "474f836f40c135bde0288e51372696900cf4ed173cc87087f2e46cdcfd7fd106",
+      "leido": true,
+      "consultadoUtc": "2026-11-26T18:21:14Z"
+    },
+    {
+      "titulo": "Folleto en español",
+      "url": "https://cdn.spiko.finance/legal_docs/ES/Prospectus_Spiko_SICAV_ES.pdf",
+      "versionOFecha": "HTTP 403 AccessDenied el 21/11/2026 a las 17:42:57 UTC, igual que desde el 05/11. La API legal-documents (mismo SHA-256 que el 20/11) sigue enlazando en «es» el folleto en inglés.",
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "consultadoUtc": "2026-11-21T17:42:57Z"
+    },
+    {
+      "titulo": "Spiko Finance – Terms of Use",
+      "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+      "versionOFecha": "Version 2.2, 30 June 2026; SHA-256 idéntico al 05/11 · 21/11/2026: mismo SHA-256 que lo publicado según el vigía (2026-11-21T17:36:57Z, 71dd7ba10600…); no se relee. · 26/11/2026: según el vigía (18:17:25 UTC), sin cambios.",
+      "paginas": 27,
+      "sha256": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883",
+      "leido": true,
+      "segunVigia": true,
+      "consultadoUtc": "2026-11-26T18:17:25Z",
+      "sha256Vigia": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883"
+    },
+    {
+      "titulo": "Fund Availability (países por fondo)",
+      "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "versionOFecha": "«Last updated: November 13, 2026.» Tabla de países por fondo: 🇪🇸 Spain ✅ (Smart Cash) ✅ (T-Bills Euro) ✅ (T-Bills Dollar) ❌ (T-Bills Pound) · 21/11/2026: releída (2026-11-21T17:42:42Z); HTML idéntico byte a byte al del 20/11 (mismo SHA-256). · 26/11/2026: releída a las 18:28:25 UTC.",
+      "paginas": null,
+      "sha256": "179ef546fc7f2beae3ef6715826b4046a2ceee7e6df69959590108c8171d8fc5",
+      "leido": true,
+      "consultadoUtc": "2026-11-26T18:28:25Z"
+    },
+    {
+      "titulo": "Onboarding Restrictions",
+      "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+      "versionOFecha": "Lista de países de los que Spiko no admite clientes; España no está · 21/11/2026: releída (2026-11-21T17:42:43Z); HTML idéntico byte a byte al del 20/11 (mismo SHA-256). · 26/11/2026: releída a las 18:21:16 UTC.",
+      "paginas": null,
+      "sha256": "f5cbc2a01e7e36a81f458a1950eb21681cf2a962d1a694f97271daffdd2e8453",
+      "leido": true,
+      "consultadoUtc": "2026-11-26T18:21:16Z"
+    },
+    {
+      "titulo": "Deposits and Withdrawals",
+      "url": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+      "versionOFecha": "Retirada instantánea SEPA, gratis, hasta 500.000 €/día para Spiko Euro y Spiko T-Bills Euro · 21/11/2026: releída (2026-11-21T17:42:43Z); HTML idéntico byte a byte al del 20/11 (mismo SHA-256). · 26/11/2026: releída a las 18:21:24 UTC.",
+      "paginas": null,
+      "sha256": "77fdf3237553b87d3b67a139fa26e84e96a419bcae6d6468df1739751643b180",
+      "leido": true,
+      "consultadoUtc": "2026-11-26T18:21:24Z"
+    },
+    {
+      "titulo": "Página comercial «Spiko Letras del Tesoro Euro» (español)",
+      "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "versionOFecha": "Página comercial en español; cifras vivas cargadas con JavaScript · 21/11/2026: releída (render con Playwright y HTML). · 26/11/2026: releída a las 18:21:26 UTC.",
+      "paginas": null,
+      "sha256": "6d775f48704a953b54637feb53a99dd6679edb884803d075409127839894ae2d",
+      "leido": true,
+      "consultadoUtc": "2026-11-26T18:21:26Z",
+      "notaSha": "SHA-256 de la copia renderizada de hoy (página dinámica; la comparación es de texto)"
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "AMF (GECO)",
+      "entidad": "SPIKO EU T-BILLS MONEY MARKET FUND (SICAV SPIKO SICAV)",
+      "numero": "Agrément SCV20240014 (05/04/2024); SICAV SCV20240012",
+      "url": "https://geco.amf-france.org/produit-d-epargne/c79399",
+      "alcance": "21/11/2026: ficha renderizada a las 17:47:10 UTC: «Statut : Vivant», «Type de souscripteurs : Tous souscripteurs», «N° Agrément/Visa : SCV20240014», «Date d'autorisation : 05/04/2024», «Société de gestion : TWENTY FIRST CAPITAL», «Dernière valeur liquidative connue au 19/11/2026 : 1.06328 €». API del compartimento (17:42:52 UTC) idéntica byte a byte a la del 20/11; lastVl FR001400ODL1 (17:42:54 UTC): valuationDate 2026-11-19 (la AMF aún no tiene la VL del 20/11). El buscador público de GECO («spiko», 17:44:49 UTC) sigue devolviendo este compartimento. · 26/11/2026: releída a las 18:28:46 UTC.",
+      "consultadoUtc": "2026-11-26T18:28:46Z"
+    },
+    {
+      "regulador": "CNMV (registro de IIC extranjeras comercializadas en España)",
+      "entidad": "SPIKO SICAV",
+      "numero": "2380 (fecha de registro 30/01/2026)",
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "alcance": "21/11/2026 (17:42:44 UTC; vista 18 a las 17:42:45; hechos relevantes a las 17:42:46): mismo texto que el 20/11. «SPIKO SICAV · 2380 · 30/01/2026 · SICAV · FRANCIA · IIC Comunitaria · IIC Sujeto a la directiva 2009/65/CE». Comercializadora inscrita: ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES. Hechos relevantes: «No se han encontrado datos disponibles». Solo tiene las pestañas «Datos generales» y «Entidades comercializadoras»: no desglosa compartimentos ni clases. Control de hoy con otra SICAV francesa de la misma comercializadora (LAZARD FUNDS, n.º 1991, 17:51:35 UTC): tampoco muestra compartimentos, así que la CNMV no los publica para ninguna. · 26/11/2026: releída a las 18:29:48 UTC.",
+      "consultadoUtc": "2026-11-26T18:29:48Z"
+    },
+    {
+      "regulador": "CNMV (comercializadora de IIC extranjeras)",
+      "entidad": "ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES",
+      "numero": "Sociedades y Agencias de Valores n.º 280 (06/04/2018)",
+      "url": "https://www.cnmv.es/portal/consultas/iic/comercializadora?nif=A87969739",
+      "alcance": "21/11/2026 (17:42:50 UTC): mismo texto que el 20/11; SPIKO SICAV sigue en su lista de IIC extranjeras comercializadas, sin compartimentos ni clases. · 26/11/2026: releída a las 18:21:02 UTC.",
+      "consultadoUtc": "2026-11-26T18:21:02Z"
+    },
+    {
+      "regulador": "CNMV (ESI del EEE en libre prestación)",
+      "entidad": "SPIKO FINANCE SASU",
+      "numero": "5325 (fecha de registro 14/01/2026)",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+      "alcance": "21/11/2026 (datos generales 17:42:48 UTC; programa de actividades, vista 17, 17:42:49 UTC): mismo texto que el 20/11. «1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros · 3) Participaciones y acciones en instituciones de inversión colectiva»; auxiliares: crédito ligado a la operación y cambio de divisas. Es la empresa que recibe las órdenes de los clientes en España, no la inscripción del fondo. · 26/11/2026: releída a las 18:37:03 UTC.",
+      "consultadoUtc": "2026-11-26T18:37:03Z"
+    },
+    {
+      "regulador": "ACPR (REGAFI, API pública)",
+      "entidad": "Spiko Finance (SIREN 980659585, LEI 969500NW8QTZA7UG8M82)",
+      "numero": "CIB 19183 (15/12/2025), «Entreprise d'Investissement», «Agrément»; pasaporte de libre prestación a España desde 08/01/2026",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "alcance": "21/11/2026 (17:42:59 UTC): pasaportes de libre prestación a España con el mismo SHA-256 que el 20/11 y el 13/11 (fdf10d2d…). Copia en fuentes/crudo/regafi-pasaportes-espana.json. · 26/11/2026: releída a las 18:21:14 UTC.",
+      "consultadoUtc": "2026-11-26T18:21:14Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Spiko",
+      "resultado": "sin coincidencias («No hay datos disponibles.»). 21/11/2026: mismo resultado que en lo publicado según el vigía (2026-11-21T17:37:32Z, SHA-256 e7d2da1de104…). Releída además a mano a las 17:51:33 UTC: «No hay datos disponibles» (fuentes/crudo/cnmv-advertencias-Spiko.html). · 26/11/2026: según el vigía (18:17:42 UTC), sin cambios.",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+      "consultadoUtc": "2026-11-26T18:17:42Z",
+      "segunVigia": true,
+      "sha256Vigia": "e7d2da1de104e70598b559fa0f18a81e56f451fa2aed32d18428b0be2a9f3cbb"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Twenty First Capital",
+      "resultado": "sin coincidencias («No hay datos disponibles.»). 21/11/2026: mismo resultado que en lo publicado según el vigía (2026-11-21T17:37:33Z, SHA-256 0e7a7d1ece8e…). · 26/11/2026: según el vigía (18:17:42 UTC), sin cambios.",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital",
+      "consultadoUtc": "2026-11-26T18:17:42Z",
+      "segunVigia": true,
+      "sha256Vigia": "0e7a7d1ece8e7af56d4d80efa195f22d35ff9e5182d3a9efd35f3157be3f9e29"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Aldana",
+      "resultado": "sin coincidencias («No hay datos disponibles.»). 21/11/2026: mismo resultado que en lo publicado según el vigía (2026-11-21T17:37:34Z, SHA-256 b5fddc175aa5…). · 26/11/2026: según el vigía (18:17:43 UTC), sin cambios.",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aldana",
+      "consultadoUtc": "2026-11-26T18:17:43Z",
+      "segunVigia": true,
+      "sha256Vigia": "b5fddc175aa549e9130b54394d9b8a5e8dc84da9c3d0692087aa927e6a3e5c5c"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Trading (control positivo)",
+      "resultado": "control correcto el 21/11/2026: «Página 1 de 16» de advertencias. El buscador funciona: un «sin coincidencias» de hoy es un resultado real, no un fallo de la página. · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "segunVigia": true
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Statut : Vivant · Type de souscripteurs : Tous souscripteurs · Dernière valeur liquidative connue au 19/11/2026 : 1.06328 €",
+      "dato": "abierta",
+      "fuentePrimaria": "https://geco.amf-france.org/produit-d-epargne/c79399",
+      "localizador": "Ficha GECO del compartimento (render con Playwright, fuentes/amf-geco-eutbl-c79399-render.json); API de Spiko /net-asset-values/EUTBL/latest y /totals",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-26T18:28:46Z",
+      "alcanceYLimites": "El fondo sigue vivo y publica VL cada día hábil: la última de Spiko es del viernes 20/11 (calculada a las 17:18 UTC; la AMF aún muestra la del 19/11). Hoy es sábado: no hay VL nueva hasta el lunes 23/11 hacia las 18:00 UTC (nextYieldTimestamp 1795456800). Se puede suscribir hoy tras el alta; no se ha hecho alta ni KYC. · 26/11/2026: releída a las 18:28:46 UTC.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "\"monthlyYield\":\"0.0245\" · \"updatedAt\":\"2026-11-20T17:18:23.527Z\"",
+      "dato": "2,45 % neto anualizado (ventana de 31 días hasta la VL calculada el 20/11/2026, que Spiko fecha el 22/11/2026)",
+      "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+      "localizador": "API pública de Spiko v0, /share-classes/EUTBL/yield (fuentes/crudo/spiko-api-EUTBL-yield.json, SHA-256 02a03185…, el mismo que el vigía y que la copia del 20/11 a las 17:31 UTC)",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "alcanceYLimites": "Neto de comisiones, variable, no garantizado. Recalculado hoy con la serie de VL de la API (/net-asset-values/EUTBL?startDay=2026-09-20, 17:42:40 UTC): VL fechada el 22/10/2026 1,06131 € y VL fechada el 22/11/2026 1,063496 €, 31 días, capitalizando: (1,063496 / 1,06131)^(365/31) − 1 = 2,452 % (a ritmo simple, 2,425 %). Cuadra con el 2,45 % de Spiko. Spiko fecha la VL del viernes con el domingo porque cubre el fin de semana (igual el 06/11 → 08/11 y el 13/11 → 15/11); por eso la fecha del dato es el 20/11 (día del cálculo) y no el 22/11, que hoy todavía no ha llegado. Web ES (render 17:46:17 UTC): «2,45% Rendimiento neto actual» y «Rentabilidades netas anualizadas (después de comisiones) de los últimos 31 días»; data.spiko.io (17:46:43 UTC): «30D YIELD 2.45%», «LATEST NAV 1.0635 · 2026-11-22». El vigía dio «cambia» porque la cifra publicada no lleva fecha con la que comparar; la VL y la cifra son las mismas que lo publicado (no hay VL nueva desde el 20/11). · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "estado": "respaldado_con_alcance",
+      "segunVigia": true
+    },
+    {
+      "campo": "precio",
+      "literal": "\"day\":\"2026-11-22T00:00:00.000Z\",\"amount\":{\"value\":\"1.063496\",\"currency\":\"EUR\"},\"updatedAt\":\"2026-11-20T17:18:23.426Z\"",
+      "dato": "1,063496 EUR por acción (VL calculada el 20/11/2026; Spiko la fecha el 22/11/2026)",
+      "fuentePrimaria": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+      "localizador": "API /net-asset-values/EUTBL/latest (SHA-256 98a9113d…, el mismo que el vigía); AMF GECO «1.06328 €» al 19/11/2026",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-26T18:17:26Z",
+      "alcanceYLimites": "Dato de valor, no el precio de una orden futura. Solo expediente. · 26/11/2026: según el vigía (18:17:26 UTC), sin cambios.",
+      "estado": "respaldado",
+      "segunVigia": true
+    },
+    {
+      "campo": "minimo",
+      "literal": "FR001400ODL1 1 EUR EUR 1 EUR 1 EUR 1 EUR All Investors",
+      "dato": "1 EUR (clase EUTBL, FR001400ODL1)",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+      "localizador": "Prospectus 01/09/2026, tabla «Characteristics of shares» del compartimento EU T-Bills; API /share-classes (17:42:42 UTC, mismo SHA-256 que el 20/11): minimumInitialSubscription \"1\"; web ES (17:46:17 UTC): «Depósito inicial mínimo €1»; data.spiko.io: «MINIMUM INITIAL SUBSCRIPTION 1 EUR»",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:25Z",
+      "alcanceYLimites": "Clase EUR FR001400ODL1. No prueba que el alta sea aceptada. Folleto EN con el mismo SHA-256 que lo publicado según el vigía (2026-11-21T17:36:56Z, 7457e79f2853…); no se relee. La API y la web, leídas hoy a mano, dicen lo mismo. · 26/11/2026: según el vigía (18:17:25 UTC), sin cambios.",
+      "estado": "respaldado",
+      "segunVigia": true,
+      "sha256Vigia": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Gastos de gestión y otros gastos administrativos u operativos: 0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último año.",
+      "dato": "0,25 % anual (coste corriente); 0 % de entrada y de salida",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "localizador": "KID ES 01/09/2026, p. 3 «Composición de los costes»; API /share-classes (hoy): managementFees \"0.0025\", subscriptionFees \"0\", redemptionFees \"0\"; data.spiko.io «SUBSCRIPTION FEES 0.00% · REDEMPTION FEES 0.00%»",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "alcanceYLimites": "El folleto fija máximos distintos (gestión 0,30 % + gastos operativos hasta 0,10 %); no presentar 0,40 % como coste cobrado. Comisiones de red DLT a cargo del inversor. KID ES con el mismo SHA-256 según el vigía (2026-11-21T17:36:55Z, cb1a621d8bd2…); no se relee. · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "estado": "respaldado_con_alcance",
+      "segunVigia": true,
+      "sha256Vigia": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+    },
+    {
+      "campo": "salida",
+      "literal": "Las solicitudes ... son centralizadas por Spiko Finance a más tardar a las 11:30 (hora de París). Estas solicitudes se ejecutan sobre la base del último valor liquidativo conocido.",
+      "dato": "Reembolso diario en días hábiles con corte a las 11:30 (París); después del corte, al día hábil siguiente",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "localizador": "KID ES pp. 1 y 3; folleto EN «These orders are executed based on the last known net asset value»; API /funds (17:52:55 UTC): EUTBL executionMethod \"knownNAVs\"",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "alcanceYLimites": "El folleto permite limitar reembolsos al llegar al 10 % del patrimonio neto, máximo 20 VL en 3 meses. KID ES con el mismo SHA-256 según el vigía (2026-11-21T17:36:55Z, cb1a621d8bd2…); no se relee. La API /funds, leída hoy, mantiene «knownNAVs» (VL ya conocida) y los días no hábiles de noviembre y diciembre (01/11, 11/11, 25/12, 26/12). · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "estado": "respaldado_con_alcance",
+      "segunVigia": true,
+      "sha256Vigia": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+    },
+    {
+      "campo": "salida_limite",
+      "literal": "the management company may trigger the redemption cap when a threshold of 10% of net assets is reached",
+      "dato": "Gate a partir del 10 % del patrimonio neto; máx. 20 VL en 3 meses",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+      "localizador": "Prospectus 01/09/2026, compartimento EU T-Bills, «Redemption cap mechanism»",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:25Z",
+      "alcanceYLimites": "Mecanismo excepcional; los pedidos no atendidos pasan a la siguiente VL. Folleto EN con el mismo SHA-256 según el vigía (2026-11-21T17:36:56Z, 7457e79f2853…); no se relee. · 26/11/2026: según el vigía (18:17:25 UTC), sin cambios.",
+      "estado": "respaldado",
+      "segunVigia": true,
+      "sha256Vigia": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35"
+    },
+    {
+      "campo": "salida_instantanea",
+      "literal": "The instant withdrawal feature allows you to withdraw your funds from Spiko Euro and Spiko T-Bills Euro ... Instant transfers are supported for amounts up to €500,000 per day",
+      "dato": "Retirada instantánea SEPA, gratis, hasta 500.000 EUR/día",
+      "fuentePrimaria": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+      "localizador": "docs.spiko.io «Deposits and Withdrawals» (HTML de hoy idéntico byte a byte al del 20/11, SHA-256 77fdf323…) · Terms of Use v2.2 art. 12",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-26T18:21:24Z",
+      "alcanceYLimites": "Servicio de Spiko Finance, sujeto a sus condiciones; por encima del límite se tramita como retirada normal. · 26/11/2026: releída a las 18:21:24 UTC.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "🇪🇸 Spain ✅ ✅ ✅ ❌ (columnas Smart Cash, T-Bills Euro, T-Bills Dollar, T-Bills Pound) · Last updated: November 13, 2026.",
+      "dato": "Sí: España incluida para T-Bills Euro",
+      "fuentePrimaria": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "localizador": "docs.spiko.io «Fund Availability», tabla por país (HTML de hoy idéntico byte a byte al del 20/11, SHA-256 179ef546…); «Onboarding Restrictions» (17:42:43 UTC, idéntica): España no está entre los países excluidos",
+      "fechaDato": "2026-11-13",
+      "consultadoUtc": "2026-11-26T18:28:25Z",
+      "alcanceYLimites": "Por qué es «Sí»: (1) la SICAV está inscrita en la CNMV para comercializarse en España (n.º 2380, 30/01/2026, leída hoy a las 17:42:44 UTC); (2) este compartimento existe desde 2024 (AMF: autorizado el 05/04/2024), antes de esa inscripción, y la propia Spiko dice «When a fund is first registered in a country, all its existing share classes are covered»; (3) Spiko Finance, que recibe las órdenes, está inscrita en la CNMV para hacerlo (ESI en libre prestación n.º 5325); (4) la tabla de Spiko marca España y la lista de exclusiones no incluye España. Límites: alta con KYC; no se admiten personas estadounidenses (U.S. Persons). · 26/11/2026: releída a las 18:28:25 UTC.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana_particulares",
+      "literal": "El Producto está dirigido a todo tipo de inversores que deseen hacer fructificar sus ahorros con un riesgo mínimo.",
+      "dato": "Admite particulares",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "localizador": "KID ES p. 1 «Inversores objetivo»; AMF GECO (hoy, 17:47:10 UTC) «Type de souscripteurs : Tous souscripteurs»",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "alcanceYLimites": "No se ha hecho alta. KID ES con el mismo SHA-256 según el vigía (2026-11-21T17:36:55Z, cb1a621d8bd2…); no se relee. La ficha de la AMF, leída hoy a mano, sigue diciendo «Tous souscripteurs». · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "estado": "respaldado",
+      "segunVigia": true,
+      "sha256Vigia": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7 ... El capital no está garantizado",
+      "dato": "Riesgo 1/7; capital no garantizado",
+      "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "localizador": "KID ES pp. 1–2",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "alcanceYLimites": "Riesgos adicionales: DLT, custodia de la wallet, liquidación en tokens de dinero electrónico. KID ES con el mismo SHA-256 según el vigía (2026-11-21T17:36:55Z, cb1a621d8bd2…); no se relee. · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "estado": "respaldado",
+      "segunVigia": true,
+      "sha256Vigia": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+    },
+    {
+      "campo": "patrimonio",
+      "literal": "\"totalAssets\":{\"value\":\"431451966.08\",\"currency\":\"EUR\"},\"numberOfHolders\":2798",
+      "dato": "431,45 M EUR; 2.798 titulares",
+      "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/EUTBL/totals",
+      "localizador": "API /share-classes/EUTBL/totals (17:42:41 UTC); data.spiko.io «AUM €431.45M · USERS 2,798»; web ES «€431 M»",
+      "fechaDato": "2026-11-20",
+      "consultadoUtc": "2026-11-26T18:21:27Z",
+      "alcanceYLimites": "Dato de tamaño, no de rentabilidad. Solo expediente. Las tres fuentes de Spiko coinciden hoy. · 26/11/2026: releída a las 18:21:27 UTC.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple",
+      "nota": "21/11/2026: fondo UCITS monetario vivo en GECO (SCV20240014, autorizado el 05/04/2024), gestora Twenty First Capital; SICAV inscrita en la CNMV (n.º 2380) con Aldana Capital A.V. como comercializadora; Spiko Finance inscrita en la CNMV (ESI en libre prestación n.º 5325) y en REGAFI (CIB 19183, pasaporte a España). Sin advertencias de la CNMV (vigía y control positivo de hoy)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Abierta. VL del viernes 20/11/2026 (1,063496 €, Spiko la fecha el 22/11); 2,45 % publicado por Spiko y recalculado hoy con la serie de VL (2,452 %). Hoy es sábado: la próxima VL llega el lunes 23/11 hacia las 18:00 UTC."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sí desde España como particular: SICAV inscrita en la CNMV, compartimento anterior a la inscripción, Spiko Finance inscrita y España marcada en la tabla de Spiko (13/11/2026). Desde 1 EUR, 0,25 % anual, reembolso diario con corte 11:30. Límites: KYC, U.S. Persons excluidas, gate del 10 %, folleto en español no accesible (403)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "KID ES con riesgo 1/7, riesgos DLT y de wallet, capital no garantizado (mismo SHA-256 según el vigía). Sin advertencias de la CNMV."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "avisosConFecha": [
+    {
+      "aviso": "Métrica «Rentabilidad publicada · 31 días · 20/11/2026»: 2,45 %",
+      "estado": "sigue_vigente",
+      "fuente": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+      "literal": "monthlyYield \"0.0245\" · updatedAt 2026-11-20T17:18:23Z (VL calculada el 20/11, 1,063496 €); recalculado hoy 2,452 % · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "segunVigia": true
+    },
+    {
+      "aviso": "Capital no garantizado; la rentabilidad cambia a diario con los tipos de interés.",
+      "estado": "sigue_vigente",
+      "fuente": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "literal": "El capital no está garantizado (KID ES 01/09/2026): mismo SHA-256 según el vigía (cb1a621d8bd2…) · 26/11/2026: según el vigía (18:17:24 UTC), sin cambios.",
+      "consultadoUtc": "2026-11-26T18:17:24Z",
+      "segunVigia": true
+    },
+    {
+      "aviso": "El reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio del fondo.",
+      "estado": "sigue_vigente",
+      "fuente": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+      "literal": "redemption cap when a threshold of 10% of net assets is reached (folleto 01/09/2026): mismo SHA-256 según el vigía (7457e79f2853…) · 26/11/2026: según el vigía (18:17:25 UTC), sin cambios.",
+      "consultadoUtc": "2026-11-26T18:17:25Z",
+      "segunVigia": true
+    }
+  ],
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "revisión del 26/11/2026",
+      "antes": "Publicada el 21/11/2026",
+      "ahora": "Fuentes releídas hoy como visitante (vigía y lista de releídas); 11 cambios en decisiones.json, la mayoría solo de fecha.",
+      "fuente": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Spiko Letras del Tesoro Euro",
+    "categoria": "Tesoro y fondos",
+    "pais": "FR",
+    "tipo": "rendimiento",
+    "coleccion": "principales",
+    "resumen": "Fondo monetario UCITS en euros que invierte en letras del Tesoro de la zona euro, con acciones registradas en blockchain. Valor liquidativo variable y capital no garantizado.",
+    "rentabilidad": {
+      "mostrada": "2,44 %",
+      "literal": "Rendimiento neto anualizado de los últimos 31 días que publica Spiko con el valor liquidativo del 26/11/2026 (1,063785 €); consultado el 26/11/2026. Variable y no garantizado."
+    },
+    "metricas": [
+      {
+        "etiqueta": "Mínimo",
+        "valor": "1 EUR"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "EUR"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "AMF (fondo) · Spiko SICAV inscrita en la CNMV para su comercialización (n.º 2380); la CNMV no detalla sus fondos uno a uno"
+      },
+      {
+        "etiqueta": "Gastos corrientes (KID)",
+        "valor": "0,25 % anual"
+      },
+      {
+        "etiqueta": "Entrada / salida",
+        "valor": "0 % / 0 %"
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Diario, corte 11:30 (París)"
+      },
+      {
+        "etiqueta": "Riesgo KID",
+        "valor": "1 de 7, sin contar los riesgos del registro en blockchain y de la cartera digital (el KID los deja fuera)"
+      },
+      {
+        "etiqueta": "Rentabilidad publicada · 31 días · 26/11/2026",
+        "valor": "2,44 %"
+      }
+    ],
+    "avisos": [
+      "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+      "Capital no garantizado; la rentabilidad cambia a diario con los tipos de interés.",
+      "El reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio del fondo."
+    ],
+    "resumenTarjeta": {
+      "minimo": "Desde 1 €",
+      "accesoEspana": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "salida": "Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+    "fuentesActuales": [
+      "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "https://data.spiko.io/eutbl/",
+      "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+      "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+      "https://geco.amf-france.org/produit-d-epargne/c79399"
+    ],
+    "lugar": "París · Francia",
+    "pasos": [
+      "Abres cuenta con KYC",
+      "Transfieres euros",
+      "Reembolso diario"
+    ],
+    "concepto": "un sobre con letras del Tesoro europeas que se convierte en fichas digitales sobre una mesa de tesorería",
+    "referenciaAccesoEspana": {
+      "etiqueta": "Acceso desde España",
+      "valor": "Disponible para particulares residentes en España tras el alta y el KYC; la SICAV está inscrita en la CNMV",
+      "fechaDato": "2026-11-13",
+      "fuente": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "nota": "Texto propuesto para la referencia de documentacion-ofertas. Empieza por «Disponible» y no contiene «no » ni «sin confirmar», para que la tarjeta siga diciendo «España: Sí» (rwadar-movil/lib/ficha-editorial.js, comprobación accesoPositivo)."
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 EUR",
+    "supervisorVerificado": "AMF (GECO SCV20240014) · CNMV IIC extranjera n.º 2380 · CNMV ESI libre prestación n.º 5325 (Spiko Finance) · ACPR/REGAFI CIB 19183",
+    "documentacionClara": "si",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Fondo UCITS monetario autorizado por la AMF e inscrito en la CNMV, KID en español del 01/09/2026, desde 1 EUR, 0,25 % anual y reembolso diario documentado.",
+    "porQueNo": "El folleto en español sigue dando error 403; la rentabilidad cambia cada día hábil (próxima VL el lunes 23/11 hacia las 18:00 UTC)."
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Revisión del 26/11/2026: mismas fuentes releídas hoy; cifras de hoy donde cambian y fechas de consulta de hoy.",
+  "bloqueos": [
+    "Folleto en español: 403 AccessDenied el 21/11 a las 17:42:57 UTC; se usan el inglés y el francés (01/09/2026, mismo SHA-256).",
+    "La CNMV no desglosa compartimentos en su vista pública (tampoco para otras SICAV francesas: control con LAZARD FUNDS)."
+  ],
+  "notaParaCoordinador": "Ciclo del 26/11/2026 montado por una sola sesión, sin agentes (orden de la dirección).",
+  "consulta": {
+    "inicioUtc": "2026-11-26T18:16:23Z",
+    "finUtc": "2026-11-26T18:44:00Z"
+  }
+}

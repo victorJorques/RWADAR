@@ -1,0 +1,80 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-26T18:53:56.838Z",
+  "etiqueta": "2026-11-26.2",
+  "revisionAnterior": "47b53d7d-e223-b1fb-dc78-f06745466eef",
+  "revisionNueva": "4601a164-0884-8198-2e8a-23998e4e3120",
+  "sha256AplicarYAprobar": "1f6478ead76259c8f3160b5af7438e260afab5ad29fc3983dc94d5ed13d8b1a7",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada 47b53d7d con su huella 47b53d7de223…, catálogo no retirado, fecha del 26/11 al 03/12, destino sin otra identidad); inserts idempotentes en rwadar_catalogo (1 en revisiones, 69 en fuentes, 25 en plataformas, 107 en plataforma_fuentes, 25 en alertas, 35 en alerta_fuentes, 21 en ofertas), sin Hausera; nada en public.*; aprobación al final; sin DDL, borrados, permisos, Auth ni funciones",
+    "cadena de producción (seed antes de ARTEX + 22 lotes, del 2026-10-22 a la 2026-11-26): la publicada es la 47b53d7d",
+    "antes de aplicar, PGlite enseña la 2026-11-26 local (25 plataformas, 22 ofertas 8/13/1, documentación idéntica) (lectura-publica/ pendiente: se lee tras aplicar la 2026-11-26)",
+    "idempotente: aplicarla dos veces da lo mismo",
+    "public.plataformas, public.fuentes, cambios de estado, avisos y emisiones, intactos; las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: 25 plataformas y 21 ofertas (8 principales, 13 de reventa y 0 en camino); Hausera, fuera; las 21 que se quedan y las 25 plataformas, idénticas a la 2026-11-26 (mismo orden, cifras, avisos, documentación, verificadas el 26/11 con 7 días) salvo la revisión y el manifiesto del lote (22 → 21, en camino 1 → 0); las 5 descartadas, iguales",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 25/21 con 0 en camino; vale el 26/11 y el 03/12 y caduca el 04/12; las 21 tarjetas se ven igual que con la 2026-11-26",
+    "sincronizador real con estas vistas: 25 plataformas, 21 ofertas y 5 descartadas (CSV de 30 filas); sin quitar Hausera de la lista cerrada las fichas no se generan; con la lista nueva salen 51 páginas, ninguna de Hausera (ni en el sitemap ni enlazada)",
+    "worker con la lista nueva: /ofertas/hausera-proximas-ofertas (también con .html o barra final) da el 404 del worker (noindex, nofollow; no-store) sin pedir su copia de conservación; las demás fichas se sirven",
+    "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
+    "falla y no deja nada: la publicada no es la 2026-11-26 (es la 2026-11-21, fe0cfaa8) → Publicación distinta de la revisión anterior prevista: fe0cfaa8-9682-b729-69e2-9bb4f8587ce9. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior"
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador",
+      "falla": false,
+      "publicada": "4601a164-0884-8198-2e8a-23998e4e3120"
+    },
+    {
+      "caso": "la publicada no es la 2026-11-26 (es la 2026-11-21, fe0cfaa8)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: fe0cfaa8-9682-b729-69e2-9bb4f8587ce9. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 03/12/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 69,
+    "rwadar_catalogo.plataformas": 25,
+    "rwadar_catalogo.plataforma_fuentes": 107,
+    "rwadar_catalogo.alertas": 25,
+    "rwadar_catalogo.alerta_fuentes": 35,
+    "rwadar_catalogo.ofertas": 21
+  },
+  "lecturaPublica": false,
+  "resultado": "correcto"
+}

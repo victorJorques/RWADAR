@@ -140,13 +140,6 @@
    "concepto": "un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
    "prompt": "sleek modern office building of glass and light stone in the Zurich business district at blue hour, offices lit, wide pavement"
   },
-  "hausera-proximas-ofertas": {
-   "modelo": "realvisxl",
-   "semilla": 31,
-   "encuadre": "70% 55%",
-   "concepto": "un edificio de viviendas mediterráneo recién reformado en la costa de Orihuela (Alicante), como imagen de viviendas que se compran, se reforman y se venden",
-   "prompt": "freshly renovated bright white Mediterranean apartment building with new balconies and wooden shutters, palm trees on a sunny street in Alicante, Spain, golden hour"
-  },
   "spiko-letras-del-tesoro-dolar": {
    "modelo": "realvisxl",
    "semilla": 11,
