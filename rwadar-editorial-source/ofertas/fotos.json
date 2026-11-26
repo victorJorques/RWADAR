@@ -27,10 +27,10 @@
  "fotos": {
   "fotovoltaica-greenpoint": {
    "modelo": "realvisxl",
-   "semilla": 151,
+   "semilla": 152,
    "encuadre": "70% 55%",
    "concepto": "paneles solares en la cubierta plana de una nave, vistos desde el aire, no los del proyecto",
-   "prompt": "aerial photo of rows of solar panels on the flat roof of a light industrial building at the edge of a small Austrian town, fields around, ordinary summer daylight"
+   "prompt": "solar panels covering the flat gravel roof of a three-storey office building, the roof edge and parapet in the foreground, rooftops of a small Austrian town beyond, ordinary summer daylight"
   },
   "drautalresidenz-paternion": {
    "modelo": "realvisxl",
