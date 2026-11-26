@@ -1,0 +1,6 @@
+Fecha de consulta: 25 de noviembre de 2026, hora peninsular española.
+Barrido de fuentes oficiales de CNMV, ESMA, BOE, Consejo de la UE, BCE, EBA y Comisión Europea.
+Fuentes primarias de los artículos: HKMA, BCE (dos notas), CNMV, Franklin Templeton, OKX, HSBC Hong Kong y BaFin.
+CNMV: comprobación del documento oficial completo en PDF.
+Franklin Templeton: lectura de la noticia oficial renderizada y respuesta HTTP directa de su URL.
+Sección Hoy: noticias fechadas el 24 o 25 de noviembre.

@@ -69,6 +69,7 @@ test('el histórico: ordenado, sin repetidos, sin campos de más; una foto por d
   assert.equal(otra.anadida, false);
   assert.equal(otra.historico.fotos[1].total.valor, 3, 'la primera foto del día se queda');
   assert.throws(() => t.validarHistorico({ ...h, fotos: [h.fotos[1], h.fotos[0]] }), /desordenadas/);
+  assert.throws(() => t.validarHistorico({ ...h, fotos: [h.fotos[0], h.fotos[0]] }), /repetidas/);
   assert.throws(() => t.validarHistorico({ ...h, extra: 1 }), /forma/);
   assert.throws(() => t.validarHistorico({ ...h, fotos: [{ ...h.fotos[0], nota: '<script>' }] }), /forma/);
   assert.throws(() => t.validarHistorico({ ...h, fotos: [{ ...h.fotos[0], tipos: { bitcoin: { valor: 1, cambio24h: 0 } } }] }), /tipo desconocido/);
@@ -122,6 +123,20 @@ test('periodos solo con fotos reales: la más cercana a ±2 días; si no, «sin-
   // La serie de la línea usa el dato de ahora para el día de hoy.
   r = t.resumir({ historico: historico(foto('2026-11-09', 100e9), foto('2026-11-10', 1e9)), actual: hoy });
   assert.deepEqual(r.serie, [{ fecha: '2026-11-09', valor: 100e9 }, { fecha: '2026-11-10', valor: 110e9 }]);
+});
+
+test('la serie conserva los últimos 400 días hasta el dato actual y sustituye su foto guardada', () => {
+  const inicio = Date.parse('2025-01-01T00:00:00Z');
+  const fotos = Array.from({ length: 500 }, (_, i) => foto(new Date(inicio + i * 86400000).toISOString().slice(0, 10), 1000 + i));
+  const h = { version: 1, fuente: 'CoinGecko', fotos };
+  const actual = foto(fotos[450].fecha, 9999);
+  const r = t.resumir({ historico: h, actual });
+  assert.equal(r.serie.length, 400);
+  assert.deepEqual(r.serie[0], { fecha: fotos[51].fecha, valor: fotos[51].total.valor });
+  assert.deepEqual(r.serie[399], { fecha: actual.fecha, valor: 9999 });
+  assert.equal(fotos[450].total.valor, 1450, 'el histórico de entrada conserva su valor');
+  assert.deepEqual(t.resumir({ historico: h, actual: foto('2024-12-31', 88) }).serie,
+    [{ fecha: '2024-12-31', valor: 88 }], 'una base anterior al histórico no incorpora fechas posteriores');
 });
 
 test('sin CoinGecko: la foto guardada más reciente, con su fecha; sin nada, un estado vacío sin cifras', () => {

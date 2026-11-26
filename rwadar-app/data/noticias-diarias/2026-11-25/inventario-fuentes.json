@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "generado": "2026-11-25T16:56:54.367Z",
+  "fuentes": [
+    {
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/11/20261125-3/",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 81877,
+      "sha256": "d185f5b0f7b67fb529489c828a9c1c4423480db1550e5605691fd68a1995992c",
+      "horaUtc": "2026-11-25T16:56:40.598Z",
+      "error": null
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b4a2ff209-394f-4d63-8170-a9ed63e761b3%7d",
+      "http": 200,
+      "tipo": "application/pdf",
+      "bytes": 177715,
+      "sha256": "e5bad44ac1cb9c884fff3b0c91715ef1d98b20f9ecf097a046ad860a00e9d80a",
+      "horaUtc": "2026-11-25T16:56:40.611Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/intro/news/html/ecb.mipnews261124.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 101772,
+      "sha256": "cc5ec63bbd5752f4129584084ca0bc5a3f7616a467d929dcca13298cc8a05374",
+      "horaUtc": "2026-11-25T16:56:40.614Z",
+      "error": null
+    },
+    {
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261123~76b6f57b74.en.html",
+      "http": 200,
+      "tipo": "text/html; charset=UTF-8",
+      "bytes": 105711,
+      "sha256": "ca2fdc5bc0bfad5143eda19c93e392ec807691f94c36403e2d705b528a761e94",
+      "horaUtc": "2026-11-25T16:56:53.165Z",
+      "error": null
+    },
+    {
+      "url": "https://www.franklintempleton.lu/press-releases/news-room/2026/franklin-templeton-launches-tokenised-euro-money-market-fund",
+      "http": 200,
+      "tipo": "text/html",
+      "bytes": 2357,
+      "sha256": "ae112d1aeb327651ae4f54f04afbef06947cdc6821efc4bea4140b555006e585",
+      "horaUtc": "2026-11-25T16:56:40.615Z",
+      "error": null
+    },
+    {
+      "url": "https://www.okx.com/en-eu/learn/okxice-tsv-launch-going-live",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 94184,
+      "sha256": "06bea1113c1d8f7efda9952d3ab8c5e4d9dbf9c90f349f6a69db2ce856444460",
+      "horaUtc": "2026-11-25T16:56:40.616Z",
+      "error": null
+    },
+    {
+      "url": "https://www.about.hsbc.com.hk/news-and-media/hsbc-redcoin-expands-into-wealth-with-tokenised-fund-access",
+      "http": 200,
+      "tipo": "text/html; charset=utf-8",
+      "bytes": 37242,
+      "sha256": "2bc0a622891ce44bbe88b18e4b453065d77f4ef67feecf8d3910149169ea1acf",
+      "horaUtc": "2026-11-25T16:56:40.616Z",
+      "error": null
+    },
+    {
+      "url": "https://www.bafin.de/SharedDocs/Veroeffentlichungen/DE/Verbrauchermitteilung/unerlaubte/2026/meldung_2026_11_19_sapiovestis_capital_zorvantic_exchange.html",
+      "http": 200,
+      "tipo": "text/html;charset=utf-8",
+      "bytes": 87748,
+      "sha256": "27c4aef62cd0f4de8806e6b3902b685643e8d9b54834c2d617bcf8b0cfdd219b",
+      "horaUtc": "2026-11-25T16:56:40.617Z",
+      "error": null
+    }
+  ]
+}

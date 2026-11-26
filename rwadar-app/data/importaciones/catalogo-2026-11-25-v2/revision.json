@@ -1,0 +1,31 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "c7ab2aae-77bd-7301-f4c1-5654c23ed8b8",
+  "hash": "c7ab2aae77bd7301f4c15654c23ed8b8943846d7e7bdbcfc26595e1c7c1109d3",
+  "revisionAnterior": "fe0cfaa8-9682-b729-69e2-9bb4f8587ce9",
+  "hashRevisionAnterior": "fe0cfaa89682b72969e29bb4f8587ce9c27f249e7e7f5b181292d91887b43966",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-25-v2/lectura-publica/",
+  "etiqueta": "2026-11-25",
+  "fechaRadar": "2026-11-21",
+  "revisionDocumental": "2026-11-25",
+  "plataformas": 25,
+  "ofertas": 21,
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 0
+  },
+  "vigenciaDias": 7,
+  "venceTrasEl": "2026-11-28",
+  "nuevasAltas": 0,
+  "retiradas": 1,
+  "tablasPublicas": [],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false,
+  "ofertasRetiradas": [
+    "hausera-proximas-ofertas"
+  ],
+  "sha256Aplicador": "91d8031701126104f37b31d8ac2b81ebc02f4163fbd4e599404b7b9ade2a37f9"
+}
