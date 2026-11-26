@@ -28,16 +28,16 @@
     {
       "empresa": "HATOR",
       "maestro": "hator.webp",
-      "semilla": 421,
-      "descripcionVisual": "Cafetal en la ladera de un volcán de El Salvador, ejemplo de los activos de empresas latinoamericanas.",
-      "prompt": "coffee plantation on a green volcanic hillside in El Salvador with a dirt path between the rows, morning mist",
+      "semilla": 619,
+      "descripcionVisual": "Nave logística con muelles de carga en El Salvador, ejemplo de los activos de empresas latinoamericanas.",
+      "prompt": "plain modern logistics warehouse with loading docks and two parked trucks in an industrial park in El Salvador, overcast midday, eye level documentary photo",
       "paginaReferencia": "https://hatorsecurities.com/"
     },
     {
       "empresa": "Real Tokn",
       "maestro": "real-tokn.webp",
       "semilla": 431,
-      "descripcionVisual": "Edificio de oficinas con jardín tropical en Antiguo Cuscatlán (El Salvador), donde opera la emisora.",
+      "descripcionVisual": "Edificio bajo con jardín tropical en Antiguo Cuscatlán (El Salvador), zona donde opera la emisora.",
       "prompt": "modern low-rise office building with a tropical garden in Antiguo Cuscatlan El Salvador, soft morning light",
       "paginaReferencia": "https://www.realtokn.com/en/investors.html"
     },
@@ -52,9 +52,9 @@
     {
       "empresa": "Bit2Me STX",
       "maestro": "bit2me-stx.webp",
-      "semilla": 439,
-      "descripcionVisual": "Rascacielos del norte de Madrid al anochecer, ciudad de la bolsa de valores en blockchain.",
-      "prompt": "business district skyscrapers in northern Madrid seen from a park at dusk, warm sky, quiet path in the foreground",
+      "semilla": 701,
+      "descripcionVisual": "Plaza entre edificios de oficinas en el distrito financiero de Madrid, ciudad de la bolsa de valores en blockchain.",
+      "prompt": "paved pedestrian plaza between office buildings in the business district of Madrid with a few trees and benches, overcast midday, eye level, muted natural colours, documentary photo",
       "paginaReferencia": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/"
     },
     {
@@ -76,9 +76,9 @@
     {
       "empresa": "Seturion",
       "maestro": "seturion.webp",
-      "semilla": 457,
-      "descripcionVisual": "Stuttgart vista desde los viñedos de sus colinas, ciudad del grupo bursátil que la impulsa.",
-      "prompt": "view over Stuttgart rooftops from a hillside vineyard, autumn colours, soft afternoon light",
+      "semilla": 611,
+      "descripcionVisual": "Tejados de Stuttgart vistos desde una colina, ciudad del grupo bursátil que la impulsa.",
+      "prompt": "view over Stuttgart city rooftops and church towers from a hillside, overcast day, muted natural colours, documentary photo",
       "paginaReferencia": "https://group.boerse-stuttgart.com/en/seturion/"
     },
     {
@@ -108,17 +108,17 @@
     {
       "empresa": "SDAX",
       "maestro": "sdax.webp",
-      "semilla": 479,
-      "descripcionVisual": "Viaducto de autopista y grúas de un puerto del sudeste asiático, como las infraestructuras que se financian.",
-      "prompt": "elevated highway viaduct and container port cranes in Southeast Asia at sunrise, hazy sky",
+      "semilla": 617,
+      "descripcionVisual": "Viaducto de autopista sobre un río en una ciudad del sudeste asiático, como las infraestructuras que se financian.",
+      "prompt": "elevated highway viaduct over a wide river in a Southeast Asian city, cloudy midday, muted natural colours, documentary photo",
       "paginaReferencia": "https://www.sdax.co/listings/"
     },
     {
       "empresa": "Terazo",
       "maestro": "terazo.webp",
-      "semilla": 487,
-      "descripcionVisual": "Torres de oficinas nuevas de GIFT City (India), donde está el fondo inmobiliario tokenizado.",
-      "prompt": "new glass office towers in GIFT City Gujarat India with wide empty roads and young trees, hazy afternoon",
+      "semilla": 719,
+      "descripcionVisual": "Torre de oficinas nueva en GIFT City (India) junto a una zona ajardinada, donde está el fondo inmobiliario tokenizado.",
+      "prompt": "single new glass office tower beside a landscaped garden with young trees in GIFT City Gujarat India, hazy afternoon, eye level, muted natural colours, documentary photo",
       "paginaReferencia": "https://www.terazo.network/"
     },
     {
@@ -132,9 +132,9 @@
     {
       "empresa": "PRYPCO Mint",
       "maestro": "prypco-mint.webp",
-      "semilla": 499,
-      "descripcionVisual": "Urbanización de villas blancas con palmeras en las afueras de Dubái, el tipo de vivienda que tokeniza.",
-      "prompt": "modern villa community with white houses and palm trees in a Dubai suburb, warm evening light, empty street",
+      "semilla": 727,
+      "descripcionVisual": "Salón vacío de un piso nuevo con vistas a las torres de Dubái, el tipo de vivienda que tokeniza.",
+      "prompt": "bright empty living room of a new apartment with large windows overlooking residential towers in Dubai, daylight, muted natural colours, documentary photo",
       "paginaReferencia": "https://help.prypco.com/mint/en/articles/13627737-how-to-invest-in-tokenized-real-estate-on-prypco-mint"
     },
     {
@@ -156,17 +156,17 @@
     {
       "empresa": "Cradle",
       "maestro": "cradle.webp",
-      "semilla": 521,
-      "descripcionVisual": "Rascacielos de Nairobi con jacarandas en flor, ciudad de las acciones africanas que negocia.",
-      "prompt": "Nairobi city skyline with modern towers and purple jacaranda trees in bloom, morning",
+      "semilla": 673,
+      "descripcionVisual": "Torres de oficinas del centro de Nairobi vistas desde un parque, ciudad de las acciones africanas que negocia.",
+      "prompt": "Nairobi city centre office towers seen from a park with acacia trees, cloudy morning, muted natural colours, documentary photo",
       "paginaReferencia": "https://cradlemarkets.com/"
     },
     {
       "empresa": "Shard",
       "maestro": "shard.webp",
-      "semilla": 523,
-      "descripcionVisual": "Edificios de viviendas nuevos en Abuja con la roca Aso detrás, donde están sus inmuebles.",
-      "prompt": "new apartment buildings in Abuja Nigeria with the large Aso Rock granite outcrop in the background, dry season haze",
+      "semilla": 651,
+      "descripcionVisual": "Edificios de viviendas nuevos en una calle residencial de Abuja, ciudad donde están sus inmuebles.",
+      "prompt": "new four-storey apartment buildings on a quiet residential street in Abuja Nigeria, clear dry season day, muted natural colours, documentary photo",
       "paginaReferencia": "https://shard.africa/"
     },
     {

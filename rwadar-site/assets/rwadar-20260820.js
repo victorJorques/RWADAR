@@ -152,10 +152,13 @@ const TRANSPARENCIA_POR_SLUG=Object.freeze({"aktionariat":{"verificadaEl":"2026-
    de un proyecto concreto de la empresa: el distintivo y la ficha lo dicen
    de forma visible, y la procedencia completa queda en fuentes.json. */
 const PORTADAS_GENERADAS_MOVIL=new Set([
- 'ADDX','ALTERNA','Amundi','Archax','ARTEX Global Markets','Backed Finance','BlackRock',
- 'Blocksquare','Centrifuge','Courtyard','Figure','FINEXITY','Fireblocks','Franklin Templeton',
- 'Groma','INX','Liqi','Lofty','Maple Finance','Midas','Ondo Finance','OpenEden','Pax Gold','Reental',
- 'Republic','Securitize','Spiko','Superstate','Swarm','Taurus','TOHKN','Tokeny','tZERO'
+ 'ADDX','ALTERNA','Amundi','Archax','ARTEX Global Markets','Assetera','Backed Finance','Bit2Me STX',
+ 'BlackRock','Blocksquare','Bloktok','Caliber','Centrifuge','Courtyard','Cradle','Ctrl Alt','DigiFT',
+ 'DigiShares','Estating','Etherfuse','Figure','FINEXITY','Fireblocks','Franklin Templeton','Groma',
+ 'HATOR','INX','Liqi','Lofty','Luxivana','Maple Finance','Mesh','Midas','Oaksvale','OKXICE',
+ 'Ondo Finance','OpenEden','Pax Gold','PRYPCO Mint','Raíz','Real Tokn','Reental','Republic','SDAX',
+ 'Securitize','Seturion','Shard','Spiko','Superstate','Swarm','TangibleX','Taurus','Terazo','TOHKN',
+ 'Tokeniza','Tokeny','Tokinvest','tZERO'
 ]);
 const portadaEsIlustrativa=p=>PORTADAS_GENERADAS_MOVIL.has(p.n);
 
