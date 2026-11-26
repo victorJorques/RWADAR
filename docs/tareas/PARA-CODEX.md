@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de noviembre de 2026 (50) · Claude · 25 plataformas del radar del informe de Codex (sección 09), con portada propia · PUBLICADO
+
+- **Orden de Víctor:** «añade las 30 plataformas del radar de Codex», «las que verifiques que son reales; si pide
+  aceptar cookies, acéptalas»; «publícalo todo»; **sin agentes**. Sobre las portadas: «el camino raro verde bosque no
+  me gusta, parece IA».
+- **Catálogo `2026-11-26.4`** (revisión `7f745c7d`, sobre la `25b54edc`; «Aplicar catálogo» 45905680316; lectura
+  como visitante después de aplicar: 57 plataformas y 32 ofertas 17/13/2). Solo plataformas, ninguna oferta cambia.
+  Altas (25): Raíz, Tokeniza, Etherfuse, HATOR, Real Tokn, Bloktok, Bit2Me STX, Assetera, Estating, Seturion,
+  DigiShares, Ctrl Alt, DigiFT, SDAX, Terazo, Luxivana, TangibleX, Tokinvest, PRYPCO Mint, Mesh, Oaksvale, Cradle,
+  Shard, Caliber y OKXICE; regiones nuevas `africa` y `oriente-medio`. Fuera, con motivo en `plataformas.py`: AndX,
+  Expedit, Tokenia, PropertyHandle, Mercado Bitcoin y WisdomTree (403), DAMREV (429), RedSwan, Binaryx y NewEarthX.
+- **Cómo:** `2026-11-26.4-v2/plataformas.py` → `altas.json` (comprueba que cada frase está en la copia de hoy de
+  `fuentes/`; lector con aceptación de cookies del 26/11). `preparar-entrega.mjs`, `comprobar-entrega.mjs` (PGlite: 20
+  pruebas y 9 fallos que no dejan nada) y `despues-de-aplicar.mjs` adaptados de la `.3` para una entrega sin ofertas y
+  con varias regiones. 30 fuentes nuevas en `comprobaciones-fuentes.json`. En la copia de Caliber se taparon los datos
+  de contacto de personas (anotado en `lecturas-2026-11-26.json`).
+- **Portadas:** 25 con RealVisXL (`portadas.json` guarda prompt y semilla elegida). Se rehicieron con luz normal y
+  colores apagados HATOR (el camino del cafetal), SDAX, Seturion, Shard y Cradle, y las que repetían encuadre (Bit2Me
+  STX, Terazo, PRYPCO Mint). En escritorio las tarjetas usan la inicial; la portada se ve en móvil.
+- **App:** `idioma-en` (web y app, idénticos) suma «África», «Oriente Medio» y «Varias». La prueba
+  `rwadar-movil/tests/radar-portada.test.cjs` comparaba el lienzo con 1 cifra fija; ahora toma las cifras del
+  catálogo, como pedía su comentario (hay categorías con más de 9). La comprobación de 320 a 767 px con 2 cifras ya
+  existía y no cambia.
+- **Publicado:** PR #212 (entrega) y #213 (sincronización, sello `5dab6403`); `npm test` 1319/0 y CI en verde.
+  «Publicar web» revisión 45910846716 y producción 45911179415, comprobadas en vivo con Chromium a 390 y 1366 px
+  (revisión `7f745c7d`, 57/32, África y Oriente Medio, las 25 páginas y portadas en 200, sin errores); OTA Android
+  45910859108 (`comprobar-ota-compatible`: ok, 1.4.2(24)); «Avisar novedad» 45911427742 (anuncio 17: «25 plataformas
+  nuevas en el radar, con África y Oriente Medio por primera vez»). Cerrojo del ciclo borrado con «Limpiar ramas»
+  45911558018.
+- **Pendiente:** comprobar en el registro de cada supervisor las licencias que hoy solo declara la web (todas menos
+  Tokinvest); fotos reales de Commons cuando deje de responder 429.
+
 ## 26 de noviembre de 2026 (49) · Claude · Altas internacionales del informe de Codex (11 ofertas, 7 plataformas), las nuevas primero, fotos realistas y noticias del 26/11 · PUBLICADO
 
 - **Orden de Víctor:** añadir a la actualización el informe global de Codex del 26/11 verificado («RWAdar es
@@ -42,7 +74,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   gráfico hasta el 26/11, sin errores); OTA Android 45902154729 (`comprobar-ota-compatible`: ok, 1.4.2(24));
   «Avisar novedad» 45902738046 («11 inversiones nuevas de 7 países, algunas desde 100 dólares») y 45902825220
   (las 3 noticias del día). Ramas de la entrega borradas; la de cerrojo, con «Limpiar ramas».
-- **Pendiente:** las ~30 plataformas solo de radar del informe de Codex (sección 09); fotos reales de Commons para las
+- **Pendiente:** las ~30 plataformas solo de radar del informe de Codex (sección 09), hechas en la entrada 50; fotos reales de Commons para las
   ofertas cuando Commons deje de responder 429 (programa en `origin/claude/fotos-reales-ofertas`, a medias).
 
 ## 26 de noviembre de 2026 (48) · Claude · Catálogo re-verificado (vigente hasta el 03/12), Hausera fuera e integración de Codex · PUBLICADO
